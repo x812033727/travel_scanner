@@ -7,8 +7,8 @@ import { cadenceProblems, HOOK_SECONDS as ILLUSTRATED_HOOK_SECONDS } from "./cad
 import { craftProblems } from "./craft.mjs";
 import { cueCoverageProblems, emotionProblems, EXPLAINER_PRESET, hasCast, illustrated, isDrama, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
-import { articleUrl, checkYoutubeFields, composeDescription } from "./metadata.mjs";
-import { DEFAULT_TARGET_MINUTES, LOCALES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
+import { articleUrl, checkYoutubeFields, composeDescription, youtubeWarnings } from "./metadata.mjs";
+import { DEFAULT_TARGET_MINUTES, LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
 import { isStory, storyProblems } from "./story.mjs";
 import { DEFAULT_CPM, FPS, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
@@ -30,6 +30,23 @@ export const BRIEF_SECTIONS_DRAMA = ["故事前提", "角色", "站主觀點"];
 // An explainer (docs/videos/so-thats-why/) answers one question with no cast: the question, the
 // one-sentence answer, and the owner's stance.
 export const BRIEF_SECTIONS_EXPLAINER = ["問題", "一句答案", "站主觀點"];
+// The hedges the channel review (docs/videos/channel-review-20261007/README.md §2.1 D04) found
+// standing in for the numbers the title promised, counted as one family across the narration:
+// the disclaimer lives in the description, and the number is said. A warning, never an error:
+// an error would only teach the writer's lint_errors loop a synonym.
+export const HEDGE_FAMILY = ["以官網為準", "以官方為準", "公告沒寫", "公告沒有寫", "不代表", "我不唸", "不在這裡唸", "不替你填"];
+export const HEDGE_MAX = 1;
+// How far into the narration (at the estimate's 250 characters a minute) a spoken table of
+// contents still counts as the opening (D07), and the sentence shapes it takes.
+export const OPENING_SECONDS = 40;
+const OPENING_TOC = [
+  /接下來(?:我們)?(?:會|要|就)?(?:分|分成|有|講|說|看|用)[一二三四五六七八九十兩\d]+(?:段|個|部分|點|件|步)/,
+  /看完(?:這支|這部|這集|影片)?(?:之後|以後)?(?:你|大家)?(?:就|會|能)?(?:知道|學會|搞懂)/,
+];
+const ORDINAL_RUN = [/第一[，、]/, /第二[，、]/, /(?:第三|最後)[，、]/];
+// The close (D03): three sentences, the last of them an invitation to subscribe with a reason.
+export const OUTRO_SENTENCES = 3;
+export const SUBSCRIBE_WORD = "訂閱";
 export const SENTENCE_WARN = 40;
 // An English word counts two units, so 40 is twenty words; spoken English runs to about 25 before it needs a breath.
 export const SENTENCE_WARN_EN = 50;
@@ -230,6 +247,42 @@ function seriesProblems(doc, series, error, warn) {
   }
 }
 
+/**
+ * The shape of a narrated episode's script (script-writing.md §開場, §句子, §結尾), as warnings:
+ * the hedge family said more than once in the narration, an opening that reads a table of
+ * contents, and an outro that asks for no subscription or has not its three sentences.
+ * `timeline` is the estimate; the opening is its first OPENING_SECONDS seconds.
+ */
+export function episodeScriptProblems(doc, timeline) {
+  const problems = [];
+  const warn = (path, message) => problems.push({ path, message });
+  const counts = new Map();
+  for (const { line } of eachLine(doc)) {
+    for (const phrase of HEDGE_FAMILY) {
+      const hits = line.text.split(phrase).length - 1;
+      if (hits) counts.set(phrase, (counts.get(phrase) ?? 0) + hits);
+    }
+  }
+  const hedges = [...counts.values()].reduce((sum, hits) => sum + hits, 0);
+  if (hedges > HEDGE_MAX) {
+    const found = [...counts].map(([phrase, hits]) => `「${phrase}」×${hits}`).join(", ");
+    warn("scenes", `the narration hedges ${hedges} times (${found}); the family (${HEDGE_FAMILY.join("／")}) is said at most ${HEDGE_MAX} time a video: say the number from the official page or the site's checked article, and leave the disclaimer to the description`);
+  }
+  const starts = new Map((timeline?.lines ?? []).map((line) => [line.id, line.start_frame]));
+  const opening = [...eachLine(doc)].filter(({ line }) => (starts.get(line.id) ?? Infinity) < OPENING_SECONDS * FPS).map(({ line }) => line.text).join("");
+  if (OPENING_TOC.some((pattern) => pattern.test(opening)) || ORDINAL_RUN.every((pattern) => pattern.test(opening))) {
+    warn("scenes[0]", `the first ${OPENING_SECONDS} s read a table of contents (「接下來分三段」「第一，…第二，…最後」「看完你會知道」); open on the question or the claim and a concrete number, date or name, and let the chapters announce themselves`);
+  }
+  doc.scenes.forEach((scene, index) => {
+    if (scene.template !== "outro") return;
+    const where = `scenes[${index}] (${scene.id})`;
+    const said = (scene.lines ?? []).map((line) => line.text);
+    if (!said.some((text) => text.includes(SUBSCRIBE_WORD))) warn(where, `the outro asks for no subscription: its ${OUTRO_SENTENCES} sentences answer the opening question with its number, ask one question the viewer can answer in a comment, and give one reason to subscribe (script-writing.md §結尾)`);
+    if (said.length < OUTRO_SENTENCES) warn(where, `the outro has ${said.length} sentence${said.length === 1 ? "" : "s"}; the close is ${OUTRO_SENTENCES}: the answer with its number, a comment question, a subscribe invitation with a reason`);
+  });
+  return problems;
+}
+
 export function lintVideo(doc, context = {}) {
   const errors = [];
   const warnings = [];
@@ -328,6 +381,11 @@ export function lintVideo(doc, context = {}) {
   // target_minutes is what the writer aims at, not a limit, so running over it is not warned. A
   // drama, a brand story and a long anime keep their own lengths on both sides.
   else if (minutes < low || (minutes > high && !needsMinimumLength(doc))) warn("scenes", `about ${minutes.toFixed(1)} minutes; the target is ${low}-${high}`);
+  // The script's shape (episodeScriptProblems) is read on an episode: a narrated zh-TW video of
+  // MIN_EPISODE_MINUTES or more, the constant and not the floor a fixture runner relaxes (the
+  // examples run seconds and show the templates' shape, not a script's). A draft under the floor
+  // is already sent back to be written longer; a drama keeps its own craft; the phrases are zh-TW.
+  if (!drama && !english && minutes >= MIN_EPISODE_MINUTES) for (const problem of episodeScriptProblems(doc, timeline)) warn(problem.path, problem.message);
   if (isLongAnime(doc)) {
     const target = doc.runtime_spec.body_target_seconds;
     const seconds = frameToSeconds(timeline.total_frames);
@@ -337,6 +395,7 @@ export function lintVideo(doc, context = {}) {
   const article = context.pack ? articleUrl(context.pack, narration, doc.slug) : null;
   const description = composeDescription({ body: doc.youtube.description, timeline, article, sources: doc.sources ?? [], locale: narration, tags: doc.youtube.tags });
   for (const problem of checkYoutubeFields({ title: doc.youtube.title, description, tags: doc.youtube.tags })) error("youtube", problem);
+  for (const problem of youtubeWarnings({ title: doc.youtube.title, tags: doc.youtube.tags }, "youtube", { numbered: drama })) warn("youtube", problem);
   if (!doc.youtube.tags.length) warn("youtube.tags", "no tags: add the product names and their common misspellings");
   if (!doc.sources?.length) warn("sources", "no sources: every fact in claims.md needs one, and they go in the description");
 
@@ -365,6 +424,7 @@ export function lintVideo(doc, context = {}) {
       const tags = translation.tags?.length ? translation.tags : doc.youtube.tags;
       const composed = composeDescription({ body: translation.description, timeline, chapterTitles: translation.chapters ?? {}, article: localeArticle, sources: doc.sources ?? [], locale, tags });
       for (const problem of checkYoutubeFields({ title: translation.title, description: composed, tags: [] }, locale)) warn(`i18n/${locale}.json`, `${problem} (package refuses it)`);
+      for (const problem of youtubeWarnings({ title: translation.title, tags: [] }, locale, { numbered: drama })) warn(`i18n/${locale}.json`, problem);
     }
     const thousands = THOUSANDS[locale];
     if (thousands) {

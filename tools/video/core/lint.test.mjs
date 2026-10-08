@@ -2,8 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { dramaBrief, dramaFixture, explainerBrief, explainerFixture, fixture, fixtureBrief, fixtureLexicon, storyBrief, storyFixture, storySeries } from "./fixtures/load.mjs";
-import { billableEstimate, briefSections, checkBrief, lintVideo, productionShotProblems, stancePoints, stanceProblems, templateSimilarity } from "./lint.mjs";
-import { estimateTimeline } from "./timeline.mjs";
+import { billableEstimate, briefSections, checkBrief, episodeScriptProblems, HEDGE_FAMILY, lintVideo, OPENING_SECONDS, OUTRO_SENTENCES, productionShotProblems, stancePoints, stanceProblems, templateSimilarity } from "./lint.mjs";
+import { estimateTimeline, FPS } from "./timeline.mjs";
 import { MIN_EPISODE_MINUTES, minEpisodeMinutes, textHash } from "./schema.mjs";
 import { sourceHashes } from "./translations.mjs";
 
@@ -602,4 +602,79 @@ test("a shot cut from another shot's clip must end inside that clip, and the pro
   assert.ok(productionShotProblems(doc, series, estimateTimeline(doc)).some((problem) => problem.path === "scenes[3] (bird).data.source" && /must end inside them/.test(problem.message)));
   bird.data.source.from_s = 1;
   assert.deepEqual(productionShotProblems(doc, series, estimateTimeline(doc)), []);
+});
+
+// The minimal example stretched to episode length, its outro still last. The script's shape
+// (episodeScriptProblems) is read only on a narrated video of MIN_EPISODE_MINUTES or more, so
+// the examples that run seconds stay the templates' shape and never a script's.
+function stretched(doc = fixture()) {
+  doc.target_minutes = [MIN_EPISODE_MINUTES, MIN_EPISODE_MINUTES + 4];
+  let n = 0;
+  while (estimateTimeline(doc).total_frames / FPS / 60 < MIN_EPISODE_MINUTES + 0.5) {
+    const lines = Array.from({ length: 6 }, () => ({ id: `pad${(n++).toString(36).padStart(4, "0")}`, text: "這一句只是把範例拉長到一集的長度，數字留在正文裡。" }));
+    doc.scenes.splice(doc.scenes.length - 1, 0, { id: `pad-${n}`, template: "bullets", data: { title: "拉長", items: ["一"] }, lines });
+  }
+  return doc;
+}
+// The close as script-writing.md §結尾 has it: the answer with its number, a comment question,
+// a subscribe invitation with a reason.
+const THREE_SENTENCES = [
+  { id: "cl01", text: "所以答案是，三個問題問完，五分鐘就能選好。" },
+  { id: "cl02", text: "你每天最常叫模型做的是哪一種工作？留言告訴我。" },
+  { id: "cl03", text: "下一支拆它的價格表，訂閱頻道就不會錯過。" },
+];
+const closed = (doc) => {
+  doc.scenes.at(-1).lines = structuredClone(THREE_SENTENCES);
+  return doc;
+};
+
+test("the script's shape is read on an episode, not on a fixture-length example: the minimal close asks for nothing and has two sentences", () => {
+  assert.deepEqual(lintVideo(fixture(), context()).warnings, [], "the example runs seconds");
+  const long = stretched();
+  const result = lintVideo(long, context());
+  assert.deepEqual(result.errors, []);
+  const where = `scenes[${long.scenes.length - 1}] (wrap)`;
+  assert.deepEqual(result.warnings.map((warning) => warning.path), [where, where]);
+  assert.match(messages(result.warnings), /the outro asks for no subscription/);
+  assert.match(messages(result.warnings), new RegExp(`the outro has 2 sentences; the close is ${OUTRO_SENTENCES}`));
+  assert.deepEqual(lintVideo(closed(long), context()).warnings, []);
+  // The function itself has no length gate: the gate is lintVideo's.
+  assert.equal(episodeScriptProblems(fixture(), estimateTimeline(fixture())).length, 2);
+  assert.deepEqual(episodeScriptProblems(closed(fixture()), estimateTimeline(fixture())), []);
+});
+
+test("the hedge family is counted across the whole narration: twice is a warning that names each phrase, once is the description's sentence", () => {
+  for (const phrase of ["以官網為準", "公告沒寫", "不代表", "我不唸", "不在這裡唸", "不替你填"]) assert.ok(HEDGE_FAMILY.includes(phrase), phrase);
+  const long = closed(stretched());
+  long.scenes[1].lines[0].text = "價格多少，以官網為準。";
+  assert.deepEqual(lintVideo(long, context()).warnings, []);
+  long.scenes[1].lines[1].text = "公告沒寫，不代表沒有。";
+  const result = lintVideo(long, context());
+  assert.deepEqual(result.errors, []);
+  assert.deepEqual(result.warnings.map((warning) => warning.path), ["scenes"]);
+  assert.match(result.warnings[0].message, /hedges 3 times \(「以官網為準」×1, 「公告沒寫」×1, 「不代表」×1\)/);
+  assert.match(result.warnings[0].message, /leave the disclaimer to the description/);
+});
+
+test("a table of contents in the opening is a warning: the announced parts, 「看完你會知道」, or 第一，…第二，…最後 within the first 40 seconds", () => {
+  assert.equal(OPENING_SECONDS, 40);
+  const long = closed(stretched());
+  long.scenes[0].lines[1].text = "接下來分三段，先講價格，再講額度，最後講怎麼選。";
+  const announced = lintVideo(long, context());
+  assert.deepEqual(announced.warnings.map((warning) => warning.path), ["scenes[0]"]);
+  assert.match(announced.warnings[0].message, /the first 40 s read a table of contents/);
+  long.scenes[0].lines[1].text = "看完你會知道價格、額度和怎麼選。";
+  assert.match(messages(lintVideo(long, context()).warnings), /table of contents/);
+  // The ordinal run needs all three; two ordinals are a list.
+  long.scenes[0].lines[1].text = "今天用三個問題，幫你在五分鐘內決定要用哪一個 AI 模型。";
+  long.scenes[1].lines[0].text = "第一，你要它做什麼工作。";
+  long.scenes[1].lines[1].text = "第二，你能接受它想多久才回答。";
+  assert.deepEqual(lintVideo(long, context()).warnings, []);
+  long.scenes[1].lines[2].text = "最後，你每個月願意為它付多少錢。";
+  assert.match(messages(lintVideo(long, context()).warnings), /table of contents/);
+  // The same run after the opening is a chapter's own list.
+  const late = closed(stretched());
+  const middle = late.scenes[Math.floor(late.scenes.length / 2)];
+  [middle.lines[0].text, middle.lines[1].text, middle.lines[2].text] = ["第一，先看價格。", "第二，再看額度。", "最後，看怎麼選。"];
+  assert.deepEqual(lintVideo(late, context()).warnings, []);
 });

@@ -7,6 +7,7 @@ import { enFixture, fixture, fixtureLexicon } from "../core/fixtures/load.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, SLIDES_CAMERA_WORDS, SOURCE_INSTRUCTIONS, translationContext, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
 import { REGISTER_RULES } from "./register.mjs";
+import { ACTIONS, MAX_STEPS, MAX_WAIT_MS, MAX_ZOOM } from "../screencast/steps.mjs";
 import { documentPayload } from "./series.mjs";
 
 test("the slides writer is told the shot template, the 5 to 8 second cadence, the storytelling register, the look and the two Shorts", () => {
@@ -409,4 +410,48 @@ test("every writer asks for the performance contract, a plan on the narration's 
   assert.match(read("writer-story.md"), /not the chapter's to write/);
   // The stages that write no lines are not told to perform them.
   for (const stage of ["planner", "verifier", "listener", "translator", "caption_reviewer"]) assert.equal(INSTRUCTIONS[stage].includes(cue), false, stage);
+});
+
+test("the writer says the numbers, closes on three sentences, unlocks screencasts of public official pages and keeps one subject on the thumbnail; the verifier admits the site's checked article", () => {
+  const writer = instructionsFor("writer", "slides");
+  // Numbers (channel review D04): said, with the page and the day on the card; the site's
+  // checked article when the official page failed; the disclaimer once, in the description.
+  assert.match(writer, /Numbers, prices, limits, versions and dates are SAID, not hedged away/);
+  assert.match(writer, /"stats\.source" or "quote\.source":\s+「官網 YYYY-MM-DD」/);
+  assert.match(writer, /「Mokaair 文章 查證 YYYY-MM-DD」/);
+  assert.match(writer, /「以官網為準」 at most once in a whole\s+narration/);
+  assert.doesNotMatch(writer, /say it without the number, or 「以官網為準」 on the slide/);
+  // The persona is the owner's standing instructions'; the hook stays first.
+  assert.match(writer, /The narrator may have a name, a catchphrase and a fixed closing line/);
+  assert.match(writer, /The first sentence is still the hook; the name comes after it/);
+  // The opening (D07): concrete within 20 seconds, no table of contents, one 「你以為…其實」.
+  assert.match(writer, /within 20 seconds: by then a concrete number, date or proper noun has been\s+said/);
+  assert.match(writer, /No table of contents/);
+  assert.match(writer, /「你以為…其實」 once in\s+the video, in the first chapter/);
+  // The close (D03): three sentences, the article pointed to once, in the description.
+  assert.match(writer, /- outro \{title, cta\?, lines 1-4\}: no reveals\. The last scene, and its narration is exactly three\s+sentences/);
+  assert.match(writer, /one invitation to subscribe\s+with a reason/);
+  assert.match(writer, /Never invent a next topic/);
+  assert.match(writer, /points to the article in the description \(say 「說明欄的文章」, never 「第一行」/);
+  assert.doesNotMatch(writer, /description's first line/);
+  // Screencasts, in the step format steps.mjs checks.
+  assert.match(writer, new RegExp(`- screencast \\{title\\?, caption\\?, steps: 2-${MAX_STEPS}\\}`));
+  for (const action of ACTIONS) assert.ok(writer.includes(`{"action": "${action}"`), action);
+  assert.match(writer, new RegExp(`"ms": 0-${MAX_WAIT_MS}`));
+  assert.match(writer, new RegExp(`"zoom": 1-${MAX_ZOOM}`));
+  assert.match(writer, /Every official page in "sources" the worker\s+read \(not one marked failed\) gets at least one screencast scene/);
+  assert.match(writer, /a scene of N\s+captures reveals N-1 times across its lines, and its first line never reveals/);
+  assert.match(writer, /put the page's name and the day\s+it was read in "caption"/);
+  assert.match(writer, /「選單以你登入後看到的為準」/);
+  assert.match(writer, /Do not use diagram or screenshot: automated videos have no image files; pictures are shots and\s+screencasts/);
+  // The thumbnail: six characters, one subject, a shot or a screencast capture.
+  assert.match(writer, /headline: at most 6 characters in all, in 1 or 2 lines/);
+  assert.match(writer, /or capture:\s+<the id of a screencast scene whose still is the subject>/);
+  assert.doesNotMatch(writer, /≤ 10 characters/);
+  // The verifier keeps NOT FOUND as it was and admits the site's checked article only behind a failed official page.
+  const verifier = INSTRUCTIONS.verifier;
+  assert.doesNotMatch(verifier, /Third-party pages\s+never confirm a number/);
+  assert.match(verifier, /The site's own checked article does: a mokaair\.com page in\s+"sources" whose text shows the day it was checked, and only for a number whose official page\s+is among the failed fetches/);
+  assert.match(verifier, /NOT FOUND \(drop the number or the sentence\)/);
+  assert.match(verifier, /never replace it with 「以官網為準」/);
 });
