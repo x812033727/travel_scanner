@@ -1,0 +1,1300 @@
+{
+  "schema": "mokaair-wave5-completed-localization-release-v1",
+  "content_pr_url": "https://github.com/x812033727/travel_scanner/pull/1378",
+  "approved_content_sha": "2150d414168a681b3598bf56eb985d74dda2201a",
+  "integrated_exact_green_sha": "f01faf630664e8bf1a6fac55511a3ef8ab8701e4",
+  "merged_deployed_sha": "bcba139a05e1ac6c3ce8a4e768086bf0d3b4a86f",
+  "fresh_bundle_manifest_sha256": "7195c55422170f3eb76ce9856eeb3cad6d7082914a18190e821ba89ab94c80a0",
+  "counts": {
+    "articles": 12,
+    "new_locales": 48,
+    "source_corrections": 4,
+    "corrected_source_links": 5,
+    "selected_targets": 52,
+    "public_pages": 60,
+    "actual_desktop_mobile_views": 120,
+    "distinct_media": 180,
+    "normal_deployments": 1,
+    "completed_release_phases": 9,
+    "source_media_preserved": 36,
+    "provider_retries": 0,
+    "prior_articles_preserved": 32,
+    "prior_documents_preserved": 160,
+    "frozen_articles_preserved": 13,
+    "frozen_target_rows_absent": 52,
+    "snapshot_public_articles": 1409,
+    "snapshot_incomplete_articles": 818,
+    "snapshot_missing_locale_documents": 3272
+  },
+  "receipt_sha256": {
+    "phase_prepare": "8cf98d484cef89db27a8189d44906a516b18beaffa5e133e82a9eec10dad46c0",
+    "phase_dry-run": "035246fecfb74d4a86b7e9c00e6fc152958d4636915a82d0c42cbb860379c507",
+    "phase_backup": "595cc207a7c8a81b30e82afcfb47ece1adeb7c9725fcc87a7ac906f74faddd0f",
+    "phase_rehearsal": "f00779d89c0901317f35e8c7c0c44be92ef3b5ace03b5b41cf20a29424c142c1",
+    "phase_drafts": "3a78dcd24cd26b950e38ff77aab47f067cf7002641706f1de777bd59ee375df0",
+    "phase_publish-articles": "1e6cfff263c450cfe48d5b4fb1b21cdd7921f926a9a6025679726ad54d190513",
+    "phase_publish-hubs": "fbc021328e1302badd207ff45a3efd4270a5cf1e9d391c3a2c779d1d8fd0d15d",
+    "phase_replay": "de1d554fab3c3b3d5deeafce8d35bb6e33ba87596194c8f7e7a38fd1a3e49091",
+    "phase_complete": "4e7db44d5ca72992b2c970c01d3e6fbd27593b7de1d52f317b66d35117a67957",
+    "genuine_final48_review_rawpins": "2c3d09dac1c51faa18698b400c3e35700129ddb467035c414db583701244a9a5",
+    "official_assembly": "75cc9b1549566408292607915af231fa8255b43a09742ea0b0de7e1e0f500671",
+    "local_install_and_identical_replay": "feb551e70b55ef01c407dfb24f5a5c040b2e5d8ac345f81fc34f32963674db16",
+    "independent_installed_audit": "b21754830aecc2f4bd9b1261210d13c8e62eaf0a95b88f4be9af86daadbb96bc",
+    "local_checks": "63189b50c0a1db69d136112e1422f06410a56f9badf2717b52ba1f27646f2b79",
+    "approved_payload_identity": "256d99930a567a6ffcf28766bddae8603dde3854aead7c1b867471d1760742b7",
+    "actual_integrated_exact_head_21_ci": "c2d484fb5530a567a80965aa423d996c38924496c4f958fe3e4fc270e1e80c7d",
+    "actual_merge": "9fb7977b9ee9b39630503cd2a2db2171b27e78d25354e23be81354342cd274a3",
+    "actual_normal_deployment": "f31e8ee7c7ec26dd912af7e25b2f4f8b84385e12f8cbd2ff598880fabf0afced",
+    "actual_fresh_baseline": "878a9a88183c3655e67c127ac0bb9c03734bddd334bbe31e63112e228ca7979b",
+    "actual_selected12_raw_guards": "0cc2ba9f485fa0d1c7848cfcdb3e2e2010105cd7e8a5fffd648b9fe8926cda6c",
+    "actual_fresh_bundle_rebind": "da41f546c4e548376e17fca3d85e369b12e0f87308c266d40179b521f7b2e286",
+    "actual_payload_freeze": "6cb844c3e38f0bc17cb32649d1f396f26fadfc5fd17c6163d7b0e4ee7d8ba60f",
+    "actual192byte_container_observation": "3dd39a34dc59432cee4c0325e1bbde0fbc75c7f269ac48d7855dbc2147278d2e",
+    "actual_runtime_binding": "cea910dfb2fcdd580881cb89727cd07a75899722b11d40aba40b44cf3c7016fb",
+    "complete_state": "15bf44e7e61de2e27735749676370280229e191c28c65b04063eb24e4de698ed",
+    "published_proof": "2c31fd5a9edcbfdf9a7936ea77c9c3cfffc2c8644da4a7bf2032db7f6fcb9ca2",
+    "actual_public_acceptance": "ce17b65521b2af129ff578cbcea7c718962b11bb81faf21d9d1a47883b1eb345",
+    "final_qa": "f81f0860ed79ab6e8ce5d068aa4066b0c6ea96df69328d700722779fb8ca807a",
+    "independent_preservation_audit": "ebaa1aa20f672fe0e0a4ca77164131434fd4b80c3af330348509cbcf7bdcce16",
+    "census": "2c30ef4f1012cb46d6537ce85bef7e0ff38366a2589b69076383af2afdc2d217",
+    "links_check_raw": "e86a9fd7876e1e2ee0548217b57b14b365004a82e4c97845fc967d97b28ffa3d",
+    "actual_final_cas_receipt": "712f709eb7db8622a7f4c76cbb189f7ea8c594b8da3dce6a7ed0f653627616e1",
+    "actual_capture": "c076927d2e9d163eb491449b7d916f58060fd2300e52779446d02ed1eb1f28a7",
+    "actual_visual_review": "099e9fe17eec3b38ec041d544391757eac6a86ca1226e4436e7a7fe860022c49"
+  },
+  "published_documents": [
+    {
+      "slug": "amp-website-decision",
+      "locale": "en",
+      "published_version": 2,
+      "document_sha256": "457973875fabe24f1a4a748ac810933ca8c5f0550c0cd7ab1e7506e718c2e3c1",
+      "url": "https://mokaair.com/en/life/amp-website-decision",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "amp-website-decision",
+      "locale": "ja",
+      "published_version": 2,
+      "document_sha256": "257658cb91d33b380b3b3ec7ec5cbc2ba29a2dd79d8c9587d74387dc7a44bbc7",
+      "url": "https://mokaair.com/ja/life/amp-website-decision",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "amp-website-decision",
+      "locale": "ko",
+      "published_version": 2,
+      "document_sha256": "9959e824818dc2dc44cffffbfcc8b50c977a8c5f187c4c3a085fadb822ef0c25",
+      "url": "https://mokaair.com/ko/life/amp-website-decision",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "amp-website-decision",
+      "locale": "zh-CN",
+      "published_version": 2,
+      "document_sha256": "ff2c6da86a0d463ad91e4e519e6ec79cbe79e2ac1a580b8b7541a3b659c2d138",
+      "url": "https://mokaair.com/zh-CN/life/amp-website-decision",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "amp-website-decision",
+      "locale": "zh-TW",
+      "published_version": 6,
+      "document_sha256": "7369c58003df56cc169d35efb05523c392cace876dddc1247daa5dfe250bbd40",
+      "url": "https://mokaair.com/zh-TW/life/amp-website-decision",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "core-web-vitals-diagnosis",
+      "locale": "en",
+      "published_version": 2,
+      "document_sha256": "34323c98f45475b4e244c9f5fff7532be0ae7ce1e2dace5e377d2abade7eaf58",
+      "url": "https://mokaair.com/en/life/core-web-vitals-diagnosis",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "core-web-vitals-diagnosis",
+      "locale": "ja",
+      "published_version": 2,
+      "document_sha256": "ce994cf1d9c4148b8a35d13d5ccff7eaae1a34a3211a747b6a7b63c74a3b8258",
+      "url": "https://mokaair.com/ja/life/core-web-vitals-diagnosis",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "core-web-vitals-diagnosis",
+      "locale": "ko",
+      "published_version": 2,
+      "document_sha256": "5f1e49e19f12bf7bf571f6843d1a9b21a4b6aa1fa715499edbca35bf4f9a36ed",
+      "url": "https://mokaair.com/ko/life/core-web-vitals-diagnosis",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "core-web-vitals-diagnosis",
+      "locale": "zh-CN",
+      "published_version": 2,
+      "document_sha256": "52d8da37e1ed1b3dc5d82cbdf5446d5053370ff874207f07c5cb87506378b969",
+      "url": "https://mokaair.com/zh-CN/life/core-web-vitals-diagnosis",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "core-web-vitals-diagnosis",
+      "locale": "zh-TW",
+      "published_version": 4,
+      "document_sha256": "79ea28908b8fc68573f202b0fdb0ade13029263a27073b88c9f672e01f925372",
+      "url": "https://mokaair.com/zh-TW/life/core-web-vitals-diagnosis",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "figma-design-basics",
+      "locale": "en",
+      "published_version": 2,
+      "document_sha256": "07ea8a5eae4847ab48b5d24d152aeb57c77e57089f1b20e764a54baff4328cb3",
+      "url": "https://mokaair.com/en/life/figma-design-basics",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "figma-design-basics",
+      "locale": "ja",
+      "published_version": 2,
+      "document_sha256": "e64a4861da44a592b2b0011d81613fa60203410019022a792cf96fcc7a5c2118",
+      "url": "https://mokaair.com/ja/life/figma-design-basics",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "figma-design-basics",
+      "locale": "ko",
+      "published_version": 2,
+      "document_sha256": "ed032c9ca150c13d29cc21419b78cde715bd777438729fa433f96057cbb4c39e",
+      "url": "https://mokaair.com/ko/life/figma-design-basics",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "figma-design-basics",
+      "locale": "zh-CN",
+      "published_version": 2,
+      "document_sha256": "7885e11ac802b698a7e7ea26d43d20e6747d086d5a5051402d13f37e2125ed38",
+      "url": "https://mokaair.com/zh-CN/life/figma-design-basics",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "figma-design-basics",
+      "locale": "zh-TW",
+      "published_version": 4,
+      "document_sha256": "00bacd3467a6441febabc6372f10b96ce8a610784af66623d01684a467aee851",
+      "url": "https://mokaair.com/zh-TW/life/figma-design-basics",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "lazy-loading-images",
+      "locale": "en",
+      "published_version": 2,
+      "document_sha256": "ef1c5472476d15c7c3faffb9ab7892e8be3aabb7df2f13918fa09efd837e2992",
+      "url": "https://mokaair.com/en/life/lazy-loading-images",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "lazy-loading-images",
+      "locale": "ja",
+      "published_version": 2,
+      "document_sha256": "79d1fdf929e3206e72412508e11e083452bed473f84addcf3b858314842f7959",
+      "url": "https://mokaair.com/ja/life/lazy-loading-images",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "lazy-loading-images",
+      "locale": "ko",
+      "published_version": 2,
+      "document_sha256": "b4cdc79cf6eb78148103f7dd2b7d94b9137f202df8050387e2bba96a361471ea",
+      "url": "https://mokaair.com/ko/life/lazy-loading-images",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "lazy-loading-images",
+      "locale": "zh-CN",
+      "published_version": 2,
+      "document_sha256": "98170c60e15f7622e658190e4318864b2dc57db96e855f1da92681ae36cef75f",
+      "url": "https://mokaair.com/zh-CN/life/lazy-loading-images",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "lazy-loading-images",
+      "locale": "zh-TW",
+      "published_version": 6,
+      "document_sha256": "2dda1061b6dd39fdfd06fe12b257d82ac92bfea46ded62ac0bddba6bb68bbde4",
+      "url": "https://mokaair.com/zh-TW/life/lazy-loading-images",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "lottie-web-animation",
+      "locale": "en",
+      "published_version": 2,
+      "document_sha256": "bac7e6e78815f6a5f8ecff0aa6f53b5e68530ebd3528a9da9c539c1c3e56b87c",
+      "url": "https://mokaair.com/en/life/lottie-web-animation",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "lottie-web-animation",
+      "locale": "ja",
+      "published_version": 2,
+      "document_sha256": "38ed24c4ab9899ff1d390b92d77ffa907a9c167e809b109e6bc4f6c360289c19",
+      "url": "https://mokaair.com/ja/life/lottie-web-animation",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "lottie-web-animation",
+      "locale": "ko",
+      "published_version": 2,
+      "document_sha256": "0d15aefeec059be8c0d47936fee8eb4307105a03aab0acf20d212204cc2d788c",
+      "url": "https://mokaair.com/ko/life/lottie-web-animation",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "lottie-web-animation",
+      "locale": "zh-CN",
+      "published_version": 2,
+      "document_sha256": "df403c1d54edb6f69d615b65e43b70539aa562921956eadacdb474b1998145b9",
+      "url": "https://mokaair.com/zh-CN/life/lottie-web-animation",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "lottie-web-animation",
+      "locale": "zh-TW",
+      "published_version": 4,
+      "document_sha256": "56418ca1b26624eff12ed8efc540cf922391bba7d62e9b3ace31d959e3c85328",
+      "url": "https://mokaair.com/zh-TW/life/lottie-web-animation",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "open-graph-sharing",
+      "locale": "en",
+      "published_version": 2,
+      "document_sha256": "dc04f92c0048c5c6fe379fbc563d45d27a3afc645244248dcada71c08d5a0bbb",
+      "url": "https://mokaair.com/en/life/open-graph-sharing",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "open-graph-sharing",
+      "locale": "ja",
+      "published_version": 2,
+      "document_sha256": "651bd66253d95076b963902da7176106675ab588162c5423f466d27659e1f4ad",
+      "url": "https://mokaair.com/ja/life/open-graph-sharing",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "open-graph-sharing",
+      "locale": "ko",
+      "published_version": 2,
+      "document_sha256": "e8da26642f042f54b466bf4b1fc5a688a98c8e73316c3ea031e128715b906158",
+      "url": "https://mokaair.com/ko/life/open-graph-sharing",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "open-graph-sharing",
+      "locale": "zh-CN",
+      "published_version": 2,
+      "document_sha256": "0bf3d4b402df0c25213bc1024f5cc89e02db03ffa8e05134fc925ab463e62a02",
+      "url": "https://mokaair.com/zh-CN/life/open-graph-sharing",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "open-graph-sharing",
+      "locale": "zh-TW",
+      "published_version": 6,
+      "document_sha256": "8df97903caaae96f1792f04a3947d4a043991347ad5768051db0a110c5bc936f",
+      "url": "https://mokaair.com/zh-TW/life/open-graph-sharing",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "pagespeed-performance-review",
+      "locale": "en",
+      "published_version": 2,
+      "document_sha256": "c910f54dce8b1cdc0a8269e36d87e9c5f255abf9688e01934762cdfac31678d8",
+      "url": "https://mokaair.com/en/life/pagespeed-performance-review",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "pagespeed-performance-review",
+      "locale": "ja",
+      "published_version": 2,
+      "document_sha256": "c0c40ff52d1ef9ff308baa9fd5dbf82fffd4db192f57b3924d5e74081aa6aad5",
+      "url": "https://mokaair.com/ja/life/pagespeed-performance-review",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "pagespeed-performance-review",
+      "locale": "ko",
+      "published_version": 2,
+      "document_sha256": "1265351640c481081785f4ff976bf33d9960842cd67a258a367c709b661703ea",
+      "url": "https://mokaair.com/ko/life/pagespeed-performance-review",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "pagespeed-performance-review",
+      "locale": "zh-CN",
+      "published_version": 2,
+      "document_sha256": "66dcb418f45f95e85f2f8caaa3f3e77b78c9ee23d3c8f78556b9e770421bf7b9",
+      "url": "https://mokaair.com/zh-CN/life/pagespeed-performance-review",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "pagespeed-performance-review",
+      "locale": "zh-TW",
+      "published_version": 4,
+      "document_sha256": "531a885101bc55e7c004988f19b64e818f219fbc9f2c2d7e1d843218b7666011",
+      "url": "https://mokaair.com/zh-TW/life/pagespeed-performance-review",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "rgb-cmyk-export",
+      "locale": "en",
+      "published_version": 2,
+      "document_sha256": "cb75fb7929fd6cde13bad4aef0b2404e0d6d367aabc68cb066c5c23f5dab77dc",
+      "url": "https://mokaair.com/en/life/rgb-cmyk-export",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "rgb-cmyk-export",
+      "locale": "ja",
+      "published_version": 2,
+      "document_sha256": "b531a584a0b94f65e674ead9f216dc7843a12647ac165cd7d77971b109dd1a66",
+      "url": "https://mokaair.com/ja/life/rgb-cmyk-export",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "rgb-cmyk-export",
+      "locale": "ko",
+      "published_version": 2,
+      "document_sha256": "28b4d120e83818915f5bad5aae82187892fcc4b1c5842b63dc2230c6d1abe465",
+      "url": "https://mokaair.com/ko/life/rgb-cmyk-export",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "rgb-cmyk-export",
+      "locale": "zh-CN",
+      "published_version": 2,
+      "document_sha256": "b004044dafca32ff049edce25ea5265eb2f01aed71295fbb21520f64d04320e3",
+      "url": "https://mokaair.com/zh-CN/life/rgb-cmyk-export",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "rgb-cmyk-export",
+      "locale": "zh-TW",
+      "published_version": 4,
+      "document_sha256": "f061761570269a8db0bf37b55c5eca0e809b4420f259032b72c359f5d8681ee4",
+      "url": "https://mokaair.com/zh-TW/life/rgb-cmyk-export",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "saas-paas-iaas-responsibility",
+      "locale": "en",
+      "published_version": 2,
+      "document_sha256": "8555e6e06da284992524b66a2efe384e7f1d568b24040b8b037db15901deb3a3",
+      "url": "https://mokaair.com/en/life/saas-paas-iaas-responsibility",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "saas-paas-iaas-responsibility",
+      "locale": "ja",
+      "published_version": 2,
+      "document_sha256": "f61e85922b8772147d2120c460f63048cf43fdf5967eb38a5e01ec44e053c018",
+      "url": "https://mokaair.com/ja/life/saas-paas-iaas-responsibility",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "saas-paas-iaas-responsibility",
+      "locale": "ko",
+      "published_version": 2,
+      "document_sha256": "c9dfa58cc107aa0cee5ed0db723c7cb11f18f886269dfaf77944158569956280",
+      "url": "https://mokaair.com/ko/life/saas-paas-iaas-responsibility",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "saas-paas-iaas-responsibility",
+      "locale": "zh-CN",
+      "published_version": 2,
+      "document_sha256": "c7e458b5f49335d73991770d394a777bec14782db34caa3740b05fed8601da33",
+      "url": "https://mokaair.com/zh-CN/life/saas-paas-iaas-responsibility",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "saas-paas-iaas-responsibility",
+      "locale": "zh-TW",
+      "published_version": 4,
+      "document_sha256": "09bf76eb30950895f5c383381387442b5616522dee4d380d06cdb1f1ce35aaf2",
+      "url": "https://mokaair.com/zh-TW/life/saas-paas-iaas-responsibility",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "sass-scss-workflow",
+      "locale": "en",
+      "published_version": 2,
+      "document_sha256": "012c8e1497301372433c2500be6db23194a25d82e1ca0245df6321b6857e3725",
+      "url": "https://mokaair.com/en/life/sass-scss-workflow",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "sass-scss-workflow",
+      "locale": "ja",
+      "published_version": 2,
+      "document_sha256": "80916bf6245011dbc6f0834eb5dfcf320fb12e7de048d4fdfd70bf96ba9e0499",
+      "url": "https://mokaair.com/ja/life/sass-scss-workflow",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "sass-scss-workflow",
+      "locale": "ko",
+      "published_version": 2,
+      "document_sha256": "e7d39b1175a0da66786411195aa7654ec596504136cf7bccee505e7681750d77",
+      "url": "https://mokaair.com/ko/life/sass-scss-workflow",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "sass-scss-workflow",
+      "locale": "zh-CN",
+      "published_version": 2,
+      "document_sha256": "00116d0ffa721f48741df49c5b1b65e3d97b3e701028d9228f80daf53931279d",
+      "url": "https://mokaair.com/zh-CN/life/sass-scss-workflow",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "sass-scss-workflow",
+      "locale": "zh-TW",
+      "published_version": 4,
+      "document_sha256": "37205fd94a9316f066553fb8b475a9577417a4372372d283fb1234edd4ff631f",
+      "url": "https://mokaair.com/zh-TW/life/sass-scss-workflow",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "ui-ux-learning",
+      "locale": "en",
+      "published_version": 2,
+      "document_sha256": "e1288d80ed4b53f1ddca92df1cb1a78a78428187181f11fedc1f224715a4b539",
+      "url": "https://mokaair.com/en/life/ui-ux-learning",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "ui-ux-learning",
+      "locale": "ja",
+      "published_version": 2,
+      "document_sha256": "5d0655af3d6b85d60d16d1a2b1ae9de86ab3cf4ed7ca5c3786c3ce2cb00c6714",
+      "url": "https://mokaair.com/ja/life/ui-ux-learning",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "ui-ux-learning",
+      "locale": "ko",
+      "published_version": 2,
+      "document_sha256": "fc594bc5c1e5f49b3619d94bdd79dbe5ea71d868b4831c3fa5ee372c935b906f",
+      "url": "https://mokaair.com/ko/life/ui-ux-learning",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "ui-ux-learning",
+      "locale": "zh-CN",
+      "published_version": 2,
+      "document_sha256": "800fbf077cf3a38d02e988dfec53b9d375fa8a4fd499d48dc0f271d9a43412a1",
+      "url": "https://mokaair.com/zh-CN/life/ui-ux-learning",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "ui-ux-learning",
+      "locale": "zh-TW",
+      "published_version": 6,
+      "document_sha256": "b01fb3630f90549698f89d9eac791dcc011b91e6b0e38069f0c9d8c1a6469411",
+      "url": "https://mokaair.com/zh-TW/life/ui-ux-learning",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wireframe-prototype-testing",
+      "locale": "en",
+      "published_version": 2,
+      "document_sha256": "ebffa63474ab005bb7294c5b5487d1c9855af601891b8a4ffbf219bcf3859093",
+      "url": "https://mokaair.com/en/life/wireframe-prototype-testing",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wireframe-prototype-testing",
+      "locale": "ja",
+      "published_version": 2,
+      "document_sha256": "1630b142f1a5430282acabe0188cf1d9b89a4cc49dd34d1a74f8c961a4917d97",
+      "url": "https://mokaair.com/ja/life/wireframe-prototype-testing",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wireframe-prototype-testing",
+      "locale": "ko",
+      "published_version": 2,
+      "document_sha256": "49e66ec68faac8c320493415dcfb8979ec0d1bb954cd10bf73153f586ea9468b",
+      "url": "https://mokaair.com/ko/life/wireframe-prototype-testing",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wireframe-prototype-testing",
+      "locale": "zh-CN",
+      "published_version": 2,
+      "document_sha256": "a0d82ff9ed4ab50e7327e6070b694b4b9ecf886933a11281d0b328cdbb307a9e",
+      "url": "https://mokaair.com/zh-CN/life/wireframe-prototype-testing",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wireframe-prototype-testing",
+      "locale": "zh-TW",
+      "published_version": 4,
+      "document_sha256": "74caa606d5c8265ef1d3494e690781b9db11ee3d442fc904c6ebc70c3d976b75",
+      "url": "https://mokaair.com/zh-TW/life/wireframe-prototype-testing",
+      "selected_publication_target": false
+    }
+  ],
+  "public_media": [
+    {
+      "url": "https://mokaair.com/guides/amp-website-decision/diagram-1-en.svg",
+      "media_sha256": "90d6e7469f4b3fdedea295c726b203dbe03255fc6d574ccdba572fa43f221695"
+    },
+    {
+      "url": "https://mokaair.com/guides/amp-website-decision/diagram-1-ja.svg",
+      "media_sha256": "e8cf25a9f1769817ac6a6b8edb9042405095d397e0b7d87fc45986747fbf5d04"
+    },
+    {
+      "url": "https://mokaair.com/guides/amp-website-decision/diagram-1-ko.svg",
+      "media_sha256": "5abfaa00268d38771d916be4a04d67ff32167025903fa6e4bb1866123f4bfc5c"
+    },
+    {
+      "url": "https://mokaair.com/guides/amp-website-decision/diagram-1-zh-cn.svg",
+      "media_sha256": "64a47883bfedc08bf3502be4b0a47757d6b59d054b04f3190046482cffb8af4a"
+    },
+    {
+      "url": "https://mokaair.com/guides/amp-website-decision/diagram-1.svg",
+      "media_sha256": "37a1a09deb06e6f462a368b44544ff0a3c2bae394b390d3740007ec2a6095b13"
+    },
+    {
+      "url": "https://mokaair.com/guides/amp-website-decision/hero-en.jpg",
+      "media_sha256": "4768deec6b128aaaf394e981b8932f9f8589de3ff7163ea92236dbb335643cc1"
+    },
+    {
+      "url": "https://mokaair.com/guides/amp-website-decision/hero-en.svg",
+      "media_sha256": "c61ec619129de3b05224a81a1b67ad4e87813d0b4a9a71ac17832e901b6c74ea"
+    },
+    {
+      "url": "https://mokaair.com/guides/amp-website-decision/hero-ja.jpg",
+      "media_sha256": "a3ce10b45ae3783b317a29614b7650b6bdd605f98e723b211ec86be558a76fad"
+    },
+    {
+      "url": "https://mokaair.com/guides/amp-website-decision/hero-ja.svg",
+      "media_sha256": "782a17538bdc88a61250eeaad6d376ac24ef45a4f04c06711616b2dd315f4fc6"
+    },
+    {
+      "url": "https://mokaair.com/guides/amp-website-decision/hero-ko.jpg",
+      "media_sha256": "14261112cfe6e339ca007999e2b67c8bec218f3b48e95f21331ca481e97af44f"
+    },
+    {
+      "url": "https://mokaair.com/guides/amp-website-decision/hero-ko.svg",
+      "media_sha256": "0077a5daf772267cec8e988b34b43058752395fdbe886618ce40bb79805848e5"
+    },
+    {
+      "url": "https://mokaair.com/guides/amp-website-decision/hero-zh-cn.jpg",
+      "media_sha256": "d9f23b90a4311ba598830a0f9c1cd0e000c5bc406a6d9aa9f6f291bb20f62b14"
+    },
+    {
+      "url": "https://mokaair.com/guides/amp-website-decision/hero-zh-cn.svg",
+      "media_sha256": "2ef68412e211aa9b670854374e238f117cc7f4447aa5778eadb93132863d550f"
+    },
+    {
+      "url": "https://mokaair.com/guides/amp-website-decision/hero.jpg",
+      "media_sha256": "f887f917572e7522edbf65416878c1bdf423f2fe375ee4ebdf371498885eaeae"
+    },
+    {
+      "url": "https://mokaair.com/guides/amp-website-decision/hero.svg",
+      "media_sha256": "f648b54a101d8700e9d391a192402bb249d0d37a9f3fb56509db1a7f657129db"
+    },
+    {
+      "url": "https://mokaair.com/guides/core-web-vitals-diagnosis/diagram-1-en.svg",
+      "media_sha256": "3a721c32acf317b33856e7deb902edcdce4dec51211d4562a2737dad3e98c205"
+    },
+    {
+      "url": "https://mokaair.com/guides/core-web-vitals-diagnosis/diagram-1-ja.svg",
+      "media_sha256": "b051d88004660a50ba9f6b7a30e517ee1a2e51d8fcd6a081d75739d9459d30be"
+    },
+    {
+      "url": "https://mokaair.com/guides/core-web-vitals-diagnosis/diagram-1-ko.svg",
+      "media_sha256": "8742d69c27142a48a97ffe84633de964c00fdd3f215ffd8a5891a22ae62190dd"
+    },
+    {
+      "url": "https://mokaair.com/guides/core-web-vitals-diagnosis/diagram-1-zh-cn.svg",
+      "media_sha256": "72bd7dd9d84657210a1d6fc203c49be0ca1d341d143ed134aa2628189bd1695c"
+    },
+    {
+      "url": "https://mokaair.com/guides/core-web-vitals-diagnosis/diagram-1.svg",
+      "media_sha256": "06ef78307f4d8b91c130c14831ed28b424f8a5ec28b38ac9b1a74d948980be20"
+    },
+    {
+      "url": "https://mokaair.com/guides/core-web-vitals-diagnosis/hero-en.jpg",
+      "media_sha256": "0e2f8294fa5f109b456296156eeda02a85ca1b0dd717203e843a90f49f81bac1"
+    },
+    {
+      "url": "https://mokaair.com/guides/core-web-vitals-diagnosis/hero-en.svg",
+      "media_sha256": "3e864aa184c159d736cbf2058b7f7c3b4e6d2d6b55a3c426ed5f3055173a0a6e"
+    },
+    {
+      "url": "https://mokaair.com/guides/core-web-vitals-diagnosis/hero-ja.jpg",
+      "media_sha256": "7e3be852b1601fa043fd6844a1938ddfe1be3dad2dc51aa747df551dab0553d6"
+    },
+    {
+      "url": "https://mokaair.com/guides/core-web-vitals-diagnosis/hero-ja.svg",
+      "media_sha256": "f3fe25c9209b986aa932687010c57b23be2d9525191aa029b0c0754e0abd5a03"
+    },
+    {
+      "url": "https://mokaair.com/guides/core-web-vitals-diagnosis/hero-ko.jpg",
+      "media_sha256": "98a0f4d72e59cab57a6a767c76e5eea39c8464e8e351323206e85f2649c3eb0a"
+    },
+    {
+      "url": "https://mokaair.com/guides/core-web-vitals-diagnosis/hero-ko.svg",
+      "media_sha256": "7c6efab1be46d84e941125299acb771b990499c2fd44a11ae377a4829d23c9a5"
+    },
+    {
+      "url": "https://mokaair.com/guides/core-web-vitals-diagnosis/hero-zh-cn.jpg",
+      "media_sha256": "8dbc3adb65bc35232d6fd8772d194022b6db0feb4c4e9a200522455067ad60d1"
+    },
+    {
+      "url": "https://mokaair.com/guides/core-web-vitals-diagnosis/hero-zh-cn.svg",
+      "media_sha256": "e306b48877cb8814e785fa3e1124f9f7f4bc7712143e57b5df668db7d5fd0cde"
+    },
+    {
+      "url": "https://mokaair.com/guides/core-web-vitals-diagnosis/hero.jpg",
+      "media_sha256": "a243460ac75ef89676acef1dd00ff655bc9bdcd6619970e610ab0d429248987f"
+    },
+    {
+      "url": "https://mokaair.com/guides/core-web-vitals-diagnosis/hero.svg",
+      "media_sha256": "f7d1713624a789928d110f96cc171f466aa7689bea5d747d0acf48955d32971a"
+    },
+    {
+      "url": "https://mokaair.com/guides/figma-design-basics/diagram-1-en.svg",
+      "media_sha256": "243cb2a140033a8d30674fc360c5a54a02e4123008359a1cbdba32fa19cfd319"
+    },
+    {
+      "url": "https://mokaair.com/guides/figma-design-basics/diagram-1-ja.svg",
+      "media_sha256": "6cb4b6fea2f0f4559aac4430cfb01a86e31041d41715a86edb1090030ad8fcee"
+    },
+    {
+      "url": "https://mokaair.com/guides/figma-design-basics/diagram-1-ko.svg",
+      "media_sha256": "a45bea3084274ee25d0fb1b16ac13fba2ccb61693427628cc01fcbd8bcd3323e"
+    },
+    {
+      "url": "https://mokaair.com/guides/figma-design-basics/diagram-1-zh-cn.svg",
+      "media_sha256": "0eb2cf4b5d4b0e4f0616ba8b5b84542c38a7bf0926d029fcf9884fdc2183c254"
+    },
+    {
+      "url": "https://mokaair.com/guides/figma-design-basics/diagram-1.svg",
+      "media_sha256": "e79ca4d82e2e16cfda495541e4009d6a54ef0524450473921ddebd6c896b8a66"
+    },
+    {
+      "url": "https://mokaair.com/guides/figma-design-basics/hero-en.jpg",
+      "media_sha256": "6652db0e14b7340801794fd9c3e428d512ef02ad45fffab3b5421fd0f8e2bf52"
+    },
+    {
+      "url": "https://mokaair.com/guides/figma-design-basics/hero-en.svg",
+      "media_sha256": "f91c0e1034c411867601b39031422880d6ab86e711b818fdc867b0c3810bf7f6"
+    },
+    {
+      "url": "https://mokaair.com/guides/figma-design-basics/hero-ja.jpg",
+      "media_sha256": "e5658ff7c28291dccfc5acfec67c9f425e481670867714ac0cd4891a6e124fd2"
+    },
+    {
+      "url": "https://mokaair.com/guides/figma-design-basics/hero-ja.svg",
+      "media_sha256": "9426eae915696853dd6d633bdf3998971cdbda80e6241105e2972cb7faaa42ad"
+    },
+    {
+      "url": "https://mokaair.com/guides/figma-design-basics/hero-ko.jpg",
+      "media_sha256": "3a7fb4db4e2f992369497ef57153b953ddfb5b58b493d2c258cf1dd4f9c4bdfb"
+    },
+    {
+      "url": "https://mokaair.com/guides/figma-design-basics/hero-ko.svg",
+      "media_sha256": "eb96dc0226006d8d0815b1b0c2a6bdae7df35baef9694f0ba0ec7477e985c7f2"
+    },
+    {
+      "url": "https://mokaair.com/guides/figma-design-basics/hero-zh-cn.jpg",
+      "media_sha256": "88e83d3b6a4dc5055bd1baf913df029bc4e2a2387bc14a6c1443266e6fd382ac"
+    },
+    {
+      "url": "https://mokaair.com/guides/figma-design-basics/hero-zh-cn.svg",
+      "media_sha256": "e4d86e70473c06f4f571ade5006eea4bb3852e3812d097df92b09288e0ef0f0e"
+    },
+    {
+      "url": "https://mokaair.com/guides/figma-design-basics/hero.jpg",
+      "media_sha256": "55d98100372997f0d41ee31bbc63683b428761f6726858e96f9e5ec0d91e2dee"
+    },
+    {
+      "url": "https://mokaair.com/guides/figma-design-basics/hero.svg",
+      "media_sha256": "d1fb0408b05237d40f48c0194958a299706dc72973b5b3594b1f65a601319660"
+    },
+    {
+      "url": "https://mokaair.com/guides/lazy-loading-images/diagram-1-en.svg",
+      "media_sha256": "6b53f3bcec9445ed77d46ef3a3ef3fce6a72b26b629c91bd2b5afa43adfa8b8a"
+    },
+    {
+      "url": "https://mokaair.com/guides/lazy-loading-images/diagram-1-ja.svg",
+      "media_sha256": "66de72b020671c8b308ce95aa7a1c2e95405ff7aaa5536e6490e9f9062b48aa0"
+    },
+    {
+      "url": "https://mokaair.com/guides/lazy-loading-images/diagram-1-ko.svg",
+      "media_sha256": "13528ec11d11931bd3f6bc5740fd25b14356ea5ca512821e80fffa99f375f2e2"
+    },
+    {
+      "url": "https://mokaair.com/guides/lazy-loading-images/diagram-1-zh-cn.svg",
+      "media_sha256": "40ec81963f4c55e678fc3b2e8b5dd067ff1f83c1b7ab99f4e0137f9fcce21c95"
+    },
+    {
+      "url": "https://mokaair.com/guides/lazy-loading-images/diagram-1.svg",
+      "media_sha256": "cdf7e4a49c09717dd7fe8d16f361c59a4ff034134c85bed9480123f34a058cd3"
+    },
+    {
+      "url": "https://mokaair.com/guides/lazy-loading-images/hero-en.jpg",
+      "media_sha256": "242ccbe2209b5e4b7f3a51f0e967565dcd97cf759e5aaba251f93626dbf4ac38"
+    },
+    {
+      "url": "https://mokaair.com/guides/lazy-loading-images/hero-en.svg",
+      "media_sha256": "841cce1940071c0697d74f3a18a7387f74cad3a0e491bf61ea3d9f23583f1830"
+    },
+    {
+      "url": "https://mokaair.com/guides/lazy-loading-images/hero-ja.jpg",
+      "media_sha256": "350cd1a388145d62d6f8298165c04afd7e834e0383f2e3c8a3fa24228947fcca"
+    },
+    {
+      "url": "https://mokaair.com/guides/lazy-loading-images/hero-ja.svg",
+      "media_sha256": "49a9cac2c52e0fe37df9db627c1bf7b8609df6da01d2da984144f737e4441717"
+    },
+    {
+      "url": "https://mokaair.com/guides/lazy-loading-images/hero-ko.jpg",
+      "media_sha256": "cf6274762672eadfb6b0ad594cc96ce13b660bbfcda567bec24076a460938fa1"
+    },
+    {
+      "url": "https://mokaair.com/guides/lazy-loading-images/hero-ko.svg",
+      "media_sha256": "a9521b9f2aa712077f506957147cde7bc307682eacf34e4dda6cf8f4ffff2c1b"
+    },
+    {
+      "url": "https://mokaair.com/guides/lazy-loading-images/hero-zh-cn.jpg",
+      "media_sha256": "a53ec4c7e67a46ec442a99b84c3bb2b254ed61d6ddf3765cb61d0c794d080820"
+    },
+    {
+      "url": "https://mokaair.com/guides/lazy-loading-images/hero-zh-cn.svg",
+      "media_sha256": "6908e83be4e4596922c8774f44577716d8bcf21014b51cee27bb49d37c450de3"
+    },
+    {
+      "url": "https://mokaair.com/guides/lazy-loading-images/hero.jpg",
+      "media_sha256": "a947ff4a383c13150a888721246a5ab9d8e7df0a0e1841c7f0787fcce8a994e9"
+    },
+    {
+      "url": "https://mokaair.com/guides/lazy-loading-images/hero.svg",
+      "media_sha256": "8d1ba99367c00e37ed4b85afffd560b844e5b8f37ad86f17503e3d450ad2e021"
+    },
+    {
+      "url": "https://mokaair.com/guides/lottie-web-animation/diagram-1-en.svg",
+      "media_sha256": "aa414ba839c2b3fc67ea2b2c9524f3b9b90934087baaf917157c2f2df776e386"
+    },
+    {
+      "url": "https://mokaair.com/guides/lottie-web-animation/diagram-1-ja.svg",
+      "media_sha256": "d1978d77e9d995e8c7be9a559cef1004aab7c43401e9d611e106c7c44a20ef74"
+    },
+    {
+      "url": "https://mokaair.com/guides/lottie-web-animation/diagram-1-ko.svg",
+      "media_sha256": "dd642d45e6cbd1876de41a39c516ba83aeaa8c5d2d1eeddf1bbfd29112cadc8d"
+    },
+    {
+      "url": "https://mokaair.com/guides/lottie-web-animation/diagram-1-zh-cn.svg",
+      "media_sha256": "6827452715cd8934f67056507738a7dc075053db2eb853a4859dfb9034096239"
+    },
+    {
+      "url": "https://mokaair.com/guides/lottie-web-animation/diagram-1.svg",
+      "media_sha256": "39f253458ebab10dc7c1850267baaedd82a790f026b31ca6dc585405cba47c37"
+    },
+    {
+      "url": "https://mokaair.com/guides/lottie-web-animation/hero-en.jpg",
+      "media_sha256": "8b0090320be939839730417066b3c94b796343aa3d7c4dd09e383d1a7af90042"
+    },
+    {
+      "url": "https://mokaair.com/guides/lottie-web-animation/hero-en.svg",
+      "media_sha256": "3739155c054e35195381d6180247fa38d764255937a38c72b54a2f40731f1116"
+    },
+    {
+      "url": "https://mokaair.com/guides/lottie-web-animation/hero-ja.jpg",
+      "media_sha256": "7ee8240836108f467936a8a8f719ca05d52aa5ef287f47082e594fd5eb1f6cb7"
+    },
+    {
+      "url": "https://mokaair.com/guides/lottie-web-animation/hero-ja.svg",
+      "media_sha256": "915b82867c54b9400425a6d957462c8271ff60b2dae663bea5c56231ff357cc9"
+    },
+    {
+      "url": "https://mokaair.com/guides/lottie-web-animation/hero-ko.jpg",
+      "media_sha256": "9c253888c9c1cc0a5f3605abe9a019cc4306eaae772bac6ddef3139278b50d67"
+    },
+    {
+      "url": "https://mokaair.com/guides/lottie-web-animation/hero-ko.svg",
+      "media_sha256": "b2696711a7bea50e7f21248ec8d9a80897dae1f9b26c1a2629413bd7c3e751d4"
+    },
+    {
+      "url": "https://mokaair.com/guides/lottie-web-animation/hero-zh-cn.jpg",
+      "media_sha256": "ea325bb25e1ac189bfe005d46b0e1f2e95cf0d06b92eccf0132fa0f2fe6ba01a"
+    },
+    {
+      "url": "https://mokaair.com/guides/lottie-web-animation/hero-zh-cn.svg",
+      "media_sha256": "68a9497250e6f69e27c9338e52374e90f34ed73c1ae2f99607a194bd84b7594d"
+    },
+    {
+      "url": "https://mokaair.com/guides/lottie-web-animation/hero.jpg",
+      "media_sha256": "f4d9a7b751762f99ef9773cdb237b83c49ac2d2769839724d606f91ea83700b6"
+    },
+    {
+      "url": "https://mokaair.com/guides/lottie-web-animation/hero.svg",
+      "media_sha256": "5152e441b457ef997c16c58d2982575bbebf3c6958ec98e4c33da7185ab4a7ac"
+    },
+    {
+      "url": "https://mokaair.com/guides/open-graph-sharing/diagram-1-en.svg",
+      "media_sha256": "abb3f08205017ed7a70355ed258fcc26fba6648fdf6b7835964b1cf64f2664ba"
+    },
+    {
+      "url": "https://mokaair.com/guides/open-graph-sharing/diagram-1-ja.svg",
+      "media_sha256": "d5dd4346cd999989557ebcf27074b53835337d571101bf640095f95daa9c7ed0"
+    },
+    {
+      "url": "https://mokaair.com/guides/open-graph-sharing/diagram-1-ko.svg",
+      "media_sha256": "c5dd9bb5bbcab047098e97c72de73262c85712f07573912a6f2146998f0227eb"
+    },
+    {
+      "url": "https://mokaair.com/guides/open-graph-sharing/diagram-1-zh-cn.svg",
+      "media_sha256": "c4ce3767aee70216007f517364695ef03ddd9084c58ae1097ec68eba24ea3f08"
+    },
+    {
+      "url": "https://mokaair.com/guides/open-graph-sharing/diagram-1.svg",
+      "media_sha256": "acdc9c380fc3da2cfb7d05f752e8e5fce13f8655a0605bf2b9a79cb0daf8cca9"
+    },
+    {
+      "url": "https://mokaair.com/guides/open-graph-sharing/hero-en.jpg",
+      "media_sha256": "033619dce6f67dfdfbc0d2fa9f3683c5a468532490e6d8cd5a0d33b40357a07e"
+    },
+    {
+      "url": "https://mokaair.com/guides/open-graph-sharing/hero-en.svg",
+      "media_sha256": "1120eb540108b3893492796660a557a39d96ce76fdabe33a10e74d8db1f1b3b6"
+    },
+    {
+      "url": "https://mokaair.com/guides/open-graph-sharing/hero-ja.jpg",
+      "media_sha256": "9ffac646a9f198b3947ff9d61d528453f211f8f279730a244ae8a6fb5125405c"
+    },
+    {
+      "url": "https://mokaair.com/guides/open-graph-sharing/hero-ja.svg",
+      "media_sha256": "5b6f4404467fc0da924265ed66bd6fa9854dc759b61dc9d290799beb5485bdb6"
+    },
+    {
+      "url": "https://mokaair.com/guides/open-graph-sharing/hero-ko.jpg",
+      "media_sha256": "09b1994c699a8879b7368542460517fd9b4e23f8c5a85245e6004bfdff0e3977"
+    },
+    {
+      "url": "https://mokaair.com/guides/open-graph-sharing/hero-ko.svg",
+      "media_sha256": "c518ce937943a3a2b5aa3266bce669e433dfe2c3dc40a3a7ca5f2cc4f457dbd4"
+    },
+    {
+      "url": "https://mokaair.com/guides/open-graph-sharing/hero-zh-cn.jpg",
+      "media_sha256": "f8dae16c5d8193301337d040b4faf467686b1196e5c8df2c281999080b7b824e"
+    },
+    {
+      "url": "https://mokaair.com/guides/open-graph-sharing/hero-zh-cn.svg",
+      "media_sha256": "cd9e6fb4e506d18f6bf4d2931716a8460093de41e8e2cf5eea8599ee37a0cc90"
+    },
+    {
+      "url": "https://mokaair.com/guides/open-graph-sharing/hero.jpg",
+      "media_sha256": "225c90809a5c359ac49049739516a09eb03f8012d692d4aa884f70cbacd2d508"
+    },
+    {
+      "url": "https://mokaair.com/guides/open-graph-sharing/hero.svg",
+      "media_sha256": "08788e76bb310191938e1ec342b72e8d48dd07fad228feb3806dca5ff03762ad"
+    },
+    {
+      "url": "https://mokaair.com/guides/pagespeed-performance-review/diagram-1-en.svg",
+      "media_sha256": "12ace71fbb959bbee07e6c6457dcca88bb11a55e8cd2911bb85136a5926d608d"
+    },
+    {
+      "url": "https://mokaair.com/guides/pagespeed-performance-review/diagram-1-ja.svg",
+      "media_sha256": "5aabeac8a631cc9f82b97212616faa714b50b1ccf3d613e1b2502b7739b30d65"
+    },
+    {
+      "url": "https://mokaair.com/guides/pagespeed-performance-review/diagram-1-ko.svg",
+      "media_sha256": "d471c5549c653769c636216da5eb33d7ebeb830cae000d4d3b863775d72110cc"
+    },
+    {
+      "url": "https://mokaair.com/guides/pagespeed-performance-review/diagram-1-zh-cn.svg",
+      "media_sha256": "5bb260229e9a46afc6c5cf6c60a33a206c28400f70767b21a2d4b4da7217b559"
+    },
+    {
+      "url": "https://mokaair.com/guides/pagespeed-performance-review/diagram-1.svg",
+      "media_sha256": "64be9ac8fd09d854e12e3c3dcfb4ea377576c5b7853302367e5b991731ef6140"
+    },
+    {
+      "url": "https://mokaair.com/guides/pagespeed-performance-review/hero-en.jpg",
+      "media_sha256": "b50396abf3f9a15811522399a16e1756d1e7c91db7e9067c0261e360e763d26d"
+    },
+    {
+      "url": "https://mokaair.com/guides/pagespeed-performance-review/hero-en.svg",
+      "media_sha256": "fff16681fe87fa81afa1fb3b322c679578000f71f04bc12cd55d5bdd7ec1d2f8"
+    },
+    {
+      "url": "https://mokaair.com/guides/pagespeed-performance-review/hero-ja.jpg",
+      "media_sha256": "00c17b87a2a475a25829e5286ebcc884e360186e380ef84e4f9d504799ab8bfe"
+    },
+    {
+      "url": "https://mokaair.com/guides/pagespeed-performance-review/hero-ja.svg",
+      "media_sha256": "26db3253fe45f5559413467e50413c604838721e2c69f77a05f917e1a3e17bcf"
+    },
+    {
+      "url": "https://mokaair.com/guides/pagespeed-performance-review/hero-ko.jpg",
+      "media_sha256": "03c08c479704383589a2214772c3d9735da5fffda6d2f3c0d972fd78a750d70a"
+    },
+    {
+      "url": "https://mokaair.com/guides/pagespeed-performance-review/hero-ko.svg",
+      "media_sha256": "1b1c27f93b754b4720b50beeb9adf81f538368be2e6f077f81767f208b6730e0"
+    },
+    {
+      "url": "https://mokaair.com/guides/pagespeed-performance-review/hero-zh-cn.jpg",
+      "media_sha256": "a19c2829c2ae016bf9807edb450db1f4ff504f55b0ecc484053614e7a511977c"
+    },
+    {
+      "url": "https://mokaair.com/guides/pagespeed-performance-review/hero-zh-cn.svg",
+      "media_sha256": "f5a4bf85d5d02c26d2910037cea1b43bbd056634bec3cdbce2c6e49fb4673f31"
+    },
+    {
+      "url": "https://mokaair.com/guides/pagespeed-performance-review/hero.jpg",
+      "media_sha256": "6d42020598cbd9ff70822fee2c18e92750a299c92932469133a17d94caa9ae25"
+    },
+    {
+      "url": "https://mokaair.com/guides/pagespeed-performance-review/hero.svg",
+      "media_sha256": "a14ce1d59cb9f4437b06246dc0a196c994fd832d144b4904a8f4da59a8b72c8e"
+    },
+    {
+      "url": "https://mokaair.com/guides/rgb-cmyk-export/diagram-1-en.svg",
+      "media_sha256": "70ed279922d4040ed02527b8513ec875bf27dff62545f8b454a0e2ce1d66503b"
+    },
+    {
+      "url": "https://mokaair.com/guides/rgb-cmyk-export/diagram-1-ja.svg",
+      "media_sha256": "67938f1edfb8d079174bd6305a4939702df983888c6eaa6cfc2deae20ac6b2bf"
+    },
+    {
+      "url": "https://mokaair.com/guides/rgb-cmyk-export/diagram-1-ko.svg",
+      "media_sha256": "a83ad87e23c90c531afec98cc46b31270e049f1c8a481637cb22f480fbebf4c8"
+    },
+    {
+      "url": "https://mokaair.com/guides/rgb-cmyk-export/diagram-1-zh-cn.svg",
+      "media_sha256": "71870598bf9fda08a0b2e62baf7562739e43c5886024055ffa54355defdcb193"
+    },
+    {
+      "url": "https://mokaair.com/guides/rgb-cmyk-export/diagram-1.svg",
+      "media_sha256": "752f9d437831166283b54dcc63e373a2748984b2d193e35489b19a093f117163"
+    },
+    {
+      "url": "https://mokaair.com/guides/rgb-cmyk-export/hero-en.jpg",
+      "media_sha256": "536bff797880a6fb8262c2ce6350dabd8b84ddea02bb7e61aaa54958677837c7"
+    },
+    {
+      "url": "https://mokaair.com/guides/rgb-cmyk-export/hero-en.svg",
+      "media_sha256": "39548ac3eea14703cc7ccc56c665d95091c4bb012773a4c89bef04660ac7c7b3"
+    },
+    {
+      "url": "https://mokaair.com/guides/rgb-cmyk-export/hero-ja.jpg",
+      "media_sha256": "1221822645abed6558d116a58f5a3deca09d9ea604d78f65b8902147a14f62ee"
+    },
+    {
+      "url": "https://mokaair.com/guides/rgb-cmyk-export/hero-ja.svg",
+      "media_sha256": "442bb030fd31fdc0d6d6ca806dd468934e57d03cc49034526162f7af757fcaf6"
+    },
+    {
+      "url": "https://mokaair.com/guides/rgb-cmyk-export/hero-ko.jpg",
+      "media_sha256": "6fc171d74084eaa4a7ae1a988b1040077d741d61224b13e44fc84bef51433b6f"
+    },
+    {
+      "url": "https://mokaair.com/guides/rgb-cmyk-export/hero-ko.svg",
+      "media_sha256": "1be1d50f7216e9344f0c0242a5bfc2d4edb6153b781f08401600afa6709aa137"
+    },
+    {
+      "url": "https://mokaair.com/guides/rgb-cmyk-export/hero-zh-cn.jpg",
+      "media_sha256": "81d4a49e803d2918a7548cc0cc58ddb98b9d2d20ca3a6b9c97861353f74ed10e"
+    },
+    {
+      "url": "https://mokaair.com/guides/rgb-cmyk-export/hero-zh-cn.svg",
+      "media_sha256": "0402873ec8c9fac4bdb21f1f048bb47fd7f61ba431b192f3667d987757495c15"
+    },
+    {
+      "url": "https://mokaair.com/guides/rgb-cmyk-export/hero.jpg",
+      "media_sha256": "c3898c5a45d4f7349668d621c860d1701a2951a6ecdfc540b5c88c8e20c6f1c3"
+    },
+    {
+      "url": "https://mokaair.com/guides/rgb-cmyk-export/hero.svg",
+      "media_sha256": "5f04ceeef58a9bf52d4d5cb9d310e669fcb2de65dab3cd81277880689e65a22e"
+    },
+    {
+      "url": "https://mokaair.com/guides/saas-paas-iaas-responsibility/diagram-1-en.svg",
+      "media_sha256": "603fdcc4640c374c43ff5d3a2af44ec2f4a129087a922e65985e36dd93c1544d"
+    },
+    {
+      "url": "https://mokaair.com/guides/saas-paas-iaas-responsibility/diagram-1-ja.svg",
+      "media_sha256": "5fb7f913a95610c86c69ffea2334a3c0d50d7c738893454eb0df08d5bea1425f"
+    },
+    {
+      "url": "https://mokaair.com/guides/saas-paas-iaas-responsibility/diagram-1-ko.svg",
+      "media_sha256": "6becf2d892eb7288e040d843e56b2a6891ecc97108bdb64f51dba61d80d01a25"
+    },
+    {
+      "url": "https://mokaair.com/guides/saas-paas-iaas-responsibility/diagram-1-zh-cn.svg",
+      "media_sha256": "b871184196f9cb29df6024d1b36273fd6e397266edb7da547b8321bf5344c743"
+    },
+    {
+      "url": "https://mokaair.com/guides/saas-paas-iaas-responsibility/diagram-1.svg",
+      "media_sha256": "dfb95ee5e439cb98e34b41ed9bddb46d511bc26b2182026918e44240d4c9a9ad"
+    },
+    {
+      "url": "https://mokaair.com/guides/saas-paas-iaas-responsibility/hero-en.jpg",
+      "media_sha256": "8e4a99d884661b8c93178fb0f9966482f84d2e84cca118c8e16e8289d437f32e"
+    },
+    {
+      "url": "https://mokaair.com/guides/saas-paas-iaas-responsibility/hero-en.svg",
+      "media_sha256": "06b2992696fec5436d032b6b39622d14a328597c6c08eec6036a21875caa34c5"
+    },
+    {
+      "url": "https://mokaair.com/guides/saas-paas-iaas-responsibility/hero-ja.jpg",
+      "media_sha256": "93ace77c0c443ecf76bef481667a5a4410d3f3dd26c0682929a8f980b66fba09"
+    },
+    {
+      "url": "https://mokaair.com/guides/saas-paas-iaas-responsibility/hero-ja.svg",
+      "media_sha256": "bbd42f5208072279633804a211cde0b2115b6d13238c8934bac5c303e6f1d861"
+    },
+    {
+      "url": "https://mokaair.com/guides/saas-paas-iaas-responsibility/hero-ko.jpg",
+      "media_sha256": "c116c40a0e4490f2ecba914bbd9e047d06f2c81a285a126ca59a9402b3b10738"
+    },
+    {
+      "url": "https://mokaair.com/guides/saas-paas-iaas-responsibility/hero-ko.svg",
+      "media_sha256": "71d358380f80cd4e2fddf3aa42d6b7cb4674831798a3264a3840badebf1b1c10"
+    },
+    {
+      "url": "https://mokaair.com/guides/saas-paas-iaas-responsibility/hero-zh-cn.jpg",
+      "media_sha256": "d4d115a58076656a6731e006e62bc838aba35107b117dc3cbf406bdfaa76192a"
+    },
+    {
+      "url": "https://mokaair.com/guides/saas-paas-iaas-responsibility/hero-zh-cn.svg",
+      "media_sha256": "5200f754f687f9efb007292be611b2569e72e700bce674620563d616dfe4a5e1"
+    },
+    {
+      "url": "https://mokaair.com/guides/saas-paas-iaas-responsibility/hero.jpg",
+      "media_sha256": "efb789e7cd302077f2c322ac70e61825c09316121db4ab21f71d6d643925902d"
+    },
+    {
+      "url": "https://mokaair.com/guides/saas-paas-iaas-responsibility/hero.svg",
+      "media_sha256": "8319e4776bdb9789fd2cb4669790f965001b61767dc48d19d9ed1e0a6daced10"
+    },
+    {
+      "url": "https://mokaair.com/guides/sass-scss-workflow/diagram-1-en.svg",
+      "media_sha256": "cdf0def66e865623f8128ca8e3ab35a84b3877ebc693dc6fd6c8f128edf08583"
+    },
+    {
+      "url": "https://mokaair.com/guides/sass-scss-workflow/diagram-1-ja.svg",
+      "media_sha256": "9199d6c39a8e50633b293fff96344d1e21162ebf073b208d9e97eae7d8c5efec"
+    },
+    {
+      "url": "https://mokaair.com/guides/sass-scss-workflow/diagram-1-ko.svg",
+      "media_sha256": "ba4148b811efaf75c2b8fb680450e53c2bf9f2b71f7936a6b6f73aad9198866c"
+    },
+    {
+      "url": "https://mokaair.com/guides/sass-scss-workflow/diagram-1-zh-cn.svg",
+      "media_sha256": "40a1b4349cff99cb655d4ae6305d96ef7cd3c985c55bd999a20e0b97807d27cb"
+    },
+    {
+      "url": "https://mokaair.com/guides/sass-scss-workflow/diagram-1.svg",
+      "media_sha256": "c278034751368ead7504feb889fc895ba38f64788335a726e59cdd9288b8e306"
+    },
+    {
+      "url": "https://mokaair.com/guides/sass-scss-workflow/hero-en.jpg",
+      "media_sha256": "a845e3519ede97c1e8db40209820c593809aa14de56d941bbbbbd1d59613bd85"
+    },
+    {
+      "url": "https://mokaair.com/guides/sass-scss-workflow/hero-en.svg",
+      "media_sha256": "42db6fb3605419505ecb0127aaa0b246c9f03251211f5f6ddfbfa9a5f6898c81"
+    },
+    {
+      "url": "https://mokaair.com/guides/sass-scss-workflow/hero-ja.jpg",
+      "media_sha256": "59018ad6af452e3573fa702005259f487eb5b311ed9322d7c77824efe7d0af93"
+    },
+    {
+      "url": "https://mokaair.com/guides/sass-scss-workflow/hero-ja.svg",
+      "media_sha256": "e54f61be18d916ea39f64d750d233a0157629da134acbc0b7c015ceef7aa4506"
+    },
+    {
+      "url": "https://mokaair.com/guides/sass-scss-workflow/hero-ko.jpg",
+      "media_sha256": "1d958408cbd3b69dc3682c0fca6f4f79aa5f28b206e29787395e3a02865b1365"
+    },
+    {
+      "url": "https://mokaair.com/guides/sass-scss-workflow/hero-ko.svg",
+      "media_sha256": "06511ae3350f9b5cb34db5eeec9f96794c3b84fd9dd63170406315867082c1ac"
+    },
+    {
+      "url": "https://mokaair.com/guides/sass-scss-workflow/hero-zh-cn.jpg",
+      "media_sha256": "c438854a3cbfe0b9d26dfb9d42c9c6058577027f127dcfa3385fbaba85ea8054"
+    },
+    {
+      "url": "https://mokaair.com/guides/sass-scss-workflow/hero-zh-cn.svg",
+      "media_sha256": "72317c9d02a2a7427724337ec433ebfed82d934a7b58aa6a21b29d8815b2ed41"
+    },
+    {
+      "url": "https://mokaair.com/guides/sass-scss-workflow/hero.jpg",
+      "media_sha256": "0678699b8a0cc32f70181466888c424cfde8c96d0b698f9c71d222ed43e84504"
+    },
+    {
+      "url": "https://mokaair.com/guides/sass-scss-workflow/hero.svg",
+      "media_sha256": "d2d76ec860ec2eed6c206217582a13dfe5cd2933f42020186fa075fa1572034b"
+    },
+    {
+      "url": "https://mokaair.com/guides/ui-ux-learning/diagram-1-en.svg",
+      "media_sha256": "5f50a644641b3105b7aee0c05996be4ea2038728fc7aec99e4ca054aa3e56c0d"
+    },
+    {
+      "url": "https://mokaair.com/guides/ui-ux-learning/diagram-1-ja.svg",
+      "media_sha256": "736a0d01fdf2e89b40c27a269e0c3732f0945c588eb549c319fd048af5cb6388"
+    },
+    {
+      "url": "https://mokaair.com/guides/ui-ux-learning/diagram-1-ko.svg",
+      "media_sha256": "db42c0f29fd558a1ed6e27e08b10f60211fc99a572612d98e827dd933229c98d"
+    },
+    {
+      "url": "https://mokaair.com/guides/ui-ux-learning/diagram-1-zh-cn.svg",
+      "media_sha256": "dca4fb978ac3d87861489132ce92b3c8ee27d97f81a9dc79dea7750fce005df7"
+    },
+    {
+      "url": "https://mokaair.com/guides/ui-ux-learning/diagram-1.svg",
+      "media_sha256": "88df97778bba9c411d826e1aa81b960c949982ededea5861736a7f7540ac88e6"
+    },
+    {
+      "url": "https://mokaair.com/guides/ui-ux-learning/hero-en.jpg",
+      "media_sha256": "9a6f279ea891e9bfec602359a4449a0ecf31292b51c0b0780be90b9890c7e24a"
+    },
+    {
+      "url": "https://mokaair.com/guides/ui-ux-learning/hero-en.svg",
+      "media_sha256": "08459311137bcfe354069c5708dbefebd3ec925405fe15126e3f5dd29b6985fd"
+    },
+    {
+      "url": "https://mokaair.com/guides/ui-ux-learning/hero-ja.jpg",
+      "media_sha256": "6d6acc6aa7bf1187cf6e84ab7c40d303927f13fbe6fd1d7f8c0afe2bac92c495"
+    },
+    {
+      "url": "https://mokaair.com/guides/ui-ux-learning/hero-ja.svg",
+      "media_sha256": "80acb31097990719965882515356ee48f47f9a1d6ee8bf2c73bc285c7a0b86cd"
+    },
+    {
+      "url": "https://mokaair.com/guides/ui-ux-learning/hero-ko.jpg",
+      "media_sha256": "06bacd299c463ad078481bca02981e3277831c1095d9e39c585f75c81ea79e40"
+    },
+    {
+      "url": "https://mokaair.com/guides/ui-ux-learning/hero-ko.svg",
+      "media_sha256": "57428718f8ae63a7b8e442f04dd5b44c7bf6f5127fa064d6cae70290f8da7541"
+    },
+    {
+      "url": "https://mokaair.com/guides/ui-ux-learning/hero-zh-cn.jpg",
+      "media_sha256": "2f802a462170c02d5cf38c415f2e594f138b40f8fd65aac3a58609a5f2651e26"
+    },
+    {
+      "url": "https://mokaair.com/guides/ui-ux-learning/hero-zh-cn.svg",
+      "media_sha256": "c8a2ecc88805a360fb0a4047ff503de05c4a94a08255768a62978785ca6e460a"
+    },
+    {
+      "url": "https://mokaair.com/guides/ui-ux-learning/hero.jpg",
+      "media_sha256": "261e8c2bcb28f53abee9ace4073195f2fb43d8106a66df30ec49963637ad254a"
+    },
+    {
+      "url": "https://mokaair.com/guides/ui-ux-learning/hero.svg",
+      "media_sha256": "1b1dde3ffecc55865ffe2e96e24caa082466eb7f03c5e48a1cc879d2e99ef528"
+    },
+    {
+      "url": "https://mokaair.com/guides/wireframe-prototype-testing/diagram-1-en.svg",
+      "media_sha256": "693770436452483f884fffc7ac4cbdb65196fa1dd3efdcbf1ce36a13e841d6c0"
+    },
+    {
+      "url": "https://mokaair.com/guides/wireframe-prototype-testing/diagram-1-ja.svg",
+      "media_sha256": "d830f6da8e1a879979a430807483abebfab4c2f3c062db3442a281a992aeab42"
+    },
+    {
+      "url": "https://mokaair.com/guides/wireframe-prototype-testing/diagram-1-ko.svg",
+      "media_sha256": "43752525d282859814a2750247506b6dba92b625d8dc99130421f2791276b90f"
+    },
+    {
+      "url": "https://mokaair.com/guides/wireframe-prototype-testing/diagram-1-zh-cn.svg",
+      "media_sha256": "70a76e6401c68b46cf31a37afc0f4244def5be33a418a84f7f3c7c580023c19e"
+    },
+    {
+      "url": "https://mokaair.com/guides/wireframe-prototype-testing/diagram-1.svg",
+      "media_sha256": "7a27d827953b1b86d852c53262b848e91822c53b8586774414ec91c940218d31"
+    },
+    {
+      "url": "https://mokaair.com/guides/wireframe-prototype-testing/hero-en.jpg",
+      "media_sha256": "1558f35cd3b535079daeb222ec031db53fec6e3d35bd059359dc6129c9ba3b88"
+    },
+    {
+      "url": "https://mokaair.com/guides/wireframe-prototype-testing/hero-en.svg",
+      "media_sha256": "6a21d92478d726065f70a749d15f8edf070e04ddef47558f4ed386c147e79e1d"
+    },
+    {
+      "url": "https://mokaair.com/guides/wireframe-prototype-testing/hero-ja.jpg",
+      "media_sha256": "408c4ba0ca736339f704fbe04060f01fac0b89eba02b86afb63319d36f75bfbc"
+    },
+    {
+      "url": "https://mokaair.com/guides/wireframe-prototype-testing/hero-ja.svg",
+      "media_sha256": "7504a58f1ace7dd05953fb4fde4f0bf4d9f72f7279ef25e5cffc978c92cfa94b"
+    },
+    {
+      "url": "https://mokaair.com/guides/wireframe-prototype-testing/hero-ko.jpg",
+      "media_sha256": "a86b416552ba6110b6f700f425fc0920d6a75ecfb8bfd3d4047ea870add61604"
+    },
+    {
+      "url": "https://mokaair.com/guides/wireframe-prototype-testing/hero-ko.svg",
+      "media_sha256": "3b457311c29f0394635304e65d4b577d56e3bd77144bd59fdd4b9bfc21d01985"
+    },
+    {
+      "url": "https://mokaair.com/guides/wireframe-prototype-testing/hero-zh-cn.jpg",
+      "media_sha256": "1e5e93c6c6c9069daaef496abadac8101736794bca2c671c26e7d373a0793c01"
+    },
+    {
+      "url": "https://mokaair.com/guides/wireframe-prototype-testing/hero-zh-cn.svg",
+      "media_sha256": "f14474be3800eabb3baf02d84947a40970975c66099c131db3e4b09b29ff17c7"
+    },
+    {
+      "url": "https://mokaair.com/guides/wireframe-prototype-testing/hero.jpg",
+      "media_sha256": "055629d9d0cd42acb25e442303ac83188081558f4cb3029df6f55165c1cc8ed2"
+    },
+    {
+      "url": "https://mokaair.com/guides/wireframe-prototype-testing/hero.svg",
+      "media_sha256": "07b9449b4811151c6f0b8e4c8f259fec760741c5b8adb235e51b4c8d7f05a69c"
+    }
+  ],
+  "link_checks": {
+    "zh-TW": {
+      "actual_global_cli_exit_code": 1,
+      "selected_unpublished_related_targets": 0,
+      "selected_other_findings": 0
+    },
+    "en": {
+      "actual_global_cli_exit_code": 1,
+      "selected_unpublished_related_targets": 23,
+      "selected_other_findings": 0
+    },
+    "ja": {
+      "actual_global_cli_exit_code": 1,
+      "selected_unpublished_related_targets": 23,
+      "selected_other_findings": 0
+    },
+    "ko": {
+      "actual_global_cli_exit_code": 1,
+      "selected_unpublished_related_targets": 23,
+      "selected_other_findings": 0
+    },
+    "zh-CN": {
+      "actual_global_cli_exit_code": 1,
+      "selected_unpublished_related_targets": 23,
+      "selected_other_findings": 0
+    }
+  },
+  "backup_receipt_sha256": {
+    "dump": "a3da0dac4dc9248e30c3f1a9ec270a0ffcb621d78d2cf750a54e9b3ed20ed6b0",
+    "catalog": "e525eef6413bb6e498484d2f2f63ac5b1256adff0d9e0ef55a35683d231e9aee"
+  }
+}
