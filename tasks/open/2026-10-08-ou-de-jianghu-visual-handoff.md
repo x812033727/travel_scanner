@@ -43,6 +43,9 @@ scope:
 
 ## Notes
 
+- 2026-10-09 正式採用：站主明確回覆「採用素材與 v4，按此點數上限鎖定 plan」。[採用紀錄](../../docs/videos/series-plans/ou-de-jianghu/visual-development/handoff/adoption-decision-20261009.md)／JSON逐一綁定146素材、既有限制、v4、兩期逐鏡預算與正常plan鎖。本期含預留26,980.8點、pilot316.8包含在內，第二期21,753.6須有實際額度，不購點／續訂、API支出授權0。原生write/check exit0且changed=false，455鏡 Hailuo Max H3/2K/assist off，lock SHA `6af3dafa4f9edc0a03270800a9d3fd44c6f487a3c015627fda4a4205f385d0c5`。ready exit1、2過429待製作，look依決定保留待判圖。
+- 本輪最新9張基底（沈全身v3）已接入正常runtime，27次dry-run/import/exact-rerun全exit0，0fetch／0paid；manifest SHA `cf37aa3541380f13b864d3c01560e533fc176e7c5d85f472560408e85f7406b6`。正式來源與素材SHA重驗；沒有choice／judge／series-store或其他關卡核准。Hailuo空白表單核對Max27000點、H3 2K 4秒48點；Mokaair唯讀狀態drama=false及API單集200，未改設定。兩個剩餘DoD仍涵蓋真實判圖／參照送入／原持有人接線，因此本票保留open並release，不把plan完成當整條產線完成。
+
 - 2026-10-09 最後整合完成：新 [asset-manifest](../../docs/videos/series-plans/ou-de-jianghu/visual-development/handoff/asset-manifest.json) 核實 146 unique latest＝9 concepts＋27 portraits＋82 new references＋28 scenes/props，另 9 front reuse＝91 reference uses；29 份文件 hash 綁定含 portable gallery／fan／mouth reviews。455 鏡 mapping 最新 SHA 全過；193 鏡的扇分派都含 construction-details-v3＋personal-prop-states-v3，concept-v5/right-profile-v3/left-three-quarter-v3 僅身份服裝，沒有宣稱全圖扇拓撲一致。9 舊匯入逐筆保留 historical v3 與像素是否仍同新基底；沈 full-body-v3 未匯入／核准。build-manifest、其 --check、mapping --check、tasks check（1692票）與 scoped diff --check 全 exit0；只有其他票的 stale warnings。未 commit/push，release 交主控；source_commit 記當次工作基線，不因之後 commit 自動重建迴圈，正式採用 DoD 保留未勾。
 
 - 2026-10-09 主控再分工 codex-ou-final-handoff 整合本票 `build-manifest.mjs`／README 與新收據：再次 who-is-on-it 查無 active scope、唯一 PR #1388 是同隊；claim `--force` 只略過同隊修圖／場景候選的未結相依。待主控最後修圖收據凍結後，依序重建 455 鏡 mapping 與 146 unique manifest，再 check/release；不改 production，不填 P7／owner／paid readiness，舊 9 筆匯入維持 v3 歷史。
