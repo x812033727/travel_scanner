@@ -2946,6 +2946,20 @@ PASS is DURATION_ONLY for the eleven rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Branch windows-video-validation-20261009 increment: 1 file (2026-10-09)
+
+Reviewer: `codex-pr-review-windows-video-validation`. Author: `codex-windows-video-validation`. Scope: DURATION_ONLY for `tools/video/automation/automation.test.mjs` at author commit `f581c0aaab705943a4c137c649b7333f38404604`. The reviewer wrote none of the implementation changes and edits only this report and review.json.
+
+Baseline: `c6454463d0eb53e4c8166be0b93a587598c03208`. The baseline report hash, table and all 108 REVIEW_FILES bindings pass `durationReviewProblems` against immutable Git blobs. The one changed bound file matches its existing receipt at the baseline: `f2e7b1d4852c43d1c68217666d9c6e617dc4fd3c4a2709d8f4e144cb6c388721`. At the author commit only this binding is stale; the other 107 bindings are unchanged and current. Its reviewed working-tree bytes equal the committed bytes and hash to `d29b31c421774f245a7e2df89a52c6d359815efd05c11b3b8c5e8c0467bec7c1`. Every prior increment is preserved.
+
+Findings: the test imports a child process module through `pathToFileURL(...).href`, so Windows paths, spaces and non-ASCII characters are valid module URLs. The new test-only helper captures diagnostics, rejects early child failure, bounds readiness/release waits and registers child termination/pipe cleanup before waiting. Three regressions cover a failed import, absent readiness and ignored release; existing lease ownership, untouched state, no duplicate request and post-release progress assertions remain. The 100/5,000/10,000 millisecond limits govern test-process lifecycle, not episode or media duration. No changed line alters the 600/780-second targets, 480-second measured floor, eight-minute minimum, `target_minutes`, `MIN_EPISODE`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, source-hash gates or covered state. The two reference-analysis files in the same author commit are outside REVIEW_FILES and are not rebound by this increment.
+
+Ran: with bundled Node v24.19.0 on Windows ARM64, `node tools/video/long-form/cli.mjs check` (PASS), `node --test tools/video/long-form/review.test.mjs` (2 passed, 0 failed), and `git diff --check` (PASS). The reviewer independently read the complete bound diff; the author's automation/FFmpeg runs and mutation proofs are separate validation, not rerun claims here.
+
+Non-claims: DURATION_ONLY. This receipt does not approve paid production, runtime media duration, listening, rendered video quality, publication, deployment, or Linux execution. No implementation/test file or duration policy is changed by this receipt.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -3002,7 +3016,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `f2e7b1d4852c43d1c68217666d9c6e617dc4fd3c4a2709d8f4e144cb6c388721` |
+| `tools/video/automation/automation.test.mjs` | `d29b31c421774f245a7e2df89a52c6d359815efd05c11b3b8c5e8c0467bec7c1` |
 | `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
 | `tools/video/automation/flow.mjs` | `4de8bbedb777f17a66a04064c0bd612a2a23ea8cf206d798fb449851a6a46bc7` |
 | `tools/video/automation/prompts.mjs` | `8ca7eb3ea74382877a258aa196a4d4e78b8bf488557bd8ea9f095c9b3bea708f` |
