@@ -86,6 +86,7 @@ export function lessonProblems(lesson) {
       ids.add(turn.id);
       if (!["T", "S"].includes(turn.speaker)) errors.push(`${turn.id} speaker must be the reviewed T or S role`);
       if (!allText(turn.all) || turn.all[0] !== turn.text) errors.push(`${turn.id} has incomplete translations or an English mismatch`);
+      if (Object.hasOwn(turn, "practice_pause_ms") && (!Number.isInteger(turn.practice_pause_ms) || turn.practice_pause_ms < 4000 || turn.practice_pause_ms > 5000)) errors.push(`${turn.id} practice_pause_ms must be an integer from 4000 through 5000`);
     }
   }
   if (!Array.isArray(lesson?.quiz) || lesson.quiz.length !== 3) errors.push("exactly three quiz questions are required");
@@ -130,7 +131,7 @@ export function prepareLesson(lesson, profile) {
   const guide = (name, options) => add(`guide-${name}`, lesson.guides[name], options);
   const coach = (name, key, options) => add(`coach-${key ?? name}`, COACH[name], options);
   const turns = (group, pass, options) => {
-    for (const turn of lesson[group]) add(`${pass}-${turn.id}`, turn.all, { ...options, kind: "dialogue", turn });
+    for (const turn of lesson[group]) add(`${pass}-${turn.id}`, turn.all, { ...options, ...(pass === "practice" ? { pause: turn.practice_pause_ms ?? 4000 } : {}), kind: "dialogue", turn });
   };
   guide("hook", { chapter: "hook", label: "Today's challenge" });
   guide("goal", { label: "What to listen for" });
@@ -162,6 +163,28 @@ export function prepareLesson(lesson, profile) {
   turns("A", "review", { label: "Conversation A · final listening" });
   turns("B", "review", { label: "Conversation B · final listening" });
   for (const name of ["recap", "comment", "subscribe"]) guide(name, { label: name === "recap" ? "Today's answer" : name === "comment" ? "Your experience" : "Keep practicing" });
+  const exampleQuiz = lesson.quiz[0];
+  const chooseLine = scenes.find((scene) => scene.lines[0].id === stableId(lesson.day, "coach-choose-1")).lines[0];
+  const workedExample = [
+    "### 可跟著作答的實例：本集第 1 題",
+    "",
+    "以下直接取自本集既有、已覆核的虛構對話與測驗；兩個大綱選項都保留這個練習。",
+    "實際播放順序：問題 → 三個選項 → 重播指定對話 → 提示作答並停頓 → 公布答案。觀眾先聽辨，再自行選答案，最後對照原稿解答。",
+    "",
+    `1. 先聽問題：${exampleQuiz.question}`,
+    "2. 依序聽三個選項：",
+    ...exampleQuiz.choices.map((choice, index) => `   - ${String.fromCharCode(65 + index)}. ${choice}`),
+    `3. 重播支持答案的原對話（evidence_ids：${exampleQuiz.evidence_ids.join(", ")}）：`,
+    ...exampleQuiz.evidence_ids.map((id) => {
+      const turn = byId.get(id);
+      return `   - ${id} / ${turn.speaker === "T" ? "Traveler" : "Staff"}: ${turn.text}`;
+    }),
+    `4. 提示作答：${chooseLine.text} 語句後停頓 ${chooseLine.pause_after_ms / 1000} 秒，讓觀眾選答案；需要更多時間可暫停影片。`,
+    `5. 公布正解：${String.fromCharCode(65 + exampleQuiz.correct)}. ${exampleQuiz.answer}`,
+    `   既有答案口播（逐字）：${exampleQuiz.answer_all[0]}`,
+    "",
+    "這個例子示範如何把聽到的資訊對回選項；完整影片再用其餘兩題檢查當集理解。",
+  ].join("\n");
   const description = (localeIndex) => [lesson.guides.hook[localeIndex], lesson.guides.goal[localeIndex], ["Fictional airport conversations for listening practice. Numbers, airline names and locations are examples, not current travel instructions. Confirm actual arrangements with your airport and airline.", "本集使用虛構機場對話練習聽力；數字、航空公司與地點為教學示例，實際安排請向機場及航空公司確認。", "本集使用虚构机场对话练习听力；数字、航空公司与地点为教学示例，实际安排请向机场及航空公司确认。", "空港を舞台にした架空の会話で練習します。数字、航空会社名、場所は例です。実際の案内は空港と航空会社にご確認ください。", "가상의 공항 대화로 듣기를 연습합니다. 숫자, 항공사 이름과 장소는 예시입니다. 실제 안내는 공항과 항공사에 확인하세요."][localeIndex]].join("\n\n");
   const seriesTitles = ["Airport English", "機場英文", "机场英语", "空港英語", "공항 영어"];
   const titles = lesson.title_all.map((title, index) => `${title}${index === 0 ? " | " : "｜"}${seriesTitles[index]} Day ${day}`);
@@ -173,12 +196,14 @@ export function prepareLesson(lesson, profile) {
     return [locale, { schema_version: 1, locale, title: titles[i], description: description(i), tags: [["airport English", "English listening", "travel English"], ["機場英文", "英文聽力", "旅遊英文"], ["机场英语", "英语听力", "旅行英语"], ["空港英語", "英語リスニング", "旅行英語"], ["공항 영어", "영어 듣기", "여행 영어"]][i], chapters: Object.fromEntries(Object.entries(chapterTranslations).map(([id, all]) => [id, all[i]])), source_hashes: sourceHashes(doc), lines: Object.fromEntries(entries.map((entry) => [entry.id, { text: entry.all[i], source_hash: textHash(entry.all[0]) }])) }];
   }));
   const teachingAudio = { schema_version: 1, status: "requires_official_mixed_language_audio_adapter", source_locale: "en", source_script_sha256: sha(doc), generic_dub_allowed: false, locales: Object.fromEntries(LOCALES.slice(1).map((locale, offset) => [locale, { lines: entries.map((entry) => ({ id: entry.id, kind: entry.kind, text: entry.kind === "dialogue" ? entry.all[0] : entry.all[offset + 1], speech_locale: entry.kind === "dialogue" ? "en" : locale, ...(entry.kind === "dialogue" ? { reuse_source_take: entry.source_take_id } : {}), cc_text: entry.all[offset + 1] })) }])) };
-  const brief = `# Day ${day}：${lesson.title_all[1]}\n\n狀態：修訂後的製作來源；正式關卡尚未核准。\n\n## 一句話問題\n\n${lesson.guides.hook[0]}\n\n## 目標觀眾\n\n準備自行搭機、需要辨識機場資訊的成人英語初學者。\n\n## 觀眾看完能做到的事\n\n${lesson.guides.goal[1]}\n\n## 站主觀點\n\n依使用者指定：每天十分鐘的實用情境聽力；英文常駐、英文預設語音，四語 CC 與教學語音可獨立選擇，角色對話維持英文。不代替即時旅運資訊。\n\n## 格式與長度\n\n官方投影片版型、1080p30、Sulafat。成片總長 600 秒，含實測品牌素材；目前只有文字估計，旁白合成後才確認時長。刻意重聽用於理解、問答連結、跟讀和減少提示，作答停頓用於練習。\n\n## 實際示範或實算\n\n兩段原創對話，三題明確指定 evidence_ids 的聽力題；每題重播必須包含支持答案的對話。\n\n## 章節大綱\n\n方案 A：當集問題 → A 聽懂 → A 跟讀 → B 比較 → B 跟讀 → 三題驗收 → 減少提示重聽 → 回收與下一步。\n方案 B：先完成兩段對話辨識，再集中跟讀與作答；仍保留相同問題與例句。\n建議 A：先建立一段完整語境，再辨識變化。這是製作建議，未代替正式大綱關卡。\n\n## 結尾\n\n${lesson.guides.recap[0]}\n${lesson.guides.comment[0]}\n${lesson.guides.subscribe[0]}\n`;
+  const brief = `# Day ${day}：${lesson.title_all[1]}\n\n狀態：修訂後的製作來源；正式關卡尚未核准。\n\n## 一句話問題\n\n${lesson.guides.hook[0]}\n\n## 目標觀眾\n\n準備自行搭機、需要辨識機場資訊的成人英語初學者。\n\n## 觀眾看完能做到的事\n\n${lesson.guides.goal[1]}\n\n## 站主觀點\n\n依使用者指定：每天十分鐘的實用情境聽力；英文常駐、英文預設語音，四語 CC 與教學語音可獨立選擇，角色對話維持英文。不代替即時旅運資訊。\n\n## 格式與長度\n\n官方投影片版型、1080p30、Sulafat。成片總長 600 秒，含實測品牌素材；目前只有文字估計，旁白合成後才確認時長。刻意重聽用於理解、問答連結、跟讀和減少提示，作答停頓用於練習。\n\n## 實際示範或實算\n\n兩段原創對話，三題明確指定 evidence_ids 的聽力題；每題重播必須包含支持答案的對話。\n\n${workedExample}\n\n## 章節大綱\n\n### 選項 A：逐段聽懂、跟讀，再比較（推薦）\n\n一行說明：先建立一段完整語境，再辨識變化；每段對話聽懂後立即跟讀。\n開場鉤子：${lesson.guides.hook[0]}\n章節順序：當集問題 → A 聽懂 → A 跟讀 → B 比較 → B 跟讀 → 三題驗收 → 減少提示重聽 → 回收與下一步。\n目前產生的劇本採此順序；推薦理由是先建立一段完整語境，再辨識變化。\n\n### 選項 B：先比較兩段對話，再集中練習\n\n一行說明：先完成兩段對話辨識，再集中跟讀與作答；仍保留相同問題與例句。\n開場鉤子：${lesson.guides.hook[0]}\n章節順序：當集問題 → A 聽懂 → B 比較 → A、B 集中跟讀 → 三題驗收 → 減少提示重聽 → 回收與下一步。\n此為替代順序；若選 B，須先調整劇本與對應字幕、音軌計畫，再依更新版本完成檢查。\n\n以上為製作提案，未代替正式大綱關卡。\n\n## 結尾\n\n${lesson.guides.recap[0]}\n${lesson.guides.comment[0]}\n${lesson.guides.subscribe[0]}\n`;
   const claims = `# Day ${day} claims\n\n狀態：來源清單，不是獨立查核通過證明。verify-1.md 必須由另一位審稿者依此版本完成。\n\n## 教學情境\n\n兩段對話是虛構例句；航班、櫃檯、航廈、時間、費用和人名不當作現行班表或通用政策。\n\n## 旅運事實\n\n${(lesson.claims ?? []).map((claim) => `- ${claim.id}: ${claim.text}\n  - 狀態：${claim.status}; 來源：${claim.source_urls.join("、")}`).join("\n") || (Array.isArray(lesson.claims) ? "此集未列通用旅運政策；對話屬虛構教學情境。獨立審稿仍須確認沒有未列入的事實主張。" : "尚待逐集分類：若僅有虛構教學情境，應由獨立審稿確認；若有通用旅運政策，須補官方來源。")}\n\n## 測驗證據\n\n${lesson.quiz.map((q, i) => `- Q${i + 1}: ${q.question}\n  - 正解：${q.choices[q.correct]}\n  - 重播：${q.evidence_ids.join(", ")}\n${q.evidence_ids.map((id) => `  - ${id}: ${byId.get(id).text}`).join("\n")}`).join("\n")}\n`;
   const reviewedClaims = claims + (lesson.editorial_review ? `\n## 已有內容覆核\n\n[獨立內容覆核](../${lesson.editorial_review})。此文件覆核教學來源，不是成片、聲音或發布核准。生成後的逐集 verify-1.md 仍須確認來源版本一致。\n` : "");
   const captionPlan = { schema_version: 1, status: "text_segmentation_only_not_timed_captions", rules: LOCALE_RULES, lines: entries.map((entry) => ({ id: entry.id, by_locale: Object.fromEntries(LOCALES.map((locale, i) => [locale, cuePieces(entry.all[i], locale)])) })) };
   const timeline = estimateTimeline(doc);
-  const duration = { basis: "text_estimate_only", estimated_body_seconds: timeline.total_frames / FPS, target_total_seconds: 600, measured_body_seconds: null, branding_seconds: null, measured_total_seconds: null, fixed_practice_pause_seconds: entries.filter((e) => e.semantic_key.startsWith("practice-")).length * 4 + 12, release_ready: false };
+  const responseIds = new Set(entries.filter((entry) => entry.semantic_key.startsWith("practice-") || entry.semantic_key.startsWith("coach-choose-")).map((entry) => entry.id));
+  const responsePauseSeconds = [...eachLine(doc)].filter(({ line }) => responseIds.has(line.id)).reduce((sum, { line }) => sum + line.pause_after_ms, 0) / 1000;
+  const duration = { basis: "text_estimate_only", estimated_body_seconds: timeline.total_frames / FPS, target_total_seconds: 600, measured_body_seconds: null, branding_seconds: null, measured_total_seconds: null, fixed_practice_pause_seconds: responsePauseSeconds, release_ready: false };
   const metadata = { schema_version: 1, title_options: [titles[0], `${lesson.title_all[0]}: listen, respond and check`, `${lesson.title_all[0]} | Daily travel listening`], pinned_comment: lesson.guides.comment[0], localized_pinned_comments: Object.fromEntries(LOCALES.map((locale, i) => [locale, lesson.guides.comment[i]])), decisions: { made_for_kids_proposal: false, paid_promotion: null, synthetic_content_disclosure: null, schedule: null }, uploaded_to_youtube: false };
   return { doc, translations, teachingAudio, brief, claims: reviewedClaims, captionPlan, duration, metadata, entries };
 }

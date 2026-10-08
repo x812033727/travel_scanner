@@ -89,24 +89,35 @@ rule baseline are preserved under the series `evidence/` directory.
 
 ## Notes
 
+- Resumed after the owner completed official login pairing on 2026-10-08.
+  The stored tool credential was verified through the official client without
+  exposing it. Sulafat is ready and the provider budget covers the planned series.
+  Actual review-push exposed an unparseable brief-option format (0 options);
+  fixed the generator to the official outlineOptions contract and added an actual
+  worked listening example, rebound/restaged, then obtained real outline approval.
+- Read-only branding investigation found no local approved media or official
+  tool-token download route for the host's _branding files. Existing media-store
+  and owner-session review endpoints do not provide that access. Still require
+  the real approved package or an available read-only host transfer connection.
 - Remediation began on 2026-10-08 following the user's explicit instruction to
   finish all 60 episodes. The original audit remains unchanged.
 - Current preparation: all 60 five-language lesson sources independently reviewed;
   all 180 quiz evidence sets explicit and checked. Three safety statements fixed.
-  Official lint has zero errors; warnings remain visible (57 duration estimates,
-  16 fictional-example source notices and 3,540 pairwise quote-template matches).
+  Official lint has zero errors; warnings remain visible (56 duration estimates,
+  16 fictional-example source notices and 3,422 pairwise quote-template matches).
   Above checked items describe the source/profile and player fixes, not final
-  media acceptance. Estimated body lengths are 538.57–623.40 seconds.
+  media acceptance. Estimated body lengths are 538.57–691.60 seconds; the expanded Day01 estimate
+  is not a measured acceptance result.
 - Static preflight: 21 longest/representative current cards rendered with official
-  renderer; no overflow, at most three rows, minimum fitting font 60px. All 5,112
-  prepared scene states estimate at most 15 seconds. Neither result is a measured
+  renderer; no overflow, at most three rows, minimum fitting font 60px. The earlier 5,112
+  prepared scene states estimated at most 15 seconds. Neither result is a measured
   full-video check. The earlier 95-state Day01 render is superseded preflight only.
 - Preview module/browser regressions use old prototype media solely as fixtures.
   Local HTTP launch is supported; file:// is explicitly unsupported. No new full
   series preview or replacement ZIP has been certified.
-- Runtime workspace: /workspace/airport_production/{project,media}; no real
-  synthesis yet. This environment needs official login pairing, and actual
-  installed branding assets are absent locally. Do not copy credentials into
+- Runtime workspace: /workspace/airport_production/{project,media}; official
+  synthesis has now run for the initial Day01 source after official pairing. Actual
+  installed branding assets are still absent locally. Do not copy credentials into
   this task, chat or Git. The latest discovered historical channel record is the
   v2 CC package activation; verify the actual current pin before making media.
 - All 60 current source sets now have verify-1.md and review-binding.json backed
@@ -122,13 +133,45 @@ rule baseline are preserved under the series `evidence/` directory.
   Use cached checked takes during retiming; do not hide a language that cannot fit
   or consume the learner's four-second answer pause. Keep intermediates bounded
   after actual per-episode disk measurements; preserve legacy deliverables.
-- Saved in draft PR #1389. Checks: test:tools 2,223 pass / 3 skip / 0 fail;
-  test:docs-videos 199 pass; final airport regressions 48 pass; check:tasks passes.
-  Official Day01 dry-run passed through current source/staged review guards:
-  45 synthesis requests, about 2,217 billable characters and 50 exact-take replays.
-  It reported no token. No paid synthesis, final QA approval or real new package
-  was produced. Resume from PRODUCTION_STATUS.json after pairing and obtaining
-  actual current branding assets; the old pairing codes must not be reused.
+- Draft PR #1389 remains unmerged. Resumed code checks: test:tools 2,241 pass /
+  3 skip / 0 fail; current documentation check 199 pass. The generated
+  outline headers and real Q1 worked example now satisfy the official parser.
+  Independent brief review found all 60 examples match their actual sequence.
+- Day01 outline A was genuinely auto-approved by the service on 2026-10-08.
+  Initial English synthesis completed 45 requests (2,217 billable characters),
+  with 50 exact-take replays; that body measured 474.933 seconds. A four-turn
+  expansion (18 total turns, 111 occurrences) passed fresh independent editorial
+  and fictional-claims reviews; the approved brief bytes stayed unchanged.
+  Four new takes plus three flagged retakes used 406 characters; 42 prior requests
+  were reused. Expanded body: 17,422 frames / 580.733 seconds. The second audio
+  check passed 110/111 occurrences; the queue/cue homophone discrepancy was then
+  cleared by an actual matching transcript through the official Whisper path.
+  All 111 now pass with zero flags. The service approved this timeline audio at
+  2026-10-08T16:42:47.264278Z, and review-pull recorded it. No final duration,
+  final QA, package or translated-track completion is claimed.
+- Current Day01 rendering completed 111 official states in 382 seconds. The
+  measured slide-pacing check found a longest state of 10.7 seconds and no state
+  above 15 seconds. No final MP4, translated teaching track, final CC package or
+  formal final QA exists for the new version.
+- Paused at the missing external input: current approved branding pin and actual
+  media files. The 2026-10-08 channel rule requests a new approximately 15-second
+  subscribe outro, but keeps the old outro until installation. Do not infer the
+  installed version from historical activation prose. The user has been asked
+  for a readable existing package path or download URL; pairing does not grant
+  host-file access. Resume with actual branding measurements, reviewed pacing,
+  a cached TTS rebuild and true audio reapproval as needed, then the four tracks.
+- Optional per-turn practice_pause_ms accepts only 4000–5000 ms and affects only
+  that practice pass. It invalidates editorial/timeline hashes while preserving
+  paid take keys. No lesson uses it yet; adopt reviewed changes after actual
+  branding measurements, then rebuild and reapprove the changed timing. The
+  independent review verified 28 invalid inputs, stale-review rejection, 720
+  unchanged generated artifacts and 60 current staged bindings. Existing source
+  words and pauses are unchanged by this optional capability.
+- Days 02–60 outline gates were submitted with actual official verdicts and brief
+  hashes. Including Day01, 58 are genuinely approved A. Day27 lost the judgement
+  response (HTTP 503; preserve outline-lost.json). Day60 hit the 60/hour judge
+  limit; one safe retry after 145.933 seconds was still limited. Pending or unknown
+  results are never approvals. Do not repeatedly poll the hourly limit.
 - Scope extended to core/drama.mjs and its tests after collision checks found no
   active task or open PR touching either implementation scope: slides need the
   existing safe audio_ref replay support, with identical-content/voice validation.

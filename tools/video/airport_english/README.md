@@ -33,6 +33,17 @@ and final duration. After synthesis, measure and pin the installed official bran
 then edit the lesson pacing to total 18,000 frames. Do not label the estimate a finished
 600-second video or make up time with arbitrary silence, slower audio or extra loops.
 
+An A/B turn may specify `practice_pause_ms` as an integer from `4000` through `5000`;
+omitting it keeps the existing 4-second response pause. It applies only after that turn
+in guided practice. First listening, connecting answers, quiz evidence and final review
+keep their original pauses, as do the quiz's separate choice pauses. The duration plan
+sums the actual guided-practice and choice pauses in the generated script.
+Use this option only for a justified response interval after measuring the real voice
+and installed branding and obtaining fresh independent review of the changed lesson.
+It is not an automatic way to fill a video to 600 seconds. The option is part of the
+reviewed lesson content; a change requires new review bindings and timing-dependent
+checks, even though identical TTS request bytes and cache keys reuse the existing takes.
+
 Some official commands accept `--file`, but `qa`, `captions`, `status` and review gates
 resolve `docs/videos/<slug>`. Stage a copy outside Git so all commands see the same source:
 

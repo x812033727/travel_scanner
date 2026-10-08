@@ -184,6 +184,38 @@
       ]
     },
     {
+      "id": "s-ecef54ee",
+      "template": "quote",
+      "data": {
+        "kicker": "Conversation A",
+        "quote": "Can I join any queue in Zone C, or\nshould I check the airline sign?",
+        "source": "Traveler"
+      },
+      "lines": [
+        {
+          "id": "ecef54ee",
+          "text": "Can I join any queue in Zone C, or should I check the airline sign?",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "s-eba4922e",
+      "template": "quote",
+      "data": {
+        "kicker": "Conversation A",
+        "quote": "Check the Sunrise Airlines sign\nabove the counters, then confirm\nyour queue with the staff.",
+        "source": "Staff"
+      },
+      "lines": [
+        {
+          "id": "eba4922e",
+          "text": "Check the Sunrise Airlines sign above the counters, then confirm your queue with the staff.",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
       "id": "s-297d1f6d",
       "template": "quote",
       "data": {
@@ -298,6 +330,40 @@
           "text": "Go straight ahead, then turn left at the information desk.",
           "pause_after_ms": 300,
           "audio_ref": "34ac5b13"
+        }
+      ]
+    },
+    {
+      "id": "s-56dd7db1",
+      "template": "quote",
+      "data": {
+        "kicker": "Conversation A · connect the answers",
+        "quote": "Can I join any queue in Zone C, or\nshould I check the airline sign?",
+        "source": "Traveler"
+      },
+      "lines": [
+        {
+          "id": "56dd7db1",
+          "text": "Can I join any queue in Zone C, or should I check the airline sign?",
+          "pause_after_ms": 300,
+          "audio_ref": "ecef54ee"
+        }
+      ]
+    },
+    {
+      "id": "s-6398fcc4",
+      "template": "quote",
+      "data": {
+        "kicker": "Conversation A · connect the answers",
+        "quote": "Check the Sunrise Airlines sign\nabove the counters, then confirm\nyour queue with the staff.",
+        "source": "Staff"
+      },
+      "lines": [
+        {
+          "id": "6398fcc4",
+          "text": "Check the Sunrise Airlines sign above the counters, then confirm your queue with the staff.",
+          "pause_after_ms": 300,
+          "audio_ref": "eba4922e"
         }
       ]
     },
@@ -417,6 +483,40 @@
           "text": "Go straight ahead, then turn left at the information desk.",
           "pause_after_ms": 4000,
           "audio_ref": "34ac5b13"
+        }
+      ]
+    },
+    {
+      "id": "s-aae63e64",
+      "template": "quote",
+      "data": {
+        "kicker": "Conversation A · your turn",
+        "quote": "Can I join any queue in Zone C, or\nshould I check the airline sign?",
+        "source": "Traveler"
+      },
+      "lines": [
+        {
+          "id": "aae63e64",
+          "text": "Can I join any queue in Zone C, or should I check the airline sign?",
+          "pause_after_ms": 4000,
+          "audio_ref": "ecef54ee"
+        }
+      ]
+    },
+    {
+      "id": "s-86c077fd",
+      "template": "quote",
+      "data": {
+        "kicker": "Conversation A · your turn",
+        "quote": "Check the Sunrise Airlines sign\nabove the counters, then confirm\nyour queue with the staff.",
+        "source": "Staff"
+      },
+      "lines": [
+        {
+          "id": "86c077fd",
+          "text": "Check the Sunrise Airlines sign above the counters, then confirm your queue with the staff.",
+          "pause_after_ms": 4000,
+          "audio_ref": "eba4922e"
         }
       ]
     },
@@ -561,6 +661,38 @@
         {
           "id": "1fdfac7b",
           "text": "Go straight past the pharmacy, then turn right. The counters are next to the stairs.",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "s-8dbd4386",
+      "template": "quote",
+      "data": {
+        "kicker": "Conversation B",
+        "quote": "Should I use the queue\nbeside the stairs? Is that\nthe line for Maple Airlines?",
+        "source": "Traveler"
+      },
+      "lines": [
+        {
+          "id": "8dbd4386",
+          "text": "Should I use the queue beside the stairs? Is that the line for Maple Airlines?",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "s-ec68bac9",
+      "template": "quote",
+      "data": {
+        "kicker": "Conversation B",
+        "quote": "Yes, that's the Maple Airlines\nqueue. Tell the staff your\nairline before you join it.",
+        "source": "Staff"
+      },
+      "lines": [
+        {
+          "id": "ec68bac9",
+          "text": "Yes, that's the Maple Airlines queue. Tell the staff your airline before you join it.",
           "pause_after_ms": 300
         }
       ]
@@ -718,6 +850,40 @@
       ]
     },
     {
+      "id": "s-c8cbe6bb",
+      "template": "quote",
+      "data": {
+        "kicker": "Conversation B · connect the answers",
+        "quote": "Should I use the queue\nbeside the stairs? Is that\nthe line for Maple Airlines?",
+        "source": "Traveler"
+      },
+      "lines": [
+        {
+          "id": "c8cbe6bb",
+          "text": "Should I use the queue beside the stairs? Is that the line for Maple Airlines?",
+          "pause_after_ms": 300,
+          "audio_ref": "8dbd4386"
+        }
+      ]
+    },
+    {
+      "id": "s-cb36e3c2",
+      "template": "quote",
+      "data": {
+        "kicker": "Conversation B · connect the answers",
+        "quote": "Yes, that's the Maple Airlines\nqueue. Tell the staff your\nairline before you join it.",
+        "source": "Staff"
+      },
+      "lines": [
+        {
+          "id": "cb36e3c2",
+          "text": "Yes, that's the Maple Airlines queue. Tell the staff your airline before you join it.",
+          "pause_after_ms": 300,
+          "audio_ref": "ec68bac9"
+        }
+      ]
+    },
+    {
       "id": "s-592ab38e",
       "chapter": "Practice the changed details",
       "template": "quote",
@@ -867,6 +1033,40 @@
           "text": "Go straight past the pharmacy, then turn right. The counters are next to the stairs.",
           "pause_after_ms": 4000,
           "audio_ref": "1fdfac7b"
+        }
+      ]
+    },
+    {
+      "id": "s-fcf5abb3",
+      "template": "quote",
+      "data": {
+        "kicker": "Conversation B · your turn",
+        "quote": "Should I use the queue\nbeside the stairs? Is that\nthe line for Maple Airlines?",
+        "source": "Traveler"
+      },
+      "lines": [
+        {
+          "id": "fcf5abb3",
+          "text": "Should I use the queue beside the stairs? Is that the line for Maple Airlines?",
+          "pause_after_ms": 4000,
+          "audio_ref": "8dbd4386"
+        }
+      ]
+    },
+    {
+      "id": "s-53f73739",
+      "template": "quote",
+      "data": {
+        "kicker": "Conversation B · your turn",
+        "quote": "Yes, that's the Maple Airlines\nqueue. Tell the staff your\nairline before you join it.",
+        "source": "Staff"
+      },
+      "lines": [
+        {
+          "id": "53f73739",
+          "text": "Yes, that's the Maple Airlines queue. Tell the staff your airline before you join it.",
+          "pause_after_ms": 4000,
+          "audio_ref": "ec68bac9"
         }
       ]
     },
@@ -1431,6 +1631,40 @@
       ]
     },
     {
+      "id": "s-9b54dc57",
+      "template": "quote",
+      "data": {
+        "kicker": "Conversation A · final listening",
+        "quote": "Can I join any queue in Zone C, or\nshould I check the airline sign?",
+        "source": "Traveler"
+      },
+      "lines": [
+        {
+          "id": "9b54dc57",
+          "text": "Can I join any queue in Zone C, or should I check the airline sign?",
+          "pause_after_ms": 300,
+          "audio_ref": "ecef54ee"
+        }
+      ]
+    },
+    {
+      "id": "s-a2dc6607",
+      "template": "quote",
+      "data": {
+        "kicker": "Conversation A · final listening",
+        "quote": "Check the Sunrise Airlines sign\nabove the counters, then confirm\nyour queue with the staff.",
+        "source": "Staff"
+      },
+      "lines": [
+        {
+          "id": "a2dc6607",
+          "text": "Check the Sunrise Airlines sign above the counters, then confirm your queue with the staff.",
+          "pause_after_ms": 300,
+          "audio_ref": "eba4922e"
+        }
+      ]
+    },
+    {
       "id": "s-bc0ceca9",
       "template": "quote",
       "data": {
@@ -1563,6 +1797,40 @@
           "text": "Go straight past the pharmacy, then turn right. The counters are next to the stairs.",
           "pause_after_ms": 300,
           "audio_ref": "1fdfac7b"
+        }
+      ]
+    },
+    {
+      "id": "s-1d12274f",
+      "template": "quote",
+      "data": {
+        "kicker": "Conversation B · final listening",
+        "quote": "Should I use the queue\nbeside the stairs? Is that\nthe line for Maple Airlines?",
+        "source": "Traveler"
+      },
+      "lines": [
+        {
+          "id": "1d12274f",
+          "text": "Should I use the queue beside the stairs? Is that the line for Maple Airlines?",
+          "pause_after_ms": 300,
+          "audio_ref": "8dbd4386"
+        }
+      ]
+    },
+    {
+      "id": "s-3a072069",
+      "template": "quote",
+      "data": {
+        "kicker": "Conversation B · final listening",
+        "quote": "Yes, that's the Maple Airlines\nqueue. Tell the staff your\nairline before you join it.",
+        "source": "Staff"
+      },
+      "lines": [
+        {
+          "id": "3a072069",
+          "text": "Yes, that's the Maple Airlines queue. Tell the staff your airline before you join it.",
+          "pause_after_ms": 300,
+          "audio_ref": "ec68bac9"
         }
       ]
     },

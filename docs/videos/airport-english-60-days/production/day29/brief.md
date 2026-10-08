@@ -26,11 +26,42 @@ Your boarding pass will not scan; are you showing the latest version?
 
 兩段原創對話，三題明確指定 evidence_ids 的聽力題；每題重播必須包含支持答案的對話。
 
+### 可跟著作答的實例：本集第 1 題
+
+以下直接取自本集既有、已覆核的虛構對話與測驗；兩個大綱選項都保留這個練習。
+實際播放順序：問題 → 三個選項 → 重播指定對話 → 提示作答並停頓 → 公布答案。觀眾先聽辨，再自行選答案，最後對照原稿解答。
+
+1. 先聽問題：Which pass should the first traveler open?
+2. 依序聽三個選項：
+   - A. A companion's pass
+   - B. The latest pass
+   - C. The oldest screenshot
+3. 重播支持答案的原對話（evidence_ids：A03, A04）：
+   - A03 / Traveler: I received a new seat assignment earlier. Could that affect this pass?
+   - A04 / Staff: It might. Please open the latest boarding pass in the airline app.
+4. 提示作答：Choose your answer now. 語句後停頓 4 秒，讓觀眾選答案；需要更多時間可暫停影片。
+5. 公布正解：B. The latest pass
+   既有答案口播（逐字）：The correct answer is B. The latest pass.
+
+這個例子示範如何把聽到的資訊對回選項；完整影片再用其餘兩題檢查當集理解。
+
 ## 章節大綱
 
-方案 A：當集問題 → A 聽懂 → A 跟讀 → B 比較 → B 跟讀 → 三題驗收 → 減少提示重聽 → 回收與下一步。
-方案 B：先完成兩段對話辨識，再集中跟讀與作答；仍保留相同問題與例句。
-建議 A：先建立一段完整語境，再辨識變化。這是製作建議，未代替正式大綱關卡。
+### 選項 A：逐段聽懂、跟讀，再比較（推薦）
+
+一行說明：先建立一段完整語境，再辨識變化；每段對話聽懂後立即跟讀。
+開場鉤子：Your boarding pass will not scan; are you showing the latest version?
+章節順序：當集問題 → A 聽懂 → A 跟讀 → B 比較 → B 跟讀 → 三題驗收 → 減少提示重聽 → 回收與下一步。
+目前產生的劇本採此順序；推薦理由是先建立一段完整語境，再辨識變化。
+
+### 選項 B：先比較兩段對話，再集中練習
+
+一行說明：先完成兩段對話辨識，再集中跟讀與作答；仍保留相同問題與例句。
+開場鉤子：Your boarding pass will not scan; are you showing the latest version?
+章節順序：當集問題 → A 聽懂 → B 比較 → A、B 集中跟讀 → 三題驗收 → 減少提示重聽 → 回收與下一步。
+此為替代順序；若選 B，須先調整劇本與對應字幕、音軌計畫，再依更新版本完成檢查。
+
+以上為製作提案，未代替正式大綱關卡。
 
 ## 結尾
 

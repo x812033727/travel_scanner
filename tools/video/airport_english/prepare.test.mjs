@@ -7,8 +7,10 @@ import test from "node:test";
 
 import { checkCues, LOCALE_RULES, measure, wrapCue } from "../core/captions.mjs";
 import { eachLine, textHash, validateVideo } from "../core/schema.mjs";
+import { estimateTimeline, speechHash } from "../core/timeline.mjs";
 import { planRequests } from "../tts/requests.mjs";
 import { factsChecks } from "../qa/facts.mjs";
+import { outlineOptions } from "../review/sync.mjs";
 import { assertStagedReviewBinding, englishCardText, lessonProblems, localLexicon, LOCALES, prepareLesson, prepareSeries, PRODUCTION, runStage, stableId, stageProject } from "./prepare.mjs";
 
 const profile = JSON.parse(readFileSync(path.join(PRODUCTION, "profile.json"), "utf8"));
@@ -30,6 +32,44 @@ test("quiz evidence is explicit and cannot fall back to first conversation or ma
   assert.throws(() => prepareLesson(lesson, profile), /evidence_ids/);
 });
 
+test("official outline review reads two complete options with the current lesson's spoken hook", () => {
+  const lesson = fixture();
+  lesson.guides.hook[0] = "Your gate has changed. Which number should you listen for?";
+  const { brief, entries } = prepareLesson(lesson, profile);
+  const options = outlineOptions(brief);
+  assert.deepEqual(options.map((option) => option.key), ["A", "B"]);
+  assert.ok(options.every((option) => option.title && option.summary));
+  assert.ok(options.every((option) => option.hook === lesson.guides.hook[0]));
+  assert.ok(entries.some((entry) => entry.all[0] === options[0].hook), "the proposed hook is actually spoken in the current script");
+  assert.notEqual(options[0].summary, options[1].summary);
+  assert.match(options[0].summary, /每段對話聽懂後立即跟讀/);
+  assert.match(options[1].summary, /先完成兩段對話辨識，再集中跟讀/);
+  assert.match(brief, /目前產生的劇本採此順序/);
+  assert.match(brief, /若選 B，須先調整劇本/);
+});
+
+test("the brief works through the reviewed quiz with the actual replay, pause, and answer order", () => {
+  const lesson = fixture(), quiz = lesson.quiz[0];
+  const { brief, entries, doc } = prepareLesson(lesson, profile);
+  const example = brief.split("### 可跟著作答的實例：本集第 1 題\n")[1].split("\n## 章節大綱")[0];
+  const actual = entries.filter((entry) => entry.semantic_key.startsWith("quiz-1-") || entry.semantic_key === "coach-choose-1");
+  assert.deepEqual(actual.map((entry) => entry.semantic_key), ["quiz-1-question", "quiz-1-choice-0", "quiz-1-choice-1", "quiz-1-choice-2", ...quiz.evidence_ids.map((id) => `quiz-1-evidence-${id}`), "coach-choose-1", "quiz-1-answer"]);
+  let previousPosition = -1;
+  for (const entry of actual) {
+    const position = example.indexOf(entry.all[0]);
+    assert.ok(position > previousPosition, `${entry.semantic_key} must appear in actual playback order`);
+    previousPosition = position;
+  }
+  for (const id of quiz.evidence_ids) assert.ok(example.includes(`${id} /`));
+  assert.ok(!example.includes(lesson.A[1].text), "the example cannot silently replace designated evidence with another conversation");
+  const choose = actual.find((entry) => entry.semantic_key === "coach-choose-1");
+  assert.equal(doc.scenes.find((scene) => scene.lines[0].id === choose.id).lines[0].pause_after_ms, 4000);
+  assert.match(example, /語句後停頓 4 秒/);
+  assert.ok(example.includes(`公布正解：B. ${quiz.answer}`));
+  assert.ok(example.includes(`既有答案口播（逐字）：${quiz.answer_all[0]}`));
+  assert.equal(outlineOptions(brief).length, 2, "the concrete example must not hide the official outline options");
+});
+
 test("current source answer, five translations, and episode guides are required", () => {
   const lesson = fixture();
   lesson.A[0].all[0] = "An older line";
@@ -38,6 +78,50 @@ test("current source answer, five translations, and episode guides are required"
   assert.match(lessonProblems(lesson).join("\n"), /A01.*English mismatch/);
   assert.match(lessonProblems(lesson).join("\n"), /answer differs/);
   assert.match(lessonProblems(lesson).join("\n"), /guides.recap/);
+});
+
+test("practice pauses are optional and accept only integer milliseconds from 4000 through 5000", () => {
+  for (const invalid of [0, 3999, 5001, 4500.5, "4500", null, undefined]) {
+    const lesson = fixture();
+    lesson.A[0].practice_pause_ms = invalid;
+    assert.match(lessonProblems(lesson).join("\n"), /A01 practice_pause_ms must be an integer from 4000 through 5000/);
+    assert.throws(() => prepareLesson(lesson, profile), /practice_pause_ms/);
+  }
+  const implicit = fixture(), explicit = fixture();
+  for (const turn of [...explicit.A, ...explicit.B]) turn.practice_pause_ms = 4000;
+  assert.equal(JSON.stringify(prepareLesson(implicit, profile)), JSON.stringify(prepareLesson(explicit, profile)), "an explicit default leaves all generated output bytes unchanged");
+});
+
+test("a reviewed turn's response interval changes only its practice pass and the actual pause total", () => {
+  const lesson = fixture(), before = prepareLesson(lesson, profile);
+  lesson.A[0].practice_pause_ms = 4750;
+  lesson.B[1].practice_pause_ms = 5000;
+  const after = prepareLesson(lesson, profile);
+  const overrides = new Map([[stableId(lesson.day, "practice-A01"), 4750], [stableId(lesson.day, "practice-B02"), 5000]]);
+  const oldLines = new Map([...eachLine(before.doc)].map(({ line }) => [line.id, line]));
+  for (const { line } of eachLine(after.doc)) {
+    assert.deepEqual(line, { ...oldLines.get(line.id), ...(overrides.has(line.id) ? { pause_after_ms: overrides.get(line.id) } : {}) });
+  }
+  assert.ok(after.entries.some((entry) => entry.semantic_key === "quiz-1-evidence-B02"), "the fixture exercises protected quiz evidence as well as the ordinary listening passes");
+  const responseIds = new Set(after.entries.filter((entry) => /^(practice-|coach-choose-)/.test(entry.semantic_key)).map((entry) => entry.id));
+  const total = [...eachLine(after.doc)].filter(({ line }) => responseIds.has(line.id)).reduce((sum, { line }) => sum + line.pause_after_ms, 0) / 1000;
+  assert.equal(total, 29.75);
+  assert.equal(after.duration.fixed_practice_pause_seconds, total);
+  assert.equal(after.duration.fixed_practice_pause_seconds - before.duration.fixed_practice_pause_seconds, 1.75);
+});
+
+test("practice pacing preserves TTS request and take bytes but invalidates timing and speech hashes", () => {
+  const lesson = fixture(), before = prepareLesson(lesson, profile);
+  lesson.B[1].practice_pause_ms = 5000;
+  const after = prepareLesson(lesson, profile), lexicon = localLexicon([before.doc]);
+  assert.equal(JSON.stringify(planRequests(after.doc, lexicon)), JSON.stringify(planRequests(before.doc, lexicon)), "identical request bodies, request keys and individual take keys reuse the original synthesis");
+  const oldTimeline = estimateTimeline(before.doc), newTimeline = estimateTimeline(after.doc);
+  assert.deepEqual(newTimeline.lines.map(({ id, audio_samples }) => [id, audio_samples]), oldTimeline.lines.map(({ id, audio_samples }) => [id, audio_samples]));
+  assert.equal(newTimeline.total_frames - oldTimeline.total_frames, 30);
+  assert.notEqual(speechHash(after.doc, lexicon), speechHash(before.doc, lexicon));
+  assert.notEqual(after.teachingAudio.source_script_sha256, before.teachingAudio.source_script_sha256);
+  assert.equal(after.brief, before.brief);
+  assert.deepEqual(after.translations, before.translations);
 });
 
 test("a spoken wrong answer or an unknown speaker cannot enter production", () => {

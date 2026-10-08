@@ -1675,8 +1675,8 @@
     {
       "day": 1,
       "path": "production/lessons/day01.json",
-      "sha256": "137ef7a19096c7b3d4afd762426be7e3cf5eb5fdd53bfaf301444d753e3f1c40",
-      "reviewed_english_content_sha256": "e5a2cb7dae964fbbefe536e80a9761d395b0cd4f08284395fedd6fb30686d2f9"
+      "sha256": "14ecdeed1cd17bb0f4f9ad1097813c150954b1462177dd4259c92a42e929ec05",
+      "reviewed_english_content_sha256": "4206a5c57022f7a268ee5557e40efa2b15261a4125b0678b35397377de7e985b"
     },
     {
       "day": 2,
@@ -2050,5 +2050,60 @@
     "Re-read final English guide revisions on Days22-41,42,49-52,59-60 after author freeze; no new unsupported factual claims.",
     "Reviewed Day22Q1 correction from boarding first to boarding now and Day41Q2 clarification to the screen in the second conversation; both preserve fictional source facts.",
     "Confirmed all three corrected safety dialogue turns remain unchanged in English and all four translations."
+  ],
+  "production_source_history": [
+    {
+      "day": 1,
+      "superseded_at_utc": "2026-10-08T16:31:27.528832+00:00",
+      "reason": "Four new fictional sign/queue dialogue turns independently reviewed and accepted; prior reviewed snapshot retained exactly.",
+      "snapshot": {
+        "day": 1,
+        "path": "production/lessons/day01.json",
+        "sha256": "137ef7a19096c7b3d4afd762426be7e3cf5eb5fdd53bfaf301444d753e3f1c40",
+        "reviewed_english_content_sha256": "e5a2cb7dae964fbbefe536e80a9761d395b0cd4f08284395fedd6fb30686d2f9"
+      }
+    }
+  ],
+  "supplemental_reviews": [
+    {
+      "review_type": "independent_factual_delta_review",
+      "reviewer": "airport_claims_review",
+      "reviewed_at_utc": "2026-10-08T16:25:33.901377+00:00",
+      "canonical_snapshot_checked_at_utc": "2026-10-08T16:31:27.528832+00:00",
+      "day": 1,
+      "decision": "factual_review_complete_for_recorded_text_snapshots",
+      "added_turn_ids": [
+        "A07",
+        "A08",
+        "B09",
+        "B10"
+      ],
+      "scope": "Read the four new English dialogue turns and all sixteen corresponding translated strings for factual meaning; compare preserved fourteen turns, three quizzes/evidence IDs, guides, titles, claims and sources. Re-read corrected adaptation note. Canonical integration changes only status from the actually reviewed proposal.",
+      "claim_ids": [
+        "AE-C01"
+      ],
+      "findings": "The fictional Sunrise Airlines sign and queue in Zone C, and fictional Maple Airlines queue beside the stairs, are local role-play details. Confirming with these staff is not presented as a universal airport policy. No new external factual claim or required correction.",
+      "external_source_needed": false,
+      "new_web_retrievals": 0,
+      "remaining_factual_corrections": 0,
+      "proposal_sha256": "8b902b0dfbaf438eee7bf324a437effa9676dc37c3b1877683d20b425ecc49ab",
+      "canonical_file_sha256": "14ecdeed1cd17bb0f4f9ad1097813c150954b1462177dd4259c92a42e929ec05",
+      "reviewed_english_content_sha256": "4206a5c57022f7a268ee5557e40efa2b15261a4125b0678b35397377de7e985b",
+      "canonical_teaching_content_sha256": "aa66c6a01286e22a32606f5ad3381fc3fe7dc11356a48a111745920888ca463e",
+      "outside_git_review_sha256": "aba3fbddbccf8d9415aca6701155d7de605a95c10c2437511210a8f178d1eb6b",
+      "production_approval": false,
+      "release_ready": false,
+      "supplemental_brief_review": {
+        "brief_sha256": "9c37f1c466b7e8ea830985198f6d66272ff10441d68c85fbed95b54e55ed1748",
+        "prepared_brief_matches_current_disk": true,
+        "findings": "Read parseable A/B outline options and exact Q1 worked example. A matches current per-dialogue practice; B is explicitly an alternative requiring reorder. Q1 question, Zone B/D/C options, B01/B02 evidence, choose with four-second line pause, B/Zone D answer and explanation match generated entries. This is text/order review, not audio timing.",
+        "shared_instructions_sha256": "ef3bfaca98c258e4cae1c5b0ada1a217e984742b2ddd792c7fa7b80f22ad101f",
+        "shared_instruction_text_changed": false,
+        "expanded_in_memory_entry_count": 111,
+        "expanded_text_estimate_seconds": 691.6,
+        "expanded_fixed_practice_pause_seconds": 84,
+        "expanded_measured_runtime_verified": false
+      }
+    }
   ]
 }

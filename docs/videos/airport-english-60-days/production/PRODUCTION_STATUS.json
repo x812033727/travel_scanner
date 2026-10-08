@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-08T13:13:50.618130+00:00",
+  "updated_at": "2026-10-08T16:51:14.779619+00:00",
   "series": "airport-english-60-days",
-  "status": "text_and_tools_prepared_media_blocked",
+  "status": "blocked_pending_actual_branding_after_Day01_English_audio_approval",
   "release_ready": false,
   "counts": {
     "reviewed_lessons": 60,
@@ -10,29 +10,69 @@
     "planned_translated_tracks": 240,
     "thumbnail_static_preflights": 60,
     "representative_video_card_preflights": 21,
-    "official_synthesized_episodes": 0,
+    "official_synthesized_episodes": 1,
     "official_completed_600_second_episodes": 0,
     "official_final_qa_passed_episodes": 0,
-    "new_delivery_packages": 0
+    "new_delivery_packages": 0,
+    "official_outline_approved_episodes": 58,
+    "official_outline_pending_episodes": 2,
+    "official_English_audio_approved_episodes": 1
   },
   "blockers": [
-    {
-      "id": "official_tool_pairing",
-      "status": "missing",
-      "detail": "This environment has no video-tool credential. Official login must be paired by the owner; previous pairing expired. No keys are requested in chat."
-    },
     {
       "id": "installed_branding_assets",
       "status": "missing_locally",
       "detail": "Obtain and verify the actual current approved branding pin and media before assembly. Repository activation receipts do not substitute for the asset bytes."
+    },
+    {
+      "id": "day27_outline_outcome",
+      "status": "pending_unknown_result",
+      "detail": "Official outline judgement response was lost (HTTP 503). Preserve outline-lost.json; no local approval, no automatic repeat of the uncertain call."
+    },
+    {
+      "id": "day60_outline_rate_limit",
+      "status": "pending_service_rate_limit",
+      "detail": "Official hourly outline/policy judge limit is 60 calls. One known-safe retry after 145.933 seconds was still limited; do not poll this hourly limit."
     }
   ],
   "remaining": [
-    "Synthesize/check/review English and all four teaching tracks for Day01; fit all languages without removing response practice.",
+    "Fit the approved Day01 English timeline with actual installed branding, then synthesize/check all four translated teaching tracks without removing response practice.",
     "Obtain actual branding and adjust pedagogical pacing to a measured 18000-frame final.",
     "Complete final captions, 11-item QA, genuine review, main package checks and combined-language delivery review.",
     "Run the validated workflow for Days02-60, measuring every episode; only then supersede old previews and bundles."
   ],
   "publication_authorized": false,
-  "legacy_media_promoted": false
+  "legacy_media_promoted": false,
+  "official_service": {
+    "paired": true,
+    "Sulafat_ready": true,
+    "credential_disclosed": false
+  },
+  "day01": {
+    "outline": "officially_auto_approved_A",
+    "outline_approval_at": "2026-10-08T16:05:42.761338Z",
+    "English_synthesis": "expanded_source_synthesis_completed",
+    "audio_check": "111_of_111_passed; 0_flagged",
+    "final_video": "not_created",
+    "synthesis_requests": 49,
+    "measured_body_frames": 17422,
+    "measured_body_seconds": 580.7333333333333,
+    "duration_acceptance": "not_accepted; actual branding needed for final 18000-frame pacing",
+    "substantive_expansion": "four_new_dialogue_turns_independently_reviewed_and_synthesized",
+    "unique_current_script_billable_characters": 2538,
+    "new_and_retake_requests": 7,
+    "new_and_retake_billable_characters": 406,
+    "new_static_card_preflight": "16_of_16_passed",
+    "audio_approval": "officially_auto_approved",
+    "audio_approval_at": "2026-10-08T16:42:47.264278Z",
+    "approved_timeline_sha256": "2b1b6b8629233426ba530e61c4a1807533805758081934610aa11de846e8053b",
+    "second_opinion": "Official Whisper second-opinion path resolved queue/cue homophone; exact-match transcript stored in genuine check cache.",
+    "render": "111_current_official_slide_states_rendered",
+    "measured_pacing": {
+      "states": 111,
+      "longest_state_seconds": 10.7,
+      "states_over_15_seconds": 0,
+      "full_final_qa": false
+    }
+  }
 }

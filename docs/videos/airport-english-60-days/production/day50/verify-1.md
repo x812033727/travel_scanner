@@ -5,8 +5,8 @@ This file binds existing independent reviews to the matching generated script. I
 Editorial reviewer: airport_lessons_22_41. Official-source and shared-instruction reviewer: airport_claims_review. Reviewed source date: 2026-10-08.
 
 - [verify-42-60.md](../reviews/verify-42-60.md), SHA-256: `a5453f478e7bd26868b58222552721def69dfa9efd92ec165faa2fc5f0118e74`.
-- [claims-review.json](../reviews/claims-review.json), SHA-256: `00acb437b7117f900ccbd3c33676c7be0761670c2345a3e05beb74b46ad35541`.
-- [claims-review.md](../reviews/claims-review.md), SHA-256: `c288362d1f8d5fddacfbd673afbb425ac5a0c9697ef37fc90b07dcf896c4fb4b`.
+- [claims-review.json](../reviews/claims-review.json), SHA-256: `73dc51b7b1e92bda19baac9a3195ebda4e6cb2cb6f58fd735f48971de0951168`.
+- [claims-review.md](../reviews/claims-review.md), SHA-256: `fe1e4dcb3ca013bc9d427b36ae0450f583c4132ad70b063c953442f1522a87c2`.
 - [verify-shared-instructions.md](../reviews/verify-shared-instructions.md), SHA-256: `b841038168857fc96d291a6e0f065de008cd4e609d052265babf60a20d41253d`.
 
 Canonical teaching content: `d70d3bf7c5f9d7c8acdecf1d1be7b633b39b0bb1d522db520d8c2f22727c3aff`. English factual-content snapshot: `d4d9dd359f27b05cdb19b89f25bfa7f1c1ace7f078fafd73a854832140340128`. Current video.json: `9e7dc34680bca23d7bfd0ab09904c95eae60be030fc60adcc85b372d574c303c`. Complete artifact and claim bindings are in [review-binding.json](review-binding.json).
@@ -22,6 +22,6 @@ No opinion/brief mismatch was identified in the cited reviews. Fictional flight 
 
 Second fact-check round required by more-than-three-factual-changes rule: no. This entry inherits completed source-review corrections; it makes no new factual edits.
 
-Official lint on the current generated sources: 0 errors, 60 warnings. Warning details are in review-binding.json; warnings are not silently relabelled as cleared.
+Official lint on the current generated sources: 0 errors, 59 warnings. Warning details are in review-binding.json; warnings are not silently relabelled as cleared.
 
 Listener findings and the actual scope of translation/quiz review remain in the cited independent reports. Common instructions allow learners to pause for long lines; final natural pace, number/letter pronunciation, multilingual slots, subtitles, measured 600-second duration, visual quality and final/package QA remain unverified. No approval record was created.
