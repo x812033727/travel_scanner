@@ -35,12 +35,13 @@ const VERIFY = `# verify-1: fixture-minimal
 `;
 
 /** A video that went through every stage: the files the stages write, without any media tool. */
-function finishedVideo({ seconds = {} } = {}) {
+function finishedVideo({ seconds = {}, languages = { locales: Object.fromEntries(LOCALES.filter((locale) => locale !== "zh-TW").map((locale) => [locale, { metadata: true, captions: true, dub: false }])) } } = {}) {
   const box = sandbox();
   const doc = fixture();
   const lexicon = fixtureLexicon();
   const workdir = box.workdir;
   mkdirSync(workdir, { recursive: true });
+  if (languages) atomicWrite(path.join(workdir, "languages.json"), JSON.stringify(languages));
   // Translations of every line and field, current with the zh-TW text.
   for (const locale of LOCALES.filter((each) => each !== "zh-TW")) {
     const lines = Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, { source_hash: textHash(line.text), text: `line ${line.id}` }]));
@@ -105,6 +106,30 @@ function context(box, fetchImpl) {
 }
 
 const readReport = (workdir) => JSON.parse(readFileSync(path.join(workdir, "review", "qa.json"), "utf8"));
+
+test("final QA permits narration captions before selection, then requires exactly the chosen parts", async () => {
+  const { box, workdir } = finishedVideo({ languages: null });
+  await approve({ gate: "audio", docDir: box.dir, workdir });
+  for (const locale of LOCALES.filter((locale) => locale !== "zh-TW")) {
+    for (const extension of ["srt", "vtt"]) rmSync(path.join(workdir, "captions", `${locale}.${extension}`));
+  }
+  const server = site({ policy: () => Response.json({ stance: 0.9, demo: 0.8, advice: 0.1, sponsored: 0, passed: true, note: "pass" }) });
+  const { ctx } = context(box, server.fetchImpl);
+  assert.equal(await main(["qa", "--slug", box.slug], ctx), EXIT.ok);
+  let report = readReport(workdir);
+  assert.match(report.items.find((item) => item.id === "captions").detail, /caption files for zh-TW,/);
+  assert.match(report.items.find((item) => item.id === "metadata").detail, /for zh-TW;/);
+  assert.equal(existsSync(path.join(workdir, "languages.json")), false, "QA does not make an owner choice");
+
+  atomicWrite(path.join(workdir, "languages.json"), JSON.stringify({ locales: { en: { metadata: true, captions: false, dub: false } } }));
+  assert.equal(await main(["qa", "--slug", box.slug], ctx), EXIT.ok, "metadata alone does not require English captions");
+  atomicWrite(path.join(workdir, "languages.json"), JSON.stringify({ locales: { en: { metadata: true, captions: true, dub: false } } }));
+  assert.equal(await main(["qa", "--slug", box.slug], ctx), EXIT.lint);
+  report = readReport(workdir);
+  assert.deepEqual(report.items.filter((item) => !item.ok).map((item) => item.id), ["captions"]);
+  assert.match(report.items.find((item) => item.id === "captions").detail, /en: no caption file/);
+  assert.doesNotMatch(report.items.find((item) => item.id === "captions").detail, /ja:|ko:|zh-CN:/);
+});
 
 test("direct qa and package refuse an old cut after a same-duration narration retake is approved", async () => {
   const { box, workdir } = finishedVideo();

@@ -1,6 +1,7 @@
 // External channel bookends are normalized once to the scene encoder, then joined around a
 // body cut by video copy. Audio is decoded and trimmed on the 48 kHz frame grid before one
-// final encode, avoiding AAC padding at either seam. The body and its timeline stay intact.
+// final encode, avoiding AAC padding at either seam. A unity-gain limiter catches hot bookend
+// transients and leaves headroom for the final AAC encode. The body and its timeline stay intact.
 import { randomUUID } from "node:crypto";
 import { existsSync, mkdirSync, renameSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
@@ -12,6 +13,13 @@ import { FPS, SAMPLE_RATE, SAMPLES_PER_FRAME } from "../core/timeline.mjs";
 import { joinList } from "../compile/plan.mjs";
 import { locateFfmpeg, runTool } from "./ffmpeg.mjs";
 import { ENCODER_VERSION, probeArgs, segmentArgs } from "./plan.mjs";
+
+// The selected bookends are not loudness-normalized again: only peaks above -2 dBFS are
+// reduced. Fourfold oversampling catches inter-sample peaks; AAC can add peaks on decoding,
+// so leave 1 dB below the programme's -1 dBTP ceiling and still measure the finished file.
+// alimiter's default auto-level would boost the result back to 0 dBFS. Latency compensation
+// flushes its lookahead at EOF, keeping every sample and the exact branding/CC seam offsets.
+export const BRANDING_PEAK_FILTER = "aresample=192000,alimiter=limit=0.7943282347242815:level=false:latency=true,aresample=48000";
 
 /** Verify the bytes and declared frames, rather than trusting the installed JSON. */
 export async function verifyBrandingAssets(branding, { tools, exec = runTool } = {}) {
@@ -58,7 +66,7 @@ export function brandingJoinArgs({ bodyFile, bodyFrames, branding, outFile, vide
     filters.push(`[${index + inputOffset}:a:0]aresample=${SAMPLE_RATE},aformat=sample_fmts=fltp:channel_layouts=stereo,atrim=end_sample=${samples},apad=whole_len=${samples},atrim=end_sample=${samples},asetpts=PTS-STARTPTS[a${index}]`);
     labels.push(`[a${index}]`);
   });
-  filters.push(`${labels.join("")}concat=n=3:v=0:a=1[a]`);
+  filters.push(`${labels.join("")}concat=n=3:v=0:a=1,${BRANDING_PEAK_FILTER}[a]`);
   args.push("-filter_complex", filters.join(";"));
   if (videoList) args.push("-map", "0:v:0", "-c:v", "copy");
   else args.push("-vn");

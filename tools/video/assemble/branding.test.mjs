@@ -6,7 +6,10 @@ import path from "node:path";
 import test from "node:test";
 
 import { brandingHash } from "../core/branding.mjs";
-import { brandingJoinArgs, brandingSegmentArgs, commitBrandedVideo, verifyBrandingAssets } from "./branding.mjs";
+import { parseWav } from "../tts/wav.mjs";
+import { BRANDING_PEAK_FILTER, brandingJoinArgs, brandingSegmentArgs, commitBrandedVideo, verifyBrandingAssets } from "./branding.mjs";
+import { locateFfmpeg, runTool, ToolMissing } from "./ffmpeg.mjs";
+import { ebur128Args, parseEbur128 } from "./plan.mjs";
 
 const selected = { schema_version: 1, id: "mokaair", intro: { file: "intro.mp4", sha256: "a".repeat(64), frames: 150 }, outro: { file: "outro.mp4", sha256: "b".repeat(64), frames: 90 } };
 
@@ -18,7 +21,60 @@ test("the wrapper copies normalized pictures but trims decoded audio to exact sa
   assert.match(filter, /asetpts=PTS-STARTPTS/);
   assert.match(args.join(" "), /-map 0:v:0 -c:v copy/);
   assert.match(args.join(" "), /-c:a aac -b:a 384k -ar 48000 -ac 2/);
-  assert.doesNotMatch(filter, /loudnorm/, "the selected audio stays at its approved volume");
+  assert.doesNotMatch(filter, /loudnorm/, "the selected audio is not loudness-normalized again");
+  assert.ok(filter.endsWith(`concat=n=3:v=0:a=1,${BRANDING_PEAK_FILTER}[a]`));
+  assert.match(filter, /alimiter=.*:level=false:latency=true/, "no makeup gain or lookahead delay");
+});
+
+test("real AAC branding limits decoded true peaks without moving the body or losing tail samples", async (t) => {
+  let tools;
+  try { tools = await locateFfmpeg(); }
+  catch (error) { if (error instanceof ToolMissing) return t.skip(error.message); throw error; }
+  const directory = mkdtempSync(path.join(os.tmpdir(), "branding-true-peak-"));
+  t.after(() => rmSync(directory, { recursive: true, force: true }));
+  const bodyFrames = 120;
+  const clips = [["intro", 150, 997], ["body", bodyFrames, 631], ["outro", 90, 431]];
+  const files = {};
+  for (const [role, frames, hz] of clips) {
+    const file = path.join(directory, `${role}.wav`);
+    files[role] = { file, frames };
+    // Quiet distinct tones establish each seam; sharp, loud bursts in the bookends reproduce
+    // the decoded-AAC peak failure while leaving the body below the limiter threshold.
+    const signal = `0.12*sin(2*PI*${hz}*t)+${role === "body" ? "0" : "0.9*sin(2*PI*12000*t)*between(t,1,1.02)"}`;
+    await runTool(tools.ffmpeg, ["-hide_banner", "-y", "-loglevel", "error", "-f", "lavfi", "-i", `aevalsrc='${signal}':s=48000:d=${frames / 30}`, "-af", "pan=stereo|c0=c0|c1=c0", "-c:a", "pcm_s16le", file]);
+  }
+  const branding = { ...selected, intro: files.intro, outro: files.outro };
+  const options = { bodyFile: files.body.file, bodyFrames, branding, outFile: path.join(directory, "limited.m4a") };
+  const args = brandingJoinArgs(options);
+  await runTool(tools.ffmpeg, args);
+  const limited = parseEbur128((await runTool(tools.ffmpeg, ebur128Args(options.outFile))).stderr);
+  assert.ok(limited.truePeak <= -1, `decoded AAC true peak ${limited.truePeak} dBTP`);
+  // Prove this signal detects the original failure rather than merely measuring quiet audio.
+  const unprotected = [...args];
+  const graph = unprotected.indexOf("-filter_complex") + 1;
+  unprotected[graph] = unprotected[graph].replace(`,${BRANDING_PEAK_FILTER}[a]`, "[a]");
+  unprotected[unprotected.length - 1] = path.join(directory, "unprotected.m4a");
+  await runTool(tools.ffmpeg, unprotected);
+  const before = parseEbur128((await runTool(tools.ffmpeg, ebur128Args(unprotected.at(-1)))).stderr);
+  assert.ok(before.truePeak > -0.5, `unprotected AAC must reproduce failed ceiling, got ${before.truePeak}`);
+  t.diagnostic(`decoded AAC peak: original ${before.truePeak} dBTP, limited ${limited.truePeak} dBTP`);
+  const wavFile = path.join(directory, "limited.wav");
+  await runTool(tools.ffmpeg, brandingJoinArgs({ ...options, outFile: wavFile, outputCodec: ["-c:a", "pcm_s16le"] }));
+  const wav = parseWav(readFileSync(wavFile));
+  assert.equal(wav.sampleRate, 48000);
+  assert.equal(wav.channels, 2);
+  assert.equal(wav.samples.length / 2, 576000, "limiter flushes the tail without adding or dropping samples");
+  for (const [sample, hz] of [[240000 + 4800, 631], [432000 + 4800, 431]]) {
+    const segmentStart = hz === 631 ? 240000 : 432000;
+    // Check a full cycle at an absolute position after each seam. An uncompensated 5 ms
+    // lookahead is hundreds of samples late and cannot match both distinct tone phases.
+    let maximumError = 0;
+    for (let n = sample; n < sample + 1600; n++) {
+      const expected = Math.round(0.12 * Math.sin(2 * Math.PI * hz * (n - segmentStart) / 48000) * 32768);
+      maximumError = Math.max(maximumError, Math.abs(wav.samples[n * 2] - expected));
+    }
+    assert.ok(maximumError <= 3, `tone ${hz} is aligned at sample ${sample}; maximum PCM error ${maximumError}`);
+  }
 });
 
 test("dub wrappers support WAV and MP3 without extra input numbering or MP4-only flags", () => {
