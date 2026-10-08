@@ -107,15 +107,41 @@ node --test tools/video/automation/automation.test.mjs tools/video/automation/se
   languages) and save its progress, which the first lane's save after the call wrote over; and
   a loop that listed the videos before an earlier iteration's await could save a copy another
   lane had moved on since.
-  - The other loops of `bookkeeping()` are left as they are: the drop loop has no await between
-    its listing and its save, and the retry and blocked-report loops act only on blocked videos,
-    which no other lane moves (`stepUnit` takes `active` and `done` ones, and a lane still
-    holding a video it has just blocked fails `free`).
+  - The blocked-report loop goes through it too (after the review, below). The drop loop has no
+    await between its listing and its save. The retry loop is left as it is: its unheld awaits
+    touch only videos blocked on disk, which no other lane takes, and a copy it listed before an
+    earlier video's RUN_PENDING can differ from the saved one only in the report fields, which
+    the retry deletes; a retry request the first lane has not consumed cannot be on the site
+    for a video another lane is blocking right now.
   - Tests (`automation.test.mjs`): the site call held in flight, as a compilation's
     `compilationDone` and as a pasted address's "on YouTube" report followed by
-    `compilationDone`: the other lane leaves the video, and nothing it saves is lost; and a
-    compilation whose call failed while the other lane moved the next one: that one is told from
-    the `auto.json` read once held, with its languages kept. Both fail on the old code, as do
-    the mutations "held, the listed copy kept" and "read again, not held".
+    `compilationDone`: the other lane leaves the video, and nothing it saves is lost; a
+    compilation whose call failed while the other lane moved the next one (the older one
+    deferred, so the other lane passes it over held or not): that one is told from the
+    `auto.json` read once held, with its languages kept; and a blocked video's report (below).
+    Each fails on the old code, and the mutations "held, the listed copy kept" and "read again,
+    not held" are each caught.
   - The automation test the pending-reason ticket added wrapped `site.fetchImpl` in a function
     that adds nothing; that line is removed here (its re-bind noted it).
+- 2026-10-07, after the independent review (claude-opus-5-5-bookkeeping). Three findings, all
+  minor, each confirmed by a second agent:
+  - The blocked-report loop listed the videos once and reported each from that copy after an
+    earlier video's report had failed. Another lane could block a video, be listed while it
+    still held it and reported, then save its report's outcome (a 5-minute backoff after a
+    failed report, or the pending flag cleared) and let it go: the first lane reported it again
+    at once from the copy it listed and saved that copy, the backoff gone. The Note above said a
+    lane still holding the video fails `free`; true, but `free` is asked when the loop reaches
+    the video, not when it listed it. The loop now acts through `holding` with its condition
+    (`unreported`) checked again on the copy read once held. Test: the other lane's report
+    failing and succeeding; before, the video was reported twice and its backoff erased.
+    Left as it is: right after another lane's successful report, a site list fetched at the
+    start of the unit can still read the video as not blocked and report it once more (the
+    same content, nothing paid or moved).
+  - The second test's "Before:" described a mutant: on the old code the other lane simply took
+    the video whose call was in flight. Its older compilation is now deferred, so the old code
+    fails on what the comment says (the newer one's languages written over and sent again).
+  - The Note's reason for leaving the blocked-report loop, corrected above.
+  - Reviewed and sound: no lane's busy entry is deleted by another, busy is let go on every
+    throw, the re-check on the re-read copy, the return lines, and that nothing else calls
+    recordVideoId or tellCompilationDone outside a held unit. Not changed (older than this
+    ticket): recordVideoId takes no project lease and does not look at the video's STOP file.

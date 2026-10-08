@@ -5686,8 +5686,9 @@ test("the first lane's bookkeeping tells the site of a compilation from the auto
   const box = sandbox();
   const clock = { now: Date.parse("2026-10-07T10:00:00Z") };
   const { ctx } = context(box, async () => new Response("{}"), clock);
-  for (const [slug, series, created] of [["older-binge", "wuxia", "2026-10-06T00:00:00Z"], ["newer-binge", "xianxia", "2026-10-07T00:00:00Z"]]) {
-    atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "done", created_at: created, compilation: { series }, notes: [] }));
+  // The older one waits on its own (a deferral): the other lane passes it over, held or not.
+  for (const [slug, series, created, wait] of [["older-binge", "wuxia", "2026-10-06T00:00:00Z", { deferred_until: "2026-10-08T00:00:00Z" }], ["newer-binge", "xianxia", "2026-10-07T00:00:00Z", {}]]) {
+    atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "done", created_at: created, compilation: { series }, notes: [], ...wait }));
   }
   let called;
   let release;
@@ -5737,11 +5738,77 @@ test("the first lane's bookkeeping tells the site of a compilation from the auto
   assert.deepEqual(told, ["wuxia", "xianxia"]);
   // Before: the first lane saved the newer compilation from the copy it listed, without its languages, and sent them again.
   assert.deepEqual([state("newer-binge").compilation_told, state("newer-binge").languages_sent], [true, true]);
-  assert.deepEqual([state("older-binge").compilation_told, state("older-binge").languages_sent], [undefined, undefined], "the failed call is not remembered as told");
+  assert.equal(state("older-binge").compilation_told, undefined, "the failed call is not remembered as told");
   assert.deepEqual([...shared.busy], []);
-  assert.equal(await second.step(), "older-binge: languages sent by the second lane");
-  assert.equal(await second.step(), null);
-  assert.deepEqual(sent, ["second: newer-binge", "second: older-binge"], "each video's languages once");
+  assert.equal(await second.step(), null, "the newer one's languages are not sent again; the older one still waits");
+  assert.deepEqual(sent, ["second: newer-binge"]);
+});
+
+test("the first lane reports a blocked video from the auto.json it reads once it holds it: the lane that blocked it, and saved its own report's outcome since, keeps it", async () => {
+  // "fails": the blocking lane's report failed and it saved a backoff; "succeeds": its report went through.
+  for (const outcome of ["fails", "succeeds"]) {
+    const box = sandbox();
+    const clock = { now: Date.parse("2026-10-07T10:00:00Z") };
+    const { ctx } = context(box, async () => new Response("{}"), clock);
+    atomicWrite(path.join(box.work, "older-blocked", "auto.json"), JSON.stringify({ slug: "older-blocked", status: "blocked", blocked: "an older trouble", blocked_report_pending: true, created_at: "2026-10-01T00:00:00Z", notes: [] }));
+    atomicWrite(path.join(box.work, "newer-video", "auto.json"), JSON.stringify({ slug: "newer-video", status: "active", created_at: "2026-10-02T00:00:00Z", notes: [] }));
+    const gate = () => {
+      const each = {};
+      each.reached = new Promise((resolve) => (each.open = resolve));
+      each.held = new Promise((resolve) => (each.release = resolve));
+      return each;
+    };
+    const blocking = gate();
+    const older = gate();
+    const reports = [];
+    const api = {
+      videos: async () => [],
+      report: async (slug, project) => {
+        reports.push(`${slug}: ${project.stage}`);
+        if (slug === "newer-video" && reports.length === 1) {
+          blocking.open();
+          await blocking.held;
+          if (outcome === "fails") throw new AutomationError("Bad Gateway", { status: 502 });
+        }
+        if (slug === "older-blocked") {
+          older.open();
+          await older.held;
+          throw new AutomationError("Bad Gateway", { status: 502 });
+        }
+      },
+      settleRuns: async () => {},
+    };
+    const settings = { enabled: true, max_waiting_drafts: 0 };
+    const shared = { busy: new Set(), skipped: new Set(), pendingUntil: new Map() };
+    const first = new Automation(ctx, api, settings, { ...shared });
+    const second = new Automation(ctx, api, settings, { ...shared, secondary: true });
+    for (const lane of [first, second]) {
+      lane.due = () => false;
+      lane.languages = async () => null;
+    }
+    first.advance = async () => null;
+    second.advance = async (video) => second.block(video, "a trouble of its own");
+    const state = (slug) => readJson(path.join(box.work, slug, "auto.json"));
+
+    // The second lane blocks the newer video and holds it while it reports.
+    const secondUnit = second.step();
+    await blocking.reached;
+    // The first lane lists both blocked videos, then waits on the older one's report.
+    const firstUnit = first.step();
+    await older.reached;
+    // The second lane's report ends; it saves the outcome and lets the video go.
+    blocking.release();
+    assert.match(await secondUnit, outcome === "fails" ? /^newer-video: blocked — a trouble of its own; could not report it yet$/ : /^newer-video: blocked — a trouble of its own$/, outcome);
+    const saved = state("newer-video");
+    assert.equal(saved.blocked_report_retry_at, outcome === "fails" ? "2026-10-07T10:05:00.000Z" : undefined, outcome);
+    // The older one's report fails, and the first lane's loop comes to the newer one.
+    older.release();
+    assert.equal(await firstUnit, null, outcome);
+    // Before: the copy listed while the second lane still held it was reported at once and saved, its backoff gone.
+    assert.deepEqual(reports, ["newer-video: blocked", "older-blocked: blocked"], `${outcome}: the blocked video is reported once`);
+    assert.deepEqual(state("newer-video"), saved, `${outcome}: what the second lane saved stands`);
+    assert.deepEqual([...shared.busy], [], outcome);
+  }
 });
 
 test("a deferral for trouble that is everyone's waits and shows on the card like any other and never blocks; the video's own trouble in the same row still counts to its own limit", async () => {

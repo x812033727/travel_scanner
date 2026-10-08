@@ -1462,14 +1462,20 @@ export class Automation {
     }
     // A failed PUT never resumes media: reconcile only the saved reason. Legacy blocked
     // states have no pending flag, so compare the fresh site checklist as well.
-    for (const state of automatedVideos(this.workBase)) {
+    const unreported = (state) => {
       const siteVideo = siteBySlug.get(state.slug);
-      if (state.status !== "blocked" || !state.blocked || !free(state)) continue;
-      if (!siteVideo && !state.blocked_report_pending) continue;
+      if (state.status !== "blocked" || !state.blocked) return false;
+      if (!siteVideo && !state.blocked_report_pending) return false;
       const matches = siteVideo?.stage === "blocked" && siteVideo.checklist?.some((item) => item.key === "blocked" && item.label === blockedLabel(state) && item.done === false);
-      if (matches && !state.blocked_report_pending) continue;
-      if (Date.parse(state.blocked_report_retry_at) > this.ctx.now().getTime()) continue;
-      if (await this.reportBlocked(state)) return `${state.slug}: blocked reason reported`;
+      if (matches && !state.blocked_report_pending) return false;
+      return !(Date.parse(state.blocked_report_retry_at) > this.ctx.now().getTime());
+    };
+    // Read again once held (holding): the list outlives an earlier video's failed report, and a
+    // lane that blocked a video meanwhile may have saved its own report's outcome since and let
+    // the video go. Its backoff was written over, and the report sent again at once.
+    for (const listed of automatedVideos(this.workBase)) {
+      if (!unreported(listed) || !free(listed)) continue;
+      if (await this.holding(listed.slug, (state) => unreported(state) && this.reportBlocked(state))) return `${listed.slug}: blocked reason reported`;
       // Continue other videos after a failed report; a stopped video cannot starve them.
     }
     // The owner uploaded a finished video and pasted its address on /admin/videos: the id goes
@@ -1495,8 +1501,8 @@ export class Automation {
 
   /**
    * `act` on a video's auto.json as read once this lane holds the video, holding it until `act`
-   * is over: the bookkeeping's site calls (recordVideoId, tellCompilationDone) save the video
-   * after they await the site. Until 2026-10-07 they held nothing, so a second lane could take
+   * is over: the bookkeeping's site calls (reportBlocked, recordVideoId, tellCompilationDone)
+   * save the video after they await the site. Until 2026-10-07 they held nothing, so a second lane could take
    * the video during the call (a done video's languages) and save its progress, and the copy
    * this lane then saved, read before the call, wrote over it; a loop that lists the videos
    * before its first await could also save a copy another lane had moved on since. Resolves to
