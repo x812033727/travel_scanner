@@ -1,13 +1,13 @@
 ---
 id: 2026-10-08-video-audio-closing-particle-boundaries
 title: Mandarin closing particles at clause boundaries
-status: review
+status: done
 priority: P1
 area: tools
 owner: codex-video-audio-matcher
 claimed_at: 2026-10-08T07:38:25Z
 created_at: 2026-10-08T07:37:48Z
-completed_at:
+completed_at: 2026-10-08T07:46:25Z
 branch: codex/stalled-videos-completion-20261008
 depends_on: []
 scope:
@@ -29,7 +29,7 @@ of line tgby were flagged despite matching the spoken words and tones.
 - [x] Intended words and meaningful numeral, negation and noun differences stay significant.
 - [x] Existing raw/end-only candidates and non-Chinese behavior remain unchanged.
 - [x] Targeted regressions pass; the unchanged full-test Windows filesystem limitation is recorded.
-- [ ] Independent duration receipt review and parent commit are complete.
+- [x] Independent duration receipt review and parent commit are complete.
 
 ## Steps
 
@@ -70,3 +70,9 @@ Using the bundled Node 24 runtime:
   the offline six-flag outcomes are unchanged. Parent and independent peer are
   reviewing the revised source. Duration receipt changes remain reserved for
   an independent reviewer. No commit has been made by the implementation subagent.
+
+- Parent review completed after the lexical correction: source commit eccafa3c7;
+  independent duration receipt b9940f18c, baseline 52cfd7eea. All108 baseline
+  bindings matched raw Git blobs; only check.test.mjs was rebound. Six matcher
+  regressions, eight duration/review regressions and all473 duration plans pass.
+  A separate peer confirmed the real six-line outcomes without provider calls.

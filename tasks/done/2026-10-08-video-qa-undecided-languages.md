@@ -1,13 +1,13 @@
 ---
 id: 2026-10-08-video-qa-undecided-languages
 title: QA requires only narration captions before language selection
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: codex-stalled-video-completion
 claimed_at: 2026-10-08T06:43:25Z
 created_at: 2026-10-08T06:43:24Z
-completed_at:
+completed_at: 2026-10-08T07:46:25Z
 branch: codex/stalled-videos-completion-20261008
 depends_on: []
 scope:
@@ -31,14 +31,14 @@ but its captions item failed for en/ja/ko/zh-CN.
 - [x] Undecided final QA checks narration and mandatory zh-TW only.
 - [x] Explicit selected metadata/caption parts remain enforced separately.
 - [x] QA makes no owner choice and retains all other quality and duration gates.
-- [ ] Independent duration review bindings cover the two changed QA files.
+- [x] Independent duration review bindings cover the two changed QA files.
 
 ## Steps
 
 - [x] Collision-check and claim the two QA files.
 - [x] Add real CLI regression for no choice, metadata-only English, and selected CC.
 - [x] Run all15 QA CLI tests, zero failures/skips; independent source review passes.
-- [ ] Rebind duration review through a different reviewer, not the author.
+- [x] Rebind duration review through a different reviewer, not the author.
 
 ## How to verify
 
@@ -56,3 +56,8 @@ their absence to fail without requiring unchosen languages.
   8failed and13skipped; it is not reported as green. Existing Windows c: ESM
   hang was verified and only its owned test child stopped after40minutes.
   Other observed failures are preserved in the private raw log and tracked separately.
+- Independent duration reviewer committed the two-file review at52cfd7eea.
+  All108 baseline bindings were checked against raw parent Git bytes; all473
+  duration plans and all21 QA/duration tests passed. Actual owner selections
+  subsequently made in the backend were synchronized faithfully into the
+  production workspaces; selected missing captions continue to fail QA.

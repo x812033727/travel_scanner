@@ -1,13 +1,13 @@
 ---
 id: 2026-10-08-video-branding-true-peak
 title: Limit true peaks after video branding audio join
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: codex-video-peak-fix
 claimed_at: 2026-10-08T06:08:54Z
 created_at: 2026-10-08T06:08:53Z
-completed_at:
+completed_at: 2026-10-08T07:47:09Z
 branch: codex/stalled-videos-completion-20261008
 depends_on: []
 scope:
@@ -34,8 +34,8 @@ peak introduced by the bookends or this last encode.
       the fix; decoded PCM keeps its exact sample count and body/outro tone phases.
 - [x] The built-in branding smoke measures decoded AAC peaks, exact video frames,
       unchanged retained body bytes, sample count, and CC/chapter offsets.
-- [ ] The production Cloudflare Workers candidate passes normal assembly and QA
-      with the corrected wrapper and reaches its ordinary review/package gates.
+- [x] The production candidate passes normal assembly and QA's measured audio
+      item with the corrected wrapper and reaches its ordinary final-review gate.
 
 ## Steps
 
@@ -44,7 +44,7 @@ peak introduced by the bookends or this last encode.
       or uncompensated lookahead delay; retain normal assembly checks.
 - [x] Run focused branding, assembly, drama and compilation tests and the real
       offline MP4/WAV smoke with synthetic bookends.
-- [ ] Independently review the source and execute the normal production pipeline
+- [x] Independently review the source and execute the normal production pipeline
       using a private copy, without deploying or changing shared production code.
 
 ## How to verify
@@ -77,3 +77,13 @@ for the source-bound production project; read actual checks and review decisions
   `1d5c89b5e54ebfee67fae5fececa7b4e8d5e1dba7dd145dca6e459bfe5d4658c`.
 - No paid/provider calls, production mutations, commits, deploys or worker
   restarts were performed by the implementation agent.
+- Parent execution used the exact reviewed private runtime inside the existing
+  video-worker, with normal checks: Cloudflare original556.967s/-14LUFS/-1.4dBTP,
+  Mods550.233s/-14LUFS/-1.9dBTP, SEC507.133s/-14LUFS/-1.9dBTP and travel497.733s/
+  -14LUFS/-1.9dBTP. All four captions stages exited0. Cloudflare and Mods final
+  reviews were actually owner-approved in the backend. Other QA items and
+  selected languages retain their independent gates; this ticket fixes peaks.
+- Later Cloudflare pacing repair was exported into an isolated draft547s/
+  -14LUFS/-1.9dBTP. The old approved final hash remains untouched. No deployment
+  or approval transfer was performed. Detailed outside-Git stage receipts are
+  in C:/Users/x8120/mokaair-work/stalled-video-audit-20261008/.
