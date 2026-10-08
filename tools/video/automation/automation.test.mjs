@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
+import { spawn } from "node:child_process";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import { pathToFileURL } from "node:url";
 
 import { createHash, randomBytes } from "node:crypto";
 import { mkdirSync, rmSync, writeFileSync } from "node:fs";
@@ -5532,35 +5534,115 @@ function durableVideos(slugs) {
   return { box, ctx, site, server, clock, worker, journals, state: (slug) => automatedVideos(box.work).find((each) => each.slug === slug) };
 }
 
-test("a project another process holds is left alone with nothing sent or written, while the other videos move; it moves once that process lets go", async () => {
+// Observe failures and register cleanup before waiting for the child's lease marker.
+function leaseTestChild(t, script, { readyMs = 10_000, exitMs = 5_000 } = {}) {
+  const child = spawn(process.execPath, ["--input-type=module", "-e", script], { stdio: ["pipe", "pipe", "pipe"], windowsHide: true });
+  let stdout = "";
+  let stderr = "";
+  let failure;
+  let finished = false;
+  child.on("error", (error) => { failure = error; });
+  child.stdin.on("error", (error) => { failure = error; });
+  child.stderr.on("data", (chunk) => { stderr += chunk; });
+  const marked = new Promise((resolve) => {
+    child.stdout.on("data", (chunk) => {
+      stdout += chunk;
+      if (stdout.split(/\r?\n/).includes("held")) resolve();
+    });
+  });
+  const closed = new Promise((resolve) => child.on("close", (code, signal) => {
+    finished = true;
+    resolve({ code, signal });
+  }));
+  const problem = (message) => new Error(`${message}${failure ? `: ${failure.message}` : ""}${stderr ? `\n${stderr}` : ""}`);
+  const bounded = async (promise, ms, message) => {
+    let timer;
+    try {
+      return await Promise.race([promise, new Promise((_, reject) => {
+        timer = setTimeout(() => reject(problem(message)), ms);
+      })]);
+    } finally {
+      clearTimeout(timer);
+    }
+  };
+  t.after(async () => {
+    try {
+      if (!finished) {
+        child.kill("SIGKILL");
+        await bounded(closed, 5_000, "lease child did not close during cleanup");
+      }
+    } finally {
+      child.stdin.destroy();
+      child.stdout.destroy();
+      child.stderr.destroy();
+      if (!finished) child.unref();
+    }
+  });
+  return {
+    child,
+    closed,
+    ready: () => bounded(Promise.race([marked, closed.then(({ code, signal }) => {
+      throw problem(`lease child closed before ready (code=${code}, signal=${signal})`);
+    })]), readyMs, "lease child did not become ready"),
+    release: async () => {
+      if (finished) throw problem("lease child closed before release");
+      child.stdin.end("go\n");
+      const result = await bounded(closed, exitMs, "lease child did not close after release");
+      assert.deepEqual(result, { code: 0, signal: null }, problem("lease child failed after release").message);
+      if (failure) throw problem("lease child failed after release");
+    },
+  };
+}
+
+test("a lease child import failure rejects readiness with its diagnostic instead of hanging", async (t) => {
+  const missing = pathToFileURL(path.join(ROOT, "missing lease # 測試.mjs")).href;
+  const other = leaseTestChild(t, `import ${JSON.stringify(missing)};`);
+  await assert.rejects(other.ready(), /closed before ready.*code=1[\s\S]*ERR_MODULE_NOT_FOUND/);
+  assert.deepEqual(await other.closed, { code: 1, signal: null });
+});
+
+test("a lease child that never becomes ready is bounded and cleaned up", async (t) => {
+  let other;
+  await t.test("readiness times out", async (childTest) => {
+    other = leaseTestChild(childTest, "setInterval(() => {}, 1000);", { readyMs: 100 });
+    await assert.rejects(other.ready(), /did not become ready/);
+  });
+  assert.ok(other.child.exitCode !== null || other.child.signalCode !== null, "cleanup awaited child termination");
+});
+
+test("a lease child that ignores release is bounded and cleaned up", async (t) => {
+  let other;
+  await t.test("release times out", async (childTest) => {
+    other = leaseTestChild(childTest, 'process.stdout.write("held\\n"); setInterval(() => {}, 1000);', { exitMs: 100 });
+    await other.ready();
+    await assert.rejects(other.release(), /did not close after release/);
+  });
+  assert.ok(other.child.exitCode !== null || other.child.signalCode !== null, "cleanup awaited child termination");
+});
+
+test("a project another process holds is left alone with nothing sent or written, while the other videos move; it moves once that process lets go", async (t) => {
   const videos = durableVideos(["held-elsewhere", "free-video"]);
   // A manual recovery in another process holds the oldest video's project.
   const script = `
-    import { acquireProjectLease } from ${JSON.stringify(path.join(ROOT, "tools/video/core/project-lease.mjs"))};
+    import { acquireProjectLease } from ${JSON.stringify(pathToFileURL(path.join(ROOT, "tools/video/core/project-lease.mjs")).href)};
     const lease = acquireProjectLease(${JSON.stringify(path.join(videos.box.work, "held-elsewhere"))}, { owner: "manual recovery" });
     process.stdout.write("held\\n");
     process.stdin.on("data", () => { lease.release(); process.exit(0); });
   `;
-  const { spawn } = await import("node:child_process");
-  const other = spawn(process.execPath, ["--input-type=module", "-e", script], { stdio: ["pipe", "pipe", "inherit"] });
-  await new Promise((resolve) => other.stdout.on("data", (chunk) => String(chunk).includes("held") && resolve()));
-  const exited = new Promise((resolve) => other.on("exit", resolve));
+  const other = leaseTestChild(t, script);
+  await other.ready();
   const lease = path.join(videos.box.work, "held-elsewhere", "LEASE");
   const before = readFileSync(lease, "utf8");
-  try {
-    const worker = await videos.worker();
-    assert.equal(await worker.step(), "free-video: writer is still running; its saved receipt will be checked next round");
-    assert.equal(worker.halted, false);
-    assert.equal(await worker.step(), null, "the held video sits the run out");
-    assert.deepEqual(videos.journals("held-elsewhere"), [], "no request was prepared for it");
-    assert.equal(videos.server.jobs.size, 1, "one job, the free video's");
-    assert.equal(readFileSync(lease, "utf8"), before, "the other process's lease is untouched");
-    assert.equal(videos.state("held-elsewhere").status, "active", "held is neither blocked nor deferred");
-    assert.equal(videos.state("held-elsewhere").defer_count, undefined);
-  } finally {
-    other.stdin.write("go\n");
-    await exited;
-  }
+  const worker = await videos.worker();
+  assert.equal(await worker.step(), "free-video: writer is still running; its saved receipt will be checked next round");
+  assert.equal(worker.halted, false);
+  assert.equal(await worker.step(), null, "the held video sits the run out");
+  assert.deepEqual(videos.journals("held-elsewhere"), [], "no request was prepared for it");
+  assert.equal(videos.server.jobs.size, 1, "one job, the free video's");
+  assert.equal(readFileSync(lease, "utf8"), before, "the other process's lease is untouched");
+  assert.equal(videos.state("held-elsewhere").status, "active", "held is neither blocked nor deferred");
+  assert.equal(videos.state("held-elsewhere").defer_count, undefined);
+  await other.release();
   assert.equal(existsSync(lease), false);
   assert.equal(await (await videos.worker()).step(), "held-elsewhere: writer is still running; its saved receipt will be checked next round");
   assert.equal(videos.server.jobs.size, 2);
