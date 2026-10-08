@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { fixture } from "./fixtures/load.mjs";
-import { articlePath, articleUrl, ASSET_FIELDS, bodyLayout, checkYoutubeFields, composeDescription, creditBytes, creditedAssets, creditLine, dedupeLinks, descriptionHashtags, hashtagsFrom, pictureCredits, seriesHashtag, SERIES_HASHTAGS, splitFirstSentence, tagMokaairLinks, tagsLength, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH, titleWidth, uploadTags, urlKey, withUtm, youtubeWarnings } from "./metadata.mjs";
+import { articlePath, articleUrl, ASSET_FIELDS, bodyLayout, checkYoutubeFields, composeDescription, creditBytes, creditedAssets, creditLine, dedupeLinks, descriptionHashtags, hashtagsFrom, pictureCredits, seriesHashtag, SERIES_HASHTAGS, splitFirstSentence, tagMokaairLinks, tagsLength, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH, titleWidth, unlinkedSources, uploadTags, urlKey, withUtm, youtubeWarnings } from "./metadata.mjs";
 import { estimateTimeline } from "./timeline.mjs";
 
 test("tag length is counted YouTube's way: commas between tags, quotes around tags with spaces", () => {
@@ -64,7 +64,11 @@ test("every Mokaair link carries the video's UTM once, and the same page is link
   assert.equal(withUtm("not a url", "s"), "not a url");
   assert.equal(tagMokaairLinks("見 https://mokaair.com/zh-TW/life/x。再看 https://mokaair.com/zh-TW/life/y, 以及 https://openai.com/a.", "c"), "見 https://mokaair.com/zh-TW/life/x?utm_source=youtube&utm_medium=video&utm_campaign=c。再看 https://mokaair.com/zh-TW/life/y?utm_source=youtube&utm_medium=video&utm_campaign=c, 以及 https://openai.com/a.", "the sentence's punctuation stays outside the URL");
   assert.equal(urlKey("https://Mokaair.com/zh-TW/life/x/?utm_source=youtube#a"), "https://mokaair.com/zh-TW/life/x");
+  assert.equal(urlKey("https://mokaair.com/en/y?ref=1&utm_source=a&utm_medium=b&utm_campaign=c#top"), "https://mokaair.com/en/y?ref=1", "only the UTM parameters are dropped");
+  assert.notEqual(urlKey("https://www.ntm.gov.tw/cp.aspx?n=5444"), urlKey("https://www.ntm.gov.tw/cp.aspx?n=5445"), "two pages that differ only by their query are two pages");
+  assert.equal(urlKey("https://www.ntm.gov.tw/cp.aspx?Create=1&n=5444"), "https://www.ntm.gov.tw/cp.aspx?Create=1&n=5444");
   assert.equal(urlKey("nope"), "nope");
+  assert.equal(urlKey("nope/?utm_source=x&a=1#f"), "nope?a=1");
   const article = "https://mokaair.com/zh-TW/life/x?utm_source=youtube&utm_medium=video&utm_campaign=c";
   const body = "https://mokaair.com/zh-TW/life/x?utm_source=youtube\n鉤子。\n給誰看。\n\n完整文章：https://mokaair.com/zh-TW/life/x\n索引：https://mokaair.com/zh-TW/life/ai-terms-index\n🔗 https://mokaair.com/zh-TW/life/ai-terms-index/\n結尾。";
   assert.deepEqual(dedupeLinks(body, article), { body: "鉤子。\n給誰看。\n\n索引：https://mokaair.com/zh-TW/life/ai-terms-index\n結尾。", mentioned: false }, "link-only lines of the article and of a page already linked are dropped");
@@ -72,11 +76,33 @@ test("every Mokaair link carries the video's UTM once, and the same page is link
   assert.deepEqual(dedupeLinks("https://mokaair.com/zh-TW/life/index\n鉤子。索引在 https://mokaair.com/zh-TW/life/index 。"), { body: "鉤子。索引在 https://mokaair.com/zh-TW/life/index 。", mentioned: false }, "a bare first line is dropped when a sentence below links the same page");
   assert.deepEqual(dedupeLinks("https://mokaair.com/zh-TW/life/only\n鉤子。"), { body: "https://mokaair.com/zh-TW/life/only\n鉤子。", mentioned: false }, "a bare link to a page linked nowhere else stays");
   assert.deepEqual(dedupeLinks("https://mokaair.com/zh-TW/life/twice\n鉤子。\nhttps://mokaair.com/zh-TW/life/twice"), { body: "https://mokaair.com/zh-TW/life/twice\n鉤子。", mentioned: false }, "two bare lines: the first is kept");
+  const pages = "https://www.ntm.gov.tw/cp.aspx?n=5444\n鉤子。\n給誰看。\nhttps://www.ntm.gov.tw/cp.aspx?n=5445";
+  assert.deepEqual(dedupeLinks(pages), { body: pages, mentioned: false }, "two bare lines to pages that differ only by their query both stay");
   const composed = composeDescription({ body, article, sources: [{ title: "站內", url: "https://mokaair.com/zh-TW/life/z" }], locale: "zh-TW", tags: [] });
   assert.equal(composed, `鉤子。\n給誰看。\n\n索引：https://mokaair.com/zh-TW/life/ai-terms-index?utm_source=youtube&utm_medium=video&utm_campaign=c\n結尾。\n\n🔗 完整文章：${article}\n\n📚 參考資料\n站內：https://mokaair.com/zh-TW/life/z?utm_source=youtube&utm_medium=video&utm_campaign=c`, "the campaign comes from the article link when none is given");
   const mentioned = composeDescription({ body: "鉤子。算式在 https://mokaair.com/zh-TW/life/x 裡。", article, locale: "zh-TW", campaign: "other" });
   assert.equal(mentioned, "鉤子。\n算式在 https://mokaair.com/zh-TW/life/x?utm_source=youtube&utm_medium=video&utm_campaign=other 裡。", "the article mentioned in a sentence is its one appearance: no link line");
   assert.equal((composed.match(/mokaair\.com\/zh-TW\/life\/x/g) ?? []).length, 1);
+});
+
+test("a source that is the article, or a page the body links, is not listed again under 📚", () => {
+  const article = "https://mokaair.com/zh-TW/life/ai-term-embedding?utm_source=youtube&utm_medium=video&utm_campaign=ai-term-embedding";
+  const sources = [
+    { title: "Google Embeddings", url: "https://developers.google.com/machine-learning/crash-course/embeddings" },
+    { title: "Mokaair 嵌入向量", url: "https://mokaair.com/zh-TW/life/ai-term-embedding" },
+    { title: "Mokaair 嵌入向量（再一次）", url: "https://mokaair.com/zh-TW/life/ai-term-embedding/?utm_source=newsletter" },
+  ];
+  const composed = composeDescription({ body: "鉤子。\n給誰看。", article, sources, locale: "zh-TW" });
+  assert.equal(composed, `鉤子。\n給誰看。\n\n🔗 完整文章：${article}\n\n📚 參考資料\nGoogle Embeddings：https://developers.google.com/machine-learning/crash-course/embeddings`, "the article is the 🔗 line and nothing else; a page is listed once");
+  assert.equal((composed.match(/ai-term-embedding/g) ?? []).length, 2, "the slug appears in the article URL and its campaign only");
+  const mentioned = composeDescription({ body: "鉤子。算式在 https://mokaair.com/zh-TW/life/ai-term-embedding 裡。", article, sources, locale: "zh-TW" });
+  assert.equal((mentioned.match(/mokaair\.com\/zh-TW\/life\/ai-term-embedding/g) ?? []).length, 1, "mentioned in a sentence: not listed under 📚 either");
+  const inBody = composeDescription({ body: "鉤子。\n給誰看。\n讀 https://developers.google.com/machine-learning/crash-course/embeddings。", sources: sources.slice(0, 1), locale: "zh-TW" });
+  assert.equal(inBody, "鉤子。\n給誰看。\n\n讀 https://developers.google.com/machine-learning/crash-course/embeddings。", "every source linked above: no 📚 section at all");
+  const pages = [{ title: "票價", url: "https://www.ntm.gov.tw/cp.aspx?n=5444" }, { title: "交通", url: "https://www.ntm.gov.tw/cp.aspx?n=5445" }];
+  assert.deepEqual(unlinkedSources(pages), pages, "pages that differ by their query are both listed");
+  assert.deepEqual(unlinkedSources(pages, new Set([urlKey("https://www.ntm.gov.tw/cp.aspx?n=5445&utm_source=youtube")])), [pages[0]]);
+  assert.deepEqual(unlinkedSources(), []);
 });
 
 test("the title rules are warnings: width, one question, the banned shapes, lists, episode numbers, and the tag count", () => {

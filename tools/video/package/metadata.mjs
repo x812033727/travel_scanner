@@ -63,7 +63,7 @@ export function composeMetadata({ doc, timeline, translations = {}, pack = null,
     };
     let description;
     if (compilation) {
-      const budget = descriptionWithinBudget(body, timeline, fields.chapterTitles, { locale, sources: fields.sources, tags: fields.tags, article: fields.article });
+      const budget = descriptionWithinBudget(body, timeline, fields.chapterTitles, { locale, sources: fields.sources, tags: fields.tags, article: fields.article, assets: fields.assets, category: fields.category, series: fields.series, campaign: fields.campaign });
       description = budget.description;
       if (locale === narration) zhChapters = budget.titles;
     } else description = composeDescription(fields);

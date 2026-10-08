@@ -22,9 +22,9 @@
 1. 第一行：本文的第一句，鉤子（結論或反轉）。搜尋結果與「顯示更多」之前只看得到前兩三行。
 2. 第二行：給誰看（「給…的人」）。
 3. 第三行起：本文其餘（錄製日期與涵蓋的版本——更新彙整、教學必寫；影片中提到的指令、連結、工具；揭露：業配、聯盟連結、贊助一律寫明，並在 Studio 勾「含付費宣傳」）。
-4. 🔗 對應的 Mokaair 文章，本文之後、**同一網址只出現一次**：`https://mokaair.com/<語系>/life/<slug>`（生活與 AI 類）或 `https://mokaair.com/<語系>/guides/<kind>/<slug>`（旅遊類）；語系一定要帶，例如 `zh-TW`。每個 mokaair.com 連結都帶 `?utm_source=youtube&utm_medium=video&utm_campaign=<影片 slug>`。
+4. 🔗 對應的 Mokaair 文章，本文之後、**同一網址在整份說明欄只出現一次**（本文、🔗、📚 合起來算；「同一頁」是去掉 `utm_*`、`#` 與尾斜線之後相同的網址，其他 query 算不同頁，例如 `?n=5444` 與 `?n=5445`；`urlKey`）：`https://mokaair.com/<語系>/life/<slug>`（生活與 AI 類）或 `https://mokaair.com/<語系>/guides/<kind>/<slug>`（旅遊類）；語系一定要帶，例如 `zh-TW`。每個 mokaair.com 連結都帶 `?utm_source=youtube&utm_medium=video&utm_campaign=<影片 slug>`。
 5. 📌 章節（見下）。
-6. 📚 參考資料（`sources`，`## 來源` 的內容）。
+6. 📚 參考資料（`sources`，`## 來源` 的內容）。列的是上面還沒連過的頁：`sources` 裡等於文章本身的那筆（內容包的來源常以文章自己收尾）、本文句子裡已連的頁，以及同一頁的第二筆都不再列（`unlinkedSources`）；全部都連過就沒有這一段。
 7. 📷 圖片來源（有圖庫照片才有）。
 8. 標籤行（放最後，會顯示在標題上方）：前兩個是 `tags` 的前兩個題目詞，第三個是系列 hashtag，由 `category` 對映（`ai-terms` → `#AI名詞十分鐘`、`tutorial` → `#AI工具教學`、`ai-news` → `#AI新聞拆解`；表在 `metadata.mjs` 的 `SERIES_HASHTAGS`），沒有對映就只有兩個。
 

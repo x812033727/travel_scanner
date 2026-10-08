@@ -201,13 +201,24 @@ export function tagMokaairLinks(text, campaign) {
   });
 }
 
-/** What makes two links the same page: scheme, host and path, without the query (the UTM) or a trailing slash. */
+const UTM_PARAM = /^utm_/i;
+
+/**
+ * What makes two links the same page: scheme, host, path and query, without the UTM parameters,
+ * the fragment or a trailing slash. The rest of the query stays, since many sites page by it
+ * alone (ntm.gov.tw/cp.aspx?n=5444 and ?n=5445 are two pages); only the tags this tool adds
+ * (utm_*) say nothing about which page it is.
+ */
 export function urlKey(url) {
   try {
     const parsed = new URL(url);
-    return `${parsed.protocol}//${parsed.hostname.toLowerCase()}${parsed.pathname.replace(/\/+$/, "")}`;
+    for (const name of [...parsed.searchParams.keys()]) if (UTM_PARAM.test(name)) parsed.searchParams.delete(name);
+    const query = parsed.searchParams.toString();
+    return `${parsed.protocol}//${parsed.hostname.toLowerCase()}${parsed.pathname.replace(/\/+$/, "")}${query ? `?${query}` : ""}`;
   } catch {
-    return String(url).replace(/[?#].*$/, "").replace(/\/+$/, "");
+    const [path, query = ""] = String(url).replace(/#.*$/, "").split("?");
+    const kept = query.split("&").filter((pair) => pair && !UTM_PARAM.test(pair));
+    return `${path.replace(/\/+$/, "")}${kept.length ? `?${kept.join("&")}` : ""}`;
   }
 }
 
@@ -337,12 +348,30 @@ function campaignOf(article) {
 }
 
 /**
+ * The sources the 📚 section lists: those whose page the description does not link already,
+ * as the article (a pack's sources end on the article itself: ai-term-embedding) or inside
+ * the body, and each page once. `linked` holds the urlKey of every page linked above.
+ */
+export function unlinkedSources(sources = [], linked = new Set()) {
+  const seen = new Set(linked);
+  const kept = [];
+  for (const source of sources) {
+    const key = urlKey(source.url);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    kept.push(source);
+  }
+  return kept;
+}
+
+/**
  * The description as it is uploaded (DECISIONS.md 2026-10-08; publish.md §說明欄): the hook, who
  * it is for, the rest of the body (bodyLayout); then the article link, once (dedupeLinks), where
- * the body's links are tagged with the video's UTM (tagMokaairLinks); the chapters, the sources,
- * the picture credits (`assets`, the stock photos' authors, vendors and licences: never burnt
- * into the video, always here) and last the hashtags, two topic words and the series
- * (descriptionHashtags). `campaign` is the video's slug; without it the article link's is used.
+ * the body's links are tagged with the video's UTM (tagMokaairLinks); the chapters, the sources
+ * not linked above (unlinkedSources), the picture credits (`assets`, the stock photos' authors,
+ * vendors and licences: never burnt into the video, always here) and last the hashtags, two
+ * topic words and the series (descriptionHashtags). `campaign` is the video's slug; without it
+ * the article link's is used.
  */
 export function composeDescription({ body, timeline, chapterTitles = {}, article, sources = [], assets = [], locale, tags = [], category = null, series = null, campaign = null }) {
   const labels = LABELS[locale] ?? LABELS.en;
@@ -354,7 +383,10 @@ export function composeDescription({ body, timeline, chapterTitles = {}, article
   parts.push(tagMokaairLinks(rest ? `${head}\n\n${rest}` : head, utm));
   if (article && !deduped.mentioned) parts.push(`🔗 ${labels.article}${labels.colon}${article}`);
   if (timeline) parts.push(`📌 ${labels.chapters}\n${chapterText(timeline, chapterTitles)}`);
-  if (sources.length) parts.push(`📚 ${labels.sources}\n${sources.map((source) => `${source.title}${labels.colon}${tagMokaairLinks(source.url, utm)}`).join("\n")}`);
+  // A page the body or the article line links is not listed again (one page, one link).
+  const linked = new Set([...(article ? [article] : []), ...(deduped.body.match(ANY_LINK) ?? [])].map((link) => urlKey(link.replace(TRAILING_PUNCTUATION, ""))));
+  const listed = unlinkedSources(sources, linked);
+  if (listed.length) parts.push(`📚 ${labels.sources}\n${listed.map((source) => `${source.title}${labels.colon}${tagMokaairLinks(source.url, utm)}`).join("\n")}`);
   const credits = pictureCredits(assets, locale);
   if (credits) parts.push(credits);
   const hashtags = descriptionHashtags({ tags, category, series });
