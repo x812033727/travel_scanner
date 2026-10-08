@@ -33,6 +33,7 @@ import { checkLinks, descriptionUrls, linkChecker, linksDetail } from "./links.m
 import { paceDetail, paceProblems, slideStates } from "./pace.mjs";
 import { policyRequest, policyVerdict } from "./policy.mjs";
 import { thumbnailChecks } from "./thumbnail.mjs";
+import { thumbnailSeries } from "../render/plan.mjs";
 import { localizedThumbnail } from "../core/translations.mjs";
 
 export const QA_FILE = path.join("review", "qa.json");
@@ -101,13 +102,17 @@ function writeReport(ctx, doc, workdir, report, finalSha256) {
  * The thumbnail item, from the file render drew; then the same check once for each language's
  * own thumbnail render drew (frames/manifest.json thumbnail_locales). Those are extras the owner
  * uploads by hand on Studio's 「語言」 page, so what is wrong with one is a warning, never a fail:
- * the language still has the video's own thumbnail.
+ * the language still has the video's own thumbnail. A compilation's headline is its series'
+ * name by design (docs/videos/BINGE.md: 「仙門風雲 全集」 under a title that starts the same way),
+ * so the title-repeat warning is not asked of it.
  */
 export function thumbnailItem(doc, workdir, translations = {}) {
   const thumbnailFile = path.join(workdir, THUMBNAIL_FILE);
   if (!doc.thumbnail) return item("thumbnail", false, "video.json has no thumbnail; add one with the thumb template");
   if (!existsSync(thumbnailFile)) return item("thumbnail", false, `${THUMBNAIL_FILE} is missing; run render`);
-  const verdict = thumbnailChecks({ bytes: readFileSync(thumbnailFile), headline: doc.thumbnail.data?.headline });
+  const series = thumbnailSeries(doc);
+  const titleOf = (fields) => (isCompilation(doc) ? null : fields?.title ?? null);
+  const verdict = thumbnailChecks({ bytes: readFileSync(thumbnailFile), headline: doc.thumbnail.data?.headline, title: titleOf(doc.youtube), series });
   const warnings = [...verdict.warnings];
   const checked = [];
   for (const [locale, drawn] of Object.entries(readJson(path.join(workdir, ARTIFACTS.frames), null)?.thumbnail_locales ?? {})) {
@@ -116,7 +121,7 @@ export function thumbnailItem(doc, workdir, translations = {}) {
       warnings.push(`${locale} thumbnail: ${drawn.file} is missing; run render`);
       continue;
     }
-    const own = thumbnailChecks({ bytes: readFileSync(file), headline: localizedThumbnail(doc, translations[locale])?.data.headline });
+    const own = thumbnailChecks({ bytes: readFileSync(file), headline: localizedThumbnail(doc, translations[locale])?.data.headline, title: titleOf(translations[locale]), series, locale });
     checked.push(locale);
     if (!own.ok) warnings.push(`${locale} thumbnail (${drawn.file}): ${own.detail}`);
   }

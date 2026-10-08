@@ -357,8 +357,8 @@ export function mergeCaptions(perEpisode) {
  * falls back to 「第 N 集」 (in the locale's words). `titles` is the locale's own chapter titles
  * keyed by scene, as composeDescription takes them. Returns { titles, description, shortened }.
  */
-export function descriptionWithinBudget(body, timeline, titles = {}, { locale = "zh-TW", sources = [], tags = [], article = null } = {}) {
-  const compose = (chapterTitles) => composeDescription({ body, timeline, chapterTitles, article, sources, locale, tags });
+export function descriptionWithinBudget(body, timeline, titles = {}, { locale = "zh-TW", sources = [], tags = [], article = null, assets = [], category = null, series = null, campaign = null } = {}) {
+  const compose = (chapterTitles) => composeDescription({ body, timeline, chapterTitles, article, sources, assets, locale, tags, category, series, campaign });
   const overBudget = (description) => checkYoutubeFields({ title: "", description, tags: [] }).length > 0;
   const full = compose(titles);
   if (!overBudget(full)) return { titles, description: full, shortened: false };
@@ -381,7 +381,7 @@ export function lintCompilation(doc, context = {}) {
   const warn = (path, message) => warnings.push({ path, message });
   const spec = doc.compilation;
   const timeline = estimatedCompilationTimeline(doc);
-  const budget = descriptionWithinBudget(doc.youtube.description, timeline, {}, { sources: doc.sources ?? [], tags: doc.youtube.tags });
+  const budget = descriptionWithinBudget(doc.youtube.description, timeline, {}, { sources: doc.sources ?? [], tags: doc.youtube.tags, assets: doc.assets ?? [], category: doc.category ?? null, series: doc.series ?? null, campaign: doc.slug });
   for (const problem of checkYoutubeFields({ title: doc.youtube.title, description: budget.description, tags: doc.youtube.tags })) error("youtube", problem);
   if (budget.shortened) warn("youtube.description", `with every chapter titled the description would pass ${DESCRIPTION_MAX_BYTES} bytes, so the chapters fall back to 「第 N 集」`);
   if (doc.youtube.title === PLACEHOLDER_TITLE) warn("youtube.title", "still the placeholder; the worker plans the title, description and thumbnail first");

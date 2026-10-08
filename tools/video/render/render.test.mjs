@@ -16,8 +16,9 @@ import { localizedThumbnailHash, thumbnailSource, thumbnailSourceHash } from "..
 import { coverageProblems, localizedThumbnails } from "./cli.mjs";
 import { contactSheetHtml } from "./contact.mjs";
 import { bundledCoverage, covers, mergeRanges, parseUnicodeRanges, uncovered } from "./fonts.mjs";
-import { assetFile, localeThumbnailFile, renderPlan, renderProblems, sceneAssets, stillFile, themeHash, thumbnailVariantFile, transitionFile } from "./plan.mjs";
+import { assetFile, localeThumbnailFile, renderPlan, renderProblems, sceneAssets, stillFile, themeHash, thumbnailSubject, thumbnailVariantFile, transitionFile } from "./plan.mjs";
 import { BLANK_STRIP, blankStripHtml, blankStripKey, STRIP_SIZE, stripFile, stripHtml, subtitlePlan } from "./subtitles.mjs";
+import { thumbnailRotation } from "../templates/templates.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
 process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
@@ -102,6 +103,7 @@ test("template data problems are labelled with the scene", () => {
   const doc = structuredClone(showcase);
   doc.scenes[2].data.items = "not a list";
   delete doc.thumbnail.data.headline;
+  delete doc.thumbnail.variants;
   assert.deepEqual(renderProblems(doc).map((problem) => problem.path), ["scenes[2] (three-questions).data", "thumbnail"]);
 });
 
@@ -281,9 +283,10 @@ test("a drama's shots are clips the plan leaves to the media stages; its cards a
   const keyframe = { file: "keyframes/sea-storm-ab12.png", sha256: "1".repeat(64) };
   const drawn = renderPlan(doc, "t", null, { keyframes: { "sea-storm": keyframe } });
   assert.deepEqual(drawn.thumbnail.keyframe, keyframe);
-  assert.match(drawn.thumbnail.html, /<img class="thumb-bg" src="https:\/\/video\.local\/work\/keyframes\/sea-storm-ab12\.png" alt=""><div class="thumb-scrim"><\/div>/);
-  assert.doesNotMatch(drawn.thumbnail.html, /thumb-art/);
-  assert.doesNotMatch(drawn.thumbnail.text, /thumb-bg|object-fit/, "the background CSS is not text the fonts must cover");
+  assert.match(drawn.thumbnail.html, /<div class="thumb-subject layout-[abc] tone-[a-z]+ from-shot"><img src="https:\/\/video\.local\/work\/keyframes\/sea-storm-ab12\.png" alt=""><\/div><div class="thumb column/);
+  assert.doesNotMatch(drawn.thumbnail.html, /thumb-art|thumb-bg|thumb-scrim/);
+  assert.doesNotMatch(drawn.thumbnail.text, /thumb-subject|from-shot|object-fit/, "the markup is not text the fonts must cover");
+  assert.equal(drawn.thumbnail.capture, undefined, "a shot subject: no capture fields");
   assert.notEqual(drawn.thumbnail.key, plan.thumbnail.key);
   const redrawn = renderPlan(doc, "t", null, { keyframes: { "sea-storm": { ...keyframe, sha256: "2".repeat(64) } } });
   assert.notEqual(redrawn.thumbnail.key, drawn.thumbnail.key);
@@ -365,7 +368,7 @@ test("a compilation renders its chapter cards and outro as stills, numbered by e
   const keyframe = { file: "keyframes/thumb-source.png", sha256: "3".repeat(64) };
   const drawn = renderPlan(doc, "t", null, { keyframes: { thumb: keyframe } });
   assert.deepEqual(drawn.thumbnail.keyframe, keyframe);
-  assert.match(drawn.thumbnail.html, /thumb-bg" src="https:\/\/video\.local\/work\/keyframes\/thumb-source\.png"/);
+  assert.match(drawn.thumbnail.html, /from-shot"><img src="https:\/\/video\.local\/work\/keyframes\/thumb-source\.png"/);
   const bare = compilationDocument({ series: "wuxia", episodes: [{ slug: "wuxia-ep-1", number: 1 }], chapterCards: false, outro: false });
   assert.deepEqual(renderPlan(bare, "t").scenes, [], "nothing to draw but the thumbnail");
   assert.ok(renderPlan(bare, "t").thumbnail.key);
@@ -608,6 +611,51 @@ test("a Japanese thumbnail is set in Noto Sans JP, so its kanji take the Japanes
   assert.doesNotMatch(plan.thumbnail.html, /noto-sans-jp|lang="ja"/, "the video's own thumbnail is as it was");
   assert.deepEqual(localizedThumbnails(plan).drawable.map((own) => own.locale), ["ja"]);
   assert.match(localizedThumbnails(plan, () => bundledCoverage()).gaps.ja, /U\+4FAD/, "the slide fonts alone lack it");
+});
+
+test("a thumbnail's subject comes from the screencast still it names before the shot's keyframe, and the still is part of the key", () => {
+  const tutorial = JSON.parse(readFileSync(new URL("../screencast/fixtures/tutorial/video.json", import.meta.url), "utf8"));
+  const doc = { ...tutorial, thumbnail: { template: "thumb", data: { headline: "三步\n**找到**", tag: "教學", capture: "find-guides#2" } } };
+  assert.deepEqual(renderProblems(doc), []);
+  const stray = structuredClone(doc);
+  stray.thumbnail.data.capture = "nowhere";
+  assert.deepEqual(renderProblems(stray), [{ path: "thumbnail", message: 'data.capture "nowhere" is not a screencast scene of this video' }]);
+  stray.thumbnail.data.capture = "find-guides#4";
+  assert.deepEqual(renderProblems(stray), [{ path: "thumbnail", message: 'data.capture "find-guides#4": scene find-guides takes 3 captures' }]);
+  stray.thumbnail.data.capture = "find-guides";
+  stray.thumbnail.variants = [{ data: { capture: "hook" } }];
+  assert.deepEqual(renderProblems(stray), [{ path: "thumbnail", message: 'variant b: data.capture "hook" is not a screencast scene of this video' }]);
+  // The plan: the stills come from the capture manifests render took (keyed by scene id).
+  const still = (n) => ({ file: `screencast/k1/0${n}.png`, sha256: String(n).repeat(64) });
+  const screencasts = { "find-guides": { captures: [still(1), still(2), still(3)] } };
+  const cards = { ...doc, scenes: doc.scenes.filter((scene) => scene.template !== "screencast") };
+  const waiting = renderPlan(cards, "t");
+  assert.deepEqual([waiting.thumbnail.capture, waiting.thumbnail.still, waiting.thumbnail.shot], ["find-guides#2", null, undefined], "not taken yet: the caller says to run render");
+  const drawn = renderPlan(cards, "t", null, { screencasts });
+  assert.deepEqual(drawn.thumbnail.still, still(2), "#2 is the second capture");
+  assert.match(drawn.thumbnail.html, /<div class="thumb-subject layout-[abc] tone-[a-z]+ from-capture"><img src="https:\/\/video\.local\/work\/screencast\/k1\/02\.png" alt="">/);
+  assert.notEqual(drawn.thumbnail.key, waiting.thumbnail.key);
+  assert.notEqual(renderPlan(cards, "t", null, { screencasts: { "find-guides": { captures: [still(1), { ...still(2), sha256: "x".repeat(64) }, still(3)] } } }).thumbnail.key, drawn.thumbnail.key, "a retaken still redraws the thumbnail");
+  assert.deepEqual(thumbnailSubject({ capture: "find-guides" }, { screencasts }), { kind: "capture", ...still(1) });
+  assert.deepEqual(thumbnailSubject({ capture: "find-guides#3", shot: "hall" }, { screencasts, keyframes: { hall: { file: "keyframes/hall.png", sha256: "h" } } }), { kind: "capture", ...still(3) }, "the capture comes first");
+  assert.deepEqual(thumbnailSubject({ shot: "hall" }, { screencasts, keyframes: { hall: { file: "keyframes/hall.png", sha256: "h" } } }), { kind: "shot", file: "keyframes/hall.png", sha256: "h" });
+  assert.deepEqual(thumbnailSubject({ shot: "hall" }), { kind: "shot", file: null });
+  assert.equal(thumbnailSubject({ headline: "x" }), null);
+  assert.equal(thumbnailSubject(undefined), null);
+});
+
+test("the showcase's B and C variants take the next layouts; a slides thumbnail without a picture is a flat tone", () => {
+  const plan = renderPlan(showcase, "t");
+  assert.match(plan.thumbnail.html, /<div class="thumb-subject layout-a tone-[a-z]+"><\/div>/, "no picture, no img");
+  assert.deepEqual(plan.thumbnail.variants.map((variant) => /thumb column layout-([abc]) tone-([a-z]+)/.exec(variant.html).slice(1)), [["b", /thumb column layout-b tone-([a-z]+)/.exec(plan.thumbnail.variants[0].html)[1]], ["c", "plum"]]);
+  // A variant with no layout of its own takes the one after its parent's by the slug's rotation.
+  const rotating = structuredClone(showcase);
+  delete rotating.thumbnail.data.layout;
+  for (const variant of rotating.thumbnail.variants) delete variant.data.layout;
+  const own = renderPlan(rotating, "t");
+  const layouts = [own.thumbnail, ...own.thumbnail.variants].map((each) => /thumb column layout-([abc])/.exec(each.html)[1]);
+  assert.deepEqual([...new Set(layouts)].length, 3, `A, B and C differ: ${layouts}`);
+  assert.deepEqual(layouts, [thumbnailRotation(showcase.slug).layout, thumbnailRotation(showcase.slug, 1).layout, thumbnailRotation(showcase.slug, 2).layout]);
 });
 
 test("a compilation whose thumbnail source changed is told to plan its metadata again, which keyframes cannot do", async () => {
