@@ -16,7 +16,7 @@ import { resolveLook } from "../core/drama.mjs";
 import { planRequests } from "../tts/requests.mjs";
 import { AutomationError, automationClient, RUN_PENDING } from "./client.mjs";
 import { answerProblem, discussStep, documentDiscussionPayload, parseSubject, revisedDocumentProblem, unusableReply } from "./discuss.mjs";
-import { Automation, automatedVideos, PENDING_RECHECK_MS, settle } from "./flow.mjs";
+import { Automation, automatedVideos, DEFER_LIMIT, DEFER_MAX_MS, PENDING_RECHECK_MS, settle } from "./flow.mjs";
 import { instructionsFor, SERIES_INSTRUCTIONS } from "./prompts.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { scriptCheckBinding, scriptCheckMatches } from "../core/script-check.mjs";
@@ -24,7 +24,7 @@ import { craftChecks } from "../core/craft.mjs";
 import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
 import { lintCompilation } from "../core/compilation.mjs";
 import { compilationSlug } from "./compilation.mjs";
-import { castFrom, chapterRange, documentPayload, documentProblem, documentVariant, episodeBrief, episodeSlug, isExplainerOneOff, isOneOff, planDocument, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
+import { castFrom, chapterRange, documentInputs, documentKey, documentPayload, documentProblem, documentVariant, episodeBrief, episodeSlug, isExplainerOneOff, isOneOff, LOST_DOCS, planDocument, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 import { checkBrief } from "../core/lint.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
@@ -299,6 +299,148 @@ test("a series step finds nothing on a site without the route, and nothing while
   assert.equal(await seriesStep(off), null);
   const gone = new Automation(ctx, automationClient({ ...ctx, fetch: async () => Response.json({ code: "not_found", detail: "no" }, { status: 404 }) }), site.settings);
   assert.equal(await seriesStep(gone), null);
+});
+
+/** A stage run sent and its answer lost, as the web route answers it (client.mjs RUN_UNCERTAIN): it may have run. */
+const lostAnswer = () => Response.json({ code: "video_ai_run_uncertain", detail: "no answer within the deadline" }, { status: 504 });
+const LOST_WHY = "HTTP 504: no answer within the deadline";
+
+/**
+ * The fake site naming `named.job` on every series/next, as the site does while a document waits
+ * (the job moves on only when the owner or a filed version moves it). `fail` answers a stage run
+ * instead of the fake site when it returns something (or throws, as a connection does); `runs` is
+ * every stage run sent. `round()` is a new run of `auto`'s first lane, and no draft is due.
+ */
+function documentJobs(named, { answers = {}, fail = () => null, decide = null } = {}) {
+  const box = sandbox();
+  const site = fakeSite({ answers, decide });
+  const runs = [];
+  const fetchImpl = async (url, init = {}) => {
+    const { pathname } = new URL(url);
+    if (pathname === "/api/video/automation/series/next") return Response.json({ job: named.job });
+    if (pathname === "/api/video/automation/run") {
+      const body = JSON.parse(init.body);
+      runs.push(`${body.stage}:${body.variant ?? ""}`);
+      const failed = fail(body);
+      if (failed) return failed;
+    }
+    return site.fetchImpl(url, init);
+  };
+  const { ctx, out } = context(box, fetchImpl, { now: Date.parse("2026-09-27T03:00:00Z") });
+  writeFileSync(path.join(box.work, "auto-state.json"), JSON.stringify({ last_draft_at: "2026-09-27T00:00:00Z" }));
+  const round = () => {
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+    return automation;
+  };
+  return { box, site, runs, out, round, lostFile: (slug) => path.join(box.work, "_series", slug, LOST_DOCS) };
+}
+
+test("a series document whose planner answer was lost is not planned again on its own: the round goes on, the rounds after it hold the document, and the owner's change of the series plans it once", async () => {
+  const named = { job: job("setting") };
+  let losing = true;
+  const server = documentJobs(named, { answers: { "planner:setting": () => SETTING }, fail: () => (losing ? lostAnswer() : null) });
+  // The same series' kept discussion reply (discuss.mjs discussion-answer.json) is another file,
+  // which the hold leaves alone.
+  const threads = path.join(server.box.work, "_series", "wenjian", "discussion-answer.json");
+  const notes = `${JSON.stringify({ message_id: "m-bible-1", body: { reply_md: "已改", revised: null } }, null, 2)}\n`;
+  mkdirSync(path.dirname(threads), { recursive: true });
+  writeFileSync(threads, notes);
+
+  // Before: the error left the step, `auto` exited 4 every round ahead of the drama and slides
+  // requests, the drafts and the Shorts, and every round paid for the planner again.
+  const first = server.round();
+  assert.equal(await first.step(), `series wenjian: the planner's answer for the setting book may have run on the server without reaching the worker (${LOST_WHY}); it is not asked again on its own, and this series (and the ones after it) wait for the owner`);
+  assert.deepEqual([first.halted, server.runs, server.site.calls.docs], [false, ["planner:setting"], []], "the lane goes on, nothing is filed");
+  const saved = readJson(server.lostFile("wenjian"));
+  assert.deepEqual(saved, { "setting:0:first": { kind: "setting", chapter: 0, previous_version: null, stage: "planner", variant: "setting", inputs: documentInputs(named.job), at: "2026-09-27T03:00:00.000Z", why: LOST_WHY } });
+  assert.equal(await first.step(), null, "the site names the same job: it is not asked again, and the lane goes on past the series");
+  for (let round = 0; round < 2; round++) {
+    const later = server.round();
+    assert.equal(await later.step(), null, `round ${round + 2}`);
+    assert.equal(await later.step(), null);
+  }
+  assert.deepEqual(server.runs, ["planner:setting"], "one planner request, however many rounds");
+  const held = server.out.stdout.split("\n").filter((line) => line.startsWith("series wenjian: the setting book is not planned again"));
+  assert.equal(held.length, 2, "said once a run, in each run after the loss");
+  assert.equal(held[0], `series wenjian: the setting book is not planned again: the planner's answer was lost at 2026-09-27T03:00:00.000Z (${LOST_WHY}) and the model may have run; it waits for the owner (a changed note, premise, title or hands-off switch, a line on a rejected version, or the series withdrawn before any episode and filed again), and the series after it wait too`);
+  assert.equal(readFileSync(threads, "utf8"), notes, "the kept discussion reply is untouched");
+
+  // The owner changes the series: one new request, the document is filed, and the hold is gone.
+  losing = false;
+  named.job = job("setting", { series: { ...SERIES, note: "旁白快一點" } });
+  assert.match(await server.round().step(), /^series wenjian: the setting book planned \(version 1\); it waits for the owner on \/admin\/videos$/);
+  assert.deepEqual([server.runs, server.site.calls.docs.length], [["planner:setting", "planner:setting"], 1]);
+  assert.deepEqual(readJson(server.lostFile("wenjian")), {});
+});
+
+test("a rewrite whose planner answer was lost is held under the version it rewrites; once the site names another version's rewrite, that is a new request and the old hold is dropped", async () => {
+  const rejected = (id, version) => ({ id, kind: "chapter", chapter_number: 1, version, body_md: `# v${version}`, body_json: CHAPTER.body_json, status: "rejected", note: "第三集再緊一點", decided_at: null, created_at: "2026-09-27T00:00:00Z" });
+  const named = { job: job("chapter", { previous: rejected("d1", 1), rewrites_left: 2 }) };
+  let losing = true;
+  const server = documentJobs(named, { answers: { "planner:chapter": () => CHAPTER }, fail: () => (losing ? lostAnswer() : null) });
+  assert.match(await server.round().step(), /^series wenjian: the planner's answer for chapter 1's outline may have run on the server without reaching the worker/);
+  assert.deepEqual(Object.keys(readJson(server.lostFile("wenjian"))), ["chapter:1:d1"]);
+  assert.equal(readJson(server.lostFile("wenjian"))["chapter:1:d1"].previous_version, 1);
+  assert.equal(await server.round().step(), null);
+  assert.equal(server.runs.length, 1);
+  // The owner's line on the chapter filed a version 2, and the owner sent that back too: another rewrite.
+  losing = false;
+  named.job = job("chapter", { previous: rejected("d2", 2), rewrites_left: 1 });
+  assert.match(await server.round().step(), /^series wenjian: chapter 1's outline rewritten from the owner's note \(version 1\)/);
+  assert.deepEqual(server.runs, ["planner:chapter", "planner:chapter"]);
+  assert.deepEqual(readJson(server.lostFile("wenjian")), {}, "the hold on version 1's rewrite is dropped");
+});
+
+test("a document job's key names the version it rewrites, and its inputs hash what the owner decides, not what the worker moves", () => {
+  assert.equal(documentKey(job("setting")), "setting:0:first");
+  assert.equal(documentKey(job("chapter", { chapter_number: 3 })), "chapter:3:first");
+  assert.equal(documentKey(job("outline", { previous: { id: "d7", version: 2, note: "再緊一點" } })), "outline:0:d7");
+  const base = job("chapter", {
+    previous: { id: "d1", kind: "chapter", chapter_number: 1, version: 1, body_md: "# v1", body_json: {}, status: "rejected", note: "第三集再緊一點" },
+    context: { ...job("chapter").context, setting: { id: "s1", version: 1, ...SETTING }, outline: { id: "o1", version: 2, body_md: "# 總綱", body_json: {} } },
+  });
+  const hash = documentInputs(base);
+  assert.match(hash, /^[0-9a-f]{64}$/);
+  const moved = structuredClone(base);
+  Object.assign(moved.series, { episodes_done: 4, episodes_started: 5, episodes_ready: 3, docs_pending: 1, status: "chapters", media_usd: 12.5, clip_seconds: 300, updated_at: "2026-10-01T00:00:00Z" });
+  Object.assign(moved.context, { recaps: [{ number: 4, recap: "鐘又響了" }], episodes: [{ number: 1, status: "done" }], mysteries: [] });
+  moved.rewrites_left = 1;
+  assert.equal(documentInputs(moved), hash, "the worker's own progress never releases a held document");
+  for (const change of [
+    (each) => (each.series.premise = "兩個少年在正道與魔道之間，各自背叛"),
+    (each) => (each.series.note = "旁白快一點"),
+    (each) => (each.series.hands_off = true),
+    (each) => (each.previous.note = "第五集也要更緊"),
+    (each) => (each.context.setting.id = "s2"),
+    (each) => (each.context.outline.version = 3),
+    // Withdrawn and filed again under the same slug and the same facts: a new series row, a new request.
+    (each) => Object.assign(each.series, { id: "7f2b3c4d-5e6f-4a71-8b9c-0d1e2f3a4b5c", created_at: "2026-10-08T00:00:00Z" }),
+  ]) {
+    const changed = structuredClone(base);
+    change(changed);
+    assert.notEqual(documentInputs(changed), hash, String(change));
+  }
+});
+
+test("a planner request that lost no answer is not held: a refusal of the model service's, the limiter, an API never reached and a connection never made leave the step as before, and the next round asks again", async (t) => {
+  for (const [label, fail, code] of [
+    ["the model service refused it", () => Response.json({ code: "video_ai_upstream_failed", detail: "模型服務拒絕了這個請求（HTTP 400）" }, { status: 502 }), "video_ai_upstream_failed"],
+    ["the limiter could not count it", () => Response.json({ code: "rate_limit_unavailable", detail: "限流暫時無法使用" }, { status: 503 }), "rate_limit_unavailable"],
+    ["the web route never reached the API", () => Response.json({ code: "upstream_unavailable", detail: "API 無法連線" }, { status: 502 }), "upstream_unavailable"],
+    ["the connection was never made", () => { throw Object.assign(new TypeError("fetch failed"), { cause: { code: "ECONNREFUSED" } }); }, "network"],
+  ]) {
+    await t.test(label, async () => {
+      const server = documentJobs({ job: job("setting") }, { fail });
+      const settled = (error) => error instanceof AutomationError && error.code === code;
+      await assert.rejects(server.round().step(), settled);
+      const sent = server.runs.length;
+      assert.ok(sent >= 1);
+      assert.equal(existsSync(server.lostFile("wenjian")), false, "nothing is recorded as lost");
+      await assert.rejects(server.round().step(), settled);
+      assert.ok(server.runs.length > sent, "nothing ran or the API settled it: the next round asks again");
+    });
+  }
 });
 
 test("an episode is started from the chapter outline, written from the cast word for word, checked for its beats, and read by the owner before the sheets", async () => {
@@ -975,23 +1117,34 @@ test("a line on a screenplay waits while the video's writer is still running on 
  * which take what the worker reports. `round()` is a new run of `auto`: its own client, and two
  * lanes that share what cli.mjs shares.
  */
-function durableDiscussion({ site, ctx, box }, { waiting = [], listed = [] } = {}) {
+function durableDiscussion({ site, ctx, box }, { waiting = [], listed = [], setup = null } = {}) {
   // No scheduled draft takes the place a blocked video leaves: these tests are about the video there is.
   Object.assign(site.settings, { durable_stage_runs: true, max_waiting_drafts: 0 });
   const jobs = new Map();
   const lost = new Map();
   const submitted = [];
+  let refusing = null;
+  let failing = null;
+  const refusedRuns = new Map();
   const view = ({ request: _request, ...job }) => job;
   const fetch = async (url, init = {}) => {
     const { pathname } = new URL(url);
     if (pathname === "/api/video/automation/videos") return Response.json(listed);
     if (pathname === "/api/video/automation/series/messages/next") return Response.json({ job: waiting[0] ?? null });
-    if (pathname.endsWith("/answer")) waiting.shift();
+    if (pathname.endsWith("/answer")) {
+      if (refusing) return Response.json(refusing.body, { status: refusing.status });
+      waiting.shift();
+    }
+    if (pathname === "/api/video/automation/run" && init.method === "POST") {
+      const { stage, variant } = JSON.parse(init.body);
+      const refused = refusedRuns.get(`${stage}:${variant ?? ""}`);
+      if (refused) return Response.json(refused.body, { status: refused.status });
+    }
     if (pathname === "/api/video/automation/run/jobs") {
       const { request_key: key, ...request } = JSON.parse(init.body);
       if (!jobs.has(key)) {
         submitted.push(`${request.stage}:${request.variant ?? ""}`);
-        jobs.set(key, { id: key, request_key: key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: "anthropic", model: "claude-sonnet-5", status: "running", result: null, error_code: null, error_detail: null, error_status: null, retry_after: null, request });
+        jobs.set(key, { id: key, request_key: key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: "anthropic", model: "claude-sonnet-5", status: "running", result: null, error_code: null, error_detail: null, error_status: null, retry_after: null, request, ...(failing ?? {}) });
       }
       return Response.json(view(jobs.get(key)));
     }
@@ -1016,6 +1169,7 @@ function durableDiscussion({ site, ctx, box }, { waiting = [], listed = [] } = {
     return [false, true].map((secondary) => {
       const lane = new Automation(run, api, site.settings, { ...shared, secondary });
       lane.refs = smallRefs;
+      setup?.(lane);
       return lane;
     });
   };
@@ -1031,8 +1185,33 @@ function durableDiscussion({ site, ctx, box }, { waiting = [], listed = [] } = {
       Object.assign(job, { status: "succeeded", result: await answer.json() });
     },
     lose: (job, status, body) => lost.set(job.id, { status, body }),
+    // The site's answer route refuses every answer until it is called with nothing.
+    refuseAnswers: (status = null, body = {}) => { refusing = status ? { status, body } : null; },
+    // Every durable job sent from now on comes back as these fields say, until called with nothing.
+    failJobs: (fields = null) => { failing = fields; },
+    // A plain (not durable) run of this stage and variant is refused, until called with no status.
+    refuseRuns: (key, status = null, body = {}) => (status ? refusedRuns.set(key, { status, body }) : refusedRuns.delete(key)),
   };
 }
+
+/** A round as `auto` drives its first lane (cli.mjs): units until nothing moves or the lane halts. */
+async function roundLines(server) {
+  const [first] = await server.round();
+  const said = [];
+  for (let unit = 0; unit < 40; unit++) {
+    const line = await first.step();
+    if (!line) break;
+    said.push(line);
+    if (first.halted) break;
+  }
+  return said;
+}
+
+/** The video of screenplayAtTheGate as /admin/videos lists it, taking what the worker reports. */
+const listedVideo = (slug) => ({ slug, title: slug, stage: "script", checklist: [], dropped_at: null, dropped_note: null, youtube_video_id: null, retry_request_id: null, retry_acknowledged_id: null });
+
+/** The owner presses retry on the video's card. */
+const ownerRetries = (listed, request) => Object.assign(listed, { retry_request_id: request, retry_acknowledged_id: null });
 
 const STILL_RUNNING = "wenjian-e001: writer is still running; its saved receipt will be checked next round";
 
@@ -1135,6 +1314,250 @@ test("a discussion's saved writer job the server no longer has blocks its video 
   await server.finish(server.running().at(-1));
   assert.deepEqual(await lines(), ["wenjian-e001: the writer answered the owner on script:1"]);
   assert.deepEqual([site.calls.answers.map((answer) => answer.id), waiting.length, server.submitted.length], [[asked.message.id], 0, 2]);
+});
+
+test("a discussion whose writer answer was lost blocks its video as uncertain:writer once instead of ending every round; the line waits, and the owner's retry sends it exactly once more", async () => {
+  const gate = await screenplayAtTheGate();
+  const { slug, episode, site, out, state } = gate;
+  const asked = messageJob("script:1", "沈瀾為什麼不回答？", { series: SERIES, episode });
+  const waiting = [asked];
+  const listed = listedVideo(slug);
+  const server = durableDiscussion(gate, { waiting, listed: [listed] });
+  assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+  const [original] = server.journals(slug);
+  // The model's answer was lost after the job was dispatched: the server keeps it as uncertain, with no answer to fetch.
+  Object.assign(server.running()[0], { status: "uncertain", error_code: "video_ai_job_uncertain", error_detail: "the gateway lost the answer", error_status: 409 });
+
+  // Before: RUN_UNCERTAIN left the discussion step as an exception, every round, ahead of the
+  // series and the drafts; no video was blocked, so no retry could set the journal aside.
+  const reason = "writer (the owner's line on script:1) may have run on the server without its answer reaching the worker (the gateway lost the answer); it is not asked again until the owner retries";
+  assert.deepEqual(await roundLines(server), [`${slug}: blocked — ${reason}`]);
+  assert.deepEqual([state().status, state().blocked, state().blocked_kind, state().blocked_line], ["blocked", reason, "uncertain:writer", asked.message.id]);
+  assert.deepEqual([listed.stage, listed.checklist[0].key], ["blocked", "blocked"], "the owner reads it on the card");
+  assert.deepEqual([server.journals(slug).length, server.submitted.length, site.calls.answers.length, waiting.length], [1, 1, 0, 1], "the journal stays, and the owner is not told there is no screenplay");
+  assert.deepEqual(await roundLines(server), [], "a round later nothing is thrown, sent or answered");
+  assert.deepEqual([server.submitted.length, site.calls.answers.length, waiting.length], [1, 0, 1]);
+  assert.ok(out.stdout.includes(`${slug}: the owner's line on script:1 waits; its video is blocked until the owner's retry sets aside the writer run whose answer was lost, and the line is answered after it\n`));
+
+  // The owner's retry sets the uncertain journal aside, and the line is sent once more.
+  const request = "8b3c0d2e-4f5a-4b6c-9d7e-1f2a3b4c5d6e";
+  ownerRetries(listed, request);
+  assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+  assert.equal(server.journals(slug, "archive")[0].request_key, original.request_key);
+  assert.deepEqual([state().status, state().blocked_kind, state().blocked_line, listed.retry_acknowledged_id], ["active", undefined, undefined, request]);
+  assert.deepEqual(server.submitted, ["writer:discuss", "writer:discuss"], "exactly one new discussion request");
+  await server.finish(server.running().at(-1));
+  assert.deepEqual(await roundLines(server), [`${slug}: the writer answered the owner on script:1`]);
+  assert.deepEqual([site.calls.answers.map((answer) => answer.id), waiting.length, server.submitted.length], [[asked.message.id], 0, 2]);
+});
+
+test("a discussion whose writer request the site refuses blocks its video with the reason and holds the line until the owner's retry; a busy service defers the video and the line waits with it", async (t) => {
+  await t.test("refused", async () => {
+    const gate = await screenplayAtTheGate();
+    const { slug, episode, site, state } = gate;
+    const asked = messageJob("script:1", "沈瀾為什麼不回答？", { series: SERIES, episode });
+    const waiting = [asked];
+    const listed = listedVideo(slug);
+    const server = durableDiscussion(gate, { waiting, listed: [listed] });
+    assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+    Object.assign(server.running()[0], { status: "failed", error_code: "video_ai_project_dropped", error_status: 409, error_detail: "這支影片的專案已經放棄" });
+    const reason = "the site refused the writer request for the owner's line on script:1 (video_ai_project_dropped): 這支影片的專案已經放棄";
+    assert.deepEqual(await roundLines(server), [`${slug}: blocked — ${reason}`]);
+    assert.deepEqual([state().status, state().blocked, state().blocked_kind, state().blocked_line], ["blocked", reason, undefined, asked.message.id]);
+    assert.deepEqual(await roundLines(server), [], "the line is held, not answered with 'no screenplay here'");
+    assert.deepEqual([server.submitted.length, site.calls.answers.length, waiting.length], [1, 0, 1]);
+    ownerRetries(listed, "9c4d1e3f-5a6b-4c7d-8e9f-2a3b4c5d6e7f");
+    assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+    assert.deepEqual([state().status, state().blocked_line], ["active", undefined]);
+    assert.deepEqual(server.submitted, ["writer:discuss", "writer:discuss"], "sent once more after the retry");
+  });
+
+  // A job the server failed before it reached the model (a queue that lost it): asking later may
+  // go through. A vendor that is busy after dispatch ends as uncertain instead, like the case above.
+  const BEFORE_DISPATCH = { status: "failed", error_code: "video_ai_job_interrupted_before_dispatch", error_status: 409, error_detail: "工作在派送前中斷" };
+  const DEFERRED = (slug) => new RegExp(`^${slug}: the writer request for the owner's line on script:1 could not finish \\(video_ai_job_interrupted_before_dispatch: 工作在派送前中斷\\); deferred until `);
+
+  await t.test("failed before dispatch", async () => {
+    const gate = await screenplayAtTheGate();
+    const { slug, episode, site, ctx, state } = gate;
+    const asked = messageJob("script:1", "沈瀾為什麼不回答？", { series: SERIES, episode });
+    const waiting = [asked];
+    const server = durableDiscussion(gate, { waiting, listed: [listedVideo(slug)] });
+    assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+    Object.assign(server.running()[0], BEFORE_DISPATCH);
+    const [lane] = await server.round();
+    assert.match(await lane.step(), DEFERRED(slug));
+    assert.equal(lane.halted, false, "the round goes on without ending");
+    assert.equal(await lane.step(), null);
+    assert.deepEqual([state().status, state().defer_count, state().blocked_line, state().line_defers], ["active", 1, undefined, { id: asked.message.id, count: 1, shared: 0 }]);
+    assert.deepEqual(await roundLines(server), [], "the line waits with its video");
+    assert.deepEqual([server.submitted.length, site.calls.answers.length, waiting.length], [1, 0, 1]);
+    await ctx.sleep(DEFER_MAX_MS);
+    assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+    assert.deepEqual(server.submitted, ["writer:discuss", "writer:discuss"], "asked once more once the wait is over");
+  });
+
+  await t.test("never getting through", async () => {
+    const gate = await screenplayAtTheGate();
+    const { slug, episode, site, ctx, state } = gate;
+    const asked = messageJob("script:1", "沈瀾為什麼不回答？", { series: SERIES, episode });
+    const waiting = [asked];
+    const listed = listedVideo(slug);
+    const server = durableDiscussion(gate, { waiting, listed: [listed] });
+    server.failJobs(BEFORE_DISPATCH);
+    // Before: the video's own visit after each wait ended the row of deferrals (moved), so the line
+    // was deferred at 1 for ever, sent again every wait, and never reached the card.
+    for (let tries = 1; tries <= DEFER_LIMIT; tries++) {
+      const [line] = await roundLines(server);
+      assert.match(line, DEFERRED(slug));
+      assert.equal(state().defer_count, tries, `the row grows: ${tries}`);
+      if (tries >= 2) assert.ok(listed.checklist.some((row) => row.key === "deferred"), "the card shows the wait");
+      await ctx.sleep(DEFER_MAX_MS);
+    }
+    const [blocked] = await roundLines(server);
+    assert.match(blocked, new RegExp(`^${slug}: blocked — still could not move after ${DEFER_LIMIT + 1} tries: the writer request for the owner's line on script:1 could not finish`));
+    assert.deepEqual([state().status, state().blocked_kind, state().blocked_line, state().line_defers], ["blocked", "deferred:writer", asked.message.id, undefined]);
+    assert.deepEqual(await roundLines(server), [], "held until the owner's retry");
+    assert.deepEqual([server.submitted.length, site.calls.answers.length, waiting.length], [DEFER_LIMIT + 1, 0, 1]);
+    server.failJobs();
+    ownerRetries(listed, "1d5e2f4a-6b7c-4d8e-9f0a-3b4c5d6e7f80");
+    assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+    assert.deepEqual([server.submitted.length, state().blocked_line, state().line_defers], [DEFER_LIMIT + 2, undefined, undefined], "sent once more after the retry");
+  });
+});
+
+const SITE_AWAY = [502, { code: "upstream_unavailable", detail: "網站暫時無法使用" }];
+
+test("a writer's answer the site does not take is kept and posted on a later round, and its run is not left as an answer still to take", async () => {
+  const gate = await screenplayAtTheGate();
+  const { slug, episode, site, box } = gate;
+  const asked = messageJob("script:1", "沈瀾為什麼不回答？", { series: SERIES, episode });
+  const waiting = [asked];
+  const server = durableDiscussion(gate, { waiting, listed: [listedVideo(slug)] });
+  assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+  await server.finish(server.running()[0]);
+  server.refuseAnswers(...SITE_AWAY);
+  await assert.rejects(roundLines(server), /網站暫時無法使用/);
+  assert.deepEqual(readJson(path.join(box.work, slug, "discussion-answer.json")), { message_id: asked.message.id, body: { reply_md: "因為沈瀾此時不能說破。", revised: null } });
+  server.refuseAnswers();
+  assert.deepEqual(await roundLines(server), [`${slug}: the writer's answer on script:1, kept when the site did not take it, is posted`]);
+  assert.deepEqual([site.calls.answers, waiting.length, server.submitted.length], [[{ id: asked.message.id, reply_md: "因為沈瀾此時不能說破。", revised: null }], 0, 1], "posted once, with no second request");
+  assert.equal(existsSync(path.join(box.work, slug, "discussion-answer.json")), false);
+  // The finished run is bound to the kept answer, so it is no discussion still open on this video.
+  const [lane] = await server.round();
+  assert.equal(lane.discussionOpen(slug), false);
+  assert.ok(server.journals(slug).every((journal) => journal.adopted), "no succeeded run is left untaken");
+});
+
+test("a rewrite whose answer the site does not take is posted later even when the video is blocked meanwhile, and the writer is paid once", async () => {
+  const gate = await screenplayAtTheGate();
+  const { slug, episode, site, dir, state } = gate;
+  const asked = messageJob("script:1", "第一句改成感嘆句。", { series: SERIES, episode });
+  const waiting = [asked];
+  const server = durableDiscussion(gate, { waiting, listed: [listedVideo(slug)] });
+  const first = readJson(path.join(dir, "video.json")).scenes[0].lines[0].text;
+  assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+  await server.finish(server.running()[0]);
+  server.refuseAnswers(...SITE_AWAY);
+  await assert.rejects(roundLines(server), /網站暫時無法使用/);
+  assert.equal(readJson(path.join(dir, "video.json")).scenes[0].lines[0].text, `${first}！`, "the rewrite is saved");
+  // Before the line comes back, the video's own checks run on the rewrite and one of them blocks it.
+  server.refuseAnswers();
+  server.refuseRuns("verifier:episode", 409, { code: "video_ai_project_dropped", detail: "這支影片的專案已經放棄" });
+  const [blocked, ...after] = await roundLines(server);
+  assert.match(blocked, /^wenjian-e001: blocked — the site refused the verifier request/);
+  assert.equal(state().status, "blocked");
+  // Before: the line was answered with the block ("劇本先不動"), the paid reply was never posted,
+  // and an owner who asked again paid the writer for a change already made.
+  assert.deepEqual(after, [`${slug}: the writer's answer on script:1, kept when the site did not take it, is posted`]);
+  assert.deepEqual(site.calls.answers, [{ id: asked.message.id, reply_md: "第一句改成感嘆句。", revised: null }]);
+  assert.deepEqual(await roundLines(server), []);
+  assert.deepEqual([server.submitted.filter((each) => each === "writer:discuss").length, readJson(path.join(dir, "video.json")).scenes[0].lines[0].text], [1, `${first}！`], "paid once, rewritten once");
+});
+
+test("a discussion rewrite whose lint repair is still running when the visit ends keeps its reply: the video checks the rewrite, and the line is answered once with no second request", async () => {
+  const gate = await screenplayAtTheGate();
+  const { slug, episode, site, box, state, answers, dir } = gate;
+  // The writer's repair puts a line back into the scene the owner emptied.
+  answers["writer:episode"] = (body) => {
+    if (!body.payload.lint_errors) return gate.script();
+    const video = structuredClone(body.payload.video);
+    video.scenes[0].lines = [{ ...body.payload.video.scenes[1].lines[0], id: body.payload.line_ids?.[0] ?? "zz" }];
+    return { video, claims: "原創\n", lexicon_additions: {} };
+  };
+  const asked = messageJob("script:1", "刪掉第一場所有台詞。", { series: SERIES, episode });
+  const waiting = [asked];
+  const server = durableDiscussion(gate, { waiting, listed: [listedVideo(slug)] });
+  assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+  await server.finish(server.running()[0]);
+  // The rewrite fails lint, and its repair is a durable job still running when the visit ends: the
+  // video is set aside for it, the rewrite is marked unchecked, and the kept reply is posted on the
+  // next unit. Before: the reply was lost, the video took the repair up, and the line was asked,
+  // and paid for, again.
+  assert.deepEqual(await roundLines(server), [STILL_RUNNING, `${slug}: the writer's answer on script:1, kept when the site did not take it, is posted`]);
+  assert.deepEqual([state().verified, state().listener_done, existsSync(path.join(box.work, slug, "discussion-answer.json"))], [false, false, false]);
+  assert.deepEqual([site.calls.answers.map((answer) => [answer.id, answer.reply_md]), waiting.length], [[[asked.message.id, "刪了第一場所有台詞。"]], 0]);
+  // The video's own unit takes the repair up and checks the rewrite.
+  for (let round = 0; round < 6 && server.running().length; round++) {
+    for (const job of server.running()) await server.finish(job);
+    await roundLines(server);
+  }
+  assert.equal(server.submitted.filter((each) => each === "writer:discuss").length, 1, "the line is asked once");
+  assert.equal(readJson(path.join(dir, "video.json")).scenes[0].lines.length, 1, "the repaired rewrite is the script");
+  assert.equal(site.calls.answers.length, 1);
+});
+
+test("a discussion rewrite whose lint repair request fails is sorted as the line's request: the video waits, the kept reply is posted, and the line is not asked again", async () => {
+  const gate = await screenplayAtTheGate();
+  const { slug, episode, site, state, answers } = gate;
+  answers["writer:episode"] = (body) => (body.payload.lint_errors ? { video: body.payload.video, claims: "原創\n", lexicon_additions: {} } : gate.script());
+  const asked = messageJob("script:1", "刪掉第一場所有台詞。", { series: SERIES, episode });
+  const waiting = [asked];
+  const server = durableDiscussion(gate, { waiting, listed: [listedVideo(slug)] });
+  assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+  await server.finish(server.running()[0]);
+  // The repair the rewrite needs is lost by the queue before it reaches the model.
+  server.failJobs({ status: "failed", error_code: "video_ai_job_interrupted_before_dispatch", error_status: 409, error_detail: "工作在派送前中斷" });
+  // Before: the error left the step as an exception, the run ended, and the reply was lost.
+  const [deferred, posted, ...rest] = await roundLines(server);
+  assert.match(deferred, new RegExp(`^${slug}: the writer's lint repair of the rewrite for the owner's line on script:1 could not finish \\(video_ai_job_interrupted_before_dispatch: 工作在派送前中斷\\); deferred until `));
+  assert.equal(posted, `${slug}: the writer's answer on script:1, kept when the site did not take it, is posted`);
+  assert.deepEqual(rest, []);
+  assert.deepEqual([state().status, state().verified, state().listener_done, state().line_defers?.id], ["active", false, false, asked.message.id]);
+  assert.deepEqual([site.calls.answers.map((answer) => answer.reply_md), waiting.length, server.submitted.filter((each) => each === "writer:discuss").length], [["刪了第一場所有台詞。"], 0, 1]);
+});
+
+test("a long anime's change plan is paid once though an act of the rewrite meets a busy service: the plan's answer stays saved through the wait", async () => {
+  const gate = await screenplayAtTheGate();
+  const { slug, episode, site, ctx, state, answers, box } = gate;
+  writeFileSync(path.join(box.work, slug, "auto.json"), `${JSON.stringify({ ...state(), production_policy: "long-anime-v1" }, null, 2)}\n`);
+  answers["writer:anime-discuss-plan"] = () => ({ reply: "要改第二幕。", change_required: true, revised: null });
+  // The plan is durable; each act is a plain request, as writeAnimeActs sends it.
+  const setup = (lane) => {
+    const payload = lane.scriptPayload.bind(lane);
+    lane.scriptPayload = (st, extra) => {
+      const { production_policy: _policy, ...rest } = st;
+      return { ...payload(rest, extra), category: "anime" };
+    };
+    lane.animeRewrite = async function (st, extra, video, stage) {
+      await this.stage(stage, st.slug, { act: 1, message: extra.message }, 1000, "drama", "anime-act", st.series);
+      return { video };
+    };
+  };
+  const asked = messageJob("script:1", "第二幕改一下", { series: SERIES, episode });
+  const waiting = [asked];
+  const server = durableDiscussion(gate, { waiting, listed: [listedVideo(slug)], setup });
+  assert.deepEqual(await roundLines(server), [STILL_RUNNING]);
+  await server.finish(server.running()[0]);
+  server.refuseRuns("writer:anime-act", 503, { code: "video_ai_upstream_busy", detail: "模型服務忙碌中" });
+  const [deferred] = await roundLines(server);
+  assert.match(deferred, /could not finish \(video_ai_upstream_busy: 模型服務忙碌中\); deferred until /);
+  // Before: the step settled the plan's answer with the deferral, and the next visit paid for a new plan.
+  assert.deepEqual(server.journals(slug).map((journal) => [journal.request.variant, journal.receipt?.status]), [["anime-discuss-plan", "succeeded"]]);
+  server.refuseRuns("writer:anime-act");
+  await ctx.sleep(DEFER_MAX_MS);
+  for (let round = 0; round < 3 && waiting.length; round++) await roundLines(server);
+  assert.deepEqual([server.submitted.filter((each) => each === "writer:anime-discuss-plan").length, site.calls.answers.map((answer) => answer.reply_md), waiting.length], [1, ["要改第二幕。"], 0]);
 });
 
 // A binge series (docs/videos/BINGE.md): hands-off, a retention genre, a compilation at the end.
@@ -1242,6 +1665,25 @@ test("a hands-off series' document goes through the checker and is filed with th
   assert.match(await automation.step(), /it waits for the owner on \/admin\/videos/, "no usable verdict: the owner decides, as on a classic series");
   assert.equal(site.calls.docs[2].judge, undefined);
   assert.equal(site.calls.run.filter((call) => call.variant === "series-doc").length, 4, "the checker is asked twice before the document is left to the owner");
+});
+
+test("a hands-off document whose checker's answer was lost is not judged a second time: the planner's answer, paid for, is filed without a verdict and waits for the owner", async () => {
+  const named = { job: job("setting", { series: BINGE }) };
+  const server = documentJobs(named, {
+    answers: { "planner:setting": () => SETTING, "verifier:series-doc": () => verdict("setting") },
+    fail: (body) => (body.stage === "verifier" ? lostAnswer() : null),
+    decide: (body) => (body.judge ? { status: "approved", note: null } : { status: "review", note: null }),
+  });
+  const automation = server.round();
+  // Before: the error left the step, and the next round paid for the planner and the checker again.
+  assert.equal(await automation.step(), "series rebirth: the setting book planned (version 1); it waits for the owner on /admin/videos");
+  assert.deepEqual(server.runs, ["planner:setting", "verifier:series-doc"], "one planner request, and one checker request, not two");
+  assert.equal(server.site.calls.docs[0].judge, undefined, "no verdict travels with it, so the site leaves it for the owner");
+  assert.ok(server.out.stdout.includes(`  the checker's verdict on setting may have run on the server without reaching the worker (${LOST_WHY}); it is not asked again, and the document waits for the owner\n`));
+  assert.equal(existsSync(server.lostFile("rebirth")), false, "the document was filed: nothing is held");
+  named.job = null;
+  assert.equal(await automation.step(), null);
+  assert.deepEqual(server.runs, ["planner:setting", "verifier:series-doc"]);
 });
 
 test("a compilation the site refuses to start ends the run with the site's reason instead of failing every round", async () => {

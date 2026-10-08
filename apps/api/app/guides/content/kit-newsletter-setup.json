@@ -413,7 +413,7 @@
           "items": [
             "用清楚易懂的语言列出每个入口、偏好、邮件内容和退出条件。",
             "在表单中设置确认邮件，核对自动确认开关和确认后的去向。",
-            "建立 Tag 和 Segment，连接已 Published 且 Active 的 Sequence 与已启用的自动流程。",
+            "建立 Tag 和 Segment，将 Sequence 内的每封邮件设为 Published、Sequence 本身设为 Active，再连接并启用 Visual Automation。",
             "测试不同订阅状态、收件范围和实际链接，再安排正式发送。"
           ],
           "ordered": true
@@ -483,7 +483,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "先规划订阅承诺，并验收退订方式。",
+              "text": "电子报怎么开始：订阅同意、内容与寄送指标",
               "kind": "life",
               "slug": "email-newsletter-planning"
             }
@@ -494,7 +494,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "整理每期内容和事实核对责任。",
+              "text": "内容营销怎么排期：读者问题、素材和更新节奏",
               "kind": "life",
               "slug": "content-marketing-calendar"
             }
@@ -685,7 +685,7 @@
           "items": [
             "Describe every entry point, preference, email, and exit condition in plain language.",
             "Set the confirmation email on the form and check the auto-confirm switch and post-confirmation destination.",
-            "Create Tags and Segments, then connect a Published and Active Sequence and an active automation.",
+            "Create Tags and Segments, set each Sequence email to Published and the Sequence itself to Active, then connect and enable the Visual Automation.",
             "Test subscription states, recipient scope, and actual links before scheduling the real send."
           ],
           "ordered": true
@@ -755,7 +755,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "Plan the subscription promise and test unsubscribing first.",
+              "text": "Starting a newsletter: consent, content, and delivery metrics",
               "kind": "life",
               "slug": "email-newsletter-planning"
             }
@@ -766,7 +766,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "Organize each issue's content and fact-checking responsibility.",
+              "text": "Planning a Content Marketing Calendar Around Reader Questions and Updates",
               "kind": "life",
               "slug": "content-marketing-calendar"
             }
@@ -957,7 +957,7 @@
           "items": [
             "各入口、好み、メール内容、終了条件を平易な言葉で書き出す。",
             "フォームの確認メールを設定し、自動確認スイッチと確認後の移動先を確かめる。",
-            "TagとSegmentを作り、PublishedかつActiveのSequenceと有効な自動化を接続する。",
+            "TagとSegmentを作り、Sequence内の各メールをPublished、Sequence自体をActiveにして、Visual Automationを接続し有効にする。",
             "購読状態、送信対象、実際のリンクを試してから本番の配信を予約する。"
           ],
           "ordered": true
@@ -1027,7 +1027,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "購読時の約束と配信停止の確認を先に計画する。",
+              "text": "ニュースレターの始め方：購読の同意、内容、配信指標",
               "kind": "life",
               "slug": "email-newsletter-planning"
             }
@@ -1038,7 +1038,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "各号の内容と事実確認の担当を整理する。",
+              "text": "コンテンツマーケティングの予定表：読者の疑問、素材、更新を軸に組む方法",
               "kind": "life",
               "slug": "content-marketing-calendar"
             }
@@ -1229,7 +1229,7 @@
           "items": [
             "각 진입점, 선호, 이메일 내용, 종료 조건을 쉬운 문장으로 정리한다.",
             "폼에서 확인 이메일을 설정하고 자동 확인 스위치와 확인 후 이동 위치를 살핀다.",
-            "Tag와 Segment를 만들고 Published 및 Active 상태의 Sequence와 활성화된 자동화를 연결한다.",
+            "Tag와 Segment를 만들고 Sequence 안의 각 이메일을 Published, Sequence 자체를 Active로 설정한 뒤 Visual Automation을 연결하고 활성화한다.",
             "실제 발송을 예약하기 전에 구독 상태, 수신 범위, 링크 동작을 시험한다."
           ],
           "ordered": true
@@ -1299,7 +1299,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "구독할 때의 약속과 구독 해지 절차부터 계획한다.",
+              "text": "뉴스레터 시작하기: 구독 동의, 콘텐츠, 발송 지표",
               "kind": "life",
               "slug": "email-newsletter-planning"
             }
@@ -1310,7 +1310,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "매 호의 콘텐츠와 사실 확인 책임을 정리한다.",
+              "text": "콘텐츠 마케팅 일정표 짜기: 독자의 질문, 제작 자료, 업데이트",
               "kind": "life",
               "slug": "content-marketing-calendar"
             }

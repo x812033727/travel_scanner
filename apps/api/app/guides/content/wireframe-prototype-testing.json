@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "線框圖與原型怎麼用：先驗證流程再修視覺",
@@ -154,6 +157,7 @@
           "width": 1600,
           "height": 900,
           "caption": "讓每一段模擬都對應研究問題，並記下原型無法回答的部分。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -259,6 +263,1038 @@
         },
         {
           "title": "GOV.UK：alpha 原型與正式產品的差異",
+          "url": "https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：研究知情同意",
+          "url": "https://www.gov.uk/service-manual/user-research/getting-users-consent-for-research",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "How to Use Wireframes and Prototypes: Validate Flows Before Refining Visuals",
+      "description": "Wireframes, visual mockups, and interactive prototypes serve different purposes. What matters is the question you need to validate now. An original plant care home visit booking scenario shows how to choose fidelity, cover flows and exception states, write tasks without hinting at answers, and turn test observations into change records. Steps, a comparison table, and original diagrams help design beginners and small teams identify usability difficulties before full development.",
+      "hero": {
+        "src": "/guides/wireframe-prototype-testing/hero-en.jpg",
+        "alt": "An original Mokaair illustration of screens, a flow document, and a verification shield, showing that prototypes need task validation and stated limitations.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A highly polished booking page looks ready to launch, but clicking through reveals only one path you can complete: you cannot go back or change the date, and there is no fully booked state. These screens can support a discussion about visuals, but finding out whether users can complete a booking requires different preparation."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article uses an original scenario for booking plant care home visits as an exercise. Its methods draw on NN/g and GOV.UK materials consulted on 2026-9-14. The service, screen states, and test tasks were all designed for this exercise; there are no real bookings or participant results. The prototype supports learning and decisions; it does not represent a completed, operational system."
+        },
+        {
+          "type": "heading",
+          "text": "Define what to validate before choosing a deliverable",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Wireframes primarily convey screen structure, content order, and the placement of controls. Visual mockups add typography, colors, and details. Prototypes simulate certain interactions or service behaviors. Teams may use these terms differently, so before handing anything over, clearly explain which parts are interactive and which are only illustrative."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you want to discuss whether the plant care page should introduce service coverage or prices first, a simple wireframe can start the conversation. If you want to see whether users can change their time slot, you need to show responses to clicks, going back, and retaining data. Connecting multiple screens into a flow with action arrows can also help everyone understand how the screens relate."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not use high or low fidelity as a blanket description for every detail. NN/g explains that fidelity can vary independently across interaction, visuals, and content: a grayscale screen can still use nearly final wording, while a polished visual mockup may offer no interaction at all. Let the research question determine which aspects need to be realistic."
+        },
+        {
+          "type": "heading",
+          "text": "Prepare enough content and states for the task",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The original booking exercise can define a service that covers only certain areas and requires users to choose a date and time slot and enter contact details. First list where the task starts, what users will see when it is complete, and which information should remain when they go back to make changes. This scope list helps prevent drawing only a success page without the complete interactions leading to it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Add important branches based on the question you want to validate, such as an address outside the service area, a fully booked time slot, missing required fields, and confirmation after submission. You do not need to simulate every backend condition in every study. However, if a branch affects the research task, you cannot wait until a participant encounters it to declare that page unimportant."
+        },
+        {
+          "type": "paragraph",
+          "text": "Text length and content also affect judgment. Using identical dummy dates or meaningless text throughout can hide problems with finding information. You can use plausible fictional service data and clearly state that no booking will be made. Plan separately for scenarios that require real data for validation; do not collect home addresses or payment information in a simple prototype."
+        },
+        {
+          "type": "heading",
+          "text": "Give test tasks context without supplying the steps",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First write down the user goal you want to observe, then turn it into an activity participants can understand. For example: you will be home on Saturday afternoon and would like a plant care visit. Find a time slot that meets your needs and complete this practice booking. This gives participants criteria for choosing without directly telling them which menu or button to click."
+        },
+        {
+          "type": "paragraph",
+          "text": "To test going back to make changes, introduce a new condition at an appropriate stage: the original time slot is no longer convenient, so please choose another time that works for you. Do not write the task as clicking Previous and then clicking the dropdown on the right. Otherwise, you mainly test whether participants can follow instructions, rather than whether they can find out how to act on their own."
+        },
+        {
+          "type": "paragraph",
+          "text": "First define observable completion criteria, such as the confirmation page showing the expected date and time slot, then decide which difficulties to record. Questions about preferences can come after the task to help explain participants' reasons. Simply asking whether someone would use the service provides different evidence from observing them complete a practice task. Do not claim the flow is smooth based only on satisfaction feedback."
+        },
+        {
+          "type": "heading",
+          "text": "Rehearse the prototype to avoid mistaking build flaws for design problems",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before formally inviting participants, walk through the planned test paths yourself and check the starting screen, clickable areas, going back, scrolling, and links. For a paper prototype, arrange the screens in order and agree on who will switch them. This checks whether the research tool works; it does not mean writing successful results for actual user testing in advance."
+        },
+        {
+          "type": "paragraph",
+          "text": "At the start of the session, obtain consent for the study, explain that the prototype is unfinished, and clarify which actions will not actually take place. Ask participants to express their thoughts as they work, while the moderator mainly observes and listens. When assistance is needed to continue, record when you intervened and what hints you provided so the data can be interpreted later."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a button has no link configured and a participant gets stuck, first distinguish a prototype malfunction from an unclear design. You can ask what they expected to happen, but do not directly classify this pause as a flaw in the actual service. Check again after fixing the prototype. If the version changes between tests, record the version and time as well."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Write down the research question and completion criteria, then decide the required levels of content, visuals, and interaction.",
+            "Organize task flows, exception states, and test data, then build a prototype with a clearly defined scope.",
+            "Rehearse links and screen changes, prepare neutral tasks, and obtain participant consent.",
+            "Record actions, hints, and version differences, choose the problems to address, and arrange validation."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Turn observations into traceable change records",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Organize each problem by task, screen, observation, impact, and next step. If a participant goes back and finds the date has been cleared, first record which version this happened in, whether it affected completion, and whether they sought help. Then discuss whether to retain the date, add a prompt, or reorganize the editing flow."
+        },
+        {
+          "type": "paragraph",
+          "text": "Prioritize problems by considering whether they block the task, cause incorrect choices, and which scenarios they affect. Do not rank them solely by how often people mention them. A less frequent problem that could lead to an incorrect booking also deserves early investigation. Counts from a small amount of qualitative data do not equal occurrence rates across the overall user population."
+        },
+        {
+          "type": "paragraph",
+          "text": "After making changes, retain the before and after versions and the reasons for your decisions so the team knows which observation prompted each change. When comparing two versions, remember that previously seen content may affect later actions; faster completion the second time cannot be attributed directly to the new version. Quantitative comparisons require a separately designed study with consistent conditions and an appropriate research method."
+        },
+        {
+          "type": "heading",
+          "text": "After the prototype, the actual product still needs acceptance testing",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A clickable prototype can test specific aspects of understanding and flow, but usually cannot validate real payments, data storage, permissions, performance, or all assistive technology behaviors. GOV.UK's alpha guidance also distinguishes early prototypes from production-quality code. When handing a prototype to developers, explain which parts remain assumptions or simulations."
+        },
+        {
+          "type": "paragraph",
+          "text": "Even if the plant care example supports a complete booking demonstration, the actual service still needs to handle whether time slots stay synchronized, simultaneous bookings by multiple people, notification delivery, and cancellation rules. These questions can be raised early during prototyping, but a successful screen demonstration does not mean the backend and operational processes have also passed testing."
+        },
+        {
+          "type": "paragraph",
+          "text": "At handover, include flow diagrams, state descriptions, test findings, and unresolved problems, and arrange validation during the actual product stage. The prototype does not necessarily need to be retained as code or refined endlessly. Once it provides enough information to support the next decision, organize the evidence and move into the appropriate design, development, or research work."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wireframe-prototype-testing/diagram-1-en.svg",
+          "alt": "Four original state cards cover service confirmation, time selection, detail checks, and the results page, identifying responses to validate at each step.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Make each simulation address a research question, and record what the prototype cannot answer.",
+          "description": "Four original state cards cover service confirmation, time selection, detail checks, and the results page, identifying responses to validate at each step.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Format",
+            "What the booking exercise can check",
+            "Main limitation"
+          ],
+          "rows": [
+            [
+              "Simple wireframe",
+              "Information order and field placement",
+              "Visual details are not yet finalized"
+            ],
+            [
+              "Screen flow with arrows",
+              "Whether return paths and branches are explained",
+              "Cannot directly represent responses to actions"
+            ],
+            [
+              "Paper prototype",
+              "Explore tasks by switching screens",
+              "Screen changes need rehearsal, and interventions must be recorded"
+            ],
+            [
+              "Clickable prototype",
+              "Date changes and the confirmation flow",
+              "Data and states may only be simulated"
+            ],
+            [
+              "Nearly final visual mockup",
+              "Font size, density, and screen hierarchy",
+              "A finished appearance does not mean an operational service"
+            ]
+          ],
+          "caption": "Compare formats using the original booking scenario; adjust fidelity separately for content, visuals, and interaction."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Do not make the prototype look like a real transaction",
+          "text": "Practice screens must state that no booking will be made and use suitable test data. Payments, data handling, and service commitments in the actual product require corresponding implementation and validation."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Practice design thinking with everyday problems",
+              "kind": "life",
+              "slug": "design-thinking-practice"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Complete formal acceptance testing for a website project",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Understand responsive screens and checks on actual devices",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NN/g: Prototype Fidelity and Test Preparation",
+          "url": "https://www.nngroup.com/articles/ux-prototype-hi-lo-fidelity/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g: UX Deliverables Glossary",
+          "url": "https://media.nngroup.com/media/articles/attachments/UX-Deliverables-Glossary-PDF-2.pdf",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g: Task Scenarios That Do Not Hint at Answers",
+          "url": "https://www.nngroup.com/articles/task-scenarios-usability-testing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: Moderated Usability Testing",
+          "url": "https://www.gov.uk/service-manual/user-research/using-moderated-usability-testing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: Differences Between Alpha Prototypes and Production Products",
+          "url": "https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: Informed Consent for Research",
+          "url": "https://www.gov.uk/service-manual/user-research/getting-users-consent-for-research",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ワイヤーフレームとプロトタイプの使い方：フローを先に検証し、見た目を修正する",
+      "description": "ワイヤーフレーム、デザインカンプ、インタラクティブなプロトタイプには、それぞれ用途があります。大切なのは、今どの問題を検証する必要があるかです。本記事では、独自に考案した植物の訪問ケアの予約を例に、忠実度の選び方、フローと例外状態の補い方、答えを誘導しない操作タスクの準備、テストでの観察を変更記録にまとめる方法を説明します。操作手順、比較表、オリジナル図解を添え、デザイン初心者や小規模チームが本格的な開発に進む前に、利用上の困難を理解できるようにします。",
+      "hero": {
+        "src": "/guides/wireframe-prototype-testing/hero-ja.jpg",
+        "alt": "画面、フロー資料、検証を表す盾を描いた Mokaair オリジナルイラスト。プロトタイプはタスクで検証し、制約も明示する必要があることを表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "完成度の高い一枚の予約ページは、もう公開できそうに見えるのに、実際に操作すると最後まで進める経路が一つしかありません。戻れず、日付も変更できず、予約枠が埋まった状態もありません。こうした画面は見た目の議論には使えますが、ユーザーが予約を完了できるかを知りたいなら、別の準備が必要です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事では、独自に考案した植物の訪問ケアの予約を練習題材とし、2026 年 9 月 14 日に参照した NN/g と GOV.UK の資料を方法の参考にしています。サービス、画面の状態、テストタスクはすべて独自に設計しており、実際の予約や、テスト参加者から得た結果はありません。プロトタイプの役割は学習と意思決定を助けることで、運用可能なシステムが完成していることを意味しません。"
+        },
+        {
+          "type": "heading",
+          "text": "まず検証することを明確にし、成果物の形式を選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ワイヤーフレームは主に、画面構成、内容の順序、操作箇所を表します。デザインカンプはさらに、書体、色、細部を示します。プロトタイプは、特定のインタラクションやサービスの動作をシミュレーションするために使います。チームによってこれらの名称の使い方が異なることもあるため、納品前に、どこが操作でき、どこが単なるイメージなのかを直接説明するとよいでしょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "植物ケアのページで、サービス範囲と価格のどちらを先に紹介すべきかを話し合うなら、簡単なワイヤーフレームで議論を始められます。ユーザーが時間帯を変更できるかを確認するなら、クリック、戻る操作、データの保持に対する反応を示す必要があります。複数の画面を操作の矢印でつないだフローも、画面同士の関係を理解する助けになります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "高忠実度か低忠実度かだけで、すべての細部をひとくくりにしないでください。NN/g は、忠実度をインタラクション、見た目、内容のそれぞれで表せると説明しています。画面がグレースケールでも本番に近い文章を使えますし、精緻なデザインカンプでもまったく操作できないことがあります。選ぶ際は、調査課題に応じて、どこまでリアルにする必要があるかを決めましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "タスクに必要な内容と状態を十分に用意する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "独自の予約練習では、サービスの訪問先を特定の地域に限定し、日付と時間帯の選択、連絡先の入力が必要という設定にできます。まず、タスクがどこから始まるか、完了時に何が表示されるか、戻って変更するときにどの情報を保持すべきかを書き出します。この対象範囲の一覧があれば、完了画面だけを作り、そこに至る一連の操作がない状態を防げます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "今回検証したい問題に応じて、住所がサービス対象外、予約枠が埋まっている、必須項目が未入力、送信後の確認など、重要な分岐を補います。毎回すべてのバックエンドの状態をシミュレーションする必要はありません。ただし、ある分岐が調査タスクに影響するなら、参加者がそこに来てから、そのページは重要ではないと急に説明するわけにはいきません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文章の長さや内容も判断に影響します。すべて同じ架空の日付や、意味のない文章を使うと、情報を見つけにくい問題が隠れることがあります。もっともらしい架空のサービス情報を使い、予約は成立しないことを明示できます。検証に実際のデータが必要なケースは別途計画し、簡単なプロトタイプでは住所や支払い情報を収集しません。"
+        },
+        {
+          "type": "heading",
+          "text": "テストタスクに状況を与え、操作の答えは教えない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず観察したい利用上の目標を書き出し、それを参加者が理解できる活動に変えます。例えば「土曜の午後は自宅にいて、植物のケアを一度頼みたいと考えています。希望に合う時間帯を見つけて、この練習用の予約を完了してください」という形です。選択の条件は示していますが、どのメニューやボタンを押すべきかは直接教えていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "戻って変更する操作をテストするなら、適切な段階で新しい条件を加えられます。「元の時間帯では急に都合がつかなくなりました。別の都合のよい時間を選び直してください」といった条件です。タスクを「前のページを押してから、右側のドロップダウンメニューをクリックする」と書かないでください。それでは、自分で操作方法を見つけられるかよりも、指示に従えるかを主に測ることになります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず、確認画面に想定した日付と時間帯が表示されるなど、観察できる完了条件を定義し、その後でどの困難を記録するかを決めます。好みを尋ねる質問は操作後に行い、理由を理解するために使えます。使うかどうかを尋ねるだけの場合と、練習タスクを実際に一度観察する場合では、得られる証拠が異なります。満足度だけを集めて、フローが円滑になったと主張しないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "プロトタイプをリハーサルし、制作上の不備を設計の問題と混同しない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "正式に参加者を招く前に、テスト予定の経路を自分でたどり、開始画面、クリック領域、戻る操作、スクロール、リンクを確認します。ペーパープロトタイプを使うなら、画面の順序を整理し、誰が切り替えを担当するかを決めておきます。これは調査ツールが動くかを確認するためであり、実際のユーザーテストが成功したという結果を先回りして用意するものではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実施時には、まず調査への同意を得て、これは未完成のプロトタイプであることと、どの操作が実際には実行されないかを説明します。参加者には、できるだけその場で考えていることを声に出してもらい、進行役は観察と傾聴を中心に行います。先へ進むための支援が必要になったら、いつ介入し、どんなヒントを与えたかを記録すると、後でデータを解釈しやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ボタンにリンクが設定されておらず参加者が止まった場合は、まずプロトタイプの不具合なのか、設計がわかりづらいのかを切り分けます。何が起きると予想していたかを尋ねることはできますが、その停止をそのまま正式サービスの欠陥として扱わないでください。プロトタイプを修正してから再確認します。テストの間にバージョンを変更した場合も、バージョンと時刻を残す必要があります。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "調査課題と完了条件を書き出し、必要な内容、見た目、インタラクションの程度を決める。",
+            "タスクのフロー、例外状態、テストデータを整理し、範囲が明確なプロトタイプを作る。",
+            "リンクと画面切り替えをリハーサルし、誘導のないタスクを用意して、参加者の同意を得る。",
+            "操作、ヒント、バージョンの違いを記録し、修正する問題を選んで検証を予定する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "観察を追跡可能な変更記録にまとめる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "各問題を、タスク、画面、観察内容、影響、次の対応で整理することを勧めます。参加者が戻った後に日付が消えていた場合は、まずどのバージョンで発生したか、完了に影響したか、支援を求めたかを記録します。その後、日付を保持するか、案内を加えるか、変更フローを組み直すかを話し合います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "問題の優先順位は、タスクを妨げるか、誤った選択を引き起こすか、どの状況に影響するかを総合して判断できます。指摘された回数だけで並べないでください。発生回数が少なくても、誤った予約につながる可能性がある問題は、先に調べる価値があります。少量の定性データで得られた回数は、ユーザー全体での発生率と同じではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修正後は、変更前後のバージョンと判断理由を残し、どの観察が変更につながったかをチームに伝えます。両版を比較する場合は、以前に見た内容が後の操作に影響する可能性に注意してください。二度目に早く完了できたことを、そのまま新バージョンのおかげとは判断できません。定量的な比較が必要なら、別途、統一した条件と適切な調査方法を設計する必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "プロトタイプ完成後も、本番製品の受け入れ検証が必要",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "クリックできるプロトタイプでは、特定の点を理解できるかやフローを確認できますが、通常、実際の支払い、データ保存、権限、性能、支援技術のすべての動作までは検証できません。GOV.UK の alpha ガイダンスも、初期のプロトタイプと本番品質のコードを区別しています。プロトタイプを開発担当に渡す際は、どの内容がまだ仮定やシミュレーションなのかも伝える必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "植物ケアの例で予約のデモを完了できたとしても、正式なサービスでは、予約枠の情報が同期されるか、複数人の同時予約、通知の送信、キャンセル規則への対応が必要です。これらの問題はプロトタイプの段階で早めに提起できますが、画面のデモが成功しただけで、バックエンドや運用フローもテストに合格したとは言えません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "引き継ぎを完了する際は、フロー図、状態の説明、テストでの発見、未対応の問題を添え、実際の製品段階での検証を予定します。プロトタイプは必ずしもコードとして残す必要はなく、際限なく磨き込む必要もありません。次の意思決定を支える十分な情報が得られたら、証拠を整理し、それに応じた設計、開発、調査の作業に進めます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wireframe-prototype-testing/diagram-1-ja.svg",
+          "alt": "独自に作成した四枚の状態カードで、サービスの確認、時間帯の選択、情報のチェック、結果画面を整理し、各段階で検証すべき反応を示している。",
+          "width": 1600,
+          "height": 900,
+          "caption": "各部分のシミュレーションを調査課題に対応させ、プロトタイプで答えられない点も記録する。",
+          "description": "独自に作成した四枚の状態カードで、サービスの確認、時間帯の選択、情報のチェック、結果画面を整理し、各段階で検証すべき反応を示している。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "形式",
+            "予約練習で確認できること",
+            "主な制約"
+          ],
+          "rows": [
+            [
+              "簡単なワイヤーフレーム",
+              "情報の順序と入力欄の位置",
+              "見た目の細部は未確定"
+            ],
+            [
+              "矢印付きの画面フロー",
+              "戻る操作と分岐が示されているか",
+              "操作時の反応を直接は示せない"
+            ],
+            [
+              "ペーパープロトタイプ",
+              "画面の切り替えでタスクを試す",
+              "切り替えのリハーサルと介入の記録が必要"
+            ],
+            [
+              "クリックできるプロトタイプ",
+              "日付変更と確認のフロー",
+              "データや状態は模擬だけの場合がある"
+            ],
+            [
+              "本番に近いデザインカンプ",
+              "文字サイズ、密度、画面の階層",
+              "見た目が完成しても運用できるとは限らない"
+            ]
+          ],
+          "caption": "独自の予約シナリオで形式を比較。忠実度は、内容、見た目、インタラクションで個別に調整できる。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "プロトタイプを本物の取引に見せない",
+          "text": "練習画面には予約が成立しないことを明記し、適切なテストデータを使う必要があります。本番製品の支払い、データ処理、サービス提供に関する約束には、それぞれ対応する実装と検証が必要です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "日常の問題からデザイン思考を練習する",
+              "kind": "life",
+              "slug": "design-thinking-practice"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ウェブサイトプロジェクトの正式な受け入れ検証を整える",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "レスポンシブな画面と実機での確認を理解する",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NN/g：プロトタイプの忠実度とテストの準備",
+          "url": "https://www.nngroup.com/articles/ux-prototype-hi-lo-fidelity/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g：ユーザー体験の成果物に関する用語",
+          "url": "https://media.nngroup.com/media/articles/attachments/UX-Deliverables-Glossary-PDF-2.pdf",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g：答えを誘導しないタスクのシナリオ",
+          "url": "https://www.nngroup.com/articles/task-scenarios-usability-testing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：モデレーター付きユーザビリティテスト",
+          "url": "https://www.gov.uk/service-manual/user-research/using-moderated-usability-testing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：alpha プロトタイプと本番製品の違い",
+          "url": "https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：調査へのインフォームドコンセント",
+          "url": "https://www.gov.uk/service-manual/user-research/getting-users-consent-for-research",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "와이어프레임과 프로토타입 활용법: 흐름을 먼저 검증하고 시각 디자인 다듬기",
+      "description": "와이어프레임, 시각 디자인 시안, 인터랙티브 프로토타입은 각각 용도가 다르며, 핵심은 지금 어떤 문제를 검증해야 하는지입니다. 이 글은 직접 설계한 가정 방문 식물 관리 예약 상황을 통해 충실도를 선택하고, 흐름과 예외 상태를 보완하며, 답을 암시하지 않는 수행 과제를 준비한 뒤 테스트 관찰을 수정 기록으로 전환하는 방법을 설명합니다. 수행 단계, 비교표, 직접 제작한 도해를 제공하여 디자인 입문자와 소규모 팀이 본격적인 개발에 투자하기 전에 사용상의 어려움을 이해하도록 돕습니다.",
+      "hero": {
+        "src": "/guides/wireframe-prototype-testing/hero-ko.jpg",
+        "alt": "Mokaair가 직접 제작한 화면·흐름 문서·점검 방패 일러스트로, 프로토타입은 과제로 검증하고 한계를 설명해야 함을 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "완성도가 높은 예약 페이지는 이미 출시할 수 있을 것처럼 보이지만, 클릭해 보면 끝까지 진행할 수 있는 경로가 하나뿐입니다. 뒤로 돌아갈 수도, 날짜를 바꿀 수도 없고, 예약 마감 상태도 없습니다. 이런 화면은 시각 디자인을 논의하는 데 사용할 수 있지만, 사용자가 예약을 완료할 수 있는지 알아보려면 다른 준비가 필요합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 직접 설계한 가정 방문 식물 관리 예약을 연습 사례로 사용하며, 방법은 2026년 9월 14일에 확인한 NN/g와 GOV.UK 자료를 참고했습니다. 서비스, 화면 상태, 테스트 과제는 모두 직접 설계했으며, 실제 예약이나 참여자 테스트 결과는 없습니다. 프로토타입의 역할은 학습과 의사결정을 돕는 것이며, 운영 가능한 시스템이 완성되었다는 뜻은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "무엇을 검증할지 먼저 설명하고 산출물 형태 선택하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "와이어프레임은 주로 화면 구조, 콘텐츠 순서, 조작 요소의 위치를 표현합니다. 시각 디자인 시안은 여기에 글꼴, 색상, 세부 사항을 더해 보여주며, 프로토타입은 특정 상호작용이나 서비스 동작을 시뮬레이션하는 데 사용합니다. 팀마다 이러한 명칭을 다르게 사용할 수 있으므로, 전달 전에 어떤 부분을 조작할 수 있고 어떤 부분은 설명용인지 직접 밝히는 것이 좋습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "식물 관리 페이지에서 서비스 범위와 가격 중 무엇을 먼저 소개할지 논의하려면 간단한 와이어프레임으로도 대화를 시작할 수 있습니다. 사용자가 시간대를 바꿀 수 있는지 확인하려면 클릭, 뒤로 이동, 데이터 유지에 대한 반응을 보여줘야 합니다. 여러 화면을 조작 화살표가 있는 흐름으로 연결하는 것도 화면 간 관계를 이해하는 데 도움이 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "모든 세부 사항을 고충실도나 저충실도라는 말로만 묶어 설명하지 마세요. NN/g는 충실도가 상호작용, 시각 디자인, 콘텐츠에서 각각 다르게 나타날 수 있다고 설명합니다. 화면이 회색조로만 구성되어 있어도 실제 서비스에 가까운 문구를 사용할 수 있으며, 시각 디자인 시안이 정교해도 상호작용은 전혀 불가능할 수 있습니다. 연구 질문을 기준으로 어느 부분까지 실제에 가깝게 만들지 선택해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "과제에 필요한 콘텐츠와 상태 충분히 준비하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 설계한 예약 연습에서는 특정 지역에만 서비스를 제공하고, 날짜와 시간대를 선택한 뒤 연락처를 입력하도록 설정할 수 있습니다. 먼저 과제를 어디서 시작하는지, 완료하면 무엇이 보이는지, 뒤로 돌아가 수정할 때 어떤 정보를 유지해야 하는지 정리하세요. 이 범위 정리표는 성공 화면만 그린 채 그 화면에 이르는 전체 조작 흐름을 빠뜨리는 일을 막아 줍니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이번에 검증할 문제에 따라 주소가 서비스 범위 밖인 경우, 시간대 예약이 마감된 경우, 필수 입력란을 비운 경우, 제출 후 확인 등 중요한 분기를 보완하세요. 매번 모든 백엔드 상황을 시뮬레이션할 필요는 없습니다. 하지만 어떤 분기가 연구 과제에 영향을 준다면, 참여자가 그 분기에 도달했을 때 즉석에서 이 페이지는 중요하지 않다고 말해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "문구의 길이와 내용도 판단에 영향을 줍니다. 모두 똑같은 가짜 날짜나 의미 없는 문구를 사용하면 정보를 찾기 어렵다는 문제가 가려질 수 있습니다. 적절한 가상 서비스 데이터를 사용하면서 실제 예약이 성립되지 않는다고 명확히 표시할 수 있습니다. 실제 데이터가 있어야 검증할 수 있는 상황은 별도로 계획하고, 간단한 프로토타입에서는 주소나 결제 정보를 수집하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "테스트 과제에 상황을 제시하되 조작 방법은 알려주지 않기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 관찰하려는 사용 목표를 적고, 참여자가 이해할 수 있는 활동으로 바꾸세요. 예를 들어 토요일 오후에 집에 있으며 식물 관리를 한 차례 받고 싶으니, 요구에 맞는 시간대를 찾아 이 연습용 예약을 완료해 달라고 요청할 수 있습니다. 이는 선택 조건을 제공하지만, 어떤 메뉴나 버튼을 눌러야 하는지는 직접 알려주지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "뒤로 돌아가 수정하는 과정을 테스트하려면 적절한 단계에서 새로운 조건을 추가할 수 있습니다. 원래 선택한 시간대에 갑자기 일정이 생겼으니 가능한 다른 시간으로 바꿔 달라고 요청하세요. 이전 페이지를 누른 뒤 오른쪽 드롭다운 메뉴를 클릭하라는 식으로 과제를 작성하지 마세요. 그러면 스스로 조작 방법을 찾을 수 있는지보다 지시를 따를 수 있는지를 주로 테스트하게 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "확인 페이지에 예상한 날짜와 시간대가 표시되는 것처럼 관찰 가능한 완료 조건을 먼저 정의한 뒤, 어떤 어려움을 기록할지 결정하세요. 선호도 질문은 조작 후에 배치하여 이유를 알아보는 데 사용할 수 있습니다. 단순히 사용할 의향이 있는지 묻는 것과 실제로 연습 과제를 한 번 수행하는 모습을 관찰하는 것은 서로 다른 근거를 제공합니다. 만족도만 수집한 뒤 흐름이 원활하다고 주장하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "프로토타입을 예행 점검해 제작 결함을 디자인 문제로 오인하지 않기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "참여자를 정식으로 초대하기 전에 예정된 테스트 경로를 직접 진행하며 시작 화면, 클릭 영역, 뒤로 이동, 스크롤, 링크를 확인하세요. 종이 프로토타입을 사용한다면 화면 순서를 미리 정리하고 누가 전환을 담당할지 정하세요. 이는 연구 도구가 작동하는지 점검하는 과정이며, 실제 사용자 테스트의 성공 결과를 미리 작성하는 일이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "진행할 때는 먼저 연구 참여 동의를 받고, 아직 완성되지 않은 프로토타입이라는 점과 어떤 조작이 실제로 실행되지 않는지 설명하세요. 참여자에게 그때그때 떠오르는 생각을 최대한 말해 달라고 요청하고, 진행자는 관찰과 경청에 집중하세요. 참여자가 계속 진행하도록 도와야 할 때는 언제 개입했고 어떤 힌트를 제공했는지 기록하여 이후 데이터 해석에 활용하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "버튼에 링크를 설정하지 않아 참여자가 진행을 멈췄다면, 먼저 프로토타입 오류인지 디자인이 불명확한 것인지 구분하세요. 원래 어떤 일이 일어날 것으로 예상했는지 물어볼 수 있지만, 이 멈춤을 정식 서비스의 결함으로 바로 분류하지 마세요. 프로토타입을 고친 뒤 다시 확인하세요. 테스트 사이에 버전이 바뀌었다면 버전과 시간도 남겨야 합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "연구 질문과 완료 조건을 작성하고, 필요한 콘텐츠·시각 디자인·상호작용 수준을 정하세요.",
+            "과제 흐름, 예외 상태, 테스트 데이터를 정리하고 범위가 명확한 프로토타입을 만드세요.",
+            "링크와 화면 전환을 예행 점검하고, 중립적인 과제를 준비하며 참여자의 동의를 받으세요.",
+            "조작, 힌트, 버전 차이를 기록하고 수정할 문제를 선택한 뒤 검증을 계획하세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "관찰을 추적 가능한 수정 기록으로 전환하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "각 문제를 과제, 화면, 관찰 내용, 영향, 다음 단계로 정리하는 것을 권합니다. 참여자가 뒤로 돌아온 뒤 날짜가 지워진 것을 발견했다면, 먼저 어느 버전에서 발생했는지, 완료에 영향을 주었는지, 도움을 요청했는지 기록하세요. 그런 다음 날짜를 유지할지, 안내를 추가할지, 수정 흐름을 재구성할지 논의하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "문제의 우선순위는 과제 수행을 막는지, 잘못된 선택을 유발하는지, 어떤 상황에 영향을 미치는지를 종합해 판단할 수 있습니다. 사람들이 언급한 횟수만으로 순위를 매기지 마세요. 드물게 나타나더라도 잘못된 예약으로 이어질 수 있는 문제는 먼저 확인할 가치가 있습니다. 적은 양의 정성 데이터에서 집계한 횟수는 전체 사용자에게서의 발생률과 같지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "수정 후에는 이전과 이후 버전 및 판단 이유를 보관하여 어떤 관찰이 변경을 이끌었는지 팀이 알 수 있게 하세요. 두 버전을 비교하려면 이전에 본 내용이 이후 조작에 영향을 줄 수 있다는 점에 주의해야 합니다. 두 번째에 더 빨리 완료했다는 이유만으로 새 버전의 효과라고 단정할 수는 없습니다. 정량 비교가 필요하면 동일한 조건과 적절한 연구 방법을 별도로 설계해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "프로토타입을 완성해도 정식 제품 검수는 남습니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "클릭 가능한 프로토타입으로 특정 내용을 이해하는지와 흐름을 점검할 수 있지만, 대개 실제 결제, 데이터 저장, 권한, 성능이나 모든 보조 기술의 동작을 검증할 수는 없습니다. GOV.UK의 alpha 지침도 초기 프로토타입과 정식 제품 수준의 코드를 구분합니다. 프로토타입을 개발팀에 넘길 때는 어떤 내용이 아직 가정이나 시뮬레이션인지 함께 설명해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "식물 관리 사례에서 예약 시연을 완료할 수 있어도, 정식 서비스에서는 시간대 동기화 여부, 여러 사람의 동시 예약, 알림 발송, 취소 규칙을 여전히 처리해야 합니다. 이런 문제는 프로토타입 단계에서 미리 제기할 수 있지만, 화면 시연이 성공했다는 이유로 백엔드와 운영 흐름까지 테스트를 통과했다고 주장할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "인계를 마칠 때는 흐름도, 상태 설명, 테스트에서 발견한 내용, 미해결 문제를 첨부하고 실제 제품 단계의 검증을 계획하세요. 프로토타입을 반드시 코드로 보존할 필요는 없으며, 끝없이 다듬을 필요도 없습니다. 다음 결정을 뒷받침할 충분한 정보를 제공했다면 근거를 정리하고 그에 맞는 디자인, 개발 또는 연구 작업으로 넘어갈 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wireframe-prototype-testing/diagram-1-ko.svg",
+          "alt": "직접 제작한 상태 카드 네 장으로 서비스 확인, 시간대 선택, 정보 점검, 결과 화면을 정리하고 각 단계에서 검증해야 할 반응을 표시한 그림.",
+          "width": 1600,
+          "height": 900,
+          "caption": "각 시뮬레이션을 연구 질문과 연결하고, 프로토타입이 답할 수 없는 부분을 기록하세요.",
+          "description": "직접 제작한 상태 카드 네 장으로 서비스 확인, 시간대 선택, 정보 점검, 결과 화면을 정리하고 각 단계에서 검증해야 할 반응을 표시한 그림.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "형식",
+            "예약 연습에서 점검할 수 있는 사항",
+            "주요 한계"
+          ],
+          "rows": [
+            [
+              "간단한 와이어프레임",
+              "정보 순서와 입력란 위치",
+              "시각적 세부 사항이 아직 확정되지 않음"
+            ],
+            [
+              "화살표가 있는 화면 흐름",
+              "뒤로 이동과 분기를 설명했는지",
+              "조작 반응을 직접 나타내지는 못함"
+            ],
+            [
+              "종이 프로토타입",
+              "화면 전환으로 과제 탐색",
+              "전환 예행 점검과 개입 기록 필요"
+            ],
+            [
+              "클릭 가능한 프로토타입",
+              "날짜 변경과 확인 흐름",
+              "데이터와 상태는 시뮬레이션일 수 있음"
+            ],
+            [
+              "정식 제품에 가까운 시각 디자인 시안",
+              "글자 크기, 정보 밀도, 화면 내 위계",
+              "외관 완성이 운영 가능함을 뜻하지 않음"
+            ]
+          ],
+          "caption": "직접 설계한 예약 상황으로 형식을 비교합니다. 충실도는 콘텐츠, 시각 디자인, 상호작용에서 각각 조절할 수 있습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "프로토타입이 실제 거래처럼 보이지 않게 하세요",
+          "text": "연습용 화면에는 실제 예약이 성립되지 않는다고 표시하고 적절한 테스트 데이터를 사용해야 합니다. 정식 제품의 결제, 데이터 처리, 서비스 제공에 관한 약속에는 그에 맞는 구현과 검증이 반드시 필요합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "일상 속 문제부터 디자인 씽킹 연습하기",
+              "kind": "life",
+              "slug": "design-thinking-practice"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 프로젝트의 정식 검수 보완하기",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "반응형 화면과 실제 기기 점검 이해하기",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NN/g: 프로토타입 충실도와 테스트 준비",
+          "url": "https://www.nngroup.com/articles/ux-prototype-hi-lo-fidelity/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g: 사용자 경험 산출물 용어",
+          "url": "https://media.nngroup.com/media/articles/attachments/UX-Deliverables-Glossary-PDF-2.pdf",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g: 답을 암시하지 않는 과제 상황",
+          "url": "https://www.nngroup.com/articles/task-scenarios-usability-testing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: 진행자가 있는 사용성 테스트",
+          "url": "https://www.gov.uk/service-manual/user-research/using-moderated-usability-testing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: alpha 프로토타입과 정식 제품의 차이",
+          "url": "https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: 충분한 설명에 근거한 연구 참여 동의",
+          "url": "https://www.gov.uk/service-manual/user-research/getting-users-consent-for-research",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "线框图与原型怎么用：先验证流程再调整视觉",
+      "description": "线框图、视觉稿与交互原型各有用途，重点是目前需要验证哪一个问题。本文用原创的上门植物养护预约情境，说明如何选择保真度、补齐流程与异常状态，准备不暗示答案的操作任务，再将测试观察转成修改记录。附操作步骤、比较表及原创图解，帮助设计初学者与小型团队，在投入正式开发前先看懂使用中的困难。",
+      "hero": {
+        "src": "/guides/wireframe-prototype-testing/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创界面、流程文档与检查盾牌插图，代表原型须通过任务验证并说明限制。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "一张完成度很高的预约页面，看起来已经可以上线，点进去却只有一条能走完的路径：不能返回、不能改日期，也没有约满状态。这样的界面可以用来讨论视觉，但若想知道用户能不能完成预约，就需要不同的准备。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以原创的上门植物养护预约作为练习，方法参考 2026 年 9 月 14 日查阅的 NN/g 与 GOV.UK 资料。服务、界面状态和测试任务均为自行设计，没有真实预约或受试者结果；原型的作用是帮助学习与决策，并不代表已完成可运营的系统。"
+        },
+        {
+          "type": "heading",
+          "text": "先说明要验证什么，再选交付形式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "线框图主要表达界面结构、内容顺序与操作位置；视觉稿进一步呈现字体、色彩及细节；原型则用来模拟某些交互或服务行为。团队对这些名称可能有不同用法，交付前最好直接说明哪些部分可操作、哪些只是示意。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果要讨论植物养护页面应先介绍服务范围还是价格，简单线框图就能开始对话。如果要看用户是否能更换时段，则需呈现点击、返回和数据保留的响应。把多张界面连成带有操作箭头的流程，也能帮助大家理解界面间的关系。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要只用高保真或低保真概括所有细节。NN/g 说明保真度可以分别体现在交互、视觉与内容上：界面虽然只有灰度，仍可使用接近正式版本的文字；视觉稿很精致，也可能完全不能交互。选择时应根据研究问题决定哪些方面需要逼真到什么程度。"
+        },
+        {
+          "type": "heading",
+          "text": "为任务准备足够的内容与状态",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "原创预约练习可设定服务只覆盖特定区域，需要选择日期、时段与填写联系方式。先列出任务从哪里开始、完成时会看到什么，以及返回修改时哪些信息应保留。这份范围表能避免只画出成功页面，却没有通往它的完整操作流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "根据本次要验证的问题，补上重要分支，例如地址不在服务范围、时段约满、必填字段未填与提交后的确认。并非每次都要模拟所有后端情况；但若某个分支会影响研究任务，就不能在参与者遇到时才临时说这一页不重要。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文字长度和内容也会影响判断。使用全部相同的虚构日期或无意义文字，可能掩盖信息难找的问题。可以使用合理的虚构服务数据，清楚标示不会实际创建预约；需要真实数据才能验证的情境则另外规划，不在简单原型中收集住址或付款信息。"
+        },
+        {
+          "type": "heading",
+          "text": "让测试任务有情境，但不要提供操作答案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先写下想观察的使用目标，再转成参与者能理解的活动。例如你周六下午在家，希望安排一次植物养护，请找出符合需求的时段并完成这份练习预约。这提供了选择条件，却没有直接告诉他应点击哪个菜单或按钮。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果要测试返回修改，可在适当阶段加入新条件：原先的时段临时不方便，请改选另一个可配合的时间。不要把任务写成按上一页再点右侧下拉菜单，否则测到的主要是能否遵照指令，而不是能否自己找到操作方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先定义可观察的完成条件，例如确认页显示预期日期与时段，再决定要记录哪些困难。关于偏好的问题可放在操作之后，用来了解理由；单纯询问你会不会使用，与真正观察一次练习任务，能提供的证据不同。不要只收集满意度就宣称流程已经顺畅。"
+        },
+        {
+          "type": "heading",
+          "text": "排演原型，避免把制作缺陷当成设计问题",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "正式邀请参与者前，自己走过预计测试的路径，核对起始界面、点击区域、返回、滚动与链接。若采用纸质原型，先整理界面顺序并约定谁负责切换。这是在检查研究工具能否运作，并不是为真正的用户测试预先写出成功结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "进行时先取得参与者对研究的同意，解释这是尚未完成的原型，以及哪些操作不会真的执行。请参与者尽量说出当下想法，主持人以观察与倾听为主。需要协助才能继续时，记录何时介入、提供了什么提示，方便之后解读数据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果按钮没有设置链接，导致参与者停住，先分清是原型故障还是设计不清楚。可询问他原本预期会发生什么，但不要把这次停顿直接列为正式服务的缺陷。修好原型后再确认；若版本在测试间变动，也要记录版本与时间。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "写出研究问题及完成条件，决定需要的内容、视觉与交互程度。",
+            "整理任务流程、异常状态和测试数据，制作范围明确的原型。",
+            "排演链接与切换，准备中性任务并取得参与者同意。",
+            "记录操作、提示与版本差异，选择要修改的问题再安排验证。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "把观察转成可追溯的修改记录",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "建议用任务、界面、观察、影响与下一步整理每个问题。若参与者返回后发现日期被清空，先记录发生在哪一版、是否影响完成，以及有没有寻求协助。再讨论是否保留日期、补上提示，或重新安排修改流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "问题优先级可以综合是否阻止任务、是否造成错误选择，以及影响哪些情境来判断。不要只按大家提到的次数排序；一个出现较少但可能导致错误预约的问题，也值得先查明。少量定性数据中出现的次数，不等于整体用户中的发生率。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修改后保留前后版本和判断理由，让团队知道是哪项观察促成了变更。如果要比较两版，注意先前看过的内容可能影响后续操作，不能把第二次较快完成直接归因于新版。需要量化比较时，应另外设计一致的条件及合适的研究方式。"
+        },
+        {
+          "type": "heading",
+          "text": "原型完成后，还有正式产品的验收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "可点击原型能检查特定的理解与流程，通常不能验证真实付款、数据存储、权限、性能或所有辅助技术行为。GOV.UK 的 alpha 指南也将早期原型与符合正式产品质量要求的代码分开。把原型交给开发人员时，要一并说明哪些内容仍是假设或模拟。"
+        },
+        {
+          "type": "paragraph",
+          "text": "植物养护示例即使能完成预约演示，正式服务仍需处理时段是否同步、多人同时预约、通知发送及取消规则。这些问题可以在原型阶段提前提出，但不能因为界面演示成功，就宣称后端和运营流程也已经通过测试。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成交接时附上流程图、状态说明、测试发现与未处理问题，并安排实际产品阶段的验证。原型不一定要保留为代码，也不必无限精修。当它已提供足够信息支持下一个决定，就可以整理证据，进入相应的设计、开发或研究工作。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wireframe-prototype-testing/diagram-1-zh-cn.svg",
+          "alt": "原创的四张状态卡梳理服务确认、时段选择、信息检查及结果页，指出各步需验证的响应。",
+          "width": 1600,
+          "height": 900,
+          "caption": "让每一段模拟都对应研究问题，并记下原型无法回答的部分。",
+          "description": "原创的四张状态卡梳理服务确认、时段选择、信息检查及结果页，指出各步需验证的响应。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "形式",
+            "预约练习可检查",
+            "主要限制"
+          ],
+          "rows": [
+            [
+              "简单线框图",
+              "信息顺序与字段位置",
+              "视觉细节尚未定稿"
+            ],
+            [
+              "附箭头的界面流程",
+              "是否说明返回与分支",
+              "无法直接体现操作响应"
+            ],
+            [
+              "纸质原型",
+              "通过界面切换探索任务",
+              "切换需排演并记录介入"
+            ],
+            [
+              "可点击原型",
+              "日期修改与确认流程",
+              "数据与状态可能只是模拟"
+            ],
+            [
+              "接近正式版本的视觉稿",
+              "字号、密度与界面层级",
+              "外观完成不等于可运营"
+            ]
+          ],
+          "caption": "以原创预约情境比较形式；保真度可在内容、视觉及交互上分别调整。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "不要让原型看起来像真实交易",
+          "text": "练习界面需标示不会实际创建预约，并使用合适的测试数据。正式产品的付款、数据处理与服务承诺，必须有相应实现及验证。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "从生活问题开始练习设计思维",
+              "kind": "life",
+              "slug": "design-thinking-practice"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "补齐网站项目的正式验收",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "理解响应式界面与实际设备检查",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NN/g：原型保真度与测试准备",
+          "url": "https://www.nngroup.com/articles/ux-prototype-hi-lo-fidelity/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g：用户体验交付物术语",
+          "url": "https://media.nngroup.com/media/articles/attachments/UX-Deliverables-Glossary-PDF-2.pdf",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g：不暗示答案的任务情境",
+          "url": "https://www.nngroup.com/articles/task-scenarios-usability-testing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：主持式可用性测试",
+          "url": "https://www.gov.uk/service-manual/user-research/using-moderated-usability-testing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：alpha 原型与正式产品的差异",
           "url": "https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works",
           "checked_on": "2026-09-14"
         },

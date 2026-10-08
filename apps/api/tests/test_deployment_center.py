@@ -598,6 +598,85 @@ def test_release_guard_matches_the_scripts_staged_release_rule(tmp_path: Path) -
     assert release_guard.staged_release_reason(root) is None
 
 
+def test_release_guard_refuses_a_staged_release_root_it_cannot_read(tmp_path: Path) -> None:
+    """An unreadable /root never reads as "no staged release" (tests run as root, so a file
+    standing where a directory should be gives the OSError a PermissionError would)."""
+    from deployment_agent import release_guard
+
+    # No root at all: nothing can be prepared there.
+    assert release_guard.staged_release_reason(tmp_path / "missing") is None
+    blocker = tmp_path / "not-a-directory"
+    blocker.write_text("", encoding="utf-8")
+    reason = release_guard.staged_release_reason(blocker)
+    assert reason and "could not list" in reason and "NotADirectoryError" in reason
+    # A release whose state cannot be checked refuses too; one with no state file, a file
+    # named like a release, or a state older than the window does not.
+    root = tmp_path / "root"
+    root.mkdir()
+    (root / "mokaair-plain-file").write_text("", encoding="utf-8")
+    (root / "mokaair-no-state").mkdir()
+    old = root / "mokaair-old" / "state.json"
+    old.parent.mkdir()
+    old.write_text('{"built_at": "x"}', encoding="utf-8")
+    stale = time.time() - 25 * 60 * 60
+    import os
+
+    os.utime(old, (stale, stale))
+    assert release_guard.staged_release_reason(root) is None
+    unreadable = root / "mokaair-unreadable" / "state.json"
+    unreadable.mkdir(parents=True)  # a directory where the state file should be: read fails
+    reason = release_guard.staged_release_reason(root)
+    assert reason and "could not read mokaair-unreadable/state.json" in reason
+    assert release_guard.release_in_progress(tmp_path / "no.hold", blocker) == (
+        release_guard.STAGED_RELEASE_IN_PROGRESS,
+        release_guard.staged_release_reason(blocker),
+    )
+
+
+def test_release_guard_refuses_what_a_0700_root_hides(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """On the host the release directories and /root are 0700 root: the agent's stat and read
+    raise PermissionError, which tests running as root only get by patching them in."""
+    from deployment_agent import release_guard
+
+    root = tmp_path / "root"
+    locked = root / "mokaair-a-locked" / "state.json"
+    locked.parent.mkdir(parents=True)
+    locked.write_text('{"built_at": "x", "activated_at": "y"}', encoding="utf-8")
+    hold_path = tmp_path / "deploy.hold"
+    real_stat, real_read = Path.stat, Path.read_text
+
+    def stat(self: Path, *args: Any, **kwargs: Any) -> Any:
+        if self == locked:
+            raise PermissionError(13, "Permission denied")
+        return real_stat(self, *args, **kwargs)
+
+    def read_text(self: Path, *args: Any, **kwargs: Any) -> str:
+        if self == hold_path:
+            raise PermissionError(13, "Permission denied")
+        return real_read(self, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "stat", stat)
+    monkeypatch.setattr(Path, "read_text", read_text)
+    reason = release_guard.staged_release_reason(root)
+    assert reason == (
+        "could not check mokaair-a-locked/state.json (PermissionError); "
+        "cannot tell whether it is prepared but not activated"
+    )
+    # A release that is definitely staged is named even though an earlier one is unreadable.
+    staged = root / "mokaair-b-staged" / "state.json"
+    staged.parent.mkdir()
+    staged.write_text('{"built_at": "x"}', encoding="utf-8")
+    reason = release_guard.staged_release_reason(root)
+    assert reason and reason.startswith("a staged release is prepared but not activated: mokaair-b")
+    # An unreadable hold is not reported as one that exists: /root hides both the same way.
+    assert release_guard.release_in_progress(hold_path, tmp_path / "missing") == (
+        release_guard.HOLD_ACTIVE,
+        "could not read the hold file (PermissionError); cannot tell whether a hold is in place",
+    )
+
+
 def test_executor_refuses_to_deploy_while_a_release_is_in_progress(tmp_path: Path) -> None:
     agent_config = config(tmp_path)
     store = AgentStore(agent_config.state_path)

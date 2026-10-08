@@ -9,12 +9,13 @@
 // site approves a review on arrival when the pick, the quality check or the package check passes
 // and the owner's switch is on (docs/videos/HANDS-OFF.md). `review-pull` reads the decisions back
 // and records an approval only when that hash still matches the local file.
-import { closeSync, existsSync, mkdirSync, openSync, readFileSync, readSync, statSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { closeSync, existsSync, mkdirSync, openSync, readFileSync, readSync, rmSync, statSync } from "node:fs";
 import path from "node:path";
 import { isDeepStrictEqual, parseArgs } from "node:util";
 
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
-import { AutomationError, automationClient } from "../automation/client.mjs";
+import { AutomationError, automationClient, RUN_UNCERTAIN } from "../automation/client.mjs";
 import { ANIME_APPROVAL_GATES, approvalRuntimePolicyHash, GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
 import { animeRuntimeContext, hasAnimePolicy, LONG_ANIME_POLICY, runtimePolicyHash, validateAnimeRuntime } from "../core/anime-policy.mjs";
 import { assembledAudioProblems, audioEvidenceProblems, currentAudioCheck } from "../core/audio-evidence.mjs";
@@ -25,7 +26,7 @@ import { drawnShotScenes, hasCast, illustrated, isDrama } from "../core/drama.mj
 import { atomicWrite, docDir, isInside, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, keyframeProblems, loadProject, pipelineStatus } from "../core/state.mjs";
-import { narrationLocale, VIDEO_CATEGORIES } from "../core/schema.mjs";
+import { LOCALES, NARRATION_LOCALE, narrationLocale, VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckMatches } from "../core/script-check.mjs";
 import { estimateTimeline, formatClock, speechHash } from "../core/timeline.mjs";
@@ -34,7 +35,7 @@ import { packageFiles, packageLocales, readPackageReport, thumbnailVariants, UPL
 import { composeMetadata } from "../package/metadata.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
-import { bindRenewalSubmission } from "./renewal.mjs";
+import { bindRenewalSubmission, renewedFinal } from "./renewal.mjs";
 
 // Mirrors PART_BYTES in apps/api/app/video_reviews/storage.py: under nginx's 6 MB request cap.
 export const PART_BYTES = 4 * 1024 * 1024;
@@ -133,6 +134,9 @@ export const KEPT_REMARK_LENGTH = 300;
 // The lines a picture keeps when the payload is still past the budget: two, then none.
 const FEWER_REMARK_LINES = [2, 0];
 const REMARKS_LEFT_OUT = "意見因審核資料的大小上限略去，全文在 keyframes/manifest.json";
+// What a storyboard's summary says when even its list of kept pictures was left out for size:
+// each kept shot still carries `accepted: true` and its score, which the card reads.
+const KEPT_LIST_LEFT_OUT = "（保留鏡頭的 judge 意見因審核資料的大小上限略去，全文在 keyframes/manifest.json）";
 
 /**
  * The judge's remarks on a kept picture as a review carries them: the first `lines` of them, each
@@ -179,8 +183,11 @@ const KEPT_LIST = { final: "accepted_pictures", storyboard: "accepted" };
 /**
  * A review's payload with the judge's remarks on its kept pictures cut to `lines` a picture
  * (keptRemarks) wherever that review carries them: on its list of kept pictures and, on a
- * storyboard, in the own verdict of each kept shot, which is left empty when the lines are none
- * (the list says why). Every picture keeps its id. Null for a review that names no kept picture.
+ * storyboard, in the own verdict of a kept shot whose list entry has none to say
+ * (storyboardSubmission), which is left empty when the lines are none, with nothing saying so:
+ * keyframes --accept-best never writes such a shot, since its list holds every take's remarks,
+ * the kept take's included. Every picture keeps its id. Null for a review that names no kept
+ * picture.
  */
 function withKeptRemarks({ gate, payload }, lines) {
   if (!isRecord(payload)) return null;
@@ -196,31 +203,58 @@ function withKeptRemarks({ gate, payload }, lines) {
   };
 }
 
+/** Whether a review's kept pictures carry any of the judge's remarks, on its list or in a kept shot's own verdict. */
+function keptRemarksIn(gate, payload) {
+  const said = (problems) => Array.isArray(problems) && problems.length > 0;
+  const list = KEPT_LIST[gate];
+  return (Array.isArray(payload?.[list]) && payload[list].some((picture) => said(picture?.problems)))
+    || (gate === "storyboard" && Array.isArray(payload?.shots) && payload.shots.some((shot) => shot?.accepted === true && said(shot.judge?.problems)));
+}
+
 /**
  * A review as review-push posts it, its payload within what the server takes. The judge's
  * remarks on the kept pictures go up cut to KEPT_REMARK_LINES lines a picture; while the payload
  * is past REVIEW_PAYLOAD_BUDGET they are cut further in steps, to two lines and then to none,
- * every picture keeping its id. A payload still past the server's limit is not sent: the server
- * would answer 422, and this says how large it is. Returns { body, bytes, lines }, `lines` null
- * unless the remarks were cut past their usual lines.
+ * every picture keeping its id. A storyboard still past it then leaves its list of kept pictures
+ * out, every kept shot still marked `accepted: true` with its score, and its summary ends with
+ * KEPT_LIST_LEFT_OUT when the judge had remarks to leave out; a cut keeps its list, the only
+ * place it names its kept pictures. Kept pictures the judge said nothing of are not cut, and
+ * nothing says they were. A payload
+ * still past the server's limit is not sent: the server would answer 422, and this says how large
+ * it is. Returns { body, bytes, lines }, `lines` null unless the remarks were cut past their
+ * usual lines.
  */
 export function fitPayload(body) {
   const limit = payloadLimit(body);
   const budget = limit - (MAX_REVIEW_PAYLOAD_BYTES - REVIEW_PAYLOAD_BUDGET);
   const kept = withKeptRemarks(body, KEPT_REMARK_LINES);
+  const remarked = kept !== null && keptRemarksIn(body.gate, kept);
   let payload = kept ?? body.payload;
   let bytes = payloadBytes(payload);
   let lines = null;
-  for (const fewer of kept ? FEWER_REMARK_LINES : []) {
+  let summary = body.summary;
+  for (const fewer of remarked ? FEWER_REMARK_LINES : []) {
     if (bytes <= budget) break;
     payload = withKeptRemarks(body, fewer);
     bytes = payloadBytes(payload);
     lines = fewer;
   }
-  if (bytes > limit) {
-    throw new ReviewError(`the ${body.gate} review's payload is ${bytes} bytes, over the ${limit} the site takes${kept ? ", even with the judge's remarks on the kept pictures left out" : ""}; nothing was sent`, { code: "payload_too_large", submission: true });
+  // A storyboard's last step: its list of kept pictures goes too. Each kept shot is still marked
+  // (`accepted: true`, with its score), so the card and the server's check read it as before; a
+  // kept shot then costs that marker (18 bytes) more than one the judge passed, and the board's
+  // score goes null when every shot is kept. The summary says where the remarks went only when
+  // there were any.
+  if (kept && bytes > budget && body.gate === "storyboard" && Array.isArray(payload?.accepted)) {
+    const { accepted: _left, ...rest } = payload;
+    payload = rest;
+    bytes = payloadBytes(payload);
+    // The note goes last and whole: the summary before it is cut to make room.
+    if (remarked) summary = `${cutText(String(body.summary ?? ""), MAX_REVIEW_SUMMARY_LENGTH - [...KEPT_LIST_LEFT_OUT].length)}${KEPT_LIST_LEFT_OUT}`;
   }
-  return { body: kept ? { ...body, payload } : body, bytes, lines };
+  if (bytes > limit) {
+    throw new ReviewError(`the ${body.gate} review's payload is ${bytes} bytes, over the ${limit} the site takes${remarked ? ", even with the judge's remarks on the kept pictures left out" : ""}; nothing was sent`, { code: "payload_too_large", submission: true });
+  }
+  return { body: kept ? { ...body, summary, payload } : body, bytes, lines };
 }
 
 /** The outline options a brief offers: `### 選項 A：title`, its 一行說明, its 開場鉤子. */
@@ -323,6 +357,9 @@ export function uploadItems(markdown) {
 // The judge takes 2 to 3 options (judge.py MIN_OPTIONS, MAX_OPTIONS).
 export const JUDGE_MIN_OPTIONS = 2;
 export const JUDGE_MAX_OPTIONS = 3;
+// An outline pick review-push asked Jev for and whose answer was lost, kept for that brief's bytes
+// ({ brief_sha256, at, why }), so the command run again does not ask Jev again (submission).
+export const OUTLINE_LOST_FILE = path.join("review", "outline-lost.json");
 
 /** The judge endpoint's body, exactly { slug, brief, options: [{ key, title, summary, hook }] }: its request model refuses any other field. */
 export function judgeBody(slug, brief, options) {
@@ -351,8 +388,10 @@ export function pickFrom(answer) {
  * client. Answers { status: "passed" | "failed", pick } with Jev's verdict; { status: "owner",
  * reason } when the site says the judge is not enabled (409: the stance is blank or the switch
  * is off) or has no judge yet, so the outline waits for the owner as before; { status: "later",
- * reason } when Jev, its budget or the site could not answer, to try again next round. A revoked
- * token or another error only the owner can fix is thrown.
+ * reason } when Jev, its budget or the site could not answer, to try again next round; { status:
+ * "lost", reason, why } when the request went out and its answer was lost on the way back
+ * (client.mjs RUN_UNCERTAIN): Jev may have judged it and used one of the day's calls, so it is
+ * not asked again on its own. A revoked token or another error only the owner can fix is thrown.
  */
 export async function judgeOutline(api, slug, brief, options) {
   if (options.length < JUDGE_MIN_OPTIONS) return { status: "owner", reason: `the brief has ${options.length} options; the judge takes ${JUDGE_MIN_OPTIONS} to ${JUDGE_MAX_OPTIONS}` };
@@ -363,6 +402,7 @@ export async function judgeOutline(api, slug, brief, options) {
     if (!(error instanceof AutomationError)) throw error;
     if (error.status === 409 && error.code === "video_judge_not_enabled") return { status: "owner", reason: error.message };
     if (error.status === 404) return { status: "owner", reason: "the site has no judge endpoint yet" };
+    if (error.code === RUN_UNCERTAIN) return { status: "lost", reason: error.message, why: error.why ?? error.message };
     if (error.who === "owner") throw error;
     return { status: "later", reason: error.message };
   }
@@ -383,7 +423,7 @@ export function outlineReview(brief, options, verdict, suffix = "") {
   if (verdict?.pick) {
     payload.pick = verdict.pick;
     summary += verdict.status === "passed" ? `；Jev 挑了 ${verdict.pick.choice}` : "；Jev 沒有挑出過關的大綱，請站主選";
-  }
+  } else if (verdict?.status === "lost") summary += "；Jev 的回答在途中遺失，請站主選";
   return { payload, summary: fitSummary(summary) };
 }
 
@@ -403,7 +443,12 @@ export function packageSummary(report) {
 /**
  * Run the quality check before the final cut goes up: exit 0 or 1 means there is a report to
  * send (qa.json for this very final.mp4); 4 means a service was down and the push waits for the
- * next round; 3 needs the owner (the token). A test that plays the commands hands in runCommand.
+ * next round; 3 needs the owner: the token, a site setting a check needs (Jev's key for the
+ * policy item), which the failing item's line names, or Jev's policy verdict lost on the way back
+ * (qa.json `policy_lost`, which qa keeps and does not ask Jev again for). That one ends with the
+ * client's RUN_UNCERTAIN code, so the worker blocks the video for the owner's retry instead of
+ * deferring it (automation/flow.mjs submissionFailure). A test that plays the commands hands in
+ * runCommand.
  */
 async function qualityCheck(ctx, slug, workdir, flags) {
   const args = ["qa", "--slug", slug, ...flags];
@@ -413,10 +458,15 @@ async function qualityCheck(ctx, slug, workdir, flags) {
     const qa = await import("../qa/cli.mjs");
     code = await qa.run("qa", args.slice(1), ctx);
   }
+  const report = readJson(path.join(workdir, "review", "qa.json"), null);
   if (code === ctx.EXIT.external) throw new ReviewError("the quality check could not finish (a service was down); run review-push --gate final again later", { who: "service" });
-  if (code === ctx.EXIT.owner) throw new ReviewError("the quality check needs the owner (the video tool token); see above", { who: "owner" });
-  return readJson(path.join(workdir, "review", "qa.json"), null);
+  if (code === ctx.EXIT.owner && report?.policy_lost) throw new ReviewError(`the final waits for the owner: Jev's policy verdict on this narration was lost after it was sent (${report.policy_lost.why}), and it is not asked again until the owner retries (${RUN_UNCERTAIN})`, { who: "owner", code: RUN_UNCERTAIN });
+  if (code === ctx.EXIT.owner) throw new ReviewError("the quality check needs the owner (the video tool token or a site setting); see the failing item above and review/qa.json", { who: "owner" });
+  return report;
 }
+
+// How many times the review routes are asked before the last error is told.
+const ATTEMPTS = 4;
 
 function client(ctx) {
   const credentials = readCredentials({ env: ctx.env, home: ctx.home });
@@ -426,7 +476,7 @@ function client(ctx) {
   return async function request(method, route, { json, bytes, query } = {}) {
     const url = `${credentials.site}/api/video/reviews/${route}${query ? `?${new URLSearchParams(query)}` : ""}`;
     let last;
-    for (let attempt = 0; attempt < 4; attempt++) {
+    for (let attempt = 0; attempt < ATTEMPTS; attempt++) {
       let response;
       try {
         response = await fetchImpl(url, {
@@ -441,6 +491,8 @@ function client(ctx) {
         });
       } catch (error) {
         last = new ReviewError(`cannot reach ${credentials.site}: ${error.message}`, { code: "network" });
+        // Nothing waits after the last attempt: the caller learns the outcome at once.
+        if (attempt === ATTEMPTS - 1) break;
         await sleep(2 ** attempt * 1000);
         continue;
       }
@@ -450,7 +502,7 @@ function client(ctx) {
       const who = response.status === 401 ? "owner" : "service";
       const submission = (method === "POST" && route.endsWith("/reviews")) || (method === "PUT" && route.includes("/files/"));
       last = new ReviewError(message, { status: response.status, code: problem.code ?? "", who, submission });
-      if (!(response.status === 429 || response.status >= 500)) throw last;
+      if (!(response.status === 429 || response.status >= 500) || attempt === ATTEMPTS - 1) throw last;
       await sleep(Math.min(Number(response.headers.get("retry-after")) || 2 ** attempt, 30) * 1000);
     }
     throw last;
@@ -546,12 +598,24 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     const options = outlineOptions(brief);
     // Jev picks when the stance is written and the switch is on; the site approves the review
     // on arrival when the pick clears the thresholds. Otherwise the owner chooses, as before.
-    const verdict = await judgeOutline(automationClient(ctx, { attempts: 2 }), slug, brief, options);
-    if (verdict.status === "later") ctx.stdout.write(`${slug}: Jev could not judge the outline (${verdict.reason}); it goes up for the owner, and review-push --gate outline again lets Jev pick\n`);
+    // A pick whose answer was lost is kept for this brief (OUTLINE_LOST_FILE): Jev may have
+    // judged it and used one of the day's calls, so running the command again does not ask again.
+    const contentSha256 = await sha256File(file);
+    const lostFile = path.join(workdir, OUTLINE_LOST_FILE);
+    const lost = readJson(lostFile, null);
+    const held = lost?.brief_sha256 === contentSha256;
+    const verdict = held ? { status: "lost", reason: lost.why, why: lost.why } : await judgeOutline(automationClient(ctx, { attempts: 2 }), slug, brief, options);
+    if (held) ctx.stdout.write(`${slug}: Jev's answer on this outline was lost at ${lost.at} (${lost.why}) and is not asked again: the outline goes up for the owner without a pick (delete ${OUTLINE_LOST_FILE} to ask Jev once more)\n`);
+    else if (verdict.status === "lost") {
+      atomicWrite(lostFile, `${JSON.stringify({ brief_sha256: contentSha256, at: ctx.now().toISOString(), why: verdict.why }, null, 2)}\n`);
+      ctx.stdout.write(`${slug}: Jev's answer on the outline was lost after it was sent (${verdict.why}); Jev may have judged it and used one of today's calls, so it is not asked again: the outline goes up for the owner without a pick\n`);
+    } else if (verdict.status === "later") ctx.stdout.write(`${slug}: Jev could not judge the outline (${verdict.reason}); it goes up for the owner, and review-push --gate outline again lets Jev pick\n`);
     else if (verdict.status === "owner") ctx.stdout.write(`${slug}: the owner chooses the outline (${verdict.reason})\n`);
     else ctx.stdout.write(`${slug}: ${verdict.pick.note}\n`);
+    // A record of another brief is spent: that brief is gone, and this one was asked.
+    if (lost && !held && verdict.status !== "lost") rmSync(lostFile, { force: true });
     const { payload, summary } = outlineReview(brief, options, verdict);
-    return { gate, content_sha256: await sha256File(file), summary, payload, files: [] };
+    return { gate, content_sha256: contentSha256, summary, payload, files: [] };
   }
   if (gate === "script") {
     // Written afresh so the file always matches video.json; the same narrative gives the same
@@ -775,11 +839,13 @@ function languagesSummary(locales) {
  * The languages gate (docs/videos/LANGUAGES.md): one batch of the languages the owner chose, as
  * far as they are made. For each chosen language, each chosen part's state and file: the title
  * and description as `description_<locale>` and the captions as `captions_<locale>`, both from
- * the upload package (so `package` runs first); the dub track as `dub_<locale>` (the m4a form,
- * the audio type the store takes) or the reason the worker gave it up. A part not made yet is
- * left out, which the site reads as still in the making. The site approves a batch without a dub
- * track on arrival; one with a track waits for the owner to upload it in Studio and say so. The
- * approval binds to the manifest written here of what was sent.
+ * the upload package (so `package` runs first); the dub track as `dub_<locale>` in the format the
+ * dub was made in (DUB_TYPES) or the reason the worker gave it up. A part not made yet is
+ * left out, which the site reads as still in the making; YouTube sync takes a batch only once
+ * every chosen part is in it, made or skipped with its reason. The site approves a batch without
+ * a dub track on arrival; one with a track waits for the owner to upload it in Studio and say so.
+ * reviewPush then binds it to its approved source (bindLanguageSource, or renewal.mjs for a
+ * renewed final), whose manifest the approval binds to.
  */
 async function languagesSubmission({ request, project, workdir, slug }) {
   const languages = readLanguages(workdir);
@@ -787,7 +853,8 @@ async function languagesSubmission({ request, project, workdir, slug }) {
   const chosen = Object.entries(languages.locales);
   if (!chosen.length) throw new ReviewError("the owner chose Traditional Chinese only; there is no language batch to send", { who: "owner" });
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
-  const { dubs, skipped } = dubsForUpload(project, workdir, timeline?.speech_hash, chosenLocales(languages, "dub"));
+  const narration = narrationLocale(project.doc);
+  const { dubs, skipped } = dubsForUpload(project, workdir, timeline?.speech_hash, chosenLocales(languages, "dub").filter((locale) => locale !== narration));
   const files = [];
   const locales = {};
   for (const [locale, choice] of chosen) {
@@ -802,11 +869,14 @@ async function languagesSubmission({ request, project, workdir, slug }) {
       files.push(await upload(request, slug, captions, `captions_${locale}`, "text/plain"));
       entry.captions = "ready";
     }
-    if (choice.dub) {
+    // The narration is the video's own audio: no dub of it is made, and YouTube would take a
+    // second track of it as a duplicate, so the batch says so instead of leaving the part open.
+    if (choice.dub && locale === narration) entry.dub = { status: "skipped", reason: NARRATION_DUB_SKIP };
+    else if (choice.dub) {
       const dub = dubs.find((each) => each.locale === locale);
       if (dub) {
-        const role = dub.format === "m4a" ? dubRole(locale) : null;
-        if (role) files.push(await upload(request, slug, dub.file, role, "audio/mp4"));
+        const role = DUB_TYPES[dub.format] ? dubRole(locale) : null;
+        if (role) files.push(await upload(request, slug, dub.file, role, DUB_TYPES[dub.format]));
         Object.assign(entry, { dub: "ready", file: path.basename(dub.file), format: dub.format, tempo_max: dub.tempo_max, file_role: role, sha256: await sha256File(dub.file) });
       } else if (skipped[locale] !== undefined) {
         entry.dub = { status: "skipped", reason: skipped[locale] };
@@ -823,6 +893,120 @@ async function languagesSubmission({ request, project, workdir, slug }) {
     payload: { locales },
     files,
   };
+}
+
+const NARRATION_DUB_SKIP = "這是影片原本旁白的語言，不另做重複配音";
+// The audio types the review store and YouTube sync take for a dub track (dubs/plan.mjs DUB_FORMATS).
+const DUB_TYPES = { m4a: "audio/mp4", mp3: "audio/mpeg", wav: "audio/wav" };
+const sha256Of = (bytes) => createHash("sha256").update(bytes).digest("hex");
+const identity = (row) => ({ review_id: row.id, content_sha256: row.content_sha256 });
+// The server's rows are newest first; a gate's own review has no subject.
+const newest = (rows, gate) => rows.find((row) => row.gate === gate && !row.subject) ?? null;
+const sameFile = (a, b) => Boolean(a && b) && ["role", "sha256", "size", "content_type"].every((key) => a[key] === b[key]);
+const manifestBytes = (manifest) => `${JSON.stringify(manifest, null, 2)}\n`;
+
+/** A language choice as the site keeps it (LocalesIn): the chosen locales only, a dub with its captions. */
+export function siteChoice(locales) {
+  return Object.fromEntries(LOCALES.filter((locale) => locale !== NARRATION_LOCALE).flatMap((locale) => {
+    const entry = locales?.[locale] ?? {};
+    const choice = { metadata: entry.metadata === true, captions: entry.captions === true || entry.dub === true, dub: entry.dub === true };
+    return choice.metadata || choice.captions || choice.dub ? [[locale, choice]] : [];
+  }));
+}
+
+/**
+ * The site's reviews a language batch is bound to (bindLanguageSource), read from the site alone,
+ * so reviewPush asks before any of the batch's files go up: the newest upload confirmation,
+ * approved or still waiting, the newest final cut, approved, and a drama's newest screenplay
+ * review. A drama whose screenplay only the worker approved (a brand story, or one made with
+ * 「劇本先給我看」 off) has none on the site, and its batch names none, as YouTube sync then
+ * expects (language_package.py _source); one the site holds must be approved.
+ */
+function languageSource(remote, project) {
+  const rows = remote?.reviews ?? [];
+  const owner = (message) => new ReviewError(message, { who: "owner" });
+  const publish = newest(rows, "publish");
+  if (!publish) throw owner("the language batch belongs to an upload confirmation, and the site has none yet; send review-push --gate publish first");
+  if (!["approved", "pending"].includes(publish.status)) throw owner(`the site's newest upload confirmation was ${publish.status}; send a new one before the language batch`);
+  const final = newest(rows, "final");
+  if (final?.status !== "approved") throw owner("the site's newest final cut is not approved; the language batch waits for the owner's decision on it");
+  const script = project.doc.format === "drama" && !isCompilation(project.doc) ? newest(rows, "script") : null;
+  if (script && script.status !== "approved") throw owner("a drama's language batch names its screenplay review, and the site's newest one is not approved");
+  return { rows, publish, final, script };
+}
+
+/**
+ * Binds a language batch to the approved video it belongs to (docs/videos/APPROVED-LANGUAGE-PACKAGE.md):
+ * YouTube sync takes a batch only with `metadata` (upload/metadata.json, its translated titles and
+ * descriptions) and a `languages_manifest` whose bytes are the review's content hash, naming the
+ * upload confirmation, the final cut and a drama's screenplay by their reviews on the site, the
+ * owner's choice and every file sent (apps/api/app/video_youtube/language_package.py compose).
+ * The manifest is written to review/languages.json, the file review-pull checks the approval
+ * against. A renewed final is bound by renewal.mjs instead.
+ *
+ * The confirmation named is the site's newest, approved or still waiting: one the owner then
+ * approves as it is carries this batch; a newer one sent after it (the worker sends one when the
+ * package changed) is read without it, from its own package. Nothing is sent while the batch
+ * cannot be bound: what languageSource refuses, a package written for another cut, branding or
+ * choice, or the narration's own title or captions changed since the approved confirmation.
+ */
+async function bindLanguageSource({ body, remote, project, workdir, request }) {
+  const slug = project.doc.slug;
+  const { rows, publish, final, script } = languageSource(remote, project);
+  const owner = (message) => new ReviewError(message, { who: "owner" });
+  const metadataFile = path.join(workdir, ARTIFACTS.upload);
+  if (!existsSync(metadataFile)) throw new UsageError("upload/metadata.json is missing; run package first");
+  const metadataBytes = readFileSync(metadataFile);
+  const metadata = readJson(metadataFile, null);
+  if (!metadata || typeof metadata !== "object") throw new UsageError("upload/metadata.json cannot be read; run package again");
+  if (metadata.final_sha256 !== final.content_sha256) throw new UsageError("upload/metadata.json was written for another final cut than the site's approved one; run package again");
+  const branding = final.payload?.branding_hash ?? null;
+  if ((metadata.branding_hash ?? null) !== branding) throw new UsageError("upload/metadata.json names another opening and ending than the approved final; run package again");
+  const choice = siteChoice(remote.locales);
+  const languages = readLanguages(workdir);
+  if (!isDeepStrictEqual(siteChoice(languages?.locales), choice)) throw new UsageError(`the owner's language choice on the site is not the one in ${LANGUAGES_FILE}; the worker copies it next round`);
+  if (!isDeepStrictEqual(metadata.language_choice, choice)) throw new UsageError("upload/metadata.json was written for another language choice; run package again");
+  const narration = narrationLocale(project.doc);
+  const { locales } = body.payload;
+  for (const [locale, parts] of Object.entries(locales)) {
+    if (parts.metadata !== "ready") continue;
+    const text = locale === narration ? metadata : metadata.localizations?.[locale];
+    const sent = body.files.find((file) => file.role === `description_${locale}`);
+    if (!text || sent?.sha256 !== sha256Of(`${text.title}\n\n${text.description}\n`)) throw new UsageError(`upload/description.${locale}.txt is not the ${locale} title and description in upload/metadata.json; run package again`);
+  }
+  // The narration's title, description and captions are the approved package's own: sync keeps
+  // them from the confirmation, and takes a batch only while it sends the same ones.
+  for (const [part, role, what] of [["metadata", `description_${narration}`, "title and description are"], ["captions", `captions_${narration}`, "captions are"]]) {
+    if (publish.status === "approved" && locales[narration]?.[part] === "ready" && !sameFile(body.files.find((file) => file.role === role), (publish.files ?? []).find((file) => file.role === role))) {
+      throw owner(`the ${narration} ${what} no longer the ones in the approved upload confirmation; send a new confirmation before the language batch`);
+    }
+  }
+  const metadataEntry = await upload(request, slug, metadataFile, "metadata", "application/json");
+  if (metadataEntry.sha256 !== sha256Of(metadataBytes)) throw new UsageError("upload/metadata.json changed while the batch was sent; run review-push again");
+  const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+  const manifest = {
+    schema_version: 1,
+    slug,
+    source: { publish: identity(publish), final: identity(final), script: script ? identity(script) : null, branding_hash: branding, speech_hash: timeline?.speech_hash ?? null, compilation_hash: timeline?.compilation_hash ?? null },
+    choice: { locales: choice, decided_at: languages.decided_at },
+    locales,
+    files: [...body.files, metadataEntry],
+  };
+  let bytes = manifestBytes(manifest);
+  // The site answers a batch it has seen before with that review as it was, while sync reads the
+  // newest one: going back to an earlier choice would be refused as changed. The batch it follows
+  // makes this one its own; sent again unchanged, it is that newest batch already.
+  const batches = rows.filter((row) => row.gate === "languages" && !row.subject);
+  const [latest] = batches;
+  if (latest && latest.content_sha256 !== sha256Of(bytes) && batches.some((row) => row.content_sha256 === sha256Of(bytes))) {
+    const following = (row) => manifestBytes({ ...manifest, follows: identity(row) });
+    bytes = batches.map(following).find((each) => sha256Of(each) === latest.content_sha256) ?? following(latest);
+  }
+  const file = GATES.languages({ workdir });
+  atomicWrite(file, bytes);
+  const proof = await upload(request, slug, file, "languages_manifest", "application/json");
+  if (proof.sha256 !== sha256Of(bytes)) throw new UsageError("review/languages.json changed while the batch was sent; run review-push again");
+  return { ...body, content_sha256: proof.sha256, files: [...manifest.files, proof] };
 }
 
 /**
@@ -986,9 +1170,11 @@ async function storyboardSubmission({ request, project, workdir }) {
     // A picture kept with the judge's remarks once its prompt fixes were spent (keyframes
     // --accept-best): sent as accepted, not as a review need, so the board can approve itself
     // (apps/api/app/video_automation/settings.py storyboard_check_passed); the owner sees it on
-    // the final cut, which goes up for a manual review. What the judge said of it, here and on
-    // the list below, is cut to a few lines where review-push posts the review (fitPayload).
+    // the final cut, which goes up for a manual review. What the judge said of it goes once, on
+    // the list below (which the card prefers), cut to a few lines where review-push posts the
+    // review (fitPayload); the shot's own verdict carries it only when the list has none to say.
     const accepted = Array.isArray(shot.accepted_with_problems);
+    const listed = accepted && shot.accepted_with_problems.some((each) => typeof each === "string" && each);
     shots.push({
       id: scene.id,
       chapter: scene.chapter ?? null,
@@ -1000,7 +1186,7 @@ async function storyboardSubmission({ request, project, workdir }) {
       complete: true,
       file_sha256: shot.sha256,
       ...(scene.data?.end_frame?.prompt ? { end_frame_sha256: shot.end_frame.sha256 } : {}),
-      judge: { overall: shot.judge?.overall ?? null, problems: shot.judge?.problems ?? [] },
+      judge: { overall: shot.judge?.overall ?? null, problems: listed ? [] : (shot.judge?.problems ?? []) },
     });
   }
   if (whole) await sendSheets();
@@ -1098,15 +1284,21 @@ export async function reviewPush(args, ctx) {
       ctx.stdout.write(`${values.slug}: reported; nothing waits for the owner right now\n`);
       return ctx.EXIT.ok;
     }
+    // A language batch the site's reviews cannot bind is refused before any of its files go up.
+    const sources = gate === "languages" ? await request("GET", values.slug) : null;
+    if (sources && !renewedFinal(sources)) languageSource(sources, project);
     const bodies = await submissions(gate, { ctx, request, project, workdir, dir, flags: values.workdir ? ["--workdir", values.workdir] : [], manualReview: values["manual-review"] ?? false });
     for (const candidate of bodies) {
       // An owner renewal invalidates old downstream approvals. Resolve its identity from
       // the site, then verify bytes/timing before adding the new final-review binding.
-      const remote = ["publish", "languages", "dubs"].includes(candidate.gate) ? await request("GET", values.slug) : null;
-      const bound = await bindRenewalSubmission({ body: candidate, remote, project, workdir, request, upload });
+      const remote = sources ?? (["publish", "languages", "dubs"].includes(candidate.gate) ? await request("GET", values.slug) : null);
+      // Any other language batch names its approved source the same way (bindLanguageSource).
+      const bound = candidate.gate === "languages" && !renewedFinal(remote) ? await bindLanguageSource({ body: candidate, remote, project, workdir, request }) : await bindRenewalSubmission({ body: candidate, remote, project, workdir, request, upload });
+      // A batch's summary says what it sends: renewal.mjs words the narration's skip its own way.
+      const summary = bound.gate === "languages" ? languagesSummary(bound.payload.locales) : bound.summary;
       // Every review this command sends leaves through here, so none carries a summary the
       // site would refuse for its length, nor a payload it would refuse for its size.
-      const { body, bytes, lines } = fitPayload({ ...bound, summary: fitSummary(bound.summary) });
+      const { body, bytes, lines } = fitPayload({ ...bound, summary: fitSummary(summary) });
       const what = body.subject ? `${gate} (${body.subject})` : gate;
       if (lines !== null) ctx.stdout.write(`${values.slug}: ${what}: the judge's remarks on the kept pictures were ${lines ? `cut to ${lines} lines a picture` : "left out"} to keep the review's payload within the site's limit (${bytes} bytes now); keyframes/manifest.json has them all\n`);
       const review = await request("POST", `${values.slug}/reviews`, { json: body });

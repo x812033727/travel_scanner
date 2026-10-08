@@ -76,7 +76,7 @@ curl -s -o /dev/null -w '%{http_code} %{time_total}s\n' https://mokaair.com/zh-T
 | 清掉建置快取後的冷建置 | 約 4.5 分鐘 |
 | 571 個內容包＋web＋api 一起 | 約 8 分鐘 |
 
-每次部署都重建所有從 repo 建置的容器（postgres、redis 以外全部，2026-10-05 是十二個應用容器加 `migrate`），只有文件的 commit 也一樣：建置內容沒變時快取全中、映像不會重做，但映像 ID 每次建置都會換新（主機用 containerd image store），compose 就把容器全部重建，原因見 `runbook.md`。所以 video-ai-worker 與 video-worker 每次都會重啟，進行中的付費影片工作會被打斷，部署前看預檢的「paid video work」。中間約 8 秒 502；hotspot-collector 重啟的第一輪會重算當天排行、也會跑 guide backfill（吃 YouTube 與 Brave 額度），所以同一天多次部署要集中。
+每次部署都重建所有從 repo 建置的容器（postgres、redis 以外全部，2026-10-05 是十二個應用容器加 `migrate`），只有文件的 commit 也一樣：建置內容沒變時快取全中、映像不會重做，但映像 ID 每次建置都會換新（主機用 containerd image store），compose 就把容器全部重建，原因見 `runbook.md`。所以 video-ai-worker 與 video-worker 每次都會重啟，進行中的付費影片工作會被打斷，部署前看預檢的「paid video work」。video-worker 被砍時拿著的專案鎖 `LEASE` 會留在影片的工作目錄；工人的 hostname 固定是 `video-worker`，新工人確認舊程序已結束後會接手，不用手動刪（`docs/videos/AUTOMATION.md`）。中間約 8 秒 502；hotspot-collector 重啟的第一輪會重算當天排行、也會跑 guide backfill（吃 YouTube 與 Brave 額度），所以同一天多次部署要集中。
 
 ## 規則在哪裡（不重抄）
 

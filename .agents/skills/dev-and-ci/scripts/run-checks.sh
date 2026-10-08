@@ -58,6 +58,7 @@ for group in "${groups[@]}"; do
       ;;
     tools)
       run test-tools . npm run -s test:tools
+      run test-docs-videos . npm run -s test:docs-videos
       run check-tasks . npm run -s check:tasks
       ;;
     *)

@@ -259,7 +259,7 @@ def is_topic_link(block: object) -> bool:
 # its CRYPTO_MARKERS phrase. The pipeline adds it where a model left none (on 2026-09-26 the
 # writer and the translators omitted it in three locales), so no crypto story stops at the
 # disclaimer check for something the site can write itself.
-CRYPTO_DISCLAIMERS: Mapping[str, tuple[str, str]] = {
+_LEGACY_CRYPTO_DISCLAIMERS: Mapping[str, tuple[str, str]] = {
     "zh-TW": (
         "這篇是新聞整理，不是投資建議",
         "本文整理公開報導與官方資訊，不推薦任何代幣、平台或操作，不是投資建議。"
@@ -289,7 +289,91 @@ CRYPTO_DISCLAIMERS: Mapping[str, tuple[str, str]] = {
         "위험을 판단하세요.",
     ),
 }
-_DISCLAIMER_TEXTS = frozenset(text for _title, text in CRYPTO_DISCLAIMERS.values())
+# A site notice must not imply that an article used official sources. Keep the old texts
+# recognizable as site additions: changing this wording must not invalidate saved reviews.
+_SOURCE_NEUTRAL_DISCLAIMERS: Mapping[str, str] = {
+    "zh-TW": (
+        "本篇內容不是投資建議，不推薦任何代幣、平台或操作。"
+        "加密資產風險高，做任何決定前請自行查證並評估風險。"
+    ),
+    "zh-CN": (
+        "本篇内容不是投资建议，不推荐任何代币、平台或操作。"
+        "加密资产风险高，做任何决定前请自行核实并评估风险。"
+    ),
+    "en": (
+        "This article is not investment advice and recommends no token, platform or action. "
+        "Crypto assets carry high risk; check the facts and weigh the risks yourself "
+        "before any decision."
+    ),
+    "ja": (
+        "本記事は投資助言ではありません。特定のトークン、プラットフォーム、行動を勧める"
+        "ものではありません。暗号資産はリスクが高いため、判断の前にご自身で事実を確認し、"
+        "リスクを検討してください。"
+    ),
+    "ko": (
+        "이 글은 투자 조언이 아닙니다. 특정 토큰·플랫폼·행동을 권하지 않습니다. "
+        "암호화폐는 위험이 크니 결정하기 전에 직접 사실을 확인하고 위험을 판단하세요."
+    ),
+}
+CRYPTO_DISCLAIMERS: Mapping[str, tuple[str, str]] = {
+    locale: (_LEGACY_CRYPTO_DISCLAIMERS[locale][0], text)
+    for locale, text in _SOURCE_NEUTRAL_DISCLAIMERS.items()
+}
+_DISCLAIMER_TEXTS = frozenset(
+    text
+    for _title, text in (*_LEGACY_CRYPTO_DISCLAIMERS.values(), *CRYPTO_DISCLAIMERS.values())
+)
+# Only explicit negative phrases seen in held Japanese/Korean translations. Do not infer
+# a disclaimer from a general risk warning or an arbitrary paraphrase.
+_TRANSLATED_CRYPTO_MARKERS: Mapping[str, tuple[str, ...]] = {
+    "ja": ("投資助言でもありません", "投資助言ではない"),
+    "ko": ("투자 조언이 아니다", "투자 조언이 아님", "투자 조언 아님"),
+}
+
+
+def _is_crypto_disclaimer(block: object, locale: str) -> bool:
+    if not isinstance(block, CalloutBlock):
+        return False
+    markers = (CRYPTO_MARKERS[locale], *_TRANSLATED_CRYPTO_MARKERS.get(locale, ()))
+    return any(
+        marker.casefold() in field.casefold()
+        for marker in markers
+        for field in (block.title, block.text)
+    )
+
+
+def _canonical_disclaimer_text(document: GuideDocument, locale: str) -> GuideDocument:
+    """Keep an explicit existing warning in its callout, using the finance lint's phrase.
+
+    The generic finance lint requires the canonical marker in the body. A translation may
+    have it only in the title, or use a different negative ending: fix that same callout
+    rather than adding a duplicate that the locale reviewer repeatedly removes.
+    """
+    marker = CRYPTO_MARKERS[locale]
+    replacements: dict[int, str] = {}
+    for index, block in enumerate(document.blocks):
+        if not _is_crypto_disclaimer(block, locale) or not isinstance(block, CalloutBlock):
+            continue
+        if marker.casefold() in block.text.casefold():
+            continue
+        text = block.text
+        for variant in _TRANSLATED_CRYPTO_MARKERS.get(locale, ()):
+            if variant in text:
+                text = text.replace(variant, marker)
+                break
+        if text == block.text:
+            text += f" {marker}。" if locale in {"zh-TW", "zh-CN", "ja"} else f" {marker}."
+        # Do not trim an author's content or turn a valid stored block into a validation
+        # exception. If the canonical phrase cannot fit, the finance lint still holds it.
+        if len(text) > 2000:
+            continue
+        replacements[index] = text
+    if not replacements:
+        return document
+    encoded = document.model_dump(mode="json")
+    for index, text in replacements.items():
+        encoded["blocks"][index]["text"] = text
+    return GuideDocument.model_validate(encoded)
 
 
 def is_site_disclaimer(block: object) -> bool:
@@ -304,12 +388,8 @@ def with_crypto_disclaimer(document: GuideDocument, vertical: str, locale: str) 
     """A crypto story with a disclaimer callout the hard checks accept, added if it has none."""
     if vertical != "crypto":
         return document
-    marker = CRYPTO_MARKERS[locale].casefold()
-    if any(
-        isinstance(block, CalloutBlock) and marker in block.text.casefold()
-        for block in document.blocks
-    ):
-        return document
+    if any(_is_crypto_disclaimer(block, locale) for block in document.blocks):
+        return _canonical_disclaimer_text(document, locale)
     title, text = CRYPTO_DISCLAIMERS[locale]
     encoded = document.model_dump(mode="json")
     notice = {"type": "callout", "tone": "info", "title": title, "text": text}
@@ -497,9 +577,12 @@ def hard_policy_problems(
         "tech": ["tech", "tech-news"],
         "crypto": ["finance", "crypto"],
     }[vertical]
+    # Match the insertion helper's explicit title/translation recognition, while satisfying
+    # the shared finance lint's canonical-body rule. No warning is added to a missing one.
+    linted = _canonical_disclaimer_text(document, locale) if vertical == "crypto" else document
     problems = [
         f"{problem.code}: {problem.message}"
-        for problem in lint_document(document, "life", topics=topics)
+        for problem in lint_document(linted, "life", topics=topics)
         if problem.level == "error"
     ]
     problems.extend(_punctuation_problems(document, locale))
@@ -520,15 +603,13 @@ def hard_policy_problems(
     text = _visible_text(document)
     if vertical == "crypto":
         marker = CRYPTO_MARKERS[locale].casefold()
-        if marker not in text:
+        disclaimer_blocks = [
+            block for block in document.blocks if _is_crypto_disclaimer(block, locale)
+        ]
+        if marker not in text and not disclaimer_blocks:
             problems.append(f"crypto_disclaimer: missing {CRYPTO_MARKERS[locale]}")
         if any(term.casefold() in text for term in FORBIDDEN_CRYPTO):
             problems.append("crypto_recommendation: price or trading language is not allowed")
-        disclaimer_blocks = [
-            block
-            for block in document.blocks
-            if isinstance(block, CalloutBlock) and marker in block.text.casefold()
-        ]
         if not disclaimer_blocks:
             problems.append("crypto_disclaimer_block: disclaimer must be a callout")
     if vertical == "tech" and any(term.casefold() in text for term in FORBIDDEN_TECH):

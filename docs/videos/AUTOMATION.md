@@ -76,6 +76,8 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 要讓工人整個停下來，在工作區放一個 `STOP` 檔：`docker compose -f docker-compose.prod.yml exec -T video-worker touch /var/lib/mokaair/video-work/STOP`。刪掉這個檔，下一輪就會繼續。Shorts 的敲門（`shorts/cli.mjs tick`，工人在 `auto` 旁邊另外每 5 分鐘跑一次）也看這個檔：有 STOP 就不敲門，網站也就不鎖定時段、不再開始送 Shorts 上 YouTube，紀錄印一行 `video-worker: shorts: STOP found`，刪掉後下一次就恢復；有活動在跑的話，這段時間 Shorts 分頁會說工人沒有回報。
 
+同一支影片同時只有一個程序能付費或改它的檔案：工人處理一支影片時，會在它的工作目錄放一個 `LEASE` 檔（`tools/video/core/project-lease.mjs`），手動跑的 look、keyframes、clips、music、tts、dub、check-audio 也要先拿到它。別的程序拿著時，工人這一輪跳過那支影片（紀錄印 `left alone this run`），手動指令什麼都不送、不寫就以 exit 3 結束。只有確定原持有程序已結束（同一台主機、同一次開機，程序已不在或換人）才會接手，舊紀錄留成 `LEASE.<token>.dead.json`；其他情況要人看過再刪檔。工人容器的 hostname 固定是 `video-worker`，部署砍掉工人留下的 `LEASE` 下一個工人就能接手。**在主機上手動跑影片指令一律用 `docker compose -f docker-compose.prod.yml exec -T video-worker …`，不要用 `run`**：`run` 另開的容器同名卻看不到工人的程序，會把工人正拿著的 `LEASE` 誤當成死的。
+
 ## 一支影片的自動流程
 
 1. **選題**：從站上最近 14 天已發布的 AI／科技新聞與文章，加上 Brave 搜尋結果，排除已經做過的題目與避開的題材。由企劃模型挑出題目、寫 `brief.md`（含 2–3 個大綱與「站主觀點」；有頻道立場時第一行寫「套用立場：N、M」）→ 先問 Jev 挑哪一個（[`HANDS-OFF.md`](HANDS-OFF.md)）→ 送審「選大綱」。Jev 過關的伺服器直接核准；沒過就把原因交回企劃模型重寫，兩次仍不過、或立場空白，才**停下來等站主**。
@@ -85,6 +87,13 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 5. **成片核准**之後：package（寫完就跑上傳包檢查，揭露答案寫進 `metadata.json`）→ 送審「確認上架」，附完整上傳包。4 項全過的伺服器直接核准。站主隨時可以在 Studio 上傳成私人、在後台貼上網址；影片要語言都做好才算「可以上架」、排程才會送出（[`LANGUAGES.md`](LANGUAGES.md) §上架流程）。工人下一輪把影片 id 寫進工作區的 `video.json`，影片就算完成。
 
 站主退回時，退回的理由存在審核紀錄。工人會把它交給下一次撰稿或聽眾審稿的模型。
+
+**回答在途中遺失**（2026-10-07 起）：企劃、查核與 Jev 都是送出去才付費、伺服器不留答案的呼叫。送出之後連線斷了或過了時限（`client.mjs` 的 `RUN_UNCERTAIN`），模型或 Jev 可能已經跑完並計費，所以工人不會自己再問，改成等站主按「重試這支影片」，重試只再送一次：
+- 排程草稿的企劃：留下一支卡住的影片，代號是那一輪的 `draft-<時間>`（標題「排程草稿 …」），排程間隔照樣算掉。站主重試時用這個代號、重新抓題目再規劃一次，伺服器把它算成同一份草稿；不想要就放棄它，下一次排程是新的一份。
+- 站主指定文章或舊的單集請求：照樣認領（`slides-<id8>`／`drama-<id8>`）並卡住，重試時用原本的文章或前提再規劃一次。認領沒送成時遺失紀錄留在工作區的 `auto-state.json`（`lost_plans`），下一輪直接認領，不再問企劃。兩次都寫不出可用企劃而卡住的請求，重試也一樣會再規劃（以前會停在 `brief.md is gone`）。
+- Jev 挑大綱：影片卡住（`uncertain:judge`），重試時對同一份企劃再問 Jev 一次。手動跑 `review-push --gate outline` 時大綱直接送給站主、不附 Jev 的選擇，`review/outline-lost.json` 記住這份企劃，再跑一次也不會再問；企劃改過才會再問。
+- 成片自動品管的立場檢查：`qa` 把遺失記在 `review/qa.json` 的 `policy_lost`，同一段旁白不再問，以結束碼 3 收尾；`review-push` 不送審，工人把影片卡住（`uncertain:policy`），重試時清掉這筆紀錄，`qa` 再問 Jev 一次。手動跑時刪掉 `review/qa.json` 就會再問。
+- 被拒絕、服務暫時不行、從沒送出的請求不算遺失，照舊延後或下一輪再試。
 
 **放棄一支影片**：影片頁最下面有「放棄這支影片」，要寫原因，並再確認一次。
 - 放棄之後，等站主決定的項目都會關掉，預覽檔會刪除，工具也不能再送審這支影片。
@@ -140,7 +149,8 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 - 退回大綱重寫時同樣不抓題目、帶 `requested_guide`、檢查 `source_guide`，`auto.json` 的 `source_guide` 固定是請求的那一篇。
 
 **失敗時**：
-- 兩次都寫不出可用的企劃：仍然認領（slug 是 `slides-<id8>`），影片卡住，審核頁寫原因與留下的答案。沒有 `brief.md` 的影片不能重試（`brief.md is gone`），跟漫劇請求一樣：站主放棄它再重新排。放棄的影片不再算製作中，同一篇可以再排。
+- 兩次都寫不出可用的企劃：仍然認領（slug 是 `slides-<id8>`），影片卡住，審核頁寫原因與留下的答案。站主按重試，工人用同一個代號、同一篇文章再規劃一次（`planUnplanned`，漫劇請求也一樣）；也可以放棄它再重新排。放棄的影片不再算製作中，同一篇可以再排。其他原因少了 `brief.md` 的影片重試時仍停在 `brief.md is gone`，要人看。
+- 企劃的回答在途中遺失：照樣認領並卡住（`uncertain:planner`），不自動再問，見上面「回答在途中遺失」。
 - 規劃時站主取消了（認領回 409 `video_slides_request_not_queued`），或企劃的 slug 已經是另一個請求的影片（409 `video_slides_request_slug_taken`）：這一輪結束，什麼都不留。只有這兩個代碼算撤回，其他錯誤照常拋出，這一輪失敗。
 - 認領送到了、回答在路上掉了（斷線或 5xx）：`client.mjs` 會再送一次同一個認領。伺服器對同一個 token 用同一個 slug 再認領一次，照第一次的結果回 200，不回 409，所以已付費的企劃與影片照樣留下（`start_request`）。
 - `next` 會跳過文章已經下架的請求，一篇下架的文章不會卡住後面的請求；它一直留在排隊中，站主可以取消。

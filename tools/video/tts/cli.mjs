@@ -10,6 +10,7 @@ import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { presentationTimeline, selectBrandingForBuild } from "../core/branding.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { atomicWrite, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
+import { requireProjectLease } from "../core/project-lease.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { buildTimeline, checkChapters, formatClock, frameToSeconds, speechHash } from "../core/timeline.mjs";
 import { checkAudio } from "./check.mjs";
@@ -381,6 +382,9 @@ async function tts(args, ctx) {
     return EXIT.ok;
   }
 
+  // Another producer holding the project (core/project-lease.mjs) is the owner's to sort out:
+  // nothing is synthesized or written meanwhile. The worker's unit holds it already.
+  requireProjectLease(workdir, { owner: "tts", now: ctx.now, as: (error) => new SpeechError(error.message, { code: error.code, who: "owner" }) });
   const options = pending.length ? clientOptions(ctx, requireCredentials(ctx)) : null;
   if (pending.length) {
     const status = await speechStatus(options);

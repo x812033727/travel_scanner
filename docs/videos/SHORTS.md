@@ -172,7 +172,7 @@ PR #871（2026-09-28 合併）交付的是本機產線：`node tools/video/short
 
 **上傳包**（`publish` 審核）沿用既有規則，項目換成 Shorts 的四項 `SHORTS_PACKAGE_ITEMS`：`files`（mp4、字幕、封面、`metadata.json`）、`descriptions`、`captions`、`disclosure`。
 
-外部請求失敗（Jev、轉寫、抓網址）一律當作沒過，下一輪再試；不會因為判斷不了就核准。
+外部請求失敗（Jev、轉寫、抓網址）一律當作沒過，下一輪再試；不會因為判斷不了就核准。工人做的 Short 有兩個例外，都是付費請求送出去、回答卻在途中遺失：旁白的合成、旁白檢查的轉寫或 Jev 聽寫判斷（`tts/client.mjs` 的 `SPEECH_UNCERTAIN`，語音日誌 `speech-journal` 記著那一筆）讓 Short 直接卡住，卡片寫出是哪個請求；站主查過供應商用量後，照工人紀錄（`lab.json` 的 `blocked`）裡的 `speech-journal forget` 清掉那一筆，再按重試（只清不重試，Short 停在「需要你」；只重試不清，同一筆又讓它卡住）；Jev 的立場檢查（`RUN_UNCERTAIN`）讓 Short 卡住、`lab.json` 記 `lost`，站主按重試才再送（見下面實測線的製作步驟）。手動跑的 `shorts qa` 照舊把立場這一項記成沒過、寫明結果不明。
 
 ## 排片與時段
 
@@ -372,6 +372,8 @@ YouTube 的開發人員政策對「代替使用者寫入」有三條要求（原
 工人讀不到 repo 裡的 Shorts 文件：`video_docs` 這個 volume 只在第一次建立時從映像填一次（票 `2026-09-25-the-video-worker-s-docs-volume`），`docs/videos/ai-shorts` 與這份文件都不在工人那裡。所以題目、測試規格與脈絡一律由伺服器在 `shorts/next` 給，工人做出來的腳本與證據放工作區、隨審核送上站；不要讓任何步驟依賴工人去讀 `docs/videos/ai-shorts`。
 
 實測線的製作步驟（`lab.mjs`）：凍結題目（把企劃的輸入、答案、評分寫成 `protocol.json` 並算雜湊）→ 受測模型各跑一次（`subject`；原始回答、模型名稱、時間、重試次數寫成證據）→ 評分（數字題用程式對答案，其餘交查核模型，結果寫 `scores.json`）→ 撰稿（只准照證據寫；兩組都對就說都對）→ 查核（新對話）→ lint → 旁白 → `build` → `qa` → `push`。技術失敗可以重試一次，兩次的紀錄都留；模型答錯不是失敗，是結果。
+
+請求送出之後回答在途中遺失（`client.mjs` 的 `RUN_UNCERTAIN`：模型、查核或 Jev 可能已經跑完並計費），不論是受測模型、寫稿與查核的各步，還是品管的立場檢查，都不自動再問：Short 卡住（`lab.json` 記 `lost`），在「需要你」出現、卡片寫出是哪一步；站主按重試才再送一次（存著的 durable 工作會先封存），紀錄移到 `lost_answers`。受測模型遺失的那一次照樣留在證據裡，算一次請求。
 
 漫劇直式短篇的原生路線要動到漫劇產線：`tools/video` 目前把畫面寫死 1920×1080，伺服器的 `drama_aspect` 設定（`16:9`、`9:16`）工具沒有讀。那張票（T4）要讓關鍵影格、運鏡、片段、字幕條與合成都依 `aspect` 走，並且跟漫劇那條線協調。在那之前，`from-drama` 是後製路線：不生圖、不重畫，直接從已核准的 16:9 成片裁出跟著主角的 9:16（上表）。
 

@@ -8,7 +8,7 @@ import { approve } from "../core/approvals.mjs";
 import { compilationDocument, compilationLayout, compilationTimeline } from "../core/compilation.mjs";
 import { COMPILATION_REVIEW_FILE, publicTexts, reviewHash } from "../core/compilation-review.mjs";
 import { fixture } from "../core/fixtures/load.mjs";
-import { creditBytes, DESCRIPTION_MAX_BYTES } from "../core/metadata.mjs";
+import { creditBytes, DESCRIPTION_MAX_BYTES, SERIES_HASHTAGS } from "../core/metadata.mjs";
 import { readJson } from "../core/paths.mjs";
 import { writeLanguages } from "../core/stages.mjs";
 import { estimateTimeline } from "../core/timeline.mjs";
@@ -37,6 +37,30 @@ test("every locale's description credits the stock photos of assets[], and says 
   const over = composeMetadata({ doc, timeline }).problems;
   assert.equal(over.length, 1);
   assert.match(over[0], new RegExp(`^zh-TW\\.description: \\d+ bytes once composed, at most ${DESCRIPTION_MAX_BYTES} \\(the 圖片來源 credits of assets\\[\\] add ${credits} bytes that lint does not count: shorten youtube\\.description or use fewer stock photos\\)$`));
+});
+
+test("every locale's description opens on the hook, links the article once with the video's campaign after the body, and ends on the series hashtag", () => {
+  const doc = fixture();
+  doc.category = "ai-terms";
+  doc.youtube.description = "https://mokaair.com/zh-TW/life/ai-terms-index\nToken 是什麼？這集回答 AI 在數什麼。\n給看過帳單卻搞不懂 token 的人。\n\n索引在 https://mokaair.com/zh-TW/life/ai-terms-index 。\n\n完整文章：https://mokaair.com/zh-TW/life/what-is-a-token";
+  doc.youtube.tags = ["token", "詞元", "AI 名詞十分鐘", "分詞"];
+  const timeline = estimateTimeline(doc);
+  const pack = { slug: "what-is-a-token", kind: "life", locales: { "zh-TW": {}, en: {} } };
+  const translations = { en: { title: "What is a token?", description: "What is a token? AI counts its own units.\nFor anyone who read a bill. See https://mokaair.com/en/life/ai-terms-index.", tags: ["token", "tokenizer"] } };
+  const { problems, metadata } = composeMetadata({ doc, timeline, translations, pack });
+  assert.deepEqual(problems, []);
+  const zh = metadata.description;
+  const article = `https://mokaair.com/zh-TW/life/what-is-a-token?utm_source=youtube&utm_medium=video&utm_campaign=${doc.slug}`;
+  assert.match(zh, /^Token 是什麼？\n給看過帳單卻搞不懂 token 的人。\n\n這集回答 AI 在數什麼。\n\n索引在 https:\/\/mokaair\.com\/zh-TW\/life\/ai-terms-index\?utm_source=youtube&utm_medium=video&utm_campaign=fixture-minimal 。\n\n🔗 完整文章：/, "the first line is the hook, not a URL; the body's own link carries the slug as campaign");
+  assert.equal(zh.split(article).length - 1, 1, "the article once, after the body");
+  assert.equal((zh.match(/ai-terms-index/g) ?? []).length, 1, "the index page once: its bare first line is dropped, the sentence stays");
+  assert.match(zh, new RegExp(`\\n\\n#token #詞元 ${SERIES_HASHTAGS["ai-terms"]}$`), "two topic hashtags and the category's series hashtag");
+  const en = metadata.localizations.en.description;
+  assert.match(en, /^What is a token\?\nFor anyone who read a bill\. See https:\/\/mokaair\.com\/en\/life\/ai-terms-index\?utm_source=youtube&utm_medium=video&utm_campaign=fixture-minimal\.\n\nAI counts its own units\.\n\n🔗 Full article: https:\/\/mokaair\.com\/en\/life\/what-is-a-token\?utm_source=youtube/, "the same order in every locale, with the locale's labels");
+  assert.match(en, new RegExp(`#token #tokenizer ${SERIES_HASHTAGS["ai-terms"]}$`), "the series hashtag is the same in every locale");
+  assert.deepEqual(metadata.tags, ["token", "詞元", "AI 名詞十分鐘", "分詞"], "the narration's tags only");
+  const plain = composeMetadata({ doc: { ...doc, category: "explainer" }, timeline }).metadata.description;
+  assert.match(plain, /\n\n#token #詞元$/, "a category without a series row: two hashtags");
 });
 
 test("cardless compilation descriptions use revised chapter titles on an older measured timeline", () => {

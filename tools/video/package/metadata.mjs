@@ -1,8 +1,8 @@
-// What goes into YouTube's fields, per locale: title, the composed description (the Mokaair
-// article, body, chapters, sources, picture credits, hashtags) and tags, each checked against
-// YouTube's limits.
+// What goes into YouTube's fields, per locale: title, the composed description (the body's hook
+// and audience, the body, the Mokaair article, chapters, sources, picture credits, the series
+// hashtag; core/metadata.mjs composeDescription) and tags, each checked against YouTube's limits.
 import { chapterTitle, descriptionWithinBudget, episodeNumbers, isCompilation } from "../core/compilation.mjs";
-import { articleUrl, checkYoutubeFields, composeDescription, creditBytes, LABELS, tagsLength, TAGS_MAX_CHARS } from "../core/metadata.mjs";
+import { articleUrl, checkYoutubeFields, composeDescription, creditBytes, LABELS, uploadTags } from "../core/metadata.mjs";
 import { narrationLocale } from "../core/schema.mjs";
 import { chapterList, formatClock } from "../core/timeline.mjs";
 
@@ -57,21 +57,23 @@ export function composeMetadata({ doc, timeline, translations = {}, pack = null,
       assets: doc.assets ?? [],
       locale,
       tags: translation?.tags?.length ? translation.tags : doc.youtube.tags,
+      category: doc.category ?? null,
+      series: doc.series ?? null,
+      campaign: doc.slug,
     };
     let description;
     if (compilation) {
-      const budget = descriptionWithinBudget(body, timeline, fields.chapterTitles, { locale, sources: fields.sources, tags: fields.tags, article: fields.article });
+      const budget = descriptionWithinBudget(body, timeline, fields.chapterTitles, { locale, sources: fields.sources, tags: fields.tags, article: fields.article, assets: fields.assets, category: fields.category, series: fields.series, campaign: fields.campaign });
       description = budget.description;
       if (locale === narration) zhChapters = budget.titles;
     } else description = composeDescription(fields);
     problems.push(...checkYoutubeFields({ title, description, tags: [] }, `${locale}`).map((problem) => withCreditHint(problem, fields.assets, locale)));
     perLocale[locale] = { title, description };
   }
-  // Tags are one list per video, not per locale: the narration's first, then translated ones.
-  const tags = [];
-  for (const tag of [...doc.youtube.tags, ...locales.flatMap((locale) => translations[locale]?.tags ?? [])]) {
-    if (!tags.includes(tag) && tagsLength([...tags, tag]) <= TAGS_MAX_CHARS) tags.push(tag);
-  }
+  // Tags are one list per video, not per locale: the first TAGS_MAX_COUNT the narration lists,
+  // zh-TW terms and English product names first (publish.md §標籤). A locale's translated tags
+  // stay in its translation file for the translation review; they are not mixed in here.
+  const tags = uploadTags(doc.youtube.tags);
   const chapters = chapterList(timeline, zhChapters).map((chapter) => ({ at: formatClock(chapter.start), title: chapter.title }));
   return {
     problems,

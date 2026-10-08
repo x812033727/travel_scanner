@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','Noto Sans KR','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">移动电源带上飞机决策图 / 飞机上的移动电源：Wh、数量与机上规则</title>
+  <desc id="desc">起点是查看移动电源标签上的 Wh，未标 Wh 就用 mAh 乘以电压再除以 1,000，例如 27,000mAh 乘 3.7V 等于 99.9Wh。按 Wh 分三条：100Wh 以下，可以随身携带、不能托运；超过 100Wh 到 160Wh，可以随身携带、不能托运、先咨询航空公司；超过 160Wh，禁止带上飞机。前两条汇合到每人最多 2 个。登机后三条规则：不给移动电源充电、不用它给手机充电、不放在上方行李架上。底部时间轴：ICAO 2026 年 3 月 27 日当天生效，台湾民航局 2026 年 4 月 8 日，韩国国土交通部 2026 年 4 月 20 日，日本国土交通省 2026 年 4 月 24 日。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8" />
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B" /></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">移动电源带上飞机：先看 Wh，再数数量，登机后三件事不要做</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">飞机上的移动电源：检查额定 Wh，最多携带 2 个，并遵守三条机上规则（2026）</text>
+
+
+  <rect x="50" y="180" width="400" height="160" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4" />
+  <text x="250" y="226" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">看标签：Wh</text>
+  <text x="250" y="266" font-size="19" fill="#102A2B" text-anchor="middle">未标 Wh：mAh×V÷1,000</text>
+  <text x="250" y="304" font-size="18" fill="#5C6B6B" text-anchor="middle">例 27,000mAh×3.7V＝99.9Wh</text>
+
+
+  <path d="M 450 260 L 534 180" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+  <path d="M 450 260 L 532 315" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+  <path d="M 450 260 L 534 448" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+
+  <rect x="540" y="125" width="400" height="110" rx="14" fill="#E7F2EC" stroke="#2E7D5B" stroke-width="4" />
+  <text x="740" y="170" font-size="24" font-weight="700" fill="#1E5A40" text-anchor="middle">100Wh 以下</text>
+  <text x="740" y="208" font-size="19" fill="#1E5A40" text-anchor="middle">可随身带・不可托运</text>
+
+  <rect x="540" y="260" width="400" height="110" rx="14" fill="#FBEFE3" stroke="#D97A2B" stroke-width="4" />
+  <text x="740" y="305" font-size="24" font-weight="700" fill="#8A4A14" text-anchor="middle">超过 100Wh～160Wh</text>
+  <text x="740" y="343" font-size="19" fill="#8A4A14" text-anchor="middle">可随身带・不可托运・先问航空公司</text>
+
+  <rect x="540" y="395" width="400" height="110" rx="14" fill="#FBE9E4" stroke="#B8442D" stroke-width="4" />
+  <text x="740" y="440" font-size="24" font-weight="700" fill="#8A2E1D" text-anchor="middle">超过 160Wh</text>
+  <text x="740" y="478" font-size="19" fill="#8A2E1D" text-anchor="middle">禁止带上飞机</text>
+
+
+  <path d="M 940 180 L 1004 232" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+  <path d="M 940 315 L 1004 268" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+  <rect x="1010" y="185" width="200" height="130" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4" />
+  <text x="1110" y="232" font-size="20" font-weight="700" fill="#0B4F4D" text-anchor="middle">每人最多</text>
+  <text x="1110" y="284" font-size="36" font-weight="700" fill="#0B4F4D" text-anchor="middle">2 个</text>
+  <path d="M 1210 250 L 1264 250" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+
+
+  <rect x="1270" y="125" width="290" height="380" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4" />
+  <text x="1415" y="172" font-size="22" font-weight="700" fill="#0D6B68" text-anchor="middle">登机后（飞行中）</text>
+  <rect x="1292" y="200" width="246" height="76" rx="12" fill="#E3F0EF" />
+  <text x="1415" y="246" font-size="20" fill="#102A2B" text-anchor="middle">不给移动电源充电</text>
+  <rect x="1292" y="298" width="246" height="76" rx="12" fill="#E3F0EF" />
+  <text x="1415" y="344" font-size="20" fill="#102A2B" text-anchor="middle">不用它给手机充电</text>
+  <rect x="1292" y="396" width="246" height="76" rx="12" fill="#E3F0EF" />
+  <text x="1415" y="442" font-size="20" fill="#102A2B" text-anchor="middle">不放上方行李架</text>
+
+
+  <rect x="50" y="560" width="1500" height="270" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3" />
+  <text x="80" y="600" font-size="22" font-weight="700" fill="#102A2B">实施日期</text>
+  <line x1="130" y1="700" x2="1470" y2="700" stroke="#5C6B6B" stroke-width="4" />
+  <circle cx="250" cy="700" r="12" fill="#0D6B68" />
+  <circle cx="620" cy="700" r="12" fill="#0D6B68" />
+  <circle cx="990" cy="700" r="12" fill="#0D6B68" />
+  <circle cx="1360" cy="700" r="12" fill="#0D6B68" />
+  <text x="250" y="670" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">ICAO 国际民航组织</text>
+  <text x="620" y="670" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">台湾</text>
+  <text x="990" y="670" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">韩国</text>
+  <text x="1360" y="670" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">日本</text>
+  <text x="250" y="742" font-size="20" fill="#102A2B" text-anchor="middle">2026 年 3 月 27 日</text>
+  <text x="620" y="742" font-size="20" fill="#102A2B" text-anchor="middle">2026 年 4 月 8 日</text>
+  <text x="990" y="742" font-size="20" fill="#102A2B" text-anchor="middle">2026 年 4 月 20 日</text>
+  <text x="1360" y="742" font-size="20" fill="#102A2B" text-anchor="middle">2026 年 4 月 24 日</text>
+  <text x="250" y="774" font-size="17" fill="#5C6B6B" text-anchor="middle">当天生效</text>
+  <text x="620" y="774" font-size="17" fill="#5C6B6B" text-anchor="middle">民航局</text>
+  <text x="990" y="774" font-size="17" fill="#5C6B6B" text-anchor="middle">国土交通部</text>
+  <text x="1360" y="774" font-size="17" fill="#5C6B6B" text-anchor="middle">国土交通省</text>
+  <text x="80" y="812" font-size="16" fill="#5C6B6B">点的间距不按日期比例；航空公司可制定更严格的规定，以各家公告为准。</text>
+
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 制图 2026</text>
+</svg>

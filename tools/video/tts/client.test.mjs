@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import test from "node:test";
-import { alignClip, judgeLines, SPEECH_UNCERTAIN, SpeechError, speechStatus, synthesize, synthesizeAligned, transcribeClip } from "./client.mjs";
+import path from "node:path";
+import { everyones } from "../automation/flow.mjs";
+import { tempDir } from "../core/fixtures/load.mjs";
+import { alignClip, judgeLines, MAX_RETRY_WAIT_MS, RATE_WINDOW_MS, SPEECH_UNCERTAIN, SpeechError, speechStatus, synthesize, synthesizeAligned, transcribeClip, withPaidWaits } from "./client.mjs";
+import { listSpeechJournal, openSpeechJournal, requestSha256 } from "./speech-journal.mjs";
 import { encodeWav, parseWav } from "./wav.mjs";
 
 const SITE = "https://site.test";
@@ -79,8 +83,15 @@ test("a paid request sent and left without its answer is sent once and names the
     ["Node's deadline for the headers", () => { throw failed("UND_ERR_HEADERS_TIMEOUT"); }, 0],
     ["a gateway's timeout page", () => new Response("<html>504 Gateway Time-out</html>", { status: 504, headers: { "Content-Type": "text/html" } }), 504],
     ["the web route's lost answer", () => problem(504, "video_speech_answer_lost"), 504],
+    // The API's own answers for a provider that may have run the request and lost its answer.
+    ["the API's lost provider answer", () => problem(504, "video_speech_upstream_lost"), 504],
+    ["the API's uncertain Jev outcome", () => problem(502, "video_judge_outcome_uncertain"), 502],
     // Only the route's 502 says the API was never reached; no speech route answers this one.
     ["an upstream_unavailable no speech route answers", () => problem(503, "upstream_unavailable"), 503],
+    // The API's rate limiter answers its code only as a 503.
+    ["a rate_limit_unavailable at another status", () => problem(500, "rate_limit_unavailable"), 500],
+    // Jev's unset key answers its code only as a 503.
+    ["a provider_unavailable at another status", () => problem(500, "provider_unavailable"), 500],
     ["an error without the API's code", () => Response.json({ detail: "Internal Server Error" }, { status: 500 }), 500],
     ["an error whose detail runs over lines", () => Response.json({ detail: "Internal\nServer Error\n" }, { status: 500 }), 500],
     ["an answer that breaks off", brokenBody, 200],
@@ -133,11 +144,13 @@ test("a paid request that never left, or that the API settled, is tried again an
     ["the web route's 502 for an API it never reached", () => problem(502, "upstream_unavailable"), [1000]],
     ["the API's rate limit", () => problem(429, "rate_limit_exceeded", { "Retry-After": "3" }), [3000]],
     ["a busy provider", () => problem(503, "video_speech_upstream_busy", { "Retry-After": "7" }), [7000]],
-    // Also what the API answers for a provider read timeout after the request went out, which
-    // may have been billed: 2026-10-05-speech-api-tells-a-provider-answer gives that its own code.
+    // A provider never reached, or one that answered a failure. A host from before the API's 504
+    // video_speech_upstream_lost also answers it for a lost provider answer, resent as before.
     ["a provider failure the API answered", () => problem(502, "video_speech_upstream_failed"), [1000]],
     ["a key the provider refused", () => problem(502, "video_speech_upstream_rejected_key"), [1000]],
     ["Jev failing behind the API", () => problem(502, "video_judge_upstream_failed"), [1000]],
+    // Redis could not count the call, so the API refused it before any provider.
+    ["the API's rate limiter away", () => problem(503, "rate_limit_unavailable"), [1000]],
   ];
   for (const paid of PAID) {
     for (const [what, answer, waits] of settled) {
@@ -161,6 +174,15 @@ test("a settled failure that does not clear stops after the bounded attempts", a
   const offline = server([() => { throw failed("ECONNREFUSED"); }]);
   await assert.rejects(PAID[0].send(offline.options), (error) => error.code === "network" && error.who === "service");
   assert.equal(offline.calls.length, 5);
+  // The API's limiter away for every try (app/infra.py, before any route ran): a service away
+  // (exit 4) with the API's own sentence, which the worker reads as everyone's trouble and waits
+  // out instead of blocking the video.
+  const away = server([() => Response.json({ code: "rate_limit_unavailable", detail: "安全驗證服務暫時無法使用" }, { status: 503 })]);
+  for (const paid of PAID) {
+    away.calls.length = 0;
+    await assert.rejects(paid.send(away.options), (error) => error.code === "rate_limit_unavailable" && error.who === "service" && everyones(error.message) === "rate_limit_unavailable", paid.name);
+    assert.equal(away.calls.length, 5, paid.name);
+  }
 });
 
 test("the status GET keeps every retry, a dropped connection and a lost answer included", async () => {
@@ -186,6 +208,8 @@ test("the owner's problems and a spent budget are told after one request, with t
     [PAID[0], () => problem(429, "video_speech_budget_exhausted"), "service"],
     [PAID[1], () => problem(503, "video_speech_not_configured"), "owner"],
     [PAID[2], () => problem(429, "jev_budget_exhausted"), "service"],
+    // Jev's key not set: raised before any Jev call (2026-10-07-jev-s-unconfigured-503-is-held-as).
+    [PAID[2], () => problem(503, "provider_unavailable"), "owner"],
     [PAID[3], () => problem(422, "video_speech_voice_not_allowed"), "owner"],
     [PAID[3], () => problem(429, "video_speech_budget_exhausted"), "service"],
   ];
@@ -239,3 +263,138 @@ test("synthesizeAligned answers null when the site cannot do it in one call, wit
     assert.deepEqual(JSON.parse(calls[0].body), { speech: { voice: "zh-TW-HsiaoChenNeural", segments: [{ parts: [{ text: "好" }], break_after_ms: 0 }] } }, what);
   }
 });
+
+// The routes' own limit: one window of 60 seconds per token, which every route the token calls and
+// both worker lanes share (apps/api/app/video_speech/admin_api.py video_tool). Its refusals came
+// within a burst of narration lines and blocked a video (2026-10-05-a-burst-of-narration-lines-trips).
+const limited = (headers = {}) => () => problem(429, "rate_limit_exceeded", headers);
+const EVERY_CALL = () => {
+  const wav = audio();
+  return [
+    ...PAID.map((paid) => [paid.name, paid.send, paid.ok]),
+    ["speechStatus", (options) => speechStatus(options), () => Response.json({ configured: true, voices: [] })],
+    ["alignClip", (options) => alignClip({ ...options, wav, text: "好" }), () => Response.json({ source: "aligned", model: "m", chars: [] })],
+  ];
+};
+
+test("the routes' rate limit is waited out: the Retry-After it sends, or a whole window from a host before the header", async () => {
+  assert.equal(RATE_WINDOW_MS, 61_000, "one whole window of the token's 60-second limit, and a second for its edge");
+  for (const [name, send, ok] of EVERY_CALL()) {
+    for (const [what, headers, waits] of [
+      ["a host from before the header", {}, [RATE_WINDOW_MS]],
+      ["the seconds left in the window", { "Retry-After": "42" }, [42_000]],
+      ["a whole window, past the 60 seconds this client used to cut it to", { "Retry-After": "61" }, [61_000]],
+      ["a date instead of seconds", { "Retry-After": "Wed, 07 Oct 2026 05:00:00 GMT" }, [RATE_WINDOW_MS]],
+    ]) {
+      const label = `${name}: ${what}`;
+      const { calls, sleeps, options } = server([limited(headers), ok]);
+      await send(options);
+      assert.equal(calls.length, 2, `${label}: asked again once, after the wait`);
+      assert.equal(calls[1].body, calls[0].body, `${label}: the same request`);
+      assert.deepEqual(sleeps, waits, label);
+    }
+  }
+});
+
+test("a limit that keeps refusing is told after five requests, as the service's and never as a lost answer, with no wait after the last", async () => {
+  for (const [name, send] of EVERY_CALL()) {
+    const { calls, sleeps, options } = server([limited()]);
+    await assert.rejects(send(options), (error) => {
+      assert.ok(error instanceof SpeechError, name);
+      assert.deepEqual([error.code, error.status, error.who], ["rate_limit_exceeded", 429, "service"], name);
+      return true;
+    });
+    assert.equal(calls.length, 5, name);
+    assert.deepEqual(sleeps, Array(4).fill(RATE_WINDOW_MS), name);
+  }
+});
+
+test("a wait longer than one retry should sit through is told at once: the transcriber's hourly limit, a provider's long quota", async () => {
+  assert.equal(MAX_RETRY_WAIT_MS, 90_000);
+  for (const [what, answer, asked] of [
+    ["the hourly transcription limit", limited({ "Retry-After": "2400" }), 1],
+    ["a provider asking for fifteen minutes", () => problem(429, "video_speech_upstream_busy", { "Retry-After": "900" }), 1],
+    ["a minute and a half, the longest wait taken", limited({ "Retry-After": "90" }), 2],
+    ["a second longer", limited({ "Retry-After": "91" }), 1],
+  ]) {
+    const { calls, sleeps, options } = server([answer, PAID[1].ok]);
+    if (asked === 2) {
+      PAID[1].check(await PAID[1].send(options));
+      assert.deepEqual(sleeps, [90_000], what);
+    } else {
+      await assert.rejects(PAID[1].send(options), (error) => error.status === 429 && error.who === "service" && error.code !== SPEECH_UNCERTAIN, what);
+      assert.deepEqual(sleeps, [], `${what}: no wait at all`);
+    }
+    assert.equal(calls.length, asked, what);
+  }
+});
+
+test("other retries keep their backoff, and nothing waits after the last request", async () => {
+  const told = server([() => problem(503, "video_speech_upstream_busy", { "Retry-After": "10" }), PAID[1].ok]);
+  PAID[1].check(await PAID[1].send(told.options));
+  assert.deepEqual(told.sleeps, [10_000], "a busy provider's own Retry-After");
+  const bare = server([() => problem(429, "video_speech_upstream_busy"), PAID[1].ok]);
+  PAID[1].check(await PAID[1].send(bare.options));
+  assert.deepEqual(bare.sleeps, [1000], "a provider's 429 without the header is not the routes' window");
+  const offline = server([() => { throw failed("ECONNREFUSED"); }]);
+  await assert.rejects(speechStatus(offline.options), (error) => error.code === "network");
+  assert.deepEqual(offline.sleeps, [1000, 2000, 4000, 8000]);
+  const down = server([() => problem(502, "upstream_unavailable")]);
+  await assert.rejects(PAID[2].send(down.options), (error) => error.code === "upstream_unavailable");
+  assert.deepEqual(down.sleeps, [1000, 2000, 4000, 8000]);
+});
+
+test("a paid request tells withPaidWaits of each wait before its next try, and an unpaid one does not", async () => {
+  const told = (log) => ({ waiting: (why) => log.push(["waiting", why]), resending: () => log.push(["resending"]) });
+  for (const paid of PAID) {
+    const log = [];
+    const { calls, options } = server([limited({ "Retry-After": "7" }), () => problem(503, "video_speech_upstream_busy"), () => { throw failed("ECONNREFUSED"); }, paid.ok]);
+    options.sleep = async (ms) => log.push(["sleep", ms]);
+    paid.check(await withPaidWaits(told(log), () => paid.send(options)));
+    assert.equal(calls.length, 4, paid.name);
+    assert.deepEqual(log, [
+      ["waiting", { status: 429, code: "rate_limit_exceeded", ms: 7000 }], ["sleep", 7000], ["resending"],
+      ["waiting", { status: 503, code: "video_speech_upstream_busy", ms: 2000 }], ["sleep", 2000], ["resending"],
+      ["waiting", { status: 0, code: "network", ms: 4000 }], ["sleep", 4000], ["resending"],
+    ], paid.name);
+  }
+
+  // `resending` may stop the request before its next POST: what it throws is the request's answer.
+  const stop = server([limited(), PAID[0].ok]);
+  const mine = new Error("another run sent it");
+  await assert.rejects(withPaidWaits({ resending: () => { throw mine; } }, () => PAID[0].send(stop.options)), (error) => error === mine);
+  assert.equal(stop.calls.length, 1);
+
+  // No wait after the last try, nor one too long to sit through, so nothing to tell.
+  const log = [];
+  const refused = server([limited()]);
+  await assert.rejects(withPaidWaits(told(log), () => PAID[0].send({ ...refused.options, attempts: 1 })), (error) => error.code === "rate_limit_exceeded");
+  const hourly = server([limited({ "Retry-After": "2400" })]);
+  await assert.rejects(withPaidWaits(told(log), () => PAID[1].send(hourly.options)), (error) => error.code === "rate_limit_exceeded");
+  // A request that costs nothing is not one the journal holds.
+  const unpaid = server([limited(), () => Response.json({ source: "aligner", chars: [] }), () => Response.json({ configured: true })]);
+  await withPaidWaits(told(log), async () => {
+    await alignClip({ ...unpaid.options, wav: audio(), text: "好" });
+    await speechStatus(unpaid.options);
+  });
+  assert.equal(unpaid.calls.length, 3);
+  assert.deepEqual(log, []);
+});
+
+test("through the speech journal, a narration the limit refused is sent again, and one it kept refusing leaves no entry to hold", async () => {
+  const dir = path.join(tempDir("speech-client-"), "speech-journal");
+  const narrate = (options) => openSpeechJournal(dir).wrap((body) => synthesize({ ...options, body }));
+  const line = (text) => ({ voice: "zh-TW-HsiaoChenNeural", segments: [{ parts: [{ text }], break_after_ms: 0 }] });
+  const once = server([limited(), PAID[0].ok]);
+  PAID[0].check(await narrate(once.options)(line("好")));
+  assert.equal(once.calls.length, 2);
+  assert.equal(listSpeechJournal(dir).find((entry) => entry.sha === requestSha256(line("好")))?.status, "confirmed", "its answer is kept like any other");
+  const refused = server([limited()]);
+  await assert.rejects(narrate(refused.options)(line("壞")), (error) => error.code === "rate_limit_exceeded" && error.who === "service");
+  assert.equal(refused.calls.length, 5);
+  assert.equal(listSpeechJournal(dir).some((entry) => entry.sha === requestSha256(line("壞"))), false, "the API refused it before any provider call: nothing to hold");
+  const later = server([PAID[0].ok]);
+  PAID[0].check(await narrate(later.options)(line("壞")));
+  assert.equal(later.calls.length, 1, "the next run sends it");
+});
+

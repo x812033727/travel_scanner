@@ -287,6 +287,12 @@ services:
       dockerfile: ops/video/Dockerfile
     profiles: ["video"]
     init: true
+    # A stable name across recreations: a project lease (tools/video/core/project-lease.mjs) left
+    # by a worker a deploy killed mid-unit is then known for the same host's, and taken over once
+    # its process is gone. Under the container id it would be another host's, held until removed.
+    # Run commands by hand with `docker compose exec video-worker …`, never `run`: a second
+    # container would share this name but not its processes, and could take a live lease over.
+    hostname: video-worker
     restart: unless-stopped
     environment:
       VIDEO_INTERNAL_SITE: http://web:3000
