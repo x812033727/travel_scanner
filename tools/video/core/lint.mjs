@@ -7,14 +7,17 @@ import { cadenceProblems, HOOK_SECONDS as ILLUSTRATED_HOOK_SECONDS } from "./cad
 import { craftProblems } from "./craft.mjs";
 import { cueCoverageProblems, emotionProblems, EXPLAINER_PRESET, hasCast, illustrated, isDrama, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
-import { articleUrl, checkYoutubeFields, composeDescription } from "./metadata.mjs";
-import { DEFAULT_TARGET_MINUTES, LOCALES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
+import { articleUrl, checkYoutubeFields, composeDescription, youtubeWarnings } from "./metadata.mjs";
+import { DEFAULT_TARGET_MINUTES, LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
 import { isStory, storyProblems } from "./story.mjs";
 import { DEFAULT_CPM, FPS, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
-import { TEMPLATE_SPECS } from "../templates/templates.mjs";
+import { headlineCount, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX, thumbnailVariants } from "../templates/templates.mjs";
 import { isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
+import { atPhoneWidth, CHANNEL_RULES_LOCALE, headlineSizeEstimate, headlineSplitWords, MIN_HEADLINE_PX_AT_PHONE, PHONE_WIDTH, TITLE_HEAD_CHARS, TITLE_OVERLAP_MAX, titleOverlap } from "../qa/thumbnail.mjs";
+import { thumbnailSeries } from "../render/plan.mjs";
 import { ANIME_BODY_TOLERANCE_SECONDS, hasAnimePolicy, isLongAnime, runtimePolicyHash, validateAnimePolicy } from "./anime-policy.mjs";
+import { isCompilation } from "./compilation.mjs";
 
 // Phrases that only work on a page. Same list as video_kit.py's WRITTEN_ONLY.
 export const WRITTEN_ONLY = ["本文", "這篇文章", "如上表", "如下表", "上表", "下表", "綜上所述", "值得注意的是", "筆者", "如圖所示"];
@@ -30,6 +33,54 @@ export const BRIEF_SECTIONS_DRAMA = ["故事前提", "角色", "站主觀點"];
 // An explainer (docs/videos/so-thats-why/) answers one question with no cast: the question, the
 // one-sentence answer, and the owner's stance.
 export const BRIEF_SECTIONS_EXPLAINER = ["問題", "一句答案", "站主觀點"];
+// The hedges the channel review (docs/videos/channel-review-20261007/README.md §2.1 D04) found
+// standing in for the numbers the title promised, counted as one family across the narration:
+// the disclaimer lives in the description, and the number is said. A warning, never an error:
+// an error would only teach the writer's lint_errors loop a synonym.
+export const HEDGE_FAMILY = ["以官網為準", "以官方為準", "公告沒寫", "公告沒有寫", "我不唸", "不在這裡唸", "不替你填"];
+// 「不代表」 and 「不等於」 hedge a number only in the shape 「公告沒寫，不代表沒有」: on a line that
+// says something was not written. Elsewhere they are the channel's ordinary rhetoric (「字數少，
+// 不代表 token 少」「免費不代表沒有上限」) and are not counted.
+export const HEDGE_AFTER_UNWRITTEN = ["不代表", "不等於"];
+export const UNWRITTEN = /沒寫|沒有寫|沒列|沒有列|沒提|沒有提|沒說|沒有說/;
+export const HEDGE_MAX = 1;
+// How far into the narration (at the estimate's 250 characters a minute) a spoken table of
+// contents still counts as the opening (D07), and the sentence shapes it takes: the announced
+// parts (「接下來分三段」「接下來我會告訴你」), the promise (「看完這支影片你會知道」), an ordinal
+// run (第一…第二…最後, 先…再…最後), and an announcement (這集／這支／接下來／帶你／跟我) that lists
+// its items (、, 還有, a counted 三步, a clause-initial 再 or 最後) in its own or the next sentence.
+export const OPENING_SECONDS = 40;
+const OPENING_TOC = [
+  /接下來(?:我們|我)?(?:會|要|就)?(?:分|分成|有|講|說|看|用|帶你看|帶你|告訴你)[一二三四五六七八九十兩\d]+(?:段|個|部分|點|件|步|道|張|題)/,
+  /接下來(?:我們|我)?(?:會|要|就)?(?:告訴你|帶你看|帶你)/,
+  /看完(?:這支|這部|這集)?(?:影片)?(?:之後|以後)?(?:你|大家)?(?:就|會|能)?(?:知道|學會|搞懂)/,
+];
+const ORDINAL_RUN = [/第一[，、]/, /第二[，、]/, /(?:第三|最後)[，、]/];
+const CLAUSE_START = "(?:^|[。！？，；：])";
+const FIRST_NEXT_LAST = [new RegExp(`${CLAUSE_START}先[^。！？，；：]`), new RegExp(`${CLAUSE_START}再[^。！？，；：]`), new RegExp(`${CLAUSE_START}最後[^。！？，；：]`)];
+const ANNOUNCEMENT = /這集|這支|這部|接下來|我帶你|帶你|跟我|我分|我們分/;
+const LIST_MARKS = [/、/g, /還有|以及/g, new RegExp(`${CLAUSE_START}(?:再|最後)`, "g"), /[二三四五六七八九十兩\d]+(?:段|個|部分|點|件|步|道|關|張|題|項)/g];
+const LISTED_AND = /、[^。！？]*(?:與|和|跟)/;
+const SENTENCE_END = /(?<=[。！？])/;
+
+/**
+ * Whether the opening announces a list of what the video covers: a sentence with an
+ * announcement in it (這集／這支／接下來／帶你／跟我／我分) that, with the sentence after it, carries
+ * at least two list marks. 「這集攤開原話、價錢，和兩個頁面」「跟我用三步拆開，最後修好」「這集算
+ * 裝得下什麼。再看速度，還有訂閱」 are lists; 「這支影片幫你找齊。那它到底是什麼？」 is not.
+ */
+export function announcesList(opening) {
+  const sentences = opening.split(SENTENCE_END).filter((sentence) => sentence.length);
+  return sentences.some((sentence, index) => {
+    if (!ANNOUNCEMENT.test(sentence)) return false;
+    const span = `${sentence}${sentences[index + 1] ?? ""}`;
+    const marks = LIST_MARKS.reduce((sum, mark) => sum + (span.match(mark) ?? []).length, 0) + (LISTED_AND.test(span) ? 1 : 0);
+    return marks >= 2;
+  });
+}
+// The close (D03): three sentences, the last of them an invitation to subscribe with a reason.
+export const OUTRO_SENTENCES = 3;
+export const SUBSCRIBE_WORD = "訂閱";
 export const SENTENCE_WARN = 40;
 // An English word counts two units, so 40 is twenty words; spoken English runs to about 25 before it needs a breath.
 export const SENTENCE_WARN_EN = 50;
@@ -230,6 +281,81 @@ function seriesProblems(doc, series, error, warn) {
   }
 }
 
+/**
+ * The shape of a narrated episode's script (script-writing.md §開場, §句子, §結尾), as warnings:
+ * the hedge family said more than once in the narration, an opening that reads a table of
+ * contents, and an outro that asks for no subscription or has not its three sentences.
+ * `timeline` is the estimate; the opening is its first OPENING_SECONDS seconds.
+ */
+export function episodeScriptProblems(doc, timeline) {
+  const problems = [];
+  const warn = (path, message) => problems.push({ path, message });
+  const counts = new Map();
+  for (const { line } of eachLine(doc)) {
+    const phrases = UNWRITTEN.test(line.text) ? [...HEDGE_FAMILY, ...HEDGE_AFTER_UNWRITTEN] : HEDGE_FAMILY;
+    for (const phrase of phrases) {
+      const hits = line.text.split(phrase).length - 1;
+      if (hits) counts.set(phrase, (counts.get(phrase) ?? 0) + hits);
+    }
+  }
+  const hedges = [...counts.values()].reduce((sum, hits) => sum + hits, 0);
+  if (hedges > HEDGE_MAX) {
+    const found = [...counts].map(([phrase, hits]) => `「${phrase}」×${hits}`).join(", ");
+    warn("scenes", `the narration hedges ${hedges} times (${found}); the family (${HEDGE_FAMILY.join("／")}, and ${HEDGE_AFTER_UNWRITTEN.join("／")} in a sentence that says something was not written) is said at most ${HEDGE_MAX} time a video: say the number from the official page or the site's checked article, and leave the disclaimer to the description`);
+  }
+  const starts = new Map((timeline?.lines ?? []).map((line) => [line.id, line.start_frame]));
+  const opening = [...eachLine(doc)].filter(({ line }) => (starts.get(line.id) ?? Infinity) < OPENING_SECONDS * FPS).map(({ line }) => line.text).join("");
+  const runs = [ORDINAL_RUN, FIRST_NEXT_LAST].some((run) => run.every((pattern) => pattern.test(opening)));
+  if (OPENING_TOC.some((pattern) => pattern.test(opening)) || runs || announcesList(opening)) {
+    warn("scenes[0]", `the first ${OPENING_SECONDS} s read a table of contents (「接下來分三段」「第一，…第二，…最後」「先…再…最後」「看完你會知道」「這集講 A、B，還有 C」); open on the question or the claim and a concrete number, date or name, and let the chapters announce themselves`);
+  }
+  doc.scenes.forEach((scene, index) => {
+    if (scene.template !== "outro") return;
+    const where = `scenes[${index}] (${scene.id})`;
+    const said = (scene.lines ?? []).map((line) => line.text);
+    if (!said.some((text) => text.includes(SUBSCRIBE_WORD))) warn(where, `the outro asks for no subscription: its ${OUTRO_SENTENCES} sentences answer the opening question with its number, ask one question the viewer can answer in a comment, and give one reason to subscribe (script-writing.md §結尾)`);
+    if (said.length < OUTRO_SENTENCES) warn(where, `the outro has ${said.length} sentence${said.length === 1 ? "" : "s"}; the close is ${OUTRO_SENTENCES}: the answer with its number, a comment question, a subscribe invitation with a reason`);
+  });
+  return problems;
+}
+
+/**
+ * The thumbnail's headline held to the channel's rule where the writer sees it, as warnings:
+ * the rule the qa stage fails the drawn thumbnail on (qa/thumbnail.mjs thumbnailChecks, visuals.md
+ * §縮圖): at most THUMB_HEADLINE_MAX characters where a CJK glyph counts one and a Latin word or
+ * a number counts one, at most THUMB_HEADLINE_WORDS_MAX of those, no line break inside a word
+ * (the writer's `\n` or the one the column makes), still MIN_HEADLINE_PX_AT_PHONE tall at
+ * PHONE_WIDTH wide once the renderer has shrunk it to fit the column (a Latin word of eight or
+ * more letters never is), and not the title's first TITLE_HEAD_CHARS said again. A series' own
+ * thumbnail (render/plan.mjs thumbnailSeries) has its own length, checked where it is drawn; a
+ * compilation's headline is its series' name by design, so the title is not held against it
+ * (qa/cli.mjs thumbnailItem); the rules are written for a zh-TW headline, so another narration
+ * language's says nothing. The B and C variants are read too.
+ */
+export function thumbnailHeadlineProblems(doc) {
+  const problems = [];
+  if (!doc.thumbnail || thumbnailSeries(doc) !== null || narrationLocale(doc) !== CHANNEL_RULES_LOCALE) return problems;
+  const title = isCompilation(doc) ? null : doc.youtube?.title ?? null;
+  const own = [{ path: "thumbnail", thumbnail: doc.thumbnail }, ...thumbnailVariants(doc.thumbnail).map(({ id, thumbnail }) => ({ path: `thumbnail.variants (${id})`, thumbnail }))];
+  for (const { path, thumbnail } of own) {
+    const headline = thumbnail.data?.headline;
+    if (typeof headline !== "string" || !headline.trim()) continue;
+    const warn = (message) => problems.push({ path, message });
+    const { count, words } = headlineCount(headline);
+    if (count > THUMB_HEADLINE_MAX) warn(`the headline counts ${count} characters (a Latin word or a number counts one); at most ${THUMB_HEADLINE_MAX} read at a glance, so say one thing in six (qa fails it)`);
+    if (words.length > THUMB_HEADLINE_WORDS_MAX) warn(`the headline has ${words.length} Latin words or numbers (${words.join(", ")}); at most ${THUMB_HEADLINE_WORDS_MAX} fit the column (qa fails it)`);
+    const split = headlineSplitWords(headline);
+    if (split.length) warn(`a line break falls inside the word ${split.map(({ word }) => `「${word}」`).join(", ")}; put \\n where a word ends (qa fails it)`);
+    const px = atPhoneWidth(headlineSizeEstimate(headline));
+    if (px < MIN_HEADLINE_PX_AT_PHONE) warn(`the headline shrinks to about ${px} px at ${PHONE_WIDTH} px wide; at least ${MIN_HEADLINE_PX_AT_PHONE} px reads on a phone, so shorten it (qa fails it)`);
+    if (typeof title === "string" && title.trim()) {
+      const { shared, ratio } = titleOverlap(headline, title);
+      if (ratio > TITLE_OVERLAP_MAX) warn(`the headline repeats the title: 「${shared}」 is in the title's first ${TITLE_HEAD_CHARS} characters; say what the title does not`);
+    }
+  }
+  return problems;
+}
+
 export function lintVideo(doc, context = {}) {
   const errors = [];
   const warnings = [];
@@ -328,6 +454,11 @@ export function lintVideo(doc, context = {}) {
   // target_minutes is what the writer aims at, not a limit, so running over it is not warned. A
   // drama, a brand story and a long anime keep their own lengths on both sides.
   else if (minutes < low || (minutes > high && !needsMinimumLength(doc))) warn("scenes", `about ${minutes.toFixed(1)} minutes; the target is ${low}-${high}`);
+  // The script's shape (episodeScriptProblems) is read on an episode: a narrated zh-TW video of
+  // MIN_EPISODE_MINUTES or more, the constant and not the floor a fixture runner relaxes (the
+  // examples run seconds and show the templates' shape, not a script's). A draft under the floor
+  // is already sent back to be written longer; a drama keeps its own craft; the phrases are zh-TW.
+  if (!drama && !english && minutes >= MIN_EPISODE_MINUTES) for (const problem of episodeScriptProblems(doc, timeline)) warn(problem.path, problem.message);
   if (isLongAnime(doc)) {
     const target = doc.runtime_spec.body_target_seconds;
     const seconds = frameToSeconds(timeline.total_frames);
@@ -335,8 +466,14 @@ export function lintVideo(doc, context = {}) {
   }
 
   const article = context.pack ? articleUrl(context.pack, narration, doc.slug) : null;
-  const description = composeDescription({ body: doc.youtube.description, timeline, article, sources: doc.sources ?? [], locale: narration, tags: doc.youtube.tags });
+  // Composed exactly as package composes it (assets, category, series, campaign), so the byte
+  // count lint checks is the byte count YouTube gets.
+  const description = composeDescription({ body: doc.youtube.description, timeline, article, sources: doc.sources ?? [], assets: doc.assets ?? [], locale: narration, tags: doc.youtube.tags, category: doc.category ?? null, series: doc.series ?? null, campaign: doc.slug });
   for (const problem of checkYoutubeFields({ title: doc.youtube.title, description, tags: doc.youtube.tags })) error("youtube", problem);
+  for (const problem of youtubeWarnings({ title: doc.youtube.title, tags: doc.youtube.tags }, "youtube", { numbered: drama })) warn("youtube", problem);
+  // The headline the qa stage will fail the drawn thumbnail on, said here so a writer's draft
+  // or a planner's answer is not first held at the final gate (thumbnailHeadlineProblems).
+  for (const problem of thumbnailHeadlineProblems(doc)) warn(problem.path, problem.message);
   if (!doc.youtube.tags.length) warn("youtube.tags", "no tags: add the product names and their common misspellings");
   if (!doc.sources?.length) warn("sources", "no sources: every fact in claims.md needs one, and they go in the description");
 
@@ -363,8 +500,13 @@ export function lintVideo(doc, context = {}) {
     if (translation.title && translation.description) {
       const localeArticle = context.pack ? articleUrl(context.pack, context.pack.locales?.[locale] ? locale : narration, doc.slug) : null;
       const tags = translation.tags?.length ? translation.tags : doc.youtube.tags;
-      const composed = composeDescription({ body: translation.description, timeline, chapterTitles: translation.chapters ?? {}, article: localeArticle, sources: doc.sources ?? [], locale, tags });
+      const composed = composeDescription({ body: translation.description, timeline, chapterTitles: translation.chapters ?? {}, article: localeArticle, sources: doc.sources ?? [], assets: doc.assets ?? [], locale, tags, category: doc.category ?? null, series: doc.series ?? null, campaign: doc.slug });
       for (const problem of checkYoutubeFields({ title: translation.title, description: composed, tags: [] }, locale)) warn(`i18n/${locale}.json`, `${problem} (package refuses it)`);
+      // The channel's own title rules are the writer's and the translator's to weigh, so they sit
+      // under youtube/<locale> and not i18n/<locale>.json: the QA captions item turns every
+      // i18n/ warning into a failure, and a title wider than the phone list is no reason to
+      // hold a publish.
+      for (const problem of youtubeWarnings({ title: translation.title, tags: [] }, locale, { numbered: drama })) warn(`youtube/${locale}`, problem);
     }
     const thousands = THOUSANDS[locale];
     if (thousands) {

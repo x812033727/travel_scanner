@@ -8,7 +8,7 @@ Episode outline and chapter planners receive `mystery_answers` from the setting'
 
 ## Payload
 
-`series` (slug, title, premise, genre, lead, visual_tier, total_minutes, planned_episodes), `genre_spec`, `series_reference`, `episodes` ([{slug, number, title, logline, recap}] in play order), `all_recaps`, `spoiler_context` (the private approved setting, outline and mystery schedule with original units), `chapters` (current public titles by episode slug), `description_budget_bytes`, `thumbnail_headline_max` (12), and `thumbnail_candidates` ([{episode, number, shot, judge, characters, prompt}]: at most twelve keyframes from the first three episodes). A retry includes `previous_problem` with the fields to repair. Missing context is not proof that there are no mysteries; a premise or recap that states an answer does not authorize printing it publicly.
+`series` (slug, title, premise, genre, lead, visual_tier, total_minutes, planned_episodes), `genre_spec`, `series_reference`, `episodes` ([{slug, number, title, logline, recap}] in play order), `all_recaps`, `spoiler_context` (the private approved setting, outline and mystery schedule with original units), `chapters` (current public titles by episode slug), `description_budget_bytes`, `thumbnail_headline_max` (6), `thumbnail_headline_words_max` (2), and `thumbnail_candidates` ([{episode, number, shot, judge, characters, prompt}]: at most twelve keyframes from the first three episodes). A retry includes `previous_problem` with the fields to repair. Missing context is not proof that there are no mysteries; a premise or recap that states an answer does not authorize printing it publicly.
 
 ## What to write
 
@@ -16,7 +16,7 @@ Episode outline and chapter planners receive `mystery_answers` from the setting'
 - `description`: zh-TW, within `description_budget_bytes`: the story's question and stakes without their answers, the mid-series flip or the ending. The tool appends chapter lines, article link and sources within YouTube's 5,000-byte budget.
 - `chapters`: exactly the supplied episode keys, each a non-spoiling title. Required when the context contains mysteries; keep safe titles and replace spoiling ones without changing episode numbers or story content. Optional for an explicitly no-mysteries series, whose existing titles may stay.
 - `tags`: at most 500 characters in all, including 漫劇, AI漫劇, 一口氣看完 and the genre's.
-- `thumbnail`: `{"headline": ≤ 12 characters of the biggest promise, "tag": ≤ 6 characters or null, "episode": the chosen candidate's "episode" value (its slug; the tool also accepts its number), "shot": its "shot"}`, naming one of `thumbnail_candidates` (`[{episode, number, shot, judge, characters, prompt}]`). The candidates come best-judged first and each shows a character; pick the one whose picture best carries the headline's promise. The `thumb` template draws the headline and tag over that keyframe.
+- `thumbnail`: `{"headline": ≤ 6 characters of the biggest promise (a Latin word or a number counts one, at most 2; a line break only where a word ends), "tag": ≤ 6 characters or null, "episode": the chosen candidate's "episode" value (its slug; the tool also accepts its number), "shot": its "shot"}`, naming one of `thumbnail_candidates` (`[{episode, number, shot, judge, characters, prompt}]`). The candidates come best-judged first and each shows a character; pick the one whose picture best carries the headline's promise. The `thumb` template draws the headline and tag over that keyframe.
 
 ## Answer
 

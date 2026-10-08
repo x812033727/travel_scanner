@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "slug": "fixture-en",
+  "source": {
+    "publish": {
+      "review_id": "00000000-0000-4000-8000-000000000002",
+      "content_sha256": "87a1a6e1f6e7fe9ac6632cf280e9d069f978ac10cd4976980c31633d2f995795"
+    },
+    "final": {
+      "review_id": "00000000-0000-4000-8000-000000000001",
+      "content_sha256": "3ef0b8556d8ddb6576dd6fcd6cabd9798be83f1f991439ab2aed892a061f5748"
+    },
+    "script": null,
+    "branding_hash": null,
+    "speech_hash": "01f2da6b69601188",
+    "compilation_hash": null
+  },
+  "choice": {
+    "locales": {
+      "en": {
+        "metadata": true,
+        "captions": true,
+        "dub": true
+      },
+      "ja": {
+        "metadata": true,
+        "captions": true,
+        "dub": false
+      }
+    },
+    "decided_at": "2026-10-01T01:00:00.000000Z"
+  },
+  "locales": {
+    "en": {
+      "metadata": "ready",
+      "captions": "ready",
+      "dub": {
+        "status": "skipped",
+        "reason": "這是影片原本旁白的語言，不另做重複配音"
+      }
+    },
+    "ja": {
+      "metadata": "ready",
+      "captions": "ready"
+    }
+  },
+  "files": [
+    {
+      "role": "description_en",
+      "sha256": "9a17235d7322de0dbb8b74b63bb9da2e0a2eca556e65611c142749e91ce4ae2d",
+      "size": 348,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "captions_en",
+      "sha256": "08769d797cf2d7d971092633c9ef5910e74ad95508502eedf5522aa51cd48fd7",
+      "size": 690,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "description_ja",
+      "sha256": "2b22e355dd76512297c073a95bdb9a5c8384d5006cb4c93d83c54434ab9e0f70",
+      "size": 234,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "captions_ja",
+      "sha256": "f82210fd50ca1327656532b3b4d6e61f063f49c33599cc693f05ed130ce48efb",
+      "size": 286,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "metadata",
+      "sha256": "8b660c995162101c15a415f16ed266e4b3fbae47893a18da7acaf92843d17ad9",
+      "size": 2397,
+      "content_type": "application/json"
+    }
+  ]
+}
