@@ -4,7 +4,7 @@ title: Deployment agent: an unreadable staged-release root reads as no staged re
 status: done
 priority: P3
 area: api
-owner: claude-opus-5-5-staged-guard
+owner: claude-staged-guard
 claimed_at: 2026-10-07T04:19:11Z
 created_at: 2026-10-07T04:01:01Z
 completed_at: 2026-10-07T05:06:28Z
@@ -50,9 +50,9 @@ rule 1 is asked. It matters once the host gives the agent read access to the hol
 
 ## Notes
 
-- Found 2026-10-07 by claude-opus-5-5-deploy-hold while reconciling a parallel implementation of
+- Found 2026-10-07 by claude-deploy-hold while reconciling a parallel implementation of
   2026-10-07-deployer-agent-honors-deploy-hold with #1360.
-- Done 2026-10-07 by claude-opus-5-5-staged-guard. `staged_release_reason()` lists the root with
+- Done 2026-10-07 by claude-staged-guard. `staged_release_reason()` lists the root with
   `iterdir()` (FileNotFoundError is "none", any other OSError refuses), and a `mokaair-*`
   directory whose `state.json` cannot be stat'ed or read refuses too. It looks at every release
   directory before reporting an unreadable one, so a release that is definitely staged is named

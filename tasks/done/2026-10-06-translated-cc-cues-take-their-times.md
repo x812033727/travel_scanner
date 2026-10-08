@@ -4,7 +4,7 @@ title: Translated CC cues take their times from the narration's measured cue bou
 status: done
 priority: P3
 area: tools
-owner: claude-opus-5-5-cc-translated
+owner: claude-cc-translated
 claimed_at: 2026-10-07T02:10:49Z
 created_at: 2026-10-06T00:48:32Z
 completed_at: 2026-10-07T02:21:48Z
@@ -62,10 +62,10 @@ node --test tools/video/core/captions.test.mjs tools/video/core/stages.test.mjs
 
 ## Notes
 
-- Filed 2026-10-06 by claude-opus-5-5-cc-aligned from
+- Filed 2026-10-06 by claude-cc-aligned from
   `2026-10-05-long-video-cc-from-aligned-times`, whose notes have the details.
 
-## 2026-10-07 implementation (claude-opus-5-5-cc-translated)
+## 2026-10-07 implementation (claude-cc-translated)
 
 - Claimed with `--force`: its dependency `2026-10-01-hand-off-owner-approved-renewed-finals` was
   listed only because that Codex ticket held `core/stages.mjs`; its claim was released in the

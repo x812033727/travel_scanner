@@ -4,7 +4,7 @@ title: Run the tests under docs/videos in CI so the imported-language runner can
 status: done
 priority: P3
 area: tools
-owner: claude-opus-5-5-docs-ci
+owner: claude-docs-ci
 claimed_at: 2026-10-07T04:23:48Z
 created_at: 2026-10-07T03:55:50Z
 completed_at: 2026-10-07T05:06:47Z
@@ -50,8 +50,8 @@ PR red; reverting it turns it green.
 
 ## Notes
 
-- Filed 2026-10-07 by claude-opus-5-5-runner-test.
-- Done 2026-10-07 by claude-opus-5-5-docs-ci, from a three-design judge panel (fold into
+- Filed 2026-10-07 by claude-runner-test.
+- Done 2026-10-07 by claude-docs-ci, from a three-design judge panel (fold into
   web-checks; a separate job; a separate job plus a guard test). Both judges picked the third.
   - `npm run test:docs-videos` is `node --test "docs/videos/*.test.mjs"
     "docs/videos/**/!(demo)/*.test.mjs"`: node expands the quoted globs (no `--test-exclude`

@@ -76,7 +76,7 @@ prepared but not activated.
 
 ## Notes
 
-- Filed 2026-10-07 by claude-opus-5-5-staged-guard after an independent review of
+- Filed 2026-10-07 by claude-staged-guard after an independent review of
   2026-10-07-deployment-agent-an-unreadable-staged-release found the 0700 consequence. The
   refusal is the safe side, so this is about making the agent usable, not about safety.
 - The agent's own release layout (`/srv/travel-scanner/releases`, Compose project

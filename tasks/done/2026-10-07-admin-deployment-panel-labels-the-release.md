@@ -4,7 +4,7 @@ title: Admin deployment panel labels the release_guard preflight check
 status: done
 priority: P3
 area: web
-owner: claude-opus-5-5-deploy-copy
+owner: claude-deploy-copy
 claimed_at: 2026-10-07T04:01:09Z
 created_at: 2026-10-07T03:57:40Z
 completed_at: 2026-10-07T04:01:10Z
@@ -46,7 +46,7 @@ the admin read `release_guard` as the heading of that card.
 
 ## Notes
 
-- 2026-10-07, claude-opus-5-5-deploy-copy: this replaces my own earlier version, which labelled a
+- 2026-10-07, claude-deploy-copy: this replaces my own earlier version, which labelled a
   `release_hold` check from a parallel implementation of the deploy hold
   (2026-10-07-deployer-agent-honors-deploy-hold). #1360 landed that ticket first with
   `release_guard`, so the parallel implementation was dropped from #1361 and the label follows

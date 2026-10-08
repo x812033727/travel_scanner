@@ -4,7 +4,7 @@ title: Hold lost planner and Jev answers across rounds in drafts, series and Sho
 status: done
 priority: P2
 area: tools
-owner: claude-opus-5-5-happy-carson
+owner: claude-happy-carson
 claimed_at: 2026-10-07T11:22:28Z
 created_at: 2026-10-05T23:49:44Z
 completed_at: 2026-10-07T14:12:23Z
@@ -148,7 +148,7 @@ node tools/video/long-form/cli.mjs check
   Give the site something to record, so a job the server keeps naming does not hold up the
   queue.
 
-### 2026-10-07 done (claude-opus-5-5-happy-carson, PR #1361)
+### 2026-10-07 done (claude-happy-carson, PR #1361)
 
 The first Definition of done item is met for every path but one, and is left unticked for it:
 a series document's lost answer is recorded and never asked again on its own, but the owner

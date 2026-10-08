@@ -4,7 +4,7 @@ title: stock joins the video CLI area table
 status: done
 priority: P2
 area: tools
-owner: claude-opus-5-5-stock-cli
+owner: claude-stock-cli
 claimed_at: 2026-10-07T05:58:07Z
 created_at: 2026-10-05T18:08:16Z
 completed_at: 2026-10-07T05:59:36Z
@@ -63,7 +63,7 @@ node tools/video/long-form/cli.mjs check
 
 - The direct-run `main` in `tools/video/media/cli.mjs` can stay: the media tests use it, and it
   costs nothing.
-- Done 2026-10-07 by claude-opus-5-5-stock-cli. `AREAS.stock` sends `stock` to `media/cli.mjs`
+- Done 2026-10-07 by claude-stock-cli. `AREAS.stock` sends `stock` to `media/cli.mjs`
   `run`, which hands it to `stock.mjs`, so `node tools/video/cli.mjs stock search|fetch …` answers
   with the main CLI's exit codes (a usage mistake 2 through the main CLI's own catch, no token 3);
   `--help` lists both subcommands under the media stages. Scope widened to `media/cli.mjs` for
