@@ -33,11 +33,18 @@ Teaching route (plain slides; writing only):
   「製作路線：教學卡片」 inside the brief's existing 示範或實算 section. The writer follows the
   chosen outline. An already approved illustrated outline stays illustrated unless the owner
   requested a revision; do not silently restyle or change its scenes in a listener pass.
-- On this route use ONE recurring worked example: show the useful outcome first, explain its
-  mechanism, cover trust and risk BEFORE installation or any action that grants access, then
-  show the steps and compare the expected result with the observed result. A concept without
-  installation uses its relevant prerequisites before the worked steps. Introduce a technical
-  term with its plain meaning when the example needs it; keep its exact official meaning.
+- Name the intended viewer, a concrete task or decision they need to improve, and what they
+  can do after watching in 示範或實算. Choose an example for that benefit, not because an API
+  is easy to demonstrate. An audience of everyday users needs a useful workflow, not an
+  internal-code tour. Introduce mechanisms and terms only when they explain an observed
+  result or help the viewer take the next step; keep their exact official meaning.
+- Use one main worked example, a purposeful contrast and a transfer exercise. Show the
+  problem and useful outcome early. Provide the starting materials and complete input,
+  actions, observable result, why it happened, and how to diagnose a likely failure. Cover
+  trust and risk BEFORE installation or any action that grants access; other examples give
+  their relevant prerequisites. Compare expected and observed results. The contrast teaches
+  when the method applies or fails; the exercise changes a meaningful requirement and gives
+  an answer or checking method. These may be variations of the main case, not unrelated demos.
 - Reuse the same objects, names and diagram layout across chapters, revealing one new relation
   or state at a time. No forced chapter location, new metaphor, 「你以為…其實」 turn or closing
   question: a short conclusion or the next practical question is enough. If a comparison helps,
@@ -60,8 +67,15 @@ Teaching route (plain slides; writing only):
   the walkthrough as untested; never invent a successful run or a first-person test. Terminal
   output must be copied from a real run with its date and tool version. Keep official-page
   captures public: no login, OBS, secrets or private account screens.
+- Untested labels are honest disclosure, not completion of a practical learning promise.
+  If evidence for the core demonstration is missing, record that teaching gap for revision;
+  do not call the tutorial ready because its length, layout or technical checks pass. Before
+  production, an independent first-use review must establish whether the provided materials
+  let the intended viewer reproduce, explain, diagnose and adapt the example. A read-only
+  script review does not establish successful execution; never invent learner validation.
 - A listener preserves the chosen route and all scene/line ids. Report missing steps, unclear
-  mappings or absent run evidence for a writer revision; never repair them by inventing facts,
+  mappings, weak viewer benefit, missing contrasts/exercises or absent run evidence for a
+  writer revision; never repair them by inventing facts,
   adding scenes or claiming a result. Leave "pause_after_ms" out; the tool still sets the beats.
 `.trim();
 

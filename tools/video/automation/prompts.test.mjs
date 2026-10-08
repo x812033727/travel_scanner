@@ -73,14 +73,15 @@ test("the planner outlines story beats and the listener keeps the register; the 
   for (const stage of ["verifier", "translator", "caption_reviewer"]) assert.equal(INSTRUCTIONS[stage].includes(REGISTER_RULES), false, `${stage} reads no register rules`);
 });
 
-test("teaching cards keep one evidenced example without imposing the illustrated-story route", () => {
+test("teaching cards require useful learning and evidence without imposing the illustrated-story route", () => {
   for (const stage of ["planner", "writer", "listener"]) {
     const prompt = instructionsFor(stage, "slides");
     assert.ok(prompt.includes(TEACHING_RULES), `${stage} gets the complete teaching contract`);
     assert.ok(prompt.includes(REGISTER_RULES), `${stage} retains the illustrated-story contract`);
   }
   assert.match(TEACHING_RULES, /「製作路線：教學卡片」 inside the brief's existing 示範或實算 section/);
-  assert.match(TEACHING_RULES, /ONE recurring worked example: show the useful outcome first, explain its\s+mechanism, cover trust and risk BEFORE installation/);
+  assert.match(TEACHING_RULES, /one main worked example, a purposeful contrast and a transfer exercise/);
+  assert.match(TEACHING_RULES, /trust and risk BEFORE installation/);
   assert.match(TEACHING_RULES, /No forced chapter location, new metaphor, 「你以為…其實」 turn or closing\s+question/);
   assert.match(TEACHING_RULES, /"format": "slides" with no "shot" scenes, not a new schema field or a QA exemption/);
   assert.match(TEACHING_RULES, /Do not add a shot to satisfy an illustration quota/);
