@@ -1,6 +1,6 @@
 # Sunny 與 Pip：國中英文系列
 
-本系列承接既有國小英文基礎，規劃六季、72 集，每季十二集。S1–S2 對應國一（`grade: 7`）、S3–S4 對應國二（`grade: 8`）、S5–S6 對應國三（`grade: 9`）。課程從完整句子的組織，進階到時態、理由、經驗、觀點與閱讀寫作；可依學習者的實際程度選季。這是一套分級基礎課程，不宣稱完整取代各地學校課綱或正式程度測驗。
+本系列承接既有國小英文基礎，包含六季、72 集，每季十二集。S1–S2 對應國一（`grade: 7`）、S3–S4 對應國二（`grade: 8`）、S5–S6 對應國三（`grade: 9`）。課程從完整句子的組織，進階到時態、理由、經驗、觀點與閱讀寫作；可依學習者的實際程度選季。這是一套分級基礎課程，不宣稱完整取代各地學校課綱或正式程度測驗。
 
 | 階段 | 季數／集數 | 主題 | 主要進階 |
 |---|---|---|---|
@@ -111,7 +111,7 @@ PY
 
 批次狀態在 `batch-status.json`，逐集記錄在 `build-logs/epNN.log`。成功續跑須符合當前作者來源、renderer 與媒體指紋；只複製 MP4 不能建立完整製作收據。原稿與 renderer 相依檔凍結後再大量渲染，避免不必要的重建。
 
-單集重做先替語音命令加 `--episode ep17`，再從實測 resolved 渲染：
+單集修稿後，先替語音命令加 `--episode ep17 --force`，再從實測 resolved 渲染。`--force` 會重新組裝該集並同步全部作者欄位，仍可重用語音片段快取；只改課後題目或其他不影響發音的資料時，也需要這一步，避免 resolved 留下舊題目：
 
 ```bash
 /workspace/junior-high-tools-venv/bin/python tools/video/junior_high/build.py \
@@ -199,7 +199,7 @@ PYTHONPATH=tools/video /workspace/junior-high-tools-venv/bin/python -m junior_hi
 
 移除 `--check-only` 產生六個分季包及整套包；加 `--seasons-only` 可略過整套 ZIP。打包必須通過完整影音准入，且 resolved 保留當前所有作者欄位；舊 resolved 和舊影片彼此一致，也不能取代目前原稿。工具先建立暫存 ZIP、核對成員與 CRC，再於來源與 resolved 指紋仍相符時替換交付檔。
 
-預定交付名稱：
+交付名稱：
 
 - `Sunny_Pip_Junior_High_Season_01.zip` 至 `Sunny_Pip_Junior_High_Season_06.zip`
 - `Sunny_Pip_Junior_High_72_Episodes.zip`
@@ -210,4 +210,21 @@ PYTHONPATH=tools/video /workspace/junior-high-tools-venv/bin/python -m junior_hi
 
 ## 交付記錄
 
-本文件描述課程範圍、製作方法與驗證要求。完成集數、實測總時長、包大小、字型與交付雜湊、PDF 頁數及實播檢查結果，應於最終交付後依報告補入；此處不預先宣告製作完成。
+2026-10-08 已完成六季 72 集，總長 **4 小時 4 分 48 秒**（14,687.891 秒），每集約 3 分 2 秒至 3 分 52 秒。交付含 72 支五聲軌成片、72 支無聲畫面、360 份 M4A、288 份 SRT、288 份 VTT；英文固定在畫面，沒有英文 CC。
+
+七個 ZIP 均通過獨立 CRC、精確成員清單、逐檔 SHA、實際媒體串流及課程內容檢查。全套 ZIP 為 1,224,416,404 bytes（約 1.22 GB）；每季包各有 12 集。全套 PDF 實測 97 頁，每季 17 頁，含 72 篇閱讀、216 題理解／應用與 72 項寫作；答案另置，所有 PDF 頁面文字已逐頁對照來源。
+
+| 季數 | 集數 | 年級 | 成片總秒數 | 分季 ZIP bytes |
+|---|---|---|---:|---:|
+| S1 | 01–12 | 國一 | 2648.571 | 224,316,108 |
+| S2 | 13–24 | 國一 | 2270.611 | 172,269,989 |
+| S3 | 25–36 | 國二 | 2372.560 | 192,791,712 |
+| S4 | 37–48 | 國二 | 2459.184 | 208,711,836 |
+| S5 | 49–60 | 國三 | 2364.693 | 197,513,820 |
+| S6 | 61–72 | 國三 | 2572.272 | 229,080,906 |
+
+完整證據摘要見 [delivery-verification.json](delivery-verification.json)、[作者交叉審稿](authoring-review.json)、[720 幕畫面檢查](art-checks.json) 及 [實際成片抽查](encoded-frame-review.json)。72 集均有來源及雜湊綁定的完整解碼收據；實際畫面人工抽查的範圍明列於報告，不宣稱已逐片完整觀看或聽審。工具測試 2,010 項通過、3 項略過、0 失敗；其中新增 23 項 Python 製作流程回歸。
+
+七個播放器變體的 jsdom 控制測試通過，涵蓋語音／CC 獨立切換、暫停、結束、重播與錯誤處理。jsdom 模擬媒體事件，不代表瀏覽器實播；本環境先前的本機檔案導覽遭管理政策阻擋，未改用其他路徑繞過。實際影片另有 FFmpeg 完整解碼驗證。
+
+本次仍是 Microsoft Edge read-aloud 試製聲音，未套用後台正式聲音，也未在後台發布。媒體、字型、練習冊及 ZIP 位於 repo 外的 `/workspace/junior-high-series-output`；本 PR 保存原稿、工具及可攜的交付證據。
