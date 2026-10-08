@@ -43,6 +43,13 @@ scope:
 
 ## Notes
 
+- 收工驗證：獨立覆核175格冠ROI全看，f16接頂／f20明確裁失，沒有可供053/059/065原時窗的足量完整冠區間；不改速或凍格救片。聲音15綁定、597句、459cue及133素材庫檔獨立核對一致。任務1692票及文件diff檢查過，只有其他票既有stale warnings。所有job下載後lease正常release/exit0，重驗LEASE及STOP均不存在；局部hold與後續待辦保存在本票，不是假称背景继续生成。本票DoD未齊，release回open，草稿PR不合併。
+
+- 本輪收工追加：053影片已下載，7.291667秒／175格／24fps／2560×1440＋32kHz stereo AAC，完整decode、首格PSNR32.010299dB過；主控實看首末全幅與冠ROI0–15/160–174格，末段最高冠尖裁切，053及059/065暫hold、不重買同首格；062及069仍因右臉紫痕hold。所有15筆實扣均有下載，無unknown／open job；本輪175點、A累計475點不變。原片、靜音review副本、機械與獨立逐格QA留外部qa-a02-s053-video-t1；技術通過不等於動畫採用。
+
+- 2026-10-09 續製：claim前重新who-is-on-it，handoff無active重疊、唯一PR#1388同隊；`--force`只略過同隊未結相依。本輪將三片剪成10.75秒（4段EDL、無變速／重複格、decode過），站主在採用節奏並續A期問題答「A 我儲值了」，已記採用；帳戶實見26,700→61,700，自行加35,000點，美元未知、非代理購點。036／038首格懸停敘述同步到外部continuation副本及獨立lock，597句及原v4/正常lock未動。已生053/062各2版首格共91點，053冠尖完整但留白極小，由root有條件選用、獨立headroom hold仍在；053七秒H3/2K片實扣84點生成中。062右臉殘留小紫痕，已停止此鏡及069依賴，沒有第三張圖或影片；053下載後須逐格查冠與動作，再裁定059/065可否切用。A期累計475點、餘額61,525、API0。最新結果與收工狀態見[續製紀錄](../../docs/videos/series-plans/ou-de-jianghu/visual-development/handoff/episode-continuation-20261009.md)。
+- 聲音續製待辦：站主明確Google配音後置且「好 另外準備」，外部audio-track-decision.json/.md綁定原話與來源；597句/9聲音、13音樂brief與逐鏡效果配置已備，官方Kenney CC0 130OGG已下載並全decode，9候選48kHz試聽已提供但未聽審採用；無真正配樂或M&E完成。後续須處理062局部除痕方案（不自動第三次整圖重買）、剩餘A/B逐鏡製作、Google逐語錄音/嘴型/真實時間線、正式匯入與look/audio/storyboard，不把分軌規格或原生AAC當完工。
+
 - 2026-10-09 瀏覽器試拍：站主指定 Codex IAB 並登入，沿已採用316.8點pilot額度完成7次逐鏡圖像（156點）與3支H3四秒片（144點），合計實扣300點，帳戶27000→26700；無購點／續訂／API／TTS。s036兩版接觸末格都因冠尖與指段重疊歧義退回，未送接觸版影片。站主明確核准「採用懸停方案，繼續製作」，只在外部副本改s036 motion／end_frame.prompt、建立獨立native lock，原v4／正常lock未改。詳見[本輪製作紀錄](../../docs/videos/series-plans/ou-de-jianghu/visual-development/handoff/hailuo-browser-pilot-20261009.md)。正式look/audio/storyboard、變更接回及片段匯入仍待辦；s035結尾手落身側接s036懸掌存在抬手跳接，3秒／2秒估剪也需改用實際動作收勢，需在放量前解決，不能把本輪下載／decode／抽格當owner接受。本輪claim前scope無其他active、唯一PR#1388屬同隊；--force僅略過同隊未結相依，不接管production原持有人。
 
 - 2026-10-09 正式採用：站主明確回覆「採用素材與 v4，按此點數上限鎖定 plan」。[採用紀錄](../../docs/videos/series-plans/ou-de-jianghu/visual-development/handoff/adoption-decision-20261009.md)／JSON逐一綁定146素材、既有限制、v4、兩期逐鏡預算與正常plan鎖。本期含預留26,980.8點、pilot316.8包含在內，第二期21,753.6須有實際額度，不購點／續訂、API支出授權0。原生write/check exit0且changed=false，455鏡 Hailuo Max H3/2K/assist off，lock SHA `6af3dafa4f9edc0a03270800a9d3fd44c6f487a3c015627fda4a4205f385d0c5`。ready exit1、2過429待製作，look依決定保留待判圖。
