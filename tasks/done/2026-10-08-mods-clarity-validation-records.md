@@ -1,13 +1,13 @@
 ---
 id: 2026-10-08-mods-clarity-validation-records
 title: Repair Mods clarity draft validation records
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-mods-validation
 claimed_at: 2026-10-08T16:51:27Z
 created_at: 2026-10-08T16:51:24Z
-completed_at:
+completed_at: 2026-10-08T17:13:26Z
 branch: codex/mods-clarity-20261009
 depends_on: []
 scope:
@@ -29,7 +29,7 @@ PR #1390 CI found host-specific paths in new documentation and stale duration-re
 - [x] Repository documentation uses portable path placeholders without weakening the hygiene guard.
 - [x] An independent reviewer verifies and binds both changed duration-covered files.
 - [x] Relevant local checks pass.
-- [ ] Current-head Linux CI results are recorded.
+- [x] Linux CI for the repaired source head is successful and recorded.
 
 ## Steps
 
@@ -37,7 +37,7 @@ PR #1390 CI found host-specific paths in new documentation and stale duration-re
 - [x] Replace five host-specific path references with `<home>`.
 - [x] Obtain independent incremental duration review for both changed bindings.
 - [x] Verify local hygiene, prompts, receipt tests and all long-form plans.
-- [ ] Record Linux CI results for the pushed PR head before closing this task.
+- [x] Record Linux CI results for the pushed source head before closing this task.
 
 ## How to verify
 
@@ -55,4 +55,10 @@ Local verification completed on Windows ARM64 with bundled Node v24.19.0:
 - `tools/video/long-form/review.test.mjs`: 2/2 passed.
 - `tools/video/long-form/cli.mjs check`: PASS for all 473 plans, preserving 600/780-second targets, 480-second measured floors, source hashes and covered status.
 
-These are local results, not Linux CI acceptance. PR #1390 remains a draft, and this task stays in progress until the current pushed head's CI outcome is verified. The independent Windows runtime fixes belong to their separate branch and task.
+Linux CI was independently read back on source head `1bc0a95bcc873ef71dd9dbd002aafa339939c9d1`:
+
+- [video-tests job 113436598386](https://github.com/x812033727/travel_scanner/actions/runs/37813649077/job/113436598386): completed successfully on `ubuntu-latest`. Documentation-video tests passed 199/199 with no skips; the media-enabled tools run passed 2,195, skipped 1, failed 0 (2,196 total).
+- [web-checks job 113436598378](https://github.com/x812033727/travel_scanner/actions/runs/37813649077/job/113436598378): completed successfully on `ubuntu-latest`. Tools tests passed 2,175, skipped 12, failed 0 (2,187 total); 1,684 task files validated. This job does not install the media dependencies exercised by video-tests.
+- Complete logs and a source-bound receipt are preserved outside Git at `<home>/mokaair-work/mods-clarity-20261009/ci/validation-1bc0a95bc-0U4OeQ/`. SHA-256: video-tests log `732c400cd661210e8df905fc30d81a9183569401a651502e139be5cf9c6725f7`; web-checks log `a8b262fec6a9c1ec68587aefda888846e9c2bdb40fc91f8ea28209b1e4e05ab1`.
+
+The scoped hygiene and duration-binding repair is verified locally and in these Linux jobs. The task-only closure commit is newer than the tested source SHA and its CI is pending; this record does not claim that all PR checks or that newer commit are green. PR #1390 remains a draft. The independent Windows runtime fixes belong to their separate branch and task.
