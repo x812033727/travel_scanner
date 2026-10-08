@@ -1,0 +1,1730 @@
+{
+  "schema_version": 1,
+  "slug": "claude-code-mods-no-sandbox-before-install",
+  "format": "slides",
+  "category": "tutorial",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Claude Code Mods 怎麼做？用一個工具計數器，看懂原理與載入步驟",
+    "description": "用官方工具呼叫計數器，從看見效果到拆解原理，學會核對 Claude Code Mod 的檔案、權限與載入步驟。整支沿用同一個案例，分清楚模型、工具、Mod 和介面各做什麼。\n\n資料確認：2026-10-09。這是官方範例的教學拆解；介面計數與預期結果為示意，並非本機操作紀錄。公開網頁畫面標為官方文件。計數自模組載入後累積，實際結果請核對自己的工具事件；靜態檢查不構成外掛安全認證。",
+    "tags": [
+      "Claude Code",
+      "Claude Code Mods",
+      "工具計數器",
+      "Claude Code 教學",
+      "Mod 開發",
+      "Plugin",
+      "Mokaair"
+    ],
+    "video_id": null
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "sources": [
+    {
+      "title": "Mods overview",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Create a mod",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Plugin security and trust",
+      "url": "https://code.claude.com/docs/en/plugins/security",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Use the mods API",
+      "url": "https://code.claude.com/docs/en/plugins/mods/api",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Test a mod",
+      "url": "https://code.claude.com/docs/en/plugins/mods/test",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Getting started with Claude Code mods",
+      "url": "https://claude.dev/blog/getting-started-with-claude-code-mods/",
+      "checked_on": "2026-10-09"
+    }
+  ],
+  "assets": [
+    {
+      "path": "docs/videos/claude-code-mods-no-sandbox-before-install/assets/counter-before-after.svg",
+      "source": "Mokaair original explanatory diagram based on Anthropic public documentation; illustrative, not runtime evidence",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/claude-code-mods-no-sandbox-before-install/assets/mod-flow.svg",
+      "source": "Mokaair original explanatory diagram based on Anthropic public documentation; illustrative, not runtime evidence",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/claude-code-mods-no-sandbox-before-install/assets/mod-flow-model.svg",
+      "source": "Mokaair original explanatory diagram based on Anthropic public documentation; illustrative, not runtime evidence",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/claude-code-mods-no-sandbox-before-install/assets/mod-flow-hook.svg",
+      "source": "Mokaair original explanatory diagram based on Anthropic public documentation; illustrative, not runtime evidence",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/claude-code-mods-no-sandbox-before-install/assets/mod-flow-ui.svg",
+      "source": "Mokaair original explanatory diagram based on Anthropic public documentation; illustrative, not runtime evidence",
+      "license": "Mokaair original"
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "工具用了**幾次？**",
+      "tag": "一個 Mod 看懂"
+    }
+  },
+  "scenes": [
+    {
+      "id": "r2-result",
+      "chapter": "一個計數器，讓工具呼叫次數看得見",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/claude-code-mods-no-sandbox-before-install/assets/counter-before-after.svg",
+        "caption": "示意計數｜依官方 first-mod 範例重畫，非本機實測"
+      },
+      "claims": [
+        "m01"
+      ],
+      "lines": [
+        {
+          "id": "mc001",
+          "text": "Claude Code 忙了半天，到底用了幾次工具？"
+        },
+        {
+          "id": "mc002",
+          "text": "右邊多了計數，你就不用往上翻。"
+        }
+      ]
+    },
+    {
+      "id": "r2-what-changed",
+      "template": "big",
+      "data": {
+        "text": "多一行**工具計數**",
+        "sub": "同一個 Claude Code，改的是工作介面"
+      },
+      "claims": [
+        "m01"
+      ],
+      "lines": [
+        {
+          "id": "mc003",
+          "text": "這一行，是今天這個擴充模組加出來的。"
+        },
+        {
+          "id": "mc004",
+          "text": "它能修改 Claude Code 的介面或行為。"
+        }
+      ]
+    },
+    {
+      "id": "r2-illustrative-count",
+      "template": "stats",
+      "data": {
+        "title": "讀一次，加一筆",
+        "stats": [
+          {
+            "value": "0 → 1",
+            "label": "第一次工具呼叫"
+          },
+          {
+            "value": "1 → 2",
+            "label": "第二次工具呼叫"
+          }
+        ],
+        "source": "模組載入後的累計示意｜不是本機執行紀錄"
+      },
+      "claims": [
+        "m02"
+      ],
+      "lines": [
+        {
+          "id": "mc005",
+          "text": "收到一次工具事件，計數從零加到一。"
+        },
+        {
+          "id": "mc006",
+          "text": "第二次再加一；這些數字都是示意。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-not-model-upgrade",
+      "template": "big",
+      "data": {
+        "text": "**看得更清楚**",
+        "sub": "計數器不會替模型增加能力"
+      },
+      "claims": [
+        "m01",
+        "m02"
+      ],
+      "lines": [
+        {
+          "id": "mc007",
+          "text": "你以為加了功能，就是換了更強的模型。"
+        },
+        {
+          "id": "mc008",
+          "text": "其實，這個例子只把已有的動作數出來。"
+        }
+      ],
+      "chapter": "工具、模型與 Mod 各做什麼"
+    },
+    {
+      "id": "r2-example-task",
+      "template": "chat",
+      "data": {
+        "title": "固定用這個小工作",
+        "messages": [
+          {
+            "side": "right",
+            "text": "列出這個資料夾，再讀說明檔。"
+          },
+          {
+            "side": "left",
+            "text": "在工作狀態旁，顯示工具呼叫次數。"
+          }
+        ]
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "mc009",
+          "text": "我們把工作固定成讀一個示範資料夾。"
+        },
+        {
+          "id": "mc010",
+          "text": "請它讀示範資料，觀察計數如何增加。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-scope",
+      "template": "big",
+      "data": {
+        "text": "官方範例，逐步拆解",
+        "sub": "公開文件與示意畫面｜本機尚未載入 Mod"
+      },
+      "claims": [
+        "m03"
+      ],
+      "lines": [
+        {
+          "id": "mc011",
+          "text": "這個官方範例，加上一個工具計數器。"
+        },
+        {
+          "id": "mc012",
+          "text": "從記錄事件，到顯示數字，都在這份程式裡。"
+        }
+      ]
+    },
+    {
+      "id": "r2-question-mechanism",
+      "template": "big",
+      "data": {
+        "text": "它怎麼知道**工具被呼叫了**？",
+        "sub": "看同一張流程圖"
+      },
+      "claims": [
+        "m01"
+      ],
+      "lines": [
+        {
+          "id": "mc014",
+          "text": "那計數器從哪裡知道有動作發生？"
+        }
+      ]
+    },
+    {
+      "id": "r2-flow",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/claude-code-mods-no-sandbox-before-install/assets/mod-flow.svg",
+        "caption": "固定角色：使用者、模型、Claude Code、Mod、工具"
+      },
+      "claims": [
+        "m04"
+      ],
+      "lines": [
+        {
+          "id": "mc015",
+          "text": "看這張圖，先把幾個角色分清楚。"
+        },
+        {
+          "id": "mc016",
+          "text": "你輸入要求，Claude 模型負責理解和回應。"
+        }
+      ]
+    },
+    {
+      "id": "r2-model",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/claude-code-mods-no-sandbox-before-install/assets/mod-flow-model.svg",
+        "caption": "模型提出工具需求；Claude Code 負責協調執行"
+      },
+      "claims": [
+        "m04"
+      ],
+      "lines": [
+        {
+          "id": "mc017",
+          "text": "需要讀檔時，模型提出一個工具呼叫。"
+        },
+        {
+          "id": "mc018",
+          "text": "Claude Code 接手，處理執行和結果。"
+        }
+      ]
+    },
+    {
+      "id": "r2-tool-example",
+      "template": "big",
+      "data": {
+        "text": "讀檔，也是一次**工具呼叫**",
+        "sub": "呼叫＝提出一次使用工具的要求"
+      },
+      "claims": [
+        "m02",
+        "m04"
+      ],
+      "lines": [
+        {
+          "id": "mc019",
+          "text": "工具，就是讀檔或執行指令這些功能。"
+        },
+        {
+          "id": "mc020",
+          "text": "模型說想讀檔，跟檔案真的讀到了，要分開看。"
+        }
+      ]
+    },
+    {
+      "id": "r2-event",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/claude-code-mods-no-sandbox-before-install/assets/mod-flow-hook.svg",
+        "caption": "tool.call → 計數加一 → next(e)"
+      },
+      "claims": [
+        "m02",
+        "m05"
+      ],
+      "lines": [
+        {
+          "id": "mc021",
+          "text": "Claude Code 收到工具呼叫，會觸發事件。"
+        },
+        {
+          "id": "mc022",
+          "text": "計數器就在這個時間點，把數字加一。"
+        }
+      ]
+    },
+    {
+      "id": "r2-hook-term",
+      "template": "big",
+      "data": {
+        "text": "事件發生，就執行這段程式",
+        "sub": "hook＝事件處理函式；不是另一個模型"
+      },
+      "claims": [
+        "m05"
+      ],
+      "lines": [
+        {
+          "id": "mc023",
+          "text": "這段接住事件的程式，叫做掛鉤。"
+        },
+        {
+          "id": "mc024",
+          "text": "你可以理解成，事情發生時要做的動作。"
+        }
+      ]
+    },
+    {
+      "id": "r2-continue",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/claude-code-mods-no-sandbox-before-install/assets/mod-flow-hook.svg",
+        "caption": "本例只記錄，再把原事件交回"
+      },
+      "claims": [
+        "m05"
+      ],
+      "lines": [
+        {
+          "id": "mc025",
+          "text": "記完之後，它把原本的要求交回去。"
+        },
+        {
+          "id": "mc026",
+          "text": "所以讀檔這件事，仍由原來的流程處理。"
+        }
+      ]
+    },
+    {
+      "id": "r2-redraw",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/claude-code-mods-no-sandbox-before-install/assets/mod-flow-ui.svg",
+        "caption": "計數變動 → 重畫介面 → 顯示新數字"
+      },
+      "claims": [
+        "m05"
+      ],
+      "lines": [
+        {
+          "id": "mc027",
+          "text": "另一段掛鉤，負責把數字放到介面上。"
+        },
+        {
+          "id": "mc028",
+          "text": "一次記錄，一次顯示，畫面就接起來了。"
+        }
+      ]
+    },
+    {
+      "id": "r2-separate-counts",
+      "template": "compare",
+      "data": {
+        "title": "這個數字沒有告訴你的事",
+        "left": {
+          "heading": "有數到",
+          "points": [
+            "模組載入後，收到的工具呼叫事件"
+          ]
+        },
+        "right": {
+          "heading": "沒有保證",
+          "points": [
+            "工作已完成",
+            "工具執行成功",
+            "花了多少錢"
+          ]
+        }
+      },
+      "claims": [
+        "m02"
+      ],
+      "lines": [
+        {
+          "id": "mc029",
+          "text": "它累積的是模組載入後的工具呼叫事件。"
+        },
+        {
+          "id": "mc030",
+          "text": "它不保證工作完成，也不是你的帳單。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-failure-count",
+      "template": "big",
+      "data": {
+        "text": "失敗的呼叫，也可能被數進去",
+        "sub": "這個範例在執行結果出來前加一"
+      },
+      "claims": [
+        "m02"
+      ],
+      "lines": [
+        {
+          "id": "mc031",
+          "text": "例如讀檔失敗，事件仍然已經發生。"
+        },
+        {
+          "id": "mc032",
+          "text": "看到兩次，要回到執行結果判斷成敗。"
+        }
+      ]
+    },
+    {
+      "id": "r2-result-matters",
+      "template": "big",
+      "data": {
+        "text": "數字是線索，**結果才是答案**",
+        "sub": "對照工具輸出，確認它實際做了什麼"
+      },
+      "claims": [
+        "m02"
+      ],
+      "lines": [
+        {
+          "id": "mc033",
+          "text": "數字可以幫你找到要看的紀錄。"
+        },
+        {
+          "id": "mc034",
+          "text": "你要核對的，是那次呼叫實際做了什麼。"
+        }
+      ]
+    },
+    {
+      "id": "r2-question-hooks",
+      "template": "big",
+      "data": {
+        "text": "同一個事件，還能怎麼處理？",
+        "sub": "觀察、改寫、接手"
+      },
+      "claims": [
+        "m05"
+      ],
+      "lines": [
+        {
+          "id": "mc036",
+          "text": "如果它選擇不放行，會發生什麼事？"
+        }
+      ]
+    },
+    {
+      "id": "r2-observe",
+      "chapter": "同一個掛鉤，三種處理方式",
+      "template": "bullets",
+      "data": {
+        "title": "選擇一：只觀察",
+        "items": [
+          "收到事件",
+          "記一筆",
+          "交回原事件"
+        ]
+      },
+      "claims": [
+        "m05"
+      ],
+      "lines": [
+        {
+          "id": "mc037",
+          "text": "只觀察，就是記下事情，讓它照常繼續。"
+        },
+        {
+          "id": "mc038",
+          "text": "計數器對工具呼叫，採用的就是這種做法。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-next",
+      "template": "code",
+      "data": {
+        "code": "calls += 1\nreturn next(e)",
+        "caption": "程式片段｜next(e) 交回原事件"
+      },
+      "claims": [
+        "m05"
+      ],
+      "lines": [
+        {
+          "id": "mc039",
+          "text": "畫面這兩行，一行加一，另一行交回。"
+        },
+        {
+          "id": "mc040",
+          "text": "交回的意思，是讓後面的處理繼續跑。"
+        }
+      ]
+    },
+    {
+      "id": "r2-rewrite",
+      "template": "bullets",
+      "data": {
+        "title": "選擇二：改寫",
+        "items": [
+          "收到事件",
+          "修改內容",
+          "交回修改後的事件"
+        ]
+      },
+      "claims": [
+        "m05"
+      ],
+      "lines": [
+        {
+          "id": "mc041",
+          "text": "改寫，則是把內容改過，再往後傳。"
+        },
+        {
+          "id": "mc042",
+          "text": "計數器畫介面時，就替狀態文字加上數字。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-same-spinner",
+      "template": "big",
+      "data": {
+        "text": "原有狀態，**加上次數**",
+        "sub": "介面文字改了；原本的工作仍可繼續"
+      },
+      "claims": [
+        "m05"
+      ],
+      "lines": [
+        {
+          "id": "mc043",
+          "text": "所以你還看得見原來的工作狀態。"
+        },
+        {
+          "id": "mc044",
+          "text": "它只是多了一段，告訴你目前數到幾次。"
+        }
+      ]
+    },
+    {
+      "id": "r2-answer",
+      "template": "bullets",
+      "data": {
+        "title": "選擇三：自己回覆",
+        "items": [
+          "收到指定指令",
+          "直接回傳文字",
+          "不再交給後面處理"
+        ]
+      },
+      "claims": [
+        "m05",
+        "m06"
+      ],
+      "lines": [
+        {
+          "id": "mc045",
+          "text": "還有一種，是自己回答這個事件。"
+        },
+        {
+          "id": "mc046",
+          "text": "計數器的查詢指令，就直接回傳目前數字。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-tally",
+      "template": "code",
+      "data": {
+        "code": "/tally",
+        "caption": "使用者查次數｜官方範例指令，不是模型提示詞"
+      },
+      "claims": [
+        "m06"
+      ],
+      "lines": [
+        {
+          "id": "mc047",
+          "text": "你輸入畫面這條指令，就能查目前次數。"
+        },
+        {
+          "id": "mc048",
+          "text": "這個回覆由程式產生，不需要請模型猜。"
+        }
+      ]
+    },
+    {
+      "id": "r2-choices",
+      "template": "compare",
+      "data": {
+        "title": "記錄動作，與決定動作",
+        "left": {
+          "heading": "這個計數器",
+          "points": [
+            "工具呼叫：記錄後交回",
+            "查次數：直接回覆"
+          ]
+        },
+        "right": {
+          "heading": "其他 Mod 可能會",
+          "points": [
+            "改寫要求",
+            "攔下工具呼叫"
+          ]
+        }
+      },
+      "claims": [
+        "m05",
+        "m07"
+      ],
+      "lines": [
+        {
+          "id": "mc049",
+          "text": "同樣叫做擴充模組，做的事可以差很多。"
+        },
+        {
+          "id": "mc050",
+          "text": "因此，不能只看名字就決定要不要裝。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-question-trust",
+      "template": "big",
+      "data": {
+        "text": "載入前，先看它會做什麼",
+        "sub": "現在進入安全檢查，還沒執行 Mod"
+      },
+      "claims": [
+        "m07"
+      ],
+      "lines": [
+        {
+          "id": "mc052",
+          "text": "載入之前，究竟要先看哪裡？"
+        }
+      ]
+    },
+    {
+      "id": "r2-privileges",
+      "chapter": "載入以前，先確認權限與來源",
+      "template": "big",
+      "data": {
+        "text": "Mod 會用**你的權限**執行",
+        "sub": "安裝前先確認作者與程式內容"
+      },
+      "claims": [
+        "m07"
+      ],
+      "lines": [
+        {
+          "id": "mc053",
+          "text": "這種模組，會用你的使用者權限執行。"
+        },
+        {
+          "id": "mc054",
+          "text": "所以來源和程式內容，都要在載入前確認。"
+        }
+      ]
+    },
+    {
+      "id": "r2-what-reach",
+      "template": "bullets",
+      "data": {
+        "title": "它可能碰得到什麼",
+        "items": [
+          "檔案與環境資料",
+          "程序與網路",
+          "對話與模型用量"
+        ]
+      },
+      "claims": [
+        "m07"
+      ],
+      "lines": [
+        {
+          "id": "mc055",
+          "text": "有的程式會讀檔，有的會啟動其他程式。"
+        },
+        {
+          "id": "mc056",
+          "text": "也可能連網，或另外發出模型請求。",
+          "reveal": 1
+        },
+        {
+          "id": "mc057",
+          "text": "小小一行介面，不表示背後只做一件事。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-sandbox",
+      "template": "compare",
+      "data": {
+        "title": "兩種「沙盒」別混在一起",
+        "left": {
+          "heading": "模組執行環境",
+          "points": [
+            "沒有直接的 DOM／Node",
+            "對外操作經過 Mods API"
+          ]
+        },
+        "right": {
+          "heading": "Bash 指令沙盒",
+          "points": [
+            "隔離 Claude 執行的 Bash",
+            "不涵蓋 Mod 自行啟動的程序"
+          ]
+        }
+      },
+      "claims": [
+        "m08"
+      ],
+      "lines": [
+        {
+          "id": "mc058",
+          "text": "模組本身的執行環境，會限制直接使用的能力。"
+        },
+        {
+          "id": "mc059",
+          "text": "但這跟執行系統指令的隔離，是兩回事。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-sandbox-consequence",
+      "template": "big",
+      "data": {
+        "text": "Mod 自行啟動的程序",
+        "sub": "不在 Claude Code 的 Bash 沙盒內"
+      },
+      "claims": [
+        "m08"
+      ],
+      "lines": [
+        {
+          "id": "mc060",
+          "text": "模組自己啟動的程式，在 Claude Code 的指令執行沙盒之外。"
+        },
+        {
+          "id": "mc061",
+          "text": "所以，開了指令沙盒也不能省略來源檢查。"
+        }
+      ]
+    },
+    {
+      "id": "r2-review-checks",
+      "template": "bullets",
+      "data": {
+        "title": "對這個計數器，先核對三件事",
+        "items": [
+          "作者與程式從哪裡來",
+          "掛了哪些事件",
+          "呼叫了哪些 API"
+        ]
+      },
+      "claims": [
+        "m09"
+      ],
+      "lines": [
+        {
+          "id": "mc062",
+          "text": "先找到作者提供的原始碼。"
+        },
+        {
+          "id": "mc063",
+          "text": "再看它掛了哪些事件。",
+          "reveal": 1
+        },
+        {
+          "id": "mc064",
+          "text": "最後看它透過介面要求了哪些能力。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-validate",
+      "template": "code",
+      "data": {
+        "code": "claude plugin validate ./first-mod",
+        "caption": "靜態檢查｜讀檔分析，不執行這個 Mod"
+      },
+      "claims": [
+        "m09"
+      ],
+      "lines": [
+        {
+          "id": "mc065",
+          "text": "畫面這條檢查指令，可以列出掛鉤和呼叫。"
+        },
+        {
+          "id": "mc066",
+          "text": "它讀程式做分析，還沒有執行你的擴充程式。"
+        }
+      ]
+    },
+    {
+      "id": "r2-validation-limit",
+      "template": "big",
+      "data": {
+        "text": "檢查通過，**不等於安全認證**",
+        "sub": "也不等於已經在畫面中正常運作"
+      },
+      "claims": [
+        "m09"
+      ],
+      "lines": [
+        {
+          "id": "mc067",
+          "text": "如果看到讀檔、連網等能力，就追進去看原因。"
+        },
+        {
+          "id": "mc068",
+          "text": "程式能通過檢查，跟你能信任作者是兩回事。"
+        }
+      ]
+    },
+    {
+      "id": "r2-question-files",
+      "template": "big",
+      "data": {
+        "text": "只加計數，要準備什麼？",
+        "sub": "保留官方入門範例，避免不必要能力"
+      },
+      "claims": [
+        "m03"
+      ],
+      "lines": [
+        {
+          "id": "mc069",
+          "text": "這個入門例子不需要讀你的專案內容。"
+        },
+        {
+          "id": "mc070",
+          "text": "那它實際由哪幾個檔案組成？"
+        }
+      ]
+    },
+    {
+      "id": "r2-official-page",
+      "template": "screencast",
+      "data": {
+        "caption": "官方文件｜Write a mod yourself｜查核 2026-10-09",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://code.claude.com/docs/en/plugins/mods/create#write-a-mod-yourself"
+          },
+          {
+            "action": "wait",
+            "selector": "#write-a-mod-yourself"
+          },
+          {
+            "action": "capture",
+            "focus": "#write-a-mod-yourself",
+            "zoom": 1.35
+          }
+        ]
+      },
+      "claims": [
+        "m03"
+      ],
+      "lines": [
+        {
+          "id": "mc071",
+          "text": "打開官方的建立教學，找到手寫範例這一段。"
+        },
+        {
+          "id": "mc072",
+          "text": "同一頁就有完整程式，不必從零猜格式。"
+        }
+      ],
+      "chapter": "三個檔案，組成一個計數器"
+    },
+    {
+      "id": "r2-version-command",
+      "template": "code",
+      "data": {
+        "code": "claude --version\n\n官方 terminal 最低：2.1.287",
+        "caption": "版本檢查指令｜官方門檻查核 2026-10-09"
+      },
+      "claims": [
+        "m10"
+      ],
+      "lines": [
+        {
+          "id": "mc073",
+          "text": "先用版本指令，檢查目前的終端機版本。"
+        },
+        {
+          "id": "mc074",
+          "text": "這份教學要求二點一點二八七以上。"
+        }
+      ]
+    },
+    {
+      "id": "r2-our-version",
+      "template": "big",
+      "data": {
+        "text": "低於 2.1.287？**先更新**",
+        "sub": "版本檢查示例｜更新後再核對，不是執行成功記錄"
+      },
+      "claims": [
+        "m10"
+      ],
+      "lines": [
+        {
+          "id": "mc075",
+          "text": "如果你的版本低於門檻，先停下來更新。"
+        },
+        {
+          "id": "mc076",
+          "text": "更新後再查一次，確認版本符合要求。"
+        }
+      ]
+    },
+    {
+      "id": "r2-clean-folder",
+      "template": "big",
+      "data": {
+        "text": "用乾淨的**示範資料夾**",
+        "sub": "只放自製範例與示範文字"
+      },
+      "claims": [
+        "e01"
+      ],
+      "lines": [
+        {
+          "id": "mc077",
+          "text": "你動手時，可以先準備一個示範資料夾。"
+        },
+        {
+          "id": "mc078",
+          "text": "用自己寫的短文字，比拿工作資料測試清楚。"
+        }
+      ]
+    },
+    {
+      "id": "r2-file-tree",
+      "template": "code",
+      "data": {
+        "code": "first-mod/\n  .claude-plugin/\n    plugin.json\n  hooks/\n    hooks.json\n    register.js",
+        "caption": "檔案結構｜三個角色，各有一份檔案"
+      },
+      "claims": [
+        "m03"
+      ],
+      "lines": [
+        {
+          "id": "mc079",
+          "text": "範例有三份檔案，每一份各做一件事。"
+        },
+        {
+          "id": "mc080",
+          "text": "先看外掛說明，再看入口，最後才看程式。"
+        }
+      ]
+    },
+    {
+      "id": "r2-manifest",
+      "template": "code",
+      "data": {
+        "code": "{\n  \"name\": \"first-mod\",\n  \"version\": \"0.1.0\",\n  \"description\": \"Count tool calls\"\n}",
+        "caption": "plugin.json｜外掛的名字與版本"
+      },
+      "claims": [
+        "m03"
+      ],
+      "lines": [
+        {
+          "id": "mc081",
+          "text": "第一份，是外掛的基本資料。"
+        },
+        {
+          "id": "mc082",
+          "text": "名字用來辨認它，版本用來記錄哪一版。"
+        }
+      ]
+    },
+    {
+      "id": "r2-module-pointer",
+      "template": "code",
+      "data": {
+        "code": "{\n  \"modules\": [\"./register.js\"]\n}",
+        "caption": "hooks.json｜找到真正要執行的模組"
+      },
+      "claims": [
+        "m03"
+      ],
+      "lines": [
+        {
+          "id": "mc083",
+          "text": "第二份，告訴 Claude Code 程式放在哪裡。"
+        },
+        {
+          "id": "mc084",
+          "text": "這個路徑，是相對於它所在的掛鉤資料夾。"
+        }
+      ]
+    },
+    {
+      "id": "r2-four-hooks",
+      "template": "bullets",
+      "data": {
+        "title": "register.js 裡的四個動作",
+        "items": [
+          "啟動時：加入查詢指令",
+          "工具呼叫時：加一",
+          "查詢時：回覆數字",
+          "畫介面時：顯示數字"
+        ]
+      },
+      "claims": [
+        "m03",
+        "m05"
+      ],
+      "lines": [
+        {
+          "id": "mc085",
+          "text": "第三份才是真正的程式。"
+        },
+        {
+          "id": "mc086",
+          "text": "它把四個時間點，接到四個小動作。",
+          "reveal": 1
+        },
+        {
+          "id": "mc087",
+          "text": "四個動作合起來，才是剛才那個計數器。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-question-load",
+      "template": "big",
+      "data": {
+        "text": "檔案齊了，怎麼核對它有載入？",
+        "sub": "先檢查，再做一次 session 載入"
+      },
+      "claims": [
+        "m03"
+      ],
+      "lines": [
+        {
+          "id": "mc089",
+          "text": "要怎麼確認，這次對話真的載入它了？"
+        }
+      ]
+    },
+    {
+      "id": "r2-local-check",
+      "template": "code",
+      "data": {
+        "code": "claude plugin validate ./first-mod",
+        "caption": "操作步驟 1｜在範例上層執行靜態檢查"
+      },
+      "claims": [
+        "m09"
+      ],
+      "lines": [
+        {
+          "id": "mc090",
+          "text": "在範例資料夾的上一層，先跑剛才的檢查。"
+        },
+        {
+          "id": "mc091",
+          "text": "路徑要指向整個外掛資料夾。"
+        }
+      ],
+      "chapter": "載入與核對，每一步看什麼"
+    },
+    {
+      "id": "r2-check-output",
+      "template": "bullets",
+      "data": {
+        "title": "檢查結果，應該對得上原始碼",
+        "items": [
+          "hooks：四個事件",
+          "calls：註冊指令、重畫介面",
+          "出錯時：先修正，不載入"
+        ]
+      },
+      "claims": [
+        "m09"
+      ],
+      "lines": [
+        {
+          "id": "mc092",
+          "text": "核對事件清單，有沒有程式裡那四個掛鉤。"
+        },
+        {
+          "id": "mc093",
+          "text": "核對能力清單，有沒有不明的額外呼叫。",
+          "reveal": 1
+        },
+        {
+          "id": "mc094",
+          "text": "如果有錯誤，先停下來把錯誤修好。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-load-session",
+      "template": "code",
+      "data": {
+        "code": "claude --plugin-dir ./first-mod",
+        "caption": "操作步驟 2｜官方單次 session 載入指令"
+      },
+      "claims": [
+        "m12"
+      ],
+      "lines": [
+        {
+          "id": "mc095",
+          "text": "確認內容後，用畫面這條指令開始對話。"
+        },
+        {
+          "id": "mc096",
+          "text": "它把資料夾載入這次對話，沒有做永久安裝。"
+        }
+      ]
+    },
+    {
+      "id": "r2-loaded-check",
+      "template": "code",
+      "data": {
+        "code": "/plugin",
+        "caption": "操作步驟 3｜在 Claude Code 裡檢查外掛"
+      },
+      "claims": [
+        "m12"
+      ],
+      "lines": [
+        {
+          "id": "mc097",
+          "text": "進入對話後，打開外掛清單。"
+        },
+        {
+          "id": "mc098",
+          "text": "在已安裝分頁，核對名稱和啟用狀態。"
+        }
+      ]
+    },
+    {
+      "id": "r2-zero-check",
+      "template": "code",
+      "data": {
+        "code": "/tally\n\n預期：剛載入、尚無工具事件時為 0",
+        "caption": "操作步驟 4｜先查次數，再叫模型做事"
+      },
+      "claims": [
+        "m06"
+      ],
+      "lines": [
+        {
+          "id": "mc099",
+          "text": "還沒叫模型做事，先用查詢指令看次數。"
+        },
+        {
+          "id": "mc100",
+          "text": "剛載入且沒有工具事件時，應該是零。"
+        }
+      ]
+    },
+    {
+      "id": "r2-command-missing",
+      "template": "big",
+      "data": {
+        "text": "指令在哪？**先查載入**",
+        "sub": "先確認版本、路徑與 Mod 是否載入"
+      },
+      "claims": [
+        "m13"
+      ],
+      "lines": [
+        {
+          "id": "mc101",
+          "text": "如果指令不存在，就先回頭檢查載入。"
+        },
+        {
+          "id": "mc102",
+          "text": "不要把沒出現功能，誤認成模型不夠聰明。"
+        }
+      ]
+    },
+    {
+      "id": "r2-real-task",
+      "template": "chat",
+      "data": {
+        "title": "操作步驟 5：執行小工作",
+        "messages": [
+          {
+            "side": "right",
+            "text": "列出這個資料夾，再讀示範說明檔。"
+          },
+          {
+            "side": "left",
+            "text": "觀察工具呼叫紀錄與旁邊的計數。"
+          }
+        ]
+      },
+      "claims": [
+        "m14"
+      ],
+      "lines": [
+        {
+          "id": "mc103",
+          "text": "功能已載入，才請模型讀示範說明檔。"
+        },
+        {
+          "id": "mc104",
+          "text": "這一步會使用你的模型額度或用量。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-expected-visible",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/claude-code-mods-no-sandbox-before-install/assets/counter-before-after.svg",
+        "caption": "核對方法示意｜累計自模組載入起；本例從 0 開始"
+      },
+      "claims": [
+        "m02",
+        "m06"
+      ],
+      "lines": [
+        {
+          "id": "mc105",
+          "text": "工作進行時，看旁邊的計數有沒有增加。"
+        },
+        {
+          "id": "mc106",
+          "text": "完成後再查一次，用前後差值核對這次呼叫。"
+        }
+      ]
+    },
+    {
+      "id": "r2-not-always-two",
+      "template": "big",
+      "data": {
+        "text": "不必剛好等於**二**",
+        "sub": "前後計數差值，應與本次收到的工具事件相符"
+      },
+      "claims": [
+        "m02",
+        "e02"
+      ],
+      "lines": [
+        {
+          "id": "mc107",
+          "text": "同一個要求，模型可能用不同的方式處理。"
+        },
+        {
+          "id": "mc108",
+          "text": "要對得起來的，是新增次數和這次的事件。"
+        }
+      ]
+    },
+    {
+      "id": "r2-question-edit",
+      "template": "big",
+      "data": {
+        "text": "只改顯示文字，要重開嗎？",
+        "sub": "修改一處，看它如何重新載入"
+      },
+      "claims": [
+        "m15"
+      ],
+      "lines": [
+        {
+          "id": "mc110",
+          "text": "那把旁邊的文字改掉，需要重開一切嗎？"
+        }
+      ]
+    },
+    {
+      "id": "r2-edit-label",
+      "template": "code",
+      "data": {
+        "code": "原本：tool calls\n改成：工具呼叫",
+        "caption": "改的是介面文字｜原英文 → 自訂中文"
+      },
+      "claims": [
+        "m15"
+      ],
+      "lines": [
+        {
+          "id": "mc111",
+          "text": "把顯示文字改成你看得懂的說法。"
+        },
+        {
+          "id": "mc112",
+          "text": "只改標籤，不動計數和工具執行流程。"
+        }
+      ],
+      "chapter": "改字、歸零與停止使用"
+    },
+    {
+      "id": "r2-reload",
+      "template": "big",
+      "data": {
+        "text": "保存後，**重新載入**",
+        "sub": "--plugin-dir 會監看檔案變更"
+      },
+      "claims": [
+        "m15"
+      ],
+      "lines": [
+        {
+          "id": "mc113",
+          "text": "用資料夾載入時，程式會監看檔案變更。"
+        },
+        {
+          "id": "mc114",
+          "text": "保存之後，新的介面文字就能在後續顯示。"
+        }
+      ]
+    },
+    {
+      "id": "r2-reset",
+      "template": "stats",
+      "data": {
+        "title": "入門範例的計數會重設",
+        "stats": [
+          {
+            "value": "3",
+            "label": "修改前的示意計數"
+          },
+          {
+            "value": "0",
+            "label": "模組重新載入後"
+          }
+        ],
+        "source": "示意數字｜模組變數的重載行為"
+      },
+      "claims": [
+        "m15"
+      ],
+      "lines": [
+        {
+          "id": "mc115",
+          "text": "不過這個入門例子，把數字存在模組變數。"
+        },
+        {
+          "id": "mc116",
+          "text": "重新載入時，數字也會從零開始。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-state-choice",
+      "template": "big",
+      "data": {
+        "text": "需要保留？再加入狀態管理",
+        "sub": "先學會最小範例，再擴充"
+      },
+      "claims": [
+        "m15"
+      ],
+      "lines": [
+        {
+          "id": "mc117",
+          "text": "如果你需要保存紀錄，就要另外管理狀態。"
+        },
+        {
+          "id": "mc118",
+          "text": "不要把入門例子，直接當成永久的統計報表。"
+        }
+      ]
+    },
+    {
+      "id": "r2-stop-session",
+      "template": "bullets",
+      "data": {
+        "title": "只載入這次對話，怎麼停用",
+        "items": [
+          "結束這次對話",
+          "下次不帶 plugin-dir",
+          "常駐安裝：在外掛管理中停用"
+        ]
+      },
+      "claims": [
+        "m12",
+        "m16"
+      ],
+      "lines": [
+        {
+          "id": "mc119",
+          "text": "這次是單次載入，結束對話就結束這次使用。"
+        },
+        {
+          "id": "mc120",
+          "text": "下次不帶那個載入參數，就不靠這個方式載入。",
+          "reveal": 1
+        },
+        {
+          "id": "mc121",
+          "text": "如果另做過常駐安裝，則要去外掛管理停用。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-not-working",
+      "template": "bullets",
+      "data": {
+        "title": "沒有反應，照這個順序查",
+        "items": [
+          "版本是否達到門檻",
+          "路徑與檔案是否正確",
+          "外掛與掛鉤是否被停用"
+        ]
+      },
+      "claims": [
+        "m13"
+      ],
+      "lines": [
+        {
+          "id": "mc122",
+          "text": "排查時，先看版本，再看資料夾路徑。"
+        },
+        {
+          "id": "mc123",
+          "text": "接著看檔案名稱，有沒有打錯或放錯層。",
+          "reveal": 1
+        },
+        {
+          "id": "mc124",
+          "text": "最後看外掛或掛鉤，是不是被設定停用了。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-surface",
+      "template": "compare",
+      "data": {
+        "title": "指令能跑，畫面不一定會畫",
+        "left": {
+          "heading": "終端機／桌面版",
+          "points": [
+            "可顯示 Mod 介面"
+          ]
+        },
+        "right": {
+          "heading": "非互動列印模式",
+          "points": [
+            "掛鉤可執行",
+            "不顯示互動介面"
+          ]
+        }
+      },
+      "claims": [
+        "m17"
+      ],
+      "lines": [
+        {
+          "id": "mc125",
+          "text": "你使用的入口，也會影響介面能不能出現。"
+        },
+        {
+          "id": "mc126",
+          "text": "非互動列印模式，沒有這種互動畫面。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-no-cost-test",
+      "template": "big",
+      "data": {
+        "text": "不想先跑模型？**先做離線測試**",
+        "sub": "測試送出假的事件，檢查計數邏輯"
+      },
+      "claims": [
+        "m18"
+      ],
+      "lines": [
+        {
+          "id": "mc127",
+          "text": "如果只是核對加一的邏輯，可以先做離線測試。"
+        },
+        {
+          "id": "mc128",
+          "text": "用兩個假的工具事件，檢查回覆是不是兩次。"
+        }
+      ]
+    },
+    {
+      "id": "r2-test-command",
+      "template": "code",
+      "data": {
+        "code": "claude plugin test ./first-mod",
+        "caption": "進階核對｜新版官方測試工具，非本機已跑結果"
+      },
+      "claims": [
+        "m18"
+      ],
+      "lines": [
+        {
+          "id": "mc129",
+          "text": "這種測試不需要登入，也不需要模型回合。"
+        },
+        {
+          "id": "mc130",
+          "text": "但測試過了，還是要實際看一次介面。"
+        }
+      ]
+    },
+    {
+      "id": "r2-question-useful",
+      "template": "big",
+      "data": {
+        "text": "知道怎麼改，還要知道何時值得改",
+        "sub": "回到你每天真正想看見的資訊"
+      },
+      "claims": [
+        "e03"
+      ],
+      "lines": [
+        {
+          "id": "mc131",
+          "text": "計數器能幫你觀察流程，卻不會替你完成工作。"
+        },
+        {
+          "id": "mc132",
+          "text": "那你自己的工作，最缺哪一個看得見的資訊？"
+        }
+      ]
+    },
+    {
+      "id": "r2-choose-small",
+      "chapter": "把一個小需求，做成可核對的功能",
+      "template": "bullets",
+      "data": {
+        "title": "從一個小需求開始",
+        "items": [
+          "先寫出想看見的資訊",
+          "只掛必要事件",
+          "用同一個小工作核對"
+        ]
+      },
+      "claims": [
+        "e01",
+        "e03"
+      ],
+      "lines": [
+        {
+          "id": "mc133",
+          "text": "我的建議，是先寫清楚你想多看到什麼。"
+        },
+        {
+          "id": "mc134",
+          "text": "只做一件小事，才容易看出程式有沒有照做。",
+          "reveal": 1
+        },
+        {
+          "id": "mc135",
+          "text": "測試時，也沿用同一份示範資料。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r2-recap-flow",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/claude-code-mods-no-sandbox-before-install/assets/mod-flow.svg",
+        "caption": "同一個流程：模型提出需求，Mod 記錄，工具照常處理"
+      },
+      "claims": [
+        "m04",
+        "m05"
+      ],
+      "lines": [
+        {
+          "id": "mc136",
+          "text": "回到這張圖，模型提出工作需要的工具。"
+        },
+        {
+          "id": "mc137",
+          "text": "計數器記錄事件，介面把數字顯示給你。"
+        }
+      ]
+    },
+    {
+      "id": "r2-recap-risk",
+      "template": "big",
+      "data": {
+        "text": "加功能，也是在**執行程式**",
+        "sub": "先讀來源與能力，再決定是否載入"
+      },
+      "claims": [
+        "m07"
+      ],
+      "lines": [
+        {
+          "id": "mc138",
+          "text": "能改介面，是它方便的地方。"
+        },
+        {
+          "id": "mc139",
+          "text": "會用你的權限執行，是安裝前要記住的事。"
+        }
+      ]
+    },
+    {
+      "id": "r2-reference-cta",
+      "template": "cta",
+      "data": {
+        "title": "完整範例與核對清單",
+        "kicker": "官方教學在說明欄",
+        "sub": "先做工具計數器，再擴充自己的需求"
+      },
+      "claims": [
+        "m03"
+      ],
+      "lines": [
+        {
+          "id": "mc140",
+          "text": "官方完整範例，我放在說明欄。"
+        },
+        {
+          "id": "mc141",
+          "text": "照著核對版本、程式和實際結果，就能少走彎路。"
+        }
+      ]
+    },
+    {
+      "id": "r2-close",
+      "template": "outro",
+      "data": {
+        "title": "讓每一次工具呼叫，**看得見**",
+        "cta": "訂閱 Mokaair，學會 AI 工具的實際用法"
+      },
+      "claims": [
+        "m01"
+      ],
+      "lines": [
+        {
+          "id": "mc142",
+          "text": "先把這個小範例跑通。"
+        },
+        {
+          "id": "mc143",
+          "text": "你還想多看見什麼資訊？"
+        },
+        {
+          "id": "mc144",
+          "text": "訂閱頻道，一起學會 AI 工具。"
+        }
+      ]
+    }
+  ]
+}

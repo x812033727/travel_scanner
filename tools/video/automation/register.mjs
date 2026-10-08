@@ -25,6 +25,46 @@ export const TWIST_MARKER = "你以為";
 /** Seconds the hook has to land in an illustrated video (core/cadence.mjs HOOK_SECONDS says the same). */
 export const HOOK_SECONDS = 20;
 
+// A writing-only route inside the existing slides format. This does not alter the storytelling
+// register, voice, schema, pause calculation or QA, and is not sent to drama or translation stages.
+export const TEACHING_RULES = `
+Teaching route (plain slides; writing only):
+- For a tool tutorial or a concept taught through a worked example, the planner writes
+  「製作路線：教學卡片」 inside the brief's existing 示範或實算 section. The writer follows the
+  chosen outline. An already approved illustrated outline stays illustrated unless the owner
+  requested a revision; do not silently restyle or change its scenes in a listener pass.
+- On this route use ONE recurring worked example: show the useful outcome first, explain its
+  mechanism, cover trust and risk BEFORE installation or any action that grants access, then
+  show the steps and compare the expected result with the observed result. A concept without
+  installation uses its relevant prerequisites before the worked steps. Introduce a technical
+  term with its plain meaning when the example needs it; keep its exact official meaning.
+- Reuse the same objects, names and diagram layout across chapters, revealing one new relation
+  or state at a time. No forced chapter location, new metaphor, 「你以為…其實」 turn or closing
+  question: a short conclusion or the next practical question is enough. If a comparison helps,
+  keep one mapping throughout and say where it stops matching the real mechanism.
+- This is "format": "slides" with no "shot" scenes, not a new schema field or a QA exemption.
+  Use existing cards (steps, compare, chat, code, quote, stats) and public official-page
+  screencasts. The automated worker keeps no image assets: build a logical diagram as progressive
+  card states or show the actual diagram on a public source page. No diagram/screenshot file
+  templates or invented asset paths; omit an optional capture focus selector when none is known.
+  Do not add a shot to satisfy an illustration quota. Use a real
+  screencast capture for the thumbnail when available, otherwise a text-only thumb.
+- The illustration quota, chapter-specific places and storytelling register below apply only
+  to illustrated storytelling, not this teaching route. Its existing plain-slides QA still
+  limits a state to 15 seconds; aim for meaningful reveals every 5 to 8 seconds without hiding
+  the step before a beginner can read it. The eight-minute minimum, CC, facts, pronunciation,
+  audio review and final QA remain unchanged; no repetition or silence to fill the runtime.
+- A documentation screenshot proves what the page says, not that an installation or test ran.
+  Record the input, action, expected result, observed result and evidence for each demonstration
+  in 示範或實算 and claims.md. If no run evidence is supplied, label the result as expected and
+  the walkthrough as untested; never invent a successful run or a first-person test. Terminal
+  output must be copied from a real run with its date and tool version. Keep official-page
+  captures public: no login, OBS, secrets or private account screens.
+- A listener preserves the chosen route and all scene/line ids. Report missing steps, unclear
+  mappings or absent run evidence for a writer revision; never repair them by inventing facts,
+  adding scenes or claiming a result. Leave "pause_after_ms" out; the tool still sets the beats.
+`.trim();
+
 export const REGISTER_RULES = `
 The narration is TOLD, not explained (the storytelling register, docs/videos/ILLUSTRATED.md):
 - The first sentence is a counter-intuitive claim or the viewer's own question; the hook has landed

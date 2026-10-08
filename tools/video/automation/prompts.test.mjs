@@ -6,7 +6,7 @@ import { cuePieces } from "../core/captions.mjs";
 import { enFixture, fixture, fixtureLexicon } from "../core/fixtures/load.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, SLIDES_CAMERA_WORDS, SOURCE_INSTRUCTIONS, translationContext, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
-import { REGISTER_RULES } from "./register.mjs";
+import { REGISTER_RULES, TEACHING_RULES } from "./register.mjs";
 import { SERIES_SEPARATOR, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
 import { ACTIONS, MAX_STEPS, MAX_WAIT_MS, MAX_ZOOM } from "../screencast/steps.mjs";
 import { documentPayload } from "./series.mjs";
@@ -71,6 +71,48 @@ test("the planner outlines story beats and the listener keeps the register; the 
   assert.match(listener, /the tool sets the pause beats/);
   assert.ok(listener.endsWith(REGISTER_RULES));
   for (const stage of ["verifier", "translator", "caption_reviewer"]) assert.equal(INSTRUCTIONS[stage].includes(REGISTER_RULES), false, `${stage} reads no register rules`);
+});
+
+test("teaching cards keep one evidenced example without imposing the illustrated-story route", () => {
+  for (const stage of ["planner", "writer", "listener"]) {
+    const prompt = instructionsFor(stage, "slides");
+    assert.ok(prompt.includes(TEACHING_RULES), `${stage} gets the complete teaching contract`);
+    assert.ok(prompt.includes(REGISTER_RULES), `${stage} retains the illustrated-story contract`);
+  }
+  assert.match(TEACHING_RULES, /「製作路線：教學卡片」 inside the brief's existing 示範或實算 section/);
+  assert.match(TEACHING_RULES, /ONE recurring worked example: show the useful outcome first, explain its\s+mechanism, cover trust and risk BEFORE installation/);
+  assert.match(TEACHING_RULES, /No forced chapter location, new metaphor, 「你以為…其實」 turn or closing\s+question/);
+  assert.match(TEACHING_RULES, /"format": "slides" with no "shot" scenes, not a new schema field or a QA exemption/);
+  assert.match(TEACHING_RULES, /Do not add a shot to satisfy an illustration quota/);
+  assert.match(TEACHING_RULES, /existing plain-slides QA still\s+limits a state to 15 seconds/);
+  assert.match(TEACHING_RULES, /A documentation screenshot proves what the page says, not that an installation or test ran/);
+  assert.match(TEACHING_RULES, /label the result as expected and\s+the walkthrough as untested/);
+  assert.match(TEACHING_RULES, /Terminal\s+output must be copied from a real run with its date and tool version/);
+  assert.match(TEACHING_RULES, /no login, OBS, secrets or private account screens/);
+  assert.match(TEACHING_RULES, /A listener preserves the chosen route and all scene\/line ids/);
+  const writer = instructionsFor("writer", "slides");
+  assert.match(writer, /no assets; "look" left out/);
+  assert.match(TEACHING_RULES, /automated worker keeps no image assets: build a logical diagram as progressive\s+card states/);
+  assert.match(writer, /following cadence and picture-variety paragraphs apply to ILLUSTRATED STORYTELLING only/);
+  assert.match(writer, /For teaching cards without a real capture, omit both "shot" and "capture" in the thumb/);
+  assert.match(instructionsFor("verifier", "slides"), /an expected result must never become an observed success without run evidence/);
+});
+
+test("teaching-card instructions stay out of drama, story, explainer, restyle and translation routes", () => {
+  for (const stage of ["planner", "writer", "verifier", "listener"]) {
+    for (const variant of [null, "story", "explainer"]) {
+      const prompt = instructionsFor(stage, "drama", "", variant);
+      assert.equal(prompt.includes(TEACHING_RULES), false, `${stage}:${variant} remains its own route`);
+      assert.doesNotMatch(prompt, /製作路線：教學卡片/, `${stage}:${variant} receives no teaching exception`);
+    }
+  }
+  for (const format of ["slides", "drama"]) {
+    for (const [stage, variant] of [["listener", "register"], ["listener", "rewrite"], ["translator", null], ["caption_reviewer", null], ["translator", "shorten"], ["translator", "reword"]]) {
+      const prompt = instructionsFor(stage, format, "", variant);
+      assert.equal(prompt.includes(TEACHING_RULES), false, `${format} ${stage}:${variant} keeps its contract`);
+      assert.doesNotMatch(prompt, /製作路線：教學卡片/);
+    }
+  }
 });
 
 test("the listener's register pass is a variant for any format, beside the rewrite pass", () => {
