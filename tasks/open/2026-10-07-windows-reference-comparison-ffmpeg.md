@@ -25,13 +25,13 @@ packets. It fails again in an isolated targeted run, outside localization change
 
 ## Definition of done
 
-- [ ] Diagnose the actual filter/ffmpeg-version failure and fix a narrow cause.
+- [x] Diagnose the actual filter/ffmpeg-version failure and fix a narrow cause.
 - [ ] Preserve meaningful real-media measurement coverage on Windows and Linux.
 
 ## Steps
 
 - [x] Reproduce the isolated comparison test and preserve exact stderr.
-- [ ] Check ffmpeg version/filter graph and existing platform assumptions.
+- [x] Check ffmpeg version/filter graph and existing platform assumptions.
 - [ ] Fix and run reference-analysis tests plus applicable skill twin checks.
 
 ## How to verify
