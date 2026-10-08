@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "圖片延遲載入怎麼設：讓重要內容先顯示",
@@ -73,10 +76,8 @@
               "text": "如果網站已能產生正確的原生"
             },
             {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
+              "type": "text",
+              "text": "標記"
             },
             {
               "type": "text",
@@ -169,6 +170,7 @@
           "width": 1600,
           "height": 900,
           "caption": "延遲載入的目的，是讓圖片在讀者需要時已經準備好。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -269,6 +271,1050 @@
         },
         {
           "title": "NitroPack 與其他延遲載入工具",
+          "url": "https://support.nitropack.io/en/articles/8390263-using-nitropack-and-another-page-caching-plugin-simultaneously",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "How to set up image lazy loading: show important content first",
+      "description": "Image lazy loading reduces downloads not needed at first, but delaying the hero image can make important content appear later. Using users in Taiwan reading a long craft tutorial as an example, this article explains the native loading attribute, load priority, reserved image space, and WordPress plugin responsibilities. Steps, a scenario comparison table, and original diagrams establish checks from page top to bottom for both reading and search-engine readability.",
+      "hero": {
+        "src": "/guides/lazy-loading-images/hero-en.jpg",
+        "alt": "Original illustration of a screen, folder, and checklist, showing how to distinguish important images from later assets and verify load timing.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A tutorial for making a wooden storage box has twenty step-by-step images. When readers first open the page, they usually do not need to download images for the last few steps immediately. Lazy loading lets images temporarily out of view load later, leaving resources for the content at hand, provided the images still appear reliably when needed."
+        },
+        {
+          "type": "paragraph",
+          "text": "The point of this setting is to allocate loading times, not delay every image. First identify the initial viewport, body content, and hidden sections, then address image space and tool responsibilities. Finally, check the actual reading sequence to determine whether deferring downloads really helps."
+        },
+        {
+          "type": "heading",
+          "text": "First distinguish initially visible images from those needed later",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Hero images, product photos, or essential diagrams visible upon entering a page should usually load normally. Google specifically advises against lazy loading content that may be above the fold, especially large images that affect LCP. Readers need to see the finished project first to decide whether this storage box tutorial suits them."
+        },
+        {
+          "type": "paragraph",
+          "text": "Step-by-step images farther down, supplementary photos later in the article, and other images far from the viewport are the main candidates for lazy loading. Classify them according to the actual layout: the third image displayed side by side on desktop may sit much farther down on mobile. Conversely, a mobile-specific hero image may be hidden on desktop."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not decide solely by the order of images in HTML. First inspect the main layouts and commonly used screen widths, identify assets visible immediately upon entry, and then exclude them from lazy loading or set them to load normally. If promotional banners can change the layout, include that state in your checks to prevent settings from becoming unsuitable after a layout update."
+        },
+        {
+          "type": "heading",
+          "text": "The native loading attribute controls deferral, not priority",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A standard img can use loading=lazy to let the browser download the image as it approaches the viewport. loading=eager means normal loading, which is also the usual behavior when no value is specified. The browser decides how close is close enough. Do not treat a pixel distance from an old tutorial as a permanent threshold for every device."
+        },
+        {
+          "type": "paragraph",
+          "text": "eager does not mean an image will necessarily finish loading before other normally loaded images; fetchpriority is a separate hint about loading priority. Engineers can assess whether to use high for an important LCP image, but it does not remove the deferral conditions set by lazy. Enabling both options does not guarantee that the hero image will appear immediately."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "If your site already generates correct native "
+            },
+            {
+              "type": "text",
+              "text": "markup"
+            },
+            {
+              "type": "text",
+              "text": ", there is usually no need to add a separate lazy-loading library just for ordinary images. Special effects, older environments, or cases requiring finer control can be assessed separately, but document the added dependencies and maintenance approach to avoid stacking mechanisms that rewrite one another behind otherwise simple images."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Reserve space first to keep images from shifting the body text",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before an image downloads, the browser still needs to know how much space to reserve. The width and height of an img help determine its aspect ratio so the layout can allocate space first; responsive styles then scale the displayed image to fit its container. These dimensions should match the asset's aspect ratio. Do not enter two arbitrary numbers just to eliminate a warning."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a tall image suddenly appears while readers are viewing the dimensions in the storage box tutorial, it may push the body text away or even cause someone to press a different button. A small image file does not prevent this shift; the problem is that space was not reserved. During checks, observe text positions before and after images appear, rather than looking only at a screenshot taken after everything has loaded."
+        },
+        {
+          "type": "paragraph",
+          "text": "Missing dimensions can also cause the browser to misjudge image positions, resulting in unexpected download behavior. Galleries and long lists especially need their actual layout inspected. If images are cropped to a fixed aspect ratio, the layout can reserve an appropriate container, but still check that mobile images are not stretched out of shape or cropped in ways that remove essential details."
+        },
+        {
+          "type": "heading",
+          "text": "Decide who handles loading in WordPress and the editor",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Check whether the theme, image plugins, acceleration plugins, and CDN each provide lazy loading. Turning off an option in one plugin does not mean the public page no longer has lazy markup; other features may still add it during output. Inspect the actual img first, then trace it back to the tool responsible for the setting."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, on a site using NitroPack while retaining Smush for image compression, NitroPack's official compatibility documentation requires disabling Smush's lazy-loading feature. This division of responsibilities applies to a specific tool combination and does not mean all image compression should be disabled. When making adjustments, retain any compression and asset-management features still needed."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the editor implements the main visual as a CSS background, the loading attribute for img cannot be applied directly to it. Image backgrounds, carousels, and hidden sections need handling according to their actual implementation. General administrators can first list images that appear too late or never appear, then ask engineers to assess them. This avoids adding identically named options throughout the admin interface without any effect."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Choose a representative article and list images in the initial viewport, later body content, and hidden sections.",
+            "Check the loading markup actually output and confirm that only the intended tool handles it.",
+            "Load important images in the initial viewport normally, defer later images, and reserve space with the correct aspect ratio.",
+            "Clearly document the changes, then read from page top to bottom to check image appearance and layout stability."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Search-engine readability cannot depend on readers clicking first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Search does not click or scroll like a person to trigger content, so lazy loading must not depend solely on those user actions to add important information to the page. Official guidance recommends approaches such as viewport detection and checking that images intended for display actually load in the corresponding states."
+        },
+        {
+          "type": "paragraph",
+          "text": "When using URL Inspection in Search Console, examine the rendered HTML and check that each image's actual URL appears in the src of its img. If only a custom data field or placeholder image remains, with the actual file substituted only after a click, ask an engineer to investigate. This check provides evidence of readability, not a guarantee that the image will be indexed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Infinite scrolling also involves how additional content is discovered and cannot be treated solely as an image setting. If the site keeps loading another batch of articles, provide separate, stable pagination URLs and links that can be accessed directly. Deferred image downloads and whether the next batch of content has its own entry point are two issues that need separate verification."
+        },
+        {
+          "type": "heading",
+          "text": "Check results with slow and fast reading scenarios",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First examine the initial load in a controlled test environment: whether the important hero image appears promptly, whether lower images are actually deferred, and whether the hero image's LCP worsens. Then scroll slowly through the article to confirm that each step-by-step image is available when you reach it. Do not assume all images have finished loading just because the browser's loading spinner stops."
+        },
+        {
+          "type": "paragraph",
+          "text": "Next, jump quickly to a later part of the article, expand collapsed sections, or switch carousel slides. Watch for prolonged blank areas, loading errors, or sudden content shifts. Browsers may handle hidden images differently, so spot-check important layouts in the environments you actually support. When limiting network speed, record the settings so the test can be reproduced later."
+        },
+        {
+          "type": "paragraph",
+          "text": "Save the initial viewport, evidence of later images appearing, download records, and metrics before and after the changes. If there is no clear benefit, or images become readable later as a result, revisit the scope and timing. Good lazy loading should let readers finish reading naturally, rather than leave key images missing from a how-to guide just to reduce initial requests."
+        },
+        {
+          "type": "image",
+          "src": "/guides/lazy-loading-images/diagram-1-en.svg",
+          "alt": "Four sections check, in order, initially visible assets, deferral and dimensions of later images, a single loading handler, and full-article reading and search-engine readability.",
+          "width": 1600,
+          "height": 900,
+          "caption": "The purpose of lazy loading is to have images ready when readers need them.",
+          "description": "Four sections check, in order, initially visible assets, deferral and dimensions of later images, a single loading handler, and full-article reading and search-engine readability.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Image scenario",
+            "Usual approach",
+            "What to verify"
+          ],
+          "rows": [
+            [
+              "Hero or LCP image in the initial viewport",
+              "Load normally and assess priority",
+              "Main content appears promptly"
+            ],
+            [
+              "Step-by-step images later in the article",
+              "Defer downloads and reserve space first",
+              "Clear and available when readers reach them"
+            ],
+            [
+              "Carousel or collapsible section",
+              "Handle according to actual display behavior",
+              "Works after switching or expanding"
+            ],
+            [
+              "CSS background image",
+              "Handle separately through the background implementation",
+              "img attributes do not apply directly"
+            ],
+            [
+              "Infinite loading of the next content batch",
+              "Provide separate, stable pagination entry points",
+              "Content is directly accessible and discoverable"
+            ]
+          ],
+          "caption": "Decide according to where images appear and what they do, rather than applying a site-wide rule to defer them all."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Do not delay images readers need as soon as they arrive",
+          "text": "First identify assets in the initial viewport and LCP assets, then apply lazy loading to images farther down. All images still need suitable space, alternative text, and accessible files."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Establish a workflow for image files and alternative text",
+              "kind": "life",
+              "slug": "image-seo-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Verify WordPress acceleration settings one by one",
+              "kind": "life",
+              "slug": "wordpress-performance-plugins"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Identify LCP and layout-shift bottlenecks",
+              "kind": "life",
+              "slug": "core-web-vitals-diagnosis"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: Browser-native image lazy loading",
+          "url": "https://web.dev/articles/browser-level-image-lazy-loading",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: img loading and dimension attributes",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Search guide to lazy-loaded content",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/javascript/lazy-loading?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack and other lazy-loading tools",
+          "url": "https://support.nitropack.io/en/articles/8390263-using-nitropack-and-another-page-caching-plugin-simultaneously",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "画像の遅延読み込みの設定方法：重要な内容を先に表示する",
+      "description": "画像の遅延読み込みは、最初には不要なダウンロードを減らせます。ただし、ファーストビューのメイン画像まで遅らせると、重要な内容の表示がかえって遅くなることがあります。この記事では、台湾のユーザーが長い手作りチュートリアルを読む場面を例に、ネイティブの loading 属性、読み込みの優先順位、画像の表示領域の確保、WordPress プラグインの役割分担を説明します。操作手順、状況別の比較表、オリジナル図解を添え、ページの先頭から末尾まで確認する方法を示し、読みやすさと検索エンジンによる読み取りやすさを両立させます。",
+      "hero": {
+        "src": "/guides/lazy-loading-images/hero-ja.jpg",
+        "alt": "画面、フォルダー、チェック用文書を描いたオリジナル画像。重要な画像と後半の素材を区別し、読み込みのタイミングを検証することを表している。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "木製収納ボックスの作り方を紹介する記事に二十枚の手順画像があっても、ページを開いたばかりの読者には、最後の数段階の画像をすぐにダウンロードする必要は通常ありません。遅延読み込みを使えば、まだ見えない画像は後から読み込み、目の前の内容にリソースを回せます。ただし、必要になったときに画像が問題なく表示されることが前提です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この設定で大切なのはタイミングの配分であり、すべての画像を後回しにすることではありません。まずファーストビュー、本文、非表示のブロックを区別し、次に画像の表示領域とツールの役割分担を整え、最後に実際の閲覧順に沿って検証します。そうして初めて、ダウンロードを遅らせることが本当に役立つか判断できます。"
+        },
+        {
+          "type": "heading",
+          "text": "最初に見える画像と、後から必要になる画像を分ける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ページを開くとすぐに見えるメイン画像、商品写真、必要な図解は、通常どおり読み込むのが一般的です。Google は、ファーストビューに入る可能性のある内容、特に LCP に影響する大きな画像を遅延読み込みにしないよう、特に注意を促しています。読者はまず完成品を見て、この収納ボックスの作り方が自分に合うか判断する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下の方にある手順画像、記事後半の補足写真、その他の表示領域から遠い画像が、遅延読み込みの主な候補です。分類するときは実際のレイアウトを確認します。パソコンで横に並ぶ三枚目の画像が、スマートフォンではかなり下に配置されることもあります。逆に、スマートフォン専用のメイン画像がパソコンでは非表示になることもあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "HTML 内での画像の順序だけで決めないでください。まず主なレイアウトとよく使われる画面幅を確認し、ページを開くとすぐに見える素材を特定してから、遅延読み込みの対象から除外するか、通常の読み込みを設定します。キャンペーンバナーによってレイアウトが変わる場合は、その状態も確認対象に加え、レイアウト更新後に設定が実態とずれるのを防ぎます。"
+        },
+        {
+          "type": "heading",
+          "text": "ネイティブの loading 属性は遅延を制御し、優先度とは異なる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "標準の img には loading=lazy を指定でき、画像が表示領域に近づいてからブラウザーにダウンロードさせられます。loading=eager は通常どおり読み込むことを意味し、指定がない場合も一般的にはこの動作です。どの距離まで近づいたら読み込むかはブラウザーが判断するため、古い解説に書かれたピクセル数を、すべての端末に永久に共通する基準として扱ってはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "eager は、他の通常読み込みの画像より必ず早く読み込みが完了するという意味ではありません。一方、fetchpriority は読み込みの優先順位を伝える別のヒントです。重要な LCP 画像では、エンジニアが high の使用を検討できますが、それによって lazy の遅延条件が解除されるわけではありません。両方のオプションを有効にしても、メイン画像がすぐに表示される保証はありません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "サイトですでに正しいネイティブの"
+            },
+            {
+              "type": "text",
+              "text": "マークアップを生成できている場合"
+            },
+            {
+              "type": "text",
+              "text": "、通常、一般的な画像のためだけに遅延読み込みライブラリを追加する必要はありません。特殊な効果、古い環境、より細かな制御が必要な場合は別途検討できますが、追加する依存関係と保守方法を記録し、単純な画像の裏で複数の仕組みが互いに設定を書き換える状態を避けてください。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "先に領域を確保し、画像表示時に本文が押し出されるのを防ぐ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "画像がまだダウンロードされていなくても、ブラウザーはどれだけの表示領域を確保すべきか知る必要があります。img の width と height はアスペクト比の算出に役立ち、レイアウトに先に領域を確保できます。表示時にはレスポンシブスタイルでコンテナに合わせて拡大・縮小します。これらの寸法は素材の比率に合わせる必要があり、警告を消すために適当な二つの数値を入れてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "収納ボックスの作り方で、読者が寸法の説明を読んでいるときに縦に長い画像が突然挿入されると、本文が押し出され、別のボタンを押してしまうことさえあります。画像ファイルが小さくても、このようなずれは防げません。問題は表示領域が確保されていないことです。確認時は、すべて読み込み終わった後のスクリーンショットだけでなく、画像が表示される前後の文字の位置を観察してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "寸法がないと、ブラウザーが画像の位置を誤って判断し、期待どおりにダウンロードしないこともあります。ギャラリーや長いリストでは、特に実際の配置を確認する必要があります。画像を固定の比率に切り抜く場合は、レイアウト側で適切なコンテナ領域を確保できますが、スマートフォンで引き伸ばされて変形したり、必要な細部が切り取られたりしていないかも確認してください。"
+        },
+        {
+          "type": "heading",
+          "text": "WordPress とエディターでは、どのツールが処理するかを決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "テーマ、画像プラグイン、高速化プラグイン、CDN がそれぞれ遅延読み込み機能を提供していないか確認します。あるプラグインのオプションを無効にしたからといって、公開ページから lazy の指定がなくなったとは限りません。他の機能が出力段階で追加している可能性があります。まず実際の img を確認し、その後で設定を担当するツールを探します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "NitroPack を使いながら Smush の画像圧縮も利用しているサイトを例にすると、NitroPack の公式互換性ドキュメントでは、Smush の遅延読み込み機能を無効にするよう求めています。これは特定のツールの組み合わせにおける役割分担であり、すべての画像圧縮を無効にすべきだという意味にはなりません。調整時も、引き続き必要な圧縮機能や素材管理機能は残してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "エディターでメインビジュアルを CSS 背景として作成している場合、img の loading 属性を直接適用することはできません。背景画像、カルーセル、非表示のブロックは、実際の実装に応じて処理する必要があります。一般の管理者は、表示が遅すぎる画像やまったく表示されない画像をまず整理し、エンジニアに判断を依頼できます。管理画面のあちこちで同名のオプションを追加しても効果がない、という状況を避けましょう。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "代表的な記事を選び、ファーストビュー、本文後半、非表示のブロックにある画像を一覧にする。",
+            "実際に出力された読み込みの指定を確認し、予定したツールだけが処理していることを確かめる。",
+            "ファーストビューの重要な画像は通常どおり読み込み、後半の画像は遅らせ、比率に合った表示領域を確保する。",
+            "変更を明確に記録した後、ページの先頭から末尾まで読み、画像の表示とレイアウトの安定性を確認する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "検索エンジンによる読み取りを、読者のクリックに依存させない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 検索は、人のようにクリックやスクロールをしてコンテンツの表示を引き起こすことはありません。そのため、遅延読み込みでは、こうしたユーザー操作だけに頼って重要な情報をページに追加してはいけません。公式には、表示領域に基づく判定などの方法を採用し、表示する必要のある画像が該当する状態で実際に読み込まれることを確認するよう推奨しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console の URL 検査では、レンダリング後の HTML を見て、画像の実際の URL が img の src に入っているか確認できます。独自のデータ属性やプレースホルダー画像しかなく、クリックするまで実際のファイルに置き換わらない場合は、エンジニアに確認を依頼してください。この確認は読み取り可能であることの証拠であり、画像が必ずインデックスに登録される保証ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "無限スクロールには、さらに多くのコンテンツを発見する方法も関わるため、単なる画像設定として扱うことはできません。サイトが次の一群の記事を続けて読み込む場合は、直接アクセスできる安定したページ分割用の URL とリンクを別途用意する必要があります。画像のダウンロードを遅らせることと、次のコンテンツ群に独立した入口があるかどうかは、分けて検証すべき二つの問題です。"
+        },
+        {
+          "type": "heading",
+          "text": "ゆっくり読む場合と、素早く読む場合の両方で結果を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず、条件を制御できるテスト環境で初回読み込みを確認します。重要なメイン画像が適切なタイミングで表示されるか、下の方の画像が確かに遅延読み込みされるか、メイン画像の LCP が悪化していないかを見ます。次に記事に沿ってゆっくりスクロールし、各手順画像がその位置まで読み進めたときに利用できることを確認します。ブラウザーの読み込み表示が回転を止めただけで、すべての画像の読み込みが完了したと判断してはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "続いて記事後半へ素早く移動したり、折りたたみブロックを展開したり、カルーセルを切り替えたりして、長時間の空白、読み込みエラー、突然のコンテンツのずれがないか観察します。非表示の画像に対する動作はブラウザーによって異なることがあるため、重要なレイアウトは実際にサポートしている環境で抜き取り確認してください。ネットワーク速度を制限する場合も、その設定を記録し、後で再現できるようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ファーストビューの画面、後半の画像の表示状況、ダウンロード記録、変更前後の指標を保存します。明確な効果がない場合や、画像を読めるようになるのがかえって遅くなった場合は、対象範囲とタイミングを見直します。適切な遅延読み込みは、読者が自然に最後まで読めるようにするものです。初期リクエストを少し減らすために、操作手順の解説から重要な画像が欠ける状態にしてはいけません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/lazy-loading-images/diagram-1-ja.svg",
+          "alt": "四つのブロックで、最初に見える素材、後半の画像の遅延と寸法、処理元の一本化、記事全体の閲覧と検索エンジンによる読み取りやすさを順に検証する。",
+          "width": 1600,
+          "height": 900,
+          "caption": "遅延読み込みの目的は、読者が必要とするときに画像がすでに準備できている状態にすることです。",
+          "description": "四つのブロックで、最初に見える素材、後半の画像の遅延と寸法、処理元の一本化、記事全体の閲覧と検索エンジンによる読み取りやすさを順に検証する。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "画像の状況",
+            "一般的な対応方針",
+            "検証のポイント"
+          ],
+          "rows": [
+            [
+              "ファーストビューのメイン画像や LCP 画像",
+              "通常どおり読み込み、優先度を検討する",
+              "主要な内容が適切なタイミングで表示される"
+            ],
+            [
+              "記事後半の手順画像",
+              "ダウンロードを遅らせ、先に領域を確保する",
+              "その箇所を読むときに鮮明に表示され、利用できる"
+            ],
+            [
+              "カルーセルや折りたたみブロック",
+              "実際の表示方法に応じて処理する",
+              "切り替えや展開後に正常に表示される"
+            ],
+            [
+              "CSS 背景画像",
+              "背景の実装側で別途処理する",
+              "img の属性は直接適用されない"
+            ],
+            [
+              "次のコンテンツ群の無限読み込み",
+              "安定したページ分割の入口を別途設ける",
+              "コンテンツに直接アクセスでき、発見できる"
+            ]
+          ],
+          "caption": "画像の表示位置と用途に応じて判断し、サイト全体で一律に遅らせるルールは適用しません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "読者がページを開いてすぐに見る画像は遅らせない",
+          "text": "まずファーストビューと LCP の素材を確認し、その後で後半の画像に遅延読み込みを使用します。すべての画像には、適切な表示領域、代替テキスト、取得可能なファイルが引き続き必要です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "画像ファイルと代替テキストの作成手順を整える",
+              "kind": "life",
+              "slug": "image-seo-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress の高速化設定を一つずつ検証する",
+              "kind": "life",
+              "slug": "wordpress-performance-plugins"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "LCP とレイアウトシフトのボトルネックを特定する",
+              "kind": "life",
+              "slug": "core-web-vitals-diagnosis"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：ブラウザーのネイティブ画像遅延読み込み",
+          "url": "https://web.dev/articles/browser-level-image-lazy-loading",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：img の読み込み属性と寸法属性",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 検索：遅延読み込みコンテンツのガイド",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/javascript/lazy-loading?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack と他の遅延読み込みツール",
+          "url": "https://support.nitropack.io/en/articles/8390263-using-nitropack-and-another-page-caching-plugin-simultaneously",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "이미지 지연 로딩 설정법: 중요한 콘텐츠부터 표시하기",
+      "description": "이미지 지연 로딩은 처음에 필요하지 않은 다운로드를 줄이지만, 첫 화면의 대표 이미지까지 미루면 중요한 콘텐츠가 오히려 더 늦게 나타날 수 있습니다. 대만 사용자가 긴 수공예 튜토리얼을 읽는 상황을 예로 들어 네이티브 loading 속성, 로딩 우선순위, 이미지 크기에 맞춘 공간 확보, WordPress 플러그인의 역할 분담을 설명합니다. 실행 단계, 상황 비교표, 직접 제작한 도해를 통해 페이지 맨 위부터 끝까지 점검하는 방법을 익혀 독자의 읽기 경험과 검색 엔진의 판독 가능성을 함께 고려합니다.",
+      "hero": {
+        "src": "/guides/lazy-loading-images/hero-ko.jpg",
+        "alt": "중요한 이미지와 후반부 자료를 구분하고 로딩 시점을 검증하는 과정을 나타낸 자체 제작 화면, 폴더, 점검 문서 그림.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "목재 수납함을 만드는 튜토리얼에 단계별 이미지가 스무 장 있습니다. 독자가 페이지를 막 열었을 때는 보통 마지막 몇 단계의 이미지를 바로 다운로드할 필요가 없습니다. 지연 로딩을 사용하면 아직 보이지 않는 이미지를 나중에 불러와 현재 눈앞의 콘텐츠에 자원을 쓸 수 있습니다. 다만 이미지가 필요한 순간에는 문제없이 나타나야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 설정의 핵심은 모든 이미지의 로딩을 뒤로 미루는 것이 아니라 로딩 시점을 배분하는 데 있습니다. 첫 화면, 본문, 숨겨진 영역을 먼저 구분한 뒤 이미지 공간과 도구별 역할을 정리하고, 마지막으로 실제 읽는 순서대로 검증해야 다운로드를 미룬 것이 정말 도움이 되는지 알 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "처음부터 보이는 이미지와 나중에 필요한 이미지부터 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "페이지에 처음 들어왔을 때 바로 보이는 대표 이미지, 상품 사진, 필수 도해는 보통 일반 방식으로 로딩해야 합니다. Google은 첫 화면에 있을 가능성이 있는 콘텐츠, 특히 LCP에 영향을 주는 큰 이미지의 로딩을 지연하지 말라고 강조합니다. 독자는 먼저 완성된 작품을 보아야 이 수납함 튜토리얼이 자신에게 적합한지 판단할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "아래쪽의 단계별 이미지, 글 후반의 보충 사진, 그 밖에 화면에 보이는 영역에서 멀리 떨어진 이미지가 지연 로딩의 주요 대상입니다. 분류할 때는 실제 레이아웃을 살펴야 합니다. 데스크톱에서 나란히 배치된 세 번째 이미지가 모바일에서는 한참 아래에 놓일 수 있습니다. 반대로 모바일 전용 대표 이미지가 데스크톱에서는 숨겨질 수도 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "HTML 안에서 이미지가 나오는 순서만으로 결정해서는 안 됩니다. 주요 레이아웃과 자주 쓰는 화면 너비를 먼저 살펴보고, 페이지에 들어오자마자 보이는 이미지를 표시한 다음 지연 로딩에서 제외하거나 일반 로딩으로 설정합니다. 행사 배너에 따라 레이아웃이 바뀐다면 그 상태도 점검에 포함해 레이아웃 변경 후 설정이 맞지 않게 되는 일을 방지합니다."
+        },
+        {
+          "type": "heading",
+          "text": "네이티브 loading 속성은 로딩 지연을 제어하며 우선순위와는 다르다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "표준 img 요소에는 loading=lazy를 지정해 이미지가 화면에 보이는 영역에 가까워질 때 브라우저가 다운로드하도록 할 수 있습니다. loading=eager는 일반 방식으로 로딩하라는 뜻이며, 속성을 지정하지 않았을 때도 대체로 이렇게 동작합니다. 어느 거리까지 가까워져야 하는지는 브라우저가 판단합니다. 오래된 튜토리얼에 나온 픽셀 수치를 모든 기기에 영구적으로 통용되는 기준으로 삼아서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "eager를 지정해도 다른 일반 로딩 이미지보다 반드시 먼저 로딩이 완료되는 것은 아닙니다. fetchpriority는 별도의 로딩 우선순위 힌트입니다. 중요한 LCP 이미지에 high를 사용할지는 엔지니어가 검토할 수 있지만, 이 설정이 lazy의 지연 조건을 해제하지는 않습니다. 두 옵션을 모두 켜도 대표 이미지가 즉시 나타난다고 보장할 수 없습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "웹사이트가 이미 올바른 네이티브 "
+            },
+            {
+              "type": "text",
+              "text": "마크업"
+            },
+            {
+              "type": "text",
+              "text": "을 생성할 수 있다면, 보통 일반 이미지를 위해 지연 로딩 라이브러리를 추가할 필요는 없습니다. 특수 효과, 오래된 환경, 더 세밀한 제어가 필요한 경우는 별도로 검토할 수 있습니다. 다만 추가되는 의존성과 유지 관리 방식을 기록해 단순한 이미지에 여러 메커니즘이 겹쳐 서로의 설정을 덮어쓰는 일을 방지해야 합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "이미지가 나타날 때 본문이 밀리지 않도록 공간부터 확보하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "이미지가 아직 다운로드되지 않아도 브라우저는 어느 정도 공간을 비워 두어야 하는지 알아야 합니다. img의 width와 height는 가로세로 비율을 계산하는 데 도움이 되어 레이아웃이 미리 공간을 마련할 수 있게 합니다. 실제 표시할 때는 반응형 스타일로 컨테이너에 맞게 크기를 조절합니다. 이 크기 값은 이미지의 비율에 맞아야 하며, 경고를 없애려고 임의의 두 숫자를 입력해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "수납함 튜토리얼에서 독자가 치수 설명을 읽는 도중 세로로 긴 이미지가 갑자기 삽입되면 본문이 밀려나고, 심지어 다른 버튼을 누르게 될 수도 있습니다. 이미지 파일이 작다고 이런 이동을 막을 수 있는 것은 아닙니다. 원인은 공간을 미리 확보하지 않은 데 있습니다. 점검할 때는 모든 로딩이 끝난 스크린샷만 보지 말고 이미지가 나타나기 전후의 텍스트 위치를 관찰해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "크기 정보가 없으면 브라우저가 이미지 위치를 잘못 판단해 예상과 다른 다운로드 동작이 발생할 수도 있습니다. 사진첩이나 긴 목록은 특히 실제 배치를 살펴야 합니다. 이미지를 고정 비율로 잘라 표시한다면 레이아웃에서 적절한 컨테이너 공간을 확보할 수 있습니다. 다만 모바일에서 이미지가 늘어나 변형되거나 필요한 세부 내용이 잘리지 않는지 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "WordPress와 편집기에서는 처리 주체를 정해야 한다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "테마, 이미지 플러그인, 속도 최적화 플러그인, CDN이 각각 지연 로딩을 제공하는지 확인합니다. 어떤 플러그인에서 옵션을 껐다고 공개 페이지에 lazy 마크업이 없어졌다고 가정해서는 안 됩니다. 다른 기능이 출력 단계에서 이를 추가할 수도 있습니다. 실제 img를 먼저 확인한 다음 설정을 담당하는 도구를 찾습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "NitroPack을 사용하면서 Smush의 이미지 압축 기능도 유지하는 웹사이트를 예로 들면, NitroPack의 공식 호환성 문서는 Smush의 지연 로딩 기능을 비활성화하도록 요구합니다. 이는 특정 도구 조합의 역할 분담에 관한 지침이므로 모든 이미지 압축 기능을 꺼야 한다는 뜻으로 확대 해석해서는 안 됩니다. 조정할 때는 여전히 필요한 압축 및 이미지 자료 관리 기능을 유지합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "편집기에서 대표 이미지를 CSS 배경으로 만들었다면 img의 loading 속성을 직접 적용할 수 없습니다. 배경 이미지, 캐러셀, 숨겨진 영역은 실제 구현에 맞게 처리해야 합니다. 일반 관리자는 먼저 어떤 이미지가 너무 늦게 나타나거나 전혀 나타나지 않는지 정리한 뒤 엔지니어에게 판단을 맡길 수 있습니다. 이렇게 하면 관리 화면 곳곳에서 같은 이름의 옵션을 추가해도 효과가 없는 일을 피할 수 있습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "대표적인 글을 선택해 첫 화면, 본문 후반, 숨겨진 영역의 이미지를 목록으로 정리합니다.",
+            "실제 출력된 로딩 마크업을 대조해 지정한 도구만 처리를 담당하는지 확인합니다.",
+            "첫 화면의 중요한 이미지는 일반 방식으로 로딩하고, 후반 이미지는 로딩을 미루되 비율에 맞는 공간을 미리 확보합니다.",
+            "변경 사항을 명확히 기록한 뒤 페이지 맨 위부터 끝까지 읽으며 이미지 표시와 레이아웃의 안정성을 점검합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "검색 엔진의 판독을 독자의 첫 클릭에 의존하게 해서는 안 된다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 검색은 사람처럼 클릭하거나 스크롤해서 콘텐츠를 표시하지 않습니다. 따라서 지연 로딩에서 중요한 데이터를 페이지에 추가하는 일을 이런 사용자 동작에만 의존해서는 안 됩니다. 공식 지침은 화면에 보이는 영역을 기준으로 판단하는 등의 방식을 권장하며, 표시해야 할 이미지가 해당 상태에서 실제로 로딩되는지 확인하도록 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console의 URL 검사 기능을 사용할 때는 렌더링된 HTML을 살펴보고 이미지의 실제 URL이 img의 src에 들어 있는지 확인할 수 있습니다. 사용자 정의 데이터 필드나 자리 표시자 이미지만 남겨 두고 클릭해야 실제 파일로 교체되는 방식이라면 엔지니어에게 점검을 요청해야 합니다. 이 확인은 판독 가능성의 증거이며, 이미지가 반드시 색인된다는 보장은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "무한 스크롤에는 추가 콘텐츠를 발견하는 방식도 관련되므로 단순한 이미지 설정으로만 보아서는 안 됩니다. 웹사이트가 다음 글 묶음을 계속 불러온다면 직접 접근할 수 있는 안정적인 페이지별 URL과 링크를 별도로 마련해야 합니다. 이미지 다운로드 지연과 다음 콘텐츠 묶음의 독립적인 진입 경로 유무는 따로 검증해야 하는 두 가지 문제입니다."
+        },
+        {
+          "type": "heading",
+          "text": "천천히 읽는 상황과 빠르게 읽는 상황에서 결과 점검하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 통제 가능한 테스트 환경에서 첫 로딩을 살펴봅니다. 중요한 대표 이미지가 제때 나타나는지, 아래쪽 이미지는 실제로 지연 로딩되는지, 대표 이미지의 LCP가 악화되지는 않는지 확인합니다. 이어 글을 따라 천천히 스크롤하며 각 단계별 이미지가 해당 부분을 읽을 때 표시되어 이용할 수 있는지 확인합니다. 브라우저의 로딩 표시가 멈췄다는 이유만으로 모든 이미지의 로딩이 끝났다고 판단해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "다음으로 글 후반으로 빠르게 이동하거나 접이식 영역을 펼치거나 캐러셀을 전환하면서 오랫동안 빈 화면이 남는지, 로딩 오류가 발생하는지, 콘텐츠가 갑자기 이동하는지 관찰합니다. 숨겨진 이미지에 대한 동작은 브라우저마다 다를 수 있으므로 중요한 레이아웃은 실제 지원 환경에서 표본 점검해야 합니다. 네트워크 속도를 제한할 때도 설정을 기록해 이후에 재현하기 쉽게 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 화면, 후반 이미지가 나타나는 모습, 다운로드 기록, 변경 전후의 지표를 보관합니다. 뚜렷한 효과가 없거나 이 때문에 이미지를 더 늦게 읽을 수 있게 된다면 적용 범위와 시점을 다시 조정합니다. 좋은 지연 로딩은 독자가 자연스럽게 끝까지 읽을 수 있게 해야 합니다. 초기 요청을 몇 개 줄이려다가 작업 튜토리얼에 핵심 이미지가 빠지게 해서는 안 됩니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/lazy-loading-images/diagram-1-ko.svg",
+          "alt": "네 구역에서 처음부터 보이는 자료, 후반 이미지의 로딩 지연과 크기, 단일 처리 주체, 글 전체의 읽기 경험과 검색 엔진 판독 가능성을 차례로 검증합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "지연 로딩의 목적은 독자가 이미지를 필요로 할 때 이미 준비되어 있게 하는 것입니다.",
+          "description": "네 구역에서 처음부터 보이는 자료, 후반 이미지의 로딩 지연과 크기, 단일 처리 주체, 글 전체의 읽기 경험과 검색 엔진 판독 가능성을 차례로 검증합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "이미지 사용 상황",
+            "일반적인 처리 방향",
+            "검증 핵심"
+          ],
+          "rows": [
+            [
+              "첫 화면의 대표 이미지 또는 LCP 이미지",
+              "일반 로딩을 적용하고 우선순위 검토",
+              "주요 콘텐츠가 제때 표시되는지 확인"
+            ],
+            [
+              "글 후반의 단계별 이미지",
+              "다운로드를 미루고 공간부터 확보",
+              "해당 부분을 읽을 때 선명하게 이용 가능한지 확인"
+            ],
+            [
+              "캐러셀 또는 접이식 영역",
+              "실제 표시 방식에 따라 처리",
+              "전환하거나 펼친 뒤 정상적으로 표시되는지 확인"
+            ],
+            [
+              "CSS 배경 이미지",
+              "배경 구현 방식에 맞춰 별도로 처리",
+              "img 속성이 직접 적용되지 않음"
+            ],
+            [
+              "다음 콘텐츠 묶음을 무한 로딩",
+              "안정적인 페이지별 진입 경로를 별도로 마련",
+              "콘텐츠에 직접 접근하고 발견할 수 있는지 확인"
+            ]
+          ],
+          "caption": "이미지의 표시 위치와 용도에 따라 결정하며, 사이트 전체에 일괄적으로 로딩을 미루는 규칙을 적용하지 않습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "독자가 들어오자마자 볼 이미지의 로딩은 미루지 마세요",
+          "text": "첫 화면과 LCP에 해당하는 이미지를 먼저 확인한 뒤 뒤쪽 이미지에 지연 로딩을 적용합니다. 모든 이미지에는 여전히 적절한 공간, 대체 텍스트, 접근 가능한 파일이 필요합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "이미지 파일과 대체 텍스트 관리 절차 만들기",
+              "kind": "life",
+              "slug": "image-seo-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 속도 최적화 설정을 항목별로 검증하기",
+              "kind": "life",
+              "slug": "wordpress-performance-plugins"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "LCP와 레이아웃 이동의 병목 파악하기",
+              "kind": "life",
+              "slug": "core-web-vitals-diagnosis"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 브라우저 네이티브 이미지 지연 로딩",
+          "url": "https://web.dev/articles/browser-level-image-lazy-loading",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN img 로딩 및 크기 속성",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 검색의 지연 로딩 콘텐츠 가이드",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/javascript/lazy-loading?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack과 기타 지연 로딩 도구",
+          "url": "https://support.nitropack.io/en/articles/8390263-using-nitropack-and-another-page-caching-plugin-simultaneously",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "图片延迟加载怎么设置：让重要内容先显示",
+      "description": "图片延迟加载能减少一开始不需要的下载，但首屏主图若一起延后，反而可能让重要内容更晚出现。本文以台湾用户阅读长篇手工制作教程为例，说明原生 loading 属性、加载优先级、图片尺寸预留与 WordPress 插件分工。附操作步骤、场景比较表和原创图解，建立从页首到页尾的检查方式，兼顾阅读与搜索可读性。",
+      "hero": {
+        "src": "/guides/lazy-loading-images/hero-zh-cn.jpg",
+        "alt": "原创屏幕、文件夹与检查文档图像，表示区分重要图片和后段素材并验收加载时机。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "一篇木工收纳盒教程有二十张步骤图，读者刚打开页面，通常不需要立刻下载最后几个步骤。延迟加载可以让暂时看不到的图片稍后才加载，将资源留给眼前的内容，但前提是图片仍能在需要时顺利出现。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这项设置的重点是分配时机，不是把所有图片都往后拖。先辨认首屏、正文与隐藏区块，再处理图片空间与工具分工，最后以实际阅读顺序验收，才能知道延后下载是否真的有帮助。"
+        },
+        {
+          "type": "heading",
+          "text": "先区分首次可见与稍后才需要的图片",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "首次进入页面就会看到的主图、商品照或必要示意图，通常应正常加载。Google 特别提醒，不要延迟可能位于首屏的内容，尤其是影响 LCP 的大型图片。读者需要先看见作品成品，才能判断这份收纳盒教程是否适合自己。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下方步骤图、文章后段的补充照片或其他离可视范围较远的图片，才是延迟加载的主要候选。分类时要看实际布局：电脑端并排的第三张图，可能在手机上排到很下面；反过来，手机专用主图也可能在电脑端被隐藏。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要只用图片在 HTML 里的先后顺序决定。先检查主要布局与常用屏幕宽度，把进入页面立即可见的素材圈出来，再设置排除或正常加载。若布局会随活动横幅改变，也把这种状态加入检查，避免布局更新后设置失准。"
+        },
+        {
+          "type": "heading",
+          "text": "原生 loading 属性控制延后，不等于优先级",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "标准 img 可使用 loading=lazy，让浏览器在图片接近可视范围时再下载。loading=eager 表示按正常方式加载，也是未指定时的一般行为。接近到什么距离由浏览器判断，不能把某份旧教程的像素数当成所有设备永久通用的门槛。"
+        },
+        {
+          "type": "paragraph",
+          "text": "eager 不表示一定比其他正常图片更早完成；fetchpriority 则是另一种加载优先级提示。重要的 LCP 图片可由工程师评估是否使用 high，但它不会取消 lazy 的延后条件。同时开启两个选项，不能保证主图就会立即出现。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果网站已能生成正确的原生"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "，通常不需要只为一般图片再加入一套延迟加载程序库。特殊效果、旧环境或需要更细控制的情况，可以另外评估，但要把新增依赖和维护方式记录下来，避免简单图片背后叠上多套互相改写的机制。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "先预留空间，避免图片出现时推动正文",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "图片尚未下载时，浏览器仍需要知道应预留多少空间。img 的 width 和 height 可协助推算比例，让布局先安排空间；显示时再由响应式样式配合容器缩放。这些尺寸应符合素材比例，不能为了消除警告而任意填两个数字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "收纳盒教程若在读者看到尺寸说明时突然插入一张高图，正文可能被推走，甚至让人点到别的按钮。图片文件小并不能避免这种位移；问题在于空间没有预留。检查时要观察图片出现前后的文字位置，而不是只看全部加载完毕的截图。"
+        },
+        {
+          "type": "paragraph",
+          "text": "缺少尺寸也可能使浏览器误判图片位置，造成不符合预期的下载行为。相册或长列表尤其需要查看实际配置。若图片会裁成固定比例，可由布局预留适当容器，但仍要确认手机上没有拉伸变形或裁掉必要细节。"
+        },
+        {
+          "type": "heading",
+          "text": "WordPress 与编辑器要决定由谁处理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "检查主题、图片插件、加速插件与 CDN 是否各自提供延迟加载。不能因为某套插件关闭了选项，就假设公开页面已经没有 lazy 标记；其他功能仍可能在输出阶段加入。先查看实际 img，再回头找负责设置的工具。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以使用 NitroPack 又保留 Smush 压缩图片的网站为例，NitroPack 官方兼容文档要求停用 Smush 的延迟加载功能。这是特定工具组合的分工，不能延伸成所有图片压缩都应停用。调整时保留仍有需要的压缩与素材管理功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若编辑器把主视觉做成 CSS 背景，不能直接对它应用 img 的 loading 属性。图片背景、轮播与隐藏区块需要根据实际实现处理。一般管理员可先整理哪些图出现过晚或完全不出现，再交由工程师判断，避免在后台到处添加同名选项却没有作用。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "选取代表性文章，列出首屏、正文后段与隐藏区块的图片。",
+            "核对实际输出的加载标记，确认只有预定工具负责处理。",
+            "让首屏重要图片正常加载，后段图片延后并按比例预留空间。",
+            "清楚记录变更后，从页首读到页尾，检查图片出现情况与布局稳定性。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "搜索可读性不能依赖读者先点一下",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 搜索不会像人一样通过点击或滚动操作来触发内容，因此延迟加载不能只靠这些用户动作才把重要信息加入页面。官方建议采用可视范围判断等方式，并确认需要呈现的图片在相应状态下能真正加载。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用 Search Console 网址检查时，可查看渲染后的 HTML，核对图片是否以真实网址出现在 img 的 src 中。若只留自定义数据字段或占位图片，真正的文件要等点击才替换，就应请工程师检查。这项确认是可读性的证据，不是保证图片一定被索引。"
+        },
+        {
+          "type": "paragraph",
+          "text": "无限滚动还涉及更多内容的发现方式，不能只当成图片设置。若网站会持续加载下一批文章，应另设可直接访问且稳定的分页网址与链接。图片延后下载和下一批内容是否有独立入口，是需要分开验收的两个问题。"
+        },
+        {
+          "type": "heading",
+          "text": "用慢速与快速阅读场景检查结果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先在可控制的测试环境查看初次加载：重要主图是否及时出现、下方图片是否确实延后，以及主图的 LCP 是否恶化。再沿着文章慢慢滚动，确认每张步骤图在读到它时可用。不要只看浏览器停止转圈就认定所有图片都已完成加载。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接着快速跳到文章后段、展开折叠区块或切换轮播，观察是否长时间空白、加载错误或内容突然位移。不同浏览器对隐藏图片的行为可能不同，重要布局需在实际支持的环境中抽查。限制网络速度时，也要记下设置，方便后续复现。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存首屏画面、后段图片出现情况、下载记录与变更前后指标。若没有明显效益，或图片因此更晚可读，就回头调整范围与时机。好的延迟加载应让读者自然完成阅读，而不是为了少几个初始请求，让操作教程缺少关键图片。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/lazy-loading-images/diagram-1-zh-cn.svg",
+          "alt": "四个区块依次确认首次可见素材、后段图片的延后与尺寸、单一处理来源，以及全文阅读和搜索可读性验收。",
+          "width": 1600,
+          "height": 900,
+          "caption": "延迟加载的目的，是让图片在读者需要时已经准备好。",
+          "description": "四个区块依次确认首次可见素材、后段图片的延后与尺寸、单一处理来源，以及全文阅读和搜索可读性验收。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "图片场景",
+            "一般处理方向",
+            "验收重点"
+          ],
+          "rows": [
+            [
+              "首屏主图或 LCP 图片",
+              "正常加载并评估优先级",
+              "主要内容及时出现"
+            ],
+            [
+              "文章后段步骤图",
+              "延后下载，先留空间",
+              "读到时清晰可用"
+            ],
+            [
+              "轮播或折叠区块",
+              "根据实际显示方式处理",
+              "切换与展开后正常"
+            ],
+            [
+              "CSS 背景图",
+              "由背景实现另行处理",
+              "img 属性不会直接生效"
+            ],
+            [
+              "无限加载下一批内容",
+              "另设稳定分页入口",
+              "内容可直接访问和发现"
+            ]
+          ],
+          "caption": "根据图片出现的位置与用途决定，不应用全站一律延后的规则。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "不要延后读者一进来就要看的图",
+          "text": "先确认首屏与 LCP 素材，再对较后面的图片使用延迟加载。所有图片仍要有合适的空间、替代文字与可获取的文件。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立图片文件与替代文字流程",
+              "kind": "life",
+              "slug": "image-seo-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "逐项验证 WordPress 加速设置",
+              "kind": "life",
+              "slug": "wordpress-performance-plugins"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "辨认 LCP 与布局位移瓶颈",
+              "kind": "life",
+              "slug": "core-web-vitals-diagnosis"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 浏览器原生图片延迟加载",
+          "url": "https://web.dev/articles/browser-level-image-lazy-loading",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN img 加载与尺寸属性",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜索延迟加载内容指南",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/javascript/lazy-loading?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack 与其他延迟加载工具",
           "url": "https://support.nitropack.io/en/articles/8390263-using-nitropack-and-another-page-caching-plugin-simultaneously",
           "checked_on": "2026-09-14"
         }
