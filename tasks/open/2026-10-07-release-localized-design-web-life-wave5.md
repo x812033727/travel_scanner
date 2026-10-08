@@ -78,3 +78,10 @@ same visible words. All 36 original media files and original dates are unchanged
 
 This task stays open and unclaimed until a concrete approved release starts.
 The separate frozen PR #1374 and completed first 32 articles are not part of it.
+
+Content draft PR #1378 passed 21 checks at its content commit
+`7416a9ccbc83e5342319d47f0cf2e87bb9b4d160`, exact-head receipt SHA256
+`dd4b1accd5189d63c27c77c0e280244d402da6a800482d4c02385acbb965bf4d`.
+Recheck the current final head after its closing authoring-task commit; do not
+use the content commit's CI receipt as proof for a different head. Local-only
+installation and green CI remain separate from the owner's production choice.

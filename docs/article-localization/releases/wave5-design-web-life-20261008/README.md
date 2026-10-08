@@ -7,6 +7,7 @@ record a merge, deployment, database publication or public page acceptance.
 The authoring task is `2026-10-07-localize-twelve-design-workflow-and-performance`.
 The separate, unclaimed release task is
 `2026-10-07-release-localized-design-web-life-wave5`.
+Content draft PR: [#1378](https://github.com/x812033727/travel_scanner/pull/1378).
 
 | Article | Added locales |
 | --- | --- |
@@ -78,6 +79,11 @@ recorded 68 passed. Lint retained 60 source-shaped no-summary warnings and 12
 text-length warnings with zero errors; the approved documents were not shortened.
 Actual local-check receipt SHA256:
 `63189b50c0a1db69d136112e1422f06410a56f9badf2717b52ba1f27646f2b79`.
+The content commit `7416a9ccbc83e5342319d47f0cf2e87bb9b4d160` passed all 21
+actual CI checks. Exact-head receipt SHA256:
+`dd4b1accd5189d63c27c77c0e280244d402da6a800482d4c02385acbb965bf4d`.
+The final task-record commit is separately checked; these results do not claim
+that any later commit automatically inherits the prior checks.
 
 Local validation results and draft PR checks remain separate gates. Before any
 merge, the exact current head must pass CI including release-safety. The release

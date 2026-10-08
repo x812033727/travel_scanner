@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-localize-twelve-design-workflow-and-performance
 title: Localize twelve design workflow and performance life articles
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-article-localization-4e16
 claimed_at: 2026-10-07T21:30:17Z
 created_at: 2026-10-07T17:55:53Z
-completed_at:
+completed_at: 2026-10-08T01:32:24Z
 branch: codex/article-locales-wave5-20261008
 depends_on: []
 scope:
@@ -74,7 +74,8 @@ same-visible TextInline before translation, with a distinct final source reviewe
 - [x] All twelve packs contain four genuine independently reviewed translations,
       native diagrams and localized hero assets, with exact document/artifact pins.
 - [x] Unchanged official assembly/install/replay and applicable content checks pass.
-- [ ] A scoped draft content PR passes CI at its final head before approved merge.
+- [x] A scoped draft content PR passes CI at its content head; verify the final
+      task-record commit again before an approved merge.
 - [x] A separate open release task preserves the distinction between authoring,
       merge/deployment, guarded publication and actual five-language public acceptance.
 
@@ -88,7 +89,7 @@ same-visible TextInline before translation, with a distinct final source reviewe
 - [x] Admit the approved source corrections without changing original baseline bytes.
 - [x] Prepare/run through the existing CLI with three workers and no automatic retries.
 - [x] Materialize/render and independently read every translated text/native image.
-- [ ] Assemble/install/replay, check preservation, run scoped checks and open draft PR.
+- [x] Assemble/install/replay, check preservation, run scoped checks and open draft PR.
 
 ## How to verify
 
@@ -201,6 +202,30 @@ and five-language desktop/mobile acceptance after the concrete release choice.
   `63189b50c0a1db69d136112e1422f06410a56f9badf2717b52ba1f27646f2b79`.
 - Separate release task `2026-10-07-release-localized-design-web-life-wave5` is
   open and unclaimed. The preparation README records the exact cohort and actual
-  local stages. A scoped draft PR and its current-head CI are the remaining
-  authoring handoff step; merge/deploy/publication/public acceptance belong to
-  the separate release task and still require the explicit cohort choice.
+  local stages. The scoped draft PR and its content-head CI are now complete;
+  merge/deploy/publication/public acceptance belong to the separate release task
+  and still require the explicit cohort choice and green checks at the final head.
+- Draft PR #1378 is open at content commit
+  `7416a9ccbc83e5342319d47f0cf2e87bb9b4d160`. Its 21 actual check runs all
+  completed successfully, including api, web, containers, full-stack-smoke and
+  release-safety. Exact-head CI receipt SHA256:
+  `dd4b1accd5189d63c27c77c0e280244d402da6a800482d4c02385acbb965bf4d`.
+  The earlier gh TLS failures and successful interim read snapshots are preserved.
+  The closing task-record commit must receive its own exact-head CI verification;
+  a record-only commit does not inherit the prior head's green claim.
+- The final pre-PR scope census actually verified 32 current worktrees, 6,221
+  open-task snapshots and all 11 current PR file sets (521 files), with no effective
+  competing selected-path claims or PR overlap. Earlier selection statements
+  covered selected source packs/media; later complete checks added the exact
+  journal, receipts, private stage and README paths. Historical raw claims remain.
+  Census receipt SHA256:
+  `86e67f3d6e92b8a8189a30fbb21878e17201ec4067e2e4e12b243c6ae9f0e241`.
+  All 485 distinct local/remote head commits were inspected. The one historical
+  source branch matches the explicitly merged PR #498 source delivery and its
+  done integration task; all 36 original media blobs match current main. Current
+  main's later link/taxonomy changes, rather than that historical tree, control
+  this localization baseline. Three fresh remote-head changes were independently
+  checked and have no selected overlap; reconciliation receipt SHA256:
+  `fd7377f6828204606a8c22f943ed2f4b6ffc3fd226554f479d3bbb537f32d35f`.
+  The source-preservation worktree's 12 dirty packs are retained and not released.
+  All failed technical preflights remain preserved with their actual exit codes.
