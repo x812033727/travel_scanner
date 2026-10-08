@@ -289,7 +289,7 @@ test("the judge being unreachable or out of budget is an external failure, exit 
     [429, "rate_limit_exceeded", "請求太頻繁"],
     [502, "video_judge_upstream_failed", "Jev 暫時無法判斷"],
     [502, "upstream_unavailable", "API 連不上"],
-    // The limiter's store away refuses the request before Jev is asked (automation/client.mjs LIMITER_AWAY).
+    // The limiter's store away refuses the request before Jev is asked (automation/client.mjs NEVER_RAN).
     [503, "rate_limit_unavailable", "限流暫時無法計數"],
   ]) {
     const server = site({ policy: () => Response.json({ code, detail }, { status }) });

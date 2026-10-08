@@ -340,9 +340,10 @@ test("a series document whose planner answer was lost is not planned again on it
   const named = { job: job("setting") };
   let losing = true;
   const server = documentJobs(named, { answers: { "planner:setting": () => SETTING }, fail: () => (losing ? lostAnswer() : null) });
-  // The same series' threads (discuss.mjs threads.json) are another file, which the hold leaves alone.
-  const threads = path.join(server.box.work, "_series", "wenjian", "threads.json");
-  const notes = `${JSON.stringify({ waits: { "m-bible-1": 2 }, lost: {} }, null, 2)}\n`;
+  // The same series' kept discussion reply (discuss.mjs discussion-answer.json) is another file,
+  // which the hold leaves alone.
+  const threads = path.join(server.box.work, "_series", "wenjian", "discussion-answer.json");
+  const notes = `${JSON.stringify({ message_id: "m-bible-1", body: { reply_md: "已改", revised: null } }, null, 2)}\n`;
   mkdirSync(path.dirname(threads), { recursive: true });
   writeFileSync(threads, notes);
 
@@ -363,7 +364,7 @@ test("a series document whose planner answer was lost is not planned again on it
   const held = server.out.stdout.split("\n").filter((line) => line.startsWith("series wenjian: the setting book is not planned again"));
   assert.equal(held.length, 2, "said once a run, in each run after the loss");
   assert.equal(held[0], `series wenjian: the setting book is not planned again: the planner's answer was lost at 2026-09-27T03:00:00.000Z (${LOST_WHY}) and the model may have run; it waits for the owner (a changed note, premise, title or hands-off switch, a line on a rejected version, or the series withdrawn before any episode and filed again), and the series after it wait too`);
-  assert.equal(readFileSync(threads, "utf8"), notes, "the threads' notes are untouched");
+  assert.equal(readFileSync(threads, "utf8"), notes, "the kept discussion reply is untouched");
 
   // The owner changes the series: one new request, the document is filed, and the hold is gone.
   losing = false;
