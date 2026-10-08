@@ -69,7 +69,7 @@
 
 沒過關的話，工人不送審，而是把沒過的原因當成退回意見，交給企劃模型重寫（和站主退回大綱走同一條路，最多重寫 `MAX_REPLANS` 次），之後才卡住、交給站主。
 
-Jev 或網站暫時不行（502、每日次數用完）時大綱等一下，之後再問。請求送出去、回答卻在途中遺失時（`judgeOutline` 回 `lost`）不再自己問：Jev 可能已經判斷並用掉當天一次，工人把影片卡住（`uncertain:judge`），站主按重試才對同一份企劃再問一次；本機的 `review-push --gate outline` 則把大綱直接送給站主、不附選擇，並在 `review/outline-lost.json` 記住這份企劃，不會再問（[`AUTOMATION.md`](AUTOMATION.md) §回答在途中遺失）。
+Jev 或網站暫時不行時大綱等一下，之後再問：API 說 Jev 這次判斷失敗（502 `video_judge_upstream_failed`）、網站的路由沒連到 API（502 `upstream_unavailable`）、限流器暫時不能計數（503 `rate_limit_unavailable`）、限流或每日次數用完（429），或連線根本沒送出去。Jev 沒設金鑰（503 `provider_unavailable`）是站主要處理的事。其他的 5xx（包括 API 的 502 `video_judge_outcome_uncertain`、路由的 504 `video_judge_answer_lost`、閘道的錯誤頁），以及送出後連線斷掉或回答讀不出來，都算回答在途中遺失（`judgeOutline` 回 `lost`），不再自己問：Jev 可能已經判斷並用掉當天一次，工人把影片卡住（`uncertain:judge`），站主按重試才對同一份企劃再問一次；本機的 `review-push --gate outline` 則把大綱直接送給站主、不附選擇，並在 `review/outline-lost.json` 記住這份企劃，不會再問（[`AUTOMATION.md`](AUTOMATION.md) §回答在途中遺失）。
 
 門檻先訂成常數，寫在程式與這份文件裡。第一批五支影片做完之後，對照站主自己會怎麼選，再決定要不要調整。
 
