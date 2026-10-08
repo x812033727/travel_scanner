@@ -39,12 +39,12 @@
     {
       "title": "GitHub pull request review quickstart",
       "url": "https://docs.github.com/en/pull-requests/get-started/reviewing-pull-requests-quickstart",
-      "checked_on": "2026-09-27"
+      "checked_on": "2026-10-08"
     },
     {
       "title": "Claude Code CLI reference",
       "url": "https://code.claude.com/docs/en/cli-reference",
-      "checked_on": "2026-09-27"
+      "checked_on": "2026-10-08"
     }
   ],
   "scenes": [
@@ -172,7 +172,7 @@
         },
         {
           "id": "v40017",
-          "text": "接下來看 AI 真正交出的修補。"
+          "text": "接下來看一份可以重跑的本地修補。"
         },
         {
           "id": "v40018",
@@ -188,7 +188,7 @@
         "items": [
           "自有小型程式",
           "同一句明確需求",
-          "實際 Claude Code 修補"
+          "可重跑的本地修補"
         ]
       },
       "claims": [
@@ -197,11 +197,11 @@
       "lines": [
         {
           "id": "v40021",
-          "text": "我用自己寫的分攤函式，讓 Claude Code 依照題目修改。"
+          "text": "這份本地分攤範例，留下了程式和測試的完整差異。"
         },
         {
           "id": "v40022",
-          "text": "它改了程式和測試，工具自寫九個測試都通過。"
+          "text": "修補後的九個測試重跑全過，稍後再做事後驗收。"
         },
         {
           "id": "v40023",
@@ -457,7 +457,7 @@
         "title": "修補的核心四行",
         "language": "javascript",
         "code": "const base = Math.floor(totalCents / people);\nconst remainder = totalCents - base * people;\nreturn Array.from({ length: people }, (_, i) =>\n  i < remainder ? base + 1 : base);",
-        "caption": "從實際 Claude Code 差異節錄"
+        "caption": "從本地修補差異節錄"
       },
       "claims": [
         "c4"
@@ -510,7 +510,7 @@
         },
         {
           "id": "v4e3002",
-        "text": "在函式裡，AI 把平均四捨五入換成基本分與餘數。"
+        "text": "這份修補把平均四捨五入，換成基本分與餘數。"
         },
         {
           "id": "v4e3003",
@@ -672,7 +672,7 @@
         "right": {
           "heading": "修補",
           "points": [
-            "自寫 9 項通過",
+            "修補測試 9 項通過",
             "事後 4 類全通過"
           ]
         }
@@ -748,7 +748,7 @@
       "data": {
         "title": "事後驗收的實際輸出",
         "image": "docs/videos/ai-bug-fix-pr-review/demo/claude-acceptance.png",
-        "caption": "同一示範的 Claude 修補；原始輸出重排，4／4 通過"
+        "caption": "同一示範的本地修補；原始輸出重排，4／4 通過"
       },
       "claims": ["c5"],
       "lines": [
@@ -831,7 +831,7 @@
         },
         {
           "id": "v40109",
-          "text": "尤其輸入驗證最容易在重寫時被無意刪掉。"
+          "text": "輸入驗證也可能在重寫時被無意刪掉。"
         }
       ]
     },
