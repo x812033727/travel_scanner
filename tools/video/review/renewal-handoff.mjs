@@ -14,9 +14,9 @@ import { buildCues, toSrt } from "../core/captions.mjs";
 import { isCompilation } from "../core/compilation.mjs";
 import { atomicWrite, isInside, readJson, ROOT, UsageError } from "../core/paths.mjs";
 import { speechHash } from "../core/timeline.mjs";
-import { eachLine, spokenText } from "../core/schema.mjs";
+import { eachLine, narrationLocale, spokenText } from "../core/schema.mjs";
 import { unknownTermsFor } from "../core/lexicon.mjs";
-import { captionTimelineOf, currentDub, dubsForUpload, localeTexts } from "../core/stages.mjs";
+import { currentDub, dubsForUpload, localeCues, localeTexts } from "../core/stages.mjs";
 import { measureCut, measureProblems } from "../import/import.mjs";
 import { checkPackage, listFiles, packageFiles } from "../package/check.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
@@ -755,7 +755,7 @@ export async function bindManualLanguageSubmission({ body, remote, workdir, proj
     }
     if (status.captions === "ready") {
       requireThat(choice.captions && texts[locale] && !current?.stale, `${locale}: captions or dub timing source is stale`);
-      const expected = toSrt(buildCues(current ? captionTimelineOf(current) : presented, texts[locale], locale).cues);
+      const expected = toSrt(localeCues(presented, texts, locale, narrationLocale(project.doc), current).cues);
       requireThat(entry(`captions_${locale}`)?.sha256 === digest(expected), `${locale}: captions do not match the renewed presentation/dub timeline`);
     }
     if (status.dub === "ready" || status.status === "ready" && body.gate === "dubs") requireThat(choice.dub && current && !current.stale && current.branding_hash === pin.hash && entry(`dub_${locale}`)?.sha256 === await sha256File(current.file), `${locale}: dub is not fitted and branded for this retained body`);

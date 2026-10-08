@@ -16,6 +16,10 @@ scope:
   - tools/video/core/stages.mjs
   - tools/video/core/captions.mjs
   - tools/video/core/captions.test.mjs
+  - tools/video/review/renewal.mjs
+  - tools/video/review/renewal-handoff.mjs
+  - tools/video/review/renewal.test.mjs
+  - docs/videos/DESIGN.md
 ---
 
 # Translated CC cues take their times from the narration's measured cue boundaries
@@ -95,3 +99,14 @@ node --test tools/video/core/captions.test.mjs tools/video/core/stages.test.mjs
   reverting the stage line).
 - `stages.test.mjs` is bound by the duration receipt (`docs/videos/long-form/review.json`), so an
   independent reviewer rebinds it in a separate commit.
+- 2026-10-08 (claude-happy-carson), found by the review of #1361 rebased onto main: the renewal
+  checks rebuilt the translated captions they expect with `buildCues(...)` and no narration, so
+  once `runCaptions` moved a translation's cue changes onto the narration's, a renewed final
+  narrated through the aligned route refused its own captions ("en caption bytes have stale
+  offsets or text", exit 2, every run). `core/stages.mjs` now exports `localeCues`, which
+  `runCaptions`, `review/renewal.mjs` (`bindRenewalSubmission`, the narration's and each
+  translation's) and `review/renewal-handoff.mjs` (`bindManualLanguageSubmission`) all use. A
+  renewal test with a measured narration line binds the bytes `runCaptions` writes and refuses the
+  weighted ones; it fails with the renewal check's old formula. The manual-import check has no
+  language-submission test of its own: it shares the helper. `docs/videos/DESIGN.md` no longer
+  says translations cannot follow the narration's measured changes.
