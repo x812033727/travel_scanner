@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-release-localized-design-web-life-wave5
 title: Release localized design workflow life articles wave5
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-gpt6-root-release
 claimed_at: 2026-10-08T02:18:51Z
 created_at: 2026-10-07T23:53:23Z
-completed_at:
+completed_at: 2026-10-08T06:44:45Z
 branch: codex/article-locales-wave5-release-20261008
 depends_on:
   - 2026-10-07-localize-twelve-design-workflow-and-performance
@@ -34,7 +34,7 @@ The separate frozen PR #1374 and any future cohort are outside that choice.
 - [x] Owner release choice and a readable, verified database backup precede writes.
 - [x] All 48 new locales and four approved source updates complete durable phases.
 - [x] Replay is unchanged and all 60 five-language pages pass desktop/mobile acceptance.
-- [ ] Sanitized release evidence and final source/version hashes are committed.
+- [x] Sanitized release evidence and final source/version hashes are committed.
 
 ## Steps
 
@@ -46,7 +46,7 @@ The separate frozen PR #1374 and any future cohort are outside that choice.
 - [x] Run durable drafts, article publication and hub phases; preserve failures/holds.
 - [x] Rebuild links, inspect selected locale findings and verify unchanged replay.
 - [x] Verify document/media hashes, links, hreflang, sitemaps and desktop/mobile pages.
-- [ ] Record results, clear only this release's owned hold and finish this task in its PR.
+- [x] Record results, clear only this release's owned hold and finish this task in its PR.
 
 ## How to verify
 
