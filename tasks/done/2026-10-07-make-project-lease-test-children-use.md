@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-make-project-lease-test-children-use
 title: Make project lease test children use portable Windows imports
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: codex-windows-video-validation
 claimed_at: 2026-10-08T17:08:02Z
 created_at: 2026-10-07T10:24:13Z
-completed_at:
+completed_at: 2026-10-08T17:26:04Z
 branch: codex/windows-video-validation-20261009
 depends_on: []
 scope:
@@ -26,7 +26,7 @@ in the full tools run during article-localization validation.
 ## Definition of done
 
 - [x] Both cross-process holder tests complete on Windows.
-- [ ] Both cross-process holder tests complete in exact-head Linux CI.
+- [x] Both cross-process holder tests complete in exact-head Linux CI.
 - [x] Real live/dead-holder and retained-byte assertions remain meaningful.
 - [x] Test children terminate on failures without touching unrelated processes.
 
@@ -36,7 +36,7 @@ in the full tools run during article-localization validation.
 - [x] Use a portable file URL in the generated ESM test script.
 - [x] Run the complete affected file on Windows and prove the old import fails.
 - [x] Verify cleanup when an assertion fails after the child has acquired its lease.
-- [ ] Verify the required Linux CI suite on the new branch head.
+- [x] Verify the required Linux CI suite on the new branch head.
 
 ## How to verify
 
@@ -59,3 +59,6 @@ reference-analysis range and from-drama brightness tickets remain unchanged.
 - Raw output and a source-bound receipt are outside the repository at `<home>/mokaair-work/windows-video-validation-20261009/project-lease-proof-1VXWtP/`. Reviewed test SHA-256: `ecbc4566de7d365fa8934e90d808d37b713669a3ed2172ac96707d9acbf85ecc`.
 
 Linux CI remains pending. This file is not in the long-form duration receipt registry, and no shared receipt was changed for this test repair.
+### Cross-platform closeout
+
+PR #1391 at `ea02610af9742b3893261564ab7433cf7ae67648` passed Ubuntu video-tests and web-checks. The media-equipped tools job completed 2,202 tests: 2,201 passed, zero failed/cancelled, one existing API-runtime skip; docs-video passed 199/199. Web-checks completed 2,178 passes with 13 environment skips and no failures. This validates the same committed test changes as the Windows focused runs above. The independent sync-test duration increment is `3acd739f4`; all 473 plans and both receipt tests pass. Remaining intermittent journal rename contention is handled separately and does not change this fixture/assertion fix. This implementation closure does not authorize merge or deployment.

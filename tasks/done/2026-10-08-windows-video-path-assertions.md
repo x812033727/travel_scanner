@@ -1,13 +1,13 @@
 ---
 id: 2026-10-08-windows-video-path-assertions
 title: Keep Windows path assertions portable in video tools tests
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: codex-windows-video-validation
 claimed_at: 2026-10-08T17:08:23Z
 created_at: 2026-10-08T17:08:03Z
-completed_at:
+completed_at: 2026-10-08T17:26:33Z
 branch: codex/windows-video-validation-20261009
 depends_on: []
 scope:
@@ -25,15 +25,15 @@ The complete Windows tools run exposed a review diagnostic assertion that requir
 
 ## Definition of done
 
-- [ ] Both affected files pass on Windows without weakening their semantic assertions.
-- [ ] Independent review updates the changed sync-test duration binding.
-- [ ] Linux CI preserves the same behavior and measurement coverage.
+- [x] Both affected files pass on Windows without weakening their semantic assertions.
+- [x] Independent review updates the changed sync-test duration binding.
+- [x] Linux CI preserves the same behavior and measurement coverage.
 
 ## Steps
 
 - [x] Preserve the full-run failures and confirm no open PR changes these three files.
-- [ ] Use platform-portable expectations and a valid local fixture path.
-- [ ] Run affected files, independently review the receipt, then validate full-suite coverage.
+- [x] Use platform-portable expectations and a valid local fixture path.
+- [x] Run affected files, independently review the receipt, then validate full-suite coverage.
 
 ## How to verify
 
@@ -49,3 +49,6 @@ The first broader Windows run completed with ten failures, including these three
 - `shorts/from-drama.test.mjs` uses the real absolute temporary path on Windows and retains its literal Windows-like directory on POSIX. Before running the real FFmpeg brightness probe, it asserts that the actual stats filename contains a drive colon and backslash. The six-frame count and measured mid-grey range remain unchanged; the Windows case is not skipped.
 - Bundled Node v24.19.0 ran the complete `media/media.test.mjs`, `review/sync.test.mjs` and `shorts/from-drama.test.mjs` files with `--test-concurrency=3`: actual exit 0, 131 passed, 0 failed, 0 skipped, duration 140141 ms. This includes the end-to-end synthetic Short and real brightness measurements. Full log: `<home>/mokaair-work/windows-video-validation-20261009/path-assertions-after.log`.
 - `git diff --check` passed for the three changed test files. The author did not alter duration receipts. Independent receipt review, broader suite validation and Linux CI remain separate completion gates.
+### Cross-platform closeout
+
+PR #1391 at `ea02610af9742b3893261564ab7433cf7ae67648` passed Ubuntu video-tests and web-checks. The media-equipped tools job completed 2,202 tests: 2,201 passed, zero failed/cancelled, one existing API-runtime skip; docs-video passed 199/199. Web-checks completed 2,178 passes with 13 environment skips and no failures. This validates the same committed test changes as the Windows focused runs above. The independent sync-test duration increment is `3acd739f4`; all 473 plans and both receipt tests pass. Remaining intermittent journal rename contention is handled separately and does not change this fixture/assertion fix. This implementation closure does not authorize merge or deployment.
