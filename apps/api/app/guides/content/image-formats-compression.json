@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "WebP、JPEG 與 PNG 怎麼選：用內容決定格式與壓縮",
@@ -154,6 +157,7 @@
           "width": 1600,
           "height": 900,
           "caption": "選擇能保留必要細節的精簡檔案，並留下原稿與可重做的設定。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -254,6 +258,998 @@
         },
         {
           "title": "web.dev：圖片尺寸、密度與 srcset",
+          "url": "https://web.dev/learn/images/descriptive",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Choosing WebP, JPEG or PNG: Let Content Guide Format and Compression",
+      "description": "Smaller files take more than lower image quality: check content, transparency, display size and platform support first. With an original cooking-notes page, this article compares WebP, JPEG, PNG and SVG, explains pixel dimensions versus file size, and covers saving originals, exporting candidates and checking images served by the site. A comparison table, steps and original diagrams help preserve text and ingredient detail without a fixed compression ratio or quality value for all images.",
+      "hero": {
+        "src": "/guides/image-formats-compression/hero-en.jpg",
+        "alt": "An original Mokaair illustration of a screen, file folder and server, showing that images need checking from export through website delivery.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A food photo, an illustration with a transparent background and a table of steps can all appear on a web page, but each calls for a different export approach. Saving them all in the same format or always setting quality very low may leave files too large or damage the details readers need to see first."
+        },
+        {
+          "type": "paragraph",
+          "text": "The following uses a planned original cooking-notes page as an example, based on official image-format and web documentation consulted on 2026-9-14. Dimension calculations explain concepts; no food photography or platform speed testing was performed, and no claim is made that any compression service will always save a fixed percentage."
+        },
+        {
+          "type": "heading",
+          "text": "First distinguish pixels, display dimensions and file size",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Pixel dimensions describe how wide and tall an image is; file size describes how much data is needed to store and transmit it. Two images with identical width and height may have different file sizes because their visual detail, format, transparency and encoding settings differ. Identical pixel dimensions alone do not mean two images have the same loading cost."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, an original sizing exercise reduces an image from 1600 × 900 to 800 × 450. Both width and height are halved, reducing the total pixel count from 1,440,000 to 360,000, or one-quarter of the original. But the compressed file will not necessarily be exactly one-quarter the size, because format and image content still affect the result."
+        },
+        {
+          "type": "paragraph",
+          "text": "The width displayed on a website is another matter. High-density screens may need more image pixels than the CSS display width; do not export just one version based on how wide it looks on a phone. First confirm layout and device requirements, then have the website provide suitable candidate sizes instead of serving an oversized original everywhere."
+        },
+        {
+          "type": "heading",
+          "text": "Choose formats separately for photos, transparent images and text images",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "JPEG is commonly used for static images with varied colors, such as photos. It uses lossy compression, and typical web JPEG files have no transparency channel. JPEG can be a candidate for a photo of a finished dish, but if the image contains small text or sharp edges, carefully check for blurring and block artifacts instead of only viewing the full thumbnail."
+        },
+        {
+          "type": "paragraph",
+          "text": "PNG supports lossless compression and transparency, making it suitable for raster content that needs clear edges or a transparent background. This does not mean it is uncompressed; its compression method simply does not aim to discard pixel information. Saving an already blurry JPEG as a PNG will not restore details lost earlier."
+        },
+        {
+          "type": "paragraph",
+          "text": "WebP supports lossy compression, lossless compression and transparency, and can also be used for animation. Major browsers now support it, but you still need to check the upload platform and downstream tools. If a step diagram already consists of vector shapes and text, consider SVG as well; putting a photo inside an SVG does not turn it into a true vector image."
+        },
+        {
+          "type": "heading",
+          "text": "Use the same original when comparing quality",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Export candidate files from the original image you have preserved, using identical cropping, dimensions and content, then compare formats and quality settings. If one image is resized and another is sharpened separately, their differences cannot all be attributed to format. For cooking notes, check plate rims, leaf textures, shadow gradients and small text in the image individually."
+        },
+        {
+          "type": "paragraph",
+          "text": "Quality numbers in different formats or tools do not necessarily mean the same thing. A quality setting of 80 in one tool cannot automatically be interpreted as better than 75 in another, nor does it represent the percentage of original image information retained. Starting with reasonable candidate settings, adjusting gradually and recording file sizes and visible differences is more practical than seeking a universal best number."
+        },
+        {
+          "type": "paragraph",
+          "text": "Lossless compression preserves the pixel information supplied in that particular input; it does not mean no resizing or lossy processing occurred earlier. Repeatedly re-encoding an already compressed image may accumulate unnecessary losses. When changes are needed, return to the original and export again. Give original assets, editing files and finished website images clear filenames to avoid accidentally overwriting them."
+        },
+        {
+          "type": "heading",
+          "text": "Compare exports in a consistent sequence",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First decide the image's purpose: is the food photo meant to show the overall plating, or must readers clearly see how ingredients are cut? A table of steps needs to keep its text readable. Different uses allow different levels of detail loss. If the article requires readers to identify fine details, provide a suitable way to enlarge the image or a text explanation instead of simply compressing the file further."
+        },
+        {
+          "type": "paragraph",
+          "text": "After exporting, inspect the image both at its actual display size and with details enlarged. The former reflects the normal reading experience; the latter helps reveal blurring, banding, transparency edges and compression artifacts. Also place transparent images against both dark and light backgrounds to check for unexpected white or black borders or a filled-in background."
+        },
+        {
+          "type": "paragraph",
+          "text": "Record each candidate file's width, height, format, settings and file size, then choose a smaller version that meets readers' needs. This is a comparison for the same purpose; one food photo's results cannot support conclusions for every photo, screenshot and icon. If conversion makes the file larger, review the content and settings rather than forcing yourself to use it."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Make a copy to preserve the original, and confirm usage rights, cropping and the image's purpose.",
+            "Choose candidate dimensions based on the layout, and select a format suited to the transparency and content.",
+            "Export from the same original, and inspect text, edges, gradients and file size.",
+            "Place the image on the actual page, check the delivered file, display and alt text, then save the settings."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Check the images the website actually delivers",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A successful upload does not mean readers receive the file you just selected. The website may create thumbnails, recompress images or convert formats, or it may still reference the large original. Open the Network panel in your browser's developer tools, inspect the actual image requests and transfer sizes, then compare them with where the images appear on the page."
+        },
+        {
+          "type": "paragraph",
+          "text": "Responsive images can offer candidates in multiple sizes through srcset, with sizes describing their display width in the layout so the browser can choose according to context. These settings do not guarantee that a particular device will always receive a particular file, and they cannot create images that have not been generated. If a site builder generates them for you, still verify that the candidates and layout descriptions make sense."
+        },
+        {
+          "type": "paragraph",
+          "text": "Format conversion requires a tool to actually re-encode the image; changing the extension from jpg to webp does not make it WebP. During verification, also check mobile browsing, sharing previews and situations that require downloads, because these may use different files or services. If a format is unsupported, provide one acceptable for that use."
+        },
+        {
+          "type": "heading",
+          "text": "Save settings for repeatable exports, not just compressed files",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Save each image's original source, usage rights, editing files, export dimensions and settings, and record which article uses it. If you later need to turn a landscape food photo into a portrait cover, you can adjust the crop instead of enlarging an already reduced output. For text diagrams, keeping the vector original also makes content easier to update."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you use an online compression service, first check how it handles uploaded data. For screenshots containing personal data, unpublished work or client documents, choose tools according to your own data management requirements rather than uploading directly just because a service is free. This is part of choosing a processing method and helps keep the image's content aligned with its use."
+        },
+        {
+          "type": "paragraph",
+          "text": "File size is one verification item. You also need to confirm that readers can understand the image, transparency is correct, key steps have not been cropped out and alt text supplies the necessary information. Completing format selection, sizing and content checks together creates an image workflow that supports ongoing updates. The next time you replace an image, reuse the checks and compare results again."
+        },
+        {
+          "type": "image",
+          "src": "/guides/image-formats-compression/diagram-1-en.svg",
+          "alt": "Four cards check content, dimensions, export and verification in order, distinguishing format selection from checks on the actual page.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Choose a compact file that preserves necessary detail, and keep the original and settings you can reuse.",
+          "description": "Four cards check content, dimensions, export and verification in order, distinguishing format selection from checks on the actual page.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Format",
+            "Content to consider first",
+            "Key checks"
+          ],
+          "rows": [
+            [
+              "JPEG",
+              "Photos and natural gradients",
+              "Detail lost in compression; no transparency support"
+            ],
+            [
+              "PNG",
+              "Transparent images, screenshots and sharp edges",
+              "File size and actual pixel content"
+            ],
+            [
+              "Lossy WebP",
+              "Web photos and some transparent images",
+              "Image quality, transparent edges and platform support"
+            ],
+            [
+              "Lossless WebP",
+              "Content requiring preservation of input pixels",
+              "Whether it is actually smaller, and tool settings"
+            ],
+            [
+              "SVG",
+              "Icons and diagrams originally made as vectors",
+              "Text, embedded raster images and exported display"
+            ]
+          ],
+          "caption": "Compare candidate formats by content; no format guarantees the smallest file for every image."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Do not replace originals with compressed files",
+          "text": "Keep sources you can export again, and record cropping, dimensions and settings. A smaller file does not mean enough detail remains; changing the extension does not complete a format conversion."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Check image usage rights first",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Distinguish color output for web and print",
+              "kind": "life",
+              "slug": "rgb-cmyk-export"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Understand display needs in responsive layouts",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN: Image formats, transparency and use cases",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: WebP format and support",
+          "url": "https://developers.google.com/speed/webp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "web.dev: Raster images and lossy and lossless compression",
+          "url": "https://web.dev/learn/images/raster-images",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "web.dev: Image dimensions, density and srcset",
+          "url": "https://web.dev/learn/images/descriptive",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WebP、JPEG、PNGの選び方：内容に合わせて形式と圧縮を決める",
+      "description": "画像を軽くするには、品質を下げるだけでなく、内容、透明な背景、表示サイズ、プラットフォームの対応を先に確認する必要があります。本記事ではオリジナルの料理ノートのページを例に、WebP、JPEG、PNG、SVGの用途を比較し、ピクセル寸法とファイルサイズの違いを説明します。原稿の保存から候補の書き出し、Webサイトで実際に配信される画像の確認までの流れも整理します。比較表、操作手順、オリジナルの図解を添え、固定の圧縮率や単一の品質値ですべての画像を判断せずに、文字や食材の細部を保つ方法を紹介します。",
+      "hero": {
+        "src": "/guides/image-formats-compression/hero-ja.jpg",
+        "alt": "Mokaairオリジナルの画面、ファイルフォルダー、サーバーのイラスト。画像は書き出しからWebサイトでの配信まで確認が必要であることを表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "料理の写真、背景が透明なイラスト、手順表は、いずれもWebページに掲載できますが、適した書き出し方は異なります。すべてを同じ形式で保存したり、一律に品質を大きく下げたりすると、ファイルが依然として大きすぎることも、読者が見る必要のある細部を先に損なってしまうこともあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下では、オリジナルの料理ノートのページ構成を例に、2026 年 9 月 14 日に参照した画像形式とWebに関する公式ドキュメントに基づいて整理します。サイズの計算式は概念を説明するためのものです。実際の料理撮影やプラットフォームの速度テストは行っておらず、特定の圧縮サービスで必ず一定の割合を削減できると主張するものでもありません。"
+        },
+        {
+          "type": "heading",
+          "text": "まずピクセル、表示サイズ、ファイルサイズを区別する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ピクセル寸法は画像の幅と高さを表し、ファイルサイズは保存や転送に必要なデータ量を表します。幅と高さが同じ画像でも、画面内の細部、形式、透明度、エンコード設定によって、ファイルサイズは異なる場合があります。ピクセル寸法が同じというだけで、読み込みの負荷も同じだとは判断できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば、オリジナルのサイズ計算演習で 1600 × 900 の画像を 800 × 450 に縮小すると、幅と高さがどちらも半分になり、総ピクセル数は 1,440,000 から 360,000、つまり元の四分の一になります。ただし、圧縮後のファイルサイズがちょうど四分の一になるとは限りません。形式や画像の内容も結果に影響するためです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Webサイトでの表示幅は、また別の話です。高密度の画面では、CSSでの表示幅より多くの画像ピクセルが必要になる場合があります。そのため、スマートフォンの画面で見える幅だけに合わせて、単一の画像を書き出さないようにしましょう。まずレイアウトと端末の要件を確認し、Webサイトで適切な候補サイズを提供して、あらゆる場所に巨大な元画像を配信することを避けます。"
+        },
+        {
+          "type": "heading",
+          "text": "写真、透過画像、文字入り画像ごとに形式を選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "JPEGは、写真など色の変化が多い静止画像によく使われ、非可逆圧縮を採用しています。一般的なWeb用JPEGには透過チャンネルがありません。完成した料理の写真ではJPEGを候補にできますが、小さな文字や鋭い輪郭がある場合は、縮小した画像全体を見るだけでなく、ぼやけやブロック状の乱れがないかを丁寧に確認する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "PNGは可逆圧縮と透明度に対応し、くっきりした輪郭や透明な背景を保つ必要があるラスター画像に適しています。圧縮しないわけではなく、ピクセル情報を捨てる方式ではないということです。すでにぼやけたJPEGをPNGとして保存し直しても、以前に失われた細部は復元できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WebPは非可逆圧縮、可逆圧縮、透明度に対応し、アニメーションにも使えます。現在は主要ブラウザーが対応していますが、アップロード先のプラットフォームや後工程のツールも確認する必要があります。手順図がもともとベクターの図形と文字で作られているなら、SVGも検討できます。ただし、写真をSVGに入れても、本当のベクター画像になるわけではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "品質を比べるときは、まず同じ原稿を使う",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "保存してある元画像から候補ファイルを書き出し、同じトリミング、サイズ、内容で形式と品質設定を比較します。一方のサイズを変え、もう一方に別途シャープ処理を施した場合、その違いをすべて形式によるものとは判断できません。料理ノートでは、皿の縁、葉の質感、影のグラデーション、画像内の小さな文字をそれぞれ確認できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "形式やツールが異なると、品質の数値が同じ意味を持つとは限りません。あるツールの品質 80 を、別のツールの 75 より良いと直接解釈することはできず、元画像の情報を保持する割合でもありません。妥当な候補設定から始め、少しずつ調整してファイルサイズと目に見える違いを記録するほうが、どこでも使える最適な数値を追い求めるより実用的です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可逆圧縮が保持するのは、その処理に入力されたピクセル情報です。それ以前に拡大・縮小や非可逆処理をしていないことを意味するわけではありません。圧縮済みの画像を繰り返しエンコードすると、不要な損失が蓄積する場合があります。変更が必要なときは、原稿に戻って書き出し直しましょう。元の素材、編集ファイル、Webサイト用の完成画像には分かりやすいファイル名を付け、誤って上書きしないようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "決まった順序で書き出し比較を一通り進める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず画像の目的を決めます。料理の写真は盛り付け全体を見るためなのか、それとも食材の切り方まで明確に見る必要があるのか。手順表では、読める文字を保つ必要があります。用途によって、許容できる細部の違いも変わります。記事で細かな情報を識別する必要があるなら、ファイルをさらに小さくするだけでなく、適切な拡大方法や文章による説明を用意しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "書き出した後は、実際の表示サイズと拡大した細部の両方を確認します。前者は通常の閲覧時の見え方を確かめるため、後者はぼやけ、色の帯、透過部分の輪郭、圧縮の痕跡を見つけるためです。透過画像は暗い背景と明るい背景の両方に置き、予期しない白い縁や黒い縁がないか、背景が塗りつぶされていないかも確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "候補ファイルの幅と高さ、形式、設定、ファイルサイズを記録し、閲覧に必要な品質を満たす、より軽量なものを選びます。これは同じ用途での比較です。一枚の料理写真の結果から、すべての写真、スクリーンショット、アイコンについて結論を出すことはできません。形式を変えた後にかえって大きくなった場合は、内容と設定を見直し、無理に採用する必要はありません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "原稿をコピーして保存し、使用権、トリミング、画像の用途を確認する。",
+            "レイアウトに合わせて候補サイズを決め、透明度と内容に適した形式を選ぶ。",
+            "同じ原稿から書き出し、文字、輪郭、グラデーション、ファイルサイズを確認する。",
+            "実際のページに配置して、配信されるファイル、表示、代替テキストを確認し、設定を保存する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Webサイトが実際に配信する画像を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "アップロードに成功しても、読者に届くのが先ほど選んだファイルとは限りません。Webサイトがサムネイルを作成したり、再圧縮や形式変換を行ったりする場合も、元の大きな画像をそのまま参照している場合もあります。ブラウザーの開発者ツールでNetworkパネルを開き、実際の画像リクエストと転送サイズを確認して、ページ上の表示位置と照合しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "レスポンシブ画像では、srcset で複数のサイズ候補を提供し、sizes でレイアウト内の表示幅を指定することで、ブラウザーが状況に応じて選べます。これらの設定は、特定の端末に常に特定のファイルが届くことを保証するものではなく、まだ生成されていない画像を自動で作るものでもありません。サイト構築システムが代わりに生成する場合も、候補とレイアウトの指定が妥当かを確認する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "形式変換には、ツールによる実際の再エンコードが必要です。拡張子を jpg から webp に変えるだけでは、WebPにはなりません。最終確認では、スマートフォンでの閲覧、共有時のプレビュー、ダウンロードが必要な場面も確認します。それぞれ異なるファイルやサービスを使っている可能性があるためです。非対応だと分かった場合は、その用途で使える形式を用意します。"
+        },
+        {
+          "type": "heading",
+          "text": "再現できる設定を残し、圧縮済み画像だけにならないようにする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "画像の元の出典、利用許諾、編集ファイル、書き出しサイズと設定を保存し、どの記事に掲載したかも記録します。後で横長の料理写真を縦長のカバー画像に変えるときも、縮小済みの完成画像を拡大し直すことなく、トリミングを調整できます。文字入りの図解では、ベクターの原稿を残しておくと内容も更新しやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "オンラインの圧縮サービスを使う場合は、アップロードしたデータがどう扱われるかを先に確認します。個人情報、未公開作品、顧客の文書を含むスクリーンショットは、自分のデータ管理要件に従ってツールを選ぶべきで、無料だからという理由だけでそのままアップロードしてはいけません。これも処理方法を選ぶ際の一部であり、画像の内容や用途に合わない扱いを避けることにつながります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ファイルサイズは確認項目の一つです。読者が内容を理解できること、透明な背景が正しく保たれていること、重要な手順が切り取られていないこと、代替テキストが必要な情報を伝えていることも確認します。形式の選択、サイズ、内容の確認を合わせて行うことで、継続して更新できる画像の作業手順が整います。次に画像を差し替えるときも、この確認方法を使い、結果を改めて比較しましょう。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/image-formats-compression/diagram-1-ja.svg",
+          "alt": "四枚のカードで内容、サイズ、書き出し、最終確認を順に確認し、形式の選択と実際のページでの確認を区別しています。",
+          "width": 1600,
+          "height": 900,
+          "caption": "必要な細部を保てる軽量なファイルを選び、原稿と再現できる設定を残します。",
+          "description": "四枚のカードで内容、サイズ、書き出し、最終確認を順に確認し、形式の選択と実際のページでの確認を区別しています。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "形式",
+            "まず候補として検討する内容",
+            "確認のポイント"
+          ],
+          "rows": [
+            [
+              "JPEG",
+              "写真と自然なグラデーション",
+              "非可逆圧縮による細部の損失、透過非対応"
+            ],
+            [
+              "PNG",
+              "透過画像、スクリーンショット、鋭い輪郭",
+              "ファイルサイズ、実際のピクセル内容"
+            ],
+            [
+              "WebP 非可逆圧縮",
+              "Web用の写真と一部の透過画像",
+              "画質、透過部分の輪郭、プラットフォームの対応"
+            ],
+            [
+              "WebP 可逆圧縮",
+              "入力時のピクセル情報を保持する必要がある内容",
+              "実際に小さくなるか、ツールの設定"
+            ],
+            [
+              "SVG",
+              "もともとベクターで制作したアイコンや図解",
+              "文字、埋め込んだラスター画像、書き出し後の表示"
+            ]
+          ],
+          "caption": "内容に応じて候補の形式を比較します。どの形式も、すべての画像で最小になるとは保証できません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "圧縮後のファイルで原稿を置き換えない",
+          "text": "書き出し直せる元データを残し、トリミング、サイズ、設定を記録します。ファイルが小さくなっても、必要な細部が十分に残っているとは限りません。拡張子の変更も、形式変換の完了を意味するわけではありません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "まず画像素材の利用許諾を確認する",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Webと印刷の色の出力を区別する",
+              "kind": "life",
+              "slug": "rgb-cmyk-export"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "レスポンシブレイアウトの表示要件を理解する",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN：画像形式、透明度、適した用途",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：WebP形式と対応状況",
+          "url": "https://developers.google.com/speed/webp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "web.dev：ラスター画像と非可逆・可逆圧縮",
+          "url": "https://web.dev/learn/images/raster-images",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "web.dev：画像サイズ、密度、srcset",
+          "url": "https://web.dev/learn/images/descriptive",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WebP·JPEG·PNG 선택법: 콘텐츠에 따라 형식과 압축 결정하기",
+      "description": "이미지 파일을 줄이려면 품질만 낮출 것이 아니라 콘텐츠, 투명 배경, 표시 크기, 플랫폼 지원부터 확인해야 합니다. 직접 만든 요리 노트 페이지를 예로 WebP, JPEG, PNG, SVG의 용도를 비교하고, 픽셀 크기와 파일 크기의 차이 및 원본 보관부터 후보 파일 내보내기, 웹사이트의 실제 이미지 확인까지의 과정을 설명합니다. 비교표, 작업 단계, 직접 제작한 도해를 통해 글자와 식재료의 디테일을 보존하고, 모든 이미지를 고정 압축률이나 하나의 품질 수치로 판단하지 않도록 돕습니다.",
+      "hero": {
+        "src": "/guides/image-formats-compression/hero-ko.jpg",
+        "alt": "Mokaair가 직접 제작한 화면, 파일 폴더, 서버 일러스트로, 이미지 내보내기부터 웹사이트 전송까지 검수가 필요함을 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "요리 사진, 투명 배경 일러스트, 단계별 안내표는 모두 웹페이지에 넣을 수 있지만, 적합한 내보내기 방식은 서로 다릅니다. 모두 같은 형식으로 저장하거나 일괄적으로 품질을 아주 낮추면 파일이 여전히 클 수도 있고, 독자가 봐야 할 디테일부터 손상될 수도 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "아래 내용은 직접 만든 요리 노트 페이지의 기획을 예로 들어, 2026년 9월 14일에 확인한 공식 이미지 형식 및 웹 문서를 바탕으로 정리했습니다. 크기 계산식은 개념을 설명하기 위한 것이며, 실제로 요리를 촬영하거나 플랫폼 속도를 시험하지 않았고, 특정 압축 서비스가 반드시 파일 크기를 일정 비율만큼 줄인다고 주장하지도 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "먼저 픽셀, 표시 크기, 파일 크기 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "픽셀 크기는 이미지의 너비와 높이를 나타내며, 파일 크기는 저장과 전송에 필요한 데이터의 양을 뜻합니다. 너비와 높이가 같은 이미지라도 화면의 디테일, 형식, 투명도, 인코딩 설정에 따라 파일 크기가 달라질 수 있습니다. 픽셀 크기가 같다는 이유만으로 두 이미지의 로딩 비용도 같다고 생각해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 직접 만든 크기 계산 예제에서 1600 × 900 이미지를 800 × 450으로 줄이면 너비와 높이가 모두 절반이 됩니다. 총 픽셀 수는 1,440,000에서 360,000으로, 즉 원래의 사분의 일로 줄어듭니다. 하지만 형식과 이미지 내용도 결과에 영향을 주므로, 압축 후 파일 크기가 반드시 정확히 사분의 일이 되는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "웹사이트에서 표시되는 너비는 또 다른 문제입니다. 고밀도 화면에서는 CSS 표시 너비보다 더 많은 이미지 픽셀이 필요할 수 있습니다. 따라서 휴대전화 화면에서 보이는 너비만 기준으로 단일 버전을 내보내지 마세요. 먼저 레이아웃과 기기의 요구사항을 확인하고, 웹사이트에서 적절한 후보 크기를 제공하도록 하여 모든 위치에 초대형 원본 이미지를 사용하지 않도록 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "사진, 투명 이미지, 글자 이미지에 맞는 형식 선택하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "JPEG는 사진처럼 색상 변화가 많은 정지 이미지에 흔히 사용됩니다. 손실 압축을 사용하며, 일반적인 웹용 JPEG는 투명도 채널을 지원하지 않습니다. 완성된 요리 사진에는 JPEG를 후보로 고려할 수 있지만, 이미지에 작은 글자나 선명한 경계선이 있다면 전체 축소 이미지만 보지 말고 흐림이나 블록 현상이 생겼는지 꼼꼼히 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "PNG는 무손실 압축과 투명도를 지원하므로, 선명한 경계나 투명 배경을 유지해야 하는 래스터 콘텐츠에 적합합니다. 압축하지 않는다는 뜻이 아니라, 픽셀 정보를 손실시키는 방식으로 압축하지 않는다는 뜻입니다. 이미 흐려진 JPEG를 PNG로 다시 저장해도 이전에 잃어버린 디테일은 복원되지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "WebP는 손실 압축, 무손실 압축, 투명도를 모두 지원하며 애니메이션에도 사용할 수 있습니다. 현재 주요 브라우저는 지원하지만, 업로드 플랫폼과 후속 처리 도구도 확인해야 합니다. 단계별 안내 이미지가 원래 벡터 도형과 글자로 구성되어 있다면 SVG도 검토할 수 있습니다. 사진을 SVG에 넣는다고 해서 진정한 벡터 이미지가 되는 것은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "품질을 비교할 때는 먼저 동일한 원본 사용하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "보관한 원본 이미지에서 후보 파일을 내보내고, 동일한 크롭, 크기, 콘텐츠를 사용한 상태에서 형식과 품질 설정을 비교합니다. 한 이미지는 크기를 바꾸고 다른 이미지는 별도로 선명하게 보정했다면, 차이를 모두 형식 탓으로 돌릴 수 없습니다. 요리 노트에서는 접시 테두리, 잎의 질감, 그림자의 그라데이션, 이미지 속 작은 글자를 각각 확인할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "형식이나 도구가 다르면 품질 수치의 의미도 같지 않을 수 있습니다. 어떤 도구의 품질 80을 다른 도구의 75보다 더 좋다고 바로 해석할 수 없으며, 원본 이미지 정보의 보존 비율을 뜻하는 것도 아닙니다. 합리적인 후보 설정에서 시작해 조금씩 조정하면서 파일 크기와 눈에 보이는 차이를 기록하는 편이, 모든 경우에 통하는 최적의 수치를 찾는 것보다 실용적입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "무손실 압축이 보존하는 것은 해당 작업에 입력된 픽셀 정보이며, 이전에 크기 조정이나 손실 처리가 없었다는 뜻은 아닙니다. 이미 압축된 이미지를 반복해서 다시 인코딩하면 불필요한 손실이 누적될 수 있습니다. 개편이 필요할 때는 원본으로 돌아가 다시 내보내세요. 원본 자료, 편집 파일, 웹사이트용 완성 파일은 파일명을 명확히 구분해 실수로 덮어쓰지 않도록 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "정해진 순서로 내보내기 결과 비교하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 이미지의 목적을 정합니다. 요리 사진에서 전체 플레이팅을 보여 주려는 것인지, 식재료를 자른 모양까지 선명하게 보여야 하는 것인지 판단하고, 단계별 안내표에서는 글자의 가독성을 유지해야 합니다. 용도가 다르면 허용할 수 있는 디테일 차이도 달라집니다. 글에서 작은 정보를 식별해야 한다면, 파일을 더 작게 압축하는 데만 집중하지 말고 적절한 확대 방법이나 글로 된 설명을 제공해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "내보낸 뒤에는 실제 표시 크기와 확대한 디테일을 함께 확인합니다. 전자는 일반적인 읽기 경험을 보여 주고, 후자는 흐림, 색 띠 현상, 투명 영역의 경계, 압축 흔적을 찾는 데 쓰입니다. 투명 이미지는 어두운 배경과 밝은 배경에도 올려 예상치 못한 흰 테두리나 검은 테두리가 생기거나 배경이 채워지지 않았는지 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "후보 파일의 너비와 높이, 형식, 설정, 파일 크기를 기록하고, 읽기에 필요한 조건을 충족하는 더 작은 버전을 선택합니다. 이는 동일한 용도 안에서의 비교이므로, 요리 사진 한 장의 결과로 모든 사진, 화면 캡처, 아이콘에 대한 결론을 내릴 수는 없습니다. 형식을 변환한 뒤 오히려 파일이 커졌다면 콘텐츠와 설정을 다시 확인하고, 굳이 그 형식을 사용할 필요는 없습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "원본을 복사해 보관하고 사용 권한, 크롭, 이미지 용도를 확인합니다.",
+            "레이아웃에 따라 후보 크기를 정하고 투명도와 콘텐츠에 맞는 형식을 선택합니다.",
+            "동일한 원본에서 내보내고 글자, 경계, 그라데이션, 파일 크기를 확인합니다.",
+            "실제 페이지에 넣어 전송 파일, 표시 상태, 대체 텍스트를 확인한 뒤 설정을 저장합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "웹사이트에서 실제로 전송하는 이미지 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "업로드에 성공했다고 해서 독자가 받는 파일이 방금 선택한 파일과 같다는 뜻은 아닙니다. 웹사이트가 썸네일을 만들거나 다시 압축하거나 형식을 변환할 수도 있고, 여전히 큰 원본 이미지를 참조할 수도 있습니다. 브라우저 개발자 도구의 Network 패널을 열어 실제 이미지 요청과 전송 크기를 확인하고, 페이지에서 표시되는 위치와 대조하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "반응형 이미지는 srcset으로 여러 크기의 후보를 제공하고, sizes로 레이아웃 안의 표시 너비를 설명하여 브라우저가 상황에 따라 선택하도록 할 수 있습니다. 이 설정이 특정 기기에 항상 특정 파일이 전달된다고 보장하는 것은 아니며, 아직 생성되지 않은 이미지를 저절로 만들어 주지도 않습니다. 웹사이트 구축 시스템이 대신 생성하더라도 후보 이미지와 레이아웃 설명이 적절한지 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "파일 형식을 변환하려면 도구가 실제로 다시 인코딩해야 합니다. 확장자만 jpg에서 webp로 바꾼다고 WebP가 되는 것은 아닙니다. 검수할 때는 모바일 브라우징, 공유 미리보기, 다운로드가 필요한 상황도 확인하세요. 이런 곳에서는 서로 다른 파일이나 서비스를 사용할 수 있기 때문입니다. 지원되지 않는 경우에는 해당 용도에 적합한 형식을 제공하세요."
+        },
+        {
+          "type": "heading",
+          "text": "압축 완성본만 남지 않도록 재현 가능한 설정 보관하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "이미지의 원본 출처, 사용 허가, 편집 파일, 내보내기 크기와 설정을 보관하고, 어느 글에 사용했는지도 기록합니다. 나중에 가로형 요리 사진을 세로형 표지로 바꾸려 할 때 이미 축소된 완성본을 다시 확대하지 않고 크롭을 새로 조정할 수 있습니다. 글자가 포함된 도해는 벡터 원본도 보관하면 내용을 더 쉽게 업데이트할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "온라인 압축 서비스를 사용한다면 업로드한 데이터가 어떻게 처리되는지 먼저 확인하세요. 개인정보, 미공개 작품, 고객 문서가 포함된 화면 캡처는 자신의 데이터 관리 요구사항에 따라 도구를 선택해야 하며, 서비스가 무료라는 이유만으로 바로 업로드해서는 안 됩니다. 이것도 처리 방식을 선택하는 과정의 일부이며, 이미지 내용과 용도에 맞지 않는 처리를 피하는 데 도움이 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "파일 크기는 검수 항목 중 하나일 뿐입니다. 독자가 이해할 수 있는지, 투명 배경이 올바른지, 핵심 단계가 잘려 나가지 않았는지, 대체 텍스트가 필요한 정보를 제공하는지도 확인해야 합니다. 형식 선택, 크기, 콘텐츠 확인을 함께 완료해야 지속적으로 업데이트할 수 있는 이미지 작업 과정을 만들 수 있습니다. 다음에 이미지를 바꿀 때도 같은 확인 방법을 사용하고 결과를 다시 비교하세요."
+        },
+        {
+          "type": "image",
+          "src": "/guides/image-formats-compression/diagram-1-ko.svg",
+          "alt": "카드 네 장이 콘텐츠, 크기, 내보내기, 검수를 차례로 확인하며, 형식 선택과 실제 페이지 확인을 구분합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "필요한 디테일을 유지하는 작은 파일을 선택하고, 원본과 재현 가능한 설정을 보관하세요.",
+          "description": "카드 네 장이 콘텐츠, 크기, 내보내기, 검수를 차례로 확인하며, 형식 선택과 실제 페이지 확인을 구분합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "형식",
+            "우선 검토할 콘텐츠",
+            "확인 사항"
+          ],
+          "rows": [
+            [
+              "JPEG",
+              "사진과 자연스러운 그라데이션",
+              "디테일 손실, 투명도 미지원"
+            ],
+            [
+              "PNG",
+              "투명 이미지, 화면 캡처, 선명한 경계",
+              "파일 크기, 실제 픽셀 내용"
+            ],
+            [
+              "WebP 손실 압축",
+              "웹용 사진과 일부 투명 이미지",
+              "화질, 투명 영역의 경계, 플랫폼 지원"
+            ],
+            [
+              "WebP 무손실 압축",
+              "입력 픽셀을 보존해야 하는 콘텐츠",
+              "실제로 더 작은지 여부, 도구 설정"
+            ],
+            [
+              "SVG",
+              "원래 벡터로 제작된 아이콘과 도해",
+              "글자, 삽입된 래스터 이미지, 내보내기 후 표시 상태"
+            ]
+          ],
+          "caption": "콘텐츠에 따라 후보 형식을 비교하세요. 모든 이미지에서 가장 작은 파일을 보장하는 형식은 없습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "압축 파일로 원본을 대체하지 마세요",
+          "text": "다시 내보낼 수 있는 원본을 보관하고 크롭, 크기, 설정을 기록하세요. 파일이 작아졌다고 디테일이 충분히 남아 있다는 뜻은 아니며, 확장자를 바꾸는 것도 형식 변환을 완료한 것과 같지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "먼저 이미지 자료의 사용 허가 확인하기",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹과 인쇄용 색상 출력 구분하기",
+              "kind": "life",
+              "slug": "rgb-cmyk-export"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "반응형 레이아웃의 표시 요구사항 이해하기",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN: 이미지 형식, 투명도, 적합한 사용 상황",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: WebP 형식과 지원",
+          "url": "https://developers.google.com/speed/webp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "web.dev: 래스터 이미지와 손실·무손실 압축",
+          "url": "https://web.dev/learn/images/raster-images",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "web.dev: 이미지 크기, 밀도, srcset",
+          "url": "https://web.dev/learn/images/descriptive",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WebP、JPEG 与 PNG 怎么选：根据内容决定格式与压缩方式",
+      "description": "图片变小不只是调低质量，还要先确认内容、透明背景、显示尺寸及平台支持。本文以原创烹饪笔记页为例，比较 WebP、JPEG、PNG 与 SVG 的用途，说明像素尺寸和文件大小的差异，整理从保留原稿、输出候选文件到检查网站实际图片的流程。附比较表、操作步骤和原创图解，帮助保留文字与食材细节，不用固定压缩比例或单一质量数值决定所有图片。",
+      "hero": {
+        "src": "/guides/image-formats-compression/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创画面、文件夹与主机插图，代表图片从输出到网站传输都需要验收。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "一张菜品照片、一张透明背景插图和一张步骤表，虽然都能放进网页，适合的输出方式却不同。把它们全部保存为同一格式，或一律调到很低的质量，可能让文件还是偏大，也可能先破坏读者需要看的细节。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以原创烹饪笔记页规划为例，根据 2026 年 9 月 14 日查阅的官方格式与网页文档整理。尺寸算式用来解释概念，没有实际拍摄菜品、进行平台速度测试，或宣称某个压缩服务一定能节省固定比例。"
+        },
+        {
+          "type": "heading",
+          "text": "先分清像素、显示尺寸与文件大小",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "像素尺寸描述图片有多宽、多高；文件大小则是存储与传输需要多少数据。两张同样宽高的图片，因画面细节、格式、透明度及编码设置不同，可能产生不同文件大小。不能只看到像素相同，就认为两张图片加载成本相同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如原创尺寸练习把 1600 × 900 的图片缩成 800 × 450，宽和高都减半，像素总数从 1,440,000 变成 360,000，也就是原来的四分之一。但压缩后文件不一定刚好变成四分之一，因为格式和画面内容仍会影响结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "网站显示宽度又是另一回事。高密度屏幕可能需要比 CSS 显示宽度更多的图片像素；因此不要只按手机画面看起来的宽度输出单一版本。先确认版面与设备需求，再让网站提供适合的候选尺寸，避免在所有位置都使用超大原图。"
+        },
+        {
+          "type": "heading",
+          "text": "照片、透明图与文字图分别选格式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "JPEG 常用于照片等色彩变化丰富的静态画面，采用有损压缩，常见网页 JPEG 不提供透明通道。菜品成品照可把 JPEG 列为候选，但若图片有细小文字或锐利边线，要仔细检查是否出现模糊与方块，不只看整张缩略图。"
+        },
+        {
+          "type": "paragraph",
+          "text": "PNG 支持无损压缩与透明度，适合需要保留清晰边缘或透明背景的位图内容。它并不是没有压缩，只是压缩方式不以丢失像素信息为目标。把已经模糊的 JPEG 另存为 PNG，也不会把先前失去的细节还原。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WebP 同时支持有损、无损与透明度，也可用于动画；目前主要浏览器已有支持，但仍要检查上传平台和下游工具。若步骤图本来就是矢量形状与文字，可另行评估 SVG；照片嵌入 SVG 并不会因此成为真正的矢量图。"
+        },
+        {
+          "type": "heading",
+          "text": "比较质量时，先固定同一份原稿",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "从保留的原始图片输出候选文件，使用相同裁剪、尺寸和内容，再比较格式与质量设置。若一张改了尺寸、一张另外锐化，差异就不能全归因于格式。烹饪笔记可以分别检查盘沿、叶片纹理、阴影渐变与图片上的小字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不同格式或工具的质量数值不一定具有相同意义。某工具的质量 80，不能直接理解为比另一工具的 75 更好，也不是保留原图信息的百分比。从合理的候选设置开始，逐步调整并记下文件大小与可见差异，比追求通用最佳数值更实用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "无损压缩保留的是该次输入的像素信息，不代表之前没有缩放或有损处理。反复把已压缩的图片再编码，可能累积不必要的损失；需要改版时，回到原稿重新输出。原始素材、编辑文件与网站成品应有清楚的文件名，避免误覆盖。"
+        },
+        {
+          "type": "heading",
+          "text": "按固定顺序完成一次输出比较",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先决定图片的目的：菜品照片是看整体摆盘，还是必须看清食材切法；步骤表则要保留可读文字。用途不同，能接受的细节差异就不同。若文章需要辨识细小信息，应提供合适的放大方式或文字说明，而不是只把文件压到更小。"
+        },
+        {
+          "type": "paragraph",
+          "text": "输出后同时查看实际显示尺寸和放大细节。前者反映一般阅读感受，后者用来找出模糊、色带、透明边缘或压缩痕迹。透明图片也要放到深色与浅色背景上，确认没有意外的白边、黑边或背景被填满。"
+        },
+        {
+          "type": "paragraph",
+          "text": "记录候选文件的宽高、格式、设置与文件大小，选择能满足阅读需求的较精简版本。这是同一用途下的比较，不能用一张菜品照片的结果替所有照片、截图与图标下结论。若格式转换后反而变大，就回头检查内容与设置，不必勉强采用。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "复制并保留原稿，确认使用权、裁剪及图片用途。",
+            "根据版面决定候选尺寸，选择符合透明度与内容的格式。",
+            "从同一原稿输出，查看文字、边缘、渐变和文件大小。",
+            "放进实际页面检查传输文件、显示及替代文本，再保存设置。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "检查网站实际发送的图片",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "上传成功不代表读者收到的就是刚才选好的文件。网站可能生成缩略图、重新压缩或转换格式，也可能仍引用原始大图。打开浏览器开发者工具的 Network 面板，查看实际图片请求与传输大小，再对照页面上的显示位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "响应式图片可通过 srcset 提供多个尺寸候选，配合 sizes 描述版面中的显示宽度，让浏览器根据具体情况选择。这些设置不是保证某设备永远收到某一文件，也不会自行创建尚未生成的图片。若建站系统代为生成，仍需确认候选与版面描述合理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "转换格式要由工具真正重新编码；只把扩展名从 jpg 改成 webp，不会变成 WebP。验收时也检查手机浏览、分享预览及需要下载的场景，因为这些地方可能使用不同的文件或服务。发现不支持时，提供该用途可接受的格式。"
+        },
+        {
+          "type": "heading",
+          "text": "留下可重复操作的设置，避免只剩压缩成品",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "为图片保存原始来源、授权、编辑文件、输出尺寸及设置，并记下放在哪篇文章。日后要把横向菜品照片改成竖向封面，就能重新安排裁剪，不必从已缩小的成品再放大。对于文字图解，保留矢量原稿也更容易更新内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若使用在线压缩服务，先确认上传数据如何处理。含个人信息、未公开作品或客户文档的截图，应根据自己的数据管理要求选工具，不能只因服务免费就直接上传。这是选择处理方式的一部分，也避免图片内容与用途脱节。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件大小是验收项目之一，还要确认读者看得懂、透明背景正确、没有裁掉关键步骤，以及替代文本能提供必要信息。把格式选择、尺寸与内容检查一起完成，才会得到能持续更新的图片流程。下次换图时，沿用检查方法并重新比较结果。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/image-formats-compression/diagram-1-zh-cn.svg",
+          "alt": "四张卡片依次确认内容、尺寸、输出与验收，区分格式选择和实际页面检查。",
+          "width": 1600,
+          "height": 900,
+          "caption": "选择能保留必要细节的精简文件，并留下原稿与可重复操作的设置。",
+          "description": "四张卡片依次确认内容、尺寸、输出与验收，区分格式选择和实际页面检查。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "格式",
+            "适合先评估的内容",
+            "检查重点"
+          ],
+          "rows": [
+            [
+              "JPEG",
+              "照片与自然渐变",
+              "有损细节、不支持透明"
+            ],
+            [
+              "PNG",
+              "透明图、截图与锐利边缘",
+              "文件大小、实际像素内容"
+            ],
+            [
+              "WebP 有损",
+              "网页照片及部分透明图",
+              "画质、透明边缘、平台支持"
+            ],
+            [
+              "WebP 无损",
+              "需保留输入像素的内容",
+              "是否确实更小、工具设置"
+            ],
+            [
+              "SVG",
+              "原本以矢量制作的图标图解",
+              "文字、嵌入位图与输出显示"
+            ]
+          ],
+          "caption": "按内容比较候选格式，没有任何格式保证每张图都最小。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "不要用压缩后的文件替代原稿",
+          "text": "保留可重新输出的来源，并记下裁剪、尺寸与设置。文件变小不代表细节仍足够；改扩展名也不等于完成格式转换。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先确认图片素材的使用授权",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "区分网页与印刷色彩输出",
+              "kind": "life",
+              "slug": "rgb-cmyk-export"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "理解响应式版面的显示需求",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN：图片格式、透明度与适用场景",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：WebP 格式与支持",
+          "url": "https://developers.google.com/speed/webp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "web.dev：位图图片及有损、无损压缩",
+          "url": "https://web.dev/learn/images/raster-images",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "web.dev：图片尺寸、密度与 srcset",
           "url": "https://web.dev/learn/images/descriptive",
           "checked_on": "2026-09-14"
         }

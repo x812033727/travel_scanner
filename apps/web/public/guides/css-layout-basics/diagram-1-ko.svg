@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Microsoft JhengHei',sans-serif">
+<title id="title">같은 280px인데 박스가 다른 이유</title><desc id="desc">세 카드로 content-box의 테두리 바깥 너비 316px, border-box의 내용 너비 244px, 두 방식의 width에 포함되지 않는 margin을 비교합니다.</desc>
+<rect width="1600" height="900" fill="#F7F1E8" />
+<text x="80" y="94" font-size="52" fill="#102A2B" text-anchor="start" font-weight="bold">같은 280px인데 박스가 다른 이유</text>
+<text x="80" y="151" font-size="28" fill="#5C6B6B" text-anchor="start" font-weight="normal">직접 설계한 행사 카드 계산 예: 좌우 padding 각각 16px, 좌우 border 각각 2px</text>
+<rect x="80.0" y="256" width="456.0" height="400" rx="24" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4" />
+<text x="108.0" y="314" font-size="38" fill="#102A2B" text-anchor="start" font-weight="bold">content-box</text>
+<text x="108.0" y="371" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">내용 너비 280px</text>
+<text x="108.0" y="423" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">안쪽 여백·테두리 36px 추가</text>
+<text x="108.0" y="475" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">테두리 바깥 너비 316px</text>
+<rect x="572.0" y="256" width="456.0" height="400" rx="24" fill="#E6F0F7" stroke="#0D6B68" stroke-width="4" />
+<text x="600.0" y="314" font-size="38" fill="#102A2B" text-anchor="start" font-weight="bold">border-box</text>
+<text x="600.0" y="371" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">테두리 바깥 너비 280px</text>
+<text x="600.0" y="423" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">안쪽 여백·테두리 총 36px</text>
+<text x="600.0" y="475" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">내용에 쓸 수 있는 너비 244px</text>
+<rect x="1064.0" y="256" width="456.0" height="400" rx="24" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4" />
+<text x="1092.0" y="314" font-size="38" fill="#102A2B" text-anchor="start" font-weight="bold">margin</text>
+<text x="1092.0" y="371" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">테두리 바깥에 위치</text>
+<text x="1092.0" y="423" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">두 방식의 width에서 제외</text>
+<text x="1092.0" y="475" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">여백은 배치 조건도 확인</text>
+<text x="80" y="803" font-size="32" fill="#102A2B" text-anchor="start" font-weight="normal">이 예제에는 다른 크기 제한이 없습니다. 실제 화면에서는 부모 컨테이너와 최종 계산값도 확인해야 합니다.</text>
+<text x="1520" y="862" font-size="24" fill="#5C6B6B" text-anchor="end" font-weight="normal">Mokaair 직접 제작 도해</text>
+</svg>

@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
-    "software",
     "marketing",
-    "seo"
+    "seo",
+    "software",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "搜尋爬蟲與 AI 爬蟲：網站管理者該怎麼辨識與管理",
@@ -101,10 +104,8 @@
               "text": "想讓公開頁面不被 Google 編入索引，可使用適合的 noindex 中繼"
             },
             {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
+              "type": "text",
+              "text": "標記"
             },
             {
               "type": "text",
@@ -184,6 +185,7 @@
           "width": 1600,
           "height": 900,
           "caption": "抓取規則表達偏好；私人內容仍需真正的存取控制。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -288,6 +290,1126 @@
         },
         {
           "title": "OpenAI 爬蟲官方說明",
+          "url": "https://developers.openai.com/api/docs/bots",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Search Crawlers and AI Crawlers: How Website Administrators Can Identify and Manage Them",
+      "description": "Search crawlers and AI page-fetching tools serve different purposes. Site administrators must identify the source before choosing controls. This article compares Googlebot, Google-Extended, OAI-SearchBot, GPTBot and ChatGPT-User, explains what robots.txt, noindex and login protection can address, and provides steps to check access logs and verify changes so blocking training use does not inadvertently block search or public content.",
+      "hero": {
+        "src": "/guides/search-crawlers-explained/hero-en.jpg",
+        "alt": "Original illustration of a server, documents and a shield, showing crawler page fetching, management rules and source verification.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A name containing Bot in your website logs does not immediately tell you whether it is indexing for search, training a model or opening a URL for a user. Even the name itself can be spoofed by another program, so assess it alongside the officially stated purpose and actual request logs."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before managing crawlers, define which content you want to make public, which services you want people to find it through, and which data only logged-in users should be able to read. Check purpose, identity and permissions separately so a broad blocking rule does not also shut off a search entry point you need."
+        },
+        {
+          "type": "heading",
+          "text": "Distinguish Crawling, Indexing and User Page Fetches",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Crawling retrieves data from a website; indexing involves further analysis and organization; serving search results is a later stage that selects results. Google explains that not every crawled page is indexed, and meeting the requirements does not guarantee that a page will appear. A successful response in the logs therefore is not evidence that an article has been indexed."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Some tools proactively discover URLs, while others fetch pages only when a user posts a link or asks a question. They may handle robots.txt differently. Compile a list of services relevant to your website and check each one's official documentation; do not label every request from an "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " product as a training crawler request."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, a public home repair tutorial site may want readers to find its articles through search while keeping its content out of a particular provider's training. This requirement can be split into separate search and training settings. For members' billing details, the issue is access permissions: first confirm that people who are not logged in cannot read them."
+        },
+        {
+          "type": "heading",
+          "text": "Understand the Different Purposes of Google and OpenAI Tools",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Googlebot participates in crawling for Google Search. Google-Extended is a product control token in robots.txt that expresses preferences for Gemini training and related grounding uses specified in the official documentation. It has no separate HTTP User-Agent. Its controls do not affect a site's inclusion in Google Search and are not a ranking signal."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI's official documentation assigns OAI-SearchBot to search and GPTBot to crawling content that may be used to train foundation models. They can be configured independently. If your goal is to retain search eligibility while limiting training use, manage the corresponding tokens separately; allowing search still does not guarantee inclusion in answers."
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT-User handles some user-initiated actions; it is not a crawler that automatically explores the entire web. Official documentation says robots.txt may not apply to these actions, while opting out of search should be managed through OAI-SearchBot. Blocking a tool with a similar name therefore may not achieve the outcome you actually want."
+        },
+        {
+          "type": "heading",
+          "text": "Give robots.txt, noindex and Security Measures Separate Roles",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "robots.txt primarily expresses crawling rules and requires the other party to support and follow them. It cannot force every program to stop fetching pages, nor does it provide password protection. Do not assume private files are safe merely because you have listed their paths in the rules: others may still open publicly accessible URLs directly."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "To keep a public page out of Google's index, use an appropriate noindex meta "
+            },
+            {
+              "type": "text",
+              "text": "tag"
+            },
+            {
+              "type": "text",
+              "text": " or response header, and allow Google to crawl the page so it can read the directive. If you also block it through robots.txt, Google may not see noindex. A URL blocked from crawling may still appear in search because of external links."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "To restrict access to member data, drafts or administrative functions, use login authentication and permission controls. First verify in a browser that is not logged in that the content cannot be read, then check whether different accounts can access one another's data. These tests establish who can access the content; its presence or absence in search results should not be the sole acceptance criterion."
+        },
+        {
+          "type": "heading",
+          "text": "Use Access Logs to Check Request Identity and Impact",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Obtain access logs covering an appropriate scope from your hosting provider or website maintainer. Start with the time, source IP, User-Agent, path, response code and response time. Record whether requests cluster in the same directory, encounter large numbers of errors or coincide with slower service for regular users. Avoid judging harm solely by request volume."
+        },
+        {
+          "type": "paragraph",
+          "text": "A User-Agent is a self-declared string; do not use it alone to allow an entire service through. Google provides public IP ranges and DNS verification methods. For manual checks, first perform a reverse DNS lookup on the IP and confirm that the domain is one specified in the official documentation. Then perform a forward DNS lookup to confirm that it resolves back to the same IP. Do not accept it based on the domain name alone."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI's official crawler page also links to IP lists for each tool. If you use a CDN or reverse proxy, ask the maintainer to confirm which field contains trusted source information, then compare it with the current official lists. Retain only the data needed for log analysis, and redact accounts, credentials and private query content when sharing examples publicly."
+        },
+        {
+          "type": "heading",
+          "text": "Define Exactly What to Allow and Restrict Before Making Changes",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First create a policy table: which services may crawl public articles, which uses are unacceptable, and which directories should never be public. Before translating the administrator's decisions into rules, save the current settings and establish whether the rules are generated by the website application, an SEO plugin, the hosting provider or the CDN. This avoids editing a physical file only to have another layer overwrite it."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you decide to restrict GPTBot, check for a corresponding separate User-agent group and Disallow paths. If you also want to retain search access, separately check the rules for OAI-SearchBot and regular search crawlers. Do not apply the same sitewide block to every unknown tool, or overwrite other necessary existing settings."
+        },
+        {
+          "type": "paragraph",
+          "text": "A website firewall and robots.txt operate at different layers. Even when the text rules allow access, the firewall may still return a denial or verification page. After making changes, retrieve actual responses from outside the site and compare what the target tool and regular visitors see. When creating an allow rule, limit its purpose, paths and verifiable identity, and retain a way to revert it."
+        },
+        {
+          "type": "list",
+          "items": [
+            "List the public scope, search requirements and preferences for providers' uses.",
+            "Check the current official tokens, rule behavior and source verification methods.",
+            "Save existing settings, then modify the necessary groups or access policies individually.",
+            "Check external responses, login permissions and subsequent logs to confirm that the results meet your goals."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Verify Changes with Evidence Instead of Immediately Checking Rankings",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After updating the rules, first confirm that the actual robots.txt and page responses are correct, then examine new access logs. Tools may cache rules and take time to update, so do not expect every request to disappear immediately after saving. Likewise, a single request that still appears does not establish that all providers ignore the rules."
+        },
+        {
+          "type": "paragraph",
+          "text": "For inclusion in Google Search, use Search Console's URL Inspection tool and relevant reports. For server load, monitor request volume, error rates and response times. These two sets of evidence serve different purposes: fewer crawler requests do not necessarily improve organic search performance, and an article being crawled does not mean it has actual readers."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep the change date, reason, official documentation and verification results, and review them again when a provider adds tools or the website changes its CDN. If you simply want to reduce load, first identify the request patterns causing problems. If you want to manage usage preferences, confirm the corresponding rules so that every change answers a clear management question."
+        },
+        {
+          "type": "image",
+          "src": "/guides/search-crawlers-explained/diagram-1-en.svg",
+          "alt": "Four boxes cover purpose classification, source identity verification, crawling, indexing and access controls, and checks of responses, logs and indexing status.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Crawl rules express preferences; private content still needs real access controls.",
+          "description": "Four boxes cover purpose classification, source identity verification, crawling, indexing and access controls, and checks of responses, logs and indexing status.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Name / Tool",
+            "Main Purpose or Scope",
+            "Management Considerations"
+          ],
+          "rows": [
+            [
+              "Googlebot",
+              "Crawling for Google Search",
+              "Crawling does not equal indexing or ranking"
+            ],
+            [
+              "Google-Extended",
+              "Controls for officially specified Gemini-related uses",
+              "A product token, not a separate HTTP User-Agent"
+            ],
+            [
+              "OAI-SearchBot",
+              "ChatGPT search",
+              "Configured independently of GPTBot"
+            ],
+            [
+              "GPTBot",
+              "Crawling content that may be used for model training",
+              "Restricting it does not mean opting out of search"
+            ],
+            [
+              "ChatGPT-User",
+              "Some user-initiated page-fetching actions",
+              "robots.txt may not apply"
+            ],
+            [
+              "noindex",
+              "Indexing control for tools that support it",
+              "The directive must be readable; it cannot replace login protection"
+            ]
+          ],
+          "caption": "Purposes are based on official documentation as of 2026-09-14. Recheck when providers add or change tools."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "First Ask Which Outcome You Want to Change",
+          "text": "Reducing crawling load, restricting particular uses, removing search results and protecting private content require different methods. Choose your goal first, then verify it with appropriate settings and evidence. Avoid overly broad changes merely because a tool's name contains AI or Bot."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "First Understand the Sequence for Learning and Verifying SEO",
+              "kind": "life",
+              "slug": "seo-learning-roadmap"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Protect Your WordPress Website and Accounts",
+              "kind": "life",
+              "slug": "wordpress-security-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "How Google Search Works",
+          "url": "https://developers.google.com/search/docs/fundamentals/how-search-works?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google's Introduction to robots.txt",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google's Guide to Using noindex",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/block-indexing?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Crawlers and Google-Extended",
+          "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Verifying the Source of Google Requests",
+          "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Official OpenAI Crawler Documentation",
+          "url": "https://developers.openai.com/api/docs/bots",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "検索クローラーと AI クローラー：サイト管理者が見分け、管理するには",
+      "description": "検索クローラーと AI のページ取得ツールは用途が異なります。サイト管理者はまず送信元を確認し、制御方法を選ぶ必要があります。この記事では Googlebot、Google-Extended、OAI-SearchBot、GPTBot、ChatGPT-User の違いを整理し、robots.txt、noindex、ログイン保護でそれぞれ何に対処できるかを説明します。アクセスログの照合と変更後の検証手順も紹介し、学習用途を遮断しようとして、検索や公開コンテンツへのアクセスまで誤って遮断するのを防ぎます。",
+      "hero": {
+        "src": "/guides/search-crawlers-explained/hero-ja.jpg",
+        "alt": "クローラーによるページ取得、管理ルール、送信元の検証を表す、サーバー、文書、盾のオリジナルイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "サイトのログに Bot を含む名前が並んでいても、それだけで検索のインデックス登録、モデルの学習、ユーザーに代わる URL の閲覧のどれを行っているかは判断できません。名前自体を別のプログラムが偽装している可能性もあるため、公式に示された用途と実際のリクエスト記録を併せて確認する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "クローラーを管理する前に、どのコンテンツを公開し、どのサービスで見つけてもらいたいか、どのデータをログイン済みのユーザーだけが読めるようにするかを定めます。用途、身元、権限を分けて確認すれば、広範囲を遮断するルールによって、必要な検索経由の入り口まで閉ざしてしまうのを防げます。"
+        },
+        {
+          "type": "heading",
+          "text": "まずクロール、インデックス登録、ユーザーによるページ取得を区別する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "クロールはサイトからデータを取得すること、インデックス登録はそのデータをさらに分析・整理することです。検索結果への表示は、その後に結果を選ぶ段階に当たります。Google は、クロールしたすべてのページをインデックスに登録するわけではなく、条件を満たしても必ず表示されるとは限らないと説明しています。そのため、ログに成功応答があっても、記事がインデックスに登録された証拠にはなりません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "URL を自動的に探索するツールもあれば、ユーザーがリンクを貼り付けたり質問したりしたときにページを取得するツールもあります。両者では robots.txt の扱いが異なる場合があります。自分のサイト向けにサービス一覧を作り、公式文書を個別に確認し、すべての "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 製品からのリクエストを一律に学習用クローラーによるものと呼ばないようにします。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば、一般公開されている修繕方法の解説サイトが、読者に検索で記事を見つけてもらいたい一方、特定の提供事業者の学習にコンテンツを使われたくないとします。この要望は、検索と学習の二つの設定に分けられます。会員の請求明細であれば、問題はアクセス権限なので、まずログインしていない人が読めないことを確認すべきです。"
+        },
+        {
+          "type": "heading",
+          "text": "Google と OpenAI の用途の違いを理解する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Googlebot は Google 検索のクロールを担います。一方、Google-Extended は robots.txt の製品制御トークンで、公式文書に記載された Gemini の学習と関連する grounding 用途に対する意向を示すために使います。独立した HTTP User-Agent はなく、この設定は Google 検索へのサイトのインデックス登録に影響せず、ランキングのシグナルにもなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI の公式説明では、OAI-SearchBot は検索に、GPTBot は基盤モデルの学習に使われる可能性のあるコンテンツのクロールに用いられ、両者は独立して設定できます。検索対象となる資格を維持しながら学習用途を制限したい場合は、それぞれに対応するトークンを個別に扱うべきです。ただし、検索を許可しても、回答に表示されることが保証されるわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT-User はユーザーが開始する一部の操作に使われ、ウェブ全体を自動的に探索するクローラーではありません。公式説明では、こうした操作には robots.txt が適用されない場合があり、検索対象からの除外は OAI-SearchBot を通じて管理すべきとされています。つまり、名前が似ているツールを遮断しても、本当に望む結果が得られるとは限りません。"
+        },
+        {
+          "type": "heading",
+          "text": "robots.txt、noindex、保護対策の役割を分ける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "robots.txt は主にクロールのルールを示すもので、相手側が対応し、従う必要があります。すべてのプログラムにページ取得の停止を強制することはできません。また、パスワード保護でもありません。非公開ファイルのパスをルールに書いただけで安全だと考えないでください。公開アクセスできる URL は、他の人が直接開ける可能性があるからです。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "公開ページを Google のインデックスに登録させたくない場合は、適切な noindex のメタ"
+            },
+            {
+              "type": "text",
+              "text": "タグ"
+            },
+            {
+              "type": "text",
+              "text": "またはレスポンスヘッダーを使用し、Google がページをクロールしてその指示を読めるようにします。同時に robots.txt で遮断すると、Google が noindex を確認できない可能性があります。クロールを遮断した URL も、外部リンクによって検索結果に残る場合があります。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "会員データ、下書き、管理機能へのアクセスを制限する場合は、ログイン認証と権限制御を使うべきです。まずログインしていないブラウザーで閲覧できないことを検証し、次に別のアカウントのデータを閲覧できてしまわないか確認します。こうしたテストで確かめるのは誰がアクセスできるかであり、検索結果に表示されるかどうかだけを検証基準にすべきではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "アクセスログからリクエストの身元と影響を照合する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ホスティング事業者やサイトの保守担当者から適切な範囲のアクセスログを入手し、まず時刻、送信元 IP、User-Agent、パス、応答コード、応答時間を確認します。同じディレクトリに集中しているか、大量のエラーが発生しているか、一般ユーザーの利用も遅くなっているかを記録し、リクエスト数だけで有害と判断しないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "User-Agent は自己申告の文字列なので、それだけを根拠にサービス全体のアクセスを許可することはできません。Google は公開 IP 範囲と DNS による検証方法を提供しています。手動で確認する際は、まず IP を逆引きして公式に指定されたドメインであることを確認し、次に正引きして同じ IP に戻ることを確かめます。ドメイン名らしい文字列が見えただけで合格にしてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI の公式クローラーページにも、各ツールの IP リストへのリンクがあります。CDN やリバースプロキシを使っている場合は、どのフィールドが信頼できる送信元情報なのかを保守担当者に確認してから、現在の公式リストと照合します。ログ分析では必要なデータだけを保持し、例を外部に共有する際は、アカウント情報、認証情報、非公開のクエリ内容を伏せます。"
+        },
+        {
+          "type": "heading",
+          "text": "変更前に許可と制限の具体的な範囲を書き出す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まずポリシー表を作ります。どのサービスに公開記事のクロールを許可するか、どの用途を受け入れないか、どのディレクトリをそもそも公開すべきでないかを整理します。管理者の決定をルールに落とし込む前に、現在の設定を保存し、ルールを生成しているのがサイトのプログラム、SEO プラグイン、ホスティング側、CDN のどれなのかを確認します。実ファイルを変更しても、別の層に上書きされる事態を避けるためです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPTBot を制限すると決めた場合は、対応する独立した User-agent グループと Disallow のパスがあるかを確認します。検索対象に残したい場合は、OAI-SearchBot と一般的な検索クローラーのルールも別途確認します。未知のツールをすべて同じサイト全体の遮断ルールで扱ったり、既存の必要な設定を上書きしたりしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトのファイアウォールと robots.txt は異なる層にあります。テキストのルールで許可していても、ファイアウォールが拒否応答や認証ページを返す可能性があります。調整後は外部から実際の応答を取得し、対象ツールと一般訪問者に見える内容を比較します。許可ルールを作る場合は、用途、パス、検証可能な身元を限定し、元に戻す手段を残します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "公開範囲、検索で見つけてもらう要件、提供事業者の用途に対する意向を列挙する。",
+            "現在の公式トークン、ルールの動作、送信元の検証方法を確認する。",
+            "既存の設定を保存し、必要なグループやアクセスポリシーを項目ごとに変更する。",
+            "外部からの応答、ログイン権限、その後のログを確認し、結果が目標に合っているか検証する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "すぐに順位を見るのではなく、証拠で変更を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ルールを更新したら、まず実際の robots.txt とページの応答が正しいことを確認し、次に新しいアクセスログを調べます。各ツールにはキャッシュや更新の遅延がある可能性があり、保存直後にすべてのリクエストが消えると期待すべきではありません。同様に、一件のリクエストがまだ現れたからといって、すべての提供事業者がルールを無視していると即断することもできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 検索のインデックス登録状況は、Search Console の URL 検査と関連レポートで確認します。サーバー負荷は、リクエスト量、エラー率、応答時間を観察します。この二組の証拠は用途が異なります。クローラーが減ってもオーガニック検索の成果が必ず改善するとは限らず、記事がクロールされても、すでに実際の読者がいるとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "変更日、理由、公式文書、検証結果を保存し、その後に提供事業者がツールを追加したり、サイトが CDN を変更したりした際に再確認します。負荷を下げたいだけなら、まず問題を引き起こしているリクエストのパターンを特定します。用途に対する意向を反映したいなら、対応するルールを確認します。各変更が、明確な管理上の問題に答えるようにしましょう。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/search-crawlers-explained/diagram-1-ja.svg",
+          "alt": "四つの枠はそれぞれ、用途の分類、送信元の身元検証、クロール・インデックス・権限の制御、応答ログとインデックス登録状況の検証を示します。",
+          "width": 1600,
+          "height": 900,
+          "caption": "クロールのルールは意向を示すものです。非公開コンテンツには、引き続き実効的なアクセス制御が必要です。",
+          "description": "四つの枠はそれぞれ、用途の分類、送信元の身元検証、クロール・インデックス・権限の制御、応答ログとインデックス登録状況の検証を示します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "名称／ツール",
+            "主な用途・範囲",
+            "管理時の注意点"
+          ],
+          "rows": [
+            [
+              "Googlebot",
+              "Google 検索のクロール",
+              "クロールはインデックス登録や順位を意味しない"
+            ],
+            [
+              "Google-Extended",
+              "公式に記載された Gemini 関連用途の制御",
+              "製品トークンであり、独立した HTTP User-Agent ではない"
+            ],
+            [
+              "OAI-SearchBot",
+              "ChatGPT 検索",
+              "GPTBot とは独立して設定できる"
+            ],
+            [
+              "GPTBot",
+              "モデルの学習に使われる可能性のあるコンテンツのクロール",
+              "制限しても検索対象からの除外にはならない"
+            ],
+            [
+              "ChatGPT-User",
+              "ユーザーが開始する一部のページ取得操作",
+              "robots.txt が適用されない場合がある"
+            ],
+            [
+              "noindex",
+              "対応するサービスのインデックス制御",
+              "指示を読める必要がある。ログイン保護の代わりにはならない"
+            ]
+          ],
+          "caption": "用途は 2026-09-14 時点の公式文書に基づいて整理しています。提供事業者がツールを追加・変更した際は再確認が必要です。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "まず、どの結果を変えたいかを考える",
+          "text": "クロールの負荷軽減、特定用途の制限、検索結果からの削除、非公開コンテンツの保護には、それぞれ異なる方法が必要です。まず目標を定め、適切な設定と証拠で結果を検証します。ツール名に AI や Bot が含まれるという理由だけで、過度に広範囲な変更をしないようにしましょう。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "まず SEO の学習と検証の順序を理解する",
+              "kind": "life",
+              "slug": "seo-learning-roadmap"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress サイトとアカウントを保護する",
+              "kind": "life",
+              "slug": "wordpress-security-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 検索の仕組み",
+          "url": "https://developers.google.com/search/docs/fundamentals/how-search-works?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google の robots.txt 入門",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google の noindex の使い方",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/block-indexing?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google のクローラーと Google-Extended",
+          "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google のリクエストの送信元を検証する",
+          "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI のクローラーに関する公式説明",
+          "url": "https://developers.openai.com/api/docs/bots",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "검색 크롤러와 AI 크롤러: 웹사이트 관리자의 식별 및 관리 방법",
+      "description": "검색 크롤러와 AI 페이지 가져오기 도구는 용도가 다르므로 웹사이트 관리자는 먼저 출처를 식별한 뒤 제어 방법을 선택해야 합니다. 이 글에서는 Googlebot, Google-Extended, OAI-SearchBot, GPTBot, ChatGPT-User의 차이와 robots.txt, noindex, 로그인 보호로 각각 어떤 문제를 해결할 수 있는지 설명합니다. 또한 접근 로그 대조와 변경 사항 검증 절차를 제시해, 학습 용도를 차단하려다 검색이나 공개 콘텐츠까지 잘못 차단하는 일을 방지합니다.",
+      "hero": {
+        "src": "/guides/search-crawlers-explained/hero-ko.jpg",
+        "alt": "크롤러의 페이지 가져오기, 관리 규칙, 출처 검증을 표현한 서버·문서·방패의 자체 제작 일러스트.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "웹사이트 로그에서 Bot이라는 단어가 들어간 이름을 보더라도 검색 색인을 생성하는지, 모델 학습을 하는지, 사용자를 대신해 URL을 여는지 바로 판단할 수는 없습니다. 다른 프로그램이 이름 자체를 위장할 수도 있으므로 공식 용도와 실제 요청 로그를 함께 살펴봐야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "크롤러를 관리하기 전에 어떤 콘텐츠를 공개할지, 어떤 서비스에서 검색되기를 원하는지, 어떤 자료를 로그인한 사용자만 읽을 수 있게 할지 먼저 정하세요. 용도, 신원, 권한을 각각 확인해야 광범위한 차단 규칙 하나로 필요한 검색 유입 경로까지 막는 일을 피할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "크롤링, 색인 생성, 사용자 요청에 따른 페이지 가져오기 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "크롤링은 웹사이트에서 자료를 가져오는 작업이고, 색인 생성은 이를 더 분석하고 정리하는 작업입니다. 검색 결과 표시는 이후 결과를 선택하는 단계입니다. Google은 크롤링한 모든 페이지가 색인에 포함되는 것은 아니며, 조건을 충족해도 반드시 표시되는 것은 아니라고 설명합니다. 따라서 로그에 성공 응답이 있다고 해서 글이 색인에 포함되었다는 증거로 삼을 수는 없습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "어떤 도구는 URL을 능동적으로 탐색하고, 어떤 도구는 사용자가 링크를 붙여 넣거나 질문할 때 페이지를 가져옵니다. 두 유형은 robots.txt를 처리하는 방식이 다를 수 있습니다. 자신의 웹사이트에 접근하는 서비스 목록을 정리하고 공식 문서를 하나씩 확인하세요. 모든 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 제품의 요청을 일괄적으로 학습용 크롤러라고 부르지 마세요."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 공개된 수리 방법 안내 사이트가 독자들이 검색으로 글을 찾기를 원하지만, 콘텐츠가 특정 공급업체의 학습에 사용되기를 원하지 않는다고 가정해 봅시다. 이 요구는 검색과 학습에 대한 두 가지 설정으로 나눌 수 있습니다. 회원의 계정 거래 명세라면 접근 권한의 문제이므로, 먼저 로그인하지 않은 사람이 읽을 수 없는지 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "Google과 OpenAI의 용도 차이 이해하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Googlebot은 Google 검색 크롤링에 관여합니다. Google-Extended는 공식 문서에 명시된 Gemini 학습 및 관련 그라운딩 용도에 대한 선호를 표현하는 robots.txt의 제품 제어 토큰입니다. 별도의 HTTP User-Agent가 없으며, 이를 제어해도 웹사이트의 Google 검색 색인 포함 여부가 바뀌거나 순위 신호로 작용하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 공식적으로 OAI-SearchBot을 검색에 사용하고, GPTBot을 기초 모델 학습에 사용될 수 있는 콘텐츠의 크롤링에 사용하며, 두 도구는 독립적으로 설정할 수 있다고 설명합니다. 검색 자격을 유지하면서 학습 용도를 제한하려면 해당 토큰을 각각 처리해야 합니다. 검색을 허용하더라도 답변에 반드시 등장한다는 보장은 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT-User는 사용자가 시작하는 일부 작업에 사용되며, 웹 전체를 자동으로 탐색하는 크롤러가 아닙니다. 공식 설명에 따르면 이러한 작업에는 robots.txt가 적용되지 않을 수 있으며, 검색에서 제외되도록 설정하려면 OAI-SearchBot을 통해 관리해야 합니다. 따라서 이름이 비슷한 특정 도구를 차단해도 실제로 원하는 결과를 얻는 것은 아닐 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "robots.txt, noindex, 보호 조치의 역할 나누기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "robots.txt는 주로 크롤링 규칙을 표현하며, 상대 도구가 이를 지원하고 준수해야 합니다. 모든 프로그램이 페이지를 가져오지 못하도록 강제할 수는 없습니다. 비밀번호 보호 기능도 아닙니다. 비공개 파일 경로를 규칙에 적었다고 안전하다고 생각하지 마세요. 공개 접근이 가능한 URL은 다른 사람이 직접 열 수 있습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "공개 페이지가 Google 색인에 포함되지 않게 하려면 적절한 noindex 메타 "
+            },
+            {
+              "type": "text",
+              "text": "태그"
+            },
+            {
+              "type": "text",
+              "text": "나 응답 헤더를 사용하고, Google이 페이지를 크롤링해 해당 지시문을 읽을 수 있게 해야 합니다. 동시에 robots.txt로 차단하면 Google이 noindex를 보지 못할 수 있습니다. 크롤링이 차단된 URL도 외부 링크 때문에 검색에 계속 표시될 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "회원 자료, 초안, 관리 기능에 대한 접근을 제한해야 한다면 로그인 인증과 권한 제어를 사용해야 합니다. 먼저 로그인하지 않은 브라우저에서 읽을 수 없는지 확인한 뒤, 서로 다른 계정으로 다른 계정의 자료를 볼 수 있는지 확인하세요. 이런 테스트는 누가 접근할 수 있는지 확인하는 것이므로 검색 결과에 나타나는지만을 유일한 검증 기준으로 삼아서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "접근 로그로 요청의 신원과 영향 대조하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "호스팅 업체나 웹사이트 유지관리 담당자에게 적절한 범위의 접근 로그를 받아 먼저 시간, 출발지 IP, User-Agent, 경로, 응답 코드, 응답 시간을 살펴보세요. 요청이 같은 디렉터리에 집중되는지, 오류가 대량으로 발생하는지, 일반 사용자의 이용 속도 저하가 함께 나타나는지 기록하세요. 요청 수만으로 유해성을 판단하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "User-Agent는 스스로 선언하는 문자열이므로 이것만으로 해당 서비스의 모든 요청을 허용해서는 안 됩니다. Google은 공개 IP 범위와 DNS 검증 방법을 제공합니다. 수동으로 확인할 때는 먼저 IP를 역방향 조회해 공식적으로 지정된 도메인인지 확인한 뒤, 정방향 조회 결과가 동일한 IP인지 확인하세요. 도메인 이름이 보인다는 이유만으로 검증을 통과시켜서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI의 공식 크롤러 페이지에도 각 도구의 IP 목록 링크가 있습니다. CDN이나 리버스 프록시를 사용한다면 유지관리 담당자에게 어떤 필드가 신뢰할 수 있는 출처 정보인지 확인하도록 한 뒤 현재 공식 목록과 대조하세요. 로그 분석에는 필요한 자료만 보관하고, 외부에 예시를 공유할 때는 계정, 인증 정보, 비공개 질의 내용을 가리세요."
+        },
+        {
+          "type": "heading",
+          "text": "변경 전에 허용 및 제한 범위를 구체적으로 작성하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 정책표를 만드세요. 어떤 서비스가 공개 글을 크롤링할 수 있는지, 어떤 용도를 허용하지 않는지, 어떤 디렉터리는 아예 공개해서는 안 되는지 정리하세요. 관리자의 결정을 규칙으로 옮기기 전에 현재 설정을 보관하고, 규칙을 웹사이트 프로그램, SEO 플러그인, 호스팅 업체, CDN 중 어디서 생성하는지 확인하세요. 실제 파일을 변경해도 다른 계층에서 덮어쓰는 일을 방지할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "GPTBot을 제한하기로 했다면 해당하는 독립 User-agent 그룹과 Disallow 경로가 있는지 확인하세요. 검색을 계속 허용하고 싶다면 OAI-SearchBot과 일반 검색 크롤러의 규칙도 별도로 확인하세요. 모든 알 수 없는 도구에 동일한 사이트 전체 차단 규칙을 적용하지 말고, 기존의 다른 필수 설정도 덮어쓰지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "웹사이트 방화벽과 robots.txt는 서로 다른 계층에 있습니다. 텍스트 규칙에서 허용해도 방화벽이 거부 응답이나 인증 페이지를 반환할 수 있습니다. 조정 후에는 외부에서 실제 응답을 받아 대상 도구와 일반 방문자가 보는 내용을 대조하세요. 허용 규칙을 만들 때는 용도, 경로, 검증 가능한 신원을 한정하고 되돌릴 방법도 남겨 두세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "공개 범위, 검색 요구 사항, 공급업체의 사용 용도에 대한 선호를 정리하세요.",
+            "현재 공식 토큰, 규칙의 동작 방식, 출처 검증 방법을 확인하세요.",
+            "기존 설정을 보관하고 필요한 그룹이나 접근 정책을 하나씩 변경하세요.",
+            "외부 응답, 로그인 권한, 이후 로그를 확인해 결과가 목표에 부합하는지 검증하세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "순위를 곧바로 확인하기보다 증거로 변경 결과 검증하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "규칙을 업데이트한 뒤에는 먼저 실제 robots.txt와 페이지 응답이 올바른지 확인하고 새 접근 로그를 살펴보세요. 각 도구에는 캐시와 업데이트 지연이 있을 수 있으므로 저장하자마자 모든 요청이 즉시 사라지기를 기대해서는 안 됩니다. 마찬가지로 요청 하나가 계속 나타난다고 모든 공급업체가 규칙을 무시한다고 곧바로 판단할 수도 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 검색의 색인 포함 상태는 Search Console의 URL 검사와 관련 보고서로 확인하세요. 서버 부하는 요청량, 오류율, 응답 시간으로 관찰하세요. 두 종류의 증거는 용도가 다릅니다. 크롤러가 줄었다고 자연 검색 성과가 반드시 좋아지는 것은 아니며, 글이 크롤링되었다고 실제 독자가 생겼다는 뜻도 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "변경 날짜, 이유, 공식 문서, 검증 결과를 보관하고, 이후 공급업체가 도구를 추가하거나 웹사이트의 CDN을 바꿀 때 다시 점검하세요. 부하를 줄이는 것이 목적이라면 먼저 문제를 일으키는 요청 패턴을 찾으세요. 사용 용도에 대한 선호를 반영하려면 해당 규칙을 확인하세요. 각 변경으로 명확한 관리 문제 하나를 해결할 수 있도록 하세요."
+        },
+        {
+          "type": "image",
+          "src": "/guides/search-crawlers-explained/diagram-1-ko.svg",
+          "alt": "네 개의 상자는 각각 용도 분류, 출처 신원 검증, 크롤링·색인·권한 제어, 응답 로그 및 색인 포함 상태 검증을 나타냅니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "크롤링 규칙은 선호를 표현하며, 비공개 콘텐츠에는 실제 접근 제어가 필요합니다.",
+          "description": "네 개의 상자는 각각 용도 분류, 출처 신원 검증, 크롤링·색인·권한 제어, 응답 로그 및 색인 포함 상태 검증을 나타냅니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "이름／도구",
+            "주요 용도 또는 범위",
+            "관리 시 유의 사항"
+          ],
+          "rows": [
+            [
+              "Googlebot",
+              "Google 검색 크롤링",
+              "크롤링은 색인 생성이나 순위와 다름"
+            ],
+            [
+              "Google-Extended",
+              "공식적으로 명시된 Gemini 관련 용도 제어",
+              "제품 토큰이며 별도의 HTTP User-Agent가 아님"
+            ],
+            [
+              "OAI-SearchBot",
+              "ChatGPT 검색",
+              "GPTBot과 독립적으로 설정"
+            ],
+            [
+              "GPTBot",
+              "모델 학습에 사용될 수 있는 콘텐츠 크롤링",
+              "이를 제한해도 검색에서 제외되는 것은 아님"
+            ],
+            [
+              "ChatGPT-User",
+              "사용자가 시작하는 일부 페이지 가져오기 작업",
+              "robots.txt가 적용되지 않을 수 있음"
+            ],
+            [
+              "noindex",
+              "이를 지원하는 도구의 색인 제어",
+              "지시문을 읽을 수 있어야 하며 로그인을 대체할 수 없음"
+            ]
+          ],
+          "caption": "용도는 2026-09-14 공식 문서를 기준으로 정리했으며, 공급업체가 도구를 추가하거나 변경하면 다시 대조해야 합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "어떤 결과를 바꾸려는지 먼저 묻기",
+          "text": "크롤링 부하 줄이기, 특정 용도 제한, 검색 결과에서 삭제하기, 비공개 콘텐츠 보호에는 각각 다른 방법이 필요합니다. 먼저 목표를 정한 뒤 적절한 설정과 증거로 결과를 검증하세요. 도구 이름에 AI나 Bot이 들어 있다는 이유만으로 지나치게 광범위한 변경을 하지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "SEO 학습 및 결과 검증 순서부터 알아보기",
+              "kind": "life",
+              "slug": "seo-learning-roadmap"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 웹사이트와 계정 보호하기",
+              "kind": "life",
+              "slug": "wordpress-security-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 검색의 작동 방식",
+          "url": "https://developers.google.com/search/docs/fundamentals/how-search-works?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google robots.txt 소개",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google noindex 사용 방법",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/block-indexing?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 크롤러와 Google-Extended",
+          "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 요청의 출처 검증",
+          "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 크롤러 공식 설명",
+          "url": "https://developers.openai.com/api/docs/bots",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "搜索爬虫与 AI 爬虫：网站管理者该如何识别与管理",
+      "description": "搜索爬虫与 AI 网页获取工具用途不同，网站管理者需要先识别来源，再选择控制方式。本文整理 Googlebot、Google-Extended、OAI-SearchBot、GPTBot 与 ChatGPT-User 的区别，说明 robots.txt、noindex 和登录保护各能处理什么问题，并提供访问日志核对及变更验收步骤，避免为了阻止训练用途而误拦搜索或公开内容。",
+      "hero": {
+        "src": "/guides/search-crawlers-explained/hero-zh-cn.jpg",
+        "alt": "原创服务器、文档与盾牌插图，呈现爬虫获取网页、管理规则及来源验证。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "在网站日志中看到一串带有 Bot 的名称，不能立刻判断它在做搜索索引、模型训练，还是替用户打开网址。连名称本身都可能被其他程序伪装，必须结合官方用途与实际请求日志来看。"
+        },
+        {
+          "type": "paragraph",
+          "text": "管理爬虫前，先定义你希望公开哪些内容、希望在哪些服务中被找到，以及哪些数据只有登录用户能读取。用途、身份和权限分别确认，才不会用一条大范围封锁规则，把原本需要的搜索入口也一起关闭。"
+        },
+        {
+          "type": "heading",
+          "text": "先区分抓取、索引与用户获取网页",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "抓取是向网站获取数据，索引是进一步分析与整理，搜索展示又是后续选择结果的阶段。Google 说明，并非每个被抓取的页面都会建立索引，也不保证符合条件就一定展示。因此，日志中出现成功响应，不能当作文章已收录的证据。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "有些工具会主动探索网址，有些则因用户粘贴链接或提出问题才获取网页。两者对 robots.txt 的处理可能不同。为自己的网站整理服务清单，逐一查看官方文档，不把所有来自 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 产品的请求一律称为训练爬虫。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "例如，一个公开的修缮教学网站，希望读者在搜索中找到文章，但不希望内容用于某供应商的训练。这个需求可以拆成搜索与训练两份设置；如果是会员账务明细，问题则是访问权限，应先确认未登录用户不能读取。"
+        },
+        {
+          "type": "heading",
+          "text": "读懂 Google 与 OpenAI 的用途差别",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Googlebot 参与 Google 搜索检索。Google-Extended 则是 robots.txt 的产品控制标识符，用来表达官方文档列明的 Gemini 训练与相关 grounding 用途偏好；它没有独立的 HTTP User-Agent，对它的控制不会改变网站在 Google 搜索中的收录，也不会成为排名信号。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 官方将 OAI-SearchBot 用于搜索，GPTBot 用于可能供基础模型训练的内容抓取，两者可独立设置。若目标是保留搜索资格、限制训练用途，应分别处理相应标识符；允许搜索仍不是保证会出现在回答中的承诺。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ChatGPT-User 用于部分用户发起的操作，不是自动探索全网的爬虫；官方说明，这类操作可能不适用 robots.txt，退出搜索则应通过 OAI-SearchBot 管理。这也意味着封锁名称相似的某个工具，不一定能达到你真正想要的结果。"
+        },
+        {
+          "type": "heading",
+          "text": "明确 robots.txt、noindex 与保护措施的分工",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "robots.txt 主要表达抓取规则，需要对方支持并遵循，不能强制所有程序停止获取网页。它也不是密码保护措施。不要把私人文件路径写入规则后就认为安全，因为其他人仍可能直接打开可公开访问的网址。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想让公开页面不被 Google 编入索引，可使用合适的 noindex 元"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "或响应头，并让 Google 能抓取页面读到该指令。如果同时用 robots.txt 屏蔽，Google 可能看不到 noindex；被禁止抓取的网址也可能因外部链接而仍出现在搜索中。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "需要限制会员数据、草稿或管理功能时，应使用登录验证与权限控制。先用未登录浏览器验证是否无法读取，再确认不同账号能否查看彼此的数据。这类测试回答的是谁能访问，不应以搜索结果中有没有出现作为唯一验收标准。"
+        },
+        {
+          "type": "heading",
+          "text": "从访问日志核对请求身份与影响",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "向主机或网站维护者获取适当范围的访问日志，先看时间、来源 IP、User-Agent、路径、响应码和响应时间。记录是否集中在相同目录、是否大量遇到错误，以及是否伴随普通用户访问变慢，避免只凭请求数量判断有害。"
+        },
+        {
+          "type": "paragraph",
+          "text": "User-Agent 是自我声明的字符串，不能单靠它放行整个服务。Google 提供公开 IP 范围与 DNS 验证方式；手动检查时，先反向解析 IP，确认是官方规定的域名，再正向解析回同一 IP，不能只看到域名字样就通过。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 官方爬虫页面也链接到各工具的 IP 清单。使用 CDN 或反向代理时，请维护者确认哪个字段才是可信任的来源信息，再与当前官方清单比对。日志分析只保留必要数据，对外分享示例时遮蔽账号、凭证及私人查询内容。"
+        },
+        {
+          "type": "heading",
+          "text": "修改前写出允许与限制的具体范围",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先建立一张政策表：哪些服务可以抓取公开文章、哪些用途不接受、哪些目录根本不应公开。把管理者的决定转成规则前，保存当前设置，确认规则由网站程序、SEO 插件、主机还是 CDN 生成，避免修改了实际文件却被另一层覆盖。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若决定限制 GPTBot，就检查是否有对应的独立 User-agent 分组及 Disallow 路径；若还希望保留搜索，另外检查 OAI-SearchBot 和普通搜索爬虫的规则。不要把所有未知工具都改成同一条全站封锁规则，也不要覆盖原本必要的其他设置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "网站防火墙和 robots.txt 属于不同层次。即使文本规则允许，防火墙仍可能返回拒绝响应或验证页面。调整后从外部获取实际响应，比对目标工具与普通访客看到的内容；若要建立放行规则，限定用途、路径与可验证身份，保留恢复方法。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出公开范围、搜索需求与供应商用途偏好。",
+            "查阅当前官方标识符、规则行为及来源验证方法。",
+            "保存现有设置，逐项修改必要分组或访问政策。",
+            "检查外部响应、登录权限和后续日志，确认结果符合目标。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "用证据确认变更，而不是立刻看排名",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "规则更新后，先确认实际 robots.txt 和页面响应正确，再查看新的访问日志。各工具可能有缓存与更新延迟，不应刚保存就期待所有请求立刻消失；同样也不能因为某一条请求仍出现，就直接判定所有供应商都忽略规则。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对 Google 搜索的收录情况，使用 Search Console 的网址检查与相关报告；对服务器负载，观察请求量、错误率和响应时间。这两组证据用途不同，爬虫减少不代表自然搜索一定变好，文章被抓取也不代表已有实际读者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存变更日期、原因、官方文档和验收结果，之后供应商新增工具或网站更换 CDN 时再复查。若只是想降低负载，先找出造成问题的请求模式；若想处理用途偏好，就确认对应规则，让每个改动都能回答一个清楚的管理问题。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/search-crawlers-explained/diagram-1-zh-cn.svg",
+          "alt": "四个方框分别为用途分类、来源身份验证、抓取索引权限控制，以及响应日志和收录状态验收。",
+          "width": 1600,
+          "height": 900,
+          "caption": "抓取规则表达偏好；私人内容仍需真正的访问控制。",
+          "description": "四个方框分别为用途分类、来源身份验证、抓取索引权限控制，以及响应日志和收录状态验收。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "名称／工具",
+            "主要用途或范围",
+            "管理时注意"
+          ],
+          "rows": [
+            [
+              "Googlebot",
+              "Google 搜索检索",
+              "抓取不等于索引或排名"
+            ],
+            [
+              "Google-Extended",
+              "官方列明的 Gemini 相关用途控制",
+              "是产品标识符，并非独立 HTTP User-Agent"
+            ],
+            [
+              "OAI-SearchBot",
+              "ChatGPT 搜索",
+              "与 GPTBot 设置独立"
+            ],
+            [
+              "GPTBot",
+              "可能供模型训练的内容抓取",
+              "限制它不等同于退出搜索"
+            ],
+            [
+              "ChatGPT-User",
+              "部分用户发起的网页获取操作",
+              "robots.txt 可能不适用"
+            ],
+            [
+              "noindex",
+              "支持该指令的服务的索引控制",
+              "须能读到指令；不能取代登录"
+            ]
+          ],
+          "caption": "用途依 2026-09-14 官方文档整理，供应商新增或变更工具时需重新核对。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先问希望改变什么结果",
+          "text": "降低抓取负载、限制特定用途、移除搜索结果和保护私人内容，需要不同方法。先选定目标，再用合适的设置与证据验收，避免仅因工具名称带有 AI 或 Bot 就做过于宽泛的变更。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先了解 SEO 的学习与验收顺序",
+              "kind": "life",
+              "slug": "seo-learning-roadmap"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "保护 WordPress 网站与账号",
+              "kind": "life",
+              "slug": "wordpress-security-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 搜索运作方式",
+          "url": "https://developers.google.com/search/docs/fundamentals/how-search-works?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google robots.txt 简介",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google noindex 使用方式",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/block-indexing?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 检索器与 Google-Extended",
+          "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "验证 Google 请求来源",
+          "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "OpenAI 爬虫官方说明",
           "url": "https://developers.openai.com/api/docs/bots",
           "checked_on": "2026-09-14"
         }

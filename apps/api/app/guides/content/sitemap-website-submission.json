@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
-    "software",
     "marketing",
-    "seo"
+    "seo",
+    "software",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "網站地圖怎麼規劃：收錄哪些網址、如何提交與維護",
@@ -35,10 +38,8 @@
               "text": "網站有一百篇文章，網站地圖卻列出數千個網址，不一定表示內容變豐富了。分類、排序"
             },
             {
-              "type": "article",
-              "text": "參數",
-              "kind": "life",
-              "slug": "ai-term-model-parameters"
+              "type": "text",
+              "text": "參數"
             },
             {
               "type": "text",
@@ -169,6 +170,7 @@
           "width": 1600,
           "height": 900,
           "caption": "先決定值得被發現的內容，再維護正確而持續更新的清單。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -279,6 +281,1090 @@
         },
         {
           "title": "WordPress 網站地圖索引網址原始碼",
+          "url": "https://developer.wordpress.org/reference/classes/wp_sitemaps_index/get_index_url/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "How to Plan a Sitemap: Which URLs to Include, How to Submit It, and How to Maintain It",
+      "description": "A sitemap is a URL list for search engines. Choosing the wrong content or leaving it outdated means successful submission still cannot solve indexing problems. This article covers selecting public canonical URLs, WordPress sitemap locations, XML formatting and file limits, and Search Console submission and maintenance. A URL-type comparison table and an original synchronization diagram help small websites in Taiwan build a sustainably managed Sitemap.",
+      "hero": {
+        "src": "/guides/sitemap-website-submission/hero-en.jpg",
+        "alt": "Original document, server, and folder illustrations showing how a URL list is generated, submitted, and maintained.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "A website with a hundred articles but thousands of URLs in its sitemap does not necessarily have more content. Categories, sorting "
+            },
+            {
+              "type": "text",
+              "text": "parameters"
+            },
+            {
+              "type": "text",
+              "text": ", and different versions can all inflate the list. The first step in creating a Sitemap is deciding which URLs are worth letting search engines discover, rather than dumping every visible link into a file."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Think of a sitemap as a handover list for public content: whenever content is added, changed, moved, or deleted, the list must stay consistent with the site. The following example uses a small tutorial website to move from content inventory to maintenance after submission; it does not represent work performed on any real website."
+        },
+        {
+          "type": "heading",
+          "text": "Filter URLs first: distinguish public content from other versions",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Start by listing published articles, main service pages, and useful category landing pages from the site's admin area, then check whether you really want each to appear in search results. For every entry, record the complete URL, content type, whether it is public, the intended canonical URL, and the person responsible. This inventory is the basis for later comparisons; you cannot rely solely on search results to reconstruct all your content."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the same article has tracking parameters or multiple URL versions, generally list the preferred canonical version. Drafts, personal information that requires login, pages that no longer exist, and duplicate URLs generated solely for sorting usually do not belong on this public list. If different language versions each provide complete content, decide based on their URLs and canonicalization arrangements."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not automatically keep or remove every category page. Suppose \"Parent and Child Crafts\" provides clear course descriptions and navigation links; it may serve a distinct purpose. First assess the content value of narrow tags that contain only one article and lack organization. Sitemap selection rules should align with your content planning, rather than letting plugin defaults decide everything for you."
+        },
+        {
+          "type": "heading",
+          "text": "Identify the actual generator and avoid conflicting configurations",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When using a content management system, first look for a Sitemap automatically generated by the platform or a plugin, as it is more likely to stay in sync with publication status. WordPress core provides sitemap functionality. With pretty permalinks, the index is usually at /wp-sitemap.xml; without them, core uses /?sitemap=index."
+        },
+        {
+          "type": "paragraph",
+          "text": "SEO plugins may also offer their own sitemap locations and exclusion rules. Check which features are currently enabled, then verify what the public URL actually returns. If several sitemaps coexist, identify what each covers and who maintains it. Multiple files are not inherently a violation, but duplication, outdated content, or conflicting settings make management harder."
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress's search engine visibility setting affects whether its core sitemap is enabled, and plugins can also change this behavior. If a sitemap returns 404, check the site's intended public visibility, permalinks, and the generator actually in use instead of simply turning off all privacy settings. Verify in an appropriate environment before making changes to the production site."
+        },
+        {
+          "type": "heading",
+          "text": "Use valid formatting and meaningful update dates",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "XML sitemaps need the correct structure, UTF-8 encoding, and character handling. URLs should be complete, including the protocol and domain. If you generate one yourself, use appropriate XML tools to handle special characters. Avoid directly concatenating URLs containing & into strings, which can cause formatting errors. Users generally do not need to handwrite the entire list line by line."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google supports formats including XML, RSS/Atom, and plain text; choosing a particular format does not guarantee better rankings. Plain text uses one complete URL per line. RSS or Atom usually covers only recent updates, so the presence of a subscription feed does not mean all older articles are also listed."
+        },
+        {
+          "type": "paragraph",
+          "text": "A single file is limited to 50 MB when uncompressed and 50,000 URLs. If it exceeds these limits, split it and use an index file or submit the files separately. Google ignores priority and changefreq; lastmod should reflect actual updates to significant content, structured data, or links. Regenerating the file every day does not mean every article received a substantive update that day."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Confirm that the generator outputs complete URLs, and spot-check special characters and encoding.",
+            "Check the entry count and uncompressed size, splitting by content type if necessary.",
+            "Confirm that only significant changes update the corresponding lastmod; avoid always setting it to today's date.",
+            "Document the generation rules and maintainer so the next redesign has a reference."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Submit the file's location; a successful fetch does not mean every page is indexed",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before submitting, confirm that Googlebot can access the sitemap publicly without logging in. In Search Console's Sitemap report, you submit the file's URL; you do not upload the file to Google. Submission through this report requires property owner permissions, and you must select the correct property that covers that URL."
+        },
+        {
+          "type": "paragraph",
+          "text": "After entering the actual location, record the submission date, fetch status, and error messages. If fetching fails, first check the URL, access restrictions, and server response. If there is a parsing error, return to the generator and check the format. Do not repeatedly submit different guessed filenames before fixing the original problem."
+        },
+        {
+          "type": "paragraph",
+          "text": "A success status means Google can fetch and process the file; it does not guarantee that every listed page will be crawled or indexed. The report's discovered URL count is also not the total number of pages indexed in search. Continue by checking indexing information for important pages, and record successful file fetching separately from actual page outcomes."
+        },
+        {
+          "type": "heading",
+          "text": "Keep the list in sync when content is added, moved, or removed",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When publishing a new tutorial, confirm that it appears in the intended list and can be found normally through the site's internal navigation. Adding it to a Sitemap cannot replace good navigation. After a major update, check that its date is reasonable. Let the generator keep routine updates in sync, without treating each resubmission as a technique to speed up search."
+        },
+        {
+          "type": "paragraph",
+          "text": "When changing an article's URL, also check the new URL, how the original URL is handled, internal links, and canonical URL settings. The sitemap should gradually reflect the versions you currently want to present, rather than remaining full of redirects or dead entries over the long term. If you only remove an entry from the sitemap while the original page remains publicly accessible, that does not guarantee it will disappear from search results."
+        },
+        {
+          "type": "paragraph",
+          "text": "Content that truly needs protection should use appropriate access controls. To change indexing, choose the right method for the page's purpose. Deleting a submission record from Search Console likewise does not delete your website's pages or information Google already knows about. The list, the pages, and their search status are three things that need to be coordinated."
+        },
+        {
+          "type": "heading",
+          "text": "Regularly compare with the admin content list to find omissions and stale entries",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For maintenance, start with the list of published content and compare it with the URLs in the sitemap. First identify important pages that should be public but are missing, then look for items that have been removed from the site but remain in the sitemap. Finally, spot-check canonical versions and update dates. Do not assume the content is correct just because the file opens."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the article count and sitemap count differ, first check what each count covers: an index file may also include categories, authors, or other content, while RSS may contain only recent articles. Comparing counts separately by type is more useful than requiring the two totals to match exactly. Search Console also does not necessarily list all sitemaps discovered through other methods."
+        },
+        {
+          "type": "paragraph",
+          "text": "Schedule a check after bulk publishing, changing plugins, redesigning the site, or moving domains, and inspect routinely according to your update frequency. Keep a record of when issues were found, fixed, and rechecked so you can tell whether they recur. A good sitemap has clear rules and continually reflects the site's actual state."
+        },
+        {
+          "type": "image",
+          "src": "/guides/sitemap-website-submission/diagram-1-en.svg",
+          "alt": "Four stages: select public canonical URLs, use a generator to create valid files, submit and check fetch status, then sync and review as content changes.",
+          "width": 1600,
+          "height": 900,
+          "caption": "First decide which content is worth discovering, then maintain an accurate list that stays up to date.",
+          "description": "Four stages: select public canonical URLs, use a generator to create valid files, submit and check fetch status, then sync and review as content changes.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "URL type",
+            "How to handle it",
+            "What to check"
+          ],
+          "rows": [
+            [
+              "Public articles and service pages",
+              "Include the intended canonical URLs",
+              "Pages are accessible and content is complete"
+            ],
+            [
+              "Parameterized or alternative versions",
+              "Identify duplicates and canonical versions first",
+              "Do not include every variant"
+            ],
+            [
+              "Drafts or private information",
+              "Exclude from the public list",
+              "Implement access protection separately"
+            ],
+            [
+              "Removed or moved pages",
+              "Keep entries in sync: remove them or list the new URLs",
+              "Old URL handling and internal links"
+            ],
+            [
+              "Separate language versions",
+              "Include based on content and canonicalization setup",
+              "Language pages are accessible normally"
+            ]
+          ],
+          "caption": "This is a content inventory method; actual output must still match your site architecture and generator settings."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Removal from the list does not mean removal from search",
+          "text": "A Sitemap provides clues for discovering URLs; it cannot replace access controls, redirects, or indexing settings. First confirm the outcome you want for the page, then choose the corresponding method."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Set up Search Console first and understand each stage",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Determine whether crawl budget really is the problem",
+              "kind": "life",
+              "slug": "crawl-budget-diagnosis"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Clarify duplicate content and the role of each page",
+              "kind": "life",
+              "slug": "seo-content-cannibalization"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: Build and Submit a Sitemap",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Sitemap Report",
+          "url": "https://support.google.com/webmasters/answer/7451001?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sitemaps XML Protocol",
+          "url": "https://www.sitemaps.org/protocol.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Introduction to WordPress Core Sitemaps",
+          "url": "https://make.wordpress.org/core/2020/07/22/new-xml-sitemaps-functionality-in-wordpress-5-5/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress Source Code for Determining Whether Sitemaps Are Enabled",
+          "url": "https://developer.wordpress.org/reference/classes/wp_sitemaps/sitemaps_enabled/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress Source Code for the Sitemap Index URL",
+          "url": "https://developer.wordpress.org/reference/classes/wp_sitemaps_index/get_index_url/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "サイトマップの設計方法：掲載するURL、送信と維持管理",
+      "description": "サイトマップは検索エンジンに提供するURLの一覧です。掲載内容の選択を誤ったり、長期間更新しなかったりすると、送信に成功してもインデックス登録の問題は解決できません。この記事では、公開する正規URLの選び方、WordPress のサイトマップの場所、XML の形式とファイルの制限、Search Console での送信と維持管理の手順を整理します。URLの種類別比較表とオリジナルの同期フロー図を使い、台湾の小規模サイトが継続的に管理できる Sitemap を作るための方法を紹介します。",
+      "hero": {
+        "src": "/guides/sitemap-website-submission/hero-ja.jpg",
+        "alt": "文書、サーバー、フォルダーのオリジナル画像で、URL一覧の生成、送信、継続的な管理を表現。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "サイトに百本の記事があっても、サイトマップに数千件のURLが載っているからといって、内容が充実したとは限りません。カテゴリ、並べ替えの"
+            },
+            {
+              "type": "text",
+              "text": "パラメータ"
+            },
+            {
+              "type": "text",
+              "text": "、異なるバージョンなどによって、一覧が膨らむことがあります。Sitemap 作成の最初の手順は、検索エンジンに発見してもらう価値のあるURLを決めることです。見つかるリンクをすべてファイルに詰め込むことではありません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトマップは、公開コンテンツの引き継ぎリストと考えられます。追加、修正、移転、削除のたびに、一覧をサイトの実態と一致させる必要があります。以下では小規模な学習サイトを例に、コンテンツの棚卸しから送信後の維持管理までを説明します。この例は、実際のサイトで操作を行ったことを示すものではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "まずURLを選別し、公開コンテンツと別バージョンを区別する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まずサイトの管理画面から、公開済みの記事、主要なサービスページ、有用なカテゴリの入口を一覧にし、それぞれを本当に検索結果に表示したいか確認します。各項目について、完全なURL、コンテンツの種類、公開の有無、採用する正規URL、担当者を記録します。この表が後の照合の基準になります。検索結果だけから、すべてのコンテンツを洗い出すことはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ記事にトラッキングパラメータ付きのURLや別のURLがある場合、原則として表示したい正規版を掲載します。下書き、ログインが必要な個人情報、すでに存在しないページ、並べ替えのためだけに生成された重複URLは、通常この公開一覧には含めません。言語ごとに完全な内容を提供している場合は、そのURLと正規化の方針に応じて判断します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "カテゴリページも、一律にすべて残す、または削除するべきではありません。例えば「親子の手作り」にわかりやすい講座説明と入口がまとめられていれば、独立した用途があるかもしれません。一方、記事が一件しかなく、整理されていない細かなタグは、まずコンテンツの価値を評価する必要があります。サイトマップの選定ルールはコンテンツ計画と一致させ、プラグインの初期設定にすべてを任せないようにしましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "実際の生成元を確認し、複数の設定の競合を避ける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "コンテンツ管理システムを使っている場合は、まずプラットフォームやプラグインが自動生成する Sitemap を探します。公開状態に合わせて更新される可能性が高いためです。WordPress コアはサイトマップ機能を備えており、プリティーパーマリンクを使う場合、インデックスは通常 /wp-sitemap.xml にあります。使っていない場合、コアのプログラムは /?sitemap=index という形式を使います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "SEO プラグインが独自のサイトマップの場所や除外ルールを提供していることもあります。まず現在有効な機能を確認し、次に公開URLが実際に何を返すか確認します。サイトマップが複数ある場合は、それぞれの対象コンテンツと管理責任を把握することが重要です。複数のファイルがあること自体は違反ではありませんが、重複、古い情報、相反する設定があると管理が難しくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress の検索エンジンでの表示設定は、コアのサイトマップが有効になるかどうかに影響します。プラグインによって動作が変わることもあります。サイトマップが 404 を返す場合は、公開の意図、パーマリンク、実際に使っている生成ツールを確認し、すべてのプライバシー設定をいきなり無効にしないでください。まず適切な環境で確認してから、本番サイトに対応します。"
+        },
+        {
+          "type": "heading",
+          "text": "形式を正しくし、更新日に実際の意味を持たせる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "XML サイトマップには、正しい構造、UTF-8 エンコーディング、適切な文字処理が必要です。URLにはプロトコルとドメインを含む完全な形式を使います。自分で生成する場合は、適切な XML ツールで特殊文字を処理し、& を含むURLを文字列に直接組み込んで形式エラーを起こさないようにします。一般の利用者が、そのために一覧全体を一行ずつ手書きする必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google は XML、RSS／Atom、プレーンテキストなどの形式に対応しています。どれかを選べば検索順位が上がるという保証はありません。プレーンテキストは、一行に完全なURLを一つ記載します。RSS や Atom は通常、最近の更新だけを対象とするため、購読用フィードがあるからといって、過去の記事もすべて掲載されていると考えてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "単一ファイルは解凍後で最大 50 MB、URLは最大 50,000 件です。超える場合は分割し、インデックスファイルを使うか、個別に送信します。Google は priority と changefreq を無視します。一方、lastmod には、重要なコンテンツ、構造化データ、リンクの実際の更新を反映させる必要があります。毎日ファイルを再出力しても、すべての記事がその日に実質的に更新されたことにはなりません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "生成ツールが完全なURLを出力しているか確認し、特殊文字とエンコーディングを抜き取り確認します。",
+            "件数と解凍後のサイズを確認し、必要に応じてコンテンツの種類別に分割します。",
+            "重要な変更があったときだけ該当する lastmod を更新し、常に今日の日付を入れないようにします。",
+            "生成ルールと管理担当者を記録し、次回のリニューアルで参照できるようにします。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "送信するのはファイルの場所。読み込み成功は全ページの登録を意味しない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "送信前に、Googlebot がログインせずにサイトマップへ公開アクセスできることを確認します。Search Console の Sitemap レポートで送信するのはファイルのURLであり、ファイルを Google にアップロードするわけではありません。このレポートでの送信操作にはプロパティの所有者権限が必要です。また、そのURLを対象とする正しいサイトのプロパティを選ぶ必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実際の場所を入力したら、送信日、読み込み状況、エラーメッセージを記録します。取得できない場合は、まずURL、アクセス制限、サーバーの応答を確認します。解析エラーの場合は、生成ツールに戻って形式を確認します。元の問題を修正しないまま、推測した別のファイル名で何度も送信しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "成功の表示は、Google がそのファイルを読み込み、処理できることを意味します。含まれるすべてのページがクロールまたはインデックス登録される保証ではありません。レポートの検出されたURL数も、検索インデックスに登録された総数ではありません。その後も重要なページのインデックス情報を確認し、ファイルの読み込み成功と各ページの実際の結果を別々に記録する必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "追加、移転、公開終了の際は、一覧も同期して更新する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新しい学習記事を公開したら、想定した一覧に含まれ、サイト内からも問題なく見つけられることを確認します。Sitemap に入れるだけでは、適切なナビゲーションの代わりにはなりません。大幅な更新後は日付が妥当か確認し、日常的な更新は生成ツールで継続的に同期させます。毎回の再送信を、検索を速めるテクニックと考える必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記事のURLを変更するときは、新しいURL、元のURLの処理方法、内部リンク、正規URLの設定もあわせて確認します。サイトマップは、現在表示したいバージョンを順次反映し、リダイレクトや無効な項目が長期間大量に残ることを避けます。一覧から項目を削除しただけで、元のページへ引き続き公開アクセスできる場合、それによって検索結果から消える保証はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本当に保護が必要なコンテンツには、適切なアクセス制御を使います。インデックス登録を調整する必要がある場合は、ページの目的に応じて正しい方法を選びます。Search Console の送信記録を削除しても、サイトのページや Google がすでに把握している情報が削除されるわけではありません。一覧、ページ、検索の状態は、それぞれ調整が必要な別のものです。"
+        },
+        {
+          "type": "heading",
+          "text": "管理画面の内容と定期的に照合し、掲載漏れと残存項目を見つける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "維持管理では、公開済みコンテンツの表を出発点に、サイトマップ内のURLと照合します。まず公開すべきなのに掲載されていない主要ページを見つけ、次に公開を終了したのにサイトマップに残っている項目を確認します。最後に正規版と更新日を抜き取り確認します。ファイルを開けるだけで、内容も正しいとは考えないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記事数とサイトマップの件数が異なる場合は、まず集計範囲を確認します。インデックスファイルにはカテゴリ、著者、その他のコンテンツが含まれることがあり、RSS は最近の記事だけの場合もあります。種類ごとの件数を分けて比較する方が、二つの総数の完全な一致を求めるより役立ちます。Search Console も、他の方法で発見したサイトマップをすべて表示するとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "大量公開、プラグインの変更、リニューアル、ドメイン移転の後には確認を行い、普段は更新頻度に応じて点検することをおすすめします。発見、修正、再確認の日付を含む記録を残すことで、問題が繰り返し発生しているか判断できます。良いサイトマップの基準は、ルールが明確で、継続的にサイトの実態を反映していることです。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/sitemap-website-submission/diagram-1-ja.svg",
+          "alt": "四段階の図解：公開する正規URLを選び、生成ツールで有効なファイルを出力し、送信して読み込み状況を確認し、コンテンツの変更に合わせて同期と再確認を行う。",
+          "width": 1600,
+          "height": 900,
+          "caption": "まず発見してもらう価値のあるコンテンツを決め、正確で継続的に更新される一覧を維持します。",
+          "description": "四段階の図解：公開する正規URLを選び、生成ツールで有効なファイルを出力し、送信して読み込み状況を確認し、コンテンツの変更に合わせて同期と再確認を行う。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "URLの種類",
+            "対応方針",
+            "確認点"
+          ],
+          "rows": [
+            [
+              "公開記事・サービスページ",
+              "採用する正規URLを掲載",
+              "アクセスでき、内容が完全であること"
+            ],
+            [
+              "パラメータ付き・代替版",
+              "まず重複と正規版を見分ける",
+              "すべての派生版を掲載しない"
+            ],
+            [
+              "下書き・非公開情報",
+              "公開一覧から除外",
+              "アクセス保護は別途実施"
+            ],
+            [
+              "削除・移転済みページ",
+              "削除または新URLへの変更を同期",
+              "旧URLの処理と内部リンク"
+            ],
+            [
+              "独立した言語版",
+              "内容と正規化の方針に応じて掲載",
+              "言語別ページへ正常にアクセスできること"
+            ]
+          ],
+          "caption": "これはコンテンツの棚卸し方法です。実際の出力は、サイトの構造と生成ツールの設定に合わせる必要があります。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "一覧からの削除は、検索結果からの削除ではない",
+          "text": "Sitemap はURL発見の手がかりを提供するもので、アクセス制御、リダイレクト、インデックス設定の代わりにはなりません。まずページをどのような状態にしたいか確認し、それに応じた処理方法を選びます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "まず Search Console を設定し、各段階を理解する",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "クロールバジェットが本当に問題なのかを見極める",
+              "kind": "life",
+              "slug": "crawl-budget-diagnosis"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "重複コンテンツとページの役割を整理する",
+              "kind": "life",
+              "slug": "seo-content-cannibalization"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：Sitemap の作成と送信",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：Sitemap レポート",
+          "url": "https://support.google.com/webmasters/answer/7451001?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sitemaps XML プロトコル",
+          "url": "https://www.sitemaps.org/protocol.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress コアのサイトマップ機能の紹介",
+          "url": "https://make.wordpress.org/core/2020/07/22/new-xml-sitemaps-functionality-in-wordpress-5-5/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress のサイトマップ有効化判定のソースコード",
+          "url": "https://developer.wordpress.org/reference/classes/wp_sitemaps/sitemaps_enabled/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress のサイトマップインデックスURLのソースコード",
+          "url": "https://developer.wordpress.org/reference/classes/wp_sitemaps_index/get_index_url/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "사이트맵 계획하기: 포함할 URL, 제출 및 유지 관리 방법",
+      "description": "사이트맵은 검색 엔진에 제공하는 URL 목록입니다. 포함할 콘텐츠를 잘못 고르거나 오랫동안 갱신하지 않으면 제출에 성공해도 색인 생성 문제를 해결할 수 없습니다. 공개 표준 URL을 선별하는 방법, WordPress 사이트맵 위치, XML 형식과 파일 제한, Search Console 제출 및 유지 관리 절차를 정리합니다. URL 유형 비교표와 자체 제작한 동기화 도해를 통해 대만의 소규모 웹사이트가 지속적으로 관리할 수 있는 Sitemap을 구축하도록 돕습니다.",
+      "hero": {
+        "src": "/guides/sitemap-website-submission/hero-ko.jpg",
+        "alt": "자체 제작한 문서, 서버, 폴더 이미지로 URL 목록의 생성, 제출, 지속적인 유지 관리를 표현합니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "웹사이트에 글이 백 편인데 사이트맵에는 수천 개의 URL이 나열되어 있다고 해서 콘텐츠가 풍부해졌다는 뜻은 아닙니다. 카테고리, 정렬 "
+            },
+            {
+              "type": "text",
+              "text": "매개변수"
+            },
+            {
+              "type": "text",
+              "text": ", 서로 다른 버전 때문에 목록이 불어날 수 있습니다. Sitemap을 만드는 첫 단계는 검색 엔진이 발견할 가치가 있는 URL을 정하는 것입니다. 보이는 링크를 모두 파일에 쏟아 넣는 것이 아닙니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트맵은 공개 콘텐츠의 인수인계 목록이라고 생각할 수 있습니다. 콘텐츠를 추가, 수정, 이전, 삭제할 때마다 목록과 웹사이트를 일치시켜야 합니다. 아래에서는 소규모 교육 웹사이트를 예로 들어 콘텐츠 현황 파악부터 제출 후 유지 관리까지 살펴봅니다. 이 예시는 실제 웹사이트에서 작업을 수행했다는 의미가 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "먼저 URL을 선별해 공개 콘텐츠와 다른 버전 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 웹사이트 관리자 화면에서 게시된 글, 주요 서비스 페이지, 유용한 카테고리 진입 페이지를 나열한 뒤, 각 항목이 실제로 검색 결과에 표시되기를 원하는지 확인하세요. 항목마다 전체 URL, 콘텐츠 유형, 공개 여부, 의도한 표준 URL, 담당자를 기록합니다. 이 표가 이후 대조의 기준이므로 검색 결과만으로 전체 콘텐츠를 역으로 추정해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 글에 추적 매개변수나 다른 URL 버전이 있다면 원칙적으로 보여 주려는 표준 버전을 포함합니다. 초안, 로그인이 필요한 개인 정보, 더 이상 존재하지 않는 페이지, 정렬만을 위해 생성된 중복 URL은 보통 이 공개 목록에 속하지 않습니다. 언어별로 완전한 콘텐츠를 제공한다면 각 URL과 표준 URL 설정을 기준으로 판단해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "카테고리 페이지도 무조건 모두 남기거나 삭제하지 마세요. 예를 들어 ‘부모와 아이가 함께하는 만들기’에 명확한 수업 설명과 진입 경로가 정리되어 있다면 독립적인 용도가 있을 수 있습니다. 글이 한 편뿐이고 정리가 부족한 세분화된 태그는 먼저 콘텐츠 가치를 평가해야 합니다. 사이트맵의 선택 규칙은 콘텐츠 계획과 일치해야 하며, 플러그인 기본값에 모든 결정을 맡겨서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "실제 생성 주체를 찾아 여러 설정의 충돌 피하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "콘텐츠 관리 시스템을 사용한다면 플랫폼이나 플러그인이 자동으로 생성하는 Sitemap을 먼저 찾으세요. 게시 상태에 맞춰 갱신될 가능성이 더 높기 때문입니다. WordPress 코어는 사이트맵 기능을 제공하며, 읽기 쉬운 고유주소를 사용하면 색인 파일은 보통 /wp-sitemap.xml에 있습니다. 이를 사용하지 않으면 코어 프로그램은 /?sitemap=index 형식을 사용합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "SEO 플러그인도 자체 사이트맵 위치와 제외 규칙을 제공할 수 있습니다. 먼저 현재 활성화된 기능을 살펴본 뒤 공개 URL에서 실제로 무엇을 반환하는지 확인하세요. 사이트맵이 여러 개라면 각각 포함하는 콘텐츠와 유지 관리 책임을 파악하는 것이 핵심입니다. 파일이 여러 개라는 사실 자체가 규칙 위반은 아니지만, 중복되거나 오래되었거나 설정이 서로 반대라면 관리가 더 어려워집니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress의 검색 엔진 표시 설정은 코어 사이트맵의 활성화 여부에 영향을 주며, 플러그인도 동작을 바꿀 수 있습니다. 사이트맵에서 404가 발생하면 공개 목적, 고유주소, 실제 사용하는 생성기를 확인해야 합니다. 모든 개인정보 보호 설정을 바로 끄지 마세요. 먼저 적절한 환경에서 확인한 뒤 운영 웹사이트에 적용하세요."
+        },
+        {
+          "type": "heading",
+          "text": "형식은 정확하게, 수정 날짜는 실제 변경을 반영하도록",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "XML 사이트맵에는 올바른 구조, UTF-8 인코딩, 문자 처리가 필요하며, URL에는 프로토콜과 도메인을 모두 포함해야 합니다. 직접 생성한다면 적절한 XML 도구로 특수문자를 처리해야 합니다. &가 포함된 URL을 문자열에 그대로 이어 붙여 형식 오류가 생기지 않도록 하세요. 일반 사용자가 이를 위해 전체 목록을 한 줄씩 직접 작성할 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google은 XML, RSS／Atom, 일반 텍스트 등의 형식을 지원하며, 특정 형식을 선택했다는 이유만으로 더 높은 순위가 보장되지는 않습니다. 일반 텍스트는 한 줄에 전체 URL을 하나씩 작성합니다. RSS나 Atom은 보통 최근 갱신 내용만 포함하므로, 구독 피드가 있다고 해서 모든 과거 글도 포함되어 있다고 가정해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "단일 파일은 압축을 푼 뒤 최대 50 MB, URL은 최대 50,000개까지 허용됩니다. 이를 넘으면 파일을 나누고 색인 파일을 사용하거나 각각 제출하세요. Google은 priority와 changefreq를 무시합니다. lastmod는 주요 콘텐츠, 구조화된 데이터 또는 링크의 실제 수정 시점을 반영해야 합니다. 매일 파일을 다시 생성한다고 해서 모든 글의 내용이 그날 실질적으로 수정된 것은 아닙니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "생성기가 전체 URL을 출력하는지 확인하고 특수문자와 인코딩을 표본 점검하세요.",
+            "항목 수와 압축을 푼 뒤의 크기를 확인하고, 필요하면 콘텐츠 유형별로 나누세요.",
+            "중요한 수정이 있을 때만 해당 lastmod를 갱신하는지 확인하고, 항상 오늘 날짜를 넣지 마세요.",
+            "생성 규칙과 유지 관리 담당자를 기록해 다음 개편 때 참고할 근거를 남기세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "파일 위치를 제출하며, 읽기 성공이 전체 색인 생성을 뜻하지는 않는다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "제출하기 전에 Googlebot이 로그인 없이 사이트맵에 공개적으로 접근할 수 있는지 확인하세요. Search Console의 Sitemap 보고서에서는 파일을 Google에 업로드하는 것이 아니라 파일 URL을 제출합니다. 이 보고서에서 제출하려면 속성 소유자 권한이 필요하며, 해당 URL을 포함하는 올바른 웹사이트 속성도 선택해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실제 위치를 입력한 뒤 제출 날짜, 읽기 상태, 오류 메시지를 기록하세요. 가져올 수 없다면 먼저 URL, 접근 제한, 서버 응답을 확인하세요. 파싱 오류라면 생성기로 돌아가 형식을 점검합니다. 원래 문제가 해결되지 않은 상태에서 추측한 파일 이름을 바꿔 가며 반복 제출하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "성공으로 표시되면 Google이 이 파일을 읽고 처리할 수 있다는 뜻입니다. 파일에 포함된 모든 페이지가 크롤링되거나 색인에 등록된다는 보장은 아닙니다. 보고서의 발견된 URL 수도 검색 색인에 등록된 전체 URL 수는 아닙니다. 이후에도 중요한 페이지의 색인 정보를 살펴보고, 파일 읽기 성공 여부와 페이지의 실제 결과를 따로 기록해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "추가, 이전, 공개 중단 때도 목록을 함께 갱신하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "새 튜토리얼을 게시할 때는 의도한 목록에 포함되었는지, 웹사이트 내부에서 정상적으로 찾을 수 있는지 확인하세요. Sitemap에 넣는 것만으로 좋은 탐색 구조를 대신할 수는 없습니다. 큰 수정 후에는 날짜가 적절한지 점검하고, 일상적인 갱신은 생성기가 계속 동기화하도록 하세요. 매번 재제출하는 것을 검색 속도를 높이는 요령으로 여길 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "글의 URL을 바꾸면 새 URL, 기존 URL의 처리 방식, 내부 링크, 표준 URL 설정을 함께 점검해야 합니다. 사이트맵에는 현재 보여 주려는 버전이 점차 반영되어야 하며, 리디렉션되거나 작동하지 않는 항목이 오랫동안 가득 남지 않도록 해야 합니다. 사이트맵에서 항목 하나만 제거하고 원래 페이지에는 계속 공개적으로 접근할 수 있다면, 그 페이지가 검색 결과에서 사라진다고 보장할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실제로 보호해야 하는 콘텐츠에는 적절한 접근 제어를 적용해야 합니다. 색인을 조정하려면 페이지의 목적에 맞는 방법을 선택하세요. Search Console에서 제출 기록을 삭제해도 웹사이트 페이지나 Google이 이미 확보한 정보가 삭제되지는 않습니다. 목록, 페이지, 검색 상태는 서로 맞춰 관리해야 하는 세 가지 요소입니다."
+        },
+        {
+          "type": "heading",
+          "text": "콘텐츠 관리자 화면과 정기적으로 대조해 누락과 잔존 항목 찾기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "유지 관리할 때는 게시된 콘텐츠 표를 출발점으로 삼아 사이트맵의 URL과 대조하세요. 먼저 공개되어야 하지만 누락된 주요 페이지를 찾고, 다음으로 공개가 중단되었는데도 사이트맵에 남아 있는 항목을 살펴봅니다. 마지막으로 표준 버전과 수정 날짜를 표본 점검하세요. 파일이 열린다는 이유만으로 내용도 정확하다고 생각해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "글 수와 사이트맵의 URL 수가 다르면 먼저 집계 범위를 살펴보세요. 색인 파일에는 카테고리, 작성자 또는 다른 콘텐츠도 포함될 수 있고, RSS에는 최근 글만 있을 수 있습니다. 두 총수가 완전히 같아야 한다고 요구하기보다 유형별 항목 수를 나눠 비교하는 것이 더 유용합니다. Search Console에도 다른 방식으로 발견한 모든 사이트맵이 반드시 표시되는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "대량 게시, 플러그인 교체, 사이트 개편, 도메인 이전 후에는 한 차례 점검을 계획하고, 평소에는 갱신 빈도에 따라 확인하는 것이 좋습니다. 발견, 수정, 재확인 날짜를 포함한 기록을 남겨야 문제가 반복되는지 알 수 있습니다. 좋은 사이트맵의 기준은 규칙이 명확하고 실제 웹사이트 상태를 지속적으로 반영하는 것입니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/sitemap-website-submission/diagram-1-ko.svg",
+          "alt": "네 단계 도해: 공개 표준 URL 선택, 생성기로 유효한 파일 출력, 제출 및 읽기 상태 확인, 콘텐츠 변경에 따른 동기화와 재점검.",
+          "width": 1600,
+          "height": 900,
+          "caption": "먼저 발견할 가치가 있는 콘텐츠를 정한 뒤, 정확하고 지속적으로 갱신되는 목록을 관리하세요.",
+          "description": "네 단계 도해: 공개 표준 URL 선택, 생성기로 유효한 파일 출력, 제출 및 읽기 상태 확인, 콘텐츠 변경에 따른 동기화와 재점검.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "URL 유형",
+            "처리 방향",
+            "점검 사항"
+          ],
+          "rows": [
+            [
+              "공개 글과 서비스 페이지",
+              "의도한 표준 URL 포함",
+              "페이지 접근 가능 여부와 콘텐츠 완전성"
+            ],
+            [
+              "매개변수 또는 대체 버전",
+              "먼저 중복과 표준 버전 식별",
+              "모든 변형을 포함하지 않기"
+            ],
+            [
+              "초안 또는 개인 정보",
+              "공개 목록에서 제외",
+              "접근 보호는 별도로 적용"
+            ],
+            [
+              "삭제되거나 이전된 페이지",
+              "함께 제거하거나 새 URL로 변경",
+              "기존 URL 처리와 내부 링크"
+            ],
+            [
+              "독립적인 언어 버전",
+              "콘텐츠와 표준 URL 설정에 따라 포함",
+              "언어별 페이지의 정상 접근 여부"
+            ]
+          ],
+          "caption": "콘텐츠 현황을 파악하는 방법입니다. 실제 출력은 웹사이트 구조와 생성기 설정에 맞춰야 합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "목록에서 제외해도 검색에서 제외되는 것은 아니다",
+          "text": "Sitemap은 URL을 발견할 단서를 제공하며, 접근 제어, 리디렉션, 색인 설정을 대신할 수는 없습니다. 먼저 페이지가 어떻게 표시되기를 원하는지 확인한 뒤 그에 맞는 처리 방법을 선택하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "먼저 Search Console을 설정하고 각 단계 이해하기",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "크롤링 예산이 실제 문제인지 판단하기",
+              "kind": "life",
+              "slug": "crawl-budget-diagnosis"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "중복 콘텐츠와 페이지별 역할 정리하기",
+              "kind": "life",
+              "slug": "seo-content-cannibalization"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Sitemap 만들기 및 제출하기",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Sitemap 보고서",
+          "url": "https://support.google.com/webmasters/answer/7451001?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sitemaps XML 프로토콜",
+          "url": "https://www.sitemaps.org/protocol.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 코어 사이트맵 소개",
+          "url": "https://make.wordpress.org/core/2020/07/22/new-xml-sitemaps-functionality-in-wordpress-5-5/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 사이트맵 활성화 여부 판단 소스 코드",
+          "url": "https://developer.wordpress.org/reference/classes/wp_sitemaps/sitemaps_enabled/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 사이트맵 색인 URL 소스 코드",
+          "url": "https://developer.wordpress.org/reference/classes/wp_sitemaps_index/get_index_url/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "网站地图怎么规划：收录哪些网址、如何提交与维护",
+      "description": "网站地图是提供给搜索引擎的网址清单，内容选错或长期不更新，即使提交成功，也无法解决收录问题。本文整理公开标准网址的筛选方式、WordPress 网站地图位置、XML 格式与文件限制，以及 Search Console 提交和维护流程。配合网址类型比较表与原创同步图解，帮助台湾小型网站建立可持续管理的 Sitemap。",
+      "hero": {
+        "src": "/guides/sitemap-website-submission/hero-zh-cn.jpg",
+        "alt": "原创文档、服务器与文件夹图像，呈现网址清单的生成、提交与持续维护。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "网站有一百篇文章，网站地图却列出数千个网址，不一定表示内容变丰富了。分类、排序"
+            },
+            {
+              "type": "text",
+              "text": "参数"
+            },
+            {
+              "type": "text",
+              "text": "和不同版本都可能让清单膨胀。制作 Sitemap 的第一步，是决定哪些网址值得让搜索引擎发现，而不是把看得到的链接全部倒进文件。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "可以把网站地图想成公开内容的交接清单：每次新增、修改、迁移和删除，都要让清单与网站一致。以下以小型教学网站为例，从内容盘点到提交后的维护；示例不代表已对任何真实网站进行操作。"
+        },
+        {
+          "type": "heading",
+          "text": "先筛选网址，分清公开内容与其他版本",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先从网站后台列出已发布文章、主要服务页和有用的分类入口，再逐项确认是否真的希望出现在搜索结果中。为每项记录完整网址、内容类型、是否公开、预期标准网址及负责人。这份表是后续比对依据，不能只靠搜索结果反推所有内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一篇文章若有跟踪参数或不同网址版本，原则上列出希望呈现的标准版本。草稿、需登录的个人资料、已不存在的页面，以及单纯为排序而生成的重复网址，通常不属于这份公开清单。不同语言若各自提供完整内容，则要根据其网址与标准化安排判断。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分类页也不要一律全留或全删。假设“亲子手工”整理了清楚的课程说明与入口，它可能有独立用途；只有一篇文章、缺乏整理的细碎标签则应先评估内容价值。网站地图的选取规则应跟内容规划一致，而不是让插件默认设置替你决定所有事情。"
+        },
+        {
+          "type": "heading",
+          "text": "找到真正的生成来源，避免多套设置互相冲突",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "使用内容管理系统时，优先找平台或插件自动生成的 Sitemap，因为它更有可能随发布状态更新。WordPress 核心提供网站地图功能，使用美化固定链接时，索引通常位于 /wp-sitemap.xml；未使用时，核心程序会采用 /?sitemap=index 的形式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "SEO 插件也可能提供自己的地图位置及排除规则。先查看目前启用的功能，再确认公开网址实际返回什么内容。若同时有几份网站地图，重点是找出各自涵盖的内容及维护责任；多份文件本身不等于违规，但重复、过时或设置相反会让管理更困难。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 的搜索引擎可见性设置会影响核心网站地图是否启用，插件也可能改变行为。地图出现 404 时，应核对公开目的、固定链接与实际使用的生成器，不要直接关闭所有隐私设置。先在适当环境中确认，再处理正式网站。"
+        },
+        {
+          "type": "heading",
+          "text": "格式要正确，更新日期要有真实意义",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "XML 网站地图需要正确的结构、UTF-8 编码及字符处理，网址应使用完整的协议和域名。自行生成时，应使用合适的 XML 工具处理特殊字符，避免直接把含有 & 的网址拼进字符串，造成格式错误。一般用户不必为此逐行手写整份清单。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 支持 XML、RSS／Atom 和纯文本等格式，没有因为选择某一种就保证排名更好的说法。纯文本是一行一个完整网址；RSS 或 Atom 通常只涵盖近期更新，不能看到有订阅摘要就假设所有旧文章也已列出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "单个文件解压后最多 50 MB、最多 50,000 个网址，超过时拆分并使用索引文件或分别提交。Google 会忽略 priority 和 changefreq；lastmod 则应反映重要内容、结构化数据或链接的实际更新。每天重新输出文件，不代表每篇文章都在当天有实质更新。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "确认生成器输出完整网址，并抽查特殊字符与编码。",
+            "核对条目数及解压后的大小，必要时按内容类型拆分。",
+            "确认仅在重要修改时更新相应的 lastmod，避免固定填今天。",
+            "保存生成规则与维护者信息，让下一次改版有依据可循。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "提交的是文件位置，成功读取不代表全部建立索引",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "提交前先确认网站地图能让 Googlebot 公开访问，不需要登录。Search Console 的 Sitemap 报表提交的是文件网址，不是把文件上传到 Google。在此报表中提交需要资源所有者权限，也要选对涵盖该网址的网站资源。"
+        },
+        {
+          "type": "paragraph",
+          "text": "填入实际位置后，记录提交日期、读取状态及错误信息。若无法获取，先核对网址、访问限制和服务器响应；若是解析错误，回到生成器检查格式。不要在原问题尚未修正时，反复提交不同猜测的文件名。"
+        },
+        {
+          "type": "paragraph",
+          "text": "显示成功表示 Google 能读取并处理这份文件，并不保证其中每页都会被抓取或建立索引。报表中的已发现网址数也不是搜索收录总数。接着仍应查看重要页面的索引信息，把文件读取成功和页面实际结果分别记录。"
+        },
+        {
+          "type": "heading",
+          "text": "新增、迁移与下架，都要同步更新清单",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "发布新教程时，确认它已进入预期清单，并能从网站内部正常找到；只放进 Sitemap 不能替代良好的导航。重大更新后检查日期是否合理，例行更新则让生成器持续同步，不需要把每次重新提交当成加速搜索的技巧。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文章更改网址时，要同时检查新网址、原网址的处理方式、站内链接及标准网址设置。网站地图应逐步反映目前想呈现的版本，避免长期充斥重定向或失效条目。若只是从地图中移除一条记录，原页面仍可公开访问，并不能因此保证它从搜索结果中消失。"
+        },
+        {
+          "type": "paragraph",
+          "text": "真正需要保护的内容应靠适当的访问控制；需要调整索引则根据页面用途选择正确方法。删除 Search Console 里的提交记录，同样不会替你删除网站页面或 Google 已掌握的信息。清单、页面和搜索状态是三件需要协调的事。"
+        },
+        {
+          "type": "heading",
+          "text": "定期对照内容后台，找出漏列与残留",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "维护时以已发布内容表为起点，对照网站地图中的网址。先找出应公开却漏列的主要页面，再看已下架但仍留在地图中的条目；最后抽查标准版本与更新日期。不要只因文件能打开，就认为内容也正确。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若文章数与地图中的条目数不同，先看统计范围：索引文件可能还包含分类、作者或其他内容，RSS 又可能只有近期文章。将各类条目数分开比较，比要求两个总数完全相等更有用。Search Console 也不一定列出所有通过其他方式发现的网站地图。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建议在大量发布、插件更换、改版与域名迁移后安排一次检查，平时按更新频率巡查。留下一份包含发现、修正与复查日期的记录，才能知道问题是否重复发生。网站地图做得好的标准，是规则清楚且持续贴近网站实际情况。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/sitemap-website-submission/diagram-1-zh-cn.svg",
+          "alt": "四阶段图解：选定公开标准网址、由生成器输出有效文件、提交并查看读取状态、随内容变动同步与复查。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先决定值得被发现的内容，再维护正确且持续更新的清单。",
+          "description": "四阶段图解：选定公开标准网址、由生成器输出有效文件、提交并查看读取状态、随内容变动同步与复查。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "网址类型",
+            "处理方向",
+            "检查重点"
+          ],
+          "rows": [
+            [
+              "公开文章与服务页",
+              "列入预期标准网址",
+              "页面可访问且内容完整"
+            ],
+            [
+              "参数或替代版本",
+              "先辨认重复与标准版本",
+              "不要把所有变体都列入"
+            ],
+            [
+              "草稿或私人资料",
+              "排除在公开清单之外",
+              "访问保护另行实施"
+            ],
+            [
+              "已移除或迁移的页面",
+              "同步移除或改列新址",
+              "旧址处理与站内链接"
+            ],
+            [
+              "独立语言版本",
+              "按内容及标准化安排列入",
+              "语言页可正常访问"
+            ]
+          ],
+          "caption": "这是内容盘点方法；实际输出仍需配合网站架构与生成器设置。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "移出清单不等于移出搜索",
+          "text": "Sitemap 提供发现网址的线索，无法替代访问控制、重定向或索引设置。先确认希望页面呈现的结果，再选择相应的处理方法。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先设置 Search Console 并理解各阶段",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "辨别抓取预算是否真是问题",
+              "kind": "life",
+              "slug": "crawl-budget-diagnosis"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "厘清重复内容与页面分工",
+              "kind": "life",
+              "slug": "seo-content-cannibalization"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 创建并提交 Sitemap",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Sitemap 报表",
+          "url": "https://support.google.com/webmasters/answer/7451001?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sitemaps XML 协议",
+          "url": "https://www.sitemaps.org/protocol.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 核心网站地图介绍",
+          "url": "https://make.wordpress.org/core/2020/07/22/new-xml-sitemaps-functionality-in-wordpress-5-5/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 判断网站地图是否启用的源代码",
+          "url": "https://developer.wordpress.org/reference/classes/wp_sitemaps/sitemaps_enabled/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 网站地图索引网址源代码",
           "url": "https://developer.wordpress.org/reference/classes/wp_sitemaps_index/get_index_url/",
           "checked_on": "2026-09-14"
         }

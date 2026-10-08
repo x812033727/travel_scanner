@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
-    "software",
     "marketing",
-    "seo"
+    "seo",
+    "software",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "結構化資料怎麼加：從可見內容到搜尋驗證",
@@ -39,10 +42,8 @@
               "text": "開始之前先確認內容本身正確。如果作者不明、圖片不相關，或頁面沒有實際的商品價格，補幾個欄位不能解決根本問題。先從一種常見頁型整理資料，再測試輸出，比一次替全站開啟所有"
             },
             {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
+              "type": "text",
+              "text": "標記"
             },
             {
               "type": "text",
@@ -71,10 +72,8 @@
               "text": "也要區"
             },
             {
-              "type": "article",
-              "text": "分詞",
-              "kind": "life",
-              "slug": "ai-term-tokenization"
+              "type": "text",
+              "text": "分詞"
             },
             {
               "type": "text",
@@ -184,6 +183,7 @@
           "width": 1600,
           "height": 900,
           "caption": "資料正確與功能符合條件，仍不保證特殊搜尋外觀會出現。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -294,6 +294,1142 @@
         },
         {
           "title": "Google 複合式搜尋結果測試",
+          "url": "https://support.google.com/webmasters/answer/7445569?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "How to Add Structured Data: From Visible Content to Search Validation",
+      "description": "Structured data can help search engines understand pages, but adding code does not guarantee a special search appearance. Starting with the roles of Schema.org types and JSON-LD, this article covers visible content mapping, article fields, platform output sources, and differences between Schema Markup Validator and the Rich Results Test. An original field table and validation workflow help Taiwan website administrators build maintainable markup based on real content.",
+      "hero": {
+        "src": "/guides/structured-data-basics/hero-en.jpg",
+        "alt": "Original document, screen, and shield graphics representing content fields, data output, and validation.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "If an article already has a title, author, and publication date, why provide structured data separately? Because systems may not identify relationships as clearly as people can when reading a page's layout. Structured data expresses this information using consistent names and formats, making page content easier to process."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Before you start, make sure the content itself is accurate. If the author is unknown, the images are irrelevant, or the page has no actual product price, adding a few fields cannot solve the underlying problem. Start by organizing data for one common page type and testing the output; this is easier to maintain than enabling all "
+            },
+            {
+              "type": "text",
+              "text": "markup"
+            },
+            {
+              "type": "text",
+              "text": " across the site at once."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Schema.org Is the Vocabulary; JSON-LD Is the Format",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Schema.org provides a shared vocabulary of types and properties, such as Article for an article, with appropriate properties to describe it. JSON-LD, Microdata, and RDFa are different ways to embed information in a page. Keep these two layers distinct: choosing JSON-LD does not determine whether the page describes an article, a person, or a product."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google generally recommends JSON-LD because it is easy to maintain. It is usually placed in a script element whose type is application/ld+json. This data is not displayed directly like the body text, but what it describes should still match information users can see. Do not use this as an excuse to put nonexistent ratings or authors into hidden data."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Also distinguish "
+            },
+            {
+              "type": "text",
+              "text": "vocabulary"
+            },
+            {
+              "type": "text",
+              "text": " validity from support for Google Search features. Schema.org covers more than Google's rich results; a type may validly describe content without Google currently offering a corresponding special search appearance. If your goal is a search feature, read Google's latest documentation specifically for that feature."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Choose a Suitable Type Based on the Page's Main Purpose",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For a tutorial article about organizing a home workspace, you could first consider Article or BlogPosting and describe its title, author, images, and dates based on the actual content. If the page is actually a place to buy a product, it needs a different data setup suited to products. Do not use the same template simply because both pages have an image."
+        },
+        {
+          "type": "paragraph",
+          "text": "First list your site's main page types, including articles, service descriptions, and personal profiles, and record who supplies the content for each type and whether markup already exists. A single page can reasonably describe multiple things, but each item should be supported by its content. There is no need to turn every noun mentioned in passing in an article into a separate entity just to increase the item count."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google's general guidelines require markup to reflect page content and follow the rules for its type. Before choosing ratings, events, or other features that may have specific eligibility requirements, check where they apply. Seeing a particular search appearance on a competing website does not mean your page only needs the same code."
+        },
+        {
+          "type": "heading",
+          "text": "Map Visible Content to Fields",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For article types, start by organizing headline, author, image, datePublished, and dateModified where applicable. These are recommended properties listed in Google's article documentation, not a universal set of required fields for every structured data type. Check the required and recommended items separately for each feature."
+        },
+        {
+          "type": "paragraph",
+          "text": "The headline should reflect the article itself. The author should match the actual byline, using the appropriate type for a person or organization. Record multiple authors separately instead of treating a whole string of names, job titles, and the word \"posted by\" as one name. Distinguish the original publication date from later modifications, use an appropriate format, and include time zone information."
+        },
+        {
+          "type": "paragraph",
+          "text": "Images should represent the article's content, and their URLs should be accessible. Do not substitute the website logo for each article's content image or leave in test-environment paths. Create a field table that maps each data value to its admin field and page location, so editors know what needs to be updated together when they revise an article."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Choose an article with complete information and confirm its byline, images, and dates.",
+            "Consult the official property requirements for the appropriate type, distinguishing required items from recommended ones.",
+            "Record the content source and visible location for each markup field.",
+            "Check for missing data without inventing values to make the table look complete."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Check Existing Platform Output to Avoid Conflicting Data",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress themes, SEO plugins, or other content features may already output structured data. First inspect the page source and search for application/ld+json, then use a tool to examine the extracted types. Not finding this string does not mean there is no markup, because the site may use Microdata or RDFa."
+        },
+        {
+          "type": "paragraph",
+          "text": "If two features describe the same article, check that the author, images, dates, and URLs match. Multiple data items are not necessarily wrong, but contradictions make troubleshooting harder. First decide which feature is responsible for the main article data, then adjust it using methods supported by the platform. Do not simply delete every script you do not understand."
+        },
+        {
+          "type": "paragraph",
+          "text": "When generating JSON-LD yourself, use a serialization method that handles quotation marks and special characters correctly. Directly assembling a reader-entered title into code is prone to errors; comments, fictional authors, and test URLs in examples must not go live unchanged. After configuration, inspect the actual page instead of validating only a draft in the editor."
+        },
+        {
+          "type": "heading",
+          "text": "Use Both Tests, Then Manually Check the Content",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Schema Markup Validator can extract Schema.org data from a page, show relationships between data items, and identify syntax problems. Google's Rich Results Test focuses on the search features it can recognize and their related errors and recommendations. An error-free result from the former does not mean the latter necessarily supports a special search appearance for that type."
+        },
+        {
+          "type": "paragraph",
+          "text": "The Rich Results Test accepts a full URL, or you can switch to code mode and paste in the content to test. Check unpublished drafts in code mode first, then test the URL once the live page is ready to confirm that the data is actually output after deployment. URL testing requires access to the necessary resources. Do not casually remove protection from private pages just to test them."
+        },
+        {
+          "type": "paragraph",
+          "text": "Fix major errors first, then review whether the other recommendations apply. If information is missing, address it at the content source. Even if the tools pass the markup, manually check that it describes visible content and contains no outdated dates or false reviews. Tools cannot guarantee that your content is true, that every policy is satisfied, or that it will appear in search results."
+        },
+        {
+          "type": "heading",
+          "text": "Keep Checking After Publication to Keep Content and Markup in Sync",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After launch, spot-check actual URLs, important images, and data values. Use Search Console to inspect pages as processed by Google when needed. Record local code checks, public URL tests, and subsequent search status separately so you can identify whether a problem occurred during generation, deployment, or reprocessing."
+        },
+        {
+          "type": "paragraph",
+          "text": "When updating an article's author, cover image, or date of substantive modification, check that its structured data is updated too. If you change themes or disable a plugin, first confirm what will take over the markup it previously handled. When data sources are unclear, a setup that seems fine in the short term can easily fail during the next redesign."
+        },
+        {
+          "type": "paragraph",
+          "text": "When evaluating results, keep the pages and observation conditions consistent, and record other changes made during the period. Search appearance and traffic are influenced by many factors, so you cannot attribute an entire week's increase to markup. What is worth preserving is clear data sources, correct output, and a repeatable review process that keeps page information consistent over time."
+        },
+        {
+          "type": "image",
+          "src": "/guides/structured-data-basics/diagram-1-en.svg",
+          "alt": "Four blocks show a visible content inventory, field generation, tool checks, and post-publication review, emphasizing that special search appearances are not guaranteed.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Accurate data and feature eligibility still do not guarantee a special search appearance.",
+          "description": "Four blocks show a visible content inventory, field generation, tool checks, and post-publication review, emphasizing that special search appearances are not guaranteed.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Article Data",
+            "Available Field",
+            "What to Check"
+          ],
+          "rows": [
+            [
+              "Article title",
+              "headline",
+              "Matches the article's subject and title"
+            ],
+            [
+              "Actual byline",
+              "author",
+              "Person or organization; list multiple authors separately"
+            ],
+            [
+              "Image representing the content",
+              "image",
+              "Relevant image and accessible URL"
+            ],
+            [
+              "Original publication time",
+              "datePublished",
+              "Actual publication date and time zone"
+            ],
+            [
+              "Modification time, where applicable",
+              "dateModified",
+              "Reflects modifications, not an automatic daily update"
+            ]
+          ],
+          "caption": "These examples use Google's recommended article properties; check the rules for other features separately."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Check the Body Text Even After Tests Pass",
+          "text": "Correct syntax does not prove that content is true. Check the author, images, dates, and other markup information against the content one by one. If data is missing, return to the content workflow to fill it in; do not use fake ratings or invented identities to populate fields."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "First Improve the Article's Content Quality",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Assess the Credibility of Authors and Sensitive Information",
+              "kind": "life",
+              "slug": "seo-trust-sensitive-topics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Check Page Status with Search Console",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Introduction to Schema.org Vocabulary and Formats",
+          "url": "https://schema.org/docs/gs.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google's Introduction to Structured Data",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google's General Structured Data Guidelines",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google's Article Types and Recommended Properties",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/article?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Schema Markup Validator Guide",
+          "url": "https://schema.org/docs/validator.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Rich Results Test",
+          "url": "https://support.google.com/webmasters/answer/7445569?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "構造化データの追加方法：表示内容から検索での検証まで",
+      "description": "構造化データは検索エンジンがページを理解する助けになりますが、コードを貼るだけで特別な検索表示が保証されるわけではありません。本記事では Schema.org のタイプと JSON-LD の役割の違いから、表示内容との照合、記事の項目、プラットフォームの出力元、Schema Markup Validator とリッチリザルトテストの使い分けまで整理します。独自の項目表と検証手順を添え、台湾のサイト管理者が実際の内容に基づいて保守しやすいマークアップを作れるようにします。",
+      "hero": {
+        "src": "/guides/structured-data-basics/hero-ja.jpg",
+        "alt": "文書、画面、盾を描いたオリジナルの図。内容の項目、データ出力、検証を表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "記事にはタイトル、著者、公開日があるのに、なぜ構造化データを別に提供する必要があるのでしょうか。人間はレイアウトを見れば関係性を理解できますが、システムが同じように明確に識別できるとは限らないからです。構造化データは、こうした情報を統一した名称と形式で表し、ページの内容を処理しやすくします。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "始める前に、内容自体が正しいことを確認しましょう。著者が不明、画像が無関係、ページに実際の商品価格が載っていない場合、項目をいくつか補うだけでは根本的な問題は解決しません。まず、よくあるページ形式を一つ選んでデータを整理し、出力をテストする方法は、サイト全体ですべての"
+            },
+            {
+              "type": "text",
+              "text": "マークアップ"
+            },
+            {
+              "type": "text",
+              "text": "を一度に有効にする方法よりも保守しやすくなります。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Schema.org は語彙、JSON-LD は表現方法",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Schema.org は、タイプやプロパティなどの共通語彙を提供します。たとえば Article で記事を表し、適切なプロパティで説明します。JSON-LD、Microdata、RDFa は、情報をページに組み込むための異なる方法です。この二つの層は区別する必要があります。JSON-LD を選んだだけでは、そのページが記事、人物、商品のどれを説明するのかは決まっていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google は一般に、保守しやすい JSON-LD の使用を推奨しています。通常は type が application/ld+json の script 要素に記述します。このデータは本文のように直接画面に表示されませんが、記述する内容はユーザーが見られる情報と一致している必要があります。表示されないからといって、存在しない評価や著者を隠れたデータに入れてはいけません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "また、"
+            },
+            {
+              "type": "text",
+              "text": "語彙"
+            },
+            {
+              "type": "text",
+              "text": "として有効であることと、Google の検索機能が対応していることを区別する必要があります。Schema.org の対象範囲は、Google のリッチリザルトより広いものです。あるタイプを使って内容を正しく記述できても、Google に現在そのタイプに対応する特別な表示があるとは限りません。検索機能が目的なら、その機能について Google が提供する最新の専用ドキュメントを読んでください。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "ページの主な目的を確認し、適切なタイプを選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "自宅の作業スペースを整える解説記事を例にすると、まず Article または BlogPosting が適切かを検討し、実際の内容に基づいてタイトル、著者、画像、日付を記述できます。実際には商品を購入するためのページなら、商品に適した別のデータ構成が必要です。どちらにも画像が一枚あるという理由だけで、同じテンプレートを使うことはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず、サイトの記事、サービス紹介、人物紹介、その他の主なページ形式を一覧にし、それぞれの内容を誰が提供するのか、すでにマークアップがあるのかを記録します。一つのページで複数の事物を適切に記述することはできますが、それぞれに内容上の根拠が必要です。項目数を増やすために、記事にたまたま登場した名詞をすべて独立した対象にする必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google の一般的なガイドラインでは、マークアップがページの内容を反映し、各タイプの規定に従うことが求められます。そのため、評価、イベントなど、特別な適格条件がある可能性のある機能を選ぶ前に、適用範囲を確認しましょう。競合サイトの検索結果に特定の表示があるからといって、自分のページも同じコードを追加すればよいと考えてはいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "表示内容と項目の対応表を作る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "記事タイプでは、まず headline、author、image、datePublished、該当する場合は dateModified を整理できます。これらは Google の記事に関するドキュメントに記載された推奨プロパティであり、すべての構造化データのタイプに共通する必須項目ではありません。各機能の必須項目と推奨項目は、それぞれ確認する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "タイトルは記事自体を反映する必要があります。著者は実際の著者表記に対応させ、個人と組織にはそれぞれ適切なタイプを使います。著者が複数いる場合は個別に記録し、氏名、肩書き、「投稿者」という文字列をまとめて一つの名前にしてはいけません。日付は初回公開とその後の修正を区別し、適切な形式を使ってタイムゾーン情報も提供します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "画像は記事の内容を代表するものを使い、その URL も正常にアクセスできる必要があります。各記事の内容を示す画像の代わりにサイトのロゴを使ったり、テスト環境のパスを残したりしないでください。項目表を作り、各データ値を管理画面の項目とページ上の位置に対応づけましょう。今後、編集者が記事を変更したときに、どこを同期して更新すべきか分かるようになります。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "情報がそろった記事を一つ選び、著者表記、画像、日付を確認する。",
+            "適切なタイプの公式プロパティ規定を確認し、必須項目と推奨項目を区別する。",
+            "各マークアップ項目の内容の取得元と、表示される位置を記録する。",
+            "不足するデータを確認し、表を埋めるために架空の値を使わない。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "プラットフォームの出力を確認し、複数のデータの矛盾を防ぐ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress のテーマ、SEO プラグイン、その他のコンテンツ機能が、すでに構造化データを出力している可能性があります。まずページのソースを開いて application/ld+json を検索し、ツールで抽出されたタイプを確認します。この文字列が見つからなくても、マークアップがまったくないとは限りません。サイトが Microdata や RDFa を使っている可能性があるからです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "二つの機能が同じ記事を記述している場合は、著者、画像、日付、URL が一致しているかを確認します。データ項目が複数あること自体は必ずしも誤りではありませんが、互いに矛盾すると原因の調査が難しくなります。まず主要な記事データをどちらが担当するかを決め、プラットフォームが対応する方法で調整しましょう。意味の分からない script をすべて直接削除しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "JSON-LD を自分で生成する場合は、引用符や特殊文字を正しく処理できるシリアライズ方法を使う必要があります。読者が入力したタイトルを直接コードに連結すると、エラーが起きやすくなります。サンプル内のコメント、架空の著者、テスト用 URL も、そのまま公開することはできません。設定後も実際のページを確認し、エディター内の下書きだけを検証して済ませないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "二つのテストを使い分け、内容も人の目で確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Schema Markup Validator は、ページ上の Schema.org データを抽出し、データ間の関係を表示して構文の問題を見つけられます。一方、Google のリッチリザルトテストは、認識できる検索機能と、それに関するエラーや推奨事項に焦点を当てています。前者がエラーを報告しなくても、後者がそのタイプの特別な表示に対応するとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "リッチリザルトテストでは完全な URL を入力できるほか、コードモードに切り替えて検証したい内容を貼り付けることもできます。未公開の下書きは先にコードモードで確認し、公開ページの準備ができたら URL をテストして、デプロイ後に実際に出力されていることを確認します。URL のテストでは必要なリソースを取得できる必要があります。非公開ページは、テストのために安易に保護を解除すべきではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず重大なエラーを修正し、その後ほかの推奨事項が当てはまるかを確認します。情報が不足していれば、内容の取得元に戻って対処しましょう。ツールの検証に合格しても、マークアップが表示内容を説明しているか、古い日付や虚偽のレビューがないかを人の目で照合する必要があります。ツールは、内容が真実であること、すべてのポリシーを満たすこと、検索結果に必ず表示されることを保証してくれるわけではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "公開後も照合を続け、内容とマークアップの不一致を防ぐ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "公開後は、実際の URL、重要な画像、データ値を抜き取りで確認し、必要に応じて Search Console で Google が処理したページを確認します。ローカルでのコード検証、公開 URL のテスト、その後の検索状況を分けて記録すれば、生成、デプロイ、再処理のどの段階で問題が起きたのか分かります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記事の著者、カバー画像、実質的な修正日を更新するときは、構造化データも同期されているか確認する必要があります。テーマを変えたり、プラグインを無効にしたりする場合は、それまで担当していたマークアップをどこが引き継ぐか、先に確認してください。データの取得元が曖昧なままだと、短期的には正常に見える設定も、次の改修で機能しなくなりがちです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "効果を評価するときは、まず対象ページと観測条件を固定し、その期間に行ったほかの変更も記録します。検索結果の表示やトラフィックには複数の要因が影響するため、一週間の増加をすべてマークアップの効果と考えることはできません。明確なデータの取得元、正しい出力、再確認できる手順を保つことに価値があり、ページ情報の一貫性を長期的に維持できます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/structured-data-basics/diagram-1-ja.svg",
+          "alt": "四つのブロックで、表示内容の棚卸し、項目の生成、ツールによる検証、公開後の再確認を示し、検索結果での特別な表示は保証されないことを強調しています。",
+          "width": 1600,
+          "height": 900,
+          "caption": "データが正しく、機能の条件を満たしていても、検索結果に特別な表示が出るとは限りません。",
+          "description": "四つのブロックで、表示内容の棚卸し、項目の生成、ツールによる検証、公開後の再確認を示し、検索結果での特別な表示は保証されないことを強調しています。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "記事データ",
+            "使用できる項目",
+            "確認する内容"
+          ],
+          "rows": [
+            [
+              "記事のタイトル",
+              "headline",
+              "記事のテーマとタイトルに一致"
+            ],
+            [
+              "実際の著者表記",
+              "author",
+              "個人または組織。複数の著者は個別に記録"
+            ],
+            [
+              "内容を代表する画像",
+              "image",
+              "関連する画像とアクセス可能な URL"
+            ],
+            [
+              "初回公開日時",
+              "datePublished",
+              "実際の公開日とタイムゾーン"
+            ],
+            [
+              "該当する修正日時",
+              "dateModified",
+              "毎日の一律更新ではなく、修正を反映"
+            ]
+          ],
+          "caption": "Google の記事タイプの推奨プロパティを例にしています。ほかの機能の規定は別途確認する必要があります。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "テストに合格しても本文との照合は必要",
+          "text": "構文が正しいだけでは、内容が真実であることは証明できません。著者、画像、日付、その他のマークアップ情報を一つずつ照合してください。データがなければコンテンツ作成の手順に戻って補い、偽の評価や架空の身元情報で項目を埋めないでください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "まず記事内容の質を整える",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "著者とセンシティブな情報の信頼性を見極める",
+              "kind": "life",
+              "slug": "seo-trust-sensitive-topics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Search Console でページの状態を確認する",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Schema.org の語彙と形式入門",
+          "url": "https://schema.org/docs/gs.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google の構造化データ入門",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google の構造化データに関する一般的なガイドライン",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google の記事タイプと推奨プロパティ",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/article?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Schema Markup Validator の説明",
+          "url": "https://schema.org/docs/validator.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google のリッチリザルトテスト",
+          "url": "https://support.google.com/webmasters/answer/7445569?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "구조화된 데이터 추가 방법: 보이는 콘텐츠부터 검색 검증까지",
+      "description": "구조화된 데이터는 검색엔진이 페이지를 이해하도록 돕지만, 코드 한 조각을 붙여 넣는다고 특별한 검색 결과 표시가 보장되지는 않습니다. 이 글은 Schema.org 유형과 JSON-LD의 역할부터 시작해 보이는 콘텐츠와의 대조, 글의 필드, 플랫폼의 출력 출처, Schema Markup Validator와 리치 결과 테스트의 용도 차이를 정리합니다. 자체 제작한 필드 표와 검증 절차를 통해 대만 웹사이트 관리자가 실제 콘텐츠에 근거해 유지·관리할 수 있는 마크업을 만들도록 안내합니다.",
+      "hero": {
+        "src": "/guides/structured-data-basics/hero-ko.jpg",
+        "alt": "자체 제작한 문서·화면·방패 이미지로 콘텐츠 필드, 데이터 출력, 검증을 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "글에 제목, 작성자, 게시 날짜가 이미 있는데 왜 구조화된 데이터를 별도로 제공해야 할까요? 사람은 화면 배치만 보고도 이해하는 관계를 시스템은 그만큼 명확히 알아보지 못할 수 있기 때문입니다. 구조화된 데이터는 이러한 정보를 일관된 이름과 형식으로 표현해 페이지 콘텐츠를 더 쉽게 처리할 수 있게 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "시작하기 전에 콘텐츠 자체가 올바른지 확인하세요. 작성자가 불분명하거나 이미지가 관련 없거나 페이지에 실제 상품 가격이 없다면, 필드 몇 개를 추가해도 근본적인 문제는 해결되지 않습니다. 먼저 흔한 페이지 유형 하나의 데이터를 정리하고 출력을 테스트하는 편이 사이트 전체의 모든 "
+            },
+            {
+              "type": "text",
+              "text": "마크업"
+            },
+            {
+              "type": "text",
+              "text": "을 한꺼번에 활성화하는 것보다 유지·관리하기 쉽습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Schema.org는 어휘, JSON-LD는 표현 방식",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Schema.org는 유형과 속성 같은 공통 어휘를 제공합니다. 예를 들어 Article로 글을 나타내고 적절한 속성으로 이를 설명합니다. JSON-LD, Microdata, RDFa는 정보를 페이지에 넣는 서로 다른 방식입니다. 이 두 층위를 명확히 구분해야 합니다. JSON-LD를 선택했다고 해서 페이지가 설명하는 대상이 글인지, 사람인지, 제품인지까지 결정된 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google은 일반적으로 유지·관리하기 쉬운 JSON-LD를 권장하며, 보통 type이 application/ld+json인 script 요소에 넣습니다. 이 데이터는 본문처럼 화면에 직접 배치되어 표시되지는 않지만, 설명하는 내용은 사용자가 볼 수 있는 정보와 일치해야 합니다. 숨겨진 데이터라고 해서 존재하지 않는 평점이나 작성자를 넣지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "또한 어휘의 유효성과 Google 검색 기능의 지원 여부를 "
+            },
+            {
+              "type": "text",
+              "text": "구분"
+            },
+            {
+              "type": "text",
+              "text": "해야 합니다. Schema.org의 범위는 Google의 리치 결과보다 넓습니다. 어떤 유형이 콘텐츠를 유효하게 설명할 수 있다고 해서 Google이 현재 그에 맞는 특별한 검색 결과 표시를 지원한다는 뜻은 아닙니다. 검색 기능이 목적이라면 Google의 해당 기능에 관한 최신 전용 문서를 읽어야 합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "페이지의 주된 용도를 확인한 뒤 적절한 유형 선택하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "재택근무 공간을 정리하는 안내 글을 예로 들면, 먼저 Article 또는 BlogPosting을 검토하고 실제 콘텐츠에 따라 제목, 작성자, 이미지, 날짜를 표현할 수 있습니다. 페이지가 실제로는 상품 구매를 위한 진입점이라면 상품에 적합한 별도의 데이터 구성이 필요합니다. 둘 다 이미지가 하나씩 있다는 이유만으로 같은 템플릿을 적용해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 사이트의 글, 서비스 소개, 인물 소개 등 주요 페이지 유형을 나열하고, 각 유형의 콘텐츠를 누가 제공하는지와 현재 마크업이 있는지를 기록하세요. 한 페이지에서 여러 대상을 합리적으로 설명할 수 있지만, 각각 콘텐츠에 근거해야 합니다. 항목 수를 늘리려고 글에서 우연히 언급한 모든 명사를 독립된 대상으로 만들 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google의 일반 가이드라인은 마크업이 페이지 콘텐츠를 반영하고 각 유형의 규정을 따르도록 요구합니다. 따라서 평점, 이벤트 등 특별한 자격 요건이 있을 수 있는 기능을 선택하기 전에 적용 범위를 확인하세요. 경쟁 사이트에 어떤 검색 결과 표시가 나타난다고 해서 자신의 페이지에는 같은 코드 한 조각만 추가하면 된다고 추론해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "보이는 콘텐츠와 필드의 대응 관계 정리하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "글 유형에서는 먼저 headline, author, image, datePublished와 해당되는 경우 dateModified를 정리할 수 있습니다. 이는 Google의 글 유형 문서에 나열된 권장 속성이며, 모든 구조화된 데이터 유형에 공통으로 적용되는 필수 필드 묶음은 아닙니다. 각 기능의 필수 항목과 권장 항목은 여전히 별도로 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "제목은 글 자체를 반영해야 합니다. 작성자는 실제 작성자 표기와 일치해야 하며, 개인과 기관에 맞는 유형을 사용해야 합니다. 작성자가 여러 명이면 각각 기록해야 합니다. 이름, 직함, ‘게시자’라는 문구를 한데 묶어 하나의 이름으로 처리하지 마세요. 최초 게시와 이후 수정 날짜를 구분하고, 적절한 형식을 사용하며 시간대 정보를 제공하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "이미지는 글의 내용을 대표할 수 있어야 하고 URL에도 정상적으로 접근할 수 있어야 합니다. 각 글의 콘텐츠 이미지 대신 사이트 로고를 사용하거나 테스트 환경 경로를 남겨 두지 마세요. 필드 표를 만들어 각 데이터 값을 관리자 화면의 필드 및 페이지 위치와 연결하세요. 그러면 나중에 편집자가 글을 수정할 때 어디를 함께 갱신해야 하는지 알 수 있습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "정보가 완비된 글 하나를 선택하고 작성자 표기, 이미지, 날짜를 확인하세요.",
+            "적절한 유형의 공식 속성 규정을 읽고 필수 항목과 권장 항목을 구분하세요.",
+            "각 마크업 필드의 콘텐츠 출처와 화면에 표시되는 위치를 기록하세요.",
+            "누락된 데이터를 확인하고, 표를 완성된 것처럼 보이게 하려고 허구의 값을 넣지 마세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "플랫폼의 기존 출력을 확인해 여러 데이터 간 모순 방지하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 테마, SEO 플러그인이나 다른 콘텐츠 기능이 이미 구조화된 데이터를 출력하고 있을 수 있습니다. 먼저 페이지 소스에서 application/ld+json을 검색한 뒤, 도구로 추출된 유형을 확인하세요. 이 문자열이 보이지 않는다고 해서 마크업이 전혀 없다는 뜻은 아닙니다. 사이트가 Microdata나 RDFa를 사용할 수도 있기 때문입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 기능이 같은 글을 설명한다면 작성자, 이미지, 날짜, URL이 일치하는지 확인하세요. 데이터 항목이 여러 개라는 사실 자체가 반드시 오류는 아니지만, 서로 모순되면 문제를 조사하기 어려워집니다. 먼저 어느 기능이 주요 글 데이터를 담당할지 결정하고 플랫폼이 지원하는 방식으로 조정하세요. 이해하지 못하는 script를 모두 바로 삭제하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "JSON-LD를 직접 생성할 때는 따옴표와 특수문자를 올바르게 처리하는 직렬화 방식을 사용해야 합니다. 독자가 입력한 제목을 코드에 직접 이어 붙이면 오류가 생기기 쉽습니다. 예제의 주석, 가상의 작성자, 테스트 URL도 그대로 운영 사이트에 올려서는 안 됩니다. 설정을 마친 뒤에도 실제 페이지를 확인해야 하며, 편집기 안의 초안 하나만 검증해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "두 테스트의 역할을 구분하고 사람이 콘텐츠 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Schema Markup Validator는 페이지의 Schema.org 데이터를 추출하고 데이터 관계를 보여 주며 구문 문제를 찾아낼 수 있습니다. Google의 리치 결과 테스트는 인식할 수 있는 검색 기능과 관련 오류 및 권장 사항에 집중합니다. 전자에서 오류가 나오지 않았다고 해서 후자가 반드시 해당 유형의 특별한 검색 결과 표시를 지원하는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "리치 결과 테스트에서는 전체 URL을 입력하거나 코드 모드로 전환해 테스트할 내용을 붙여 넣을 수 있습니다. 아직 공개하지 않은 초안은 먼저 코드 모드로 확인하고, 운영 페이지가 준비되면 URL을 테스트해 배포 후 실제로 출력되는지 확인하세요. URL 테스트는 필요한 리소스를 가져올 수 있어야 합니다. 테스트를 위해 비공개 페이지의 보호를 임의로 해제해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 중대한 오류를 수정한 뒤 나머지 권장 사항이 적용되는지 살펴보세요. 정보가 부족하다면 콘텐츠 출처로 돌아가 해결하세요. 도구의 검사를 통과해도 마크업이 보이는 콘텐츠를 설명하는지, 갱신되지 않은 날짜 정보나 허위 리뷰가 없는지 사람이 대조해야 합니다. 도구는 콘텐츠가 사실인지, 모든 정책을 충족하는지, 검색 결과에 반드시 나타나는지 보장해 주지 못합니다."
+        },
+        {
+          "type": "heading",
+          "text": "게시 후에도 대조해 콘텐츠와 마크업의 불일치 방지하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "게시 후 실제 URL, 주요 이미지, 데이터 값을 표본 점검하고 필요하면 Search Console로 Google이 처리한 페이지를 확인하세요. 로컬 코드 검사, 공개 URL 테스트, 이후 검색 상태를 따로 기록해야 생성, 배포, 재처리 중 어느 단계에서 문제가 발생했는지 알 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "글의 작성자, 대표 이미지, 실질적인 수정 날짜를 갱신할 때는 구조화된 데이터도 함께 바뀌었는지 확인해야 합니다. 테마를 바꾸거나 플러그인을 비활성화한다면 기존에 그 기능이 담당하던 마크업을 누가 이어서 담당할지 먼저 확인하세요. 데이터 출처가 불분명하면 단기적으로 정상처럼 보이는 설정도 다음 개편 때 쉽게 작동하지 않게 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "효과를 평가할 때는 먼저 대상 페이지와 관찰 조건을 고정하고 관찰 기간의 다른 변경 사항도 기록하세요. 검색 결과 표시와 트래픽은 여러 요인의 영향을 받으므로 한 주 동안의 상승을 전부 마크업의 효과로 돌려서는 안 됩니다. 유지할 가치가 있는 것은 명확한 데이터 출처, 올바른 출력, 재점검할 수 있는 절차입니다. 이를 통해 페이지 정보를 장기적으로 일관되게 유지할 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/structured-data-basics/diagram-1-ko.svg",
+          "alt": "네 구역으로 보이는 콘텐츠 점검, 필드 생성, 도구 검사, 공개 후 재점검을 나타내며 특별한 검색 결과 표시를 보장할 수 없음을 강조합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "데이터가 정확하고 기능 요건을 충족해도 특별한 검색 결과 표시가 나타난다고 보장되지는 않습니다.",
+          "description": "네 구역으로 보이는 콘텐츠 점검, 필드 생성, 도구 검사, 공개 후 재점검을 나타내며 특별한 검색 결과 표시를 보장할 수 없음을 강조합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "글 데이터",
+            "사용할 필드",
+            "확인할 내용"
+          ],
+          "rows": [
+            [
+              "글 제목",
+              "headline",
+              "해당 글의 주제 및 제목과 일치"
+            ],
+            [
+              "실제 작성자 표기",
+              "author",
+              "개인 또는 기관, 여러 작성자는 각각 기록"
+            ],
+            [
+              "내용을 대표하는 이미지",
+              "image",
+              "관련 이미지와 접근 가능한 URL"
+            ],
+            [
+              "최초 게시 시각",
+              "datePublished",
+              "실제 게시 날짜와 시간대"
+            ],
+            [
+              "해당되는 수정 시각",
+              "dateModified",
+              "매일 일률적으로 갱신하지 않고 실제 수정을 반영"
+            ]
+          ],
+          "caption": "Google의 글 유형 권장 속성을 예로 들었습니다. 다른 기능의 규정은 별도로 확인해야 합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "테스트를 통과해도 본문 대조는 필요",
+          "text": "구문이 정확하다고 해서 콘텐츠가 사실임을 증명할 수는 없습니다. 작성자, 이미지, 날짜와 기타 마크업 정보를 하나씩 대조하세요. 데이터가 없으면 콘텐츠 작업 과정으로 돌아가 보완하고, 가짜 평점이나 허구의 신원으로 필드를 채우지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "먼저 글의 콘텐츠 품질 다듬기",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "작성자와 민감한 정보의 신뢰도 판단하기",
+              "kind": "life",
+              "slug": "seo-trust-sensitive-topics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Search Console로 페이지 상태 확인하기",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Schema.org 어휘와 형식 입문",
+          "url": "https://schema.org/docs/gs.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 구조화된 데이터 소개",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 구조화된 데이터 일반 가이드라인",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 글 유형과 권장 속성",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/article?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Schema Markup Validator 설명",
+          "url": "https://schema.org/docs/validator.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 리치 결과 테스트",
+          "url": "https://support.google.com/webmasters/answer/7445569?hl=en",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "结构化数据怎么添加：从可见内容到搜索验证",
+      "description": "结构化数据能帮助搜索引擎理解页面，但并不是粘贴一段代码就能保证出现特殊搜索外观。本文从 Schema.org 类型与 JSON-LD 的分工开始，整理可见内容对照、文章字段、平台输出来源，以及 Schema Markup Validator 和富媒体搜索结果测试的使用差异。附有原创字段表与验证流程，让台湾网站管理者根据真实内容建立可维护的标记。",
+      "hero": {
+        "src": "/guides/structured-data-basics/hero-zh-cn.jpg",
+        "alt": "原创文档、屏幕与盾牌图像，呈现内容字段、数据输出与验证。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "文章明明有标题、作者和发布日期，为什么还要另外提供结构化数据？因为人通过阅读排版就能理解的关系，系统未必能同样清楚地识别。结构化数据用一致的名称与格式表达这些信息，让页面内容更容易被处理。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "开始之前先确认内容本身正确。如果作者不明、图片不相关，或页面没有实际的商品价格，补几个字段不能解决根本问题。先从一种常见页面类型整理数据，再测试输出，比一次为全站开启所有"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "更容易维护。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Schema.org 是词汇，JSON-LD 是表达方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Schema.org 提供类型与属性等通用词汇，例如用 Article 表示文章，再用合适的属性描述它。JSON-LD、Microdata 和 RDFa 则是把信息放进页面的不同方式。这两层需要分清楚：选择 JSON-LD，不等于已经决定页面描述的是文章、人物还是产品。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 一般建议使用容易维护的 JSON-LD，通常放在 type 为 application/ld+json 的 script 元素中。这段数据不会像正文一样直接排版显示，但描述的内容仍应与用户可看到的信息相符。不要因此把不存在的评分或作者塞进隐藏数据。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "也要区"
+            },
+            {
+              "type": "text",
+              "text": "分词"
+            },
+            {
+              "type": "text",
+              "text": "汇的有效性和 Google 搜索功能的支持范围。Schema.org 的范围比 Google 的富媒体搜索结果更广；某个类型可以合法描述内容，不代表 Google 目前有相应的特殊外观。若目的是搜索功能，应阅读 Google 针对该功能的最新专用文档。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "先看页面主要用途，再选合适类型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以整理居家工作空间的教程文章为例，可以先评估 Article 或 BlogPosting，根据真实内容表达标题、作者、图片与日期。若页面其实是商品购买入口，就需要另一套适合商品的数据安排，不能只因都有一张图片，就套用相同模板。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先为网站列出文章、服务介绍、人物简介和其他主要页面类型，记录每一类由谁提供内容、目前是否已有标记。单页可以合理描述多种事物，但每一项都应有内容依据。没有必要为了增加项目数，把文章里偶然提到的每个名词都变成独立主体。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 通用指南要求标记反映页面内容，并遵循类型自身的规定。因此，在选择评分、活动或其他可能有特殊资格要求的功能前，先查适用范围。不要看到竞争网站有某种搜索外观，就推断自己的页面只差一段相同代码。"
+        },
+        {
+          "type": "heading",
+          "text": "建立可见内容与字段的对照",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "文章类型可以先整理 headline、author、image、datePublished 和适用时的 dateModified。这些是 Google 文章文档列出的建议属性，并不是所有结构化数据类型共用的一组必填字段。每种功能的必要与建议项目，仍需分别确认。"
+        },
+        {
+          "type": "paragraph",
+          "text": "标题应反映文章本身；作者要对应实际署名，个人与机构使用适当类型。若有多位作者，应分开记录，而不是把整串姓名、职称和“发布者”文字全部当成一个名字。日期要分清首次发布与后续修改，使用合适格式并提供时区信息。"
+        },
+        {
+          "type": "paragraph",
+          "text": "图片要能代表文章内容，网址也要能正常访问。不要用网站标志代替每篇文章的内容图片，或留下测试环境路径。建立一张字段表，把每个数据值对应到后台字段与页面位置；未来编辑修改文章时，就知道哪里需要同步更新。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "选一篇数据完整的文章，确认署名、图片与日期。",
+            "查阅合适类型的官方属性规定，分清必要与建议项目。",
+            "记录每个标记字段的内容来源与可见位置。",
+            "检查缺失数据，不用虚构值让表格看起来完整。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "确认平台已输出什么，避免多套数据矛盾",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 主题、SEO 插件或其他内容功能可能已经输出结构化数据。先查看页面源代码并搜索 application/ld+json，再用工具查看提取出的类型。没有看到这个字符串也不表示完全没有标记，因为网站可能使用 Microdata 或 RDFa。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若两套功能都描述同一篇文章，检查作者、图片、日期和网址是否一致。多个数据项目本身不一定错，但相互矛盾会增加排查难度。先决定哪一套负责主要文章数据，再按平台支持的方式调整，不要直接删除所有看不懂的 script。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自行生成 JSON-LD 时，应使用能正确处理引号与特殊字符的序列化方式。把读者输入的标题直接拼成代码容易出错；示例里的注释、虚构作者与测试网址也不能原封不动上线。设置完成后仍要检查实际页面，不能只验证编辑器里的一份草稿。"
+        },
+        {
+          "type": "heading",
+          "text": "两种测试各有分工，再加上人工内容检查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Schema Markup Validator 可以提取页面上的 Schema.org 数据、呈现数据关系并找出语法问题。Google 的富媒体搜索结果测试则聚焦能识别的搜索功能与相关错误、建议。前者没有报错，不等于后者一定支持该类型的特殊外观。"
+        },
+        {
+          "type": "paragraph",
+          "text": "富媒体搜索结果测试可输入完整网址，也可以切换到代码模式，粘贴待测内容。尚未公开的草稿可先用代码模式检查，正式页面准备好后再测试网址，确认部署后确实有输出。网址测试需要能获取所需资源，私有页面不应为了测试而随意解除保护。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先修正严重错误，再阅读其他建议是否适用；若缺少某项信息，回到内容来源处理。即使工具通过，也要人工核对标记是否描述可见内容、有无过期日期或虚假评论。工具无法替你保证内容真实、符合所有政策，或一定出现在搜索结果中。"
+        },
+        {
+          "type": "heading",
+          "text": "发布后持续核对，避免内容与标记脱节",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "上线后抽查实际网址、重要图片与数据值，必要时用 Search Console 查看 Google 处理的页面。把本地代码检查、公开网址测试和后续搜索状态分开记录，才能知道问题发生在生成、部署还是重新处理阶段。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新文章作者、封面或实质性修改日期时，也要检查结构化数据有没有同步。若更换主题或停用插件，先确认原来由它负责的标记会由谁接手。只要数据来源不清楚，短期看似正常的设置也容易在下一次改版时失效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "评估效果时先固定页面与观察条件，并记录期间的其他改动。搜索外观与流量会受多种因素影响，不能把一周的增长全部归功于标记。值得保留的是清楚的数据来源、正确输出及可复查流程，让页面信息长期一致。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/structured-data-basics/diagram-1-zh-cn.svg",
+          "alt": "四个区块显示可见内容盘点、字段生成、工具检查及公开后复查，强调特殊搜索外观无法保证。",
+          "width": 1600,
+          "height": 900,
+          "caption": "数据正确且功能符合条件，仍不保证特殊搜索外观会出现。",
+          "description": "四个区块显示可见内容盘点、字段生成、工具检查及公开后复查，强调特殊搜索外观无法保证。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "文章数据",
+            "可用字段",
+            "核对内容"
+          ],
+          "rows": [
+            [
+              "文章标题",
+              "headline",
+              "与该文主题及标题一致"
+            ],
+            [
+              "实际署名",
+              "author",
+              "个人或机构，多位作者分开"
+            ],
+            [
+              "代表内容的图片",
+              "image",
+              "相关图片与可访问的网址"
+            ],
+            [
+              "首次发布时间",
+              "datePublished",
+              "真实发布日期与时区"
+            ],
+            [
+              "适用的修改时间",
+              "dateModified",
+              "反映修改，而非每天固定更新"
+            ]
+          ],
+          "caption": "以 Google 文章类型的建议属性为例，其他功能的规定需另查。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "测试通过仍需核对正文",
+          "text": "语法正确无法证明内容真实。请逐一对照作者、图片、日期和其他标记信息；没有数据时回到内容流程补齐，不用假评分或虚构身份填字段。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先整理文章内容质量",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "辨别作者与敏感信息的可信度",
+              "kind": "life",
+              "slug": "seo-trust-sensitive-topics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 Search Console 核对页面状态",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Schema.org 词汇与格式入门",
+          "url": "https://schema.org/docs/gs.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 结构化数据简介",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 结构化数据通用指南",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 文章类型与建议属性",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/article?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Schema Markup Validator 说明",
+          "url": "https://schema.org/docs/validator.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 富媒体搜索结果测试",
           "url": "https://support.google.com/webmasters/answer/7445569?hl=en",
           "checked_on": "2026-09-14"
         }
