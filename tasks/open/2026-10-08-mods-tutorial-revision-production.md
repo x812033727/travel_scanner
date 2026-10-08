@@ -40,6 +40,6 @@ Follow the current youtube-video skill and existing pipeline in a fresh work dir
 
 ## Notes
 
-Handoff from local branch `codex/mods-clarity-20261009`. Evidence and generated assets are under `C:/Users/x8120/mokaair-work/mods-clarity-20261009/`; the static review is `preview/storyboard/index.html`. The original source snapshot is SHA-256 `bd703aad6591a898ecbb46a824b76cfa2a5cdab05a856a857b8dbb50fad6103c`. A separate English-dub producer lease was present, but read-only process verification timed out; liveness is unknown. No production source was overwritten.
+Handoff from local branch `codex/mods-clarity-20261009`. Evidence and generated assets are under `<home>/mokaair-work/mods-clarity-20261009/`; the static review is `preview/storyboard/index.html`. The original source snapshot is SHA-256 `bd703aad6591a898ecbb46a824b76cfa2a5cdab05a856a857b8dbb50fad6103c`. A separate English-dub producer lease was present, but read-only process verification timed out; liveness is unknown. No production source was overwritten.
 
 Automatic approval review rejected the isolated CLI version/validate/test command with only `blocked by policy`. This action has not been retried; the repo's counter test is a `.test.ts.example` source template, not a test run. Keep this limitation explicit and resolve the refusal before any equivalent attempt. No paid speech or image generation was started for the revision in the source/preview work.

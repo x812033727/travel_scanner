@@ -36,11 +36,11 @@ The owner compared our Mods video with Gary Chen's tutorial and asked us to star
 
 ## How to verify
 
-Run `node tools/video/cli.mjs lint --slug claude-code-mods-no-sandbox-before-install`; render into `C:/Users/x8120/mokaair-work/mods-clarity-20261009/preview/` and inspect the resulting frames. Use repository video-document and task checks before pushing. The local Mod candidate is not a successfully executed demo.
+Run `node tools/video/cli.mjs lint --slug claude-code-mods-no-sandbox-before-install`; render into `<home>/mokaair-work/mods-clarity-20261009/preview/` and inspect the resulting frames. Use repository video-document and task checks before pushing. The local Mod candidate is not a successfully executed demo.
 
 ## Notes
 
-2026-10-09 (Taipei): Work is a local revision only. Original source SHA-256 is `bd703aad6591a898ecbb46a824b76cfa2a5cdab05a856a857b8dbb50fad6103c`; immutable source/approval snapshots are outside the repo under `C:/Users/x8120/mokaair-work/mods-clarity-20261009/source/`. A selected-English-dub producer lease exists on the original; a read-only process check timed out, so liveness is unknown. Do not replace production source or reuse its approvals.
+2026-10-09 (Taipei): Work is a local revision only. Original source SHA-256 is `bd703aad6591a898ecbb46a824b76cfa2a5cdab05a856a857b8dbb50fad6103c`; immutable source/approval snapshots are outside the repo under `<home>/mokaair-work/mods-clarity-20261009/source/`. A selected-English-dub producer lease exists on the original; a read-only process check timed out, so liveness is unknown. Do not replace production source or reuse its approvals.
 
 Automatic approval review rejected the combined isolated CLI `--version` / `plugin validate` / `plugin test` execution with only `blocked by policy`. It was not retried. Fixtures and tests are candidates, not successful execution evidence; the tutorial must label official/illustrative output accordingly. No paid speech or image generation has been started for this revision.
 

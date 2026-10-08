@@ -24,12 +24,12 @@
 
 ## 本機交付位置
 
-以下是本次工作機的實際檔案位置，不是公開媒體連結：
+以下以 `<home>` 表示工作機使用者目錄；完整位置保存在本機交付訊息，這些不是公開媒體連結：
 
-- 逐張畫面與旁白：`C:/Users/x8120/mokaair-work/mods-clarity-20261009/preview/storyboard/index.html`
+- 逐張畫面與旁白：`<home>/mokaair-work/mods-clarity-20261009/preview/storyboard/index.html`
 - 狀態、雜湊、版面與估計節奏：同目錄 `review.json`
 - 畫面：同目錄 `frames/`；原始 SVG 在本 repo 的 `assets/`
-- 完整原稿與核准快照：`C:/Users/x8120/mokaair-work/mods-clarity-20261009/source/`
+- 完整原稿與核准快照：`<home>/mokaair-work/mods-clarity-20261009/source/`
 - 官方來源／版本紀錄：同工作根目錄 `research/FACTS-AND-DEMO.md`
 - 未執行 Mod 的原因與隔離工具收據：同工作根目錄 `demo-evidence/STATUS.md`
 
