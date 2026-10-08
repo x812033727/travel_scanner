@@ -17,7 +17,7 @@ from app.ai.jev import JevClient, JevError, NoulAnswer
 from app.config import Settings
 from app.main import app
 from app.models import VideoToolToken
-from app.video_speech.azure import SpeechUpstreamError
+from app.video_speech.azure import SpeechAnswerLost, SpeechUpstreamError
 from app.video_speech.checking import CheckUnavailable
 from app.video_speech.gemini import wav_from_pcm
 from app.video_speech.schemas import TrackLanguage
@@ -312,6 +312,82 @@ async def test_transcription_failures_carry_the_upstream_status_and_are_logged(
     ]
     assert "SAFETY" in logged[2]
     assert all("site-key" not in message for message in logged)
+
+
+# A connection that never opened carried nothing; any other failure of the POST may follow a
+# clip Gemini transcribed and billed.
+NEVER_SENT = [
+    httpx.ConnectError,
+    httpx.ConnectTimeout,
+    httpx.PoolTimeout,
+    httpx.UnsupportedProtocol,
+    httpx.LocalProtocolError,
+]
+SENT_AND_LOST = [
+    httpx.ReadTimeout,
+    httpx.WriteTimeout,
+    httpx.ReadError,
+    httpx.WriteError,
+    httpx.RemoteProtocolError,
+]
+REAL_TRANSCRIBE = checking.transcribe
+
+
+def _raising(error: type[httpx.TransportError]) -> httpx.MockTransport:
+    def handler(request: httpx.Request) -> httpx.Response:
+        raise error("site-key https://generativelanguage.googleapis.com", request=request)
+
+    return httpx.MockTransport(handler)
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("error", NEVER_SENT + SENT_AND_LOST)
+async def test_transcription_tells_a_clip_never_sent_from_one_whose_answer_was_lost(
+    caplog: pytest.LogCaptureFixture, error: type[httpx.TransportError]
+) -> None:
+    settings = Settings(hotspot_guide_gemini_api_key="site-key")
+    caplog.set_level("WARNING", logger="app.video_speech.checking")
+    async with httpx.AsyncClient(transport=_raising(error)) as client:
+        with pytest.raises((SpeechUpstreamError, SpeechAnswerLost)) as raised:
+            await checking.transcribe(settings, WAV, client)
+    if error in NEVER_SENT:
+        assert type(raised.value) is SpeechUpstreamError and raised.value.status == 502
+        assert str(raised.value) == f"Gemini unreachable: {error.__name__}"
+    else:
+        assert type(raised.value) is SpeechAnswerLost
+        assert error.__name__ in str(raised.value)
+    logged = [record.getMessage() for record in caplog.records]
+    assert logged == [f"Gemini transcription failed: {raised.value}"]
+    assert "googleapis" not in logged[0] and "site-key" not in logged[0]
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("error", NEVER_SENT + SENT_AND_LOST)
+async def test_a_lost_transcription_is_its_own_504(
+    check_app: Any, error: type[httpx.TransportError]
+) -> None:
+    _, monkeypatch = check_app
+
+    async def transcribe(
+        settings: Settings,
+        wav: bytes,
+        client: Any = None,
+        terms: Any = (),
+        language: str = "zh-TW",
+    ) -> str:
+        async with httpx.AsyncClient(transport=_raising(error)) as provider:
+            return await REAL_TRANSCRIBE(settings, wav, provider, terms, language)
+
+    monkeypatch.setattr(admin_api, "transcribe", transcribe)
+    response = await _post("transcribe", {"audio": base64.b64encode(WAV).decode()})
+    body = response.json()
+    if error in NEVER_SENT:
+        # Retried by the video tool, as before: nothing reached Gemini.
+        assert response.status_code == 502 and body["code"] == "video_speech_upstream_failed"
+    else:
+        # Sent once: the tool stops and asks the owner instead of paying for it again.
+        assert response.status_code == 504 and body["code"] == "video_speech_upstream_lost"
+    assert "googleapis" not in response.text
 
 
 @pytest.mark.asyncio

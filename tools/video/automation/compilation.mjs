@@ -5,19 +5,22 @@
 // and headline), the thumbnail's source keyframe copied from an episode, the five locales'
 // title and description, and the commands in between (render, compile); the final cut, the
 // upload package and the YouTube id then go the way of every video (flow.mjs).
-import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { isDeepStrictEqual } from "node:util";
 
-import { sha256File } from "../core/approvals.mjs";
 import { appliedBranding, presentationTimeline } from "../core/branding.mjs";
 import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_TITLE_PLACEHOLDER, compilationDocument, compilationScenes, episodeNumbers, THUMB_SHOT, THUMB_SOURCE, TITLE_MAX_CHARS as CHAPTER_TITLE_MAX } from "../core/compilation.mjs";
 import { COMPILATION_REVIEW_FILE, contextFromSeries, publicTexts, reviewCurrent, reviewHash, reviewProblem } from "../core/compilation-review.mjs";
 import { DESCRIPTION_MAX_BYTES, TAGS_MAX_CHARS, TITLE_MAX_CHARS } from "../core/metadata.mjs";
 import { atomicWrite, docDir, readJson } from "../core/paths.mjs";
 import { LOCALES, NARRATION_LOCALE } from "../core/schema.mjs";
-import { ARTIFACTS, lintProject, loadProject } from "../core/state.mjs";
+import { ARTIFACTS, compilationChapters, compilationSourceHashes, compilationTranslationStale, lintProject, loadProject, translationComplete } from "../core/state.mjs";
 import { chosenLocales, readLanguages } from "../core/stages.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
+import { clipHeadline, headlineProblem } from "../story-plans/plan.mjs";
+import { THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX } from "../templates/templates.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
 import { GENRE_SPECS } from "./prompts.mjs";
 
@@ -26,7 +29,9 @@ export const COMPILATION_FILE = "compilation.json";
 // episodes carry the premise, and the judge scored every keyframe when it was drawn.
 export const THUMBNAIL_EPISODES = 3;
 export const THUMBNAIL_CANDIDATES = 12;
-export const HEADLINE_MAX_CHARS = 12;
+// The thumbnail headline is the channel's (templates.mjs THUMB_HEADLINE_MAX, counted as the qa
+// stage counts it); the planner is asked twice, then the headline is cut where a word ends
+// (story-plans/plan.mjs clipHeadline) rather than left for the owner at the final gate.
 export const TAG_MAX_CHARS = 6;
 // What a chapter line of the description costs (a timestamp, 「第 N 集」 and a title of about
 // twelve characters, some 60 bytes), and the room the tool's own lines take. The compile step
@@ -40,8 +45,6 @@ const isText = (value) => typeof value === "string" && value.trim().length > 0;
 const bytes = (text) => Buffer.byteLength(String(text ?? ""), "utf8");
 
 const writeJson = (file, value) => atomicWrite(file, `${JSON.stringify(value, null, 2)}\n`);
-const chaptersOf = (video) => Object.fromEntries(video.compilation.episodes.map((slug, index) => [slug, video.compilation.titles?.[slug] ?? `第 ${episodeNumbers(video.compilation)[index]} 集`]));
-
 /** Restore a legacy compilation's missing context; an absent schedule never means no mysteries. */
 async function compilationInfo(automation, state) {
   const file = path.join(docDir(state.slug, automation.ctx.root), COMPILATION_FILE);
@@ -109,10 +112,19 @@ export function descriptionBudget(episodeCount) {
   return Math.max(500, DESCRIPTION_MAX_BYTES - DESCRIPTION_RESERVE_BYTES - episodeCount * CHAPTER_LINE_BYTES);
 }
 
+/** Whether `file` is there and holds the bytes the episode's manifest approved (`sha256`). */
+function approvedBytes(file, sha256) {
+  if (!/^[0-9a-f]{64}$/.test(sha256 ?? "") || !existsSync(file)) return false;
+  return createHash("sha256").update(readFileSync(file)).digest("hex") === sha256;
+}
+
 /**
  * The keyframes the planner may pick the thumbnail from: the leading episodes' drawn keyframes
  * of shots with a character in frame (the face the viewer clicks on), best judged first. Each
- * candidate says where its file is, so the chosen one can be copied.
+ * candidate says where its file is, so the chosen one can be copied. A keyframe file is reused
+ * by a later take of the same seed, so one whose bytes are not the ones its manifest approved
+ * (or that is missing, or has no recorded hash) is never offered: hashed best first, until
+ * `limit` are found.
  */
 export function thumbnailCandidates(workBase, root, episodes, limit = THUMBNAIL_CANDIDATES) {
   const found = [];
@@ -129,7 +141,33 @@ export function thumbnailCandidates(workBase, root, episodes, limit = THUMBNAIL_
       found.push({ episode: episode.slug, number: episode.number, shot, judge: entry.judge?.overall ?? null, characters, prompt: String(scene?.data?.prompt ?? "").slice(0, 300), file: path.join(workdir, entry.file), sha256: entry.sha256 ?? null });
     }
   }
-  return found.sort((a, b) => (b.judge ?? 0) - (a.judge ?? 0)).slice(0, limit);
+  const offered = [];
+  for (const candidate of found.sort((a, b) => (b.judge ?? 0) - (a.judge ?? 0))) {
+    if (offered.length >= limit) break;
+    if (approvedBytes(candidate.file, candidate.sha256)) offered.push(candidate);
+  }
+  return offered;
+}
+
+/**
+ * Copy the chosen episode keyframe to the compilation's THUMB_SOURCE and record it in the
+ * compilation's keyframes manifest under the episode's approved hash. False, with any earlier
+ * copy left as it was, when the file is gone or no longer holds those bytes: the bytes are read
+ * once, and the ones hashed are the ones written (atomicWrite, which also rides out a Windows
+ * scanner holding the destination).
+ */
+export function copyThumbSource(workdir, chosen) {
+  let bytes;
+  try {
+    bytes = readFileSync(chosen.file);
+  } catch (error) {
+    if (error?.code === "ENOENT") return false;
+    throw error;
+  }
+  if (createHash("sha256").update(bytes).digest("hex") !== chosen.sha256) return false;
+  atomicWrite(path.join(workdir, THUMB_SOURCE), bytes);
+  atomicWrite(path.join(workdir, ARTIFACTS.keyframes), `${JSON.stringify({ shots: { [THUMB_SHOT]: { file: THUMB_SOURCE, sha256: chosen.sha256, source: { episode: chosen.episode, shot: chosen.shot } } } }, null, 2)}\n`);
+  return true;
 }
 
 /** Why the planner's upload fields cannot be used, or null. */
@@ -141,8 +179,10 @@ export function metadataProblem(answer, candidates) {
   if (!Array.isArray(answer.tags) || !answer.tags.length || !answer.tags.every(isText)) return "tags must be a list of at least one word";
   if (answer.tags.join(",").length > TAGS_MAX_CHARS) return `tags must be at most ${TAGS_MAX_CHARS} characters in all`;
   const thumbnail = answer.thumbnail;
-  if (!isObject(thumbnail) || !isText(thumbnail.headline) || thumbnail.headline.length > HEADLINE_MAX_CHARS) return `thumbnail.headline must be 1 to ${HEADLINE_MAX_CHARS} characters`;
+  if (!isObject(thumbnail) || !isText(thumbnail.headline)) return `thumbnail.headline must be 1 to ${THUMB_HEADLINE_MAX} characters`;
   if (thumbnail.headline === COMPILATION_HEADLINE_PLACEHOLDER) return "thumbnail.headline is still the placeholder";
+  const headline = headlineProblem(thumbnail.headline.trim());
+  if (headline) return headline;
   if (thumbnail.tag !== undefined && thumbnail.tag !== null && (!isText(thumbnail.tag) || thumbnail.tag.length > TAG_MAX_CHARS)) return `thumbnail.tag must be at most ${TAG_MAX_CHARS} characters or null`;
   if (candidates.length && !candidates.some((candidate) => matchesCandidate(candidate, thumbnail))) return "thumbnail.episode and thumbnail.shot must name one of thumbnail_candidates";
   return null;
@@ -244,9 +284,10 @@ export async function planMetadata(automation, state, previousProblem = null) {
     episodes: episodes.map(({ slug, number, title, logline, recap }) => ({ slug, number, title, logline, recap })),
     all_recaps: info.all_recaps ?? [],
     spoiler_context: context,
-    chapters: chaptersOf(before),
+    chapters: compilationChapters(before),
     description_budget_bytes: descriptionBudget(episodes.length),
-    thumbnail_headline_max: HEADLINE_MAX_CHARS,
+    thumbnail_headline_max: THUMB_HEADLINE_MAX,
+    thumbnail_headline_words_max: THUMB_HEADLINE_WORDS_MAX,
     thumbnail_candidates: candidates.map(({ episode, number, shot, judge, characters, prompt }) => ({ episode, number, shot, judge, characters, prompt })),
   };
   let problem = previousProblem;
@@ -264,6 +305,12 @@ export async function planMetadata(automation, state, previousProblem = null) {
       continue;
     }
     problem = metadataProblem(candidate, candidates);
+    // Asked again once and still over the channel's six: the headline is cut where a word ends
+    // and the rest of the answer kept, rather than the card waiting on the owner at the final gate.
+    if (problem && attempt === ANSWER_ATTEMPTS - 1 && isObject(candidate.thumbnail) && isText(candidate.thumbnail.headline) && headlineProblem(candidate.thumbnail.headline.trim())) {
+      candidate = { ...candidate, thumbnail: { ...candidate.thumbnail, headline: clipHeadline(candidate.thumbnail.headline) } };
+      problem = metadataProblem(candidate, candidates);
+    }
     if (problem) continue;
     if (context.mysteries.length || candidate.chapters !== undefined) {
       const chapters = candidate.chapters;
@@ -291,16 +338,17 @@ export async function planMetadata(automation, state, previousProblem = null) {
   if (readFileSync(file, "utf8") !== original) return automation.retryLater(state, "planner", "the compilation changed while its public text was reviewed; retry without overwriting the newer document");
   const chosen = candidates.find((candidate) => matchesCandidate(candidate, answer.thumbnail)) ?? candidates[0] ?? null;
   const workdir = automation.workdir(state.slug);
-  if (chosen && existsSync(chosen.file)) {
-    mkdirSync(path.join(workdir, "keyframes"), { recursive: true });
-    copyFileSync(chosen.file, path.join(workdir, THUMB_SOURCE));
-    atomicWrite(path.join(workdir, ARTIFACTS.keyframes), `${JSON.stringify({ shots: { [THUMB_SHOT]: { file: THUMB_SOURCE, sha256: await sha256File(path.join(workdir, THUMB_SOURCE)), source: { episode: chosen.episode, shot: chosen.shot } } } }, null, 2)}\n`);
+  if (chosen) {
+    // Drawn over or removed since it was offered: plan again rather than draw on bytes nobody
+    // approved, or drop the picture the planner chose its headline for.
+    if (!copyThumbSource(workdir, chosen)) return automation.retryLater(state, "planner", `the thumbnail's keyframe ${chosen.episode}/${chosen.shot} changed since it was offered`);
   } else {
     // No episode keyframe to draw on: the thumb template still draws its text on the theme.
     delete video.thumbnail.data.shot;
   }
   writeJson(file, video);
   writeJson(path.join(dir, "metadata-plan.json"), plan);
+  stampLegacyTranslations(dir, before, video);
   if (context.mysteries.length) saveReview(automation, state, context, NARRATION_LOCALE, fields);
   const errors = lintProject(loadProject({ slug: state.slug, root: ctx.root })).errors;
   if (errors.length) return automation.retryLater(state, "planner", `the compilation's document fails lint after the upload fields: ${errors.slice(0, 3).map((error) => `${error.path}: ${error.message}`).join("; ")}`);
@@ -308,6 +356,24 @@ export async function planMetadata(automation, state, previousProblem = null) {
   automation.saveState(workdir, state);
   await automation.report(state, "metadata planned");
   return `${state.slug}: title, description, tags and thumbnail planned (${answer.title})`;
+}
+
+/**
+ * A plan that changes the text the translations are made from (planMetadata, again: the
+ * verifier's word on the zh-TW text, a deleted keyframes/manifest.json, an owner's reset) stamps
+ * each translation that records no hashes (written before they were kept) with the text it
+ * replaces, so the translation reads as stale and is translated again, as one with hashes does
+ * (core/state.mjs translationComplete). One never planned again keeps counting as complete.
+ */
+function stampLegacyTranslations(dir, before, video) {
+  const earlier = compilationSourceHashes(before);
+  if (isDeepStrictEqual(earlier, compilationSourceHashes(video))) return;
+  for (const locale of LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
+    const file = path.join(dir, "i18n", `${locale}.json`);
+    const translation = readJson(file, null);
+    if (!isObject(translation) || compilationTranslationStale(translation, video) !== "legacy") continue;
+    writeJson(file, { ...translation, source_hashes: { ...(isObject(translation.source_hashes) ? translation.source_hashes : {}), ...earlier } });
+  }
 }
 
 /**
@@ -324,13 +390,17 @@ export async function translateMetadata(automation, state) {
   if (loaded.problem) return automation.block(state, loaded.problem);
   const { info } = loaded;
   const context = info.spoiler_context;
-  const chapters = chaptersOf(video);
+  const chapters = compilationChapters(video);
+  // Recorded with each translation, so one made from an earlier title, description, tags or
+  // chapter titles (the plan made again) reads as stale (core/state.mjs translationComplete) and is
+  // translated again here instead of kept.
+  const source = compilationSourceHashes(video);
   for (const locale of LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
     const file = path.join(dir, "i18n", `${locale}.json`);
     const existing = readJson(file, null);
     let problem = null;
     let fields;
-    if (existing && !translationProblem(existing, chapters)) {
+    if (existing && !translationProblem(existing, chapters) && translationComplete(existing, video)) {
       if (!context.mysteries.length) continue;
       fields = reviewInputs(automation, state, video, { [locale]: existing })[locale];
       if (reviewCurrent(receiptsFor(automation, state), context, locale, fields)) continue;
@@ -353,7 +423,7 @@ export async function translateMetadata(automation, state) {
       }
       problem = translationProblem(answer, chapters);
       if (problem) continue;
-      const candidate = { title: answer.title.trim(), description: answer.description.trim(), tags: answer.tags.map((tag) => tag.trim()), chapters: Object.fromEntries(Object.keys(chapters).map((key) => [key, answer.chapters[key].trim()])), lines: {} };
+      const candidate = { title: answer.title.trim(), description: answer.description.trim(), tags: answer.tags.map((tag) => tag.trim()), chapters: Object.fromEntries(Object.keys(chapters).map((key) => [key, answer.chapters[key].trim()])), lines: {}, source_hashes: source };
       fields = reviewInputs(automation, state, video, { [locale]: candidate })[locale];
       problem = await publicTextProblem(automation, state, context, locale, fields);
       if (!problem) translated = candidate;
@@ -397,7 +467,7 @@ export async function advanceCompilation(automation, state, next) {
     const later = ["metadata translated", "final video approved", "upload package", "on YouTube"].includes(next) || !next;
     const needsTranslationReview = LOCALES.filter((locale) => locale !== NARRATION_LOCALE).some((locale) => {
       const translation = project.translations[locale];
-      return translation ? translationProblem(translation, chaptersOf(project.doc)) || !reviewCurrent(receipts, context, locale, fields[locale]) : later;
+      return translation ? translationProblem(translation, compilationChapters(project.doc)) || !reviewCurrent(receipts, context, locale, fields[locale]) : later;
     });
     if (needsTranslationReview) return translateMetadata(automation, state);
     // Status historically binds a package only to final.mp4. A resumed worker must replace

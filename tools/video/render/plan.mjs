@@ -16,8 +16,8 @@ import { localizedThumbnail, localizedThumbnailHash, thumbnailGap } from "../cor
 export const thumbnailSeries = (doc) => (isExplainer(doc) ? "sothatswhy" : null);
 import { estimateTimeline } from "../core/timeline.mjs";
 import { screencastHtml, screencastPlan } from "../screencast/scene.mjs";
-import { isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
-import { isStockPath, ORIGIN, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
+import { captureCount, isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
+import { captureRef, isStockPath, ORIGIN, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
 
 export const THEME_FILE = fileURLToPath(new URL("../templates/theme.css", import.meta.url));
 // Chapter cards and the title card say where they are themselves; a label on top would repeat it.
@@ -68,7 +68,7 @@ export function renderProblems(doc, root = null, { workdir = null } = {}) {
     for (const asset of sceneAssets(scene)) {
       if (isStockPath(asset)) {
         if (!listed(asset)) problems.push({ path: where, message: `${asset} is not in assets[]: stock fetch writes the entry there, and without it the description carries no credit` });
-        if (workdir && !existsSync(path.join(workdir, asset))) problems.push({ path: where, message: `${asset} is not in the work directory; fetch it with stock fetch (tools/video/media/cli.mjs)` });
+        if (workdir && !existsSync(path.join(workdir, asset))) problems.push({ path: where, message: `${asset} is not in the work directory; fetch it with stock fetch (node tools/video/cli.mjs)` });
         continue;
       }
       if (!root) continue;
@@ -84,7 +84,36 @@ export function renderProblems(doc, root = null, { workdir = null } = {}) {
     const shot = thumbnail.data.shot;
     if (shot !== undefined && shot !== doc.thumbnail.data?.shot && !shots.has(shot)) problems.push({ path: "thumbnail", message: `variant ${id}: data.shot "${shot}" is not a shot of this video` });
   }
+  // A thumbnail's `capture` subject must be a still one of this video's screencast scenes takes.
+  if (doc.thumbnail && !problems.some((problem) => problem.path === "thumbnail")) {
+    const screencasts = new Map(doc.scenes.filter(isScreencast).map((scene) => [scene.id, captureCount(scene.data)]));
+    const where = (id) => (id === "a" ? "data.capture" : `variant ${id}: data.capture`);
+    for (const { id, thumbnail } of [{ id: "a", thumbnail: doc.thumbnail }, ...thumbnailVariants(doc.thumbnail)]) {
+      const ref = captureRef(thumbnail.data?.capture);
+      if (!ref) continue;
+      if (!screencasts.has(ref.scene)) problems.push({ path: "thumbnail", message: `${where(id)} "${thumbnail.data.capture}" is not a screencast scene of this video` });
+      else if (ref.index >= screencasts.get(ref.scene)) problems.push({ path: "thumbnail", message: `${where(id)} "${thumbnail.data.capture}": scene ${ref.scene} takes ${screencasts.get(ref.scene)} captures` });
+    }
+  }
   return problems;
+}
+
+/**
+ * A thumbnail's subject, from the sources in the order the owner set (templates.mjs
+ * THUMB_SUBJECTS): the still of the screencast scene `data.capture` names, from `screencasts`
+ * (scene id to capture manifest), else the keyframe of the shot `data.shot` names, from
+ * `keyframes`. Returns { kind, file, sha256 } for the picture, or `{ kind, file: null }` when
+ * the source is named but not drawn or taken yet, or null when neither is named.
+ */
+export function thumbnailSubject(data, { keyframes = {}, screencasts = {} } = {}) {
+  const capture = captureRef(data?.capture);
+  if (capture) {
+    const still = screencasts[capture.scene]?.captures?.[capture.index];
+    return still?.file ? { kind: "capture", file: still.file, sha256: still.sha256 ?? "" } : { kind: "capture", file: null };
+  }
+  const shot = typeof data?.shot === "string" ? data.shot : null;
+  if (shot) return keyframes[shot]?.file ? { kind: "shot", file: keyframes[shot].file, sha256: keyframes[shot].sha256 ?? "" } : { kind: "shot", file: null };
+  return null;
 }
 
 /**
@@ -95,11 +124,13 @@ export function renderProblems(doc, root = null, { workdir = null } = {}) {
  * redraws its slide too; without `workdir` the photo is not read and not part of the key.
  * A drama's shots come back as `{ kind: "clip", states: [] }`: the clips stage supplies their
  * pictures. `keyframes` maps a shot id to its drawn keyframe `{ file, sha256 }` (the keyframes
- * manifest's `shots`); a thumbnail that names a shot uses that picture as its background, and the
+ * manifest's `shots`); a thumbnail that names a shot uses that picture as its subject, and the
  * picture's hash is part of the thumbnail's key. Without the keyframe, `thumbnail.keyframe` is
  * null and the caller says what to run first. `screencasts` maps a screencast scene's id to its
  * capture manifest (tools/video/screencast/capture.mjs); each state shows one capture, and the
- * captures' hashes are part of its key. With `translations` (locale to i18n file), every other
+ * captures' hashes are part of its key. A thumbnail whose `capture` names one of those scenes
+ * takes that still as its subject before any shot (`thumbnail.capture` and `thumbnail.still`,
+ * null until the scene is taken). With `translations` (locale to i18n file), every other
  * caption locale whose thumbnail words are current gets its own thumbnail in
  * `thumbnail.locales` ({ locale, file, hash, html, key, text }), the same picture and layout with
  * its words; `thumbnail.gaps` says why each other locale has none.
@@ -139,19 +170,25 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
     return { id: scene.id, template: scene.template, kind: "stills", states };
   });
   // `locale` is a caption locale's own thumbnail, which may be set in its own font (fonts.mjs).
-  const drawThumbnail = (own, locale = null) => {
-    const shot = typeof own.data?.shot === "string" ? own.data.shot : null;
-    const keyframe = shot && keyframes[shot]?.file ? { file: keyframes[shot].file, sha256: keyframes[shot].sha256 ?? "" } : null;
+  // `offset` moves a B or C variant one layout and tone on from A's (templates.mjs thumbnailRotation).
+  // The subject (thumbnailSubject) comes back as `shot` and `keyframe`, or `capture` and `still`,
+  // so the caller can say what to run first when the picture is not there yet.
+  const drawThumbnail = (own, locale = null, offset = 0) => {
+    const subject = thumbnailSubject(own.data, { keyframes, screencasts });
+    const picture = subject?.file ? subject : null;
     // The work directory is served under /work/ by the renderer's fake origin.
-    const background = keyframe ? `${ORIGIN}/work/${keyframe.file.split("/").map(encodeURIComponent).join("/")}` : null;
-    const html = thumbnailHtml(own, { background, series: thumbnailSeries(doc), locale });
-    return { html, key: hash(theme, html, keyframe?.sha256 ?? ""), text: visibleText(html), ...(shot ? { shot, keyframe } : {}) };
+    const background = picture ? `${ORIGIN}/work/${picture.file.split("/").map(encodeURIComponent).join("/")}` : null;
+    const html = thumbnailHtml(own, { background, subject: picture?.kind ?? null, series: thumbnailSeries(doc), locale, slug: doc.slug, offset });
+    const source = subject?.kind === "capture"
+      ? { capture: own.data.capture, still: picture ? { file: picture.file, sha256: picture.sha256 } : null }
+      : subject ? { shot: own.data.shot, keyframe: picture ? { file: picture.file, sha256: picture.sha256 } : null } : {};
+    return { html, key: hash(theme, html, picture?.sha256 ?? ""), text: visibleText(html), ...source };
   };
   let thumbnail = null;
   if (doc.thumbnail) {
     thumbnail = drawThumbnail(doc.thumbnail);
     // B and C for YouTube's test (thumbnailVariants); only a thumbnail that has them carries the key.
-    const variants = thumbnailVariants(doc.thumbnail).map(({ id, thumbnail: own }) => ({ id, file: thumbnailVariantFile(id), ...drawThumbnail(own) }));
+    const variants = thumbnailVariants(doc.thumbnail).map(({ id, thumbnail: own }, index) => ({ id, file: thumbnailVariantFile(id), ...drawThumbnail(own, null, index + 1) }));
     if (variants.length) thumbnail.variants = variants;
     if (translations) {
       const locales = [];

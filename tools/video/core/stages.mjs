@@ -154,6 +154,16 @@ export function dubsForUpload(project, workdir, speech, locales = defaultDubLoca
 }
 
 /**
+ * The cues of `locale` as runCaptions writes them: under its current dub's own timeline, or under
+ * the narration's presented one, where a translation's cue changes move onto the narration's
+ * measured ones (`timing.chars`). The renewal checks (review/renewal.mjs, renewal-handoff.mjs)
+ * rebuild the bytes they expect with it.
+ */
+export function localeCues(presented, texts, locale, narration, dub = null) {
+  return buildCues(dub ? captionTimelineOf(dub) : presented, texts[locale], locale, dub ? null : { locale: narration, texts: texts[narration] });
+}
+
+/**
  * A dub's lines as the timeline captions are cut on: the pause after a dubbed line belongs to
  * its cues, as the narration's does, so each line runs to the next dubbed line's start.
  */
@@ -207,7 +217,9 @@ export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
     const dub = locale === narrationLocale(project.doc) || !dubbed.includes(locale) ? null : currentDub(project, workdir, locale, speech);
     const timed = dub && !dub.stale;
     // Dub timelines already describe their padded presentation; only narration is shifted here.
-    const { cues } = buildCues(timed ? captionTimelineOf(dub) : presented, byLine, locale);
+    // A translation under the narration's timeline takes its cue changes from the narration's
+    // measured ones; a dub-timed one follows its own track (localeCues).
+    const { cues } = localeCues(presented, texts, locale, narrationLocale(project.doc), timed ? dub : null);
     atomicWrite(path.join(workdir, "captions", `${locale}.srt`), toSrt(cues));
     atomicWrite(path.join(workdir, "captions", `${locale}.vtt`), toVtt(cues));
     const problems = checkCues(cues, locale);

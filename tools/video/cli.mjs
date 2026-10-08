@@ -50,6 +50,9 @@ export const AREAS = {
   clips: ["media", "2026-09-26-video-drama-clips-music"],
   music: ["media", "2026-09-26-video-drama-clips-music"],
   "media-status": ["media", "2026-09-26-video-drama-media-client"],
+  // Stock photos for an illustrated video's slides, with the credit each vendor asks for
+  // (docs/videos/ILLUSTRATED.md §圖庫照片).
+  stock: ["media", "2026-10-05-stock-photo-slides-and-attribution"],
   // A binge series' compilation: the episodes' cuts joined with chapter cards (docs/videos/BINGE.md).
   compile: ["compile", "2026-09-27-video-binge-compile"],
   "production-check": ["production", "ten-drama-animation-production"],
@@ -90,6 +93,10 @@ Usage: node tools/video/cli.mjs <command> [options]
   audition, tts, review, render, assemble, package, youtube-sync
                                                    media stages, each built by its own ticket
   look, keyframes, clips, music, media-status      the drama format's generation stages (docs/videos/DRAMA.md)
+  stock search --query Q [--provider pexels|pixabay] [--orientation landscape|portrait|square] [--per-page N] [--page N] [--slug S] [--json]
+                                                   stock photo candidates with the credit each vendor asks for; nothing is downloaded
+  stock fetch --slug S --provider P --id N [--workdir D] [--json]
+                                                   the photo into <workdir>/stock/ and its credit into video.json assets[] (docs/videos/ILLUSTRATED.md)
   clips import --slug S --shot ID --file MP4 --provider hailuo-web|kling-mcp|external [--plan P] [--credits N] [--usd N] [--note T] [--judge] [--force]
                                                    bring in a clip made outside the pipeline: checked like a bought take, booked in the ledger
   branding [--install DIR] [--series sothatswhy] [--workdir D] [--dry-run] [--json]

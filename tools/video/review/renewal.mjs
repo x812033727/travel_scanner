@@ -8,11 +8,11 @@ import { parseArgs } from "node:util";
 
 import { sha256File } from "../core/approvals.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding, validateBranding } from "../core/branding.mjs";
-import { buildCues, toSrt } from "../core/captions.mjs";
+import { toSrt } from "../core/captions.mjs";
 import { isCompilation } from "../core/compilation.mjs";
 import { atomicWrite, isInside, readJson, UsageError } from "../core/paths.mjs";
 import { narrationLocale } from "../core/schema.mjs";
-import { captionLocalesOf, captionTimelineOf, currentDub, dubLocalesOf, dubRole, dubsForUpload, localeTexts, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
+import { captionLocalesOf, currentDub, dubLocalesOf, dubRole, dubsForUpload, localeCues, localeTexts, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { speechHash, FPS } from "../core/timeline.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
 
@@ -199,7 +199,7 @@ export async function bindRenewalSubmission({ body, remote, project, workdir, re
   const { texts, skipped } = localeTexts(project.doc, project.translations);
   const defaultLocale = expectedMetadata.metadata.default_language;
   requireThat(metadata.default_language === defaultLocale && texts[defaultLocale], "the package changed the narration language");
-  const defaultCaption = toSrt(buildCues(presented, texts[defaultLocale], defaultLocale).cues);
+  const defaultCaption = toSrt(localeCues(presented, texts, defaultLocale, narration).cues);
   requireThat(readFileSync(path.join(workdir, "upload", "captions", `${defaultLocale}.srt`), "utf8") === defaultCaption, "the narration captions still use another presentation timeline");
   const captionManifest = readJson(path.join(workdir, "captions", "manifest.json"), null);
   const expectedCaptions = { [defaultLocale]: defaultCaption };
@@ -207,7 +207,9 @@ export async function bindRenewalSubmission({ body, remote, project, workdir, re
     requireThat(captionManifest?.speech_hash === timeline.speech_hash && (captionManifest.branding_hash ?? null) === brand && texts[locale] && !skipped[locale]?.length, `${locale} captions need regeneration for this timeline`);
     const dub = wantedDubs.includes(locale) ? currentDub(project, workdir, locale, timeline.speech_hash) : null;
     requireThat(!dub?.stale, `${locale} dub is stale`);
-    expectedCaptions[locale] = toSrt(buildCues(dub ? captionTimelineOf(dub) : presented, texts[locale], locale).cues);
+    // As runCaptions cut them: a translation under the narration moves its cue changes onto the
+    // narration's measured ones.
+    expectedCaptions[locale] = toSrt(localeCues(presented, texts, locale, narration, dub).cues);
     requireThat(readFileSync(path.join(workdir, "upload", "captions", `${locale}.srt`), "utf8") === expectedCaptions[locale], `${locale} caption bytes have stale offsets or text`);
   }
   const payload = { ...body.payload, ...(body.gate !== "publish" ? { locales: structuredClone(body.payload.locales ?? {}) } : {}), final_review_id: final.id };

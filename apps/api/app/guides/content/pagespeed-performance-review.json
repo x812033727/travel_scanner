@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "PageSpeed Insights 分數怎麼讀：量測網站速度的正確順序",
@@ -154,6 +157,7 @@
           "width": 1600,
           "height": 900,
           "caption": "一張高分截圖無法取代完整、可比較的量測紀錄。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -259,6 +263,1018 @@
         },
         {
           "title": "Lighthouse 入門與報表保存",
+          "url": "https://developer.chrome.com/docs/lighthouse/overview",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "How to Read PageSpeed Insights Scores: The Right Order for Measuring Website Speed",
+      "description": "Fluctuating PageSpeed Insights scores do not always mean the site has changed. For website managers in Taiwan, this article distinguishes real-user data, Lighthouse tests and score categories, and establishes comparable URLs, devices, versions and test conditions. An original report-reading sequence, improvement log and practical steps help speed checks support concrete decisions instead of merely collecting a high-score screenshot.",
+      "hero": {
+        "src": "/guides/pagespeed-performance-review/hero-en.jpg",
+        "alt": "Original illustrations of a screen, calculation panel and document representing reading test reports, comparing metrics and keeping records.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "If the same website scores green in the morning and orange in the afternoon, does that mean your recent optimization has stopped working? Do not rush to conclusions. PageSpeed Insights shows both real-user data collected over a period and a single simulated page-load test. Their scope and purposes differ, so you should not combine all the numbers into one report card."
+        },
+        {
+          "type": "paragraph",
+          "text": "Read reports in this order: what is being tested, where the data comes from, which values are unusual, and how to arrange comparisons. This article focuses on keeping measurement methods consistent so that changes have traceable before-and-after evidence. When code or the server actually needs fixing, give the person responsible a clearly defined problem."
+        },
+        {
+          "type": "heading",
+          "text": "Choose representative pages and record the test's purpose",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not test only the homepage. On a small studio's website, for example, the homepage, portfolio list, individual project pages and contact page may use different templates and resources. Choose a representative URL for each and note whether you want to check how quickly content first appears, how images load, or whether a particular redesign has increased the load."
+        },
+        {
+          "type": "paragraph",
+          "text": "Enter the full URL in PageSpeed Insights and run the analysis. Once it finishes, confirm that the tested page matches what you expected. If redirects occur from HTTP to HTTPS, through a domain alias or from an old path, record the final destination page too. If the test reaches an error page, login page or website security notice, that score cannot represent the original content page."
+        },
+        {
+          "type": "paragraph",
+          "text": "Record the URL, test date, page version and selected mobile or desktop view. Mobile results can highlight problems under resource constraints, but they still reflect the tool's settings, not every reader's actual phone in Taiwan. Before comparing reports, confirm that both use the same assumptions."
+        },
+        {
+          "type": "heading",
+          "text": "Read real-user data separately from the current test",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The report's real-user data comes from the Chrome User Experience Report, CrUX, using observations from the past 28 days. It helps assess readers' experiences on real devices and networks, but new pages or pages with too few samples may have no data. Record this as unable to assess, not a score of zero or a failed test."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check whether the displayed data covers this URL or the site origin. If there is insufficient data for an individual page, the tool may use an origin-level aggregate instead. If a project page has only sitewide data, label that scope; do not call it “this project's real-world speed” in a presentation. Recheck the data after switching devices too."
+        },
+        {
+          "type": "paragraph",
+          "text": "The diagnostics below come from Lighthouse analyzing the current page in a simulated environment, making them useful for finding reproducible loading problems. It is normal for them to differ from historical data: an image you just adjusted may already be reflected in the current test, while past usage data still includes visits before the change. Keep the time period for each section separate to interpret them reasonably."
+        },
+        {
+          "type": "heading",
+          "text": "Read raw metrics and categories, not just the score circles",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Lighthouse provides separate categories such as Performance, Accessibility, Best Practices and SEO. The performance score combines several measurement metrics after conversion and weighting; it is not “the percentage of all readers who find the site fast.” Categories are not interchangeable either. A high SEO score cannot prove that an article will achieve a particular search ranking."
+        },
+        {
+          "type": "paragraph",
+          "text": "The official thresholds label scores of 90 or above as good, 50 to 89 as needing improvement, and below 50 as poor, but the colors are only a starting point. Expand the metrics and check values such as when the main content appears, blocking and layout shifts to identify what to investigate next. Do not break necessary features just to turn 99 into 100."
+        },
+        {
+          "type": "paragraph",
+          "text": "Tool versions may change the weighting or audit items, so overall scores from different versions are not necessarily directly comparable. Saving the report's version and raw values is more useful than keeping only a score. Check metric names in older tutorials against the current report too; do not assume retired metrics will appear in every new test."
+        },
+        {
+          "type": "heading",
+          "text": "Keep conditions consistent so repeated results can be compared",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Even without code changes, third-party content, server load or network conditions may vary. Lighthouse's official guidance recommends repeated measurements and examining their distribution. For a routine editorial check, start by running several tests sequentially under the same conditions, saving every result and the median. Do not delete poorer results and keep only the best-looking run."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you test with DevTools on your own computer, other tabs, extensions and tasks running at the same time may affect the results. Avoid running multiple Lighthouse tests simultaneously on the same computer, and keep the test environment consistent. An incognito window can reduce some interference, but it cannot guarantee that all hardware or background resource differences are eliminated."
+        },
+        {
+          "type": "paragraph",
+          "text": "Login status, cookies, promotional banners and cache settings should also remain consistent. If you temporarily remove third-party components that normally appear on the page, label it as a test to isolate a cause; do not present it as the live page's performance. Every result should answer the same question to deserve a place in a before-and-after comparison table."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use the same URL and page template, and save version information from before the changes.",
+            "Keep the device view, testing tool, and controllable login and cache conditions consistent.",
+            "Run multiple measurements sequentially, keeping all reports and representative results.",
+            "Change only one group of items with a shared cause, then compare again under the same conditions."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Turn recommendations into actionable, verifiable tasks",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Open each diagnostic item, identify the files, elements and causes involved, then record which part of the user experience it affects. Oversized portfolio images and heavy code execution need different solutions. Simply sending engineers the whole report and asking them to “make everything green” can waste time on items with little impact on current readers."
+        },
+        {
+          "type": "paragraph",
+          "text": "The tool's estimated time savings are clues to support judgment. Do not simply add every row together and promise that the entire page will become faster by that many seconds. Different items may affect the same part of the loading process. Each task should specify the resources or metrics expected to improve, the scope of changes, how to revert them, and checks for necessary features."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, a studio's portfolio list could first address the delivery of oversized thumbnails. After making the change, verify which image version actually loads on mobile and its quality, then compare metrics under the same conditions. If the numbers do not change noticeably, keep the results and investigate the bottleneck again. You do not need to switch comparison targets to prove that the change worked."
+        },
+        {
+          "type": "heading",
+          "text": "Choose the next tool when the data does not match",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "PageSpeed Insights is mainly suitable for webpages that can be accessed remotely. For pages requiring login or local development environments, use Lighthouse in Chrome DevTools as appropriate; it can test pages the browser can access. Check settings such as clearing storage to avoid unknowingly changing the state you intend to test."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the problem occurs during clicks, scrolling or changes after loading, a single page-load report may be insufficient. Chrome's official guidance recommends the Performance panel for deeper performance diagnostics. Lighthouse also offers different modes, but their audits are not identical. First describe the interaction you need to reproduce, then choose a suitable measurement method."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, save the reports, change logs and actual functional results. If real-user data does not yet reflect the changes, specify the period and scope that still need observation. A completed speed check should explain what was tested, which problem improved and what limitations remain, rather than leaving only a high-score image with no date or URL."
+        },
+        {
+          "type": "image",
+          "src": "/guides/pagespeed-performance-review/diagram-1-en.svg",
+          "alt": "Four steps: confirm the tested page and conditions, distinguish data sources, read specific metrics, and save comparable before-and-after results.",
+          "width": 1600,
+          "height": 900,
+          "caption": "A high-score screenshot cannot replace a complete, comparable measurement record.",
+          "description": "Four steps: confirm the tested page and conditions, distinguish data sources, read specific metrics, and save comparable before-and-after results.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Report content",
+            "Questions it can answer",
+            "What you cannot directly infer"
+          ],
+          "rows": [
+            [
+              "CrUX real-user data",
+              "What past user experiences were like",
+              "That everything improved immediately after a change"
+            ],
+            [
+              "A single Lighthouse test",
+              "Which loading problems occur under these conditions",
+              "Actual speed for every reader"
+            ],
+            [
+              "Overall performance score",
+              "An overview using the tool's weighting",
+              "An exact percentage of satisfied readers"
+            ],
+            [
+              "Diagnostic items",
+              "Which resources deserve investigation",
+              "That savings from each item can simply be added"
+            ],
+            [
+              "Repeated records under the same conditions",
+              "Whether changes appear consistently",
+              "That results across versions and devices can all be mixed in comparisons"
+            ]
+          ],
+          "caption": "Each type of data suits different questions. Label its scope before interpreting it."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Keep every result",
+          "text": "For before-and-after comparisons, save the URL, version, device, tool settings and every report. Deleting unusual results and keeping only the highest score makes it impossible to determine later whether performance really improved."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Find user-experience bottlenecks with Core Web Vitals",
+              "kind": "life",
+              "slug": "core-web-vitals-diagnosis"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Check image dimensions and text descriptions",
+              "kind": "life",
+              "slug": "image-seo-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Set the order for technical SEO checks",
+              "kind": "life",
+              "slug": "technical-seo-checklist"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google PageSpeed Insights Documentation",
+          "url": "https://developers.google.com/speed/docs/insights/v5/about",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "How Lighthouse Performance Scoring Works",
+          "url": "https://developer.chrome.com/docs/lighthouse/performance/performance-scoring",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Official Lighthouse Documentation on Measurement Variability",
+          "url": "https://github.com/GoogleChrome/lighthouse/blob/main/docs/variability.md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Chrome DevTools Lighthouse Panel",
+          "url": "https://developer.chrome.com/docs/devtools/lighthouse",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Getting Started with Lighthouse and Saving Reports",
+          "url": "https://developer.chrome.com/docs/lighthouse/overview",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "PageSpeed Insights のスコアの読み方：サイト速度を測る正しい順序",
+      "description": "PageSpeed Insights のスコアが上下しても、毎回サイトが変更されたとは限りません。台湾のウェブサイト管理者が知りたい点を踏まえ、実際の利用データ、Lighthouse のテスト、各種スコアの区別を説明し、URL、端末、バージョン、テスト条件をそろえて比較する方法を紹介します。独自のレポート読解手順、改善記録表、操作手順も掲載。速度チェックを具体的な判断に役立て、高得点のスクリーンショットを集めるだけで終わらせないための記事です。",
+      "hero": {
+        "src": "/guides/pagespeed-performance-review/hero-ja.jpg",
+        "alt": "テストレポートを読み、指標を比較し、記録を保存することを表す、モニター、計算パネル、書類のオリジナルイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "同じサイトで朝は緑、午後はオレンジの結果が出たら、行ったばかりの最適化が無効になったのでしょうか。結論を急がないでください。PageSpeed Insights は、一定期間の実際の利用データと、一度の読み込みシミュレーションの結果を同時に表示します。両者は対象範囲と用途が異なるため、すべての数値を一つの成績表として扱うことはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "レポートは「何を測ったか、データはどこから来たか、どの値に異常があるか、どう比較を組むか」の順に読むとよいでしょう。本記事では測定方法を固定し、変更前後を後から確認できる根拠を残すことを重視します。実際にプログラムやサーバーを修正する段階で、具体的な問題を担当者に引き継ぎましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "代表的なページを選び、テストの目的を記す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "トップページだけを測らないでください。小規模な制作スタジオのサイトを例にすると、トップページ、作品一覧、個別作品、問い合わせページでは、テンプレートや使用するリソースが異なる場合があります。それぞれ代表的なURLを選び、確認したいのがコンテンツを最初に見られるまでの速さなのか、画像の読み込みなのか、あるリニューアルによる負荷の増加なのかを明記しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "PageSpeed Insights に完全なURLを入力して分析を実行し、完了後に測定されたページが想定どおりか確認します。HTTP から HTTPS への移行、ドメインの別名、古いパスによるリダイレクトがあれば、最終的なページも記録してください。エラーページ、ログインページ、サイトの保護機能による案内が測定された場合、そのスコアを本来のコンテンツページの結果として扱うことはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "URL、テスト日、ページのバージョン、選択したモバイルまたはデスクトップの表示を記録に残します。モバイルの結果はリソースが限られた状況での問題を把握する手がかりになりますが、あくまでツールの設定に基づく結果であり、台湾の読者一人ひとりの実際のスマホと同じではありません。比較する前に、両方のレポートの前提が同じか確認しましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "実際の利用データと今回のテストを分けて読む",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "レポートの実際の利用データは Chrome ユーザー エクスペリエンス レポートの CrUX に由来し、過去 28 日間の観測を使用します。実際の端末やネットワークで読者がどのような体験をしているか判断する助けになりますが、新しいページやサンプルが少なすぎるページにはデータがない場合があります。その場合は評価不能と記録してください。零点でも、テスト失敗でもありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "表示されているのがそのURLのデータか、オリジン単位のデータかに注意してください。個別ページのデータが不足すると、ツールはオリジン全体の集計を使う場合があります。作品ページについてサイト全体のデータしかないなら、対象範囲を明記し、プレゼンテーションで「この作品の実際の速度」と言い換えてはいけません。端末を切り替えた後もデータを再確認しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下部の診断は、Lighthouse がシミュレーション環境で現在のページを分析したもので、再現可能な読み込みの問題を見つけるのに適しています。過去のデータと一致しないのは自然なことです。調整したばかりの画像は今回のテストに反映されていても、過去の利用データには変更前のアクセスが含まれています。両欄それぞれの対象期間を残すことで、妥当な解釈ができます。"
+        },
+        {
+          "type": "heading",
+          "text": "円内のスコアだけでなく、元の指標とカテゴリを見る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Lighthouse は、パフォーマンス、アクセシビリティ、ベストプラクティス、SEO などのカテゴリごとに結果を示します。パフォーマンススコアは、複数の測定指標を換算して重み付けした結果であり、「すべての読者のうち、速いと感じた人の割合」ではありません。各カテゴリも相互に置き換えられません。SEO カテゴリの高得点は、記事が特定の検索順位を獲得する証拠にはなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式では 90 点以上を良好、50 から 89 点を要改善、50 点未満を不良としていますが、色は読み始めるための目印にすぎません。指標を展開し、主要コンテンツが表示されるまでの時間、処理のブロック状況、レイアウトのずれなどの値を確認して初めて、次に何を調べるべきかが分かります。99 を 100 にするために必要な機能を損なわないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ツールのバージョンによって重み付けやチェック項目が変わることがあるため、異なるバージョンの総合スコアをそのまま比較できるとは限りません。スコアだけを残すより、レポートに記載されたバージョンと元の数値を保存する方が役立ちます。古い解説に挙げられた指標名も現在のレポートと照合し、廃止された項目が新しいテストでも必ず提供されると思い込まないようにしましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "条件を固定し、複数回の結果を比較できるようにする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトのコードを変更していなくても、サードパーティのコンテンツ、サーバー負荷、ネットワーク条件は変わる場合があります。Lighthouse 公式は、測定を繰り返して分布を確認することを推奨しています。一般的な編集作業でのチェックなら、まず同じ条件で順番に数回測り、毎回の結果と中央値を保存するとよいでしょう。悪い記録を削除して、最も見栄えのよい結果だけを残してはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自分のパソコンの DevTools でテストする場合、ほかのタブ、拡張機能、同時に実行している作業が結果に影響することがあります。同じパソコンで複数の Lighthouse を同時に実行するのは避け、テスト環境を一定に保ちましょう。シークレットウィンドウは一部の干渉を減らせますが、ハードウェアやバックグラウンドのリソースの違いをすべて排除できる保証はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ログイン状態、Cookie、キャンペーンバナー、キャッシュ設定も固定してください。テストのために、本来表示されるサードパーティのコンポーネントを一時的に取り除く場合は、原因を切り分けるためのテストと明記し、公開ページの改善成果として扱ってはいけません。どの結果も同じ問いに答えてこそ、変更前後の比較表に載せる価値があります。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "同じURLとテンプレートを選び、変更前のバージョン情報を保存する。",
+            "端末の表示、テストツール、制御できるログイン状態とキャッシュ条件を固定する。",
+            "順番に複数回測定し、すべてのレポートと代表的な結果を残す。",
+            "共通の原因を持つ項目群だけを変更し、同じ条件で再比較する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "提案を実行・検収できる作業に変える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "診断項目を開き、関係するファイル、要素、原因を読み取り、どの体験に影響するか記録します。作品画像が大きすぎる問題と、プログラムの実行負荷が高すぎる問題では、対処方法が異なります。レポート全体をエンジニアに送って「全部緑にして」と伝えるだけでは、現在の読者への影響が小さい項目に時間を費やしがちです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ツールが示す推定短縮時間は判断の手がかりであり、各行の値をそのまま足して、ページ全体が必ずその秒数だけ速くなると約束すべきではありません。異なる項目が同じ読み込み工程に影響している場合があります。タスクには、改善を見込むリソースや指標、変更範囲、元に戻す方法、必要な機能の確認を明記しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば、制作スタジオの作品一覧なら、まず大きすぎるサムネイルを配信している問題に対処できます。変更後はスマホで実際に読み込まれる画像のバージョンと画質を確認し、同じ条件の指標を比較します。数値に明確な変化がなければ、結果を残してボトルネックを調べ直してください。変更が有効だったと証明するために、比較対象を変える必要はありません。"
+        },
+        {
+          "type": "heading",
+          "text": "データが合わないときは、次に使うツールを適切に選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "PageSpeed Insights は、主にリモートから読み取れるウェブページに適しています。ログインが必要なページやローカルの開発環境では、状況に応じて Chrome DevTools の Lighthouse を使えます。ブラウザーからアクセスできるページをそのまま利用できるためです。ストレージの消去などの設定を確認し、知らないうちに測定対象の状態を変えないようにしてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "クリック、スクロール、読み込み後の変化で問題が起きる場合、一度のページ読み込みレポートだけでは不十分かもしれません。Chrome 公式は、詳しいパフォーマンス診断に Performance パネルを使うことを推奨しています。Lighthouse にも異なるモードがありますが、提供されるチェックは完全には同じではありません。まず再現したい操作を記述し、それに合った測定方法を選びましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後にレポート、変更記録、実際の機能の確認結果を保存します。実際の利用データにまだ変更が反映されていない場合は、今後観察する期間と範囲を明記してください。完了した速度チェックでは、何を測ったか、どの問題を改善したか、どのような制約が残っているかを説明できる必要があります。日付もURLもない高得点の画像だけを残すものではありません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/pagespeed-performance-review/diagram-1-ja.svg",
+          "alt": "測定するページと条件の確認、データの出所の区別、具体的な指標の読み取り、比較可能な変更前後の結果の保存を、四つの手順で順番に行う。",
+          "width": 1600,
+          "height": 900,
+          "caption": "高得点のスクリーンショット一枚では、完全で比較可能な測定記録の代わりにはなりません。",
+          "description": "測定するページと条件の確認、データの出所の区別、具体的な指標の読み取り、比較可能な変更前後の結果の保存を、四つの手順で順番に行う。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "レポートの内容",
+            "答えられる問い",
+            "直接は推論できないこと"
+          ],
+          "rows": [
+            [
+              "CrUX の実利用データ",
+              "過去の利用体験はどうだったか",
+              "変更直後にすべて改善したこと"
+            ],
+            [
+              "一度の Lighthouse テスト",
+              "この条件でどんな読み込みの問題があるか",
+              "すべての読者の実際の速度"
+            ],
+            [
+              "パフォーマンス総合スコア",
+              "ツールによる重み付け後の概況",
+              "満足した読者の正確な割合"
+            ],
+            [
+              "診断項目",
+              "どのリソースを調べるべきか",
+              "各項目の短縮時間をそのまま合算できること"
+            ],
+            [
+              "同じ条件での複数回の記録",
+              "変化が継続して見られるか",
+              "異なるバージョンや端末の結果を混ぜて比較できること"
+            ]
+          ],
+          "caption": "データの種類ごとに答えられる問いが異なります。まず対象範囲を明記してから解釈しましょう。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "すべての結果を残す",
+          "text": "変更前後を比較するには、URL、バージョン、端末、ツール設定、毎回のレポートを保存する必要があります。異常な結果を削除して最高点だけを残すと、本当に改善したのか後から判断できなくなります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Core Web Vitals から体験のボトルネックを見つける",
+              "kind": "life",
+              "slug": "core-web-vitals-diagnosis"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "画像サイズと説明文を確認する",
+              "kind": "life",
+              "slug": "image-seo-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "テクニカル SEO のチェック順序を決める",
+              "kind": "life",
+              "slug": "technical-seo-checklist"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google PageSpeed Insights の説明",
+          "url": "https://developers.google.com/speed/docs/insights/v5/about",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lighthouse のパフォーマンススコアの仕組み",
+          "url": "https://developer.chrome.com/docs/lighthouse/performance/performance-scoring",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lighthouse 公式の測定結果の変動に関するドキュメント",
+          "url": "https://github.com/GoogleChrome/lighthouse/blob/main/docs/variability.md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Chrome DevTools の Lighthouse パネル",
+          "url": "https://developer.chrome.com/docs/devtools/lighthouse",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lighthouse 入門とレポートの保存",
+          "url": "https://developer.chrome.com/docs/lighthouse/overview",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "PageSpeed Insights 점수 읽는 법: 웹사이트 속도를 측정하는 올바른 순서",
+      "description": "PageSpeed Insights 점수가 들쭉날쭉해도 매번 웹사이트에 변경이 있었다는 뜻은 아닙니다. 이 글은 대만 웹사이트 관리자가 보고서를 읽을 때 필요한 내용을 중심으로 실사용 데이터, Lighthouse 테스트, 각종 점수의 차이를 설명하고, URL·기기·버전·테스트 조건을 비교 가능하게 설정하는 방법을 다룹니다. 자체 제작한 보고서 읽기 순서, 개선 기록표, 작업 절차를 제공해 속도 점검이 구체적인 의사결정을 뒷받침하고, 고득점 캡처 한 장만 모아 두는 데서 벗어나도록 돕습니다.",
+      "hero": {
+        "src": "/guides/pagespeed-performance-review/hero-ko.jpg",
+        "alt": "테스트 보고서 읽기, 지표 비교, 기록 보관을 나타내는 자체 제작 모니터·계산 패널·문서 이미지.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "같은 웹사이트가 아침 테스트에서는 녹색이었다가 오후에 주황색으로 바뀐다면, 방금 적용한 최적화가 효과를 잃었다는 뜻일까요? 성급히 결론 내리지 마세요. PageSpeed Insights는 일정 기간의 실사용 데이터와 한 번의 모의 로딩 테스트를 함께 보여 줍니다. 둘은 범위와 용도가 다르므로 모든 수치를 하나의 성적표로 섞어서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "보고서를 읽을 때는 ‘무엇을 측정했는지, 데이터가 어디서 왔는지, 어떤 값에 이상이 있는지, 비교를 어떻게 진행할지’의 순서를 따르면 됩니다. 이 글은 측정 방법을 일관되게 유지해 변경 전후를 추적할 수 있는 근거를 마련하는 데 초점을 맞춥니다. 실제로 코드를 수정하거나 서버를 손볼 때는 명확한 문제를 담당자에게 전달하면 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "먼저 대표 페이지를 고르고 테스트 목적을 적으세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "홈페이지만 테스트하지 마세요. 소규모 스튜디오 웹사이트를 예로 들면, 홈페이지, 작품 목록, 개별 작품, 문의 페이지는 서로 다른 템플릿과 리소스를 사용할 수 있습니다. 각각 대표 URL을 하나씩 고르고, 콘텐츠가 처음 보이기까지의 속도, 이미지 로딩, 특정 개편이 부하를 늘렸는지 중 무엇을 확인하려는지도 적어 두세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "PageSpeed Insights에 전체 URL을 입력하고 분석을 실행한 뒤, 측정된 페이지가 예상한 페이지와 같은지 확인하세요. HTTP에서 HTTPS로, 도메인 별칭에서 다른 주소로, 또는 이전 경로에서 리디렉션되었다면 최종 페이지도 기록해야 합니다. 오류 페이지, 로그인 페이지, 웹사이트 보호 안내가 측정되었다면 해당 점수를 원래 콘텐츠 페이지의 결과로 삼을 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기록에는 URL, 테스트 날짜, 페이지 버전, 선택한 모바일 또는 데스크톱 보기를 보관하세요. 모바일 결과는 자원이 제한된 환경의 문제를 알려 줄 수 있지만, 여전히 도구 설정에 따른 결과이므로 대만 독자 각자의 실제 휴대전화 환경과 같지는 않습니다. 비교하기 전에 두 보고서의 전제가 같은지 확인하세요."
+        },
+        {
+          "type": "heading",
+          "text": "실사용 데이터와 이번 테스트를 따로 읽으세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "보고서의 실사용 데이터는 Chrome 사용자 경험 보고서 CrUX에서 가져오며, 지난 28일 동안의 관측을 사용합니다. 실제 기기와 네트워크에서 독자가 겪는 경험을 판단하는 데 도움이 되지만, 새 페이지이거나 표본이 너무 적으면 데이터가 없을 수 있습니다. 이 경우는 평가 불가로 기록해야 하며, 점수가 없다는 것이 영점이나 테스트 실패를 뜻하지는 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "표시된 데이터가 해당 URL 수준인지 사이트 오리진 수준인지 살펴보세요. 개별 페이지 데이터가 부족하면 도구가 사이트 오리진의 집계 데이터를 사용할 수 있습니다. 작품 페이지에 사이트 전체 데이터만 있다면 그 범위를 표시해야 하며, 발표 자료에서 이를 ‘이 작품의 실제 속도’라고 바꿔 부르면 안 됩니다. 기기를 전환한 뒤에도 데이터를 다시 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "하단의 진단은 Lighthouse가 모의 환경에서 현재 페이지를 분석한 결과이며, 재현 가능한 로딩 문제를 찾는 데 적합합니다. 과거 데이터와 동시에 바뀌지 않는 것은 자연스럽습니다. 방금 조정한 이미지는 이번 테스트에 이미 반영되었더라도, 과거 실사용 데이터에는 수정 전 방문도 여전히 포함됩니다. 두 영역의 시간 범위를 각각 남겨 두어야 합리적으로 해석할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "원형 점수만 보지 말고 원시 지표와 범주를 확인하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Lighthouse는 성능, 접근성, 권장사항, SEO 등의 범주를 각각 제공합니다. 성능 점수는 여러 측정 지표를 환산하고 가중치를 적용한 결과이며, ‘전체 독자 중 빠르다고 느끼는 사람의 비율’이 아닙니다. 각 범주도 서로 대체할 수 없습니다. SEO 범주의 높은 점수가 글의 특정 검색 순위를 보장하지는 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 기준에서는 90점 이상을 양호, 50점부터 89점까지를 개선 필요, 50점 미만을 나쁨으로 표시하지만, 색상은 보고서를 읽기 위한 출발점일 뿐입니다. 지표를 펼쳐 주요 콘텐츠가 나타나는 시간, 블로킹 상황, 레이아웃 이동 등의 값을 확인해야 다음에 무엇을 조사할지 알 수 있습니다. 99점을 100점으로 만들려고 필요한 기능을 망가뜨리지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "도구 버전에 따라 가중치나 점검 항목이 조정될 수 있으므로, 버전이 다른 총점을 직접 비교할 수 있는 것은 아닙니다. 점수 하나만 남기기보다 보고서의 버전과 원시 값을 보관하는 편이 더 유용합니다. 예전 안내서에 나온 지표 이름도 현재 보고서와 대조해야 하며, 사용이 종료된 항목을 모든 새 테스트에서 제공한다고 여겨서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "조건을 고정해 여러 결과를 비교할 수 있게 하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "웹사이트 코드를 바꾸지 않아도 외부 콘텐츠, 서버 부하, 네트워크 조건은 달라질 수 있습니다. Lighthouse 공식 안내는 반복 측정하고 결과의 분포를 관찰할 것을 권장합니다. 일반적인 편집 점검에서는 먼저 같은 조건으로 몇 차례 연속 측정하고, 각 결과와 중앙값을 보관하면 됩니다. 나쁜 기록을 지우고 가장 좋은 결과만 남기지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "자신의 컴퓨터에서 DevTools로 테스트한다면 다른 탭, 확장 프로그램, 동시에 실행 중인 작업이 결과에 영향을 줄 수 있습니다. 같은 컴퓨터에서 여러 Lighthouse 테스트를 동시에 실행하지 말고, 테스트 환경을 일관되게 유지하세요. 시크릿 창은 일부 간섭을 줄일 수 있지만, 모든 하드웨어 차이나 백그라운드 리소스 차이를 없앤다고 보장하지는 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "로그인 상태, 쿠키, 이벤트 배너, 캐시 설정도 고정해야 합니다. 테스트를 위해 실제로 나타나는 외부 구성요소를 임시로 제거했다면 원인 분리 테스트라고 표시해야 하며, 이를 실제 운영 페이지의 개선 성과인 것처럼 제시하면 안 됩니다. 각 결과가 같은 질문에 답해야 변경 전후 비교표에 넣을 가치가 있습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "동일한 URL과 템플릿을 선택하고 수정 전 버전 정보를 보관하세요.",
+            "기기 보기, 테스트 도구, 통제 가능한 로그인 및 캐시 조건을 고정하세요.",
+            "여러 차례 순차적으로 측정하고 모든 보고서와 대표 결과를 보관하세요.",
+            "공통 원인이 있는 항목 묶음 하나만 수정한 뒤 같은 조건으로 다시 비교하세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "권고사항을 실행하고 검수할 수 있는 작업으로 바꾸세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "진단 항목을 열어 관련 파일, 요소, 원인을 읽고, 어떤 경험에 영향을 미치는지도 적어 두세요. 작품 이미지가 너무 큰 문제와 코드 실행 부하가 큰 문제는 각각 다르게 처리해야 합니다. 보고서 전체만 개발자에게 보내며 ‘전부 녹색으로 바꿔 주세요’라고 하면 현재 독자에게 영향이 작은 항목에 시간을 쓰기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "도구가 표시한 예상 절약 시간은 판단을 돕는 단서입니다. 각 행의 시간을 단순히 더해 페이지 전체가 반드시 그만큼 빨라진다고 약속해서는 안 됩니다. 여러 항목이 같은 로딩 구간에 영향을 줄 수 있습니다. 작업에는 개선하려는 리소스나 지표, 변경 범위, 복구 방법, 필요한 기능의 점검 내용을 분명히 적어야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 스튜디오의 작품 목록에서는 너무 큰 썸네일을 전송하는 문제부터 처리할 수 있습니다. 수정 후에는 모바일에서 실제로 불러오는 이미지 버전과 화질을 확인한 뒤 같은 조건의 지표를 비교하세요. 수치에 뚜렷한 변화가 없다면 결과를 보관하고 병목을 다시 살펴보세요. 변경이 효과가 있었다고 증명하려고 비교 대상을 바꿀 필요는 없습니다."
+        },
+        {
+          "type": "heading",
+          "text": "데이터가 일치하지 않을 때 적절한 후속 도구를 선택하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "PageSpeed Insights는 주로 원격으로 읽을 수 있는 웹페이지에 적합합니다. 로그인이 필요한 페이지나 로컬 개발 환경에서는 상황에 따라 Chrome DevTools의 Lighthouse를 사용할 수 있습니다. 브라우저에서 접근할 수 있는 페이지를 그대로 활용할 수 있기 때문입니다. 저장 공간 지우기 등의 설정을 확인해 측정하려는 상태가 모르는 사이에 바뀌지 않도록 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "클릭, 스크롤, 로딩 후 변화에서 문제가 발생한다면 단일 페이지 로딩 보고서만으로는 부족할 수 있습니다. Chrome 공식 안내는 심층 성능 진단에 Performance 패널을 사용할 것을 권장합니다. Lighthouse에도 여러 모드가 있지만 제공하는 점검 항목은 완전히 같지 않습니다. 재현하려는 조작을 먼저 설명한 다음 그에 맞는 측정 방식을 선택하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 보고서, 변경 기록, 실제 기능의 결과를 보관하세요. 실사용 데이터에 변경이 아직 반영되지 않았다면 앞으로 관찰할 기간과 범위를 명시하세요. 완료된 속도 점검은 무엇을 측정했는지, 어떤 문제를 개선했는지, 어떤 한계가 남았는지를 설명할 수 있어야 합니다. 날짜와 URL이 없는 고득점 이미지 한 장만 남겨서는 안 됩니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/pagespeed-performance-review/diagram-1-ko.svg",
+          "alt": "네 단계에 걸쳐 측정 페이지와 조건을 확인하고, 데이터 출처를 구분하며, 구체적인 지표를 읽은 뒤 비교 가능한 변경 전후 결과를 보관합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "고득점 캡처 한 장은 완전하고 비교 가능한 측정 기록을 대신할 수 없습니다.",
+          "description": "네 단계에 걸쳐 측정 페이지와 조건을 확인하고, 데이터 출처를 구분하며, 구체적인 지표를 읽은 뒤 비교 가능한 변경 전후 결과를 보관합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "보고서 내용",
+            "답하기 적합한 질문",
+            "바로 추론할 수 없는 내용"
+          ],
+          "rows": [
+            [
+              "CrUX 실사용 데이터",
+              "과거 사용자 경험은 어땠는지",
+              "수정 직후 곧바로 전부 개선됨"
+            ],
+            [
+              "Lighthouse 단일 측정",
+              "이 조건에서 어떤 로딩 문제가 있는지",
+              "모든 독자의 실제 속도"
+            ],
+            [
+              "성능 총점",
+              "도구가 가중치를 적용한 전반적 상태",
+              "정확한 독자 만족 비율"
+            ],
+            [
+              "진단 항목",
+              "어떤 리소스를 조사할 만한지",
+              "항목별 절약 시간을 바로 합산할 수 있음"
+            ],
+            [
+              "동일 조건의 반복 측정 기록",
+              "변화가 지속적으로 나타나는지",
+              "버전과 기기가 달라도 섞어서 비교 가능"
+            ]
+          ],
+          "caption": "각 데이터는 답하기 적합한 질문이 다르므로, 범위를 먼저 표시한 뒤 해석하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "모든 결과를 남기세요",
+          "text": "변경 전후를 비교하려면 URL, 버전, 기기, 도구 설정, 매번 생성된 보고서를 보관해야 합니다. 이상 결과를 지우고 최고 점수만 남기면 이후에 실제로 개선되었는지 판단할 수 없게 됩니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Core Web Vitals로 사용자 경험의 병목 찾기",
+              "kind": "life",
+              "slug": "core-web-vitals-diagnosis"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "이미지 크기와 텍스트 설명 점검하기",
+              "kind": "life",
+              "slug": "image-seo-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "기술 SEO의 점검 순서 정하기",
+              "kind": "life",
+              "slug": "technical-seo-checklist"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google PageSpeed Insights 도움말",
+          "url": "https://developers.google.com/speed/docs/insights/v5/about",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lighthouse 성능 점수 산정 원리",
+          "url": "https://developer.chrome.com/docs/lighthouse/performance/performance-scoring",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lighthouse 공식 측정 변동성 문서",
+          "url": "https://github.com/GoogleChrome/lighthouse/blob/main/docs/variability.md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Chrome DevTools Lighthouse 패널",
+          "url": "https://developer.chrome.com/docs/devtools/lighthouse",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lighthouse 시작하기와 보고서 저장",
+          "url": "https://developer.chrome.com/docs/lighthouse/overview",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "PageSpeed Insights 分数怎么读：测量网站速度的正确顺序",
+      "description": "PageSpeed Insights 分数忽高忽低，未必代表网站每次都有改动。本文从台湾网站管理者的阅读需求出发，说明真实使用数据、Lighthouse 测试与各类分数如何区分，并建立可比较的网址、设备、版本与测试条件。附原创报表阅读顺序、改进记录表与操作步骤，让速度检查能支持具体决策，不再只收藏一张高分截图。",
+      "hero": {
+        "src": "/guides/pagespeed-performance-review/hero-zh-cn.jpg",
+        "alt": "原创屏幕、计算面板和文档图像，表示读取测试报表、比较指标并保存记录。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "同一个网站早上测得绿色，下午又变橙色，是否表示刚做的优化失效？先别急着下结论。PageSpeed Insights 同时呈现一段时间的真实使用数据与一次模拟加载测试，两者的范围和用途不同，不能把所有数字混成一张成绩单。"
+        },
+        {
+          "type": "paragraph",
+          "text": "读报表时可以按照“测的是什么、数据从哪里来、哪个数值异常、如何安排比较”的顺序。这篇着重把测量方法固定下来，让改动前后有可追溯的依据；真正要修改代码或服务器时，再把明确的问题交给负责人。"
+        },
+        {
+          "type": "heading",
+          "text": "先选代表页面，写下测试目的",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "不要只测首页。以小型工作室网站为例，首页、作品列表、单个作品与联系页面可能使用不同页面模板和资源。可以各挑一个代表网址，并注明想确认的是首次看见内容的速度、图片加载，还是某次改版是否增加负担。"
+        },
+        {
+          "type": "paragraph",
+          "text": "到 PageSpeed Insights 输入完整网址并执行分析，完成后确认测到的页面与预期一致。HTTP 到 HTTPS、域名别名或旧路径若发生重定向，也要记下最终页面。测到错误页面、登录页面或网站防护提示时，这次分数不能作为原本内容页的结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在记录中保存网址、测试日期、页面版本与所选手机或桌面视图。手机结果可以提醒你资源受限时的问题，但仍属于工具设置下的结果，不等同于每位台湾读者手机上的实际情况。比较前先确认两份报告的前提相同。"
+        },
+        {
+          "type": "heading",
+          "text": "把真实使用数据与本次测试分开阅读",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "报表的真实使用数据来自 Chrome 用户体验报告 CrUX，采用过去 28 天的观测数据。它能帮助判断读者在现实设备与网络下的体验，但新页面或样本太少时可能没有数据。这种情况应记为无法评估，不是零分，也不是测试失败。"
+        },
+        {
+          "type": "paragraph",
+          "text": "注意显示的是这个网址还是来源网站层级。若单页数据不足，工具可能改用来源网站的汇总数据。作品页若只有全站数据，就应标示其范围，不能在演示文稿里改称“这篇作品的真实速度”。切换设备后也要重新核对数据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下方的诊断则由 Lighthouse 在模拟环境中分析当前页面，适合发现可复现的加载问题。它和历史数据不同步很正常：刚调整的图片可能已反映在本次测试中，过去的使用数据仍涵盖修改前的访问。保留两栏各自的时间范围，才能合理解读。"
+        },
+        {
+          "type": "heading",
+          "text": "看原始指标与分类，别只看圆圈分数",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Lighthouse 会分别提供性能、无障碍、最佳实践与 SEO 等分类。性能分数是多个测量指标经过换算与加权后的结果，不是“所有读者中有多少比例觉得快”。各分类也不能互换；SEO 类别的高分不能证明文章将获得某个搜索排名。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方以 90 分以上标示良好、50 至 89 分为待改进、低于 50 分为较差，但颜色只是阅读入口。展开指标，确认主要内容出现的时间、阻塞情况或布局偏移等数值，才能知道下一步的调查方向。不要为了把 99 变成 100 而破坏必要功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工具版本可能调整权重或检查项目，因此跨版本的总分不一定能直接比较。保存报表中的版本与原始数值，比只留一个分数更有用。旧教程列出的指标名称，也应对照当前报表，不能把已停用的项目当成所有新测试都会提供的内容。"
+        },
+        {
+          "type": "heading",
+          "text": "建立固定条件，让多次结果可以对照",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "网站即使没有修改代码，第三方内容、服务器负载或网络条件仍可能变动。Lighthouse 官方建议重复测量并观察分布。一般编辑检查可以先用同一组条件连续做几次，保存每次结果与中间值；不要删掉较差的记录，只留下最漂亮的一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若用自己电脑的 DevTools 测试，其他标签页、扩展程序与同时运行的任务都可能影响结果。避免在同一台电脑上同时运行多份 Lighthouse，并维持一致的测试环境。无痕窗口可以减少部分干扰，但不能保证排除所有硬件或后台资源差异。"
+        },
+        {
+          "type": "paragraph",
+          "text": "登录状态、Cookie、活动横幅和缓存设置也应固定。为了测试而暂时移除实际会出现的第三方组件时，要把它标示为原因隔离测试，不能拿它冒充正式页面的成效。每份结果都应回答同一个问题，才值得放在前后比较表中。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "选定同一网址与页面模板，保存修改前的版本信息。",
+            "固定设备视图、测试工具与可控制的登录和缓存条件。",
+            "依次执行多次测量，保留全部报告与代表性结果。",
+            "只改一组有共同原因的项目，再以相同条件重新比较。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "把建议转成可执行、可验收的工作",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "点开诊断项目，读出涉及的文件、元素与原因，再记下它影响哪一种体验。作品图片过大和程序运行负担过重需要不同处理；若只把整张报表传给工程师说“全部变绿”，容易把时间花在对当前读者影响很小的项目上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工具列出的预计节省时间是协助判断的线索，不宜把每行直接相加，承诺整个页面一定加快相同秒数。不同项目可能影响同一段加载过程。任务应写清楚预期改进的资源或指标、修改范围、恢复方法与必要功能检查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如工作室作品列表可以先处理发送过大缩略图的问题，修改后核对手机实际加载的版本与画质，再比较相同条件下的指标。若数字没有明显变化，就保留结果并重新检查瓶颈，不必为证明改动有效而更换比较对象。"
+        },
+        {
+          "type": "heading",
+          "text": "遇到数据不符时，选对下一个工具",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "PageSpeed Insights 主要适合可供远程读取的网页。需要登录的页面或本地开发环境，可以根据情况使用 Chrome DevTools 的 Lighthouse；它能沿用浏览器可访问的页面。检查清除存储空间等设置，避免在不知情的情况下改变要测试的状态。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果问题发生在点击、滚动或加载后的变化中，单次页面加载报告可能不足。Chrome 官方建议用 Performance 面板做深入性能诊断；Lighthouse 也有不同模式，但提供的检查并不完全相同。先描述要复现的操作，再选相应的测量方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后保存报表、修改记录和实际功能结果。若真实使用数据尚未反映变更，写明待观察的时间段与范围。完成的速度检查应能交代测了什么、改进了哪个问题，以及仍有哪些限制，而不是只留下没有日期与网址的高分图片。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/pagespeed-performance-review/diagram-1-zh-cn.svg",
+          "alt": "四步依次确认测量页面与条件、分辨数据来源、读出具体指标，再保存可比较的修改前后结果。",
+          "width": 1600,
+          "height": 900,
+          "caption": "一张高分截图无法取代完整、可比较的测量记录。",
+          "description": "四步依次确认测量页面与条件、分辨数据来源、读出具体指标，再保存可比较的修改前后结果。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "报表内容",
+            "适合回答",
+            "不能直接推断"
+          ],
+          "rows": [
+            [
+              "CrUX 真实数据",
+              "过去的使用体验如何",
+              "刚修改后立即全部改善"
+            ],
+            [
+              "单次 Lighthouse",
+              "此条件下有哪些加载问题",
+              "所有读者的实际速度"
+            ],
+            [
+              "性能总分",
+              "工具加权后的概况",
+              "精确的读者满意比例"
+            ],
+            [
+              "诊断项目",
+              "哪些资源值得调查",
+              "每项节省可直接相加"
+            ],
+            [
+              "多次同条件记录",
+              "变化是否持续出现",
+              "跨版本、跨设备都可混合比较"
+            ]
+          ],
+          "caption": "每种数据都有适用的问题，先标明范围再解读。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "留下全部结果",
+          "text": "前后比较要保存网址、版本、设备、工具设置和每次报告。把异常结果删掉，只留最高分，会让后续无法判断是否真的改善。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "从 Core Web Vitals 找出体验瓶颈",
+              "kind": "life",
+              "slug": "core-web-vitals-diagnosis"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "检查图片尺寸与文字说明",
+              "kind": "life",
+              "slug": "image-seo-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排技术 SEO 的检查顺序",
+              "kind": "life",
+              "slug": "technical-seo-checklist"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google PageSpeed Insights 说明",
+          "url": "https://developers.google.com/speed/docs/insights/v5/about",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lighthouse 性能评分原理",
+          "url": "https://developer.chrome.com/docs/lighthouse/performance/performance-scoring",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lighthouse 官方测量波动文档",
+          "url": "https://github.com/GoogleChrome/lighthouse/blob/main/docs/variability.md",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Chrome DevTools Lighthouse 面板",
+          "url": "https://developer.chrome.com/docs/devtools/lighthouse",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lighthouse 入门与报表保存",
           "url": "https://developer.chrome.com/docs/lighthouse/overview",
           "checked_on": "2026-09-14"
         }

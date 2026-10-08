@@ -184,7 +184,9 @@ test("translated locales get their own title, description, chapter titles and ar
   assert.match(metadata.localizations.en.description, /Chapters\n00:00 Intro\n/);
   assert.match(metadata.localizations.en.description, /https:\/\/mokaair\.com\/en\/life\/ai-workflow-cost-quality-latency\?utm_source=youtube/);
   assert.match(metadata.description, /https:\/\/mokaair\.com\/zh-TW\/life\//);
-  assert.deepEqual(metadata.tags, ["AI 模型", "模型選擇", "AI models"]);
+  assert.deepEqual(metadata.tags, ["AI 模型", "模型選擇"], "translated tags stay in their translation file, not in the upload's list");
+  const many = { ...doc, youtube: { ...doc.youtube, tags: Array.from({ length: 14 }, (_, n) => `tag${n}`) } };
+  assert.deepEqual(composeMetadata({ doc: many, timeline }).metadata.tags, many.youtube.tags.slice(0, 10), "video.json's order, cut to ten");
 });
 
 test("a description over YouTube's byte limit is a problem, named by locale", () => {

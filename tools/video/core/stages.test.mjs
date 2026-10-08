@@ -186,3 +186,38 @@ test("captions follow the choice: only zh-TW and the chosen locales are written,
   const gaveUp = dubsForUpload(project, box.workdir, speech, ["en", "ja"]);
   assert.deepEqual([gaveUp.dubs.map((dub) => dub.locale), gaveUp.skipped], [["en"], { ja: "Jev still hears lines wrong after 2 retakes" }]);
 });
+
+test("a translation captioned under the narration's timeline takes its cue changes from the narration's measured ones", () => {
+  const box = sandbox();
+  // One narration line long enough for two cues, said with a long breath after its first sentence.
+  const scriptFile = path.join(box.dir, "video.json");
+  const text = "每次有新模型出來，排行榜就換一次第一名。你真的每次都要跟著換嗎？還是先想清楚自己到底要拿它來做什麼？";
+  writeFileSync(scriptFile, readFileSync(scriptFile, "utf8").replace("每次有新模型出來，排行榜就換一次第一名，你真的每次都要跟著換嗎？", text));
+  const before = loadProject({ slug: box.slug, root: box.root });
+  const translation = translationFor(before.doc, "EN");
+  translation.lines.k7p2.text = "Every time a new model comes out, the leaderboard changes. Do you really switch each time, or first decide what it is for?";
+  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+  writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify(translation));
+  const project = loadProject({ slug: box.slug, root: box.root });
+  let clock = 30;
+  const chars = [...text].map((unit) => {
+    const start = clock;
+    clock += unit === "。" ? 1500 : 170;
+    return { text: unit, start_ms: start, end_ms: clock };
+  });
+  const timeline = { ...estimateTimeline(project.doc), speech_hash: speechHash(project.doc, project.lexicon) };
+  const entry = timeline.lines.find((each) => each.id === "k7p2");
+  Object.assign(entry, { audio_samples: (clock + 100) * 48, timing: { source: "azure", model: "zh-TW-HsiaoChenNeural", chars } });
+  mkdirSync(box.workdir, { recursive: true });
+  atomicWrite(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+  writeLanguages(box.workdir, { locales: { en: { captions: true } } });
+  runCaptions({ slug: box.slug, root: box.root, workdir: box.workdir });
+  const lineStart = frameToMs(entry.start_frame);
+  const changes = (locale) =>
+    parseSrt(readFileSync(path.join(box.workdir, "captions", `${locale}.srt`), "utf8"))
+      .map((cue) => cue.start_ms)
+      .filter((start) => start > lineStart + 30 && start < lineStart + clock);
+  const [zh, en] = [changes("zh-TW"), changes("en")];
+  assert.ok(zh.length >= 1, `the narration line is cut: ${zh}`);
+  assert.ok(en.length >= 1 && en.some((start) => zh.includes(start)), `an English cue changes with the narration: ${en} / ${zh}`);
+});

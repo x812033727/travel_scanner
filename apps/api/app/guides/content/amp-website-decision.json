@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "網站還需要 AMP 嗎：先比較維護成本與讀者體驗",
@@ -48,10 +51,8 @@
               "text": "AMP 使用一套受規範的 HTML 與元件，由其執行環境管理部分資源和版面行為。它可以用來建立內容頁，也可在手機和桌機瀏覽。安裝相關外掛並不表示網站所有功能都自動相容，仍需檢查輸出的"
             },
             {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
+              "type": "text",
+              "text": "標記"
             },
             {
               "type": "text",
@@ -169,6 +170,7 @@
           "width": 1600,
           "height": 900,
           "caption": "依網站證據做決定，並把舊連結與必要功能一起照顧好。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -279,6 +281,1090 @@
         },
         {
           "title": "Google AMP 移除與保留一般版流程",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/amp/remove-amp?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Does Your Website Still Need AMP? Compare Maintenance Costs and Reader Experience First",
+      "description": "Whether to keep AMP depends on reader experience, features and maintenance resources. This article covers Google Search guidance as of the review date and WordPress AMP plugin compatibility cautions: comparing standard responsive pages for new sites and auditing AMP traffic, URLs and features for existing ones. A comparison table, steps and original diagrams cover keeping, improving or retiring AMP, avoiding plugins installed solely for old SEO claims or broken links after deactivation.",
+      "hero": {
+        "src": "/guides/amp-website-decision/hero-en.jpg",
+        "alt": "Original document, screen and shield graphics illustrate checking an AMP site's current state, comparing reader experience and verifying a switch.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Your site's admin panel still has an AMP plugin, but nobody remembers why it was installed. Should you delete it immediately? First check how the site currently serves its content and whether anyone still uses its AMP URLs. Keeping or removing AMP both affect maintenance work; the decision cannot rest solely on whether a technology's name sounds old or new."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a typical new website, start by getting the responsive layout, images and interactive performance right, then assess whether there is a clear reason to adopt AMP. Existing sites should clearly list reader entry points, feature differences and the retirement process, so the decision is supported by data and followed by complete verification."
+        },
+        {
+          "type": "heading",
+          "text": "AMP Is a Page Technology, Not Just a Mobile Speed Button",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "AMP uses a defined set of HTML rules and components, and its runtime manages how some resources and layouts behave. It can create content pages and be viewed on both mobile and desktop. Installing a related plugin does not automatically make every site feature compatible; check the generated "
+            },
+            {
+              "type": "text",
+              "text": "markup"
+            },
+            {
+              "type": "text",
+              "text": " and components."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A site may have one primary version built with AMP, or offer both standard and AMP versions. This affects URLs, content synchronization and how AMP is removed. A path containing amp does not prove a working replacement exists; check the actual pages and their relationship to the primary URL."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, reading articles on a site listing craft events may be straightforward, but registration forms, maps, galleries and membership features each have their own requirements. If its AMP version lacks content readers need to complete registration, a lighter load alone cannot count as a complete improvement. Include all essential actions in the comparison."
+        },
+        {
+          "type": "heading",
+          "text": "Separate Old Search Claims from Current Guidance",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google's official 2021 announcement explained that AMP was no longer required for Top Stories. This policy change has a historical context: requirements in early tutorials should not remain a reason to install AMP on a new site. Nor does eligibility guarantee that any article will appear in that placement."
+        },
+        {
+          "type": "paragraph",
+          "text": "According to Google's AMP guidance reviewed on 2026-9-14, Search still handles AMP using the same standards as other web pages. Structured data must still meet the applicable rules, and special search appearances are not guaranteed. The technical format itself should not be presented as a promise of rankings or traffic."
+        },
+        {
+          "type": "paragraph",
+          "text": "Write down measurable issues when assessing AMP: whether the main content appears promptly, whether readers can complete their actions, and whether maintenance has a clearly assigned owner. Search features, the AMP specification and support for a particular plugin are separate layers. A change in one does not mean every layer has stopped working or is available without restrictions."
+        },
+        {
+          "type": "heading",
+          "text": "First Audit Current URLs, Entry Points and Feature Differences",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "List representative URLs for the standard and AMP versions, noting which is the primary version and how they link to each other. If a plugin generates the pages, also record its name, source, version and mode. AMP tools with identical or similar names are not necessarily the same product; their documentation is not interchangeable."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use the site's existing traffic data and server logs to check whether AMP entry points still receive visits, and examine how users move from articles to their next step. If segmented data is unavailable, mark it as unknown and arrange the necessary monitoring. An administrator rarely seeing AMP does not prove that nobody uses the old URLs."
+        },
+        {
+          "type": "paragraph",
+          "text": "Compare features across informational articles, event details and registration entry points, checking the body content, images, videos, forms, consent prompts and internal links individually. Google's guidance calls for AMP and its corresponding primary page to have content and available actions that match as closely as possible. Verification must go beyond comparing the first screen of each page."
+        },
+        {
+          "type": "heading",
+          "text": "For WordPress, Check Maintenance and Compatibility First",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "During this review, the official AMP plugin page on WordPress.org displayed a warning that it had not been tested with the latest three major WordPress releases. This means compatibility and current support need additional confirmation before adoption. It does not itself establish that a vulnerability exists, nor does it mean the AMP specification has stopped working."
+        },
+        {
+          "type": "paragraph",
+          "text": "The plugin offers modes including Standard, Transitional and Reader, with different arrangements for site versions and themes. Existing sites should first confirm their current mode and features, then check changes on a test copy. A homepage that still opens is no reason to skip article templates or content generated by specific plugins."
+        },
+        {
+          "type": "paragraph",
+          "text": "The official Site Scan documentation provides guidance on checking themes and plugins for AMP compatibility, and recommends rescanning after changing modes, themes or settings that affect the front end. A scan supplies technical clues; people still need to check reader interactions. Even if removing incompatible markup makes a page pass validation, essential features may have been removed too."
+        },
+        {
+          "type": "heading",
+          "text": "Compare the Costs of Keeping AMP, Improving Standard Pages and Removing AMP",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If existing AMP entry points are stable, essential features are complete and someone can maintain them, you can keep AMP for now and establish checks for updates. Set a date to review the decision again. In particular, when adding new forms, tracking or advertising services, confirm that the AMP version can handle them properly too, rather than allowing the two versions to drift apart."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the main problems are oversized images, heavy scripts or an unstable layout on standard pages, these can also be addressed directly on a standard responsive website. Improve and measure representative pages first, then compare maintenance costs. There is no need to add another page output system just to solve a single image problem."
+        },
+        {
+          "type": "paragraph",
+          "text": "If tool compatibility is difficult to maintain, the two versions differ substantially in functionality, or staffing is insufficient, you can plan to retire AMP. Compare redesign work hours, ongoing testing, handling of old links, data monitoring and recovery methods. Do not treat the plugin's price as the entire cost, or use the source website's measured rankings to decide for your own site."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Document the site's current AMP mode, primary URLs and corresponding pages.",
+            "Check actual entry-point data, essential features and tool compatibility, marking anything unknown.",
+            "Use representative pages to compare the work involved in keeping AMP versus improving standard pages, then choose a maintainable approach.",
+            "If retiring AMP, complete replacement pages, URL mappings and a recovery plan first, then verify in batches."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "When Retiring AMP, Keep Old URLs Pointing to the Corresponding Content",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If the site has both AMP and standard versions and will retain the standard version, Google's removal process includes removing the rel=amphtml link from standard pages and redirecting old AMP URLs to their corresponding non-AMP primary pages. For permanent retirement, configure appropriate permanent redirects for the actual site, preserving the content relationship for each page."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not blank out AMP pages or send every old article to the homepage. If AMP was the only primary version, prepare usable standard pages before switching; do not apply the deactivation steps for a site with two versions. When using a CMS or plugin removal method, also check which versions it deletes and whether it handles redirects."
+        },
+        {
+          "type": "paragraph",
+          "text": "After completion, sample old URLs to check their responses, final destinations, body content and images, then verify primary URLs, internal links, Sitemap and cache. Continue monitoring old entry points and error logs, and retain the change date and recovery method. Search engines need time to reprocess the changes; successful deactivation in the admin panel is one step, not verification of the entire retirement process."
+        },
+        {
+          "type": "image",
+          "src": "/guides/amp-website-decision/diagram-1-en.svg",
+          "alt": "Four steps: audit AMP modes and URLs, review entry-point and feature data, compare keeping AMP with alternatives, and verify URLs and pages.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Decide based on evidence from your site, and take care of both old links and essential features.",
+          "description": "Four steps: audit AMP modes and URLs, review entry-point and feature data, compare keeping AMP with alternatives, and verify URLs and pages.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Current Situation",
+            "Option to Consider",
+            "Evidence Needed"
+          ],
+          "rows": [
+            [
+              "New site with no specific AMP requirements",
+              "Build a good standard responsive site first",
+              "Feature and performance verification"
+            ],
+            [
+              "Stable AMP entry points with a maintenance owner",
+              "Keep AMP and review regularly",
+              "Traffic, feature and compatibility records"
+            ],
+            [
+              "Clear performance bottlenecks in the standard version",
+              "Improve the relevant resources first",
+              "Measurements under matching conditions and workload"
+            ],
+            [
+              "Versions are hard to keep in sync, or support is unclear",
+              "Plan consolidation or retirement",
+              "Replacement content and URL mappings"
+            ],
+            [
+              "AMP is the only primary page version",
+              "Complete replacement output first",
+              "Complete pages and a switch plan"
+            ]
+          ],
+          "caption": "This original decision table offers options whose suitability must be judged using evidence from your own site."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Disabling a Plugin Does Not Complete AMP Retirement",
+          "text": "First confirm that the standard version works, then verify old URLs, content and redirects. Sites whose only primary version is AMP need a separate plan for a complete page conversion."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Plan Permanent Redirects and Verify Old Links",
+              "kind": "life",
+              "slug": "redirects-301-302"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Identify Your Site's Actual Performance Bottlenecks",
+              "kind": "life",
+              "slug": "core-web-vitals-diagnosis"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Check Primary URLs and Content Versions",
+              "kind": "life",
+              "slug": "canonical-url-guide"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Search's Current AMP Guidance",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/amp?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google's 2021 Announcement on Top Stories and AMP",
+          "url": "https://developers.google.com/search/blog/2021/04/more-details-page-experience",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AMP HTML Specification",
+          "url": "https://amp.dev/documentation/guides-and-tutorials/learn/spec/amphtml",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Official AMP Plugin on WordPress.org",
+          "url": "https://wordpress.org/plugins/amp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AMP for WordPress Site Scan",
+          "url": "https://amp-wp.org/documentation/getting-started/settings-screen/site-scan/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google's Process for Removing AMP and Keeping Standard Pages",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/amp/remove-amp?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "サイトに AMP はまだ必要？まず保守コストと読者体験を比較",
+      "description": "サイトで AMP を維持するかどうかは、読者体験、必要な機能、保守に使えるリソースで判断します。この記事では、確認日時点の Google 検索ガイドと WordPress AMP プラグインの互換性に関する注意点を整理し、新規サイトで通常のレスポンシブページをどう比較するか、既存サイトで AMP の流入、URL、機能をどう把握するかを説明します。継続、改善、廃止の比較表、作業手順、独自の図解も掲載。古い SEO の説明だけを理由にプラグインを導入したり、無効化後にリンク切れを残したりするのを防ぎます。",
+      "hero": {
+        "src": "/guides/amp-website-decision/hero-ja.jpg",
+        "alt": "書類、画面、盾を用いた独自の図。AMP サイトの現状確認、読者体験の比較、切り替えの検証を表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "サイトの管理画面に AMP プラグインが残っているものの、なぜ導入したのか誰も覚えていない場合、すぐに削除すべきでしょうか。まず、現在サイトがどのようにコンテンツを提供しているか、AMP URL を今も利用している人がいるかを確認してください。維持しても削除しても保守作業に影響するため、技術名の新旧だけで判断してはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般的な新規サイトでは、まずレスポンシブレイアウト、画像、操作時の性能を整え、その後で AMP を採用する明確な理由があるか検討できます。既存サイトでは、読者の流入経路、機能の違い、廃止方法を明確にし、判断の根拠となるデータを確認でき、後続の検証も漏れなく行えるようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "AMP はページ技術であり、単なるスマホ高速化ボタンではない",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "AMP は、規則に従った HTML とコンポーネントを使用し、実行環境が一部のリソースやレイアウトの動作を管理します。コンテンツページの作成に使え、スマホでもパソコンでも閲覧できます。関連プラグインを導入しても、サイトのすべての機能が自動的に対応するわけではなく、出力される"
+            },
+            {
+              "type": "text",
+              "text": "マークアップ"
+            },
+            {
+              "type": "text",
+              "text": "とコンポーネントを確認する必要があります。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "AMP で作られたメイン版だけを提供するサイトもあれば、通常版と AMP 版を併用するサイトもあります。この違いは、URL、コンテンツの同期、廃止方法に影響します。パスに amp があるだけで、代わりに使える通常版が必ずあると判断せず、実際のページとメイン URL の関係を先に確認してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば、手作り関連イベントの情報サイトでは、記事を読むだけなら単純でも、申し込みフォーム、地図、写真アルバム、会員機能にはそれぞれ必要な要件があります。AMP 版に読者が申し込みを完了するために必要な内容が欠けているなら、読み込みが軽いという理由だけで十分な改善とみなすことはできません。必要な操作も含めて比較する必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "古い検索の説明と現在のガイドを分けて考える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google は 2021 年の公式発表で、Top Stories への掲載に AMP は必須ではなくなったと説明しています。これは当時の状況を踏まえた方針変更です。初期の解説にある必須条件を、新規サイトへの導入理由として使い続けてはいけません。また、掲載資格があることを、どの記事も必ずその表示枠に掲載されるという意味に解釈してはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 14 日に確認した Google の AMP ガイドでは、検索は引き続き AMP をほかのウェブページと同じ基準で扱っています。構造化データを使う場合も、対応するルールに従う必要があり、検索で特別な表示が得られる保証もありません。技術形式そのものを、検索順位やアクセス数の保証にしてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "評価では、主要なコンテンツが適時に表示されるか、読者が操作を完了できるか、保守の担当者が明確かなど、測定できる課題を書き出します。検索機能、AMP の仕様、特定のプラグインのサポート状況は、それぞれ異なるレベルの事柄です。一つが変わったからといって、すべてが停止した、あるいはすべてを制限なく利用できるとは判断できません。"
+        },
+        {
+          "type": "heading",
+          "text": "まず現在の URL、流入経路、機能の違いを把握する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "通常版と AMP 版の代表的な URL を一覧にし、どちらがメイン版か、互いにどうリンクしているかを記録します。プラグインでページを生成している場合は、プラグイン名、提供元、バージョン、モードも記録してください。同名または似た名前の AMP ツールが同じ製品とは限らないため、ドキュメントを混同して使ってはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトの既存のアクセスデータとサーバーログから、AMP の入口に今もアクセスがあるか確認し、ユーザーが記事から次のステップへどう進むかを調べます。アクセスの内訳が分からない場合は、まず不明と記録し、必要な観察を計画します。管理者自身が AMP をあまり見かけないからといって、すべての旧 URL がもう使われていないと判断してはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "情報記事、イベント詳細、申し込みの入口を選んで機能を比較し、本文、画像、動画、フォーム、同意を求める表示、サイト内リンクを一つずつ確認します。Google のガイドは、AMP と対応するメインページで、コンテンツと実行可能な操作をできる限り一致させるよう求めています。検証では、両ページの最初の画面だけを比較してはいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "WordPress ではまず保守状況と互換性を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "今回確認した WordPress.org の公式 AMP プラグインページには、直近三つの WordPress メジャーバージョンではテストされていないという注意書きが表示されていました。これは、採用前に互換性とサポートの現状を追加で確認する必要があることを示します。それ自体は脆弱性の存在が確認されたという意味ではなく、AMP の仕様が機能しなくなったとも直接判断できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "このプラグインには Standard、Transitional、Reader などのモードがあり、モードによってサイトの版構成やテーマの使い分けが異なります。既存サイトでは、まず現在のモードと機能を確認し、テスト用のコピーで変更を検証してください。サイトのトップページが開くからといって、記事テンプレートや特定のプラグインが生成するコンテンツの確認を省かないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式の Site Scan ドキュメントでは、テーマやプラグインの AMP 互換性を確認する方法を示し、モード、テーマ、公開画面に影響する設定を変更した後は再スキャンするよう案内しています。スキャンは技術的な手がかりであり、読者の操作は人が確認する必要があります。互換性のないマークアップを削除して検証に通っても、必要な機能まで失われている可能性があります。"
+        },
+        {
+          "type": "heading",
+          "text": "継続、通常版の改善、廃止のコストを比較する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "既存の AMP の入口が安定し、必要な機能が揃い、継続して保守できる担当者がいるなら、まず維持して更新時の検証を整備できます。判断時には次回の見直し日を決めてください。特に、新しいフォーム、トラッキング、広告サービスを追加する際は、AMP 版でも同じように正常に処理できることを確認し、両版が徐々に乖離しないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "主な問題が、通常ページの画像が大きすぎる、スクリプトが重すぎる、レイアウトが安定しないといったものなら、通常のレスポンシブサイトで直接調整することもできます。まず代表的なページを改善して測定し、その後で保守コストを比較してください。一つの画像の問題を解決するために、別のページ出力の仕組みを増やす必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ツールの互換性を維持しにくい、両版の機能差が大きい、対応する人手が足りない場合は、廃止を計画できます。比較項目には、改修にかかる作業時間、継続的なテスト、旧リンクの処理、データの観察、復旧方法が含まれます。プラグインの価格だけを総コストと考えたり、参照元サイトで実測された検索順位をもとに自分のサイトの方針を決めたりしてはいけません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "サイトの現在の AMP モード、メイン URL、対応するページを整理する。",
+            "実際の流入データ、必要な機能、ツールの互換性を確認し、不明な点には印を残す。",
+            "代表的なページで継続と通常版改善の作業量を比較し、保守できる案を選ぶ。",
+            "廃止する場合は、代替ページ、URL の対応表、復旧計画を先に完成させ、その後で段階的に検証する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "廃止後も旧 URL から対応する内容へ到達できるようにする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AMP 版と通常版を併用していて、通常版を残す場合、Google の廃止手順には、通常ページから rel=amphtml リンクを削除し、旧 AMP URL を対応する非 AMP のメインページへ転送することが含まれます。恒久的に廃止する場合は、実際のサイト構成に応じて適切な恒久リダイレクトを設定し、ページごとのコンテンツの対応関係を保ちます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "AMP ページを空白にしたり、すべての旧記事を一律にトップページへ転送したりしないでください。元々唯一のメイン版が AMP なら、利用できる通常ページを先に用意し、その後で切り替えを計画する必要があります。両版を併用するサイトの無効化手順をそのまま適用してはいけません。CMS やプラグインによる削除方法を使う場合も、実際にどの版が削除されるのか、リダイレクトが処理されるのかを確認してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "作業後は旧 URL の応答、最終的な転送先、本文、画像を抜き取り確認し、メイン URL、サイト内リンク、Sitemap、キャッシュも確認します。旧入口へのアクセスとエラーログを継続して観察し、変更日と復旧方法を残してください。検索側での再処理には時間がかかります。管理画面で無効化できたことは一つの手順にすぎず、廃止作業全体の検証が完了したことにはなりません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/amp-website-decision/diagram-1-ja.svg",
+          "alt": "AMP のモードと URL の把握、流入経路と機能データの確認、継続または代替案の比較、URL とページの検証完了までを四つの手順で示す。",
+          "width": 1600,
+          "height": 900,
+          "caption": "サイトの根拠に基づいて判断し、旧リンクと必要な機能も適切に扱いましょう。",
+          "description": "AMP のモードと URL の把握、流入経路と機能データの確認、継続または代替案の比較、URL とページの検証完了までを四つの手順で示す。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "現在の状況",
+            "検討できる方針",
+            "必要な根拠"
+          ],
+          "rows": [
+            [
+              "新規サイトに特定の AMP 要件がない",
+              "まず通常のレスポンシブサイトを整える",
+              "機能と性能の検証"
+            ],
+            [
+              "AMP の入口が安定し、保守担当者がいる",
+              "維持して定期的に見直す",
+              "アクセス、機能、互換性の記録"
+            ],
+            [
+              "通常版に明確な性能上のボトルネックがある",
+              "まず該当するリソースを改善する",
+              "同条件での測定結果と作業量"
+            ],
+            [
+              "両版の同期が難しい、またはサポート状況が不明",
+              "整理または廃止を計画する",
+              "代替コンテンツと URL の対応表"
+            ],
+            [
+              "唯一のメインページが AMP",
+              "代替ページの出力を先に完成させる",
+              "完全なページと切り替え計画"
+            ]
+          ],
+          "caption": "独自に作成した判断表です。適切な方針は、自分のサイトの根拠に基づいて判断してください。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "プラグインの無効化だけで廃止完了と考えない",
+          "text": "まず通常版が利用できることを確認し、その後で旧 URL、コンテンツ、リダイレクトを検証してください。メイン版が AMP だけのサイトでは、ページ全体の切り替えを別途計画する必要があります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "恒久リダイレクトと旧リンクの検証を計画する",
+              "kind": "life",
+              "slug": "redirects-301-302"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイト性能の実際のボトルネックを特定する",
+              "kind": "life",
+              "slug": "core-web-vitals-diagnosis"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "メイン URL とコンテンツの版を照合する",
+              "kind": "life",
+              "slug": "canonical-url-guide"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 検索の現行 AMP ガイド",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/amp?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google の 2021 年の Top Stories と AMP に関する発表",
+          "url": "https://developers.google.com/search/blog/2021/04/more-details-page-experience",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AMP HTML 仕様",
+          "url": "https://amp.dev/documentation/guides-and-tutorials/learn/spec/amphtml",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.org 公式 AMP プラグイン",
+          "url": "https://wordpress.org/plugins/amp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AMP for WordPress Site Scan",
+          "url": "https://amp-wp.org/documentation/getting-started/settings-screen/site-scan/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google の AMP 廃止と通常版維持の手順",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/amp/remove-amp?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "웹사이트에 AMP가 아직 필요한가: 유지관리 비용과 독자 경험부터 비교하기",
+      "description": "웹사이트의 AMP 유지 여부는 독자 경험, 필요한 기능, 유지관리 자원을 기준으로 판단해야 합니다. 이 글은 확인일 기준 Google 검색 가이드와 WordPress AMP 플러그인의 호환성 주의사항을 정리하고, 새 웹사이트에서 일반 반응형 페이지를 비교하는 방법과 기존 웹사이트의 AMP 트래픽, URL, 기능을 점검하는 방법을 설명합니다. 유지, 개선, 종료를 비교하는 표와 실행 단계, 자체 제작 도해를 통해 오래된 SEO 주장만 믿고 플러그인을 설치하거나 비활성화 후 끊어진 링크를 남기는 일을 피하도록 돕습니다.",
+      "hero": {
+        "src": "/guides/amp-website-decision/hero-ko.jpg",
+        "alt": "자체 제작한 문서, 화면, 방패 이미지로 AMP 웹사이트의 현황 확인, 독자 경험 비교, 전환 검증을 표현했습니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "웹사이트 관리자 화면에 AMP 플러그인이 남아 있지만 처음 설치한 이유를 아무도 기억하지 못한다면, 바로 삭제해야 할까요? 먼저 웹사이트가 현재 콘텐츠를 어떻게 제공하는지, AMP URL을 여전히 사용하는 사람이 있는지 확인해야 합니다. 유지와 제거 모두 유지관리 작업에 영향을 주므로 기술 이름이 오래되었는지 여부만으로 결정해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "일반적인 새 웹사이트라면 먼저 반응형 레이아웃, 이미지, 상호작용 성능을 개선한 뒤 AMP를 채택할 명확한 이유가 있는지 평가할 수 있습니다. 기존 웹사이트라면 독자의 유입 경로, 기능 차이, 종료 방법을 명확히 정리해 자료에 근거하여 결정하고 후속 검증도 빠짐없이 진행해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "AMP는 페이지 기술이며, 단순한 모바일 가속 버튼이 아닙니다",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "AMP는 규격에 따른 HTML과 구성 요소를 사용하며, 실행 환경이 일부 리소스와 레이아웃 동작을 관리합니다. 콘텐츠 페이지를 만드는 데 사용할 수 있고 모바일과 데스크톱에서 모두 볼 수 있습니다. 관련 플러그인을 설치했다고 웹사이트의 모든 기능이 자동으로 호환되는 것은 아니므로, 출력된 "
+            },
+            {
+              "type": "text",
+              "text": "마크업"
+            },
+            {
+              "type": "text",
+              "text": "과 구성 요소를 확인해야 합니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "웹사이트에는 AMP로 만든 기본 버전 하나만 있을 수도 있고, 일반 버전과 AMP 버전을 함께 제공할 수도 있습니다. 이 차이는 URL, 콘텐츠 동기화, 제거 방법에 영향을 줍니다. 경로에 amp가 있다고 대체 가능한 정상 버전이 반드시 있다고 판단해서는 안 되며, 실제 페이지와 대표 URL의 관계부터 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 수공예 행사 정보 웹사이트에서는 글을 읽는 과정은 단순할 수 있지만, 신청 양식, 지도, 사진첩, 회원 기능에는 각각 필요한 조건이 있습니다. AMP 버전에 독자가 신청을 완료하는 데 필요한 콘텐츠가 없다면, 페이지가 가볍게 로드된다는 이유만으로 온전한 개선이라고 할 수 없습니다. 필수 작업까지 함께 비교해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "과거의 검색 관련 주장과 현재 가이드를 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google은 2021년 공식 발표에서 Top Stories에 더 이상 AMP 사용이 필수 조건이 아니라고 설명했습니다. 이는 특정 시점을 배경으로 한 정책 변경입니다. 초기 안내 자료의 필수 조건을 새 웹사이트에 AMP를 설치할 이유로 계속 삼아서는 안 되며, 자격이 있다는 것을 어떤 글이든 해당 영역에 반드시 노출된다는 뜻으로 해석해서도 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 14일에 확인한 Google AMP 가이드에 따르면, 검색에서는 여전히 AMP를 다른 웹페이지와 동일한 기준으로 처리합니다. 구조화된 데이터를 사용한다면 해당 규칙을 준수해야 하며, 특별한 검색 표시 형태도 보장되지 않습니다. 기술 형식 자체를 순위나 트래픽에 대한 약속으로 삼아서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "평가할 때는 측정할 수 있는 문제를 적어야 합니다. 주요 콘텐츠가 제때 나타나는지, 독자가 필요한 작업을 완료할 수 있는지, 유지관리 책임자가 명확한지 확인하세요. 검색 기능, AMP 규격, 특정 플러그인의 지원 상태는 서로 다른 차원의 문제입니다. 한 항목이 바뀌었다고 모든 차원의 지원이 중단되었거나 모두 제한 없이 사용할 수 있다고 추론할 수는 없습니다."
+        },
+        {
+          "type": "heading",
+          "text": "현재 URL, 유입 경로, 기능 차이부터 점검하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "일반 버전과 AMP 버전의 대표적인 URL을 나열하고, 어느 쪽이 기본 버전인지와 서로 어떻게 연결되는지 기록하세요. 플러그인으로 페이지를 생성한다면 플러그인 이름, 출처, 버전, 모드도 기록해야 합니다. 이름이 같거나 비슷한 AMP 도구가 반드시 같은 제품인 것은 아니므로 문서를 혼용해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "웹사이트의 기존 트래픽과 서버 기록을 통해 AMP 유입 경로가 여전히 방문되고 있는지 확인하고, 사용자가 글을 읽은 뒤 다음 단계로 어떻게 이동하는지 살펴보세요. 세분화된 자료가 없다면 먼저 알 수 없음으로 표시하고 필요한 관찰을 계획하세요. 관리자가 AMP를 거의 보지 못한다는 이유로 모든 기존 URL을 더 이상 아무도 사용하지 않는다고 추론해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "정보성 글, 행사 상세 페이지, 신청 진입 페이지를 골라 기능을 비교하고 본문, 이미지, 동영상, 양식, 동의 안내, 내부 링크를 항목별로 확인하세요. Google 가이드는 AMP와 이에 대응하는 기본 페이지의 콘텐츠와 수행 가능한 작업을 최대한 일치시키도록 요구합니다. 검증할 때 두 페이지의 첫 화면만 비교해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "WordPress는 유지관리와 호환성부터 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "이번에 WordPress.org의 공식 AMP 플러그인 페이지를 확인했을 때, 최근 세 개의 WordPress 주요 버전에 대해 테스트하지 않았다는 안내가 표시되었습니다. 이는 선택하기 전에 현재 호환성과 지원 상태를 추가로 확인해야 한다는 뜻입니다. 이 안내 자체가 취약점이 확인되었다는 의미는 아니며, AMP 규격이 작동을 중단했다고 바로 추론할 수도 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 플러그인은 Standard, Transitional, Reader 등의 모드를 제공하며, 모드에 따라 웹사이트 버전과 테마 구성이 달라집니다. 기존 웹사이트는 현재 모드와 기능부터 확인한 뒤 테스트용 복사본에서 변경 사항을 점검해야 합니다. 홈페이지가 여전히 열린다는 이유로 글 템플릿이나 특정 플러그인이 생성하는 콘텐츠를 확인하지 않고 넘어가서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 Site Scan 문서는 테마와 플러그인의 AMP 호환성을 점검하는 방법을 안내하며, 모드나 테마 또는 사용자 화면에 영향을 주는 설정을 변경한 뒤에는 다시 스캔하도록 권고합니다. 스캔은 기술적인 단서이므로 독자가 수행하는 작업은 사람이 직접 확인해야 합니다. 호환되지 않는 마크업을 제거해 검증을 통과하더라도 필요한 기능이 함께 사라졌을 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "유지, 일반 버전 개선, 제거의 비용 비교하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "기존 AMP 유입 경로가 안정적이고 필수 기능이 모두 갖춰져 있으며 지속적으로 관리할 사람이 있다면, 우선 유지하면서 업데이트 검증 절차를 마련할 수 있습니다. 결정할 때는 다음 재점검 날짜도 정해야 합니다. 특히 웹사이트에 새 양식, 추적 기능, 광고 서비스를 추가할 때는 AMP 버전도 정상적으로 처리하는지 확인해 두 버전이 점점 달라지지 않도록 해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "주요 문제가 일반 페이지의 지나치게 큰 이미지, 무거운 스크립트, 불안정한 레이아웃이라면 일반 반응형 웹사이트에서도 직접 개선할 수 있습니다. 먼저 대표적인 페이지를 개선하고 측정한 뒤 유지관리 비용을 비교하세요. 이미지 문제 하나를 해결하려고 별도의 페이지 생성 체계를 추가할 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "도구의 호환성을 유지하기 어렵거나 두 버전의 기능 차이가 크거나 처리할 인력이 부족하다면 종료를 계획할 수 있습니다. 비교 항목에는 개편에 필요한 작업 시간, 지속적인 테스트, 기존 링크 처리, 데이터 관찰, 복구 방법이 포함됩니다. 플러그인 가격만 전체 비용으로 생각해서는 안 되며, 출처 웹사이트의 실측 순위로 자신의 웹사이트에 대한 결정을 내려서도 안 됩니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "웹사이트의 현재 AMP 모드, 대표 URL, 대응 페이지를 정리하세요.",
+            "실제 유입 경로 데이터, 필수 기능, 도구 호환성을 확인하고 알 수 없는 부분은 표시해 두세요.",
+            "대표적인 페이지로 AMP 유지와 일반 버전 개선의 작업량을 비교해 관리 가능한 방안을 선택하세요.",
+            "종료한다면 먼저 대체 페이지, URL 대응표, 복구 계획을 완성한 뒤 순차적으로 검증하세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "종료 후에도 기존 URL에서 대응 콘텐츠에 도달하도록 하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AMP와 일반 버전을 함께 제공하면서 일반 버전을 유지하려는 경우, Google의 제거 절차에는 일반 페이지의 rel=amphtml 링크를 제거하고 기존 AMP URL을 대응하는 비 AMP 기본 페이지로 리디렉션하는 작업이 포함됩니다. 영구적으로 종료한다면 실제 웹사이트 설정에 맞게 적절한 영구 리디렉션을 적용해 페이지별 콘텐츠 대응 관계를 유지할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "AMP 페이지를 빈 화면으로 만들거나 모든 기존 글을 일괄적으로 홈페이지로 보내서는 안 됩니다. 유일한 기본 버전이 AMP였다면 먼저 사용 가능한 일반 페이지를 준비한 뒤 전환을 계획해야 하며, 두 버전을 제공하는 웹사이트의 비활성화 절차를 그대로 적용해서는 안 됩니다. CMS나 플러그인의 제거 기능을 사용할 때도 정확히 어떤 버전을 삭제하는지, 리디렉션까지 처리하는지 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "완료 후에는 기존 URL의 응답, 최종 목적지, 본문, 이미지를 표본 점검하고 대표 URL, 내부 링크, Sitemap, 캐시를 확인하세요. 기존 유입 경로와 오류 기록을 계속 관찰하고 수정 날짜와 복구 방법을 남겨 두세요. 검색 시스템이 다시 처리하는 데는 시간이 필요합니다. 관리자 화면에서 비활성화에 성공한 것은 한 단계일 뿐, 종료 작업 전체의 검증이 끝났다는 뜻은 아닙니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/amp-website-decision/diagram-1-ko.svg",
+          "alt": "AMP 모드와 URL 점검, 유입 경로와 기능 데이터 확인, 유지 또는 대체 방안 비교, URL과 페이지 검증 완료를 네 단계로 제시합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "웹사이트의 근거 자료에 따라 결정하고 기존 링크와 필수 기능도 함께 관리하세요.",
+          "description": "AMP 모드와 URL 점검, 유입 경로와 기능 데이터 확인, 유지 또는 대체 방안 비교, URL과 페이지 검증 완료를 네 단계로 제시합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "현재 상황",
+            "고려할 방향",
+            "필요한 근거"
+          ],
+          "rows": [
+            [
+              "새 웹사이트에 특별한 AMP 요구가 없음",
+              "일반 반응형 웹사이트부터 제대로 구축",
+              "기능 및 성능 검증"
+            ],
+            [
+              "AMP 유입 경로가 안정적이고 관리자가 있음",
+              "유지하며 정기적으로 재점검",
+              "트래픽, 기능, 호환성 기록"
+            ],
+            [
+              "일반 버전에 뚜렷한 성능 병목이 있음",
+              "해당 리소스부터 개선",
+              "동일 조건의 측정 결과와 작업량"
+            ],
+            [
+              "두 버전의 동기화가 어렵거나 지원이 불명확함",
+              "정리 또는 종료 계획",
+              "대체 콘텐츠와 URL 대응표"
+            ],
+            [
+              "유일한 기본 페이지가 AMP임",
+              "대체 페이지 출력부터 완성",
+              "완전한 페이지와 전환 계획"
+            ]
+          ],
+          "caption": "자체 제작한 의사결정 표입니다. 어떤 방향이 적합한지는 자신의 웹사이트 근거 자료에 따라 판단해야 합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "플러그인 비활성화를 종료 완료로 생각하지 마세요",
+          "text": "먼저 일반 버전을 사용할 수 있는지 확인한 뒤 기존 URL, 콘텐츠, 리디렉션을 검증하세요. 기본 버전이 AMP뿐인 웹사이트는 전체 페이지 전환을 별도로 계획해야 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "영구 리디렉션과 기존 링크 검증 계획하기",
+              "kind": "life",
+              "slug": "redirects-301-302"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 성능의 실제 병목 파악하기",
+              "kind": "life",
+              "slug": "core-web-vitals-diagnosis"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "대표 URL과 콘텐츠 버전 확인하기",
+              "kind": "life",
+              "slug": "canonical-url-guide"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 검색의 현행 AMP 가이드",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/amp?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google의 2021년 Top Stories 및 AMP 발표",
+          "url": "https://developers.google.com/search/blog/2021/04/more-details-page-experience",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AMP HTML 명세",
+          "url": "https://amp.dev/documentation/guides-and-tutorials/learn/spec/amphtml",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.org 공식 AMP 플러그인",
+          "url": "https://wordpress.org/plugins/amp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AMP for WordPress의 Site Scan",
+          "url": "https://amp-wp.org/documentation/getting-started/settings-screen/site-scan/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google의 AMP 제거 및 일반 버전 유지 절차",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/amp/remove-amp?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "网站还需要 AMP 吗：先比较维护成本与读者体验",
+      "description": "网站是否保留 AMP，应看读者体验、功能需求与维护资源。本文整理查证日的 Google 搜索指南与 WordPress AMP 插件兼容性提醒，说明新网站如何比较普通响应式页面，现有网站如何盘点 AMP 流量、网址与功能。附保留、改善及退场的比较表、操作步骤和原创图解，避免只为旧 SEO 说法安装插件，或停用后留下失效链接。",
+      "hero": {
+        "src": "/guides/amp-website-decision/hero-zh-cn.jpg",
+        "alt": "原创文档、屏幕与盾牌图像，呈现确认 AMP 网站现状、比较读者体验与验证切换。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "网站后台还有 AMP 插件，却没有人记得当初为什么安装，是否该立刻删掉？先确认网站目前如何提供内容，以及是否仍有人使用 AMP 网址。保留与移除都会影响维护工作，不能只凭技术名称的新旧决定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对于一般新网站，可以先把响应式布局、图片与交互性能做好，再评估是否有明确理由采用 AMP。现有网站则应把读者入口、功能差异和退场方式列清楚，让决策有数据可查，也有完整的后续验收。"
+        },
+        {
+          "type": "heading",
+          "text": "AMP 是页面技术，不只是手机加速按钮",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "AMP 使用一套受规范约束的 HTML 与组件，由其运行环境管理部分资源和布局行为。它可以用来建立内容页，也可在手机和电脑上浏览。安装相关插件并不表示网站所有功能都自动兼容，仍需检查输出的"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "与组件。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "网站可能只有一个以 AMP 制作的主要版本，也可能同时提供普通版和 AMP 版。这个差别会影响网址、内容同步与移除方式。不要一看到路径带 amp 就认定一定有可替代的正常版本，应先核对实际页面与主要网址的关系。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如一个手工活动信息站，文章阅读可能简单，但报名表、地图、相册和会员功能各有需求。AMP 版本若缺少读者完成报名所需的内容，就不能只因加载负担较轻而称为完整改善；必须把必要操作一起纳入比较。"
+        },
+        {
+          "type": "heading",
+          "text": "把旧搜索说法与当前指南分开",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 在 2021 年的官方公告中，已说明 Top Stories 不再要求一定使用 AMP。这是有时间背景的政策变更，不能把早期教程中的必要条件继续当作新网站的安装理由，也不能把资格解读成任何文章都保证进入该展示位。"
+        },
+        {
+          "type": "paragraph",
+          "text": "截至 2026 年 9 月 14 日查阅的 Google AMP 指南，搜索仍以与其他网页相同的标准处理 AMP。若使用结构化数据，仍需符合相应规则，也没有保证显示特殊搜索外观。技术格式本身不应成为排名或流量的承诺。"
+        },
+        {
+          "type": "paragraph",
+          "text": "评估时把可测量的问题写出来：主要内容是否及时出现、读者能否完成操作，以及维护是否有明确负责人。搜索功能、AMP 规范和特定插件的支持状态是不同层次；其中一项改变，不代表可以推断所有层次都已停止或都可无限制使用。"
+        },
+        {
+          "type": "heading",
+          "text": "先盘点当前网址、入口与功能差异",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "列出普通版和 AMP 版的代表网址，记下哪一个是主要版本，以及它们如何互相链接。若网站通过插件生成页面，也记下插件名称、来源、版本与模式。同名或名称相近的 AMP 工具不一定是同一产品，文档不能混用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "从网站现有流量与服务器记录确认 AMP 入口是否仍被访问，并查看用户如何从文章前往下一步。没有细分数据时，先标为未知，再安排必要观察。不能因为管理者自己很少看到 AMP，就推断所有旧网址已经没有人使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "挑选信息文章、活动详情和报名入口做功能对照，逐项确认正文、图片、视频、表单、同意提示与站内链接。Google 指南要求 AMP 与对应主要页面的内容和可执行操作尽量一致，验收不能只比较两份页面的首屏。"
+        },
+        {
+          "type": "heading",
+          "text": "WordPress 先核对维护与兼容性",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "本次查阅 WordPress.org 的官方 AMP 插件页面，页面显示未针对最近三个主要 WordPress 版本测试的提醒。这代表选用前需要额外确认兼容性与支持现状；它本身不等于已证实存在漏洞，也不能直接推断 AMP 规范停止运作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "该插件提供 Standard、Transitional 和 Reader 等模式，不同模式涉及不同网站版本与主题安排。现有网站应先确认当前模式与功能，再在测试副本中检查变更。不要因为看到网站首页仍可打开，就略过文章模板或特定插件生成的内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方 Site Scan 文档提供检查主题与插件 AMP 兼容性的方向，并提醒更换模式、主题或影响前台的设置后要重新扫描。扫描是技术线索，仍要由人检查读者操作；即使移除不兼容标记后通过验证，也可能同时缺失必要功能。"
+        },
+        {
+          "type": "heading",
+          "text": "比较保留、改善普通版与移除的成本",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "若现有 AMP 入口稳定、必要功能完整，且有人能持续维护，可以先保留并建立更新验收流程。决策应有下次复查日期，尤其网站加入新的表单、跟踪或广告服务时，要确认 AMP 版本同样能正常处理，而不是让两版逐渐分离。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若主要问题是普通页面图片过大、脚本过重或布局不稳定，这些问题也能直接在普通响应式网站上调整。先以代表页面做改善与测量，再比较维护成本，不必为解决单一图片问题就增加另一套页面输出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若工具兼容性难以维持、两版功能差异大，或没有足够人力处理，可以规划退场。比较项目包括改版工时、持续测试、旧链接处理、数据观察与恢复方式。不要只把插件价格当作全部成本，也不要用来源网站的实测排名替自己的网站做决定。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "整理网站当前的 AMP 模式、主要网址与对应页面。",
+            "确认实际入口数据、必要功能及工具兼容性，未知处留下标记。",
+            "以代表页面比较保留与改善普通版的工作量，选定可维护方案。",
+            "若退场，先完成替代页面、网址对照与恢复方案，再分批验收。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "退场时让旧网址仍能抵达对应内容",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "若同时有 AMP 与普通版，而且要保留普通版，Google 的移除流程包括移除普通页面上的 rel=amphtml 链接，并让旧 AMP 网址重定向到对应的非 AMP 主要页面。永久退场可根据实际网站设置适当的永久重定向，逐页保留内容对应关系。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要把 AMP 页面清成空白，也不要把所有旧文章一律导向首页。若原本唯一的主要版本就是 AMP，应先准备可用的普通页面，再安排转换，不能套用双版本网站的停用步骤。使用 CMS 或插件的移除方式时，也要确认它到底删除哪些版本、是否处理重定向。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成后抽查旧网址的响应、最终目的地、正文与图片，并核对主要网址、站内链接、Sitemap 和缓存。持续观察旧入口及错误记录，保留修改日期与恢复方法。搜索端重新处理需要时间；后台停用成功，只是其中一步，不是整个退场工作已通过验收。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/amp-website-decision/diagram-1-zh-cn.svg",
+          "alt": "四步列出盘点 AMP 模式和网址、查阅入口与功能数据、比较保留或替代方案，以及完成网址和页面验收。",
+          "width": 1600,
+          "height": 900,
+          "caption": "根据网站证据做决定，并把旧链接与必要功能一起照顾好。",
+          "description": "四步列出盘点 AMP 模式和网址、查阅入口与功能数据、比较保留或替代方案，以及完成网址和页面验收。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "当前情况",
+            "可考虑方向",
+            "需要的依据"
+          ],
+          "rows": [
+            [
+              "新站没有特定 AMP 需求",
+              "先做好普通响应式网站",
+              "功能与性能验收"
+            ],
+            [
+              "AMP 入口稳定且有人维护",
+              "保留并定期复查",
+              "流量、功能及兼容记录"
+            ],
+            [
+              "普通版有明确性能瓶颈",
+              "先改善对应资源",
+              "相同条件下的测量与工作量"
+            ],
+            [
+              "两版难同步或支持不明",
+              "规划整理或退场",
+              "替代内容与网址对照"
+            ],
+            [
+              "唯一主要页面是 AMP",
+              "先完成替代输出",
+              "完整页面与切换方案"
+            ]
+          ],
+          "caption": "这是原创决策表，适用方向需根据自己网站的证据判断。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "别把停用插件当成退场完成",
+          "text": "先确认普通版可用，再验证旧网址、内容和重定向。主要版本只有 AMP 的网站，需要另行规划完整页面转换。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排永久重定向与旧链接验收",
+              "kind": "life",
+              "slug": "redirects-301-302"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "辨认网站性能的实际瓶颈",
+              "kind": "life",
+              "slug": "core-web-vitals-diagnosis"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "核对主要网址与内容版本",
+              "kind": "life",
+              "slug": "canonical-url-guide"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 搜索当前的 AMP 指南",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/amp?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 2021 年 Top Stories 与 AMP 公告",
+          "url": "https://developers.google.com/search/blog/2021/04/more-details-page-experience",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AMP HTML 规范",
+          "url": "https://amp.dev/documentation/guides-and-tutorials/learn/spec/amphtml",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.org 官方 AMP 插件",
+          "url": "https://wordpress.org/plugins/amp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AMP for WordPress Site Scan",
+          "url": "https://amp-wp.org/documentation/getting-started/settings-screen/site-scan/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google AMP 移除与保留普通版流程",
           "url": "https://developers.google.com/search/docs/crawling-indexing/amp/remove-amp?hl=zh-tw",
           "checked_on": "2026-09-14"
         }

@@ -359,7 +359,8 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
         return json(review);
       }
       if (!projects.has(slug)) return json({ code: "video_project_not_found", detail: "no" }, 404);
-      return json({ slug, title: slug, stage: "x", checklist: [], youtube_video_id: listed.get(slug)?.youtube_video_id ?? null, reviews: reviewsOf(slug) });
+      // As the tool's GET answers (ProjectOut): the owner's language choice too, which review-push binds a batch to.
+      return json({ slug, title: slug, stage: "x", checklist: [], youtube_video_id: listed.get(slug)?.youtube_video_id ?? null, locales: listed.get(slug)?.locales ?? {}, locales_decided_at: listed.get(slug)?.locales_decided_at ?? null, reviews: reviewsOf(slug) });
     }
     return json({ code: "not_found", detail: pathname }, 404);
   };
@@ -925,6 +926,318 @@ test("a writer whose answer is lost after it was sent is not asked again on its 
   Object.assign(site.listed.get(slug), { retry_request_id: "2b06f60f-1026-477a-9d40-28683b00a22e", retry_acknowledged_id: null });
   assert.match(await automation.step(), /script drafted and passes lint/);
   assert.equal(writers(), 2, "the owner's retry asks once more");
+});
+
+/** The site runs the requests that match (the planner, say), and their answers never reach the worker. */
+function losing(site, lost) {
+  const state = { lose: true };
+  state.fetchImpl = async (url, init = {}) => {
+    const answer = await site.fetchImpl(url, init);
+    const { pathname } = new URL(url);
+    return state.lose && pathname === "/api/video/automation/run" && lost(JSON.parse(init.body)) ? lostAnswer() : answer;
+  };
+  return state;
+}
+
+/** The owner presses 重試這支影片 on /admin/videos. */
+const ownerRetries = (site, slug) => Object.assign(site.listed.get(slug), { retry_request_id: "2b06f60f-1026-477a-9d40-28683b00a22e", retry_acknowledged_id: null });
+
+test("a scheduled draft whose planner answer is lost leaves a blocked video under the draft's slug instead of being bought again every round, and the owner's retry plans it once under that slug", async () => {
+  const box = sandbox();
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off") });
+  const net = losing(site, (body) => body.stage === "planner");
+  const clock = { now: Date.parse("2026-10-07T09:00:00Z") };
+  const { ctx, out } = context(box, net.fetchImpl, clock);
+  const planners = () => site.calls.run.filter((call) => call.stage === "planner");
+  const slug = "draft-202610070900";
+  const state = () => automatedVideos(box.work).find((each) => each.slug === slug);
+
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.match(out.stdout, /draft-202610070900: blocked — planner may have run on the server without its answer reaching the worker \(HTTP 504: no answer within the deadline\); it is not asked again until the owner retries/);
+  assert.equal(planners().length, 1, "sent once: the client does not send it again");
+  assert.deepEqual([state().status, state().blocked_kind, state().unplanned, state().title, state().format], ["blocked", "uncertain:planner", "draft", "排程草稿 2026-10-07 09:00 UTC", "slides"]);
+  assert.match(site.calls.reports.at(-1).checklist[0].label, /^卡住，需要人處理：planner may have run on the server without its answer reaching the worker/);
+  assert.equal(site.calls.reports.at(-1).slug, slug, "the owner sees it on /admin/videos");
+  assert.equal(readJson(path.join(box.work, "auto-state.json")).last_draft_at, "2026-10-07T09:00:00.000Z", "the interval is spent, so the next scheduled draft is a new call after it");
+
+  // Until 2026-10-07 every round asked the planner again under a new minute's slug, each counted as one of the month's drafts.
+  clock.now += 10 * 60_000;
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.equal(planners().length, 1, "nor does the next round");
+
+  net.lose = false;
+  ownerRetries(site, slug);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  assert.match(await automation.step(), /^draft-202610070900: planned after the owner's retry; outline sent to \/admin\/videos for the owner/);
+  const replan = planners()[1];
+  assert.deepEqual([planners().length, replan.slug, replan.variant ?? null], [2, slug, null], "once, under the draft's own slug: the server counts it as the same draft");
+  assert.deepEqual(replan.payload.topics.map((topic) => topic.slug), ["chatgpt-ads-status"], "planned from the topics as a draft is");
+  assert.ok(existsSync(path.join(box.root, "docs", "videos", slug, "brief.md")));
+  assert.deepEqual([state().status, state().unplanned, state().title, state().source_guide], ["active", undefined, "ChatGPT 廣告怎麼關", "chatgpt-ads-status"]);
+  assert.deepEqual(site.reviewsOf(slug).map((review) => review.gate), ["outline"]);
+});
+
+test("a planner request that is settled, not lost, is asked again next round as before: no blocked video, and the interval is not spent", async (t) => {
+  for (const [name, answer] of [
+    ["the API's own failure", () => Response.json({ code: "video_ai_upstream_failed", detail: "the provider failed" }, { status: 502 })],
+    ["the limiter away", () => Response.json({ code: "rate_limit_unavailable", detail: "限流服務暫時無法使用" }, { status: 503 })],
+    ["never sent", () => Promise.reject(Object.assign(new TypeError("fetch failed"), { cause: { code: "ECONNREFUSED" } }))],
+  ]) await t.test(name, async () => {
+    const box = sandbox();
+    const site = fakeSite({ answers: answersFor("chatgpt-ads-off") });
+    const fetchImpl = async (url, init = {}) => (new URL(url).pathname === "/api/video/automation/run" ? answer() : site.fetchImpl(url, init));
+    const { ctx } = context(box, fetchImpl, { now: Date.parse("2026-10-07T09:00:00Z") });
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+    await assert.rejects(automation.step());
+    assert.deepEqual(automatedVideos(box.work), []);
+    assert.equal(existsSync(path.join(box.work, "auto-state.json")), false);
+  });
+});
+
+test("an owner's slides request whose first plan is lost is claimed and blocked under the run's slug and not planned again; a claim that failed after the loss goes through next round without asking again; the owner's retry plans it once from the article", async () => {
+  const box = sandbox();
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off"), slidesRequests: [SLIDES_REQUEST] });
+  const net = losing(site, (body) => body.stage === "planner");
+  let claimDown = true;
+  const fetchImpl = async (url, init = {}) => (claimDown && /\/slides-requests\/[^/]+\/start$/.test(new URL(url).pathname) ? Response.json({ code: "upstream_unavailable", detail: "the API is restarting" }, { status: 502 }) : net.fetchImpl(url, init));
+  const clock = { now: Date.parse("2026-10-05T09:00:00Z") };
+  const { ctx } = context(box, fetchImpl, clock);
+  const lane = () => {
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+    return automation;
+  };
+  const planners = () => site.calls.run.filter((call) => call.stage === "planner");
+  const slug = "slides-0b5e4c2a";
+  const global = () => readJson(path.join(box.work, "auto-state.json"));
+
+  // The plan's answer is lost, and the claim fails after it: the round ends with the claim's error.
+  await assert.rejects(lane().step(), { status: 502 });
+  assert.equal(planners().length, 1);
+  assert.deepEqual(global().lost_plans, { [slug]: { at: "2026-10-05T09:00:00.000Z", why: "HTTP 504: no answer within the deadline" } }, "kept with the interval's draft time");
+  assert.ok(global().last_draft_at);
+  assert.equal(site.slidesRequests[0].status, "queued");
+
+  // The site offers the same request again: it is claimed and held, and the planner is not asked again.
+  claimDown = false;
+  assert.match(await lane().step(), /^slides-0b5e4c2a: blocked — planner may have run on the server without its answer reaching the worker \(HTTP 504: no answer within the deadline\); it is not asked again until the owner retries$/);
+  assert.equal(planners().length, 1);
+  assert.deepEqual(site.calls.slides, [{ id: SLIDES_REQUEST.id, action: "start", slug }]);
+  assert.equal(global().lost_plans, undefined, "spent once the blocked video holds the request");
+  const state = () => automatedVideos(box.work).find((each) => each.slug === slug);
+  assert.deepEqual([state().status, state().blocked_kind, state().unplanned, state().slides_request.id, state().title], ["blocked", "uncertain:planner", "slides", SLIDES_REQUEST.id, SLIDES_REQUEST.title]);
+  assert.equal(await lane().step(), null, "a blocked request is not planned again, and no draft is due");
+  assert.equal(planners().length, 1);
+
+  // The owner's retry plans it once, from the owner's article alone, under the claimed slug.
+  net.lose = false;
+  ownerRetries(site, slug);
+  assert.match(await lane().step(), /^slides-0b5e4c2a: planned after the owner's retry; outline sent to \/admin\/videos for the owner/);
+  const replan = planners()[1];
+  assert.deepEqual([planners().length, replan.slug, replan.variant ?? null], [2, slug, null]);
+  assert.deepEqual(replan.payload.requested_guide, { slug: "chatgpt-ads-status", title: SLIDES_REQUEST.title, url: REQUESTED_URL, note: SLIDES_REQUEST.note });
+  assert.deepEqual(replan.payload.sources.map((page) => [page.url, page.ok]), [[REQUESTED_URL, true]]);
+  assert.equal(site.calls.topics, 0, "no topics for an article the owner chose");
+  assert.deepEqual(site.calls.slides.map((call) => call.action), ["start"], "claimed once");
+  assert.deepEqual([state().status, state().unplanned, state().source_guide], ["active", undefined, "chatgpt-ads-status"]);
+  assert.ok(existsSync(path.join(box.root, "docs", "videos", slug, "brief.md")));
+});
+
+test("a request withdrawn on the page after its first plan was lost keeps nothing, and the kept loss goes with it", async () => {
+  const box = sandbox();
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off"), slidesRequests: [SLIDES_REQUEST] });
+  const net = losing(site, (body) => {
+    if (body.stage === "planner") site.slidesRequests[0].status = "cancelled";
+    return body.stage === "planner";
+  });
+  const { ctx } = context(box, net.fetchImpl, { now: Date.parse("2026-10-05T09:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  assert.match(await automation.step(), /^slides: the owner's request for chatgpt-ads-status could not be claimed \(the request is cancelled\); nothing was kept$/);
+  assert.deepEqual(automatedVideos(box.work), []);
+  assert.equal(readJson(path.join(box.work, "auto-state.json")).lost_plans, undefined);
+});
+
+test("a requested video whose planner gave nothing usable twice is planned again by the owner's retry, under its claimed slug", async () => {
+  const box = sandbox();
+  let usable = false;
+  const plain = answersFor("chatgpt-ads-off");
+  const site = fakeSite({ answers: { ...plain, planner: (body) => (usable ? plain.planner(body) : { note: "no brief" }) }, slidesRequests: [SLIDES_REQUEST] });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-05T09:00:00Z") });
+  const lane = () => {
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+    return automation;
+  };
+  assert.match(await lane().step(), /^slides-0b5e4c2a: blocked — the planner could not write a usable brief for the owner's article/);
+  assert.equal(automatedVideos(box.work)[0].unplanned, "slides");
+  // Until 2026-10-07 the retry met "brief.md is gone", and the owner had to drop it and ask again.
+  usable = true;
+  ownerRetries(site, "slides-0b5e4c2a");
+  assert.match(await lane().step(), /^slides-0b5e4c2a: planned after the owner's retry; outline sent to \/admin\/videos for the owner/);
+  assert.equal(site.calls.run.filter((call) => call.stage === "planner").length, 3);
+  assert.deepEqual(site.calls.slides.map((call) => call.action), ["start"]);
+
+  // A planned video whose brief went missing is not planned again on a retry: a person looks.
+  const lost = automatedVideos(box.work)[0];
+  rmSync(path.join(box.root, "docs", "videos", lost.slug, "brief.md"));
+  const automation = lane();
+  assert.match(await automation.advance(lost), /blocked — brief\.md is gone/);
+  assert.equal(site.calls.run.filter((call) => call.stage === "planner").length, 3);
+});
+
+test("an unplanned video is planned by the first lane only, the one that also drafts, so two lanes never pick the same article at once", async () => {
+  const box = sandbox();
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off") });
+  const net = losing(site, (body) => body.stage === "planner");
+  const clock = { now: Date.parse("2026-10-07T09:00:00Z") };
+  const { ctx } = context(box, net.fetchImpl, clock);
+  const busy = new Set();
+  const lane = (secondary) => {
+    const automation = new Automation(ctx, automationClient(ctx), site.settings, { busy, secondary });
+    automation.refs = smallRefs;
+    return automation;
+  };
+  assert.match(await lane(false).step(), /^draft-202610070900: blocked — planner may have run/);
+  // As the owner's retry leaves it once acknowledged, with its planner not asked yet (a wait of
+  // the first lane's, say).
+  const { blocked, blocked_kind, blocked_report_pending, blocked_from_status, ...rest } = automatedVideos(box.work)[0];
+  atomicWrite(path.join(box.work, rest.slug, "auto.json"), `${JSON.stringify({ ...rest, status: "active" }, null, 2)}\n`);
+  net.lose = false;
+  assert.equal(await lane(true).step(), null, "a second lane leaves it");
+  assert.equal(site.calls.run.filter((call) => call.stage === "planner").length, 1);
+  assert.match(await lane(false).step(), /^draft-202610070900: planned after the owner's retry/);
+});
+
+test("an owner's drama request whose first plan is lost is claimed and blocked, the next request is planned as its own call, and the owner's retry plans the first once with its premise", async () => {
+  const box = sandbox();
+  const first = { id: "8b2e3d4c-5b6a-4f7e-9b8c-0d1e2f3a4b5c", premise: "為什麼雷聲總比閃電晚到？", title: "雷聲", source_guide: null, style_preset: "flat-explainer", target_minutes: 8, note: "用數秒數講" };
+  const second = { ...first, id: "9c3f4e5d-6c7b-4a8f-8c9d-1e2f3a4b5c6d", premise: "為什麼天空是藍的？", title: null, note: null };
+  const dramaBrief = `${explainerBrief()}\n### 選項 B：從賽跑講起\n一行說明：光聲賽跑。\n開場鉤子：「誰先到？」\n`;
+  const site = fakeSite({ answers: { planner: (body) => ({ slug: body.payload.premise.includes("天空") ? "why-the-sky-is-blue" : "why-thunder-is-late", title: body.payload.premise, source_guide: null, source_urls: [], brief: dramaBrief }) }, settings: { drama: DRAMA_SETTINGS }, dramaRequests: [first, second] });
+  const net = losing(site, (body) => body.stage === "planner" && body.payload.premise === first.premise);
+  // The claim fails after the plan was lost (the API restarting), then goes through next round.
+  let claimDown = true;
+  const fetchImpl = async (url, init = {}) => (claimDown && /\/drama-requests\/[^/]+\/start$/.test(new URL(url).pathname) ? Response.json({ code: "upstream_unavailable", detail: "the API is restarting" }, { status: 502 }) : net.fetchImpl(url, init));
+  const { ctx } = context(box, fetchImpl, { now: Date.parse("2026-10-05T09:00:00Z") });
+  const lane = () => {
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+    return automation;
+  };
+  const planners = () => site.calls.run.filter((call) => call.stage === "planner");
+  const global = () => readJson(path.join(box.work, "auto-state.json"));
+
+  await assert.rejects(lane().step(), { status: 502 });
+  assert.deepEqual(global().lost_plans, { "drama-8b2e3d4c": { at: "2026-10-05T09:00:00.000Z", why: "HTTP 504: no answer within the deadline" } });
+  assert.equal(global().last_draft_at, undefined, "a drama request does not spend the draft interval");
+  claimDown = false;
+  assert.match(await lane().step(), /^drama-8b2e3d4c: blocked — planner may have run on the server without its answer reaching the worker/);
+  assert.equal(planners().length, 1, "the planner is not asked again");
+  assert.equal(global().lost_plans, undefined);
+  assert.deepEqual(site.calls.drama, [{ id: first.id, action: "start", slug: "drama-8b2e3d4c" }]);
+  const held = automatedVideos(box.work).find((state) => state.slug === "drama-8b2e3d4c");
+  assert.deepEqual([held.status, held.blocked_kind, held.unplanned, held.premise, held.drama_request], ["blocked", "uncertain:planner", "drama", first.premise, { title: "雷聲", note: "用數秒數講" }]);
+
+  assert.match(await lane().step(), /^drama: why-the-sky-is-blue planned from the owner's request/, "a genuinely different call still goes out");
+  assert.equal(planners().filter((call) => call.payload.premise === first.premise).length, 1);
+
+  net.lose = false;
+  ownerRetries(site, "drama-8b2e3d4c");
+  assert.match(await lane().step(), /^drama-8b2e3d4c: planned after the owner's retry; outline sent to \/admin\/videos/);
+  const replan = planners().at(-1);
+  assert.deepEqual([replan.slug, replan.format, replan.variant, replan.max_output_tokens], ["drama-8b2e3d4c", "drama", "explainer", 16_000]);
+  const asked = planners()[0];
+  assert.deepEqual([replan.payload.premise, replan.payload.title, replan.payload.note, replan.payload.target_minutes], [first.premise, "雷聲", "用數秒數講", asked.payload.target_minutes], "asked as the first plan was");
+  assert.equal(site.calls.drama.filter((call) => call.action === "start").length, 2, "each request claimed once");
+});
+
+test("a Jev outline pick whose answer is lost is not asked again on its own: the video stops for the owner, and the owner's retry asks Jev once more", async () => {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  let lose = true;
+  const site = fakeSite({
+    answers: answersFor(slug, { applies: "1、3" }),
+    settings: { channel_stance: STANCE },
+    judge: () => (lose ? Response.json({ code: "video_judge_answer_lost", detail: "請求已送到 API，Jev 可能已經判斷" }, { status: 504 }) : jevPick("B")),
+  });
+  const clock = { now: Date.parse("2026-09-27T09:00:00Z") };
+  const { ctx, out } = context(box, site.fetchImpl, clock);
+  const planners = () => site.calls.run.filter((call) => call.stage === "planner").length;
+
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.match(out.stdout, /chatgpt-ads-off: blocked — judge \(Jev's outline pick\) may have run on the server without its answer reaching the worker \(HTTP 504: 請求已送到 API，Jev 可能已經判斷\); it is not asked again until the owner retries/);
+  assert.deepEqual([site.calls.judge.length, site.calls.reviews.length], [1, 0]);
+  const state = () => automatedVideos(box.work)[0];
+  assert.deepEqual([state().status, state().blocked_kind, state().defer_count], ["blocked", "uncertain:judge", undefined]);
+  assert.match(site.calls.reports.at(-1).checklist[0].label, /^卡住，需要人處理：judge \(Jev's outline pick\) may have run/);
+
+  // Until 2026-10-07 it was deferred like Jev being away and asked again up to seven times over four hours.
+  clock.now += 5 * 3600_000;
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.deepEqual([site.calls.judge.length, planners()], [1, 1], "neither Jev nor the planner is asked again");
+
+  lose = false;
+  ownerRetries(site, slug);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  assert.match(await automation.step(), /^chatgpt-ads-off: Jev picked outline B; outline sent to \/admin\/videos$/);
+  assert.deepEqual([site.calls.judge.length, planners()], [2, 1], "Jev once more, about the same brief");
+  assert.deepEqual([site.calls.reviews[0].status, site.calls.reviews[0].choice], ["approved", "B"]);
+});
+
+test("a rewrite's planner whose answer is lost after Jev failed the first outline stops the new video, where the next round asked Jev and the planner again", async () => {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const site = fakeSite({ answers: answersFor(slug, { applies: "2" }), settings: { channel_stance: STANCE }, judge: (body) => jevPick("A", { passed: false, demo: 0.4, keys: body.options.map((option) => option.key) }) });
+  const net = losing(site, (body) => body.stage === "planner" && Boolean(body.payload.owner_note));
+  const { ctx } = context(box, net.fetchImpl, { now: Date.parse("2026-09-27T09:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+
+  assert.match(await automation.step(), /planned from 1 topics; chatgpt-ads-off: blocked — planner may have run on the server without its answer reaching the worker/);
+  const state = automatedVideos(box.work)[0];
+  assert.deepEqual([state.status, state.blocked_kind, state.replans], ["blocked", "uncertain:planner", 0]);
+  nextRun(automation);
+  assert.equal(await automation.step(), null);
+  assert.deepEqual([site.calls.judge.length, site.calls.run.filter((call) => call.stage === "planner").length], [1, 2]);
+});
+
+test("a final cut whose policy verdict from Jev was lost stops the video for the owner instead of deferring it, and the owner's retry drops the kept loss so qa asks Jev once more", async () => {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const site = fakeSite({ answers: answersFor(slug) });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-07T09:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  const video = (name) => ({ slug: name, title: name, status: "active", created_at: "2026-10-01T00:00:00.000Z", format: "slides", replans: 0, verify_rounds: 0, verified: true, listener_done: true, retakes: 0, rewrites: 0, notes: [] });
+
+  // review-push's last line, as review/sync.mjs qualityCheck says it, with the client's code.
+  const lost = { code: EXIT.owner, out: "  [ ] policy: outcome unknown: Jev was asked about this narration at 2026-10-07T09:00:00.000Z and its answer was lost\nchatgpt-ads-off: 10 of 11 checks passed\nthe final waits for the owner: Jev's policy verdict on this narration was lost after it was sent (HTTP 504: x), and it is not asked again until the owner retries (video_ai_run_uncertain)\n" };
+  const state = video(slug);
+  automation.persist(state);
+  assert.match(await automation.submissionFailure(state, "final", lost), /^chatgpt-ads-off: blocked — policy \(Jev's policy check\) may have run on the server without its answer reaching the worker \(the final waits for the owner: .*\(video_ai_run_uncertain\)\); it is not asked again until the owner retries$/);
+  assert.deepEqual([state.status, state.blocked_kind, automation.halted], ["blocked", "uncertain:policy", true]);
+
+  // An exit 3 for anything else (the token) is not a lost answer: it waits as before.
+  const other = video("other-video");
+  automation.persist(other);
+  assert.match(await automation.submissionFailure(other, "final", { code: EXIT.owner, out: "the quality check needs the owner (the video tool token); see above\n" }), /could not send the final for review/);
+  assert.equal(other.status, "active");
+
+  // The owner's retry: qa's kept loss is dropped (and only it), so the next quality check asks Jev once.
+  const qaFile = path.join(box.work, slug, "review", "qa.json");
+  mkdirSync(path.dirname(qaFile), { recursive: true });
+  atomicWrite(qaFile, `${JSON.stringify({ ok: false, final_sha256: "f".repeat(64), items: [{ id: "policy", ok: false, detail: "outcome unknown" }], policy_lost: { request_sha256: "a".repeat(64), final_sha256: "f".repeat(64), at: "2026-10-07T09:00:00.000Z", why: "HTTP 504: x" } })}\n`);
+  ownerRetries(site, slug);
+  const retried = new Automation(ctx, automationClient(ctx), site.settings);
+  retried.refs = smallRefs;
+  retried.advance = async (each) => `${each.slug}: moved`;
+  assert.equal(await retried.step(), "chatgpt-ads-off: moved");
+  assert.deepEqual(readJson(qaFile), { ok: false, final_sha256: "f".repeat(64), items: [{ id: "policy", ok: false, detail: "outcome unknown" }] });
+  assert.equal(automatedVideos(box.work).find((each) => each.slug === slug).status, "active");
 });
 
 test("a lost blocked report is recovered after restart without another model request, and failed reports back off", async () => {
@@ -2242,7 +2555,16 @@ test("a language chosen for its title and description alone is translated withou
   assert.deepEqual(video.runs.slice(-4).map((run) => run.split(" ")[0]), ["captions", "package", "review-push", "review-pull"]);
   const [batch] = video.reviews("languages");
   assert.deepEqual(batch.payload, { locales: { en: { metadata: "ready" } } });
-  assert.deepEqual(batch.files.map((file) => [file.role, file.content_type]), [["description_en", "text/plain"]]);
+  assert.deepEqual(batch.files.map((file) => [file.role, file.content_type]), [["description_en", "text/plain"], ["metadata", "application/json"], ["languages_manifest", "application/json"]]);
+  // YouTube sync reads the batch beside the confirmation and the cut its manifest names
+  // (docs/videos/APPROVED-LANGUAGE-PACKAGE.md); review-pull checks the approval against it.
+  const manifestFile = path.join(video.workdir, "review", "languages.json");
+  const manifest = readJson(manifestFile);
+  const [publish] = video.reviews("publish");
+  const [final] = video.reviews("final");
+  assert.deepEqual([manifest.source.publish, manifest.source.final, manifest.choice.locales], [{ review_id: publish.id, content_sha256: publish.content_sha256 }, { review_id: final.id, content_sha256: final.content_sha256 }, { en: { metadata: true, captions: false, dub: false } }]);
+  assert.equal(batch.content_sha256, sha(manifestFile));
+  assert.equal(batch.files.find((file) => file.role === "metadata").sha256, sha(video.upload("metadata.json")));
   assert.deepEqual([batch.status, batch.note], ["approved", LANGUAGES_AUTO_NOTE], "no dub track: nothing for the owner to do");
   assert.equal(batch.summary, "語言：en 標題說明。沒有要你上傳的配音");
   const metadata = readJson(video.upload("metadata.json"));
@@ -2650,6 +2972,21 @@ test("an English-narrated video is translated into zh-TW once, before the langua
   assert.equal(video.calls("translator").length, 2);
 });
 
+test("an English-narrated video whose own language the owner ticks sends it as made: no sheet or dub of it, its dub a skip with the reason", async () => {
+  const video = await finishedVideo({ script: enFixture() });
+  video.choose({ en: { metadata: true, captions: true, dub: true }, ja: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /^chatgpt-ads-off: zh-TW metadata and captions translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: ja metadata translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(/);
+  assert.deepEqual(video.calls("translator").map((call) => call.payload.locale), ["zh-TW", "ja"], "the narration's own language is never translated");
+  assert.ok(!video.runs.some((run) => run.startsWith("dub ")), "nor dubbed");
+  const [batch] = video.reviews("languages");
+  assert.deepEqual(batch.payload.locales.en, { metadata: "ready", captions: "ready", dub: { status: "skipped", reason: "這是影片原本旁白的語言，不另做重複配音" } });
+  assert.deepEqual(batch.files.map((file) => file.role), ["description_en", "captions_en", "description_ja", "metadata", "languages_manifest"]);
+  assert.equal(batch.status, "approved", "no track for the owner to upload");
+  assert.equal(await video.step(), null, "everything chosen is made");
+});
+
 test("an English-narrated video the owner gives no other language gets zh-TW once and a package written again with it, and sends no batch", async () => {
   const video = await finishedVideo({ script: enFixture() });
   video.choose({});
@@ -2999,7 +3336,7 @@ test("captions and a dub chosen together: the sheet carries the budgets, the dub
   assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(ja metadata\+captions\+dub\)$/);
   const [batch] = video.reviews("languages");
   assert.equal(batch.status, "pending", "a dub track waits for the owner to upload it in Studio");
-  assert.deepEqual(batch.files.map((file) => [file.role, file.content_type]), [["description_ja", "text/plain"], ["captions_ja", "text/plain"], ["dub_ja", "audio/mp4"]]);
+  assert.deepEqual(batch.files.map((file) => [file.role, file.content_type]), [["description_ja", "text/plain"], ["captions_ja", "text/plain"], ["dub_ja", "audio/mp4"], ["metadata", "application/json"], ["languages_manifest", "application/json"]]);
   const { ja } = batch.payload.locales;
   assert.deepEqual([ja.metadata, ja.captions, ja.dub, ja.file, ja.file_role, ja.format], ["ready", "ready", "ready", "ja.m4a", "dub_ja", "m4a"]);
   assert.equal(batch.summary, "語言：ja 標題說明、CC、配音。配音到 Studio「語言」上傳後按「已在 Studio 上傳配音」");
@@ -3046,7 +3383,7 @@ test("a window that does not fit is shortened once and the dub is made; two roun
   const [batch] = video.reviews("languages");
   assert.deepEqual(batch.payload.locales.ko, { captions: "ready", dub: { status: "skipped", reason } });
   assert.equal(batch.payload.locales.en.dub, "ready");
-  assert.deepEqual(batch.files.map((file) => file.role), ["captions_en", "dub_en", "captions_ko"]);
+  assert.deepEqual(batch.files.map((file) => file.role), ["captions_en", "dub_en", "captions_ko", "metadata", "languages_manifest"]);
   assert.equal(batch.summary, `語言：en CC、配音；ko CC、配音跳過（${reason}）。配音到 Studio「語言」上傳後按「已在 Studio 上傳配音」`);
   assert.equal(batch.status, "pending", "the en track waits for the owner");
   const metadata = readJson(video.upload("metadata.json"));
@@ -3097,6 +3434,145 @@ test("a rewording that changes a number is dropped and the locale is given up; w
   const ko = `Jev still hears lines wrong after ${MAX_DUB_RETAKE_ROUNDS} retakes and ${MAX_DUB_REWORD_ROUNDS} rewording rounds: ko dub: 1 flagged`;
   assert.equal(await video.step(), `chatgpt-ads-off: ko dub given up (${ko}); the video goes on without it`);
   assert.equal(video.calls("translator", "reword").filter((call) => call.payload.locale === "ko").length, MAX_DUB_REWORD_ROUNDS);
+});
+
+/**
+ * A dub whose `dub --redo` exits 4 `outage` times, with `out`; `takeFirst` makes the redo write the
+ * flagged line's take before it stops, as a run that met the limit after its first request does.
+ * The check flags the first line until a retake has gone through.
+ */
+async function dubOutage({ outage, out, takeFirst = false }) {
+  let retaken = false;
+  const video = await finishedVideo({ checks: { en: () => !retaken } });
+  video.choose({ en: { metadata: false, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+  const played = video.ctx.runCommand;
+  const left = { outage };
+  video.ctx.runCommand = async (command, runCtx) => {
+    if (!(command[0] === "dub" && command.includes("--redo"))) return played(command, runCtx);
+    if (left.outage <= 0) {
+      retaken = true;
+      return played(command, runCtx);
+    }
+    left.outage -= 1;
+    video.runs.push(command.join(" "));
+    if (takeFirst) {
+      const [first] = readJson(path.join(video.workdir, "review", "check-flags.en.json")).flags;
+      const audio = dubArtifacts(video.workdir, "en").audio;
+      mkdirSync(audio, { recursive: true });
+      writeFileSync(path.join(audio, `${first}.wav`), Buffer.from(`a new take, ${left.outage} left`));
+    }
+    return { code: 4, out };
+  };
+  return { video, left };
+}
+
+test("a dub retake that exits 4 without making a take gives its round back: an outage never spends the retakes or rewords a line", async () => {
+  const { video } = await dubOutage({ outage: 3, out: BUDGET_SPENT });
+  for (let round = 1; round <= 3; round++) {
+    assert.match(await video.step(), /^chatgpt-ads-off: en dub retake could not finish \(本月的語音字數預算.+\); deferred until \d{4}-/, `round ${round}`);
+    assert.equal(video.state().languages.en.retakes, 0, `round ${round}: the round is given back`);
+    assert.equal(video.calls("translator", "reword").length, 0, `round ${round}: nothing is reworded`);
+    assert.equal(video.reviews("languages").length, 0, `round ${round}: no batch for a track Jev flagged`);
+    nextRun(video.automation, video.clock);
+  }
+  // The budget is back: the retake runs, and the line passes without a rewording round.
+  assert.match(await video.step(), /^chatgpt-ads-off: en dub made after 1 retake; Jev passed every line$/);
+  assert.equal(video.calls("translator", "reword").length, 0);
+});
+
+test("a dub retake that made a take before it exited 4 keeps its round, as the narration's does", async () => {
+  const { video } = await dubOutage({ outage: 1, out: VENDOR_AWAY, takeFirst: true });
+  assert.match(await video.step(), /^chatgpt-ads-off: en dub retake could not finish \(Azure 語音暫時無法使用\); deferred until \d{4}-/);
+  assert.equal(video.state().languages.en.retakes, 1, "the take it made was a retake");
+  nextRun(video.automation, video.clock);
+  assert.match(await video.step(), /^chatgpt-ads-off: en dub made after 2 retakes; Jev passed every line$/);
+});
+
+test("a dub retake a vendor keeps failing defers like any stage and blocks the video at the seventh try, its rounds untouched", async () => {
+  const { video } = await dubOutage({ outage: Infinity, out: VENDOR_AWAY });
+  for (let round = 1; round <= DEFER_LIMIT; round++) {
+    assert.match(await video.step(), /^chatgpt-ads-off: en dub retake could not finish \(Azure 語音暫時無法使用\); deferred until \d{4}-/, `round ${round}`);
+    assert.equal(video.state().languages.en.retakes, 0, `round ${round}: no retake was spent`);
+    nextRun(video.automation, video.clock);
+  }
+  assert.equal(await video.step(), `chatgpt-ads-off: blocked — still could not move after ${DEFER_LIMIT + 1} tries: en dub retake could not finish (Azure 語音暫時無法使用)`);
+  assert.deepEqual([video.state().status, video.state().blocked_kind], ["blocked", "deferred:dub"]);
+});
+
+test("a dub check that exits 4 leaves the track unheard: the next visit makes it and hears it again instead of sending it", async () => {
+  const video = await finishedVideo({ checks: { en: 0 } });
+  video.choose({ en: { metadata: false, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+  const played = video.ctx.runCommand;
+  let outage = 1;
+  video.ctx.runCommand = async (command, runCtx) => {
+    if (!(command[0] === "check-audio" && command.includes("--locale") && outage > 0)) return played(command, runCtx);
+    outage -= 1;
+    video.runs.push(command.join(" "));
+    return { code: 4, out: RATE_LIMITED };
+  };
+  assert.match(await video.step(), /^chatgpt-ads-off: en dub check could not finish \(請求過於頻繁，請稍後再試\); deferred until \d{4}-/);
+  assert.equal(video.state().languages.en.check_stopped, true, "the track `dub` wrote is not one Jev passed");
+  nextRun(video.automation, video.clock);
+  const ran = video.runs.length;
+  assert.match(await video.step(), /^chatgpt-ads-off: en dub made; Jev passed every line$/);
+  assert.deepEqual(video.runs.slice(ran).filter((run) => /^(dub|check-audio) .*--locale/.test(run)), [`dub --slug ${video.slug} --locale en`, `check-audio --slug ${video.slug} --locale en`]);
+  assert.equal(video.reviews("languages").length, 0, "the batch waits for a track Jev passed");
+
+  // A check a vendor keeps failing blocks at the seventh try, as the check's own trouble.
+  const away = await finishedVideo({ checks: { en: 0 } });
+  away.choose({ en: { metadata: false, captions: true, dub: true } });
+  assert.match(await away.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+  const answered = away.ctx.runCommand;
+  away.ctx.runCommand = async (command, runCtx) => (command[0] === "check-audio" && command.includes("--locale") ? { code: 4, out: VENDOR_AWAY } : answered(command, runCtx));
+  for (let round = 1; round <= DEFER_LIMIT; round++) {
+    assert.match(await away.step(), /en dub check could not finish/, `round ${round}`);
+    nextRun(away.automation, away.clock);
+  }
+  assert.match(await away.step(), /blocked — still could not move after \d+ tries: en dub check could not finish/);
+  assert.deepEqual([away.state().status, away.state().blocked_kind], ["blocked", "deferred:check-audio"]);
+});
+
+test("a dub visit that ends any other way than Jev passing the track leaves it unheard: the next visit makes it and hears it again", async (t) => {
+  // Each case ends the first dub visit after `dub` wrote a track Jev has not passed
+  // (the review of 2026-10-07-a-dub-retake-that-exits-4).
+  const cases = {
+    "a rewording answer that could not be used": { options: { checks: { en: () => true }, reword: () => ({ nothing: true }) }, ended: /rewording pass answered without a lines array/ },
+    "a shortening answer that could not be used, after a retake that no longer fits": { options: { dubs: { en: { redoOver: 1 } }, checks: { en: 1 }, shorten: () => ({ nothing: true }) }, ended: /shortening pass answered without a lines array/ },
+    "the plain dub after a retake that no longer fits, away": { options: { dubs: { en: { redoOver: 1 } }, checks: { en: 1 } }, away: true, ended: /^chatgpt-ads-off: en dub could not finish \(Azure 語音暫時無法使用\); deferred until/ },
+  };
+  for (const [what, { options, away = false, ended }] of Object.entries(cases)) {
+    await t.test(what, async () => {
+      const video = await finishedVideo(options);
+      video.choose({ en: { metadata: false, captions: true, dub: true } });
+      assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+      if (away) {
+        // The first plain `dub` after the retake cannot reach the site.
+        const played = video.ctx.runCommand;
+        let redone = false;
+        let once = true;
+        video.ctx.runCommand = async (command, runCtx) => {
+          if (command[0] === "dub" && command.includes("--redo")) redone = true;
+          else if (command[0] === "dub" && redone && once) {
+            once = false;
+            video.runs.push(command.join(" "));
+            return { code: 4, out: VENDOR_AWAY };
+          }
+          return played(command, runCtx);
+        };
+      }
+      assert.match(await video.step(), ended);
+      assert.equal(video.state().languages.en.check_stopped, true);
+      nextRun(video.automation, video.clock);
+      const ran = video.runs.length;
+      await video.step();
+      const next = video.runs.slice(ran).filter((run) => /^(dub|check-audio) .*--locale/.test(run));
+      assert.equal(next[0], `dub --slug ${video.slug} --locale en`, "made again");
+      assert.ok(next.includes(`check-audio --slug ${video.slug} --locale en`), "and heard again");
+      assert.equal(video.reviews("languages").length, 0, "no batch for a track Jev has not passed");
+    });
+  }
 });
 
 test("a retake that no longer fits its window is shortened, not given up", async () => {
@@ -3438,7 +3914,7 @@ function retakeFile(file, at = 1) {
  * its first line (exit 6, timeline.json untouched); a plain `tts`, every take cached, synthesizes
  * nothing and binds the takes on disk.
  */
-async function stoppedRetakeGate() {
+async function stoppedRetakeGate({ code = EXIT.incomplete, out = "stopped by the STOP file; 1 of 2 requests done, rerun to continue", line = "chatgpt-ads-off: the retake stopped (stopped by the STOP file; 1 of 2 requests done, rerun to continue); the next run continues" } = {}) {
   const gate = await narrationGate({ rewrite: () => ({ lines: [] }), stillFlagged: () => false, retakeRounds: 2 });
   const { ctx } = gate.automation;
   const played = ctx.runCommand;
@@ -3468,7 +3944,7 @@ async function stoppedRetakeGate() {
       gate.redos.push([path.basename(command[redo + 1]), flags]);
       if (stops-- > 0) {
         retakeFile(take(flags[0]));
-        return { code: EXIT.incomplete, out: `stopped by the STOP file; 1 of ${flags.length} requests done, rerun to continue` };
+        return { code, out };
       }
       for (const id of flags) retakeFile(take(id));
     }
@@ -3476,8 +3952,9 @@ async function stoppedRetakeGate() {
     return { code: 0, out: redo >= 0 ? "retaken" : "0 requests synthesized, every take reused" };
   };
   // Jev flags both lines; the retake makes x9fe again and is stopped before b3tn.
-  assert.equal(await gate.automation.step(), "chatgpt-ads-off: the retake stopped (stopped by the STOP file; 1 of 2 requests done, rerun to continue); the next run continues");
-  nextRun(gate.automation);
+  if (line instanceof RegExp) assert.match(await gate.automation.step(), line);
+  else assert.equal(await gate.automation.step(), line);
+  nextRun(gate.automation, code === EXIT.incomplete ? null : gate.clock);
   return { ...gate, take };
 }
 
@@ -3491,7 +3968,7 @@ test("a retake a STOP file ended is bound from the takes it made on the next run
   // The takes no longer match timeline.json, all of them because of the stopped retake: a plain
   // tts binds them, synthesizing nothing, and nothing is blocked for the owner.
   const ran = gate.runs.length;
-  assert.equal(await gate.automation.step(), "chatgpt-ads-off: narration synthesized from the takes of the retake a STOP file ended");
+  assert.equal(await gate.automation.step(), "chatgpt-ads-off: narration synthesized from the takes of the retake that stopped halfway");
   assert.deepEqual(gate.runs.slice(ran), ["tts --slug chatgpt-ads-off"], "no --redo, no --refresh-evidence");
   assert.equal(gate.state().stopped_retake, undefined, "cleared once tts finished");
   assert.notEqual(gate.state().status, "blocked", gate.state().blocked);
@@ -3516,6 +3993,193 @@ test("after a stopped retake, a take changed on another line, or to bytes the re
       assert.equal(gate.runs.length, ran, "no tts binds the unexplained take");
       assert.ok(gate.state().stopped_retake, "the record stays for the owner's retry");
     });
+  }
+});
+
+// The month's characters spent, the speech routes' rate limit and a vendor away all make tts exit 4,
+// the service's (2026-10-06-tts-and-a-narration-retake-that): the video defers like every other stage,
+// and only its own trouble counts toward a block.
+const RATE_LIMITED = "narration: 37 of 52 requests done\n請求過於頻繁，請稍後再試\n";
+const BUDGET_SPENT = "本月的語音字數預算（450000 計費字元）不夠這次的 812 字元；可在後台調高上限，或等下個月\n";
+const VENDOR_AWAY = "Azure 語音暫時無法使用\n";
+
+test("a tts that exits 4 defers the video: the rate limit or the month's characters never block it, a vendor's failure blocks it at the seventh try", async (t) => {
+  for (const [name, out, blockedAt] of [
+    ["the speech routes' rate limit", RATE_LIMITED, null],
+    ["the month's characters spent", BUDGET_SPENT, null],
+    ["a vendor away", VENDOR_AWAY, DEFER_LIMIT + 1],
+  ]) {
+    await t.test(name, async () => {
+      const gate = await narrationGate({ rewrite: () => ({ lines: [] }), stillFlagged: () => false });
+      rmSync(path.join(gate.workdir, "timeline.json"));
+      const played = gate.automation.ctx.runCommand;
+      let failing = true;
+      gate.automation.ctx.runCommand = async (command, runCtx) => {
+        if (command[0] !== "tts" || !failing) return played(command, runCtx);
+        gate.runs.push(command.join(" "));
+        return { code: 4, out };
+      };
+      // A deferral is told to the site under the stage the video is at; the step's own report has no waiting row.
+      const synthesized = () => gate.site.calls.reports.filter((report) => report.stage === "narration synthesized" && !(report.checklist ?? []).some((row) => row.key === "deferred")).length;
+      const before = synthesized();
+      for (let round = 1; round <= 8; round++) {
+        const line = await gate.automation.step();
+        if (round === blockedAt) {
+          assert.equal(line, `chatgpt-ads-off: blocked — still could not move after ${DEFER_LIMIT + 1} tries: tts could not finish (Azure 語音暫時無法使用)`);
+          assert.deepEqual([gate.state().status, gate.state().blocked_kind], ["blocked", "deferred:tts"]);
+          return;
+        }
+        assert.match(line, /^chatgpt-ads-off: tts could not finish \(.+\); deferred until \d{4}-/, `round ${round}`);
+        assert.equal(gate.state().status, "active", `round ${round}`);
+        assert.equal(synthesized(), before, `round ${round}: the step is not reported done`);
+        nextRun(gate.automation, gate.clock);
+      }
+      assert.equal(gate.state().defer_shared, 8, "none of them counted toward a block");
+      // The trouble passes: the next tts makes the narration.
+      failing = false;
+      assert.match(await gate.automation.step(), /narration synthesized$/);
+      assert.equal(synthesized(), before + 1);
+    });
+  }
+});
+
+test("a tts that fails another way, or stops for the owner, still blocks the video at once", async (t) => {
+  for (const [name, answer, reason] of [
+    ["the owner's (a revoked token)", { code: 3, out: "影片工具權杖無效或已撤銷\n" }, "tts failed: 影片工具權杖無效或已撤銷"],
+    ["a paid request whose answer was lost", { code: 3, out: `POST /api/video/speech was sent and no usable answer came back (HTTP 504 video_speech_upstream_lost); it may have run and been charged, so it is not sent again (${SPEECH_UNCERTAIN}, request sha256 ${"a".repeat(64)})\n` }, `tts failed: POST /api/video/speech was sent`],
+    ["a usage error", { code: 2, out: "usage: --slug is required\n" }, "tts failed: usage: --slug is required"],
+  ]) {
+    await t.test(name, async () => {
+      const gate = await narrationGate({ rewrite: () => ({ lines: [] }), stillFlagged: () => false });
+      rmSync(path.join(gate.workdir, "timeline.json"));
+      const played = gate.automation.ctx.runCommand;
+      gate.automation.ctx.runCommand = async (command, runCtx) => (command[0] === "tts" ? answer : played(command, runCtx));
+      assert.ok((await gate.automation.step()).startsWith(`chatgpt-ads-off: blocked — ${reason}`), name);
+      assert.equal(gate.state().status, "blocked");
+    });
+  }
+});
+
+test("a retake that exits 4 halfway records the takes it made and defers; the next round binds them, checks again and goes on, and no line is retaken twice", async () => {
+  const gate = await stoppedRetakeGate({ code: 4, out: `1 of 2 requests done\n${RATE_LIMITED}`, line: /^chatgpt-ads-off: the retake could not finish \(請求過於頻繁，請稍後再試\); deferred until \d{4}-/ });
+  const stopped = gate.state();
+  assert.equal(stopped.status, "active", stopped.blocked);
+  assert.deepEqual(stopped.stopped_retake, { flags: "review/check-flags.json", ids: ["x9fe", "b3tn"], takes: { x9fe: sha(gate.take("x9fe")) } }, "the lines it was retaking and the one take it made");
+  assert.deepEqual([stopped.defer_count, stopped.defer_shared], [1, 1], "a deferral like any other, and everyone's");
+  const ran = gate.runs.length;
+  assert.equal(await gate.automation.step(), "chatgpt-ads-off: narration synthesized from the takes of the retake that stopped halfway");
+  assert.deepEqual(gate.runs.slice(ran), ["tts --slug chatgpt-ads-off"], "a plain tts binds the takes on disk");
+  assert.equal(gate.state().stopped_retake, undefined);
+  assert.match(await gate.automation.step(), /narration checked \(Jev passed every line\) and sent for review$/);
+  assert.deepEqual(gate.redos, [["check-flags.json", ["x9fe", "b3tn"]], ["check-flags.json", ["b3tn"]]], "x9fe is not retaken a second time");
+  assert.equal(gate.reviews("audio").length, 1);
+});
+
+test("a retake that exits 4 before its first take records nothing and defers; a vendor's failure counts toward a block like any stage's", async () => {
+  const gate = await narrationGate({ rewrite: () => ({ lines: [] }), stillFlagged: () => true, retakeRounds: 1 });
+  const played = gate.automation.ctx.runCommand;
+  gate.automation.ctx.runCommand = async (command, runCtx) => {
+    if (!(command[0] === "tts" && command.includes("--redo"))) return played(command, runCtx);
+    gate.runs.push(command.join(" "));
+    return { code: 4, out: VENDOR_AWAY };
+  };
+  assert.match(await gate.automation.step(), /^chatgpt-ads-off: the retake could not finish \(Azure 語音暫時無法使用\); deferred until \d{4}-/);
+  const state = gate.state();
+  assert.deepEqual([state.status, state.stopped_retake, state.defer_count, state.defer_shared], ["active", undefined, 1, undefined]);
+  assert.deepEqual(gate.reviews("audio"), [], "nothing was sent for review");
+});
+
+test("a retake that exits 4 without making a take gives its round back: an outage never spends the retakes or sends a line to the listener's rewrite", async () => {
+  const gate = await narrationGate({ rewrite: () => ({ lines: [] }), stillFlagged: () => true, retakeRounds: 2 });
+  const played = gate.automation.ctx.runCommand;
+  let outage = 2;
+  gate.automation.ctx.runCommand = async (command, runCtx) => {
+    if (!(command[0] === "tts" && command.includes("--redo") && outage > 0)) return played(command, runCtx);
+    outage -= 1;
+    gate.runs.push(command.join(" "));
+    return { code: 4, out: BUDGET_SPENT };
+  };
+  for (let round = 1; round <= 2; round++) {
+    assert.match(await gate.automation.step(), /^chatgpt-ads-off: the retake could not finish \(本月的語音字數預算.+\); deferred until \d{4}-/, `round ${round}`);
+    assert.deepEqual([gate.state().status, gate.state().retakes, gate.state().stopped_retake], ["active", 0, undefined], `round ${round}: the round is given back`);
+    assert.equal(gate.rewriteCalls().length, 0, `round ${round}: no line goes to the listener`);
+    assert.equal(gate.lineText(), ORIGINAL, `round ${round}: the script is as it was`);
+    nextRun(gate.automation, gate.clock);
+  }
+  // The budget is back: both retakes are still there, and only then does the listener reword.
+  await gate.automation.step();
+  assert.deepEqual(gate.redos, [["check-flags.json", ["x9fe"]], ["check-flags.json", ["x9fe"]]], "the two retakes the settings allow");
+  assert.equal(gate.state().retakes, 2);
+});
+
+test("a retake a vendor keeps failing defers like any stage and blocks the video at the seventh try", async () => {
+  const gate = await narrationGate({ rewrite: () => ({ lines: [] }), stillFlagged: () => true, retakeRounds: 2 });
+  const played = gate.automation.ctx.runCommand;
+  gate.automation.ctx.runCommand = async (command, runCtx) => {
+    if (!(command[0] === "tts" && command.includes("--redo"))) return played(command, runCtx);
+    gate.runs.push(command.join(" "));
+    return { code: 4, out: VENDOR_AWAY };
+  };
+  for (let round = 1; round <= DEFER_LIMIT; round++) {
+    assert.match(await gate.automation.step(), /^chatgpt-ads-off: the retake could not finish \(Azure 語音暫時無法使用\); deferred until \d{4}-/, `round ${round}`);
+    assert.equal(gate.state().retakes, 0, `round ${round}: no retake was spent`);
+    nextRun(gate.automation, gate.clock);
+  }
+  assert.equal(await gate.automation.step(), `chatgpt-ads-off: blocked — still could not move after ${DEFER_LIMIT + 1} tries: the retake could not finish (Azure 語音暫時無法使用)`);
+  assert.deepEqual([gate.state().status, gate.state().blocked_kind], ["blocked", "deferred:tts"]);
+  assert.deepEqual(gate.reviews("audio"), [], "nothing was sent for review");
+});
+
+test("a retake after a rewrite that exits 4 defers; the next round's tts makes the rewritten line and the check goes on", async (t) => {
+  const REWRITE = "第一個問題是，你要它做哪一種工作。";
+  for (const [name, out, shared] of [["the speech routes' rate limit", `0 of 1 requests done\n${RATE_LIMITED}`, 1], ["a vendor away", VENDOR_AWAY, undefined]]) {
+    await t.test(name, async () => {
+      const gate = await narrationGate({ rewrite: () => ({ lines: [{ id: "x9fe", text: REWRITE }] }), stillFlagged: (video) => video.scenes[1].lines[0].text === ORIGINAL });
+      const played = gate.automation.ctx.runCommand;
+      gate.automation.ctx.runCommand = async (command, runCtx) => {
+        const redo = command.indexOf("--redo");
+        if (command[0] !== "tts" || redo < 0 || !command[redo + 1].endsWith("rewrite-flags.json")) return played(command, runCtx);
+        gate.runs.push(command.join(" "));
+        return { code: 4, out };
+      };
+      assert.match(await gate.automation.step(), /^chatgpt-ads-off: the retake after the rewrite could not finish \(.+\); deferred until \d{4}-/);
+      const state = gate.state();
+      assert.equal(state.status, "active", state.blocked);
+      assert.deepEqual([state.defer_count, state.defer_shared], [1, shared]);
+      nextRun(gate.automation, gate.clock);
+      const ran = gate.runs.length;
+      assert.equal(await gate.automation.step(), "chatgpt-ads-off: narration synthesized");
+      assert.deepEqual(gate.runs.slice(ran), ["tts --slug chatgpt-ads-off"]);
+      assert.match(await gate.automation.step(), /narration checked \(Jev passed every line\) and sent for review$/);
+    });
+  }
+});
+
+test("a retake, or a retake after a rewrite, that loses a paid answer or fails another way still blocks the video at once and records nothing", async (t) => {
+  const LOST = `1 of 2 requests done\nPOST /api/video/speech was sent and no usable answer came back (HTTP 504 video_speech_upstream_lost); it may have run and been charged, so it is not sent again (${SPEECH_UNCERTAIN}, request sha256 ${"a".repeat(64)})\n`;
+  const REWRITE = "第一個問題是，你要它做哪一種工作。";
+  for (const [which, flags, reason, options] of [
+    ["the retake", "check-flags.json", "retake failed", { rewrite: () => ({ lines: [] }), stillFlagged: () => true }],
+    ["the retake after a rewrite", "rewrite-flags.json", "retake after the rewrite failed", { rewrite: () => ({ lines: [{ id: "x9fe", text: REWRITE }] }), stillFlagged: (video) => video.scenes[1].lines[0].text === ORIGINAL }],
+  ]) {
+    for (const [name, answer, detail] of [
+      ["a paid request whose answer was lost", { code: 3, out: LOST }, "POST /api/video/speech was sent"],
+      ["a usage error", { code: 2, out: "usage: --redo needs a flags file\n" }, "usage: --redo needs a flags file"],
+    ]) {
+      await t.test(`${which}: ${name}`, async () => {
+        const gate = await narrationGate(options);
+        const played = gate.automation.ctx.runCommand;
+        gate.automation.ctx.runCommand = async (command, runCtx) => {
+          const redo = command.indexOf("--redo");
+          if (!(command[0] === "tts" && redo >= 0 && path.basename(command[redo + 1]) === flags)) return played(command, runCtx);
+          gate.runs.push(command.join(" "));
+          return answer;
+        };
+        const line = await gate.automation.step();
+        assert.ok(line.startsWith(`chatgpt-ads-off: blocked — ${reason}: ${detail}`), line);
+        assert.deepEqual([gate.state().status, gate.state().stopped_retake], ["blocked", undefined]);
+      });
+    }
   }
 });
 
@@ -4532,6 +5196,62 @@ test("two lanes do not take turns polling one writer still running on the server
   assert.ok(lookups > polled);
 });
 
+test("a writer whose receipt look-ups are rate-limited is reported as not answered with the reason, not as a model still running, and its answer is taken later with no second request", async () => {
+  const box = sandbox();
+  const slug = "throttled-writer";
+  atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "active", format: "slides", notes: [], created_at: "2026-10-05T12:30:00Z" }));
+  const site = fakeSite({ videos: [{ slug }], settings: { max_waiting_drafts: 0, durable_stage_runs: true } });
+  const jobs = new Map();
+  let posts = 0;
+  let throttled = false;
+  const fetch = async (url, init = {}) => {
+    const { pathname } = new URL(url);
+    if (pathname === "/api/video/automation/run/jobs") {
+      posts++;
+      const body = JSON.parse(init.body);
+      if (!jobs.has(body.request_key)) jobs.set(body.request_key, { id: body.request_key, request_key: body.request_key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: "anthropic", model: "claude-sonnet-5", status: "running", result: null });
+      return Response.json(jobs.get(body.request_key));
+    }
+    if (pathname.startsWith("/api/video/automation/run/jobs/")) {
+      if (throttled) return Response.json({ code: "rate_limit_exceeded", detail: typeof throttled === "string" ? throttled : "請求過於頻繁，請稍後再試。" }, { status: 429 });
+      return Response.json([...jobs.values()].find((job) => pathname.endsWith(job.id)));
+    }
+    return site.fetchImpl(url, init);
+  };
+  const clock = { now: Date.parse("2026-10-05T12:31:00Z") };
+  const { ctx } = context(box, fetch, clock);
+  const lane = async () => {
+    const api = automationClient(ctx, { durablePollMs: 3_000 });
+    await api.settings();
+    const worker = new Automation(ctx, api, site.settings, { busy: new Set(), skipped: new Set(), pendingUntil: new Map() });
+    worker.refs = smallRefs;
+    worker.advance = async (state) => {
+      const answer = await worker.stage("writer", state.slug, { brief: "x" }, 1000);
+      return `${state.slug}: script drafted (${answer.title})`;
+    };
+    return worker;
+  };
+  assert.equal(await (await lane()).step(), `${slug}: writer is still running; its saved receipt will be checked next round`, "a job the server reads as running is still running");
+  // The job finishes on the server, and the next round's look-ups are rate-limited.
+  for (const job of jobs.values()) Object.assign(job, { status: "succeeded", result: { text: JSON.stringify({ title: "標題" }), provider: "anthropic", model: "claude-sonnet-5", input_tokens: 1, output_tokens: 1, usage: { tokens: 2, token_budget: 20_000_000 } } });
+  throttled = true;
+  // Before: "writer is still running", though the model was done and only the look-up had failed.
+  assert.equal(await (await lane()).step(), `${slug}: writer has not answered yet: the worker's last request to the server for it failed (請求過於頻繁，請稍後再試。); it is asked again next round`);
+  throttled = false;
+  assert.equal(await (await lane()).step(), `${slug}: script drafted (標題)`, "the same job's answer, taken on a later round");
+  assert.equal(posts, 1, "one request, one model run");
+  assert.deepEqual(readdirSync(path.join(box.work, slug, "run-receipts")).filter((name) => name.endsWith(".json")), [], "and its receipt is settled");
+
+  // A server's long detail is cut to 160 code points, a character outside the BMP whole.
+  atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "active", format: "slides", notes: [], created_at: "2026-10-05T12:30:00Z" }));
+  const long = `${"😀".repeat(159)}截斷之後不該出現`;
+  throttled = false;
+  jobs.clear();
+  await (await lane()).step();
+  throttled = long;
+  assert.equal(await (await lane()).step(), `${slug}: writer has not answered yet: the worker's last request to the server for it failed (${"😀".repeat(159)}截); it is asked again next round`);
+});
+
 test("a video whose trouble does not pass is blocked after its deferrals in a row, with the reason on the card, and the owner's retry starts it at once", async () => {
   let failing = true;
   const slug = "oldest-video";
@@ -5228,6 +5948,203 @@ test("a lane moves a video from the state it reads once it holds it: a unit anot
       assert.deepEqual([state().status, state().blocked_kind, state().verified], ["blocked", "uncertain:verifier", false], "the block stands: before, the first lane saved the video as active and verified");
     }
     assert.deepEqual([...shared.busy], []);
+  }
+});
+
+test("the first lane's bookkeeping holds a video while it waits on the site: another lane does not move it during the call, and the save after the call does not write over what that lane saved", async () => {
+  // "compilation": a finished compilation the site has not heard about yet; "address": the owner pasted the address of a compilation still on its way.
+  for (const mode of ["compilation", "address"]) {
+    const slug = "binge-video";
+    const box = sandbox(slug);
+    const clock = { now: Date.parse("2026-10-07T10:00:00Z") };
+    const { ctx } = context(box, async () => new Response("{}"), clock);
+    atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: mode === "compilation" ? "done" : "active", created_at: "2026-10-07T00:00:00Z", compilation: { series: "wuxia" }, notes: [] }));
+    let called;
+    let release;
+    const inFlight = new Promise((resolve) => (called = resolve));
+    const held = new Promise((resolve) => (release = resolve));
+    const told = [];
+    const api = {
+      videos: async () => (mode === "address" ? [{ slug, youtube_video_id: "dQw4w9WgXcQ" }] : []),
+      report: async (_slug, project) => {
+        if (project.stage === "on YouTube") {
+          called();
+          await held;
+        }
+      },
+      compilationDone: async (series) => {
+        told.push(series);
+        if (mode === "compilation") {
+          called();
+          await held;
+        }
+      },
+      settleRuns: async () => {},
+    };
+    const settings = { enabled: true, max_waiting_drafts: 0 };
+    const shared = { busy: new Set(), skipped: new Set(), pendingUntil: new Map() };
+    const first = new Automation(ctx, api, settings, { ...shared });
+    const second = new Automation(ctx, api, settings, { ...shared, secondary: true });
+    const state = () => readJson(path.join(box.work, slug, "auto.json"));
+    const sent = [];
+    for (const [name, lane] of [["first", first], ["second", second]]) {
+      lane.due = () => false;
+      lane.advance = async () => null;
+      // A done video's languages (LANGUAGES.md): a translation whose progress lives only in auto.json.
+      lane.languages = async (video) => {
+        if (video.status !== "done" || video.languages_sent) return null;
+        sent.push(name);
+        video.languages_sent = true;
+        lane.persist(video);
+        return `${video.slug}: languages sent by the ${name} lane`;
+      };
+    }
+
+    const firstUnit = first.step();
+    await inFlight;
+    assert.deepEqual([...shared.busy], [slug], `${mode}: held while the site call is in flight`);
+    // Before: the video was done and free, so the second lane sent its languages and saved them here.
+    assert.equal(await second.step(), null, `${mode}: the other lane leaves it`);
+    assert.deepEqual(sent, [], mode);
+    release();
+    assert.match(await firstUnit, mode === "compilation" ? /^binge-video: the site now knows the compilation of wuxia is done$/ : /^binge-video: on YouTube as dQw4w9WgXcQ; video\.json records it/, mode);
+    assert.deepEqual([...shared.busy], [], `${mode}: let go once the call is over`);
+    assert.deepEqual(told, ["wuxia"], mode);
+    assert.deepEqual([state().status, state().compilation_told], ["done", true], mode);
+    // The next round, the other lane moves it from what was saved: told, and nothing lost.
+    assert.equal(await second.step(), `${slug}: languages sent by the second lane`, mode);
+    assert.deepEqual([state().compilation_told, state().languages_sent], [true, true], `${mode}: the save after the call kept nothing stale`);
+    assert.equal(await first.step(), null, `${mode}: and nothing is done twice`);
+    assert.deepEqual([sent, told], [["second"], ["wuxia"]], mode);
+  }
+});
+
+test("the first lane's bookkeeping tells the site of a compilation from the auto.json it reads once it holds the video, not the copy it listed before an earlier call", async () => {
+  const box = sandbox();
+  const clock = { now: Date.parse("2026-10-07T10:00:00Z") };
+  const { ctx } = context(box, async () => new Response("{}"), clock);
+  // The older one waits on its own (a deferral): the other lane passes it over, held or not.
+  for (const [slug, series, created, wait] of [["older-binge", "wuxia", "2026-10-06T00:00:00Z", { deferred_until: "2026-10-08T00:00:00Z" }], ["newer-binge", "xianxia", "2026-10-07T00:00:00Z", {}]]) {
+    atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "done", created_at: created, compilation: { series }, notes: [], ...wait }));
+  }
+  let called;
+  let release;
+  const inFlight = new Promise((resolve) => (called = resolve));
+  const held = new Promise((resolve) => (release = resolve));
+  const told = [];
+  const api = {
+    videos: async () => [],
+    report: async () => {},
+    // The older compilation's call takes a moment and fails (the site is restarting); the newer one's goes through.
+    compilationDone: async (series) => {
+      told.push(series);
+      if (series === "wuxia") {
+        called();
+        await held;
+        throw new AutomationError("Bad Gateway", { status: 502 });
+      }
+    },
+    settleRuns: async () => {},
+  };
+  const settings = { enabled: true, max_waiting_drafts: 0 };
+  const shared = { busy: new Set(), skipped: new Set(), pendingUntil: new Map() };
+  const first = new Automation(ctx, api, settings, { ...shared });
+  const second = new Automation(ctx, api, settings, { ...shared, secondary: true });
+  const state = (slug) => readJson(path.join(box.work, slug, "auto.json"));
+  const sent = [];
+  for (const [name, lane] of [["first", first], ["second", second]]) {
+    lane.due = () => false;
+    lane.languages = async (video) => {
+      if (video.languages_sent) return null;
+      sent.push(`${name}: ${video.slug}`);
+      video.languages_sent = true;
+      lane.persist(video);
+      return `${video.slug}: languages sent by the ${name} lane`;
+    };
+  }
+
+  // The first lane lists both compilations, holds the older one and waits on its call.
+  const firstUnit = first.step();
+  await inFlight;
+  assert.deepEqual([...shared.busy], ["older-binge"]);
+  // Meanwhile the second lane moves the newer one, saves its languages and lets it go.
+  assert.equal(await second.step(), "newer-binge: languages sent by the second lane");
+  assert.deepEqual([...shared.busy], ["older-binge"]);
+  release();
+  assert.equal(await firstUnit, "newer-binge: the site now knows the compilation of xianxia is done");
+  assert.deepEqual(told, ["wuxia", "xianxia"]);
+  // Before: the first lane saved the newer compilation from the copy it listed, without its languages, and sent them again.
+  assert.deepEqual([state("newer-binge").compilation_told, state("newer-binge").languages_sent], [true, true]);
+  assert.equal(state("older-binge").compilation_told, undefined, "the failed call is not remembered as told");
+  assert.deepEqual([...shared.busy], []);
+  assert.equal(await second.step(), null, "the newer one's languages are not sent again; the older one still waits");
+  assert.deepEqual(sent, ["second: newer-binge"]);
+});
+
+test("the first lane reports a blocked video from the auto.json it reads once it holds it: the lane that blocked it, and saved its own report's outcome since, keeps it", async () => {
+  // "fails": the blocking lane's report failed and it saved a backoff; "succeeds": its report went through.
+  for (const outcome of ["fails", "succeeds"]) {
+    const box = sandbox();
+    const clock = { now: Date.parse("2026-10-07T10:00:00Z") };
+    const { ctx } = context(box, async () => new Response("{}"), clock);
+    atomicWrite(path.join(box.work, "older-blocked", "auto.json"), JSON.stringify({ slug: "older-blocked", status: "blocked", blocked: "an older trouble", blocked_report_pending: true, created_at: "2026-10-01T00:00:00Z", notes: [] }));
+    atomicWrite(path.join(box.work, "newer-video", "auto.json"), JSON.stringify({ slug: "newer-video", status: "active", created_at: "2026-10-02T00:00:00Z", notes: [] }));
+    const gate = () => {
+      const each = {};
+      each.reached = new Promise((resolve) => (each.open = resolve));
+      each.held = new Promise((resolve) => (each.release = resolve));
+      return each;
+    };
+    const blocking = gate();
+    const older = gate();
+    const reports = [];
+    const api = {
+      videos: async () => [],
+      report: async (slug, project) => {
+        reports.push(`${slug}: ${project.stage}`);
+        if (slug === "newer-video" && reports.length === 1) {
+          blocking.open();
+          await blocking.held;
+          if (outcome === "fails") throw new AutomationError("Bad Gateway", { status: 502 });
+        }
+        if (slug === "older-blocked") {
+          older.open();
+          await older.held;
+          throw new AutomationError("Bad Gateway", { status: 502 });
+        }
+      },
+      settleRuns: async () => {},
+    };
+    const settings = { enabled: true, max_waiting_drafts: 0 };
+    const shared = { busy: new Set(), skipped: new Set(), pendingUntil: new Map() };
+    const first = new Automation(ctx, api, settings, { ...shared });
+    const second = new Automation(ctx, api, settings, { ...shared, secondary: true });
+    for (const lane of [first, second]) {
+      lane.due = () => false;
+      lane.languages = async () => null;
+    }
+    first.advance = async () => null;
+    second.advance = async (video) => second.block(video, "a trouble of its own");
+    const state = (slug) => readJson(path.join(box.work, slug, "auto.json"));
+
+    // The second lane blocks the newer video and holds it while it reports.
+    const secondUnit = second.step();
+    await blocking.reached;
+    // The first lane lists both blocked videos, then waits on the older one's report.
+    const firstUnit = first.step();
+    await older.reached;
+    // The second lane's report ends; it saves the outcome and lets the video go.
+    blocking.release();
+    assert.match(await secondUnit, outcome === "fails" ? /^newer-video: blocked — a trouble of its own; could not report it yet$/ : /^newer-video: blocked — a trouble of its own$/, outcome);
+    const saved = state("newer-video");
+    assert.equal(saved.blocked_report_retry_at, outcome === "fails" ? "2026-10-07T10:05:00.000Z" : undefined, outcome);
+    // The older one's report fails, and the first lane's loop comes to the newer one.
+    older.release();
+    assert.equal(await firstUnit, null, outcome);
+    // Before: the copy listed while the second lane still held it was reported at once and saved, its backoff gone.
+    assert.deepEqual(reports, ["newer-video: blocked", "older-blocked: blocked"], `${outcome}: the blocked video is reported once`);
+    assert.deepEqual(state("newer-video"), saved, `${outcome}: what the second lane saved stands`);
+    assert.deepEqual([...shared.busy], [], outcome);
   }
 });
 

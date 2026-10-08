@@ -542,6 +542,21 @@ async def test_non_script_formats_require_null_and_ignore_residual_script_review
         await _composed(site)
 
 
+async def test_drama_without_a_screenplay_review_on_the_site_binds_none(site: Site) -> None:
+    """A brand story, or a drama made with the screenplay gate off: the worker approved the
+    screenplay itself, so the site holds no review to bind, and the batch names none."""
+    batch = await _language_batch(site, video_format="drama")
+    async with site.factory() as session:
+        script = await session.get(VideoReview, batch.script_id)
+        assert script is not None
+        await session.delete(script)
+        await session.commit()
+    await _replace_manifest(site, batch, lambda manifest: manifest["source"].update(script=None))
+    result = await _composed(site)
+    assert set(result.captions) == {"zh-TW", *LOCALES}
+    assert result.approval_pin["languages"]["review_id"] == str(batch.review_id)
+
+
 @pytest.mark.parametrize("missing", ["manifest_identity", "approved_review"])
 async def test_drama_language_batch_requires_its_script_approval(site: Site, missing: str) -> None:
     batch = await _language_batch(site, video_format="drama")
