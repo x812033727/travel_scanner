@@ -133,7 +133,9 @@ test("a lost POST is sent once, and a later run does not send it again until a p
   const io = { stdout: { write: (text) => (out.stdout += text) }, stderr: { write: (text) => (out.stderr += text) } };
   assert.equal(journalCli(["list", "--dir", dir], io), 0);
   assert.match(out.stdout, new RegExp(`^${sha} held .* gemini:Sulafat "一張手寫的發票"`, "m"));
-  assert.match(out.stdout, /1 held/);
+  assert.match(out.stdout, /1 held: check the provider's usage/);
+  assert.match(out.stdout, /rerun the original native command to validate retained complete answers first/);
+  assert.ok(out.stdout.indexOf("retained complete answers first") < out.stdout.indexOf("1 held: check"), "validate a retained answer before deciding whether to clear its hold");
   assert.equal(journalCli(["forget", "--dir", dir, "--sha", "0".repeat(64)], io), 2, "an unknown entry is a usage error");
   assert.equal(journalCli(["forget", "--dir", dir], io), 2);
   assert.equal(journalCli(["list"], io), 2);

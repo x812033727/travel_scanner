@@ -132,5 +132,15 @@ answer to repair local file promotion. This draft does not deploy that change.
   the final pushed head, and no claim of complete-suite green is made.
 - The normal own-ticket done command closed exit 0; the final task format check
   validated 1,653 files, exit 0. Final whitespace and source syntax checks passed.
+- First integrated Linux video-unit run on `b8afb2a0d` failed only the existing
+  ASR/Jev consumer assertions for the CLI count-prefix contract (7 subcases and
+  their parent; 1,833 pass, 8 fail, 2 skip). Recovery cases passed. The list output
+  now emits retained-answer validation first, then preserves the original
+  `held: check the provider's usage` prefix with an unresolved-validation
+  condition. This changes no hold or request semantics. The own list regression
+  checks that order and the existing consumer contract without changing consumers.
+- The affected existing ASR/Jev consumer cases and own lost-POST/list case passed
+  9/9, exit 0 in one targeted run after the output repair. No provider call or
+  broad local rerun; a new exact-head Linux run will verify the complete suite.
 - Private ownership/check/negative-regression evidence is retained under
   `<home>/mokaair-work/windows-journal-recovery-20261008`.

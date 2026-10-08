@@ -633,7 +633,10 @@ export function main(args, { stdout = process.stdout, stderr = process.stderr } 
       stdout.write(`${entry.sha} ${entry.claimed ? "claimed" : entry.status} ${when} ${entry.about}${entry.why ? ` (${entry.why})` : ""}\n`);
     }
     const holds = entries.filter((entry) => !["confirmed", "waiting"].includes(entry.status)).length;
-    if (holds) stdout.write(`${holds} held: rerun the original native command to validate retained complete answers first. If still unresolved, check the provider's usage before explicitly forgetting with --sha; do not forget just to repair local file I/O.\n`);
+    if (holds) {
+      stdout.write("rerun the original native command to validate retained complete answers first; do not forget just to repair local file I/O.\n");
+      stdout.write(`${holds} held: check the provider's usage if native validation is still unresolved, before explicitly forgetting each with --sha\n`);
+    }
     const claimed = entries.filter((entry) => entry.claimed).length;
     if (claimed) stdout.write(`${claimed} claimed by a run that stopped while taking it back: nothing of it went out, and every run holds it until you forget it with --sha\n`);
     const waiting = entries.filter((entry) => entry.status === "waiting" && !entry.claimed).length;
