@@ -1,14 +1,14 @@
 ---
 id: 2026-10-08-video-planners-thumbnail-headline-six
 title: Video planners: thumbnail headline limit 12 to the channel's six (compilation, drama, brand story)
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-fable
+claimed_at: 2026-10-08T02:36:58Z
 created_at: 2026-10-08T03:40:00Z
 completed_at:
-branch:
+branch: claude/focused-hopper-t3zgz9
 depends_on:
   - 2026-10-07-video-thumbnails-one-subject-six-characters
   - 2026-10-07-video-script-rules-outro-with-a
