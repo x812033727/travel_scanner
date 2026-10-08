@@ -1,0 +1,574 @@
+{
+  "schema_version": 1,
+  "kind": "adult-english-encoded-frame-review",
+  "course": "workplace",
+  "status": "passed",
+  "completed_at_utc": "2026-10-08T06:54:17+00:00",
+  "source": {
+    "path": "docs/videos/english-workplace-complete/lessons.json",
+    "sha256": "75b306e8e84e87bbf8c809d0641ee583797678a5f8a5061b6254645bbbf53b39"
+  },
+  "art_check_summary_sha256": "b9b623ab4bc93da5349d86dfa492c651a19ed05980c87d37bba05d4318903aa9",
+  "artifact_paths_relative_to": "course output directory",
+  "reviewer": "adult-English artwork assistant",
+  "scope": {
+    "episodes": [
+      "ep01",
+      "ep12",
+      "ep24",
+      "ep25",
+      "ep36",
+      "ep48"
+    ],
+    "decoded_frames_inspected": 18,
+    "method": "FFmpeg extraction from completed final.mp4 files, followed by direct assistant inspection with view_image.",
+    "selection": "One guided-repeat frame and one waiting/reveal pair per episode. A appears in ep01/ep25, B in ep12/ep36, and C in ep24/ep48.",
+    "timing_basis": "Resolved scene start, demo_start, demo_end and reveal_at values; waiting samples fall inside the response interval.",
+    "full_video_viewing": false,
+    "audio_listening": false,
+    "caption_assessment": "The reserved lower 90 pixels were inspected. Optional CC overlays were not rendered into these PNG samples."
+  },
+  "criteria": [
+    "Embedded English is legible and complete, including descenders, punctuation and guided word backgrounds.",
+    "The waiting snapshot leaves all options neutral; the later snapshot highlights the correct option and prints the answer.",
+    "Course branding and season/stage headers match the source.",
+    "Learning text and artwork remain above the reserved optional-CC area."
+  ],
+  "source_binding": "Some samples were extracted while only a frozen season was available. Every sampled authored episode and its resolved counterpart were revalidated against the final merged source for this report.",
+  "episode_receipt_sha256": {
+    "ep01": "a1b46e82507d866494ea9b13a1777a3418bc0c5a2d62f516bacacc6bb340f191",
+    "ep12": "1d47a32c6690beacde16c6c9bc6bd921953dc14fc4e7a727e1a2ecfe4f5c1ce8",
+    "ep24": "32cd0f1cb2e21208c1b197ee4dbb603748c2f1cfaf6703b102c81f40ba48a51d",
+    "ep25": "a7f2df0bda235ca8a8632ee2cc26a6672dcf65024c8b7ea88353a74bf620708c",
+    "ep36": "5bf9c93082062da1ddb880c8212683bd50bc57bab2c9d557a6a3a5436a886cb3",
+    "ep48": "99acc17fadbe16167753d3a34ade948f6dd7406c22b4f702bfdaff5801cfb902"
+  },
+  "episodes": [
+    {
+      "course": "workplace",
+      "episode": "ep01",
+      "title_en": "Reading a Job Description",
+      "video": "ep01/final.mp4",
+      "video_sha256": "4dedaf1ea2d0edc58776d0b96b9bab0c87fe4b926345a66b631f8a563de4df56",
+      "checks_sha256": "971ddae9f558b270ee9a6099a82cfaf4146367aa9283408b8a5680b34aff852a",
+      "authored_source": "docs/videos/english-workplace-complete/season01.json",
+      "authored_source_sha256": "4608f63265082f02d65fa799bedb7d582b1b7c569b65f9547a208384f89979bf",
+      "authored_episode_sha256": "09ffa204b3966d7975fd74a07b2856dc6fae9a41c27b656e04a85cbb9cd87aff",
+      "authored_fields_match_source": true,
+      "resolved_episode_sha256": "7399efb06df1697bf01af85efa4a76544b1628c0204ca00ef5ccb808c3c2a2c7",
+      "renderer_sha256": "57d70a9f555a482281c126c864b70d3fd20da9943a336c6462b6122fc91fa54b",
+      "batch_complete_observed": true,
+      "batch_status_sha256_at_extraction": "90c5db552bf9fa262813b423fb2482aa409de796ae759ce9c7812a4c0b1d3e2e",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T05:58:51+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep01-s04",
+          "video_seconds_requested": 70.67,
+          "scene_local_seconds": 8.222,
+          "scene_start_seconds": 62.448,
+          "demo_start_seconds": 7.472,
+          "demo_end_seconds": 13.04,
+          "reveal_at_seconds": 18.04,
+          "image": "encoded-qa/ep01-guided.png",
+          "image_sha256": "1d599d3e476085a852e35c1b8ae1349e4676e7d9b0dc5b8d5ddeedd1a94fbf88",
+          "expected_english": "I have relevant writing experience, but I have not used that system.",
+          "expected_choices": [],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep01-s05",
+          "video_seconds_requested": 98.496,
+          "scene_local_seconds": 11.84,
+          "scene_start_seconds": 86.656,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 8.84,
+          "reveal_at_seconds": 14.84,
+          "image": "encoded-qa/ep01-quiz-wait.png",
+          "image_sha256": "043c3b3c9186941e18040f05b701bb76a8c968611efb16e91a9bc3485ea8aa53",
+          "expected_english": "Listen and choose.",
+          "expected_choices": [
+            "Experience with the booking system is preferred, not required.",
+            "This fictional assistant role requires clear written updates.",
+            "A preferred skill does not replace an unmet requirement."
+          ],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep01-s05",
+          "video_seconds_requested": 102.096,
+          "scene_local_seconds": 15.44,
+          "scene_start_seconds": 86.656,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 8.84,
+          "reveal_at_seconds": 14.84,
+          "image": "encoded-qa/ep01-quiz-reveal.png",
+          "image_sha256": "b68331e57f7bdbe88726330f7ee12bded0814ef402aceec7cac96bb7f7749fbc",
+          "expected_english": "Experience with the booking system is preferred, not required.",
+          "expected_choices": [
+            "Experience with the booking system is preferred, not required.",
+            "This fictional assistant role requires clear written updates.",
+            "A preferred skill does not replace an unmet requirement."
+          ],
+          "expected_correct_option": 1
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T05:59:11+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "The WORKPLACE brand and the source season/stage are correct.",
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option A and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      },
+      "authored_episode_matches_final_merged_source": true
+    },
+    {
+      "course": "workplace",
+      "episode": "ep12",
+      "title_en": "From Application to Onboarding",
+      "video": "ep12/final.mp4",
+      "video_sha256": "3f9e316466f5caf5c7dc53a4def0fcabd281a95cb5bba6a6e16d83abc79c2c15",
+      "checks_sha256": "1290e26e1c3f0f957c782fc93be6a6c5bdeb15348c59577aa39790859bd16fcb",
+      "authored_source": "docs/videos/english-workplace-complete/lessons.json",
+      "authored_source_sha256": "75b306e8e84e87bbf8c809d0641ee583797678a5f8a5061b6254645bbbf53b39",
+      "authored_episode_sha256": "28ffc9b8f5bda540f0c88402f8158cec5b83d6eb8e23e120d05b524e04c509aa",
+      "authored_fields_match_source": true,
+      "resolved_episode_sha256": "f8ec71dcc79651fa95c78a2c9da2f28f83d17d63217b6bcc057109d38cd31418",
+      "renderer_sha256": "57d70a9f555a482281c126c864b70d3fd20da9943a336c6462b6122fc91fa54b",
+      "batch_complete_observed": true,
+      "batch_status_sha256_at_extraction": "df8c14a21b4951b2f531fecae45ecee416da72628ba7af28c8afa0033e61a324",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T06:02:30+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep12-s04",
+          "video_seconds_requested": 75.47,
+          "scene_local_seconds": 6.806,
+          "scene_start_seconds": 68.664,
+          "demo_start_seconds": 6.056,
+          "demo_end_seconds": 11.048,
+          "reveal_at_seconds": 16.048,
+          "image": "encoded-qa/ep12-guided.png",
+          "image_sha256": "04baf4a12e204feccf37ea9c6463a89fd762219e7450ea52cca73701344a4bab",
+          "expected_english": "During the interview, I asked how new staff receive feedback.",
+          "expected_choices": [],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep12-s07",
+          "video_seconds_requested": 145.056,
+          "scene_local_seconds": 11.6,
+          "scene_start_seconds": 133.456,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 8.6,
+          "reveal_at_seconds": 14.6,
+          "image": "encoded-qa/ep12-quiz-wait.png",
+          "image_sha256": "c5f78c59c274fc878efbb6722739666d384ef02f918e2f576c8b10a279d7ba49",
+          "expected_english": "Listen and choose.",
+          "expected_choices": [
+            "The fictional role requires clear records and careful follow-up.",
+            "Now I will confirm who reviews my first request summary.",
+            "Consistent communication connects honest evidence with clear working agreements."
+          ],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep12-s07",
+          "video_seconds_requested": 148.656,
+          "scene_local_seconds": 15.2,
+          "scene_start_seconds": 133.456,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 8.6,
+          "reveal_at_seconds": 14.6,
+          "image": "encoded-qa/ep12-quiz-reveal.png",
+          "image_sha256": "1c387fe81e932e76ad881abf928bb49ebfb68678e16f863d5bae2cbfeb9a144f",
+          "expected_english": "Now I will confirm who reviews my first request summary.",
+          "expected_choices": [
+            "The fictional role requires clear records and careful follow-up.",
+            "Now I will confirm who reviews my first request summary.",
+            "Consistent communication connects honest evidence with clear working agreements."
+          ],
+          "expected_correct_option": 2
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T06:02:47+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "The WORKPLACE brand and the source season/stage are correct.",
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option B and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      },
+      "authored_episode_matches_final_merged_source": true
+    },
+    {
+      "course": "workplace",
+      "episode": "ep24",
+      "title_en": "A Week of Clear Communication",
+      "video": "ep24/final.mp4",
+      "video_sha256": "9fb9af18a911070c4ac525de9ce61411ae1332e599b74672271af8cd17359691",
+      "checks_sha256": "cdc549d9c24b8fd892f1c05ed4491d99118acce4bad8e2bdc9c6a42b5f040aa0",
+      "authored_source": "docs/videos/english-workplace-complete/lessons.json",
+      "authored_source_sha256": "75b306e8e84e87bbf8c809d0641ee583797678a5f8a5061b6254645bbbf53b39",
+      "authored_episode_sha256": "4f6eebca4bea1aeb325927529ad39d20fb360ba9170d83fd92a04fe262d32009",
+      "authored_fields_match_source": true,
+      "resolved_episode_sha256": "bdff7b4ed73cf78a569021fb8e08e6ed9b93a127f43dcd3b5d0275bc81edd88f",
+      "renderer_sha256": "57d70a9f555a482281c126c864b70d3fd20da9943a336c6462b6122fc91fa54b",
+      "batch_complete_observed": true,
+      "batch_status_sha256_at_extraction": "b17eb3103d5d7ec5637cb1132519a6214af29e1068fe0feaf5bd5c8f0c160fd9",
+      "completion_basis": "Current batch status and matching full-decode receipt.",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T06:21:46+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep24-s04",
+          "video_seconds_requested": 77.006,
+          "scene_local_seconds": 7.718,
+          "scene_start_seconds": 69.288,
+          "demo_start_seconds": 6.968,
+          "demo_end_seconds": 12.224,
+          "reveal_at_seconds": 17.224,
+          "image": "encoded-qa/ep24-guided.png",
+          "image_sha256": "7fc5a29a80f0184b9c22d283dbaa51389d12ad2b2171444e0b33634fecabe748",
+          "expected_english": "At the meeting, I clarify that the next step is internal review.",
+          "expected_choices": [],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep24-s09",
+          "video_seconds_requested": 191.064,
+          "scene_local_seconds": 12.32,
+          "scene_start_seconds": 178.744,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 9.32,
+          "reveal_at_seconds": 15.32,
+          "image": "encoded-qa/ep24-quiz-wait.png",
+          "image_sha256": "310885883649b7be52fcd62e0a2b1b693c6289258d38cc0079c41c34f320f40c",
+          "expected_english": "Listen and choose.",
+          "expected_choices": [
+            "In this fictional week, the team prepares a new visitor guide.",
+            "Each message should leave the next action and the remaining uncertainty clear.",
+            "I follow up on the missing information without treating silence as approval."
+          ],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep24-s09",
+          "video_seconds_requested": 194.664,
+          "scene_local_seconds": 15.92,
+          "scene_start_seconds": 178.744,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 9.32,
+          "reveal_at_seconds": 15.32,
+          "image": "encoded-qa/ep24-quiz-reveal.png",
+          "image_sha256": "d09039039c6f50d1ec7e1302bcbc075e63b582a4fbddaf803f8bb98f68b59c60",
+          "expected_english": "I follow up on the missing information without treating silence as approval.",
+          "expected_choices": [
+            "In this fictional week, the team prepares a new visitor guide.",
+            "Each message should leave the next action and the remaining uncertainty clear.",
+            "I follow up on the missing information without treating silence as approval."
+          ],
+          "expected_correct_option": 3
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T06:22:17+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "The WORKPLACE brand and the source season/stage are correct.",
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option C and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      },
+      "authored_episode_matches_final_merged_source": true
+    },
+    {
+      "course": "workplace",
+      "episode": "ep25",
+      "title_en": "Agreeing on a Handoff",
+      "video": "ep25/final.mp4",
+      "video_sha256": "e823b27ea4706c13d34ddb480a947dd99bbf60206d10de960d1cde902d8ad104",
+      "checks_sha256": "e3d603f14de5f1075da3c52918f4f1b6d3f9cba924d16c7f43d10d7a0caaf193",
+      "authored_source": "docs/videos/english-workplace-complete/lessons.json",
+      "authored_source_sha256": "75b306e8e84e87bbf8c809d0641ee583797678a5f8a5061b6254645bbbf53b39",
+      "authored_episode_sha256": "6163ccd7c1b532a71598cd06258289d1b438ab210d0054334f65c43c874f75ff",
+      "authored_fields_match_source": true,
+      "resolved_episode_sha256": "6220d6a93060f8bd9a8d77ba9b559c36305854e5b83760a18a3bee050be9d3c5",
+      "renderer_sha256": "57d70a9f555a482281c126c864b70d3fd20da9943a336c6462b6122fc91fa54b",
+      "batch_complete_observed": true,
+      "batch_status_sha256_at_extraction": "01f03e65acc296005633d0a4060583f3460f8e66e61beec011b280932e0346f2",
+      "completion_basis": "Current batch status and matching full-decode receipt.",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T06:30:30+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep25-s04",
+          "video_seconds_requested": 72.902,
+          "scene_local_seconds": 7.478,
+          "scene_start_seconds": 65.424,
+          "demo_start_seconds": 6.728,
+          "demo_end_seconds": 11.696,
+          "reveal_at_seconds": 16.696,
+          "image": "encoded-qa/ep25-guided.png",
+          "image_sha256": "983820bbf529820d1950a186d095633d9c556fbe7c347c048db4ca7e749b73e9",
+          "expected_english": "Please confirm that the links work and the approved prices appear.",
+          "expected_choices": [],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep25-s09",
+          "video_seconds_requested": 185.064,
+          "scene_local_seconds": 12.896,
+          "scene_start_seconds": 172.168,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 9.896,
+          "reveal_at_seconds": 15.896,
+          "image": "encoded-qa/ep25-quiz-wait.png",
+          "image_sha256": "7153eb675ade751f93e8da639e106b2ad8883751bdc78668a59db3100cd94cfe",
+          "expected_english": "Listen and choose.",
+          "expected_choices": [
+            "If anything is missing, please return the checklist before accepting the handoff.",
+            "The draft is ready for review, but the handoff is not complete.",
+            "Please confirm that the links work and the approved prices appear."
+          ],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep25-s09",
+          "video_seconds_requested": 188.664,
+          "scene_local_seconds": 16.496,
+          "scene_start_seconds": 172.168,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 9.896,
+          "reveal_at_seconds": 15.896,
+          "image": "encoded-qa/ep25-quiz-reveal.png",
+          "image_sha256": "8c39bd2a38cbfb89dad6eb83fb2941cd4b47ba5a0b3bc5b24b11dcd974ef1903",
+          "expected_english": "If anything is missing, please return the checklist before accepting the handoff.",
+          "expected_choices": [
+            "If anything is missing, please return the checklist before accepting the handoff.",
+            "The draft is ready for review, but the handoff is not complete.",
+            "Please confirm that the links work and the approved prices appear."
+          ],
+          "expected_correct_option": 1
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T06:31:01+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "The WORKPLACE brand and the source season/stage are correct.",
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option A and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      },
+      "authored_episode_matches_final_merged_source": true
+    },
+    {
+      "course": "workplace",
+      "episode": "ep36",
+      "title_en": "A Project Recovery Brief",
+      "video": "ep36/final.mp4",
+      "video_sha256": "4de96aa4b409bd93f0240c0be2bb06f0854a16129429f101c4f651d6ab6e7dfa",
+      "checks_sha256": "11ab834f6953dd6eda44946f3c21a0e7ef402fb529ce84677f20058dd79e4f1a",
+      "authored_source": "docs/videos/english-workplace-complete/lessons.json",
+      "authored_source_sha256": "75b306e8e84e87bbf8c809d0641ee583797678a5f8a5061b6254645bbbf53b39",
+      "authored_episode_sha256": "70c9cfbdedf0f2bd69762b111caa572b0a09ba844d6f12d97a54fb1b58ba08fd",
+      "authored_fields_match_source": true,
+      "resolved_episode_sha256": "6a02834db1ce1b19223e93696e05b931d67358cac79d06708a730d1ae1ea751e",
+      "renderer_sha256": "57d70a9f555a482281c126c864b70d3fd20da9943a336c6462b6122fc91fa54b",
+      "batch_complete_observed": true,
+      "batch_status_sha256_at_extraction": "0bbd19985f4b468d6aeb1917cd0ab50ea3d37f2c73f80a5f3b41b8c77c9f8c5d",
+      "completion_basis": "Current batch status and matching full-decode receipt.",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T06:45:54+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep36-s04",
+          "video_seconds_requested": 77.222,
+          "scene_local_seconds": 6.902,
+          "scene_start_seconds": 70.32,
+          "demo_start_seconds": 6.152,
+          "demo_end_seconds": 11.816,
+          "reveal_at_seconds": 16.816,
+          "image": "encoded-qa/ep36-guided.png",
+          "image_sha256": "02ddda61a331d825b984a91d523c4cf8786b5facc16e83b967b1e0661fd112c2",
+          "expected_english": "We can release the essential guide first and add the optional inserts later.",
+          "expected_choices": [],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep36-s07",
+          "video_seconds_requested": 152.4,
+          "scene_local_seconds": 12.68,
+          "scene_start_seconds": 139.72,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 9.68,
+          "reveal_at_seconds": 15.68,
+          "image": "encoded-qa/ep36-quiz-wait.png",
+          "image_sha256": "9c5efc90e683f5f7788d64e2e9445d33c0524de4830b1946a690a5e8832abd79",
+          "expected_english": "Listen and choose.",
+          "expected_choices": [
+            "The welcome pack is delayed because the approved contact list arrived late.",
+            "That protects the start date but requires a separate delivery for the inserts.",
+            "We can release the essential guide first and add the optional inserts later."
+          ],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep36-s07",
+          "video_seconds_requested": 156.0,
+          "scene_local_seconds": 16.28,
+          "scene_start_seconds": 139.72,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 9.68,
+          "reveal_at_seconds": 15.68,
+          "image": "encoded-qa/ep36-quiz-reveal.png",
+          "image_sha256": "37445e9c8e0dfec305df49442f382f9bf258023f4e40e74d13172a327e749dc7",
+          "expected_english": "That protects the start date but requires a separate delivery for the inserts.",
+          "expected_choices": [
+            "The welcome pack is delayed because the approved contact list arrived late.",
+            "That protects the start date but requires a separate delivery for the inserts.",
+            "We can release the essential guide first and add the optional inserts later."
+          ],
+          "expected_correct_option": 2
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T06:46:23+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "The WORKPLACE brand and the source season/stage are correct.",
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option B and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      },
+      "authored_episode_matches_final_merged_source": true
+    },
+    {
+      "course": "workplace",
+      "episode": "ep48",
+      "title_en": "The Final Business Proposal",
+      "video": "ep48/final.mp4",
+      "video_sha256": "30cec56eb53b066b2c7c2181f68635a4a18c82b856b2cd236b0bcbee38d17feb",
+      "checks_sha256": "382f8d8f97c07a456a22c924dc4eb1ceb9b63156c86818096efb26aec81fc9c0",
+      "authored_source": "docs/videos/english-workplace-complete/lessons.json",
+      "authored_source_sha256": "75b306e8e84e87bbf8c809d0641ee583797678a5f8a5061b6254645bbbf53b39",
+      "authored_episode_sha256": "27570b1801e20ff0ccaee3af02a3ce8daacf4bb79c22a974b54ed47272e8d914",
+      "authored_fields_match_source": true,
+      "resolved_episode_sha256": "b24e9233fe5897398da4ff67368f6ead91ba0fd1ce3e217e772a409317b6c28e",
+      "renderer_sha256": "57d70a9f555a482281c126c864b70d3fd20da9943a336c6462b6122fc91fa54b",
+      "batch_complete_observed": true,
+      "batch_status_sha256_at_extraction": "2f208a6124b8c7df06953df37561f8234157b17a02854f3eb6fdd5e73dcfd366",
+      "completion_basis": "Current batch status and matching full-decode receipt.",
+      "full_decode_recorded": true,
+      "extracted_at_utc": "2026-10-08T06:53:46+00:00",
+      "frames": [
+        {
+          "phase": "guided",
+          "scene": "ep48-s04",
+          "video_seconds_requested": 86.054,
+          "scene_local_seconds": 7.67,
+          "scene_start_seconds": 78.384,
+          "demo_start_seconds": 6.92,
+          "demo_end_seconds": 13.784,
+          "reveal_at_seconds": 18.784,
+          "image": "encoded-qa/ep48-guided.png",
+          "image_sha256": "60ff4ff533726ad13eae97e2a499f23f13bf7e5d38d76a87d4ef24a965c302e1",
+          "expected_english": "The fictional review found missing decision owners, but it did not measure long-term results.",
+          "expected_choices": [],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-wait",
+          "scene": "ep48-s09",
+          "video_seconds_requested": 217.632,
+          "scene_local_seconds": 13.736,
+          "scene_start_seconds": 203.896,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.736,
+          "reveal_at_seconds": 16.736,
+          "image": "encoded-qa/ep48-quiz-wait.png",
+          "image_sha256": "a5d07c05df0b2c61f7b0fbbc43345c1cf50363b512b85b9cc6c2e4180927c340",
+          "expected_english": "Listen and choose.",
+          "expected_choices": [
+            "I recommend a limited pilot of the shared briefing template for the project office.",
+            "The fictional review found missing decision owners, but it did not measure long-term results.",
+            "If a reviewer accepts the work, we can test the template without removing the quality check."
+          ],
+          "expected_correct_option": null
+        },
+        {
+          "phase": "quiz-reveal",
+          "scene": "ep48-s09",
+          "video_seconds_requested": 221.232,
+          "scene_local_seconds": 17.336,
+          "scene_start_seconds": 203.896,
+          "demo_start_seconds": 3.848,
+          "demo_end_seconds": 10.736,
+          "reveal_at_seconds": 16.736,
+          "image": "encoded-qa/ep48-quiz-reveal.png",
+          "image_sha256": "d8c4c6fe6be406c8c413817fdc71d1f7a32c19221632bf1b530cd131dde8199d",
+          "expected_english": "If a reviewer accepts the work, we can test the template without removing the quality check.",
+          "expected_choices": [
+            "I recommend a limited pilot of the shared briefing template for the project office.",
+            "The fictional review found missing decision owners, but it did not measure long-term results.",
+            "If a reviewer accepts the work, we can test the template without removing the quality check."
+          ],
+          "expected_correct_option": 3
+        }
+      ],
+      "manual_frame_review": {
+        "status": "passed",
+        "reviewed_at_utc": "2026-10-08T06:54:17+00:00",
+        "method": "Direct view_image inspection of three PNG frames extracted from completed final.mp4.",
+        "observations": [
+          "The WORKPLACE brand and the source season/stage are correct.",
+          "Embedded English is clear and complete, including punctuation, descenders and guided word backgrounds.",
+          "The waiting snapshot keeps all three choices neutral and displays Listen and choose.",
+          "The reveal snapshot highlights correct option C and prints the full answer.",
+          "Learning text and artwork stay above the lower 90 pixels reserved for optional CC."
+        ],
+        "scope": "Three selected frames only; no full-video viewing or audio listening claim. Optional subtitle overlays are not rendered in these samples."
+      },
+      "authored_episode_matches_final_merged_source": true
+    }
+  ]
+}
