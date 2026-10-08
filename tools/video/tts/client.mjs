@@ -2,9 +2,11 @@
 //
 // Failures are sorted by who can fix them, which is what the CLI's exit code reports: the owner
 // (a revoked token, the card not filled in, a voice not on the allowlist), the service (budget
-// spent, Azure down), or nobody right now (throttling, retried with the server's Retry-After).
+// spent, Azure down), or nobody right now (throttling, retried after the server's Retry-After, or
+// after the limit's whole window when a host from before that header sends none).
 // A paid request (speech, speech/transcribe, speech/judge) is sent again only when it never reached
 // the API or the API settled it; one that went out and lost its answer stops (SPEECH_UNCERTAIN).
+import { AsyncLocalStorage } from "node:async_hooks";
 import { createHash } from "node:crypto";
 import { NARRATION_LOCALE } from "../core/schema.mjs";
 import { toNarrationRate } from "./wav.mjs";
@@ -31,13 +33,19 @@ export class SpeechError extends Error {
 }
 
 const OWNER_CODES = new Set(["video_tool_token_invalid", "video_speech_not_configured", "video_speech_voice_not_allowed"]);
+// Jev's answer when its key or URL is not set (apps/api/app/ai/jev.py jev_client), raised before
+// any Jev call or quota: a setting for the owner, with nothing that may have run. Only with its
+// 503; the code with another status came from something else and stays uncertain.
+const JEV_NOT_SET = { status: 503, code: "provider_unavailable" };
+const ownersAnswer = (status, code) => status === 401 || OWNER_CODES.has(code) || (status === JEV_NOT_SET.status && code === JEV_NOT_SET.code);
 const RETRYABLE_CODES = new Set(["video_speech_upstream_busy", "rate_limit_exceeded", "video_speech_upstream_failed", "upstream_unavailable"]);
 // A paid request's 5xx the API answers itself (apps/api/app/video_speech/admin_api.py; synthesis
-// gives the reserved characters back first), retried as before. Settled only when the API reached
-// the provider's answer or never connected: `video_speech_upstream_failed` and
-// `video_judge_upstream_failed` also cover a provider read timeout or dropped answer after the
-// request went out (any httpx.HTTPError), which may have been billed, and are still resent until
-// 2026-10-05-speech-api-tells-a-provider-answer gives that case its own code.
+// gives the reserved characters back first), retried as before: the API reached the provider's
+// answer, or never connected to it. A provider answer lost after the request went out (a read
+// timeout, a dropped connection) is the API's 504 `video_speech_upstream_lost`, and a Jev call
+// whose outcome it cannot tell its 502 `video_judge_outcome_uncertain`; neither is listed, so both
+// are uncertain here like any 5xx not listed. A host from before the 504 answers
+// `video_speech_upstream_failed` for a lost answer too, which this client resends as it always did.
 const SETTLED_CODES = new Set(["video_speech_upstream_busy", "video_speech_upstream_failed", "video_speech_upstream_rejected_key", "video_judge_upstream_failed"]);
 // The speech routes' own 502 `upstream_unavailable` (apps/web/app/api/video/speech/forward.ts) is
 // an API they never reached, so nothing ran and it is retried as well. Since #1272 they answer a
@@ -45,9 +53,12 @@ const SETTLED_CODES = new Set(["video_speech_upstream_busy", "video_speech_upstr
 // uncertain here like any 5xx not listed). A host from before that answers this 502 for both, so
 // this client needs a host that serves #1272 (production does since c12e159d0, deployed
 // 2026-10-05). Only the 502: no speech route answers the code with another status, so a 503
-// `upstream_unavailable` came from something else and stays uncertain.
-const NEVER_REACHED = { status: 502, code: "upstream_unavailable" };
-const settled = (status, code) => SETTLED_CODES.has(code) || (status === NEVER_REACHED.status && code === NEVER_REACHED.code);
+// `upstream_unavailable` came from something else and stays uncertain. The API's 503
+// `rate_limit_unavailable` (Redis could not count the call, app/infra.py
+// `enforce_named_rate_limit`) is a refusal too: `video_tool` checks the token's limit before
+// any handler runs, so nothing reached a provider. Only with its 503, as for the 502.
+const NEVER_RAN = [{ status: 502, code: "upstream_unavailable" }, { status: 503, code: "rate_limit_unavailable" }];
+const settled = (status, code) => SETTLED_CODES.has(code) || NEVER_RAN.some((answer) => answer.status === status && answer.code === code);
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "EHOSTUNREACH", "ENETUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);
 // Answers that do not change by asking again in this run, whatever their status: the server has no
@@ -76,9 +87,43 @@ async function problemOf(response) {
   }
 }
 
-function retryDelayMs(response, attempt) {
+// The routes' own limit (apps/api/app/video_speech/admin_api.py video_tool): a fixed window of 60
+// seconds per token, shared by every route the token calls and both worker lanes. Its 429 says when
+// the window opens again (Retry-After). One without the header, from a host before it, has opened
+// again at the latest a window later; the extra second covers the window's edge.
+export const RATE_WINDOW_MS = 61_000;
+// The longest wait one retry sits through. A longer Retry-After (the transcriber's hourly limit, a
+// provider's quota) would meet the same refusal again within this run, so it is told at once, as
+// the service's (exit 4), for the caller to come back to later.
+export const MAX_RETRY_WAIT_MS = 90_000;
+
+// What a paid request in `withPaidWaits` reports of its waits between two tries.
+const paidWaits = new AsyncLocalStorage();
+
+/**
+ * Run `send` with `hooks` told of each wait a paid request in it sits out before trying again:
+ * `waiting({ status, code, ms })` before the sleep, and `resending()` after it, before the next
+ * POST, which may throw to stop the request there. A paid request waits only after answers that
+ * settled it (it never reached the API, or the API refused it or answered for it), so one found
+ * waiting by a run that did not make it can be sent again. tts/speech-journal.mjs records it.
+ */
+export const withPaidWaits = (hooks, send) => paidWaits.run(hooks, send);
+
+async function pause(sleep, ms, paid, why) {
+  const hooks = paid ? paidWaits.getStore() : undefined;
+  hooks?.waiting?.({ ...why, ms });
+  try {
+    await sleep(ms);
+  } finally {
+    hooks?.resending?.();
+  }
+}
+
+function retryDelayMs(response, attempt, code = "") {
   const header = Number(response?.headers.get("retry-after"));
-  if (Number.isFinite(header) && header > 0) return Math.min(header, 60) * 1000;
+  if (Number.isFinite(header) && header > 0) return header * 1000;
+  // Retries 1, 2, 4 and 8 seconds apart all land inside the window that refused the first.
+  if (response?.status === 429 && code === "rate_limit_exceeded") return RATE_WINDOW_MS;
   return Math.min(2 ** attempt, 30) * 1000;
 }
 
@@ -94,13 +139,14 @@ async function call({ site, token, path, init, fetchImpl, sleep, attempts, paid 
     } catch (error) {
       if (paid && !neverSent(error)) throw uncertain(path, init.body, error.cause?.message ?? error.message);
       last = new SpeechError(`cannot reach ${site}: ${error.message}`, { code: "network" });
-      await sleep(retryDelayMs(null, attempt));
+      if (attempt === attempts - 1) break;
+      await pause(sleep, retryDelayMs(null, attempt), paid, { status: 0, code: "network" });
       continue;
     }
     if (response.ok) return response;
     const problem = await problemOf(response);
     const message = problem.detail || `HTTP ${response.status}`;
-    if (response.status === 401 || OWNER_CODES.has(problem.code)) throw new SpeechError(message, { status: response.status, code: problem.code, who: "owner" });
+    if (ownersAnswer(response.status, problem.code)) throw new SpeechError(message, { status: response.status, code: problem.code, who: "owner" });
     // A spent budget stays spent for the rest of the month (speech) or day (Jev): do not retry.
     if (problem.code === "video_speech_budget_exhausted" || problem.code === "jev_budget_exhausted" || FINAL_CODES.has(problem.code)) {
       throw new SpeechError(message, { status: response.status, code: problem.code });
@@ -110,7 +156,11 @@ async function call({ site, token, path, init, fetchImpl, sleep, attempts, paid 
     }
     last = new SpeechError(message, { status: response.status, code: problem.code });
     if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;
-    await sleep(retryDelayMs(response, attempt));
+    // A 429 is the API's refusal before any provider call, paid route or not, so asking again is
+    // safe; nothing waits after the last attempt, or longer than one retry should.
+    const wait = retryDelayMs(response, attempt, problem.code);
+    if (attempt === attempts - 1 || wait > MAX_RETRY_WAIT_MS) throw last;
+    await pause(sleep, wait, paid, { status: response.status, code: problem.code });
   }
   throw last;
 }

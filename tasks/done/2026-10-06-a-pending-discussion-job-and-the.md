@@ -1,13 +1,13 @@
 ---
 id: 2026-10-06-a-pending-discussion-job-and-the
 title: A pending discussion job and the bookkeeping's site calls do not hold their video
-status: open
+status: done
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-bookkeeping
+claimed_at: 2026-10-07T23:20:39Z
 created_at: 2026-10-06T13:39:27Z
-completed_at:
+completed_at: 2026-10-08T00:38:55Z
 branch:
 depends_on:
   - 2026-10-06-a-failing-video-is-deferred
@@ -52,7 +52,7 @@ while another step has something of that video in flight.
       request is sent for that video and its own stages wait; the discussion's answer is taken on
       a later round, and the video moves again after it. (Done in PR #1342, in the repair of its
       second review; see Notes. What is left of this ticket is the second item.)
-- [ ] No step of the first lane's bookkeeping saves `auto.json` for a video another lane may have
+- [x] No step of the first lane's bookkeeping saves `auto.json` for a video another lane may have
       taken since the step read it.
 
 ## Steps
@@ -63,11 +63,11 @@ while another step has something of that video in flight.
       receipt store whether the video has an unfinished writer journal before moving it. Decide
       which with a test that owns the sequence: the owner's line, a pending `discuss` job, the
       owner's rejection, the next round. (Both, in PR #1342.)
-- [ ] `bookkeeping()`: hold the video in `busy` around `recordVideoId` and `tellCompilationDone`
+- [x] `bookkeeping()`: hold the video in `busy` around `recordVideoId` and `tellCompilationDone`
       (a `try`/`finally`, as the retry acknowledgement does), or have them save before the await
       and nothing after it. Read `auto.json` again once the video is held, as `stepUnit` now does:
       each loop lists the states before its first await.
-- [ ] Tests in `automation.test.mjs` (two lanes, the site call held in flight). The discussion
+- [x] Tests in `automation.test.mjs` (two lanes, the site call held in flight). The discussion
       sequence is in `series.test.mjs` since PR #1342.
 
 ## How to verify
@@ -98,3 +98,58 @@ node --test tools/video/automation/automation.test.mjs tools/video/automation/se
   unit, before the video's own stages, while the other lanes leave the video to it (`stepUnit`).
   `stepUnit` also reads `auto.json` again once it holds a video, which is the guard the second
   item's loops still lack.
+- 2026-10-07 (claude-opus-5-5-bookkeeping), the second item. `flow.mjs` `holding(slug, act)` holds
+  a video in `busy` (none when another lane already does), reads its `auto.json` once held, and
+  lets it go when `act` is over, as `firstOutline` and the retry acknowledgement hold theirs.
+  `bookkeeping()`'s pasted-address loop (`recordVideoId`) and its untold-compilation loop
+  (`tellCompilationDone`) now act through it, each re-checking its condition on the copy read
+  once held. Before, a second lane could take the video during the site call (a done video's
+  languages) and save its progress, which the first lane's save after the call wrote over; and
+  a loop that listed the videos before an earlier iteration's await could save a copy another
+  lane had moved on since.
+  - The blocked-report loop goes through it too (after the review, below). The drop loop has no
+    await between its listing and its save. The retry loop is left as it is: its unheld awaits
+    touch only videos blocked on disk, which no other lane takes, and a copy it listed before an
+    earlier video's RUN_PENDING can differ from the saved one only in the report fields, which
+    the retry deletes; a retry request the first lane has not consumed cannot be on the site
+    for a video another lane is blocking right now.
+  - Tests (`automation.test.mjs`): the site call held in flight, as a compilation's
+    `compilationDone` and as a pasted address's "on YouTube" report followed by
+    `compilationDone`: the other lane leaves the video, and nothing it saves is lost; a
+    compilation whose call failed while the other lane moved the next one (the older one
+    deferred, so the other lane passes it over held or not): that one is told from the
+    `auto.json` read once held, with its languages kept; and a blocked video's report (below).
+    Each fails on the old code, and the mutations "held, the listed copy kept" and "read again,
+    not held" are each caught.
+  - The automation test the pending-reason ticket added wrapped `site.fetchImpl` in a function
+    that adds nothing; that line is removed here (noted when that ticket was closed, in
+    tasks/done/2026-10-05-video-writer-pending-transport-reason.md).
+- 2026-10-07, after the independent review (claude-opus-5-5-bookkeeping). Three findings, all
+  minor, each confirmed by a second agent:
+  - The blocked-report loop listed the videos once and reported each from that copy after an
+    earlier video's report had failed. Another lane could block a video, be listed while it
+    still held it and reported, then save its report's outcome (a 5-minute backoff after a
+    failed report, or the pending flag cleared) and let it go: the first lane reported it again
+    at once from the copy it listed and saved that copy, the backoff gone. The Note above said a
+    lane still holding the video fails `free`; true, but `free` is asked when the loop reaches
+    the video, not when it listed it. The loop now acts through `holding` with its condition
+    (`unreported`) checked again on the copy read once held. Test: the other lane's report
+    failing and succeeding; before, the video was reported twice and its backoff erased.
+    Left as it is: right after another lane's successful report, a site list fetched at the
+    start of the unit can still read the video as not blocked and report it once more (the
+    same content, nothing paid or moved).
+  - The second test's "Before:" described a mutant: on the old code the other lane simply took
+    the video whose call was in flight. Its older compilation is now deferred, so the old code
+    fails on what the comment says (the newer one's languages written over and sent again).
+  - The Note's reason for leaving the blocked-report loop, corrected above.
+  - Reviewed and sound: no lane's busy entry is deleted by another, busy is let go on every
+    throw, the re-check on the re-read copy, the return lines, and that nothing else calls
+    recordVideoId or tellCompilationDone outside a held unit. Not changed (older than this
+    ticket): recordVideoId takes no project lease and does not look at the video's STOP file.
+- 2026-10-08, closed after the independent duration re-bind `80af0fe4` (PASS, DURATION_ONLY,
+  reviewer `claude-pr-review-bookkeeping`). Its notes outside duration: a work directory whose
+  auto.json names another slug is now skipped by the three loops, as `stepUnit` already skips
+  it (before, the copy was acted on and saved under the named slug's directory); the
+  untold-compilation line names the listed copy's series, which only compilation.mjs sets, when
+  it makes the compilation; and the older gaps above (no project lease or STOP check in
+  recordVideoId) stand.

@@ -9,7 +9,7 @@ import { existsSync, mkdirSync, readdirSync, renameSync, rmSync, writeFileSync }
 import path from "node:path";
 import { parseArgs } from "node:util";
 
-import { burnIn, hasPictures, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, resolveSfx, sfxHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
+import { burnIn, hasPictures, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, resolveSfx, sfxHash, shotScenes, stillShotScenes, subtitlesHash } from "../core/drama.mjs";
 import { hasAnimePolicy, runtimePolicyHash } from "../core/anime-policy.mjs";
 import { sha256File } from "../core/approvals.mjs";
 import { animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems } from "../core/duration.mjs";
@@ -17,7 +17,7 @@ import { presentationTimeline, selectBrandingForBuild } from "../core/branding.m
 import { productionClipProblems } from "../core/lint.mjs";
 import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
-import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
+import { ARTIFACTS, keyframeProblems, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
 import {
   bedLevel,
@@ -201,6 +201,23 @@ async function mediaInputs(doc, workdir, workBase, manifest, speech, visual) {
       return { problem: "clips/manifest.json is missing or was made for an older script or look; run clips first" };
     }
     keyframes = readJson(path.join(workdir, ARTIFACTS.keyframes), null);
+    // A still shot is cut from its selected keyframe, the record drama.mjs layoutDrama takes (the
+    // keyframes manifest's, else the clips manifest's), and its segment is keyed on that record's
+    // hash: the bytes must still be those, since a later keyframes run may have drawn over the same
+    // file name, and the two manifests must agree on which picture it is.
+    for (const scene of stillShotScenes(doc)) {
+      const kept = keyframes?.shots?.[scene.id];
+      const recorded = clips.shots?.[scene.id]?.still ? clips.shots[scene.id] : null;
+      const record = kept ?? recorded;
+      if (!record?.file) continue; // layoutDrama names a still with no keyframe
+      if (kept && recorded && (kept.file !== recorded.file || kept.sha256 !== recorded.sha256)) {
+        return { problem: `still shot ${scene.id}: keyframes/manifest.json selects ${kept.file} and clips/manifest.json ${recorded.file}; run clips again so they agree` };
+      }
+      const file = path.resolve(workdir, record.file);
+      if (!existsSync(file) || await sha256File(file) !== record.sha256) {
+        return { problem: `still shot ${scene.id} selected picture has changed: ${record.file}; run keyframes and clips again or restore the approved picture` };
+      }
+    }
   } else if (pictures) {
     keyframes = readJson(path.join(workdir, ARTIFACTS.keyframes), null);
     if (!keyframes || keyframes.look_hash !== look || keyframes.pictures_hash !== picturesHash(doc)) {
@@ -210,6 +227,11 @@ async function mediaInputs(doc, workdir, workBase, manifest, speech, visual) {
     if (missing.length) return { problem: `keyframes/manifest.json has no picture for ${missing.join(", ")}; run keyframes first` };
     const waiting = shotScenes(doc).filter((scene) => keyframes.shots[scene.id].needs_review).map((scene) => scene.id);
     if (waiting.length) return { problem: `${waiting.join(", ")} failed the judge (needs_review in keyframes/manifest.json); fix the prompts and run keyframes again` };
+    // The manifest may be current while a selected file was drawn over since (later takes reuse
+    // the file names): the bytes are checked before ffmpeg runs or a segment cached under the
+    // manifest's hash is reused.
+    const changed = (await keyframeProblems({ doc, manifest: keyframes, workdir, allowNeedsReview: true })).filter((problem) => /selected picture (has changed|is missing)|has no selected picture/.test(problem));
+    if (changed.length) return { problem: `${changed.join("; ")}; run keyframes again or restore the approved pictures` };
   }
   return { look, subtitles, clips, keyframes, music: sound.music, track: sound.track, sfx: effects.sfx };
 }
