@@ -2607,6 +2607,102 @@ PASS is DURATION_ONLY for the two rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Branch next-bookkeeping bookkeeping hold increment: 2 files (2026-10-08)
+
+Reviewer: `claude-pr-review-bookkeeping`. Author: kept as `claude-fable-5-1-video-unstuck`, the receipt's current author field. The change is two commits on branch next-bookkeeping for the second item of the task `2026-10-06-a-pending-discussion-job-and-the`, written by its owner `claude-opus-5-5-bookkeeping`: `2f691304` ("fix(video): the first lane's bookkeeping holds a video while it waits on the site") and `40d8f459` ("fix(video): review fixes for the bookkeeping hold: the blocked report reads the video once held, and the stale-copy test shows the old loss"). They follow the claim commit `f9713c2d`, which changes only the task file. Scope: DURATION_ONLY for the two changed bindings below. The reviewer wrote none of the three commits, judged each bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: `87e93c01`, the claim commit's parent, a merge of main into claude/sharp-bardeen-ob6fn9. Its first parent is `885a4113` ("chore(tasks): close the pending writer's reason task"), whose parent `ad51abda` is the receipt commit of the "Branch next-pending-reason pending writer's reason increment" above, so that commit is an ancestor of `87e93c01`. The second parent is `af596412` (#1371), and the main side brings it and `7524c259` (#1370). `git diff 885a4113 87e93c01` lists 58 paths: news and article-localization code, tests and documents under apps/api, apps/web, docs/ and tools/article-localization, the article-localization skill, and task files. None of them is bound, and `git diff 885a4113 87e93c01 -- docs/videos/long-form/ tools/video/ .agents/skills/youtube-video .claude/skills/youtube-video` is empty. review.md and review.json are the same blobs at both revisions. At `885a4113` and at `87e93c01` all 108 bindings agree with the receipt, the table and the bytes, and `node tools/video/long-form/cli.mjs check` passes in a scratch tree made with `git archive 87e93c01`. review.md (809,500 bytes, no CR byte, no BOM) hashes to the receipt's `report_sha256`, `510f3efff32be15386822ba8d37fc7dcdadbeb23163139ee0d9fe111623547b9`, at both and still at `40d8f459`. The hashing was done by script, on blobs exported with `git show`. At `40d8f459` 106 bindings still agree and two do not: tools/video/automation/flow.mjs and automation.test.mjs. The working tree's copies of the two equal `40d8f459`'s and hold no CR byte and no BOM. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/automation.test.mjs; stale duration review binding: tools/video/automation/flow.mjs` and nothing else. The whole of `git diff 87e93c01 40d8f459` is the two bound files and the task's own file. Nothing under docs/videos/long-form/, tools/video/long-form/, tools/video/core/, tools/video/qa/ or apps/ changes. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with two hashes rebound and the other 106 unchanged.
+
+What the change is. The first lane's `bookkeeping()` (flow.mjs) runs before any video's own unit. It handles the owner's drops and retries, blocked reasons the site has not taken, addresses the owner pasted on /admin/videos, and compilations the site has not heard are done. Three of its loops await the site and then save auto.json:
+
+- `reportBlocked` sends a "blocked" report, then clears the pending flag or saves a 5-minute `blocked_report_retry_at`.
+- `recordVideoId` writes youtube.video_id into video.json and saves the state as done. It then sends an "on YouTube" report and, for a compilation, calls `tellCompilationDone`.
+- `tellCompilationDone` calls `compilationDone`, then saves `compilation_told`.
+
+Until this change these loops held nothing, and each listed the videos once before its first await. A second lane could take the video during the call (a done video's languages) and save, and the first lane's save after the call wrote its older copy over that. A copy listed before an earlier video's call could also be saved after another lane had moved the video on. Now:
+
+- `holding(slug, act)` (1511–1520 at the head) returns null when the shared `busy` set already has the slug. Otherwise it adds the slug and reads auto.json again (`readJson(…, null)`). It calls `act` on that copy when the copy's `slug` matches, and resolves to null when it does not. It deletes the slug in a `finally`.
+- The blocked-report loop's condition becomes the predicate `unreported` (1465–1472): the same tests in the same order, with the backoff test as its return value. The loop skips a listed copy that fails `unreported` or `free`, and otherwise calls `holding` with `unreported(state) && this.reportBlocked(state)` (1476–1480).
+- The pasted-address loop (`unrecorded`, 1486–1490) and the untold-compilation loop (`untold`, 1492–1498) do the same with `recordVideoId` and `tellCompilationDone`. The untold loop's line names `listed.compilation.series`, which only compilation.mjs sets, when it makes the compilation.
+- The drop and retry loops are byte-unchanged. So are `reportBlocked`, `recordVideoId`, `tellCompilationDone` and `report`.
+
+This section asks only whether any of it reaches a length rule.
+
+Findings, tools/video/automation/flow.mjs (+41/−12, 236,889 → 238,560 bytes, 3,868 → 3,897 lines; `fd00cb91c8af55d1ea12a98238b4a3ce8eff76aceecdcef3079d8660b04a655d` → `abcfa8294fdafe5c57359125a07e53a72278d4eeb75649e23baf81e3e3056254`). The first commit has +29/−6 and the second +14/−8. Every changed line is in six hunks between 1465 and 1521 at the head, from the blocked-report loop of `bookkeeping()` to the end of the new `holding`. The duration code sits outside them:
+
+- the `effectiveEpisodeMinutes` and `minEpisodeMinutes` imports (24, 29);
+- `slidesMinutes` and `episodeMinutes` (63–69);
+- the anime `body_target_seconds / 60` settlement (490);
+- `planPayload`'s `target_minutes` (1722);
+- the drama request and series episode targets (1935–2069);
+- the writer, re-plan and lint-fix targets (2489–2518, 2854).
+
+The file's lines naming the 18 duration terms of the earlier increments are the same 20 lines, with the same text, at both revisions. The broad scan (minute, second, frame, fps, duration, runtime, timeline, timing, window, target, body, 480, 600, 780, 14400, 14,400, MIN_EPISODE, formatClock, policy, manual_review, process.env, 分鐘, 秒, 時長, 片長, tempo, speech_hash, total_frames, measured, clock) matches 172 lines at the baseline and 173 at the head. They are the same 172 plus the doc comment's "a second lane". Widened with qa, slot, floor, assemble, package, final, compile, gate, errors, lint, length, limit, budget, request_key and receipt, it finds in the changed lines only that comment and `finally`.
+
+What the change can reach:
+
+- Whether an act runs. At both revisions a loop acts on a video only when its listed copy passes the loop's condition and no lane holds it (`free`). Nothing is awaited between `free` and `holding`'s own check. At each video the loop comes to, the head calls the act only where the baseline would call it, and only when the copy read once held passes the same condition too. When that second test fails, the head goes on to the next video. At the same point the baseline acted on its older copy, and when the act succeeded it ended the unit. A unit that goes on does what it does after any bookkeeping loop that finds nothing: it moves the videos' own stages, which decide as before. The loops' order and early returns are unchanged, and so is the value `stepUnit` reads (`if (found) return found`). `holding` resolves to `act`'s value, or to null where `free` or the condition would skip.
+- What the acts write. They write `blocked_report_pending` and `blocked_report_retry_at`; video.json's `youtube.video_id`, `status: "done"` and `youtube_video_id`; and `compilation_told`. They call `report` and `compilationDone`. The report carries `stage`, the checklist from `pipelineStatus`, and for an anime state its `production_policy` and `runtime_spec`. At the head these come from the copy read once held, which is what the baseline sends when no other lane saved in between. None of them is a length, a target, a timeline, a frame count, a runtime proof or a QA item. `REPORTED_STAGE` is keyed by the state object, and only `shownStage` reads it, for a deferral later in the same unit. None of the three acts defers.
+- What the hold delays. While a call is in flight its video is in `busy`. Only `movable` (and `resting` through it), `free`, `holding` and the discussion's hold in discuss.mjs `answerScript` read `busy`. Each decides whether a lane takes a video now, not what a stage decides. Another lane passes the video over for that unit and may take it on a later one, as it does a video in another lane's own unit. `holding` adds nothing to `skipped`, `pendingUntil`, `deferred_until` or `defer_count`. It lets go on every return and every throw. An error from `report` still propagates out of `bookkeeping` as before.
+- Stages. No stage that makes or checks a length is added, skipped, reordered or set aside. That covers the writer and lint, the verifier and listener, the gates, the narration and media, assemble, package, QA, review-push and the languages. A pasted address still makes a video done at whatever stage it is, as before. The head does so only for a copy that is still active or done once held, so it no longer writes over a block another lane saved since. Where the old save lost another lane's language progress, that lane's save now stands. The language stage itself (translations, captions and dubs) is the same code at both revisions.
+- Not reached: `lintProject`, the steps, qa's duration item, the runtime proofs, and the writer's request keys, receipts, retries and budget. None of the three loops sends a durable writer request. The retry loop is the only one that calls `retryRuns`, and it is byte-unchanged.
+- One single-lane difference found by reading. `automatedVideos` lists a work directory under the slug its auto.json names, and `holding` reads that slug's own directory. When that directory has no auto.json, `holding` resolves to null and the video is passed over, as `stepUnit` already passes it over. The baseline acted on the listed copy and saved it into the named slug's directory. No length is decided there, and the differential run below does not build such a directory.
+
+A seeded differential run backs the single-lane reading. It imported both revisions' flow.mjs, each with its own client.mjs, from scratch trees made with `git archive 87e93c01` and `git archive 40d8f459`. It ran one first lane's `bookkeeping()` for 3,000 cases of 1 to 3 rounds each, 5,947 rounds in all, with the clock moving 0 to 9 minutes between rounds:
+
+- Each case had 1 to 4 videos. Each video was active, done, blocked or dropped. It had a blocked reason or none (one of the reasons is 151 characters long), a pending report, a kind and a status to return to. Its report backoff was absent, past, 1 or 3 minutes ahead, or not a date. It had a compilation, told or untold, a retry request id, a deferral and a STOP file. Its video.json was the minimal fixture's, with or without a YouTube id, or there was none.
+- The site's list held each video or not. A listed video had a stage, a blocked row whose label matched or not, a YouTube id that was valid, short or already recorded, a drop, and a retry request, acknowledged or not. The site's `report`, `compilationDone` and `retryRuns` answered by call index, the same way at both revisions. The answers were ok, a 502 AutomationError and a plain Error, and for `retryRuns` also RUN_PENDING and RUN_UNCERTAIN.
+- Each run had its own copy of the case. A first trial that shared the site's objects showed one difference, which was the baseline's retry acknowledgement (`siteVideo.retry_acknowledged_id = request`) written on the shared object.
+- Both revisions agreed in every round. They returned the same value or threw the same error, left `busy` empty and `skipped` the same, and made every site call in the same order with the same stage, rows, YouTube id and acknowledgement. The log was the same, and every file under docs/videos and the work directory was the same byte for byte.
+  - 2,426 rounds returned a line: 1,412 blocked reasons reported, 296 addresses recorded, 176 compilations told, 422 drops, 84 retries blocked because the saved writer run could not be verified, 21 retries saved and deferred after a 502 on their report, and 15 retries saved whose report met a plain Error.
+  - 3,361 rounds returned null and 160 threw (the 502 or the plain Error of an "on YouTube" report). 3,209 site calls were made.
+- Two lanes are where the revisions are meant to differ. They are covered by the new tests and the scratch runs below, not by a differential.
+
+Findings, tools/video/automation/automation.test.mjs (+197/−1, 437,276 → 447,968 bytes, 6,173 → 6,369 lines; 194 → 197 tests; `126d16e3cbcf93246ecb0f7377dd63048d2942c23c2d6fc44e8873a5dc76dcd5` → `ae4f115307fc37b86283f2a6bedd6a4b6feed81d42df46558f91459a2fa95480`). The first commit has +130/−1 and the second +73/−6, the second inside the new tests.
+
+- The removed line (4911 at the baseline) is `site.fetchImpl = ((original) => async (url, init = {}) => original(url, init))(site.fetchImpl);`. It sits in "a writer whose receipt look-ups are rate-limited is reported as not answered with the reason, …". That test's own `fetch` already defaults `init` to `{}` and calls `site.fetchImpl(url, init)`, so the wrapper passed the same arguments through. The test passes at both revisions.
+- The three new tests (5617–5812) follow "a lane moves a video from the state it reads once it holds it". They drive two `Automation` lanes that share one `busy`, `skipped` and `pendingUntil`, with `advance` and `languages` stubbed. The site's `report` or `compilationDone` waits on a promise that the test releases. They assert step lines, the `busy` set, the series told and the reports sent. On auto.json they assert `status`, `compilation_told`, `languages_sent`, `blocked_report_retry_at` or the whole content. None of it is about a length.
+- The 32 lines naming the 18 duration terms are the same at both revisions. The broad scan matches 27 added lines: the fake `clock` six times and "second" (the second lane) 21 times. Widened, it also finds "Bad Gateway", the test's `gate` helper and `reports.length`.
+- The opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` at line 36 is byte-unchanged, and no added line reads or sets process.env.
+
+Ran (Node v22.22.0, Linux, in the worktree at `40d8f459`, node_modules linked, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the baseline hashing. That is all 108 bindings and the report hash at `885a4113`, `87e93c01` and `40d8f459`, the CR and BOM checks, the delta against REVIEW_FILES, the empty diff of the merge above, and the CLI check in a scratch tree of `87e93c01`;
+- `git diff 87e93c01 40d8f459` of all three files, read in full, with each commit's numstat;
+- the duration scans of both bound files at both revisions, and of the changed lines;
+- reads of these functions and fields:
+  - flow.mjs's `stepUnit`, `bookkeeping`, `holding`, `recordVideoId`, `tellCompilationDone`, `reportBlocked`, `report`, `shownStage`, `movable`, `resting`, `automatedVideos` and `languages`' parts;
+  - discuss.mjs `answerScript`'s hold;
+  - every reader of `busy`, `compilation_told`, `blocked_report_pending`, `blocked_report_retry_at` and `youtube_video_id` in tools/video;
+- scratch trees made with `git archive`: the baseline (`87e93c01`), the head (`40d8f459`), and the head with the baseline's flow.mjs. Each holds tools, docs/videos, .agents, .claude, tasks and package.json, linked to this worktree's node_modules. There:
+  - `node --test tools/video/automation/automation.test.mjs` passed the baseline's 194 of 194 and the head's 197 of 197.
+  - With the baseline's flow.mjs it failed 3 of 197, the three new tests. The first two failed at their first `busy` assertion, which read `[]` where the held slug was expected. The third read "newer-video: blocked reason reported" where null was expected.
+  - The same tree, with those `busy` assertions taken out of the test file, still failed all three:
+    - the second lane sent the done video's languages during the call;
+    - the newer compilation's `languages_sent` was gone after the first lane's save;
+    - the newer blocked video was reported again.
+  - Two more copies of the head tested the mutants the task's Notes name:
+    - the three acts given the listed copy ("held, the listed copy kept") failed the second and third tests;
+    - `holding` reading again but not adding to `busy` ("read again, not held") failed the first and second.
+- the differential run above, in the same scratch directory.
+
+Before rebinding, `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed, the shipped binding regression in long-form/review.test.mjs on the same two paths. `npm run test:tools` ran 2,091 tests: 2,086 passed, 4 skipped and 1 failed, the same regression on the same two paths. `npm run check:tasks` exited 0. The CLI check, the long-form tests, `npm run test:tools` and `npm run check:tasks` are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the change itself. That includes:
+  - holding a video during the bookkeeping's site calls, and reading auto.json again once held;
+  - leaving the drop and retry loops as they are;
+  - the blocked report sent once more when the site list was fetched before another lane's successful report (the task's Note).
+- The task file is not reviewed.
+- No real site, model, durable job or media call was made, and the tests run under the opt-out. No two-lane interleaving was run beyond the three tests and their variants.
+- Not run or seen: the Vitest and API suites, lint, typecheck, CI, any real model, provider or media call, and the production host.
+- The 106 bindings this change did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -2663,9 +2759,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `126d16e3cbcf93246ecb0f7377dd63048d2942c23c2d6fc44e8873a5dc76dcd5` |
+| `tools/video/automation/automation.test.mjs` | `ae4f115307fc37b86283f2a6bedd6a4b6feed81d42df46558f91459a2fa95480` |
 | `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
-| `tools/video/automation/flow.mjs` | `fd00cb91c8af55d1ea12a98238b4a3ce8eff76aceecdcef3079d8660b04a655d` |
+| `tools/video/automation/flow.mjs` | `abcfa8294fdafe5c57359125a07e53a72278d4eeb75649e23baf81e3e3056254` |
 | `tools/video/automation/prompts.mjs` | `3126c27b33c1ba056abaf35152adc03f8f8e45c4e2c0629d19048ccb051ea2ea` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `d82cdac4fe85203b648659f54fe91b49059cbe6dcb9e18f5eff41336358a8e22` |
