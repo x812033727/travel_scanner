@@ -4,7 +4,7 @@
 
 | 項目 | 決定 | 接著做 |
 | --- | --- | --- |
-| 縮圖的視覺主體 | **允許產品 logo／介面截圖當主體**（評論該產品時的合理引用） | 改 SKILL.md 規矩 6、`visuals.md` §縮圖、look 的 negative（縮圖那一張不擋 logo 與文字）；版型改成左 40% 大字、右 60% 主體；票 `2026-10-07-video-thumbnails-one-subject-six-characters` |
+| 縮圖的視覺主體 | **允許產品 logo／介面截圖當主體**（評論該產品時的合理引用） | 改 SKILL.md 規矩 6、`visuals.md` §縮圖；版型改成左 40% 大字、右 60% 主體。實作時的取捨（2026-10-08，待站主確認）：logo 與介面**只來自 screencast 的真實截圖**（`thumbnail.data.capture`），look 的 negative 維持擋 logo 與文字——AI 畫的 logo 既不準也不算合理引用；要讓 AI 畫 logo 的話另開票；票 `2026-10-07-video-thumbnails-one-subject-six-characters` |
 | 教學片的真實畫面 | **解禁 screencast：公開官方頁自動截圖**；登入後的介面仍不做（不走 OBS） | `prompts.mjs` 第 103 行解禁，撰稿對 `sources` 裡每個公開官方頁至少放一個 `screencast` 景；票 `2026-10-07-video-script-rules-outro-with-a` |
 | 結尾與片尾 | **旁白固定三句（回答開場問題、留言題、有理由的訂閱邀請）＋片尾卡只求訂閱、拉長到 15 秒** | 稿子規則進 `prompts.mjs` 與 `script-writing.md`；新的 `outro.mp4`（15 秒、只有「訂閱」）由站主準備素材包用 `branding --install` 安裝；`README.md` §片頭與片尾改成 15 秒 |
 | 上架節奏 | **不限制，做好就上**（維持現狀） | 不做排程器；DESIGN／STORY／HANDS-OFF 的節奏段落不改。四週後若 Studio「觀眾上線時間」有明顯峰值再談 |

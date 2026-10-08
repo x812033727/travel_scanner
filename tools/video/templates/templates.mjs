@@ -439,10 +439,18 @@ export const THUMB_SUBJECTS = ["capture", "shot"];
 export const THUMB_HEADLINE_MAX = 6;
 export const THUMB_HEADLINE_WORDS_MAX = 2;
 const CJK_GLYPH = /[぀-ヿ㐀-鿿豈-﫿가-힯]/u;
+/**
+ * A Latin word or a number in a headline, for the count here and the line model of the qa stage
+ * (tools/video/qa/thumbnail.mjs headlineTokens): letters and digits with the marks a word or a
+ * number carries inside (v2.0, 16x, 1,000, don't, 50%), after an optional currency sign, so
+ * 「NT$270」, 「$50」 and 「1,000」 each count one. A comma at its end is the sentence's, not the
+ * word's: the count drops it, the line model keeps it with the word as the browser does.
+ */
+export const HEADLINE_WORD = /(?:NT\$|US\$|[$€¥£￥])?[A-Za-z0-9][A-Za-z0-9.,'%+-]*/g;
 /** The headline's count: { cjk, words: [the Latin words and numbers], count: cjk + words }. */
 export function headlineCount(headline) {
   const plain = String(headline).replace(/\*\*/g, "");
-  const words = plain.match(/[A-Za-z0-9][A-Za-z0-9.'%+-]*/g) ?? [];
+  const words = (plain.match(HEADLINE_WORD) ?? []).map((word) => word.replace(/,+$/, ""));
   const cjk = [...plain].filter((char) => CJK_GLYPH.test(char)).length;
   return { cjk, words, count: cjk + words.length };
 }

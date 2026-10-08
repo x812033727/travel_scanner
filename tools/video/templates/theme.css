@@ -252,6 +252,9 @@ em { font-style: normal; color: var(--orange); }
 /* b: the subject fills the frame; a scrim on the text side keeps the headline readable. */
 .thumb-subject.layout-b { width: 100%; }
 .thumb-subject.layout-b::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14, 38, 39, 0.97) 0%, rgba(14, 38, 39, 0.92) 34%, rgba(14, 38, 39, 0.4) 46%, rgba(14, 38, 39, 0) 62%); }
+/* b with a page still: the still keeps to the right 60%, so its top left corner (the product's name) is not under the scrim, which fades out over the tone before the picture starts. */
+.thumb-subject.layout-b.from-capture img { width: 60%; margin-left: 40%; }
+.thumb-subject.layout-b.from-capture::after { background: linear-gradient(90deg, rgba(14, 38, 39, 0.97) 0%, rgba(14, 38, 39, 0.92) 34%, rgba(14, 38, 39, 0) 40%); }
 /* c: a hard split; the text column is the tone block, the subject's area the dark ground. */
 .thumb-subject.layout-c { background: var(--ground-2); }
 .thumb.column.layout-c { background: var(--tone); }

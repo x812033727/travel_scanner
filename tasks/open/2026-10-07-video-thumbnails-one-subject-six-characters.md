@@ -64,3 +64,14 @@ scope:
   4. 合集（BINGE）與漫劇的縮圖也走新版型與 ≤6 字；若站主要合集例外，再開票。
   5. `node tools/video/cli.mjs render --file …/showcase/video.json` 被 lint 的 8 分鐘下限擋住（showcase 只有 2.2 分鐘，HEAD 就如此），所以聯絡表是用 `openRenderer` ＋ `renderPlan`／`thumbnailHtml` 直接畫的 9 張（a／b／c × 無圖／關鍵影格／截圖），版面檢查零問題，縮到 168px 大字仍讀得出來。
   6. `.claude/skills/youtube-video/references/visuals.md` 不存在（`tools/skills.test.mjs` 規定 `.claude` 只放 SKILL.md），scope 裡那一行是空的。
+
+### 2026-10-08 審稿後修正（claude-fable）
+
+審稿對 6185128f 提了六條 should-fix，逐條處理如下（都在本票 scope 內；重跑 `node --test` 相關檔與整套 `npm run test:tools`）。
+
+1. **版型 b × `capture` 把截圖的左上角（logo 與選單）藏在遮罩下**（`theme.css`）：`.thumb-subject.layout-b` 鋪滿整格、`from-capture` 又把截圖的左上角釘在 x=0。改成 `.thumb-subject.layout-b.from-capture img { width: 60%; margin-left: 40% }`，截圖留在右 60%，遮罩對 capture 改成在 40% 前淡出（`.layout-b.from-capture::after`），關鍵影格（`from-shot`）的 b 版不變。用 `openRenderer` 重畫 a／b／c × 截圖／關鍵影格／無圖 9 張並**看過圖**（假的 1280×800 頁面左上角放紅色 LOGO 塊）：改前 b-capture 的 LOGO 整個在遮罩下，改後三版都看得到；版面檢查零問題。
+2. **企劃還允許 12 字、qa 卻擋 6 字**：`compilation.mjs`、`prompts.mjs`、`story.mjs`、`story-plans/plan.mjs` 都不在本票 scope，開票 `2026-10-08-video-planners-thumbnail-headline-six`（P1，依賴本票與 `2026-10-07-video-script-rules-outro-with-a`，後者還在 `prompts.mjs` 上）把五處限制改成 `THUMB_HEADLINE_MAX` 與 `headlineCount` 的算法，並讓 lint 先警告。**沒有**在 qa 對合集與漫劇開例外：站主定的是每張縮圖 ≤6 字，qa 不過時成片關卡不會自動核准（`final_qa_passed` 要 qa ok），卡片帶著「the headline counts 9 characters」停在後台等站主改字，不是悄悄放行 12 字的縮圖；企劃改好之前漫劇與合集會多這一步，所以那張票是 P1。合集大字本來就是系列名、必然撞標題前 10 字，`qa/cli.mjs` `thumbnailItem` 對 `isCompilation(doc)` 不再比對標題（`thumbnail.test.mjs` 覆蓋）。
+3. **各語言縮圖被當中文判**（`qa/cli.mjs`）：`thumbnailChecks` 多 `locale`，不是 `zh-TW`（`CHANNEL_RULES_LOCALE`）時只檢查尺寸、位元組、手機上的字高與重複標題，不套 6 字、2 個英文詞與 zh 斷詞；`thumbnailItem` 對 `thumbnail_locales` 的每一張帶 `locale`。測試改用四個詞的「Not always the best」、「最高とは限らない」、「항상 최고는 아니다」都 ok 且零警告；`README.md` §版型補一句。
+4. **價格與千分位被拆成兩個詞**：`templates.mjs` 匯出 `HEADLINE_WORD`（`(?:NT\$|US\$|[$€¥£￥])?[A-Za-z0-9][A-Za-z0-9.,'%+-]*`，`headlineCount` 去掉尾端逗號），`qa/thumbnail.mjs` `headlineTokens` 用同一個 token，所以「NT$270」是一個數字、行模型也不會在 `NT$|270` 斷行。「$50 vs $20」的訊息現在寫 `($50, vs, $20)`；`NT$270`、`1,000`、`US$20`、`€18`、`Yes,` 進測試。
+5. **visuals.md 寫了「連續兩支不同底色」**：程式只依 slug 雜湊輪色、沒有跨影片狀態，改成「底色依 slug 在四色中輪流，撞色時站主寫 `thumbnail.data.tone`」，與 `README.md` 與 `templates.mjs` 的註解一致。
+6. **DECISIONS.md 的「改 look 的 negative」沒做、也沒記**：`DECISIONS.md` 不在本票 scope，不能改；在 `ILLUSTRATED.md` 的 `thumbnail.data.shot`／`capture` 列記下這是有意不做的（AI 畫的 logo 既不準也不是合理引用，真 logo 只有截圖給得了），這裡也記一筆。**待站主**：請在 `docs/videos/channel-review-20261007/DECISIONS.md` 第一列的「接著做」補一句「negative 不改，logo 與介面只從 `capture` 來」，或說要改再開票。

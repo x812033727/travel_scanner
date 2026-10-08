@@ -57,7 +57,7 @@
 - **大字最多 6 個字**（英文詞或數字各算 1 字、最多 2 個），一到兩行，斷行用 `\n` 放在詞的邊界，不在詞中間斷（「一半的攻／擊」不行）。字要在手機列表的小圖上讀得到：把 PNG 縮到 320 寬看一次。全自動路線的 `qa` thumbnail 項擋超過 6 字與詞中間斷行。
 - **一個視覺主體**，放右 60%，文字欄在左 40%。主體可以是：評論該產品時它的官方頁截圖或產品 logo（合理引用，說明欄標出處；站主 2026-10-08 定）、該支影片的一張關鍵影格（鉤子段落的具體物件，不畫比喻）、主講者表情、或一張對比圖。全自動路線由 `thumbnail.data.capture`（一個 `screencast` 景截到的真實頁面）或 `thumbnail.data.shot`（關鍵影格）供圖，AI 插圖不畫 logo；都沒有時是單色大塊底。
 - 縮圖的字**不重複標題**，而是補一句標題沒說的（標題「AI 模型怎麼挑」，縮圖「第一名≠最好用」）；大字與標題前 10 字重複過半，`qa` 會警告。
-- 三套版型 A／B／C 輪流（`thumbnail.data.layout`），連續兩支不同底色。做兩到三版給站主選（全自動用 `thumbnail.variants`；人工錄製用 `thumbnail-a.html`、`thumbnail-b.html`），上架後可用 YouTube 的縮圖測試比較。
+- 三套版型 A／B／C 依 slug 輪流（`thumbnail.data.layout` 可指定）；底色依 slug 在四色中輪流（teal／plum／navy／forest），程式沒有跨影片的記憶，連續兩支撞色時站主在 `video.json` 寫 `thumbnail.data.tone` 換一色。做兩到三版給站主選（全自動用 `thumbnail.variants`，B／C 變體自動往後輪一套版型；人工錄製用 `thumbnail-a.html`、`thumbnail-b.html`），上架後可用 YouTube 的縮圖測試比較。
 - 不用別人的照片或影片截圖；右下角會被影片長度標籤蓋住、右上角桌機懸停會出現按鈕，兩處不放字；MOKAAIR 字標縮小放左下角。
 
 ## 剪輯交接（handover.md）

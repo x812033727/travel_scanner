@@ -228,6 +228,12 @@ test("the channel's layout and tone rotate by slug, a variant one step on, and d
   assert.deepEqual(headlineCount("驗證碼\n別給"), { cjk: 5, words: [], count: 5 });
   assert.deepEqual(headlineCount("**128 GB**\n裝得下嗎"), { cjk: 4, words: ["128", "GB"], count: 6 });
   assert.deepEqual(headlineCount("Can it cost\n**16x more?**"), { cjk: 0, words: ["Can", "it", "cost", "16x", "more"], count: 5 });
+  // A price or a number with a thousands separator is one number, as the rule says.
+  assert.deepEqual(headlineCount("NT$270 一年"), { cjk: 2, words: ["NT$270"], count: 3 });
+  assert.deepEqual(headlineCount("**1,000** 元差在哪"), { cjk: 4, words: ["1,000"], count: 5 });
+  assert.deepEqual(headlineCount("$1,000 vs 500").words, ["$1,000", "vs", "500"]);
+  assert.deepEqual(headlineCount("US$20 或 €18").words, ["US$20", "€18"]);
+  assert.deepEqual(headlineCount("Yes, 可以").words, ["Yes"], "a comma at the end is the sentence's");
   assert.equal(THUMB_HEADLINE_MAX, 6);
 });
 

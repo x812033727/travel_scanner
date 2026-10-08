@@ -11,7 +11,7 @@ import { thumbnailItem } from "./cli.mjs";
 import { THEME_FILE } from "../render/plan.mjs";
 import { THUMB_HEADLINE_MAX } from "../templates/templates.mjs";
 import { jpegBytes, pngBytes } from "./test-images.mjs";
-import { atPhoneWidth, HEADLINE, HEADLINE_SERIES, headlineLayout, headlineRule, headlineSizeEstimate, headlineSplitWords, headlineTokens, imageSize, MAX_BYTES, MIN_HEADLINE_PX_AT_PHONE, PHONE_WIDTH, thumbnailChecks, TITLE_HEAD_CHARS, titleOverlap } from "./thumbnail.mjs";
+import { atPhoneWidth, CHANNEL_RULES_LOCALE, HEADLINE, HEADLINE_SERIES, headlineLayout, headlineRule, headlineSizeEstimate, headlineSplitWords, headlineTokens, imageSize, MAX_BYTES, MIN_HEADLINE_PX_AT_PHONE, PHONE_WIDTH, thumbnailChecks, TITLE_HEAD_CHARS, titleOverlap } from "./thumbnail.mjs";
 
 test("width and height are read from JPEG and PNG headers, and nothing else is an image", () => {
   assert.deepEqual(imageSize(jpegBytes(1280, 720)), { format: "jpeg", width: 1280, height: 720 });
@@ -43,6 +43,8 @@ test("the headline estimate follows the renderer's shrink in the channel's colum
   const layout = headlineLayout(headlineTokens("Supercalifragilistic 很長"), 136);
   assert.equal(layout.tooWide, true);
   assert.equal(headlineTokens("AI 模型").length, 4, "a word, a space, two glyphs");
+  assert.deepEqual(headlineTokens("NT$270\n一年").map((token) => token?.text ?? null), ["NT$270", null, "一", "年"], "a price is one run: no line ever starts at its digits");
+  assert.deepEqual(headlineTokens("1,000 元").map((token) => token?.text).slice(0, 2), ["1,000", " "]);
   assert.ok(headlineSizeEstimate("字".repeat(400)) >= HEADLINE.fontSize * HEADLINE.minScale, "never below the renderer's floor");
   // A series keeps the full-width column: ten glyphs a line on two lines at the theme's size.
   assert.equal(headlineSizeEstimate("冰為什麼\n會**浮**？", HEADLINE_SERIES), HEADLINE.fontSize);
@@ -122,8 +124,10 @@ test("the thumbnail item holds the channel's headline to six characters, two Lat
   assert.match(long.detail, /^the headline counts 9 characters \(a Latin word or a number counts one\); at most 6 read at a glance/);
   assert.equal(check("會回答 ≠ 有完成").ok, true, "six glyphs and a symbol");
   assert.equal(check("$50 vs **$20**").ok, false, "three Latin words");
-  assert.match(check("$50 vs **$20**").detail, /3 Latin words or numbers \(50, vs, 20\); at most 2/);
+  assert.match(check("$50 vs **$20**").detail, /3 Latin words or numbers \(\$50, vs, \$20\); at most 2/);
   assert.equal(check("**128 GB**\n裝得下嗎").ok, true, "two numbers and four glyphs");
+  assert.equal(check("**NT$270**\n一年").ok, true, "a price is one number");
+  assert.equal(check("**1,000** 元\n差在哪").ok, true, "a thousands separator does not split the number");
   const split = check("一半的攻\n擊");
   assert.equal(split.ok, false);
   assert.equal(split.detail, "a line break falls inside the word 「攻擊」; put \\n where a word ends");
@@ -132,6 +136,21 @@ test("the thumbnail item holds the channel's headline to six characters, two Lat
   assert.equal(check("冰為什麼\n會**浮**？", { series: "sothatswhy" }).ok, true);
   assert.equal(check("一二三四五六\n七八九十", { series: "sothatswhy" }).ok, true, "ten glyphs: the series' own length");
   assert.equal(check("一二三四五六\n七八九十").ok, false, "the channel's six");
+});
+
+test("a locale's own thumbnail keeps the size, bytes, height and title checks, not the channel's zh-TW word rules", () => {
+  const bytes = jpegBytes(1280, 720, 2000);
+  assert.equal(CHANNEL_RULES_LOCALE, "zh-TW");
+  for (const [headline, locale] of [["Not always the best", "en"], ["最高とは限らない", "ja"], ["항상 최고는 아니다", "ko"]]) {
+    const own = thumbnailChecks({ bytes, headline, locale });
+    assert.deepEqual([own.ok, own.warnings], [true, []], `${locale}: ${own.detail}`);
+    assert.match(own.detail, /^1280x720 JPEG, 2 KB; the headline is about \d+ px tall at 320 px wide$/);
+  }
+  assert.equal(thumbnailChecks({ bytes, headline: "Not always the best", locale: "zh-TW" }).ok, false, "the video's own language keeps the rules");
+  assert.equal(thumbnailChecks({ bytes, headline: "Not always the best" }).ok, false);
+  assert.match(thumbnailChecks({ bytes, headline: "字".repeat(40), locale: "ja" }).detail, /shrinks to about \d+ px/, "a headline too long to read still fails");
+  assert.match(thumbnailChecks({ bytes: pngBytes(1920, 1080), headline: "Short", locale: "en" }).detail, /YouTube wants 1280x720/);
+  assert.equal(thumbnailChecks({ bytes, headline: "Not the best", title: "Not the best model for you", locale: "en" }).warnings.length, 1, "the title check is a language's own");
 });
 
 test("a headline that says the title's first ten characters again warns, and only when the title is given", () => {
@@ -152,7 +171,7 @@ test("the thumbnail item checks each language's own thumbnail too, and what is w
   mkdirSync(path.join(workdir, "thumbnails"));
   writeFileSync(path.join(workdir, "thumbnail.jpg"), jpegBytes(1280, 720, 2000));
   const merged = (headline) => ({ thumbnail: { tag: "Picking a model", headline }, source_hashes: { thumbnail: thumbnailSourceHash(doc) } });
-  const translations = { en: merged("**Not** best"), ja: merged("一位".repeat(40)) };
+  const translations = { en: merged("**Not** always the best"), ja: merged("一位".repeat(40)) };
   writeFileSync(path.join(workdir, "thumbnails", "en.jpg"), jpegBytes(1280, 720, 2000));
   writeFileSync(path.join(workdir, "thumbnails", "ja.jpg"), jpegBytes(1280, 720, 2000));
   const drawn = { en: { file: "thumbnails/en.jpg", hash: "x" }, ja: { file: "thumbnails/ja.jpg", hash: "y" }, ko: { file: "thumbnails/ko.jpg", hash: "z" } };
@@ -160,7 +179,7 @@ test("the thumbnail item checks each language's own thumbnail too, and what is w
   const result = thumbnailItem(doc, workdir, translations);
   assert.equal(result.ok, true, "the video's own thumbnail decides the item");
   assert.match(result.detail, /; language thumbnails checked: en, ja$/);
-  assert.equal(result.warnings.length, 2);
+  assert.equal(result.warnings.length, 2, `an English headline of four words is not held to two: ${result.warnings.join(" | ")}`);
   assert.match(result.warnings[0], /^ja thumbnail \(thumbnails\/ja\.jpg\): the headline shrinks to about \d+ px/);
   assert.match(result.warnings[1], /^ko thumbnail: thumbnails\/ko\.jpg is missing; run render$/);
   // A render from before localized thumbnails: the item reads as it always did.
@@ -168,4 +187,18 @@ test("the thumbnail item checks each language's own thumbnail too, and what is w
   const plain = thumbnailItem(doc, workdir, translations);
   assert.deepEqual([plain.ok, plain.warnings], [true, undefined], "no warnings key, as before");
   assert.match(plain.detail, /^1280x720 JPEG, 2 KB; the headline is about \d+ px tall at 320 px wide$/);
+});
+
+test("a compilation's headline is its series' name by design, so the title-repeat warning is not asked of it", () => {
+  const doc = fixture();
+  doc.thumbnail.data.headline = "仙門風雲\n全集";
+  doc.youtube.title = "仙門風雲 全集：第一部完整版";
+  const workdir = tempDir("video-qa-thumb-compilation-");
+  writeFileSync(path.join(workdir, "thumbnail.jpg"), jpegBytes(1280, 720, 2000));
+  const episode = thumbnailItem(doc, workdir);
+  assert.equal(episode.ok, true);
+  assert.equal(episode.warnings.length, 1, "an episode's headline that is the title again warns");
+  assert.match(episode.warnings[0], /repeats the title/);
+  doc.compilation = { series: "xianmen", part: 1 };
+  assert.equal(thumbnailItem(doc, workdir).warnings, undefined, "no warnings key: nothing to warn about");
 });

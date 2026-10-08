@@ -9,7 +9,7 @@
 // theme.css, so a theme change fails here until they are updated. The same model says where the
 // browser breaks the headline's lines, and Intl.Segmenter (zh) says whether a break falls inside
 // a word; the writer moves it with a `\n`.
-import { headlineCount, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX, THUMB_SERIES, THUMB_SIZE } from "../templates/templates.mjs";
+import { HEADLINE_WORD, headlineCount, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX, THUMB_SERIES, THUMB_SIZE } from "../templates/templates.mjs";
 
 // Same as tools/video/render/cli.mjs THUMBNAIL_MAX_BYTES: YouTube's limit for custom thumbnails.
 export const MAX_BYTES = 2 * 1024 * 1024;
@@ -88,6 +88,9 @@ function glyphWidth(char) {
   return 0.4;
 }
 
+// A run of the headline: a Latin word or number (templates.mjs HEADLINE_WORD, so 「NT$270」 is
+// one run and never breaks between the sign and the digits), a run of spaces, or one character.
+const HEADLINE_RUN = new RegExp(`${HEADLINE_WORD.source}|\\s+|.`, "gsu");
 /**
  * The headline's tokens, each { width in em, breakable?, text }: a CJK glyph may break from its
  * neighbours; a Latin word or number never breaks inside; an emphasised run (**...**) stays on
@@ -103,7 +106,7 @@ export function headlineTokens(headline) {
         tokens.push({ width: [...emphasis].reduce((sum, char) => sum + glyphWidth(char), 0), text: emphasis });
         continue;
       }
-      for (const run of plain.match(/[A-Za-z0-9][A-Za-z0-9.'%+-]*|\s+|./gsu) ?? []) {
+      for (const run of plain.match(HEADLINE_RUN) ?? []) {
         tokens.push({ width: [...run].reduce((sum, char) => sum + glyphWidth(char), 0), space: /^\s+$/.test(run), text: run });
       }
     }
@@ -213,14 +216,21 @@ export function titleOverlap(headline, title) {
   return { shared: best, ratio: own.length ? [...best].length / own.length : 0 };
 }
 
+// The locale whose headline the channel's rules are written for (six CJK characters, two Latin
+// words, a zh word segmenter): the video's own, zh-TW. A locale's own thumbnail (render's
+// thumbnail_locales) is in another language, where those rules say nothing useful (an English
+// headline is seldom two words, a Japanese one needs more than six kana, Korean is not segmented
+// by a zh segmenter), so it keeps only the size, bytes, phone height and title checks.
+export const CHANNEL_RULES_LOCALE = "zh-TW";
 /**
  * The thumbnail item's verdict from the file's bytes and the headline video.json asked for:
  * { ok, detail, warnings }. `title` is youtube.title when the caller has it: a headline that is
  * the title's first characters again warns. `series` names a series' own thumbnail
  * (templates.mjs THUMB_SERIES), whose wider column and own headline length apply; without it the
  * channel's rules do: at most six characters, two Latin words, no line break inside a word.
+ * `locale` names a locale's own thumbnail (CHANNEL_RULES_LOCALE or null is the video's own).
  */
-export function thumbnailChecks({ bytes, headline, title = null, series = null }) {
+export function thumbnailChecks({ bytes, headline, title = null, series = null, locale = null }) {
   const problems = [];
   const warnings = [];
   const size = imageSize(bytes);
@@ -233,7 +243,7 @@ export function thumbnailChecks({ bytes, headline, title = null, series = null }
   if (headlinePx !== null && headlinePx < MIN_HEADLINE_PX_AT_PHONE) {
     problems.push(`the headline shrinks to about ${headlinePx} px at ${PHONE_WIDTH} px wide; at least ${MIN_HEADLINE_PX_AT_PHONE} px reads on a phone, so shorten it`);
   }
-  if (own && rule === HEADLINE) {
+  if (own && rule === HEADLINE && (locale === null || locale === CHANNEL_RULES_LOCALE)) {
     const { count, words } = headlineCount(own);
     if (count > THUMB_HEADLINE_MAX) problems.push(`the headline counts ${count} characters (a Latin word or a number counts one); at most ${THUMB_HEADLINE_MAX} read at a glance, so say one thing in six`);
     if (words.length > THUMB_HEADLINE_WORDS_MAX) problems.push(`the headline has ${words.length} Latin words or numbers (${words.join(", ")}); at most ${THUMB_HEADLINE_WORDS_MAX} fit the column`);
