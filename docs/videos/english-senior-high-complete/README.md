@@ -96,3 +96,29 @@ npm run check:tasks
 品質檢查包括作者交叉審稿、固定英文與選項版面、揭答前畫面不洩漏正解、字形與字幕保留區、source-bound 全片解碼收據、實際 FFprobe、逐檔與 ZIP 雜湊，以及獨立教材內容和播放器控制檢查。交叉審稿不是五語認證母語教師審定；選取成片畫面檢查也不宣稱逐集人工觀看或逐聲軌人工聽完。
 
 先前實際 Chromium 本機檔案播放被管理員政策阻擋，因此不繞過限制重試。本次以真實媒體解碼及模擬媒體的 jsdom 控制檢查驗證；不宣稱已完成實際瀏覽器影音播放。
+
+## 本次完成的交付
+
+2026-10-08 完成 72 集，總長 4:41:40；單集約 3 分 35 秒至 4 分 20 秒。全集 ZIP 為 1,622,281,157 bytes，六季加全集七份 ZIP 共 3,244,901,585 bytes。
+
+| 季數 | 集數 | 實測時長 | ZIP 檔名 |
+|---|---|---|---|
+| S1 | 01–12 | 47:01 | `Sunny_Pip_Senior_High_Season_01.zip` |
+| S2 | 13–24 | 44:39 | `Sunny_Pip_Senior_High_Season_02.zip` |
+| S3 | 25–36 | 47:05 | `Sunny_Pip_Senior_High_Season_03.zip` |
+| S4 | 37–48 | 47:55 | `Sunny_Pip_Senior_High_Season_04.zip` |
+| S5 | 49–60 | 47:01 | `Sunny_Pip_Senior_High_Season_05.zip` |
+| S6 | 61–72 | 47:59 | `Sunny_Pip_Senior_High_Season_06.zip` |
+
+全集檔名 `Sunny_Pip_Senior_High_72_Episodes.zip`。輸出目錄另有 `高中英文72集課程目錄.csv`、`Practice.html`、217 頁 `Practice.pdf` 和離線播放器 `index.html`；各季包附 37 頁教材。
+
+可攜驗證紀錄：
+
+- [authoring-review.json](authoring-review.json)：六季獨立交叉審稿及修訂紀錄。
+- [art-checks.json](art-checks.json)：720 幕、2,160 個階段畫面、216 組揭答前中立性及 144 組跟讀字形檢查。
+- [encoded-frame-review.json](encoded-frame-review.json)：8 集共 24 張實際成片畫面抽查，涵蓋 A／B／C 揭答位置。
+- [delivery-verification.json](delivery-verification.json)：來源與 renderer 雜湊、72 集媒體、七個 ZIP、教材及播放器控制的最終驗證。
+
+72 集皆有與成品雜湊相符的全片解碼收據，且獨立 FFprobe 再核對串流。七個 ZIP 均通過 CRC、精確檔案清單及 2,448 個媒體項目與根目錄成品的雜湊比較。教材逐項核對全部 72 篇閱讀、216 題與答案、72 項寫作和例答，含圖表數值與 SVG 幾何。播放器根目錄與七個包裝版本皆通過 mocked jsdom 檢查，仍不代表實際瀏覽器播放。
+
+`npm run test:tools` 與 `npm run check:tasks` 已以實際 exit 0 完成；工具測試共 2,014 項，2,011 通過、3 跳過、0 失敗，其中高中 Python 回歸測試為 28 項。
