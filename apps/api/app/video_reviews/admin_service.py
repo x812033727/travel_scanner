@@ -12,7 +12,13 @@ submissions or decisions.
 Once the owner has uploaded a video themselves and pasted its YouTube address (HANDS-OFF.md
 §上傳包與「可以上架」), the row carries ``youtube_video_id`` and ``youtube_publish_at``; the
 review files stay downloadable, and ``prune_published_previews`` deletes only the mp4 once the
-upload confirmation and the publish time are both at least PREVIEW_RETENTION old.
+upload confirmation and the publish time are both at least PREVIEW_RETENTION old. The publish
+time is the owner's when they typed one; otherwise it is what the linked channel reports for
+the video through videos.list (``youtube_publication``), so a video the owner made public in
+Studio reaches the public library (public_api.py) without a second form. A video that is still
+private or unlisted, with no scheduled time, keeps no publish time and stays unlisted on the
+site; ``backfill_youtube_publish_times`` asks the same question for every linked video that
+has none yet.
 """
 
 from __future__ import annotations
@@ -21,13 +27,16 @@ import asyncio
 import hashlib
 import json
 import re
-from collections.abc import Iterable
+from collections.abc import AsyncIterator, Iterable
+from contextlib import asynccontextmanager
+from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, urlsplit
 from uuid import uuid4
 
+import httpx
 from sqlalchemy import and_, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -99,7 +108,11 @@ from app.video_reviews.storage import ReviewStore, valid_slug
 from app.video_shorts import costs as shorts_costs
 from app.video_shorts import slots as shorts_slots
 from app.video_shorts.settings import auto_approves_shorts
-from app.video_youtube.state import public_state
+from app.video_youtube import connection
+from app.video_youtube.client import YoutubeClient, YoutubeError
+from app.video_youtube.errors import Refused
+from app.video_youtube.requests import as_dict
+from app.video_youtube.state import parse_time, public_state
 
 LIVE = ("pending", "approved", "rejected")
 # The list's cap, and how many public Shorts the Shorts tab gets at once: the public ones
@@ -1944,6 +1957,77 @@ def youtube_video_id(value: str) -> str | None:
     return candidate if candidate and YOUTUBE_ID.fullmatch(candidate) else None
 
 
+@dataclass(frozen=True)
+class YoutubePublication:
+    """When YouTube says a video went, or goes, public: ``publish_at`` from videos.list, or None
+    with ``reason`` saying why there is none, in the owner's words."""
+
+    publish_at: datetime | None
+    reason: str | None = None
+
+
+NOT_IN_CHANNEL = "影片不在連結的頻道裡（網址對嗎？或到設定分頁換成影片所在的頻道），沒有記公開時間"
+NOT_PUBLIC = "影片在 YouTube 還是私人或未公開、也沒有排程，沒有公開時間；公開後再貼一次網址"
+NO_PUBLISHED_AT = "YouTube 說影片已公開，但沒有回報公開時間；請在卡片填公開時間"
+
+
+def publication_of(video: dict[str, Any] | None, channel_id: str | None) -> YoutubePublication:
+    """Read a videos.list item (snippet and status) as the site's publish time.
+
+    A public video's time is ``snippet.publishedAt``; a private one scheduled in Studio carries
+    ``status.publishAt``; anything else (private, unlisted, not found, another channel's) has
+    none, and a video the public can see is never mistaken for a scheduled one.
+    """
+    if video is None:
+        return YoutubePublication(None, NOT_IN_CHANNEL)
+    snippet = as_dict(video.get("snippet"))
+    status = as_dict(video.get("status"))
+    if channel_id is not None and snippet.get("channelId") != channel_id:
+        return YoutubePublication(None, NOT_IN_CHANNEL)
+    if status.get("privacyStatus") == "public":
+        published = parse_time(snippet.get("publishedAt"))
+        return YoutubePublication(published, None if published else NO_PUBLISHED_AT)
+    scheduled = parse_time(status.get("publishAt"))
+    if scheduled is not None:
+        return YoutubePublication(scheduled)
+    return YoutubePublication(None, NOT_PUBLIC)
+
+
+@asynccontextmanager
+async def _linked_youtube(session: AsyncSession) -> AsyncIterator[tuple[str, YoutubeClient]]:
+    """The linked channel's id and a client that speaks for it; ``Refused`` when no channel is
+    linked or its grant is lost (the same answers as the sync's ``_linked_connection``)."""
+    row = await connection.connection_row(session)
+    if not connection.linked(row):
+        raise Refused(409, "video_youtube_not_linked", "還沒有連結 YouTube 頻道：到設定分頁連結")
+    if row.problem:
+        raise Refused(409, "video_youtube_grant_lost", row.problem)
+    channel_id = row.channel_id or ""
+    async with connection.http_client() as http:
+        yield channel_id, YoutubeClient(http, await connection.access_token(session, http))
+
+
+def _unreachable(error: Exception) -> str:
+    return f"問不到 YouTube，沒有記公開時間（{error}）；公開後再貼一次網址或跑回填"
+
+
+async def youtube_publication(session: AsyncSession, video_id: str) -> YoutubePublication:
+    """Ask the linked channel when ``video_id`` went or goes public (videos.list, 1 unit).
+
+    Never raises: no linked channel, a lost grant, a refused or failed call and a video outside
+    the channel all come back as a reason, so pasting an address never fails on YouTube's
+    account.
+    """
+    try:
+        async with _linked_youtube(session) as (channel_id, client):
+            video = await client.video(video_id)
+    except Refused as refused:
+        return YoutubePublication(None, refused.detail)
+    except (YoutubeError, httpx.HTTPError) as error:
+        return YoutubePublication(None, _unreachable(error))
+    return publication_of(video, channel_id)
+
+
 async def link_youtube(
     session: AsyncSession,
     slug: str,
@@ -1953,13 +2037,23 @@ async def link_youtube(
 ) -> ProjectOut:
     """The owner uploaded the final cut in Studio: record the video's id and when it goes public.
 
-    Pasting again overwrites (a wrong link is corrected the same way); the worker reads the id
-    back on its next round and writes it into the work directory's video.json.
+    The publish time is the owner's when they typed one. When they left it empty, it is what
+    the linked channel reports (``youtube_publication``): the time a public video was
+    published, or the time a private one is scheduled for; a video that is neither keeps no
+    publish time, and the audit row and the page say why. Pasting again overwrites (a wrong link
+    is corrected the same way); the worker reads the id back on its next round and writes it
+    into the work directory's video.json.
     """
     if publish_at is not None and publish_at.tzinfo is None:
         raise AppError(422, "video_youtube_publish_at_naive", "上架時間要帶時區")
     project = await _project(session, slug)
     _refuse_dropped(project)
+    source: str | None = "owner" if publish_at is not None else None
+    reason: str | None = None
+    if publish_at is None:
+        reported = await youtube_publication(session, video_id)
+        publish_at, reason = reported.publish_at, reported.reason
+        source = "youtube" if publish_at is not None else None
     now = datetime.now(UTC)
     project.youtube_video_id = video_id
     project.youtube_publish_at = publish_at
@@ -1973,11 +2067,82 @@ async def link_youtube(
                 "slug": slug,
                 "youtube_video_id": video_id,
                 "publish_at": publish_at.isoformat() if publish_at else None,
+                "publish_at_source": source,
+                "publish_at_reason": reason,
             },
         )
     )
     await session.commit()
-    return await project_view(session, slug)
+    view = await project_view(session, slug)
+    return view.model_copy(update={"youtube_publish_note": reason})
+
+
+async def backfill_youtube_publish_times(
+    session: AsyncSession, *, apply: bool, actor: User | None = None
+) -> dict[str, Any]:
+    """Give every linked video without a publish time the one its channel reports.
+
+    The videos the owner published from Studio before the site asked YouTube (the eighteen of
+    2026-10-07) have an id and no time, so the public library leaves them out. One videos.list
+    call per fifty ids (``snippet,status``) answers for all of them; a video that is still
+    private or unlisted, gone, or in another channel is reported and left alone. Nothing is
+    written unless ``apply``; ``Refused`` when no channel is linked.
+    """
+    rows = await session.scalars(
+        select(VideoProject)
+        .where(
+            VideoProject.youtube_video_id.is_not(None),
+            VideoProject.youtube_publish_at.is_(None),
+            VideoProject.dropped_at.is_(None),
+        )
+        .order_by(VideoProject.slug)
+    )
+    projects = list(rows)
+    report: dict[str, Any] = {"apply": apply, "checked": len(projects), "filled": 0, "videos": []}
+    if not projects:
+        return report
+    found: dict[str, dict[str, Any]] = {}
+    async with _linked_youtube(session) as (channel_id, client):
+        ids = [project.youtube_video_id for project in projects if project.youtube_video_id]
+        for start in range(0, len(ids), 50):
+            for item in await client.videos(ids[start : start + 50], parts="snippet,status"):
+                if isinstance(item.get("id"), str):
+                    found[item["id"]] = item
+    now = datetime.now(UTC)
+    for project in projects:
+        video_id = project.youtube_video_id or ""
+        reported = publication_of(found.get(video_id), channel_id)
+        report["videos"].append(
+            {
+                "slug": project.slug,
+                "youtube_video_id": video_id,
+                "publish_at": reported.publish_at.isoformat() if reported.publish_at else None,
+                "reason": reported.reason,
+            }
+        )
+        if reported.publish_at is None:
+            continue
+        report["filled"] += 1
+        if not apply:
+            continue
+        project.youtube_publish_at = reported.publish_at
+        project.updated_at = now
+        session.add(
+            AdminAuditLog(
+                actor_user_id=actor.id if actor else None,
+                action="video_youtube_publish_time_backfilled",
+                target=f"video_project:{project.slug}",
+                metadata_json={
+                    "slug": project.slug,
+                    "youtube_video_id": video_id,
+                    "publish_at": reported.publish_at.isoformat(),
+                    "publish_at_source": "youtube",
+                },
+            )
+        )
+    if apply:
+        await session.commit()
+    return report
 
 
 def _is_video(item: Any) -> bool:

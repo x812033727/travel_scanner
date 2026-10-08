@@ -318,6 +318,10 @@ class ProjectSummary(BaseModel):
 
 class ProjectOut(ProjectSummary):
     reviews: list[ReviewOut]
+    # Set only in the answer to a pasted YouTube address without a publish time: why the
+    # linked channel gave none (still private, not in the channel, not linked...), or None
+    # when it gave one or the owner typed one (admin_service.link_youtube).
+    youtube_publish_note: str | None = None
 
 
 class CategoryIn(BaseModel):
