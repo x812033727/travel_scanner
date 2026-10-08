@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-10-08T10:52:14Z
 completed_at:
-branch:
+branch: codex/ou-de-jianghu-visual-preproduction-20261008
 depends_on:
   - 2026-10-08-ou-de-jianghu-visual-preproduction
 scope:
@@ -40,6 +40,8 @@ scope:
 `npm run check:tasks`
 
 ## Notes
+
+2026-10-08 部分交付：[分場與小樣](../../docs/videos/series-plans/ou-de-jianghu/visual-development/episode-plan/scene-and-pilot.md)、[離線檢查](../../docs/videos/series-plans/ou-de-jianghu/visual-development/episode-plan/offline-preflight.md)。已生成455鏡文字卡animatic與分鏡JSON/Markdown、readiness真實診斷。P3仍447組setup／455鏡；掌冠接觸與分髮露胎記的前後狀態需修，10個程式C級須人工裁定。費率僅歷史常數，未補齊即時全包預算、未完成animatic冷看或plan lock，因此三項DoD維持未勾。來源及既有e001/production持有人檔案未改。美術方向接受及九人概念先行已另有票記錄，不能當完整開拍核准。本輪結束release，不標完成。
 
 依 animation-preproduction 執行離線 shot_plan、shot_reading、craft、animatic、plan_lock --ready。先文字前置包，再角色圖，再正式關鍵影格與動畫；不要因圖尚未生成偽造關卡。不重写e001或接管既有試播票。
 
