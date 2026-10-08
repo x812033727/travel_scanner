@@ -1,11 +1,11 @@
 ---
 id: 2026-09-27-developer-ai-bug-fix-pr-review
 title: Developer AI bug fix PR review video
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-video-bug-fix-continuation
+claimed_at: 2026-10-08T00:18:55Z
 created_at: 2026-09-27T15:26:33Z
 completed_at:
 branch: codex/ai-bug-fix-review-20261008
@@ -50,3 +50,7 @@ scope:
 2026-10-08：最終 `lint` 0 errors／0 warnings，估計 10.2 分鐘。免費 render 28 張 1080p 字卡、contact sheet、縮圖與轉場完成並目視檢查。四語縮圖文字未新增，沿用主縮圖 fallback。這不是音訊／timed CC／成片驗收。
 
 2026-10-08：9/28 成片完成筆記保留。預設影片路徑、已知工作目錄及 G 槽交付索引有限查找未找到原媒體，不能推論從未付費或已刪除。最終原生 TTS dry-run 實際為 28 requests／28 pending、4041 characters、gemini:Sulafat ready，只有 readiness GET、沒有 synthesis POST。已請站主提供舊媒體路徑；重買授權尚未取得。完整媒體 DOD 保持未完成，後續依 `CONTINUATION-20261008.md` 驗證找回媒體或取得重做授權後再續跑，禁止盲目重試不確定請求。沒有合併、部署、上傳或發布。
+
+2026-10-08 10:09（台北）：站主在上述具體預檢後再次要求「繼續」，已授權本片新版主旁白與後續品檢製作；未釋出其他影片的 hold。新版 133 句音檔已合成，兩筆 Windows 本地寫入失敗均從完整已回答 bytes 恢復，沒有重送已回答或未知請求。畫面節奏修整為 47 場景／88 狀態，原生時間軸 17,881 frames／596.033 秒，零計費 refresh 與 canonical render 均 exit 0，最長靜態狀態 13 秒。現稿 SHA256 `4608bffb664b8d5a99667daae019184750b73fdaefe32256b08c0494f88c6cca`；新的獨立 `verify-4.md` 全查 350 項、零 unresolved，保留 dated 前輪原報告與來源 metadata。
+
+2026-10-08 10:09（台北）：主轉寫 133/133 完成，98 exact／18 same-sound 或 filler／4 Jev pass／13 flags。第二套離線盲轉寫在 36 分鐘逾時，保留實際完成的八句結果，並核對及補查其餘五句；尚未通過旁白品檢。普通重錄 dry-run 最多 13 句／12 requests／256 billable characters，未執行這批重錄。成片、timed CC、待上架包及音訊／成片核准均仍未完成；正式站本片語言選擇仍未決定，不把四語文字草稿當成已核准配音或字幕。Draft PR #1375，沒有合併、部署、上傳或發布。實際階段與私有收據見 `CONTINUATION-20261008.md`。
