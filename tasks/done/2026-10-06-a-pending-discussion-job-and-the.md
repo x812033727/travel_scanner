@@ -1,13 +1,13 @@
 ---
 id: 2026-10-06-a-pending-discussion-job-and-the
 title: A pending discussion job and the bookkeeping's site calls do not hold their video
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-bookkeeping
 claimed_at: 2026-10-07T23:20:39Z
 created_at: 2026-10-06T13:39:27Z
-completed_at:
+completed_at: 2026-10-08T00:38:55Z
 branch:
 depends_on:
   - 2026-10-06-a-failing-video-is-deferred
@@ -122,7 +122,8 @@ node --test tools/video/automation/automation.test.mjs tools/video/automation/se
     Each fails on the old code, and the mutations "held, the listed copy kept" and "read again,
     not held" are each caught.
   - The automation test the pending-reason ticket added wrapped `site.fetchImpl` in a function
-    that adds nothing; that line is removed here (its re-bind noted it).
+    that adds nothing; that line is removed here (noted when that ticket was closed, in
+    tasks/done/2026-10-05-video-writer-pending-transport-reason.md).
 - 2026-10-07, after the independent review (claude-opus-5-5-bookkeeping). Three findings, all
   minor, each confirmed by a second agent:
   - The blocked-report loop listed the videos once and reported each from that copy after an
@@ -145,3 +146,10 @@ node --test tools/video/automation/automation.test.mjs tools/video/automation/se
     throw, the re-check on the re-read copy, the return lines, and that nothing else calls
     recordVideoId or tellCompilationDone outside a held unit. Not changed (older than this
     ticket): recordVideoId takes no project lease and does not look at the video's STOP file.
+- 2026-10-08, closed after the independent duration re-bind `80af0fe4` (PASS, DURATION_ONLY,
+  reviewer `claude-pr-review-bookkeeping`). Its notes outside duration: a work directory whose
+  auto.json names another slug is now skipped by the three loops, as `stepUnit` already skips
+  it (before, the copy was acted on and saved under the named slug's directory); the
+  untold-compilation line names the listed copy's series, which only compilation.mjs sets, when
+  it makes the compilation; and the older gaps above (no project lease or STOP check in
+  recordVideoId) stand.
