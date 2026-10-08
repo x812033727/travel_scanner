@@ -1,0 +1,1592 @@
+{
+  "schema_version": 1,
+  "slug": "claude-code-mods-delivery-check-tutorial",
+  "format": "slides",
+  "category": "tutorial",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Claude Code Mods 教學：做一個交稿檢查面板，找缺件、補件與排錯",
+    "description": "交稿前，怎麼知道文章、資料依據和封面需求有沒有放齊？\n用一個 Claude Code Mods 交稿檢查面板，學會準備材料、指定資料夾、補件刷新與排查錯名，也分清檔案存在和內容合格。\n\n隨片教材包含完整範例程式、起始材料、可複製提示與課程練習答案。依自己的工作頻率，選擇一次性提示或固定面板。\n\n核心操作結果依站主實測整理；空白、錯名等為跟做練習。",
+    "tags": [
+      "Claude Code",
+      "Claude Code Mods",
+      "交稿檢查",
+      "Claude Code 教學",
+      "工作流程",
+      "AI 工具",
+      "Mokaair"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "還缺**哪份？**",
+      "tag": "交稿檢查"
+    }
+  },
+  "sources": [
+    {
+      "title": "Create a mod",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Plugin security and trust",
+      "url": "https://code.claude.com/docs/en/plugins/security",
+      "checked_on": "2026-10-09"
+    }
+  ],
+  "assets": [],
+  "subtitles": {
+    "burn_in": false
+  },
+  "scenes": [
+    {
+      "id": "missing-hook",
+      "chapter": "交稿檢查能解決什麼",
+      "template": "title",
+      "data": {
+        "title": "交稿前，少了哪一份？",
+        "subtitle": "Claude Code Mods｜從缺件到可核對的交付",
+        "tag": "教學材料與實測結果整理"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "hzck",
+          "text": "文章寫好了，設計師卻等不到封面需求。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "vjcf",
+          "text": "交稿少了一份，後面的人就接不下去。"
+        }
+      ]
+    },
+    {
+      "id": "actual-result",
+      "template": "table",
+      "data": {
+        "title": "站主實測結果整理",
+        "columns": [
+          "步驟",
+          "文章",
+          "資料依據",
+          "封面需求"
+        ],
+        "rows": [
+          [
+            "初次檢查",
+            "存在",
+            "存在",
+            "缺少"
+          ],
+          [
+            "補件並按刷新",
+            "存在",
+            "存在",
+            "存在"
+          ]
+        ]
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "3wjw",
+          "text": "站主試過這個清單，找到了少掉的封面需求。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "56pt",
+          "text": "補件後按重新檢查，第三項也變成存在。"
+        }
+      ]
+    },
+    {
+      "id": "what-is-mod",
+      "chapter": "準備可重做的材料",
+      "template": "big",
+      "data": {
+        "text": "把固定清單放進工作畫面",
+        "sub": "Mod：自訂小功能｜本例只查路徑"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "yvmc",
+          "text": "這個自訂小功能，叫做擴充模組。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "vuyd",
+          "text": "它把重複的交付規則，變成隨時能打開的畫面。"
+        }
+      ]
+    },
+    {
+      "id": "evidence-boundary",
+      "template": "big",
+      "data": {
+        "text": "結果整理，不是操作錄影",
+        "sub": "站主回報：缺件 → 補件 → 按鈕刷新"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "eddt",
+          "text": "剛才是站主實測結果的整理卡，沒有操作錄影。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "frse",
+          "text": "接著用相同材料，拆開每一步怎麼做、怎麼判斷。"
+        }
+      ]
+    },
+    {
+      "id": "folder-map",
+      "template": "code",
+      "data": {
+        "caption": "完整範例目錄：教材連結內 demo/delivery-check",
+        "code": "mods-lesson/\n  delivery-practice/  ← 文章練習\n  delivery-check/     ← 模組程式\n  lesson-practice/    ← 最後才建立"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "sprw",
+          "text": "從教材取得完整範例目錄，放進畫面上的上一層資料夾。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "7fvh",
+          "text": "主案例先用這份已測過的程式，生成提示留作理解與修改需求。"
+        }
+      ]
+    },
+    {
+      "id": "file-names",
+      "template": "code",
+      "data": {
+        "caption": "三個精確檔名與中文用途",
+        "code": "article.md      文章草稿\nsources.md      資料依據\ncover-brief.md  封面需求"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "p83c",
+          "text": "畫面上三個檔名，就是這次約定的交付清單。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "dcrt",
+          "text": "英文不用背，照著複製；旁邊的中文告訴你用途。"
+        }
+      ]
+    },
+    {
+      "id": "article-start",
+      "template": "code",
+      "data": {
+        "caption": "完整起始材料 1｜article.md",
+        "code": "# 社區讀書會公告草稿\n\n活動日期：10 月 24 日\n活動地點：里民活動中心\n活動內容：每人帶一本最近讀過的書，分享其中一個觀點。\n報名方式：待主辦人確認。\n\n這是教學自製情境，不是真實活動公告。"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "jzxa",
+          "text": "用純文字編輯器，存下這份讀書會公告草稿。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "kmk4",
+          "text": "日期、地點和活動內容都留著，後面會拿來核對。"
+        }
+      ]
+    },
+    {
+      "id": "sources-start",
+      "template": "code",
+      "data": {
+        "caption": "完整起始材料 2｜sources.md",
+        "code": "# 這份練習的資料依據\n\n本文是教學自製情境，不是真實活動公告。\n已提供：活動日期、地點、分享方式。\n尚待確認：報名方式、聯絡窗口。"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "z3at",
+          "text": "資料依據另外存一份，清楚列出還缺哪些資訊。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "fx49",
+          "text": "它提醒我們報名方式沒確認，不能把草稿直接發出去。"
+        }
+      ]
+    },
+    {
+      "id": "intentional-missing",
+      "template": "big",
+      "data": {
+        "text": "先不要建立封面需求",
+        "sub": "起點：只有 article.md、sources.md"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "m7vz",
+          "text": "第三份封面需求刻意不建，這是測試的起點。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "xxbi",
+          "text": "如果一開始全部放齊，就看不出它會不會找缺件。"
+        }
+      ]
+    },
+    {
+      "id": "path-copy",
+      "template": "steps",
+      "data": {
+        "title": "記住同一個練習位置",
+        "steps": [
+          {
+            "title": "開啟練習資料夾",
+            "detail": "delivery-practice"
+          },
+          {
+            "title": "複製位址列完整路徑",
+            "detail": "後續提示與指令都用這個位置"
+          }
+        ]
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "zqcz",
+          "text": "在檔案總管打開練習資料夾，複製位址列完整路徑。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "6f9z",
+          "text": "之後看到路徑欄位，就換成它，不要連括號一起貼。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "extensions",
+      "template": "big",
+      "data": {
+        "text": "顯示完整副檔名",
+        "sub": "要 article.md，避免 article.md.txt"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "wdfd",
+          "text": "存檔時也要看完整副檔名，避免多了一層文字檔尾巴。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "pbvk",
+          "text": "材料都放好，先打開檔案，確認不是只建了空白名字。"
+        }
+      ]
+    },
+    {
+      "id": "request-start",
+      "chapter": "把需求寫成驗收條件",
+      "template": "code",
+      "data": {
+        "caption": "完整需求提示分段 1｜全文附於教材",
+        "code": "請建立名為 delivery-check 的 Claude Code Mod。\n我不會寫程式，目的是找交稿缺件。\n練習資料夾：<貼上完整路徑>\n程式放在 mods-lesson/delivery-check。\n先產生程式、使用說明與能力清單，不要載入。"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "agx6",
+          "text": "現在把工作說清楚：找交稿缺件，而不是幫文章打分數。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "3c7b",
+          "text": "要自行建立時，先產生程式與說明；跟做也能用現成範例。"
+        }
+      ]
+    },
+    {
+      "id": "request-targets",
+      "template": "code",
+      "data": {
+        "caption": "完整需求提示分段 2｜精確範圍",
+        "code": "先確認指定路徑是可檢查的資料夾。\n只查 article.md、sources.md、cover-brief.md。\n不遞迴、不讀內容、不修改或補建。\n畫面顯示實際使用的完整路徑。"
+      },
+      "claims": [
+        "c6",
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "hivj",
+          "text": "請它只查約定的三個路徑，不要往子資料夾繼續找。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "zssv",
+          "text": "也不要順手補件；我們還要看原本到底少了什麼。"
+        }
+      ]
+    },
+    {
+      "id": "request-refresh",
+      "template": "code",
+      "data": {
+        "caption": "完整需求提示分段 3｜時機",
+        "code": "提供 /deliverables 指令開啟交稿檢查。\n第一次以帶引號的完整路徑指定資料夾。\n開啟或按「重新檢查」才查詢。\n顯示本次時間，不把舊結果當成最新。\n不支援的功能要說明，不自行猜目錄。"
+      },
+      "claims": [
+        "c6",
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "ntij",
+          "text": "重新檢查的時機也要約定，開啟或按按鈕才更新。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "9buf",
+          "text": "改完檔案後，舊畫面可能還沒變，這時就看檢查時間。"
+        }
+      ]
+    },
+    {
+      "id": "three-statuses",
+      "template": "table",
+      "data": {
+        "title": "三種狀態，三種下一步",
+        "columns": [
+          "看到的狀態",
+          "接著做什麼"
+        ],
+        "rows": [
+          [
+            "路徑存在",
+            "閱讀內容"
+          ],
+          [
+            "缺少",
+            "核對名稱後補件"
+          ],
+          [
+            "無法檢查",
+            "查權限或環境"
+          ]
+        ]
+      },
+      "claims": [
+        "c6",
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "q65i",
+          "text": "路徑存在，下一步是看內容；缺少，才去查漏了什麼。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "zamh",
+          "text": "如果根本看不到資料夾，要說無法檢查，不能猜成缺件。"
+        }
+      ]
+    },
+    {
+      "id": "request-output",
+      "template": "code",
+      "data": {
+        "caption": "完整需求提示分段 4｜結果的界線",
+        "code": "存在：路徑存在，內容待審閱。\n不存在：缺少。\n權限或環境出錯：無法檢查，附可理解的原因。\n不顯示完成百分比、不估剩餘時間。\n三項存在，也不寫成「可以交稿」。"
+      },
+      "claims": [
+        "c6",
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "6fdn",
+          "text": "三份裡找到兩份，只能說還少一份。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "pyze",
+          "text": "文章也許仍要改很多，不能把檔案數換成工作完成率。"
+        }
+      ]
+    },
+    {
+      "id": "request-tests",
+      "template": "code",
+      "data": {
+        "caption": "完整需求提示分段 5｜請附驗證步驟",
+        "code": "缺第三份 → 第三項缺少。\n補第三份再刷新 → 三項存在。\n第三份空白 → 仍只代表路徑存在。\n錯資料夾、錯名、不能存取 → 說明原因。\n附開啟、關閉、停止載入說明。"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "tqtj",
+          "text": "把缺件、補件和空白檔都寫進驗證要求。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "cgb7",
+          "text": "你就能拿結果對照，而不只是得到一句功能已做好。"
+        }
+      ]
+    },
+    {
+      "id": "session-choice",
+      "template": "big",
+      "data": {
+        "text": "路徑只在這次對話記住",
+        "sub": "重載或新對話：重新指定資料夾"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "jtmt",
+          "text": "這個設計只在目前對話記住你選的資料夾。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "2g4i",
+          "text": "重載或重新開對話，要再指定一次，避免沿用錯的位置。"
+        }
+      ]
+    },
+    {
+      "id": "before-loading",
+      "chapter": "載入前確認能力",
+      "template": "big",
+      "data": {
+        "text": "載入前，看來源與能力",
+        "sub": "核對三個約定檔名，需要哪些能力？"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "yyiv",
+          "text": "模組會在電腦上執行，載入前要看來源與能力清單。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "y53p",
+          "text": "只為找三份文件，卻要求連網或啟動其他程式，就先查原因。"
+        }
+      ]
+    },
+    {
+      "id": "sandbox-boundary",
+      "template": "big",
+      "data": {
+        "text": "不要把沙盒當成全面保護",
+        "sub": "模組自行啟動的程序：不自動套用指令沙盒"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "x5h4",
+          "text": "指令沙盒不會自動保護模組自行啟動的程序。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "byin",
+          "text": "對來源有疑問，就找能看程式的人核對，再用練習資料試。"
+        }
+      ]
+    },
+    {
+      "id": "no-hidden-work",
+      "template": "code",
+      "data": {
+        "caption": "完整需求提示分段 6｜能力限制",
+        "code": "檢查功能不呼叫模型、不連網、不啟動其他程式。\n若認為需要這些能力，先說明，不自行加入。\n依適用版本的官方文件與型別確認可行性。\n不支援就明說，不用假資料補成功畫面。"
+      },
+      "claims": [
+        "c6",
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "8imq",
+          "text": "這個檢查功能本身，不需要每按一次就叫模型回答。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "jzcx",
+          "text": "但請模型生成程式仍可能用到額度，兩件事要分開看。"
+        }
+      ]
+    },
+    {
+      "id": "loading-commands",
+      "template": "code",
+      "data": {
+        "caption": "操作指引｜Mods 需 2.1.287 以上；本例 2.1.293",
+        "code": "# 終端機位於 mods-lesson\nclaude --version\nclaude plugin validate ./delivery-check\nclaude --plugin-dir ./delivery-check"
+      },
+      "claims": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "2p26",
+          "text": "在模組的上一層，確認版本並驗證這個目錄。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "2zw7",
+          "text": "有錯先處理，通過後再用畫面上的參數做單次載入。"
+        }
+      ]
+    },
+    {
+      "id": "validation-limit",
+      "template": "big",
+      "data": {
+        "text": "能載入，也要核對行為",
+        "sub": "驗證檔案結構 ≠ 每一個案例都通過"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "me66",
+          "text": "這些指令是操作指引，畫面沒有冒充執行輸出。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "fgxm",
+          "text": "檔案結構能通過驗證，仍要回到準備好的缺件案例。"
+        }
+      ]
+    },
+    {
+      "id": "open-check",
+      "chapter": "從缺件到補件刷新",
+      "template": "code",
+      "data": {
+        "caption": "第一次開啟｜替換路徑、保留雙引號",
+        "code": "/deliverables \"<delivery-practice 的完整路徑>\""
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "2zuy",
+          "text": "載入後在工具的互動對話框，送出畫面上的開啟指令。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "6dxr",
+          "text": "這不是系統終端指令；填入完整路徑，保留雙引號。"
+        }
+      ]
+    },
+    {
+      "id": "first-three-rows",
+      "template": "table",
+      "data": {
+        "title": "第一次：先看實際查哪裡",
+        "columns": [
+          "檔案",
+          "主案例初始狀態"
+        ],
+        "rows": [
+          [
+            "article.md",
+            "存在，內容待審閱"
+          ],
+          [
+            "sources.md",
+            "存在，內容待審閱"
+          ],
+          [
+            "cover-brief.md",
+            "缺少"
+          ]
+        ]
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "6cyr",
+          "text": "面板打開，先看頂端路徑，再比對這三個檔名。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "pnba",
+          "text": "主案例應該少封面；站主這次回報，也確實看到這個結果。"
+        }
+      ]
+    },
+    {
+      "id": "result-mismatch",
+      "template": "big",
+      "data": {
+        "text": "結果不同，就先排錯",
+        "sub": "路徑 → 名稱 → 檢查時間"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "rizx",
+          "text": "如果你的結果不同，先不要急著替面板找理由。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "keyi",
+          "text": "看看查的是哪個資料夾、名字對不對，以及是否剛檢查過。"
+        }
+      ]
+    },
+    {
+      "id": "supplement-prompt",
+      "template": "code",
+      "data": {
+        "caption": "補件延伸提示｜本次實測使用已提供的封面材料",
+        "code": "在這個練習資料夾新增 cover-brief.md：<完整路徑>\n主標「社區讀書會」，副標「帶一本書，分享一個觀點」。\n白色背景、深藍標題，預留書本插圖位置。\n只寫文字需求，不生成圖片，不加已確認的報名資訊。\narticle.md 和 sources.md 保持原樣。\n完成後回報新增檔案的實際路徑。"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "udkx",
+          "text": "主線先把下一張的完整封面材料，手動存進練習資料夾。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "y345",
+          "text": "要請模型幫寫時，才用這段提示，限制它不改其他檔案。"
+        }
+      ]
+    },
+    {
+      "id": "complete-cover",
+      "template": "code",
+      "data": {
+        "caption": "補好後應有的內容｜cover-brief.md",
+        "code": "# 封面需求\n\n主標：社區讀書會\n副標：帶一本書，分享一個觀點\n版面：白色背景、深藍標題，預留一個書本插圖位置。\n本文件只描述需求，不代表圖片已製作完成。"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "2974",
+          "text": "你也可以直接複製這份完整封面需求，存到指定位置。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "je36",
+          "text": "存好後打開檔案，核對內容和位置，確認不是空白文件。"
+        }
+      ]
+    },
+    {
+      "id": "refresh-action",
+      "template": "steps",
+      "data": {
+        "title": "補檔後，手動重新檢查",
+        "steps": [
+          {
+            "title": "按「重新檢查」",
+            "detail": "讓面板重查同一資料夾"
+          },
+          {
+            "title": "核對時間與第三項",
+            "detail": "新時間；封面需求存在"
+          }
+        ]
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "sc94",
+          "text": "確認檔案在正確位置，再回面板按重新檢查。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "wuiq",
+          "text": "這次要同時看到新時間，以及第三個指定路徑已存在。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "observed-timestamps",
+      "template": "table",
+      "data": {
+        "title": "站主實測結果整理｜台灣時間",
+        "columns": [
+          "時間",
+          "封面需求",
+          "原來兩檔"
+        ],
+        "rows": [
+          [
+            "2026-10-09 03:43:10",
+            "缺少",
+            "存在"
+          ],
+          [
+            "2026-10-09 03:44:43",
+            "存在",
+            "內容未變"
+          ]
+        ]
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "ye8j",
+          "text": "這次實測是補入提供的封面檔，刷新後由缺少改為存在。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "cq4i",
+          "text": "檢查時間也更新了，而且原先兩份材料保持原樣。"
+        }
+      ]
+    },
+    {
+      "id": "evidence-scope",
+      "template": "steps",
+      "data": {
+        "title": "檢查結果怎麼來",
+        "steps": [
+          {
+            "title": "讀出資料夾的檔名清單",
+            "detail": "只看這一層，不讀文章內容"
+          },
+          {
+            "title": "對照三個約定名稱",
+            "detail": "顯示存在、缺少或無法檢查"
+          }
+        ]
+      },
+      "claims": [
+        "c6",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "atht",
+          "text": "程式讀出這個資料夾裡的名字，再對照三個約定名稱。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "vrt7",
+          "text": "它沒有閱讀文章，所以找得到檔案，還不能判斷內容寫對了。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "quality-question",
+      "chapter": "存在與內容完成的差別",
+      "template": "compare",
+      "data": {
+        "title": "三份都存在，可以交了嗎？",
+        "left": {
+          "heading": "A 直接交稿",
+          "points": [
+            "只看清單是否齊全"
+          ]
+        },
+        "right": {
+          "heading": "B 繼續讀內容",
+          "points": [
+            "檢查資訊是否完整、正確"
+          ]
+        }
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "2ru9",
+          "text": "三個路徑都出現了，你會直接交，還是繼續看內容？",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "xd3m",
+          "text": "先想一下：如果封面需求裡一個字都沒有呢？"
+        }
+      ]
+    },
+    {
+      "id": "blank-counterexample",
+      "template": "big",
+      "data": {
+        "text": "空白檔，也有路徑",
+        "sub": "練習副本｜cover-brief.md：0 位元組"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "i7hh",
+          "text": "在另一份練習副本，把封面需求準備成空白檔。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "88t4",
+          "text": "它的名字還在，但設計師根本不知道標題與版面要做什麼。"
+        }
+      ]
+    },
+    {
+      "id": "blank-meaning",
+      "template": "big",
+      "data": {
+        "text": "存在，內容待審閱",
+        "sub": "教材判讀｜未宣稱這個案例已有原生錄影"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "ka4c",
+          "text": "所以檢查路徑的清單，仍只能說存在、內容待審閱。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "hxzw",
+          "text": "要看封面需求是否寫齊，必須真的打開檔案讀內容。"
+        }
+      ]
+    },
+    {
+      "id": "unresolved-content",
+      "template": "code",
+      "data": {
+        "caption": "材料裡還沒完成的資訊",
+        "code": "article.md\n報名方式：待主辦人確認。\n\nsources.md\n尚待確認：報名方式、聯絡窗口。"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "drfn",
+          "text": "即使封面補好了，公告仍把報名方式留給主辦人確認。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "jqci",
+          "text": "資料依據也缺聯絡窗口，這兩項不是多建一份檔案就能解決。"
+        }
+      ]
+    },
+    {
+      "id": "content-review-prompt",
+      "template": "code",
+      "data": {
+        "caption": "一次性內容審閱提示",
+        "code": "請閱讀這個練習資料夾的三份文件，先不要修改：\n<貼上完整路徑>\n逐份列出內容、缺少資訊、需要人工確認的地方。\n每個問題附檔名與對應原文。\n不要把存在當成合格，不自行補造報名方式。"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "psin",
+          "text": "這時可以另下提示，請它逐份閱讀，列出缺少的資訊。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "ht3q",
+          "text": "每個問題都附檔名和原文，你才能知道判斷從哪裡來。"
+        }
+      ]
+    },
+    {
+      "id": "quality-handback",
+      "template": "big",
+      "data": {
+        "text": "有些答案要找對的人",
+        "sub": "報名方式與窗口 → 向主辦人確認"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "xavh",
+          "text": "內容審閱可以指出疑問，卻不能替主辦人決定報名方法。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "45tk",
+          "text": "把待確認資訊問清楚，才是這份公告能往前走的下一步。"
+        }
+      ]
+    },
+    {
+      "id": "wrong-name",
+      "chapter": "面板說缺少時怎麼查",
+      "template": "code",
+      "data": {
+        "caption": "錯名練習｜在另一份副本準備",
+        "code": "要求：cover-brief.md\n實際：cover_brief.md\n\n差別：連字號 - ／底線 _"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "r34v",
+          "text": "現在做個常見錯誤，把封面檔名中間改成底線。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "n2sr",
+          "text": "明明看得到檔案，指定的連字號路徑卻還是不存在。"
+        }
+      ]
+    },
+    {
+      "id": "wrong-name-diagnosis",
+      "template": "steps",
+      "data": {
+        "title": "排錯依序看，不靠猜",
+        "steps": [
+          {
+            "title": "核對完整路徑",
+            "detail": "是不是這份練習副本"
+          },
+          {
+            "title": "比對精確檔名",
+            "detail": "含副檔名與連字號"
+          }
+        ]
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "4wa8",
+          "text": "先確定面板查的是這份副本，再把完整檔名逐字比對。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "98bn",
+          "text": "連字號、底線和副檔名都算名字的一部分，不能只看開頭。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "wrong-name-fix",
+      "template": "steps",
+      "data": {
+        "title": "改名後，再核對一次",
+        "steps": [
+          {
+            "title": "改回 cover-brief.md",
+            "detail": "保留原有內容"
+          },
+          {
+            "title": "按重新檢查",
+            "detail": "確認時間更新與指定路徑"
+          }
+        ]
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "zzd5",
+          "text": "把名字改回約定的寫法，內容不用重做。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "8cmd",
+          "text": "然後重新檢查，看時間和指定路徑，才知道問題是否解決。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "cannot-check",
+      "template": "big",
+      "data": {
+        "text": "無法檢查，先處理原因",
+        "sub": "權限／環境錯誤，不能當成缺件"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "vaxq",
+          "text": "如果顯示的是無法檢查，就依原因查權限或環境。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "4fyq",
+          "text": "先不要急著重建檔案，查清楚為什麼無法讀取，再處理原因。"
+        }
+      ]
+    },
+    {
+      "id": "copy-path-again",
+      "template": "big",
+      "data": {
+        "text": "換副本，也要換查詢路徑",
+        "sub": "重新複製 → 指定 → 核對頂端位置"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "3d63",
+          "text": "每換一份練習副本，都重新複製完整路徑並指定。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "3899",
+          "text": "否則你在這邊改名，面板卻看著另一邊，怎麼刷新都不對。"
+        }
+      ]
+    },
+    {
+      "id": "one-time-prompt",
+      "chapter": "一次提示與固定面板怎麼選",
+      "template": "code",
+      "data": {
+        "caption": "只查一次，直接下這個提示",
+        "code": "練習資料夾：<貼上完整路徑>\n只檢查 article.md、sources.md、cover-brief.md\n這三個精確路徑是否存在。\n逐項列出存在、缺少或無法檢查。\n不要讀內容、不要建立或修改，也不要評分完成度。"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "vt2v",
+          "text": "如果今天只查這一次，直接在對話裡提出同樣要求就夠了。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "b2s2",
+          "text": "精確的路徑和檔名照樣要給，結果只是出現在對話裡。"
+        }
+      ]
+    },
+    {
+      "id": "one-time-evidence",
+      "template": "big",
+      "data": {
+        "text": "肯定的回覆，也要有依據",
+        "sub": "實際存取路徑；不能只重述清單"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "u73y",
+          "text": "回覆列出三項結果時，還要看它是否真的檢查了資料夾。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "wvrt",
+          "text": "只有重述清單沒有用；不能存取，就自己開資料夾核對。"
+        }
+      ]
+    },
+    {
+      "id": "choose-method",
+      "template": "compare",
+      "data": {
+        "title": "依工作的頻率選方法",
+        "left": {
+          "heading": "一次性提示",
+          "points": [
+            "偶爾查一次",
+            "規則常變",
+            "在對話裡拿結果"
+          ]
+        },
+        "right": {
+          "heading": "固定檢查面板",
+          "points": [
+            "每週反覆交付",
+            "規則固定",
+            "同一個按鈕與畫面"
+          ]
+        }
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "c575",
+          "text": "工作偶爾才做，或清單經常變，一次提示比較直接。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "tq3f",
+          "text": "每週都用相同規則，你才更需要固定按鈕和一致畫面。"
+        }
+      ]
+    },
+    {
+      "id": "not-every-task-panel",
+      "template": "big",
+      "data": {
+        "text": "先寫需求，再決定工具",
+        "sub": "一次工作，還是反覆使用的介面？"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "tm4k",
+          "text": "所以先想自己要完成什麼，不急著找可以裝的功能。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "xkq6",
+          "text": "把規則寫得能驗收，無論選對話或面板都用得上。"
+        }
+      ]
+    },
+    {
+      "id": "date-change-prompt",
+      "chapter": "日期改動如何驗收",
+      "template": "code",
+      "data": {
+        "caption": "單改日期｜完整提示",
+        "code": "練習資料夾：<貼上完整路徑>\n只把 article.md 的活動日期\n由「10 月 24 日」改成「10 月 31 日」。\n其他內容保持不變。\n改完列出前後文字，並指出檔名。"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "f5v8",
+          "text": "換一個需求，只把公告日期改到十月三十一日。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "u9ya",
+          "text": "兩次查件都會說檔案存在，所以還得用內容對照來驗收。"
+        }
+      ]
+    },
+    {
+      "id": "date-expected",
+      "template": "table",
+      "data": {
+        "title": "預期對照｜教材練習",
+        "columns": [
+          "欄位",
+          "修改前",
+          "合格結果"
+        ],
+        "rows": [
+          [
+            "日期",
+            "10 月 24 日",
+            "10 月 31 日"
+          ],
+          [
+            "地點",
+            "里民活動中心",
+            "保持原文"
+          ],
+          [
+            "活動與報名",
+            "原來文字",
+            "保持原文"
+          ]
+        ]
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "yw2s",
+          "text": "打開真正的文章，找日期那一行，再核對其餘文字。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "8qeg",
+          "text": "合格的結果很具體：日期換了，地點和活動內容都留下來。"
+        }
+      ]
+    },
+    {
+      "id": "history-not-success",
+      "template": "big",
+      "data": {
+        "text": "修改紀錄還要對到真實檔案",
+        "sub": "有編輯事件，不等於最終內容正確"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "v9hj",
+          "text": "只收到已完成，或只看到一筆編輯紀錄，都還不夠。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "t6b9",
+          "text": "如果那次修改失敗，紀錄可以存在，真正的檔案卻沒有變。"
+        }
+      ]
+    },
+    {
+      "id": "date-repair",
+      "template": "code",
+      "data": {
+        "caption": "不小心改到地點，就精確指出範圍",
+        "code": "我只要求改日期。\n請將活動地點還原為「里民活動中心」。\n保留已改成「10 月 31 日」的日期。\n其他內容不變，完成後列出實際內容。"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "fqhv",
+          "text": "如果它連地點都改了，就給出原值和需要保留的日期。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "9ar9",
+          "text": "比起只說改錯了，明確指出範圍，才有下一次可核對的結果。"
+        }
+      ]
+    },
+    {
+      "id": "change-review-use",
+      "template": "big",
+      "data": {
+        "text": "多檔案修改，才考慮變更回顧",
+        "sub": "單一改動直接對照；大量修改分段檢查"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "u9sn",
+          "text": "只改一處，直接看前後文字最清楚。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "n644",
+          "text": "經常一次改很多份，才值得把變更回顧也放進工作介面。"
+        }
+      ]
+    },
+    {
+      "id": "lesson-start",
+      "chapter": "課程交付的檔案練習與需求設計",
+      "template": "code",
+      "data": {
+        "caption": "變式練習｜另建 lesson-practice",
+        "code": "outline.md   課程大綱\nexercise.md  練習題\nanswer.md    參考答案，先不建立"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "76k4",
+          "text": "現在做課程交付的檔案練習，再設計清單要怎麼換。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "9ic4",
+          "text": "另建新的練習資料夾，先放前兩份，答案刻意先留缺。"
+        }
+      ]
+    },
+    {
+      "id": "lesson-outline",
+      "template": "code",
+      "data": {
+        "caption": "完整起始材料｜outline.md",
+        "code": "# 讀書會海報小練習\n目標：分清標題、時間、地點三種資訊。\n步驟：讀公告、找三項資訊、檢查缺了什麼。"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "vk64",
+          "text": "課程大綱先寫學習目標：分清標題、時間和地點。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "hyj8",
+          "text": "步驟是讀公告、找資訊，再檢查缺了什麼，範圍保持簡單。"
+        }
+      ]
+    },
+    {
+      "id": "lesson-exercise",
+      "template": "code",
+      "data": {
+        "caption": "完整起始材料｜exercise.md",
+        "code": "# 練習題\n公告：社區讀書會，10 月 24 日，在里民活動中心。\n請寫出活動標題、時間和地點。"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "2vvc",
+          "text": "練習題用這份新的公告，請學生找出三項資訊。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "czx2",
+          "text": "注意它的日期是十月二十四日，不沿用前一個改日期練習。"
+        }
+      ]
+    },
+    {
+      "id": "lesson-change-prompt",
+      "template": "code",
+      "data": {
+        "caption": "延伸需求設計｜尚未完成課程版模組",
+        "code": "把三個目標改為 outline.md、exercise.md、answer.md。\n中文用途：課程大綱、練習題、參考答案。\n新的練習資料夾：<lesson-practice 完整路徑>\n保留指定路徑、手動刷新、實際時間與三種狀態。\n存在不等於完成，不顯示完成百分比。\n先列出改動與驗證方式，不自行載入。"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "vkxx",
+          "text": "請它修改三個目標名稱、中文用途，以及新的練習路徑。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "hk8j",
+          "text": "但存在、缺少、無法檢查的區別，和手動刷新都保留下來。"
+        }
+      ]
+    },
+    {
+      "id": "lesson-apply",
+      "template": "steps",
+      "data": {
+        "title": "方案確認後才產生修改",
+        "steps": [
+          {
+            "title": "要求按方案修改程式",
+            "detail": "列出改動，先不要載入"
+          },
+          {
+            "title": "核對後重新試用",
+            "detail": "新路徑；依單次載入流程"
+          }
+        ]
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "6qk4",
+          "text": "這是延伸的需求設計，課程版模組還沒有完成實測。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "8js5",
+          "text": "實作時要按方案改程式、核對後重新載入，不能只換檔名。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "lesson-tests",
+      "template": "table",
+      "data": {
+        "title": "課程交付的三輪練習",
+        "columns": [
+          "材料狀態",
+          "能判斷什麼"
+        ],
+        "rows": [
+          [
+            "缺 answer.md",
+            "答案路徑缺少"
+          ],
+          [
+            "空白 answer.md",
+            "路徑存在，答案沒寫"
+          ],
+          [
+            "有答案文字",
+            "還要核對題目"
+          ]
+        ]
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "qrhk",
+          "text": "現在能直接重做的是檔案練習，依序準備缺件、空白和答案。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "drku",
+          "text": "對照資料夾和文字，分清存在與內容，不冒充新面板已測通。"
+        }
+      ]
+    },
+    {
+      "id": "lesson-answer",
+      "template": "code",
+      "data": {
+        "caption": "參考答案｜answer.md",
+        "code": "# 參考答案\n活動標題：社區讀書會\n時間：10 月 24 日\n地點：里民活動中心"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "ppnj",
+          "text": "答案是社區讀書會、十月二十四日，以及里民活動中心。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "subf",
+          "text": "把答案逐項對回題目，才知道交付的課程材料是否對得上。"
+        }
+      ]
+    },
+    {
+      "id": "lesson-wrong-answer",
+      "template": "big",
+      "data": {
+        "text": "檔名正確，答案仍可能錯",
+        "sub": "若寫成圖書館：清單看不到這個內容錯誤"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "xnzi",
+          "text": "假如答案把地點寫成圖書館，清單仍會找到那份檔案。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "ymdb",
+          "text": "真正讀過題目，才會指出應該是里民活動中心，並請它修正。"
+        }
+      ]
+    },
+    {
+      "id": "your-checklist",
+      "template": "big",
+      "data": {
+        "text": "換成自己的工作也一樣",
+        "sub": "確切檔名＋一個缺件例＋一個內容錯誤例"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "93rn",
+          "text": "你也可以換成報價單、品項表和交貨說明。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "andm",
+          "text": "列出確切檔名，再各準備一個缺件和內容錯誤，就能試規則。"
+        }
+      ]
+    },
+    {
+      "id": "close-and-stop",
+      "chapter": "把檢查變成可用的工作流程",
+      "template": "code",
+      "data": {
+        "caption": "操作規格｜此兩項尚待原生驗證",
+        "code": "收起面板：按「關閉面板」或 Esc。\n停止下次載入：結束目前這次對話。\n下次啟動不帶 --plugin-dir ./delivery-check。\n關閉面板不等於卸載；保留練習檔案。"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "w3y3",
+          "text": "收起面板和停止載入是兩件事，這兩項操作仍待驗證。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "76b7",
+          "text": "單次載入結束後，下次不帶載入參數，練習檔不用刪掉。"
+        }
+      ]
+    },
+    {
+      "id": "workflow-recap",
+      "template": "steps",
+      "data": {
+        "title": "交付前的判斷順序",
+        "steps": [
+          {
+            "title": "確認位置與清單",
+            "detail": "到底要查哪三個精確路徑"
+          },
+          {
+            "title": "補件並重新查詢",
+            "detail": "看實際檔案、時間與狀態"
+          },
+          {
+            "title": "讀內容，處理待確認資訊",
+            "detail": "讓下一位接手者能開始工作"
+          }
+        ]
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "9pfq",
+          "text": "交付前先確認位置與清單，再處理真正的缺件。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "3vtm",
+          "text": "補好後重查，還要讀內容，把需要確認的資訊交給對的人。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "outcome",
+      "template": "outro",
+      "data": {
+        "title": "找到缺件，也看懂結果",
+        "cta": "訂閱｜用清楚的步驟學會 AI 工具"
+      },
+      "claims": [],
+      "lines": [
+        {
+          "id": "cznk",
+          "text": "三份路徑找齊，再看內容，才接近能交的成果。",
+          "emotion": "自然清楚，重點稍放慢"
+        },
+        {
+          "id": "w86j",
+          "text": "你的工作裡，最常漏掉哪一份交付？"
+        },
+        {
+          "id": "u88g",
+          "text": "訂閱頻道，繼續用能重做的案例學工具。"
+        }
+      ]
+    }
+  ]
+}

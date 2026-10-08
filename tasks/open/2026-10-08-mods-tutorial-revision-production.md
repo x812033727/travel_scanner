@@ -1,17 +1,18 @@
 ---
 id: 2026-10-08-mods-tutorial-revision-production
 title: Produce and review the revised Mods tutorial after original-source handoff
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: codex-mods-clarity-20261009
+claimed_at: 2026-10-08T20:09:48Z
 created_at: 2026-10-08T16:35:11Z
 completed_at:
 branch: codex/mods-clarity-20261009
 depends_on: []
 scope:
   - docs/videos/claude-code-mods-no-sandbox-before-install
+  - docs/videos/claude-code-mods-delivery-check-tutorial
 ---
 
 # Produce and review the revised Mods tutorial after original-source handoff
@@ -23,7 +24,7 @@ The owner requested a clearer Mods video. The source rewrite, single-case diagra
 ## Definition of done
 
 - [ ] The lesson solves a concrete viewer problem with a complete worked example, a contrast and a transfer exercise; an independent first-use review verifies the learner can reproduce and explain the result.
-- [ ] The original-source/dub handoff is resolved and the new revision has its own source-bound production state.
+- [x] The original-source/dub handoff is resolved and the new revision has its own source-bound production state.
 - [ ] New narration retains the selected voice; both spoken body and final cut meet the 8-minute minimum without padding.
 - [ ] Real ASR/audio review, visual/video QA, captions, package checks and backend hash readback pass for the new source.
 - [ ] Owner review, upload and publication are recorded as separate states; no original approvals are reused.
@@ -33,7 +34,7 @@ The owner requested a clearer Mods video. The source rewrite, single-case diagra
 - [x] Review `docs/videos/claude-code-mods-no-sandbox-before-install/revision-review.md` and the static preview; record the failed teaching-value review in `teaching-review.md`.
 - [ ] Complete the substantive rewrite, provide starting materials and actual demonstrations, then synchronize the final script/video source and renew its source bindings.
 - [ ] Resolve source handoff and confirm the applicable production budget before provider calls; retain unknown provider outcomes without retries.
-- [ ] Obtain permitted runtime evidence for the core practical promise. Official/illustrative/expected-result labels remain mandatory where relevant, but labels alone do not satisfy a claim that viewers can reproduce a demonstrated installation.
+- [x] Obtain permitted runtime evidence for the core practical promise. Official/illustrative/expected-result labels remain mandatory where relevant, but labels alone do not satisfy a claim that viewers can reproduce a demonstrated installation.
 - [ ] Produce narration and cut, inspect the actual player/audio, and complete the source-bound reviews and packaging.
 
 ## How to verify
