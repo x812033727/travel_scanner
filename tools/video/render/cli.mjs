@@ -4,9 +4,11 @@
 // sheet. Frames are cached by content key, so a rerun after editing one scene redraws that scene
 // only. A STOP file ends the run after the current scene; the next run picks up from the cache.
 // A drama's shots are clips the media stages make, so render draws only its cards, its subtitle
-// strips (when they are burned in) and its thumbnail, on the chosen shot's keyframe. Every other
-// caption locale whose i18n file has current thumbnail words gets its own thumbnail as well, in
-// thumbnails/<locale>.jpg (YouTube Studio's 「語言」 page takes one per language).
+// strips (when they are burned in) and its thumbnail, on its subject: the still of the screencast
+// scene `thumbnail.data.capture` names, else the keyframe of the shot `thumbnail.data.shot` names
+// (render/plan.mjs thumbnailSubject). Every other caption locale whose i18n file has current
+// thumbnail words gets its own thumbnail as well, in thumbnails/<locale>.jpg (YouTube Studio's
+// 「語言」 page takes one per language).
 //
 // --thumbnails-only draws those language thumbnails alone, for words translated after the frames
 // were rendered (the worker's language batch runs after the final cut is approved): it needs a
@@ -23,7 +25,7 @@ import { burnIn, hasPictures, isDrama, subtitlesHash } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { lintProject, loadProject, recordStage, ARTIFACTS } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
-import { SIZE, THUMB_SIZE, THUMB_VARIANT_IDS } from "../templates/templates.mjs";
+import { captureRef, SIZE, THUMB_SIZE, THUMB_VARIANT_IDS, thumbnailVariants } from "../templates/templates.mjs";
 import { openRenderer, RendererError } from "./browser.mjs";
 import { contactSheetHtml, SHEET_WIDTH } from "./contact.mjs";
 import { bundledCoverage, uncovered } from "./fonts.mjs";
@@ -31,7 +33,7 @@ import { LOCALES } from "../core/schema.mjs";
 import { localeThumbnailFile, renderPlan, renderProblems, stillFile, themeHash, thumbnailVariantFile, transitionFile } from "./plan.mjs";
 import { BLANK_STRIP, blankStripHtml, blankStripKey, STRIP_SIZE, stripFile, subtitlePlan } from "./subtitles.mjs";
 import { BrowserMissing } from "../screencast/browser.mjs";
-import { ensureCaptures } from "../screencast/capture.mjs";
+import { cachedManifest, ensureCaptures } from "../screencast/capture.mjs";
 import { NetworkError, StepError } from "../screencast/runner.mjs";
 import { isScreencast } from "../screencast/steps.mjs";
 
@@ -47,6 +49,34 @@ const glyphList = (missing) => missing.map((char) => `"${char}" U+${char.codePoi
 
 /** The thumbnail and its test variants, each with the path its problems are reported under. */
 const thumbnailsOf = (plan) => (plan.thumbnail ? [["thumbnail", plan.thumbnail], ...(plan.thumbnail.variants ?? []).map((variant) => [`thumbnail variant ${variant.id}`, variant])] : []);
+
+/**
+ * Why the thumbnail or one of its variants cannot be drawn yet: its subject is named but not
+ * there. A keyframe comes from the keyframes stage (or, for a compilation, from the worker); a
+ * screencast still from render itself, so one missing here is a scene render did not take.
+ */
+function undrawnSubject(plan, { compilation = false } = {}) {
+  for (const [where, own] of thumbnailsOf(plan)) {
+    const label = where === "thumbnail" ? "the thumbnail's" : `${where}'s`;
+    if (own.capture && !own.still) return `${label} subject is the still of screencast scene ${own.capture}, which is not taken yet; run render without --thumbnails-only first`;
+    if (own.shot && !own.keyframe) {
+      if (compilation) return `${label} background is ${THUMB_SOURCE}, listed in keyframes/manifest.json under shots.${own.shot}; the worker copies an episode's keyframe there when it plans the metadata (docs/videos/BINGE.md)`;
+      return `${label} background is the keyframe of shot ${own.shot}, which is not drawn yet; run keyframes first`;
+    }
+  }
+  return null;
+}
+
+/** The cached capture manifests of the screencast scenes the thumbnails name, for a run that takes none. */
+function thumbnailCaptures(doc, workdir, { profile }) {
+  const named = new Set([doc.thumbnail, ...thumbnailVariants(doc.thumbnail).map((variant) => variant.thumbnail)].map((own) => captureRef(own?.data?.capture)?.scene).filter(Boolean));
+  const screencasts = {};
+  for (const scene of doc.scenes.filter((scene) => isScreencast(scene) && named.has(scene.id))) {
+    const manifest = cachedManifest(workdir, scene, { profile: Boolean(profile) });
+    if (manifest) screencasts[scene.id] = manifest;
+  }
+  return screencasts;
+}
 
 /**
  * The keyframes the given thumbnails sit on whose bytes are not the ones keyframes/manifest.json
@@ -166,7 +196,7 @@ function reportLocalized(out, localized) {
  * thumbnail.jpg and the contact sheet stay as they are. Screencast scenes are left out of the plan
  * (their stills are not drawn here, so their captures are not taken again).
  */
-async function thumbnailsOnly({ ctx, project, workdir, channel }) {
+async function thumbnailsOnly({ ctx, project, workdir, channel, profile }) {
   const { EXIT } = ctx;
   const { doc } = project;
   const manifestFile = path.join(workdir, ARTIFACTS.frames);
@@ -180,9 +210,12 @@ async function thumbnailsOnly({ ctx, project, workdir, channel }) {
     return EXIT.ok;
   }
   const keyframes = hasPictures(doc) ? (readJson(path.join(workdir, ARTIFACTS.keyframes), null)?.shots ?? {}) : {};
-  const plan = renderPlan({ ...doc, scenes: doc.scenes.filter((scene) => !isScreencast(scene)) }, themeHash(), ctx.root, { keyframes, translations: project.translations, workdir });
-  if (plan.thumbnail.shot && !plan.thumbnail.keyframe) {
-    ctx.stderr.write(`the thumbnail's background is the keyframe of shot ${plan.thumbnail.shot}, which is not drawn yet; run keyframes first\n`);
+  // A thumbnail whose subject is a screencast still reads the capture the full render took.
+  const screencasts = thumbnailCaptures(doc, workdir, { profile });
+  const plan = renderPlan({ ...doc, scenes: doc.scenes.filter((scene) => !isScreencast(scene)) }, themeHash(), ctx.root, { keyframes, screencasts, translations: project.translations, workdir });
+  const undrawn = undrawnSubject(plan);
+  if (undrawn) {
+    ctx.stderr.write(`${undrawn}\n`);
     return EXIT.usage;
   }
   // Only the language thumbnails are drawn here: they sit on A's keyframe, never on a variant's.
@@ -239,7 +272,7 @@ export async function run(command, args, ctx) {
     print(ctx.stdout, "ERROR", dataProblems);
     return EXIT.lint;
   }
-  if (values["thumbnails-only"]) return thumbnailsOnly({ ctx, project, workdir, channel: values.channel ?? ctx.env.VIDEO_BROWSER_CHANNEL });
+  if (values["thumbnails-only"]) return thumbnailsOnly({ ctx, project, workdir, channel: values.channel ?? ctx.env.VIDEO_BROWSER_CHANNEL, profile: values.profile ?? ctx.env.VIDEO_SCREENCAST_PROFILE });
   // A series' compilation (docs/videos/BINGE.md) is a drama with cards and a thumbnail only:
   // the episodes' cuts already carry their subtitles, so nothing is timed to a narration here.
   const compilation = isCompilation(doc);
@@ -286,14 +319,9 @@ export async function run(command, args, ctx) {
   // A drama's thumbnail and an illustrated slides video's may sit on a keyframe (docs/videos/ILLUSTRATED.md).
   const keyframes = hasPictures(doc) ? (readJson(path.join(workdir, ARTIFACTS.keyframes), null)?.shots ?? {}) : {};
   const plan = renderPlan(doc, themeHash(), ctx.root, { keyframes, screencasts, translations: project.translations, workdir });
-  const undrawn = (plan.thumbnail?.variants ?? []).find((variant) => variant.shot && !variant.keyframe);
+  const undrawn = undrawnSubject(plan, { compilation });
   if (undrawn) {
-    ctx.stderr.write(`thumbnail variant ${undrawn.id}'s background is the keyframe of shot ${undrawn.shot}, which is not drawn yet; run keyframes first\n`);
-    return EXIT.usage;
-  }
-  if (plan.thumbnail?.shot && !plan.thumbnail.keyframe) {
-    if (compilation) ctx.stderr.write(`the thumbnail's background is ${THUMB_SOURCE}, listed in keyframes/manifest.json under shots.${plan.thumbnail.shot}; the worker copies an episode's keyframe there when it plans the metadata (docs/videos/BINGE.md)\n`);
-    else ctx.stderr.write(`the thumbnail's background is the keyframe of shot ${plan.thumbnail.shot}, which is not drawn yet; run keyframes first\n`);
+    ctx.stderr.write(`${undrawn}\n`);
     return EXIT.usage;
   }
   if (await refuseChangedBackgrounds(ctx, [...thumbnailsOf(plan).map(([, each]) => each), ...(plan.thumbnail?.locales ?? [])], workdir, { compilation })) return EXIT.usage;

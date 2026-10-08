@@ -6,19 +6,27 @@
 // back with a note, it is rewritten from that note while the site allows rewrites. An episode is
 // started on the site under the video's slug, then drafted here from the chapter's beats: no
 // outline options, the owner already approved the chapter. A one-off drama is a series of one
-// episode whose only document is its story bible (docs/videos/DRAMA-FLOW.md, section 2).
+// episode whose only document is its story bible (docs/videos/DRAMA-FLOW.md, section 2). A
+// document whose planner answer was lost on the way (the model may have run, and been paid for)
+// is not planned again on its own: it waits for the owner, and the series after it with it.
+import { createHash } from "node:crypto";
 import path from "node:path";
 
 import { hasAnimePolicy, isLongAnime, isClosedAnimeFinale, validateAnimePolicy } from "../core/anime-policy.mjs";
 import { craftGateProblems } from "../core/craft.mjs";
 import { EXPLAINER_PRESET, shotLooksProblem } from "../core/drama.mjs";
+import { atomicWrite, readJson } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
-import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
+import { AutomationError, OUTPUT_INVALID, RUN_UNCERTAIN } from "./client.mjs";
 import { BEATS, GENRE_SPECS, HOOK_TYPES, LEAD_ARCS, MIN_SATISFACTION } from "./prompts.mjs";
 import { startStory } from "./story.mjs";
 
 export const DOC_KINDS = ["setting", "outline", "chapter", "bible"];
+// The document jobs whose planner answer was lost (planDocument), under _series/<slug>/ beside a
+// discussion's kept reply (discuss.mjs discussion-answer.json, which is rewritten whole and keeps
+// nothing else).
+export const LOST_DOCS = "lost-docs.json";
 const BIBLE_LISTS = ["acts"];
 const ANSWER_ATTEMPTS = 2;
 const CHARACTER_KEYS = ["id", "name", "appearance"];
@@ -473,6 +481,35 @@ export function episodeBrief(series, episode, cast, beats) {
   ].join("\n");
 }
 
+/**
+ * The series as the planner and the checker read it: what the owner set, none of the counters,
+ * status or times the site moves as the worker goes (documentInputs hashes it for that reason).
+ */
+function seriesFacts(series) {
+  return {
+    slug: series.slug,
+    kind: series.kind ?? "series",
+    ...(hasAnimePolicy(series) ? { category: series.category, production_policy: series.production_policy, runtime_spec: series.runtime_spec } : {}),
+    title: series.title,
+    premise: series.premise,
+    aspects: series.aspects,
+    tone: series.tone,
+    style_preset: series.style_preset,
+    target_minutes: series.target_minutes,
+    planned_episodes: series.planned_episodes,
+    episodes_per_chapter: series.episodes_per_chapter,
+    chapters: series.chapters,
+    open_ended: series.open_ended,
+    note: series.note,
+    genre: series.genre ?? "xianxia-bonds",
+    lead: series.lead ?? "dual-male",
+    visual_tier: series.visual_tier ?? "clips",
+    compilation: Boolean(series.compilation),
+    hands_off: Boolean(series.hands_off),
+    total_minutes: series.total_minutes ?? null,
+  };
+}
+
 /** What the planner gets for a document, on top of the drama references. */
 export function documentPayload(automation, job, problem = null) {
   const refs = automation.reference();
@@ -480,28 +517,7 @@ export function documentPayload(automation, job, problem = null) {
   const series = job.series;
   const base = {
     kind: job.kind,
-    series: {
-      slug: series.slug,
-      kind: series.kind ?? "series",
-      ...(hasAnimePolicy(series) ? { category: series.category, production_policy: series.production_policy, runtime_spec: series.runtime_spec } : {}),
-      title: series.title,
-      premise: series.premise,
-      aspects: series.aspects,
-      tone: series.tone,
-      style_preset: series.style_preset,
-      target_minutes: series.target_minutes,
-      planned_episodes: series.planned_episodes,
-      episodes_per_chapter: series.episodes_per_chapter,
-      chapters: series.chapters,
-      open_ended: series.open_ended,
-      note: series.note,
-      genre: series.genre ?? "xianxia-bonds",
-      lead: series.lead ?? "dual-male",
-      visual_tier: series.visual_tier ?? "clips",
-      compilation: Boolean(series.compilation),
-      hands_off: Boolean(series.hands_off),
-      total_minutes: series.total_minutes ?? null,
-    },
+    series: seriesFacts(series),
     genre_spec: isLongAnime(series) ? null : GENRE_SPECS[series.genre] ?? null,
     series_reference: refs.series,
     drama: refs.drama,
@@ -541,7 +557,10 @@ export function documentPayload(automation, job, problem = null) {
 /**
  * The checker's verdict on a planned document (docs/videos/BINGE.md), for a hands-off series:
  * a fresh session reads the document against the series and the approved documents before it.
- * Null when the checker answered nothing usable twice; the document then waits for the owner.
+ * Null when the checker answered nothing usable twice, or when its answer was lost on the way
+ * (client.mjs RUN_UNCERTAIN: it may have run, and been paid for, so it is not asked a second
+ * time); the planner's answer, paid for too, is then filed without a verdict and waits for the
+ * owner.
  */
 export async function judgeDocument(automation, job, answer) {
   const { series } = job;
@@ -562,6 +581,10 @@ export async function judgeDocument(automation, job, answer) {
     try {
       verdict = await automation.stage("verifier", `series-${series.slug}`, problem ? { ...payload, previous_problem: problem } : payload, 16_000, "drama", "series-doc", series);
     } catch (error) {
+      if (error instanceof AutomationError && error.code === RUN_UNCERTAIN) {
+        automation.log(`  the checker's verdict on ${job.kind} may have run on the server without reaching the worker (${error.why ?? error.message}); it is not asked again, and the document waits for the owner`);
+        return null;
+      }
       if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
       problem = error.message;
       continue;
@@ -573,16 +596,97 @@ export async function judgeDocument(automation, job, answer) {
   return null;
 }
 
-/** Plan one document with the planner and file it on the site; a line saying what happened. */
+/**
+ * Which document job the site names: its kind, its chapter, and the version it rewrites (a
+ * rewrite carries the rejected version as `previous`), or "first" for a document's first version.
+ */
+export const documentKey = (job) => `${job.kind}:${job.kind === "chapter" ? job.chapter_number : 0}:${job.previous?.id ?? "first"}`;
+
+/**
+ * A hash of what the owner decides about a document job: the series itself (a series withdrawn
+ * and filed again under the same slug is a new row, a new request), its facts, the version it
+ * rewrites with the owner's note, and the approved setting and outline it is planned from. None
+ * of what the worker itself moves (the series' counters, status and updated_at, the recaps, the
+ * episodes, the mysteries), or a held document would be planned again without the owner.
+ */
+export function documentInputs(job) {
+  const context = job.context ?? {};
+  const version = (doc) => (doc ? { id: doc.id ?? null, version: doc.version ?? null } : null);
+  const inputs = {
+    id: job.series?.id ?? null,
+    series: seriesFacts(job.series),
+    previous: job.previous ? { ...version(job.previous), note: job.previous.note ?? null } : null,
+    setting: version(context.setting),
+    outline: version(context.outline),
+  };
+  return createHash("sha256").update(JSON.stringify(inputs)).digest("hex");
+}
+
+/**
+ * The document jobs of a series whose planner answer was lost, by documentKey, as saved under
+ * _series/<slug>/lost-docs.json: { kind, chapter, previous_version, stage, variant, inputs, at,
+ * why }. Nothing is kept without a work base (an automation a test stubs).
+ */
+function lostDocs(automation, series) {
+  const file = automation.workBase ? path.join(automation.workBase, "_series", series.slug, LOST_DOCS) : null;
+  const lost = { ...(file ? readJson(file, {}) : {}) };
+  const save = () => file && atomicWrite(file, `${JSON.stringify(lost, null, 2)}\n`);
+  return { lost, save };
+}
+
+/**
+ * Plan one document with the planner and file it on the site; a line saying what happened.
+ *
+ * A planner answer lost on the way (client.mjs RUN_UNCERTAIN: sent, and no answer came back) may
+ * have run, and been paid for, and the server keeps no answer to fetch again. The planner is
+ * synchronous, the site has no call that holds a document job, and seriesNext names the same job
+ * every round: until 2026-10-07 the error ended every round (`auto` exited 4 before the drama and
+ * slides requests, the drafts and the Shorts) and the next one paid for the planner again, for
+ * ever. The loss is now recorded in lost-docs.json (lostDocs) with a hash of the owner's inputs
+ * (documentInputs), and the job is not planned again while it is the same: null, said once a run,
+ * so the lane goes on to the requests and the draft after the series. The owner releases it by
+ * changing the series (its note, premise, title or hands-off switch), by a line on a rejected
+ * version that files a new one, or, while no episode has started, by withdrawing the series and
+ * filing it again (a new series row). Meanwhile the series' own ready episodes wait (the site
+ * names a due chapter before them), and so do the series after it, since the site hands over the
+ * oldest series' job first. An entry whose job the site no longer names is dropped.
+ */
 export async function planDocument(automation, job) {
   const { series } = job;
   const slug = `series-${series.slug}`;
+  const what = documentName(job);
+  const key = documentKey(job);
+  const inputs = documentInputs(job);
+  const { lost, save } = lostDocs(automation, series);
+  const stale = Object.keys(lost).filter((each) => each !== key);
+  for (const each of stale) delete lost[each];
+  if (stale.length) save();
+  automation.heldDocs ??= new Set();
+  const held = `${series.slug}:${key}`;
+  if (lost[key]?.inputs === inputs) {
+    if (!automation.heldDocs.has(held)) {
+      automation.heldDocs.add(held);
+      automation.log(`series ${series.slug}: ${what} is not planned again: the planner's answer was lost at ${lost[key].at} (${lost[key].why}) and the model may have run; it waits for the owner (a changed note, premise, title or hands-off switch, a line on a rejected version, or the series withdrawn before any episode and filed again), and the series after it wait too`);
+    }
+    return null;
+  }
+  const variant = documentVariant(job.kind, series);
   let problem = null;
   for (let attempt = 0; attempt < ANSWER_ATTEMPTS; attempt++) {
     let answer;
     try {
-      answer = await automation.stage("planner", slug, documentPayload(automation, job, problem), 32_000, "drama", documentVariant(job.kind, series), series);
+      answer = await automation.stage("planner", slug, documentPayload(automation, job, problem), 32_000, "drama", variant, series);
     } catch (error) {
+      if (error instanceof AutomationError && error.code === RUN_UNCERTAIN) {
+        // Recorded before the line goes out, and the run goes on: halting it would starve the
+        // requests and the draft after the series, and every round would end here again.
+        automation.lastAnswer = null;
+        const why = error.why ?? error.message;
+        lost[key] = { kind: job.kind, chapter: job.kind === "chapter" ? job.chapter_number : 0, previous_version: job.previous?.version ?? null, stage: "planner", variant, inputs, at: (automation.ctx?.now?.() ?? new Date()).toISOString(), why };
+        save();
+        automation.heldDocs.add(held);
+        return `series ${series.slug}: the planner's answer for ${what} may have run on the server without reaching the worker (${why}); it is not asked again on its own, and this series (and the ones after it) wait for the owner`;
+      }
       if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
       problem = error.message;
       continue;
@@ -600,7 +704,10 @@ export async function planDocument(automation, job) {
       body_json: answer.body_json,
       ...(judge ? { judge } : {}),
     });
-    const what = documentName(job);
+    if (lost[key]) {
+      delete lost[key];
+      save();
+    }
     const made = job.previous ? `rewritten from ${String(job.previous.note ?? "").startsWith("[auto]") ? "the checker's" : "the owner's"} note` : "planned";
     if (doc.status === "approved") return `series ${series.slug}: ${what} ${made} (version ${doc.version}) and approved on the checker's verdict`;
     if (doc.status === "rejected") return `series ${series.slug}: ${what} ${made} (version ${doc.version}); the checker sent it back for a rewrite (${doc.note ?? ""})`;
@@ -608,7 +715,7 @@ export async function planDocument(automation, job) {
     return `series ${series.slug}: ${what} ${made} (version ${doc.version}); it waits for the owner on /admin/videos`;
   }
   const kept = automation.keepAnswer(path.join(automation.workBase, "_series", series.slug), job.kind);
-  return automation.later(`series ${series.slug}: the planner could not write ${documentName(job)} (${problem}${kept ? `; the answer is in ${kept}` : ""}); the next run tries again`);
+  return automation.later(`series ${series.slug}: the planner could not write ${what} (${problem}${kept ? `; the answer is in ${kept}` : ""}); the next run tries again`);
 }
 
 /** How a document is named in the worker's lines. */
@@ -631,7 +738,9 @@ export async function startEpisode(automation, job) {
 
 /**
  * One unit of series work, or null: asked before any one-off request and any scheduled draft,
- * so a series in the making is never starved by them.
+ * so a series in the making is never starved by them. Null too while the document the site
+ * names waits for the owner after its planner answer was lost (planDocument), so they are not
+ * starved by it either.
  */
 export async function seriesStep(automation) {
   if (!automation.settings.drama?.drama_enabled) return null;

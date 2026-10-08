@@ -275,8 +275,12 @@ SENT_AND_LOST = [
 ]
 
 
-def _raising(error: type[httpx.TransportError]) -> httpx.MockTransport:
+def _raising(
+    error: type[httpx.TransportError], sent: list[httpx.Request] | None = None
+) -> httpx.MockTransport:
     def handler(request: httpx.Request) -> httpx.Response:
+        if sent is not None:
+            sent.append(request)
         raise error("server-side-key https://eastasia.tts.speech.microsoft.com", request=request)
 
     return httpx.MockTransport(handler)
@@ -288,9 +292,12 @@ async def test_azure_tells_a_request_never_sent_from_one_whose_answer_was_lost(
     error: type[httpx.TransportError],
 ) -> None:
     speech = AzureSpeech(region="eastasia", key="server-side-key", timeout_seconds=1)
-    async with httpx.AsyncClient(transport=_raising(error)) as client:
+    sent: list[httpx.Request] = []
+    async with httpx.AsyncClient(transport=_raising(error, sent)) as client:
         with pytest.raises((SpeechUpstreamError, SpeechAnswerLost)) as raised:
             await speech.synthesize("<speak/>", client)
+    # Sent once: a request that may have been billed is never asked again inside the provider.
+    assert len(sent) == 1
     # Not a SpeechUpstreamError, so a route that forgot it answers a 500, never the 502 resent.
     assert not issubclass(SpeechAnswerLost, SpeechUpstreamError)
     if error in NEVER_SENT:

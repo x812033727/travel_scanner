@@ -90,6 +90,8 @@ from app.trips.routing import NaverDirectionsProvider, RoutePoint
 from app.usage.service import PACKAGE_DEFAULTS, create_usage_account, grant_package
 from app.video_automation.story_cli import import_story_file
 from app.video_media.prune_cli import prune_video_media
+from app.video_reviews.admin_service import backfill_youtube_publish_times
+from app.video_youtube.errors import Refused as YoutubeRefused
 
 
 async def add_usage_package(email: str, package_code: str, reference: str) -> None:
@@ -434,6 +436,13 @@ async def seed_foods() -> dict[str, int]:
 async def backfill_trip_items(dry_run: bool) -> dict[str, int]:
     async with SessionFactory() as session:
         return await backfill_trip_item_names(session, dry_run=dry_run)
+
+
+async def backfill_video_publish_times(apply: bool) -> dict[str, Any]:
+    """Fill ``youtube_publish_at`` for the linked videos without one from what the channel
+    reports (admin_service.backfill_youtube_publish_times); one line per video either way."""
+    async with SessionFactory() as session:
+        return await backfill_youtube_publish_times(session, apply=apply)
 
 
 def fill_hotspot_labels(files: list[str], dry_run: bool, overwrite_original: bool) -> None:
@@ -1083,6 +1092,17 @@ def main() -> None:
         help="Expire old media generation jobs and delete the files no live job names",
     )
     media_prune.add_argument("--dry-run", action="store_true")
+    publish_times = subparsers.add_parser(
+        "video-youtube-backfill-publish-times",
+        help=(
+            "Give the videos that have a YouTube id but no publish time (published by hand in "
+            "Studio) the time the linked channel reports, so /videos lists them; a video that is "
+            "still private or unlisted is reported and left alone. Reports only unless --apply."
+        ),
+    )
+    publish_times.add_argument(
+        "--apply", action="store_true", help="Write the times instead of only reporting them"
+    )
     story_import = subparsers.add_parser(
         "video-story-import",
         help=(
@@ -1267,6 +1287,13 @@ def main() -> None:
         print(json.dumps(outcome, ensure_ascii=False, indent=2))
     elif args.command == "video-media-prune":
         outcome = asyncio.run(prune_video_media(dry_run=args.dry_run))
+        print(json.dumps(outcome, ensure_ascii=False, indent=2))
+    elif args.command == "video-youtube-backfill-publish-times":
+        try:
+            outcome = asyncio.run(backfill_video_publish_times(apply=args.apply))
+        except YoutubeRefused as refused:
+            print(f"ERROR {refused.code}: {refused.detail}", file=sys.stderr)
+            raise SystemExit(2) from None
         print(json.dumps(outcome, ensure_ascii=False, indent=2))
     elif args.command == "video-story-import":
         outcome = asyncio.run(

@@ -8,6 +8,7 @@ import {
   cuePieces,
   displayText,
   fits,
+  inheritBoundaries,
   joinPieces,
   LOCALE_RULES,
   measure,
@@ -504,4 +505,70 @@ test("checkCues reads the reading speed from the measured spans", () => {
   assert.deepEqual(checkCues(weighted, "zh-TW"), []);
   assert.deepEqual(checkCues(measured, "zh-TW").map((problem) => problem.split(":")[0]), ["cue 2 (sp01)"]);
   assert.match(checkCues(measured, "zh-TW")[0], /characters a second, above 9/);
+});
+
+const spans = (cues) => cues.map((cue) => [cue.start_ms, cue.end_ms]);
+const weightedCues = (bounds) => bounds.slice(1).map((end, index) => ({ start_ms: bounds[index], end_ms: end, text: `piece ${index + 1}` }));
+
+test("a translation's cue changes take the narration's measured ones: one for one, the nearest, or pinned with weighted shares between", () => {
+  // Equal counts: one for one.
+  assert.deepEqual(spans(inheritBoundaries(weightedCues([0, 1000, 3000, 5000]), [1500, 3500])), [[0, 1500], [1500, 3500], [3500, 5000]]);
+  // Fewer translated changes: each takes the nearest narration change not yet taken, in order.
+  assert.deepEqual(spans(inheritBoundaries(weightedCues([0, 2500, 5000]), [1000, 2200, 4000])), [[0, 2200], [2200, 5000]]);
+  assert.deepEqual(spans(inheritBoundaries(weightedCues([0, 1200, 4600, 6000]), [1000, 1400, 4000])), [[0, 1000], [1000, 4000], [4000, 6000]], "never the same change twice");
+  // More translated changes: the narration's change is pinned to the nearest translated one, and
+  // the others keep their weighted shares of the span between the pins around them.
+  const pinned = inheritBoundaries(weightedCues([0, 1000, 2000, 4000, 6000]), [2600]);
+  assert.deepEqual(spans(pinned), [[0, 1300], [1300, 2600], [2600, 4300], [4300, 6000]]);
+  assert.deepEqual(pinned.map((cue) => cue.text), ["piece 1", "piece 2", "piece 3", "piece 4"], "the translation keeps its own cut");
+});
+
+test("a translation keeps its weighted times when the narration's would leave a cue too short to read, or there is nothing to inherit", () => {
+  assert.equal(inheritBoundaries(weightedCues([0, 1000, 3000, 5000]), [200, 3500]), null);
+  assert.equal(inheritBoundaries(weightedCues([0, 5000]), [2000]), null, "a single cue has no change to move");
+  assert.equal(inheritBoundaries(weightedCues([0, 2500, 5000]), []), null);
+  // With the locale's rules: a change that makes a cue read faster than maxCps is refused too.
+  const worded = [
+    { start_ms: 0, end_ms: 2500, text: "Thirty characters of English." },
+    { start_ms: 2500, end_ms: 5000, text: "And thirty more to read here." },
+  ];
+  assert.equal(inheritBoundaries(worded, [1000], en), null, "29 characters in one second");
+  assert.deepEqual(spans(inheritBoundaries(worded, [2000], en)), [[0, 2000], [2000, 5000]]);
+  // A cue the weights already left short (nothing fitted with it) may stay as short.
+  assert.deepEqual(spans(inheritBoundaries(weightedCues([0, 4000, 4500]), [3800])), [[0, 3800], [3800, 4500]]);
+});
+
+test("translated cues under a measured narration line change when the narration's cues do, and any other line keeps its weighted split byte for byte", () => {
+  const text = "第一個問題很簡單，我們先看第一個例子。GPT-6 每秒處理 300 GB 的資料，比去年快了三倍，這個數字到底代表什麼意思？";
+  // A long breath after the first sentence, which a share by weight cannot know about.
+  let clock = 37;
+  const chars = timed(text, (_index, unit) => {
+    const start = clock;
+    clock += unit === "。" ? 1400 : 170;
+    return start;
+  });
+  const line = timedLine("tr01", 45, clock + 150, chars);
+  const narration = { locale: "zh-TW", texts: { tr01: text } };
+  const zhCues = buildCues({ lines: [line] }, { tr01: text }, "zh-TW").cues;
+  const english = "The first question is simple. GPT-6 handles 300 GB a second, three times last year's speed; what does it mean?";
+  const weighted = buildCues({ lines: [line] }, { tr01: english }, "en").cues;
+  const inherited = buildCues({ lines: [line] }, { tr01: english }, "en", narration).cues;
+  assert.equal(zhCues.length, 2);
+  assert.deepEqual(inherited.map((cue) => cue.text), weighted.map((cue) => cue.text), "its own cut");
+  assert.ok(Math.abs(weighted[1].start_ms - zhCues[1].start_ms) > 10 * FRAME_MS, "the weights would have put the change elsewhere");
+  assert.equal(inherited[1].start_ms, zhCues[1].start_ms, "the change comes when the narration's does");
+  assert.equal(inherited[0].end_ms, inherited[1].start_ms);
+  assert.deepEqual([inherited[0].start_ms, inherited.at(-1).end_ms], [weighted[0].start_ms, weighted.at(-1).end_ms]);
+  assert.deepEqual(checkCues(inherited, "en"), []);
+
+  const srt = (timeline, words, given) => toSrt(buildCues(timeline, { tr01: words }, "en", given).cues);
+  // Dense enough that the narration's changes would make two cues read faster than 20 a second.
+  const dense = "The first question is simple, so let's start with the first example. GPT-6 handles 300 GB of data a second, three times faster than last year. What does that number actually mean?";
+  assert.equal(srt({ lines: [line] }, dense, narration), srt({ lines: [line] }, dense, null), "too fast to read: weighted");
+  const timedLines = { lines: [line] };
+  const untimedLines = untimed(timedLines);
+  assert.equal(srt(untimedLines, english, narration), srt(untimedLines, english, null), "an untimed line");
+  const other = { locale: "zh-TW", texts: { tr01: text.replace("簡單", "容易") } };
+  assert.equal(srt(timedLines, english, other), srt(timedLines, english, null), "a narration text the characters were not measured on");
+  assert.equal(srt(timedLines, english, { locale: "zh-TW", texts: {} }), srt(timedLines, english, null), "a line the narration has no text for");
 });

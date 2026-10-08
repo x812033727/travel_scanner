@@ -163,7 +163,14 @@ def _source(
         raise invalid("語言包缺少完整的原片核准來源，請重新產生並送審")
     if source["publish"] != identity(publish):
         raise invalid("語言包屬於另一份上傳核准，請重新送審")
-    script_required = project.format == "drama" and not base.get("compilation")
+    # A screenplay the owner reviewed on the site binds a drama's batch. A drama whose screenplay
+    # only the worker approved (a brand story, or one made with the screenplay gate off) has no
+    # review to bind; its batch names none, and the approved final cut is the owner's review.
+    script_required = (
+        project.format == "drama"
+        and not base.get("compilation")
+        and _latest(rows, "script") is not None
+    )
     if not script_required and source["script"] is not None:
         raise invalid("這類影片的語言包不應綁定劇本審核，請重新送審")
     for gate in ("final", "script") if script_required else ("final",):

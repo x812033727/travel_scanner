@@ -25,11 +25,18 @@ test("the description budget leaves room for the chapter lines, and the planner'
   assert.equal(descriptionBudget(40), 5000 - 400 - 40 * 64);
   assert.equal(descriptionBudget(120), 500, "never less than a short paragraph");
   const candidates = [{ episode: "e1", shot: "opening" }];
-  const good = { title: "重生回開服當天，她磨好了刀", titles: ["a", "b"], description: "她死在背叛者的慶功宴上。", tags: ["漫劇", "AI漫劇"], thumbnail: { headline: "她磨好了刀", tag: "重生", episode: "e1", shot: "opening" } };
+  const good = { title: "重生回開服當天，她磨好了刀", titles: ["a", "b"], description: "她死在背叛者的慶功宴上。", tags: ["漫劇", "AI漫劇"], thumbnail: { headline: "她的刀\n磨好了", tag: "重生", episode: "e1", shot: "opening" } };
   assert.equal(metadataProblem(good, candidates), null);
   assert.match(metadataProblem({ ...good, title: "x".repeat(101) }, candidates), /title/);
   assert.match(metadataProblem({ ...good, title: "（合集標題待企劃）" }, candidates), /placeholder/);
   assert.match(metadataProblem({ ...good, thumbnail: { ...good.thumbnail, headline: "這個標題有十三個字實在太長" } }, candidates), /headline/);
+  // The headline is the channel's six, counted as the qa stage counts it (templates.mjs headlineCount).
+  assert.match(metadataProblem({ ...good, thumbnail: { ...good.thumbnail, headline: "名字沒註冊的辣椒醬" } }, candidates), /thumbnail\.headline counts 9 characters \(a Latin word or a number counts one\); at most 6/);
+  assert.match(metadataProblem({ ...good, thumbnail: { ...good.thumbnail, headline: "Gemini 3 Pro 來了" } }, candidates), /3 Latin words or numbers \(Gemini, 3, Pro\); at most 2/);
+  assert.match(metadataProblem({ ...good, thumbnail: { ...good.thumbnail, headline: "她磨好了刀" } }, candidates), /breaks inside the word 「好了」; put \\n where a word ends/, "the column breaks a five-glyph headline after three");
+  assert.equal(metadataProblem({ ...good, thumbnail: { ...good.thumbnail, headline: "ChatGPT\n有廣告" } }, candidates), null, "a word and three glyphs, broken where the word ends");
+  assert.match(metadataProblem({ ...good, thumbnail: { ...good.thumbnail, headline: "Anthropic" } }, candidates), /^thumbnail\.headline shrinks to about 21 px at 320 px wide; at least 24 px reads on a phone, so shorten it$/, "the qa stage's phone-height rule holds the planner too: a Latin word of nine letters is wider than the column at the renderer's floor");
+  assert.match(metadataProblem({ ...good, thumbnail: { ...good.thumbnail, headline: "Perplexity 來了" } }, candidates), /shrinks to about 21 px at 320 px wide/);
   assert.match(metadataProblem({ ...good, thumbnail: { ...good.thumbnail, shot: "other" } }, candidates), /thumbnail_candidates/);
   assert.equal(metadataProblem({ ...good, thumbnail: { ...good.thumbnail, episode: 1 } }, [{ episode: "e1", number: 1, shot: "opening" }]), null, "the episode's number names the candidate as well as its slug");
   assert.match(metadataProblem({ ...good, thumbnail: { ...good.thumbnail, episode: 2 } }, [{ episode: "e1", number: 1, shot: "opening" }]), /thumbnail_candidates/);
@@ -93,6 +100,69 @@ function fakeSite({ answers = {}, doneFailures = 0 } = {}) {
   return { calls, fetchImpl, reviewsOf, settings };
 }
 
+/**
+ * A compilation at the planning step: the context file, one episode with a drawn keyframe (the
+ * thumbnail's picture) and a site whose compilation planner answers with `answer(body, shot)`.
+ */
+function planningWorld(answer) {
+  const box = compilationSandbox({ planned: false, rendered: false });
+  const slug = `${SERIES}-full`;
+  atomicWrite(path.join(box.work, "auto-state.json"), JSON.stringify({ last_draft_at: "2026-09-27T04:00:00Z" }));
+  const episodes = EPISODES.map((each, index) => ({ slug: each, number: index + 1, title: TITLES[each], logline: `L${index + 1}`, recap: `R${index + 1}` }));
+  atomicWrite(path.join(box.dir, "compilation.json"), JSON.stringify({ series: { slug: SERIES, title: "仙門風雲", genre: "rebirth-revenge" }, episodes, all_recaps: episodes.map(({ number, title, recap }) => ({ number, title, recap })), genre: "rebirth-revenge", spoiler_context: { mysteries: [], reveal_schedule: [], setting_md: "", outline_md: "" } }));
+  const example = dramaFixture();
+  const shot = example.scenes.find((scene) => scene.template === "shot" && scene.data?.characters?.length);
+  const episodeDocs = path.join(box.root, "docs", "videos", EPISODES[0]);
+  mkdirSync(episodeDocs, { recursive: true });
+  writeFileSync(path.join(episodeDocs, "video.json"), JSON.stringify({ ...example, slug: EPISODES[0] }));
+  const keyframes = path.join(box.work, EPISODES[0], "keyframes");
+  mkdirSync(keyframes, { recursive: true });
+  writeFileSync(path.join(keyframes, `${shot.id}.png`), Buffer.from("keyframe-png"));
+  atomicWrite(path.join(keyframes, "manifest.json"), JSON.stringify({ shots: { [shot.id]: { file: `keyframes/${shot.id}.png`, sha256: sha(Buffer.from("keyframe-png")), judge: { overall: 9, passed: true, problems: [] } } } }));
+  const state = { slug, title: "仙門風雲（合集）", status: "active", created_at: "2026-09-27T05:00:00Z", format: "drama", compilation: { series: SERIES, episodes: EPISODES }, series: { slug: SERIES, genre: "rebirth-revenge", lead: "female", visual_tier: "hybrid", compilation: true, hands_off: true }, replans: 0, verify_rounds: 0, verified: true, listener_done: true, retakes: 0, rewrites: 0, prompt_fixes: {}, notes: [] };
+  mkdirSync(box.workdir, { recursive: true });
+  atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+  const site = fakeSite({ answers: { "planner:compilation": (body) => answer(body, shot) } });
+  const out = { stdout: "", stderr: "" };
+  const ctx = {
+    root: box.root,
+    env: { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: SITE },
+    home: box.base,
+    fetch: site.fetchImpl,
+    stdout: { write: (text) => (out.stdout += text) },
+    stderr: { write: (text) => (out.stderr += text) },
+    now: () => new Date("2026-09-27T05:00:00Z"),
+    sleep: async () => {},
+    EXIT: { ok: 0, lint: 1, usage: 2, owner: 3, external: 4, missing: 5 },
+  };
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = { script_writing: "short", formats: "tutorial", channel: "Mokaair", showcase: { scenes: [] }, minimal: example, drama: "the drama route", drama_example: example, drama_brief: "# brief", series: "the series route" };
+  return { box, site, automation };
+}
+
+test("a headline over the channel's six is asked for again with the problem; a second answer still over is cut where a word ends, a second answer within six is kept as written", async () => {
+  const fields = { title: "重生回開服當天，她磨好了刀", titles: ["她已磨好刀", "背叛者還在做夢"], description: "她死在背叛者的慶功宴上，醒來是開服那天。", tags: ["漫劇", "AI漫劇", "一口氣看完"] };
+  for (const [headlines, expected] of [
+    [["名字沒註冊的辣椒醬", "名字沒註冊的辣椒醬"], "名字沒註冊"],
+    [["名字沒註冊的辣椒醬", "辣椒醬\n沒註冊"], "辣椒醬\n沒註冊"],
+  ]) {
+    const asked = [];
+    const { box, site, automation } = planningWorld((body, shot) => {
+      asked.push(body.payload.previous_problem ?? null);
+      return { ...fields, thumbnail: { headline: headlines[asked.length - 1], tag: "重生", episode: EPISODES[0], shot: shot.id } };
+    });
+    assert.match(await automation.step(), /title, description, tags and thumbnail planned/);
+    assert.equal(asked.length, 2, "asked once more, never a third time");
+    assert.equal(asked[0], null);
+    assert.match(asked[1], /^thumbnail\.headline counts 9 characters \(a Latin word or a number counts one\); at most 6/);
+    assert.equal(site.calls.run[0].payload.thumbnail_headline_max, 6);
+    assert.equal(site.calls.run[0].payload.thumbnail_headline_words_max, 2);
+    const planned = readJson(path.join(box.dir, "video.json"));
+    assert.deepEqual(planned.thumbnail.data, { headline: expected, tag: "重生", shot: "thumb" });
+    assert.equal(planned.youtube.title, fields.title, "the rest of the answer is kept");
+  }
+});
+
 test("a compilation goes from the placeholder document to the confirmed upload without the owner, and the series is told", async () => {
   const box = compilationSandbox({ planned: false, rendered: false });
   const slug = `${SERIES}-full`;
@@ -123,7 +193,7 @@ test("a compilation goes from the placeholder document to the confirmed upload w
       assert.equal(body.payload.episodes.length, 3);
       assert.equal(body.payload.description_budget_bytes, descriptionBudget(3));
       assert.equal(body.payload.thumbnail_candidates[0].shot, shot.id);
-      return { title: "重生回開服當天，她磨好了刀", titles: ["她已磨好刀", "背叛者還在做夢"], description: "她死在背叛者的慶功宴上，醒來是開服那天。", tags: ["漫劇", "AI漫劇", "一口氣看完"], thumbnail: { headline: "她磨好了刀", tag: "重生", episode: EPISODES[0], shot: shot.id } };
+      return { title: "重生回開服當天，她磨好了刀", titles: ["她已磨好刀", "背叛者還在做夢"], description: "她死在背叛者的慶功宴上，醒來是開服那天。", tags: ["漫劇", "AI漫劇", "一口氣看完"], thumbnail: { headline: "她的刀\n磨好了", tag: "重生", episode: EPISODES[0], shot: shot.id } };
     },
     "translator:compilation": (body) => ({ title: `${body.payload.locale} title`, description: `${body.payload.locale} description`, tags: [`${body.payload.locale}`], chapters: Object.fromEntries(Object.keys(body.payload.chapters).map((key) => [key, `${body.payload.locale} ${key}`])) }),
   };
@@ -182,7 +252,7 @@ test("a compilation goes from the placeholder document to the confirmed upload w
   assert.match(await automation.step(), /title, description, tags and thumbnail planned \(重生回開服當天，她磨好了刀\)/);
   const planned = readJson(path.join(box.dir, "video.json"));
   assert.equal(planned.youtube.title, "重生回開服當天，她磨好了刀");
-  assert.deepEqual(planned.thumbnail.data, { headline: "她磨好了刀", tag: "重生", shot: "thumb" });
+  assert.deepEqual(planned.thumbnail.data, { headline: "她的刀\n磨好了", tag: "重生", shot: "thumb" });
   assert.equal(readFileSync(path.join(box.workdir, "keyframes", "thumb-source.png"), "utf8"), "keyframe-png");
   assert.equal(readJson(path.join(box.workdir, "keyframes", "manifest.json")).shots.thumb.source.shot, shot.id);
   assert.match(site.calls.run[0].instructions, /UPLOAD FIELDS of a COMPILATION[\s\S]*Genre and retention/);

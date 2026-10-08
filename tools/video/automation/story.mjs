@@ -41,6 +41,7 @@ import { eachLine, textHash } from "../core/schema.mjs";
 import { lintProject, loadProject } from "../core/state.mjs";
 import { namePattern, STORY_KIND, STORY_RULES } from "../core/story.mjs";
 import { DEFAULT_CPM, formatClock, FPS, spokenUnits } from "../core/timeline.mjs";
+import { clipHeadline } from "../story-plans/plan.mjs";
 import { AutomationError } from "./client.mjs";
 import { pageReader } from "./fetch.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
@@ -706,7 +707,7 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
     ...(drama.music_enabled === false ? {} : { music: { prompt: STORY_MUSIC, gain_db: -20, duck_db: -10 } }),
     subtitles: { burn_in: true, style: "drama" },
     youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: clip(info.title ?? plan.subject, 100), description: `${info.logline || plan.subject}\n\n${plan.question}`, tags: storyTags(plan), video_id: videoId },
-    ...(thumbnail ? { thumbnail: { template: "thumb", data: { headline: clip(plan.thumbnail?.headline ?? plan.subject, 12), tag: "品牌故事", shot: thumbnail } } } : {}),
+    ...(thumbnail ? { thumbnail: { template: "thumb", data: { headline: clipHeadline(plan.thumbnail?.headline ?? plan.subject), tag: "品牌故事", shot: thumbnail } } } : {}),
     sources: plan.sources.map((source) => ({ title: clip(source.publisher || source.url, 200), url: source.url, checked_on: source.checked })),
     assets: [],
     scenes,

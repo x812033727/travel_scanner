@@ -1,0 +1,171 @@
+{
+  "project": {
+    "slug": "fixture-minimal",
+    "format": "slides",
+    "locales": {
+      "ja": {
+        "metadata": false,
+        "captions": true,
+        "dub": true
+      }
+    },
+    "locales_decided_at": "2026-10-01T01:00:00.000000Z"
+  },
+  "reviews": [
+    {
+      "id": "00000000-0000-4000-8000-000000000003",
+      "gate": "languages",
+      "subject": null,
+      "content_sha256": "155cf6d7e2d56943e33206e9d4f272bbbb7fbed8e324b9148db9898fe2df7a92",
+      "summary": "語言：ja CC、配音。配音到 Studio「語言」上傳後按「已在 Studio 上傳配音」",
+      "payload": {
+        "locales": {
+          "ja": {
+            "captions": "ready",
+            "dub": "ready",
+            "file": "ja.mp3",
+            "format": "mp3",
+            "tempo_max": 1.05,
+            "file_role": "dub_ja",
+            "sha256": "d8c186f4b23b527527d5d50af128d5890f37d109257089be276932e60d492781"
+          }
+        }
+      },
+      "files": [
+        {
+          "role": "captions_ja",
+          "sha256": "3b0457eca7b12b58f27f267afe6f8edae2db29e8cbe39d0f5611f0c253eda8d3",
+          "size": 286,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "dub_ja",
+          "sha256": "d8c186f4b23b527527d5d50af128d5890f37d109257089be276932e60d492781",
+          "size": 37,
+          "content_type": "audio/mpeg"
+        },
+        {
+          "role": "metadata",
+          "sha256": "c5a1e7afff47fe26bfa2f820f62819070c08a913ff88051ff8eef951872a8151",
+          "size": 1613,
+          "content_type": "application/json"
+        },
+        {
+          "role": "languages_manifest",
+          "sha256": "155cf6d7e2d56943e33206e9d4f272bbbb7fbed8e324b9148db9898fe2df7a92",
+          "size": 1547,
+          "content_type": "application/json"
+        }
+      ],
+      "status": "approved",
+      "choice": null,
+      "note": null,
+      "decided_at": "2026-10-01T00:05:00.000Z",
+      "created_at": "2026-10-01T00:04:00.000Z"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000002",
+      "gate": "publish",
+      "subject": null,
+      "content_sha256": "8827f9aa5866b4da5db01139ec03ed806c9245fba64d5e24edb8ee9b1f7a4a6f",
+      "summary": "上傳包 4 項齊全：請確認可以上架",
+      "payload": {
+        "package": {
+          "ok": true,
+          "final_sha256": "8827f9aa5866b4da5db01139ec03ed806c9245fba64d5e24edb8ee9b1f7a4a6f",
+          "items": [
+            {
+              "id": "files",
+              "ok": true,
+              "detail": "final.mp4, thumbnail.jpg, metadata.json; final.mp4 is the approved final (f92c8f5e6ab5)"
+            },
+            {
+              "id": "descriptions",
+              "ok": true,
+              "detail": "descriptions for zh-TW"
+            },
+            {
+              "id": "captions",
+              "ok": true,
+              "detail": "caption files for zh-TW"
+            },
+            {
+              "id": "disclosure",
+              "ok": true,
+              "detail": "no disclosure needed: slides read by a stock TTS voice; YouTube's disclosure covers realistic synthetic people, events and places"
+            }
+          ]
+        },
+        "minutes": 0.7,
+        "chapters": 3,
+        "locales": [
+          "zh-TW"
+        ],
+        "zh": {
+          "title": "AI 模型怎麼挑？三個問題幫你決定",
+          "description": "排行榜第一名不一定最適合你。\n這支用三個問題，幫你挑出適合自己的 AI 模型。\n\n📌 章節\n00:00 開場\n00:14 三個問題\n00:27 結論\n\n📚 參考資料\n範例來源：https://example.com/models\n\n#AI模型 #模型選擇",
+          "tags": [
+            "AI 模型",
+            "模型選擇"
+          ]
+        },
+        "disclosure": {
+          "synthetic": false,
+          "reason": "slides read by a stock TTS voice; YouTube's disclosure covers realistic synthetic people, events and places"
+        },
+        "checklist": []
+      },
+      "files": [
+        {
+          "role": "captions_zh-TW",
+          "sha256": "0d1db34d269c64e96f5b53920044bcad4aec3238d0a985025bedd6a1762d93b4",
+          "size": 727,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "description_zh-TW",
+          "sha256": "91caf2415c5620cb54f900c4ec1f6c033a84004223724ad2a519a885a41bae0d",
+          "size": 299,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "final",
+          "sha256": "f92c8f5e6ab5dbdfa087e3879e73f851983f15bc84cbed28a5d46c7089d0b0e2",
+          "size": 35,
+          "content_type": "video/mp4"
+        },
+        {
+          "role": "metadata",
+          "sha256": "8827f9aa5866b4da5db01139ec03ed806c9245fba64d5e24edb8ee9b1f7a4a6f",
+          "size": 1251,
+          "content_type": "application/json"
+        },
+        {
+          "role": "thumbnail",
+          "sha256": "d15c82b8ec9fac3bf6afcc24634bcbc8687353c191c02af81b61c87e38f5d822",
+          "size": 28,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "status": "approved",
+      "choice": null,
+      "note": null,
+      "decided_at": "2026-10-01T00:03:00.000Z",
+      "created_at": "2026-10-01T00:02:00.000Z"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "gate": "final",
+      "subject": null,
+      "content_sha256": "f92c8f5e6ab5dbdfa087e3879e73f851983f15bc84cbed28a5d46c7089d0b0e2",
+      "summary": "final",
+      "payload": {},
+      "files": [],
+      "status": "approved",
+      "choice": null,
+      "note": null,
+      "decided_at": "2026-10-01T00:01:00.000Z",
+      "created_at": "2026-10-01T00:01:00.000Z"
+    }
+  ]
+}

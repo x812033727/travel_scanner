@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import test from "node:test";
 import path from "node:path";
+import { everyones } from "../automation/flow.mjs";
 import { tempDir } from "../core/fixtures/load.mjs";
 import { alignClip, judgeLines, MAX_RETRY_WAIT_MS, RATE_WINDOW_MS, SPEECH_UNCERTAIN, SpeechError, speechStatus, synthesize, synthesizeAligned, transcribeClip, withPaidWaits } from "./client.mjs";
 import { listSpeechJournal, openSpeechJournal, requestSha256 } from "./speech-journal.mjs";
@@ -173,6 +174,15 @@ test("a settled failure that does not clear stops after the bounded attempts", a
   const offline = server([() => { throw failed("ECONNREFUSED"); }]);
   await assert.rejects(PAID[0].send(offline.options), (error) => error.code === "network" && error.who === "service");
   assert.equal(offline.calls.length, 5);
+  // The API's limiter away for every try (app/infra.py, before any route ran): a service away
+  // (exit 4) with the API's own sentence, which the worker reads as everyone's trouble and waits
+  // out instead of blocking the video.
+  const away = server([() => Response.json({ code: "rate_limit_unavailable", detail: "安全驗證服務暫時無法使用" }, { status: 503 })]);
+  for (const paid of PAID) {
+    away.calls.length = 0;
+    await assert.rejects(paid.send(away.options), (error) => error.code === "rate_limit_unavailable" && error.who === "service" && everyones(error.message) === "rate_limit_unavailable", paid.name);
+    assert.equal(away.calls.length, 5, paid.name);
+  }
 });
 
 test("the status GET keeps every retry, a dropped connection and a lost answer included", async () => {
