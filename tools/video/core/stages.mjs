@@ -157,7 +157,7 @@ export function dubsForUpload(project, workdir, speech, locales = defaultDubLoca
  * The cues of `locale` as runCaptions writes them: under its current dub's own timeline, or under
  * the narration's presented one, where a translation's cue changes move onto the narration's
  * measured ones (`timing.chars`). The renewal checks (review/renewal.mjs, renewal-handoff.mjs)
- * rebuild the bytes they expect with it, so they never expect another cut than the one written.
+ * rebuild the bytes they expect with it.
  */
 export function localeCues(presented, texts, locale, narration, dub = null) {
   return buildCues(dub ? captionTimelineOf(dub) : presented, texts[locale], locale, dub ? null : { locale: narration, texts: texts[narration] });
