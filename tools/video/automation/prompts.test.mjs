@@ -7,6 +7,7 @@ import { enFixture, fixture, fixtureLexicon } from "../core/fixtures/load.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, SLIDES_CAMERA_WORDS, SOURCE_INSTRUCTIONS, translationContext, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
 import { REGISTER_RULES } from "./register.mjs";
+import { SERIES_SEPARATOR, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
 import { ACTIONS, MAX_STEPS, MAX_WAIT_MS, MAX_ZOOM } from "../screencast/steps.mjs";
 import { documentPayload } from "./series.mjs";
 
@@ -421,6 +422,21 @@ test("the writer says the numbers, closes on three sentences, unlocks screencast
   assert.match(writer, /「Mokaair 文章 查證 YYYY-MM-DD」/);
   assert.match(writer, /「以官網為準」 at most once in a whole\s+narration/);
   assert.doesNotMatch(writer, /say it without the number, or 「以官網為準」 on the slide/);
+  // The family lint counts: the bare 「不代表」 is not in it (HEDGE_AFTER_UNWRITTEN in lint.mjs).
+  assert.match(writer, /lint counts the whole family:\s+以官網為準, 公告沒寫, 我不唸, 不在這裡唸, 不替你填, and 不代表／不等於 in a sentence that says\s+something was not written/);
+  // The title and tags (D06, DECISIONS.md): the phone list's width with the series suffix, no
+  // episode number, one question, no list, none of the banned shapes, ten tags; the same rules
+  // metadata.mjs warns on, so the writer hears them before lint does.
+  assert.match(writer, new RegExp(`youtube\\.title: at most ${TITLE_WARN_WIDTH} full-width characters wide \\(CJK 1, ASCII 0\\.5\\) with the series\\s+suffix counted`));
+  assert.match(writer, new RegExp(`a series is named after 「${SERIES_SEPARATOR}」 at the end`));
+  assert.match(writer, /never as\s+an episode number \(no 第N集, EP N, #N\)/);
+  assert.match(writer, /at most one 「？」, answered in the video/);
+  assert.match(writer, /no list of three with 、/);
+  for (const phrase of TITLE_BANNED) assert.ok(writer.includes(`「${phrase}」`) || writer.includes(`」「${phrase}」`), phrase);
+  assert.match(writer, new RegExp(`youtube\\.tags: at most ${TAGS_MAX_COUNT}, the zh-TW terms and the English product names first`));
+  assert.doesNotMatch(writer, /youtube\.title at most 100 characters/);
+  assert.doesNotMatch(writer, /tags at most 500 characters in total/);
+  assert.match(writer, /youtube\.description is the body only \(the tool appends chapters, the article link and references\)\.\s+The body opens with the hook/);
   // The persona is the owner's standing instructions'; the hook stays first.
   assert.match(writer, /The narrator may have a name, a catchphrase and a fixed closing line/);
   assert.match(writer, /The first sentence is still the hook; the name comes after it/);

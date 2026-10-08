@@ -2,9 +2,10 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { dramaBrief, dramaFixture, explainerBrief, explainerFixture, fixture, fixtureBrief, fixtureLexicon, storyBrief, storyFixture, storySeries } from "./fixtures/load.mjs";
-import { billableEstimate, briefSections, checkBrief, episodeScriptProblems, HEDGE_FAMILY, lintVideo, OPENING_SECONDS, OUTRO_SENTENCES, productionShotProblems, stancePoints, stanceProblems, templateSimilarity } from "./lint.mjs";
+import { announcesList, billableEstimate, briefSections, checkBrief, episodeScriptProblems, HEDGE_AFTER_UNWRITTEN, HEDGE_FAMILY, lintVideo, OPENING_SECONDS, OUTRO_SENTENCES, productionShotProblems, stancePoints, stanceProblems, templateSimilarity } from "./lint.mjs";
+import { captionsItem } from "../qa/checks.mjs";
 import { estimateTimeline, FPS } from "./timeline.mjs";
-import { MIN_EPISODE_MINUTES, minEpisodeMinutes, textHash } from "./schema.mjs";
+import { eachLine, MIN_EPISODE_MINUTES, minEpisodeMinutes, textHash } from "./schema.mjs";
 import { sourceHashes } from "./translations.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
@@ -644,7 +645,8 @@ test("the script's shape is read on an episode, not on a fixture-length example:
 });
 
 test("the hedge family is counted across the whole narration: twice is a warning that names each phrase, once is the description's sentence", () => {
-  for (const phrase of ["以官網為準", "公告沒寫", "不代表", "我不唸", "不在這裡唸", "不替你填"]) assert.ok(HEDGE_FAMILY.includes(phrase), phrase);
+  for (const phrase of ["以官網為準", "公告沒寫", "我不唸", "不在這裡唸", "不替你填"]) assert.ok(HEDGE_FAMILY.includes(phrase), phrase);
+  assert.deepEqual(HEDGE_AFTER_UNWRITTEN, ["不代表", "不等於"]);
   const long = closed(stretched());
   long.scenes[1].lines[0].text = "價格多少，以官網為準。";
   assert.deepEqual(lintVideo(long, context()).warnings, []);
@@ -654,6 +656,22 @@ test("the hedge family is counted across the whole narration: twice is a warning
   assert.deepEqual(result.warnings.map((warning) => warning.path), ["scenes"]);
   assert.match(result.warnings[0].message, /hedges 3 times \(「以官網為準」×1, 「公告沒寫」×1, 「不代表」×1\)/);
   assert.match(result.warnings[0].message, /leave the disclaimer to the description/);
+});
+
+test("the bare 「不代表」 is the channel's rhetoric, not a hedge: two plain 「X 不代表 Y」 sentences do not warn, 「沒列，不代表沒有」 does", () => {
+  assert.equal(HEDGE_FAMILY.includes("不代表"), false);
+  const long = closed(stretched());
+  long.scenes[1].lines[0].text = "便宜不代表好用。";
+  long.scenes[1].lines[1].text = "免費不代表沒有上限。";
+  long.scenes[2].lines[0].text = "字數少，不等於 token 少。";
+  assert.deepEqual(lintVideo(long, context()).warnings, []);
+  // The shape that stands in for a number counts, once alone and twice with the disclaimer.
+  long.scenes[2].lines[1].text = "官網沒列，不代表沒有。";
+  assert.deepEqual(lintVideo(long, context()).warnings, []);
+  long.scenes[3].lines[0].text = "價格多少，以官網為準。";
+  const result = lintVideo(long, context());
+  assert.match(messages(result.warnings), /hedges 2 times \(「不代表」×1, 「以官網為準」×1\)/);
+  assert.match(messages(result.warnings), /and 不代表／不等於 in a sentence that says something was not written/);
 });
 
 test("a table of contents in the opening is a warning: the announced parts, 「看完你會知道」, or 第一，…第二，…最後 within the first 40 seconds", () => {
@@ -677,4 +695,57 @@ test("a table of contents in the opening is a warning: the announced parts, 「�
   const middle = late.scenes[Math.floor(late.scenes.length / 2)];
   [middle.lines[0].text, middle.lines[1].text, middle.lines[2].text] = ["第一，先看價格。", "第二，再看額度。", "最後，看怎麼選。"];
   assert.deepEqual(lintVideo(late, context()).warnings, []);
+});
+
+// The openings the shipped scripts read (docs/videos, D07: 13 of 18 read a table of contents),
+// as the first lines of the stretched example: each shape in the warning's list is one of them.
+const SHIPPED_TOC = [
+  ["看完這支影片你會知道價格", "看完這支影片你會知道價格、額度和怎麼選。"],
+  ["ai-real-jobs-chart: 接下來我會告訴你", "接下來我會告訴你，這個測驗在量什麼、為什麼公司還是照樣裁員，還有三個問題，讓你知道這對你的工作代表什麼。"],
+  ["ai-price-war: 先…再…最後", "這支影片，我們跟著價目表一格一格讀。先讀懂這八個價格。再算三種用量的每月帳單。最後拆開新聞裡的三個數字。"],
+  ["openai-agents-broke-in: 這集就來講 A、B，還有 C", "這集就來講發生了什麼、代理為什麼沒人叫也會這樣做，還有把你的代理關好的三道牆。"],
+  ["ai-bug-fix-pr-review: 我帶你看 A、B 與 C", "AI 送來一份修補程式，你會直接合併嗎？我帶你看需求、差異與回歸，三道關都要過。"],
+  ["ai-citation-check: 跟我用三步，最後", "只看連結有沒有，你可能會把錯誤轉出去。跟我用三步拆開，最後一起把答案修好。"],
+  ["rtx-spark: 這集算 A。再看 B，還有 C", "兩句都對，差在一個你算得出來的數字。這集用它算出裝得下什麼。再看決定速度的數字，還有能不能取代訂閱。"],
+  ["why-openai-killed-sora: 這集攤開 A、B，和 C", "這集攤開 OpenAI 的原話、各家一秒的價錢，和付錢前要查的兩個頁面。"],
+];
+const SHIPPED_HOOKS = [
+  ["ai-coding-tools-same-task", "三支工具做同一題，兩支修好、一支卡登入。一起看差異和測試，再決定哪支適合你。先看真實結果，再談選擇。先講限制：這只是一次小型試跑，不是能力排名。"],
+  ["gpt6-vs-opus55-worth-paying", "看跑分挑，會花冤枉錢；看價格挑，做出來的還要重做。所以我拿三件每月真的會做的事，照今天的官方價，每個模型都算一遍。贏家不是最聰明的模型。算式跟三個問題都在這，讓它變成你的算式。首先，把各家的價目表排在一起看，數字都是今天從各家自己的定價頁上看到的。"],
+  ["google-vids-free-ai-video-omni-1-1", "這個免費的 AI 影片工具，有五件事，Google 的公告沒有寫清楚。答案散在其他官方頁面，這支影片幫你找齊。那它到底是什麼？先用一句話講清楚。"],
+  ["siri-ai-ios-27-how-to-get-it", "Apple 的支援頁面，至少列了這五個來源。訊息和郵件。行事曆。備忘錄和提醒事項。那三個助理放在一起，差在哪？先把三個助理放進一張表，看它們怎麼拿到你的資料。"],
+];
+
+test("the shipped openings' tables of contents warn and the shipped hooks do not", () => {
+  const opening = (text) => {
+    const long = closed(stretched());
+    long.scenes[0].lines[0].text = text;
+    long.scenes[0].lines[1].text = "這一句是開場的第二句。";
+    return lintVideo(long, context()).warnings.filter((warning) => /table of contents/.test(warning.message)).map((warning) => warning.path);
+  };
+  for (const [label, text] of SHIPPED_TOC) assert.deepEqual(opening(text), ["scenes[0]"], label);
+  for (const [label, text] of SHIPPED_HOOKS) assert.deepEqual(opening(text), [], label);
+  // The announcement needs its list: one item is a promise, not a table of contents.
+  assert.equal(announcesList("答案散在其他官方頁面，這支影片幫你找齊。那它到底是什麼？"), false);
+  assert.equal(announcesList("這支告訴你它貴在哪。"), false);
+  assert.equal(announcesList("這集攤開 OpenAI 的原話、各家一秒的價錢，和付錢前要查的兩個頁面。"), true);
+});
+
+test("the translated titles' channel warnings sit under youtube/<locale>, which the QA captions item does not read", () => {
+  const long = closed(stretched());
+  const lines = Object.fromEntries([...eachLine(long)].map(({ line }) => [line.id, { text: "x", source_hash: textHash(line.text) }]));
+  const chapters = Object.fromEntries(long.scenes.filter((scene) => scene.chapter).map((scene) => [scene.id, "C"]));
+  // 78 ASCII characters: 39 full-width, past the phone list's 36 and well within YouTube's 100.
+  const title = "Why OpenAI killed Sora: the official reason and every rival's per-second price";
+  const current = { title, description: "D", tags: ["AI"], chapters, source_hashes: sourceHashes(long), lines };
+  const warnings = lintVideo(long, context({ translations: { en: current } })).warnings;
+  assert.deepEqual(warnings.map((warning) => warning.path), ["youtube/en"]);
+  assert.match(warnings[0].message, /^en\.title: 39 full-width characters wide/);
+  const item = captionsItem({ lintWarnings: warnings, manifest: { locales: { "zh-TW": {}, en: {} } }, current: true, locales: ["zh-TW", "en"], hasCaptionFile: () => true });
+  assert.equal(item.ok, true, item.detail);
+  // The package's own refusals stay under i18n/<locale>.json, where the captions item fails them.
+  const refused = lintVideo(long, context({ translations: { en: { ...current, title: "a<b>" } } })).warnings;
+  assert.deepEqual(refused.map((warning) => warning.path), ["i18n/en.json"]);
+  assert.match(refused[0].message, /package refuses it/);
+  assert.equal(captionsItem({ lintWarnings: refused, manifest: { locales: { "zh-TW": {}, en: {} } }, current: true, locales: ["zh-TW", "en"], hasCaptionFile: () => true }).ok, false);
 });

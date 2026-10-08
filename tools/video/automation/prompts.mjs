@@ -9,6 +9,7 @@ import path from "node:path";
 
 import { CHANNEL_ACCENT } from "../core/accent.mjs";
 import { isLongAnime } from "../core/anime-policy.mjs";
+import { SERIES_SEPARATOR, TAGS_MAX_CHARS, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_MAX_CHARS, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
 import { REGISTER_RULES } from "./register.mjs";
 import { STORY_INSTRUCTIONS } from "./story-prompts.mjs";
 
@@ -62,7 +63,8 @@ const NUMBERS_RULE_WRITING = `- Numbers, prices, limits, versions and dates are 
   (「Mokaair 文章 查證 YYYY-MM-DD」). Neither has it: leave the number out, not the sentence's
   point. The disclaimer lives in the description alone: 「以官網為準」 at most once in a whole
   narration, and never in place of a number the sources carry (lint counts the whole family:
-  以官網為準, 公告沒寫, 不代表, 我不唸, 不在這裡唸, 不替你填).
+  以官網為準, 公告沒寫, 我不唸, 不在這裡唸, 不替你填, and 不代表／不等於 in a sentence that says
+  something was not written, 「公告沒寫，不代表沒有」).
 - The narrator may have a name, a catchphrase and a fixed closing line: use them exactly as the
   owner's standing instructions (the section at the end of this prompt, when present) give
   them, and invent none. The first sentence is still the hook; the name comes after it.
@@ -260,8 +262,9 @@ concrete object the video is about; the right third of the frame is left for it>
 - One line is one spoken sentence, about 25 characters, at most 40. The first scene's first
   sentence is the hook (the viewer's question or the counter-intuitive claim) and the viewer knows
   what they will get within 20 seconds: by then a concrete number, date or proper noun has been
-  said, the one the title promises. No table of contents (「接下來分三段」「第一…第二…最後」
-  「看完你會知道 A、B、C」; lint warns): the chapters announce themselves. 「你以為…其實」 once in
+  said, the one the title promises. No table of contents (「接下來分三段」「接下來我會告訴你」
+  「第一…第二…最後」「先…再…最後」「看完你會知道 A、B、C」「這集講 A、B，還有 C」; lint warns): the
+  chapters announce themselves. 「你以為…其實」 once in
   the video, in the first chapter; a later reversal is told without the formula.
 - The voice's performance (docs/videos/ILLUSTRATED.md §聲音表演): "voice" also takes a
   "performance" plan of yours (zh-TW, at most 200 characters) saying how THIS video is told
@@ -287,8 +290,15 @@ concrete object the video is about; the right third of the frame is left for it>
 - Every Latin-letter word in the narration must be in "lexicon" or in lexicon_additions: its spoken
   form ("RAG": "R A G") or null when a Mandarin voice reads it correctly as written.
 - No parentheses, URLs, emoji or symbols in narration; numbers as a listener hears them.
-- youtube.title at most 100 characters, no angle brackets; description is the body only (the tool
-  appends chapters, the article link and references); tags at most 500 characters in total.
+- youtube.title: at most ${TITLE_WARN_WIDTH} full-width characters wide (CJK 1, ASCII 0.5) with the series
+  suffix counted: a series is named after 「${SERIES_SEPARATOR}」 at the end (「…${SERIES_SEPARATOR}AI 名詞十分鐘」), never as
+  an episode number (no 第N集, EP N, #N). One subject: at most one 「？」, answered in the video;
+  no list of three with 、 (the list goes in the description); none of 「${TITLE_BANNED.join("」「")}」,
+  name the product and the number instead. YouTube's own limits (${TITLE_MAX_CHARS} characters, no angle
+  brackets) are the package's, not the aim.
+- youtube.tags: at most ${TAGS_MAX_COUNT}, the zh-TW terms and the English product names first (the upload
+  keeps the first ${TAGS_MAX_COUNT} within YouTube's ${TAGS_MAX_CHARS} characters).
+- youtube.description is the body only (the tool appends chapters, the article link and references).
   The body opens with the hook (what the video answers, number included), then one line saying
   who it is for, and may ask the comment question in a third; no URL in the body: the tool adds
   the article link once, after the body.
