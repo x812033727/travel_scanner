@@ -4,7 +4,7 @@ title: Manual renewal publish staging throws on a metadata.json whose captions o
 status: done
 priority: P3
 area: tools
-owner: claude-opus-5-5-renewal-guard
+owner: claude-renewal-guard
 claimed_at: 2026-10-07T03:10:56Z
 created_at: 2026-10-05T23:54:45Z
 completed_at: 2026-10-07T03:15:51Z
@@ -77,7 +77,7 @@ file is bound in `docs/videos/long-form/review.json` today; check again with
 - Both files are in the scope of the stale claim `2026-10-01-hand-off-owner-approved-renewed-finals`
   (codex-video-stall-followthrough, claimed 2026-10-04T10:14Z; its branch merged as #1210).
   Claiming this needs `--force` with that evidence, or wait for that ticket to close.
-- 2026-10-07 (claude-opus-5-5-renewal-guard): `manualMetadataLocales(metadata)` in
+- 2026-10-07 (claude-renewal-guard): `manualMetadataLocales(metadata)` in
   `renewal-handoff.mjs` refuses through the module's `requireThat` (a `UsageError`) with
   "metadata.json captions is not a list of caption files" / "metadata.json localizations is not an
   object" (and a non-object metadata.json), and returns the caption and description locales.

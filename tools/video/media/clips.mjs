@@ -26,7 +26,7 @@ import { approvalState, sha256File } from "../core/approvals.mjs";
 import { clipKey, clipShotScenes, clipsHash, isDrama, isSourced, lookHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes, sourcedShotScenes, stillShotScenes } from "../core/drama.mjs";
 import { productionClipProblems, productionClipSizeProblem, productionShotProblems } from "../core/lint.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { ARTIFACTS, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
+import { ARTIFACTS, keyframeProblems, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
 import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
@@ -144,24 +144,32 @@ const importedFrom = (shot) => [shot.provider, shot.plan, shot.credits === null 
 
 const manifestFile = (workdir) => path.join(workdir, ARTIFACTS.clips);
 
-/** Each selected start or end picture whose file is missing or whose bytes are not the hash its keyframes manifest entry names. */
-async function changedKeyframes(workdir, keyframes, scenes) {
-  const changed = [];
-  for (const scene of scenes) {
-    const shot = keyframes.shots[scene.id];
-    for (const [which, picture] of [["start", shot], ["end", shot.end_frame]]) {
-      if (!picture?.file) continue;
-      const file = path.join(workdir, picture.file);
-      if (!existsSync(file) || (await sha256File(file)) !== picture.sha256) changed.push(`${scene.id} ${which} frame (${picture.file})`);
-    }
-  }
-  return changed;
-}
-
 function writeManifest(workdir, doc, manifest) {
   const order = shotScenes(doc).filter((scene) => manifest.shots[scene.id]?.sha256).map((scene) => ({ id: scene.id, sha256: manifest.shots[scene.id].sha256 }));
   manifest.clips_hash = clipsHash(order);
   atomicWrite(manifestFile(workdir), `${JSON.stringify(manifest, null, 2)}\n`);
+}
+
+// What keyframeProblems says about a selected file's bytes or presence (not its review state).
+const PICTURE_PROBLEM = /selected picture (has changed|is missing)|has no selected picture/;
+
+/**
+ * The selected start (and end) pictures of these scenes whose bytes are not the ones the keyframes
+ * manifest recorded, or that are missing: core/state.mjs keyframeProblems on those scenes alone,
+ * and any end frame the manifest records, which a clip is sent with whether or not the script
+ * still asks for one.
+ */
+async function changedPictures(doc, keyframes, workdir, scenes) {
+  const ids = new Set(scenes.map((scene) => scene.id));
+  const problems = (await keyframeProblems({ doc: { ...doc, scenes: doc.scenes.filter((scene) => ids.has(scene.id)) }, manifest: keyframes, workdir, allowNeedsReview: true }))
+    .filter((problem) => PICTURE_PROBLEM.test(problem));
+  for (const scene of scenes) {
+    const end = keyframes.shots?.[scene.id]?.end_frame;
+    if (!end?.file || scene.data?.end_frame?.prompt) continue;
+    const file = path.resolve(workdir, end.file);
+    if (!existsSync(file) || await sha256File(file) !== end.sha256) problems.push(`${scene.id} end frame selected picture has changed: ${end.file}`);
+  }
+  return problems;
 }
 
 export async function run(command, args, ctx) {
@@ -215,13 +223,13 @@ export async function run(command, args, ctx) {
     const why = storyboard.status === "stale" ? "changed since it was approved" : "not approved yet";
     throw new MediaError(`the storyboard is ${why}: run review-push --gate storyboard, let the owner (or the auto-approve setting) decide on /admin/videos, then review-pull`, { who: "owner" });
   }
-  // The pictures the storyboard approved are named by the keyframes manifest with their hashes;
-  // a working file written over since (a later take or provider reusing the name) is checked here,
-  // before the server is asked anything, so a changed picture is never uploaded, priced or bought
-  // as the approved one.
-  const changed = await changedKeyframes(workdir, keyframes, [...shots, ...stills]);
+  // The approval is of the manifest; a later keyframes run may have drawn over a selected file
+  // name since. The start and end pictures this run uses are checked byte for byte before
+  // anything is asked of the site.
+  const changed = await changedPictures(doc, keyframes, workdir, [...shots, ...stills]);
   if (changed.length) {
-    throw new MediaError(`the selected keyframe ${changed.join(", ")} is missing or not the picture the storyboard approved (its bytes changed); put the approved file back, or run keyframes and the storyboard review again`, { who: "owner" });
+    ctx.stderr.write(`${changed.join("; ")}; run keyframes again or restore the approved pictures\n`);
+    return EXIT.usage;
   }
   const lookManifest = readJson(path.join(workdir, ARTIFACTS.characters), null);
   const sheets = chosenSheets(lookManifest, lookChosen(lookManifest, readJson(path.join(workdir, ARTIFACTS.characterChoice), null), hash) ?? {});
@@ -328,6 +336,18 @@ export async function run(command, args, ctx) {
     if (!uploads.has(file)) uploads.set(file, await stage.upload(path.join(workdir, file)));
     return uploads.get(file);
   };
+  // A picture a clip request carries (its start and end keyframes, the still it continues from)
+  // is hashed right before it goes to the store, against the record that names it: a shot outside
+  // --shot, or a file drawn over since the early check, cannot slip into a paid request.
+  const uploadApproved = async (file, sha256, label) => {
+    const local = path.join(workdir, file);
+    if (!existsSync(local)) throw new UsageError(`${label} selected picture is missing: ${file}; run keyframes again or restore the approved picture`);
+    const changed = () => new UsageError(`${label} selected picture has changed: ${file}; run keyframes again or restore the approved picture`);
+    if (typeof sha256 !== "string" || await sha256File(local) !== sha256) throw changed();
+    // The store answers with the hash of what it took: a file drawn over between the two reads is caught too.
+    if (await upload(file) !== sha256) throw changed();
+    return sha256;
+  };
   const started = Date.now();
   let generated = 0;
   let stopped = false;
@@ -357,8 +377,8 @@ export async function run(command, args, ctx) {
     const neededFrames = framesOf.get(scene.id) ?? 0;
     const seconds = clipSeconds(neededFrames, durations, status.clip);
     const keyframe = keyframes.shots[scene.id];
-    const firstFrame = await upload(keyframe.file);
-    const endFrame = keyframe.end_frame?.file ? await upload(keyframe.end_frame.file) : null;
+    const firstFrame = await uploadApproved(keyframe.file, keyframe.sha256, scene.id);
+    const endFrame = keyframe.end_frame?.file ? await uploadApproved(keyframe.end_frame.file, keyframe.end_frame.sha256, `${scene.id} end frame`) : null;
     const references = [];
     for (const character of characters) if (sheets[character.id]) references.push({ sha256: await upload(sheets[character.id].file), role: "character" });
     let continues = null;
@@ -371,8 +391,15 @@ export async function run(command, args, ctx) {
       }
       if (previous.still) {
         // A still ends on its keyframe under a slight camera move, so the keyframe itself is
-        // the picture this clip continues from; there is no clip to take a last frame of.
-        continues = { shot: scene.data.start_frame.shot, file: previous.file, sha256: await upload(previous.file) };
+        // the picture this clip continues from; there is no clip to take a last frame of. Its
+        // record here may be from an earlier run (a still outside --shot), and the approval is of
+        // the keyframes manifest, which a later keyframes run may have pointed at another picture.
+        const label = `${scene.data.start_frame.shot} (the still ${scene.id} continues from)`;
+        const approved = keyframes.shots?.[scene.data.start_frame.shot];
+        if (approved?.file !== previous.file || approved?.sha256 !== previous.sha256) {
+          throw new UsageError(`${label} is ${previous.file} in clips/manifest.json, but the approved keyframes select ${approved?.file ?? "no picture"}; run clips --shot ${scene.data.start_frame.shot} first`);
+        }
+        continues = { shot: scene.data.start_frame.shot, file: previous.file, sha256: await uploadApproved(previous.file, previous.sha256, label) };
       } else {
         const frame = `clips/${scene.data.start_frame.shot}-last.png`;
         if (ctx.extractFrame) await ctx.extractFrame(path.join(workdir, previous.file), path.join(workdir, frame));
@@ -613,6 +640,11 @@ async function importClip(args, ctx) {
   // that costs nothing and asks no judge never calls the site. The dollars are held in the ledger
   // under the import's key while the clip is checked, and the booking replaces the hold; an
   // import that ends without booking (a missing ffmpeg, the STOP file, a failed check) lets it go.
+  const changed = await changedPictures(doc, keyframes, workdir, [scene]);
+  if (changed.length) {
+    ctx.stderr.write(`${changed.join("; ")}; run keyframes again or restore the approved picture (the clip must start on it)\n`);
+    return EXIT.usage;
+  }
   if (!mayWriteProject(ctx, workdir, "clips import")) return EXIT.incomplete;
   const sha256 = await sha256File(origin);
   const reservation = usd > 0 ? `import:${scene.id}:${sha256}` : null;

@@ -1,5 +1,6 @@
 """Server-side narration for the video pipeline: SSML, billing, tokens, budget and the endpoints."""
 
+import base64
 from datetime import UTC, datetime, timedelta
 from typing import Any
 from uuid import uuid4
@@ -10,6 +11,7 @@ import pytest
 from httpx import ASGITransport, AsyncClient
 from redis.exceptions import RedisError
 
+import app.infra as infra
 import app.video_speech.admin_api as admin_api
 from app.admin.schemas import ProviderSettingsUpdate
 from app.admin.service import PROVIDER_DEFINITIONS, _validate_provider_values
@@ -35,6 +37,7 @@ from app.video_speech.tokens import (
 )
 
 WAV = b"RIFF" + b"\x00" * 60
+REAL_SYNTHESIZE = AzureSpeech.synthesize
 
 
 def test_ssml_escapes_text_and_writes_only_the_allowed_elements() -> None:
@@ -254,55 +257,80 @@ async def test_azure_throttling_is_passed_on_and_the_reservation_refunded(speech
     )
 
 
-@pytest.mark.asyncio
-@pytest.mark.parametrize(
-    ("raised", "status"),
-    [
-        (httpx.ConnectError("refused"), 502),
-        (httpx.ConnectTimeout("no route"), 502),
-        (httpx.PoolTimeout("pool"), 502),
-        (httpx.ReadTimeout("slow"), 504),
-        (httpx.WriteTimeout("slow"), 504),
-        (httpx.RemoteProtocolError("dropped"), 504),
-        (httpx.ReadError("reset"), 504),
-    ],
-)
-async def test_azure_tells_a_request_never_sent_from_an_answer_lost(
-    raised: httpx.HTTPError, status: int
-) -> None:
-    calls = 0
+# A connection that never opened carried nothing; any other failure of the POST may follow a
+# request Azure ran and billed.
+NEVER_SENT = [
+    httpx.ConnectError,
+    httpx.ConnectTimeout,
+    httpx.PoolTimeout,
+    httpx.UnsupportedProtocol,
+    httpx.LocalProtocolError,
+]
+SENT_AND_LOST = [
+    httpx.ReadTimeout,
+    httpx.WriteTimeout,
+    httpx.ReadError,
+    httpx.WriteError,
+    httpx.RemoteProtocolError,
+]
 
+
+def _raising(
+    error: type[httpx.TransportError], sent: list[httpx.Request] | None = None
+) -> httpx.MockTransport:
     def handler(request: httpx.Request) -> httpx.Response:
-        nonlocal calls
-        calls += 1
-        raise raised
+        if sent is not None:
+            sent.append(request)
+        raise error("server-side-key https://eastasia.tts.speech.microsoft.com", request=request)
 
-    speech = AzureSpeech(region="eastasia", key="server-side-key", timeout_seconds=1)
-    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
-        with pytest.raises(SpeechUpstreamError) as failed:
-            await speech.synthesize("<speak/>", client)
-    assert calls == 1
-    assert failed.value.status == status
-    assert isinstance(failed.value, SpeechAnswerLost) is (status == 504)
-    assert "server-side-key" not in str(failed.value)
+    return httpx.MockTransport(handler)
 
 
 @pytest.mark.asyncio
-async def test_a_lost_azure_answer_has_its_own_code_and_keeps_the_reservation(
-    speech_app: Any,
+@pytest.mark.parametrize("error", NEVER_SENT + SENT_AND_LOST)
+async def test_azure_tells_a_request_never_sent_from_one_whose_answer_was_lost(
+    error: type[httpx.TransportError],
 ) -> None:
-    speech_app["error"] = SpeechAnswerLost("Azure Speech", httpx.ReadTimeout("slow"))
-    lost = await _post(_request())
-    assert lost.status_code == 504 and lost.json()["code"] == "video_speech_upstream_lost"
-    # Azure may have synthesized and billed it, so the characters stay counted.
-    kept = (await azure_speech_usage_snapshot(speech_app["redis"], 450_000)).used
-    assert kept > 0
-    # Never sent: the old code, which the tool sends again, and the characters given back.
-    speech_app["error"] = SpeechUpstreamError(502, "Azure Speech unreachable: ConnectError")
-    unreachable = await _post(_request())
-    assert unreachable.status_code == 502
-    assert unreachable.json()["code"] == "video_speech_upstream_failed"
-    assert (await azure_speech_usage_snapshot(speech_app["redis"], 450_000)).used == kept
+    speech = AzureSpeech(region="eastasia", key="server-side-key", timeout_seconds=1)
+    sent: list[httpx.Request] = []
+    async with httpx.AsyncClient(transport=_raising(error, sent)) as client:
+        with pytest.raises((SpeechUpstreamError, SpeechAnswerLost)) as raised:
+            await speech.synthesize("<speak/>", client)
+    # Sent once: a request that may have been billed is never asked again inside the provider.
+    assert len(sent) == 1
+    # Not a SpeechUpstreamError, so a route that forgot it answers a 500, never the 502 resent.
+    assert not issubclass(SpeechAnswerLost, SpeechUpstreamError)
+    if error in NEVER_SENT:
+        assert type(raised.value) is SpeechUpstreamError and raised.value.status == 502
+        assert str(raised.value) == f"Azure Speech unreachable: {error.__name__}"
+    else:
+        assert type(raised.value) is SpeechAnswerLost
+        assert error.__name__ in str(raised.value)
+    assert "server-side-key" not in str(raised.value) and "microsoft" not in str(raised.value)
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("error", NEVER_SENT + SENT_AND_LOST)
+async def test_a_lost_azure_answer_is_its_own_504_and_its_characters_stay_counted(
+    speech_app: Any, monkeypatch: pytest.MonkeyPatch, error: type[httpx.TransportError]
+) -> None:
+    async def synthesize(self: AzureSpeech, ssml: str, client: Any = None) -> bytes:
+        async with httpx.AsyncClient(transport=_raising(error)) as provider:
+            return await REAL_SYNTHESIZE(self, ssml, provider)
+
+    monkeypatch.setattr(AzureSpeech, "synthesize", synthesize)
+    response = await _post(_request())
+    used = (await azure_speech_usage_snapshot(speech_app["redis"], 450_000)).used
+    body = response.json()
+    if error in NEVER_SENT:
+        # Retried by the video tool, as before: nothing reached Azure.
+        assert response.status_code == 502 and body["code"] == "video_speech_upstream_failed"
+        assert used == 0
+    else:
+        # Sent once: the tool stops and asks the owner instead of paying for it again.
+        assert response.status_code == 504 and body["code"] == "video_speech_upstream_lost"
+        assert used == billable_characters('排行榜第一名，不一定最適合你。<break time="800ms"/>')
+    assert "server-side-key" not in response.text and "microsoft" not in response.text
 
 
 class TokenSession:
@@ -347,125 +375,6 @@ def admin_client(monkeypatch: pytest.MonkeyPatch) -> Any:
     yield use
     app.dependency_overrides.clear()
     app.dependency_overrides.update(previous)
-
-
-def _window_counter(monkeypatch: pytest.MonkeyPatch) -> Any:
-    """infra's fixed window on fakeredis, which runs no Lua: INCR, then EXPIRE on the first hit,
-    as ``_WINDOW_SCRIPT`` does, so the key's TTL is the real time left in the window."""
-    import app.infra as infra
-
-    redis = fakeredis.aioredis.FakeRedis()
-
-    async def incr(namespace: str, identifier: str, *, window_seconds: int) -> int:
-        key = infra._rate_key(namespace, identifier)
-        count = int(await redis.incr(key))
-        if count == 1:
-            await redis.expire(key, window_seconds)
-        return count
-
-    monkeypatch.setattr(infra, "get_redis", lambda: redis)
-    monkeypatch.setattr(infra, "_incr_window", incr)
-    return redis
-
-
-@pytest.mark.asyncio
-async def test_the_named_rate_limit_says_how_long_is_left_only_when_asked(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    import app.infra as infra
-
-    redis = _window_counter(monkeypatch)
-    for _ in range(3):
-        await infra.enforce_named_rate_limit("demo", "caller", limit=3, window_seconds=60)
-    with pytest.raises(AppError) as told:
-        await infra.enforce_named_rate_limit(
-            "demo", "caller", limit=3, window_seconds=60, retry_after=True
-        )
-    assert told.value.status == 429 and told.value.code == "rate_limit_exceeded"
-    # Refused in the window's first second: the whole minute is left.
-    assert told.value.headers == {"Retry-After": "60"}
-    # Every other caller of the shared limiter keeps its answer exactly as it was.
-    with pytest.raises(AppError) as plain:
-        await infra.enforce_named_rate_limit("demo", "caller", limit=3, window_seconds=60)
-    assert plain.value.status == 429 and plain.value.headers is None
-    # A key without an expiry cannot say how long; the whole window is always enough.
-    await redis.persist(infra._rate_key("demo", "caller"))
-    with pytest.raises(AppError) as unknown:
-        await infra.enforce_named_rate_limit(
-            "demo", "caller", limit=3, window_seconds=60, retry_after=True
-        )
-    assert unknown.value.headers == {"Retry-After": "60"}
-
-
-@pytest.mark.asyncio
-async def test_retry_after_rounds_the_time_left_up(monkeypatch: pytest.MonkeyPatch) -> None:
-    """Redis's TTL rounds to the nearest second: 1.4 s left would say 1 and the client would come
-    back early, and under half a second it says 0. The header is read in milliseconds instead."""
-    import app.infra as infra
-
-    redis = _window_counter(monkeypatch)
-    key = infra._rate_key("demo", "caller")
-    for left_ms, said in [(1400, "2"), (1600, "2"), (300, "1"), (59_200, "60"), (12_300, "13")]:
-        await redis.set(key, 10, px=left_ms)
-        with pytest.raises(AppError) as told:
-            await infra.enforce_named_rate_limit(
-                "demo", "caller", limit=3, window_seconds=60, retry_after=True
-            )
-        assert told.value.headers == {"Retry-After": said}, left_ms
-    # A key that expired between the count and the read: the window has just reset.
-    assert await infra._window_left("demo", "gone", 60) == 1
-
-    class Down:
-        async def pttl(self, _key: str) -> int:
-            raise RedisError("down")
-
-    monkeypatch.setattr(infra, "get_redis", lambda: Down())
-    assert await infra._window_left("demo", "caller", 60) == 60
-
-
-@pytest.mark.asyncio
-async def test_the_hourly_speech_limits_say_how_long_is_left(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    """The tool does not wait out an hour a minute at a time: it reads Retry-After past a minute
-    as a limit no retry clears (tools/video/tts/client.mjs)."""
-    import app.video_speech.align_api as align_api
-
-    _window_counter(monkeypatch)
-    monkeypatch.setattr(admin_api, "TRANSCRIBE_REQUESTS_PER_HOUR", 0)
-    monkeypatch.setattr(align_api, "ALIGN_REQUESTS_PER_HOUR", 0)
-    tool: Any = VideoToolToken(id=uuid4(), name="worker", token_hash="h", token_prefix="mkv_x")
-    unused: Any = object()
-    with pytest.raises(AppError) as transcribe:
-        await admin_api.transcribe_narration(unused, tool, unused)
-    with pytest.raises(AppError) as align:
-        await align_api.align_speech(unused, tool, unused)
-    for refused in (transcribe.value, align.value):
-        assert refused.status == 429 and refused.code == "rate_limit_exceeded"
-        assert refused.headers == {"Retry-After": "3600"}
-
-
-@pytest.mark.asyncio
-async def test_the_video_tool_token_minute_answers_with_retry_after(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    _window_counter(monkeypatch)
-    monkeypatch.setattr(admin_api, "SPEECH_REQUESTS_PER_MINUTE", 2)
-    token = new_token()
-    row = VideoToolToken(
-        id=uuid4(),
-        name="worker",
-        token_hash=token_hash(token),
-        token_prefix=token[:10],
-        last_used_at=datetime.now(UTC),
-    )
-    session: Any = TokenSession(found=row)
-    for _ in range(2):
-        assert await admin_api.video_tool(session, f"Bearer {token}") is row
-    with pytest.raises(AppError) as refused:
-        await admin_api.video_tool(session, f"Bearer {token}")
-    assert refused.value.status == 429 and refused.value.code == "rate_limit_exceeded"
-    assert refused.value.headers == {"Retry-After": "60"}
 
 
 TOKENS = "/api/v1/admin/provider-settings/azure_speech/video-tool-tokens"
@@ -536,3 +445,140 @@ async def test_the_speech_endpoint_rejects_a_missing_or_unknown_token(
         assert response.status_code == 401
         assert response.json()["code"] == "video_tool_token_invalid"
         assert response.headers["www-authenticate"] == "Bearer"
+
+
+class WindowRedis:
+    """Just the read a refusal makes: the window key's remaining expiry, in milliseconds."""
+
+    def __init__(self, remaining_ms: int | Exception) -> None:
+        self.remaining_ms = remaining_ms
+        self.keys: list[str] = []
+
+    async def pttl(self, key: str) -> int:
+        self.keys.append(key)
+        if isinstance(self.remaining_ms, Exception):
+            raise self.remaining_ms
+        return self.remaining_ms
+
+
+def _over_the_limit(monkeypatch: pytest.MonkeyPatch, remaining_ms: int | Exception) -> WindowRedis:
+    redis = WindowRedis(remaining_ms)
+
+    async def count(namespace: str, identifier: str, *, window_seconds: int) -> int:
+        return admin_api.SPEECH_REQUESTS_PER_MINUTE + 1
+
+    monkeypatch.setattr(infra, "_incr_window", count)
+    monkeypatch.setattr(infra, "get_redis", lambda: redis)
+    return redis
+
+
+@pytest.mark.asyncio
+async def test_the_token_limit_says_when_its_window_opens_again(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # The real video_tool dependency, shared by every route the token calls: a burst of
+    # narration lines met it on 2026-10-04, and the tool's retries all landed inside the window.
+    row = VideoToolToken(id=uuid4(), name="t", token_hash="h", token_prefix="mkv_x")
+
+    async def found(_session: Any, _presented: str) -> VideoToolToken:
+        return row
+
+    monkeypatch.setattr(admin_api, "find_active_token", found)
+    monkeypatch.setattr(admin_api, "touch", lambda _row: False)
+    redis = _over_the_limit(monkeypatch, 42_300)
+    previous = app.dependency_overrides.copy()
+    app.dependency_overrides[get_session] = lambda: TokenSession(found=row)
+    try:
+        async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+            refused = await client.get(
+                "/api/v1/video/speech/status", headers={"Authorization": f"Bearer {new_token()}"}
+            )
+    finally:
+        app.dependency_overrides.clear()
+        app.dependency_overrides.update(previous)
+    assert refused.status_code == 429 and refused.json()["code"] == "rate_limit_exceeded"
+    assert refused.headers["retry-after"] == "43", "42.3 s left, rounded up: never early"
+    assert redis.keys == [infra._rate_key("video_speech", str(row.id))]
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("remaining_ms", "window_seconds", "expected"),
+    [
+        (42_300, 60, "43"),
+        (60_000, 60, "60"),
+        (1, 60, "1"),
+        (0, 60, "1"),  # the very edge: never a wait of nothing
+        (-2, 60, "1"),  # the window closed between the count and the read
+        (-1, 60, "60"),  # a key without an expiry: the whole window, never too short
+        (RedisError("down"), 60, "60"),  # still the 429 it is, not the 503 of an uncounted hit
+        (1_799_400, 3600, "1800"),  # the transcriber's hourly window
+        (3_700_000, 3600, "3600"),  # never past the window's own length
+    ],
+)
+async def test_a_refusal_that_tells_its_wait_rounds_the_window_up(
+    monkeypatch: pytest.MonkeyPatch,
+    remaining_ms: int | Exception,
+    window_seconds: int,
+    expected: str,
+) -> None:
+    _over_the_limit(monkeypatch, remaining_ms)
+    with pytest.raises(AppError) as refused:
+        await infra.enforce_named_rate_limit(
+            "video_transcribe", "token", limit=1, window_seconds=window_seconds, retry_after=True
+        )
+    assert (refused.value.status, refused.value.code) == (429, "rate_limit_exceeded")
+    assert refused.value.headers == {"Retry-After": expected}
+
+
+@pytest.mark.asyncio
+async def test_other_limits_answer_as_before_and_an_allowed_hit_reads_nothing_more(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    redis = _over_the_limit(monkeypatch, 30_000)
+    with pytest.raises(AppError) as refused:
+        await infra.enforce_named_rate_limit("login", "1.2.3.4", limit=1, window_seconds=60)
+    assert refused.value.status == 429 and not refused.value.headers
+    assert redis.keys == [], "no expiry is read for a caller that did not ask for it"
+    await infra.enforce_named_rate_limit(
+        "video_speech", "token", limit=1_000, window_seconds=60, retry_after=True
+    )
+    assert redis.keys == [], "nor for a hit inside the limit"
+
+
+@pytest.mark.asyncio
+async def test_the_speech_routes_limits_all_tell_their_wait(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import app.video_speech.align_api as align_api
+    from app.video_speech.schemas import AlignIn, TranscribeIn
+
+    asked: list[tuple[str, dict[str, Any]]] = []
+
+    async def record(namespace: str, identifier: str, **options: Any) -> None:
+        asked.append((namespace, options))
+        raise AppError(429, "rate_limit_exceeded", "stop here")
+
+    monkeypatch.setattr(admin_api, "enforce_named_rate_limit", record)
+    monkeypatch.setattr(align_api, "enforce_named_rate_limit", record)
+    row = VideoToolToken(id=uuid4(), name="t", token_hash="h", token_prefix="mkv_x")
+
+    async def found(_session: Any, _presented: str) -> VideoToolToken:
+        return row
+
+    monkeypatch.setattr(admin_api, "find_active_token", found)
+    monkeypatch.setattr(admin_api, "touch", lambda _row: False)
+    with pytest.raises(AppError):
+        await admin_api.video_tool(TokenSession(found=row), authorization="Bearer x")  # type: ignore[arg-type]
+    payload = TranscribeIn(audio=base64.b64encode(WAV).decode())
+    with pytest.raises(AppError):
+        await admin_api.transcribe_narration(payload, row, TokenSession())  # type: ignore[arg-type]
+    clip = AlignIn(text="好", audio=base64.b64encode(WAV).decode())
+    with pytest.raises(AppError):
+        await align_api.align_speech(clip, row, TokenSession())  # type: ignore[arg-type]
+    # The token's window is the 60 seconds tools/video/tts/client.mjs RATE_WINDOW_MS waits out.
+    assert asked == [
+        ("video_speech", {"limit": 120, "window_seconds": 60, "retry_after": True}),
+        ("video_transcribe", {"limit": 1200, "window_seconds": 3600, "retry_after": True}),
+        ("video_align", {"limit": 1200, "window_seconds": 3600, "retry_after": True}),
+    ]

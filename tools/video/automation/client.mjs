@@ -52,6 +52,10 @@ const OWNER_CODES = new Set([
   // The Shorts settings name no tested model yet (docs/videos/SHORTS.md §端點): nothing ran.
   "video_ai_subject_not_chosen",
 ]);
+// Jev's answer when its key or URL is not set (apps/api/app/ai/jev.py jev_client), raised before
+// any Jev call or quota: a setting for the owner, with nothing that may have run. Only with its
+// 503; the code with another status came from something else and stays uncertain.
+const JEV_NOT_SET = Object.freeze({ status: 503, code: "provider_unavailable" });
 // What the tutorial and drama rounds ask the video list for: every video but the Shorts, so ninety
 // days of Shorts do not push them past the list's cap of 200 (docs/videos/SHORTS.md §資料模型).
 export const TUTORIAL_LIST = Object.freeze({ shorts: "exclude" });
@@ -62,9 +66,9 @@ const RETRYABLE_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_un
 // `auto` ends; the worker's loop tries again on its next round.
 export const PAUSE_CODES = new Set(["video_ai_subscription_paused", "video_ai_subscription_auth_failed"]);
 // A stage run's 5xx that settles it: the API's own answer once the run is over (it is recorded as
-// failed, no answer was lost), or the web route's 502 for an API it never reached. Any other 5xx
-// after a stage run was sent leaves its outcome unknown (RUN_UNCERTAIN).
-const SETTLED_RUN_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_unreachable", "video_ai_upstream_failed", OUTPUT_INVALID, "upstream_unavailable"]);
+// failed, no answer was lost), or an answer that says nothing ran (NEVER_RAN).
+// Any other 5xx after a stage run was sent leaves its outcome unknown (RUN_UNCERTAIN).
+const SETTLED_RUN_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_unreachable", "video_ai_upstream_failed", OUTPUT_INVALID]);
 // A Jev judgement (judge/policy, judge/outline) takes one call off the daily Jev budget before it
 // asks Jev (apps/api/app/video_automation/judge.py `_ask`), so it is paid like a stage run. It is
 // settled by the API's own 502 once its Jev call failed (the API answered, and no verdict was lost on
@@ -75,15 +79,17 @@ const SETTLED_RUN_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_
 // `video_judge_outcome_uncertain`, 2026-10-05-jev-judge-endpoints-report-an-uncertain). A host from
 // before that route change answers the 502 for both, so this client needs a host that serves it:
 // production does since a9e4c3851, deployed 2026-10-05.
-const SETTLED_JUDGE_CODES = new Set(["video_judge_upstream_failed", "upstream_unavailable"]);
+const SETTLED_JUDGE_CODES = new Set(["video_judge_upstream_failed"]);
+// Answers that say nothing ran, so a stage run or a judgement is asked again; each only with its
+// own status, so the same code with another came from something else and stays uncertain:
+// - the run and judge routes' (forwardToSpeech) 502 for an API they never reached, as in
+//   tts/client.mjs and shorts/site.mjs;
+// - the API's 503 when Redis cannot count the call against its rate limit (app/infra.py
+//   `enforce_named_rate_limit`), which it checks in `video_tool` and again first in the run and
+//   judge handlers, before any model or Jev call.
+const NEVER_RAN = Object.freeze([{ status: 502, code: "upstream_unavailable" }, { status: 503, code: "rate_limit_unavailable" }]);
+const settles = (settled, status, code) => settled.has(code) || NEVER_RAN.some((answer) => answer.status === status && answer.code === code);
 const JUDGE = Object.freeze({ paid: true, settled: SETTLED_JUDGE_CODES, what: "Jev" });
-// The API's limiter refuses a request it cannot count with 503 `rate_limit_unavailable`
-// (apps/api/app/infra.py enforce_named_rate_limit), in the video tool token's dependency and at the
-// top of every stage and judge route, before a model or Jev is asked: a paid request so refused is
-// settled, retried, and once the tries run out it is trouble that passes (flow.mjs everyones reads
-// the sentence as everyone's), never uncertain. Only the 503, as tools/video/tts/client.mjs.
-const LIMITER_AWAY = { status: 503, code: "rate_limit_unavailable" };
-const limiterAway = (status, code) => status === LIMITER_AWAY.status && code === LIMITER_AWAY.code;
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "EHOSTUNREACH", "ENETUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);
 
@@ -136,6 +142,8 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       } catch (error) {
         if (paid && !neverSent(error)) throw uncertain(route, error.cause?.message ?? error.message, 0, what);
         last = new AutomationError(`cannot reach ${site}: ${error.message}`, { code: "network" });
+        // Nothing waits after the last attempt: the caller learns the outcome at once.
+        if (attempt === attempts - 1) break;
         await sleep(delayMs(null, attempt));
         continue;
       }
@@ -150,9 +158,9 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       }
       const problem = await problemOf(response);
       const message = problem.detail || `HTTP ${response.status}`;
-      if (response.status === 401 || OWNER_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code, who: "owner" });
+      if (response.status === 401 || OWNER_CODES.has(problem.code) || (response.status === JEV_NOT_SET.status && problem.code === JEV_NOT_SET.code)) throw new AutomationError(message, { status: response.status, code: problem.code, who: "owner" });
       if (PAUSE_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code });
-      if (paid && response.status >= 500 && !settled.has(problem.code) && !limiterAway(response.status, problem.code)) throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ""}`, response.status, what);
+      if (paid && response.status >= 500 && !settles(settled, response.status, problem.code)) throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ""}`, response.status, what);
       last = new AutomationError(message, { status: response.status, code: problem.code });
       // When the server said to come back (Retry-After in seconds), the error keeps it: the
       // sleeps here are capped at two minutes each, and flow.mjs defers the video no sooner than
@@ -160,6 +168,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       const after = Number(response.headers.get("retry-after"));
       if (Number.isFinite(after) && after > 0) last.retry_after = after;
       if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;
+      if (attempt === attempts - 1) throw last;
       await sleep(delayMs(response, attempt));
     }
     throw last;
@@ -189,12 +198,13 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     }
     return receipts.receive(entry, await response.json());
   }
-  // `polling`: why the last look at the server failed (a 429 on the receipt, a dropped connection),
-  // or null when the server last said the run is queued or running; `receipt_status` is what it
-  // last said, null when no job was accepted yet. flow.mjs reports the first rather than claim a
-  // job is still running that may be over and only unread.
-  const pendingError = (message, body, polling, receiptStatus) => tagged(Object.assign(new AutomationError(message, { code: RUN_PENDING }), { polling: polling || null, receipt_status: receiptStatus ?? null }), body);
-  const pending = (body, why, { polling = null, receiptStatus = null } = {}) => pendingError(`the saved stage run is still pending${why ? ` (${why})` : ""}; its receipt will be recovered next round`, body, polling, receiptStatus);
+  // `cause`, when given, is the last request for the job that failed: its submission when no
+  // receipt is saved yet, else a look-up of the saved receipt (a rate limit, a gateway away). The
+  // job may be done, or not yet made, so flow.mjs does not report it as running. Kept as `why`.
+  const pending = (body, why, cause = null) => tagged(Object.assign(new AutomationError(`the saved stage run is still pending${why ? ` (${why})` : ""}; its receipt will be recovered next round`, { code: RUN_PENDING }), cause ? { why: cause } : {}), body);
+  // What a request that got no answer failed on: undici's "fetch failed" names its cause
+  // (ECONNREFUSED, ENOTFOUND) only there, and a cause of several failed addresses has no message.
+  const failedOn = (error) => error?.cause?.message || error?.cause?.code || error?.message || String(error);
   // The owner's card shows this message (flow.mjs unanswered): the saved run's own cause first.
   const inputChanged = (body, detail = "") => {
     const message = detail ? `${detail}; ${INPUT_CHANGED_MESSAGE}` : INPUT_CHANGED_MESSAGE;
@@ -217,12 +227,13 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     catch (error) {
       if (error instanceof RunReceiptError || error instanceof AutomationError && error.who === "owner") throw error;
       if (error.gone) { receipts.archive(entry, { autoArchive: true, gone: error.gone }); return; }
-      throw pending(body, `the stale run could not be looked up: ${error.message}`, { polling: error.message, receiptStatus: saved.status });
+      const cause = failedOn(error);
+      throw pending(body, `the stale run could not be looked up: ${cause}`, cause);
     }
     if (fresh.status === "succeeded") receipts.archive(entry, { autoArchive: true });
     else if (fresh.status === "failed") receipts.removeFailed(entry);
     else if (fresh.status === "uncertain") throw inputChanged(body, fresh.error_detail || "the saved model run is uncertain");
-    else throw pending(body, "an earlier request of this stage is still running", { receiptStatus: fresh.status });
+    else throw pending(body, "an earlier request of this stage is still running");
   }
   async function durableRun(body, previous) {
     const entry = previous ?? receipts.prepare(body);
@@ -249,6 +260,9 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       return null;
     }
     let lastProblem = "";
+    // Whether the server answered a look-up in this call: the budget's own deadline cutting the
+    // next one short is then no failed request, and the last read stands (still running).
+    let answered = false;
     for (;;) {
       const result = completed();
       if (result) return result;
@@ -281,20 +295,19 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
         } else {
           let receipt;
           try { receipt = await response.json(); }
-          catch { // A partial body has the same safe recovery as a lost connection: reuse the key.
+          catch (error) { // A partial body has the same safe recovery as a lost connection: reuse the key.
+            if (answered && error?.name === "TimeoutError") break;
             lastProblem = "the receipt response ended before it could be read";
             failures++;
           }
-          // Read: the server's own word on the run replaces any earlier failed look.
-          if (receipt !== undefined) { receipts.receive(entry, receipt); failures = 0; lastProblem = ""; }
+          // A receipt read: a look-up that failed before it is no longer the reason to wait.
+          if (receipt !== undefined) { receipts.receive(entry, receipt); failures = 0; lastProblem = ""; answered = true; }
         }
       } catch (error) {
         if (error instanceof RunReceiptError || error instanceof AutomationError) throw error;
-        // This round's own budget cut off a read of a job the server already confirmed (the
-        // signal above): nothing failed, and the server's last word on the job stands.
-        if (error?.name === "TimeoutError" && entry.record.receipt) break;
+        if (answered && error?.name === "TimeoutError") break;
         // GET or same-key POST can reconnect safely. The persisted key survives process exit.
-        lastProblem = error.message;
+        lastProblem = failedOn(error);
         failures++;
       }
       const resultAfter = completed();
@@ -305,7 +318,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       await sleep(wait);
       waited += wait;
     }
-    throw pending(body, lastProblem, { polling: lastProblem, receiptStatus: entry.record.receipt?.status });
+    throw pending(body, lastProblem, lastProblem || null);
   }
   async function run(stage, slug, instructions, payload, maxOutputTokens = 16_000, format = "slides", variant = null) {
     const body = { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens, format, ...(variant ? { variant } : {}) };

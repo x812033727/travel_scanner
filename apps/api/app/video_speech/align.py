@@ -38,6 +38,7 @@ from __future__ import annotations
 import asyncio
 import logging
 import re
+import threading
 import unicodedata
 from collections.abc import Sequence
 from dataclasses import dataclass
@@ -327,18 +328,92 @@ def boundary_from_event(event: Any) -> Boundary:
     )
 
 
-def _status_of(sdk: Any, error_code: Any) -> int:
-    """The HTTP status the speech route would have seen for a cancelled synthesis."""
+# The SDK tries most syntheses cancelled before any audio again by itself (a drop, a 1011 close,
+# a refused upgrade; not a 401 or a 4429 close), and reports only the last try: a reconnect
+# refused after a first try had sent the SSML reads as a socket that never opened, and one call
+# can send the SSML twice. Off, so a cancellation describes the one try, and the video tool
+# decides what is sent again. The cost: a one-off close or drop after the SSML went out, which
+# the SDK used to recover from inside the call, is now lost and held for the owner. Not in
+# PropertyId; the SDK reads it by this name.
+_SDK_RETRIES = "SpeechSynthesis_MaxRetryTimes"
+# How long a result waits for its completion or cancellation event, the SDK's last: in a local
+# stand-in it came within milliseconds of .get(), so a second only covers a busy host.
+_EVENTS_GRACE_SECONDS = 1.0
+# Past "Sending", the service had begun the turn (turn.start), or sent metadata or audio. The
+# SDK's own state is part of the text, where a boundary event may reach its callback only after
+# the result: a synthesis that had started is lost whatever its code.
+_STARTED = re.compile(r"USP state: (?!Sending\b)\w")
+# The service's refusals, decided before it synthesizes (a key, a quota, a body, a concurrency
+# limit), settled as the speech route settles the status each stands for. Nothing documents that
+# a refusal is billed.
+_REFUSALS = {
+    "AuthenticationFailure": 401,
+    "Forbidden": 403,
+    "BadRequest": 400,
+    "TooManyRequests": 429,
+}
+# A refused upgrade sent nothing, whatever its code: the SSML goes out once the websocket is open.
+# A 408 there is ServiceTimeout, settled as 502 like any code without a status of its own.
+_UPGRADE_REFUSED = re.compile(r"^WebSocket upgrade failed")
+# A service down or failing is settled only at the upgrade. The SDK takes ServiceError from the
+# close code alone (1011, 1013), so a socket the service closed after it took the SSML ("Connection
+# was closed by the remote host. Error code: 1011") may follow a synthesis it ran.
+_UPGRADE_REFUSALS = {"ServiceUnavailable": 503, "ServiceError": 502}
+# A ConnectionFailure says nothing of when the connection failed. The SSML goes out once the
+# websocket has opened, so one that never opened ("Connection failed (no connection to the remote
+# host)", "WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED") or whose upgrade was refused carried nothing.
+_NEVER_OPENED = re.compile(
+    r"WS_OPEN_ERROR|^WebSocket upgrade failed|no connection to the remote host"
+)
+
+
+def _code(sdk: Any, error_code: Any, table: dict[str, int]) -> int | None:
     codes = sdk.CancellationErrorCode
-    table = {
-        codes.AuthenticationFailure: 401,
-        codes.Forbidden: 403,
-        codes.BadRequest: 400,
-        codes.TooManyRequests: 429,
-        codes.ServiceUnavailable: 503,
-        codes.ServiceTimeout: 504,
-    }
-    return table.get(error_code, 502)
+    for name, status in table.items():
+        if hasattr(codes, name) and error_code == getattr(codes, name):
+            return status
+    return None
+
+
+def _cancellation(
+    sdk: Any, details: Any, *, received: bool
+) -> SpeechUpstreamError | SpeechAnswerLost:
+    """What a cancelled synthesis means for the route: settled, or lost after it may have run.
+
+    One that ``received`` audio or a boundary, or whose text says the turn had started, is lost
+    whatever its code. A refused upgrade is settled whatever its code. Every code not settled
+    below (ServiceTimeout, a ConnectionFailure after the websocket opened, a service error after
+    it, RuntimeError, the redirects, one this module does not know) may follow a synthesis Azure
+    ran and billed. So it is lost, and the video tool does not send it again. The rules read the
+    whole text; the message keeps its first 200 characters.
+    """
+    error_code = getattr(details, "error_code", None)
+    text = str(getattr(details, "error_details", "") or "")
+    message = f"Azure Speech cancelled the synthesis: {text[:200]}"
+    lost = SpeechAnswerLost(f"{message} (it may have run)")
+    if received or _STARTED.search(text):
+        return lost
+    refusal = _code(sdk, error_code, _REFUSALS)
+    if _UPGRADE_REFUSED.search(text):
+        return SpeechUpstreamError(
+            refusal or _code(sdk, error_code, _UPGRADE_REFUSALS) or 502, message
+        )
+    if refusal is not None:
+        return SpeechUpstreamError(refusal, message)
+    if _code(sdk, error_code, {"ConnectionFailure": 502}) and _NEVER_OPENED.search(text):
+        return SpeechUpstreamError(502, message)
+    return lost
+
+
+def speech_config(sdk: Any, region: str, key: str) -> Any:
+    """The SDK's config for one synthesis: 48 kHz RIFF, word and punctuation boundaries, one try."""
+    # ``region`` is pattern-checked in Settings, so the SDK cannot be pointed anywhere else.
+    config = sdk.SpeechConfig(subscription=key, region=region)
+    config.set_speech_synthesis_output_format(sdk.SpeechSynthesisOutputFormat.Riff48Khz16BitMonoPcm)
+    config.set_property(sdk.PropertyId.SpeechServiceResponse_RequestWordBoundary, "true")
+    config.set_property(sdk.PropertyId.SpeechServiceResponse_RequestPunctuationBoundary, "true")
+    config.set_property_by_name(_SDK_RETRIES, "0")
+    return config
 
 
 def synthesize_with_boundaries_blocking(
@@ -346,29 +421,32 @@ def synthesize_with_boundaries_blocking(
 ) -> tuple[bytes, list[Boundary]]:
     """One synthesis through the SDK: the RIFF audio and every boundary event it sent."""
     sdk = _speech_sdk()
-    # ``region`` is pattern-checked in Settings, so the SDK cannot be pointed anywhere else.
-    config = sdk.SpeechConfig(subscription=key, region=region)
-    config.set_speech_synthesis_output_format(sdk.SpeechSynthesisOutputFormat.Riff48Khz16BitMonoPcm)
-    config.set_property(sdk.PropertyId.SpeechServiceResponse_RequestWordBoundary, "true")
-    config.set_property(sdk.PropertyId.SpeechServiceResponse_RequestPunctuationBoundary, "true")
+    config = speech_config(sdk, region, key)
     # No audio_config: the audio comes back in memory, and no speaker or ALSA is ever opened.
     synthesizer = sdk.SpeechSynthesizer(speech_config=config, audio_config=None)
     boundaries: list[Boundary] = []
     synthesizer.synthesis_word_boundary.connect(
         lambda event: boundaries.append(boundary_from_event(event))
     )
+    # The SDK fires its events on threads of its own, and .get() can return before the last
+    # boundary events have reached the handler above. It holds back the completion event until
+    # those have been dispatched, so a successful synthesis's list is whole once it has fired. A
+    # cancellation's event can come before a pending boundary: what keeps such a synthesis lost is
+    # the SDK's state in its text (_STARTED), and the wait only ends there.
+    finished = threading.Event()
+    synthesizer.synthesis_completed.connect(lambda _event: finished.set())
+    synthesizer.synthesis_canceled.connect(lambda _event: finished.set())
     result = synthesizer.speak_ssml_async(ssml).get()
+    if not finished.wait(_EVENTS_GRACE_SECONDS):
+        logger.warning("Azure Speech sent no completion event; its boundaries may be incomplete")
     if result.reason == sdk.ResultReason.SynthesizingAudioCompleted:
         audio = bytes(result.audio_data or b"")
         if not audio.startswith(b"RIFF"):
             raise SpeechUpstreamError(502, "Azure Speech returned no audio")
         return audio, sorted(boundaries, key=lambda b: b.start_ms)
-    details = result.cancellation_details
-    error_code = getattr(details, "error_code", None)
-    reason = str(getattr(details, "error_details", "") or "")[:200]
-    raise SpeechUpstreamError(
-        _status_of(sdk, error_code), f"Azure Speech cancelled the synthesis: {reason}"
-    )
+    # A cancelled result keeps the audio that came before the cancellation (none: no bytes at all).
+    received = bool(result.audio_data) or bool(boundaries)
+    raise _cancellation(sdk, result.cancellation_details, received=received)
 
 
 async def synthesize_with_boundaries(
@@ -381,6 +459,8 @@ async def synthesize_with_boundaries(
             timeout=timeout_seconds,
         )
     except TimeoutError as error:
-        # The SDK has sent the SSML by now in all but the rarest case, and the thread is not
-        # stopped: Azure may still synthesize and bill it, so it is a lost answer, not a failure.
-        raise SpeechAnswerLost("Azure Speech", error) from error
+        # The worker thread is not cancelled by the timeout: the synthesis can still finish, and
+        # be billed, after the route has answered.
+        raise SpeechAnswerLost(
+            "Azure Speech did not answer in time; the synthesis may still finish and be billed"
+        ) from error

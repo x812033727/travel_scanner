@@ -5,16 +5,18 @@ status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-image-bytes
-claimed_at: 2026-10-07T02:32:18Z
+claimed_at: 2026-10-07T03:35:41Z
 created_at: 2026-10-05T12:57:36Z
-completed_at: 2026-10-07T02:38:03Z
-branch: claude/happy-carson-c1hy91
+completed_at: 2026-10-07T04:08:54Z
+branch: claude/sharp-bardeen-ob6fn9
 depends_on: []
 scope:
   - tools/video/media/clips.mjs
   - tools/video/media/clips.test.mjs
   - tools/video/assemble/cli.mjs
   - tools/video/assemble/assemble.test.mjs
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # Verify selected image bytes before direct clips and assembly
@@ -68,24 +70,27 @@ and the required tools checks before a PR.
   No direct-consumer fix, production restore, paid generation or deployment is
   included in this task filing. Claim remains open for a separate bounded fix.
 
-## 2026-10-07 implementation (claude-opus-5-5-image-bytes)
+### 2026-10-07 implementation (claude-opus-5-5-image-bytes)
 
-- `clips` (media/clips.mjs, `changedKeyframes`): after the storyboard approval check and before the
-  dry run, the status call, any upload or submission, every selected clip shot's and still's start
-  picture and required end picture is hashed and compared with the sha256 its keyframes manifest
-  entry names. A missing file or other bytes is a `MediaError` for the owner (exit 3) naming the
-  shot, which picture and the file. Kept clips of selected shots are checked too (fail closed): an
-  approved storyboard whose picture changed is a mismatch whatever the clip.
-- `assemble` (assemble/cli.mjs): after the layout and before any ffprobe/ffmpeg, every motion
-  scene whose keyframe carries a sha256 (a still shot, from the keyframes or clips manifest) is
-  hashed; a mismatch exits 2 (usage) before a segment is encoded or a cached one, keyed on the
-  manifest's unchanged hash, is reused. Cards (sha256 null) and clips are not affected.
-- Nothing is rewritten to make a mismatch pass: the manifests, the cached segment and the clips
-  manifest are left as they were (asserted).
-- Tests: `clips.test.mjs` changes the selected start and the end picture, run and dry run, and
-  counts zero requests of any kind; `assemble.test.mjs` changes a still's keyframe with a seeded
-  segment cache and asserts no tool call, the cache untouched and no build, plus the unchanged
-  control reaching the tools. Both fail with the gate removed (checked).
-- Verified: `node --test tools/video/media/clips.test.mjs tools/video/assemble/assemble.test.mjs`;
-  `npm run test:tools` green but for the duration receipt, rebound by an independent reviewer in
-  the next commit (assemble/cli.mjs, assemble.test.mjs and clips.test.mjs are bound).
+- `media/clips.mjs` `changedPictures()`:
+  - It runs `core/state.mjs keyframeProblems` on the shots this run uses, and also checks any end frame the manifest records, because a clip is sent with that end frame even when the script no longer asks for one.
+  - Direct `clips` runs it after the storyboard approval check and before any status read, upload or submission. `clips import` runs it before money is held or the clip is copied.
+  - A mismatch exits 2 and names the file. The manifest, receipts, ledger and media are left as they are.
+- `assemble/cli.mjs` `mediaInputs()` checks the bytes before ffmpeg runs and before a segment cached under the manifest's hash is reused:
+  - illustrated slides: every selected keyframe;
+  - drama: every still shot's picture recorded in `clips/manifest.json`.
+  - Clip-cut reuse and unchanged pictures behave as before.
+- Tests:
+  - `clips.test.mjs`: a changed start, a changed recorded end frame, and import. Each makes zero requests of any kind, leaves the manifest unchanged and holds no money.
+  - `assemble.test.mjs`: illustrated and drama-still cases. A valid-byte control reaches ffmpeg; a changed picture does not, and the cached segment is left untouched.
+  - Both fail on the old code.
+- Code review (2026-10-07) found two blocking issues and fixed them:
+  - **A still outside `--shot` could be sent unchecked.** A clip continuing from such a still went out as `previous_frame`.
+    `clips.mjs` `uploadApproved()` now hashes every picture right before upload, against the record that names it: the start keyframe, the end frame, and the still that a clip continues from.
+  - **Assemble checked the wrong record.** It hashed the clips manifest's still record, but `layoutDrama` uses the keyframes manifest's record first.
+    Assemble now checks the record `layoutDrama` uses, and refuses when the two manifests disagree about a still.
+- Should-fix: the drama test now uses a real still (`data.visual: "still"`). The cached-segment assertion that proved nothing is gone. The guarantee is that the run is refused before ffmpeg is even looked for.
+- Nit: the picture-problem filter matches exact phrases, so a shot ID can no longer trigger it.
+- Filed as `2026-10-07-the-thumbnail-is-drawn-from-a`: the thumbnail (`render/plan.mjs`) has the same gap.
+- Not changed: a few checks are stricter than the run strictly needs, such as a kept shot's picture or an import's end frame. The reviewer called this defensible. Older manifests always carry sha256 (keyframes.mjs has written it since 5e151982, and clips.mjs for stills since d4e2b6b2), so nothing in production fails on a missing hash.
+- Codex review of PR #1364 (2026-10-07, P1) found the gap that was left. A clip continuing from a still outside `--shot` read that still's record in `clips/manifest.json`, written by an earlier run. `uploadApproved()` hashed it against its own old hash. So a still that a later keyframes run had pointed at another file, with the old file left in place, could still be sent as `previous_frame`. The approval no longer covered it. Fixed in `clips.mjs`: the still's clips record must name the file and hash that the keyframes manifest selects, or the clip is refused (exit 2, "run clips --shot <still> first") before it is sent. The new test in `clips.test.mjs` fails on the old code, and it also checks that the remedy works.

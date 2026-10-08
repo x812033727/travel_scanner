@@ -5,10 +5,10 @@ status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-speech-lost
-claimed_at: 2026-10-07T01:52:00Z
+claimed_at: 2026-10-07T04:23:15Z
 created_at: 2026-10-05T04:47:59Z
-completed_at: 2026-10-07T01:57:41Z
-branch: claude/happy-carson-c1hy91
+completed_at: 2026-10-07T05:01:15Z
+branch: claude/sharp-bardeen-ob6fn9
 depends_on: []
 scope:
   - apps/api/app/video_speech/azure.py
@@ -20,6 +20,8 @@ scope:
   - apps/api/tests/test_video_speech_check.py
   - tools/video/tts/client.mjs
   - tools/video/tts/client.test.mjs
+  - tools/video/shorts/lab.mjs
+  - tools/video/shorts/lab.test.mjs
 ---
 
 # Speech API tells a provider answer lost after sending apart from a provider failure
@@ -86,28 +88,46 @@ tools/video/tts/tts.test.mjs`. No live provider is called.
   answers and can stay settled.
 - Related: 2026-10-05-speech-routes-lost-paid-answer does the same one layer up, for the web
   route's 502 `upstream_unavailable`.
-
-## 2026-10-07 implementation (claude-opus-5-5-speech-lost)
-
-- `azure.py` gains `SpeechAnswerLost` (a `SpeechUpstreamError` with status 504), `NEVER_SENT`
-  (`ConnectError`, `ConnectTimeout`, `PoolTimeout`, `UnsupportedProtocol`, `LocalProtocolError`)
-  and `paid_request_failed()`. Azure and Gemini synthesis and Gemini transcription use it: never
-  sent stays 502 `video_speech_upstream_failed`; any other `httpx.HTTPError` (read or write
-  timeout, read error, protocol error, dropped connection) is 504 `video_speech_upstream_lost`.
-  The free voices GET is unchanged.
-- Synthesis keeps the reserved characters on a lost answer, since the provider may have billed
-  them; never sent and the provider's own answers still give them back.
-- Transcription checks `SpeechAnswerLost` before its status mapping, so a lost answer is not
-  confused with Google's own 504, which stays 503 `video_speech_upstream_busy`.
-- The judge leg needed no API change: since #1254 (landed in #1348) `JevClient._send` raises
-  `JevOutcomeUncertain` for every lost answer, answered 502 `video_judge_outcome_uncertain`, and
-  what still reaches `video_judge_upstream_failed` is a connection that never opened, a request
-  httpx would not write, or a 429/529 Jev refused.
-- The client needed no logic change: both new codes are paid 5xx outside `SETTLED_CODES`, so
-  they are already `SPEECH_UNCERTAIN`. Its comment is rewritten and `client.test.mjs` gains
-  both codes in the lost-answer table. An older host still answers `video_speech_upstream_failed`
-  for a lost answer, which the client still resends, so nothing changes until this deploys.
-- Verified: ruff, `mypy app`, `mypy tests`, the three speech test files (55 pass), and
-  `node --test tools/video/tts/client.test.mjs tools/video/tts/tts.test.mjs` (41 pass);
-  `npm run test:tools` 1981 pass.
-- The claim was written by hand: `claim` refused because on main the review-held jev-judge ticket still covers admin_api.py; that ticket is closed in #1357.
+- Done 2026-10-07. `azure.py` has `SpeechAnswerLost` (deliberately not a `SpeechUpstreamError`,
+  so a route that forgets it answers a 500, which the client also holds as uncertain) and
+  `transport_failure()`: `httpx.ConnectError`, `ConnectTimeout` and `PoolTimeout` stay
+  `SpeechUpstreamError(502, "<provider> unreachable: ...")`; every other `httpx.HTTPError` from
+  the POST is `SpeechAnswerLost`. Azure and Gemini synthesis and Gemini transcription use it.
+  `admin_api.answer_lost()` answers it as 504 `video_speech_upstream_lost`. Synthesis keeps the
+  reserved characters counted for it, since the provider may have billed them; a never-sent
+  failure still gives them back.
+- Jev's half was already done by Codex #1254 (train #1348): `JevClient._send` raises
+  `JevOutcomeUncertain` for anything after the request may have left, and `judge_narration`
+  answers it as 502 `video_judge_outcome_uncertain`. What still reaches its
+  `video_judge_upstream_failed` is a connection that never opened (after the client's one retry),
+  a request httpx refused to write, a 429/529 refused every time, or another definite 4xx. So no
+  `video_judge_upstream_lost` was added; `client.test.mjs` pins the 502
+  `video_judge_outcome_uncertain` as uncertain instead.
+- The client needed no code change: any paid 5xx outside `SETTLED_CODES` is already
+  `SPEECH_UNCERTAIN`, so a host serving the 504 is held at once, and an older host's 502
+  `video_speech_upstream_failed` is resent as before (`tts.test.mjs` still sees five calls). The
+  comment above `SETTLED_CODES` and the tests' table now say so.
+- Left alone, as definite answers rather than lost ones: a 2xx whose body is not audio (Azure)
+  or has no transcript (Gemini's SAFETY block), and Jev's malformed answers block. They were
+  billed, but asking again is a policy choice, not an unknown outcome.
+- The align route (`speech/align`, paid for an Azure voice) has the same gap in its SDK path; it
+  was outside this scope and is 2026-10-07-speech-align-route-tells-an-azure.
+- An independent review (2026-10-07, four lenses, each finding verified) confirmed one should-fix
+  outside the original scope. A Short (`shorts/lab.mjs` `LabShort.run`, which `CutShort` shares)
+  treated `SPEECH_UNCERTAIN` like any other owner error: it printed "waits for the owner" to the
+  worker's stdout and never called `block()`. So nothing reached /admin/videos, `next_job_for`
+  kept naming it, and the owner's retry did not apply. This change sends every provider read
+  timeout down that path, where before they were resent. The scope was widened to the two lab
+  files, which no active task held: `run()` now blocks the Short on `SPEECH_UNCERTAIN`, the
+  journal's later-round hold included, before the generic owner branch. The new
+  `lab.test.mjs` test fails on the old code.
+- Review nits taken: `UnsupportedProtocol` and `LocalProtocolError` are raised before a byte
+  leaves, so they join `NEVER_SENT` as in `jev.py`. The tests also pin `WriteError` as lost and
+  pin that `SpeechAnswerLost` is not a `SpeechUpstreamError`, and the transcription test's
+  key-leak assertion now has the key to look for.
+- Review nits left:
+  - `automation.test.mjs` `ERROR_SCOPES` does not list the new 504 code. The default already
+    puts it in the right scope ('wait', like `video_speech_answer_lost`), and the file is
+    duration-bound and outside this scope.
+  - Pre-existing: a refund (`release_azure_speech_characters` without `now`) is filed under the
+    month at release time, not the reservation's month.

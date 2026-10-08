@@ -4,7 +4,7 @@ title: Hold lost planner and Jev answers across rounds in drafts, series and Sho
 status: done
 priority: P2
 area: tools
-owner: claude-opus-5-5-happy-carson
+owner: claude-happy-carson
 claimed_at: 2026-10-07T11:22:28Z
 created_at: 2026-10-05T23:49:44Z
 completed_at: 2026-10-07T14:12:23Z
@@ -102,9 +102,10 @@ make no stage call.
 - [x] `series.mjs` and `discuss.mjs`: mark the series job or discussion message as lost
   through the site calls these paths already use (`messageAnswer`, the series job's own
   calls), and do not ask again until the owner retries. (discuss.mjs was done by
-  2026-10-06-a-discussion-whose-writer-answer-was, except a discussion's lint repair, done
-  here; the series documents have no site call that can hold them, so the hold is local and
-  the site half is 2026-10-07-series-documents-a-site-side-hold.)
+  2026-10-06-a-discussion-whose-writer-answer-was, as it landed on main in #1364, a
+  discussion's lint repair included; the series documents have no site call that can hold
+  them, so the hold is local and the site half is
+  2026-10-07-series-documents-a-site-side-hold.)
 - [x] `qa/cli.mjs` `policyItem()` and `shorts/qa.mjs`: keep the uncertain judgement per
   final-cut hash in `review/qa.json` and do not ask again for the same hash. The item says
   the outcome is unknown and is for the owner. (Kept per request hash, and the video waits
@@ -147,7 +148,7 @@ node tools/video/long-form/cli.mjs check
   Give the site something to record, so a job the server keeps naming does not hold up the
   queue.
 
-### 2026-10-07 done (claude-opus-5-5-happy-carson, PR #1361)
+### 2026-10-07 done (claude-happy-carson, PR #1361)
 
 The first Definition of done item is met for every path but one, and is left unticked for it:
 a series document's lost answer is recorded and never asked again on its own, but the owner
@@ -203,9 +204,15 @@ stops the video or Short for the retry (rather than sending the cut with the out
 - Only the first lane plans an `unplanned` video (stepUnit), the lane that also drafts: on
   another lane its planner and the first lane's `draft()` could read the earlier videos at the
   same time and pick the same article.
-- Discussions: a lint repair lost inside a screenplay discussion's rewrite puts the script back
-  and blocks the video with the line held (`discuss.mjs` `answerHeld`). The durable case where
-  that repair is still running is filed as 2026-10-07-a-discussion-s-lint-repair-still.
+- Discussions: this ticket first made a lint repair lost inside a screenplay discussion's
+  rewrite put the script back and block the video with the line held, on #1361's own version of
+  2026-10-06-a-discussion-whose-writer-answer-was. #1364 landed that ticket first, and its
+  `discuss.mjs` already sorts every failed lint repair as the line's request (`lineFailed`,
+  flow.mjs `requestFailed`: a lost answer blocks `uncertain:writer` with `blocked_line`), with
+  the rewrite kept unchecked for the video's own unit and the paid reply kept for the line's
+  next visit, a repair still running included. So when #1361 was rebased onto main
+  (2026-10-08), this ticket's discussion change and the follow-up it had filed
+  (2026-10-07-a-discussion-s-lint-repair-still) were dropped.
 - Not changed, noted: retrying a video blocked by a rewrite's lost planner asks Jev again about
   the old brief before the planner (its verdict is in `last_pick`, not keyed by brief); a Jev
   verdict that arrived but whose report or submit failed is asked again next round (the same).

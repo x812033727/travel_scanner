@@ -12,6 +12,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { automationClient } from '../automation/client.mjs';
+import { SPEECH_UNCERTAIN, SpeechError } from '../tts/client.mjs';
 import { encodeWav } from '../tts/wav.mjs';
 import { checkAudio } from './check.mjs';
 import { PROFILE, buildTimeline, phrasesOf, sha256, srt, verifyEvidence } from './core.mjs';
@@ -431,6 +432,24 @@ test('two technical failures stop the experiment: no raw answer, no conclusion, 
   assert.equal(report.stage, 'blocked');
   assert.match(report.checklist[0].label, /^卡住，需要人處理：受測模型/);
   assert.equal(await lab.run(), null, 'a blocked Short is not asked again');
+});
+
+test('a paid speech answer lost after it was sent blocks the Short where the owner sees it, and is not asked again', async (t) => {
+  const site = fakeSite({ answers: ANSWERS() });
+  let builds = 0;
+  const lost = new SpeechError(`POST /api/video/speech was sent and no usable answer came back (HTTP 504 video_speech_upstream_lost: Gemini 可能已合成這段語音); it may have run and been charged, so it is not sent again (${SPEECH_UNCERTAIN}, request sha256 ${'a'.repeat(64)})`, { status: 504, code: SPEECH_UNCERTAIN, who: 'owner' });
+  const { lab } = labFor(t, site, { tools: { build: async () => { builds += 1; throw lost; } } });
+  let line = null;
+  for (let round = 0; round < 6 && lab.state.status !== 'blocked'; round++) line = await lab.run();
+  assert.equal(lab.state.status, 'blocked');
+  assert.equal(lab.state.phase, 'build');
+  assert.match(line, /blocked — POST \/api\/video\/speech was sent and no usable answer came back/);
+  assert.equal(builds, 1, 'the narration is not asked for again');
+  const report = site.calls.reports.at(-1);
+  assert.equal(report.stage, 'blocked');
+  assert.match(report.checklist[0].label, /^卡住，需要人處理：POST \/api\/video\/speech/);
+  assert.equal(await lab.run(), null, 'a blocked Short is not asked again');
+  assert.equal(builds, 1);
 });
 
 test('nothing reaches the tested model while the owner has not chosen one, and that is not an attempt', async (t) => {

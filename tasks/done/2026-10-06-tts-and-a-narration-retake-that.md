@@ -5,9 +5,9 @@ status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-tts-defer
-claimed_at: 2026-10-07T05:42:46Z
+claimed_at: 2026-10-07T06:02:08Z
 created_at: 2026-10-06T15:42:27Z
-completed_at: 2026-10-07T06:13:00Z
+completed_at: 2026-10-07T07:42:24Z
 branch:
 depends_on:
   - 2026-10-06-a-failing-video-is-deferred
@@ -71,30 +71,54 @@ node --test tools/video/automation/automation.test.mjs
   (`docs/videos/long-form/review.json`): a change there needs the independent re-bind.
 - `everyones()` reads the server's wording because the commands print the detail and not the code;
   its table is in `flow.mjs` beside `EVERYONE_CODES`.
-- Done 2026-10-07 by claude-opus-5-5-tts-defer.
-  - `advance()`: a `tts` that exits 4 defers the video (`what: "tts"`, `everyone` from
-    `everyones()`), quoting its last line. Its takes so far are in audio/cache.json and the next
-    run reuses them; timeline.json is still the last run's.
-  - `narration()`: a retake that exits 4 goes through `retakeStopped()` like a STOP, so the takes
-    it made are recorded (`stopped_retake`) and bound by the plain tts on the next run, but with a
-    counted deferral. The retake after a rewrite does the same; the rewrite's round stays spent.
-  - A retake that was answered nothing gives its `retakes` round back (STOP before its first
-    request too), so a rate limit that ends the retake every round never uses the retakes up.
-    "Answered" is read from tts's own progress line (`FINISHED_REQUEST`), not from whether a take's
-    bytes changed: a voice that answers with the same bytes was still paid for, and giving its
-    round back would buy it again every round. A retake cut short after some answers keeps its
-    round, as a STOP's always did.
-  - Exit 3 (the owner's, a lost paid answer included) still blocks at once and is never sent
-    again; the other codes block as before.
-  - The message for binding an unfinished retake's takes is now "from the takes of the retake
-    that did not finish" (it said "a STOP file ended").
-- Reviewed by three independent lenses (paid-request safety, counters, tests), each finding
-  checked by two skeptics. Fixed from it: a test for the retake after a rewrite (confirmed by
-  both), the refund keyed on tts's output instead of take bytes, the STOP refund and the
-  last-line message pinned. Filed: 2026-10-07-a-paid-speech-request-the-limiter (a paid POST
-  refused by the limiter's 503 is held as uncertain, exit 3, so that case still blocks).
-- Tests: `node --test tools/video/automation/automation.test.mjs` 177 pass. Each new test was
-  checked to fail with its fix removed (the exit-4 branches, the rewrite branch, the
-  output-keyed refund, the last-line quote).
-- `flow.mjs` and `automation.test.mjs` are bound by the duration receipt: the independent
-  re-bind follows in its own commit.
+- 2026-10-07 (claude-opus-5-5-tts-defer). `flow.mjs`:
+  - `advance()`: a tts that exits 4 is deferred as `${slug}: tts could not finish (<last line>)`,
+    with `what: "tts"` and `everyone` from `everyones(result.out)`. Its takes so far are cached and
+    the next tts goes on from them.
+  - Why that cannot trip the guard before tts: the guard's `resumed` case needs the same script with
+    bound evidence, where every take is current, so that tts has nothing to synthesize and cannot
+    exit 4 with takes changed.
+  - `narration()`: a retake, or a retake after a rewrite, that exits 4 goes through `retakeStopped`
+    with defer's options (`retakeWait`): `what: "tts"`, and `everyone` from its output. That
+    function records the takes the retake made (`stopped_retake`), so the next round's plain tts
+    binds them as it does after a STOP, instead of blocking on "audio evidence no longer matches".
+    A STOP keeps its `backoffMs: 0`; exit 4 waits and doubles like any deferral.
+  - The resume line now reads "narration synthesized from the takes of the retake that stopped
+    halfway", since a service as well as a STOP file can end one.
+- Tests (`automation.test.mjs`), each failing on the old code:
+  - tts exit 4 with the rate limit's sentence, and with the month's characters spent: eight
+    rounds, never blocked, `defer_shared` 8, then synthesized.
+  - With a vendor's line: blocked at the seventh try as `deferred:tts`.
+  - A retake that exits 4 after one take: recorded, deferred, bound, checked, and no line retaken
+    twice.
+  - A retake that exits 4 before its first take: recorded nothing, counted.
+  - Also pinned (passes on both versions): tts exit 3 (a revoked token, a lost paid answer) and
+    exit 2 still block at once.
+- Review (2026-10-07, three lenses, each finding verified). It confirmed that tts writes
+  `timeline.json` and `narration.wav` only after its last request, so an exit 4 never leaves a new
+  timeline behind, and each path the change defers was traced to its next round. Changed from it:
+  - Should-fix: `narration()` counts a retake round before the redo runs. A redo that exited 4
+    with no take made (the budget pre-check, a vendor away before its first request) spent that
+    round, and now that the worker repeats the round by itself, an outage alone could spend every
+    retake and start the listener's rewrite of lines never retaken. `retakeStopped` now takes
+    `giveBack`, which the check-flags loop passes: the round goes back when the retake made no
+    take. A retake that made some takes keeps its round, as after a STOP. The rewrite loop
+    counts its round in `rewriteNarration`, where the listener call did happen.
+  - New tests:
+    - two budget-spent rounds give the round back, with no listener call and the script
+      unchanged, and the two retakes then run;
+    - a vendor that keeps failing the retake blocks at the seventh try as `deferred:tts`;
+    - the retake after a rewrite that exits 4 defers and goes on;
+    - a retake and a retake after a rewrite that exit 3 with SPEECH_UNCERTAIN, or exit 2, still
+      block at once and record nothing.
+    Each catches a mutation that survived before.
+  - The assertion in the eight-round tts test that could not fail is gone, and its comment no
+    longer claims cached takes.
+- Filed: `2026-10-07-a-dub-retake-that-exits-4`. The dub retake has the same counter pattern,
+  older than this ticket.
+
+- Duration re-bind (2026-10-07, claude-pr-review-tts-defer, independent): PASS, DURATION_ONLY.
+  Exit 4 is only a service error (network, HTTP, the month's characters), never the short-chapter
+  verdict, which exits 1 and still blocks at once; no duration-term line changed. `flow.mjs` and
+  `automation.test.mjs` are rebound in `docs/videos/long-form/review.json` and the CLI check
+  passes.

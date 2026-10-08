@@ -78,6 +78,6 @@ approved confirmation; and the API contract test with such a fixture
 
 ## Notes
 
-- Found while binding normal batches to their source (claude-opus-5-5-happy-carson, PR #1361).
+- Found while binding normal batches to their source (claude-happy-carson, PR #1361).
 - The first-upload policy for a pending dub is `2026-09-30-clarify-first-upload-of-pending-dubbed`;
   decide this ticket's order together with it.

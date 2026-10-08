@@ -4,7 +4,7 @@ title: The ffmpeg-dependent tools tests run in no required job, and some in no j
 status: done
 priority: P3
 area: tools
-owner: claude-opus-5-5-ffmpeg-ci
+owner: claude-ffmpeg-ci
 claimed_at: 2026-10-07T06:04:38Z
 created_at: 2026-10-07T05:03:42Z
 completed_at: 2026-10-07T06:28:46Z
@@ -70,9 +70,9 @@ Break an assertion in one of the ffmpeg cases in `tools/reference-analysis.test.
 
 ## Notes
 
-- Filed 2026-10-07 by claude-opus-5-5-docs-ci; the judge panel for the docs/videos CI ticket
+- Filed 2026-10-07 by claude-docs-ci; the judge panel for the docs/videos CI ticket
   flagged it, and all three designs left it out of that ticket's scope.
-- Done 2026-10-07 by claude-opus-5-5-ffmpeg-ci.
+- Done 2026-10-07 by claude-ffmpeg-ci.
   - Measured (TAP, Node 22 and 24, Chromium hidden as in web-checks): without ffmpeg 9 tools
     cases skip for it: the six in `tools/reference-analysis.test.mjs`, the H.264 concat case in
     `review/renewal-handoff.test.mjs`, the brightness probe and the end-to-end Short in

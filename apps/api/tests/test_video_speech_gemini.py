@@ -27,6 +27,7 @@ from app.video_speech.gemini import (
 from app.video_speech.ssml import Part, Segment
 
 WAV = wav_from_pcm(b"\x00\x01" * 24, 24_000)
+REAL_SYNTHESIZE = GeminiSpeech.synthesize
 
 
 def test_the_transcript_uses_spoken_forms_and_pause_tags_and_drops_angle_brackets() -> None:
@@ -178,38 +179,85 @@ async def test_a_rejected_key_is_reported_and_the_characters_refunded(gemini_app
     assert busy.status_code == 429 and busy.headers["retry-after"] == "12"
 
 
-@pytest.mark.asyncio
-async def test_gemini_synthesis_tells_a_request_never_sent_from_an_answer_lost() -> None:
-    raised: list[httpx.HTTPError] = [httpx.ConnectError("refused"), httpx.ReadTimeout("slow")]
+# A connection that never opened carried nothing; any other failure of the POST may follow a
+# request Gemini ran and billed.
+NEVER_SENT = [
+    httpx.ConnectError,
+    httpx.ConnectTimeout,
+    httpx.PoolTimeout,
+    httpx.UnsupportedProtocol,
+    httpx.LocalProtocolError,
+]
+SENT_AND_LOST = [
+    httpx.ReadTimeout,
+    httpx.WriteTimeout,
+    httpx.ReadError,
+    httpx.WriteError,
+    httpx.RemoteProtocolError,
+]
 
+
+def _raising(error: type[httpx.TransportError]) -> httpx.MockTransport:
     def handler(request: httpx.Request) -> httpx.Response:
-        raise raised.pop(0)
+        raise error("site-gemini-key https://generativelanguage.googleapis.com", request=request)
 
-    speech = GeminiSpeech(
-        base_url="https://gemini.invalid", key="site-gemini-key", timeout_seconds=1
-    )
-    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
-        with pytest.raises(SpeechUpstreamError) as unreachable:
-            await speech.synthesize("你好", "Sulafat", client=client)
-        with pytest.raises(SpeechAnswerLost) as lost:
-            await speech.synthesize("你好", "Sulafat", client=client)
-    assert unreachable.value.status == 502 and not isinstance(unreachable.value, SpeechAnswerLost)
-    assert str(unreachable.value) == "Gemini unreachable: ConnectError"
-    assert lost.value.status == 504 and "ReadTimeout" in str(lost.value)
-    assert "site-gemini-key" not in str(lost.value)
+    return httpx.MockTransport(handler)
 
 
 @pytest.mark.asyncio
-async def test_a_lost_gemini_answer_has_its_own_code_and_keeps_the_characters(
-    gemini_app: Any,
+@pytest.mark.parametrize("error", NEVER_SENT + SENT_AND_LOST)
+async def test_gemini_tells_a_request_never_sent_from_one_whose_answer_was_lost(
+    error: type[httpx.TransportError],
 ) -> None:
-    gemini_app["error"] = SpeechAnswerLost("Gemini", httpx.RemoteProtocolError("dropped"))
-    lost = await _post(_request())
-    assert lost.status_code == 504 and lost.json()["code"] == "video_speech_upstream_lost"
-    snapshot = await azure_speech_usage_snapshot(
-        gemini_app["redis"], 0, provider=GEMINI_SPEECH_PROVIDER
+    speech = GeminiSpeech(
+        base_url="https://generativelanguage.googleapis.com",
+        key="site-gemini-key",
+        timeout_seconds=1,
     )
-    assert snapshot.used > 0
+    async with httpx.AsyncClient(transport=_raising(error)) as client:
+        with pytest.raises((SpeechUpstreamError, SpeechAnswerLost)) as raised:
+            await speech.synthesize("你好", "Sulafat", client=client)
+    if error in NEVER_SENT:
+        assert type(raised.value) is SpeechUpstreamError and raised.value.status == 502
+        assert str(raised.value) == f"Gemini unreachable: {error.__name__}"
+    else:
+        assert type(raised.value) is SpeechAnswerLost
+        assert error.__name__ in str(raised.value)
+    assert "site-gemini-key" not in str(raised.value) and "googleapis" not in str(raised.value)
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("error", NEVER_SENT + SENT_AND_LOST)
+async def test_a_lost_gemini_answer_is_its_own_504_and_its_characters_stay_counted(
+    gemini_app: Any, monkeypatch: pytest.MonkeyPatch, error: type[httpx.TransportError]
+) -> None:
+    async def synthesize(
+        self: GeminiSpeech,
+        text: str,
+        voice: str,
+        style: str | None = None,
+        model: str = "",
+        client: Any = None,
+    ) -> bytes:
+        gemini_app["calls"].append(text)
+        async with httpx.AsyncClient(transport=_raising(error)) as provider:
+            return await REAL_SYNTHESIZE(self, text, voice, style, model, provider)
+
+    monkeypatch.setattr(GeminiSpeech, "synthesize", synthesize)
+    response = await _post(_request())
+    used = (
+        await azure_speech_usage_snapshot(gemini_app["redis"], 0, provider=GEMINI_SPEECH_PROVIDER)
+    ).used
+    body = response.json()
+    if error in NEVER_SENT:
+        # Retried by the video tool, as before: nothing reached Gemini.
+        assert response.status_code == 502 and body["code"] == "video_speech_upstream_failed"
+        assert used == 0
+    else:
+        # Sent once: the tool stops and asks the owner instead of paying for it again.
+        assert response.status_code == 504 and body["code"] == "video_speech_upstream_lost"
+        assert used == len(gemini_app["calls"][0]) > 0
+    assert "site-gemini-key" not in response.text and "googleapis" not in response.text
 
 
 @pytest.mark.asyncio

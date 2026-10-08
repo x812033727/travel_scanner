@@ -458,16 +458,6 @@ lint（`core/drama.mjs` `cueCoverageProblems`，經 `core/lint.mjs` 進警告）
 | 卡片看得到 | 成片卡片：`payload.manual_review` 為 true 時最上面顯示「這支成片要由你審看，不會自動核准」與 `manual_review_reason`；沒有 `payload.qa` 時把 `manual_review_qa` 的項目列在同一個「自動品管」清單並標「僅供參考」；`accepted_pictures` 列成「保留的插圖（N 張）」，每張帶 judge 的意見。分鏡卡片：`payload.accepted` 點名（或自己帶 `accepted: true`）的 shot 標「保留」、藍框、分數與意見，跟「待修」的琥珀框分開；還在 `needs_review` 的 shot 不會被標成保留；整塊分鏡沒有分數時（全部保留，`judge.overall` 是 null）不顯示「自動檢查」那一行，不留一個後面沒字的標籤。欄位缺漏或型別不對就不顯示那一塊，卡片照常 | `apps/web/components/admin-video-review-card.tsx`、五語 `admin.json` |
 | payload 不會被站台退件 | 伺服器的 `ReviewIn.payload` 上限 262,144 bytes（`MAX_PAYLOAD_BYTES`；量的是 `json.dumps(value, ensure_ascii=False)` 的 UTF-8 長度，逗號與冒號後各多一個空白），超過一樣回 422、影片卡住。judge 的意見是每個 take 的聯集，而且一筆審核帶兩份：成片在 `accepted_pictures` 與 QA `assemble` 項的 `warnings`，分鏡在 `accepted` 與每個 shot 自己的 `judge.problems`。現在：(1) QA 的 `assemble` 項只掛一行 warning，寫保留幾張與前 5 個 id（`keptPicturesWarning`，例：`80 pictures kept … (a, b, c, d, e and 75 more)`），不帶意見。(2) `reviewPush` 送出每一筆審核前過 `fitPayload`：保留圖的意見每張最多 6 行、每行 300 字（算碼位，超過以「…」結尾），後面多的寫成一行「…另有 N 則，全文在 keyframes/manifest.json」（`keptRemarks`）；分鏡裡保留 shot 自己的 `judge.problems` 同樣處理。(3) 照伺服器的算法量（`payloadBytes`），還超過 240,000 bytes 就再縮：每張 2 行；還不夠就每張只留一行「意見因審核資料的大小上限略去，全文在 keyframes/manifest.json」，分鏡裡保留 shot 自己的 `judge.problems` 清空。每個 id 都還在，stdout 會寫縮到哪一步。(4) 縮完仍超過伺服器上限（一般 262,144；長篇動畫的劇本 1,048,576，判斷條件與伺服器相同）就不送，印出 `the storyboard review's payload is N bytes, over the 262144 the site takes…; nothing was sent` 並以 lint 碼結束（工人照「站台退件」處理、寫出原因），不等站台回 422（站台對過大的 payload 只回「payload：格式或內容不正確」，看不出大小）。沒有保留圖的審核內容不動，超過上限一樣不送；待修 shot 的 `judge.problems` 原樣送（退件後工人靠它修提示詞）。完整意見一直在 `keyframes/manifest.json` 的 `accepted_with_problems` | `review/sync.mjs`、`qa/cli.mjs` |
 
-### 10-07 後續：分鏡保留 shot 的意見只送一次
-
-上面 (2)(3) 說分鏡把保留 shot 的意見送兩份，最後一步每張還留一行「略去」：兩百個保留 shot、id 長、提示詞長的分鏡，什麼都不保留時送得上去，全部保留反而超過上限被擋（票 `2026-10-06-a-storyboard-with-many-kept-pictures`）。
-
-| 改了什麼 | 怎麼做 | 在哪裡 |
-| --- | --- | --- |
-| 意見只送一次 | 分鏡的保留意見只放在 `payload.accepted`（卡片先讀它），保留 shot 自己的 `judge.problems` 送空的、`overall` 留著；清單沒點名的保留 shot 才在自己身上帶意見（同樣切 6 行、2 行）。成片照舊 | `review/sync.mjs` `withKeptRemarks` |
-| 最後一步不比沒保留還大 | 縮到不留行時：清單整個拿掉（只剩重複的 id），只留下沒有保留 shot 對應的項目；保留 shot 只送站台要的：`accepted: true`、分數，不帶 `judge.problems`，也不帶 `needs_review`（保留的 shot 永遠是 false；伺服器 `storyboard_check_passed` 對 `accepted: true` 的 shot 本來就不看 judge）。summary 結尾加一次「保留鏡頭的 judge 意見因審核資料的大小上限略去，全文在 keyframes/manifest.json」（judge 對保留的圖真的有說話才加）。這樣一個保留 shot 比同一個 judge 通過的 shot 還小，保留圖不會讓一個本來送得上去的分鏡被擋 | `review/sync.mjs` `withKeptRemarks`、`fitPayload` |
-| 還在待修的 shot 不算保留 | 同時帶 `accepted: true` 與 `needs_review: true` 的 shot 照待修處理（卡片與伺服器也這樣讀），它的 `judge.problems` 原樣送，工人靠它修提示詞。`storyboardSubmission` 本來就不會同時送兩個 | `review/sync.mjs` |
-
 ## 沒做、留給後面
 
 - 圖庫照片（§圖庫照片 的「工具端」）：`lint` 不算說明欄的「圖片來源」位元組（`core/lint.mjs` 不讀 `assets[]`），稿子要自己留；`docs/videos/README.md` §說明欄 的四個部分還沒列第五個「圖片來源」。工人的撰稿提示詞還不會自己去搜照片，目前是代理或站主手動 `stock search`／`stock fetch` 再把路徑寫進 `screenshot` 景。

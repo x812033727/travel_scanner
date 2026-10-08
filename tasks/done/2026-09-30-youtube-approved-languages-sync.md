@@ -4,7 +4,7 @@ title: YouTube sync reads stale publish package after approved languages
 status: done
 priority: P1
 area: api
-owner: claude-opus-5-5-happy-carson
+owner: claude-happy-carson
 claimed_at: 2026-10-07T07:17:15Z
 created_at: 2026-09-30T10:35:02Z
 completed_at: 2026-10-07T09:22:19Z
@@ -137,9 +137,9 @@ existing refusal to update already public videos; manual backfill is a separate 
   `2026-09-30-clarify-first-upload-of-pending-dubbed`. Pending reviews are not
   silently treated as approved to work around that workflow boundary.
 - No merge, deployment, live retry, Google login, video upload or paid generation.
-- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-approved-languages-sync (since 2026-09-30T13:24:06Z) was stale and is released so it stops locking its scope. Landed: #1048 #1101. Still open: Sync includes current approved language metadata/captions end to end (needs the producer side); Apply source-bound producer contract and validate the real submission-to-upload path; Integrate producer contract in tools/video/review/sync.mjs and its test.
+- 2026-10-04 board sweep (claude-incomplete-tickets, approved by the owner): the claim by codex-approved-languages-sync (since 2026-09-30T13:24:06Z) was stale and is released so it stops locking its scope. Landed: #1048 #1101. Still open: Sync includes current approved language metadata/captions end to end (needs the producer side); Apply source-bound producer contract and validate the real submission-to-upload path; Integrate producer contract in tools/video/review/sync.mjs and its test.
 
-### 2026-10-07 producer contract (claude-opus-5-5-happy-carson, PR #1361)
+### 2026-10-07 producer contract (claude-happy-carson, PR #1361)
 
 - Scope widened after a collision check (no active task, open PR or `+` worktree on these paths;
   the old holder `2026-10-06-pictures-keep-best-after-prompt-fixes` is done). This also covers the

@@ -222,32 +222,6 @@ test("a production model or resolution mismatch stops before any paid clip submi
   }
 });
 
-test("a selected keyframe whose bytes changed since the storyboard was approved stops clips before the server is asked anything", async () => {
-  for (const [what, file] of [["start", "keyframes/farewell-1.png"], ["end", "keyframes/farewell-end.png"]]) {
-    for (const dryRun of [false, true]) {
-      const { box } = prepared();
-      await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
-      await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
-      const manifestBefore = readFileSync(path.join(box.workdir, "keyframes", "manifest.json"), "utf8");
-      // A later take written over the approved file's name: same manifest, different picture.
-      writeFileSync(path.join(box.workdir, file), PNG(`another take of ${file}`));
-      const site = mediaSite();
-      let requests = 0;
-      const counted = async (url, init) => {
-        requests += 1;
-        return site.fetchImpl(url, init);
-      };
-      const run = context(box, counted);
-      const label = `${what} frame${dryRun ? ", dry run" : ""}`;
-      assert.equal(await main(["clips", "--slug", box.slug, ...(dryRun ? ["--dry-run"] : [])], run.ctx), EXIT.owner, label);
-      assert.match(run.out.stderr, new RegExp(`farewell ${what} frame \\(${file}\\) is missing or not the picture the storyboard approved`), label);
-      assert.equal(requests, 0, `${label}: no status, upload or submission`);
-      assert.equal(readFileSync(path.join(box.workdir, "keyframes", "manifest.json"), "utf8"), manifestBefore, `${label}: the manifest is not rewritten to pass`);
-      assert.equal(existsSync(path.join(box.workdir, "clips", "manifest.json")), false, label);
-    }
-  }
-});
-
 test("named-look clip questions fit the judge limit for E1 Zhitang and maximum appearances", () => {
   const episode = JSON.parse(readFileSync(new URL("../../../docs/videos/series-plans/competition-20261002/episodes/episode-01-voice.video.json", import.meta.url), "utf8"));
   const zhitang = { ...episode.characters.find((character) => character.id === "zhitang"), shot_look: "zhitang--base" };
@@ -1158,4 +1132,83 @@ test("clips and music run by hand under the project's STOP file, or while anothe
   }
   assert.deepEqual([site.state.clips.length, site.state.music.length], [0, 0], "nothing was bought");
   assert.deepEqual(files(), before, "nothing was written");
+});
+
+test("a selected keyframe or end frame whose bytes changed under an unchanged, approved manifest stops clips, its dry run and clips import before the site is asked anything", async () => {
+  for (const [label, file, args] of [
+    ["start", "keyframes/sea-storm-1.png", ["--shot", "sea-storm"]],
+    ["end", "keyframes/farewell-end.png", ["--shot", "farewell"]],
+    // A dry run reads the month's seconds and prices the run: not for a picture nobody approved.
+    ["dry run start", "keyframes/sea-storm-1.png", ["--shot", "sea-storm", "--dry-run"]],
+    ["dry run end", "keyframes/farewell-end.png", ["--shot", "farewell", "--dry-run"]],
+    ["import", "keyframes/opening-1.png", null],
+  ]) {
+    const { box } = prepared();
+    await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+    await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+    const site = mediaSite();
+    let requests = 0;
+    const fetchImpl = async (url, init) => {
+      requests += 1;
+      return site.fetchImpl(url, init);
+    };
+    const manifest = readFileSync(path.join(box.workdir, "keyframes", "manifest.json"), "utf8");
+    // A later take drew over the selected file name; the manifest and its approval did not change.
+    writeFileSync(path.join(box.workdir, file), PNG(`redrawn ${label}`));
+    const command = args ? ["clips", "--slug", box.slug, ...args] : ["clips", "import", "--slug", box.slug, "--shot", "opening", "--file", outsideFile(box, "made.mp4", "made"), "--provider", "hailuo-web", "--plan", "pro", "--credits", "60", "--usd", "0.5"];
+    const run = context(box, fetchImpl, args ? {} : outsideQc());
+    assert.equal(await main(command, run.ctx), EXIT.usage, label);
+    assert.match(run.out.stderr, new RegExp(`selected picture has changed: ${file.replace(".", "\\.")}`), label);
+    assert.equal(requests, 0, `${label}: no status read, upload or submission`);
+    assert.deepEqual([site.state.clips.length, site.state.uploads.length], [0, 0]);
+    assert.equal(readFileSync(path.join(box.workdir, "keyframes", "manifest.json"), "utf8"), manifest, "the manifest is not rewritten to make it pass");
+    assert.equal(existsSync(path.join(box.workdir, "clips", "manifest.json")), false);
+    assert.deepEqual(readLedger(box.workdir).entries, [], "nothing held or booked");
+  }
+});
+
+test("a clip continuing from a still outside --shot is not sent with that still once its bytes changed", async () => {
+  const { box } = prepared((doc) => {
+    doc.scenes.find((scene) => scene.id === "sea-storm").data.visual = "still";
+  });
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const site = mediaSite();
+  const first = context(box, site.fetchImpl, { extractFrame: async () => {} });
+  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "sea-storm"], first.ctx), EXIT.ok, first.out.stderr);
+  // A later take draws over the still's selected file; the manifests and the approval are unchanged.
+  writeFileSync(path.join(box.workdir, "keyframes", "sea-storm-1.png"), PNG("redrawn sea-storm"));
+  const second = context(box, site.fetchImpl, { extractFrame: async () => {} });
+  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "bird"], second.ctx), EXIT.usage);
+  assert.match(second.out.stderr, /sea-storm \(the still bird continues from\) selected picture has changed: keyframes\/sea-storm-1\.png/);
+  assert.equal(site.state.clips.filter((request) => request.shot_id === "bird").length, 0, "no paid request carries the changed still");
+  assert.ok(!site.state.uploads.some((upload) => upload.sha256 === SHA(PNG("redrawn sea-storm"))), "and the changed bytes are not uploaded");
+});
+
+test("a clip continuing from a still outside --shot is not sent with a still the approved keyframes no longer select", async () => {
+  const { box, shots } = prepared((doc) => {
+    doc.scenes.find((scene) => scene.id === "sea-storm").data.visual = "still";
+  });
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const site = mediaSite();
+  const first = context(box, site.fetchImpl, { extractFrame: async () => {} });
+  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "sea-storm"], first.ctx), EXIT.ok, first.out.stderr);
+  // A later keyframes run selects another picture for the still and the owner approves it; the old file stays.
+  writeFileSync(path.join(box.workdir, "keyframes", "sea-storm-2.png"), PNG("second sea-storm"));
+  const keyframes = manifestOf(box, "keyframes");
+  keyframes.shots["sea-storm"] = { ...keyframes.shots["sea-storm"], file: "keyframes/sea-storm-2.png", sha256: SHA(PNG("second sea-storm")) };
+  writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify(keyframes));
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const second = context(box, site.fetchImpl, { extractFrame: async () => {} });
+  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "bird"], second.ctx), EXIT.usage);
+  assert.match(second.out.stderr, /sea-storm \(the still bird continues from\) is keyframes\/sea-storm-1\.png in clips\/manifest\.json, but the approved keyframes select keyframes\/sea-storm-2\.png; run clips --shot sea-storm first/);
+  assert.equal(site.state.clips.filter((request) => request.shot_id === "bird").length, 0, "no paid request carries the old still");
+  assert.ok(!site.state.uploads.some((upload) => upload.sha256 === shots["sea-storm"].sha256), "and the old still is not uploaded");
+  // The remedy the message names: the still's record follows the approved keyframe, and bird continues from it.
+  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "sea-storm"], context(box, site.fetchImpl).ctx), EXIT.ok);
+  const third = context(box, site.fetchImpl, { extractFrame: async () => {} });
+  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "bird"], third.ctx), EXIT.ok, third.out.stderr);
+  const bird = site.state.clips.find((request) => request.shot_id === "bird");
+  assert.deepEqual(bird.references.at(-1), { sha256: SHA(PNG("second sea-storm")), role: "previous_frame" });
 });

@@ -52,16 +52,19 @@ const LOST = [
   ['a verdict that breaks off', () => new Response('{"stance": 0.3, "passed": fal', { status: 200, headers: { 'content-type': 'application/json' } }), 200],
   ["an error without the API's code", () => json({ detail: 'Internal Server Error' }, 500), 500],
   ["a gateway's timeout page", () => new Response('<html>504 Gateway Time-out</html>', { status: 504, headers: { 'content-type': 'text/html' } }), 504],
-  // The judge route's answer for a request the API took and whose answer was lost (JUDGE_LOST).
-  ["the judge route's lost answer", () => json({ code: 'video_judge_answer_lost', detail: '請求已送到 API，回覆沒有在時限內回來' }, 504), 504],
+  // The judge route's answer for a request the API took and whose answer was lost.
+  ["the judge route's lost answer", () => json({ code: 'video_judge_answer_lost', detail: 'Jev 可能已經判斷' }, 504), 504],
+  // The API's own 502 for a Jev call whose outcome it cannot tell: a 502, but not a settled one.
   ["the API's uncertain Jev outcome", () => json({ code: 'video_judge_outcome_uncertain', detail: 'Jev 可能已處理這次請求' }, 502), 502],
-  // Only the route's 502 says the API was never reached; no judge route answers the code with another status.
-  ["an upstream_unavailable no judge route answers", () => json({ code: 'upstream_unavailable', detail: 'API 服務目前無法回應' }, 503), 503],
-  // The limiter answers its code with 503 only.
-  ["the limiter's code on a status it never answers", () => json({ code: 'rate_limit_unavailable', detail: '安全驗證服務暫時無法使用' }, 502), 502],
+  // Only the route's 502 says the API was never reached; no judge route answers this one.
+  ['an upstream_unavailable no judge route answers', () => json({ code: 'upstream_unavailable', detail: 'API 服務目前無法回應' }, 503), 503],
+  // The API's rate limiter answers its code only as a 503.
+  ['a rate_limit_unavailable at another status', () => json({ code: 'rate_limit_unavailable', detail: '安全驗證服務暫時無法使用' }, 500), 500],
+  // Jev's unset key answers its code only as a 503.
+  ['a provider_unavailable at another status', () => json({ code: 'provider_unavailable', detail: '?' }, 500), 500],
 ];
 
-test('a policy judgement sent and left without its answer is not asked again: a dropped connection, a broken body, a gateway, the judge route\'s lost answer', async () => {
+test('a policy judgement sent and left without its answer is not asked again: a dropped connection, a broken body, a gateway, a lost answer', async () => {
   for (const [what, answer, status] of LOST) {
     const { client, calls, sleeps } = recording(answer);
     await assert.rejects(client.judgePolicy(BODY), (error) => {
@@ -83,12 +86,12 @@ test('a policy judgement that never reached a server, or that the API settled, i
       throw failed(code);
     }]),
     ["the API's answer after Jev failed", () => json({ code: 'video_judge_upstream_failed', detail: 'Jev 暫時無法判斷' }, 502)],
-    // The judge route's 502 now means only an API it never reached (a lost answer is its 504).
-    ["the judge route's 502 for an API it never reached", () => json({ code: 'upstream_unavailable', detail: 'API 服務目前無法回應' }, 502)],
+    // Only an API the judge route never reached, since the route answers a lost one with its 504.
+    ["the judge route's 502", () => json({ code: 'upstream_unavailable', detail: 'API 服務目前無法回應' }, 502)],
     ["the judge's hourly limit", () => json({ code: 'rate_limit_exceeded', detail: 'slow down' }, 429)],
     ['the spent Jev budget', () => json({ code: 'jev_budget_exhausted', detail: '今天的 Jev 呼叫次數已用完' }, 429)],
-    // The API's limiter could not count the request (app/infra.py), before the route asked Jev.
-    ["the API's limiter away", () => json({ code: 'rate_limit_unavailable', detail: '安全驗證服務暫時無法使用' }, 503)],
+    // Redis could not count the call: the API refused it before Jev (2026-10-07-the-speech-and-shorts-clients-hold).
+    ["the API's rate limiter away", () => json({ code: 'rate_limit_unavailable', detail: '安全驗證服務暫時無法使用' }, 503)],
   ];
   for (const [what, answer] of settled) {
     const { client, calls, sleeps } = recording(answer);
@@ -108,6 +111,10 @@ test('a judge\'s refusal is thrown after one request, with its status and code',
     await assert.rejects(client.judgePolicy(BODY), (error) => error instanceof SiteError && error.status === status && error.code === code && error.message === detail);
     assert.equal(calls.length, 1, `${status}`);
   }
+  // Jev's key not set, raised before any Jev call: the owner's, never a lost verdict.
+  const { client, calls, sleeps } = recording(() => json({ code: 'provider_unavailable', detail: '尚未設定 Jev API 金鑰' }, 503));
+  await assert.rejects(client.judgePolicy(BODY), (error) => error instanceof SiteError && error.status === 503 && error.code === 'provider_unavailable' && error.who === 'owner' && error.message === '尚未設定 Jev API 金鑰');
+  assert.deepEqual([calls.length, sleeps.length], [1, 0]);
 });
 
 test('the other requests keep their retries: reads, reviews and uploads spend nothing', async () => {
@@ -163,4 +170,20 @@ test('the QA\'s policy item says the outcome is unknown, and the QA run asks Jev
   assert.equal(policy.ok, false);
   assert.match(policy.detail, /the outcome is unknown and it is not sent again/);
   assert.deepEqual(calls.map((call) => call.path), [POLICY]);
+});
+
+test('a request the site keeps refusing is told after its last attempt, with no wait after it', async () => {
+  for (const [what, answer] of [
+    ['a busy route', () => json({ code: 'rate_limit_exceeded', detail: 'slow down' }, 429)],
+    ['a site that is down', () => {
+      throw failed('ECONNREFUSED');
+    }],
+  ]) {
+    let calls = 0;
+    const sleeps = [];
+    const client = siteClient({ env, fetch: async () => { calls += 1; return answer(); }, sleep: async (ms) => sleeps.push(ms) });
+    await assert.rejects(client.judgePolicy(BODY), (error) => error instanceof SiteError && error.who === 'service', what);
+    assert.equal(calls, 4, what);
+    assert.equal(sleeps.length, 3, `${what}: a wait between two attempts, none after the last`);
+  }
 });

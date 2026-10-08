@@ -136,11 +136,12 @@ async def _synthesize_azure(
             settings.azure_speech_timeout_seconds,
         )
     except SpeechAnswerLost as error:
-        # As the speech route: Azure may have synthesized it, so the characters stay counted.
+        # As the speech route (admin_api.answer_lost): Azure may have synthesized, and billed,
+        # this phrase, so its characters stay counted and the tool does not send it again.
         raise AlignRefused(
             504,
             "video_speech_upstream_lost",
-            "Azure 可能已經處理這次請求並計費，但回覆沒有回來；請勿自動重送",
+            "Azure 可能已合成這段語音，但回答沒有送回來；字數已計入本月預算，請勿自動重送",
         ) from error
     except SpeechUpstreamError as error:
         # As the speech route: Azure bills only what it processed, so the reservation goes back.
@@ -184,7 +185,6 @@ async def _align_audio(audio: str, text: str, language: str) -> AlignOut:
 async def align_speech(payload: AlignIn, tool: VideoTool, session: Session) -> AlignOut:
     """When each written unit of one phrase is spoken, from the voice's own boundaries or the
     server's aligner; one paid synthesis at most, never a second one."""
-    # Says how long is left, so the tool stops at once instead of waiting out an hour in minutes.
     await enforce_named_rate_limit(
         "video_align",
         str(tool.id),

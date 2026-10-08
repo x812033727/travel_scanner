@@ -4,10 +4,10 @@ title: Surface durable writer polling failures in pending status
 status: done
 priority: P2
 area: tools
-owner: claude-opus-5-5-writer-pending
-claimed_at: 2026-10-07T06:32:04Z
+owner: claude-opus-5-5-pending-reason
+claimed_at: 2026-10-07T15:36:10Z
 created_at: 2026-10-05T13:02:39Z
-completed_at: 2026-10-07T06:36:41Z
+completed_at: 2026-10-07T23:18:04Z
 branch:
 depends_on: []
 scope:
@@ -64,44 +64,45 @@ and task consistency checks before a PR.
 - An independent in-memory reproduction confirmed the current flow discards
   RUN_PENDING's cause. Existing lost-POST/restart-GET/bounded-poll checks pass 3/3.
   No message fix, limit change, paid retry or deployment is included in this filing.
-
-### 2026-10-07 done (claude-opus-5-5-writer-pending)
-
-- `client.mjs`: the RUN_PENDING error now carries `polling` (why the last look at the server
-  failed: the lookup's 429 detail, a dropped connection, a body cut short) and `receipt_status`
-  (what the server last said, null when no job was confirmed). A successful read clears
-  `polling`: before, `lastProblem` was kept after a later read said "running", so the message
-  could name a 429 the server had since answered. The stale-journal lookup carries its cause the
-  same way. The message text is unchanged.
-- `flow.mjs` `pendingLine()`: "writer is still running" only when the server last said so;
-  "writer's saved run could not be looked up (<cause>); its receipt is checked again next round"
-  when the receipt read failed; "writer's request was not confirmed by the server (<cause>); it is
-  sent again under the same key next round, which the server takes as the same run" when no job
-  was confirmed. The request key, receipt, PENDING_RECHECK_MS wait, STOP, budget and lane
-  handling are untouched; only the line changes.
-- Tests: `automation.test.mjs` "a writer whose saved receipt cannot be read says why…" (the real
-  durable client over the durableJobs fake: running, then finished but every GET 429, then read:
-  the same job adopted, one POST; and a POST refused until the next round: one job under one
-  key). `client.test.mjs` "a pending writer says why its last look failed, only while it did"
-  (a 429 then a running read clears it; an unconfirmed POST has no receipt status). Each fails
-  with its piece removed. `node --test "tools/video/automation/*.test.mjs"` 446 pass.
-- Left as it is: the owner's retry (`retryRuns`) turns a failed lookup, a 429 included, into
-  RUN_UNCERTAIN "could not verify the saved run before owner retry", so a rate limit during the
-  owner's retry blocks the video again and the owner retries once more. That is the retry path's
-  own policy (it consumes the retry request on anything it cannot verify), not this ticket's.
-- From the independent review: the client test's "a 429 then a read that says running" case ran
-  on a 5 ms poll budget measured on the real clock, so a slow machine could end the poll before
-  the clearing read (3 failures in 40 runs, 4 at a time); it now uses a 3 s budget spent by 1 s
-  fake sleeps (exactly POST, 429, running) and asserts the two lookups: 40 of 40 under the same
-  load. The stale-journal path's `polling`/`receipt_status` had no test; the 408/429 stale-lookup
-  test now asserts both, and fails with that piece reverted.
-- The second reviewer found a real misreport: the receipt GET's timeout is the round's remaining
-  poll budget, so the round's own abort of its last read set `lastProblem` ("The operation was
-  aborted due to timeout") and a healthy running job was reported as a failed lookup (3 of about
-  24 rounds at the production defaults in their probe). The client now ends the round on its own
-  budget's TimeoutError once the server has confirmed the job, keeping the server's last word;
-  a test reads a job whose GET answers only when aborted (polling null, one read) and fails
-  without the change (24 of 24 under 6-way load with a 1.5 s budget). The "no answer yet" line no
-  longer promises the same key: a request whose inputs change before the next round is archived
-  as never dispatched and a new key is sent (reconcileStale), so it now says "its saved request is
-  sent again next round".
+- 2026-10-07 (claude-opus-5-5-pending-reason). The scope also takes `client.mjs` and
+  `client.test.mjs` (neither bound by the duration receipt nor held by another task): half of the
+  cause was there.
+  - `client.mjs` `durableRun` kept `lastProblem` after a later look-up read the receipt, so the
+    RUN_PENDING message could name a 429 though the job was last read as running. A receipt read
+    now clears it. The RUN_PENDING error carries the failed look-up's cause as `why` (from the poll
+    loop, and from `reconcileStale` when a stale run could not be looked up); a pending job the
+    server read as queued or running carries none. The request key, the receipt and every
+    retry, STOP, drop and budget path are unchanged: only the message's cause and the new field.
+  - `flow.mjs` `stepOnce`: with `why`, the line is "<stage> has not answered yet: the worker's last
+    request to the server for it failed (<why, at most 160 characters>); it is asked again next
+    round", instead of "<stage> is still running"; without it, the line is as before.
+  - Tests: `client.test.mjs` (every look-up rate-limited, a look-up rate-limited then read as
+    running, a stale run that could not be looked up); `automation.test.mjs`, the ticket's case
+    through the real durable client and Automation: running, then the job done and its look-ups
+    429 (the line says why), then a later round takes the same job's answer, with one POST and
+    the receipt settled. Mutations (the cause kept after a read, no `why` from the poll or the
+    stale look-up, flow ignoring it) each fail a test.
+- 2026-10-07, after the independent review (claude-opus-5-5-pending-reason).
+  - The poll's own budget deadline (`AbortSignal.timeout`) cutting a look-up short after the server
+    had answered one in the same call was counted as a failed request, so a job read as running
+    the moment before was reported with why "The operation was aborted due to timeout". Once a
+    look-up is answered in the call, that deadline ends the poll with the read standing (no why);
+    a poll the server never answered still says why.
+  - A lost connection's why was undici's bare "fetch failed"; `failedOn` takes the cause's message
+    (ECONNREFUSED ...), or its code when the cause is an AggregateError with no message.
+  - The line said "its saved receipt", but a submission that met a 429 before any receipt was
+    saved also carries a why: it now says "the worker's last request to the server for it". The
+    reason is cut by code points (an emoji is not split in half), at 160.
+  - Tests: `client.test.mjs` (the deadline after a read gives no why; a silent poll, a refused
+    connection, an AggregateError and a 429 on the submission each give one; a stale run still
+    running gives none) and `automation.test.mjs` (a 159-emoji reason is cut by code points).
+    Mutations (the deadline counted as a failure, only the bare message on a lost connection, an
+    empty cause message kept, no bound on the reason, the stale running case given a cause, a cut
+    by UTF-16 units) each fail a test.
+- 2026-10-07, closed after the independent duration re-bind `ad51abda` (PASS, DURATION_ONLY,
+  reviewer `claude-pr-review-pending-reason`). Its notes outside duration, none fixed here: the
+  ticket's automation test wraps `site.fetchImpl` in a function that adds nothing (removed with the
+  next change to automation.test.mjs, `2026-10-06-a-pending-discussion-job-and-the`); the cut at
+  160 code points can split a flag or a letter with a combining accent (a log line only); and the
+  `answered` break also ends the poll on a TimeoutError a custom fetch throws before the budget is
+  spent, which only lets the video wait a round, with no request sent again.

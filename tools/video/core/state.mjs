@@ -13,13 +13,14 @@ import { audioEvidenceProblems } from "./audio-evidence.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "./branding.mjs";
 import { hasAnimePolicy, runtimePolicyHash } from "./anime-policy.mjs";
 import { animeBodyDurationProblems, animeRuntimeProof } from "./duration.mjs";
-import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksCurrent, isCompilation, lintCompilation, PLACEHOLDER_TITLE } from "./compilation.mjs";
+import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksCurrent, episodeNumbers, isCompilation, lintCompilation, PLACEHOLDER_TITLE } from "./compilation.mjs";
 import { burnIn, drawnShotScenes, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, resolveMusic, resolveSfx, sfxHash, subtitlesHash } from "./drama.mjs";
 import { emptyLexicon } from "./lexicon.mjs";
 import { lintVideo, productionClipProblems } from "./lint.mjs";
 import { dubLocales, dubScript, speechCurrent, speechLexicon, translationHash } from "../dubs/plan.mjs";
 import { atomicWrite, contentPackFile, docDir, isInside, readJson, readText, stopRequested, videoFile } from "./paths.mjs";
-import { LOCALES, narrationLocale } from "./schema.mjs";
+import { LOCALES, narrationLocale, textHash } from "./schema.mjs";
+import { sourceHashes } from "./translations.mjs";
 import { speechHash, visualHash } from "./timeline.mjs";
 
 /**
@@ -223,7 +224,21 @@ export function loadProject({ slug, file, root }) {
 
 export function lintProject(project) {
   // A compilation narrates nothing: the brief, lexicon and shot rules do not apply to it.
-  if (isCompilation(project.doc)) return lintCompilation(project.doc, project);
+  if (isCompilation(project.doc)) {
+    const result = lintCompilation(project.doc, project);
+    // lintCompilation reads the title, description and tags through metadataStatus, which keys
+    // chapters by card scene; a chapter title the worker translated from an earlier plan is read
+    // here, by episode slug, as status reads it (compilationTranslationStale), so qa's captions
+    // item fails on it as on a stale title.
+    if (!result.errors.length) {
+      for (const [locale, translation] of Object.entries(project.translations ?? {})) {
+        const stale = compilationTranslationStale(translation, project.doc);
+        const chapters = stale === "legacy" ? [] : stale.filter((what) => what.startsWith("chapter "));
+        if (chapters.length) result.warnings.push({ path: `i18n/${locale}.json`, message: `translations older than the zh-TW text: ${chapters.join(", ")}` });
+      }
+    }
+    return result;
+  }
   return lintVideo(project.doc, project);
 }
 
@@ -556,9 +571,57 @@ export async function pipelineStatus({ slug, root, workdir }) {
 
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
 
-/** A compilation's locale translation is complete when the four YouTube fields are there. */
-export function translationComplete(translation) {
-  return isText(translation?.title) && isText(translation?.description) && Array.isArray(translation?.tags) && translation.tags.length > 0 && translation?.chapters !== null && typeof translation?.chapters === "object";
+/** A compilation's chapter titles as its translator is given them: each episode's slug to its title, else 「第 N 集」. */
+export function compilationChapters(doc) {
+  const numbers = episodeNumbers(doc.compilation);
+  return Object.fromEntries(doc.compilation.episodes.map((slug, index) => [slug, doc.compilation.titles?.[slug] ?? `第 ${numbers[index]} 集`]));
+}
+
+/**
+ * The hashes of the zh-TW text a compilation's translation is made from, as the translation
+ * records them (`source_hashes`): the title, the description and the tags as sourceHashes has
+ * them, so lint reads a stale one as it does an episode's, and each chapter title by episode slug.
+ */
+export function compilationSourceHashes(doc) {
+  const { title, description, tags } = sourceHashes(doc);
+  return { title, description, tags, chapters: Object.fromEntries(Object.entries(compilationChapters(doc)).map(([slug, text]) => [slug, textHash(text)])) };
+}
+
+/**
+ * What of a compilation's translation was made from other zh-TW text than the document's now:
+ * "title", "description", "tags" and "chapter <slug>", [] when none; or "legacy" when it records
+ * no hash of its title, description or tags (written before the hashes were kept, or merged since
+ * with captions alone, which leaves `{ chapters: {} }`), as metadataStatus reads it too. Chapter
+ * titles are compared only when they are recorded by episode slug, as translateMetadata records
+ * them: i18n-merge keys a compilation's chapters by card scene id
+ * (2026-10-07-a-compilation-s-language-batch-fights), and those are not a plan's.
+ */
+export function compilationTranslationStale(translation, doc) {
+  const recorded = translation?.source_hashes !== null && typeof translation?.source_hashes === "object" ? translation.source_hashes : {};
+  if ([recorded.title, recorded.description, recorded.tags].every((hash) => hash === undefined)) return "legacy";
+  const current = compilationSourceHashes(doc);
+  const stale = ["title", "description", "tags"].filter((field) => recorded[field] !== current[field]);
+  const chapters = recorded.chapters !== null && typeof recorded.chapters === "object" ? recorded.chapters : {};
+  if (Object.keys(chapters).some((key) => Object.hasOwn(current.chapters, key))) {
+    for (const slug of new Set([...Object.keys(current.chapters), ...Object.keys(chapters)])) {
+      if (chapters[slug] !== current.chapters[slug]) stale.push(`chapter ${slug}`);
+    }
+  }
+  return stale;
+}
+
+/**
+ * A compilation's locale translation is complete when the four YouTube fields are there and,
+ * given the document, it was made from the document's current text (compilationTranslationStale):
+ * one made from an earlier title, description, tags or chapter titles (the plan made again) is
+ * not. One that records no hashes counts as complete, as it always did; planMetadata stamps such a
+ * file with the plan it replaces, so a re-plan reaches it too.
+ */
+export function translationComplete(translation, doc = null) {
+  const filled = isText(translation?.title) && isText(translation?.description) && Array.isArray(translation?.tags) && translation.tags.length > 0 && translation?.chapters !== null && typeof translation?.chapters === "object";
+  if (!filled || !doc) return filled;
+  const stale = compilationTranslationStale(translation, doc);
+  return stale === "legacy" || stale.length === 0;
 }
 
 /**
@@ -579,7 +642,9 @@ function compilationDefinitions({ slug, workdir, doc, project, valid, lint, visu
   const brandBodyCurrent = !checks?.branding || (checks.branding.body_frames === body?.total_frames && checks.compilation_hash === body?.compilation_hash);
   const compiled = valid && compilationChecksCurrent(doc, checks, episodes) && brandCurrent && brandBodyCurrent;
   const locales = LOCALES.filter((locale) => locale !== narrationLocale(doc));
-  const untranslated = locales.filter((locale) => !translationComplete(project.translations[locale]));
+  const untranslated = locales.filter((locale) => !translationComplete(project.translations[locale], valid ? doc : null));
+  // Filled but made from earlier text: a step that was done has reopened, and the note says why.
+  const outdated = untranslated.filter((locale) => translationComplete(project.translations[locale]));
   return {
     "metadata planned": {
       done: planned && thumbSource,
@@ -598,7 +663,7 @@ function compilationDefinitions({ slug, workdir, doc, project, valid, lint, visu
     },
     "metadata translated": {
       done: valid && untranslated.length === 0,
-      note: untranslated.length && untranslated.length < locales.length ? `missing or incomplete: ${untranslated.join(", ")}` : undefined,
+      note: untranslated.length && (untranslated.length < locales.length || outdated.length) ? `missing, incomplete or made from earlier zh-TW text: ${untranslated.join(", ")}` : undefined,
       todo: `the translator agent writes docs/videos/${slug}/i18n/<locale>.json with title, description, tags and chapters for ${locales.join(", ")}`,
     },
   };

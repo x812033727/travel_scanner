@@ -4,11 +4,11 @@ title: A discussion whose writer answer was lost ends every round
 status: done
 priority: P2
 area: tools
-owner: claude-opus-5-5-happy-carson
-claimed_at: 2026-10-07T09:58:30Z
+owner: claude-opus-5-5-discuss-lost
+claimed_at: 2026-10-07T12:41:51Z
 created_at: 2026-10-06T15:36:43Z
-completed_at: 2026-10-07T11:07:48Z
-branch: claude/happy-carson-c1hy91
+completed_at: 2026-10-07T15:14:12Z
+branch:
 depends_on:
   - 2026-10-06-a-failing-video-is-deferred
 scope:
@@ -16,10 +16,6 @@ scope:
   - tools/video/automation/flow.mjs
   - tools/video/automation/series.test.mjs
   - tools/video/automation/discuss.test.mjs
-  - tools/video/automation/automation.test.mjs
-  - docs/videos/long-form/review.md
-  - docs/videos/long-form/review.json
-  - .agents/skills/youtube-video/references/series.md
 ---
 
 # A discussion whose writer answer was lost ends every round
@@ -86,68 +82,91 @@ node --test tools/video/automation/series.test.mjs tools/video/automation/discus
   the site for the next line at the start of every unit while it is there, and the other lanes
   leave that video to the first. If one is ever seen on the host, setting such a journal aside once
   its job is over belongs here.
-
-### 2026-10-07 done (claude-opus-5-5-happy-carson, PR #1361)
-
-- `flow.mjs`: `move()`'s catch is now `Automation.sortFailure(state, error, { sends })`, unchanged
-  for a unit (a pure extraction: the automation and series suites passed before the discussion
-  used it). `discuss.mjs` `answerHeld` sorts every failure of the discussion's request there but
-  an answer of nothing usable (still answered for the owner): a lost answer blocks the video as
-  `uncertain:writer` and ends the run once (`unanswered`), a gone job as `job_gone:writer` as
-  before, a refusal blocks it with the reason, a busy service defers it; the run's trouble, a
-  STOP or lease and a job still running are thrown as before.
-- Decided: only the line whose own request blocked the video holds (`blocked_line`, saved with
-  the block and cleared by the retry), as a gone writer job's always did; it is sent once after
-  the owner's retry. Holding every blocked video's line was tried and dropped: the site hands over
-  the oldest unanswered line of every series (`messages.py` `next_message`), so one video blocked
-  for days would hold every thread behind it. A video blocked for anything else now has the owner
-  told it is blocked and to send the line again after the retry (`blockedReply`), instead of the
-  untrue "這台工人沒有 … 的劇本"; the threads behind it move on.
-- Decided here, not filed: a line on a document (`answerDocument`, no video to block, no durable
-  job). A lost answer and a refusal are answered for the owner once (`lostReply`: it may have run
-  and been paid, send the line again to ask again; `refusedReply`); a busy service holds the line
-  for the rest of the run (`heldLines`) and it is asked next round; the run's trouble is thrown as
-  before. `Automation.threadScope` sorts it without an import cycle.
-- Tests (`series.test.mjs`): a durable discussion whose job turns `uncertain` (one round ends,
-  the video blocked, a round later nothing sent or answered, the retry archives the journal and
-  sends exactly one new request, its answer reaches the owner); a refused job (blocked with the
-  reason, nothing sent until the retry); a busy job (deferred, the lane goes on, the line waits,
-  sent once after the wait); the non-durable route losing the answer (one request over three
-  rounds); a video blocked for its own reasons (the owner told, no writer request, the next thread
-  comes up); and a document's lost, refused and busy planner request. Each new rule was removed in
-  turn and a test failed.
-- Not done: the stray journal of a discussion whose line was answered meanwhile (Notes, last
-  point) has not been seen on the host. Answering the owner is still outside the try:
-  a failed `messageAnswer` after a paid answer ends the run as before, and its answer stays
-  saved for the next unit (durable) or is lost (not durable).
-- Scope overlap: `2026-10-07-a-discussion-s-refused-script-revision` (the lexicon restore in
-  `answerHeld`) shares discuss.mjs and flow.mjs; it waits until this lands.
-
-### 2026-10-07 independent review (3 reviewers, each finding checked by a skeptic)
-
-- Blocking, fixed: a long anime's discussion whose act request failed after its plan was paid
-  for returned a line, so the unit settled the plan's saved run and the next attempt bought the
-  plan again (4 plans in 8 rounds while the act stayed busy). A failure line now takes the video
-  out of the unit's runs to settle (`answerHeld`, `runSlugs`); `discuss.test.mjs` pins it.
-- Should-fix, fixed: a discussion's wait never reached the limit or the card, because the video's
-  own trouble-free visit (`moved`) cleared `defer_count` between attempts; it now counts on its own
-  (`discussion_waits`, cleared by an answer and by the retry), backs off, reports from the second
-  wait and blocks as `deferred:writer` after DEFER_LIMIT. `blocked_line` is now saved with the
-  block itself (no window). A block's reason names the line and what the retry sends within the
-  card's 120 characters (`unanswered` and the refusal take `sends`).
-- Should-fix, fixed (documents): a settled refusal of the model service's own
-  (`video_ai_upstream_failed`, a vendor 400 such as a prompt too long or a revoked key) is answered
-  once like the site's 4xx; any other wait is counted per line in `_series/<slug>/threads.json` and
-  answered after DEFER_LIMIT rounds (`failingReply`), so no line holds the threads after it for
-  good; a lost answer is saved there before its reply goes up, so a reply the site did not take is
-  posted next round instead of the planner being asked, and paid, again.
-- Noted, not changed: on the durable route the API records every failure after dispatch as
-  uncertain (ai.py), so in production a busy vendor blocks the video as `uncertain:writer` (as its
-  own writer's would) and holds the line for the owner's retry; the busy-wait path covers failures
-  before dispatch and the non-durable route. The tests use what the API really records for each.
-  A gone writer job of the video's own also holds a line on its screenplay, as before this ticket.
-- Nits fixed: the replies speak to the owner and name the button 「重試這支影片」; `refusedReply`
-  no longer contradicts itself; the skill's 討論串 section describes all of it
-  (`.agents/skills/youtube-video/references/series.md`).
-- Rejected by the skeptics: an endless refuse-retry loop (the owner's retry is the only resend, and
-  dropping the video ends it) and a reply wrong after a blocked-from-done retry.
+- 2026-10-07 (claude-opus-5-5-discuss-lost), `flow.mjs` and `discuss.mjs`:
+  - `move()`'s sorting is now `Automation.requestFailed(state, error, { sends, request })`, which
+    `move()` and the discussion's catch both call: a policy hold parks the project, RUN_UNCERTAIN
+    goes to `unanswered` (`uncertain:writer`), RUN_PENDING and a "run" scope are thrown, a job
+    gone goes to `jobGone`, a "video" scope blocks with the reason, a "wait" scope defers.
+    `move()` behaves as before (PROJECT_HELD and OUTPUT_INVALID stay its own).
+  - `answerHeld`'s catch: OUTPUT_INVALID is told to the owner as before, PROJECT_HELD is thrown
+    for `step()` as before, everything else goes to `requestFailed`, named as "the writer request
+    for the owner's line on script:N" (and `error.unit` for the lost-answer reason). When that
+    blocks the video, auto.json keeps the line's id as `blocked_line`; the owner's retry deletes
+    it with the other block fields.
+  - Holding: a line on the screenplay of a blocked video waits for the retry when the block is
+    `job_gone:writer`, `uncertain:writer` or this line's own (`blocked_line`), since the retry
+    resends what blocked it. Decided: every other block is answered with `blockedReply` (the
+    video is stopped, its reason, and to ask again after dealing with it), not held, and no
+    longer with "no screenplay here". The site hands over one line at a time, so holding a line
+    behind a block the owner may never retry would hold every line behind it.
+  - A paid answer the site did not take: before this, a `messageAnswer` that failed after the
+    writer answered ended the round, and the next round asked the writer again (paid twice, and a
+    rewrite already saved was rewritten again). The answer, or the unusable or lost reply that
+    followed a paid call, is now kept in `discussion-answer.json` (the video's work directory, or
+    `_series/<slug>` for a document) before it is posted, and the next visit for that line posts
+    it with no model request (`postAnswer`, `takeUnposted`). A kept answer of another line is set
+    aside.
+  - `answerDocument` (the Notes' question, decided here): the planner is not durable, so a lost
+    answer was asked, and paid for, again every round. Now a lost answer (`lostReply`) and a
+    refusal (`refusedReply`) are told to the owner and the thread waits for them; a busy service
+    or a rate limit leaves the line for the rest of the run (`Automation.waitingLines`), which
+    goes on with the series work, and the next run asks again; everyone's trouble still ends the
+    run. discuss.mjs reads the scope through `Automation.errorScope`, since it cannot import
+    flow.mjs back.
+  - Not done: an orphaned discussion journal no line claims (the last Note) was not seen; it is
+    left as the Note says.
+- Tests:
+  - `series.test.mjs`, durable route: a lost answer blocks as `uncertain:writer` once, the next
+    round throws, sends and answers nothing, the retry archives the journal and sends the line
+    exactly once; a refusal blocks with the reason and holds the line until the retry; a busy
+    service defers the video, the round goes on, the line waits, and it is asked once more after
+    the wait; an answer the site did not take is posted on the next round with no second request.
+  - `discuss.test.mjs`: the planner's lost answer, refusal, busy service, everyone's trouble and
+    an unusable answer; a blocked video's line held for the three kinds and answered with the
+    block otherwise.
+- Review (2026-10-07, three lenses, each finding verified), all fixed in `discuss.mjs` (and one
+  line of `flow.mjs`):
+  - should-fix, a regression: on a long anime, a deferral or block after the paid
+    `anime-discuss-plan` let `step()` settle that answer, so the next visit paid for the plan
+    again. `lineFailed` takes the slug out of the step's settle set, as `fence()` does; the plan
+    is taken from its journal on the next visit.
+  - should-fix: a line's deferrals never reached `DEFER_LIMIT` or the card, because the video's own
+    clean visit before each new attempt ended the row (`moved`). The line keeps its own row
+    (`line_defers`, restored before each new failure, deleted with the block, on the owner's retry
+    and when the line is answered), so a request that never gets through is reported from the
+    second deferral and blocks the video as `deferred:writer` after the limit, with the line held.
+  - should-fix: the rewrite's lint repairs (`saveAndLint`) were outside the catch. A repair still
+    running after the client's wait (the usual case on the durable route) or failing lost the paid
+    reply, left the rewrite marked checked, and the line was asked, and paid for, again. Now the
+    script is marked unchecked and the reply kept before the repairs; a repair still running is the
+    video's own to take up, a failed one is sorted as the line's request, and the kept reply is
+    posted on the next unit. A STOP or lost lease restores the script and drops the kept reply,
+    as before.
+  - should-fix: a kept reply was posted only while the video was at rest, so a block in between
+    answered the line with "劇本先不動" though the rewrite was saved. A kept reply for the line is
+    now posted first, whatever the video is doing (posting asks no model and touches nothing of
+    the video).
+  - should-fix: posting a kept reply left the discussion's succeeded durable run untaken
+    (`discussionOpen` true, the secondary lanes skipping the video). Keeping a reply now binds the
+    finished runs to the kept file (`adoptRuns`), as a rewrite's are bound to video.json.
+  - should-fix (tests): the "goes on" check of the deferral now looks at `halted`; the planner's
+    kept answer, a kept reply of another line set aside, the kept lost and unusable replies, and
+    a video blocked as `uncertain:verifier` are tested; the durable fake's failures use what the
+    API sends (`video_ai_job_uncertain`, `video_ai_project_dropped`, a job failed before dispatch,
+    a 502 from the answer route). On the durable route a vendor busy after dispatch ends as
+    `uncertain:writer`, like the video's own writer; "busy" in the tests is a job the server failed
+    before it reached the model.
+  - Not defects: the Notes' "throws ... nothing" wording.
+- Mutations of each review fix (the answers settled on failure, no line row restored or saved, the
+  kept reply only when at rest, runs not bound to the kept reply, the reply not kept before the
+  repairs, the flags not cleared before them, repair errors rethrown) each fail a test.
+- Duration re-bind (2026-10-07, independent reviewer `claude-pr-review-discuss-lost`): PASS,
+  duration-only, committed as a14ccac0. A differential run of 3,000 random errors through both
+  revisions' `move()` was identical; a rewritten screenplay still goes through lint, the verifier,
+  the listener and the script gate (the change closes a baseline gap where a rewrite left on disk
+  by a failed repair kept `verified` true). It noted two things outside duration:
+  - A kept reply posted while the rewrite's repair is still open reads as if the change were done.
+    Filed as `2026-10-07-a-discussion-s-kept-reply-does-not`.
+  - A process that dies after the reply is kept and before `saveAndLint` writes video.json would
+    post a reply for a rewrite that was never saved, and leave the discussion's run unclaimed (the
+    last Note's case). The window is the few milliseconds between the two writes; left as is.

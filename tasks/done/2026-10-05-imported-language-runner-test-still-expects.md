@@ -4,7 +4,7 @@ title: Imported-language runner test still expects the native dub to have no spe
 status: done
 priority: P3
 area: tools
-owner: claude-opus-5-5-runner-test
+owner: claude-runner-test
 claimed_at: 2026-10-07T03:42:24Z
 created_at: 2026-10-05T23:50:56Z
 completed_at: 2026-10-07T03:52:37Z
@@ -63,7 +63,7 @@ so attach the output to the PR.
 
 ## Notes
 
-- Found by claude-opus-5-5-speech-journal-502 while verifying
+- Found by claude-speech-journal-502 while verifying
   2026-10-05-speech-journal-releases-never-reached-502. It was red the same way before that
   change. The baseline run of the three files above on unchanged a9e4c3851 code (Windows 11,
   Node with node_modules linked) passed 110 of 111, and this test was the only failure. It is
@@ -72,7 +72,7 @@ so attach the output to the PR.
   2026-09-29-resume-imported-long-video-languages (codex-video-stall-followthrough). Its branch
   was merged as PR #1210. Check it before claiming.
 
-## 2026-10-07 (claude-opus-5-5-runner-test)
+## 2026-10-07 (claude-runner-test)
 
 - On origin/main 666afb04 two tests were red, not one: "keep an unknown speech POST held across
   invocations" as well, both ending "Dub did not produce a checked track or an explicit skip

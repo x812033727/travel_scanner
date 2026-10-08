@@ -4,7 +4,7 @@ title: from-drama test's brightness filter breaks on a Windows temp path
 status: done
 priority: P3
 area: tools
-owner: claude-opus-5-5-from-drama
+owner: claude-from-drama
 claimed_at: 2026-10-07T03:34:22Z
 created_at: 2026-10-06T00:31:53Z
 completed_at: 2026-10-07T03:40:59Z
@@ -47,7 +47,7 @@ on Windows, then CI's tools job.
 
 ## Notes
 
-- Found by claude-opus-5-5-check-journal on 2026-10-06 while re-running the Shorts tests after
+- Found by claude-check-journal on 2026-10-06 while re-running the Shorts tests after
   rebasing onto cff4a6ac6. The test does not touch check-audio or the speech journal.
 - Two other `npm run test:tools` reds on the same Windows machine are also environment-only:
   - `tools/reference-analysis.test.mjs` "--compare matches the measured cuts…": this machine's
@@ -55,7 +55,7 @@ on Windows, then CI's tools job.
   - `tools/video/review/renewal-handoff.test.mjs` "same source path with a replacement
     directory is not renamed": a Windows EPERM on rename.
   Neither is in this ticket's scope.
-- 2026-10-07 (claude-opus-5-5-from-drama): took the second option. `brightness()` runs ffmpeg with
+- 2026-10-07 (claude-from-drama): took the second option. `brightness()` runs ffmpeg with
   `cwd` set to the stats file's directory and the filter graph names `path.basename(stats)` only,
   so no drive colon or backslash ever reaches the graph; the input goes in as `-i <absolute path>`,
   outside the graph. Same crop, same frames above the caption bar.

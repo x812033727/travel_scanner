@@ -29,22 +29,31 @@ export const CHANNEL_VOICE = Object.freeze({
 export const DEFAULT_SETTINGS = Object.freeze({ voice: CHANNEL_VOICE, seconds_min: PROFILE.minSeconds, seconds_max: PROFILE.maxSeconds, locales: [], made_for_kids: false });
 
 const OWNER_CODES = new Set(['video_tool_token_invalid']);
+// Jev's answer when its key or URL is not set (apps/api/app/ai/jev.py jev_client), raised before
+// any Jev call or quota: a setting for the owner, with nothing that may have run. Only with its
+// 503; the code with another status came from something else and stays uncertain.
+const JEV_NOT_SET = { status: 503, code: 'provider_unavailable' };
+const ownersAnswer = (status, code) => status === 401 || OWNER_CODES.has(code) || (status === JEV_NOT_SET.status && code === JEV_NOT_SET.code);
 // Jev's policy reading takes one call off the daily Jev budget before Jev is asked
 // (apps/api/app/video_automation/judge.py `_ask`), so it is `paid`, as in
 // tools/video/automation/client.mjs: once sent, it is asked again only after a 429, the API's own
 // 502 once its Jev call failed (no verdict was lost on the way back), or the judge route's 502
-// upstream_unavailable, which means only an API the route never reached (a request the API took and
-// whose answer was lost is its 504 video_judge_answer_lost, JUDGE_LOST in
-// apps/web/app/api/video/speech/forward.ts; production serves that since a9e4c3851). A dropped
-// connection, an unreadable answer or any other 5xx (a gateway's page, that 504, a 502 with another
-// code) leaves its outcome unknown: RUN_UNCERTAIN, the automation client's code, which the QA's
-// policy item reports instead of asking Jev again.
+// `upstream_unavailable`, which now means only an API the route never reached: a request the API
+// took and whose answer was lost is the route's 504 `video_judge_answer_lost` (JUDGE_LOST in
+// apps/web/app/api/video/speech/forward.ts). That 504, a dropped connection, an unreadable answer
+// and any other 5xx (a gateway's page, a 502 with another code such as the API's
+// `video_judge_outcome_uncertain`) leave its outcome unknown: RUN_UNCERTAIN, the automation
+// client's code, which the QA's policy item reports instead of asking Jev again. A host from before
+// that route change answers the 502 for both, so this client needs a host that serves it:
+// production does since a9e4c3851, deployed 2026-10-05.
 const SETTLED_JUDGE_CODES = new Set(['video_judge_upstream_failed']);
-const NEVER_REACHED = { status: 502, code: 'upstream_unavailable' };
-// The API's limiter refuses a request it cannot count with 503 rate_limit_unavailable
-// (apps/api/app/infra.py), before the judge route asks Jev: settled and retried, never uncertain.
-const LIMITER_AWAY = { status: 503, code: 'rate_limit_unavailable' };
-const settledJudge = (status, code) => SETTLED_JUDGE_CODES.has(code) || [NEVER_REACHED, LIMITER_AWAY].some((known) => status === known.status && code === known.code);
+// Answers that say nothing ran, each only with its own status (as tools/video/tts/client.mjs):
+// the route's 502 for an API it never reached (no judge route answers the code with another
+// status, so a 503 or 504 `upstream_unavailable` came from something else and stays uncertain),
+// and the API's 503 when Redis cannot count the call against its rate limit (app/infra.py
+// `enforce_named_rate_limit`, checked in `video_tool` and first in the judge handlers, before Jev).
+const NEVER_RAN = [{ status: 502, code: 'upstream_unavailable' }, { status: 503, code: 'rate_limit_unavailable' }];
+const settled = (status, code) => SETTLED_JUDGE_CODES.has(code) || NEVER_RAN.some((answer) => answer.status === status && answer.code === code);
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(['ECONNREFUSED', 'ENOTFOUND', 'EAI_AGAIN', 'EHOSTUNREACH', 'ENETUNREACH', 'UND_ERR_CONNECT_TIMEOUT']);
 const neverSent = (error) => NEVER_SENT.has(error?.cause?.code ?? error?.code);
@@ -74,6 +83,8 @@ export function siteClient({ env = process.env, home, fetch: fetchImpl = globalT
       } catch (error) {
         if (paid && !neverSent(error)) throw uncertain(route, error.cause?.message ?? error.message);
         last = new SiteError(`cannot reach ${site}: ${error.message}`, { code: 'network' });
+        // Nothing waits after the last attempt: the caller learns the outcome at once.
+        if (attempt === attempts - 1) break;
         await sleep(2 ** attempt * 1000);
         continue;
       }
@@ -86,12 +97,13 @@ export function siteClient({ env = process.env, home, fetch: fetchImpl = globalT
         }
       }
       const problem = await response.json().catch(() => ({}));
-      const who = response.status === 401 || OWNER_CODES.has(problem.code) ? 'owner' : 'service';
-      if (paid && response.status >= 500 && !settledJudge(response.status, problem.code)) {
+      const who = ownersAnswer(response.status, problem.code) ? 'owner' : 'service';
+      if (who === 'owner' && response.status >= 500) throw new SiteError(problem.detail || `HTTP ${response.status}`, { status: response.status, code: problem.code ?? '', who });
+      if (paid && response.status >= 500 && !settled(response.status, problem.code)) {
         throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ''}`, response.status);
       }
       last = new SiteError(problem.detail || `HTTP ${response.status}`, { status: response.status, code: problem.code ?? '', who });
-      if (!(response.status === 429 || response.status >= 500)) throw last;
+      if (!(response.status === 429 || response.status >= 500) || attempt === attempts - 1) throw last;
       await sleep(Math.min(Number(response.headers.get('retry-after')) || 2 ** attempt, 30) * 1000);
     }
     throw last;

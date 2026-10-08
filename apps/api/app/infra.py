@@ -2,7 +2,6 @@ import hashlib
 import hmac
 import ipaddress
 import logging
-import math
 from collections.abc import Mapping
 from datetime import UTC, datetime
 from functools import lru_cache
@@ -115,11 +114,11 @@ async def enforce_named_rate_limit(
     window_seconds: int,
     retry_after: bool = False,
 ) -> None:
-    """Refuse a caller over ``limit`` hits in the window, failing **closed** on Redis.
+    """Refuse a caller over ``limit`` in this window.
 
-    With ``retry_after`` the 429 carries ``Retry-After``: the seconds left in this caller's
-    fixed window (the key's TTL), or the whole window when that cannot be read. A client
-    that retries on its own then waits the window out instead of guessing.
+    ``retry_after`` puts the seconds until the window opens again in the refusal's
+    Retry-After, for a caller that waits instead of failing: the video tool, whose retries
+    would otherwise all land inside the window that refused them.
     """
     count = await _incr_window(namespace, identifier, window_seconds=window_seconds)
     if count is None:
@@ -127,28 +126,33 @@ async def enforce_named_rate_limit(
     if count > limit:
         headers = None
         if retry_after:
-            headers = {
-                "Retry-After": str(await _window_left(namespace, identifier, window_seconds))
-            }
+            seconds = await _window_seconds_left(namespace, identifier, window_seconds)
+            headers = {"Retry-After": str(seconds)}
         raise AppError(429, "rate_limit_exceeded", "請求過於頻繁，請稍後再試", headers=headers)
 
 
-async def _window_left(namespace: str, identifier: str, window_seconds: int) -> int:
-    """Whole seconds until this caller's window resets, rounded up: at least 1, at most the window.
+async def _window_seconds_left(namespace: str, identifier: str, window_seconds: int) -> int:
+    """Whole seconds until this window's count starts again, never fewer than one.
 
-    Read in milliseconds: Redis's ``TTL`` rounds to the nearest second, so a client that waits
-    exactly that long can arrive half a second early and be refused again, and under half a
-    second left it reads 0.
+    Read only on a refusal, so an allowed request still costs one round trip. The key's
+    expiry is the window's end: hits over the limit still count but never move it. It is
+    read in milliseconds and rounded up, so a caller that waits this long is never early.
+    A key already gone (-2) means the window closed since the count; a key without an
+    expiry (-1, which the script never leaves) or a read that fails answers the whole
+    window, which may be too long but is never too short. The count and this read are two
+    round trips, so a window another request opened in between is read as nearly whole:
+    again too long at worst, never too short.
     """
     try:
-        left_ms = int(await get_redis().pttl(_rate_key(namespace, identifier)))
+        remaining_ms = int(await get_redis().pttl(_rate_key(namespace, identifier)))
     except RedisError:
+        logger.warning("rate limit window %s has no readable expiry", namespace, exc_info=True)
         return window_seconds
-    if left_ms == -2:  # gone: the window has just reset
+    if remaining_ms == -2:
         return 1
-    if left_ms < 0:  # no expiry: it cannot say, and the whole window is always enough
+    if remaining_ms < 0:
         return window_seconds
-    return min(max(math.ceil(left_ms / 1000), 1), window_seconds)
+    return min(window_seconds, max(1, -(-remaining_ms // 1000)))
 
 
 async def over_named_rate_limit(

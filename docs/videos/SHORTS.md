@@ -172,7 +172,7 @@ PR #871（2026-09-28 合併）交付的是本機產線：`node tools/video/short
 
 **上傳包**（`publish` 審核）沿用既有規則，項目換成 Shorts 的四項 `SHORTS_PACKAGE_ITEMS`：`files`（mp4、字幕、封面、`metadata.json`）、`descriptions`、`captions`、`disclosure`。
 
-外部請求失敗（Jev、轉寫、抓網址）一律當作沒過，下一輪再試；不會因為判斷不了就核准。工人做的 Short 有一個例外：Jev 的立場檢查送出去、回答卻在途中遺失時，不再問，Short 卡住等站主重試（見下面實測線的製作步驟）；手動跑的 `shorts qa` 照舊把這一項記成沒過、寫明結果不明。
+外部請求失敗（Jev、轉寫、抓網址）一律當作沒過，下一輪再試；不會因為判斷不了就核准。工人做的 Short 有兩個例外，都是付費請求送出去、回答卻在途中遺失：旁白的合成、旁白檢查的轉寫或 Jev 聽寫判斷（`tts/client.mjs` 的 `SPEECH_UNCERTAIN`，語音日誌 `speech-journal` 記著那一筆）讓 Short 直接卡住，卡片寫出是哪個請求；站主查過供應商用量後，照工人紀錄（`lab.json` 的 `blocked`）裡的 `speech-journal forget` 清掉那一筆，再按重試（只清不重試，Short 停在「需要你」；只重試不清，同一筆又讓它卡住）；Jev 的立場檢查（`RUN_UNCERTAIN`）讓 Short 卡住、`lab.json` 記 `lost`，站主按重試才再送（見下面實測線的製作步驟）。手動跑的 `shorts qa` 照舊把立場這一項記成沒過、寫明結果不明。
 
 ## 排片與時段
 

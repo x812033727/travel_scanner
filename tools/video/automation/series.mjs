@@ -23,8 +23,9 @@ import { BEATS, GENRE_SPECS, HOOK_TYPES, LEAD_ARCS, MIN_SATISFACTION } from "./p
 import { startStory } from "./story.mjs";
 
 export const DOC_KINDS = ["setting", "outline", "chapter", "bible"];
-// The document jobs whose planner answer was lost (planDocument), under _series/<slug>/ beside the
-// threads' notes (discuss.mjs threads.json, which is rewritten whole and keeps nothing else).
+// The document jobs whose planner answer was lost (planDocument), under _series/<slug>/ beside a
+// discussion's kept reply (discuss.mjs discussion-answer.json, which is rewritten whole and keeps
+// nothing else).
 export const LOST_DOCS = "lost-docs.json";
 const BIBLE_LISTS = ["acts"];
 const ANSWER_ATTEMPTS = 2;

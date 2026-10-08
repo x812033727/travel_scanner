@@ -8,7 +8,7 @@ import { fixture, fixtureLexicon } from "../core/fixtures/load.mjs";
 import { validateBranding, presentationTimeline } from "../core/branding.mjs";
 import { buildCues, toSrt } from "../core/captions.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
-import { captionLocalesOf, localeTexts, metadataLocalesOf } from "../core/stages.mjs";
+import { captionLocalesOf, localeCues, localeTexts, metadataLocalesOf } from "../core/stages.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
 import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
@@ -233,6 +233,65 @@ test("renewed five-language output binds real metadata/manifest bytes and new fi
   assert.equal(sha(readFileSync(path.join(fixture.workdir, "review", "languages.json"))), result.content_sha256, "review-pull sees the exact approved manifest");
   const firstCaption = readFileSync(path.join(fixture.workdir, "upload", "captions", "en.srt"), "utf8");
   assert.match(firstCaption, /00:00:05,000/);
+});
+
+/**
+ * languageFixture with its first line measured (timing.chars) and long enough for two narration
+ * cues, a long breath after its first sentence, and the translated captions written as
+ * runCaptions writes them (localeCues): a translation's cue changes on the narration's.
+ */
+function measuredFixture(base) {
+  const sample = languageFixture(base), { project, workdir, body } = sample;
+  const [{ line: first }] = [...eachLine(project.doc)];
+  first.text = "第一個問題很簡單，我們先看第一個例子。GPT-6 每秒處理 300 GB 的資料，比去年快了三倍，這個數字到底代表什麼意思？";
+  for (const [locale, translation] of Object.entries(project.translations)) {
+    translation.lines[first.id] = { text: locale === "en" ? "The first question is simple. GPT-6 handles 300 GB a second, three times last year's speed; what does it mean?" : `${locale} ${first.text}`, source_hash: textHash(first.text) };
+  }
+  const units = (first.text.match(/[A-Za-z0-9][A-Za-z0-9.+#'_%-]*|\s|./gsu) ?? []).filter((unit) => !/^\s$/u.test(unit));
+  let clock = 37;
+  const chars = units.map((unit) => {
+    const start = clock;
+    clock += unit === "。" ? 1400 : 120;
+    return { text: unit, start_ms: start };
+  }).map((unit, index, all) => ({ ...unit, end_ms: all[index + 1]?.start_ms ?? unit.start_ms + 200 }));
+  // Ten seconds for the long line, the others after it: room for two readable cues either way.
+  const timeline = JSON.parse(readFileSync(path.join(workdir, "timeline.json")));
+  timeline.lines.forEach((line, index) => Object.assign(line, index ? { start_frame: line.start_frame + 150, end_frame: line.end_frame + 150 } : { end_frame: 300 }));
+  Object.assign(timeline.lines[0], { audio_samples: (clock + 150) * 48, timing: { source: "azure", model: "zh-TW-HsiaoChenNeural", chars } });
+  timeline.total_frames += 150;
+  timeline.speech_hash = speechHash(project.doc, project.lexicon);
+  const checks = JSON.parse(readFileSync(path.join(workdir, "checks.json")));
+  Object.assign(checks, { speech_hash: timeline.speech_hash, visual_hash: visualHash(project.doc) });
+  checks.branding.body_frames = timeline.total_frames;
+  json(path.join(workdir, "timeline.json"), timeline); json(path.join(workdir, "checks.json"), checks);
+  json(path.join(workdir, "captions", "manifest.json"), { speech_hash: timeline.speech_hash, branding_hash: checks.branding.hash });
+  const presented = presentationTimeline(timeline, checks.branding);
+  const metadataFile = path.join(workdir, "upload", "metadata.json"), metadata = JSON.parse(readFileSync(metadataFile));
+  json(metadataFile, { ...metadata, ...composeMetadata({ ...project, timeline: presented }).metadata, final_sha256: metadata.final_sha256, branding_hash: metadata.branding_hash, language_choice: metadata.language_choice, captions: metadata.captions });
+  sample.remote.reviews[0].content_sha256 = fileEntry(metadataFile, "metadata").sha256;
+  const { texts } = localeTexts(project.doc, project.translations);
+  for (const locale of ["zh-TW", "en", "ja", "ko", "zh-CN"]) {
+    const caption = path.join(workdir, "upload", "captions", `${locale}.srt`);
+    writeFileSync(caption, toSrt(localeCues(presented, texts, locale, "zh-TW").cues));
+    const at = body.files.findIndex((file) => file.role === `captions_${locale}`);
+    if (at >= 0) body.files[at] = fileEntry(caption, `captions_${locale}`);
+  }
+  return { ...sample, presented, texts };
+}
+
+test("a renewed final whose narration was measured binds the translated captions runCaptions wrote, their cue changes on the narration's", async (t) => {
+  const base = mkdtempSync(path.join(os.tmpdir(), "renewal-measured-")); t.after(() => rmSync(base, { recursive: true, force: true }));
+  const sample = measuredFixture(base);
+  const written = readFileSync(path.join(sample.workdir, "upload", "captions", "en.srt"), "utf8");
+  // The fixture exercises the inheritance: weighted shares would put the en cue change elsewhere.
+  assert.notEqual(written, toSrt(buildCues(sample.presented, sample.texts.en, "en").cues));
+  const result = await bindRenewalSubmission(sample);
+  const manifest = JSON.parse(sample.uploaded.get(result.content_sha256));
+  assert.equal(manifest.files.find((file) => file.role === "captions_en").sha256, sha(written));
+  // Bytes cut by weight, as renewal expected before, are now the stale ones.
+  const stale = measuredFixture(mkdtempSync(path.join(base, "stale-")));
+  writeFileSync(path.join(stale.workdir, "upload", "captions", "en.srt"), toSrt(buildCues(stale.presented, stale.texts.en, "en").cues));
+  await assert.rejects(bindRenewalSubmission(stale), /en caption bytes have stale offsets or text/);
 });
 
 for (const problem of ["old final", "old branding", "pending final", "changed choice", "old caption bytes", "pending publish", "old description bytes"]) {

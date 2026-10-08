@@ -5,10 +5,10 @@ status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-shorts-judge
-claimed_at: 2026-10-07T03:05:28Z
+claimed_at: 2026-10-07T06:33:40Z
 created_at: 2026-10-05T23:52:56Z
-completed_at: 2026-10-07T03:06:06Z
-branch: claude/happy-carson-c1hy91
+completed_at: 2026-10-07T06:41:27Z
+branch:
 depends_on: []
 scope:
   - tools/video/shorts/site.mjs
@@ -65,14 +65,24 @@ settled case fail there.
   (2026-10-05-jev-judge-endpoints-report-an-uncertain, Codex PR #1254, open on 2026-10-06). It must
   stay outside the settled set.
 - `tools/video/shorts/*` is not bound to `docs/videos/long-form/review.json`.
-- 2026-10-07 (claude-opus-5-5-shorts-judge): `site.mjs` settles the judge route's 502
-  `upstream_unavailable` through `settledJudge(status, code)`, only at status 502 (a 503 with that
-  code is not something a judge route answers, so it stays uncertain, as in
-  `tools/video/tts/client.mjs`); `video_judge_upstream_failed` stays settled at any status, as before.
-  Tests: the route's 502 moved to the asked-again list; the 504 `video_judge_answer_lost`, the 502
-  `video_judge_outcome_uncertain` and a 503 `upstream_unavailable` are in `LOST`. The new settled case
-  fails against the old `site.mjs` (checked).
-- The deployed-commit step was not re-checked on the host from this session (no host access); it
-  rests on the record that production serves a9e4c3851 since 2026-10-05 23:13Z
-  (`tools/video/automation/client.mjs`, and this ticket's Why).
-- Verified: `node --test tools/video/shorts/site.test.mjs tools/video/shorts/lab.test.mjs`.
+- 2026-10-07 (claude-opus-5-5-shorts-judge). `a9e4c3851` is on main
+  (`git merge-base --is-ancestor`), and this ticket and the automation client's comment record it
+  as deployed on 2026-10-05. The host itself was not read from this session (no host access): if
+  production is ever rolled back past it, this client resends a lost policy judgement once, as it
+  did before 2026-10-05.
+- `site.mjs`: `upstream_unavailable` joins `SETTLED_JUDGE_CODES`, and the comment says why, as
+  `automation/client.mjs` does. `site.test.mjs`: the route's 502 moves to the settled list; the
+  route's 504 `video_judge_answer_lost` and the API's 502 `video_judge_outcome_uncertain` join
+  `LOST`; the lost test's name drops "the judge route's 502". The settled case fails on the old
+  `site.mjs`.
+- Review (2026-10-07, an independent agent) found no blocking or should-fix defect.
+  - It traced every source of `upstream_unavailable` on `automation/judge/policy`: only the web
+    route's connect-time failures answer it (`neverConnected`), always as 502. Everything after
+    the request may have left is the 504.
+  - Its one nit is taken. The code is settled only with status 502 (`NEVER_REACHED`, as
+    `tts/client.mjs` does), so a 503 or 504 with it stays uncertain, as this ticket's definition
+    of done says. A 503 row in `LOST` pins it.
+  - The automation client has the same gap: filed as
+    `2026-10-07-automation-client-settles-a-judge-route`.
+  - Noted, not changed (both older than this ticket): the retries wait 1, 2 and 4 s, which may not
+    cover a whole API restart, and the loop sleeps once more after the last attempt.

@@ -56,4 +56,4 @@ and `cd apps/api && uv run pytest tests/test_video_youtube_language_contract.py`
 
 ## Notes
 
-- Found while binding normal batches to their source (claude-opus-5-5-happy-carson, PR #1361).
+- Found while binding normal batches to their source (claude-happy-carson, PR #1361).

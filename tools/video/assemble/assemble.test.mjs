@@ -6,7 +6,7 @@ import test from "node:test";
 
 import { EXIT } from "../cli.mjs";
 import { runtimePolicyHash } from "../core/anime-policy.mjs";
-import { lookHash } from "../core/drama.mjs";
+import { lookHash, picturesHash, shotScenes } from "../core/drama.mjs";
 import { writeAudioFixture, dramaFixture, fixture, fixtureLexicon, illustratedFixture, sandbox } from "../core/fixtures/load.mjs";
 import { UsageError } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
@@ -245,61 +245,6 @@ test("direct assembly refuses missing or changed audio evidence before any ffmpe
 
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
 
-test("direct assembly refuses a still whose keyframe bytes changed since its manifest, before ffmpeg or a cached segment", async (t) => {
-  for (const changed of [true, false]) {
-    const box = sandbox("fixture-drama", "drama");
-    t.after(() => rmSync(box.base, { recursive: true, force: true }));
-    const doc = dramaFixture();
-    doc.scenes.find((scene) => scene.id === "sea-storm").data.visual = "still";
-    doc.subtitles = { burn_in: false };
-    delete doc.music;
-    writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
-    const timeline = writeAudioFixture({ ...estimateTimeline(doc), speech_hash: speechHash(doc, fixtureLexicon()) }, box.workdir);
-    const visual = visualHash(doc);
-    for (const dir of ["frames", "clips", "keyframes", "segments"]) mkdirSync(path.join(box.workdir, dir), { recursive: true });
-    writeFileSync(path.join(box.workdir, "frames", "manifest.json"), JSON.stringify({ visual_hash: visual, ...manifestFor(timeline, 0) }));
-    const approved = Buffer.from("PNG approved sea-storm keyframe");
-    const still = { file: "keyframes/sea-storm-1.png", sha256: sha256(approved) };
-    writeFileSync(path.join(box.workdir, still.file), approved);
-    const shots = Object.fromEntries(timeline.scenes.filter((scene) => scene.id !== "wrap").map((scene) => {
-      if (scene.id === "sea-storm") return [scene.id, { still: true, ...still }];
-      const file = `clips/${scene.id}.mp4`;
-      writeFileSync(path.join(box.workdir, file), "clip");
-      return [scene.id, { file, sha256: "a".repeat(64) }];
-    }));
-    writeFileSync(path.join(box.workdir, "clips", "manifest.json"), JSON.stringify({ speech_hash: timeline.speech_hash, visual_hash: visual, look_hash: lookHash(doc), shots }));
-    writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: lookHash(doc), visual_hash: visual, shots: { "sea-storm": still } }));
-    // A segment encoded earlier under the same manifest: the cache an unchanged hash would reuse.
-    const cached = path.join(box.workdir, "segments", "sea-storm-cached.mp4");
-    writeFileSync(cached, "old segment");
-    if (changed) writeFileSync(path.join(box.workdir, still.file), "PNG a later take written over the same name");
-    const calls = [];
-    let stderr = "";
-    const ctx = { root: box.root, home: box.base, EXIT, env: { VIDEO_WORKDIR: box.work }, stdout: { write() {} }, stderr: { write(value) { stderr += value; } } };
-    const tools = { ffmpeg: "fixture-encoder", ffprobe: "fixture-probe", version: "synthetic test" };
-    const dependencies = {
-      locateFfmpeg: async () => tools,
-      async runTool(file, args) {
-        calls.push(file);
-        throw new Error("ffmpeg sentinel");
-      },
-    };
-    if (changed) {
-      assert.equal(await run("assemble", ["--slug", doc.slug], ctx, dependencies), EXIT.usage, stderr);
-      assert.match(stderr, /the keyframe of sea-storm \(keyframes\/sea-storm-1\.png\) is not the picture the manifest approved/);
-      assert.deepEqual(calls, [], "no ffprobe or ffmpeg");
-      assert.equal(readFileSync(cached, "utf8"), "old segment", "the cached segment is left as it was");
-      assert.equal(existsSync(path.join(box.workdir, "build")), false, "nothing is joined from the cache");
-      assert.deepEqual(JSON.parse(readFileSync(path.join(box.workdir, "clips", "manifest.json"), "utf8")).shots["sea-storm"], { still: true, ...still }, "the manifest is not rewritten to pass");
-    } else {
-      // The approved bytes pass the gate and go on to the tools as before.
-      await assert.rejects(run("assemble", ["--slug", doc.slug], ctx, dependencies), /ffmpeg sentinel/);
-      assert.ok(calls.length >= 1);
-      assert.doesNotMatch(stderr, /not the picture the manifest approved/);
-    }
-  }
-});
-
 test("assemble sfx-measure measures every sound of a set with ebur128 and ffprobe and writes a version 2 manifest", async (t) => {
   const box = sandbox("fixture-illustrated", "illustrated");
   t.after(() => rmSync(box.base, { recursive: true, force: true }));
@@ -518,4 +463,105 @@ test("the probe check wants exactly the timeline's frames and YouTube's recommen
   bad.streams[1].channels = 1;
   bad.streams[1].duration = "43.0";
   assert.equal(checkProbe(bad, { frames: 1247 }).length, 4);
+});
+
+test("assembly refuses a selected picture whose bytes changed under an unchanged manifest before ffmpeg is looked for, so no segment is encoded or reused", async (t) => {
+  const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
+  const sentinel = (box) => {
+    const seen = { ffmpeg: 0, stderr: "" };
+    seen.ctx = {
+      root: box.root, home: box.base, EXIT,
+      env: { VIDEO_WORKDIR: box.work, get FFMPEG_PATH() { seen.ffmpeg += 1; throw new Error("ffmpeg sentinel"); } },
+      stdout: { write(value) { seen.stderr += value; } }, stderr: { write(value) { seen.stderr += value; } },
+    };
+    return seen;
+  };
+  // Illustrated slides: every selected picture of the keyframes manifest.
+  {
+    const box = sandbox("fixture-illustrated", "illustrated");
+    t.after(() => rmSync(box.base, { recursive: true, force: true }));
+    const doc = illustratedFixture();
+    delete doc.sfx; // no sound set here: the pictures are what is tested
+    writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+    writeAudioFixture({ ...estimateTimeline(doc), speech_hash: speechHash(doc, fixtureLexicon()) }, box.workdir);
+    mkdirSync(path.join(box.workdir, "frames"), { recursive: true });
+    writeFileSync(path.join(box.workdir, "frames", "manifest.json"), JSON.stringify({ visual_hash: visualHash(doc) }));
+    mkdirSync(path.join(box.work, "_music"), { recursive: true });
+    writeFileSync(path.join(box.work, "_music", "bed.mp3"), "music bytes");
+    mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+    const shots = {};
+    for (const scene of shotScenes(doc)) {
+      const file = `keyframes/${scene.id}-1.png`;
+      writeFileSync(path.join(box.workdir, file), `picture ${scene.id}`);
+      shots[scene.id] = { file, sha256: sha(`picture ${scene.id}`), needs_review: false, judge: { passed: true } };
+    }
+    writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: lookHash(doc), pictures_hash: picturesHash(doc), shots }));
+    const control = sentinel(box);
+    let code = null;
+    try { code = await run("assemble", ["--slug", box.slug], control.ctx); } catch (error) { code = error.message; }
+    assert.equal(code, "ffmpeg sentinel", `the approved pictures reach ffmpeg: ${control.stderr}`);
+    const [first] = shotScenes(doc);
+    writeFileSync(path.join(box.workdir, shots[first.id].file), "a later take drawn over the same name");
+    const changed = sentinel(box);
+    assert.equal(await run("assemble", ["--slug", box.slug], changed.ctx), EXIT.usage);
+    assert.match(changed.stderr, new RegExp(`${first.id} selected picture has changed: keyframes/${first.id}-1\\.png`));
+    // Refused before ffmpeg is even looked for, so no segment is encoded or reused either.
+    assert.equal(changed.ffmpeg, 0, "neither ffmpeg discovery nor any encoding");
+  }
+  // A drama's still shot: the record layoutDrama uses (the keyframes manifest's, else the clips
+  // manifest's), checked byte for byte, and the two manifests must agree on it.
+  {
+    const box = sandbox("fixture-drama", "drama");
+    t.after(() => rmSync(box.base, { recursive: true, force: true }));
+    const doc = dramaFixture();
+    delete doc.music; // no music or burned-in subtitles here: the still is what is tested
+    delete doc.subtitles;
+    const [still, ...others] = doc.scenes.filter((scene) => scene.template === "shot");
+    still.data.visual = "still";
+    writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+    const speech = speechHash(doc, fixtureLexicon());
+    const visual = visualHash(doc);
+    writeAudioFixture({ ...estimateTimeline(doc), speech_hash: speech }, box.workdir);
+    mkdirSync(path.join(box.workdir, "frames"), { recursive: true });
+    writeFileSync(path.join(box.workdir, "frames", "manifest.json"), JSON.stringify({ visual_hash: visual }));
+    mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+    mkdirSync(path.join(box.workdir, "clips"), { recursive: true });
+    const picture = (name, bytes) => {
+      writeFileSync(path.join(box.workdir, "keyframes", name), bytes);
+      return { file: `keyframes/${name}`, sha256: sha(bytes) };
+    };
+    const approved = picture(`${still.id}-1.png`, "approved still");
+    const write = ({ keyframe = approved, clip = { still: true, ...approved } } = {}) => {
+      writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: lookHash(doc), visual_hash: visual, shots: { [still.id]: { ...keyframe, needs_review: false } } }));
+      writeFileSync(path.join(box.workdir, "clips", "manifest.json"), JSON.stringify({
+        speech_hash: speech, visual_hash: visual, look_hash: lookHash(doc),
+        shots: {
+          ...(clip ? { [still.id]: clip } : {}),
+          ...Object.fromEntries(others.map((scene) => [scene.id, { file: `clips/${scene.id}.mp4`, sha256: "a".repeat(64), qc: { ok: true, metrics: { duration: 8, width: 1920, height: 1080 } } }])),
+        },
+      }));
+    };
+    const attempt = async () => {
+      const seen = sentinel(box);
+      let code;
+      try { code = await run("assemble", ["--slug", box.slug], seen.ctx); } catch (error) { code = error.message; }
+      return { code, out: seen.stderr, ffmpeg: seen.ffmpeg };
+    };
+    write();
+    assert.equal((await attempt()).code, "ffmpeg sentinel", "the approved still reaches ffmpeg");
+    // The keyframes manifest selects another take than the clips manifest recorded.
+    write({ keyframe: picture(`${still.id}-2.png`, "a second take") });
+    let result = await attempt();
+    assert.deepEqual([result.code, result.ffmpeg], [EXIT.usage, 0]);
+    assert.match(result.out, new RegExp(`still shot ${still.id}: keyframes/manifest\\.json selects keyframes/${still.id}-2\\.png and clips/manifest\\.json keyframes/${still.id}-1\\.png`));
+    // A later take drew over the selected file, with or without a clips record for the still.
+    for (const clip of [{ still: true, ...approved }, null]) {
+      write({ clip });
+      writeFileSync(path.join(box.workdir, approved.file), "a later take drawn over the same name");
+      result = await attempt();
+      assert.deepEqual([result.code, result.ffmpeg], [EXIT.usage, 0], clip ? "with a clips record" : "with none");
+      assert.match(result.out, new RegExp(`still shot ${still.id} selected picture has changed: keyframes/${still.id}-1\\.png`));
+      writeFileSync(path.join(box.workdir, approved.file), "approved still");
+    }
+  }
 });
