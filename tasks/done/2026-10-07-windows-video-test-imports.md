@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-windows-video-test-imports
 title: Make video automation test imports finish on Windows
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: codex-windows-video-validation
 claimed_at: 2026-10-08T16:47:16Z
 created_at: 2026-10-07T05:37:50Z
-completed_at:
+completed_at: 2026-10-08T17:07:05Z
 branch: codex/windows-video-validation-20261009
 depends_on: []
 scope:
@@ -28,14 +28,14 @@ This prevents a complete local tools verdict during unrelated localization work.
 
 - [x] Identify the absolute-path ESM import and use portable file URLs.
 - [x] Ensure failing test children and mock servers terminate on every failure.
-- [ ] Run the affected test on Windows and the required Linux CI suite.
+- [x] Run the affected test on Windows and the required Linux CI suite.
 
 ## Steps
 
 - [x] Preserve the exact broad-run log and verify the stalled test child identity.
 - [x] Stop only the verified test child/runner after prolonged no-progress state.
 - [x] Reproduce the specific import and implement a narrow portable fix.
-- [ ] Check failure cleanup and complete both platform runs.
+- [x] Check failure cleanup and complete both platform runs.
 
 ## How to verify
 
@@ -64,3 +64,9 @@ Windows Node v24.19.0 verification:
 - Temporarily restoring the old import in the repaired fixture made the actual held-project test fail and finish in 550.9 ms with the original diagnostic, instead of hanging. The portable import was restored immediately.
 - The restored targeted run passed 6/6 in 1220.9 ms: startup import failure preserves its diagnostic; missing readiness and ignored release time out; both timeout cases verify that cleanup awaited child termination; the original cross-process lease behavior passes.
 - `git diff --check` passed. The complete automation file finished naturally with exit 0: 216 passed, none failed, skipped, or cancelled, in 188.4 seconds. Its log is `<home>/mokaair-work/windows-video-validation-20261009/automation-test.log`. Broader tools validation and Linux CI remain to be recorded by the coordinator.
+
+### Verified closeout
+
+PR #1391 at `e6bc40f5747f05fc87be4b9c48a60ded37c87c3a` passed Ubuntu `video-tests` and `web-checks`. With ffmpeg and Chromium installed, all 2,202 tool tests completed: 2,201 passed, zero failed/cancelled, and one existing environment skip; docs-video tests passed 199/199. The web-checks tools run also passed (2,178 passed, 13 environment skips). Both logs explicitly include all new lifecycle regressions and the original cross-process lease case. This is a Linux verdict, separate from the Windows 216/216 result above.
+
+A read-only Windows process check after the automation run found zero matching held-project test children. The log has no cleanup failure or cancelled test. The independent reviewer committed the one-file duration binding in `fb12da1e7`; all 473 plans and both receipt tests pass. Windows docs-video tests additionally pass 199/199. The remaining Windows tool files are running as a separate batch with a saved 137-file coverage manifest; their final result is recorded in the PR validation receipt when complete. Closing this implementation task does not authorize merge or deployment.

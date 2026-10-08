@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-windows-reference-comparison-ffmpeg
 title: Diagnose ffmpeg reference comparison failure on Windows
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: codex-windows-video-validation
 claimed_at: 2026-10-08T16:47:24Z
 created_at: 2026-10-07T05:37:51Z
-completed_at:
+completed_at: 2026-10-08T17:07:21Z
 branch: codex/windows-video-validation-20261009
 depends_on: []
 scope:
@@ -26,13 +26,13 @@ packets. It fails again in an isolated targeted run, outside localization change
 ## Definition of done
 
 - [x] Diagnose the actual filter/ffmpeg-version failure and fix a narrow cause.
-- [ ] Preserve meaningful real-media measurement coverage on Windows and Linux.
+- [x] Preserve meaningful real-media measurement coverage on Windows and Linux.
 
 ## Steps
 
 - [x] Reproduce the isolated comparison test and preserve exact stderr.
 - [x] Check ffmpeg version/filter graph and existing platform assumptions.
-- [ ] Fix and run reference-analysis tests plus applicable skill twin checks.
+- [x] Fix and run reference-analysis tests plus applicable skill twin checks.
 
 ## How to verify
 
@@ -67,3 +67,9 @@ The original `--compare` test and its strict-tolerance and empty-range compariso
 Private receipts: `ffmpeg-no-cuts-before.log` and `ffmpeg-reference-after.log` under the
 `windows-video-validation-20261009` work-artifact directory. Broader suite and Linux CI
 validation remain with the coordinating task; no global tool installation was changed.
+
+### Verified closeout
+
+PR #1391 at `e6bc40f5747f05fc87be4b9c48a60ded37c87c3a` passed Ubuntu `video-tests` and `web-checks`, including the reference-analysis file and skill checks. The complete tools run with ffmpeg and Chromium installed finished with 2,201 passed, zero failures/cancellations and one existing environment skip out of 2,202 tests; the guard rejects missing-ffmpeg or missing-Chromium skips. Docs-video tests passed 199/199 on both Windows and Linux. The Windows reference-analysis result above therefore has a separate Linux cross-check without weakening assertions or changing installed tools.
+
+An independent reviewer found no blocking issue in the filter change or regression coverage. Complete logs and the full Windows tools coverage manifest are retained under `<home>/mokaair-work/windows-video-validation-20261009`; the remaining Windows batch result is recorded in the PR validation receipt after completion. This closes the scoped implementation and cross-platform measurement repair, not merge or deployment.
