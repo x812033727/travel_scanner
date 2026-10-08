@@ -10,6 +10,9 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { atPhoneWidth, headlineSizeEstimate, headlineSplitWords, MIN_HEADLINE_PX_AT_PHONE, PHONE_WIDTH } from "../qa/thumbnail.mjs";
+import { headlineCount, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX } from "../templates/templates.mjs";
+
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "..");
 export const DEFAULT_PLAN = path.join(ROOT, "docs", "videos", "story-plans", "brand-stories-100");
 
@@ -33,7 +36,13 @@ export const PREFIXES = {
   T: { category: "asia-brand", region: "tw" },
   C: { category: "tech", region: null },
 };
-export const LIMITS = { title: 60, logline: 120, question: 120, takeaway: 120, subject: 40, pointMin: 60, pointMax: 400, headline: 12, appearance: 800, claim: 200, supports: 240, imageNotes: 400, notes: 800 };
+// `headline` is the channel's thumbnail limit (templates.mjs THUMB_HEADLINE_MAX), counted the way
+// the qa stage counts it (headlineCount: a CJK glyph one, a Latin word or a number one, at most
+// THUMB_HEADLINE_WORDS_MAX of those); a story over it is a warning (storyWarnings), since the
+// builder cuts the headline where a word ends (clipHeadline) and more than half of the hundred
+// were written under the twelve of before. `headlineDraft` is that twelve, still a problem: past
+// it no headline is left after the cut.
+export const LIMITS = { title: 60, logline: 120, question: 120, takeaway: 120, subject: 40, pointMin: 60, pointMax: 400, headline: THUMB_HEADLINE_MAX, headlineDraft: 12, appearance: 800, claim: 200, supports: 240, imageNotes: 400, notes: 800 };
 
 // The fields of a story file, in the order the files are written in.
 export const STORY_KEYS = ["id", "slug", "category", "region", "subject", "title", "logline", "question", "chapters", "takeaway", "must_verify", "sources", "names", "cast", "image_notes", "sensitivity", "related_guide", "thumbnail"];
@@ -201,8 +210,125 @@ export function storyProblems(story, fileId = story?.id) {
   if (!SENSITIVITY.includes(story.sensitivity)) problems.push(`sensitivity must be one of ${SENSITIVITY.join(", ")}`);
   if (story.related_guide !== null && !(typeof story.related_guide === "string" && GUIDE_SLUG.test(story.related_guide))) problems.push("related_guide must be a site article's slug, or null");
   if (!isObject(story.thumbnail) || !isText(story.thumbnail.headline) || !isText(story.thumbnail.idea)) problems.push("thumbnail needs a headline and an idea");
-  else if (length(story.thumbnail.headline) > LIMITS.headline) problems.push(`thumbnail.headline is ${length(story.thumbnail.headline)} characters, at most ${LIMITS.headline}`);
+  else if (headlineCount(story.thumbnail.headline).count > LIMITS.headlineDraft) problems.push(`thumbnail.headline counts ${headlineCount(story.thumbnail.headline).count} characters (a Latin word or a number counts one), at most ${LIMITS.headlineDraft}: nothing readable is left once it is cut to the channel's ${LIMITS.headline}`);
   return problems;
+}
+
+/**
+ * What a story's author should still change, though the file is sound: the thumbnail headline
+ * the channel's rule would cut. The builder (automation/story.mjs) cuts it where a word ends
+ * (clipHeadline), so the video never carries one the qa stage fails; the author's own six say
+ * it better. When nothing the builder cuts it to passes (a Latin word of eight or more letters
+ * is too wide for the column at any length), the warning says so instead of promising a cut:
+ * the qa stage fails the video until the author writes another.
+ */
+export function storyWarnings(story) {
+  const headline = story?.thumbnail?.headline;
+  if (!isText(headline)) return [];
+  const problem = headlineProblem(headline);
+  if (!problem) return [];
+  const cut = clipHeadline(headline);
+  const left = headlineProblem(cut);
+  const shown = `「${cut.replace(/\n/g, "\\n")}」`;
+  if (left) return [`${problem}; the builder cannot cut it to the rule (${shown} still ${left.replace(/^thumbnail\.headline /, "")}), so write the six yourself`];
+  return [`${problem}; the builder cuts it to ${shown}, so write the six yourself`];
+}
+
+/**
+ * Why a thumbnail headline fails the channel's rule, or null. The rule is the qa stage's
+ * (tools/video/qa/thumbnail.mjs thumbnailChecks, .agents/skills/youtube-video/references/visuals.md
+ * §縮圖), its four checks in its words: at most THUMB_HEADLINE_MAX characters where a CJK glyph
+ * counts one and a Latin word or a number counts one, at most THUMB_HEADLINE_WORDS_MAX of those,
+ * no line break inside a word (the writer's `\n` or the one the renderer's column makes), and
+ * still MIN_HEADLINE_PX_AT_PHONE tall at PHONE_WIDTH wide once the renderer has shrunk it to fit
+ * the column, which a Latin word of eight or more letters never is.
+ */
+export function headlineProblem(headline) {
+  const { count, words } = headlineCount(headline);
+  if (count > THUMB_HEADLINE_MAX) return `thumbnail.headline counts ${count} characters (a Latin word or a number counts one); at most ${THUMB_HEADLINE_MAX} read at a glance, so say one thing in six`;
+  if (words.length > THUMB_HEADLINE_WORDS_MAX) return `thumbnail.headline has ${words.length} Latin words or numbers (${words.join(", ")}); at most ${THUMB_HEADLINE_WORDS_MAX} fit the column`;
+  const split = headlineSplitWords(headline);
+  if (split.length) return `thumbnail.headline breaks inside the word ${split.map(({ word }) => `「${word}」`).join(", ")}; put \\n where a word ends`;
+  const px = atPhoneWidth(headlineSizeEstimate(headline));
+  if (px < MIN_HEADLINE_PX_AT_PHONE) return `thumbnail.headline shrinks to about ${px} px at ${PHONE_WIDTH} px wide; at least ${MIN_HEADLINE_PX_AT_PHONE} px reads on a phone, so shorten it`;
+  return null;
+}
+
+const SEGMENTER = new Intl.Segmenter("zh", { granularity: "word" });
+// Function words a cut headline must not end on: they bind to the word the cut took away.
+const DANGLING = new Set([..."的了沒不也就才還很都把被讓和與跟第在從到比而或及之其"]);
+const TRAILING = /[\s\p{P}\p{S}]+$/u;
+const LEADING = /^[\s\p{P}\p{S}]+/u;
+const PUNCTUATION = /^[\s\p{P}\p{S}]+$/u;
+const LATIN = /[A-Za-z0-9]/;
+const MIN_CUT = 3;
+const overRule = ({ count, words }) => count > THUMB_HEADLINE_MAX || words.length > THUMB_HEADLINE_WORDS_MAX;
+// The text on one line, a break read as the qa stage reads it: a space between two Latin runs, nothing between CJK glyphs.
+const unbroken = (text) => text.replace(/(.?)\n(.?)/gsu, (_, before, after) => `${before}${LATIN.test(before) && LATIN.test(after) ? " " : ""}${after}`);
+
+/**
+ * The text on the one or two lines the column keeps whole (visuals.md §縮圖): a break the writer
+ * put inside a word is taken out, and when the column would break a word of a one-line text, a
+ * `\n` is put where that word starts. A second break is never added, so a text whose second
+ * line the column still breaks comes back failing; clipHeadline shortens it instead.
+ */
+function lined(text) {
+  let cut = text;
+  let [split] = headlineSplitWords(cut);
+  if (split?.chosen) {
+    cut = unbroken(cut);
+    [split] = headlineSplitWords(cut);
+  }
+  if (split && !split.chosen && !cut.includes("\n")) {
+    const at = cut.indexOf(split.word);
+    if (at > 0) cut = `${cut.slice(0, at).replace(TRAILING, "")}\n${cut.slice(at)}`;
+  }
+  return cut;
+}
+
+/**
+ * The headline cut to the channel's rule where a word ends (Intl.Segmenter, zh), never through
+ * one: 「名字沒註冊的辣椒醬」 is 「名字沒註冊」, not 「名字沒註冊的辣」. A function word the cut
+ * would end on (DANGLING: a lone 第 of 第一部, a trailing 的 or 沒) is dropped while MIN_CUT
+ * characters remain.
+ * A headline that already fits comes back as written, stress marks and line breaks included; a
+ * cut one keeps a line break that falls between words and loses the stress. When the renderer's
+ * column would break the result inside a word, a `\n` is put where that word starts (lined), and
+ * the result is read as the qa stage reads it (headlineProblem): while it still fails (the second
+ * line too long for the column, 「Nike\n曾是代理商」), the last word goes and the rest is lined
+ * again, down to MIN_CUT characters, so what the builder writes into video.json is what the qa
+ * stage passes. What nothing shorter mends (a Latin word of eight or more letters is too wide
+ * at any length) comes back as the longest cut, and storyWarnings says so. A first word longer
+ * than the rule is cut through, as nothing shorter is left.
+ */
+export function clipHeadline(headline) {
+  const own = String(headline ?? "").trim();
+  if (!own || !headlineProblem(own)) return own;
+  const plain = own.replace(/\*\*/g, "");
+  const segments = [...SEGMENTER.segment(plain)].map(({ segment }) => segment);
+  let kept = [];
+  for (const segment of segments) {
+    if (overRule(headlineCount([...kept, segment].join("")))) break;
+    kept.push(segment);
+  }
+  let shortened = kept.length < segments.length;
+  if (!kept.join("").replace(TRAILING, "").replace(LEADING, "")) {
+    kept = [[...plain.replace(LEADING, "")].slice(0, THUMB_HEADLINE_MAX).join("")];
+    shortened = true;
+  }
+  let longest = null;
+  for (;;) {
+    // A cut's end is tidied: the punctuation and the function word the cut left dangling go. A
+    // headline that lost nothing keeps its end (「廉航怎麼賺？」 keeps the question mark).
+    while (shortened && kept.length > 1 && (PUNCTUATION.test(kept.at(-1)) || (DANGLING.has(kept.at(-1)) && headlineCount(kept.slice(0, -1).join("")).count >= MIN_CUT))) kept.pop();
+    const cut = lined(shortened ? kept.join("").replace(TRAILING, "").replace(LEADING, "") : plain);
+    if (!headlineProblem(cut)) return cut;
+    longest ??= cut;
+    const shorter = kept.slice(0, -1);
+    if (!shorter.length || headlineCount(shorter.join("")).count < MIN_CUT) return longest;
+    kept = shorter;
+    shortened = true;
+  }
 }
 
 /** The story with its fields in STORY_KEYS order, as the files are kept. */

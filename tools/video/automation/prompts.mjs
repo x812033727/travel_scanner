@@ -581,7 +581,10 @@ video.json for a drama (the payload's "drama_example" shows the shape; copy it, 
 - Chapters: at least 3 ("chapter" on the first shot of each act), each ≥ 10 s, named as a viewer
   would search. Every Latin-letter word in the narration is in "lexicon" or lexicon_additions.
 - "music": {prompt (English: instruments, mood, tempo, "no vocals")} when "drama_settings.music_enabled";
-  "subtitles": {burn_in: false}; "thumbnail": {template: "thumb", data: {headline ≤ 12 chars, tag?, shot: <the most striking shot id>}}.
+  "subtitles": {burn_in: false}; "thumbnail": {template: "thumb", data: {headline: at most 6
+  characters in all (a Latin word or a number counts one, at most two of those), in 1 or 2 lines
+  (\\n between them, broken where a word ends, never inside a word), not the title's first 10
+  characters said again, tag?, shot: <the most striking shot id>}}.
 - youtube.title ≤ 100 characters, no angle brackets; description is the body only; tags ≤ 500
   characters in total; video_id null; sources list the passage or pages the story rests on.
 `.trim();
@@ -1282,10 +1285,13 @@ the villain still dreaming; "titles": [two alternatives]; "description": zh-TW, 
 then the stakes without revealing a mystery's answer, the mid-series flip or the ending;
 "chapters": {<episode slug>: non-spoiling title} when required above;
 "tags": ≤ 500 characters in total, including 漫劇,
-AI漫劇, 一口氣看完 and the genre's; "thumbnail": {"headline": ≤ 12 characters of the biggest
-promise, "tag": ≤ 6 characters or null, "episode": the chosen candidate's "episode" value (its
-slug, copied as written), "shot": its "shot"}: the candidates come best-judged first, each
-showing a character; pick the one whose picture best carries the headline's promise}.`,
+AI漫劇, 一口氣看完 and the genre's; "thumbnail": {"headline": the biggest promise in at most 6
+characters in all (a Latin word or a number counts one, at most two of those), in 1 or 2 lines
+(\\n between them, broken where a word ends, never inside a word; the series' name is the
+promise a compilation makes, so it may open the title), "tag": ≤ 6 characters or null,
+"episode": the chosen candidate's "episode" value (its slug, copied as written), "shot": its
+"shot"}: the candidates come best-judged first, each showing a character; pick the one whose
+picture best carries the headline's promise}.`,
 
   "verifier:compilation": `${SERIES_COMMON}
 

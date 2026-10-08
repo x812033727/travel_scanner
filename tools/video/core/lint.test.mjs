@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { dramaBrief, dramaFixture, explainerBrief, explainerFixture, fixture, fixtureBrief, fixtureLexicon, storyBrief, storyFixture, storySeries } from "./fixtures/load.mjs";
-import { announcesList, billableEstimate, briefSections, checkBrief, episodeScriptProblems, HEDGE_AFTER_UNWRITTEN, HEDGE_FAMILY, lintVideo, OPENING_SECONDS, OUTRO_SENTENCES, productionShotProblems, stancePoints, stanceProblems, templateSimilarity } from "./lint.mjs";
+import { dramaBrief, dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, fixtureBrief, fixtureLexicon, storyBrief, storyFixture, storySeries } from "./fixtures/load.mjs";
+import { announcesList, billableEstimate, briefSections, checkBrief, episodeScriptProblems, HEDGE_AFTER_UNWRITTEN, HEDGE_FAMILY, lintVideo, OPENING_SECONDS, OUTRO_SENTENCES, productionShotProblems, stancePoints, stanceProblems, templateSimilarity, thumbnailHeadlineProblems } from "./lint.mjs";
 import { captionsItem } from "../qa/checks.mjs";
 import { estimateTimeline, FPS } from "./timeline.mjs";
 import { eachLine, MIN_EPISODE_MINUTES, minEpisodeMinutes, textHash } from "./schema.mjs";
@@ -729,6 +729,45 @@ test("the shipped openings' tables of contents warn and the shipped hooks do not
   assert.equal(announcesList("答案散在其他官方頁面，這支影片幫你找齊。那它到底是什麼？"), false);
   assert.equal(announcesList("這支告訴你它貴在哪。"), false);
   assert.equal(announcesList("這集攤開 OpenAI 的原話、各家一秒的價錢，和付錢前要查的兩個頁面。"), true);
+});
+
+test("the thumbnail headline is read as the qa stage will read it, as warnings under thumbnail: six characters, two Latin words, no break inside a word, not the title again; a series' own thumbnail, a compilation's title and another narration language are left alone", () => {
+  for (const example of [fixture(), dramaFixture(), storyFixture(), explainerFixture(), enFixture()]) assert.deepEqual(thumbnailHeadlineProblems(example), [], "the examples keep the rule");
+  const doc = dramaFixture();
+  doc.thumbnail.data.headline = "精衛為什麼填海";
+  const problems = thumbnailHeadlineProblems(doc);
+  assert.deepEqual(problems.map((problem) => problem.path), ["thumbnail", "thumbnail", "thumbnail"]);
+  assert.match(problems[0].message, /^the headline counts 7 characters \(a Latin word or a number counts one\); at most 6 read at a glance, so say one thing in six \(qa fails it\)$/);
+  assert.match(problems[1].message, /^a line break falls inside the word 「為什麼」; put \\n where a word ends \(qa fails it\)$/);
+  assert.match(problems[2].message, /^the headline repeats the title: 「精衛為什麼」 is in the title's first 10 characters; say what the title does not$/);
+  const linted = lintVideo(doc, context({ brief: dramaBrief() }));
+  assert.deepEqual(linted.errors, [], "a warning for the writer, never a block");
+  assert.deepEqual(linted.warnings.filter((warning) => warning.path === "thumbnail").map((warning) => warning.message), problems.map((problem) => problem.message));
+  doc.thumbnail.data.headline = "Gemini 3 Pro 來了";
+  assert.match(thumbnailHeadlineProblems(doc)[0].message, /^the headline has 3 Latin words or numbers \(Gemini, 3, Pro\); at most 2 fit the column \(qa fails it\)$/);
+  for (const headline of ["Anthropic", "Perplexity 來了", "Microsoft\n買了"]) {
+    doc.thumbnail.data.headline = headline;
+    assert.deepEqual(thumbnailHeadlineProblems(doc).map((problem) => problem.message), ["the headline shrinks to about 21 px at 320 px wide; at least 24 px reads on a phone, so shorten it (qa fails it)"], `「${headline}」: a Latin word of eight or more letters is wider than the column at the renderer's floor, the qa stage's fourth rule`);
+  }
+  doc.thumbnail.data.headline = "ChatGPT 有 Claude";
+  assert.deepEqual(thumbnailHeadlineProblems(doc), [], "two short Latin words and a glyph fit");
+  doc.thumbnail.data.headline = "填不完的海";
+  doc.thumbnail.variants = [{ data: { headline: "精衛為什麼填海" } }, { data: { tag: "山海經" } }];
+  assert.deepEqual(thumbnailHeadlineProblems(doc).map((problem) => problem.path), ["thumbnail.variants (b)", "thumbnail.variants (b)", "thumbnail.variants (b)"], "the B and C variants are read on their own headline; C has A's");
+  delete doc.thumbnail.variants;
+  const compilation = { ...doc, compilation: { series: "jingwei", episodes: ["e1"] }, youtube: { ...doc.youtube, title: "精衛填海 全集：第一部完整版" }, thumbnail: { template: "thumb", data: { headline: "精衛填海\n全集" } } };
+  assert.deepEqual(thumbnailHeadlineProblems(compilation), [], "a compilation's headline is its series' name, which opens the title by design");
+  compilation.thumbnail.data.headline = "精衛填海全集第一部";
+  const held = thumbnailHeadlineProblems(compilation).map((problem) => problem.message);
+  assert.match(held[0], /^the headline counts 9 characters/, "the length still holds a compilation");
+  assert.ok(held.every((message) => !/repeats the title/.test(message)));
+  const explainer = explainerFixture();
+  explainer.thumbnail.data.headline = "一二三四五六七八九";
+  assert.deepEqual(thumbnailHeadlineProblems(explainer), [], "a series' own thumbnail has its own length, checked where it is drawn");
+  const english = enFixture();
+  english.thumbnail.data.headline = "Not the top one, and not the cheapest either";
+  assert.deepEqual(thumbnailHeadlineProblems(english), [], "the rules are written for a zh-TW headline");
+  assert.deepEqual(thumbnailHeadlineProblems({ ...doc, thumbnail: undefined }), []);
 });
 
 test("the translated titles' channel warnings sit under youtube/<locale>, which the QA captions item does not read", () => {

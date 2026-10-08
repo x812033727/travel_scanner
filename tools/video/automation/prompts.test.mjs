@@ -224,6 +224,16 @@ test("the setting planner is told how to write a character's looks, and its refe
   assert.match(reference, /second character id/);
 });
 
+test("the drama writer and the compilation planner ask for the channel's thumbnail headline, in the words of visuals.md §縮圖: six characters, a Latin word or a number one, two of those, a break only where a word ends", () => {
+  const writer = DRAMA_INSTRUCTIONS.writer;
+  assert.match(writer, /"thumbnail": \{template: "thumb", data: \{headline: at most 6\s+characters in all \(a Latin word or a number counts one, at most two of those\), in 1 or 2 lines\s+\(\\n between them, broken where a word ends, never inside a word\), not the title's first 10\s+characters said again, tag\?, shot: <the most striking shot id>\}\}\./);
+  assert.doesNotMatch(writer, /headline ≤ 12 chars/);
+  const planner = instructionsFor("planner", "drama", "", "compilation");
+  // A compilation's headline is its series' name by design (qa/cli.mjs thumbnailItem), so the title rule is not asked of it.
+  assert.match(planner, /"thumbnail": \{"headline": the biggest promise in at most 6\s+characters in all \(a Latin word or a number counts one, at most two of those\), in 1 or 2 lines\s+\(\\n between them, broken where a word ends, never inside a word; the series' name is the\s+promise a compilation makes, so it may open the title\), "tag": ≤ 6 characters or null,/);
+  assert.doesNotMatch(planner, /≤ 12 characters/);
+});
+
 test("the worker's drama writer carries the craft rules the skill's writer prompt carries, word for word where the numbers are", () => {
   const skill = readFileSync(new URL("../../../.agents/skills/youtube-video/references/prompts/writer-drama.md", import.meta.url), "utf8");
   const writer = DRAMA_INSTRUCTIONS.writer;

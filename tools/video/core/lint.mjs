@@ -12,9 +12,12 @@ import { DEFAULT_TARGET_MINUTES, LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes
 import { isStory, storyProblems } from "./story.mjs";
 import { DEFAULT_CPM, FPS, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
-import { TEMPLATE_SPECS } from "../templates/templates.mjs";
+import { headlineCount, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX, thumbnailVariants } from "../templates/templates.mjs";
 import { isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
+import { atPhoneWidth, CHANNEL_RULES_LOCALE, headlineSizeEstimate, headlineSplitWords, MIN_HEADLINE_PX_AT_PHONE, PHONE_WIDTH, TITLE_HEAD_CHARS, TITLE_OVERLAP_MAX, titleOverlap } from "../qa/thumbnail.mjs";
+import { thumbnailSeries } from "../render/plan.mjs";
 import { ANIME_BODY_TOLERANCE_SECONDS, hasAnimePolicy, isLongAnime, runtimePolicyHash, validateAnimePolicy } from "./anime-policy.mjs";
+import { isCompilation } from "./compilation.mjs";
 
 // Phrases that only work on a page. Same list as video_kit.py's WRITTEN_ONLY.
 export const WRITTEN_ONLY = ["本文", "這篇文章", "如上表", "如下表", "上表", "下表", "綜上所述", "值得注意的是", "筆者", "如圖所示"];
@@ -316,6 +319,43 @@ export function episodeScriptProblems(doc, timeline) {
   return problems;
 }
 
+/**
+ * The thumbnail's headline held to the channel's rule where the writer sees it, as warnings:
+ * the rule the qa stage fails the drawn thumbnail on (qa/thumbnail.mjs thumbnailChecks, visuals.md
+ * §縮圖): at most THUMB_HEADLINE_MAX characters where a CJK glyph counts one and a Latin word or
+ * a number counts one, at most THUMB_HEADLINE_WORDS_MAX of those, no line break inside a word
+ * (the writer's `\n` or the one the column makes), still MIN_HEADLINE_PX_AT_PHONE tall at
+ * PHONE_WIDTH wide once the renderer has shrunk it to fit the column (a Latin word of eight or
+ * more letters never is), and not the title's first TITLE_HEAD_CHARS said again. A series' own
+ * thumbnail (render/plan.mjs thumbnailSeries) has its own length, checked where it is drawn; a
+ * compilation's headline is its series' name by design, so the title is not held against it
+ * (qa/cli.mjs thumbnailItem); the rules are written for a zh-TW headline, so another narration
+ * language's says nothing. The B and C variants are read too.
+ */
+export function thumbnailHeadlineProblems(doc) {
+  const problems = [];
+  if (!doc.thumbnail || thumbnailSeries(doc) !== null || narrationLocale(doc) !== CHANNEL_RULES_LOCALE) return problems;
+  const title = isCompilation(doc) ? null : doc.youtube?.title ?? null;
+  const own = [{ path: "thumbnail", thumbnail: doc.thumbnail }, ...thumbnailVariants(doc.thumbnail).map(({ id, thumbnail }) => ({ path: `thumbnail.variants (${id})`, thumbnail }))];
+  for (const { path, thumbnail } of own) {
+    const headline = thumbnail.data?.headline;
+    if (typeof headline !== "string" || !headline.trim()) continue;
+    const warn = (message) => problems.push({ path, message });
+    const { count, words } = headlineCount(headline);
+    if (count > THUMB_HEADLINE_MAX) warn(`the headline counts ${count} characters (a Latin word or a number counts one); at most ${THUMB_HEADLINE_MAX} read at a glance, so say one thing in six (qa fails it)`);
+    if (words.length > THUMB_HEADLINE_WORDS_MAX) warn(`the headline has ${words.length} Latin words or numbers (${words.join(", ")}); at most ${THUMB_HEADLINE_WORDS_MAX} fit the column (qa fails it)`);
+    const split = headlineSplitWords(headline);
+    if (split.length) warn(`a line break falls inside the word ${split.map(({ word }) => `「${word}」`).join(", ")}; put \\n where a word ends (qa fails it)`);
+    const px = atPhoneWidth(headlineSizeEstimate(headline));
+    if (px < MIN_HEADLINE_PX_AT_PHONE) warn(`the headline shrinks to about ${px} px at ${PHONE_WIDTH} px wide; at least ${MIN_HEADLINE_PX_AT_PHONE} px reads on a phone, so shorten it (qa fails it)`);
+    if (typeof title === "string" && title.trim()) {
+      const { shared, ratio } = titleOverlap(headline, title);
+      if (ratio > TITLE_OVERLAP_MAX) warn(`the headline repeats the title: 「${shared}」 is in the title's first ${TITLE_HEAD_CHARS} characters; say what the title does not`);
+    }
+  }
+  return problems;
+}
+
 export function lintVideo(doc, context = {}) {
   const errors = [];
   const warnings = [];
@@ -431,6 +471,9 @@ export function lintVideo(doc, context = {}) {
   const description = composeDescription({ body: doc.youtube.description, timeline, article, sources: doc.sources ?? [], assets: doc.assets ?? [], locale: narration, tags: doc.youtube.tags, category: doc.category ?? null, series: doc.series ?? null, campaign: doc.slug });
   for (const problem of checkYoutubeFields({ title: doc.youtube.title, description, tags: doc.youtube.tags })) error("youtube", problem);
   for (const problem of youtubeWarnings({ title: doc.youtube.title, tags: doc.youtube.tags }, "youtube", { numbered: drama })) warn("youtube", problem);
+  // The headline the qa stage will fail the drawn thumbnail on, said here so a writer's draft
+  // or a planner's answer is not first held at the final gate (thumbnailHeadlineProblems).
+  for (const problem of thumbnailHeadlineProblems(doc)) warn(problem.path, problem.message);
   if (!doc.youtube.tags.length) warn("youtube.tags", "no tags: add the product names and their common misspellings");
   if (!doc.sources?.length) warn("sources", "no sources: every fact in claims.md needs one, and they go in the description");
 
