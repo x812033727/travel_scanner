@@ -15,7 +15,6 @@ scope:
   - tools/video/automation/discuss.test.mjs
   - tools/video/automation/series.test.mjs
   - .agents/skills/youtube-video/references/series.md
-  - .claude/skills/youtube-video/references/series.md
   - tools/video/automation/flow.mjs
 ---
 
@@ -70,12 +69,14 @@ are filed here against main's code. Found by the overlap comparison of the two P
       `requestFailed` has saved the block and awaited `reportBlocked`, so a worker killed in
       that PUT leaves a blocked video without the line it holds.
 - [ ] Tests in discuss.test.mjs or series.test.mjs (six runs of waiting, then the reply; a 502
-      `video_ai_upstream_failed`); the skill bullet in both copies of series.md.
+      `video_ai_upstream_failed`); the skill bullet in
+      `.agents/skills/youtube-video/references/series.md`, the only copy (only SKILL.md is copied
+      under `.claude/skills`).
 
 ## How to verify
 
 `node --test tools/video/automation/discuss.test.mjs tools/video/automation/series.test.mjs`,
-then `npm run test:tools` (the skill copies are compared there).
+then `npm run test:tools`.
 
 ## Notes
 
