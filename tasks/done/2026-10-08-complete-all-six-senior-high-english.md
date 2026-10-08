@@ -1,13 +1,13 @@
 ---
 id: 2026-10-08-complete-all-six-senior-high-english
 title: Complete all six senior high English seasons
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: codex-senior-high-series
 claimed_at: 2026-10-08T04:01:09Z
 created_at: 2026-10-08T04:01:09Z
-completed_at:
+completed_at: 2026-10-08T05:23:15Z
 branch: codex/senior-high-english-complete-20261008
 depends_on:
   - 2026-10-08-complete-all-six-junior-high-english
@@ -27,16 +27,16 @@ English/Traditional Chinese/Simplified Chinese/Japanese/Korean audio and four CC
 ## Definition of done
 
 - [x] Six complete seasons and 72 original, reviewed lessons for grades 10–12.
-- [ ] All 72 videos, 360 audio tracks and 288 pairs of translated SRT/VTT captions verified.
-- [ ] Independent reading/writing materials, six season archives and one complete archive delivered.
-- [ ] Source, tools and portable validation evidence in a draft continuation PR.
+- [x] All 72 videos, 360 audio tracks and 288 pairs of translated SRT/VTT captions verified.
+- [x] Independent reading/writing materials, six season archives and one complete archive delivered.
+- [x] Source, tools and portable validation evidence in a draft continuation PR.
 
 ## Steps
 
 - [x] Author and independently review all six seasons.
-- [ ] Freeze senior-high artwork and source-bound renderer; produce all media.
-- [ ] Validate decoded media, captions, player controls, printable materials and archive membership.
-- [ ] Run tools/task checks, close this task as the final commit and open a draft PR.
+- [x] Freeze senior-high artwork and source-bound renderer; produce all media.
+- [x] Validate decoded media, captions, player controls, printable materials and archive membership.
+- [x] Run tools/task checks, close this task as the final commit and open a draft PR.
 
 ## How to verify
 
@@ -67,6 +67,28 @@ Episode 45 includes a real Matplotlib comparison of identical fictional 40/50 da
 using zero and 35-unit baselines; independent SVG geometry and source checks pass.
 The frozen video renderer is unaffected by this worksheet-only graph.
 Initial tools check: 2014 tests, 2011 passed, 3 skipped, zero failures;
-chart validation adds three Python regressions (28 total), final tools check running.
-S5 audio/render completed successfully; S1 is streaming. Finish all media and seven
-archives before marking remaining deliverables done.
+Chart validation adds three Python regressions (28 total). Final confirmed tools/task
+check exit=0, with the same 2014/2011/3/0 counts; durable exit receipt and logs are in
+/tmp/senior-high-confirmed-checks. No broader rerun is needed without further changes.
+An agent usage-limit interruption terminated background jobs at 19 audio episodes and
+15 checked films. The user's continuation resumed the full-source producer and renderer;
+valid media/scene caches are reused. S1 and S5 are now complete. Finish all media and
+seven archives before marking remaining deliverables done.
+All 720 authored scenes passed final-source artwork QA (2160 phase frames, 216 neutral
+quiz checks, 144 guided glyph checks). Recovery reused 360 scene results whose authored
+content and hashes still matched, and checked the remaining 360 with durable checkpoints.
+
+Final delivery: all 72 videos and 360 audio tracks complete, 288 SRT/VTT pairs;
+actual total 16900.296 seconds (4:41:40), 72 matching full-decode receipts and
+independent FFprobe checks pass. Six seasonal ZIPs and one 72-episode ZIP verified;
+combined ZIP 1622281157 bytes, all seven ZIPs 3244901585 bytes. Exact archive membership,
+CRC and 2448 media member comparisons pass. Root 217-page and six 37-page PDFs match
+all authored readings, questions/answers and writing models. Root and seven packaged
+players pass mocked jsdom checks; real browser playback remains unverified.
+Eight completed episodes / 24 actual frames manually inspected, A/B/C reveals covered.
+Portable final records: art-checks.json, encoded-frame-review.json and delivery-verification.json.
+All code checks exited 0 before evidence-only documentation changes.
+Pre-PR worktree, local branches, remote English branches and all open PRs rechecked;
+new PR #1382 has no overlap with this task. Junior base remote remains 000ff892e9.
+Draft continuation PR is the authorized handoff; no merge, backend voice replacement
+or publication was performed. Close this ticket in the final commit before opening it.
