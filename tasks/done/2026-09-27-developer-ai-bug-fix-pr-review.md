@@ -1,13 +1,13 @@
 ---
 id: 2026-09-27-developer-ai-bug-fix-pr-review
 title: Developer AI bug fix PR review video
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-video-bug-fix-continuation
 claimed_at: 2026-10-08T00:18:55Z
 created_at: 2026-09-27T15:26:33Z
-completed_at:
+completed_at: 2026-10-08T04:30:04Z
 branch: codex/ai-bug-fix-review-20261008
 depends_on: []
 scope:
@@ -23,13 +23,13 @@ scope:
 ## Definition of done
 
 - [x] `docs/videos/ai-bug-fix-pr-review/` 有企劃、完整口播與畫面資料、主張表，且示範與同題修補的實際差異和測試相符。
-- [ ] 獨立查核通過，完成合成旁白、五語字幕、縮圖、成片與待上架包。
+- [x] 獨立查核通過，完成合成旁白、五語字幕、縮圖、成片與待上架包。
 
 ## Steps
 
 - [x] 用舊碼與保留的本地修補，建立可重跑的三關審查示範；歷史 Claude 作者歸因不當作已驗證證據。
 - [x] `video.json` 避免把本地示範說成正式站事故或已合併的 PR；`lint` 零錯誤零警告。
-- [ ] 獨立查核後跑後續媒體管線與品檢。
+- [x] 獨立查核後跑後續媒體管線與品檢。
 
 ## How to verify
 
@@ -54,3 +54,5 @@ scope:
 2026-10-08 10:09（台北）：站主在上述具體預檢後再次要求「繼續」，已授權本片新版主旁白與後續品檢製作；未釋出其他影片的 hold。新版 133 句音檔已合成，兩筆 Windows 本地寫入失敗均從完整已回答 bytes 恢復，沒有重送已回答或未知請求。畫面節奏修整為 47 場景／88 狀態，原生時間軸 17,881 frames／596.033 秒，零計費 refresh 與 canonical render 均 exit 0，最長靜態狀態 13 秒。現稿 SHA256 `4608bffb664b8d5a99667daae019184750b73fdaefe32256b08c0494f88c6cca`；新的獨立 `verify-4.md` 全查 350 項、零 unresolved，保留 dated 前輪原報告與來源 metadata。
 
 2026-10-08 10:09（台北）：主轉寫 133/133 完成，98 exact／18 same-sound 或 filler／4 Jev pass／13 flags。第二套離線盲轉寫在 36 分鐘逾時，保留實際完成的八句結果，並核對及補查其餘五句；尚未通過旁白品檢。普通重錄 dry-run 最多 13 句／12 requests／256 billable characters，未執行這批重錄。成片、timed CC、待上架包及音訊／成片核准均仍未完成；正式站本片語言選擇仍未決定，不把四語文字草稿當成已核准配音或字幕。Draft PR #1375，沒有合併、部署、上傳或發布。實際階段與私有收據見 `CONTINUATION-20261008.md`。
+
+2026-10-08 最新完成快照（UTC 2026-10-08T04:29:38.323800+00:00）：133 句旁白零 flags、47 場景／88 狀態、17874 frames／595.8 秒的 1080p 成片完成，完整 SHA256 `7bb68af197c71b87f712bbd0179b5ae4f4216e8ca776edf98aa5318248309aeb`。原生五語 CC zh-TW 133／en 134／ja 139／ko 160／zh-CN 133，閱讀速度／切分零 problems；QA 11/11、上架包 4/4 通過。站主已選四語字幕與標題說明、dub 全 false。四語完整 584 項獨立覆核有來源 URL、取得 metadata、raw/text/header hashes、逐項理由；日文一次 CPS 縮句另補 583 保留＋1 新讀。正式站音訊／成片／目前五語 publish／四語 languages 核准均綁當前產物，ready_to_upload=true、pending=0。YouTube ID／公開時間 null，未上傳、發布或站主播放驗收。票的媒體與待上架包 DOD 完成；記錄在 `caption-full-review-20261008.md`、`MEDIA-RUN-20261008.md`，draft PR #1375 仍未合併／部署。其他影片 holds 原樣保留。

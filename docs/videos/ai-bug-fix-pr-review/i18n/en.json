@@ -1,5 +1,5 @@
 {
-  "title": "AI Fixed the Bug. Can You Merge? Three PR Review Gates",
+  "title": "If AI Fixes a Bug, Can You Merge? Three PR Review Gates",
   "description": "The two original tests passed, but splitting 100 cents allocated only 99. Follow a real patch and test run to learn how to review requirements, the diff, and regression before merging.\nThis is a rerunnable local demo, not a production incident or a merged PR.",
   "tags": [
     "AI code review",
@@ -168,7 +168,7 @@
     },
     "v4e2000": {
       "source_hash": "3ac38937e469",
-      "text": "Testing only 100 divided by three could hard-code a special case."
+      "text": "Testing only 100 ÷ 3 may leave the rule hard-coded to that case."
     },
     "v4e2001": {
       "source_hash": "fee80b68f60e",
@@ -440,7 +440,7 @@
     },
     "v40108": {
       "source_hash": "1c78309ab1d0",
-      "text": "Regression means fixing the new bug while preserving old rules."
+      "text": "Regression testing checks that the bug fix preserves the old rules."
     },
     "v40109": {
       "source_hash": "6161cda31b6f",
@@ -504,7 +504,7 @@
     },
     "v40126": {
       "source_hash": "e71ca6fa1593",
-      "text": "Even if this small demo passes acceptance, it cannot replace business judgment."
+      "text": "This small demo passed acceptance, but cannot replace business judgment."
     },
     "v40127": {
       "source_hash": "da2af025c9f9",
