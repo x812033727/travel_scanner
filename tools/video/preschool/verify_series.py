@@ -18,7 +18,7 @@ import sys
 from audio import (CC_LOCALES, DEMO_RATE, VOICES, PipelineError, atomic_json, audio_integrity, clip_request,
                    load_source, read_json, scene_requests,
                    source_matches, stamp, subtitle_cues, verify_picture_artifact)
-from build import LANGUAGES, LOCALES, SUBTITLES, TITLES, file_sha256, fingerprint, recorded_renderer_fingerprint
+from build import LANGUAGES, LOCALES, SUBTITLES, TITLES, RendererProfile, file_sha256, fingerprint, profile_fingerprint
 
 
 class VerificationError(Exception):
@@ -156,7 +156,7 @@ def verify_captions(episode: dict, output: Path) -> dict:
             "response_intervals_caption_free": True, "english_cc": False}
 
 
-def verify_media(episode: dict, output: Path, record: dict) -> dict:
+def verify_media(episode: dict, output: Path, record: dict, *, renderer_profile: RendererProfile | None = None) -> dict:
     eid = episode["id"]
     directory = output / eid
     final = directory / "final.mp4"
@@ -165,10 +165,11 @@ def verify_media(episode: dict, output: Path, record: dict) -> dict:
     require(record.get("full_decode") is True, f"{eid}: no successful complete audio/video decode record")
     require(record.get("bytes") == final.stat().st_size and record.get("final_sha256") == file_sha256(final), f"{eid}: final media differs from the fully decoded file")
     if record.get("imported_from_pilot"):
+        require(renderer_profile is None, f"{eid}: imported preschool pilots cannot satisfy another course profile")
         require(int(eid[2:]) <= 5, f"{eid}: only the original five episodes may be imported pilots")
     else:
         require(record.get("render_fps") == 15, f"{eid}: expected 15 animation frames per second encoded at 30 fps")
-        require(record.get("renderer_sha256") is not None and record.get("renderer_sha256") == recorded_renderer_fingerprint(record, 15), f"{eid}: renderer fingerprint does not match its recorded render library and current artwork")
+        require(record.get("renderer_sha256") is not None and record.get("renderer_sha256") == profile_fingerprint(record, 15, renderer_profile), f"{eid}: renderer fingerprint does not match its recorded render library and current artwork")
     require(record.get("english_cc") is False and record.get("english_text") == "embedded into picture", f"{eid}: embedded-English/no-English-CC metadata mismatch")
     require(record.get("audio_tracks") == list(LOCALES) and record.get("cc_tracks") == list(SUBTITLES), f"{eid}: track locale metadata mismatch")
     probe = record.get("media_probe", {})

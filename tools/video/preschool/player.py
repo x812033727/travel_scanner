@@ -1,6 +1,7 @@
 """Write a self-contained, offline player for the preschool pilot package.
 
-The browser plays the silent picture and one selected standalone audio track.
+The browser plays final.mp4 muted and one selected standalone audio track.
+The separate picture.mp4 is an additional silent master, not the player source.
 Captions are embedded when building the page so local file playback never needs
 fetch(), a web server, or cross-origin text-track permissions.
 """
@@ -70,7 +71,7 @@ def _duration(episode: dict[str, Any]) -> float:
     return sum(float(scene.get("duration_ms", 0)) / 1000 for scene in scenes)
 
 
-def write_player(resolved: dict[str, Any], output: Path) -> Path:
+def write_player(resolved: dict[str, Any], output: Path, *, page_template: str | None = None) -> Path:
     """Create output/index.html beside epXX/final.mp4 and audio/caption folders."""
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
@@ -101,7 +102,7 @@ def write_player(resolved: dict[str, Any], output: Path) -> Path:
     data = json.dumps(prepared, ensure_ascii=False, separators=(",", ":"))
     # Keep all user-authored strings inside JSON, including literal </script>.
     data = data.replace("&", "\\u0026").replace("<", "\\u003c").replace(">", "\\u003e").replace("\u2028", "\\u2028").replace("\u2029", "\\u2029")
-    page = _PAGE.replace("__EPISODE_DATA__", data).replace("__EPISODE_COUNT__", str(len(prepared)))
+    page = (page_template if page_template is not None else _PAGE).replace("__EPISODE_DATA__", data).replace("__EPISODE_COUNT__", str(len(prepared)))
     path = output / "index.html"
     path.write_text(page, encoding="utf-8")
     return path

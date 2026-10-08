@@ -12,6 +12,7 @@ import math
 from pathlib import Path
 import subprocess
 import sys
+from typing import Any, Protocol
 
 from audio import (PipelineError, atomic_json, audio_integrity, read_json,
                    select_episodes)
@@ -21,6 +22,28 @@ SUBTITLES = ("zh-TW", "zh-CN", "ja", "ko")
 LANGUAGES = {"zh-TW": "zho", "zh-CN": "zho", "en": "eng", "ja": "jpn", "ko": "kor"}
 TITLES = {"zh-TW": "繁體中文", "zh-CN": "简体中文", "en": "English", "ja": "日本語", "ko": "한국어"}
 RENDER_VERSION = 3
+
+
+class RendererProfile(Protocol):
+    """Explicit artwork dependency for another course using this encoder."""
+
+    name: str
+
+    def render_frame(self, episode: dict, scene: dict, t: float, duration: float) -> Any: ...
+    def fingerprint(self, fps: int, library: dict | None = None) -> str: ...
+    def recorded_fingerprint(self, record: dict, fps: int) -> str | None: ...
+
+
+def profile_fingerprint(record: dict, fps: int, renderer_profile: RendererProfile | None = None) -> str | None:
+    if renderer_profile is not None:
+        return renderer_profile.recorded_fingerprint(record, fps)
+    if record.get("renderer_profile"):
+        return None
+    return recorded_renderer_fingerprint(record, fps)
+
+
+def profile_metadata(renderer_profile: RendererProfile | None) -> dict:
+    return {"renderer_profile": renderer_profile.name} if renderer_profile is not None else {}
 
 
 def render_library() -> dict:
@@ -75,8 +98,11 @@ def valid_scene_cache(path: Path, metadata: Path, key: str) -> bool:
             and record.get("sha256") == file_sha256(path))
 
 
-def render(episode: dict, output: Path, fps: int) -> Path:
-    from visuals import render_frame
+def render(episode: dict, output: Path, fps: int, *, renderer_profile: RendererProfile | None = None) -> Path:
+    if renderer_profile is None:
+        from visuals import render_frame
+    else:
+        render_frame = renderer_profile.render_frame
     dest = output / episode["id"]
     dest.mkdir(parents=True, exist_ok=True)
     cache = output / ".scene-cache"
@@ -84,7 +110,7 @@ def render(episode: dict, output: Path, fps: int) -> Path:
     film = dest / "picture.mp4"
     duration = float(episode["duration"])
     total_frames = round(duration * fps)
-    renderer = renderer_fingerprint(fps)
+    renderer = renderer_profile.fingerprint(fps) if renderer_profile is not None else renderer_fingerprint(fps)
     # Exclude cross-scene timing and source hashes: a change in one scene should
     # not invalidate unaffected cached scenes. Keep all display/header metadata.
     header = {key: value for key, value in episode.items()
@@ -132,7 +158,8 @@ def render(episode: dict, output: Path, fps: int) -> Path:
         pending.replace(segment)
         atomic_json(metadata, {"key": key, "bytes": segment.stat().st_size, "sha256": file_sha256(segment),
                                "frames": last - first, "input_fps": fps, "renderer_sha256": renderer,
-                               "renderer_version": RENDER_VERSION, "render_library": render_library()})
+                               "renderer_version": RENDER_VERSION, "render_library": render_library(),
+                               **profile_metadata(renderer_profile)})
         print(f"SCENE {episode['id']}/{scene['id']} {index + 1}/{len(scenes)} ready", flush=True)
     # All segments have identical encoding settings and frame clocks. Stream-copy
     # concatenation adds no generation loss and leaves scene caches resumable.
@@ -145,27 +172,27 @@ def render(episode: dict, output: Path, fps: int) -> Path:
     atomic_json(dest / "picture.checks.json", {"source_sha256": fingerprint(episode), "renderer_sha256": renderer,
                                                "bytes": film.stat().st_size, "sha256": file_sha256(film),
                                                "renderer_version": RENDER_VERSION, "render_library": render_library(),
-                                               "render_fps": fps})
+                                               "render_fps": fps, **profile_metadata(renderer_profile)})
     return film
 
 
-def require_picture(episode: dict, output: Path, fps: int) -> dict:
+def require_picture(episode: dict, output: Path, fps: int, *, renderer_profile: RendererProfile | None = None) -> dict:
     """Never let mux-only relabel old or unproven frames with today's source."""
     picture = output / episode["id"] / "picture.mp4"
     record = read_json(picture.parent / "picture.checks.json")
     if (not picture.is_file() or record.get("source_sha256") != fingerprint(episode)
             or record.get("render_fps", fps) != fps
             or record.get("renderer_sha256") is None
-            or record.get("renderer_sha256") != recorded_renderer_fingerprint(record, fps)
+            or record.get("renderer_sha256") != profile_fingerprint(record, fps, renderer_profile)
             or record.get("bytes") != picture.stat().st_size
             or record.get("sha256") != file_sha256(picture)):
         raise PipelineError(f"{episode['id']}: picture source/timing, renderer, or hash is unverified; rerun without --mux-only to render it.")
     return record
 
 
-def mux(episode: dict, output: Path, fps: int = 15) -> dict:
+def mux(episode: dict, output: Path, fps: int = 15, *, renderer_profile: RendererProfile | None = None) -> dict:
     dest = output / episode["id"]
-    picture_record = require_picture(episode, output, fps)
+    picture_record = require_picture(episode, output, fps, renderer_profile=renderer_profile)
     artifacts = audio_integrity(episode, output)
     final = dest / "final.mp4"
     temporary = dest / "final.tmp.mp4"
@@ -216,22 +243,23 @@ def mux(episode: dict, output: Path, fps: int = 15) -> dict:
               "final_sha256": file_sha256(final), "full_decode": True, "render_fps": fps,
               "renderer_version": picture_record.get("renderer_version", 2),
               "render_library": picture_record.get("render_library"),
-              "artifact_integrity": artifacts, "picture_integrity": picture_record}
+              "artifact_integrity": artifacts, "picture_integrity": picture_record,
+              **profile_metadata(renderer_profile)}
     atomic_json(dest / "checks.json", result)
     print(f"READY {episode['id']} {duration:.2f}s, 5 audio / 4 CC, {final.stat().st_size / 1048576:.1f} MiB", flush=True)
     return result
 
 
-def valid_final(episode: dict, output: Path, fps: int) -> bool:
+def valid_final(episode: dict, output: Path, fps: int, *, renderer_profile: RendererProfile | None = None) -> bool:
     try:
         audio_integrity(episode, output, final_bound=True)
     except (PipelineError, OSError, ValueError, KeyError, TypeError):
         return False
     path = output / episode["id"] / "final.mp4"
     record = read_json(path.parent / "checks.json")
-    renderer_matches = (record.get("imported_from_pilot") is True and int(episode["id"][2:]) <= 5) or (
+    renderer_matches = (renderer_profile is None and record.get("imported_from_pilot") is True and int(episode["id"][2:]) <= 5) or (
         record.get("renderer_sha256") is not None
-        and record.get("renderer_sha256") == recorded_renderer_fingerprint(record, fps))
+        and record.get("renderer_sha256") == profile_fingerprint(record, fps, renderer_profile))
     return (path.is_file() and record.get("full_decode") is True
             and record.get("source_sha256") == fingerprint(episode)
             and renderer_matches
