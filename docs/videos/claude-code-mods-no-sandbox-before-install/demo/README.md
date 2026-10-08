@@ -1,5 +1,7 @@
 # 工具呼叫計數器：可讀教學來源
 
+這是保留供比較的小範例，已不作為本片的主要教學。新版以可完成的交稿檢查流程為主，見 [交稿 Mod 原始碼](delivery-check/README.md)、[起始材料](delivery-fixtures/README.md) 與 [驗證範圍](delivery-verification.md)。兩份範例都尚未通過 Claude Code 原生驗收。
+
 這份最小範例依 [Create a mod](https://code.claude.com/docs/en/plugins/mods/create) 的四個事件設計，2026-10-09 查核。程式為教學改寫；不含外部 dependencies，不自行讀檔、不開程序、不連網、不呼叫模型。
 
 **狀態：來源已寫好，未在本機 Claude runtime 執行、未驗證通過。** 本機初次讀取是 2.1.285，低於文件要求的 terminal 2.1.287。主協調者另備妥隔離的 2.1.293 CLI；執行 validate/test 被 automatic approval review 拒絕，原因只有 `blocked by policy`；不能改用另一條路徑繞過。這裡沒有偽造 pass 記錄。

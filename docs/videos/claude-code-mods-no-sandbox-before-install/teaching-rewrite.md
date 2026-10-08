@@ -6,7 +6,7 @@
 
 **剪輯目標：** 正文約 8–10 分鐘；主案例與排錯占約一半，兩個短對照與變式練習占其餘篇幅。這是編排目標，尚無音訊或操作錄影可量測。完整提示詞提供複製版，口播解釋選擇，不逐字唸規則或指令；實際不足 8 分鐘時補有用的示範，不慢播或延長空畫面。
 
-**示範狀態：** `delivery-check` 是本稿提出的自訂功能，尚未實作、載入或驗收；不是已存在的產品。官方能力可支持方向，不等於這份需求已跑通。既有 CLI 執行遭自動審查拒絕的紀錄仍有效；本稿不授權重試或換路徑執行。下列命令只列為未來適用環境的錄製步驟。
+**示範狀態：** `delivery-check` 的候選原始碼已放在 [範例套件](demo/delivery-check/README.md)，完整起始材料在 [練習材料](demo/delivery-fixtures/README.md)。一般 Node 的純邏輯與實際檔案驗證已通過，詳見 [驗證範圍](demo/delivery-verification.md)；尚未在 Claude Code 載入、通過原生驗證或錄製面板，不能宣稱 Mod 已跑通。既有 CLI 執行遭自動審查拒絕的紀錄仍有效；本稿不授權重試或換路徑執行。下列命令只列為未來適用環境的錄製步驟。
 
 畫面標記：`【素材】` 是本稿原創文字；`【設計示意，未實測】` 是要驗收的介面；`【待實錄】` 必須取得真實操作才可替換。不得把示意改成假的終端輸出。未補證據前，這份稿子不是「實測完成版」。
 
@@ -49,7 +49,7 @@ cover-brief.md   缺少
 ```text
 mods-lesson/                 ← 建立及試用 Mod 時的終端機所在資料夾
   delivery-practice/        ← 先建立；存放本次文章練習檔
-  delivery-check/           ← 由後面提示產生的 Mod 程式，目前還沒有
+  delivery-check/           ← 候選 Mod 程式；可複製本稿附的完整範例目錄
   lesson-practice/          ← 最後變式練習才建立
 ```
 
@@ -59,16 +59,20 @@ Windows 在檔案總管打開 `delivery-practice`，點位址列、複製完整�
 
 ```markdown
 # 社區讀書會公告草稿
+
 活動日期：10 月 24 日
 活動地點：里民活動中心
 活動內容：每人帶一本最近讀過的書，分享其中一個觀點。
 報名方式：待主辦人確認。
+
+這是教學自製情境，不是真實活動公告。
 ```
 
 再建立 `sources.md`：
 
 ```markdown
 # 這份練習的資料依據
+
 本文是教學自製情境，不是真實活動公告。
 已提供：活動日期、地點、分享方式。
 尚待確認：報名方式、聯絡窗口。
@@ -102,9 +106,11 @@ Windows 在檔案總管打開 `delivery-practice`，點位址列、複製完整�
 1. 提供 /deliverables 指令，開啟「交稿檢查」畫面。
 2. 第一次用 /deliverables "資料夾完整路徑" 指定要查的資料夾。
    正確處理路徑中的空格；把實際使用的絕對路徑顯示在畫面上。
-   只在本次對話記住這個選擇。未指定時要求我提供，不猜其他資料夾。
+   只在本次對話記住這個選擇；重載或結束對話會清除，需要重新指定。
+   未指定時要求我提供，不猜其他資料夾。
    如果這種參數方式在目前版本不受支援，先說明，不自行換成默認目錄。
-3. 只檢查該資料夾下 article.md、sources.md、cover-brief.md 這三個精確路徑。
+3. 先核對指定路徑是可檢查的資料夾，再查該資料夾下
+   article.md、sources.md、cover-brief.md 這三個精確路徑。
    不遞迴掃描，不讀檔案內容，不修改或補建檔案。
 4. 我開啟畫面或按「重新檢查」時才重新查詢。
    顯示本次檢查時間，沒有刷新時不可假裝資料是最新的。
@@ -152,7 +158,9 @@ claude plugin validate ./delivery-check
 claude --plugin-dir ./delivery-check
 ```
 
-此資料夾目前尚不存在；命令不可直接拿來宣稱成功。正式教學畫面需使用實際路徑、版本、檢查輸出及單次載入紀錄。[來源 S2]
+本稿已附候選程式，但命令尚未取得成功紀錄。正式教學畫面需使用實際路徑、版本、檢查輸出及單次載入紀錄。[來源 S2]
+
+製作註：候選版只在錯誤物件明確帶有 `code: ENOENT` 時顯示缺少；未辨識的錯誤顯示無法檢查。官方型別沒有承諾捕捉到的錯誤形狀，必須在原生實測確認；若真缺檔卻顯示無法檢查，先修相容性，不能剪成成功。
 
 **旁白**
 
@@ -353,7 +361,7 @@ Anthropic 的公開範例 Replay Theater，展示的就是這種用途：把觀�
 
 ## 製作與教學驗收，不能由示意代替
 
-- A：自訂 Mod 的實作、支援版本與獨立能力檢查尚缺；先解決既有執行限制，不能繞過審查。能力已在文件中存在，不等於新程式可用。
+- A：候選 Mod 原始碼與一般檔案邏輯驗證已備妥；支援版本的原生驗證與操作錄影仍缺。先解決既有執行限制，不能繞過審查；普通 Node 驗證不代表 Claude 接線已可用。
 - B–C：需連續記錄兩份起始資料 → 查缺件 → 建第三份 → 手動刷新；保留實際路徑、時間、結果與其他檔案是否變動。不強迫模型一次生成成功。
 - D–E：需實拍空白檔和錯檔名兩個反例，驗證存在／內容／錯誤的分界。若程式把錯誤當缺少，先修正，不剪掉問題。
 - F：變更回顧是短對照，不在這次稿件裡承諾安裝、載入或完成 Replay Theater 的本機示範。一次性改日期仍需核對真實檔案。
@@ -365,7 +373,7 @@ Anthropic 的公開範例 Replay Theater，展示的就是這種用途：把觀�
 
 2026-10-09 重新讀取的主要來源；新實作仍需依執行版本型別再次確認。
 
-- S1：[Plugin security and trust](https://code.claude.com/docs/en/plugins/security)；製作研究紀錄另存於 `C:/Users/x8120/mokaair-work/mods-clarity-20261009/research/FACTS-AND-DEMO.md`，不是公開教材附件。
+- S1：[Plugin security and trust](https://code.claude.com/docs/en/plugins/security)；製作研究紀錄另存於 `<home>/mokaair-work/mods-clarity-20261009/research/FACTS-AND-DEMO.md`，不是公開教材附件。
 - S2：[Create a mod](https://code.claude.com/docs/en/plugins/mods/create)、[Mods overview](https://code.claude.com/docs/en/plugins/mods/overview)、[Use the mods API](https://code.claude.com/docs/en/plugins/mods/api)。自然語言需求、單次載入、指令及介面能力的依據；不宣稱官方提供了本稿的交稿檢查器。
 - 實作覆核註：[檔案能力](https://code.claude.com/docs/en/plugins/mods/api#reach-files-processes-and-the-network) 支持檢查路徑；頁面未完整定義存在檢查的錯誤語義，實作若無法分辨不可存取與不存在，就不能承諾上述三種狀態已完成。[面板開啟與更新](https://code.claude.com/docs/en/plugins/mods/interface#open-a-pane-at-the-right-time) 依終端版面配置，不承諾固定右側欄；畫面是上次查詢的狀態，不是持續監看檔案。
 - S3：[Replay Theater 原始 README](https://github.com/anthropics/claude-code-playground/blob/main/claude-code/mods/replay-theater/README.md)。只取用途及事件紀錄限制，不複製其提示詞、範例或程式；它是公開範例，不代表官方產品保證。
