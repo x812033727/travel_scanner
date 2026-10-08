@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "day": 1,
+  "slug": "airport-english-day01",
+  "status": "independent_text_reviews_bound_to_current_sources",
+  "production_approval": false,
+  "release_ready": false,
+  "checked_on": "2026-10-08",
+  "lesson_sha256": "14ecdeed1cd17bb0f4f9ad1097813c150954b1462177dd4259c92a42e929ec05",
+  "editorial_content_sha256": "aa66c6a01286e22a32606f5ad3381fc3fe7dc11356a48a111745920888ca463e",
+  "facts_english_content_sha256": "4206a5c57022f7a268ee5557e40efa2b15261a4125b0678b35397377de7e985b",
+  "shared_instructions_sha256": "ef3bfaca98c258e4cae1c5b0ada1a217e984742b2ddd792c7fa7b80f22ad101f",
+  "claims_and_sources_sha256": "772a0255d927f706181bff1dccc5b683b7d748d52b0bdada5ad33d8c4b0b8fc3",
+  "profile_sha256": "839e447826b0e2dbe10458227143caa8fe2ba8719b68d0800ac6ba2983efb534",
+  "lexicon_sha256": "5ce0580b321670a394445029fde7183e919ec01290c22072fd1fe27f07c2babf",
+  "reviews": [
+    {
+      "path": "../reviews/verify-day01.md",
+      "sha256": "d156a2209bb2f597235a9c2863a9ca54e0a848fc4649efa333ff16caac873600",
+      "reviewer": "airport_lessons_02_21"
+    },
+    {
+      "path": "../reviews/claims-review.json",
+      "sha256": "73dc51b7b1e92bda19baac9a3195ebda4e6cb2cb6f58fd735f48971de0951168",
+      "reviewer": "airport_claims_review"
+    },
+    {
+      "path": "../reviews/claims-review.md",
+      "sha256": "fe1e4dcb3ca013bc9d427b36ae0450f583c4132ad70b063c953442f1522a87c2",
+      "reviewer": "airport_claims_review"
+    },
+    {
+      "path": "../reviews/verify-shared-instructions.md",
+      "sha256": "b841038168857fc96d291a6e0f065de008cd4e609d052265babf60a20d41253d",
+      "reviewer": "airport_claims_review"
+    }
+  ],
+  "generated_artifacts": {
+    "video.json": "8530ca55d4124820db6fb90bc20753df9b033f953b1095b7beb2702d17d7ff7e",
+    "teaching-audio.json": "81289acc64ef4a5ec85cb3437d1a78383b0c5bea646732ae918dd6dae3caece0",
+    "caption-plan.json": "ee29f94bcba77955536077e1a79ea6c50cccfc8cc29fe9daee13457c38377866",
+    "duration-plan.json": "fa317c17cab4f435e83e975990639e96b7c21ff8b0165396568315595ab7e3d8",
+    "metadata-plan.json": "077f6b69c0d09c559d4e890abe8db9adf71535d5227cace07cef0bdcd4207c81",
+    "line-map.json": "ea2e1d5b77abdc01b36aeff2f7bb961dd73d733d1da8fbecd1b1f9573e2abd72",
+    "brief.md": "9c37f1c466b7e8ea830985198f6d66272ff10441d68c85fbed95b54e55ed1748",
+    "claims.md": "8e4fb3445ed06b78950e141fa6877191380a3124fcd1c0c9a7664c25d4a52d2b",
+    "i18n/zh-TW.json": "9da29f39c6ddbd82ea8c9cc0e317e3444c230f94877a25050c434bfeec0567cf",
+    "i18n/zh-CN.json": "130bbc6bcaf70b67c98f40d8d67a727a34e420517f3d139547db290e10956bc5",
+    "i18n/ja.json": "2c7a6f1a9447831cb8ba5900dee22beff0005fd0e25c63ffd126f01448b3cbe4",
+    "i18n/ko.json": "0f392e8a90b37b551485b768dd52e2ef75dd4746b5ca3b55515a19cdb72712f2"
+  },
+  "claims": [
+    {
+      "id": "AE-C01",
+      "verdict": "OUT OF SCOPE",
+      "source_claim_sha256": "2cabd7db836b30c26c712df2f684193bcf84eac363d32be3412735e3cecfc695",
+      "source_turns": [
+        "all fictional dialogue, quiz answers, numbers and place descriptions"
+      ],
+      "scene_ids": []
+    }
+  ],
+  "lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "sources",
+        "message": "no sources: every fact in claims.md needs one, and they go in the description"
+      }
+    ]
+  },
+  "approval_records_created": false
+}

@@ -213,7 +213,7 @@ test("the drama example is valid and lints clean, apart from the craft rows a fo
   assert.equal(result.summary.chapters.length, 3);
 });
 
-test("a slides video cannot carry a cast, speakers or repeated takes, while a cue is any line's; a drama cannot use slide templates", () => {
+test("a slides video cannot carry a cast, speakers or invalid repeated takes, while a cue is any line's; a drama cannot use slide templates", () => {
   const slides = fixture();
   slides.characters = [];
   slides.series = { slug: "xianxia", episode: 1, chapter: 1 };
@@ -449,6 +449,27 @@ test("each line gets its speaker's voice, and a Gemini voice takes the emotion i
   assert.equal(jingwei.name, "Kore");
   assert.equal(jingwei.style, "清亮、倔強的少女聲，台灣國語。開心、有點急");
   assert.deepEqual(charactersBySpeaker(doc), { narrator: [...doc.scenes[0].lines[0].text, ...doc.scenes[0].lines[1].text, ...doc.scenes[2].lines[0].text, ...doc.scenes[2].lines[1].text, ...doc.scenes[3].lines[0].text, ...doc.scenes[4].lines[0].text, ...doc.scenes[4].lines[1].text].length, jingwei: [...doc.scenes[1].lines[0].text, ...doc.scenes[3].lines[1].text].length, yandi: [...doc.scenes[1].lines[1].text].length });
+});
+
+test("slides can replay an earlier identical source take without weakening reference validation", () => {
+  const doc = enFixture();
+  const source = doc.scenes[0].lines[0];
+  const repeat = { ...source, id: "rpt1", audio_ref: source.id, pause_after_ms: 4000 };
+  doc.scenes.at(-1).lines.push(repeat);
+  assert.deepEqual(validateVideo(doc), []);
+  for (const mutate of [
+    (bad) => { bad.scenes.at(-1).lines.at(-1).text = "A different gate number."; },
+    (bad) => { bad.scenes.at(-1).lines.at(-1).emotion = "A different performance"; },
+    (bad) => { bad.scenes.at(-1).lines.at(-1).audio_ref = "rpt1"; },
+    (bad) => { bad.scenes[0].lines[0].audio_ref = "rpt1"; },
+    (bad) => { bad.scenes.at(-1).lines.push({ ...repeat, id: "rpt2", audio_ref: "rpt1" }); },
+  ]) {
+    const bad = structuredClone(doc); mutate(bad);
+    assert.ok(validateVideo(bad).some((error) => error.path.endsWith("audio_ref")));
+  }
+  const speaker = structuredClone(doc);
+  speaker.scenes.at(-1).lines.at(-1).speaker = "narrator";
+  assert.ok(validateVideo(speaker).some((error) => error.path.endsWith("speaker")), "slides still cannot declare cast speakers");
 });
 
 test("drama-local pronunciation and exact-take references validate before synthesis", () => {

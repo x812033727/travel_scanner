@@ -603,18 +603,17 @@ export function validateDrama(doc, errors, validateVoice) {
         if (!isObject(line)) return;
         const label = `${where}.lines[${lineIndex}]${typeof line.id === "string" ? ` (${line.id})` : ""}`;
         if (shot && line.reveal !== undefined) errors.push({ path: `${label}.reveal`, message: "a shot has nothing to reveal; split the narration into shots instead" });
-        // A cue for the voice may sit on any format's line (docs/videos/ILLUSTRATED.md §聲音表演);
-        // speakers and repeated takes stay a drama's.
+        // A cue and an exact-take replay may sit on any format's line. Listening lessons
+        // replay a checked sentence without buying another performance; cast speakers remain
+        // drama-only. All formats use the same content/voice/reference checks below.
         if (line.emotion !== undefined && !isShortText(line.emotion, EMOTION_MAX)) {
           errors.push({ path: `${label}.emotion`, message: `must be a short direction for the voice, at most ${EMOTION_MAX} characters` });
         }
-        if (!drama) {
-          for (const key of ["speaker", "audio_ref"]) {
-            if (line[key] !== undefined) errors.push({ path: `${label}.${key}`, message: `only a video with format "${DRAMA_FORMAT}" has line ${key}` });
-          }
+        if (!drama && line.speaker !== undefined) {
+          errors.push({ path: `${label}.speaker`, message: `only a video with format "${DRAMA_FORMAT}" has line speaker` });
           return;
         }
-        if (line.speaker !== undefined && line.speaker !== NARRATOR && !characterIds.has(line.speaker)) {
+        if (drama && line.speaker !== undefined && line.speaker !== NARRATOR && !characterIds.has(line.speaker)) {
           errors.push({ path: `${label}.speaker`, message: `must be "${NARRATOR}" or a character id` });
         }
         try {

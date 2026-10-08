@@ -2946,6 +2946,22 @@ PASS is DURATION_ONLY for the eleven rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Airport listening replay and locale increment: 3 bindings (2026-10-08)
+
+Independent reviewer: `/root/airport_duration_review`. Implementation authors: `codex-airport-series-remediation` and `/root/airport_production_adapter`. Baseline: `d3861bf3664d69d6724a7f4c6f9d5c2f2c01d963`. Verdict: **PASS — DURATION_ONLY**; required duration fixes remaining: **none**.
+
+This increment independently read the complete current changes to `tools/video/core/drama.mjs`, `tools/video/core/drama.test.mjs` and `tools/video/core/stages.test.mjs`, together with the related, unbound implementation change in `tools/video/core/stages.mjs` (SHA256 `9d649c69621168594f1be8145a7ecf981e264e3ebc41db847151b22f66fdd986`). Only the three receipt bindings change; the other 105 bindings remain byte-identical to the baseline receipt and their current files. Historical review prose is preserved, including its then-correct statement that non-drama lines could not use `audio_ref`. This increment supersedes that statement only for the newly reviewed replay behavior. It does not incorporate the separate open PR #1387's implementation or review changes; a future shared-receipt merge needs to preserve and reconcile both actual increments.
+
+Findings: slides may now replay an earlier original take when normalized spoken content and effective voice match. Cast speakers remain drama-only. The existing reference validation still rejects self-reference, forward reference, reference chains, altered spoken content and altered effective voice. The added slides regression exercises these refusals and permits a different practice pause. The existing TTS path, inspected as unchanged context, validates the original request key and WAV SHA256 before copying the exact bytes and measured character timing; its timeline still derives each occurrence's duration from WAV sample counts and the explicitly authored pause. Permitting a replay does not supply invented sample counts, stretch a take or establish that an episode has reached its planned runtime.
+
+The related locale change preserves an explicitly selected zh-TW dub for non-zh-TW narration. `dubLocalesOf` still filters the video's actual narration locale, and `dubsForUpload` now applies that exclusion even when a caller passes raw selected locales, before reading a skipped or stale alternate. The new regression checks all four translated-audio selections for English narration and exclusion of the source locale for zh-TW narration. This changes selection/collection only; it does not create, lengthen, approve or accept any audio track.
+
+No target, runtime policy, duration floor, timeline arithmetic, branding frame accounting, current-media proof or QA duration condition changes. The 600/780-second planning targets, 480-second measured knowledge-video floor, exact 30 fps frame comparisons and long-anime measured-body checks remain unchanged. The tests preserve existing fixture opt-outs and do not lower a production minimum. This is a narrow duration-safety assessment, not independent review of the whole airport adapter or mixed-language audio implementation.
+
+Independently executed `node --test tools/video/core/drama.test.mjs tools/video/core/stages.test.mjs tools/video/core/narration-locale.test.mjs tools/video/core/duration.test.mjs tools/video/core/timeline.test.mjs tools/video/qa/duration.test.mjs`: **82 passed, 0 failed, 0 skipped**. These include exact-take validation, language selection, sample-to-frame timing, stale measured evidence, body/branding separation and inclusive duration bounds. The long-form CLI/receipt tests are run after installation and reported in the handoff so this report's hash stays stable.
+
+No real speech/provider request, production render, human listening, media acceptance, audio/final/package approval or publication was performed by this reviewer. This receipt does not establish that any of the 60 airport episodes is a completed 600-second video. The existing media gates remain required. No implementation file was edited by this reviewer.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -3015,8 +3031,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/approvals.test.mjs` | `51c4a632685a36221dcaf6ac926d5256879c1540f709b708945770d9e5e6adaf` |
 | `tools/video/core/branding.mjs` | `aaad784dc23fe4bc1fc08c2871a5cd122ba483c500a07f128cb836dd8f05c8c7` |
 | `tools/video/core/branding.test.mjs` | `bebfeabcb0855bffc18f0334dd1a6206bb374552467edb036d999ca5398374cb` |
-| `tools/video/core/drama.mjs` | `33a471d5eb78be2ab972594501ab1a4ae3fc8fbba751c509b33a1c5f75b60fd2` |
-| `tools/video/core/drama.test.mjs` | `c6dc0ef74464fcb9e47397f59b3902938c628ed86ec2f53819eeba88537f22c6` |
+| `tools/video/core/drama.mjs` | `f5e31865984f984b12434854924107afc787a6ffbd02c69a55429166a1b5265a` |
+| `tools/video/core/drama.test.mjs` | `c8389b161696c01195de6f505c9ed228f27527637de259b91a04da7de670090a` |
 | `tools/video/core/duration.mjs` | `e92c104bc62babf18f47c75b67416807484f1af794b94cd8790350990dba8edd` |
 | `tools/video/core/duration.test.mjs` | `388bda7c57e548c2f50165a713e038e147645d283409c1f09393e8eef68652ba` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
@@ -3026,7 +3042,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/schema.mjs` | `d810ca82a8ef459faea23efa0afcbf1029d08521cb50c09e157bb19598ac172f` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
 | `tools/video/core/screenplay.test.mjs` | `fe2765c5f2fa42d7cfe5a2e542063c32c4349b585c649552a31b2088aaaec180` |
-| `tools/video/core/stages.test.mjs` | `6ed67af324ba3ff07a59678300365833619553cbb460ddd0dc64d97b2608a511` |
+| `tools/video/core/stages.test.mjs` | `ab4539bdcad4ef3ba44dda4041bfd5bc0cd1442bffc9c70c23eeac8aff9c0e1a` |
 | `tools/video/core/state.mjs` | `f45f65951076d48fe61280fc99b3c9d839614775c469fd1fd25d5046633aec26` |
 | `tools/video/core/state.test.mjs` | `d074d836f10479e95d90572719c69c2621e51f34cdd60572870a75e69fcf313d` |
 | `tools/video/core/timeline.mjs` | `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a` |

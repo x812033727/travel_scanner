@@ -1,0 +1,105 @@
+{
+  "test_transport": "HTTP loopback range server; file:// not tested",
+  "errors": [],
+  "initial": {
+    "duration": 600,
+    "voice": "en",
+    "caption": "zh-Hant",
+    "tracks": [
+      {
+        "lang": "zh-Hant",
+        "mode": "showing",
+        "cues": 86
+      },
+      {
+        "lang": "zh-Hans",
+        "mode": "disabled",
+        "cues": null
+      },
+      {
+        "lang": "ja",
+        "mode": "disabled",
+        "cues": null
+      },
+      {
+        "lang": "ko",
+        "mode": "disabled",
+        "cues": null
+      }
+    ]
+  },
+  "japanese_play": {
+    "time": 366.147092,
+    "audioTime": 366.15369,
+    "videoPaused": false,
+    "audioPaused": false,
+    "videoMuted": true,
+    "audioMuted": false
+  },
+  "custom_mute": {
+    "videoMuted": true,
+    "audioMuted": true,
+    "button": "恢復聲音"
+  },
+  "pause": {
+    "videoPaused": true,
+    "audioPaused": true
+  },
+  "paused_seek": {
+    "time": 480,
+    "audioTime": 480,
+    "videoPaused": true,
+    "audioPaused": true
+  },
+  "rate": {
+    "videoRate": 1.25,
+    "audioRate": 1.25
+  },
+  "ko_cc": {
+    "selected": "ko",
+    "tracks": [
+      {
+        "lang": "zh-Hant",
+        "mode": "disabled"
+      },
+      {
+        "lang": "zh-Hans",
+        "mode": "disabled"
+      },
+      {
+        "lang": "ja",
+        "mode": "disabled"
+      },
+      {
+        "lang": "ko",
+        "mode": "showing"
+      }
+    ]
+  },
+  "episode": {
+    "title": "排隊與自助報到",
+    "label": "第一集機場英文，10分鐘",
+    "voice": "en",
+    "cc": "ko",
+    "time": 0,
+    "rate": 1
+  },
+  "failed_voice_fallback": {
+    "selected": "en",
+    "videoMuted": true,
+    "audioMuted": false,
+    "audioError": "MEDIA_ELEMENT_ERROR: Format error",
+    "status": "語音載入失敗，已恢復英文。"
+  },
+  "fallback_play": {
+    "selected": "en",
+    "videoPaused": false,
+    "videoMuted": true,
+    "audioPaused": true,
+    "status": "語音載入失敗，已恢復英文。"
+  },
+  "site_source_native_mute": {
+    "videoMuted": true,
+    "audioMuted": true
+  }
+}

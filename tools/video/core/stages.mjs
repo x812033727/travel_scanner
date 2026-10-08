@@ -23,7 +23,8 @@ export class StageError extends Error {
 // The owner's language choice for this video, as the worker copies it from the site each round
 // (docs/videos/LANGUAGES.md): { locales: { en: { metadata, captions, dub } }, decided_at }. Only
 // the languages with something ticked are listed; zh-TW and the narration's own locale always get
-// captions, a title and a description (alwaysLocales), so a zh-TW entry is dropped. The captions,
+// captions, a title and a description (alwaysLocales), so a metadata/captions-only zh-TW entry
+// is redundant. Its dub choice must survive for non-zh-TW narration. The captions,
 // package, qa and review-push commands read it from the work directory, so a hand run on the owner's
 // machine and the worker's run agree; without the file (a video from before the panel, an
 // example outside the site) every locale with a translation is made, as before.
@@ -37,9 +38,10 @@ export function readLanguages(workdir) {
   const locales = {};
   for (const locale of LOCALES) {
     const choice = record.locales[locale];
-    if (!choice || typeof choice !== "object" || locale === NARRATION_LOCALE) continue;
+    if (!choice || typeof choice !== "object") continue;
     // A dub is read from the captions' translation, so choosing it chooses them (the site does the same).
     const dub = choice.dub === true;
+    if (locale === NARRATION_LOCALE && !dub) continue;
     const entry = { metadata: choice.metadata === true, captions: choice.captions === true || dub, dub };
     if (entry.metadata || entry.captions || entry.dub) locales[locale] = entry;
   }
@@ -142,6 +144,9 @@ export function dubsForUpload(project, workdir, speech, locales = defaultDubLoca
   const dubs = [];
   const skipped = {};
   for (const locale of locales) {
+    // Some review callers pass the raw selected locales. The narration is never
+    // an alternate track, even when an owner ticks its language in the panel.
+    if (locale === narrationLocale(project.doc)) continue;
     const gaveUp = readJson(dubArtifacts(workdir, locale).skipped, null);
     if (gaveUp) {
       skipped[locale] = gaveUp.reason ?? "";

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "series": "airport-english-60-days",
+  "episodes": 60,
+  "status": "preproduction_requires_measured_media_and_official_review",
+  "source_locale": "en",
+  "locales": ["en", "zh-TW", "zh-CN", "ja", "ko"],
+  "source_array_order": ["en", "zh-TW", "zh-CN", "ja", "ko"],
+  "languages": {
+    "zh-TW": { "metadata": true, "captions": true, "dub": true },
+    "zh-CN": { "metadata": false, "captions": true, "dub": true },
+    "ja": { "metadata": false, "captions": true, "dub": true },
+    "ko": { "metadata": false, "captions": true, "dub": true }
+  },
+  "language_authorization": "The user explicitly requested four selectable CC and teaching-audio languages, English dialogue and permanent English text. Additional metadata translations are preparation drafts, not an upload selection.",
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "model": "gemini-3.8-flash-tts",
+    "style": "Clear, natural English for an adult airport listening lesson. Warm and conversational, with distinct questions and answers. Use a natural learning pace and light emphasis on the information a traveler must confirm. Do not sing, spell ordinary words, or add any words."
+  },
+  "picture": { "width": 1920, "height": 1080, "fps": 30, "codec": "h264", "profile": "high", "crf": 18, "b_frames": 2, "closed_gop_frames": 60, "pixel_format": "yuv420p", "color": "bt709", "faststart": true },
+  "audio": { "codec": "aac-lc", "sample_rate": 48000, "channels": 2, "bitrate": 384000, "loudness_lufs": -14, "true_peak_dbtp": -1, "normalization": "two-pass loudnorm" },
+  "duration": {
+    "total_seconds": 600,
+    "total_frames": 18000,
+    "includes_branding": true,
+    "branding_seconds": null,
+    "body_seconds": null,
+    "acceptance": "Measure and pin installed official intro/outro first. Body plus actual branding must equal 18000 frames. Script estimates never certify duration; do not fill deficits with silence, arbitrary repeats, or slowed speech."
+  },
+  "visuals": { "english": "one visible English utterance per official quote card", "translated_text": "selectable CC only", "safe_bottom_percent": 12, "body_min_px": 48, "body_max_lines": 3 },
+  "thumbnail": { "format": "jpeg", "width": 1280, "height": 720, "headline_percent": 40, "subject_percent": 60, "subject": "official template color-block fallback is permitted when no licensed subject capture or shot is available", "headline": "episode-specific phrase; lesson.thumbnail_headline overrides the preparation fallback" },
+  "teaching_audio": { "dialogue": "reuse approved English source takes without resynthesis", "coaching_and_quiz": "synthesize translated narration with the official provider", "cc_independent": true, "generic_dub_command": "blocked: it translates dialogue as well as coaching" },
+  "production_gates": ["outline", "independent facts and listener review", "tts dry run", "per-line check-audio", "audio", "render and measured assembly", "11-item final QA", "final", "4-item package QA", "publish package", "languages"],
+  "youtube": { "upload_authorized": false, "publication_authorized": false, "visibility": "not_uploaded", "made_for_kids_proposal": false, "paid_promotion_decision": null, "synthetic_content_decision": null },
+  "legacy_media": "excluded: Edge prototype audio, frames, captions, approvals and completion claims must not enter this production"
+}

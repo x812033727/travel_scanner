@@ -1,0 +1,783 @@
+{
+  "schema_version": 1,
+  "lesson_sha256": "a259ed78302cb1d0d1fbb16398ebcb891d35396e9bdaae267a744854ca214102",
+  "lines": [
+    {
+      "id": "568d1882",
+      "semantic_key": "guide-hook",
+      "kind": "coach",
+      "source_turn_id": null,
+      "source_take_id": "568d1882"
+    },
+    {
+      "id": "e087532b",
+      "semantic_key": "guide-goal",
+      "kind": "coach",
+      "source_turn_id": null,
+      "source_take_id": "e087532b"
+    },
+    {
+      "id": "49f30454",
+      "semantic_key": "coach-listen",
+      "kind": "coach",
+      "source_turn_id": null,
+      "source_take_id": "49f30454"
+    },
+    {
+      "id": "c95cf077",
+      "semantic_key": "first-A01",
+      "kind": "dialogue",
+      "source_turn_id": "A01",
+      "source_take_id": "c95cf077"
+    },
+    {
+      "id": "fa4e27b4",
+      "semantic_key": "first-A02",
+      "kind": "dialogue",
+      "source_turn_id": "A02",
+      "source_take_id": "fa4e27b4"
+    },
+    {
+      "id": "104beab6",
+      "semantic_key": "first-A03",
+      "kind": "dialogue",
+      "source_turn_id": "A03",
+      "source_take_id": "104beab6"
+    },
+    {
+      "id": "d02a9d84",
+      "semantic_key": "first-A04",
+      "kind": "dialogue",
+      "source_turn_id": "A04",
+      "source_take_id": "d02a9d84"
+    },
+    {
+      "id": "17e3fc1e",
+      "semantic_key": "first-A05",
+      "kind": "dialogue",
+      "source_turn_id": "A05",
+      "source_take_id": "17e3fc1e"
+    },
+    {
+      "id": "34ac5b13",
+      "semantic_key": "first-A06",
+      "kind": "dialogue",
+      "source_turn_id": "A06",
+      "source_take_id": "34ac5b13"
+    },
+    {
+      "id": "ecef54ee",
+      "semantic_key": "first-A07",
+      "kind": "dialogue",
+      "source_turn_id": "A07",
+      "source_take_id": "ecef54ee"
+    },
+    {
+      "id": "eba4922e",
+      "semantic_key": "first-A08",
+      "kind": "dialogue",
+      "source_turn_id": "A08",
+      "source_take_id": "eba4922e"
+    },
+    {
+      "id": "297d1f6d",
+      "semantic_key": "coach-repeat-a",
+      "kind": "coach",
+      "source_turn_id": null,
+      "source_take_id": "297d1f6d"
+    },
+    {
+      "id": "c6c4bcee",
+      "semantic_key": "connect-A01",
+      "kind": "dialogue",
+      "source_turn_id": "A01",
+      "source_take_id": "c95cf077"
+    },
+    {
+      "id": "c74fd438",
+      "semantic_key": "connect-A02",
+      "kind": "dialogue",
+      "source_turn_id": "A02",
+      "source_take_id": "fa4e27b4"
+    },
+    {
+      "id": "222f7b48",
+      "semantic_key": "connect-A03",
+      "kind": "dialogue",
+      "source_turn_id": "A03",
+      "source_take_id": "104beab6"
+    },
+    {
+      "id": "8d7b187d",
+      "semantic_key": "connect-A04",
+      "kind": "dialogue",
+      "source_turn_id": "A04",
+      "source_take_id": "d02a9d84"
+    },
+    {
+      "id": "84baf9de",
+      "semantic_key": "connect-A05",
+      "kind": "dialogue",
+      "source_turn_id": "A05",
+      "source_take_id": "17e3fc1e"
+    },
+    {
+      "id": "1eacc50b",
+      "semantic_key": "connect-A06",
+      "kind": "dialogue",
+      "source_turn_id": "A06",
+      "source_take_id": "34ac5b13"
+    },
+    {
+      "id": "56dd7db1",
+      "semantic_key": "connect-A07",
+      "kind": "dialogue",
+      "source_turn_id": "A07",
+      "source_take_id": "ecef54ee"
+    },
+    {
+      "id": "6398fcc4",
+      "semantic_key": "connect-A08",
+      "kind": "dialogue",
+      "source_turn_id": "A08",
+      "source_take_id": "eba4922e"
+    },
+    {
+      "id": "2c5c4e2d",
+      "semantic_key": "coach-practice",
+      "kind": "coach",
+      "source_turn_id": null,
+      "source_take_id": "2c5c4e2d"
+    },
+    {
+      "id": "da221a71",
+      "semantic_key": "practice-A01",
+      "kind": "dialogue",
+      "source_turn_id": "A01",
+      "source_take_id": "c95cf077"
+    },
+    {
+      "id": "7dbd1493",
+      "semantic_key": "practice-A02",
+      "kind": "dialogue",
+      "source_turn_id": "A02",
+      "source_take_id": "fa4e27b4"
+    },
+    {
+      "id": "62cf5bc3",
+      "semantic_key": "practice-A03",
+      "kind": "dialogue",
+      "source_turn_id": "A03",
+      "source_take_id": "104beab6"
+    },
+    {
+      "id": "5daf6f86",
+      "semantic_key": "practice-A04",
+      "kind": "dialogue",
+      "source_turn_id": "A04",
+      "source_take_id": "d02a9d84"
+    },
+    {
+      "id": "80014433",
+      "semantic_key": "practice-A05",
+      "kind": "dialogue",
+      "source_turn_id": "A05",
+      "source_take_id": "17e3fc1e"
+    },
+    {
+      "id": "22ea87af",
+      "semantic_key": "practice-A06",
+      "kind": "dialogue",
+      "source_turn_id": "A06",
+      "source_take_id": "34ac5b13"
+    },
+    {
+      "id": "aae63e64",
+      "semantic_key": "practice-A07",
+      "kind": "dialogue",
+      "source_turn_id": "A07",
+      "source_take_id": "ecef54ee"
+    },
+    {
+      "id": "86c077fd",
+      "semantic_key": "practice-A08",
+      "kind": "dialogue",
+      "source_turn_id": "A08",
+      "source_take_id": "eba4922e"
+    },
+    {
+      "id": "5865ddad",
+      "semantic_key": "coach-variation",
+      "kind": "coach",
+      "source_turn_id": null,
+      "source_take_id": "5865ddad"
+    },
+    {
+      "id": "2195e245",
+      "semantic_key": "first-B01",
+      "kind": "dialogue",
+      "source_turn_id": "B01",
+      "source_take_id": "2195e245"
+    },
+    {
+      "id": "d5701252",
+      "semantic_key": "first-B02",
+      "kind": "dialogue",
+      "source_turn_id": "B02",
+      "source_take_id": "d5701252"
+    },
+    {
+      "id": "63a5ed41",
+      "semantic_key": "first-B03",
+      "kind": "dialogue",
+      "source_turn_id": "B03",
+      "source_take_id": "63a5ed41"
+    },
+    {
+      "id": "4fdc9ecf",
+      "semantic_key": "first-B04",
+      "kind": "dialogue",
+      "source_turn_id": "B04",
+      "source_take_id": "4fdc9ecf"
+    },
+    {
+      "id": "0b39068d",
+      "semantic_key": "first-B05",
+      "kind": "dialogue",
+      "source_turn_id": "B05",
+      "source_take_id": "0b39068d"
+    },
+    {
+      "id": "5489bec5",
+      "semantic_key": "first-B06",
+      "kind": "dialogue",
+      "source_turn_id": "B06",
+      "source_take_id": "5489bec5"
+    },
+    {
+      "id": "7d738e3b",
+      "semantic_key": "first-B07",
+      "kind": "dialogue",
+      "source_turn_id": "B07",
+      "source_take_id": "7d738e3b"
+    },
+    {
+      "id": "1fdfac7b",
+      "semantic_key": "first-B08",
+      "kind": "dialogue",
+      "source_turn_id": "B08",
+      "source_take_id": "1fdfac7b"
+    },
+    {
+      "id": "8dbd4386",
+      "semantic_key": "first-B09",
+      "kind": "dialogue",
+      "source_turn_id": "B09",
+      "source_take_id": "8dbd4386"
+    },
+    {
+      "id": "ec68bac9",
+      "semantic_key": "first-B10",
+      "kind": "dialogue",
+      "source_turn_id": "B10",
+      "source_take_id": "ec68bac9"
+    },
+    {
+      "id": "e311dc4e",
+      "semantic_key": "coach-repeat-b",
+      "kind": "coach",
+      "source_turn_id": null,
+      "source_take_id": "e311dc4e"
+    },
+    {
+      "id": "a9257eba",
+      "semantic_key": "connect-B01",
+      "kind": "dialogue",
+      "source_turn_id": "B01",
+      "source_take_id": "2195e245"
+    },
+    {
+      "id": "70b1e15e",
+      "semantic_key": "connect-B02",
+      "kind": "dialogue",
+      "source_turn_id": "B02",
+      "source_take_id": "d5701252"
+    },
+    {
+      "id": "ea777620",
+      "semantic_key": "connect-B03",
+      "kind": "dialogue",
+      "source_turn_id": "B03",
+      "source_take_id": "63a5ed41"
+    },
+    {
+      "id": "d6f05b61",
+      "semantic_key": "connect-B04",
+      "kind": "dialogue",
+      "source_turn_id": "B04",
+      "source_take_id": "4fdc9ecf"
+    },
+    {
+      "id": "b03fb631",
+      "semantic_key": "connect-B05",
+      "kind": "dialogue",
+      "source_turn_id": "B05",
+      "source_take_id": "0b39068d"
+    },
+    {
+      "id": "13e40920",
+      "semantic_key": "connect-B06",
+      "kind": "dialogue",
+      "source_turn_id": "B06",
+      "source_take_id": "5489bec5"
+    },
+    {
+      "id": "915d959b",
+      "semantic_key": "connect-B07",
+      "kind": "dialogue",
+      "source_turn_id": "B07",
+      "source_take_id": "7d738e3b"
+    },
+    {
+      "id": "76564ed7",
+      "semantic_key": "connect-B08",
+      "kind": "dialogue",
+      "source_turn_id": "B08",
+      "source_take_id": "1fdfac7b"
+    },
+    {
+      "id": "c8cbe6bb",
+      "semantic_key": "connect-B09",
+      "kind": "dialogue",
+      "source_turn_id": "B09",
+      "source_take_id": "8dbd4386"
+    },
+    {
+      "id": "cb36e3c2",
+      "semantic_key": "connect-B10",
+      "kind": "dialogue",
+      "source_turn_id": "B10",
+      "source_take_id": "ec68bac9"
+    },
+    {
+      "id": "592ab38e",
+      "semantic_key": "coach-contrast",
+      "kind": "coach",
+      "source_turn_id": null,
+      "source_take_id": "592ab38e"
+    },
+    {
+      "id": "b3360f9c",
+      "semantic_key": "practice-B01",
+      "kind": "dialogue",
+      "source_turn_id": "B01",
+      "source_take_id": "2195e245"
+    },
+    {
+      "id": "8beed743",
+      "semantic_key": "practice-B02",
+      "kind": "dialogue",
+      "source_turn_id": "B02",
+      "source_take_id": "d5701252"
+    },
+    {
+      "id": "da735bbe",
+      "semantic_key": "practice-B03",
+      "kind": "dialogue",
+      "source_turn_id": "B03",
+      "source_take_id": "63a5ed41"
+    },
+    {
+      "id": "c9421ffb",
+      "semantic_key": "practice-B04",
+      "kind": "dialogue",
+      "source_turn_id": "B04",
+      "source_take_id": "4fdc9ecf"
+    },
+    {
+      "id": "aea885b3",
+      "semantic_key": "practice-B05",
+      "kind": "dialogue",
+      "source_turn_id": "B05",
+      "source_take_id": "0b39068d"
+    },
+    {
+      "id": "5212a026",
+      "semantic_key": "practice-B06",
+      "kind": "dialogue",
+      "source_turn_id": "B06",
+      "source_take_id": "5489bec5"
+    },
+    {
+      "id": "2e8b0f8e",
+      "semantic_key": "practice-B07",
+      "kind": "dialogue",
+      "source_turn_id": "B07",
+      "source_take_id": "7d738e3b"
+    },
+    {
+      "id": "b22ee4b1",
+      "semantic_key": "practice-B08",
+      "kind": "dialogue",
+      "source_turn_id": "B08",
+      "source_take_id": "1fdfac7b"
+    },
+    {
+      "id": "fcf5abb3",
+      "semantic_key": "practice-B09",
+      "kind": "dialogue",
+      "source_turn_id": "B09",
+      "source_take_id": "8dbd4386"
+    },
+    {
+      "id": "53f73739",
+      "semantic_key": "practice-B10",
+      "kind": "dialogue",
+      "source_turn_id": "B10",
+      "source_take_id": "ec68bac9"
+    },
+    {
+      "id": "fc63014d",
+      "semantic_key": "coach-quiz",
+      "kind": "coach",
+      "source_turn_id": null,
+      "source_take_id": "fc63014d"
+    },
+    {
+      "id": "d8435642",
+      "semantic_key": "quiz-1-question",
+      "kind": "question",
+      "source_turn_id": null,
+      "source_take_id": "d8435642"
+    },
+    {
+      "id": "29f6a979",
+      "semantic_key": "quiz-1-choice-0",
+      "kind": "choice",
+      "source_turn_id": null,
+      "source_take_id": "29f6a979"
+    },
+    {
+      "id": "4a3c731c",
+      "semantic_key": "quiz-1-choice-1",
+      "kind": "choice",
+      "source_turn_id": null,
+      "source_take_id": "4a3c731c"
+    },
+    {
+      "id": "4b7d7794",
+      "semantic_key": "quiz-1-choice-2",
+      "kind": "choice",
+      "source_turn_id": null,
+      "source_take_id": "4b7d7794"
+    },
+    {
+      "id": "717b3a05",
+      "semantic_key": "quiz-1-evidence-B01",
+      "kind": "dialogue",
+      "source_turn_id": "B01",
+      "source_take_id": "2195e245"
+    },
+    {
+      "id": "63a84dd6",
+      "semantic_key": "quiz-1-evidence-B02",
+      "kind": "dialogue",
+      "source_turn_id": "B02",
+      "source_take_id": "d5701252"
+    },
+    {
+      "id": "42785d9d",
+      "semantic_key": "coach-choose-1",
+      "kind": "coach",
+      "source_turn_id": null,
+      "source_take_id": "42785d9d"
+    },
+    {
+      "id": "49967366",
+      "semantic_key": "quiz-1-answer",
+      "kind": "answer",
+      "source_turn_id": null,
+      "source_take_id": "49967366"
+    },
+    {
+      "id": "1baec593",
+      "semantic_key": "quiz-2-question",
+      "kind": "question",
+      "source_turn_id": null,
+      "source_take_id": "1baec593"
+    },
+    {
+      "id": "1248e8bf",
+      "semantic_key": "quiz-2-choice-0",
+      "kind": "choice",
+      "source_turn_id": null,
+      "source_take_id": "1248e8bf"
+    },
+    {
+      "id": "65054001",
+      "semantic_key": "quiz-2-choice-1",
+      "kind": "choice",
+      "source_turn_id": null,
+      "source_take_id": "65054001"
+    },
+    {
+      "id": "d0635ad2",
+      "semantic_key": "quiz-2-choice-2",
+      "kind": "choice",
+      "source_turn_id": null,
+      "source_take_id": "d0635ad2"
+    },
+    {
+      "id": "922315fd",
+      "semantic_key": "quiz-2-evidence-B03",
+      "kind": "dialogue",
+      "source_turn_id": "B03",
+      "source_take_id": "63a5ed41"
+    },
+    {
+      "id": "a2061c61",
+      "semantic_key": "quiz-2-evidence-B04",
+      "kind": "dialogue",
+      "source_turn_id": "B04",
+      "source_take_id": "4fdc9ecf"
+    },
+    {
+      "id": "1818c1b7",
+      "semantic_key": "quiz-2-evidence-B05",
+      "kind": "dialogue",
+      "source_turn_id": "B05",
+      "source_take_id": "0b39068d"
+    },
+    {
+      "id": "e4f42566",
+      "semantic_key": "quiz-2-evidence-B06",
+      "kind": "dialogue",
+      "source_turn_id": "B06",
+      "source_take_id": "5489bec5"
+    },
+    {
+      "id": "9df213aa",
+      "semantic_key": "coach-choose-2",
+      "kind": "coach",
+      "source_turn_id": null,
+      "source_take_id": "9df213aa"
+    },
+    {
+      "id": "3c424162",
+      "semantic_key": "quiz-2-answer",
+      "kind": "answer",
+      "source_turn_id": null,
+      "source_take_id": "3c424162"
+    },
+    {
+      "id": "ffc0061e",
+      "semantic_key": "quiz-3-question",
+      "kind": "question",
+      "source_turn_id": null,
+      "source_take_id": "ffc0061e"
+    },
+    {
+      "id": "214dd15d",
+      "semantic_key": "quiz-3-choice-0",
+      "kind": "choice",
+      "source_turn_id": null,
+      "source_take_id": "214dd15d"
+    },
+    {
+      "id": "96010276",
+      "semantic_key": "quiz-3-choice-1",
+      "kind": "choice",
+      "source_turn_id": null,
+      "source_take_id": "96010276"
+    },
+    {
+      "id": "504366dd",
+      "semantic_key": "quiz-3-choice-2",
+      "kind": "choice",
+      "source_turn_id": null,
+      "source_take_id": "504366dd"
+    },
+    {
+      "id": "999ac1e0",
+      "semantic_key": "quiz-3-evidence-B07",
+      "kind": "dialogue",
+      "source_turn_id": "B07",
+      "source_take_id": "7d738e3b"
+    },
+    {
+      "id": "6ce075f3",
+      "semantic_key": "quiz-3-evidence-B08",
+      "kind": "dialogue",
+      "source_turn_id": "B08",
+      "source_take_id": "1fdfac7b"
+    },
+    {
+      "id": "28c292da",
+      "semantic_key": "coach-choose-3",
+      "kind": "coach",
+      "source_turn_id": null,
+      "source_take_id": "28c292da"
+    },
+    {
+      "id": "92def519",
+      "semantic_key": "quiz-3-answer",
+      "kind": "answer",
+      "source_turn_id": null,
+      "source_take_id": "92def519"
+    },
+    {
+      "id": "62a7aea6",
+      "semantic_key": "coach-review",
+      "kind": "coach",
+      "source_turn_id": null,
+      "source_take_id": "62a7aea6"
+    },
+    {
+      "id": "ada80047",
+      "semantic_key": "review-A01",
+      "kind": "dialogue",
+      "source_turn_id": "A01",
+      "source_take_id": "c95cf077"
+    },
+    {
+      "id": "f8200a51",
+      "semantic_key": "review-A02",
+      "kind": "dialogue",
+      "source_turn_id": "A02",
+      "source_take_id": "fa4e27b4"
+    },
+    {
+      "id": "c57d6c28",
+      "semantic_key": "review-A03",
+      "kind": "dialogue",
+      "source_turn_id": "A03",
+      "source_take_id": "104beab6"
+    },
+    {
+      "id": "b9c7883c",
+      "semantic_key": "review-A04",
+      "kind": "dialogue",
+      "source_turn_id": "A04",
+      "source_take_id": "d02a9d84"
+    },
+    {
+      "id": "8192653f",
+      "semantic_key": "review-A05",
+      "kind": "dialogue",
+      "source_turn_id": "A05",
+      "source_take_id": "17e3fc1e"
+    },
+    {
+      "id": "2c309b8e",
+      "semantic_key": "review-A06",
+      "kind": "dialogue",
+      "source_turn_id": "A06",
+      "source_take_id": "34ac5b13"
+    },
+    {
+      "id": "9b54dc57",
+      "semantic_key": "review-A07",
+      "kind": "dialogue",
+      "source_turn_id": "A07",
+      "source_take_id": "ecef54ee"
+    },
+    {
+      "id": "a2dc6607",
+      "semantic_key": "review-A08",
+      "kind": "dialogue",
+      "source_turn_id": "A08",
+      "source_take_id": "eba4922e"
+    },
+    {
+      "id": "bc0ceca9",
+      "semantic_key": "review-B01",
+      "kind": "dialogue",
+      "source_turn_id": "B01",
+      "source_take_id": "2195e245"
+    },
+    {
+      "id": "7e4d5d44",
+      "semantic_key": "review-B02",
+      "kind": "dialogue",
+      "source_turn_id": "B02",
+      "source_take_id": "d5701252"
+    },
+    {
+      "id": "da407801",
+      "semantic_key": "review-B03",
+      "kind": "dialogue",
+      "source_turn_id": "B03",
+      "source_take_id": "63a5ed41"
+    },
+    {
+      "id": "b7c4c2d7",
+      "semantic_key": "review-B04",
+      "kind": "dialogue",
+      "source_turn_id": "B04",
+      "source_take_id": "4fdc9ecf"
+    },
+    {
+      "id": "399fc1b1",
+      "semantic_key": "review-B05",
+      "kind": "dialogue",
+      "source_turn_id": "B05",
+      "source_take_id": "0b39068d"
+    },
+    {
+      "id": "80f4c6e4",
+      "semantic_key": "review-B06",
+      "kind": "dialogue",
+      "source_turn_id": "B06",
+      "source_take_id": "5489bec5"
+    },
+    {
+      "id": "608fd588",
+      "semantic_key": "review-B07",
+      "kind": "dialogue",
+      "source_turn_id": "B07",
+      "source_take_id": "7d738e3b"
+    },
+    {
+      "id": "3bbd15ee",
+      "semantic_key": "review-B08",
+      "kind": "dialogue",
+      "source_turn_id": "B08",
+      "source_take_id": "1fdfac7b"
+    },
+    {
+      "id": "1d12274f",
+      "semantic_key": "review-B09",
+      "kind": "dialogue",
+      "source_turn_id": "B09",
+      "source_take_id": "8dbd4386"
+    },
+    {
+      "id": "3a072069",
+      "semantic_key": "review-B10",
+      "kind": "dialogue",
+      "source_turn_id": "B10",
+      "source_take_id": "ec68bac9"
+    },
+    {
+      "id": "b9ce57d8",
+      "semantic_key": "guide-recap",
+      "kind": "coach",
+      "source_turn_id": null,
+      "source_take_id": "b9ce57d8"
+    },
+    {
+      "id": "f9265335",
+      "semantic_key": "guide-comment",
+      "kind": "coach",
+      "source_turn_id": null,
+      "source_take_id": "f9265335"
+    },
+    {
+      "id": "8c79b864",
+      "semantic_key": "guide-subscribe",
+      "kind": "coach",
+      "source_turn_id": null,
+      "source_take_id": "8c79b864"
+    }
+  ]
+}

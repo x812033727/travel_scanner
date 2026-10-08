@@ -9,7 +9,7 @@ import { parseSrt } from "./captions.mjs";
 import { sandbox } from "./fixtures/load.mjs";
 import { atomicWrite, readJson } from "./paths.mjs";
 import { eachLine, textHash } from "./schema.mjs";
-import { captionLocalesOf, captionTimelineOf, chosenLocales, currentDub, dubsForUpload, LANGUAGES_FILE, readLanguages, runCaptions, writeLanguages } from "./stages.mjs";
+import { captionLocalesOf, captionTimelineOf, chosenLocales, currentDub, dubLocalesOf, dubsForUpload, LANGUAGES_FILE, readLanguages, runCaptions, writeLanguages } from "./stages.mjs";
 import { dubArtifacts, loadProject } from "./state.mjs";
 import { estimateTimeline, frameToMs, speechHash } from "./timeline.mjs";
 
@@ -151,6 +151,24 @@ test("the language choice is read as the site writes it: only the ticked languag
   assert.deepEqual(captionLocalesOf(readLanguages(box.workdir)), ["zh-TW"]);
   writeFileSync(path.join(box.workdir, LANGUAGES_FILE), "[]");
   assert.equal(readLanguages(box.workdir), null, "a file that is not a choice reads as none");
+});
+
+test("reading an English video's language selection preserves all four translated audio choices", () => {
+  const box = sandbox();
+  mkdirSync(box.workdir, { recursive: true });
+  writeLanguages(box.workdir, { locales: Object.fromEntries(["zh-TW", "zh-CN", "ja", "ko", "en"].map((locale) => [locale, { dub: true }])) });
+  const choice = readLanguages(box.workdir);
+  assert.equal(choice.locales["zh-TW"].dub, true);
+  assert.equal(choice.locales["zh-TW"].captions, true);
+  assert.deepEqual(dubLocalesOf(choice, { narration_locale: "en" }), ["zh-TW", "ja", "ko", "zh-CN"]);
+  assert.deepEqual(dubLocalesOf(choice, { narration_locale: "zh-TW" }), ["en", "ja", "ko", "zh-CN"]);
+
+  // Collection also excludes a source-language choice before inspecting any
+  // stale/failed alternate track; review callers can pass the raw selection.
+  const sourceFiles = dubArtifacts(box.workdir, "zh-TW");
+  mkdirSync(sourceFiles.dir, { recursive: true });
+  writeFileSync(sourceFiles.skipped, JSON.stringify({ reason: "not an alternate" }));
+  assert.deepEqual(dubsForUpload({ doc: { narration_locale: "zh-TW" } }, box.workdir, "unused", ["zh-TW"]), { dubs: [], skipped: {} });
 });
 
 test("captions follow the choice: only zh-TW and the chosen locales are written, a dropped locale's files go, and a dub times its captions only when chosen", () => {

@@ -1,0 +1,54 @@
+{
+  "scope": "source_preparation_and_code_validation_only",
+  "production_qa": false,
+  "checks": {
+    "test_tools": {
+      "passed": 2241,
+      "skipped": 3,
+      "log_sha256": "d3bac8bf3bb202743559b989f50d93a9840b29757926cecfdba2afda1f3d0dd3"
+    },
+    "test_docs_videos": {
+      "passed": 199,
+      "skipped": 0,
+      "log_sha256": "b9e71c542ecaed70e4d9a7bc80669c67640ed3f43d1802c7757292699e4c2b35"
+    },
+    "task_board": {
+      "validated_tasks": 1682,
+      "passed": true,
+      "log_sha256": "c0e2e317474d2357fa7731aae16fca816263307f4ecac42eea6f2e641e1f29a7"
+    },
+    "airport_pacing_targeted": {
+      "passed": 28,
+      "skipped": 0,
+      "evidence": "practice-pacing-independent-review.md; actual current full tools suite also covers these tests"
+    },
+    "airport_regression_checkpoint_before_optional_pacing": {
+      "passed": 50,
+      "skipped": 0,
+      "log_sha256": "49e950bc10c0ec68c7bbdab2288b5b9c0b4bdd50425da6f7caa8800a76b537bf",
+      "superseded_by": "current full test_tools suite includes the subsequent optional-pacing changes"
+    }
+  },
+  "code_sha256": {
+    "tools/video/airport_english/delivery.mjs": "92793032afa8688fb75cecae59c31256b27384137780a1a963659ac3a9b0b554",
+    "tools/video/airport_english/delivery.test.mjs": "3294b6f111ebe46ac9f6df908e92b704aecf82b4999958e975d230d357594dc0",
+    "tools/video/airport_english/prepare.mjs": "2eb6ff8a221cabd6381dca07abdc44d835532ff1065690f9049280bb0731db30",
+    "tools/video/airport_english/prepare.test.mjs": "66b6fe40cf6bbcf725a44f543bbe70adf22df7b90d9e605029877639895df4a6",
+    "tools/video/airport_english/preview/controller.mjs": "655493057074d3c2606336d038f4f5902893bbf248cf324859d21aba3432577a",
+    "tools/video/airport_english/preview/player.mjs": "3fb76a7eca8e2266a619b07276e2c2c786c9180a3b5fdd15cf1d91655c31b238",
+    "tools/video/airport_english/preview.test.mjs": "af426f312aea039d21124afb8195e0a78da2ba63e7dabedb7d02d9eb1f330c27",
+    "tools/video/airport_english/review-bindings.mjs": "bd10cf88b911fccbd52d91ef37e82b14a394c1dd7c48ebca8aa753c079a63ef6",
+    "tools/video/airport_english/review-bindings.test.mjs": "265502e2ac5764f4ba5589f23ac685fb7024d6521af6bdd4d96c248331e6a308",
+    "tools/video/airport_english/teaching-audio.mjs": "ae637fb8c581f78861ba4340a4122f30b93b9599d89c05d638f8bc1dfa13143e",
+    "tools/video/airport_english/teaching-audio.test.mjs": "03cc20c2188ce01237ba9473388d2746a5e0a62a88ecde4869ab6a8d9d586dc3"
+  },
+  "core_code_sha256": {
+    "tools/video/core/drama.mjs": "f5e31865984f984b12434854924107afc787a6ffbd02c69a55429166a1b5265a",
+    "tools/video/core/stages.mjs": "9d649c69621168594f1be8145a7ecf981e264e3ebc41db847151b22f66fdd986"
+  },
+  "limitations": [
+    "Expanded Day01 official English synthesis and all111 real per-line checks have passed. This report covers software checks only; no real mixed-audio encode/check or final-video QA has run.",
+    "Browser checks use prototype media only as functional fixtures.",
+    "Static rendering does not constitute full-video viewing or measured duration acceptance."
+  ]
+}
