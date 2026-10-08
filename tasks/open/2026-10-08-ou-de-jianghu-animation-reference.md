@@ -41,6 +41,8 @@ scope:
 
 ## Notes
 
+2026-10-09 第二次續作：依站主「繼續」補 8 張六嘴形板（48 個靜態嘴形，殷無聲無台詞不補），另修白扇材質與多餘掛飾。角色參照現行 82 新圖＋9 沿用正面＝91 用途；含歷史 112 PNG＝111 唯一＋1 別名。finalize-art.mjs 核對 27 次本輪產物原件與複本、12 正典 SHA；其中 19 張現行新選圖（11 修扇用途＋8 嘴形）。另一位審查者實看8嘴形與8來源、11第一修對照和7第二修。concept-v5、right-profile-v3、left-three-quarter-v3 仍有微小手邊接點不明，限定身份／服裝，禁止作扇結構來源；construction-details-v3、personal-prop-states-v3 為唯一白扇拓撲依據。未再購買重複修圖。原生尺寸按用途保留，嘴形非音素／對嘴驗收。claim --force 只略過尚待個別採用的上游依賴，沒有假造接受。最新 receipt、QA、圖庫驗證與生成器均保存，本票 release 留待正式採用與正常製作關卡。
+
 2026-10-09收尾：已交74張新增latest候選＋9張沿用正面，共83項用途。保留90個PNG檔，89張唯一生成圖，1個同圖別名；另有2次九參照圖請求在驗證階段被拒、3份未執行且已替換的提示草稿，未當成生成成功。姬左右霜印／背髮、包的頭向、燕持刀手與多臂、沈扇多餘飾件、長老冠留白及動作桌面等修訂均留原版。母圖及12來源SHA相符。獨立覆核實看39張版本，並非冒稱每張均由兩人覆核；全部latest由生成負責者實看。83圖解碼、9人篩選、放大、手機版與跨冊連結已過。見 [交付與限制](../../docs/videos/series-plans/ou-de-jianghu/visual-development/animation-reference/README.md)、[媒體收據](../../docs/videos/series-plans/ou-de-jianghu/visual-development/animation-reference/media-receipt.json)、[review](../../docs/videos/series-plans/ou-de-jianghu/visual-development/animation-reference/review.md)。剩餘為個別採用、白扇母版統一及正式動畫關卡；不重買已完成候選。
 
 - 2026-10-08 續做：依站主「好 續繼都完成」，以現有27張畫像為候選來源平行補齊動畫參照；claim --force 僅略過尚待個別採用的畫像相依，沒有宣稱畫像已正式核准。所有新圖保持候選及來源 SHA，原圖不刪除。

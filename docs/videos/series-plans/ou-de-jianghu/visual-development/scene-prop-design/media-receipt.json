@@ -91,9 +91,9 @@
     }
   ],
   "counts": {
-    "original_pngs": 40,
-    "latest_pngs": 29,
-    "latest_scene_pngs": 19,
+    "original_pngs": 46,
+    "latest_pngs": 28,
+    "latest_scene_pngs": 18,
     "latest_prop_boards": 7,
     "latest_controlled_cards": 3,
     "shots_indexed": 455,
@@ -741,7 +741,7 @@
       "id": "chess-guestroom-cold",
       "version": 1,
       "kind": "scene-state",
-      "status": "superseded-candidate",
+      "status": "retired-not-for-model-input",
       "file": "scene-props/20261008/chess-guestroom-cold-v1.png",
       "original_path": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-1f0828ca-5e47-4f01-9a1d-432c636e3263.png",
       "sha256": "31a6d340fa176da509085c93fc12453d9fb4c42b66a10bc7713440a2d9fdac4f",
@@ -1099,7 +1099,7 @@
       "id": "personal-prop-states",
       "version": 2,
       "kind": "prop",
-      "status": "candidate",
+      "status": "superseded-candidate",
       "file": "scene-props/20261008/personal-prop-states-v2.png",
       "original_path": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-59b6e9ad-feb8-4a3b-9a5f-64e5e6c32a6f.png",
       "sha256": "b9e7f0361498c735b26f5fda2261075fa3011a5f7ff62ef925a494dcc41fb2a1",
@@ -1235,7 +1235,7 @@
       "id": "chess-guestroom-master",
       "version": 3,
       "kind": "scene",
-      "status": "candidate",
+      "status": "superseded-candidate",
       "file": "scene-props/20261008/chess-guestroom-master-v3.png",
       "original_path": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-86aa05b3-16ad-4a90-8bdf-ae6cfbb07057.png",
       "sha256": "cef75758c34deb4cb5b92223afe53ef650e278b528a40b7183835f56f1440c59",
@@ -1267,7 +1267,7 @@
       "id": "chess-guestroom-angle-b",
       "version": 2,
       "kind": "scene",
-      "status": "candidate",
+      "status": "superseded-candidate",
       "file": "scene-props/20261008/chess-guestroom-angle-b-v2.png",
       "original_path": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-ee80e01e-a8dd-4adf-a12a-f93bd8300726.png",
       "sha256": "7d96ce35a408062f715ef637e3b4f566e030961236a485aa43f47a205e13a746",
@@ -1299,7 +1299,7 @@
       "id": "chess-guestroom-cold",
       "version": 2,
       "kind": "scene-state",
-      "status": "candidate",
+      "status": "retired-not-for-model-input",
       "file": "scene-props/20261008/chess-guestroom-cold-v2.png",
       "original_path": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-2e9432e5-55cc-40da-98f8-5d88bf30ddee.png",
       "sha256": "85d4b64e049785a151b3264e9d413654e2a451e265cb241d309d3687646ba27d",
@@ -1326,20 +1326,301 @@
       "owner_accepted": false,
       "look_imported": false,
       "animation_verified": false
+    },
+    {
+      "id": "chess-guestroom-master",
+      "version": 4,
+      "kind": "scene",
+      "status": "candidate",
+      "file": "scene-props/20261009/chess-guestroom-master-v4.png",
+      "original_path": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-d37bd224-9fe8-46a1-b9fd-04840436549b.png",
+      "sha256": "f556ac041f9d13cfdf991630d4e13bfc4482b69dd29a8dc4a725c58e0aeba84b",
+      "width": 1672,
+      "height": 941,
+      "source_ids": [
+        "a04-s052",
+        "a04-s055",
+        "a04-s087"
+      ],
+      "source_pointers": [
+        "/scenes/328",
+        "/scenes/331",
+        "/scenes/363"
+      ],
+      "references": [
+        {
+          "path": "scene-props/20261008/chess-guestroom-master-v3.png",
+          "sha256": "cef75758c34deb4cb5b92223afe53ef650e278b528a40b7183835f56f1440c59",
+          "kind": "portrait_reference"
+        }
+      ],
+      "visual_qa": "2026-10-09實看：右後窗已是不透景紙面，原右上月輪消失，沒有室外樹景；左門關、單燭亮、兩席、低桌、室內盆栽及暖冷光位置保留。只修窗面，棋點仍須按連戲SVG覆寫。",
+      "owner_accepted": false,
+      "look_imported": false,
+      "animation_verified": false
+    },
+    {
+      "id": "chess-guestroom-angle-b",
+      "version": 3,
+      "kind": "scene",
+      "status": "rejected-candidate",
+      "file": "scene-props/20261009/chess-guestroom-angle-b-v3.png",
+      "original_path": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-207d1241-6d39-4005-9dc5-995399fcc6ad.png",
+      "sha256": "2e21028bd234f1d098c5bbb2d998970657d924e8a0696281577f250dc44cafa4",
+      "width": 1672,
+      "height": 941,
+      "source_ids": [
+        "a04-s055",
+        "a05-s048",
+        "a05-s073"
+      ],
+      "source_pointers": [
+        "/scenes/331",
+        "/scenes/415",
+        "/scenes/440"
+      ],
+      "references": [
+        {
+          "path": "scene-props/20261008/chess-guestroom-angle-b-v2.png",
+          "sha256": "7d96ce35a408062f715ef637e3b4f566e030961236a485aa43f47a205e13a746",
+          "kind": "portrait_reference"
+        }
+      ],
+      "visual_qa": "2026-10-09第一修：右側窗已不透景，但左入口門的紙面也被誤改為亮冷藍，違反只修右窗/保留入口暖色，保留為退回版本。",
+      "owner_accepted": false,
+      "look_imported": false,
+      "animation_verified": false
+    },
+    {
+      "id": "chess-guestroom-cold",
+      "version": 3,
+      "kind": "scene-state",
+      "status": "retired-not-for-model-input",
+      "file": "scene-props/20261009/chess-guestroom-cold-v3.png",
+      "original_path": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-78b80a26-23da-4d09-a44a-925a3228c5c7.png",
+      "sha256": "3a6831efea27933db0e2ec4d4ac58e4ff3b2a61fac843575e35ffa7ff8dd7d5e",
+      "width": 1672,
+      "height": 941,
+      "source_ids": [
+        "a05-s031",
+        "a05-s035",
+        "a05-s042"
+      ],
+      "source_pointers": [
+        "/scenes/398",
+        "/scenes/402",
+        "/scenes/409"
+      ],
+      "references": [
+        {
+          "path": "scene-props/20261008/chess-guestroom-cold-v2.png",
+          "sha256": "85d4b64e049785a151b3264e9d413654e2a451e265cb241d309d3687646ba27d",
+          "kind": "portrait_reference"
+        }
+      ],
+      "visual_qa": "2026-10-09第一修失敗：右上月輪仍在；雖保留左門開、單燭滅及翻盤一壺一杯，紙窗仍不合格，不可作模型輸入。",
+      "owner_accepted": false,
+      "look_imported": false,
+      "animation_verified": false
+    },
+    {
+      "id": "personal-prop-states",
+      "version": 3,
+      "kind": "prop",
+      "status": "candidate",
+      "file": "scene-props/20261009/personal-prop-states-v3.png",
+      "original_path": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-ec9cf565-2fd1-4cb8-b675-483aff4e6957.png",
+      "sha256": "793553b043e0bc05a24bcea9901f16621426f95ae22ce77cc502a342170fcf6e",
+      "width": 1672,
+      "height": 941,
+      "source_ids": [
+        "a01-s018",
+        "a01-s027",
+        "a03-s077",
+        "a03-s078",
+        "a05-s067",
+        "a05-s068",
+        "a05-s089"
+      ],
+      "source_pointers": [
+        "/scenes/17",
+        "/scenes/26",
+        "/scenes/263",
+        "/scenes/264",
+        "/scenes/434",
+        "/scenes/435",
+        "/scenes/456"
+      ],
+      "references": [
+        {
+          "path": "scene-props/20261008/personal-prop-states-v2.png",
+          "sha256": "b9e7f0361498c735b26f5fda2261075fa3011a5f7ff62ef925a494dcc41fb2a1",
+          "kind": "portrait_reference"
+        }
+      ],
+      "visual_qa": "2026-10-09實看：扇上藍玉墜、藍繩和藍流蘇已移除；白玉扇骨/紙葉與小銀鉸釘、下方扇骨局部保留。三圈木珠/裂珠、3銅錢及2在繩+1落地兩態與紅繩紅穗維持。人物腰上原有藍流蘇不在本板修訂範圍。",
+      "owner_accepted": false,
+      "look_imported": false,
+      "animation_verified": false
+    },
+    {
+      "id": "chess-guestroom-angle-b",
+      "version": 4,
+      "kind": "scene",
+      "status": "candidate",
+      "file": "scene-props/20261009/chess-guestroom-angle-b-v4.png",
+      "original_path": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-f3288266-bb99-4c17-b4ed-a4d8189ff738.png",
+      "sha256": "c776694b6d7f24511ec1902096623099efd1593fabba48f33deac7f609a57aca",
+      "width": 1672,
+      "height": 941,
+      "source_ids": [
+        "a04-s055",
+        "a05-s048",
+        "a05-s073"
+      ],
+      "source_pointers": [
+        "/scenes/331",
+        "/scenes/415",
+        "/scenes/440"
+      ],
+      "references": [
+        {
+          "path": "scene-props/20261009/chess-guestroom-angle-b-v3.png",
+          "sha256": "2e21028bd234f1d098c5bbb2d998970657d924e8a0696281577f250dc44cafa4",
+          "kind": "generated_reference"
+        },
+        {
+          "path": "scene-props/20261008/chess-guestroom-angle-b-v2.png",
+          "sha256": "7d96ce35a408062f715ef637e3b4f566e030961236a485aa43f47a205e13a746",
+          "kind": "portrait_reference"
+        }
+      ],
+      "visual_qa": "2026-10-09第二修實看：左入口閉門暖棕紙面恢復；右前窗仍為不透景紙面，無月輪/室外景；同側B角、單燭亮/兩席/低桌/盆栽保留。窗格/棋點不是精密幾何驗證。",
+      "owner_accepted": false,
+      "look_imported": false,
+      "animation_verified": false
+    },
+    {
+      "id": "chess-guestroom-cold",
+      "version": 4,
+      "kind": "scene-state",
+      "status": "retired-not-for-model-input",
+      "file": "scene-props/20261009/chess-guestroom-cold-v4.png",
+      "original_path": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-4950d7af-0c22-4009-88a2-6dde5bd2c753.png",
+      "sha256": "0fc324e6cedfaeb281d2d094b363a6ea8ef3ea149b7dd7d7d8fa210b6384d8fc",
+      "width": 1672,
+      "height": 941,
+      "source_ids": [
+        "a05-s031",
+        "a05-s035",
+        "a05-s042"
+      ],
+      "source_pointers": [
+        "/scenes/398",
+        "/scenes/402",
+        "/scenes/409"
+      ],
+      "references": [
+        {
+          "path": "scene-props/20261009/chess-guestroom-cold-v3.png",
+          "sha256": "3a6831efea27933db0e2ec4d4ac58e4ff3b2a61fac843575e35ffa7ff8dd7d5e",
+          "kind": "generated_reference"
+        },
+        {
+          "path": "scene-props/20261009/chess-guestroom-master-v4.png",
+          "sha256": "f556ac041f9d13cfdf991630d4e13bfc4482b69dd29a8dc4a725c58e0aeba84b",
+          "kind": "generated_reference"
+        }
+      ],
+      "visual_qa": "2026-10-09第二修仍失敗：右上圓形月輪清楚殘留，紙面霜紋亦減少；兩次上限已到。全部cold獨立圖退役不作模型輸入；改採master-v4加逐鏡冷態規格，沒有宣稱冷態圖修好。",
+      "owner_accepted": false,
+      "look_imported": false,
+      "animation_verified": false
     }
   ],
   "auxiliary": [
     {
+      "file": "scene-props/20261009/go-layout-initial-before-a04-s051.svg",
+      "sha256": "7633b143b7ab3d4246f2944df1e4d470c4470b475430fdac82c8868d1c3e8b80",
+      "status": "fixed_editorial_continuity",
+      "state_id": "initial-before-a04-s051",
+      "board_stones": 12,
+      "generated_image": false
+    },
+    {
+      "file": "scene-props/20261009/go-layout-after-a04-s051.svg",
+      "sha256": "6605d0d55742154772894f137d71d7c146f67a0680caa4340ae6b9085ebd3c5a",
+      "status": "fixed_editorial_continuity",
+      "state_id": "after-a04-s051",
+      "board_stones": 13,
+      "generated_image": false
+    },
+    {
+      "file": "scene-props/20261009/go-layout-after-a04-s062.svg",
+      "sha256": "f0d9701c437fcda7d8e2ef427493e6537300e5a5ab6125ed9a7a5d7766a9b258",
+      "status": "fixed_editorial_continuity",
+      "state_id": "after-a04-s062",
+      "board_stones": 14,
+      "generated_image": false
+    },
+    {
+      "file": "scene-props/20261009/go-layout-after-a04-s071.svg",
+      "sha256": "1cf00897a2d812a89022c6025b5443a45f4431a13abdc2418eb4750f4195c059",
+      "status": "fixed_editorial_continuity",
+      "state_id": "after-a04-s071",
+      "board_stones": 15,
+      "generated_image": false
+    },
+    {
+      "file": "scene-props/20261009/go-layout-after-a04-s079.svg",
+      "sha256": "fbe1a30824890b162f3a9cabb59e122de914210e30276aba3212cc9f0401adab",
+      "status": "fixed_editorial_continuity",
+      "state_id": "after-a04-s079",
+      "board_stones": 16,
+      "generated_image": false
+    },
+    {
+      "file": "scene-props/20261009/go-layout-after-a05-s091.svg",
+      "sha256": "b302f76f4882d5e4bd6d6adeed2adc652abdde5519b706bca9db091f78749b97",
+      "status": "fixed_editorial_continuity",
+      "state_id": "after-a05-s091",
+      "board_stones": 17,
+      "generated_image": false
+    },
+    {
+      "file": "scene-props/20261009/go-layout-before.svg",
+      "sha256": "fbe1a30824890b162f3a9cabb59e122de914210e30276aba3212cc9f0401adab",
+      "status": "fixed_editorial_continuity",
+      "state_id": "after-a04-s079",
+      "board_stones": 16,
+      "generated_image": false
+    },
+    {
+      "file": "scene-props/20261009/go-layout-after.svg",
+      "sha256": "b302f76f4882d5e4bd6d6adeed2adc652abdde5519b706bca9db091f78749b97",
+      "status": "fixed_editorial_continuity",
+      "state_id": "after-a05-s091",
+      "board_stones": 17,
+      "generated_image": false
+    }
+  ],
+  "historical_auxiliary": [
+    {
       "file": "scene-props/20261008/go-layout-before.svg",
       "sha256": "37a028449b8ce35096bec9b55a15ba546a35e6c541074c579f8b5d85afa2c083",
-      "status": "editable_geometry_proposal",
+      "status": "historical_proposal_not_selected",
       "generated_image": false
     },
     {
       "file": "scene-props/20261008/go-layout-after.svg",
       "sha256": "bb4f04e02fbd28c4bdf92317c29718ddd766d1ac49f048ca1089fc0f6785f382",
-      "status": "editable_geometry_proposal",
+      "status": "historical_proposal_not_selected",
       "generated_image": false
     }
-  ]
+  ],
+  "cold_state_spec": {
+    "file": "cold-state-spec.json",
+    "base_sha256": "f556ac041f9d13cfdf991630d4e13bfc4482b69dd29a8dc4a725c58e0aeba84b",
+    "rendered": false
+  }
 }

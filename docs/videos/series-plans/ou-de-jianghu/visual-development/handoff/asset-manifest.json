@@ -1,8 +1,10 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "episode": "ou-de-jianghu-e001",
   "status": "preproduction_review_package",
-  "source_commit": "c6454463d0eb53e4c8166be0b93a587598c03208",
+  "date_local": "2026-10-09",
+  "source_commit": "36028f5eacade3eeeadea9554e7dcaf797e0a902",
+  "inventory_source_commit": "c6454463d0eb53e4c8166be0b93a587598c03208",
   "source_files": [
     {
       "path": "docs/videos/series-plans/ou-de-jianghu/setting.json",
@@ -53,6 +55,11 @@
       "sha256": "58c48308d41c283046b5d419f33e449a0bb23a85139e8ada5bc56118ebf7357c"
     }
   ],
+  "builder": {
+    "file": "docs/videos/series-plans/ou-de-jianghu/visual-development/handoff/build-manifest.mjs",
+    "sha256": "09aef19b5a35b140f10887b9475dfc4cb9a9c9bc4c3ad2783a98b809d6bac327",
+    "commit_is_context_only": true
+  },
   "accepted_style": "保留目前華麗古裝與細緻人物風格",
   "owner_asset_selection": false,
   "plan_locked": false,
@@ -62,14 +69,22 @@
     "characters": 9,
     "concepts": 9,
     "portraits": 27,
-    "new_character_references": 74,
+    "new_character_references": 82,
     "reused_front_views": 9,
-    "character_reference_uses": 83,
-    "scene_and_prop_candidates": 29,
-    "unique_latest_art": 139,
-    "character_reference_retained_png_files": 90,
-    "character_reference_unique_generated_images": 89,
-    "character_reference_alias_files": 1
+    "character_reference_uses": 91,
+    "static_mouth_sheets": 8,
+    "scene_and_prop_candidates": 28,
+    "unique_latest_art": 146
+  },
+  "reference_history_counts_from_receipt": {
+    "characters": 9,
+    "new_selected_png": 82,
+    "reused_front_png": 9,
+    "total_reference_uses": 91,
+    "mouth_study_sheets": 8,
+    "all_new_png_including_history": 112,
+    "unique_generated_images": 111,
+    "alias_files": 1
   },
   "characters": [
     {
@@ -77,18 +92,19 @@
       "name": "沈歸鶴「白鶴先生」",
       "look_id": "base",
       "asset_keys": [
-        "shen-guihe-concept-v3",
+        "shen-guihe-concept-v5",
         "shen-guihe-front-headshot-v1",
-        "shen-guihe-three-quarter-halfbody-v1",
-        "shen-guihe-full-body-v1",
-        "shen-guihe-back-v1",
-        "shen-guihe-left-profile-v1",
-        "shen-guihe-right-profile-v1",
-        "shen-guihe-left-three-quarter-v1",
-        "shen-guihe-right-three-quarter-v1",
+        "shen-guihe-three-quarter-halfbody-v2",
+        "shen-guihe-full-body-v3",
+        "shen-guihe-back-v2",
+        "shen-guihe-left-profile-v2",
+        "shen-guihe-right-profile-v3",
+        "shen-guihe-left-three-quarter-v3",
+        "shen-guihe-right-three-quarter-v3",
         "shen-guihe-expressions-v1",
-        "shen-guihe-action-phases-v1",
-        "shen-guihe-construction-details-v2"
+        "shen-guihe-action-phases-v3",
+        "shen-guihe-construction-details-v3",
+        "shen-guihe-mouth-shapes-v1"
       ]
     },
     {
@@ -107,7 +123,8 @@
         "ji-wushuang-right-three-quarter-v4",
         "ji-wushuang-expressions-v1",
         "ji-wushuang-action-phases-v1",
-        "ji-wushuang-construction-details-v1"
+        "ji-wushuang-construction-details-v1",
+        "ji-wushuang-mouth-shapes-v2"
       ]
     },
     {
@@ -126,7 +143,8 @@
         "ji-wen-right-three-quarter-v1",
         "ji-wen-expressions-v1",
         "ji-wen-action-phases-v1",
-        "ji-wen-construction-details-v1"
+        "ji-wen-construction-details-v1",
+        "ji-wen-mouth-shapes-v1"
       ]
     },
     {
@@ -145,7 +163,8 @@
         "bao-sanqian-right-three-quarter-v1",
         "bao-sanqian-expressions-v1",
         "bao-sanqian-action-phases-v1",
-        "bao-sanqian-construction-details-v1"
+        "bao-sanqian-construction-details-v1",
+        "bao-sanqian-mouth-shapes-v1"
       ]
     },
     {
@@ -183,7 +202,8 @@
         "yan-hui-right-three-quarter-v3",
         "yan-hui-expressions-v1",
         "yan-hui-action-phases-v1",
-        "yan-hui-construction-details-v1"
+        "yan-hui-construction-details-v1",
+        "yan-hui-mouth-shapes-v1"
       ]
     },
     {
@@ -202,7 +222,8 @@
         "nie-gutie-right-three-quarter-v1",
         "nie-gutie-expressions-v1",
         "nie-gutie-action-phases-v1",
-        "nie-gutie-construction-details-v1"
+        "nie-gutie-construction-details-v1",
+        "nie-gutie-mouth-shapes-v1"
       ]
     },
     {
@@ -221,7 +242,8 @@
         "xuanmen-elder-right-three-quarter-v1",
         "xuanmen-elder-expressions-v1",
         "xuanmen-elder-action-phases-v2",
-        "xuanmen-elder-construction-details-v1"
+        "xuanmen-elder-construction-details-v1",
+        "xuanmen-elder-mouth-shapes-v1"
       ]
     },
     {
@@ -240,7 +262,8 @@
         "luo-qingyan-right-three-quarter-v1",
         "luo-qingyan-expressions-v1",
         "luo-qingyan-action-phases-v1",
-        "luo-qingyan-construction-details-v1"
+        "luo-qingyan-construction-details-v1",
+        "luo-qingyan-mouth-shapes-v1"
       ]
     }
   ],
@@ -258,7 +281,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "episode1-portraits/media-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -279,7 +302,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "episode1-portraits/media-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -300,7 +323,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "episode1-portraits/media-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -321,7 +344,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "episode1-portraits/media-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -342,7 +365,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "episode1-portraits/media-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -363,7 +386,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "episode1-portraits/media-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -373,18 +396,18 @@
     },
     {
       "category": "concept",
-      "key": "shen-guihe-concept-v3",
+      "key": "shen-guihe-concept-v5",
       "character_id": "shen-guihe",
       "look_id": "base",
       "use": "art_direction",
-      "version": 3,
-      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/art-direction/20261008/shen-guihe-concept-v3.png",
-      "sha256": "8e581736e7c86a30433fd26d4a3b8be0276d30cfa343c25a279736e4e2be43a3",
+      "version": 5,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/shen-guihe-concept-v5.png",
+      "sha256": "5cb93d8797ae6f40b1553785bfe69d0f5b61f5b521bebc6275fabd0084bff467",
       "native_dimensions": {
         "width": 1536,
         "height": 1024
       },
-      "receipt": "episode1-portraits/media-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -405,7 +428,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "episode1-portraits/media-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -426,7 +449,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "episode1-portraits/media-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -450,7 +473,7 @@
         "actual_ratio": "1:1",
         "aspect_ratio": 1
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -458,26 +481,26 @@
       "animation_verified": false,
       "limitations": [
         "native_target_met",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
       "category": "portrait",
-      "key": "shen-guihe-three-quarter-halfbody-v1",
+      "key": "shen-guihe-three-quarter-halfbody-v2",
       "character_id": "shen-guihe",
       "look_id": "base",
       "use": "three-quarter-halfbody",
-      "version": 1,
-      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/shen-guihe-three-quarter-halfbody-v1.png",
-      "sha256": "f61d0a7b3d13f5e8b0c1816d996c5b432272213c3064fabf92f4ea83bd84fc47",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/shen-guihe-three-quarter-halfbody-v2.png",
+      "sha256": "a8a5b5ab0a0e63e0bcaf3ace7d4f31c3982c4c37302cf8898919220b2f2fd6e4",
       "native_dimensions": {
         "width": 1003,
         "height": 1568,
         "long_edge": 1568,
-        "actual_ratio": "1003:1568",
         "aspect_ratio": 0.6396683673469388
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -485,26 +508,26 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "native_ratio_differs_from_target"
+        "native_ratio_differs_from_target",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
       "category": "portrait",
-      "key": "shen-guihe-full-body-v1",
+      "key": "shen-guihe-full-body-v3",
       "character_id": "shen-guihe",
       "look_id": "base",
       "use": "full-body",
-      "version": 1,
-      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/shen-guihe-full-body-v1.png",
-      "sha256": "b13e5c2362ab2aad580e71b1e8d22cffdad69bb9c39df62460bf509ac3ec064b",
+      "version": 3,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/shen-guihe-full-body-v3.png",
+      "sha256": "f92406c0e73a7458e012a1487a60cd966b128192f776ddd272028cbd3724ccac",
       "native_dimensions": {
         "width": 1024,
         "height": 1536,
         "long_edge": 1536,
-        "actual_ratio": "2:3",
         "aspect_ratio": 0.6666666666666666
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -512,7 +535,8 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -531,7 +555,7 @@
         "actual_ratio": "1:1",
         "aspect_ratio": 1
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -539,7 +563,8 @@
       "animation_verified": false,
       "limitations": [
         "native_target_met",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -558,7 +583,7 @@
         "actual_ratio": "1003:1568",
         "aspect_ratio": 0.6396683673469388
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -566,7 +591,8 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "native_ratio_differs_from_target"
+        "native_ratio_differs_from_target",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -585,7 +611,7 @@
         "actual_ratio": "2:3",
         "aspect_ratio": 0.6666666666666666
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -593,7 +619,8 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -612,7 +639,7 @@
         "actual_ratio": "1:1",
         "aspect_ratio": 1
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -620,7 +647,8 @@
       "animation_verified": false,
       "limitations": [
         "native_target_met",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -639,7 +667,7 @@
         "actual_ratio": "561:701",
         "aspect_ratio": 0.8002853067047075
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -647,7 +675,8 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "native_ratio_differs_from_target"
+        "native_ratio_differs_from_target",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -666,7 +695,7 @@
         "actual_ratio": "2:3",
         "aspect_ratio": 0.6666666666666666
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -674,7 +703,8 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -693,7 +723,7 @@
         "actual_ratio": "1:1",
         "aspect_ratio": 1
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -701,7 +731,8 @@
       "animation_verified": false,
       "limitations": [
         "native_target_met",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -720,7 +751,7 @@
         "actual_ratio": "561:701",
         "aspect_ratio": 0.8002853067047075
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -728,7 +759,8 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "native_ratio_differs_from_target"
+        "native_ratio_differs_from_target",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -747,7 +779,7 @@
         "actual_ratio": "2:3",
         "aspect_ratio": 0.6666666666666666
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -755,7 +787,8 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -774,7 +807,7 @@
         "actual_ratio": "1:1",
         "aspect_ratio": 1
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -782,7 +815,8 @@
       "animation_verified": false,
       "limitations": [
         "native_target_met",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -801,7 +835,7 @@
         "actual_ratio": "561:701",
         "aspect_ratio": 0.8002853067047075
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -809,7 +843,8 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "native_ratio_differs_from_target"
+        "native_ratio_differs_from_target",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -828,7 +863,7 @@
         "actual_ratio": "2:3",
         "aspect_ratio": 0.6666666666666666
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -836,7 +871,8 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -855,7 +891,7 @@
         "actual_ratio": "1:1",
         "aspect_ratio": 1
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -863,7 +899,8 @@
       "animation_verified": false,
       "limitations": [
         "native_target_met",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -882,7 +919,7 @@
         "actual_ratio": "561:701",
         "aspect_ratio": 0.8002853067047075
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -890,7 +927,8 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "native_ratio_differs_from_target"
+        "native_ratio_differs_from_target",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -909,7 +947,7 @@
         "actual_ratio": "2:3",
         "aspect_ratio": 0.6666666666666666
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -917,7 +955,8 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -936,7 +975,7 @@
         "actual_ratio": "1:1",
         "aspect_ratio": 1
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -944,7 +983,8 @@
       "animation_verified": false,
       "limitations": [
         "native_target_met",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -963,7 +1003,7 @@
         "actual_ratio": "561:701",
         "aspect_ratio": 0.8002853067047075
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -971,7 +1011,8 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "native_ratio_differs_from_target"
+        "native_ratio_differs_from_target",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -990,7 +1031,7 @@
         "actual_ratio": "2:3",
         "aspect_ratio": 0.6666666666666666
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -998,7 +1039,8 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -1017,7 +1059,7 @@
         "actual_ratio": "1:1",
         "aspect_ratio": 1
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1025,7 +1067,8 @@
       "animation_verified": false,
       "limitations": [
         "native_target_met",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -1044,7 +1087,7 @@
         "actual_ratio": "561:701",
         "aspect_ratio": 0.8002853067047075
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1052,7 +1095,8 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "native_ratio_differs_from_target"
+        "native_ratio_differs_from_target",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -1071,7 +1115,7 @@
         "actual_ratio": "2:3",
         "aspect_ratio": 0.6666666666666666
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1079,7 +1123,8 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -1098,7 +1143,7 @@
         "actual_ratio": "1:1",
         "aspect_ratio": 1
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1106,7 +1151,8 @@
       "animation_verified": false,
       "limitations": [
         "native_target_met",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -1125,7 +1171,7 @@
         "actual_ratio": "561:701",
         "aspect_ratio": 0.8002853067047075
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1133,7 +1179,8 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "native_ratio_differs_from_target"
+        "native_ratio_differs_from_target",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
@@ -1152,7 +1199,7 @@
         "actual_ratio": "2:3",
         "aspect_ratio": 0.6666666666666666
       },
-      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "receipt": "episode1-portraits/finalized-views-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1160,23 +1207,24 @@
       "animation_verified": false,
       "limitations": [
         "native_below_target",
-        "target_ratio_met"
+        "target_ratio_met",
+        "Original size retained for identity/costume reference; not a rendered shot or final delivery."
       ]
     },
     {
       "category": "animation_reference",
-      "key": "shen-guihe-back-v1",
+      "key": "shen-guihe-back-v2",
       "character_id": "shen-guihe",
       "look_id": "base",
       "use": "back",
-      "version": 1,
-      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/shen-guihe-back-v1.png",
-      "sha256": "40104ce00cd0c99d11ce66c72fb67bc0d843c2bbac233c3eb01de14016762145",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/shen-guihe-back-v2.png",
+      "sha256": "18a2386696be9b222bb10c5084c4975ea2e4f089c1fcf2fbd89c5a1d025a52e1",
       "native_dimensions": {
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1186,18 +1234,18 @@
     },
     {
       "category": "animation_reference",
-      "key": "shen-guihe-left-profile-v1",
+      "key": "shen-guihe-left-profile-v2",
       "character_id": "shen-guihe",
       "look_id": "base",
       "use": "left-profile",
-      "version": 1,
-      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/shen-guihe-left-profile-v1.png",
-      "sha256": "adbd2fd75ef4e00f341a6c68f4b30097d46d5cbd6d49dadcf01ccbc3d17a1da4",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/shen-guihe-left-profile-v2.png",
+      "sha256": "21681ea03160a761cc11954b4e17837b70688f42e9317d6c141d5a6b04292120",
       "native_dimensions": {
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1209,18 +1257,18 @@
     },
     {
       "category": "animation_reference",
-      "key": "shen-guihe-right-profile-v1",
+      "key": "shen-guihe-right-profile-v3",
       "character_id": "shen-guihe",
       "look_id": "base",
       "use": "right-profile",
-      "version": 1,
-      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/shen-guihe-right-profile-v1.png",
-      "sha256": "1f5485e2b270faafb1ccafd0f1cadc7a169c96f0707715dab12f22adc9c64571",
+      "version": 3,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/shen-guihe-right-profile-v3.png",
+      "sha256": "aa523cc177b2421c440641ea1457c7ddaafdcbf1bd61c9a5fb759c70fcf3142e",
       "native_dimensions": {
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1232,18 +1280,18 @@
     },
     {
       "category": "animation_reference",
-      "key": "shen-guihe-left-three-quarter-v1",
+      "key": "shen-guihe-left-three-quarter-v3",
       "character_id": "shen-guihe",
       "look_id": "base",
       "use": "left-three-quarter",
-      "version": 1,
-      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/shen-guihe-left-three-quarter-v1.png",
-      "sha256": "cb965970bd168c35299dc717042b370e3ca6cba2a53bb8fc0417652f6fcb4bb6",
+      "version": 3,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/shen-guihe-left-three-quarter-v3.png",
+      "sha256": "bcd955e80f042d5c0269236f9e49929a427b49ae7938d04cdf8422ba6570e286",
       "native_dimensions": {
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1253,18 +1301,18 @@
     },
     {
       "category": "animation_reference",
-      "key": "shen-guihe-right-three-quarter-v1",
+      "key": "shen-guihe-right-three-quarter-v3",
       "character_id": "shen-guihe",
       "look_id": "base",
       "use": "right-three-quarter",
-      "version": 1,
-      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/shen-guihe-right-three-quarter-v1.png",
-      "sha256": "b20960da6fc0eb75deee3fe1c2d1e8631e2bd76dd95bdef62b8dfb118b1fbc05",
+      "version": 3,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/shen-guihe-right-three-quarter-v3.png",
+      "sha256": "873c1bf582d95336939604a8945639eb1d05500c4621988bf83554458741ba98",
       "native_dimensions": {
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1285,7 +1333,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1297,18 +1345,18 @@
     },
     {
       "category": "animation_reference",
-      "key": "shen-guihe-action-phases-v1",
+      "key": "shen-guihe-action-phases-v3",
       "character_id": "shen-guihe",
       "look_id": "base",
       "use": "action-phases",
-      "version": 1,
-      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/shen-guihe-action-phases-v1.png",
-      "sha256": "9622d387ad60207ba71875d3e42b0ac895c0e774dec11254661e5b34bfb18c48",
+      "version": 3,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/shen-guihe-action-phases-v3.png",
+      "sha256": "c2a543bdbf29a3dea85e4a97b951f92e3eb7d181be7c0ebce03d206b4c1aca46",
       "native_dimensions": {
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1320,18 +1368,18 @@
     },
     {
       "category": "animation_reference",
-      "key": "shen-guihe-construction-details-v2",
+      "key": "shen-guihe-construction-details-v3",
       "character_id": "shen-guihe",
       "look_id": "base",
       "use": "construction-details",
-      "version": 2,
-      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/shen-guihe-construction-details-v2.png",
-      "sha256": "b133ceac6f38396ee569354a1063e1acdcac3e7d1f19a7ed667fe677ec0a4fe4",
+      "version": 3,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/shen-guihe-construction-details-v3.png",
+      "sha256": "eacdf8278c257211d1f549279a4219dc4628279f787f47e238e9f179726289c3",
       "native_dimensions": {
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1352,7 +1400,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1373,7 +1421,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1396,7 +1444,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1419,7 +1467,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1440,7 +1488,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1461,7 +1509,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1484,7 +1532,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1507,7 +1555,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1528,7 +1576,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1549,7 +1597,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1572,7 +1620,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1595,7 +1643,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1616,7 +1664,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1637,7 +1685,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1660,7 +1708,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1683,7 +1731,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1704,7 +1752,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1725,7 +1773,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1748,7 +1796,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1771,7 +1819,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1792,7 +1840,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1813,7 +1861,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1836,7 +1884,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1859,7 +1907,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1880,7 +1928,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1901,7 +1949,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1924,7 +1972,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1947,7 +1995,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1968,7 +2016,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -1989,7 +2037,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2012,7 +2060,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2035,7 +2083,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2056,7 +2104,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2077,7 +2125,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2100,7 +2148,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2123,7 +2171,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2144,7 +2192,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2165,7 +2213,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2188,7 +2236,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2211,7 +2259,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2232,7 +2280,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2253,7 +2301,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2276,7 +2324,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2299,7 +2347,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2320,7 +2368,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2341,7 +2389,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2364,7 +2412,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2387,7 +2435,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2408,7 +2456,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2429,7 +2477,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2452,7 +2500,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2475,7 +2523,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2496,7 +2544,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2517,7 +2565,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2540,7 +2588,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2563,7 +2611,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2584,7 +2632,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2605,7 +2653,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2628,7 +2676,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2651,7 +2699,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2672,7 +2720,7 @@
         "width": 1024,
         "height": 1536
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2693,7 +2741,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2716,7 +2764,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2739,7 +2787,7 @@
         "width": 1536,
         "height": 1024
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2749,18 +2797,18 @@
     },
     {
       "category": "animation_reference",
-      "key": "ensemble-color-lineup-v1",
+      "key": "ensemble-color-lineup-v3",
       "character_id": "ensemble",
       "look_id": "base",
       "use": "color-lineup",
-      "version": 1,
-      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ensemble-color-lineup-v1.png",
-      "sha256": "65c04fc2021517965177fca2a684b7ff76cdeeceb0f00bdf07838318dc18f82c",
+      "version": 3,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/ensemble-color-lineup-v3.png",
+      "sha256": "094759425f5cc9c65c0fa7d839389b82771fe41a57b068a3de51b194319f9b23",
       "native_dimensions": {
         "width": 2172,
         "height": 724
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
@@ -2781,13 +2829,205 @@
         "width": 2172,
         "height": 724
       },
-      "receipt": "animation-reference/media-receipt.json",
+      "receipt": "animation-reference/finalized-media-receipt.json",
       "status": "candidate_for_owner_review",
       "owner_accepted": false,
       "judge": null,
       "normal_runtime_integrated": false,
       "animation_verified": false,
       "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "shen-guihe-mouth-shapes-v1",
+      "character_id": "shen-guihe",
+      "look_id": "base",
+      "use": "mouth-shapes",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/shen-guihe-mouth-shapes-v1.png",
+      "sha256": "c697b0dc8998938a645eeedae711477d8bd13023b3eb84a327454dca551e3d32",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/finalized-media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "Six static mouth studies: closed, slight part, A, E/I, O, U. Not timed phonemes or validated lip-sync.",
+        "Some crowns/hat edges are cropped; use the separate headshot/crown master for headwear."
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wen-mouth-shapes-v1",
+      "character_id": "ji-wen",
+      "look_id": "base",
+      "use": "mouth-shapes",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/ji-wen-mouth-shapes-v1.png",
+      "sha256": "f83e55c923671acadbf6f1e5a205b5428657040ed26ca345d25c70691fe8776a",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/finalized-media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "Six static mouth studies: closed, slight part, A, E/I, O, U. Not timed phonemes or validated lip-sync.",
+        "Some crowns/hat edges are cropped; use the separate headshot/crown master for headwear."
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "bao-sanqian-mouth-shapes-v1",
+      "character_id": "bao-sanqian",
+      "look_id": "base",
+      "use": "mouth-shapes",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/bao-sanqian-mouth-shapes-v1.png",
+      "sha256": "7a6dfddc9acffd0a8dcd76054b376cdcbc340e17e792ce77e32f948ed9c6d3c4",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/finalized-media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "Six static mouth studies: closed, slight part, A, E/I, O, U. Not timed phonemes or validated lip-sync.",
+        "Some crowns/hat edges are cropped; use the separate headshot/crown master for headwear."
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "yan-hui-mouth-shapes-v1",
+      "character_id": "yan-hui",
+      "look_id": "base",
+      "use": "mouth-shapes",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/yan-hui-mouth-shapes-v1.png",
+      "sha256": "c2bfb3978fa4fa702fb9a3eadf0de0a046154877faefd88717f478b8594a6dc3",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/finalized-media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "Six static mouth studies: closed, slight part, A, E/I, O, U. Not timed phonemes or validated lip-sync.",
+        "Some crowns/hat edges are cropped; use the separate headshot/crown master for headwear."
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "nie-gutie-mouth-shapes-v1",
+      "character_id": "nie-gutie",
+      "look_id": "base",
+      "use": "mouth-shapes",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/nie-gutie-mouth-shapes-v1.png",
+      "sha256": "095bc2cdb4bb95e204f2e96a35e062ea86416205bb6171da61fd764e8b3e807e",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/finalized-media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "Six static mouth studies: closed, slight part, A, E/I, O, U. Not timed phonemes or validated lip-sync.",
+        "Some crowns/hat edges are cropped; use the separate headshot/crown master for headwear."
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "xuanmen-elder-mouth-shapes-v1",
+      "character_id": "xuanmen-elder",
+      "look_id": "base",
+      "use": "mouth-shapes",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/xuanmen-elder-mouth-shapes-v1.png",
+      "sha256": "d03be901efe33b4189e05ae5eb60d638b15a0313d88e19ca21b73686bed68137",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/finalized-media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "Six static mouth studies: closed, slight part, A, E/I, O, U. Not timed phonemes or validated lip-sync.",
+        "Some crowns/hat edges are cropped; use the separate headshot/crown master for headwear."
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "luo-qingyan-mouth-shapes-v1",
+      "character_id": "luo-qingyan",
+      "look_id": "base",
+      "use": "mouth-shapes",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/luo-qingyan-mouth-shapes-v1.png",
+      "sha256": "ca473181541554cec1e30e79c8477c86cf004a70706638533bdf39b0b25e68a3",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/finalized-media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "Six static mouth studies: closed, slight part, A, E/I, O, U. Not timed phonemes or validated lip-sync.",
+        "Some crowns/hat edges are cropped; use the separate headshot/crown master for headwear."
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wushuang-mouth-shapes-v2",
+      "character_id": "ji-wushuang",
+      "look_id": "base",
+      "use": "mouth-shapes",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/ji-wushuang-mouth-shapes-v2.png",
+      "sha256": "c0650a1b5d7db95c8c6b0091154ddeca4451acb7a3eb627a3473ffc8e94e387f",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/finalized-media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "Six static mouth studies: closed, slight part, A, E/I, O, U. Not timed phonemes or validated lip-sync.",
+        "Some crowns/hat edges are cropped; use the separate headshot/crown master for headwear."
+      ]
     },
     {
       "category": "scene_or_prop",
@@ -3297,29 +3537,6 @@
     },
     {
       "category": "scene_or_prop",
-      "key": "personal-prop-states-v2",
-      "character_id": null,
-      "look_id": null,
-      "use": "prop",
-      "version": 2,
-      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/personal-prop-states-v2.png",
-      "sha256": "b9e7f0361498c735b26f5fda2261075fa3011a5f7ff62ef925a494dcc41fb2a1",
-      "native_dimensions": {
-        "width": 1672,
-        "height": 941
-      },
-      "receipt": "scene-prop-design/media-receipt.json",
-      "status": "candidate_for_owner_review",
-      "owner_accepted": false,
-      "judge": null,
-      "normal_runtime_integrated": false,
-      "animation_verified": false,
-      "limitations": [
-        "實看v2：白玉外骨與末段鬆繩已修，3→2+1枚硬數量清楚；扇墜/細紋仍需與角色detail選同一母版，不可雙套各自採用。"
-      ]
-    },
-    {
-      "category": "scene_or_prop",
       "key": "forge-master-v3",
       "character_id": null,
       "look_id": null,
@@ -3389,13 +3606,36 @@
     },
     {
       "category": "scene_or_prop",
-      "key": "chess-guestroom-master-v3",
+      "key": "chess-guestroom-master-v4",
       "character_id": null,
       "look_id": null,
       "use": "scene",
+      "version": 4,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261009/chess-guestroom-master-v4.png",
+      "sha256": "f556ac041f9d13cfdf991630d4e13bfc4482b69dd29a8dc4a725c58e0aeba84b",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2026-10-09實看：右後窗已是不透景紙面，原右上月輪消失，沒有室外樹景；左門關、單燭亮、兩席、低桌、室內盆栽及暖冷光位置保留。只修窗面，棋點仍須按連戲SVG覆寫。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "personal-prop-states-v3",
+      "character_id": null,
+      "look_id": null,
+      "use": "prop",
       "version": 3,
-      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/chess-guestroom-master-v3.png",
-      "sha256": "cef75758c34deb4cb5b92223afe53ef650e278b528a40b7183835f56f1440c59",
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261009/personal-prop-states-v3.png",
+      "sha256": "793553b043e0bc05a24bcea9901f16621426f95ae22ce77cc502a342170fcf6e",
       "native_dimensions": {
         "width": 1672,
         "height": 941
@@ -3407,18 +3647,18 @@
       "normal_runtime_integrated": false,
       "animation_verified": false,
       "limitations": [
-        "實看v3：樹景已去且大部分為紙面，但上右仍有淡月輪殘影；修訂未完全達no visible moon，列待修，不能用作紙窗近景母圖。"
+        "2026-10-09實看：扇上藍玉墜、藍繩和藍流蘇已移除；白玉扇骨/紙葉與小銀鉸釘、下方扇骨局部保留。三圈木珠/裂珠、3銅錢及2在繩+1落地兩態與紅繩紅穗維持。人物腰上原有藍流蘇不在本板修訂範圍。"
       ]
     },
     {
       "category": "scene_or_prop",
-      "key": "chess-guestroom-angle-b-v2",
+      "key": "chess-guestroom-angle-b-v4",
       "character_id": null,
       "look_id": null,
       "use": "scene",
-      "version": 2,
-      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/chess-guestroom-angle-b-v2.png",
-      "sha256": "7d96ce35a408062f715ef637e3b4f566e030961236a485aa43f47a205e13a746",
+      "version": 4,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261009/chess-guestroom-angle-b-v4.png",
+      "sha256": "c776694b6d7f24511ec1902096623099efd1593fabba48f33deac7f609a57aca",
       "native_dimensions": {
         "width": 1672,
         "height": 941
@@ -3430,39 +3670,16 @@
       "normal_runtime_integrated": false,
       "animation_verified": false,
       "limitations": [
-        "實看v2：窗面已較平整、無清楚外景；保留同側斜角地理，但非180度反向，仍須與master窗格/棋點鎖定。"
-      ]
-    },
-    {
-      "category": "scene_or_prop",
-      "key": "chess-guestroom-cold-v2",
-      "character_id": null,
-      "look_id": null,
-      "use": "scene-state",
-      "version": 2,
-      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/chess-guestroom-cold-v2.png",
-      "sha256": "85d4b64e049785a151b3264e9d413654e2a451e265cb241d309d3687646ba27d",
-      "native_dimensions": {
-        "width": 1672,
-        "height": 941
-      },
-      "receipt": "scene-prop-design/media-receipt.json",
-      "status": "candidate_for_owner_review",
-      "owner_accepted": false,
-      "judge": null,
-      "normal_runtime_integrated": false,
-      "animation_verified": false,
-      "limitations": [
-        "實看v2：已維持燭滅/門開/翻盤一壺一杯和霜，但上右仍透淡月輪，不能稱紙窗已完全修妥。只適用a05-s031/s035/s042翻盤之後，不能當s023剛入房首格。"
+        "2026-10-09第二修實看：左入口閉門暖棕紙面恢復；右前窗仍為不透景紙面，無月輪/室外景；同側B角、單燭亮/兩席/低桌/盆栽保留。窗格/棋點不是精密幾何驗證。"
       ]
     }
   ],
   "reused_references": [
     {
-      "key": "shen-guihe-full-body-v1",
+      "key": "shen-guihe-full-body-v3",
       "character_id": "shen-guihe",
       "use": "front",
-      "sha256": "b13e5c2362ab2aad580e71b1e8d22cffdad69bb9c39df62460bf509ac3ec064b"
+      "sha256": "f92406c0e73a7458e012a1487a60cd966b128192f776ddd272028cbd3724ccac"
     },
     {
       "key": "ji-wushuang-full-body-v1",
@@ -3513,6 +3730,84 @@
       "sha256": "9b3991c06ec0ae39acedaec6332a698d7209a75bbb3e5b245e79b6b3da96aeef"
     }
   ],
+  "current_proposal": {
+    "version": "v4",
+    "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/plan/preflight-20261009-v4/video.json",
+    "sha256": "cb341b457f28e5139cff6f0528722d2a0facebf8cfea90423aec572ed71ebd17",
+    "html_sha256": "cee2fc9cbe89b879e8c899bccd3888a63ddfb9f6534e09163e27c6f2872324d1",
+    "shot_count": 455,
+    "change_count": 2,
+    "dialogue_motion_camera_duration_unchanged": true,
+    "budget_numerics_and_batches_unchanged": true,
+    "formal_runtime_binding": false,
+    "owner_accepted": false,
+    "p7_accepted": false
+  },
+  "resolution_disposition": {
+    "native_portrait_pngs_verified": 27,
+    "editorial_targets_not_import_gates": true,
+    "below_editorial_target": 18,
+    "upscaled": false,
+    "use": "native identity and costume reference candidates for future first-frame creation",
+    "future_actual_shot_contract": "Choose a supported route and read back actual first-frame pixels; current drama keyframes default is 1K, H3 first-frame I2V excludes simultaneous reference_images."
+  },
+  "static_mouth_reference": {
+    "count": 8,
+    "source": "animation-reference/finalized-media-receipt.json",
+    "timed_phonemes": false,
+    "lip_sync_verified": false,
+    "not_a_full_headwear_master": true,
+    "silent_yin_wusheng_excluded": true
+  },
+  "fan_reference_policy": {
+    "status": "editorial_reference_role_decision_not_global_pixel_consistency_claim",
+    "masters": [
+      {
+        "logical_key": "shen-guihe-construction-details",
+        "candidate_key": "shen-guihe-construction-details-v3",
+        "sha256": "eacdf8278c257211d1f549279a4219dc4628279f787f47e238e9f179726289c3"
+      },
+      {
+        "logical_key": "personal-prop-states",
+        "candidate_key": "personal-prop-states-v3",
+        "sha256": "793553b043e0bc05a24bcea9901f16621426f95ae22ce77cc502a342170fcf6e"
+      }
+    ],
+    "construction": "white jade guards/ribs, white paper; no fan tassel, chain, charm or dangling bead",
+    "remaining_character_sheet_marks": "Tiny short lines/beads may remain in small full-body concept or pose imagery. They are excluded as fan topology evidence, not claimed to have been perfectly corrected.",
+    "character_sheet_purposes": [
+      "identity",
+      "costume",
+      "pose",
+      "color"
+    ],
+    "assigned_condition": "For every shot with visible/named Shen or an explicit fan mention, use the two masters for visible fan geometry. Do not add absent inventory.",
+    "runtime_request_readback": false,
+    "owner_accepted": false,
+    "explicit_limited_candidates": [
+      "shen-guihe-concept-v5",
+      "shen-guihe-right-profile-v3",
+      "shen-guihe-left-three-quarter-v3"
+    ],
+    "limited_candidate_rule": "Identity/costume reference only; visible small hand-adjacent marks are not an accepted tassel/chain topology. Other revised character images still do not replace the two prop masters."
+  },
+  "cold_room": {
+    "independent_cold_master_selected": false,
+    "all_cold_versions_not_for_input": true,
+    "derived_clean_master": {
+      "file": "scene-props/20261009/chess-guestroom-master-v4.png",
+      "sha256": "f556ac041f9d13cfdf991630d4e13bfc4482b69dd29a8dc4a725c58e0aeba84b",
+      "width": 1672,
+      "height": 941
+    },
+    "derived_shots": [
+      "a05-s031",
+      "a05-s035",
+      "a05-s042"
+    ],
+    "state_spec": "scene-prop-design/cold-state-spec.json",
+    "rendered": false
+  },
   "shot_looks_binding": {
     "source": "docs/videos/series-plans/ou-de-jianghu/production/cast.json",
     "serialization": "JSON.stringify(characters.map(c => ({character_id:c.id,shot_looks:c.shot_looks??[]})))",
@@ -3674,6 +3969,9 @@
   },
   "isolated_pending_import": {
     "receipt": "import-contract/pending-staging-receipt.json",
+    "status": "historical_v3_only_not_current_v4_import",
+    "project": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/plan/preflight-20261008-v3/video.json",
+    "current_v4_binding": false,
     "candidate_count": 9,
     "staging_manifest_sha256": "fd02c531d0b6a42eb306b313fe933fb7ba566dec3a72d37a3b14e5e6bb8d6521",
     "project_sha256": "7f7676d1ce39a6f9dbbdc4cacc5bc8cb39b9979e66e4a906213d2ea4235014df",
@@ -3682,7 +3980,225 @@
     "judge": null,
     "owner_accepted": false,
     "selection_for_offline_candidate_validation_only": true,
-    "normal_runtime_integrated": false
+    "normal_runtime_integrated": false,
+    "candidates": [
+      {
+        "character_id": "bao-sanqian",
+        "key": "bao-sanqian-full-body-v1",
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/bao-sanqian-full-body-v1.png",
+        "sha256": "625174d287f29d8fda2791f8193a89c26476a121bea7b1d80aa52fbc9e43afd9",
+        "native_dimensions": {
+          "width": 1024,
+          "height": 1536,
+          "format": "png"
+        },
+        "source_sidecar": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/external-look-staging/20261008/sources/bao-sanqian.source.json",
+        "source_sidecar_sha256": "49d5b729421b33aaa1dccb9aed23500a7649803000b308ce87879b723fd71450",
+        "candidate_count": 1,
+        "judge": null,
+        "suggested": null,
+        "needs_review": true,
+        "owner_accepted": false,
+        "selection_for_offline_candidate_validation_only": true,
+        "status": "historical_v3_isolated_pending_candidate",
+        "current_selected_portrait_key": "bao-sanqian-full-body-v1",
+        "same_pixels_as_current_portrait": true,
+        "current_v4_binding": false,
+        "normal_runtime_integrated": false
+      },
+      {
+        "character_id": "ji-wen",
+        "key": "ji-wen-full-body-v1",
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/ji-wen-full-body-v1.png",
+        "sha256": "8a60b9ce8f83534542d002caedc0102d65255137d9eca99190091565e3ed9a35",
+        "native_dimensions": {
+          "width": 1024,
+          "height": 1536,
+          "format": "png"
+        },
+        "source_sidecar": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/external-look-staging/20261008/sources/ji-wen.source.json",
+        "source_sidecar_sha256": "8153c1cf9c9a6ea8bada362c01e0a5de32aef509143ff6c4a101a64465e48eb8",
+        "candidate_count": 1,
+        "judge": null,
+        "suggested": null,
+        "needs_review": true,
+        "owner_accepted": false,
+        "selection_for_offline_candidate_validation_only": true,
+        "status": "historical_v3_isolated_pending_candidate",
+        "current_selected_portrait_key": "ji-wen-full-body-v1",
+        "same_pixels_as_current_portrait": true,
+        "current_v4_binding": false,
+        "normal_runtime_integrated": false
+      },
+      {
+        "character_id": "ji-wushuang",
+        "key": "ji-wushuang-full-body-v1",
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/ji-wushuang-full-body-v1.png",
+        "sha256": "6ed68b1de7db15559e4b9d57c84ba92c0ffff80bf1e59970c82677d4915ecec3",
+        "native_dimensions": {
+          "width": 1024,
+          "height": 1536,
+          "format": "png"
+        },
+        "source_sidecar": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/external-look-staging/20261008/sources/ji-wushuang.source.json",
+        "source_sidecar_sha256": "dde99e0ba194111388fbe66dea01cde60c6f3a91362e6a4ca5b0f497d6504e14",
+        "candidate_count": 1,
+        "judge": null,
+        "suggested": null,
+        "needs_review": true,
+        "owner_accepted": false,
+        "selection_for_offline_candidate_validation_only": true,
+        "status": "historical_v3_isolated_pending_candidate",
+        "current_selected_portrait_key": "ji-wushuang-full-body-v1",
+        "same_pixels_as_current_portrait": true,
+        "current_v4_binding": false,
+        "normal_runtime_integrated": false
+      },
+      {
+        "character_id": "luo-qingyan",
+        "key": "luo-qingyan-full-body-v1",
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/luo-qingyan-full-body-v1.png",
+        "sha256": "9b3991c06ec0ae39acedaec6332a698d7209a75bbb3e5b245e79b6b3da96aeef",
+        "native_dimensions": {
+          "width": 1024,
+          "height": 1536,
+          "format": "png"
+        },
+        "source_sidecar": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/external-look-staging/20261008/sources/luo-qingyan.source.json",
+        "source_sidecar_sha256": "47d5003e955e194ab82088f4ce1b532397fa39e43ee71a11bc4986304e60ade4",
+        "candidate_count": 1,
+        "judge": null,
+        "suggested": null,
+        "needs_review": true,
+        "owner_accepted": false,
+        "selection_for_offline_candidate_validation_only": true,
+        "status": "historical_v3_isolated_pending_candidate",
+        "current_selected_portrait_key": "luo-qingyan-full-body-v1",
+        "same_pixels_as_current_portrait": true,
+        "current_v4_binding": false,
+        "normal_runtime_integrated": false
+      },
+      {
+        "character_id": "nie-gutie",
+        "key": "nie-gutie-full-body-v1",
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/nie-gutie-full-body-v1.png",
+        "sha256": "866e1e8cb75e7fabd7ebdc7ae2deca88938b79fc05f864a9c708d31d5d597115",
+        "native_dimensions": {
+          "width": 1024,
+          "height": 1536,
+          "format": "png"
+        },
+        "source_sidecar": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/external-look-staging/20261008/sources/nie-gutie.source.json",
+        "source_sidecar_sha256": "13350600af1dd6803cf954df09de6dd43cf1a7ec16f6ce5796687457b09fa601",
+        "candidate_count": 1,
+        "judge": null,
+        "suggested": null,
+        "needs_review": true,
+        "owner_accepted": false,
+        "selection_for_offline_candidate_validation_only": true,
+        "status": "historical_v3_isolated_pending_candidate",
+        "current_selected_portrait_key": "nie-gutie-full-body-v1",
+        "same_pixels_as_current_portrait": true,
+        "current_v4_binding": false,
+        "normal_runtime_integrated": false
+      },
+      {
+        "character_id": "shen-guihe",
+        "key": "shen-guihe-full-body-v1",
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/shen-guihe-full-body-v1.png",
+        "sha256": "b13e5c2362ab2aad580e71b1e8d22cffdad69bb9c39df62460bf509ac3ec064b",
+        "native_dimensions": {
+          "width": 1024,
+          "height": 1536,
+          "format": "png"
+        },
+        "source_sidecar": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/external-look-staging/20261008/sources/shen-guihe.source.json",
+        "source_sidecar_sha256": "e8a9b29bcf209d11e1028199d67d04215960008e67acd2b9f0286a860f63fd03",
+        "candidate_count": 1,
+        "judge": null,
+        "suggested": null,
+        "needs_review": true,
+        "owner_accepted": false,
+        "selection_for_offline_candidate_validation_only": true,
+        "status": "historical_v3_isolated_pending_candidate",
+        "current_selected_portrait_key": "shen-guihe-full-body-v3",
+        "same_pixels_as_current_portrait": false,
+        "current_v4_binding": false,
+        "normal_runtime_integrated": false
+      },
+      {
+        "character_id": "xuanmen-elder",
+        "key": "xuanmen-elder-full-body-v1",
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/xuanmen-elder-full-body-v1.png",
+        "sha256": "564e79297979b1c7bb49b3fba39d8c3e590a2fc6bae246fa37b01837ac61667d",
+        "native_dimensions": {
+          "width": 1024,
+          "height": 1536,
+          "format": "png"
+        },
+        "source_sidecar": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/external-look-staging/20261008/sources/xuanmen-elder.source.json",
+        "source_sidecar_sha256": "bbf53eeb260a581f0a9790f81b565eb55cbfe583cf4cffb1870e44c2d27d455d",
+        "candidate_count": 1,
+        "judge": null,
+        "suggested": null,
+        "needs_review": true,
+        "owner_accepted": false,
+        "selection_for_offline_candidate_validation_only": true,
+        "status": "historical_v3_isolated_pending_candidate",
+        "current_selected_portrait_key": "xuanmen-elder-full-body-v1",
+        "same_pixels_as_current_portrait": true,
+        "current_v4_binding": false,
+        "normal_runtime_integrated": false
+      },
+      {
+        "character_id": "yan-hui",
+        "key": "yan-hui-full-body-v1",
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/yan-hui-full-body-v1.png",
+        "sha256": "5cf0a08166ecbb00a7f1a484c4bc7c8ec16ab772f5ad61f1f8390c44792caa21",
+        "native_dimensions": {
+          "width": 1024,
+          "height": 1536,
+          "format": "png"
+        },
+        "source_sidecar": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/external-look-staging/20261008/sources/yan-hui.source.json",
+        "source_sidecar_sha256": "5f2cc9b1a19f82d72d3170c4e13d5cd99beb63620d5aaf6d230dc768ed3e4268",
+        "candidate_count": 1,
+        "judge": null,
+        "suggested": null,
+        "needs_review": true,
+        "owner_accepted": false,
+        "selection_for_offline_candidate_validation_only": true,
+        "status": "historical_v3_isolated_pending_candidate",
+        "current_selected_portrait_key": "yan-hui-full-body-v1",
+        "same_pixels_as_current_portrait": true,
+        "current_v4_binding": false,
+        "normal_runtime_integrated": false
+      },
+      {
+        "character_id": "yin-wusheng",
+        "key": "yin-wusheng-full-body-v1",
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/yin-wusheng-full-body-v1.png",
+        "sha256": "ccf625f6813518032435c4a462a1203e6128691afda10516fe9dbcf95e5972ea",
+        "native_dimensions": {
+          "width": 1024,
+          "height": 1536,
+          "format": "png"
+        },
+        "source_sidecar": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/external-look-staging/20261008/sources/yin-wusheng.source.json",
+        "source_sidecar_sha256": "8eb63ebc2c4ea058e99bfc2d2962be5927da2d971efe18edb884a1e9d034c880",
+        "candidate_count": 1,
+        "judge": null,
+        "suggested": null,
+        "needs_review": true,
+        "owner_accepted": false,
+        "selection_for_offline_candidate_validation_only": true,
+        "status": "historical_v3_isolated_pending_candidate",
+        "current_selected_portrait_key": "yin-wusheng-full-body-v1",
+        "same_pixels_as_current_portrait": true,
+        "current_v4_binding": false,
+        "normal_runtime_integrated": false
+      }
+    ]
   },
   "bound_files": [
     {
@@ -3715,11 +4231,11 @@
     },
     {
       "file": "scene-prop-design/media-receipt.json",
-      "sha256": "9999c0e59a5e7252f937d5dbc52232f2d2b6dd9fe9f5592499f6dc896ff7dfd7"
+      "sha256": "e5e4a4d633561c93136312e397a7d3760187b4525efc136bffadef883a6edacd"
     },
     {
       "file": "scene-prop-design/portability-verification.json",
-      "sha256": "d7f8eb9376a717d5ba6d45fc31ffd76305b0474bdfb17c96629f92e3d9a0ed8a"
+      "sha256": "4d6957df9fef2117cfce00b4c8187b3a11da8dce628fefa5d69c743349dfcee2"
     },
     {
       "file": "episode-plan/proposal-summary.json",
@@ -3748,17 +4264,71 @@
     {
       "file": "import-contract/pending-staging-receipt.json",
       "sha256": "3f600f14e9d0538d3e679444caee65d405ead6d3401d7b9b2046ec7aada87e22"
+    },
+    {
+      "file": "episode1-portraits/finalized-views-receipt.json",
+      "sha256": "2ec91e8e5e0bcaff19d5565e35116d27acfc57bbdf7fc630db1706a6872a7265"
+    },
+    {
+      "file": "animation-reference/finalized-media-receipt.json",
+      "sha256": "9eff918fdd065b141633da1521d24e7d0807801844e2cf8246b3cd507de7b1b3"
+    },
+    {
+      "file": "animation-reference/finalization-20261009.json",
+      "sha256": "26acaed69d7182bd2128b475a6a98662d91af727341be1f56deb5c2c595aa993"
+    },
+    {
+      "file": "animation-reference/mouth-independent-review.json",
+      "sha256": "5f2e09f916030657cd7c0cb55592d974cc7cdd1d30cdf6644f4f34b28f9d1894"
+    },
+    {
+      "file": "animation-reference/fan-independent-final-review.json",
+      "sha256": "2a83a9c2ad216d953965d5840957bfab51fec4b09251ced6f944d45f862507d9"
+    },
+    {
+      "file": "animation-reference/gallery-verification-20261009.json",
+      "sha256": "f1eed9ae0b2460d361f4bdd6d4d0499b23bd96772cea7145e91fc051eee27cb9"
+    },
+    {
+      "file": "animation-reference/verify-final-gallery.mjs",
+      "sha256": "a022d8a4c2ba7205b6110593bbc383780cf42d280513853ab592e8ec4a919977"
+    },
+    {
+      "file": "scene-prop-design/go-layout-decision.json",
+      "sha256": "bf1146d31ea620c49b661df07a7cab7825a67c5504533051d5db66ba6651d5b2"
+    },
+    {
+      "file": "scene-prop-design/cold-state-spec.json",
+      "sha256": "3bba46ceb216264ca088c2c6064d6d26835beea3a239e702418824a7f5719e48"
+    },
+    {
+      "file": "episode-plan/finalization-v4-verification.json",
+      "sha256": "9ce8c2a1d6b99d918c68b3020bdaf21f0d513c9f86a1c16e874acf72d4f535c2"
+    },
+    {
+      "file": "episode-plan/finalization-v4.md",
+      "sha256": "5cd924b4a392bfc5de765f30e7c9ccd055fff02be0b4baad232d9dc41ba8c423"
+    },
+    {
+      "file": "handoff/finalization-20261009.json",
+      "sha256": "bbcf9dbfc630ff3dc8e9d06a465324b7d8a908381bad09b3d7079322b794d490"
+    },
+    {
+      "file": "handoff/finalization-20261009.md",
+      "sha256": "03fd5145b46afa1712302461405c82b18f03f16b4cef93dd34d3d065083f80f7"
     }
   ],
   "remaining_constraints": [
     "All selected artwork remains a review candidate; accepted style is not individual asset adoption.",
-    "18 portrait half/full views are below suggested delivery dimensions; originals were not upscaled.",
+    "18 portrait half/full views remain below editorial 1600/2048 targets; current native PNGs are valid identity/costume references, not rendered first frames. No upscaling is claimed.",
     "Six-angle sets are 2D/I2V references, not physical turntables or rigged geometry; pose and perspective variations are recorded.",
-    "Shen fan dark outer guards in character references versus white jade in canonical scene prop must be reconciled before fan closeups.",
-    "Three guestroom paper-window candidates retain a moon outline: spatial proposals only, not window closeup masters.",
-    "AI Go-board grids and stones are illustrative; exact 19x19 SVG proposals require adoption for relevant first/last frames.",
+    "Only shen-guihe-construction-details-v3 and personal-prop-states-v3 govern fan anatomy: white jade, white paper, no tassel/chain/charm. Pose/concept/color images may retain tiny hand-adjacent marks and are not fan topology evidence; no global pixel-consistency claim.",
+    "The independent cold-room masters are retired/not-for-input; future cold first frames derive from clean master-v4 and the unrendered state spec.",
+    "AI Go-board grids and stones are illustrative; six exact 19x19 subset states preserve original 16 then 17 coordinates and must guide future first/last frames.",
     "Scene ledger 10 location rows map to 9 plan space families by combining Qiyun mountain/watchtower.",
-    "Scene shot-prop index follows original script; adopted v3 camera/risk ledger governs redesigned actions.",
+    "Scene shot-prop index follows original script; current v4 proposal and reference mapping govern redesigned actions, without owner adoption being implied.",
+    "Eight static mouth sheets do not establish phoneme mapping, TTS timing or lipsync QA.",
+    "Nine old isolated imports are historical v3-bound pending records. The latest Shen fullbody has not been imported, chosen or approved for runtime.",
     "Estimated 1403.533 seconds exceeds the 1380-second upper duration goal; measure TTS and resolve before clips.",
     "Formal script/look/audio/storyboard/plan gates and paid continuous three-shot pilot are future production work.",
     "Later season 14 characters and 16 named look variants stay in their existing task; this package covers episode one."

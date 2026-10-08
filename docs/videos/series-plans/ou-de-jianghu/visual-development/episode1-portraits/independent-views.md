@@ -1,5 +1,7 @@
 # 《偶的江湖》九人獨立視圖交付清單
 
+2026-10-09 現行版本改以 [finalized-views-receipt.json](finalized-views-receipt.json) 為準：沈歸鶴頭像 v1／半身 v2／全身 v3，其餘不變。圖庫為 `<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/gallery.html`。18 張低於舊建議長邊的原圖保留作身份／服裝參照，不當作最終鏡頭素材交付。以下表格是 2026-10-08 的來源基線。
+
 2026-10-08。**9 人 × 3 類 = 27 張目前候選已生成、保存並實看。** 每張以角色既有概念圖為參照，維持已接受的華麗古裝與細緻人物方向。新圖為分別生成，不是裁切概念拼板。
 
 媒體與圖冊在 `<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/`。`gallery.html` 可按角色篩選，點圖檢視大圖；同目錄另保留三張被新版替代的半身 v1，共 30 張原生 PNG。前一階段 14 張概念圖仍在 `art-direction/20261008/`。

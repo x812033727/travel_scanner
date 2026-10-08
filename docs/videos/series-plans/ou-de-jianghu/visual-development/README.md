@@ -1,5 +1,23 @@
 # 《偶的江湖》角色美術前期
 
+## 2026-10-09 最新交付
+
+第一集目前有 **146 張選用候選**：9 張概念、27 張獨立畫像、82 張新增角色參照、28 張場景與道具圖。角色參照另沿用 9 張正面全身，共 91 項用途；8 位有台詞角色新增六嘴形板，殷無聲保持閉口。這是編輯用途選定，未代填站主採用或正式 look／plan 核准。
+
+最新入口：[27 畫像與概念收據](episode1-portraits/finalized-views-receipt.json)、[91 項角色參照](animation-reference/finalized-media-receipt.json)、[口型獨立實看](animation-reference/mouth-independent-review.json)、[場景包](scene-prop-design/README.md)、[455 鏡逐鏡交接](handoff/finalization-20261009.md)、[v4 分鏡修訂驗證](episode-plan/finalization-v4.md)、[整合清冊](handoff/asset-manifest.json)。
+
+本機統一圖庫：`<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/gallery.html`。舊圖庫和全部修訂原件保留作歷史，不作最新版本入口。
+
+白扇依清楚的構造細節與個人物件板固定材質、無扇穗結構；人物遠景和概念圖只作身份／服裝／姿態用途，不能據模糊掛飾反推扇結構。棋室 master v4／angle-b v4 已修為不透明紙窗；所有透月 cold 圖退役，冷場用乾淨母圖加未渲染的狀態規格。棋局六狀態以精確 SVG／座標固定為 12→13→14→15→16→17 子。
+
+v4 保留 455 鏡、4 字卡和原時長／預算，只修包三錢接錢手及卸冠提示兩處衝突。已查全部素材連結及 6 張受影響卡面；沒有把 v3 的全長觀看當成 v4 再次全長观看。18 張半身／全身保留原生尺寸，限定身份／服裝參照；建議長邊不是原生匯入硬門檻，也不等於最終鏡頭已交付。
+
+**本次前置編輯與交接已補齊；尚未完成的是站主整包／預算採用、正常 look／plan 關卡，以及後續配音、關鍵影格和三鏡動畫小樣。** 最新沈歸鶴修圖尚未匯入正常 runtime；既有 9 圖隔離 pending 收據屬歷史。首集以外的後續角色票仍另行排程。
+
+## 2026-10-08 基線與工作歷史
+
+以下 139 張、74／83 項角色參照、29 張場景及 v3／v3.1 數字均為前一日快照；最新交付以本頁上方和 2026-10-09 收據為準。
+
 2026-10-08，依站主「開始」「繼續」補齊《偶的江湖》首集的美術、分鏡、風險、預算與交接，**前期可審包已形成**。沿用 9 張概念候選及 27 張獨立畫像，新增角色動畫參照、場景／道具參照、可重建的 v3／v3.1 文字動態分鏡，以及外部原圖隔離匯入證據。站主明確接受「保留目前華麗古裝與細緻人物風格」；這不等於個別素材採用、正式 look／plan 核准或已開拍。
 
 本輪入口：[美術定調及接受紀錄](art-direction/README.md)、[九人畫像與圖冊索引](episode1-portraits/README.md)、[27 張獨立視圖](episode1-portraits/independent-views.md)、[角色動畫參照](animation-reference/README.md)、[場景與道具參照](scene-prop-design/README.md)、[P0–P7 可審包 v3](episode-plan/preproduction-package-v3.md)、[外部匯入合約與實證](import-contract/README.md)、[資產與開拍交接](handoff/README.md)。
@@ -8,7 +26,7 @@
 
 閱讀順序：
 
-下列造型規格、製作清單及來源清冊保留建票時快照；其中「尚未生成／specified_not_generated／media_generated_in_this_task=false」描述當時狀態。最新交付以各批收據及 [139張候選整合清冊](handoff/asset-manifest.json) 為準，不把舊快照當成目前圖片數。
+下列造型規格、製作清單及來源清冊保留建票時快照；其中「尚未生成／specified_not_generated／media_generated_in_this_task=false」描述當時狀態。最新交付以各批收據及 [目前候選整合清冊](handoff/asset-manifest.json) 為準，不把舊快照當成目前圖片數。
 
 1. [角色造型規格](character-design.md)：人物外觀錨點、輪廓配色、服裝狀態與不可提前揭露的細節。
 2. [畫像與動畫參照製作清單](production-list.md)：分批角色、每人交什麼圖、製作及验收方式。

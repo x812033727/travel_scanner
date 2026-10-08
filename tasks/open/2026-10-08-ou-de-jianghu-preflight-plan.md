@@ -41,6 +41,12 @@ scope:
 
 ## Notes
 
+2026-10-09 提交前短暫 claim --force 只清理新增 v4 驗證器 EOF 空行；略過上游尚待採用的相依，不改提案、預算、SHA 收據或任何核准。語法與 staged whitespace 再查，完成即 release。
+
+- 2026-10-09 v4 已交 [補訂與六卡實看](../../docs/videos/series-plans/ou-de-jianghu/visual-development/episode-plan/finalization-v4.md)／[驗證 JSON](../../docs/videos/series-plans/ou-de-jianghu/visual-development/episode-plan/finalization-v4-verification.json)。video SHA cb341b457f28e5139cff6f0528722d2a0facebf8cfea90423aec572ed71ebd17；唯二 prompt diff，台詞／時間／動作／camera／來源切鏡／預算與 v3 相等。render/budget/lint/reading exit0；craft、plan strict 與 ready 都保留既有 exit1 原因（ready 1 過／429 媒體前提未備）。CUA timeout 保存；後續本機 Playwright/Edge 六卡 UI 選擇及截圖 exit0，六張用 view_image 實看，沒有 pageerror。只是修改者定點複核，沒有新全長／獨立冷看主張；v3/v3.1 不改、production 不改、lock 不寫。收尾後 release 給主控。
+
+- 2026-10-09 新增收尾：主控授權 codex-ou-final-handoff 在本scope新增 v4 補訂／離線驗證器與新版本收據，修正 a04-s038 左掌誤字及 a03-s086 無冠鏡通用前綴矛盾。保留 v3/v3.1 與舊實播證據，不修改 e001/production、不改台詞或時間、不寫lock。scope掃描無其他active claim，僅本隊PR #1388；`--force` 是主控同團隊後續前置授權與相依紀錄，非接管他人。新播放器只做指定兩鏡及鄰鏡定點複看，不能稱新全長冷看。
+
 2026-10-09 00:03（Asia/Taipei）最後文件補訂：依主控授權重新認領本票，只更新本scope的v3說明及離線基線入口。74張新增角色參照與29張場景／道具已交付候選，現鏈實物收據；預算的一次／期望／上限仍保留原規劃數，不冒稱實際生成或帳單。正常look明列每角色一張基底，其餘參照按鏡提供並驗SHA。首次offline-preflight加歷史基線標示，v3移除整案「未commit／push」推斷；Git交付由主控另記。本代理未執行commit、push或付費操作，未改核心video／animatic／台詞／時間／預算；檢查結果見[自己的驗證收據](../../docs/videos/series-plans/ou-de-jianghu/visual-development/episode-plan/package-verification.json)之documentation_refresh。下列2026-10-08 Notes均為當時的交付紀錄，不覆蓋本次狀態；正式採用DoD仍未勾，完成補訂後release。
 
 2026-10-08續作交付：[P0–P7審閱包v3](../../docs/videos/series-plans/ou-de-jianghu/visual-development/episode-plan/preproduction-package-v3.md)、[455鏡ledger](../../docs/videos/series-plans/ou-de-jianghu/visual-development/episode-plan/camera-and-risk-ledger.json)、[分項／兩期預算](../../docs/videos/series-plans/ou-de-jianghu/visual-development/episode-plan/budget-and-batches.json)。有來源SHA保護的可執行builder，未改e001／production；原10C逐鏡裁定，掌冠s036人工C、s037藏印首格與露印末格已修。實際setup 447→343；420clip／30still／5cut。當日Hailuo／Google費率已查，帳戶一次可見27000不當未来餘額或付款授權。已在另一repo外目錄重建，六份核心產物SHA相同。

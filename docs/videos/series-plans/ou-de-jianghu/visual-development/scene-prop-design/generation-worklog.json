@@ -352,9 +352,10 @@
         "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-446098b4-8df3-46ae-88ff-8980bf5156d4.png"
       ],
       "prompt": "Edit attached 16:9 empty chess guestroom to later cold state, keep EXACT camera/geometry/furniture/Go stones. Single table candle is EXTINGUISHED, no warm candle light; RIGHT REAR closed paper lattice window has WHITE FERN-LIKE frost across its opaque paper cells, emits cool blue moonlit glow. LEFT foreground sliding door now OPEN to dim warm corridor lantern; a black lacquer tray lies overturned and tea spilled on floor just inside left door; one small brown clay teapot on its side, one tiny matching cup nearby. No additional tableware, no people, no body, no blood, no killer or arrows. Preserve room positions, eerie stillness.",
-      "status": "superseded-candidate",
+      "status": "retired-not-for-model-input",
       "originalPath": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-1f0828ca-5e47-4f01-9a1d-432c636e3263.png",
-      "qa": "實看：燭滅、右窗霜、左門開與一壺一杯翻盤可讀；茶水形狀、棋點與紙窗通透度待正式首尾格鎖定，沒有死者/兇手/箭傷。"
+      "qa": "實看：燭滅、右窗霜、左門開與一壺一杯翻盤可讀；茶水形狀、棋點與紙窗通透度待正式首尾格鎖定，沒有死者/兇手/箭傷。",
+      "retirement_reason": "Cancel independent cold master after bounded failed paper-window edits; use clean master-v4 + cold-state-spec.json."
     },
     {
       "id": "wugui-bow-arrows",
@@ -540,7 +541,7 @@
         "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-116ead28-5d43-425e-9372-e2687d167fff.png"
       ],
       "prompt": "Edit attached prop board minimally. Keep THREE columns and bead coils/cracked bead exactly. LEFT fan: all outer ribs/guard sticks must be WHITE JADE/very pale grey, no dark wood; fully closed narrow parallel stack, preserve existing white paper. RIGHT coin state: preserve the intact THREE-coin string on left as baseline. On later state at far right, exactly TWO coins remain on a simple red cord whose lower end is visibly LOOSE and OPEN below lower coin, no end knot/tassel blocking it; the detached THIRD coin below, already fallen, unattached. Remove only knots blocking lower end in later state, don't add any coin. No text, no person. Clearly two time states of same three coins, not five carried coins.",
-      "status": "candidate",
+      "status": "superseded-candidate",
       "originalPath": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-59b6e9ad-feb8-4a3b-9a5f-64e5e6c32a6f.png",
       "qa": "實看v2：白玉外骨與末段鬆繩已修，3→2+1枚硬數量清楚；扇墜/細紋仍需與角色detail選同一母版，不可雙套各自採用。"
     },
@@ -608,7 +609,7 @@
         "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-446098b4-8df3-46ae-88ff-8980bf5156d4.png"
       ],
       "prompt": "Minimal surgical edit to attached 16:9 2D anime empty room. Do NOT change anything except the RIGHT window PANES. Every lattice cell is filled by OPAQUE rice PAPER. Replace every trace of outdoor scene seen through window with flat softly shaded pale blue-white paper. NO visible moon disc, NO circle or disc silhouette, NO visible tree or branch, NO mountains behind window. Solid frosted parchment like an illuminated shoji paper panel, never glass. No frost. Keep original one candle LIT, door closed and floor clean, all table/cushion/Go pieces exactly positioned. Preserve precise wooden lattice geometry and every other pixel composition as closely as possible. No text or people.",
-      "status": "candidate",
+      "status": "superseded-candidate",
       "originalPath": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-86aa05b3-16ad-4a90-8bdf-ae6cfbb07057.png",
       "qa": "實看v3：樹景已去且大部分為紙面，但上右仍有淡月輪殘影；修訂未完全達no visible moon，列待修，不能用作紙窗近景母圖。"
     },
@@ -625,7 +626,7 @@
         "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-95e1b9cf-7a97-45d4-9fa5-84b4665613c4.png"
       ],
       "prompt": "Minimal surgical edit to attached 16:9 2D anime empty room. Do NOT change anything except the RIGHT window PANES. Every lattice cell is filled by OPAQUE rice PAPER. Replace every trace of outdoor scene seen through window with flat softly shaded pale blue-white paper. NO visible moon disc, NO circle or disc silhouette, NO visible tree or branch, NO mountains behind window. Solid frosted parchment like an illuminated shoji paper panel, never glass. No frost. Keep original one candle LIT, door closed and floor clean, all table/cushion/Go pieces exactly positioned. Preserve precise wooden lattice geometry and every other pixel composition as closely as possible. No text or people.",
-      "status": "candidate",
+      "status": "superseded-candidate",
       "originalPath": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-ee80e01e-a8dd-4adf-a12a-f93bd8300726.png",
       "qa": "實看v2：窗面已較平整、無清楚外景；保留同側斜角地理，但非180度反向，仍須與master窗格/棋點鎖定。"
     },
@@ -642,9 +643,132 @@
         "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-1f0828ca-5e47-4f01-9a1d-432c636e3263.png"
       ],
       "prompt": "Minimal surgical edit to attached 16:9 2D anime empty room. Do NOT change anything except the RIGHT window PANES. Every lattice cell is filled by OPAQUE rice PAPER. Replace every trace of outdoor scene seen through window with flat softly shaded pale blue-white paper. NO visible moon disc, NO circle or disc silhouette, NO visible tree or branch, NO mountains behind window. Solid frosted parchment like an illuminated shoji paper panel, never glass. Retain delicate fern-like surface FROST on paper. Keep candle UNLIT, door OPEN left, tray already tipped with one pot/one cup on floor, exactly current positions. Preserve precise wooden lattice geometry and every other pixel composition as closely as possible. No text or people.",
-      "status": "candidate",
+      "status": "retired-not-for-model-input",
       "originalPath": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-2e9432e5-55cc-40da-98f8-5d88bf30ddee.png",
-      "qa": "實看v2：已維持燭滅/門開/翻盤一壺一杯和霜，但上右仍透淡月輪，不能稱紙窗已完全修妥。只適用a05-s031/s035/s042翻盤之後，不能當s023剛入房首格。"
+      "qa": "實看v2：已維持燭滅/門開/翻盤一壺一杯和霜，但上右仍透淡月輪，不能稱紙窗已完全修妥。只適用a05-s031/s035/s042翻盤之後，不能當s023剛入房首格。",
+      "retirement_reason": "Cancel independent cold master after bounded failed paper-window edits; use clean master-v4 + cold-state-spec.json."
+    },
+    {
+      "id": "chess-guestroom-master",
+      "version": 4,
+      "kind": "scene",
+      "status": "candidate",
+      "batch": "20261009",
+      "attempt": 1,
+      "sourceIds": [
+        "a04-s052",
+        "a04-s055",
+        "a04-s087"
+      ],
+      "prompt": "Use case: precise-object-edit. Image 1 is the EDIT TARGET. Change ONLY the infill material inside all existing window lattice openings. Paint over EVERY transparent window pane with solid opaque pale gray-blue handmade rice paper, a continuous flat matte paper surface with very fine paper fibers and diffuse non-directional blue light. OPAQUE means NO see-through shapes at all. Completely erase the pale circular moon disk in the upper-right pane: repaint it with the exact same even paper tone as the rest of that panel, not a blur, no bright circle or halo remaining. Also erase all silhouettes of outdoor trees, leaves, branches, clouds, sky and landscape from the window infill; no reflections or sky imagery. Preserve all dark wooden lattice bars and window frame shapes exactly. The potted foliage INSIDE the room stays in place and must not be mistaken for outside scenery. Keep the left entrance doors CLOSED. Keep the low go table, two cushions, exactly ONE LIT candle, its amber light, both bowls, wall painting, cabinets, right-side indoor potted plant and blue evening fill exactly as positioned. Keep the floor empty: no tea tray, no spilled tea, no people. Preserve original architecture, furniture, perspective, image composition, refined illustrated historical Chinese interior style, and wide landscape framing. No writing, no labels, no watermark. This is a paper-material repair, not a redesign.",
+      "references": [
+        "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/chess-guestroom-master-v3.png"
+      ],
+      "originalPath": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-d37bd224-9fe8-46a1-b9fd-04840436549b.png",
+      "qa": "2026-10-09實看：右後窗已是不透景紙面，原右上月輪消失，沒有室外樹景；左門關、單燭亮、兩席、低桌、室內盆栽及暖冷光位置保留。只修窗面，棋點仍須按連戲SVG覆寫。"
+    },
+    {
+      "id": "chess-guestroom-angle-b",
+      "version": 3,
+      "kind": "scene",
+      "status": "rejected-candidate",
+      "batch": "20261009",
+      "attempt": 1,
+      "sourceIds": [
+        "a04-s055",
+        "a05-s048",
+        "a05-s073"
+      ],
+      "prompt": "Use case: precise-object-edit. Image 1 is the EDIT TARGET. Change ONLY the infill material inside all existing window lattice openings. Paint over EVERY transparent window pane with solid opaque pale gray-blue handmade rice paper, a continuous flat matte paper surface with very fine paper fibers and diffuse non-directional blue light. OPAQUE means NO see-through shapes at all. Completely erase the pale circular moon disk in the upper-right pane: repaint it with the exact same even paper tone as the rest of that panel, not a blur, no bright circle or halo remaining. Also erase all silhouettes of outdoor trees, leaves, branches, clouds, sky and landscape from the window infill; no reflections or sky imagery. Preserve all dark wooden lattice bars and window frame shapes exactly. The potted foliage INSIDE the room stays in place and must not be mistaken for outside scenery. Keep this same oblique camera angle, left entrance doors CLOSED, low go table and two cushions, exactly ONE LIT candle and its warm pool, right foreground indoor potted plant and soft cool window illumination. No tea tray, no spill, no people. Do not change to a reverse angle. Preserve original architecture, furniture, perspective, image composition, refined illustrated historical Chinese interior style, and wide landscape framing. No writing, no labels, no watermark. This is a paper-material repair, not a redesign.",
+      "references": [
+        "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/chess-guestroom-angle-b-v2.png"
+      ],
+      "originalPath": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-207d1241-6d39-4005-9dc5-995399fcc6ad.png",
+      "qa": "2026-10-09第一修：右側窗已不透景，但左入口門的紙面也被誤改為亮冷藍，違反只修右窗/保留入口暖色，保留為退回版本。"
+    },
+    {
+      "id": "chess-guestroom-cold",
+      "version": 3,
+      "kind": "scene-state",
+      "status": "retired-not-for-model-input",
+      "batch": "20261009",
+      "attempt": 1,
+      "sourceIds": [
+        "a05-s031",
+        "a05-s035",
+        "a05-s042"
+      ],
+      "prompt": "Use case: precise-object-edit. Image 1 is the EDIT TARGET. Change ONLY the infill material inside all existing window lattice openings. Paint over EVERY transparent window pane with solid opaque pale gray-blue handmade rice paper, a continuous flat matte paper surface with very fine paper fibers and diffuse non-directional blue light. OPAQUE means NO see-through shapes at all. Completely erase the pale circular moon disk in the upper-right pane: repaint it with the exact same even paper tone as the rest of that panel, not a blur, no bright circle or halo remaining. Also erase all silhouettes of outdoor trees, leaves, branches, clouds, sky and landscape from the window infill; no reflections or sky imagery. Preserve all dark wooden lattice bars and window frame shapes exactly. The potted foliage INSIDE the room stays in place and must not be mistaken for outside scenery. Keep the LEFT ENTRANCE OPEN and its visible warm corridor lantern and amber doorway light. Keep exactly ONE EXTINGUISHED CANDLE with no flame, the low go table, both cushions, indoor plant, cold blue frost on window and right cushion. Keep exactly ONE overturned black tea tray, ONE tipped small brown teapot and ONE tipped brown cup in the lower left foreground, with the existing spilled tea puddle. This is AFTER the spill. No person, corpse, blood or extra crockery. Preserve original architecture, furniture, perspective, image composition, refined illustrated historical Chinese interior style, and wide landscape framing. No writing, no labels, no watermark. This is a paper-material repair, not a redesign.",
+      "references": [
+        "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/chess-guestroom-cold-v2.png"
+      ],
+      "originalPath": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-78b80a26-23da-4d09-a44a-925a3228c5c7.png",
+      "qa": "2026-10-09第一修失敗：右上月輪仍在；雖保留左門開、單燭滅及翻盤一壺一杯，紙窗仍不合格，不可作模型輸入。",
+      "retirement_reason": "Cancel independent cold master after bounded failed paper-window edits; use clean master-v4 + cold-state-spec.json."
+    },
+    {
+      "id": "personal-prop-states",
+      "version": 3,
+      "kind": "prop",
+      "status": "candidate",
+      "batch": "20261009",
+      "attempt": 1,
+      "sourceIds": [
+        "a01-s018",
+        "a01-s027",
+        "a03-s077",
+        "a03-s078",
+        "a05-s067",
+        "a05-s068",
+        "a05-s089"
+      ],
+      "prompt": "Use case: precise-object-edit. Image 1 is the edit target, a three-column prop design board. Edit ONLY the closed white fan in the left column: REMOVE the entire blue cord, blue jade beads/disc pendant and blue tassel that hang from the fan. Fill their former area with exactly the same empty neutral gray background. The fan must have absolutely no attached cord, pendant, tassel, bead or charm. Preserve the long closed parallel white-jade fan ribs, pale paper leaves, carved white external ribs, fan silhouette and small silver pivot rivet. Preserve the smaller white fan detail at the bottom of the left column. Leave ALL wooden prayer beads and cracked bead in the center column unchanged. Leave ALL copper coins, red cords, red knots and red tassel in the right column unchanged: the three-coin state and the two-on-cord plus one loose coin state must remain exactly as shown. Do not remove the red coin tassel. Maintain the three-column layout, original framing, gray background, ornate illustrated linework and colors. No new objects or text. This task is strictly removal of the BLUE attachment belonging to the WHITE FAN, not a redesign of any prop.",
+      "references": [
+        "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/personal-prop-states-v2.png"
+      ],
+      "originalPath": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-ec9cf565-2fd1-4cb8-b675-483aff4e6957.png",
+      "qa": "2026-10-09實看：扇上藍玉墜、藍繩和藍流蘇已移除；白玉扇骨/紙葉與小銀鉸釘、下方扇骨局部保留。三圈木珠/裂珠、3銅錢及2在繩+1落地兩態與紅繩紅穗維持。人物腰上原有藍流蘇不在本板修訂範圍。"
+    },
+    {
+      "id": "chess-guestroom-angle-b",
+      "version": 4,
+      "kind": "scene",
+      "status": "candidate",
+      "batch": "20261009",
+      "attempt": 2,
+      "sourceIds": [
+        "a04-s055",
+        "a05-s048",
+        "a05-s073"
+      ],
+      "prompt": "Use case: precise-object-edit. IMAGE 1 is the edit target. IMAGE 2 is a reference ONLY for the LEFT ENTRANCE DOOR INFILL MATERIAL AND WARM COLOR. Image 1 accidentally turned the LEFT pair of entry doors into bright blue windows. Change ONLY those left entrance door infill panels back to exactly the muted warm beige-brown appearance in Image 2, softly lit by the existing warm candle. Keep both doors CLOSED, opaque, same wood lattice and all geometry. The large actual WINDOW at the RIGHT foreground in Image 1 must remain unchanged: opaque matte gray-blue paper, no exterior view, no moon, no sky or tree silhouettes. Preserve all other pixels/composition including low go table, two cushions, single LIT candle, bowls, indoor potted plant, furniture, painting, and warm/cool illumination. Do not copy any other content from Image 2 and do not reintroduce transparent window imagery. No new items, no people, no text.",
+      "references": [
+        "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-207d1241-6d39-4005-9dc5-995399fcc6ad.png",
+        "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/chess-guestroom-angle-b-v2.png"
+      ],
+      "originalPath": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-f3288266-bb99-4c17-b4ed-a4d8189ff738.png",
+      "qa": "2026-10-09第二修實看：左入口閉門暖棕紙面恢復；右前窗仍為不透景紙面，無月輪/室外景；同側B角、單燭亮/兩席/低桌/盆栽保留。窗格/棋點不是精密幾何驗證。"
+    },
+    {
+      "id": "chess-guestroom-cold",
+      "version": 4,
+      "kind": "scene-state",
+      "status": "retired-not-for-model-input",
+      "batch": "20261009",
+      "attempt": 2,
+      "sourceIds": [
+        "a05-s031",
+        "a05-s035",
+        "a05-s042"
+      ],
+      "prompt": "Use case: precise-object-edit. IMAGE 1 is the edit target, the dark cold guest room AFTER the tea spill. IMAGE 2 supplies ONLY the clean OPAQUE PAPER SURFACE of the right rear window. Replace ONLY every paper infill area within the RIGHT REAR WINDOW of Image 1 with the corresponding solid, uniform gray-blue opaque paper appearance from Image 2. Image 1 still has an unwanted white MOON CIRCLE in the upper area of the right half-window: paint this disc and its halo away completely, so every part of that rectangular pane is the same uninterrupted matte paper tone. No circular bright patch, moon shape, exterior scenery, sky, cloud, tree or branch silhouette may remain anywhere in the window. Preserve the wood lattice exactly; small frost on the wood frame is fine, but the PAPER ITSELF must be visually simple, opaque and evenly toned, not patterned or translucent. IMPORTANT: transfer NO OTHER PART of Image 2. Keep the LEFT entry door OPEN with its visible warm corridor lantern. Keep the candle EXTINGUISHED with NO flame and the room dark/cold, not the warm lit-candle state of Image 2. Keep exactly one tipped black tray, one tipped brown teapot and one tipped brown cup with the existing tea puddle at LOWER LEFT, and keep both cushions, low table, board/bowls, furniture, painting and indoor potted plant exactly as in Image 1. No people. Do not change framing or perspective. This is strictly a window-paper replacement.",
+      "references": [
+        "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-78b80a26-23da-4d09-a44a-925a3228c5c7.png",
+        "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-d37bd224-9fe8-46a1-b9fd-04840436549b.png"
+      ],
+      "originalPath": "<IMAGEGEN_ORIGINAL>/01a11b27-cc5a-7b60-b55d-62c5d186ee64/exec-4950d7af-0c22-4009-88a2-6dde5bd2c753.png",
+      "qa": "2026-10-09第二修仍失敗：右上圓形月輪清楚殘留，紙面霜紋亦減少；兩次上限已到。全部cold獨立圖退役不作模型輸入；改採master-v4加逐鏡冷態規格，沒有宣稱冷態圖修好。",
+      "retirement_reason": "Cancel independent cold master after bounded failed paper-window edits; use clean master-v4 + cold-state-spec.json."
     }
   ]
 }

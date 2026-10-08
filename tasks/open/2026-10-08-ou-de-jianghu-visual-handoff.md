@@ -43,6 +43,14 @@ scope:
 
 ## Notes
 
+- 2026-10-09 最後整合完成：新 [asset-manifest](../../docs/videos/series-plans/ou-de-jianghu/visual-development/handoff/asset-manifest.json) 核實 146 unique latest＝9 concepts＋27 portraits＋82 new references＋28 scenes/props，另 9 front reuse＝91 reference uses；29 份文件 hash 綁定含 portable gallery／fan／mouth reviews。455 鏡 mapping 最新 SHA 全過；193 鏡的扇分派都含 construction-details-v3＋personal-prop-states-v3，concept-v5/right-profile-v3/left-three-quarter-v3 僅身份服裝，沒有宣稱全圖扇拓撲一致。9 舊匯入逐筆保留 historical v3 與像素是否仍同新基底；沈 full-body-v3 未匯入／核准。build-manifest、其 --check、mapping --check、tasks check（1692票）與 scoped diff --check 全 exit0；只有其他票的 stale warnings。未 commit/push，release 交主控；source_commit 記當次工作基線，不因之後 commit 自動重建迴圈，正式採用 DoD 保留未勾。
+
+- 2026-10-09 主控再分工 codex-ou-final-handoff 整合本票 `build-manifest.mjs`／README 與新收據：再次 who-is-on-it 查無 active scope、唯一 PR #1388 是同隊；claim `--force` 只略過同隊修圖／場景候選的未結相依。待主控最後修圖收據凍結後，依序重建 455 鏡 mapping 與 146 unique manifest，再 check/release；不改 production，不填 P7／owner／paid readiness，舊 9 筆匯入維持 v3 歷史。
+
+- 2026-10-09 補交 [finalization](../../docs/videos/series-plans/ou-de-jianghu/visual-development/handoff/finalization-20261009.md) 與 455 鏡 JSON／離線 builder。消費新 finalized 畫像／動畫參照收據；57 logical keys 的候選 hash、12 正典來源、27 原生 PNG header 核實，保留 18 張 native_below_target，未放大。6 個棋局狀態逐坐標與場景決定相等；冷場全部使用 clean master-v4＋狀態 spec，舊 cold-v* 不送模型。規劃 reference 並非已送模型；全部 final binding／owner acceptance／runtime 仍未寫。舊 9 人 staging 維持 v3／沈 full v1 歷史紀錄。本次只新增收尾檔，不改 README/build-manifest/asset-manifest；release 交主控整合，正式採用 DoD 不冒填。
+
+- 2026-10-09 本輪收尾：由主控分工 codex-ou-final-handoff 補 `handoff/finalization-20261009.md/.json` 及離線重建／驗證器，不改既有 README、build-manifest、asset-manifest、production 或 approval。who-is-on-it 再查 handoff 無其他 active claim，唯一相關 PR #1388 即本團隊目前分支；`--force` 僅略過同團隊動畫參照／場景候選尚未結案的相依，不接管其他持有人，也不表示個別候選採用。完成後交回主控整合新資產 SHA。
+
 2026-10-09收尾：[交接包](../../docs/videos/series-plans/ou-de-jianghu/visual-development/handoff/README.md)與 [asset-manifest](../../docs/videos/series-plans/ou-de-jianghu/visual-development/handoff/asset-manifest.json)已備妥。12來源SHA、139張唯一latest候選（9概念＋27畫像＋74新角色參照＋29場景道具）、9張正面沿用關係、16種shot_looks獨立hash、9張隔離pending匯入及16份交付來源文件SHA已核對。正常lookHash為9b3e6914dbc8d109，僅來自隔離工作提案，不冒稱涵蓋shot_looks或正常runtime。455鏡v3／v3.1、全長文字animatic觀看、兩期預算及a02-s035～s037連續小樣計畫可直接審。白扇母版、紙窗近景、棋盤、原生尺寸及23:23.533估時差異均明列。剩餘兩DoD保留：正式個別採用／judge與正常關卡、當鏡真實參照驗證，以及production／原試播票持有人交接；沒有paid動畫或假approval。
 
 - 2026-10-08 續做：本票 scope 收窄為 handoff/，先完成可審閱的第一集交接包；production/README.md 的原持有人交接及正式 runtime 選用/付費小樣仍列待辦，不占用其 scope。who-is-on-it 對 handoff/ 查無 active claim 或其他 PR。依站主「好 續繼都完成」授權，使用 --force 僅略過同一分工中尚未結案的三張相依票，並非覆蓋別人持有者、預算或站主接受。

@@ -49,3 +49,6 @@ scope:
 - ep1_scene_plan獨立抽看5圖，右手/月牙/四箭/門方向未見立即硬錯。cold圖source已收窄到a05-s031/s035/s042（翻盤之後）。客房master v3/cold v2仍殘留淡月輪，須在紙窗近景前修，不能稱全部定稿；棋盤PNG格線不可作母版，另附精確19路SVG點位提案。剩餘持物/接觸/選母版與逐鏡畫面核對在成果review/prop-continuity明列，因此本票不done。
 - 收尾：收據媒體根改為可攜的 `<VIDEO_WORKDIR>/ou-de-jianghu-e001`；整理器以 `OU_DE_JIANGHU_WORKDIR` 接受實際路徑。README 與圖廊已對 master v3、angle-b v2、cold v2 三張一致標明紙窗殘影，只作空間／光線提案，不准用為紙窗 CU 母圖。重建再次核對 7 來源、40 原圖／副本、29 latest、455 鏡均通過；本票的待修與逐鏡核對仍保留。
 - 最後路徑核對：repo 收據／prompt／工作紀錄的 170 個個人絕對路徑改成 `<IMAGEGEN_ORIGINAL>` 或單集 `<VIDEO_WORKDIR>` 代號；原始本機工作紀錄另保留於 repo 外。整理器用 `IMAGEGEN_ORIGINAL` 解析生成原圖根目錄。40 PNG 的 SHA／尺寸及 2 SVG SHA 與修改前逐筆一致，沒有重生或改動媒體；scope JSON／MD／整理器掃描無個人路徑，證據見 portability-verification.json。
+- 2026-10-09 續作：本輪內建imagegen共6修訂，累計46原圖、28工作候選；master v4／angle-b v4紙窗已不透景，personal-prop-states v3移除藍色扇墜，全部raw保留20261009。cold兩修仍月輪，依製作重設計取消所有cold獨立母圖（禁止作模型輸入），三鏡s031/s035/s042改乾淨master v4綁SHA加cold-state-spec；這是尚未渲染的狀態規格，並未宣稱失敗圖修好。
+- 首集棋局固定為editorial continuity decision：保留原16點，依s051白(4,3)/s062黑(5,4)/s071白(15,3)/s079白(5,5)由12逐步至16；末a05-s091只加白(1,17)成17。6階段加前後兩份19路SVG已保存，非原作棋譜／owner核准。未改source劇本。
+- 送茶索引修正：原稿與v3/v4均是s017沈咳嗽、s018送茶、s019左托右敲、s022開門，已修本scope MD與builder規則；455鏡原文索引仍保存原稿。主代理要求先保留claim，待最後review回覆再交回。

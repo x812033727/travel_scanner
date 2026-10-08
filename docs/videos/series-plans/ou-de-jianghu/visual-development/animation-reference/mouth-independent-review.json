@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "project": "ou-de-jianghu-e001",
+  "date_local": "2026-10-09",
+  "timezone": "Asia/Taipei",
+  "reviewed_at_utc": "2026-10-08T16:39:29.8160101Z",
+  "reviewer": "codex-independent-cast-audit",
+  "independent_of_generating_agent": true,
+  "source_manifest": {
+    "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/mouth-study-manifest.json",
+    "sha256": "1cbbe48a7b0f750aba88209c512073a12e74529da93c242c88158bdc3cc08fe3"
+  },
+  "scope": "Eight selected six-cell static mouth-study sheets: ji-wushuang v2, other seven v1; compared visually with eight original identity headshots. No image generation or edits.",
+  "method": "Opened all 8 selected sheets and all 8 source headshots separately with view_image detail=original; inspected 48 mouth cells at returned image resolution; verified selected/source SHA-256 against manifest. No audio, playback or frame timing assessed.",
+  "selected_sheet_count": 8,
+  "observed_cells_total": 48,
+  "mouth_reading_order": [
+    "closed",
+    "lightly_parted",
+    "A_like",
+    "E_I_like",
+    "O_like",
+    "U_like"
+  ],
+  "overall_outcome": "static_reference_candidates_usable_with_limits",
+  "blocking_findings": [],
+  "nonblocking_findings": [
+    "Headwear/hair/beard cropping and limited top margin remain; sheets are not full costume or headwear masters.",
+    "Yan Hui O/U distinction is weak and E/I retains a smile; not a reliable exact phoneme pair.",
+    "Xuanmen Elder and Nie Gutie have partial lip occlusion by facial hair.",
+    "Luo Qingyan closed versus lightly parted is subtle at reduced display size.",
+    "Source head angle/expression normalization is visible for Bao Sanqian and Yan Hui; sheets are not pixel-aligned mouth replacement textures."
+  ],
+  "left_right_findings": [
+    "Ji Wushuang v2: one frost mark at anatomical left eye / viewer right in all six cells, consistent with source.",
+    "Nie Gutie: anatomical left eye / viewer right remains cloudy in all six cells, consistent with source."
+  ],
+  "limits": [
+    "A_like/E_I_like/O_like/U_like are descriptive static visual classes only, not exact Mandarin phonemes.",
+    "No timed animation, speech, phoneme alignment, temporal identity consistency, mouth rig or lip-sync playback was tested.",
+    "This independent review is not owner acceptance, formal look approval, production import or permission to overwrite identity masters."
+  ],
+  "owner_accepted": false,
+  "formal_look_approval": false,
+  "production_imported_by_review": false,
+  "image_assets_modified": false,
+  "repository_modified_by_review": false,
+  "assets": [
+    {
+      "character": "shen-guihe",
+      "name": "沈歸鶴",
+      "selected_key": "shen-guihe-mouth-shapes-v1",
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/shen-guihe-mouth-shapes-v1.png",
+      "sha256": "c697b0dc8998938a645eeedae711477d8bd13023b3eb84a327454dca551e3d32",
+      "selected_hash_matches_manifest": true,
+      "source_headshot": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/shen-guihe-front-headshot-v1.png",
+        "sha256": "96f725263d6b21e1e9f05e95166a051734491ac305b84c93a52c7df110acf606",
+        "hash_matches_manifest": true
+      },
+      "source_and_selected_visually_viewed": true,
+      "view_tool": "view_image detail=original",
+      "observed_cells": 6,
+      "layout": "3 columns x 2 rows",
+      "major_identity_drift_observed": false,
+      "duplicate_mouth_or_major_oral_deformation_observed": false,
+      "identity_observation": "灰眼、細長成年臉、黑髮與單白羽銀冠延續來源，六格眼眉、鼻形及下頜一致；未見重大身份漂移。",
+      "laterality_observation": "白羽與偏分髮的位置未跨格鏡像；本角色無需核對霜花或混濁眼。",
+      "mouth_observation": "依上排左至右、下排左至右可讀閉口、輕張、A 類張口、E/I 類橫展、O 類圓口、U 類收小噘口。口內牙帶連續，未見游離牙、多嘴或扭曲下頜。",
+      "limitations": [
+        "冠頂幾乎貼格上緣，不用本板核定冠飾比例或完整性。",
+        "A/O 張幅較克制；只有視覺相似性，沒有音素或時序證據。"
+      ],
+      "outcome": "static_reference_candidate_usable_with_limits",
+      "full_headwear_master_qualified": false,
+      "exact_phoneme_mapping_verified": false,
+      "lip_sync_verified": false,
+      "owner_accepted": false,
+      "formal_look_approval": false
+    },
+    {
+      "character": "ji-wushuang",
+      "name": "姬無霜",
+      "selected_key": "ji-wushuang-mouth-shapes-v2",
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/ji-wushuang-mouth-shapes-v2.png",
+      "sha256": "c0650a1b5d7db95c8c6b0091154ddeca4451acb7a3eb627a3473ffc8e94e387f",
+      "selected_hash_matches_manifest": true,
+      "source_headshot": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/ji-wushuang-front-headshot-v1.png",
+        "sha256": "1e2abdae520dcbb9759886d151a4de51578052fe4c106bfd0b6d980f015df5d9",
+        "hash_matches_manifest": true
+      },
+      "source_and_selected_visually_viewed": true,
+      "view_tool": "view_image detail=original",
+      "observed_cells": 6,
+      "layout": "3 columns x 2 rows",
+      "major_identity_drift_observed": false,
+      "duplicate_mouth_or_major_oral_deformation_observed": false,
+      "identity_observation": "v2 六格延續來源的銀髮、紫眼、細長眼形、鳳冠與成年臉；每格只有一處紫色霜花記，未見重大換臉。",
+      "laterality_observation": "六格霜花均在角色自身左眼外下側，即觀者右側；與 source headshot 一致，沒有轉到另一側或兩側重複。",
+      "mouth_observation": "首格為閉合唇縫，未見露牙或清楚口腔；第二格微張，第三格縱向張口，第四格橫展露窄牙帶，第五格圓口，第六格更小噘口。未見多嘴、裂顎或游離牙。",
+      "limitations": [
+        "v2 頭像較小，唇部像素有限；閉合與微張須保留原尺寸查看。",
+        "冠頂進入格內但頂部餘量很小；本覆核不驗收完整冠結構或提示所要求的留白。"
+      ],
+      "outcome": "static_reference_candidate_usable_with_limits",
+      "full_headwear_master_qualified": false,
+      "exact_phoneme_mapping_verified": false,
+      "lip_sync_verified": false,
+      "owner_accepted": false,
+      "formal_look_approval": false
+    },
+    {
+      "character": "ji-wen",
+      "name": "寂聞",
+      "selected_key": "ji-wen-mouth-shapes-v1",
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/ji-wen-mouth-shapes-v1.png",
+      "sha256": "f83e55c923671acadbf6f1e5a205b5428657040ed26ca345d25c70691fe8776a",
+      "selected_hash_matches_manifest": true,
+      "source_headshot": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/ji-wen-front-headshot-v1.png",
+        "sha256": "0b4dc86b4f99b643e5d128662ea02046930000ad5bc1545db9898f6abe4a75d4",
+        "hash_matches_manifest": true
+      },
+      "source_and_selected_visually_viewed": true,
+      "view_tool": "view_image detail=original",
+      "observed_cells": 6,
+      "layout": "3 columns x 2 rows",
+      "major_identity_drift_observed": false,
+      "duplicate_mouth_or_major_oral_deformation_observed": false,
+      "identity_observation": "寬厚成年臉、粗眉、金琥珀眼、光頭與金蓮冠延續來源；六格鼻、眉與頰輪廓穩定。",
+      "laterality_observation": "垂珠在兩側保持連續，未見跨格突然換向的面部身份特徵。",
+      "mouth_observation": "六格順序可辨；第三格有較大的自然口腔，第四六格分別呈橫展牙帶及收小圓唇，沒有浮牙或額外口部。",
+      "limitations": [
+        "冠最高尖頂貼邊且部分被裁，不能當完整蓮冠造型板。",
+        "正常上下牙或暗口腔只是靜態描繪，不能證明說話連續幀自然。"
+      ],
+      "outcome": "static_reference_candidate_usable_with_limits",
+      "full_headwear_master_qualified": false,
+      "exact_phoneme_mapping_verified": false,
+      "lip_sync_verified": false,
+      "owner_accepted": false,
+      "formal_look_approval": false
+    },
+    {
+      "character": "bao-sanqian",
+      "name": "包三錢",
+      "selected_key": "bao-sanqian-mouth-shapes-v1",
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/bao-sanqian-mouth-shapes-v1.png",
+      "sha256": "7a6dfddc9acffd0a8dcd76054b376cdcbc340e17e792ce77e32f948ed9c6d3c4",
+      "selected_hash_matches_manifest": true,
+      "source_headshot": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/bao-sanqian-front-headshot-v1.png",
+        "sha256": "418400b3dbd07a67bb2564467ff504c32ad7cf1c7ba91c8da66ba53a78de5391",
+        "hash_matches_manifest": true
+      },
+      "source_and_selected_visually_viewed": true,
+      "view_tool": "view_image detail=original",
+      "observed_cells": 6,
+      "layout": "3 columns x 2 rows",
+      "major_identity_drift_observed": false,
+      "duplicate_mouth_or_major_oral_deformation_observed": false,
+      "identity_observation": "來源的瘦長臉、尖眉、薄鬍與下巴鬍、亂髻銅簪、草帽仍可辨；由略側視與傾頭轉成較正面研究，非逐像素複製。",
+      "laterality_observation": "髮髻、銅簪、草帽的偏向在六格中一致；鬍鬚附著唇上而非伸進口腔。",
+      "mouth_observation": "六格閉口至收小圓口可辨，E/I 露窄牙帶；沒有可見多嘴、游離牙或唇線斷裂。",
+      "limitations": [
+        "帽外緣與髻頂受格框裁切，僅嘴部參考。",
+        "視線和頭角度較 source 中性化，不能直接當原頭像的像素貼圖。"
+      ],
+      "outcome": "static_reference_candidate_usable_with_limits",
+      "full_headwear_master_qualified": false,
+      "exact_phoneme_mapping_verified": false,
+      "lip_sync_verified": false,
+      "owner_accepted": false,
+      "formal_look_approval": false
+    },
+    {
+      "character": "yan-hui",
+      "name": "燕迴",
+      "selected_key": "yan-hui-mouth-shapes-v1",
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/yan-hui-mouth-shapes-v1.png",
+      "sha256": "c2bfb3978fa4fa702fb9a3eadf0de0a046154877faefd88717f478b8594a6dc3",
+      "selected_hash_matches_manifest": true,
+      "source_headshot": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/yan-hui-front-headshot-v1.png",
+        "sha256": "9b1d6e5cdcb1a76d2d33ebb765190252efd5a729a2627e5d9cc53d46725fd7c9",
+        "hash_matches_manifest": true
+      },
+      "source_and_selected_visually_viewed": true,
+      "view_tool": "view_image detail=original",
+      "observed_cells": 6,
+      "layout": "3 columns x 2 rows",
+      "major_identity_drift_observed": false,
+      "duplicate_mouth_or_major_oral_deformation_observed": false,
+      "identity_observation": "來源的成年男臉、亂褐髮、鬍渣和裂銅冠仍可辨；笑與傾頭已轉正面較中性，六格保持同人。",
+      "laterality_observation": "頭髮與鬍渣分布跨格穩定；本板不檢驗未入畫的裸左肩或右肩刀。",
+      "mouth_observation": "六格完整。閉口、輕張、較張開 A 與橫展 E/I 可辨；O/U 都是小圓口，U 稍收小噘出，但區別偏弱。未見游離牙、異常多排牙或裂顎。",
+      "limitations": [
+        "O/U 對比弱，不宜當精準區分這兩類音的依據。",
+        "E/I 帶笑意，並非完全固定情緒的機械嘴形表。",
+        "冠頂明顯裁切；頭冠另看 source。"
+      ],
+      "outcome": "static_reference_candidate_usable_with_limits",
+      "full_headwear_master_qualified": false,
+      "exact_phoneme_mapping_verified": false,
+      "lip_sync_verified": false,
+      "owner_accepted": false,
+      "formal_look_approval": false
+    },
+    {
+      "character": "nie-gutie",
+      "name": "聶孤鐵",
+      "selected_key": "nie-gutie-mouth-shapes-v1",
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/nie-gutie-mouth-shapes-v1.png",
+      "sha256": "095bc2cdb4bb95e204f2e96a35e062ea86416205bb6171da61fd764e8b3e807e",
+      "selected_hash_matches_manifest": true,
+      "source_headshot": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/nie-gutie-front-headshot-v1.png",
+        "sha256": "31f6fbfa208e537f661a5f2aa33ee8abb388327b3150a6114ad2de3daa1406f5",
+        "hash_matches_manifest": true
+      },
+      "source_and_selected_visually_viewed": true,
+      "view_tool": "view_image detail=original",
+      "observed_cells": 6,
+      "layout": "3 columns x 2 rows",
+      "major_identity_drift_observed": false,
+      "duplicate_mouth_or_major_oral_deformation_observed": false,
+      "identity_observation": "粗厚老年臉、灰鬚、頭帶金屬片、面疤與混濁眼延續來源；六格同一老者，沒有因張口變年輕。",
+      "laterality_observation": "混濁眼在角色自身左眼，即觀者右側；同側面疤保持，未鏡像到右眼。",
+      "mouth_observation": "閉口、微張、A、E/I、O、U 可辨。鬍鬚仍附著唇周與下顎；E/I 可見的上下牙帶位置合理，未見游離牙或額外口腔。",
+      "limitations": [
+        "部分唇緣被鬍鬚遮住；使用時需依實際對白微調。",
+        "髮頂貼格、頭帶細節不可由此替代完整來源造型。"
+      ],
+      "outcome": "static_reference_candidate_usable_with_limits",
+      "full_headwear_master_qualified": false,
+      "exact_phoneme_mapping_verified": false,
+      "lip_sync_verified": false,
+      "owner_accepted": false,
+      "formal_look_approval": false
+    },
+    {
+      "character": "xuanmen-elder",
+      "name": "玄門長老",
+      "selected_key": "xuanmen-elder-mouth-shapes-v1",
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/xuanmen-elder-mouth-shapes-v1.png",
+      "sha256": "d03be901efe33b4189e05ae5eb60d638b15a0313d88e19ca21b73686bed68137",
+      "selected_hash_matches_manifest": true,
+      "source_headshot": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/xuanmen-elder-front-headshot-v1.png",
+        "sha256": "60c8245d7e5b50ee9d3b9acc6b3c2236f772d1f6bb2233842b97c1b98e0322b2",
+        "hash_matches_manifest": true
+      },
+      "source_and_selected_visually_viewed": true,
+      "view_tool": "view_image detail=original",
+      "observed_cells": 6,
+      "layout": "3 columns x 2 rows",
+      "major_identity_drift_observed": false,
+      "duplicate_mouth_or_major_oral_deformation_observed": false,
+      "identity_observation": "來源的老年窄臉、白眉、斑點、長白鬚與青黑道冠保留；六格年齡和鼻眼輪廓一致。",
+      "laterality_observation": "面部斑點及髮鬚大方向穩定，無明顯鏡像身份問題。",
+      "mouth_observation": "六格受鬍鬚部分遮擋但張合仍可讀；A 縱開、E/I 橫展露牙、O 圓口、U 更小，沒有雙嘴、巨大黑洞或漂浮牙。",
+      "limitations": [
+        "白鬚遮住部分唇線；不能以此推定連續嘴形，對白近景需要單獨小樣。",
+        "道冠上部及長鬚下部均裁切，不能當冠與鬚長的造型母版。"
+      ],
+      "outcome": "static_reference_candidate_usable_with_limits",
+      "full_headwear_master_qualified": false,
+      "exact_phoneme_mapping_verified": false,
+      "lip_sync_verified": false,
+      "owner_accepted": false,
+      "formal_look_approval": false
+    },
+    {
+      "character": "luo-qingyan",
+      "name": "洛青衍",
+      "selected_key": "luo-qingyan-mouth-shapes-v1",
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/luo-qingyan-mouth-shapes-v1.png",
+      "sha256": "ca473181541554cec1e30e79c8477c86cf004a70706638533bdf39b0b25e68a3",
+      "selected_hash_matches_manifest": true,
+      "source_headshot": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/luo-qingyan-front-headshot-v1.png",
+        "sha256": "6d3b1287824195c9bb32c7e603b48bddb21164176c3465bf1b643946050d22b0",
+        "hash_matches_manifest": true
+      },
+      "source_and_selected_visually_viewed": true,
+      "view_tool": "view_image detail=original",
+      "observed_cells": 6,
+      "layout": "3 columns x 2 rows",
+      "major_identity_drift_observed": false,
+      "duplicate_mouth_or_major_oral_deformation_observed": false,
+      "identity_observation": "青年成年男臉、海綠眼、黑髮、低珊瑚冠與中央貝殼延續來源，六格下顎與眼距保持。",
+      "laterality_observation": "瀏海、冠側枝及緞帶方向穩定，未見面部身份記號新增；後頸未展示，不評胎記。",
+      "mouth_observation": "六格完整；A、橫展 E/I、圓 O 與小噘 U 可辨。閉口和輕張的差距細，原尺寸可見第二格小暗縫；無游離牙或歪顎。",
+      "limitations": [
+        "閉口／輕張差距細微，在縮圖尺寸可能不易區分。",
+        "嘴角仍偏柔和，不能代替實際情緒表演；髮頂留白不足。"
+      ],
+      "outcome": "static_reference_candidate_usable_with_limits",
+      "full_headwear_master_qualified": false,
+      "exact_phoneme_mapping_verified": false,
+      "lip_sync_verified": false,
+      "owner_accepted": false,
+      "formal_look_approval": false
+    }
+  ]
+}

@@ -105,7 +105,7 @@
       "name": "棋盤/棋子",
       "pattern": "go board|white stone|black stone|go stone",
       "character": "",
-      "rule": "1低木棋盤/黑白子；白子長老右側手間停住，a05-s091才落入空角；點位是待採用提案",
+      "rule": "1低木棋盤；盤面依go-layout-decision逐次12→13→14→15→16；a05-s091白子落(1,17)成17。首集連戲編輯決定，非原作棋譜",
       "board": "go-candle-reference"
     },
     {
@@ -121,7 +121,7 @@
       "name": "茶盤一壺一杯",
       "pattern": "tray|teapot|tea|one cup",
       "character": "bao-sanqian",
-      "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+      "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
       "board": "tea-tray-states"
     },
     {
@@ -634,7 +634,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -671,7 +671,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -700,7 +700,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -774,7 +774,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -811,7 +811,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -840,7 +840,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -887,7 +887,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -922,7 +922,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -984,7 +984,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -1029,7 +1029,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -1064,7 +1064,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -1093,7 +1093,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -1146,7 +1146,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -1315,7 +1315,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -8294,7 +8294,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -8352,7 +8352,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -8383,7 +8383,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -8420,7 +8420,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -8537,7 +8537,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -8595,7 +8595,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -8709,7 +8709,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -8739,7 +8739,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         },
         {
@@ -8828,7 +8828,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -8885,7 +8885,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -8915,7 +8915,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         },
         {
@@ -8988,7 +8988,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -9020,7 +9020,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -9050,7 +9050,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         },
         {
@@ -9154,7 +9154,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -9183,7 +9183,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -9241,7 +9241,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -10566,7 +10566,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -10604,7 +10604,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -10635,7 +10635,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -10672,7 +10672,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -10729,7 +10729,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -10794,7 +10794,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -10825,7 +10825,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -10881,7 +10881,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -11006,7 +11006,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -11038,7 +11038,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -11069,7 +11069,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -11140,7 +11140,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         },
         {
@@ -11238,7 +11238,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -11275,7 +11275,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         },
         {
@@ -11335,7 +11335,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -11396,7 +11396,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         },
         {
@@ -11443,7 +11443,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -11506,7 +11506,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -11973,7 +11973,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -12774,7 +12774,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -12817,7 +12817,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
@@ -13098,7 +13098,7 @@
         },
         {
           "prop_id": "tea-set",
-          "rule": "1黑盤/1小陶壺/1杯；a05-s017送茶，s026置桌，s030翻盤，s031後茶水留地",
+          "rule": "1黑盤/1小陶壺/1杯；a05-s018送茶，s019左托右敲，s026置桌，s030翻盤，s031後茶水留地",
           "visibility": "inventory only; source framing determines visibility"
         }
       ],
