@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "SaaS、PaaS 與 IaaS：你使用服務，也接下哪些責任",
@@ -154,6 +157,7 @@
           "width": 1600,
           "height": 900,
           "caption": "先決定需要哪些控制權，再確認每一項持續工作由誰接手。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -233,6 +237,914 @@
         },
         {
           "title": "AWS：Shared Responsibility Model",
+          "url": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "SaaS, PaaS and IaaS: The Responsibilities You Take On When Using a Service",
+      "description": "SaaS, PaaS and IaaS differ not just in where software runs, but in who maintains each layer. An original community classroom registration scenario explains responsibilities for ready-made cloud software, application platforms and infrastructure, with checks for accounts, data, updates, backups and leaving a service. A comparison table and original diagrams help everyday users understand service plans and assign specific people to the work before outsourcing.",
+      "hero": {
+        "src": "/guides/saas-paas-iaas-responsibility/hero-en.jpg",
+        "alt": "An original Mokaair illustration of a screen, server and shield, representing cloud service features, operations and maintenance, and data protection.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A community classroom wants students to register online. A vendor offers three proposals: subscribe to a ready-made registration tool, put a custom application on a platform, or rent a cloud server. All three can be called cloud services, but the ongoing work differs greatly. Before choosing a plan, clarify whether the classroom wants to maintain course data, the application, or even manage the server system itself."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article explains SaaS, PaaS and IaaS through an original classroom scenario, based on primary documents from NIST, Microsoft and AWS consulted on 2026/9/14. No services were actually purchased or deployed, and no particular vendors are ranked. The responsibility table is a discussion aid; formal assignments must still be based on the selected service and contract."
+        },
+        {
+          "type": "heading",
+          "text": "Start with the layer you can control",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "SaaS stands for Software as a Service: users directly use applications supplied by a provider. For example, the classroom creates courses, manages students and configures notifications in a ready-made registration tool without installing a server operating system itself. The service determines which features can be adjusted, so a particular waitlist rule may not be freely rewritten."
+        },
+        {
+          "type": "paragraph",
+          "text": "PaaS stands for Platform as a Service: the provider supplies a platform for running applications, and users deploy applications they have developed or obtained. In this example, if an engineer is hired to build the registration workflow, the application can be handed to the platform to run. The platform handles more underlying maintenance, but someone still needs to fix incorrect course logic, vulnerable packages or improper application settings."
+        },
+        {
+          "type": "paragraph",
+          "text": "IaaS stands for Infrastructure as a Service: users obtain basic resources such as computing, storage and networking, and can control the virtual server's operating system and install software. This offers more room to accommodate special requirements, while adding work for updates, monitoring and troubleshooting. The provider's management of physical equipment does not mean it will fix the registration application the classroom installed itself."
+        },
+        {
+          "type": "heading",
+          "text": "A service type does not describe an entire company",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "NIST uses these three types to describe the layer at which a service is provided, and separately distinguishes deployment models such as public and private clouds. They answer different questions, so a private cloud cannot simply be treated as IaaS, nor does having a mobile App necessarily indicate a particular service type. Read the product's actual features when classifying it; the brand name alone is insufficient."
+        },
+        {
+          "type": "paragraph",
+          "text": "The same registration system may combine several types: the classroom uses SaaS to send notifications, hosts a custom website on PaaS, and has an IaaS server for a legacy system. In this case, map the data flows separately. If the quotation says only \"fully cloud-based,\" everyone may assume the other party will handle failed notification integrations or problems synchronizing student data."
+        },
+        {
+          "type": "paragraph",
+          "text": "When comparing control, ask the vendor directly: who can install updates, view logs, modify the application and stop the service? Then ask whether these actions require an interface, customer support or an engineer. Turning the answers into actionable tasks is more useful than memorizing three acronyms when finding a plan that fits the classroom's staffing."
+        },
+        {
+          "type": "heading",
+          "text": "The classroom still needs to manage data and accounts",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft's explanation of shared responsibility states that customers still need to manage their data, identities and settings under their control, regardless of service type. In this example, the provider can maintain the login feature, but will not automatically know which part-time employee has left, which class roster should be available only to its instructor, or whether an exported file may be sent to an external partner."
+        },
+        {
+          "type": "paragraph",
+          "text": "First assign the operations that administrators, administrative staff and teachers each need. Teachers may only need to view the courses they teach, without being able to download every student's contact details. Use individual accounts with available multi-factor authentication, and establish a procedure for revoking access when staff leave. Even with SaaS, these settings and routine checks cannot simply be left to the statement \"the cloud will handle it.\""
+        },
+        {
+          "type": "paragraph",
+          "text": "Also distinguish between data stored by the service provider and files downloaded by the classroom. If exported rosters remain on shared computers, in personal email accounts or in folders with unrestricted sharing, the risks extend beyond the cloud platform. A worksheet can record each file's purpose, who may read it and its retention period, so someone is also responsible for organizing copies outside the registration tool."
+        },
+        {
+          "type": "heading",
+          "text": "Ask about updates, backups and recovery item by item",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AWS uses EC2 as an example to explain that IaaS users must manage guest operating system updates, software installation and security group settings; for more abstracted services, the provider handles more underlying work. This reminds us that a responsibility table for one virtual server cannot be applied directly to every cloud product. The specific service being selected must be considered."
+        },
+        {
+          "type": "paragraph",
+          "text": "The classroom can break maintenance down into application updates, applying platform settings, retaining data copies and recovery drills. For each task, ask whether it is included in the monthly fee, who initiates it, how failures are reported and what point in time can be recovered. Whether the provider has redundant equipment and whether a user can recover an accidentally deleted registration record are separate checks."
+        },
+        {
+          "type": "paragraph",
+          "text": "Arrange a small acceptance test: create a few fictional registration records, export them using the officially provided method, confirm that the file opens and all fields are present, and ask the responsible person to explain the recovery procedure. This example is a suggested acceptance method and does not claim that any service has been tested. When restoring actual production data, establish a separate operating window and confirmation procedure to avoid overwriting newer records."
+        },
+        {
+          "type": "list",
+          "items": [
+            "List services such as registration, notifications and storage, and identify the scope of control for each.",
+            "Assign account, data, application and system maintenance to clearly identified people.",
+            "Use fictional data to confirm that exports, notifications and recovery instructions are workable.",
+            "Check ongoing costs and exit procedures before deciding whether to introduce production data."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Include staff time when comparing costs",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The three types do not correspond directly to cheap, mid-priced and expensive. Ready-made tools may charge by user or feature, while platforms and infrastructure resources may charge by usage; the actual model depends on the plan. Comparing only monthly server fees may overlook engineering maintenance, monitoring, backups, additional storage and data transfer out, as well as administrative staff's operating time."
+        },
+        {
+          "type": "paragraph",
+          "text": "In this example, one enrollment cycle can serve as the comparison period: importing data before courses begin, accepting registrations during enrollment, sending notifications after the deadline, and exporting records when courses end. For each stage, record who needs to spend how much time and which costs change when students or files are added. Estimates for the same workload provide a basis for comparing different services."
+        },
+        {
+          "type": "paragraph",
+          "text": "Also clarify the difference between budget alerts and usage limits. Receiving an alert does not necessarily stop billing automatically, and shutting down an application does not necessarily delete every resource that continues to incur charges. During procurement, ask the provider to list the procedure for stopping use and any resources that may remain, rather than assuming that logging out terminates the service."
+        },
+        {
+          "type": "heading",
+          "text": "Practice leaving before adopting a service",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When leaving a service, first check what you can take with you: can courses, students, payment records, attachments, activity logs and permission settings all be exported? Being able to download a spreadsheet does not mean the registration workflow can be fully rebuilt. If the application is deployed on a platform, also confirm whether the source code, environment settings and database can be handed over, rather than merely obtaining the public-facing website URL."
+        },
+        {
+          "type": "paragraph",
+          "text": "Next, confirm the exported files' formats, linking fields and retention periods. For example, student and registration records need matching identifier fields; otherwise, people with the same name may be indistinguishable after moving to a new tool. Ask the person taking over to actually read a de-identified sample, record any missing fields, and include the assistance and costs needed for migration in the outsourcing scope."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, name a primary and backup contact for every critical task. A small classroom can reasonably choose to give the service provider more technical work, while still retaining control over account management, data use and handover. A good choice meets the functional requirements and gives every ongoing task someone to handle it. There is no need to rent a server no one will maintain just for the sake of control."
+        },
+        {
+          "type": "image",
+          "src": "/guides/saas-paas-iaas-responsibility/diagram-1-en.svg",
+          "alt": "Three cards show users' control over ready-made software, application platforms and infrastructure, reminding them that data and accounts still need management.",
+          "width": 1600,
+          "height": 900,
+          "caption": "First decide which controls you need, then confirm who will handle each ongoing task.",
+          "description": "Three cards show users' control over ready-made software, application platforms and infrastructure, reminding them that data and accounts still need management.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Service type",
+            "Users' main areas of control",
+            "Work still to assign"
+          ],
+          "rows": [
+            [
+              "SaaS: ready-made software",
+              "Data, accounts and settings the product allows",
+              "Staff permissions, exports and usage workflows"
+            ],
+            [
+              "PaaS: application platform",
+              "Deployed applications and some runtime settings",
+              "Code updates, data and integration maintenance"
+            ],
+            [
+              "IaaS: infrastructure resources",
+              "Operating systems, software and configurable networking",
+              "System patches, monitoring and application maintenance"
+            ],
+            [
+              "Combined use",
+              "Confirm separately for each service",
+              "Data flows and troubleshooting across services"
+            ]
+          ],
+          "caption": "Original responsibility comparison; confirm the actual scope against the product, settings and contract. This is not a determination of legal liability."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Every \"shared responsibility\" needs a next step",
+          "text": "List who configures, who checks, whom to contact when something goes wrong, and when handover occurs. If both sides simply write \"shared responsibility,\" backups, access revocation or updates may still go undone."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Make maintenance part of routine website checks",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Plan your website budget and ongoing costs before procurement",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NIST SP 800-145: Definitions of Cloud Service and Deployment Models",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft Learn: Shared Responsibility in the Cloud",
+          "url": "https://learn.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AWS: Shared Responsibility Model",
+          "url": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "SaaS、PaaS、IaaS：サービスの利用で引き受ける責任とは",
+      "description": "SaaS、PaaS、IaaS の違いは、ソフトウェアがどこにあるかだけでなく、誰がどの層まで保守を担うかにある。地域の教室の申し込みシステムという独自の事例を使い、既製のクラウドソフトウェア、アプリケーション基盤、インフラの責任分担を説明する。アカウント、データ、更新、バックアップ、サービスからの撤退について確認手順を整理。比較表と独自の図解で、一般の利用者がサービスプランを理解し、外部委託の前に実際の担当者を決められるようにする。",
+      "hero": {
+        "src": "/guides/saas-paas-iaas-responsibility/hero-ja.jpg",
+        "alt": "Mokaair によるオリジナルのモニター、サーバー、盾のイラスト。クラウドサービスの機能、運用保守、データ保護を表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "地域の教室で受講者のオンライン申し込みを受け付けるため、業者が三つの案を提示した。既製の申し込みツールを契約する、独自のプログラムをプラットフォームに載せる、クラウドサーバーを借りる、という案だ。いずれもクラウドサービスと呼べるが、導入後の作業は大きく異なる。案を選ぶ前に、教室が保守したいのは講座データなのか、プログラムなのか、それともサーバーのシステムまで管理するのかを確認しよう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は、独自に設定した教室の事例を使って SaaS、PaaS、IaaS を解説し、2026 年 9 月 14 日に確認した NIST、Microsoft、AWS の一次資料を基にまとめた。サービスの実際の購入やデプロイは行っておらず、特定の業者の順位付けも行わない。本文の責任分担表は検討のための資料であり、正式な分担は選んだサービスと契約に照らして確認する必要がある。"
+        },
+        {
+          "type": "heading",
+          "text": "まず、どの層まで管理・変更できるかを確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "SaaS は Software as a Service の略で、利用者が事業者の提供するアプリケーションを直接使うものだ。例えば、教室は既製の申し込みツールで講座を作成し、受講者を管理し、通知を設定する。サーバーの OS を自分でインストールする必要はない。調整できる機能の範囲はサービスによって決まり、特殊なキャンセル待ちルールなどを自由に書き換えられるとは限らない。"
+        },
+        {
+          "type": "paragraph",
+          "text": "PaaS は Platform as a Service の略で、事業者がアプリケーションを実行する基盤を提供し、利用者が自分で開発または入手したプログラムをデプロイするものだ。この例でエンジニアに申し込みの仕組みを作ってもらうなら、そのプログラムをプラットフォームに実行させられる。基盤の保守はプラットフォーム側がより多く担うが、講座の処理ロジックに誤りがある、パッケージに脆弱性がある、プログラムの設定が不適切といった場合には、引き続き修正する担当者が必要だ。"
+        },
+        {
+          "type": "paragraph",
+          "text": "IaaS は Infrastructure as a Service の略で、利用者が計算処理、ストレージ、ネットワークなどの基盤リソースを利用し、仮想サーバーの OS やインストールするソフトウェアを管理・変更できるものだ。特殊な要件にも対応しやすくなる一方、更新、監視、障害の原因調査と解決の作業が増える。事業者が物理設備を管理していても、教室が自分でインストールした申し込みプログラムまで修復してくれるわけではない。"
+        },
+        {
+          "type": "heading",
+          "text": "サービスの種類は会社全体を表すものではない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "NIST はこの三つの種類でサービスがどの層まで提供されるかを表し、別にパブリックやプライベートなどの導入形態も区別している。両者は答える問いが異なるため、プライベートクラウドをそのまま IaaS とみなしたり、スマートフォンアプリがあるだけで特定のサービス種類だと決めつけたりはできない。判断する際は、その製品の実際の機能を確認する必要があり、ブランド名だけでは分類できない。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ申し込みシステムでも、サービスを併用する場合がある。教室が SaaS で通知を送り、独自のウェブサイトを PaaS に置き、別の IaaS サーバーで旧システムを動かす、といった形だ。この場合は、それぞれのデータの流れを図にするべきだ。見積書に「すべてクラウド」とだけ書くと、通知連携の不具合や受講者データの同期の問題は相手が対応するものだと、双方が思い込むおそれがある。"
+        },
+        {
+          "type": "paragraph",
+          "text": "管理・変更できる範囲を比べる際は、業者に直接聞ける。誰が更新をインストールできるか、誰がログを閲覧できるか、誰がプログラムを変更できるか、誰がサービスを停止できるか。その操作は画面、カスタマーサポート、エンジニアのどれを通じて行うのかも聞こう。回答を実行できる作業として書き出すほうが、三つの略語を暗記するよりも、教室の人員体制に合う案を見つけやすい。"
+        },
+        {
+          "type": "heading",
+          "text": "データとアカウントは引き続き教室で管理する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft の責任共有に関する説明では、サービスの種類にかかわらず、顧客は引き続きデータ、ID、自身が管理・変更できる設定を管理する必要があるとしている。この例では、事業者はログイン機能を保守できても、退職したアルバイトは誰か、どのクラスの名簿を担当講師だけに見せるべきか、特定のエクスポートファイルを外部の協力者に送ってよいかを、自動的に把握できるわけではない。"
+        },
+        {
+          "type": "paragraph",
+          "text": "そのため、まず管理者、事務担当者、講師に、それぞれ必要な操作権限を割り当てる。講師は担当講座だけを閲覧できればよく、全受講者の連絡先をダウンロードできる必要はないかもしれない。個別のアカウントと利用可能な多要素認証を組み合わせ、退職時のアクセス権停止手順も整える。SaaS を採用していても、こうした設定や日常の確認を「クラウドが対応してくれる」の一言で済ませることはできない。"
+        },
+        {
+          "type": "paragraph",
+          "text": "また、サービス側が保存するデータと、教室が自分でダウンロードしたファイルを区別する。エクスポートした名簿が共用パソコン、個人のメールボックス、共有を制限していないフォルダーに残っていれば、リスクはクラウド基盤だけにとどまらない。ワークシートにファイルの用途、閲覧できる人、保存期限を記録し、申し込みツールの外にあるコピーも担当者が整理するようにできる。"
+        },
+        {
+          "type": "heading",
+          "text": "更新、バックアップ、復元は項目ごとに確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AWS は EC2 を例に、IaaS の利用者がゲスト OS の更新、インストールしたソフトウェア、セキュリティグループの設定を管理する必要があると説明している。抽象度の高いサービスでは、事業者が基盤の作業をより多く担う。つまり、ある仮想サーバーの責任分担表をすべてのクラウド製品にそのまま当てはめることはできず、その都度、選ぶサービスを確認しなければならない。"
+        },
+        {
+          "type": "paragraph",
+          "text": "教室では、保守作業をプログラムの更新、プラットフォーム設定の適用、データのコピーの保存、復元訓練に分けられる。月額料金に含まれるか、誰が開始するか、失敗時にどう通知されるか、どの時点まで復元できるかを、一つずつ確認する。事業者に冗長化設備があることと、利用者が誤って削除した一件の申し込みデータを取り戻せることは、別の確認項目だ。"
+        },
+        {
+          "type": "paragraph",
+          "text": "小規模な受け入れテストを一度計画しよう。架空の申し込みデータを数件作成し、公式に案内された方法でエクスポートする。その後、ファイルを開けるか、項目に欠けがないかを確認し、担当者に復元手順の説明を求める。この例は推奨する受け入れテストの方法であり、いずれかのサービスをテスト済みだと主張するものではない。実際に本番データを復元する際は、別途作業時間帯と確認手順を定め、新しい記録を上書きしないようにする。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "申し込み、通知、保存などのサービスを一覧にし、それぞれの管理・変更できる範囲を区別する。",
+            "アカウント、データ、プログラム、システムの保守を、明確な担当者に割り当てる。",
+            "架空のデータで、エクスポート、通知、復元の説明どおりに操作できるか確認する。",
+            "継続費用と撤退方法を確認してから、本番データを導入するか決める。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "人の作業も含めて費用を比べる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三つの種類は、安い・中程度・高いという区分に直接対応するわけではない。既製のツールは利用者数や機能ごとに課金され、プラットフォームや基盤リソースは使用量に応じて計算される場合があるが、実際の方式はプランによる。毎月のサーバー料金だけを比べると、エンジニアによる保守、監視、バックアップ、追加ストレージ、データ転送などの費用や、事務担当者の操作時間を見落とす可能性がある。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この例では、一回の受講者募集サイクルを比較の範囲にできる。講座開始前のデータ取り込み、募集期間中の申し込み受付、締め切り後の通知、講座終了時の記録のエクスポートまでだ。各段階で誰がどれだけ時間を使う必要があるか、受講者やファイルが増えるとどの費用が変わるかを書き込む。同じ作業量での見積もりを先に得てこそ、異なるサービスを比較できる。"
+        },
+        {
+          "type": "paragraph",
+          "text": "予算の通知と利用量制限の違いも確認する必要がある。通知が届いても課金が自動的に止まるとは限らず、アプリケーションを一つ停止しても、継続的に課金されるリソースがすべて削除されるとは限らない。調達時には、利用停止の手順と、停止後も残る可能性のある項目を事業者に一覧にしてもらおう。アカウントからログアウトしただけでサービスが終了したと、自己判断しないようにする。"
+        },
+        {
+          "type": "heading",
+          "text": "導入前に撤退方法を練習する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サービスから撤退する際は、まず何を持ち出せるかを確認する。講座、受講者、支払い記録、添付ファイル、操作履歴、権限設定には、すべてエクスポート方法があるだろうか。スプレッドシートを一つダウンロードできても、申し込みの流れを完全に再構築できるとは限らない。プログラムをプラットフォームにデプロイしている場合も、利用者向け画面の URL を受け取るだけでなく、ソースコード、環境設定、データベースを引き渡せるか確認する必要がある。"
+        },
+        {
+          "type": "paragraph",
+          "text": "次に、エクスポートファイルの形式、関連付けに使う項目、保存期限を確認する。例えば、受講者と申し込み記録には対応付けられる識別項目が必要で、そうでなければ新しいツールに移った後、同名の人を区別できなくなる可能性がある。引き継ぎ先の担当者に、個人を識別できないように処理したサンプルを実際に読んでもらい、不足する項目を記録する。そのうえで、移行に必要な支援と費用を外部委託の範囲に含める。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に、重要な作業ごとに主担当者と代替担当者の連絡先を記入する。小規模な教室が技術的な作業をより多く事業者に任せるのは合理的な選択だが、アカウント管理、データの利用、引き継ぎを把握・管理できる状態は保つ必要がある。よい選択とは、機能が要件を満たし、継続的な作業のすべてに担当者がいることだ。管理・変更の権限を得るためだけに、誰も保守しないサーバーを借りる必要はない。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/saas-paas-iaas-responsibility/diagram-1-ja.svg",
+          "alt": "三枚のカードで、既製ソフトウェア、アプリケーション基盤、基盤リソースについて利用者が管理・変更できる範囲をそれぞれ示し、データとアカウントは引き続き管理が必要だと伝える。",
+          "width": 1600,
+          "height": 900,
+          "caption": "まず必要な管理・変更の権限を決め、継続的な作業の担当者を一つずつ確認する。",
+          "description": "三枚のカードで、既製ソフトウェア、アプリケーション基盤、基盤リソースについて利用者が管理・変更できる範囲をそれぞれ示し、データとアカウントは引き続き管理が必要だと伝える。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "サービスの種類",
+            "利用者の主な管理・変更範囲",
+            "引き続き担当者を決める作業"
+          ],
+          "rows": [
+            [
+              "SaaS 既製ソフトウェア",
+              "データ、アカウント、製品で変更を認められた設定",
+              "利用者の権限、エクスポート、利用手順"
+            ],
+            [
+              "PaaS アプリケーション基盤",
+              "デプロイしたアプリケーションと一部の実行設定",
+              "プログラムの更新、データと連携の保守"
+            ],
+            [
+              "IaaS 基盤リソース",
+              "OS、ソフトウェア、設定可能なネットワーク",
+              "システムへのパッチ適用、監視、アプリケーションの保守"
+            ],
+            [
+              "併用",
+              "サービスごとに確認",
+              "データの流れとサービス間の障害対応"
+            ]
+          ],
+          "caption": "独自に作成した分担比較。実際の範囲は製品、設定、契約で確認するもので、法的責任の判定ではない。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "「共同で担当」する仕事には次の行動を決める",
+          "text": "設定する人、確認する人、問題が起きたときの連絡先、引き継ぎの時期を一覧にしよう。両者が「共同で担当」と書くだけでは、バックアップ、アクセス権の停止、更新が誰にも実行されない可能性がある。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "保守作業をウェブサイトの日常点検に組み込む",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "調達前にウェブサイトの予算と継続費用を整理する",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NIST SP 800-145：クラウドサービスと導入形態の定義",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft Learn：クラウドの責任共有",
+          "url": "https://learn.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AWS：責任共有モデル",
+          "url": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "SaaS, PaaS와 IaaS: 서비스를 사용하면서 맡게 되는 책임",
+      "description": "SaaS, PaaS와 IaaS의 차이는 소프트웨어가 어디에 있느냐뿐 아니라 누가 어느 계층까지 유지보수를 맡느냐에 있다. 이 글은 직접 구성한 지역 주민 교실의 수강 신청 시스템 사례로 기성 클라우드 소프트웨어, 애플리케이션 플랫폼, 인프라의 책임 분담을 설명하고, 계정, 데이터, 업데이트, 백업, 이용 종료의 점검 절차를 정리한다. 비교표와 직접 그린 도해를 통해 일반 사용자가 서비스 상품을 이해하고 외주를 맡기기 전에 실제 담당자를 정할 수 있도록 돕는다.",
+      "hero": {
+        "src": "/guides/saas-paas-iaas-responsibility/hero-ko.jpg",
+        "alt": "클라우드 서비스의 기능, 운영·유지보수, 데이터 보호를 나타내는 Mokaair 자체 제작 화면, 서버, 방패 일러스트.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "지역 주민 교실에서 수강생의 온라인 수강 신청을 받으려 하자 업체가 세 가지 방안을 제시했다. 기성 수강 신청 도구를 구독하거나, 맞춤 프로그램을 플랫폼에 배포하거나, 클라우드 서버 한 대를 빌리는 방식이다. 모두 클라우드 서비스라고 부를 수 있지만 이후의 작업은 크게 다르다. 방안을 고르기 전에 교실이 관리하려는 대상이 강좌 데이터인지, 프로그램인지, 아니면 서버 시스템까지인지 먼저 확인하자."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 직접 구성한 교실 사례로 SaaS, PaaS와 IaaS를 살펴보며, 2026년 9월 14일에 확인한 NIST, Microsoft, AWS의 일차 자료를 바탕으로 정리했다. 실제로 서비스를 구매하거나 배포하지 않았으며 특정 업체의 순위를 매기지도 않는다. 글의 책임 분담표는 논의를 위한 도구이며, 정식 업무 분담은 선택한 서비스와 계약을 기준으로 확인해야 한다."
+        },
+        {
+          "type": "heading",
+          "text": "먼저 어느 계층까지 제어할 수 있는지 살펴보자",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "SaaS는 서비스형 소프트웨어(Software as a Service)로, 사용자가 공급업체에서 제공하는 애플리케이션을 직접 사용한다. 예를 들어 교실은 기성 수강 신청 도구에서 강좌를 만들고 수강생을 관리하며 알림을 설정하고, 서버 운영체제를 직접 설치할 필요는 없다. 조정할 수 있는 기능의 범위는 서비스에 따라 정해지므로 특정한 대기자 처리 규칙을 자유롭게 바꾸지 못할 수도 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "PaaS는 서비스형 플랫폼(Platform as a Service)으로, 공급업체가 애플리케이션 실행 플랫폼을 제공하고 사용자는 직접 개발하거나 확보한 프로그램을 배포한다. 이 사례에서 개발자에게 수강 신청 절차를 구현해 달라고 의뢰했다면 프로그램을 플랫폼에서 실행하도록 맡길 수 있다. 플랫폼이 처리하는 하위 계층의 유지보수는 더 많지만, 강좌 처리 로직이 잘못되거나 패키지에 취약점이 있거나 프로그램 설정이 부적절하면 여전히 누군가 수정해야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "IaaS는 서비스형 인프라(Infrastructure as a Service)로, 사용자는 컴퓨팅, 저장소, 네트워크 등의 기본 자원을 제공받고 가상 서버의 운영체제와 설치한 소프트웨어를 제어할 수 있다. 특수한 요구에 맞춰 조정할 여지가 커지는 만큼 업데이트, 모니터링, 문제 해결 작업도 늘어난다. 공급업체가 물리 장비를 관리한다고 해서 교실이 직접 설치한 수강 신청 프로그램까지 고쳐 주는 것은 아니다."
+        },
+        {
+          "type": "heading",
+          "text": "서비스 유형은 회사 전체를 가리키지 않는다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "NIST는 이 세 가지 유형으로 서비스가 어느 계층까지 제공되는지 설명하며, 별도로 퍼블릭과 프라이빗 등의 배포 방식도 구분한다. 각각 답하는 질문이 다르므로 프라이빗 클라우드를 곧바로 IaaS로 볼 수 없고, 모바일 앱이 있다고 해서 반드시 특정 서비스 유형이라고 단정할 수도 없다. 분류할 때는 해당 제품의 실제 기능을 살펴봐야 하며, 브랜드 이름만으로는 유형을 결정할 수 없다."
+        },
+        {
+          "type": "paragraph",
+          "text": "하나의 수강 신청 시스템에서도 여러 유형을 함께 사용할 수 있다. 교실이 SaaS로 알림을 보내고, 맞춤 웹사이트는 PaaS에 배포하며, 별도의 IaaS 서버로 기존 시스템을 처리하는 경우다. 이때는 각각의 데이터 흐름을 그려야 한다. 견적서에 '전부 클라우드'라고만 적으면 알림 연동이 작동하지 않거나 수강생 데이터 동기화에 문제가 생겼을 때 양쪽 모두 상대방이 처리할 것이라고 생각할 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "제어 권한을 비교할 때는 업체에 직접 물어볼 수 있다. 누가 업데이트를 설치하고, 누가 로그를 확인하고, 누가 프로그램을 수정하며, 누가 서비스를 중지할 수 있는가? 이어서 이런 작업을 화면에서 수행하는지, 고객 지원을 거치는지, 개발자가 필요한지 묻는다. 답변을 실행 가능한 작업으로 정리하면 세 가지 약어를 외우는 것보다 교실의 인력에 맞는 방안을 찾는 데 도움이 된다."
+        },
+        {
+          "type": "heading",
+          "text": "데이터와 계정은 여전히 교실이 관리해야 한다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft의 공동 책임 설명에 따르면 서비스 유형과 관계없이 고객은 데이터, 사용자 신원, 자신이 제어할 수 있는 설정을 관리해야 한다. 이 사례에서 공급업체는 로그인 기능을 유지보수할 수 있지만, 어느 아르바이트생이 퇴사했는지, 어느 반의 명단을 담당 강사에게만 제공해야 하는지, 어떤 내보내기 파일을 외부 협력자에게 보내도 되는지까지 저절로 알 수는 없다."
+        },
+        {
+          "type": "paragraph",
+          "text": "따라서 먼저 관리자, 행정 담당자, 강사에게 각각 필요한 작업 권한을 배정한다. 강사는 자신이 맡은 강좌만 확인하면 될 수 있으며, 모든 수강생의 연락처를 내려받을 권한까지 필요하지는 않다. 개별 계정과 사용 가능한 다중 요소 인증을 함께 활용하고, 퇴사 시 접근 권한을 차단하는 절차를 마련한다. SaaS를 사용하더라도 이런 설정과 일상 점검을 '클라우드가 처리해 준다'는 말 한마디에 맡길 수는 없다."
+        },
+        {
+          "type": "paragraph",
+          "text": "서비스 제공자가 보관하는 데이터와 교실이 직접 내려받은 파일도 구분해야 한다. 내보낸 명단이 공용 컴퓨터, 개인 이메일함, 공유 제한이 없는 폴더에 남아 있다면 위험은 클라우드 플랫폼에만 있는 것이 아니다. 작업 시트에 파일의 용도, 열람 가능 인원, 보관 기한을 적어 두면 수강 신청 도구 밖의 사본도 담당자를 정해 정리할 수 있다."
+        },
+        {
+          "type": "heading",
+          "text": "업데이트, 백업, 복구는 항목별로 질문하자",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AWS는 EC2를 예로 들어 IaaS 사용자가 게스트 운영체제의 업데이트, 설치한 소프트웨어, 보안 그룹 설정을 관리해야 한다고 설명한다. 추상화 수준이 더 높은 서비스에서는 공급업체가 더 많은 하위 계층 작업을 처리한다. 따라서 특정 가상 서버의 책임 분담표를 모든 클라우드 제품에 그대로 적용할 수 없으며, 실제로 선택한 서비스를 살펴봐야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "교실은 유지보수 작업을 프로그램 업데이트, 플랫폼 설정 적용, 데이터 사본 보관, 복구 훈련으로 나눌 수 있다. 각 항목이 월 이용료에 포함되는지, 누가 시작하는지, 실패 시 어떻게 알리는지, 어느 시점의 상태로 복구할 수 있는지 하나씩 확인한다. 공급업체에 이중화 설비가 있는지와 사용자가 실수로 삭제한 수강 신청 데이터 한 건을 되찾을 수 있는지는 서로 다른 점검 항목이다."
+        },
+        {
+          "type": "paragraph",
+          "text": "소규모 검수를 한 차례 계획하자. 가상의 수강 신청 데이터 몇 건을 만들고 공식 안내 방식으로 내보낸 뒤, 파일이 열리는지와 필드가 빠짐없이 포함됐는지 확인하고 담당자에게 복구 절차를 설명해 달라고 요청한다. 이 사례는 권장 검수 방법이며, 어떤 서비스를 실제로 테스트했다고 주장하지 않는다. 실제 운영 데이터를 복구할 때는 별도로 작업 시간대와 확인 절차를 정해 더 최신 기록을 덮어쓰지 않도록 한다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "수강 신청, 알림, 저장소 등의 서비스를 나열하고 각각의 제어 범위를 구분한다.",
+            "계정, 데이터, 프로그램, 시스템 유지보수에 명확한 담당자를 배정한다.",
+            "가상 데이터로 내보내기, 알림, 복구 안내를 실제로 실행할 수 있는지 확인한다.",
+            "지속적으로 발생하는 비용과 이용 종료 방법을 확인한 뒤 실제 운영 데이터 도입 여부를 결정한다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "비용을 비교할 때 인력도 포함하자",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "세 가지 유형이 저렴함, 중간, 비쌈에 바로 대응하는 것은 아니다. 기성 도구는 사용자나 기능별로 요금을 부과할 수 있고, 플랫폼과 기본 자원은 사용량에 따라 계산할 수 있으며, 실제 방식은 상품에 따라 달라진다. 매월 서버 비용만 비교하면 개발자의 유지보수, 모니터링, 백업, 추가 저장소, 데이터 외부 전송 등의 비용을 놓칠 수 있고 행정 담당자의 작업 시간도 빠뜨릴 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 사례에서는 한 번의 수강생 모집 주기를 비교 범위로 삼을 수 있다. 개강 전 데이터 가져오기, 모집 중 수강 신청 접수, 마감 후 알림, 강좌 종료 후 기록 내보내기까지 포함한다. 각 단계에 누가 얼마나 시간을 써야 하는지, 수강생이나 파일이 늘어나면 어떤 비용이 달라지는지 적는다. 동일한 작업량에 대한 추산치를 먼저 확보해야 서로 다른 서비스를 비교할 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예산 알림과 사용량 제한의 차이도 명확히 물어봐야 한다. 알림을 받는다고 과금이 자동으로 중단되는 것은 아니며, 애플리케이션 하나를 종료한다고 계속 요금이 발생하는 모든 자원이 삭제되는 것도 아니다. 구매 시 공급업체에 사용 중단 절차와 여전히 남아 있을 수 있는 항목을 정리해 달라고 요청하자. 계정에서 로그아웃하면 서비스가 종료된다고 임의로 가정해서는 안 된다."
+        },
+        {
+          "type": "heading",
+          "text": "도입 전에 이용 종료를 연습하자",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "서비스 이용을 종료하려면 먼저 무엇을 가져갈 수 있는지 살펴봐야 한다. 강좌, 수강생, 결제 기록, 첨부파일, 작업 이력, 권한 설정을 모두 내보낼 방법이 있는가? 스프레드시트 하나를 내려받을 수 있다고 해서 수강 신청 절차 전체를 재구성할 수 있는 것은 아니다. 프로그램이 플랫폼에 배포되어 있다면 웹사이트 주소만 받는 데 그치지 않고 소스 코드, 환경 설정, 데이터베이스도 인계할 수 있는지 확인해야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이어서 내보내기 파일의 형식, 연관 필드, 보관 기한을 확인한다. 예를 들어 수강생과 수강 신청 기록에는 서로 대응되는 식별 필드가 필요하다. 그렇지 않으면 새 도구로 옮긴 뒤 동명이인을 구분하지 못할 수 있다. 인수 담당자에게 비식별화한 샘플 한 개를 직접 읽어 보도록 요청하고 빠진 필드를 기록한 뒤, 이전에 필요한 지원과 비용을 외주 범위에 포함한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 각 핵심 작업에 주 연락 담당자와 예비 연락 담당자를 적는다. 작은 교실이라면 더 많은 기술 작업을 서비스 업체에 맡기는 것이 합리적인 선택일 수 있지만, 계정 관리, 데이터 사용, 인계는 여전히 파악하고 관리할 수 있어야 한다. 좋은 선택은 필요한 기능을 갖추고 지속되는 모든 작업에 담당자가 있는 것이다. 제어 권한을 얻기 위해 관리할 사람이 없는 서버를 빌릴 필요는 없다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/saas-paas-iaas-responsibility/diagram-1-ko.svg",
+          "alt": "세 장의 카드가 기성 소프트웨어, 애플리케이션 플랫폼, 기본 자원의 사용자 제어 범위를 각각 보여 주며, 데이터와 계정은 여전히 관리해야 함을 알린다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "먼저 필요한 제어 권한을 정하고, 지속되는 각 작업을 누가 맡을지 확인하자.",
+          "description": "세 장의 카드가 기성 소프트웨어, 애플리케이션 플랫폼, 기본 자원의 사용자 제어 범위를 각각 보여 주며, 데이터와 계정은 여전히 관리해야 함을 알린다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "서비스 유형",
+            "사용자의 주요 제어 대상",
+            "여전히 담당자를 정해야 할 작업"
+          ],
+          "rows": [
+            [
+              "SaaS 기성 소프트웨어",
+              "데이터, 계정, 제품이 허용하는 설정",
+              "인원별 권한, 내보내기, 사용 절차"
+            ],
+            [
+              "PaaS 애플리케이션 플랫폼",
+              "배포한 애플리케이션과 일부 실행 설정",
+              "프로그램 업데이트, 데이터 및 연동 유지보수"
+            ],
+            [
+              "IaaS 기본 자원",
+              "운영체제, 소프트웨어, 설정 가능한 네트워크",
+              "시스템 패치, 모니터링, 애플리케이션 유지보수"
+            ],
+            [
+              "혼합 사용",
+              "각 서비스별로 확인",
+              "데이터 흐름과 서비스 간 장애 처리"
+            ]
+          ],
+          "caption": "직접 구성한 업무 분담 비교표. 실제 범위는 제품, 설정, 계약에 따라 확인하며, 법적 책임을 판단한 표는 아니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "모든 '공동 책임'에는 다음 단계가 있어야 한다",
+          "text": "누가 설정하고, 누가 점검하고, 문제가 생기면 누구에게 연락하며, 언제 인계하는지 적어 두자. 양쪽 모두 '공동 책임'이라고만 적으면 백업, 권한 차단, 업데이트를 아무도 실행하지 않을 수 있다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 일상 점검에 유지보수 작업 포함하기",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "구매 전에 웹사이트 예산과 지속 비용 정리하기",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NIST SP 800-145: 클라우드 서비스와 배포 모델의 정의",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft Learn: 클라우드 공동 책임",
+          "url": "https://learn.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AWS: 공동 책임 모델",
+          "url": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "SaaS、PaaS 与 IaaS：使用服务时，你也承担哪些责任",
+      "description": "SaaS、PaaS 与 IaaS 的区别，不只是软件放在哪里，而是谁负责维护到哪一层。本文以社区教室报名系统为原创场景，说明现成云软件、应用平台与基础设施的责任分配，整理账号、数据、更新、备份和退出服务的检查步骤。附比较表与自绘图解，帮助普通用户看懂服务方案，并在外包前安排实际负责人。",
+      "hero": {
+        "src": "/guides/saas-paas-iaas-responsibility/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创屏幕、服务器与盾牌插图，代表云服务功能、运维与数据保护。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "社区教室要让学员在线报名，厂商提出三份方案：订阅现成报名工具、把定制程序放到平台上，或租一台云主机。三份都能叫作云服务，后续工作却差很多。选方案前，先确认教室想维护的是课程数据、程序，还是连主机系统都要管理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以原创教室场景拆解 SaaS、PaaS 与 IaaS，依据 2026 年 9 月 14 日查阅的 NIST、Microsoft 与 AWS 一手文档整理。没有实际购买或部署服务，也不为特定厂商排名；文中的责任表是讨论工具，正式分工仍须以所选服务与合同为准。"
+        },
+        {
+          "type": "heading",
+          "text": "先看自己拿到哪一层控制权",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "SaaS 是软件即服务，用户直接使用供应商提供的应用程序。例如教室在现成报名工具内创建课程、管理学员和设置通知，不必自行安装服务器操作系统。能调整的功能范围由服务决定，某个特殊候补规则未必能自由改写。"
+        },
+        {
+          "type": "paragraph",
+          "text": "PaaS 是平台即服务，供应商提供运行应用程序的平台，用户部署自己开发或获取的程序。本例若请工程师制作报名流程，便可将程序交给平台运行。平台处理的底层维护较多，但课程逻辑写错、软件包有漏洞或程序设置不当，仍需要有人修正。"
+        },
+        {
+          "type": "paragraph",
+          "text": "IaaS 是基础设施即服务，用户获得计算、存储和网络等基础资源，可以控制虚拟主机的操作系统与安装软件。这让特殊需求有更多调整空间，也增加了更新、监控和故障排查工作。供应商管理实体设备，不代表会替教室修好自行安装的报名程序。"
+        },
+        {
+          "type": "heading",
+          "text": "服务类型不能代表整家公司",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "NIST 用这三种类型描述服务提供到哪一层，另外还区分公有、私有等部署方式。它们回答的问题不同，因此不能把私有云直接当成 IaaS，也不能认定有手机 App 就一定是某种服务。判断时阅读该产品的实际功能，品牌名称本身不足以决定分类。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一套报名系统也可能混用：教室使用 SaaS 发送通知，把定制网站放在 PaaS，另有 IaaS 主机处理旧系统。这时应分别画出数据流向。若只在报价单写“全云端”，大家可能都以为另一方会处理通知对接失效或学员数据同步问题。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比较控制权时，可以直接问厂商：谁能安装更新、谁能查看日志、谁能修改程序，谁能停止服务？再问这些操作要通过界面、客服还是工程师完成。把答案写成可执行的工作，比熟记三个缩写更能找到符合教室人力的方案。"
+        },
+        {
+          "type": "heading",
+          "text": "数据与账号仍需要教室管理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft 的共享责任说明指出，无论服务类型，客户仍需管理数据、身份及自己可控制的设置。以本例来说，供应商可以维护登录功能，却不会自动知道哪位兼职人员已离职、哪一班名单只该给授课老师，或某份导出文件能否发送给外部合作人。"
+        },
+        {
+          "type": "paragraph",
+          "text": "因此先分配管理员、行政人员与老师各自需要的操作权限。老师可能只需查看所授课程，不必能下载所有学员的联系方式。使用独立账号，配合可用的多因素身份验证，并建立离职停用账号的程序。即使采用 SaaS，这些设置与日常检查仍不能只交给“云端会处理”一句话。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外区分服务方保存的数据与教室自行下载的文件。导出的名单若留在共享电脑、私人邮箱或无限制共享的文件夹中，风险已不只在云平台。可在工作表中记下文件用途、有权读取的人员及保存期限，让报名工具之外的副本也有人负责整理。"
+        },
+        {
+          "type": "heading",
+          "text": "更新、备份与恢复要逐项询问",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AWS 以 EC2 为例说明，IaaS 用户要管理客户机操作系统更新、安装软件及安全组设置；抽象程度更高的服务则由供应商处理更多底层工作。这提醒我们，不能把某台虚拟主机的责任表直接套到每一种云产品上，必须看当次选用的服务。"
+        },
+        {
+          "type": "paragraph",
+          "text": "教室可以把维护工作拆分为更新程序、应用平台设置、保留数据副本及恢复演练。逐一问清楚是否包含在月费里、由谁启动、失败如何通知，以及能恢复到什么时间点。供应商有备用设备，与用户能找回误删的一条报名数据，是不同的检查项目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安排一次小规模验收：创建几条虚构报名数据，按官方提供的方式导出，再确认文件能打开、字段完整，并请负责人说明恢复程序。本例是建议的验收方法，没有宣称已测试任何服务。真正要还原正式数据时，另定操作时间窗口与确认程序，避免覆盖较新的记录。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出报名、通知、存储等服务，区分各自的控制范围。",
+            "将账号、数据、程序与系统维护分派给明确的负责人。",
+            "用虚构数据确认导出、通知及恢复说明是否可操作。",
+            "核对持续费用与退出方式，再决定是否导入正式数据。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "比较费用时把人力考虑进来",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三种类型不直接对应便宜、中等、昂贵。现成工具可能按用户或功能收费，平台与基础资源可能按用量计费，实际模式以方案为准。若只比较每月主机费，就可能漏掉工程师维护、监控、备份、额外存储与数据传出等成本，也漏掉行政人员的操作时间。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本例可用一个招生周期作为比较范围：开课前导入数据、招生时接收报名、截止后通知，再到课程结束导出记录。每个阶段填上需要谁花多少时间，以及增加学员或文件后哪些费用会变动。先取得相同工作量的估算，才有条件比较不同服务。"
+        },
+        {
+          "type": "paragraph",
+          "text": "还要问清楚预算通知和用量限制的区别。收到提醒不一定会自动停止计费，关闭一个应用也不一定删除所有持续收费的资源。采购时请供应商列出停止使用的程序及仍可能保留的项目，而不是自行假设退出账号就已终止服务。"
+        },
+        {
+          "type": "heading",
+          "text": "在引入前练习如何退出",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "退出服务先看能带走什么：课程、学员、付款记录、附件、操作历史与权限设置是否都有导出方式？能下载一份电子表格，不代表可以完整重建报名流程。若程序部署在平台上，也要确认源代码、环境设置及数据库能否移交，而不只是取得前台网址。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接着确认导出文件的格式、关联字段及保留期限。例如学员和报名记录需要可对应的标识字段，否则换到新工具后可能无法区分同名者。请接手人实际读取一份去标识化样本，记录缺少的字段，再把迁移所需协助与费用列入外包范围。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后为每项关键工作填上主要与备用联系人。小教室可以合理选择把更多技术工作交给服务商，但仍要掌握账号管理、数据使用及交接情况。好的选择是功能满足需求，且每件持续工作都有人接手；不需要为了控制权而租下无人维护的主机。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/saas-paas-iaas-responsibility/diagram-1-zh-cn.svg",
+          "alt": "三张卡片分别呈现现成软件、应用平台与基础资源的用户控制范围，提醒数据和账号仍须管理。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先决定需要哪些控制权，再确认每一项持续工作由谁接手。",
+          "description": "三张卡片分别呈现现成软件、应用平台与基础资源的用户控制范围，提醒数据和账号仍须管理。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "服务类型",
+            "用户主要控制",
+            "仍需安排的工作"
+          ],
+          "rows": [
+            [
+              "SaaS 现成软件",
+              "数据、账号及产品允许的设置",
+              "人员权限、导出与使用流程"
+            ],
+            [
+              "PaaS 应用平台",
+              "部署的应用及部分运行设置",
+              "程序更新、数据与对接维护"
+            ],
+            [
+              "IaaS 基础资源",
+              "操作系统、软件及可设置的网络",
+              "系统补丁、监控与应用维护"
+            ],
+            [
+              "混合使用",
+              "各项服务分别确认",
+              "数据流向与跨服务故障处理"
+            ]
+          ],
+          "caption": "原创分工对照；实际范围依产品、设置与合同确认，不是法律责任判定。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "每个“共同负责”都要有下一步",
+          "text": "请列出谁设置、谁检查、出事找谁，以及何时交接。只有两边都写“共同负责”，仍可能让备份、停用账号或更新无人执行。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把维护工作排入网站日常检查",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "采购前整理网站预算与持续费用",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NIST SP 800-145：云服务与部署模式定义",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft Learn：云端共享责任",
+          "url": "https://learn.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AWS：共享责任模型",
           "url": "https://aws.amazon.com/compliance/shared-responsibility-model/",
           "checked_on": "2026-09-14"
         }

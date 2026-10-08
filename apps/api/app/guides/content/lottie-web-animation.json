@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "網頁 Lottie 動畫：載入、控制與減少動態效果",
@@ -154,6 +157,7 @@
           "width": 1600,
           "height": 900,
           "caption": "動畫載入失敗、使用者關閉動態、申請送出失敗，必須分別處理。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -279,6 +283,1098 @@
         },
         {
           "title": "W3C：Understanding SC 2.2.2",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Lottie Web Animations: Loading, Controls and Reduced Motion",
+      "description": "Lottie adds controllable vector animations to web pages, but formats, players and interaction states need joint design. Using an original projector loan application page, this article covers Lottie JSON versus dotLottie, loading, playback control, performance checks, reduced motion and static fallbacks. Steps, a comparison table and original diagrams help check that the page stays usable if animation fails and prevent treating a finished animation as a successful application.",
+      "hero": {
+        "src": "/guides/lottie-web-animation/hero-en.jpg",
+        "alt": "Mokaair's original illustration of an animation screen, status document and confirmation shield, representing Lottie playback controls and validation of static results.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A checkmark animation appearing after an application form is submitted can help readers notice a status change. But if the server has not yet confirmed success, that checkmark can cause confusion. Before adding Lottie, decide what the animation communicates and whether users can still understand the result without it."
+        },
+        {
+          "type": "paragraph",
+          "text": "The following explanation uses an original projector loan application page. The documentation was checked on 2026-9-14. No player was deployed, animation exported or real-phone performance measured for this article. The examples provide design and acceptance-testing methods for readers to carry out, and all illustrations are our own drawings."
+        },
+        {
+          "type": "heading",
+          "text": "First Distinguish Animation Data from Playback Tools",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Lottie JSON uses data to describe animation elements and motion, and may include image-related data. It is not a conventional video, and placing JSON in a web page does not make it play automatically. The site also needs a compatible player to parse the content and render it. Exports from design software must also be checked in the player actually selected."
+        },
+        {
+          "type": "paragraph",
+          "text": "dotLottie's .lottie is a compressed container that can package one or more animations and related resources, and supports content such as themes and state machines. It is not simply JSON with a different file extension. If a website plugin only accepts Lottie JSON, do not assume it can also read .lottie; check the plugin's and player's current support."
+        },
+        {
+          "type": "paragraph",
+          "text": "airbnb's lottie-web offers rendering options including SVG and Canvas; LottieFiles' dotlottie-web can render .lottie and Lottie JSON in a browser. The two tools have different settings, methods and dependencies, so avoid copying half the code from one tutorial and half from another and stitching them together. First settle on a tool and version."
+        },
+        {
+          "type": "heading",
+          "text": "Build a Loading Flow with Static Results",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The original loan application page can retain text states: Not submitted, Submitting, Application received and Submission failed. Animation only helps emphasize a state and cannot be its sole explanation. Show the confirmation animation only after receiving a successful response. If review is pending, the text should still say Application received, rather than Equipment reserved or Loan approved."
+        },
+        {
+          "type": "paragraph",
+          "text": "During design, reserve the container's aspect ratio and available dimensions so the animation does not push buttons out of place after loading. Prepare a static checkmark or brief text as a fallback. If the data file, external images or player fail to load, the application result and next steps should still appear. Handle animation failure and application failure separately."
+        },
+        {
+          "type": "paragraph",
+          "text": "lottie-web's loadAnimation uses settings such as the container, renderer, loop, autoplay and path. If you provide animationData directly, do not also provide path. For the first integration, turn off autoplay and looping. Once the file and dimensions are confirmed to work, trigger a single playback from the actual interaction state, avoiding a success message as soon as the page loads."
+        },
+        {
+          "type": "heading",
+          "text": "Playing, Pausing and Destroying Are Different Actions",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Players usually provide play and pause methods, but their details must be checked for each tool. For example, dotLottie's pause stays at the current position, while stop returns to the starting frame. freeze stops rendering updates and is not equivalent to changing the playback state. A pause button offered to users should use control behavior that matches their expectations."
+        },
+        {
+          "type": "paragraph",
+          "text": "A completion animation can remain on a clear result frame, or fade out while leaving the text visible. Do not treat the complete event as meaning that the server operation has finished; it only means the animation timeline has reached its end. Resubmitting an application, retrying a network request and replaying an animation should not be tied to the same button action."
+        },
+        {
+          "type": "paragraph",
+          "text": "When switching views in a single-page application or removing a component, destroy the instance using the player's method and clear event listeners. Merely hiding the container does not necessarily stop updates or release resources. If a page has multiple animations, keep each instance separately and avoid using page-wide control methods that could accidentally stop other content."
+        },
+        {
+          "type": "heading",
+          "text": "Assess Performance Together with the Player and Resources",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When comparing loading overhead, count not only the animation file size but also the player code, external images and related runtime resources. dotlottie-web uses a WASM engine, which must also be ready for the first render. A very small animation file alone does not justify claiming that the entire page is necessarily lighter than images or video. Actual results depend on the content and how it is used."
+        },
+        {
+          "type": "paragraph",
+          "text": "For decorative animations lower down the page, you can defer loading until they approach the viewport and stop unnecessary rendering once they leave it. If the tool supports adjusting canvas resolution or frame interpolation, balance these according to actual sharpness and smoothness. Address the causes of stuttering first; there is no need to enable every performance option at once."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use browser developer tools to inspect network requests and performance, then check scrolling, input and view-switching responsiveness on the target phone. Record the device, network conditions, animation count and settings so you can compare before and after adjustments. Without these measurements, describe changes as proposed improvements awaiting verification, rather than claiming a specific percentage or amount of battery power saved."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Define the animation's purpose, and first establish text states and static fallbacks for failures.",
+            "Confirm the animation format, player version, resource URLs and asset usage rights.",
+            "Control playback using the correct application state, add pause controls and clean up on removal.",
+            "Test reduced motion, keyboard operation, slow loading and responsiveness on target devices."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Respect Reduced-Motion Preferences and Keep Reading Controllable",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "prefers-reduced-motion can detect a user's preference to reduce nonessential motion. CSS animations can be adjusted through a media query. For JavaScript players, read the preference through matchMedia and choose to disable autoplay or use a static image. Also account for users changing the setting after opening the page."
+        },
+        {
+          "type": "paragraph",
+          "text": "Simply turning off CSS animation does not guarantee that SVG or Canvas updated by JavaScript also stops. Explicitly control the player and check the actual display after switching the setting. Automatically switching to slow, large swaying movements may also miss the purpose of reduced motion. Alternatives should preserve essential information and reduce unnecessary movement."
+        },
+        {
+          "type": "paragraph",
+          "text": "WCAG 2.2's Pause, Stop, Hide criterion generally requires controls for moving information that starts automatically, lasts more than 5 seconds and appears alongside other content, with exceptions for essential activities. This does not mean every animation under 5 seconds automatically complies. Automatically updating content, flashing, keyboard access and alternative information each have their own checks."
+        },
+        {
+          "type": "heading",
+          "text": "Retain Asset Licenses and Handover Specifications Together",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When downloading an animation from an asset library, save the author, work link, applicable license and acquisition date, and check the conditions for commercial use, modification and redistribution. The player's open-source license does not automatically cover the animation author's work. An animation being free to download also does not mean that rights to its brands, fonts or people have all been secured."
+        },
+        {
+          "type": "paragraph",
+          "text": "Informational animations should have corresponding text alongside them. For purely decorative content, avoid having assistive tools repeatedly read meaningless details. Give control buttons clear names and keyboard support, and make the paused state recognizable. An SVG title or description can help describe content, but cannot replace validation of the entire page's semantics and interactions."
+        },
+        {
+          "type": "paragraph",
+          "text": "For handover, list the animation file, static fallback, player version, trigger conditions, stopping point and items awaiting confirmation. Acceptance testing for the loan application page focuses on whether users can understand the application state and continue interacting; successful animation playback is only one check. If animation adds waiting or interference, reduce its use and retain the parts that most help understanding."
+        },
+        {
+          "type": "image",
+          "src": "/guides/lottie-web-animation/diagram-1-en.svg",
+          "alt": "Four cards cover pre-submission, submission in progress, a received response and motion alternatives, showing that animation failures must not override the actual application status.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Handle animation loading failures, users disabling motion and application submission failures separately.",
+          "description": "Four cards cover pre-submission, submission in progress, a received response and motion alternatives, showing that animation failures must not override the actual application status.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Item",
+            "Behavior to Verify",
+            "Cannot Be Assumed"
+          ],
+          "rows": [
+            [
+              "Lottie JSON",
+              "The player can parse the animation data",
+              "All design effects render identically"
+            ],
+            [
+              ".lottie container",
+              "The tool supports the container format and its content",
+              "Changing the file extension converts it"
+            ],
+            [
+              "complete event",
+              "The animation timeline has ended",
+              "The server has confirmed the application"
+            ],
+            [
+              "Reduced-motion preference",
+              "The player uses an appropriate fallback",
+              "Disabling CSS animations is enough"
+            ],
+            [
+              "Pausing and cleanup",
+              "Control playback and release unused instances",
+              "Hiding the container stops computation"
+            ],
+            [
+              "File size",
+              "Total the sizes of the player and required resources",
+              "A small animation file is always faster"
+            ]
+          ],
+          "caption": "Use each player's methods and events according to its version-specific documentation; the application page in this table is an original hypothetical example."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Success Animations Should Follow Actual Results",
+          "text": "Confirm whether the application has actually been received or approved, then show the corresponding text and animation. If the animation or player fails, users should still be able to see the result and next step."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Check the CSS layout and container dimensions",
+              "kind": "life",
+              "slug": "css-layout-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Compare image formats and page loading requirements",
+              "kind": "life",
+              "slug": "image-formats-compression"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Organize asset sources and license records",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "airbnb: lottie-web Usage and Control Documentation",
+          "url": "https://github.com/airbnb/lottie-web",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles: Format Comparison",
+          "url": "https://docs.lottiefiles.com/en/format",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles: JavaScript Player",
+          "url": "https://docs.lottiefiles.com/en/runtimes/distributions/js",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles: Playback Controls",
+          "url": "https://docs.lottiefiles.com/en/runtimes/distributions/js/v0.x/core-concepts/playback-control",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles: Performance and Resource Cleanup",
+          "url": "https://docs.lottiefiles.com/en/runtimes/distributions/js/v0.x/advanced/performance",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: prefers-reduced-motion",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: matchMedia",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: Understanding SC 2.2.2",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ウェブの Lottie アニメーション：読み込み、制御、動きの軽減",
+      "description": "Lottie はウェブに制御可能なベクターアニメーションを加えるのに適していますが、ファイル形式、プレーヤー、操作状態を合わせて設計する必要があります。本記事では、独自制作のプロジェクター借用申請ページを例に、Lottie JSON と dotLottie の違い、アニメーションの読み込みと再生制御、性能確認、動きの軽減と静的な代替表示を説明します。手順、比較表、自作の図解を通じて、アニメーションが失敗してもページを使えるか確認し、完了アニメーションを申請の成功と取り違えないようにします。",
+      "hero": {
+        "src": "/guides/lottie-web-animation/hero-ja.jpg",
+        "alt": "Mokaair オリジナルのアニメーション画面、状態を示す書類、確認用の盾のイラスト。Lottie の再生制御と静的な結果表示の検証を表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "申請フォームの送信後にチェックマークのアニメーションを表示すると、状態の変化に気づきやすくなります。しかし、サーバーがまだ成功を確認していなければ、このチェックマークは誤解を招きます。Lottie を追加する前に、アニメーションで何を伝えるのか、アニメーションがなくても利用者が結果を理解できるかを決める必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下では、独自制作のプロジェクター借用申請ページを例に説明します。ドキュメントの確認日は 2026 年 9 月 14 日です。本記事では、プレーヤーのデプロイ、アニメーションの書き出し、実機スマートフォンの性能測定は行っていません。例は読者が実行するための設計・検証方法で、図はすべて自作です。"
+        },
+        {
+          "type": "heading",
+          "text": "まずアニメーションデータと再生ツールを区別する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Lottie JSON は、アニメーションの要素や動きをデータで記述し、画像関連のデータを含むこともあります。通常の動画ではなく、JSON をウェブページに置くだけで自動再生されるものでもありません。サイトには、内容を解析して画面に表示する互換プレーヤーが必要です。デザインソフトから書き出した結果も、実際に採用するプレーヤーで表示を確認する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "dotLottie の .lottie は圧縮コンテナで、一つまたは複数のアニメーションと関連リソースを格納でき、テーマやステートマシンなどの内容にも対応します。JSON の拡張子を変えただけのものではありません。サイトのプラグインが Lottie JSON のみを受け付ける場合、.lottie も読み込めるとは限りません。プラグインとプレーヤーの現在の対応範囲を確認してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "airbnb の lottie-web は SVG、Canvas などの描画方式を提供し、LottieFiles の dotlottie-web はブラウザーで .lottie と Lottie JSON を表示できます。両者は設定、メソッド、依存関係が異なるため、別々の解説からコードを半分ずつコピーして組み合わせるのは避けてください。まず、使用するツールとバージョンを決めて固定します。"
+        },
+        {
+          "type": "heading",
+          "text": "静的な結果表示を備えた読み込みフローを作る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "独自制作の借用ページでは、未送信、送信中、申請を受け取りました、送信失敗といったテキストの状態表示を残せます。アニメーションは状態を強調する補助であり、唯一の説明にしてはいけません。成功応答を受け取ってから確認アニメーションを表示します。審査待ちの場合も「申請を受け取りました」と書き、「機器を確保しました」や「借用が承認されました」に変えないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "設計時にコンテナの縦横比と使用可能なサイズを確保し、アニメーションの読み込み後にボタンが押し出されないようにします。代替として静的なチェックマークや短いテキストを用意してください。データファイル、外部画像、プレーヤーの読み込みが失敗しても、申請結果とその後の対応を表示できるようにします。アニメーションの失敗と申請の失敗は、分けて処理する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "lottie-web の loadAnimation は、コンテナ、renderer、loop、autoplay、path などの設定を使用します。animationData を直接渡す場合は、path を同時に指定しないでください。初回の組み込みでは自動再生とループ再生を無効にし、ファイルとサイズが正常であることを確認してから、実際の操作状態に応じて一度だけ再生するとよいでしょう。ページを読み込んだだけで成功表示が出るのを防げます。"
+        },
+        {
+          "type": "heading",
+          "text": "再生、一時停止、破棄はそれぞれ異なる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "プレーヤーには通常、再生と一時停止のメソッドがありますが、詳細はツールごとに確認する必要があります。例えば dotLottie の pause は現在位置で止まり、stop は開始フレームに戻ります。freeze は描画更新を止めるためのもので、再生状態の変更と同じではありません。利用者に提供する一時停止ボタンには、期待に合う制御動作を選んでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完了アニメーションは、結果が明確に分かる画面で止めても、フェードアウトしてテキストを残しても構いません。complete イベントを、サーバー側の処理が完了したこととして扱わないでください。このイベントが示すのは、アニメーションのタイムラインが終了したことだけです。申請の再送、ネットワーク通信の再試行、アニメーションの再生も、同じボタン操作に結びつけないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "シングルページアプリケーションで画面を切り替えたりコンポーネントを削除したりするときは、プレーヤーのメソッドでインスタンスを破棄し、イベントリスナーを解除します。コンテナを非表示にするだけでは、更新の停止やリソースの解放が行われるとは限りません。同じページに複数のアニメーションがある場合は、それぞれのインスタンスを保持し、ページ全体に作用する制御メソッドで他のコンテンツを誤って停止しないようにしてください。"
+        },
+        {
+          "type": "heading",
+          "text": "性能はプレーヤーとリソースも含めて評価する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "読み込み負荷を比較するときは、アニメーションファイルのサイズだけでなく、プレーヤーのプログラム、外部画像、関連する実行用リソースも含めます。dotlottie-web は WASM エンジンを使用し、初回表示にはエンジンの準備も必要です。小さなアニメーションファイルだけを見て、ページ全体が必ず画像や動画より軽いと主張することはできません。実際の結果は、内容と使い方によって変わります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ページ下部の装飾アニメーションは、表示範囲に近づいてから読み込み、画面外に出たら不要な描画を停止できます。ツールがキャンバス解像度やフレーム補間の調整に対応している場合は、実際の鮮明さと滑らかさを見て調整します。まず動作が重くなる原因を解消し、性能に関するすべてのオプションを一度に有効にする必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ブラウザーの開発者ツールでネットワークリクエストと性能を確認し、対象のスマートフォンでスクロール、入力、画面切り替えの反応を確認します。端末、ネットワーク条件、アニメーションの数、設定を記録して初めて、調整前後を比較できます。こうした測定を行っていない場合は、検証予定の方針として説明し、特定の削減率や節電量を達成したとは書かないでください。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "アニメーションの用途を定め、まずテキストの状態表示と失敗時の静的な代替表示を完成させる。",
+            "アニメーション形式、プレーヤーのバージョン、リソースの URL、素材の利用権を確認する。",
+            "正しい申請状態に応じて再生を制御し、一時停止と削除時の後処理を加える。",
+            "動きの軽減、キーボード操作、低速読み込み、対象端末の反応をテストする。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "動きを減らす設定を尊重し、閲覧時の制御を可能にする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "prefers-reduced-motion は、不要な動きを減らしたいという利用者の設定を検出できます。CSS アニメーションはメディアクエリー内で調整でき、JavaScript プレーヤーは matchMedia で設定を読み取り、自動再生をしない、または静止画に切り替えるといった選択ができます。ページを開いた後に利用者が設定を変更する場合にも注意してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CSS animation を無効にするだけでは、JavaScript が更新する SVG や Canvas も停止するとは限りません。プレーヤーを明示的に制御し、設定切り替え後の実際の画面を確認する必要があります。大きな揺れを自動的に低速にするだけでも、動きを減らす目的に合うとは限りません。代替方法では、必要な情報を残し、不要な移動を減らしてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WCAG 2.2 の一時停止、停止、非表示に関する規定では、自動的に始まり、5 秒を超えて続き、他のコンテンツと同時に表示される動く情報には、原則として制御手段の提供を求めています。必要不可欠な活動には例外があります。これは、すべてのアニメーションが 5 秒未満なら全面的に適合するという意味ではありません。自動更新、点滅、キーボード操作、代替情報には、それぞれ確認要件があります。"
+        },
+        {
+          "type": "heading",
+          "text": "素材の利用許諾と引き継ぎ仕様を合わせて保存する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "素材サイトからアニメーションをダウンロードするときは、作者、作品へのリンク、適用ライセンス、取得日を保存し、商用利用、改変、再配布の条件を確認します。プレーヤーのオープンソースライセンスが、アニメーション作者の作品まで自動的に対象にするわけではありません。アニメーションを無料でダウンロードできても、含まれるブランド、フォント、人物に関する権利がすべて取得済みとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "情報を伝えるアニメーションのそばには、対応するテキストを置きます。純粋な装飾では、支援技術が意味のない細部を繰り返し読み上げないようにしてください。制御ボタンには明確な名前を付け、キーボード操作に対応させ、一時停止後の状態も識別できるようにします。SVG の title や description は説明に役立ちますが、ページ全体の意味構造や操作の検証を代替するものではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "引き継ぎ時には、アニメーションファイル、静的な代替表示、プレーヤーのバージョン、開始条件、停止位置、確認待ちの項目を列挙します。借用ページの検証で重視するのは、利用者が申請状態を理解して操作を続けられるかどうかです。アニメーションが正常に再生されることは、その一項目にすぎません。待ち時間や妨げが増える場合は、使用範囲を減らし、理解に最も役立つ部分を残せます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/lottie-web-animation/diagram-1-ja.svg",
+          "alt": "四枚のカードに送信前、送信中、応答受信、動きの代替を示し、アニメーションの不具合で実際の申請状態を覆い隠してはいけないことを説明しています。",
+          "width": 1600,
+          "height": 900,
+          "caption": "アニメーションの読み込み失敗、利用者による動きの無効化、申請の送信失敗は、それぞれ分けて処理する必要があります。",
+          "description": "四枚のカードに送信前、送信中、応答受信、動きの代替を示し、アニメーションの不具合で実際の申請状態を覆い隠してはいけないことを説明しています。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "確認すべき動作",
+            "直接は推論できないこと"
+          ],
+          "rows": [
+            [
+              "Lottie JSON",
+              "プレーヤーがアニメーションデータを解析できる",
+              "すべてのデザイン効果が完全に同じになる"
+            ],
+            [
+              ".lottie コンテナ",
+              "ツールが格納形式と内容に対応している",
+              "拡張子を変えるだけで変換できる"
+            ],
+            [
+              "complete イベント",
+              "アニメーションのタイムラインが終了する",
+              "申請がサーバーで確認された"
+            ],
+            [
+              "動きを減らす設定",
+              "プレーヤーが適切な代替表示に切り替わる",
+              "CSS アニメーションを無効にすれば十分"
+            ],
+            [
+              "一時停止と後処理",
+              "再生を制御し、不要なインスタンスを解放する",
+              "コンテナの非表示で処理も停止する"
+            ],
+            [
+              "ファイルサイズ",
+              "プレーヤーと必要なリソースを合計する",
+              "アニメーションファイルが小さければ必ず速い"
+            ]
+          ],
+          "caption": "プレーヤーごとのメソッドとイベントは、そのバージョンのドキュメントに従って使用してください。表の申請ページは独自に考案した架空の事例です。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "成功アニメーションは実際の結果に合わせる",
+          "text": "まず、申請の受信や承認の実際の状態を確認してから、対応するテキストとアニメーションを表示します。アニメーションやプレーヤーが失敗しても、利用者が結果と次の手順を確認できるようにしてください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "CSS レイアウトとコンテナサイズを確認する",
+              "kind": "life",
+              "slug": "css-layout-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "画像形式とページの読み込み要件を比較する",
+              "kind": "life",
+              "slug": "image-formats-compression"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "素材の出典と利用許諾の記録を整理する",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "airbnb：lottie-web の使用と制御に関するドキュメント",
+          "url": "https://github.com/airbnb/lottie-web",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles：形式の比較",
+          "url": "https://docs.lottiefiles.com/en/format",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles：JavaScript プレーヤー",
+          "url": "https://docs.lottiefiles.com/en/runtimes/distributions/js",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles：再生制御",
+          "url": "https://docs.lottiefiles.com/en/runtimes/distributions/js/v0.x/core-concepts/playback-control",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles：性能とリソースの解放",
+          "url": "https://docs.lottiefiles.com/en/runtimes/distributions/js/v0.x/advanced/performance",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：prefers-reduced-motion",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：matchMedia",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：SC 2.2.2 を理解する",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "웹 Lottie 애니메이션: 로딩, 제어와 움직임 줄이기",
+      "description": "Lottie는 웹에 제어 가능한 벡터 애니메이션을 넣기에 적합하지만, 파일 형식과 플레이어, 조작 상태를 함께 설계해야 합니다. 이 글은 직접 만든 프로젝터 대여 신청 페이지를 예로 들어 Lottie JSON과 dotLottie의 차이, 애니메이션 로딩과 재생 제어, 성능 점검, 움직임 줄이기와 정적 대안을 설명합니다. 단계별 절차, 비교표, 직접 그린 도해를 통해 애니메이션에 문제가 생겨도 페이지를 사용할 수 있는지 점검하고, 완료 애니메이션을 신청이 실제로 성공했다는 뜻으로 오해하지 않도록 돕습니다.",
+      "hero": {
+        "src": "/guides/lottie-web-animation/hero-ko.jpg",
+        "alt": "Mokaair가 직접 그린 애니메이션 화면, 상태 문서, 확인 방패 삽화로, Lottie 재생 제어와 정적 결과 검수를 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "신청서를 제출한 뒤 체크 표시 애니메이션이 나타나면 독자가 상태 변화를 알아차리는 데 도움이 됩니다. 하지만 서버가 아직 성공을 확인하지 않았다면 이 체크 표시가 오히려 오해를 일으킬 수 있습니다. Lottie를 넣기 전에 애니메이션이 무엇을 전달할지, 애니메이션이 없어도 사용자가 결과를 이해할 수 있을지 먼저 정해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "아래에서는 직접 만든 프로젝터 대여 신청 페이지를 예로 설명합니다. 문서 확인일은 2026년 9월 14일이며, 이 글에서는 플레이어를 배포하거나 애니메이션을 내보내거나 실제 스마트폰 성능을 측정하지 않았습니다. 예시는 독자가 직접 실행할 수 있는 설계 및 검수 방법이며, 도해는 모두 직접 그렸습니다."
+        },
+        {
+          "type": "heading",
+          "text": "애니메이션 데이터와 재생 도구부터 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Lottie JSON은 데이터로 애니메이션 요소와 움직임을 설명하며, 이미지 관련 데이터를 포함할 수도 있습니다. 일반적인 동영상이 아니며, JSON을 웹페이지에 넣는다고 자동으로 재생되는 것도 아닙니다. 웹사이트에는 내용을 해석하고 화면에 표시할 호환 플레이어가 필요합니다. 디자인 소프트웨어에서 내보낸 결과도 실제로 선택한 플레이어로 효과를 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "dotLottie의 .lottie는 압축 컨테이너로, 하나 이상의 애니메이션과 관련 리소스를 담을 수 있으며 테마나 상태 머신 같은 내용도 지원합니다. JSON의 확장자만 바꾼 것이 아닙니다. 웹사이트 플러그인이 Lottie JSON만 지원한다면 .lottie도 읽을 수 있다고 바로 가정해서는 안 됩니다. 플러그인과 플레이어의 현재 지원 범위를 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "airbnb의 lottie-web은 SVG, Canvas 등의 렌더링 방식을 제공합니다. LottieFiles의 dotlottie-web은 브라우저에서 .lottie와 Lottie JSON을 표시할 수 있습니다. 두 도구는 설정, 메서드, 의존성이 다르므로 서로 다른 튜토리얼에서 코드를 절반씩 복사해 이어 붙이는 것은 적절하지 않습니다. 먼저 사용할 도구와 버전을 확정하세요."
+        },
+        {
+          "type": "heading",
+          "text": "정적 결과를 갖춘 로딩 흐름 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 만든 대여 페이지에는 미제출, 제출 중, 신청 접수 완료, 제출 실패라는 텍스트 상태를 유지할 수 있습니다. 애니메이션은 상태를 강조하는 보조 수단이며, 유일한 설명이 되어서는 안 됩니다. 성공 응답을 받은 뒤에만 확인 애니메이션을 표시하세요. 심사를 기다리는 상태라면 신청 접수 완료라고 써야 하며, 장비 예약 완료나 대여 승인 완료로 바꾸어서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "설계할 때 컨테이너 비율과 사용 가능한 크기를 미리 확보해, 애니메이션이 로딩된 뒤 버튼 위치가 밀리지 않도록 하세요. 정적인 체크 표시나 짧은 텍스트를 대안으로 준비하세요. 데이터 파일, 외부 이미지, 플레이어의 로딩에 실패해도 신청 결과와 후속 처리 방법은 표시할 수 있어야 합니다. 애니메이션 실패와 신청 실패는 별도로 처리해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "lottie-web의 loadAnimation은 컨테이너, renderer, loop, autoplay, path 등의 설정을 사용합니다. animationData를 직접 제공한다면 path를 함께 제공하지 마세요. 처음 연동할 때는 자동 재생과 반복 재생을 먼저 끄고, 파일과 크기가 정상인지 확인한 뒤 실제 조작 상태에 따라 한 번 재생하도록 할 수 있습니다. 이렇게 하면 페이지가 로딩되자마자 성공 안내가 나타나는 일을 막을 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "재생, 일시정지, 파기는 서로 다른 작업",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "플레이어는 보통 재생과 일시정지 메서드를 제공하지만, 세부 동작은 도구별로 확인해야 합니다. 예를 들어 dotLottie의 pause는 현재 위치에 멈추고, stop은 시작 프레임으로 돌아갑니다. freeze는 렌더링 업데이트를 멈추는 기능이며, 재생 상태를 바꾸는 것과 같지 않습니다. 사용자에게 제공하는 일시정지 버튼에는 기대에 맞는 제어 동작을 선택해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "완료 애니메이션은 결과가 명확한 화면에 멈춰 둘 수도 있고, 서서히 사라지게 한 뒤 텍스트를 남길 수도 있습니다. complete 이벤트를 서버 작업이 완료되었다는 뜻으로 바로 사용하지 마세요. 이 이벤트는 애니메이션 타임라인이 끝에 도달했다는 의미일 뿐입니다. 신청 재제출, 네트워크 재시도, 애니메이션 다시 재생도 하나의 버튼 동작으로 서로 묶어서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "단일 페이지 애플리케이션에서 화면을 전환하거나 컴포넌트를 제거할 때는 플레이어가 제공하는 방법으로 인스턴스를 파기하고 이벤트 리스너를 제거하세요. 컨테이너를 보이지 않게 설정하는 것만으로는 업데이트가 멈추거나 리소스가 해제된다고 보장할 수 없습니다. 같은 페이지에 애니메이션이 여러 개 있다면 각각의 인스턴스를 저장하고, 페이지 전체에 영향을 주는 제어 메서드를 사용해 다른 콘텐츠까지 실수로 멈추지 않도록 하세요."
+        },
+        {
+          "type": "heading",
+          "text": "성능은 플레이어와 리소스까지 함께 살펴보기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "로딩 부담을 비교할 때는 애니메이션 파일 크기뿐 아니라 플레이어 코드, 외부 이미지, 관련 실행 리소스도 포함해야 합니다. dotlottie-web은 WASM 엔진을 사용하므로 처음 화면을 표시할 때 엔진도 준비되어야 합니다. 작은 애니메이션 파일만 보고 페이지 전체가 이미지나 동영상보다 반드시 가볍다고 주장할 수는 없습니다. 실제 결과는 콘텐츠와 사용 방식에 따라 달라집니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "페이지 아래쪽의 장식용 애니메이션은 화면에 보이는 영역에 가까워질 때 로딩하고, 화면을 벗어난 뒤에는 불필요한 렌더링을 멈출 수 있습니다. 도구가 캔버스 해상도나 프레임 보간 조정을 지원한다면 실제 선명도와 부드러움을 고려해 선택하세요. 먼저 버벅임을 일으키는 원인을 처리해야 하며, 모든 성능 옵션을 한꺼번에 켤 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "브라우저 개발자 도구로 네트워크 요청과 성능을 살펴본 뒤, 대상 스마트폰에서 스크롤, 입력, 화면 전환의 반응을 확인하세요. 기기, 네트워크 조건, 애니메이션 수, 설정을 기록해야 조정 전후를 비교할 수 있습니다. 이러한 측정을 실행하지 않았다면 검증이 필요한 방향으로 설명하고, 특정 비율만큼 절감했거나 전력을 절약한 것으로 표현하지 마세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "애니메이션의 용도를 정하고, 텍스트 상태와 실패 시 사용할 정적 대안을 먼저 완성하세요.",
+            "애니메이션 형식, 플레이어 버전, 리소스 URL, 소재 사용 권한을 확인하세요.",
+            "올바른 신청 상태에 따라 재생을 제어하고, 일시정지와 제거 시 정리 처리를 추가하세요.",
+            "움직임 줄이기, 키보드 조작, 느린 로딩, 대상 기기의 반응을 테스트하세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "움직임 줄이기 선호를 존중하고 읽기 환경을 제어할 수 있게 하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "prefers-reduced-motion으로 불필요한 움직임을 줄이려는 사용자 선호를 감지할 수 있습니다. CSS 애니메이션은 미디어 쿼리에서 조정할 수 있습니다. JavaScript 플레이어는 matchMedia로 선호를 읽어 자동 재생을 하지 않거나 정적 이미지로 대체할 수 있으며, 페이지를 연 뒤 사용자가 설정을 변경하는 경우도 고려해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "CSS animation만 꺼도 JavaScript가 업데이트하는 SVG나 Canvas까지 멈춘다고 보장할 수는 없습니다. 플레이어를 명시적으로 제어하고, 설정을 바꾼 뒤 실제 화면을 확인해야 합니다. 자동으로 느리고 크게 흔들리는 움직임으로 바꾸는 것도 움직임 줄이기의 목적에 맞지 않을 수 있습니다. 대안은 필요한 정보를 유지하면서 불필요한 이동을 줄여야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "WCAG 2.2의 일시정지, 정지, 숨기기 기준은 자동으로 시작하고 5초를 초과하며 다른 콘텐츠와 동시에 표시되는 움직이는 정보에 대해 원칙적으로 제어 수단을 제공하도록 요구합니다. 필수적인 활동에는 별도 예외가 있습니다. 그렇다고 모든 애니메이션이 5초 미만이면 모든 기준을 충족한다는 뜻은 아닙니다. 자동 업데이트, 깜박임, 키보드 조작, 대체 정보에는 각각 별도의 점검 요건이 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "소재 라이선스와 인계 사양 함께 보관하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "소재 라이브러리에서 애니메이션을 다운로드할 때는 저자, 작품 링크, 적용 라이선스, 취득 날짜를 보관하고 상업적 이용, 수정, 재배포 조건을 확인하세요. 플레이어의 오픈 소스 라이선스가 애니메이션 저자의 작품까지 자동으로 포함하지는 않습니다. 애니메이션을 무료로 다운로드할 수 있다고 해서 그 안의 브랜드, 글꼴, 인물 관련 권리까지 모두 확보했다는 뜻도 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "정보를 전달하는 애니메이션 옆에는 대응하는 텍스트가 있어야 합니다. 순수한 장식용 콘텐츠는 보조 기술이 의미 없는 세부 사항을 반복해서 읽지 않도록 하세요. 제어 버튼에는 명확한 이름을 사용하고 키보드 조작을 지원해야 하며, 일시정지된 상태도 알아볼 수 있어야 합니다. SVG의 title이나 description은 설명에 도움이 될 수 있지만, 페이지 전체의 의미 구조와 조작 검수를 대신할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "인계할 때는 애니메이션 파일, 정적 대안, 플레이어 버전, 실행 조건, 정지 위치, 확인이 필요한 항목을 나열하세요. 대여 페이지 검수의 핵심은 사용자가 신청 상태를 이해하고 계속 조작할 수 있는지입니다. 애니메이션이 정상적으로 재생되는 것은 그중 한 항목일 뿐입니다. 애니메이션이 대기 시간을 늘리거나 방해가 된다면 사용 범위를 줄이고 이해에 가장 도움이 되는 부분을 남길 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/lottie-web-animation/diagram-1-ko.svg",
+          "alt": "네 카드에 제출 전, 제출 중, 응답 수신, 움직임 대안을 나열해 애니메이션 오류가 실제 신청 상태를 가려서는 안 된다는 점을 설명합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "애니메이션 로딩 실패, 사용자의 움직임 끄기, 신청 제출 실패는 각각 별도로 처리해야 합니다.",
+          "description": "네 카드에 제출 전, 제출 중, 응답 수신, 움직임 대안을 나열해 애니메이션 오류가 실제 신청 상태를 가려서는 안 된다는 점을 설명합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "항목",
+            "확인할 동작",
+            "바로 단정할 수 없는 내용"
+          ],
+          "rows": [
+            [
+              "Lottie JSON",
+              "플레이어가 애니메이션 데이터를 해석할 수 있음",
+              "모든 디자인 효과가 완전히 같음"
+            ],
+            [
+              ".lottie 컨테이너",
+              "도구가 패키징 형식과 내용을 지원함",
+              "확장자만 바꾸면 변환할 수 있음"
+            ],
+            [
+              "complete 이벤트",
+              "애니메이션 타임라인이 끝남",
+              "서버가 신청을 확인함"
+            ],
+            [
+              "움직임 줄이기 선호",
+              "플레이어가 적절한 대안으로 전환함",
+              "CSS 애니메이션만 끄면 충분함"
+            ],
+            [
+              "일시정지와 정리",
+              "재생 제어 및 사용하지 않는 인스턴스 해제",
+              "컨테이너를 숨기면 연산도 멈춤"
+            ],
+            [
+              "파일 크기",
+              "플레이어와 필요한 리소스까지 합산",
+              "애니메이션 파일이 작으면 반드시 더 빠름"
+            ]
+          ],
+          "caption": "플레이어별 메서드와 이벤트는 해당 버전의 문서에 따라 사용해야 합니다. 표의 신청 페이지는 직접 만든 가상 사례입니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "성공 애니메이션은 실제 결과를 따라야 합니다",
+          "text": "신청이 접수되었는지 승인되었는지 실제 상태를 먼저 확인한 뒤, 그에 맞는 텍스트와 애니메이션을 표시하세요. 애니메이션이나 플레이어에 문제가 생겨도 사용자는 결과와 다음 단계를 볼 수 있어야 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "CSS 레이아웃과 컨테이너 크기 점검하기",
+              "kind": "life",
+              "slug": "css-layout-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "이미지 형식과 페이지 로딩 요구사항 비교하기",
+              "kind": "life",
+              "slug": "image-formats-compression"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "소재 출처와 라이선스 기록 정리하기",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "airbnb: lottie-web 사용 및 제어 문서",
+          "url": "https://github.com/airbnb/lottie-web",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles: 형식 비교",
+          "url": "https://docs.lottiefiles.com/en/format",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles: JavaScript 플레이어",
+          "url": "https://docs.lottiefiles.com/en/runtimes/distributions/js",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles: 재생 제어",
+          "url": "https://docs.lottiefiles.com/en/runtimes/distributions/js/v0.x/core-concepts/playback-control",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles: 성능과 리소스 정리",
+          "url": "https://docs.lottiefiles.com/en/runtimes/distributions/js/v0.x/advanced/performance",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: prefers-reduced-motion",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: matchMedia",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: SC 2.2.2 이해하기",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "网页 Lottie 动画：加载、控制与减少动态效果",
+      "description": "Lottie 适合为网页加入可控制的矢量动画，但文件格式、播放器与操作状态需要一起设计。本文以原创投影仪借用申请页为例，说明 Lottie JSON 和 dotLottie 的区别、动画加载与播放控制、性能检查，以及减少动态效果和静态替代。附步骤、比较表与自绘图解，帮助检查动画失败时页面是否仍可使用，避免把完成动画当成申请真的成功。",
+      "hero": {
+        "src": "/guides/lottie-web-animation/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创动画画面、状态文档与确认盾牌插图，代表 Lottie 播放控制与静态结果验收。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "申请表提交后出现一个打勾动画，可以帮助读者注意状态变化；但如果服务器尚未确认成功，这个勾反而会造成误会。加入 Lottie 前，应先决定动画传达什么，以及没有动画时用户是否仍能看懂结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以原创投影仪借用申请页说明。文档核查日期为 2026 年 9 月 14 日，本篇没有部署播放器、导出动画或测量真实手机性能；示例是供读者执行的设计与验收方式，配图则全部自行绘制。"
+        },
+        {
+          "type": "heading",
+          "text": "先分清动画数据与播放工具",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Lottie JSON 用数据描述动画元素和动作，可以包含图片相关数据；它不是普通视频，也不是把 JSON 放进网页就会自动播放。网站还需要兼容的播放器，解析内容并呈现画面。来自设计软件的导出结果，也要用实际选定的播放器检查效果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "dotLottie 的 .lottie 是压缩容器，可封装一个或多个动画与相关资源，并支持主题或状态机等内容。它不只是替 JSON 改扩展名。如果网站插件只接受 Lottie JSON，不能直接假设它也能读取 .lottie，应查看插件与播放器目前的支持范围。"
+        },
+        {
+          "type": "paragraph",
+          "text": "airbnb 的 lottie-web 提供 SVG、Canvas 等渲染方式；LottieFiles 的 dotlottie-web 则可在浏览器呈现 .lottie 和 Lottie JSON。两套工具的设置、方法及依赖不同，不宜从不同教程各复制一半代码再拼接。先确定使用哪套工具与版本。"
+        },
+        {
+          "type": "heading",
+          "text": "建立有静态结果的加载流程",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "原创借用页可以保留文字状态：尚未提交、提交中、申请已收到，以及提交失败。动画只帮助强调状态，不能成为唯一说明。收到成功响应后才显示确认动画；如果是等待审核，也应写申请已收到，不要改成设备已保留或借用已批准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "设计时先预留容器比例和可用尺寸，避免动画加载后把按钮推走。准备静态勾选标记或简短文字作为替代；数据文件、外部图片或播放器加载失败时，仍能显示申请结果与后续处理方式。动画失败和申请失败必须分开处理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "lottie-web 的 loadAnimation 会使用容器、renderer、loop、autoplay 与 path 等设置；如果直接提供 animationData，就不要再提供 path。第一次集成可先关闭自动与循环播放，确认文件及尺寸正常后，再由真实操作状态触发一次播放，避免加载页面就出现成功提示。"
+        },
+        {
+          "type": "heading",
+          "text": "播放、暂停与销毁是不同的事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "播放器通常提供播放与暂停方法，但细节要根据工具核查。例如 dotLottie 的 pause 停在当前位置，stop 会回到起始帧；freeze 用于停止渲染更新，并不等同于改变播放状态。为用户提供的暂停按钮，要选择符合预期的控制行为。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成动画可以停留在清楚的结果画面，也可以淡出后保留文字。不要让 complete 事件直接代表服务器操作已完成，它只表示动画时间轴到达结束。重新提交申请、网络重试与重播动画，也不应相互绑定成同一个按钮动作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在单页应用切换画面或移除组件时，根据播放器方法销毁实例并清除事件监听。只是把容器设成不可见，不一定会停止更新或释放资源。如果同一页有多个动画，保存各自的实例，避免使用会影响整页的控制方法而意外停止其他内容。"
+        },
+        {
+          "type": "heading",
+          "text": "性能要连同播放器和资源一起看",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "比较加载负担时，除了动画文件大小，也要计入播放器程序、外部图片及相关运行资源。dotlottie-web 使用 WASM 引擎，首次呈现还需要引擎就绪；不能只拿很小的动画文件，便宣称整个页面一定比图片或视频更轻。实际结果取决于内容与使用方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对于页面下方的装饰动画，可以在接近可见范围时才加载，离开画面后停止不必要的渲染。如果工具支持调整画布分辨率或帧插值，再根据实际清晰度与流畅度取舍。先处理造成卡顿的原因，不必把所有性能选项一次打开。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用浏览器开发工具查看网络请求与性能，再在目标手机上检查滚动、输入及切换画面的响应。记录设备、网络条件、动画数量及设置，才能比较调整前后。没有执行这些测量时，描述为待验证方向，不写成已节省特定比例或电量。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "界定动画用途，先完成文字状态与失败时的静态替代。",
+            "确认动画格式、播放器版本、资源网址与素材使用权。",
+            "由正确的申请状态控制播放，加入暂停及移除时的清理。",
+            "测试减少动态效果、键盘、慢速加载及目标设备的响应。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "尊重减少动态的偏好，保留可控制的阅读体验",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "prefers-reduced-motion 可以检测用户减少非必要动态的偏好。对于 CSS 动画，可在媒体查询中调整；对于 JavaScript 播放器，则可通过 matchMedia 读取偏好，选择不自动播放或改用静态图，并留意用户在页面打开后更改设置的情况。"
+        },
+        {
+          "type": "paragraph",
+          "text": "只关闭 CSS animation，不保证由 JavaScript 更新的 SVG 或 Canvas 也停止。需要明确控制播放器，并检查设置切换后的实际画面。自动改成慢速大幅晃动也未必符合减少动态的目的；替代方式应保留必要信息并减少不必要的位移。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WCAG 2.2 的暂停、停止、隐藏规范，对于自动开始、超过 5 秒且与其他内容同时呈现的移动信息，原则上要求提供控制方式，必要活动另有例外。这不是所有动画只要少于 5 秒就全面合格；自动更新、闪烁、键盘及替代信息仍有各自的检查要求。"
+        },
+        {
+          "type": "heading",
+          "text": "素材授权与交接规范一起留存",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "从图库下载动画时，保存作者、作品链接、适用授权与获取日期，并核对商用、修改及再分发条件。播放器的开源授权不会自动涵盖动画作者的作品；动画可免费下载，也不代表其中的品牌、字体或人物权利都已取得。"
+        },
+        {
+          "type": "paragraph",
+          "text": "信息型动画旁应有对应文字；纯装饰内容则避免让辅助工具重复朗读没有意义的细节。控制按钮使用清楚的名称并支持键盘，暂停后的状态也要能辨认。SVG 的 title 或 description 可以帮助描述，但不能取代整个页面的语义与操作验收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交接时列出动画文件、静态替代、播放器版本、触发条件、停止位置及待确认项目。借用页的验收重点是用户能否理解申请状态并继续操作；动画能正常播放只是其中一项。如果它增加等待或干扰，可以减少使用范围，保留最有助于理解的部分。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/lottie-web-animation/diagram-1-zh-cn.svg",
+          "alt": "四张卡片列出提交前、提交中、收到响应及动态替代，说明动画故障不能覆盖真正的申请状态。",
+          "width": 1600,
+          "height": 900,
+          "caption": "动画加载失败、用户关闭动态、申请提交失败，必须分别处理。",
+          "description": "四张卡片列出提交前、提交中、收到响应及动态替代，说明动画故障不能覆盖真正的申请状态。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "项目",
+            "应确认的行为",
+            "不能直接推断"
+          ],
+          "rows": [
+            [
+              "Lottie JSON",
+              "播放器可解析动画数据",
+              "所有设计效果完全相同"
+            ],
+            [
+              ".lottie 容器",
+              "工具支持封装格式与内容",
+              "改扩展名就能转换"
+            ],
+            [
+              "complete 事件",
+              "动画时间轴结束",
+              "申请已获服务器确认"
+            ],
+            [
+              "减少动态偏好",
+              "播放器改用适当替代",
+              "关闭 CSS 动画就足够"
+            ],
+            [
+              "暂停与清理",
+              "控制播放及释放不用的实例",
+              "隐藏容器等于停止运算"
+            ],
+            [
+              "文件大小",
+              "合计播放器与所需资源",
+              "动画文件小就一定更快"
+            ]
+          ],
+          "caption": "不同播放器的方法与事件需根据其版本文档使用；表内申请页是原创假想案例。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "成功动画应跟随真实结果",
+          "text": "先确认申请收到或批准的实际状态，再显示对应文字与动画。动画或播放器失败时，用户仍应看得到结果与下一步。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "检查 CSS 布局与容器尺寸",
+              "kind": "life",
+              "slug": "css-layout-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "比较图片格式与页面加载需求",
+              "kind": "life",
+              "slug": "image-formats-compression"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理素材来源和授权记录",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "airbnb：lottie-web 使用与控制文档",
+          "url": "https://github.com/airbnb/lottie-web",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles：格式比较",
+          "url": "https://docs.lottiefiles.com/en/format",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles：JavaScript 播放器",
+          "url": "https://docs.lottiefiles.com/en/runtimes/distributions/js",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles：播放控制",
+          "url": "https://docs.lottiefiles.com/en/runtimes/distributions/js/v0.x/core-concepts/playback-control",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LottieFiles：性能与资源清理",
+          "url": "https://docs.lottiefiles.com/en/runtimes/distributions/js/v0.x/advanced/performance",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：prefers-reduced-motion",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：matchMedia",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：理解 SC 2.2.2",
           "url": "https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html",
           "checked_on": "2026-09-14"
         }
