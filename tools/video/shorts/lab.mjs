@@ -23,6 +23,7 @@ import path from 'node:path';
 import { AutomationError, OUTPUT_INVALID } from '../automation/client.mjs';
 import { parseAnswer } from '../automation/prompts.mjs';
 import { atomicWrite, readJson, stopRequested } from '../core/paths.mjs';
+import { SPEECH_UNCERTAIN } from '../tts/client.mjs';
 import { LAB_SERIES, SCRIPT_FILE, USAGE_FILE, saveJson, sha256, validate } from './core.mjs';
 import { shortsInstructions } from './prompts.mjs';
 import { VERIFY_FILE, scriptGrammarProblems } from './qa.mjs';
@@ -499,6 +500,11 @@ export class LabShort {
         if (error instanceof LabBlocked) return [...lines, await this.block(error.message)].join('\n');
         // The model answered something unusable, here or on the server: counted like any failure.
         if (error?.code === OUTPUT_INVALID) return [...lines, await this.failed(phase, error.message)].join('\n');
+        // A paid speech request whose answer was lost after it was sent, or one the speech journal
+        // holds (tts/client.mjs SPEECH_UNCERTAIN): another round meets the same hold and paying
+        // again may charge twice, so the Short is blocked where the owner sees it, the way
+        // automation/flow.mjs blocks a video. The message names the request and how to release it.
+        if (error?.code === SPEECH_UNCERTAIN) return [...lines, await this.block(error.message)].join('\n');
         if (owner(error)) {
           this.save();
           return [...lines, `${this.slug}: waits for the owner at ${phase}: ${error.message}`].join('\n');

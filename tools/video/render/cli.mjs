@@ -19,6 +19,7 @@ import { existsSync, readFileSync, rmSync, writeFileSync, mkdirSync } from "node
 import path from "node:path";
 import { parseArgs } from "node:util";
 
+import { sha256File } from "../core/approvals.mjs";
 import { isCompilation, THUMB_SOURCE } from "../core/compilation.mjs";
 import { burnIn, hasPictures, isDrama, subtitlesHash } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
@@ -75,6 +76,47 @@ function thumbnailCaptures(doc, workdir, { profile }) {
     if (manifest) screencasts[scene.id] = manifest;
   }
   return screencasts;
+}
+
+/**
+ * The keyframes the given thumbnails sit on whose bytes are not the ones keyframes/manifest.json
+ * recorded, or that are missing, or that it recorded without a hash. A later keyframes take may
+ * have drawn over the selected file name, and the thumbnail's key, made of the recorded hash,
+ * would still read as current while it shows bytes nobody approved. Read before anything is
+ * drawn, so a refusal leaves no picture and no key behind.
+ */
+async function changedBackgrounds(thumbnails, workdir) {
+  const pictures = new Map();
+  for (const own of thumbnails) if (own.keyframe) pictures.set(own.keyframe.file, own.keyframe.sha256);
+  const problems = [];
+  for (const [file, sha256] of pictures) {
+    const local = path.resolve(workdir, file);
+    if (!existsSync(local)) problems.push(`the thumbnail's background ${file} is missing`);
+    else if (!sha256) problems.push(`the thumbnail's background ${file} has no hash in keyframes/manifest.json`);
+    else if ((await sha256File(local)) !== sha256) problems.push(`the thumbnail's background ${file} has changed since keyframes/manifest.json recorded it`);
+  }
+  return problems;
+}
+
+// What fixes a changed background. A compilation draws no keyframes: the worker copies an
+// approved episode keyframe to THUMB_SOURCE when it plans the metadata, and records which one
+// under shots.thumb.source. Copying that keyframe back costs nothing and keeps everything
+// approved. Only when it changed too does the metadata have to be planned again, which the
+// worker does once keyframes/manifest.json no longer lists the copy (core/state.mjs "metadata
+// planned"). It keeps translations it already has, so those go as well.
+const REDRAW = "run keyframes again or restore the approved picture";
+function replan(workdir) {
+  const source = readJson(path.join(workdir, ARTIFACTS.keyframes), null)?.shots?.thumb?.source;
+  const from = source?.episode && source?.shot ? ` (${source.episode}, shot ${source.shot})` : "";
+  return `copy the episode keyframe it was taken from${from} back to ${THUMB_SOURCE}, if that still holds the hash under shots.thumb in keyframes/manifest.json; otherwise delete keyframes/manifest.json and the compilation's i18n/*.json so the worker plans and translates its metadata again: a new planner call rewrites the title, description, tags and headline, and a cut already compiled is compiled and approved again (docs/videos/BINGE.md)`;
+}
+
+/** Refuse a render whose thumbnails would show a keyframe other than the recorded one (changedBackgrounds). */
+async function refuseChangedBackgrounds(ctx, thumbnails, workdir, { compilation = false } = {}) {
+  const changed = await changedBackgrounds(thumbnails, workdir);
+  if (!changed.length) return false;
+  ctx.stderr.write(`${changed.join("; ")}; ${compilation ? replan(workdir) : REDRAW}\n`);
+  return true;
 }
 
 /** Characters no bundled font covers, per scene state, subtitle strip and the thumbnail. */
@@ -176,6 +218,8 @@ async function thumbnailsOnly({ ctx, project, workdir, channel, profile }) {
     ctx.stderr.write(`${undrawn}\n`);
     return EXIT.usage;
   }
+  // Only the language thumbnails are drawn here: they sit on A's keyframe, never on a variant's.
+  if (await refuseChangedBackgrounds(ctx, plan.thumbnail.locales ?? [], workdir, { compilation: isCompilation(doc) })) return EXIT.usage;
   const localized = localizedThumbnails(plan);
   const started = Date.now();
   let renderer;
@@ -280,6 +324,7 @@ export async function run(command, args, ctx) {
     ctx.stderr.write(`${undrawn}\n`);
     return EXIT.usage;
   }
+  if (await refuseChangedBackgrounds(ctx, [...thumbnailsOf(plan).map(([, each]) => each), ...(plan.thumbnail?.locales ?? [])], workdir, { compilation })) return EXIT.usage;
   const glyphs = coverageProblems(plan, bundledCoverage(), subtitles);
   if (glyphs.length) {
     print(ctx.stdout, "ERROR", glyphs);

@@ -549,6 +549,8 @@ export const UNRECORDED_LIMIT = 3;
 export const DEFER_REPORT_FROM = 2;
 /** The checklist row of a video that waits on its own: why, until when (UTC) and which try in a row. */
 const deferredLabel = (state, why) => `暫時過不去，${String(state.deferred_until).slice(0, 16).replace("T", " ")} UTC 後再試（連續第 ${state.defer_count} 次）：${why}`.slice(0, 120);
+// How much of the client's reason a pending writer's line carries (a server's detail can run long).
+const PENDING_WHY_LENGTH = 160;
 // How long every lane of this run leaves a video whose writer is still running on the server
 // (RUN_PENDING): the worker's round (ops/video/worker.sh, 300 s), so its receipt is looked up
 // once a round, not by each lane in turn (two lanes polling one job got a 429 on 2026-10-06).
@@ -666,11 +668,15 @@ function changedTakes(timeline, workdir, ids = null) {
   return changed;
 }
 
+/** How a retake that exited 4 waits: as a tts would, everyone's trouble never counting toward a block. */
+const retakeWait = (redo) => ({ what: "tts", everyone: Boolean(everyones(redo.out)) });
+
 /**
- * Whether every take that no longer matches timeline.json is one the retake a STOP file ended
- * made (auto.json `stopped_retake`, written by retakeStopped), with the very bytes it wrote, and
- * narration.wav, which a stopped tts never writes, is still the bound one. A take changed on any
- * other line, or to other bytes, is not explained, and the guard before tts stays shut.
+ * Whether every take that no longer matches timeline.json is one made by the retake that a STOP
+ * file or a service ended (auto.json `stopped_retake`, written by retakeStopped), with the very
+ * bytes it wrote, and narration.wav, which a stopped tts never writes, is still the bound one. A
+ * take changed on any other line, or to other bytes, is not explained, and the guard before tts
+ * stays shut.
  */
 function retakeExplains(stopped, timeline, workdir) {
   const made = stopped?.takes;
@@ -809,6 +815,10 @@ export class Automation {
     // The owner's lines this run left unanswered because their video was not at rest
     // (discuss.mjs answerScript), by message id, so the log says so once.
     this.heldLines = new Set();
+    // The owner's lines on a document whose planner request met a busy service or a rate limit
+    // (discuss.mjs answerDocument), by message id: they wait for the next run, and this one goes
+    // on with the series work, the drama requests and the scheduled draft.
+    this.waitingLines = new Set();
     this.lastAnswer = null;
     // How much of a translation worksheet one model call is asked for (sheet-units.mjs).
     this.unitLimits = { lines: UNIT_LINES, chars: UNIT_CHARS };
@@ -1207,7 +1217,15 @@ export class Automation {
         return `${error.slug}: ${error.message}`;
       }
       if (!(error instanceof AutomationError && error.code === RUN_PENDING)) throw error;
-      const what = `${error.stage ?? "writer"} is still running; its saved receipt will be checked next round`;
+      // The worker's last request for the job failed (client.mjs `why`: its submission, or a
+      // look-up of its saved receipt, met a rate limit or a gateway away): the job may well be
+      // done, so the line says what failed rather than that the model is still running. Until
+      // 2026-10-07 it said "still running" either way, and a finished job whose look-ups were
+      // rate-limited read as a model at work.
+      const stage = error.stage ?? "writer";
+      const what = error.why
+        ? `${stage} has not answered yet: the worker's last request to the server for it failed (${[...String(error.why)].slice(0, PENDING_WHY_LENGTH).join("")}); it is asked again next round`
+        : `${stage} is still running; its saved receipt will be checked next round`;
       // A video's writer, sent by its own unit or to answer a line on its screenplay (discuss.mjs,
       // which runs outside the unit and names the video on the error): no lane looks the job up
       // again or moves the video within PENDING_RECHECK_MS, the line waits with it (resting), and
@@ -1416,6 +1434,11 @@ export class Automation {
       delete state.blocked_report_pending;
       delete state.blocked_report_retry_at;
       delete state.policy_hold;
+      // The owner's line whose request blocked the video (discuss.mjs answerScript) is sent once
+      // more now, like any other line, with a row of deferrals of its own anew; a later block is
+      // not this line's.
+      delete state.blocked_line;
+      delete state.line_defers;
       // From the moment auto.json says "active" another lane could take the video. This lane
       // holds it until the acknowledgement is over, so a deferral saved below is the only copy:
       // without the hold a second lane ran the video's stage while the report was in flight, and
@@ -1439,32 +1462,61 @@ export class Automation {
     }
     // A failed PUT never resumes media: reconcile only the saved reason. Legacy blocked
     // states have no pending flag, so compare the fresh site checklist as well.
-    for (const state of automatedVideos(this.workBase)) {
+    const unreported = (state) => {
       const siteVideo = siteBySlug.get(state.slug);
-      if (state.status !== "blocked" || !state.blocked || !free(state)) continue;
-      if (!siteVideo && !state.blocked_report_pending) continue;
+      if (state.status !== "blocked" || !state.blocked) return false;
+      if (!siteVideo && !state.blocked_report_pending) return false;
       const matches = siteVideo?.stage === "blocked" && siteVideo.checklist?.some((item) => item.key === "blocked" && item.label === blockedLabel(state) && item.done === false);
-      if (matches && !state.blocked_report_pending) continue;
-      if (Date.parse(state.blocked_report_retry_at) > this.ctx.now().getTime()) continue;
-      if (await this.reportBlocked(state)) return `${state.slug}: blocked reason reported`;
+      if (matches && !state.blocked_report_pending) return false;
+      return !(Date.parse(state.blocked_report_retry_at) > this.ctx.now().getTime());
+    };
+    // Read again once held (holding): the list outlives an earlier video's failed report, and a
+    // lane that blocked a video meanwhile may have saved its own report's outcome since and let
+    // the video go. Its backoff was written over, and the report sent again at once.
+    for (const listed of automatedVideos(this.workBase)) {
+      if (!unreported(listed) || !free(listed)) continue;
+      if (await this.holding(listed.slug, (state) => unreported(state) && this.reportBlocked(state))) return `${listed.slug}: blocked reason reported`;
       // Continue other videos after a failed report; a stopped video cannot starve them.
     }
     // The owner uploaded a finished video and pasted its address on /admin/videos: the id goes
     // into the script, and the video reads as complete (docs/videos/HANDS-OFF.md).
     const uploaded = new Map(this.site.filter((video) => YOUTUBE_ID.test(video.youtube_video_id ?? "")).map((video) => [video.slug, video.youtube_video_id]));
-    for (const state of automatedVideos(this.workBase)) {
-      if (!["active", "done"].includes(state.status) || !uploaded.has(state.slug) || !free(state)) continue;
-      const recorded = await this.recordVideoId(state, uploaded.get(state.slug));
+    const unrecorded = (state) => ["active", "done"].includes(state.status) && uploaded.has(state.slug);
+    for (const listed of automatedVideos(this.workBase)) {
+      if (!unrecorded(listed) || !free(listed)) continue;
+      const recorded = await this.holding(listed.slug, (state) => unrecorded(state) && this.recordVideoId(state, uploaded.get(state.slug)));
       if (recorded) return recorded;
     }
     // A finished compilation the site has not heard about yet (the call failed on the round
     // that finished it): tell it now, or the series stays 合集正在做.
-    for (const state of automatedVideos(this.workBase)) {
-      if (state.status === "done" && state.compilation && !state.compilation_told && free(state) && (await this.tellCompilationDone(state))) {
-        return `${state.slug}: the site now knows the compilation of ${state.compilation.series} is done`;
+    const untold = (state) => state.status === "done" && state.compilation && !state.compilation_told;
+    for (const listed of automatedVideos(this.workBase)) {
+      if (!untold(listed) || !free(listed)) continue;
+      if (await this.holding(listed.slug, (state) => untold(state) && this.tellCompilationDone(state))) {
+        return `${listed.slug}: the site now knows the compilation of ${listed.compilation.series} is done`;
       }
     }
     return null;
+  }
+
+  /**
+   * `act` on a video's auto.json as read once this lane holds the video, holding it until `act`
+   * is over: the bookkeeping's site calls (reportBlocked, recordVideoId, tellCompilationDone)
+   * save the video after they await the site. Until 2026-10-07 they held nothing, so a second lane could take
+   * the video during the call (a done video's languages) and save its progress, and the copy
+   * this lane then saved, read before the call, wrote over it; a loop that lists the videos
+   * before its first await could also save a copy another lane had moved on since. Resolves to
+   * what `act` does, or null when another lane holds the video or it has no auto.json of its own.
+   */
+  async holding(slug, act) {
+    if (this.busy.has(slug)) return null;
+    this.busy.add(slug);
+    try {
+      const state = readJson(path.join(this.workdir(slug), STATE_FILE), null);
+      return state?.slug === slug ? await act(state) : null;
+    } finally {
+      this.busy.delete(slug);
+    }
   }
 
   /**
@@ -1499,24 +1551,43 @@ export class Automation {
         this.skipped.add(state.slug);
         return `${state.slug}: ${error.message}`;
       }
-      if (error.code === POLICY_HOLD) return this.policyHold(state, error);
-      if (error.code === RUN_UNCERTAIN) return this.unanswered(state, error);
       if (error.code === OUTPUT_INVALID) return this.retryLater(state, error.stage, error.message);
-      // A writer still running on the server: step() sets this video aside for the run. It
-      // neither counts as a deferral nor ends a row of them: a queue that loses every job before
-      // its dispatch (queued, failed, queued again) must still reach the limit and a card.
-      if (error.code === RUN_PENDING) throw error;
-      const scope = errorScope(error);
-      if (scope === "run") throw error;
-      const request = error.stage ? `the ${error.stage} request` : "a request";
-      const code = error.code || `HTTP ${error.status}`;
-      if (error.gone) return this.jobGone(state, error);
-      if (scope === "video") return this.block(state, `the site refused ${request} (${code}): ${error.message}`);
-      const retryAfter = Number(error.retry_after);
-      return this.defer(state, `${state.slug}: ${request} could not finish (${code}: ${error.message})`, { retryAfter: Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : null, what: error.stage ?? "request", everyone: Boolean(everyones(error)) });
+      return this.requestFailed(state, error);
     }
     await this.moved(state);
     return done;
+  }
+
+  /**
+   * An AutomationError of a request made for this video, sorted by errorScope: a policy hold
+   * parks the project (policyHold); an answer lost after it was sent blocks the video for the
+   * owner (unanswered); a saved job the server no longer has blocks it as `job_gone:<stage>`
+   * (jobGone, `sends` wording what the retry sends); a refusal this request will always meet
+   * blocks it with the reason; one that passes defers it. Trouble that is everyone's ("run") is
+   * thrown, and so is a writer still running on the server (RUN_PENDING), which step() sets
+   * aside for the run: it neither counts as a deferral nor ends a row of them, since a queue that
+   * loses every job before its dispatch (queued, failed, queued again) must still reach the limit
+   * and a card. Resolves to the line; `request` names the request in it when the stage alone
+   * would not. The video's own stages (move) and the writer's answer to a line on its screenplay
+   * (discuss.mjs answerScript) share it: both are this video's requests.
+   */
+  async requestFailed(state, error, { sends = null, request: named = null } = {}) {
+    if (error.code === POLICY_HOLD) return this.policyHold(state, error);
+    if (error.code === RUN_UNCERTAIN) return this.unanswered(state, error);
+    if (error.code === RUN_PENDING) throw error;
+    const scope = errorScope(error);
+    if (scope === "run") throw error;
+    const request = named ?? (error.stage ? `the ${error.stage} request` : "a request");
+    const code = error.code || `HTTP ${error.status}`;
+    if (error.gone) return this.jobGone(state, error, sends);
+    if (scope === "video") return this.block(state, `the site refused ${request} (${code}): ${error.message}`);
+    const retryAfter = Number(error.retry_after);
+    return this.defer(state, `${state.slug}: ${request} could not finish (${code}: ${error.message})`, { retryAfter: Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : null, what: error.stage ?? "request", everyone: Boolean(everyones(error)) });
+  }
+
+  /** errorScope, for the modules flow.mjs imports (discuss.mjs), which cannot import it back. */
+  errorScope(error) {
+    return errorScope(error);
   }
 
   /**
@@ -2303,8 +2374,8 @@ export class Automation {
       const project = loadProject({ slug: state.slug, root: ctx.root });
       const sameScript = previous?.speech_hash === speechHash(project.doc, project.lexicon);
       // Takes that no longer match stop the video, unless they are the ones a retake made before a
-      // STOP file ended it (retakeStopped): the plain tts below binds them without synthesizing
-      // anything, and the next round checks them again.
+      // STOP file or a service ended it (retakeStopped): the plain tts below binds them without
+      // synthesizing anything, and the next round checks them again.
       const resumed = Boolean(sameScript && previous.audio_evidence && audioEvidenceProblems(previous, workdir).length);
       if (resumed && !retakeExplains(state.stopped_retake, previous, workdir)) return this.block(state, "audio evidence no longer matches the saved takes; restore or explicitly retake and review the narration");
       // A refresh binds evidence to the takes on disk and never records. Takes that no longer match
@@ -2315,13 +2386,17 @@ export class Automation {
       const result = await this.speech(state.slug, ["tts", "--slug", state.slug, ...(refresh ? ["--refresh-evidence"] : [])]);
       // A STOP file ended it between requests: the takes are saved and the next run continues.
       if (result.code === ctx.EXIT.incomplete) return this.defer(state, `${state.slug}: tts stopped (${lastLine(result.out)}); the next run continues`, { backoffMs: 0 });
+      // A service away, the month's characters spent or the speech routes' rate limit (exit 4), as
+      // for every other stage: the takes made so far are cached, the next tts goes on from them,
+      // and trouble that is everyone's never blocks the video.
+      if (result.code === 4) return this.defer(state, `${state.slug}: tts could not finish (${lastLine(result.out)})`, { what: "tts", everyone: Boolean(everyones(result.out)) });
       if (result.code !== 0) return this.block(state,`tts failed: ${result.out.trim().split("\n").at(-1)}`);
       if (state.stopped_retake) {
         delete state.stopped_retake;
         saveState(workdir, state);
       }
       await report(ctx, this.api, state, "narration synthesized");
-      return `${state.slug}: narration synthesized${resumed ? " from the takes of the retake a STOP file ended" : ""}`;
+      return `${state.slug}: narration synthesized${resumed ? " from the takes of the retake that stopped halfway" : ""}`;
     }
     if (next === "narration approved") return this.narration(state);
     if (next === "frames rendered") {
@@ -2997,9 +3072,13 @@ export class Automation {
    * next run's guard before tts tells them from a take swapped without review and rebuilds the
    * narration from them. A retake stopped before its first request made nothing and records
    * nothing. Either way the video is left for this run and the next one continues: a STOP is
-   * never a block.
+   * never a block. A retake that met a service away or a limit (exit 4) leaves the same takes
+   * behind and is recorded the same way, but waits as any deferral does (`wait`, defer's options).
+   * `giveBack` returns the retake round it was counted under when it made no take at all: an
+   * outage repeated round after round would otherwise spend every retake and send lines that were
+   * never retaken to the listener's rewrite (docs/videos/HANDS-OFF.md §旁白).
    */
-  retakeStopped(state, flagsFile, line) {
+  retakeStopped(state, flagsFile, line, wait = { backoffMs: 0 }, { giveBack = false } = {}) {
     const workdir = this.workdir(state.slug);
     let ids;
     try {
@@ -3014,8 +3093,11 @@ export class Automation {
     if (takes && Object.keys(takes).length) {
       state.stopped_retake = { flags: path.relative(workdir, flagsFile).split(path.sep).join("/"), ids: [...ids], takes };
       saveState(workdir, state);
+    } else if (giveBack && takes && state.retakes > 0) {
+      // defer() below saves it.
+      state.retakes -= 1;
     }
-    return this.defer(state, `${state.slug}: ${line}`, { backoffMs: 0 });
+    return this.defer(state, `${state.slug}: ${line}`, wait);
   }
 
   async narration(state) {
@@ -3045,6 +3127,7 @@ export class Automation {
       const flagsFile = path.join(workdir, "review", "check-flags.json");
       const redo = await this.speech(state.slug, ["tts", "--slug", state.slug, "--redo", flagsFile]);
       if (redo.code === ctx.EXIT.incomplete) return this.retakeStopped(state, flagsFile, `the retake stopped (${lastLine(redo.out)}); the next run continues`);
+      if (redo.code === 4) return this.retakeStopped(state, flagsFile, `the retake could not finish (${lastLine(redo.out)})`, retakeWait(redo), { giveBack: true });
       if (redo.code !== 0) return this.block(state,`retake failed: ${redo.out.trim().split("\n").at(-1)}`);
       check = await this.speech(state.slug, ["check-audio", "--slug", state.slug]);
     }
@@ -3065,6 +3148,7 @@ export class Automation {
       if (!round.ids.length) continue;
       const redo = await this.speech(state.slug, ["tts", "--slug", state.slug, "--redo", round.flagsFile]);
       if (redo.code === ctx.EXIT.incomplete) return this.retakeStopped(state, round.flagsFile, `the retake after the rewrite stopped (${lastLine(redo.out)}); the next run continues`);
+      if (redo.code === 4) return this.retakeStopped(state, round.flagsFile, `the retake after the rewrite could not finish (${lastLine(redo.out)})`, retakeWait(redo));
       if (redo.code !== 0) return this.block(state, `retake after the rewrite failed: ${lastLine(redo.out)}`);
       check = await this.speech(state.slug, ["check-audio", "--slug", state.slug]);
     }
@@ -3245,9 +3329,10 @@ export class Automation {
     }
     const dubs = dubsStatus(project, workdir, speechHash(doc, project.lexicon));
     for (const { locale, parts } of pending) {
-      // A track is current once `dub` wrote it; one left unheard by a `dub`, retake or check that
-      // stopped before it finished (a STOP file, or a paid request whose answer was lost, see
-      // makeDub) is made and checked again.
+      // A track is current once `dub` wrote it; one left unheard by a visit that did not end with
+      // Jev passing it or the locale given up (a STOP file, a limit or a service away, a lost
+      // answer, a translator answer that could not be used, a block; see makeDub) is made and
+      // checked again.
       const unheard = dubs[locale]?.status === "current" && state.languages?.[locale]?.check_stopped;
       if (!parts.includes("dub") || (["current", "skipped"].includes(dubs[locale]?.status) && !unheard)) continue;
       return this.makeDub(state, locale);
@@ -3499,11 +3584,12 @@ export class Automation {
    * translator and dubbed again, MAX_DUB_REWORD_ROUNDS times. A retake that no longer fits its
    * window goes back to the shortening. What still fails after that, and what needs the owner (a
    * voice that speaks one language, a missing key), gives the locale up with the reason instead
-   * of blocking the video; a service that is down ends this run and the next one tries again, and
-   * a STOP file that ends `dub`, a retake or the check (exit 6) ends it too, the next run going on
-   * from the takes already paid for. A paid request whose answer was lost (speechUncertain)
-   * blocks the video: the locale is not given up for a request that may well have worked, nor
-   * bought again without the owner.
+   * of blocking the video. A service that is down or a limit (exit 4) defers this video only, and
+   * the lane goes on with the others; a STOP file that ends `dub`, a retake or the check (exit 6)
+   * defers it for the rest of the run. Either way the next visit goes on from the takes already
+   * paid for, and a retake that exited 4 without making a take gives its round back. A paid
+   * request whose answer was lost (speechUncertain) blocks the video: the locale is not given up
+   * for a request that may well have worked, nor bought again without the owner.
    */
   async makeDub(state, locale) {
     const { ctx } = this;
@@ -3514,25 +3600,44 @@ export class Automation {
       state.languages = { ...(state.languages ?? {}), [locale]: rounds };
       saveState(workdir, state);
     };
+    // Unheard until Jev passes the track or the locale is given up, the two endings that clear
+    // these rounds. A track `dub` wrote reads as current once its words and voice are, so any
+    // other way this visit ends (a deferral, a STOP, a lost answer, a translator answer that
+    // could not be used, a block and the owner's retry) leaves a track that the language step
+    // makes and checks again instead of sending (`unheard` there).
+    rounds.check_stopped = true;
+    remember();
     const dubArgs = ["dub", "--slug", slug, "--locale", locale];
     const flags = path.join(workdir, "review", `check-flags.${locale}.json`);
     const checkArgs = ["check-audio", "--slug", slug, "--locale", locale];
     const overLines = () => readJson(dubArtifacts(workdir, locale).fit, null)?.over;
+    // The flagged lines' takes as they are (a retake writes each one's <id>.wav again): a retake
+    // that exits 4 having changed none of them made no take, so its round is given back, as for
+    // the narration (retakeStopped's giveBack). An outage repeated round after round would
+    // otherwise spend every retake and send lines never retaken to the rewording.
+    const flaggedTakes = () => {
+      let ids;
+      try {
+        ids = flaggedLines(readJson(flags));
+      } catch {
+        ids = new Set();
+      }
+      const audio = dubArtifacts(workdir, locale).audio;
+      return JSON.stringify([...ids].sort().map((id) => {
+        const file = path.join(audio, `${id}.wav`);
+        return [id, existsSync(file) ? createHash("sha256").update(readFileSync(file)).digest("hex") : null];
+      }));
+    };
     // A paid request whose answer was lost: the video waits for the owner, and the owner's retry
     // runs this locale again, its check included, though its track may already read as current.
-    const lost = (what, result) => {
-      rounds.check_stopped = true;
-      remember();
-      return this.block(state, `${what} needs the owner: ${lastLine(result.out)}`);
-    };
+    const lost = (what, result) => this.block(state, `${what} needs the owner: ${lastLine(result.out)}`);
     // A STOP file ended `dub`, a retake or the check before it finished: the takes paid for so far
-    // are in the dub's cache, and the track may still read as current (a retake keeps the words),
-    // so the next run makes this locale's track again from the cache and hears it to the end.
-    const stopped = (what, result) => {
-      rounds.check_stopped = true;
-      remember();
-      return this.defer(state, `${slug}: ${locale} ${what} stopped (${lastLine(result.out)}); the next run continues`, { backoffMs: 0 });
-    };
+    // are in the dub's cache, and the next run makes this locale's track again from the cache and
+    // hears it to the end.
+    const stopped = (what, result) => this.defer(state, `${slug}: ${locale} ${what} stopped (${lastLine(result.out)}); the next run continues`, { backoffMs: 0 });
+    // `dub`, a retake or the check met a limit or a service away (exit 4): this video waits, and
+    // the next visit goes on from the takes already paid for.
+    const unfinished = (what, result) => this.defer(state, `${slug}: ${locale} ${what} could not finish (${lastLine(result.out)})`, { what: what === "dub check" ? "check-audio" : "dub", everyone: Boolean(everyones(result.out)) });
     // Each pass makes the track (only the lines whose words changed are synthesized again) and
     // checks it; a reworded line or a retake that no longer fits starts another pass.
     for (;;) {
@@ -3556,16 +3661,20 @@ export class Automation {
       }
       if (speechUncertain(made)) return lost(`dub ${locale}`, made);
       if (made.code === 3) return this.giveUpDub(state, locale, `dub needs the owner: ${lastLine(made.out)}`);
-      if (made.code === 4) return this.defer(state, `${slug}: ${locale} dub could not finish (${lastLine(made.out)})`, { what: "dub", everyone: Boolean(everyones(made.out)) });
+      if (made.code === 4) return unfinished("dub", made);
       if (made.code !== 0) return this.block(state, `dub ${locale} failed: ${lastLine(made.out, 2)}`);
       let check = await this.speech(slug, checkArgs);
       let refit = false;
       while (check.code === 1 && rounds.retakes < MAX_DUB_RETAKE_ROUNDS) {
         rounds.retakes += 1;
         remember();
+        const takes = flaggedTakes();
         const redo = await this.speech(slug, [...dubArgs, "--redo", flags]);
         if (redo.code === ctx.EXIT.incomplete) return stopped("dub retake", redo);
-        if (redo.code === 4) return this.defer(state, `${slug}: ${locale} dub retake could not finish (${lastLine(redo.out)})`, { what: "dub", everyone: Boolean(everyones(redo.out)) });
+        if (redo.code === 4) {
+          if (flaggedTakes() === takes) rounds.retakes -= 1;
+          return unfinished("dub retake", redo);
+        }
         if (speechUncertain(redo)) return lost(`dub ${locale} retake`, redo);
         // The new take is longer than its window allows: the next pass's `dub` reports the same
         // window and shortens it, while shortening rounds are left.
@@ -3586,7 +3695,7 @@ export class Automation {
         // Nothing usable came back: the same words would only be heard wrong again.
         if (reworded.ids.length) continue;
       }
-      if (check.code === 4) return this.defer(state, `${slug}: ${locale} dub check could not finish (${lastLine(check.out)})`, { what: "check-audio", everyone: Boolean(everyones(check.out)) });
+      if (check.code === 4) return unfinished("dub check", check);
       if (check.code === ctx.EXIT.incomplete) return stopped("dub check", check);
       if (check.code === 1) {
         const reworded = rounds.reword ? ` and ${rounds.reword} rewording round${rounds.reword === 1 ? "" : "s"}` : "";

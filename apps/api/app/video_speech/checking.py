@@ -32,7 +32,7 @@ from redis.asyncio import Redis
 from app.ai.jev import JevClient, NoulCriteria, NoulQuestion, consume_jev_call, jev_client
 from app.ai.structured_output import gemini_output_text
 from app.config import Settings
-from app.video_speech.azure import USER_AGENT, SpeechUpstreamError
+from app.video_speech.azure import USER_AGENT, SpeechUpstreamError, transport_failure
 
 logger = logging.getLogger(__name__)
 
@@ -176,8 +176,9 @@ async def transcribe(
             headers={"x-goog-api-key": key, "User-Agent": USER_AGENT},
         )
     except httpx.HTTPError as error:
-        logger.warning("Gemini transcription unreachable: %s", type(error).__name__)
-        raise SpeechUpstreamError(502, f"Gemini unreachable: {type(error).__name__}") from error
+        failure = transport_failure("Gemini", error)
+        logger.warning("Gemini transcription failed: %s", failure)
+        raise failure from error
     finally:
         if owned:
             await http.aclose()

@@ -1,11 +1,13 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 import { EXIT, main } from "../cli.mjs";
-import { compilationDocument } from "../core/compilation.mjs";
+import { compilationSandbox } from "../compile/fixture.mjs";
+import { compilationDocument, THUMB_SOURCE } from "../core/compilation.mjs";
 import { dramaFixture, explainerFixture, sandbox, tempDir } from "../core/fixtures/load.mjs";
 import { estimateTimeline, visualHash } from "../core/timeline.mjs";
 import { LAUNCH_ARGS, resolveRequest } from "./browser.mjs";
@@ -444,6 +446,103 @@ test("a Simplified Chinese thumbnail with a Simplified-only form is drawable in 
   assert.match(localizedThumbnails(plan, () => bundledCoverage()).gaps["zh-CN"], /U\+4F65/, "the slide fonts alone lack it");
 });
 
+test("a thumbnail whose keyframe's bytes changed, went missing or have no recorded hash is refused before anything is drawn; the approved bytes render as before", async () => {
+  // A later keyframes take reuses the selected file name (2026-10-07-the-thumbnail-is-drawn-from-a).
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const docFile = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(docFile, "utf8"));
+  assert.equal(doc.thumbnail.data.shot, "podium");
+  // Variant B sits on a keyframe of its own.
+  doc.thumbnail.variants = [{ data: { headline: "B 的標題", shot: "desk" } }];
+  writeFileSync(docFile, JSON.stringify(doc));
+  const work = (...parts) => path.join(box.workdir, ...parts);
+  mkdirSync(work("keyframes"), { recursive: true });
+  const sha = (text) => createHash("sha256").update(text).digest("hex");
+  const pictures = { podium: ["keyframes/podium-1.png", "the approved podium"], desk: ["keyframes/desk-1.png", "the approved desk"] };
+  const manifest = (overrides = {}) => ({ shots: Object.fromEntries(Object.entries(pictures).map(([shot, [file, bytes]]) => [shot, { file, sha256: sha(bytes), ...(overrides[shot] ?? {}) }])) });
+  const approve = () => {
+    for (const [file, bytes] of Object.values(pictures)) writeFileSync(work(file), bytes);
+    writeFileSync(work("keyframes", "manifest.json"), JSON.stringify(manifest()));
+  };
+  approve();
+  const words = Object.fromEntries(Object.keys(thumbnailSource(doc)).map((name) => [name, `Why ${name}`]));
+  const i18n = path.join(box.dir, "i18n", "en.json");
+  mkdirSync(path.dirname(i18n), { recursive: true });
+  writeFileSync(i18n, JSON.stringify({ thumbnail: words, source_hashes: { thumbnail: thumbnailSourceHash(doc) } }));
+  const captures = [];
+  let opened = 0;
+  let out = "";
+  const ctx = {
+    root: box.root,
+    env: { VIDEO_WORKDIR: box.work },
+    stdout: { write: (text) => (out += text) },
+    stderr: { write: (text) => (out += text) },
+    now: () => new Date("2026-10-07T00:00:00Z"),
+    openRenderer: async () => {
+      opened += 1;
+      return {
+        // Every drawing differs from the last, so a picture drawn over another shows on disk.
+        capture: async (key, html) => {
+          captures.push({ key, html });
+          return { still: Buffer.from(`picture ${key} #${captures.length}`), frames: [], problems: [] };
+        },
+        sheet: async () => Buffer.from("sheet"),
+        close: async () => {},
+      };
+    },
+  };
+  const render = ["render", "--slug", box.slug];
+  const languages = [...render, "--thumbnails-only"];
+  assert.equal(await main(render, ctx), EXIT.ok, out);
+  assert.ok(captures.some(({ html }) => html.includes("https://video.local/work/keyframes/podium-1.png")), "A sits on podium");
+  assert.ok(captures.some(({ html }) => html.includes("https://video.local/work/keyframes/desk-1.png")), "B sits on desk");
+  const kept = ["frames/manifest.json", "thumbnail.jpg", "thumbnail-b.jpg", "thumbnails/en.jpg"].map((file) => [file, readFileSync(work(file), "utf8")]);
+  const refused = (args, label, said) => async () => {
+    captures.length = 0;
+    opened = 0;
+    out = "";
+    assert.equal(await main(args, ctx), EXIT.usage, label);
+    assert.match(out, said, label);
+    assert.deepEqual([captures.length, opened], [0, 0], `${label}: nothing is drawn, and no browser opens`);
+    for (const [file, bytes] of kept) assert.equal(readFileSync(work(file), "utf8"), bytes, `${label}: ${file} is as it was`);
+  };
+
+  for (const [what, change, said] of [
+    ["A's picture drawn over by a later take", () => writeFileSync(work(pictures.podium[0]), "a later take"), /the thumbnail's background keyframes\/podium-1\.png has changed since keyframes\/manifest\.json recorded it; run keyframes again or restore the approved picture/],
+    ["A's picture gone", () => rmSync(work(pictures.podium[0])), /the thumbnail's background keyframes\/podium-1\.png is missing; run keyframes again or restore the approved picture/],
+    ["A's picture recorded without a hash", () => writeFileSync(work("keyframes", "manifest.json"), JSON.stringify(manifest({ podium: { sha256: "" } }))), /the thumbnail's background keyframes\/podium-1\.png has no hash in keyframes\/manifest\.json/],
+  ]) {
+    change();
+    for (const args of [render, languages]) await refused(args, `${what}: ${args.join(" ")}`, said)();
+    approve();
+  }
+
+  // Only B's picture changed: the full render, which draws B, refuses; the language thumbnails sit
+  // on A's picture and are drawn as before.
+  writeFileSync(work(pictures.desk[0]), "a later desk");
+  await refused(render, "B's picture drawn over: render", /keyframes\/desk-1\.png has changed/)();
+  assert.doesNotMatch(out, /podium/, "A's picture is not blamed");
+  captures.length = 0;
+  out = "";
+  assert.equal(await main(languages, ctx), EXIT.ok, out);
+  assert.deepEqual(captures.map(({ html }) => /Why headline/.test(html)), [true], "the en thumbnail, on A's picture");
+  approve();
+
+  // A checked alone: no caption locale has a thumbnail of its own.
+  rmSync(i18n);
+  writeFileSync(work(pictures.podium[0]), "a later take");
+  out = "";
+  assert.equal(await main(render, ctx), EXIT.usage);
+  assert.match(out, /keyframes\/podium-1\.png has changed/);
+  approve();
+
+  // The approved bytes back: both commands go on as before.
+  writeFileSync(i18n, JSON.stringify({ thumbnail: words, source_hashes: { thumbnail: thumbnailSourceHash(doc) } }));
+  out = "";
+  assert.equal(await main(render, ctx), EXIT.ok, out);
+  assert.equal(await main(languages, ctx), EXIT.ok, out);
+});
+
 test("render --thumbnails-only draws the language thumbnails alone, and only over frames rendered for this script", async () => {
   const box = sandbox();
   const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
@@ -557,4 +656,49 @@ test("the showcase's B and C variants take the next layouts; a slides thumbnail 
   const layouts = [own.thumbnail, ...own.thumbnail.variants].map((each) => /thumb column layout-([abc])/.exec(each.html)[1]);
   assert.deepEqual([...new Set(layouts)].length, 3, `A, B and C differ: ${layouts}`);
   assert.deepEqual(layouts, [thumbnailRotation(showcase.slug).layout, thumbnailRotation(showcase.slug, 1).layout, thumbnailRotation(showcase.slug, 2).layout]);
+});
+
+test("a compilation whose thumbnail source changed is told to plan its metadata again, which keyframes cannot do", async () => {
+  // keyframes refuses a compilation: the worker copies an approved episode keyframe to
+  // THUMB_SOURCE when it plans the metadata (2026-10-07-render-tells-a-compilation-to-run).
+  const box = compilationSandbox({ planned: true, rendered: true });
+  let out = "";
+  let opened = 0;
+  const ctx = {
+    root: box.root,
+    env: { VIDEO_WORKDIR: box.work },
+    stdout: { write: (text) => (out += text) },
+    stderr: { write: (text) => (out += text) },
+    now: () => new Date("2026-10-07T00:00:00Z"),
+    openRenderer: async () => {
+      opened += 1;
+      return { capture: async () => ({ still: Buffer.from("picture"), frames: [], problems: [] }), sheet: async () => Buffer.from("sheet"), close: async () => {} };
+    },
+  };
+  // An English thumbnail of its own, which --thumbnails-only draws on the same source.
+  const words = Object.fromEntries(Object.keys(thumbnailSource(box.doc)).map((name) => [name, `Why ${name}`]));
+  const i18n = path.join(box.dir, "i18n", "en.json");
+  mkdirSync(path.dirname(i18n), { recursive: true });
+  writeFileSync(i18n, JSON.stringify({ thumbnail: words, source_hashes: { thumbnail: thumbnailSourceHash(box.doc) } }));
+  // The copy as the worker records it: the episode keyframe it was taken from, and its hash.
+  const approved = readFileSync(path.join(box.workdir, THUMB_SOURCE));
+  const manifestFile = path.join(box.workdir, "keyframes", "manifest.json");
+  writeFileSync(manifestFile, JSON.stringify({ shots: { thumb: { file: THUMB_SOURCE, sha256: createHash("sha256").update(approved).digest("hex"), source: { episode: "wuxia-ep-1", shot: "s3" } } } }));
+  writeFileSync(path.join(box.workdir, THUMB_SOURCE), "a picture nobody approved");
+  const languages = ["render", "--slug", box.slug, "--thumbnails-only"];
+  for (const args of [["render", "--slug", box.slug], languages]) {
+    out = "";
+    assert.equal(await main(args, ctx), EXIT.usage, args.join(" "));
+    // Restoring the approved picture first: free, and nothing approved changes.
+    assert.match(out, /the thumbnail's background keyframes\/thumb-source\.png has changed since keyframes\/manifest\.json recorded it; copy the episode keyframe it was taken from \(wuxia-ep-1, shot s3\) back to keyframes\/thumb-source\.png, if that still holds the hash under shots\.thumb/, args.join(" "));
+    // Planning again only when that keyframe changed too, with its translations and its cost.
+    assert.match(out, /otherwise delete keyframes\/manifest\.json and the compilation's i18n\/\*\.json so the worker plans and translates its metadata again: a new planner call rewrites the title/, args.join(" "));
+    assert.doesNotMatch(out, /run keyframes again/, `${args.join(" ")}: advice a compilation cannot follow`);
+  }
+  assert.equal(opened, 0, "nothing is drawn");
+  // The free remedy works: the approved bytes back, the language thumbnail draws.
+  writeFileSync(path.join(box.workdir, THUMB_SOURCE), approved);
+  out = "";
+  assert.equal(await main(languages, ctx), EXIT.ok, out);
+  assert.ok(opened > 0);
 });

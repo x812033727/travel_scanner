@@ -54,6 +54,17 @@ VERIFIED_PUBLIC_SITE_LINK_LOCALES = {
     # a03605ec6f4329a561499132a821f273311d7606a0be6a9bf4ee6ba717c5f4e7.
     "/destinations/seoul": frozenset(LOCALES),
     "/destinations/jeju": frozenset(LOCALES),
+    # Five-locale content/lang/canonical and no-redirect proof on 2026-10-07:
+    # docs/article-localization/route-verification-hong-kong-20261007.json.
+    # Private capture SHA-256:
+    # 2213722c89e182d41a83f87603b96d184e174e15f67d395c70b7497ee3934c1f.
+    "/destinations/hong-kong": frozenset(LOCALES),
+}
+# Query strings must match the verified literal route exactly. The Hong Kong
+# catalogue's SSR filter and all displayed merchants confirmed the selected city;
+# its canonical intentionally points to the unfiltered catalogue URL.
+VERIFIED_PUBLIC_SITE_QUERY_LINK_LOCALES = {
+    "/foods?city=hong-kong": frozenset(LOCALES),
 }
 AI_HERO_AUTHOR = "Mokaair · AI 生成示意圖"
 AI_HERO_LICENSE_DESCRIPTION = "AI 生成，非實拍"
@@ -936,6 +947,9 @@ def localize_verified_site_links(document: dict[str, Any], locale: str) -> None:
 
         for pointer, link in links:
             url = link["url"]
+            raw_url_needs_review = url != url.strip() or any(
+                ord(character) < 32 or ord(character) == 127 for character in url
+            )
             parsed = urlsplit(url)
             if (parsed.hostname or "").rstrip(".") not in {
                 "mokaair.com",
@@ -943,10 +957,11 @@ def localize_verified_site_links(document: dict[str, Any], locale: str) -> None:
             }:
                 continue
             if (
-                parsed.scheme != "https"
+                raw_url_needs_review
+                or parsed.scheme != "https"
                 or parsed.netloc != "mokaair.com"
-                or parsed.query
-                or parsed.fragment
+                or "#" in url
+                or ("?" in url and not parsed.query)
             ):
                 raise ValueError(f"{pointer}: same-site URL needs route review: {url}")
             parts = parsed.path.strip("/").split("/")
@@ -957,12 +972,19 @@ def localize_verified_site_links(document: dict[str, Any], locale: str) -> None:
             route = "/" + "/".join(parts[1:])
             if parsed.path != f"/{parts[0]}{route}":
                 raise ValueError(f"{pointer}: same-site URL needs route review: {url}")
-            approved_locales = VERIFIED_PUBLIC_SITE_LINK_LOCALES.get(route)
+            if parsed.query:
+                verified_route = f"{route}?{parsed.query}"
+                approved_locales = VERIFIED_PUBLIC_SITE_QUERY_LINK_LOCALES.get(
+                    verified_route
+                )
+            else:
+                verified_route = route
+                approved_locales = VERIFIED_PUBLIC_SITE_LINK_LOCALES.get(route)
             if approved_locales is None or locale not in approved_locales:
                 raise ValueError(
                     f"{pointer}: public destination is not approved for {locale}: {url}"
                 )
-            link["url"] = f"https://mokaair.com/{locale}{route}"
+            link["url"] = f"https://mokaair.com/{locale}{verified_route}"
 
 
 def materialize(

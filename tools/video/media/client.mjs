@@ -54,6 +54,14 @@ export const EXHAUSTED_CODES = new Set(["video_media_job_exhausted"]);
 // video_media_invalid: locate was sent something that is not a picture (a clip); the tool extracts a frame first.
 // video_media_stock_not_found: the vendor has no photo under the id the tool asked for; pick another candidate.
 const TOOL_CODES = new Set(["video_media_reference_missing", "video_media_reference_too_large", "video_media_route_unknown", "video_media_bad_part", "video_media_hash_mismatch", "video_media_invalid", "video_media_stock_not_found"]);
+// A judge or locate call is asked again too, though each send may be a Gemini call booked on the
+// server's monthly judge budget: the web route's 502 `upstream_unavailable` may follow one the API
+// made (its 180 s deadline, or the API restarting mid-call), a website restart reaches here as
+// nginx's 502 or a dropped connection, and `video_media_judge_failed` may follow one Gemini
+// answered after an httpx timeout. call() asks again on every 5xx and network error whatever its
+// code, so membership here is redundant for those, and sending a paid call once would need its own
+// path in call(). Accepted, not held for the owner as a lost speech answer is; the worst case is
+// in docs/videos/DRAMA.md §先預留、後對帳.
 const RETRYABLE_CODES = new Set(["video_media_upstream_busy", "video_media_job_busy", "rate_limit_exceeded", "upstream_unavailable", "video_media_judge_failed", "video_media_locate_failed", "video_media_stock_failed"]);
 // Codes of a failed job that a new seed may fix; the stages retake on these, not on the owner's.
 export const RETAKE_CODES = new Set(["video_media_rejected", "video_media_upstream_failed", "video_media_upstream_expired", "video_media_unsupported_type", "video_media_upstream_invalid"]);
@@ -84,6 +92,8 @@ async function call({ site, token, path: route, init, fetchImpl, sleep, attempts
       });
     } catch (error) {
       last = new MediaError(`cannot reach ${site}: ${error.message}`, { code: "network" });
+      // Nothing waits after the last attempt: the caller learns the outcome at once.
+      if (attempt === attempts - 1) break;
       await sleep(retryDelayMs(null, attempt));
       continue;
     }
@@ -94,6 +104,7 @@ async function call({ site, token, path: route, init, fetchImpl, sleep, attempts
     if (TOOL_CODES.has(problem.code)) throw new MediaError(message, { status: response.status, code: problem.code, who: "tool" });
     last = new MediaError(message, { status: response.status, code: problem.code });
     if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;
+    if (attempt === attempts - 1) throw last;
     await sleep(retryDelayMs(response, attempt));
   }
   throw last;
