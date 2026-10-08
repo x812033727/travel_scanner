@@ -18,9 +18,13 @@
 //   <sha>.wav   a synthesis's confirmed answer as `send` returned it, saved before the entry says so.
 //   <sha>.<wait id>.claim  for a moment, while a run turns a waiting entry back into its own sent
 //               one: whoever creates it first sends, so two runs never both do.
+//   <sha>.answer.json  the complete confirmation, bound to exact sent bytes, committed before
+//               replacing sent. A closed producer's intact staged answer or legacy temp can be
+//               reused without changing canonical sent; exact evidence stays under recovery/.
 //
 // A run asking for the same body takes a confirmed answer from disk instead of buying it again,
-// and stops on a sent or held one without sending it (SPEECH_UNCERTAIN, the owner's, exit 3): it
+// and stops on a sent or held one without a proven saved answer (SPEECH_UNCERTAIN, the owner's,
+// exit 3): it
 // may have run and been charged, and only `forget` clears it. A waiting one it sends: nothing
 // that may have reached a provider is out, and the run that left it stopped mid-wait or, still
 // asleep, stops when it wakes (exit 4) without sending. A body that differs in any byte
@@ -629,7 +633,7 @@ export function main(args, { stdout = process.stdout, stderr = process.stderr } 
       stdout.write(`${entry.sha} ${entry.claimed ? "claimed" : entry.status} ${when} ${entry.about}${entry.why ? ` (${entry.why})` : ""}\n`);
     }
     const holds = entries.filter((entry) => !["confirmed", "waiting"].includes(entry.status)).length;
-    if (holds) stdout.write(`${holds} held: check the provider's usage, then forget each with --sha\n`);
+    if (holds) stdout.write(`${holds} held: rerun the original native command to validate retained complete answers first. If still unresolved, check the provider's usage before explicitly forgetting with --sha; do not forget just to repair local file I/O.\n`);
     const claimed = entries.filter((entry) => entry.claimed).length;
     if (claimed) stdout.write(`${claimed} claimed by a run that stopped while taking it back: nothing of it went out, and every run holds it until you forget it with --sha\n`);
     const waiting = entries.filter((entry) => entry.status === "waiting" && !entry.claimed).length;

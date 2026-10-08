@@ -1,7 +1,7 @@
 ---
 id: 2026-10-07-preserve-full-speech-answers-when-windows
 title: Preserve full speech answers when Windows blocks journal promotion
-status: in-progress
+status: review
 priority: P1
 area: tools
 owner: codex-windows-journal-recovery
