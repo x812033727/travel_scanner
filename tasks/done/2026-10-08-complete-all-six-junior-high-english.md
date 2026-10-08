@@ -1,13 +1,13 @@
 ---
 id: 2026-10-08-complete-all-six-junior-high-english
 title: Complete all six junior high English seasons
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: codex-junior-high-complete
 claimed_at: 2026-10-08T02:33:45Z
 created_at: 2026-10-08T02:33:36Z
-completed_at:
+completed_at: 2026-10-08T03:49:22Z
 branch: codex/junior-high-english-complete-20261008
 depends_on: []
 scope:
@@ -24,9 +24,9 @@ The user requested continuation through the complete junior-high English series 
 ## Definition of done
 
 - [x] All 72 lessons have complete five-language teaching scripts and four translated CC sources, with coherent progression and independently reviewed worksheets.
-- [ ] All 72 films, 360 standalone audio masters, four CC languages, and English embedded in the picture pass source-bound timing, integrity and full-decode checks.
-- [ ] Six season ZIPs and a combined ZIP contain verified offline players, catalogs and printable reading/writing practice.
-- [ ] Appropriate repository checks and independent delivery review pass; the source/tools/evidence are committed and a draft continuation PR is opened.
+- [x] All 72 films, 360 standalone audio masters, four CC languages, and English embedded in the picture pass source-bound timing, integrity and full-decode checks.
+- [x] Six season ZIPs and a combined ZIP contain verified offline players, catalogs and printable reading/writing practice.
+- [x] Appropriate repository checks and independent delivery review pass; the source/tools/evidence are committed and a draft continuation PR is opened.
 
 ## Steps
 
@@ -34,8 +34,8 @@ The user requested continuation through the complete junior-high English series 
 - [x] Define grade progression, 72 topics, media/language contract and independent worksheet structure.
 - [x] Author and cross-review six complete seasons; freeze each before audio production.
 - [x] Build and visually verify the junior-high renderer, source-bound pipeline and worksheet layouts.
-- [ ] Produce all five-language audio and all 72 films, preserving prior course sources and media.
-- [ ] Verify every film, all seven packages and player variants; complete documentation and draft PR.
+- [x] Produce all five-language audio and all 72 films, preserving prior course sources and media.
+- [x] Verify every film, all seven packages and player variants; complete documentation and draft PR.
 
 ## How to verify
 
@@ -54,3 +54,11 @@ The user requested continuation through the complete junior-high English series 
 - Voices remain Microsoft Edge read-aloud trial voices. No backend production credentials/capabilities are configured; this work produces the agreed local deliverables and does not publish videos.
 - Current cloud environment is ready, network policy enforced/unrestricted, no VPN, no configured production secrets. Keep inherited proxy and CA settings. Previously blocked real-browser local-file access is not retried through a bypass.
 - The new branch is based on elementary completion commit `800df37f0ad1492610bfeb9e72d32c990e3d3202` and will target `codex/elementary-english-complete-20261008` (draft PR #1380). Related open work consists only of our parent PRs #1376, #1377 and #1380; no competing junior-high task or PR was found.
+
+- Delivery completed 2026-10-08: 72/72 current-source films verified, total 14,687.891 seconds (4:04:48), with 360 M4A, 288 SRT and 288 VTT files. All films have SHA-bound full-decode receipts.
+- Independent delivery audit passed all seven ZIP CRCs, exact member lists (209 per season / 1229 combined), per-file hashes, actual media streams, catalogs, all reading/writing fields and PDF pages. Combined ZIP: 1,224,416,404 bytes. Practice: 72 readings, 216 questions, 72 writing tasks; 97 combined PDF pages / 17 per season.
+- All 720 scenes / 2,160 phase frames passed artwork checks. Actual encoded frames from ep24/36/48/60/72 were separately inspected; the coordinating agent also viewed ep01 and ep72. These are selected-frame checks, not a claim of complete audiovisual viewing.
+- All seven player variants passed mocked jsdom controls. Real-browser playback remains unverified under the previously observed administrator local-file policy; no alternate-route workaround was attempted.
+- Local checks: npm run test:tools exited 0 (2013 total, 2010 passed, 3 skipped); 23 junior-high Python pipeline regressions rerun on final authoring and passed. npm run check:tasks passed before the delivery commit and is repeated after this final task closure.
+- Final authoring SHA: f499f5313c32246f397f0b525574047c525c978d2ae21b5d614a962822c320eb. Portable delivery, authoring, artwork and selected-frame evidence lives in the new documentation directory. Existing course source/tool paths have no diff from the parent commit.
+- Draft continuation PR: https://github.com/x812033727/travel_scanner/pull/1381, based on codex/elementary-english-complete-20261008 (#1380). The task closure is the final PR commit per the task-board skill. CI status is tracked on the PR; no merge, backend voice integration, video upload or publication was performed.
