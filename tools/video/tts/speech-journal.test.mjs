@@ -758,7 +758,9 @@ test("a complete answer after a settled waiting resend survives local promotion 
             writeFileSync(`${file}.${process.pid}.tmp`, data);
             throw Object.assign(new Error("injected post-resume confirmed EPERM"), { code: "EPERM" });
           }
-          atomicWrite(file, data);
+          // Keep the local fixture's waiting/resume writes deterministic; only the complete
+          // confirmed receipt promotion is the injected failure this case exercises.
+          writeFileSync(file, data);
         },
       });
       await assert.rejects(journal.wrap((sent) => synthesize({ ...options(server), body: sent }))(body), (error) => error.code === "EPERM");

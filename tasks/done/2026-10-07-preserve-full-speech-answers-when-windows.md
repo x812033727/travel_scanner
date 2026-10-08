@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-preserve-full-speech-answers-when-windows
 title: Preserve full speech answers when Windows blocks journal promotion
-status: review
+status: done
 priority: P1
 area: tools
 owner: codex-windows-journal-recovery
 claimed_at: 2026-10-08T01:09:19Z
 created_at: 2026-10-07T04:46:57Z
-completed_at:
+completed_at: 2026-10-08T02:31:57Z
 branch: codex/windows-atomic-write-retry-20261008
 depends_on: []
 scope:
@@ -67,9 +67,10 @@ operation. Their full sent/confirmed receipts, WAVs and recovery receipts are in
 files as evidence; an offline transfer accepts them only when complete recovery
 proof, exact bytes, dead producer and native release all match.
 
-This is an open native-tool defect. The one-time recovery and runtime shim do not
-constitute a repository or production fix. Do not blindly clear journal entries,
-force an entire language, or re-buy an answer to repair local file promotion.
+The initial one-time recovery and runtime shim did not constitute a repository
+or production fix; the scoped native implementation below addresses the defect.
+Do not blindly clear journal entries, force an entire language, or re-buy an
+answer to repair local file promotion. This draft does not deploy that change.
 
 2026-10-08 native repair (`codex-windows-journal-recovery`):
 
@@ -108,8 +109,28 @@ force an entire language, or re-buy an answer to repair local file promotion.
   1,634 files, exit 0; syntax and whitespace checks passed. Windows complete journal
   runs initially passed 55/56 twice, with different existing normal consumers
   hitting actual 630 ms canonical rename exhaustion; this is not claimed green.
-  Final focused journal suite passed 62/62, exit 0, including the actual closed
-  child/default-PID restart test. Full tools and CI results are recorded below
-  when complete.
+  Pre-rebase focused journal suite passed 62/62, exit 0, including the actual
+  closed child/default-PID restart test; final integrated results follow below.
+- Rebasing onto main `d9fd28d49` retained its waiting/resume/takeover protocol.
+  Staging binds the final sent bytes after a settled retry, and successful
+  confirmation cleanup requires the same canonical bytes and staged sent/answer
+  hashes. Independent integration review passed; all upstream and recovery test
+  cases remain, with new original-run/takeover and cleanup-boundary regressions.
+- The complete Windows tools run was explicitly interrupted for host paging
+  pressure. Its partial output and closed receipt were preserved; runner exit
+  4294967295 is not a passing suite. Only the verified owned unpaid test tree was
+  stopped, leaving production/media workers untouched. The tail also records the
+  known absolute-Windows-import failure already tracked by
+  `2026-10-07-windows-video-test-imports`; no duplicate ticket or unrelated patch.
+- Integrated Windows journal run closed 77/80, exit 1. One existing normal
+  consumer exhausted the real Windows rename waits; the new waiting fixture
+  encountered that same failure before its intended injected confirmation
+  boundary. Its nonconfirmation writes now use only local fixture IO injection.
+  The single exact-title rerun passed 3/3, exit 0, including original-run resume
+  and takeover: exact final sent hash/generation, complete WAV preservation and
+  zero recovery sender calls. No repeat broad local run. Linux CI is pending on
+  the final pushed head, and no claim of complete-suite green is made.
+- The normal own-ticket done command closed exit 0; the final task format check
+  validated 1,653 files, exit 0. Final whitespace and source syntax checks passed.
 - Private ownership/check/negative-regression evidence is retained under
   `<home>/mokaair-work/windows-journal-recovery-20261008`.
