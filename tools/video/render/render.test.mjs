@@ -136,7 +136,7 @@ test("a stock photo is read from the work directory: listed in assets[], fetched
   assert.equal(assetFile("apps/web/public/a.png", { root, workdir }), path.join(root, "apps/web/public/a.png"));
   assert.deepEqual(renderProblems(doc, root, { workdir }), [
     { path: where, message: `${stock} is not in assets[]: stock fetch writes the entry there, and without it the description carries no credit` },
-    { path: where, message: `${stock} is not in the work directory; fetch it with stock fetch (tools/video/media/cli.mjs)` },
+    { path: where, message: `${stock} is not in the work directory; fetch it with stock fetch (node tools/video/cli.mjs)` },
   ]);
   doc.assets = [{ path: stock, source: "Photo by Lukas Rodriguez on Pexels", license: "Pexels License", author: "Lukas Rodriguez", url: "https://www.pexels.com/photo/seoul-at-night-3573351/" }];
   assert.deepEqual(renderProblems(doc), [], "without root or work directory only the data is checked, as before");

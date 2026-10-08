@@ -68,7 +68,7 @@ export function renderProblems(doc, root = null, { workdir = null } = {}) {
     for (const asset of sceneAssets(scene)) {
       if (isStockPath(asset)) {
         if (!listed(asset)) problems.push({ path: where, message: `${asset} is not in assets[]: stock fetch writes the entry there, and without it the description carries no credit` });
-        if (workdir && !existsSync(path.join(workdir, asset))) problems.push({ path: where, message: `${asset} is not in the work directory; fetch it with stock fetch (tools/video/media/cli.mjs)` });
+        if (workdir && !existsSync(path.join(workdir, asset))) problems.push({ path: where, message: `${asset} is not in the work directory; fetch it with stock fetch (node tools/video/cli.mjs)` });
         continue;
       }
       if (!root) continue;

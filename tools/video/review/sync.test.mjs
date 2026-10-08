@@ -22,7 +22,9 @@ import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
 import { COMPILATION_ITEM_IDS, ITEM_IDS } from "../qa/checks.mjs";
 import { encodeWav } from "../tts/wav.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
-import { acceptedPicturesOf, audioCheck, audioSummary, checklistFrom, clearedSummary, downloadNote, fitPayload, fitSummary, guideSlugs, judgeBody, KEPT_REMARK_LENGTH, KEPT_REMARK_LINES, keptRemarks, MAX_ANIME_SCRIPT_BYTES, MAX_REVIEW_FILES, MAX_REVIEW_PAYLOAD_BYTES, MAX_REVIEW_SUMMARY_LENGTH, namedPictures, outlineOptions, outlineReview, PART_BYTES, payloadBytes, previewArgs, REVIEW_GATES, REVIEW_PAYLOAD_BUDGET, ReviewError, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems } from "./sync.mjs";
+import { confirmedVideo, DECIDED_AT, languageSite, tool, toolContext } from "./language-contract.mjs";
+import { AutomationError, RUN_UNCERTAIN } from "../automation/client.mjs";
+import { acceptedPicturesOf, audioCheck, audioSummary, checklistFrom, clearedSummary, downloadNote, fitPayload, fitSummary, guideSlugs, judgeBody, judgeOutline, KEPT_REMARK_LENGTH, KEPT_REMARK_LINES, keptRemarks, MAX_ANIME_SCRIPT_BYTES, MAX_REVIEW_FILES, MAX_REVIEW_PAYLOAD_BYTES, MAX_REVIEW_SUMMARY_LENGTH, namedPictures, outlineOptions, outlineReview, PART_BYTES, payloadBytes, previewArgs, REVIEW_GATES, REVIEW_PAYLOAD_BUDGET, ReviewError, siteChoice, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems } from "./sync.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
 process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
@@ -235,6 +237,55 @@ test("review-push --gate outline asks Jev first and sends the pick with the brie
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], owner.ctx), EXIT.owner);
   assert.match(owner.out.stderr, /token revoked/);
   assert.equal(revoked.state.reviews.length, 0);
+});
+
+test("review-push --gate outline whose Jev answer is lost sends the outline to the owner without a pick and does not ask Jev again for that brief; a new brief is asked", async () => {
+  const box = sandbox();
+  writeFileSync(path.join(box.dir, "brief.md"), OPTIONS_BRIEF);
+  let lose = true;
+  const server = site({ judge: () => (lose ? Response.json({ code: "video_judge_answer_lost", detail: "請求已送到 API，Jev 可能已經判斷" }, { status: 504 }) : PICK) });
+  const push = () => context(box, server.fetchImpl);
+  const record = path.join(box.workdir, "review", "outline-lost.json");
+
+  const first = push();
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], first.ctx), EXIT.ok, first.out.stderr);
+  assert.equal(server.state.judge.length, 1, "sent once: the client does not send it again");
+  assert.match(first.out.stdout, /Jev's answer on the outline was lost after it was sent \(HTTP 504: 請求已送到 API，Jev 可能已經判斷\); Jev may have judged it and used one of today's calls, so it is not asked again: the outline goes up for the owner without a pick/);
+  const [outline] = server.state.reviews;
+  assert.equal("pick" in outline.payload, false);
+  assert.equal(outline.summary, "企劃書與 2 個大綱選項；Jev 的回答在途中遺失，請站主選");
+  assert.deepEqual(JSON.parse(readFileSync(record, "utf8")), { brief_sha256: sha(Buffer.from(OPTIONS_BRIEF)), at: "2026-09-25T06:00:00.000Z", why: "HTTP 504: 請求已送到 API，Jev 可能已經判斷" });
+
+  // Run again, Jev answering now: the same brief is not asked again.
+  lose = false;
+  const again = push();
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(server.state.judge.length, 1);
+  assert.match(again.out.stdout, /Jev's answer on this outline was lost at 2026-09-25T06:00:00\.000Z \(HTTP 504: .*\) and is not asked again: the outline goes up for the owner without a pick \(delete review\/outline-lost\.json to ask Jev once more\)/);
+  assert.equal("pick" in server.state.reviews[0].payload, false);
+
+  // A rewritten brief is a new question: Jev is asked, and the record of the old one goes.
+  appendFileSync(path.join(box.dir, "brief.md"), "\n改過一行。\n");
+  const changed = push();
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], changed.ctx), EXIT.ok, changed.out.stderr);
+  assert.equal(server.state.judge.length, 2);
+  assert.deepEqual(server.state.reviews[0].payload.pick, PICK);
+  assert.equal(existsSync(record), false);
+});
+
+test("judgeOutline tells an answer lost on the way back from one that never came, a judge that is off and a refusal only the owner can fix", async () => {
+  const ask = (error) => judgeOutline({ judgeOutline: async () => { throw error; } }, "s", "b", [{ key: "A" }, { key: "B" }]);
+  const lost = Object.assign(new AutomationError("automation/judge/outline was sent and no answer came back (HTTP 504: x); Jev may have run, so it is not sent again", { status: 504, code: RUN_UNCERTAIN }), { why: "HTTP 504: x" });
+  assert.deepEqual(await ask(lost), { status: "lost", reason: lost.message, why: "HTTP 504: x" });
+  // One the client tags as the owner's is still lost: nothing is thrown out of review-push with nothing posted.
+  assert.equal((await ask(Object.assign(new AutomationError("lost", { status: 0, code: RUN_UNCERTAIN, who: "owner" }), { why: "socket" }))).status, "lost");
+  for (const [status, code] of [[502, "video_judge_upstream_failed"], [503, "rate_limit_unavailable"], [429, "jev_budget_exhausted"], [0, "network"], [422, "video_judge_invalid"]]) {
+    assert.equal((await ask(new AutomationError("x", { status, code }))).status, "later", code);
+  }
+  assert.equal((await ask(new AutomationError("off", { status: 409, code: "video_judge_not_enabled" }))).status, "owner");
+  assert.equal((await ask(new AutomationError("none", { status: 404 }))).status, "owner");
+  await assert.rejects(ask(new AutomationError("revoked", { status: 401, code: "video_tool_token_invalid", who: "owner" })), /revoked/);
+  assert.equal(outlineReview("b", [{ key: "A" }, { key: "B" }], { status: "lost" }).summary, "企劃書與 2 個大綱選項；Jev 的回答在途中遺失，請站主選");
 });
 
 test("the article a video retells is its source_guide, or else the first site article it cites", () => {
@@ -752,8 +803,8 @@ test("review-push --gate final runs the quality check and sends its report; a ch
   assert.deepEqual(review.files.map((file) => file.role), ["preview"]);
   assert.ok(existsSync(path.join(box.workdir, "review", "qa.json")));
 
-  // Jev unreachable: the quality check ends with exit 4, and so does the push, without a review.
-  const down = site({ policy: () => { throw new TypeError("fetch failed"); } });
+  // Jev unreachable (the request never left): the quality check ends with exit 4, and so does the push, without a review.
+  const down = site({ policy: () => { throw Object.assign(new TypeError("fetch failed"), { cause: { code: "ECONNREFUSED" } }); } });
   const later = context(box, down.fetchImpl, { encode });
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], later.ctx), EXIT.external);
   assert.match(later.out.stderr, /the quality check could not finish/);
@@ -767,6 +818,25 @@ test("review-push --gate final runs the quality check and sends its report; a ch
   assert.match(owner.out.stdout + owner.out.stderr, /尚未設定 Jev API 金鑰/, "the failing item names the setting");
   assert.match(owner.out.stderr, /the quality check needs the owner \(the video tool token or a site setting\); see the failing item above and review\/qa\.json/);
   assert.equal(unset.state.reviews.length, 0);
+
+  // Asked, and the answer lost on the way back: Jev may have judged it and used a call. The push
+  // stops for the owner with the client's code in its last line (the worker blocks the video on
+  // it), sends nothing, and the push run again does not ask Jev again for this narration.
+  let asked = 0;
+  const lost = site({
+    policy: () => {
+      asked += 1;
+      return asked === 1 ? Response.json({ code: "video_judge_answer_lost", detail: "請求已送到 API，Jev 可能已經判斷" }, { status: 504 }) : { passed: true, note: "Jev：符合立場" };
+    },
+  });
+  for (const round of [1, 2]) {
+    const held = context(box, lost.fetchImpl, { encode });
+    assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], held.ctx), EXIT.owner, `round ${round}`);
+    assert.match(held.out.stderr.trim().split("\n").at(-1), /^the final waits for the owner: Jev's policy verdict on this narration was lost after it was sent \(HTTP 504: 請求已送到 API，Jev 可能已經判斷\), and it is not asked again until the owner retries \(video_ai_run_uncertain\)$/);
+    assert.doesNotMatch(held.out.stderr, /video tool token/);
+  }
+  assert.equal(asked, 1, "Jev is asked once");
+  assert.equal(lost.state.reviews.length, 0, "nothing goes up for review");
 });
 
 test("the final review carries the narration's and zh-TW's titles whatever the choice ticks; a zh-TW video's carries its own alone, as before", async () => {
@@ -944,31 +1014,213 @@ test("language reviews fit the summary limit without losing any locale, files or
   const longReasons = Object.fromEntries(["en", "ja", "ko", "zh-CN"].map((locale) => [locale, `${locale}: ${Array.from({ length: 120 }, (_, index) => `line-${index}`).join(", ")} 無法塞入視窗𠮷`]));
   for (const [label, reasons, detailed] of [["exactly 500 Unicode characters", { en: boundaryReason }, true], ["several long locale reasons", longReasons, false]]) {
     await t.test(label, async () => {
-      const box = sandbox();
       const chosen = Object.fromEntries(Object.keys(reasons).map((locale) => [locale, { metadata: true, captions: true, dub: true }]));
-      writeLanguages(box.workdir, { locales: chosen, decided_at: "2026-09-29T01:00:00Z" });
-      mkdirSync(path.join(box.workdir, "upload", "captions"), { recursive: true });
-      for (const [locale, reason] of Object.entries(reasons)) {
-        const dubDir = path.join(box.workdir, "dubs", locale);
-        mkdirSync(dubDir, { recursive: true });
-        writeFileSync(path.join(dubDir, "skipped.json"), JSON.stringify({ reason }));
-        writeFileSync(path.join(box.workdir, "upload", `description.${locale}.txt`), `${locale} title and description`);
-        writeFileSync(path.join(box.workdir, "upload", "captions", `${locale}.srt`), `1\n00:00:00,000 --> 00:00:01,000\n${locale}\n`);
-      }
-      const server = site();
-      const push = context(box, server.fetchImpl);
-      assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "languages"], push.ctx), EXIT.ok, push.out.stderr);
-      assert.equal(server.state.reviews.length, 1);
-      const [review] = server.state.reviews;
-      assert.equal(review.gate, "languages");
+      const { box, site } = await confirmedVideo({ chosen, skippedDubs: reasons });
+      t.after(() => rmSync(box.base, { recursive: true, force: true }));
+      await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
+      const batches = site.state.reviews.filter((row) => row.gate === "languages");
+      assert.equal(batches.length, 1);
+      const [review] = batches;
       assert.ok([...review.summary].length <= 500);
       assert.equal(review.summary, `語言：${Object.entries(reasons).map(([locale, reason]) => `${locale} 標題說明、CC、配音跳過${detailed ? `（${reason}）` : ""}`).join("；")}。沒有要你上傳的配音`);
       if (detailed) assert.equal([...review.summary].length, 500, "the API counts characters, not UTF-16 code units");
       assert.deepEqual(review.payload.locales, Object.fromEntries(Object.entries(reasons).map(([locale, reason]) => [locale, { metadata: "ready", captions: "ready", dub: { status: "skipped", reason } }])));
-      assert.deepEqual(review.files.map((file) => file.role), Object.keys(reasons).flatMap((locale) => [`description_${locale}`, `captions_${locale}`]));
+      assert.deepEqual(review.files.map((file) => file.role), [...Object.keys(reasons).flatMap((locale) => [`description_${locale}`, `captions_${locale}`]), "metadata", "languages_manifest"]);
       const manifest = readFileSync(path.join(box.workdir, "review", "languages.json"));
       assert.equal(review.content_sha256, sha(manifest));
       assert.deepEqual(JSON.parse(manifest).locales, review.payload.locales, "full diagnostic reasons remain bound to the reviewed manifest");
+    });
+  }
+});
+
+// docs/videos/APPROVED-LANGUAGE-PACKAGE.md: what YouTube sync takes a language batch with.
+const CHOSEN = { en: { metadata: true, captions: true }, ja: { captions: true }, "zh-CN": { metadata: true, dub: true } };
+const DUB_GIVEN_UP = { "zh-CN": "配音字數超出時間軸，改用字幕" };
+const identity = (row) => ({ review_id: row.id, content_sha256: row.content_sha256 });
+const sameFile = (a, b) => ["role", "sha256", "size", "content_type"].every((key) => a?.[key] === b?.[key]);
+
+async function pushLanguages(box, site) {
+  const run = toolContext(box, site.fetchImpl);
+  return { code: await main(["review-push", "--slug", box.slug, "--gate", "languages"], run.ctx), ...run.out };
+}
+
+test("a language batch names the upload confirmation, final cut and choice it belongs to, and review-pull records it by that manifest", async (t) => {
+  const { box, site } = await confirmedVideo({ chosen: CHOSEN, skippedDubs: DUB_GIVEN_UP });
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
+  const batch = site.newest("languages");
+  assert.deepEqual(batch.files.map((file) => file.role), ["description_en", "captions_en", "captions_ja", "description_zh-CN", "captions_zh-CN", "metadata", "languages_manifest"]);
+  const manifestBytes = readFileSync(path.join(box.workdir, "review", "languages.json"));
+  assert.equal(batch.content_sha256, sha(manifestBytes));
+  assert.deepEqual(batch.files.at(-1), { role: "languages_manifest", sha256: sha(manifestBytes), size: manifestBytes.length, content_type: "application/json" });
+  assert.ok(site.state.files.get(batch.content_sha256).bytes.equals(manifestBytes), "the site holds the manifest the approval binds to");
+  const metadataBytes = readFileSync(path.join(box.workdir, "upload", "metadata.json"));
+  assert.deepEqual(batch.files.at(-2), { role: "metadata", sha256: sha(metadataBytes), size: metadataBytes.length, content_type: "application/json" });
+  const manifest = JSON.parse(manifestBytes);
+  const timeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
+  assert.deepEqual(Object.keys(manifest), ["schema_version", "slug", "source", "choice", "locales", "files"]);
+  assert.deepEqual([manifest.schema_version, manifest.slug], [1, box.slug]);
+  assert.deepEqual(manifest.source, { publish: identity(site.newest("publish")), final: identity(site.newest("final")), script: null, branding_hash: null, speech_hash: timeline.speech_hash, compilation_hash: null });
+  assert.deepEqual(manifest.choice, { locales: siteChoice(CHOSEN), decided_at: DECIDED_AT });
+  assert.deepEqual(manifest.choice.locales, { en: { metadata: true, captions: true, dub: false }, ja: { metadata: false, captions: true, dub: false }, "zh-CN": { metadata: true, captions: true, dub: true } });
+  assert.deepEqual(manifest.locales, batch.payload.locales);
+  assert.deepEqual(manifest.files, batch.files.slice(0, -1), "every file but the manifest itself");
+  const metadata = JSON.parse(metadataBytes);
+  assert.deepEqual(metadata.language_choice, manifest.choice.locales);
+  assert.equal(site.state.files.get(batch.files.find((file) => file.role === "description_en").sha256).bytes.toString(), `${metadata.localizations.en.title}\n\n${metadata.localizations.en.description}\n`);
+  assert.equal(batch.status, "approved", "no dub track: the site approves it on arrival");
+  await tool(box, site, ["review-pull", "--slug", box.slug]);
+  assert.ok(readApprovals(box.workdir).approvals.some((entry) => entry.gate === "languages" && entry.sha256 === batch.content_sha256), "the approval recorded is the manifest's");
+});
+
+test("an English-narrated video's own language is its original: its dub is a skip with the reason, its captions the confirmation's own", async (t) => {
+  const chosen = { en: { metadata: true, captions: true, dub: true }, ja: { metadata: true, captions: true } };
+  const { box, site } = await confirmedVideo({ name: "en", chosen, translated: ["zh-TW", "ja", "ko", "zh-CN"] });
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
+  const batch = site.newest("languages");
+  assert.deepEqual(batch.payload.locales.en, { metadata: "ready", captions: "ready", dub: { status: "skipped", reason: "這是影片原本旁白的語言，不另做重複配音" } });
+  assert.ok(!batch.files.some((file) => file.role.startsWith("dub_")), "no second track of the narration");
+  const own = (row) => row.files.find((file) => file.role === "captions_en");
+  assert.ok(sameFile(own(batch), own(site.newest("publish"))), "the narration's captions are the approved package's");
+  assert.equal(batch.status, "approved");
+
+  // The same captions or title changed after the confirmation would be refused by sync, which
+  // keeps the confirmation's own: nothing goes up.
+  const captions = path.join(box.workdir, "upload", "captions", "en.srt");
+  const approvedCaptions = readFileSync(captions, "utf8");
+  writeFileSync(captions, `${approvedCaptions}\n`);
+  const posts = site.state.posts;
+  const refused = await pushLanguages(box, site);
+  assert.equal(refused.code, EXIT.owner);
+  assert.match(refused.stderr, /en captions are no longer the ones in the approved upload confirmation/);
+  writeFileSync(captions, approvedCaptions);
+  const docFile = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(docFile, "utf8"));
+  writeFileSync(docFile, JSON.stringify({ ...doc, youtube: { ...doc.youtube, description: `${doc.youtube.description} Rewritten after the confirmation.` } }));
+  await tool(box, site, ["package", "--slug", box.slug]);
+  const retitled = await pushLanguages(box, site);
+  assert.equal(retitled.code, EXIT.owner, retitled.stderr);
+  assert.match(retitled.stderr, /en title and description are no longer the ones in the approved upload confirmation/);
+  assert.equal(site.state.posts, posts);
+});
+
+test("a language batch that cannot be bound to its approved source is not sent, and one the site's reviews refuse sends no file", async (t) => {
+  const another = { ...CHOSEN, ko: { captions: true } };
+  const cases = [
+    ["no confirmation yet", (_box, site) => { site.state.reviews = site.state.reviews.filter((row) => row.gate !== "publish"); }, EXIT.owner, /has none yet; send review-push --gate publish first/, true],
+    ["confirmation sent back", (_box, site) => site.decide(site.newest("publish"), "rejected"), EXIT.owner, /newest upload confirmation was rejected/, true],
+    ["a new cut waiting", (_box, site) => site.decide(site.seed("final", "e".repeat(64)), "pending"), EXIT.owner, /newest final cut is not approved/, true],
+    ["a new cut approved", (_box, site) => site.seed("final", "e".repeat(64)), EXIT.usage, /another final cut than the site's approved one; run package again/],
+    ["choice changed on the site", (_box, site) => site.choose(another), EXIT.usage, /choice on the site is not the one in languages\.json/],
+    ["package of an older choice", (box, site) => { writeLanguages(box.workdir, { locales: another, decided_at: DECIDED_AT }); site.choose(another); }, EXIT.usage, /written for another language choice; run package again/],
+    ["description edited", (box) => writeFileSync(path.join(box.workdir, "upload", "description.en.txt"), "an edited title\n\nand description\n"), EXIT.usage, /description\.en\.txt is not the en title and description/],
+    ["opening and ending changed", (_box, site) => { site.newest("final").payload = { branding_hash: "b".repeat(16) }; }, EXIT.usage, /another opening and ending than the approved final/],
+    ["package gone", (box) => rmSync(path.join(box.workdir, "upload", "metadata.json")), EXIT.usage, /metadata\.json is missing; run package first/],
+  ];
+  for (const [label, change, exit, message, early = false] of cases) {
+    await t.test(label, async () => {
+      const { box, site } = await confirmedVideo({ chosen: CHOSEN, skippedDubs: DUB_GIVEN_UP });
+      t.after(() => rmSync(box.base, { recursive: true, force: true }));
+      change(box, site);
+      const stored = site.state.files.size;
+      const result = await pushLanguages(box, site);
+      assert.equal(result.code, exit, result.stderr);
+      assert.match(result.stderr, message);
+      assert.equal(site.state.posts, 1, "nothing but the confirmation was ever posted");
+      if (early) assert.equal(site.state.files.size, stored, "refused before any of the batch's files went up");
+    });
+  }
+});
+
+test("a language batch made while its confirmation waits names that confirmation, which carries it once approved as it is", async (t) => {
+  const { box, site } = await confirmedVideo({ chosen: CHOSEN, skippedDubs: DUB_GIVEN_UP });
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  const publish = site.decide(site.newest("publish"), "pending");
+  await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
+  const manifest = JSON.parse(readFileSync(path.join(box.workdir, "review", "languages.json"), "utf8"));
+  assert.deepEqual(manifest.source.publish, identity(publish));
+});
+
+test("going back to an earlier language choice sends a batch of its own, which the site cannot answer with the old one", async (t) => {
+  const first = { en: { metadata: true, captions: true } };
+  const { box, site } = await confirmedVideo({ chosen: first });
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  const manifestOf = () => JSON.parse(readFileSync(path.join(box.workdir, "review", "languages.json"), "utf8"));
+  const choose = async (locales) => {
+    writeLanguages(box.workdir, { locales, decided_at: DECIDED_AT });
+    site.choose(locales);
+    await tool(box, site, ["package", "--slug", box.slug]);
+    await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
+    return site.newest("languages");
+  };
+  await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
+  const a = site.newest("languages");
+  const firstManifest = manifestOf();
+  const b = await choose({ ...first, ja: { captions: true } });
+  assert.notEqual(b.id, a.id);
+  const again = await choose(first);
+  assert.equal(site.state.reviews.filter((row) => row.gate === "languages").length, 3);
+  assert.notEqual(again.id, a.id, "a new review, newer than the batch it replaces");
+  assert.equal(again.status, "approved");
+  const { follows, ...rest } = manifestOf();
+  assert.deepEqual(follows, identity(b));
+  assert.deepEqual(rest, firstManifest, "the same batch as the first, but for the batch it follows");
+  // Sent again unchanged, it is the newest batch already: no new review.
+  await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
+  assert.equal(site.state.reviews.filter((row) => row.gate === "languages").length, 3);
+  assert.equal(site.newest("languages").id, again.id);
+  assert.deepEqual(manifestOf().follows, identity(b));
+});
+
+test("a dub made as mp3 goes up as its own track, under its role, and waits for the owner", async (t) => {
+  const { box, site } = await confirmedVideo({ chosen: { ja: { captions: true, dub: true } }, readyDubs: { ja: "mp3" } });
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
+  const batch = site.newest("languages");
+  const track = readFileSync(path.join(box.workdir, "dubs", "ja.mp3"));
+  assert.deepEqual(batch.files.find((file) => file.role === "dub_ja"), { role: "dub_ja", sha256: sha(track), size: track.length, content_type: "audio/mpeg" });
+  assert.deepEqual([batch.payload.locales.ja.dub, batch.payload.locales.ja.file_role, batch.payload.locales.ja.sha256], ["ready", "dub_ja", sha(track)]);
+  assert.equal(batch.status, "pending", "the owner uploads the track in Studio and says so");
+  assert.deepEqual(JSON.parse(readFileSync(path.join(box.workdir, "review", "languages.json"), "utf8")).locales, batch.payload.locales);
+});
+
+test("a renewed final's language batch keeps renewal.mjs's binding", async (t) => {
+  const { box, site } = await confirmedVideo({ chosen: CHOSEN, skippedDubs: DUB_GIVEN_UP });
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  site.decide(site.seed("final", site.newest("final").content_sha256, { _final_renewal: { previous_review_id: site.newest("final").id } }), "pending");
+  const result = await pushLanguages(box, site);
+  assert.equal(result.code, EXIT.usage);
+  assert.match(result.stderr, /the renewed final still needs the owner's review/);
+  assert.equal(site.state.posts, 1);
+});
+
+test("a drama's language batch names the screenplay review the site holds, waits while it is not approved, and names none when the worker approved the screenplay itself", async (t) => {
+  for (const [label, script, expected] of [["approved", "approved", EXIT.ok], ["waiting", "pending", EXIT.owner], ["sent back", "rejected", EXIT.owner], ["approved by the worker", null, EXIT.ok]]) {
+    await t.test(label, async () => {
+      const box = sandbox("fixture-drama", "drama");
+      t.after(() => rmSync(box.base, { recursive: true, force: true }));
+      const chosen = { ja: { captions: true } };
+      writeLanguages(box.workdir, { locales: chosen, decided_at: DECIDED_AT });
+      mkdirSync(path.join(box.workdir, "upload", "captions"), { recursive: true });
+      writeFileSync(path.join(box.workdir, "upload", "captions", "ja.srt"), "1\n00:00:00,000 --> 00:00:01,000\nja\n");
+      const final = sha("the drama's cut");
+      writeFileSync(path.join(box.workdir, "upload", "metadata.json"), JSON.stringify({ title: "劇", description: "說明", default_language: "zh-TW", localizations: {}, final_sha256: final, language_choice: siteChoice(chosen) }));
+      const site = languageSite({ slug: box.slug, format: "drama" });
+      site.choose(chosen);
+      const screenplay = script && site.decide(site.seed("script", "c".repeat(64)), script);
+      site.seed("final", final);
+      site.seed("publish", sha(readFileSync(path.join(box.workdir, "upload", "metadata.json"))));
+      const result = await pushLanguages(box, site);
+      assert.equal(result.code, expected, result.stderr);
+      if (expected !== EXIT.ok) {
+        assert.match(result.stderr, /names its screenplay review, and the site's newest one is not approved/);
+        assert.equal(site.state.posts, 0);
+        assert.equal(site.state.files.size, 0, "refused before any file went up");
+        return;
+      }
+      const manifest = JSON.parse(readFileSync(path.join(box.workdir, "review", "languages.json"), "utf8"));
+      assert.deepEqual(manifest.source.script, screenplay ? identity(screenplay) : null);
     });
   }
 });
@@ -1013,6 +1265,8 @@ test("invalid file uploads are isolated, while invalid project reports and reads
       mkdirSync(path.join(box.workdir, "upload"), { recursive: true });
       writeFileSync(path.join(box.workdir, "upload", "description.en.txt"), "title and description");
       const server = site();
+      // A confirmation and a cut the batch can name, so the site's reviews do not refuse it first.
+      server.state.reviews.push({ id: "r-publish", gate: "publish", status: "approved", content_sha256: "a".repeat(64), files: [] }, { id: "r-final", gate: "final", status: "approved", content_sha256: "f".repeat(64), payload: {} });
       let rejected = 0;
       const detail = `${phase} payload rejected`;
       const fetchImpl = async (url, init) => {
@@ -1027,7 +1281,7 @@ test("invalid file uploads are isolated, while invalid project reports and reads
       assert.equal(await main(args, run.ctx), expected);
       assert.equal(rejected, 1, "a malformed request is not retried inside the client");
       assert.ok(run.out.stderr.includes(detail), run.out.stderr);
-      assert.equal(server.state.reviews.length, 0);
+      assert.equal(server.state.reviews.filter((review) => review.gate === "languages").length, 0);
     });
   }
 });

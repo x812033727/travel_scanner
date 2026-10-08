@@ -24,7 +24,7 @@ import { craftChecks } from "../core/craft.mjs";
 import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
 import { lintCompilation } from "../core/compilation.mjs";
 import { compilationSlug } from "./compilation.mjs";
-import { castFrom, chapterRange, documentPayload, documentProblem, documentVariant, episodeBrief, episodeSlug, isExplainerOneOff, isOneOff, planDocument, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
+import { castFrom, chapterRange, documentInputs, documentKey, documentPayload, documentProblem, documentVariant, episodeBrief, episodeSlug, isExplainerOneOff, isOneOff, LOST_DOCS, planDocument, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 import { checkBrief } from "../core/lint.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
@@ -299,6 +299,148 @@ test("a series step finds nothing on a site without the route, and nothing while
   assert.equal(await seriesStep(off), null);
   const gone = new Automation(ctx, automationClient({ ...ctx, fetch: async () => Response.json({ code: "not_found", detail: "no" }, { status: 404 }) }), site.settings);
   assert.equal(await seriesStep(gone), null);
+});
+
+/** A stage run sent and its answer lost, as the web route answers it (client.mjs RUN_UNCERTAIN): it may have run. */
+const lostAnswer = () => Response.json({ code: "video_ai_run_uncertain", detail: "no answer within the deadline" }, { status: 504 });
+const LOST_WHY = "HTTP 504: no answer within the deadline";
+
+/**
+ * The fake site naming `named.job` on every series/next, as the site does while a document waits
+ * (the job moves on only when the owner or a filed version moves it). `fail` answers a stage run
+ * instead of the fake site when it returns something (or throws, as a connection does); `runs` is
+ * every stage run sent. `round()` is a new run of `auto`'s first lane, and no draft is due.
+ */
+function documentJobs(named, { answers = {}, fail = () => null, decide = null } = {}) {
+  const box = sandbox();
+  const site = fakeSite({ answers, decide });
+  const runs = [];
+  const fetchImpl = async (url, init = {}) => {
+    const { pathname } = new URL(url);
+    if (pathname === "/api/video/automation/series/next") return Response.json({ job: named.job });
+    if (pathname === "/api/video/automation/run") {
+      const body = JSON.parse(init.body);
+      runs.push(`${body.stage}:${body.variant ?? ""}`);
+      const failed = fail(body);
+      if (failed) return failed;
+    }
+    return site.fetchImpl(url, init);
+  };
+  const { ctx, out } = context(box, fetchImpl, { now: Date.parse("2026-09-27T03:00:00Z") });
+  writeFileSync(path.join(box.work, "auto-state.json"), JSON.stringify({ last_draft_at: "2026-09-27T00:00:00Z" }));
+  const round = () => {
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+    return automation;
+  };
+  return { box, site, runs, out, round, lostFile: (slug) => path.join(box.work, "_series", slug, LOST_DOCS) };
+}
+
+test("a series document whose planner answer was lost is not planned again on its own: the round goes on, the rounds after it hold the document, and the owner's change of the series plans it once", async () => {
+  const named = { job: job("setting") };
+  let losing = true;
+  const server = documentJobs(named, { answers: { "planner:setting": () => SETTING }, fail: () => (losing ? lostAnswer() : null) });
+  // The same series' kept discussion reply (discuss.mjs discussion-answer.json) is another file,
+  // which the hold leaves alone.
+  const threads = path.join(server.box.work, "_series", "wenjian", "discussion-answer.json");
+  const notes = `${JSON.stringify({ message_id: "m-bible-1", body: { reply_md: "已改", revised: null } }, null, 2)}\n`;
+  mkdirSync(path.dirname(threads), { recursive: true });
+  writeFileSync(threads, notes);
+
+  // Before: the error left the step, `auto` exited 4 every round ahead of the drama and slides
+  // requests, the drafts and the Shorts, and every round paid for the planner again.
+  const first = server.round();
+  assert.equal(await first.step(), `series wenjian: the planner's answer for the setting book may have run on the server without reaching the worker (${LOST_WHY}); it is not asked again on its own, and this series (and the ones after it) wait for the owner`);
+  assert.deepEqual([first.halted, server.runs, server.site.calls.docs], [false, ["planner:setting"], []], "the lane goes on, nothing is filed");
+  const saved = readJson(server.lostFile("wenjian"));
+  assert.deepEqual(saved, { "setting:0:first": { kind: "setting", chapter: 0, previous_version: null, stage: "planner", variant: "setting", inputs: documentInputs(named.job), at: "2026-09-27T03:00:00.000Z", why: LOST_WHY } });
+  assert.equal(await first.step(), null, "the site names the same job: it is not asked again, and the lane goes on past the series");
+  for (let round = 0; round < 2; round++) {
+    const later = server.round();
+    assert.equal(await later.step(), null, `round ${round + 2}`);
+    assert.equal(await later.step(), null);
+  }
+  assert.deepEqual(server.runs, ["planner:setting"], "one planner request, however many rounds");
+  const held = server.out.stdout.split("\n").filter((line) => line.startsWith("series wenjian: the setting book is not planned again"));
+  assert.equal(held.length, 2, "said once a run, in each run after the loss");
+  assert.equal(held[0], `series wenjian: the setting book is not planned again: the planner's answer was lost at 2026-09-27T03:00:00.000Z (${LOST_WHY}) and the model may have run; it waits for the owner (a changed note, premise, title or hands-off switch, a line on a rejected version, or the series withdrawn before any episode and filed again), and the series after it wait too`);
+  assert.equal(readFileSync(threads, "utf8"), notes, "the kept discussion reply is untouched");
+
+  // The owner changes the series: one new request, the document is filed, and the hold is gone.
+  losing = false;
+  named.job = job("setting", { series: { ...SERIES, note: "旁白快一點" } });
+  assert.match(await server.round().step(), /^series wenjian: the setting book planned \(version 1\); it waits for the owner on \/admin\/videos$/);
+  assert.deepEqual([server.runs, server.site.calls.docs.length], [["planner:setting", "planner:setting"], 1]);
+  assert.deepEqual(readJson(server.lostFile("wenjian")), {});
+});
+
+test("a rewrite whose planner answer was lost is held under the version it rewrites; once the site names another version's rewrite, that is a new request and the old hold is dropped", async () => {
+  const rejected = (id, version) => ({ id, kind: "chapter", chapter_number: 1, version, body_md: `# v${version}`, body_json: CHAPTER.body_json, status: "rejected", note: "第三集再緊一點", decided_at: null, created_at: "2026-09-27T00:00:00Z" });
+  const named = { job: job("chapter", { previous: rejected("d1", 1), rewrites_left: 2 }) };
+  let losing = true;
+  const server = documentJobs(named, { answers: { "planner:chapter": () => CHAPTER }, fail: () => (losing ? lostAnswer() : null) });
+  assert.match(await server.round().step(), /^series wenjian: the planner's answer for chapter 1's outline may have run on the server without reaching the worker/);
+  assert.deepEqual(Object.keys(readJson(server.lostFile("wenjian"))), ["chapter:1:d1"]);
+  assert.equal(readJson(server.lostFile("wenjian"))["chapter:1:d1"].previous_version, 1);
+  assert.equal(await server.round().step(), null);
+  assert.equal(server.runs.length, 1);
+  // The owner's line on the chapter filed a version 2, and the owner sent that back too: another rewrite.
+  losing = false;
+  named.job = job("chapter", { previous: rejected("d2", 2), rewrites_left: 1 });
+  assert.match(await server.round().step(), /^series wenjian: chapter 1's outline rewritten from the owner's note \(version 1\)/);
+  assert.deepEqual(server.runs, ["planner:chapter", "planner:chapter"]);
+  assert.deepEqual(readJson(server.lostFile("wenjian")), {}, "the hold on version 1's rewrite is dropped");
+});
+
+test("a document job's key names the version it rewrites, and its inputs hash what the owner decides, not what the worker moves", () => {
+  assert.equal(documentKey(job("setting")), "setting:0:first");
+  assert.equal(documentKey(job("chapter", { chapter_number: 3 })), "chapter:3:first");
+  assert.equal(documentKey(job("outline", { previous: { id: "d7", version: 2, note: "再緊一點" } })), "outline:0:d7");
+  const base = job("chapter", {
+    previous: { id: "d1", kind: "chapter", chapter_number: 1, version: 1, body_md: "# v1", body_json: {}, status: "rejected", note: "第三集再緊一點" },
+    context: { ...job("chapter").context, setting: { id: "s1", version: 1, ...SETTING }, outline: { id: "o1", version: 2, body_md: "# 總綱", body_json: {} } },
+  });
+  const hash = documentInputs(base);
+  assert.match(hash, /^[0-9a-f]{64}$/);
+  const moved = structuredClone(base);
+  Object.assign(moved.series, { episodes_done: 4, episodes_started: 5, episodes_ready: 3, docs_pending: 1, status: "chapters", media_usd: 12.5, clip_seconds: 300, updated_at: "2026-10-01T00:00:00Z" });
+  Object.assign(moved.context, { recaps: [{ number: 4, recap: "鐘又響了" }], episodes: [{ number: 1, status: "done" }], mysteries: [] });
+  moved.rewrites_left = 1;
+  assert.equal(documentInputs(moved), hash, "the worker's own progress never releases a held document");
+  for (const change of [
+    (each) => (each.series.premise = "兩個少年在正道與魔道之間，各自背叛"),
+    (each) => (each.series.note = "旁白快一點"),
+    (each) => (each.series.hands_off = true),
+    (each) => (each.previous.note = "第五集也要更緊"),
+    (each) => (each.context.setting.id = "s2"),
+    (each) => (each.context.outline.version = 3),
+    // Withdrawn and filed again under the same slug and the same facts: a new series row, a new request.
+    (each) => Object.assign(each.series, { id: "7f2b3c4d-5e6f-4a71-8b9c-0d1e2f3a4b5c", created_at: "2026-10-08T00:00:00Z" }),
+  ]) {
+    const changed = structuredClone(base);
+    change(changed);
+    assert.notEqual(documentInputs(changed), hash, String(change));
+  }
+});
+
+test("a planner request that lost no answer is not held: a refusal of the model service's, the limiter, an API never reached and a connection never made leave the step as before, and the next round asks again", async (t) => {
+  for (const [label, fail, code] of [
+    ["the model service refused it", () => Response.json({ code: "video_ai_upstream_failed", detail: "模型服務拒絕了這個請求（HTTP 400）" }, { status: 502 }), "video_ai_upstream_failed"],
+    ["the limiter could not count it", () => Response.json({ code: "rate_limit_unavailable", detail: "限流暫時無法使用" }, { status: 503 }), "rate_limit_unavailable"],
+    ["the web route never reached the API", () => Response.json({ code: "upstream_unavailable", detail: "API 無法連線" }, { status: 502 }), "upstream_unavailable"],
+    ["the connection was never made", () => { throw Object.assign(new TypeError("fetch failed"), { cause: { code: "ECONNREFUSED" } }); }, "network"],
+  ]) {
+    await t.test(label, async () => {
+      const server = documentJobs({ job: job("setting") }, { fail });
+      const settled = (error) => error instanceof AutomationError && error.code === code;
+      await assert.rejects(server.round().step(), settled);
+      const sent = server.runs.length;
+      assert.ok(sent >= 1);
+      assert.equal(existsSync(server.lostFile("wenjian")), false, "nothing is recorded as lost");
+      await assert.rejects(server.round().step(), settled);
+      assert.ok(server.runs.length > sent, "nothing ran or the API settled it: the next round asks again");
+    });
+  }
 });
 
 test("an episode is started from the chapter outline, written from the cast word for word, checked for its beats, and read by the owner before the sheets", async () => {
@@ -1523,6 +1665,25 @@ test("a hands-off series' document goes through the checker and is filed with th
   assert.match(await automation.step(), /it waits for the owner on \/admin\/videos/, "no usable verdict: the owner decides, as on a classic series");
   assert.equal(site.calls.docs[2].judge, undefined);
   assert.equal(site.calls.run.filter((call) => call.variant === "series-doc").length, 4, "the checker is asked twice before the document is left to the owner");
+});
+
+test("a hands-off document whose checker's answer was lost is not judged a second time: the planner's answer, paid for, is filed without a verdict and waits for the owner", async () => {
+  const named = { job: job("setting", { series: BINGE }) };
+  const server = documentJobs(named, {
+    answers: { "planner:setting": () => SETTING, "verifier:series-doc": () => verdict("setting") },
+    fail: (body) => (body.stage === "verifier" ? lostAnswer() : null),
+    decide: (body) => (body.judge ? { status: "approved", note: null } : { status: "review", note: null }),
+  });
+  const automation = server.round();
+  // Before: the error left the step, and the next round paid for the planner and the checker again.
+  assert.equal(await automation.step(), "series rebirth: the setting book planned (version 1); it waits for the owner on /admin/videos");
+  assert.deepEqual(server.runs, ["planner:setting", "verifier:series-doc"], "one planner request, and one checker request, not two");
+  assert.equal(server.site.calls.docs[0].judge, undefined, "no verdict travels with it, so the site leaves it for the owner");
+  assert.ok(server.out.stdout.includes(`  the checker's verdict on setting may have run on the server without reaching the worker (${LOST_WHY}); it is not asked again, and the document waits for the owner\n`));
+  assert.equal(existsSync(server.lostFile("rebirth")), false, "the document was filed: nothing is held");
+  named.job = null;
+  assert.equal(await automation.step(), null);
+  assert.deepEqual(server.runs, ["planner:setting", "verifier:series-doc"]);
 });
 
 test("a compilation the site refuses to start ends the run with the site's reason instead of failing every round", async () => {

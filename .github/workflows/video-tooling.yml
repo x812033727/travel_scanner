@@ -1,9 +1,11 @@
 name: Video tooling
 
-# The video pipeline's media stages need Chromium and ffmpeg, which the main CI job does not
-# install before `npm run test:tools`. This workflow runs the pure tests again and then the whole
-# render → assemble → review → package chain on the example video (tools/video/assemble/smoke.mjs),
-# with a stand-in narration so no speech server or token is involved.
+# The video pipeline's media stages need Chromium and ffmpeg. ci.yml's required video-tests job
+# installs both and runs every tools test with them on every pull request (web-checks runs them
+# without, where the cases that need one skip). This workflow, for the pull requests that touch
+# tools/video, package.json or the lockfile (and those paths on main), runs the tools/video tests once more and then the whole render → assemble → review →
+# package chain on the example videos (tools/video/assemble/smoke.mjs), with a stand-in narration
+# so no speech server or token is involved.
 
 on:
   pull_request:

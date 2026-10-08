@@ -112,7 +112,7 @@
 - 音訊用 `loudnorm` 兩段式到 −14 LUFS／−1 dBTP，輸出 AAC-LC 立體聲 48 kHz 384 kbps。
 - 自動檢查四項：總格數、音軌與影片差 ≤ 1 格、每章開頭抽格比對來源 PNG、響度。
 
-**字幕**：每句先切段（優先句末、其次逗號，數字不離單位），再決定每段何時出現（2026-10-06 起，票 `2026-10-05-long-video-cc-from-aligned-times`）。Azure 聲音一句話大小的請求，在 `tts` 時先送 `POST /api/video/speech/align`：同一次付費合成順便帶回 Azure 的 WordBoundary，伺服器換成每個書寫單位（一個中文字、一個英文字或數字、一個標點）在音檔裡的毫秒數；工具依文字順序把單位分給同一請求裡的各句，換算到各句自己的音檔，寫進 `timeline.json` 該句的 `timing`（另存在 `audio/<id>.timing.json`，綁住那個 WAV 的 SHA-256：重用音檔時照寫，重錄就丟掉）。「一句話大小」是最多 59 字（`tts/cli.mjs` 的 `ALIGNED_MAX_CHARACTERS`，句間停頓也折成字數）：這條路由把 WAV 用 base64 包在 JSON 裡回傳，是為 Shorts 的一句話設計的，一整個場景該走會串流的 `speech`；59 字讓 WAV 留在路由自己的 2 MB 音檔上限內（每秒 96,000 位元組，2 MB 約 20.8 秒，扣 1 秒前後靜音，以每秒 3 字的慢速估）。長片一個場景一個請求，多半超過，照舊走 `speech`、不帶 `timing`：伺服器的 CPU 對齊器（不付費，可以逐句對音檔）上線以前，長片有實測字時的只有單獨重錄的句子、切段對不上而逐句重合成的句子，和很短的場景。有 `timing` 的句子，每段從它第一個唸出來的字開始、到下一段開始為止；最後一段照舊停到語音後 400 ms，短於 900 ms 的段照樣併到鄰段。文字跟量到的字對不上（`say` 改了字、翻譯）時，該句退回依「唸出來的長度」分攤；翻譯語系目前都是如此，因為 `buildCues` 只拿到該語系的文字與時間軸，拿不到旁白原文，沒辦法沿用 zh-TW 的實測切點。Gemini 聲音沒有字時（伺服器的 CPU 對齊器還沒上線），不會去問；舊站回 404、或答案來自語音日誌（speech journal），都照常合成、不帶 `timing`。`timing` 是從音檔量出來的，不是輸入：請求、音檔快取鍵與 `speech_hash` 都不含它，沒有 `timing` 的時間軸做出的 SRT／VTT 與以前逐位元組相同。
+**字幕**：每句先切段（優先句末、其次逗號，數字不離單位），再決定每段何時出現（2026-10-06 起，票 `2026-10-05-long-video-cc-from-aligned-times`）。Azure 聲音一句話大小的請求，在 `tts` 時先送 `POST /api/video/speech/align`：同一次付費合成順便帶回 Azure 的 WordBoundary，伺服器換成每個書寫單位（一個中文字、一個英文字或數字、一個標點）在音檔裡的毫秒數；工具依文字順序把單位分給同一請求裡的各句，換算到各句自己的音檔，寫進 `timeline.json` 該句的 `timing`（另存在 `audio/<id>.timing.json`，綁住那個 WAV 的 SHA-256：重用音檔時照寫，重錄就丟掉）。「一句話大小」是最多 59 字（`tts/cli.mjs` 的 `ALIGNED_MAX_CHARACTERS`，句間停頓也折成字數）：這條路由把 WAV 用 base64 包在 JSON 裡回傳，是為 Shorts 的一句話設計的，一整個場景該走會串流的 `speech`；59 字讓 WAV 留在路由自己的 2 MB 音檔上限內（每秒 96,000 位元組，2 MB 約 20.8 秒，扣 1 秒前後靜音，以每秒 3 字的慢速估）。長片一個場景一個請求，多半超過，照舊走 `speech`、不帶 `timing`：伺服器的 CPU 對齊器（不付費，可以逐句對音檔）上線以前，長片有實測字時的只有單獨重錄的句子、切段對不上而逐句重合成的句子，和很短的場景。有 `timing` 的句子，每段從它第一個唸出來的字開始、到下一段開始為止；最後一段照舊停到語音後 400 ms，短於 900 ms 的段照樣併到鄰段。文字跟量到的字對不上（`say` 改了字）時，該句退回依「唸出來的長度」分攤。翻譯語系有自己的切段，2026-10-07 起（票 `2026-10-06-translated-cc-cues-take-their-times`）旁白那句有實測字時，翻譯的換段點移到旁白實測的換段點上（`buildCues` 的 `narration`、`inheritBoundaries`）：段數相同就一一對應，翻譯的段少就各取最近、還沒用過的旁白換段點，翻譯的段多就把旁白的換段點釘在最近的翻譯換段點上、其間照長度分攤；首尾時間不變，移過去會讓某段太短或唸得太快（每秒超過該語系上限）時，整句照舊依長度分攤。跟著自己配音音軌的語系照配音的時間走。續期成片檢查翻譯字幕時（`review/renewal.mjs`、`renewal-handoff.mjs`）用同一個 `localeCues` 重算。Gemini 聲音沒有字時（伺服器的 CPU 對齊器還沒上線），不會去問；舊站回 404、或答案來自語音日誌（speech journal），都照常合成、不帶 `timing`。`timing` 是從音檔量出來的，不是輸入：請求、音檔快取鍵與 `speech_hash` 都不含它，沒有 `timing` 的時間軸做出的 SRT／VTT 與以前逐位元組相同。
 
 **上架**：mp4 由站主在 Studio 上傳。`tools/video/youtube/` 只做 `videos.update`（先讀現值再合併整段送）、`captions.insert`×5、`thumbnails.set`。OAuth 用桌面應用程式、scope 只有 `youtube.force-ssl`，token 放工作區的 `.secrets/`。
 
@@ -148,7 +148,7 @@
 
 - 開發機是 Windows 11 ARM64：無 NVIDIA GPU，所以不跑本機 Whisper 或 TTS。Chromium 以 x64 模擬執行，截圖速度在試作時量。
 - 中文參數一律走檔案（`--text-file`）：PowerShell 5.1 會弄壞非 ASCII 的命令列參數。
-- `npm run test:tools` 會跑 `tools/video/**/*.test.mjs`，這些測試全是純函式，不需要 Chromium 或 ffmpeg。實際的 render＋assemble 煙霧測試放在另一個路徑過濾的 workflow（T4）。
+- `npm run test:tools` 會跑 `tools/video/**/*.test.mjs`，大多是純函式；少數要 ffmpeg 或 Chromium 的（H.264 接片、亮度探測、from-drama 的整段 Short、兩個瀏覽器回歸）在沒有它們的 web-checks 裡跳過，由 ci.yml 必過的 `video-tests` job 裝好兩樣再全部跑一次，還因缺工具跳過就算失敗。實際的 render＋assemble 煙霧測試放在另一個路徑過濾的 workflow（T4）。
 
 ## 分期與票
 

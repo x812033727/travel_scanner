@@ -1,14 +1,14 @@
 ---
 id: 2026-10-05-manual-renewal-publish-staging-throws-on
 title: Manual renewal publish staging throws on a metadata.json whose captions or localizations are missing or mistyped
-status: open
+status: done
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-renewal-guard
+claimed_at: 2026-10-07T03:10:56Z
 created_at: 2026-10-05T23:54:45Z
-completed_at:
-branch:
+completed_at: 2026-10-07T03:15:51Z
+branch: claude/happy-carson-c1hy91
 depends_on: []
 scope:
   - tools/video/review/renewal-handoff.mjs
@@ -43,21 +43,21 @@ but these two callers read the fields before the check sees them.
 
 ## Definition of done
 
-- [ ] `stageManualPublish()` (base-only or not) and `bindManualSubmission()` with a base-only
+- [x] `stageManualPublish()` (base-only or not) and `bindManualSubmission()` with a base-only
   body refuse a metadata.json whose `captions` is missing or not a list, or whose
   `localizations` is missing or not an object, with a message naming the field, and never throw
   a `TypeError`.
-- [ ] A well-formed manual package stages exactly as before (the existing
+- [x] A well-formed manual package stages exactly as before (the existing
   `renewal-handoff.test.mjs` cases pass unchanged).
 
 ## Steps
 
-- [ ] Read the locales through a guard: `packageLocales()` from `tools/video/package/check.mjs`
+- [x] Read the locales through a guard: `packageLocales()` from `tools/video/package/check.mjs`
   already returns the default language plus the localizations and ignores a mistyped map; for
   the caption locales, refuse with `requireThat(Array.isArray(metadata.captions), "metadata.json
   captions is not a list; rebuild the package")` (or let `checkPackage()` report it by passing
   `[]` and keeping `report.ok` false).
-- [ ] Add `renewal-handoff.test.mjs` cases for `captions: 5` and a missing `localizations` on the
+- [x] Add `renewal-handoff.test.mjs` cases for `captions: 5` and a missing `localizations` on the
   base-only staging path, expecting a rejection that names the field.
 
 ## How to verify
@@ -77,3 +77,19 @@ file is bound in `docs/videos/long-form/review.json` today; check again with
 - Both files are in the scope of the stale claim `2026-10-01-hand-off-owner-approved-renewed-finals`
   (codex-video-stall-followthrough, claimed 2026-10-04T10:14Z; its branch merged as #1210).
   Claiming this needs `--force` with that evidence, or wait for that ticket to close.
+- 2026-10-07 (claude-renewal-guard): `manualMetadataLocales(metadata)` in
+  `renewal-handoff.mjs` refuses through the module's `requireThat` (a `UsageError`) with
+  "metadata.json captions is not a list of caption files" / "metadata.json localizations is not an
+  object" (and a non-object metadata.json), and returns the caption and description locales.
+  `stageManualPublish()` calls it on every path, because its payload names the package's own
+  localizations whether base-only or not; `bindManualSubmission()` calls it for a base-only body.
+- Finding: after `prepare`, metadata.json is itself one of the receipt's file proofs, so a
+  hand-edited one reaching `bindManualSubmission()` is refused first by "manual package attachment
+  changed: metadata" (already a refusal, not a TypeError); the guard there matters only for a
+  hand-built receipt. `stageManualPublish()` reads the fields before that proof check, which is
+  where the TypeError came from.
+- Test: captions a number, an object or missing, localizations missing or a list, on the
+  base-only and the full staging path: refused naming the field, no submission, nothing staged;
+  and through `bindManualSubmission()` with real file proofs: refused, never a TypeError. It fails
+  with the guard removed (checked). Existing cases pass unchanged (67 in the file);
+  `npm run test:tools` 1988 pass; the duration receipt still passes (neither file is bound).

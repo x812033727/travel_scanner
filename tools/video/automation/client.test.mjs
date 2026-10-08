@@ -662,11 +662,13 @@ test("a pending writer whose last receipt look-up failed says why on the error, 
   await throttled.settings();
   await assert.rejects(runWriter(throttled), (error) => error.code === RUN_PENDING && error.why === "請求過於頻繁" && error.message === "the saved stage run is still pending (請求過於頻繁); its receipt will be recovered next round");
   // A look-up rate-limited, then the receipt read as running: the earlier failure is not the reason any more.
+  // The budget is spent in the client's (fake) sleeps, not in real time: a 40 ms budget lost its
+  // second look-up whenever the event loop stalled that long, which a loaded test run does.
   let gets = 0;
-  const recovered = durableClient(box, async () => (++gets === 1 ? limited() : Response.json(job(original, "running"))), { durablePollMs: 40, durablePollIntervalMs: 10 });
+  const recovered = durableClient(box, async () => (++gets === 1 ? limited() : Response.json(job(original, "running"))), { durablePollMs: 3000, durablePollIntervalMs: 1000 });
   await recovered.settings();
   await assert.rejects(runWriter(recovered), (error) => error.code === RUN_PENDING && error.why === undefined && error.message === "the saved stage run is still pending; its receipt will be recovered next round");
-  assert.ok(gets >= 2);
+  assert.equal(gets, 3, "one look-up per second of the budget");
   // The stale run of an earlier request that could not be looked up says why too.
   const stale = durableClient(box, async () => limited());
   await stale.settings();
@@ -692,8 +694,15 @@ test("the poll's own deadline cutting a look-up short is no failed request once 
     });
   });
   // Read as running, then the next look-up outlasts what is left of the budget: the read stands.
+  // The (fake) wait takes all of the budget but the real time the first look-up took, 5 ms here,
+  // which is what the second look-up gets: with a 40 ms budget spent in real time, a stalled event
+  // loop left none for it.
   let gets = 0;
-  const cut = durableClient(box, async (_url, init) => (++gets === 1 ? Response.json(job(original, "running")) : hang(init)), { durablePollMs: 40, durablePollIntervalMs: 30 });
+  const cut = durableClient(box, async (_url, init) => {
+    if (++gets > 1) return hang(init);
+    await new Promise((resolve) => setTimeout(resolve, 5));
+    return Response.json(job(original, "running"));
+  }, { durablePollMs: 25_000, durablePollIntervalMs: 25_000 });
   await cut.settings();
   await assert.rejects(runWriter(cut), (error) => error.code === RUN_PENDING && error.why === undefined && error.message === "the saved stage run is still pending; its receipt will be recovered next round");
   assert.equal(gets, 2);
@@ -708,14 +717,18 @@ test("the poll's own deadline cutting a look-up short is no failed request once 
   const everywhere = durableClient(box, async () => { throw new TypeError("fetch failed", { cause: Object.assign(new AggregateError([], ""), { code: "ECONNREFUSED" }) }); });
   await everywhere.settings();
   await assert.rejects(runWriter(everywhere), (error) => error.code === RUN_PENDING && error.why === "ECONNREFUSED");
-  // A submission the rate limit refused before any job was made: no receipt, and the cause.
-  const fresh = sandbox();
+  // A submission the rate limit refused before any job was made: no receipt, and the cause. It is
+  // sent the client's attempts under its one key and no more, however much of the budget is left.
+  const fresh = sandbox(), keys = [];
   const throttled = durableClient(fresh, async (_url, init) => {
     assert.equal(init.method, "POST");
+    keys.push(JSON.parse(init.body).request_key);
     return Response.json({ code: "rate_limit_exceeded", detail: "請求過於頻繁" }, { status: 429 });
-  });
+  }, { durablePollMs: 5000, durablePollIntervalMs: 1 });
   await throttled.settings();
   await assert.rejects(runWriter(throttled), (error) => error.code === RUN_PENDING && error.why === "請求過於頻繁");
+  assert.equal(keys.length, 4, "the client's attempts, no more");
+  assert.equal(new Set(keys).size, 1, "under one key");
   assert.equal(JSON.parse(readFileSync(durableFiles(fresh)[0], "utf8")).receipt, null);
 });
 

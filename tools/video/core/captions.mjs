@@ -9,9 +9,9 @@
 // A number is never parted from its unit, by a cue or by a line break. Each locale cuts its own
 // translation inside the same line window, so locales never need the same number of cues:
 // English word order makes a one-to-one split with Chinese impossible to keep natural; the
-// translator is shown the narration's cue boundaries instead (cuePieces). A translation's cues
-// keep the shares by weight: buildCues is given that locale's text and the timeline only, and
-// neither holds the narration's text the measured boundaries are cut on.
+// translator is shown the narration's cue boundaries instead (cuePieces). A translation keeps its
+// own cut, and when the narration of its line was measured, its cue changes take their times from
+// the narration's measured cue changes (inheritBoundaries); otherwise it shares the time by weight.
 import { frameToMs, samplesToMs, spokenUnits } from "./timeline.mjs";
 
 // Starting values from common subtitle guidelines (characters per line, lines per cue, reading
@@ -348,13 +348,96 @@ export function timePieces(pieces, startMs, endMs, rules = null, canFit = fits, 
 }
 
 /**
+ * When each narration cue after the first starts, for one line: the narration's text cut as its
+ * own captions are and timed by its measured characters (timePieces). Null when the characters do
+ * not line up with that text, or it is cut into one cue, so a translation has nothing to inherit.
+ */
+function narrationBoundaries(text, locale, startMs, endMs, chars) {
+  const rules = LOCALE_RULES[locale];
+  if (!rules || typeof text !== "string" || !text.trim()) return null;
+  const canFit = canFitFor(rules);
+  const pieces = splitText(text, rules, canFit);
+  if (!measuredStarts(pieces, startMs, endMs, chars)) return null;
+  const starts = timePieces(pieces, startMs, endMs, rules, canFit, chars).slice(1).map((cue) => cue.start_ms);
+  return starts.length ? starts : null;
+}
+
+/**
+ * For each value of `from` in order, the index of the nearest value of `to` after the one picked
+ * before it, leaving enough of `to` for the values still to come (`from` is not longer than `to`).
+ */
+function nearestInOrder(from, to) {
+  const picked = [];
+  let next = 0;
+  from.forEach((value, index) => {
+    const last = to.length - (from.length - index);
+    let best = next;
+    for (let at = next + 1; at <= last; at++) if (Math.abs(to[at] - value) < Math.abs(to[best] - value)) best = at;
+    picked.push(best);
+    next = best + 1;
+  });
+  return picked;
+}
+
+/**
+ * A translation's cues for one line, `weighted` (its own cut, timed by weight), moved onto the
+ * narration's measured cue changes, `boundaries` (when each narration cue after the first
+ * starts). The cut, the first start and the last end stay; only the changes between cues move.
+ * Equal counts take the narration's changes one for one. Fewer translated changes each take, in
+ * order, the nearest narration change not yet taken. More translated changes pin each narration
+ * change to the nearest translated one, in order, and the others keep their weighted shares of
+ * the span between the pins around them. Null, so the line keeps its weighted times, when a cue
+ * would then be shorter than MIN_CUE_MS, or (given the locale's `rules`) read faster than its
+ * maxCps, where its weighted time was not.
+ */
+export function inheritBoundaries(weighted, boundaries, rules = null) {
+  const own = weighted.slice(1).map((cue) => cue.start_ms);
+  if (!own.length || !boundaries?.length) return null;
+  const startMs = weighted[0].start_ms;
+  const endMs = weighted.at(-1).end_ms;
+  const starts = [...own];
+  if (own.length <= boundaries.length) {
+    nearestInOrder(own, boundaries).forEach((at, index) => {
+      starts[index] = boundaries[at];
+    });
+  } else {
+    const pins = nearestInOrder(boundaries, own);
+    let [fromIndex, fromOwn, fromTime] = [-1, startMs, startMs];
+    for (const [pinIndex, pin] of [...pins.map((at, index) => [at, boundaries[index]]), [own.length, endMs]]) {
+      const pinOwn = pinIndex < own.length ? own[pinIndex] : endMs;
+      for (let index = fromIndex + 1; index < pinIndex; index++) {
+        starts[index] = Math.round(fromTime + ((own[index] - fromOwn) * (pin - fromTime)) / (pinOwn - fromOwn));
+      }
+      if (pinIndex < own.length) starts[pinIndex] = pin;
+      [fromIndex, fromOwn, fromTime] = [pinIndex, pinOwn, pin];
+    }
+  }
+  const cues = weighted.map((cue, index) => ({
+    ...cue,
+    start_ms: index === 0 ? startMs : starts[index - 1],
+    end_ms: index + 1 < weighted.length ? starts[index] : endMs,
+  }));
+  const tooFast = (cue) => Boolean(rules) && (measure(cue.text, rules) * 1000) / (cue.end_ms - cue.start_ms) > rules.maxCps;
+  const worse = cues.some((cue, index) => {
+    const length = cue.end_ms - cue.start_ms;
+    if (length <= 0) return true;
+    const before = weighted[index];
+    return (length < MIN_CUE_MS && length < before.end_ms - before.start_ms) || (tooFast(cue) && !tooFast(before));
+  });
+  return worse ? null : cues;
+}
+
+/**
  * Cues for one locale. `texts` maps line id to that locale's text (the narration itself for
  * zh-TW); a line missing from it is skipped and reported. A line whose timeline entry carries
  * `timing.chars` (its measured characters, relative to its clip) has its cues start when their
- * first characters are spoken, when the text is the one that was timed (timePieces); any other
- * text, a translation among them, shares the line's time by weight.
+ * first characters are spoken, when the text is the one that was timed (timePieces). A
+ * translation keeps its own cut; given `narration` ({ locale, texts }, the narration's texts by
+ * line id), its cue changes take their times from the narration's measured ones
+ * (inheritBoundaries). Any other text, or a line the narration's times do not fit, shares the
+ * line's time by weight.
  */
-export function buildCues(timeline, texts, locale) {
+export function buildCues(timeline, texts, locale, narration = null) {
   const rules = LOCALE_RULES[locale];
   if (!rules) throw new Error(`no caption rules for locale ${locale}`);
   const canFit = canFitFor(rules);
@@ -370,7 +453,12 @@ export function buildCues(timeline, texts, locale) {
     const speechEnd = start + samplesToMs(line.audio_samples);
     const end = Math.min(frameToMs(line.end_frame), speechEnd + LINGER_MS);
     const chars = Array.isArray(line.timing?.chars) ? line.timing.chars : null;
-    for (const cue of timePieces(splitText(text, rules, canFit), start, end, rules, canFit, chars)) {
+    let timedPieces = timePieces(splitText(text, rules, canFit), start, end, rules, canFit, chars);
+    if (chars && narration && narration.locale !== locale) {
+      const boundaries = narrationBoundaries(narration.texts?.[line.id], narration.locale, start, end, chars);
+      timedPieces = (boundaries && inheritBoundaries(timedPieces, boundaries, rules)) || timedPieces;
+    }
+    for (const cue of timedPieces) {
       cues.push({ ...cue, line: line.id, text: wrapCue(displayText(cue.text, rules), rules) });
     }
   }

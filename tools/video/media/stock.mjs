@@ -85,7 +85,7 @@ export function candidateText(answer, slug = "<slug>") {
   const notices = PROVIDERS.filter((provider) => Object.hasOwn(answer.total ?? {}, provider)).map((provider) => VENDOR_NOTICES[provider]);
   if (notices.length) lines.push(notices.join(" · "));
   if (Object.hasOwn(answer.total ?? {}, "pixabay")) lines.push("Pixabay's preview links expire after a day; fetch what you choose soon.");
-  if (answer.candidates?.length) lines.push(`next: node tools/video/media/cli.mjs stock fetch --slug ${slug} --provider ${answer.candidates[0].provider} --id ${answer.candidates[0].id}`);
+  if (answer.candidates?.length) lines.push(`next: node tools/video/cli.mjs stock fetch --slug ${slug} --provider ${answer.candidates[0].provider} --id ${answer.candidates[0].id}`);
   return `${lines.join("\n")}\n`;
 }
 

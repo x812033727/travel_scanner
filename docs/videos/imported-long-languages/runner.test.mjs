@@ -705,7 +705,7 @@ test("actual runner and native dub keep an unknown speech POST held across invoc
 });
 
 test("actual runner and native dub replay saved raw WAV after consumer interruption without a second POST", async (t) => {
-  const f = await nativeSpeechRunnerFixture(t), audio = path.join(f.entry.workdir, "dubs/en/audio"), retained = `${audio}.retained`;
+  const f = await nativeSpeechRunnerFixture(t), audio = path.join(f.entry.workdir, "dubs/en/audio"), retained = `${audio}.retained`, stop = path.join(f.entry.workdir, "STOP");
   const { renameSync, statSync } = await import("node:fs");
   const { encodeWav } = await import("../../../tools/video/tts/wav.mjs");
   let posts = 0, statusGets = 0, reviewGets = 0, attempt = 1, faults = 0, rawWav;
@@ -733,10 +733,13 @@ test("actual runner and native dub replay saved raw WAV after consumer interrupt
     if (route.startsWith("/api/video/reviews/")) { reviewGets++; return Response.json(f.site); }
     if (route === "/api/video/speech/status") {
       statusGets++;
-      // Each invocation probes status once before mkdir(audio), then again in
-      // the journal's fresh paid-boundary identity. Interrupt only the latter,
-      // so the second native call must consume the saved WAV before it fails.
-      if (attempt === 2 && statusGets === 4) interruptConsumer();
+      // The second invocation replays the first chunk from the imported journal without a
+      // request (the native dub keeps its own speech journal too, so the first chunk no longer
+      // waits for a fresh probe), then probes again before the next chunk's paid POST. That
+      // probe is where an owner's STOP lands: the saved answer is consumed, nothing is bought.
+      if (attempt === 2 && statSync(audio).isDirectory() && readdirSync(audio).some((name) => name.endsWith(".wav"))) {
+        writeFileSync(stop, "owner STOP after the saved chunk was consumed");
+      }
       return Response.json(f.status);
     }
     assert.fail(`unplanned offline request ${route}`);
@@ -753,10 +756,13 @@ test("actual runner and native dub replay saved raw WAV after consumer interrupt
   // and source bytes. No approval, transcript or checked dub is fabricated.
   assert.ok(statSync(audio).isFile()); rmSync(audio); renameSync(retained, audio); attempt = 2;
   const second = await run(f.options, dependencies);
-  assert.equal(second.status, "paused"); assert.match(second.videos[f.entry.slug].error, /^EEXIST:/);
-  assert.equal(posts, 1); assert.equal(faults, 2); assert.equal(statusGets, 4); assert.equal(reviewGets, 2);
+  assert.equal(second.status, "paused"); assert.ok(existsSync(stop), "the owner's STOP stopped the second chunk");
+  // One POST in all: the saved answer was consumed from the journal, not bought again, and the
+  // STOP kept the next chunk from being bought at all.
+  assert.equal(posts, 1); assert.equal(faults, 1); assert.equal(reviewGets, 2);
+  assert.ok(readdirSync(audio).filter((name) => name.endsWith(".wav")).length > 0, "the saved WAV was cut into line clips");
   assert.equal(f.events().filter((event) => event.type === "unit-start" && event.kind === "dub").length, 2);
-  assert.equal(f.events().filter((event) => event.type === "error" && event.detail.startsWith("EEXIST:")).length, 2);
+  assert.equal(f.events().filter((event) => event.type === "error" && event.detail.startsWith("EEXIST:")).length, 1);
   assert.deepEqual(readFileSync(journalFile), firstReceipt);
   assert.deepEqual(second.videos[f.entry.slug].checked_dubs, {}); assert.deepEqual(second.videos[f.entry.slug].skipped_dubs, {});
   await verifyLocal(f.manifest, f.entry);
