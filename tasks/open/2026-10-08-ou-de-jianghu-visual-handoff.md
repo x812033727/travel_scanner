@@ -43,6 +43,8 @@ scope:
 
 ## Notes
 
+- 2026-10-09 瀏覽器試拍：站主指定 Codex IAB 並登入，沿已採用316.8點pilot額度完成7次逐鏡圖像（156點）與3支H3四秒片（144點），合計實扣300點，帳戶27000→26700；無購點／續訂／API／TTS。s036兩版接觸末格都因冠尖與指段重疊歧義退回，未送接觸版影片。站主明確核准「採用懸停方案，繼續製作」，只在外部副本改s036 motion／end_frame.prompt、建立獨立native lock，原v4／正常lock未改。詳見[本輪製作紀錄](../../docs/videos/series-plans/ou-de-jianghu/visual-development/handoff/hailuo-browser-pilot-20261009.md)。正式look/audio/storyboard、變更接回及片段匯入仍待辦；s035結尾手落身側接s036懸掌存在抬手跳接，3秒／2秒估剪也需改用實際動作收勢，需在放量前解決，不能把本輪下載／decode／抽格當owner接受。本輪claim前scope無其他active、唯一PR#1388屬同隊；--force僅略過同隊未結相依，不接管production原持有人。
+
 - 2026-10-09 正式採用：站主明確回覆「採用素材與 v4，按此點數上限鎖定 plan」。[採用紀錄](../../docs/videos/series-plans/ou-de-jianghu/visual-development/handoff/adoption-decision-20261009.md)／JSON逐一綁定146素材、既有限制、v4、兩期逐鏡預算與正常plan鎖。本期含預留26,980.8點、pilot316.8包含在內，第二期21,753.6須有實際額度，不購點／續訂、API支出授權0。原生write/check exit0且changed=false，455鏡 Hailuo Max H3/2K/assist off，lock SHA `6af3dafa4f9edc0a03270800a9d3fd44c6f487a3c015627fda4a4205f385d0c5`。ready exit1、2過429待製作，look依決定保留待判圖。
 - 本輪最新9張基底（沈全身v3）已接入正常runtime，27次dry-run/import/exact-rerun全exit0，0fetch／0paid；manifest SHA `cf37aa3541380f13b864d3c01560e533fc176e7c5d85f472560408e85f7406b6`。正式來源與素材SHA重驗；沒有choice／judge／series-store或其他關卡核准。Hailuo空白表單核對Max27000點、H3 2K 4秒48點；Mokaair唯讀狀態drama=false及API單集200，未改設定。兩個剩餘DoD仍涵蓋真實判圖／參照送入／原持有人接線，因此本票保留open並release，不把plan完成當整條產線完成。
 
