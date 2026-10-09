@@ -265,3 +265,19 @@ tests\plink-budget.test.ts:
  0 fail
 Ran 2 tests across 1 file. [1.09s]
 [exit 0]
+
+
+# hands-on run 2, part E: 2026-10-09T04:31:30Z, Claude Code 2.1.295 (Claude Code)
+The saved-session name in plink-budget's test commands became the placeholder <saved-session>
+(the repository's hygiene test reads a name after -load as a host detail). The tests again:
+
+$ claude plugin test
+
+tests\plink-budget.test.ts:
+(pass) counts plink connections and leaves other commands alone [110.22ms]
+(pass) refuses the connection past the limit, and /plink reset lifts it [50.68ms]
+
+ 2 pass
+ 0 fail
+Ran 2 tests across 1 file. [0.50s]
+[exit 0]

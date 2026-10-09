@@ -1,7 +1,7 @@
 import { expect, test } from 'claude-code/testing'
 
 const PLINK = '"/c/Program Files/PuTTY/plink.exe"'
-const SSH = `${PLINK} -batch -load host -l root "uptime"`
+const SSH = `${PLINK} -batch -load <saved-session> "id"`
 const bash = (command: string) => ({ tool: 'Bash', command })
 
 test(
@@ -14,7 +14,7 @@ test(
     await $.tool.call(bash('grep plink notes.md'))
     await $.tool.call({
       tool: 'PowerShell',
-      command: 'plink.exe -batch -load host "uptime"',
+      command: 'plink.exe -batch -load <saved-session> "id"',
     })
 
     const answer = await $.command.run({

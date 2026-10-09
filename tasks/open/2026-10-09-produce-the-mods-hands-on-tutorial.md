@@ -13,6 +13,7 @@ depends_on: []
 scope:
   - docs/videos/claude-code-mods-hands-on
   - docs/videos/lexicon.json
+  - tools/docs-videos-tests.test.mjs
 ---
 
 # Produce the Mods hands-on tutorial under the content-value rules
@@ -62,3 +63,4 @@ node tools/video/cli.mjs status --slug claude-code-mods-hands-on
 - `handwritten-sample.md` is the first hand-written sample the owner read before the rules were
   written; `video.json` supersedes it.
 - What the planner and the writer found unclear in the rules: `2026-10-09-fix-what-the-first-use-of`.
+- CI first failed on two repository rules. `tools/docs-videos-tests.test.mjs` wants every test under docs/videos run by `npm run test:docs-videos`; a mod's `*.test.ts` runs only under `claude plugin test`, so tests under a `mods` folder are now named there as a second kind that is never selected. `tools/repo-hygiene.test.mjs` reads a name after `plink -load` as a host detail; the mod's test commands use `<saved-session>`.
