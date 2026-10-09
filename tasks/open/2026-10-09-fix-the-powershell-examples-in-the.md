@@ -18,32 +18,48 @@ scope:
 
 ## Why
 
-The article  (〈非互動執行與 JSON 輸出〉) gives PowerShell forms of its commands. While planning the headless-mode tutorial on 2026-10-09, three of the forms it uses were measured, with no model involved, on Windows PowerShell 5.1.26100 (console code page 65001), by handing the arguments and the piped input to two small Node programs that print what they received:
+The article `claude-code-headless-json` (〈非互動執行與 JSON 輸出〉) gives PowerShell forms of its
+commands. While planning the headless-mode tutorial on 2026-10-09, three forms it uses were
+measured, with no model involved, on Windows PowerShell 5.1.26100 (console code page 65001), by
+handing the arguments and the piped input to two small Node programs that print what they
+received:
 
-1. An empty-string argument is not passed.  reaches the program as four arguments, not five. Git Bash passes the empty string.
-2.  reaches the program with every double quote removed, so it is no longer JSON. Git Bash's  arrives intact.
-3.  with the default  (us-ascii) turns every Chinese character into a question mark: a 336-byte file arrived as 341 bytes of which 300 were 0x3f. Adding  still left 100. Only setting  first and then using  delivered the text, with a three-byte BOM in front.
+1. An empty-string argument is not passed. `-p --tools "" --output-format json` reaches the
+   program as four arguments, not five. Git Bash passes the empty string.
+2. `--json-schema (Get-Content -Raw schema.json)` reaches the program with every double quote
+   removed, so it is no longer JSON. Git Bash's `"$(cat schema.json)"` arrives intact.
+3. `Get-Content -Raw inbox.txt | program` with the default `$OutputEncoding` (us-ascii) turns
+   every Chinese character into a question mark: a 336-byte file arrived as 341 bytes, of which
+   300 were 0x3f. Adding `-Encoding UTF8` still left 100. Only setting
+   `$OutputEncoding = New-Object System.Text.UTF8Encoding $false` first and then using
+   `-Encoding UTF8` delivered the text, with a three-byte BOM in front.
 
-A reader on Windows who follows the article's PowerShell lines would send Claude Code a different command from the one the text describes, and for Chinese input a different text.
+A reader on Windows who follows the article's PowerShell lines sends Claude Code a different
+command from the one the text describes, and for Chinese input a different text.
 
 ## Definition of done
 
-- [ ] Each PowerShell example in the article is run as written on PowerShell 5.1 and on PowerShell 7, and what the program receives is recorded.
-- [ ] Examples that do not deliver what the text says are rewritten or replaced by a note to use Git Bash, and the article says which shells were checked.
-- [ ] The article is re-verified and republished through the content pipeline.
+- [ ] Each PowerShell example in the article is run as written on PowerShell 5.1 and on
+  PowerShell 7, and what the program receives is recorded.
+- [ ] Examples that do not deliver what the text says are rewritten, or replaced by a note to
+  use Git Bash, and the article says which shells were checked.
+- [ ] The article is verified again and republished through the content pipeline.
 
 ## Steps
 
-- [ ] Reproduce with the two probe programs (they print argv and the bytes of stdin).
+- [ ] Reproduce with two probe programs that print argv and the bytes of stdin.
 - [ ] Decide per example: a working PowerShell form, or Git Bash only.
 - [ ] Check the sibling articles that reuse the same forms.
 
 ## How to verify
 
-Run each rewritten example with a program that echoes its arguments and stdin bytes in place of , on both PowerShell versions; the arguments and bytes equal what Git Bash delivers.
+Run each rewritten example with a program that echoes its arguments and the bytes of its stdin
+in place of `claude`, on both PowerShell versions; they equal what Git Bash delivers.
 
 ## Notes
 
-- The measurements and the two probe programs are described in  (section 平台的決定) once that video's folder is in the repository; the raw log stayed outside the repo.
+- The measurements are in the brief of the headless-mode tutorial (slug
+  `claude-code-headless-hands-on`, section 平台的決定) once that video's folder is in the
+  repository; the raw log stayed outside the repo.
 - PowerShell 7, cmd, macOS and Linux were not measured.
-- Not measured either: what  means to Claude Code when its empty value never arrives.
+- Not measured either: what `--tools` means to Claude Code when its empty value never arrives.
