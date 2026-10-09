@@ -77,3 +77,16 @@ stay outside Git. Keep any failed checks and pending reviews truthful.
   final five wait for normal shared-producer closure. Original language/cost
   limits and exact Mods hold are preserved. Travel/Embedding owner choices are
   still pending; no Studio listening or YouTube action has been performed.
+- Oct9 22:50 checkpoint: six Mandarin final files are complete and Mods remains
+  held. Travel/Embedding four-text/three-dub owner choices are now recorded.
+  CF/SEC/FREE selected dubs and DevDay EN/JA reached genuine normal SKIPs;
+  their ready text parts and retained audio remain distinct. DevDay KO stopped
+  on an external deployment with an exact proven zero-transport speech hold;
+  current840 source and855 WAV preservation is verified. Travel EN has one
+  actual successful paid binary response lost by a private JSON-bookkeeping
+  bug; the exact hold is preserved and tested header-only repair is source-only.
+  Embedding63/64 is held on12 echoed source commas; exact zero-provider repair
+  is authorized before its remaining genuine reviewer. Shared lexicon and
+  pretransport/caption-control defects are tracked as open follow-ups. No dub
+  failure is turned into READY,owner listening or upload. Work continues under
+  original keys/caps; detailed current evidence is in the scoped recovery doc.

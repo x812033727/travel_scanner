@@ -3,6 +3,53 @@
 Owner request: complete stalled video production directly. This record is updated
 only from actual stage results. Generated media and detailed logs remain outside Git.
 
+## Current verified continuation,22:50 Taipei,2026-10-09
+
+All six Mandarin movies retain their verified final files. Mods remains under
+the exact STOP f5bbf969; no upload,publication,merge or agent deployment occurred.
+An external deployment changed production to840b93a7/worker3508267c at22:42:16.
+Actual preservation proof324349d8 verifies unchanged SDK/backend/runtime source
+groups,855 retained WAVs and original FREE UNKNOWN/private STOP. Old canonical
+guardian PIDs101/113 are absent in the new worker. Only restoring their exact
+conditional STOPs and reacquiring normal owned leases is authorized so far.
+
+DevDay's Japanese dub genuinely skipped after two ordinary shortening rounds:
+dcuh and jg96 still exceed their windows at1.15x. Its132 successful synthesis
+responses,6296 characters,two real correction results and old English audio/
+153 ASR records/nine flags remain retained. Actual current LANG83060f94 is
+approved,manifest2d72fa31,with all eight text parts ready and English/Japanese
+genuine SKIPs. Korean is incomplete. Producer1488062/1488063 physically closed
+exit1 at22:41:36 on the external deploy flock. Actual v4 totals are190 successful
+speech responses,8951 characters,two correction models and11 API writes;
+cumulative history is ten models,688 speech routes,39464 synthesis characters
+and84 API writes. Exact d430cecd held journalf8b17150 has zero matching transport
+records; its original raw bytes and four confirmed neighbouring answers are
+retained. No same-key retry or forget has occurred at this checkpoint.
+
+Travel's original40 text results remain succeeded/adopted and all four normal
+worksheets current. Its first dub launcher failed before any speech request on
+private quote-file transport. The corrected launcher physically closed exit1
+at22:36:24 after one actual English speech HTTP200. The private bookkeeping
+wrapper then incorrectly parsed the WAV as JSON before the native consumer
+could save it. Exact bodyff0ef4e1/journal330b2636 and transport records remain;
+no WAV or provider response cache is recoverable. A header-only billing fix
+passes three tests using the real native binary-response consumer. An independent
+Japanese/Korean candidate preserves the exact English hold and rejects its body;
+seven isolation tests pass. It is source-only,with152 original first-pass requests/
+6329 characters and at most eight new correction keys. No English rebuy or
+Japanese/Korean paid continuation is claimed or authorized yet.
+
+Embedding's original63 of64 keys genuinely succeeded/adopted; English,Japanese
+and Korean are current. Supervisor4568 physically closed exit3 when the last
+Simplified Chinese translator echoed twelve request-owned source commas in ASCII.
+Its translated Simplified Chinese text and immutable raw receipt remain intact.
+Exact zero-provider source-only restoration helper28aba543 passes three tests;
+the current840-bound executordd86cde7 differs only in two epoch constants.
+Fresh normal dry979b9238 confirms all original source/media/tools/63 receipts
+and the original remaining one genuine reviewer. Root has authorized only that
+zero-provider restoration; the last reviewer and three selected dubs still await
+actual continuation. No unfinished dub is reported READY or owner-listened.
+
 ## Current verified continuation,22:11 Taipei,2026-10-09
 
 DevDay's English genuine-SKIP captions and ordinary LANG submission are complete.
