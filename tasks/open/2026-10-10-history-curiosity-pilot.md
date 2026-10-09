@@ -46,6 +46,8 @@ scope:
 
 ## Notes
 
+- 2026-10-10 進度（claude-fable-curio）：H01 `curio-h01` 以插圖投影片路線在本機做。研究代理寫 `research.md`（11 節、每條附來源）；站主同意後下載六張維基共享公有領域檔到 `photos/`（站上 Pexels／Pixabay 金鑰未設，`stock search` 不能用）；撰稿 97 景／118 句／lint 11.0 分；大綱關卡 Jev 挑 A 自動核准；查核兩輪（第一輪改 8 個事實、第二輪改 2 個，加了 Austin 勘驗與 Patron 化驗兩份一手文件當來源）；熱飯菜傳說的最早出處仍查不到，稿子改成不講先後，brief 裡「十二年後小說加的」那句與來源不符（brief 綁大綱雜湊不能改）。插圖 74 張 MiniMax image-01 一輪約 US$1；站主指示「查核完直接合成旁白，做到上架確認」。
+
 - 2026-10-10 開票。樣張 16 張（四種畫風 × 四個場景）畫在 `mokaair-work/videos/_audition/look-20261010-curio/`，約 US$0.22。
 - 含金量六條（規矩 11）是教學投影片的規則，這個系列是說書，不套；8 分鐘下限照常。
 - 主機的解說路線還吃不了這個系列的畫風與 MiniMax，所以先本機做；主機路線的改法在 `2026-10-10-explainer-route-takes-a-series-look`。
