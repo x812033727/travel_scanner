@@ -13,6 +13,7 @@
 | 本機檔上傳 | 沒有檔案選擇器可用（`參考` 按鈕只開系統對話框，面板看不到） | 見 §2；或請站主自己上傳 |
 | 提示詞 | 輸入框是 Slate（`#video-create-textarea`）；`execCommand`、合成 paste、`type`＋shift+Enter 都只改 DOM，不進應用狀態，按建立會跳「請輸入描述」 | 從編輯器 DIV 的 React fiber 往上找 `memoizedProps.value`（有 `insertText` 與 `children`），`select` 全部→`deleteFragment`→逐行 `insertBreak`＋`insertText`；字數計數（如 690/7000）要等於定稿正文長度 |
 | 模式與設定 | 每次載入頁面都回到「全能參考」，它的「使用須知」條款不由 Claude 按確認；起始/結束幀、4s／5s、2K、16:9、張數 1 都可用 JS 點葉節點文字選 | 選完用底列文字核對：H3 2K 4 秒 48 點、5 秒 60 點；圖像 GPT Image 2.5 Sunburst 16:9 High 2K 一張 22 點（預設是 4 張 80 點） |
+| 窗格隱藏時的設定抽屜 | 影片頁的時長抽屜：模式晶片那一列的第三個子元素（滑桿圖示）用 DOM `click()` 或合成 pointer 事件都開不了 | 找該元素底下 `__reactProps` 有 `onClick` 且含 `svg` 的 DIV，直接呼叫它的 `onClick`；再點 `4s`／`5s` 葉節點，對 `document` 派發 Escape keydown 關閉；用底列的 48／60 核對 |
 | 送出 | `創建` 不在無障礙樹，要按座標 | 送出後確認新的 `media-group-<id>` 顯示「正在生成」且餘額下降，再寫帳本 settle |
 | 分類器 | 長批次或帳本指令偶爾被判成交易而擋下 | 拆小批、摘要用中性字；被擋兩次就停，向站主說明 |
 
