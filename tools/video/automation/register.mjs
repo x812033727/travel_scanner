@@ -212,6 +212,8 @@ export const MISHEARD_WORDS = [
   ["含糊的那一份", "寫得含糊的那一份"],
   ["指到", "對應"],
   ["搬去 hook", "改用 hook 來做"],
+  ["本機", "這台機器"],
+  ["我沒有跑過", "這支影片沒有跑過"],
 ];
 
 export const HEARD_RULES = `
