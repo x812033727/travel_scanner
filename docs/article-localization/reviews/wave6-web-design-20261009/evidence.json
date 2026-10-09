@@ -1,0 +1,2374 @@
+{
+  "schema": "wave6-local-content-review-evidence-v1",
+  "proposal_only": false,
+  "cohort": "wave6-web-design-20261009",
+  "counts": {
+    "articles": 17,
+    "target_documents": 68,
+    "new_translation_targets": 48,
+    "existing_review_only_targets": 20,
+    "source_corrections": 13,
+    "selected_documents": 81,
+    "all_pack_documents": 85,
+    "manifest_assets": 210,
+    "original_media_preserved": 111
+  },
+  "roles": {
+    "source_proposal": "independent source author",
+    "content_and_repair_application": "content operator",
+    "source_final_review": "independent source reviewer",
+    "target_final_reviews": "independent language and repair reviewers",
+    "artifact_integrity_review": "independent artifact reviewer"
+  },
+  "actual_local_stage": {
+    "source17_admission": "completed",
+    "source13_correction_receipts": "genuinely reviewed and official-validator verified",
+    "target20_admission": "completed with 65 exact document-field edits across six existing targets and preserved source/media guards",
+    "genuine_target_review_installations": "all68 completed and read-only official-validator verified",
+    "official_assembly": {
+      "status": "completed",
+      "actual_exit_code": 0
+    },
+    "official_verify_bundle": {
+      "status": "completed",
+      "actual_exit_code": 0
+    },
+    "independent_assembled_artifact_integrity": {
+      "status": "completed",
+      "blocking_findings": 0
+    },
+    "local_repository_install_and_identical_replay": {
+      "status": "completed",
+      "first_actual_exit_code": 0,
+      "identical_argv_replay_actual_exit_code": 0,
+      "all_pack_asset_journal_backup_receipt_bytes_identical_on_replay": true,
+      "original_media_jobs_private_stage_previous_installation_and_ledger_preserved": true,
+      "provider_calls": 0,
+      "host_calls": 0,
+      "publication_claimed": false
+    },
+    "required_local_tests": {
+      "status": "scoped_checks_completed_full_Windows_tools_failed_CI_pending",
+      "pipeline": {
+        "passed": 35,
+        "actual_exit_code": 0
+      },
+      "artifact_integrity": {
+        "passed": 14,
+        "actual_exit_code": 0
+      },
+      "release_safety": {
+        "passed": 191,
+        "skipped": 80,
+        "actual_exit_code": 0
+      },
+      "content_ingest_links": {
+        "passed": 76,
+        "skipped": 12,
+        "actual_exit_code": 0,
+        "skip_reasons": {
+          "isolated_PostgreSQL_services": 11,
+          "Chromium_unavailable": 1
+        },
+        "evidence_origin": "actual terminal completion observed by operator"
+      },
+      "selected_pack_lint": {
+        "checked": 17,
+        "actual_exit_code": 0,
+        "retained_warning_counts": {
+          "no_summary": 85,
+          "text_length": 17
+        }
+      },
+      "translation_character_checks": {
+        "findings": 0,
+        "actual_exit_code": 0
+      },
+      "tasks": {
+        "actual_exit_code": 0
+      },
+      "complete_Windows_tools": {
+        "actual_exit_code": 1,
+        "all_tools_PASS_claimed": false,
+        "own_stalled_automation_test_child_explicitly_stopped": true,
+        "exact_total_counts_not_reconstructed": true,
+        "POSIX_local_rerun_completed": false,
+        "WSL_VM_startup_failed": true,
+        "follow_up_task_ids": [
+          "2026-10-07-windows-video-test-imports",
+          "2026-10-07-make-project-lease-test-children-use",
+          "2026-10-07-windows-reference-comparison-ffmpeg",
+          "2026-10-09-windows-video-test-path-assertions",
+          "2026-10-09-windows-speech-journal-rename-failures"
+        ]
+      }
+    },
+    "pull_request": {
+      "status": "pending_creation_and_review_at_proposal_preparation",
+      "url": null
+    },
+    "merge_deploy_publish_public_acceptance": {
+      "status": "pending_separate_authorization_and_genuine_execution",
+      "publication_claimed": false
+    },
+    "whole_installation_preservation_audit": {
+      "status": "completed",
+      "actual_version": "V6.1",
+      "actual_exit_code": 0,
+      "PASS_claimed": true,
+      "first_strict_raw_root_key_audit_V5": {
+        "actual_exit_code": 1,
+        "failure_preserved": true,
+        "failed_check": "Every other original raw root metadata field and JSON type preserved"
+      },
+      "explicit_new_version_execution": true,
+      "automatic_retry": false,
+      "raw_root_metadata": {
+        "exact_absent_before_empty_default_additions": 51,
+        "articles": 17,
+        "added_keys_each_article": {
+          "aliases": {},
+          "news_date": null,
+          "related": []
+        },
+        "topics_exact_admitted_baseline_order_and_original_multiset_preserved": true,
+        "every_other_existing_raw_metadata_key_value_and_JSON_type_preserved": true,
+        "existing_metadata_date_values_unchanged": true,
+        "general_metadata_normalization_exception_allowed": false
+      },
+      "prior57_preservation_scope": "Complete local preinstallation pack/public bytes and completion ledger preserved; no new production snapshot queried.",
+      "new_editorial_PASS_or_publication_authorization_issued": false
+    }
+  },
+  "manifest_raw_sha256": "94239e012d0bf4a858c47b7e94f767c9aebf6ea51d481981fa0f7ae37894629a",
+  "admitted_baseline_raw_sha256": "3b908b57bfaf425bae75f3ffa31137a0c5d4fc26d284ed5fce17e9d8db92c300",
+  "sealed_evidence_raw_sha256": {
+    "assembly": "11b37a08b5308cc58eecfde2b6299444fdb43b2af2eed345883945d6fd78a205",
+    "assembly_integrity": "5f1189be2af3f8a57d975c93f0140a18c72f5d60da153254e304a54a94a6ed8f",
+    "inventory": "7d61fc21fe1edbbde1c642c34a2559e69f4a8db5b206cbc2335eda824ebb37a2",
+    "inventory_binding": "f2f31e4cc27445485fddc93d5177987ccf23829a1d4fcb46ccd7fd252f73629c",
+    "source17": "a6eb41d05f6e729918de26539aeb07108ae270c0a4f6cc2d8c72542e43e68c8c",
+    "target20": "5a6079e78fe29344be7842630f8237c9e79c391e892ce1b60133149a7581b351",
+    "genuine68": "6b5540a208617790d35310b0fdfbcbbf8e469477667f0737d980a2028591bc42",
+    "public_proposal": "2c9e98e3d7a4de099a2d70b39411ec972482806ba7419783e8b09425a6175e6c",
+    "public_proposal_independent_privacy_review": "07986c18f410091d1ea16ae67a3d52a3f5b1f8360c52bffc64a43010c7f02db0",
+    "installation_and_replay": "4611e68349a1d5922c45995b72de2daca91692f9879591b85777d233607492b8",
+    "installation_bounded_independent_readback": "ddae9dcea4d7f6f0d032fbc53fa356fcb0c074465d611791e3f742c4117389e3",
+    "selected_local_checks": "650fc600013abfdc53753a8dc33471cfb5e2129b16965c12a95fec06f58e246b",
+    "final_task_check": "bd981ebbaacdfb18c71caee5e0edf309b7ce7ad2436c58348b55eac2aa7660d5",
+    "whole_preservation_audit_actual_V6_1": "cac5100aca9da7f7419c09642ca1633af43cf3496c4212af0a918c0ad9ff79be",
+    "whole_preservation_audit_V6_1_execution": "afd010e2b6e331a1d1ddeffea303676b6c9ed7e60e9a52c7edba87a3f9922a3a",
+    "whole_preservation_audit_V6_1_helper": "a79bf20900a9b232f21621b04d4be857a03199394c61901132748292efbb7ebc",
+    "whole_preservation_audit_V6_1_stdout": "7013a435f5a4bb3aca4d52f32707284163a89bc3bd019027301f06b5581c564d",
+    "whole_preservation_audit_V6_1_stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "preserved_initial_whole_audit_V5_failure": "54f4d5652266fd9f3f8702bc8ec2bfbb9eab3710ea6a9b035f5b790933cbc82b",
+    "raw17_metadata_default_addition_independent_diagnosis": "2ecfb0c5b275fc741c88f190108431379ede43e398ab89c74076fd58393c790d",
+    "raw17_metadata_default_addition_authoritative_diagnosis": "759ece7d94cb64021ea6599581f496845fd04aa291981576b9673f164a3c54d0",
+    "whole_preservation_audit_V6_1_input_packet": "7dbfe86658c3aeb4015cf39cea9c93066f16c35de7091186bf3b92d132c202a2"
+  },
+  "source_documents17": [
+    {
+      "slug": "design-thinking-practice",
+      "locale": "zh-TW",
+      "assembled_document_sha256": "de53a8889b941dbe6672cd2b7c61dd9c8dd5ffa641204514a246637ae3f67543",
+      "original_published_document_sha256": "857a5be3f7a943afb443ccde509e08836aa2c1638a6de0329bdcf2a1fde9aa28",
+      "source_correction_required": true,
+      "selected_for_future_publication": true,
+      "actual_whole_source_read": true,
+      "actual_source_diagram_and_hero_viewed": true,
+      "source_dates_preserved": true
+    },
+    {
+      "slug": "portfolio-case-study",
+      "locale": "zh-TW",
+      "assembled_document_sha256": "77b7e654e56aec4edb57501e589cb2eb8666debe8feb77838accef932a74d0a9",
+      "original_published_document_sha256": "77b7e654e56aec4edb57501e589cb2eb8666debe8feb77838accef932a74d0a9",
+      "source_correction_required": false,
+      "selected_for_future_publication": false,
+      "actual_whole_source_read": true,
+      "actual_source_diagram_and_hero_viewed": true,
+      "source_dates_preserved": true
+    },
+    {
+      "slug": "brand-identity-logo-brief",
+      "locale": "zh-TW",
+      "assembled_document_sha256": "81e4730d2f1025abc947462877573f3ef0195b252593225ae8a7a1aaf43219da",
+      "original_published_document_sha256": "81e4730d2f1025abc947462877573f3ef0195b252593225ae8a7a1aaf43219da",
+      "source_correction_required": false,
+      "selected_for_future_publication": false,
+      "actual_whole_source_read": true,
+      "actual_source_diagram_and_hero_viewed": true,
+      "source_dates_preserved": true
+    },
+    {
+      "slug": "web-design-agency-brief",
+      "locale": "zh-TW",
+      "assembled_document_sha256": "8f9728acc2f9e587b6162df382217d6d1d02e2fca8cc3adae60b97daf04aec7a",
+      "original_published_document_sha256": "9a2872dc2f80efaa0e74545107f15f49b9cc92a3ed73943125e9e03c71870ae4",
+      "source_correction_required": true,
+      "selected_for_future_publication": true,
+      "actual_whole_source_read": true,
+      "actual_source_diagram_and_hero_viewed": true,
+      "source_dates_preserved": true
+    },
+    {
+      "slug": "website-404-recovery",
+      "locale": "zh-TW",
+      "assembled_document_sha256": "768acf5dc69a9f3a47c7a4dc27a3cb7732d944baaa2afc1671f2135919cfc9ba",
+      "original_published_document_sha256": "c7f8d1378d95db2b9c8f5df49499892e3a9464bb1b820208589efe9894a06373",
+      "source_correction_required": true,
+      "selected_for_future_publication": true,
+      "actual_whole_source_read": true,
+      "actual_source_diagram_and_hero_viewed": true,
+      "source_dates_preserved": true
+    },
+    {
+      "slug": "website-www-subdomains",
+      "locale": "zh-TW",
+      "assembled_document_sha256": "8c4b14c1cf900832082cc33e4a20eb78442ab086d82b83a59a3cfc3cbfae08a5",
+      "original_published_document_sha256": "cc521d0025b0a0c60cc709ba40581c29d2ce927e21a07f18647ff4240f81b949",
+      "source_correction_required": true,
+      "selected_for_future_publication": true,
+      "actual_whole_source_read": true,
+      "actual_source_diagram_and_hero_viewed": true,
+      "source_dates_preserved": true
+    },
+    {
+      "slug": "ai-design-prompt-workflow",
+      "locale": "zh-TW",
+      "assembled_document_sha256": "2261ceff3642706250a06a4c7f3e86329e94e5208bb0c3df4e8fd8db764fafd7",
+      "original_published_document_sha256": "4106a63b92268a6d8ee8e774a774d7283e6659e3b812db8b6cee3eb94bae1bbc",
+      "source_correction_required": true,
+      "selected_for_future_publication": true,
+      "actual_whole_source_read": true,
+      "actual_source_diagram_and_hero_viewed": true,
+      "source_dates_preserved": true
+    },
+    {
+      "slug": "canva-design-workflow",
+      "locale": "zh-TW",
+      "assembled_document_sha256": "63359207372cf1bfde33700ace7ca5a07f821d969d93796752692309631ab939",
+      "original_published_document_sha256": "52f51c88a82a459398e6e599096a82c8ea9e704380465804c1149be6e1ef4383",
+      "source_correction_required": true,
+      "selected_for_future_publication": true,
+      "actual_whole_source_read": true,
+      "actual_source_diagram_and_hero_viewed": true,
+      "source_dates_preserved": true
+    },
+    {
+      "slug": "customer-journey-funnel",
+      "locale": "zh-TW",
+      "assembled_document_sha256": "879d9ee8ebf60d7f6eb9f88ffe7cfcac5af563c9558aab848cc371963100cd33",
+      "original_published_document_sha256": "2248c9e3878192970816dcc8def7951bff5aed0526cfb0188f1209b05ceabbc3",
+      "source_correction_required": true,
+      "selected_for_future_publication": true,
+      "actual_whole_source_read": true,
+      "actual_source_diagram_and_hero_viewed": true,
+      "source_dates_preserved": true
+    },
+    {
+      "slug": "marketing-copywriting",
+      "locale": "zh-TW",
+      "assembled_document_sha256": "e00b538b56cb63eaf0a944ee62aa48ae516c3b189731d7f8953397c3e17d4bab",
+      "original_published_document_sha256": "8aa601c0f4896b26762777ba88c31b821c8630ba605a6285e518c49084963ecc",
+      "source_correction_required": true,
+      "selected_for_future_publication": true,
+      "actual_whole_source_read": true,
+      "actual_source_diagram_and_hero_viewed": true,
+      "source_dates_preserved": true
+    },
+    {
+      "slug": "seo-domain-authority",
+      "locale": "zh-TW",
+      "assembled_document_sha256": "f2b1cbb9ddb7a108e66f1d7f41c4a726074948e38c260ab03ff4fdd2ebfb16a5",
+      "original_published_document_sha256": "f2b1cbb9ddb7a108e66f1d7f41c4a726074948e38c260ab03ff4fdd2ebfb16a5",
+      "source_correction_required": false,
+      "selected_for_future_publication": false,
+      "actual_whole_source_read": true,
+      "actual_source_diagram_and_hero_viewed": true,
+      "source_dates_preserved": true
+    },
+    {
+      "slug": "seo-trust-sensitive-topics",
+      "locale": "zh-TW",
+      "assembled_document_sha256": "03410f1d693595a3e645cded719378d314139b30d2702f4b4856b7b40c06abca",
+      "original_published_document_sha256": "37a2e06bc46baa91015ebc21b86f7d598419642811ac1c21ae42d186630d3919",
+      "source_correction_required": true,
+      "selected_for_future_publication": true,
+      "actual_whole_source_read": true,
+      "actual_source_diagram_and_hero_viewed": true,
+      "source_dates_preserved": true
+    },
+    {
+      "slug": "paid-vs-organic-marketing",
+      "locale": "zh-TW",
+      "assembled_document_sha256": "5e1a8e1569da09bc78c46a3dfc8e465550ecebf9722b21be6756023e80ff8f16",
+      "original_published_document_sha256": "5e1a8e1569da09bc78c46a3dfc8e465550ecebf9722b21be6756023e80ff8f16",
+      "source_correction_required": false,
+      "selected_for_future_publication": false,
+      "actual_whole_source_read": true,
+      "actual_source_diagram_and_hero_viewed": true,
+      "source_dates_preserved": true
+    },
+    {
+      "slug": "wordpress-blog-build",
+      "locale": "zh-TW",
+      "assembled_document_sha256": "7635cdee0e7c8cca6492be45d552ae88828f9899feea78a41e270ad4c5d176c8",
+      "original_published_document_sha256": "e90738e066cae12a93dacf5d40ce4eb37993078b8eb61c12311cf8f786592189",
+      "source_correction_required": true,
+      "selected_for_future_publication": true,
+      "actual_whole_source_read": true,
+      "actual_source_diagram_and_hero_viewed": true,
+      "source_dates_preserved": true
+    },
+    {
+      "slug": "wordpress-comment-spam",
+      "locale": "zh-TW",
+      "assembled_document_sha256": "afcbecbc203a0f5b0d273b396a81bce703b917429802ba4269c6ec976721c332",
+      "original_published_document_sha256": "ef124872b2da725961846d3bb941f65a51b953f8a2c6ed9ac8f0df88467da98d",
+      "source_correction_required": true,
+      "selected_for_future_publication": true,
+      "actual_whole_source_read": true,
+      "actual_source_diagram_and_hero_viewed": true,
+      "source_dates_preserved": true
+    },
+    {
+      "slug": "wordpress-performance-plugins",
+      "locale": "zh-TW",
+      "assembled_document_sha256": "cf547f499451f30ddebd951f5edd3442a5cb2606d52aba29d417744611b6c65a",
+      "original_published_document_sha256": "b51710d0eaf7b53708f29399103471c22573264b6d68a5e997883b4188922f39",
+      "source_correction_required": true,
+      "selected_for_future_publication": true,
+      "actual_whole_source_read": true,
+      "actual_source_diagram_and_hero_viewed": true,
+      "source_dates_preserved": true
+    },
+    {
+      "slug": "wordpress-reset-safely",
+      "locale": "zh-TW",
+      "assembled_document_sha256": "631ed336116212e02260fd628999f0ffd421ec34c155c3614c7c777af3d25514",
+      "original_published_document_sha256": "0e35950667a9c14985c34c0c9e30db67c93c100a8b48bb741f4ed5daa87ebfa6",
+      "source_correction_required": true,
+      "selected_for_future_publication": true,
+      "actual_whole_source_read": true,
+      "actual_source_diagram_and_hero_viewed": true,
+      "source_dates_preserved": true
+    }
+  ],
+  "target_documents68": [
+    {
+      "slug": "ai-design-prompt-workflow",
+      "locale": "en",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "9d7ad518c6d093708550d410a5a0459cd03cbad3c77c0cbb283e288f4750eae2",
+      "assembled_document_sha256": "9d7ad518c6d093708550d410a5a0459cd03cbad3c77c0cbb283e288f4750eae2",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "025ef5fb29c4e51d96f34eadc5751214881e4ae3587031f4699f9b7a1316eecf",
+      "genuine_external_evidence_sha256": "d8e525264fef1005a1b5de06da1fd8b88ee371a45dc44559f7ed8ea0e99cddc3",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "ai-design-prompt-workflow",
+      "locale": "ja",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "537cc82b89d486c14655704f42e75e8a013a5b17019b86dc2e435723464a1dc4",
+      "assembled_document_sha256": "537cc82b89d486c14655704f42e75e8a013a5b17019b86dc2e435723464a1dc4",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "c0dcfde2a8f856d02b62d0a68e6a0f4d09519874a7301d4f874f58b8a877740d",
+      "genuine_external_evidence_sha256": "9b66099b49d232d1f9d3169fdfa84118dc6484729737074716dcc3e9d7db639a",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "ai-design-prompt-workflow",
+      "locale": "ko",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "d741f385c457f64352c30a03e4b43e52da0effcc5f997f8335ecb311a74470ff",
+      "assembled_document_sha256": "d741f385c457f64352c30a03e4b43e52da0effcc5f997f8335ecb311a74470ff",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "7f75d53bb530fad286fb056dd6c19a70564aa8480ee6ed4c768cf6de4fb8e1fe",
+      "genuine_external_evidence_sha256": "89cc56a34cb4968ab947241ed91f15818f42b1433db0e1bc1d3aaaa9024cde89",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "ai-design-prompt-workflow",
+      "locale": "zh-CN",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "881080d5f0f3facca79617ca7a4acdd3d4155b13c0da07651f736c2a651eec04",
+      "assembled_document_sha256": "881080d5f0f3facca79617ca7a4acdd3d4155b13c0da07651f736c2a651eec04",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "49453578205ddd8a1736b0ec5e7729f3f575852336c5918a21e4941cbb592ff4",
+      "genuine_external_evidence_sha256": "5b8d09d00bbef6d08e3bd00c2fbf7d139ef2f8461355789f9942e5a47c0557dd",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "brand-identity-logo-brief",
+      "locale": "en",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "df4506f4d7391eb169dd11e96af3ab0a4033be39171a5ad07e3db0d0d04221e2",
+      "assembled_document_sha256": "df4506f4d7391eb169dd11e96af3ab0a4033be39171a5ad07e3db0d0d04221e2",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "c0ff6ea433496fad502a1bc7b81e333d9e8c8f4bd1a57f985f2a990082a5b07f",
+      "genuine_external_evidence_sha256": "60955cb8670e270301f3559f17c8cc4b72b99ebfab5d4e1d8d534773e58e0577",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "brand-identity-logo-brief",
+      "locale": "ja",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "bf557661e1463973239e561b89afea5c3d01d03e77835ca430692cf3c3224ec1",
+      "assembled_document_sha256": "bf557661e1463973239e561b89afea5c3d01d03e77835ca430692cf3c3224ec1",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "b96388b1b7812af5ba29562cbab4896cca266a30416ec8ed0fe0154d994125be",
+      "genuine_external_evidence_sha256": "ced4ec0c142879394cd1c254e71ed7df707635940aa648d7b708f8946de3194d",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "brand-identity-logo-brief",
+      "locale": "ko",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "de3b6c1bac78bf31cbd4aac7c1220859345575de040f2c58cda34b2da21dab3f",
+      "assembled_document_sha256": "de3b6c1bac78bf31cbd4aac7c1220859345575de040f2c58cda34b2da21dab3f",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "c0896efaa49e785b2b889c2951f0522a45c61d0c8ad98ef069eaa4a9f061fcbb",
+      "genuine_external_evidence_sha256": "5f759764042a34fbdc8f497ad66d10ab3903007c20dd59218a678bc6c5854d6c",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "brand-identity-logo-brief",
+      "locale": "zh-CN",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "cf2d81894b8bee47ad114a0c423dbe40f6be832d97dece58a51c2187f87deb81",
+      "assembled_document_sha256": "cf2d81894b8bee47ad114a0c423dbe40f6be832d97dece58a51c2187f87deb81",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "b419a228162326fd08c655f24fbded5c454cba32b381a73dae739ec4a8046252",
+      "genuine_external_evidence_sha256": "f900dde3a87d9645e95aafe11f6d4b89e831bd793ac965ef24f4e6a5be88273f",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "canva-design-workflow",
+      "locale": "en",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "e16222b87d185c7a97c79fa4db30f1e734da774a85e9be66977cd14b2b8e1cb1",
+      "assembled_document_sha256": "e16222b87d185c7a97c79fa4db30f1e734da774a85e9be66977cd14b2b8e1cb1",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "5fb6572cbf1d6ce9b2758529540064450dc70b4d526b00a4df3fe5e7135b1648",
+      "genuine_external_evidence_sha256": "1c11ce4a74b1dcf74c4d161a71521f15c13885feaf27d0f6e31953833bb8d775",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "canva-design-workflow",
+      "locale": "ja",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "80af67abede77f39f449a6938c4d063ba0723faeebefc9e4c0b74cd1cfbdbf08",
+      "assembled_document_sha256": "80af67abede77f39f449a6938c4d063ba0723faeebefc9e4c0b74cd1cfbdbf08",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "35d978b3e1c087bbd3333704783e49f7c0abb57ab72613856232955610e4c31f",
+      "genuine_external_evidence_sha256": "bc1f9970d55f6220dc64b2e4d660e7f15fc5e1333aa6042185e80366ac5b0f21",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "canva-design-workflow",
+      "locale": "ko",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "4b7877a518f8ce0636d902cb9fe2bc13721bff6404a669f86953a8d3d7b1a903",
+      "assembled_document_sha256": "4b7877a518f8ce0636d902cb9fe2bc13721bff6404a669f86953a8d3d7b1a903",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "8ee0a8fa27049db4d4dd1f5b1b6107884fd2270f0978c2d13e0a8dff4875cd11",
+      "genuine_external_evidence_sha256": "9e7c9a2e1d13821a10ee64c42127e82c870c320039394e4cab132806d156559b",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "canva-design-workflow",
+      "locale": "zh-CN",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "535b94e0d4c242d33117ec7014576e8543ea119c8b20c3510280eea63bff390b",
+      "assembled_document_sha256": "535b94e0d4c242d33117ec7014576e8543ea119c8b20c3510280eea63bff390b",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "3168c5ff35c2cd0e711ffa52da0d41850de56977bc3323453b3d69838c79f687",
+      "genuine_external_evidence_sha256": "c0cf9fbf245b0e8d2bc516efda2e5a3f71044b3eeb6b49bb8338e0f718020b3c",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "customer-journey-funnel",
+      "locale": "en",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "f8d17d0959aee64187bb106b5910aa90abf569f3ff46bc915fd6605b14fcda4a",
+      "assembled_document_sha256": "f8d17d0959aee64187bb106b5910aa90abf569f3ff46bc915fd6605b14fcda4a",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "8519fb46853f3db03d295cbcd943ce517ac81bd4a57c68ecb8ea7a613fe8ce88",
+      "genuine_external_evidence_sha256": "36bbe49ad6e0ed38522bde98534abc33c8a986f98f00b97faf414037bf9126e3",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "customer-journey-funnel",
+      "locale": "ja",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "e1f4e927ae928e7963e9077e70296d2c2c5be7d50cbfb76caba7c47a85b18bf2",
+      "assembled_document_sha256": "e1f4e927ae928e7963e9077e70296d2c2c5be7d50cbfb76caba7c47a85b18bf2",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "8855b851a4498799a8ae5ea42072f1a4d0c704ac399e880706765b9c202e5cbd",
+      "genuine_external_evidence_sha256": "f3c7c78d74bf42b9f61f0454330b8db8b150ce63bda6175860a45c476f09dde6",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "customer-journey-funnel",
+      "locale": "ko",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "8fa060b6880625cbf52809c16154c68d2c20a4e924d6ef018419e170f72ce169",
+      "assembled_document_sha256": "8fa060b6880625cbf52809c16154c68d2c20a4e924d6ef018419e170f72ce169",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "ba5f1ace223d769a80d369be9d8c56576bb439b6d2ec3d909c9186731d427c81",
+      "genuine_external_evidence_sha256": "194d49cdee82c402d1c5144ac01dea77712c4a90125dc370ca01ed087f5d70ff",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "customer-journey-funnel",
+      "locale": "zh-CN",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "d3783ac4ef763611b1c9f9d082baa8e26b38aa82b59715a3523072b43ba3d602",
+      "assembled_document_sha256": "d3783ac4ef763611b1c9f9d082baa8e26b38aa82b59715a3523072b43ba3d602",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "db9b25bca1cf4fc4991249bb9da1a8e8c13d4e98d474e369569d80c5475d4b18",
+      "genuine_external_evidence_sha256": "79d91a2af373e5b20378c4c68069881b949c1d8ed3497eb0ae288577d7e72d5b",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "design-thinking-practice",
+      "locale": "en",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "cbd9ecf4244485017eb29746cfc21a093119191494100fc2cfb7d91c5b3843f1",
+      "assembled_document_sha256": "cbd9ecf4244485017eb29746cfc21a093119191494100fc2cfb7d91c5b3843f1",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "f596f4d9a6b4c95ea524aa0f5650b4f77144f52956afbf0faaac8aaf51b05426",
+      "genuine_external_evidence_sha256": "1ba264a661dddd2f8c35b1def5b4b994e8449c944b12bbeb8f03bbf1a7a73079",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "design-thinking-practice",
+      "locale": "ja",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "569d3409cf2413eeb039a6a85d003ad70d7ab21b7ad00451ac6539258b0d0862",
+      "assembled_document_sha256": "569d3409cf2413eeb039a6a85d003ad70d7ab21b7ad00451ac6539258b0d0862",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "cdcce2b0c09989ec3a72942a0d5680c7d7ebdf2bc9dd41cdca03b1e51f76b191",
+      "genuine_external_evidence_sha256": "d896a0afe165256d1c60e3097d6cfb8ac0a22d252c3516a338f2abf2719bb2ea",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "design-thinking-practice",
+      "locale": "ko",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "01859d7ac504d94de9403cbf3b3fc0db72fbd6c74e7d99167c67bf04472ee207",
+      "assembled_document_sha256": "01859d7ac504d94de9403cbf3b3fc0db72fbd6c74e7d99167c67bf04472ee207",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "08d178f604ec290813123a129a42764422b695af3bf005f369bce68146290027",
+      "genuine_external_evidence_sha256": "60949b2b27bc01e86ea3fe0190f211f25aff3afedaf3a6a0fb166ef27725848c",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "design-thinking-practice",
+      "locale": "zh-CN",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "6a62d4835fb953bf74386655a5a3ca0744d33a1fde961eb27ead3bf33edffbf7",
+      "assembled_document_sha256": "6a62d4835fb953bf74386655a5a3ca0744d33a1fde961eb27ead3bf33edffbf7",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "0de3d74a22a91d53bd922f79eef6ba105a3a77b6981361ec3fbbd363c2f8c6b8",
+      "genuine_external_evidence_sha256": "62bd3da495a610e72e0c0d3bd52f4970210a3376912bd1b102d4095a31aecbfe",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "marketing-copywriting",
+      "locale": "en",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "8da248ee18f459e32b4b351e4b2f0919610e42a4123dd6db5b6301bf2d254732",
+      "assembled_document_sha256": "8da248ee18f459e32b4b351e4b2f0919610e42a4123dd6db5b6301bf2d254732",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "68c63969f7265e1b77cb5f03542d6a1662fbaa4e0101e80919da59d386c81057",
+      "genuine_external_evidence_sha256": "8d4c03b05cfd64ed6700f55fa8163f08590eb88609bba86dd1786683cdc11d22",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "marketing-copywriting",
+      "locale": "ja",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "6b26c3385500710ea2132610bbdd2c08460318c52b6ef58db51685f429ccfd0d",
+      "assembled_document_sha256": "6b26c3385500710ea2132610bbdd2c08460318c52b6ef58db51685f429ccfd0d",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "489e1a7167d6917d35bfa09106fc6980a4a51496df83e7d77d13a0cbbe2043d7",
+      "genuine_external_evidence_sha256": "33e16a1da3282030b56fcdbb43ce7cf8b76eb0cd14772ff1a5af81d4bedf32c2",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "marketing-copywriting",
+      "locale": "ko",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "152c1d829dc7827da3c003461f355d320917293e25c8ab114c670bbf5b951855",
+      "assembled_document_sha256": "152c1d829dc7827da3c003461f355d320917293e25c8ab114c670bbf5b951855",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "2a7833f050a1735f2ae2daf4c7575277de30f1c728150725511695019e11cf1d",
+      "genuine_external_evidence_sha256": "148eebf7b5fc68a0b41a22cbe5c8b1b2240de9e53c5efc953f3b1c072fc08223",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "marketing-copywriting",
+      "locale": "zh-CN",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "ac62665836dffcbcaa9c807316f0b5d7d2375c7966c3399abf4fafecff8b7767",
+      "assembled_document_sha256": "ac62665836dffcbcaa9c807316f0b5d7d2375c7966c3399abf4fafecff8b7767",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "acda7968be28f7dee17cdbea3e4b8592efec43fc251dc3c3559a2ab70bd7c3db",
+      "genuine_external_evidence_sha256": "c841184746880aeeee62c99e77741cbbd7a95b0860508e0f0b0777474303bf54",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "paid-vs-organic-marketing",
+      "locale": "en",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "f40be0cb197bdfc97e484b029b23e689dbad1b9e923d9b079b55fbbd4bc27cdf",
+      "assembled_document_sha256": "f40be0cb197bdfc97e484b029b23e689dbad1b9e923d9b079b55fbbd4bc27cdf",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "309ea13c74273322098d1ff9af71d2eb9d13722bcb70895b9e6fd009f8e147c6",
+      "genuine_external_evidence_sha256": "b47c08cbcad8c58e512921feb165101e3245ebd80a9152a800b078821aae6e1f",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "paid-vs-organic-marketing",
+      "locale": "ja",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "d38f3343354ff4073b16480ef09850415cfdb074a0078fe6f0bc107747d4cd00",
+      "assembled_document_sha256": "d38f3343354ff4073b16480ef09850415cfdb074a0078fe6f0bc107747d4cd00",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "14f6764146f814f5a068990144c1195b6c85de6523157197bd11f5bfce74d6e6",
+      "genuine_external_evidence_sha256": "1cb3ad9417b32b38c96dcbd37b7fb8959caefff28cecf85dcded281e3b29780c",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "paid-vs-organic-marketing",
+      "locale": "ko",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "ea1cd0608228020ccdcd683a97e555e2eaddb90ac38a0add7875abd4f16ab097",
+      "assembled_document_sha256": "ea1cd0608228020ccdcd683a97e555e2eaddb90ac38a0add7875abd4f16ab097",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "69273491468c38937f70231219e2fccaeefeb9ad57c1b34528bafd95779772d2",
+      "genuine_external_evidence_sha256": "6e24296bb998e36c34cace5fb8da79772dcc1308ae79ad5eb0ac59db2c18b9f7",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "paid-vs-organic-marketing",
+      "locale": "zh-CN",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "295d0ab3d9733771a3dfda26c225a3581f038af2c6046c2e762b2056258e2145",
+      "assembled_document_sha256": "295d0ab3d9733771a3dfda26c225a3581f038af2c6046c2e762b2056258e2145",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "3873f9602693f695b5c018faedc2be7df28e803f3252236e150bad9872c6a3f0",
+      "genuine_external_evidence_sha256": "e38a84d61bcca00ee2c58389351e5e3983cdc0d90c5866e7e4ece4e1cc50fb2f",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "portfolio-case-study",
+      "locale": "en",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "93c3b58aed0276fc5f8e046b4aebd4ae23e3afe756d2daf5930e56d44574b6b8",
+      "assembled_document_sha256": "93c3b58aed0276fc5f8e046b4aebd4ae23e3afe756d2daf5930e56d44574b6b8",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "0cea1fa90a4f73a157923a0da443b103c67269e1804cdd038775da3485d1d194",
+      "genuine_external_evidence_sha256": "cff12139a38f7d16b60aaa67ec737498b3179b9ca77da5cc238c1bfb52654cc2",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "portfolio-case-study",
+      "locale": "ja",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "b1184c9faf8401873f6150176e02887f04c39a0208765e3360553f4f52067321",
+      "assembled_document_sha256": "b1184c9faf8401873f6150176e02887f04c39a0208765e3360553f4f52067321",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "b240832e4f5182c6600ba4a6a27c2711b3372619ca11d4c51f04d00a6e3059bc",
+      "genuine_external_evidence_sha256": "0c4893596d420afa7a33981ab67e7ed2be222bb3a8bcfa9f14d3bf48a8b94e1c",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "portfolio-case-study",
+      "locale": "ko",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "0dbad045ee017d09ac706e01c853d64a2d0f50139a4d7dbe0432a459b853e838",
+      "assembled_document_sha256": "0dbad045ee017d09ac706e01c853d64a2d0f50139a4d7dbe0432a459b853e838",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "2f7fa2efdbcfcca6d7a8dad321cfe2831b52231210b95354088b019e0dbfd174",
+      "genuine_external_evidence_sha256": "b6f9892b3f7863dfaf4305468dbf15c0fccb86926afc10db447e287ecf2ca3ac",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "portfolio-case-study",
+      "locale": "zh-CN",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "5a7f6f84408cc3b14230ec6ce2aa6436b9c79ee15f7d1dd31f60a8f68282af41",
+      "assembled_document_sha256": "5a7f6f84408cc3b14230ec6ce2aa6436b9c79ee15f7d1dd31f60a8f68282af41",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "fa724f505578554120981d86865f8b9d4067c305272e15d976c595607b43bd18",
+      "genuine_external_evidence_sha256": "0a52ed68ad9c638cd28b60ef3565d28313f05d7c35ed1ed21b4072aefe65f8fc",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "seo-domain-authority",
+      "locale": "en",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "eba4480bf65decf880256aa34ad689c7c53f762216348d57e0884dc1b7693af3",
+      "assembled_document_sha256": "eba4480bf65decf880256aa34ad689c7c53f762216348d57e0884dc1b7693af3",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "00601b83521dae51f5587a5ee98ff32b38167f054c23731a49be3c27c957bd15",
+      "genuine_external_evidence_sha256": "effceb8a16dc700cc6df32428cf6dbb48a736e819d44c3f4a0af21cb59a73beb",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "seo-domain-authority",
+      "locale": "ja",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "201911b108d8f7276dc3d4291a645b6b03acf7cbfabff5c38a1fb2a3780b52b6",
+      "assembled_document_sha256": "201911b108d8f7276dc3d4291a645b6b03acf7cbfabff5c38a1fb2a3780b52b6",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "0812e60eed343a9574f39a2d4b801137ff6a8c15d6262c4472448a809b2b3a97",
+      "genuine_external_evidence_sha256": "5078b0cced0d79f794444d5bb3d77e2db3fbf2db262078b4870dc770c3f1dc3d",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "seo-domain-authority",
+      "locale": "ko",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "5d67889fb700b6f861db7c5fe48685a81bbc2baae9173c708d13cec381ac7062",
+      "assembled_document_sha256": "5d67889fb700b6f861db7c5fe48685a81bbc2baae9173c708d13cec381ac7062",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "18d826842622176bb1722963d7532a46783bd301310092990224c423473d00e1",
+      "genuine_external_evidence_sha256": "2565a13b942511c31b4a5aed4ed0254636ff64243476c7ce09f7c9e6f4ecc6af",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "seo-domain-authority",
+      "locale": "zh-CN",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "935c17eb39daf766a498275c30cb697f0f8d2d2abcbbb224612b30a6dba1f0be",
+      "assembled_document_sha256": "935c17eb39daf766a498275c30cb697f0f8d2d2abcbbb224612b30a6dba1f0be",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "f8b3167f1f2d99ba9a3f5b91b51fbcd202be6e02db921d2bf2a411a3e5579ade",
+      "genuine_external_evidence_sha256": "d1868523581148c0738da4fefdbde1c664c6f5b0a9a2a8d9a3337e70bbcb1ab8",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "seo-trust-sensitive-topics",
+      "locale": "en",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "aee20e3db3e3d0c84cafee9b39dd4d053b4a297bd9d90b656ad55bd7ecfbac4d",
+      "assembled_document_sha256": "aee20e3db3e3d0c84cafee9b39dd4d053b4a297bd9d90b656ad55bd7ecfbac4d",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "5042170d76901299a460a833a6f273b1c8289397c27662df2c31233eee386294",
+      "genuine_external_evidence_sha256": "83a14f919e880cf3796af3134f339ec2e4bfb15b17404c6550329683ceafbbf2",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "seo-trust-sensitive-topics",
+      "locale": "ja",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "2bd67659d279161d4d9e6cb612dcc5c7cd94217d2e897179558e5680c374100c",
+      "assembled_document_sha256": "2bd67659d279161d4d9e6cb612dcc5c7cd94217d2e897179558e5680c374100c",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "b1d3e1252dc502adf4668d3a25bf0c31562b8175a1ab9d8747d226a2d5a374de",
+      "genuine_external_evidence_sha256": "8b7c7d3ad13754a5d5877cf1c0ef81472c95510d60336c5cd79932eab9a1164a",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "seo-trust-sensitive-topics",
+      "locale": "ko",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "137071a98d17b19068fb02a54c5d845f1404741f3c78850a464e233447249b96",
+      "assembled_document_sha256": "137071a98d17b19068fb02a54c5d845f1404741f3c78850a464e233447249b96",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "2870e96b689c900253bbc817be0d5a329dc84fc8b15309b196ab7a429446838e",
+      "genuine_external_evidence_sha256": "c712e14b20213621206a12a3d9025230672fd1a6e4306646f5a0feb4f9534822",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "seo-trust-sensitive-topics",
+      "locale": "zh-CN",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "ee0b23f12333606b241341123e94932736cf730793398284407b38037af05631",
+      "assembled_document_sha256": "ee0b23f12333606b241341123e94932736cf730793398284407b38037af05631",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "f4a87549f243e4de7f70096bef118f9dc9380403d33181a3468ea81deb3c753d",
+      "genuine_external_evidence_sha256": "487efef961e57d7a4f9037269c86d0342b0bfa9ef919082f4c20e0f427387b35",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "web-design-agency-brief",
+      "locale": "en",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "73003c7b000c34e48ce2b4c878bd6edfedb2e70bf35bbd9193c7321e3234dbd3",
+      "assembled_document_sha256": "73003c7b000c34e48ce2b4c878bd6edfedb2e70bf35bbd9193c7321e3234dbd3",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "b921f3c5119504483eb5e9a2de79ff129cdae5b2a01c0047152f4081cb9ad3cb",
+      "genuine_external_evidence_sha256": "3cf0e2d01055a3379c53ac9024a1ca4fede2140218102c94480d38eec24ae053",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "web-design-agency-brief",
+      "locale": "ja",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "dfcdf2b83a978f4df511402bd22dd4d8eaeff9cb622a9911a7b39debbe632743",
+      "assembled_document_sha256": "dfcdf2b83a978f4df511402bd22dd4d8eaeff9cb622a9911a7b39debbe632743",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "8ed01eb49fa7a3b4dc77ec5631aa5c5ad3eb0547527827501ce18ba4ac7336ce",
+      "genuine_external_evidence_sha256": "fe4228bf37520fff8469f08d3c2c5c05a410e7f77937dc57cef7a5de3ddfcfb1",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "web-design-agency-brief",
+      "locale": "ko",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "6629d92e87cdb92ea3b8ba76407c80dbbb4b145d2900772d1ce3fc7f29718281",
+      "assembled_document_sha256": "6629d92e87cdb92ea3b8ba76407c80dbbb4b145d2900772d1ce3fc7f29718281",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "3cba52bd9e208abd35ceb4a3957bd9847d4658bffeabb2f3b40a5920d7943703",
+      "genuine_external_evidence_sha256": "1479d43fd79ba96519baf979ce2cc6a79c1ad0369f1e7e3b7711b56c8d424db3",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "web-design-agency-brief",
+      "locale": "zh-CN",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "b3234dc29013e9c7ddf05d962bdd92c61515eef0be7e597464d3920d2c1eb8d1",
+      "assembled_document_sha256": "b3234dc29013e9c7ddf05d962bdd92c61515eef0be7e597464d3920d2c1eb8d1",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "aa98d14d0829734c01772cb1802517cd19bb186e2acc0534690c4cab9f1d51c9",
+      "genuine_external_evidence_sha256": "e246125734a40ee2310a30d2bcfde83a95b92e5440efb6e59fe3a2cd72266fb8",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "website-404-recovery",
+      "locale": "en",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "22ab7d84c0b9b31e9116952cfa7296258430983ba830c641071d03085e1bc467",
+      "assembled_document_sha256": "22ab7d84c0b9b31e9116952cfa7296258430983ba830c641071d03085e1bc467",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "c36eb6bb6febefdba24594fd3458b167e5a15e828fde1e9ff8ae9b9fe4f717cb",
+      "genuine_external_evidence_sha256": "c5749316569a8344df4ca8ad8d239a6a45cd82e23352a751533b639c25616987",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "website-404-recovery",
+      "locale": "ja",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "29dd5c912e027cdb8594044f0b96bfa14af3afe68cdf536cf147a012fe115a2c",
+      "assembled_document_sha256": "29dd5c912e027cdb8594044f0b96bfa14af3afe68cdf536cf147a012fe115a2c",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "4820546e37cd35108b59f9f366bca1b2363850cd1e9f3927b4cb80964215d29e",
+      "genuine_external_evidence_sha256": "4c17ecf101eff374a341e8610fe51380f6ad1ce6e4d3df90b3f4244bea3c4e19",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "website-404-recovery",
+      "locale": "ko",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "8f916a0333e2daa292660f0813b7f46dae72740be17a8b350ad9a220f148cce9",
+      "assembled_document_sha256": "8f916a0333e2daa292660f0813b7f46dae72740be17a8b350ad9a220f148cce9",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "5815b6249ef953e73b0a598ee8a895b5a5f3ca7c4bd9ffecfddbdf54e3e352a2",
+      "genuine_external_evidence_sha256": "e1a6e664ea0f53791343cd351add77c2565fd2cf9cbe4af89e6427e56389d0df",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "website-404-recovery",
+      "locale": "zh-CN",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "2f24b4f655d95fbe33612272bef2412c4fba0e99ae1002307aa1da437f6aedc9",
+      "assembled_document_sha256": "2f24b4f655d95fbe33612272bef2412c4fba0e99ae1002307aa1da437f6aedc9",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "54b6f6e3d5a280c5786e76394e82e2e2483e48f34b6bd0d7175c395f7a7e3b97",
+      "genuine_external_evidence_sha256": "1c3944952f06d023dc469599011f4c1092fb36803c62e6608c10062c4ea2522b",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "website-www-subdomains",
+      "locale": "en",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "f3790e1ac7fa1df63c2a1fdca1f8e0ce15954b0bfb6bdb4ab13757c13bc6955b",
+      "assembled_document_sha256": "f3790e1ac7fa1df63c2a1fdca1f8e0ce15954b0bfb6bdb4ab13757c13bc6955b",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "a484114d66746946c74322d9469df5fc25439c1996ae0815bb6a9e5543e12c99",
+      "genuine_external_evidence_sha256": "1bdc6ff7995a3b3fcc21b79713a0097d73d2851bea75c262266bcfa65e3c8e26",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "website-www-subdomains",
+      "locale": "ja",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "ed0c8aa9f15e3522488723d932ec67445a8c754d9de7b10981a937887c03a6d8",
+      "assembled_document_sha256": "ed0c8aa9f15e3522488723d932ec67445a8c754d9de7b10981a937887c03a6d8",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "7955b1460ac5f612e2dd6b0541cfb87b14cbf75f7b2f17d62a569580922ab189",
+      "genuine_external_evidence_sha256": "81765fe2ea0ec93542515a7a10876d2f574eda7de67e8fbadee1ab4652890d58",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "website-www-subdomains",
+      "locale": "ko",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "2e901559504768e0d716b130bd66fd8668909a72f771fb2bf757b55af1bb79e6",
+      "assembled_document_sha256": "2e901559504768e0d716b130bd66fd8668909a72f771fb2bf757b55af1bb79e6",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "f50fb5c2b56db1ae9b27756718b1b41e6ed9dc7b88ce804fd09f770385dde2a2",
+      "genuine_external_evidence_sha256": "12c4128409c5f98f05da089c4e5ad5117309b32964ef51865d681b6fcedcae45",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "website-www-subdomains",
+      "locale": "zh-CN",
+      "mode": "translate",
+      "genuinely_reviewed_document_sha256": "9f3342b5a35233e89a5fbc2eae4b5cb3f47c2ee93d65a942e17ab115faff871a",
+      "assembled_document_sha256": "9f3342b5a35233e89a5fbc2eae4b5cb3f47c2ee93d65a942e17ab115faff871a",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "b9837ba64db78a11d98d03d55d5a5c68676be9d3278b6709745b4c9d518d6fa8",
+      "genuine_external_evidence_sha256": "39104ec4e32f5465ea6d2e123a1ccaf6665f523d4d549c4b05dd11185bcd8239",
+      "review_basis": "Current full text and genuine current native visual/glyph review",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "wordpress-blog-build",
+      "locale": "en",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "398890e5dea5c6b83e616cf80223d46927c533f0412a676f15b69dc97d912388",
+      "assembled_document_sha256": "398890e5dea5c6b83e616cf80223d46927c533f0412a676f15b69dc97d912388",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "1aa83f5087ece6edff397248e9b64d04af92abefcc58d8a7cb0fd22672c830e9",
+      "genuine_external_evidence_sha256": "a7718ab136e15fb44971fc8fa3d860e857142be55a58ebaf373dbac0b9bf0f9a",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "wordpress-blog-build",
+      "locale": "ja",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "f6acf847c21dbd40600fe27350b13b323cdaf955ad01146fb21ab80325e72838",
+      "assembled_document_sha256": "f6acf847c21dbd40600fe27350b13b323cdaf955ad01146fb21ab80325e72838",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "11b7a631c06b5958793f4c02a47b74c5b169d7a027180e2f72d201e347fc741e",
+      "genuine_external_evidence_sha256": "e3473d92ed7f91eba2b8d9d368331a847bc7a9041b6fe30240e73b176fbb6d82",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "wordpress-blog-build",
+      "locale": "ko",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "93e92248a2dbbd89ff5b369b0433e8b07f93d2976bd77f7cfa3660a18f464ca7",
+      "assembled_document_sha256": "93e92248a2dbbd89ff5b369b0433e8b07f93d2976bd77f7cfa3660a18f464ca7",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "dcf2a5c6a633548b6eba19f5b6cb4b24d3e2035886981eda849fa2065d6c0fe4",
+      "genuine_external_evidence_sha256": "6b81603da04b6efd7fada3b4a39aded87b2c3b5f69fa3ed55b3be3a7fea9bb34",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "wordpress-blog-build",
+      "locale": "zh-CN",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "80fc34ce7b2c7db8c710d92a3809958415e079be8aea4061e50e2dbe25581187",
+      "assembled_document_sha256": "80fc34ce7b2c7db8c710d92a3809958415e079be8aea4061e50e2dbe25581187",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "3a6fab208ab82bf643e0ab5736cd71f283b4a31a8c61e0315fb8eb7f90ba4a8a",
+      "genuine_external_evidence_sha256": "9fed4f2415d035c556f58ac74c513a23cec032523e94efa5550568f539f15221",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "wordpress-comment-spam",
+      "locale": "en",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "60fae4a3655c7293adde5e3089033a8ec7d2bca96cf3262098a8a4e7fba5cbb9",
+      "assembled_document_sha256": "60fae4a3655c7293adde5e3089033a8ec7d2bca96cf3262098a8a4e7fba5cbb9",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "3f07fea5a95f33ed0515fc91c9872351be0471361453c7ec15b3e3426d02bd0e",
+      "genuine_external_evidence_sha256": "eb6a892c83291c4aafe13285b040df90dd8c4402b77e5dcbdc764f5fb700771c",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "wordpress-comment-spam",
+      "locale": "ja",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "bf38e6d967ed5bb9331ffbeadc21dce4b1bba5f7bc7d7d3ac3c1dde070ad7792",
+      "assembled_document_sha256": "bf38e6d967ed5bb9331ffbeadc21dce4b1bba5f7bc7d7d3ac3c1dde070ad7792",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "7363b2bfd2fec7658f3dd9ef2f5d0b76f413298bf747fb585a73eba0e0d7a627",
+      "genuine_external_evidence_sha256": "22dccd3cf97ea9ef080d2135af08e4541c86ea8192abfa303871d14224ec197b",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "wordpress-comment-spam",
+      "locale": "ko",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "67abed741d62718f31b2980438edef5352e95528b3bed96fc5a4220f5485a650",
+      "assembled_document_sha256": "67abed741d62718f31b2980438edef5352e95528b3bed96fc5a4220f5485a650",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "898e25f66c17be6cec65b1b5c05164a453a0af50a4eab201dfc7b5db5d0d7e70",
+      "genuine_external_evidence_sha256": "383717139fb4997ec2565017ba0ec31e9580bf7a67a21b5bb270e205c90a6fc6",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "wordpress-comment-spam",
+      "locale": "zh-CN",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "6ea578d2e36d6c9b50cf4721cdc3f25baaa823d23250224f04c1bf9147550f10",
+      "assembled_document_sha256": "6ea578d2e36d6c9b50cf4721cdc3f25baaa823d23250224f04c1bf9147550f10",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "e25557ae6d5ff99a7be0cc8005f3a3ef66118426521c57277a017f5fe9654687",
+      "genuine_external_evidence_sha256": "d2acac907d3323a39e2b3d85a2aec847e5f753ec61f9b31249e0ef26dbddbda3",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "wordpress-performance-plugins",
+      "locale": "en",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "10c7b463597f0c29a99e1a596b76d203afd234cc8afe5c49744095c9bbf4eb13",
+      "assembled_document_sha256": "10c7b463597f0c29a99e1a596b76d203afd234cc8afe5c49744095c9bbf4eb13",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "389ed0fa635ea8532e67c9c16c86fc393363ded79d368c1c51746f45361d937a",
+      "genuine_external_evidence_sha256": "a20ffcc37b2531107adf2891a78d63aa84985f4175f0a294ab31d848d672d8e0",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "wordpress-performance-plugins",
+      "locale": "ja",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "79612e67a241c96dde9b40c0b22b5cad773d546d06c5ac3bdc57c76d37286cd3",
+      "assembled_document_sha256": "79612e67a241c96dde9b40c0b22b5cad773d546d06c5ac3bdc57c76d37286cd3",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "5fb40375544968b9b299358d75625f0b028b4df716d41064ffd193379252bdfb",
+      "genuine_external_evidence_sha256": "a41c1bd569d1d077d2f3a874189408dd681aed397ca2d404e3d35675db0d9c5a",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "wordpress-performance-plugins",
+      "locale": "ko",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "dfa00cb8470ef34a32648de86117e84355eb131f4e6164d9bc28a8600bef163b",
+      "assembled_document_sha256": "dfa00cb8470ef34a32648de86117e84355eb131f4e6164d9bc28a8600bef163b",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "81fa9339e209dad4a1fe64673022673eb2213bd17b5343cde44a98484127157b",
+      "genuine_external_evidence_sha256": "695b3d18b46bc78de848b86ae184babc5f958e24a2a8a1164942bba2a5ecfbf3",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "wordpress-performance-plugins",
+      "locale": "zh-CN",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "b9dc04bf864df6827d06cb99a9ec9602699b7e0df91d6d9427d58f364368f70e",
+      "assembled_document_sha256": "b9dc04bf864df6827d06cb99a9ec9602699b7e0df91d6d9427d58f364368f70e",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "8fe57665b7265053dd1b6138fea27fb75ce8fb2a02aa7ddd5f8be088ae12b474",
+      "genuine_external_evidence_sha256": "fc777b9558bbed27749094226b82cdcd158245154e8f14227b691403675cb526",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "wordpress-reset-safely",
+      "locale": "en",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "3f11659364044c301eeb522b9c78faef125abdc6184d76aeda19b1a3f4fb97f5",
+      "assembled_document_sha256": "3f11659364044c301eeb522b9c78faef125abdc6184d76aeda19b1a3f4fb97f5",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "0a699610a196fa9e78b04bf4ba086e6948d188aa31775c1453746b301a237c2d",
+      "genuine_external_evidence_sha256": "4c46818b07218803f836ab1dc7937f20ba68d82a643ce06c44726201f8f23ff7",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "wordpress-reset-safely",
+      "locale": "ja",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "93d361d00d3442861495f67716ea6976b16b1b7cda775bceaaccb466a6c39f70",
+      "assembled_document_sha256": "93d361d00d3442861495f67716ea6976b16b1b7cda775bceaaccb466a6c39f70",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "726446a7fb397a89fc8cf348478c29a5b86f0f641d1ac5ba161e1637350204ed",
+      "genuine_external_evidence_sha256": "a5b1eb811750565c62cbe376e21bb815231e04992c1c79fe1394b32b9f1ea34b",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "wordpress-reset-safely",
+      "locale": "ko",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "df7c4fb39cae4e6f4e1b51515a20c960cdcb791d61ca1bf1660faeddc9c3a360",
+      "assembled_document_sha256": "df7c4fb39cae4e6f4e1b51515a20c960cdcb791d61ca1bf1660faeddc9c3a360",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "959dd923244afe1f235f3a3be2133e3ea0b0d9353bcb85c9d14423459798662f",
+      "genuine_external_evidence_sha256": "d31a44fdb17207a6638c4fa6b6b2e3de0a19e1c33bad8511658e9f8facdad001",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    },
+    {
+      "slug": "wordpress-reset-safely",
+      "locale": "zh-CN",
+      "mode": "review-only",
+      "genuinely_reviewed_document_sha256": "cea32d91a2b50a90e827eec8cca7a756c0601d322f25f08fdca0b22d8ea758c7",
+      "assembled_document_sha256": "cea32d91a2b50a90e827eec8cca7a756c0601d322f25f08fdca0b22d8ea758c7",
+      "official_localized_link_changes": 0,
+      "genuine_installed_review_sha256": "5d0b8fb602327b75dd6efc49db72270560db40eba741820fe49dc48825570421",
+      "genuine_external_evidence_sha256": "7e321fd1e07f6b6e15549e15740d85ca93565b29dddb9e31a4a07d760434ae73",
+      "review_basis": "Previously personally reviewed full text and native views, with exact current review-only artifact rebinding; no new native capture claimed",
+      "actual_readonly_official_reviewed_document_passed": true
+    }
+  ],
+  "source_correction_receipts13": [
+    {
+      "slug": "design-thinking-practice",
+      "locale": "zh-TW",
+      "genuine_review_raw_sha256": "01ca42eb9bd1885abcbf491e05b69fa93cd1575043310767fecb28e9f93a0078",
+      "official_review_verified": true,
+      "referenced_source_asset_count": 2,
+      "original_baseline_asset_map_count": 2
+    },
+    {
+      "slug": "web-design-agency-brief",
+      "locale": "zh-TW",
+      "genuine_review_raw_sha256": "5dd7e4aa2af59aa90c80eced70c4baeda030d0b03fdbd0d5e4f69414370f1ec8",
+      "official_review_verified": true,
+      "referenced_source_asset_count": 2,
+      "original_baseline_asset_map_count": 2
+    },
+    {
+      "slug": "website-404-recovery",
+      "locale": "zh-TW",
+      "genuine_review_raw_sha256": "90321787658f0d6f8b0ecfb688b3dab9ed8464dcc500610917aa88a565ba84be",
+      "official_review_verified": true,
+      "referenced_source_asset_count": 2,
+      "original_baseline_asset_map_count": 2
+    },
+    {
+      "slug": "website-www-subdomains",
+      "locale": "zh-TW",
+      "genuine_review_raw_sha256": "4671f557c1ac86d54f00328839ceb57a8c5501976242c50af9a36e9cd3267aa9",
+      "official_review_verified": true,
+      "referenced_source_asset_count": 2,
+      "original_baseline_asset_map_count": 2
+    },
+    {
+      "slug": "ai-design-prompt-workflow",
+      "locale": "zh-TW",
+      "genuine_review_raw_sha256": "72a96ccd07c4a07253ebb32b6d5a0f0d97b2a0785ed8bf90082e4c858dcfa552",
+      "official_review_verified": true,
+      "referenced_source_asset_count": 2,
+      "original_baseline_asset_map_count": 2
+    },
+    {
+      "slug": "canva-design-workflow",
+      "locale": "zh-TW",
+      "genuine_review_raw_sha256": "96ea52a6c0afa19128c02607f84b04df3e32d6ed2dd8c44a61ae420732fa5997",
+      "official_review_verified": true,
+      "referenced_source_asset_count": 2,
+      "original_baseline_asset_map_count": 2
+    },
+    {
+      "slug": "customer-journey-funnel",
+      "locale": "zh-TW",
+      "genuine_review_raw_sha256": "27b4f7ed3c54e2bfe1e1d0861d48e6714a8626a0817cca983c0d1d0d49496367",
+      "official_review_verified": true,
+      "referenced_source_asset_count": 2,
+      "original_baseline_asset_map_count": 2
+    },
+    {
+      "slug": "marketing-copywriting",
+      "locale": "zh-TW",
+      "genuine_review_raw_sha256": "b2941b08bedec75290ed74c0e7eb4d69cb1531af463f44d385c60f5ac7e6720b",
+      "official_review_verified": true,
+      "referenced_source_asset_count": 2,
+      "original_baseline_asset_map_count": 2
+    },
+    {
+      "slug": "seo-trust-sensitive-topics",
+      "locale": "zh-TW",
+      "genuine_review_raw_sha256": "f5aa010979a35fa144d74d325494e00f196f77cf67f05d6cbe8b201dc34ceac8",
+      "official_review_verified": true,
+      "referenced_source_asset_count": 2,
+      "original_baseline_asset_map_count": 2
+    },
+    {
+      "slug": "wordpress-blog-build",
+      "locale": "zh-TW",
+      "genuine_review_raw_sha256": "c2dafc0ce21ea6a2bb3a9ff80e5ad84488647235c45e71dda9f494d9ab91c2a8",
+      "official_review_verified": true,
+      "referenced_source_asset_count": 2,
+      "original_baseline_asset_map_count": 10
+    },
+    {
+      "slug": "wordpress-comment-spam",
+      "locale": "zh-TW",
+      "genuine_review_raw_sha256": "2791cfe778807c9c24d4ae9efebc25976aeb502ef251e6c7facc40f9852d75b0",
+      "official_review_verified": true,
+      "referenced_source_asset_count": 2,
+      "original_baseline_asset_map_count": 10
+    },
+    {
+      "slug": "wordpress-performance-plugins",
+      "locale": "zh-TW",
+      "genuine_review_raw_sha256": "647e1cbd3d85caab1e6d4630d7eaaedad72eab1a3fcc58e5af77856819a75e4a",
+      "official_review_verified": true,
+      "referenced_source_asset_count": 2,
+      "original_baseline_asset_map_count": 10
+    },
+    {
+      "slug": "wordpress-reset-safely",
+      "locale": "zh-TW",
+      "genuine_review_raw_sha256": "ad4e680a0218134c8330d4351856754cfdedaf69b4a6b392de4ab0c7fbb839cc",
+      "official_review_verified": true,
+      "referenced_source_asset_count": 2,
+      "original_baseline_asset_map_count": 10
+    }
+  ],
+  "manifest_assets210": [
+    {
+      "repository_relative_path": "apps/web/public/guides/ai-design-prompt-workflow/diagram-1-en.svg",
+      "raw_sha256": "148be30c0f9f67bf16c7e46913c1c754985616abaf3d606e43d2e9e5d9088a90"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/ai-design-prompt-workflow/diagram-1-ja.svg",
+      "raw_sha256": "a1d61354ae7745711aa342b930cb93324c7f08c2dc1bb1bf921baaf00726c1fa"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/ai-design-prompt-workflow/diagram-1-ko.svg",
+      "raw_sha256": "4e16a780b710684df87d00b2f6f2634207f74b98327f60d3e944e17055bed324"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/ai-design-prompt-workflow/diagram-1-zh-cn.svg",
+      "raw_sha256": "006def6affdbade668c338c39b980b4f8b9fd65a1b02d07e76a988ff26d64de8"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/ai-design-prompt-workflow/diagram-1.svg",
+      "raw_sha256": "7e0b06a2993afc0f7be664029bd34627bd141a73e33231eaa307a5bab487148d"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/ai-design-prompt-workflow/hero-en.jpg",
+      "raw_sha256": "3926ba3a0647baee58939c283767ccd99cbac24c5a406bc18cd3ddb83d10133c"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/ai-design-prompt-workflow/hero-en.svg",
+      "raw_sha256": "86880fa621249c41ac496ac7a12e999df945d82cadaf5dff6487b7ad327fe147"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/ai-design-prompt-workflow/hero-ja.jpg",
+      "raw_sha256": "7370708d90cf3f36a8caf3af9e8fef073ffb028141d0c42b16c9b1766eabf8b2"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/ai-design-prompt-workflow/hero-ja.svg",
+      "raw_sha256": "0926d490bf2c932c88cca1ee9e450486c6fcb3e007d718afea4b3438dc3a9101"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/ai-design-prompt-workflow/hero-ko.jpg",
+      "raw_sha256": "95510830632e4a24b2ca733ccebafc924839ad5501ed7c60c63e4edd1d66fe1e"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/ai-design-prompt-workflow/hero-ko.svg",
+      "raw_sha256": "0384e849ed706b828bcd59544a69e968cf2afa868e06192326a2c37273a9e2ee"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/ai-design-prompt-workflow/hero-zh-cn.jpg",
+      "raw_sha256": "19fb8f3d16d4566edff4dadef11b4ae4cc19f45d091c4db10643dd3608d6f9a5"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/ai-design-prompt-workflow/hero-zh-cn.svg",
+      "raw_sha256": "864ab5ec695fc9e8613c7a0b8f37a88c5a0af9c4f4d6592f94b3d2c8f7a0042a"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/ai-design-prompt-workflow/hero.jpg",
+      "raw_sha256": "019de5bc3e9c4f16ace7ae39d6c067b1788163785c69dfcb2a3dbe5c957aae19"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/brand-identity-logo-brief/diagram-1-en.svg",
+      "raw_sha256": "7b5a8ab98cd6bb7d16673d658143079869fd6381292a96add6402555227e3bc4"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/brand-identity-logo-brief/diagram-1-ja.svg",
+      "raw_sha256": "a4e0c61dd2f71954671884fe577e66459c6dd7b1aeb16210b03a60723f999088"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/brand-identity-logo-brief/diagram-1-ko.svg",
+      "raw_sha256": "0c5668c5a2a03b5c9d0c6a9c559fe28bba7293d4ed841fcf3936ea98849c2d4d"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/brand-identity-logo-brief/diagram-1-zh-cn.svg",
+      "raw_sha256": "3f49a6445c097c39f3b8caed8cb348abe3bcd948231a7a00c29383dfb3b8606d"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/brand-identity-logo-brief/hero-en.jpg",
+      "raw_sha256": "75d71439a763eb07ee575ff0996a71d8d92880f408492e89553b0f0d69ccc27a"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/brand-identity-logo-brief/hero-en.svg",
+      "raw_sha256": "073814e4aab9e0901ec241954f38bd80874e17ac3914ed6168e929cd339e50f5"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/brand-identity-logo-brief/hero-ja.jpg",
+      "raw_sha256": "aa934ac1ae1c8603236d962450b188403a3cdbc3d94b58015e021a1661845f3d"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/brand-identity-logo-brief/hero-ja.svg",
+      "raw_sha256": "8a53a0276a87ab1931787ecc974d7ce929a3629b314ac8ee38386525c968663b"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/brand-identity-logo-brief/hero-ko.jpg",
+      "raw_sha256": "41624355c2952f6bd45f1890883c0fbc369eff8a91c3558ab58df39aa1ad5f40"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/brand-identity-logo-brief/hero-ko.svg",
+      "raw_sha256": "473509670e8bc7405f338761a794a13a6c355ba198d61d00b137d7976a92684a"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/brand-identity-logo-brief/hero-zh-cn.jpg",
+      "raw_sha256": "8850905e6ecc1826c505c67a00f273fda575f379b332ca34d67f9bc369a581aa"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/brand-identity-logo-brief/hero-zh-cn.svg",
+      "raw_sha256": "3f1ff39edb09fa1567af6978d038698dfa3d83fb839b92f953653efa2905cc3d"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/canva-design-workflow/diagram-1-en.svg",
+      "raw_sha256": "259186a6f02bcda50c8d3529bd6f0f8c0a81300c080c320b59421772b21c4f4a"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/canva-design-workflow/diagram-1-ja.svg",
+      "raw_sha256": "17ba464a4f519a1d71ce2bd59d05f0d973b738593c90da1ad0ce33402919c030"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/canva-design-workflow/diagram-1-ko.svg",
+      "raw_sha256": "ed7b01dda7e56e316b636a38feb84e3c741c0a32a82765f12830256ca62c5351"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/canva-design-workflow/diagram-1-zh-cn.svg",
+      "raw_sha256": "b47f8a2ba1e771bb4aab1e22c4c3902bfa88c289d58e37c58356d276da1e4830"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/canva-design-workflow/diagram-1.svg",
+      "raw_sha256": "b99a49597fda0361aa4b899a64abd7e8627e51edbd27cc05eabdf831108fd3af"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/canva-design-workflow/hero-en.jpg",
+      "raw_sha256": "ccb40e3b408f06866f0e6770d552a0b60059d850f27423cf461a28d5121a4da7"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/canva-design-workflow/hero-en.svg",
+      "raw_sha256": "729131f6b2b1ba25c1aa39e1ef16d95f1e14f2ad5c5db969fd9c9410c9c788da"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/canva-design-workflow/hero-ja.jpg",
+      "raw_sha256": "3b67a9ee529b43c9ddca561f3f41fffea794e7f620775f3a217b5fe9818309f8"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/canva-design-workflow/hero-ja.svg",
+      "raw_sha256": "a29c36c0d9b95c99e60e089a2193bb71c3643efa499cc89ef3731a1081feba9b"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/canva-design-workflow/hero-ko.jpg",
+      "raw_sha256": "5c3b09345afd61fa5179bcb7cfd553fc6706ec8e06dbdb229af9de6d887e0a0d"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/canva-design-workflow/hero-ko.svg",
+      "raw_sha256": "8b27933daf3875cce975da054a273f59b4652ac36a20b5d8da4fd68ad7ab7ce8"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/canva-design-workflow/hero-zh-cn.jpg",
+      "raw_sha256": "251d4c0e349a1a28e7c5a1450261e99ff1fd9d03c4154ec4502e65ef3bbe8441"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/canva-design-workflow/hero-zh-cn.svg",
+      "raw_sha256": "c0e03e9f4e940f82cb602aaad59d7ea44821e187590fed02d14c257f8af75f19"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/canva-design-workflow/hero.jpg",
+      "raw_sha256": "3090a152062f40444ff5fd46d9bec00a9aaf85706b5fcfc3a89b4f88675f53ff"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/customer-journey-funnel/diagram-1-en.svg",
+      "raw_sha256": "22c90a7935b16c07385d0ee108cde6902b6fa12b62fc707a1f05d3be54c952f7"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/customer-journey-funnel/diagram-1-ja.svg",
+      "raw_sha256": "0020f93c2cb7cfc51bea8d21e530cc6799fd6c27c7065679a981dd4291087d00"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/customer-journey-funnel/diagram-1-ko.svg",
+      "raw_sha256": "3ab01372ee5d07a90e27da74944ec5ef0ab16159e5e23224972dabb09e19d9c1"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/customer-journey-funnel/diagram-1-zh-cn.svg",
+      "raw_sha256": "8f97e31839a18d812335f582c028c114c95580f318fe338964d51a201d625d59"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/customer-journey-funnel/diagram-1.svg",
+      "raw_sha256": "74500782f974746fa65d290557ff79a0d2cd1e554045134e25d0ac030272b064"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/customer-journey-funnel/hero-en.jpg",
+      "raw_sha256": "ad64c164fb614e5908fa7f52eeb80692e2e742babb12d1ab2d351a52ef2a6351"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/customer-journey-funnel/hero-en.svg",
+      "raw_sha256": "01a713c8a8e56e976e3820c3a1a6723b3f22dca0dab6dab107a4913ba6cc4969"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/customer-journey-funnel/hero-ja.jpg",
+      "raw_sha256": "2c4b21021c101a2444e6a0ebd17a23fa1278cd381ec3645cb94c982a2bbef6e0"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/customer-journey-funnel/hero-ja.svg",
+      "raw_sha256": "6973c137934784dfd934082a263b00a667987a9894a3e9637191d26029dca7dd"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/customer-journey-funnel/hero-ko.jpg",
+      "raw_sha256": "43b2ebd07cacf8cb830cfa44e23839689123d4d7357163772b780a55f44e6b55"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/customer-journey-funnel/hero-ko.svg",
+      "raw_sha256": "0a7117b3e8685ef3513b609d6506cff15b4f55f59f2b2bbafbca0b1412dc0a63"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/customer-journey-funnel/hero-zh-cn.jpg",
+      "raw_sha256": "7f3f299e640a6bf26d238b4ec664ffaea2cb98f569e9792c38c031cef93b6a48"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/customer-journey-funnel/hero-zh-cn.svg",
+      "raw_sha256": "a06415eeb9126b665ec6364d469d95addc27f1ebe6646aba6ca0cb5c2881eb85"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/customer-journey-funnel/hero.jpg",
+      "raw_sha256": "de522f9d8722cd1d1a9c6807c1981695dd08a919cac101416eb004e68a94e8a7"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/design-thinking-practice/diagram-1-en.svg",
+      "raw_sha256": "36a6513aafab5895546ef98707353c99de8ff178011b9f754667f8a335dc9479"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/design-thinking-practice/diagram-1-ja.svg",
+      "raw_sha256": "4ca7e0599c559251a5b14c23dcb6512f2bddad43117aa7974a74e98edb20e524"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/design-thinking-practice/diagram-1-ko.svg",
+      "raw_sha256": "2e7d003863740fb4c46e3dd62f8fe23363d11383be29e14d608310207455a054"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/design-thinking-practice/diagram-1-zh-cn.svg",
+      "raw_sha256": "5785573301e3544694ab6b0cf15446dab244d52bb411eadba6902fa0fdb758ef"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/design-thinking-practice/diagram-1.svg",
+      "raw_sha256": "9fc76b7bc6e489e90d51806e9f4095efcc269594a3e29b489390d130395222ed"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/design-thinking-practice/hero-en.jpg",
+      "raw_sha256": "9ee99525e3951bfd418258635c00d33444164338152e5160e93b62e272575ddb"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/design-thinking-practice/hero-en.svg",
+      "raw_sha256": "b98c14b63b79fac4fa774b55c463317dbdd17f060e55d014c03510e90beabdc4"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/design-thinking-practice/hero-ja.jpg",
+      "raw_sha256": "5bd70377a4bc1f5473093fb5d27b549d1f45981c05057e3f964440bf22480d80"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/design-thinking-practice/hero-ja.svg",
+      "raw_sha256": "f339bc2907b96392ca0dd864d56239e2b8bea711d43978a7f5562c8dc4822bc6"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/design-thinking-practice/hero-ko.jpg",
+      "raw_sha256": "17b4160597643517c0dc67328d50ccd9883965278a942b7196c21fa2d05eed5d"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/design-thinking-practice/hero-ko.svg",
+      "raw_sha256": "31a30ed3ab88ea9be6da8fc54625ab563570f3516712d74dbd579c20eda9acb0"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/design-thinking-practice/hero-zh-cn.jpg",
+      "raw_sha256": "ebc5c438726d3e850dc265a147bb773b9a6a0b09738ea2cfba3576520aa840e5"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/design-thinking-practice/hero-zh-cn.svg",
+      "raw_sha256": "27c419ac6c23697f102389a6f070238ded2b06d7e8d06fd6fa18f1c88719c26e"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/design-thinking-practice/hero.jpg",
+      "raw_sha256": "54d9fea159ac3207732d779ea6aa77cb3361b67acc8748b78bdb77628ea73d5a"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/marketing-copywriting/diagram-1-en.svg",
+      "raw_sha256": "17cb8e7d007a6d1247f19a3bc1b519ba38ba9437011093f6ab49ed4718fc7801"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/marketing-copywriting/diagram-1-ja.svg",
+      "raw_sha256": "f02c51091448dce244c4a8347c01e4258e7fb94d2ed08156954ed872a4bcd489"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/marketing-copywriting/diagram-1-ko.svg",
+      "raw_sha256": "83a54bfd14386d730d688c2185df620d38a97e0493975f103b1c58bb56f72ce1"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/marketing-copywriting/diagram-1-zh-cn.svg",
+      "raw_sha256": "915beca08e7cc69bdb2e3057184bfd59db9fe029050488a24b46de1c9bb91571"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/marketing-copywriting/diagram-1.svg",
+      "raw_sha256": "49e58e37dd19f5e7227880fef10bc56ea3d4b87d33c2fc50a96ece08a6649d8c"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/marketing-copywriting/hero-en.jpg",
+      "raw_sha256": "97ce19b03e036a101f1485737e1f3691fa326b709f211f00f12655a076b525ef"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/marketing-copywriting/hero-en.svg",
+      "raw_sha256": "46d5de88ebfc3813bf0eafcad5cea3ad211a008929e1401c9c64554bd5c73041"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/marketing-copywriting/hero-ja.jpg",
+      "raw_sha256": "5c183848106c9a2e741744f6db9cf995a3ea0c9f67ef208a6bc96855e53b501d"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/marketing-copywriting/hero-ja.svg",
+      "raw_sha256": "82734984d167ec54f7ec5a3c2357b3411e70d272d0798497f187a9706f4107bf"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/marketing-copywriting/hero-ko.jpg",
+      "raw_sha256": "cc2f9e8370904e22147f72dbb133e655098dd3b19b906297fd4e237ec04d27c4"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/marketing-copywriting/hero-ko.svg",
+      "raw_sha256": "86fdc2e96e1fd3407eaa2920411786d47573c93bd152d42685a6e71e12fe7563"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/marketing-copywriting/hero-zh-cn.jpg",
+      "raw_sha256": "369f90e212dccd2881648e27e6756207828ff92af3ed55ab6e8d4edb1f01927a"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/marketing-copywriting/hero-zh-cn.svg",
+      "raw_sha256": "413b237c9809cb034fba762ce16f87ae6fa8150b7be4b9c33eff191cda2d8a26"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/marketing-copywriting/hero.jpg",
+      "raw_sha256": "621b945ba9498a2d8b861583a0967d5f52234220d89732830b666a132c2be529"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/paid-vs-organic-marketing/diagram-1-en.svg",
+      "raw_sha256": "1b572a3d802c0cd6eed17da6378e39295c76baecfe08587950f29ca0f3a3a0bc"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/paid-vs-organic-marketing/diagram-1-ja.svg",
+      "raw_sha256": "d5c2ea5c062f2e1cbffc260237f38e482dc59a63a560537bd21e0a050831ee6e"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/paid-vs-organic-marketing/diagram-1-ko.svg",
+      "raw_sha256": "f05cca16b98a25d2af02ec06b0e7edbb51544d68491259156aab3c549cb65910"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/paid-vs-organic-marketing/diagram-1-zh-cn.svg",
+      "raw_sha256": "e32ea5312b201410004ca1c6c462ddcd1d4d9d52f85d90cc26079b13642c8b5d"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/paid-vs-organic-marketing/hero-en.jpg",
+      "raw_sha256": "17f6283ed1e739533e90d26514f0c5abd2fbd89ac01727be11b1b3bcf3c2c3a3"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/paid-vs-organic-marketing/hero-ja.jpg",
+      "raw_sha256": "1f094b48562e21acd2c4e5b5e3e7beac2c7f120305103b70514e66aaabce640d"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/paid-vs-organic-marketing/hero-ko.jpg",
+      "raw_sha256": "dd28fee2b4978a8fdf3ba6498bb66823d918686d037a3b6269276d9fadae2c4b"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/paid-vs-organic-marketing/hero-zh-cn.jpg",
+      "raw_sha256": "5ac585ec2912f63c9d2576a2571a77c6104883f4ded01bd5e6c29b7d3cd1f41f"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/portfolio-case-study/diagram-1-en.svg",
+      "raw_sha256": "6f821e9546c4d31f0c773ccfac3e5ae26603b060a9447fff29efb71cb22c81f2"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/portfolio-case-study/diagram-1-ja.svg",
+      "raw_sha256": "e627ddcb9eede0eb6457543514b7e8cec2e5b90d19ac38877abaa0769302dc38"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/portfolio-case-study/diagram-1-ko.svg",
+      "raw_sha256": "5c71886583a0f275964a0c97dcd122cdb49c71994050463eea9f2c3761ca00bf"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/portfolio-case-study/diagram-1-zh-cn.svg",
+      "raw_sha256": "244d6cf43d823b870cb6c8e4de83813418063747a0467667a60db174c8e2c7c9"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/portfolio-case-study/hero-en.jpg",
+      "raw_sha256": "a6b816d87642688d8828f2cdfbff010f5b07b8395b493a838bec4c36656e9216"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/portfolio-case-study/hero-en.svg",
+      "raw_sha256": "dec174188269cad637f755ace38163aa5380de785f8542d2902f7b51fc9caff6"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/portfolio-case-study/hero-ja.jpg",
+      "raw_sha256": "26a8ed28a27591ceea6402e0090f56ccd30d9966688eaaf853548ace99c806e5"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/portfolio-case-study/hero-ja.svg",
+      "raw_sha256": "9f6ccc8fb3541c8b9ebb1abb7f6210fd57ea098da4a94a418ca13458e9dfde51"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/portfolio-case-study/hero-ko.jpg",
+      "raw_sha256": "4d0d789876954dca21a6df5bc4b22b5d150e00be89a657c655dde3213444cf05"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/portfolio-case-study/hero-ko.svg",
+      "raw_sha256": "64eb5daaed8594948d9ea73f4d3729ca24b64bbab2e84d61a8de0d2fcae33504"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/portfolio-case-study/hero-zh-cn.jpg",
+      "raw_sha256": "96ea6ac5903666ead02a521b9b65f40f2386bbbfecb2c3c4de64f198d380fad0"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/portfolio-case-study/hero-zh-cn.svg",
+      "raw_sha256": "0eab0b2f2645c2836d36987dd7df8c235f646f5ffdd8086474ee7b1c3820cd1b"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-domain-authority/diagram-1-en.svg",
+      "raw_sha256": "6831d93f61563748f4d5c6b45ae75478392a7f9674180116b396ec863710858c"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-domain-authority/diagram-1-ja.svg",
+      "raw_sha256": "8f355c4ff51635620d60336da361ab69d4c69eeb139d1cbed4ed1bdaa3b32f3a"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-domain-authority/diagram-1-ko.svg",
+      "raw_sha256": "4f80ec32f1d77ea9e17989626c2d001ebbcf1db2687ee30530e586fd9d55c9ad"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-domain-authority/diagram-1-zh-cn.svg",
+      "raw_sha256": "445b4d680a9c63dc995cad2e35f03bc28f82ec6e43d9fd473cacdd5f490ea567"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-domain-authority/hero-en.jpg",
+      "raw_sha256": "f514337f866a7e475b08a421b87b5039e31ae727650354c7697a1a64f2caf8ce"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-domain-authority/hero-en.svg",
+      "raw_sha256": "fb06c0c4d4f610d1c257fa4595175dd454a86510c9d2e42d23e92b85dfc9c1f0"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-domain-authority/hero-ja.jpg",
+      "raw_sha256": "5e0ba260629c46f8e4df5ff6c3bc78aaf14a807d2dc38ac53e750e65f6da3869"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-domain-authority/hero-ja.svg",
+      "raw_sha256": "0d9f86bda00492c61e76e1c05c9960c6357ec269c266174505f05bfa3facee69"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-domain-authority/hero-ko.jpg",
+      "raw_sha256": "84edb6386f8b8547a5e5405f49333c1334eb4416b840a6d81de80b30ca0918be"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-domain-authority/hero-ko.svg",
+      "raw_sha256": "09708ce20b2717356dca98e6a27b192e7954fb2beba5a25ea357493b69d6a7c3"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-domain-authority/hero-zh-cn.jpg",
+      "raw_sha256": "8f21cc1eb973ef9a694f5b311c239b80775a4ee7165f5392659870e5ffd27891"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-domain-authority/hero-zh-cn.svg",
+      "raw_sha256": "afe578adf95427f1a334a0a393d2d77488ae8b199bc872abc40a39a6b6aeb707"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-trust-sensitive-topics/diagram-1-en.svg",
+      "raw_sha256": "a74e6c37ce01bc644aaa2aa12efaffa3bcf83ede1c2ade835a56576f9e89da72"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-trust-sensitive-topics/diagram-1-ja.svg",
+      "raw_sha256": "b2ed35afea746981fe13d3748a533b77369ef396716840b55e54eff196878145"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-trust-sensitive-topics/diagram-1-ko.svg",
+      "raw_sha256": "c2c46f14ee341904a4318eba89164752f1f9f11c5206a4ad9a9b2945022a988d"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-trust-sensitive-topics/diagram-1-zh-cn.svg",
+      "raw_sha256": "c932af518b6787d1bedd597fbae88fd8e663b959b5d84b27779d55290047b4b9"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-trust-sensitive-topics/diagram-1.svg",
+      "raw_sha256": "97ad922a72956faeca9b2799eac369a2b41c224da7e128e828f30222fac7d9d1"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-trust-sensitive-topics/hero-en.jpg",
+      "raw_sha256": "c1824545a42e1f00900b089d541ebe26b87974f6c3908d9d536a49ccf12040c1"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-trust-sensitive-topics/hero-en.svg",
+      "raw_sha256": "e7cd11b1f87911c5a5dee6495d7d6826852db649f9b667d5ae67e578b16b72e2"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-trust-sensitive-topics/hero-ja.jpg",
+      "raw_sha256": "4e826fa16b440204de482c53e338170b10617161e9fc6d483308466f98431bce"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-trust-sensitive-topics/hero-ja.svg",
+      "raw_sha256": "30f791171aea778ec728cc76bfd5f2e6d5b2365a04261e61af3537d2a887ee3c"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-trust-sensitive-topics/hero-ko.jpg",
+      "raw_sha256": "e7d9c969d103ed6a642cc59a5d6ed8559497ccff15338552634dbdea075eeceb"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-trust-sensitive-topics/hero-ko.svg",
+      "raw_sha256": "b87c0acc0bdd46931f58a58948aa490d726b70cf25ad3b77ad83e21766f15720"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-trust-sensitive-topics/hero-zh-cn.jpg",
+      "raw_sha256": "2aec86e9a8836601194ddb818d32a63652a02cada09d45e05f676944e3c2d249"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-trust-sensitive-topics/hero-zh-cn.svg",
+      "raw_sha256": "b45c3006cf4b2be70f9a870ea1fafabf9ae4dcb85d769687dc66e003d043f285"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/seo-trust-sensitive-topics/hero.jpg",
+      "raw_sha256": "043ee8bcf8028f2a1f63ff3a196b8458fe65f2c94d26b728a7e2d2792e62d3fa"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/web-design-agency-brief/diagram-1-en.svg",
+      "raw_sha256": "94b652e6b383df6d0ec96ce74d5a3ee69372fe6ed3a23c81abd6099c778ad924"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/web-design-agency-brief/diagram-1-ja.svg",
+      "raw_sha256": "6de34b72932b836a9ee2ecc4eb7a4d39c7bea1f74016ee6070cb247e21f71b2d"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/web-design-agency-brief/diagram-1-ko.svg",
+      "raw_sha256": "cd3ebf14e5ccf0ec9159dae4f2bd1fe81168e4012152ffd3b1c5b8455cbaad8d"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/web-design-agency-brief/diagram-1-zh-cn.svg",
+      "raw_sha256": "2be388f9edd23cc136f4293c604052708ba59f85a2f4f21961096df25ff9e0e6"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/web-design-agency-brief/diagram-1.svg",
+      "raw_sha256": "ddacce5af59edb95870cdd21d825b679df87492157794573ade1412c2ef4cce6"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/web-design-agency-brief/hero-en.jpg",
+      "raw_sha256": "1174cb1df561f17f12ae2c47d130643981656c3f92c367f698f15819e728df91"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/web-design-agency-brief/hero-en.svg",
+      "raw_sha256": "1c8f88ea52708ab52e660a7f505d88be59f61b0dc00b2f53dd0c399da23e4044"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/web-design-agency-brief/hero-ja.jpg",
+      "raw_sha256": "85adf8868af5023154a9c0769a80360036b298cb538e417de7d5eead537542a4"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/web-design-agency-brief/hero-ja.svg",
+      "raw_sha256": "c5c9b58c45beadd226bb37cb9a2e922d66bd8f7a910abba585a6b7a0fe9b8ccd"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/web-design-agency-brief/hero-ko.jpg",
+      "raw_sha256": "0a63f818ad014ba69f3be4f26e87018303f4efc7bb153126e93342951dc1f394"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/web-design-agency-brief/hero-ko.svg",
+      "raw_sha256": "ebf960c40e60b1dac92a06ea3b45c68128b7a827f1f7c81c40eeda3590e88d47"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/web-design-agency-brief/hero-zh-cn.jpg",
+      "raw_sha256": "eb8980e1c24a4cf3a3f353de0bfa768689d63b0b5cfcef85950b79bef55c9047"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/web-design-agency-brief/hero-zh-cn.svg",
+      "raw_sha256": "484c19cc7963a39bd7d5a4a53ad4ba487fc0fba183e99a7f321f258799d2b187"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/web-design-agency-brief/hero.jpg",
+      "raw_sha256": "bc1e6645d7cb6c9f5b2a34c39b0709b5b8d7abec0d913dc4ca0c967b7926c448"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-404-recovery/diagram-1-en.svg",
+      "raw_sha256": "0ea8f3186a292ed89ad927283eceeccc93dce4f76b62b94980eb495f98d9a9f6"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-404-recovery/diagram-1-ja.svg",
+      "raw_sha256": "59493a68b5eee3b658e6b0c108077cfb1a383bab6046d08f2c8d71ed86af1a69"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-404-recovery/diagram-1-ko.svg",
+      "raw_sha256": "cecb017fc809ea726d016b42caf5f02ba123c81a6b1f0be6c7e5c72c5b7cef23"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-404-recovery/diagram-1-zh-cn.svg",
+      "raw_sha256": "52095ffea798b30ed7083c4a30d4345a26ec93473252589539fdcb4c487de5f1"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-404-recovery/diagram-1.svg",
+      "raw_sha256": "63aee70cd010c52d73a8e12c2e370bf251c2b5407ed76b87f074fc6823f4760a"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-404-recovery/hero-en.jpg",
+      "raw_sha256": "3f5a7dadac32f2761ee85ec30e72368a1a30ce8c401b0262171206fdf3bcc5d7"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-404-recovery/hero-en.svg",
+      "raw_sha256": "fe00adb9e1d4ecaa1fb5a619efc81abf18dd34d35e820b6b4ed0a5ae23ae1024"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-404-recovery/hero-ja.jpg",
+      "raw_sha256": "2c5f108539057f764d9bf0884eeaa6816a4c0abae1f4e16a8ae1daf9d32eafb6"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-404-recovery/hero-ja.svg",
+      "raw_sha256": "56db39e791634c07fcc329135742ddca9f1d318d67b361498d615d8d6c40b7c3"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-404-recovery/hero-ko.jpg",
+      "raw_sha256": "faa5cc299a65fabd637adc17017cee47a4034673657e0b7ad613785400f46289"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-404-recovery/hero-ko.svg",
+      "raw_sha256": "9a4ea205dd52139d1d31adaafbcb6d568967c9120ac2028aa149d803c6ad64ef"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-404-recovery/hero-zh-cn.jpg",
+      "raw_sha256": "0069a26d66fcdcaf834fff619f0f69c291ad1670b2bca3c84c3eeffa1d39d982"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-404-recovery/hero-zh-cn.svg",
+      "raw_sha256": "0ebbeabc23b736da71a577ea155a4c64d7cb627be9eb0d7d7e89a8bd69c0b2f3"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-404-recovery/hero.jpg",
+      "raw_sha256": "2c3a87bbefcc95e1208ab678e8b975dad69dba14beb4ea5c91eba8579c292cc4"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-www-subdomains/diagram-1-en.svg",
+      "raw_sha256": "89355654820128f8c3e71fb142480480e7be605035686a378e334e5452f736b3"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-www-subdomains/diagram-1-ja.svg",
+      "raw_sha256": "1dd6a0b7a64b147b249af16f6b99fe8ffbe40fbfce7f5df444d3d30503e8a46a"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-www-subdomains/diagram-1-ko.svg",
+      "raw_sha256": "e6f7529a860bf7b1dbe97fb5f32c75ce8fe594480a196a887e0ccce5ce8887de"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-www-subdomains/diagram-1-zh-cn.svg",
+      "raw_sha256": "d3450c28764ab5ad4a65d41e807eaef26912fc0b55d75d7398e28c9382041bd0"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-www-subdomains/diagram-1.svg",
+      "raw_sha256": "21ea23ed949fa019ad794daf6a71484eafa0801c5b60fa7ae594498652841ab1"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-www-subdomains/hero-en.jpg",
+      "raw_sha256": "25acf3e797ceda79d5263156843ae28741144c41e1297a4aa5ac00234e9f386f"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-www-subdomains/hero-en.svg",
+      "raw_sha256": "34e55bb49aa4d4c8b283fa553253afd55b711bcd9d5eeec787cad850f2dc50a9"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-www-subdomains/hero-ja.jpg",
+      "raw_sha256": "77865e2a318c12e2a5e57443f79536f3644fad792f2edabf893141d2842ff629"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-www-subdomains/hero-ja.svg",
+      "raw_sha256": "d9297e07d71e49a2aa670f7711a8f2bdc6f56cb79b9c64283c3eb34976dd7318"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-www-subdomains/hero-ko.jpg",
+      "raw_sha256": "051961ea3679bd8a63ba8cdd8e719d2f8d45f0132d66f6dcf24dcd3658e61a11"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-www-subdomains/hero-ko.svg",
+      "raw_sha256": "aeb553e3f5bbcafe489f6fa6813541f43d18e3e23097267b0a0755d0897386c0"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-www-subdomains/hero-zh-cn.jpg",
+      "raw_sha256": "7b9b580b0501ddb33f10dffc83ded9fd3ecb7eb45629d2368da9e90e9f9baa3f"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-www-subdomains/hero-zh-cn.svg",
+      "raw_sha256": "bbe35c5d3b3edb46c47898c7febb6d6e543681c4c2eb3dc10ac1b6fd0fd29344"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/website-www-subdomains/hero.jpg",
+      "raw_sha256": "8926fb8eaba9a51302251c4879961b752d8bce1a075bd5924009dc6ad4abdb0e"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-blog-build/diagram-1-en.svg",
+      "raw_sha256": "119ff9cbd6624d28f828eea5e4349f805f0ff26963371e9e5f45c9723e63f04c"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-blog-build/diagram-1-ja.svg",
+      "raw_sha256": "1d98db680294277c9d47ca5ff4b71b3a264b9a1f603bf6c30b8f8729bdc0f03d"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-blog-build/diagram-1-ko.svg",
+      "raw_sha256": "adcde322fb5a47a6c01a181c6e4b9e7b6f740a8a3bd56e112236dcb64c008986"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-blog-build/diagram-1-zh-cn.svg",
+      "raw_sha256": "e2fe901dddf09f7d0cbf02f9ba3822c129e1a5dcbf8ed8ac2d3e4ee1a7599755"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-blog-build/diagram-1.svg",
+      "raw_sha256": "a2f252a62a64584be1f7aa74f26b72825edc842249e0c2a19b962f078ddfc9a1"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-blog-build/hero-en.jpg",
+      "raw_sha256": "fe6a9a5e3837857f2eb46b28ee481c01fb6c3632d39a2b37d6b421fd08c9f14b"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-blog-build/hero-ja.jpg",
+      "raw_sha256": "a18f502813b36ba83c44e2a21eeacdaff1738771301fc1a5ee4d7fa7750f038e"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-blog-build/hero-ko.jpg",
+      "raw_sha256": "bff254d2d601ebf110b750a5e172730c7213c7d8003e6bb99dad9b37c099f339"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-blog-build/hero-zh-cn.jpg",
+      "raw_sha256": "31cb87847cea06f478af901695c78e811deff69ea9702b36719d134e0cd253d0"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-blog-build/hero.jpg",
+      "raw_sha256": "74c96a509c7bc89e9a4d1842bfc4d921c648ccff46fe683277bdec4b8e8c46d6"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-comment-spam/diagram-1-en.svg",
+      "raw_sha256": "82fa502d6025b076e8022c3d6aa23778115a84d8307ea3a1e704fbcd5ec23e48"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-comment-spam/diagram-1-ja.svg",
+      "raw_sha256": "932522259b8377b6244eca8f396ec65e35d1f9a48dbdb9dbe94e5a142b8c0a46"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-comment-spam/diagram-1-ko.svg",
+      "raw_sha256": "1d3fe47c806f1645fab8960e845b9acadc07590552b8a92d48eb71798a9975da"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-comment-spam/diagram-1-zh-cn.svg",
+      "raw_sha256": "7490d53313871375a934287139a31c9b525bfb108b64632b3a264e4bd7d6a622"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-comment-spam/diagram-1.svg",
+      "raw_sha256": "b5902241492e648c0645d4879ae799185352bb9e5a89a34943d33b07c6416ff2"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-comment-spam/hero-en.jpg",
+      "raw_sha256": "c5d12de2068da2420a4eb3688a8bc94a24ea1fbc0a006b014b7029f60f38b3f8"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-comment-spam/hero-ja.jpg",
+      "raw_sha256": "40f53efc4d5d9424ac7b1f04a82f3ca58774fbd81d3ffa7e7f2e1ac5dc1ec3c4"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-comment-spam/hero-ko.jpg",
+      "raw_sha256": "8cf82f94e8448d7b89a4fb2b3929213828683aab31f2e6638c53b3a63d6ce451"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-comment-spam/hero-zh-cn.jpg",
+      "raw_sha256": "4967c698c2367f1a449180272463423c8e571a53df467ce2feaf1d3fce59587a"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-comment-spam/hero.jpg",
+      "raw_sha256": "4501f8c3eff42c1872125c623f75c7de80986c4a03455aa426d3a93fe4dedd3b"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-performance-plugins/diagram-1-en.svg",
+      "raw_sha256": "c8f417be0fe77d71abafd5eb4fd8b7f1af95a374a1456ed1db30dbf7bc5cf148"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-performance-plugins/diagram-1-ja.svg",
+      "raw_sha256": "e639c022d459b8443d17c9cca594bd06563b940afe27582a6a4b91dbd655a159"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-performance-plugins/diagram-1-ko.svg",
+      "raw_sha256": "dd351c254f26b40a0c0e97f79ab902f8c57304f181a383899871ed36d2085da8"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-performance-plugins/diagram-1-zh-cn.svg",
+      "raw_sha256": "159bf82e124cf57377f2dbcbb724c0040d8e9eb101b8c630495880c7c557452a"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-performance-plugins/diagram-1.svg",
+      "raw_sha256": "753447cfcb1b5759981a3a9fafc686e3f76a48f3bb019e84cada21b84471d668"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-performance-plugins/hero-en.jpg",
+      "raw_sha256": "250e666aeaabe1dd0a55f3bc52b90194155983d24d98b5b33606f3381bdf0bd7"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-performance-plugins/hero-ja.jpg",
+      "raw_sha256": "6af1d86b0670766fc529f6e5a5e65d511f0e21aaf87862cdf9b430447565a980"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-performance-plugins/hero-ko.jpg",
+      "raw_sha256": "d83411c10ed7375a5ef2f1dac3de22cf5a78757095eda82cf1fb732802a4a3ae"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-performance-plugins/hero-zh-cn.jpg",
+      "raw_sha256": "5a671f7657e5e86140caee7d292aaaae04c8182df17c566f18ac3dc714d65092"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-performance-plugins/hero.jpg",
+      "raw_sha256": "dc8892ceb6b56fef998e7c7fd805877ed950bd9db2e7c96490c4232d6deb9126"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-reset-safely/diagram-1-en.svg",
+      "raw_sha256": "14ab95efd28f03c3c0a8c8508f7ac55c1254c168a7bb152f0a2f538b8c91fb52"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-reset-safely/diagram-1-ja.svg",
+      "raw_sha256": "94de6770d38fde5308944f758bbdfc7ff3b82241ead14e23c5765663679cfeae"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-reset-safely/diagram-1-ko.svg",
+      "raw_sha256": "3d88b15ce81f17d3cb42ff4fe1e52f16cfd18ff52f91e381a265a2ba71840e38"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-reset-safely/diagram-1-zh-cn.svg",
+      "raw_sha256": "34c9af5a9275c8516e98eed7cbee95fb92637acc4c234904fd8d476da705e5aa"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-reset-safely/diagram-1.svg",
+      "raw_sha256": "67b9192aa4c0698bb7306d7517ebb193c9f5a0b6fa87d099dfc66ca8e9624d41"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-reset-safely/hero-en.jpg",
+      "raw_sha256": "f0b189736769799ea56b99bc0e27a8bc0ff20005c4bbabcea9a26f5f710d710c"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-reset-safely/hero-ja.jpg",
+      "raw_sha256": "7e57cd9ccbb6f36e11b68a51bb1ca342c8b0e67dd80a9a446634214db282c973"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-reset-safely/hero-ko.jpg",
+      "raw_sha256": "f722b8fae08c269f609cefded33058d66b4b45116dadd5e1b70ece73159c76c9"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-reset-safely/hero-zh-cn.jpg",
+      "raw_sha256": "8e7eff3453b853fc1d0f615a567617b8739c852d834ef1f12dbb414fa734df82"
+    },
+    {
+      "repository_relative_path": "apps/web/public/guides/wordpress-reset-safely/hero.jpg",
+      "raw_sha256": "510aaaf226670502d655a41b980fadc3a3dd686eaa3c37331324334e0cec0ee8"
+    }
+  ],
+  "translation_and_repair_history": {
+    "original_pilot_and_remaining47_outputs_retained": true,
+    "remaining47_single_run_actual_exit_code": 1,
+    "remaining47_run_actual_receipt_sha256": "0ff610e0f162f4c369924a8accc5a4079d24e05b21fb4520f62f00f9fa6febae",
+    "remaining47_stdout_sha256": "c1cee0f113ab09db5f459f39f7009531dbc6601abdb4f2472c3340dd209fb48a",
+    "remaining47_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "remaining47_automatic_retry": false,
+    "protected_token_local_repairs": {
+      "jobs": 5,
+      "leaf_edit_applications": 14,
+      "receipts": [
+        {
+          "slug": "marketing-copywriting",
+          "locale": "en",
+          "kind": "protected numeric/URL spelling repair",
+          "leaf_edit_applications": 6,
+          "actual_materialize_exit_code": 0,
+          "actual_receipt_sha256": "af287317257fc5d59ae9c9499d74e61aa7ab3b4464c9d789b2787195b1ae728c",
+          "actual_receipt_schema": "actual-root-third-party-exact-invalid-field-correction-v1",
+          "source_and_original_attempts_preserved": true,
+          "provider_calls_for_this_repair": 0,
+          "editorial_PASS_authored_by_applicator": false
+        },
+        {
+          "slug": "marketing-copywriting",
+          "locale": "ko",
+          "kind": "protected numeric/URL spelling repair",
+          "leaf_edit_applications": 3,
+          "actual_materialize_exit_code": 0,
+          "actual_receipt_sha256": "a0e4357473bd5ecab387e191a241540346847f9a0f5bdb92c6d3463b9f86d8cb",
+          "actual_receipt_schema": "actual-root-third-party-exact-invalid-field-correction-v1",
+          "source_and_original_attempts_preserved": true,
+          "provider_calls_for_this_repair": 0,
+          "editorial_PASS_authored_by_applicator": false
+        },
+        {
+          "slug": "portfolio-case-study",
+          "locale": "ja",
+          "kind": "protected numeric/URL spelling repair",
+          "leaf_edit_applications": 2,
+          "actual_materialize_exit_code": 0,
+          "actual_receipt_sha256": "654d9bcdde527a1adb1f94b3b607f499106e93fb09654d6c50a68d882b616973",
+          "actual_receipt_schema": "actual-root-third-party-exact-invalid-field-correction-v1",
+          "source_and_original_attempts_preserved": true,
+          "provider_calls_for_this_repair": 0,
+          "editorial_PASS_authored_by_applicator": false
+        },
+        {
+          "slug": "website-404-recovery",
+          "locale": "ja",
+          "kind": "protected numeric/URL spelling repair",
+          "leaf_edit_applications": 2,
+          "actual_materialize_exit_code": 0,
+          "actual_receipt_sha256": "b52d410e2c0389b26383a4e51d632142d5abdecf027a563d12469f1008cff16b",
+          "actual_receipt_schema": "actual-root-third-party-exact-invalid-field-correction-v1",
+          "source_and_original_attempts_preserved": true,
+          "provider_calls_for_this_repair": 0,
+          "editorial_PASS_authored_by_applicator": false
+        },
+        {
+          "slug": "website-www-subdomains",
+          "locale": "ko",
+          "kind": "protected numeric/URL spelling repair",
+          "leaf_edit_applications": 1,
+          "actual_materialize_exit_code": 0,
+          "actual_receipt_sha256": "f725498a544b8c900a23d735afd982f083a820e72a466feb83dc07e1b5030588",
+          "actual_receipt_schema": "actual-root-third-party-exact-invalid-field-correction-v1",
+          "source_and_original_attempts_preserved": true,
+          "provider_calls_for_this_repair": 0,
+          "editorial_PASS_authored_by_applicator": false
+        }
+      ]
+    },
+    "native_label_local_repairs": {
+      "applications": 9,
+      "leaf_edit_applications": 12,
+      "receipts": [
+        {
+          "slug": "web-design-agency-brief",
+          "locale": "en",
+          "kind": "native figure label repair",
+          "leaf_edit_applications": 2,
+          "actual_materialize_exit_code": 0,
+          "actual_receipt_sha256": "89968d7ed51684b48852e91086fe3e2865030be2c33952255827f45b10c16981",
+          "actual_receipt_schema": "actual-root-third-party-exact-native-label-correction-v1",
+          "source_and_original_attempts_preserved": true,
+          "provider_calls_for_this_repair": 0,
+          "editorial_PASS_authored_by_applicator": false
+        },
+        {
+          "slug": "seo-domain-authority",
+          "locale": "en",
+          "kind": "native figure label repair",
+          "leaf_edit_applications": 1,
+          "actual_materialize_exit_code": 0,
+          "actual_receipt_sha256": "f3bdd2adedff91ad341aefa925fdd24cee5e68aed21baf9d9475322e9eae1f10",
+          "actual_receipt_schema": "actual-root-third-party-exact-native-label-correction-v1",
+          "source_and_original_attempts_preserved": true,
+          "provider_calls_for_this_repair": 0,
+          "editorial_PASS_authored_by_applicator": false
+        },
+        {
+          "slug": "brand-identity-logo-brief",
+          "locale": "en",
+          "kind": "native figure label repair",
+          "leaf_edit_applications": 1,
+          "actual_materialize_exit_code": 0,
+          "actual_receipt_sha256": "a113ef2f3ada36b1d0292a24820ef83786609e65f7d06aebcf3e4a8453d171a7",
+          "actual_receipt_schema": "actual-root-third-party-exact-native-label-correction-v1",
+          "source_and_original_attempts_preserved": true,
+          "provider_calls_for_this_repair": 0,
+          "editorial_PASS_authored_by_applicator": false
+        },
+        {
+          "slug": "customer-journey-funnel",
+          "locale": "en",
+          "kind": "native figure label repair",
+          "leaf_edit_applications": 2,
+          "actual_materialize_exit_code": 0,
+          "actual_receipt_sha256": "c454e3f3a32a1d03e17d74059476399cc5170bbff75155589ceea0acd1ef6cd7",
+          "actual_receipt_schema": "actual-root-third-party-exact-native-label-correction-v1",
+          "source_and_original_attempts_preserved": true,
+          "provider_calls_for_this_repair": 0,
+          "editorial_PASS_authored_by_applicator": false
+        },
+        {
+          "slug": "customer-journey-funnel",
+          "locale": "en",
+          "kind": "native figure label repair",
+          "leaf_edit_applications": 1,
+          "actual_materialize_exit_code": 0,
+          "actual_receipt_sha256": "0d00f1bbbb659f850dcd2ca33d07ab9eb3a89b3ae396d809765fa3b134f0af17",
+          "actual_receipt_schema": "actual-root-third-party-exact-native-label-correction-v1",
+          "source_and_original_attempts_preserved": true,
+          "provider_calls_for_this_repair": 0,
+          "editorial_PASS_authored_by_applicator": false
+        },
+        {
+          "slug": "customer-journey-funnel",
+          "locale": "ja",
+          "kind": "native figure label repair",
+          "leaf_edit_applications": 1,
+          "actual_materialize_exit_code": 0,
+          "actual_receipt_sha256": "a42487fe41d82218c46b040de7b9481cf00014ce6c910a566b07b243dceb3a6c",
+          "actual_receipt_schema": "actual-root-third-party-exact-native-label-correction-v1",
+          "source_and_original_attempts_preserved": true,
+          "provider_calls_for_this_repair": 0,
+          "editorial_PASS_authored_by_applicator": false
+        },
+        {
+          "slug": "marketing-copywriting",
+          "locale": "en",
+          "kind": "native figure label repair",
+          "leaf_edit_applications": 1,
+          "actual_materialize_exit_code": 0,
+          "actual_receipt_sha256": "8b729a57e2d3592f69740794a6caeaf9d055c60bdbd3027e26e3e545cfe086dd",
+          "actual_receipt_schema": "actual-root-third-party-exact-native-label-correction-v1",
+          "source_and_original_attempts_preserved": true,
+          "provider_calls_for_this_repair": 0,
+          "editorial_PASS_authored_by_applicator": false
+        },
+        {
+          "slug": "portfolio-case-study",
+          "locale": "en",
+          "kind": "native figure label repair",
+          "leaf_edit_applications": 1,
+          "actual_materialize_exit_code": 0,
+          "actual_receipt_sha256": "fb992e63bf499eaacc8efdaec93093cff03739207597d7e93f083635ff2e6f89",
+          "actual_receipt_schema": "actual-root-third-party-exact-native-label-correction-v1",
+          "source_and_original_attempts_preserved": true,
+          "provider_calls_for_this_repair": 0,
+          "editorial_PASS_authored_by_applicator": false
+        },
+        {
+          "slug": "seo-trust-sensitive-topics",
+          "locale": "en",
+          "kind": "native figure label repair",
+          "leaf_edit_applications": 2,
+          "actual_materialize_exit_code": 0,
+          "actual_receipt_sha256": "4dd362464d46332baf9e662b9b7b576cd2dca7956009248ddc9cdc855f8b2cc6",
+          "actual_receipt_schema": "actual-root-third-party-exact-native-label-correction-v1",
+          "source_and_original_attempts_preserved": true,
+          "provider_calls_for_this_repair": 0,
+          "editorial_PASS_authored_by_applicator": false
+        }
+      ]
+    },
+    "pilot_native_padding_repair": {
+      "slug": "design-thinking-practice",
+      "locale": "en",
+      "kind": "pilot native padding label repair",
+      "leaf_edit_applications": 1,
+      "actual_materialize_exit_code": 0,
+      "actual_receipt_sha256": "1d25a19f715f6692d7ec222f6407bece645418cab8db5131a3839ac7a90a81ed",
+      "actual_receipt_schema": "actual-root-third-party-pilot-native-padding-repair-v1",
+      "source_and_original_attempts_preserved": true,
+      "provider_calls_for_this_repair": 0,
+      "editorial_PASS_authored_by_applicator": false
+    },
+    "source_fidelity_semantic_repair": {
+      "slug": "seo-trust-sensitive-topics",
+      "locale": "ko",
+      "kind": "source-fidelity double-negative wording repair",
+      "leaf_edit_applications": 1,
+      "actual_materialize_exit_code": 0,
+      "actual_receipt_sha256": "f1b2fc9d97aa4cb1438c093bb60e0f1fc57d01fcc131174fbce7614c68620660",
+      "actual_receipt_schema": "actual-root-third-party-exact-source-fidelity-wording-correction-v1",
+      "source_and_original_attempts_preserved": true,
+      "provider_calls_for_this_repair": 0,
+      "editorial_PASS_authored_by_applicator": false
+    },
+    "repair_counts_are_edit_applications_not_distinct_final_leaf_claim": true,
+    "provider_calls_for_recorded_local_repairs": 0,
+    "final_genuine_reviews_bind_the_current_repaired_documents_and_artifacts": true,
+    "existing20_translation_reuse": "Existing documents repaired locally and reviewed; no new translation provider calls for these20 review-only jobs",
+    "existing20_new_native_capture_claimed": false
+  },
+  "prior_completed_release_preservation": {
+    "completed_articles": 57,
+    "completed_new_locale_targets": 228,
+    "completion_ledger_raw_sha256_unchanged": "3df618ed6f2c6142eddf50d31d0b57fdf4af95088b0c5e4aa9b72d8526f5f7da",
+    "original_source_published_document_and_database_guards_preserved": true,
+    "original111_media_unchanged_at_genuine_assembly_audit": true,
+    "whole68_job_tree_unchanged_at_genuine_assembly_audit": true,
+    "whole1204_pack_tree_unchanged_at_genuine_assembly_audit": true,
+    "full_preinstall_inventory_counts": {
+      "all_content_pack_files": 1204,
+      "all_public_files": 6606,
+      "selected_packs": 17,
+      "selected_original_media": 111,
+      "prior_completed_articles": 57,
+      "prior_completed_new_locale_targets": 228
+    },
+    "full_preinstall_public6606_bytes_independently_reread_by_addendum": false,
+    "current_repository_still_equals_preinstall_image_claimed": false,
+    "fresh_postinstall_or_live_production_preservation_claimed": false
+  },
+  "scope_and_limits": [
+    "This repository record binds actual completed local authoring, review, assembly and installation evidence.",
+    "Document/asset hashes describe the genuinely assembled local bundle; they do not prove public availability.",
+    "Actual source/body/native approvals are preserved from the distinct reviewers; this record issues no new editorial PASS.",
+    "The13 source corrections retain all source dates and original media; citation retrieval limitations in the original source audit remain limitations.",
+    "The20 reused targets retain genuine earlier native views with exact current artifact rebinding; fresh native screenshots are not claimed.",
+    "The preinstall inventory was captured after approved source/existing-target edits, not before all editorial edits.",
+    "The explicit new V6.1 local whole preservation audit completed after the retained V5 failure; final committed PR, CI and separate owner release authorization remain pending.",
+    "The unchanged official ArticlePack serializer added exactly 51 empty default root keys: each of the 17 packs previously omitted aliases={}, news_date=null and related=[]. The 17 topics lists use exact admitted baseline order with their original multisets; every other existing raw metadata value/type and date value remains unchanged. No broad normalization exception is allowed."
+  ],
+  "recorded_at": "2026-10-09T17:30:07.083351+00:00",
+  "proposal_prepared_at": "2026-10-09T17:18:29.553907+00:00",
+  "new_editorial_PASS_issued_by_this_record": false
+}

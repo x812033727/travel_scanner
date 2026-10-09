@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
-    "software",
     "marketing",
-    "seo"
+    "seo",
+    "software",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "404 頁面怎麼設計：說明狀況並幫讀者繼續走",
@@ -167,6 +170,7 @@
           "width": 1600,
           "height": 900,
           "caption": "先分清內容狀態；不要把每一個中斷都送到同一個無關頁面。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -277,6 +281,1090 @@
         },
         {
           "title": "Search Console：索引報告、soft 404 與 404",
+          "url": "https://support.google.com/webmasters/answer/7440203",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "How to Design a 404 Page: Explain the Problem and Help Readers Continue",
+      "description": "404 pages need more than art and a home button: explain missing content and help readers finish their task. An original exhibition-site example covers clear copy, relevant categories and search, HTTP status codes, proper redirects and error tracking. Steps, a comparison table and original diagrams distinguish missing content, moved pages and service outages, avoiding attractive pages that return success or redirecting every old URL to an unrelated home page.",
+      "hero": {
+        "src": "/guides/website-404-recovery/hero-en.jpg",
+        "alt": "An original Mokaair illustration of a web page, category folders and documentation, representing an explanation and places to read next after a page cannot be found.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "When readers open an exhibition introduction from an old bookmark and find that the page does not exist, what they really want to know is where the exhibition information went and what they can still look up. A 404 page should help them through this interruption with a clear next step, rather than simply displaying a large error code."
+        },
+        {
+          "type": "paragraph",
+          "text": "The exhibition information website and copy below are original examples, based on Google, MDN and GOV.UK documentation consulted on 2026-9-14. This article did not involve changing website routes, submitting anything to search tools or measuring real visitor behavior; it provides actionable design and acceptance testing methods."
+        },
+        {
+          "type": "heading",
+          "text": "First, Establish Why This URL Has No Content",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "404 means the server cannot find the requested resource; it does not itself indicate whether the situation is temporary or permanent. A mistyped URL, deleted content, an outdated link or an incorrect route configuration can all cause this result. First check whether the original content should exist, then decide whether to restore the page, redirect to its new location or retain a genuine not-found response."
+        },
+        {
+          "type": "paragraph",
+          "text": "For an exhibition website, if the same introduction has simply moved to a different URL, you can map it to the new page. If the event has ended but useful transport information, details about the works or retrospective content remain, you can retain the original page and mark the event as ended. An event ending does not mean its page must disappear; whether to keep it depends on the content's purpose and maintenance arrangements."
+        },
+        {
+          "type": "paragraph",
+          "text": "Service interruptions, database failures and login requirements also need their own handling; they should not all be presented as missing content. For resources confirmed to be permanently removed, you can use 410 to indicate their removal where appropriate. For Google's index, both 404 and 410 are responses that indicate the URL's content should not be retained; changing the code cannot guarantee removal by a specified time."
+        },
+        {
+          "type": "heading",
+          "text": "Explain Clearly Without Blaming Readers",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "An original main heading could be “We can't find this exhibition page,” followed by “The link may have changed, or this information may no longer be available.” Do not insist that readers entered something incorrectly when you have not established the cause, and there is no need for lengthy technical descriptions of the server. Both the page title and main heading should make the current situation clear to users."
+        },
+        {
+          "type": "paragraph",
+          "text": "GOV.UK's guidance for page-not-found pages emphasizes concise wording, avoiding blame and providing helpful contact information. On a general content website, you could offer ways to check the URL, browse exhibition categories or contact the editors. These are this article's design recommendations, not a requirement for every website to copy a government website's entire layout."
+        },
+        {
+          "type": "paragraph",
+          "text": "You can keep illustrations and your brand voice, but do not let jokes, oversized codes or animations obscure the next actions. If you add images, ensure that important information is still presented as text and that buttons remain usable on narrow screens and when zoomed in. Readers have already encountered an interruption; the way forward should be easy to find."
+        },
+        {
+          "type": "heading",
+          "text": "Offer Destinations Relevant to the Original Task",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "An exhibition website could prioritize “View current exhibitions,” “Browse exhibition retrospectives” and site search, with the home page as a fallback. Choose options based on content that actually exists on the website, rather than adding lots of seemingly popular links. Only options that genuinely help readers narrow their search deserve a place on the error page."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "If a category can be inferred from known mappings of old URLs, you can offer a related category, but do not treat arbitrary URL segments as confirmed titles. Site search needs a clear label, and unsuccessful searches should also produce understandable results. Do not copy private "
+            },
+            {
+              "type": "text",
+              "text": "parameters"
+            },
+            {
+              "type": "text",
+              "text": " from the URL directly into the search box, page copy or analytics logs."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Going back to the previous page can sometimes help, but readers may have arrived directly from a bookmark or search result, and the previous page may be on another website. Keep explicit destinations within your site rather than offering only the browser's back action. Explain the purpose of contact options, such as reporting a broken link, so users know what information to provide."
+        },
+        {
+          "type": "heading",
+          "text": "Both the Display and HTTP Status Must Be Correct",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Writing “page not found” on the screen does not automatically make the server return 404. If the response is 200 but the content consists only of a not-found message, Google may classify it as a soft 404. After completing a custom design, use Network in the developer tools to inspect the document request for the original failing URL and confirm its actual HTTP status."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not consider acceptance testing complete after merely opening a fixed /404 demonstration page. Enter a deep URL that has never been created, load it directly and refresh, then inspect the final URL, response and display. Some websites show an error only during frontend navigation, but return to the home page or show a blank page when opened directly. These differences need separate testing."
+        },
+        {
+          "type": "paragraph",
+          "text": "If content has moved, use the correct permanent redirect to its corresponding new content and update links on your own website. Google explicitly warns against redirecting large numbers of old URLs to an unrelated home page, because this may confuse users and may be treated as a soft 404. If multiple articles have genuinely been consolidated into one comprehensive new piece, redirects can follow that mapping."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Spot-check URLs that do not exist, have moved or should exist but fail, and classify the causes first.",
+            "Write an explanation of the situation and add working categories, search or contact options.",
+            "Confirm the HTTP response at the original failing URL, and test direct entry and refreshing.",
+            "Update broken links and mapping rules, then schedule further repairs according to traffic and impact."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Track Which Interruptions Deserve Priority",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "You can combine server logs, internal broken-link checks and Search Console's indexing reports to identify problems. Record the URL path, where it is linked from, when it was discovered, the cause and the action taken. Different tools cover different areas; an error page where analytics tools fail to load may leave no frontend event."
+        },
+        {
+          "type": "paragraph",
+          "text": "Prioritize broken links in navigation bars, active campaigns, popular articles or important workflows. Nonexistent paths requested by bots scanning at random have a different impact from error pages reached through buttons on your site. Do not create content or large numbers of redirects solely because a URL has the highest 404 count."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google's documentation explains that a removed page with no replacement returning 404 is not necessarily a problem, and Google may still revisit old URLs after some time. The goal is not to keep reports permanently free of 404 responses, but to make content that should exist accessible, return the correct response for content that should be removed and fix broken links that remain in use."
+        },
+        {
+          "type": "heading",
+          "text": "Acceptance Testing Should Cover Links, Styling and Post-Fix Checks",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Check the error page's own stylesheet, image and script paths as well. When opened from a deeply nested URL, relative paths may point elsewhere, causing missing images or more broken links. Try every category, search and contact option to confirm that none creates a loop, and check that the page remains readable on mobile."
+        },
+        {
+          "type": "paragraph",
+          "text": "After completing a fix, request the same original URL again and confirm that the status code, redirect destination and content are consistent. If you use caching or a content delivery service, check whether the old response is still being served after the fix. Indexing reports may need to wait for a subsequent crawl; do not assume a fix has failed simply because the report has not yet updated."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep a record of fixes, including your diagnosis, the corresponding content and the verification date. During future redesigns or bulk article deletions, you can then check which old links people still use. A 404 page can help readers continue, but maintaining the actual entry points and content mappings will reduce the chances of the same interruption happening again."
+        },
+        {
+          "type": "image",
+          "src": "/guides/website-404-recovery/diagram-1-en.svg",
+          "alt": "Three cards distinguish content that should exist, has moved or has no replacement, matching each to a repair, redirect or clear page-not-found message.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Identify the content's status first; do not send every interruption to the same unrelated page.",
+          "description": "Three cards distinguish content that should exist, has moved or has no replacement, matching each to a repair, redirect or clear page-not-found message.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Situation",
+            "Appropriate Action",
+            "Result to Verify"
+          ],
+          "rows": [
+            [
+              "The URL does not exist",
+              "404 with a clear explanation and useful destinations",
+              "The original URL returns the correct response"
+            ],
+            [
+              "The same content has a new URL",
+              "Permanently redirect to the corresponding new page",
+              "The new page works and is reached without detours"
+            ],
+            [
+              "Content is confirmed permanently removed",
+              "Use 410 or an appropriate not-found response for the situation",
+              "There is no redirect to an unrelated replacement"
+            ],
+            [
+              "Content should exist but is unavailable due to a fault",
+              "Restore the service and use an appropriate error status",
+              "The fault is not treated as a normal deletion"
+            ],
+            [
+              "The page says not found but returns 200",
+              "Check for soft 404 issues and inspect route responses",
+              "The display and HTTP status agree"
+            ],
+            [
+              "A past event has ended",
+              "Consider retaining a retrospective and labeling the event's status",
+              "Readers do not mistakenly think they can still attend"
+            ]
+          ],
+          "caption": "This table guides decisions; set the actual status according to whether the resource exists and HTTP semantics."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Do Not Redirect Indiscriminately Just to Clear 404 Reports",
+          "text": "Set up a redirect only when the content has a corresponding new location. When there is no replacement content, a clear not-found page can be the correct result. Prioritize fixing internal entry points that remain in use."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Understand the Different Uses of 301 and 302 Redirects",
+              "kind": "life",
+              "slug": "redirects-301-302"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Organize Website Categories and Information Architecture",
+              "kind": "life",
+              "slug": "website-information-architecture"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Use Search Console to Check Indexing Status",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN: 404 Not Found",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/404",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: HTTP Status Codes and Crawlers",
+          "url": "https://developers.google.com/crawling/docs/troubleshooting/http-status-codes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: Page not found pages",
+          "url": "https://design-system.service.gov.uk/patterns/page-not-found-pages/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Site Moves and URL Mapping",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console: Indexing Reports, soft 404 and 404",
+          "url": "https://support.google.com/webmasters/answer/7440203",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "404 ページの設計：状況を説明し、読者が先に進めるようにする",
+      "description": "404 ページは、イラストとホームに戻るボタンを置くだけのものではありません。見つからないコンテンツの状況を読者が理解し、本来の目的を引き続き達成できるようにするものです。本記事では独自の展覧会情報サイトを例に、明確な文言、関連カテゴリーと検索、HTTP ステータスコード、適切なリダイレクト、エラーの追跡を解説します。操作手順、比較表、オリジナル図解を添え、本当に存在しない場合、コンテンツが移転した場合、サービスに障害がある場合を区別します。見栄えのよい画面の裏で成功ステータスを返したり、すべての旧 URL を無関係なホームページに転送したりする事態を防ぎます。",
+      "hero": {
+        "src": "/guides/website-404-recovery/hero-ja.jpg",
+        "alt": "Mokaair オリジナルの Web ページ画面、カテゴリーフォルダー、説明書のイラスト。ページが見つからないときの状況説明と、次に読める場所を表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "読者が古いブックマークから展覧会の紹介を開き、ページが存在しないと表示されたとき、本当に知りたいのは展覧会情報がどこへ行き、今は何を調べられるのかということです。404 ページの役割は、この中断を受け止め、次に何をすればよいかを明確にすることです。エラーコードを大きく表示するだけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下の展覧会情報サイトと文言は独自の作例で、2026 年 9 月 14 日に確認した Google、MDN、GOV.UK の文書をもとにまとめています。本記事では、サイトのルーティング変更、検索ツールへの送信、実際の訪問者行動の計測は行っていません。実践できる設計と検証の方法を紹介します。"
+        },
+        {
+          "type": "heading",
+          "text": "まず、この URL にコンテンツがない理由を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "404 は、要求されたリソースがサーバーで見つからないことを示します。それ自体では、一時的か永久的かはわかりません。URL の入力ミス、コンテンツの削除、リンクの更新漏れ、ルーティング設定の誤りなどが原因になり得ます。まず、本来そのコンテンツが存在するべきかを確認し、ページを修復するか、新しい場所へ転送するか、実際に見つからないことを示す応答を維持するかを決めます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "展覧会サイトを例にすると、同じ紹介記事の URL を変更しただけなら、対応する新しいページに転送できます。イベントが終了していても、交通案内、作品情報、振り返りなどが役立つ場合は、元のページを残し、終了したことを明記できます。イベントの終了は、ページを削除しなければならないことを意味しません。残すかどうかは、コンテンツの用途と保守の方針によります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サービスの一時停止、データベースの障害、ログイン条件も、それぞれに対応する必要があり、一律に「存在しない」と扱うべきではありません。永久に削除したことが確定しているリソースには、状況に応じて 410 を使い、削除済みであることを示せます。Google のインデックスでは、404 と 410 はどちらも、その URL のコンテンツを保持しない応答です。コードを変えれば指定した時期に消えると保証できるわけではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "明確な言葉で説明し、読者に責任を押し付けない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "独自の主見出しの例としては「この展覧会のページが見つかりません」とし、続けて「リンクが更新されたか、この情報の提供が終了した可能性があります」と説明できます。原因を確認していないのに、入力を間違えたと断定してはいけません。サーバーについて大量の技術用語で説明する必要もありません。ページタイトルと主見出しの両方で、現在の状況が利用者に伝わるようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GOV.UK の「ページが見つからない場合」の指針は、簡潔で利用者を責めない表現と、役立つ連絡先の提示を重視しています。一般的なコンテンツサイトに応用するなら、URL の確認、展覧会カテゴリーへの移動、編集者への連絡などの方法を示せます。これは本記事の設計上の提案であり、すべてのサイトが政府サイトのレイアウト全体をそのまま再現する必要があるという意味ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "イラストやブランドらしい語り口は残しても構いませんが、冗談、大きなコード表示、アニメーションで、その後の操作を見えにくくしないでください。画像を加える場合も、重要な情報は必ず文字で示し、狭い画面や拡大表示でもボタンを使えるようにします。読者はすでに一度行き止まりに遭遇しています。次に進む道筋は、見つけやすくするべきです。"
+        },
+        {
+          "type": "heading",
+          "text": "本来の目的に近い移動先を用意する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "展覧会サイトなら、「開催中の展覧会を見る」「展覧会の振り返りを見る」とサイト内検索を優先し、ホームページは予備の移動先にできます。選択肢は、サイトに実際にそのコンテンツがあるかどうかで決めます。人気がありそうなリンクを大量に置くのではありません。読者が探す範囲を絞るのに本当に役立つ選択肢だけを、エラーページに残す価値があります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "既知の旧 URL との対応関係からカテゴリーを推定できるなら、近いカテゴリーを提示できます。ただし、URL の任意の一部分を、確認済みのタイトルとして扱ってはいけません。サイト内検索には明確なラベルを付け、検索に失敗した場合も、理解できる結果を示す必要があります。URL 内のプライベートな"
+            },
+            {
+              "type": "text",
+              "text": "パラメータ"
+            },
+            {
+              "type": "text",
+              "text": "を、そのまま検索欄、ページの文言、分析記録に取り込まないでください。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "前のページに戻る機能が役立つこともありますが、読者はブックマークや検索結果から直接訪れているかもしれず、前のページが別のサイトにある可能性もあります。そのため、ブラウザーの「戻る」だけでなく、明確なサイト内の移動先も用意します。連絡用の入口には、「リンク切れを報告する」など用途を説明し、利用者が何を伝えればよいかわからない状態を避けます。"
+        },
+        {
+          "type": "heading",
+          "text": "画面と HTTP ステータスの両方を正しくする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "画面に「ページが見つかりません」と書いても、サーバーが自動的に 404 を返すわけではありません。応答が 200 なのに、コンテンツが存在しないというメッセージしかない場合、Google は soft 404 と判断する可能性があります。独自のデザインが完成したら、開発者ツールの Network で元のエラー URL のドキュメントリクエストを調べ、実際の HTTP ステータスを確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "固定の /404 デモページを開くだけで検証を終えてはいけません。作成したことのない深い階層の URL を入力し、直接読み込んで再読み込みも行い、最終的な URL、応答、画面を確認します。フロントエンドでページを切り替えたときにだけエラーを表示し、直接開くとホームページや空白ページに移るサイトもあります。こうした違いは個別にテストする必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "コンテンツが移転した場合は、正しい恒久リダイレクトで対応する新しいコンテンツへ転送し、自分のサイト内のリンクも更新します。Google は、大量の旧 URL をすべて無関係なホームページへ転送しないよう明確に注意を促しています。利用者を混乱させるだけでなく、soft 404 と見なされる可能性もあるためです。複数の記事を実際に一つの完全な新しいコンテンツへ統合した場合は、その対応関係に沿って処理できます。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "存在しない URL、移転済みの URL、存在するべきなのにエラーになる URL を抜き取り確認し、まず原因を分類します。",
+            "状況を説明する文言を書き、有効なカテゴリー、検索、連絡手段を加えます。",
+            "元のエラー URL の HTTP 応答を確認し、直接アクセスと再読み込みをテストします。",
+            "無効なリンクと対応ルールを更新し、アクセス数と影響に応じて、その後の修復を計画します。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "優先して修復すべき中断を追跡する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サーバーログ、サイト内のリンク切れチェック、Search Console のインデックス登録レポートを組み合わせて、問題を見つけられます。URL のパス、リンク元の場所、発見日時、原因、対処方法を記録します。ツールごとに把握できる範囲は異なります。分析ツールが読み込まれなかったエラーページでは、フロントエンドのイベントが記録されるとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ナビゲーションバー、配信中のリンク、人気記事、重要な操作の流れにあるリンク切れを優先して処理します。無作為に走査するボットが要求する存在しないパスと、読者がサイト内のボタンからエラーページに入る場合とでは、影響が異なります。404 の発生回数が多いという理由だけで、コンテンツを追加したり、大量のリダイレクトを作成したりしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google の説明によると、代替コンテンツのない削除済みページが 404 を返すことは、必ずしも問題ではありません。また、Google は時間がたってからも旧 URL を再訪することがあります。目標はレポートから永久に 404 をなくすことではなく、存在するべきコンテンツにアクセスでき、削除するべきコンテンツが正しく応答し、まだ使われている壊れたリンクを修復することです。"
+        },
+        {
+          "type": "heading",
+          "text": "検証にはリンク、スタイル、修復後の再確認も含める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "エラーページ自体のスタイル、画像、スクリプトのパスも確認します。深い階層の URL から開くと、相対パスが別の場所を指し、画像が表示されなかったり、リンクが再び無効になったりする可能性があります。カテゴリー、検索、連絡用の入口を一つずつ操作し、ループが発生しないことを確認するとともに、スマートフォンでも読めるかを確かめます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修復が終わったら、同じ元の URL に再度リクエストを送り、ステータスコード、転送先、コンテンツが一致していることを確認します。キャッシュやコンテンツ配信サービスを使っている場合は、修復後も古い応答を受け取っていないかに注意します。インデックス登録レポートは、その後のクロールを待つ必要があるかもしれません。レポートがまだ更新されていないだけで、修復に失敗したと判断しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修復記録には、原因をどう判断したか、対応するコンテンツ、検証日を残します。そうすれば、将来のリニューアルや記事の一括削除の際に、どの古いリンクがまだ使われているかを確認できます。404 ページは読者が先に進む助けになりますが、実際の入口とコンテンツの対応関係を保守することで、同じ中断に再び遭遇する機会を減らせます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/website-404-recovery/diagram-1-ja.svg",
+          "alt": "三枚のカードで、コンテンツが存在するべき場合、移転済みの場合、代替がない場合を区別し、それぞれ修復、転送、見つからないことを明確に伝えるページに対応させています。",
+          "width": 1600,
+          "height": 900,
+          "caption": "まずコンテンツの状態を区別します。すべての中断を、同じ無関係なページへの転送で済ませないでください。",
+          "description": "三枚のカードで、コンテンツが存在するべき場合、移転済みの場合、代替がない場合を区別し、それぞれ修復、転送、見つからないことを明確に伝えるページに対応させています。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "状況",
+            "適切な対処方針",
+            "確認すべき結果"
+          ],
+          "rows": [
+            [
+              "URL が存在しない",
+              "404 に明確な説明と利用できる移動先を添える",
+              "元の URL が正しく応答する"
+            ],
+            [
+              "同じコンテンツの URL が変わった",
+              "対応する新しいページへ恒久リダイレクトする",
+              "新しいページが有効で、迂回しない"
+            ],
+            [
+              "コンテンツの永久削除が確定している",
+              "状況に応じて 410 または不在を示す適切な応答を使う",
+              "無関係な代替ページへの転送がない"
+            ],
+            [
+              "コンテンツは存在するべきだが障害がある",
+              "サービスを修復し、適切なエラーステータスを使う",
+              "障害を通常の削除として扱わない"
+            ],
+            [
+              "画面では見つからないと表示するのに 200 を返す",
+              "soft 404 とルーティングの応答を確認する",
+              "画面と HTTP ステータスが一致する"
+            ],
+            [
+              "過去のイベントが終了している",
+              "振り返りとして残すか検討し、状態を明記する",
+              "読者がまだ参加できると誤解しない"
+            ]
+          ],
+          "caption": "表は判断の目安です。実際のステータスは、リソースの有無と HTTP の定義する意味に沿って設定してください。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "404 レポートを空にするための無闇な転送は避ける",
+          "text": "コンテンツに対応する新しい場所がある場合にだけ転送を設定します。代替コンテンツがない場合は、存在しないことを明確に伝えるページが正しい結果になり得ます。まだ使われているサイト内の入口を優先して修復してください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "301 と 302 のリダイレクトの用途を区別する",
+              "kind": "life",
+              "slug": "redirects-301-302"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトのカテゴリーと情報設計を整理する",
+              "kind": "life",
+              "slug": "website-information-architecture"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Search Console でインデックス登録状況を確認する",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN：404 見つかりません",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/404",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：HTTP ステータスコードとクローラー",
+          "url": "https://developers.google.com/crawling/docs/troubleshooting/http-status-codes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：ページが見つからない場合の画面",
+          "url": "https://design-system.service.gov.uk/patterns/page-not-found-pages/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：サイトの移転と URL の対応付け",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console：インデックス登録レポート、soft 404 と 404",
+          "url": "https://support.google.com/webmasters/answer/7440203",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "404 페이지 설계: 상황을 설명하고 독자가 다음 단계로 나아가도록 돕기",
+      "description": "404 페이지는 단순히 일러스트와 홈으로 가는 버튼을 놓는 곳이 아니라, 독자가 찾지 못한 콘텐츠의 상황을 이해하고 원래 하려던 일을 이어 가도록 돕는 곳입니다. 직접 구성한 전시 정보 사이트 예시를 통해 명확한 문구, 관련 분류와 검색, HTTP 상태 코드, 적절한 리디렉션과 오류 추적을 설명합니다. 실행 단계, 비교표, 직접 제작한 도해로 실제로 존재하지 않는 경우, 콘텐츠가 이동한 경우, 서비스 장애를 구분하고, 보기 좋은 화면 뒤에서 성공 상태를 반환하거나 모든 이전 URL을 무관한 홈페이지로 보내는 일을 피하도록 돕습니다.",
+      "hero": {
+        "src": "/guides/website-404-recovery/hero-ko.jpg",
+        "alt": "Mokaair가 직접 제작한 웹 화면, 분류 폴더, 안내 문서 일러스트로, 페이지를 찾지 못했을 때의 상황 설명과 이어서 읽을 곳을 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "독자가 오래된 북마크로 전시 소개를 열었다가 페이지가 없다는 안내를 보면, 정말 알고 싶은 것은 전시 정보가 어디로 갔는지, 지금 무엇을 더 찾아볼 수 있는지입니다. 404 페이지의 역할은 이 중단 상황에서 독자를 돕고 명확한 다음 단계를 제시하는 것이지, 오류 코드를 크게 보여 주는 데 그치지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "아래 전시 정보 사이트와 문구는 직접 구성한 예시이며, 2026년 9월 14일에 확인한 Google, MDN, GOV.UK 문서를 바탕으로 정리했습니다. 이 글에서는 사이트 라우팅을 수정하거나 검색 도구에 제출하거나 실제 방문자 행동을 측정하지 않았습니다. 실행 가능한 설계 및 검수 방법을 제공합니다."
+        },
+        {
+          "type": "heading",
+          "text": "먼저 이 URL에 콘텐츠가 없는 이유를 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "404는 서버가 요청받은 리소스를 찾을 수 없다는 뜻이며, 그 자체로 일시적인지 영구적인지는 알려 주지 않습니다. URL 오타, 콘텐츠 삭제, 갱신되지 않은 링크, 라우팅 설정 오류 모두 이런 결과를 일으킬 수 있습니다. 먼저 원래 콘텐츠가 존재해야 하는지 확인한 뒤, 페이지를 복구할지, 새 위치로 이동시킬지, 실제로 찾을 수 없다는 응답을 유지할지 결정해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "전시 사이트를 예로 들면, 같은 소개 글의 URL만 바뀌었다면 새 페이지로 연결할 수 있습니다. 행사가 끝났어도 교통편, 작품, 회고 정보가 여전히 유용하다면 기존 페이지를 유지하고 종료 사실을 표시할 수 있습니다. 행사가 끝났다고 페이지까지 반드시 없어져야 하는 것은 아닙니다. 유지 여부는 콘텐츠의 용도와 유지보수 계획에 따라 결정합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "서비스 중단, 데이터베이스 장애, 로그인 조건도 각각 따로 처리해야 하며, 모두 존재하지 않는 것으로 표현해서는 안 됩니다. 영구 삭제가 확실한 리소스는 상황에 따라 410으로 삭제되었음을 나타낼 수 있습니다. Google 색인에서 404와 410은 모두 해당 URL의 콘텐츠를 유지하지 않는 응답에 해당하며, 코드를 바꾼다고 정해진 시점에 사라진다고 보장할 수는 없습니다."
+        },
+        {
+          "type": "heading",
+          "text": "명확한 문구로 설명하고 독자에게 책임을 돌리지 않기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 작성하는 주 제목은 “이 전시 페이지를 찾을 수 없습니다”로 하고, 이어서 “링크가 변경되었거나 이 정보의 제공이 중단되었을 수 있습니다”라고 설명할 수 있습니다. 원인을 확인하지 않았다면 사용자가 잘못 입력했다고 단정하지 마세요. 서버를 설명하는 기술적인 글도 길게 늘어놓을 필요가 없습니다. 페이지 제목과 주 제목 모두 사용자가 현재 상황을 알 수 있게 해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "GOV.UK의 페이지를 찾을 수 없을 때의 지침은 간결하게 설명하고, 사용자를 탓하지 않으며, 도움이 되는 연락처를 제공하라고 강조합니다. 일반 콘텐츠 사이트에 적용할 때는 URL 확인, 전시 분류로 이동, 편집자에게 연락하는 방법을 제공할 수 있습니다. 이는 이 글의 설계 제안이며, 모든 사이트가 정부 사이트의 전체 레이아웃을 그대로 따라야 한다는 뜻은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "일러스트와 브랜드의 말투는 유지해도 되지만, 농담이나 거대한 코드, 애니메이션이 다음 행동을 가려서는 안 됩니다. 이미지를 넣더라도 중요한 정보는 글로 표시하고, 좁은 화면이나 확대 상태에서도 버튼을 사용할 수 있게 해야 합니다. 독자는 이미 한 번 흐름이 끊겼으므로, 다음 경로는 쉽게 눈에 들어와야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "원래 하려던 일과 가까운 이동 경로 제공하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "전시 사이트라면 “현재 전시 보기”, “지난 전시 돌아보기”, 사이트 내 검색을 우선 제공하고, 홈페이지는 보조 경로로 둘 수 있습니다. 선택지는 사이트에 실제로 해당 콘텐츠가 있는지에 따라 정해야 하며, 인기 있어 보이는 링크를 많이 나열해서는 안 됩니다. 독자가 범위를 좁히는 데 실제로 도움이 되는 선택지만 오류 페이지에 남길 가치가 있습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "확인된 이전 URL 매핑으로 분류를 추정할 수 있다면 관련 분류를 제공할 수 있지만, URL의 임의 조각을 확인된 제목처럼 취급해서는 안 됩니다. 사이트 내 검색에는 명확한 라벨이 필요하며, 검색에 실패했을 때도 이해할 수 있는 결과를 보여 줘야 합니다. URL에 포함된 비공개 "
+            },
+            {
+              "type": "text",
+              "text": "매개변수"
+            },
+            {
+              "type": "text",
+              "text": "를 검색창, 페이지 문구, 분석 기록에 그대로 옮기지 마세요."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "이전 페이지로 돌아가기가 유용할 때도 있지만, 독자는 북마크나 검색 결과에서 바로 들어왔을 수 있고 이전 페이지가 다른 사이트일 수도 있습니다. 따라서 브라우저의 뒤로 가기만 제공하지 말고, 명확한 사이트 내 이동 경로도 유지해야 합니다. 연락 메뉴에는 ‘깨진 링크 신고’처럼 용도를 설명해 사용자가 어떤 정보를 제공해야 할지 알 수 있게 하세요."
+        },
+        {
+          "type": "heading",
+          "text": "화면과 HTTP 상태가 모두 올바르게 표시되어야 합니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "화면에 페이지를 찾을 수 없다고 쓴다고 서버가 자동으로 404를 반환하는 것은 아닙니다. 응답은 200인데 콘텐츠에는 존재하지 않는다는 안내만 있다면 Google은 이를 soft 404로 판단할 수 있습니다. 맞춤 설계를 마친 뒤에는 개발자 도구의 Network에서 원래 오류 URL의 문서 요청을 확인하고 실제 HTTP 상태를 검증해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "고정된 /404 데모 페이지 하나만 열어 보고 검수를 마쳐서는 안 됩니다. 생성한 적 없는 하위 경로가 깊은 URL을 입력해 직접 열고 새로고침하면서 최종 URL, 응답, 화면을 확인해야 합니다. 어떤 사이트는 프런트엔드에서 페이지를 전환할 때만 오류를 표시하고, 직접 열면 홈페이지나 빈 페이지로 이동합니다. 이런 차이는 따로 테스트해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "콘텐츠가 이동했다면 대응하는 새 콘텐츠로 올바른 영구 리디렉션을 설정하고, 자체 사이트의 링크도 갱신하세요. Google은 많은 이전 URL을 모두 무관한 홈페이지로 보내지 말라고 명확히 안내합니다. 사용자가 혼란을 느낄 수 있고 soft 404로 간주될 수도 있기 때문입니다. 여러 글을 실제로 하나의 완결된 새 콘텐츠로 합쳤다면 해당 관계에 맞춰 처리할 수 있습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "존재하지 않는 URL, 이동한 URL, 존재해야 하지만 오류가 나는 URL을 표본 점검하고 원인부터 분류합니다.",
+            "상황 설명을 작성하고 유효한 분류, 검색 또는 연락 방법을 추가합니다.",
+            "원래 오류 URL의 HTTP 응답을 확인하고 직접 접속과 새로고침을 테스트합니다.",
+            "깨진 링크와 매핑 규칙을 갱신한 뒤, 트래픽과 영향에 따라 후속 복구를 계획합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "우선 복구할 만한 중단 지점 추적하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "서버 로그, 사이트 내 깨진 링크 검사, Search Console의 색인 보고서를 종합해 문제를 찾을 수 있습니다. URL 경로, 해당 URL로 연결하는 링크의 위치, 발견 시점, 원인, 처리 방법을 기록하세요. 도구마다 관찰하는 범위가 다르므로, 분석 도구가 로드되지 않은 오류 페이지에서는 프런트엔드 이벤트가 남지 않을 수도 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "탐색 메뉴, 현재 집행 중인 광고의 링크, 인기 글, 중요한 이용 흐름에 있는 깨진 진입 링크부터 처리하세요. 무작위로 스캔하는 봇이 요청한 존재하지 않는 경로와 독자가 사이트 내 버튼을 눌러 들어간 오류 페이지는 영향이 다릅니다. 404 횟수가 많다는 이유만으로 콘텐츠를 추가하거나 대량의 리디렉션을 만들어서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google의 설명에 따르면, 대체 콘텐츠 없이 삭제된 페이지가 404를 반환하는 것은 반드시 문제가 되는 것은 아니며, Google은 시간이 지난 뒤에도 이전 URL을 다시 방문할 수 있습니다. 목표는 보고서에서 404를 영원히 없애는 것이 아닙니다. 존재해야 하는 콘텐츠에 접근할 수 있게 하고, 삭제되어야 하는 콘텐츠에는 올바르게 응답하며, 아직 사용 중인 깨진 링크를 고치는 것입니다."
+        },
+        {
+          "type": "heading",
+          "text": "검수에는 링크, 스타일, 복구 후 재확인까지 포함하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "오류 페이지 자체의 스타일, 이미지, 스크립트 경로도 점검해야 합니다. 하위 경로가 매우 깊은 URL에서 열면 상대 경로가 다른 위치를 가리켜 이미지가 사라지거나 링크가 다시 끊어질 수 있습니다. 분류, 검색, 연락 메뉴를 하나씩 조작해 순환이 생기지 않는지 확인하고, 휴대전화에서도 읽을 수 있는지 살펴보세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "복구를 마친 뒤에는 같은 원래 URL을 다시 요청해 상태 코드, 리디렉션 대상, 콘텐츠가 일치하는지 확인하세요. 캐시나 콘텐츠 전송 서비스를 사용한다면 복구 후에도 이전 응답을 받는지 주의해야 합니다. 색인 보고서는 후속 크롤링까지 기다려야 할 수 있으므로, 보고서가 아직 갱신되지 않았다고 곧바로 복구 실패로 판단하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "원인 판단, 대응하는 콘텐츠, 검증 날짜를 포함한 복구 기록을 남기세요. 나중에 사이트를 개편하거나 글을 일괄 삭제할 때도 어떤 이전 링크가 아직 사용되는지 확인할 수 있습니다. 404 페이지는 독자가 계속 나아가도록 도울 수 있지만, 실제 진입 링크와 콘텐츠 매핑을 관리해야 다음에 같은 중단을 겪는 일을 줄일 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/website-404-recovery/diagram-1-ko.svg",
+          "alt": "세 카드가 콘텐츠가 존재해야 하는 경우, 이동한 경우, 대체 콘텐츠가 없는 경우를 구분하고, 각각 복구, 리디렉션, 명확한 찾을 수 없음 페이지에 연결합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "먼저 콘텐츠 상태를 구분하세요. 모든 중단 상황에서 같은 무관한 페이지로 보내지 마세요.",
+          "description": "세 카드가 콘텐츠가 존재해야 하는 경우, 이동한 경우, 대체 콘텐츠가 없는 경우를 구분하고, 각각 복구, 리디렉션, 명확한 찾을 수 없음 페이지에 연결합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "상황",
+            "적절한 처리 방향",
+            "확인할 결과"
+          ],
+          "rows": [
+            [
+              "URL이 존재하지 않음",
+              "404와 명확한 설명, 이용 가능한 이동 경로 제공",
+              "원래 URL의 응답이 올바름"
+            ],
+            [
+              "같은 콘텐츠의 URL 변경",
+              "대응하는 새 페이지로 영구 리디렉션",
+              "새 페이지가 유효하고 우회하지 않음"
+            ],
+            [
+              "콘텐츠의 영구 삭제가 확실함",
+              "상황에 따라 410 또는 적절한 찾을 수 없음 응답 사용",
+              "무관한 대체 페이지로 리디렉션하지 않음"
+            ],
+            [
+              "콘텐츠가 존재해야 하지만 장애 발생",
+              "서비스를 복구하고 적절한 오류 상태 사용",
+              "장애를 정상적인 삭제로 취급하지 않음"
+            ],
+            [
+              "화면은 찾을 수 없음인데 200 반환",
+              "soft 404와 라우팅 응답 점검",
+              "화면과 HTTP 상태가 일치함"
+            ],
+            [
+              "지난 행사가 종료됨",
+              "회고 콘텐츠 유지 여부를 검토하고 상태 표시",
+              "독자가 아직 참가할 수 있다고 오해하지 않음"
+            ]
+          ],
+          "caption": "표는 처리 방향을 판단하기 위한 안내입니다. 실제 상태는 리소스의 존재 여부와 HTTP 의미에 맞게 설정해야 합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "404 보고서를 비우려고 무분별하게 리디렉션하지 마세요",
+          "text": "콘텐츠에 대응하는 새 위치가 있을 때만 리디렉션을 설정하세요. 대체 콘텐츠가 없다면 명확한 찾을 수 없음 페이지가 올바른 결과일 수 있습니다. 아직 사용 중인 사이트 내 진입 링크부터 복구하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "301과 302 리디렉션의 용도 구분하기",
+              "kind": "life",
+              "slug": "redirects-301-302"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "사이트 분류와 정보 구조 정리하기",
+              "kind": "life",
+              "slug": "website-information-architecture"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Search Console로 색인 상태 확인하기",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN: 404 찾을 수 없음",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/404",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: HTTP 상태 코드와 크롤러",
+          "url": "https://developers.google.com/crawling/docs/troubleshooting/http-status-codes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: 페이지를 찾을 수 없을 때의 안내 페이지",
+          "url": "https://design-system.service.gov.uk/patterns/page-not-found-pages/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: 사이트 이전과 URL 매핑",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console: 색인 보고서, soft 404와 404",
+          "url": "https://support.google.com/webmasters/answer/7440203",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "404 页面怎么设计：说明状况并帮读者继续浏览",
+      "description": "404 页面不只是放一张插图和返回首页按钮，而是协助读者理解找不到的内容，并继续完成原本任务。本文以原创展览信息网站为例，说明清晰文案、相关分类与搜索、HTTP 状态码、适当重定向及错误追踪。附操作步骤、对比表与原创图解，协助区分真正不存在、内容迁移和服务故障，避免漂亮画面背后仍返回成功状态，或将所有旧网址重定向到无关首页。",
+      "hero": {
+        "src": "/guides/website-404-recovery/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创网页画面、分类文件夹与说明文档插图，代表找不到页面后的状况说明和阅读去处。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "读者从旧书签打开展览介绍，看到页面不存在时，真正想知道的是展览信息去哪里了、现在还能查什么。404 页面的工作是接住这个中断，让读者有清楚的下一步，而不是只把错误代码放大。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下展览信息网站与文案是原创示例，依 2026 年 9 月 14 日查阅的 Google、MDN 与 GOV.UK 文档整理。本篇没有修改网站路由、提交搜索工具或测量真实访客行为；提供的是可执行的设计与验收方法。"
+        },
+        {
+          "type": "heading",
+          "text": "先确认这个网址为什么没有内容",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "404 表示服务器找不到请求的资源，本身不说明是暂时还是永久。网址拼错、内容删除、链接未更新或路由设置错误都可能造成这个结果。先检查原本内容是否应该存在，再决定要修复页面、转往新位置，或保留真正的未找到响应。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以展览网站为例，若只是把同一篇介绍换了网址，可以对应到新页面；若活动结束但仍有可用的交通、作品或回顾信息，则可保留原页并标明已结束。活动已结束不等于页面必须消失，是否保留取决于内容用途与维护安排。"
+        },
+        {
+          "type": "paragraph",
+          "text": "服务暂停、数据库故障或登录条件也需要各自处理，不应一律包装成不存在。对确定永久移除的资源，可依情境使用 410 表达已移除；对 Google 索引而言，404 和 410 都属于不保留该网址内容的响应，不能保证换代码就会在指定时间消失。"
+        },
+        {
+          "type": "heading",
+          "text": "用清楚文字说明，不把责任推给读者",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "原创主标题可以是“找不到这个展览页面”，接着说明“链接可能已更新，或这份信息已停止提供”。没有查明原因时不要肯定地说你输入错了；也不必用大量技术文字描述服务器。页面标题与主要标题都应让用户知道目前所处的状况。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GOV.UK 的找不到页面指南强调简洁、不责怪用户，并提供有帮助的联系信息。应用在一般内容站时，可以提供检查网址、前往展览分类或联系编辑的方式；这是本篇的设计建议，不表示每个网站都要复制政府网站的整套版面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "插图和品牌语气可以保留，但不要让玩笑、巨大代码或动画掩盖后续操作。若加入图像，确保重要信息仍以文字呈现，按钮在窄屏幕和放大后也能使用。读者已经遇到一次中断，接下来的路径应容易看见。"
+        },
+        {
+          "type": "heading",
+          "text": "提供与原任务相近的去处",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "展览网站可优先提供“查看当前展览”、“浏览展览回顾”及站内搜索；首页可作备用去处。选项应依网站实际内容存在与否决定，而不是放很多看似热门的链接。只有真正能协助读者缩小范围的选项，才值得留在错误页。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若能从已知的旧网址对照推知分类，可以提供相近分类，但不要把任意网址片段当成已确认标题。站内搜索需要有清晰标签，搜索失败也要有可理解的结果。不要把网址中的私密"
+            },
+            {
+              "type": "text",
+              "text": "参数"
+            },
+            {
+              "type": "text",
+              "text": "直接带进搜索框、页面文案或分析记录。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "返回上一页有时有用，但读者可能直接从书签或搜索结果进站，上一页也可能在别的网站。因此保留明确的站内去处，不只提供浏览器返回。联系入口则说明用途，例如报告失效链接，避免用户不知道要提供什么信息。"
+        },
+        {
+          "type": "heading",
+          "text": "画面与 HTTP 状态需要同时正确",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在画面写找不到页面，并不会自动让服务器返回 404。若响应是 200，内容却只剩不存在信息，Google 可能将它判为 soft 404。自定义设计完成后，要用开发工具的 Network 查看原本错误网址的文档请求，确认真正的 HTTP 状态。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要只打开一个固定的 /404 展示页就算验收；应输入没有创建过的深层网址，直接加载并刷新，观察最终网址、响应和画面。某些网站只在前端切换时显示错误，直接打开却回到首页或空白页，这类差异需要单独测试。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若内容迁移，使用正确的永久重定向到相对应的新内容，并更新自己网站的链接。Google 明确提醒不要将大量旧网址全部重定向到无关首页，因为可能让用户困惑，也可能被视为 soft 404。若多篇确实合并成一篇完整新内容，则可依对照处理。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "抽查不存在、已迁移及应存在却出错的网址，先分类原因。",
+            "撰写状况说明，加入有效分类、搜索或联系方式。",
+            "确认原错误网址的 HTTP 响应，测试直接进入与刷新。",
+            "更新失效链接与对照规则，再依流量及影响安排后续修复。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "追踪哪些中断值得优先修复",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "可以综合服务器日志、站内失效链接检查与 Search Console 的索引报告找出问题。记录网址路径、链接所在的位置、发现时间、原因及处理方式。不同工具看到的范围不同，分析工具未加载的错误页，不一定会留下前端事件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "优先处理导航栏、正在投放的链接、热门文章或重要流程中的失效入口。随机扫描机器人请求的不存在路径，与读者从站内按钮进入错误页，影响不同；不要只按 404 次数最多就新增内容或创建大量重定向。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的说明指出，没有替代内容的已移除页面返回 404 并不一定是问题，Google 也可能一段时间后仍再访旧网址。目标不是让报表永远没有 404，而是让应该存在的内容可访问、应该移除的内容正确响应，并修复仍在使用的失效链接。"
+        },
+        {
+          "type": "heading",
+          "text": "验收要涵盖链接、样式与修复后复查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "错误页本身的样式、图片和脚本路径也要检查。从很深的网址打开时，相对路径可能指向不同位置，造成图像不见或链接再次失效。逐一操作分类、搜索和联系入口，确认不会形成循环，并查看手机上是否仍可阅读。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成修复后，重新请求同一个原始网址，确认状态码、重定向目标及内容一致。若使用缓存或内容分发服务，留意修复后是否仍获取旧响应；索引报告则可能需要等待后续抓取，不要把报表尚未更新直接判断成修复失败。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把修复记录留下来，包含判断原因、对应内容与验证日期。未来改版或批量删文时，就能查到哪些旧链接仍有人使用。404 页面可以帮读者继续浏览，但维护真正的入口与内容对照，才会减少下一次遇到相同中断。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/website-404-recovery/diagram-1-zh-cn.svg",
+          "alt": "三张卡片区分内容应存在、内容已迁移及没有替代内容，分别对应修复、重定向及清楚的找不到页面。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先分清内容状态；不要把每一个中断都送到同一个无关页面。",
+          "description": "三张卡片区分内容应存在、内容已迁移及没有替代内容，分别对应修复、重定向及清楚的找不到页面。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "情况",
+            "适合的处理方向",
+            "应确认的结果"
+          ],
+          "rows": [
+            [
+              "网址不存在",
+              "404 加清楚说明与可用去处",
+              "原网址响应正确"
+            ],
+            [
+              "同一内容换网址",
+              "永久重定向到对应的新页",
+              "新页有效且不绕路"
+            ],
+            [
+              "内容确定永久移除",
+              "依情境使用 410 或适当的不存在响应",
+              "没有无关的替代重定向"
+            ],
+            [
+              "内容应存在但故障",
+              "修复服务并使用适当错误状态",
+              "不把故障当成正常删除"
+            ],
+            [
+              "画面找不到却返回 200",
+              "检查 soft 404 与路由响应",
+              "画面及 HTTP 状态一致"
+            ],
+            [
+              "旧活动已结束",
+              "评估保留回顾并标示状态",
+              "读者不误以为仍可参加"
+            ]
+          ],
+          "caption": "表格是判断方向；实际状态仍应依资源是否存在与 HTTP 语义设置。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "不要为了清空 404 报表而随意重定向",
+          "text": "内容有相对应的新位置才安排重定向；没有替代内容时，清楚的不存在页面可以是正确结果。优先修复仍被使用的站内入口。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "分清 301 与 302 的重定向用途",
+              "kind": "life",
+              "slug": "redirects-301-302"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理网站分类与信息架构",
+              "kind": "life",
+              "slug": "website-information-architecture"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "使用 Search Console 查看索引状态",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN：404 未找到",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/404",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：HTTP 状态码与爬虫",
+          "url": "https://developers.google.com/crawling/docs/troubleshooting/http-status-codes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：找不到页面提示页",
+          "url": "https://design-system.service.gov.uk/patterns/page-not-found-pages/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：网站迁移与网址对照",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console：索引报告、soft 404 与 404",
           "url": "https://support.google.com/webmasters/answer/7440203",
           "checked_on": "2026-09-14"
         }
