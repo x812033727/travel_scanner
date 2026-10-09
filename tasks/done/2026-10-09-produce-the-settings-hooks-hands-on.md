@@ -1,13 +1,13 @@
 ---
 id: 2026-10-09-produce-the-settings-hooks-hands-on
 title: Produce the settings-hooks hands-on tutorial under the content-value rules
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-5-video-reference-comparison
 claimed_at: 2026-10-09T10:01:30Z
 created_at: 2026-10-09T10:01:12Z
-completed_at:
+completed_at: 2026-10-09T13:27:30Z
 branch: claude/hooks-hands-on-video
 depends_on: []
 scope:
