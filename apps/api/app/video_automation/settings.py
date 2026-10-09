@@ -31,6 +31,7 @@ from app.video_automation.models import (
     VideoStagePrompt,
 )
 from app.video_automation.schemas import (
+    CAPTION_LOCALES,
     ApiProviderName,
     DramaSettings,
     MediaOptionsView,
@@ -136,8 +137,18 @@ def media_options_view() -> MediaOptionsView:
     )
 
 
+def current_caption_locales(stored: Any) -> list[str]:
+    """A stored caption-language list as the page knows it: a language the videos are no longer
+    made in (zh-CN before 2026-10-09) is dropped rather than refused. Migration 0128 removes it
+    from the rows; this keeps a row written between the deploy's steps readable."""
+    values = stored if isinstance(stored, list) else []
+    return [locale for locale in values if locale in CAPTION_LOCALES]
+
+
 def drama_values(row: VideoAutomationSettings) -> DramaSettings:
-    return DramaSettings(**{field: getattr(row, field) for field in DRAMA_FIELDS})
+    values = {field: getattr(row, field) for field in DRAMA_FIELDS}
+    values["drama_caption_locales"] = current_caption_locales(values["drama_caption_locales"])
+    return DramaSettings(**values)
 
 
 def slides_values(row: VideoAutomationSettings) -> SlidesSettings:
@@ -194,7 +205,7 @@ def settings_values(row: VideoAutomationSettings) -> SettingsWrite:
         voice=cast(Any, row.voice),
         target_minutes_min=row.target_minutes_min,
         target_minutes_max=row.target_minutes_max,
-        caption_locales=cast(Any, row.caption_locales),
+        caption_locales=cast(Any, current_caption_locales(row.caption_locales)),
         max_drafts_per_month=row.max_drafts_per_month,
         monthly_token_budget_millions=row.monthly_token_budget_millions,
         max_verify_rounds=row.max_verify_rounds,

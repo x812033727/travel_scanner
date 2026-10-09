@@ -63,7 +63,7 @@ DEFAULT_VOICE: dict[str, Any] = {
 }
 DEFAULT_TOPIC_SCOPE = ["AI", "科技", "AI 工具教學"]
 DEFAULT_TOPIC_AVOID = ["投資建議", "醫療建議", "選舉政治"]
-DEFAULT_CAPTION_LOCALES = ["en", "ja", "ko", "zh-CN"]
+DEFAULT_CAPTION_LOCALES = ["en", "ja", "ko"]
 # The AI drama route (docs/videos/DRAMA.md). The owner chose on 2026-09-26 to start without a
 # spending cap, so the budgets open wide and are lowered after the pilot; migration 0095 carries
 # the same values as server defaults, and the settings tab shows them.
