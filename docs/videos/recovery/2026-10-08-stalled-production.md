@@ -3,7 +3,53 @@
 Owner request: complete stalled video production directly. This record is updated
 only from actual stage results. Generated media and detailed logs remain outside Git.
 
-## Current verified continuation,16:03 Taipei,2026-10-09
+## Current verified continuation,16:18 Taipei,2026-10-09
+
+SEC's original text stream genuinely closed at16:09:42 with all four selected
+translations current:48 paid successes and49 gross attempts. Its real cached
+Simplified Chinese translator was reused through a syntax-only view; the normal
+caption reviewer still ran. Fresh normal zero-model dub quotes bind165 first-pass
+requests/13394 characters across English, Japanese and Korean. ONE selected-dub
+runner started at16:15:42 with the unchanged normal two shorten/two retake/two
+reword limits and current source/owner/settings/project-lease guards.
+
+Cloudflare's normal English dub exhausted two retakes and two rewording rounds
+at16:09:37. The remaining flagged line86su genuinely transcribes "Four access
+rules" against "Four access roles". Normal giveUpDub recorded a skip reason;
+its WAVs, track, actual checks and complete counters remain preserved. English
+is not called made or accepted, and no additional paid retry is authorized.
+Fresh zero-model Japanese/Korean quotes total164 requests/7066 characters. Their
+remaining selected-locale runner started once at16:14:07, without replaying English.
+Normal language/package stages may report the truthful source-bound English skip.
+
+FREE's strict recurring envelope helper and succeeded-journal binding passed
+13 normal-parser tests plus12 independent adversarial checks. Only two surplus
+non-string braces may be removed after the genuine raw result is saved and
+read back with its exact native key/request/result hash; all worksheet strings
+and real critique entries are retained. The original remaining-seven run began
+once at16:16:30. At16:18:06 its next real caption-reviewer job succeeded and was
+adopted, bringing the new overlay to eight genuine successes. Original33 cache,
+lost Korean UNKNOWN, immutable journal/wire and physical STOP remain unchanged.
+DevDay's final five wait for FREE's normal shared-producer closure. Combined
+original bounds remain103 potential models/104 conservative transport exposures.
+
+Source-only preparation for the two renewed movies' six selected dubs passed
+current-code imports, normal lint and zero-POST quotes. Existing presentation
+inputs and the exact canonical pinyin-pro dependency are borrowed with hashes;
+shared code/dependencies are unchanged. No dub provider request ran for them.
+
+Draft PR1387 head `ce9b17a6e094573cfc2278501f6437661dac1297` has two completed
+CI failures from one new receipt-hygiene error: three reviewer-record strings
+contain literal local paths. Functional checks passed in both jobs; this head
+is not called green. Narrow repair commit `8c2a5eb4` substitutes only those three
+paths and refreshes the report hash. Hygiene3/3, receipt2/2, all473 normal plans
+and task/diff checks pass; all108 source bindings and historical content remain
+unchanged. The new head requires its own CI result after pushing.
+Embedding and Travel owner-language decisions remain pending. Mods' exact STOP
+receipt remains verified; no Studio listening, YouTube upload or publication
+is inferred from any movie/package/backend approval.
+
+## Verified continuation,16:03 Taipei,2026-10-09
 
 Embedding's completed movie/base Chinese package and both exact approval
 readbacks remain as recorded below. Owner language decisions for Embedding and

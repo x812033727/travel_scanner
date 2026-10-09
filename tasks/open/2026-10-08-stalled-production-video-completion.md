@@ -69,3 +69,11 @@ stay outside Git. Keep any failed checks and pending reviews truthful.
   no durable result exists, so its UNKNOWN is preserved and not replayed.
   Existing Japanese CC delivered with zero models; four of16 renewed text parts
   are now backend READY. DevDay uses an independently reviewed durable plan next.
+- Oct9 16:18 checkpoint: Embedding's actual14:43 movie and base Chinese package
+  both have current normal approval readbacks. SEC four languages' selected text parts
+  are current and its three selected dubs began once. Cloudflare English reached
+  its normal limit and is honestly skipped; Japanese/Korean continue. FREE has
+  eight genuine new cached answers, with the true old UNKNOWN retained; DevDay's
+  final five wait for normal shared-producer closure. Original language/cost
+  limits and exact Mods hold are preserved. Travel/Embedding owner choices are
+  still pending; no Studio listening or YouTube action has been performed.
