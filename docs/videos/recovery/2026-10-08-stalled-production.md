@@ -3,7 +3,51 @@
 Owner request: complete stalled video production directly. This record is updated
 only from actual stage results. Generated media and detailed logs remain outside Git.
 
-## Current verified continuation,22:50 Taipei,2026-10-09
+## Current verified continuation,23:17 Taipei,2026-10-09
+
+Embedding's twelve echoed source commas were restored through the exact
+zero-provider executor; translated text and all original raw results were kept.
+Its final original reviewer genuinely succeeded/adopted at22:57:54. All64
+original keys and32 translator/reviewer pairs are complete,with all four normal
+worksheets current. Supervisor43464 physically closed exit0 at22:58:10; the old
+4568 exit3 remains historical evidence. Closure receipt SHA94da1b14 is retained.
+Normal thumbnails,captions and package commands all closed exit0 at23:04:11,
+receipt649d8af0: four localized thumbnails,five CC files and five metadata locales.
+The approved Mandarin final24b8e2b5,156 WAVs,78 images and14 old journals remain
+preserved. Local finishing made zero provider/API/approval calls.
+
+Actual complete three-dub quote d44fc922 contains363 first-pass requests and
+20400 characters,all currently uncached. Each locale retains ordinary limits of
+two shorten,two retake and two reword rounds; at most12 new correction keys.
+Reported TTS output estimates and input proxies remain estimates,with ASR/Jev
+separate; the old USD40 image ledger is not a full speech billing receipt.
+Fresh23:14 source/DB/ownership readbacks bind840/350,actual selected languages,
+current approved gates and free deploy lock. No canonical host Embedding producer
+or directory exists; all three local predecessors are physically absent and no
+local STOP/LEASE exists. Root authorized one reviewed existing-namespace
+EN/Japanese/Korean continuation. Execution and accepted dubs are not yet claimed.
+
+DevDay's exact d430 hold was reconciled at23:15:44,receipt SHA9d4f3dc8.
+Full457-entry cache,original hold and proof were archived before the ordinary
+native journal removed only that proven pretransport key. All other456 entries
+and four confirmed paid answers retain their original bytes/filesystem identities.
+This made zero model/speech/API calls and released only its own private lease
+and shared lock. Both canonical conditional STOPs remain held by the current
+guardians. Historical ten models,688 speech routes,39464 characters and84 API
+writes remain unchanged. Korean continuation still needs its concrete native
+remaining-request/reused-answer plan; no paid successor is yet claimed.
+
+Travel Japanese/Korean genuinely started once at23:03:33 under coordinator
+1595573. Japanese first-pass synthesis and two ordinary shortening rounds have
+completed; ASR is running. Native WAVs and original correction results are
+saved. Exact English held330b2636/bodyff0ef4e1 and its one actual paid HTTP200
+remain preserved,as does Mods STOPf5bbf969. The tested header-only bookkeeping
+fix preserves the binary response for the native consumer. A source-only English
+candidate allows exactly one known locally lost86-character replacement after
+Japanese/Korean truly close; original paid evidence,counters and check_stopped
+are retained. No English forget or replacement has happened at this checkpoint.
+
+## Earlier verified continuation,22:50 Taipei,2026-10-09
 
 All six Mandarin movies retain their verified final files. Mods remains under
 the exact STOP f5bbf969; no upload,publication,merge or agent deployment occurred.

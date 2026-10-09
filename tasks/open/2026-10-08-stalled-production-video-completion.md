@@ -90,3 +90,12 @@ stay outside Git. Keep any failed checks and pending reviews truthful.
   pretransport/caption-control defects are tracked as open follow-ups. No dub
   failure is turned into READY,owner listening or upload. Work continues under
   original keys/caps; detailed current evidence is in the scoped recovery doc.
+- Oct9 23:17 checkpoint: Embedding all64 original text keys are genuinely
+  complete and its four-language local finishing commands closed exit0.
+  One reviewed native three-dub continuation is authorized; no accepted dub
+  is yet claimed. DevDay exact d430 pretransport hold was archived/reconciled
+  with zero providers, preserving all456 other cache entries and paid history.
+  Travel Japanese/Korean are actually running with native WAVs saved; its
+  original paid English response loss and Mods STOP remain preserved. An
+  exact86-character known-loss English replacement is source-only until the
+  running producer truly closes. Owner listening/upload remain separate gates.
