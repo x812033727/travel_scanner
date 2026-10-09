@@ -3,6 +3,106 @@
 Owner request: complete stalled video production directly. This record is updated
 only from actual stage results. Generated media and detailed logs remain outside Git.
 
+## Current verified continuation,19:53 Taipei,2026-10-09
+
+The exact two scoped conditional handoff STOPs were genuinely released at19:43:07
+with zero provider calls and zero API writes. Receipt SHA is
+`cbc9a6c7a748d9d814d26e83f9a3e885de8f31f403d568d3594855e8027f1823`.
+Original FREE Korean unknown receipts, its separate STOP, Mods and deployment
+controls remain preserved. Both real canonical guardians101/113 retained their
+original tokens and leases. Each normal verifyLocal/latest-final/current-LANG
+check passed before its own exact STOP bytes were immutably archived and removed.
+
+The reviewed remaining-five normal dub caller cd641633 genuinely launched once
+under fresh current-epoch proof61649e96 and immutable authority71592d70.
+FREE English is excluded and its actual02178827 SKIP retained. Actual producer
+1261003 generated81 FREE Japanese WAVs from38 speech POSTs, all38 HTTP200,
+and3478 reported billable characters. It then physically closed at19:49:10,
+exit1, on a read-only reviews GET429 inside the guard before the next speech
+transport. One normal block-state PUT occurred. The new44a0a839 held journal is
+preserved; no retry or cleanup has been performed. Exact no-provider-dispatch
+evidence and a bounded read-only GET wait are being prepared before any narrowly
+proven recovery. All four other selected tracks remain unstarted. Cumulative
+actual accounting is94 speech responses/11552 characters, two correction models
+and23 API writes; the original24-correction ceiling has not been reset.
+
+Travel's original40-call text run genuinely paid for one successful English
+metadata translator result, key238c3157/job8fc89a5c/sourceb1565628. Raw journal
+SHA is `f549b1c58d954e85a72430a799dcc73e3930ca978b6be702f5705d46c08559be`.
+Its genuine final omitted the normal request's empty worksheet.lines array.
+The exact cached parsed-view repair adds only that request-owned empty array;
+all translation strings, numbers, source, draft, seven critiques and raw journal
+are preserved, with no reviewed flag or translator repurchase. Five rejection
+tests and a zero-write dry run passed. The bounded continuation genuinely
+launched PID1268307 using reviewed callerfd4fb058/helper7ef6fce2/runner542c42f1
+and launcher7e03041a. It retains the original intent's one consumed key plus39
+remaining keys and must obtain the real independent reviewer next. Launch is not
+text completion or LANG/package approval.
+
+Embedding's current normal admission proof248e5386 verifies sourcebecde472f in
+cadence37-root, all156 retained WAVs and78 selected images, original journals,
+approved gates and the actual four text/three dub owner selections. The first
+GET-only unit preview has zero PUTs/POSTs. Its32 normal units require at most32
+translator and32 independent reviewer operations. The paid supervisor has not
+yet been admitted; the ordinary caller is being tightened before launch.
+Mods remains held. No owner listening, agent YouTube upload or public publication
+is claimed by this checkpoint.
+
+## Current verified continuation,19:34 Taipei,2026-10-09
+
+The ordinary source-bound FREE/DevDay text rebind genuinely completed at19:32:32
+with exit0,20 content-addressed file PUTs, two LANG review POSTs and zero provider
+calls. Both real producer PIDs have exited and the private run leases are
+released. Result SHA is
+`d25585fbe6312675c07e6dde7c3c233a7299effb9bddbc8fd6466b1e14cccba2`.
+FREE's new approved LANG review is `a5e52e98-8430-487d-8d37-1466f86534ca`,
+manifest `707f4e68c80c7009ef814dda6d1c41f38e41161a15da789b7258b8567aedf03b`;
+DevDay's is `595e74d4-74c7-40c2-83f0-5cdb696d8f3d`, manifest
+`1c67e29fa0fb073a28925c49a5e0090185f87491ee1e281da7093c9c359151f5`.
+Actual backend readback confirms all16 metadata/caption parts READY, the genuine
+FREE English three-window SKIP, and the other five chosen dubs still WORKING.
+No completed dub track is claimed. All139 audio/cache/fit/skip identities,
+including136 WAVs, and the ledger's two consumed corrections of24 are unchanged.
+Original namespaces,103 potential text models/104 unique transports and the
+unresolved original Korean operation remain protected.
+
+The versioned once caller19a5f92e pins both complete normal projected libraries
+and checks the latest final through their original assertProject before every
+mutation. Root and independent review verified the exact ordinary submitSnapshot
+body; fresh9bd35504 and prelaunch d446b071 GET-only proofs match all non-time
+fields. The exclusive a622bd98 authority and original normal lost-response
+receipt prevent a blind review POST replay. This was actual API staging and
+submission, distinct from the earlier zero-write binder fixture.
+
+The current exact worker CPU image d7abd94b is present. New private ffmpeg/ffprobe
+bindings3c357d8e/1e59cee3 use network=none, pull=never, a read-only container and
+only the two owned dub directories plus private temporary media writable. The
+actual sharp AAC join regression completed at19:19:19 with unchanged body bytes,
+bookend frames, codec and decoded sample counts; true peak changed from-0.03 to
+-1.42dBTP. Its synthetic-2.39LUFS is explicitly not real-dub acceptance. Every
+actual remaining track still requires the original loudness and hearing checks.
+Canonical own guardians101/113 and their exact conditional STOPs remain held
+until the reviewed five-dub admission and guarded release are complete.
+
+Travel's real normal text frontier at19:31:57 confirms the current96-line
+approved source and four selected locales,20 normal units and40 first-pass
+translator/reviewer operations, with no original stage journals or active media
+jobs. The zero-POST dry run uses the normal null source-locale unit keys and
+stops before any dub or package. Embedding's approved source becde472f resides
+in the retained local-diagram-route/cadence37-root; bare listener-round2/root
+contains an older7443ce28 source and is not the continuation root. Its current
+language preparation must use the hash-matching root and existing local media.
+
+CF/SEC remain genuinely DONE at19:20 with next=null and the original owner IDs.
+The19:04:46/47 normal approved-package consumers verify every26/27 stored file
+reference, original package hashes and approvals; proof SHA is
+`0fe9c55a0b6b6bcc1ccb98e039d4ef1c90b2746efe836aeaa4c7a703da3daac0`.
+The two later canonical languages.json differences remain explicitly unresolved
+at the byte level because their old full bodies were not captured. All other
+793/826 protected entries are unchanged; no timestamp restoration or broad
+preservation exception is introduced. Mods remains held. This checkpoint does
+not claim owner listening, platform caption upload or public publication.
+
 ## Current verified continuation,19:12 Taipei,2026-10-09
 
 CF and SEC's reviewed current-epoch native ID recording genuinely completed
