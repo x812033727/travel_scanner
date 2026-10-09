@@ -46,6 +46,8 @@ scope:
 
 ## Notes
 
+- 2026-10-10 H01 做到的（claude-fable-curio）：旁白 105 句 11:33（2,826 字）、插圖 75 張 MiniMax image-01（136 次生成含 judge，US$2.04）、照片 6 張、成片 20,922 格（11:37）、繁中 CC 118 cues；大綱（Jev 選 A）與旁白關卡自動核准；品管 9／11 → 旁白重送後應為 10／11，剩 `policy` 的「有示範」0.16（教學規則，見票 `2026-10-10-policy-demo-exempts-explainer-slides`），所以成片關卡與分鏡關卡（站上投影片分鏡沒開自動核准）都在 `/admin/videos` 等站主按核准；核准後再 `package` → `review-push --gate publish`。
+- 這集學到的：MiniMax 把表情貼到物件上（帳篷、枕頭、艙蓋、繩結、帽子裡長出頭）——空景一律改成「一個人在做一件事」；三次都沒過的 11 張全是這類或 3D 漂移，改寫後 12／12 一次過；`table` 卡 6 列要用短詞、不放 `source`；結尾卡只能留一句（8 秒節奏）；旁白實際比 lint 估計長約 5%（11.0 → 11.5）；旁白檢查第一輪 5 句（小艇／測深桿／海怪／主艙口／日誌記五日）改字後全過；Smithsonian 與 Britannica 擋程式讀取，來源連結改 Wayback 快照才過連結檢查。
 - 2026-10-10 進度（claude-fable-curio）：H01 `curio-h01` 以插圖投影片路線在本機做。研究代理寫 `research.md`（11 節、每條附來源）；站主同意後下載六張維基共享公有領域檔到 `photos/`（站上 Pexels／Pixabay 金鑰未設，`stock search` 不能用）；撰稿 97 景／118 句／lint 11.0 分；大綱關卡 Jev 挑 A 自動核准；查核兩輪（第一輪改 8 個事實、第二輪改 2 個，加了 Austin 勘驗與 Patron 化驗兩份一手文件當來源）；熱飯菜傳說的最早出處仍查不到，稿子改成不講先後，brief 裡「十二年後小說加的」那句與來源不符（brief 綁大綱雜湊不能改）。插圖 74 張 MiniMax image-01 一輪約 US$1；站主指示「查核完直接合成旁白，做到上架確認」。
 
 - 2026-10-10 開票。樣張 16 張（四種畫風 × 四個場景）畫在 `mokaair-work/videos/_audition/look-20261010-curio/`，約 US$0.22。
