@@ -1,0 +1,11 @@
+PreToolUse by=main Agent type=log-scout keys=description,prompt,subagent_type,run_in_background model=- background=false prompt_chars=275 mark_in_prompt=no
+SubagentStart agent=log-scout
+PreToolUse by=log-scout Glob .
+PreToolUse by=log-scout Read logs/queue-2026-10-01.log
+PreToolUse by=log-scout Grep logs
+PreToolUse by=log-scout Grep logs
+PreToolUse by=log-scout Grep logs
+PreToolUse by=log-scout Grep logs
+PreToolUse by=log-scout Grep logs
+SubagentStop agent=log-scout last_chars=658 mark_in_last=no
+PostToolUse by=main Agent status=completed model=claude-sonnet-5-5 last_request_tokens=28830 tool_calls=7 keys=status,prompt,agentId,agentType,harnessNoteCount,harnessTailCount,harnessSectionHash,content,resolvedModel,totalDurationMs,totalTokens,totalToolUseCount,usage,toolStats,canContinueAgent
