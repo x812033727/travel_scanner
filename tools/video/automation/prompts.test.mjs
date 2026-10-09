@@ -4,9 +4,10 @@ import test from "node:test";
 
 import { cuePieces } from "../core/captions.mjs";
 import { enFixture, fixture, fixtureLexicon } from "../core/fixtures/load.mjs";
+import { SOURCING_FAMILY } from "../core/lint.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, SLIDES_CAMERA_WORDS, SOURCE_INSTRUCTIONS, translationContext, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
-import { REGISTER_RULES, TEACHING_RULES } from "./register.mjs";
+import { REGISTER_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
 import { SERIES_SEPARATOR, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
 import { ACTIONS, MAX_STEPS, MAX_WAIT_MS, MAX_ZOOM } from "../screencast/steps.mjs";
 import { documentPayload } from "./series.mjs";
@@ -97,6 +98,41 @@ test("teaching cards require useful learning and evidence without imposing the i
   assert.match(writer, /following cadence and picture-variety paragraphs apply to ILLUSTRATED STORYTELLING only/);
   assert.match(writer, /For teaching cards without a real capture, omit both "shot" and "capture" in the thumb/);
   assert.match(instructionsFor("verifier", "slides"), /an expected result must never become an observed success without run evidence/);
+});
+
+test("every slides video is held to the content-value rules, on both routes and before the register", () => {
+  for (const stage of ["planner", "writer", "listener"]) {
+    const prompt = instructionsFor(stage, "slides");
+    assert.ok(prompt.includes(VALUE_RULES), `${stage} gets the content-value rules, word for word`);
+    assert.ok(prompt.indexOf(TEACHING_RULES) < prompt.indexOf(VALUE_RULES), `${stage}: after the teaching route`);
+    assert.ok(prompt.indexOf(VALUE_RULES) < prompt.indexOf(REGISTER_RULES), `${stage}: before the register`);
+  }
+  assert.ok(instructionsFor("listener", "slides").endsWith(REGISTER_RULES), "the listener still ends on the register");
+  assert.match(VALUE_RULES, /where these\s+rules and a route's rules disagree, these win/);
+  assert.match(VALUE_RULES, /something the viewer operates[\s\S]*takes the teaching route/);
+  assert.match(VALUE_RULES, /could not do before this video and can\s+do after it/);
+  assert.match(VALUE_RULES, /These are not outcomes: something one line answers[\s\S]*a caution on its own/);
+  assert.match(VALUE_RULES, /「含金量不足：<what is missing>」/);
+  assert.match(VALUE_RULES, /never the title, the hook or the angle, unless the subject itself is an incident/);
+  assert.match(VALUE_RULES, /An outcome without one is dropped, not softened/);
+  assert.match(VALUE_RULES, /Each chapter answers the question the one\s+before it raised/);
+  assert.match(VALUE_RULES, /the exact thing to type or press, in full/);
+  assert.match(VALUE_RULES, /what the\s+viewer did before, what changed, exactly what to do now, and the exception/);
+  assert.match(VALUE_RULES, /never opens on its source \(「文件寫」「文件說」「部落格說」「官方說」「官方表示」\s+「根據官方」; lint counts the family\)/);
+  assert.match(VALUE_RULES, /At most two sentences in a video set a scene or describe\s+a picture/);
+  assert.match(VALUE_RULES, /The length comes from substance/);
+  assert.match(VALUE_RULES, /never repairs one by inventing a fact, a run or an example/);
+  // The family the prompt names is the one lint counts.
+  for (const phrase of ["文件寫", "文件說", "部落格說", "官方說", "官方表示", "根據官方"]) assert.ok(SOURCING_FAMILY.includes(phrase), phrase);
+  for (const stage of ["verifier", "translator", "caption_reviewer"]) assert.equal(INSTRUCTIONS[stage].includes(VALUE_RULES), false, `${stage} reads no content-value rules`);
+  for (const stage of ["planner", "writer", "verifier", "listener"]) {
+    for (const variant of [null, "story", "explainer"]) assert.equal(instructionsFor(stage, "drama", "", variant).includes(VALUE_RULES), false, `${stage}:${variant} remains its own route`);
+  }
+  for (const format of ["slides", "drama"]) {
+    for (const [stage, variant] of [["listener", "register"], ["listener", "rewrite"], ["translator", null], ["caption_reviewer", null], ["translator", "shorten"], ["translator", "reword"]]) {
+      assert.equal(instructionsFor(stage, format, "", variant).includes(VALUE_RULES), false, `${format} ${stage}:${variant} keeps its contract`);
+    }
+  }
 });
 
 test("teaching-card instructions stay out of drama, story, explainer, restyle and translation routes", () => {

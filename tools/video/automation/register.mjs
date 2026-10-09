@@ -79,6 +79,58 @@ Teaching route (plain slides; writing only):
   adding scenes or claiming a result. Leave "pause_after_ms" out; the tool still sets the beats.
 `.trim();
 
+// What a slides video has to be worth to its viewer, whichever route it takes. The owner's review
+// of 2026-10-09 set it: a reference tutorial covered our whole nine-minute video in fifteen
+// seconds and spent the rest teaching, while a quarter of our sentences named where a fact came
+// from. Sent to the planner, the writer and the listener of a slides video, after the teaching
+// route and before the register; not sent to drama, story, explainer or translation stages.
+export const VALUE_RULES = `
+Content value (every slides video, teaching cards and illustrated storytelling alike; where these
+rules and a route's rules disagree, these win):
+- The route follows the subject. When the subject is something the viewer operates (a tool, a
+  feature, a setting, a command, a prompting technique, a workflow), the video is a tutorial and
+  takes the teaching route. The illustrated route is for a subject with nothing to operate (a
+  company's decision, a market, a history), and its outcomes are the judgments the viewer can
+  make afterwards.
+- 觀眾看完能做到的事 holds two to four things the viewer could not do before this video and can
+  do after it, each written as the action, the thing acted on and how the viewer knows it
+  worked. These are not outcomes: something one line answers (checking a version, reading a
+  price, finding a menu), a caution on its own (be careful, think first, ask before
+  installing), or 「了解」「認識」「知道」 something. When the sources carry fewer than two real
+  outcomes, the planner takes another topic from "topics", or says so on the brief's first
+  line (「含金量不足：<what is missing>」); it does not pad.
+- A risk, limit or warning is one chapter at most, said once, with the one check that answers
+  it. It is never the title, the hook or the angle, unless the subject itself is an incident.
+- Every outcome has its proof on screen: a real run recorded in 示範或實算 (input, action,
+  observed result, date, tool version), an official example with its page, or a worked
+  calculation. An outcome without one is dropped, not softened. When a tutorial has no run
+  evidence at all, 示範或實算 says what has to be run first (「要先實作：…」).
+- Chapters follow the questions a viewer asks, in the order they ask them: what do I get (the
+  result first, on screen), how is it different from what I already use, how do I do it, how
+  do I know it worked, how do I keep it or undo it. Each chapter answers the question the one
+  before it raised. Name the tools the viewer already uses and give the rule for choosing
+  between them in one sentence each (「一直重貼同一段指示，寫成 Skill」), and say plainly when
+  the simpler tool is enough.
+- Every step the viewer is meant to repeat shows the exact thing to type or press, in full, on
+  a code, chat, steps or terminal card: the command, the sentence to say to the model, the
+  setting's name. The narration says what it does, not its characters.
+- An update or a guide is told as numbered points, each in the same four moves: what the
+  viewer did before, what changed, exactly what to do now, and the exception.
+- Every sentence of narration carries a fact, a step, a reason, a result or a choice. Where a
+  fact comes from is the card's source field and the description: the narration states the
+  fact and never opens on its source (「文件寫」「文件說」「部落格說」「官方說」「官方表示」
+  「根據官方」; lint counts the family). At most two sentences in a video set a scene or describe
+  a picture; a comparison is used once, where the mechanism is hard to see, and kept, never a
+  new one per chapter. Pictures may still travel; the words do not follow them.
+- The length comes from substance: a second worked example, a common failure and how to find
+  it, a contrast, an exercise. Never from a chapter on something one line answers, from
+  restating, or from scene-setting. When the material ends short of the minimum, add an
+  example the sources carry or say so in the report; do not fill.
+- A listener keeps these rules as well: it reports a sentence that carries nothing, a source
+  spoken in the narration, a chapter one line would answer, or an outcome with no proof, for a
+  writer revision; it never repairs one by inventing a fact, a run or an example.
+`.trim();
+
 export const REGISTER_RULES = `
 The narration is TOLD, not explained (the storytelling register, docs/videos/ILLUSTRATED.md):
 - The first sentence is a counter-intuitive claim or the viewer's own question; the hook has landed

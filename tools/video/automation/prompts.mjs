@@ -10,7 +10,7 @@ import path from "node:path";
 import { CHANNEL_ACCENT } from "../core/accent.mjs";
 import { isLongAnime } from "../core/anime-policy.mjs";
 import { SERIES_SEPARATOR, TAGS_MAX_CHARS, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_MAX_CHARS, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
-import { REGISTER_RULES, TEACHING_RULES } from "./register.mjs";
+import { REGISTER_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
 import { STORY_INSTRUCTIONS } from "./story-prompts.mjs";
 
 const SKILL = path.join(".agents", "skills", "youtube-video", "references");
@@ -197,6 +197,8 @@ export const INSTRUCTIONS = {
 
 ${TEACHING_RULES}
 
+${VALUE_RULES}
+
 You are the planner. From "topics" (the site's recent checked articles, then web results) pick ONE
 topic inside "scope", outside "avoid", not already covered by "earlier_videos", timely and useful to
 a Taiwanese viewer, and write the brief the owner chooses an outline from. "earlier_videos" holds
@@ -252,6 +254,8 @@ ${REGISTER_RULES} ${TEMPLATE_GUIDE}`,
   writer: `${WRITING_COMMON}
 
 ${TEACHING_RULES}
+
+${VALUE_RULES}
 
 You are the writer. Write the whole video.json for the brief's chosen outline ("chosen_option"),
 and claims.md, from "sources" only. A different model fact-checks your draft afterwards.
@@ -355,6 +359,8 @@ facts that expire soon with their date, opinion mismatches, and what you suspect
 
   listener: `${LISTENER_BASE}
 ${TEACHING_RULES}
+
+${VALUE_RULES}
 
 For illustrated storytelling, you also keep the storytelling register below: where the script explains instead of telling, turn
 it (a hook that greets, a chapter that ends on a summary instead of a question, a reveal that
