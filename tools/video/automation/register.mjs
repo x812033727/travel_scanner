@@ -206,6 +206,8 @@ export const MISHEARD_WORDS = [
   ["那一欄", "這個欄位"],
   ["沒接的那次", "沒有接上的那一次"],
   ["測試是紅的", "測試沒有通過"],
+  ["有檔、沒檔", "有 CLAUDE.md、沒有 CLAUDE.md（說出檔名）"],
+  ["有檔案", "有 CLAUDE.md（說出檔名）"],
 ];
 
 export const HEARD_RULES = `
