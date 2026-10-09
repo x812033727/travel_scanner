@@ -1,0 +1,2207 @@
+{
+  "schema_version": 1,
+  "slug": "claude-code-mods-hands-on",
+  "format": "slides",
+  "category": "tutorial",
+  "source_guide": "claude-code-first-mod",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "這一支是帶著做的實作教學：像坐在同事旁邊一步一步講，穩、清楚、不賣關子。開場兩句壓低放慢；每個結束碼的數字前停半拍；講到畫面上的指令與輸出時放慢，讓人來得及看；交代還沒看過的事，語氣平實不遮掩；每章最後的問句輕輕上揚。"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Claude Code mods 實作教學：Claude 把失敗的檢查說成通過？寫一個 mod 補上",
+    "description": "檢查明明失敗，接到 tail 之後結束碼卻是 0，Claude 就可能把它讀成通過。這支實作一個 37 行的 Claude Code mod，在指令執行之前補上 pipefail。\n給每天用 Claude Code 跑 lint、測試、git 或 SSH 的開發者：看完能自己請 Claude 寫 mod，並在載入之前核對它做了什麼。\n\n你會學到：\n・mod、CLAUDE.md、權限規則、設定檔 Hook、Skill、MCP server 各在什麼時候選\n・對 Claude 說什麼、它會寫出哪些檔案，以及 hook 的三種回法：放行、改寫、拒絕\n・用 claude plugin validate 讀 hooks、calls、gating hook 這幾行，載入前就知道它會做什麼\n・用 claude plugin test 寫不開 session 的測試，還有驗證與測試失敗時的訊息\n・第二個例子 plink-budget：數 SSH 連線，超過 30 次就拒絕，用 /plink 查詢\n\n證據狀態：畫面上的終端機輸出，都是 2026-10-09 以 Claude Code 2.1.295（Windows）與 GNU bash 5.3.15 實跑的紀錄；真的 session 是無介面 session（claude -p）。狀態列、跳出的提示、/plugin 的畫面，以及第 31 次在真 session 的拒絕還沒有看過，片中只當官方流程或測試結果說明。兩段「可以這樣說」的要求是照成品整理的，還沒有用它從頭重跑。auto 權限模式只跑過兩次。\n\nmods 的事件與方法可能隨版本改變，動手前請對照你手上版本的官方文件。這不是資安或合規建議。",
+    "tags": [
+      "Claude Code",
+      "Claude Code mods",
+      "Claude Code 教學",
+      "Claude Code mod 教學",
+      "claude plugin validate",
+      "claude plugin test",
+      "pipefail",
+      "Claude Code hooks",
+      "AI 寫程式",
+      "Mokaair"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "Claude Code mod",
+      "headline": "失敗\n卻是**零**",
+      "sub": "37 行，在執行前補上",
+      "capture": "official-compare"
+    }
+  },
+  "sources": [
+    {
+      "title": "Mods overview｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Create a mod｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "React to events with a mod｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/plugins/mods/events",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Test a mod｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/plugins/mods/test",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Troubleshoot a mod｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/plugins/mods/troubleshoot",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Draw in the interface with a mod（Keep state）｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/plugins/mods/interface",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Use the mods API｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/plugins/mods/api",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "How Claude remembers your project｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/memory",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Configure permissions｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Hooks reference｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/hooks",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Bash Reference Manual（Pipelines、The Set Builtin）｜GNU",
+      "url": "https://www.gnu.org/software/bash/manual/bash.html",
+      "checked_on": "2026-10-09"
+    }
+  ],
+  "assets": [],
+  "subtitles": {
+    "burn_in": false
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "Claude 把失敗的檢查讀成通過",
+      "template": "title",
+      "data": {
+        "tag": "Claude Code mod 實作",
+        "title": "檢查失敗，\n結束碼卻是**零**",
+        "subtitle": "37 行的 mod，在指令執行之前補上"
+      },
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "9afg",
+          "text": "檢查失敗了，結束碼卻是零。",
+          "emotion": "壓低放慢，「零」之前停半拍"
+        },
+        {
+          "id": "abyf",
+          "text": "我的 Claude 不只一次，把這種失敗讀成通過。",
+          "emotion": "平實，帶一點無奈"
+        }
+      ]
+    },
+    {
+      "id": "session-result",
+      "template": "compare",
+      "data": {
+        "title": "同一條指令，實跑兩次",
+        "left": {
+          "heading": "沒有 mod",
+          "points": [
+            "npm run lint | tail -3",
+            "工具結果：不算錯誤",
+            "沒有 Exit code"
+          ]
+        },
+        "right": {
+          "heading": "載入 pipe-guard",
+          "points": [
+            "npm run lint | tail -3",
+            "工具結果：**標成錯誤**",
+            "第一行：Exit code 1"
+          ]
+        },
+        "verdict": "無介面 session｜2026-10-09｜Claude Code 2.1.295"
+      },
+      "claims": [
+        "c3",
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "5qdc",
+          "text": "我請 Claude 跑同一條 lint，前後兩次。沒有 mod，失敗了，工具結果卻不算錯誤。",
+          "reveal": 1
+        },
+        {
+          "id": "p8sr",
+          "text": "載入一個三十七行的 mod，同一條指令，結果第一行是結束碼一。",
+          "reveal": 1,
+          "emotion": "「結束碼一」亮起來，句尾收穩"
+        }
+      ]
+    },
+    {
+      "id": "exit-zero",
+      "chapter": "接到 tail，結束碼為什麼是零",
+      "template": "terminal",
+      "data": {
+        "title": "失敗的指令，接到 tail",
+        "command": "bash -c \"exit 1\" | tail -1; echo $?",
+        "output": [
+          "0"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "GNU bash, version 5.3.15(1)-release"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "qafd",
+          "text": "原因一行就看得到：先跑一個一定失敗的指令，再接到 tail。",
+          "emotion": "像指給人看，「一行就看得到」說得肯定"
+        },
+        {
+          "id": "6f6r",
+          "text": "印出來的結束碼是零。",
+          "reveal": 1,
+          "emotion": "短句，放慢"
+        },
+        {
+          "id": "h7jt",
+          "text": "因為一條管線的結束碼，算的是最後那個指令，也就是 tail。"
+        }
+      ]
+    },
+    {
+      "id": "exit-one",
+      "template": "terminal",
+      "data": {
+        "title": "最前面加上 pipefail",
+        "command": "set -o pipefail; bash -c \"exit 1\" | tail -1; echo $?",
+        "output": [
+          "1"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "GNU bash, version 5.3.15(1)-release"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "um8v",
+          "text": "同一行，最前面加上 pipefail 這個設定，再跑一次。"
+        },
+        {
+          "id": "uhch",
+          "text": "這次是一。管線裡只要有一段失敗，整條就算失敗。",
+          "reveal": 1,
+          "emotion": "「這次是一」之後停半拍"
+        }
+      ]
+    },
+    {
+      "id": "what-is-mod",
+      "template": "quote",
+      "data": {
+        "kicker": "補上這一段的，是一個 mod",
+        "quote": "A mod is a plugin that changes how Claude Code looks and behaves.",
+        "translation": "mod 是一種 plugin，會改變 Claude Code 的外觀與行為",
+        "source": "Claude Code 文件｜Mods overview｜2026-10-09"
+      },
+      "claims": [
+        "c58"
+      ],
+      "lines": [
+        {
+          "id": "v8bu",
+          "text": "幫我補上這一段的東西，叫做 mod。"
+        },
+        {
+          "id": "xkic",
+          "text": "mod 是一種外掛，會改變 Claude Code 的外觀和行為。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "call-path",
+      "template": "steps",
+      "data": {
+        "title": "一次工具呼叫，先經過 hook",
+        "steps": [
+          {
+            "title": "Claude 送出指令",
+            "detail": "一次 Bash 的工具呼叫"
+          },
+          {
+            "title": "hook 先處理",
+            "detail": "放行、改寫，或拒絕"
+          },
+          {
+            "title": "權限檢查",
+            "detail": "通過了才執行"
+          }
+        ]
+      },
+      "claims": [
+        "c6",
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "gfmt",
+          "text": "Claude 要跑一條指令的時候，會送出一次工具呼叫。",
+          "reveal": 1
+        },
+        {
+          "id": "gp3e",
+          "text": "mod 裡的 hook，是這時候先被呼叫的函式：可以放行、改寫，或者拒絕。",
+          "reveal": 1,
+          "emotion": "三種回法之間各停一下"
+        },
+        {
+          "id": "rte5",
+          "text": "它往下交之後，Claude Code 照常做權限檢查，才真的執行。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "rewrite",
+      "template": "compare",
+      "data": {
+        "title": "pipe-guard 做的事",
+        "left": {
+          "heading": "Claude 送出的",
+          "points": [
+            "npm run lint:web | tail -20"
+          ]
+        },
+        "right": {
+          "heading": "hook 交出去的",
+          "points": [
+            "set -o pipefail;\nnpm run lint:web | tail -20"
+          ]
+        },
+        "verdict": "兩邊的字串取自 pipe-guard 的測試"
+      },
+      "claims": [
+        "c6",
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "5tcj",
+          "text": "我請 Claude Code 寫的這一個叫 pipe-guard：看到檢查接到 tail，它就改寫。",
+          "reveal": 1
+        },
+        {
+          "id": "8iur",
+          "text": "交出去執行的指令，最前面多了這一段，其他一個字沒動。",
+          "reveal": 1,
+          "emotion": "「一個字沒動」說得乾脆"
+        },
+        {
+          "id": "vgkw",
+          "text": "這條規則，寫進 CLAUDE.md 不就好了？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "memory-quote",
+      "chapter": "mod、Hook、Skill、CLAUDE.md 怎麼選",
+      "template": "quote",
+      "data": {
+        "kicker": "CLAUDE.md 是脈絡",
+        "quote": "Claude treats them as context, not enforced configuration.",
+        "translation": "Claude 把它們當脈絡，不是強制執行的設定",
+        "source": "Claude Code 文件｜memory 頁｜2026-10-09"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "y7vg",
+          "text": "寫進 CLAUDE.md，Claude 每次都會讀到。"
+        },
+        {
+          "id": "ftv6",
+          "text": "可是它把這些當成脈絡，不是一定會執行的設定。",
+          "reveal": 1,
+          "emotion": "「不是」稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "choose-table",
+      "template": "table",
+      "data": {
+        "title": "六種做法，什麼時候選哪個",
+        "columns": [
+          "做法",
+          "什麼時候選它"
+        ],
+        "rows": [
+          [
+            "CLAUDE.md",
+            "要 Claude 知道、盡量照做"
+          ],
+          [
+            "權限規則",
+            "固定的指令或路徑，要擋或要放"
+          ],
+          [
+            "設定檔 Hook",
+            "擋、放行或記錄事件，已有腳本"
+          ],
+          [
+            "Skill",
+            "一直重貼同一段指示"
+          ],
+          [
+            "MCP server",
+            "Claude 要連到外部系統"
+          ],
+          [
+            "mod",
+            "要窗格、橫條、自己的指令，或改寫事件"
+          ]
+        ],
+        "highlight": 5
+      },
+      "claims": [
+        "c9",
+        "c10",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "h348",
+          "text": "只是要它知道、盡量照做的事，寫 CLAUDE.md 就夠。",
+          "reveal": 1
+        },
+        {
+          "id": "ka8u",
+          "text": "固定的一條指令要擋或要放，用權限規則，不用寫程式。",
+          "reveal": 1
+        },
+        {
+          "id": "e9fe",
+          "text": "要擋下或記錄某個事件，手上又有腳本，用設定檔的 hook。",
+          "reveal": 1
+        },
+        {
+          "id": "734i",
+          "text": "同一段指示一直重貼，寫成 Skill。",
+          "reveal": 1,
+          "emotion": "清單，稍快"
+        },
+        {
+          "id": "mss7",
+          "text": "要 Claude 連到外部系統，接 MCP 伺服器。",
+          "reveal": 1,
+          "emotion": "清單，稍快"
+        },
+        {
+          "id": "6xgi",
+          "text": "要在畫面上加自己的介面、自己的指令，或者要改寫事件，才輪到 mod。",
+          "reveal": 1,
+          "emotion": "「才輪到」加重"
+        },
+        {
+          "id": "ca6h",
+          "text": "我的標準是：同一種錯重複發生，才做成 mod。",
+          "emotion": "平穩，像在講自己的習慣"
+        }
+      ]
+    },
+    {
+      "id": "official-compare",
+      "template": "screencast",
+      "data": {
+        "title": "官方文件的比較表",
+        "caption": "Claude Code 文件｜Mods overview｜2026-10-09 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://code.claude.com/docs/en/plugins/mods/overview#compare-mods-settings-hooks-skills-and-mcp-servers"
+          },
+          {
+            "action": "wait",
+            "selector": "#compare-mods-settings-hooks-skills-and-mcp-servers"
+          },
+          {
+            "action": "capture",
+            "focus": "#compare-mods-settings-hooks-skills-and-mcp-servers"
+          }
+        ]
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "6d44",
+          "text": "差別在位置。設定檔的 hook、Skill、MCP，都是從 Claude Code 外面做事。"
+        },
+        {
+          "id": "ufdf",
+          "text": "mod 的函式，直接在 Claude Code 裡面執行。",
+          "emotion": "「裡面」放慢"
+        }
+      ]
+    },
+    {
+      "id": "simple-enough",
+      "template": "compare",
+      "data": {
+        "title": "簡單的夠用，就不用 mod",
+        "left": {
+          "heading": "簡單的就夠",
+          "points": [
+            "固定指令要擋：權限規則",
+            "只改指令的參數：\n設定檔 Hook 也行"
+          ]
+        },
+        "right": {
+          "heading": "mod 多了什麼",
+          "points": [
+            "幾個 hook 共用一份資料",
+            "一個記數，一個拒絕",
+            "claude plugin test"
+          ]
+        }
+      },
+      "claims": [
+        "c11",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "u428",
+          "text": "所以老實說：只是在指令前面補一段，設定檔的 hook 也改得了參數。",
+          "reveal": 1,
+          "emotion": "坦白的語氣，不急"
+        },
+        {
+          "id": "fvit",
+          "text": "mod 比它多了這些：幾個 hook 寫在同一個檔，共用資料，還附測試指令。",
+          "reveal": 1
+        },
+        {
+          "id": "u74t",
+          "text": "那一個 mod 要怎麼做出來？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "versions",
+      "chapter": "請 Claude Code 寫一個 mod",
+      "template": "stats",
+      "data": {
+        "title": "先看版本",
+        "stats": [
+          {
+            "value": "v2.1.287",
+            "label": "終端機：這一版以上",
+            "note": "claude --version"
+          },
+          {
+            "value": "v2.1.286",
+            "label": "Desktop app 的 Code 分頁",
+            "note": "/status 的 Claude Code 那一列"
+          },
+          {
+            "value": "2.1.295",
+            "label": "這支影片實跑的版本",
+            "note": "2026-10-09"
+          }
+        ],
+        "source": "Claude Code 文件｜Mods overview｜2026-10-09"
+      },
+      "claims": [
+        "c15",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "gpi7",
+          "text": "先看版本。終端機的 Claude Code，要二點一點二八七以上。",
+          "reveal": 1,
+          "emotion": "版本號放慢，一段一段唸"
+        },
+        {
+          "id": "as2n",
+          "text": "桌面版的 Code 分頁，從二點一點二八六開始。",
+          "reveal": 1
+        },
+        {
+          "id": "ecb5",
+          "text": "我用的是二點一點二九五，後面 Claude Code 的輸出都是這一版印的。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ask-rule",
+      "template": "code",
+      "data": {
+        "title": "可以這樣說",
+        "code": "做一個 mod，名字叫 pipe-guard。\nBash 指令如果把 lint、測試、typecheck 或 git merge\n接到 tail，就在最前面加上 set -o pipefail;\n再跳一則提示告訴我。其他指令原樣放行。\n寫完跑 claude plugin validate，再寫測試。",
+        "highlight": [
+          2,
+          3,
+          4
+        ],
+        "caption": "照成品的 plugin.json 說明整理｜還沒用這段話從頭重跑"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "aaxd",
+          "text": "接著把規則說給 Claude 聽，講清楚三件事。"
+        },
+        {
+          "id": "iruk",
+          "text": "哪個工具、看到什麼字樣、要它怎麼處理。",
+          "emotion": "三項之間各停一下"
+        }
+      ]
+    },
+    {
+      "id": "ask-verify",
+      "template": "code",
+      "data": {
+        "title": "可以這樣說",
+        "code": "做一個 mod，名字叫 pipe-guard。\nBash 指令如果把 lint、測試、typecheck 或 git merge\n接到 tail，就在最前面加上 set -o pipefail;\n再跳一則提示告訴我。其他指令原樣放行。\n寫完跑 claude plugin validate，再寫測試。",
+        "highlight": [
+          5
+        ],
+        "caption": "照成品的 plugin.json 說明整理｜還沒用這段話從頭重跑"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "tzba",
+          "text": "最後一行別省：要它自己跑驗證，再寫測試。"
+        },
+        {
+          "id": "5vnx",
+          "text": "這段話是照成品整理的，我還沒拿它從頭重跑一次。",
+          "emotion": "平實交代，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "two-prompts",
+      "template": "table",
+      "data": {
+        "title": "官方流程：寫檔時會問你兩件事",
+        "columns": [
+          "問什麼",
+          "你的回答",
+          "結果"
+        ],
+        "rows": [
+          [
+            "每個檔案的寫入許可",
+            "逐一核准",
+            "default、acceptEdits 模式會問"
+          ],
+          [
+            "要不要開熱重載",
+            "Enable for this session",
+            "這一輪結束就載入"
+          ],
+          [
+            "",
+            "Not now",
+            "檔案留著，下次開這個 session 才載入"
+          ]
+        ]
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "9pgd",
+          "text": "檔案寫在 Claude 的設定資料夾，那是受保護的路徑，預設模式下每個檔案都會問你。",
+          "reveal": 1
+        },
+        {
+          "id": "6xr6",
+          "text": "存第一個檔的時候，它會問要不要開熱重載。選開，這一輪結束就載入。",
+          "reveal": 1
+        },
+        {
+          "id": "hycb",
+          "text": "選暫時不要，檔案留著，下次開這個 session 才載入。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "files",
+      "template": "code",
+      "data": {
+        "code": "pipe-guard/\n├── .claude-plugin/\n│   └── plugin.json\n├── hooks/\n│   ├── hooks.json\n│   └── register.ts\n└── tests/\n    └── pipe-guard.test.ts",
+        "caption": "三個檔案加一個測試檔｜官方流程：寫在 ~/.claude/dev-mods/<session ID>/ 底下"
+      },
+      "claims": [
+        "c18",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "y4zw",
+          "text": "寫出來是三個檔案，加一個測試檔。"
+        },
+        {
+          "id": "knwm",
+          "text": "一個寫名字和版本，一個指到程式在哪，程式本身只有一個檔。"
+        }
+      ]
+    },
+    {
+      "id": "hooks-json",
+      "template": "code",
+      "data": {
+        "code": "{\n  \"modules\": [\"./register.ts\"]\n}",
+        "highlight": [
+          2
+        ],
+        "caption": "hooks/hooks.json｜有 modules 這一行，這個 plugin 才算 mod"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "3bjw",
+          "text": "中間那個檔只有三行。亮起來的這一行指到程式，有它，這個外掛才算 mod。",
+          "emotion": "「才算 mod」加重"
+        }
+      ]
+    },
+    {
+      "id": "hook-filter",
+      "template": "code",
+      "data": {
+        "code": "  on('tool.call', { tool: 'Bash' }, ($, e, next) => {\n    const isMasked =\n      CHECK.test(e.command) &&\n      INTO_TAIL.test(e.command) &&\n      !ALREADY_SAFE.test(e.command)\n\n    if (!isMasked) {\n      return next(e)\n    }",
+        "highlight": [
+          1
+        ],
+        "caption": "hooks/register.ts 第 21–29 行｜全檔 37 行"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "ngf9",
+          "text": "程式的核心在這裡。第一行是篩選：只有 Bash 工具的呼叫才會經過它。"
+        }
+      ]
+    },
+    {
+      "id": "hook-condition",
+      "template": "code",
+      "data": {
+        "code": "  on('tool.call', { tool: 'Bash' }, ($, e, next) => {\n    const isMasked =\n      CHECK.test(e.command) &&\n      INTO_TAIL.test(e.command) &&\n      !ALREADY_SAFE.test(e.command)\n\n    if (!isMasked) {\n      return next(e)\n    }",
+        "highlight": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "caption": "hooks/register.ts 第 21–29 行｜全檔 37 行"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "5qjd",
+          "text": "接著三個條件要同時成立：是檢查、接到 tail、還沒加過 pipefail。",
+          "emotion": "三個條件一項一項數"
+        }
+      ]
+    },
+    {
+      "id": "hook-pass",
+      "template": "code",
+      "data": {
+        "code": "  on('tool.call', { tool: 'Bash' }, ($, e, next) => {\n    const isMasked =\n      CHECK.test(e.command) &&\n      INTO_TAIL.test(e.command) &&\n      !ALREADY_SAFE.test(e.command)\n\n    if (!isMasked) {\n      return next(e)\n    }",
+        "highlight": [
+          7,
+          8,
+          9
+        ],
+        "caption": "hooks/register.ts 第 21–29 行｜全檔 37 行"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "uugn",
+          "text": "條件不成立，就把這次呼叫原樣往下交。"
+        }
+      ]
+    },
+    {
+      "id": "hook-rewrite",
+      "template": "code",
+      "data": {
+        "code": "    if (!isMasked) {\n      return next(e)\n    }\n\n    $.ui.toast('pipe-guard：加上 pipefail，tail 遮不住失敗')\n\n    const command = `set -o pipefail; ${e.command}`\n\n    return next({ ...e, command })\n  })",
+        "highlight": [
+          5,
+          7
+        ],
+        "caption": "hooks/register.ts 第 27–36 行｜全檔 37 行"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "tvhf",
+          "text": "條件成立，先跳一則提示，再組出補好的指令。"
+        }
+      ]
+    },
+    {
+      "id": "hook-handoff",
+      "template": "code",
+      "data": {
+        "code": "    if (!isMasked) {\n      return next(e)\n    }\n\n    $.ui.toast('pipe-guard：加上 pipefail，tail 遮不住失敗')\n\n    const command = `set -o pipefail; ${e.command}`\n\n    return next({ ...e, command })\n  })",
+        "highlight": [
+          9
+        ],
+        "caption": "hooks/register.ts 第 27–36 行｜全檔 37 行"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "427x",
+          "text": "最後一行，把補好的那一條往下交，其他欄位原樣帶著。"
+        }
+      ]
+    },
+    {
+      "id": "checks-list",
+      "template": "code",
+      "data": {
+        "code": "const CHECKS = [\n  'npm\\\\s+(run\\\\s+)?(lint|test|typecheck|check)[\\\\w:-]*',\n  'npx\\\\s+(tsc|eslint|vitest|playwright)',\n  'pytest',\n  'ruff',\n  'mypy',\n  'tsc',\n  'git\\\\s+(merge|rebase|pull)',\n]\nconst CHECK = new RegExp(`\\\\b(${CHECKS.join('|')})\\\\b`)\nconst INTO_TAIL = /\\|\\s*tail\\b/\nconst ALREADY_SAFE = /pipefail|PIPESTATUS/",
+        "highlight": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "caption": "hooks/register.ts 第 7–18 行｜要加自己的檢查，就在清單加一行"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "dxsv",
+          "text": "它認得哪些檢查，寫成一份清單：lint、測試、型別檢查，還有合併。"
+        },
+        {
+          "id": "sgnt",
+          "text": "你的專案用別的指令，就請 Claude 在清單加一行。",
+          "emotion": "像提醒朋友，輕一點"
+        }
+      ]
+    },
+    {
+      "id": "three-returns",
+      "template": "table",
+      "data": {
+        "title": "三種回法，在程式裡長這樣",
+        "columns": [
+          "回法",
+          "官方的名字",
+          "程式怎麼寫"
+        ],
+        "rows": [
+          [
+            "放行",
+            "Observe",
+            "return next(e)"
+          ],
+          [
+            "改寫",
+            "Rewrite",
+            "return next({ ...e, command })"
+          ],
+          [
+            "拒絕",
+            "Answer",
+            "return { deny: '…' }"
+          ]
+        ]
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "iee9",
+          "text": "回頭對照那三種回法：原樣往下交，就是放行。",
+          "reveal": 1
+        },
+        {
+          "id": "29yy",
+          "text": "換掉內容再往下交，是改寫，pipe-guard 用的就是這種。",
+          "reveal": 1
+        },
+        {
+          "id": "8i7j",
+          "text": "不往下交、自己回一段拒絕的話，是第三種，等一下會用到。",
+          "reveal": 1
+        },
+        {
+          "id": "ikz7",
+          "text": "Claude 寫完了，我怎麼知道它只做了這件事？",
+          "emotion": "問句上揚，帶一點懷疑"
+        }
+      ]
+    },
+    {
+      "id": "validate-pipe",
+      "chapter": "載入前，讀 validate 的輸出",
+      "template": "terminal",
+      "data": {
+        "title": "載入前先跑 validate",
+        "command": "claude plugin validate ./pipe-guard",
+        "output": [
+          "  ❯ ./register.ts hooks: tool.call{tool=Bash}",
+          "  ❯ ./register.ts gating hook without .catch: tool.call{tool=Bash}",
+          "  ❯ ./register.ts calls: $.ui.toast",
+          "\n✔ Validation passed"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "2.1.295 (Claude Code)"
+      },
+      "claims": [
+        "c25",
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "y489",
+          "text": "載入之前先跑這一行。它不執行程式，只讀原始碼。",
+          "emotion": "「先跑這一行」放慢"
+        },
+        {
+          "id": "aqtw",
+          "text": "hooks 這一行，是它掛了哪些事件：只有 Bash 的工具呼叫。",
+          "reveal": 1
+        },
+        {
+          "id": "d57r",
+          "text": "第二行說：這個 hook 站在擋得了呼叫的位置，而且沒有 catch，出錯時沒有人替它處理。",
+          "reveal": 1
+        },
+        {
+          "id": "mxav",
+          "text": "calls 這一行，是它向 Claude Code 要求做的事：只有跳提示一項。",
+          "reveal": 1,
+          "emotion": "「只有」加重"
+        },
+        {
+          "id": "gwjk",
+          "text": "最後一行，驗證通過。",
+          "reveal": 1,
+          "emotion": "輕快帶過"
+        }
+      ]
+    },
+    {
+      "id": "why-calls",
+      "template": "bullets",
+      "data": {
+        "title": "為什麼 calls 這一行值得看",
+        "items": [
+          "mod 用你的權限執行，**沒有沙盒**",
+          "讀檔、開程式、連網：只能經過 mods API",
+          "所以不用執行，就列得出來",
+          "pipe-guard 的 calls：只有 $.ui.toast",
+          "我的界線：原始碼讀得完，這一行看過"
+        ]
+      },
+      "claims": [
+        "c27",
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "5rbm",
+          "text": "這一行值得看，因為 mod 是用你的權限、在 Claude Code 裡面跑的，沒有沙盒。",
+          "reveal": 1,
+          "emotion": "放慢，語氣認真但不嚇人"
+        },
+        {
+          "id": "5cmj",
+          "text": "可是它要讀檔、開程式、連網，都只能經過 mod 的 API。",
+          "reveal": 1
+        },
+        {
+          "id": "48sb",
+          "text": "所以不用執行，一行指令就列得出它會叫哪些。",
+          "reveal": 1
+        },
+        {
+          "id": "dmcp",
+          "text": "pipe-guard 只叫了跳提示那一個，沒有讀檔，也沒有連網。",
+          "reveal": 1
+        },
+        {
+          "id": "2a6n",
+          "text": "我自己的原則是：原始碼讀得完、calls 那一行也看過，我才載入。",
+          "reveal": 1,
+          "emotion": "平穩，像在講自己的習慣"
+        }
+      ]
+    },
+    {
+      "id": "typo-error",
+      "template": "quote",
+      "data": {
+        "kicker": "常見錯誤一：事件名多一個 s",
+        "quote": "\"tool.calls\" is not an event",
+        "translation": "tool.calls 不是事件名",
+        "source": "claude plugin validate 的錯誤訊息｜實跑 2026-10-09｜Claude Code 2.1.295"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "v8q7",
+          "text": "再看失敗長什麼樣。把事件名故意多打一個 s，再跑一次驗證。"
+        },
+        {
+          "id": "2j45",
+          "text": "直接失敗，訊息還指出是程式的哪一行。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "nomodules-error",
+      "template": "terminal",
+      "data": {
+        "title": "常見錯誤二：少了 modules",
+        "command": "claude plugin validate ./nomodules",
+        "output": [
+          "✘ Found 1 error:\n\n  ❯ root: hooks.json must have `hooks` (the hook matchers) or `modules` (hooks m\nodules), or both",
+          "\n✘ Validation failed"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "2.1.295 (Claude Code)"
+      },
+      "claims": [
+        "c30"
+      ],
+      "lines": [
+        {
+          "id": "iaxv",
+          "text": "第二種錯：設定檔裡指到程式的那一行不見了。"
+        },
+        {
+          "id": "n3pq",
+          "text": "我的設定檔只有那一行，拿掉之後，訊息說它至少要有一種設定。",
+          "reveal": 1
+        },
+        {
+          "id": "n3hf",
+          "text": "兩種錯都是驗證失敗、結束碼一。",
+          "reveal": 1
+        },
+        {
+          "id": "bpp8",
+          "text": "列得出來，不等於做得對。行為要怎麼驗？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "test-stub",
+      "chapter": "不開 session 測試 mod",
+      "template": "code",
+      "data": {
+        "code": "  const seen: string[] = []\n  on('tool.call', (_$, e) => {\n    seen.push(String(e.command))\n\n    return { result: 'ok' }\n  })\n\n  const lint = 'npm run lint:web | tail -20'\n  const merge = 'git merge origin/main 2>&1 | tail -5'\n  await $.tool.call({ tool: 'Bash', command: lint })\n  await $.tool.call({ tool: 'Bash', command: merge })",
+        "highlight": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "caption": "tests/pipe-guard.test.ts 第 7–17 行"
+      },
+      "claims": [
+        "c31",
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "8i83",
+          "text": "測試不用開 session。先登記一個替身，代替 Claude Code 接下工具呼叫。",
+          "emotion": "「不用開 session」說得肯定"
+        }
+      ]
+    },
+    {
+      "id": "test-record",
+      "template": "code",
+      "data": {
+        "code": "  const seen: string[] = []\n  on('tool.call', (_$, e) => {\n    seen.push(String(e.command))\n\n    return { result: 'ok' }\n  })\n\n  const lint = 'npm run lint:web | tail -20'\n  const merge = 'git merge origin/main 2>&1 | tail -5'\n  await $.tool.call({ tool: 'Bash', command: lint })\n  await $.tool.call({ tool: 'Bash', command: merge })",
+        "highlight": [
+          1,
+          3
+        ],
+        "caption": "tests/pipe-guard.test.ts 第 7–17 行"
+      },
+      "claims": [
+        "c31",
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "3kzc",
+          "text": "替身只把收到的指令記下來，真正的指令一條都不會跑。"
+        }
+      ]
+    },
+    {
+      "id": "test-calls",
+      "template": "code",
+      "data": {
+        "code": "  const seen: string[] = []\n  on('tool.call', (_$, e) => {\n    seen.push(String(e.command))\n\n    return { result: 'ok' }\n  })\n\n  const lint = 'npm run lint:web | tail -20'\n  const merge = 'git merge origin/main 2>&1 | tail -5'\n  await $.tool.call({ tool: 'Bash', command: lint })\n  await $.tool.call({ tool: 'Bash', command: merge })",
+        "highlight": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "caption": "tests/pipe-guard.test.ts 第 7–17 行"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "2apu",
+          "text": "再送出兩次假的工具呼叫：一條 lint，一條合併，都接到 tail。"
+        }
+      ]
+    },
+    {
+      "id": "test-expect",
+      "template": "code",
+      "data": {
+        "code": "  const lint = 'npm run lint:web | tail -20'\n  const merge = 'git merge origin/main 2>&1 | tail -5'\n  await $.tool.call({ tool: 'Bash', command: lint })\n  await $.tool.call({ tool: 'Bash', command: merge })\n\n  expect(seen).toEqual([\n    `set -o pipefail; ${lint}`,\n    `set -o pipefail; ${merge}`,\n  ])",
+        "highlight": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "caption": "tests/pipe-guard.test.ts 第 14–22 行"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "e95d",
+          "text": "最後斷言：替身收到的兩條指令，前面都多了 pipefail 那一段。",
+          "emotion": "「最後斷言」之後停半拍"
+        }
+      ]
+    },
+    {
+      "id": "test-pass",
+      "template": "terminal",
+      "data": {
+        "title": "在 mod 的目錄跑測試",
+        "command": "claude plugin test",
+        "output": [
+          "tests\\pipe-guard.test.ts:\n(pass) adds pipefail when a check is piped into tail [41.93ms]",
+          "(pass) leaves every other command as written [18.97ms]",
+          "\n 2 pass\n 0 fail\nRan 2 tests across 1 file. [0.30s]"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "2.1.295 (Claude Code)"
+      },
+      "claims": [
+        "c31",
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "fjqv",
+          "text": "在 mod 的目錄跑這一行，不用登入，也不用連網。"
+        },
+        {
+          "id": "ey9q",
+          "text": "第一個測試通過：接到 tail 的檢查，會被補上。",
+          "reveal": 1
+        },
+        {
+          "id": "pxxv",
+          "text": "第二個也通過：其他指令，一個字都不動。",
+          "reveal": 1
+        },
+        {
+          "id": "2rs7",
+          "text": "兩個通過，零個失敗。",
+          "reveal": 1,
+          "emotion": "收穩，帶一點滿意"
+        }
+      ]
+    },
+    {
+      "id": "test-fail",
+      "template": "compare",
+      "data": {
+        "title": "測試失敗長這樣",
+        "left": {
+          "heading": "Expected",
+          "points": [
+            "git merge origin/main | tail -5"
+          ]
+        },
+        "right": {
+          "heading": "Received",
+          "points": [
+            "set -o pipefail;\ngit merge origin/main | tail -5"
+          ]
+        },
+        "verdict": "1 pass、1 fail｜結束碼 1｜實跑 2026-10-09"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "9qwe",
+          "text": "再看失敗的樣子。把一條接到 tail 的合併，放進不該動的清單。",
+          "reveal": 1
+        },
+        {
+          "id": "97hi",
+          "text": "實際收到的前面多了 pipefail，測試就失敗，結束碼是一。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "exercise-ask",
+      "template": "code",
+      "data": {
+        "title": "練習：哪幾條會被改？",
+        "code": "    'npm run lint:web',\n    'git log --oneline | tail -5',\n    'npm run test:web | head -40',\n    'set -o pipefail; npm run typecheck:web | tail -20',",
+        "caption": "tests/pipe-guard.test.ts 第 34–37 行"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "ak8n",
+          "text": "換你判斷。這四條指令，哪幾條會被改？",
+          "emotion": "問句上揚，問完留一拍"
+        },
+        {
+          "id": "nc33",
+          "text": "記得三個條件：是檢查、接到 tail、還沒有 pipefail。"
+        }
+      ]
+    },
+    {
+      "id": "exercise-answer",
+      "template": "table",
+      "data": {
+        "title": "答案：逐條看",
+        "columns": [
+          "指令",
+          "會不會改"
+        ],
+        "rows": [
+          [
+            "npm run lint:web",
+            "不會：沒接 tail"
+          ],
+          [
+            "git log --oneline | tail -5",
+            "不會：不是檢查"
+          ],
+          [
+            "npm run test:web | head -40",
+            "不會：接的是 head"
+          ],
+          [
+            "set -o pipefail; npm run typecheck:web | tail -20",
+            "不會：已經有 pipefail"
+          ]
+        ]
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "bnar",
+          "text": "第一條沒有接 tail，不會改。",
+          "reveal": 1,
+          "emotion": "揭曉答案，乾脆"
+        },
+        {
+          "id": "f8d5",
+          "text": "第二條接了 tail，可是看提交紀錄不算檢查，不會改。",
+          "reveal": 1
+        },
+        {
+          "id": "hm2u",
+          "text": "第三條接的是 head，不是 tail，不會改。",
+          "reveal": 1
+        },
+        {
+          "id": "vnx2",
+          "text": "第四條已經有 pipefail，也不會改。這四條，就是第二個測試的內容。",
+          "reveal": 1,
+          "emotion": "「就是第二個測試」帶一點笑意"
+        }
+      ]
+    },
+    {
+      "id": "head-141",
+      "template": "terminal",
+      "data": {
+        "title": "head 為什麼故意不處理",
+        "command": "set -o pipefail; yes | head -1; echo $?",
+        "output": [
+          "y\n141"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "GNU bash, version 5.3.15(1)-release"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "8dee",
+          "text": "為什麼 head 不處理？這條指令沒有失敗，head 拿到第一行就提早關掉管線。"
+        },
+        {
+          "id": "7kf7",
+          "text": "在 pipefail 底下，結束碼變成一百四十一：沒失敗的指令，被算成失敗。",
+          "reveal": 1,
+          "emotion": "「一百四十一」放慢"
+        }
+      ]
+    },
+    {
+      "id": "article",
+      "template": "cta",
+      "data": {
+        "kicker": "完整文章",
+        "title": "建立第一個 mod",
+        "sub": "官方三檔案範例，一步一步做｜連結在說明欄"
+      },
+      "claims": [
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "za9f",
+          "text": "想照官方那個三個檔案的範例一步一步做，說明欄有完整的文章。"
+        },
+        {
+          "id": "4943",
+          "text": "補一個旗標夠用了。如果該做的是不准再做呢？",
+          "emotion": "問句上揚，「不准再做」加重"
+        }
+      ]
+    },
+    {
+      "id": "incident",
+      "chapter": "讓 mod 計數，超過上限就拒絕",
+      "template": "stats",
+      "data": {
+        "title": "一個 session，大約四十條連線",
+        "stats": [
+          {
+            "value": "約 40",
+            "label": "同一個 session 的 SSH 連線",
+            "note": "2026-09-04，之後 SSH 一度連不上"
+          },
+          {
+            "value": "30",
+            "label": "上限",
+            "note": "之後的連線一律拒絕"
+          },
+          {
+            "value": "20",
+            "label": "提醒",
+            "note": "先跳一次提示"
+          }
+        ],
+        "source": "站主的 session（2026-09-04）｜plink-budget 原始碼"
+      },
+      "claims": [
+        "c38",
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "bgr8",
+          "text": "九月四號，我的 Claude 在同一個 session，用 plink 這個工具開了大約四十條 SSH 連線。",
+          "reveal": 1,
+          "emotion": "壓低，像在講一次事故"
+        },
+        {
+          "id": "t9qt",
+          "text": "在那之後，主機的 SSH 有一段時間連不上。"
+        },
+        {
+          "id": "fmwv",
+          "text": "所以第二個 mod 訂了上限：三十次，之後的連線一律拒絕。",
+          "reveal": 1
+        },
+        {
+          "id": "gdk8",
+          "text": "滿二十次，先跳一次提醒。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ask-count",
+      "template": "code",
+      "data": {
+        "title": "可以這樣說",
+        "code": "做一個 mod，名字叫 plink-budget。\n數這個 session 用 plink 開了幾次 SSH 連線，\n次數顯示在提示框下方。滿 20 次跳提示，\n滿 30 次拒絕新的連線，並告訴 Claude\n把剩下的遠端指令併成一支腳本。\n加 /plink 查次數，/plink reset 歸零。\n計數器自己出錯時也要拒絕。",
+        "highlight": [
+          2,
+          3,
+          4,
+          6
+        ],
+        "caption": "照成品的 plugin.json 說明整理｜還沒用這段話從頭重跑"
+      },
+      "claims": [
+        "c40"
+      ],
+      "lines": [
+        {
+          "id": "egtu",
+          "text": "要求比第一個多講三件事：要數什麼、上限多少、用什麼指令查詢和歸零。"
+        }
+      ]
+    },
+    {
+      "id": "ask-fail-closed",
+      "template": "code",
+      "data": {
+        "title": "可以這樣說",
+        "code": "做一個 mod，名字叫 plink-budget。\n數這個 session 用 plink 開了幾次 SSH 連線，\n次數顯示在提示框下方。滿 20 次跳提示，\n滿 30 次拒絕新的連線，並告訴 Claude\n把剩下的遠端指令併成一支腳本。\n加 /plink 查次數，/plink reset 歸零。\n計數器自己出錯時也要拒絕。",
+        "highlight": [
+          7
+        ],
+        "caption": "照成品的 plugin.json 說明整理｜還沒用這段話從頭重跑"
+      },
+      "claims": [
+        "c40"
+      ],
+      "lines": [
+        {
+          "id": "i764",
+          "text": "最後一句是重點：計數器自己壞掉的時候，也要拒絕。",
+          "emotion": "「也要拒絕」放慢"
+        }
+      ]
+    },
+    {
+      "id": "count-deny",
+      "template": "code",
+      "data": {
+        "code": "      if (!PLINK.test(e.command)) {\n        return next(e)\n      }\n\n      const used = await read($, count)\n\n      if (used >= LIMIT) {\n        return { deny: refusal(used) }\n      }",
+        "highlight": [
+          5,
+          7,
+          8,
+          9
+        ],
+        "caption": "plink-budget 的 hooks/register.ts 第 53–61 行"
+      },
+      "claims": [
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "xnkk",
+          "text": "程式走這個順序：不是 plink 的指令，直接放行；是 plink，先讀次數。"
+        },
+        {
+          "id": "4fub",
+          "text": "到了上限，回一段拒絕的話，這條指令不會執行。",
+          "emotion": "「不會執行」加重"
+        }
+      ]
+    },
+    {
+      "id": "refusal-reader",
+      "template": "code",
+      "data": {
+        "title": "拒絕的字，是寫給 Claude 讀的",
+        "code": "const refusal = (used: number) =>\n  `plink-budget: this session has already opened ${used} ` +\n  `SSH connections (limit ${LIMIT}); the host may lock SSH ` +\n  'out after too many. Put the remaining remote commands ' +\n  'into one script and tell the person, who can type ' +\n  '/plink reset.'",
+        "caption": "hooks/register.ts 第 18–23 行"
+      },
+      "claims": [
+        "c42"
+      ],
+      "lines": [
+        {
+          "id": "u3af",
+          "text": "Claude 會把這段話當成工具結果讀到，所以要寫成它能照做的指示。"
+        }
+      ]
+    },
+    {
+      "id": "refusal-reason",
+      "template": "code",
+      "data": {
+        "title": "拒絕的字，是寫給 Claude 讀的",
+        "code": "const refusal = (used: number) =>\n  `plink-budget: this session has already opened ${used} ` +\n  `SSH connections (limit ${LIMIT}); the host may lock SSH ` +\n  'out after too many. Put the remaining remote commands ' +\n  'into one script and tell the person, who can type ' +\n  '/plink reset.'",
+        "highlight": [
+          2,
+          3,
+          4
+        ],
+        "caption": "hooks/register.ts 第 18–23 行"
+      },
+      "claims": [
+        "c42"
+      ],
+      "lines": [
+        {
+          "id": "96bq",
+          "text": "前半講原因：這個 session 已經開了幾次，再多，主機可能會鎖 SSH。"
+        }
+      ]
+    },
+    {
+      "id": "refusal-next",
+      "template": "code",
+      "data": {
+        "title": "拒絕的字，是寫給 Claude 讀的",
+        "code": "const refusal = (used: number) =>\n  `plink-budget: this session has already opened ${used} ` +\n  `SSH connections (limit ${LIMIT}); the host may lock SSH ` +\n  'out after too many. Put the remaining remote commands ' +\n  'into one script and tell the person, who can type ' +\n  '/plink reset.'",
+        "highlight": [
+          4,
+          5,
+          6
+        ],
+        "caption": "hooks/register.ts 第 18–23 行"
+      },
+      "claims": [
+        "c42"
+      ],
+      "lines": [
+        {
+          "id": "fsiy",
+          "text": "後半是下一步：把剩下的遠端指令併成一支腳本，再告訴使用者。"
+        }
+      ]
+    },
+    {
+      "id": "count-up",
+      "template": "code",
+      "data": {
+        "code": "      await update($, count, n => n + 1)\n      $.ui.status(`plink ${used + 1}/${LIMIT}`)\n\n      if (used + 1 === WARN_AT) {\n        $.ui.toast(`SSH 連線已經 ${WARN_AT} 次，上限 ${LIMIT} 次`)\n      }\n\n      return next(e)",
+        "highlight": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "caption": "plink-budget 的 hooks/register.ts 第 63–70 行"
+      },
+      "claims": [
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "ivtg",
+          "text": "沒到上限，次數加一，更新提示框下方那一行字，然後放行。"
+        },
+        {
+          "id": "2g59",
+          "text": "剛好第二十次，多跳一則提醒。"
+        }
+      ]
+    },
+    {
+      "id": "count-state",
+      "template": "code",
+      "data": {
+        "code": "const count = atom(\n  { plugin: 'plink-budget', key: 'count' } as const,\n  0,\n)",
+        "caption": "hooks/register.ts 第 13–16 行｜次數放在 $.state"
+      },
+      "claims": [
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "van8",
+          "text": "次數放在 session 的狀態裡，不是普通變數，程式重新載入也不會歸零。"
+        }
+      ]
+    },
+    {
+      "id": "catch-handler",
+      "template": "code",
+      "data": {
+        "code": "    }).catch(($, e, next) =>\n      next.called\n        ? next(e)\n        : { deny: 'plink-budget: counter failed; not run.' },\n    )",
+        "highlight": [
+          1
+        ],
+        "caption": "hooks/register.ts 第 71–75 行｜.catch：hook 自己出錯時接手"
+      },
+      "claims": [
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "dds3",
+          "text": "最後這一段是 catch：計數的程式自己出錯時，由它接手。"
+        }
+      ]
+    },
+    {
+      "id": "catch-result",
+      "template": "code",
+      "data": {
+        "code": "    }).catch(($, e, next) =>\n      next.called\n        ? next(e)\n        : { deny: 'plink-budget: counter failed; not run.' },\n    )",
+        "highlight": [
+          2,
+          3,
+          4
+        ],
+        "caption": "hooks/register.ts 第 71–75 行｜.catch：hook 自己出錯時接手"
+      },
+      "claims": [
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "afr3",
+          "text": "還沒放行就出錯，一律拒絕。",
+          "emotion": "短句，說得乾脆"
+        },
+        {
+          "id": "cr47",
+          "text": "沒有這一段，出錯的 hook 會被跳過，連線照樣出去。"
+        }
+      ]
+    },
+    {
+      "id": "validate-plink-1",
+      "template": "terminal",
+      "data": {
+        "title": "一樣先跑 validate",
+        "command": "claude plugin validate ./plink-budget",
+        "output": [
+          "  ❯ ./register.ts hooks: session.start, command.run{command=plink}, tool.call{to\nol=Bash|PowerShell}",
+          "  ❯ ./register.ts answers its own command: command.run{command=plink}",
+          "  ❯ ./register.ts gating hook with .catch: tool.call{tool=Bash|PowerShell}"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "2.1.295 (Claude Code)"
+      },
+      "claims": [
+        "c45"
+      ],
+      "lines": [
+        {
+          "id": "engj",
+          "text": "一樣，載入之前先跑驗證。"
+        },
+        {
+          "id": "gbv8",
+          "text": "hooks 這一行變成三個事件：session 開始、斜線指令、Bash 和 PowerShell 的工具呼叫。",
+          "reveal": 1
+        },
+        {
+          "id": "4vpt",
+          "text": "多了一行：它會回答自己的斜線指令。",
+          "reveal": 1
+        },
+        {
+          "id": "uh3g",
+          "text": "負責擋下呼叫的那個 hook，這次寫的是有 catch。",
+          "reveal": 1,
+          "emotion": "「有」加重，和前一個對比"
+        }
+      ]
+    },
+    {
+      "id": "validate-plink-2",
+      "template": "terminal",
+      "data": {
+        "title": "同一次輸出的後半",
+        "command": "claude plugin validate ./plink-budget",
+        "output": [
+          "  ❯ ./register.ts calls: $.command.register, $.state.get, $.state.set, $.ui.stat\nus, $.ui.toast",
+          "  ❯ ./register.ts state writes: plink-budget.count\n  ❯ ./register.ts state reads: plink-budget.count",
+          "\n✔ Validation passed"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "2.1.295 (Claude Code)"
+      },
+      "claims": [
+        "c45"
+      ],
+      "lines": [
+        {
+          "id": "xsf5",
+          "text": "後半段。calls 有五個：註冊指令、讀寫狀態、狀態列、跳提示。",
+          "reveal": 1
+        },
+        {
+          "id": "4uzg",
+          "text": "再來兩行是它讀寫的狀態，只有次數這一個。",
+          "reveal": 1
+        },
+        {
+          "id": "4tn9",
+          "text": "沒有讀取檔案、開程式、連網的呼叫，驗證通過。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "validate-side",
+      "template": "compare",
+      "data": {
+        "title": "兩份 validate 並排",
+        "left": {
+          "heading": "pipe-guard",
+          "points": [
+            "1 個事件",
+            "1 個呼叫",
+            "without .catch",
+            "出錯：指令照原樣跑"
+          ]
+        },
+        "right": {
+          "heading": "plink-budget",
+          "points": [
+            "3 個事件",
+            "5 個呼叫、1 個狀態",
+            "with .catch",
+            "出錯：拒絕"
+          ]
+        }
+      },
+      "claims": [
+        "c46",
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "zgsj",
+          "text": "並排看。第一個 mod：一個事件、一個呼叫，出錯時指令照原樣跑。",
+          "reveal": 1
+        },
+        {
+          "id": "cy7y",
+          "text": "第二個：三個事件、五個呼叫、一個狀態，出錯就拒絕。",
+          "reveal": 1
+        },
+        {
+          "id": "fp7k",
+          "text": "每一行，都對得上我提的要求。對不上的，就是它多做的事。",
+          "emotion": "「對不上的」之前停半拍"
+        }
+      ]
+    },
+    {
+      "id": "limit-test",
+      "template": "code",
+      "data": {
+        "code": "    for (let i = 0; i < 30; i += 1) {\n      await $.tool.call(bash(SSH))\n    }\n    expect(ran).toBe(30)\n\n    const refused = await $.tool.call(bash(SSH))\n    expect(ran).toBe(30)\n    const said = String(refused.deny ?? refused.text)\n    expect(said).toContain('plink-budget')",
+        "highlight": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "caption": "tests/plink-budget.test.ts 第 41–49 行"
+      },
+      "claims": [
+        "c47"
+      ],
+      "lines": [
+        {
+          "id": "wy63",
+          "text": "拒絕也能測。先送三十次假的連線，替身被叫到三十次。"
+        }
+      ]
+    },
+    {
+      "id": "limit-refused",
+      "template": "code",
+      "data": {
+        "code": "    for (let i = 0; i < 30; i += 1) {\n      await $.tool.call(bash(SSH))\n    }\n    expect(ran).toBe(30)\n\n    const refused = await $.tool.call(bash(SSH))\n    expect(ran).toBe(30)\n    const said = String(refused.deny ?? refused.text)\n    expect(said).toContain('plink-budget')",
+        "highlight": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "caption": "tests/plink-budget.test.ts 第 41–49 行"
+      },
+      "claims": [
+        "c47"
+      ],
+      "lines": [
+        {
+          "id": "xtn7",
+          "text": "第三十一次，替身沒有再被叫到，回來的是那段拒絕的話。",
+          "emotion": "「第三十一次」放慢"
+        }
+      ]
+    },
+    {
+      "id": "plink-test-pass",
+      "template": "terminal",
+      "data": {
+        "title": "兩個測試一起跑",
+        "command": "claude plugin test",
+        "output": [
+          "tests\\plink-budget.test.ts:\n(pass) counts plink connections and leaves other commands alone [45.32ms]",
+          "(pass) refuses the connection past the limit, and /plink reset lifts it [40.53ms\n]",
+          "\n 2 pass\n 0 fail\nRan 2 tests across 1 file. [0.33s]"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "2.1.295 (Claude Code)"
+      },
+      "claims": [
+        "c48"
+      ],
+      "lines": [
+        {
+          "id": "mb3i",
+          "text": "第一個測試：會數 plink 的連線，其他指令不算。",
+          "reveal": 1
+        },
+        {
+          "id": "iqbp",
+          "text": "第二個：超過上限就拒絕，歸零之後又放行。",
+          "reveal": 1
+        },
+        {
+          "id": "hn2h",
+          "text": "兩個通過。可是這些都還在測試裡，不是真的 session。",
+          "reveal": 1,
+          "emotion": "「可是」轉折，放慢"
+        }
+      ]
+    },
+    {
+      "id": "slash-live",
+      "template": "terminal",
+      "data": {
+        "title": "在真的 session 問一次",
+        "command": "claude -p \"/plink\" --plugin-dir mods/plink-budget",
+        "output": [
+          "plink-budget: 這個 session 已經開了 0 次 SSH 連線，上限 30 次"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "2.1.295 (Claude Code)"
+      },
+      "claims": [
+        "c49"
+      ],
+      "lines": [
+        {
+          "id": "4g59",
+          "text": "所以我用無介面的 session，實際下了一次這個斜線指令。"
+        },
+        {
+          "id": "rasu",
+          "text": "它回答零次。最前面的名字，是 Claude Code 自己加上去的。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "count-resets",
+      "template": "terminal",
+      "data": {
+        "title": "跑過一次 plink，再接續對話",
+        "command": "claude -p -c \"/plink\" --plugin-dir mods/plink-budget",
+        "output": [
+          "plink-budget: 這個 session 已經開了 0 次 SSH 連線，上限 30 次"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "2.1.295 (Claude Code)"
+      },
+      "claims": [
+        "c50",
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "233g",
+          "text": "接著讓 Claude 跑一次 plink，只印版本、不連線，然後接續同一段對話再問。"
+        },
+        {
+          "id": "3kpr",
+          "text": "還是零次。換了一個行程，次數沒有留下來。",
+          "reveal": 1,
+          "emotion": "平實，不遮掩"
+        },
+        {
+          "id": "9u2m",
+          "text": "狀態的規則：session 結束，或者清除、接回、分出對話，就回到預設值。"
+        }
+      ]
+    },
+    {
+      "id": "seen-or-not",
+      "template": "table",
+      "data": {
+        "title": "哪些實跑過，哪些還沒看過",
+        "columns": [
+          "項目",
+          "證據"
+        ],
+        "rows": [
+          [
+            "auto 模式下改寫指令",
+            "實跑兩次：都照樣執行"
+          ],
+          [
+            "/plink 的回覆",
+            "無介面 session 實跑"
+          ],
+          [
+            "第 31 次的拒絕",
+            "只在測試裡"
+          ],
+          [
+            "狀態列、跳出的提示",
+            "還沒看過"
+          ]
+        ]
+      },
+      "claims": [
+        "c51",
+        "c52",
+        "c53"
+      ],
+      "lines": [
+        {
+          "id": "vref",
+          "text": "auto 權限模式下，改過輸入的呼叫有可能被擋。",
+          "reveal": 1
+        },
+        {
+          "id": "7qe3",
+          "text": "我跑了兩次，都照樣執行。只有兩次，不能說永遠不會。",
+          "emotion": "平實，「只有兩次」放慢"
+        },
+        {
+          "id": "hm66",
+          "text": "斜線指令的回覆，是無介面 session 實際跑出來的。",
+          "reveal": 1
+        },
+        {
+          "id": "i7ft",
+          "text": "第三十一次的拒絕，目前只在測試裡看過。",
+          "reveal": 1
+        },
+        {
+          "id": "z249",
+          "text": "狀態列和跳出的提示，要互動式 session 才有，我還沒看過。",
+          "reveal": 1,
+          "emotion": "坦白，不遮掩"
+        },
+        {
+          "id": "ngxv",
+          "text": "測試都過了，怎麼把它留下來，又怎麼關？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "keep",
+      "chapter": "mod 怎麼留下來、怎麼關掉",
+      "template": "steps",
+      "data": {
+        "title": "官方流程：把 mod 留下來",
+        "steps": [
+          {
+            "title": "複製出來",
+            "detail": "dev-mods 裡的那個目錄\n搬到自己的位置"
+          },
+          {
+            "title": "啟動時指過去",
+            "detail": "claude --plugin-dir <目錄>"
+          },
+          {
+            "title": "確認載入了",
+            "detail": "/plugin 分頁列下方那一行\n例：1 mod active ·\nfirst-mod"
+          }
+        ]
+      },
+      "claims": [
+        "c54",
+        "c55"
+      ],
+      "lines": [
+        {
+          "id": "kpcp",
+          "text": "Claude 寫的 mod，只在寫它的那個 session 載入，資料夾過期會被清掉。",
+          "emotion": "提醒的語氣，放慢"
+        },
+        {
+          "id": "hqbg",
+          "text": "要留，就把整個目錄複製到自己的位置。",
+          "reveal": 1
+        },
+        {
+          "id": "pnnh",
+          "text": "之後啟動時用這個旗標指過去。我的無介面 session 就是這樣載入的。",
+          "reveal": 1
+        },
+        {
+          "id": "9sdv",
+          "text": "互動式的 session 裡，外掛畫面的分頁下方，會列出載入了哪些 mod。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "turn-off",
+      "template": "table",
+      "data": {
+        "title": "官方流程：四種關法",
+        "columns": [
+          "要關多少",
+          "怎麼做"
+        ],
+        "rows": [
+          [
+            "一個 mod",
+            "/plugin 的 Installed 分頁停用"
+          ],
+          [
+            "這次 session 全部",
+            "claude --safe-mode"
+          ],
+          [
+            "每個 session",
+            "settings.json：\"disableAllHooks\": true"
+          ],
+          [
+            "Claude 寫的那一份",
+            "刪掉它的目錄"
+          ]
+        ]
+      },
+      "claims": [
+        "c56"
+      ],
+      "lines": [
+        {
+          "id": "js38",
+          "text": "只關一個，到外掛畫面的已安裝分頁停用它。",
+          "reveal": 1
+        },
+        {
+          "id": "myh8",
+          "text": "這一次 session 全部不要，啟動時加安全模式的旗標，其他自訂也會一起停。",
+          "reveal": 1
+        },
+        {
+          "id": "wy8k",
+          "text": "每個 session 都不要，就在使用者設定檔打開這個設定，設定檔的 hook 也會停。",
+          "reveal": 1
+        },
+        {
+          "id": "sjzf",
+          "text": "Claude 寫的那一份再也不要載入，就刪掉它的目錄。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "your-rule",
+      "template": "steps",
+      "data": {
+        "title": "換成你的規則：先填三格",
+        "steps": [
+          {
+            "title": "哪個工具",
+            "detail": "Bash、Edit、Write…"
+          },
+          {
+            "title": "看到什麼字樣",
+            "detail": "指令或路徑裡的關鍵字"
+          },
+          {
+            "title": "怎麼回",
+            "detail": "放行、改寫，還是拒絕"
+          }
+        ]
+      },
+      "claims": [
+        "c57"
+      ],
+      "lines": [
+        {
+          "id": "yprp",
+          "text": "最後換成你的。挑一個你的 Claude 重複犯的錯，先說是哪個工具。",
+          "reveal": 1,
+          "emotion": "轉向觀眾，語氣亮一點"
+        },
+        {
+          "id": "49b9",
+          "text": "再說看到什麼字樣要處理。",
+          "reveal": 1
+        },
+        {
+          "id": "q4vd",
+          "text": "然後選一種回法：放行、改寫，還是拒絕。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "check-yours",
+      "template": "bullets",
+      "data": {
+        "title": "怎麼知道 Claude 寫對了",
+        "items": [
+          "hooks：出現 tool.call{tool=你的工具}",
+          "calls：沒有你沒要求的方法",
+          "測試：一條該中，一條不該中"
+        ]
+      },
+      "claims": [
+        "c57"
+      ],
+      "lines": [
+        {
+          "id": "t7yk",
+          "text": "寫好之後一樣核對：hooks 那一行，出現的是你說的工具。",
+          "reveal": 1
+        },
+        {
+          "id": "drfa",
+          "text": "calls 那一行，沒有你沒要求的呼叫。",
+          "reveal": 1
+        },
+        {
+          "id": "a7rf",
+          "text": "測試裡至少兩條指令：一條該中，一條不該中。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "template": "outro",
+      "data": {
+        "title": "失敗的檢查，\n不再帶著**零**回來",
+        "cta": "你的 Claude 重複犯哪一個錯？留言告訴我",
+        "lines": [
+          "pipe-guard：37 行，2 個測試通過",
+          "plink-budget：數到 30 次就拒絕",
+          "載入之前：validate 看 hooks 與 calls"
+        ]
+      },
+      "claims": [
+        "c3",
+        "c4",
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "astg",
+          "text": "三十七行、兩個測試，失敗不再帶著零回來。",
+          "emotion": "放慢收穩，「零」輕輕落下"
+        },
+        {
+          "id": "2mwu",
+          "text": "你的 Claude 最常犯哪個錯？留言告訴我。",
+          "emotion": "問句上揚，親切"
+        },
+        {
+          "id": "ygpw",
+          "text": "想看更多實際跑過的教學，訂閱頻道。",
+          "emotion": "輕快，帶笑"
+        }
+      ]
+    }
+  ]
+}

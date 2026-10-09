@@ -1,0 +1,60 @@
+# run log 2026-10-09T01:37:11Z
+$ claude --version
+2.1.295 (Claude Code)
+
+$ claude plugin validate plink-budget
+Validating plugin manifest: C:\Users\<user>\.claude\dev-mods\d5e0e2cd-3e42-4028-a93b-617a78b22ab5\plink-budget\.claude-plugin\plugin.json
+
+  ❯ types ./types/index.d.ts declares on $: nothing (no EngineInterface member)
+  ❯ types ./types/index.d.ts declares state: plink-budget.count
+
+Validating hooks: C:\Users\<user>\.claude\dev-mods\d5e0e2cd-3e42-4028-a93b-617a78b22ab5\plink-budget\hooks\hooks.json
+
+  ❯ ./register.ts hooks: session.start, command.run{command=plink}, tool.call{tool=Bash|PowerShell}
+  ❯ ./register.ts answers its own command: command.run{command=plink}
+  ❯ ./register.ts gating hook with .catch: tool.call{tool=Bash|PowerShell}
+  ❯ ./register.ts calls: $.command.register, $.state.get, $.state.set, $.ui.status, $.ui.toast
+  ❯ ./register.ts state writes: plink-budget.count
+  ❯ ./register.ts state reads: plink-budget.count
+
+✔ Validation passed
+[exit 0]
+
+$ claude plugin test plink-budget
+
+tests\plink-budget.test.ts:
+(pass) counts plink connections and leaves other commands alone [50.82ms]
+(pass) refuses the connection past the limit, and /plink reset lifts it [47.57ms]
+
+ 2 pass
+ 0 fail
+Ran 2 tests across 1 file. [0.33s]
+[exit 0]
+
+$ claude plugin validate pipe-guard
+Validating plugin manifest: C:\Users\<user>\.claude\dev-mods\d5e0e2cd-3e42-4028-a93b-617a78b22ab5\pipe-guard\.claude-plugin\plugin.json
+
+Validating hooks: C:\Users\<user>\.claude\dev-mods\d5e0e2cd-3e42-4028-a93b-617a78b22ab5\pipe-guard\hooks\hooks.json
+
+  ❯ ./register.ts hooks: tool.call{tool=Bash}
+  ❯ ./register.ts gating hook without .catch: tool.call{tool=Bash}
+  ❯ ./register.ts calls: $.ui.toast
+
+✔ Validation passed
+[exit 0]
+
+$ claude plugin test pipe-guard
+
+tests\pipe-guard.test.ts:
+(pass) adds pipefail when a check is piped into tail [38.92ms]
+(pass) leaves every other command as written [20.34ms]
+
+ 2 pass
+ 0 fail
+Ran 2 tests across 1 file. [0.28s]
+[exit 0]
+
+$ bash -c "exit 1" | tail -1; echo $?
+0
+$ set -o pipefail; bash -c "exit 1" | tail -1; echo $?
+1

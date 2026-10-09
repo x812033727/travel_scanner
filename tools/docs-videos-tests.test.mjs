@@ -39,14 +39,19 @@ function selected() {
 test("every test under docs/videos runs, except a demo folder's, which never does", () => {
   const found = globSync("docs/videos/**/*.test.{mjs,js,cjs,ts,mts,cts}", { cwd: ROOT }).map(posix);
   const props = found.filter((file) => file.split("/").at(-2) === "demo");
-  assert.ok(found.length > props.length, "no test found under docs/videos — the scan itself is broken");
+  // A Claude Code mod kept beside the video that teaches it (docs/videos/<slug>/mods/<mod>/tests/)
+  // has tests that import claude-code/testing and run under `claude plugin test`. node --test
+  // cannot load them and CI has no Claude Code, so they are run where the video's run log says.
+  const modTests = found.filter((file) => file.endsWith(".test.ts") && file.split("/").includes("mods"));
+  assert.ok(found.length > props.length + modTests.length, "no test found under docs/videos — the scan itself is broken");
   const runs = selected();
   assert.deepEqual(
-    found.filter((file) => !props.includes(file) && !runs.has(file)),
+    found.filter((file) => !props.includes(file) && !modTests.includes(file) && !runs.has(file)),
     [],
     `${SCRIPT} does not run these: name them *.test.mjs, or widen its glob`,
   );
   assert.deepEqual(props.filter((file) => runs.has(file)), [], "a demo folder's tests fail on purpose and must not run");
+  assert.deepEqual(modTests.filter((file) => runs.has(file)), [], "a mod's tests run under claude plugin test and must not be selected");
 });
 
 /** The positional arguments of a `node --test` command: its globs, quotes taken off. */
