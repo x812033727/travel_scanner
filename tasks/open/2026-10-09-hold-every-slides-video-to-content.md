@@ -55,7 +55,7 @@ adds the part that route does not carry, for both routes.
 - [x] A subject the viewer operates is planned as a tutorial on the teaching route.
 - [x] `lint` warns when the narration names its source more than twice.
 - [x] Drama, story, explainer, restyle and translation prompts are unchanged.
-- [ ] The duration receipt is rebound by an independent reviewer.
+- [x] The duration receipt is rebound by an independent reviewer (`claude-pr-review-content-value-20261009`: duration-neutral, five files).
 
 ## Steps
 
@@ -63,7 +63,7 @@ adds the part that route does not carry, for both routes.
 - [x] `SOURCING_FAMILY` and `SOURCING_MAX` in `lint.mjs` (a warning, like the hedge family).
 - [x] Tests for the prompts and the lint check.
 - [x] `script-writing.md` §含金量, the planner and writer prompt docs, rule 11 in both skill copies.
-- [ ] Rebind `docs/videos/long-form/review.json` and `review.md`.
+- [x] Rebind `docs/videos/long-form/review.json` and `review.md`.
 
 ## How to verify
 
