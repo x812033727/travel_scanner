@@ -1,13 +1,13 @@
 ---
 id: 2026-10-09-hold-every-slides-video-to-content
 title: Hold every slides video to content-value rules: outcomes, order, typeable steps, no sourcing talk
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-video-reference-comparison
 claimed_at: 2026-10-09T01:52:18Z
 created_at: 2026-10-09T01:52:13Z
-completed_at:
+completed_at: 2026-10-09T02:49:07Z
 branch: claude/video-reference-comparison-14fe9c
 depends_on: []
 scope:
@@ -92,3 +92,12 @@ The old script is the regression case: `episodeScriptProblems` on its `video.jso
   checked by `video_kit.py check`) sits untracked in this worktree under
   `docs/videos/claude-code-mods-hands-on/`; the owner has read it and has not asked for it to
   be committed.
+- Landed as PR 1392 (squash `3a904c8b7`) after PR 1390 (`eaf5b36ed`) and deployed on
+  2026-10-09 at 02:48Z. The post-deploy check ran in the worker container: `VALUE_RULES` and
+  `TEACHING_RULES` are exported, `lint.mjs` has the sourcing family, and
+  `instructionsFor(stage, "slides")` includes the rules for the planner, the writer and the
+  listener and not for the verifier; 15 checks passed, none failed.
+- What a model does with the rules is still unmeasured on the host. The first use is a local
+  re-plan of the rejected Mods video (slug `claude-code-mods-hands-on`).
+- The three gaps are now tasks: `2026-10-09-send-a-final-cut-back-to`,
+  `2026-10-09-give-the-automated-route-a-way`, `2026-10-09-judge-a-brief-s-viewer-outcomes`.
