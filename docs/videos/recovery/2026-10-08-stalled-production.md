@@ -3,6 +3,101 @@
 Owner request: complete stalled video production directly. This record is updated
 only from actual stage results. Generated media and detailed logs remain outside Git.
 
+## Current verified continuation,21:30 Taipei,2026-10-09
+
+The five-track legacy producer physically closed at21:11:52, exit1. FREE's
+three genuine SKIPs and approved current LANG e7e7d4c7 remain valid. DevDay
+English's first full153-line check retained nine flags; normal retake1 left
+fn6g0.5s over its window at the1.15 speed ceiling, so this track also genuinely
+SKIPPED. Its saved audio,153 ASR records and flags remain retained. The next
+normal caption command used the retained dub timeline despite the SKIP; the
+strict renewal binder rejected those CC before any new LANG POST. Actual partial
+file PUTs are recorded. The attempt used six correction models,250 synthesis
+responses,153 ASR routes,one Jev route,18961 billable synthesis characters and30
+API writes. With preserved prior history, totals are eight correction models,
+498 speech routes,30513 synthesis characters and53 API writes. Exact terminal
+proof is `selected-remaining-five-current-c2a-read429-v3.held-result.actual.json`.
+The original24 correction ceiling is unchanged. DevDay Japanese/Korean remain
+unstarted under their original214 first-pass requests/10956 characters and at
+most eight new correction requests. A zero-provider genuine-SKIP CC view is
+being checked against the ordinary narration composer and renewal binder before
+application or another LANG submission; no dub READY or listening claim exists.
+
+Travel's English and Japanese96-caption worksheets genuinely reviewed and
+merged. The original25-remaining producer closed at21:18:19, exit3, on Korean
+metadata's sole omitted empty-lines array. The exact paid Korean sample was
+reused through the already reviewed request-owned empty-lines view; its original
+raw result stayed retained. Fresh zero-POST admission and13 fixture checks
+passed. Caller e332ea3d/runner98fd2b0b/launcher8824fc69 resumed once under the same
+original40-key intent:21 consumed/19 remaining, PID1417773. Actual21:25:45
+readback has23 original keys; Korean metadata reviewer e73f4043/job4dfca6cd is
+succeeded/adopted, and the first24-caption translator is running.
+The current proof is `actual-Travel-remaining19-first-KO-reviewer-readonly.jsonl`.
+Travel's three-dub caller remains source-only pending all four current texts.
+
+Embedding's reconnect supervisor18968/Node26108 physically closed at21:15:05,
+exit3, before its32nd original key. All31 original paid results are genuinely
+succeeded/adopted. The last Japanese translator changed only twelve echoed
+Chinese full-width commas to ASCII commas; source documents and Japanese texts
+were unchanged. Root reviewed the exact helper b0b51003, executor fe624fd8,
+actual literal comparison fd42e71f and three fixtures. The zero-provider/zero-API
+normal writeUnits restoration completed at21:26:27: original cache81ddf92b,
+raw9943bf1a and all original stage artifacts are byte-archived, archive manifest
+0bdb95dc; current derived cache b096b290 retains reviewed absent. Result d285db8a
+proves only those twelve request-owned source fields changed, with all31 raw
+receipts,577 original source/media files,298 tools,caller6f5016bf and the original
+intent unchanged. The real independent reviewer is still owed. The bounded
+visits58..512 continuation is being prepared with31 spent/33 remaining original
+keys; it has not launched. Deferred local finishing still requires all64 actual
+results,all four current worksheets and a physically closed successful producer.
+Mods remains exact STOP f5bbf969 in actual21:25 readback.
+
+## Current verified continuation,21:12 Taipei,2026-10-09
+
+FREE's three selected dubs have genuine normal fit SKIPs. English retained its
+three prior non-fitting windows; Japanese retained two after two normal shorten
+rounds; Korean retained one, still0.03s over the1.15 speed limit after two rounds.
+The current ordinary LANG review `e7e7d4c7-e655-4b77-94f3-896c48f26b10` is approved,
+with eight current metadata/CC parts READY, three truthful SKIPs,10 exact file
+references and current final63c5f855. Actual milestone proof is
+`14d878d2cd995561071318aa6317dc6301bc436eae640ed7c98d211b6a856be7`.
+There is no FREE dub READY or owner-listening claim. The same five-track producer
+then entered DevDay English. At21:11 its first normal audio check closed153 lines:
+127 literal matches and26 genuine Jev checks, with nine flags. Normal retake1 is
+working on the exact flagged IDs. This attempt retains241 successful synthesis
+responses/18463 billable characters and six new correction models; the original
+94/11552/two models/23 API-write history remains separately retained. The global
+correction ledger is eight consumed of its original24 ceiling. Japanese/Korean
+DevDay still owe their normal production and quality results.
+
+Embedding genuinely reconnected after the zero-call Windows read failure:
+supervisor18968, authority
+`f6be00ce8b0126f271eab500ce74307d199a72f73bdfbe7aefacf4854cbe7d59`,
+supervisor431e9180/launcherf33a8afe with the original caller6f5016bf unchanged.
+Both independent577-file full-SHA re-reads passed. Original23 frontier artifacts
+are byte-archived; original20 visits/six succeeded keys are preserved, with
+visits21..512 and only58 remaining original keys. English's eight units genuinely
+reviewed and merged at20:55:57. Japanese metadata reviewed at20:57:02 and its
+caption units continue. The zero-provider three-command local finishing caller
+c0e609ea is reviewed but may execute only after all32 pairs/64 original keys
+are succeeded/adopted, all four worksheets are current and the text producer is
+physically closed. It does not submit LANG, approve dubs, upload or publish.
+
+Travel's Japanese metadata genuinely reused its paid result through the sole
+request-owned empty-lines view and obtained an independent reviewer. A next
+24-line translator succeeded but echoed one Chinese source without the word
+"那"; the source guard stopped its reviewer before dispatch at20:56:05. Paid
+translator81cbd895, raw92e94f22, adopted journalcaf58f25 and cachec568f471 remain
+unchanged. Reviewed helper23d2f226 restores only6kvd.source in the outgoing
+unpaid reviewer payload from its exact original request; all24 Japanese texts
+and other23 sources remain unchanged, with reviewed=false. Caller7b80534a,
+runner5a5ddfd4 and launchercf5ba288 genuinely resumed once under the original
+15 consumed/40 total/25 remaining limit, PID1395962. The first real reviewer
+5a3534f3/jobbd279dd6 is running in actual readback21:08:31, taking the original
+count to16/40. No translator rebuy or raw/cache rewrite occurred. Later same
+metadata omissions remain limited to individually proven original paid samples;
+other shapes must stop for review. Mods remains exactf5bbf969 and held.
+
 ## Current verified continuation,20:38 Taipei,2026-10-09
 
 The remaining five original dub tracks genuinely resumed once at20:34 under
