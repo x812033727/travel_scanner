@@ -3,7 +3,106 @@
 Owner request: complete stalled video production directly. This record is updated
 only from actual stage results. Generated media and detailed logs remain outside Git.
 
-## Current verified continuation,15:08 Taipei,2026-10-09
+## Current verified continuation,16:03 Taipei,2026-10-09
+
+Embedding's completed movie/base Chinese package and both exact approval
+readbacks remain as recorded below. Owner language decisions for Embedding and
+Travel are still pending; no choice, Studio playback or YouTube action is inferred.
+
+Cloudflare's ONE normal three-dub runner started at15:43:29. The actual15:51
+readback shows103 saved English WAVs, a current fit report with no overlong lines,
+and one normal shortening round; no finished track/check is claimed at that
+snapshot. Actual database reads are refreshed every15s and checked before new
+requests, alongside current source/owner/settings and the normal project lease.
+SEC stopped after41 genuinely paid text answers and one retained zero-model
+failure. Its real Simplified Chinese answer includes draft, six critique notes
+and24 final lines. A strict private view removes only two surplus braces while
+retaining the complete trailing self-check prose; all five regression checks pass.
+Root independently read every source/final line. The remaining seven original
+operations require the normal caption reviewer, not another translator purchase.
+
+FREE closed after seven genuine new answers with no pending/unknown operation;
+its original33 cache, true lost Korean result and physical STOP are preserved.
+The fifth answer's genuine eight-entry critique/24-line final was recovered with
+zero model replay. A later translator parser error remains under inspection;
+neither its provider result nor a successful final worksheet is invented.
+DevDay's final five operations still wait for FREE's ordinary shared-producer
+closure. Read-only dub quotes for these two profiles total405 first-pass requests
+and36608 characters; no dub provider request has been launched for them.
+
+The draft implementation was rebased onto actual main `114aa2c9`. Independent
+duration review commit `03471f96c3b3fe0bb4455820f877a389d55805d5` verified all108
+main raw bindings, rebound only three actual registered deltas and retained105
+unchanged bindings plus the entire main/historical report text. Focused tests
+passed45/45, six matcher tests passed, both receipt tests passed, and the normal
+CLI checked all473 plans. Task/diff checks pass. A broader mocked TTS run hit a
+Windows EPERM fixture rename; its failed log is retained and is not called green.
+This is source review and local validation, not deployment or production approval.
+
+## Verified continuation,15:43 Taipei,2026-10-09
+
+Embedding's real normal encoding finished at15:20:29:26500 frames/883.333s,
+-14LUFS/-0.9dBFS,383355132bytes. Its final SHA is
+`24b8e2b59b25f558d5cb82a12e0b08bfac7ba8704cadc004da352e9f3edb61e1`.
+Normal assemble checks have no problems and all11 final QA items genuinely pass,
+including the retained lost-Jev guard. ONE normal final-review upload completed,
+and actual review `1bcd2b0d-d3a0-4058-b168-13c14a006bdf` auto-approved this exact
+movie. The unchanged156 WAVs and78 paid image entries remain preserved; the two
+free SVG replacements retain their truthful provenance and actual visual checks.
+
+Normal packaging passed4/4 checks. ONE normal publish-review upload also completed:
+review `59f55f84-1530-4e9a-b4a5-084290a51093` auto-approved metadata SHA
+`bd1b2a972c20357b74a1fa314470d0692a33364429148e9e6809335247a746a6`.
+Both decisions were normally pulled and independently read back at15:38:08.
+The actual movie and base Chinese upload directory are under
+`<home>/mokaair-work/videos/ai-term-embedding/`; the detailed receipt is
+`<home>/mokaair-work/stalled-video-completion-20261008/embedding-audio/listener-round2/continuation-20261009/actual-delivery-readback.json`.
+Locales remain `{}`, the decision timestamp is null, languages are empty, and
+ready_to_upload/download_available are false. The language question is pending;
+no agent selected languages, claimed owner playback, uploaded to YouTube or published.
+
+Cloudflare's original selected-text stream closed at15:40:42 with all four
+translations current:48 genuinely paid successes,49 gross attempts including
+the one proven terminal zero-model row. Normal read-only selected-dub quotes
+completed at15:41:41:82 requests per locale,7149 English/3548 Japanese/3518 Korean
+billable characters,246 first-pass requests/14215 characters in total. Gemini
+Sulafat is configured with9612932 characters remaining under the existing10M
+monthly limit. The normal two shorten/two retake/two reword bounds remain intact.
+Its source-bound once dub runner is reviewed; no completed dub is inferred from
+the quote. SEC's independent text producer has reached Simplified Chinese.
+
+The sole SEC context change was adopted with zero model calls at15:18:56:
+only `mokaair.com` was added to the current glossary context, so six exact old/new
+unit aliases preserve all21 paid answers and unchanged output bytes. The source,
+owner choice, original logical keys/cap, media and raw provider receipts remain
+unchanged. Its original remaining27 paid operations resumed once at15:23:20.
+
+DevDay's once eleven-stage continuation closed at15:08:53 with59 genuine
+successes and no pending/unknown operation. The final cached translator really
+returned critique and final fields, but two surplus outer braces hid the envelope.
+A hash-bound structural view removes only those braces; original raw output and
+journal remain immutable. Its remaining five model stages wait until the ordinary
+shared FREE producer closes; the original64-stage cap remains unchanged.
+
+FREE's first Oct9 launch failed before normal SDK transport: actual backend rows
+were empty, its seed receipt was null, and no POST/model ran. The narrow repair
+binds its own normal exclusive lock by actual PID/inode after normal acquisition,
+and uses the same UUID/NULL seed in a same-profile durable SDK receipt directory.
+Three real SDK/native-lock regressions pass. Fresh read-only proof matched current
+source/settings/owner/real guardian and original103 potential-model allowance.
+Original fourteen-stage continuation launched once at15:39:33. At15:42,
+the first original UUID `843ef6b8-e4ca-524d-aa5b-a794f9eae4fd` had genuinely
+succeeded and been adopted; the next reviewer was running. The real old Korean
+UNKNOWN, original33 cached answers, original journal/wire and physical operator
+STOP remain byte-identical. No unknown paid result was replayed.
+
+Mods remains skipped under its independently verified exclusive STOP receipt
+`f5bbf969d413bc7e8ef4419162459d3ea26d88a311493fd1eef9294e9d1cbea3`.
+Travel's already-approved Chinese package remains complete with its owner language
+decision pending. Production HEAD/worker are still `114aa2c9`/`3b194510`;
+this recovery changed no global settings, caps, credentials or deployment.
+
+## Verified continuation,15:08 Taipei,2026-10-09
 
 Travel's current owner-approved Chinese cut was normally pulled and packaged
 with zero model calls. Its97-cue zh-TW captions, thumbnail, description and
