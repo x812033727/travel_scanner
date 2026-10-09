@@ -3129,16 +3129,67 @@ PASS is DURATION_ONLY for the one rebound hash below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Languages-card wording increment (PR #1405): 9 files (2026-10-09)
+
+Reviewer: `claude-pr-review-1405-languages-card`. Author: `claude-fable-5.1`. Scope: DURATION_ONLY for the nine changed bindings below, reviewed at `897ad4f87559f574e74ae595803426c8c3568169` (the merge of origin/main into claude/youtube-audio-missing-languages-94f59a, PR #1405); the one commit that touches a bound file is `8c7787581` ("fix(web): the languages card says the site cannot upload dub tracks"). The reviewer wrote no part of that commit and edits only this report and review.json.
+
+Baseline: `8838a255d0758c2e9b32d7efad975fd5d2561368`, origin/main (#1404) and the merge base. Immutable Git blobs pass `durationReviewProblems` there for the report and all 108 REVIEW_FILES, under the "Misheard-words prompt increment" above; the branch changes neither receipt file nor review.mjs. Each of the nine changed files matches its existing receipt and table at that baseline; its committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these nine bindings, while the other 99 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `.agents/skills/youtube-video/SKILL.md`: `43d09e859e02b2d018ef2f95a43d8b5e28149bdc62b637cb4130f1bee45c5bb8` -> `78a2b05461ae00cbfddd2c75e505de960f634d2887f84750712b948634c6b045`.
+- `.agents/skills/youtube-video/references/automated.md`: `80847373b5383f81a8fa8e9a7d8db2d369410344d51616d461a957f20d7f0cfd` -> `4816f3eec0d7b0f162389c7e56d37abfde40fbb0678d3a0e45991771cdaa9da6`.
+- `.claude/skills/youtube-video/SKILL.md`: `43d09e859e02b2d018ef2f95a43d8b5e28149bdc62b637cb4130f1bee45c5bb8` -> `78a2b05461ae00cbfddd2c75e505de960f634d2887f84750712b948634c6b045` (byte-identical to the `.agents` copy at both revisions).
+- `apps/web/components/admin-video-reviews.test.tsx`: `8ee1ee52620dcbe04809fbbf61fa3b86972e22b2a27d19421a226c271af59166` -> `cc6b6bdfa232d1169faedc68a73b16f36f2f110fc1c24d34a2bf5df526d8425b`.
+- `apps/web/messages/en/admin.json`: `0fc899a3db533bad6d4a3db5450e97e2d34297be6188f1f28b6f3484a0fdde77` -> `ec12ddb73856f2d1a9d6070961eea5107bce485143f91099da94a7d0a73b9dd5`.
+- `apps/web/messages/ja/admin.json`: `92870e41f3ed23948a96d55d5822e1af6426e29d5ac4065b43661239a363ef21` -> `e8d2065f71307dfca69d746b80d68c146a3c955c6f89b69f5c939f14d5a42e32`.
+- `apps/web/messages/ko/admin.json`: `cda8d08a9037f3bcbfb58cf25498aef82852da5ff1fad69e02c2e41d5505aa78` -> `18fed6863285acaf879157707bb30995cd1f8a2eeb167d4c5d4e7cd4953cb8d3`.
+- `apps/web/messages/zh-CN/admin.json`: `5684abdbabc109d94d7c074ad52ef01010f11cc3a4ddc9b7ea3d768e3ed9826b` -> `c52f64ca0388c4e850742df482b28cbc868911bcf23edee91b5b9c99f7ba781d`.
+- `apps/web/messages/zh-TW/admin.json`: `7cf0ece3332b44d82b10f46898ea2763d463b32173be19546196ecdadc9ca491` -> `9e3a0402625543d1ca4e77328eaefdcd151f187590bed477fe31dd7bc0573db4`.
+
+Findings, the five `apps/web/messages/<locale>/admin.json` (+4/−4 each, the same four keys in every locale, all in the video reviews namespace): `parts.states.uploaded` ("Uploaded" -> "You said uploaded", 「已上傳」->「你說已上傳」 and the ja and ko equivalents), the state label the languages panel shows after the owner presses the button; `approveLanguages`, the approve button of the languages review card ("Uploaded the dub tracks in Studio" -> "I have uploaded these dub tracks in Studio", 「已在 Studio 上傳配音」->「我已經在 Studio 傳好這些配音」); `studioNote`, which now says the site cannot upload an audio track because YouTube has no API for it, that titles, descriptions and captions still go through the API when the video is scheduled, that the channel needs Advanced features turned on before Studio's Languages page offers a dub, and that the button records the upload and uploads nothing; and `studioStep3`, which quotes the renamed button. No other key changes: `check:i18n` validates the five locales across 25 namespaces, so no key was added or dropped. The explainer-duration strings (the tutorial's 10-minute default, the 8–20 range, the eight-minute floor, the drama's 1–8 minutes, the brand story's 13 minutes, the long-anime production policy) are untouched: in every locale the lines naming a duration term number the same at both revisions (en 103, ja 66, ko 66, zh-CN 66, zh-TW 80). These are labels and notes; `admin-video-review-card.tsx` (bound, unchanged, receipt hash `0c36f63c…`) reads them through `t()` at the same keys, so no component logic, no gate and no state transition changes.
+
+Findings, `apps/web/components/admin-video-reviews.test.tsx` (+1/−1): the languages-card test's `getByRole("button", { name: … })` now looks for 「我已經在 Studio 傳好這些配音」 instead of the old label. The assertion that follows (enabled, one POST on click) and the duration tests in the same file (its lines naming a duration term number 92 at both revisions) are unchanged.
+
+Findings, the two `youtube-video/SKILL.md` copies and `references/automated.md` (+1/−1 each): in step 10 of the SKILL table and step 13 of the automated table, the sentence telling the owner which button to press after uploading in Studio quotes the renamed button. The rest of those rows (which parts a language can tick, the translate, review and dub rounds, "最多 2 輪", `check-audio`, `dub --redo`, `skipped.json`) and every other row are the same bytes. The lines naming a duration term number 7 in each SKILL copy and 16 in automated.md at both revisions.
+
+Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. A case-insensitive scan of the 48 changed lines (24 added, 24 removed) of the nine diffs for minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json and process.env finds nothing. The branch touches 19 files: the nine above, `.agents/skills/youtube-video/references/publish.md`, `apps/web/components/admin-video-review-card.test.tsx`, `docs/videos/AUTOMATION.md`, `docs/videos/DUBS.md`, `docs/videos/LANGUAGES.md` and five task files; none is under apps/api, tools/video or docs/videos/long-form.
+
+Ran (in the worktree at `897ad4f87`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the hashing of every changed path against the receipt, the baseline and the head;
+- `durationReviewProblems` against the baseline through `git cat-file`, which returned no problem;
+- a reading of the nine diffs, and of the ten unbound changed files as context;
+- the duration-term counts and the scan;
+- `git diff --check` over `origin/main...HEAD`, which exited 0.
+
+On the reviewed bytes, each of these exited 0:
+
+- `vitest run components/admin-video-reviews.test.tsx components/admin-video-review-card.test.tsx` in apps/web, 70 of 70;
+- `npm run check:i18n`, 5 locales across 25 namespaces.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the new wording, the claim that YouTube has no API for audio tracks, or the Advanced-features note as product or editorial choices; they were read, not verified against YouTube.
+- publish.md, admin-video-review-card.test.tsx, AUTOMATION.md, DUBS.md, LANGUAGES.md and the five task files are unbound. They were read as context and are not reviewed or bound here.
+- No languages card was rendered in a browser and no review-push was run; only the two Vitest files named above.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 99 bindings this branch did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the nine rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
-| `.agents/skills/youtube-video/SKILL.md` | `43d09e859e02b2d018ef2f95a43d8b5e28149bdc62b637cb4130f1bee45c5bb8` |
-| `.agents/skills/youtube-video/references/automated.md` | `80847373b5383f81a8fa8e9a7d8db2d369410344d51616d461a957f20d7f0cfd` |
+| `.agents/skills/youtube-video/SKILL.md` | `78a2b05461ae00cbfddd2c75e505de960f634d2887f84750712b948634c6b045` |
+| `.agents/skills/youtube-video/references/automated.md` | `4816f3eec0d7b0f162389c7e56d37abfde40fbb0678d3a0e45991771cdaa9da6` |
 | `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
-| `.claude/skills/youtube-video/SKILL.md` | `43d09e859e02b2d018ef2f95a43d8b5e28149bdc62b637cb4130f1bee45c5bb8` |
+| `.claude/skills/youtube-video/SKILL.md` | `78a2b05461ae00cbfddd2c75e505de960f634d2887f84750712b948634c6b045` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `fe502055df82612df2dee120c9db78ff54029c0514a73df683ad8ce2e14e9637` |
 | `apps/api/app/video_automation/models.py` | `54cedbf59e1cbfb373a2091c849804cdba3c054118f6272a168799831d6939e0` |
@@ -3160,15 +3211,15 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
 | `apps/web/components/admin-video-review-card.tsx` | `0c36f63cf55240e8de32596ee7ca7e7095145658c172788aaf1b2631313219a5` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `8ee1ee52620dcbe04809fbbf61fa3b86972e22b2a27d19421a226c271af59166` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `cc6b6bdfa232d1169faedc68a73b16f36f2f110fc1c24d34a2bf5df526d8425b` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `0fc899a3db533bad6d4a3db5450e97e2d34297be6188f1f28b6f3484a0fdde77` |
-| `apps/web/messages/ja/admin.json` | `92870e41f3ed23948a96d55d5822e1af6426e29d5ac4065b43661239a363ef21` |
-| `apps/web/messages/ko/admin.json` | `cda8d08a9037f3bcbfb58cf25498aef82852da5ff1fad69e02c2e41d5505aa78` |
-| `apps/web/messages/zh-CN/admin.json` | `5684abdbabc109d94d7c074ad52ef01010f11cc3a4ddc9b7ea3d768e3ed9826b` |
-| `apps/web/messages/zh-TW/admin.json` | `7cf0ece3332b44d82b10f46898ea2763d463b32173be19546196ecdadc9ca491` |
+| `apps/web/messages/en/admin.json` | `ec12ddb73856f2d1a9d6070961eea5107bce485143f91099da94a7d0a73b9dd5` |
+| `apps/web/messages/ja/admin.json` | `e8d2065f71307dfca69d746b80d68c146a3c955c6f89b69f5c939f14d5a42e32` |
+| `apps/web/messages/ko/admin.json` | `18fed6863285acaf879157707bb30995cd1f8a2eeb167d4c5d4e7cd4953cb8d3` |
+| `apps/web/messages/zh-CN/admin.json` | `c52f64ca0388c4e850742df482b28cbc868911bcf23edee91b5b9c99f7ba781d` |
+| `apps/web/messages/zh-TW/admin.json` | `9e3a0402625543d1ca4e77328eaefdcd151f187590bed477fe31dd7bc0573db4` |
 | `docs/videos/DESIGN.md` | `ed68170ef2ccd7bb2657a867bc8bac05ecf9426bffbc291b7219bc3febb62221` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
