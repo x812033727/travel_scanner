@@ -1,7 +1,7 @@
 ---
 id: 2026-10-09-localize-reviewed-web-design-wave6
 title: Localize reviewed web design and reuse WordPress locales wave6
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-gpt6-root-wave6
@@ -71,8 +71,9 @@ five packs need one further removal each, preserving visible words and source da
 - [x] Admit only reviewed desired source fields to a separately pinned baseline.
 - [x] Independently review and repair the twenty existing target documents and images.
 - [x] Author, materialize, render and independently review the 48 missing documents.
-- [ ] Assemble/install the exact 17-article bundle, pass relevant content/tool checks,
-      and open a reviewed content PR with green CI.
+- [x] Assemble/install the exact 17-article bundle and pass the selected content/tool checks.
+- [x] Open the reviewed content draft PR #1409.
+- [ ] Verify the current PR HEAD has green CI before merge.
 - [x] Record sanitized source/translation evidence and file a separate release task.
 
 ## Steps
@@ -82,7 +83,7 @@ five packs need one further removal each, preserving visible words and source da
 - [x] Prepare new bound jobs only after source admission; keep old jobs unchanged.
 - [x] Review existing work and author only genuine missing-language fields.
 - [x] Apply independent findings as a third party, rerender and bind final review hashes.
-- [ ] Assemble, validate, install and submit the complete content for review.
+- [x] Assemble, validate, install and submit the complete content for review.
 
 ## How to verify
 
@@ -259,3 +260,12 @@ Actual Root execution receipt SHA:
 Independent report/execution binding review SHA:
 `59a849f433797521cb869de00128d31e496c35bc3cc4206895f86924ad7a89b6`.
 This local checkpoint performs no provider, host, publication or ledger write.
+
+## Actual draft PR checkpoint
+
+Draft PR [#1409](https://github.com/x812033727/travel_scanner/pull/1409) is open and was read back at 2026-10-09T18:13:34.250500+00:00.
+Initial reviewed/integrated PR HEAD: `abb90f81541a33349a1a6d42fdc55de0a4fa15b9`.
+The authoring task was moved to review through the official task CLI.
+CI was pending at this checkpoint; the current HEAD must be checked before
+merge. The separate release task remains open/unclaimed. This records no
+owner release approval, production mutation or completion-ledger increment.

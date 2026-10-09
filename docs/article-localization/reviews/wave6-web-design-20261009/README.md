@@ -12,7 +12,8 @@ bound to their current document and artifact hashes. Each installed review passe
 the unchanged official reviewed-document verifier. This is local authoring and
 review evidence. Official assembly, bundle verification, local installation and
 identical-argument replay have completed with actual exit 0. Whole installation
-preservation audit has completed with actual exit 0; concrete PR/CI remain pending. Publication requires its
+preservation audit has completed with actual exit 0. Draft PR #1409 is open; CI
+was pending at this recorded checkpoint. Publication requires its
 own release task and owner approval.
 
 ## Exact cohort
@@ -120,3 +121,7 @@ The separate release task is open/unclaimed and depends on the authoring task.
 Previous thirteen-article authority does not authorize this new seventeen-article
 cohort. No merge, deployment, production publication or ledger increment is
 recorded by this local review evidence.
+
+Draft PR: [#1409](https://github.com/x812033727/travel_scanner/pull/1409).
+PR state was read back at 2026-10-09T18:13:34.250500+00:00; current checks must be read from GitHub
+before any merge. The authoring task is in review and remains owned.
