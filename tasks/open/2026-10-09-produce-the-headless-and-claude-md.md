@@ -34,20 +34,22 @@ Headless mode (`claude-code-headless-hands-on`):
 - [x] `video.json` and `claims.md` by a writer; `lint` 0 errors, 0 warnings.
 - [x] Two independent fact checks (`verify-1.md`, `verify-2.md`), their findings applied.
 - [x] Narration synthesized and checked against the script until no line was flagged.
-- [ ] The cut, and the final and publish gates.
+- [x] The cut, and the final and publish gates: final 11 of 11 with the judge's demonstration
+  score at 0.92, publish 4 of 4, both approved by the server.
 
 CLAUDE.md (`claude-code-claude-md-hands-on`):
 
 - [x] Brief, eleven sessions, script, two fact checks.
-- [ ] Narration, the cut, and the audio, final and publish gates.
-- [ ] Its files in the repository.
+- [x] Narration synthesized and checked until no line was flagged; the audio gate approved it.
+- [x] Its files in the repository.
+- [ ] The cut, and the final and publish gates.
 
 - [ ] Uploading to YouTube, which is the owner's.
 
 ## Steps
 
 - [x] Headless: plan, run, write, verify twice, narrate.
-- [ ] Headless: `render`, `assemble`, `captions`, `review-push --gate final`, `package`,
+- [x] Headless: `render`, `assemble`, `captions`, `review-push --gate final`, `package`,
   `review-push --gate publish`; languages: zh-TW only (the owner, in chat).
 - [ ] CLAUDE.md: the same, after its narration passes the audio check.
 
@@ -79,3 +81,16 @@ the practice project as it was used.
 - The first final submission passed 9 of 11: one card state ran 15.2 s (two lines shortened; a
   compare card has two reveal steps, so the verdict cannot take its own), and the demo link did
   not open before this change was merged.
+- CLAUDE.md, what only the runs showed: the CHANGELOG line made no difference (3 of 3 with and
+  without the file), so it is told as a line this project does not need; in the conflict arm the
+  path alone proves nothing, because the runs without any file landed on the same path; with
+  loading disabled the model opened the file itself and followed all three lines.
+- CLAUDE.md: one run's raw files (b1) were lost to a `--dry` that rebuilt the project before
+  checking its flag; its record survives as a captured excerpt and no card uses it. The next
+  video's runner script refuses to overwrite a named run.
+- CLAUDE.md narration: 15 lines flagged on the first check, then 2, then none; later edits for a
+  card that did not fit (three official example pairs became two) and for two card states over
+  15 s were each re-recorded and re-checked. 「有檔」 and 「有檔案」 at the start of a clause were
+  misheard four times; naming the file passed (PR 1403 adds both to the list).
+- Both videos now check the longest card state from `timeline.json` before assembling, which
+  takes seconds; finding it at the final gate costs a 25-minute re-encode.
