@@ -3,6 +3,49 @@
 Owner request: complete stalled video production directly. This record is updated
 only from actual stage results. Generated media and detailed logs remain outside Git.
 
+## Current verified continuation,21:44 Taipei,2026-10-09
+
+DevDay's exact zero-provider/zero-API English SKIP-caption correction is complete.
+Executor504440a5/helper50ce7988 produced only en.srt6a97a330,en.vttd15066b2 and
+manifest63e4be5c; receipt SHA
+`7e56331465e402d00ac7043636dfeda200680523d9cd2721f3f026dcdd9451f9`.
+All213 archived files and210 unchanged live files,182 English WAVs,153 ASR
+records,nine flags,the true skip reason and original unknown receipts remain
+retained. The genuine21.0 characters/sec warning is preserved. Ordinary LANG
+caller d0c435e4 has been reviewed and authorized once, with at most20 identical
+hash-bound file PUTs and one LANG POST,zero model/speech calls. Its GET-only dry
+proof6f73e74d binds actual current595e74d4/final101dc061,the unchanged namespace
+and existing eight-of24 correction ledger. Actual submission/readback is still
+owed; DevDay Japanese/Korean paid continuation remains source-only.
+
+Embedding genuinely resumed under supervisor4568,caller6f5016bf unchanged,
+supervisore885b051/launcher9be1cb88 and authorityeb428cb4. Original64 scope now
+continues visits58..512 with31 original succeeded/adopted keys and33 remaining;
+fresh dryf7cf8057 made zero POST/PUT/stage calls. The actual32nd original key
+9a226485 was accepted21:38:22 as the real last Japanese caption reviewer and
+then succeeded/adopted. It shortened one over-budget Japanese line through the
+ordinary review. Japanese genuinely merged current as f6475020; English remains
+current, and Korean metadata is pending under the original next key. Deferred
+zero-provider local finisher bcf008ea uses the actual new supervisor's successful
+closure and physically absent PID; it cannot use the old18968 exit3. All64 actual
+results/all four current worksheets/fresh source-owner-gate guards remain required.
+The two old canonical SENT entries are separately backed by retained confirmed
+responses with exactly matching original requests; proof e14e5dc9 preserves all14
+old journal hashes. Neither old key is polled,forgotten,overwritten or bought again.
+
+Travel's English,Japanese and Korean metadata/96-caption worksheets are all
+genuinely current; Korean SHA is e2060f32. Actual21:42:57 readback has32 of40
+original keys after the genuine Simplified Chinese metadata translator and
+reviewer completed. PID1417773 is still working on the last four caption units.
+Prepared three-dub source12b5c06f keeps ordinary makeDub/2-2-2 bounds, fresh actual
+DB/settings/quota admission outside the speech journal, source-bound normal
+caption merges, truthful wire counters and all-channel decoded loudness checks.
+It has no paid execution authority before actual four-language closure and quote.
+Mods remains held. The newly discovered source-control and genuine-SKIP caption
+timing defects are recorded as open follow-ups;1705 task files validate. No
+canonical production-tool change,merge,deployment,owner listening or upload is
+claimed by these operational checkpoints.
+
 ## Current verified continuation,21:30 Taipei,2026-10-09
 
 The five-track legacy producer physically closed at21:11:52, exit1. FREE's
