@@ -3,6 +3,101 @@
 Owner request: complete stalled video production directly. This record is updated
 only from actual stage results. Generated media and detailed logs remain outside Git.
 
+## Current verified continuation,18:35 Taipei,2026-10-09
+
+Cloudflare and SEC completed ordinary LANG push/pull/status at18:04:59 and
+18:05:04 with one review POST and ten file PUTs each, zero models, and no repeat
+of FINAL or PUBLISH. Their current language reviews are approved:
+Cloudflare `f4a0ff0d-9a34-4cfe-acf6-7964775e57fa`; SEC
+`6e070df3-9c6b-4080-afdc-f55d6242b2bb`. Each has eight selected metadata/CC
+parts READY and three truthful dub skips. Actual `read_approved_package` and
+admin-file consumers resolved all26/27 review references to matching stored
+bytes. The owner's local packages contain17/18 files, all sizes and complete
+SHA-256 values independently matched to the host before/after transfer. Actual
+local ffprobe also confirms both final movies as1080p H.264/48kHz stereo AAC.
+The delivery-preservation proof is
+`dec540d19d1960f9a9579a0fb923b3553c21c6b02b7d3a734f0e7233ff5ef189`;
+independent35-file consumer/local audit is
+`735b7ef57f07c0362d9e9863d8548ede4390d88a0d4626c7cfe1dac069ef09fb`.
+
+FREE's interrupted next speech key
+`a78960e1501ec71af1526a631f4961b81486008e1e324d4ea721989b0522a0ca`
+was independently proved to stop before transport when the deployment lock
+became occupied. All14 previous paid responses were HTTP200; the next key has
+zero wire dispatches. A one-time genuine `forgetSpeechJournal` operation at
+18:18:04 reconciled only that zero-call key after immutable backup of its held
+receipt and all30 original WAVs/cache. Exact SHA/inode/device/size/mtime/ctime
+readback at18:23:37 verifies the retained bytes; independent terminal audit
+`6cb03fac3b276e675eeeed4fd9afe8f6a185d4b17325a58a777b2da05486f30c`
+closes the reconciliation. The different original Korean UNKNOWN, its journal,
+wire and private STOP remain untouched.
+
+New571-worker normal guardians have actual live PIDs/start ticks. Each exact
+named conditional STOP was archived and released through its normal guarded
+protocol at18:22:20/41. The proposed six-dub continuation keeps original
+namespaces, correction ledger/caps, the30 cached WAVs and cumulative14 paid
+responses/1902 characters. Its fresh zero-provider preparation stopped safely
+because the deployment had pruned the old pinned CPU image; a versioned pure
+CPU tool binding is being prepared. This continuation has not launched again.
+
+CF/SEC's later owner retry requests were consumed without dispatch: the genuine
+PUBLIC-origin receipt validator has no unsettled candidates, while the worker's
+internal-origin identity refuses those same saved public journals. Existing
+approved packages remain intact. A zero-write normal completion-branch plan
+was also correctly stopped by its fresh database no-upload guard. The actual
+18:31:40 read shows the owner had supplied YouTube IDs at18:17:14/15:
+Cloudflare `8N52Ul9CYfc`; SEC `9mTPp71uBu8`. Both upload-session fields are
+empty. These IDs were supplied externally after the18:11 delivery read; this
+recovery did not invoke an uploader. No local auto state, owner state or
+model/provider request was changed by the refused plan. Native bookkeeping
+must be reviewed again against the new actual IDs; platform visibility or
+owner playback is not inferred. Mods' exact original STOP remains preserved.
+
+## Current verified continuation,17:58 Taipei,2026-10-09
+
+FREE and DevDay each have all eight selected metadata/CC parts genuinely READY
+in the authenticated backend. Their original Chinese base packages were copied
+to the owner's local video directory with all ten file sizes and SHA-256 values
+verified. Travel's six-file Chinese package was likewise copied and verified.
+Local ffprobe reads all four actual Travel/Embedding/FREE/DevDay movies as
+1920x1080 H.264 with48kHz stereo AAC. This is automated file verification;
+owner playback/listening is not inferred. Travel and Embedding still have no
+language choice in the actual17:52 backend read, with both final and base-package
+approvals current and no YouTube video ID.
+
+Cloudflare and SEC completed normal thumbnail rendering, captions and packaging
+with zero models. Their new ordinary PUBLISH reviews are genuinely approved:
+Cloudflare `fdaeb81e-ad40-4281-8ec7-8a89fe6d092d`, metadata
+`d2201a3b36fc57660a10b55ac0028c59d6e4729b9b15a2ea5e63ee1c55daa9ed`;
+SEC `b60d4333-3302-4165-b41c-c05f189a06ac`, metadata
+`5bd6b505726ea52617ca2c8ae9a4445c1dcb8443e1f1627a170a3127b59b8d97`.
+All six selected dubs exhausted the existing normal limits and are truthfully
+skipped. Their original tracks, WAVs, counters and real flags remain preserved;
+SEC Korean did not fit after two shortening rounds and has no completed track
+or ASR/Jev verdict. A private listening handoff contains13 actual ASR flags and
+one separate fit-only card; no flagged recording is called owner-accepted.
+Normal language submission stopped after nine file PUTs and zero review POSTs
+because the scoped upload guard omitted the tenth, normal source-bound language
+manifest. The two exact manifest hashes are independently read; the bounded
+remainder permits only LANG push/pull/status, without repeating final/PUBLISH.
+
+The two renewed movies' six selected dubs began once at17:52:27 with the current
+normal SDK, original namespaces,405 first-pass requests/36608 characters and
+the separate maximum24 normal correction models. The previous startup refusal
+was proved zero-call and preserved. A narrow live-capacity comparison fix passed
+13 meaningful tests and independent source review. The new run saved30 WAVs
+from14 real HTTP200 speech responses,1902 reported billable characters and zero
+correction models, then stopped at17:53:56 when another deployment acquired the
+shared lock. Its next held speech receipt and all completed bytes are retained;
+no uncertain provider result is replayed. The external deployment changed main
+to `57139d78d1ea5a3f79500f92ce957db9b9870759` and restarted the video worker.
+Source/settings/owner and real lease identities must be revalidated in that new
+epoch before either continuation resumes. Mods' original exact STOP is preserved.
+
+Draft PR1387 remains OPEN at `030b001c024a0ad60bb2277729995c288cceb794`;
+all23 checks genuinely succeeded in the17:58 read. It has not been merged or
+deployed by this recovery. No Studio acknowledgment or YouTube action occurred.
+
 ## Current verified continuation,16:18 Taipei,2026-10-09
 
 SEC's original text stream genuinely closed at16:09:42 with all four selected
