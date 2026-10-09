@@ -2965,16 +2965,70 @@ Non-claims: DURATION_ONLY. This does not approve a rendered cut, measured narrat
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Content-value rules increment (stacked on PR #1390): 5 files (2026-10-09)
+
+Reviewer: `claude-pr-review-content-value-20261009`. Author: `claude-opus-5-5-video-reference-comparison`. Scope: DURATION_ONLY for the five changed bindings below, reviewed at `20613240efae61b4605ee647a0201994e9b2e981` ("feat(video): hold every slides video to content-value rules") on claude/video-reference-comparison-14fe9c. The reviewer wrote no part of that commit and edits only this report and review.json.
+
+Baseline: `6c5c9769c8d4bae8860d4b790619ebcddd9356dc`, the commit's parent. Immutable Git blobs pass `durationReviewProblems` there for the report and all 108 REVIEW_FILES, under the "PR #1390 teaching-card route increment" above. The five changed files match their existing receipt and table at that baseline; their committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these five bindings, while the other 103 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `.agents/skills/youtube-video/SKILL.md`: `542b24ecfb5c314d43162ebe4580ffeb382dbbdad6dcc9b27d27e989bd5f86a9` -> `43d09e859e02b2d018ef2f95a43d8b5e28149bdc62b637cb4130f1bee45c5bb8`.
+- `.claude/skills/youtube-video/SKILL.md`: `542b24ecfb5c314d43162ebe4580ffeb382dbbdad6dcc9b27d27e989bd5f86a9` -> `43d09e859e02b2d018ef2f95a43d8b5e28149bdc62b637cb4130f1bee45c5bb8` (the byte-identical copy).
+- `tools/video/automation/prompts.mjs`: `55ae4ca562a53482d7014cd65d26bf7d7d8239030b7108c43bce5e06f3feaa28` -> `c5ec0cd625dfcf47a7927ffae7ca45fcf5c8eb32e96190f4ea5561278c6da415`.
+- `tools/video/core/lint.mjs`: `6a840aec7ac0a071b97b4a0dfc6b241ea89019d24485315cf86d1ba2b1ec1743` -> `d08806c964fbe6d69e38202f6b37b0d3ffdafcec0455d8356253a3044da27c92`.
+- `tools/video/core/lint.test.mjs`: `3f2bea9b472bd211fa7caf7446dd702bbe129887b23e6bacfa33c1330b800e2f` -> `13c9a41c13ed096b0cdc55a979b7b6405af67c4a07b1077181dcd80350050cd5`.
+
+Findings, `.agents/skills/youtube-video/SKILL.md` and `.claude/skills/youtube-video/SKILL.md` (+1/−0 each): one line is added, hard rule 11, which holds every slides video to six content-value rules. Rule 10, the eight-minute rule, is byte for byte the same line at both revisions: every episode but a drama's and a Short runs eight minutes or more, the backend setting (floor 8), `lint` and QA's `assemble` item enforce it, a topic that does not fill eight minutes takes more content or is merged with another, there is no upper limit, and nothing is padded. Rule 11's one clause on length (「長度靠例子、對照與練習，不靠比喻或重述」) says what the length is made of. It states no number and exempts no video from rule 10. Its closing exemption (漫劇、品牌故事、原來如此與 Shorts 不算) is from rule 11's six rules only; rule 10 still names 原來如此事務所 among the formats the floor covers. The lines naming minutes, 分鐘 or target_minutes number 7 at both revisions.
+
+Findings, `tools/video/automation/prompts.mjs` (+7/−1): the import from register.mjs gains `VALUE_RULES`, and `${VALUE_RULES}` is interpolated after `${TEACHING_RULES}` in three slides stages (planner at line 200, writer at 258, listener at 363). No other line changes. Unchanged, then, are the planner's "the whole at least 8 minutes" (line 239), the writer's "never under 8 minutes … Never cut a sourced fact to fit it and never pad to reach it" (lines 305–307), the upper end of target_minutes as an aim and not a limit, the explainer's 10-minute production target with its eight-minute body and cut (lines 1423–1424), the story and explainer outlines' "never under 8 minutes" (lines 1511 and 1550), the drama's 2 to 4 minutes, and the long-anime runtime_spec and action_seconds instructions. The imported text in register.mjs (unbound) was read as context, since it is what the three stages now carry. Two of its sentences speak of length:
+
+- "The length comes from substance: a second worked example, a common failure and how to find it, a contrast, an exercise. Never from a chapter on something one line answers, from restating, or from scene-setting." This limits what a writer may use to reach the minimum. It names no length.
+- "When the material ends short of the minimum, add an example the sources carry or say so in the report; do not fill." "The minimum" is the stage's own eight minutes, which the sentence does not restate or change. "Do not fill" runs the same way as the writer's existing "never pad" and rule 10's 不灌水. "Say so in the report" is an instruction to report a shortfall, not leave to ship one: a draft whose estimate is under the floor still gets lint's `scenes` error ("every episode but a drama's runs at least …: write more narration"), `saveAndLint` in flow.mjs (bound, unchanged) still hands it back to the writer up to MAX_LINT_FIXES (3) times and then leaves the writer stage uncleared for a later retry, and QA's measured 480-second / 14,400-frame floor is untouched.
+
+The precedence clause ("where these rules and a route's rules disagree, these win") ranks VALUE_RULES over the teaching and illustrated routes' rules. Each stage's length sentence sits in the stage's own text, outside both routes, and VALUE_RULES carries no competing length, so nothing there is overridden. The planner's 「含金量不足」 exit answers a topic with fewer than two real outcomes by taking another topic or saying so; it does not make a shorter episode. So the new text says how the floor is reached and does not move it.
+
+Findings, `tools/video/core/lint.mjs` (+20/−1): two exported constants, `SOURCING_FAMILY` (ten phrases such as 「文件寫」「官方說」) and `SOURCING_MAX = 2`; `episodeScriptProblems` counts those phrases across the narration and returns one `scenes` problem past two; one docblock line is reworded to say so. It is a warning with the path and severity of the hedge-family warning beside it. It adds no error, `lintErrors` in flow.mjs reads `result.errors` alone, and QA's two captions items take only the `i18n/` warnings. `episodeScriptProblems` is still called from one place (line 480), for a narrated zh-TW script whose estimate is already at least MIN_EPISODE_MINUTES. The lines that hold the floor are unchanged (lines 464–475): the low end of target_minutes and the estimate, each an error against `minEpisodeMinutes()` under `needsMinimumLength`, the drama exemption, and no warning for running over the target. The anime runtime_spec tolerance warning is unchanged too. `SOURCING_MAX` counts phrases, not time. The lines naming a duration term number 23 at both revisions.
+
+Findings, `tools/video/core/lint.test.mjs` (+17/−1): the import from lint.mjs gains `SOURCING_FAMILY` and `SOURCING_MAX`, and one test is added for the new warning (two uses give no warning, a third warns and names each phrase, a company named as the one making a claim is not counted). It is built on the existing `closed(stretched())` fixture, which already clears the floor. No existing test or assertion is removed or changed, the eight-minute and target_minutes tests among them. The lines naming a duration term number 51 at both revisions.
+
+A case-insensitive scan of the five diffs' added and removed lines for minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json and process.env finds only the test's import line, old and new, for the existing name `OPENING_SECONDS`. Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. The commit touches no file under apps/api, tools/video/qa or docs/videos/long-form, and not schema.mjs, duration.mjs, timeline.mjs or flow.mjs.
+
+Ran (in the worktree at `20613240e`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the hashing of every bound path against the receipt, the baseline and the head;
+- `durationReviewProblems` against the baseline through `git cat-file`;
+- a reading of the five diffs, of `VALUE_RULES` in register.mjs, and of the lint and flow code the changes sit beside;
+- the duration-term counts and the scan.
+
+On the reviewed bytes, each of these exited 0:
+
+- `node --test tools/video/core/lint.test.mjs`, 45 of 45;
+- `node --test tools/video/automation/prompts.test.mjs`, 24 of 24;
+- `node --test tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs`, 25 of 25.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the six content-value rules, the sourcing family or its limit of two as editorial choices.
+- register.mjs, script-writing.md, the planner and writer prompt references, prompts.test.mjs and the task file are unbound. They were read as context and are not reviewed or bound here.
+- No planner, writer or listener was run. Whether a model takes "say so in the report" as leave to hand in a short draft was not observed, only that lint and QA refuse such a draft as before.
+- No rendered cut or measured narration was produced, and the full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 103 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the five rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
-| `.agents/skills/youtube-video/SKILL.md` | `542b24ecfb5c314d43162ebe4580ffeb382dbbdad6dcc9b27d27e989bd5f86a9` |
+| `.agents/skills/youtube-video/SKILL.md` | `43d09e859e02b2d018ef2f95a43d8b5e28149bdc62b637cb4130f1bee45c5bb8` |
 | `.agents/skills/youtube-video/references/automated.md` | `80847373b5383f81a8fa8e9a7d8db2d369410344d51616d461a957f20d7f0cfd` |
 | `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
-| `.claude/skills/youtube-video/SKILL.md` | `542b24ecfb5c314d43162ebe4580ffeb382dbbdad6dcc9b27d27e989bd5f86a9` |
+| `.claude/skills/youtube-video/SKILL.md` | `43d09e859e02b2d018ef2f95a43d8b5e28149bdc62b637cb4130f1bee45c5bb8` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `fe502055df82612df2dee120c9db78ff54029c0514a73df683ad8ce2e14e9637` |
 | `apps/api/app/video_automation/models.py` | `54cedbf59e1cbfb373a2091c849804cdba3c054118f6272a168799831d6939e0` |
@@ -3024,7 +3078,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/automation/automation.test.mjs` | `f2e7b1d4852c43d1c68217666d9c6e617dc4fd3c4a2709d8f4e144cb6c388721` |
 | `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
 | `tools/video/automation/flow.mjs` | `4de8bbedb777f17a66a04064c0bd612a2a23ea8cf206d798fb449851a6a46bc7` |
-| `tools/video/automation/prompts.mjs` | `55ae4ca562a53482d7014cd65d26bf7d7d8239030b7108c43bce5e06f3feaa28` |
+| `tools/video/automation/prompts.mjs` | `c5ec0cd625dfcf47a7927ffae7ca45fcf5c8eb32e96190f4ea5561278c6da415` |
 | `tools/video/automation/series.mjs` | `2b687e0e5251f8b01904f3018bc658e4322888959af9d8dc0931d71a41e5e381` |
 | `tools/video/automation/series.test.mjs` | `1974b5d8db7177c920bc85ec35acf8abc4a0177b80947596ed5b551e813c53d6` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
@@ -3039,8 +3093,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/duration.mjs` | `e92c104bc62babf18f47c75b67416807484f1af794b94cd8790350990dba8edd` |
 | `tools/video/core/duration.test.mjs` | `388bda7c57e548c2f50165a713e038e147645d283409c1f09393e8eef68652ba` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `6a840aec7ac0a071b97b4a0dfc6b241ea89019d24485315cf86d1ba2b1ec1743` |
-| `tools/video/core/lint.test.mjs` | `3f2bea9b472bd211fa7caf7446dd702bbe129887b23e6bacfa33c1330b800e2f` |
+| `tools/video/core/lint.mjs` | `d08806c964fbe6d69e38202f6b37b0d3ffdafcec0455d8356253a3044da27c92` |
+| `tools/video/core/lint.test.mjs` | `13c9a41c13ed096b0cdc55a979b7b6405af67c4a07b1077181dcd80350050cd5` |
 | `tools/video/core/narration-locale.test.mjs` | `e42075ee53802451cb51ff3aa39252d358d3a9b8584f631c37f96d017c98eefc` |
 | `tools/video/core/schema.mjs` | `d810ca82a8ef459faea23efa0afcbf1029d08521cb50c09e157bb19598ac172f` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |

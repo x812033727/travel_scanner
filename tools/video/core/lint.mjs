@@ -44,6 +44,12 @@ export const HEDGE_FAMILY = ["以官網為準", "以官方為準", "公告沒寫
 export const HEDGE_AFTER_UNWRITTEN = ["不代表", "不等於"];
 export const UNWRITTEN = /沒寫|沒有寫|沒列|沒有列|沒提|沒有提|沒說|沒有說/;
 export const HEDGE_MAX = 1;
+// Sourcing talk (the owner's review of 2026-10-09: 24 of one video's 108 sentences opened on
+// where the fact came from). The source is the card's field and the description; the narration
+// says the fact. A company named as the one making a claim (「OpenAI 說」) is not in the family.
+// A warning for the same reason the hedges are.
+export const SOURCING_FAMILY = ["文件寫", "文件說", "文件還寫", "文件也寫", "文件列", "部落格寫", "部落格說", "官方說", "官方表示", "根據官方"];
+export const SOURCING_MAX = 2;
 // How far into the narration (at the estimate's 250 characters a minute) a spoken table of
 // contents still counts as the opening (D07), and the sentence shapes it takes: the announced
 // parts (「接下來分三段」「接下來我會告訴你」), the promise (「看完這支影片你會知道」), an ordinal
@@ -283,7 +289,8 @@ function seriesProblems(doc, series, error, warn) {
 
 /**
  * The shape of a narrated episode's script (script-writing.md §開場, §句子, §結尾), as warnings:
- * the hedge family said more than once in the narration, an opening that reads a table of
+ * the hedge family said more than once in the narration, sourcing talk (「文件寫」「官方說」) said
+ * more than SOURCING_MAX times, an opening that reads a table of
  * contents, and an outro that asks for no subscription or has not its three sentences.
  * `timeline` is the estimate; the opening is its first OPENING_SECONDS seconds.
  */
@@ -302,6 +309,18 @@ export function episodeScriptProblems(doc, timeline) {
   if (hedges > HEDGE_MAX) {
     const found = [...counts].map(([phrase, hits]) => `「${phrase}」×${hits}`).join(", ");
     warn("scenes", `the narration hedges ${hedges} times (${found}); the family (${HEDGE_FAMILY.join("／")}, and ${HEDGE_AFTER_UNWRITTEN.join("／")} in a sentence that says something was not written) is said at most ${HEDGE_MAX} time a video: say the number from the official page or the site's checked article, and leave the disclaimer to the description`);
+  }
+  const sourced = new Map();
+  for (const { line } of eachLine(doc)) {
+    for (const phrase of SOURCING_FAMILY) {
+      const hits = line.text.split(phrase).length - 1;
+      if (hits) sourced.set(phrase, (sourced.get(phrase) ?? 0) + hits);
+    }
+  }
+  const sourcing = [...sourced.values()].reduce((sum, hits) => sum + hits, 0);
+  if (sourcing > SOURCING_MAX) {
+    const found = [...sourced].map(([phrase, hits]) => `「${phrase}」×${hits}`).join(", ");
+    warn("scenes", `the narration names its source ${sourcing} times (${found}); the family (${SOURCING_FAMILY.join("／")}) is said at most ${SOURCING_MAX} times a video: state the fact, and leave where it is from to the card's source field and the description`);
   }
   const starts = new Map((timeline?.lines ?? []).map((line) => [line.id, line.start_frame]));
   const opening = [...eachLine(doc)].filter(({ line }) => (starts.get(line.id) ?? Infinity) < OPENING_SECONDS * FPS).map(({ line }) => line.text).join("");
