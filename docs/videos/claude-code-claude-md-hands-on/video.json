@@ -1,0 +1,1876 @@
+{
+  "schema_version": 1,
+  "slug": "claude-code-claude-md-hands-on",
+  "format": "slides",
+  "category": "tutorial",
+  "source_guide": "claude-code-claude-md-guide",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "這一支是拿數字說話的實作：像把一張計分表攤在同事面前，一行一行數給他看，穩、清楚、不誇大。開場的問句壓低放慢；零次、三次這些數字前停半拍，唸得分明；指著畫面上的檔案與紀錄時放慢；講到沒有差別、只有一次、沒有量過的地方，平實不遮掩；每章最後的問句輕輕上揚。"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "CLAUDE.md 怎麼寫？三行慣例，同一句要求跑六次，數 Claude Code 照做了幾次",
+    "description": "CLAUDE.md 寫了，Claude Code 到底有沒有照做？這支用一份寫了三條慣例的 CLAUDE.md 量給你看：同一句要求，有這個檔、沒有這個檔，各跑三次，逐行數。\n給手上有一份 CLAUDE.md、不確定它有沒有用的開發者與接案者：看完能挑出該留的行、把它寫成查得出有沒有照做的樣子、用對照確認它有用，並且查出它沒被照做的原因。\n\n你會學到：\n・CLAUDE.md 是脈絡，不是設定；跟當次的要求、自動記憶、.claude/rules/、Skill、output style、Hook 與權限規則怎麼選\n・三行慣例的寫法：每一行都對應輸出裡一個看得到的地方\n・六次的計分表：測試位置 0／3 對 3／3、「未驗證」0／3 對 3／3、CHANGELOG 3／3 對 3／3（這一行在這個專案是多餘的）\n・三次全中能說到哪裡：實算的下限是 36.8%，不是保證\n・五個位置各在什麼時候載入；用 InstructionsLoaded 的記錄 hook 看實際載入了哪些\n・兩份檔說法相反時實際發生的事，和怎麼解\n・怎麼留下來、怎麼只關這一次\n\n練習專案的 CLAUDE.md（7 行）、記錄腳本 loaded.mjs（23 行，分兩張）、.claude/rules/checks.md（8 行）都在影片裡完整出現。.claude/settings.json 畫面上是第 3–11 行，全文：\n\n想照著做：練習專案、每一種 CLAUDE.md 和所有腳本都在 https://github.com/x812033727/travel_scanner/tree/main/docs/videos/claude-code-claude-md-hands-on/demo\n\n{\n  \"hooks\": {\n    \"InstructionsLoaded\": [\n      {\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"node\",\n            \"args\": [\n              \"${CLAUDE_PROJECT_DIR}/.claude/hooks/loaded.mjs\"\n            ]\n          }\n        ]\n      }\n    ]\n  }\n}\n\n每一次 session 的指令（畫面上拆成表格的那一行），依序是：\n・環境變數 CLAUDE_CODE_DISABLE_AUTO_MEMORY=1，和給記錄腳本用的 LOAD_LOG（指到專案以外的紀錄檔）\n・claude -p --model sonnet --setting-sources project,local --strict-mcp-config\n・--tools \"Read,Glob,Grep,Edit,Write\" --allowedTools \"Read,Glob,Grep,Edit,Write\"\n・--no-session-persistence --output-format stream-json --verbose --include-hook-events\n・另有 --debug-file 與轉向；完整的一行在示範資料夾 session.sh\n畫面上的表格只在格子裡提到 --allowedTools：它要列和 --tools 同一串。官方 CLI reference 寫 --tools 決定有哪些工具，--allowedTools 才是不用問就能執行的；不開畫面時沒有人可以按核准。沒有跑過不帶它的對照。\n紀錄裡每次前面另加 timeout 300。d1 的工具是 \"Read,Glob,Grep\"；e1 多一個 CLAUDE_CODE_DISABLE_CLAUDE_MDS=1。\n\n怎麼跑的\n・Windows 11、Git Bash、Node.js v24.13.0、Claude Code 2.1.295，2026-10-09。\n・session 共 11 次，都指定 --model sonnet（claude-sonnet-5-5），沒有重跑。每次都從同一份原始檔重建專案。\n・b1 的原始檔跑完後被誤刪；有檔那一邊的畫面用的是 b2。\n・d1 的先後是從偵錯紀錄的時間讀的。模型有四次呼叫了沒有提供的 Bash，回來是錯誤，什麼都沒執行。\n・每一邊三次是小樣本，說不到「每次都會」。換模型、換要求、檔案變長，數字都可能不同。\n・沒有觀察的：互動式畫面（含 /context、/memory、/init）、個人層的 CLAUDE.md 與自動記憶、受管的 CLAUDE.md、@ 匯入、macOS 與 Linux、其他模型、反方向的衝突。影片裡提到個人層的 CLAUDE.md 與自動記憶的地方，還有兩百行的目標、放／不放表、位置表，都是官方文件的內容，畫面上有標明。",
+    "tags": [
+      "CLAUDE.md",
+      "Claude Code",
+      "CLAUDE.md 教學",
+      "CLAUDE.md 怎麼寫",
+      "Claude Code 教學",
+      "CLAUDE.md 範例",
+      "CLAUDE.local.md",
+      "Claude Code 不照做",
+      "AI 寫程式",
+      "Mokaair"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "CLAUDE.md 實作",
+      "headline": "三行，\n**跑六次**",
+      "sub": "測試位置：有檔 3／3，沒檔 0／3"
+    }
+  },
+  "sources": [
+    {
+      "title": "How Claude remembers your project｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/memory",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Best practices for Claude Code｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/best-practices",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Extend Claude Code｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/features-overview",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Debug your configuration｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/debug-your-config",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Hooks reference｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/hooks",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Environment variables｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/env-vars",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Use Claude Code features in the SDK｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/agent-sdk/claude-code-features",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "CLI reference｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "checked_on": "2026-10-09"
+    }
+  ],
+  "assets": [],
+  "subtitles": {
+    "burn_in": false
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "同一句要求跑六次：有 CLAUDE.md 和沒有的差別",
+      "template": "title",
+      "data": {
+        "tag": "Claude Code CLAUDE.md 實作",
+        "title": "三行 CLAUDE.md，\n**同一句要求跑六次**",
+        "subtitle": "有這個檔、沒有這個檔，各三次，逐行數它照做了幾次"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "5jvi",
+          "text": "CLAUDE.md 寫了，Claude 到底有沒有照做？",
+          "emotion": "壓低放慢，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "ask",
+      "template": "chat",
+      "data": {
+        "title": "我對 Claude 說的那句話",
+        "messages": [
+          {
+            "side": "right",
+            "name": "我",
+            "text": "在 src/text.mjs 加一個 truncate(text, max)，補上測試。"
+          }
+        ]
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "w7f3",
+          "text": "同一句要求，我讓 Claude Code 做了六次。",
+          "reveal": 1,
+          "emotion": "「六次」放慢"
+        }
+      ]
+    },
+    {
+      "id": "six",
+      "template": "stats",
+      "data": {
+        "title": "測試檔有沒有放進 checks/",
+        "stats": [
+          {
+            "value": "0／3",
+            "label": "沒有 CLAUDE.md",
+            "note": "三次都放在別的位置"
+          },
+          {
+            "value": "3／3",
+            "label": "有三條慣例的 CLAUDE.md",
+            "note": "三次都在 checks/"
+          }
+        ],
+        "source": "實際跑過 2026-10-09｜Claude Code 2.1.295｜sonnet｜各 3 次"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "zsds",
+          "text": "沒有 CLAUDE.md 的三次，測試檔一次都沒有放進 checks 資料夾。",
+          "reveal": 1,
+          "emotion": "「一次都沒有」加重"
+        },
+        {
+          "id": "rpcc",
+          "text": "加上三行之後的三次，三次都放對。",
+          "reveal": 1,
+          "emotion": "亮起來"
+        }
+      ]
+    },
+    {
+      "id": "how-loaded",
+      "chapter": "CLAUDE.md 是什麼，哪些話該寫進去",
+      "template": "steps",
+      "data": {
+        "title": "session 開始時的三件事",
+        "steps": [
+          {
+            "title": "往上找",
+            "detail": "目前的資料夾和每一層上層：\nCLAUDE.md、CLAUDE.local.md"
+          },
+          {
+            "title": "接在一起",
+            "detail": "排在系統提示之後，\n當成一則使用者訊息"
+          },
+          {
+            "title": "交給 Claude",
+            "detail": "讀了盡量照做，\n不保證"
+          }
+        ],
+        "source": "Claude Code 文件｜memory｜2026-10-09｜官方說明"
+      },
+      "claims": [
+        "c3",
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "3y3n",
+          "text": "那三行，是怎麼到 Claude 手上的？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "tvgb",
+          "text": "每個 session 開始，Claude Code 會從目前的資料夾一路往上找。",
+          "reveal": 1
+        },
+        {
+          "id": "isej",
+          "text": "找到的全部接在一起，排在系統提示之後，當成一則使用者訊息。",
+          "reveal": 1
+        },
+        {
+          "id": "a5y6",
+          "text": "Claude 讀了會盡量照做，但是不保證。",
+          "reveal": 1,
+          "emotion": "「不保證」放慢"
+        }
+      ]
+    },
+    {
+      "id": "is-context",
+      "template": "quote",
+      "data": {
+        "kicker": "它是脈絡，不是設定",
+        "quote": "CLAUDE.md content is delivered as a user message after the system prompt",
+        "translation": "CLAUDE.md 的內容，是排在系統提示之後的一則使用者訊息",
+        "source": "Claude Code 文件｜memory｜2026-10-09"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "mva6",
+          "text": "所以它是脈絡，不是設定：一段交給模型讀的話，沒有東西強制它照做。",
+          "reveal": 1,
+          "emotion": "「不是設定」加重"
+        }
+      ]
+    },
+    {
+      "id": "vs-memory",
+      "template": "compare",
+      "data": {
+        "title": "兩種每個 session 都會載入的東西",
+        "left": {
+          "heading": "CLAUDE.md",
+          "points": [
+            "你寫的",
+            "指示與慣例",
+            "整份載入"
+          ]
+        },
+        "right": {
+          "heading": "自動記憶",
+          "points": [
+            "Claude 寫的",
+            "它從你的糾正學到的事",
+            "索引的前 200 行或 25KB"
+          ]
+        },
+        "verdict": "說「記住」寫進右邊；要進左邊，說「把這個加進 CLAUDE.md」",
+        "source": "Claude Code 文件｜memory｜2026-10-09｜官方說明"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "yzux",
+          "text": "它常跟自動記憶搞混。CLAUDE.md 是你寫的指示和慣例，整份載入。",
+          "reveal": 1
+        },
+        {
+          "id": "wupq",
+          "text": "自動記憶是 Claude 寫的，記的是它從你的糾正學到的事。",
+          "reveal": 1
+        },
+        {
+          "id": "zd9j",
+          "text": "你對它說「記住」，會寫進自動記憶；要進 CLAUDE.md，要明講。",
+          "emotion": "「要明講」加重"
+        }
+      ]
+    },
+    {
+      "id": "where",
+      "template": "table",
+      "data": {
+        "columns": [
+          "你要的",
+          "放這裡"
+        ],
+        "rows": [
+          [
+            "只有這一次用得到",
+            "這次的要求裡直接講"
+          ],
+          [
+            "每個 session 都要知道的專案慣例",
+            "CLAUDE.md"
+          ],
+          [
+            "只跟某些路徑有關",
+            ".claude/rules/ 加 paths"
+          ],
+          [
+            "多步驟的流程、偶爾才查的資料",
+            "Skill"
+          ],
+          [
+            "回覆的語氣、長短、格式",
+            "output style"
+          ],
+          [
+            "每一次都一定要成立",
+            "Hook 或權限規則"
+          ]
+        ],
+        "highlight": 1,
+        "source": "第 2–6 列：官方文件 memory、features-overview｜2026-10-09"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "aidv",
+          "text": "哪些話該放進來？只有這一次用得到的，寫在這次的要求裡。",
+          "reveal": 1
+        },
+        {
+          "id": "quch",
+          "text": "每個 session 都要知道的專案慣例，才放 CLAUDE.md。",
+          "reveal": 1,
+          "emotion": "「才放」加重"
+        },
+        {
+          "id": "mix6",
+          "text": "只跟某些路徑有關的，放 rules 資料夾，加上 paths。",
+          "reveal": 1
+        },
+        {
+          "id": "k3ax",
+          "text": "多步驟的流程、偶爾才查的資料，寫成 Skill。",
+          "reveal": 1
+        },
+        {
+          "id": "i76r",
+          "text": "回覆的語氣、長短和格式，有專門的輸出風格設定。",
+          "reveal": 1
+        },
+        {
+          "id": "rw33",
+          "text": "每一次都一定要成立的，交給 hook 或權限規則。",
+          "reveal": 1,
+          "emotion": "「一定」加重"
+        },
+        {
+          "id": "d34q",
+          "text": "那三行，是怎麼挑出來的？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "before",
+      "chapter": "CLAUDE.md 怎麼寫：三行，每一行都查得出來",
+      "template": "terminal",
+      "data": {
+        "title": "開跑之前：在專案資料夾裡",
+        "command": "find . -type f -not -path './.claude/*' | sort",
+        "output": [
+          "./CHANGELOG.md\n./README.md\n./package.json\n./src/text.mjs"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "sort (GNU coreutils) 8.32"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "86u3",
+          "text": "練習專案自己的檔只有四個：一個函式、一份 CHANGELOG，還沒有任何測試。",
+          "reveal": 1
+        },
+        {
+          "id": "8wsy",
+          "text": "測試該放哪、回覆該怎麼收尾，從這四個檔看不出來。"
+        }
+      ]
+    },
+    {
+      "id": "include",
+      "template": "table",
+      "data": {
+        "title": "放／不放",
+        "columns": [
+          "放",
+          "不放"
+        ],
+        "rows": [
+          [
+            "Claude 猜不到的指令",
+            "讀程式就看得出來的事"
+          ],
+          [
+            "跟預設不一樣的慣例",
+            "語言本來就有的慣例"
+          ],
+          [
+            "專案自己的決定與地雷",
+            "常常在變的資訊、逐檔的說明"
+          ]
+        ],
+        "source": "Claude Code 文件｜best-practices｜2026-10-09"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "2r49",
+          "text": "Claude 猜不到的指令要放；讀程式就看得出來的事，不放。",
+          "reveal": 1
+        },
+        {
+          "id": "psji",
+          "text": "跟預設不一樣的慣例要放；程式語言本來就有的慣例，不用放。",
+          "reveal": 1
+        },
+        {
+          "id": "8h5g",
+          "text": "專案自己的決定和地雷要放；常常在變的資訊，不放。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ask-line",
+      "template": "quote",
+      "data": {
+        "kicker": "每一行都問這一句",
+        "quote": "Would removing this cause Claude to make mistakes?",
+        "translation": "拿掉這一行，Claude 會不會做錯？",
+        "source": "Claude Code 文件｜best-practices｜2026-10-09"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "68nb",
+          "text": "每一行都問同一句：拿掉它，Claude 會不會做錯？",
+          "reveal": 1,
+          "emotion": "放慢，問句上揚"
+        },
+        {
+          "id": "8jau",
+          "text": "答案是不會，這一行就刪掉。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "when-add",
+      "template": "bullets",
+      "data": {
+        "title": "什麼時候該加一行",
+        "items": [
+          "同一個錯，Claude 犯了第二次",
+          "code review 抓到它該知道的事",
+          "同一句糾正，你又打了一次",
+          "新來的隊友也需要知道"
+        ],
+        "source": "官方文件 memory｜When to add to CLAUDE.md｜2026-10-09"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "rr8h",
+          "text": "什麼時候該加一行？同一個錯，Claude 犯了第二次。",
+          "reveal": 1
+        },
+        {
+          "id": "i5at",
+          "text": "程式碼審查抓到一件它本來該知道的事。",
+          "reveal": 1
+        },
+        {
+          "id": "ktig",
+          "text": "同一句糾正你又打了一次，或是新來的隊友也需要知道。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "md-all",
+      "template": "code",
+      "data": {
+        "code": "# text-kit 專案慣例\n\n- 測試放在 checks/，檔名是 <模組>.check.mjs。\n- 改了 src/ 的行為，就在 CHANGELOG.md 清單最上面\n  加一行：- YYYY-MM-DD: 改了什麼\n- 回覆的最後一行固定用「未驗證：」開頭，\n  列出你沒有實際執行或檢查的事；沒有就寫「未驗證：無」。",
+        "caption": "CLAUDE.md｜全檔 7 行｜放在專案根目錄"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "ezks",
+          "text": "我的 CLAUDE.md 總共只有七行，寫了三條慣例。"
+        }
+      ]
+    },
+    {
+      "id": "md-1",
+      "template": "code",
+      "data": {
+        "code": "# text-kit 專案慣例\n\n- 測試放在 checks/，檔名是 <模組>.check.mjs。\n- 改了 src/ 的行為，就在 CHANGELOG.md 清單最上面\n  加一行：- YYYY-MM-DD: 改了什麼\n- 回覆的最後一行固定用「未驗證：」開頭，\n  列出你沒有實際執行或檢查的事；沒有就寫「未驗證：無」。",
+        "highlight": [
+          3
+        ],
+        "caption": "CLAUDE.md｜全檔 7 行｜放在專案根目錄"
+      },
+      "claims": [
+        "c11",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "cnxr",
+          "text": "亮起來的這一行：測試放在 checks 資料夾，檔名也有固定的結尾。",
+          "emotion": "放慢，讓人看清楚"
+        },
+        {
+          "id": "xg79",
+          "text": "資料夾和檔名是我故意挑的：不寫出來，從那四個檔看不出來。"
+        }
+      ]
+    },
+    {
+      "id": "md-2",
+      "template": "code",
+      "data": {
+        "code": "# text-kit 專案慣例\n\n- 測試放在 checks/，檔名是 <模組>.check.mjs。\n- 改了 src/ 的行為，就在 CHANGELOG.md 清單最上面\n  加一行：- YYYY-MM-DD: 改了什麼\n- 回覆的最後一行固定用「未驗證：」開頭，\n  列出你沒有實際執行或檢查的事；沒有就寫「未驗證：無」。",
+        "highlight": [
+          4,
+          5
+        ],
+        "caption": "CLAUDE.md｜全檔 7 行｜放在專案根目錄"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "ayks",
+          "text": "第二條：改了原始碼的行為，就在 CHANGELOG 最上面加一行。"
+        }
+      ]
+    },
+    {
+      "id": "md-3",
+      "template": "code",
+      "data": {
+        "code": "# text-kit 專案慣例\n\n- 測試放在 checks/，檔名是 <模組>.check.mjs。\n- 改了 src/ 的行為，就在 CHANGELOG.md 清單最上面\n  加一行：- YYYY-MM-DD: 改了什麼\n- 回覆的最後一行固定用「未驗證：」開頭，\n  列出你沒有實際執行或檢查的事；沒有就寫「未驗證：無」。",
+        "highlight": [
+          6,
+          7
+        ],
+        "caption": "CLAUDE.md｜全檔 7 行｜放在專案根目錄"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "g4is",
+          "text": "第三條：回覆的最後一行固定用「未驗證」開頭，列出它沒有實際執行的事。"
+        }
+      ]
+    },
+    {
+      "id": "where-seen",
+      "template": "table",
+      "data": {
+        "title": "三行，各在哪裡看得到",
+        "columns": [
+          "哪一行",
+          "什麼要求會用到",
+          "在輸出的哪裡看"
+        ],
+        "rows": [
+          [
+            "測試位置",
+            "加函式並補測試",
+            "新檔案的路徑"
+          ],
+          [
+            "CHANGELOG",
+            "改了 src/ 的行為",
+            "CHANGELOG.md 的第一筆"
+          ],
+          [
+            "未驗證",
+            "任何要求",
+            "回覆的最後一行"
+          ]
+        ],
+        "source": "這支影片的計分規則｜寫在跑之前｜brief.md"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "ugmm",
+          "text": "三條有一個共同點：有沒有照做，輸出裡各有一個地方可以看。",
+          "emotion": "「各有一個地方」放慢"
+        },
+        {
+          "id": "jyzq",
+          "text": "測試位置看新檔案的路徑，CHANGELOG 看那個檔的第一筆。",
+          "reveal": 2
+        },
+        {
+          "id": "t2ws",
+          "text": "未驗證，看回覆的最後一行。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "vague",
+      "template": "compare",
+      "data": {
+        "title": "寫到查得出有沒有照做",
+        "left": {
+          "heading": "數不出來",
+          "points": [
+            "Format code properly",
+            "Test your changes"
+          ]
+        },
+        "right": {
+          "heading": "數得出來",
+          "points": [
+            "Use 2-space indentation",
+            "Run `npm test` before committing"
+          ]
+        },
+        "verdict": "具體到能驗證",
+        "source": "官方文件 memory｜Write effective instructions"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "p4j3",
+          "text": "左邊這兩句話，有沒有照著做，你都看不出來。",
+          "reveal": 1
+        },
+        {
+          "id": "iekx",
+          "text": "右邊寫了縮排幾格、要跑哪個指令，一查就知道。",
+          "reveal": 1
+        },
+        {
+          "id": "i828",
+          "text": "寫好了。Claude 真的有照做嗎？",
+          "emotion": "問句上揚，帶一點懷疑"
+        }
+      ]
+    },
+    {
+      "id": "cmd",
+      "chapter": "怎麼確認 Claude 有照 CLAUDE.md 做",
+      "template": "table",
+      "data": {
+        "title": "跑一次的指令，拆開看",
+        "columns": [
+          "指令的這一段",
+          "做什麼"
+        ],
+        "rows": [
+          [
+            "claude -p，要求從檔案走標準輸入",
+            "不開畫面，做完就結束"
+          ],
+          [
+            "--model sonnet",
+            "六次同一個模型"
+          ],
+          [
+            "--setting-sources project,local",
+            "不載入使用者那一層的設定"
+          ],
+          [
+            "--tools \"Read,Glob,Grep,Edit,Write\"",
+            "只給這五個工具；--allowedTools 列同一串"
+          ],
+          [
+            "--output-format stream-json --verbose",
+            "留下每次工具呼叫和最後的回覆"
+          ]
+        ],
+        "source": "實際跑過 2026-10-09｜第 3 列依官方文件，沒有對照｜其餘旗標在說明欄"
+      },
+      "claims": [
+        "c15",
+        "c16",
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "6erq",
+          "text": "怎麼確認？同一句要求，有這個檔、沒有這個檔，各跑三次。",
+          "emotion": "「各跑三次」放慢"
+        },
+        {
+          "id": "x8ir",
+          "text": "每一次都不開畫面，做完就結束；六次指定同一個模型。",
+          "reveal": 2
+        },
+        {
+          "id": "pjpv",
+          "text": "設定來源只列專案的兩層，沒有列我個人那一層。",
+          "reveal": 1
+        },
+        {
+          "id": "6xfn",
+          "text": "工具只給讀寫檔案的五個，所以它沒辦法自己執行測試。",
+          "reveal": 1
+        },
+        {
+          "id": "37hs",
+          "text": "輸出存成串流，留下每一次工具呼叫和最後的回覆。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "same",
+      "template": "bullets",
+      "data": {
+        "title": "除了那個檔，其他都一樣",
+        "items": [
+          "每次從同一份原始檔重建專案",
+          "同一句要求、同一個模型、新的 session",
+          "有檔和沒檔輪流跑",
+          "每一次都列出來，不挑"
+        ],
+        "source": "這支影片的做法｜runlog.txt｜2026-10-09"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "xtjg",
+          "text": "對照要成立，除了那個檔，其他都要一樣：每次都從同一份原始檔重建專案。",
+          "reveal": 1
+        },
+        {
+          "id": "3zk9",
+          "text": "同一句要求、同一個模型，每次都是新的 session；有檔和沒檔輪流跑。",
+          "reveal": 2
+        },
+        {
+          "id": "47yc",
+          "text": "每一次都列出來，不挑好看的。",
+          "reveal": 1,
+          "emotion": "「不挑」加重"
+        }
+      ]
+    },
+    {
+      "id": "a-find",
+      "template": "terminal",
+      "data": {
+        "title": "沒有 CLAUDE.md：做完之後（a1）",
+        "command": "find . -type f -not -path './.claude/*' | sort",
+        "output": [
+          "./CHANGELOG.md\n./README.md\n./package.json\n./src/text.mjs\n./src/text.test.mjs"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "sort (GNU coreutils) 8.32"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "gtdd",
+          "text": "沒有 CLAUDE.md 的那一次，做完多了一個檔：測試放在原始碼旁邊。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "b-find",
+      "template": "terminal",
+      "data": {
+        "title": "有 CLAUDE.md：做完之後（b2）",
+        "command": "find . -type f -not -path './.claude/*' | sort",
+        "output": [
+          "./CHANGELOG.md\n./CLAUDE.md\n./README.md\n./checks/text.check.mjs\n./package.json\n./src/text.mjs"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "sort (GNU coreutils) 8.32"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "aq5d",
+          "text": "有那三行的那一次，同一個指令：測試在 checks 資料夾裡，檔名也照寫的來。",
+          "reveal": 1,
+          "emotion": "亮起來"
+        }
+      ]
+    },
+    {
+      "id": "b-head",
+      "template": "terminal",
+      "data": {
+        "title": "同一次：CHANGELOG.md 的前五行（b2）",
+        "command": "head -5 CHANGELOG.md",
+        "output": [
+          "# Changelog\n\n- 2026-10-09: added truncate(text, max) to text.mjs.\n- 2026-10-02: slugify trims dashes at both ends.\n- 2026-09-30: first version, with slugify."
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "head (GNU coreutils) 8.32"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "uc8g",
+          "text": "CHANGELOG 最上面多了一筆，日期是當天。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "b-last",
+      "template": "quote",
+      "data": {
+        "kicker": "同一次：回覆的最後一行（b2）",
+        "quote": "未驗證:沒有實際執行 `checks/text.check.mjs`,測試是否通過未確認。",
+        "source": "實際跑過 2026-10-09｜Claude Code 2.1.295｜不開畫面的 session｜b2"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "xe6e",
+          "text": "回覆的最後一行照那個開頭寫，交代它沒有實際執行測試。"
+        },
+        {
+          "id": "xv3x",
+          "text": "冒號是半形，和我寫的全形不同；計分規則兩種都算。",
+          "emotion": "平實交代"
+        }
+      ]
+    },
+    {
+      "id": "score",
+      "template": "table",
+      "data": {
+        "title": "六次，逐行數",
+        "columns": [
+          "CLAUDE.md 的哪一行",
+          "沒有檔",
+          "有檔"
+        ],
+        "rows": [
+          [
+            "測試放在 checks/",
+            "0／3",
+            "3／3"
+          ],
+          [
+            "最後一行「未驗證」開頭",
+            "0／3",
+            "3／3"
+          ],
+          [
+            "CHANGELOG 第一筆是新的",
+            "3／3",
+            "3／3"
+          ]
+        ],
+        "source": "實際跑過 2026-10-09｜Claude Code 2.1.295｜sonnet｜各 3 次"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "f8de",
+          "text": "六次一行一行來數。測試位置：沒有 CLAUDE.md 的三次都沒放對；有 CLAUDE.md 的三次都放對。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "ed6n",
+          "text": "未驗證那一行也一樣：零次，對三次。",
+          "reveal": 1
+        },
+        {
+          "id": "kiqs",
+          "text": "CHANGELOG 那一行沒有差別：沒有這個檔的那三次，它也都自己加了一筆。",
+          "reveal": 1,
+          "emotion": "「沒有差別」停半拍"
+        }
+      ]
+    },
+    {
+      "id": "a3-why",
+      "template": "quote",
+      "data": {
+        "kicker": "沒有 CLAUDE.md 的其中一次，回覆裡寫的（a3）",
+        "quote": "我也在 `CHANGELOG.md` 加了一行 2026-10-09 的記錄,因為看到專案有這個習慣。",
+        "source": "實際跑過 2026-10-09｜Claude Code 2.1.295｜不開畫面的 session｜a3"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "peyj",
+          "text": "其中一次的回覆寫了原因：專案本來就有這個習慣。"
+        },
+        {
+          "id": "ysd2",
+          "text": "所以這一行在這個專案是多餘的：從程式裡就看得出來的事情，不用寫。",
+          "emotion": "放慢，「多餘」加重"
+        }
+      ]
+    },
+    {
+      "id": "chance",
+      "template": "stats",
+      "data": {
+        "title": "三次對零次，有多稀奇",
+        "stats": [
+          {
+            "value": "1／20",
+            "label": "假如那個檔沒有影響",
+            "note": "碰巧分成 3 對 0 的分法"
+          }
+        ],
+        "source": "實算｜demo/calc.mjs｜2026-10-09"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "9wi3",
+          "text": "三次對零次，能說到哪裡？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "eimz",
+          "text": "假如那個檔案完全沒有影響，碰巧分成這樣，是二十種分法裡的一種。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "calc",
+      "template": "table",
+      "data": {
+        "title": "全中幾次，才能說至少幾成",
+        "columns": [
+          "連續全中",
+          "照做的機率至少"
+        ],
+        "rows": [
+          [
+            "3 次",
+            "36.8%"
+          ],
+          [
+            "10 次",
+            "74.1%"
+          ],
+          [
+            "29 次",
+            "90.2%"
+          ],
+          [
+            "299 次",
+            "99.0%"
+          ]
+        ],
+        "source": "實算｜demo/calc.mjs｜95% 信心的下限"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "28we",
+          "text": "反過來算：三次全中，只能說它照做的機率，下限大約三成七。",
+          "reveal": 1,
+          "emotion": "「三成七」放慢"
+        },
+        {
+          "id": "iisw",
+          "text": "十次全部都中，是七成四。",
+          "reveal": 1
+        },
+        {
+          "id": "gnz4",
+          "text": "要說到九成，得連續全中二十九次。",
+          "reveal": 1
+        },
+        {
+          "id": "dhqb",
+          "text": "九成九，要兩百九十九次。",
+          "reveal": 1
+        },
+        {
+          "id": "t9hd",
+          "text": "所以三次，夠說這一行改變了 Claude 做的事，不夠說它每次都會照做。",
+          "emotion": "放慢，前後兩半分開"
+        }
+      ]
+    },
+    {
+      "id": "places-shot",
+      "chapter": "CLAUDE.md 放哪裡：專案、個人、子目錄，說法相反時",
+      "template": "screencast",
+      "data": {
+        "title": "官方的位置表",
+        "caption": "Claude Code 文件｜memory｜Choose where to put CLAUDE.md files｜2026-10-09 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://code.claude.com/docs/en/memory#choose-where-to-put-claude-md-files"
+          },
+          {
+            "action": "wait",
+            "selector": "#choose-where-to-put-claude-md-files"
+          },
+          {
+            "action": "capture",
+            "focus": "#choose-where-to-put-claude-md-files"
+          }
+        ]
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "4cqy",
+          "text": "那同一行，換一個位置放，或多一份檔，還算數嗎？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "7v3t",
+          "text": "CLAUDE.md 可以放的位置不只一個，各有各的對象。"
+        }
+      ]
+    },
+    {
+      "id": "places",
+      "template": "table",
+      "data": {
+        "title": "放哪裡，什麼時候載入",
+        "columns": [
+          "位置",
+          "給誰",
+          "什麼時候載入"
+        ],
+        "rows": [
+          [
+            "~/.claude/CLAUDE.md",
+            "你，所有專案",
+            "session 開始"
+          ],
+          [
+            "./CLAUDE.md",
+            "團隊，進版控",
+            "session 開始"
+          ],
+          [
+            "./CLAUDE.local.md",
+            "你，這個專案",
+            "session 開始，接在 CLAUDE.md 後面"
+          ],
+          [
+            "子目錄的 CLAUDE.md",
+            "那個資料夾",
+            "Claude 讀寫裡面的檔之後"
+          ],
+          [
+            ".claude/rules/ 有 paths 的規則",
+            "符合的路徑",
+            "Claude 碰到符合的檔之後"
+          ]
+        ],
+        "source": "Claude Code 文件｜memory｜2026-10-09｜官方說明"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "uvxx",
+          "text": "家目錄的那一份給你自己；專案根目錄的那一份給團隊，跟著版控走。",
+          "reveal": 2
+        },
+        {
+          "id": "rnm9",
+          "text": "CLAUDE.local.md 只給你自己；這三種都在一開始就載入。",
+          "reveal": 1
+        },
+        {
+          "id": "qjg5",
+          "text": "子目錄的那一份不一樣：要等 Claude 讀寫那個資料夾裡的檔，才載入。",
+          "reveal": 1,
+          "emotion": "「才載入」放慢"
+        },
+        {
+          "id": "39z9",
+          "text": "rules 資料夾裡有 paths 的規則，也是碰到符合的檔才載入。",
+          "reveal": 1
+        },
+        {
+          "id": "bvcj",
+          "text": "實際載入了哪些，可以接一個只做記錄的 hook 來看。"
+        }
+      ]
+    },
+    {
+      "id": "trust",
+      "template": "bullets",
+      "data": {
+        "title": "接上去之前：別人的專案先看兩個檔",
+        "items": [
+          "CLAUDE.md：會被當成指示讀進去",
+          ".claude/settings.json：hook 用你的權限執行"
+        ],
+        "source": "Claude Code 文件｜memory、hooks｜2026-10-09"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "7hwn",
+          "text": "接上去之前先講一件事：專案的 CLAUDE.md，會被當成指示讀進去。",
+          "reveal": 1,
+          "emotion": "語氣收一點，認真"
+        },
+        {
+          "id": "pebv",
+          "text": "設定檔裡的 hook，是用你的權限執行的程式。",
+          "reveal": 1
+        },
+        {
+          "id": "gzgi",
+          "text": "所以別人的專案，跑起來之前，先把這兩個檔打開來看。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "settings",
+      "template": "code",
+      "data": {
+        "code": "    \"InstructionsLoaded\": [\n      {\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"node\",\n            \"args\": [\n              \"${CLAUDE_PROJECT_DIR}/.claude/hooks/loaded.mjs\"\n            ]",
+        "highlight": [
+          1,
+          8
+        ],
+        "caption": ".claude/settings.json｜第 3–11 行（全檔 17 行，全文在說明欄）"
+      },
+      "claims": [
+        "c28",
+        "c30"
+      ],
+      "lines": [
+        {
+          "id": "damb",
+          "text": "設定檔把亮起來的事件接到一支記錄腳本：每載入一份指示檔，就叫一次。"
+        }
+      ]
+    },
+    {
+      "id": "logger-1",
+      "template": "code",
+      "data": {
+        "code": "import { appendFileSync, readFileSync } from 'node:fs';\nimport { isAbsolute, join, relative } from 'node:path';\n\nconst event = JSON.parse(readFileSync(0, 'utf8').trim());\nconst root = process.env.CLAUDE_PROJECT_DIR ?? event.cwd;\nconst log = process.env.LOAD_LOG\n  ?? join(root, '.claude', 'loaded.log');\n\nfunction name(file) {\n  const rel = relative(root, file).replaceAll('\\\\', '/');\n  if (!rel || rel.startsWith('..') || isAbsolute(rel)) {\n    return '(outside the project)';",
+        "highlight": [
+          9,
+          10,
+          11,
+          12
+        ],
+        "caption": ".claude/hooks/loaded.mjs｜第 1–12 行（全檔 23 行）"
+      },
+      "claims": [
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "jjg5",
+          "text": "腳本二十三行，分兩張看。亮起來的這幾行，把專案以外的路徑都寫成同一句。"
+        }
+      ]
+    },
+    {
+      "id": "logger-2",
+      "template": "code",
+      "data": {
+        "code": "  }\n  return rel;\n}\n\nconst { load_reason, memory_type, file_path } = event;\nconst from = event.trigger_file_path;\nconst line = [load_reason, memory_type, name(file_path),\n  from ? `<- ${name(from)}` : ''].join(' ').trim();\n\nappendFileSync(log, `${line}\\n`);\nconsole.log(line);",
+        "highlight": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "caption": ".claude/hooks/loaded.mjs｜第 13–23 行（亮的是原檔第 17–20 行）"
+      },
+      "claims": [
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "bb6a",
+          "text": "亮起來的四行組出一筆紀錄：載入的原因、哪一層、哪個檔，和觸發它的檔。",
+          "emotion": "一項一項講"
+        }
+      ]
+    },
+    {
+      "id": "rule-file",
+      "template": "code",
+      "data": {
+        "code": "---\npaths:\n  - \"checks/**\"\n---\n\n# checks/ 的慣例\n\n- 提到 checks/ 裡的檔案時，檔名前面加上【測試】。",
+        "highlight": [
+          2,
+          3
+        ],
+        "caption": ".claude/rules/checks.md｜全檔 8 行｜d1 的專案多的一份規則"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "c8dp",
+          "text": "接上之後換一個專案：子目錄裡多一份 CLAUDE.md，再加這一份規則。"
+        },
+        {
+          "id": "65fu",
+          "text": "亮起來的 paths 寫明：它只管 checks 底下的檔。"
+        }
+      ]
+    },
+    {
+      "id": "d-ask",
+      "template": "chat",
+      "data": {
+        "title": "這一次只叫它讀兩個檔",
+        "messages": [
+          {
+            "side": "right",
+            "name": "我",
+            "text": "讀 docs/use.md、checks/text.check.mjs，各用一句話介紹。"
+          }
+        ]
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "xq2u",
+          "text": "要求換成這一句，只給它讀取的工具。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "d-log",
+      "template": "table",
+      "data": {
+        "title": "d1.loaded.log 的三行（拆成欄位）",
+        "columns": [
+          "載入原因",
+          "哪一層",
+          "載入的檔",
+          "觸發它的檔"
+        ],
+        "rows": [
+          [
+            "session_start",
+            "Project",
+            "CLAUDE.md",
+            "（沒有）"
+          ],
+          [
+            "nested_traversal",
+            "Project",
+            "docs/CLAUDE.md",
+            "docs/use.md"
+          ],
+          [
+            "path_glob_match",
+            "Project",
+            ".claude/rules/checks.md",
+            "checks/text.check.mjs"
+          ]
+        ],
+        "source": "實際跑過 2026-10-09｜Claude Code 2.1.295｜d1，1 次"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "vci4",
+          "text": "紀錄檔三行。第一行：session 開始時，只載入根目錄那一份。",
+          "reveal": 1
+        },
+        {
+          "id": "bzsk",
+          "text": "第二行是子目錄的那一份；最右邊的欄位，寫的是觸發它的檔。",
+          "reveal": 1,
+          "emotion": "「觸發它的」放慢"
+        },
+        {
+          "id": "8gj9",
+          "text": "第三行是那份規則，由 checks 裡的測試檔觸發。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "d-steps",
+      "template": "steps",
+      "data": {
+        "title": "同一個 session，前後三筆載入",
+        "steps": [
+          {
+            "title": "session 開始",
+            "detail": "CLAUDE.md\nsession_start"
+          },
+          {
+            "title": "Claude 送出兩次讀取",
+            "detail": "docs/use.md\nchecks/text.check.mjs"
+          },
+          {
+            "title": "之後記下兩筆載入",
+            "detail": "docs/CLAUDE.md\n.claude/rules/checks.md"
+          }
+        ],
+        "source": "載入紀錄與偵錯紀錄的時間｜d1｜2026-10-09｜1 次"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "sjed",
+          "text": "照偵錯紀錄的時間排：兩次讀取送出在前，這兩筆載入的紀錄寫完在後。",
+          "reveal": 3
+        },
+        {
+          "id": "6bfu",
+          "text": "所以子目錄那一份沒被照做，先查它載入了沒有。",
+          "emotion": "「先查」加重"
+        }
+      ]
+    },
+    {
+      "id": "conflict",
+      "template": "compare",
+      "data": {
+        "title": "兩份檔，說法相反",
+        "left": {
+          "heading": "CLAUDE.md（團隊）",
+          "points": [
+            "測試放在 checks/，檔名是 <模組>.check.mjs。"
+          ]
+        },
+        "right": {
+          "heading": "CLAUDE.local.md（我自己）",
+          "points": [
+            "測試放在原始碼旁邊，檔名是 <模組>.test.mjs。"
+          ]
+        },
+        "verdict": "載入紀錄 c1–c3：三次都是兩份一起載入",
+        "source": "兩個檔各一行｜實際跑過 2026-10-09｜c1–c3"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "hvyc",
+          "text": "第二種情況：兩份說法相反。團隊的 CLAUDE.md 說，測試放 checks。",
+          "reveal": 1
+        },
+        {
+          "id": "9bix",
+          "text": "我自己的 CLAUDE.local.md 說，放在原始碼旁邊。",
+          "reveal": 1
+        },
+        {
+          "id": "nav9",
+          "text": "同一句要求再跑三次。載入紀錄每次都是兩行：兩份都載入了。"
+        }
+      ]
+    },
+    {
+      "id": "c-where",
+      "template": "compare",
+      "data": {
+        "title": "三次，測試檔落在哪",
+        "left": {
+          "heading": "兩份相反（c1–c3）",
+          "points": [
+            "src/text.test.mjs：3／3",
+            "checks/：0／3"
+          ]
+        },
+        "right": {
+          "heading": "沒有任何 CLAUDE.md（a1–a3）",
+          "points": [
+            "src/text.test.mjs：3／3",
+            "checks/：0／3"
+          ]
+        },
+        "verdict": "單看路徑，分不出是照個人那一份，還是預設的做法",
+        "source": "實際跑過 2026-10-09｜Claude Code 2.1.295｜sonnet｜各 3 次"
+      },
+      "claims": [
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "g32t",
+          "text": "三次，測試檔都落在原始碼旁邊。",
+          "reveal": 1
+        },
+        {
+          "id": "u3ix",
+          "text": "可是沒有任何 CLAUDE.md 的那三次，也落在同一個位置。只看路徑，分不出來。",
+          "reveal": 1,
+          "emotion": "放慢，這裡容易看錯"
+        }
+      ]
+    },
+    {
+      "id": "c-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "三次的回覆都主動點名（這一句是 c3）",
+        "quote": "兩份指示互相衝突。",
+        "source": "實際跑過 2026-10-09｜Claude Code 2.1.295｜不開畫面的 session｜c3"
+      },
+      "claims": [
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "f69b",
+          "text": "分得出來的是回覆：三次都主動點名，兩份指示互相衝突。"
+        }
+      ]
+    },
+    {
+      "id": "c-table",
+      "template": "table",
+      "data": {
+        "title": "三次的回覆，各怎麼說",
+        "columns": [
+          "哪一次",
+          "回覆裡的一句"
+        ],
+        "rows": [
+          [
+            "c1",
+            "我選了你個人偏好的 `src/text.test.mjs`。"
+          ],
+          [
+            "c2",
+            "我選了你的個人偏好。"
+          ],
+          [
+            "c3",
+            "我採用你個人的 `CLAUDE.local.md`"
+          ]
+        ],
+        "source": "實際跑過 2026-10-09｜Claude Code 2.1.295｜sonnet｜3 次"
+      },
+      "claims": [
+        "c37",
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "inq3",
+          "text": "三次的回覆也都寫清楚，它選了個人的那一份。",
+          "reveal": 3
+        },
+        {
+          "id": "83f5",
+          "text": "「未驗證」開頭的那一行，三次都還在：團隊那一份的這一行，這三次照樣被照做。"
+        }
+      ]
+    },
+    {
+      "id": "resolve",
+      "template": "bullets",
+      "data": {
+        "title": "相反的指示，Claude 可能任選一條",
+        "items": [
+          "把各層的檔打開來對，刪掉相反的那一行",
+          "刪不了：在比較具體的那一份寫明例外和範圍",
+          "或在比較具體的那一份，寫明以哪一份為準"
+        ],
+        "source": "第 1 項：官方 memory｜第 3 項：官方 Agent SDK 頁｜第 2 項：我的做法"
+      },
+      "claims": [
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "8ds6",
+          "text": "這是這三次的結果，不是規則：兩條相反的指示，Claude 可能任選一條。",
+          "emotion": "放慢，「不是規則」加重"
+        },
+        {
+          "id": "qfpd",
+          "text": "解法是把各層的檔打開來對，刪掉相反的那一行。",
+          "reveal": 1
+        },
+        {
+          "id": "wbz9",
+          "text": "刪不了，就在比較具體的那一份，寫明例外和範圍。",
+          "reveal": 1
+        },
+        {
+          "id": "awqf",
+          "text": "官方的另一個建議，是在比較具體的那一份，寫明以哪一份為準。這個做法，這支影片沒有跑過。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "too-long",
+      "template": "stats",
+      "data": {
+        "title": "另一個常見的原因：檔案太長",
+        "stats": [
+          {
+            "value": "200 行",
+            "label": "每個 CLAUDE.md 的目標",
+            "note": "再長：更占脈絡，照做得更差"
+          }
+        ],
+        "source": "Claude Code 文件｜memory｜2026-10-09｜這支沒有量"
+      },
+      "claims": [
+        "c40"
+      ],
+      "lines": [
+        {
+          "id": "7d9j",
+          "text": "另一個常見的原因是檔案太長：目標是每個檔兩百行以內。這一點，這支影片沒有量。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "keep",
+      "chapter": "怎麼留下來、關掉，和該搬去 Hook 的那一種",
+      "template": "table",
+      "data": {
+        "title": "留下來，和關掉",
+        "columns": [
+          "你要的",
+          "做法"
+        ],
+        "rows": [
+          [
+            "隊友都拿得到",
+            "CLAUDE.md commit 進版控"
+          ],
+          [
+            "只有你自己",
+            "CLAUDE.local.md 加進 .gitignore"
+          ],
+          [
+            "上層某一份不要",
+            "設定裡的 claudeMdExcludes"
+          ],
+          [
+            "這一次都不載入",
+            "環境變數 CLAUDE_CODE_DISABLE_CLAUDE_MDS=1"
+          ]
+        ],
+        "source": "官方文件 memory、env-vars 2026-10-09｜第 4 列另跑過 1 次（e1）"
+      },
+      "claims": [
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "pfa3",
+          "text": "這三行要怎麼留下來？哪一種規則，不該留在這裡？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "85az",
+          "text": "CLAUDE.md 進版控給隊友；CLAUDE.local.md 加進忽略清單，只給自己。",
+          "reveal": 2
+        },
+        {
+          "id": "7hhj",
+          "text": "上層某一份不想要，在設定裡排除；這一次都不載入，加一個環境變數。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "off-steps",
+      "template": "steps",
+      "data": {
+        "title": "關掉載入的那一次",
+        "steps": [
+          {
+            "title": "載入紀錄是空的",
+            "detail": "記錄腳本\n一次都沒被叫到"
+          },
+          {
+            "title": "Claude 自己打開它",
+            "detail": "Glob 列出專案的檔\nRead src/text.mjs\nRead CLAUDE.md"
+          },
+          {
+            "title": "三行都照做",
+            "detail": "checks/text.check.mjs\nCHANGELOG 新的一筆\n最後一行「未驗證:」開頭"
+          }
+        ],
+        "source": "實際跑過 2026-10-09｜Claude Code 2.1.295｜e1，1 次"
+      },
+      "claims": [
+        "c42"
+      ],
+      "lines": [
+        {
+          "id": "gn6z",
+          "text": "我這樣跑了一次：載入紀錄是空的。",
+          "reveal": 1
+        },
+        {
+          "id": "vct5",
+          "text": "可是 Claude 列出專案的檔案，看到 CLAUDE.md，自己把它打開來讀。",
+          "reveal": 1,
+          "emotion": "「自己」加重，帶一點意外"
+        },
+        {
+          "id": "ek26",
+          "text": "然後三行全部照做。",
+          "reveal": 1
+        },
+        {
+          "id": "7xtj",
+          "text": "這一次不載入，不等於這一次不照做：檔案還在專案裡。只有一次，當成這一次的觀察。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "sort",
+      "template": "table",
+      "data": {
+        "title": "練習：這四行，各該放哪",
+        "columns": [
+          "這一行",
+          "放哪裡"
+        ],
+        "rows": [
+          [
+            "原始碼都在 src/",
+            "刪掉：讀程式就看得出來"
+          ],
+          [
+            "測試放在 checks/，檔名是 <模組>.check.mjs。",
+            "留在 CLAUDE.md"
+          ],
+          [
+            "這次把標題改成「文字工具」",
+            "寫在這次的要求裡"
+          ],
+          [
+            "絕對不准改 data/seed.json",
+            "權限規則或 Hook"
+          ]
+        ],
+        "source": "練習題是這支出的｜答案依官方的放／不放表與選用表"
+      },
+      "claims": [
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "v269",
+          "text": "練習一下，四行各該放哪？只說原始碼在哪個資料夾的那一行，刪掉。",
+          "reveal": 1,
+          "emotion": "轉向觀眾，語氣亮一點"
+        },
+        {
+          "id": "ftir",
+          "text": "測試放 checks 的那一行，留著。",
+          "reveal": 1
+        },
+        {
+          "id": "4umm",
+          "text": "只有這一次要改的標題，寫在這次的要求裡。",
+          "reveal": 1
+        },
+        {
+          "id": "ubx9",
+          "text": "絕對不准改某個檔的那一行，交給權限規則或 hook。",
+          "reveal": 1
+        },
+        {
+          "id": "zinz",
+          "text": "三次全部都中，頂多只能說到大約三成七，這種規則不能靠 CLAUDE.md。",
+          "emotion": "「不能靠」加重"
+        }
+      ]
+    },
+    {
+      "id": "yours",
+      "template": "steps",
+      "data": {
+        "title": "換成你的一行",
+        "steps": [
+          {
+            "title": "哪一句要求",
+            "detail": "會用到這一行"
+          },
+          {
+            "title": "在輸出的哪裡",
+            "detail": "看得到有沒有照做"
+          },
+          {
+            "title": "各跑三次，數",
+            "detail": "有檔三次\n沒檔三次"
+          }
+        ],
+        "source": "核對：兩邊差不到兩次，先改寫再量一次"
+      },
+      "claims": [
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "67vh",
+          "text": "換成你自己的一行：先寫下哪一句要求會用到它。",
+          "reveal": 1
+        },
+        {
+          "id": "q86p",
+          "text": "再寫下在輸出的哪裡看得到，然後有檔、沒檔各跑三次。",
+          "reveal": 2
+        },
+        {
+          "id": "z4w5",
+          "text": "兩邊的差距不到兩次，這一行不是多餘，就是不夠具體。"
+        }
+      ]
+    },
+    {
+      "id": "scope",
+      "template": "bullets",
+      "data": {
+        "title": "這些數字只屬於這一組",
+        "items": [
+          "Claude Code 2.1.295，不開畫面的 session",
+          "一個模型：sonnet（claude-sonnet-5-5）",
+          "Windows 11 的 Git Bash",
+          "每一邊 3 次，2026-10-09"
+        ],
+        "source": "runlog.txt 開頭｜互動式畫面這支沒有看過"
+      },
+      "claims": [
+        "c45"
+      ],
+      "lines": [
+        {
+          "id": "3i99",
+          "text": "這些數字只屬於這一組：一個模型、一個平台，每一邊三次。",
+          "emotion": "平實，不遮掩"
+        },
+        {
+          "id": "ai2b",
+          "text": "互動式的畫面我沒有看過，所以沒有做成畫面。"
+        }
+      ]
+    },
+    {
+      "id": "article",
+      "template": "cta",
+      "data": {
+        "kicker": "完整文章",
+        "title": "CLAUDE.md 完整教學",
+        "sub": "從 /init 建立第一份開始｜連結在說明欄"
+      },
+      "claims": [
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "4wq5",
+          "text": "說明欄的文章，從建立第一份 CLAUDE.md 開始帶。"
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "template": "outro",
+      "data": {
+        "title": "三行，六次：\n**有檔 3／3，沒檔 0／3**",
+        "cta": "你的 CLAUDE.md 裡，哪一行你最不確定 Claude 有沒有照做？留言告訴我",
+        "lines": [
+          "測試位置、「未驗證」：有檔 3／3，沒檔 0／3",
+          "CHANGELOG：兩邊都是 3／3，這一行在這裡多餘",
+          "要每次成立的規則：搬去 Hook 或權限規則"
+        ]
+      },
+      "claims": [
+        "c1",
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "92up",
+          "text": "有 CLAUDE.md，那兩行三次都照做；沒有，零次。",
+          "emotion": "放慢收穩"
+        },
+        {
+          "id": "chue",
+          "text": "哪一行，你最沒把握？",
+          "emotion": "問句上揚，親切"
+        },
+        {
+          "id": "kwp8",
+          "text": "想看更多實際跑過的教學，訂閱頻道。",
+          "emotion": "輕快，帶笑"
+        }
+      ]
+    }
+  ]
+}
