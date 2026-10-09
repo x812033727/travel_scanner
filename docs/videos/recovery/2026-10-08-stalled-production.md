@@ -3,6 +3,42 @@
 Owner request: complete stalled video production directly. This record is updated
 only from actual stage results. Generated media and detailed logs remain outside Git.
 
+## Current verified continuation,22:11 Taipei,2026-10-09
+
+DevDay's English genuine-SKIP captions and ordinary LANG submission are complete.
+The first submission attempt closed with nine successful file PUTs and zero LANG
+POSTs: its strict guard rejected only manifest attachment/property ordering. The
+original attempt remains retained. The actual native ordered manifest0838db69
+has identical source,choices,metadata and CC contents. Version e0a614bd submitted
+ten files and one LANG review,zero model/speech calls; actual review
+`bc854c00-e083-4cce-a425-b0101ac3d2a4` is approved and all ten attachments read back.
+Result SHA783d6876 records eight ready text parts,English genuinely skipped and
+Japanese/Korean still working. Historical totals remain eight correction models,
+498 speech routes,30513 synthesis characters and73 API writes,including the nine
+partial PUTs and eleven successful final writes. Japanese/Korean's original
+214 first-pass requests/10956 characters and at most eight new correction keys
+are the only remaining legacy paid scope. A fresh dry passed; the authority
+builder then rejected the old two-profile comparison helper before any authority,
+launch or paid request. A strict single-DevDay version is being checked.
+
+Travel's original40 distinct text keys are all succeeded/adopted. Actual21:58
+readback verifies PID1417773 physically absent,coordinator exit0,closed21:56:41,
+lease released and all four96-caption normal worksheets current. Their hashes
+are en890ba6e3,ja834203df,koe2060f32 and zh-CNa9d0dee6. The ordinary three-dub
+dry fails before any request on the shared dictionary's unused8B entry. Shared
+dictionary/source files remain intact. A private input view is being verified
+against all original speech/translation/request hashes and full normal lint;
+it has no paid execution authority yet.
+
+Embedding actual22:05:22 readback has42 original keys under live supervisor4568.
+English/Japanese are current; five of eight Korean units are reviewed. Original
+64-key scope and all raw receipts remain intact. Its own frozen lexicon862d277a
+contains no8B entry,so the Travel dictionary defect does not affect this source.
+Deferred local finishing still requires all64 real results,four current texts
+and successful physical producer closure. Mods remains exact STOP f5bbf969.
+No selected dub READY,owner listening,YouTube upload,merge or deployment is
+claimed by this checkpoint.
+
 ## Current verified continuation,21:44 Taipei,2026-10-09
 
 DevDay's exact zero-provider/zero-API English SKIP-caption correction is complete.
