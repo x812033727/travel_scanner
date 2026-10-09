@@ -3,6 +3,48 @@
 Owner request: complete stalled video production directly. This record is updated
 only from actual stage results. Generated media and detailed logs remain outside Git.
 
+## Current verified continuation,20:20 Taipei,2026-10-09
+
+The precise44a pretransport recovery genuinely closed at20:13:55, exit0,
+with zero provider calls, speech POSTs and API writes. Native f60191ff forget
+removed only the proved undispatched44a journal after preserving its c8070fa5
+raw bytes and all230 original cache entries. Receipt SHA is
+`539179db0f1e94cbd1f7b50c82f6cfedbc5e97e5644b386550fcff0323148df7`;
+terminal proof is
+`c9fb96a7a68074567850dede65c2f1cbb8a58218f28423de87cc176d2b8d85a7`.
+Root and independent readback verify230 archived entries by full SHA and229
+live entries by full SHA and exact filesystem identities, retaining136 English/81 Japanese
+WAVs, original unknown receipts, wire21bdb0a8 and correction ledger30424ff3.
+The executor's private lease and own global lock are released; canonical
+guardians101/113 remain live. The subsequent five-dub continuation is prepared
+with a bounded read-only GET429 wait and original cumulative94 speech/11552
+characters/two models/23 API writes. Its actual cache quote is26830 remaining
+characters. It has not yet launched: admission must first match the real native
+partial-cache dispatch order and narrowly restore only the known44a local block.
+
+Embedding's real selected-text continuation genuinely launched at20:15:01,
+supervisor908/native Node27612, through versioned launcher657375c7 and authority
+`9d86799ec20408a2ef54510f27a99407165e04d9aee024996732f16a063d3d47`.
+Caller6f5016bf and supervisor90cc0a1e retain the original32 units/64 original
+translator/reviewer keys, all media/journal pins and sourcebecde472f. Original
+local state.json is preserved; no verified/listener_done acceptance flags were
+invented. The first genuine POST returned200 at20:15:19, key933baef4,
+job4b2d2e8c, sourcee7fe0b43, and remains queued under the same durable key at20:19.
+Actual new transport is one POST/zero PUTs, without a second purchase. Earlier
+launcher safety stops produced no intent, process or provider/API calls and
+their original receipts remain retained.
+
+Travel's native1268307 run continues in the original scope. At20:14 all five
+English units are translated and four reviewed, including metadata and72 caption
+lines. Nine of the original ten dispatched keys succeeded; the final24-line
+English reviewer remains queued. The shared video-ai producer and queue were
+verified live; no queue rebuild, priority change or paid replay occurred. The
+prepared longer-wait reconnect candidate was never launched because the normal
+run progressed and its narrowly pinned predecessor frontier became obsolete.
+Mods STOP was freshly read at20:14 and still hashes to
+`f5bbf969d413bc7e8ef4419162459d3ea26d88a311493fd1eef9294e9d1cbea3`.
+All pending text/dub/package gates remain pending until their actual readbacks.
+
 ## Current verified continuation,19:53 Taipei,2026-10-09
 
 The exact two scoped conditional handoff STOPs were genuinely released at19:43:07
