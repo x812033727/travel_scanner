@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "InstructionsLoaded": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": [
+              "${CLAUDE_PROJECT_DIR}/.claude/hooks/loaded.mjs"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
