@@ -105,7 +105,7 @@
 
 - 事實與來源：[`research.md`](research.md)（研究代理 2026-10-10 整理，每筆附網址與確認日期）。
 - 插圖：全部由 MiniMax image-01 依 `look.md` 第 3 版畫；真實人物（Briggs 一家、Morehouse、Solly-Flood）都過世超過 70 年，可以畫成卡通，但不寫名字進 prompt、不追求相似。
-- 照片：站上的 Pexels／Pixabay 金鑰還沒設定（2026-10-10 `stock search` 回「金鑰還沒設定」），公有領域檔案照（維基共享資源的 1861 年 Amazon 號畫作、Briggs 肖像）要下載進 `docs/videos/curio-h01/photos/` 才能用 `screenshot` 版型放；下載前要站主同意。候選清單在 `research.md` 最後一節。
+- 照片：站上的 Pexels／Pixabay 金鑰還沒設定（2026-10-10 `stock search` 回「金鑰還沒設定」）。站主 2026-10-10 同意下載維基共享資源的公有領域檔，六張已放在 [`photos/`](photos/)（1861 年 Amazon 號畫作、1870–90 年版畫、Briggs 船長、Sarah、Sophia 的肖像、1873-02-26 紐約時報剪報），用 `screenshot` 版型放、`assets[]` 逐張登記來源與授權。
 - 配樂、音效：不用（跟 T26 一樣先出乾淨版）。
 
 ## 不做的事
