@@ -1,0 +1,1654 @@
+{
+  "schema_version": 1,
+  "slug": "claude-code-subagents-hands-on",
+  "format": "slides",
+  "category": "tutorial",
+  "source_guide": "claude-code-subagents-guide",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "這一支是照著紀錄講的實作：像把一份十五行的檔案和一張計分表攤在同事面前，一項一項對給他看，穩、清楚、不誇大。開場的問句壓低放慢；兩萬多、一千出頭這些數字前停半拍；指著畫面上的檔案與紀錄時放慢；講到只有一次、沒有量、沒有觀察到的地方，平實不遮掩；章首的問句輕輕上揚。"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Claude Code Subagents 教學：同一個問題，自己查三次、交出去三次",
+    "description": "一千多行紀錄交給 subagent 去查，主對話少裝了多少？這支寫一個十五行的專案 subagent，同一個問題留在主對話查三次、點名交出去三次，逐項數。\n給會寫 CLAUDE.md、Skill，但每次請 Claude Code 查東西、主對話就被檔案內容塞滿的人。\n\n想照著做：練習專案、agent 檔的每一種寫法和所有腳本都在 https://github.com/x812033727/travel_scanner/tree/main/docs/videos/claude-code-subagents-hands-on/demo\n\n你會學到：\n・subagent 跟主對話、Skill 怎麼選；.claude/agents/log-scout.md 的四個欄位、五條規則\n・不問 Claude 也能確認有沒有交辦：串流開頭的清單、那一筆 Agent 呼叫、它底下的工具呼叫、記錄用的 hook\n・計分（各 3 次）：主對話裡工具結果的字元，自己查 24,792–34,419，交出去 1,028–1,266（加上背景回報 1,266–1,937）；主對話最後一個請求 22,422–27,043 對 8,980–9,907 個 token；7 筆答案兩邊都全對\n・整個 session 的 token 與費用，這六次分不出哪一邊多\n・不點名的三次也都交給了它；任務是 Claude 重寫的，8 次裡 4 次自己提到跨檔案；8 份回報有 3 份帶著同一種寫錯的旁註（哪些工作有 step 行）\n・拿掉 agent 檔、工具留著（1 次）：它自己查完，38,867 個字元留在主對話\n\n照著打的時候\n・log-lab/ 複製到 repo 外當專案；variants/log-scout.agent.md 放成 .claude/agents/log-scout.md，agent-log/settings.json 放成 .claude/settings.json，agent-log/seen.mjs 放成 .claude/hooks/seen.mjs。六個紀錄檔不在的話，node gen-logs.mjs 會產生一樣的內容。\n・find 與 claude plugin validate 在專案資料夾裡執行。find 的畫面是放 agent 檔之前的 11 行裡的第 4–9 行；放了之後是 12 行。validate 要 2.1.233 以上，畫面只列訊息與結束碼；兩份壞掉的寫法在 variants/；沒有 description 的那份結束碼 0，但 session 會跳過（官方頁）。\n・跑 session 的那一行是 bash 的寫法，在 Git Bash 的專案資料夾裡打。畫面只拆了四段，沒列的：前面是 env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1、SEEN_LOG（hook 紀錄檔的位置，不設就寫在 .claude/seen.log）、CLAUDE_CODE_SUBAGENT_MODEL=sonnet、CLAUDE_CODE_SUBAGENT_MODEL_FORCE=1 與 timeout 600；旗標還有 --model sonnet、--strict-mcp-config、--no-session-persistence、--max-budget-usd 2、--debug-file，--allowedTools 與 --tools 同一串（對照的三次都沒有 Agent,Task）；要求從 prompts/ 的檔案走標準輸入，輸出存成串流檔。完整的一行在 session.sh。\n・省事的做法：先 node gen-logs.mjs --check；WORK=任何 repo 以外的資料夾 bash session.sh 名字 臂（inline、named、auto、write、claudemd、builtin）。它每次從原始檔重建專案，上一次寫的 REPORT.md 也會清掉，跑完用 tally.mjs 計分；背景執行的回報要用 node extras.mjs 串流檔 才讀得到。\n・hook 紀錄那張卡是 n1 的第 5–11 行；n1 用的是修正前的記錄腳本，第 4 行的標法和示範資料夾裡的不同。\n\n怎麼跑的\n・Windows 11、Git Bash、Node.js v24.13.0、Claude Code 2.1.295，2026-10-09（UTC）。session 共 12 次，都是 --model sonnet（claude-sonnet-5-5），沒有重跑，從 Claude Code 桌面版開的 Git Bash 啟動、帶著它的環境變數。\n・每一次的偵錯紀錄都有這一行（有交辦的八次是兩行），寫伺服端的 advisor 工具以 claude-opus-5-5 開著；串流、用量與費用裡沒有它的紀錄，設定從哪裡來沒有查。\n・每一種三次是小樣本，說不到「每次都會」；寫檔、CLAUDE.md、拿掉 agent 檔各只有一次。\n・沒有觀察的：寫了卻沒被交辦、description 與 model 欄位的作用、subagent 缺工具時的反應、壞掉的 agent 檔在 session 裡、互動式畫面、個人與外掛的 agent、其他模型與平台。位置、怎麼選、它拿得到什麼、留下與停用、別人的檔先看開頭，都引用官方文件。",
+    "tags": [
+      "Claude Code subagent",
+      "Claude Code Subagents 教學",
+      "Claude Code",
+      ".claude/agents 怎麼寫",
+      "subagent 跟 skill 差別",
+      "Claude Code 教學",
+      "claude -p subagent",
+      "subagent tools 限制",
+      "AI 寫程式",
+      "Mokaair"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "Claude Code Subagents 實作",
+      "headline": "少裝\n**兩萬字元**",
+      "sub": "主對話裡工具結果的字元，各 3 次：自己查 24,792–34,419，交給 subagent 1,028–1,266"
+    }
+  },
+  "sources": [
+    {
+      "title": "Create custom subagents｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/sub-agents",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Extend Claude Code｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/features-overview",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Manage costs effectively｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/costs",
+      "checked_on": "2026-10-10"
+    }
+  ],
+  "assets": [],
+  "subtitles": {
+    "burn_in": false
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "同一個問題跑六次：交給 subagent，主對話少裝多少",
+      "template": "title",
+      "data": {
+        "tag": "Claude Code Subagents 實作",
+        "title": "六個紀錄檔，\n**自己查三次、交出去三次**",
+        "subtitle": "同一個問題，逐項數主對話裡留下多少"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "j9vm",
+          "text": "一千多行紀錄交給 subagent 去查，主對話少裝了多少？",
+          "emotion": "壓低放慢，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "result",
+      "template": "stats",
+      "data": {
+        "title": "進到主對話的工具結果（字元）",
+        "stats": [
+          {
+            "value": "24,792–34,419",
+            "label": "留在主對話查",
+            "note": "3 次（i1–i3）"
+          },
+          {
+            "value": "1,028–1,266",
+            "label": "點名交給 log-scout",
+            "note": "3 次；加上背景回報 1,266–1,937"
+          }
+        ],
+        "source": "實際跑過 2026-10-09｜Claude Code 2.1.295｜sonnet｜各 3 次"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "c86z",
+          "text": "同一個問題，Claude 自己查三次，再交給 subagent 查三次。"
+        },
+        {
+          "id": "ybde",
+          "text": "自己查的三次，進到主對話的工具結果有兩萬四千到三萬四千多個字元。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "nymk",
+          "text": "交出去的三次，一千出頭；加上晚一點送回來的回報，最多一千九百多。",
+          "reveal": 1,
+          "emotion": "「一千出頭」亮起來"
+        }
+      ]
+    },
+    {
+      "id": "handoff",
+      "chapter": "subagent 是什麼，跟主對話、Skill 怎麼選",
+      "template": "steps",
+      "data": {
+        "title": "交出去的三步",
+        "steps": [
+          {
+            "title": "Claude 寫任務說明",
+            "detail": "交給 subagent"
+          },
+          {
+            "title": "在自己的脈絡裡做",
+            "detail": "讀到的、搜到的\n都留在它那邊"
+          },
+          {
+            "title": "只有最後的回報",
+            "detail": "回到主對話"
+          }
+        ],
+        "source": "Claude Code 文件｜sub-agents｜2026-10-10｜官方說明"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "9mtd",
+          "text": "那一千多行去哪了？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "ypfq",
+          "text": "Claude 先寫一段任務說明，交給 subagent。",
+          "reveal": 1
+        },
+        {
+          "id": "erze",
+          "text": "它在自己的脈絡裡讀取檔案、搜尋，結果都留在它那邊。",
+          "reveal": 1,
+          "emotion": "「留在它那邊」放慢"
+        },
+        {
+          "id": "wyd5",
+          "text": "回到主對話的，只有它最後的回報。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "summary",
+      "template": "quote",
+      "data": {
+        "kicker": "只有摘要回來",
+        "quote": "the subagent does that work in its own context and returns only the summary",
+        "translation": "subagent 在自己的脈絡裡做完，只把摘要送回來",
+        "source": "Claude Code 文件｜sub-agents｜2026-10-10"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "vbg3",
+          "text": "它是另一個脈絡裡的工作者，有自己的系統提示和工具。",
+          "reveal": 1
+        },
+        {
+          "id": "ip8v",
+          "text": "它看不到前面的對話；它送出的請求，一樣算用量。",
+          "emotion": "後半句放慢"
+        }
+      ]
+    },
+    {
+      "id": "vs-skill",
+      "template": "compare",
+      "data": {
+        "title": "Skill 和 subagent 差在哪",
+        "left": {
+          "heading": "Skill",
+          "points": [
+            "內容加進主對話的脈絡",
+            "適合參考資料、叫得動的流程"
+          ]
+        },
+        "right": {
+          "heading": "Subagent",
+          "points": [
+            "另一個脈絡，只有摘要回來",
+            "適合要讀很多檔的工作"
+          ]
+        },
+        "source": "官方文件 features-overview｜2026-10-10｜比較表"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "x8ie",
+          "text": "Skill 的內容會加進主對話，適合參考資料和可以直接呼叫的流程。",
+          "reveal": 1
+        },
+        {
+          "id": "eh6p",
+          "text": "subagent 用另一個脈絡，適合要讀很多檔的工作。",
+          "reveal": 1
+        },
+        {
+          "id": "qi2y",
+          "text": "過程很吵、你只要結論，就交給 subagent。",
+          "emotion": "「只要結論」加重"
+        }
+      ]
+    },
+    {
+      "id": "choose",
+      "template": "table",
+      "data": {
+        "title": "留在主對話，還是交出去",
+        "columns": [
+          "這件工作",
+          "放哪裡"
+        ],
+        "rows": [
+          [
+            "要來回討論、反覆修改",
+            "主對話"
+          ],
+          [
+            "前後幾個階段共用同一批脈絡",
+            "主對話"
+          ],
+          [
+            "只改一個小地方",
+            "主對話"
+          ],
+          [
+            "輸出很長，主對話用不到",
+            "subagent"
+          ],
+          [
+            "要限制它能用的工具",
+            "subagent"
+          ]
+        ],
+        "source": "Claude Code 文件｜sub-agents｜2026-10-10｜官方的選用清單"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "s4gp",
+          "text": "要來回討論、前後階段共用脈絡、只改一個小地方，都留在主對話。",
+          "reveal": 3
+        },
+        {
+          "id": "6jzp",
+          "text": "輸出很長而主對話用不到，或是想限制工具，就交給 subagent。",
+          "reveal": 2
+        },
+        {
+          "id": "qf9i",
+          "text": "這個 subagent 的檔案，長什麼樣子？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "before",
+      "chapter": "subagent 檔怎麼寫：四個欄位、五條規則，寫完先驗",
+      "template": "terminal",
+      "data": {
+        "title": "開跑之前的專案：輸出 11 行裡的第 4–9 行",
+        "command": "find . -type f | sort",
+        "output": [
+          "./logs/queue-2026-10-01.log\n./logs/queue-2026-10-02.log\n./logs/queue-2026-10-03.log\n./logs/queue-2026-10-04.log\n./logs/queue-2026-10-05.log\n./logs/queue-2026-10-06.log"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "sort (GNU coreutils) 8.32"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "kjex",
+          "text": "練習專案裡有六個紀錄檔，一天一個，一共一千一百八十八行。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "logs-1",
+      "template": "code",
+      "data": {
+        "code": "00:47:37 start J1001 resize IMG_1597.jpg\n00:49:39 start J1002 resize IMG_9159.jpg\n00:59:36 step  J1001 1/3\n01:04:51 step  J1002 1/3\n01:14:25 start J1003 geotag IMG_4781.jpg\n01:19:48 step  J1003 1/2\n01:30:30 step  J1002 2/3",
+        "highlight": [
+          1,
+          3
+        ],
+        "caption": "logs/queue-2026-10-01.log｜第 6–12 行（全檔 194 行）"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "k4v5",
+          "text": "紀錄檔的每一行是一件事。",
+          "emotion": "放慢，讓人看清楚"
+        },
+        {
+          "id": "9d7g",
+          "text": "亮起來的兩行是同一個工作：開始，然後做到第一步。"
+        }
+      ]
+    },
+    {
+      "id": "logs-2",
+      "template": "code",
+      "data": {
+        "code": "00:47:37 start J1001 resize IMG_1597.jpg\n00:49:39 start J1002 resize IMG_9159.jpg\n00:59:36 step  J1001 1/3\n01:04:51 step  J1002 1/3\n01:14:25 start J1003 geotag IMG_4781.jpg\n01:19:48 step  J1003 1/2\n01:30:30 step  J1002 2/3",
+        "caption": "logs/queue-2026-10-01.log｜第 6–12 行（全檔 194 行）｜7 個與 3 個：check-logs.mjs"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "izrc",
+          "text": "六個檔裡埋了七個只有開始、沒有結束的工作。",
+          "emotion": "「七個」加重"
+        },
+        {
+          "id": "kvve",
+          "text": "另外三個隔天的檔才結束；只看單一個檔，會多算這三個。"
+        }
+      ]
+    },
+    {
+      "id": "places-shot",
+      "template": "screencast",
+      "data": {
+        "title": "官方的位置表",
+        "caption": "Claude Code 文件｜sub-agents｜Choose the subagent scope｜2026-10-10 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://code.claude.com/docs/en/sub-agents#choose-the-subagent-scope"
+          },
+          {
+            "action": "wait",
+            "selector": "#choose-the-subagent-scope"
+          },
+          {
+            "action": "capture",
+            "focus": "#choose-the-subagent-scope"
+          }
+        ]
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "8e9w",
+          "text": "subagent 的檔案可以放在專案、個人的家目錄，或是外掛裡。"
+        },
+        {
+          "id": "yu2c",
+          "text": "這次只做專案這一層：跟著版本控制走，隊友都拿得到。"
+        }
+      ]
+    },
+    {
+      "id": "fm-1",
+      "template": "code",
+      "data": {
+        "code": "---\nname: log-scout\ndescription: 讀大量紀錄檔、只回報結論。查 logs/ 時主動使用。\ntools: Read, Grep, Glob\nmodel: sonnet\n---",
+        "highlight": [
+          3
+        ],
+        "caption": ".claude/agents/log-scout.md｜第 1–6 行（全檔 15 行）｜欄位的作用：官方 sub-agents 頁"
+      },
+      "claims": [
+        "c11",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "yv3z",
+          "text": "檔案開頭這幾行是設定。",
+          "emotion": "放慢，讓人看清楚"
+        },
+        {
+          "id": "vtn6",
+          "text": "亮起來的 description，寫它做什麼、什麼時候用。"
+        },
+        {
+          "id": "vsmk",
+          "text": "Claude 拿它對照你的要求，決定要不要把工作交出去。"
+        }
+      ]
+    },
+    {
+      "id": "fm-2",
+      "template": "code",
+      "data": {
+        "code": "---\nname: log-scout\ndescription: 讀大量紀錄檔、只回報結論。查 logs/ 時主動使用。\ntools: Read, Grep, Glob\nmodel: sonnet\n---",
+        "highlight": [
+          4
+        ],
+        "caption": ".claude/agents/log-scout.md｜第 1–6 行（全檔 15 行）｜欄位的作用：官方 sub-agents 頁"
+      },
+      "claims": [
+        "c11",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "pvdd",
+          "text": "下一行列出它能用的工具：讀取和搜尋的三個，沒有寫入。",
+          "emotion": "「沒有寫入」加重"
+        },
+        {
+          "id": "cqbd",
+          "text": "這一行不寫的話，它會繼承主對話的工具。"
+        }
+      ]
+    },
+    {
+      "id": "fm-3",
+      "template": "code",
+      "data": {
+        "code": "---\nname: log-scout\ndescription: 讀大量紀錄檔、只回報結論。查 logs/ 時主動使用。\ntools: Read, Grep, Glob\nmodel: sonnet\n---",
+        "highlight": [
+          5
+        ],
+        "caption": ".claude/agents/log-scout.md｜第 1–6 行（全檔 15 行）｜欄位的作用：官方 sub-agents 頁"
+      },
+      "claims": [
+        "c11",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "bhi8",
+          "text": "再下一行指定它用的模型。"
+        },
+        {
+          "id": "gyrg",
+          "text": "這一次執行，另外用環境變數固定了模型，所以這一行的作用沒有量到。",
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "body-1",
+      "template": "code",
+      "data": {
+        "code": "你負責讀紀錄檔，只回報結論，不貼原文。\n\n1. 先用 Glob 找出 logs/ 底下全部的 .log 檔，每一個都讀。\n2. 一個 job 有 start 那一行、沒有 done 那一行，\n   才算沒有結束。\n3. 每筆一行：job 編號｜start 所在的檔名｜行號\n4. 最後一行固定寫：共 N 筆\n5. 不要修改任何檔案。",
+        "highlight": [
+          4,
+          5
+        ],
+        "caption": ".claude/agents/log-scout.md｜第 8–15 行（亮的是原檔第 11–12 行）"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "7njz",
+          "text": "下面的內文就是它的系統提示。"
+        },
+        {
+          "id": "5uk3",
+          "text": "判斷的規則只有一句：有開始、沒有結束。"
+        },
+        {
+          "id": "e2df",
+          "text": "隔天才結束的情況，這裡故意沒提。",
+          "emotion": "放慢，埋一個伏筆"
+        }
+      ]
+    },
+    {
+      "id": "body-2",
+      "template": "code",
+      "data": {
+        "code": "你負責讀紀錄檔，只回報結論，不貼原文。\n\n1. 先用 Glob 找出 logs/ 底下全部的 .log 檔，每一個都讀。\n2. 一個 job 有 start 那一行、沒有 done 那一行，\n   才算沒有結束。\n3. 每筆一行：job 編號｜start 所在的檔名｜行號\n4. 最後一行固定寫：共 N 筆\n5. 不要修改任何檔案。",
+        "highlight": [
+          6,
+          7
+        ],
+        "caption": ".claude/agents/log-scout.md｜第 8–15 行（亮的是原檔第 13–14 行）"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "ahb8",
+          "text": "亮起來的兩行規定回報的格式：每筆一行，最後一行寫總共幾筆。"
+        }
+      ]
+    },
+    {
+      "id": "validate-cmd",
+      "template": "code",
+      "data": {
+        "code": "claude plugin validate .claude/agents",
+        "caption": "在專案資料夾裡執行｜Claude Code 2.1.295｜輸出的第一行是資料夾的完整路徑"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "fe2y",
+          "text": "寫完先執行這一行，它會檢查每一份檔案開頭的格式。",
+          "emotion": "指著畫面，放慢"
+        }
+      ]
+    },
+    {
+      "id": "validate",
+      "template": "table",
+      "data": {
+        "title": "三份檔案，各驗一次",
+        "columns": [
+          "哪一份",
+          "它顯示的訊息",
+          "結束碼"
+        ],
+        "rows": [
+          [
+            "寫好的",
+            "✔ Validation passed",
+            "0"
+          ],
+          [
+            "description 的引號沒關",
+            "YAML frontmatter failed to parse",
+            "1"
+          ],
+          [
+            "沒有 description",
+            "No description in frontmatter",
+            "0"
+          ]
+        ],
+        "source": "實際跑過 2026-10-09｜validate 2.1.295｜第 3 列會被跳過：官方頁"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "fak8",
+          "text": "寫好的這一份，檢查通過。",
+          "reveal": 1
+        },
+        {
+          "id": "hqjy",
+          "text": "description 少關一個引號的那一份，報錯，結束碼是一。",
+          "reveal": 1
+        },
+        {
+          "id": "teh9",
+          "text": "整行 description 都沒有的那一份只給警告，結束碼還是零。",
+          "reveal": 1,
+          "emotion": "「還是零」放慢"
+        },
+        {
+          "id": "hanz",
+          "text": "這種檔案，session 一樣會跳過。",
+          "emotion": "加重"
+        }
+      ]
+    },
+    {
+      "id": "noload",
+      "template": "quote",
+      "data": {
+        "kicker": "引號沒關的那一份，訊息裡的一句",
+        "quote": "At runtime this agent does not load at all",
+        "translation": "執行的時候，這個 agent 完全不會載入",
+        "source": "實際跑過 2026-10-09｜claude plugin validate 2.1.295"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "y2ax",
+          "text": "引號沒關的那一份，訊息裡還有一句：執行的時候它完全不會載入。",
+          "reveal": 1,
+          "emotion": "「完全不會」加重"
+        },
+        {
+          "id": "vayj",
+          "text": "這兩種檔案放進 session 會怎樣，這次沒有跑。",
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "cmd",
+      "chapter": "怎麼確認 Claude 交給了 subagent，換到什麼",
+      "template": "table",
+      "data": {
+        "title": "跑一次的指令，拆開看",
+        "columns": [
+          "指令的這一段",
+          "做什麼"
+        ],
+        "rows": [
+          [
+            "claude -p，要求從檔案走標準輸入",
+            "不開畫面，做完就結束"
+          ],
+          [
+            "--setting-sources project,local",
+            "設定來源只列專案的兩層"
+          ],
+          [
+            "--tools \"Read,Glob,Grep,Edit,Write,Agent,Task\"",
+            "檔案工具五個，加上開 subagent 的工具"
+          ],
+          [
+            "--output-format stream-json --verbose",
+            "留下每一次工具呼叫"
+          ]
+        ],
+        "source": "實際跑過 2026-10-09｜第 2 列沒有對照｜其餘在說明欄"
+      },
+      "claims": [
+        "c16",
+        "c17",
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "4nmk",
+          "text": "寫好了。Claude 真的把工作交給它了嗎？",
+          "emotion": "問句上揚，帶一點懷疑"
+        },
+        {
+          "id": "rx8t",
+          "text": "每一次都是新的 session，不開畫面；專案從原始檔重建。",
+          "reveal": 1
+        },
+        {
+          "id": "prgj",
+          "text": "設定來源只列專案的兩層；紀錄裡，專案和內建以外的代理是零個。",
+          "reveal": 1
+        },
+        {
+          "id": "atjw",
+          "text": "給它的工具是讀寫檔案的五個，加上開 subagent 用的 Agent。",
+          "reveal": 1
+        },
+        {
+          "id": "i8z4",
+          "text": "留在主對話的三次拿掉了它，Claude 只能自己查；這是為了對照。",
+          "emotion": "平實交代"
+        },
+        {
+          "id": "xxnz",
+          "text": "每一次的輸出存成串流，工具呼叫都留在裡面。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ask",
+      "template": "chat",
+      "data": {
+        "title": "點名交出去的那一句",
+        "messages": [
+          {
+            "side": "right",
+            "name": "我",
+            "text": "用 log-scout 查 logs/ 裡哪些 job 開始了卻沒結束？列出編號和檔名。"
+          }
+        ]
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "3wzn",
+          "text": "點名的那三次，我只在問題前面加上它的名字。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "seen-4",
+      "template": "steps",
+      "data": {
+        "title": "log-scout 在紀錄裡的四個地方（n1）",
+        "steps": [
+          {
+            "title": "agents 清單",
+            "detail": "串流開頭那一筆\n有 log-scout"
+          },
+          {
+            "title": "Agent 呼叫",
+            "detail": "第 1 筆工具呼叫\n點名 log-scout"
+          },
+          {
+            "title": "底下的呼叫",
+            "detail": "Glob 1 次\nRead 6 次"
+          },
+          {
+            "title": "hook 紀錄",
+            "detail": "by=log-scout\n的行"
+          }
+        ],
+        "source": "實際跑過 2026-10-09｜Claude Code 2.1.295｜n1（背景執行）"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "7r67",
+          "text": "串流開頭那一筆有一份代理清單，log-scout 在裡面。",
+          "reveal": 1
+        },
+        {
+          "id": "vg82",
+          "text": "Claude 的第一個工具呼叫就是 Agent，點名 log-scout。",
+          "reveal": 1,
+          "emotion": "「第一個」加重"
+        },
+        {
+          "id": "jvq2",
+          "text": "這個呼叫底下看得到 subagent 自己的呼叫：找檔案一次，讀取六次。",
+          "reveal": 1
+        },
+        {
+          "id": "86v3",
+          "text": "第四個地方，是專案裡接的一個記錄用的 hook。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hook-set",
+      "template": "code",
+      "data": {
+        "code": "    \"SubagentStart\": [\n      {\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"node\",\n            \"args\": [\n              \"${CLAUDE_PROJECT_DIR}/.claude/hooks/seen.mjs\"\n            ]",
+        "highlight": [
+          1
+        ],
+        "caption": ".claude/settings.json｜第 3–11 行（全檔 70 行，在示範資料夾）"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "aehb",
+          "text": "這個 hook 接了五個事件；亮起來的是 subagent 啟動的那一個。"
+        },
+        {
+          "id": "96qr",
+          "text": "每個事件都執行同一支記錄腳本。"
+        }
+      ]
+    },
+    {
+      "id": "seen-log-1",
+      "template": "code",
+      "data": {
+        "code": "PreToolUse by=log-scout Read logs/queue-2026-10-01.log\nPreToolUse by=log-scout Read logs/queue-2026-10-02.log\nPreToolUse by=log-scout Read logs/queue-2026-10-03.log\nPreToolUse by=log-scout Read logs/queue-2026-10-04.log\nPreToolUse by=log-scout Read logs/queue-2026-10-05.log\nPreToolUse by=log-scout Read logs/queue-2026-10-06.log\nSubagentStop agent=log-scout last_chars=849 mark_in_last=no",
+        "highlight": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "caption": "n1 的 hook 紀錄｜results/n1.seen.txt 第 5–11 行（全檔 11 行）"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "ktcg",
+          "text": "hook 紀錄的每一行，寫著是誰做的。",
+          "emotion": "指著畫面，放慢"
+        },
+        {
+          "id": "4qwc",
+          "text": "亮起來的六行讀取紀錄檔，都是 log-scout 做的，不是主對話。"
+        }
+      ]
+    },
+    {
+      "id": "seen-log-2",
+      "template": "code",
+      "data": {
+        "code": "PreToolUse by=log-scout Read logs/queue-2026-10-01.log\nPreToolUse by=log-scout Read logs/queue-2026-10-02.log\nPreToolUse by=log-scout Read logs/queue-2026-10-03.log\nPreToolUse by=log-scout Read logs/queue-2026-10-04.log\nPreToolUse by=log-scout Read logs/queue-2026-10-05.log\nPreToolUse by=log-scout Read logs/queue-2026-10-06.log\nSubagentStop agent=log-scout last_chars=849 mark_in_last=no",
+        "highlight": [
+          7
+        ],
+        "caption": "n1 的 hook 紀錄｜results/n1.seen.txt 第 5–11 行（全檔 11 行）"
+      },
+      "claims": [
+        "c21",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "wesz",
+          "text": "最後一行是它結束：最後一則訊息，八百四十九個字元。"
+        },
+        {
+          "id": "7jzm",
+          "text": "有交出去的那八次，這四個地方每一次都對得上。",
+          "emotion": "平實交代"
+        }
+      ]
+    },
+    {
+      "id": "report",
+      "template": "code",
+      "data": {
+        "code": "J1008｜queue-2026-10-01.log｜36\nJ1052｜queue-2026-10-02.log｜83\nJ1079｜queue-2026-10-03.log｜21\nJ1095｜queue-2026-10-03.log｜106\nJ1142｜queue-2026-10-04.log｜151\nJ1176｜queue-2026-10-05.log｜134\nJ1194｜queue-2026-10-06.log｜29\n共 7 筆",
+        "caption": "n1 的回報｜results/n1.report.txt 第 3–10 行（全檔 19 行）"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "pc54",
+          "text": "回報裡有這八行：每筆一行，最後寫共七筆。"
+        },
+        {
+          "id": "t7zm",
+          "text": "後面多出來的說明，是 Claude 在任務裡要它補的。"
+        }
+      ]
+    },
+    {
+      "id": "bg",
+      "template": "table",
+      "data": {
+        "title": "回報怎麼回到主對話（有交辦的 8 次）",
+        "columns": [
+          "比什麼",
+          "背景（5 次）",
+          "前景（3 次）"
+        ],
+        "rows": [
+          [
+            "Claude 的呼叫",
+            "沒寫 run_in_background",
+            "寫了 false"
+          ],
+          [
+            "Agent 工具的結果",
+            "啟動訊息，1,028 字元",
+            "回報，外加一段固定的說明"
+          ],
+          [
+            "回報",
+            "晚一點，以通知送回來",
+            "就在工具結果裡"
+          ]
+        ],
+        "source": "實際跑過 2026-10-09｜背景 n1 n3 a1 a2 a3｜前景 n2 w1 c1"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "vq75",
+          "text": "有交辦的八次裡，五次 Claude 沒有指定前景或背景，都在背景跑。",
+          "reveal": 1
+        },
+        {
+          "id": "84js",
+          "text": "背景的時候，Agent 工具的結果只是一段啟動訊息，裡面沒有答案。",
+          "reveal": 1,
+          "emotion": "「沒有答案」放慢"
+        },
+        {
+          "id": "a93k",
+          "text": "回報晚一點才以通知送回來，整個 session 變成兩輪。",
+          "reveal": 1
+        },
+        {
+          "id": "excz",
+          "text": "另外三次，Claude 自己指定不放到背景，工具結果就是回報。"
+        }
+      ]
+    },
+    {
+      "id": "score",
+      "template": "table",
+      "data": {
+        "title": "六次，逐項數",
+        "columns": [
+          "項目",
+          "留在主對話（i1–i3）",
+          "點名 log-scout（n1–n3）"
+        ],
+        "rows": [
+          [
+            "交給 log-scout 的 Agent 呼叫",
+            "0／3（沒有這個工具）",
+            "3／3"
+          ],
+          [
+            "主對話裡工具結果的字元",
+            "24,792–34,419",
+            "1,028–1,266"
+          ],
+          [
+            "加上背景回報的那一則",
+            "同上",
+            "1,266–1,937"
+          ],
+          [
+            "主對話最後一個請求（token）",
+            "22,422–27,043",
+            "8,980–9,907"
+          ],
+          [
+            "7 筆答對幾筆",
+            "7／7 三次",
+            "7／7 三次"
+          ]
+        ],
+        "source": "實際跑過 2026-10-09｜Claude Code 2.1.295｜sonnet｜各 3 次"
+      },
+      "claims": [
+        "c24",
+        "c1",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "emkv",
+          "text": "點名的三次，每一次都有一筆交給 log-scout 的呼叫。",
+          "reveal": 1
+        },
+        {
+          "id": "znzd",
+          "text": "工具結果的字元：兩萬四千到三萬四千多，對一千出頭。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "dyg4",
+          "text": "自己查的三次，各只讀了一個紀錄檔，其餘用搜尋。"
+        },
+        {
+          "id": "9pt6",
+          "text": "把晚一點才送回來的回報也算進去，最多一千九百多。",
+          "reveal": 1
+        },
+        {
+          "id": "qub3",
+          "text": "主對話最後一個請求，交出去的平均少一萬五千個 token 左右。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "dsg2",
+          "text": "同一邊的三次，最多只差四千六百多。"
+        },
+        {
+          "id": "qa7m",
+          "text": "七筆答案兩邊都全對；隔天才結束的那三筆，沒有一次被算錯。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "limits",
+      "template": "bullets",
+      "data": {
+        "title": "這張表能說到哪裡",
+        "items": [
+          "省下的是主對話的位置；整個 session 的用量分不出來",
+          "Agent 工具加這個 subagent：第一個請求多約 2,480 個 token",
+          "三次對三次：夠說有差，不夠說每次",
+          "只量了一種大小：6 個檔、1,188 行"
+        ],
+        "source": "實際跑過 2026-10-09｜第 3 點是 calc.mjs 的實算"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "qmdf",
+          "text": "省下的是主對話的位置。整個 session 的用量，這六次分不出來。",
+          "reveal": 1,
+          "emotion": "放慢，不遮掩"
+        },
+        {
+          "id": "tgxd",
+          "text": "以我的用法，開 subagent 是為了主對話乾淨，不是省 token。"
+        },
+        {
+          "id": "yaqy",
+          "text": "開放 Agent 工具、加上這個 subagent，第一個請求多了兩千四百八十個 token 左右。",
+          "reveal": 1
+        },
+        {
+          "id": "q5q9",
+          "text": "三次對三次，夠說有差，不夠說每一次都會這樣。",
+          "reveal": 1
+        },
+        {
+          "id": "3cc2",
+          "text": "工作的大小，也只量了這一種。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ask-plain",
+      "chapter": "不點名它會去嗎？任務誰寫的，回報要不要查",
+      "template": "chat",
+      "data": {
+        "title": "不點名的那一句",
+        "messages": [
+          {
+            "side": "right",
+            "name": "我",
+            "text": "logs/ 裡哪些 job 開始了卻沒結束？列出編號和檔名。"
+          }
+        ]
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "jfa8",
+          "text": "剛才三次，我都點了名。不點名呢？",
+          "reveal": 1,
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "rwek",
+          "text": "同一個專案、同一個 subagent，這次的要求不提它的名字。"
+        }
+      ]
+    },
+    {
+      "id": "landed",
+      "template": "table",
+      "data": {
+        "title": "不點名的三次，各落在哪",
+        "columns": [
+          "結果",
+          "不點名（a1–a3）",
+          "點名（n1–n3）"
+        ],
+        "rows": [
+          [
+            "交給 log-scout",
+            "3／3",
+            "3／3"
+          ],
+          [
+            "交給內建的代理",
+            "0／3",
+            "0／3"
+          ],
+          [
+            "自己做完",
+            "0／3",
+            "0／3"
+          ]
+        ],
+        "source": "實際跑過 2026-10-09｜Claude Code 2.1.295｜只數次數，說不出比率"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "785q",
+          "text": "三次都交給了 log-scout；其中兩次，它先自己做了一兩個工具呼叫。",
+          "reveal": 1
+        },
+        {
+          "id": "nn97",
+          "text": "交給內建的代理、自己做完的，都是零次。",
+          "reveal": 2
+        },
+        {
+          "id": "5ya2",
+          "text": "寫了卻沒被交辦是什麼樣子，這次沒看到。",
+          "emotion": "平實，不遮掩"
+        },
+        {
+          "id": "uvy5",
+          "text": "description 幫了多少，也沒有量。"
+        }
+      ]
+    },
+    {
+      "id": "builtin",
+      "template": "stats",
+      "data": {
+        "title": "把 subagent 檔拿掉、工具留著（b1）",
+        "stats": [
+          {
+            "value": "38,867",
+            "label": "字元留在主對話",
+            "note": "1 次；沒有 Agent 呼叫，自己查完"
+          }
+        ],
+        "source": "實際跑過 2026-10-09｜Claude Code 2.1.295｜b1，1 次"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "wk54",
+          "text": "把 subagent 的檔案拿掉、工具留著，跑了一次：它沒有交給內建的代理。",
+          "reveal": 1
+        },
+        {
+          "id": "szmp",
+          "text": "它自己查完，三萬八千多個字元留在主對話。"
+        }
+      ]
+    },
+    {
+      "id": "task",
+      "template": "table",
+      "data": {
+        "title": "Claude 寫給 log-scout 的任務（8 次）",
+        "columns": [
+          "看什麼",
+          "紀錄裡的"
+        ],
+        "rows": [
+          [
+            "每一份的長度",
+            "201–378 個字元，沒有一份照抄我的句子"
+          ],
+          [
+            "a1 多的一句",
+            "注意同一個 job 編號可能跨檔案開始與結束,請跨檔比對後再判斷。"
+          ],
+          [
+            "提到跨檔案的",
+            "8 次裡 4 次（n1 只要它說明）；subagent 檔沒有寫"
+          ]
+        ],
+        "source": "實際跑過 2026-10-09｜8 次｜第 2 列 results/a1.task.txt"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "422y",
+          "text": "交出去的任務不是我那一句：Claude 每次都重寫，兩百到三百多個字元。",
+          "reveal": 1
+        },
+        {
+          "id": "vtat",
+          "text": "其中一次，它自己加了一句提醒：要跨檔案比對。",
+          "reveal": 1,
+          "emotion": "「自己加了」加重"
+        },
+        {
+          "id": "gvsy",
+          "text": "八次裡有四次提到了跨檔案，subagent 檔本身沒有寫。",
+          "reveal": 1
+        },
+        {
+          "id": "e7t6",
+          "text": "七筆全對，不能全算成 log-scout 自己看出來的。",
+          "emotion": "放慢，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "remark",
+      "template": "quote",
+      "data": {
+        "kicker": "回報裡多寫的一句（n1）",
+        "quote": "這 7 個 job 在 start 之後都沒有出現任何其他行,連 `step` 或 `retry` 也沒有。",
+        "source": "實際跑過 2026-10-09｜n1｜results/n1.report.txt 第 18 行"
+      },
+      "claims": [
+        "c30"
+      ],
+      "lines": [
+        {
+          "id": "hb2r",
+          "text": "七筆都對，但這份回報多寫了一句：七個工作開始之後都沒有其他紀錄。"
+        },
+        {
+          "id": "bvem",
+          "text": "主對話最後的回覆，也照著這樣寫。"
+        }
+      ]
+    },
+    {
+      "id": "remark-log",
+      "template": "code",
+      "data": {
+        "code": "17:40:34 start J1142 thumb IMG_3260.jpg\n17:48:22 step  J1142 1/3",
+        "highlight": [
+          2
+        ],
+        "caption": "logs/queue-2026-10-04.log｜第 151–152 行（全檔 197 行）"
+      },
+      "claims": [
+        "c30"
+      ],
+      "lines": [
+        {
+          "id": "uj8d",
+          "text": "紀錄檔裡，其中一個工作的下一行就是它的第一步。",
+          "emotion": "指著畫面，放慢"
+        },
+        {
+          "id": "9a9p",
+          "text": "八份回報有三份帶著這種錯；計分看不到，還是要抽查。"
+        }
+      ]
+    },
+    {
+      "id": "write-ask",
+      "template": "chat",
+      "data": {
+        "title": "請它寫檔的那一句",
+        "messages": [
+          {
+            "side": "right",
+            "name": "我",
+            "text": "請 log-scout 把 logs/ 裡沒結束的 job 寫進 REPORT.md。"
+          }
+        ]
+      },
+      "claims": [
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "vyed",
+          "text": "再跑一次：請這個只有讀取工具的 subagent，把結果寫成檔案。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "write-run",
+      "template": "steps",
+      "data": {
+        "title": "那一次依序發生的事（w1）",
+        "steps": [
+          {
+            "title": "Claude 寫的任務",
+            "detail": "沒有提到\nREPORT.md"
+          },
+          {
+            "title": "log-scout",
+            "detail": "Glob 1、Read 6\n沒有 Write、Edit"
+          },
+          {
+            "title": "主對話",
+            "detail": "Write REPORT.md\n15 行，7 筆都在"
+          }
+        ],
+        "source": "實際跑過 2026-10-09｜Claude Code 2.1.295｜w1，1 次（前景）"
+      },
+      "claims": [
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "69sk",
+          "text": "這一次，Claude 寫給它的任務裡，沒有提到要寫檔案。",
+          "reveal": 1,
+          "emotion": "「沒有提到」放慢"
+        },
+        {
+          "id": "9mwz",
+          "text": "log-scout 照樣讀完六個檔，回報七筆，沒有任何寫入的呼叫。",
+          "reveal": 1
+        },
+        {
+          "id": "3vgm",
+          "text": "那份報告，是由主對話寫出來的，不是 subagent。",
+          "reveal": 1
+        },
+        {
+          "id": "gnhi",
+          "text": "所以 subagent 缺工具的時候會怎樣，這一次沒有觀察到。",
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "gets",
+      "template": "table",
+      "data": {
+        "title": "它拿得到什麼",
+        "columns": [
+          "東西",
+          "進不進得去"
+        ],
+        "rows": [
+          [
+            "subagent 檔的內文（它的 system prompt）",
+            "有"
+          ],
+          [
+            "Claude 寫的任務說明",
+            "有"
+          ],
+          [
+            "專案的 CLAUDE.md",
+            "有；omitClaudeMd 可以關"
+          ],
+          [
+            "前面的對話、Claude 讀過的檔",
+            "沒有"
+          ]
+        ],
+        "source": "Claude Code 文件｜sub-agents｜2026-10-10｜官方說明"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "4id4",
+          "text": "進到 subagent 的，有它自己的系統提示，和 Claude 寫的任務說明。",
+          "reveal": 2
+        },
+        {
+          "id": "7n99",
+          "text": "專案的 CLAUDE.md 也會進去，可以在檔案裡關掉。",
+          "reveal": 1
+        },
+        {
+          "id": "3qzs",
+          "text": "你們前面的對話、Claude 讀過的檔，它都拿不到。",
+          "reveal": 1,
+          "emotion": "「都拿不到」加重"
+        }
+      ]
+    },
+    {
+      "id": "canary",
+      "template": "table",
+      "data": {
+        "title": "CLAUDE.md 加一條記號規則（c1）",
+        "columns": [
+          "在哪裡",
+          "有沒有【trip-queue】"
+        ],
+        "rows": [
+          [
+            "專案的 CLAUDE.md 第 3 行",
+            "規則：回報的第一行固定寫它"
+          ],
+          [
+            "Claude 寫給 log-scout 的任務",
+            "沒有（mark_in_prompt=no）"
+          ],
+          [
+            "log-scout 的回報",
+            "有（mark_in_last=yes）"
+          ]
+        ],
+        "source": "實際跑過 2026-10-09｜c1，1 次｜hook 紀錄的兩個欄位"
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "ffqt",
+          "text": "專案的 CLAUDE.md 加一條規則：回報的第一行寫一個記號。跑了一次。",
+          "reveal": 1
+        },
+        {
+          "id": "fu6k",
+          "text": "Claude 寫的任務裡，沒有這個記號。",
+          "reveal": 1
+        },
+        {
+          "id": "8nt9",
+          "text": "log-scout 的回報卻有：這一次，它自己拿到了 CLAUDE.md。",
+          "reveal": 1,
+          "emotion": "亮起來"
+        }
+      ]
+    },
+    {
+      "id": "keep",
+      "chapter": "subagent 怎麼留下來、停用，換成你的工作",
+      "template": "table",
+      "data": {
+        "title": "留下來，和停用",
+        "columns": [
+          "你要的",
+          "做法"
+        ],
+        "rows": [
+          [
+            "隊友都拿得到",
+            ".claude/agents/ 交進版控"
+          ],
+          [
+            "只停用這一個，不刪檔",
+            "permissions.deny 加 Agent(log-scout)"
+          ],
+          [
+            "改了檔案",
+            "幾秒內生效；資料夾是 session 開始後才建的要重開"
+          ]
+        ],
+        "source": "Claude Code 文件｜sub-agents｜2026-10-10｜沒有跑過"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "zqpt",
+          "text": "這個 subagent 怎麼留下來？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "e8td",
+          "text": "留下來，就把這個資料夾交進版控，隊友都拿得到。",
+          "reveal": 1
+        },
+        {
+          "id": "s93z",
+          "text": "只想停用這一個，在設定的拒絕清單加上它的名字。",
+          "reveal": 1
+        },
+        {
+          "id": "igxq",
+          "text": "改了這個檔案，幾秒內就生效；資料夾是新建的就要重開。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "trust",
+      "template": "bullets",
+      "data": {
+        "title": "別人的 subagent 檔放進來之前",
+        "items": [
+          "它可以替自己掛 hook、接 MCP 伺服器、指定權限模式",
+          "先看開頭四個欄位：\ntools、hooks、mcpServers、permissionMode",
+          "這支的 log-scout：這四個裡只有 tools，三個工具都只能讀"
+        ],
+        "source": "Claude Code 文件｜sub-agents｜2026-10-10｜第 3 點是這支的檔案"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "cfak",
+          "text": "提醒一件事：別人的 subagent 檔能自己掛 hook、接 MCP 伺服器。",
+          "reveal": 1,
+          "emotion": "語氣收一點，認真"
+        },
+        {
+          "id": "4cnd",
+          "text": "所以抓下來的專案，先看每一份檔案開頭的這四個欄位。",
+          "reveal": 1,
+          "emotion": "放慢"
+        },
+        {
+          "id": "hqs3",
+          "text": "這次的 log-scout 沒有掛 hook、沒有接伺服器，三個工具都只能讀。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "yours",
+      "template": "steps",
+      "data": {
+        "title": "換成你的一種工作",
+        "steps": [
+          {
+            "title": "先填三格",
+            "detail": "它要讀什麼、回報\n長怎樣、哪些工具"
+          },
+          {
+            "title": "各跑三次",
+            "detail": "留在主對話三次\n點名交出去三次"
+          },
+          {
+            "title": "比工具結果的字元",
+            "detail": "差不到一半，\n就不用交出去"
+          }
+        ],
+        "source": "這支的核對方式：差不到一半，這件工作不夠吵"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "y7rk",
+          "text": "換成你的工作，先填三格：它要讀什麼、回報長怎樣、需要哪些工具。",
+          "reveal": 1,
+          "emotion": "轉向觀眾，語氣亮一點"
+        },
+        {
+          "id": "m3x5",
+          "text": "留在主對話裡做、點名交出去做，各跑三次。",
+          "reveal": 1
+        },
+        {
+          "id": "59c8",
+          "text": "主對話裡的工具結果，如果減少不到一半，這件工作就不用交出去。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "scope",
+      "template": "bullets",
+      "data": {
+        "title": "這些數字只屬於這一組",
+        "items": [
+          "Claude Code 2.1.295，不開畫面的 session",
+          "一個模型：sonnet（claude-sonnet-5-5）",
+          "Windows 11 的 Git Bash",
+          "每一種 3 次；寫檔、CLAUDE.md、拿掉檔案各 1 次"
+        ],
+        "source": "runlog.txt 開頭｜互動式畫面這支沒有看過"
+      },
+      "claims": [
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "4qy2",
+          "text": "這些數字只屬於這一組：一個模型、一個平台，每一種三次。",
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "article",
+      "template": "cta",
+      "data": {
+        "kicker": "完整文章",
+        "title": "Subagents 與代理 MD 設定",
+        "sub": "同一個主題的文字版｜連結在說明欄"
+      },
+      "claims": [
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "w5zy",
+          "text": "說明欄的文章，從建立一個只能讀的審查代理講起。"
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "template": "outro",
+      "data": {
+        "title": "交出去的三次：\n**主對話裡的工具結果剩一千多個字元**",
+        "cta": "你最常請 Claude 查、查完主對話就滿了的是哪一種東西？留言告訴我",
+        "lines": [
+          "工具結果的字元：24,792–34,419 對 1,028–1,266",
+          "加上背景回報的那一則：1,266–1,937",
+          "7 筆答案：兩邊都是 7／7；整個 session 的用量分不出來"
+        ]
+      },
+      "claims": [
+        "c1",
+        "c24",
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "w6n8",
+          "text": "交出去之後，主對話裡的工具結果，只剩一千多個字元。",
+          "emotion": "放慢收穩"
+        },
+        {
+          "id": "mn86",
+          "text": "你最常請 Claude 查哪一種東西？",
+          "emotion": "問句上揚，親切"
+        },
+        {
+          "id": "a4wn",
+          "text": "想看更多實際跑過的教學，訂閱頻道。",
+          "emotion": "輕快，帶笑"
+        }
+      ]
+    }
+  ]
+}
