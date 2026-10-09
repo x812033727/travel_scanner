@@ -129,3 +129,36 @@ describe("thumbnail variants B and C", () => {
     expect(links).toEqual([["縮圖 thumbnail.jpg", "thumbnail.jpg"], ["縮圖 B", "thumbnail-b.jpg"], ["縮圖 C", "thumbnail-c.jpg"], ["縮圖 en", "thumbnail.en.jpg"]]);
   });
 });
+
+// Ticket 2026-10-09-languages-card-says-the-site-cannot: sixteen batches with a ready dub track
+// were approved and none of the tracks reached YouTube, because the owner read the button as
+// an order to the site. The site cannot upload an audio track (YouTube has no API for it), so
+// the card says so first, the button reads as the owner's own statement, and an approved
+// batch still offers the track and the steps, since approving never uploaded anything.
+describe("a languages card with a dub track", () => {
+  const languages: Review = {
+    id: "c2a1d0e9-5d8a-4f03-9b8e-1f2a3b4c5d6e", gate: "languages", content_sha256: "a".repeat(64), summary: "語言：en 三項完成",
+    payload: { locales: { en: { metadata: "ready", captions: "ready", dub: "ready", file: "en.m4a", format: "m4a", file_role: "dub_en" } } },
+    files: [{ role: "dub_en", sha256: "1".repeat(64), size: 25_000_000, content_type: "audio/mp4" }],
+    status: "pending", choice: null, note: null, decided_at: null, created_at: "2026-10-09T10:00:00Z",
+  };
+
+  it("says the site cannot upload the track before the steps, and the button is the owner's statement", () => {
+    render(<ReviewCard slug="meta-anti-scam-2fa-passkey" review={languages} canManage onDecided={vi.fn()} />);
+    const card = screen.getByRole("article", { name: "語言" });
+    expect(card.textContent).toContain("網站沒辦法替你上傳音軌：YouTube 沒有這個 API，只有你能在 Studio 傳。");
+    expect(card.textContent).toContain("開啟「進階功能」");
+    expect(card.textContent).toContain("按了網站不會替你傳");
+    expect(within(card).getByRole("button", { name: "我已經在 Studio 傳好這些配音" })).toHaveProperty("disabled", false);
+    expect(within(card).queryByRole("button", { name: "已在 Studio 上傳配音" })).toBeNull();
+  });
+
+  it("keeps the track and the Studio steps on an approved batch, so the owner can still upload it", () => {
+    const approved: Review = { ...languages, status: "approved", decided_at: "2026-10-09T10:05:00Z" };
+    render(<ReviewCard slug="meta-anti-scam-2fa-passkey" review={approved} canManage onDecided={vi.fn()} />);
+    const card = screen.getByRole("article", { name: "語言" });
+    expect(within(card).getByRole("link", { name: "下載 en.m4a" }).getAttribute("href")).toContain("1".repeat(64));
+    expect(card.textContent).toContain("「新增語言」");
+    expect(within(card).queryByRole("button", { name: "我已經在 Studio 傳好這些配音" })).toBeNull();
+  });
+});

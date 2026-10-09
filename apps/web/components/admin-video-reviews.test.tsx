@@ -391,7 +391,7 @@ describe("AdminVideoReviews", () => {
     // A dub track is the one part only the owner can upload, so the Studio steps are there.
     expect(card.textContent).toContain("配音要在 Studio 上傳");
     expect(card.textContent).toContain("「新增語言」");
-    const approve = screen.getByRole("button", { name: "已在 Studio 上傳配音" });
+    const approve = screen.getByRole("button", { name: "我已經在 Studio 傳好這些配音" });
     expect(approve).toHaveProperty("disabled", false);
     fireEvent.click(approve);
     await waitFor(() => expect(posts).toHaveLength(1));
