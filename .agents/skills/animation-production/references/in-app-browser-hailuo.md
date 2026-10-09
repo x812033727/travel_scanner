@@ -24,7 +24,7 @@
 2. 到建立頁 `fetch(url)`，用 `crypto.subtle.digest('SHA-256')` 核對與本機官方 PNG 完全相同，再 `new File` → `DataTransfer` → `input[type=file].files` → `dispatchEvent(change)`；等預覽 `<img src>` 變成 `https://cdn.hailuoai.video/` 才算上傳完成。
 3. 帳本的 references 仍綁本機官方檔的 SHA，`upload_method` 如實寫「page-JS fetch of the official CDN asset」。
 
-限制：這是用頁面 JS 把提供者 CDN 上同一帳號的檔塞進上傳框，`browser-production.md` 第 1 節原則上不鼓勵用頁面注入繞過檔案限制；本次只在檔案 SHA 完全相符時用，且沒有碰 profile、cookie 或權杖。要不要當正式做法由站主決定；不接受就改請站主自己上傳。
+限制：這是用頁面 JS 把提供者 CDN 上同一帳號的檔塞進上傳框；只在檔案 SHA 完全相符（首格）或 PSNR 核對過（參考圖副本）時用，且沒有碰 profile、cookie 或權杖。站主 2026-10-10 裁定為正式做法，條件寫在 `browser-production.md` 第 1 節：每一次都把 SHA 或 URL 記進帳本；仍禁止用注入繞過付費、額度或浮水印。同一裁定也接受「點無水印下載後抓頁面實際 fetch 的 URL 用 curl 存檔」（窗格隱藏時 blob 存檔不落地），`download_note` 要記 URL。
 
 角色與道具參考圖：提供者把每次上傳轉成降尺寸 JPEG（16:9 → 1672×941，直式 → 1024×1536），所以模型歷來吃到的本來就是這份 JPEG，但它與本機 PNG 永遠不會位元相同。可用 `claude-recover-20261009/match-refs.py` 的方法（16×16 平均雜湊預篩＋PSNR ≥ 38 dB 確認）把畫廊各卡片的輸入圖對回本機參考檔；只載入得到的卡片才找得到，老批次的參考圖可能不在頁面上。
 
