@@ -1,0 +1,2463 @@
+RUN LOG: claude-code-skills-hands-on
+Date: 2026-10-09 (all times UTC, taken from the commands' own output; the machine's clock is UTC+8)
+Claude Code: 2.1.295 (Claude Code)
+Node.js: v24.13.0
+bash: GNU bash, version 5.3.15(1)-release (x86_64-pc-cygwin)  (Git Bash; uname: MINGW64_NT-10.0-26200-ARM64 3.6.9)
+find / sort / head / grep: find (GNU findutils) 4.10.0, sort (GNU coreutils) 8.32, head (GNU coreutils) 8.32, grep (GNU grep) 3.0
+OS: Windows 11 Home 10.0.26200
+Model: every session passed --model sonnet (session.sh's default; MODEL was never set). The stream's
+init event and the result's modelUsage name it claude-sonnet-5-5 in all twelve sessions.
+Login: subscription (init reports apiKeySource "none").
+Where the shell came from: Git Bash started by the Claude Code desktop app, so each session
+inherited the CLAUDE*/ANTHROPIC* variables whose NAMES every session log lists (values are not
+recorded, except the four the seed prints: CLAUDECODE=1, CLAUDE_CODE_ENTRYPOINT=claude-desktop,
+CLAUDE_CODE_SIMPLE=0, CLAUDE_EFFORT=high).
+
+How to read this log
+- Item numbers are the brief's ("要先實作", items 0 to 15).
+- <work> is the video's work folder outside the repository, <seed> is <work>/_tools/seed,
+  <lab> is <work>/run/skill-lab (session.sh's default; rebuilt from the seed before every
+  session), <logs> is <work>/run/logs, <runner> is <work>/_tools/runner. The home directory is
+  written <home>, the user name <user>. session.sh's own "show" filter writes <lab>, <logs>,
+  <seed>, <home>, <user>; the runner's scripts write <lab> and <home>; message uuids and session
+  ids are written <uuid>, tool-call ids <id>. Nothing else in a quoted output was changed.
+- <lab> lies below the home directory (8 folders above it, session.sh's count; the debug log
+  counts 7 directories on the way up). LAB was never moved: the condition for moving it
+  ("anything else" not 0) did not occur.
+- "[exit N]" is the exit code captured right after a command.
+- "runner" marks a check that is not in the brief. The runner's scripts live in <runner> and are
+  not part of the demo:
+    one.sh <name> <arm> ...  runs "bash <seed>/session.sh <name> <arm>" for each pair, saves what
+                             it printed, stops at the first session without exit 0 and an empty
+                             stderr. It never passes --dry or --force.
+    inspect.mjs              one line per stream event (tool calls and results cut to 900
+                             characters; thinking blocks by length only) and the reply in full.
+    init-diff.mjs            compares the init event's lists across sessions; names a skill only
+                             if it is on tally.mjs's list of shipped skills or is the project's.
+    extras.sh                per-session lines from the debug logs and the kept project copies.
+    assemble.mjs             builds this file and replaces home paths, uuids and tool-call ids.
+- Raw files (stream.jsonl, debug.log, stderr.txt, seen.log, session.log, <name>.lab/) stay in
+  <work>/run/logs. Every session has its files (the three none sessions have no seen.log, because
+  no hook event fired there); nothing was rebuilt, replaced or deleted.
+- The streams carry "rate_limit_event" lines with the account's usage figures. They are left out
+  of the excerpts below (two or three lines per session) and should not go on a card.
+
+Sessions run: 12 of the 12 allowed (s1, n1, v1, s2, n2, v2, s3, n3, v3, x1, c1, o1, in that
+order). All on sonnet, all exit 0 with 0 bytes on stderr, none timed out, none retried, no
+--force, no --dry on a session name. The spare session was unused after the eleven required
+ones, so it went to the optional o1 (item 14).
+  name arm       exit  turns  seconds  total_cost_usd
+  s1   skill     0     11     23       0.0512362
+  n1   none      0     10     21       0.043597
+  v1   vague     0     11     41       0.046130199999999996
+  s2   skill     0     11     24       0.0465398
+  n2   none      0     10     19       0.0435006
+  v2   vague     0     12     27       0.048740000000000006
+  s3   skill     0     11     25       0.048005599999999995
+  n3   none      0     10     24       0.0439314
+  v3   vague     0     12     32       0.0474676
+  x1   slash     0     9      29       0.04571700000000001
+  c1   claudemd  0     9      25       0.0434886
+  o1   overlap   0     12     36       0.048131999999999994
+  Sum of the twelve reported total_cost_usd values: 0.556486 (the tool's own local estimate).
+Seed changes: none. Every seed file has the hash the brief lists (item 2); no flag was changed;
+tally.mjs and seen.mjs did not need the key fix of item 3 point 7 (the key is "skill").
+
+Result in one paragraph (details under item 15)
+  The Skill tool was called for release-prep in 3 of 3 sessions with the specific description,
+  in 3 of 3 with the vague description, and in 0 of 3 without the skill (it does not exist
+  there). Always as the first tool call, always with input {"skill":"release-prep","args":"0.3.1"}.
+  Steps: release note (F4) 0/3 without, 3/3 with; last line (F5) 0/3 without, 3/3 with;
+  CHANGELOG (F2) 2/3 without, 3/3 with; version (F1) and README (F3) 3/3 on both sides.
+  The brief's condition for outcome 1 (at least two steps where "with" beats "without" by two or
+  more) holds on F4 and F5. The main example stands. Because the vague arm was also called 3 of
+  3, the brief's rule applies: the film says "these three times the vague one was called too",
+  and how to write a description falls back to the official good/bad example, not a measured
+  difference.
+
+================================================================================================
+ITEMS 0, 1, 2   Model-free checks (M0 to M8)
+================================================================================================
+Before running: session.sh, tally.mjs, m-checks.sh, check-seen.mjs, check-tally.mjs,
+measure-seed.mjs, calc.mjs, seen.mjs and settings.json were read in full. From session.sh:
+with --dry the target is $DRY (default <work>/run/dry-lab); the only "rm -rf" is on the target;
+the block that creates <logs>, refuses a used name or moves records aside is skipped
+("if [ -z "$dry" ]"); nothing is written to <logs>. So --dry touches neither <lab> nor <logs>.
+m-checks.sh ends with rm -rf of its own mktemp folder and of $DRY only.
+
+$ cd <work> && bash _tools/seed/m-checks.sh > run/logs/m-checks.log 2>&1; echo "[m-checks exit $?]"
+[m-checks exit 0]
+Expected: 34 "[exit 0]"; hashes as in the brief; nine dry builds as in the brief; validate
+results as M7; the bookkeeping as M8.
+Actual: 34 of 34 "[exit 0]"; seven "[validate exit N]" lines: 0, 0, 0, 1, 0, 0, 1.
+Match: yes.
+
+runner: compared with the planner's log.
+$ diff <work>/_tools/logs/m-checks-planner.log <work>/run/logs/m-checks.log
+1c1
+< # 2026-10-09T14:04:24Z | every command below is run from <seed>
+---
+> # 2026-10-09T14:24:14Z | every command below is run from <seed>
+[diff exit 1]
+The only differing line is the time stamp. Every hash, every file list (none 6 files; skill,
+vague, slash, broken, typo 8; claudemd 7; overlap 9; flat 7), every validate message and the
+"above the project" line are byte-identical to the planner's run.
+
+<work>/run/logs/m-checks.log in full (433 lines):
+# 2026-10-09T14:24:14Z | every command below is run from <seed>
+
+$ claude --version
+2.1.295 (Claude Code)
+[exit 0]
+
+$ node --version
+v24.13.0
+[exit 0]
+
+$ bash --version | head -1
+GNU bash, version 5.3.15(1)-release (x86_64-pc-cygwin)
+[exit 0]
+
+$ find --version | head -1; sort --version | head -1; head --version | head -1; grep --version | head -1
+find (GNU findutils) 4.10.0
+sort (GNU coreutils) 8.32
+head (GNU coreutils) 8.32
+grep (GNU grep) 3.0
+[exit 0]
+
+$ claude --help | grep -E -- '^  --(tools|allowedTools|setting-sources|strict-mcp-config|no-session-persistence|debug-file|model|disable-slash-commands)[ ,]' | cut -c1-78
+  --allowedTools, --allowed-tools <tools...>
+  --debug-file <path>                   Write debug logs to a specific file pa
+  --disable-slash-commands              Disable all skills
+  --model <model>                       Model for the current session. Provide
+  --no-session-persistence              Disable session persistence - sessions
+  --setting-sources <sources>           Comma-separated list of setting source
+  --strict-mcp-config                   Only use MCP servers from --mcp-config
+  --tools <tools...>                    Specify the list of available tools fr
+[exit 0]
+
+$ claude plugin validate --help | head -4
+Usage: claude plugin validate [options] <path>
+
+Validate a plugin or marketplace manifest, or the skills, agents, and commands
+in a directory
+[exit 0]
+
+$ node measure-seed.mjs
+sha256[0:16]      lines  max chars  max columns  bom  cr  card  file
+811b445d346fa548     28        119          119  no   no  -     calc.mjs
+96cc033f70e9efe1     39        212          212  no   no  -     check-seen.mjs
+d1d48ced01ba7038     99        161          161  no   no  -     check-tally.mjs
+7dccd1629c1bd296     62        174          174  no   no  -     m-checks.sh
+4ac11afe76093b55     38        207          207  no   no  -     measure-seed.mjs
+7e9bc0655b1dbe4c      1         22           38  no   no  fits  prompts/ship.txt
+                  visible characters (a chat card holds 44): 22
+b89ebd07d74c4e3a      1         19           19  no   no  fits  prompts/slash.txt
+                  visible characters (a chat card holds 44): 19
+76928f9f4cf5c938    210        169          169  no   no  -     session.sh
+1e0e80b3efe8cb3d     13         35           35  no   no  fits  skill-lab/CHANGELOG.md
+8f2b261a43faf16f      5         62           62  no   no  fits  skill-lab/README.md
+4a3b175877bb94c6      6         21           21  no   no  fits  skill-lab/package.json
+a3e0a9bd16d2da03      7         47           47  no   no  fits  skill-lab/src/units.mjs
+9bbae426a2536bb1     41         63           63  no   no  fits  skill-log/seen.mjs
+83fe258985c6060e     44         60           60  no   no  fits  skill-log/settings.json
+d0abb888c11d25a9    201        227          227  no   no  -     tally.mjs
+9dc1cb9b891d2a7c     21         46           56  no   no  fits  variants/CLAUDE.release.md
+9c10ed7dc9ee0af8     12         41           61  no   no  fits  variants/changelog-entry.skill.md
+8cb522de0dd6e304     19         53           61  no   no  fits  variants/release-prep.broken.skill.md
+df8ab1abaa0f192f     19         53           61  no   no  fits  variants/release-prep.specific.skill.md
+9125e3d02655a146      7         10           17  no   no  fits  variants/release-prep.template.md
+85d598957772095d     19         53           61  no   no  fits  variants/release-prep.typo.skill.md
+6109206b2b27e29c     18         53           57  no   no  fits  variants/release-prep.vague.skill.md
+[exit 0]
+
+$ node check-seen.mjs
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+--- the log file
+InstructionsLoaded session_start Project CLAUDE.md
+InstructionsLoaded session_start User (outside the project)
+PreToolUse Skill release-prep keys=skill,args
+PreToolUse Skill (not a project skill) keys=skill
+UserPromptExpansion slash_command release-prep source=made-up-source
+UserPromptExpansion slash_command (not a project skill) source=made-up-source
+[exit 0]
+
+$ node check-tally.mjs
+== made-up-called | model made-up-model | Claude Code 0.0.0 | permission mode default
+   result success, 6 turns, 0 permission denials, cost USD 0, output tokens 900
+   built-in tools offered (6): Read Glob Grep Edit Write Skill
+   MCP servers 0, MCP tools 0 | plugins shipped with Claude Code: 1, other plugins: 0
+   skills the session started with: 4 = the project's 1 (release-prep) + shipped with Claude Code 3 + anything else 0
+   the project's skills among the slash commands: release-prep
+   call  1 Skill release-prep args="0.3.1" [input keys: skill,args]
+   call  2 Read .claude/skills/release-prep/template.md
+   call  3 Edit package.json
+   call  4 Edit CHANGELOG.md
+   call  5 Edit README.md
+   call  6 Write releases/v0.3.1.md
+   Skill tool called for release-prep: yes (call 1) | other Skill calls: none
+   skill or instruction files opened with a tool: Read .claude/skills/release-prep/template.md
+   the procedure's text appears in: the result of Skill (call 1)
+   the template's text appears in: the result of Read (call 2)
+   first request: input 2 + cache write 1000 + cache read 4427 = 5429 tokens | whole session: 23012
+   files written: package.json, CHANGELOG.md, README.md, releases/v0.3.1.md
+   last line of the reply: **下一步：git tag v0.3.1**
+   files in the project afterwards: CHANGELOG.md README.md package.json releases/v0.3.1.md src/units.mjs
+   F1 package.json version is 0.3.1: yes (it is 0.3.1)
+   F2 CHANGELOG.md: dated heading yes (## v0.3.1 (2026-01-01)), Unreleased kept above it yes, items moved under it yes -> yes
+   F3 README.md says Latest release: v0.3.1: yes (Latest release: v0.3.1)
+   F4 releases/v0.3.1.md: file yes, template headings 3 of 3 -> yes
+   F5 last line starts with 下一步： and has git tag v0.3.1: yes
+   not scored: src/units.mjs sha256[0:16] a3e0a9bd16d2da03
+== made-up-no-skill | model made-up-model | Claude Code 0.0.0 | permission mode default
+   result success, 6 turns, 0 permission denials, cost USD 0, output tokens 900
+   built-in tools offered (6): Read Glob Grep Edit Write Skill
+   MCP servers 0, MCP tools 0 | plugins shipped with Claude Code: 1, other plugins: 0
+   skills the session started with: 4 = the project's 0 (none) + shipped with Claude Code 3 + anything else 1
+   the project's skills among the slash commands: none
+   call  1 Glob **/*
+   call  2 Edit package.json
+   call  3 Edit CHANGELOG.md
+   call  4 Read (outside the project)
+   Skill tool called for release-prep: no | other Skill calls: none
+   skill or instruction files opened with a tool: none
+   the procedure's text appears in: nowhere
+   the template's text appears in: nowhere
+   first request: input 2 + cache write 920 + cache read 4427 = 5349 tokens | whole session: 23012
+   files written: package.json, CHANGELOG.md
+   last line of the reply: 版號和 CHANGELOG 都更新了。
+   files in the project afterwards: CHANGELOG.md README.md package.json src/units.mjs
+   F1 package.json version is 0.3.1: yes (it is 0.3.1)
+   F2 CHANGELOG.md: dated heading yes (## v0.3.1 (2026-01-01)), Unreleased kept above it no, items moved under it no -> no
+   F3 README.md says Latest release: v0.3.1: no (Latest release: v0.3.0)
+   F4 releases/v0.3.1.md: file no, template headings 0 of 3 -> no
+   F5 last line starts with 下一步： and has git tag v0.3.1: no
+   not scored: src/units.mjs sha256[0:16] a3e0a9bd16d2da03
+== made-up-read-only | model made-up-model | Claude Code 0.0.0 | permission mode default
+   result success, 6 turns, 0 permission denials, cost USD 0, output tokens 900
+   built-in tools offered (6): Read Glob Grep Edit Write Skill
+   MCP servers 0, MCP tools 0 | plugins shipped with Claude Code: 1, other plugins: 0
+   skills the session started with: 4 = the project's 1 (release-prep) + shipped with Claude Code 3 + anything else 0
+   the project's skills among the slash commands: release-prep
+   call  1 Glob **/*
+   call  2 Read .claude/skills/release-prep/SKILL.md
+   call  3 Edit package.json
+   Skill tool called for release-prep: no | other Skill calls: none
+   skill or instruction files opened with a tool: Read .claude/skills/release-prep/SKILL.md
+   the procedure's text appears in: the result of Read (call 2)
+   the template's text appears in: nowhere
+   first request: input 2 + cache write 960 + cache read 4427 = 5389 tokens | whole session: 23012
+   files written: package.json
+   last line of the reply: 下一步:git tag v0.3.1
+   files in the project afterwards: CHANGELOG.md README.md package.json releases/v0.3.1.md src/units.mjs
+   F1 package.json version is 0.3.1: yes (it is 0.3.1)
+   F2 CHANGELOG.md: dated heading yes (## v0.3.1 (2026-01-01)), Unreleased kept above it yes, items moved under it yes -> yes
+   F3 README.md says Latest release: v0.3.1: yes (Latest release: v0.3.1)
+   F4 releases/v0.3.1.md: file yes, template headings 2 of 3 -> no
+   F5 last line starts with 下一步： and has git tag v0.3.1: yes
+   not scored: src/units.mjs sha256[0:16] a3e0a9bd16d2da03
+
+name | Skill called | F1 version | F2 changelog | F3 readme | F4 release note | F5 last line | SKILL.md opened with a tool | first request tokens | turns
+made-up-called | yes | yes | yes | yes | yes | yes | no | 5429 | 6
+made-up-no-skill | no | yes | no | no | no | no | no | 5349 | 6
+made-up-read-only | no | yes | yes | yes | no | yes | yes | 5389 | 6
+[exit 0]
+
+$ node calc.mjs
+all-or-nothing split: with the file n of n, without it 0 of n
+  n = 2: 1 way in 6 (16.7%) if the file made no difference
+  n = 3: 1 way in 20 (5.0%) if the file made no difference
+  n = 4: 1 way in 70 (1.4%) if the file made no difference
+  n = 5: 1 way in 252 (0.4%) if the file made no difference
+n of n followed: the follow rate is at least this (95% confidence)
+    1 of 1  : at least 5.0%
+    3 of 3  : at least 36.8%
+    5 of 5  : at least 54.9%
+   10 of 10 : at least 74.1%
+   20 of 20 : at least 86.1%
+   29 of 29 : at least 90.2%
+   59 of 59 : at least 95.0%
+  299 of 299: at least 99.0%
+runs in a row, all followed, needed to claim a follow rate (95% confidence)
+  50%: 5 runs
+  80%: 14 runs
+  90%: 29 runs
+  95%: 59 runs
+  99%: 299 runs
+[exit 0]
+
+$ bash session.sh dry-none none --dry | sed -n '/^\$ find/,/^\$ sha256sum/p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+[exit 0]
+
+$ bash session.sh dry-skill skill --dry | sed -n '/^\$ find/,/^\$ sha256sum/p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/release-prep/SKILL.md
+./.claude/skills/release-prep/template.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+[exit 0]
+
+$ bash session.sh dry-vague vague --dry | sed -n '/^\$ find/,/^\$ sha256sum/p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/release-prep/SKILL.md
+./.claude/skills/release-prep/template.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+[exit 0]
+
+$ bash session.sh dry-slash slash --dry | sed -n '/^\$ find/,/^\$ sha256sum/p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/release-prep/SKILL.md
+./.claude/skills/release-prep/template.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+[exit 0]
+
+$ bash session.sh dry-claudemd claudemd --dry | sed -n '/^\$ find/,/^\$ sha256sum/p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./CHANGELOG.md
+./CLAUDE.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+[exit 0]
+
+$ bash session.sh dry-overlap overlap --dry | sed -n '/^\$ find/,/^\$ sha256sum/p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/changelog-entry/SKILL.md
+./.claude/skills/release-prep/SKILL.md
+./.claude/skills/release-prep/template.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+[exit 0]
+
+$ bash session.sh dry-broken broken --dry | sed -n '/^\$ find/,/^\$ sha256sum/p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/release-prep/SKILL.md
+./.claude/skills/release-prep/template.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+[exit 0]
+
+$ bash session.sh dry-typo typo --dry | sed -n '/^\$ find/,/^\$ sha256sum/p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/release-prep/SKILL.md
+./.claude/skills/release-prep/template.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+[exit 0]
+
+$ bash session.sh dry-flat flat --dry | sed -n '/^\$ find/,/^\$ sha256sum/p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/release-prep.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+[exit 0]
+
+$ bash session.sh dry-skill skill --dry | sed -n '/^## above/,$p' | grep -v -E '^(ANTHROPIC|CLAUDE)[A-Z_]* '
+## above the project (counts only)
+8 folders above <lab> | with .claude/skills: 1 | with .claude/commands: 0 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## the request (ship.txt)
+0.3.1 要出了，幫我把該改的地方都改好。
+## what the session inherits from this shell (names only, then four values)
+CLAUDECODE=1
+CLAUDE_CODE_ENTRYPOINT=claude-desktop
+CLAUDE_CODE_SIMPLE=0
+CLAUDE_EFFORT=high
+## the session
+$ env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 SKILL_LOG=<logs>/dry-skill.seen.log \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config \
+    --tools "Read,Glob,Grep,Edit,Write,Skill" --allowedTools "Read,Glob,Grep,Edit,Write,Skill" --no-session-persistence \
+    --output-format stream-json --verbose \
+    --debug-file <logs>/dry-skill.debug.log \
+    < <seed>/prompts/ship.txt > <logs>/dry-skill.stream.jsonl 2> <logs>/dry-skill.stderr.txt
+[dry run: no session was started; <lab> here is the dry folder, and <logs> was not touched]
+[exit 0]
+
+$ (cd "$DRY" && cat .claude/skills/release-prep/SKILL.md)
+---
+name: release-prep
+description: 準備發版：改版號、CHANGELOG、README，寫發版單。
+when_to_use: 使用者說某一版要出了、要出新版、要 bump 版號時。
+---
+
+# 發版準備
+
+版號用使用者指定的那一版，下面寫成 X.Y.Z。
+只動下面列的檔案，不改 src/。五步照順序做完。
+
+1. package.json：version 改成 X.Y.Z。
+2. CHANGELOG.md：在「## Unreleased」下面加一個標題
+   「## vX.Y.Z (YYYY-MM-DD)」，日期用今天；把 Unreleased
+   底下的項目搬到新標題底下。Unreleased 標題留著。
+3. README.md：「Latest release:」那一行改成 vX.Y.Z。
+4. 新增 releases/vX.Y.Z.md：照 [template.md](template.md)
+   的三個標題寫，標題一個字都不要改。
+5. 回覆的最後一行固定寫：下一步：git tag vX.Y.Z
+[exit 0]
+
+$ (cd "$DRY" && cat .claude/skills/release-prep/template.md)
+# vX.Y.Z
+
+## 這一版改了什麼
+
+## 升級要注意
+
+## 怎麼確認
+[exit 0]
+
+$ validate skill
+Validating components in: <lab>\.claude\skills
+✔ Validation passed
+[validate exit 0]
+[exit 0]
+
+$ validate vague
+Validating components in: <lab>\.claude\skills
+✔ Validation passed
+[validate exit 0]
+[exit 0]
+
+$ validate overlap
+Validating components in: <lab>\.claude\skills
+✔ Validation passed
+[validate exit 0]
+[exit 0]
+
+$ validate broken
+Validating components in: <lab>\.claude\skills
+Validating skill: <lab>\.claude\skills\release-prep\SKILL.md
+✘ Found 1 error:
+  ❯ frontmatter: YAML frontmatter failed to parse: YAML Parse error: Unexpected character. At runtime this skill loads with empty metadata (all frontmatter fields silently dropped).
+✘ Validation failed
+[validate exit 1]
+[exit 0]
+
+$ validate typo
+Validating components in: <lab>\.claude\skills
+Validating skill: <lab>\.claude\skills\release-prep\SKILL.md
+⚠ Found 1 warning:
+  ❯ description: No description in frontmatter. A description helps users and Claude understand when to use this skill.
+✔ Validation passed with warnings
+[validate exit 0]
+[exit 0]
+
+$ validate flat
+Validating components in: <lab>\.claude\skills
+✔ Validation passed
+[validate exit 0]
+[exit 0]
+
+$ validate typo --strict
+Validating components in: <lab>\.claude\skills
+Validating skill: <lab>\.claude\skills\release-prep\SKILL.md
+⚠ Found 1 warning:
+  ❯ description: No description in frontmatter. A description helps users and Claude understand when to use this skill.
+✘ Validation failed (--strict treats warnings as errors)
+[validate exit 1]
+[exit 0]
+
+$ bash session.sh dry-none none --dry > /dev/null; (cd "$DRY" && find . -type f -not -path "./.claude/*" | sort)
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+[exit 0]
+
+$ guard g1 none > /dev/null 2>&1; records
+g1.lab g1.session.log g1.stderr.txt g1.stream.jsonl 
+[exit 0]
+
+$ guard g1 none > /dev/null; echo "[session.sh exit $?]"; records
+refused: g1 already has records in <logs> (4 entries).
+Pick another name (for example g1r), or pass --force to move them aside.
+[session.sh exit 3]
+g1.lab g1.session.log g1.stderr.txt g1.stream.jsonl 
+[exit 0]
+
+$ guard g1 none --dry | tail -1; records
+[dry run: no session was started; <lab> here is the dry folder, and <logs> was not touched]
+g1.lab g1.session.log g1.stderr.txt g1.stream.jsonl 
+[exit 0]
+
+$ guard g1 none --force 2>&1 > /dev/null | sed -E "s#g1\.[0-9TZ]+#g1.<time>#"; records; aside
+moved the old records of g1 to <logs>/replaced/g1.<time>/
+g1.lab g1.session.log g1.stderr.txt g1.stream.jsonl replaced 
+g1.lab g1.session.log g1.stderr.txt g1.stream.jsonl 
+[exit 0]
+
+================================================================================================
+ITEM 3   s1: skill, first session; also the check that the method works
+================================================================================================
+$ cd <work> && bash _tools/seed/session.sh s1 skill
+[session.sh exit 0]
+
+The seven things to check before going on:
+1. "[exit 0]", stderr 0 bytes: yes.
+2. Model claude-sonnet-5-5, Claude Code 2.1.295.
+3. "built-in tools offered (6): Edit Glob Grep Read Skill Write"; MCP servers 0, MCP tools 0;
+   other plugins 0: yes. --tools did put Skill in the list.
+4. "skills the session started with: 23 = the project's 1 (release-prep) + shipped with Claude
+   Code 22 + anything else 0": the project's 1, anything else 0: yes. (Shipped: 22 here, 21 in
+   most later sessions; see item 15, difference 2.)
+5. seen.log has no User, no Managed, no "(outside the project)", no "(not a project skill)",
+   and no InstructionsLoaded line: yes.
+6. "with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0", "with .claude/skills: 1"; the
+   debug log's fs.ancestors lines all say "found 0 of N directories": yes.
+7. The Skill line's input keys are "skill,args"; the key naming the skill is "skill", one of the
+   three the scripts try. No change to tally.mjs or seen.mjs.
+All seven hold, so the run continued.
+
+Expected: Skill called; one hook line PreToolUse Skill release-prep keys=...; the procedure's
+text in the result of the Skill call (or elsewhere); a Read of template.md; F1 to F5 yes;
+./releases/v0.3.1.md in the find.
+Actual: Skill called (call 1); hook line "PreToolUse Skill release-prep keys=skill,args"; Read
+of template.md (call 5); F1 to F5 all yes; ./releases/v0.3.1.md present; src/units.mjs unchanged.
+The procedure's text is NOT in the Skill call's result. The result is the one line "Launching
+skill: release-prep"; the body arrives in the next stream line, a user message flagged
+isSynthetic, which starts "Base directory for this skill: <lab>\.claude\skills\release-prep" and
+ends "ARGUMENTS: 0.3.1" (lines 4 and 5 of the excerpt below).
+Match: yes on every scored point; the place of the text is the "elsewhere" the brief allowed for.
+
+<logs>/s1.session.log in full:
+# s1 | arm skill | start 2026-10-09T14:29:05Z
+## the project before the session (rebuilt from <seed>/skill-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/release-prep/SKILL.md
+./.claude/skills/release-prep/template.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+9bbae426a2536bb1 *./.claude/hooks/seen.mjs
+83fe258985c6060e *./.claude/settings.json
+df8ab1abaa0f192f *./.claude/skills/release-prep/SKILL.md
+9125e3d02655a146 *./.claude/skills/release-prep/template.md
+1e0e80b3efe8cb3d *./CHANGELOG.md
+8f2b261a43faf16f *./README.md
+4a3b175877bb94c6 *./package.json
+a3e0a9bd16d2da03 *./src/units.mjs
+## above the project (counts only)
+8 folders above <lab> | with .claude/skills: 1 | with .claude/commands: 0 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## the request (ship.txt)
+0.3.1 要出了，幫我把該改的地方都改好。
+## what the session inherits from this shell (names only, then four values)
+(31 names, left out)
+CLAUDECODE=1
+CLAUDE_CODE_ENTRYPOINT=claude-desktop
+CLAUDE_CODE_SIMPLE=0
+CLAUDE_EFFORT=high
+## the session
+$ env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 SKILL_LOG=<logs>/s1.seen.log \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config \
+    --tools "Read,Glob,Grep,Edit,Write,Skill" --allowedTools "Read,Glob,Grep,Edit,Write,Skill" --no-session-persistence \
+    --output-format stream-json --verbose \
+    --debug-file <logs>/s1.debug.log \
+    < <seed>/prompts/ship.txt > <logs>/s1.stream.jsonl 2> <logs>/s1.stderr.txt
+[exit 0] (23 s, ended 2026-10-09T14:29:33Z)
+[stream lines: 28 | stderr bytes: 0]
+## the project after the session (kept as <logs>/s1.lab)
+$ find . -type f -not -path './.claude/*' | sort
+./CHANGELOG.md
+./README.md
+./package.json
+./releases/v0.3.1.md
+./src/units.mjs
+$ grep '"version"' package.json
+  "version": "0.3.1",
+$ head -8 CHANGELOG.md
+# Changelog
+
+## Unreleased
+
+## v0.3.1 (2026-10-09)
+
+- kmToMiles rounds to two decimals.
+
+$ grep 'Latest release' README.md
+Latest release: v0.3.1
+$ grep -h '^#' releases/*.md
+# v0.3.1
+## 這一版改了什麼
+## 升級要注意
+## 怎麼確認
+$ sha256sum src/units.mjs (first 16 hex digits)
+a3e0a9bd16d2da03 *src/units.mjs
+## what the logging hook saw (<logs>/s1.seen.log)
+PreToolUse Skill release-prep keys=skill,args
+## from the stream
+$ grep -c '"name":"Skill"' <logs>/s1.stream.jsonl
+1
+$ node <seed>/tally.mjs <logs>/s1.stream.jsonl
+== s1 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success, 11 turns, 0 permission denials, cost USD 0.0512362, output tokens 1633
+   built-in tools offered (6): Edit Glob Grep Read Skill Write
+   MCP servers 0, MCP tools 0 | plugins shipped with Claude Code: 3, other plugins: 0
+   skills the session started with: 23 = the project's 1 (release-prep) + shipped with Claude Code 22 + anything else 0
+   the project's skills among the slash commands: release-prep
+   call  1 Skill release-prep args="0.3.1" [input keys: skill,args]
+   call  2 Read package.json
+   call  3 Read CHANGELOG.md
+   call  4 Read README.md
+   call  5 Read .claude/skills/release-prep/template.md
+   call  6 Edit package.json
+   call  7 Edit CHANGELOG.md
+   call  8 Edit README.md
+   call  9 Write releases/v0.3.1.md
+   Skill tool called for release-prep: yes (call 1) | other Skill calls: none
+   skill or instruction files opened with a tool: Read .claude/skills/release-prep/template.md
+   the procedure's text appears in: a user message (added by Claude Code)
+   the template's text appears in: the result of Read (call 5)
+   first request: input 2 + cache write 4597 + cache read 4212 = 8811 tokens | whole session: 39502
+   files written: package.json, CHANGELOG.md, README.md, releases/v0.3.1.md
+   last line of the reply: 下一步:git tag v0.3.1
+   files in the project afterwards: CHANGELOG.md README.md package.json releases/v0.3.1.md src/units.mjs
+   F1 package.json version is 0.3.1: yes (it is 0.3.1)
+   F2 CHANGELOG.md: dated heading yes (## v0.3.1 (2026-10-09)), Unreleased kept above it yes, items moved under it yes -> yes
+   F3 README.md says Latest release: v0.3.1: yes (Latest release: v0.3.1)
+   F4 releases/v0.3.1.md: file yes, template headings 3 of 3 -> yes
+   F5 last line starts with 下一步： and has git tag v0.3.1: yes
+   not scored: src/units.mjs sha256[0:16] a3e0a9bd16d2da03
+## the debug log on skills
+$ grep -ci skill <logs>/s1.debug.log
+27
+$ grep -iE 'release-prep|changelog-entry|frontmatter|skill listing' <logs>/s1.debug.log | head -12 (time stamps cut)
+[DEBUG] SkillTool returning 2 newMessages for skill release-prep
+$ grep 'fs.ancestors' <logs>/s1.debug.log (time stamps cut, counted)
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 3 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 7 directories
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 3 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 7 directories
+# s1 | end 2026-10-09T14:29:36Z
+
+runner: the stream, one line per event.
+$ node <runner>/inspect.mjs <logs>/s1.stream.jsonl 900 | grep -v ' rate_limit_event '
+init keys: type,subtype,cwd,session_id,tools,mcp_servers,model,permissionMode,slash_commands,terminal_slash_commands,apiKeySource,claude_code_version,output_style,agents,skills,plugins,capabilities,analytics_disabled,product_feedback_disabled,uuid,scratchpad_path,messaging_socket_path,fast_mode_state,fast_mode_disabled_reason,per_turn_effort_active,view_mode,powershell_path
+init: model=claude-sonnet-5-5 version=2.1.295 apiKeySource=none permissionMode=default tools=Edit Glob Grep Read Skill Write mcp_servers=0 skills=23 slash_commands=59 agents=6 plugins=3
+ 1 system/init
+ 2 assistant tool_use Skill {"skill":"release-prep","args":"0.3.1"}
+     usage: input 2 cache_write 4597 cache_read 4212 output 16
+ 4 user tool_result: Launching skill: release-prep
+ 5 user [isSynthetic] text: Base directory for this skill: <lab>\.claude\skills\release-prep\n\n# 發版準備\n\n版號用使用者指定的那一版，下面寫成 X.Y.Z。\n只動下面列的檔案，不改 src/。五步照順序做完。\n\n1. package.json：version 改成 X.Y.Z。\n2. CHANGELOG.md：在「## Unreleased」下面加一個標題\n   「## vX.Y.Z (YYYY-MM-DD)」，日期用今天；把 Unreleased\n   底下的項目搬到新標題底下。Unreleased 標題留著。\n3. README.md：「Latest release:」那一行改成 vX.Y.Z。\n4. 新增 releases/vX.Y.Z.md：照 [template.md](template.md)\n   的三個標題寫，標題一個字都不要改。\n5. 回覆的最後一行固定寫：下一步：git tag vX.Y.Z\n\n\nARGUMENTS: 0.3.1
+ 6 assistant tool_use Read {"file_path":"<lab>\\package.json"}
+     usage: input 2 cache_write 483 cache_read 8809 output 16
+ 7 user tool_result: 1	{\n2	  "name": "unit-kit",\n3	  "version": "0.3.0",\n4	  "private": true,\n5	  "type": "module"\n6	}\n7	
+ 8 assistant tool_use Read {"file_path":"<lab>\\CHANGELOG.md"}
+     usage: input 2 cache_write 483 cache_read 8809 output 16
+ 9 user tool_result: 1	# Changelog\n2	\n3	## Unreleased\n4	\n5	- kmToMiles rounds to two decimals.\n6	\n7	## v0.3.0 (2026-10-02)\n8	\n9	- Add kmToMiles.\n10	\n11	## v0.2.0 (2026-09-30)\n12	\n13	- First version, with cToF.\n14	
+10 assistant tool_use Read {"file_path":"<lab>\\README.md"}
+     usage: input 2 cache_write 483 cache_read 8809 output 16
+11 user tool_result: 1	# unit-kit\n2	\n3	Small unit converters for a travel notes app. No dependencies.\n4	\n5	Latest release: v0.3.0\n6	
+12 assistant tool_use Read {"file_path":"<lab>\\.claude\\skills\\release-prep\\template.md"}
+     usage: input 2 cache_write 483 cache_read 8809 output 16
+13 user tool_result: 1	# vX.Y.Z\n2	\n3	## 這一版改了什麼\n4	\n5	## 升級要注意\n6	\n7	## 怎麼確認\n8	
+14 system/thinking_tokens {"estimated_tokens":50,"estimated_tokens_delta":50,"session_id":"<uuid>","uuid":"<uuid>"}
+15 system/thinking_tokens {"estimated_tokens":174,"estimated_tokens_delta":124,"session_id":"<uuid>","uuid":"<uuid>"}
+16 assistant thinking (0 chars)
+     usage: input 2 cache_write 786 cache_read 9292 output 5
+17 assistant tool_use Edit {"replace_all":false,"file_path":"<lab>\\package.json","old_string":"\"0.3.0\"","new_string":"\"0.3.1\""}
+     usage: input 2 cache_write 786 cache_read 9292 output 5
+18 user tool_result: The file <lab>\package.json has been updated successfully. (file state is current in your context — no need to Read it back)
+19 assistant tool_use Edit {"replace_all":false,"file_path":"<lab>\\CHANGELOG.md","old_string":"## Unreleased\n\n- kmToMiles","new_string":"## Unreleased\n\n## v0.3.1 (2026-10-09)\n\n- kmToMiles"}
+     usage: input 2 cache_write 786 cache_read 9292 output 5
+20 user tool_result: The file <lab>\CHANGELOG.md has been updated successfully. (file state is current in your context — no need to Read it back)
+21 assistant tool_use Edit {"replace_all":false,"file_path":"<lab>\\README.md","old_string":"Latest release: v0.3.0","new_string":"Latest release: v0.3.1"}
+     usage: input 2 cache_write 786 cache_read 9292 output 5
+22 user tool_result: The file <lab>\README.md has been updated successfully. (file state is current in your context — no need to Read it back)
+23 assistant tool_use Write {"file_path":"<lab>\\releases\\v0.3.1.md","content":"# v0.3.1\n\n## 這一版改了什麼\n\n- kmToMiles 的結果四捨五入到小數點後兩位。\n\n## 升級要注意\n\n- kmToMiles 的回傳值現在只有兩位小數，如果有程式依賴原本未四捨五入的完整精度，請留意。\n\n## 怎麼確認\n\n- 呼叫 kmToMiles，確認回傳值最多兩位小數。\n"}
+     usage: input 2 cache_write 786 cache_read 9292 output 5
+24 user tool_result: File created successfully at: <lab>\releases\v0.3.1.md (file state is current in your context — no need to Read it back)
+25 assistant text: 0.3.1 的發版準備做完了,只動了 skill 列的四個檔案,沒碰 `src/`,也沒跑測試。\n\n- **`package.json`**:version 從 0.3.0 改成 0.3.1。\n- **`CHANGELOG.md`**:`## Unreleased` 標題留著,下面新增 `## v0.3.1 (2026-10-09)`,原本 Unreleased 的「kmToMiles rounds to two decimals.」搬到新標題底下。\n- **`README.md`**:`Latest release:` 那行改成 v0.3.1。\n- **`releases/v0.3.1.md`**:新增,照 template 的三個標題(這一版改了什麼、升級要注意、怎麼確認)寫。最上面的 `# vX.Y.Z` 我填成 `# v0.3.1`。\n\n發版單裡「升級要注意」和「怎麼確認」兩段是我根據 CHANGELOG 的那一條自己推的,沒有看 `src/`。發版前請你看一下內容對不對。\n\n下一步:git tag v0.3.1
+     usage: input 2 cache_write 1237 cache_read 10078 output 371
+27 system/post_turn_summary {"summarizes_uuid":"<uuid>","status_category":"completed","status_detail":"0.3.1 發版檔案四處改完;升級與確認段落待你審閱","needs_action":"","uuid":"<uuid>","session_id":"<uuid>"}
+28 result/success turns=11 cost=0.0512362 duration_ms=19278 models=claude-sonnet-5-5
+--- reply in full
+0.3.1 的發版準備做完了,只動了 skill 列的四個檔案,沒碰 `src/`,也沒跑測試。
+
+- **`package.json`**:version 從 0.3.0 改成 0.3.1。
+- **`CHANGELOG.md`**:`## Unreleased` 標題留著,下面新增 `## v0.3.1 (2026-10-09)`,原本 Unreleased 的「kmToMiles rounds to two decimals.」搬到新標題底下。
+- **`README.md`**:`Latest release:` 那行改成 v0.3.1。
+- **`releases/v0.3.1.md`**:新增,照 template 的三個標題(這一版改了什麼、升級要注意、怎麼確認)寫。最上面的 `# vX.Y.Z` 我填成 `# v0.3.1`。
+
+發版單裡「升級要注意」和「怎麼確認」兩段是我根據 CHANGELOG 的那一條自己推的,沒有看 `src/`。發版前請你看一下內容對不對。
+
+下一步:git tag v0.3.1
+
+runner: the release note s1 wrote (also saved as demo/results/s1.release-note-v0.3.1.md).
+$ cat <logs>/s1.lab/releases/v0.3.1.md
+# v0.3.1
+
+## 這一版改了什麼
+
+- kmToMiles 的結果四捨五入到小數點後兩位。
+
+## 升級要注意
+
+- kmToMiles 的回傳值現在只有兩位小數，如果有程式依賴原本未四捨五入的完整精度，請留意。
+
+## 怎麼確認
+
+- 呼叫 kmToMiles，確認回傳值最多兩位小數。
+
+================================================================================================
+ITEMS 4 to 11   n1, v1, s2, n2, v2, s3, n3, v3, in this order
+================================================================================================
+$ cd <work> && bash _tools/runner/one.sh n1 none v1 vague s2 skill n2 none
+$ cd <work> && bash _tools/runner/one.sh v2 vague s3 skill n3 none v3 vague
+(one.sh runs "bash <seed>/session.sh <name> <arm>" for each pair; each ended [session.sh exit 0].)
+
+Expected, none: the project's 0; no Skill call; F1 yes; F4 no; F5 no; F2, F3 unknown; hook log
+empty. Expected, skill: as item 3. Expected, vague: the project's 1; Skill call unknown.
+Expected, first request: within an arm the three differ by single digits; skill a few dozen
+tokens above none; vague in between.
+
+Actual, per session (each session.log follows in full):
+  item 4  n1 none   no Skill call; F1 yes, F2 no, F3 yes, F4 no, F5 no; hook log empty; 8752
+  item 5  v1 vague  Skill called (call 1); F1 to F5 yes; one PreToolUse line; 8776
+  item 6  s2 skill  Skill called (call 1); F1 to F5 yes; one PreToolUse line; 8808
+  item 7  n2 none   no Skill call; F1 yes, F2 yes, F3 yes, F4 no, F5 no; hook log empty; 8750
+  item 8  v2 vague  Skill called (call 1); F1 to F5 yes; one PreToolUse line; 8770
+  item 9  s3 skill  Skill called (call 1); F1 to F5 yes; one PreToolUse line; 8811
+  item 10 n3 none   no Skill call; F1 yes, F2 yes, F3 yes, F4 no, F5 no; hook log empty; 8754
+  item 11 v3 vague  Skill called (call 1); F1 to F5 yes; one PreToolUse line; 8766
+Match: none arm yes on every stated point (F2 turned out 2 of 3, F3 3 of 3). Skill arm yes.
+Vague arm: the unknown came out 3 of 3 called. First request: within an arm the spread is 4
+(none), 3 (skill), 10 (vague) tokens; skill is 54 to 61 above none, vague 12 to 26 above none
+and 32 to 45 below skill. The predicted ordering holds; the absolute size does not (about 8,750,
+not about 5,350; item 15, difference 1).
+In n1 the CHANGELOG lost its "## Unreleased" heading (the heading was renamed to the version);
+n2 and n3 did what the skill's step 2 asks without having the skill.
+No session opened SKILL.md with Read or Glob. template.md was opened with Read in every session
+that called the skill (call 5 in s1, v1, v2, s3, v3; call 2 in s2).
+
+<logs>/n1.session.log in full:
+# n1 | arm none | start 2026-10-09T14:30:11Z
+## the project before the session (rebuilt from <seed>/skill-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+9bbae426a2536bb1 *./.claude/hooks/seen.mjs
+83fe258985c6060e *./.claude/settings.json
+1e0e80b3efe8cb3d *./CHANGELOG.md
+8f2b261a43faf16f *./README.md
+4a3b175877bb94c6 *./package.json
+a3e0a9bd16d2da03 *./src/units.mjs
+## above the project (counts only)
+8 folders above <lab> | with .claude/skills: 1 | with .claude/commands: 0 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## the request (ship.txt)
+0.3.1 要出了，幫我把該改的地方都改好。
+## what the session inherits from this shell (names only, then four values)
+(31 names, left out)
+CLAUDECODE=1
+CLAUDE_CODE_ENTRYPOINT=claude-desktop
+CLAUDE_CODE_SIMPLE=0
+CLAUDE_EFFORT=high
+## the session
+$ env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 SKILL_LOG=<logs>/n1.seen.log \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config \
+    --tools "Read,Glob,Grep,Edit,Write,Skill" --allowedTools "Read,Glob,Grep,Edit,Write,Skill" --no-session-persistence \
+    --output-format stream-json --verbose \
+    --debug-file <logs>/n1.debug.log \
+    < <seed>/prompts/ship.txt > <logs>/n1.stream.jsonl 2> <logs>/n1.stderr.txt
+[exit 0] (21 s, ended 2026-10-09T14:30:38Z)
+[stream lines: 30 | stderr bytes: 0]
+## the project after the session (kept as <logs>/n1.lab)
+$ find . -type f -not -path './.claude/*' | sort
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ grep '"version"' package.json
+  "version": "0.3.1",
+$ head -8 CHANGELOG.md
+# Changelog
+
+## v0.3.1 (2026-10-09)
+
+- kmToMiles rounds to two decimals.
+
+## v0.3.0 (2026-10-02)
+
+$ grep 'Latest release' README.md
+Latest release: v0.3.1
+$ grep -h '^#' releases/*.md
+grep: releases/*.md: No such file or directory
+$ sha256sum src/units.mjs (first 16 hex digits)
+a3e0a9bd16d2da03 *src/units.mjs
+## what the logging hook saw (<logs>/n1.seen.log)
+(empty: no hook event reached the logger)
+## from the stream
+$ grep -c '"name":"Skill"' <logs>/n1.stream.jsonl
+0
+$ node <seed>/tally.mjs <logs>/n1.stream.jsonl
+== n1 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success, 10 turns, 0 permission denials, cost USD 0.043597, output tokens 1387
+   built-in tools offered (6): Edit Glob Grep Read Skill Write
+   MCP servers 0, MCP tools 0 | plugins shipped with Claude Code: 3, other plugins: 0
+   skills the session started with: 21 = the project's 0 (none) + shipped with Claude Code 21 + anything else 0
+   the project's skills among the slash commands: none
+   call  1 Glob *
+   call  2 Grep 0\.3\.0|0\.3\.1|version
+   call  3 Read CHANGELOG.md
+   call  4 Read README.md
+   call  5 Read package.json
+   call  6 Read src/units.mjs
+   call  7 Edit package.json
+   call  8 Edit README.md
+   call  9 Edit CHANGELOG.md
+   Skill tool called for release-prep: no | other Skill calls: none
+   skill or instruction files opened with a tool: none
+   the procedure's text appears in: nowhere
+   the template's text appears in: nowhere
+   first request: input 2 + cache write 3651 + cache read 5099 = 8752 tokens | whole session: 38857
+   files written: package.json, README.md, CHANGELOG.md
+   last line of the reply: 我沒有做 git tag 或發佈。這個資料夾不是 git repo，所以也沒有可提交的東西。
+   files in the project afterwards: CHANGELOG.md README.md package.json src/units.mjs
+   F1 package.json version is 0.3.1: yes (it is 0.3.1)
+   F2 CHANGELOG.md: dated heading yes (## v0.3.1 (2026-10-09)), Unreleased kept above it no, items moved under it no -> no
+   F3 README.md says Latest release: v0.3.1: yes (Latest release: v0.3.1)
+   F4 releases/v0.3.1.md: file no, template headings 0 of 3 -> no
+   F5 last line starts with 下一步： and has git tag v0.3.1: no
+   not scored: src/units.mjs sha256[0:16] a3e0a9bd16d2da03
+## the debug log on skills
+$ grep -ci skill <logs>/n1.debug.log
+21
+$ grep -iE 'release-prep|changelog-entry|frontmatter|skill listing' <logs>/n1.debug.log | head -12 (time stamps cut)
+$ grep 'fs.ancestors' <logs>/n1.debug.log (time stamps cut, counted)
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 1 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 7 directories
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 1 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 7 directories
+# n1 | end 2026-10-09T14:30:40Z
+
+<logs>/v1.session.log in full:
+# v1 | arm vague | start 2026-10-09T14:30:43Z
+## the project before the session (rebuilt from <seed>/skill-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/release-prep/SKILL.md
+./.claude/skills/release-prep/template.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+9bbae426a2536bb1 *./.claude/hooks/seen.mjs
+83fe258985c6060e *./.claude/settings.json
+6109206b2b27e29c *./.claude/skills/release-prep/SKILL.md
+9125e3d02655a146 *./.claude/skills/release-prep/template.md
+1e0e80b3efe8cb3d *./CHANGELOG.md
+8f2b261a43faf16f *./README.md
+4a3b175877bb94c6 *./package.json
+a3e0a9bd16d2da03 *./src/units.mjs
+## above the project (counts only)
+8 folders above <lab> | with .claude/skills: 1 | with .claude/commands: 0 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## the request (ship.txt)
+0.3.1 要出了，幫我把該改的地方都改好。
+## what the session inherits from this shell (names only, then four values)
+(31 names, left out)
+CLAUDECODE=1
+CLAUDE_CODE_ENTRYPOINT=claude-desktop
+CLAUDE_CODE_SIMPLE=0
+CLAUDE_EFFORT=high
+## the session
+$ env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 SKILL_LOG=<logs>/v1.seen.log \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config \
+    --tools "Read,Glob,Grep,Edit,Write,Skill" --allowedTools "Read,Glob,Grep,Edit,Write,Skill" --no-session-persistence \
+    --output-format stream-json --verbose \
+    --debug-file <logs>/v1.debug.log \
+    < <seed>/prompts/ship.txt > <logs>/v1.stream.jsonl 2> <logs>/v1.stderr.txt
+[exit 0] (41 s, ended 2026-10-09T14:31:29Z)
+[stream lines: 25 | stderr bytes: 0]
+## the project after the session (kept as <logs>/v1.lab)
+$ find . -type f -not -path './.claude/*' | sort
+./CHANGELOG.md
+./README.md
+./package.json
+./releases/v0.3.1.md
+./src/units.mjs
+$ grep '"version"' package.json
+  "version": "0.3.1",
+$ head -8 CHANGELOG.md
+# Changelog
+
+## Unreleased
+
+## v0.3.1 (2026-10-09)
+
+- kmToMiles rounds to two decimals.
+
+$ grep 'Latest release' README.md
+Latest release: v0.3.1
+$ grep -h '^#' releases/*.md
+# v0.3.1
+## 這一版改了什麼
+## 升級要注意
+## 怎麼確認
+$ sha256sum src/units.mjs (first 16 hex digits)
+a3e0a9bd16d2da03 *src/units.mjs
+## what the logging hook saw (<logs>/v1.seen.log)
+PreToolUse Skill release-prep keys=skill,args
+## from the stream
+$ grep -c '"name":"Skill"' <logs>/v1.stream.jsonl
+1
+$ node <seed>/tally.mjs <logs>/v1.stream.jsonl
+== v1 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success, 11 turns, 0 permission denials, cost USD 0.046130199999999996, output tokens 1489
+   built-in tools offered (6): Edit Glob Grep Read Skill Write
+   MCP servers 0, MCP tools 0 | plugins shipped with Claude Code: 3, other plugins: 0
+   skills the session started with: 22 = the project's 1 (release-prep) + shipped with Claude Code 21 + anything else 0
+   the project's skills among the slash commands: release-prep
+   call  1 Skill release-prep args="0.3.1" [input keys: skill,args]
+   call  2 Read package.json
+   call  3 Read CHANGELOG.md
+   call  4 Read README.md
+   call  5 Read .claude/skills/release-prep/template.md
+   call  6 Edit package.json
+   call  7 Edit CHANGELOG.md
+   call  8 Edit README.md
+   call  9 Write releases/v0.3.1.md
+   Skill tool called for release-prep: yes (call 1) | other Skill calls: none
+   skill or instruction files opened with a tool: Read .claude/skills/release-prep/template.md
+   the procedure's text appears in: a user message (added by Claude Code)
+   the template's text appears in: the result of Read (call 5)
+   first request: input 2 + cache write 3675 + cache read 5099 = 8776 tokens | whole session: 39393
+   files written: package.json, CHANGELOG.md, README.md, releases/v0.3.1.md
+   last line of the reply: 下一步:git tag v0.3.1
+   files in the project afterwards: CHANGELOG.md README.md package.json releases/v0.3.1.md src/units.mjs
+   F1 package.json version is 0.3.1: yes (it is 0.3.1)
+   F2 CHANGELOG.md: dated heading yes (## v0.3.1 (2026-10-09)), Unreleased kept above it yes, items moved under it yes -> yes
+   F3 README.md says Latest release: v0.3.1: yes (Latest release: v0.3.1)
+   F4 releases/v0.3.1.md: file yes, template headings 3 of 3 -> yes
+   F5 last line starts with 下一步： and has git tag v0.3.1: yes
+   not scored: src/units.mjs sha256[0:16] a3e0a9bd16d2da03
+## the debug log on skills
+$ grep -ci skill <logs>/v1.debug.log
+27
+$ grep -iE 'release-prep|changelog-entry|frontmatter|skill listing' <logs>/v1.debug.log | head -12 (time stamps cut)
+[DEBUG] SkillTool returning 2 newMessages for skill release-prep
+$ grep 'fs.ancestors' <logs>/v1.debug.log (time stamps cut, counted)
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 3 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 7 directories
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 3 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 7 directories
+# v1 | end 2026-10-09T14:31:33Z
+
+<logs>/s2.session.log in full:
+# s2 | arm skill | start 2026-10-09T14:31:37Z
+## the project before the session (rebuilt from <seed>/skill-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/release-prep/SKILL.md
+./.claude/skills/release-prep/template.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+9bbae426a2536bb1 *./.claude/hooks/seen.mjs
+83fe258985c6060e *./.claude/settings.json
+df8ab1abaa0f192f *./.claude/skills/release-prep/SKILL.md
+9125e3d02655a146 *./.claude/skills/release-prep/template.md
+1e0e80b3efe8cb3d *./CHANGELOG.md
+8f2b261a43faf16f *./README.md
+4a3b175877bb94c6 *./package.json
+a3e0a9bd16d2da03 *./src/units.mjs
+## above the project (counts only)
+8 folders above <lab> | with .claude/skills: 1 | with .claude/commands: 0 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## the request (ship.txt)
+0.3.1 要出了，幫我把該改的地方都改好。
+## what the session inherits from this shell (names only, then four values)
+(31 names, left out)
+CLAUDECODE=1
+CLAUDE_CODE_ENTRYPOINT=claude-desktop
+CLAUDE_CODE_SIMPLE=0
+CLAUDE_EFFORT=high
+## the session
+$ env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 SKILL_LOG=<logs>/s2.seen.log \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config \
+    --tools "Read,Glob,Grep,Edit,Write,Skill" --allowedTools "Read,Glob,Grep,Edit,Write,Skill" --no-session-persistence \
+    --output-format stream-json --verbose \
+    --debug-file <logs>/s2.debug.log \
+    < <seed>/prompts/ship.txt > <logs>/s2.stream.jsonl 2> <logs>/s2.stderr.txt
+[exit 0] (24 s, ended 2026-10-09T14:32:08Z)
+[stream lines: 24 | stderr bytes: 0]
+## the project after the session (kept as <logs>/s2.lab)
+$ find . -type f -not -path './.claude/*' | sort
+./CHANGELOG.md
+./README.md
+./package.json
+./releases/v0.3.1.md
+./src/units.mjs
+$ grep '"version"' package.json
+  "version": "0.3.1",
+$ head -8 CHANGELOG.md
+# Changelog
+
+## Unreleased
+
+## v0.3.1 (2026-10-09)
+
+- kmToMiles rounds to two decimals.
+
+$ grep 'Latest release' README.md
+Latest release: v0.3.1
+$ grep -h '^#' releases/*.md
+# v0.3.1
+## 這一版改了什麼
+## 升級要注意
+## 怎麼確認
+$ sha256sum src/units.mjs (first 16 hex digits)
+a3e0a9bd16d2da03 *src/units.mjs
+## what the logging hook saw (<logs>/s2.seen.log)
+PreToolUse Skill release-prep keys=skill,args
+## from the stream
+$ grep -c '"name":"Skill"' <logs>/s2.stream.jsonl
+1
+$ node <seed>/tally.mjs <logs>/s2.stream.jsonl
+== s2 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success, 11 turns, 0 permission denials, cost USD 0.0465398, output tokens 1531
+   built-in tools offered (6): Edit Glob Grep Read Skill Write
+   MCP servers 0, MCP tools 0 | plugins shipped with Claude Code: 3, other plugins: 0
+   skills the session started with: 22 = the project's 1 (release-prep) + shipped with Claude Code 21 + anything else 0
+   the project's skills among the slash commands: release-prep
+   call  1 Skill release-prep args="0.3.1" [input keys: skill,args]
+   call  2 Read .claude/skills/release-prep/template.md
+   call  3 Read package.json
+   call  4 Read CHANGELOG.md
+   call  5 Read README.md
+   call  6 Edit package.json
+   call  7 Edit CHANGELOG.md
+   call  8 Edit README.md
+   call  9 Write releases/v0.3.1.md
+   Skill tool called for release-prep: yes (call 1) | other Skill calls: none
+   skill or instruction files opened with a tool: Read .claude/skills/release-prep/template.md
+   the procedure's text appears in: a user message (added by Claude Code)
+   the template's text appears in: the result of Read (call 2)
+   first request: input 2 + cache write 3707 + cache read 5099 = 8808 tokens | whole session: 39417
+   files written: package.json, CHANGELOG.md, README.md, releases/v0.3.1.md
+   last line of the reply: 下一步:git tag v0.3.1
+   files in the project afterwards: CHANGELOG.md README.md package.json releases/v0.3.1.md src/units.mjs
+   F1 package.json version is 0.3.1: yes (it is 0.3.1)
+   F2 CHANGELOG.md: dated heading yes (## v0.3.1 (2026-10-09)), Unreleased kept above it yes, items moved under it yes -> yes
+   F3 README.md says Latest release: v0.3.1: yes (Latest release: v0.3.1)
+   F4 releases/v0.3.1.md: file yes, template headings 3 of 3 -> yes
+   F5 last line starts with 下一步： and has git tag v0.3.1: yes
+   not scored: src/units.mjs sha256[0:16] a3e0a9bd16d2da03
+## the debug log on skills
+$ grep -ci skill <logs>/s2.debug.log
+27
+$ grep -iE 'release-prep|changelog-entry|frontmatter|skill listing' <logs>/s2.debug.log | head -12 (time stamps cut)
+[DEBUG] SkillTool returning 2 newMessages for skill release-prep
+$ grep 'fs.ancestors' <logs>/s2.debug.log (time stamps cut, counted)
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 3 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 7 directories
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 3 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 7 directories
+# s2 | end 2026-10-09T14:32:10Z
+
+<logs>/n2.session.log in full:
+# n2 | arm none | start 2026-10-09T14:32:12Z
+## the project before the session (rebuilt from <seed>/skill-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+9bbae426a2536bb1 *./.claude/hooks/seen.mjs
+83fe258985c6060e *./.claude/settings.json
+1e0e80b3efe8cb3d *./CHANGELOG.md
+8f2b261a43faf16f *./README.md
+4a3b175877bb94c6 *./package.json
+a3e0a9bd16d2da03 *./src/units.mjs
+## above the project (counts only)
+8 folders above <lab> | with .claude/skills: 1 | with .claude/commands: 0 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## the request (ship.txt)
+0.3.1 要出了，幫我把該改的地方都改好。
+## what the session inherits from this shell (names only, then four values)
+(31 names, left out)
+CLAUDECODE=1
+CLAUDE_CODE_ENTRYPOINT=claude-desktop
+CLAUDE_CODE_SIMPLE=0
+CLAUDE_EFFORT=high
+## the session
+$ env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 SKILL_LOG=<logs>/n2.seen.log \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config \
+    --tools "Read,Glob,Grep,Edit,Write,Skill" --allowedTools "Read,Glob,Grep,Edit,Write,Skill" --no-session-persistence \
+    --output-format stream-json --verbose \
+    --debug-file <logs>/n2.debug.log \
+    < <seed>/prompts/ship.txt > <logs>/n2.stream.jsonl 2> <logs>/n2.stderr.txt
+[exit 0] (19 s, ended 2026-10-09T14:32:34Z)
+[stream lines: 30 | stderr bytes: 0]
+## the project after the session (kept as <logs>/n2.lab)
+$ find . -type f -not -path './.claude/*' | sort
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ grep '"version"' package.json
+  "version": "0.3.1",
+$ head -8 CHANGELOG.md
+# Changelog
+
+## Unreleased
+
+## v0.3.1 (2026-10-09)
+
+- kmToMiles rounds to two decimals.
+
+$ grep 'Latest release' README.md
+Latest release: v0.3.1
+$ grep -h '^#' releases/*.md
+grep: releases/*.md: No such file or directory
+$ sha256sum src/units.mjs (first 16 hex digits)
+a3e0a9bd16d2da03 *src/units.mjs
+## what the logging hook saw (<logs>/n2.seen.log)
+(empty: no hook event reached the logger)
+## from the stream
+$ grep -c '"name":"Skill"' <logs>/n2.stream.jsonl
+0
+$ node <seed>/tally.mjs <logs>/n2.stream.jsonl
+== n2 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success, 10 turns, 0 permission denials, cost USD 0.0435006, output tokens 1406
+   built-in tools offered (6): Edit Glob Grep Read Skill Write
+   MCP servers 0, MCP tools 0 | plugins shipped with Claude Code: 3, other plugins: 0
+   skills the session started with: 21 = the project's 0 (none) + shipped with Claude Code 21 + anything else 0
+   the project's skills among the slash commands: none
+   call  1 Glob **/*
+   call  2 Grep 0\.3\.0|0\.3\.1
+   call  3 Read CHANGELOG.md
+   call  4 Read README.md
+   call  5 Read package.json
+   call  6 Read src/units.mjs
+   call  7 Edit package.json
+   call  8 Edit README.md
+   call  9 Edit CHANGELOG.md
+   Skill tool called for release-prep: no | other Skill calls: none
+   skill or instruction files opened with a tool: none
+   the procedure's text appears in: nowhere
+   the template's text appears in: nowhere
+   first request: input 2 + cache write 3649 + cache read 5099 = 8750 tokens | whole session: 38603
+   files written: package.json, README.md, CHANGELOG.md
+   last line of the reply: 我沒有跑任何測試或指令。專案裡也沒有測試檔,所以只做了檔案修改。
+   files in the project afterwards: CHANGELOG.md README.md package.json src/units.mjs
+   F1 package.json version is 0.3.1: yes (it is 0.3.1)
+   F2 CHANGELOG.md: dated heading yes (## v0.3.1 (2026-10-09)), Unreleased kept above it yes, items moved under it yes -> yes
+   F3 README.md says Latest release: v0.3.1: yes (Latest release: v0.3.1)
+   F4 releases/v0.3.1.md: file no, template headings 0 of 3 -> no
+   F5 last line starts with 下一步： and has git tag v0.3.1: no
+   not scored: src/units.mjs sha256[0:16] a3e0a9bd16d2da03
+## the debug log on skills
+$ grep -ci skill <logs>/n2.debug.log
+21
+$ grep -iE 'release-prep|changelog-entry|frontmatter|skill listing' <logs>/n2.debug.log | head -12 (time stamps cut)
+$ grep 'fs.ancestors' <logs>/n2.debug.log (time stamps cut, counted)
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 1 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 7 directories
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 1 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 7 directories
+# n2 | end 2026-10-09T14:32:38Z
+
+<logs>/v2.session.log in full:
+# v2 | arm vague | start 2026-10-09T14:32:48Z
+## the project before the session (rebuilt from <seed>/skill-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/release-prep/SKILL.md
+./.claude/skills/release-prep/template.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+9bbae426a2536bb1 *./.claude/hooks/seen.mjs
+83fe258985c6060e *./.claude/settings.json
+6109206b2b27e29c *./.claude/skills/release-prep/SKILL.md
+9125e3d02655a146 *./.claude/skills/release-prep/template.md
+1e0e80b3efe8cb3d *./CHANGELOG.md
+8f2b261a43faf16f *./README.md
+4a3b175877bb94c6 *./package.json
+a3e0a9bd16d2da03 *./src/units.mjs
+## above the project (counts only)
+8 folders above <lab> | with .claude/skills: 1 | with .claude/commands: 0 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## the request (ship.txt)
+0.3.1 要出了，幫我把該改的地方都改好。
+## what the session inherits from this shell (names only, then four values)
+(31 names, left out)
+CLAUDECODE=1
+CLAUDE_CODE_ENTRYPOINT=claude-desktop
+CLAUDE_CODE_SIMPLE=0
+CLAUDE_EFFORT=high
+## the session
+$ env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 SKILL_LOG=<logs>/v2.seen.log \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config \
+    --tools "Read,Glob,Grep,Edit,Write,Skill" --allowedTools "Read,Glob,Grep,Edit,Write,Skill" --no-session-persistence \
+    --output-format stream-json --verbose \
+    --debug-file <logs>/v2.debug.log \
+    < <seed>/prompts/ship.txt > <logs>/v2.stream.jsonl 2> <logs>/v2.stderr.txt
+[exit 0] (27 s, ended 2026-10-09T14:33:20Z)
+[stream lines: 27 | stderr bytes: 0]
+## the project after the session (kept as <logs>/v2.lab)
+$ find . -type f -not -path './.claude/*' | sort
+./CHANGELOG.md
+./README.md
+./package.json
+./releases/v0.3.1.md
+./src/units.mjs
+$ grep '"version"' package.json
+  "version": "0.3.1",
+$ head -8 CHANGELOG.md
+# Changelog
+
+## Unreleased
+
+## v0.3.1 (2026-10-09)
+
+- kmToMiles rounds to two decimals.
+
+$ grep 'Latest release' README.md
+Latest release: v0.3.1
+$ grep -h '^#' releases/*.md
+# v0.3.1
+## 這一版改了什麼
+## 升級要注意
+## 怎麼確認
+$ sha256sum src/units.mjs (first 16 hex digits)
+a3e0a9bd16d2da03 *src/units.mjs
+## what the logging hook saw (<logs>/v2.seen.log)
+PreToolUse Skill release-prep keys=skill,args
+## from the stream
+$ grep -c '"name":"Skill"' <logs>/v2.stream.jsonl
+1
+$ node <seed>/tally.mjs <logs>/v2.stream.jsonl
+== v2 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success, 12 turns, 0 permission denials, cost USD 0.048740000000000006, output tokens 1698
+   built-in tools offered (6): Edit Glob Grep Read Skill Write
+   MCP servers 0, MCP tools 0 | plugins shipped with Claude Code: 3, other plugins: 0
+   skills the session started with: 22 = the project's 1 (release-prep) + shipped with Claude Code 21 + anything else 0
+   the project's skills among the slash commands: release-prep
+   call  1 Skill release-prep args="0.3.1" [input keys: skill,args]
+   call  2 Read package.json
+   call  3 Read CHANGELOG.md
+   call  4 Read README.md
+   call  5 Read .claude/skills/release-prep/template.md
+   call  6 Glob releases/*
+   call  7 Edit package.json
+   call  8 Edit CHANGELOG.md
+   call  9 Edit README.md
+   call 10 Write releases/v0.3.1.md
+   Skill tool called for release-prep: yes (call 1) | other Skill calls: none
+   skill or instruction files opened with a tool: Read .claude/skills/release-prep/template.md
+   the procedure's text appears in: a user message (added by Claude Code)
+   the template's text appears in: the result of Read (call 5)
+   first request: input 2 + cache write 3669 + cache read 5099 = 8770 tokens | whole session: 39579
+   files written: package.json, CHANGELOG.md, README.md, releases/v0.3.1.md
+   last line of the reply: 下一步:git tag v0.3.1
+   files in the project afterwards: CHANGELOG.md README.md package.json releases/v0.3.1.md src/units.mjs
+   F1 package.json version is 0.3.1: yes (it is 0.3.1)
+   F2 CHANGELOG.md: dated heading yes (## v0.3.1 (2026-10-09)), Unreleased kept above it yes, items moved under it yes -> yes
+   F3 README.md says Latest release: v0.3.1: yes (Latest release: v0.3.1)
+   F4 releases/v0.3.1.md: file yes, template headings 3 of 3 -> yes
+   F5 last line starts with 下一步： and has git tag v0.3.1: yes
+   not scored: src/units.mjs sha256[0:16] a3e0a9bd16d2da03
+## the debug log on skills
+$ grep -ci skill <logs>/v2.debug.log
+27
+$ grep -iE 'release-prep|changelog-entry|frontmatter|skill listing' <logs>/v2.debug.log | head -12 (time stamps cut)
+[DEBUG] SkillTool returning 2 newMessages for skill release-prep
+$ grep 'fs.ancestors' <logs>/v2.debug.log (time stamps cut, counted)
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 3 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 7 directories
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 3 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 7 directories
+# v2 | end 2026-10-09T14:33:26Z
+
+<logs>/s3.session.log in full:
+# s3 | arm skill | start 2026-10-09T14:33:29Z
+## the project before the session (rebuilt from <seed>/skill-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/release-prep/SKILL.md
+./.claude/skills/release-prep/template.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+9bbae426a2536bb1 *./.claude/hooks/seen.mjs
+83fe258985c6060e *./.claude/settings.json
+df8ab1abaa0f192f *./.claude/skills/release-prep/SKILL.md
+9125e3d02655a146 *./.claude/skills/release-prep/template.md
+1e0e80b3efe8cb3d *./CHANGELOG.md
+8f2b261a43faf16f *./README.md
+4a3b175877bb94c6 *./package.json
+a3e0a9bd16d2da03 *./src/units.mjs
+## above the project (counts only)
+8 folders above <lab> | with .claude/skills: 1 | with .claude/commands: 0 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## the request (ship.txt)
+0.3.1 要出了，幫我把該改的地方都改好。
+## what the session inherits from this shell (names only, then four values)
+(31 names, left out)
+CLAUDECODE=1
+CLAUDE_CODE_ENTRYPOINT=claude-desktop
+CLAUDE_CODE_SIMPLE=0
+CLAUDE_EFFORT=high
+## the session
+$ env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 SKILL_LOG=<logs>/s3.seen.log \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config \
+    --tools "Read,Glob,Grep,Edit,Write,Skill" --allowedTools "Read,Glob,Grep,Edit,Write,Skill" --no-session-persistence \
+    --output-format stream-json --verbose \
+    --debug-file <logs>/s3.debug.log \
+    < <seed>/prompts/ship.txt > <logs>/s3.stream.jsonl 2> <logs>/s3.stderr.txt
+[exit 0] (25 s, ended 2026-10-09T14:33:56Z)
+[stream lines: 27 | stderr bytes: 0]
+## the project after the session (kept as <logs>/s3.lab)
+$ find . -type f -not -path './.claude/*' | sort
+./CHANGELOG.md
+./README.md
+./package.json
+./releases/v0.3.1.md
+./src/units.mjs
+$ grep '"version"' package.json
+  "version": "0.3.1",
+$ head -8 CHANGELOG.md
+# Changelog
+
+## Unreleased
+
+## v0.3.1 (2026-10-09)
+
+- kmToMiles rounds to two decimals.
+
+$ grep 'Latest release' README.md
+Latest release: v0.3.1
+$ grep -h '^#' releases/*.md
+# v0.3.1
+## 這一版改了什麼
+## 升級要注意
+## 怎麼確認
+$ sha256sum src/units.mjs (first 16 hex digits)
+a3e0a9bd16d2da03 *src/units.mjs
+## what the logging hook saw (<logs>/s3.seen.log)
+PreToolUse Skill release-prep keys=skill,args
+## from the stream
+$ grep -c '"name":"Skill"' <logs>/s3.stream.jsonl
+1
+$ node <seed>/tally.mjs <logs>/s3.stream.jsonl
+== s3 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success, 11 turns, 0 permission denials, cost USD 0.048005599999999995, output tokens 1631
+   built-in tools offered (6): Edit Glob Grep Read Skill Write
+   MCP servers 0, MCP tools 0 | plugins shipped with Claude Code: 3, other plugins: 0
+   skills the session started with: 22 = the project's 1 (release-prep) + shipped with Claude Code 21 + anything else 0
+   the project's skills among the slash commands: release-prep
+   call  1 Skill release-prep args="0.3.1" [input keys: skill,args]
+   call  2 Read package.json
+   call  3 Read CHANGELOG.md
+   call  4 Read README.md
+   call  5 Read .claude/skills/release-prep/template.md
+   call  6 Edit package.json
+   call  7 Edit CHANGELOG.md
+   call  8 Edit README.md
+   call  9 Write releases/v0.3.1.md
+   Skill tool called for release-prep: yes (call 1) | other Skill calls: none
+   skill or instruction files opened with a tool: Read .claude/skills/release-prep/template.md
+   the procedure's text appears in: a user message (added by Claude Code)
+   the template's text appears in: the result of Read (call 5)
+   first request: input 2 + cache write 3710 + cache read 5099 = 8811 tokens | whole session: 39542
+   files written: package.json, CHANGELOG.md, README.md, releases/v0.3.1.md
+   last line of the reply: 下一步：git tag v0.3.1
+   files in the project afterwards: CHANGELOG.md README.md package.json releases/v0.3.1.md src/units.mjs
+   F1 package.json version is 0.3.1: yes (it is 0.3.1)
+   F2 CHANGELOG.md: dated heading yes (## v0.3.1 (2026-10-09)), Unreleased kept above it yes, items moved under it yes -> yes
+   F3 README.md says Latest release: v0.3.1: yes (Latest release: v0.3.1)
+   F4 releases/v0.3.1.md: file yes, template headings 3 of 3 -> yes
+   F5 last line starts with 下一步： and has git tag v0.3.1: yes
+   not scored: src/units.mjs sha256[0:16] a3e0a9bd16d2da03
+## the debug log on skills
+$ grep -ci skill <logs>/s3.debug.log
+27
+$ grep -iE 'release-prep|changelog-entry|frontmatter|skill listing' <logs>/s3.debug.log | head -12 (time stamps cut)
+[DEBUG] SkillTool returning 2 newMessages for skill release-prep
+$ grep 'fs.ancestors' <logs>/s3.debug.log (time stamps cut, counted)
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 3 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 7 directories
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 3 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 7 directories
+# s3 | end 2026-10-09T14:34:00Z
+
+<logs>/n3.session.log in full:
+# n3 | arm none | start 2026-10-09T14:34:03Z
+## the project before the session (rebuilt from <seed>/skill-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+9bbae426a2536bb1 *./.claude/hooks/seen.mjs
+83fe258985c6060e *./.claude/settings.json
+1e0e80b3efe8cb3d *./CHANGELOG.md
+8f2b261a43faf16f *./README.md
+4a3b175877bb94c6 *./package.json
+a3e0a9bd16d2da03 *./src/units.mjs
+## above the project (counts only)
+8 folders above <lab> | with .claude/skills: 1 | with .claude/commands: 0 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## the request (ship.txt)
+0.3.1 要出了，幫我把該改的地方都改好。
+## what the session inherits from this shell (names only, then four values)
+(31 names, left out)
+CLAUDECODE=1
+CLAUDE_CODE_ENTRYPOINT=claude-desktop
+CLAUDE_CODE_SIMPLE=0
+CLAUDE_EFFORT=high
+## the session
+$ env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 SKILL_LOG=<logs>/n3.seen.log \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config \
+    --tools "Read,Glob,Grep,Edit,Write,Skill" --allowedTools "Read,Glob,Grep,Edit,Write,Skill" --no-session-persistence \
+    --output-format stream-json --verbose \
+    --debug-file <logs>/n3.debug.log \
+    < <seed>/prompts/ship.txt > <logs>/n3.stream.jsonl 2> <logs>/n3.stderr.txt
+[exit 0] (24 s, ended 2026-10-09T14:34:29Z)
+[stream lines: 28 | stderr bytes: 0]
+## the project after the session (kept as <logs>/n3.lab)
+$ find . -type f -not -path './.claude/*' | sort
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ grep '"version"' package.json
+  "version": "0.3.1",
+$ head -8 CHANGELOG.md
+# Changelog
+
+## Unreleased
+
+## v0.3.1 (2026-10-09)
+
+- kmToMiles rounds to two decimals.
+
+$ grep 'Latest release' README.md
+Latest release: v0.3.1
+$ grep -h '^#' releases/*.md
+grep: releases/*.md: No such file or directory
+$ sha256sum src/units.mjs (first 16 hex digits)
+a3e0a9bd16d2da03 *src/units.mjs
+## what the logging hook saw (<logs>/n3.seen.log)
+(empty: no hook event reached the logger)
+## from the stream
+$ grep -c '"name":"Skill"' <logs>/n3.stream.jsonl
+0
+$ node <seed>/tally.mjs <logs>/n3.stream.jsonl
+== n3 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success, 10 turns, 0 permission denials, cost USD 0.0439314, output tokens 1429
+   built-in tools offered (6): Edit Glob Grep Read Skill Write
+   MCP servers 0, MCP tools 0 | plugins shipped with Claude Code: 3, other plugins: 0
+   skills the session started with: 21 = the project's 0 (none) + shipped with Claude Code 21 + anything else 0
+   the project's skills among the slash commands: none
+   call  1 Glob *
+   call  2 Grep 0\.3\.0|0\.3\.1|version
+   call  3 Read CHANGELOG.md
+   call  4 Read README.md
+   call  5 Read package.json
+   call  6 Read src/units.mjs
+   call  7 Edit package.json
+   call  8 Edit README.md
+   call  9 Edit CHANGELOG.md
+   Skill tool called for release-prep: no | other Skill calls: none
+   skill or instruction files opened with a tool: none
+   the procedure's text appears in: nowhere
+   the template's text appears in: nowhere
+   first request: input 2 + cache write 3653 + cache read 5099 = 8754 tokens | whole session: 38847
+   files written: package.json, README.md, CHANGELOG.md
+   last line of the reply: 這個資料夾不是 git 儲存庫,所以我沒有打 tag 或 commit。
+   files in the project afterwards: CHANGELOG.md README.md package.json src/units.mjs
+   F1 package.json version is 0.3.1: yes (it is 0.3.1)
+   F2 CHANGELOG.md: dated heading yes (## v0.3.1 (2026-10-09)), Unreleased kept above it yes, items moved under it yes -> yes
+   F3 README.md says Latest release: v0.3.1: yes (Latest release: v0.3.1)
+   F4 releases/v0.3.1.md: file no, template headings 0 of 3 -> no
+   F5 last line starts with 下一步： and has git tag v0.3.1: no
+   not scored: src/units.mjs sha256[0:16] a3e0a9bd16d2da03
+## the debug log on skills
+$ grep -ci skill <logs>/n3.debug.log
+21
+$ grep -iE 'release-prep|changelog-entry|frontmatter|skill listing' <logs>/n3.debug.log | head -12 (time stamps cut)
+$ grep 'fs.ancestors' <logs>/n3.debug.log (time stamps cut, counted)
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 1 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 7 directories
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 1 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 7 directories
+# n3 | end 2026-10-09T14:34:32Z
+
+<logs>/v3.session.log in full:
+# v3 | arm vague | start 2026-10-09T14:34:36Z
+## the project before the session (rebuilt from <seed>/skill-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/release-prep/SKILL.md
+./.claude/skills/release-prep/template.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+9bbae426a2536bb1 *./.claude/hooks/seen.mjs
+83fe258985c6060e *./.claude/settings.json
+6109206b2b27e29c *./.claude/skills/release-prep/SKILL.md
+9125e3d02655a146 *./.claude/skills/release-prep/template.md
+1e0e80b3efe8cb3d *./CHANGELOG.md
+8f2b261a43faf16f *./README.md
+4a3b175877bb94c6 *./package.json
+a3e0a9bd16d2da03 *./src/units.mjs
+## above the project (counts only)
+8 folders above <lab> | with .claude/skills: 1 | with .claude/commands: 0 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## the request (ship.txt)
+0.3.1 要出了，幫我把該改的地方都改好。
+## what the session inherits from this shell (names only, then four values)
+(31 names, left out)
+CLAUDECODE=1
+CLAUDE_CODE_ENTRYPOINT=claude-desktop
+CLAUDE_CODE_SIMPLE=0
+CLAUDE_EFFORT=high
+## the session
+$ env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 SKILL_LOG=<logs>/v3.seen.log \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config \
+    --tools "Read,Glob,Grep,Edit,Write,Skill" --allowedTools "Read,Glob,Grep,Edit,Write,Skill" --no-session-persistence \
+    --output-format stream-json --verbose \
+    --debug-file <logs>/v3.debug.log \
+    < <seed>/prompts/ship.txt > <logs>/v3.stream.jsonl 2> <logs>/v3.stderr.txt
+[exit 0] (32 s, ended 2026-10-09T14:35:15Z)
+[stream lines: 27 | stderr bytes: 0]
+## the project after the session (kept as <logs>/v3.lab)
+$ find . -type f -not -path './.claude/*' | sort
+./CHANGELOG.md
+./README.md
+./package.json
+./releases/v0.3.1.md
+./src/units.mjs
+$ grep '"version"' package.json
+  "version": "0.3.1",
+$ head -8 CHANGELOG.md
+# Changelog
+
+## Unreleased
+
+## v0.3.1 (2026-10-09)
+
+- kmToMiles rounds to two decimals.
+
+$ grep 'Latest release' README.md
+Latest release: v0.3.1
+$ grep -h '^#' releases/*.md
+# v0.3.1
+## 這一版改了什麼
+## 升級要注意
+## 怎麼確認
+$ sha256sum src/units.mjs (first 16 hex digits)
+a3e0a9bd16d2da03 *src/units.mjs
+## what the logging hook saw (<logs>/v3.seen.log)
+PreToolUse Skill release-prep keys=skill,args
+## from the stream
+$ grep -c '"name":"Skill"' <logs>/v3.stream.jsonl
+1
+$ node <seed>/tally.mjs <logs>/v3.stream.jsonl
+== v3 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success, 12 turns, 0 permission denials, cost USD 0.0474676, output tokens 1587
+   built-in tools offered (6): Edit Glob Grep Read Skill Write
+   MCP servers 0, MCP tools 0 | plugins shipped with Claude Code: 3, other plugins: 0
+   skills the session started with: 22 = the project's 1 (release-prep) + shipped with Claude Code 21 + anything else 0
+   the project's skills among the slash commands: release-prep
+   call  1 Skill release-prep args="0.3.1" [input keys: skill,args]
+   call  2 Read package.json
+   call  3 Read CHANGELOG.md
+   call  4 Read README.md
+   call  5 Read .claude/skills/release-prep/template.md
+   call  6 Glob releases/*
+   call  7 Edit package.json
+   call  8 Edit CHANGELOG.md
+   call  9 Edit README.md
+   call 10 Write releases/v0.3.1.md
+   Skill tool called for release-prep: yes (call 1) | other Skill calls: none
+   skill or instruction files opened with a tool: Read .claude/skills/release-prep/template.md
+   the procedure's text appears in: a user message (added by Claude Code)
+   the template's text appears in: the result of Read (call 5)
+   first request: input 2 + cache write 3665 + cache read 5099 = 8766 tokens | whole session: 39527
+   files written: package.json, CHANGELOG.md, README.md, releases/v0.3.1.md
+   last line of the reply: 下一步:git tag v0.3.1
+   files in the project afterwards: CHANGELOG.md README.md package.json releases/v0.3.1.md src/units.mjs
+   F1 package.json version is 0.3.1: yes (it is 0.3.1)
+   F2 CHANGELOG.md: dated heading yes (## v0.3.1 (2026-10-09)), Unreleased kept above it yes, items moved under it yes -> yes
+   F3 README.md says Latest release: v0.3.1: yes (Latest release: v0.3.1)
+   F4 releases/v0.3.1.md: file yes, template headings 3 of 3 -> yes
+   F5 last line starts with 下一步： and has git tag v0.3.1: yes
+   not scored: src/units.mjs sha256[0:16] a3e0a9bd16d2da03
+## the debug log on skills
+$ grep -ci skill <logs>/v3.debug.log
+27
+$ grep -iE 'release-prep|changelog-entry|frontmatter|skill listing' <logs>/v3.debug.log | head -12 (time stamps cut)
+[DEBUG] SkillTool returning 2 newMessages for skill release-prep
+$ grep 'fs.ancestors' <logs>/v3.debug.log (time stamps cut, counted)
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 3 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 7 directories
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 3 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 7 directories
+# v3 | end 2026-10-09T14:35:37Z
+
+================================================================================================
+ITEM 12   x1: called with the slash form
+================================================================================================
+$ cd <work> && bash _tools/runner/one.sh x1 slash
+[session.sh exit 0]
+Expected: one hook line "UserPromptExpansion slash_command release-prep source=..."; no
+PreToolUse line; no Skill tool call (grep count 0); the procedure's text in a user message;
+F1 to F5 yes; possibly a visible "ARGUMENTS: 0.3.1" line.
+Actual: hook log is the one line "UserPromptExpansion slash_command release-prep
+source=projectSettings"; no PreToolUse line; grep count 0; F1 to F5 all yes; template.md opened
+with Read (call 4). The procedure's text appears NOWHERE in the stream: the stream has no user
+message for the request at all, its first line after init is the assistant's first Read. The
+string ARGUMENTS occurs 0 times in the stream and 0 times in the debug log. What shows that the
+body reached the model: the first request is 9132 tokens (356 to 366 more than the three vague
+sessions, which have the same files), and the reply says "五步都做完了" and numbers five steps.
+Match: yes for the hook event, the absence of a Skill call and the five steps; no for "the
+procedure's text is in a user message" (not visible in this version's stream); the ARGUMENTS
+line was not observed.
+
+<logs>/x1.session.log in full:
+# x1 | arm slash | start 2026-10-09T14:35:53Z
+## the project before the session (rebuilt from <seed>/skill-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/release-prep/SKILL.md
+./.claude/skills/release-prep/template.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+9bbae426a2536bb1 *./.claude/hooks/seen.mjs
+83fe258985c6060e *./.claude/settings.json
+6109206b2b27e29c *./.claude/skills/release-prep/SKILL.md
+9125e3d02655a146 *./.claude/skills/release-prep/template.md
+1e0e80b3efe8cb3d *./CHANGELOG.md
+8f2b261a43faf16f *./README.md
+4a3b175877bb94c6 *./package.json
+a3e0a9bd16d2da03 *./src/units.mjs
+## above the project (counts only)
+8 folders above <lab> | with .claude/skills: 1 | with .claude/commands: 0 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## the request (slash.txt)
+/release-prep 0.3.1
+## what the session inherits from this shell (names only, then four values)
+(31 names, left out)
+CLAUDECODE=1
+CLAUDE_CODE_ENTRYPOINT=claude-desktop
+CLAUDE_CODE_SIMPLE=0
+CLAUDE_EFFORT=high
+## the session
+$ env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 SKILL_LOG=<logs>/x1.seen.log \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config \
+    --tools "Read,Glob,Grep,Edit,Write,Skill" --allowedTools "Read,Glob,Grep,Edit,Write,Skill" --no-session-persistence \
+    --output-format stream-json --verbose \
+    --debug-file <logs>/x1.debug.log \
+    < <seed>/prompts/slash.txt > <logs>/x1.stream.jsonl 2> <logs>/x1.stderr.txt
+[exit 0] (29 s, ended 2026-10-09T14:36:33Z)
+[stream lines: 26 | stderr bytes: 0]
+## the project after the session (kept as <logs>/x1.lab)
+$ find . -type f -not -path './.claude/*' | sort
+./CHANGELOG.md
+./README.md
+./package.json
+./releases/v0.3.1.md
+./src/units.mjs
+$ grep '"version"' package.json
+  "version": "0.3.1",
+$ head -8 CHANGELOG.md
+# Changelog
+
+## Unreleased
+
+## v0.3.1 (2026-10-09)
+
+- kmToMiles rounds to two decimals.
+
+$ grep 'Latest release' README.md
+Latest release: v0.3.1
+$ grep -h '^#' releases/*.md
+# v0.3.1
+## 這一版改了什麼
+## 升級要注意
+## 怎麼確認
+$ sha256sum src/units.mjs (first 16 hex digits)
+a3e0a9bd16d2da03 *src/units.mjs
+## what the logging hook saw (<logs>/x1.seen.log)
+UserPromptExpansion slash_command release-prep source=projectSettings
+## from the stream
+$ grep -c '"name":"Skill"' <logs>/x1.stream.jsonl
+0
+$ node <seed>/tally.mjs <logs>/x1.stream.jsonl
+== x1 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success, 9 turns, 0 permission denials, cost USD 0.04571700000000001, output tokens 1622
+   built-in tools offered (6): Edit Glob Grep Read Skill Write
+   MCP servers 0, MCP tools 0 | plugins shipped with Claude Code: 3, other plugins: 0
+   skills the session started with: 22 = the project's 1 (release-prep) + shipped with Claude Code 21 + anything else 0
+   the project's skills among the slash commands: release-prep
+   call  1 Read package.json
+   call  2 Read CHANGELOG.md
+   call  3 Read README.md
+   call  4 Read .claude/skills/release-prep/template.md
+   call  5 Edit package.json
+   call  6 Edit CHANGELOG.md
+   call  7 Edit README.md
+   call  8 Write releases/v0.3.1.md
+   Skill tool called for release-prep: no | other Skill calls: none
+   skill or instruction files opened with a tool: Read .claude/skills/release-prep/template.md
+   the procedure's text appears in: nowhere
+   the template's text appears in: the result of Read (call 4)
+   first request: input 2 + cache write 4031 + cache read 5099 = 9132 tokens | whole session: 30315
+   files written: package.json, CHANGELOG.md, README.md, releases/v0.3.1.md
+   last line of the reply: 下一步:git tag v0.3.1
+   files in the project afterwards: CHANGELOG.md README.md package.json releases/v0.3.1.md src/units.mjs
+   F1 package.json version is 0.3.1: yes (it is 0.3.1)
+   F2 CHANGELOG.md: dated heading yes (## v0.3.1 (2026-10-09)), Unreleased kept above it yes, items moved under it yes -> yes
+   F3 README.md says Latest release: v0.3.1: yes (Latest release: v0.3.1)
+   F4 releases/v0.3.1.md: file yes, template headings 3 of 3 -> yes
+   F5 last line starts with 下一步： and has git tag v0.3.1: yes
+   not scored: src/units.mjs sha256[0:16] a3e0a9bd16d2da03
+## the debug log on skills
+$ grep -ci skill <logs>/x1.debug.log
+24
+$ grep -iE 'release-prep|changelog-entry|frontmatter|skill listing' <logs>/x1.debug.log | head -12 (time stamps cut)
+$ grep 'fs.ancestors' <logs>/x1.debug.log (time stamps cut, counted)
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 3 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 7 directories
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 3 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 7 directories
+# x1 | end 2026-10-09T14:36:40Z
+
+runner: the stream, one line per event.
+$ node <runner>/inspect.mjs <logs>/x1.stream.jsonl 900 | grep -v ' rate_limit_event '
+init keys: type,subtype,cwd,session_id,tools,mcp_servers,model,permissionMode,slash_commands,terminal_slash_commands,apiKeySource,claude_code_version,output_style,agents,skills,plugins,capabilities,analytics_disabled,product_feedback_disabled,uuid,scratchpad_path,messaging_socket_path,fast_mode_state,fast_mode_disabled_reason,per_turn_effort_active,view_mode,powershell_path
+init: model=claude-sonnet-5-5 version=2.1.295 apiKeySource=none permissionMode=default tools=Edit Glob Grep Read Skill Write mcp_servers=0 skills=22 slash_commands=58 agents=6 plugins=3
+ 1 system/init
+ 2 assistant tool_use Read {"file_path":"<lab>\\package.json"}
+     usage: input 2 cache_write 4031 cache_read 5099 output 17
+ 3 user tool_result: 1	{\n2	  "name": "unit-kit",\n3	  "version": "0.3.0",\n4	  "private": true,\n5	  "type": "module"\n6	}\n7	
+ 4 assistant tool_use Read {"file_path":"<lab>\\CHANGELOG.md"}
+     usage: input 2 cache_write 4031 cache_read 5099 output 17
+ 5 user tool_result: 1	# Changelog\n2	\n3	## Unreleased\n4	\n5	- kmToMiles rounds to two decimals.\n6	\n7	## v0.3.0 (2026-10-02)\n8	\n9	- Add kmToMiles.\n10	\n11	## v0.2.0 (2026-09-30)\n12	\n13	- First version, with cToF.\n14	
+ 6 assistant tool_use Read {"file_path":"<lab>\\README.md"}
+     usage: input 2 cache_write 4031 cache_read 5099 output 17
+ 7 user tool_result: 1	# unit-kit\n2	\n3	Small unit converters for a travel notes app. No dependencies.\n4	\n5	Latest release: v0.3.0\n6	
+ 8 assistant tool_use Read {"file_path":"<lab>\\.claude\\skills\\release-prep\\template.md"}
+     usage: input 2 cache_write 4031 cache_read 5099 output 17
+10 system/task_summary {"detail":"Reading .claude\\skills\\release-prep\\template.md","uuid":"<uuid>","session_id":"<uuid>"}
+11 user tool_result: 1	# vX.Y.Z\n2	\n3	## 這一版改了什麼\n4	\n5	## 升級要注意\n6	\n7	## 怎麼確認\n8	
+12 system/thinking_tokens {"estimated_tokens":50,"estimated_tokens_delta":50,"session_id":"<uuid>","uuid":"<uuid>"}
+13 system/thinking_tokens {"estimated_tokens":234,"estimated_tokens_delta":184,"session_id":"<uuid>","uuid":"<uuid>"}
+14 assistant thinking (0 chars)
+     usage: input 2 cache_write 786 cache_read 9130 output 5
+15 assistant tool_use Edit {"replace_all":false,"file_path":"<lab>\\package.json","old_string":"\"0.3.0\"","new_string":"\"0.3.1\""}
+     usage: input 2 cache_write 786 cache_read 9130 output 5
+16 user tool_result: The file <lab>\package.json has been updated successfully. (file state is current in your context — no need to Read it back)
+17 assistant tool_use Edit {"replace_all":false,"file_path":"<lab>\\CHANGELOG.md","old_string":"## Unreleased\n\n- kmToMiles rounds to two decimals.","new_string":"## Unreleased\n\n## v0.3.1 (2026-10-09)\n\n- kmToMiles rounds to two decimals."}
+     usage: input 2 cache_write 786 cache_read 9130 output 5
+18 user tool_result: The file <lab>\CHANGELOG.md has been updated successfully. (file state is current in your context — no need to Read it back)
+19 assistant tool_use Edit {"replace_all":false,"file_path":"<lab>\\README.md","old_string":"Latest release: v0.3.0","new_string":"Latest release: v0.3.1"}
+     usage: input 2 cache_write 786 cache_read 9130 output 5
+20 user tool_result: The file <lab>\README.md has been updated successfully. (file state is current in your context — no need to Read it back)
+21 assistant tool_use Write {"file_path":"<lab>\\releases\\v0.3.1.md","content":"# v0.3.1\n\n## 這一版改了什麼\n\n- kmToMiles 的結果現在會四捨五入到小數點後兩位。\n\n## 升級要注意\n\n- kmToMiles 的回傳值會改變（例如不再回傳很長的小數），若有依賴完整精度的地方請確認。\n\n## 怎麼確認\n\n- 呼叫 kmToMiles，確認回傳值最多兩位小數。\n"}
+     usage: input 2 cache_write 786 cache_read 9130 output 5
+22 user tool_result: File created successfully at: <lab>\releases\v0.3.1.md (file state is current in your context — no need to Read it back)
+23 assistant text: 五步都做完了,我沒有動 `src/`,也沒有跑測試。\n\n1. `package.json`:version 從 0.3.0 改成 0.3.1。\n2. `CHANGELOG.md`:在「## Unreleased」下面加了「## v0.3.1 (2026-10-09)」,原本 Unreleased 底下的「kmToMiles rounds to two decimals.」搬到新標題底下。Unreleased 標題留著,現在是空的。\n3. `README.md`:「Latest release:」那一行改成 v0.3.1。\n4. `releases/v0.3.1.md`:新增,三個二級標題照 `template.md`,一個字沒改。最上面的 `# vX.Y.Z` 我換成了 `# v0.3.1`。三個標題底下的內容是我根據 changelog 那一條自己寫的,發版前建議看一下。\n5. 下面是固定的最後一行。\n\n下一步:git tag v0.3.1
+     usage: input 2 cache_write 1347 cache_read 9916 output 326
+24 system/post_turn_summary {"summarizes_uuid":"<uuid>","status_category":"completed","status_detail":"bumped to v0.3.1 across 4 files; tag left as next step","needs_action":"","uuid":"<uuid>","session_id":"<uuid>"}
+25 result/success turns=9 cost=0.04571700000000001 duration_ms=20655 models=claude-sonnet-5-5
+--- reply in full
+五步都做完了,我沒有動 `src/`,也沒有跑測試。
+
+1. `package.json`:version 從 0.3.0 改成 0.3.1。
+2. `CHANGELOG.md`:在「## Unreleased」下面加了「## v0.3.1 (2026-10-09)」,原本 Unreleased 底下的「kmToMiles rounds to two decimals.」搬到新標題底下。Unreleased 標題留著,現在是空的。
+3. `README.md`:「Latest release:」那一行改成 v0.3.1。
+4. `releases/v0.3.1.md`:新增,三個二級標題照 `template.md`,一個字沒改。最上面的 `# vX.Y.Z` 我換成了 `# v0.3.1`。三個標題底下的內容是我根據 changelog 那一條自己寫的,發版前建議看一下。
+5. 下面是固定的最後一行。
+
+下一步:git tag v0.3.1
+26 system/task_summary {"detail":null,"uuid":"<uuid>","session_id":"<uuid>"}
+
+================================================================================================
+ITEM 13   c1: the same procedure in CLAUDE.md, no skill
+================================================================================================
+$ cd <work> && bash _tools/runner/one.sh c1 claudemd
+[session.sh exit 0]
+Expected: hook line "InstructionsLoaded session_start Project CLAUDE.md"; no Skill call; first
+request two to three hundred tokens above none, far above skill; F1 to F5 unknown.
+Actual: that hook line, exactly; no Skill call; first request 9238 tokens, which is 484 to 488
+above the three none sessions and 427 to 430 above the three skill sessions; F1 to F5 all yes
+(this one time). The debug log has no fs.ancestors line in this arm (the same was seen in the
+previous video: the line only appears when no CLAUDE.md is found).
+Match: yes; the difference is larger than the predicted two to three hundred.
+
+<logs>/c1.session.log in full:
+# c1 | arm claudemd | start 2026-10-09T14:36:47Z
+## the project before the session (rebuilt from <seed>/skill-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./CHANGELOG.md
+./CLAUDE.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+9bbae426a2536bb1 *./.claude/hooks/seen.mjs
+83fe258985c6060e *./.claude/settings.json
+1e0e80b3efe8cb3d *./CHANGELOG.md
+9dc1cb9b891d2a7c *./CLAUDE.md
+8f2b261a43faf16f *./README.md
+4a3b175877bb94c6 *./package.json
+a3e0a9bd16d2da03 *./src/units.mjs
+## above the project (counts only)
+8 folders above <lab> | with .claude/skills: 1 | with .claude/commands: 0 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## the request (ship.txt)
+0.3.1 要出了，幫我把該改的地方都改好。
+## what the session inherits from this shell (names only, then four values)
+(31 names, left out)
+CLAUDECODE=1
+CLAUDE_CODE_ENTRYPOINT=claude-desktop
+CLAUDE_CODE_SIMPLE=0
+CLAUDE_EFFORT=high
+## the session
+$ env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 SKILL_LOG=<logs>/c1.seen.log \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config \
+    --tools "Read,Glob,Grep,Edit,Write,Skill" --allowedTools "Read,Glob,Grep,Edit,Write,Skill" --no-session-persistence \
+    --output-format stream-json --verbose \
+    --debug-file <logs>/c1.debug.log \
+    < <seed>/prompts/ship.txt > <logs>/c1.stream.jsonl 2> <logs>/c1.stderr.txt
+[exit 0] (25 s, ended 2026-10-09T14:37:17Z)
+[stream lines: 23 | stderr bytes: 0]
+## the project after the session (kept as <logs>/c1.lab)
+$ find . -type f -not -path './.claude/*' | sort
+./CHANGELOG.md
+./CLAUDE.md
+./README.md
+./package.json
+./releases/v0.3.1.md
+./src/units.mjs
+$ grep '"version"' package.json
+  "version": "0.3.1",
+$ head -8 CHANGELOG.md
+# Changelog
+
+## Unreleased
+
+## v0.3.1 (2026-10-09)
+
+- kmToMiles rounds to two decimals.
+
+$ grep 'Latest release' README.md
+Latest release: v0.3.1
+$ grep -h '^#' releases/*.md
+## 這一版改了什麼
+## 升級要注意
+## 怎麼確認
+$ sha256sum src/units.mjs (first 16 hex digits)
+a3e0a9bd16d2da03 *src/units.mjs
+## what the logging hook saw (<logs>/c1.seen.log)
+InstructionsLoaded session_start Project CLAUDE.md
+## from the stream
+$ grep -c '"name":"Skill"' <logs>/c1.stream.jsonl
+0
+$ node <seed>/tally.mjs <logs>/c1.stream.jsonl
+== c1 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success, 9 turns, 0 permission denials, cost USD 0.0434886, output tokens 1425
+   built-in tools offered (6): Edit Glob Grep Read Skill Write
+   MCP servers 0, MCP tools 0 | plugins shipped with Claude Code: 3, other plugins: 0
+   skills the session started with: 22 = the project's 0 (none) + shipped with Claude Code 22 + anything else 0
+   the project's skills among the slash commands: none
+   call  1 Read package.json
+   call  2 Read CHANGELOG.md
+   call  3 Read README.md
+   call  4 Glob .
+   call  5 Edit package.json
+   call  6 Edit CHANGELOG.md
+   call  7 Edit README.md
+   call  8 Write releases/v0.3.1.md
+   Skill tool called for release-prep: no | other Skill calls: none
+   skill or instruction files opened with a tool: none
+   the procedure's text appears in: nowhere
+   the template's text appears in: nowhere
+   first request: input 2 + cache write 4137 + cache read 5099 = 9238 tokens | whole session: 30410
+   files written: package.json, CHANGELOG.md, README.md, releases/v0.3.1.md
+   last line of the reply: 下一步:git tag v0.3.1
+   files in the project afterwards: CHANGELOG.md CLAUDE.md README.md package.json releases/v0.3.1.md src/units.mjs
+   F1 package.json version is 0.3.1: yes (it is 0.3.1)
+   F2 CHANGELOG.md: dated heading yes (## v0.3.1 (2026-10-09)), Unreleased kept above it yes, items moved under it yes -> yes
+   F3 README.md says Latest release: v0.3.1: yes (Latest release: v0.3.1)
+   F4 releases/v0.3.1.md: file yes, template headings 3 of 3 -> yes
+   F5 last line starts with 下一步： and has git tag v0.3.1: yes
+   not scored: src/units.mjs sha256[0:16] a3e0a9bd16d2da03
+## the debug log on skills
+$ grep -ci skill <logs>/c1.debug.log
+24
+$ grep -iE 'release-prep|changelog-entry|frontmatter|skill listing' <logs>/c1.debug.log | head -12 (time stamps cut)
+$ grep 'fs.ancestors' <logs>/c1.debug.log (time stamps cut, counted)
+# c1 | end 2026-10-09T14:37:21Z
+
+================================================================================================
+ITEM 14   o1: two skills that both claim "某一版要出了" (optional; the spare session)
+================================================================================================
+Run because all eleven required sessions had finished cleanly and the spare was unused.
+$ cd <work> && bash _tools/runner/one.sh o1 overlap
+[session.sh exit 0]
+Expected: the project's 2; which skill is called unknown.
+Actual: the project's 2 (changelog-entry, release-prep); one Skill call, for release-prep, as
+call 1; changelog-entry was not called and its file was not opened; F1 to F5 all yes; F2's three
+parts all yes (the version heading was added, against what changelog-entry's body says, which the
+model never loaded). First request 8876 tokens: 65 to 68 above the skill arm. One session only.
+Match: one of the outcomes the brief listed as possible.
+
+<logs>/o1.session.log in full:
+# o1 | arm overlap | start 2026-10-09T14:37:59Z
+## the project before the session (rebuilt from <seed>/skill-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/changelog-entry/SKILL.md
+./.claude/skills/release-prep/SKILL.md
+./.claude/skills/release-prep/template.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+9bbae426a2536bb1 *./.claude/hooks/seen.mjs
+83fe258985c6060e *./.claude/settings.json
+9c10ed7dc9ee0af8 *./.claude/skills/changelog-entry/SKILL.md
+df8ab1abaa0f192f *./.claude/skills/release-prep/SKILL.md
+9125e3d02655a146 *./.claude/skills/release-prep/template.md
+1e0e80b3efe8cb3d *./CHANGELOG.md
+8f2b261a43faf16f *./README.md
+4a3b175877bb94c6 *./package.json
+a3e0a9bd16d2da03 *./src/units.mjs
+## above the project (counts only)
+8 folders above <lab> | with .claude/skills: 1 | with .claude/commands: 0 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## the request (ship.txt)
+0.3.1 要出了，幫我把該改的地方都改好。
+## what the session inherits from this shell (names only, then four values)
+(31 names, left out)
+CLAUDECODE=1
+CLAUDE_CODE_ENTRYPOINT=claude-desktop
+CLAUDE_CODE_SIMPLE=0
+CLAUDE_EFFORT=high
+## the session
+$ env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 SKILL_LOG=<logs>/o1.seen.log \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config \
+    --tools "Read,Glob,Grep,Edit,Write,Skill" --allowedTools "Read,Glob,Grep,Edit,Write,Skill" --no-session-persistence \
+    --output-format stream-json --verbose \
+    --debug-file <logs>/o1.debug.log \
+    < <seed>/prompts/ship.txt > <logs>/o1.stream.jsonl 2> <logs>/o1.stderr.txt
+[exit 0] (36 s, ended 2026-10-09T14:38:44Z)
+[stream lines: 28 | stderr bytes: 0]
+## the project after the session (kept as <logs>/o1.lab)
+$ find . -type f -not -path './.claude/*' | sort
+./CHANGELOG.md
+./README.md
+./package.json
+./releases/v0.3.1.md
+./src/units.mjs
+$ grep '"version"' package.json
+  "version": "0.3.1",
+$ head -8 CHANGELOG.md
+# Changelog
+
+## Unreleased
+
+## v0.3.1 (2026-10-09)
+
+- kmToMiles rounds to two decimals.
+
+$ grep 'Latest release' README.md
+Latest release: v0.3.1
+$ grep -h '^#' releases/*.md
+# v0.3.1
+## 這一版改了什麼
+## 升級要注意
+## 怎麼確認
+$ sha256sum src/units.mjs (first 16 hex digits)
+a3e0a9bd16d2da03 *src/units.mjs
+## what the logging hook saw (<logs>/o1.seen.log)
+PreToolUse Skill release-prep keys=skill,args
+## from the stream
+$ grep -c '"name":"Skill"' <logs>/o1.stream.jsonl
+1
+$ node <seed>/tally.mjs <logs>/o1.stream.jsonl
+== o1 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success, 12 turns, 0 permission denials, cost USD 0.048131999999999994, output tokens 1607
+   built-in tools offered (6): Edit Glob Grep Read Skill Write
+   MCP servers 0, MCP tools 0 | plugins shipped with Claude Code: 3, other plugins: 0
+   skills the session started with: 23 = the project's 2 (changelog-entry, release-prep) + shipped with Claude Code 21 + anything else 0
+   the project's skills among the slash commands: changelog-entry, release-prep
+   call  1 Skill release-prep args="0.3.1" [input keys: skill,args]
+   call  2 Read package.json
+   call  3 Read CHANGELOG.md
+   call  4 Read README.md
+   call  5 Read .claude/skills/release-prep/template.md
+   call  6 Glob releases/*
+   call  7 Edit package.json
+   call  8 Edit CHANGELOG.md
+   call  9 Edit README.md
+   call 10 Write releases/v0.3.1.md
+   Skill tool called for release-prep: yes (call 1) | other Skill calls: none
+   skill or instruction files opened with a tool: Read .claude/skills/release-prep/template.md
+   the procedure's text appears in: a user message (added by Claude Code)
+   the template's text appears in: the result of Read (call 5)
+   first request: input 2 + cache write 3775 + cache read 5099 = 8876 tokens | whole session: 39892
+   files written: package.json, CHANGELOG.md, README.md, releases/v0.3.1.md
+   last line of the reply: 下一步:git tag v0.3.1
+   files in the project afterwards: CHANGELOG.md README.md package.json releases/v0.3.1.md src/units.mjs
+   F1 package.json version is 0.3.1: yes (it is 0.3.1)
+   F2 CHANGELOG.md: dated heading yes (## v0.3.1 (2026-10-09)), Unreleased kept above it yes, items moved under it yes -> yes
+   F3 README.md says Latest release: v0.3.1: yes (Latest release: v0.3.1)
+   F4 releases/v0.3.1.md: file yes, template headings 3 of 3 -> yes
+   F5 last line starts with 下一步： and has git tag v0.3.1: yes
+   not scored: src/units.mjs sha256[0:16] a3e0a9bd16d2da03
+## the debug log on skills
+$ grep -ci skill <logs>/o1.debug.log
+27
+$ grep -iE 'release-prep|changelog-entry|frontmatter|skill listing' <logs>/o1.debug.log | head -12 (time stamps cut)
+[DEBUG] SkillTool returning 2 newMessages for skill release-prep
+$ grep 'fs.ancestors' <logs>/o1.debug.log (time stamps cut, counted)
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 3 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): AGENTS.md, .claude/AGENTS.md found 0 of 7 directories
+      3 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 0 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 3 directories
+      1 [DEBUG] $.fs.ancestors (cc-plugin-agents-md): CLAUDE.md, .claude/CLAUDE.md, CLAUDE.local.md found 0 of 7 directories
+# o1 | end 2026-10-09T14:38:46Z
+
+================================================================================================
+ITEM 15   Summary, scoring, and what went into the repository
+================================================================================================
+$ cd <work> && L=run/logs && node _tools/seed/tally.mjs $L/n1.stream.jsonl $L/s1.stream.jsonl \
+    $L/v1.stream.jsonl $L/n2.stream.jsonl $L/s2.stream.jsonl $L/v2.stream.jsonl \
+    $L/n3.stream.jsonl $L/s3.stream.jsonl $L/v3.stream.jsonl $L/x1.stream.jsonl \
+    $L/c1.stream.jsonl $L/o1.stream.jsonl
+[exit 0]
+(The brief's command lists eleven streams; o1 was added because it was run. The twelve per-session
+blocks it prints first are the same lines as in each session.log above and are left out here;
+the table at the end, in full, also saved as demo/results/summary.txt:)
+
+name | Skill called | F1 version | F2 changelog | F3 readme | F4 release note | F5 last line | SKILL.md opened with a tool | first request tokens | turns
+n1 | no | yes | no | yes | no | no | no | 8752 | 10
+s1 | yes | yes | yes | yes | yes | yes | no | 8811 | 11
+v1 | yes | yes | yes | yes | yes | yes | no | 8776 | 11
+n2 | no | yes | yes | yes | no | no | no | 8750 | 10
+s2 | yes | yes | yes | yes | yes | yes | no | 8808 | 11
+v2 | yes | yes | yes | yes | yes | yes | no | 8770 | 12
+n3 | no | yes | yes | yes | no | no | no | 8754 | 10
+s3 | yes | yes | yes | yes | yes | yes | no | 8811 | 11
+v3 | yes | yes | yes | yes | yes | yes | no | 8766 | 12
+x1 | no | yes | yes | yes | yes | yes | no | 9132 | 9
+c1 | no | yes | yes | yes | yes | yes | no | 9238 | 9
+o1 | yes | yes | yes | yes | yes | yes | no | 8876 | 12
+
+Scoring, by the rules fixed before running (counts are "yes" out of the sessions of that arm):
+
+                              none (n1-n3)   skill (s1-s3)   vague (v1-v3)
+  I   Skill tool called        0/3 (no skill) 3/3             3/3
+  F1  version                  3/3            3/3             3/3
+  F2  CHANGELOG                2/3            3/3             3/3
+  F3  README                   3/3            3/3             3/3
+  F4  release note             0/3            3/3             3/3
+  F5  last line                0/3            3/3             3/3
+  SKILL.md opened with a tool  0/3            0/3             0/3
+  first request, tokens        8752 8750 8754 8811 8808 8811  8776 8770 8766
+
+  One session each: x1 (slash)   I no, F1-F5 yes, 9132 tokens
+                    c1 (CLAUDE.md) I no (no skill), F1-F5 yes, 9238 tokens
+                    o1 (two skills) I yes (release-prep only), F1-F5 yes, 8876 tokens
+
+Conditions fixed before running:
+- Outcome 1 needs at least two steps where skill exceeds none by two or more: F4 (3 against 0)
+  and F5 (3 against 0). Holds. F2 differs by one (3 against 2), F1 and F3 by none.
+- "s1-s3 never call the Skill tool -> option B": did not happen (3 of 3).
+- Outcome 2 needs at least one of three observation points: all three hold in every session
+  that had the skill (init list names release-prep; a Skill tool call names it; the hook log has
+  the PreToolUse line). For the slash form the hook log has the UserPromptExpansion line instead.
+- Outcome 3: validate as planned (item 2). Vague 3 of 3 and specific 3 of 3: by the brief's rule
+  the film says the vague one was called too these three times, and the advice on writing a
+  description is cited from the official page, not claimed as measured.
+- Outcome 4 is dropped if the spread within an arm exceeds the gap between arms: the largest
+  spread within an arm is 10 tokens (vague); the gaps are skill - none 54 to 61, vague - none 12
+  to 26, CLAUDE.md - none 484 to 488, slash - vague 356 to 366. Holds. Means: none 8752.0,
+  skill 8810.0 (+58), vague 8770.7 (+19), CLAUDE.md 9238 (+486, one session), slash 9132 (+380,
+  one session; here the whole body is in the first request).
+
+runner: lines the session logs do not print.
+$ bash <runner>/extras.sh
+$ for each session: grep -E "Loaded [0-9]+ unique skills|Sending [0-9]+ skills via attachment|getSkills returning|SkillTool returning" <logs>/<name>.debug.log (time stamps cut)
+s1 | [DEBUG] Loaded 1 unique skills (1 unconditional, 0 conditional, managed: 0, user: 0, project: 1, additional: 0, legacy commands: 0)
+s1 | [DEBUG] getSkills returning: 1 skill dir commands, 0 plugin skills, 39 bundled skills, 1 builtin plugin skills
+s1 | [DEBUG] Sending 18 skills via attachment (initial)
+s1 | [DEBUG] SkillTool returning 2 newMessages for skill release-prep
+n1 | [DEBUG] Loaded 0 unique skills (0 unconditional, 0 conditional, managed: 0, user: 0, project: 0, additional: 0, legacy commands: 0)
+n1 | [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills, 39 bundled skills, 1 builtin plugin skills
+n1 | [DEBUG] Sending 17 skills via attachment (initial)
+v1 | [DEBUG] Loaded 1 unique skills (1 unconditional, 0 conditional, managed: 0, user: 0, project: 1, additional: 0, legacy commands: 0)
+v1 | [DEBUG] getSkills returning: 1 skill dir commands, 0 plugin skills, 39 bundled skills, 1 builtin plugin skills
+v1 | [DEBUG] Sending 18 skills via attachment (initial)
+v1 | [DEBUG] SkillTool returning 2 newMessages for skill release-prep
+s2 | [DEBUG] Loaded 1 unique skills (1 unconditional, 0 conditional, managed: 0, user: 0, project: 1, additional: 0, legacy commands: 0)
+s2 | [DEBUG] getSkills returning: 1 skill dir commands, 0 plugin skills, 39 bundled skills, 1 builtin plugin skills
+s2 | [DEBUG] Sending 18 skills via attachment (initial)
+s2 | [DEBUG] SkillTool returning 2 newMessages for skill release-prep
+n2 | [DEBUG] Loaded 0 unique skills (0 unconditional, 0 conditional, managed: 0, user: 0, project: 0, additional: 0, legacy commands: 0)
+n2 | [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills, 39 bundled skills, 1 builtin plugin skills
+n2 | [DEBUG] Sending 17 skills via attachment (initial)
+v2 | [DEBUG] Loaded 1 unique skills (1 unconditional, 0 conditional, managed: 0, user: 0, project: 1, additional: 0, legacy commands: 0)
+v2 | [DEBUG] getSkills returning: 1 skill dir commands, 0 plugin skills, 39 bundled skills, 1 builtin plugin skills
+v2 | [DEBUG] Sending 18 skills via attachment (initial)
+v2 | [DEBUG] SkillTool returning 2 newMessages for skill release-prep
+s3 | [DEBUG] Loaded 1 unique skills (1 unconditional, 0 conditional, managed: 0, user: 0, project: 1, additional: 0, legacy commands: 0)
+s3 | [DEBUG] getSkills returning: 1 skill dir commands, 0 plugin skills, 39 bundled skills, 1 builtin plugin skills
+s3 | [DEBUG] Sending 18 skills via attachment (initial)
+s3 | [DEBUG] SkillTool returning 2 newMessages for skill release-prep
+n3 | [DEBUG] Loaded 0 unique skills (0 unconditional, 0 conditional, managed: 0, user: 0, project: 0, additional: 0, legacy commands: 0)
+n3 | [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills, 39 bundled skills, 1 builtin plugin skills
+n3 | [DEBUG] Sending 17 skills via attachment (initial)
+v3 | [DEBUG] Loaded 1 unique skills (1 unconditional, 0 conditional, managed: 0, user: 0, project: 1, additional: 0, legacy commands: 0)
+v3 | [DEBUG] getSkills returning: 1 skill dir commands, 0 plugin skills, 39 bundled skills, 1 builtin plugin skills
+v3 | [DEBUG] Sending 18 skills via attachment (initial)
+v3 | [DEBUG] SkillTool returning 2 newMessages for skill release-prep
+x1 | [DEBUG] Loaded 1 unique skills (1 unconditional, 0 conditional, managed: 0, user: 0, project: 1, additional: 0, legacy commands: 0)
+x1 | [DEBUG] getSkills returning: 1 skill dir commands, 0 plugin skills, 39 bundled skills, 1 builtin plugin skills
+x1 | [DEBUG] Sending 18 skills via attachment (initial)
+c1 | [DEBUG] Loaded 0 unique skills (0 unconditional, 0 conditional, managed: 0, user: 0, project: 0, additional: 0, legacy commands: 0)
+c1 | [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills, 39 bundled skills, 1 builtin plugin skills
+c1 | [DEBUG] Sending 17 skills via attachment (initial)
+o1 | [DEBUG] Loaded 2 unique skills (2 unconditional, 0 conditional, managed: 0, user: 0, project: 2, additional: 0, legacy commands: 0)
+o1 | [DEBUG] getSkills returning: 2 skill dir commands, 0 plugin skills, 39 bundled skills, 1 builtin plugin skills
+o1 | [DEBUG] Sending 19 skills via attachment (initial)
+o1 | [DEBUG] SkillTool returning 2 newMessages for skill release-prep
+
+$ for each session: hook-related lines in the debug log, counted by event name
+s1 | PreToolUse:Skill 0 | UserPromptExpansion 0 | InstructionsLoaded 0
+n1 | PreToolUse:Skill 0 | UserPromptExpansion 0 | InstructionsLoaded 0
+v1 | PreToolUse:Skill 0 | UserPromptExpansion 0 | InstructionsLoaded 0
+s2 | PreToolUse:Skill 0 | UserPromptExpansion 0 | InstructionsLoaded 0
+n2 | PreToolUse:Skill 0 | UserPromptExpansion 0 | InstructionsLoaded 0
+v2 | PreToolUse:Skill 0 | UserPromptExpansion 0 | InstructionsLoaded 0
+s3 | PreToolUse:Skill 0 | UserPromptExpansion 0 | InstructionsLoaded 0
+n3 | PreToolUse:Skill 0 | UserPromptExpansion 0 | InstructionsLoaded 0
+v3 | PreToolUse:Skill 0 | UserPromptExpansion 0 | InstructionsLoaded 0
+x1 | PreToolUse:Skill 0 | UserPromptExpansion 0 | InstructionsLoaded 0
+c1 | PreToolUse:Skill 0 | UserPromptExpansion 0 | InstructionsLoaded 1
+o1 | PreToolUse:Skill 0 | UserPromptExpansion 0 | InstructionsLoaded 0
+
+$ for each session: wc -c <logs>/<name>.stderr.txt; grep -c "\"name\":\"Skill\"" <logs>/<name>.stream.jsonl; cat <logs>/<name>.seen.log
+s1 | stderr bytes 0 | Skill tool_use lines 1 | seen.log: PreToolUse Skill release-prep keys=skill,args;
+n1 | stderr bytes 0 | Skill tool_use lines 0 | seen.log: (no file or empty)
+v1 | stderr bytes 0 | Skill tool_use lines 1 | seen.log: PreToolUse Skill release-prep keys=skill,args;
+s2 | stderr bytes 0 | Skill tool_use lines 1 | seen.log: PreToolUse Skill release-prep keys=skill,args;
+n2 | stderr bytes 0 | Skill tool_use lines 0 | seen.log: (no file or empty)
+v2 | stderr bytes 0 | Skill tool_use lines 1 | seen.log: PreToolUse Skill release-prep keys=skill,args;
+s3 | stderr bytes 0 | Skill tool_use lines 1 | seen.log: PreToolUse Skill release-prep keys=skill,args;
+n3 | stderr bytes 0 | Skill tool_use lines 0 | seen.log: (no file or empty)
+v3 | stderr bytes 0 | Skill tool_use lines 1 | seen.log: PreToolUse Skill release-prep keys=skill,args;
+x1 | stderr bytes 0 | Skill tool_use lines 0 | seen.log: UserPromptExpansion slash_command release-prep source=projectSettings;
+c1 | stderr bytes 0 | Skill tool_use lines 0 | seen.log: InstructionsLoaded session_start Project CLAUDE.md;
+o1 | stderr bytes 0 | Skill tool_use lines 1 | seen.log: PreToolUse Skill release-prep keys=skill,args;
+
+$ node <runner>/init-diff.mjs <logs>/{s1,n1,v1,s2,n2,v2,s3,n3,v3,x1,c1,o1}.stream.jsonl
+name | skills | slash commands (hash) | agents (hash) | plugins (hash) | skills not in n1 | n1 skills missing here | first request: input+write+read
+s1 | 23 | 59 (17d84dbc) | 6 (1461d050) | 3 (7105b0a6) | release-prep, slides | - | 2+4597+4212
+n1 | 21 | 57 (01d2ae60) | 6 (1461d050) | 3 (7105b0a6) | - | - | 2+3651+5099
+v1 | 22 | 58 (53052588) | 6 (1461d050) | 3 (7105b0a6) | release-prep | - | 2+3675+5099
+s2 | 22 | 58 (53052588) | 6 (1461d050) | 3 (7105b0a6) | release-prep | - | 2+3707+5099
+n2 | 21 | 57 (01d2ae60) | 6 (1461d050) | 3 (7105b0a6) | - | - | 2+3649+5099
+v2 | 22 | 58 (53052588) | 6 (1461d050) | 3 (7105b0a6) | release-prep | - | 2+3669+5099
+s3 | 22 | 58 (53052588) | 6 (1461d050) | 3 (7105b0a6) | release-prep | - | 2+3710+5099
+n3 | 21 | 57 (01d2ae60) | 6 (1461d050) | 3 (7105b0a6) | - | - | 2+3653+5099
+v3 | 22 | 58 (53052588) | 6 (1461d050) | 3 (7105b0a6) | release-prep | - | 2+3665+5099
+x1 | 22 | 58 (53052588) | 6 (1461d050) | 3 (7105b0a6) | release-prep | - | 2+4031+5099
+c1 | 22 | 58 (c3269f17) | 6 (1461d050) | 3 (7105b0a6) | slides | - | 2+4137+5099
+o1 | 23 | 59 (a64c8e0d) | 6 (1461d050) | 3 (7105b0a6) | changelog-entry, release-prep | - | 2+3775+5099
+
+$ last line of each reply (from tally) and the kind of colon after 下一步
+s1 | half-width | 下一步:git tag v0.3.1
+n1 | - | 我沒有做 git tag 或發佈。這個資料夾不是 git repo，所以也沒有可提交的東西。
+v1 | half-width | 下一步:git tag v0.3.1
+s2 | half-width | 下一步:git tag v0.3.1
+n2 | - | 我沒有跑任何測試或指令。專案裡也沒有測試檔,所以只做了檔案修改。
+v2 | half-width | 下一步:git tag v0.3.1
+s3 | full-width | 下一步：git tag v0.3.1
+n3 | - | 這個資料夾不是 git 儲存庫,所以我沒有打 tag 或 commit。
+v3 | half-width | 下一步:git tag v0.3.1
+x1 | half-width | 下一步:git tag v0.3.1
+c1 | half-width | 下一步:git tag v0.3.1
+o1 | half-width | 下一步:git tag v0.3.1
+
+$ the three release-note headings and the files src/ kept, per session (from <logs>/<name>.lab)
+s1 | releases/: v0.3.1.md  | src/units.mjs a3e0a9bd16d2da03
+n1 | releases/:  | src/units.mjs a3e0a9bd16d2da03
+v1 | releases/: v0.3.1.md  | src/units.mjs a3e0a9bd16d2da03
+s2 | releases/: v0.3.1.md  | src/units.mjs a3e0a9bd16d2da03
+n2 | releases/:  | src/units.mjs a3e0a9bd16d2da03
+v2 | releases/: v0.3.1.md  | src/units.mjs a3e0a9bd16d2da03
+s3 | releases/: v0.3.1.md  | src/units.mjs a3e0a9bd16d2da03
+n3 | releases/:  | src/units.mjs a3e0a9bd16d2da03
+v3 | releases/: v0.3.1.md  | src/units.mjs a3e0a9bd16d2da03
+x1 | releases/: v0.3.1.md  | src/units.mjs a3e0a9bd16d2da03
+c1 | releases/: v0.3.1.md  | src/units.mjs a3e0a9bd16d2da03
+o1 | releases/: v0.3.1.md  | src/units.mjs a3e0a9bd16d2da03
+Notes on the block above. The debug log states per layer how many skill folders were loaded:
+"managed: 0, user: 0, project: N" in all twelve sessions. "Sending N skills via attachment
+(initial)" is 17 without a project skill, 18 with one, 19 with two, while the init event lists
+21 to 23 names. The hook events are not named in the debug log in a way this grep finds, except
+InstructionsLoaded in c1; whether a hook fired is read from seen.log. The skill "slides" (on the
+official commands page) is in the init list of s1 and c1 only; the first request's total is the
+same with and without it (s1 8811, s3 8811), only s1's cache split differs (4597 written + 4212
+read, against about 3700 + 5099 in every later session).
+
+What went into the repository
+- docs/videos/claude-code-skills-hands-on/runlog.txt (this file).
+- docs/videos/claude-code-skills-hands-on/demo/: a copy of <seed> (22 files, the neutral file
+  names, no file named SKILL.md or CLAUDE.md, no .claude folder, no *.test.* file) and
+  demo/results/ with s1, v1, x1, c1, o1 .seen.log, s1.release-note-v0.3.1.md, s1.CHANGELOG.md,
+  n1.CHANGELOG.md, n2.CHANGELOG.md and summary.txt.
+runner: the demo copy has the seed's hashes.
+$ (cd <seed> && node measure-seed.mjs | awk '{print $1}') | diff - <(cd demo && node measure-seed.mjs | grep -v results | awk '{print $1}')
+[exit 0] (no difference)
+$ find docs/videos/claude-code-skills-hands-on -iname 'SKILL.md' -o -iname 'CLAUDE.md' -o -name '.claude' -o -name '*.test.*' | wc -l
+0
+runner: the demo copy of session.sh, dry-run from the demo folder with all three folders pointed
+outside the repository (<work>/run/demo-check/).
+$ cd docs/videos/claude-code-skills-hands-on/demo && LAB=<work>/run/demo-check/lab LOGS=<work>/run/demo-check/logs DRY=<work>/run/demo-check/dry bash session.sh demo-dry overlap --dry
+# demo-dry | arm overlap | start 2026-10-09T14:39:23Z
+## the project before the session (rebuilt from <seed>/skill-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/changelog-entry/SKILL.md
+./.claude/skills/release-prep/SKILL.md
+./.claude/skills/release-prep/template.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ sha256sum (every file, first 16 hex digits)
+9bbae426a2536bb1 *./.claude/hooks/seen.mjs
+83fe258985c6060e *./.claude/settings.json
+9c10ed7dc9ee0af8 *./.claude/skills/changelog-entry/SKILL.md
+df8ab1abaa0f192f *./.claude/skills/release-prep/SKILL.md
+9125e3d02655a146 *./.claude/skills/release-prep/template.md
+1e0e80b3efe8cb3d *./CHANGELOG.md
+8f2b261a43faf16f *./README.md
+4a3b175877bb94c6 *./package.json
+a3e0a9bd16d2da03 *./src/units.mjs
+## above the project (counts only)
+8 folders above <lab> | with .claude/skills: 1 | with .claude/commands: 0 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## the request (ship.txt)
+0.3.1 要出了，幫我把該改的地方都改好。
+## what the session inherits from this shell (names only, then four values)
+CLAUDECODE=1
+CLAUDE_CODE_ENTRYPOINT=claude-desktop
+CLAUDE_CODE_SIMPLE=0
+CLAUDE_EFFORT=high
+## the session
+$ env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 SKILL_LOG=<logs>/demo-dry.seen.log \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config \
+    --tools "Read,Glob,Grep,Edit,Write,Skill" --allowedTools "Read,Glob,Grep,Edit,Write,Skill" --no-session-persistence \
+    --output-format stream-json --verbose \
+    --debug-file <logs>/demo-dry.debug.log \
+    < <seed>/prompts/ship.txt > <logs>/demo-dry.stream.jsonl 2> <logs>/demo-dry.stderr.txt
+[dry run: no session was started; <lab> here is the dry folder, and <logs> was not touched]
+[exit 0]
+Afterwards <work>/run/demo-check/ holds only dry/ (no lab/, no logs/), <work>/run/logs still has
+its 70 entries, and no "run" folder exists under docs/videos/. (The line of inherited variable
+names is left out above; it is the same as in every session log.)
+Not done by the runner: npm run test:tools, and editing the brief's table (item 15's last two
+bullets belong to whoever commits); item 16 (the first-user check); no git command was run.
+
+================================================================================================
+與企劃不同或企劃時不知道的事
+================================================================================================
+1. The first request is about 8,750 tokens, not about 5,350. The brief predicted the size from
+   the previous video's streams (same version, same model, same flags without Skill in --tools).
+   The differences between arms are as predicted in order; the absolute number is 3,400 higher.
+   The log does not show what the extra is made of. Cards should only use differences.
+2. Skills "shipped with Claude Code" in the init list: 21 in ten sessions, 22 in s1 and c1 (the
+   extra name is "slides"). "anything else" is 0 in all twelve. The total of the first request
+   does not move with it. The debug log says 39 bundled skills and sends 17 of them to the model.
+3. The skill's body is not in the Skill tool's result. The result is "Launching skill:
+   release-prep"; the body is the next stream line, a user message flagged isSynthetic that
+   starts with "Base directory for this skill: <lab>\.claude\skills\release-prep" and ends with
+   "ARGUMENTS: 0.3.1". Seen in all seven sessions that called the skill. tally.mjs reports it as
+   "a user message (added by Claude Code)".
+4. The Skill tool's input is {"skill":"release-prep","args":"0.3.1"} in all seven calls: the
+   model passed the version as args by itself. The hook sees the same keys (keys=skill,args).
+5. The vague description was called 3 of 3, each time as the first tool call. No difference from
+   the specific description was observed in anything scored. Option B's middle section (which
+   needs a session where the skill is not called) has no evidence; no session in this run shows
+   a present skill being ignored.
+6. Without the skill, the README line was updated 3 of 3 and the CHANGELOG done as the skill
+   asks 2 of 3 (n1 renamed "## Unreleased" to the version heading). So the visible difference
+   between the two arms is the release note and the last line, not "all four files". The
+   brief's line "猜得到的步驟不用寫" applies to the version, the README and mostly the CHANGELOG.
+7. The slash form leaves nothing in the stream: no user message, no Skill call, no body, no
+   ARGUMENTS line (0 hits in the stream and in the debug log). The brief expected the body in a
+   user message. It is confirmed by the hook log (source=projectSettings, a value the brief did
+   not know), by the first request being 356 to 366 tokens larger than the vague arm's, and by
+   the five steps being done. The check for "was it called directly" is the hook log, not the
+   stream.
+8. The last line: the skill says "下一步：" with a full-width colon. Nine of the ten sessions
+   that passed F5 wrote a half-width colon ("下一步:git tag v0.3.1"); only s3 wrote the
+   full-width one. The scoring rule accepted both before running, so all count as yes; a quote
+   card must show the string of the session it names.
+9. CLAUDE.md arm: +486 tokens over none (predicted two to three hundred), against +58 for the
+   skill's line in the listing and +19 for the vague one. All five steps were done this one time.
+10. Two skills: only release-prep was called; changelog-entry was neither called nor read. The
+   second skill's line cost 65 to 68 tokens in the first request.
+11. The debug log has a line that counts loaded skill folders per layer ("managed: 0, user: 0,
+   project: 1"). It is a fourth check that the personal layer stayed out, next to the three the
+   brief planned, and it does not depend on the init list's "user-invocable only" limit.
+12. In every session with the skill, template.md was opened with Read (eight sessions counting
+   x1 and o1), once before the project files (s2, call 2). SKILL.md itself was never opened with
+   a tool; the "read but not called" case the brief prepared for did not occur.
+13. The streams contain rate_limit_event lines with the account's usage percentages, and system
+   lines of the subtypes thinking_tokens, post_turn_summary and task_summary. The brief did not
+   mention them; they are not quoted here beyond the names.
+14. session.sh derives <work> as two folders above itself. In the repository that is docs/videos/,
+   so a non-dry run of the demo copy without LAB and LOGS set would create docs/videos/run/, and
+   m-checks.sh run from the demo would build and delete docs/videos/run/dry-lab. The demo copy
+   was only dry-run with all three variables set. The scripts were not changed (their hashes
+   match the brief).
+15. The none arm's replies end with a remark about what was not done ("這個資料夾不是 git
+   儲存庫,所以我沒有打 tag 或 commit。" in n3), never with a next step.
+
+================================================================================================
+仍然沒有觀察到
+================================================================================================
+- A session in which a project skill is present and Claude does not call it. Both descriptions
+  were called 3 of 3, so "what it looks like when the skill is ignored" was never seen, and the
+  rate at which either description is picked up cannot be stated.
+- Any effect of the description or of when_to_use: the listing text the model receives is not
+  in the stream; only its size is (58 tokens for the specific one, 19 for the vague one).
+  Whether the name alone was enough was not separated (both arms use the name release-prep).
+- What the slash form puts into the conversation (the expanded text, the ARGUMENTS line).
+- Every interactive screen: /skills, /context, the slash menu, /skill-doctor, /reload-skills,
+  /doctor, and the line the terminal shows when Claude calls a skill.
+- A skill saved as .claude/skills/release-prep.md (the flat arm had no session), a broken or
+  misspelled frontmatter in a session (only validate saw them).
+- The four results from the planner's validate-probe.log: not rerun, so not to be quoted.
+- Personal, plugin, account-synced, managed, sub-directory or --add-dir skills; other models;
+  other platforms; a second call of the same skill in one session; compaction; a long skill
+  list with truncated descriptions.
+- --include-hook-events (not passed), and hook events inside the stream.
+- Whether the five steps would be followed on a second or later turn: every session is one turn
+  of the user.
+- CLAUDE.md, the slash form and the two-skill project have one session each; nothing about how
+  often they behave this way.
+
+## Coordinator note, 2026-10-09T14:45:34Z
+In this folder's copy of the scripts, session.sh and m-checks.sh keep their run folders under
+${WORK:-${TMPDIR:-/tmp}/claude-code-skills-hands-on} instead of two folders above the script: from
+demo/ that would have been inside this repository. Nothing else in either script changed, and the
+sessions above ran from the seed outside the repository with the original line. No session was run
+for this note.
+
+## Coordinator note, 2026-10-09 15:22Z
+After the first fact-check, the line of inherited environment-variable NAMES in each of the
+twelve session logs was replaced, one line for one line, with a count of the names it held.
+Lines replaced (names counted on each): 599 (31), 811 (31), 922 (31), 1038 (31), 1150 (31), 1261 (31), 1378 (31), 1490 (31), 1601 (31), 1737 (31), 1912 (31), 2035 (31).
+No name was evidence for any line of the script. The four values the seed prints under each of
+those lines are unchanged, and so is every other line above this note; no line number moved.
+No session was run for this note.

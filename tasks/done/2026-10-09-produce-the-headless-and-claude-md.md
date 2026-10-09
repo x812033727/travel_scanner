@@ -1,13 +1,13 @@
 ---
 id: 2026-10-09-produce-the-headless-and-claude-md
 title: Produce the headless-mode and CLAUDE.md hands-on tutorials under the content-value rules
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-5-video-reference-comparison
 claimed_at: 2026-10-09T13:27:32Z
 created_at: 2026-10-09T13:27:00Z
-completed_at:
+completed_at: 2026-10-09T16:15:29Z
 branch: claude/headless-hands-on-video
 depends_on: []
 scope:
@@ -42,7 +42,8 @@ CLAUDE.md (`claude-code-claude-md-hands-on`):
 - [x] Brief, eleven sessions, script, two fact checks.
 - [x] Narration synthesized and checked until no line was flagged; the audio gate approved it.
 - [x] Its files in the repository.
-- [ ] The cut, and the final and publish gates.
+- [x] The cut, and the final and publish gates: final 11 of 11 with the judge's demonstration
+  score at 0.88, publish 4 of 4, both approved by the server.
 
 - [ ] Uploading to YouTube, which is the owner's.
 
@@ -51,7 +52,7 @@ CLAUDE.md (`claude-code-claude-md-hands-on`):
 - [x] Headless: plan, run, write, verify twice, narrate.
 - [x] Headless: `render`, `assemble`, `captions`, `review-push --gate final`, `package`,
   `review-push --gate publish`; languages: zh-TW only (the owner, in chat).
-- [ ] CLAUDE.md: the same, after its narration passes the audio check.
+- [x] CLAUDE.md: the same, after its narration passed the audio check.
 
 ## How to verify
 
