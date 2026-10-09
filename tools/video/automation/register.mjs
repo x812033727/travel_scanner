@@ -151,7 +151,14 @@ rules and a route's rules disagree, these win):
   terminal, goes on a quote, compare, steps or table card whose "source" names the run
   (「實跑 2026-10-09｜<tool and version>」); the events of one run in order are a steps
   card. One card holds one level of evidence: when its rows differ, split it, or name the
-  odd row's level in that row. A choice among alternatives is a table; steps draws a
+  odd row's level in that row or by its number in the source. A command too long for a
+  terminal card goes on a code card when it fits as typed; otherwise its parts go in a
+  table and the whole command in the description. An excerpt's caption gives the file and
+  the line range it shows. A terminal card's tool_version names the program that printed
+  the output. A source line takes the room of a row: a table or a list at its limit gives
+  up its title or splits. A quote card holds one sentence of its source, or the clause that
+  carries the fact. The render stage judges a full card: what it reports as overflowing is
+  cut, not shrunk. A choice among alternatives is a table; steps draws a
   sequence.
 - An update or a guide is told as numbered points, each in the same four moves: what the
   viewer did before, what changed, exactly what to do now, and the exception.

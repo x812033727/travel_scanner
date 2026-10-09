@@ -1,13 +1,13 @@
 ---
 id: 2026-10-09-answer-the-nine-questions-the-revised
-title: Answer the nine questions the revised content-value rules raised on their second use
-status: in-progress
+title: Answer the questions the revised content-value rules raised on their second use
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-video-reference-comparison
 claimed_at: 2026-10-09T07:54:00Z
 created_at: 2026-10-09T07:53:31Z
-completed_at:
+completed_at: 2026-10-09T08:25:22Z
 branch: claude/content-value-rules-fixes-2
 depends_on: []
 scope:
@@ -18,7 +18,7 @@ scope:
   - .agents/skills/youtube-video/references/prompts/writer-video.md
 ---
 
-# Answer the nine questions the revised content-value rules raised on their second use
+# Answer the questions the revised content-value rules raised on their second use
 
 ## Why
 
@@ -49,17 +49,34 @@ name.
 9. A `code` card with a caption and no title. Answer: 9 lines beside a title and a caption, 12
    beside a caption alone.
 
+## What the writer found, and the answer
+
+1. The code card's capacity was stated three ways. Answer: 9 lines beside a title and a caption,
+   12 beside a caption alone; the render stage judges a fuller card.
+2. A table with a title and a source ran out of room. Answer: a source line takes the room of a
+   row; a table or a list at its limit gives up its title or splits.
+3. A real command over 78 columns that the writer cannot run again. Answer: a code card when it
+   fits as typed; otherwise its parts in a table and the whole command in the description.
+4. One level of evidence on a bullets card that mixes official facts and the owner's practice.
+   Answer: name the item numbers in the source.
+5. An excerpt numbers from 1 while its caption cites file lines. Answer: that is the form.
+6. `terminal.tool_version` for output one program typed and another printed. Answer: the
+   program that printed it.
+7. No room for a closing question in a 30-second opening chapter. Answer: on the teaching route
+   a chapter need not end on one; the next chapter opens with it.
+8. No length for a quote card. Answer: one sentence, or the clause that carries the fact.
+
 ## Definition of done
 
 - [x] Each of the nine is answered in `VALUE_RULES`, with the same in `planner.md`,
   `writer-video.md` and the Chinese of `script-writing.md` §含金量.
 - [x] The prompt test holds the new wording.
-- [ ] What the same video's writer reports is folded in before the PR is opened.
+- [x] What the same video's writer reports is folded in before the PR is opened.
 
 ## Steps
 
 - [x] Rule text, prompt docs, test.
-- [ ] Add the writer's findings; open the PR.
+- [x] Add the writer's findings; open the PR.
 
 ## How to verify
 

@@ -144,6 +144,14 @@ test("every slides video is held to the content-value rules, on both routes and 
   assert.match(VALUE_RULES, /9 lines beside a title and a caption and 12\s+beside a caption alone/);
   assert.match(VALUE_RULES, /excerpted in whole lines, in\s+their order[\s\S]*it is never edited/);
   assert.match(VALUE_RULES, /One card holds one level of evidence: when its rows differ, split it/);
+  // What the same video's writer found.
+  assert.match(VALUE_RULES, /or by its number in the source/);
+  assert.match(VALUE_RULES, /A command too long for a\s+terminal card goes on a code card when it fits as typed/);
+  assert.match(VALUE_RULES, /An excerpt's caption gives the file and\s+the line range it shows/);
+  assert.match(VALUE_RULES, /tool_version names the program that printed\s+the output/);
+  assert.match(VALUE_RULES, /A source line takes the room of a row/);
+  assert.match(VALUE_RULES, /A quote card holds one sentence of its source, or the clause that\s+carries the fact/);
+  assert.match(VALUE_RULES, /what it reports as overflowing is\s+cut, not shrunk/);
   assert.match(VALUE_RULES, /A choice among alternatives is a table; steps draws a\s+sequence/);
   assert.match(VALUE_RULES, /the cta\s+card's sentence and the outro's comment question and subscribe invitation are the three\s+exceptions/);
   assert.match(VALUE_RULES, /「以官網為準」 is never the fallback: a number with neither source is left out/);
