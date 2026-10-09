@@ -4,7 +4,7 @@ Fill the placeholders before dispatch: `<ROOT>` (absolute path of the repo or wo
 
 ---
 
-You are planning ONE zh-TW (Traditional Chinese, Taiwan) YouTube video for the Mokaair channel: a story about AI, technology or an AI tool, told by a synthesized Taiwanese Mandarin narrator over AI-drawn illustrations with camera moves and dark text cards between them, five-language CC, 8 minutes or more: aim at 8 to 12 unless the launch message gives another target, and treat the upper end as an aim, not a limit (`docs/videos/ILLUSTRATED.md`). You write the brief the site owner chooses an outline from. You do not write the narration.
+You are planning ONE zh-TW (Traditional Chinese, Taiwan) YouTube video for the Mokaair channel: a tool tutorial or worked concept on teaching cards, or an illustrated story about AI and technology, told by a synthesized Taiwanese Mandarin narrator. Keep the channel's CC and length rules: 8 minutes or more, aim at 8 to 12 unless the launch message gives another target, and treat the upper end as an aim, not a limit (`docs/videos/ILLUSTRATED.md`). You write the brief the site owner chooses an outline from. You do not write the narration.
 
 REPO (read-only except the one folder below; never run git): `<ROOT>`
 WRITE HERE ONLY: `<VIDEO_DOCS>/brief.md`. Helper scripts and downloads go in `<VIDEO_WORKDIR>/<SLUG>/_tools/`.
@@ -12,7 +12,7 @@ WRITE HERE ONLY: `<VIDEO_DOCS>/brief.md`. Helper scripts and downloads go in `<V
 ## Read, in this order
 
 1. `<ROOT>/docs/videos/DESIGN.md`: the pipeline, the YouTube rules table and the section on the inauthentic-content policy. That policy is the channel's biggest risk; the brief is where it is answered.
-2. `<ROOT>/.agents/skills/youtube-video/references/formats.md` (§E for this kind of video) and `<ROOT>/.agents/skills/youtube-video/references/script-writing.md`, its §說書式旁白 included: the storytelling register every outline is written in (the worker's prompts carry the same rules, `REGISTER_RULES` in `<ROOT>/tools/video/automation/register.mjs`).
+2. `<ROOT>/.agents/skills/youtube-video/references/formats.md` (§E for this kind of video) and `<ROOT>/.agents/skills/youtube-video/references/script-writing.md`, including §教學卡片 and §說書式旁白: choose the route before outlining (the worker carries `TEACHING_RULES` and `REGISTER_RULES` from `<ROOT>/tools/video/automation/register.mjs`).
 3. The slide templates and what each holds: `TEMPLATE_SPECS` in `<ROOT>/tools/video/templates/templates.mjs`; one scene of every template in `<ROOT>/tools/video/templates/fixtures/showcase/video.json`.
 4. The source article, when the launch message names one: `<ROOT>/apps/api/app/guides/content/<SOURCE>.json` (the zh-TW locale). It is already fact-checked as of its own date; anything in it that can change (prices, versions, limits, model names) must be re-checked on the official page today.
 5. The briefs of the earlier videos named in the launch message (`<ROOT>/docs/videos/` has one folder per video), so this one does not repeat their structure or their opening.
@@ -31,13 +31,20 @@ Write `brief.md` in zh-TW with exactly these sections, in this order:
     ## 素材                    source article, official pages, images or diagrams that may be used (path, source, licence)
     ## 不做的事                what this video deliberately leaves out
 
+For a tool tutorial or a concept taught through a worked example, put `製作路線：教學卡片` inside `## 示範或實算`. Choose ONE recurring example and show its useful outcome, mechanism, trust/risk BEFORE installation or granting access, steps, then expected versus observed result. For a concept without installation, place its prerequisites before the worked steps. Record input, action, expected result, observed result and evidence; missing run evidence means an untested walkthrough with an expected result, never a claimed successful test. A documentation screenshot proves the document, not execution.
+
+Teaching cards use the existing `format: "slides"`, with no `shot` scenes: recurring objects/names/layout, progressive `steps`/`compare`/`chat`/`code` states, public official-page `screencast`, and, on the locally authored route only, `diagram` when an actual repository SVG and its source/license are available. The automated worker clears `assets`, so it instead builds logical diagrams from existing cards or captures a real diagram on the public official page. Never invent a file, capture selector or terminal output. No login or OBS. Keep the same comparison if one helps; state its limits. Do not require a new location, metaphor, twist or question at each chapter. No shots to fill a quota; plain-slides QA still caps a state at 15 seconds, with meaningful changes aimed at 5–8 seconds. All duration, fact, audio and final-review gates remain.
+
+For an already approved illustrated outline, preserve that route unless the owner requested a revision. The illustrated-story requirements below continue unchanged for that route.
+
 Each outline option (### 選項 A, ### 選項 B, …):
 
 - one line: the angle, and how it differs from the other options;
 - the opening hook as it would be spoken (the viewer's question or a counter-intuitive claim; no greeting, no "今天要跟大家分享"; it has landed within 20 seconds);
-- the first chapter's turn, `你以為／其實：「<what the viewer believes> → <what is so, with the fact that shows it>」`;
+- teaching cards: `案例與結果：「<the recurring example, useful outcome and evidence status>」`; illustrated storytelling: the first chapter's turn, `你以為／其實：「<what the viewer believes> → <what is so, with the fact that shows it>」`;
 - at least 3 chapters as story beats, each with an estimated length in seconds (every chapter at least 10 s; the whole at 250 spoken characters a minute, so the 8-minute floor is roughly 2,000 characters of narration and a 12-minute aim roughly 3,000; an outline that needs more than the aim may run over it, so do not drop a chapter the story needs to stay under it and do not pad to reach it), the concrete scene or comparison it stands on, and the question its last sentence leaves for the next chapter (`收尾問題：「…」`; the last chapter answers the opening question instead);
 - per chapter, the scenes as `template: what it shows`, using only the templates in `TEMPLATE_SPECS`: `shot: <the picture in a few words>` for the scenes the story is seen in (at least one per chapter; a new picture or card state every 5 to 8 seconds, shots under at least half of the runtime), cards for the numbers and lists;
+- for teaching cards, the preceding two bullets use teaching steps instead of story beats, no shots or illustration quota, and a short conclusion or next practical question instead of a forced closing question;
 - where the worked example sits;
 - the closing next step (one: the Mokaair article, the next video, or a specific question for the comments).
 

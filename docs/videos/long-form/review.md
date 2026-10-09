@@ -2946,6 +2946,25 @@ PASS is DURATION_ONLY for the eleven rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1390 teaching-card route increment: 2 files (2026-10-09)
+
+Reviewer: `codex-pr-review-mods-clarity`. Author: `codex-7645-video-clarity`. Scope: DURATION_ONLY for the two changed bindings below, reviewed at `aabb920dbf11c230a4736c5c3d53bf32ea634ca7`; implementation commit `6895b1f5b` adds the teaching-card route and `aabb920db` repairs portable evidence paths. The reviewer wrote neither implementation commit and edits only this report and review.json.
+
+Baseline: `c6454463d0eb53e4c8166be0b93a587598c03208`. Immutable Git blobs pass `durationReviewProblems` for the report and all 108 REVIEW_FILES. Both changed files match their existing receipt and table at that baseline; their committed head bytes equal the reviewed working-tree bytes. Before this increment exactly these two bindings are stale, while the other 106 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `.agents/skills/youtube-video/references/automated.md`: `351e90301068b1884c6263e80b7d36cd2d96459b60bc91c2798859ceae9b111e` -> `80847373b5383f81a8fa8e9a7d8db2d369410344d51616d461a957f20d7f0cfd`.
+- `tools/video/automation/prompts.mjs`: `8ca7eb3ea74382877a258aa196a4d4e78b8bf488557bd8ea9f095c9b3bea708f` -> `55ae4ca562a53482d7014cd65d26bf7d7d8239030b7108c43bce5e06f3feaa28`.
+
+Findings, `.agents/skills/youtube-video/references/automated.md`: the added teaching-card section selects the existing plain slides route for one recurring example, without shot scenes or paid keyframes. It explicitly preserves the existing 15-second state QA, eight-minute floor, fact checks and approvals. It distinguishes documentation screenshots from execution, requires untested/expected labels when run evidence is absent, and requires new checks/media approvals for a revised script. The existing paragraph defining the 600/780-second production aims, measured 480-second body/cut floor, intro/outro exclusion and test-only environment override is unchanged.
+
+Findings, `tools/video/automation/prompts.mjs`: planner, writer and listener receive TEACHING_RULES; the verifier gains a demonstration-evidence rule. Illustration quotas, location changes and reversal/question formulas apply to illustrated storytelling, while the teaching route uses the existing plain-slides rules. The imported `register.mjs` teaching contract was read as context: it explicitly preserves the eight-minute minimum and rejects repetition or silence used as filler. The planner's at-least-eight-minute sentence, writer's never-under-eight-minute instruction, upper-end-as-aim semantics and long-form/drama/explainer runtime instructions remain unchanged. The 5–8-second reveal aim and 15-second state limit describe visual cadence, not permission to shorten an episode. No changed runtime logic, source-hash gate, covered state, `target_minutes`, `MIN_EPISODE`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec` or `action_seconds` weakens a duration rule. The context files are not new REVIEW_FILES bindings.
+
+Ran: with bundled Node v24.19.0 on Windows ARM64, `node --test tools/video/automation/prompts.test.mjs` (23 passed, 0 failed), `node tools/video/long-form/cli.mjs check` (PASS), `node --test tools/video/long-form/review.test.mjs` (2 passed, 0 failed), and `git diff --check` (PASS).
+
+Non-claims: DURATION_ONLY. This does not approve a rendered cut, measured narration length, voice, screenshots as execution evidence, paid generation, publication, deployment or Linux execution. No production setting or implementation file is changed by this receipt.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -2953,7 +2972,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | File | SHA256 |
 | --- | --- |
 | `.agents/skills/youtube-video/SKILL.md` | `542b24ecfb5c314d43162ebe4580ffeb382dbbdad6dcc9b27d27e989bd5f86a9` |
-| `.agents/skills/youtube-video/references/automated.md` | `351e90301068b1884c6263e80b7d36cd2d96459b60bc91c2798859ceae9b111e` |
+| `.agents/skills/youtube-video/references/automated.md` | `80847373b5383f81a8fa8e9a7d8db2d369410344d51616d461a957f20d7f0cfd` |
 | `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
 | `.claude/skills/youtube-video/SKILL.md` | `542b24ecfb5c314d43162ebe4580ffeb382dbbdad6dcc9b27d27e989bd5f86a9` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
@@ -3005,7 +3024,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/automation/automation.test.mjs` | `f2e7b1d4852c43d1c68217666d9c6e617dc4fd3c4a2709d8f4e144cb6c388721` |
 | `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
 | `tools/video/automation/flow.mjs` | `4de8bbedb777f17a66a04064c0bd612a2a23ea8cf206d798fb449851a6a46bc7` |
-| `tools/video/automation/prompts.mjs` | `8ca7eb3ea74382877a258aa196a4d4e78b8bf488557bd8ea9f095c9b3bea708f` |
+| `tools/video/automation/prompts.mjs` | `55ae4ca562a53482d7014cd65d26bf7d7d8239030b7108c43bce5e06f3feaa28` |
 | `tools/video/automation/series.mjs` | `2b687e0e5251f8b01904f3018bc658e4322888959af9d8dc0931d71a41e5e381` |
 | `tools/video/automation/series.test.mjs` | `1974b5d8db7177c920bc85ec35acf8abc4a0177b80947596ed5b551e813c53d6` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |

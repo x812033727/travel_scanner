@@ -10,7 +10,7 @@ import path from "node:path";
 import { CHANNEL_ACCENT } from "../core/accent.mjs";
 import { isLongAnime } from "../core/anime-policy.mjs";
 import { SERIES_SEPARATOR, TAGS_MAX_CHARS, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_MAX_CHARS, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
-import { REGISTER_RULES } from "./register.mjs";
+import { REGISTER_RULES, TEACHING_RULES } from "./register.mjs";
 import { STORY_INSTRUCTIONS } from "./story-prompts.mjs";
 
 const SKILL = path.join(".agents", "skills", "youtube-video", "references");
@@ -151,7 +151,10 @@ Reveal: a line with "reveal": 1 shows the next item; a scene's reveals must equa
   interface behind a login is never captured: a steps scene that teaches it says once
   「選單以你登入後看到的為準」 and stays a card; it never pretends to a screenshot.
 Do not use diagram or screenshot: automated videos have no image files; pictures are shots and
-screencasts.
+screencasts. Teaching cards build a logical diagram from existing card templates and their real
+states, or capture the actual diagram from a public official page; no invented image assets.
+The following cadence and picture-variety paragraphs apply to ILLUSTRATED STORYTELLING only;
+the teaching route uses the plain-slides rules in Teaching route above and has no shots.
 Cadence (the final gate measures it): a new picture or card state every 5 to 8 seconds, no state up
 longer than 8 seconds, and shots under at least half of the runtime. Alternate a wide scene, a
 close object, a person and a metaphor, a quiet picture after a busy one; put a card where a number
@@ -192,6 +195,8 @@ narration back: do what it says.`;
 export const INSTRUCTIONS = {
   planner: `${WRITING_COMMON}
 
+${TEACHING_RULES}
+
 You are the planner. From "topics" (the site's recent checked articles, then web results) pick ONE
 topic inside "scope", outside "avoid", not already covered by "earlier_videos", timely and useful to
 a Taiwanese viewer, and write the brief the owner chooses an outline from. "earlier_videos" holds
@@ -226,21 +231,27 @@ without a channel stance, propose one and mark it as a proposal the owner confir
 ### 選項 A：<angle in a few words>
 一行說明：<the angle and how it differs from the other options>
 開場鉤子：「<the opening line as spoken; the viewer's question or a counter-intuitive claim>」
-你以為／其實：「<what the viewer believes> → <what is so, with the fact that shows it>」
-then at least 3 chapters as story beats, with estimated seconds (each ≥ 10 s; 250 spoken characters
+For illustrated storytelling: 你以為／其實：「<what the viewer believes> → <what is so, with the fact that shows it>」
+For teaching cards: 案例與結果：「<the recurring example, useful outcome and evidence status>」
+then at least 3 chapters as teaching steps or story beats, with estimated seconds (each ≥ 10 s; 250 spoken characters
 a minute; the whole at least 8 minutes and aimed at the upper end of "target_minutes", which is an
 aim, not a limit: an outline the sources carry further may run over it): each chapter's scenes as
 "template: what it shows"
-("shot: <the picture in a few words>" for the scenes the story is seen in, at least one per
-chapter; cards for numbers and lists), the concrete scene or comparison it stands on, the
-question its last sentence leaves for the next chapter (收尾問題：「…」), where the worked example
+("shot: <the picture in a few words>" for illustrated storytelling, at least one per chapter;
+teaching cards use the recurring example with no shots), the concrete example or comparison,
+the short conclusion or next practical question for teaching cards, or the
+question its last sentence leaves for the next chapter in storytelling (收尾問題：「…」), where the worked example
 sits, and the closing next step.
 ## 會過期的事實 — every changeable fact with the URL to re-check
 ## 素材 — the source URLs
 ## 不做的事 — what this video leaves out
-Make the options genuinely different in angle or order. ${REGISTER_RULES} ${TEMPLATE_GUIDE}`,
+Make the options genuinely different in angle or order. The following register applies only to
+illustrated storytelling; Teaching route above takes precedence for teaching cards.
+${REGISTER_RULES} ${TEMPLATE_GUIDE}`,
 
   writer: `${WRITING_COMMON}
+
+${TEACHING_RULES}
 
 You are the writer. Write the whole video.json for the brief's chosen outline ("chosen_option"),
 and claims.md, from "sources" only. A different model fact-checks your draft afterwards.
@@ -258,14 +269,17 @@ the title's first 10 characters said again, tag: the topic in ≤ 6 characters, 
 the picture is of, one of the two: shot: <the id of the hook chapter's shot that draws the
 concrete object the video is about; the right third of the frame is left for it>, or capture:
 <the id of a screencast scene whose still is the subject>}}.
+For teaching cards without a real capture, omit both "shot" and "capture" in the thumb;
+never create an illustration just to fill the thumbnail field.
 - Line ids: take them from "line_ids" in order; never invent one.
 - One line is one spoken sentence, about 25 characters, at most 40. The first scene's first
   sentence is the hook (the viewer's question or the counter-intuitive claim) and the viewer knows
   what they will get within 20 seconds: by then a concrete number, date or proper noun has been
   said, the one the title promises. No table of contents (「接下來分三段」「接下來我會告訴你」
   「第一…第二…最後」「先…再…最後」「看完你會知道 A、B、C」「這集講 A、B，還有 C」; lint warns): the
-  chapters announce themselves. 「你以為…其實」 once in
-  the video, in the first chapter; a later reversal is told without the formula.
+  chapters announce themselves. For illustrated storytelling, 「你以為…其實」 once in
+  the video, in the first chapter; a later reversal is told without the formula. Teaching cards
+  need no reversal: open on the example's useful outcome and identify its evidence status.
 - The voice's performance (docs/videos/ILLUSTRATED.md §聲音表演): "voice" also takes a
   "performance" plan of yours (zh-TW, at most 200 characters) saying how THIS video is told
   beside the owner's style, never repeating it: the register, the pace, where the voice lifts
@@ -309,7 +323,9 @@ return the whole corrected video.json. When "fix" is present with kind "keyframe
 checks failed: rewrite the named shots' prompt or camera as "fix.problems" say, change nothing
 else, and return the whole video.json. When a target in "fix.targets" carries "prompt_budget_chars",
 that shot's prompt must be at most that many characters (the look and the image model take the
-rest of the model's limit): a shorter prompt beats a fuller one. ${REGISTER_RULES} ${TEMPLATE_GUIDE}`,
+rest of the model's limit): a shorter prompt beats a fuller one. The following register applies
+only to illustrated storytelling; Teaching route above takes precedence for teaching cards.
+${REGISTER_RULES} ${TEMPLATE_GUIDE}`,
 
   verifier: `${WRITING_COMMON}
 
@@ -322,6 +338,9 @@ is among the failed fetches; then the claim stands and the card's source names t
 that day (「Mokaair 文章 查證 YYYY-MM-DD」), never the official page. A number an official page
 shows is CONFIRMED and stays said out loud: never replace it with 「以官網為準」.
 
+For a brief marked 「製作路線：教學卡片」, also check every claimed demonstration against its
+input, action and actual run evidence. A documentation screenshot confirms the page's text,
+not execution; an expected result must never become an observed success without run evidence.
 Check every checkable claim in video.json: each line's text and say, every slide's data, the
 thumbnail, youtube.title, description and tags. Verdict per claim: CONFIRMED, CHANGED (fix it),
 NOT FOUND (drop the number or the sentence), OUT OF SCOPE (style; do not touch). Fix only facts and
@@ -335,7 +354,9 @@ NOT FOUND>}. The report: a table "# ｜ claim ｜ where ｜ URL ｜ verdict ｜ 
 facts that expire soon with their date, opinion mismatches, and what you suspected but did not change.`,
 
   listener: `${LISTENER_BASE}
-You also keep the storytelling register below: where the script explains instead of telling, turn
+${TEACHING_RULES}
+
+For illustrated storytelling, you also keep the storytelling register below: where the script explains instead of telling, turn
 it (a hook that greets, a chapter that ends on a summary instead of a question, a reveal that
 arrives without 「其實」, a run of same-length sentences); the tool sets the pause beats from the
 words. Wording and rhythm are yours; the facts, the scenes, the pictures' prompts, the pauses and
