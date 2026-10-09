@@ -1,13 +1,13 @@
 ---
 id: 2026-10-09-produce-the-skills-hands-on
 title: Produce the Skills hands-on tutorial under the content-value rules
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-5-video-reference-comparison
 claimed_at: 2026-10-09T16:17:40Z
 created_at: 2026-10-09T16:16:21Z
-completed_at:
+completed_at: 2026-10-09T20:07:36Z
 branch: claude/skills-hands-on-video
 depends_on: []
 scope:
@@ -32,13 +32,14 @@ goes as far as the publish gate on `/admin/videos`; uploading stays the owner's.
 - [x] Two independent fact checks (`verify-1.md`, `verify-2.md`), their findings applied.
 - [x] Narration synthesized and checked until no line was flagged; the audio gate approved it.
 - [x] Its files in the repository.
-- [ ] The cut, and the final and publish gates.
+- [x] The cut, and the final and publish gates: final 11 of 11 on the first submission with the
+  judge's demonstration score at 0.85, publish 4 of 4, both approved by the server.
 - [ ] Uploading to YouTube, which is the owner's.
 
 ## Steps
 
 - [x] Plan, run, write, verify twice, narrate.
-- [ ] `render`, `assemble`, `captions`, `review-push --gate final`, `package`,
+- [x] `render`, `assemble`, `captions`, `review-push --gate final`, `package`,
   `review-push --gate publish`; languages: zh-TW only (the owner, in chat).
 
 ## How to verify
@@ -76,3 +77,6 @@ the practice project, each way of writing the Skill, and the scripts.
   assembling: 14.4 s.
 - New mishearings: 被叫到 as 被照到／被抓到 (被呼叫 passed), 含糊 at the start of a sentence as 韓湖,
   指到 as 只到, 搬去 as 抽取.
+- The first render failed twice before the cut: once on a network timeout capturing the docs page,
+  once because a compare card holding the specification's two verbatim sentences was 25px too
+  tall (its verdict line went). The next video's writer runs the layout check before narration.
