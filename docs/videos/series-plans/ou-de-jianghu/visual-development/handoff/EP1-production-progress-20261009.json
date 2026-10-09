@@ -1,0 +1,3970 @@
+{
+  "schema_version": 1,
+  "snapshot_at_utc": "2026-10-08T23:57:04.434Z",
+  "snapshot_at_taiwan": "2026-10-09 07:57:04 +08:00",
+  "scope": "Episode-one actual production progress snapshot, not completion/adoption/publication",
+  "locked_source": {
+    "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/continuation-plan/video.json",
+    "sha256": "f682f43043109a564b5ff2cc69b1764930017b35616a58d12460b7ea6b2e1257",
+    "bytes": 432396
+  },
+  "independent_lock": {
+    "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/continuation-plan/plan/lock.json",
+    "sha256": "bb20a61b95383e45a814d4881633e5e8082d200939cce434e50d2bd4def6d313",
+    "bytes": 1009213
+  },
+  "underlying_snapshot_times": {
+    "inventory": "2026-10-08T23:57:01.410Z",
+    "audio": "2026-10-08T22:12:13.667Z"
+  },
+  "authoritative_external_bindings": {
+    "media_inventory": {
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/media-inventory.json",
+      "sha256": "3cb035a0565ab59645e7183ef909871039a0f3af94ae5ae3d2d5a97b2f0685d4",
+      "bytes": 333083
+    },
+    "timeline_inputs": {
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/timeline-inputs.json",
+      "sha256": "625ef5f1fa0426de5ff7551c7b3211ce7720844d6dff295b994e70db2eae9adb",
+      "bytes": 2197153
+    },
+    "audio_session_qa": {
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa-current.json",
+      "sha256": "36893c9c78f9911144104a451be57fec36276d32fd38f1ca40751079f32ebec1",
+      "bytes": 21338
+    },
+    "review_selections": {
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/review-selections.json",
+      "sha256": "df550f1aaa5cf3ee470a3ebbc560b55efaac62f81dd9010422114654cbc99ce1",
+      "bytes": 123130
+    },
+    "authorization": {
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/authorization.json",
+      "sha256": "2fb8b7a775c4398b5b029d67f7c8c11e4bda4f8b3a70638f92da9939fceaf067",
+      "bytes": 2498
+    }
+  },
+  "episode_counts": {
+    "cards": 459,
+    "shots": 455,
+    "original_clip_masters": 420,
+    "original_still_masters": 30,
+    "title_cards": 4,
+    "source_reuses": 5,
+    "dialogue_lines": 597,
+    "actual_video_takes": 23,
+    "video_master_ids_with_any_take": 22,
+    "selected_visual_master_candidates": 9,
+    "audio_line_candidates": 274,
+    "selected_candidate_cut_lines": 97,
+    "selected_listened_cut_lines": 0,
+    "picture_dialogue_review_ready_cards": 3
+  },
+  "audio": {
+    "source_lines": 597,
+    "formal_sessions": 16,
+    "formal_generated_candidate_lines": 269,
+    "remaining_formal_lines": 328,
+    "original_auditions": 9,
+    "auditions_excluded_from_formal_count": true,
+    "formal_originals_pending_qa": [],
+    "selected_unlistened_asr_cut_candidates": 97,
+    "listened_verified_selected_lines": 0,
+    "entries": [
+      {
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-episode-R01-nie-gutie-t1.wav",
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R01-nie-gutie-t1-fe3834b26ee8/google-episode-R01-nie-gutie-t1-48k-mono.wav",
+          "sha256": "a57b55904d84b7835a6c766d6720934b2224cab1e2fec02c18c40b08ba4d0129",
+          "codec": "pcm_s16le",
+          "sample_rate": 48000,
+          "channels": 1,
+          "sample_frames": 224640,
+          "seconds": 4.68
+        },
+        "line_ids": [
+          "tvu3",
+          "9fzc"
+        ],
+        "qa": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R01-nie-gutie-t1-fe3834b26ee8/qa.json",
+          "sha256": "7659527622bdf6f906c9562786547c08f044350c5922fbc5dfa403646f0aee3d",
+          "bytes": 3738
+        },
+        "decoded": true,
+        "exact_submission_voice_style_text_matched": true,
+        "actual_words_voice_style_listened": false,
+        "owner_accepted": false
+      },
+      {
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-episode-R02-narrator-t1.wav",
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R02-narrator-t1-eef48661ac01/google-episode-R02-narrator-t1-48k-mono.wav",
+          "sha256": "458dd9d4de01368dc220a4083524811f3025b590987ce3724aadf1889c4ce074",
+          "codec": "pcm_s16le",
+          "sample_rate": 48000,
+          "channels": 1,
+          "sample_frames": 2511360,
+          "seconds": 52.32
+        },
+        "line_ids": [
+          "wcbg",
+          "gas4",
+          "zzu7",
+          "x8ar",
+          "jigg",
+          "pkpb",
+          "xvst",
+          "6v5y",
+          "nj2i",
+          "vrcb",
+          "6628",
+          "mvy7",
+          "2jrs",
+          "7aje",
+          "hqji",
+          "daun",
+          "qemx",
+          "jyk5",
+          "ecu9",
+          "fk3g",
+          "ew7w"
+        ],
+        "qa": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R02-narrator-t1-eef48661ac01/qa.json",
+          "sha256": "a140b89742d4f584fb8e546101d85e368bc866b847b39e99fb598e583dd916ad",
+          "bytes": 21914
+        },
+        "decoded": true,
+        "exact_submission_voice_style_text_matched": true,
+        "actual_words_voice_style_listened": false,
+        "owner_accepted": false
+      },
+      {
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-episode-R03-narrator-t1.wav",
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R03-narrator-t1-94588a1163e9/google-episode-R03-narrator-t1-48k-mono.wav",
+          "sha256": "2c4a0d62bf339cb4800db1872fb506b983d81b1873a79144b255f84cec04cddc",
+          "codec": "pcm_s16le",
+          "sample_rate": 48000,
+          "channels": 1,
+          "sample_frames": 2467200,
+          "seconds": 51.4
+        },
+        "line_ids": [
+          "z48c",
+          "rxtq",
+          "ypn8",
+          "uint",
+          "r9fa",
+          "kj9q",
+          "27kc",
+          "jyes",
+          "mgrs",
+          "xfd9",
+          "258w",
+          "63ta",
+          "bevz",
+          "cbm5",
+          "z2yy",
+          "y63k",
+          "w7se",
+          "f5uv",
+          "a4pf",
+          "6rrd"
+        ],
+        "qa": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R03-narrator-t1-94588a1163e9/qa.json",
+          "sha256": "3e68c69dae128e29a71453ad9e94660c99bd4f551cd639146215c4c38e616515",
+          "bytes": 21452
+        },
+        "decoded": true,
+        "exact_submission_voice_style_text_matched": true,
+        "actual_words_voice_style_listened": false,
+        "owner_accepted": false
+      },
+      {
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-episode-R04-bao-sanqian-t1.wav",
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R04-bao-sanqian-t1-2d5a9881be74/google-episode-R04-bao-sanqian-t1-48k-mono.wav",
+          "sha256": "8655fce5fda9c434b1911c52da1e8be3006b896f630cc97cd2c12339801b7c3c",
+          "codec": "pcm_s16le",
+          "sample_rate": 48000,
+          "channels": 1,
+          "sample_frames": 1800960,
+          "seconds": 37.52
+        },
+        "line_ids": [
+          "4tz6",
+          "8wud",
+          "ni98",
+          "pky2",
+          "87rt",
+          "8b7f",
+          "g9ug",
+          "frcs",
+          "f87i",
+          "w5pb",
+          "zru8",
+          "6zsy",
+          "5tp6",
+          "gnaq",
+          "y26y",
+          "swdz",
+          "nwza",
+          "hsyj",
+          "bu6j",
+          "axfm",
+          "89ui",
+          "dri7"
+        ],
+        "qa": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R04-bao-sanqian-t1-2d5a9881be74/qa.json",
+          "sha256": "06d8a5484084d7419237cb86532323ff636d4efe7a5dc6eb9ac30271e3d5612e",
+          "bytes": 20783
+        },
+        "decoded": true,
+        "exact_submission_voice_style_text_matched": true,
+        "actual_words_voice_style_listened": false,
+        "owner_accepted": false
+      },
+      {
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-episode-R05-bao-sanqian-t1.wav",
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R05-bao-sanqian-t1-ce6abe5e5f35/google-episode-R05-bao-sanqian-t1-48k-mono.wav",
+          "sha256": "cf11dbed07c015ce8e1ca18d59353caddccf97c8702ce142b090edd488eb675d",
+          "codec": "pcm_s16le",
+          "sample_rate": 48000,
+          "channels": 1,
+          "sample_frames": 1994880,
+          "seconds": 41.56
+        },
+        "line_ids": [
+          "c4h3",
+          "iqqa",
+          "2yfh",
+          "iw5n",
+          "izcq",
+          "2kif",
+          "aazw",
+          "bu69",
+          "5grx",
+          "ca7m",
+          "r3zd",
+          "iyeb",
+          "b335",
+          "mux8",
+          "qsmx",
+          "2xpa",
+          "ap3d",
+          "f3e8",
+          "6m75",
+          "mj88",
+          "v9e4",
+          "udy3"
+        ],
+        "qa": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R05-bao-sanqian-t1-ce6abe5e5f35/qa.json",
+          "sha256": "7d717e7c63ae2c1c6c838d3bb6437577997d5b0f48699b7bee264828840c7815",
+          "bytes": 23083
+        },
+        "decoded": true,
+        "exact_submission_voice_style_text_matched": true,
+        "actual_words_voice_style_listened": false,
+        "owner_accepted": false
+      },
+      {
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-episode-R06-bao-sanqian-t1.wav",
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R06-bao-sanqian-t1-4a2c8883400c/google-episode-R06-bao-sanqian-t1-48k-mono.wav",
+          "sha256": "d42a42a7378c6cdd717b925646d21d9c53d1e46e0a8caa54032ff87608bd9e33",
+          "codec": "pcm_s16le",
+          "sample_rate": 48000,
+          "channels": 1,
+          "sample_frames": 1837440,
+          "seconds": 38.28
+        },
+        "line_ids": [
+          "qpq4",
+          "j7xj",
+          "pgaq",
+          "cekz",
+          "yt6h",
+          "ibpy",
+          "7dhq",
+          "dk68",
+          "hrrj",
+          "nyj5",
+          "7u59",
+          "p2m9",
+          "8e3w",
+          "sn4u",
+          "nrfm",
+          "9qxd",
+          "rf49",
+          "z628",
+          "9rde",
+          "fjst",
+          "ehet"
+        ],
+        "qa": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R06-bao-sanqian-t1-4a2c8883400c/qa.json",
+          "sha256": "d8c94caaaafbf5ef1aae0cdf6a9e915940b2cfae7facf0ea3d5e2b9d42f716fd",
+          "bytes": 19812
+        },
+        "decoded": true,
+        "exact_submission_voice_style_text_matched": true,
+        "actual_words_voice_style_listened": false,
+        "owner_accepted": false
+      },
+      {
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-episode-R07-bao-sanqian-t1.wav",
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R07-bao-sanqian-t1-73ac2dea04d1/google-episode-R07-bao-sanqian-t1-48k-mono.wav",
+          "sha256": "4fb92ed852199449720f27d9a78d8ee76247b1ffd6f67fdb43bdc2437d24d124",
+          "codec": "pcm_s16le",
+          "sample_rate": 48000,
+          "channels": 1,
+          "sample_frames": 1824000,
+          "seconds": 38
+        },
+        "line_ids": [
+          "r8wh",
+          "imzt",
+          "3s6j",
+          "jhrw",
+          "3g6m",
+          "6ifc",
+          "manx",
+          "zxf9",
+          "cbf7",
+          "uzyw",
+          "6d9j",
+          "bvqm",
+          "mmky",
+          "dbad",
+          "byez",
+          "bunv",
+          "fq6q",
+          "yuui",
+          "jt52",
+          "ync4",
+          "niqi"
+        ],
+        "qa": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R07-bao-sanqian-t1-73ac2dea04d1/qa.json",
+          "sha256": "0039fbdb3d287f0fd833e40eed658b846393de0af33bcab31f18ca8d898404df",
+          "bytes": 20679
+        },
+        "decoded": true,
+        "exact_submission_voice_style_text_matched": true,
+        "actual_words_voice_style_listened": false,
+        "owner_accepted": false
+      },
+      {
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-episode-R08-shen-guihe-t1.wav.wav",
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R08-shen-guihe-t1.wav-95b76d32eea6/google-episode-R08-shen-guihe-t1.wav-48k-mono.wav",
+          "sha256": "94edd0c8626b1141e9e6d460853411e52911755fa1b02213418289a1494fa063",
+          "codec": "pcm_s16le",
+          "sample_rate": 48000,
+          "channels": 1,
+          "sample_frames": 1532160,
+          "seconds": 31.92
+        },
+        "line_ids": [
+          "fnjm",
+          "uhv8",
+          "pmwh",
+          "p2mr",
+          "d7t8",
+          "uysp",
+          "ziwg",
+          "b54t",
+          "m46s",
+          "msym",
+          "zhsu",
+          "6vac",
+          "3rbu",
+          "u2i6",
+          "6uks",
+          "2jwv",
+          "ysd8",
+          "pd4u",
+          "7j9u",
+          "k26h",
+          "hzxx"
+        ],
+        "qa": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R08-shen-guihe-t1.wav-95b76d32eea6/qa.json",
+          "sha256": "aab7fac2f78852258fa6d411b5159e251796ff65fb1ca5f6138c95fcc534edd9",
+          "bytes": 20680
+        },
+        "decoded": true,
+        "exact_submission_voice_style_text_matched": true,
+        "actual_words_voice_style_listened": false,
+        "owner_accepted": false
+      },
+      {
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-episode-R09-shen-guihe-t1.wav",
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R09-shen-guihe-t1-2b65fc0a4634/google-episode-R09-shen-guihe-t1-48k-mono.wav",
+          "sha256": "71f5f245e60701f983d6702d9006fd6d70bf312cce3581232df495dc29bf761d",
+          "codec": "pcm_s16le",
+          "sample_rate": 48000,
+          "channels": 1,
+          "sample_frames": 2075520,
+          "seconds": 43.24
+        },
+        "line_ids": [
+          "42pq",
+          "xqih",
+          "vyyf",
+          "7ik9",
+          "g57v",
+          "xp8d",
+          "5wgd",
+          "qrtt",
+          "iu8q",
+          "ffig",
+          "jbvv",
+          "k825",
+          "vxt8",
+          "i9ry",
+          "sfym",
+          "spf7",
+          "h9np",
+          "i6gx",
+          "g3xd",
+          "ttad",
+          "ni2j"
+        ],
+        "qa": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R09-shen-guihe-t1-2b65fc0a4634/qa.json",
+          "sha256": "31e83fe577eef2a19644c02bd6546ef4b3d416ce145f18ac1274207fb0f9e2ed",
+          "bytes": 20433
+        },
+        "decoded": true,
+        "exact_submission_voice_style_text_matched": true,
+        "actual_words_voice_style_listened": false,
+        "owner_accepted": false
+      },
+      {
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-episode-R10-shen-guihe-t1.wav",
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R10-shen-guihe-t1-cfc736e613d5/google-episode-R10-shen-guihe-t1-48k-mono.wav",
+          "sha256": "e441ad40f23f3151ff99092cbf5582dfa888809a9af7111fc6a0c91a82abbc2a",
+          "codec": "pcm_s16le",
+          "sample_rate": 48000,
+          "channels": 1,
+          "sample_frames": 1881600,
+          "seconds": 39.2
+        },
+        "line_ids": [
+          "hbwx",
+          "qyiy",
+          "pfcv",
+          "ijz2",
+          "y6dy",
+          "n9v8",
+          "53f6",
+          "n6xa",
+          "qpbf",
+          "v5sj",
+          "yu44",
+          "ybsj",
+          "5kkq",
+          "wcbk",
+          "yfdu",
+          "duhf",
+          "agxv",
+          "cdhc",
+          "m8x9",
+          "xief",
+          "4aqk"
+        ],
+        "qa": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R10-shen-guihe-t1-cfc736e613d5/qa.json",
+          "sha256": "9ee65799e3c2c8076519e6ee9efe2be73616228ab16ce4013020caba380d69ca",
+          "bytes": 19924
+        },
+        "decoded": true,
+        "exact_submission_voice_style_text_matched": true,
+        "actual_words_voice_style_listened": false,
+        "owner_accepted": false
+      },
+      {
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-episode-R11-shen-guihe-t1.wav",
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R11-shen-guihe-t1-3f607c8d46cd/google-episode-R11-shen-guihe-t1-48k-mono.wav",
+          "sha256": "77ad0853c7c6e78319043813601589fb1c088e5263eb34182dd579e7fdd9c4d9",
+          "codec": "pcm_s16le",
+          "sample_rate": 48000,
+          "channels": 1,
+          "sample_frames": 1762560,
+          "seconds": 36.72
+        },
+        "line_ids": [
+          "pbcn",
+          "yr2j",
+          "rvwj",
+          "4jf3",
+          "9pnc",
+          "rvny",
+          "indn",
+          "yeq6",
+          "p687",
+          "4xbx",
+          "98tf",
+          "eiij",
+          "y5wu",
+          "thiw",
+          "c9nh",
+          "rumd",
+          "ymwt",
+          "qkw4",
+          "thym",
+          "6vbz",
+          "cjhq"
+        ],
+        "qa": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R11-shen-guihe-t1-3f607c8d46cd/qa.json",
+          "sha256": "7733fdc2e28939586c0a8ff1242a9f228f654c240dff14a0dd8a3397fc216c6e",
+          "bytes": 20829
+        },
+        "decoded": true,
+        "exact_submission_voice_style_text_matched": true,
+        "actual_words_voice_style_listened": false,
+        "owner_accepted": false
+      },
+      {
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-episode-R12-shen-guihe-t1.wav",
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R12-shen-guihe-t1-7017b684bad3/google-episode-R12-shen-guihe-t1-48k-mono.wav",
+          "sha256": "1987da486846dae94108fc168a10e5a1ad31e4c0adec7831448d02fd323ad1d8",
+          "codec": "pcm_s16le",
+          "sample_rate": 48000,
+          "channels": 1,
+          "sample_frames": 1781760,
+          "seconds": 37.12
+        },
+        "line_ids": [
+          "a7ew",
+          "i9yv",
+          "qy4k",
+          "7y6z",
+          "937p",
+          "dntm",
+          "mf3u",
+          "iyft",
+          "23bd",
+          "3rai",
+          "nq4c",
+          "hn3s",
+          "n23p",
+          "ht6r",
+          "verc",
+          "2wf8",
+          "mzes",
+          "rwqm",
+          "suif",
+          "p8tk",
+          "xhcr"
+        ],
+        "qa": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R12-shen-guihe-t1-7017b684bad3/qa.json",
+          "sha256": "b51d1cb576308e9027db6b9bfa3cb09848ac4564c937def268deb99bcb6181b4",
+          "bytes": 20847
+        },
+        "decoded": true,
+        "exact_submission_voice_style_text_matched": true,
+        "actual_words_voice_style_listened": false,
+        "owner_accepted": false
+      },
+      {
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-episode-R13-shen-guihe-t1.wav",
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R13-shen-guihe-t1-21be77dca5e3/google-episode-R13-shen-guihe-t1-48k-mono.wav",
+          "sha256": "d2c3ed29fac645ec45b1c752f20d586eb5a406ce753bde9b85ea7163b4120eaf",
+          "codec": "pcm_s16le",
+          "sample_rate": 48000,
+          "channels": 1,
+          "sample_frames": 1895040,
+          "seconds": 39.48
+        },
+        "line_ids": [
+          "4dvj",
+          "petv",
+          "esbt",
+          "vner",
+          "kmq6",
+          "r6eg",
+          "n8tb",
+          "4fkf",
+          "qedz",
+          "7xn3",
+          "ayhs",
+          "3wd5",
+          "pm5u",
+          "ctiv",
+          "apk6",
+          "ymhc",
+          "qrpy",
+          "7wb3",
+          "h8yd",
+          "3336"
+        ],
+        "qa": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-episode-R13-shen-guihe-t1-21be77dca5e3/qa.json",
+          "sha256": "64808e2c0bfb62a55a7d71ff7e7d550491b9124dde8bf552ca75f124ef38c553",
+          "bytes": 20287
+        },
+        "decoded": true,
+        "exact_submission_voice_style_text_matched": true,
+        "actual_words_voice_style_listened": false,
+        "owner_accepted": false
+      },
+      {
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-priority-jiwen-session-t1.wav",
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-priority-jiwen-session-t1-a71c964052d1/google-priority-jiwen-session-t1-48k-mono.wav",
+          "sha256": "3ca9dd7bda53ad43fddfe5f5d8734661bd569f94eb5bfde51702143724b2873f",
+          "codec": "pcm_s16le",
+          "sample_rate": 48000,
+          "channels": 1,
+          "sample_frames": 330240,
+          "seconds": 6.88
+        },
+        "line_ids": [
+          "9aad",
+          "8kc4",
+          "jmvk",
+          "72r8"
+        ],
+        "qa": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-priority-jiwen-session-t1-a71c964052d1/qa.json",
+          "sha256": "f1eaa69a8475ba5812c63b22b0efda81f60bb4cdabe5c7726232a99ec1927fc9",
+          "bytes": 6402
+        },
+        "decoded": true,
+        "exact_submission_voice_style_text_matched": true,
+        "actual_words_voice_style_listened": false,
+        "owner_accepted": false
+      },
+      {
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-priority-shen-session-t1.wav",
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-priority-shen-session-t1-1db017666121/google-priority-shen-session-t1-48k-mono.wav",
+          "sha256": "80c12c9cbc010bb3a8c628dc8ab506d16182f83efae8d64182873e6fc8cf218b",
+          "codec": "pcm_s16le",
+          "sample_rate": 48000,
+          "channels": 1,
+          "sample_frames": 245760,
+          "seconds": 5.12
+        },
+        "line_ids": [
+          "cvnt",
+          "jei2",
+          "95i5"
+        ],
+        "qa": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-priority-shen-session-t1-1db017666121/qa.json",
+          "sha256": "1aa4fd4e723bacf4f750e66c2f7d8b868e07162fe3570a6458b34cbae2d1b2e3",
+          "bytes": 4702
+        },
+        "decoded": true,
+        "exact_submission_voice_style_text_matched": true,
+        "actual_words_voice_style_listened": false,
+        "owner_accepted": false
+      },
+      {
+        "original": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-priority-yan-session-t1.wav",
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-priority-yan-session-t1-1e57f261effe/google-priority-yan-session-t1-48k-mono.wav",
+          "sha256": "632e4d5129e314268cc832299c6d8d9cfecdedd47848c9f2857b0c5a4809262d",
+          "codec": "pcm_s16le",
+          "sample_rate": 48000,
+          "channels": 1,
+          "sample_frames": 664320,
+          "seconds": 13.84
+        },
+        "line_ids": [
+          "tdhz",
+          "p53x",
+          "b32b",
+          "ameq",
+          "3s8s",
+          "h4wn",
+          "nxxt",
+          "sbpb"
+        ],
+        "qa": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/session-audio-qa/google-priority-yan-session-t1-1e57f261effe/qa.json",
+          "sha256": "febc0260f0383f1f88b74d00bcc5c6252ae4bd47b2e6428c06f4519fe1facbd2",
+          "bytes": 8952
+        },
+        "decoded": true,
+        "exact_submission_voice_style_text_matched": true,
+        "actual_words_voice_style_listened": false,
+        "owner_accepted": false
+      }
+    ],
+    "peak_review": {
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/audio-peak-review-current.json",
+      "sha256": "9524e7a94784a39219bde425d974fcf8fe2e1584daba54819474d9552c9bee78",
+      "bytes": 36082
+    },
+    "peak_scope": "Inspected originals have no exact full-scale samples; some previous48k PCM16 derivatives contain isolated resampling full-scale samples. No audible distortion claim; original audio retained. Headroom derivative work remains separate.",
+    "asr_ambiguity": "R05 original whole-session ASR left2xpa/ap3d/f3e8 null; preserve that historical result. A separate VAD-off context pass located all3 new candidate ranges and the complete ap3d wording. Only ap3d currently qualifies for unlistened text-matched selection;2xpa/f3e8 remain pending listening because ASR differs. R12 suif/p8tk repeated short phrases remain isolated due to context disagreement. ASR mismatch alone is not confirmed wrong speech.",
+    "headroom_candidates": {
+      "manifest": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/audio-headroom-current.json",
+        "sha256": "ece35f1b3766e29f47566fe993002cb6e58acf5da66e14c94f302cbeeaee0674",
+        "bytes": 56401
+      },
+      "files": 16,
+      "same_sample_counts": true,
+      "full_scale_samples": 0,
+      "selected": false,
+      "replaces_original_or_prior_standard": false
+    },
+    "generation_route_holds": {
+      "manifest": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/audio-production-holds.json",
+        "sha256": "058daacf32a689b38ee2525319b2b0efbf640a15093618b60838b98f75d1d1a3",
+        "bytes": 2434
+      },
+      "blocked": true,
+      "holds": [
+        {
+          "batch_id": "R14-shen-guihe",
+          "status": "blocked_by_google_upgrade_prompt",
+          "observed": "Upgrade to unlock more; API pay per request or monthly subscription",
+          "recorded_at": "2026-10-08T22:19:30.567Z",
+          "original_wav_saved": false,
+          "no_retry_until_readback_resolved": true,
+          "unresolved": true,
+          "api_cost_authorization": 0,
+          "source_line_ids": [
+            "qubh",
+            "wc8b",
+            "a6sn",
+            "i8vt",
+            "h5as",
+            "v5z6",
+            "t9fm",
+            "w9u6",
+            "2hgb",
+            "7mii",
+            "jb6m",
+            "pyta",
+            "9nes",
+            "r9kx",
+            "k4zy",
+            "fk3q",
+            "vtn9",
+            "qiqz",
+            "nysf",
+            "vn4u"
+          ],
+          "candidate_lines_not_generated": [
+            "qubh",
+            "wc8b",
+            "a6sn",
+            "i8vt",
+            "h5as",
+            "v5z6",
+            "t9fm",
+            "w9u6",
+            "2hgb",
+            "7mii",
+            "jb6m",
+            "pyta",
+            "9nes",
+            "r9kx",
+            "k4zy",
+            "fk3q",
+            "vtn9",
+            "qiqz",
+            "nysf",
+            "vn4u"
+          ],
+          "hold_receipt": {
+            "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-episode-R14-shen-guihe-t1.hold.json",
+            "sha256": "3a9fb653a8bdae57aca1168ce85259cccf289dfe9113e5eb5577982b0235bd03"
+          },
+          "screenshot_evidence": {
+            "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/google-R14-upgrade-required.png",
+            "sha256": "a8b139e253c81d59b56b06fca37fd5a72da5aa8f3a81cd87a262dec0cc660904"
+          }
+        }
+      ],
+      "free_quota_reset_time_known": false,
+      "offline_work_may_continue": true
+    },
+    "browser_technical_review": {
+      "receipt": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/audio-review-browser-verification.json",
+        "sha256": "0ec5ef89d0d917c06b48ee4bb8341d92afc35dccf2ab17f4e5dca8c7bca467dd",
+        "bytes": 1677
+      },
+      "screenshot": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/audio-review-browser-proof.png",
+        "sha256": "4d120b0c976e3871135ff4237cb8938dd0750cc2ee145aa94421d85c0734c3c1",
+        "bytes": 120685
+      },
+      "observed_at": "2026-10-08T23:12:47.392Z",
+      "filter": "跪錯門",
+      "visible_matches": 1,
+      "visible_sessions": 1,
+      "playback": [
+        {
+          "duration": 13.84,
+          "error": null,
+          "paused": true,
+          "ready": 4,
+          "src": "http://127.0.0.1:8775/finish-episode/assembly/session-audio-qa/google-priority-yan-session-t1-1e57f261effe/google-priority-yan-session-t1-48k-mono.wav",
+          "time": 2.493793
+        }
+      ],
+      "preview_metadata": [
+        {
+          "duration": 6.566667,
+          "error": null,
+          "ready_state": 4,
+          "src": "http://127.0.0.1:8775/finish-episode/assembly/a01-s051--a01-s052-D-headroom-official-v2/a01-s051-s052-official-picture-D-headroom-review.mp4"
+        },
+        {
+          "duration": 4.458333,
+          "error": null,
+          "ready_state": 4,
+          "src": "http://127.0.0.1:8775/finish-episode/assembly/a01-s054-sound-candidate-v2-headroom/a01-s054-picture-D-ME-headroom-candidate.mp4"
+        }
+      ],
+      "scope": "Actual browser filter and media metadata/playback control only, not subjective words, voice, performance or owner acceptance",
+      "subjective_listening_performed": false,
+      "owner_acceptance": false,
+      "poster_candidate": {
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/audio-review-poster-receipt.json",
+          "sha256": "dddca93fe5d89409f4c37c33860732f985819c6c160fbe7ec7c5d5bb1d75e929",
+          "bytes": 1176
+        },
+        "image": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/a01-s051--a01-s052-D-headroom-official-v2/first-frame-poster.jpg",
+          "sha256": "1f0f0ed7a5d53210af640d50698ed743f76bb81b0dc72199967f80377c3dec5f"
+        },
+        "source_first_frame_visually_reviewed": true,
+        "original_video_reencoded": false,
+        "context": "Initial paused preview was green in the root reviewer screenshot despite readyState4; root reports correct scene after playing. Original first-frame JPEG poster is separately supplied. Metadata alone is not proof of visible picture.",
+        "browser_poster_recheck": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/audio-review-poster-browser-verification.json",
+          "sha256": "9e7d076fa12d6944a3f5df530c1faa9ae182db40840adad96686b583b44d3279",
+          "bytes": 1289
+        }
+      }
+    }
+  },
+  "titles": {
+    "count": 4,
+    "receipt": {
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/title-cards-v1/receipt.json",
+      "sha256": "ff8fc996cc272151a04cd2131ff4aba08939f3647d69145459aa2ae16aa25837",
+      "bytes": 4142
+    },
+    "full_image_review": {
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/title-cards-v1/visual-review.json",
+      "sha256": "06efd558e1fe7741576a3c7fc4f959f5e0b90202aa658d80c872b99ceb289785",
+      "bytes": 2166
+    },
+    "cards": [
+      {
+        "scene_id": "a01-s009",
+        "output": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/title-cards-v1/a01-s009-start-t1.png",
+          "sha256": "6891b973ecb80d8c49457729e091a63773f9bd660e471147b682b7eac23394aa",
+          "width": 1920,
+          "height": 1080
+        },
+        "line_ids": [
+          "wcbg",
+          "gas4"
+        ]
+      },
+      {
+        "scene_id": "a01-s058",
+        "output": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/title-cards-v1/a01-s058-start-t1.png",
+          "sha256": "0e891c232e02e4664c0b4a470b9bf2e024e53fa96e7d057ba76d8e58e29e654e",
+          "width": 1920,
+          "height": 1080
+        },
+        "line_ids": [
+          "jyk5",
+          "ecu9"
+        ]
+      },
+      {
+        "scene_id": "a02-s002",
+        "output": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/title-cards-v1/a02-s002-start-t1.png",
+          "sha256": "20e3ca103113de843102e95effbc79a319f8158f561c757bb10606d95aae697b",
+          "width": 1920,
+          "height": 1080
+        },
+        "line_ids": [
+          "z48c",
+          "rxtq"
+        ]
+      },
+      {
+        "scene_id": "a02-s047",
+        "output": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/title-cards-v1/a02-s047-start-t1.png",
+          "sha256": "f779ea6550701c80db5dd2f62019f1dd73a6554c380f746f314bfdcfb99bb4bb",
+          "width": 1920,
+          "height": 1080
+        },
+        "line_ids": [
+          "r9fa",
+          "kj9q"
+        ]
+      }
+    ],
+    "timing_and_owner_accepted": false
+  },
+  "actual_clips": [
+    {
+      "shot_id": "a02-s035",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-pilot/20261009/a02-s035-video-t1.mp4",
+      "sha256": "1faeb99d3c88a99498b8530d9aa340b4c55f5ac24006520fc699819ec4aac3a7",
+      "seconds": 4.458333,
+      "frames": 107,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "shot_id": "a02-s035",
+        "status": "review_candidate",
+        "reason": "Full-take review only. Arrival occurs after planned 3s; lowered right palm causes a jump into s036.",
+        "evidence": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-pilot/20261009/video-cold-review.json",
+          "sha256": "b1984503f0d7501c741b439027af338d928f03285ea3ad9814eb78aa14f0a1ed"
+        }
+      },
+      "selected_for_external_review": true,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": null,
+      "independent_visual_verdict": null,
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a02-s036",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-pilot/20261009/a02-s036-video-t1.mp4",
+      "sha256": "1287e6749a3f107214a18d9dad08d7e4090d340c899f5a445c6089c611a20f57",
+      "seconds": 4.458333,
+      "frames": 107,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "shot_id": "a02-s036",
+        "status": "review_candidate",
+        "reason": "Hover source approved; front of this take has strong gold glow. Existing independent edit selects only tail. Raw full-take diagnostic is not an adoption.",
+        "evidence": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-pilot/20261009/video-cold-review.json",
+          "sha256": "b1984503f0d7501c741b439027af338d928f03285ea3ad9814eb78aa14f0a1ed"
+        }
+      },
+      "selected_for_external_review": true,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": null,
+      "independent_visual_verdict": null,
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a02-s037",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-pilot/20261009/a02-s037-video-t1.mp4",
+      "sha256": "b1708db8cbcd9e4f5105465e54a13f315c53d4ac89117b75f93461255f837976",
+      "seconds": 4.458333,
+      "frames": 107,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "shot_id": "a02-s037",
+        "status": "review_candidate",
+        "reason": "Nape reveal sampled review; actual timing and transition need real-speed review.",
+        "evidence": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-pilot/20261009/video-cold-review.json",
+          "sha256": "b1984503f0d7501c741b439027af338d928f03285ea3ad9814eb78aa14f0a1ed"
+        }
+      },
+      "selected_for_external_review": true,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": null,
+      "independent_visual_verdict": null,
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a02-s053",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/a02-s053-video-t1.mp4",
+      "sha256": "237dcdfa547a8e9aecdc49a5f701adda0eed72dd0521156e287fdc39085bda53",
+      "seconds": 7.291667,
+      "frames": 175,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "shot_id": "a02-s053",
+        "status": "hold",
+        "reason": "Crown clipped; source exists but cannot be promoted into requested master or its two derived shots."
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": null,
+      "independent_visual_verdict": null,
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": true
+    },
+    {
+      "shot_id": "a01-s050",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s050-video-t1.mp4",
+      "sha256": "595a79d378d290616e11630bfea4e452a4ccb98854dbe3c637f38fa401c08e42",
+      "seconds": 4.458333,
+      "frames": 107,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "shot_id": "a01-s050",
+        "status": "hold",
+        "reason": "Sword lift exceeds one-hand-width; premature box movement breaks next starting state. No accepted cut established.",
+        "evidence": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s050-video-t1/run-2026-10-08T20-26-33-117Z/independent-visual-review.json",
+          "sha256": "8d2a55f6341aeda1c104be4edf80eb40022f11d1d2a94c1a44b02a9cd4dd7a6a"
+        }
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s050-video-t1/run-2026-10-08T20-26-33-117Z/independent-visual-review.json",
+        "sha256": "8d2a55f6341aeda1c104be4edf80eb40022f11d1d2a94c1a44b02a9cd4dd7a6a",
+        "bytes": 14366
+      },
+      "independent_visual_verdict": "hold_motion_deviation",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": true
+    },
+    {
+      "shot_id": "a01-s051",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s051-video-t1.mp4",
+      "sha256": "11c5a9ce81ad5afb69ec39a5088d9c03273ac70757a1387f0da5d72b0b821bda",
+      "seconds": 4.458333,
+      "frames": 107,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "shot_id": "a01-s051",
+        "status": "review_candidate",
+        "reason": "107-frame contact review found no blocking defect; actual final 3-second trim and neighboring shots pending.",
+        "evidence": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s051-video-t1/run-2026-10-08T20-33-37-605Z/independent-visual-review.json",
+          "sha256": "b5c8c9632860e92effe3853826a80fb3c31ff5294b56a90763d867a45307c7c3"
+        }
+      },
+      "selected_for_external_review": true,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s051-video-t1/run-2026-10-08T20-33-37-605Z/independent-visual-review.json",
+        "sha256": "b5c8c9632860e92effe3853826a80fb3c31ff5294b56a90763d867a45307c7c3",
+        "bytes": 15163
+      },
+      "independent_visual_verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a01-s052",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s052-video-t1.mp4",
+      "sha256": "694c85efbad759e320bfdbfd838c717ff80f68a2ec8d7e84c1a66500edf62f38",
+      "seconds": 4.458333,
+      "frames": 107,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "status": "unreviewed_candidate",
+        "reason": "No explicit disposition in assembly snapshot; file existence is not selection."
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s052-video-t1/run-2026-10-08T21-43-49-945Z/independent-visual-review.json",
+        "sha256": "7284a883e4f0efc0154b6346f08d0326f8989dcececf7a42a7d21fe11a4f9700",
+        "bytes": 12165
+      },
+      "independent_visual_verdict": "usable_visual_candidate_pending_realtime_timeline_and_official_unwatermarked_master",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a01-s054",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s054-video-t1.mp4",
+      "sha256": "27afd6ecd463db4900d85b3ed097377932576517373929cec5c749219cfe5e0c",
+      "seconds": 4.458333,
+      "frames": 107,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "shot_id": "a01-s054",
+        "status": "review_candidate",
+        "reason": "Available full-take diagnostic only; independent visual review status may still be pending."
+      },
+      "selected_for_external_review": true,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s054-video-t1/run-2026-10-08T20-54-16-659Z/independent-visual-review.json",
+        "sha256": "1b2a3c14f10e7b9a7e516f926dbe2cdbbc0a4d93e5af79988b3c15ad967f4ffc",
+        "bytes": 15535
+      },
+      "independent_visual_verdict": "conditional_edit_candidate_two_taps",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a01-s059",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s059-video-t1.mp4",
+      "sha256": "1e1f9087b84922f1db3f20fb5a94cde8de6c4635129b4026f6737cddddf7e560",
+      "seconds": 5.166667,
+      "frames": 124,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "status": "unreviewed_candidate",
+        "reason": "No explicit disposition in assembly snapshot; file existence is not selection."
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s059-video-t1/run-2026-10-08T21-51-34-133Z/independent-visual-review.json",
+        "sha256": "9bd20356206c9d0364b78cbd3aaaefc91fc53abaecf7ed318e7ebfd336ecad7d",
+        "bytes": 15860
+      },
+      "independent_visual_verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a01-s060",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s060-video-t1.mp4",
+      "sha256": "ec93954ee7f6ef21072672c651deb521a179f6e4c7751c6b2197ff6c7bfc4195",
+      "seconds": 4.458333,
+      "frames": 107,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "status": "unreviewed_candidate",
+        "reason": "No explicit disposition in assembly snapshot; file existence is not selection."
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s060-video-t1/run-2026-10-08T22-05-18-773Z/independent-visual-review.json",
+        "sha256": "39c2bd4e9f9d4fae932befa20ffcb0d7370119827dc2768070c80bf670cc7c7b",
+        "bytes": 14645
+      },
+      "independent_visual_verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a01-s065",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s065-video-t1.mp4",
+      "sha256": "13602cd8200112876e03bf692c8e2742ae5d2b9d96b0cb1c9555ef2c5e2b7928",
+      "seconds": 4.458333,
+      "frames": 107,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "status": "unreviewed_candidate",
+        "reason": "No explicit disposition in assembly snapshot; file existence is not selection."
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s065-video-t1/run-2026-10-08T21-58-32-940Z/independent-visual-review.json",
+        "sha256": "710e45bb0da6dc55f4b7a99b03ab1103a0ecdd4241414d36568373cd5e652478",
+        "bytes": 14754
+      },
+      "independent_visual_verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a01-s067",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s067-video-t1.mp4",
+      "sha256": "c32319b52fef4825e6fc23a076ca1dfa53514e076468d301883cd56687de4308",
+      "seconds": 4.458333,
+      "frames": 107,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "status": "unreviewed_candidate",
+        "reason": "No explicit disposition in assembly snapshot; file existence is not selection."
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s067-video-t1/run-2026-10-08T22-13-03-483Z/independent-visual-review.json",
+        "sha256": "64216d336e1cbcb8714b25d944dd6d57723718312dff0b10da828c05b42d52c5",
+        "bytes": 14453
+      },
+      "independent_visual_verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a01-s068",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s068-video-t1.mp4",
+      "sha256": "bde686b9ce0761f2733ea535958dccabf5d101b6512bb51de3872d245228852f",
+      "seconds": 6.583333,
+      "frames": 158,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "status": "unreviewed_candidate",
+        "reason": "No explicit disposition in assembly snapshot; file existence is not selection."
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s068-video-t1/run-2026-10-08T22-36-24-487Z/independent-visual-review.json",
+        "sha256": "483207baa3552ecec567202ffaa95452d5764acf252e830ad0ce45fdd5e59653",
+        "bytes": 18795
+      },
+      "independent_visual_verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a01-s069",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s069-video-t1.mp4",
+      "sha256": "d2c8b6996bbbe7f32001ff592c66a18cc99605fa0758d57f98782ef58cc86d83",
+      "seconds": 5.166667,
+      "frames": 124,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "status": "unreviewed_candidate",
+        "reason": "No explicit disposition in assembly snapshot; file existence is not selection."
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s069-video-t1/run-2026-10-08T22-57-48-560Z/independent-visual-review.json",
+        "sha256": "3f41ac11079459858d35af4c59fc85e67e96c8ee0b2ee9c842805efbb8371b12",
+        "bytes": 16852
+      },
+      "independent_visual_verdict": "usable_visual_candidate_with_stair_base_offset_pending_realtime_and_timeline_review",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a01-s070",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s070-video-t1.mp4",
+      "sha256": "6a5e7c503bac5286b47e8e18afc337bb8f5e5f534dd89daa20666071092d94cf",
+      "seconds": 4.458333,
+      "frames": 107,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "status": "unreviewed_candidate",
+        "reason": "No explicit disposition in assembly snapshot; file existence is not selection."
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s070-video-t1/run-2026-10-08T23-23-12-002Z/independent-visual-review.json",
+        "sha256": "97f5f3a5978c4a018b0be28e75beacb7d2a4f7af6c8b2b60963d2eaf96003eeb",
+        "bytes": 15492
+      },
+      "independent_visual_verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a01-s071",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s071-video-t1.mp4",
+      "sha256": "cb65016512c2e790d7b2f58add10fccd34b4bc21b4fcd9020ed35a028df95159",
+      "seconds": 5.166667,
+      "frames": 124,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "status": "unreviewed_candidate",
+        "reason": "No explicit disposition in assembly snapshot; file existence is not selection."
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s071-video-t1/run-2026-10-08T23-15-33-928Z/independent-visual-review.json",
+        "sha256": "ce1e0fe8baccb86cda0ca1b800f55017b78b47ae40a5097a52d5b1c009542271",
+        "bytes": 16848
+      },
+      "independent_visual_verdict": "hold_full_take_due_to_visible_continuity_defects",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": true
+    },
+    {
+      "shot_id": "a01-s074",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s074-video-t1.mp4",
+      "sha256": "d7eb6d1e79030a8eebcc14a1dd419b2672ad9842029b6a4b536f1e849446ff19",
+      "seconds": 5.166667,
+      "frames": 124,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "status": "unreviewed_candidate",
+        "reason": "No explicit disposition in assembly snapshot; file existence is not selection."
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s074-video-t1/run-2026-10-08T23-17-52-988Z/independent-visual-review.json",
+        "sha256": "1515d5284cbabd8a3b2645c08e5d3043d3228cb8119a7533e6fc5db52c206a1a",
+        "bytes": 18867
+      },
+      "independent_visual_verdict": "hold_full_take_due_to_visible_continuity_defects",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": true
+    },
+    {
+      "shot_id": "a01-s075",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s075-video-t1.mp4",
+      "sha256": "c2c6a5367506dfc88ad44c7d9ffc6bfdf9f8f1bb950fd8e6b05372f983cb4dbd",
+      "seconds": 5.166667,
+      "frames": 124,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "status": "unreviewed_candidate",
+        "reason": "No explicit disposition in assembly snapshot; file existence is not selection."
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": null,
+      "independent_visual_verdict": null,
+      "producer_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s075-video-t1/run-2026-10-08T23-20-07-777Z/root-visual-review.json",
+        "sha256": "df3282f1fe6c8769d5fb51dfbcbf146effb484b49be3aeecee4379f52b36fdae",
+        "bytes": 6697
+      },
+      "producer_visual_verdict": "usable_visual_candidate_pending_realtime_audio_and_timeline_review",
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a01-s076",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s076-video-t1.mp4",
+      "sha256": "dfa9e9a79e024e2ef898bbeebc31ff913298a82eaaf845d366772d6cee73b740",
+      "seconds": 5.166667,
+      "frames": 124,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "status": "unreviewed_candidate",
+        "reason": "No explicit disposition in assembly snapshot; file existence is not selection."
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s076-video-t1/run-2026-10-08T23-30-33-906Z/independent-visual-review.json",
+        "sha256": "242eda1c8e90e4a2b0f34d35fea3b2d8c5ae2a23e9222d64d26108585fa047ad",
+        "bytes": 18949
+      },
+      "independent_visual_verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a01-s077",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s077-video-t1.mp4",
+      "sha256": "32b57b5ab67612438bd23eb7940885cefb4bf7ab822895f5fd71757c2a7a75e3",
+      "seconds": 4.458333,
+      "frames": 107,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "status": "unreviewed_candidate",
+        "reason": "No explicit disposition in assembly snapshot; file existence is not selection."
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s077-video-t1/run-2026-10-08T23-32-09-484Z/independent-visual-review.json",
+        "sha256": "d23f3244ccce206f76f8b1e68ea831eca5184fd16e2003dc88c1efd6a367c4f5",
+        "bytes": 15623
+      },
+      "independent_visual_verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a01-s078",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s078-video-t1.mp4",
+      "sha256": "9146574a09f6924bb762806767dc9ef2d18651cc13c76eba6f2d992bf4912340",
+      "seconds": 4.458333,
+      "frames": 107,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "status": "unreviewed_candidate",
+        "reason": "No explicit disposition in assembly snapshot; file existence is not selection."
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s078-video-t1/run-2026-10-08T23-32-41-539Z/independent-visual-review.json",
+        "sha256": "01556f713c3a5de3cb350de1233312e1991bbecff8f8aad037c94ac87f94bf83",
+        "bytes": 15774
+      },
+      "independent_visual_verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a02-s053",
+      "take": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a02-s053-video-t2.mp4",
+      "sha256": "fbda9fb6a60d5d07bca7aaaae68598ac635d777755bfcbecd2dd338c3508a5d1",
+      "seconds": 7.291667,
+      "frames": 175,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "status": "unreviewed_candidate",
+        "reason": "No explicit disposition in assembly snapshot; file existence is not selection."
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a02-s053-video-t2/run-2026-10-08T21-14-20-515Z/independent-visual-review.json",
+        "sha256": "c4f48d0ed6ec6ee18790f3589c4f4dbdba1f53baa99de3fb6f644d2b607a92c8",
+        "bytes": 20091
+      },
+      "independent_visual_verdict": "visual_candidate_pending_realtime_lean_read_and_official_unwatermarked_master",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    },
+    {
+      "shot_id": "a02-s062",
+      "take": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a02-s062-video-t1.mp4",
+      "sha256": "9175e1492e974518c70a37d9e9a92298ce6f43f65926facfc4b9b40b9530990d",
+      "seconds": 4.458333,
+      "frames": 107,
+      "fps": 24,
+      "width": 2560,
+      "height": 1440,
+      "full_decode": true,
+      "disposition": {
+        "status": "unreviewed_candidate",
+        "reason": "No explicit disposition in assembly snapshot; file existence is not selection."
+      },
+      "selected_for_external_review": false,
+      "owner_acceptance_not_inferred": true,
+      "independent_visual_review": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a02-s062-video-t1/run-2026-10-08T21-18-20-671Z/independent-visual-review.json",
+        "sha256": "2d1ee169ebd6389356019dca2d1b50d050d8a09de434eda3147c9e5f0f7c384a",
+        "bytes": 18485
+      },
+      "independent_visual_verdict": "usable_visual_candidate_pending_realtime_timeline_and_official_unwatermarked_master",
+      "producer_visual_review": null,
+      "producer_visual_verdict": null,
+      "effective_review_hold": false
+    }
+  ],
+  "independent_clip_reviews": [
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s050-video-t1/run-2026-10-08T20-26-33-117Z/independent-visual-review.json",
+        "sha256": "8d2a55f6341aeda1c104be4edf80eb40022f11d1d2a94c1a44b02a9cd4dd7a6a",
+        "bytes": 14366
+      },
+      "verdict": "hold_motion_deviation",
+      "shot_id": "a01-s050",
+      "original_sha256": "595a79d378d290616e11630bfea4e452a4ccb98854dbe3c637f38fa401c08e42",
+      "inspected_all_frames": null,
+      "observations": [],
+      "major_defects": [],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    },
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s051-video-t1/run-2026-10-08T20-33-37-605Z/independent-visual-review.json",
+        "sha256": "b5c8c9632860e92effe3853826a80fb3c31ff5294b56a90763d867a45307c7c3",
+        "bytes": 15163
+      },
+      "verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "shot_id": "a01-s051",
+      "original_sha256": "11c5a9ce81ad5afb69ec39a5088d9c03273ac70757a1387f0da5d72b0b821bda",
+      "inspected_all_frames": null,
+      "observations": [
+        {
+          "topic": "box_action",
+          "finding": "The closed box begins on the lap, moves smoothly up and toward the stair, and settles in an extended presentation pose. The upper edge finishes near shoulder level and the supporting hand remains at upper-chest height; this is a visual reading, not an anatomical height measurement.",
+          "evidence": "Lap start f0-11; departure/lift visible f12-35; continuous lift f36-71; extended settled hold around f72-106. Box does not open, disappear, duplicate or visibly collapse."
+        },
+        {
+          "topic": "hands_and_sleeves",
+          "finding": "Visible supporting hand stays under/against the box and the sleeve follows the extending arm without an obvious detached hand or extra arm. The far hand is largely occluded by box/body/sleeve; the view does not demonstrate every hidden finger. Long cuffs expose more palm/fingers while holding the load, but no clearly broken hand-box support was seen."
+        },
+        {
+          "topic": "head_and_crown",
+          "finding": "Head remains bowed/downward; torso straightens somewhat as the box is offered. The full crown silhouette remains inside the frame in all inspected full-frame cells and the three native samples. The final headroom is smaller than the start but is still visibly present."
+        },
+        {
+          "topic": "camera",
+          "finding": "The image develops a small continuous approach/reframing, without a cut or large pan. This is consistent with a restrained push-in; no calibrated camera reconstruction was attempted."
+        },
+        {
+          "topic": "identity_and_scene",
+          "finding": "Main profile, crown, silver hair, dark robe/violet mantle and box design remain recognizable; no abrupt identity swap or major prop morph was seen. Architecture and crowd remain broadly stable at contact resolution."
+        }
+      ],
+      "major_defects": [],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    },
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s052-video-t1/run-2026-10-08T21-43-49-945Z/independent-visual-review.json",
+        "sha256": "7284a883e4f0efc0154b6346f08d0326f8989dcececf7a42a7d21fe11a4f9700",
+        "bytes": 12165
+      },
+      "verdict": "usable_visual_candidate_pending_realtime_timeline_and_official_unwatermarked_master",
+      "shot_id": "a01-s052",
+      "original_sha256": "694c85efbad759e320bfdbfd838c717ff80f68a2ec8d7e84c1a66500edf62f38",
+      "inspected_all_frames": null,
+      "observations": [
+        "One forward-and-left upper-body lean begins within first half-second, settles around frames 50-60, and remains held through frame 106. Front knee is outside MCU and is not independently measurable.",
+        "Complete bronze crown retains sky above it in all 107 full-frame cells. No observed top clipping.",
+        "One curved sabre stays across right shoulder as body inclines; visible gripping hand, hilt and blade remain coherent. Red tassel/hilt partly leave lower-left crop during lean; blade tip enters frame naturally.",
+        "Face/half grin, costume, screen direction, stair/door background remain stable; hair responds softly. No observed cut or obvious morph.",
+        "White MINIMAX / Hailuo AI watermark is visible lower-right; this file is a review source, not an unwatermarked delivery master."
+      ],
+      "major_defects": [],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    },
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s054-video-t1/run-2026-10-08T20-54-16-659Z/independent-visual-review.json",
+        "sha256": "1b2a3c14f10e7b9a7e516f926dbe2cdbbc0a4d93e5af79988b3c15ad967f4ffc",
+        "bytes": 15535
+      },
+      "verdict": "conditional_edit_candidate_two_taps",
+      "shot_id": "a01-s054",
+      "original_sha256": "27afd6ecd463db4900d85b3ed097377932576517373929cec5c749219cfe5e0c",
+      "inspected_all_frames": null,
+      "observations": [
+        {
+          "criterion": "crown",
+          "result": "no_clipping_observed",
+          "evidence": "Highest solid crown tip retains visible background above it in every native ROI, including last frame. Wider native crops0/53/106 show the full crown. Initial browser-preview concern was not confirmed by the original file."
+        },
+        {
+          "criterion": "action_count",
+          "result": "deviation_needs_edit_disposition",
+          "evidence": "Two lift-and-return-to-shoulder cycles occur: first roughlyf16-49 (0.667-2.042s), second roughlyf64-92 (2.667-3.833s). The blade rises diagonally above the crown before returning. One still frame cannot show the timing/strength of impact; no real-time playback was performed."
+        },
+        {
+          "criterion": "head_camera_identity",
+          "result": "no_obvious_blocker_in_inspected_evidence",
+          "evidence": "Head remains cocked, face and crown remain recognizable, fixed scene has no visible cut or major camera move. Right hand stays on one hilt, single curved sabre/red tassel remain coherent. Hair/tassel move; no obvious duplicate weapon or neck penetration."
+        }
+      ],
+      "major_defects": [],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    },
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s059-video-t1/run-2026-10-08T21-51-34-133Z/independent-visual-review.json",
+        "sha256": "9bd20356206c9d0364b78cbd3aaaefc91fc53abaecf7ed318e7ebfd336ecad7d",
+        "bytes": 15860
+      },
+      "verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "shot_id": "a01-s059",
+      "original_sha256": "1e1f9087b84922f1db3f20fb5a94cde8de6c4635129b4026f6737cddddf7e560",
+      "inspected_all_frames": 124,
+      "observations": [
+        "Yan straightens his upper torso and head continuously, while his right hand and low sabre hilt lift upward and slightly screen-left, chiefly through frames 15-60. He settles and holds through frame123.",
+        "Sabre point and its contact with the step stay outside this MCU crop; actual point clearance cannot be seen directly. Visible grip, hilt, upper blade and tassel remain coherent.",
+        "Complete bronze crown retains background above the highest tip across all 124 inspected frames. No observed top clipping.",
+        "Initial toothy half grin gradually closes to a restrained closed-mouth grin. Face, crown, costume, screen direction and background remain coherent; no observed cut or obvious morph.",
+        "No MINIMAX/Hailuo AI watermark is visible in the inspected original. Native AAC is retained but not adopted or listened to."
+      ],
+      "major_defects": [],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    },
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s060-video-t1/run-2026-10-08T22-05-18-773Z/independent-visual-review.json",
+        "sha256": "39c2bd4e9f9d4fae932befa20ffcb0d7370119827dc2768070c80bf670cc7c7b",
+        "bytes": 14645
+      },
+      "verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "shot_id": "a01-s060",
+      "original_sha256": "ec93954ee7f6ef21072672c651deb521a179f6e4c7751c6b2197ff6c7bfc4195",
+      "inspected_all_frames": 107,
+      "observations": [
+        "Wushuang stays on screen left, facing right toward offscreen Yan. The crowned head gradually inclines right/down, most apparent from the middle toward the last third; no sudden bow, whole-body move or scene cut was observed. Exact tiny-motion readability awaits playback at intended speed.",
+        "The highest crown tip remains separated from the top edge by visible background in all 107 crown crops and full-frame cells; no top clipping observed. ROI right/bottom truncation is only evidence cropping, not original-frame clipping.",
+        "Sampled face views retain one small mark at anatomical left eye (image-right); the near right cheek remains plain. Eyes, hair, silver chains and sleeves remain coherent at the inspected scale, with no obvious morph.",
+        "The closed box stays partially visible along the lower crop. Hands and knees are outside this composition, so grip height or resting on knees is not verified. The jeweled lid decoration is inherited from the selected first frame and differs in detail from other box views; this review does not certify exact prop decoration continuity across shots.",
+        "Gate, steps, background disciples and camera axis stay stable. Native AAC remains in original, was not auditioned or adopted; silent copy preserves video frames and timing."
+      ],
+      "major_defects": [],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    },
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s065-video-t1/run-2026-10-08T21-58-32-940Z/independent-visual-review.json",
+        "sha256": "710e45bb0da6dc55f4b7a99b03ab1103a0ecdd4241414d36568373cd5e652478",
+        "bytes": 14754
+      },
+      "verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "shot_id": "a01-s065",
+      "original_sha256": "13602cd8200112876e03bf692c8e2742ae5d2b9d96b0cb1c9555ef2c5e2b7928",
+      "inspected_all_frames": 107,
+      "observations": [
+        "Wushuang remains screen left facing up/right toward Yan's foreground shoulder. Both hands support one closed black box. Arms extend outward/up toward Yan during the first portion, then hold the extension through the end. Loose sleeves conceal exact elbow angles.",
+        "The right end of the box is naturally occluded behind Yan's foreground upper arm late in the motion. No visible handoff, lid opening or apparent penetration was observed; box pattern/clasp and supporting hands remain coherent at the available scale.",
+        "The complete crown remains visible throughout all 107 full-frame and crown cells, with background above the top tip even at the end. No crown clipping was observed.",
+        "The near anatomical right cheek stays plain. The far left eye mark is not consistently readable from this angle, so its exact shape is not certified in every frame.",
+        "The scene axis and foreground/background relationship remain stable with slight head/body follow-through. No obvious cut or character/weapon morph was observed.",
+        "The native AAC is preserved in the original and has not been auditioned or adopted. The silent review copy retains the video's frames and PTS. Final dialogue-dependent edit length and movement readability require real-time timeline review."
+      ],
+      "major_defects": [],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    },
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s067-video-t1/run-2026-10-08T22-13-03-483Z/independent-visual-review.json",
+        "sha256": "64216d336e1cbcb8714b25d944dd6d57723718312dff0b10da828c05b42d52c5",
+        "bytes": 14453
+      },
+      "verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "shot_id": "a01-s067",
+      "original_sha256": "c32319b52fef4825e6fc23a076ca1dfa53514e076468d301883cd56687de4308",
+      "inspected_all_frames": 107,
+      "observations": [
+        "Yan makes a small downward chin/head indication starting around f15 and settles toward the middle, then keeps the narrowed downward gaze. Wushuang and the empty sash are offscreen, so the exact target cannot be certified in-frame. Intended abruptness of the chin gesture needs real-time review.",
+        "Complete crown tip remains inside the image with a narrow strip of background above it in all 107 crown crops and full cells. No top-edge cut is observed. The crop excludes part of the crown at its right edge but the full frames show that portion remains inside the original image.",
+        "One sabre remains on the right shoulder in the same right-hand grip. Blade angle has only slight follow-through with the body, not a deliberate swing or shoulder tap. Hilt, hand and tassel remain coherent; hair and loose tassel move gently.",
+        "Face, clothes, background gate and camera remain stable at the inspected scale. No obvious cut, limb duplication or character/weapon morph was observed.",
+        "Native AAC is retained in the original, not listened to or adopted. Silent copy preserves frames and PTS; final dialogue-dependent trim remains unselected."
+      ],
+      "major_defects": [],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    },
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s068-video-t1/run-2026-10-08T22-36-24-487Z/independent-visual-review.json",
+        "sha256": "483207baa3552ecec567202ffaa95452d5764acf252e830ad0ce45fdd5e59653",
+        "bytes": 18795
+      },
+      "verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "shot_id": "a01-s068",
+      "original_sha256": "bde686b9ce0761f2733ea535958dccabf5d101b6512bb51de3872d245228852f",
+      "inspected_all_frames": 158,
+      "observations": [
+        "Wushuang gradually lifts chin/eyes toward the gate at screenRIGHT; change becomes clearer aroundf60-108 and settles into the upward gaze. Head movement is small as requested; actual perceived timing/pacing still requires real-time review.",
+        "Every crown ROI cellf0-157 retains a strip of background above the highest plume tip; no top-edge cut or disappearing crown spike observed. The ornate crown tilts consistently with head motion; hanging ornaments/hair move gently.",
+        "Face remains the same identity, near anatomicalRIGHT cheek remains plain at inspected scale. The sole farLEFT outer-eye mark is visible in native0/78 and subtler/partly foreshortened in157. No visible migration to the near cheek or second mark; exact six-petal geometry is not resolvable in every contact-sheet cell.",
+        "Two connected arms support one closed black fern box throughout; no third hand, duplicate box, opened lid or jump-cut observed at inspected resolution. End portion slightly lowers/retracts the box and hands so near hand reaches the lower frame boundary, not a deliberate canonical box-lowering action. Far fingertips remain under the box in native157.",
+        "From roughlyf100 onward, a bright white specular patch grows across the left part of the box lid; read it as a material/lighting variation rather than an authorized magic event. It does not conceal lid closure or imply the box opens. Keep this and the small box-height drift visible to the final editor.",
+        "Background gate/steps remain in the same locked composition; no obvious cut, face reset or character/body morph seen. Native AAC stays in original and has not been listened to/adopted; silent copy is a review derivative only."
+      ],
+      "major_defects": [],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    },
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s069-video-t1/run-2026-10-08T22-57-48-560Z/independent-visual-review.json",
+        "sha256": "3f41ac11079459858d35af4c59fc85e67e96c8ee0b2ee9c842805efbb8371b12",
+        "bytes": 16852
+      },
+      "verdict": "usable_visual_candidate_with_stair_base_offset_pending_realtime_and_timeline_review",
+      "shot_id": "a01-s069",
+      "original_sha256": "d2c8b6996bbbe7f32001ff592c66a18cc99605fa0758d57f98782ef58cc86d83",
+      "inspected_all_frames": 124,
+      "observations": [
+        "Yan swings his anatomical LEFT arm across his body and opens it wide toward the disciples on screen right, completing the extension around f32-36 and holding through the end. The red drape briefly overlaps his face/arm during the swing; no additional arm or hand is observed at the inspected scale. Speed and dramatic timing await real-time review.",
+        "The camera pans right: architecture and characters move left while more disciples on the right are revealed. No obvious jump cut or stair geometry discontinuity is observed. Yan retains one curved sabre in his right hand, lowered; no weapon hand swap is seen.",
+        "Yan remains on the plaza immediately before the lowest stair riser, rather than on the tread. This is the pre-existing limited staging variation recorded in the root first-frame disposition, not an exact source placement match. Adjacent wide-shot continuity remains pending.",
+        "Yan crown remains complete in all full-frame cells. Wushuang keeps the closed box supported and does not begin lowering it; the pan naturally carries her out at the left edge late in the take. This lateral exit is not a top-edge crown failure, and no claim is made that an offscreen crown or hands remain visible.",
+        "No obvious character, weapon or crowd morph is seen at the inspected scale. Small background faces are not pixel-level certified. Native AAC remains in the original, not auditioned or adopted; the silent copy preserves video frames and PTS."
+      ],
+      "major_defects": [],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    },
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s070-video-t1/run-2026-10-08T23-23-12-002Z/independent-visual-review.json",
+        "sha256": "97f5f3a5978c4a018b0be28e75beacb7d2a4f7af6c8b2b60963d2eaf96003eeb",
+        "bytes": 15492
+      },
+      "verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "shot_id": "a01-s070",
+      "original_sha256": "6a5e7c503bac5286b47e8e18afc337bb8f5e5f534dd89daa20666071092d94cf",
+      "inspected_all_frames": 107,
+      "observations": [
+        "Yan performs one gradual forward lean toward Wushuang over the existing sabre hilt, with a noticeable down-left torso/head displacement after roughly f24 and settling near f75-84. He holds the lean through the end. The scale and pace of the performance need real-time dialogue review; no final trim is selected here.",
+        "The anatomical RIGHT clothed hand remains on the single low vertical hilt. The anatomical LEFT bare arm stays separate and does not join the pommel, preserving the later two-hand action for shot076. Hilt, wrist and hanging red tassel remain coherent at the inspected scale; no second weapon or third hand is seen.",
+        "Yan complete focal crown remains inside the image with background above the highest point throughout all 107 full/crown cells. The foreground Wushuang crown is edge-cropped from the supplied OTS first frame; that intended foreground crop is not a focal-crown failure. Her silver hair keeps the nape hidden, with no turn revealing her face or mark.",
+        "Locked composition, foreground shoulder, background stair and screen direction remain continuous. No obvious jump cut, limb duplication, face or weapon morph is observed. Small hair, tassel and bead movement is present.",
+        "The sabre point-to-stone contact and feet remain below the crop, so literal bottom-step footing and point contact are not certified. Adjacent wide-shot continuity retains the separately recorded shot069 stair-base offset limitation.",
+        "Native stereo AAC remains intact in the original and was neither auditioned nor adopted. Full AV decode passed, original hash is unchanged, and the silent review copy preserves video frames and PTS. Formal runtime/owner acceptance and final timeline approval remain false."
+      ],
+      "major_defects": [],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    },
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s071-video-t1/run-2026-10-08T23-15-33-928Z/independent-visual-review.json",
+        "sha256": "ce1e0fe8baccb86cda0ca1b800f55017b78b47ae40a5097a52d5b1c009542271",
+        "bytes": 16848
+      },
+      "verdict": "hold_full_take_due_to_visible_continuity_defects",
+      "shot_id": "a01-s071",
+      "original_sha256": "cb65016512c2e790d7b2f58add10fccd34b4bc21b4fcd9020ed35a028df95159",
+      "inspected_all_frames": 124,
+      "observations": [
+        "Wushuang retracts the single closed black fern-pattern box with both hands and lowers it toward the lower frame edge. The movement is readable, but knees and actual lap contact remain outside the composition throughout; do not claim a verified final rest across knees.",
+        "Head/body rise while the box retracts. The highest plume is intact in early frames, meets the top edge at f18-19, and is unmistakably cut by f20 (0.833333 s). The crown remains cut in every subsequent reviewed cell through f123 (5.125 s), including native frames 61 and 123.",
+        "Two connected hands support the box with no obvious extra hand, opened lid or duplicate box at reviewed resolution. Face identity and near anatomical RIGHT plain cheek remain stable; native samples show the sole far LEFT flower. No visible shot cut or face reset.",
+        "Background composition is stable. The whole-crown prefix f0-17 lasts only 0.75 s and does not complete the lowering action. It is not offered as a replacement full shot; no still-loop, retime or paid retake performed."
+      ],
+      "major_defects": [
+        {
+          "kind": "crown_top_cropped",
+          "severity": "major",
+          "definite_frame_range_inclusive": [
+            20,
+            123
+          ],
+          "edge_contact_uncertain_range_inclusive": [
+            18,
+            19
+          ],
+          "source_requirement": "whole crown and stable framing"
+        }
+      ],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    },
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s074-video-t1/run-2026-10-08T23-17-52-988Z/independent-visual-review.json",
+        "sha256": "1515d5284cbabd8a3b2645c08e5d3043d3228cb8119a7533e6fc5db52c206a1a",
+        "bytes": 18867
+      },
+      "verdict": "hold_full_take_due_to_visible_continuity_defects",
+      "shot_id": "a01-s074",
+      "original_sha256": "d7eb6d1e79030a8eebcc14a1dd419b2672ad9842029b6a4b536f1e849446ff19",
+      "inspected_all_frames": 124,
+      "observations": [
+        "Wushuang starts looking up/right, then lowers eyes and bows the head from roughly f12 onward; the gaze is visibly down by mid-take and stays down. This is a larger head movement than an eye-only drop, but has the intended direction. Final pacing remains unviewed in real time.",
+        "The highest crown plume crosses the original top edge during the nod: definite clipping f28-63; f27 and f64-66 meet or closely graze the boundary. By f67 the tip is inside again. Native61 confirms original image clipping. Later crown ROI right-edge loss is only an analysis crop limitation, not original footage loss; full-frame cells and native123 show the complete recovered crown.",
+        "An unintended box appears from below around f48-60, then rises more clearly into the lower image. In native61/123 it is reddish-brown wood with an inset pale top and isolated silver central emblem/corner ornaments. This materially differs from the established black box covered in silver fern branches with a central clasp visible in 071 and its source frame. Do not reclassify this as harmless lighting alone.",
+        "The near hand moves onto the lid around f72-96 and rests/strokes across it, an additional visible action beyond the requested gaze drop. The box remains closed; no lid opening is observed. Both hands become partly visible late; no obvious third hand at inspected scale.",
+        "Face identity and near anatomical RIGHT plain cheek remain consistent; far LEFT mark visible in native0/61/123. No jump cut or gross face morph. Box support height and contact with knees cannot be verified since the knees stay cropped."
+      ],
+      "major_defects": [
+        {
+          "kind": "crown_top_cropped",
+          "severity": "major",
+          "definite_frame_range_inclusive": [
+            28,
+            63
+          ],
+          "edge_contact_or_tiny_margin_frames": [
+            27,
+            64,
+            65,
+            66
+          ],
+          "recovered_by_frame": 67
+        },
+        {
+          "kind": "box_identity_drift",
+          "severity": "major",
+          "clearly_visible_native_frames": [
+            61,
+            123
+          ],
+          "comparison": "black silver-fern box in071 vs brown central-emblem box in074"
+        },
+        {
+          "kind": "unrequested_hand_on_lid_action",
+          "severity": "continuity",
+          "approx_frame_range_inclusive": [
+            72,
+            123
+          ]
+        }
+      ],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    },
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s076-video-t1/run-2026-10-08T23-30-33-906Z/independent-visual-review.json",
+        "sha256": "242eda1c8e90e4a2b0f34d35fea3b2d8c5ae2a23e9222d64d26108585fa047ad",
+        "bytes": 18949
+      },
+      "verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "shot_id": "a01-s076",
+      "original_sha256": "dfa9e9a79e024e2ef898bbeebc31ff913298a82eaaf845d366772d6cee73b740",
+      "inspected_all_frames": 124,
+      "observations": [
+        "Start preserves the repaired t2 pose: the clothed anatomical RIGHT arm connects to the hand gripping the low sabre hilt, while the bare anatomical LEFT upper arm connects through its braced forearm to the initially nearby open hand. No reappearance of the old floating third hand or another arm observed in all-frame cells.",
+        "Approximately frames 12-40 show the LEFT hand moving onto the RIGHT gripping hand; mid and late native samples 61/123 show two connected hands stacked at the hilt. The upper body and head then visibly lean forward/down toward screen LEFT, strongest in roughly frames 70-100, settling toward the end. The requested two-hand weight-bearing action is legible at inspected scale; perceived timing and performance still need real-time review.",
+        "Crown remains complete in all full-frame cells, confirmed in native 0/61/123. The fixed crown analysis ROI begins to lose the crown at its LEFT boundary as the head travels left in the latter part; this is a crop of the analytical ROI, not a cut at the original video boundary. Early original top margin is modest, but no original top-edge crown clipping was observed.",
+        "Face, rust-brown costume, bare LEFT upper arm and single hilt/red tassel remain identifiable without an apparent jump-cut, doubled weapon, gross body morph or third hand. The two overlapping hands partly occlude one another; native hand crops show the stacked pose clearly but do not certify each hidden finger throughout motion.",
+        "The sabre remains low; its blade tip and feet are outside this MCU. This review cannot prove physical blade-to-ground contact or a precise step location, and does not add either event to the source.",
+        "Hair streams visibly toward screen RIGHT and becomes more extended during the lean. This is a motion-intensity/pacing risk for the final edit, not an observed continuity-breaking new action. Camera and background remain in the same composition without an apparent cut.",
+        "Native AAC remains untouched in the original and was neither listened to nor adopted as a dialogue, music or effects stem. The silent stream copy is only a review derivative."
+      ],
+      "major_defects": [],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    },
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s077-video-t1/run-2026-10-08T23-32-09-484Z/independent-visual-review.json",
+        "sha256": "d23f3244ccce206f76f8b1e68ea831eca5184fd16e2003dc88c1efd6a367c4f5",
+        "bytes": 15623
+      },
+      "verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "shot_id": "a01-s077",
+      "original_sha256": "32b57b5ab67612438bd23eb7940885cefb4bf7ab822895f5fd71757c2a7a75e3",
+      "inspected_all_frames": 107,
+      "observations": [
+        "姬無霜從膝前起始持匣，約f24起微升，f36–59明顯上提，f60–71近下胸，f72–106雙手穩持於胸前。這是上提，不是伸直雙臂交付；匣保持閉合。",
+        "107格全幅與冠頂區都未見冠尖碰到或越過原片上邊界。原尺寸f53頂部留白較窄但完整；沒有把安全邊距等同固定6%。",
+        "两隻手支撐同一只黑銀葉紋匣；抽看的原尺寸f0/26/53/79/106未見多手、額外匣或明顯斷指。銀葉裝飾在本鏡內穩定，與其他鏡的匣型連戲仍未認證。",
+        "姬在畫左、面向畫右，燕的裸左肩維持在右前景；面部、衣料和門階未見明顯跳切或變形。近側右頰沒有額外霜花；遠侧左霜痕受角度遮擋，未宣稱全面認證。",
+        "兩句正式姬無霜台詞仍缺，這支只列視覺可剪候選；未做實速動作節奏、對嘴、對白長度及相鄰鏡驗收。"
+      ],
+      "major_defects": [],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    },
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s078-video-t1/run-2026-10-08T23-32-41-539Z/independent-visual-review.json",
+        "sha256": "01556f713c3a5de3cb350de1233312e1991bbecff8f8aad037c94ac87f94bf83",
+        "bytes": 15774
+      },
+      "verdict": "usable_visual_candidate_pending_realtime_and_timeline_review",
+      "shot_id": "a01-s078",
+      "original_sha256": "9146574a09f6924bb762806767dc9ef2d18651cc13c76eba6f2d992bf4912340",
+      "inspected_all_frames": 107,
+      "observations": [
+        "燕迴從直立神情開始，約f9嘴張與抬頭，f12–23後仰，f24–59仰頭張嘴笑，f60–83回落，f84–106收為略向下的笑意。看見一個完整笑的動作弧，沒有第二次抬頭。",
+        "冠隨後仰旋轉而縮短透視，部分在頭髮後遮擋；可見冠件未越出原片上緣，回正後冠完整，沒有把遮擋誤判為裁切。細部金屬形狀在轉角中壓縮，未認證逐像素剛體精準。",
+        "右手始終留在低位刀柄，左裸臂輪廓連續；五張原尺寸關鍵格未見額外手、武器或明顯扭折。刀刃下端與雙足在MCU外，不能認證刀尖落點或腳位。",
+        "門柱、旗幟位置和攝影機固定；未見明顯跳切或人物替換。頭髮與鬆穗略動。",
+        "張嘴仰笑段延續約0.4–3.5秒；是否符合原文short laugh的實速節奏及air4台詞仍待播放和剪接，不因靜態逐格可讀就認定對嘴完成。"
+      ],
+      "major_defects": [],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    },
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a02-s053-video-t2/run-2026-10-08T21-14-20-515Z/independent-visual-review.json",
+        "sha256": "c4f48d0ed6ec6ee18790f3589c4f4dbdba1f53baa99de3fb6f644d2b607a92c8",
+        "bytes": 20091
+      },
+      "verdict": "visual_candidate_pending_realtime_lean_read_and_official_unwatermarked_master",
+      "shot_id": "a02-s053",
+      "original_sha256": "fbda9fb6a60d5d07bca7aaaae68598ac635d777755bfcbecd2dd338c3508a5d1",
+      "inspected_all_frames": null,
+      "observations": [
+        {
+          "criterion": "crown",
+          "result": "no_clipping_observed_all_175",
+          "evidence": "Full gold lotus silhouette and highest solid tip remain inside frame with ample sky throughout. Thin filament already present above crown in supplied t3 persists; no new clipping observed. The old t1 crown failure is not present in this take."
+        },
+        {
+          "criterion": "right_arm_palm",
+          "result": "palm_remains_outside_frame",
+          "evidence": "Raised right arm exits screen left in all full-frame cells. No wrist, fingers or palm newly enters. Costume and identity remain recognizable; left bead bracelet only partly visible at bottom, full count not certified."
+        },
+        {
+          "criterion": "motion",
+          "result": "restrained_motion_requires_realtime_editorial_read",
+          "evidence": "Torso/neck settling is very small; the dominant visible change is multiple soft swings of crown bead strands and fabric. Native0/87/174 and all-frame sequence show slight posture differences, no large forward lunge or camera move. A clear few-centimetres forward-weight transfer cannot be certified from these still-page inspections; verify actual-speed playback and chosen1.5s window before final assignment. No new source change or automatic repurchase is proposed."
+        },
+        {
+          "criterion": "continuity",
+          "result": "no_obvious_cut_or_major_morph",
+          "evidence": "All175 full cells preserve low-angle scene, one Jiwen, screen direction and stable gate background. No scene cut observed; fine bead count/cloth pattern is not guaranteed per pixel."
+        },
+        {
+          "criterion": "watermark",
+          "result": "visible_provider_watermark",
+          "evidence": "MINIMAX / Hailuo AI logo is visible at lower right, including native0/87/174. This UI downloadMedia file is an inspection source, not an unwatermarked delivery master. Do not remove or paint over it."
+        }
+      ],
+      "major_defects": [],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    },
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a02-s062-video-t1/run-2026-10-08T21-18-20-671Z/independent-visual-review.json",
+        "sha256": "2d1ee169ebd6389356019dca2d1b50d050d8a09de434eda3147c9e5f0f7c384a",
+        "bytes": 18485
+      },
+      "verdict": "usable_visual_candidate_pending_realtime_timeline_and_official_unwatermarked_master",
+      "shot_id": "a02-s062",
+      "original_sha256": "9175e1492e974518c70a37d9e9a92298ce6f43f65926facfc4b9b40b9530990d",
+      "inspected_all_frames": null,
+      "observations": [
+        {
+          "criterion": "crown",
+          "result": "no_actual_clipping_observed_all_107_tight_margin",
+          "evidence": "Highest silver curved tip retains its complete silhouette across native crown pages. Background gap becomes extremely thin around middle frames, but no clear cut through the tip is observed; the tip later moves down and right. No additional numerical headroom rule is treated as source gate."
+        },
+        {
+          "criterion": "face_mark",
+          "result": "single_anatomical_left_mark_preserved",
+          "evidence": "One frost flower remains at anatomical left outer eye corner (image-right); repaired right cheek stays clear. No duplicated purple face mark seen in107 face cells."
+        },
+        {
+          "criterion": "listening_lip_action",
+          "result": "small_close_and_hold_visible",
+          "evidence": "Lips begin slightly parted, progressively press/close around the first1.5s, and remain settled for remainder; head lowers/tilts slightly while gaze stays toward Shen at screen right. No repeated speaking-mouth cycle or gross face morph observed. Actual-speed performance and dialogue timing not yet reviewed."
+        },
+        {
+          "criterion": "sword_camera_continuity",
+          "result": "no_obvious_blocker",
+          "evidence": "One approximately level steel blade remains behind Shen foreground shoulder, aimed screen-left near Wushuang; visible space from face, hair and hanging chains persists. No contact, duplicate blade, major bend, scene cut or major camera move seen in inspected evidence."
+        },
+        {
+          "criterion": "watermark",
+          "result": "visible_provider_watermark",
+          "evidence": "Lower-right MINIMAX / Hailuo AI logo appears throughout; this file is review material, not an unwatermarked delivery master."
+        }
+      ],
+      "major_defects": [],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    }
+  ],
+  "producer_clip_reviews": [
+    {
+      "evidence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a01-s075-video-t1/run-2026-10-08T23-20-07-777Z/root-visual-review.json",
+        "sha256": "df3282f1fe6c8769d5fb51dfbcbf146effb484b49be3aeecee4379f52b36fdae",
+        "bytes": 6697
+      },
+      "reviewer": "codex-episode-one-finish-root",
+      "verdict": "usable_visual_candidate_pending_realtime_audio_and_timeline_review",
+      "independent_reviewer": false,
+      "shot_id": "a01-s075",
+      "original_sha256": "c2c6a5367506dfc88ad44c7d9ffc6bfdf9f8f1bb950fd8e6b05372f983cb4dbd",
+      "inspected_all_frames": 124,
+      "observations": [
+        "Four people remain in the same kneeling row, with consistent relative adult/child sizes and the bandaged woman beside the two boys. No extra person, hand, blanket, jump cut or major face replacement is observed at the inspected resolution.",
+        "The older boy begins holding the shared grey blanket over both laps. Around f18 onward he raises its upper edge; f35-50 briefly and naturally occlude the smaller boy face while bringing the cloth around his shoulders. By about f60 the face is uncovered and the cloth reaches the shoulders. The final part settles it around the smaller boy torso while the older boy keeps one hand at the chest and the other around the far shoulder.",
+        "The blanket remains one connected cloth. The younger boy does not disappear or transform when partly occluded. The older boy forearms remain connected to the two active hands in the inspected sequence; fine finger topology during occlusion is not fully certified.",
+        "There is a small continuous rightward pan: fixed architectural pillars and the seated adults drift left from first to middle to last frame. Its exact constant speed and perceptual timing were not measured and await real-time review.",
+        "The pre-existing first-frame detail of a few remaining teeth on the elderly man persists. This is not an exact match to the toothless wording and was not corrected or concealed by this review. No new paid retake or canonical source change is authorized by this receipt.",
+        "All four heads remain in the full frame; the pan gradually crops more of the elderly man left body edge, not his face. The close action ROI deliberately excludes parts of the adult heads, so framing decisions use the complete image.",
+        "Original native AAC remains preserved but has not been listened to or adopted. The separate Google dialogue for this shot is not yet recorded. No music/effects, lip-sync, adjacent-shot continuity or owner acceptance is certified."
+      ],
+      "major_defects": [],
+      "realtime_reviewed": false,
+      "audio_listened": false,
+      "owner_accepted": false
+    }
+  ],
+  "audio_library": {
+    "existing_kenney_original_ogg_count": 130,
+    "kenney_manifest": {
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/sound-library/kenney-impact/asset-manifest.json",
+      "sha256": "45ba0b12eaf56773d1190a05ab76bcdad5a9da62aa681c9b8abb51905ec93f2b",
+      "bytes": 26697
+    },
+    "foley_shortlist_and_audition_count": 9,
+    "foley_audition": {
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/sound-audition/audition-manifest.json",
+      "sha256": "6437411558ae838a1dc14e717bb24e85ca4cbc0f477abc001c40b679aba799f3",
+      "bytes": 21592
+    },
+    "music_candidates": [
+      {
+        "key": "nikke-dark-intro",
+        "title": "Dark Intro",
+        "author": "Nikke",
+        "creator_page": "https://opengameart.org/content/dark-intro",
+        "license": "CC0 1.0 Universal",
+        "original": {
+          "url": "https://opengameart.org/sites/default/files/Dark%20Intro_0.ogg",
+          "final_url": "https://opengameart.org/sites/default/files/Dark%20Intro_0.ogg",
+          "http_status": 200,
+          "content_type": "audio/ogg",
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/sound-library/free-ma-candidates-20261009/nikke-dark-intro/Dark-Intro.ogg",
+          "sha256": "7bfe029fcc5cc73688e4b6ca13b8845fe80a4c73d775e5d2c52af30e7a5d75b0",
+          "bytes": 1629729,
+          "fetched_at": "2026-10-08T20:32:37.832Z"
+        },
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/sound-library/free-ma-candidates-20261009/nikke-dark-intro/nikke-dark-intro-48k-stereo.wav",
+          "sha256": "ed7f5d13dd2a4fa1aa681bda38d3ea9eefebe3051d4346d8d11d208121763375",
+          "bytes": 15470142,
+          "duration_seconds": 80.57325,
+          "sample_rate_hz": 48000,
+          "channels": 2,
+          "bits_per_sample": 16
+        },
+        "listened": false,
+        "adopted": false
+      },
+      {
+        "key": "yd-oriented",
+        "title": "Oriented",
+        "author": "yd",
+        "creator_page": "https://opengameart.org/content/oriented",
+        "license": "CC0 1.0 Universal",
+        "original": {
+          "url": "https://opengameart.org/sites/default/files/Oriented_0.ogg",
+          "final_url": "https://opengameart.org/sites/default/files/Oriented_0.ogg",
+          "http_status": 200,
+          "content_type": "audio/ogg",
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/sound-library/free-ma-candidates-20261009/yd-oriented/Oriented.ogg",
+          "sha256": "d088a0e4d768adedd4228b4c5c78a2018972721aa03deee3a5b6ecb866e2d3a2",
+          "bytes": 648099,
+          "fetched_at": "2026-10-08T20:32:53.645Z"
+        },
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/sound-library/free-ma-candidates-20261009/yd-oriented/yd-oriented-48k-stereo.wav",
+          "sha256": "778ab55dd22dbb2e4ba61901ac11ac51dccedca316049e2c1b531bbf894b5501",
+          "bytes": 17726722,
+          "duration_seconds": 92.326271,
+          "sample_rate_hz": 48000,
+          "channels": 2,
+          "bits_per_sample": 16
+        },
+        "listened": false,
+        "adopted": false
+      },
+      {
+        "key": "tozan-orien",
+        "title": "Orien",
+        "author": "Tozan",
+        "creator_page": "https://opengameart.org/content/orien",
+        "license": "CC0 1.0 Universal",
+        "original": {
+          "url": "https://opengameart.org/sites/default/files/orien_2.ogg",
+          "final_url": "https://opengameart.org/sites/default/files/orien_2.ogg",
+          "http_status": 200,
+          "content_type": "audio/ogg",
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/sound-library/ma-additions-20261009/tozan-orien/tozan-orien.ogg",
+          "sha256": "7e9a6f28b131ddb6c19f8f0ece0eb5e391d3657007e2156de6efabd6816ed58c",
+          "bytes": 910558,
+          "fetched_at": "2026-10-08T21:52:03.142Z"
+        },
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/sound-library/ma-additions-20261009/tozan-orien/tozan-orien-48k-stereo.wav",
+          "sha256": "9508c0e66b9dd2de2cc9cc55b330bac383bfed2d3728084d8829815db34d9aac",
+          "bytes": 27450354,
+          "duration_seconds": 142.970188,
+          "sample_rate_hz": 48000,
+          "channels": 2,
+          "bits_per_sample": 16
+        },
+        "listened": false,
+        "adopted": false
+      },
+      {
+        "key": "tozan-asianoriental2",
+        "title": "Asianoriental2",
+        "author": "Tozan",
+        "creator_page": "https://opengameart.org/content/asianoriental2",
+        "license": "CC0 1.0 Universal",
+        "original": {
+          "url": "https://opengameart.org/sites/default/files/asianoriental2_0.ogg",
+          "final_url": "https://opengameart.org/sites/default/files/asianoriental2_0.ogg",
+          "http_status": 200,
+          "content_type": "audio/ogg",
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/sound-library/ma-additions-20261009/tozan-asianoriental2/tozan-asianoriental2.ogg",
+          "sha256": "ad7a04dca194d467b7f135b019b7e2b381b1e8cd2d21f38448df5bb2d145b211",
+          "bytes": 3601956,
+          "fetched_at": "2026-10-08T21:52:16.015Z"
+        },
+        "standard": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/sound-library/ma-additions-20261009/tozan-asianoriental2/tozan-asianoriental2-48k-stereo.wav",
+          "sha256": "fad5e82b2cc1b5b54d455c110063e6473711d4328d260284cd957e086a6ca45c",
+          "bytes": 36955714,
+          "duration_seconds": 192.477271,
+          "sample_rate_hz": 48000,
+          "channels": 2,
+          "bits_per_sample": 16
+        },
+        "listened": false,
+        "adopted": false
+      }
+    ],
+    "ambience_candidates": 2,
+    "library_receipts": [
+      {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/maf-materials-current.json",
+        "sha256": "9e4661db3e7431936c7a5c151d22a72d47f45167c10947ecc0d22339dcb38da2",
+        "bytes": 48523
+      },
+      {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/sound-library/ma-additions-20261009/download-receipt.json",
+        "sha256": "8d9632e86a1a42db56eaa21e9a155c92d14823a35edc1df6e76f72c77dfc9392",
+        "bytes": 5857
+      }
+    ],
+    "picture_D_ME_candidate": {
+      "receipt": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/a01-s054-sound-candidate-v1/receipt.json",
+        "sha256": "8d70efef6bc67a252ddf7e1f138366fb18080a6ca1ec7710d6e94a4aa2c4520e",
+        "bytes": 4627
+      },
+      "output": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/a01-s054-sound-candidate-v1/a01-s054-picture-D-ME-candidate.mp4",
+        "sha256": "ae91000bf4a729b3588aa96fa8127a72c17608dd8cb005cdc3e9ac4f24203c00"
+      },
+      "seconds": 4.458333333333333,
+      "music_temporarily_missing": true,
+      "cloth_is_wind_EQ_proxy": true,
+      "two_contacts_are_sampled_timing_candidates": true,
+      "listened": false,
+      "adopted": false
+    },
+    "additional_headroom_picture_candidate": {
+      "receipt": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/a01-s054-sound-candidate-v2-headroom/receipt.json",
+        "sha256": "2b3a364c5928c908bb5ca7197f211682be6fbc05d04ec66d24f2474ccfed3b9b",
+        "bytes": 8145
+      },
+      "output": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/a01-s054-sound-candidate-v2-headroom/a01-s054-picture-D-ME-headroom-candidate.mp4",
+        "sha256": "2b844ac1b1e6de23058eba8a29c93991c1edfaed26eb19d0ce7215c932520d5c"
+      },
+      "same_picture_ranges_pauses_and_ME_as_v1": true,
+      "only_D_input_changed": true,
+      "listened": false,
+      "adopted": false
+    }
+  },
+  "spending": {
+    "authority_period_a_cap": 26980.8,
+    "authority_period_b_cap": 21753.6,
+    "actual_hailuo_credits_debited": 2179,
+    "still_reserved_without_actual_debit": 22,
+    "latest_recorded_balance": 59821,
+    "latest_balance_action_id": "a01-s076-video-t1",
+    "balance_is_receipt_snapshot_not_live_account_query": true,
+    "unresolved_actions": [
+      "a01-s082-start-t1"
+    ],
+    "paid_api_authorized_usd": 0,
+    "paid_api_reported_usd": 0,
+    "google_route": "Authenticated AI Studio web UI receipts report no API key selected / paid_api_usd0; no paid API called by this agent",
+    "agent_purchase_or_subscription_authorized": false,
+    "ledger_action_receipts": [
+      {
+        "id": "a02-s035-start-t1",
+        "shot": "a02-s035",
+        "kind": "first_frame",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 25,
+        "actual_credit_debit": 25,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 26975,
+        "created_at": "2026-10-08T18:07:15.210Z",
+        "updated_at": "2026-10-08T18:12:46.395Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-pilot/20261009/actions/a02-s035-start-t1.json",
+          "sha256": "2304cb4e77ee1346a8286c122e5a69f74aa33999a4193e5b8e09b98cd942d66f",
+          "bytes": 7939
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s037-start-t1",
+        "shot": "a02-s037",
+        "kind": "first_frame",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 22,
+        "actual_credit_debit": 22,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 26953,
+        "created_at": "2026-10-08T18:12:29.306Z",
+        "updated_at": "2026-10-08T18:40:54.672Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-pilot/20261009/actions/a02-s037-start-t1.json",
+          "sha256": "a7d524d6b98a9623dfe05f5698577c823401e0a2bf1bd3f08ea04a66a35a13ca",
+          "bytes": 4780
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s035-start-t2",
+        "shot": "a02-s035",
+        "kind": "first_frame",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 21,
+        "actual_credit_debit": 21,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 26932,
+        "created_at": "2026-10-08T18:13:50.396Z",
+        "updated_at": "2026-10-08T18:23:11.249Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-pilot/20261009/actions/a02-s035-start-t2.json",
+          "sha256": "2fd818a006f95d578f9f7f3643d3f20001b22ec14f5ddace4d62c57bfb297f65",
+          "bytes": 5634
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s037-end-t1",
+        "shot": "a02-s037",
+        "kind": "last_frame",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 22,
+        "actual_credit_debit": 22,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 26910,
+        "created_at": "2026-10-08T18:15:50.849Z",
+        "updated_at": "2026-10-08T18:23:11.229Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-pilot/20261009/actions/a02-s037-end-t1.json",
+          "sha256": "cb2e5dc733c15fcdd491ed2d218c3cd636550cc37860af37e93025ecd742fa10",
+          "bytes": 4346
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s036-start-t1",
+        "shot": "a02-s036",
+        "kind": "first_frame",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 24,
+        "actual_credit_debit": 24,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 26886,
+        "created_at": "2026-10-08T18:19:55.132Z",
+        "updated_at": "2026-10-08T18:40:54.692Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-pilot/20261009/actions/a02-s036-start-t1.json",
+          "sha256": "92495de56d84faed8b288ad7f64f6f371d6e348753a534033b840d2723a68fdf",
+          "bytes": 7375
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s035-video-t1",
+        "shot": "a02-s035",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 48,
+        "actual_credit_debit": 48,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 26838,
+        "created_at": "2026-10-08T18:24:58.814Z",
+        "updated_at": "2026-10-08T18:51:04.697Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-pilot/20261009/actions/a02-s035-video-t1.json",
+          "sha256": "0507a3c22f37acb2bbc122fa56a0439ae1a202e0c6acc0caf6f304a09a61a73b",
+          "bytes": 2997
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s036-end-t1",
+        "shot": "a02-s036",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 21,
+        "actual_credit_debit": 21,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 26817,
+        "created_at": "2026-10-08T18:26:09.174Z",
+        "updated_at": "2026-10-08T18:29:06.207Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-pilot/20261009/actions/a02-s036-end-t1.json",
+          "sha256": "02dcc49a52fa6d6c6aad2968676f17531234bd7fe3942dfc3c29375bc45dbea7",
+          "bytes": 2633
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s036-end-t2",
+        "shot": "a02-s036",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 21,
+        "actual_credit_debit": 21,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 26796,
+        "created_at": "2026-10-08T18:30:06.039Z",
+        "updated_at": "2026-10-08T18:36:22.539Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-pilot/20261009/actions/a02-s036-end-t2.json",
+          "sha256": "2c9c6c73ffb508d50adf59d3db740353bde2a507da32a1b601667dd6fee482c5",
+          "bytes": 2827
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s037-video-t1",
+        "shot": "a02-s037",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 48,
+        "actual_credit_debit": 48,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 26748,
+        "created_at": "2026-10-08T18:30:57.005Z",
+        "updated_at": "2026-10-08T18:51:04.680Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-pilot/20261009/actions/a02-s037-video-t1.json",
+          "sha256": "70628ba9a9e5f686f1a13dc5ea3ba44b894f2ee347f9a2e9924b6549fe185ebf",
+          "bytes": 2998
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s036-video-t1",
+        "shot": "a02-s036",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 48,
+        "actual_credit_debit": 48,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 26700,
+        "created_at": "2026-10-08T18:40:36.053Z",
+        "updated_at": "2026-10-08T18:51:04.657Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-pilot/20261009/actions/a02-s036-video-t1.json",
+          "sha256": "261fbffdb63e0838c2e1962e469fcb1280d0f23b829cde00a5e8ffc6c4d33233",
+          "bytes": 3429
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s053-start-t1",
+        "shot": "a02-s053",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 23,
+        "actual_credit_debit": 23,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61677,
+        "created_at": "2026-10-08T19:09:45.058Z",
+        "updated_at": "2026-10-08T19:15:15.662Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/actions/a02-s053-start-t1.json",
+          "sha256": "1e075166f20b2322649d8be38b2eab1bfe64b6d5ee1f6ef9eb06980de9e9c84c",
+          "bytes": 4335
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s062-start-t1",
+        "shot": "a02-s062",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 24,
+        "actual_credit_debit": 24,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61653,
+        "created_at": "2026-10-08T19:10:57.832Z",
+        "updated_at": "2026-10-08T19:16:35.468Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/actions/a02-s062-start-t1.json",
+          "sha256": "f0ac6d75007b01a4dd7069a9e73cdf1c5bb99b72fc7d76e5463606721436417c",
+          "bytes": 4786
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s053-start-t2",
+        "shot": "a02-s053",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 22,
+        "actual_credit_debit": 22,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61631,
+        "created_at": "2026-10-08T19:16:18.255Z",
+        "updated_at": "2026-10-08T19:29:04.681Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/actions/a02-s053-start-t2.json",
+          "sha256": "86142f665ccc8d1be41b27824e36974c2f5550dc226a1c744290e20f89a3a99a",
+          "bytes": 3607
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s062-start-t2",
+        "shot": "a02-s062",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 22,
+        "actual_credit_debit": 22,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61609,
+        "created_at": "2026-10-08T19:17:07.184Z",
+        "updated_at": "2026-10-08T19:29:04.665Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/actions/a02-s062-start-t2.json",
+          "sha256": "5c51984674c8407a0ae5f2e7659aff9f24aabf635ef486af8f484db67f481124",
+          "bytes": 3962
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s053-video-t1",
+        "shot": "a02-s053",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 84,
+        "actual_credit_debit": 84,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61525,
+        "created_at": "2026-10-08T19:25:02.336Z",
+        "updated_at": "2026-10-08T19:35:30.880Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/actions/a02-s053-video-t1.json",
+          "sha256": "9d2326c483fc7213371b5b0da2d17f9d5650691253c7aefba575aeccdde9b666",
+          "bytes": 3589
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s047-start-t1",
+        "shot": "a01-s047",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 22,
+        "actual_credit_debit": 22,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61503,
+        "created_at": "2026-10-08T19:53:55.388Z",
+        "updated_at": "2026-10-08T19:56:51.935Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s047-start-t1.json",
+          "sha256": "be827b49124ab71eabba61eb20e9517b00ccd0ddd844ac7f127791e851878445",
+          "bytes": 3231
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s050-start-t1",
+        "shot": "a01-s050",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 24,
+        "actual_credit_debit": 24,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61479,
+        "created_at": "2026-10-08T19:55:08.857Z",
+        "updated_at": "2026-10-08T20:04:13.521Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s050-start-t1.json",
+          "sha256": "a4d1dc421eb76a90a35a77e9e77f6a41cc3060febacde2d6aeec7e4900eaeefe",
+          "bytes": 4276
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s051-start-t1",
+        "shot": "a01-s051",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 24,
+        "actual_credit_debit": 24,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61455,
+        "created_at": "2026-10-08T20:06:53.398Z",
+        "updated_at": "2026-10-08T20:11:19.791Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s051-start-t1.json",
+          "sha256": "3111cf0978833732947e44b2c7ed41f41540f06777bebed0f2c5abdbce47bf0e",
+          "bytes": 4164
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s052-start-t1",
+        "shot": "a01-s052",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 24,
+        "actual_credit_debit": 24,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61431,
+        "created_at": "2026-10-08T20:07:55.639Z",
+        "updated_at": "2026-10-08T20:13:31.963Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s052-start-t1.json",
+          "sha256": "3bbb7b7d4170d85e8fa350b43c41c9520a8536d9974b623526c28088f86500c7",
+          "bytes": 3951
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s047-video-t1",
+        "shot": "a01-s047",
+        "kind": "video",
+        "period": "A",
+        "status": "provider_rejected_refunded",
+        "quoted_credits": 48,
+        "actual_credit_debit": 0,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61431,
+        "created_at": "2026-10-08T20:10:28.587Z",
+        "updated_at": "2026-10-08T20:13:59.315Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s047-video-t1.json",
+          "sha256": "0bbcb96e83b4f904e5ed99fc1cc7703c8ac0efcefca58cc7cf1ee8d2501f9515",
+          "bytes": 2246
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s050-video-t1",
+        "shot": "a01-s050",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 48,
+        "actual_credit_debit": 48,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61383,
+        "created_at": "2026-10-08T20:14:22.973Z",
+        "updated_at": "2026-10-08T20:23:42.917Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s050-video-t1.json",
+          "sha256": "f22a757fa245d4543240b4c7a810cc2107ea70d87d25fc2a227fca741618f38d",
+          "bytes": 2120
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s054-start-t1",
+        "shot": "a01-s054",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 24,
+        "actual_credit_debit": 24,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61359,
+        "created_at": "2026-10-08T20:17:03.730Z",
+        "updated_at": "2026-10-08T20:23:44.718Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s054-start-t1.json",
+          "sha256": "fb4c3ce9894fe24e6fb9de0da21d5e584e95ba8fdef80cc58af47b324929affe",
+          "bytes": 4198
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s051-video-t1",
+        "shot": "a01-s051",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 48,
+        "actual_credit_debit": 48,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61311,
+        "created_at": "2026-10-08T20:18:56.869Z",
+        "updated_at": "2026-10-08T22:45:38.082Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s051-video-t1.json",
+          "sha256": "5fe6c0bed179cf566bfbc1f57e91bb014896ba629cb708ee6c633698d73ee349",
+          "bytes": 2621
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s059-start-t1",
+        "shot": "a01-s059",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 24,
+        "actual_credit_debit": 24,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61287,
+        "created_at": "2026-10-08T20:21:04.366Z",
+        "updated_at": "2026-10-08T20:50:23.982Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s059-start-t1.json",
+          "sha256": "2b881343d35f0cd7bb9d0362ebaaf33ccf759b486483ee96dbead2eea5fa7768",
+          "bytes": 3993
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s053-start-t3",
+        "shot": "a02-s053",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 22,
+        "actual_credit_debit": 22,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61265,
+        "created_at": "2026-10-08T20:26:45.224Z",
+        "updated_at": "2026-10-08T20:34:49.002Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a02-s053-start-t3.json",
+          "sha256": "d0825cee1211f7d8a4b31d744944e712439b57a52d243feabc2e9f63c745f099",
+          "bytes": 3274
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s062-start-t3",
+        "shot": "a02-s062",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 22,
+        "actual_credit_debit": 22,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61243,
+        "created_at": "2026-10-08T20:31:11.366Z",
+        "updated_at": "2026-10-08T20:42:40.195Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a02-s062-start-t3.json",
+          "sha256": "ef35ea0d72bc0f00075aeb84443e43d3c39dfb2b095a7902da13e47bca334080",
+          "bytes": 2664
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s052-start-t2",
+        "shot": "a01-s052",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 22,
+        "actual_credit_debit": 22,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61221,
+        "created_at": "2026-10-08T20:37:59.483Z",
+        "updated_at": "2026-10-08T20:52:12.955Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s052-start-t2.json",
+          "sha256": "b58c5c3adc17533c1bbdab55479db8338561c960e00e1a824d15ccce8c842fb1",
+          "bytes": 3540
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s054-video-t1",
+        "shot": "a01-s054",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 48,
+        "actual_credit_debit": 48,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61173,
+        "created_at": "2026-10-08T20:39:38.336Z",
+        "updated_at": "2026-10-08T22:38:50.964Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s054-video-t1.json",
+          "sha256": "19e59141759ea470dca2dd142d6ef6eb22597aad1b07349a6a1770425ed1d57c",
+          "bytes": 2577
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s053-video-t2",
+        "shot": "a02-s053",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 84,
+        "actual_credit_debit": 84,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61089,
+        "created_at": "2026-10-08T20:50:43.823Z",
+        "updated_at": "2026-10-08T23:40:56.744Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a02-s053-video-t2.json",
+          "sha256": "8379e66fc7c91c98221a08036fc503fcef8bc8b52d3d1e6e730d023c72213c81",
+          "bytes": 2708
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a02-s062-video-t1",
+        "shot": "a02-s062",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 48,
+        "actual_credit_debit": 48,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61041,
+        "created_at": "2026-10-08T20:55:37.857Z",
+        "updated_at": "2026-10-08T23:42:36.542Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a02-s062-video-t1.json",
+          "sha256": "8215e5ff597d72a056da36090b643c16a87a192a5c417d4d2718a17e4de2e27f",
+          "bytes": 2696
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s059-start-t2",
+        "shot": "a01-s059",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 22,
+        "actual_credit_debit": 22,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 61019,
+        "created_at": "2026-10-08T20:57:03.320Z",
+        "updated_at": "2026-10-08T21:00:06.706Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s059-start-t2.json",
+          "sha256": "86b622771e26cd999492bf11750e64325c9b62910f1edbd5db10778642a23fe8",
+          "bytes": 3550
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s060-start-t1",
+        "shot": "a01-s060",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 23,
+        "actual_credit_debit": 23,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60996,
+        "created_at": "2026-10-08T21:02:36.331Z",
+        "updated_at": "2026-10-08T21:11:45.627Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s060-start-t1.json",
+          "sha256": "8a9a7591d2619d77bcf8e7e3ef9e09da14bef0ac9549d6a20abfd17bc9a1ab23",
+          "bytes": 3937
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s052-video-t1",
+        "shot": "a01-s052",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 48,
+        "actual_credit_debit": 48,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60948,
+        "created_at": "2026-10-08T21:03:16.526Z",
+        "updated_at": "2026-10-08T22:37:14.886Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s052-video-t1.json",
+          "sha256": "b784712827a57f88aad8c81eff51a502b0a87d7259a9708a98b8fdd12e57633f",
+          "bytes": 2647
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s062-start-t1",
+        "shot": "a01-s062",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 24,
+        "actual_credit_debit": 24,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60924,
+        "created_at": "2026-10-08T21:05:39.330Z",
+        "updated_at": "2026-10-08T21:13:32.212Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s062-start-t1.json",
+          "sha256": "26051bfb819bc571ce18c64cebcbeffdf94cea55a4b6485f739a94c7bd0d6f85",
+          "bytes": 4253
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s065-start-t1",
+        "shot": "a01-s065",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 23,
+        "actual_credit_debit": 23,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60901,
+        "created_at": "2026-10-08T21:07:33.258Z",
+        "updated_at": "2026-10-08T21:16:36.574Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s065-start-t1.json",
+          "sha256": "5198ed63d82e54382d38021fcba344171a27c917353a3f62db42f4bf6b950a31",
+          "bytes": 3980
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s059-video-t1",
+        "shot": "a01-s059",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 60,
+        "actual_credit_debit": 60,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60841,
+        "created_at": "2026-10-08T21:09:07.347Z",
+        "updated_at": "2026-10-08T21:27:10.078Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s059-video-t1.json",
+          "sha256": "4256db80078d2f221b114f1de231303b114c5dfc126a13fff98a7054f78cd558",
+          "bytes": 2245
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s067-start-t1",
+        "shot": "a01-s067",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 23,
+        "actual_credit_debit": 23,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60818,
+        "created_at": "2026-10-08T21:09:29.320Z",
+        "updated_at": "2026-10-08T21:18:03.838Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s067-start-t1.json",
+          "sha256": "d490032c57bf8a1e8f81138f669731ef2a6354d91edd0854e2f34a9f6728647f",
+          "bytes": 3846
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s060-start-t2",
+        "shot": "a01-s060",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 22,
+        "actual_credit_debit": 22,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60796,
+        "created_at": "2026-10-08T21:20:32.743Z",
+        "updated_at": "2026-10-08T21:29:16.049Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s060-start-t2.json",
+          "sha256": "099821590e8d95ecfd42fe12ee24ac1d288741d2fe03ef60a0fbefaf41d9bf1d",
+          "bytes": 3089
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s065-video-t1",
+        "shot": "a01-s065",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 48,
+        "actual_credit_debit": 48,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60748,
+        "created_at": "2026-10-08T21:25:03.279Z",
+        "updated_at": "2026-10-08T21:38:35.992Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s065-video-t1.json",
+          "sha256": "a10f4a8380786ea40f8794ecda47aae079f59286680ecf87fdefa8c3723e0fc2",
+          "bytes": 2067
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s062-start-t2",
+        "shot": "a01-s062",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 22,
+        "actual_credit_debit": 22,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60726,
+        "created_at": "2026-10-08T21:26:09.802Z",
+        "updated_at": "2026-10-08T21:30:46.384Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s062-start-t2.json",
+          "sha256": "831bad672c1c6f4da72546d70e9b738792881a4f201845ed33b2f27b98e065b7",
+          "bytes": 3365
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s067-start-t2",
+        "shot": "a01-s067",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 22,
+        "actual_credit_debit": 22,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60704,
+        "created_at": "2026-10-08T21:27:11.002Z",
+        "updated_at": "2026-10-08T21:31:19.082Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s067-start-t2.json",
+          "sha256": "f8f206e4afd659a66cd0e9fc9adca9fb81f5ed4546b4d71a3a15be11f3e2d9f8",
+          "bytes": 3121
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s060-video-t1",
+        "shot": "a01-s060",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 48,
+        "actual_credit_debit": 48,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60656,
+        "created_at": "2026-10-08T21:34:07.775Z",
+        "updated_at": "2026-10-08T21:48:53.928Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s060-video-t1.json",
+          "sha256": "8f3ccf17b606613e9b193e122027a9da08f750defff60dab1e81bcd238d7461c",
+          "bytes": 2084
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s069-start-t1",
+        "shot": "a01-s069",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 24,
+        "actual_credit_debit": 24,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60632,
+        "created_at": "2026-10-08T21:34:27.055Z",
+        "updated_at": "2026-10-08T21:46:46.028Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s069-start-t1.json",
+          "sha256": "7bcb34e2b1446f4957a7b9617252c57054a610920aeb56353ad09d237bb7fc3d",
+          "bytes": 4504
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s067-video-t1",
+        "shot": "a01-s067",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 48,
+        "actual_credit_debit": 48,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60584,
+        "created_at": "2026-10-08T21:40:27.979Z",
+        "updated_at": "2026-10-08T21:56:35.218Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s067-video-t1.json",
+          "sha256": "0d8c8c8f959f6d0234213e5ec7fbc74802b338d439f787ca73701f923dfd64eb",
+          "bytes": 2080
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s068-start-t1",
+        "shot": "a01-s068",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 23,
+        "actual_credit_debit": 23,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60561,
+        "created_at": "2026-10-08T21:41:34.221Z",
+        "updated_at": "2026-10-08T21:44:52.888Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s068-start-t1.json",
+          "sha256": "b6cf0a821ca7ce825c461bc4a19eb6f23de1636af0d5b45d9c499ce95a8ab22c",
+          "bytes": 4864
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s070-start-t1",
+        "shot": "a01-s070",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 23,
+        "actual_credit_debit": 23,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60538,
+        "created_at": "2026-10-08T21:47:29.053Z",
+        "updated_at": "2026-10-08T22:10:47.244Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s070-start-t1.json",
+          "sha256": "d17821d2bc426c11f9ffa1a10f25a1852c6f47097232b88d1a7219877c482daf",
+          "bytes": 4584
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s068-video-t1",
+        "shot": "a01-s068",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 72,
+        "actual_credit_debit": 72,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60466,
+        "created_at": "2026-10-08T21:53:39.834Z",
+        "updated_at": "2026-10-08T22:14:44.360Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s068-video-t1.json",
+          "sha256": "874190bd9d03dcec4779880317da07fe90f31e863df43b597d00c837810bcf42",
+          "bytes": 2102
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s071-start-t1",
+        "shot": "a01-s071",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 23,
+        "actual_credit_debit": 23,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60443,
+        "created_at": "2026-10-08T21:55:19.458Z",
+        "updated_at": "2026-10-08T22:12:04.518Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s071-start-t1.json",
+          "sha256": "6d04cf483530e201dc552f2fbae3c144353291d8dea12d17ed99cab8f6a74315",
+          "bytes": 4807
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s069-video-t1",
+        "shot": "a01-s069",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 60,
+        "actual_credit_debit": 60,
+        "debit_source_field": "actual_credit_debit",
+        "balance_after": 60383,
+        "created_at": "2026-10-08T22:02:12.441Z",
+        "updated_at": "2026-10-08T22:19:36.803Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s069-video-t1.json",
+          "sha256": "463ad5c168f3d40f11edb72512b37dbbc2aca3d6ca3a2cf122ed2d7927ea5f1d",
+          "bytes": 2246
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s074-start-t1",
+        "shot": "a01-s074",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 22,
+        "actual_credit_debit": 22,
+        "debit_source_field": "charged_credits",
+        "balance_after": 60361,
+        "created_at": "2026-10-08T22:12:29.743Z",
+        "updated_at": "2026-10-08T22:23:57.749Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s074-start-t1.json",
+          "sha256": "890af442b6e647a82853f2c4272e5a408ca85956102642ba278e39d664263b7e",
+          "bytes": 4294
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s070-video-t1",
+        "shot": "a01-s070",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 48,
+        "actual_credit_debit": 48,
+        "debit_source_field": "charged_credits",
+        "balance_after": 60313,
+        "created_at": "2026-10-08T22:15:06.514Z",
+        "updated_at": "2026-10-08T22:25:53.447Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s070-video-t1.json",
+          "sha256": "c5cbc077a8da1bc058e9c7f138afaeaa4a5527e3ad20d49b46349a54347a6a81",
+          "bytes": 2087
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s071-video-t1",
+        "shot": "a01-s071",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 60,
+        "actual_credit_debit": 60,
+        "debit_source_field": "charged_credits",
+        "balance_after": 60253,
+        "created_at": "2026-10-08T22:21:27.184Z",
+        "updated_at": "2026-10-08T22:32:55.502Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s071-video-t1.json",
+          "sha256": "00ca7e714bf3cdf922d84ff4e298a5f009d38176208eadef4b5a5b2afa7c0acc",
+          "bytes": 2109
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s075-start-t1",
+        "shot": "a01-s075",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 21,
+        "actual_credit_debit": 21,
+        "debit_source_field": "charged_credits",
+        "balance_after": 60232,
+        "created_at": "2026-10-08T22:21:51.406Z",
+        "updated_at": "2026-10-08T22:29:54.176Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s075-start-t1.json",
+          "sha256": "5c87cc6ed82c20636f8231ae9ee802bbc58ba0279c471b4f6b0308207c8d2a70",
+          "bytes": 3178
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s076-start-t1",
+        "shot": "a01-s076",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 23,
+        "actual_credit_debit": 23,
+        "debit_source_field": "charged_credits",
+        "balance_after": 60209,
+        "created_at": "2026-10-08T22:24:50.721Z",
+        "updated_at": "2026-10-08T22:32:03.739Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s076-start-t1.json",
+          "sha256": "dbb31556afd6b6fd7e479a5a89d2942c213e499d54d25773ace0636e089b8a7b",
+          "bytes": 4482
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s074-video-t1",
+        "shot": "a01-s074",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 60,
+        "actual_credit_debit": 60,
+        "debit_source_field": "charged_credits",
+        "balance_after": 60149,
+        "created_at": "2026-10-08T22:26:35.972Z",
+        "updated_at": "2026-10-08T22:35:57.849Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s074-video-t1.json",
+          "sha256": "6da9b60dbde8a366236c49f8fa973e415165dad00a43661059408ea18fa88516",
+          "bytes": 2086
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s077-start-t1",
+        "shot": "a01-s077",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 23,
+        "actual_credit_debit": 23,
+        "debit_source_field": "charged_credits",
+        "balance_after": 60126,
+        "created_at": "2026-10-08T22:28:50.146Z",
+        "updated_at": "2026-10-08T22:34:15.501Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s077-start-t1.json",
+          "sha256": "cf29b808f816df7383a9cc82d326d689ed4e53508ec1fee7f5e44ff94e8878a3",
+          "bytes": 4776
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s075-video-t1",
+        "shot": "a01-s075",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 60,
+        "actual_credit_debit": 60,
+        "debit_source_field": "charged_credits",
+        "balance_after": 60066,
+        "created_at": "2026-10-08T22:34:56.927Z",
+        "updated_at": "2026-10-08T22:48:05.842Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s075-video-t1.json",
+          "sha256": "4571ca522f7772e44a1b8e4ee466ff5f0e9c4f151bd5f7f8108357e7dcd47381",
+          "bytes": 2121
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s077-video-t1",
+        "shot": "a01-s077",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 48,
+        "actual_credit_debit": 48,
+        "debit_source_field": "charged_credits",
+        "balance_after": 60018,
+        "created_at": "2026-10-08T22:40:43.575Z",
+        "updated_at": "2026-10-08T22:49:09.959Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s077-video-t1.json",
+          "sha256": "410722bf0d2bf4209fd02ae0503201631e96ab19cc4f3c29ee699538e3c7afe1",
+          "bytes": 2109
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s078-start-t1",
+        "shot": "a01-s078",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 21,
+        "actual_credit_debit": 21,
+        "debit_source_field": "charged_credits",
+        "balance_after": 59997,
+        "created_at": "2026-10-08T22:43:39.524Z",
+        "updated_at": "2026-10-08T22:47:19.702Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s078-start-t1.json",
+          "sha256": "46572674d6b5906dcb1854d42115d8cabda5b9173e471e51611d2400def57cde",
+          "bytes": 3058
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s076-start-t2",
+        "shot": "a01-s076",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 22,
+        "actual_credit_debit": 22,
+        "debit_source_field": "charged_credits",
+        "balance_after": 59975,
+        "created_at": "2026-10-08T22:47:14.014Z",
+        "updated_at": "2026-10-08T22:52:11.943Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s076-start-t2.json",
+          "sha256": "bd3675f0f386e62cc0b5e8a1a3cbe10e2db27b23ba6687386df60cc1007ee1ec",
+          "bytes": 4231
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s080-start-t1",
+        "shot": "a01-s080",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 23,
+        "actual_credit_debit": 23,
+        "debit_source_field": "charged_credits",
+        "balance_after": 59952,
+        "created_at": "2026-10-08T22:49:02.651Z",
+        "updated_at": "2026-10-08T22:53:34.233Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s080-start-t1.json",
+          "sha256": "fdd990d1dac38d09bbaa1c405a51b12afb4cbe1e985d77ef505713830a596981",
+          "bytes": 4023
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s078-video-t1",
+        "shot": "a01-s078",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 48,
+        "actual_credit_debit": 48,
+        "debit_source_field": "charged_credits",
+        "balance_after": 59904,
+        "created_at": "2026-10-08T22:50:32.518Z",
+        "updated_at": "2026-10-08T22:57:29.996Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s078-video-t1.json",
+          "sha256": "750c52eefa7eba16c2352b07702f6755fa70fa866e0e4713323fe907ff628fc1",
+          "bytes": 2080
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s081-start-t1",
+        "shot": "a01-s081",
+        "kind": "image",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 23,
+        "actual_credit_debit": 23,
+        "debit_source_field": "charged_credits",
+        "balance_after": 59881,
+        "created_at": "2026-10-08T22:52:40.687Z",
+        "updated_at": "2026-10-08T22:56:46.858Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s081-start-t1.json",
+          "sha256": "327b17366bd57f43458076126a31679fa6b34fdf4c7ef28fba0cb000e3d376bd",
+          "bytes": 4198
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s076-video-t1",
+        "shot": "a01-s076",
+        "kind": "video",
+        "period": "A",
+        "status": "downloaded",
+        "quoted_credits": 60,
+        "actual_credit_debit": 60,
+        "debit_source_field": "charged_credits",
+        "balance_after": 59821,
+        "created_at": "2026-10-08T22:54:57.575Z",
+        "updated_at": "2026-10-08T23:14:58.080Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s076-video-t1.json",
+          "sha256": "4bbe7369d65d3d95aba98c43cef377031332a87a8f74b2647eb792a2428b9c38",
+          "bytes": 2097
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      },
+      {
+        "id": "a01-s082-start-t1",
+        "shot": "a01-s082",
+        "kind": "image",
+        "period": "A",
+        "status": "unknown",
+        "quoted_credits": 22,
+        "actual_credit_debit": null,
+        "debit_source_field": null,
+        "balance_after": null,
+        "created_at": "2026-10-08T22:55:50.497Z",
+        "updated_at": "2026-10-08T23:49:07.861Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s082-start-t1.json",
+          "sha256": "5d202452852057b6ac1147d98190dfb5da5c50abaff9519b3f785ccbcbef08ef",
+          "bytes": 3739
+        },
+        "api_spend_usd": 0,
+        "normal_pipeline_approved": false
+      }
+    ]
+  },
+  "status": {
+    "episode_finished": false,
+    "full_episode_rendered": false,
+    "all_material_owner_accepted": false,
+    "complete_audio_listened": false,
+    "language_lip_sync_done": false,
+    "published": false,
+    "native_gates_modified_by_snapshot": false,
+    "source_changed_by_snapshot": false
+  },
+  "contiguous_review": {
+    "feasibility": {
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/contiguous-feasibility-current.json",
+      "sha256": "f4f68bd6990fb492c321d46f704f743f74c8694665848b77b19c1be7a2676bed",
+      "bytes": 883852
+    },
+    "groups": [
+      {
+        "scene_ids": [
+          "a01-s051",
+          "a01-s052"
+        ],
+        "source_sequences": [
+          51,
+          52
+        ],
+        "seconds": 6.566666666666666,
+        "dialogue_lines": 2,
+        "contains_watermarked_or_watermark_unverified_source": false,
+        "before": {
+          "scene_id": "a01-s050",
+          "reasons": [
+            "現有 take HOLD"
+          ]
+        },
+        "after": {
+          "scene_id": "a01-s053",
+          "reasons": [
+            "缺動態 master a01-s053",
+            "缺正式台詞 8j3m"
+          ]
+        },
+        "internal_review_only": true,
+        "owner_accepted": false,
+        "words_listened": false,
+        "lip_sync_done": false
+      },
+      {
+        "scene_ids": [
+          "a01-s054"
+        ],
+        "source_sequences": [
+          54
+        ],
+        "seconds": 3.2,
+        "dialogue_lines": 2,
+        "contains_watermarked_or_watermark_unverified_source": false,
+        "before": {
+          "scene_id": "a01-s053",
+          "reasons": [
+            "缺動態 master a01-s053",
+            "缺正式台詞 8j3m"
+          ]
+        },
+        "after": {
+          "scene_id": "a01-s055",
+          "reasons": [
+            "缺動態 master a01-s055",
+            "缺正式台詞 s22x"
+          ]
+        },
+        "internal_review_only": true,
+        "owner_accepted": false,
+        "words_listened": false,
+        "lip_sync_done": false
+      },
+      {
+        "scene_ids": [
+          "a02-s053"
+        ],
+        "source_sequences": [
+          146
+        ],
+        "seconds": 1.9666666666666666,
+        "dialogue_lines": 1,
+        "contains_watermarked_or_watermark_unverified_source": false,
+        "before": {
+          "scene_id": "a02-s052",
+          "reasons": [
+            "缺動態 master a02-s052",
+            "缺正式台詞 6hxz、f5j6"
+          ]
+        },
+        "after": {
+          "scene_id": "a02-s054",
+          "reasons": [
+            "缺動態 master a02-s054",
+            "錄音已存但字詞／剪點待聽 6uks"
+          ]
+        },
+        "internal_review_only": true,
+        "owner_accepted": false,
+        "words_listened": false,
+        "lip_sync_done": false
+      },
+      {
+        "scene_ids": [
+          "a02-s069"
+        ],
+        "source_sequences": [
+          162
+        ],
+        "seconds": 2.566666666666667,
+        "dialogue_lines": 1,
+        "contains_watermarked_or_watermark_unverified_source": false,
+        "before": {
+          "scene_id": "a02-s068",
+          "reasons": [
+            "缺動態 master a02-s068",
+            "錄音已存但字詞／剪點待聽 iu8q"
+          ]
+        },
+        "after": {
+          "scene_id": "a02-s070",
+          "reasons": [
+            "缺動態 master a02-s070"
+          ]
+        },
+        "internal_review_only": true,
+        "owner_accepted": false,
+        "words_listened": false,
+        "lip_sync_done": false
+      }
+    ],
+    "rendered_051_052": {
+      "receipt": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/a01-s051--a01-s052-D-headroom-official-v2/receipt.json",
+        "sha256": "83e1c46f0717afada7d8edce964b788be283b50e5e2a4654b8997f9e1dcb24ed"
+      },
+      "output": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/a01-s051--a01-s052-D-headroom-official-v2/a01-s051-s052-official-picture-D-headroom-review.mp4",
+        "sha256": "68693dcc4696102d4185e74d07d16c7c70553a05a31702bab21517b64dfa1733"
+      },
+      "seconds": 6.566666666666666,
+      "frames": 197,
+      "all_outputs_fully_decoded": true,
+      "official_source_correspondence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/official-correspondence-2026-10-08T22-46-10-865Z/independent-correspondence-review.json",
+        "sha256": "fcf812cc9315627b094e53ca8e791d577b3202e796356642aa9e05b9ffd2efd2"
+      },
+      "official_source_candidate": true,
+      "old_source_internal_review_only": false,
+      "still_not_listened_or_owner_accepted": true
+    },
+    "final_delivery_or_listening_approved": false
+  },
+  "official_source_review_versions": {
+    "manifest": {
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/official-review-versions-current.json",
+      "sha256": "8b02424fb0277483602f62e5b418bdcb889abecde844126cf7dfcbb2963a3680",
+      "bytes": 1957
+    },
+    "outputs": [
+      {
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/a01-s051--a01-s052-D-headroom-official-v2/receipt.json",
+          "sha256": "83e1c46f0717afada7d8edce964b788be283b50e5e2a4654b8997f9e1dcb24ed"
+        },
+        "output": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/a01-s051--a01-s052-D-headroom-official-v2/a01-s051-s052-official-picture-D-headroom-review.mp4",
+          "sha256": "68693dcc4696102d4185e74d07d16c7c70553a05a31702bab21517b64dfa1733"
+        },
+        "seconds": 6.566666666666666
+      },
+      {
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/a01-s054-sound-candidate-v3-official/receipt.json",
+          "sha256": "beffa1beaa477efa1566a9e0d52e35d2e10ab20d0ad2583436c49e2267ba524a"
+        },
+        "output": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/a01-s054-sound-candidate-v3-official/a01-s054-official-picture-D-ME-headroom-candidate.mp4",
+          "sha256": "2b844ac1b1e6de23058eba8a29c93991c1edfaed26eb19d0ce7215c932520d5c"
+        },
+        "exact_bytes_reused": true,
+        "seconds": 4.458333333333333
+      }
+    ],
+    "correspondence": {
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/official-correspondence-2026-10-08T22-46-10-865Z/independent-correspondence-review.json",
+      "sha256": "fcf812cc9315627b094e53ca8e791d577b3202e796356642aa9e05b9ffd2efd2"
+    },
+    "older_versions_retained": true,
+    "realtime_watched": false,
+    "audio_listened": false,
+    "owner_accepted": false
+  },
+  "provider_uncertainties": {
+    "snapshot": {
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/assembly/production-progress-current.json",
+      "sha256": "386b95e4347c6a9cfc9b9f2a0134f518016e174b6a1d22671e2209f39f120837",
+      "bytes": 8574
+    },
+    "pending_provider_submission": {
+      "action": {
+        "id": "a01-s082-start-t1",
+        "period": "A",
+        "kind": "image",
+        "status": "unknown",
+        "actual_net_credits_debited": null,
+        "debit_source_field": null,
+        "reserved_credits": 22,
+        "provider_group_id": null,
+        "balance_after": null,
+        "created_at": "2026-10-08T22:55:50.497Z",
+        "updated_at": "2026-10-08T23:49:07.861Z",
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/actions/a01-s082-start-t1.json",
+          "sha256": "5d202452852057b6ac1147d98190dfb5da5c50abaff9519b3f785ccbcbef08ef"
+        },
+        "api_spend_usd": 0
+      },
+      "readback": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s082-pending-readback.json",
+        "sha256": "77deeba314e8ada7861d1520e10124d9296a94511910ff3145c5712e9eae3ce2"
+      },
+      "screenshot": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s082-pending-submit.png",
+        "sha256": "f67d61c9106fe2d0d273dbb91c88409104822bf0ee023a10966cfbf88b4a5864"
+      },
+      "observed_at": "2026-10-08T22:59:56.600Z",
+      "observed_button": "創建中",
+      "provider_group_observed": null,
+      "account_balance_at_readback": 59821,
+      "balance_is_timestamped_readback_not_future_quota": true,
+      "no_resubmit_until_outcome_resolved": true,
+      "action_receipt_not_mutated_by_snapshot": true,
+      "final_readback": {
+        "receipt": {
+          "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s082-final-readback.json",
+          "sha256": "706f50f8979b59b80215ceaac72d459b60fbb348876164f8b5c0d757f8933087"
+        },
+        "checked_at": "2026-10-08T23:49:07.847Z",
+        "source": "Hailuo create gallery after fresh reload",
+        "balance": 59821,
+        "latest_groups": [
+          "media-group-564735731705454593",
+          "media-group-564736188851048457",
+          "media-group-564736566933983235",
+          "media-group-564737104341807108",
+          "media-group-564737673731125250"
+        ],
+        "known_latest_group": "564737673731125250",
+        "original_unknown_submission": "a01-s082-start-t1",
+        "outcome": "No new group or debit receipt observed; unknown preserved",
+        "retry_allowed": false,
+        "scope": "Timestamped producer browser observation; unknown remains unknown, not proof of refund or cancelled provider work."
+      }
+    },
+    "submitted_not_downloaded": [],
+    "a01_s076_progress": {
+      "action_id": "a01-s076-video-t1",
+      "status": "downloaded",
+      "actual_net_credits_debited": 60,
+      "provider_group_id": "564737673731125250",
+      "downloaded_original": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a01-s076-video-t1.mp4",
+        "sha256": "dfa9e9a79e024e2ef898bbeebc31ff913298a82eaaf845d366772d6cee73b740"
+      },
+      "acceptance_not_inferred": true
+    }
+  },
+  "missing_dynamic_master_without_any_video": 398,
+  "actual_generation_take_count": 23,
+  "official_alternate_downloads": [
+    {
+      "shot_id": "a02-s053",
+      "take": 2,
+      "correspondence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/official-a02-correspondence-2026-10-08T23-51-03-128Z/independent-correspondence-review.json",
+        "sha256": "1e03e295b1a70bea95bdd99caea78cfe521d2426ebf0c238df89ebdfd49b9db0",
+        "bytes": 23442
+      },
+      "original": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a02-s053-video-t2.mp4",
+        "sha256": "fbda9fb6a60d5d07bca7aaaae68598ac635d777755bfcbecd2dd338c3508a5d1",
+        "bytes": 4113288
+      },
+      "official": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a02-s053-video-t2-official.mp4",
+        "sha256": "ef952e25230e07073eff3fd43b57e4205387adb4636d62213cfc7752ce9613a6",
+        "bytes": 4354001
+      },
+      "original_qa": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a02-s053-video-t2/run-2026-10-08T21-14-20-515Z/independent-visual-review.json",
+        "sha256": "c4f48d0ed6ec6ee18790f3589c4f4dbdba1f53baa99de3fb6f644d2b607a92c8",
+        "bytes": 20091
+      },
+      "all_pts_equal": true,
+      "byte_identical": false,
+      "watermark_scope": "Three sampled frames per take, not a new manual all-frame watermark census.",
+      "prior_limits": [
+        "Actual-speed readability of the very restrained forward lean and intended 1.5-second selection remain pending.",
+        "Thin filament above lotus crown is inherited from the supplied t3 still; official download does not repair it.",
+        "Dialogue/timing, final assembly and audio QA remain separate."
+      ],
+      "not_a_new_generation_take": true,
+      "adopted": false,
+      "real_time_reviewed": false,
+      "listened": false
+    },
+    {
+      "shot_id": "a02-s062",
+      "take": 1,
+      "correspondence": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/official-a02-correspondence-2026-10-08T23-51-03-128Z/independent-correspondence-review.json",
+        "sha256": "1e03e295b1a70bea95bdd99caea78cfe521d2426ebf0c238df89ebdfd49b9db0",
+        "bytes": 23442
+      },
+      "original": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a02-s062-video-t1.mp4",
+        "sha256": "9175e1492e974518c70a37d9e9a92298ce6f43f65926facfc4b9b40b9530990d",
+        "bytes": 3799775
+      },
+      "official": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/a02-s062-video-t1-official.mp4",
+        "sha256": "c33542f4773b3ab91d68b7abcd43033253aea26dfc58df358027ec48ab551003",
+        "bytes": 4174533
+      },
+      "original_qa": {
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/qa-a02-s062-video-t1/run-2026-10-08T21-18-20-671Z/independent-visual-review.json",
+        "sha256": "2d1ee169ebd6389356019dca2d1b50d050d8a09de434eda3147c9e5f0f7c384a",
+        "bytes": 18485
+      },
+      "all_pts_equal": true,
+      "byte_identical": false,
+      "watermark_scope": "Three sampled frames per take, not a new manual all-frame watermark census.",
+      "prior_limits": [
+        "Actual-speed performance and final dialogue timeline remain pending.",
+        "Extremely thin mid-take crown margin remains the same reviewed limitation; no added margin threshold.",
+        "Exact offscreen hand-width blade distance is not demonstrated by these images.",
+        "This is a02-s062; do not import the unrelated a01-s062 first-frame hold."
+      ],
+      "not_a_new_generation_take": true,
+      "adopted": false,
+      "real_time_reviewed": false,
+      "listened": false
+    }
+  ],
+  "unsubmitted_repair_proposal": {
+    "receipt": {
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/browser-production/20261009/finish-episode/071-074-repair-proposal.json",
+      "sha256": "a48d143815673b6ff685949db73189903da514a3dd90d78b330f9eb0a7b32103",
+      "bytes": 24061
+    },
+    "status": "unsubmitted_proposal_only",
+    "shots": [
+      "a01-s071",
+      "a01-s074"
+    ],
+    "new_spend": 0,
+    "new_reservation": 0,
+    "submitted": false
+  },
+  "operational_snapshot": {
+    "checked_at": "2026-10-08T23:57:04.727Z",
+    "episode_lease_exists": false,
+    "episode_stop_exists": false,
+    "background_generation_claimed": false,
+    "local_review_server": "http://127.0.0.1:8775/finish-episode/assembly/audio-review.html",
+    "server_is_review_only_not_generation": true,
+    "task_file_sha_intentionally_unbound": true
+  }
+}
