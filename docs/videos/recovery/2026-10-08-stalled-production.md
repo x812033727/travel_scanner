@@ -3,6 +3,110 @@
 Owner request: complete stalled video production directly. This record is updated
 only from actual stage results. Generated media and detailed logs remain outside Git.
 
+## Current verified continuation,19:12 Taipei,2026-10-09
+
+CF and SEC's reviewed current-epoch native ID recording genuinely completed
+at19:01:20/19:02:16, each with exit0, one normal progress PUT, zero POST/provider
+calls and two native doc/auto writes. Their existing IDs are unchanged, both
+auto states are DONE, and normal pipelineStatus reports14/14 done with next=null.
+All historical blocked messages remain preserved. Native new source SHAs are
+CF `dc0260b346147fe3de46cf213842ffe2f3322b12fe99379d30bf752f367c4656`
+and SEC `e97ff29b2989be1ecffaa68170598f3bc87013e8441f68fac23b4a23c55ef8ec`;
+their speech/visual/look identities and approvals remain unchanged. Fresh normal
+approved-package consumers still resolve the original26/27 files and original
+package hashes. A later normal worker interval retains the DONE states and IDs.
+
+The immediate native protected-byte checks passed. The separate later full
+preservation check failed on each canonical languages.json: all other793/826
+protected entries are unchanged. Native normal language synchronization writes
+its three-field choice control and refreshes synced_at even with no pending
+language work. Current fields and source behavior are recorded read-only;
+the exact old-byte comparison is still being established. This checkpoint does
+not label that failed later check successful, restore timestamps or weaken any
+media/source/approval/journal guard. The original failure receipt is retained.
+
+The zero-provider FREE/DevDay formatter repair genuinely completed at19:06:58.
+Current normal captions and composeMetadata pass the real renewal binder with
+six rejection-before-upload cases and two valid cases. Fixture API/provider
+calls are zero; each valid case uses only two hash-checked mock binder uploads.
+Proof `dc9121d3fd4114a8bb61c73b51ea54577afd39c1b011c9d930108f5ce134728b`
+and independent review
+`47743f6fa689e494d9305dc679605e16241ba2537be25c0210093c240a6f285b`
+verify the original139 audio/cache/fit/skip artifacts by full SHA, inode/device
+and timestamps, including all136 current WAVs. Seven CC files remain identical;
+only FREE English CC reflects the three normal shortened lines. All eight
+composed descriptions retain their source facts, qualifications and references.
+Six genuine caption-speed warnings remain visible. FREE's exact02178827 skip
+and original two consumed correction models of24 are retained; no old ready-dub
+payload or attachment is adopted from superseded September30 evidence.
+
+Own canonical guardians were normally reacquired in the current c2a worker
+with zero API/provider calls at18:59:23, preserving the exact restored conditional
+STOPs. Real current PIDs are101/113 with matching tokens/start ticks. Their
+normal guarded releases and remaining five-dub continuation are still pending.
+The previously pinned27bf CPU image has also been pruned by the external
+deployment; a fresh exact CPU tool binding must pass before the next paid dub.
+No shared settings, caps, credentials, YouTube action, deployment or owner
+listening acceptance was introduced by this work.
+
+## Current verified continuation,18:57 Taipei,2026-10-09
+
+The two existing owner-provided YouTube IDs were read in the authenticated
+browser at18:36:20. The actual Cloudflare and SEC pages show the matching titles,
+PRIVATE visibility and9:07/8:27 durations. Both players were paused at00:00;
+the observed CC controls reported no captions. Browser evidence SHA is
+`c4a852bcc8c600ee3e04e44dce31e0a0ff50c04523a27f7fe171aefdce5ae529`.
+No agent uploader, platform edit, owner playback or public publication occurred.
+All local five-language caption files remain available in each delivery package.
+
+The reviewed native `Automation.recordVideoId` plan passed genuine zero-write
+previews for both films: all14 native pipeline steps complete and next=null,
+with the exact existing IDs and unchanged source/media/approval identities.
+Fresh normal package consumers at18:47 again verify all26/27 stored references,
+the original PUBLISH/LANG reviews and package hashes e968d561/76defd50.
+The bounded once launch stopped at its first epoch guard before staging,
+intent, native invocation or progress PUT. Another session's18:51:02 deployment
+had advanced production to `c2a153ab406714bbc5c8fa00b10f38f8a9af38e9`
+and worker `83fb7ebe9a98144b83fdacf263e530388fdcc17e388ec948dc14891706561a3c`.
+Native bookkeeping therefore still needs fresh current-container verification;
+its refused launch did not change either film. The public/internal receipt
+identity defect is recorded in the separately released P1 task
+`2026-10-09-video-stage-receipt-site-identity`; no journal identity is weakened.
+
+The renewed six-dub continuation actually launched once at18:44:51, after
+source review, a complete69,201-byte zero-provider proof and fresh authority
+readback. Its first genuine request used the proven pretransport a789 key and
+returned HTTP200; all30 original WAVs were reused. FREE English then reached
+the ordinary two-shortening-round limit with three actual overlong windows
+(wdpu, pmf3, dwmz) and truthfully recorded SKIPPED at18:49:29. It never reached
+ASR/Jev and is not a made or accepted track. The run's42 new speech responses
+all returned HTTP200 for6172 characters; together with the original14/1902,
+cumulative speech use is56 responses/8074 characters. Its two genuine durable
+correction models remain counted against the original24 bound.
+
+The producer closed with exit1 at18:50:08 before any API write because normal
+language binding rejected the retained description format. Complete text
+comparison proves all four descriptions retain the same titles, claims,
+chapters and source URLs, but differ from current normal composition in article
+link placement, paragraph breaks and the third hashtag. Normal composed
+descriptions and current captions must be rebuilt and bound cumulatively;
+the truthful English skip, original receipts and remaining five unstarted dubs
+remain intact. The old superseded September30 language review is historical
+evidence only. Own private project lease/shared lock were normally released;
+the original Korean UNKNOWN and Mods STOP remain protected.
+
+The actual18:57:30 owner readback establishes new language decisions: Travel
+at18:40:14 and Embedding at18:17:41 each choose en/ja/ko metadata, captions and
+dubs, plus zh-CN metadata/captions without a dub. Their original final/PUBLISH
+decisions remain approved, language reviews are absent and active jobs are zero.
+Both YouTube IDs and upload sessions are empty. Embedding's backend label
+"on YouTube" is a stage label only. The earlier undecided-choice hold is now
+resolved; their selected language stages remain work to complete.
+
+Draft PR1387 head `93c62da9a36ff4c7f3e64feb3ac1d4a9bffed444` genuinely
+passed all23 checks by18:53:21. This subsequent operational checkpoint has
+not yet been pushed and does not inherit that exact head's CI result.
+
 ## Current verified continuation,18:35 Taipei,2026-10-09
 
 Cloudflare and SEC completed ordinary LANG push/pull/status at18:04:59 and
