@@ -135,6 +135,8 @@ Gemini TTS 的計價（ai.google.dev/gemini-api/docs/pricing，2026-09-27）：`
 
 每一條都是兩個轉寫（`check-audio --locale` 的 Gemini 與本機 Whisper large-v3）聽到同一個錯才算數。只有 Gemini 聽錯的，多半是它把不熟的版本號與品牌「修正」成它知道的（Veo 3.1 聽成「算便宜」、Kling 3.0 聽成 1.5），不用改稿。`check-audio --second-opinion "<程式 參數>"`（或環境變數 `VIDEO_SECOND_OPINION`）會自動做這一步：Jev 仍然懷疑的句子交給不看稿的第二個轉寫（參考 `tools/video/tts/whisper_second_opinion.py`），它聽到的和稿子一樣、或 Jev 判它沒問題，就排除並記下由誰排除，旁白審核卡的摘要會寫出來；兩個轉寫都錯在同一處的才留著。
 
+**正式站的工人到 2026-10-09 都沒有這一步**：映像裡沒裝 faster-whisper、compose 也沒設 `VIDEO_SECOND_OPINION`，所以 Gemini 一個人懷疑的句子就算聽錯，重錄兩輪、改寫兩輪後整條配音放棄——那天 49 條被放棄的配音有 31 條是這個原因（票 `2026-10-09-dub-skipped-because-jev-still-hears`）。自那次起 `ops/video/Dockerfile` 把 faster-whisper 裝在 `/opt/whisper`，`docker-compose.prod.yml` 的 video-worker 設 `VIDEO_SECOND_OPINION`、`WHISPER_MODEL=medium`（約 1.5 GB，第一次用時下載到 `HF_HOME`，放在 video_home volume 上，重建容器不用再抓）。large-v3 聽得更準但要多 3 GB 記憶體，跟兩條 lane 的 Chromium 擠在 5 GB 的上限裡會太緊；要換就改那個環境變數。
+
 - **數字中間有 0、後面接億／万（ja、ko）**：4050億、4050억 都被唸成 450。寫成 4千50億、4천50억 就唸對；`lint` 會對 ja、ko 的句子提出警告。
 - **省掉的單位會被補錯（ja）**：價格句寫「1秒0.14」，聲音唸成「0.14秒」。價格句保留「ドル」。反過來，聲音自己補上「ドル」「불」的地方是對的，不用改。
 - **GB、kWh（ko、ja）**：字典的 GB → `G B` 在韓文唸成「지비」，韓國人不這樣說。韓文的字幕與配音稿寫「기가」（128기가、초당 300기가）；標題、說明、標籤、章節保留 GB，那是給人讀、給搜尋用的。kWh 寫成「킬로와트시」「キロワット時」，唸法才固定。

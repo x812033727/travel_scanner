@@ -1,11 +1,11 @@
 ---
 id: 2026-10-09-dub-skipped-because-jev-still-hears
 title: Dub skipped because Jev still hears lines wrong is the top skip reason
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-fable-5.1
+claimed_at: 2026-10-09T15:28:30Z
 created_at: 2026-10-09T14:49:20Z
 completed_at:
 branch:
@@ -71,6 +71,25 @@ three dubs ticked, and its `languages` card showing dubs ready rather than skipp
 
 ## Notes
 
+- 2026-10-09 (claude-fable-5.1): the production worker had no second opinion at all. The
+  video-worker container has no `VIDEO_SECOND_OPINION` in its environment and no
+  `faster_whisper` module (`docker compose exec video-worker python3 -c "import faster_whisper"`
+  → ModuleNotFoundError), so every Jev doubt counted as a misheard line. DUBS.md's rule
+  ("two transcribers must hear the same error") was documented but never deployed.
+- The flags themselves (`review/check-flags.<locale>.json`, read for the five videos above
+  on the docker volume `travel_scanner_video_work`): 2–7 lines per locale, Jev scores mostly
+  0.03–0.17, i.e. near the threshold. A mix: some are the transcriber's own slips
+  (ja「測るのは野菜と財布の紐の硬さです」, ko「남은 뇌물은…」, ko「Mokaair 기사가 다시 정리했어?」),
+  some read like the line as written (en「The second number is four. Four access rules decide
+  how far it can go.」). Exactly the split a second transcriber settles.
+- Fix taken (branch `claude/dub-skip-rate`): `ops/video/Dockerfile` installs faster-whisper
+  1.2.1 in `/opt/whisper` (smoke target checks it); `docker-compose.prod.yml` sets
+  `VIDEO_SECOND_OPINION`, `WHISPER_MODEL=medium`, `HF_HOME` on the video_home volume. The
+  model (about 1.5 GB) downloads on first use, so the first check after the deploy is slower
+  and needs egress to huggingface.co from the worker; the default time limit (10 min plus 2
+  a clip) covers it. Dictionary feedback and extra rounds were not added: measure the skip
+  rate with the second opinion first.
+- Baseline to compare against after the deploy: 31 of 49 skips, 20 of 70 ticked dubs ready.
 - Sibling tickets from the same count: `2026-10-09-dub-skipped-because-lines-do-not`
   (14 skips, windows that do not fit at 1.15x) and `2026-10-09-dub-given-up-as-the-retake`
   (4 skips, a retake that overran its window).

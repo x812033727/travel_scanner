@@ -1,11 +1,11 @@
 ---
 id: 2026-10-09-dub-skipped-because-lines-do-not
 title: Dub skipped because lines do not fit even at 1.15x after shortening
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-fable-5.1
+claimed_at: 2026-10-09T15:28:35Z
 created_at: 2026-10-09T14:49:21Z
 completed_at:
 branch:

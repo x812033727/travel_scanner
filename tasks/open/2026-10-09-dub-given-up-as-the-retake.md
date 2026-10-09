@@ -1,11 +1,11 @@
 ---
 id: 2026-10-09-dub-given-up-as-the-retake
 title: Dub given up as the retake failed when a retake overruns its window
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-fable-5.1
+claimed_at: 2026-10-09T15:28:20Z
 created_at: 2026-10-09T14:49:22Z
 completed_at:
 branch:
