@@ -5,6 +5,7 @@ import test from "node:test";
 import { cuePieces } from "../core/captions.mjs";
 import { enFixture, fixture, fixtureLexicon } from "../core/fixtures/load.mjs";
 import { SOURCING_FAMILY } from "../core/lint.mjs";
+import { SOURCE_MAX_CHARS, SOURCED_TEMPLATES } from "../templates/templates.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, SLIDES_CAMERA_WORDS, SOURCE_INSTRUCTIONS, translationContext, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
 import { REGISTER_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
@@ -111,17 +112,36 @@ test("every slides video is held to the content-value rules, on both routes and 
   assert.match(VALUE_RULES, /where these\s+rules and a route's rules disagree, these win/);
   assert.match(VALUE_RULES, /something the viewer operates[\s\S]*takes the teaching route/);
   assert.match(VALUE_RULES, /could not do before this video and can\s+do after it/);
-  assert.match(VALUE_RULES, /These are not outcomes: something one line answers[\s\S]*a caution on its own/);
+  assert.match(VALUE_RULES, /These are not outcomes: something the viewer could look up and read off in one line[\s\S]*a caution on its own/);
   assert.match(VALUE_RULES, /「含金量不足：<what is missing>」/);
-  assert.match(VALUE_RULES, /never the title, the hook or the angle, unless the subject itself is an incident/);
-  assert.match(VALUE_RULES, /An outcome without one is dropped, not softened/);
+  assert.match(VALUE_RULES, /never the title, the\s+hook or the angle, unless the subject itself is an incident/);
+  assert.match(VALUE_RULES, /An outcome with none of the three is dropped, not softened/);
   assert.match(VALUE_RULES, /Each chapter answers the question the one\s+before it raised/);
   assert.match(VALUE_RULES, /the exact thing to type or press, in full/);
   assert.match(VALUE_RULES, /what the\s+viewer did before, what changed, exactly what to do now, and the exception/);
   assert.match(VALUE_RULES, /never opens on its source \(「文件寫」「文件說」「部落格說」「官方說」「官方表示」\s+「根據官方」; lint counts the family\)/);
-  assert.match(VALUE_RULES, /At most two sentences in a video set a scene or describe\s+a picture/);
+  assert.match(VALUE_RULES, /At most two\s+sentences in a video set a scene or describe\s+a picture/);
   assert.match(VALUE_RULES, /The length comes from substance/);
   assert.match(VALUE_RULES, /never repairs one by inventing a fact, a run or an example/);
+  // What the first use found unclear (tasks: 2026-10-09-fix-what-the-first-use-of).
+  assert.match(VALUE_RULES, /Evidence has three levels[\s\S]*SEEN:[\s\S]*RUN:[\s\S]*CITED:/);
+  assert.match(VALUE_RULES, /never shows or tells a lower level as a higher one/);
+  assert.match(VALUE_RULES, /「要先實作：…」 each thing a higher level would need: no run at all, or run but never seen/);
+  assert.match(VALUE_RULES, /the request is shown as 「可以這樣說」 unless one logged run goes from that\s+request to that artefact/);
+  assert.match(VALUE_RULES, /Running a command and judging its output\s+against what was asked is an outcome/);
+  assert.match(VALUE_RULES, /The cap does not cover[\s\S]*a common failure and how to find it[\s\S]*a card's label of what was and was not run/);
+  assert.match(VALUE_RULES, /The owner's own incident may open a tutorial/);
+  assert.match(VALUE_RULES, /the check that settles trust\s+comes before it/);
+  assert.match(VALUE_RULES, /second worked example is that route's contrast/);
+  assert.match(VALUE_RULES, /re-wrap the source file\s+itself and run it again[\s\S]*Never alter a character/);
+  assert.match(VALUE_RULES, /goes on a quote, compare or table card whose "source" names the run/);
+  assert.match(VALUE_RULES, /A choice among alternatives is a table; steps\s+draws a sequence/);
+  assert.match(VALUE_RULES, /the cta\s+card's sentence and the outro's comment question and subscribe invitation are the three\s+exceptions/);
+  assert.match(VALUE_RULES, /「以官網為準」 is never the fallback: a number with neither source is left out/);
+  assert.match(VALUE_RULES, /pointing at the card on screen\s+\(「亮起來的這一行」\) is not one of them/);
+  // The cards the rules send a source to are the ones that can carry it, at the length the guide gives.
+  for (const name of SOURCED_TEMPLATES) assert.match(instructionsFor("writer", "slides"), new RegExp(`- ${name} \\{[^}]*(?:\\{[^}]*\\}[^}]*)*source\\?`), `${name} documents its source`);
+  assert.match(instructionsFor("writer", "slides"), new RegExp(`one line of at most ${SOURCE_MAX_CHARS} characters`));
   // The family the prompt names is the one lint counts.
   for (const phrase of ["文件寫", "文件說", "部落格說", "官方說", "官方表示", "根據官方"]) assert.ok(SOURCING_FAMILY.includes(phrase), phrase);
   for (const stage of ["verifier", "translator", "caption_reviewer"]) assert.equal(INSTRUCTIONS[stage].includes(VALUE_RULES), false, `${stage} reads no content-value rules`);

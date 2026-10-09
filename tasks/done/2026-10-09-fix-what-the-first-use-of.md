@@ -1,21 +1,21 @@
 ---
 id: 2026-10-09-fix-what-the-first-use-of
 title: Fix what the first use of the content-value rules found unclear or impossible
-status: open
+status: done
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-video-reference-comparison
+claimed_at: 2026-10-09T06:12:39Z
 created_at: 2026-10-09T03:51:26Z
-completed_at:
+completed_at: 2026-10-09T06:17:30Z
 branch:
 depends_on: []
 scope:
   - tools/video/automation/register.mjs
   - tools/video/automation/prompts.mjs
   - tools/video/automation/prompts.test.mjs
-  - tools/video/templates
-  - tools/video/core/lint.mjs
+  - tools/video/templates/templates.mjs
+  - tools/video/templates/templates.test.mjs
   - .agents/skills/youtube-video/references/script-writing.md
   - .agents/skills/youtube-video/references/prompts/planner.md
   - .agents/skills/youtube-video/references/prompts/writer-video.md
@@ -102,21 +102,22 @@ Other contradictions in the prompt files
 
 ## Definition of done
 
-- [ ] Each item above is answered in `VALUE_RULES`, the teaching route, the prompt docs or a
+- [x] Each item above is answered in `VALUE_RULES`, the teaching route, the prompt docs or a
   template, or is written down as deliberately left to the writer.
-- [ ] Evidence has named levels (tested, run in a session, seen in the interface) and the rules
+- [x] Evidence has named levels (tested, run in a session, seen in the interface) and the rules
   say what each may be used to show.
-- [ ] A long real line has one sanctioned treatment, and a template can carry an excerpt of real
+- [x] A long real line has one sanctioned treatment, and a template can carry an excerpt of real
   output with its date and version.
-- [ ] The source of a fact can be named on every card that states one.
-- [ ] Prompt tests cover the changed wording; the duration receipt is rebound by a reviewer.
+- [x] The source of a fact can be named on every card that states one.
+- [x] Prompt tests cover the changed wording; the duration receipt is rebound by a reviewer.
 
 ## Steps
 
-- [ ] Decide items 5 to 8 with the template code open (`tools/video/templates/templates.mjs`,
+- [x] Decide items 5 to 8 with the template code open (`tools/video/templates/templates.mjs`,
   `theme.css`): which are rule wording and which need a template field.
-- [ ] Rewrite the rule text; keep it shorter than it is now where two rules become one.
-- [ ] Re-run the planner on one past brief to see the guesses are gone.
+- [x] Rewrite the rule text; keep it shorter than it is now where two rules become one.
+- [ ] Re-run the planner on one past brief to see the guesses are gone. (Not done: no model was
+  run against the revised text. The next video planned on the host is the first use.)
 
 ## How to verify
 
@@ -130,3 +131,26 @@ item from this list again.
   2026-10-09. The brief and `claims.md` in that folder show each guess in place.
 - Related gates that are not rule wording: `2026-10-09-send-a-final-cut-back-to`,
   `2026-10-09-give-the-automated-route-a-way`, `2026-10-09-judge-a-brief-s-viewer-outcomes`.
+- Where each item was answered. In `VALUE_RULES` (`tools/video/automation/register.mjs`): 1, 2
+  and 3 (three evidence levels, SEEN, RUN and CITED; what 「要先實作」 lists; what proves a
+  model-written artefact; a non-outcome step may stand on a cited example), 4, 13 and 16 (the
+  cap covers warnings about the subject only; evidence labels repeat; the owner's incident may
+  open), 5 (re-wrap and re-run, or a contiguous excerpt; never alter a character), 6 and 7 (a
+  long real line or a session's tool result goes on a quote, compare or table card whose source
+  names the run), 9 (pointing at a card is not scene-setting), 10 (alternatives are a table),
+  12 (the second example is the route's contrast), 14 (trust before access), 15 (judging a
+  command's output is an outcome), 17 (the cta and two outro sentences are exempt), 18 (the
+  result alone opens; the mechanism is chapter two), 19 (three honest sources of a number;
+  「以官網為準」 is never the fallback).
+- In the templates (`tools/video/templates/templates.mjs`): 8, and the means for 6 and 7. The
+  bullets, compare, steps and table cards take an optional one-line `source` of at most 48
+  characters, drawn under the card with the stats card's element; compare's `verdict` is now
+  checked. The template guide in `prompts.mjs` documents the field.
+- In the prompt docs: 11 (`planner.md` names `screencast` beside `TEMPLATE_SPECS`), 19
+  (`planner.md`'s hard rule on numbers), 20 (`planner.md`: no stance text, no point numbers),
+  21 (`writer-video.md`: `shorts.json` in the write list, none for a teaching-card video), and
+  the outro's 45 spoken units (18). `script-writing.md` §含金量 has the Chinese of all of it.
+- Left as it is: a `terminal` card still takes 78 columns and 8 lines and a `code` card still
+  has no per-line reveal. The rules now say what to do instead of asking for the impossible.
+- Not verified: the new source line was not drawn in a browser here. It reuses the element and
+  class the stats card draws, and the renderer reports an overflow when a card is rendered.

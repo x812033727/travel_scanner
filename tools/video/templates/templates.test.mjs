@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
-import { assetUrl, BRAND, captureRef, CREDIT_MAX_CHARS, escapeHtml, headlineCount, inlineSvg, isStockPath, richText, sceneProblems, slideHtml, svgProblems, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_LAYOUTS, THUMB_TONES, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailRotation, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
+import { assetUrl, BRAND, captureRef, CREDIT_MAX_CHARS, escapeHtml, headlineCount, inlineSvg, isStockPath, richText, sceneProblems, slideHtml, SOURCE_MAX_CHARS, SOURCED_TEMPLATES, svgProblems, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_LAYOUTS, THUMB_TONES, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailRotation, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
 
 const showcase = JSON.parse(readFileSync(new URL("./fixtures/showcase/video.json", import.meta.url), "utf8"));
 const scene = (id) => structuredClone(showcase.scenes.find((each) => each.id === id));
@@ -305,4 +305,28 @@ test("a thumbnail's B and C variants for YouTube's test are laid over A and lint
   assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }), ["variant b: thumbnail.data.layout must be one of a, b, c"]);
   const shape = "thumbnail.variants must be 1 to 2 of { data: {...} } (A is the thumbnail itself; YouTube tests up to three)";
   for (const variants of [[], [{}], "b", [{ data: {} }, { data: {} }, { data: {} }]]) assert.deepEqual(thumbnailProblems({ ...thumb, variants }), [shape], JSON.stringify(variants));
+});
+
+test("a bullets, compare, steps or table card may name its source in one line under the card, and draws nothing when it has none", () => {
+  assert.deepEqual(SOURCED_TEMPLATES, ["bullets", "compare", "steps", "table"]);
+  for (const id of ["three-questions", "flagship-vs-small", "cascade", "numbers"]) {
+    const plain = scene(id);
+    assert.ok(SOURCED_TEMPLATES.includes(plain.template), id);
+    assert.doesNotMatch(slideHtml(plain, state()), /caption-line/, `${id}: no source, no line`);
+    const sourced = scene(id);
+    sourced.data.source = "實跑 2026-10-09｜Claude Code **2.1.295**";
+    assert.deepEqual(sceneProblems(sourced), [], id);
+    const html = slideHtml(sourced, state());
+    assert.ok(html.includes(`<div class="caption-line">${richText(sourced.data.source)}</div>`), id);
+    assert.ok(html.indexOf("caption-line") > html.search(/<ol|class="cards"|class="flow"|<table/), `${id}: under the card`);
+    sourced.data.source = "第一行\n第二行";
+    assert.deepEqual(sceneProblems(sourced), [`source must be one line of text (at most ${SOURCE_MAX_CHARS} characters)`], id);
+    sourced.data.source = "字".repeat(SOURCE_MAX_CHARS + 1);
+    assert.equal(sceneProblems(sourced).length, 1, `${id}: too long`);
+    sourced.data.source = "";
+    assert.equal(sceneProblems(sourced).length, 1, `${id}: empty`);
+  }
+  const compare = scene("flagship-vs-small");
+  compare.data.verdict = 7;
+  assert.deepEqual(sceneProblems(compare), ["verdict must be text"]);
 });

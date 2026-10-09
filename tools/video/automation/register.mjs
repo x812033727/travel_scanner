@@ -84,6 +84,9 @@ Teaching route (plain slides; writing only):
 // seconds and spent the rest teaching, while a quarter of our sentences named where a fact came
 // from. Sent to the planner, the writer and the listener of a slides video, after the teaching
 // route and before the register; not sent to drama, story, explainer or translation stages.
+// Its first use (docs/videos/claude-code-mods-hands-on, the same day) found 21 places where a
+// planner and a writer had to guess; the evidence levels, the limits of the risk cap, what to
+// do when real text does not fit a card and where a card names its source answer those.
 export const VALUE_RULES = `
 Content value (every slides video, teaching cards and illustrated storytelling alike; where these
 rules and a route's rules disagree, these win):
@@ -94,34 +97,67 @@ rules and a route's rules disagree, these win):
   make afterwards.
 - 觀眾看完能做到的事 holds two to four things the viewer could not do before this video and can
   do after it, each written as the action, the thing acted on and how the viewer knows it
-  worked. These are not outcomes: something one line answers (checking a version, reading a
-  price, finding a menu), a caution on its own (be careful, think first, ask before
-  installing), or 「了解」「認識」「知道」 something. When the sources carry fewer than two real
-  outcomes, the planner takes another topic from "topics", or says so on the brief's first
-  line (「含金量不足：<what is missing>」); it does not pad.
-- A risk, limit or warning is one chapter at most, said once, with the one check that answers
-  it. It is never the title, the hook or the angle, unless the subject itself is an incident.
-- Every outcome has its proof on screen: a real run recorded in 示範或實算 (input, action,
-  observed result, date, tool version), an official example with its page, or a worked
-  calculation. An outcome without one is dropped, not softened. When a tutorial has no run
-  evidence at all, 示範或實算 says what has to be run first (「要先實作：…」).
+  worked. These are not outcomes: something the viewer could look up and read off in one line
+  (a version, a price, a menu), a caution on its own (be careful, think first, ask before
+  installing), or 「了解」「認識」「知道」 something. Running a command and judging its output
+  against what was asked is an outcome: the judging is the skill. When the sources carry fewer
+  than two real outcomes, the planner takes another topic from "topics", or says so on the
+  brief's first line (「含金量不足：<what is missing>」); it does not pad.
+- Evidence has three levels, and each outcome names the highest it has. SEEN: observed in the
+  product's own interface. RUN: a real run recorded with its input, action, result, date and
+  tool version (a command, a test, a headless session). CITED: an official example with its
+  page, or a worked calculation. An outcome with none of the three is dropped, not softened.
+  The script never shows or tells a lower level as a higher one, and 示範或實算 lists as
+  「要先實作：…」 each thing a higher level would need: no run at all, or run but never seen.
+  The result that opens the video is the strongest evidence there is, a test's output when
+  nothing was seen. For something a model wrote on request, the proof is the artefact and the
+  runs made on it; the request is shown as 「可以這樣說」 unless one logged run goes from that
+  request to that artefact. A step that is not an outcome (keeping it, turning it off) may
+  stand on CITED evidence, and its card says so.
+- A warning about the subject itself (it is not sandboxed, it costs money, it can break) is one
+  chapter at most, said once, with the one check that answers it. It is never the title, the
+  hook or the angle, unless the subject itself is an incident. The cap does not cover what a
+  tutorial owes its viewer anyway: a common failure and how to find it, the exception in an
+  update's fourth move, and a card's label of what was and was not run, which is repeated
+  wherever it applies. The owner's own incident may open a tutorial as the reason for its
+  example.
 - Chapters follow the questions a viewer asks, in the order they ask them: what do I get (the
   result first, on screen), how is it different from what I already use, how do I do it, how
   do I know it worked, how do I keep it or undo it. Each chapter answers the question the one
-  before it raised. Name the tools the viewer already uses and give the rule for choosing
-  between them in one sentence each (「一直重貼同一段指示，寫成 Skill」), and say plainly when
-  the simpler tool is enough.
+  before it raised. The opening chapter is the result alone; the mechanism is the second
+  chapter. Name the tools the viewer already uses and give the rule for choosing between them
+  in one sentence each (「一直重貼同一段指示，寫成 Skill」), and say plainly when the simpler
+  tool is enough. When loading or installing grants access, the check that settles trust
+  comes before it, wherever the loading step falls in that order. On the teaching route a
+  second worked example is that route's contrast; the main example still carries the video.
 - Every step the viewer is meant to repeat shows the exact thing to type or press, in full, on
   a code, chat, steps or terminal card: the command, the sentence to say to the model, the
-  setting's name. The narration says what it does, not its characters.
+  setting's name. The narration says what it does, not its characters. When real text does
+  not fit a card (code: 64 characters a line, about 12 lines beside a title and a caption;
+  chat: 44 characters; terminal: 78 columns, no home directory): re-wrap the source file
+  itself and run it again, so the card still shows the real file; or show a contiguous
+  excerpt and name the whole file in the caption and the description. A request longer than a
+  chat bubble goes on a code card as plain text. Never alter a character. A real line too
+  long for a terminal card, or a tool result read out of a session rather than printed by a
+  terminal, goes on a quote, compare or table card whose "source" names the run
+  (「實跑 2026-10-09｜<tool and version>」). A choice among alternatives is a table; steps
+  draws a sequence.
 - An update or a guide is told as numbered points, each in the same four moves: what the
   viewer did before, what changed, exactly what to do now, and the exception.
-- Every sentence of narration carries a fact, a step, a reason, a result or a choice. Where a
-  fact comes from is the card's source field and the description: the narration states the
-  fact and never opens on its source (「文件寫」「文件說」「部落格說」「官方說」「官方表示」
-  「根據官方」; lint counts the family). At most two sentences in a video set a scene or describe
-  a picture; a comparison is used once, where the mechanism is hard to see, and kept, never a
-  new one per chapter. Pictures may still travel; the words do not follow them.
+- Every sentence of narration carries a fact, a step, a reason, a result or a choice; the cta
+  card's sentence and the outro's comment question and subscribe invitation are the three
+  exceptions. Where a fact comes from is the card's own field and the description ("source"
+  on a quote, stats, bullets, compare, steps or table card; the date and version on a
+  terminal card; the caption of a code card or a screencast): the narration states the fact
+  and never opens on its source (「文件寫」「文件說」「部落格說」「官方說」「官方表示」
+  「根據官方」; lint counts the family). A number from an official page is said, and its card
+  names the page and the day; a number from the video's own run, a limit in its own code or
+  the owner's own incident is said as that, and its card names the run, the file or the date.
+  「以官網為準」 is never the fallback: a number with neither source is left out. At most two
+  sentences in a video set a scene or describe a picture; pointing at the card on screen
+  (「亮起來的這一行」) is not one of them. A comparison is used once, where the mechanism is
+  hard to see, and kept, never a new one per chapter. Pictures may still travel; the words do
+  not follow them.
 - The length comes from substance: a second worked example, a common failure and how to find
   it, a contrast, an exercise. Never from a chapter on something one line answers, from
   restating, or from scene-setting. When the material ends short of the minimum, add an
