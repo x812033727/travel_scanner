@@ -1,0 +1,2282 @@
+{
+  "schema_version": 1,
+  "slug": "claude-code-hooks-hands-on",
+  "format": "slides",
+  "category": "tutorial",
+  "source_guide": "claude-code-hooks-getting-started",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "這一支是跟著做的實作：像坐在旁邊帶同事接一支 hook，穩、清楚、不賣關子。開場兩句壓低放慢；結束碼的數字前停半拍，二、零、一要唸得分明；指著畫面上的程式與輸出時放慢，讓人來得及看；交代沒看過、沒跑過的事，平實不遮掩；每章最後的問句輕輕上揚。"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Claude Code Hook 實作教學：Claude 要收工之前，先跑你的測試",
+    "description": "Claude 說做完了，測試其實沒過？這支實作一個 16 行的 Claude Code Stop Hook：Claude 要結束回應之前先跑測試，沒過就擋回去一次，把失敗的輸出交給它。\n給每天用 Claude Code 寫程式的開發者：看完能自己寫、自己測、自己接上一支 Hook，並判斷一條規則該掛在哪個時間點。\n\n你會學到：\n・Hook 是什麼；跟 CLAUDE.md、權限規則、/goal、Skill、mod 怎麼選\n・gate.mjs（16 行，Stop）：讀事件、跑測試、用結束碼回答\n・不開 session 測 Hook：餵假事件，讀結束碼\n・guard.mjs（10 行，PreToolUse）：已存在的測試檔不准改，新增的放行\n・結束碼寫成 1 為什麼擋不下來；紀錄裡要看 exit_code，不是 outcome\n・放哪個設定檔、三種關法、換成 npm test 的寫法\n\n完整檔案（影片裡分段出現）\n\n.claude/hooks/gate.mjs\nimport { readFileSync } from 'node:fs';\nimport { spawnSync } from 'node:child_process';\n\nconst event = JSON.parse(readFileSync(0, 'utf8').trim());\nif (event.stop_hook_active) process.exit(0);\n\nconst run = spawnSync(process.execPath, ['--test'], {\n  cwd: process.env.CLAUDE_PROJECT_DIR ?? process.cwd(),\n  encoding: 'utf8', timeout: 60_000,\n});\n\nif (run.status !== 0) {\n  console.error('Tests fail. Fix the code, then finish.');\n  console.error(String(run.stdout).slice(-1500));\n  process.exitCode = 2;\n}\n\n.claude/hooks/guard.mjs\nimport { existsSync, readFileSync } from 'node:fs';\n\nconst event = JSON.parse(readFileSync(0, 'utf8').trim());\nconst file = String(event.tool_input?.file_path ?? '');\n\nif (/\\.test\\.[cm]?js$/.test(file) && existsSync(file)) {\n  console.error('This test already exists: do not change it.');\n  console.error('Fix the code instead. New tests are fine.');\n  process.exitCode = 2;\n}\n\n.claude/settings.json（兩支都接上）\n{\n  \"hooks\": {\n    \"Stop\": [\n      {\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"node\",\n            \"args\": [\n              \"${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs\"\n            ]\n          }\n        ]\n      }\n    ],\n    \"PreToolUse\": [\n      {\n        \"matcher\": \"Edit|Write\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"node\",\n            \"args\": [\n              \"${CLAUDE_PROJECT_DIR}/.claude/hooks/guard.mjs\"\n            ]\n          }\n        ]\n      }\n    ]\n  }\n}\n\nfixtures/stop.json\n{\"hook_event_name\": \"Stop\", \"stop_hook_active\": false}\n\n證據狀態：畫面上的終端機輸出與 session 結果，都是 2026-10-09 在 Windows 11、Git Bash 以 Claude Code 2.1.295、Node.js v24.13.0 實際跑出來的紀錄。session 是無介面的（claude -p，模型 claude-sonnet-5-5），共 8 次，每一次的模型行為都只有一個樣本。互動畫面上的提示、/hooks 的清單與信任對話框沒有看過；macOS 與 Linux 沒有跑。放哪個設定檔與關閉方法是官方文件的說明，只有「只關這一次」實際跑過。\n\nHook 的事件與欄位可能隨版本改變，動手前請對照你手上版本的官方文件。這不是資安或合規建議。",
+    "tags": [
+      "Claude Code",
+      "Claude Code hooks",
+      "Claude Code 教學",
+      "Claude Code hook 教學",
+      "Stop hook",
+      "PreToolUse",
+      "exit code 2",
+      "Claude Code 自動跑測試",
+      "AI 寫程式",
+      "Mokaair"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "Claude Code Hook",
+      "headline": "沒過\n**先擋回去**",
+      "sub": "16 行，收工前跑測試",
+      "capture": "official-table"
+    }
+  },
+  "sources": [
+    {
+      "title": "Hooks reference｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/hooks",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Automate actions with hooks（Hooks guide）｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/hooks-guide",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Settings files and precedence（Settings）｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/settings",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Configure permissions｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "How Claude remembers your project｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/memory",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Keep Claude working toward a goal｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/goal",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Mods overview｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Child process（Spawning .bat and .cmd files on Windows）｜Node.js v24",
+      "url": "https://nodejs.org/docs/latest-v24.x/api/child_process.html",
+      "checked_on": "2026-10-09"
+    }
+  ],
+  "assets": [],
+  "subtitles": {
+    "burn_in": false
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "Claude 要收工，被測試擋回去",
+      "template": "title",
+      "data": {
+        "tag": "Claude Code Hook 實作",
+        "title": "測試沒過，\n**先擋回去**",
+        "subtitle": "16 行的腳本，在 Claude 結束回應之前跑測試"
+      },
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "hkgh",
+          "text": "我只請 Claude 改 README 的一行標題。",
+          "emotion": "壓低放慢，像在講一件小事"
+        },
+        {
+          "id": "4are",
+          "text": "它改完要收工，被一支十六行的腳本擋了回去。",
+          "emotion": "「擋了回去」加重，句尾停半拍"
+        }
+      ]
+    },
+    {
+      "id": "one-session",
+      "template": "steps",
+      "data": {
+        "title": "同一個 session 裡的三件事",
+        "steps": [
+          {
+            "title": "改了 README.md",
+            "detail": "照要求改完，準備結束"
+          },
+          {
+            "title": "Stop Hook 跑測試",
+            "detail": "1 個沒過，擋回去"
+          },
+          {
+            "title": "改了 calc.mjs",
+            "detail": "第二次才結束"
+          }
+        ],
+        "source": "實跑 2026-10-09｜Claude Code 2.1.295 無介面 session"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "rjec",
+          "text": "它先照我說的改了標題，準備結束。",
+          "reveal": 1
+        },
+        {
+          "id": "rfji",
+          "text": "腳本這時跑了測試：一個沒過，把它擋回去。",
+          "reveal": 1,
+          "emotion": "「一個沒過」放慢"
+        },
+        {
+          "id": "z5c4",
+          "text": "它回頭把寫錯的加法改掉，才真的結束。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "after-green",
+      "template": "terminal",
+      "data": {
+        "title": "session 結束之後",
+        "command": "node --test 2>&1 | head -5",
+        "output": [
+          "✔ add returns the sum (0.8167ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "Node.js v24.13.0, GNU bash 5.3.15"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "jpi7",
+          "text": "結束之後再跑一次測試。"
+        },
+        {
+          "id": "j8yd",
+          "text": "通過一個，失敗零個。",
+          "reveal": 1,
+          "emotion": "收穩，兩個數字分開唸"
+        }
+      ]
+    },
+    {
+      "id": "who-blocked",
+      "chapter": "Hook 是什麼，什麼時候該用它",
+      "template": "quote",
+      "data": {
+        "kicker": "擋它的不是 Claude，是 Claude Code",
+        "quote": "deterministic control: certain actions always happen",
+        "translation": "確定的控制：有些動作一定會發生",
+        "source": "Claude Code 文件｜Hooks guide｜2026-10-09"
+      },
+      "claims": [
+        "c4",
+        "c5",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "8kbh",
+          "text": "把它擋回去的不是 Claude，是 Claude Code 替我跑的那支腳本。",
+          "emotion": "「不是 Claude」稍微加重"
+        },
+        {
+          "id": "2xas",
+          "text": "在固定的時間點、由 Claude Code 替你執行的程式，就叫 hook。"
+        },
+        {
+          "id": "shq9",
+          "text": "寫進 CLAUDE.md，是請模型記得；寫成 hook，是每一次都一定會跑。",
+          "emotion": "前半放輕，「一定會跑」亮起來",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "event-path",
+      "template": "steps",
+      "data": {
+        "title": "一次事件怎麼走",
+        "steps": [
+          {
+            "title": "事件發生",
+            "detail": "例如 Stop：\nClaude 要\n結束回應"
+          },
+          {
+            "title": "啟動你的程式",
+            "detail": "事件是 JSON，\n從 stdin 進來"
+          },
+          {
+            "title": "結束碼回答",
+            "detail": "0：沒有意見\n2：擋下來"
+          },
+          {
+            "title": "理由交出去",
+            "detail": "stderr 的字，\n交給 Claude 讀"
+          }
+        ],
+        "source": "Claude Code 文件｜Hooks reference｜2026-10-09"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "mzw4",
+          "text": "有一個事件發生，例如 Claude 要結束回應，這個事件叫 Stop。",
+          "reveal": 1
+        },
+        {
+          "id": "2sn3",
+          "text": "Claude Code 啟動你的程式，把事件寫成 JSON，從標準輸入、也就是 stdin 交給它。",
+          "reveal": 1,
+          "emotion": "放慢，「標準輸入」和 stdin 對上"
+        },
+        {
+          "id": "tuq3",
+          "text": "你的程式用結束碼回答：零是沒有意見，二是擋下來。",
+          "reveal": 1,
+          "emotion": "「零」「二」之前各停半拍"
+        },
+        {
+          "id": "9m9i",
+          "text": "以 Stop 來說，擋下來時寫到標準錯誤、也就是 stderr 的字，會交給 Claude 讀。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "official-table",
+      "template": "screencast",
+      "data": {
+        "title": "官方的表：每個事件的 exit 2",
+        "caption": "Claude Code 文件｜Hooks reference｜Exit code 2 behavior per event｜2026-10-09 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://code.claude.com/docs/en/hooks#exit-code-2-behavior-per-event"
+          },
+          {
+            "action": "wait",
+            "selector": "#exit-code-2-behavior-per-event"
+          },
+          {
+            "action": "capture",
+            "focus": "#exit-code-2-behavior-per-event"
+          }
+        ]
+      },
+      "claims": [
+        "c6",
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "ktdj",
+          "text": "事件一共三十三個；每一個遇到結束碼二會怎樣，都列在這張表。",
+          "emotion": "「三十三個」放慢"
+        }
+      ]
+    },
+    {
+      "id": "three-points",
+      "template": "table",
+      "data": {
+        "title": "同一個結束碼 2，三個時間點",
+        "columns": [
+          "事件",
+          "什麼時候",
+          "exit 2 的意思"
+        ],
+        "rows": [
+          [
+            "PreToolUse",
+            "工具執行之前",
+            "擋下這次呼叫"
+          ],
+          [
+            "PostToolUse",
+            "工具成功之後",
+            "已經跑完，只把 stderr 交給 Claude"
+          ],
+          [
+            "Stop",
+            "Claude 回應結束時",
+            "不讓它停，繼續做"
+          ]
+        ],
+        "source": "Claude Code 文件｜Hooks reference｜2026-10-09"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "giqw",
+          "text": "PreToolUse 在工具執行之前：結束碼二，這次呼叫就不會執行。",
+          "reveal": 1,
+          "emotion": "事件名稱唸清楚，冒號後停一下"
+        },
+        {
+          "id": "2fqp",
+          "text": "PostToolUse 在工具成功之後：事情已經做完，結束碼二只是把話帶給 Claude。",
+          "reveal": 1
+        },
+        {
+          "id": "w3sh",
+          "text": "Stop 在 Claude 每一次回應結束的時候：結束碼二，是不讓它停。",
+          "reveal": 1,
+          "emotion": "「不讓它停」加重"
+        },
+        {
+          "id": "rcge",
+          "text": "開場的那一支腳本，掛的就是第三個。"
+        }
+      ]
+    },
+    {
+      "id": "choose",
+      "template": "table",
+      "data": {
+        "columns": [
+          "你要的",
+          "用這個"
+        ],
+        "rows": [
+          [
+            "Claude 知道、盡量照做就好",
+            "CLAUDE.md"
+          ],
+          [
+            "固定的指令或路徑，一律擋或放",
+            "權限規則"
+          ],
+          [
+            "這一個 session 做到某個條件為止",
+            "/goal"
+          ],
+          [
+            "每次到某個時間點，都要跑一段程式",
+            "設定檔 Hook"
+          ],
+          [
+            "一直重貼同一段指示",
+            "Skill"
+          ],
+          [
+            "要自己的介面或指令",
+            "mod"
+          ]
+        ],
+        "highlight": 3,
+        "source": "官方文件 hooks、permissions、memory、mods 頁｜2026-10-09"
+      },
+      "claims": [
+        "c8",
+        "c9",
+        "c10",
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "96gh",
+          "text": "如果只是想讓 Claude 知道、盡量照做的慣例，寫 CLAUDE.md。",
+          "reveal": 1
+        },
+        {
+          "id": "zhhy",
+          "text": "固定的指令或路徑，一律擋下來或一律放行，用權限規則，一行就好。",
+          "reveal": 1
+        },
+        {
+          "id": "n67y",
+          "text": "只有這個 session 要做到某個條件才停，用 goal 這個斜線指令。",
+          "reveal": 1
+        },
+        {
+          "id": "cxuf",
+          "text": "每次到了某個時間點，都要跑一段程式才知道答案，才輪到 hook。",
+          "reveal": 1,
+          "emotion": "「才輪到」加重"
+        },
+        {
+          "id": "yfrw",
+          "text": "同一段指示一直重貼，寫成 Skill；要自己的介面或指令，是 mod，上一支做過。",
+          "reveal": 2,
+          "emotion": "清單，稍快"
+        },
+        {
+          "id": "6wb3",
+          "text": "測試要跑了才知道過不過，所以用 hook。",
+          "emotion": "收穩，下結論"
+        }
+      ]
+    },
+    {
+      "id": "project",
+      "chapter": "Stop Hook 怎麼寫：16 行的測試關卡",
+      "template": "code",
+      "data": {
+        "code": "./.claude/hooks/gate.mjs\n./.claude/hooks/guard.mjs\n./.claude/hooks/guard1.mjs\n./README.md\n./calc.mjs\n./calc.test.mjs\n./fixtures/edit-code.json\n./fixtures/edit-test.json\n./fixtures/new-test.json\n./fixtures/stop-again.json\n./fixtures/stop.json",
+        "highlight": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "caption": "練習專案 hook-lab｜find . -type f | sort 的輸出，2026-10-09｜Claude Code 2.1.295、Node.js v24.13.0"
+      },
+      "claims": [
+        "c12",
+        "c56"
+      ],
+      "lines": [
+        {
+          "id": "n3ee",
+          "text": "要跟著做，機器上要有 Node.js 和 Claude Code。"
+        },
+        {
+          "id": "m5ue",
+          "text": "練習專案很小：一個加法函式、一個測試，和幾個假事件。"
+        }
+      ]
+    },
+    {
+      "id": "calc-bug",
+      "template": "code",
+      "data": {
+        "code": "export function add(a, b) {\n  return a - b;\n}",
+        "highlight": [
+          2
+        ],
+        "caption": "calc.mjs｜全檔 3 行｜第 2 行故意寫成減法"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "cr72",
+          "text": "加法函式只有三行，亮起來的這一行故意寫成了減法。"
+        }
+      ]
+    },
+    {
+      "id": "calc-test",
+      "template": "code",
+      "data": {
+        "code": "import assert from 'node:assert/strict';\nimport test from 'node:test';\nimport { add } from './calc.mjs';\n\ntest('add returns the sum', () => {\n  assert.equal(add(2, 3), 5);\n});",
+        "highlight": [
+          6
+        ],
+        "caption": "calc.test.mjs｜全檔 7 行"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "st6j",
+          "text": "測試也只有一個：二加三，要等於五。"
+        }
+      ]
+    },
+    {
+      "id": "red-start",
+      "template": "terminal",
+      "data": {
+        "title": "起點：測試是紅的",
+        "command": "node --test 2>&1 | head -5",
+        "output": [
+          "✖ add returns the sum (4.2185ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "Node.js v24.13.0, GNU bash 5.3.15"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "fj3d",
+          "text": "在專案資料夾跑測試。"
+        },
+        {
+          "id": "nxg9",
+          "text": "打叉：通過零個，失敗一個。這是起點。",
+          "reveal": 1,
+          "emotion": "「失敗一個」放慢"
+        }
+      ]
+    },
+    {
+      "id": "gate-read",
+      "template": "code",
+      "data": {
+        "code": "import { readFileSync } from 'node:fs';\nimport { spawnSync } from 'node:child_process';\n\nconst event = JSON.parse(readFileSync(0, 'utf8').trim());\nif (event.stop_hook_active) process.exit(0);",
+        "highlight": [
+          4
+        ],
+        "caption": ".claude/hooks/gate.mjs 的第 1–5 行｜全檔 16 行"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "fd94",
+          "text": "關卡腳本十六行，分三段。第一段讀事件。",
+          "emotion": "「十六行」放慢"
+        },
+        {
+          "id": "9auw",
+          "text": "亮起來的這一行，把標準輸入讀進來，解析成物件。"
+        }
+      ]
+    },
+    {
+      "id": "gate-run",
+      "template": "code",
+      "data": {
+        "code": "const run = spawnSync(process.execPath, ['--test'], {\n  cwd: process.env.CLAUDE_PROJECT_DIR ?? process.cwd(),\n  encoding: 'utf8', timeout: 60_000,\n});",
+        "highlight": [
+          1,
+          3
+        ],
+        "caption": ".claude/hooks/gate.mjs 的第 7–10 行｜要換測試指令，改這一段"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "crxr",
+          "text": "第二段跑測試：用同一個 Node.js 執行內建的測試指令，最多等六十秒。"
+        }
+      ]
+    },
+    {
+      "id": "gate-run-dir",
+      "template": "code",
+      "data": {
+        "code": "const run = spawnSync(process.execPath, ['--test'], {\n  cwd: process.env.CLAUDE_PROJECT_DIR ?? process.cwd(),\n  encoding: 'utf8', timeout: 60_000,\n});",
+        "highlight": [
+          2
+        ],
+        "caption": ".claude/hooks/gate.mjs 的第 7–10 行｜要換測試指令，改這一段"
+      },
+      "claims": [
+        "c15",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "zxrm",
+          "text": "位置是專案根目錄，來自 Claude Code 給的環境變數；手動測試時沒有它，就用目前的資料夾。",
+          "emotion": "分號前後各一口氣，不趕"
+        }
+      ]
+    },
+    {
+      "id": "gate-answer",
+      "template": "code",
+      "data": {
+        "code": "if (run.status !== 0) {\n  console.error('Tests fail. Fix the code, then finish.');\n  console.error(String(run.stdout).slice(-1500));\n  process.exitCode = 2;\n}",
+        "highlight": [
+          2,
+          3
+        ],
+        "caption": ".claude/hooks/gate.mjs 的第 12–16 行｜寫到 stderr 的字是給 Claude 讀的"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "5w8v",
+          "text": "第三段是回答。測試沒過，先寫一句給 Claude 的話。"
+        },
+        {
+          "id": "3y6y",
+          "text": "再附上測試輸出的最後一千五百個字，它才知道哪裡沒過。"
+        }
+      ]
+    },
+    {
+      "id": "gate-exit",
+      "template": "code",
+      "data": {
+        "code": "if (run.status !== 0) {\n  console.error('Tests fail. Fix the code, then finish.');\n  console.error(String(run.stdout).slice(-1500));\n  process.exitCode = 2;\n}",
+        "highlight": [
+          4
+        ],
+        "caption": ".claude/hooks/gate.mjs 的第 12–16 行｜寫到 stderr 的字是給 Claude 讀的"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "jitp",
+          "text": "然後把結束碼設成二。測試通過的話，什麼都不寫，結束碼是零。",
+          "emotion": "「二」之前停半拍"
+        }
+      ]
+    },
+    {
+      "id": "trust",
+      "template": "bullets",
+      "data": {
+        "title": "接上去之前",
+        "items": [
+          "Hook 用**你的使用者權限**執行",
+          "只接讀得完的腳本：這支 16 行",
+          "先餵假事件，自己量結束碼",
+          "別人的專案：先看 .claude/settings.json",
+          "互動式先問信任；claude -p 不問，直接跑"
+        ],
+        "source": "第 1、4、5 項：官方文件 Hooks reference｜2026-10-09"
+      },
+      "claims": [
+        "c17",
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "v4pf",
+          "text": "接上去之前：hook 用你的使用者權限執行，你碰得到的檔案，它都碰得到。",
+          "reveal": 1,
+          "emotion": "放慢，語氣認真但不嚇人"
+        },
+        {
+          "id": "7myc",
+          "text": "所以我只用自己讀得完的腳本，這一支十六行。",
+          "reveal": 1,
+          "emotion": "平穩，像在講自己的習慣"
+        },
+        {
+          "id": "sed2",
+          "text": "而且先送一次假事件給它，確認過結束碼，才接上設定檔。",
+          "reveal": 1
+        },
+        {
+          "id": "jdfd",
+          "text": "別人的專案，先打開它的設定檔，看裡面掛了什麼。",
+          "reveal": 1
+        },
+        {
+          "id": "3jzy",
+          "text": "互動式的 session 要你先信任資料夾，hook 才會跑；無介面的不問，直接就跑。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "fixture",
+      "template": "code",
+      "data": {
+        "title": "兩個假事件，各一行",
+        "code": "{\"hook_event_name\": \"Stop\", \"stop_hook_active\": false}\n{\"hook_event_name\": \"Stop\", \"stop_hook_active\": true}",
+        "highlight": [
+          1
+        ],
+        "caption": "上：fixtures/stop.json｜下：fixtures/stop-again.json｜只放事件名稱與腳本會讀的欄位，從專案根目錄餵"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "shwh",
+          "text": "假事件是一行的 JSON 檔，只放事件名稱和腳本會讀的欄位；兩個只差最後一欄。"
+        },
+        {
+          "id": "dkiw",
+          "text": "真的事件還有 session 編號、目前的資料夾等欄位。"
+        }
+      ]
+    },
+    {
+      "id": "feed-exit",
+      "template": "terminal",
+      "data": {
+        "title": "餵假事件，讀結束碼",
+        "command": "node .claude/hooks/gate.mjs < fixtures/stop.json 2>/dev/null; echo $?",
+        "output": [
+          "2"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "Node.js v24.13.0, GNU bash 5.3.15"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "qihh",
+          "text": "把第一個從標準輸入餵給腳本，它寫的字先丟掉，只印結束碼。"
+        },
+        {
+          "id": "uxsc",
+          "text": "顯示的是二：測試沒有通過，它會擋下來。",
+          "reveal": 1,
+          "emotion": "「二」唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "feed-message",
+      "template": "terminal",
+      "data": {
+        "title": "Claude 會讀到的那段字",
+        "command": "node .claude/hooks/gate.mjs < fixtures/stop.json 2>&1 | head -6",
+        "output": [
+          "Tests fail. Fix the code, then finish.",
+          "✖ add returns the sum (4.8049ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "Node.js v24.13.0, GNU bash 5.3.15"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "hj5f",
+          "text": "再跑一次，看它寫了什麼。"
+        },
+        {
+          "id": "qwg8",
+          "text": "第一行是我寫給 Claude 的那句話：測試沒過，修好程式再結束。",
+          "reveal": 1
+        },
+        {
+          "id": "gp2s",
+          "text": "後面接著測試的輸出。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "powershell",
+      "template": "code",
+      "data": {
+        "title": "PowerShell 的寫法",
+        "code": "Get-Content -Raw fixtures/stop.json |\n  node .claude/hooks/gate.mjs 2>$null; $LASTEXITCODE",
+        "caption": "variants/ps-two-line.ps1 的第 3–4 行｜實跑 2026-10-09｜Windows PowerShell 5.1.26100｜印出 2"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "2bgf",
+          "text": "用 PowerShell 的話是這個寫法，結果一樣是二。"
+        }
+      ]
+    },
+    {
+      "id": "gate-trim",
+      "template": "code",
+      "data": {
+        "code": "import { readFileSync } from 'node:fs';\nimport { spawnSync } from 'node:child_process';\n\nconst event = JSON.parse(readFileSync(0, 'utf8').trim());\nif (event.stop_hook_active) process.exit(0);",
+        "highlight": [
+          4
+        ],
+        "caption": ".claude/hooks/gate.mjs 的第 4 行：.trim()｜這台的 PowerShell 送進來的前三個位元組是 efbbbf（實跑 2026-10-09）"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "guqt",
+          "text": "腳本先去掉頭尾的空白，是因為這台的 PowerShell 會在最前面多送三個看不見的位元組。"
+        }
+      ]
+    },
+    {
+      "id": "exercise",
+      "template": "table",
+      "data": {
+        "title": "練習：三種情況，各印多少？",
+        "columns": [
+          "專案",
+          "餵哪個假事件",
+          "結束碼"
+        ],
+        "rows": [
+          [
+            "紅的",
+            "stop.json",
+            "2"
+          ],
+          [
+            "紅的",
+            "stop-again.json",
+            "0"
+          ],
+          [
+            "修好的",
+            "stop.json",
+            "0"
+          ]
+        ],
+        "source": "實跑 2026-10-09｜Node.js v24.13.0，Git Bash"
+      },
+      "claims": [
+        "c20",
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "g392",
+          "text": "換你判斷：同一支腳本，三種情況各印多少？",
+          "emotion": "問句上揚，問完留一拍"
+        },
+        {
+          "id": "p9rm",
+          "text": "紅的專案、第一個假事件：二，剛剛看過。",
+          "reveal": 1
+        },
+        {
+          "id": "79mj",
+          "text": "還是紅的，換成寫著已經擋下過的第二個假事件：零。",
+          "reveal": 1,
+          "emotion": "「零」之前停半拍"
+        },
+        {
+          "id": "jcqq",
+          "text": "把加法修好，再餵第一個：也是零。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "feed-again",
+      "template": "terminal",
+      "data": {
+        "title": "事件寫著：已經擋下過一次",
+        "command": "node .claude/hooks/gate.mjs < fixtures/stop-again.json; echo $?",
+        "output": [
+          "0"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "Node.js v24.13.0, GNU bash 5.3.15"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "3e5b",
+          "text": "第二種，實際送進去跑一次。"
+        },
+        {
+          "id": "9y5k",
+          "text": "印出零，一個字都沒寫，直接放行。",
+          "reveal": 1,
+          "emotion": "「零」唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "gate-once",
+      "template": "code",
+      "data": {
+        "code": "import { readFileSync } from 'node:fs';\nimport { spawnSync } from 'node:child_process';\n\nconst event = JSON.parse(readFileSync(0, 'utf8').trim());\nif (event.stop_hook_active) process.exit(0);",
+        "highlight": [
+          5
+        ],
+        "caption": ".claude/hooks/gate.mjs 的第 5 行｜stop_hook_active 是 true 就放行"
+      },
+      "claims": [
+        "c15",
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "2trh",
+          "text": "放行的是亮起來的這一行：已經因為 hook 繼續過一次，就直接結束。"
+        },
+        {
+          "id": "wcg3",
+          "text": "少了它，測試一直紅，Claude 就會一直被擋回去。"
+        }
+      ]
+    },
+    {
+      "id": "one-chance",
+      "template": "compare",
+      "data": {
+        "title": "這支關卡，每一輪只擋一次",
+        "left": {
+          "heading": "第一次要結束",
+          "points": [
+            "跑測試",
+            "沒過：exit 2，擋回去"
+          ]
+        },
+        "right": {
+          "heading": "第二次要結束",
+          "points": [
+            "不再跑測試：exit 0",
+            "修不好也放行，讓它回報"
+          ]
+        },
+        "source": "gate.mjs 第 5 行｜假事件實跑 2026-10-09"
+      },
+      "claims": [
+        "c22",
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "74gr",
+          "text": "所以這支關卡，每一輪只會擋下來一次。",
+          "reveal": 1
+        },
+        {
+          "id": "wrug",
+          "text": "第二次不再跑測試；修不好，也讓它停下來回報。",
+          "reveal": 1,
+          "emotion": "平實，不加重"
+        }
+      ]
+    },
+    {
+      "id": "settings-event",
+      "template": "code",
+      "data": {
+        "code": "{\n  \"hooks\": {\n    \"Stop\": [\n      {\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"node\",\n            \"args\": [\n              \"${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs\"\n            ]",
+        "highlight": [
+          3
+        ],
+        "caption": ".claude/settings.json 的第 1–11 行（variants/settings.gate.json）｜全檔 17 行"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "mfgm",
+          "text": "數字都對了，才接上專案的設定檔。設定分三層，第一層是事件：Stop。"
+        }
+      ]
+    },
+    {
+      "id": "settings-group",
+      "template": "code",
+      "data": {
+        "code": "{\n  \"hooks\": {\n    \"Stop\": [\n      {\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"node\",\n            \"args\": [\n              \"${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs\"\n            ]",
+        "highlight": [
+          4,
+          5
+        ],
+        "caption": ".claude/settings.json 的第 1–11 行（variants/settings.gate.json）｜全檔 17 行"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "mjvh",
+          "text": "第二層是篩選。Stop 沒有篩選條件，每一次回應結束都會觸發，連只回答一句話也算。"
+        }
+      ]
+    },
+    {
+      "id": "settings-handler",
+      "template": "code",
+      "data": {
+        "code": "            \"type\": \"command\",\n            \"command\": \"node\",\n            \"args\": [\n              \"${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs\"\n            ]\n          }\n        ]\n      }\n    ]\n  }\n}",
+        "highlight": [
+          1,
+          2
+        ],
+        "caption": ".claude/settings.json 的第 7–17 行｜command 是執行檔，args 一項一個參數"
+      },
+      "claims": [
+        "c24",
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "gkrf",
+          "text": "第三層是處理程式：執行檔是 Node.js，參數是腳本的路徑。"
+        }
+      ]
+    },
+    {
+      "id": "settings-args",
+      "template": "code",
+      "data": {
+        "code": "            \"type\": \"command\",\n            \"command\": \"node\",\n            \"args\": [\n              \"${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs\"\n            ]\n          }\n        ]\n      }\n    ]\n  }\n}",
+        "highlight": [
+          3,
+          4,
+          5
+        ],
+        "caption": ".claude/settings.json 的第 7–17 行｜args 一項一個參數｜資料夾名含空白與中文：Windows 實跑 2026-10-09"
+      },
+      "claims": [
+        "c25",
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "re5j",
+          "text": "分開寫成兩欄，就不經過 shell；資料夾名稱有空白和中文也不用加引號，在 Windows 實際跑過。"
+        }
+      ]
+    },
+    {
+      "id": "ask",
+      "chapter": "怎麼確認 Hook 真的擋下了 Claude",
+      "template": "chat",
+      "data": {
+        "title": "我對 Claude 說的那句話",
+        "messages": [
+          {
+            "side": "right",
+            "name": "我",
+            "text": "把 README.md 第一行的標題改成「# Hook 練習」，只改這一行。"
+          }
+        ]
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "vjnp",
+          "text": "真的 session 裡，它會被叫到嗎？同一句話跑兩次：一次不接 hook，一次接上。",
+          "reveal": 1,
+          "emotion": "問句上揚，後半放平"
+        }
+      ]
+    },
+    {
+      "id": "two-runs",
+      "template": "compare",
+      "data": {
+        "title": "同一句話，跑兩次",
+        "left": {
+          "heading": "沒有 Hook",
+          "points": [
+            "改了 README.md",
+            "結束",
+            "測試：pass 0、fail 1"
+          ]
+        },
+        "right": {
+          "heading": "接上 gate.mjs",
+          "points": [
+            "改了 README.md",
+            "被擋回去 1 次",
+            "改了 calc.mjs",
+            "測試：pass 1、fail 0"
+          ]
+        },
+        "source": "實跑 2026-10-09｜Claude Code 2.1.295 無介面 session"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "dcac",
+          "text": "沒有接上 hook 的那一次：改完標題就結束，測試還是失敗一個。",
+          "reveal": 1,
+          "emotion": "平平地講"
+        },
+        {
+          "id": "drft",
+          "text": "接上的那次：改完標題被擋回去一次，多改了加法函式，測試全過。",
+          "reveal": 1,
+          "emotion": "「測試全過」亮起來"
+        },
+        {
+          "id": "7ezm",
+          "text": "兩次只差那個設定檔。"
+        }
+      ]
+    },
+    {
+      "id": "claude-read",
+      "template": "table",
+      "data": {
+        "title": "被擋回去時，Claude 讀到的字",
+        "columns": [
+          "位置",
+          "原文"
+        ],
+        "rows": [
+          [
+            "第 1 行",
+            "Stop hook feedback:"
+          ],
+          [
+            "第 2 行開頭",
+            "[node ${CLAUDE_PROJECT_DIR}/.claude/hooks/gate.mjs]:"
+          ],
+          [
+            "接著",
+            "Tests fail. Fix the code, then finish."
+          ],
+          [
+            "後面",
+            "✖ add returns the sum (1.4591ms) 等測試輸出"
+          ]
+        ],
+        "source": "實跑 2026-10-09｜Claude Code 2.1.295 無介面 session"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "wf9k",
+          "text": "被擋回去時，Claude 讀到的第一行是 Stop hook feedback。",
+          "reveal": 1,
+          "emotion": "最後三個英文字放慢"
+        },
+        {
+          "id": "igss",
+          "text": "第二行開頭，是方括號包著的 hook 指令。",
+          "reveal": 1
+        },
+        {
+          "id": "mnxp",
+          "text": "接著才是我寫的那一句，後面是測試輸出。",
+          "reveal": 2
+        },
+        {
+          "id": "z24r",
+          "text": "所以那一句要寫成它能照做的指示：修程式，再結束。",
+          "emotion": "放慢，一字一字"
+        }
+      ]
+    },
+    {
+      "id": "in-the-log",
+      "template": "table",
+      "data": {
+        "title": "紀錄裡找這幾樣",
+        "columns": [
+          "找什麼",
+          "代表"
+        ],
+        "rows": [
+          [
+            "--output-format stream-json --verbose --include-hook-events",
+            "啟動時加上"
+          ],
+          [
+            "hook_response：Stop，exit_code 2",
+            "第一次要結束：擋回去"
+          ],
+          [
+            "Edit：calc.mjs",
+            "擋回去之後多出來的動作"
+          ],
+          [
+            "hook_response：Stop，exit_code 0",
+            "第二次要結束：放行"
+          ]
+        ],
+        "source": "實跑 2026-10-09｜Claude Code 2.1.295 無介面 session"
+      },
+      "claims": [
+        "c30"
+      ],
+      "lines": [
+        {
+          "id": "st9e",
+          "text": "我啟動時加了這三個旗標，hook 的每一次執行都寫進了輸出。",
+          "reveal": 1
+        },
+        {
+          "id": "gz4y",
+          "text": "第一筆 hook 的結果，結束碼二：就是擋回去的那一次。",
+          "reveal": 1,
+          "emotion": "「結束碼二」放慢"
+        },
+        {
+          "id": "qmrf",
+          "text": "它後面多了一次編輯，改的是加法函式。",
+          "reveal": 1
+        },
+        {
+          "id": "p2sf",
+          "text": "第二筆的結束碼是零，這一輪才結束。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "only-hook-tested",
+      "template": "quote",
+      "data": {
+        "kicker": "Claude 結束前的回覆（節錄）",
+        "quote": "我已修好 `calc.mjs`,但沒能親自跑測試確認,因為執行 `node --test` 的權限被擋下了。",
+        "source": "實跑 2026-10-09｜Claude Code 2.1.295 無介面 session"
+      },
+      "claims": [
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "8mvn",
+          "text": "修完之後，Claude 也想自己跑測試；試了兩種方式，都需要核准，沒有跑成。"
+        },
+        {
+          "id": "h7xq",
+          "text": "這一輪真正跑了測試的，只有 hook。",
+          "emotion": "放慢，「只有」加重"
+        }
+      ]
+    },
+    {
+      "id": "ran-or-seen",
+      "template": "table",
+      "data": {
+        "title": "跑過的，和還沒看過的",
+        "columns": [
+          "項目",
+          "證據"
+        ],
+        "rows": [
+          [
+            "假事件的結束碼",
+            "跑過"
+          ],
+          [
+            "無介面 session：8 次",
+            "跑過"
+          ],
+          [
+            "第二次放行的原因",
+            "紀錄分不出來：結束後自己跑測試"
+          ],
+          [
+            "互動畫面的提示、/hooks 的清單",
+            "還沒看過"
+          ],
+          [
+            "macOS、Linux",
+            "沒有跑"
+          ]
+        ],
+        "source": "2026-10-09｜Windows、Git Bash、Claude Code 2.1.295"
+      },
+      "claims": [
+        "c32",
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "e86v",
+          "text": "假事件的結束碼，是這台機器實際跑出來的。",
+          "reveal": 1
+        },
+        {
+          "id": "7ehr",
+          "text": "session 都是不開畫面的那種，一共八次。",
+          "reveal": 1
+        },
+        {
+          "id": "ajjd",
+          "text": "第二次為什麼讓它通過，紀錄分不出來；所以結束後要自己再跑測試。",
+          "reveal": 1
+        },
+        {
+          "id": "ahk8",
+          "text": "互動畫面上會跳什麼提示，我還沒看過，所以沒有做成畫面。",
+          "reveal": 1,
+          "emotion": "坦白，不遮掩"
+        },
+        {
+          "id": "2gfu",
+          "text": "環境是 Windows；macOS 和 Linux 沒有跑。",
+          "reveal": 1,
+          "emotion": "平實交代"
+        },
+        {
+          "id": "v6yw",
+          "text": "腳本只用 Node.js 內建的模組，就是為了少一點平台差異。"
+        }
+      ]
+    },
+    {
+      "id": "article",
+      "template": "cta",
+      "data": {
+        "kicker": "完整文章",
+        "title": "建立第一個 Hook",
+        "sub": "從更小的一支開始：把每次編輯記成一行｜連結在說明欄"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "jd99",
+          "text": "想從更小的一支開始，說明欄的文章帶你做一支只記錄的 hook。"
+        },
+        {
+          "id": "jsy3",
+          "text": "可是，Claude 如果不修程式，直接把測試改掉呢？",
+          "emotion": "問句上揚，帶一點懷疑"
+        }
+      ]
+    },
+    {
+      "id": "gap",
+      "chapter": "PreToolUse Hook：動手之前擋下改測試",
+      "template": "compare",
+      "data": {
+        "title": "關卡攔不到的事",
+        "left": {
+          "heading": "Stop 關卡看的",
+          "points": [
+            "收工時，測試過不過"
+          ]
+        },
+        "right": {
+          "heading": "它看不到的",
+          "points": [
+            "測試是怎麼變綠的",
+            "把測試的答案改掉，也會過"
+          ]
+        },
+        "source": "實例：後面結束碼寫成 1 的那一次（實跑 2026-10-09）"
+      },
+      "claims": [
+        "c35",
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "9sfy",
+          "text": "關卡只在收工時看一件事：測試過不過。",
+          "reveal": 1
+        },
+        {
+          "id": "7mbp",
+          "text": "它看不到是怎麼過的。把測試裡的答案改掉，一樣會過。",
+          "reveal": 1,
+          "emotion": "放慢，「一樣會過」壓低"
+        },
+        {
+          "id": "trad",
+          "text": "這件事要在動手之前擋下來，所以第二支腳本掛在 PreToolUse。"
+        }
+      ]
+    },
+    {
+      "id": "guard-read",
+      "template": "code",
+      "data": {
+        "code": "import { existsSync, readFileSync } from 'node:fs';\n\nconst event = JSON.parse(readFileSync(0, 'utf8').trim());\nconst file = String(event.tool_input?.file_path ?? '');\n\nif (/\\.test\\.[cm]?js$/.test(file) && existsSync(file)) {\n  console.error('This test already exists: do not change it.');\n  console.error('Fix the code instead. New tests are fine.');\n  process.exitCode = 2;\n}",
+        "highlight": [
+          3,
+          4
+        ],
+        "caption": ".claude/hooks/guard.mjs｜全檔 10 行"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "xaat",
+          "text": "守門腳本十行。一樣先讀事件，再拿出 Claude 要改的檔案路徑。",
+          "emotion": "「十行」放慢"
+        }
+      ]
+    },
+    {
+      "id": "guard-condition",
+      "template": "code",
+      "data": {
+        "code": "import { existsSync, readFileSync } from 'node:fs';\n\nconst event = JSON.parse(readFileSync(0, 'utf8').trim());\nconst file = String(event.tool_input?.file_path ?? '');\n\nif (/\\.test\\.[cm]?js$/.test(file) && existsSync(file)) {\n  console.error('This test already exists: do not change it.');\n  console.error('Fix the code instead. New tests are fine.');\n  process.exitCode = 2;\n}",
+        "highlight": [
+          6
+        ],
+        "caption": ".claude/hooks/guard.mjs｜全檔 10 行"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "6zxm",
+          "text": "條件有兩個：檔名是測試檔的結尾，而且這個檔已經存在。",
+          "emotion": "兩個條件一項一項數"
+        },
+        {
+          "id": "dabe",
+          "text": "新增的測試檔還不存在，所以會放行。"
+        }
+      ]
+    },
+    {
+      "id": "guard-reason",
+      "template": "code",
+      "data": {
+        "code": "import { existsSync, readFileSync } from 'node:fs';\n\nconst event = JSON.parse(readFileSync(0, 'utf8').trim());\nconst file = String(event.tool_input?.file_path ?? '');\n\nif (/\\.test\\.[cm]?js$/.test(file) && existsSync(file)) {\n  console.error('This test already exists: do not change it.');\n  console.error('Fix the code instead. New tests are fine.');\n  process.exitCode = 2;\n}",
+        "highlight": [
+          7,
+          8,
+          9
+        ],
+        "caption": ".claude/hooks/guard.mjs｜全檔 10 行"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "hjwi",
+          "text": "兩個都成立，就寫兩行理由，把結束碼設成二。"
+        },
+        {
+          "id": "73t8",
+          "text": "理由寫的是下一步：改程式，不要改測試；新增測試可以。"
+        }
+      ]
+    },
+    {
+      "id": "guard-fixture",
+      "template": "code",
+      "data": {
+        "code": "{\n  \"hook_event_name\": \"PreToolUse\",\n  \"tool_name\": \"Edit\",\n  \"tool_input\": { \"file_path\": \"calc.test.mjs\" }\n}",
+        "highlight": [
+          3,
+          4
+        ],
+        "caption": "fixtures/edit-test.json｜另外兩個只換這兩行：edit-code.json、new-test.json"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "a3yq",
+          "text": "假事件多了工具的名字和參數；另外兩個，一個改原始碼，一個新增測試檔。"
+        }
+      ]
+    },
+    {
+      "id": "guard-feed-block",
+      "template": "terminal",
+      "data": {
+        "title": "要改已經存在的測試檔",
+        "command": "node .claude/hooks/guard.mjs < fixtures/edit-test.json; echo $?",
+        "output": [
+          "This test already exists: do not change it.\nFix the code instead. New tests are fine.",
+          "2"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "Node.js v24.13.0, GNU bash 5.3.15"
+      },
+      "claims": [
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "3r8h",
+          "text": "送進第一個假事件：要改已經存在的測試檔。"
+        },
+        {
+          "id": "wqzs",
+          "text": "印出兩行理由，結束碼是二。",
+          "reveal": 2,
+          "emotion": "「二」唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "guard-feed-new",
+      "template": "terminal",
+      "data": {
+        "title": "要新增一個測試檔",
+        "command": "node .claude/hooks/guard.mjs < fixtures/new-test.json; echo $?",
+        "output": [
+          "0"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "Node.js v24.13.0, GNU bash 5.3.15"
+      },
+      "claims": [
+        "c37",
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "a9sj",
+          "text": "換成新增測試檔的那一個。"
+        },
+        {
+          "id": "5b7c",
+          "text": "結果是零，通過。改程式本身的那一個也是零。",
+          "reveal": 1
+        },
+        {
+          "id": "xpwy",
+          "text": "零不是核准，是沒有意見：照原本的權限流程走。",
+          "emotion": "「不是核准」加重"
+        }
+      ]
+    },
+    {
+      "id": "settings-matcher",
+      "template": "code",
+      "data": {
+        "code": "    ],\n    \"PreToolUse\": [\n      {\n        \"matcher\": \"Edit|Write\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"node\",\n            \"args\": [\n              \"${CLAUDE_PROJECT_DIR}/.claude/hooks/guard.mjs\"\n            ]",
+        "highlight": [
+          1,
+          2
+        ],
+        "caption": ".claude/settings.json 的第 15–25 行（variants/settings.both.json）｜全檔 31 行"
+      },
+      "claims": [
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "xuza",
+          "text": "設定檔在 Stop 那一段後面加一個逗號，再接一段 PreToolUse。"
+        }
+      ]
+    },
+    {
+      "id": "settings-matcher-tools",
+      "template": "code",
+      "data": {
+        "code": "    ],\n    \"PreToolUse\": [\n      {\n        \"matcher\": \"Edit|Write\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"node\",\n            \"args\": [\n              \"${CLAUDE_PROJECT_DIR}/.claude/hooks/guard.mjs\"\n            ]",
+        "highlight": [
+          4
+        ],
+        "caption": ".claude/settings.json 的第 15–25 行（variants/settings.both.json）｜全檔 31 行"
+      },
+      "claims": [
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "g2t3",
+          "text": "這次有篩選：只有 Edit 和 Write 這兩個工具的呼叫，才會啟動守門腳本。"
+        }
+      ]
+    },
+    {
+      "id": "ask-edit-test",
+      "template": "chat",
+      "data": {
+        "title": "我故意這樣要求",
+        "messages": [
+          {
+            "side": "right",
+            "name": "我",
+            "text": "用 Edit 把 calc.test.mjs 裡預期的 5 改成 -1，只改這一處。"
+          }
+        ]
+      },
+      "claims": [
+        "c40"
+      ],
+      "lines": [
+        {
+          "id": "t8py",
+          "text": "只接守門這一支，我故意要 Claude 去改那個測試：把預期的五，改成負一。",
+          "reveal": 1,
+          "emotion": "「故意」帶一點笑意"
+        }
+      ]
+    },
+    {
+      "id": "guard-result",
+      "template": "table",
+      "data": {
+        "title": "那一次 Edit 的工具結果",
+        "columns": [
+          "位置",
+          "Claude 讀到的字"
+        ],
+        "rows": [
+          [
+            "開頭",
+            "PreToolUse:Edit hook error:"
+          ],
+          [
+            "方括號",
+            "[node ${CLAUDE_PROJECT_DIR}/.claude/hooks/guard.mjs]:"
+          ],
+          [
+            "理由",
+            "This test already exists: do not change it.\nFix the code instead. New tests are fine."
+          ],
+          [
+            "結束後",
+            "calc.test.mjs 的 SHA-256 和開始前相同"
+          ]
+        ],
+        "source": "實跑 2026-10-09｜只接守門，一次｜Claude Code 2.1.295 無介面"
+      },
+      "claims": [
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "n2vw",
+          "text": "那次編輯沒有執行，工具結果標成錯誤，開頭寫著 hook error。",
+          "reveal": 1
+        },
+        {
+          "id": "csmf",
+          "text": "這幾個字出現在成功擋下來的結果裡，不是 hook 壞了。",
+          "emotion": "放慢，稍微壓低"
+        },
+        {
+          "id": "efi8",
+          "text": "後面是方括號裡的指令，和腳本寫的那兩行理由，一字不差。",
+          "reveal": 2
+        },
+        {
+          "id": "2cfj",
+          "text": "結束之後，測試檔的雜湊值和開始前一樣，一個字都沒被改。",
+          "reveal": 1
+        },
+        {
+          "id": "dznd",
+          "text": "Claude 回報說它被擋下來，並沒有改用別的工具繞過去。"
+        }
+      ]
+    },
+    {
+      "id": "exit-one-feed",
+      "template": "terminal",
+      "data": {
+        "title": "同一支腳本，結束碼寫成 1",
+        "command": "node .claude/hooks/guard1.mjs < fixtures/edit-test.json; echo $?",
+        "output": [
+          "This test already exists: do not change it.\nFix the code instead. New tests are fine.",
+          "1"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "Node.js v24.13.0, GNU bash 5.3.15"
+      },
+      "claims": [
+        "c42"
+      ],
+      "lines": [
+        {
+          "id": "rpcb",
+          "text": "常見的失敗：腳本印了拒絕的字，結束碼卻寫成一。"
+        },
+        {
+          "id": "m5qa",
+          "text": "兩行理由一模一樣，可是結束碼是一。",
+          "reveal": 2,
+          "emotion": "「一」加重"
+        }
+      ]
+    },
+    {
+      "id": "exit-one-live",
+      "template": "compare",
+      "data": {
+        "title": "真的 session 裡：2 和 1 的差別",
+        "left": {
+          "heading": "exit 2",
+          "points": [
+            "Edit 沒有執行",
+            "測試檔沒變",
+            "測試：pass 0、fail 1"
+          ]
+        },
+        "right": {
+          "heading": "exit 1",
+          "points": [
+            "Edit 照樣執行",
+            "測試檔被改成期待 -1",
+            "測試：pass 1、fail 0"
+          ]
+        },
+        "verdict": "查法：餵假事件，看印出來的是不是 2",
+        "source": "實跑 2026-10-09｜Claude Code 2.1.295 無介面 session"
+      },
+      "claims": [
+        "c41",
+        "c43",
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "gqn8",
+          "text": "真的 session 裡，結束碼二的那次，編輯沒有執行。",
+          "reveal": 1,
+          "emotion": "平穩，不加重"
+        },
+        {
+          "id": "ngyf",
+          "text": "結束碼一的這次，Claude Code 把它當成 hook 自己出錯，編輯照樣執行。",
+          "reveal": 1,
+          "emotion": "「照樣執行」放慢"
+        }
+      ]
+    },
+    {
+      "id": "green-with-bug",
+      "template": "terminal",
+      "data": {
+        "title": "那次結束後：測試是綠的",
+        "command": "node --test 2>&1 | head -5",
+        "output": [
+          "✔ add returns the sum (1.641ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0"
+        ],
+        "ran_on": "2026-10-09",
+        "tool_version": "Node.js v24.13.0, GNU bash 5.3.15"
+      },
+      "claims": [
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "dne2",
+          "text": "那次結束後跑測試。"
+        },
+        {
+          "id": "i7j9",
+          "text": "通過了。測試照我的要求改成期待負一，而寫錯的加法剛好回傳負一。",
+          "reveal": 1
+        },
+        {
+          "id": "tejp",
+          "text": "測試是綠的，錯的地方還在。所以結束碼要自己量過。",
+          "emotion": "壓低，一字一字"
+        }
+      ]
+    },
+    {
+      "id": "log-fields",
+      "template": "table",
+      "data": {
+        "title": "紀錄裡，哪一欄分得出來",
+        "columns": [
+          "欄位",
+          "exit 2：擋下來",
+          "exit 1：沒擋"
+        ],
+        "rows": [
+          [
+            "outcome",
+            "error",
+            "error"
+          ],
+          [
+            "exit_code",
+            "2",
+            "1"
+          ],
+          [
+            "工具結果",
+            "標成錯誤，含 hook error",
+            "一般的成功訊息"
+          ],
+          [
+            "除錯記錄",
+            "error: status code 2",
+            "error: status code 1"
+          ]
+        ],
+        "source": "實跑 2026-10-09｜Claude Code 2.1.295 無介面 session"
+      },
+      "claims": [
+        "c45"
+      ],
+      "lines": [
+        {
+          "id": "k9px",
+          "text": "紀錄裡有一個欄位要小心：剛剛這兩次，擋下來和沒擋下來，它寫的都是 error。",
+          "reveal": 1,
+          "emotion": "放慢，提醒的語氣"
+        },
+        {
+          "id": "dmw6",
+          "text": "分得出來的是結束碼這個欄位：是二，還是一。",
+          "reveal": 1
+        },
+        {
+          "id": "ggwy",
+          "text": "工具結果也分得出來：擋下來的標成錯誤，沒擋下來的是一般的成功訊息。",
+          "reveal": 1
+        },
+        {
+          "id": "kq79",
+          "text": "除錯記錄兩邊也都寫 error，只差那個數字。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "four-more",
+      "template": "table",
+      "data": {
+        "title": "另外四個狀況，各一個查法",
+        "columns": [
+          "狀況",
+          "原因或查法"
+        ],
+        "rows": [
+          [
+            "Hook 沒被叫到",
+            "matcher 的大小寫要和工具名完全一樣"
+          ],
+          [
+            "Windows 上路徑對不上",
+            "file_path 是反斜線的絕對路徑"
+          ],
+          [
+            "Stop 一直擋",
+            "連擋 8 次、中間沒有工具呼叫：這一輪直接結束"
+          ],
+          [
+            "Claude 用 shell 指令改檔",
+            "Edit|Write 的 Hook 看不到；要看就比對 Bash|PowerShell"
+          ]
+        ],
+        "source": "官方文件 Hooks reference、Hooks guide｜2026-10-09"
+      },
+      "claims": [
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "6ma8",
+          "text": "hook 沒被叫到：先查篩選的大小寫。",
+          "reveal": 1
+        },
+        {
+          "id": "ran2",
+          "text": "Windows 上，檔案路徑是反斜線；用正斜線比對，永遠對不上。",
+          "reveal": 1
+        },
+        {
+          "id": "thxd",
+          "text": "Stop 連續擋下八次、中間沒有任何工具呼叫，這一輪會被直接結束。",
+          "reveal": 1
+        },
+        {
+          "id": "ve3s",
+          "text": "這支守門只看 Edit 和 Write；Claude 用 shell 指令改檔，它看不到。",
+          "reveal": 1,
+          "emotion": "平實交代，不加重"
+        }
+      ]
+    },
+    {
+      "id": "deny-rule",
+      "template": "code",
+      "data": {
+        "code": "{\n  \"permissions\": {\n    \"deny\": [\"Edit(**/*.test.mjs)\"]\n  }\n}",
+        "highlight": [
+          3
+        ],
+        "caption": "variants/settings.deny.json｜全檔 5 行｜放進 .claude/settings.json"
+      },
+      "claims": [
+        "c47",
+        "c48"
+      ],
+      "lines": [
+        {
+          "id": "k7xf",
+          "text": "只是要測試檔一律不准改，不用寫 hook：權限規則一行就夠。"
+        },
+        {
+          "id": "mrud",
+          "text": "簡單的工具夠用，我就不寫 hook。",
+          "emotion": "平穩，像在講自己的習慣"
+        }
+      ]
+    },
+    {
+      "id": "rule-vs-hook",
+      "template": "table",
+      "data": {
+        "title": "同一個要求：規則和 Hook 各自的結果",
+        "columns": [
+          "比較",
+          "權限規則",
+          "守門 Hook"
+        ],
+        "rows": [
+          [
+            "結果",
+            "Edit 被拒絕，測試檔沒變",
+            "Edit 被擋下，測試檔沒變"
+          ],
+          [
+            "範圍",
+            "符合的路徑一律不准（官方說明）",
+            "已存在的才擋，新增的放行（假事件）"
+          ],
+          [
+            "Claude 讀到",
+            "File is in a directory that is denied by your permission settings.",
+            "你寫的兩行理由"
+          ]
+        ],
+        "source": "實跑 2026-10-09｜Claude Code 2.1.295 無介面 session"
+      },
+      "claims": [
+        "c47",
+        "c48",
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "i75k",
+          "text": "換成這條規則跑一次：編輯一樣被拒絕，測試檔沒變。",
+          "reveal": 1
+        },
+        {
+          "id": "j2a5",
+          "text": "規則是符合的路徑一律不准；守門只擋下已經存在的。",
+          "reveal": 1
+        },
+        {
+          "id": "3247",
+          "text": "Claude 讀到的也不同。規則的拒絕只說：這個位置被權限設定拒絕，沒有下一步。",
+          "reveal": 1,
+          "emotion": "引述那句拒絕時放慢"
+        },
+        {
+          "id": "969g",
+          "text": "hook 的理由是你自己寫的。",
+          "emotion": "「你自己寫的」放慢"
+        }
+      ]
+    },
+    {
+      "id": "both",
+      "template": "steps",
+      "data": {
+        "title": "兩支一起接上：同一個 session",
+        "steps": [
+          {
+            "title": "要改測試",
+            "detail": "守門擋下來\nPreToolUse：exit 2"
+          },
+          {
+            "title": "要收工",
+            "detail": "關卡擋回去\nStop：exit 2"
+          },
+          {
+            "title": "改 calc.mjs",
+            "detail": "守門放行：exit 0\n第二次才結束"
+          }
+        ],
+        "source": "實跑 2026-10-09｜Claude Code 2.1.295 無介面 session"
+      },
+      "claims": [
+        "c49"
+      ],
+      "lines": [
+        {
+          "id": "27um",
+          "text": "兩支一起接上，再提一次那個要求：改測試，被守門擋下來。",
+          "reveal": 1,
+          "emotion": "一步一步講，不趕"
+        },
+        {
+          "id": "7ccv",
+          "text": "Claude 回報之後要收工；測試還是紅的，被關卡擋回去。",
+          "reveal": 1
+        },
+        {
+          "id": "npav",
+          "text": "它讀了程式，把加法改對；這次守門的結束碼是零，放行。",
+          "reveal": 1
+        },
+        {
+          "id": "fw89",
+          "text": "結束後，測試檔沒變，測試全過。怎麼留下來，又怎麼關？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "where",
+      "chapter": "Hook 放哪個設定檔、怎麼關掉",
+      "template": "table",
+      "data": {
+        "title": "放哪個設定檔",
+        "columns": [
+          "設定檔",
+          "誰會跑到它"
+        ],
+        "rows": [
+          [
+            ".claude/settings.json",
+            "這個專案的每個人；跟著專案提交（我跑的是這個）"
+          ],
+          [
+            ".claude/settings.local.json",
+            "只有你、這個專案；先試再分享"
+          ],
+          [
+            "~/.claude/settings.json",
+            "你的每一個專案"
+          ]
+        ],
+        "source": "官方文件 Settings、Hooks reference｜2026-10-09"
+      },
+      "claims": [
+        "c50"
+      ],
+      "lines": [
+        {
+          "id": "qrwk",
+          "text": "專案的設定檔，這個專案的每個人都會跑到，跟著專案提交；我跑的是這一種。",
+          "reveal": 1
+        },
+        {
+          "id": "bjw5",
+          "text": "專案裡另一個本機用的設定檔，只有你會跑到，適合先試。",
+          "reveal": 1
+        },
+        {
+          "id": "ts26",
+          "text": "家目錄的使用者設定檔，你的每個專案都會跑。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "off",
+      "template": "table",
+      "data": {
+        "title": "怎麼關",
+        "columns": [
+          "做法",
+          "效果"
+        ],
+        "rows": [
+          [
+            "刪掉設定檔裡那一筆",
+            "移除這一支"
+          ],
+          [
+            "\"disableAllHooks\": true",
+            "全部暫停；沒有只關一支的開關"
+          ],
+          [
+            "--settings '{\"disableAllHooks\": true}'",
+            "只關這一次（實跑過：Hook 沒被叫到）"
+          ]
+        ],
+        "source": "官方文件 Hooks reference｜2026-10-09｜第 3 列另有實跑"
+      },
+      "claims": [
+        "c51",
+        "c52"
+      ],
+      "lines": [
+        {
+          "id": "evjc",
+          "text": "要拿掉一支，就刪掉設定檔裡它那一筆。",
+          "reveal": 1
+        },
+        {
+          "id": "njxn",
+          "text": "要全部暫停，在設定檔加這一行；沒有只關其中一支的開關。",
+          "reveal": 1
+        },
+        {
+          "id": "4nrh",
+          "text": "只關這一次，啟動時帶這個旗標。這個跑過：hook 沒被叫到，測試還是紅的。",
+          "reveal": 1,
+          "emotion": "「這個跑過」之後停半拍"
+        }
+      ]
+    },
+    {
+      "id": "swap",
+      "template": "steps",
+      "data": {
+        "title": "換成你專案的測試指令",
+        "steps": [
+          {
+            "title": "改 gate.mjs 第二段",
+            "detail": "第 7–10 行：\n換成你的測試指令"
+          },
+          {
+            "title": "紅的專案餵 stop.json",
+            "detail": "要印 2"
+          },
+          {
+            "title": "修好再餵一次",
+            "detail": "要印 0"
+          }
+        ],
+        "source": "核對的數字同練習一：gate.mjs 實跑 2026-10-09"
+      },
+      "claims": [
+        "c53"
+      ],
+      "lines": [
+        {
+          "id": "3mez",
+          "text": "最後換成你的專案：把關卡第二段，換成你平常跑的測試指令。",
+          "reveal": 1,
+          "emotion": "轉向觀眾，語氣亮一點"
+        },
+        {
+          "id": "86nk",
+          "text": "測試是紅的時候送假事件進去，結果要是二。",
+          "reveal": 1
+        },
+        {
+          "id": "4rxj",
+          "text": "修好之後再送一次，結果要是零。兩個數字都對，才接上設定檔。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "npm-code",
+      "template": "code",
+      "data": {
+        "code": "const run = spawnSync('npm test', {\n  cwd: process.env.CLAUDE_PROJECT_DIR ?? process.cwd(),\n  encoding: 'utf8', timeout: 60_000, shell: true,\n});",
+        "highlight": [
+          1,
+          3
+        ],
+        "caption": "variants/gate.npm.mjs 的第 7–10 行｜其餘和 gate.mjs 相同"
+      },
+      "claims": [
+        "c53"
+      ],
+      "lines": [
+        {
+          "id": "rxsa",
+          "text": "以 npm test 為例，第二段是這樣：指令寫成一個字串，再打開經過 shell 的選項。"
+        }
+      ]
+    },
+    {
+      "id": "npm-trap",
+      "template": "compare",
+      "data": {
+        "title": "Windows 上：兩種寫法的結果",
+        "left": {
+          "heading": "不經過 shell",
+          "points": [
+            "'npm' 和 ['test'] 分開傳",
+            "啟動失敗：ENOENT",
+            "綠的專案也印 2"
+          ]
+        },
+        "right": {
+          "heading": "經過 shell",
+          "points": [
+            "'npm test' 加 shell: true",
+            "紅的印 2",
+            "擋下過、修好的：印 0"
+          ]
+        },
+        "source": "實跑 2026-10-09｜Windows，Node v24.13.0，npm 11.6.2"
+      },
+      "claims": [
+        "c54",
+        "c55"
+      ],
+      "lines": [
+        {
+          "id": "2ijp",
+          "text": "這台 Windows 上，不經過 shell 的寫法啟動失敗；腳本當成測試沒過，綠的專案也被擋下來。",
+          "reveal": 1,
+          "emotion": "放慢，提醒的語氣"
+        },
+        {
+          "id": "3xgj",
+          "text": "經過 shell 之後，三個數字回到二、零、零。",
+          "reveal": 1
+        },
+        {
+          "id": "emv6",
+          "text": "原因是 Windows 上的 npm 是指令檔，不是執行檔。"
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "template": "outro",
+      "data": {
+        "title": "十六行，\n測試沒過**先擋回去**",
+        "cta": "你的專案，收工前一定要過哪個檢查？留言告訴我",
+        "lines": [
+          "gate.mjs：16 行，Stop，每一輪擋一次",
+          "guard.mjs：10 行，PreToolUse，exit 2 才擋得下來",
+          "接上之前：餵假事件，自己量結束碼"
+        ]
+      },
+      "claims": [
+        "c1",
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "cagw",
+          "text": "十六行，擋回去一次，測試全過。",
+          "emotion": "放慢收穩"
+        },
+        {
+          "id": "8gix",
+          "text": "你的專案，收工前一定要過哪個檢查？",
+          "emotion": "問句上揚，親切"
+        },
+        {
+          "id": "8scx",
+          "text": "想看更多實際跑過的教學，訂閱頻道。",
+          "emotion": "輕快，帶笑"
+        }
+      ]
+    }
+  ]
+}
