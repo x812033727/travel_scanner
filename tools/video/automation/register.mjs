@@ -133,7 +133,7 @@ rules and a route's rules disagree, these win):
 - Every step the viewer is meant to repeat shows the exact thing to type or press, in full, on
   a code, chat, steps or terminal card: the command, the sentence to say to the model, the
   setting's name. The narration says what it does, not its characters. When real text does
-  not fit a card (code: 64 characters a line, about 12 lines beside a title and a caption;
+  not fit a card (code: 64 characters a line, 9 lines beside a title and a caption;
   chat: 44 characters; terminal: 78 columns, no home directory): re-wrap the source file
   itself and run it again, so the card still shows the real file; or show a contiguous
   excerpt and name the whole file in the caption and the description. A request longer than a
