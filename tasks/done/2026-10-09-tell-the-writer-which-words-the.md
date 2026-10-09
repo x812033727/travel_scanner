@@ -13,6 +13,11 @@ depends_on: []
 scope:
   - .agents/skills/youtube-video/references/script-writing.md
   - .agents/skills/youtube-video/references/prompts/writer-video.md
+  - tools/video/automation/register.mjs
+  - tools/video/automation/prompts.mjs
+  - tools/video/automation/prompts.test.mjs
+  - docs/videos/long-form/review.json
+  - docs/videos/long-form/review.md
 ---
 
 # Tell the writer which words the audio check mishears
@@ -44,7 +49,8 @@ two files under `docs/videos/claude-code-hooks-hands-on/` once PR 1398 has merge
 
 ## Notes
 
-- This reaches agents that write by the prompt docs. The host worker's writer prompt
-  (`tools/video/automation/prompts.mjs`) does not carry the list; its own loop re-records and
-  then rewords flagged lines. Putting the list there is a separate change, with a receipt
-  increment and a deploy.
+- The owner then asked for the host worker to carry the list too: `MISHEARD_WORDS` and `HEARD_RULES` in
+  `tools/video/automation/register.mjs`, sent to the slides writer and listener by `prompts.mjs` (not to the
+  planner, the verifier, the rewrite and register passes, drama or translation). A test holds the
+  guide's table and the constant to the same pairs. `prompts.mjs` is bound by the duration receipt, so
+  this carries a reviewer's increment and needs a deploy.
