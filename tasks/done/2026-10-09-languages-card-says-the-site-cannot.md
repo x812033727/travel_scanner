@@ -1,13 +1,13 @@
 ---
 id: 2026-10-09-languages-card-says-the-site-cannot
 title: Languages card says the site cannot upload dub tracks
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-fable-5.1
 claimed_at: 2026-10-09T14:50:00Z
 created_at: 2026-10-09T14:49:19Z
-completed_at:
+completed_at: 2026-10-09T15:04:24Z
 branch: claude/youtube-audio-missing-languages-94f59a
 depends_on: []
 scope:
