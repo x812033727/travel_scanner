@@ -129,13 +129,22 @@ test("every slides video is held to the content-value rules, on both routes and 
   assert.match(VALUE_RULES, /「要先實作：…」 each thing a higher level would need: no run at all, or run but never seen/);
   assert.match(VALUE_RULES, /the request is shown as 「可以這樣說」 unless one logged run goes from that\s+request to that artefact/);
   assert.match(VALUE_RULES, /Running a command and judging its output\s+against what was asked is an outcome/);
-  assert.match(VALUE_RULES, /The cap does not cover[\s\S]*a common failure and how to find it[\s\S]*a card's label of what was and was not run/);
+  assert.match(VALUE_RULES, /The cap does not cover[\s\S]*a common failure and how to find it[\s\S]*a card's label of\s+what was and was not run/);
   assert.match(VALUE_RULES, /The owner's own incident may open a tutorial/);
   assert.match(VALUE_RULES, /the check that settles trust\s+comes before it/);
   assert.match(VALUE_RULES, /second worked example is that route's contrast/);
   assert.match(VALUE_RULES, /re-wrap the source file\s+itself and run it again[\s\S]*Never alter a character/);
-  assert.match(VALUE_RULES, /goes on a quote, compare or table card whose "source" names the run/);
-  assert.match(VALUE_RULES, /A choice among alternatives is a table; steps\s+draws a sequence/);
+  assert.match(VALUE_RULES, /goes on a quote, compare, steps or table card whose "source" names the run/);
+  // What the second use found unclear (tasks: 2026-10-09-answer-the-nine-questions-the-revised).
+  assert.match(VALUE_RULES, /a command and its output have nothing more to see/);
+  assert.match(VALUE_RULES, /A\s+run counts once it is in the video's run log with its command, output, date and tool\s+version, whoever made it/);
+  assert.match(VALUE_RULES, /When the plan comes before the runs[\s\S]*recorded\s+before the outline is chosen[\s\S]*dropped\s+then/);
+  assert.match(VALUE_RULES, /what the video's own\s+example does not catch/);
+  assert.match(VALUE_RULES, /Tutorials share this order; what must differ from an earlier video is the\s+example, the opening and the sequence of cards/);
+  assert.match(VALUE_RULES, /9 lines beside a title and a caption and 12\s+beside a caption alone/);
+  assert.match(VALUE_RULES, /excerpted in whole lines, in\s+their order[\s\S]*it is never edited/);
+  assert.match(VALUE_RULES, /One card holds one level of evidence: when its rows differ, split it/);
+  assert.match(VALUE_RULES, /A choice among alternatives is a table; steps draws a\s+sequence/);
   assert.match(VALUE_RULES, /the cta\s+card's sentence and the outro's comment question and subscribe invitation are the three\s+exceptions/);
   assert.match(VALUE_RULES, /「以官網為準」 is never the fallback: a number with neither source is left out/);
   assert.match(VALUE_RULES, /pointing at the card on screen\s+\(「亮起來的這一行」\) is not one of them/);

@@ -108,7 +108,13 @@ rules and a route's rules disagree, these win):
   tool version (a command, a test, a headless session). CITED: an official example with its
   page, or a worked calculation. An outcome with none of the three is dropped, not softened.
   The script never shows or tells a lower level as a higher one, and 示範或實算 lists as
-  「要先實作：…」 each thing a higher level would need: no run at all, or run but never seen.
+  「要先實作：…」 each thing a higher level would need: no run at all, or run but never seen
+  where there is something to see (a command and its output have nothing more to see). A
+  run counts once it is in the video's run log with its command, output, date and tool
+  version, whoever made it. When the plan comes before the runs, an outcome names the level
+  its listed run will give and stands until the runs are made; they are made and recorded
+  before the outline is chosen, and an outcome whose run failed or was not made is dropped
+  then.
   The result that opens the video is the strongest evidence there is, a test's output when
   nothing was seen. For something a model wrote on request, the proof is the artefact and the
   runs made on it; the request is shown as 「可以這樣說」 unless one logged run goes from that
@@ -117,15 +123,16 @@ rules and a route's rules disagree, these win):
 - A warning about the subject itself (it is not sandboxed, it costs money, it can break) is one
   chapter at most, said once, with the one check that answers it. It is never the title, the
   hook or the angle, unless the subject itself is an incident. The cap does not cover what a
-  tutorial owes its viewer anyway: a common failure and how to find it, the exception in an
-  update's fourth move, and a card's label of what was and was not run, which is repeated
-  wherever it applies. The owner's own incident may open a tutorial as the reason for its
+  tutorial owes its viewer anyway: a common failure and how to find it, what the video's own
+  example does not catch, the exception in an update's fourth move, and a card's label of
+  what was and was not run, which is repeated wherever it applies. The owner's own incident may open a tutorial as the reason for its
   example.
 - Chapters follow the questions a viewer asks, in the order they ask them: what do I get (the
   result first, on screen), how is it different from what I already use, how do I do it, how
   do I know it worked, how do I keep it or undo it. Each chapter answers the question the one
   before it raised. The opening chapter is the result alone; the mechanism is the second
-  chapter. Name the tools the viewer already uses and give the rule for choosing between them
+  chapter. Tutorials share this order; what must differ from an earlier video is the
+  example, the opening and the sequence of cards. Name the tools the viewer already uses and give the rule for choosing between them
   in one sentence each (「一直重貼同一段指示，寫成 Skill」), and say plainly when the simpler
   tool is enough. When loading or installing grants access, the check that settles trust
   comes before it, wherever the loading step falls in that order. On the teaching route a
@@ -133,15 +140,19 @@ rules and a route's rules disagree, these win):
 - Every step the viewer is meant to repeat shows the exact thing to type or press, in full, on
   a code, chat, steps or terminal card: the command, the sentence to say to the model, the
   setting's name. The narration says what it does, not its characters. When real text does
-  not fit a card (code: 64 characters a line, 9 lines beside a title and a caption;
-  chat: 44 characters; terminal: 78 columns, no home directory): re-wrap the source file
-  itself and run it again, so the card still shows the real file; or show a contiguous
-  excerpt and name the whole file in the caption and the description. A request longer than a
+  not fit a card (code: 64 characters a line, 9 lines beside a title and a caption and 12
+  beside a caption alone; chat: 44 characters; terminal: 78 columns, no home directory):
+  re-wrap the source file itself and run it again, so the card still shows the real file;
+  or show a contiguous excerpt and name the whole file in the caption and the description.
+  Real output that is too long or carries a home directory is excerpted in whole lines, in
+  their order, or the run is made again from a folder whose path fits; it is never edited. A request longer than a
   chat bubble goes on a code card as plain text. Never alter a character. A real line too
   long for a terminal card, or a tool result read out of a session rather than printed by a
-  terminal, goes on a quote, compare or table card whose "source" names the run
-  (「實跑 2026-10-09｜<tool and version>」). A choice among alternatives is a table; steps
-  draws a sequence.
+  terminal, goes on a quote, compare, steps or table card whose "source" names the run
+  (「實跑 2026-10-09｜<tool and version>」); the events of one run in order are a steps
+  card. One card holds one level of evidence: when its rows differ, split it, or name the
+  odd row's level in that row. A choice among alternatives is a table; steps draws a
+  sequence.
 - An update or a guide is told as numbered points, each in the same four moves: what the
   viewer did before, what changed, exactly what to do now, and the exception.
 - Every sentence of narration carries a fact, a step, a reason, a result or a choice; the cta
