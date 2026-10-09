@@ -1,13 +1,13 @@
 ---
 id: 2026-10-09-produce-the-mods-hands-on-tutorial
 title: Produce the Mods hands-on tutorial under the content-value rules
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-5-video-reference-comparison
 claimed_at: 2026-10-09T03:52:00Z
 created_at: 2026-10-09T03:51:51Z
-completed_at:
+completed_at: 2026-10-09T05:23:49Z
 branch: claude/mods-hands-on-video
 depends_on: []
 scope:
@@ -32,15 +32,15 @@ under the old slug are not overwritten. It is also the first use of the rules.
 - [x] Two mods written for the video, validated, tested, and run in headless sessions; the logs
   kept beside them with no home directory's owner in any path.
 - [x] `video.json` and `claims.md` by a writer; `lint` 0 errors, 0 warnings.
-- [ ] An independent fact check (`verify-1.md`), and a second round if more than three facts change.
-- [ ] Narration, the cut, and the final review pushed to `/admin/videos`.
-- [ ] The upload package at the publish gate. Uploading to YouTube is the owner's.
+- [x] An independent fact check (`verify-1.md`) and a second round (`verify-2.md`).
+- [x] Narration, the cut, and the final review pushed to `/admin/videos`.
+- [x] The upload package at the publish gate. Uploading to YouTube is the owner's.
 
 ## Steps
 
 - [x] Plan, run the 「要先實作」 items that a headless session can answer, write.
-- [ ] Verify, then `tts`, `check-audio`, `render`, `assemble`, `captions`, `review-push --gate final`.
-- [ ] `package`, `review-push --gate publish`; languages: zh-TW only (the owner, in chat).
+- [x] Verify, then `tts`, `check-audio`, `render`, `assemble`, `captions`, `review-push --gate final`.
+- [x] `package`, `review-push --gate publish`; languages: zh-TW only (the owner, in chat).
 
 ## How to verify
 
@@ -64,3 +64,13 @@ node tools/video/cli.mjs status --slug claude-code-mods-hands-on
   written; `video.json` supersedes it.
 - What the planner and the writer found unclear in the rules: `2026-10-09-fix-what-the-first-use-of`.
 - CI first failed on two repository rules. `tools/docs-videos-tests.test.mjs` wants every test under docs/videos run by `npm run test:docs-videos`; a mod's `*.test.ts` runs only under `claude plugin test`, so tests under a `mods` folder are now named there as a second kind that is never selected. `tools/repo-hygiene.test.mjs` reads a name after `plink -load` as a host detail; the mod's test commands use `<saved-session>`.
+- Produced on 2026-10-09, outside the repo as always. Narration 13:53 (three audio checks: 13
+  lines flagged, 9 reworded and all 13 re-recorded; 3 still flagged and reworded; then none; the
+  rewrites are `narration-rewrites-1.json` and `-2.json`). Cut 14:01, 127 slide states, zh-TW
+  captions only (the owner's choice).
+- Gates on `/admin/videos`, each approved by the server: audio, final (11 of 11 checks; the
+  judge's demonstration score 0.90, where the rejected video had 0.45 against 0.6), publish
+  (4 of 4). Landed as PR 1394.
+- Left for the owner: upload `final.mp4` in Studio as private and paste the address on the
+  video's page; the language panel may still want its 「只出繁體中文」 pressed.
+- Not done: the brief's first-use trial by someone who took no part in the writing.
