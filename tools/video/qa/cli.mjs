@@ -22,7 +22,7 @@ import { burnIn, drawnShotScenes, illustrated, isDrama, needsMinimumLength, subt
 import { checkYoutubeFields } from "../core/metadata.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { LOCALES, minEpisodeMinutes, narrationLocale } from "../core/schema.mjs";
-import { captionLocalesOf, chosenLocales, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
+import { alwaysLocales, captionLocalesOf, chosenLocales, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { approvedEpisodes, ARTIFACTS, dubArtifacts, lintProject, loadProject } from "../core/state.mjs";
 import { chapterList, checkChapters, estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
 import { checksCurrent } from "../package/cli.mjs";
@@ -255,9 +255,12 @@ export async function run(command, args, ctx) {
   // The owner's language choice (docs/videos/LANGUAGES.md): the captions and metadata items look
   // at the narration, zh-TW and the chosen locales; a dub track given up on only warns.
   const languages = readLanguages(workdir);
-  const captionLocales = captionLocalesOf(languages, narrationLocale(doc));
+  // The language panel opens after final approval. Requiring unselected translations
+  // here prevents that first approval and therefore prevents the owner from choosing.
+  const mandatoryLocales = alwaysLocales(narrationLocale(doc));
+  const captionLocales = languages ? captionLocalesOf(languages, narrationLocale(doc)) : mandatoryLocales;
   const skippedDubs = Object.fromEntries((chosenLocales(languages, "dub") ?? []).map((locale) => [locale, readJson(dubArtifacts(workdir, locale).skipped, null)]).filter(([, gaveUp]) => gaveUp).map(([locale, gaveUp]) => [locale, gaveUp.reason ?? ""]));
-  const { problems: metadataProblems, metadata } = composeMetadata({ doc, timeline: timelineCurrent ? presented : estimateTimeline(doc), translations: project.translations, pack: project.pack ?? null, locales: metadataLocalesOf(languages, narrationLocale(doc)) });
+  const { problems: metadataProblems, metadata } = composeMetadata({ doc, timeline: timelineCurrent ? presented : estimateTimeline(doc), translations: project.translations, pack: project.pack ?? null, locales: languages ? metadataLocalesOf(languages, narrationLocale(doc)) : mandatoryLocales });
   if (!brandingMatches) metadataProblems.push("selected branding differs from the final cut; run assemble again");
   const descriptions = [metadata.description, ...Object.values(metadata.localizations).map((fields) => fields.description)];
 

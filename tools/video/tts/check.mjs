@@ -116,10 +116,13 @@ export function lexiconFor(lexicon, locale = NARRATION_LOCALE) {
 }
 
 // Interjections the voice adds on its own, in Traditional and Simplified characters. 耶 and 餒
-// count only when added at the end of a line (好耶, 氣餒 are words); 吧 is left out, since the
+// count only when added at a clause's end (好耶, 氣餒 are words); 吧 is left out, since the
 // script uses it as a particle too.
 const FILLERS = /[啊喔哦欸誒诶嗯呃齁]/gu;
 const CLOSING_PARTICLES = /[耶餒馁]+$/u;
+// Check boundaries before comparable removes punctuation. Remove one added particle per
+// clause, preserving lexical 氣餒/气馁 and 好耶, but allowing an extra 氣餒耶 or 好耶餒.
+const CLAUSE_CLOSING_PARTICLES = /(?<=[\p{L}\p{N}])(?:(?<!好)耶|(?<![氣气])[餒馁])(?=\s*(?:\p{P}|$))/gu;
 // Latin-script words, as the transcriber's hint list takes them: one word each.
 const LATIN_WORD = /[A-Za-z0-9][A-Za-z0-9.+#'_-]*/g;
 // Mirrors TranscribeIn.terms' max_length in apps/api/app/video_speech/schemas.py.
@@ -170,7 +173,7 @@ export function matchKind(heard, line, lexicon, locale = NARRATION_LOCALE) {
   if (!CHINESE.has(locale)) return null;
   const bare = (text) => comparable(text).replace(FILLERS, "");
   // A closing particle comes off what was heard only, so a script ending in 氣餒 still needs it.
-  const saidBare = [bare(heard), bare(heard).replace(CLOSING_PARTICLES, "")];
+  const saidBare = [bare(heard), bare(heard).replace(CLOSING_PARTICLES, ""), bare(String(heard).replace(CLAUSE_CLOSING_PARTICLES, ""))];
   if (forms.some((form) => saidBare.includes(bare(form)))) return "filler";
   const saidReadings = saidBare.map(reading);
   if (forms.some((form) => saidReadings.includes(reading(bare(form))))) return "sound";

@@ -84,6 +84,42 @@ test("Taiwanese particles the voice adds pass as fillers; a closing 餒 or 耶 o
   assert.equal(matchKind("耶很好", line("很好。"), lexicon), null, "耶 counts only at the end");
 });
 
+test("closing particles at clause boundaries keep Mandarin words and reject other changes", () => {
+  const lexicon = { schema_version: 1, terms: {} };
+  const line = (text) => ({ id: "tgby", text });
+  const intended = line("木作室沒有寫今天有沒有開，也不能先當能去。");
+  // Independent primary and secondary transcripts agree on the two added closing particles.
+  for (const heard of [
+    "木作是沒有寫今天有沒有開耶，也不能先當能去耶。",
+    "木作是沒有寫今天有沒有開耶,也不能先當能去耶。",
+  ]) assert.equal(matchKind(heard, intended, lexicon), "sound", heard);
+
+  for (const boundary of ["，", ",", "。", ".", "；", ";", "：", ":", "？", "?", "！", "!"]) {
+    assert.equal(matchKind(`今天還沒開耶${boundary}不能先去餒。`, line("今天還沒開，不能先去。"), lexicon), "filler", boundary);
+  }
+  assert.equal(matchKind("今天還沒開餒 , 不能先去耶。", line("今天還沒開，不能先去。"), lexicon), "filler", "spaces do not erase a punctuation boundary");
+  assert.equal(matchKind("他沒有氣餒耶，還是會再試。", line("他沒有氣餒，還是會再試。"), lexicon), "filler", "the added 耶 must not remove the intended 餒");
+  assert.equal(matchKind("好耶餒，明天再去耶。", line("好耶，明天再去。"), lexicon), "filler", "an intended 耶 is retained alongside an added particle");
+  assert.equal(matchKind("他沒有氣餒，也不會放棄。", line("他沒有氣餒，也不會放棄。"), lexicon), "exact");
+  assert.equal(matchKind("別氣餒，明天再試。", line("別氣，明天再試。"), lexicon), null, "lexical 氣餒 must not become 氣 at a punctuation boundary");
+  assert.equal(matchKind("好耶，明天再試。", line("好，明天再試。"), lexicon), null, "lexical 好耶 must not become 好 at a punctuation boundary");
+  assert.equal(matchKind("别气馁,明天再试。", line("别气，明天再试。"), lexicon, "zh-CN"), null, "Simplified lexical 气馁 is retained too");
+  assert.equal(matchKind("他沒有氣，也不會放棄耶。", line("他沒有氣餒，也不會放棄。"), lexicon), null, "the intended word 氣餒 cannot lose 餒");
+  assert.equal(matchKind("好，明天再去耶。", line("好耶，明天再去。"), lexicon), null, "an intended 耶 cannot be omitted");
+  assert.equal(matchKind("耶，今天還沒開，也不能先去耶。", line("今天還沒開，也不能先去。"), lexicon), null, "an unexpected leading 耶 is not a closing particle");
+  assert.equal(matchKind("今天還沒開耶也不能先去。", line("今天還沒開，也不能先去。"), lexicon), null, "an interior 耶 without a boundary stays significant");
+  for (const changed of [
+    ["兩個場地耶，不能先去耶。", "三個場地，不能先去。"],
+    ["今天有開耶，也能先去耶。", "今天沒開，也不能先去。"],
+    ["木作室耶，不能先去耶。", "陶藝室，不能先去。"],
+  ]) assert.equal(matchKind(changed[0], line(changed[1]), lexicon), null, "numerals, negation and nouns still need to match");
+
+  assert.equal(matchKind("今天还没开馁,不能先去耶。", line("今天还没开，不能先去。"), lexicon, "zh-CN"), "filler");
+  for (const locale of ["en", "ja", "ko"]) {
+    assert.equal(matchKind("Go耶, then wait餒.", line("Go, then wait."), lexicon, locale), null, `${locale} has no Mandarin particle rule`);
+  }
+});
+
 test("hintTerms lists each English word a line says once, as the script spells it", () => {
   assert.deepEqual(hintTerms({ id: "am2h", text: "那付錢的 Go 呢？" }), ["Go"]);
   assert.deepEqual(hintTerms({ id: "4vai", text: "比較起來，Plus 大約是 Go 的兩倍半，Go 還可能有廣告。" }), ["Plus", "Go"]);
