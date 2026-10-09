@@ -69,3 +69,28 @@ and verify that restarting it also sends nothing. They are diagnostic fixtures,
 not an installed repository fix or authority to clear arbitrary held journals.
 The original Korean unknown operation and Mods hold remain untouched. This task
 is released after recording evidence; guarded video delivery remains ongoing.
+
+Additional actual recovery examples on October9:
+
+- DevDay request d430 stopped on the deploy flock before the wrapped wire
+  logger/network. Exact proof1583d812 records zero dispatches and190 earlier
+  HTTP200 responses. Normal exact-key reconciliation receipt9d4f3dc8 archived
+  all457 entries first and retained the other456 plus four confirmed answers.
+  This operational recovery made zero provider/API calls; it is not a shared
+  client/journal implementation fix.
+- Embedding's next request e36 stopped on the15-second actual snapshot guard,
+  also before the wire logger/network. Proof f98e941d retains the precise body,
+  held journal,closed producer and zero matching transport,plus all11 successful
+  responses/985 characters,14 new WAVs and original fourteen journals. Private
+  evidence is under `<home>/mokaair-work/stalled-video-completion-20261008/`
+  `embedding-audio/listener-round2/selected-language-finishing-20261009`.
+- A separate remote reader whose stdout is processed by the paid parent still
+  cannot refresh its local receipt during synchronous synthesis/hash work.
+  Receiver independence must be tested with an actual parent stall longer than
+  the freshness interval. The recovery must keep original completed-read times
+  and dispatch boundaries; extending freshness or clearing arbitrary held keys
+  does not resolve the underlying distinction.
+
+Both examples retain original counters,approved media and actual paid history.
+The genuine old FREE unknown and Mods STOP remain unchanged. This note records
+diagnosis only; the shared implementation remains open.

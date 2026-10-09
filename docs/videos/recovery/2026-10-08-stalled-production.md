@@ -3,7 +3,52 @@
 Owner request: complete stalled video production directly. This record is updated
 only from actual stage results. Generated media and detailed logs remain outside Git.
 
-## Current verified continuation,23:17 Taipei,2026-10-09
+## Current verified continuation,23:40 Taipei,2026-10-09
+
+Travel's Japanese dub genuinely completed at23:29:52 with all96 current
+transcript/WAV checks and all Jev flags cleared. Normal rounds were two shorten,
+two retake and one reword; final Japanese translation d8fb1f4d is retained.
+Compiled ja.m4a SHAe378500e is13889318 bytes; decoded all-channel loudness is
+-14 LUFS/-1.8dBTP. Actual requests were98 synthesis,107 ASR,three Jev and
+three translator jobs,all HTTP200,plus one normal progress PUT. The complete
+142-file Japanese artifact cohort e7a9b45a remains guarded while later work runs.
+
+Korean genuinely skipped after two ordinary shortening rounds because line
+430199 still cannot fit at1.15x. Its87 successful synthesis responses,two genuine
+correction results and102 raw WAVs remain preserved; no Korean ASR/Jev or
+compiled track is claimed. Final Korean translation5edc90aa,skip1884d826 and
+fitfecf75bb bind the real outcome. Coordinator1595573 physically closed exit0
+at23:36:36; both native locale exits are0 and the project lease is absent.
+Mods remains exact STOPf5bbf969. Only the original English held330b2636 remains;
+the concrete one-known-loss86-character English continuation is being prepared
+against fresh closure/quote/source/owner proofs. It has not yet run.
+
+Embedding's first paid startup closed exit1 before all provider/API boundaries:
+the static prelaunch DB snapshot expired during local source hashing. Its exact
+original authority/logs/exit remain immutable. A narrowly reviewed successor
+moved the actual independent DB read before the age-sensitive startup check,
+without extending the15-second wire rule. Native paid execution then saved11
+successful English synthesis responses/985 characters; first persisted clip
+6q3t SHA7ffc1eb8 matches its exact current request and native cache key.
+The next request stopped before the wire logger/network on a stale live snapshot.
+Supervisor v2 physically closed exit3; result19ffc98d and all11 paid answers
+are retained. No model or API writes occurred and neither old SENT key changed.
+The new held request is preserved while the local receiver is diagnosed; no
+third paid launch or arbitrary forget has occurred.
+
+DevDay's actual native Korean quote38170127 has107 planned requests/153 lines,
+66 valid cached lines and58 pending bundles/3108 estimated characters. The
+normal journal/synthesis fixture truly reuses four paid answers/205 characters,
+then stops at the missing fourth-line request d430:29 characters. The remaining
+prospective transport is that line plus57 subsequent scene bundles,58 routes/
+2999 estimated characters. The original actual JA/KO quote was107/5535 plus
+107/5421,214/10956 total; no source or Korean translation changed. The residual
+driver retains the ten-of24 correction history and permits only four remaining
+Korean correction keys. Thirteen meaningful pure admission tests pass; the
+independent read-only DB writer and source-only successor are being verified.
+No Korean paid successor or complete language delivery is yet claimed.
+
+## Earlier verified continuation,23:17 Taipei,2026-10-09
 
 Embedding's twelve echoed source commas were restored through the exact
 zero-provider executor; translated text and all original raw results were kept.

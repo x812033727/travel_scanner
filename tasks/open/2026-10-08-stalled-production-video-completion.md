@@ -99,3 +99,12 @@ stay outside Git. Keep any failed checks and pending reviews truthful.
   original paid English response loss and Mods STOP remain preserved. An
   exact86-character known-loss English replacement is source-only until the
   running producer truly closes. Owner listening/upload remain separate gates.
+- Oct9 23:40 checkpoint: Travel Japanese genuinely completed96-line QA and
+  decoded whole-track levels; Korean genuinely skipped one overlong line after
+  two shortening rounds. Both native stages/coordinator closed exit0. The exact
+  English known-loss replacement is still source-only. Embedding retains11
+  successful new English answers after its next admission snapshot expired;
+  the new held request is preserved while its independent receiver is fixed.
+  DevDay's current normal residual plan reuses four paid answers before58
+  prospective routes/2999 estimated characters. No new paid successor is
+  claimed before its source/actual proof review; all old records/caps remain.
