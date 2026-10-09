@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "required": ["items"],
+  "properties": { "items": { "type": "array", "items": {
+    "type": "object",
+    "required": ["id", "type", "urgent"],
+    "properties": {
+      "id": { "type": "integer" },
+      "type": { "enum": ["bug", "feature", "question"] },
+      "urgent": { "type": "boolean" } }
+  } } }
+}
