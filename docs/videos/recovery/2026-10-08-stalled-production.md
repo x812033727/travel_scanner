@@ -3,6 +3,151 @@
 Owner request: complete stalled video production directly. This record is updated
 only from actual stage results. Generated media and detailed logs remain outside Git.
 
+## Current verified continuation,15:08 Taipei,2026-10-09
+
+Travel's current owner-approved Chinese cut was normally pulled and packaged
+with zero model calls. Its97-cue zh-TW captions, thumbnail, description and
+approved `a35e92ff` final passed all four normal package checks. Metadata SHA
+`32c105073ccba72e4fd04b4ed4c1ea7433cfaca998e27d437a8274703778073b`
+was submitted through the normal publish-review route and genuinely approved
+in review `bc64c36e-2879-49fb-a714-0f41a17ac12c`, then pulled normally.
+Owner locales remain `{}` with a null decision timestamp and no local choice
+file. Therefore backend ready_to_upload and download_available are still false.
+The reported pipeline step "on YouTube" is only a next-stage label: YouTube ID
+is null and no upload or publication was performed.
+
+The current DevDay guardian normally holds the real video-worker lease at
+PID25417/start_ticks4343047 in the `114aa2c9`/`3b194510` epoch. Its exact conditional
+handoff STOP was archived and released only after current source, approved-final,
+package and selected-language readback. The actual normal-SDK timing regression
+passed: expensive admission checks now finish before its unchanged POST deadline,
+and cached answers make no model calls. One bounded11-stage continuation started
+at15:01:04. Fresh15:02:48 backend/SDK readback proves job `78c2fdb1` running for the
+same original `a68bb1d6` UUID and exact original body/input, with53 genuine cached
+answers retained. A running job is not a completed answer. FREE's real lost result
+and immutable journal/wire remain preserved, and its next14 stages have not run.
+
+The private reviewed tools/reference runtime was restored exactly from frozen
+tracked c645 source plus the three reviewed overlays: tree `3abd5396`, references
+`e0b8917b`, settings `fee616ec`, with current host/worker identities recorded
+separately. The exact two terminal failed zero-token rows remain intact and are
+excluded only from the48 paid-stage/per-unit pair counts, never from gross
+attempt history. Fresh dry checks made zero requests. SEC's current Japanese
+unit identities unexpectedly gained only the global glossary term `mokaair.com`;
+no extra translator was launched. A narrowly proven old/current cache-context
+mapping must preserve all paid answers and original logical-stage caps first.
+
+Embedding's normal encoding continues with regularly advancing scene logs;
+the first encoded SVG replacement was actually decoded and visually checked.
+Final movie checks, final review and package remain in progress.
+
+## Verified continuation,14:45 Taipei,2026-10-09
+
+The owner renewed the completion request and explicitly asked to skip Mods first.
+Its exclusive project STOP was saved at00:11:08 Taipei, SHA
+`f5bbf969d413bc7e8ef4419162459d3ea26d88a311493fd1eef9294e9d1cbea3`.
+Completed voice files, original choices and any in-flight receipts are retained.
+No other project's scope is paused by that request.
+
+Embedding's current storyboard `1663cca7` was genuinely owner-approved in review
+`6ea3a414-713a-49de-9557-942ba9588810` at14:30:53 Taipei. Fresh authenticated
+readback and normal pull match source `becde472`, audio timeline `f114101b`
+and that exact storyboard. The78 paid keyframes and their genuine quality
+remarks are preserved. Two failed image scenes now use independently reviewed,
+normal local SVG diagrams;37 default card pauses were shortened with all156
+voiced WAVs unchanged. Actual normal cadence is875.333s, longest8s, average5.6s,
+illustrated share50.003808%, and zero cadence problems. Normal assembly has
+started; an MP4, final QA approval and upload package are not yet claimed.
+
+At14:43, an external deployment had changed production HEAD to
+`3a904c8b7b5de0207b3e53f98b6fe12482295031` and the actual video-worker to
+`0ebb90e97012ad2c487c7244ae1b3a9656565197d7dd668bfe973615a299a0b6`.
+Fresh comparison finds the five relevant SDK files, project-lease module and
+durable job/dispatch backend files byte-identical to the previously reviewed
+epoch. The old DevDay guardian is dead; its exact conditional STOP is being
+restored before a normal current-container lease and scoped release. No fake
+host/PID lease, deployment or shared setting change is used.
+
+Fresh DevDay readback still finds53 real successful results and no backend job
+for its original `a68bb1d6` frontier key; the remaining11-stage once intent was
+never created. FREE likewise has no new14-stage once intent and retains its
+original33 successes plus the genuinely lost reviewer. A concrete transport
+cause is now identified: slow guard callbacks consumed the SDK's POST deadline
+before fetch. Expensive preflight checks are moving before ordinary client.run,
+preserving the normal timeout, original UUIDs, source guards and original budgets.
+Actual new-stage completion must still be established from durable results.
+
+At14:44 another external deployment replaced that worker and advanced HEAD to
+`114aa2c95f8fa936cdaea649a6ed7a3b4476192b`. The new video-worker is
+`3b19451062d3bc1c3768b4720fd58bcc171260af7ce61bb2a3e63cb47156e92d`.
+Current-epoch proofs must replace the preceding process/lease identities before
+model admission; retained sources and results are not invalidated by assumption.
+
+Fresh14:47 owner/job readback confirms all four primary approval identities,
+source hashes and language choices remain unchanged; Travel is still undecided.
+The overnight remaining-text coordinator actually stopped at00:19:43 Taipei:
+Cloudflare has19 successes plus one terminal failed reviewer, and SEC21 plus one.
+Both failures are video_ai_provider_not_configured with no result/tokens. Their
+backend dispatched_at marks the worker boundary; the authoritative no-model-call
+error classification, not a null timestamp assumption, establishes failed status.
+The current account-pool readback is healthy. Normal new attempts must retain
+those failed rows and their lineage; only those exact verified zero-model rows
+may be excluded from paid-stage counts, with gross transport counts kept separate.
+No genuinely uncertain result or success may be excluded. Mods' stopped producer
+closed at00:11:58 Taipei with42 English WAV/cache entries, no fit/timeline or
+ASR/Jev/alignment, and no Japanese/Korean production.
+
+## Current verified continuation,23:46 Taipei
+
+All four canonical Chinese exports have actual matching owner final approvals.
+The current Cloudflare movie is the revised `fb1e9940` export; its older approved
+`b6a63c1a` movie is archived. Export approvals remain separate from selected
+language completion, packaging, upload and publication.
+
+Mods' four selected text locales have genuinely merged through46 successful
+new original operations, reusing the earlier metadata pair. Fresh23:44 host
+readback finds no live Mods producer, pending run receipt or existing dub
+launcher. The three selected normal dubs are therefore continuing for the first
+time:92 first-pass requests per locale,276 total and14204 billable characters.
+The original normal correction limits and monthly character allowance apply.
+No unsupported USD price is inferred from that allowance. Cloudflare and SEC
+retain19 and21 successful cached text operations, with29 and27 original
+operations remaining after source/unit validation holds; those results are
+preserved for continuation. Travel's last verified language choice is undecided.
+
+Embedding has156 checked audio clips and78/80 genuinely passed keyframes.
+The original batch and one bounded19-shot prompt repair both ended with known
+quality failures. Actual ledger totals186 image/Jev pairs,USD2.511 and zero
+reservations. The two residual scenes still fail their selected two-ink print
+look across all six retained takes per scene. Neither a higher content score nor
+an image crop satisfies that style finding. A free, source-local normal diagram
+alternative is being checked for those two concepts; no failed judge result is
+rewritten and no additional generic paid prompt attempt is authorized here.
+
+The renewed DevDay producer is dead with exit1. Actual23:43 filesystem readback
+finds53 successful native results and one unresolved native record: English,
+Japanese and Korean each have16 successful results; Simplified Chinese has five
+and the unresolved sixth. Its log reports an expired rate-proof guard. That log
+alone does not establish whether the model was dispatched; actual durable job
+classification is required before continuation. Genuine closed JA/KO descriptions
+can be shortened without another model call: reviewed normal composition measures
+4835 and4731 UTF-8 bytes, preserving all source/credit/chapter footers and the
+original factual qualifications. The old results and unresolved record remain
+archived. English metadata and CC are genuinely backend READY.
+
+FREE's33 old model successes and real lost Korean reviewer request remain
+byte-identical. An actual independent offline24-cue Korean editorial review was
+honestly imported into the normal unit worksheet, with separate manual provenance
+and zero provider requests. It is not presented as the lost model's answer or a
+native provider success. Four English/Japanese text parts are READY. Its14
+never-attempted remaining model operations retain the original namespace and
+budget and require fresh canonical guards and a closed shared producer frontier.
+
+Production remains on externally deployed `c6454463`; existing worker identity,
+owner settings, deployment hold and unrelated uncertain requests are preserved.
+Draft PR1387's23 successful checks apply only to its pushed `bb2e6e9b` code head;
+the later operational record update needs its own checks after commit.
+
 Fresh production snapshot at 14:05 Taipei: live SHA `bcba139a`, video workers healthy,
 slides media enabled and shared cap USD80. Drama remains disabled. Three unrelated
 writer requests retain their uncertain502 states. No new deployment is required.
@@ -250,3 +395,73 @@ Nine normal reference files were copied verbatim into the private runtime; no
 shared code was changed. Root authorized at most two durable original keys for
 that first translator/reviewer unit, preserving pending operations across restarts.
 An English unit or active PID alone is not completion of all selected languages.
+
+##17:20 checkpoint: active bounded continuation
+
+The six-character thumbnail is retained. One overly long Embedding card was
+reduced from8.1667s to7.9667s by changing only its300ms silent tail to100ms.
+All156 WAVs remain byte-identical; normal refresh/check used zero TTS, ASR or Jev
+requests and still reports zero flags. The new exact audio timeline
+`ab45c949` was normally reviewed and approved, rather than inheriting the old
+timeline's decision. The80-shot producer started once at16:51 with a process-local
+check enforcing the existing USD40 episode cap before the ordinary spend call.
+At17:18,26 images are selected, three retain needs_review, and the actual ledger
+isUSD0.638 plusUSD0.0035 reserved. The batch is still running. A photographed
+cloth close-up genuinely fails the selected riso-navy look; original three takes
+and their real judge results are retained. A source-only prompt redesign is
+reviewed for a later bounded normal retake after this producer exits.
+
+Mods' first English metadata translator and reviewer both genuinely succeeded
+at16:59:19, using their original durable keys. The two jobs report56942 tokens
+combined. The unit is translated/reviewed, but no completed language bundle or
+backend READY text part is inferred from that one cached unit. The next concrete
+scope is142 remaining original text operations across Mods, Cloudflare and SEC,
+preserving their actual owner selections and current approved movies. Travel
+remains outside this scope while its backend choice is undecided.
+
+The DevDay-only durable continuation passed13 focused offline checks and an
+actual read-only dry proof at17:05:36. Its original64 stages fit the retained
+103-stage allowance after the25 actual sends, leaving78. Root authorized its
+frozen once launcher after source and proof review. It may narrow only the exact
+operator-created sibling STOP to the genuinely uncertain FREE profile; all owner
+STOPs, deployment holds,33 cached successes and the lost Korean request remain
+unchanged. No DevDay model completion is yet claimed at this checkpoint.
+
+Draft PR1387 head`bb2e6e9babd9546fcadf09595a76915b964e4e9b` has successful
+completed CI checks, including web tools, API, video tests and image smoke.
+Full-stack smoke also completed successfully at17:19:36; all23 checks on that
+exact head are successful. Public receipts now use private path aliases; the
+original private logs are retained outside Git.
+
+##17:36 checkpoint: real text work and a proven non-dispatch hold
+
+The selected-text wave actually started once. By17:31:46, Mods' first24-line
+English caption unit completed both its genuine translator and reviewer. The
+next24-line translator is running. Three new original durable keys are recorded
+against the142 bound; pending visits reattach the same keys, and the prior
+metadata pair remains reused. The canonical sources, audio and approved movies
+remain unchanged. Actual queue inspection shows one durable video-ai consumer,
+so extra per-film wrappers would only queue behind it; no concurrency setting
+was raised.
+
+DevDay's first durable job ended with a worker STOP409 before the model boundary.
+The actual backend row is failed with dispatched_at=null and no result or AI run;
+this is proven non-dispatch, unlike the still unresolved FREE Korean request.
+The blocking file is the canonical DevDay-only renewal handoff STOP from October7:
+"Owner-approved renewal handoff; remain held until source, package and language
+readback are verified." Global and the three selected-film STOP files are absent.
+Actual renewal source/package/approved-final/owner-language readback passed at
+17:33:22. Root authorized only that conditional handoff release after recording
+all named conditions and acquiring a normal canonical project lease if needed to
+prevent the main worker racing the existing host-native producer. Original STOP,
+failed backend/native receipts, authority and process exit remain archived with
+hashes. No native success, replacement request or completed DevDay language is
+claimed before its actual new result. The same terminal failed durable job cannot
+be requeued by assumption; any narrow known-nondispatch retry must retain its
+lineage, namespace and original exposure ceiling.
+
+Embedding is34/80 at17:32. Five real image failures remain flagged; their old
+takes and actual judge results are retained. Five independently reviewed prompt-
+only redesigns are authorized after the original producer exits, at most three
+normal attempts per target within the existing episode cap. The other75 prompts,
+all156 voiced WAVs, camera instructions, claims and pauses stay unchanged.
