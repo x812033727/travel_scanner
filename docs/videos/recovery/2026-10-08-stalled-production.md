@@ -3,6 +3,39 @@
 Owner request: complete stalled video production directly. This record is updated
 only from actual stage results. Generated media and detailed logs remain outside Git.
 
+## Current verified continuation,20:38 Taipei,2026-10-09
+
+The remaining five original dub tracks genuinely resumed once at20:34 under
+authority `7496a7e2e43e4da14a207a783fb678ac52d6b7ce3b1006a314c4a538566e1d20`.
+Reviewed caller a97dfeae, authority builder477ee0f and launcher8dbf5cfa retained
+the original94 speech/11552 characters/two models/23 API-write accounting,
+voice, namespaces and total24-correction ceiling. Fresh proof56444e19 differs
+from reviewed proof314259dd only in its timestamp. Real native cached-frontier
+proof18b0a1c5 demonstrates reuse of four confirmed answers before the exact44a
+request. The first new actual speech transport is44a at20:34:27 and returned
+HTTP200/30 billable characters at20:34:30. Supervisor1338615/native1338616 are
+live in the first actual readback7610fd09; both canonical guardians remain live.
+The original FREE English genuine SKIP and unknown Korean request remain retained.
+The five-track run still owes its actual fit, ASR/Jev, loudness and terminal results.
+
+Travel English genuinely merged through all ten original succeeded/adopted keys.
+The normal source-bound sheetDone readback reports96 lines, current=true, with
+en.json SHA `890ba6e3c146afa3cc3955953bdfe99f50a2aa71cec359b14171903618eb878a`.
+Current readback4ba988f6 records11 of the original40 intent keys, source4b1a6a9d,
+and the next Japanese metadata key5f7e5422. Coordinator1268307 physically closed
+at20:28:15, exit3, and its exact failed native result is being inspected before
+any bounded continuation. Japanese, Korean and Simplified Chinese are not yet
+merged; no Travel dub or package completion is claimed.
+
+Embedding's first three of32 normal units genuinely obtained translator and
+independent caption-reviewer results under the original64-key scope. The local
+supervisor physically closed at20:32:55, exit3, after a Windows UNKNOWN read in
+the next caller's startup source guard. That visit had no new intent/API result;
+all six adopted results and original wire remain retained. Exact readback and
+unchanged source/media checks are required before reconnecting the original run.
+Mods STOP was freshly read at20:28 and remains exactf5bbf969; no Mods continuation
+or owner listening, agent YouTube upload or publication is claimed.
+
 ## Current verified continuation,20:20 Taipei,2026-10-09
 
 The precise44a pretransport recovery genuinely closed at20:13:55, exit0,
