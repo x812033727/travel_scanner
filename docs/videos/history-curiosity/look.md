@@ -25,6 +25,7 @@
 | **A 大頭卡通**（最像 cheap） | cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, bright saturated flat colours with soft cel shading, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9 | 兩個系列共用的家族畫風 |
 | **B 軟繪本** | cute soft storybook cartoon: rounded simplified characters with small dot eyes and rosy cheeks, thin warm-brown outlines, pastel flat colours, gentle paper texture, cozy and friendly, uncluttered scene, one subject in the centre third, 16:9 | 原來如此事務所（溫和、生活科學） |
 | **C 懸疑色盤**（這個系列自己的） | cute cartoon with a mystery mood: chibi characters with big heads and expressive eyes, thick dark outlines, flat colours limited to deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, one dramatic light source, one subject in the centre third, 16:9 | 歷史與奇異：夜空藍＋牛皮紙黃＋褪色青＋警示紅，紅只給「檔案章」 |
+| **第 3 版（選定，2026-10-10）** | cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9 | 歷史與奇異：A 的媒材句＋C 的色盤句 |
 | **D 動物代人** | cute cartoon with anthropomorphic animal characters standing in for people (bears, cats, raccoons, rabbits) wearing period costume, big heads, large expressive eyes, thick clean outlines, bright flat colours with soft cel shading, simple backgrounds, one subject in the centre third, 16:9 | 不想畫真實人物時的替身；cheap 的縮圖做法 |
 
 `video.json` 的寫法（以 C 為例）：
@@ -53,6 +54,7 @@
 | **B 軟繪本** | 柔和、偏水彩繪本，人物小而完整、腮紅點眼；比 A 安靜，少了 cheap 的誇張表情；四張一致 | 4／4 過，各 9.29 |
 | **C 懸疑色盤（第 1 版）** | 寫了 mystery mood／dramatic light source，模型漂了：牧場那張變成**寫實照片**、學者變成 **3D CGI** 加黑邊；帆船與帳篷兩張是對的（夜空藍＋牛皮紙黃很有檔案感） | 2／4 過（牧場 9.71 但 style 不過、學者 7.29 不過） |
 | **C 第 2 版** | style 開頭改成「2D flat cartoon illustration with thick dark ink outlines and visible paper grain, hand-drawn cel animation look」再接色盤：四張都回到 2D、夜空藍＋牛皮紙黃的色盤一致、很有檔案感；但人物變成寫實比例、帆船偏油畫，**不夠可愛**；帳篷旁又多了一個小人（judge 抓到） | 1／4 過（分數 9–9.71，不過的都是「不夠 chibi」「多了人」） |
+| **第 3 版（A 的整句＋C 的色盤句）** | 站主選定後畫的確認樣張（`c3-curio/`）：可愛度回到 A、色盤是 C 的夜空藍＋牛皮紙黃＋褪色青，四張同一支筆；帳篷那張寫了 plain canvas tent 與 nobody，帳篷口仍有一個小小的臉狀物，之後空景要再加一句「the only shapes are the tent, snow and trees」 | 4／4 過，各 9.29 |
 | **D 動物代人** | 熊牧場主人加三隻小動物很討喜，但「動物代人」會讓模型**到處加角色**：帳篷那張 prompt 沒有人，畫出一家動物站在帳篷前；帆船變 3D 又多了甲板上的人；學者變 3D | 2／4 過 |
 
 量到的三件事：
@@ -110,7 +112,7 @@
 
 | 項目 | 值 |
 | --- | --- |
-| 畫風（A／B／C／D） | （站主決定） |
+| 畫風 | 第 3 版（A 的媒材句＋C 的色盤句；站主 2026-10-10「用你建議的」） |
 | `look.style` 最終文字與 `look_hash` | |
 | 片頭關鍵影格 1（檔案櫃） | （檔名與 SHA-256，圖檔留在 repo 外） |
 | 片頭關鍵影格 2（檔案夾） | |

@@ -1,15 +1,15 @@
 ---
 id: 2026-10-10-history-curiosity-pilot
 title: 歷史與奇異：站主選畫風與前三題後，本機做兩集試片並記實測
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-curio
+claimed_at: 2026-10-09T16:45:18Z
 created_at: 2026-10-10T16:20:00Z
 completed_at:
-branch:
-depends_on:
+branch: claude/history-curiosity-video-series-aade32
+depends_on: []
 scope:
   - docs/videos/history-curiosity/
   - docs/videos/curio-h01/
@@ -25,7 +25,7 @@ scope:
 
 ## Definition of done
 
-- [ ] 站主在 `README.md` §選定紀錄 填了系列名、畫風（A／B／C／D）、歷史人物能不能畫成卡通、前三題；沒填的先用企劃的提案並註明。
+- [x] 站主 2026-10-10「用你建議的」：系列名奇聞檔案局、畫風第 3 版（A＋C 色盤）、過世 70 年以上的歷史人物可畫卡通、前三題 H01／U02／L08、10 分鐘；都記在 `README.md` §選定紀錄。
 - [ ] 兩集做完（建議 H01 瑪麗賽勒斯特號、U02 51 區）：`brief.md`、`video.json`（`format: "slides"`、`category: "explainer"`、選定的 `look`、`shot` 與卡片交錯、至少 3 張登記在 `assets[]` 的公有領域或圖庫照片）、`claims.md`、兩輪獨立查核、旁白（Whisper 第二轉寫）、`keyframes`（`--dry-run` 印出 `minimax image-01`）、`render`、`assemble`、`captions`、`qa` 11 項、`package`、`review-push` 到上架確認。
 - [ ] 每集記在 `docs/videos/curio-<id>/production-record.md`：插圖張數與重做次數、照片張數與來源、媒體花費、審圖分數分布、旁白長度與成片長度、站主審片分鐘數。
 - [ ] `README.md` §成本與產能 改成實測；`topics.json` 做過的題改 `scripted`／`published`，查核過的事實回寫 `facts_to_verify` 的結果。

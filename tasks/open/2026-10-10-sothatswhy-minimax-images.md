@@ -24,7 +24,8 @@ scope:
 
 ## Definition of done
 
-- [ ] 站主從 `docs/videos/history-curiosity/look.md` 的候選裡選了原來如此用的畫風（提案 A 大頭卡通或 B 軟繪本），`look.md` 的 `look` JSON 改成選定的 `style` 加色盤句、`negative: ""`，並記 `look_hash`。
+- [x] 站主 2026-10-10 選了 A 大頭卡通；`look.md` 的 `look` JSON 已改成 A 的文字加色盤句、`negative: ""`。
+- [ ] 借站上的 slides slug 用這個 `look` 畫 4 張章節場景樣張確認色盤句沒讓畫風漂，記 `look_hash`。
 - [ ] 片頭三張關鍵影格（門、信、蓋章）用 MiniMax 重畫一次，`look.md` §選定紀錄 填檔名與 SHA-256。
 - [ ] `operations.md` 的 D−2「關鍵影格」一列改寫成 MiniMax 的做法（`keyframes --dry-run` 必須印出 `minimax image-01`；每月張數上限在後台漫劇分頁）。
 - [ ] 下一集（第二季順序提案的下一個，或站主指定）用新做法做完一集並記實測，README §成本與產能 的插圖一列改成實測。
@@ -33,7 +34,7 @@ scope:
 ## Steps
 
 - [ ] claim 前 `gh pr list` 看有沒有別的 session 在改 so-thats-why 的文件。
-- [ ] 站主選畫風；把候選文字加「warm cream paper ground, ink navy, stamp red only on the answer, mustard yellow」那一句，`keyframes --dry-run` 看 prompt budget 沒超。
+- [x] 站主選了 A；色盤句已併進 `look.md` 的 JSON。`keyframes --dry-run` 看 prompt budget 沒超。
 - [ ] 借站上已有的 slides slug 畫片頭三張與 4 張章節場景樣張（`keyframes --file <copy>/video.json --workdir <dir> --shot … --takes 1`），站主看過再定。
 - [ ] 改三份文件；做一集。
 

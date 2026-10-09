@@ -17,7 +17,7 @@
 | 畫面 | AI 插圖＋運鏡：漫劇路線的 `visual: "still"` 鏡頭 |
 | 節奏 | 每天 1 支長片，搭配 Shorts |
 | 吉祥物 | 不用。沒有固定角色，辨識度靠畫風、色盤與蓋章動作（[`look.md`](look.md)） |
-| 插圖怎麼畫（2026-10-10） | **MiniMax `image-01` 生成**，不再由 Claude／Codex 手繪 SVG（T26、T27 的做法到此為止）；畫風改成跟歷史與奇異系列同一個「可愛插畫」家族，色盤保留奶油紙底、墨藍、印章紅、芥末黃。見 §2026-10-10 更新 |
+| 插圖怎麼畫（2026-10-10） | **MiniMax `image-01` 生成**，不再由 Claude／Codex 手繪 SVG（T26、T27 的做法到此為止）；畫風改成跟歷史與奇異系列同一個「可愛插畫」家族（站主同日選了候選 A 大頭卡通），色盤保留奶油紙底、墨藍、印章紅、芥末黃。見 §2026-10-10 更新 |
 
 ## 2026-10-10 更新：插圖改由 MiniMax 生成
 
@@ -26,8 +26,8 @@
 | 項目 | 之前 | 之後 |
 | --- | --- | --- |
 | 插圖 | 第二季 T26、T27 由 Claude／Codex 手繪 157／130 張原創 SVG（`vector-art/`），不呼叫圖片供應商 | 每個 `shot` 由 MiniMax `image-01` 畫（每張 US$0.0035、1280×720），審圖照插圖投影片的九題是非題 |
-| 畫風 | `flat-explainer`（扁平編輯插畫、墨藍描邊） | 可愛卡通家族（大頭、粗線、亮色平塗；候選 A「大頭卡通」或 B「軟繪本」，樣張在 [`../history-curiosity/look.md`](../history-curiosity/look.md)），色盤不變：奶油紙底、墨藍、印章紅只給答案、芥末黃 |
-| `look` 寫法 | `look.preset: "flat-explainer"` | 站主選定後加成具名預設；在那之前 `preset: "custom"`，`style` 抄選定的候選文字再加色盤那一句，`negative: ""`（MiniMax 會把 negative 接成正向文字） |
+| 畫風 | `flat-explainer`（扁平編輯插畫、墨藍描邊） | 可愛卡通家族（大頭、粗線、亮色平塗；站主 2026-10-10 選了 A「大頭卡通」，樣張在 [`../history-curiosity/look.md`](../history-curiosity/look.md)），色盤不變：奶油紙底、墨藍、印章紅只給答案、芥末黃 |
+| `look` 寫法 | `look.preset: "flat-explainer"` | 具名預設做好前用 `preset: "custom"`，`style` 是 [`look.md`](look.md) 的 2026-10-10 版（A 的文字加色盤句），`negative: ""`（MiniMax 會把 negative 接成正向文字） |
 | 路線 | 本機 `format: "slides"`＋SVG `diagram` | 本機插圖投影片（`format: "slides"`＋`shot`＋卡片）；主機解說路線要等 `2026-10-10-explainer-route-takes-a-series-look` 改完才能指定 MiniMax |
 | 實體照片 | 沒有 | 可以放：公有領域檔案照、Pexels／Pixabay 圖庫照，用貼圖式照片卡（`2026-10-10-photo-paste-card`），逐張標出處 |
 
