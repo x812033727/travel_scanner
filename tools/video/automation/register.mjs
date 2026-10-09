@@ -185,6 +185,39 @@ rules and a route's rules disagree, these win):
   writer revision; it never repairs one by inventing a fact, a run or an example.
 `.trim();
 
+// The words the audio check has misheard on this channel, each with the wording that passed
+// (the table in script-writing.md §給 TTS 唸的稿子 also says what each was heard as). The check
+// transcribes the synthesized voice and compares it with the script; two tutorials on
+// 2026-10-09 had 13 and 19 of 151 lines flagged on their first check, and a line that was only
+// recorded again was flagged again. Sent to the slides writer and listener.
+export const MISHEARD_WORDS = [
+  ["實跑", "實際跑過"],
+  ["行程", "執行中的程式"],
+  ["讀檔", "讀取檔案"],
+  ["數什麼", "要數什麼"],
+  ["擋呼叫的", "負責擋下呼叫的"],
+  ["窗格", "畫面上的介面"],
+  ["沒人接手", "沒有人替它處理"],
+  ["界線", "原則"],
+  ["餵假事件", "送假事件進去"],
+  ["印出", "顯示的是"],
+  ["放行", "讓它通過"],
+  ["無介面", "不開畫面的"],
+  ["那一欄", "這個欄位"],
+  ["沒接的那次", "沒有接上的那一次"],
+  ["測試是紅的", "測試沒有通過"],
+];
+
+export const HEARD_RULES = `
+Words the audio check mishears (zh-TW narration): the check transcribes the synthesized voice
+and compares it with the script, and a homophone is heard the same way when it is recorded
+again, so it is the wording that changes. Write the form on the right from the start:
+${MISHEARD_WORDS.map(([written, instead]) => `「${written}」→「${instead}」`).join("、")}.
+What they share: a one-character verb, a two-character term, or a short sentence that starts
+without its subject. Add a character or two, or use the commoner spoken word. Numbers,
+Latin-script words and proper names stay exactly as written, and the facts do not change.
+`.trim();
+
 export const REGISTER_RULES = `
 The narration is TOLD, not explained (the storytelling register, docs/videos/ILLUSTRATED.md):
 - The first sentence is a counter-intuitive claim or the viewer's own question; the hook has landed

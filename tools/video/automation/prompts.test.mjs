@@ -8,7 +8,7 @@ import { SOURCING_FAMILY } from "../core/lint.mjs";
 import { SOURCE_MAX_CHARS, SOURCED_TEMPLATES } from "../templates/templates.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, SLIDES_CAMERA_WORDS, SOURCE_INSTRUCTIONS, translationContext, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
-import { REGISTER_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
+import { HEARD_RULES, MISHEARD_WORDS, REGISTER_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
 import { SERIES_SEPARATOR, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
 import { ACTIONS, MAX_STEPS, MAX_WAIT_MS, MAX_ZOOM } from "../screencast/steps.mjs";
 import { documentPayload } from "./series.mjs";
@@ -169,6 +169,31 @@ test("every slides video is held to the content-value rules, on both routes and 
     for (const [stage, variant] of [["listener", "register"], ["listener", "rewrite"], ["translator", null], ["caption_reviewer", null], ["translator", "shorten"], ["translator", "reword"]]) {
       assert.equal(instructionsFor(stage, format, "", variant).includes(VALUE_RULES), false, `${format} ${stage}:${variant} keeps its contract`);
     }
+  }
+});
+
+test("the slides writer and listener are told which words the audio check mishears, and the guide lists the same words", () => {
+  for (const stage of ["writer", "listener"]) {
+    const prompt = instructionsFor(stage, "slides");
+    assert.ok(prompt.includes(HEARD_RULES), `${stage} gets the misheard words`);
+    assert.ok(prompt.indexOf(VALUE_RULES) < prompt.indexOf(HEARD_RULES), `${stage}: after the content-value rules`);
+    assert.ok(prompt.indexOf(HEARD_RULES) < prompt.indexOf(REGISTER_RULES), `${stage}: before the register`);
+  }
+  assert.ok(instructionsFor("listener", "slides").endsWith(REGISTER_RULES), "the listener still ends on the register");
+  for (const stage of ["planner", "verifier", "translator", "caption_reviewer"]) assert.equal(instructionsFor(stage, "slides").includes(HEARD_RULES), false, `${stage} reads none`);
+  for (const stage of ["planner", "writer", "verifier", "listener"]) {
+    for (const variant of [null, "story", "explainer"]) assert.equal(instructionsFor(stage, "drama", "", variant).includes(HEARD_RULES), false, `${stage}:${variant} remains its own route`);
+  }
+  for (const [stage, variant] of [["listener", "register"], ["listener", "rewrite"], ["translator", "shorten"], ["translator", "reword"]]) {
+    assert.equal(instructionsFor(stage, "slides", "", variant).includes(HEARD_RULES), false, `${stage}:${variant} keeps its contract`);
+  }
+  assert.ok(MISHEARD_WORDS.length >= 15);
+  assert.match(HEARD_RULES, /a homophone is heard the same way when it is recorded\s+again, so it is the wording that changes/);
+  assert.match(HEARD_RULES, /Numbers,\s+Latin-script words and proper names stay exactly as written/);
+  const guide = readFileSync(new URL("../../../.agents/skills/youtube-video/references/script-writing.md", import.meta.url), "utf8");
+  for (const [written, instead] of MISHEARD_WORDS) {
+    assert.ok(HEARD_RULES.includes(`「${written}」→「${instead}」`), written);
+    assert.match(guide, new RegExp(`\\| ${written} \\| [^|]+ \\| ${instead} \\|`), `the guide's table has the pair for ${written}`);
   }
 });
 

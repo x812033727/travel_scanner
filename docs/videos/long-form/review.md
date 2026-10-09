@@ -3075,6 +3075,60 @@ PASS is DURATION_ONLY for the one rebound hash below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Misheard-words prompt increment: 1 file (2026-10-09)
+
+Reviewer: `claude-pr-review-misheard-words-20261009`. Author: `claude-opus-5-5-video-reference-comparison`. Scope: DURATION_ONLY for the one changed binding below, reviewed at `9f5efa2b88ec8615664b5f7decef26fac8a046b7` ("feat(video): the worker's writer and listener carry the misheard words") on claude/video-misheard-words. The reviewer wrote no part of that commit and edits only this report and review.json.
+
+Baseline: `6019c2c0a7f3dab25d5971e6815256c90ab64a0c`, the commit's parent. Immutable Git blobs pass `durationReviewProblems` there for the report and all 108 REVIEW_FILES, under the "Content-value rules first-use fixes increment" above, which reached main as `114aa2c95` (#1396); the two commits after it (`57139d78d`, #1397, and the baseline itself) changed no bound file and not the receipt. The changed file matches its existing receipt and table at that baseline; its committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly this one binding, while the other 107 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `tools/video/automation/prompts.mjs`: `2ff4f72957abe80882801bf55205f8513899eb3545428a87f226a1d20a65724d` -> `4da2bae5b173bf24b7b6a87f9cc41531b5bd89cb36f025ad2582c71ae8fa254b`.
+
+Findings, `tools/video/automation/prompts.mjs` (+5/−1): the import from register.mjs gains `HEARD_RULES` (line 13), and `${HEARD_RULES}` with a blank line after it is interpolated after `${VALUE_RULES}` in two slides stages, the writer (line 264) and the listener (line 371). No other line changes. The planner's text is the same bytes at the same lines, "each ≥ 10 s … the whole at least 8 minutes" and the upper end of target_minutes as an aim and not a limit (lines 242–244) among them. The writer's own sentences are the same two lines lower: one spoken sentence of "about 25 characters, at most 40" (line 285), the two Shorts of 25 to 55 seconds (line 303), and "each at least 10 seconds … never under 8 minutes … Never cut a sourced fact to fit it and never pad to reach it" (lines 310–313). Everything after the listener is four lines lower and unchanged in wording: the drama's 2 to 4 minutes (line 524), the explainer's 10-minute production target with its eight-minute body and cut (lines 1431–1432), the explainer's two planning texts' "never under 8 minutes" (lines 1519 and 1558), and the long-anime runtime_spec and action_seconds instructions (lines 1732–1750).
+
+Which texts carry it: of the tables in prompts.mjs and story-prompts.mjs, `INSTRUCTIONS.writer` and `INSTRUCTIONS.listener` alone hold `HEARD_RULES`. `DRAMA_INSTRUCTIONS` (4 texts), `VARIANT_INSTRUCTIONS` (21: the series stages, the explainer's, the listener's rewrite and register passes, the translator's shorten and reword passes), `STORY_INSTRUCTIONS` (4) and every `SOURCE_INSTRUCTIONS` text hold none, and `animeInstructions` returns its own text for the writer and the listener. Asked with format "drama", `instructionsFor` returns it for no stage and no variant (0 of 108 combinations). An explainer is a drama with the flat-explainer preset (`isExplainer`, drama.mjs line 195; `variantOf`, flow.mjs line 926), and `listen` asks a drama's listener with no variant (flow.mjs line 3128); all three are bound and unchanged. So the drama, the explainer, the brand story and the long anime do not read it. It is a wording rule wherever it lands.
+
+The imported text in register.mjs (unbound; +33/−0: a five-line comment, the `MISHEARD_WORDS` array of 15 pairs and the seven lines of `HEARD_RULES`) was read as context, since it is what the two stages now carry. Three things in it bear on length:
+
+- The 15 pairs, each the form as written and the form to write in its place. Counted in characters, the replacement is from 0 to 4 longer than the word it replaces (「界線」→「原則」 is the same length; 「行程」→「執行中的程式」 and 「窗格」→「畫面上的介面」 are four longer), 32 over the 15 together, and none is shorter.
+- "Add a character or two, or use the commoner spoken word." The stages count 250 spoken characters a minute, so a character is about a quarter of a second of the estimate. A longer word raises the estimate. The floor is a minimum and the upper end of target_minutes is an aim and not a limit, so a draft a few characters longer meets both as before. A commoner word may be a shorter one; the sentence asks for no shorter script, and a draft that came out under the floor is refused as before: the writer's draft and the listener's edit both pass through `saveAndLint` (flow.mjs lines 3034 and 3131, bound and unchanged), lint's `scenes` error (lint.mjs line 471, bound and unchanged) hands it back, and QA's measured 480-second / 14,400-frame floor is untouched. Nor is it leave to pad: the rule is about the listed words and the three kinds they share, the writer's "never pad to reach it" stands in the stage's own text (line 313), and the sentence that follows says "the facts do not change".
+- "the check transcribes the synthesized voice and compares it with the script, and a homophone is heard the same way when it is recorded again, so it is the wording that changes". This describes the audio check and tells the two stages to word a line so that it passes. The check compares words, not length, and the commit touches none of its code: nothing under tools/video/tts, and not the retake and rewrite rounds in flow.mjs. What those rounds do and what they refuse is as before.
+
+"Numbers, Latin-script words and proper names stay exactly as written" keeps the rule off anything a length is said with. `HEARD_RULES` as the stages receive it (753 characters) holds no digit, no length and no precedence clause. So the new text says which words the narration uses. It moves no length and no check.
+
+A case-insensitive scan of the added and removed lines of the commit's five diffs for minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json and process.env finds one line, in the task file, which says that prompts.mjs "is bound by the duration receipt". The lines naming one of those terms number 88 in prompts.mjs, 10 in register.mjs, 19 in prompts.test.mjs and 3 in script-writing.md at both revisions. Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. The commit touches five files: prompts.mjs, prompts.test.mjs and register.mjs under tools/video/automation, one skill reference (script-writing.md) and its task file. None is under apps/api, tools/video/core, tools/video/qa, tools/video/tts or docs/videos, and flow.mjs is not among them.
+
+Ran (in the worktree at `9f5efa2b8`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the hashing of every bound path against the receipt, the baseline and the head;
+- `durationReviewProblems` against the baseline through `git cat-file`;
+- a reading of the prompts.mjs diff, of the register.mjs, prompts.test.mjs, script-writing.md and task-file diffs as context, and of the flow, lint and drama code named above;
+- `instructionsFor` for six stages, two formats and 18 variants (216 calls), of which 28 carry `HEARD_RULES`, every one a writer or a listener under format "slides";
+- the character counts of the 15 pairs;
+- the duration-term counts and the scan;
+- `git diff --check` over the commit, which exited 0.
+
+On the reviewed bytes, each of these exited 0:
+
+- `node --test tools/video/automation/prompts.test.mjs`, 25 of 25;
+- `node --test tools/video/core/lint.test.mjs`, 45 of 45;
+- `node --test tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs`, 25 of 25.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the 15 pairs, the wording each is replaced with, or the choice of stages that carry them as editorial choices. Whether a replacement keeps a sentence's meaning (「界線」→「原則」, 「那一欄」→「這個欄位」) was not judged.
+- register.mjs, prompts.test.mjs, script-writing.md and the task file are unbound. They were read as context and are not reviewed or bound here.
+- No audio check was run. That each listed word is misheard, that the wording on the right passed, and the comment's figures (13 and 19 of 151 lines) are the author's and were not reproduced.
+- No writer or listener was run. How many characters a whole script gains was not observed, nor whether a model told to add a character or two takes a line past the writer's 40 characters or a Short past its 55 seconds. Only that those limits stand in the stage's text as before, and that this commit changes no check.
+- Under format "slides", `instructionsFor` falls back to the plain writer or listener for a variant that has no text of its own for that stage, and such a call carries `HEARD_RULES`. Which format and variant a route passes was read at `variantOf`, `listen` and the writer's calls in flow.mjs. It was not traced through every caller, and the brand story's route was read from its own texts in story-prompts.mjs alone.
+- No rendered cut or measured narration was produced, and the full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 107 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -3134,7 +3188,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/automation/automation.test.mjs` | `f2e7b1d4852c43d1c68217666d9c6e617dc4fd3c4a2709d8f4e144cb6c388721` |
 | `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
 | `tools/video/automation/flow.mjs` | `4de8bbedb777f17a66a04064c0bd612a2a23ea8cf206d798fb449851a6a46bc7` |
-| `tools/video/automation/prompts.mjs` | `2ff4f72957abe80882801bf55205f8513899eb3545428a87f226a1d20a65724d` |
+| `tools/video/automation/prompts.mjs` | `4da2bae5b173bf24b7b6a87f9cc41531b5bd89cb36f025ad2582c71ae8fa254b` |
 | `tools/video/automation/series.mjs` | `2b687e0e5251f8b01904f3018bc658e4322888959af9d8dc0931d71a41e5e381` |
 | `tools/video/automation/series.test.mjs` | `1974b5d8db7177c920bc85ec35acf8abc4a0177b80947596ed5b551e813c53d6` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
