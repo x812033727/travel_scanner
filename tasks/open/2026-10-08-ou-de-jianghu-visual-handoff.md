@@ -1,11 +1,11 @@
 ---
 id: 2026-10-08-ou-de-jianghu-visual-handoff
 title: 《偶的江湖》角色資產鎖定與第一集動畫試播交接
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5.1
+claimed_at: 2026-10-09T10:58:58Z
 created_at: 2026-10-08T10:52:24Z
 completed_at:
 branch: codex/ou-de-jianghu-visual-preproduction-20261008
@@ -42,6 +42,21 @@ scope:
 `npm run check:tasks`
 
 ## Notes
+
+- 2026-10-09 Claude 接手（claude-fable-5.1）：依站主「接手完成第一集、沿用原方案與預算、十一鏡改案不採用」接續。歸檔 Codex STOP、取得新 lease（owner claude-episode-one-finish），授權檔只換 lease 持有人（備份 SHA 02858b41…），上限、take cap、來源 SHA 不變。用內建瀏覽器（站主登入）以作品詳情頁「無水印下載」回收 9 筆已付費原任務（3 張 t2 首格、6 支影片，無重送），逐筆入帳並寫 O/qa 收據：075/090/091 t2 首格候選，080/087 候選，046/049/053/055 有限候選（053 冠自首格起裁、055 落刀行程極短無火花）。接著按原案付費 6 支影片共 336 點：086 t1、045 t1、064 t1、091 t1 候選；090 t2 有限候選（與 087 銜接待核）；075 t2 HOLD（動作由沈而非寂聞執行，影片 take 已滿 2 次）。A 期實扣 7,015＋未知預留 70＝7,085，餘額 54,985。內建瀏覽器無法選本機檔，首格以頁面 JS 抓海螺 CDN 無水印原檔（SHA 逐張核對）注入上傳框；提示詞以 Slate 編輯器 API 寫入並核對。帳本、收據與下載紀錄在外部 O/claude-recover-20261009 與 F/actions。未改 source／lock，無購點、無 API 費用，未合併／部署／發布。
+- 本輪本機成果：對白 D 軌候選 13 鏡（O/next-D-claude-20261009，087／049／064 場末停頓溢出、086 台詞 6.58 s 超過 5.17 s 片長待剪接決定）、下一批 12 鏡首格封包（O/claude-next-batch-20261009，A94–A105，prepared_not_submitted）。停在：把 12 鏡加進 active_batch 並調內部操作額度（7,600→9,200）被分類器擋下，未繞過；9 張參考圖在海螺頁面找不到既有上傳副本；首格以頁面 JS 注入 CDN 原檔的做法與 browser-production.md 第 1 節有張力，均待站主裁定。完整進度在 [CLAUDE-PROGRESS-20261009.md](../../docs/videos/series-plans/ou-de-jianghu/visual-development/handoff/CLAUDE-PROGRESS-20261009.md)。
+
+- 2026-10-09 owner 明確要求轉交 Claude 並「收尾停止」：Codex 停止新增生成／API，交接入口 [CLAUDE-HANDOFF-20261009.md](../../docs/videos/series-plans/ou-de-jianghu/visual-development/handoff/CLAUDE-HANDOFF-20261009.md)，外部 E 根目錄亦存同名副本。停止時 133 圖像 take／89 鏡、61 影片 take／57 母鏡（32 候選、10 有限、15 HOLD），尚 363／420 母鏡無下載；597 錄音候選存在，不代表完成剪接／聽驗。A 實扣 6,679＋unknown 70＝6,749，最後 UI 55,321；API估值含未知 US$0.3638495 不變。9 個已付費原任務尚未下載（3圖／6影片、354點已計入），group IDs 全列交接；不得重送。a02-s086-video-t1 在 intent 前被 guard 拒絕，未送未扣；最終表單混入人工輸入文字，不能直接點建立。
+- 已寫外部 E/STOP（SHA `17718bbcbc43d89c3b7d04b9d35e17e9e90a6ac62270fd169ac62da46c3f4e60`），lease guard 回報 `lease_released`／exit0，原PID35956已退出、LEASE不存在；沒有背景繼續下單，海螺已送遠端任務可能自行完成。唯讀預覽8784保留。075/090/091 t2仍待原結果下載及QA；新增首格056/061/063 HOLD、064候選及048/092未送t2備料均已列交接。DoD未完成，本票release供Claude接手；未commit/push/merge/deploy/upload。精確收尾驗證外部 O/claude-stop-receipt.json。
+
+- 2026-10-09 本輪續製進行中：站主明確回覆「保留原方案，先做其他鏡頭」，十一鏡修正不採用、不套用；外部 `finish-episode/eleven-shot-decision-20261009-deferred.json` SHA `0ae4f2206fe9c4b2f60b4ddac67bf8261329f102ccdfff0d2f3dc06ba2b47585` 綁定原話及已展示提案。原 source／A、B 總上限／每鏡 take cap 保持，原 HOLD 與 a01-s082、a02-s030、a02-s033 三筆 unknown／70 點預留均保留。只續做未受變更影響的原案；不能把 deferred 當放行。
+- 2026-10-09T09:21Z 非終態快照：外部 `finish-episode/throughput-resume-20261009/current-turn-status.json` SHA `8ba0fc8a22f17146fc35a7d09d425f4532c5ee9afcf663019e227843b97af815` 補合併 previous 原 15 actions／475 點後，已下載 107 張 image takes／68 鏡、50 支 video takes／47 個不同動態母鏡，含原 pilot 與 HOLD，並非可用或採用數；後續仍在下載／判片，不把此快照冒稱最新終態。新增完整原音窗口／原 pause 的 D 候選及 15.208333 秒 pilot M/A/F 試混，分軌與可編輯工程已存；未實聽／未 owner 採用，重疊版本不得相加當新增母鏡。597／597 錄音候選及 API 估值 US$0.3638495（含舊未知預留）不變，沒有新增 API 請求。
+
+- 本輪等待下載交接：上述兩個新增剪接MP4及原始D軌皆已落盤；1692票格式檢查、scoped diff check通過。製作lease正常release／exit0，原PID11428不再執行；本票release回open，沒有背景繼續下單。003原任務只待同一成品下載，不重生成；031起點限制、033／030／082未知結果與各自預留、其餘未製鏡與六鏡待決均保留。本輪只增加外部媒體及本票交接，未改源劇本／正式採用，未合併、部署或發布。
+
+- 2026-10-09 本輪新增可播候選：外部 `finish-episode/assembly/throughput-resume-20261009/` 已輸出 067→068 中文 D 軌 MP4（8.833333秒）及070單鏡（3.766667秒），合計12.6秒，各保留獨立48k D.wav。5句既有WAV PCM逐段一致、原pause保留，兩片完整AV解碼過；尚未實聽／口型／正式採用。069完整台詞加原pause為5.30秒，超現片5.166667秒，留待切點核對，未跳過它串片。站主回覆「已恢復」後重新綁定IAB tab9，實見003任務已完成（00:04）、餘額58,310；下載事件卻因工具無法取得授權決定而失敗，並非明確拒絕。保留原任務，不繞過下載安全控制，已請站主手動下載同一支無水印檔；003仍不算本機已交付。033／030／082未知預留70未動，未新增付費。
+
+- 2026-10-09 加速續製：依站主「做太久了」續做不受六鏡變更影響的原鏡，沒有縮短全片或默採變更。版本化本機操作批額 3,200→4,000，原 A/B 期與 take cap 不變；備妥 003／030／031／033／034／038／040 原案。003、031 首格各實扣24點，官方無水印下載完成；003內容候選，031仍有燕迴起點約高於最底階2–3階的限制。003原定H3四秒已送出、實扣48，任務564856595289645061，最後查見生成中，尚未下載。030原請求未查得任務與扣点，保留24；033建立時瀏覽器操作逾時，AX／截圖／重整／新分頁恢復均失敗，另保留24而不重送；連同舊082的22，共未知70。A期實扣3,690＋預留70＝3,760，最後可讀餘額58,310。原始操作、官方下載及短QA在外部 `finish-episode/throughput-resume-20261009/`；已請站主恢復IAB。現有已下載動態母鏡仍35／420、錄音候選597／597，003未下載不能加進完成數；未追加Google費用、購點、續訂或套用六鏡變更。
 
 - 2026-10-09 收尾讀回追加：發現進度 JSON 的頂層 counts 仍直接引用上輪 timeline，主控先重新 who-is-on-it 確認 handoff 無 active scope、唯一相關 PR #1388 為本隊，重新 claim；`--force` 只略過同隊未結相依。將舊 timeline 數字另標 historical，當前統計改由 source／逐 take 收據／配音讀回計算，保留舊快照。另只補驗未有完整影音解碼的 11 支：全部 exit0、stderr 空、video/audio 都完整解碼且來源 SHA 未變；已有證據的 25 支未重跑，合計 36／36 有完整影音解碼證據，所有視覺 HOLD 與接受限制不變。外部 index SHA `3e2201dc53f2d6bc55144b9d7f41657c600c8f141b3ac6b7a5a14b0b60bc580e`。六鏡變更只凍結其改稿分支；a02-s003 原分鏡仍有四張 SHA 相符的備料可續製，尚未生成首格。3,200 點是本機操作批次額度，非新增站主總上限；下一次付費前仍須新 lease、版本化操作額度及即時餘額證據，不得直接繞過舊 guard。
 
