@@ -3093,6 +3093,22 @@ Non-claims: this is independent duration-only acceptance of the three rebound ha
 
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none for these bound bytes.
 
+## Current-main rebase increment: 3 registered files (2026-10-09)
+
+Reviewer: `codex-local-video-audit-duration-review`, independent of source authors `codex-stalled-video-completion` and `codex-video-audio-matcher`. Scope: DURATION_ONLY. Reviewed source HEAD is `5121d025742b1c88444c61b0d3b7f48bb7796ff5`, rebased onto main `114aa2c95f8fa936cdaea649a6ed7a3b4476192b`. The preceding 2026-10-08 c645-bound increment is retained verbatim as historical evidence; this fresh increment binds the rebased source.
+
+Compared every registered baseline against raw main Git blobs, the exact main receipt and the main report table: all 108 agree. Exactly 105 registered files remain byte-identical to main. Only `tools/video/qa/cli.mjs`, `tools/video/qa/qa.test.mjs` and `tools/video/tts/check.test.mjs` require fresh bindings. All main report text and every historical increment are preserved; only these three SHA256 table rows and this increment change. No source file was authored or changed by this reviewer.
+
+The QA CLI uses the existing zh-TW caption and metadata requirements before the owner chooses additional languages; explicit owner choices still select the requested CC and metadata independently. The tests cover undecided languages, metadata-only English and missing selected English CC. This does not fabricate a language choice or alter timing. The current-main lost-Jev guard remains intact: an uncertain result is pinned to the request/final hashes, preserved as lost, returned without another provider request, and remains a failed final check rather than the ordinary service fallback.
+
+The matcher regression delta tests heard-only Mandarin closing particles at punctuation boundaries, while retaining raw and ending-only candidates and intended text. It rejects missing words, changed numbers, changed negation/nouns, leading/interior particles, lexical 氣餒/气馁/好耶 and non-Chinese false matches. The related unregistered matcher implementation and joined-audio limiter diffs were read for duration effects: neither changes source text, sample counts, frame counts or timeline rules; the limiter retains the 48 kHz trim/pad grid. No media acceptance or general matcher quality claim follows from this duration review.
+
+The 600/780-second plan targets, measured 480-second/14,400-frame floor, 8-minute minimum, runtime_spec/action_seconds rules, source hashes and covered state are unchanged. All 473 current plans independently validate against freshly built plans before any receipt edit. The registered duration, timeline, schema, state, policy and plan files are among the 105 unchanged bytes.
+
+Before rebinding, the focused QA/duration/plan/receipt suite passed 44 of 45 tests; its sole failure was the expected stale report/three bindings. After rebinding, compatible bundled Node v24.19.0 passed `node --test tools/video/qa/qa.test.mjs tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs tools/video/long-form/review.test.mjs`: 45/45, zero skips. Six pure matcher tests passed 6/6 with zero skips. `node tools/video/long-form/cli.mjs check` passed all 473 plans with unchanged targets, measured floors, source hashes and covered state. A broader mocked speech-journal test encountered a Windows EPERM rename and aborted; that broader run is not counted as passed. Durable baseline, delta, preservation and test evidence is retained under `C:/Users/x8120/mokaair-work/stalled-video-audit-20261008/duration-rebase-20261009`.
+
+Verdict: PASS, DURATION_ONLY. This is a genuine incremental review of the three changed registered bytes and current-main baseline, not a content, owner-playback, upload, publication, provider-retry or new paid-production approval.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -3196,14 +3212,14 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/production/anime-input.test.mjs` | `76b4082fd9245ea331c04d430f82aa5e4afa742d4f830c0794531cc4bbe80d02` |
 | `tools/video/qa/checks.mjs` | `0c13be6eb906f9a322eab71dd18974a2cfa3f9d9b27cc5a9cba9f3570891567b` |
 | `tools/video/qa/checks.test.mjs` | `e93fe80fb6ef0366da6728e397f78e355e6000847836a0a7e31ae63615211317` |
-| `tools/video/qa/cli.mjs` | `b0b0a5ea57f5a060b38d732bc335944bbadbcd8d75bbaa50310fb1d29d01c17e` |
+| `tools/video/qa/cli.mjs` | `06ea7f67203bca83b5d2481c395c2c231e9bc1ffb9fd80260af82e48d4f5df43` |
 | `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
-| `tools/video/qa/qa.test.mjs` | `b27d4ce3e3b6b0329488b549095cd51d61311a5cc644125b4087da99157c1281` |
+| `tools/video/qa/qa.test.mjs` | `3381ba1bb8227137d9b9b6c4559662c7ea1367b1aa620cd430e8f4a67618a768` |
 | `tools/video/review/sync.mjs` | `c4ae35a7a88513b76f1997a77d3dff39829d69262971479b39f86ac9d76ee21c` |
 | `tools/video/review/sync.test.mjs` | `ae5d0c052271bf2694432f95deedcf89a005935335977104faf592aace0249a1` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
-| `tools/video/tts/check.test.mjs` | `8da7502e68ba7bea2cb3bbdba3bf711bbfbb950b16429a480f5d0075b7670353` |
+| `tools/video/tts/check.test.mjs` | `42f9bdbcb3b4454fb9d945f3899da36bcc3d70c045d31196f0c931a692f906d1` |
 | `tools/video/tts/synthesis.mjs` | `589ebe665bd281aaefba6749d61148f4c7011f71c962513efd5a6cd6830f3cb3` |
 | `tools/video/tts/tts.test.mjs` | `6f7dda4d4cb36292ca5445a83698d74c693464a9502b88be731564ef5c923403` |
