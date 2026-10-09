@@ -47,6 +47,16 @@ export const isStockPath = (value) => typeof value === "string" && STOCK_PATH.te
 export const workUrl = (file) => `${ORIGIN}/work/${file.split("/").map(encodeURIComponent).join("/")}`;
 // A credit drawn on the slide is a short line in the picture's corner; the description carries it in full.
 export const CREDIT_MAX_CHARS = 60;
+// Where a card's fact is from, or which run printed it (script-writing.md §含金量): one line
+// under a bullets, compare, steps or table card, drawn like the stats card's source. The cards
+// that already carry one keep their own field (quote and stats: source; terminal: ran_on and
+// tool_version; code, diagram, screenshot and screencast: caption).
+export const SOURCE_MAX_CHARS = 48;
+export const SOURCED_TEMPLATES = ["bullets", "compare", "steps", "table"];
+const sourceProblem = (data) =>
+  data.source !== undefined && !(isText(data.source) && !data.source.includes("\n") && visibleLength(data.source) <= SOURCE_MAX_CHARS) &&
+  `source must be one line of text (at most ${SOURCE_MAX_CHARS} characters)`;
+const sourceLine = (data) => (data.source ? `<div class="caption-line">${richText(data.source)}</div>` : "");
 
 // Per template: which data it needs, and how many elements lines may reveal.
 export const TEMPLATE_SPECS = {
@@ -59,13 +69,13 @@ export const TEMPLATE_SPECS = {
     capacity: () => 0,
   },
   bullets: {
-    check: (data) => [data.title !== undefined && !isText(data.title) && "title must be text", !isTextList(data.items, 1, 6) && "items must be 1 to 6 strings"],
+    check: (data) => [data.title !== undefined && !isText(data.title) && "title must be text", !isTextList(data.items, 1, 6) && "items must be 1 to 6 strings", sourceProblem(data)],
     capacity: (data) => data.items.length,
   },
   compare: {
     check: (data) => {
       const side = (value) => value && isText(value.heading) && isTextList(value.points, 1, 5);
-      return [data.title !== undefined && !isText(data.title) && "title must be text", !side(data.left) && "left needs heading and 1 to 5 points", !side(data.right) && "right needs heading and 1 to 5 points"];
+      return [data.title !== undefined && !isText(data.title) && "title must be text", !side(data.left) && "left needs heading and 1 to 5 points", !side(data.right) && "right needs heading and 1 to 5 points", data.verdict !== undefined && !isText(data.verdict) && "verdict must be text", sourceProblem(data)];
     },
     capacity: () => 2,
   },
@@ -74,6 +84,7 @@ export const TEMPLATE_SPECS = {
       data.title !== undefined && !isText(data.title) && "title must be text",
       !(Array.isArray(data.steps) && data.steps.length >= 2 && data.steps.length <= 5 && data.steps.every((step) => step && isText(step.title) && (step.detail === undefined || isText(step.detail)))) &&
         "steps must be 2 to 5 of { title, detail? }",
+      sourceProblem(data),
     ],
     capacity: (data) => data.steps.length,
   },
@@ -86,6 +97,7 @@ export const TEMPLATE_SPECS = {
         !columns && "columns must be 2 to 5 strings",
         !rows && "rows must be 1 to 8 arrays as long as columns",
         data.highlight !== undefined && !(Number.isInteger(data.highlight) && rows && data.highlight >= 0 && data.highlight < data.rows.length) && "highlight must be a row index",
+        sourceProblem(data),
       ];
     },
     capacity: (data) => data.rows.length,
@@ -266,13 +278,13 @@ const RENDERERS = {
   bullets(data, state) {
     const show = state.visible(data.items.length);
     const items = data.items.map((item, index) => `<li${attrs(show(index))}><span class="n">${index + 1}</span><span class="fit">${richText(item)}</span></li>`);
-    return `${heading(data, state.first)}<ol>${items.join("")}</ol>${data.note ? `<div class="note">${richText(data.note)}</div>` : ""}`;
+    return `${heading(data, state.first)}<ol>${items.join("")}</ol>${data.note ? `<div class="note">${richText(data.note)}</div>` : ""}${sourceLine(data)}`;
   },
   compare(data, state) {
     const show = state.visible(2);
     const card = (side, index, name) =>
       `<div${attrs(show(index), `card ${name}`)}><h3>${richText(side.heading)}</h3><ul>${side.points.map((point) => `<li>${richText(point)}</li>`).join("")}</ul></div>`;
-    return `${heading(data, state.first)}<div class="cards">${card(data.left, 0, "left")}${card(data.right, 1, "right")}</div>${data.verdict ? `<div class="verdict">${richText(data.verdict)}</div>` : ""}`;
+    return `${heading(data, state.first)}<div class="cards">${card(data.left, 0, "left")}${card(data.right, 1, "right")}</div>${data.verdict ? `<div class="verdict">${richText(data.verdict)}</div>` : ""}${sourceLine(data)}`;
   },
   steps(data, state) {
     const show = state.visible(data.steps.length);
@@ -281,13 +293,13 @@ const RENDERERS = {
       const arrow = index ? `<div${attrs(show(index), "arrow")}>→</div>` : "";
       return arrow + card;
     });
-    return `${heading(data, state.first)}<div class="flow">${parts.join("")}</div>`;
+    return `${heading(data, state.first)}<div class="flow">${parts.join("")}</div>${sourceLine(data)}`;
   },
   table(data, state) {
     const show = state.visible(data.rows.length);
     const head = `<tr>${data.columns.map((column) => `<th>${richText(column)}</th>`).join("")}</tr>`;
     const rows = data.rows.map((row, index) => `<tr${attrs(show(index), index === data.highlight ? "hot" : "")}>${row.map((cell) => `<td>${richText(cell)}</td>`).join("")}</tr>`);
-    return `${heading(data, state.first)}<table><thead>${head}</thead><tbody>${rows.join("")}</tbody></table>`;
+    return `${heading(data, state.first)}<table><thead>${head}</thead><tbody>${rows.join("")}</tbody></table>${sourceLine(data)}`;
   },
   code(data, state) {
     const hot = new Set(data.highlight ?? []);

@@ -3019,6 +3019,62 @@ PASS is DURATION_ONLY for the five rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Content-value rules first-use fixes increment: 1 file (2026-10-09)
+
+Reviewer: `claude-pr-review-content-value-fixes-20261009`. Author: `claude-opus-5-5-video-reference-comparison`. Scope: DURATION_ONLY for the one changed binding below, reviewed at `250490058846fb36faa46644d65dd88cc5dca210` ("fix(video): answer what the content-value rules left to guesswork") on claude/content-value-rules-fixes. The reviewer wrote no part of that commit and edits only this report and review.json.
+
+Baseline: `c5e99297c08b023b88f05e498e1500f110f70c7d`, the commit's parent. Immutable Git blobs pass `durationReviewProblems` there for the report and all 108 REVIEW_FILES, under the "Content-value rules increment (stacked on PR #1390)" above. The changed file matches its existing receipt and table at that baseline; its committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly this one binding, while the other 107 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `tools/video/automation/prompts.mjs`: `c5ec0cd625dfcf47a7927ffae7ca45fcf5c8eb32e96190f4ea5561278c6da415` -> `2ff4f72957abe80882801bf55205f8513899eb3545428a87f226a1d20a65724d`.
+
+Findings, `tools/video/automation/prompts.mjs` (+8/−4): every changed line is in `TEMPLATE_GUIDE`, the list of card templates the slides planner and writer read (lines 93–100). The bullets, compare, steps and table entries each gain an optional `source?` field; the steps entry gains "A sequence: alternatives go in a table."; three lines say that "source" is one line of at most 48 characters under the card, naming where its fact is from or which run printed it. The field is card data drawn on the slide. It is not a `lines[]` entry, so it adds nothing to the spoken text the timeline estimate and the measured cut are made from, and the four templates' reveal counts are worded as before. The 48 counts characters on a card. A card's `source` is a string on a card template; `isSourced` in drama.mjs (bound, unchanged) reads an object on a shot, so the drama's eight-second clip check does not see it. No other line changes. The three `${VALUE_RULES}` interpolations (planner, writer, listener) are the same lines four lower (204, 262, 367), and these are unchanged in wording: the planner's "each ≥ 10 s … the whole at least 8 minutes" (lines 242–243), the writer's "each at least 10 seconds … never under 8 minutes … Never cut a sourced fact to fit it and never pad to reach it" (lines 308–311), the upper end of target_minutes as an aim and not a limit, the explainer's 10-minute production target with its eight-minute body and cut (lines 1427–1428), the story and explainer outlines' "never under 8 minutes" (lines 1515 and 1554), the drama's 2 to 4 minutes, and the long-anime runtime_spec and action_seconds instructions.
+
+The imported text in register.mjs (unbound; +57/−21, all inside `VALUE_RULES` and the comment above it) was read as context, since it is what the three stages now carry. Four passages bear on length or on the opening:
+
+- "The opening chapter is the result alone; the mechanism is the second chapter." New. It says what the first chapter holds and where the mechanism goes. It names no seconds and no length. The planner's "each ≥ 10 s" and the writer's "each at least 10 seconds" stand in the stages' own text, and lint.mjs and timeline.mjs (bound, untouched by this commit) read the opening chapter against the hook threshold (lint.mjs lines 460–463, a warning) and every chapter against YouTube's minimum as before. Putting the mechanism in chapter two moves narration between chapters; the floor is measured over the whole episode.
+- "The length comes from substance: a second worked example, a common failure and how to find it, a contrast, an exercise. Never from a chapter on something one line answers, from restating, or from scene-setting. When the material ends short of the minimum, add an example the sources carry or say so in the report; do not fill." These lines are byte for byte the baseline's: they are context lines of the diff, not changed ones. The previous increment's reading of them stands, including that lint's `scenes` error, the lint-fix loop in flow.mjs and QA's measured 480-second / 14,400-frame floor refuse a short draft whatever its report says.
+- "On the teaching route a second worked example is that route's contrast; the main example still carries the video." New. Of the four things the length bullet lets a writer reach the minimum with, it says which one a second example is on the teaching route, whose rules ask for "one main worked example, a purposeful contrast and a transfer exercise". It names no length and moves no minimum.
+- "The cap does not cover what a tutorial owes its viewer anyway: a common failure and how to find it, the exception in an update's fourth move, and a card's label of what was and was not run". New. It narrows the baseline's cap ("A risk, limit or warning is one chapter at most") to a warning about the subject itself, so it lets more be written, not less, and it states no number of seconds.
+
+The other new sentences set three levels of evidence (SEEN, RUN, CITED), what counts as an outcome, where the check that settles trust sits, what to do when real text does not fit a card (64 characters a line, about 12 lines, 44 characters, 78 columns: capacities of a card, not times), where a card names its source, and three sentences exempt from "every sentence carries a fact" (the cta card's sentence and the outro's comment question and subscribe invitation; they are still spoken and still counted). None states a duration. The precedence clause ("where these rules and a route's rules disagree, these win") is unchanged, and `VALUE_RULES` still carries no length that could override a stage's own.
+
+Two length-like phrases the commit adds are in neither `VALUE_RULES` nor prompts.mjs, so no worker prompt carries them. "The outro's three sentences share one state, so keep them to about 45 spoken units together" is in writer-video.md and script-writing.md (unbound skill references). It sizes the narration of one card state; no code enforces it (in tools/video, "spoken units" is only lint's per-sentence split warning and the cli's estimate line). "(lint keeps it under 30 seconds)", in planner.md and script-writing.md, describes lint's existing opening-chapter warning, whose thresholds (30 seconds for plain slides, cadence.mjs's for an illustrated video) this commit does not change. Neither is a length of the episode.
+
+In templates.mjs (unbound, +18/−6) the same four cards accept and draw the `source` line and the compare card's verdict gains a type check; no `capacity` function changes, so no card's reveal count does.
+
+A case-insensitive scan of the added and removed lines of the prompts.mjs, register.mjs and templates.mjs diffs for minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json and process.env finds nothing. The lines naming one of those terms number 88 in prompts.mjs, 10 in register.mjs and 15 in templates.mjs at both revisions. Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. The commit touches nine files: prompts.mjs, prompts.test.mjs and register.mjs under tools/video/automation, templates.mjs and templates.test.mjs under tools/video/templates, three skill references (planner.md, writer-video.md, script-writing.md) and the task file it closes. None is under apps/api, tools/video/core, tools/video/qa or docs/videos, and flow.mjs is not among them.
+
+Ran (in the worktree at `250490058`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the hashing of every bound path against the receipt, the baseline and the head;
+- `durationReviewProblems` against the baseline through `git cat-file`;
+- a reading of the prompts.mjs diff, of the register.mjs, templates.mjs and skill-reference diffs as context, and of the lint, timeline and drama code the new text sits beside;
+- the duration-term counts and the scan;
+- `git diff --check` over the commit, which exited 0.
+
+On the reviewed bytes, each of these exited 0:
+
+- `node --test tools/video/automation/prompts.test.mjs`, 24 of 24;
+- `node --test tools/video/templates/templates.test.mjs`, 22 of 22;
+- `node --test tools/video/core/lint.test.mjs`, 45 of 45;
+- `node --test tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs`, 25 of 25.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the evidence levels, the limits of the risk cap, the card-fitting rules or the `source` field as editorial or design choices.
+- register.mjs, templates.mjs and its test, prompts.test.mjs, the three skill references and the task file are unbound. They were read as context and are not reviewed or bound here.
+- The slides writer's prompt now gives the code card two capacities: `TEMPLATE_GUIDE` says "code ≤9 lines with a title and caption" (prompts.mjs line 101, unchanged) and `VALUE_RULES` says "about 12 lines beside a title and a caption", while the check in templates.mjs refuses a code card past 16 lines. Which of them holds on screen was not established. It is a card's capacity, not a duration, and is left to the author.
+- "About 45 spoken units" for the outro was not checked against the 15-second state QA or a rendered card, and "lint keeps it under 30 seconds" names a warning, not a refusal. Both sit in unbound files.
+- No planner, writer or listener was run. Whether a model told that the opening chapter is the result alone writes a first chapter under YouTube's ten seconds was not observed, only that the stages' own minimum and the unchanged chapter checks still apply.
+- No rendered cut or measured narration was produced, and the full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 107 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -3078,7 +3134,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/automation/automation.test.mjs` | `f2e7b1d4852c43d1c68217666d9c6e617dc4fd3c4a2709d8f4e144cb6c388721` |
 | `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
 | `tools/video/automation/flow.mjs` | `4de8bbedb777f17a66a04064c0bd612a2a23ea8cf206d798fb449851a6a46bc7` |
-| `tools/video/automation/prompts.mjs` | `c5ec0cd625dfcf47a7927ffae7ca45fcf5c8eb32e96190f4ea5561278c6da415` |
+| `tools/video/automation/prompts.mjs` | `2ff4f72957abe80882801bf55205f8513899eb3545428a87f226a1d20a65724d` |
 | `tools/video/automation/series.mjs` | `2b687e0e5251f8b01904f3018bc658e4322888959af9d8dc0931d71a41e5e381` |
 | `tools/video/automation/series.test.mjs` | `1974b5d8db7177c920bc85ec35acf8abc4a0177b80947596ed5b551e813c53d6` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |

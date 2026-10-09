@@ -90,10 +90,14 @@ Slide templates (the payload's "showcase" has one scene of each; copy the shape,
 Reveal: a line with "reveal": 1 shows the next item; a scene's reveals must equal its items.
 - title {title, subtitle?, tag?}: no reveals. The first scene.
 - chapter {title, number?}: no reveals. Opens a chapter.
-- bullets {title?, items: 1-6}: one reveal per item.
-- compare {title?, left:{heading, points 1-5}, right:{…}, verdict?}: 2 reveals (left, right).
-- steps {title?, steps: 2-5 of {title, detail?}}: one reveal per step.
-- table {title?, columns 2-5, rows 1-8 (each as long as columns), highlight? row index}: one reveal per row.
+- bullets {title?, items: 1-6, source?}: one reveal per item.
+- compare {title?, left:{heading, points 1-5}, right:{…}, verdict?, source?}: 2 reveals (left, right).
+- steps {title?, steps: 2-5 of {title, detail?}, source?}: one reveal per step. A sequence:
+  alternatives go in a table.
+- table {title?, columns 2-5, rows 1-8 (each as long as columns), highlight? row index, source?}: one reveal per row.
+  "source" on bullets, compare, steps and table is one line of at most 48 characters under the
+  card: where its fact is from or which run printed it (「官網 YYYY-MM-DD」,
+  「實跑 YYYY-MM-DD｜<tool and version>」).
 - code {code ≤9 lines with a title and caption, highlight? [line numbers], caption?}: no reveals.
   For worked calculations; the renderer refuses code its panel cannot show.
 - big {text, kicker?, sub?}: no reveals. One number or phrase to remember.
