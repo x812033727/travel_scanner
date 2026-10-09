@@ -45,7 +45,7 @@ current baseline before the branch can claim a current duration-only receipt.
 ## How to verify
 
 Use the compatible bundled Node v24.19.0 at
-`C:/Users/x8120/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe`.
+`<home>/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe`.
 
 ```text
 node --test tools/video/qa/qa.test.mjs tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs tools/video/long-form/review.test.mjs
@@ -60,7 +60,7 @@ The focused suite passed 45/45 and matcher comparisons passed 6/6, zero skips.
 The final report-text revision was rechecked with both receipt tests (2/2) and
 all 473 plans. Raw baseline and preservation proofs plus command exit records
 are retained under
-`C:/Users/x8120/mokaair-work/stalled-video-audit-20261008/duration-rebase-20261009`.
+`<home>/mokaair-work/stalled-video-audit-20261008/duration-rebase-20261009`.
 
 ## Notes
 
