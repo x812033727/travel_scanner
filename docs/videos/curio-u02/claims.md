@@ -34,10 +34,10 @@ c27｜英國 U-2 史家 Chris Pocock 在 EBB 434 的評註說多數「新」內�
 c28｜1974 年 Skylab 4 太空人違反指示拍到 Groom Lake；CIA 1974-04-19 備忘錄："There were specific instructions not to do this"，Groom 是那趟任務唯一有此指示的地點（Dwayne Day，The Space Review，單一來源但引 CIA 備忘錄）｜https://thespacereview.com/article/4518/1｜2026-10-10｜secret-skylab, secret-memo-analyst
 c29｜美國地質調查局 1968-08-28 的 Area 51 航照（Commons，PD-USGov-USGS）；Day 的文章提到 1959 與 1968 兩批 USGS 航照早就在公開檔案庫裡｜https://commons.wikimedia.org/wiki/File:Area_51_28_August_1968_2.jpg ；https://thespacereview.com/article/4518/1｜2026-10-10｜secret-usgs-photo
 c30｜2000-04-17 Aerial Images Inc. 在 TerraServer 公開 1998 年 3 月俄國衛星拍的 2 公尺解析度黑白影像，Area 51 可見（CBS 2000-04-17；Las Vegas Sun 2000-04-18）｜https://www.cbsnews.com/news/satellite-image-of-area-51/｜2026-10-10｜secret-satellite-2000
-c31｜1967-05-15 的 CIA 文件 BYE 2369-67（Commons 標 "OXCART RECONNAISSANCE OF NORTH VIETNAM (W/ATTACHMENT)"、作者 CIA (Richard Helms)、PD-USGov-CIA）已印有「Area 51」（"deployed from Area 51 to Kadena"）；那一頁是 FOIA 檔的第 17 頁，頁面上印的是 "BYE 2369-67 Page 15"，卡片標題不再寫頁碼；文件類型（備忘錄與否）CIA 閱覽室當天打不開、未能確認，旁白、卡片與說明欄改稱「文件」（查核第一輪）；所以 2013 年新的是「刻意的、官方的」承認加上地圖（路透社用詞，見 c2），不是這兩個字第一次出現；「CIA 終於承認 51 區存在」是新聞標題式說法｜https://commons.wikimedia.org/wiki/File:CIA_BYE2369-67_page17.gif ；https://www.csmonitor.com/USA/Latest-News-Wires/2013/0817/Area-51-is-real-say-CIA-documents｜2026-10-10｜release-memo-1967
+c31｜1967 年的 CIA 文件 BYE 2369-67（Commons 標 "OXCART RECONNAISSANCE OF NORTH VIETNAM (W/ATTACHMENT)"、作者 CIA (Richard Helms)、PD-USGov-CIA）已印有「Area 51」（"deployed from Area 51 to Kadena"）；那一頁是 FOIA 檔的第 17 頁，頁面上印的是 "BYE 2369-67 Page 15"，頁首標題 "II. OXCART RECONNAISSANCE OPERATIONS PLAN"，卡片標題不再寫頁碼；查核第二輪用內建瀏覽器開到 CIA 閱覽室 https://www.cia.gov/readingroom/document/0001471747 ：標題同 Commons、收在 "A-12 OXCART Reconnaissance Aircraft Documentation"、23 頁、Publication Date 寫 April 1, 1967（Commons 寫 1967-05-15，兩邊不一致，所以卡片標題只寫「1967 年」）；PDF 本身要下載才看得到（內建瀏覽器跳出存檔對話框，未下載），文件類型（備忘錄與否）仍未親見，旁白、卡片與說明欄維持「文件」（查核第一輪改的）；路透社另記 Richelson 說他記得至少兩份舊文件附帶提過 Area 51、他認為是無意的（"incidental"、"inadvertent"）；所以 2013 年新的是「刻意的、官方的」承認加上地圖（路透社用詞，見 c2），不是這兩個字第一次出現；「CIA 終於承認 51 區存在」是新聞標題式說法｜https://commons.wikimedia.org/wiki/File:CIA_BYE2369-67_page17.gif ；https://www.csmonitor.com/USA/Latest-News-Wires/2013/0817/Area-51-is-real-say-CIA-documents｜2026-10-10｜release-memo-1967
 c32｜（保留；本片未用）｜https://nsarchive2.gwu.edu/NSAEBB/NSAEBB434/｜2026-10-10｜（未用）
 c33｜2019 年空軍對「衝進 51 區」的回應只說它是 Nevada Test and Training Range 的訓練場、擅闖會被制止，"lethal force could be used if people entered"，沒有說明用途（AP 2019-09-20）｜https://www.ktvu.com/news/about-75-people-gather-at-area-51-gate-1-person-arrested｜2026-10-10｜legend-sign-night, check-training-range
-c34｜2013 年版仍有大量塗黑（新聞：407 頁 "still contains many redactions"）；OSA 內部史：Pocock 在 EBB 434 的評註說 16 卷 OSA history 已申請、CIA 說尚未釋出；之後閱覽室出現部分塗黑的 OSA 歷史文件（當天閱覽室打不開、未親見），所以旁白改成「還沒全部公開」（查核第一輪）；1977 年後的隱形機與 MiG 計畫只部分解密（EBB 443）；現在在試什麼沒有官方說法，影片只說「仍是機密」｜https://nsarchive2.gwu.edu/NSAEBB/NSAEBB434/ ；https://www.csmonitor.com/USA/Latest-News-Wires/2013/0817/Area-51-is-real-say-CIA-documents ；https://nsarchive.gwu.edu/briefing-book/intelligence/2013-10-29/area-51-file-secret-aircraft-soviet-MiGs｜2026-10-10｜release-still-redacted, check-training-range
+c34｜2013 年版仍有大量塗黑（新聞：407 頁 "still contains many redactions"）；OSA 內部史：Pocock 在 EBB 434 的評註說 16 卷 OSA history 已申請、CIA 說尚未釋出；之後閱覽室出現部分塗黑的 OSA 歷史文件（當天閱覽室打不開、未親見），所以旁白改成「還沒全部公開」（查核第一輪）；查核第二輪用內建瀏覽器開到閱覽室：搜尋 "OSA history" 有 22 筆，多是 1968 年籌備寫史的備忘錄，標題就叫 OSA HISTORY 的只有一份 24 頁的大綱（CIA-RDP90B00184R000100010008-0，Declassified in Part，2012-09-19 釋出），不是 Pocock 說的 16 卷正史，所以「還沒全部公開」維持；1977 年後的隱形機與 MiG 計畫只部分解密（EBB 443）；現在在試什麼沒有官方說法，影片只說「仍是機密」｜https://nsarchive2.gwu.edu/NSAEBB/NSAEBB434/ ；https://www.csmonitor.com/USA/Latest-News-Wires/2013/0817/Area-51-is-real-say-CIA-documents ；https://nsarchive.gwu.edu/briefing-book/intelligence/2013-10-29/area-51-file-secret-aircraft-soviet-MiGs｜2026-10-10｜release-still-redacted, check-training-range
 
 ## 與企劃不同的地方
 
@@ -72,7 +72,13 @@ c34｜2013 年版仍有大量塗黑（新聞：407 頁 "still contains many reda
 - `bxrh`：「上面四萬英尺的 U-2」→「再往上四萬英尺的 U-2」（c15，避免聽成 U-2 飛四萬英尺）。
 - `sources` 的 NPR 2019-07-15 換成 Wayback 副本（npr.org 擋 curl）；U-2 照片的 `assets.source` 補 1985。
 
+## 查核第二輪改了什麼（2026-10-10，見 verify-2.md）
+
+- `release-memo-1967` 卡片標題「1967 年 5 月 15 日的 CIA 文件」→「1967 年的 CIA 文件：OXCART 偵察北越的計畫」：CIA 閱覽室把這份文件的日期寫成 1967-04-01、Commons 寫 1967-05-15，兩邊不一致，日期只留年份；標題補上閱覽室的文件名與頁面自己的標題「OXCART RECONNAISSANCE OPERATIONS PLAN」（c31）。`assets[4].source` 改成閱覽室的文件編號與名稱。旁白 `k9az` 與說明欄本來就只說「1967 年的一份文件」，沒動。
+- 第一輪改的其他七處（`qfsw`、`iqc3`、`7ve6`、`qdua`、`4yy9`、`bxrh`、「文件」）全部重開原始來源確認，沒再改。
+
 ## 進度
 
 - 2026-10-10：全部 92 個場景寫完，lint 見報告。
 - 2026-10-10：查核第一輪完成，8 處事實修改，需要第二輪（verify-1.md）。
+- 2026-10-10：查核第二輪完成，1 處事實修改（1967 年文件的日期），不需要第三輪（verify-2.md）。
