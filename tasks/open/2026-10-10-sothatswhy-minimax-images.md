@@ -1,19 +1,20 @@
 ---
 id: 2026-10-10-sothatswhy-minimax-images
 title: 原來如此事務所：插圖改由 MiniMax 生成，畫風改成可愛卡通家族
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-stw-minimax
+claimed_at: 2026-10-10T12:52:22Z
 created_at: 2026-10-10T16:20:00Z
 completed_at:
-branch:
-depends_on:
+branch: claude/curio-u02-qa-fixes
+depends_on: []
 scope:
   - docs/videos/so-thats-why/README.md
   - docs/videos/so-thats-why/look.md
   - docs/videos/so-thats-why/operations.md
+  - docs/videos/sothatswhy-b26/
 ---
 
 # 原來如此事務所：插圖改由 MiniMax 生成，畫風改成可愛卡通家族
@@ -25,9 +26,9 @@ scope:
 ## Definition of done
 
 - [x] 站主 2026-10-10 選了 A 大頭卡通；`look.md` 的 `look` JSON 已改成 A 的文字加色盤句、`negative: ""`。
-- [ ] 借站上的 slides slug 用這個 `look` 畫 4 張章節場景樣張確認色盤句沒讓畫風漂，記 `look_hash`。
-- [ ] 片頭三張關鍵影格（門、信、蓋章）用 MiniMax 重畫一次，`look.md` §選定紀錄 填檔名與 SHA-256。
-- [ ] `operations.md` 的 D−2「關鍵影格」一列改寫成 MiniMax 的做法（`keyframes --dry-run` 必須印出 `minimax image-01`；每月張數上限在後台漫劇分頁）。
+- [x] 借站上的 slides slug 用這個 `look` 畫 4 張超市場景樣張（2026-10-10，`mokaair-work/videos/_audition/look-20261010-curio/stw-a/`）：4／4 一次過、各 9.29，色盤句沒讓畫風漂；`look_hash` `a5910f9c047dbeff`。
+- [x] 片頭不重畫：站主 2026-10-02 已核准系列的 6.9 秒片頭（`docs/videos/branding-release/2026-10-02-sothatswhy-intro-approval.md`，bookends `mokaair-sothatswhy-bookends-v1`），`look.md` 2026-09-28 的三張關鍵影格片頭已被它取代；新做法的集數沿用核准的片頭。
+- [x] `operations.md` 的 D−2「關鍵影格」一列改寫成 MiniMax 的做法（`keyframes --dry-run` 必須印出 `minimax image-01`；每月張數上限在後台漫劇分頁）。
 - [ ] 下一集（第二季順序提案的下一個，或站主指定）用新做法做完一集並記實測，README §成本與產能 的插圖一列改成實測。
 - [ ] 主機解說路線（`flat-explainer`）指定 MiniMax 的改法不在這張票：那是 `2026-10-10-explainer-route-takes-a-series-look`。
 
@@ -43,6 +44,9 @@ scope:
 `look.md` 的 JSON 可解析、`negative` 是空字串；片頭三張的 SHA-256 與 repo 外檔案一致；新做的那集 `status --slug` 到上架確認、`keyframes/manifest.json` 的模型是 `image-01`。
 
 ## Notes
+
+- 2026-10-10（claude-opus-stw-minimax）：下一集選第二季順序提案的第一個 B26〈為什麼超市常把牛奶放在最裡面？〉（T26、T27 已做）。本機插圖投影片路線（`format: "slides"`、`shot` 由 MiniMax image-01 畫、卡片放對照與步驟），稿子只用 `season2/B26.md` 製作包裡標為可用的主張。企劃、撰稿、兩輪查核與開拍前預檢由一個 workflow 串起來跑；預檢是這次新加的一步（先把會被聽錯的單字詞與 MiniMax 畫不好的提示詞改掉，再花錢）。
+- 片頭的坑：`tools/video/core/branding.mjs` 的 `readDefaultBranding` 只在 `isExplainer(doc)`（漫劇格式＋`flat-explainer`）時選系列片頭；投影片格式的原來如此（T27、這次的 B26）拿到的是全頻道片頭，T27 當時是用 `--adopt-branding` 加一個只含本集的 work base 才換成系列片頭。主機解說路線那張票（`2026-10-10-explainer-route-takes-a-series-look`）加新畫風預設時要一起處理：`cute-cartoon` 與 `sothatswhy-` 開頭的投影片應選系列片頭，`cute-mystery`（奇聞檔案局）不能選到。
 
 - 2026-10-10 開票。T26、T27 已完成的成片不重做。
 - MiniMax 不吃畫風樣張與 negative，一致性全靠 `look.style` 文字：見 `docs/videos/history-curiosity/look.md` §MiniMax 的事實。

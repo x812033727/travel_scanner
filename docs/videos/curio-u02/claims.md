@@ -58,7 +58,7 @@ c34｜2013 年版仍有大量塗黑（新聞：407 頁 "still contains many reda
 - 「衝進 51 區」當天到門口的人數 AP 寫約 75、NPR 寫約 40，卡片兩個都列、旁白說「幾十個人」；2019-07-15 的「超過一百萬」是 NPR 標題，「兩百多萬」沒用。
 - 70,000 英尺「約 21 公里」是換算（21.3 公里），不是來源裡的數字。
 - 「夢境」是 Dreamland 的中譯，沒有通行的中文定譯；「天堂牧場」是 Paradise Ranch 的直譯。
-- Kasza 案的 ELR 摘要是 http 網址，schema 只收 https，所以 `sources` 列的是 FindLaw 的 2003 年後續判決，ELR 網址留在 c23。
+- Kasza 案：`sources` 原本列 FindLaw 的 2003 年後續判決，成片品管的連結檢查對它回 403、Wayback 沒有存檔；2026-10-10 改列 ELR 摘要的 https 網址（https://www.elr.info/litigation/kasza-v-browner，當天 200）。
 - 說明欄組合後上限 5,000 位元組（23 條來源加 6 張照片的出處就超過），`sources` 只留 18 條：拿掉 CIA 閱覽室（406 頁，EBB 434 已指向同一文件）、CIA 博物館 A-12 頁（第 6 章 PDF 已有）、Ask Molly（照抄 p.73）、柯林頓 1996 年信（聯邦公報已有）、NPR 2019-09-20（到場人數卡片仍標 NPR 約 40，網址在 c9）；拿掉的網址都還在 claims.md 裡。
 
 ## 查核第一輪改了什麼（2026-10-10，見 verify-1.md）
