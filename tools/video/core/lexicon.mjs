@@ -15,6 +15,29 @@ export function emptyLexicon() {
   return { schema_version: LEXICON_VERSION, terms: {} };
 }
 
+/**
+ * Whether the dictionary may hold `term`: a term starts with a Latin letter, like the terms
+ * latinTerms finds in a narration (it reads "8B" as "B"). validateLexicon refuses any other
+ * entry, and since every video shares the dictionary, one such entry fails lint for all of them:
+ * whatever writes a term into the file asks here first.
+ */
+export function isValidTerm(term) {
+  return typeof term === "string" && /^[A-Za-z]/.test(term);
+}
+
+// What the worker takes from a writer: up to 40 letters, digits and . + # ' _ -
+const PROPOSED_TERM = /^[A-Za-z0-9.+#'_-]{1,40}$/;
+
+/**
+ * Whether the worker may add a term a writer proposed (lexicon_additions) to the shared
+ * dictionary: one validateLexicon accepts, within the worker's own limits. A proposal that is
+ * not is left out; a word of the narration that is unknown without it is an ordinary lint error,
+ * which the writer's fix answers by rewording or by proposing a term that is.
+ */
+export function isProposableTerm(term) {
+  return isValidTerm(term) && PROPOSED_TERM.test(term);
+}
+
 export function validateLexicon(lexicon) {
   const errors = [];
   if (lexicon === null || typeof lexicon !== "object" || Array.isArray(lexicon)) {
@@ -26,7 +49,7 @@ export function validateLexicon(lexicon) {
     return errors;
   }
   for (const [term, say] of Object.entries(lexicon.terms)) {
-    if (!/^[A-Za-z]/.test(term)) errors.push({ path: `terms.${term}`, message: "a term starts with a Latin letter" });
+    if (!isValidTerm(term)) errors.push({ path: `terms.${term}`, message: "a term starts with a Latin letter" });
     if (say !== null && (typeof say !== "string" || say.trim() === "")) {
       errors.push({ path: `terms.${term}`, message: "must be the spoken form, or null when the voice already reads it right" });
     }

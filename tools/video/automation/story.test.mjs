@@ -11,7 +11,8 @@ import test from "node:test";
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { readApprovals } from "../core/approvals.mjs";
 import { clipsHash, drawnShotScenes, EXPLAINER_PRESET, hasCast, isExplainer, lookHash, mixHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
-import { explainerFixture, sandbox, storyFixture, storySeries, writeAudioFixture } from "../core/fixtures/load.mjs";
+import { explainerFixture, lexiconProposals, sandbox, storyFixture, storySeries, writeAudioFixture } from "../core/fixtures/load.mjs";
+import { isValidTerm, validateLexicon } from "../core/lexicon.mjs";
 import { BRIEF_SECTIONS_DRAMA, briefSectionsFor } from "../core/lint.mjs";
 import { isStory } from "../core/story.mjs";
 import { readJson } from "../core/paths.mjs";
@@ -671,6 +672,56 @@ test("a chapter the writer answers badly is asked for again once, then the video
   assert.equal(state().status, "blocked");
   assert.match(world.site.calls.reports.at(-1).checklist[0].label, /^卡住，需要人處理：writer failed 2 times/);
   assert.ok(existsSync(path.join(world.workdir, "answers")), "what the model said is kept for a person");
+});
+
+test("a chapter's dictionary proposals that lint would refuse are left out, so the merged story passes lint; a word left unknown goes back to the writer for its chapter", async () => {
+  let unknown = 0;
+  const proposals = lexiconProposals();
+  const world = storyWorld({
+    answers: standardAnswers({
+      "writer:story": (body) => {
+        const { key } = body.payload.chapter;
+        const answer = chapterAnswer(key, body.payload);
+        // The proposal of 2026-10-09 with the first chapter, every kind of proposal with the second.
+        if (key === "hook") Object.assign(answer.lexicon_additions, { "8B": null, "6abc": null, Ai2: null });
+        if (key === "origin") Object.assign(answer.lexicon_additions, proposals);
+        if (key === "idea" && !body.payload.lint_errors && unknown++ === 0) {
+          answer.scenes[0].lines[0].text = `代號 6abc 的${answer.scenes[0].lines[0].text}`;
+          answer.lexicon_additions["6abc"] = null;
+        }
+        return answer;
+      },
+    }),
+  });
+  const { automation, site, state, lexicon } = world;
+  const seeded = Object.keys(lexicon().terms);
+  await steps(automation, 2);
+  assert.deepEqual(Object.keys(lexicon().terms), [...seeded, "Hollis", "Marrow", "Brellco", "Ai2"]);
+  assert.deepEqual(validateLexicon(lexicon()), []);
+  assert.deepEqual(state().lexicon_added, ["Hollis", "Marrow", "Brellco", "Ai2"]);
+
+  // Whatever a writer proposes, what the worker merges is what validateLexicon accepts, within its own limits as before.
+  assert.match(await automation.step(), /chapter 2\/6 \(origin\) written: 2 shots, \d+ characters$/);
+  const merged = Object.keys(lexicon().terms).filter((term) => term in proposals);
+  assert.deepEqual(validateLexicon(lexicon()), []);
+  assert.ok(merged.length > 0 && merged.length < Object.keys(proposals).length, "some proposals are taken and some left out");
+  assert.ok(merged.every(isValidTerm));
+  assert.equal(lexicon().terms[`Q${"x".repeat(39)}`], "念法");
+  assert.equal(lexicon().terms["Q#"], "念".repeat(80));
+  for (const term of [`Q${"x".repeat(40)}`, "Q Code", "Q!", "Q中", "Q_x", "8", "8B", "0abc", "_x", "中"]) assert.equal(term in lexicon().terms, false, term);
+
+  // A word that is unknown without its refused entry is its line's lint error, which the chapter's fix answers.
+  assert.match(await automation.step(), /chapter 3\/6 \(idea\) written: 2 shots, \d+ characters; 1 lint errors in it go back to the writer/);
+  assert.match(state().story.chapters.idea.lint[0], /"abc" is not in docs\/videos\/lexicon\.json/);
+  assert.match(await automation.step(), /chapter idea fixed for 1 lint errors \(round 1\)/);
+  assert.match(site.calls.run.at(-1).payload.lint_errors[0], /"abc" is not in docs\/videos\/lexicon\.json/);
+
+  // With 8B in the dictionary the sixth chapter ended "the merged story fails lint outside its chapters".
+  const rest = await steps(automation, 3);
+  assert.match(rest[2], /chapter 6\/6 \(now\) written: 2 shots.*the six are merged into video\.json and claims\.md and the script passes lint/);
+  assert.equal(state().status, "active");
+  assert.deepEqual(validateLexicon(lexicon()), []);
+  assert.equal("6abc" in lexicon().terms || "8B" in lexicon().terms, false);
 });
 
 test("a name of the story in a picture prompt is refused before anything is drawn: the chapter goes back to the writer, and a prompt fix that names it is not kept", async () => {
