@@ -87,6 +87,7 @@ test("a model's answer is read as JSON, fenced or not", () => {
   const refs = references(ROOT);
   assert.ok(refs.script_writing.length > 500 && refs.channel.length > 500);
   assert.ok(refs.showcase.scenes.length >= 10, "the showcase has one scene per template");
+  assert.ok(!refs.showcase.scenes.some((scene) => scene.template === "photo") && refs.showcase.assets === undefined, "less the photo card: an automated video has no photograph files");
 });
 
 // The channel stance the owner writes on the settings tab (docs/videos/HANDS-OFF.md §頻道立場).

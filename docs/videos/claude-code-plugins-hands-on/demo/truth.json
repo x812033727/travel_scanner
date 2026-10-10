@@ -1,0 +1,52 @@
+{
+  "a": {
+    "project": "trip-queue",
+    "release": "0.4.1",
+    "test": "src/queue.test.mjs",
+    "logs": [
+      "queue-2026-10-08.log",
+      "queue-2026-10-09.log"
+    ],
+    "unfinished": [
+      {
+        "id": "J1103",
+        "file": "queue-2026-10-08.log",
+        "line": 7
+      }
+    ],
+    "finished": [
+      "J1101",
+      "J1102",
+      "J1201",
+      "J1202"
+    ]
+  },
+  "b": {
+    "project": "fare-sync",
+    "release": "1.2.1",
+    "test": "src/fares.test.mjs",
+    "logs": [
+      "sync-2026-10-08.log",
+      "sync-2026-10-09.log"
+    ],
+    "unfinished": [
+      {
+        "id": "J2103",
+        "file": "sync-2026-10-08.log",
+        "line": 8
+      },
+      {
+        "id": "J2204",
+        "file": "sync-2026-10-09.log",
+        "line": 11
+      }
+    ],
+    "finished": [
+      "J2101",
+      "J2102",
+      "J2201",
+      "J2202",
+      "J2203"
+    ]
+  }
+}

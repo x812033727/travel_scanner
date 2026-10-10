@@ -1,0 +1,37 @@
+$ claude plugin validate <v>/nowrap
+Validating plugin manifest: <v>/nowrap/.claude-plugin/plugin.json
+
+Validating hooks: <v>/nowrap/hooks/hooks.json
+
+✘ Found 1 error:
+
+  ❯ hooks: PreToolUse/PermissionRequest is declared at the top level, outside the "hooks" object — a PreToolUse/PermissionRequest hook that cannot be loaded may be what guards the permissions declared beside it, so nothing it sits in is applied until the entry is fixed or removed
+
+✘ Validation failed
+[validate exit 1]
+longest line: 284 characters
+
+$ claude plugin validate <v>/badagent
+Validating plugin manifest: <v>/badagent/.claude-plugin/plugin.json
+
+Validating agent: <v>/badagent/agents/log-scout.md
+
+✘ Found 1 error:
+
+  ❯ frontmatter: YAML frontmatter failed to parse: YAML Parse error: Unexpected character. At runtime this agent loads with its name taken from the filename and every other frontmatter field silently dropped.
+
+✘ Validation failed
+[validate exit 1]
+longest line: 210 characters
+
+$ claude plugin validate <v>/hookpath
+Validating plugin manifest: <v>/hookpath/.claude-plugin/plugin.json
+
+✘ Found 1 error:
+
+  ❯ hooks[0]: Path not found: ./hooks/extra.json. The runtime loader will report this as a load failure.
+
+✘ Validation failed
+[validate exit 1]
+longest line: 106 characters
+

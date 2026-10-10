@@ -178,7 +178,7 @@ async function cmdFetch(args, ctx) {
   ctx.stdout.write(`${result.file}  ${fetched.width}×${fetched.height} ${shape(fetched.width, fetched.height)}, ${megabytes(size)}${result.downloaded ? "" : " (already in the work directory)"}\n`);
   ctx.stdout.write(`${asset.source} · ${asset.license} · ${asset.url}\n`);
   ctx.stdout.write(`assets[]: ${path.relative(ctx.root, project.file)} now lists ${result.assets} pictures; package writes the credit into the description\n`);
-  ctx.stdout.write(`next: give a screenshot scene "image": "${result.file}" (a "credit" on the slide is optional), then lint and render\n`);
+  ctx.stdout.write(`next: give a photo or screenshot scene "image": "${result.file}" (a "credit" on the slide is optional), then lint and render\n`);
   return ctx.EXIT.ok;
 }
 
