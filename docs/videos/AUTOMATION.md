@@ -215,9 +215,18 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 2. **配音**（一輪一個語言，`docs/videos/DUBS.md`）：`dub --locale <l>`；結束碼 1（有視窗加速到 1.15 倍仍塞不下）→ 翻譯模型的縮短模式（`translator:shorten`，只給 `fit.json` 的句子與預算；不縮短或改了數字的答案丟掉）→ captions-only 的工作表 → `i18n-merge` → 再 `dub`，最多 `MAX_DUB_SHORTEN_ROUNDS`（2）輪；做出音軌後 `check-audio --locale <l>` → 被標的句子 `dub --redo`，最多 `MAX_DUB_RETAKE_ROUNDS`（2）輪；重錄後句子變長、塞不回視窗時，回到縮短模式，不直接放棄。重錄完仍被標的句子多半是同音字（轉寫每次都聽成同一個詞，2026-09-29 當天 8 條配音都因此整條放棄），交給翻譯模型的改寫模式（`translator:reword`，帶轉寫聽到的字與預算；沒改、超過預算或改了數字的答案丟掉）→ 同樣走工作表與 `i18n-merge` → 再 `dub`（只重錄改過的句子）與 `check-audio`，最多 `MAX_DUB_REWORD_ROUNDS`（2）輪。仍不行、或 `dub` 說要站主（Azure 聲音、沒金鑰）就寫 `dubs/<l>/skipped.json` 記下原因，**不擋影片**；服務暫時掛掉（結束碼 4）這一輪結束、下一輪再試；`dub`、`dub --redo` 或 `check-audio --locale` 被 `STOP` 檔停下（結束碼 6）也是這一輪結束（不當成做好的音軌、不放棄、不擋影片），下一輪從快取把音軌重新排好、重新聽完再送。
 3. **全部做好**：`captions`（只寫 zh-TW 與勾了 CC 的語系；有配音的跟配音時間軸；沒勾的語系的字幕檔刪掉）→ `package`（`upload/` 只放 zh-TW 與勾了的：`description.<l>.txt`、`captions/<l>.srt`、`dubs/<l>.m4a`；`metadata.json` 多 `language_choice`）→ `review-push --gate languages`：payload 每語每部件 `ready` 或 `{status: "skipped", reason}`，檔案 `description_<l>`、`captions_<l>`、`dub_<l>`（語系小寫、連字號改底線）。沒有配音的批次伺服器直接核准；有配音的等站主在 Studio 上傳後按「我已經在 Studio 傳好這些配音」。
 
-之後多勾的部件，站上會再標成「製作中」，工人再做一批、再送一筆（舊的 superseded）；影片已經在 YouTube 上也一樣。站主沒勾或只出繁體中文的影片，`captions` 與 `package` 只有 zh-TW，其他檔案一個位元組都不變。
+之後多勾的部件，站上會再標成「製作中」，工人再做一批、再送一筆；影片已經在 YouTube 上也一樣。新的一筆只取代還在等站主的舊批次（superseded），已核准的舊批次照舊是核准的。站主沒勾或只出繁體中文的影片，`captions` 與 `package` 只有 zh-TW，其他檔案一個位元組都不變。
 
-成本：翻譯每個語言一次翻譯加一次審稿呼叫；配音見 `DUBS.md` §成本（一條 10 分鐘約 US$0.135，月額度 `video_speech_gemini_monthly_character_limit` 要先調高）；YouTube 配額見 `LANGUAGES.md` §成本。
+**跳過的配音再做一次**（2026-10-10 加；站主那一側在 `LANGUAGES.md` §跳過的配音再做一次，工人的每一步與理由在 `DUBS.md` §再做一次）。工人放棄的配音留著 `dubs/<l>/skipped.json`，站上讀成「跳過」，上面三步都不會再碰它。站主在語言面板按「再做一次」之後，影片清單那一列多一筆 `dub_retries[<l>] = {id, status, open}`（`ProjectSummary`；沒有這個鍵的是舊版網站，工人什麼都不碰）。語言那一步（`languages()`）在做任何其他語言工作之前先處理它（`dubRetries`），一輪一筆：
+
+- **還沒接的要求**（`open`，而且 `auto.json` 沒有同一個 `id` 的紀錄）：先做不花錢的檢查。工作檔沒被清、`video.json` 在、成片核准對得上、不是旁白自己的語言、`package` 對成片的三個測試都過（片頭片尾、`checks.json` 與 `final.mp4`、旁白錄音）、別的語言在站上已完成的音軌在這裡仍是 current，最後 `dub --locale <l> --dry-run`。不過就拒絕：原因記進 `auto.json` 與 notes，回報 `dub_retries: {<l>: {id, status: "refused", reason}}`，影片不卡住、不延後、什麼檔都沒動。`--dry-run` 結束碼 4 是延後，要求原封不動。
+- **接手**：回報 `dub_retries: {<l>: {id, status: "taken"}}`，並從 `PUT /video/reviews/<slug>` 的回應確認這筆 `id` 真的成了 `taken`（要求在這之間被撤掉、過期或換新，就不開始）。確認之後才依序：`auto.json` 把那個語言的輪數歸零並標 `check_stopped`、紀錄寫 `taking`；刪 `skipped.json`；紀錄改 `taken`；然後就是上面第 2 步的 `makeDub`。`STOP` 檔或失去 `LEASE` 會在回報之前擋下，什麼都沒送、沒清。
+- **已經接了的**：`auto.json` 的紀錄是 `taken` 時不再檢查、不再清，上面第 2、3 步照平常接著走。站上這時把那一格讀成「製作中」；就算這條 lane 手上的清單比接手還舊、仍寫著「跳過」，工人自己紀錄是 `taken` 的配音也算待做，所以音軌沒重新聽完之前不會有批次送出去。
+- **結束**：第 3 步的批次就是答案，沒有另外的回報。網站在存批次的同一筆交易把要求結束成 `made`（有音軌，而且那一批算數）、`skipped`（又放棄，批次裡是新的原因）或 `refused`（位元組和站主退回的那一批完全一樣，網站沒有新增審核）。批次和舊的一模一樣、網站沒有多一筆審核時也照樣結束。`review-push` 成功後工人把紀錄改成 `sent`。
+- **工人的紀錄**：`auto.json` 的 `dub_retries[<l>] = {id, status, at}`，`status` 是 `taking`｜`taken`｜`sent`｜`refused`（附 `reason`），結束後也留著，另一條 lane 或一份舊清單才不會把同一筆接兩次。每一次回報（任何階段的）都把 `taken` 與 `refused` 再帶一遍，網站只採用一次；拒絕的回報沒送到時，下一輪先補報。
+- **清掉工作檔的影片**：端點與那一格本來就擋，漏進來的要求工人照樣拒絕（原因寫清掉的日期），而且不送清理後新勾部件的那種只列部分語言的批次。
+
+成本：翻譯每個語言一次翻譯加一次審稿呼叫；配音見 `DUBS.md` §成本（一條 10 分鐘約 US$0.135，月額度 `video_speech_gemini_monthly_character_limit` 要先調高）；YouTube 配額見 `LANGUAGES.md` §成本。再做一次在站主按下去時先比一次本月的語音額度（後台端點，估計值是那個語言字幕檔的字數；讀不到用量就不收），`dub` 開工前自己再比一次；之後才不夠是結束碼 4，延後、不卡住、不放棄，要求維持已接手。Jev 的每日次數與翻譯模型的月上限不在按下去時檢查。
 
 ## 一鍵合集（2026-09-27 加，設計在 `BINGE.md`）
 
@@ -244,7 +253,8 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 - **哪些影片**：`auto.json` 說已經結束的——`status: done` 而且記下了 YouTube id，或站主放棄（`dropped`）——而且結束滿保留天數（預設 7 天，跟審核檔案區刪 mp4 的 `PREVIEW_RETENTION` 一樣）。
 - **從哪天算**：放棄的從 `dropped.at` 算。上了 YouTube 的，`auto.json` 沒有記日期（`recordVideoId` 只寫 `status` 與 `youtube_video_id`），所以照網站刪 mp4 的規則（`prune_published_previews`）：上架確認核准的時間（工作區 `approvals.json` 的 `publish` 項，與每輪影片清單的 `publish_approved_at`，取較晚的）和站主設的公開時間（`youtube_publish_at`），再取較晚的。沒有可用的日期就不清，那一輪印一行說明。
-- **先留著**：還在做、卡住、等站主的影片，不管多舊都不動。已上 YouTube 但語言還沒決定或還在做（影片清單的 `locales_decided_at`、`languages`）、開了合集的作品裡合集還沒上 YouTube 的集數（合集要接每一集的成片與字幕，縮圖取前三集的關鍵影格）、工作區裡有 `STOP` 檔的，也先留著。
+- **先留著**：還在做、卡住、等站主的影片，不管多舊都不動。已上 YouTube 但語言還沒決定或還在做（影片清單的 `locales_decided_at`、`languages`）、還有任何審核在等站主決定（清單的 `pending`，退回一批語言審核時還要用到檔案）、開了合集的作品裡合集還沒上 YouTube 的集數（合集要接每一集的成片與字幕，縮圖取前三集的關鍵影格）、工作區裡有 `STOP` 檔的，也先留著。
+- **站主要求再做一次的配音**（上面「語言」的「跳過的配音再做一次」）也先留著：清單那一列有還開著的要求（`dub_retries` 裡 `open` 的，等待中或已接手），或工人自己的 `auto.json` 記著接手中（`taking`、`taken`）而那個語言的配音還勾著。後一條是給清單比接手還舊的那一輪用的。要求結束（做出來、又跳過、被拒絕、過期）就不再擋。反過來說，滿保留天數的影片只靠這幾樣留著：站主一核准等著的語言審核卡，下一輪就可能清掉，之後跳過的配音不能再做，所以其他還想再做的語言要在按卡片的按鈕之前先要求。清理讀的是第一條 lane 最後一次讀到的清單，剛按下去的要求有可能沒趕上；那樣的話工人下一輪會拒絕這筆要求並寫明檔案哪天清掉。
 - **中文先做、外語後做的漫劇**：`video.json.localization_plan`、工作區 `localization-retention.json` 或舊 `series.json.production.profile` 已記下後續語言交付時，該集及其合集保留全部製作素材。網站當次語言選擇為空、中文上架滿七天或放棄狀態都不解除這個保留；標記損壞也先留著。保留介面目前不提供自動解除，須等另行實作並驗證歸檔／站主解除操作，不能刪中文乾聲、M&E 或畫面來源後才準備日／韓／英。
 - **刪什麼**：`final.mp4`、`upload/final.mp4`（上傳包的副本；合集是硬連結）、`upload/dubs/`、`segments/`、`build/`、`audio/`、`narration.wav`、`frames/`、`keyframes/`、`clips/`、品牌故事讀過的來源頁面 `story/pages/`（整頁文字，一頁一個 JSON）、配音的 `dubs/<語系>/audio/`、`dubs/<語系>/narration.wav`、`dubs/<語系>.<格式>`，以及 `review/` 裡送審用的預覽（`preview-<雜湊>.mp4`、`narration-<雜湊>.m4a`）。
 - **一定留**：`auto.json`、`state.json`、`checks.json`、`approvals.json`、`timeline.json`、`captions/`、`i18n/`、`languages.json`、`media/`（帳本、快取、工作）、`answers/`、`review/` 的 JSON 與頁面、上傳包的文字檔（`metadata.json`、`UPLOAD.md`、說明、字幕）與縮圖、`characters/`、`music/`、`thumbnail.jpg`、`contact-sheet.png`、品牌故事的 `story/chapters/`（每一章的稿子與查核結果，很小，出問題時要看）。工作區根目錄的 `_series/`、`_music/` 與任何 `_` 開頭的資料夾從不讀、從不刪。
@@ -266,6 +276,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 清完之後就做不到的事：
 
 - 清理之後才勾的語言做不出來（成片與旁白都不在了，`package` 也要 `final.mp4`）。工人下一輪把每個還在「製作中」的部件送成一筆 `languages` 審核，部件是 `{status: "skipped", reason: "工作檔已在 <日期> 清掉，…"}`（跟放棄的配音 `dubs/<語系>/skipped.json` 同一種回報），沒有音軌所以伺服器直接核准；語言面板那一格顯示「跳過」與原因，卡片不再停在「語言製作中」。這一筆只列新勾的部件，清理前做好的照舊。
+- 跳過的配音不能再做一次。`dub` 與 `check-audio` 還跑得起來，但每一句都要重新買，`package` 要 `final.mp4`，其他語言的音軌檔也清掉了，網站要的完整一批組不出來。語言面板那一格寫原因、不給按鈕，端點回 409 `video_dub_retry_tidied`（網站從工人 volume 的 `auto.json` 讀 `tidied_at`），漏進來的要求工人以清掉的日期拒絕，不送上一條那種只列部分語言的批次。要補那條音軌只能請人在工人主機上手動重新合成，站主自己上傳。
 - 合集的 1080p 成片（`upload/final.mp4`）在上 YouTube 滿保留天數後一起清掉，後台的下載按鈕就沒有檔案可下載——跟審核檔案區刪 mp4 的規則一致。
 - 從長片關鍵影格剪 Shorts（`shorts/cli.mjs from-episode`，#904）要在長片清掉之前做。
 

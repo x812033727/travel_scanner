@@ -1386,3 +1386,275 @@ describe("AdminVideoReviews", () => {
     }
   });
 });
+
+// Ticket 2026-10-10-let-the-owner-re-request-a: a dub track the worker gave up on stayed "skipped"
+// for good, since unticking and ticking it again changes nothing the worker reads. The dub's cell
+// now offers to make it again (docs/videos/DUBS.md) and says where that request stands. Everything
+// after the click is read from the project the server sends back, so these move the stubbed project
+// on instead of looking at local state.
+describe("asking for a skipped dub again from the language panel", () => {
+  const REASON = "k7p2 重錄後還是塞不進時間";
+  const ID = "0d3b7c1e-6f0a-4c59-9d57-0d6a3f1c2b11";
+  const ASKED = "2026-10-10T12:40:03Z";
+  const TAKEN = "2026-10-10T12:44:10Z";
+  const ENDED = "2026-10-10T13:05:42Z";
+  // The page writes a time in the runtime's own zone (useWhen passes no timeZone: Taipei on the
+  // owner's machine, UTC on CI), so no test types one; the expected text is built the same way.
+  const at = (iso: string) => new Intl.DateTimeFormat("zh-TW", { dateStyle: "medium", timeStyle: "short" }).format(new Date(iso)).replace(/\s+/g, " ");
+  const COST = "會再花語音合成、逐句聽寫和 Jev 檢查的額度，送出前會先看本月的語音額度。影片上架滿 7 天後，只要沒有等你決定的審核卡，工作檔就會清掉，清掉後不能再做；還想再做的語言，請在按語言審核卡的按鈕之前先要求";
+  const BUTTON = "日文 配音 再做一次";
+  const part = (state: string, reason: string | null = null) => ({ state, reason });
+  const made = { metadata: part("ready"), captions: part("ready") };
+  const all = { metadata: true, captions: true, dub: true };
+  // A finished tutorial: the English track is confirmed, the Japanese one was given up on.
+  const video = {
+    ...summary, pending: 0, ready_to_upload: false, locales_decided_at: "2026-10-08T04:30:00Z",
+    locales: { en: all, ja: all } as Record<string, typeof all>,
+    languages: { en: { ...made, dub: part("uploaded") }, ja: { ...made, dub: part("skipped", REASON) } } as Record<string, Record<string, ReturnType<typeof part>>>,
+    reviews: [] as unknown[],
+  };
+  const request = (status: string, fields: Record<string, unknown> = {}) => ({ id: ID, status, open: false, stalled: false, requested_at: ASKED, taken_at: null, finished_at: null, reason: null, replaced_reason: REASON, ...fields });
+
+  /** Answers every read with `project()` as it is at that moment, and records each POST before `answer` replies to it. */
+  function stub(project: () => Record<string, unknown>, answer: (posts: string[]) => Response = () => Response.json({})) {
+    const posts: string[] = [];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (init?.method === "POST") {
+        posts.push(url);
+        return Promise.resolve(answer(posts));
+      }
+      return Promise.resolve(Response.json(url.endsWith("/admin/videos?shorts=exclude") ? [project()] : project()));
+    }));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    return posts;
+  }
+  /** The video's page; `row(1)` is the Japanese row as it is now, its third cell the dub's. */
+  async function open(capabilities = ["content.read", "content.manage"]) {
+    const view = render(<AdminOperationsProvider bootstrap={bootstrap(capabilities)}><AdminVideoReviews /></AdminOperationsProvider>);
+    const panel = await screen.findByRole("region", { name: "這支影片的語言" });
+    return { panel, row: (index: number) => [...panel.querySelectorAll("tbody tr")][index] as HTMLElement, unmount: view.unmount };
+  }
+  const offers = (panel: HTMLElement) => within(panel).queryAllByRole("button", { name: /再做一次/ });
+
+  it("a manager asks for a skipped dub again: the cost is on the cell, the confirmation names it, the POST goes to that locale, and the cell then says it waits", async () => {
+    let asked = false;
+    const posts = stub(() => (asked ? { ...video, dub_retries: { ja: request("requested", { open: true }) } } : video), () => {
+      asked = true;
+      return Response.json(video);
+    });
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(true);
+    try {
+      const { panel, row } = await open();
+      expect(row(1).textContent).toContain(`跳過（${REASON}）`);
+      expect(within(row(1)).getByText(COST)).toBeTruthy();
+      fireEvent.click(within(row(1)).getByRole("button", { name: BUTTON }));
+      await waitFor(() => expect(posts).toEqual(["/api/travel/admin/videos/ai-model-choice/languages/ja/dub/retry"]));
+      expect(confirm).toHaveBeenCalledOnce();
+      const question = String(confirm.mock.calls[0][0]);
+      expect(question).toMatch(/^要再做一次日文配音嗎？/);
+      expect(question).toContain("會再花語音合成、聽寫和 Jev 檢查的額度（最多一整條音軌）");
+      // The page reads the video again, and what the cell says now is the server's word.
+      expect(await within(panel).findByText(`已要求再做一次（${at(ASKED)}），等工人下一輪接手；這時還沒開始做`)).toBeTruthy();
+      expect(offers(panel)).toHaveLength(0);
+      expect(within(panel).queryByText(COST)).toBeNull();
+      expect(row(1).textContent).toContain(`跳過（${REASON}）`);
+      expect(within(panel).queryByRole("alert")).toBeNull();
+    } finally {
+      confirm.mockRestore();
+    }
+  });
+
+  it("only the skipped dub's row offers to try again, under its own name", async () => {
+    // Korean's captions were given up on and its dub is not reported yet: neither is a skipped dub.
+    stub(() => ({ ...video, locales: { ...video.locales, ko: all }, languages: { ...video.languages, ko: { metadata: part("ready"), captions: part("skipped", "翻譯沒過"), dub: part("working") } } }));
+    const { panel, row } = await open();
+    expect(row(2).textContent).toContain("跳過（翻譯沒過）");
+    expect(offers(panel)).toHaveLength(1);
+    const button = within(row(1)).getByRole("button", { name: BUTTON });
+    expect(button.textContent).toBe("再做一次");
+    // In the dub's cell and outside the checkbox's label, so a click on it ticks nothing.
+    expect(button.closest("td")).toBe(row(1).querySelectorAll("td")[2]);
+    expect(button.closest("label")).toBeNull();
+    expect(within(row(0)).queryByRole("button")).toBeNull();
+    expect(within(row(2)).queryByRole("button")).toBeNull();
+  });
+
+  it("cancelling the confirmation asks for no dub", async () => {
+    const posts = stub(() => video);
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(false);
+    try {
+      const { panel } = await open();
+      const button = within(panel).getByRole("button", { name: BUTTON });
+      fireEvent.click(button);
+      expect(confirm).toHaveBeenCalledOnce();
+      expect(posts).toEqual([]);
+      expect(button).toHaveProperty("disabled", false);
+      expect(button.textContent).toBe("再做一次");
+      expect(within(panel).queryByRole("alert")).toBeNull();
+    } finally {
+      confirm.mockRestore();
+    }
+  });
+
+  it("a reader sees why the dub was skipped and no button", async () => {
+    stub(() => ({ ...video, dub_retries: { ja: request("expired") } }));
+    const { panel, row } = await open(["content.read"]);
+    expect(row(1).textContent).toContain(`跳過（${REASON}）`);
+    // How the last request ended is for every reader; asking again and its price are the manager's.
+    expect(within(row(1)).getByText(`${at(ASKED)} 的要求 24 小時內沒有工人接手，已自動取消，沒有花錢；確認工人在跑之後可以再要求`)).toBeTruthy();
+    expect(offers(panel)).toHaveLength(0);
+    expect(within(panel).queryByText(COST)).toBeNull();
+  });
+
+  it("a refused dub request leaves the alert with the API's sentence and the button in place", async () => {
+    const refusals = [
+      { status: 429, code: "video_speech_budget_exhausted", detail: "本月的 Gemini 語音字數預算（300000 字）只剩 1200 字，不夠再做一條配音（約 6120 字）；可調高 VIDEO_SPEECH_GEMINI_MONTHLY_CHARACTER_LIMIT，或等下個月" },
+      { status: 409, code: "video_dub_retry_worker_stopped", detail: "工人被 STOP 檔停住了；移掉之後再要求" },
+    ];
+    const posts = stub(() => video, (sent) => {
+      const { status, ...problem } = refusals[sent.length - 1];
+      return Response.json(problem, { status });
+    });
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(true);
+    try {
+      const { panel, row } = await open();
+      for (const [index, refusal] of refusals.entries()) {
+        fireEvent.click(within(panel).getByRole("button", { name: BUTTON }));
+        await waitFor(() => expect(within(panel).getByRole("alert").textContent).toBe(`沒有送出：${refusal.detail}`));
+        expect(posts).toHaveLength(index + 1);
+        // Nothing was recorded: the cell is as it was, and the button is back for another try.
+        await waitFor(() => expect(within(panel).getByRole("button", { name: BUTTON })).toHaveProperty("disabled", false));
+        expect(within(panel).getByRole("button", { name: BUTTON }).textContent).toBe("再做一次");
+        expect(row(1).textContent).toContain(`跳過（${REASON}）`);
+        expect(within(row(1)).getByText(COST)).toBeTruthy();
+      }
+      expect(posts.every((url) => url === "/api/travel/admin/videos/ai-model-choice/languages/ja/dub/retry")).toBe(true);
+    } finally {
+      confirm.mockRestore();
+    }
+  });
+
+  it("a tidied video says why the dub cannot be made again instead of offering the button", async () => {
+    // English is blocked by a code this page has no sentence for: it says nothing more, and offers nothing.
+    stub(() => ({ ...video, languages: { ...video.languages, en: { ...made, dub: part("skipped", "1.15 倍還塞不下") } }, dub_retry_blocked: { ja: "tidied", en: "a_later_code" } }));
+    const { panel, row } = await open();
+    expect(row(1).textContent).toContain(`跳過（${REASON}）`);
+    expect(within(row(1)).getByText("不能再做：這支影片的工作檔已經清掉，成片與配音的錄音都不在了。要補這條音軌，只能請人在工人主機上手動重新合成，再自己上傳到 Studio")).toBeTruthy();
+    expect(row(0).querySelectorAll("td")[2].textContent).toBe("跳過（1.15 倍還塞不下）");
+    expect(offers(panel)).toHaveLength(0);
+    expect(within(panel).queryByText(COST)).toBeNull();
+  });
+
+  it("a dub the worker took shows since when and the reason it replaces", async () => {
+    let stalled = false;
+    const taken = () => ({ ...video, languages: { ...video.languages, ja: { ...made, dub: part("working") } }, dub_retries: { ja: request("taken", { open: true, stalled, taken_at: TAKEN }) } });
+    stub(taken);
+    const first = await open();
+    const cell = first.row(1).querySelectorAll("td")[2] as HTMLElement;
+    // The dub is in the making again, so its state no longer carries the old reason; the cell keeps it.
+    expect(cell.textContent).toContain("尚未完成");
+    expect(within(cell).getByText(`工人已接手再做一次（${at(TAKEN)}）；結果出來後這一格會更新`)).toBeTruthy();
+    expect(within(cell).getByText(`原本跳過的原因：${REASON}`)).toBeTruthy();
+    expect(offers(first.panel)).toHaveLength(0);
+    first.unmount();
+
+    // Two hours on with no result: where to look, and what the video's own retry can and cannot do.
+    stalled = true;
+    const second = await open();
+    expect(within(second.row(1)).getByText(`工人 ${at(TAKEN)} 接手後超過 2 小時沒有結果：原因看這支影片上方的等待或卡住說明。卡住的話，按「重試這支影片」會再試一次；說明寫的如果是付費請求沒有收到回覆，要先有人在工人主機上清掉那筆記錄，不然重試還是停在同一個地方`)).toBeTruthy();
+    expect(within(second.row(1)).getByText(`原本跳過的原因：${REASON}`)).toBeTruthy();
+    expect(offers(second.panel)).toHaveLength(0);
+  });
+
+  it("a waiting dub request that stalled says how it ends", async () => {
+    stub(() => ({ ...video, dub_retries: { ja: request("requested", { open: true, stalled: true }) } }));
+    const { panel, row } = await open();
+    expect(within(row(1)).getByText(`已要求再做一次（${at(ASKED)}），超過 30 分鐘還沒有工人接手：工人可能正忙或沒在跑。滿 24 小時沒接手會自動取消，不會花錢`)).toBeTruthy();
+    expect(row(1).textContent).toContain(`跳過（${REASON}）`);
+    // It ends by itself; the cell does not send the owner to the checkbox, which past the upload would leave the video unsyncable.
+    expect(row(1).textContent).not.toContain("勾");
+    expect(offers(panel)).toHaveLength(0);
+  });
+
+  it("a made, a skipped-again, a refused and an expired dub request each show their line", async () => {
+    const AGAIN = "k7p2 縮短兩輪後還是塞不進時間";
+    const WHY = "配音工具說現在做不了：timeline.json was built for an older script; run tts again";
+    // One request per row: English made and waiting on its card, Japanese given up on again, Korean refused by the worker.
+    stub(() => ({
+      ...video, locales: { ...video.locales, ko: all },
+      languages: { en: { ...made, dub: part("ready") }, ja: { ...made, dub: part("skipped", AGAIN) }, ko: { ...made, dub: part("skipped", "1.15 倍還塞不下") } },
+      dub_retries: { en: request("made", { taken_at: TAKEN, finished_at: ENDED }), ja: request("skipped", { taken_at: TAKEN, finished_at: ENDED, reason: AGAIN }), ko: request("refused", { finished_at: ENDED, reason: WHY }) },
+    }));
+    const first = await open();
+    expect(within(first.row(0)).getByText(`再做一次做出來了（${at(ENDED)}）：到下面的語言審核卡下載這條音軌，上傳到 Studio 後按卡片上的按鈕。卡片會把其他語言的音軌再列一次，只有這一條是新的。這個語言的字幕也照新配音重切過，YouTube 上已有的字幕不會自動更換。其他跳過的語言還想再做的話，請先要求再按卡片上的按鈕：影片上架滿 7 天後，審核卡一核准工作檔就會清掉`)).toBeTruthy();
+    expect(within(first.row(0)).queryByRole("button")).toBeNull();
+    expect(first.row(1).textContent).toContain(`跳過（${AGAIN}）`);
+    expect(within(first.row(1)).getByText(`${at(ENDED)} 再做了一次，還是做不出來，原因如上`)).toBeTruthy();
+    expect(within(first.row(2)).getByText(`${at(ASKED)} 的要求沒有做出新的音軌：${WHY}`)).toBeTruthy();
+    // A try that ended without a track can be asked for again.
+    expect(offers(first.panel).map((button) => button.getAttribute("aria-label"))).toEqual([BUTTON, "韓文 配音 再做一次"]);
+    first.unmount();
+
+    // Nobody took the Japanese request for a day; the English card was approved, so that track is simply uploaded.
+    stub(() => ({ ...video, dub_retries: { en: request("made", { taken_at: TAKEN, finished_at: ENDED }), ja: request("expired") } }));
+    const second = await open();
+    expect(within(second.row(1)).getByText(`${at(ASKED)} 的要求 24 小時內沒有工人接手，已自動取消，沒有花錢；確認工人在跑之後可以再要求`)).toBeTruthy();
+    expect(second.row(0).querySelectorAll("td")[2].textContent).toBe("你說已上傳");
+    expect(offers(second.panel).map((button) => button.getAttribute("aria-label"))).toEqual([BUTTON]);
+  });
+
+  it("a re-made track whose card was sent back says so above the button", async () => {
+    // The request ended as made; the review that carried the track was rejected, so the dub reads skipped again.
+    stub(() => ({ ...video, dub_retries: { ja: request("made", { taken_at: TAKEN, finished_at: ENDED }) } }));
+    const { row } = await open();
+    expect(row(1).textContent).toContain(`跳過（${REASON}）`);
+    const line = within(row(1)).getByText(`${at(ENDED)} 再做一次做出來的音軌，那一批語言審核被退回了，所以這一格又是先前跳過的原因。再做一次會沿用同樣的錄音：翻譯或規則沒變的話，做出來的還是同一條，也不會有新的審核卡`);
+    const button = within(row(1)).getByRole("button", { name: BUTTON });
+    expect(line.compareDocumentPosition(button) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(row(1).textContent).not.toContain("再做一次做出來了");
+  });
+
+  it("a dub that failed again while a languages card waits says the card has nothing new for it", async () => {
+    const AGAIN = "k7p2 縮短兩輪後還是塞不進時間";
+    // The batch of the failed try restates the English track, so it waits for the owner with nothing new on it.
+    const batch = {
+      id: "66666666-6666-4666-8666-666666666666", gate: "languages", content_sha256: "6".repeat(64), summary: "語言：en 配音、ja 配音跳過",
+      payload: { locales: { en: { metadata: "ready", captions: "ready", dub: "ready", file: "en.m4a", format: "m4a", file_role: "dub_en" }, ja: { metadata: "ready", captions: "ready", dub: { status: "skipped", reason: AGAIN } } } },
+      files: [{ role: "dub_en", sha256: "1".repeat(64), size: 10, content_type: "audio/mp4" }],
+      status: "pending", choice: null, note: null, decided_at: null, created_at: ENDED,
+    };
+    const failed = (review: Record<string, unknown>) => ({ ...video, pending: review.status === "pending" ? 1 : 0, languages: { ...video.languages, ja: { ...made, dub: part("skipped", AGAIN) } }, dub_retries: { ja: request("skipped", { taken_at: TAKEN, finished_at: ENDED, reason: AGAIN }) }, reviews: [review] });
+    const plain = `${at(ENDED)} 再做了一次，還是做不出來，原因如上`;
+    const withCard = `${plain}。下面那張等你決定的語言審核卡上沒有這個語言的新音軌；你已經確認上傳的音軌不用重傳，但要按下它的按鈕，網站才會再把這支影片的語言送到 YouTube`;
+    stub(() => failed(batch));
+    const waiting = await open();
+    await screen.findByRole("article", { name: "語言" });
+    expect(within(waiting.row(1)).getByText(withCard)).toBeTruthy();
+    expect(within(waiting.row(1)).queryByText(plain)).toBeNull();
+    expect(offers(waiting.panel)).toHaveLength(1);
+    waiting.unmount();
+
+    // Once that card is decided nothing waits below, and the cell says only that the try failed.
+    stub(() => failed({ ...batch, status: "approved", decided_at: "2026-10-10T14:00:00Z" }));
+    const decided = await open();
+    expect(within(decided.row(1)).getByText(plain)).toBeTruthy();
+    expect(within(decided.row(1)).queryByText(withCard)).toBeNull();
+    expect(offers(decided.panel)).toHaveLength(1);
+  });
+
+  it("an unsaved un-tick hides the dub's try-again button", async () => {
+    stub(() => video);
+    const { panel, row } = await open();
+    const box = within(panel).getByRole("checkbox", { name: "日文 配音" });
+    expect(offers(panel)).toHaveLength(1);
+    fireEvent.click(box);
+    // The saved choice still shows where the dub stands; asking for a part being unticked is not offered.
+    expect(row(1).textContent).toContain(`跳過（${REASON}）`);
+    expect(offers(panel)).toHaveLength(0);
+    expect(within(panel).queryByText(COST)).toBeNull();
+    fireEvent.click(box);
+    expect(within(panel).getByRole("button", { name: BUTTON })).toBeTruthy();
+    expect(within(panel).getByText(COST)).toBeTruthy();
+  });
+});

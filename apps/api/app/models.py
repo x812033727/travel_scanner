@@ -2275,6 +2275,13 @@ class VideoProject(Timestamped, Base):
     locales_decided_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True
     )
+    # The owner's "make this skipped dub again" requests, one record per locale: the latest
+    # request and how it ended (docs/videos/DUBS.md §再做一次; migration 0129). The worker reads
+    # it on its list row and answers in its report; app/video_reviews/dub_retry.py owns the
+    # transitions.
+    dub_retries: Mapped[dict[str, Any]] = mapped_column(
+        JSON, default=dict, server_default=text("'{}'")
+    )
     # What the site last sent this video's YouTube side through the linked channel, step by step
     # (app/video_youtube/state.py; migration 0102): the owner's request, each step's result, and
     # whether a run is going. None until the owner first sends it from /admin/videos.

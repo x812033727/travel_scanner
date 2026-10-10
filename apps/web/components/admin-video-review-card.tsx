@@ -42,6 +42,14 @@ export type LocaleChoice = Partial<Record<LocalePart, boolean>>;
 // Where a chosen part stands, from the server: not reported yet, made, given up on (with the
 // worker's reason), or, for a dub track, uploaded by the owner in Studio.
 export type LanguagePart = { state: "working" | "ready" | "skipped" | "uploaded" | string; reason?: string | null };
+// The owner's latest request to make a skipped dub track again, as the server reads it now
+// (docs/videos/DUBS.md; DubRetryOut in apps/api/app/video_reviews/schemas.py): open while it waits
+// for the worker or the worker is making the track, stalled when that takes longer than it should,
+// and how it ended. "expired" is worked out at read time; reason is the new skip reason or the
+// refusal, replaced_reason the skip reason at the click.
+export type DubRetry = { id: string; status: "requested" | "taken" | "made" | "skipped" | "refused" | "expired" | string;
+  open?: boolean; stalled?: boolean; requested_at?: string | null; taken_at?: string | null; finished_at?: string | null;
+  reason?: string | null; replaced_reason?: string | null };
 // What kind of video a tutorial is (apps/api/app/models.py VIDEO_CATEGORIES; migrations 0116, 0118), the
 // list's first filter; a video nobody filed yet has null. The pipeline reports it from video.json
 // once, the owner changes it on the video's page.
@@ -76,6 +84,11 @@ export type ProjectSummary = {
   locales_decided_at?: string | null;
   languages?: Partial<Record<string, Partial<Record<string, LanguagePart>>>>;
   ready_to_upload?: boolean;
+  // Per language whose dub is chosen: the owner's request to make the skipped track again, and,
+  // for a skipped dub with no open request, the server's code for why none can be asked for now
+  // (a key of the catalog's dubRetryBlocked group). Both absent from an API older than the retry.
+  dub_retries?: Partial<Record<string, DubRetry>>;
+  dub_retry_blocked?: Partial<Record<string, string>>;
   // Canonical worker registration, separate from output readiness and YouTube state.
   worker_state?: VideoWorkerState | null;
   dub_locales?: string[];
@@ -886,7 +899,10 @@ function LanguagesBody({ slug, review }: { slug: string; review: Review }) {
       const reason = state === "skipped" ? text(record(value).reason) || fallback : "";
       const file = fileFor(review, `${PART_ROLES[part]}${locale}`) ?? (part === "dub" ? fileFor(review, text(entry.file_role)) : undefined);
       const name = part === "dub" ? text(entry.file) || `${locale}.${text(entry.format) || "m4a"}` : part === "captions" ? `${locale}.srt` : `description.${locale}.txt`;
-      return [{ part, state, reason, file, name }];
+      // The lines of a finished track that kept the take Jev heard differently, because the retake
+      // did not fit (the worker sends their ids only, so the card can name them but not quote them).
+      const kept = part === "dub" && state === "ready" ? list(entry.kept_lines).map(text).filter(Boolean) : [];
+      return [{ part, state, reason, file, name, kept }];
     });
     return { locale, cells };
   });
@@ -894,10 +910,11 @@ function LanguagesBody({ slug, review }: { slug: string; review: Review }) {
   return <div className="grid gap-4 text-sm leading-6">
     <ul className="grid gap-2">{rows.map(({ locale, cells }) => <li key={locale} className="grid gap-1 sm:grid-cols-[7rem_1fr]">
       <span className="font-semibold">{t.has(`locales.${locale}`) ? t(`locales.${locale}`) : locale}</span>
-      <span className="flex flex-wrap gap-x-5 gap-y-1">{cells.map(({ part, state, reason, file, name }) => <span key={part} className="inline-flex flex-wrap items-center gap-2">
+      <span className="flex flex-wrap gap-x-5 gap-y-1">{cells.map(({ part, state, reason, file, name, kept }) => <span key={part} className="inline-flex flex-wrap items-center gap-2">
         <span>{t(`parts.${part}`)}</span>
         <span className="text-[var(--muted)]">{partStateLabel(t, state, reason)}</span>
         {file && <a className="font-semibold text-[var(--teal)] underline" href={fileUrl(slug, file)} download={name}>{t("downloadTrack", { file: name })}</a>}
+        {kept.length > 0 && <span className="basis-full text-amber-800">{t("dubKeptLines", { count: kept.length, lines: kept.join("、") })}</span>}
       </span>)}</span>
     </li>)}</ul>
     {dubReady && <div className="rounded-2xl border border-[var(--line)] p-4">
