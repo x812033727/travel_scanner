@@ -1,13 +1,13 @@
 ---
 id: 2026-10-10-news-disclaimer-correction-loop
 title: Investigate recurring news disclaimer corrections after locale review
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex-news-recovery-6f71
 claimed_at: 2026-10-10T00:52:37Z
 created_at: 2026-10-10T00:43:43Z
-completed_at:
+completed_at: 2026-10-10T01:16:13Z
 branch: codex/news-recovery-20261010
 depends_on: []
 scope:
@@ -53,7 +53,7 @@ each candidate because it lacks the original and raw corrected document text.
       distinguish helper reappending from a model failing to return its correction.
 - [x] Align the warning helper and hard checks with the documented
       disclaimer requirement without blindly deleting the warning.
-- [ ] Run targeted policy/pipeline tests and the applicable API checks.
+- [x] Run targeted policy/pipeline tests and the applicable API checks.
 - [x] Hand the verified repair and a precise recovery cohort to the current
       news-backlog operations task.
 
@@ -87,8 +87,10 @@ Do not call production providers or reopen candidates as part of reproduction.
   excluded when that callout exists; shared lint and every other hard check remain.
 - Key regressions failed before the repair (4 failures, exit 1) and passed after
   it (4 passes, exit 0). Policy, pipeline, automation and saved-bundle suites:
-  267 passed, exit 0. Full API Ruff and git diff --check passed. Full mypy is
-  running; its final result will be recorded before the repair is handed off.
+  267 passed, exit 0. Full API Ruff, git diff --check and task validation passed.
+  Mypy app: 470 files, no issues, exit 0. Mypy tests: 380 files, no issues, exit 0.
 - Independent code/operator review found no blocking issue. The implementation
   changes only policy.py and its policy/pipeline tests; no production data or
   judge history is changed by this patch.
+- Draft PR #1411 contains the repair. The repository CI and owner-controlled
+  merge/deploy remain separate gates from completion of the authored repair.

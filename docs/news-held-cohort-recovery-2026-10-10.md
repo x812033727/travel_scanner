@@ -56,8 +56,8 @@ close the older task owned by `codex-news-backlog-review`.
 
 - [x] Capture and seal the original 208-ID cohort and current full documents.
 - [x] Check shared ownership and claim the isolated repair/operation tasks.
-- [x] Reproduce and fix the disclaimer correction cycle; 267 relevant tests and
-      full API Ruff passed. Full mypy results remain pending.
+- [x] Reproduce and fix the disclaimer correction cycle; 267 relevant tests,
+      full API Ruff and mypy app/tests passed. Independent code review passed.
 - [ ] Obtain a verified production repair with deployment guards intact.
 - [ ] Complete a guarded source-refresh pilot and read its actual outcomes.
 - [ ] Resolve the remaining source, editorial, redraft and technical holds.
@@ -68,7 +68,10 @@ No production mutation has been performed by this recovery operation yet.
 
 The original four uncertain video-stage jobs are terminal records with completed
 timestamps, not live provider calls. They remain untouched. The deployment lock
-is still held and requires a read-only owner/liveness check before any deploy.
+is held by PID 2701735, a shared READ lease for the renewed-finals video flow.
+No lease is removed or process stopped by this news operation; deployment must
+wait for its proper release. The source-refresh pilot is independent of that
+flow and does not rebuild or restart containers.
 
 Two duplicate decisions are being reviewed: OSS Scanner is already covered by
 the published Anthropic Cyber Mission article; the Foresight slug conflict is
