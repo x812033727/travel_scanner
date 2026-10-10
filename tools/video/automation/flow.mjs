@@ -22,7 +22,7 @@ import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { craftChecks } from "../core/craft.mjs";
 import { EXPLAINER_PRESET, hasCast, illustrated, resolveLook, SLIDES_PRESETS, slidesPresetFor } from "../core/drama.mjs";
 import { effectiveEpisodeMinutes } from "../core/duration.mjs";
-import { emptyLexicon } from "../core/lexicon.mjs";
+import { emptyLexicon, isProposableTerm } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
@@ -379,13 +379,18 @@ function writeVideo(dir, video) {
   writeFileSync(path.join(dir, "video.json"), `${JSON.stringify(video, null, 2)}\n`);
 }
 
+/**
+ * The writer's lexicon additions into the shared dictionary. A term lint would refuse in the
+ * dictionary (isProposableTerm: "8B" starts with a digit) is left out like any other unusable
+ * proposal, since one such entry fails lint for every video that shares the file.
+ */
 function mergeLexicon(root, additions) {
   if (!additions || typeof additions !== "object") return [];
   const file = lexiconFile(root);
   const lexicon = readJson(file, { schema_version: 1, terms: {} });
   const added = [];
   for (const [term, spoken] of Object.entries(additions)) {
-    if (!/^[A-Za-z0-9][A-Za-z0-9.+#'_-]{0,39}$/.test(term) || term in lexicon.terms) continue;
+    if (!isProposableTerm(term) || term in lexicon.terms) continue;
     if (spoken !== null && (typeof spoken !== "string" || !spoken.trim() || spoken.length > 80)) continue;
     lexicon.terms[term] = spoken === null ? null : spoken.trim();
     added.push(term);

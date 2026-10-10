@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { entriesUsed, isKnownTerm, latinTerms, substitutions, unknownTerms, validateLexicon } from "./lexicon.mjs";
+import { lexiconProposals } from "./fixtures/load.mjs";
+import { entriesUsed, isKnownTerm, isProposableTerm, isValidTerm, latinTerms, substitutions, unknownTerms, validateLexicon } from "./lexicon.mjs";
 
 const lexicon = { schema_version: 1, terms: { GPT: "G P T", Claude: null, "Claude Code": "Claude Code", Node: null, js: "J S", p95: "P 九十五" } };
 
@@ -28,6 +29,24 @@ test("validateLexicon wants a spoken form or null for every term", () => {
   const bad = validateLexicon({ schema_version: 1, terms: { API: "", "5G": null } });
   assert.deepEqual(bad.map((error) => error.path), ["terms.API", "terms.5G"]);
   assert.equal(validateLexicon([]).length, 1);
+});
+
+test("a term the dictionary may hold starts with a Latin letter, and one the worker takes from a writer is that within 40 plain characters", () => {
+  for (const term of ["A", "Ai2", "p95", "GPT-5", "Node.js", "C#", "Claude Code"]) assert.ok(isValidTerm(term), term);
+  for (const term of ["8B", "6abc", "5G", "", " AI", "_x", "-x", ".js", "中文", "Ａ", "é", 8, null, undefined]) assert.ok(!isValidTerm(term), String(term));
+  for (const term of ["A", "Ai2", "p95", "GPT-5.5", "Node.js", "C#", "C++", "it's", "snake_case", "x".repeat(40)]) assert.ok(isProposableTerm(term), term);
+  // What validateLexicon refuses (the 8B and 6abc of 2026-10-09), then the worker's own limits.
+  for (const term of ["8B", "6abc", "5G", "", "_x", "Claude Code", "bad term!", "A中", "x".repeat(41), 8, null]) assert.ok(!isProposableTerm(term), String(term));
+});
+
+test("validateLexicon refuses exactly the terms isValidTerm does, so no term a writer may propose is one lint refuses", () => {
+  const terms = Object.keys(lexiconProposals());
+  assert.ok(terms.some(isProposableTerm) && terms.some((term) => !isValidTerm(term)) && terms.some((term) => isValidTerm(term) && !isProposableTerm(term)));
+  for (const term of terms) {
+    const errors = validateLexicon({ schema_version: 1, terms: { [term]: null } });
+    assert.deepEqual(errors.map((error) => error.path), isValidTerm(term) ? [] : [`terms.${term}`], JSON.stringify(term));
+    if (isProposableTerm(term)) assert.deepEqual(errors, [], JSON.stringify(term));
+  }
 });
 
 test("substitutions put longer terms first so a phrase wins over its first word", () => {
