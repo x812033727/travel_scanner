@@ -3296,6 +3296,61 @@ PASS is DURATION_ONLY for the 26 rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Dub skip-rate increment (second opinion, overrun tolerance, kept takes): 6 files (2026-10-10)
+
+Reviewer: `claude-pr-review-dub-skip-rate`. Author: `claude-fable-5.1` (with worktree agents). Scope: DURATION_ONLY for the six changed bindings below, reviewed at `8397e1d3d899fc48de2a4df501423a840242da5e` ("Merge branch 'claude/video-languages-four' into claude/dub-skip-rate") on claude/dub-skip-rate, which is stacked on claude/video-languages-four (PR #1413). The commits that are this branch's own are `3997d4541` ("feat(video): the production worker gets the dub check's second opinion"), `3db01e782` ("feat(video): a dub window over by a few frames at 1.15x is let through, not the locale's undoing") and `3a79716b6` ("fix(video): a dub retake that no longer fits keeps the earlier take instead of giving the locale up"), with their merges. The reviewer wrote no part of those commits and edits only this report and review.json.
+
+Baseline: `ff1dd4242ab0b4d9df87bd921985c89cdb29fc68`, the head of claude/video-languages-four and the merge base. The receipt in this tree is that branch's: each of the six changed files' bound hash is its blob at the baseline, and the other 102 bindings are current, so the receipt passes there; this branch changes neither receipt file, nor review.mjs, nor anything under docs/videos/long-form or tools/video/long-form. Each changed file's committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these six bindings. Every prior increment is preserved and the registry remains 108 files.
+
+- `tools/video/automation/automation.test.mjs`: `34510564b46d040b3addfd2bdba2a8865dd7244e97d259033597e7ea7f8504c0` -> `3b7f956b3e9b366b8b1bf9ab392d9c40d36ce3542941fa2678824611259e08c0`.
+- `tools/video/automation/flow.mjs`: `4de8bbedb777f17a66a04064c0bd612a2a23ea8cf206d798fb449851a6a46bc7` -> `15ff4c13bc5a9e7e77f5a500653a96d6360b6c5d68cb02142d3340bee2462eec`.
+- `tools/video/dubs/captions-package.test.mjs`: `88527c334aeea86dedff5ff15cb4672585ca303c973e4253078cb6c11e4e1871` -> `a7d9462b61f182bca1b7e87149a5c461659dafeb9c54449769bc35189f352685`.
+- `tools/video/dubs/dubs.test.mjs`: `134767f7e954cdc31c6f7e4c2823dff6132d4c7d72a429a0d2f48fe37786566e` -> `4fb9b00853147186776b1b18f483585091fd1c35e5aaaa77db742609b898d2e1`.
+- `tools/video/dubs/plan.test.mjs`: `b2c8a0294ac71554baffa2a2fa76e1ef6b0bc6aff992af3da1b2c35e0142658b` -> `f06d073795553024d19098c9957ab060a9feb41569546d67f366d931244b8ab3`.
+- `tools/video/review/sync.mjs`: `570c3fa5999eb7edf17e0e2e1c01b1602a326c8c191c3ce9ad20e65b38af2cba` -> `6f8ea2820b3eda1bc85e58e94ce11902d7fe2c7d590f10a1e73fe67200d33851`.
+
+Findings, `tools/video/automation/flow.mjs` (+63/−25): every changed line is inside `makeDub` or its doc comment, plus the import of `overrunSummary` beside `MAX_TEMPO`. (a) `flaggedIds`, `forCard`, `shortening` and `unfit` reword the reasons a locale is given up with (line ids and rounds, no host path or command); (b) once `rounds.shorten >= MAX_DUB_SHORTEN_ROUNDS` the retake is asked with `--keep-fitting`, and a retake that reports `kept` lines in fit.json ends the loop with the locale ready and those lines named in the note and the returned line; (c) at the success end, `overrunSummary` over fit.json's windows adds a note and a suffix to the returned line. None of it reads or writes a length: `MAX_DUB_SHORTEN_ROUNDS`, `MAX_DUB_RETAKE_ROUNDS` and `MAX_DUB_REWORD_ROUNDS` keep their values and are counts of rounds, and the module's lines naming a duration term number 35 at both revisions. The episode-length gates the module carries elsewhere (target minutes, the QA step, the 480-second floors it reports) are the same bytes.
+
+Findings, `tools/video/review/sync.mjs` (+5/−2): the languages batch's dub entry gains `kept_lines` when the track's timeline carries `kept`, and `languagesSummary` names those lines beside 「配音」 when reasons are shown. A list of line ids and a sentence; the lines naming a duration term number 36 at both revisions, and what the module sends about a video's length is the same bytes.
+
+Findings, the four bound tests. `plan.test.mjs` (+99/−2): a 320-frame, three-window fixture and one test of `absorbOverruns` through `layoutDubTolerant`: next-slack, tempo, still over past both, and a short last window with no window after it that stays `over` at `MAX_TEMPO`. `dubs.test.mjs` (+129/−3): two CLI tests, of the tolerance and of `--keep-fitting`; the first asserts `parseWav(narration).samples.length === timeline.total_frames * SAMPLES_PER_FRAME` on a track with an absorbed window. `captions-package.test.mjs` (+46/−3): a dubbed line five frames past its slide keeps its cues in step and never overlapping the next line's. `automation.test.mjs` (+100/−10): the fake `dub` writes `windows`, `tempo_max` and `kept` into its timeline with `total_frames: timeline.total_frames` as before, the give-up reasons are the reworded ones, and three tests cover the absorbed note, the kept take and the give-up without a path. None sets, asserts or loosens an episode length, a target or a floor.
+
+The track-length question (a dub is the video's length to the sample: `total_frames` × 1600). The unbound `dubs/plan.mjs` (+98/−8) and `dubs/cli.mjs` (+99/−35) were read whole in the diff for it, and `dubs/encode.mjs` is not touched:
+
+- The track's length has one source and the increment does not touch it: `assembleTrack(timeline.total_frames, lines, placed)` allocates `new Int16Array(totalFrames * SAMPLES_PER_FRAME)` and only `track.set`s clips into it; it throws on a clip longer than its slot and on `start + clip.length > track.length` ("runs past the end of the video"). `timeline` is the zh-TW timeline.json, which `dub` reads and never writes; `total_frames`, the mix's `totalSeconds = timeline.total_frames / FPS`, `wrapAudio`'s `bodyFrames` and the record's `total_frames` are the same lines as at the baseline. The tolerance changes only `start_frame`/`end_frame`/`tempo` of dub lines inside that fixed buffer.
+- The last window. `absorbOverruns` lets a window through in three ways only: its speech ends at or before its own `end_frame` (inside the 100 ms guard), which for the last window is at or before the video's end; or the NEXT window's lines can wait (`shiftWindow` must leave that window fitting), which needs a next window; or `speedUp` returns it not `over`, i.e. ending at or before `end_frame` less the guard. With no next window and neither of the other two, it stays `over`, `dub` exits 1 and writes no track. A probe on a two-window, 160-frame timeline with the last window over at 1.15x by about 1, 2, 3, 4, 6, 9 and 12 frames gave: end frames 158, 159, 160 (next-slack, at most the video's last frame), 157 (tempo 1.23), then `over` with no track for 6, 9 and 12; each track that was assembled was 256,000 samples = 160 × 1600. A first window leaning nine frames into the second also gave 256,000.
+- An overrun is at most 0.3 s past the guard, and the only window that moves is the one after it, which must still end inside its own limit; no window past the next one moves, so nothing accumulates toward the end.
+- The zh-TW narration timeline and QA: `placeLines`' new `from` defaults to `window.start_frame`, so `layoutWindow` and `layoutDub` return what they did for a caller that does not pass it; `windowLimit` and `bareWindow` are the former inline expressions. Nothing under `tools/video/core/timeline.mjs`, `tools/video/qa`, `tools/video/assemble`, `tools/video/tts` or `tools/video/long-form` is in the branch's diff; `core/stages.mjs` (+2/−1, unbound) only copies `kept` into `dubsForUpload`'s entry beside the unchanged `total_frames`.
+
+Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, target_seconds, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. A case-insensitive scan of the 487 changed lines (442 added, 45 removed) of the six diffs for minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, floor, plans.json, policy.json and process.env finds four lines, all `total_frames` in tests: the automation fixture's `total_frames: timeline.total_frames` on both sides of one rewritten line, the plan fixture's `total_frames: 320`, and the dubs test's assertion that the track is `total_frames * SAMPLES_PER_FRAME` samples. The words seconds and frame do occur in the changed lines, as the dub's overrun (`overrun_seconds`, `shifted_frames`, "0.27 s") and line positions, never as an episode's length. The new constants `OVERRUN_TOLERANCE_SECONDS = 0.3` and `MAX_TEMPO_OVERRUN = 1.25` are a dub window's tolerance and one window's tempo ceiling; `MAX_TEMPO` stays 1.15. The branch touches 16 files: the six above and ten unbound ones (`docker-compose.prod.yml`, `ops/video/Dockerfile`, `docs/videos/DUBS.md`, three task files, `tools/video/cli.mjs`, `core/stages.mjs`, `dubs/cli.mjs`, `dubs/plan.mjs`).
+
+Ran (in the worktree at `8397e1d3d`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the hashing of the six changed paths against the receipt, the baseline and the head, with a CR, BOM and trailing-LF check of each, and of all 108 bindings against the working tree (six stale, 102 current);
+- a reading of the six diffs, and of the diffs of dubs/plan.mjs, dubs/cli.mjs, core/stages.mjs and tools/video/cli.mjs, with `windowsOf`, `assembleTrack` and the track-writing end of `dubLocale` as context;
+- the duration-term counts and the scan;
+- the probe described above, a scratch script importing `layoutDubTolerant` and `assembleTrack` from the reviewed plan.mjs;
+- `git diff --check claude/video-languages-four HEAD`, which exited 0.
+
+On the reviewed bytes, these exited 0:
+
+- `node --test tools/video/dubs/plan.test.mjs`, 10 passed;
+- `node --test tools/video/dubs/dubs.test.mjs`, 14 passed.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the 0.3-second tolerance, the 1.25x ceiling, keeping a take Jev heard wrong, or the second transcriber in the worker image as product choices; the production measurements quoted in plan.mjs were read, not verified.
+- How an absorbed window sounds (a line ending after its slide changes, or one window faster than the rest) is not a duration rule and is not judged here. Noted, not judged: when the window after an overrunning one has no lines, `shiftWindow` moves nothing and the overrun may reach up to three frames past that empty window's end; `assembleTrack` still cannot write past the buffer.
+- The ten unbound changed files are not reviewed or bound here. plan.mjs, dubs/cli.mjs, stages.mjs and tools/video/cli.mjs were read for the track-length question only; the Dockerfile, compose file, DUBS.md and task files only in the diff stat.
+- No video was dubbed, rendered or measured; no ffmpeg stretch was run outside the tests' fakes. `automation.test.mjs`, `captions-package.test.mjs`, the full tool and API suites, lint, typecheck and CI were not run for this increment.
+- The 102 bindings this branch did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the six rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Dictionary-merge rule increment: 2 files (2026-10-10)
 
 Reviewer: `claude-pr-review-lexicon-merge-20261010`. Author: `claude-opus-5-5-lexicon-merge-fix`. Scope: DURATION_ONLY for the two changed bindings below, reviewed at `d5550634b91272c9f4cf520b145acad913156c82` ("fix(video): do not merge dictionary terms that lint refuses") on claude/lexicon-merge-letter-first. The reviewer wrote no part of that commit and edits only this report and review.json.
@@ -3435,6 +3490,74 @@ PASS is DURATION_ONLY for the 26 rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Dictionary-merge rule merge with main (#1416) follow-up: 6 files (2026-10-10)
+
+Reviewer: `claude-pr-review-lexicon-merge-20261010-c`, a third pass by the reviewer of the two "Dictionary-merge rule" sections above. It wrote none of the branch's commits and none of #1416's, judged the two merged files' bytes on its own reading, and edited only this report and review.json. Author: `claude-opus-5-5-lexicon-merge-fix`, the branch's author. Scope: DURATION_ONLY for the merged bytes of tools/video/automation/flow.mjs and tools/video/automation/automation.test.mjs, plus the merge re-binding of the four files only #1416 changed, on claude/lexicon-merge-letter-first. The merge joins the branch's `d02b4ec917c972d0d49b05232d47ea6a467746bc` ("Merge main into claude/lexicon-merge-letter-first"), whose receipt is the follow-up above, with origin/main `91f418c82df077694c981a5446f75b663488d377` (#1416, "fix(video): three reasons the worker gave up on 49 dub tracks"). Both sides come from `ab35cc389` (#1413). The session coordinating the branch started the merge with `git merge origin/main --no-commit`, and it was not committed when this was written: what was reviewed is the index and the working tree, which hold the same bytes for every one of the 108 bound files.
+
+The receipt union. Both sides had changed review.md and review.json, and Git left both in conflict. Both were rebuilt from the three stages of the index (`git show :1:`, `:2:` and `:3:`, the base and the two sides), not from the conflict markers. This report holds every increment verbatim: #1416's "Dub skip-rate increment (second opinion, overrun tolerance, kept takes)" from origin/main, then the branch's own two sections, then this one. That order is the side merged in, then the branch's own sections, then the merge, as earlier merge follow-ups in this report have it. #1413's "Video languages are four increment" is in the common base and stays once, where main has it: both sides had appended after it, #1416 its one section and the branch its two, and changed table rows. The preamble and the 113 sections up to and including it are byte-identical at `ab35cc389` and on both sides. #1416's section here is origin/main's byte for byte (11,756 bytes) and the branch's two are `d02b4ec91`'s (13,876 and 10,149 bytes), each with its own Verdict line and the blank line after it. Each side's receipt passes `durationReviewProblems` against its own tree (read by `git show`).
+
+Baseline, by bound file, against both receipts:
+
+- Four files match #1416's reviewed hash: captions-package.test.mjs, dubs.test.mjs and plan.test.mjs under tools/video/dubs, and tools/video/review/sync.mjs. In each case the merged bytes equal `91f418c82`'s, and the branch left them at `ab35cc389`'s bytes. So these are merge re-binds of the hashes #1416's increment reviewed, with no new bytes.
+- Two files match neither receipt. Both sides changed each of them from `ab35cc389`, Git merged each without a conflict, and the merged bytes of each equal `git merge-file` of the two sides over `ab35cc389`'s copy:
+  - tools/video/automation/flow.mjs, 253,526 bytes and 4,113 lines, `b15fff400a5ebcbc89f68bf9795d3b392da4c1dce4f6a8e58067e902f85409d2`. From `4de8bbed…` the branch went to `bc2b6ef8…` and #1416 to `15ff4c13…`.
+  - tools/video/automation/automation.test.mjs, 485,878 bytes and 6,844 lines, `5b7c04011f43798843fd7d9e146de490dc06890e6808f3e3544a3ee7cf97f05d`. From `34510564…` the branch went to `6c252390…` and #1416 to `3b7f956b…`.
+- The other 102 bound files are the same on both sides and in the working tree.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for review.json's conflict markers, which it could not parse. Read against the merged tree, the branch's receipt was stale for exactly the four #1416 files and the two merged ones, and #1416's for exactly the two merged ones. The two merged files hold no CR byte or BOM and end in LF. review.mjs is the same on both sides, so the registry stays exactly 108 paths, with six hashes rebound against the follow-up above and the other 102 unchanged.
+
+Findings, tools/video/automation/flow.mjs. The two parts sit apart in the file:
+
+- Against `91f418c82` (+7/−2), the changed lines are, line for line, the change the "Dictionary-merge rule increment" reviewed at `d5550634b`: the import from `../core/lexicon.mjs` gaining `isProposableTerm` (line 25), the comment above `mergeLexicon` (lines 382–386) and the term test in its loop, `!isProposableTerm(term) || term in lexicon.terms` (line 393). Main's file with those three edits made by hand is the merged file, byte for byte. So the merged file is main's version plus the reviewed hunks, and nothing else.
+- Against `d02b4ec91` (+63/−25), they are, line for line, #1416's own change from `ab35cc389`, which its increment reviewed, and they sit where that increment says: the import from `../dubs/plan.mjs` gaining `overrunSummary` beside `MAX_TEMPO` (line 36), and 18 hunks between lines 3758 and 3929, every one in `makeDub`'s doc comment (lines 3756–3776) or its body (lines 3777–3930).
+
+#1416's part does not reach the dictionary. `mergeLexicon` with its comment (lines 383–400), `saveAndLint` (2771–2797) with its one call of `mergeLexicon` (line 2778), `lintErrors` (523–526), `MAX_LINT_FIXES` (line 83), `scriptPayload` (2680–2702) and `draftBudget` (3060–3069) are the same bytes at the same lines as at `d5550634b`, and no hunk of #1416's touches any of them. None of #1416's 88 changed lines names the lexicon, the dictionary, a term or lint. The merged file names `mergeLexicon` twice, `isProposableTerm` three times and `lexicon_additions` once, as the reviewed commit does. So how a proposed term is accepted reads as it was reviewed: the import, the one condition, and the unchanged checks around it.
+
+Findings, tools/video/automation/automation.test.mjs. Here too the two parts sit apart:
+
+- Against `91f418c82` (+47/−1), the changed lines are, line for line, the change reviewed at `d5550634b`: the fixtures import gaining `lexiconProposals` (line 15), the import of `isValidTerm` and `validateLexicon` (line 16), and the one test "a dictionary term the writer proposes that lint would refuse is left out…" at lines 673–716, still between the tests at lines 622 and 718. Main's file with that import line replaced and that block put before the same test is the merged file, byte for byte. So this merged file too is main's version plus the single test and the import lines already reviewed, and nothing else.
+- Against `d02b4ec91` (+100/−10), they are, line for line, #1416's own change from `ab35cc389`, which its increment reviewed: the import from `../dubs/plan.mjs` gaining `overrunSummary` (line 24), the comment above `fakeDub` and the helper itself (lines 2404–2458), the reworded give-up reasons in two dub tests (lines 3437–3439 and 3515–3521), one assertion added to the retake test at line 3665, and three new tests with a `HOST_ONLY` pattern (lines 3459–3482 and 3672–3722). The file has 169 top-level tests: the 166 of the follow-up above and #1416's three.
+
+Neither part reads the other. The dictionary test makes no dub and calls no `fakeDub`. #1416's hunks touch neither that test, nor `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` (line 37 still), nor a helper the test calls: `fakeSite`, `context` and `smallRefs` are at lines 209–391, and `fixture`, `sandbox` and `automationClient` are imported from files #1416 did not change. The test asserts what it asserted, and it passes on the merged tree.
+
+Lines naming a duration term (the list of the "Dictionary-merge rule increment") number 115 in flow.mjs on the branch and 116 in main's file and in the merged file, and 298 and 305 in automation.test.mjs. In both files the merged lines are main's lines, the same in the same order. The reviewed change adds none. The lines #1416 adds are its increment's to answer for: one in `makeDub`'s doc comment and eight in the test file, one of them the fake dub's `total_frames: timeline.total_frames` line rewritten around those same words. They name a dub window's frames and overrun seconds and a dub line's budget, never an episode's length.
+
+What the first increment read around the dictionary still stands in the merged tree. lexicon.mjs, lint.mjs, timeline.mjs, tts/requests.mjs, story.mjs and fixtures/load.mjs are not among the 19 files #1416's commit changes, and its dubs/plan.mjs hunks name neither `speechLexicon`, `dubLexicon` nor `CHINESE_LOCALES`.
+
+Across the merge there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. No duration assertion is removed or loosened.
+
+Ran (in the worktree with the merge in the index, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell, node_modules borrowed by a junction from another worktree of this repository and removed afterwards):
+
+- the hashing of every bound path against both receipts, the three revisions, the index and the working tree;
+- `durationReviewProblems` against `ab35cc389`, `d02b4ec91` and `91f418c82` through `git show`, which returned no problem for any of the three, and with each side's receipt against the merged tree;
+- the comparison of review.md at the three stages, section by section, and of the rebuilt report with them;
+- for each of the two files, `git merge-file`, a line-for-line comparison of each part with the other side's own change and with the change reviewed at `d5550634b`, and the rebuilding of the merged file from main's;
+- the comparison of the five functions named above between `d5550634b` and the merged flow.mjs;
+- a reading of #1416's diffs of the two files, and of the hunk headers of its dubs/plan.mjs diff;
+- the duration-term counts.
+
+On the merged bytes, each of these exited 0:
+
+- `node --test --test-skip-pattern="a project another process holds is left alone" tools/video/automation/automation.test.mjs`, 214 of 214 counting subtests, the 168 other top-level tests among them. The test left out is the lease test the first increment describes, now at line 5673 and the same bytes;
+- `node --test tools/video/core/lexicon.test.mjs tools/video/automation/story.test.mjs`, 26 of 26;
+- `node --test tools/video/core/lint.test.mjs tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs`, 70 of 70.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- #1416's four other files are bound as its increment reviewed them, and are not reviewed again here. #1416's parts of flow.mjs and automation.test.mjs were compared with #1416's own change and read; they are not judged afresh.
+- This follow-up does not review #1416: not the overrun tolerance, the kept takes or the reworded reasons, and not the unbound files it changed.
+- The merge was not committed when this was written. The receipt binds the bytes of the index as they were then; a bound file changed before or after the merge commit needs its own increment.
+- The lease test of automation.test.mjs was not run, since it does not finish on Windows. dubs.test.mjs, plan.test.mjs and captions-package.test.mjs, which #1416 changed, were not run here.
+- No writer, planner, translator or voice was run, and no video was dubbed, assembled or measured.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this follow-up.
+- The 102 bindings this merge did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the six rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -3491,9 +3614,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `6c2523909cfcbbfa922b3e5347aad86adf4cc7d461e99032c8946020901f6080` |
+| `tools/video/automation/automation.test.mjs` | `5b7c04011f43798843fd7d9e146de490dc06890e6808f3e3544a3ee7cf97f05d` |
 | `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
-| `tools/video/automation/flow.mjs` | `bc2b6ef828c116abd57849b49300a832899ba9ea61733d76392e22c083cfc892` |
+| `tools/video/automation/flow.mjs` | `b15fff400a5ebcbc89f68bf9795d3b392da4c1dce4f6a8e58067e902f85409d2` |
 | `tools/video/automation/prompts.mjs` | `75f17ea823f2fc1f7ea39b3ae21df401d9329333222434e9d97ea632bbf02388` |
 | `tools/video/automation/series.mjs` | `2b687e0e5251f8b01904f3018bc658e4322888959af9d8dc0931d71a41e5e381` |
 | `tools/video/automation/series.test.mjs` | `1974b5d8db7177c920bc85ec35acf8abc4a0177b80947596ed5b551e813c53d6` |
@@ -3520,10 +3643,10 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/state.test.mjs` | `327eac9a271451f2f1d4954850dbed0ab4102be170f744cc953cb071f1ce0d08` |
 | `tools/video/core/timeline.mjs` | `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a` |
 | `tools/video/core/timeline.test.mjs` | `8eedaa0b04f56d22b65becbf23e39e23e051f2d6850f63a5bf7c496583b9b00a` |
-| `tools/video/dubs/captions-package.test.mjs` | `88527c334aeea86dedff5ff15cb4672585ca303c973e4253078cb6c11e4e1871` |
-| `tools/video/dubs/dubs.test.mjs` | `134767f7e954cdc31c6f7e4c2823dff6132d4c7d72a429a0d2f48fe37786566e` |
+| `tools/video/dubs/captions-package.test.mjs` | `a7d9462b61f182bca1b7e87149a5c461659dafeb9c54449769bc35189f352685` |
+| `tools/video/dubs/dubs.test.mjs` | `4fb9b00853147186776b1b18f483585091fd1c35e5aaaa77db742609b898d2e1` |
 | `tools/video/dubs/freshness.test.mjs` | `c882af3d55bff72c410e930b0e0f187770782a937952bb9efba3ab40e44a5b30` |
-| `tools/video/dubs/plan.test.mjs` | `b2c8a0294ac71554baffa2a2fa76e1ef6b0bc6aff992af3da1b2c35e0142658b` |
+| `tools/video/dubs/plan.test.mjs` | `f06d073795553024d19098c9957ab060a9feb41569546d67f366d931244b8ab3` |
 | `tools/video/long-form/cli.mjs` | `3a0b26f900daaf1a08f7ed210ad1239d7f172035fa1e14c6dafc28bf55dedfa4` |
 | `tools/video/long-form/integration.test.mjs` | `aa69f38653fb7c6a7fd0c6daed93ccde1e031987e3169f6c8d9456f38c8b605c` |
 | `tools/video/long-form/plans.mjs` | `9680960509931642c679a9db9a3a1d6e419280558f9eb431358bfd1ee781e103` |
@@ -3541,7 +3664,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/qa/cli.mjs` | `b0b0a5ea57f5a060b38d732bc335944bbadbcd8d75bbaa50310fb1d29d01c17e` |
 | `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
 | `tools/video/qa/qa.test.mjs` | `6bf6455a5077e93a7473a3c6720e53dfb77d3a8433317de0b6dbabc933de0d16` |
-| `tools/video/review/sync.mjs` | `570c3fa5999eb7edf17e0e2e1c01b1602a326c8c191c3ce9ad20e65b38af2cba` |
+| `tools/video/review/sync.mjs` | `6f8ea2820b3eda1bc85e58e94ce11902d7fe2c7d590f10a1e73fe67200d33851` |
 | `tools/video/review/sync.test.mjs` | `c5272cd5154eb2b19fc4a16124671a51d01689150ee3bb5c23dc8c29ccc45644` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
