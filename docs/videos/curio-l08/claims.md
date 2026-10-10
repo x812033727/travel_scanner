@@ -42,7 +42,7 @@ c33｜捐款：S10（2017，Swindon 附近）圈「about 60m wide and covers abo
 c34｜法律：Wiltshire 警方鄉村犯罪警員「reiterated that creating a crop circle is criminal damage and an offence」（S10）。影片兩處明說那是別人的田、別人的作物，做法是紀錄不是邀請｜https://www.fwi.co.uk/news/crime/farmers-tell-fw-of-stress-and-anguish-over-unwanted-crop-circle｜2026-10-10｜pub-warning, field-law, field-not-invite
 c35｜損失（S12，衛報自行估算）：「Farmers lost £30,000 in income between 2018 and 2022 as a result of 92 crop circles」「More than 40 football pitches' worth of arable land」。同一句寫明範圍是「in England since 2018」，卡片標題寫「2018–2022 年英格蘭的損失（衛報的估算）」（查核第 1 輪補上英格蘭）｜https://www.theguardian.com/environment/2022/sep/24/invasion-of-the-barley-snatchers-crop-circles-cost-farmers-thousands-in-lost-revenue｜2026-10-10｜field-stats, field-compare
 c36｜觀光（S13，單源，2004）：Avebury 遊客中心職員「Around 85 to 90 per cent of our custom during the summer months is connected to crop circles」。同文「四週收入約 £30,000」是傳聞，不用｜https://circlemakers.org/cereal_entrepreneurs.html｜2026-10-10｜field-tourism, field-tourism2, field-compare
-c37｜2000 年：Matthew Williams，29 歲，「fined 100 and ordered to pay 40 costs by Devizes magistrates after pleading guilty to causing criminal damage」（S9；原頁英鎊符號遺失，research.md 判為 £100 與 £40）；NFU 郡主席 Tim Carson：「It's no different if someone comes into your garden and causes damage.」（S8）。旁白不說名字，不說「唯一被定罪」｜https://www.fwi.co.uk/news/crop-circle-maker-fined ；https://ufologie.patrickgross.org/press/independent4nov2000.htm｜2026-10-10｜field-2000, field-nfu
+c37｜2000 年：Matthew Williams，29 歲，「fined 100 and ordered to pay 40 costs by Devizes magistrates after pleading guilty to causing criminal damage」（S9；原頁英鎊符號遺失，research.md 判為 £100 與 £40；查核第 2 輪在當地報紙 This Is Wiltshire 2000-11-07 的存檔看到帶英鎊符號的原文：「A man was fined £100 after admitting damaging farmland」「also ordered to pay £40 costs by Devizes magistrates」，金額確認）；NFU 郡主席 Tim Carson：「It's no different if someone comes into your garden and causes damage.」（S8）。旁白不說名字，不說「唯一被定罪」｜https://www.fwi.co.uk/news/crop-circle-maker-fined ；https://web.archive.org/web/20140515090322/http://www.thisiswiltshire.co.uk/archive/2000/11/07/7393897.Man_fined___100_for_making_crop_circle/ ；https://ufologie.patrickgross.org/press/independent4nov2000.htm｜2026-10-10｜field-2000, field-nfu
 c38｜結局：Bower「died West End, Hampshire, 21 July 2018, aged 94」（S6）；Chorley 卒年未證實：`sources` 沒有一條寫到他過世，查核第 1 輪也找不到主要報紙的訃聞，只有次級資料寫 1996（另有 1997）；旁白改成標明出處的說法「資料多寫戴夫九〇年代過世」；Bower 晚年後悔公開（S6：後悔的是「telling people about it」；S3：「he wishes he had kept quiet」）｜https://circlemakers.org/028_FT371.pdf｜2026-10-10｜field-dave, field-doug, field-regret
 c39｜「It's only flattened corn.」（S19，單源）：原文是圈內人想像他「chuckling to himself and whispering to the audience」這句話，沒有寫他常說；旁白改成「圈內人想像他會說」（查核第 1 輪改）；英式英語的 corn 指穀物，旁白譯成「壓平的麥子」｜https://circlemakers.org/new_documents.html｜2026-10-10｜field-corn
 
@@ -71,7 +71,7 @@ c39｜「It's only flattened corn.」（S19，單源）：原文是圈內人想�
 
 - **Smithsonian（S3）連不上 Node 的 fetch**：2026-10-10 用規定的 User-Agent，curl 回 200，Node `fetch` 回 403；Wayback Machine 查不到這一頁的存檔（availability API 與 CDX 都是空的）。成片品管的連結檢查會擋 403，所以從 `sources` 拿掉，網址留在 c2、c6。`pub-idea` 那句 Bower 的話只有 S3 引了原文（S4、S5 只說靈感來自澳洲的飛碟巢）；查核第 1 輪（2026-10-10）：Wayback 仍查不到這一頁的存檔（availability API 逾時、CDX 回空陣列），沒有把 S3 加回 `sources`；`pub-idea` 改成「道格跟戴夫講了這件事，想做得像飛碟降落過」，依據換成 `sources` 裡的 S6、S19、S13（見 c6）。
 - `pub-year` 的「報導有的寫一九七六，有的寫七八」：語音可能把「七八」唸得不清楚，試聽時請聽這一句。
-- `field-2000` 的罰金：S9 原頁英鎊符號遺失，「100」「40」是 research.md 的判讀；旁白只說「罰一百英鎊」。
+- `field-2000` 的罰金：S9 原頁英鎊符號遺失，「100」「40」是 research.md 的判讀；旁白只說「罰一百英鎊」。查核第 2 輪：This Is Wiltshire 2000-11-07（Wayback 存檔）寫明「fined £100」，已加進 `sources`，旁白不用改。
 - `field-stats` 的「92 個圈、£30,000」：查核第 1 輪重開 S12，範圍是英格蘭（「in England since 2018」），卡片標題已補上。
 - `after-three-steps`：傳說與反駁出自同一篇訪問（S14），等於只有一個來源在轉述兩邊；卡片第三步已經寫「兩邊都是單方面的說法；訪問沒有錄音」。
 - `confess-ages`：Chorley 62 歲只有 TIME 一源。
@@ -89,6 +89,7 @@ c39｜「It's only flattened corn.」（S19，單源）：原文是圈內人想�
 - 2026-10-10：全部 114 個場景寫完（插圖 92、照片 2、卡片 20），lint 0 錯誤、1 條警告（outro 一句，刻意的）。
 - 2026-10-10：`shorts.json` 兩支寫完。`lexicon.json` 沒有新增（旁白沒有拉丁字母）。
 - 2026-10-10：查核第 1 輪（獨立查核代理）：改了四句旁白（`nffc`、`7mp5`、`q5iu`、`m657`）與兩張卡片（`expert-count-stats`、`field-stats`），明細在 [`verify-1.md`](verify-1.md)；lint 0 錯誤、1 條警告。
+- 2026-10-10：查核第 2 輪（另一個獨立查核代理）：重查第 1 輪改的四項、協調者改的三處與隨機抽的 21 項，全部確認，旁白與卡片沒有改；2000 年的罰金找到帶英鎊符號的當年報導，`sources` 加一條（共 19 條）；明細在 [`verify-2.md`](verify-2.md)。
 
 ## 協調者 2026-10-10 在第一輪查核後改的
 
