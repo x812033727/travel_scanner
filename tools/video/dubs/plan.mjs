@@ -36,6 +36,16 @@ export const GUARD_MS = 100;
 // The most a window is sped up before its translation must be shortened instead.
 export const MAX_TEMPO = 1.15;
 export const TEMPO_STEP = 0.01;
+// A window still over at MAX_TEMPO by no more than this is let through instead of failing its
+// locale (absorbOverruns): first into the pause after it (its own guard, then the next window's
+// lead when that window's lines can wait), else at a tempo above MAX_TEMPO up to
+// MAX_TEMPO_OVERRUN. Measured on production 2026-10-09, on the four locales the worker skipped
+// as "do not fit even at 1.15x after 2 shortening rounds": every skip was one window over by
+// 0.03, 0.07, 0.17 or 0.27 s (1 to 8 frames), and the locale's other 60 to 87 windows all fit.
+export const OVERRUN_TOLERANCE_SECONDS = 0.3;
+// The tempo one such window may reach when the pause after it cannot take the overrun: 1.25
+// covers every window measured above, and the step past 1.15 is heard on that window, not the track.
+export const MAX_TEMPO_OVERRUN = 1.25;
 // Speaking rates, in characters of the translation per second of speech, relative to the zh-TW
 // narration's own rate: what the same voice manages in each language. The zh-TW rate is measured
 // from the narration itself (5.8 characters a second on the 2026-09-26 batch), so a video read
@@ -207,10 +217,11 @@ const gapFramesFor = (gapMs) => framesFor(msToSamples(gapMs));
  * line's start when the previous clip ends early, which keeps the original rhythm; without it the
  * clips pack with the minimum gap, which is how a long translation fits.
  */
-export function placeLines(window, originals, lengths, { tempo = 1, gapMs = GAP_MS, keepStarts = true } = {}) {
+export function placeLines(window, originals, lengths, { tempo = 1, gapMs = GAP_MS, keepStarts = true, from = window.start_frame } = {}) {
   const gap = gapFramesFor(gapMs);
   const lines = [];
-  let cursor = window.start_frame;
+  // `from` is where the previous window's overrun let go (absorbOverruns): never before the window.
+  let cursor = Math.max(window.start_frame, from);
   for (const id of window.lines) {
     const samples = Math.max(1, Math.round(lengths.get(id) / tempo));
     const start = keepStarts ? Math.max(originals.get(id).start_frame, cursor) : cursor;
@@ -223,14 +234,19 @@ export function placeLines(window, originals, lengths, { tempo = 1, gapMs = GAP_
 }
 
 const lastFrame = (lines, fallback) => (lines.length ? lines.at(-1).end_frame : fallback);
+/** The last frame a window's speech may end on: its end less the guard. */
+export const windowLimit = (window, guardMs = GUARD_MS) => window.end_frame - framesFor(msToSamples(guardMs));
+/** A laid-out window as windowsOf gives it (line ids), so placeLines can lay it again. */
+export const bareWindow = (window) => ({ ...window, lines: window.lines.map((line) => (typeof line === "string" ? line : line.id)) });
 
 /**
  * Where a window's dubbed lines go and how fast they must be spoken. The original rhythm first;
  * then packed; then packed and sped up, a hundredth at a time, up to MAX_TEMPO. Past that the
  * window is `over`: its lines are laid out at MAX_TEMPO anyway, with how many frames stick out.
+ * `from` lays the lines no earlier than that frame (the previous window's overrun, absorbOverruns).
  */
-export function layoutWindow(window, originals, lengths, { gapMs = GAP_MS, guardMs = GUARD_MS, maxTempo = MAX_TEMPO } = {}) {
-  const limit = window.end_frame - framesFor(msToSamples(guardMs));
+export function layoutWindow(window, originals, lengths, { gapMs = GAP_MS, guardMs = GUARD_MS, maxTempo = MAX_TEMPO, from = window.start_frame } = {}) {
+  const limit = windowLimit(window, guardMs);
   const result = (lines, tempo, keepStarts) => ({
     ...window,
     lines,
@@ -239,21 +255,95 @@ export function layoutWindow(window, originals, lengths, { gapMs = GAP_MS, guard
     over: lastFrame(lines, window.start_frame) > limit,
     slack_frames: limit - lastFrame(lines, window.start_frame),
   });
-  const kept = placeLines(window, originals, lengths, { gapMs, keepStarts: true });
+  const kept = placeLines(window, originals, lengths, { gapMs, keepStarts: true, from });
   if (lastFrame(kept, window.start_frame) <= limit) return result(kept, 1, true);
   let tempo = 1;
   while (tempo <= maxTempo + 1e-9) {
-    const packed = placeLines(window, originals, lengths, { tempo, gapMs, keepStarts: false });
+    const packed = placeLines(window, originals, lengths, { tempo, gapMs, keepStarts: false, from });
     if (lastFrame(packed, window.start_frame) <= limit) return result(packed, tempo, false);
     tempo = Math.round((tempo + TEMPO_STEP) * 100) / 100;
   }
-  return result(placeLines(window, originals, lengths, { tempo: maxTempo, gapMs, keepStarts: false }), maxTempo, false);
+  return result(placeLines(window, originals, lengths, { tempo: maxTempo, gapMs, keepStarts: false, from }), maxTempo, false);
+}
+
+/**
+ * A laid-out window laid again no earlier than `from`, at the tempo it has: its lines carry their
+ * stretched lengths (audio_samples), so the clips already made are the ones placed. Kept starts
+ * stay kept, so only the lines the overrun reaches move; `shifted_frames` is how far the first
+ * one did.
+ */
+export function shiftWindow(window, originals, from, { gapMs = GAP_MS, guardMs = GUARD_MS } = {}) {
+  const limit = windowLimit(window, guardMs);
+  const lengths = new Map(window.lines.map((line) => [line.id, line.audio_samples]));
+  const lines = placeLines(bareWindow(window), originals, lengths, { gapMs, keepStarts: window.kept_starts !== false, from }).map((line) => ({ ...line, tempo: window.tempo }));
+  const end = lastFrame(lines, window.start_frame);
+  const first = window.lines[0]?.start_frame ?? window.start_frame;
+  return { ...window, lines, over: end > limit, slack_frames: limit - end, shifted_frames: (lines[0]?.start_frame ?? window.start_frame) - first };
+}
+
+/**
+ * The windows still over at MAX_TEMPO let through where the overrun is small (at most
+ * OVERRUN_TOLERANCE_SECONDS), in this order per window:
+ *   1. "next-slack", the pause after it: the overrun ends inside the window's own guard, or the
+ *      next window's lines can wait for it (shiftWindow, which must leave that window fitting).
+ *      Nothing is sped up, and no window past the next one moves.
+ *   2. "tempo": that one window sped up past MAX_TEMPO, up to MAX_TEMPO_OVERRUN, through
+ *      `speedUp(window, maxTempo)`, the caller's layout (estimated lengths, or atempo's real ones).
+ *   3. Still `over` otherwise, for the translator to shorten.
+ * A window let through carries `absorbed` and `overrun_seconds` (what stuck out at MAX_TEMPO);
+ * its `tempo` is the one it was laid at. Windows are visited first to last, so a window the
+ * previous one leaned on is judged as shifted.
+ */
+export async function absorbOverruns(windows, originals, { gapMs = GAP_MS, guardMs = GUARD_MS, tolerance = OVERRUN_TOLERANCE_SECONDS, maxTempoOverrun = MAX_TEMPO_OVERRUN, speedUp = null } = {}) {
+  const out = windows.map((window) => ({ ...window }));
+  const gap = gapFramesFor(gapMs);
+  for (let index = 0; index < out.length; index += 1) {
+    const window = out[index];
+    if (!window.over) continue;
+    const overSeconds = Math.round((-window.slack_frames / FPS) * 100) / 100;
+    if (overSeconds > tolerance) continue;
+    const end = lastFrame(window.lines, window.start_frame);
+    const through = (fields) => ({ ...window, ...fields, over: false, overrun_seconds: overSeconds });
+    if (end <= window.end_frame) {
+      out[index] = through({ absorbed: "next-slack" });
+      continue;
+    }
+    const next = out[index + 1];
+    if (next && !next.over) {
+      const shifted = shiftWindow(next, originals, end + gap, { gapMs, guardMs });
+      if (!shifted.over) {
+        out[index] = through({ absorbed: "next-slack" });
+        out[index + 1] = shifted;
+        continue;
+      }
+    }
+    if (!speedUp) continue;
+    const faster = await speedUp(window, maxTempoOverrun);
+    if (faster && !faster.over) out[index] = through({ ...faster, absorbed: "tempo" });
+  }
+  return out;
+}
+
+/** One line about the windows let through (absorbOverruns), for the dub's summary, the batch and the review; null when none was. */
+export function overrunSummary(windows) {
+  const absorbed = windows.filter((window) => window.absorbed);
+  if (!absorbed.length) return null;
+  const how = (window) => (window.absorbed === "tempo" ? `sped up to ${window.tempo}x` : "absorbed by the pause after it");
+  if (absorbed.length === 1) return `1 window ran ${absorbed[0].overrun_seconds} s long: ${how(absorbed[0])} (${absorbed[0].scene})`;
+  return `${absorbed.length} windows ran long: ${absorbed.map((window) => `${window.scene} ${window.overrun_seconds} s ${how(window)}`).join("; ")}`;
 }
 
 /** Every window laid out; `originals` and `lengths` map line ids to the zh-TW line and the clip's samples. */
 export function layoutDub(timeline, lengths, options = {}) {
   const originals = new Map(timeline.lines.map((line) => [line.id, line]));
   return windowsOf(timeline).map((window) => layoutWindow(window, originals, lengths, options));
+}
+
+/** layoutDub with the small overruns absorbed (absorbOverruns), on these estimated or measured lengths. */
+export async function layoutDubTolerant(timeline, lengths, options = {}) {
+  const originals = new Map(timeline.lines.map((line) => [line.id, line]));
+  const speedUp = (window, maxTempo) => layoutWindow(bareWindow(window), originals, lengths, { ...options, maxTempo });
+  return absorbOverruns(layoutDub(timeline, lengths, options), originals, { ...options, speedUp });
 }
 
 /** Characters per second the voice spoke, from the clips it made of these texts (tempo 1). */
@@ -311,7 +401,7 @@ export function lineBudgets(timeline, rate, { gapMs = GAP_MS, maxTempo = MAX_TEM
 export function shrinkBudgets(window, texts, { gapMs = GAP_MS, guardMs = GUARD_MS, overheadMs = LINE_OVERHEAD_MS, lengths = null } = {}) {
   const gap = gapFramesFor(gapMs);
   const overhead = framesFor(msToSamples(overheadMs));
-  const limit = window.end_frame - framesFor(msToSamples(guardMs));
+  const limit = windowLimit(window, guardMs);
   const count = window.lines.length;
   const available = Math.max(1, limit - window.start_frame - gap * Math.max(0, count - 1) - overhead * count);
   const spoken = Math.max(1, window.lines.reduce((sum, line) => sum + (line.end_frame - line.start_frame), 0) - overhead * count);
