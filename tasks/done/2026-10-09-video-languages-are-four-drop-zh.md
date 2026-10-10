@@ -1,13 +1,13 @@
 ---
 id: 2026-10-09-video-languages-are-four-drop-zh
 title: "Video languages are four: drop zh-CN from the video pipeline"
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5.1
 claimed_at: 2026-10-09T15:27:00Z
 created_at: 2026-10-09T15:26:00Z
-completed_at:
+completed_at: 2026-10-10T11:10:10Z
 branch: claude/video-languages-four
 depends_on: []
 scope:
@@ -92,3 +92,8 @@ shows three rows and the saved choice minus zh-CN; `/admin/videos?tab=settings` 
   site only ever adds languages, and removing a track is the owner's job in Studio.
 - The six imported `ai-real-world-*` videos (`2026-09-29-resume-imported-long-video-languages`)
   had zh-CN chosen; after the migration their choice is en/ja/ko metadata and captions.
+- 2026-10-10: merged as #1413 and live since the deploy of 2c3e4beae (10:4x UTC). Checked on
+  the host: alembic at `0128_video_languages_four`; no row of `video_projects.locales`,
+  `video_automation_settings.caption_locales` / `drama_caption_locales` or
+  `video_shorts_settings.locales` holds zh-CN; the default ticks read `["en", "ja", "ko"]`;
+  the API's `DUB_LOCALES` and the worker's `LOCALES` are the three and the four.
