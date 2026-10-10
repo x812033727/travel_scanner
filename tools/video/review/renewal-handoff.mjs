@@ -14,7 +14,7 @@ import { buildCues, toSrt } from "../core/captions.mjs";
 import { isCompilation } from "../core/compilation.mjs";
 import { atomicWrite, isInside, readJson, ROOT, UsageError } from "../core/paths.mjs";
 import { speechHash } from "../core/timeline.mjs";
-import { eachLine, narrationLocale, spokenText } from "../core/schema.mjs";
+import { eachLine, LOCALES as VIDEO_LOCALES, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
 import { unknownTermsFor } from "../core/lexicon.mjs";
 import { currentDub, dubsForUpload, localeCues, localeTexts } from "../core/stages.mjs";
 import { measureCut, measureProblems } from "../import/import.mjs";
@@ -24,7 +24,7 @@ import { renewedFinal } from "./renewal.mjs";
 
 const HASH = /^[a-f0-9]{64}$/;
 const UUID = /^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/i;
-const LOCALES = ["en", "ja", "ko", "zh-CN"];
+const LOCALES = VIDEO_LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
 const RECEIPT = "renewal-handoff.json";
 const digest = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const requireThat = (ok, message) => { if (!ok) throw new UsageError(message); };

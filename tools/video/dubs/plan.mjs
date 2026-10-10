@@ -18,14 +18,15 @@ import { planRequests } from "../tts/requests.mjs";
 export const DUB_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
 /** The locales one video can be dubbed in: every caption locale but the one it is narrated in. */
 export const dubLocales = (doc) => LOCALES.filter((locale) => locale !== narrationLocale(doc));
-// The locales whose dictionary aliases may be written in Chinese characters ("P 九十五").
-export const CHINESE_LOCALES = new Set(["zh-TW", "zh-CN"]);
-// What gets a dub when nobody chose (no --locale, no languages.json): not zh-CN. A viewer who
-// reads Simplified hears Mandarin already in the zh-TW narration, so that track adds nothing
-// unless the owner ticks it for a video (the owner's call, 2026-09-28).
-export const DEFAULT_DUB_LOCALES = DUB_LOCALES.filter((locale) => locale !== "zh-CN");
+// The locales whose dictionary aliases may be written in Chinese characters ("P 九十五"). Only
+// zh-TW since the owner dropped zh-CN from videos (2026-10-09); kept a set for the callers.
+export const CHINESE_LOCALES = new Set([NARRATION_LOCALE]);
+// What gets a dub when nobody chose (no --locale, no languages.json): every dub locale. Before
+// 2026-10-09 this left out zh-CN, whose viewers hear Mandarin in the zh-TW narration already;
+// zh-CN is no longer a video language at all.
+export const DEFAULT_DUB_LOCALES = [...DUB_LOCALES];
 /** The same default for one video, whatever it is narrated in (DEFAULT_DUB_LOCALES for zh-TW). */
-export const defaultDubLocales = (doc) => dubLocales(doc).filter((locale) => locale !== "zh-CN");
+export const defaultDubLocales = (doc) => dubLocales(doc);
 export const DUB_FORMATS = ["m4a", "mp3", "wav"];
 export const DEFAULT_FORMAT = "m4a";
 // Silence between two dubbed lines once the original pause is used up.
@@ -40,9 +41,9 @@ export const TEMPO_STEP = 0.01;
 // from the narration itself (5.8 characters a second on the 2026-09-26 batch), so a video read
 // faster or slower than usual carries that into its budgets. The rate a finished dub measured
 // replaces the estimate (fit.json), so the next video's budgets are real.
-export const RATE_RATIOS = { en: 2.6, ja: 1.35, ko: 1.15, "zh-CN": 1.0 };
+export const RATE_RATIOS = { en: 2.6, ja: 1.35, ko: 1.15 };
 // When the narration cannot be measured (no audio lengths in the timeline).
-export const DEFAULT_RATES = { en: 15, ja: 7.8, ko: 6.7, "zh-CN": 5.8, "zh-TW": 5.8 };
+export const DEFAULT_RATES = { en: 15, ja: 7.8, ko: 6.7, "zh-TW": 5.8 };
 // Budgets leave this much of the room unused: a translator lands close to the limit, not on it.
 export const BUDGET_MARGIN = 0.97;
 // What a line costs before its first word and after its last (breath, the trimmed margins, the
@@ -58,7 +59,6 @@ export const DUB_STYLES = {
   en: `Relaxed, conversational tech explainer talking to a friend, in clear, natural English. ${STYLE_TAIL}`,
   ja: `Relaxed, conversational tech explainer talking to a friend, in natural standard Japanese. ${STYLE_TAIL}`,
   ko: `Relaxed, conversational tech explainer talking to a friend, in natural standard Korean. ${STYLE_TAIL}`,
-  "zh-CN": `Relaxed, conversational tech explainer talking to a friend, in natural Mandarin as spoken in mainland China. ${STYLE_TAIL}`,
 };
 
 const CJK = /[぀-ヿ㐀-鿿豈-﫿ｦ-ﾟ가-힯]/u;

@@ -49,9 +49,15 @@ ContentType = Literal[
     "application/json",
 ]
 YOUTUBE_VIDEO_ID_PATTERN = r"^[A-Za-z0-9_-]{11}$"
-# The languages a video can be made in besides zh-TW, in the order the page lists them.
-DubLocale = Literal["en", "ja", "ko", "zh-CN"]
+# The languages a video can be made in besides zh-TW, in the order the page lists them. The
+# owner decided on 2026-10-09 that a video's languages are four: narrated in zh-TW, with en, ja
+# and ko to add; the site keeps its five locales, the videos do not.
+DubLocale = Literal["en", "ja", "ko"]
 DUB_LOCALES: tuple[DubLocale, ...] = get_args(DubLocale)
+# Languages a video could be made in before (zh-CN until 2026-10-09). A stored choice or an
+# approved languages batch may still name one; it is ignored rather than refused, so the video's
+# other languages keep working (``without_retired_locales``).
+RETIRED_LOCALES: frozenset[str] = frozenset({"zh-CN"})
 # What a language is made of (docs/videos/LANGUAGES.md): the title, description and tags, the
 # captions, and a dub track; a dub needs the captions, since it reads their translation.
 LocalePart = Literal["metadata", "captions", "dub"]
@@ -252,6 +258,13 @@ class LocalesIn(BaseModel):
         }
 
 
+def without_retired_locales(raw: Any) -> Any:
+    """``raw`` without the keys of languages a video is no longer made in, when it is a dict."""
+    if not isinstance(raw, dict):
+        return raw
+    return {locale: value for locale, value in raw.items() if locale not in RETIRED_LOCALES}
+
+
 class LanguagePartOut(BaseModel):
     state: LanguageState
     reason: str | None = None
@@ -366,7 +379,7 @@ class DropIn(BaseModel):
 class DubLocalesIn(BaseModel):
     """The owner's choice of languages to dub one video in, from /admin/videos."""
 
-    locales: list[DubLocale] = Field(max_length=4)
+    locales: list[DubLocale] = Field(max_length=len(DUB_LOCALES))
 
     @field_validator("locales")
     @classmethod

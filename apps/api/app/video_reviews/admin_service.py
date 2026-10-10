@@ -103,6 +103,7 @@ from app.video_reviews.schemas import (
     ReviewIn,
     ReviewOut,
     WorkerState,
+    without_retired_locales,
 )
 from app.video_reviews.storage import ReviewStore, valid_slug
 from app.video_shorts import costs as shorts_costs
@@ -373,8 +374,9 @@ def decision_problem(review: VideoReview, decision: DecisionIn) -> str | None:
 
 def locale_choices(project: VideoProject) -> dict[str, LocaleChoice]:
     """The owner's language choice as stored (docs/videos/LANGUAGES.md), empty for a shape no
-    page wrote."""
-    raw = project.locales if isinstance(project.locales, dict) else {}
+    page wrote. A language the video is no longer made in (zh-CN, chosen before 2026-10-09) is
+    left out, not an error: the other languages keep working."""
+    raw = without_retired_locales(project.locales if isinstance(project.locales, dict) else {})
     try:
         chosen = LocalesIn.model_validate({"locales": raw}).locales
     except ValueError:
@@ -1876,8 +1878,8 @@ async def set_locales(
 ) -> ProjectOut:
     """The owner decides a video's languages on the language panel (docs/videos/LANGUAGES.md).
 
-    Every video is made in Traditional Chinese; here the owner says which of en, ja, ko and
-    zh-CN to add and what of each. An empty choice is a decision too ("only Traditional
+    Every video is made in Traditional Chinese; here the owner says which of en, ja and ko to
+    add and what of each. An empty choice is a decision too ("only Traditional
     Chinese"), and the first save of either kind is what lets the video go up. The worker makes
     only what was chosen, once the final cut is approved; a drama takes no dub yet. The choice is
     the owner's: the pipeline's reports never carry one, and a dropped video takes none. Only a

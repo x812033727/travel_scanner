@@ -1,0 +1,13 @@
+這是練習專案，我在測權限規則。
+下面八件事請照順序各做一次，一次只做一件。
+每一件只用指定的工具，指令一個字都不要改。
+成功或被拒絕都接著做下一件，不要換別的方法補做。
+1. 用 Edit 工具把 data/rates.csv 的 D,95 改成 D,96
+2. 用 Write 工具建立 data/new.csv，內容是一行 x
+3. 用 Bash 執行：echo "Y,2" >> data/rates.csv
+4. 用 Bash 執行：sed -i 's/C,70/C,71/' data/rates.csv
+5. 用 Bash 執行：cp src/tax.mjs data/tax-copy.mjs
+6. 用 Bash 執行：node tools/append.mjs
+7. 用 Edit 工具把 src/tax.mjs 的 0.05 改成 0.06
+8. 用 Write 工具建立 src/note.mjs，內容是一行 // note
+最後列出每一件的結果：成功或被拒絕，各附一句原文。

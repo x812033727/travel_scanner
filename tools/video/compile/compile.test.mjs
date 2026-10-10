@@ -145,7 +145,7 @@ test("compile encodes the cards, joins the cuts, checks the result, merges the c
   const captions = readWork(box, "captions/manifest.json");
   assert.equal(captions.compilation_hash, hash);
   assert.deepEqual(Object.keys(captions.locales), ["zh-TW", "en"]);
-  assert.deepEqual(captions.skipped, { ja: ["wuxia-ep-1", "wuxia-ep-3"], ko: EPISODES, "zh-CN": EPISODES });
+  assert.deepEqual(captions.skipped, { ja: ["wuxia-ep-1", "wuxia-ep-3"], ko: EPISODES });
   assert.deepEqual(captions.locales.en, { cues: 6, problems: [], timing: "compilation" });
   const en = parseSrt(readFileSync(path.join(box.workdir, "captions", "en.srt"), "utf8"));
   assert.equal(en.length, 6);

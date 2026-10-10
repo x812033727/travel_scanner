@@ -10,8 +10,8 @@
 | --- | --- |
 | 形式 | 第一版：深色投影片＋旁白（參考 Gary Chen〈一部影片看完 Stanford AI 系統課程〉）。第三期：螢幕操作手把手 |
 | 聲音 | 雲端 TTS、台灣口音、固定一個頻道聲音（Azure AI Speech，試聽後決定） |
-| 字幕 | **不燒錄**；上傳五條 CC：zh-TW、en、ja、ko、zh-CN（同 `apps/api/app/i18n.py`） |
-| 中繼資料 | 標題、說明、標籤五語系；說明欄有章節、參考資料、站內文章連結 |
+| 字幕 | **不燒錄**；上傳四條 CC：zh-TW、en、ja、ko（`tools/video/core/schema.mjs` 的 `LOCALES`；2026-10-09 起不含 zh-CN，網站的 `apps/api/app/i18n.py` 仍是五語，影片不再跟它） |
+| 中繼資料 | 標題、說明、標籤四語系；說明欄有章節、參考資料、站內文章連結 |
 | 頻道 | Mokaair 品牌：片頭片尾、縮圖用 Mokaair 字樣 |
 | 長度 | 單支至少 8 分鐘（漫劇以外每集都是，站主 2026-10-01 定）；預設目標 8–12 分鐘，上緣是撰稿瞄準的長度、不是上限，超過沒關係（站主 2026-10-04 定） |
 | 試作 | 〈AI 模型怎麼挑〉，由 `ai-workflow-cost-quality-latency` 改寫 |
@@ -35,7 +35,7 @@
 | 8 | 合成 | `assemble` | `final.mp4` | 影音自動檢查 |
 | 9 | CC 與中繼資料翻譯 | 翻譯與逐語審稿代理、`captions` | `i18n/<locale>.json`、`captions/*.srt` | 過期翻譯、行長、每秒字數 |
 | 10 | 打包 | `package` | `upload/`、`UPLOAD.md` | 站主看完全片 → `approve --gate final` |
-| 11 | 站主在 Studio 上傳成私人 → `youtube-sync` 補五語系中繼資料與 CC → 站主自己按公開 | 站主＋工具 | YouTube 影片 | 公開一律站主按 |
+| 11 | 站主在 Studio 上傳成私人 → `youtube-sync` 補四語系中繼資料與 CC → 站主自己按公開 | 站主＋工具 | YouTube 影片 | 公開一律站主按 |
 
 核准綁雜湊：大綱綁 `brief.md`、試聽綁 `timeline.json`、成片綁 `final.mp4`；漫劇另有角色設定圖綁 `characters/manifest.json`、分鏡綁 `keyframes/manifest.json`；長篇作品的每一集（`video.json` 有 `series`，見 `SERIES.md`）另有劇本關卡綁 `script.md`（`node tools/video/cli.mjs script` 由 `video.json` 寫出，只含場景、台詞、說話者與情緒，不含鏡頭提示詞，所以媒體階段自動修提示詞不會讓核准失效）。檔案變了，舊的核准就不算，後面的指令會拒絕執行（結束碼 3）。
 

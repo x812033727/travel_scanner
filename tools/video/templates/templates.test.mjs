@@ -249,9 +249,6 @@ test("a Korean, Simplified Chinese or Japanese thumbnail is set in its own font 
   const ko = thumbnailHtml(showcase.thumbnail, { locale: "ko" });
   assert.ok(ko.startsWith('<!doctype html><html lang="ko"><head><meta charset="utf-8"><link rel="stylesheet" href="https://video.local/fonts/noto-sans-kr/index.css"><link rel="stylesheet" href="https://video.local/fonts/noto-sans-tc/index.css">'));
   assert.match(ko, /<style>:root\{--width:1280px;--height:720px;--font:"Noto Sans KR Variable","Noto Sans TC Variable",sans-serif\}/);
-  const sc = thumbnailHtml(showcase.thumbnail, { locale: "zh-CN" });
-  assert.match(sc, /^<!doctype html><html lang="zh-Hans">.*fonts\/noto-sans-sc\/index\.css/);
-  assert.match(sc, /--font:"Noto Sans SC Variable","Noto Sans TC Variable",sans-serif\}/);
   const body = (html) => html.slice(html.indexOf("<body>"));
   assert.equal(body(ko), body(plain), "the same body, only the font differs");
   assert.equal(body(ja), body(plain));

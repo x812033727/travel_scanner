@@ -47,7 +47,7 @@ test("the English example lints clean without a dictionary entry for its ordinar
 test("narration_locale must be a caption locale, and default_language must match it", () => {
   const doc = enFixture();
   doc.narration_locale = "fr";
-  assert.match(messages(validateVideo(doc)), /must be one of zh-TW, en, ja, ko, zh-CN; leave it out for zh-TW/);
+  assert.match(messages(validateVideo(doc)), /must be one of zh-TW, en, ja, ko; leave it out for zh-TW/);
   const mismatch = enFixture();
   mismatch.youtube.default_language = "zh-TW";
   assert.match(messages(validateVideo(mismatch)), /must be en, the narration language/);
@@ -86,9 +86,9 @@ test("captions, translations and dubs treat English as the source and zh-TW as a
   const doc = enFixture();
   const { texts } = localeTexts(doc, {});
   assert.deepEqual(Object.keys(texts), ["en"]);
-  assert.deepEqual(targetLocales(doc), ["zh-TW", "ja", "ko", "zh-CN"]);
-  assert.deepEqual(dubLocales(doc), ["zh-TW", "ja", "ko", "zh-CN"]);
-  assert.deepEqual(dubLocales(fixture()), ["en", "ja", "ko", "zh-CN"]);
+  assert.deepEqual(targetLocales(doc), ["zh-TW", "ja", "ko"]);
+  assert.deepEqual(dubLocales(doc), ["zh-TW", "ja", "ko"]);
+  assert.deepEqual(dubLocales(fixture()), ["en", "ja", "ko"]);
   assert.equal(parseDubLocale("zh-TW", "en"), "zh-TW");
   assert.throws(() => parseDubLocale("en", "en"), /the narration is checked without --locale/);
 });
@@ -126,7 +126,7 @@ test("the owner's language choice keeps the narration's own locale and zh-TW, wh
   assert.deepEqual(captionLocalesOf(jaCaptions, "en"), ["en", "zh-TW", "ja"]);
   assert.deepEqual(metadataLocalesOf(jaCaptions, "en"), ["en", "zh-TW"]);
   assert.deepEqual(metadataLocalesOf(null, "en"), null, "without a choice, every translated locale");
-  assert.deepEqual(captionLocalesOf(null, "en"), ["zh-TW", "en", "ja", "ko", "zh-CN"]);
+  assert.deepEqual(captionLocalesOf(null, "en"), ["zh-TW", "en", "ja", "ko"]);
   // The panel offers English to an English video too: ticking it adds nothing and dubs nothing.
   const enTicked = { locales: { en: { metadata: true, captions: true, dub: true }, ko: { metadata: true, captions: true, dub: true } }, decided_at: null };
   assert.deepEqual(captionLocalesOf(enTicked, "en"), ["en", "zh-TW", "ko"]);
@@ -183,7 +183,7 @@ test("an English video whose choice ticks only Japanese captions keeps its own c
   assert.deepEqual(readLanguages(box.workdir).locales, { ja: { metadata: false, captions: true, dub: false } });
 
   const manifest = runCaptions({ slug: box.slug, root: box.root, workdir: box.workdir, now: new Date("2026-10-01T01:00:00Z") });
-  assert.deepEqual(Object.keys(manifest.locales), ["en", "zh-TW", "ja"], "ko and zh-CN are translated but not chosen");
+  assert.deepEqual(Object.keys(manifest.locales), ["en", "zh-TW", "ja"], "ko is translated but not chosen");
 
   await approve({ gate: "audio", docDir: box.dir, workdir: box.workdir, now: new Date("2026-10-01T01:00:00Z") });
   const qa = englishContext(box);

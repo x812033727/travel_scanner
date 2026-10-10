@@ -27,7 +27,7 @@ const RAW = {
 };
 const FOREIGN = "App iOS A P I C B S Open A I Chat G P T Dev Day p95";
 const CHINESE = "A P P i O S A P I C B S Open A I Chat G P T Dev Day P 九十五";
-const chinese = (locale) => ["zh-TW", "zh-CN"].includes(locale);
+const chinese = (locale) => locale === "zh-TW";
 
 function script(text) {
   return {
@@ -78,7 +78,6 @@ test("changed word pronunciations invalidate request and clip keys without inval
   assert.notEqual(fixed.key, old.key);
   assert.notEqual(fixed.lines[0].key, old.lines[0].key);
   assert.deepEqual(planRequests(doc, speechLexicon(RAW, "zh-TW")), [old]);
-  assert.deepEqual(planRequests(doc, speechLexicon(RAW, "zh-CN")), [old]);
   const unchanged = script("API CBS OpenAI ChatGPT DevDay");
   assert.deepEqual(planRequests(unchanged, dubLexicon(RAW)), planRequests(unchanged, RAW));
   assert.deepEqual(planRequests(doc, dubLexicon(RAW)), planRequests(doc, dubLexicon({
@@ -189,7 +188,7 @@ function context(box, server, { dry = false } = {}) {
   };
 }
 
-for (const [source, target, external] of [["zh-TW", "en", false], ["en", "zh-TW", true], ["en", "zh-CN", true]]) {
+for (const [source, target, external] of [["zh-TW", "en", false], ["en", "zh-TW", true], ["en", "ko", true]]) {
   test(`CLI ${source} → ${target}${external ? " via --file" : ""} plans, speaks and checks the target shelf aliases`, async (t) => {
     const box = projectFixture(t, source, target, external);
     const server = services();
