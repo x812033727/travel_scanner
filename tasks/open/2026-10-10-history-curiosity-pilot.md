@@ -1,7 +1,7 @@
 ---
 id: 2026-10-10-history-curiosity-pilot
 title: 歷史與奇異：站主選畫風與前三題後，本機做兩集試片並記實測
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: claude-fable-curio
