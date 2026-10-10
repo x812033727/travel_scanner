@@ -66,6 +66,10 @@ test("the planner outlines story beats and the listener keeps the register; the 
   assert.match(planner, /"requested_guide"[\s\S]*Return its slug as "source_guide" and its url first in\s+"source_urls"/);
   assert.match(planner, /"requested_guide"[\s\S]*never as advice to buy, sell or hold/);
   assert.match(planner, /the closing\s+carries the article's own disclaimer/);
+  // An official page the news writer declined (apps/api/app/video_automation/topics.py official_topics): no site article to point back to.
+  assert.match(planner, /"topics" \(the site's recent checked articles, then official pages, then\s+web results\)/);
+  assert.match(planner, /A topic whose\s+"source" is "official" is a company's own page[\s\S]*prefer it to a web result, return "source_guide": null with its url first in\s+"source_urls", and tell an update in the rules' four moves/);
+  assert.match(VALUE_RULES, /An update or a guide is told as numbered points, each in the same four moves/);
   assert.ok(planner.includes(REGISTER_RULES));
   const listener = instructionsFor("listener", "slides");
   assert.match(listener, /keep the storytelling register below/);

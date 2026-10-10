@@ -67,7 +67,7 @@
       "is_first_party": true,
       "enabled": true,
       "scan_interval_minutes": 60,
-      "config": {"include_path_prefixes": ["/resources/articles/"], "minimum_title_length": 12},
+      "config": {"include_path_prefixes": ["/resources/articles/"], "minimum_title_length": 12, "video_topics": true},
       "note": "Anthropic's product posts (Claude apps, Claude Code, connectors); no RSS. Separate from anthropic.com/news, which carries company and model announcements. claude.com/blog moved in October 2026: it redirects to /resources/articles and every post is now /resources/articles/<slug>, so the old /blog/ prefix read nothing. The listing is the Product announcements category and not /resources/articles: on 2026-10-10 the two showed the same product posts, and half of what /resources/articles added was customer stories the writer would decline. Each card is one link whose text starts with the type and the date; the candidate takes the page's own title. The first card is a pinned older post, which a source's first scan records as seen (scanner.BASELINE); the listing shows about seven cards, so the default 20 entries per scan covers it."
     },
     {
@@ -91,7 +91,7 @@
       "is_first_party": true,
       "enabled": true,
       "scan_interval_minutes": 60,
-      "config": {"max_entries_per_scan": 5, "article_tags": [], "article_ids": ["body"]},
+      "config": {"max_entries_per_scan": 5, "article_tags": [], "article_ids": ["body"], "video_topics": true},
       "note": "Anthropic's developer posts since July 2026 (Claude Code field guides, building with a new model, agent automations); a few a week, most of them how-to pieces the writer will decline as news. The story is div#body: the pages have no <article> or <main>, and without the id the page reads as empty (2026-10-10: 15,000 and 26,000 characters with it)."
     },
     {
@@ -115,7 +115,7 @@
       "is_first_party": true,
       "enabled": true,
       "scan_interval_minutes": 60,
-      "config": {"include_path_prefixes": ["/engineering/"], "minimum_title_length": 12, "max_entries_per_scan": 50},
+      "config": {"include_path_prefixes": ["/engineering/"], "minimum_title_length": 12, "max_entries_per_scan": 50, "video_topics": true},
       "note": "Anthropic's engineering posts; shares its host with Anthropic news. Quiet since May 2026 (developer posts now go to claude.dev), kept for the occasional long piece. The listing shows all 25 posts, so the cap is 50 and not the default 20: with 20, removing one post would bring the twenty-first into view as an undated entry the scanner had never seen, and an old post would be read as new."
     },
     {
@@ -337,7 +337,7 @@
       "is_first_party": true,
       "enabled": true,
       "scan_interval_minutes": 60,
-      "config": {"include_title_keywords": ["Copilot"], "max_entries_per_scan": 10},
+      "config": {"include_title_keywords": ["Copilot"], "max_entries_per_scan": 10, "video_topics": true},
       "note": "GitHub's product changelog, read for Copilot only: the feed covers all of GitHub (ten entries, about three days), and five of the ten named Copilot on 2026-10-10. One page per entry, 2,500 to 3,000 characters. Shares its host with GitHub blog."
     },
     {
@@ -480,7 +480,7 @@
       "is_first_party": true,
       "enabled": true,
       "scan_interval_minutes": 60,
-      "config": {"max_entries_per_scan": 5},
+      "config": {"max_entries_per_scan": 5, "video_topics": true},
       "note": "Cursor's release notes: two or three dated entries a month, one page per entry (2,500 to 7,000 characters). Shares its host with Cursor blog."
     },
     {

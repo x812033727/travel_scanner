@@ -10,7 +10,7 @@
 | 後台設定 | 各階段的 AI 模型、草稿排程與題材、成片參數、預算上限，都放在「影片審核」頁的「設定」分頁 |
 | 關卡 | **旁白由 Jev 判斷，全數通過就自動核准**。2026-09-27 起（設計在 [`HANDS-OFF.md`](HANDS-OFF.md)）另外三關也由 AI 決定：**選大綱**由 Jev 依「頻道立場」挑（立場空白或開關關著時仍等站主；Jev 沒挑出過關的大綱就退回企劃模型重寫，兩次仍不過才交給站主，卡片附上 Jev 的表）、**看成片**由自動品管（`qa` 的 11 項全過就核准）、**確認上架**由上傳包檢查（4 項全過就核准，影片進「可以上架」）；站主只決定上架時間。仍然找站主的只有：品管或上傳包有項目沒過、Jev 兩次重寫仍不過、卡住的影片、上架時間 |
 | 寫稿的模型 | **主機上登入的 Claude 訂閱帳號（Claude Code）**，預設 Claude Sonnet 5 寫、Claude Opus 5.5 查核。每個階段也可以改用網站的 API 金鑰 |
-| 題目來源 | 先看站上已查證的新聞與已發布的文章，不夠再用 Brave 搜尋補 |
+| 題目來源 | 先看站上已查證的新聞與已發布的文章，再看官方頁面（新聞撰稿判成不算新聞的那些，見〈官方頁面當題目〉），不夠再用 Brave 搜尋補 |
 
 **訂閱帳號**：
 - 站主先決定用 API 金鑰，後來改成用 `/admin/ai-accounts` 管的 Claude 訂閱帳號。之前提醒過：2026-09-24 的票（`tasks/done/2026-09-24-refresh-claude-plan-usage-automatically-from.md`）記錄，網站自己的功能放在個人訂閱上，可能違反 Anthropic 與 OpenAI 的消費者條款，而且額度用完就會整個停住。站主 2026-09-25 表示自己看過條款，決定用訂閱全自動。
@@ -80,7 +80,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 ## 一支影片的自動流程
 
-1. **選題**：從站上最近 14 天已發布的 AI／科技新聞與文章，加上 Brave 搜尋結果，排除已經做過的題目與避開的題材。由企劃模型挑出題目、寫 `brief.md`（含 2–3 個大綱與「站主觀點」；有頻道立場時第一行寫「套用立場：N、M」）→ 先問 Jev 挑哪一個（[`HANDS-OFF.md`](HANDS-OFF.md)）→ 送審「選大綱」。Jev 過關的伺服器直接核准；沒過就把原因交回企劃模型重寫，兩次仍不過、或立場空白，才**停下來等站主**。
+1. **選題**：從站上最近 14 天已發布的 AI／科技新聞與文章、開啟了的新聞來源裡被判成不算新聞的官方頁面，加上 Brave 搜尋結果，排除已經做過的題目與避開的題材。由企劃模型挑出題目、寫 `brief.md`（含 2–3 個大綱與「站主觀點」；有頻道立場時第一行寫「套用立場：N、M」）→ 先問 Jev 挑哪一個（[`HANDS-OFF.md`](HANDS-OFF.md)）→ 送審「選大綱」。Jev 過關的伺服器直接核准；沒過就把原因交回企劃模型重寫，兩次仍不過、或立場空白，才**停下來等站主**。
 2. **大綱選定**之後：撰稿 → lint（錯誤會把 lint 訊息餵回撰稿模型，最多改 3 次）→ 查核（改超過 3 個事實就再查一輪，每輪都是新的對話、看不到上一輪的結論，等於換人查；最多照設定的輪數）→ 聽眾審稿 → lint。
 3. **旁白**：tts → check-audio → 被標的句子重錄，最多照設定的輪數。全數通過且設定開著，就自動核准旁白；否則送審等站主。tts、重錄或 check-audio 被 `STOP` 檔停下（結束碼 6）時，這一輪結束、下一輪從快取接著做，不卡住、不回報做完、不送審；tts 的章節不合 YouTube 規則（結束碼 1）就卡住，理由是哪一章。
 4. **成片**：render → assemble → captions（只有繁體中文）→ `qa`（11 項自動品管，字幕與標題說明兩項只看 zh-TW 加已選的語言）→ 送審「看成片」，報告一起送。全過的伺服器直接核准；有項目沒過才**停下來等站主**。翻譯不再擋成片：其他語言在成片核准後由站主決定（下面「語言」）。
@@ -108,6 +108,17 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
   - `/admin/videos` 上的每一支影片，包括分支上做的、已放棄的。
 - 企劃的主要文章（`source_guide`，沒有的話取它引用的第一篇站內文章）如果跟前面任何一支相同，這份企劃就不採用。
 - 分支上的影片用 `review-push --report-only` 登記到審核頁，這個指令不會送出任何審核項目。
+
+**官方頁面當題目**（2026-10-10 加；站主要從官方的更新與教學貼文做影片）：
+- **為什麼要有**：官方發的新聞站上會寫成文章，本來就從「站上文章」這條路進來。官方的教學貼文不一樣，新聞撰稿會判成「不算新聞」，不會有文章，企劃模型以前看不到。
+- **哪些會成為題目**（`apps/api/app/video_automation/topics.py` 的 `official_topics`）：新聞來源的設定帶 `video_topics: true`、啟用中、是第一方的，它的候選裡狀態是 `rejected`、原因是 `news_not_eligible`、沒有人按過決定、14 天內的，新到舊最多 20 筆。題目的 `source` 是 `official`，標題是「來源名稱｜原標題」，摘要取那一頁摘錄的前 500 字，`slug` 是空的。
+- **順序**：站上文章 → 官方頁面 → 搜尋結果；搜尋結果裡跟官方頁面同一個網址的會丟掉。
+- **開關**：沒有後台勾選框。在 `apps/api/app/news_automation/sources.json` 把來源的 `config` 加上 `video_topics: true`，再到主機載入（[`news-automation.md`](../news-automation.md) 的 Sources 一節）。沒有任何來源帶這個鍵時，選題跟以前完全一樣。第一批帶鍵的是 Claude blog、Claude developer blog、Anthropic engineering、GitHub Changelog、Cursor changelog（2026-10-10；`tests/test_video_automation_topics.py` 會對照檔案）。OpenAI 與 Gemini 的更新頁目前掃描器讀不到，所以不在裡面。各家官方頁面與對應的來源在 [`official-ai-accounts.md`](../official-ai-accounts.md)。
+- **企劃怎麼處理**：提示詞要它把官方頁面排在搜尋結果前面，`source_guide` 回 `null`、網址放 `source_urls` 第一個，更新類的內容照含金量規則的四步講。
+- **兩個限制**：
+  - 只有被判成不算新聞的頁面會出現。已經發成新聞的走站上文章那條路；停在待審查或需重寫的不會出現。
+  - 自動路線還不能實際操作工具（票 `2026-10-09-give-the-automated-route-a-way`），所以官方題目做出來的是「這次更新改了什麼、現在該怎麼做」的說明片，依據是官方頁面上的範例。要實作示範的教學仍然走手動路線。
+- **先跳過的來源**：以 feed 摘要當依據的來源（Claude Code 更新紀錄、Claude Platform 更新紀錄）。它們每一則都指向同一個大頁面，工人的讀頁上限是 3 MB，讀不了；這種來源帶了鍵也不會出題目，`notes` 會寫原因。
 
 ## 站主指定文章的教學影片（2026-10-05 加）
 
@@ -288,7 +299,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 | 票 | 內容 | scope |
 | --- | --- | --- |
 | `video-auto-settings` | 設定表（遷移）、後台 API、工具讀取端點、「設定」分頁、旁白自動核准的規則 | `apps/api/app/video_automation`、遷移、`apps/web` 的影片審核元件與 admin.json |
-| `video-auto-model-runner` | `/video/ai/run`、用量紀錄與每月上限、`/video/automation/topics`（站上新聞與文章＋Brave） | `apps/api/app/video_automation` 的 ai 與 topics 模組 |
+| `video-auto-model-runner` | `/video/ai/run`、用量紀錄與每月上限、`/video/automation/topics`（站上新聞與文章＋官方頁面＋Brave） | `apps/api/app/video_automation` 的 ai 與 topics 模組 |
 | `video-auto-orchestrator` | `tools/video/automation`：自動流程的狀態機、呼叫模型、抓查核網頁、`auto` 指令 | `tools/video/automation`、`tools/video/cli.mjs` |
 | `video-auto-worker-image` | 工人映像（Node＋Chromium＋ffmpeg＋字型）、compose 服務與 volume、工人迴圈 | `ops/video`、`docker-compose.prod.yml` |
 | `video-auto-rollout` | 部署腳本加 `--profile video`（要站主同意）、配對工人、開啟設定、跑第一支 | 主機；repo 只改文件 |

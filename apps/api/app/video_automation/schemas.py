@@ -602,11 +602,12 @@ class StagePromptsOut(StrictModel):
 
 
 class TopicView(StrictModel):
-    source: Literal["site", "search"]
+    # "official": a company's own page the news writer declined (topics.official_topics).
+    source: Literal["site", "search", "official"]
     title: str
     summary: str
     url: str
-    # The site article's slug, so a video can point back to it; None for a search result.
+    # The site article's slug, so a video can point back to it; None for the other two.
     slug: str | None = None
     date: str | None = None
 
