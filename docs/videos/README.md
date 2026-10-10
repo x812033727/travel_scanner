@@ -46,7 +46,7 @@
 
 字型只用 Noto Sans TC 與 JetBrains Mono，兩者都是開源字型，由 npm 套件提供，不讀系統字型。畫面下方 12% 不放重要內容，因為 YouTube 的控制列和 CC 字幕在那裡。
 
-15 種投影片版型（每種的欄位與上限在 `tools/video/templates/templates.mjs` 的 `TEMPLATE_SPECS`，範例在 `tools/video/templates/fixtures/showcase/video.json`），加上不是 HTML 版型的 `shot`（一張 AI 插圖加運鏡，[`ILLUSTRATED.md`](ILLUSTRATED.md)；插圖投影片每 5–8 秒一張、至少佔一半時間）：
+17 種投影片版型（每種的欄位與上限在 `tools/video/templates/templates.mjs` 的 `TEMPLATE_SPECS`，範例在 `tools/video/templates/fixtures/showcase/video.json`），加上不是 HTML 版型的 `shot`（一張 AI 插圖加運鏡，[`ILLUSTRATED.md`](ILLUSTRATED.md)；插圖投影片每 5–8 秒一張、至少佔一半時間）：
 
 | 版型 | 用在 | 可以逐條出現 |
 | --- | --- | --- |
@@ -60,6 +60,12 @@
 | `big` | 一個關鍵數字或關鍵詞 | — |
 | `diagram` | repo 裡的 SVG 圖解（沿用文章的圖） | — |
 | `screenshot` | repo 裡的截圖，可以框出一塊 | 框 |
+| `photo` | 一張真實照片（公有領域檔案照、圖庫照片），像印出來的相片貼在底上：白邊 24px、微傾（`tilt` −3°～3°，沒寫依場景 id 固定取 ±1.5°、±2° 或 ±2.5°）、柔和投影、置中；`caption`（一行、≤40 字）在相片下方，`credit`（一行、≤60 字）是相片右下角的膠囊。照片要登記在 `assets[]`，沒登記 `render` 會擋 | — |
+| `chat` | 1–3 則左右對話泡泡 | 每一則 |
+| `quote` | 一句引文與出處，可以附翻譯 | 翻譯 |
+| `stats` | 1–4 個數字，各附標籤 | 每一個 |
+| `terminal` | 一個指令與它印出來的結果，附執行日期與版本 | 輸出 |
+| `cta` | 一張卡片指向完整文章 | — |
 | `outro` | 結尾：回答、下一步、`mokaair.com` | — |
 
 縮圖用 `thumb` 版型（站主 2026-10-08 定）：左 40% 是文字欄（一個標籤、**最多 6 字**的大字（英文詞或數字各算 1 字、最多 2 個）、一行小字，大字可用 `\n` 分兩行、不在詞中間斷），右 60% 放**一個主體**。主體來源依序：`thumbnail.data.capture`（一個 `screencast` 景的 id，用它截到的真實頁面，可寫 `<id>#2` 取第 2 張）→ `thumbnail.data.shot`（該支影片一張 shot 的關鍵影格，裁右側）→ 都沒有時是依 slug 輪流的單色大塊底（青綠、梅紫、墨藍、墨綠四色）。三套版型 A／B／C（`layout` 可指定，沒寫依 slug 輪流；YouTube 測試用的 B／C 變體自動往後輪一套；`tone` 可指定底色），MOKAAIR 字標縮小在左下角，不碰右下角的時長標籤與右上角的懸停按鈕。大字不重複標題：`qa` 的 thumbnail 項擋超過 6 字、詞中間斷行，與標題前 10 字重複過半時警告（各語言自己的縮圖只檢查尺寸、位元組、手機上的字高與重複標題，不套中文的字數與斷詞規則；合集的大字本來就是系列名，不警告重複標題）。評論某個產品時，它的官方頁截圖或 logo 可以當主體（合理引用）；AI 插圖仍不畫 logo 與字（[`ILLUSTRATED.md`](ILLUSTRATED.md)）。
