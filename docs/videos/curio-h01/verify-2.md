@@ -1,7 +1,7 @@
 # curio-h01 查核第二輪
 
 - 查核 2026-10-10，Claude Fable 5.1（第三個代理：不是撰稿的，也不是第一輪查核的那一個）。
-- 範圍照查核提示的第二輪規則：第一輪 9 條 CHANGED 與 2 條 NOT FOUND 全部重查（#6、27、36、50、65、90、92、100、102、105、109），再從 112 條 CONFIRMED 裡隨機抽三分之一（38 條）。抽樣用 `C:\Users\x8120\mokaair-work\videos\curio-h01\_tools\verify2\sample.mjs`（mulberry32，**seed 20261010**，Fisher–Yates 洗牌取前 ⌈112/3⌉），結果存 `sample.txt`：#3、4、8、9、15、17、18、28、31、34、39、44、45、56、57、58、61、62、67、69、71、73、76、78、83、86、88、91、96、97、103、111、112、114、121、124、126、128。編號沿用 `verify-1.md` 的主張表。
+- 範圍照查核提示的第二輪規則：第一輪 9 條 CHANGED 與 2 條 NOT FOUND 全部重查（#6、27、36、50、65、90、92、100、102、105、109），再從 112 條 CONFIRMED 裡隨機抽三分之一（38 條）。抽樣用 `<home>\mokaair-work\videos\curio-h01\_tools\verify2\sample.mjs`（mulberry32，**seed 20261010**，Fisher–Yates 洗牌取前 ⌈112/3⌉），結果存 `sample.txt`：#3、4、8、9、15、17、18、28、31、34、39、44、45、56、57、58、61、62、67、69、71、73、76、78、83、86、88、91、96、97、103、111、112、114、121、124、126、128。編號沿用 `verify-1.md` 的主張表。
 - 方法：`video.json` 重新抽成 263 條（`claims-list.txt`，與第一輪同一支 extract.mjs）；第一輪的 24 個網址全部當天用 curl 重開（User-Agent `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`，同一主機間隔 1.2 秒，去掉註解後讀全文），另外開了 maryceleste.net 站內第一輪沒開的 9 頁，其中兩頁是一手文件的全文轉錄：**Austin 勘驗報告（1872-12-23，Fay 1942 自照相版轉錄）** 與 **Dr. Patron 化驗報告（1873-01-30）**，兩頁已加進 `video.json` 的 `sources`。網路搜尋用了 1 次（5 次以內）。
 - 改動原則同第一輪：只改事實與連帶的地方；行 id 不變；沒有加場景或句子；每句維持 24 單位以內。
 
@@ -123,5 +123,5 @@
   - 55b2「工業用的，不能喝」、6mmb「七個船員」、hnsv「十一月七日」：沒抽到，第一輪的保留理由今天重讀各來源仍成立（SM07 industrial、NEHS／FV denatured；SK 說食用級穀物酒精仍是一對四）。
   - 9i5z「第三次作證」、c8ms Shufeldt：仍是單一來源（THP、Chronicle 轉錄），第一輪已註明，保留。
   - C-NYT 內文的「11 月 17 日出港」「約 236 噸」「towed into Gibraltar」與他源不合，旁白只用標題，沒事。
-- 程序註記：沒有跑任何 git 指令；沒有改 brief.md、research.md；helper 在 `C:\Users\x8120\mokaair-work\videos\curio-h01\_tools\verify2\`（fetch.sh、fetch2.sh、totext.mjs、extract.mjs、sample.mjs、listener.mjs、apply-edits.mjs；下載的頁面在 `dl/`）。
+- 程序註記：沒有跑任何 git 指令；沒有改 brief.md、research.md；helper 在 `<home>\mokaair-work\videos\curio-h01\_tools\verify2\`（fetch.sh、fetch2.sh、totext.mjs、extract.mjs、sample.mjs、listener.mjs、apply-edits.mjs；下載的頁面在 `dl/`）。
 - **第三輪：不需要**（這一輪改了 2 個事實，不超過 3 個）。但熱飯菜的最早出處仍是未解的點，腳本現在的講法迴避了先後，不算有錯。

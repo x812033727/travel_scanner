@@ -1,7 +1,7 @@
 # curio-h01 查核第一輪
 
 - 查核 2026-10-10，Claude Fable 5.1（查核代理，不是撰稿的那一個）。
-- 方法：先把 `video.json` 的每句旁白、每張卡片、縮圖、標題、說明欄、標籤、`assets[]` 抽成 263 條清單（`C:\Users\x8120\mokaair-work\videos\curio-h01\_tools\verify1\claims-list.txt`），再把 `research.md` 與 `claims.md` 列的每個網址當天用 curl（User-Agent `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`，同一主機間隔 1.2 秒）重開，去掉註解後讀全文。沒有用網路搜尋（0／5 次）。
+- 方法：先把 `video.json` 的每句旁白、每張卡片、縮圖、標題、說明欄、標籤、`assets[]` 抽成 263 條清單（`<home>\mokaair-work\videos\curio-h01\_tools\verify1\claims-list.txt`），再把 `research.md` 與 `claims.md` 列的每個網址當天用 curl（User-Agent `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`，同一主機間隔 1.2 秒）重開，去掉註解後讀全文。沒有用網路搜尋（0／5 次）。
 - 這是歷史題：「官方頁」指一手或權威的歷史來源。最重的是 maryceleste.net 轉錄的 Gibraltar Chronicle 1872–73（含 Austin 勘驗摘要、Shufeldt 報告、判決）、The History Press 引的 Austin 報告原文與 Solly-Flood 1873-01-22 信、Wikisource 的道爾 1884 全文、Commons 的 1873 紐約時報剪報全文；其次 Smithsonian Magazine 2007、Britannica、American Heritage 1981（引 Bryan 與 Fay 1942）。Skeptoid、History Hit、Fishermen's Voice、NEHS、Slate 只用來佐證，單獨不能定案。Wikipedia 沒有用。
 - 改動原則照查核提示：只改事實與連帶的地方，不動風格、順序、節奏；每句旁白維持 24 單位以內；行 id 不變；沒有加場景或句子。
 
