@@ -3351,6 +3351,41 @@ PASS is DURATION_ONLY for the six rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Policy judge demonstration-question increment (PR #1424): 1 file (2026-10-10)
+
+Reviewer: `claude-pr-review-1424-policy`. Author: `claude-fable-5.1`. Scope: DURATION_ONLY for the one changed binding below, reviewed at `c776540dd` ("fix(video): the drama format alone does not exempt a video from the demonstration question") on claude/policy-demo-explainer, whose other commit of its own is `feffaa86b` ("feat(video): the demonstration question is asked of tutorials only"). The reviewer wrote no part of those commits and edits only this report and review.json.
+
+Baseline: `1bd1d47ceab109b1425af01f1571173e95004c8e`, the head of origin/main and the merge base. The bound hash of the file is its blob at the baseline (computed with Node's crypto over `git show origin/main:<path>`), the other 107 bindings are current, and the branch changes neither receipt file nor anything under tools/video/long-form. The head bytes hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: apps/api/app/video_automation/judge.py` and nothing else. Every prior increment is preserved and the registry remains 108 files.
+
+- `apps/api/app/video_automation/judge.py`: `fe502055df82612df2dee120c9db78ff54029c0514a73df683ad8ce2e14e9637` -> `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7`.
+
+Findings, `apps/api/app/video_automation/judge.py` (+59/−18), read whole in the diff. Every changed line belongs to the policy judge: the module docstring's paragraph on which questions a video is asked; the `PolicyQuestions` literal, which gains `"explainer"`; the new `NO_DEMO_CATEGORIES = frozenset({"explainer", "story"})`; `PolicyVerdict`'s docstring; `read_policy_answers`, which takes a `questions` argument and, for an explainer, reads no `demo` and holds the verdict to the other three thresholds; the new `DEMO_NOT_ASKED` string and `policy_note`, whose `demo` may be None; `policy_questions_for`, which now reads `VideoProject.category` beside `shorts_line` and answers `"explainer"` for a row filed as `explainer` or `story` (a brand-story series episode and a cut Short are decided first, as before; no row, no category, and every other category, a drama's included, stay `"tutorial"`); and `judge_policy`, which asks an explainer the cut Short's three questions. The author's description holds. `POLICY_MIN_STANCE`, `POLICY_MIN_DEMO`, `POLICY_MAX_ADVICE` and `POLICY_MAX_SPONSORED` are not in the diff; they are score thresholds, not lengths. The outline judge, the pick note, the keyframe and audio judges and everything else in the module that reads a target, a minute count or a measured clock is the same bytes.
+
+Findings, the unbound new test `apps/api/tests/test_video_judge.py` (+267): seven tests of which questions are asked per category and format, the verdicts and notes, and that the request cannot name its own category. Its numbers are Jev scores (0.85, 0.17, 0.05, 0.1 and the like) and HTTP statuses; no episode length, target or floor is set, asserted or loosened.
+
+Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, target_seconds, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. The category named `explainer` here selects a question set only; it is not the explainer length profile and nothing reads it to choose a length. A case-insensitive scan of the 446 changed lines (412 added, 34 removed) of all six files in the branch's diff for minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, floor, plans.json, policy.json, process.env, seconds, frame, 時長, 片長, 長度, length, .skip and .only finds two lines, neither in judge.py: `load_runtime_settings` in the new API test (the settings loader's name) and the task file quoting this receipt's own failure message. The branch touches six files: the one above and five unbound ones (`apps/api/tests/test_video_judge.py`, `docs/videos/HANDS-OFF.md`, the task file, `tools/video/qa/policy.mjs`, `tools/video/qa/policy.test.mjs`).
+
+Ran (in a worktree at `c776540dd`, Node on Windows):
+
+- the hashing of the changed path against the receipt, the baseline blob and the head, with a CR, BOM and trailing-LF check;
+- `node tools/video/long-form/cli.mjs check` before rebinding, which named this one binding only;
+- a reading of `git diff origin/main...HEAD` for judge.py, test_video_judge.py, HANDS-OFF.md, qa/policy.mjs and qa/policy.test.mjs;
+- the scan described above.
+
+The CLI check, review.test.mjs and repo-hygiene.test.mjs are run after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept, as a product choice, exempting the `explainer` and `story` categories from the demonstration question, nor asking them the cut Short's wording of the other three; whether the policy judge is right is outside DURATION_ONLY.
+- Noted, not judged: the new comment in the unbound `tools/video/qa/policy.mjs` and the header of `policy.test.mjs` list "a drama" among the videos not asked for a demonstration, while judge.py at this head still asks a drama all four unless its category says otherwise. A comment, not a duration rule.
+- The five unbound changed files are not reviewed or bound here; they were read for the duration question only.
+- No video was judged, rendered or measured. pytest, ruff, mypy, the tool suites other than the three named above, lint, typecheck and CI were not run for this increment.
+- The 107 bindings this branch did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Dictionary-merge rule increment: 2 files (2026-10-10)
 
 Reviewer: `claude-pr-review-lexicon-merge-20261010`. Author: `claude-opus-5-5-lexicon-merge-fix`. Scope: DURATION_ONLY for the two changed bindings below, reviewed at `d5550634b91272c9f4cf520b145acad913156c82` ("fix(video): do not merge dictionary terms that lint refuses") on claude/lexicon-merge-letter-first. The reviewer wrote no part of that commit and edits only this report and review.json.
@@ -3558,6 +3593,50 @@ PASS is DURATION_ONLY for the six rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Dictionary-merge rule merge with main (#1424) follow-up: 1 file (2026-10-10)
+
+Reviewer: `claude-pr-review-lexicon-merge-20261010-d`, a fourth pass by the reviewer of the three "Dictionary-merge rule" sections above. It wrote none of the branch's commits and none of main's, and edited only this report and review.json. Author: `claude-opus-5-5-lexicon-merge-fix`, the branch's author. Scope: DURATION_ONLY for the merge re-binding of the one file only #1424 changed, apps/api/app/video_automation/judge.py, on claude/lexicon-merge-letter-first. No bound file has new bytes in this merge. It joins the branch's `b11ea800593da988a5a3edbc185a44f6477cab30` with origin/main `b406d78cd9c93ae6ffde773c0167e30be3b01d6d` (#1424, "feat(video): the policy check asks for a demonstration only of tutorial-shaped videos"). Both sides come from `1bd1d47ce` (#1414). The session coordinating the branch started the merge with `git merge origin/main --no-commit`, and it was not committed when this was written: what was reviewed is the index and the working tree, which hold the same bytes for every one of the 108 bound files.
+
+The branch since the follow-up above. That follow-up's merge was committed as `0df361c15`. The two merges after it, `16edca74b` (#1418) and `b11ea8005` (#1414), changed no bound file and neither receipt file: all 108 bound files, review.md and review.json are the same bytes at `0df361c15` and at `b11ea8005`. So the receipt of the follow-up above is the branch's receipt at this merge.
+
+The receipt union. Both sides had changed review.md and review.json, and Git left both in conflict. Both were rebuilt from the three stages of the index (`git show :1:`, `:2:` and `:3:`, the base and the two sides), not from the conflict markers. This report holds every increment verbatim: #1424's "Policy judge demonstration-question increment (PR #1424)" from origin/main, then the branch's own three sections, then this one. That order is the side merged in, then the branch's own sections, then the merge, as earlier merge follow-ups in this report have it. Both sides had appended after the "Dub skip-rate increment (second opinion, overrun tolerance, kept takes)", #1424 its one section and the branch its three, and changed table rows. The preamble and the 114 sections up to and including it are byte-identical at `1bd1d47ce` and on both sides. #1424's section here is origin/main's byte for byte (6,091 bytes) and the branch's three are `b11ea8005`'s (13,876, 10,149 and 12,086 bytes), each with its own Verdict line and the blank line after it. Each side's receipt passes `durationReviewProblems` against its own tree (read by `git show`).
+
+Baseline, by bound file, against both receipts:
+
+- One file matches #1424's reviewed hash: apps/api/app/video_automation/judge.py, `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7`. The merged bytes equal `b406d78cd`'s, and the branch left the file at `1bd1d47ce`'s bytes (`fe502055…`). So this is a merge re-bind of the hash #1424's increment reviewed, with no new bytes.
+- Two files match the branch's hash: tools/video/automation/flow.mjs, `b15fff400a5ebcbc89f68bf9795d3b392da4c1dce4f6a8e58067e902f85409d2`, and tools/video/automation/automation.test.mjs, `5b7c04011f43798843fd7d9e146de490dc06890e6808f3e3544a3ee7cf97f05d`. The merged bytes equal `b11ea8005`'s, which are the bytes the follow-up above bound, and main left both at `1bd1d47ce`'s (`15ff4c13…` and `3b7f956b…`). Their rows are unchanged from the follow-up above. Against main's copies the two still differ by the change reviewed at `d5550634b` alone, line for line (+7/−2 and +47/−1).
+- No bound file was changed by both sides.
+- The other 105 bound files are the same on both sides and in the working tree.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for review.json's conflict markers, which it could not parse. Read against the merged tree, the branch's receipt was stale for exactly judge.py, and #1424's for exactly flow.mjs and automation.test.mjs. judge.py holds no CR byte or BOM and ends in LF. review.mjs is the same on both sides, so the registry stays exactly 108 paths, with one hash rebound against the follow-up above and the other 107 unchanged.
+
+This follow-up has no finding of its own, since no bound file's bytes are new. What #1424 changed in judge.py (+59/−18) is read in its increment above, and what the branch changed in flow.mjs and automation.test.mjs in the three sections above. Main's four commits since `1bd1d47ce` (#1422, #1419, #1420 and #1424) change 25 files. Of the bound ones judge.py is the only one, and the two under tools/video are qa/policy.mjs and qa/policy.test.mjs, both unbound. So nothing the earlier sections read around the dictionary moved: lexicon.mjs, lint.mjs, timeline.mjs, tts/requests.mjs, story.mjs and fixtures/load.mjs are not among the 25.
+
+Across the merge nothing bound changes but judge.py, as #1424's increment reviewed it. There is no change by this merge to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. No duration assertion is removed or loosened.
+
+Ran (in the worktree with the merge in the index, Node v24.13.0 on Windows):
+
+- the hashing of every bound path against both receipts, the three revisions, the index and the working tree;
+- `durationReviewProblems` against `1bd1d47ce`, `b11ea8005`, `b406d78cd` and `0df361c15` through `git show`, which returned no problem for any of the four, and with each side's receipt against the merged tree;
+- the comparison of all 108 bound files and of both receipt files between `0df361c15` and `b11ea8005`;
+- the comparison of review.md at the three stages, section by section, and of the rebuilt report with them;
+- a line-for-line comparison of flow.mjs and automation.test.mjs over main's copies with the change reviewed at `d5550634b`.
+
+No test was run for this follow-up but the CLI check and review.test.mjs, which are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- judge.py is bound as #1424's increment reviewed it, and is not reviewed again here. This follow-up does not review #1424, #1422, #1419 or #1420.
+- The branch's merges of #1418 and #1414 were not reviewed. Only this was checked: that they changed no bound file and neither receipt file.
+- The merge was not committed when this was written. The receipt binds the bytes of the index as they were then; a bound file changed before or after the merge commit needs its own increment.
+- No tool, API or web test was run on the merged tree. automation.test.mjs was last run for the follow-up above, and its lease test does not finish on Windows.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this follow-up.
+- The 107 bindings this merge did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -3569,7 +3648,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
 | `.claude/skills/youtube-video/SKILL.md` | `4088bb1beede893b19b503281118a86ef6806a37243c9bfcb85dd70d2e91d101` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
-| `apps/api/app/video_automation/judge.py` | `fe502055df82612df2dee120c9db78ff54029c0514a73df683ad8ce2e14e9637` |
+| `apps/api/app/video_automation/judge.py` | `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7` |
 | `apps/api/app/video_automation/models.py` | `14da996043cdc076a96c9051e7edf1556ca76dcf2b3d9ff3d68ef648516e1dd7` |
 | `apps/api/app/video_automation/schemas.py` | `8a7b331074ca60276213a211011ac87952b34019d832b391f8d4129d11291ad7` |
 | `apps/api/app/video_automation/series.py` | `ca8e61d2431752d78f6e7bc5c98c26dd1c862d8ccb2bf596aa124b088f378dea` |
