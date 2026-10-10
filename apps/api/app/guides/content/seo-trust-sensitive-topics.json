@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
-    "software",
     "marketing",
-    "seo"
+    "seo",
+    "software",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "網站如何建立可信度：作者、資料來源與高風險主題",
@@ -48,10 +51,8 @@
               "text": "Google 用 E-E-A-T 討論經驗、專業性、權威性與可信度，其中可信度最重要；它不是一個可直接購買或加上"
             },
             {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
+              "type": "text",
+              "text": "標記"
             },
             {
               "type": "text",
@@ -184,6 +185,7 @@
           "width": 1600,
           "height": 900,
           "caption": "可信度是可核對的責任與證據，不能用標章或排名代替。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -278,6 +280,1086 @@
         },
         {
           "title": "Google 生成式 AI 內容使用指南",
+          "url": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "How Websites Build Trust: Authors, Sources and High-Risk Topics",
+      "description": "Website trust rests on verifiable author backgrounds, sources, methods and correction accountability. This article explains E-E-A-T and YMYL's uses and limits, using original scenarios for everyday posts, software tutorials and high-risk information to outline author, editor and expert reviewer roles. A checklist covers source applicability, partnership disclosures, dates and corrections, so author boxes, institution names and search rankings are not taken as proof of accuracy.",
+      "hero": {
+        "src": "/guides/seo-trust-sensitive-topics/hero-en.jpg",
+        "alt": "An original illustration of a shield, documents and folders, representing trustworthiness, evidence sources and review records.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Putting an author's photo and the words “expert reviewed” on a website does not automatically answer readers' most pressing questions: who is responsible for this information, what supports it, and whether errors can be corrected when discovered. Trustworthiness requires verifiable content and actual processes to support it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Everyday personal posts can clearly describe individual experiences, but when an article may affect health, safety, finances or important rights and interests, the cost of errors is different. Websites should arrange verification and review according to the content's impact, rather than applying the same professional-looking template to every article."
+        },
+        {
+          "type": "heading",
+          "text": "Understand E-E-A-T and high-risk topics correctly",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google uses E-E-A-T to discuss experience, expertise, authoritativeness and trustworthiness, with trustworthiness being the most important. It is not a single ranking score that can be bought or obtained simply by adding "
+            },
+            {
+              "type": "text",
+              "text": "markup"
+            },
+            {
+              "type": "text",
+              "text": ". Google also explains that quality raters assess search systems and do not directly control individual pages' rankings."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "YMYL refers to topics that may significantly affect areas such as health, financial stability, safety and societal well-being. What matters is the content's impact, not just its category. A post about arranging a planner and one claiming that a method can treat a disease cannot have the same verification requirements, even if both are labeled lifestyle articles."
+        },
+        {
+          "type": "paragraph",
+          "text": "First list the actions readers might take based on the article, then ask what could happen if the information is wrong. If it merely influences the choice of a folder color, the impact is limited. If it might lead someone to stop taking medication, transfer a large sum of money or miss an application deadline, stricter sourcing, clearer boundaries and appropriate expert review are needed. This is an editorial risk assessment, not a diagnosis of individual readers."
+        },
+        {
+          "type": "heading",
+          "text": "Match author backgrounds to what they can actually take responsibility for",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Author bios should explain experience and work relevant to the article, rather than pile up unverifiable titles. Someone writing software instructions can describe their setup and how they compiled the information; someone writing about travel experiences can state when they visited and the scope of their observations. Things they have never done should not be filled in with seemingly authentic photos or accounts of experience."
+        },
+        {
+          "type": "paragraph",
+          "text": "Distinguish between writers, research editors and expert reviewers. Someone checking wording has not necessarily verified medical or legal judgments. If a professional reviews only one paragraph, the entire article should not appear to carry the same endorsement. Review records should specify the scope, date and work actually completed."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "If a website uses a team byline, it can still publicly explain how content is produced, who handles corrections and when external review is needed. When using "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " to help organize information, explain its role and how people verify its output. Do not present fictional people as experts or treat passing automated checks as agreement from a professional."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Check whether sources sufficiently support readers' decisions",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Start by choosing sources suited to the question. For product features, consult vendor documentation; for administrative rules, consult the relevant authority; for research claims, examine the study's methods and limitations. Linking to a well-known website's homepage does not tell readers which statement it supports. The closer a citation is to a specific claim, the easier it is to verify."
+        },
+        {
+          "type": "paragraph",
+          "text": "Also check the region, time period and intended population. Another country's system cannot simply be treated as Taiwan's current rules, and research on adults cannot automatically be applied to all ages. If an article only explains how to look up information, keep it clearly within that scope rather than extending it into conclusions about what applies to individual readers."
+        },
+        {
+          "type": "paragraph",
+          "text": "NIH's guidance on evaluating health information reminds readers that personal testimonials are not research evidence that directly proves effectiveness, and that sources and expert review need to be clearly identified. Websites can retain valuable personal experiences, but readers should be able to distinguish personal accounts from research-supported statements and recognize which matters still require professional judgment based on individual circumstances."
+        },
+        {
+          "type": "heading",
+          "text": "Disclose partnerships and the website's purpose",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If an article involves samples, payments or affiliate commissions, clearly disclose the relationships relevant to its content so readers understand the author's potential interests. This does not mean sponsored content is necessarily unreliable; it allows readers to factor those circumstances into their judgment. Do not blend advertising copy into neutral test findings or present paid placement as an independent recommendation."
+        },
+        {
+          "type": "paragraph",
+          "text": "NIH's guide to reliable health information recommends checking who operates and funds a website, along with the backgrounds of its authors and reviewers. These principles can also inform disclosure practices for websites in general: the About page, contact information and editorial policies should be consistent. Readers should be able to find a way to raise questions, rather than seeing only a row of unverifiable badges."
+        },
+        {
+          "type": "paragraph",
+          "text": "Citing an institution's information does not mean that institution recommends your website. Participating in events or earning certification for a tool should not be inflated into credentials establishing authority on every topic. Before using external titles and logos, confirm the actual relationship and permitted scope of use. A credibility page should provide verifiable information, not create an impression of authority beyond the facts."
+        },
+        {
+          "type": "heading",
+          "text": "Set clearer editorial checkpoints for high-risk content",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before production, define how far the article's answers can go: general concepts, ways to find official information, or professional judgments requiring review by qualified personnel. If the team's current capabilities extend only to compiling official information, limit the content to what can be supported. Do not write personalized conclusions first and then try to remedy them with a disclaimer at the bottom of the page."
+        },
+        {
+          "type": "paragraph",
+          "text": "When submitting content for review, include a list matching claims to sources, the applicable region, unresolved questions and important figures so reviewers know what to check. After making corrections, recheck the title, summary and illustrations to ensure that excessive promises do not remain elsewhere after the body text has become more cautious. Mark unfinished reviews as pending; do not apply a reviewed label in advance."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, an article teaching readers how to look up official application requirements can explain which fields to examine and how to confirm the applicable year and which groups the rules cover. Directly deciding whether a particular person is eligible goes beyond a general guide to looking up information. Separating these tasks helps a website provide useful information within its capabilities and direct matters requiring individual judgment to appropriate channels."
+        },
+        {
+          "type": "list",
+          "items": [
+            "List readers' possible actions and the consequences of errors to determine the level of verification needed.",
+            "Assign authors, editors and reviewers, specifying each person's scope.",
+            "Check sources, regions, dates and interests involved, and record unresolved questions.",
+            "Apply the appropriate status only after actual review and corrections across all fields are complete."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Maintain long-term trust through correction and traceability",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Manage publication dates, substantive update dates and verification dates separately. Readers need to know when content was created, when it changed and when its information was last checked. Rebuilding a website must not automatically make every article appear to have just undergone expert review. If the information has not changed but has actually been rechecked, you can also explain the scope of that verification."
+        },
+        {
+          "type": "paragraph",
+          "text": "Someone needs to handle the corrections channel. After receiving a specific error report, first preserve the issue and its sources, then assess whether an immediate correction or temporary removal of unreliable conclusions is needed. Correction notices should clearly explain what changed. Do not describe changes that affect interpretation merely as layout updates."
+        },
+        {
+          "type": "paragraph",
+          "text": "Periodically spot-check from a reader's perspective: can they find the author's background, do citations lead directly to evidence, are partnerships clearly disclosed, and does the review status reflect reality? Articles are not immune to errors because they rank highly, nor are attractive pages automatically trustworthy. Ongoing maintenance means making responsibility, sources and correction procedures understandable."
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-trust-sensitive-topics/diagram-1-en.svg",
+          "alt": "Four sections—assessing impact, assigning responsibility, supporting claims and ongoing corrections—explain how websites build trust.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Trustworthiness rests on verifiable responsibility and evidence; badges or rankings cannot replace them.",
+          "description": "Four sections—assessing impact, assigning responsibility, supporting claims and ongoing corrections—explain how websites build trust.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Aspect of trustworthiness",
+            "Evidence to provide",
+            "Potentially misleading practices"
+          ],
+          "rows": [
+            [
+              "Relevant experience",
+              "Context, time period, methods and necessary records",
+              "Inventing experiences of use or visits"
+            ],
+            [
+              "Scope of expertise",
+              "Verifiable background and review work actually performed",
+              "Using a single title to represent expertise in every field"
+            ],
+            [
+              "Source applicability",
+              "Specific documents, regions, versions and limitations",
+              "Using an institution's name to endorse unrelated claims"
+            ],
+            [
+              "Partnership disclosures",
+              "Sponsorships, samples or commission arrangements",
+              "Presenting paid arrangements as independent rankings"
+            ],
+            [
+              "High-risk content review",
+              "Claim lists, review scope and completion dates",
+              "Labeling content expert-approved before review"
+            ],
+            [
+              "Ongoing maintenance",
+              "Correction channels and verification records",
+              "Updating dates without checking information"
+            ]
+          ],
+          "caption": "Original editorial responsibility table; not an E-E-A-T scorecard, and no guarantee of search rankings or individual professional conclusions."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Trust labels must reflect actual work",
+          "text": "Author bylines, expert reviews and verification dates should all be backed by traceable facts. If the work is unfinished, keep the status pending confirmation and limit the article's promises. Do not use an official-looking label as a substitute for actual research and review."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Establish an article sourcing and quality-checking process",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Avoid titles that promise more than the evidence supports",
+              "kind": "life",
+              "slug": "seo-title-writing"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: E-E-A-T and People-First Content",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NIH ODS: Evaluating Online Health Information",
+          "url": "https://ods.od.nih.gov/HealthInformation/How_To_Evaluate_Health_Information_on_the_Internet_Questions_and_Answers/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NIH NIA: Finding Reliable Health Information",
+          "url": "https://www.nia.nih.gov/health/how-find-reliable-health-information-online",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Guidance on Using Generative AI Content",
+          "url": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ウェブサイトの信頼性を築くには：著者、情報源、高リスクのテーマ",
+      "description": "ウェブサイトの信頼性を支えるのは、確認可能な著者の経歴、情報源、方法、訂正への責任です。この記事では E-E-A-T と YMYL の用途と限界を説明し、生活の体験談、ソフトウェア解説、高リスク情報に関する独自の事例を通じて、著者、編集者、専門家のレビュー担当者の役割分担を整理します。情報源の適用性、提携関係の開示、日付、訂正のチェックリストも掲載。著者紹介欄、機関名、検索順位を、内容が必ず正しい証拠と誤解しないために役立ちます。",
+      "hero": {
+        "src": "/guides/seo-trust-sensitive-topics/hero-ja.jpg",
+        "alt": "盾、文書、フォルダーのオリジナル図版で、信頼性、根拠の出典、レビュー記録を表現。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "著者の写真と、専門家によるレビューを示す四文字の表記をサイトに載せても、読者が最も知りたい問いに自動的に答えられるわけではありません。この情報には誰が責任を持ち、根拠は何で、誤りが見つかったときに訂正できるのか。信頼性には、検証可能な内容と実際の手順による裏付けが必要です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般的な生活の体験談では、個人の経験を明確に伝えられます。しかし、記事が健康、安全、財務、重要な権利や利益に影響し得る場合、誤りの代償は異なります。サイトは、すべての記事に専門的に見える同じテンプレートを当てはめるのではなく、内容が及ぼす影響に応じて検証とレビューを行うべきです。"
+        },
+        {
+          "type": "heading",
+          "text": "E-E-A-T と高リスクのテーマを正しく理解する",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google は E-E-A-T を用いて経験、専門性、権威性、信頼性を説明しており、なかでも信頼性を最も重視しています。E-E-A-T は、直接購入したり、"
+            },
+            {
+              "type": "text",
+              "text": "マークアップ"
+            },
+            {
+              "type": "text",
+              "text": "を追加したりするだけで得られる単一のランキングスコアではありません。また Google は、品質評価者は検索システムを評価するもので、個別ページの順位を直接制御するわけではないと説明しています。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "YMYL は、健康、経済的な安定、安全、社会の福祉などに重大な影響を及ぼし得るテーマを指します。重要なのは内容の影響であり、記事がどのカテゴリーに置かれているかだけではありません。手帳のレイアウトの紹介と、ある方法で病気を治せるという主張では、どちらも生活記事に分類されていても、同じ検証で済ませることはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず読者が記事をもとに取りそうな行動を列挙し、誤りがあればどのような結果を招くかを考えます。フォルダーの色を選ぶだけなら影響は限られます。しかし、服薬を中止する、多額の資金を送金する、申請期限を逃す可能性があるなら、情報源と扱う範囲をより厳格に確認し、適切な専門家のレビューを受ける必要があります。これは編集上のリスク判断であり、個々の読者を診断することではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "著者の経歴を、実際に責任を持てる範囲と対応させる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "著者紹介では、確認できない肩書を並べるのではなく、その記事に関係する経験や仕事を説明するべきです。ソフトウェアの操作を解説する人なら使用環境や情報の整理方法を、旅行体験を書く人なら訪問期間や観察した範囲を示せます。実際にはしていないことを、本物らしい写真や経歴を借りて補ってはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "執筆者、資料を編集する担当者、専門家のレビュー担当者を区別します。誰かが言葉遣いを確認したからといって、医療や法律上の判断まで確認したことにはなりません。専門家が一段落だけをレビューした場合も、記事全体が同じようにお墨付きを得たと見せるべきではありません。レビュー記録には、範囲、日付、実際に完了した作業を明記します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "チーム名で署名するサイトでも、内容の制作方法、訂正の担当者、外部レビューが必要になる条件を公開して説明できます。情報の整理に "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " を活用する場合は、その役割と人による確認方法を示します。架空の人物を専門家として紹介したり、自動チェックに合格したことを、専門家が内容に同意したことと見なしたりしてはいけません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "情報源が読者の判断を支えるのに十分か確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず、問いに適した情報源を選びます。製品の機能は提供元の文書、行政上の規則は該当する所管機関で確認し、研究に基づく主張は研究方法と限界に立ち返ります。有名なサイトのトップページへリンクしても、どの一文が裏付けられているか読者に伝わるとは限りません。引用を示す位置が具体的な主張に近いほど、検証しやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "地域、時期、適用対象も同時に確認します。他国の制度を、そのまま台湾の現行ルールとして扱うことはできません。成人を対象とした研究も、あらゆる年齢層に自動的に適用できるわけではありません。資料の調べ方だけを紹介する記事なら、その範囲を明確に保ち、読者個人への適用についての結論にまで広げないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "NIH の健康情報の評価に関する解説は、個人の体験談は効果を直接証明できる研究上の根拠ではなく、情報源と専門家によるレビューを明示する必要があると注意を促しています。サイトは価値ある生活体験を残しつつ、どれが個人の記述で、どれが研究に裏付けられ、どれは個別の状況に応じた専門家の判断がなお必要なのかを、読者が見分けられるようにするべきです。"
+        },
+        {
+          "type": "heading",
+          "text": "提携関係とサイトの制作目的を公開する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "記事の制作にあたってサンプルや報酬、アフィリエイト報酬を受け取る場合は、内容に関わる提携関係を明記し、著者にどのような利益があり得るかを読者に伝えます。これは提携先に関する内容が必ず信頼できないという意味ではなく、その条件も含めて読者が判断できるようにするためです。広告文を中立的なテスト結果に紛れ込ませたり、有料の掲載順位を独立した立場からの推薦に見せかけたりしてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "NIH の信頼できる健康情報に関するガイドは、サイトの運営者と資金提供者、著者とレビュー担当者の経歴を確認するよう勧めています。この原則は、一般的なサイトの情報開示の設計にも参考になります。サイト紹介、連絡先、編集方針には一貫性が必要です。読者が確認できない認証マークの列を見るだけでなく、疑問を寄せる窓口を見つけられるようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ある機関の資料を引用しても、その機関があなたのサイトを推奨していることにはなりません。イベントへの参加やツールの認定取得も、あらゆるテーマで権威を持つ資格へと拡大解釈するべきではありません。外部の肩書やロゴについては、実際の関係と使用できる範囲をまず確認します。信頼性を説明するページの役割は、確認可能な情報を提供することであり、事実以上の権威を演出することではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "高リスクの内容には、より明確な編集上の確認段階を設ける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "制作前に、記事がどこまで答えられるかを定義します。一般的な概念なのか、公式情報を調べる手順なのか、それとも資格を持つ人のレビューが必要な専門的判断なのか。現在のチームの能力でできることが公式情報の整理までなら、内容も裏付けられる範囲に絞ります。個人に合わせた結論を先に書き、ページ末尾に免責文を一言添えて取り繕ってはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "レビューを依頼するときは、主張と情報源の対応表、適用地域、未解決の疑問、重要な数値を添え、何を確認すべきか担当者に伝えます。修正後はタイトル、要約、図解も再確認し、本文は慎重な表現になったのに、ほかの箇所には過度な保証が残る事態を避けます。レビューが完了していなければレビュー待ちと表示し、完了前にレビュー済みの表示を付けてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば、公式の申請条件を調べる方法を教える記事なら、どの項目を見るべきか、年度や対象者の範囲をどう確認するかを整理できます。一方、特定の人が資格を満たすかを直接判定するなら、一般的な調べ方の解説の範囲を超えます。この二つの役割を分けることで、サイトは自分たちの能力の範囲内で実用的な情報を提供し、個別の判断が必要な部分を適切な窓口に委ねられます。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "読者の行動と誤りが招く結果を列挙し、必要な検証の厳格さを判断する。",
+            "著者、編集者、レビュー担当者を割り当て、それぞれの担当範囲を明記する。",
+            "情報源、地域、日付、利害関係を確認し、未解決の問題を記録する。",
+            "実際のレビューと各項目にまたがる修正を完了してから、対応する状態を表示する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "訂正可能性と追跡可能性で長期的な信頼を保つ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "公開日、実質的な更新日、検証日を分けて管理します。読者には、内容がいつ作られ、いつ変更され、情報が最後にいつ確認されたのかを知る必要があります。サイトを再構築するたびに、すべての記事が専門家のレビューを受けたばかりに見えるよう自動表示してはいけません。情報に変更がなくても、実際に再検証したのであれば、確認した範囲を説明できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "訂正窓口には、対応する担当者が必要です。具体的な誤りの報告を受けたら、まず問題と情報源を保存し、直ちに修正すべきか、信頼できない結論を一時的に取り下げるべきかを判断します。訂正の説明では何を変えたかを明記し、理解に違いを生む修正を単なるレイアウト更新と呼ばないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "読者の視点で定期的に抜き取り確認を行います。著者の経歴を見つけられるか、引用から根拠に直接たどり着けるか、提携関係は明確か、レビューの状態は事実と一致しているかを確認します。記事は検索順位が高くても誤ることがあり、ページが美しくても自動的に信頼できるわけではありません。責任、情報源、訂正方法を誰もが理解できるようにすることが、継続的に取り組むべき作業です。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-trust-sensitive-topics/diagram-1-ja.svg",
+          "alt": "影響の把握、責任の分担、主張の裏付け、継続的な訂正の四つの区画で、サイトの信頼性を築く方法を説明。",
+          "width": 1600,
+          "height": 900,
+          "caption": "信頼性を支えるのは確認可能な責任と根拠であり、認証マークや順位では代替できません。",
+          "description": "影響の把握、責任の分担、主張の裏付け、継続的な訂正の四つの区画で、サイトの信頼性を築く方法を説明。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "信頼性の要素",
+            "提示できる根拠",
+            "誤解を招きやすい方法"
+          ],
+          "rows": [
+            [
+              "関連する経験",
+              "状況、期間、方法、必要な記録",
+              "使用経験や訪問歴の捏造"
+            ],
+            [
+              "専門分野の範囲",
+              "確認可能な経歴と実際のレビュー作業",
+              "一つの肩書で全分野を代表させる"
+            ],
+            [
+              "情報源の適用性",
+              "具体的な文書、地域、版、限界",
+              "機関名を借りて無関係な主張にお墨付きを与える"
+            ],
+            [
+              "提携関係の開示",
+              "スポンサー、サンプル提供、収益分配の関係",
+              "有料の掲載を独立したランキングに見せかける"
+            ],
+            [
+              "高リスク情報のレビュー",
+              "主張の一覧、レビュー範囲、完了日",
+              "レビュー前に専門家承認済みと表示する"
+            ],
+            [
+              "継続的な管理",
+              "訂正窓口と検証記録",
+              "資料を確認せず日付だけ更新する"
+            ]
+          ],
+          "caption": "独自に作成した編集責任表。E-E-A-T の採点表ではなく、検索順位や個別の専門的結論を保証するものでもありません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "信頼性の表示は実際の作業と対応させる",
+          "text": "著者の署名、専門家によるレビュー、検証日には、いずれも追跡可能な事実の裏付けが必要です。未完了なら確認待ちの状態を保ち、記事が約束する範囲を制限します。正式らしく見えるラベルを、実際の調査やレビューの代わりにしてはいけません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "記事の情報源と品質を確認する手順を整える",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "根拠を超える約束をタイトルでしない",
+              "kind": "life",
+              "slug": "seo-title-writing"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google の E-E-A-T とユーザー第一のコンテンツ",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NIH ODS：インターネット上の健康情報を評価する",
+          "url": "https://ods.od.nih.gov/HealthInformation/How_To_Evaluate_Health_Information_on_the_Internet_Questions_and_Answers/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NIH NIA：信頼できる健康情報を探す",
+          "url": "https://www.nia.nih.gov/health/how-find-reliable-health-information-online",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google の生成 AI コンテンツ利用ガイド",
+          "url": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "웹사이트 신뢰도를 쌓는 방법: 작성자, 자료 출처와 고위험 주제",
+      "description": "웹사이트 신뢰도는 확인 가능한 작성자 배경, 자료 출처, 방법과 정정 책임에서 나옵니다. 이 글은 E-E-A-T와 YMYL의 용도와 한계를 설명하고, 일상 경험 공유, 소프트웨어 사용 안내, 고위험 정보를 다루는 자체 구성 사례를 통해 작성자, 편집자, 전문 검토자의 역할 분담을 정리합니다. 출처의 적용 가능성, 협력 관계 공개, 날짜와 정정에 관한 점검표도 제공합니다. 작성자 소개란, 기관명이나 검색 순위를 콘텐츠가 반드시 옳다는 증거로 여기는 일을 피하도록 돕습니다.",
+      "hero": {
+        "src": "/guides/seo-trust-sensitive-topics/hero-ko.jpg",
+        "alt": "직접 제작한 방패, 문서, 폴더 이미지로 신뢰도, 근거 출처와 검토 기록을 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "웹사이트에 작성자 사진과 ‘전문가 검토’라는 문구를 올린다고 해서 독자가 가장 궁금해하는 질문에 저절로 답이 되지는 않습니다. 이 정보는 누가 책임지는지, 근거는 무엇인지, 오류가 발견되면 수정할 수 있는지가 그 질문입니다. 신뢰도는 검증 가능한 콘텐츠와 실제 절차가 뒷받침해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "일상 경험을 공유하는 글은 개인의 경험을 명확히 설명하면 됩니다. 하지만 글이 건강, 안전, 재정이나 중요한 권익에 영향을 줄 수 있다면 오류의 대가는 달라집니다. 웹사이트는 모든 글에 똑같이 전문적으로 보이는 서식을 적용하기보다 콘텐츠의 영향에 따라 사실 확인과 검토 절차를 마련해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "E-E-A-T와 고위험 주제를 올바르게 이해하기",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google은 E-E-A-T로 경험, 전문성, 권위성, 신뢰성을 설명하며, 그중 신뢰성이 가장 중요하다고 봅니다. E-E-A-T는 돈으로 직접 사거나 "
+            },
+            {
+              "type": "text",
+              "text": "마크업"
+            },
+            {
+              "type": "text",
+              "text": "을 추가한다고 얻을 수 있는 단일 순위 점수가 아닙니다. Google은 품질 평가자가 검색 시스템을 평가하는 역할을 하며, 개별 페이지의 순위를 직접 통제하지는 않는다고도 설명합니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "YMYL은 건강, 재정적 안정, 안전, 사회적 복지 등에 중대한 영향을 줄 수 있는 주제를 뜻합니다. 핵심은 콘텐츠의 영향이며, 글이 어떤 분류에 속하는지만 보는 것이 아닙니다. 다이어리 꾸미기와 특정 방법으로 질병을 치료할 수 있다는 주장은 같은 일상 글로 분류되더라도 필요한 사실 확인 수준이 같을 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 독자가 글을 읽고 취할 수 있는 행동을 나열한 뒤, 정보가 틀렸을 때 어떤 결과가 생길지 살펴보세요. 단순히 폴더 색상을 고르는 일이라면 영향이 제한적입니다. 하지만 약 복용을 중단하거나, 큰돈을 이체하거나, 신청 기한을 놓칠 수 있다면 더 엄격한 출처 확인, 명확한 범위 설정과 적절한 전문가 검토가 필요합니다. 이는 편집상의 위험 판단이지, 개별 독자를 진단하는 일이 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "작성자 배경을 실제로 책임질 수 있는 범위에 맞추기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "작성자 소개에는 확인할 수 없는 직함을 늘어놓기보다 해당 글과 관련된 경험과 업무를 설명해야 합니다. 소프트웨어 사용법을 쓰는 사람은 사용 환경과 내용을 정리한 방법을 밝힐 수 있고, 여행 경험을 쓰는 사람은 방문 기간과 관찰 범위를 설명할 수 있습니다. 해보지 않은 일을 실제처럼 보이는 사진이나 경력으로 채워서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "집필자, 자료 편집자, 전문 검토자를 구분하세요. 누군가 표현을 점검했다고 해서 의료적·법률적 판단까지 확인한 것은 아닙니다. 전문가가 한 문단만 검토했는데도 글 전체가 같은 수준의 보증을 받은 것처럼 보여서는 안 됩니다. 검토 기록에는 범위, 날짜와 실제로 완료한 작업을 명시해야 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "웹사이트가 팀 이름으로 글을 발표하더라도 콘텐츠 제작 방식, 정정 담당자, 외부 검토가 필요한 시점을 공개적으로 설명할 수 있습니다. 정리에 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "를 활용할 때는 AI의 역할과 사람이 내용을 확인하는 방식을 밝히세요. 가상의 인물을 전문가로 소개해서는 안 되며, 자동 점검을 통과했다고 해서 전문가가 내용에 동의한 것으로 여겨서도 안 됩니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "출처가 독자의 결정을 뒷받침하기에 충분한지 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 질문에 적합한 자료 출처를 선택하세요. 제품 기능은 공급업체 문서에서, 행정 규정은 해당 주무 기관에서 확인하고, 연구에 관한 주장은 연구 방법과 한계로 돌아가 살펴봐야 합니다. 유명 웹사이트의 첫 화면으로 연결한다고 해서 독자가 어느 문장의 근거인지 알 수 있는 것은 아닙니다. 구체적인 주장 가까이에 출처를 제시할수록 확인하기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "지역, 시점과 적용 대상도 함께 확인하세요. 다른 나라의 제도를 대만의 현행 규정으로 바로 간주해서는 안 되며, 성인 대상 연구를 모든 연령에 자동으로 적용해서도 안 됩니다. 자료를 찾는 방법만 소개하는 글이라면 그 범위를 명확히 지키고, 개별 독자에게 적용되는 결론으로 확대하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "NIH의 건강 정보 평가 안내는 개인의 체험담이 효과를 직접 입증하는 연구 근거가 아니며, 출처와 전문가 검토를 명확히 표시해야 한다고 강조합니다. 웹사이트는 가치 있는 생활 경험을 담을 수 있지만, 무엇이 개인의 서술인지, 무엇이 연구로 뒷받침되는지, 무엇은 여전히 개별 상황에 따른 전문적 판단이 필요한지 독자가 구분할 수 있게 해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "협력 관계와 웹사이트 제작 목적 공개하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "글과 관련해 샘플, 대가나 제휴 수수료를 받았다면 콘텐츠와 관련된 협력 관계를 명확히 밝히고, 작성자에게 어떤 이해관계가 있을 수 있는지 독자가 알게 하세요. 협력으로 만든 콘텐츠가 반드시 신뢰할 수 없다는 뜻이 아니라, 독자가 그 조건을 판단에 반영할 수 있게 하려는 것입니다. 광고 문구를 중립적인 테스트 결론에 섞거나, 대가를 받고 정한 순서를 독립적인 추천으로 포장하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "NIH의 신뢰할 수 있는 건강 정보 안내는 웹사이트를 누가 운영하고 누가 자금을 지원하는지, 작성자와 검토자의 배경은 무엇인지 살펴보라고 권합니다. 이 원칙은 일반 웹사이트의 정보 공개 방식에도 참고할 수 있습니다. 소개 페이지, 연락처와 편집 정책은 서로 일치해야 합니다. 독자는 확인할 수 없는 인증 마크만 줄지어 보는 대신, 의문을 제기할 창구를 찾을 수 있어야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "어떤 기관의 자료를 인용한다고 해서 그 기관이 해당 웹사이트를 추천하는 것은 아닙니다. 행사 참여나 도구 관련 인증 취득도 모든 주제에서 권위를 갖췄다는 뜻으로 확대해서는 안 됩니다. 외부 직함과 로고는 실제 관계와 사용 가능한 범위부터 확인하세요. 신뢰도 안내 페이지의 역할은 확인 가능한 정보를 제공하는 것이지, 사실을 넘어서는 권위감을 만드는 것이 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "고위험 콘텐츠에 더 명확한 편집 검증 단계 마련하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "제작 전에 글이 어디까지 답할 수 있는지 정하세요. 일반적인 개념인지, 공식 정보 확인 경로인지, 자격을 갖춘 사람이 검토해야 하는 전문적 판단인지 구분해야 합니다. 현재 팀의 역량이 공식 정보를 정리하는 수준이라면 뒷받침할 수 있는 범위로 내용을 제한하세요. 먼저 개인별 결론을 내린 뒤 페이지 하단에 면책 문구 한 줄을 넣어 수습하려 해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "검토를 요청할 때는 주장과 출처의 대조표, 적용 지역, 미해결 질문과 중요한 수치를 첨부해 검토자가 무엇을 확인해야 하는지 알게 하세요. 수정한 뒤에는 제목, 요약과 도해도 다시 확인해야 합니다. 본문은 신중해졌는데 다른 부분에는 지나친 확언이 남는 일을 피하기 위해서입니다. 검토가 끝나지 않았다면 검토 대기로 표시하고, 미리 검토 완료 표시를 붙이지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 공식 신청 조건을 확인하는 방법을 안내하는 글은 어떤 항목을 봐야 하는지, 해당 연도와 대상자의 신분 범위를 어떻게 확인하는지 정리할 수 있습니다. 하지만 특정인이 자격을 충족하는지 직접 판정하려 한다면 일반적인 조회 방법 안내의 범위를 벗어납니다. 이 두 작업을 구분하면 웹사이트가 역량 범위 안에서 유용한 정보를 제공하고, 개별 판단이 필요한 부분은 적절한 창구에 맡기는 데 도움이 됩니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "독자가 취할 행동과 오류의 결과를 나열해 필요한 사실 확인 수준을 판단하세요.",
+            "작성자, 편집자와 검토자를 배정하고 각자의 담당 범위를 명시하세요.",
+            "출처, 지역, 날짜와 이해관계를 확인하고 미해결 질문을 기록하세요.",
+            "실제 검토와 관련 항목 전반의 수정을 마친 뒤 그에 맞는 상태를 표시하세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "정정과 이력 추적으로 장기적인 신뢰 유지하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "게시일, 실질적인 업데이트 날짜와 사실 확인 날짜를 구분해 관리하세요. 독자는 콘텐츠가 언제 만들어지고 변경되었는지, 자료를 마지막으로 확인한 시점이 언제인지 알아야 합니다. 웹사이트를 다시 빌드할 때마다 모든 글이 방금 전문가 검토를 받은 것처럼 자동으로 표시되어서는 안 됩니다. 자료가 바뀌지는 않았지만 실제로 다시 확인했다면 확인한 범위를 설명할 수도 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "정정 창구에는 실제 담당자가 있어야 합니다. 구체적인 오류 제보를 받으면 먼저 문제와 출처를 보존한 뒤, 즉시 수정하거나 신뢰할 수 없는 결론을 잠시 내려야 하는지 판단하세요. 정정 안내에는 무엇을 바꿨는지 명확히 적고, 독자의 이해에 차이를 만드는 수정을 단순한 레이아웃 업데이트라고만 부르지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "정기적으로 독자의 관점에서 표본 점검을 하세요. 작성자 배경을 찾을 수 있는지, 인용 링크가 근거로 바로 연결되는지, 협력 관계가 명확한지, 검토 상태가 사실과 일치하는지 확인해야 합니다. 검색 순위가 높다고 글에 오류가 없다고 할 수는 없으며, 페이지가 보기 좋다고 저절로 신뢰할 수 있게 되는 것도 아닙니다. 책임, 출처와 정정 방법을 모두 이해할 수 있도록 하는 것이 지속적으로 해야 할 관리입니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-trust-sensitive-topics/diagram-1-ko.svg",
+          "alt": "영향 파악, 책임 분담, 주장 뒷받침, 지속적인 정정으로 구성된 네 영역이 웹사이트 신뢰도를 쌓는 방법을 설명합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "신뢰도는 확인 가능한 책임과 근거에 있으며, 인증 마크나 순위로 대신할 수 없습니다.",
+          "description": "영향 파악, 책임 분담, 주장 뒷받침, 지속적인 정정으로 구성된 네 영역이 웹사이트 신뢰도를 쌓는 방법을 설명합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "신뢰도 요소",
+            "제시할 수 있는 근거",
+            "오해를 부르기 쉬운 방식"
+          ],
+          "rows": [
+            [
+              "관련 경험",
+              "상황, 기간, 방법과 필요한 기록",
+              "사용 경험이나 방문 이력 꾸며내기"
+            ],
+            [
+              "전문 분야의 범위",
+              "확인 가능한 배경과 실제 검토 작업",
+              "하나의 직함으로 모든 분야를 대표하기"
+            ],
+            [
+              "출처의 적용 가능성",
+              "구체적인 문서, 지역, 버전과 한계",
+              "기관명을 빌려 무관한 주장을 보증하기"
+            ],
+            [
+              "협력 관계 공개",
+              "후원, 샘플 제공이나 수익 배분 관계",
+              "대가를 받고 정한 순위를 독립적인 순위로 포장하기"
+            ],
+            [
+              "고위험 콘텐츠 검토",
+              "주장 목록, 검토 범위와 완료 날짜",
+              "검토 전에 전문가 승인으로 표시하기"
+            ],
+            [
+              "지속적인 관리",
+              "정정 창구와 사실 확인 기록",
+              "자료는 확인하지 않고 날짜만 갱신하기"
+            ]
+          ],
+          "caption": "자체 제작한 편집 책임표입니다. E-E-A-T 점수표가 아니며, 검색 순위나 개별 전문적 결론을 보장하지 않습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "신뢰도 표시는 실제 작업과 일치해야 합니다",
+          "text": "작성자 이름, 전문가 검토와 사실 확인 날짜에는 모두 추적 가능한 사실이 뒷받침되어야 합니다. 아직 완료하지 않았다면 확인 대기 상태를 유지하고 글이 약속하는 범위를 제한하세요. 공식적으로 보이는 표시 하나로 실제 조사와 검토를 대신하지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "글의 출처와 품질을 점검하는 절차 마련하기",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "제목에서 근거를 넘어서는 약속 피하기",
+              "kind": "life",
+              "slug": "seo-title-writing"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google E-E-A-T와 사용자 중심 콘텐츠",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NIH ODS 온라인 건강 정보 평가",
+          "url": "https://ods.od.nih.gov/HealthInformation/How_To_Evaluate_Health_Information_on_the_Internet_Questions_and_Answers/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NIH NIA 신뢰할 수 있는 건강 정보 찾기",
+          "url": "https://www.nia.nih.gov/health/how-find-reliable-health-information-online",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 생성형 AI 콘텐츠 활용 가이드",
+          "url": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "网站如何建立可信度：作者、资料来源与高风险主题",
+      "description": "网站可信度来自可核对的作者背景、资料来源、方法与更正责任。本文说明 E-E-A-T 和 YMYL 的用途与限制，并以生活分享、软件教程及高风险信息的原创场景，梳理作者、编辑和专业审阅者如何分工。附上来源适用性、合作关系披露、日期与更正检查表，避免把作者信息框、机构名称或搜索排名当成内容必然正确的证明。",
+      "hero": {
+        "src": "/guides/seo-trust-sensitive-topics/hero-zh-cn.jpg",
+        "alt": "原创盾牌、文件及文件夹图像，呈现可信度、证据来源与审阅记录。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "网站放上作者照片和“专家审阅”四个字，并不能自动回答读者最关心的问题：这篇信息由谁负责、依据是什么，以及发现错误时能不能修正。可信度需要可核查的内容和实际流程支撑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般生活分享可以清楚描述个人经验，但当文章可能影响健康、安全、财务或重要权益，错误的代价就不同。网站应根据内容造成的影响安排查证与审阅，而不是给所有文章套用同一个看起来专业的模板。"
+        },
+        {
+          "type": "heading",
+          "text": "正确理解 E-E-A-T 与高风险主题",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 用 E-E-A-T 讨论经验、专业性、权威性与可信度，其中可信度最重要；它不是一个可直接购买或加上"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "就获得的单一排名分数。Google 也说明，质量评分者用于评估搜索系统，并不直接控制个别页面的排名。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "YMYL 指可能对健康、财务稳定、安全及社会福祉等方面产生重大影响的主题。重点是内容的影响，而不只是看文章放在哪个分类。一本手账的排版分享，与宣称某种方法可以治疗疾病，即使同样标为生活文章，查证需求也不能相同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先列出读者可能根据文章采取的行动，再问出错会造成什么后果。如果只是选择文件夹颜色，影响有限；如果可能因此停用药物、转出大笔资金或错过申请期限，就需要更严格的来源、边界与适当的专业审阅。这是编辑风险判断，不是诊断个别读者。"
+        },
+        {
+          "type": "heading",
+          "text": "让作者背景对应到真正能负责的范围",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "作者介绍应说明与本篇相关的经验与工作，而不是堆砌无法核对的头衔。写软件操作的人，可以交代使用环境与整理方法；写旅行经验的人，可以说明到访时间与观察范围。没有做过的事，不应借用看似真实的照片或经历补上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "区分撰稿者、资料编辑与专业审阅者。某人检查用词，不代表他已确认医疗或法律判断；某专业人士只审阅一个段落，也不应让整篇看起来都获得同样的背书。审阅记录应写明范围、日期与实际完成的工作。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果网站以团队署名，仍可公开说明内容如何制作、谁处理更正，以及何时需要外部审阅。使用 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 协助整理时，交代它的角色和人员核对方式；不能把虚构人物写成专家，也不能把自动检查通过当作专业人士已同意内容。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "检查来源是否足以支持读者的决定",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先选择适合问题的资料来源。产品功能查供应商文档，行政规则查对应主管机关，研究主张则回到研究方法与限制。链接到一个知名网站首页，不代表读者能知道哪一句得到支持；引用位置越接近具体主张，越容易核查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同时确认地区、时间和适用对象。其他国家的制度不能直接当成台湾现行规则；成人研究也不能自动套用到所有年龄。文章如果只介绍如何查资料，就清楚地保持在这个范围内，不延伸为对读者个人是否适用的结论。"
+        },
+        {
+          "type": "paragraph",
+          "text": "NIH 的健康信息评估说明提醒，个人见证不是可直接证明效果的研究依据，来源与专业审阅需要清楚标注。网站可以保留有价值的生活经验，但应让读者看得出哪些是个人叙述、哪些有研究支持，以及哪些仍需根据个别情况寻求专业判断。"
+        },
+        {
+          "type": "heading",
+          "text": "公开合作关系与网站的制作目的",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "文章如果接受样品、费用或联盟分成，应将与内容相关的合作关系写清楚，让读者知道作者可能有哪些利益。这不表示合作内容一定不可靠，而是让读者能把这些条件纳入判断。不要让广告文字混成中立测试结论，或把付费排序包装成独立推荐。"
+        },
+        {
+          "type": "paragraph",
+          "text": "NIH 的可靠健康信息指南建议查看谁运营、谁资助网站，以及作者和审阅者的背景。这些原则也能启发一般网站的披露设计：关于页面、联系方式与编辑政策应相互一致，读者要能找到提出疑问的渠道，而不是只能看到一排无法核对的标识。"
+        },
+        {
+          "type": "paragraph",
+          "text": "引用某机构资料，不代表该机构推荐你的网站；参与活动或取得工具认证，也不应扩大成所有主题的权威资格。对于外部头衔和标志，先确认实际关系与可使用范围。可信度页面的任务是提供可核对的信息，不是制造超出事实的权威感。"
+        },
+        {
+          "type": "heading",
+          "text": "为高风险内容安排更明确的编辑审核环节",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "制作前先定义文章能回答到哪里：一般概念、官方查询路径，或需要具备资质的人员审阅的专业判断。如果现有团队能力只足以整理官方信息，就把内容限定在有依据支持的范围内；不要先写出个性化结论，再在页尾放一句免责声明来补救。"
+        },
+        {
+          "type": "paragraph",
+          "text": "送审时附上主张与来源对照、适用地区、未解疑问及重要数字，让审阅者知道要确认什么。修正后再核对标题、摘要与图解，避免正文变得谨慎，其他位置仍保留过度保证。审阅未完成就标注待审，不提前挂上已审阅标记。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如一篇教读者查询官方申请条件的文章，可以整理要看哪些字段、如何确认年度与身份范围；如果要直接判定某人是否符合资格，就超出一般查询教程的范围。将这两种任务分开，有助于网站在能力范围内提供实用信息，并把需要个别判断的部分交给适当渠道。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出读者行动与错误后果，判断需要的查证强度。",
+            "分配作者、编辑及审阅者，写明各自范围。",
+            "核对来源、地区、日期和利益关系，留下待解问题。",
+            "完成实际审阅及跨字段修正后，再标注相应状态。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "以可更正与可追溯维持长期信任",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "将发布日期、实质更新日期与查证日期分开管理。读者需要知道内容何时产生、何时更改，以及资料最后核对的时间；不能每次重建网站就自动让全部文章看似刚被专业审阅。资料没有更改，但确实重新查证时，也可以说明确认范围。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更正渠道要有人处理。收到具体错误报告后，先保存问题与来源，再评估是否需要立即修正或暂时撤下不可靠的结论。更正说明应写清楚改了什么，不把造成理解差异的修改只称为排版更新。"
+        },
+        {
+          "type": "paragraph",
+          "text": "定期从读者角度抽查：能否找到作者背景、引用是否直达证据、合作关系是否清楚，以及审阅状态是否符合事实。文章不会因为排名高就免于出错，也不会因为页面漂亮就自动可信。让责任、来源与更正方式都可被理解，才是持续维护的工作。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-trust-sensitive-topics/diagram-1-zh-cn.svg",
+          "alt": "四个区块包含识别影响、分配责任、支持主张及持续更正，说明网站可信度的建立方式。",
+          "width": 1600,
+          "height": 900,
+          "caption": "可信度是可核对的责任与证据，不能用标识或排名代替。",
+          "description": "四个区块包含识别影响、分配责任、支持主张及持续更正，说明网站可信度的建立方式。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "可信度维度",
+            "可提供的证据",
+            "容易造成误解的做法"
+          ],
+          "rows": [
+            [
+              "相关经验",
+              "场景、时间、方法及必要记录",
+              "虚构使用经历或到访经历"
+            ],
+            [
+              "专业范围",
+              "可核对的背景与实际审阅工作",
+              "用单一头衔代表全部领域"
+            ],
+            [
+              "来源适用性",
+              "具体文件、地区、版本与限制",
+              "借机构名称替无关主张背书"
+            ],
+            [
+              "合作披露",
+              "赞助、样品或分成关系",
+              "付费安排包装成独立排名"
+            ],
+            [
+              "高风险审阅",
+              "主张清单、审阅范围与完成日期",
+              "未审先标注专家批准"
+            ],
+            [
+              "持续维护",
+              "更正渠道与查证记录",
+              "只更新日期却未查资料"
+            ]
+          ],
+          "caption": "原创编辑责任表；不是 E-E-A-T 分数表，也不保证搜索排名或个别专业结论。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "可信度标注必须对应实际工作",
+          "text": "作者署名、专家审阅和查证日期，都应有可追溯的事实。尚未完成就保留待确认状态，并限制文章承诺的范围；不要用一个看似正式的标签代替真正的研究与审阅。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立文章来源与质量检查流程",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "避免标题作出超出证据的承诺",
+              "kind": "life",
+              "slug": "seo-title-writing"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google E-E-A-T 与以用户为先的内容",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NIH ODS 评估网络健康信息",
+          "url": "https://ods.od.nih.gov/HealthInformation/How_To_Evaluate_Health_Information_on_the_Internet_Questions_and_Answers/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NIH NIA 寻找可靠健康信息",
+          "url": "https://www.nia.nih.gov/health/how-find-reliable-health-information-online",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 生成式 AI 内容使用指南",
           "url": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content?hl=zh-tw",
           "checked_on": "2026-09-14"
         }

@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
+    "tutorial",
     "website",
     "wordpress"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "WordPress 加速外掛怎麼用：快取、圖片與功能衝突",
@@ -167,6 +170,7 @@
           "width": 1600,
           "height": 900,
           "caption": "讓每個設定對應一個目的，並用功能與量測共同驗收。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -442,6 +446,7 @@
           "width": 1600,
           "height": 900,
           "caption": "Give each setting a purpose and accept it using both functional and measurement checks.",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -717,6 +722,7 @@
           "width": 1600,
           "height": 900,
           "caption": "設定ごとに目的を定め、機能と計測の両方で検収する。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -992,6 +998,7 @@
           "width": 1600,
           "height": 900,
           "caption": "각 설정에 목적을 부여하고 기능과 측정 결과를 함께 검수하세요.",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -1150,7 +1157,7 @@
         },
         {
           "type": "paragraph",
-          "text": "有些冲突仅涉及特定功能。例如 NitroPack 对 Smush 的兼容说明要求停用其延迟加载，并非一定要移除整个图片插件。依据现行文档制定分工表，再到测试环境确认；主机内建缓存则需查明服务商的集成方式，不能一律照插件停用清单处理。"
+          "text": "有些冲突仅涉及特定功能。例如 NitroPack 对 Smush 的兼容说明要求停用其延迟加载，并非一定要移除整个图片插件。依据现行文档制定分工表，再到测试环境确认；主机内置缓存则需查明服务商的集成方式，不能一律照插件停用清单处理。"
         },
         {
           "type": "heading",
@@ -1228,7 +1235,7 @@
         },
         {
           "type": "heading",
-          "text": "出现破版或按钮失效，先缩小原因",
+          "text": "页面布局错乱或按钮失效时，先缩小排查范围",
           "level": 2
         },
         {
@@ -1237,7 +1244,7 @@
         },
         {
           "type": "paragraph",
-          "text": "移除未使用 CSS 可能影响稍后才出现的菜单、弹窗或手机样式；JavaScript 的加载和执行调整也可能改变交互时机。NitroPack 官方排错说明建议降低优化模式或检查相关功能。保存异常页面、设备、操作步骤和设置差异，再按工具支持的方式排除。"
+          "text": "移除未使用 CSS 可能影响稍后才出现的菜单、弹窗或手机样式；JavaScript 的加载和执行调整也可能改变交互时机。NitroPack 官方故障排查说明建议降低优化模式或检查相关功能。保存异常页面、设备、操作步骤和设置差异，再按工具支持的方式排除。"
         },
         {
           "type": "paragraph",
@@ -1250,7 +1257,7 @@
         },
         {
           "type": "paragraph",
-          "text": "WP Rocket 的 WooCommerce 文档说明，按商店设置识别出的购物车、结账、账户页面和 WooCommerce REST API 会自动排除缓存。这有助于基本配置，但不保证客制愿望清单、地区定价或会员组件都兼容，仍需实际测试。"
+          "text": "WP Rocket 的 WooCommerce 文档说明，按商店设置识别出的购物车、结账、账户页面和 WooCommerce REST API 会自动排除缓存。这有助于基本配置，但不保证自定义愿望清单、地区定价或会员组件都兼容，仍需实际测试。"
         },
         {
           "type": "paragraph",
@@ -1267,6 +1274,7 @@
           "width": 1600,
           "height": 900,
           "caption": "让每项设置都有明确目的，并通过功能与测量共同验收。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
