@@ -1,6 +1,6 @@
 # Caption translator prompt: one video, one locale
 
-Fill the placeholders before dispatch: `<ROOT>`, `<VIDEO_WORKDIR>`, `<SLUG>`, `<VIDEO_DOCS>` (`<ROOT>/docs/videos/<SLUG>`), `<LOCALE>` (en, ja, ko or zh-CN). Run `node <ROOT>/tools/video/cli.mjs i18n-sheet --slug <SLUG> --locale <LOCALE> [--parts metadata,captions]` first; it writes the worksheet this prompt names. Everything below the rule is the prompt.
+Fill the placeholders before dispatch: `<ROOT>`, `<VIDEO_WORKDIR>`, `<SLUG>`, `<VIDEO_DOCS>` (`<ROOT>/docs/videos/<SLUG>`), `<LOCALE>` (en, ja or ko). Run `node <ROOT>/tools/video/cli.mjs i18n-sheet --slug <SLUG> --locale <LOCALE> [--parts metadata,captions]` first; it writes the worksheet this prompt names. Everything below the rule is the prompt.
 
 **Which parts, and the dub budget** (`docs/videos/LANGUAGES.md`, `docs/videos/DUBS.md`). A language is made of three parts the owner ticks per video on `/admin/videos` after the final cut: the title, description, tags, chapter names and the thumbnail's words (`metadata`), the captions (`captions`), and a dub track (`dub`, which reads the captions' translation aloud). `--parts` narrows the sheet to what was ticked: `--parts metadata` writes a sheet with no lines, `--parts captions` one with no title, description, tags, chapters or thumbnail (those fields are `null`); `i18n-merge` leaves a part the sheet does not hold exactly as it was. The thumbnail's words are optional (`publish.md`「多語言縮圖」): `i18n-merge` only prints a `note: thumbnail: …` when they are missing or unusable and never fails on them; the worker asks for them once per thumbnail and does not send the translation round again for them. The sheet says which parts it holds in `parts`. When the owner also ticked a dub, and the narration is timed, every line carries `max_chars`: the same voice reads the translation in the time the zh-TW line takes, so a translation over its budget has to be shortened later; stay under it from the start. The worker (`tools/video/automation`) dispatches the same prompt with `parts` and the worksheet in the payload; a hand run passes the flags.
 
@@ -25,7 +25,7 @@ WRITE HERE ONLY: `<VIDEO_WORKDIR>/<SLUG>/i18n/<LOCALE>.todo.json`, the worksheet
 - Length: about the time the sentence takes to say. English at most about 80 characters per line entry, Japanese and Korean at most about 40, Simplified Chinese about as long as the source. The tool splits long entries into caption cues; you do not.
 - `max_chars` on a line (present when the owner chose a dub for this locale) is a hard budget: the dub must fit the zh-TW line's slot even sped up 1.15×. Stay under it; cut the words around numbers and names, never the numbers and names.
 - Fill only the parts the sheet holds (`parts`): a sheet without lines wants the title, description, tags and chapter names alone; one without those wants the lines alone.
-- Register: en plain and direct; ja です／ます; ko 합니다체; zh-CN mainland wording and Simplified characters (视频, 软件, 默认), never a character-by-character conversion.
+- Register: en plain and direct; ja です／ます; ko 합니다체.
 - Do not add explanations, greetings or anything the narration does not say; do not drop a clause.
 - Opinions stay the owner's first person ("I", 「私は」, "저는", 「我」).
 - Chapter names: what a viewer searching in `<LOCALE>` would type, at most about 30 characters.
@@ -42,7 +42,7 @@ The worksheet's `glossary` is the table you translate against, built by `i18n-sh
 
 - A product, company, model or feature name exactly as its maker writes it, in Latin letters, never transliterated or re-spelled.
 - An acronym as it is.
-- An English word used as a term in `<LOCALE>`'s own usual term for it (ja トークン for token, zh-CN 令牌 or token as the locale's own documentation says); when the `source_guide`'s `<LOCALE>` version renders the term, that rendering.
+- An English word used as a term in `<LOCALE>`'s own usual term for it (ja トークン for token, ko 토큰 or token as the locale's own documentation says); when the `source_guide`'s `<LOCALE>` version renders the term, that rendering.
 - A source's name as the source writes it.
 
 The worker sends the same `glossary` beside the worksheet in every request (`translateLocale` in `tools/video/automation/flow.mjs`); a sheet made before it carried one (no `glossary` key) gets the table built by hand from those files.

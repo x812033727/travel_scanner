@@ -130,12 +130,12 @@ export function currentDub(project, workdir, locale, speech) {
   return { ...dub, file };
 }
 
-/** The review file role of a locale's dub track: `dub_en`, `dub_zh_cn` (roles are lower-case words). */
+/** The review file role of a locale's dub track: `dub_en`, `dub_ko` (roles are lower-case words; an older package's zh-CN track reads as `dub_zh_cn`). */
 export const dubRole = (locale) => `dub_${locale.toLowerCase().replace(/-/g, "_")}`;
 
 /**
- * The current dub track of every locale asked for (the owner's dub choice, or every locale but
- * zh-CN without one), and the locales the worker gave up on with its reason. A locale the worker
+ * The current dub track of every locale asked for (the owner's dub choice, or every other locale
+ * without one), and the locales the worker gave up on with its reason. A locale the worker
  * gave up on stays skipped even when an older track of it exists: the reason is the last word.
  */
 export function dubsForUpload(project, workdir, speech, locales = defaultDubLocales(project.doc)) {

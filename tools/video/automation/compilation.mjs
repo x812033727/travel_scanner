@@ -2,7 +2,7 @@
 // episode is cleared for upload, the worker starts one video that joins them all. Nothing is
 // narrated or generated again. The worker's part is the document (core/compilation.mjs builds
 // it), the upload fields the planner writes (title, description, tags, the thumbnail's picture
-// and headline), the thumbnail's source keyframe copied from an episode, the five locales'
+// and headline), the thumbnail's source keyframe copied from an episode, the four locales'
 // title and description, and the commands in between (render, compile); the final cut, the
 // upload package and the YouTube id then go the way of every video (flow.mjs).
 import { createHash } from "node:crypto";

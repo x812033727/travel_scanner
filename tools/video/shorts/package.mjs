@@ -18,7 +18,8 @@ export const METADATA_FILE = 'metadata.json';
 export const PACKAGE_FILE = 'package.json';
 export const DESCRIPTION_FILE = 'description.zh-TW.txt';
 export const CAPTIONS_FILE = 'zh-TW.srt';
-export const EXTRA_LOCALES = Object.freeze(['en', 'ja', 'ko', 'zh-CN']);
+// The languages a Short may add beside zh-TW: core/schema.mjs LOCALES but the narration's.
+export const EXTRA_LOCALES = Object.freeze(['en', 'ja', 'ko']);
 const selectedLocales = (settings) => EXTRA_LOCALES.filter((locale) => Array.isArray(settings?.locales) && settings.locales.includes(locale));
 export const captionLocales = (metadata) => ['zh-TW', ...selectedLocales(metadata)];
 // YouTube's categories: Science & Technology, and Entertainment for a drama.

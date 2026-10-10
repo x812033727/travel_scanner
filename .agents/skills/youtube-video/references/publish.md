@@ -99,7 +99,7 @@ YouTube 要自動產生章節列，說明欄的時間戳必須：第一個是 `0
   - 中文標題、說明欄預填上傳包的，站主可以改；瀏覽權限：在選定時間公開（之前私人）／不公開／私人。網站**從不直接設成公開**，也拒絕動已經公開的影片。
 - **網站依序做**（每一步記在影片的「YouTube 同步」面板）：`upload`（只有網站上傳時）→ `details`（先 `videos.list` 讀現值、確認在連結的頻道且不是公開，再 `videos.update` 整段送：上傳包裡的語系（站主為這支勾的，`docs/videos/LANGUAGES.md`）、標籤、分類、`selfDeclaredMadeForKids`、`containsSyntheticMedia`、`publishAt`）→ `captions`（上傳包裡的字幕，`captions.list` 後只補沒有的語系；自動字幕不算）→ `thumbnail`。一支約 2,100 單位（`captions.insert` 每次 400）。
 - **失敗與重試**：面板顯示哪一步、YouTube 說了什麼；按重試只做沒完成的步驟，mp4 從 YouTube 收到的位元組接著傳，不會傳第二份。常見原因：配額用完（太平洋時間午夜重置）、縮圖 403（頻道要先完成電話驗證）、影片不是私人或不在連結的頻道、授權被撤銷（卡片會顯示「授權失效」，重新連結）。API 重啟時正在跑的那次會顯示「中斷了」，一樣按重試。
-- **還沒實測的兩件事**（第一支用私人影片實測後回寫這裡）：未稽核的專案對 Studio 上傳的影片呼叫 `captions.insert` 與設 `publishAt` 是否都成功；中文字幕語言碼用 `zh-TW`／`zh-CN` 送出後，`captions.list` 讀回是不是同一個碼（程式把 `zh-Hant`／`zh-Hans` 當成同一個語系比對）。字幕軌名稱送空字串，播放器選單只顯示語言名。
+- **還沒實測的兩件事**（第一支用私人影片實測後回寫這裡）：未稽核的專案對 Studio 上傳的影片呼叫 `captions.insert` 與設 `publishAt` 是否都成功；中文字幕語言碼用 `zh-TW` 送出後，`captions.list` 讀回是不是同一個碼（程式把 `zh-Hant` 當成同一個語系比對）。字幕軌名稱送空字串，播放器選單只顯示語言名。
 - **非原創內容政策**：YouTube 會停止營利「用模板量產、沒有創作者觀點」的 AI 內容。全自動影片最容易踩到這一條，所以每支影片都要做到：
   - `brief.md` 的「站主觀點」由站主確認過；
   - 至少有一段實際示範或實算；
@@ -143,7 +143,7 @@ Shorts 不用 `upload.md`，也不走 `tools/video/cli.mjs package`：`node tool
 
 ## 語言：每支影片由站主選
 
-每支影片先只有繁體中文（旁白、CC、標題說明）。成片核准後，`/admin/videos` 那支影片的頁面出現「這支影片的語言」面板：en、ja、ko、zh-CN 四語，每語三個部件——**標題與說明**（YouTube 的 `localizations`）、**CC**（字幕檔）、**配音**（多語言音軌；勾配音會一起勾 CC，配音唸的就是字幕的翻譯）。三顆鈕：「照預設勾選」照設定分頁的語言預設，「只出繁體中文」記下不做其他語言，「儲存」。設計在 `docs/videos/LANGUAGES.md`，配音的做法與 2026-09-27 查到的官方規則在 `docs/videos/DUBS.md`。
+每支影片先只有繁體中文（旁白、CC、標題說明）。成片核准後，`/admin/videos` 那支影片的頁面出現「這支影片的語言」面板：en、ja、ko 三語（zh-CN 在 2026-10-09 拿掉，`docs/videos/LANGUAGES.md` §歷史），每語三個部件——**標題與說明**（YouTube 的 `localizations`）、**CC**（字幕檔）、**配音**（多語言音軌；勾配音會一起勾 CC，配音唸的就是字幕的翻譯）。三顆鈕：「照預設勾選」照設定分頁的語言預設，「只出繁體中文」記下不做其他語言，「儲存」。設計在 `docs/videos/LANGUAGES.md`，配音的做法與 2026-09-27 查到的官方規則在 `docs/videos/DUBS.md`。
 
 **上架的順序**（`LANGUAGES.md` §上架流程）：成片核准 → 站主決定語言（沒決定前影片在「需要你」，寫「等你決定語言」）→ 工人只做勾了的（「語言製作中」）→ 全部做好、上傳包核准，影片才進「可以上架」→ 站主貼網址、選時間 →「已排定」→「已上架」。站主隨時可以先在 Studio 上傳成私人、貼網址、選時間，不用等語言；排程會在語言做好後才送出。上架後面板還在，多勾就再做一批；取消勾選只對還沒送上 YouTube 的部件有效，已經送上去的要自己在 Studio 刪。
 
@@ -167,5 +167,5 @@ Shorts 不用 `upload.md`，也不走 `tools/video/cli.mjs package`：`node tool
 - **官方沒寫的**：頁面沒有明說「要先有那個語言的配音或字幕」，也沒寫縮圖的尺寸、大小或數量限制，沒提 API。2026-09-28 開票時記的「要先有音軌」這次在頁面上找不到原文；能確定的只有步驟是「點語言名稱」，所以那個語言要先列在影片的「語言」頁——上傳包的字幕、標題說明或配音送上去後就會列出。尺寸照一般縮圖（1280×720、2 MB 以內），`render` 與 `qa` 就是照這個檢查。
 - **只能在 Studio 手動上傳**：頁面只寫了 Studio 的做法，網站也不送它。`UPLOAD.md` 有一節「各語言的縮圖」列檔案與步驟。
 - **怎麼來的**：`i18n-sheet` 的 metadata 部件多一個 `thumbnail`（`tag`、`headline`、`sub`，只列 zh-TW 縮圖有的那幾個字），`i18n-merge` 寫進 `i18n/<語系>.json` 的 `thumbnail`，雜湊在 `source_hashes.thumbnail`（三個字當一筆算，zh-TW 縮圖任何一個字改了就整組過期）。`render` 對每個縮圖文字是最新的語系，用同一張背景與版型畫 `thumbnails/<語系>.jpg`；`package` 只收畫的時候用的字和現在 `i18n` 一樣的那幾張。
-- **不擋上架**：縮圖文字是選配。沒翻、過期、字型沒有那個字（ko、zh-CN、ja 的縮圖各用自己的 Noto Sans KR／SC／JP 排在第一，en 用投影片的 Noto Sans TC）、版面塞不下的語系只記成 note（`render` 的輸出、`metadata.json` 的 `skipped_thumbnail_locales`、`UPLOAD.md`），那個語言就用 `thumbnail.jpg`。`i18n-merge` 對縮圖文字的問題也只印 note，不讓合併失敗；`qa` 的縮圖項目對每張語言縮圖再跑一次同樣的檢查，有問題只出 warning。
+- **不擋上架**：縮圖文字是選配。沒翻、過期、字型沒有那個字（ko、ja 的縮圖各用自己的 Noto Sans KR／JP 排在第一，en 用投影片的 Noto Sans TC）、版面塞不下的語系只記成 note（`render` 的輸出、`metadata.json` 的 `skipped_thumbnail_locales`、`UPLOAD.md`），那個語言就用 `thumbnail.jpg`。`i18n-merge` 對縮圖文字的問題也只印 note，不讓合併失敗；`qa` 的縮圖項目對每張語言縮圖再跑一次同樣的檢查，有問題只出 warning。
 - **變體**：A/B 測試的 `thumbnail-b.jpg`／`thumbnail-c.jpg` 只有 zh-TW，語言縮圖照 A 版做。
