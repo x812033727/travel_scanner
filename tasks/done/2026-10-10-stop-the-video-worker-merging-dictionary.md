@@ -57,7 +57,7 @@ add terms and reword lines, and nothing removes an entry. Four drafts in a row e
   `docs/videos/lexicon.json` is untouched.
 - [ ] The host's dictionary has `8B` and `6abc` removed and the four blocked drafts are retried
   (the owner, on the host; see Notes).
-- [ ] The duration receipt is rebound by an independent reviewer (see Notes).
+- [x] The duration receipt is rebound by an independent reviewer (see Notes).
 
 ## Steps
 
@@ -76,7 +76,7 @@ add terms and reword lines, and nothing removes an entry. Four drafts in a row e
 - [x] Run the tests with the merge's old rule put back: all three files fail, the worker's with
   the host's own message (`lint still fails after 3 fixes: lexicon.terms.8B: a term starts with a
   Latin letter; lexicon.terms.6abc: …`).
-- [ ] Rebind `docs/videos/long-form/review.json` and `review.md` (an independent reviewer).
+- [x] Rebind `docs/videos/long-form/review.json` and `review.md` (an independent reviewer).
 
 ## How to verify
 

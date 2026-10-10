@@ -3218,6 +3218,88 @@ PASS is DURATION_ONLY for the two rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Dictionary-merge rule increment: 2 files (2026-10-10)
+
+Reviewer: `claude-pr-review-lexicon-merge-20261010`. Author: `claude-opus-5-5-lexicon-merge-fix`. Scope: DURATION_ONLY for the two changed bindings below, reviewed at `d5550634b91272c9f4cf520b145acad913156c82` ("fix(video): do not merge dictionary terms that lint refuses") on claude/lexicon-merge-letter-first. The reviewer wrote no part of that commit and edits only this report and review.json.
+
+Baseline: `e5570358e3bcd76c80229b51b1d5c3be7d2f90d5`, origin/main (#1417) and the commit's parent. Immutable Git blobs pass `durationReviewProblems` there for the report and all 108 REVIEW_FILES, under the "History-and-curiosity series plan increment (PR #1407)" above; the commit changes neither receipt file nor review.mjs. Each of the two changed files matches its existing receipt and table at that baseline; its committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these two bindings, while the other 106 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `tools/video/automation/automation.test.mjs`: `f2e7b1d4852c43d1c68217666d9c6e617dc4fd3c4a2709d8f4e144cb6c388721` -> `cebd0bc1ef7d31e92594a4b6dc9b8cabc4d1b83a907f1c20071f5be92ebf30fd`.
+- `tools/video/automation/flow.mjs`: `4de8bbedb777f17a66a04064c0bd612a2a23ea8cf206d798fb449851a6a46bc7` -> `bc2b6ef828c116abd57849b49300a832899ba9ea61733d76392e22c083cfc892`.
+
+The question: does the commit change anything that decides how long a video is: a duration target or minimum, the pacing arithmetic, a scene or line count, a duration check, or what the planner or the writer is told about length? It does not. It narrows which of a writer's proposed pronunciation-dictionary terms are written into the dictionary.
+
+Findings, `tools/video/automation/flow.mjs` (+7/−2), three places and no other line:
+
+- line 25: the import from `../core/lexicon.mjs` gains `isProposableTerm` beside `emptyLexicon`;
+- lines 382–386: a comment above `mergeLexicon`;
+- line 393: in `mergeLexicon`'s loop over a writer's `lexicon_additions`, the test of the proposed term, `/^[A-Za-z0-9][A-Za-z0-9.+#'_-]{0,39}$/`, becomes `isProposableTerm(term)`.
+
+`mergeLexicon` writes the proposed terms into the shared `docs/videos/lexicon.json`. The rest of it is the same bytes: a term already listed is skipped, a spoken form is null or a non-blank string of at most 80 characters (line 394), and the file is written only when a term was added (line 398). Its one caller is `saveAndLint` (line 2778), whose loop is unchanged too: `lintErrors` at line 2788, `MAX_LINT_FIXES` of 3 (line 83) with its "lint still fails after 3 fixes" (line 2793), and the fix round's call of the writer (line 2795) with the payload it had: `video`, `lint_errors`, `line_ids` and `draftBudget`, which is a picture prompt's character budget (line 3060).
+
+The rule as it is now: `isProposableTerm` (lexicon.mjs lines 37–39, unbound) is `isValidTerm(term)`, a string that starts with a Latin letter (lines 24–26), together with `/^[A-Za-z0-9.+#'_-]{1,40}$/`. Both rules were run over 8,421 strings: every string of up to three characters from an alphabet of 20 (letters, digits, the six characters `. + # ' _ -`, a space, punctuation, a CJK, a full-width and an accented letter, a newline). 471 are taken by both, 471 by the old rule alone, every one of which starts with a digit, and none by the new rule alone. A term of 39 or 40 characters that starts with a letter is taken by both, and one of 41 by neither. So the merge takes what it took before less the terms that start with a digit, and nothing it did not take before.
+
+Why that moves no length:
+
+- The estimate does not read the dictionary. Lint builds its timeline with `estimateTimeline(doc, cpm)` (lint.mjs line 430), which counts each line's spoken units at 250 a minute (`estimateSamples`, timeline.mjs lines 43–44) from the line's own `say` or `text`. The chapter checks, the eight-minute floor, `target_minutes` and the long anime's body estimate (lint.mjs lines 455–485) read that timeline. The dictionary enters `lintVideo` in two places, each an error and neither a length: `validateLexicon` (line 388) and the unknown-term check (lines 399–400). lint.mjs and timeline.mjs are bound and unchanged.
+- The measured audio can depend on an entry: at synthesis a term that has a spoken form is sent with that form as its alias (`spokenParts`, tts/requests.mjs, unbound and unchanged). The commit admits no entry that was not admitted before, so it gives no word a spoken form it could not have had. The entries it now leaves out start with a digit, and `validateLexicon` reports such an entry as a lint error for every narrated video whose dictionary holds it (lint.mjs line 388), so `saveAndLint` returned no passing script for a video whose dictionary held one. What is synthesized for a script that passes lint is what was synthesized before.
+- What goes back to the writer is an error lint already had. A narration's "8B" is read as the letter B (`latinTerms` starts a term at a letter, and `isKnownTerm` takes any single letter), so there is no error and no fix round. A word that stays unknown ("6abc" is read as "abc") is its line's `"abc" is not in docs/videos/lexicon.json` error, the text a writer gets for a word it proposed nothing for, in the same `lint_errors` round. A reworded line can come back a few characters longer or shorter, as after any lint fix, and the rewritten script passes through the same `saveAndLint` and the same floor (lint.mjs line 471). The writer's payload is built by `scriptPayload` as before, with `target_minutes` at line 2690 and the dictionary's keys at line 2692: a dictionary without such an entry is a shorter list of keys and says nothing about length. The instructions the planner and the writer read are in prompts.mjs, which the commit does not touch.
+
+Findings, `tools/video/automation/automation.test.mjs` (+47/−1): the import from `../core/fixtures/load.mjs` gains `lexiconProposals` (line 15), a new line 16 imports `isValidTerm` and `validateLexicon`, and one test is added at lines 673–716, between "auto takes a video from a topic to the outline…" and "the planner sees every video on /admin/videos…" (166 top-level tests, 165 before). It calls `saveAndLint` three times on a slides fixture in a sandbox:
+
+- with `{ "8B": null, "6abc": null, Ai2: null }` and a line that says "8B": only `Ai2` is merged, the dictionary passes `validateLexicon`, `lexicon_added` is `["Ai2"]` and the writer is not asked again;
+- with a line that says "6abc" and that term proposed: one fix round, whose single `lint_errors` entry is the "abc" message, and the dictionary is as it was;
+- with the 237 proposals of `lexiconProposals()`: every merged term passes `isValidTerm`, a 40-character term and an 80-character spoken form are kept, ten named terms are not, and no fix round follows.
+
+Every assertion is on the dictionary's keys and values, `validateLexicon`'s result, `lexicon_added`, the number of writer runs or the text of a lint error. None reads a timeline, a frame count, a minute or a target. No existing test, helper or assertion changes: every other line is the same bytes, one line lower after the imports and 46 lower after the new test. Among them is `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` (line 37, line 36 before), under which the new test runs as the rest of the file does.
+
+The seven unbound files were read as context, to be sure no length hides behind the changed import:
+
+- `tools/video/core/lexicon.mjs` (+24/−1) adds `isValidTerm`, the `PROPOSED_TERM` pattern and `isProposableTerm`. In `validateLexicon` the condition `!/^[A-Za-z]/.test(term)` becomes `!isValidTerm(term)`, the same answer for every key of an object, which is always a string. `latinTerms`, `isKnownTerm`, `unknownTerms`, `unknownTermsFor`, `substitutions`, `termPattern`, `termsUsed` and `entriesUsed` are the same bytes.
+- `tools/video/automation/story.mjs` (+3/−3) makes the same swap in `addTerms`, the brand story's merge: the import, a comment and the one condition.
+- `tools/video/core/fixtures/load.mjs` (+17/−0) adds `lexiconProposals()`. `fixture`, `sandbox` and the other loaders are unchanged.
+- `tools/video/core/lexicon.test.mjs` (+20/−1) and `tools/video/automation/story.test.mjs` (+52/−1) add tests of the above.
+- Two task files, one done and one open.
+
+Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the 250 characters a minute of the estimate, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, chapter budgets, or any covered state. A case-insensitive scan for minute, 分鐘, 秒, 長度, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json, process.env, cpm, budget and pause_after finds nothing in the 57 changed lines (54 added, 3 removed) of the two bound diffs and nothing in the 122 changed lines of the five unbound code diffs. In the two task files it finds four lines, which say that the two files are bound by the duration receipt and that the change is duration-neutral. Lines naming one of those terms number 115 in flow.mjs and 298 in automation.test.mjs at both revisions, the same lines in the same order. The commit touches nine files, the two above and the seven unbound ones; none is under apps, docs or tools/video/long-form.
+
+Ran (in the worktree at `d5550634b`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell, node_modules borrowed by a junction from another worktree of this repository and removed afterwards):
+
+- the hashing of every bound path at the baseline and at the head, where these two alone differ, and of the two against the receipt, the table and the working tree;
+- `durationReviewProblems` against the baseline through `git show`, which returned no problem, and against the head, which returned the two stale bindings and nothing else;
+- a reading of the two diffs, of the seven unbound diffs as context, and of the flow, lint, timeline, lexicon and tts code named above;
+- the comparison of the two rules over the 8,421 strings and at lengths 1, 39, 40, 41 and 42;
+- the duration-term counts and the scan;
+- `git diff --check` over the commit, which exited 0.
+
+On the reviewed bytes, each of these exited 0:
+
+- `node --test --test-skip-pattern="a project another process holds is left alone" tools/video/automation/automation.test.mjs`, 211 of 211 counting subtests, the 165 other top-level tests among them;
+- `node --test tools/video/core/lexicon.test.mjs tools/video/automation/story.test.mjs`, 26 of 26;
+- `node --test tools/video/core/lint.test.mjs`, 45 of 45;
+- `node --test tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs`, 25 of 25.
+
+The one test left out of automation.test.mjs, "a project another process holds is left alone…" (line 5581; line 5535 at the baseline, the same bytes), does not finish on Windows: its child process imports project-lease.mjs by a drive-letter path and exits with ERR_UNSUPPORTED_ESM_URL_SCHEME, and the test waits for it without end. The file was first run whole and stopped there after 138 top-level tests had passed, the new one among them; that run was ended by hand and the file run again without that test.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the rule, the limits of 40 and 80 characters, or the choice to leave a refused proposal out without telling the writer as product choices. It answers the duration question alone.
+- lexicon.mjs, lexicon.test.mjs, story.mjs, story.test.mjs, fixtures/load.mjs and the two task files are unbound. They were read as context and are not reviewed or bound here.
+- The host's incident in the commit message and the task file (the "8B" and "6abc" entries, the four blocked drafts and their times) is the author's account and was not checked on the host. The author's statement that the three test files fail with the old rule put back was not reproduced.
+- Nothing here repairs a dictionary that already holds an entry starting with a digit. Such a file fails lint for every narrated video until the entry is removed by hand, as the commit says. No host's dictionary was read.
+- That no script was synthesized with such an entry was read from the worker's route: lint refuses the dictionary and `saveAndLint` returns the error. A video made by hand with the CLI beside a hand-edited dictionary was not traced.
+- No writer, planner or listener was run. How a model rewords a line whose proposal was left out, and by how many characters, was not observed. Only that the fix round, its payload and the checks after it are the code they were.
+- The lease test of automation.test.mjs named above was not run to its end on this machine. It is outside both hunks.
+- No audio was synthesized and no video assembled or measured for this increment.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 106 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -3274,9 +3356,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `f2e7b1d4852c43d1c68217666d9c6e617dc4fd3c4a2709d8f4e144cb6c388721` |
+| `tools/video/automation/automation.test.mjs` | `cebd0bc1ef7d31e92594a4b6dc9b8cabc4d1b83a907f1c20071f5be92ebf30fd` |
 | `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
-| `tools/video/automation/flow.mjs` | `4de8bbedb777f17a66a04064c0bd612a2a23ea8cf206d798fb449851a6a46bc7` |
+| `tools/video/automation/flow.mjs` | `bc2b6ef828c116abd57849b49300a832899ba9ea61733d76392e22c083cfc892` |
 | `tools/video/automation/prompts.mjs` | `4da2bae5b173bf24b7b6a87f9cc41531b5bd89cb36f025ad2582c71ae8fa254b` |
 | `tools/video/automation/series.mjs` | `2b687e0e5251f8b01904f3018bc658e4322888959af9d8dc0931d71a41e5e381` |
 | `tools/video/automation/series.test.mjs` | `1974b5d8db7177c920bc85ec35acf8abc4a0177b80947596ed5b551e813c53d6` |
