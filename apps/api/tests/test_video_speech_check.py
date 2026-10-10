@@ -24,7 +24,7 @@ from app.video_speech.schemas import TrackLanguage
 
 WAV = wav_from_pcm(b"\x01\x00" * 800, 16_000)
 LANGUAGES = get_args(TrackLanguage)
-DUB_LANGUAGES = ("en", "ja", "ko", "zh-CN")
+DUB_LANGUAGES = ("en", "ja", "ko")
 
 
 @pytest.mark.asyncio
@@ -67,10 +67,6 @@ def test_each_track_language_has_its_own_transcription_prompt() -> None:
     assert LANGUAGES == ("zh-TW",) + DUB_LANGUAGES
     assert set(checking.TRANSCRIBE_INSTRUCTIONS_BY_LANGUAGE) == set(LANGUAGES)
     assert checking.transcribe_instructions("zh-TW") == checking.TRANSCRIBE_INSTRUCTIONS
-    simplified = checking.transcribe_instructions("zh-CN")
-    assert "Simplified Chinese characters as used in mainland China" in simplified
-    assert "Traditional" not in simplified
-    assert "Write numbers the way they are spoken." in simplified
     for language, name in (("en", "English"), ("ja", "Japanese"), ("ko", "Korean")):
         prompt = checking.transcribe_instructions(language)
         assert prompt.startswith(f"Transcribe this {name} narration word for word"), language
@@ -80,12 +76,14 @@ def test_each_track_language_has_its_own_transcription_prompt() -> None:
         assert hinted.startswith(checking.TRANSCRIBE_INSTRUCTIONS_BY_LANGUAGE[language])
         assert hinted.endswith("sound like it: Go, Plus."), language
     assert "rather than as Chinese characters that" in checking.transcribe_instructions(
-        "zh-CN", ["Go"]
+        "zh-TW", ["Go"]
     )
     assert "rather than as kana that" in checking.transcribe_instructions("ja", ["Go"])
     assert "rather than as Hangul that" in checking.transcribe_instructions("ko", ["Go"])
-    with pytest.raises(ValueError):
-        checking.transcribe_instructions("fr")
+    # zh-CN left the video pipeline on 2026-10-09: no dub, so no prompt.
+    for language in ("fr", "zh-CN"):
+        with pytest.raises(ValueError):
+            checking.transcribe_instructions(language)
 
 
 @pytest.mark.asyncio

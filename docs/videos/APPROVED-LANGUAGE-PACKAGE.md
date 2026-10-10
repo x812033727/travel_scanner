@@ -95,7 +95,8 @@ again when run with `LANGUAGE_CONTRACT_WRITE=1`.
 
 The original confirmation continues to supply the video, thumbnail, default
 language content and upload settings. The language batch supplies only the
-selected translated titles/descriptions and captions. Both approval identities,
+selected translated titles/descriptions and captions, and, for the VPS Studio uploader
+only, its ready dub tracks (`dub_<locale>`; no YouTube API takes one). Both approval identities,
 the choice and attachment contents are checked before composing a package.
 
 API requests pin the complete approval identity. Queued runs and retries must

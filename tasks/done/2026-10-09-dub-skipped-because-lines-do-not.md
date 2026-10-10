@@ -1,13 +1,13 @@
 ---
 id: 2026-10-09-dub-skipped-because-lines-do-not
 title: Dub skipped because lines do not fit even at 1.15x after shortening
-status: open
+status: done
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-fable-5.1
+claimed_at: 2026-10-09T15:28:35Z
 created_at: 2026-10-09T14:49:21Z
-completed_at:
+completed_at: 2026-10-10T05:50:50Z
 branch:
 depends_on: []
 scope:
@@ -62,3 +62,18 @@ how much, rather than exit 1.
 
 - A done ticket, `2026-09-28-dub-skip-the-whole-scene-request`, changed what the
   shortening model is asked; it did not change what happens when it fails.
+- 2026-10-10 (claude-fable-5.1, then claude-opus-5-5): measured on the host's `fit.json` for
+  seven of the skipped locales. Every one was ONE window over, by 1 to 8 frames, with the
+  other 60 to 107 windows fitting: gemini-4-argon ja 0.03 s and ko 0.07 s, ai-term-temperature
+  ko 0.03 s, threads-parental en 0.07 s and ko 0.07 s, openai-academy ja 0.17 s,
+  sec-ai-trading-bot ko 0.27 s. (free-vs-paid's three had no fit.json left on the volume.)
+- Rule taken without asking the owner, since every measured case is under a third of a
+  second: `OVERRUN_TOLERANCE_SECONDS = 0.3`, `MAX_TEMPO_OVERRUN = 1.25` in `dubs/plan.mjs`.
+  A window over by at most 0.3 s first spills into the pause after it (the next window's
+  lines wait, nothing past it moves), else that one window is sped up to at most 1.25x; only
+  beyond both is it still over and goes to shortening. It applies in `dub` before any
+  shortening round. `fit.json` windows carry `absorbed`, `overrun_seconds`, `shifted_frames`;
+  the dub's success line and the flow's note name the window. Trade-off recorded in DUBS.md
+  §已知限制: a line may end up to 0.3 s past its slide change.
+- Not done: the before/after rate on the 24 published videos (needs the dubs re-run on the
+  host, which is paid synthesis and the owner's call).

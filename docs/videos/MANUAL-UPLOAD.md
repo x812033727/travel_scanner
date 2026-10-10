@@ -32,7 +32,7 @@
 
 `npm run test:web -- components/admin-video-manual-upload.test.tsx components/admin-video-youtube.test.tsx`
 
-覆蓋配額失敗入口、既有影片防重複、五語複製、字幕與縮圖下載、
+覆蓋配額失敗入口、既有影片防重複、四語複製、字幕與縮圖下載、
 表單編輯保留、缺檔／缺資料／權限錯誤、合集及沒有 API 寫入。
 
 ### 瀏覽器驗證紀錄（2026-09-28）

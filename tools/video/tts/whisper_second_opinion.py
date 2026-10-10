@@ -25,9 +25,9 @@ import json
 import os
 import sys
 
-LANGUAGES = {"zh-TW": "zh", "zh-CN": "zh", "en": "en", "ja": "ja", "ko": "ko"}
+LANGUAGES = {"zh-TW": "zh", "en": "en", "ja": "ja", "ko": "ko"}
 # Whisper writes Mandarin in Simplified characters unless the prompt is in Traditional ones.
-PROMPTS = {"zh-TW": "以下是繁體中文的句子。", "zh-CN": "以下是简体中文的句子。"}
+PROMPTS = {"zh-TW": "以下是繁體中文的句子。"}
 
 
 def main(argv: list[str]) -> int:

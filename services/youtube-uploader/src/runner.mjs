@@ -1,4 +1,4 @@
-import { Refused } from "./contract.mjs";
+import { Refused, dubLocale } from "./contract.mjs";
 import { fileHash } from "./store.mjs";
 
 /** All account UI work is serialized. A paused job holds the browser for its owner. */
@@ -21,6 +21,7 @@ export class Runner {
         const current = this.store.get(job.id);
         if (current.completed.includes(step)) continue;
         checkpoint({ current_step: step });
+        let receipt = {};
         if (step === "video") {
           if (current.video_id) await this.driver.openPrivate(current.video_id);
           else {
@@ -33,9 +34,14 @@ export class Runner {
           }
         } else {
           if (!current.video_id) throw new Refused("video_id_required");
-          await this.driver.step(step, current);
+          const result = await this.driver.step(step, current);
+          if (dubLocale(step)) {
+            // Recorded in the same write as the completed step, so neither exists without the other.
+            if (!["placed", "present"].includes(result?.dub)) throw new Refused("save_unconfirmed");
+            receipt = { dubs: { ...this.store.get(job.id).dubs, [step]: result.dub } };
+          }
         }
-        checkpoint({ completed: [...this.store.get(job.id).completed, step] });
+        checkpoint({ completed: [...this.store.get(job.id).completed, step], ...receipt });
       }
       checkpoint({ state: "done", code: null, current_step: null });
     } catch (e) {

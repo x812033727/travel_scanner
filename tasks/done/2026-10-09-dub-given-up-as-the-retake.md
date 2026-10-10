@@ -1,13 +1,13 @@
 ---
 id: 2026-10-09-dub-given-up-as-the-retake
 title: Dub given up as the retake failed when a retake overruns its window
-status: open
+status: done
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-fable-5.1
+claimed_at: 2026-10-09T15:28:20Z
 created_at: 2026-10-09T14:49:22Z
-completed_at:
+completed_at: 2026-10-10T05:50:42Z
 branch:
 depends_on: []
 scope:
@@ -57,3 +57,17 @@ end with a track or a reason that names lines, not a path.
 
 - Sibling tickets: `2026-10-09-dub-skipped-because-jev-still-hears` (31 skips) and
   `2026-10-09-dub-skipped-because-lines-do-not` (14 skips).
+- 2026-10-10: `dub --redo` overwrites the take in place, so nothing on disk could be
+  restored; the cli gained `--keep-fitting` (with `--redo` only), which holds the flagged
+  lines' takes in memory and writes back the earlier one for any retaken line whose window is
+  still over after the overrun tolerance. `fit.json` and the dub timeline get `kept`. The
+  flow passes the flag once the shortening rounds are spent and ends the locale ready,
+  naming the kept lines and what Jev heard; the languages batch carries `kept_lines`.
+- Give-up reasons no longer carry a host path or a command: `k7p2 does not fit its window
+  even at 1.15x after 2 shortening rounds`, `Jev still hears k7p2 wrong after 2 retakes and
+  1 rewording round`, `the retake needs the owner: …`. A test asserts no reason matches
+  `/var/lib`, `node tools/video`, `run dub`, `run i18n` or `fit.json`.
+- Found on the way, not fixed: nothing on the card re-requests a skipped dub. A part's state
+  comes from the batches, `skipped.json` is never cleared and `languages()` skips a locale
+  whose dub is skipped, so re-ticking does nothing. The web card does not show `kept_lines`
+  either. Both are follow-ups.

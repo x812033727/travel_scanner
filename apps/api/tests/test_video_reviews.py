@@ -188,7 +188,7 @@ def test_a_dubs_review_is_approved_as_uploaded_or_sent_back_with_a_reason() -> N
 
 def test_a_dubs_review_carries_its_tracks_as_m4a_mp3_or_wav() -> None:
     base = {"gate": "dubs", "content_sha256": "a" * 64, "summary": "配音"}
-    track = {"role": "dub_zh_cn", "sha256": "b" * 64, "size": 1}
+    track = {"role": "dub_ko", "sha256": "b" * 64, "size": 1}
     for content_type in ("audio/mp4", "audio/mpeg", "audio/wav"):
         review = ReviewIn.model_validate(
             {**base, "files": [{**track, "content_type": content_type}]}
@@ -201,13 +201,13 @@ def test_a_dubs_review_carries_its_tracks_as_m4a_mp3_or_wav() -> None:
 def test_the_dub_languages_are_the_caption_languages_each_at_most_once_in_page_order() -> None:
     assert DubLocalesIn.model_validate({"locales": []}).locales == []
     assert DubLocalesIn.model_validate({"locales": ["ko", "en"]}).locales == ["en", "ko"]
-    assert DubLocalesIn.model_validate({"locales": ["zh-CN", "ja", "ko", "en"]}).locales == [
+    assert DubLocalesIn.model_validate({"locales": ["ko", "ja", "en"]}).locales == [
         "en",
         "ja",
         "ko",
-        "zh-CN",
     ]
-    for bad in (["en", "en"], ["zh-TW"], ["fr"], ["en", "ja", "ko", "zh-CN", "en"]):
+    # zh-CN left the video pipeline on 2026-10-09: a video's languages are four.
+    for bad in (["en", "en"], ["zh-TW"], ["zh-CN"], ["fr"], ["en", "ja", "ko", "en"]):
         with pytest.raises(ValueError):
             DubLocalesIn.model_validate({"locales": bad})
 
@@ -228,7 +228,7 @@ def test_a_language_choice_keeps_page_order_drops_empty_languages_and_a_dub_brin
     assert LocalesIn.model_validate({"locales": {"en": {"voice": True}}}).locales == {}, (
         "a stray field is ignored, as on the other routes, and leaves the language empty"
     )
-    for bad in ({"zh-TW": {"captions": True}}, {"fr": {}}):
+    for bad in ({"zh-TW": {"captions": True}}, {"zh-CN": {"captions": True}}, {"fr": {}}):
         with pytest.raises(ValueError):
             LocalesIn.model_validate({"locales": bad})
     # A stored shape no page wrote reads as no choice, not as an error.
@@ -238,6 +238,47 @@ def test_a_language_choice_keeps_page_order_drops_empty_languages_and_a_dub_brin
         )
         == {}
     )
+
+
+def test_a_stored_choice_that_still_names_zh_cn_keeps_its_other_languages() -> None:
+    """zh-CN left the video pipeline on 2026-10-09 (a video's languages are four). A choice
+    saved before, with a zh-CN key, is read without it rather than as no choice at all, so
+    the video's en, ja and ko parts go on; migration 0128 removes the key from the rows."""
+    choices = admin_service.locale_choices(
+        VideoProject(
+            slug="v",
+            title="t",
+            stage="s",
+            locales={
+                "zh-CN": {"metadata": True, "captions": True, "dub": True},
+                "en": {"metadata": True, "captions": True, "dub": False},
+                "ko": {"captions": True},
+            },
+        )
+    )
+    assert list(choices) == ["en", "ko"]
+    assert choices["en"].chosen() == ["metadata", "captions"]
+    states = admin_service.language_states(
+        choices,
+        [
+            _batch(
+                "approved",
+                {
+                    "locales": {
+                        "zh-CN": {"metadata": "ready", "captions": "ready", "dub": "ready"},
+                        "en": {"metadata": "ready", "captions": "ready"},
+                    }
+                },
+                20,
+            )
+        ],
+    )
+    assert set(states) == {"en", "ko"}, "the batch's zh-CN part is neither shown nor an error"
+    assert states["en"]["captions"].state == "ready"
+    only = admin_service.locale_choices(
+        VideoProject(slug="v", title="t", stage="s", locales={"zh-CN": {"captions": True}})
+    )
+    assert only == {}, "a choice of zh-CN alone is 'only Traditional Chinese' now"
 
 
 def _batch(status: str, payload: dict[str, Any], day: int) -> VideoReview:
