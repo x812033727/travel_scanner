@@ -28,7 +28,7 @@ scope:
 - [x] 站主 2026-10-10「用你建議的」：系列名奇聞檔案局、畫風第 3 版（A＋C 色盤）、過世 70 年以上的歷史人物可畫卡通、前三題 H01／U02／L08、10 分鐘；都記在 `README.md` §選定紀錄。
 - [ ] 兩集做完（H01 2026-10-10 做到上架確認：旁白、分鏡、成片、上架包四關都核准，站主在 `/admin/videos` 按了分鏡與成片；U02 未開工）（原文：建議 H01 瑪麗賽勒斯特號、U02 51 區）：`brief.md`、`video.json`（`format: "slides"`、`category: "explainer"`、選定的 `look`、`shot` 與卡片交錯、至少 3 張登記在 `assets[]` 的公有領域或圖庫照片）、`claims.md`、兩輪獨立查核、旁白（Whisper 第二轉寫）、`keyframes`（`--dry-run` 印出 `minimax image-01`）、`render`、`assemble`、`captions`、`qa` 11 項、`package`、`review-push` 到上架確認。
 - [ ] 每集記在 `docs/videos/curio-<id>/production-record.md`：插圖張數與重做次數、照片張數與來源、媒體花費、審圖分數分布、旁白長度與成片長度、站主審片分鐘數。
-- [ ] `README.md` §成本與產能 改成實測；`topics.json` 做過的題改 `scripted`／`published`，查核過的事實回寫 `facts_to_verify` 的結果。
+- [x] `README.md` §成本與產能 改成實測（2026-10-10，兩集）；`topics.json` 的 H01／U02 改 `scripted` 並在 `note` 寫查核後的更正。
 
 ## Steps
 
@@ -46,6 +46,7 @@ scope:
 
 ## Notes
 
+- 2026-10-10：U02 成片由站主核准，上架包 4／4、上架確認自動核准；H01 與 U02 都在「可以上架」。兩集實測已寫進 `docs/videos/history-curiosity/README.md` §成本與產能，`topics.json` 的 H01／U02 改成 `scripted`。站主說「接著繼續」，第三題 L08（麥田圈）開工：brief 已寫，研究代理在查來源。
 - 2026-10-10 U02 `curio-u02`（51 區）做到成片關卡：研究代理 dossier（7 節，CIA 計畫史逐頁引句）→ brief A 案（Jev 自動核准，有示範 0.67）→ 撰稿 92 景／126 句 → 查核兩輪（8＋1 處）→ 旁白 11:36（三輪檢查全過）→ MiniMax 插圖 61 張（US$1.36）＋公有領域照片 6 張 → 成片 21,134 格（11:44）→ 品管 10／11（只剩 `policy` 有示範 0.09）；旁白與分鏡關卡已核准，成片關卡在 `/admin/videos` 等站主；核准後 `package` → `review-push --gate publish`。
 - U02 多學到的：標題不能寫「否認存在 58 年」（1995 年起的總統豁免令就寫了 Groom Lake 附近的作業地點；2013 年新的是名字與地圖的刻意正式承認）；帶語氣提示的句子先壓到 20 單位以內就不會超過 8 秒；插圖占比剛好卡 50%，卡片多的稿子要留餘裕（這集把兩張大字卡換成插圖才過）；臉部大特寫容易被畫成 3D 加黑邊，改中景；FindLaw 擋連結檢查且沒有 Wayback 存檔，換成 ELR 摘要；背景長串跑到一半遇到系統 fork 失敗會留下過期的專案鎖，重跑即可。
 - 2026-10-10 20:0xZ：H01 上架包 4／4、上架確認自動核准，`upload/UPLOAD.md` 給站主上傳用；YouTube 上傳是站主的事。第二集 U02 還沒開始，claim 已釋出，接手的人照同一條流程（研究代理 → brief → 撰稿 → 兩輪查核 → tts → keyframes → render → assemble → captions → qa → 四個關卡）。
