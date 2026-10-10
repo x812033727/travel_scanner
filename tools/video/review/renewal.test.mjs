@@ -104,7 +104,7 @@ export function languageFixture(base) {
   const timeline = { fps: 30, speech_hash: speechHash(project.doc, project.lexicon), total_frames: lines.length * 150, lines, chapters: [] };
   const pin = validateBranding({ schema_version: 1, id: "new-brand", intro: { file: "intro.mp4", sha256: sha("intro"), frames: 150 }, outro: { file: "outro.mp4", sha256: sha("outro"), frames: 90 } }, { base });
   const applied = { hash: pin.hash, intro_frames: 150, outro_frames: 90, body_frames: timeline.total_frames };
-  const locales = Object.fromEntries(["en", "ja", "ko", "zh-CN"].map((locale) => [locale, { metadata: true, captions: true, dub: false }]));
+  const locales = Object.fromEntries(["en", "ja", "ko"].map((locale) => [locale, { metadata: true, captions: true, dub: false }]));
   for (const locale of Object.keys(locales)) project.translations[locale] = { title: `${locale} title`, description: `${locale} description`, lines: Object.fromEntries([...eachLine(project.doc)].map(({ line }) => [line.id, { text: `${locale} ${line.text}`, source_hash: textHash(line.text) }])) };
   const metadata = { ...composeMetadata({ ...project, timeline: presentationTimeline(timeline, applied) }).metadata, final_sha256: sha("new-cut"), branding_hash: pin.hash, language_choice: locales, captions: ["zh-TW", ...Object.keys(locales)].map((locale) => `captions/${locale}.srt`) };
   json(path.join(workdir, "timeline.json"), timeline); json(path.join(workdir, "branding.json"), pin);
@@ -139,7 +139,7 @@ export function narrationFixture(base, { locales = { ja: { metadata: false, capt
   project.doc.youtube.title = "A renewed English story";
   project.doc.youtube.description = "The original English narration.";
   for (const { line } of eachLine(project.doc)) line.text = `Original English narration for ${line.id}.`;
-  project.translations = Object.fromEntries(["zh-TW", "ja", "ko", "zh-CN"].map((locale) => [locale, {
+  project.translations = Object.fromEntries(["zh-TW", "ja", "ko"].map((locale) => [locale, {
     title: `${locale} translated title`, description: `${locale} translated description`,
     lines: Object.fromEntries([...eachLine(project.doc)].map(({ line }) => [line.id, { text: `${locale} translation of ${line.id}`, source_hash: textHash(line.text) }])),
   }]));
@@ -217,7 +217,7 @@ for (const broken of ["automatic CC missing", "automatic CC stale", "automatic C
   });
 }
 
-test("renewed five-language output binds real metadata/manifest bytes and new final identity", async (t) => {
+test("renewed four-language output binds real metadata/manifest bytes and new final identity", async (t) => {
   const base = mkdtempSync(path.join(os.tmpdir(), "renewal-bind-")); t.after(() => rmSync(base, { recursive: true, force: true }));
   const fixture = languageFixture(base);
   const result = await bindRenewalSubmission(fixture);
@@ -227,7 +227,8 @@ test("renewed five-language output binds real metadata/manifest bytes and new fi
   assert.equal(manifest.source.publish.review_id, publishId);
   assert.equal(manifest.source.script, null);
   assert.equal(manifest.source.branding_hash, fixture.remote.reviews[1].payload.branding_hash);
-  assert.equal(manifest.files.length, 9);
+  // Two files a chosen locale (its description and its captions): 7 with en, ja, ko, 9 while zh-CN was a video language.
+  assert.equal(manifest.files.length, 7);
   assert.equal(result.files.filter((file) => file.role === "languages_manifest").length, 1);
   assert.equal(manifest.files.some((file) => file.role === "languages_manifest"), false);
   assert.equal(sha(readFileSync(path.join(fixture.workdir, "review", "languages.json"))), result.content_sha256, "review-pull sees the exact approved manifest");
@@ -270,7 +271,7 @@ function measuredFixture(base) {
   json(metadataFile, { ...metadata, ...composeMetadata({ ...project, timeline: presented }).metadata, final_sha256: metadata.final_sha256, branding_hash: metadata.branding_hash, language_choice: metadata.language_choice, captions: metadata.captions });
   sample.remote.reviews[0].content_sha256 = fileEntry(metadataFile, "metadata").sha256;
   const { texts } = localeTexts(project.doc, project.translations);
-  for (const locale of ["zh-TW", "en", "ja", "ko", "zh-CN"]) {
+  for (const locale of ["zh-TW", "en", "ja", "ko"]) {
     const caption = path.join(workdir, "upload", "captions", `${locale}.srt`);
     writeFileSync(caption, toSrt(localeCues(presented, texts, locale, "zh-TW").cues));
     const at = body.files.findIndex((file) => file.role === `captions_${locale}`);

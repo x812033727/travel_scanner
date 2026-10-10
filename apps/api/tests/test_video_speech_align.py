@@ -678,7 +678,7 @@ async def test_audio_is_a_provider_answer_without_an_aligner_and_aligned_with_on
     assert refused.status_code == 503 and refused.json()["code"] == "video_align_unavailable"
     aligner = FakeAligner()
     align_app["aligner"] = aligner
-    aligned = await _post({"audio": clip, "text": "你好，世界", "language": "zh-CN"})
+    aligned = await _post({"audio": clip, "text": "你好，世界", "language": "ko"})
     assert aligned.status_code == 200, aligned.text
     body = aligned.json()
     assert body == {
@@ -694,7 +694,7 @@ async def test_audio_is_a_provider_answer_without_an_aligner_and_aligned_with_on
             {"text": "界", "start_ms": 400, "end_ms": 500},
         ],
     }
-    assert aligner.calls == [(len(WAV), "你好，世界", "zh-CN")]
+    assert aligner.calls == [(len(WAV), "你好，世界", "ko")]
     align_app["aligner"] = FakeAligner(fail=True)
     failed = await _post({"audio": clip, "text": "你好"})
     assert failed.status_code == 502 and failed.json()["code"] == "video_align_failed"
