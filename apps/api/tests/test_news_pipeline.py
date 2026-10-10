@@ -33,7 +33,7 @@ from app.guides.models import (
     GuideSearchEntry,
     GuideTopic,
 )
-from app.guides.schemas import GuideDocument
+from app.guides.schemas import CalloutBlock, GuideDocument
 from app.i18n import LOCALES, Locale
 from app.models import AdminAuditLog, User
 from app.news_automation import ai, jobs, pipeline, scheduler, service
@@ -47,9 +47,11 @@ from app.news_automation.models import (
     NewsSource,
 )
 from app.news_automation.policy import (
+    CRYPTO_MARKERS,
     EVIDENCE_REFRESH_MARKER,
     document_fingerprint,
     evidence_fingerprint,
+    for_review,
 )
 from app.news_automation.policy import (
     hard_policy_problems as actual_hard_policy_problems,
@@ -1365,6 +1367,139 @@ async def test_a_single_website_that_is_not_first_party_still_waits_for_the_owne
     assert result == "manual_review"
     assert stored is not None and stored.error_code == "news_zh_draft_ready"
     mocks["translate"].assert_not_awaited()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("corrected_locale", ["en", "ja"])
+async def test_a_crypto_warning_tail_removed_in_review_stays_removed_through_publication(
+    monkeypatch: pytest.MonkeyPatch, corrected_locale: Locale,
+) -> None:
+    """Real notice helpers and publication checks must accept a title-only correction."""
+    bodies = {
+        "zh-TW": "本篇內容不是投資建議，未推薦任何代幣。",
+        "zh-CN": "本篇内容不是投资建议，未推荐任何代币。",
+        "en": "This report does not make investment recommendations.",
+        "ja": "本記事は報道内容の整理であり、投資を勧めるものではありません。",
+        "ko": "이 글은 투자 조언이 아닙니다.",
+    }
+    marker = CRYPTO_MARKERS[corrected_locale]
+    suffix = f" {marker}。" if corrected_locale == "ja" else f" {marker}."
+
+    def article(locale: str, *, redundant_tail: bool = False) -> GuideDocument:
+        return GuideDocument.model_validate({
+            "title": f"Regulatory announcement {locale}",
+            "description": "A regulator announced a change and who it affects.",
+            "blocks": [
+                {"type": "summary", "items": [
+                    "A change was announced.", "Operators are affected.",
+                ]},
+                {"type": "heading", "level": 2, "text": "Announcement"},
+                {"type": "paragraph", "text": "The regulator announced a change."},
+                {"type": "heading", "level": 2, "text": "Scope"},
+                {"type": "table", "header": ["Party", "Scope"], "rows": [["Operators", "Change"]]},
+                {"type": "heading", "level": 2, "text": "Reader questions"},
+                {"type": "faq", "items": [
+                    {"question": "What changed?", "answer": "The regulator announced a change."},
+                    {"question": "Who is affected?", "answer": "Operators are affected."},
+                ]},
+                {"type": "callout", "tone": "warning", "title": CRYPTO_MARKERS[locale],
+                 "text": bodies[locale] + (suffix if redundant_tail else "")},
+            ],
+        })
+
+    engine, factory = await database()
+    try:
+        async with factory() as session:
+            candidate = await seed_single_source_candidate(session)
+            candidate.vertical = "crypto"
+            session.add(GuideTopic(slug="crypto", section="life", names_json={"zh-TW": "加密資產"}))
+            owner_id = await seed_owner(session)
+            candidate_id = candidate.id
+        monkeypatch.setattr(
+            ai, "jev_duplicate_check", AsyncMock(return_value=("distinct", 0.01, []))
+        )
+        mocks = stage_one_mocks(monkeypatch)
+        draft, usage, model = mocks["draft"].return_value
+        mocks["draft"].return_value = (
+            draft.model_copy(update={
+                "vertical": "crypto", "topics": ["crypto"],
+                "slug": f"crypto-news-regulatory-announcement-{EVENT_DAY:%Y%m%d}",
+                "document": article("zh-TW"),
+            }),
+            usage, model,
+        )
+        reviewed: list[GuideDocument] = []
+
+        async def translate(*args: Any) -> tuple[LocalizedDocument, dict[str, int], str]:
+            locale = cast(Locale, args[3])
+            translated = article(locale, redundant_tail=locale == corrected_locale)
+            return LocalizedDocument(document=translated), {}, "writer"
+
+        async def review(*args: Any) -> tuple[LocaleReviewResult, dict[str, int], str]:
+            if args[3] != corrected_locale:
+                return LocaleReviewResult(verdict="pass"), {}, "checker"
+            document = cast(GuideDocument, args[4])
+            reviewed.append(document.model_copy(deep=True))
+            callout = next(block for block in document.blocks if isinstance(block, CalloutBlock))
+            if callout.text.endswith(suffix):
+                corrected = for_review(document)
+                for block in corrected["blocks"]:
+                    if block["type"] == "callout":
+                        block["text"] = bodies[corrected_locale]
+                return (
+                    LocaleReviewResult(
+                        verdict="revise", issues=["Remove the redundant warning tail."],
+                        corrected_document=GuideDocument.model_validate(corrected),
+                    ), {}, "checker",
+                )
+            assert callout.text == bodies[corrected_locale]
+            assert callout.title == marker, "The investment warning must remain explicit"
+            return LocaleReviewResult(verdict="pass"), {}, "checker"
+
+        async def assets(
+            _session: Any, _candidate: Any, documents: dict[Locale, GuideDocument],
+        ) -> dict[Locale, GuideDocument]:
+            illustrated = {}
+            for locale, document in documents.items():
+                encoded = document.model_dump(mode="json")
+                encoded["hero"] = {
+                    "src": "/guides/news-assets/regulatory-announcement.png",
+                    "alt": "Illustration", "width": 1920, "height": 1080,
+                }
+                illustrated[locale] = GuideDocument.model_validate(encoded)
+            return illustrated
+
+        monkeypatch.setattr(ai, "translate_article", translate)
+        monkeypatch.setattr(ai, "review_locale", review)
+        monkeypatch.setattr(pipeline, "ensure_assets", assets)
+        monkeypatch.setattr(service, "revalidate_evidence", AsyncMock(return_value=(True, [])))
+        # Do not mock hard_policy_problems or with_crypto_disclaimer: both caused this loop.
+        await confirm(factory, candidate_id, owner_id)
+        async with factory() as session:
+            result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        async with factory() as session:
+            detail = await service.candidate_detail(session, candidate_id)
+            published = list(await session.scalars(select(GuideArticleLocale)))
+
+        assert result == "published"
+        assert detail.status == "published" and not any(detail.lint.values())
+        assert len(reviewed) == 2
+        assert document_fingerprint(reviewed[0]) != document_fingerprint(reviewed[1])
+        stored = detail.documents[corrected_locale]
+        assert document_fingerprint(stored) == document_fingerprint(reviewed[1])
+        warning = next(block for block in stored.blocks if isinstance(block, CalloutBlock))
+        assert warning.text == bodies[corrected_locale] and warning.title == marker
+        assessment = next(
+            item for item in detail.assessments
+            if item.assessment_type == "locale_review" and item.locale == corrected_locale
+            and "stage" not in item.details
+        )
+        assert assessment.verdict == "pass" and assessment.details["round"] == 2
+        assert assessment.details["document_sha256"] == document_fingerprint(stored)
+        assert len(published) == 5 and all(row.published_version is not None for row in published)
+        mocks["draft"].assert_awaited_once()
+    finally:
+        await engine.dispose()
 
 
 @pytest.mark.asyncio
