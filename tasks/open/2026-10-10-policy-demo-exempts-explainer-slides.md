@@ -41,7 +41,7 @@ should agree.
 ## Definition of done
 
 - [x] `judge_policy` asks the `demo` question only for a tutorial-shaped video: skipped (None)
-      when the project's `category` is `explainer` or `story`, or the format is a drama; the
+      when the project's `category` is `explainer` or `story`; the
       site decides from its own rows (the category the worker reported or the owner set), not
       from the request body alone.
 - [x] `policy_note` and the review card read 「有示範：不適用（解說）」 instead of a number for
@@ -72,19 +72,20 @@ with 「有示範：不適用」 and the final gate approves itself when the oth
   lands, the owner approves the final gate of these videos on /admin/videos; the QA report on
   the card shows every other item green.
 - 2026-10-10 done on `claude/policy-demo-explainer` (claude-opus-policy-demo):
-  - `policy_questions_for` now reads `shorts_line`, `category` and `format` from the video's own
+  - `policy_questions_for` now reads `shorts_line` and `category` from the video's own
     row in one query and answers a fourth set, `explainer`: the three questions a cut Short is
     asked, read by `read_policy_answers(answers, "explainer")` with the tutorial's thresholds.
     The response's `demo` is null, `questions` is `explainer`, and the note is
     「Jev：符合立場 0.85、有示範：不適用（解說）、建議 0.05、業配 0.10，通過」. `JudgePolicyIn` is
     unchanged, so a request that names a category, a format or a question set is still a 422.
   - Order of the decision: brand-story series (its own five) → cut Short (its own note) →
-    category `explainer`/`story` or format `drama` → tutorial. No row, or a row without a
-    category on a non-drama format, is asked all four as before.
-  - Exempting the drama format also takes the `demo` question away from
-    `2026-09-28-video-drama-policy-questions`; what is left of that ticket is the owner's
-    decision on whether a drama needs questions of its own (for example the story's "nobody run
-    down"). It was not touched here.
+    category `explainer`/`story` → tutorial. No row, or a row without a category, is asked all
+    four as before.
+  - The drama question set stays with `2026-09-28-video-drama-policy-questions`: the first
+    version of this change also exempted `format: drama`, and that was taken out again, because
+    which questions a drama is asked is the owner's decision there. A drama-format video is
+    asked `demo` as before unless its category is `explainer` or `story`. The two pilots behind
+    this ticket are `format: slides`, `category: explainer`, so the category rule covers them.
   - `curio-h01` passes only if its row says `category: explainer`. The worker reports the
     category from `video.json` and the server takes it only while the row has none; if the row
     was created without it, set it on /admin/videos before running `qa` again.

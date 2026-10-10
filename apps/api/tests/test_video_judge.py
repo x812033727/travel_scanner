@@ -4,9 +4,10 @@
 The first history episode, told from court records, scored 0.16-0.18 three times on "walks the
 viewer through a demonstration they can follow along with" while every other check passed, so
 its final cut could not approve itself. A video the site's own row files as an explainer or a
-story, or whose format is a drama, is asked the other three; a video the site does not know or
-has not categorised is asked all four as before. The rows live in an in-memory SQLite database
-built from the models, so this runs on every machine.
+story is asked the other three; a video the site does not know or has not categorised is asked
+all four as before, and so is a drama, whose questions are the owner's to decide (ticket
+2026-09-28-video-drama-policy-questions). The rows live in an in-memory SQLite database built
+from the models, so this runs on every machine.
 """
 
 from __future__ import annotations
@@ -169,14 +170,21 @@ async def test_an_explainer_and_a_story_are_not_asked_for_a_demonstration(
         assert answer.json() == EXPLAINER_VERDICT
 
 
-async def test_a_drama_is_not_asked_whatever_its_category(
+async def test_a_drama_is_still_asked_for_a_demonstration_unless_its_category_says_otherwise(
     db: async_sessionmaker[AsyncSession], monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    await _projects(db, ("saga-one", "drama", None), ("saga-two", "drama", "long-drama"))
+    # The format alone exempts nothing: which questions a drama is asked is the owner's call.
+    await _projects(
+        db,
+        ("saga-one", "drama", None),
+        ("saga-two", "drama", "drama"),
+        ("saga-three", "drama", "long-drama"),
+        ("saga-told", "drama", "explainer"),
+    )
     asked = _jev(monkeypatch)
-    answers = await _judge(db, "saga-one", "saga-two")
-    assert asked == [EXPLAINER_ASKED, EXPLAINER_ASKED]
-    assert [answer.json() for answer in answers] == [EXPLAINER_VERDICT, EXPLAINER_VERDICT]
+    answers = await _judge(db, "saga-one", "saga-two", "saga-three", "saga-told")
+    assert asked == [TUTORIAL_ASKED, TUTORIAL_ASKED, TUTORIAL_ASKED, EXPLAINER_ASKED]
+    assert [answer.json() for answer in answers] == [TUTORIAL_VERDICT] * 3 + [EXPLAINER_VERDICT]
 
 
 async def test_a_tutorial_an_uncategorised_video_and_one_the_site_never_saw_are_still_asked(
