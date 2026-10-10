@@ -6,7 +6,9 @@
 // under the voice as final.mp4 has. A window still over at MAX_TEMPO by a few frames is let
 // through, into the pause after it or sped up alone a little further (plan.mjs absorbOverruns);
 // one over by more is reported with a character budget per line, for the translator to shorten,
-// and no track is written for that locale until it does.
+// and no track is written for that locale until it does. A retake (`--redo`) whose window is
+// still over after that is given back its earlier take with `--keep-fitting`, once the worker has
+// no shortening round left.
 import { existsSync, mkdirSync, readFileSync, renameSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
@@ -49,6 +51,7 @@ function options(args) {
       format: { type: "string", default: DEFAULT_FORMAT },
       "dry-run": { type: "boolean" },
       redo: { type: "string" },
+      "keep-fitting": { type: "boolean" },
       force: { type: "boolean" },
       "line-by-line": { type: "boolean" },
       style: { type: "string" },
@@ -60,6 +63,7 @@ function options(args) {
   const locales = values.locale ? values.locale.split(",").map((locale) => locale.trim()).filter(Boolean) : null;
   for (const locale of locales ?? []) if (!LOCALES.includes(locale)) throw new UsageError(`--locale must be among ${LOCALES.join(", ")}`);
   if (!DUB_FORMATS.includes(values.format)) throw new UsageError(`--format must be one of ${DUB_FORMATS.join(", ")}`);
+  if (values["keep-fitting"] && !values.redo) throw new UsageError("--keep-fitting goes with --redo: it keeps the earlier take of a retaken line that no longer fits its window");
   return { ...values, locales };
 }
 
@@ -198,6 +202,17 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
   };
   const pending = requests.filter((request) => !current(request));
   const pendingEstimate = pending.reduce((sum, request) => sum + estimateFor(request), 0);
+  // --keep-fitting: the take each flagged line has now, while it is current, so a retake that no
+  // longer fits its window can be given back below. The worker asks for this once its shortening
+  // rounds are spent: that take fitted, and only its wording was in doubt (docs/videos/DUBS.md).
+  const earlier = new Map();
+  if (values["keep-fitting"]) {
+    for (const request of requests) {
+      for (const line of request.lines) {
+        if (redo.has(line.id) && clipCurrent(request, line)) earlier.set(line.id, { wav: readFileSync(path.join(files.audio, `${line.id}.wav`)), key: cache.lines[line.id] });
+      }
+    }
+  }
 
   mkdirSync(files.audio, { recursive: true });
   let billable = 0;
@@ -230,27 +245,54 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
   }
 
   // The clips as spoken, then the layout: which windows keep their rhythm, which pack, which speed up.
-  const clips = new Map();
-  const lengths = new Map();
-  for (const request of requests) {
-    for (const line of request.lines) {
-      const clip = readClip(path.join(files.audio, `${line.id}.wav`));
-      clips.set(line.id, clip.length ? clip : new Int16Array(1));
-      lengths.set(line.id, Math.max(1, clip.length));
+  const originals = new Map(timeline.lines.map((line) => [line.id, line]));
+  // The layout runs on the takes as they stand on disk, and again after --keep-fitting gives
+  // an earlier take back. A window still over by a few frames is let through (plan.mjs
+  // absorbOverruns): into the pause after it, else sped up alone past MAX_TEMPO, with the next
+  // real stretch each try.
+  const layout = async () => {
+    const clips = new Map();
+    const lengths = new Map();
+    for (const request of requests) {
+      for (const line of request.lines) {
+        const clip = readClip(path.join(files.audio, `${line.id}.wav`));
+        clips.set(line.id, clip.length ? clip : new Int16Array(1));
+        lengths.set(line.id, Math.max(1, clip.length));
+      }
+    }
+    const stretch = async (window, ceiling = {}) => {
+      if (!ffmpeg.tools) ffmpeg.tools = await ffmpeg.locate(ctx.env);
+      return fitWindow(window, originals, lengths, clips, dub, ffmpeg, values, ceiling);
+    };
+    const laid = [];
+    for (const window of layoutDub(timeline, lengths)) laid.push(window.tempo === 1 ? window : await stretch(window));
+    const windows = await absorbOverruns(laid, originals, {
+      speedUp: (window, maxTempo) => stretch({ ...window, tempo: Math.round((window.tempo + TEMPO_RETRY_STEP) * 100) / 100 }, { maxTempo }),
+    });
+    return { clips, lengths, windows };
+  };
+  let { clips, lengths, windows } = await layout();
+  // A retaken line in a window that is still over, past what the tolerance above lets through,
+  // gets its earlier take back (--keep-fitting), its sped-up copies with it, and the windows are
+  // laid out again with the takes as they stand. A retake a few frames long keeps the new take.
+  const kept = [];
+  if (earlier.size && windows.some((window) => window.over)) {
+    for (const window of windows.filter((window) => window.over)) {
+      for (const line of window.lines) {
+        const take = earlier.get(line.id);
+        if (!take) continue;
+        atomicWrite(path.join(files.audio, `${line.id}.wav`), take.wav);
+        cache.lines[line.id] = take.key;
+        delete cache.stretched[line.id];
+        kept.push(line.id);
+      }
+    }
+    if (kept.length) {
+      atomicWrite(files.cache, `${JSON.stringify(cache, null, 2)}\n`);
+      ({ clips, lengths, windows } = await layout());
+      ctx.stdout.write(`${locale}: kept the earlier take of ${kept.join(", ")}: the retake did not fit its window\n`);
     }
   }
-  const originals = new Map(timeline.lines.map((line) => [line.id, line]));
-  const stretch = async (window, ceiling = {}) => {
-    if (!ffmpeg.tools) ffmpeg.tools = await ffmpeg.locate(ctx.env);
-    return fitWindow(window, originals, lengths, clips, dub, ffmpeg, values, ceiling);
-  };
-  let windows = [];
-  for (const window of layoutDub(timeline, lengths)) windows.push(window.tempo === 1 ? window : await stretch(window));
-  // A window still over by a few frames is let through (plan.mjs absorbOverruns): into the pause
-  // after it, else sped up alone past MAX_TEMPO, with the next real stretch each try.
-  windows = await absorbOverruns(windows, originals, {
-    speedUp: (window, maxTempo) => stretch({ ...window, tempo: Math.round((window.tempo + TEMPO_RETRY_STEP) * 100) / 100 }, { maxTempo }),
-  });
   const measured = measureRate(texts, lengths);
   const over = windows.filter((window) => window.over).flatMap((window) => shrinkBudgets(window, texts, { lengths }));
   const tempoMax = windows.reduce((max, window) => Math.max(max, window.tempo), 1);
@@ -265,6 +307,8 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     tempo_max: tempoMax,
     windows: fitWindows(windows),
     over,
+    // The retaken lines given back their earlier take (--keep-fitting), for the worker and the batch.
+    ...(values["keep-fitting"] ? { kept } : {}),
   };
   atomicWrite(files.fit, `${JSON.stringify(fit, null, 2)}\n`);
   if (over.length) {
@@ -273,7 +317,7 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     for (const line of over) ctx.stdout.write(`  ${line.id}: ${line.max_chars} characters (now ${line.chars}, spoken in ${line.seconds} s; its window is ${line.window_over_seconds} s over)\n`);
     if (absorbed) ctx.stdout.write(`  ${absorbed}\n`);
     ctx.stdout.write(`  numbers and currency codes read slowly for their length: cut the words around them\n  budgets are in ${files.fit}; after i18n-merge, run dub --locale ${locale} again\n`);
-    recordStage(workdir, "dub", { locale, requests: requests.length, synthesized: pending.length, billable, tempo_max: tempoMax, over: over.length, absorbed: windows.filter((window) => window.absorbed).length }, ctx.now());
+    recordStage(workdir, "dub", { locale, requests: requests.length, synthesized: pending.length, billable, tempo_max: tempoMax, over: over.length, absorbed: windows.filter((window) => window.absorbed).length, ...(kept.length ? { kept } : {}) }, ctx.now());
     return EXIT.lint;
   }
 
@@ -326,9 +370,12 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     tempo_max: tempoMax,
     windows: fit.windows,
     lines,
+    // The lines that kept their earlier take because the retake did not fit (--keep-fitting):
+    // the languages batch names them beside the track (review/sync.mjs).
+    ...(kept.length ? { kept } : {}),
   };
   atomicWrite(files.timeline, `${JSON.stringify(presentationTimeline(record, branding), null, 2)}\n`);
-  recordStage(workdir, "dub", { locale, requests: requests.length, synthesized: pending.length, billable, fallbacks, tempo_max: tempoMax, over: 0, absorbed: windows.filter((window) => window.absorbed).length, file: path.basename(track) }, ctx.now());
+  recordStage(workdir, "dub", { locale, requests: requests.length, synthesized: pending.length, billable, fallbacks, tempo_max: tempoMax, over: 0, absorbed: windows.filter((window) => window.absorbed).length, file: path.basename(track), ...(kept.length ? { kept } : {}) }, ctx.now());
   const sped = windows.filter((window) => window.tempo > 1).length;
   const carried = [sound.track ? "music bed" : null, sound.sfxFile ? "sound effects" : null].filter(Boolean);
   ctx.stdout.write(`${locale}: ${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; ${sped} of ${windows.length} windows sped up (max ${tempoMax}x)${absorbed ? `; ${absorbed}` : ""}${carried.length ? `; with the ${carried.join(" and ")}` : ""}; ${track}\n`);

@@ -2355,7 +2355,9 @@ test("from the picked outline to YouTube without the owner: the final gate sends
  * is now: `plan[locale].over` is how many runs first report a window that does not fit (exit 1,
  * the first line's budget in fit.json, two characters under its length); a run with --redo
  * succeeds unless `plan[locale].redoOver` runs are still left, when the new take overruns its
- * window and the next plain run reports it once more. `checks[locale]` is how many
+ * window and the next plain run reports it once more; with `--keep-fitting` such a run keeps the
+ * earlier take instead (fit.json and the dub's timeline name the line in `kept`) and succeeds.
+ * `checks[locale]` is how many
  * `check-audio --locale` runs flag the first line before every line passes, or a function of the
  * line's current translation that says whether it is flagged; the flags file and the heard text
  * are written as the real check writes them.
@@ -2375,6 +2377,7 @@ function fakeDub(box, slug, workdir, plan, checks) {
       const files = dubArtifacts(workdir, locale);
       const words = translationHash(dubScript(project.doc, project.translations[locale], locale).doc);
       const redo = command.includes("--redo");
+      const keep = command.includes("--keep-fitting");
       if (!redo) overRuns[locale] = (overRuns[locale] ?? 0) + 1;
       const base = { locale, speech_hash: timeline.speech_hash, translation_hash: words, speech_fingerprint: dubFingerprint(project, locale), rates: { default: 15, measured: 14.2 } };
       mkdirSync(files.dir, { recursive: true });
@@ -2383,9 +2386,13 @@ function fakeDub(box, slug, workdir, plan, checks) {
         writeFileSync(files.fit, JSON.stringify({ ...base, tempo_max: 1.15, over: [{ id: first, chars: [...text].length, max_chars: Math.max(1, [...text].length - 2), seconds: 3.2, window_over_seconds: 0.8 }] }));
         return { code: 1, out: `${locale}: 1 windows do not fit even at 1.15x` };
       };
+      let kept = [];
       if (redo && (redoOverRuns[locale] = (redoOverRuns[locale] ?? 0) + 1) <= (plan[locale]?.redoOver ?? 0)) {
-        refit[locale] = true;
-        return overrun();
+        if (!keep) {
+          refit[locale] = true;
+          return overrun();
+        }
+        kept = [first];
       }
       if (!redo && refit[locale]) {
         refit[locale] = false;
@@ -2397,12 +2404,12 @@ function fakeDub(box, slug, workdir, plan, checks) {
       const absorbed = plan[locale]?.absorbed ?? [];
       const windows = absorbed.map((window) => ({ scene: window.scene, state: 0, start_frame: 0, end_frame: 0, lines: [first], tempo: window.tempo ?? 1.15, slack_frames: -1, over: false, absorbed: window.absorbed, overrun_seconds: window.overrun_seconds }));
       const tempoMax = Math.max(1.07, ...windows.map((window) => window.tempo));
-      writeFileSync(files.fit, JSON.stringify({ ...base, tempo_max: tempoMax, windows, over: [] }));
+      writeFileSync(files.fit, JSON.stringify({ ...base, tempo_max: tempoMax, windows, over: [], ...(keep ? { kept } : {}) }));
       const lines = timeline.lines.map((line) => ({ id: line.id, scene: line.scene, start_frame: line.start_frame + 5, end_frame: line.start_frame + 5 + Math.ceil(line.audio_samples / 2 / 1600), audio_samples: Math.floor(line.audio_samples / 2), tempo: 1 }));
-      writeFileSync(files.timeline, JSON.stringify({ ...base, format: "m4a", file: `${locale}.m4a`, total_frames: timeline.total_frames, tempo_max: tempoMax, windows, lines }));
+      writeFileSync(files.timeline, JSON.stringify({ ...base, format: "m4a", file: `${locale}.m4a`, total_frames: timeline.total_frames, tempo_max: tempoMax, windows, lines, ...(kept.length ? { kept } : {}) }));
       writeFileSync(files.track("m4a"), Buffer.from(`${locale} track of ${words}`));
       const summary = overrunSummary(windows);
-      return { code: 0, out: `${locale}: 3 requests synthesized; 0 of 5 windows sped up (max ${tempoMax}x)${summary ? `; ${summary}` : ""}; ${files.track("m4a")}\nnext: check-audio` };
+      return { code: 0, out: `${kept.length ? `${locale}: kept the earlier take of ${kept.join(", ")}: the retake did not fit its window\n` : ""}${locale}: 3 requests synthesized; 0 of 5 windows sped up (max ${tempoMax}x)${summary ? `; ${summary}` : ""}; ${files.track("m4a")}\nnext: check-audio` };
     }
     checkRuns[locale] = (checkRuns[locale] ?? 0) + 1;
     const text = loadProject({ slug, root: box.root }).translations[locale].lines[first].text;
@@ -3379,8 +3386,9 @@ test("a window that does not fit is shortened once and the dub is made; two roun
   assert.equal(readJson(translationFile("en")).lines.k7p2.text, [...before].slice(0, -2).join(""), "the shortened line went through the sheet and i18n-merge");
   assert.ok(video.state().notes.some((note) => note.startsWith("en dub line shortened: k7p2")));
 
-  const reason = `1 lines (k7p2) do not fit even at 1.15x after ${MAX_DUB_SHORTEN_ROUNDS} shortening rounds`;
+  const reason = `k7p2 does not fit its window even at 1.15x after ${MAX_DUB_SHORTEN_ROUNDS} shortening rounds`;
   assert.equal(await video.step(), `chatgpt-ads-off: ko dub given up (${reason}); the video goes on without it`);
+  assert.doesNotMatch(reason, HOST_ONLY, "the card shows the reason as it is: no path on the host, no command to run");
   assert.equal(video.calls("translator", "shorten").length, 1 + MAX_DUB_SHORTEN_ROUNDS);
   assert.equal(readJson(dubArtifacts(video.workdir, "ko").skipped).reason, reason);
   assert.ok(video.state().notes.includes(`ko dub skipped: ${reason}`));
@@ -3456,12 +3464,13 @@ test("a rewording that changes a number is dropped and the locale is given up; w
   assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
   assert.match(await video.step(), /^chatgpt-ads-off: ko captions translated and reviewed$/);
 
-  const en = `Jev still hears lines wrong after ${MAX_DUB_RETAKE_ROUNDS} retakes and 1 rewording round: en dub: 1 flagged`;
+  const en = `Jev still hears k7p2 wrong after ${MAX_DUB_RETAKE_ROUNDS} retakes and 1 rewording round`;
   assert.equal(await video.step(), `chatgpt-ads-off: en dub given up (${en}); the video goes on without it`);
+  assert.doesNotMatch(en, HOST_ONLY);
   assert.ok(video.state().notes.includes("en rewording dropped: k7p2: the numbers changed"));
   assert.equal(readJson(dubArtifacts(video.workdir, "en").skipped).reason, en);
 
-  const ko = `Jev still hears lines wrong after ${MAX_DUB_RETAKE_ROUNDS} retakes and ${MAX_DUB_REWORD_ROUNDS} rewording rounds: ko dub: 1 flagged`;
+  const ko = `Jev still hears k7p2 wrong after ${MAX_DUB_RETAKE_ROUNDS} retakes and ${MAX_DUB_REWORD_ROUNDS} rewording rounds`;
   assert.equal(await video.step(), `chatgpt-ads-off: ko dub given up (${ko}); the video goes on without it`);
   assert.equal(video.calls("translator", "reword").filter((call) => call.payload.locale === "ko").length, MAX_DUB_REWORD_ROUNDS);
 });
@@ -3612,6 +3621,57 @@ test("a retake that no longer fits its window is shortened, not given up", async
   assert.match(await video.step(), /^chatgpt-ads-off: en dub made after 1 shortening round, 1 retake; Jev passed every line$/);
   assert.equal(video.calls("translator", "shorten").length, 1);
   assert.equal(video.calls("translator", "reword").length, 0);
+  assert.ok(!video.runs.some((run) => run.includes("--keep-fitting")), "with a shortening round left the retake is shortened, not kept");
+});
+
+// What a give-up reason must never carry onto the admin card: a path on the host or a command to run by hand.
+const HOST_ONLY = /\/var\/lib|node tools\/video|run dub|run i18n|fit\.json/;
+
+test("a retake that no longer fits with the shortening rounds spent keeps the earlier take, and the locale goes out ready with the line named", async () => {
+  // Two plain runs over (the shortening rounds), then Jev flags k7p2 and its retake overruns.
+  const video = await finishedVideo({ dubs: { en: { over: MAX_DUB_SHORTEN_ROUNDS, redoOver: 1 } }, checks: { en: 1 } });
+  video.choose({ en: { metadata: false, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+  const line = await video.step();
+  assert.match(line, new RegExp(`^chatgpt-ads-off: en dub made after ${MAX_DUB_SHORTEN_ROUNDS} shortening rounds, 1 retake; kept the earlier take of k7p2 \\(heard as 「misheard .+」\\): the retake did not fit its window$`));
+  const flags = path.join(video.workdir, "review", "check-flags.en.json");
+  const speech = video.runs.filter((run) => /^(dub|check-audio) .*--locale/.test(run));
+  assert.deepEqual(speech.slice(-2), [`check-audio --slug ${video.slug} --locale en`, `dub --slug ${video.slug} --locale en --redo ${flags} --keep-fitting`], "the retake asked to keep what fits, and the kept take is not heard again");
+  assert.equal(video.calls("translator", "shorten").length, MAX_DUB_SHORTEN_ROUNDS, "no shortening round was left for the retake");
+  assert.equal(video.calls("translator", "reword").length, 0);
+  assert.ok(!existsSync(dubArtifacts(video.workdir, "en").skipped), "the locale is not given up");
+  assert.ok(!video.state().notes.some((note) => note.startsWith("en dub skipped")));
+  assert.ok(video.state().notes.some((note) => /^en dub kept the earlier take of k7p2 \(heard as 「misheard .+」\): the retake did not fit its window$/.test(note)), video.state().notes.join("\n"));
+  assert.equal(video.state().languages?.en, undefined, "the rounds are cleared: the track is heard");
+
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(en captions\+dub\)$/);
+  const [batch] = video.reviews("languages");
+  assert.equal(batch.payload.locales.en.dub, "ready");
+  assert.deepEqual(batch.payload.locales.en.kept_lines, ["k7p2"], "the batch names the line that kept its earlier take");
+  assert.equal(batch.summary, "語言：en CC、配音（k7p2 保留原本的錄音：重錄塞不進視窗）。配音到 Studio「語言」上傳後按「已在 Studio 上傳配音」");
+  assert.deepEqual(batch.files.map((file) => file.role), ["captions_en", "dub_en", "metadata", "languages_manifest"]);
+  assert.equal(batch.status, "pending", "the track waits for the owner's upload, as any does");
+});
+
+test("a retake whose kept take does not fit either gives the locale up naming the line, never the host's path or a command", async () => {
+  const video = await finishedVideo({ dubs: { en: { over: MAX_DUB_SHORTEN_ROUNDS } }, checks: { en: 1 } });
+  video.choose({ en: { metadata: false, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+  // The real `dub` ends its over report with the budgets' path and the command to run again.
+  const played = video.ctx.runCommand;
+  video.ctx.runCommand = async (command, runCtx) => {
+    if (command[0] !== "dub" || !command.includes("--keep-fitting")) return played(command, runCtx);
+    video.runs.push(command.join(" "));
+    const files = dubArtifacts(video.workdir, "en");
+    const fit = readJson(files.fit);
+    writeFileSync(files.fit, JSON.stringify({ ...fit, over: [{ id: "k7p2", chars: 40, max_chars: 30, seconds: 3.2, window_over_seconds: 0.8 }], kept: ["k7p2"] }));
+    return { code: 1, out: `en: 1 requests synthesized (40 billable characters); 1 windows do not fit even at 1.15x; shorten these lines to at most:\n  k7p2: 30 characters (now 40, spoken in 3.2 s; its window is 0.8 s over)\n  numbers and currency codes read slowly for their length: cut the words around them\n  budgets are in /var/lib/travel-scanner/videos/chatgpt-ads-off/dubs/en/fit.json; after i18n-merge, run dub --locale en again\n` };
+  };
+  const reason = `k7p2 does not fit its window even at 1.15x after the retake and ${MAX_DUB_SHORTEN_ROUNDS} shortening rounds`;
+  assert.equal(await video.step(), `chatgpt-ads-off: en dub given up (${reason}); the video goes on without it`);
+  assert.doesNotMatch(reason, HOST_ONLY);
+  assert.equal(readJson(dubArtifacts(video.workdir, "en").skipped).reason, reason);
+  assert.ok(video.state().notes.includes(`en dub skipped: ${reason}`));
 });
 
 /**
