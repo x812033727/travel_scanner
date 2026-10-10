@@ -72,7 +72,12 @@ def parse_xml_feed(body: bytes, base_url: str) -> list[Entry]:
                     if rel in {"alternate", ""}:
                         link = child.attrib["href"]
                         break
-        summary = _child_text(node, "summary", "description", "content")
+        # A Mintlify changelog (code.claude.com) carries the whole entry in <content:encoded>
+        # and no <description>. It is read only when the usual elements gave nothing, so a
+        # feed that has both keeps its short description.
+        summary = _child_text(node, "summary", "description", "content") or _child_text(
+            node, "encoded"
+        )
         published = _child_text(node, "published", "updated", "pubdate", "date")
         url = _join(base_url, link) if link else None
         if title and url:
