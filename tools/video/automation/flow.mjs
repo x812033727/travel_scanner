@@ -33,7 +33,7 @@ import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs"
 import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipelineStatus } from "../core/state.mjs";
 import { estimateTimeline, speechHash } from "../core/timeline.mjs";
 import { localizedThumbnailHash } from "../core/translations.mjs";
-import { MAX_TEMPO } from "../dubs/plan.mjs";
+import { MAX_TEMPO, overrunSummary } from "../dubs/plan.mjs";
 import { checkPackage, listFiles, METADATA_FILE, packageLocalesWanted, UPLOAD_DIR } from "../package/check.mjs";
 import { productionForEpisode } from "../production/design.mjs";
 import { localizationPlan, writeLocalizationRetention } from "../production/retention.mjs";
@@ -3750,7 +3750,9 @@ export class Automation {
 
   /**
    * One locale's dub track (docs/videos/DUBS.md): `dub`, and when a window does not fit even at
-   * MAX_TEMPO, the translator shortens those lines and `dub` runs again, MAX_DUB_SHORTEN_ROUNDS
+   * MAX_TEMPO (one over by a few frames is let through by `dub` itself, plan.mjs absorbOverruns,
+   * and the track's fit.json says how: the note and the line this returns carry it to the batch),
+   * the translator shortens those lines and `dub` runs again, MAX_DUB_SHORTEN_ROUNDS
    * times; then Jev listens (`check-audio --locale`) and the flagged lines are retaken,
    * MAX_DUB_RETAKE_ROUNDS times, and the lines still heard wrong after that are reworded by the
    * translator and dubbed again, MAX_DUB_REWORD_ROUNDS times. A retake that no longer fits its
@@ -3879,11 +3881,15 @@ export class Automation {
       break;
     }
     if (state.languages) delete state.languages[locale];
+    // A window `dub` let through over its slide (fit.json `absorbed`) is a note for the batch
+    // and the review: the owner hears that one window end late or a little faster.
+    const absorbed = overrunSummary(readJson(dubArtifacts(workdir, locale).fit, null)?.windows ?? []);
+    if (absorbed) state.notes.push(`${locale} dub: ${absorbed}`);
     saveState(workdir, state);
     await report(ctx, this.api, state, "languages");
     const plural = (count, word) => (count ? `${count} ${word}${count === 1 ? "" : "s"}` : "");
     const rounding = [plural(rounds.shorten, "shortening round"), plural(rounds.retakes, "retake"), plural(rounds.reword, "rewording round")].filter(Boolean).join(", ");
-    return `${slug}: ${locale} dub made${rounding ? ` after ${rounding}` : ""}; Jev passed every line`;
+    return `${slug}: ${locale} dub made${rounding ? ` after ${rounding}` : ""}; Jev passed every line${absorbed ? `; ${absorbed}` : ""}`;
   }
 
   /** Give a locale's dub up with the reason (dubs/<locale>/skipped.json); the batch reports it, the video goes on. */

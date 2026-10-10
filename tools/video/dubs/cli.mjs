@@ -3,9 +3,10 @@
 // into the zh-TW timeline's slide windows, sped up a little where a translation runs long, and the
 // track is written with the video's own loudness, and, when the script names music or a
 // sound-effect set (docs/videos/ILLUSTRATED.md), with the same bed and the cut's effects track
-// under the voice as final.mp4 has. A window that cannot fit even at MAX_TEMPO is
-// reported with a character budget per line, for the translator to shorten, and no track is
-// written for that locale until it does.
+// under the voice as final.mp4 has. A window still over at MAX_TEMPO by a few frames is let
+// through, into the pause after it or sped up alone a little further (plan.mjs absorbOverruns);
+// one over by more is reported with a character budget per line, for the translator to shorten,
+// and no track is written for that locale until it does.
 import { existsSync, mkdirSync, readFileSync, renameSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
@@ -21,7 +22,7 @@ import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, 
 import { requireProjectLease } from "../core/project-lease.mjs";
 import { eachLine, LOCALES } from "../core/schema.mjs";
 import { ARTIFACTS, dubArtifacts, lintProject, loadProject, recordStage } from "../core/state.mjs";
-import { FPS, SAMPLES_PER_FRAME, framesFor, msToSamples, speechHash } from "../core/timeline.mjs";
+import { FPS, SAMPLES_PER_FRAME, speechHash } from "../core/timeline.mjs";
 import { SpeechError, speechStatus, synthesize } from "../tts/client.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { billableForRequest } from "../tts/requests.mjs";
@@ -30,8 +31,8 @@ import { flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "../t
 import { encodeWav, parseWav, requireNarrationFormat } from "../tts/wav.mjs";
 import { CODECS, encodeArgs, measureLoudnessArgs, parseLoudnorm, stretchArgs } from "./encode.mjs";
 import {
-  DEFAULT_FORMAT, DUB_FORMATS, GUARD_MS, MAX_TEMPO,
-  assembleTrack, defaultDubLocales, defaultRate, dubLocales, dubRequests, estimatedLengths, layoutDub, measureRate, placeLines, shrinkBudgets, speechFingerprint, translationHash,
+  DEFAULT_FORMAT, DUB_FORMATS, MAX_TEMPO,
+  absorbOverruns, assembleTrack, bareWindow, defaultDubLocales, defaultRate, dubLocales, dubRequests, estimatedLengths, layoutDub, layoutDubTolerant, measureRate, overrunSummary, placeLines, shrinkBudgets, speechFingerprint, translationHash, windowLimit,
 } from "./plan.mjs";
 
 // When a stretched window still sticks out (atempo rounds), the next try is this much faster.
@@ -101,13 +102,14 @@ function prepare(project, locale, values, workdir) {
 const readClip = (file) => requireNarrationFormat(parseWav(readFileSync(file)));
 
 /**
- * Stretch a window's clips until they fit, or until MAX_TEMPO. atempo's output is a few
- * milliseconds off the exact division, so the layout is redone with the stretched lengths.
+ * Stretch a window's clips until they fit, or until `maxTempo` (MAX_TEMPO; MAX_TEMPO_OVERRUN
+ * when absorbOverruns lets one window past it). atempo's output is a few milliseconds off the
+ * exact division, so the layout is redone with the stretched lengths.
  */
-async function fitWindow(window, originals, lengths, clips, dub, ffmpeg, values) {
-  const limit = window.end_frame - framesFor(msToSamples(GUARD_MS));
+async function fitWindow(window, originals, lengths, clips, dub, ffmpeg, values, { maxTempo = MAX_TEMPO } = {}) {
+  const limit = windowLimit(window);
   // The laid-out window carries line objects; the placer takes the window as windowsOf gives it.
-  const bare = { ...window, lines: window.lines.map((line) => line.id) };
+  const bare = bareWindow(window);
   let tempo = window.tempo;
   for (;;) {
     const stretched = new Map(lengths);
@@ -126,11 +128,21 @@ async function fitWindow(window, originals, lengths, clips, dub, ffmpeg, values)
     }
     const lines = placeLines(bare, originals, stretched, { keepStarts: false }).map((line) => ({ ...line, tempo }));
     const end = lines.at(-1).end_frame;
-    if (end <= limit) return { ...window, lines, tempo, over: false, slack_frames: limit - end };
+    if (end <= limit) return { ...window, lines, tempo, kept_starts: false, over: false, slack_frames: limit - end };
     const next = Math.round((tempo + TEMPO_RETRY_STEP) * 100) / 100;
-    if (next > MAX_TEMPO + 1e-9) return { ...window, lines, tempo, over: true, slack_frames: limit - end };
+    if (next > maxTempo + 1e-9) return { ...window, lines, tempo, kept_starts: false, over: true, slack_frames: limit - end };
     tempo = next;
   }
+}
+
+/** The windows of fit.json and the dub's timeline: frames, tempo, slack, and how an overrun was let through. */
+function fitWindows(windows) {
+  return windows.map((window) => ({
+    scene: window.scene, state: window.state, start_frame: window.start_frame, end_frame: window.end_frame,
+    lines: window.lines.map((line) => line.id), tempo: window.tempo, slack_frames: window.slack_frames, over: window.over,
+    ...(window.absorbed ? { absorbed: window.absorbed, overrun_seconds: window.overrun_seconds } : {}),
+    ...(window.shifted_frames ? { shifted_frames: window.shifted_frames } : {}),
+  }));
 }
 
 /**
@@ -228,18 +240,21 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     }
   }
   const originals = new Map(timeline.lines.map((line) => [line.id, line]));
-  const windows = [];
-  for (const window of layoutDub(timeline, lengths)) {
-    if (window.tempo === 1) {
-      windows.push(window);
-      continue;
-    }
+  const stretch = async (window, ceiling = {}) => {
     if (!ffmpeg.tools) ffmpeg.tools = await ffmpeg.locate(ctx.env);
-    windows.push(await fitWindow(window, originals, lengths, clips, dub, ffmpeg, values));
-  }
+    return fitWindow(window, originals, lengths, clips, dub, ffmpeg, values, ceiling);
+  };
+  let windows = [];
+  for (const window of layoutDub(timeline, lengths)) windows.push(window.tempo === 1 ? window : await stretch(window));
+  // A window still over by a few frames is let through (plan.mjs absorbOverruns): into the pause
+  // after it, else sped up alone past MAX_TEMPO, with the next real stretch each try.
+  windows = await absorbOverruns(windows, originals, {
+    speedUp: (window, maxTempo) => stretch({ ...window, tempo: Math.round((window.tempo + TEMPO_RETRY_STEP) * 100) / 100 }, { maxTempo }),
+  });
   const measured = measureRate(texts, lengths);
   const over = windows.filter((window) => window.over).flatMap((window) => shrinkBudgets(window, texts, { lengths }));
   const tempoMax = windows.reduce((max, window) => Math.max(max, window.tempo), 1);
+  const absorbed = overrunSummary(windows);
   const fit = {
     locale,
     speech_hash: timeline.speech_hash,
@@ -248,7 +263,7 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     style_override: dub.styleOverride,
     rates: { default: defaultRate(locale, project.doc, timeline), measured },
     tempo_max: tempoMax,
-    windows: windows.map((window) => ({ scene: window.scene, state: window.state, start_frame: window.start_frame, end_frame: window.end_frame, lines: window.lines.map((line) => line.id), tempo: window.tempo, slack_frames: window.slack_frames, over: window.over })),
+    windows: fitWindows(windows),
     over,
   };
   atomicWrite(files.fit, `${JSON.stringify(fit, null, 2)}\n`);
@@ -256,8 +271,9 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     const windowsOver = windows.filter((window) => window.over).length;
     ctx.stdout.write(`${locale}: ${pending.length} requests synthesized (${billable} billable characters); ${windowsOver} windows do not fit even at ${MAX_TEMPO}x; shorten these lines to at most:\n`);
     for (const line of over) ctx.stdout.write(`  ${line.id}: ${line.max_chars} characters (now ${line.chars}, spoken in ${line.seconds} s; its window is ${line.window_over_seconds} s over)\n`);
+    if (absorbed) ctx.stdout.write(`  ${absorbed}\n`);
     ctx.stdout.write(`  numbers and currency codes read slowly for their length: cut the words around them\n  budgets are in ${files.fit}; after i18n-merge, run dub --locale ${locale} again\n`);
-    recordStage(workdir, "dub", { locale, requests: requests.length, synthesized: pending.length, billable, tempo_max: tempoMax, over: over.length }, ctx.now());
+    recordStage(workdir, "dub", { locale, requests: requests.length, synthesized: pending.length, billable, tempo_max: tempoMax, over: over.length, absorbed: windows.filter((window) => window.absorbed).length }, ctx.now());
     return EXIT.lint;
   }
 
@@ -312,10 +328,10 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     lines,
   };
   atomicWrite(files.timeline, `${JSON.stringify(presentationTimeline(record, branding), null, 2)}\n`);
-  recordStage(workdir, "dub", { locale, requests: requests.length, synthesized: pending.length, billable, fallbacks, tempo_max: tempoMax, over: 0, file: path.basename(track) }, ctx.now());
+  recordStage(workdir, "dub", { locale, requests: requests.length, synthesized: pending.length, billable, fallbacks, tempo_max: tempoMax, over: 0, absorbed: windows.filter((window) => window.absorbed).length, file: path.basename(track) }, ctx.now());
   const sped = windows.filter((window) => window.tempo > 1).length;
   const carried = [sound.track ? "music bed" : null, sound.sfxFile ? "sound effects" : null].filter(Boolean);
-  ctx.stdout.write(`${locale}: ${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; ${sped} of ${windows.length} windows sped up (max ${tempoMax}x)${carried.length ? `; with the ${carried.join(" and ")}` : ""}; ${track}\n`);
+  ctx.stdout.write(`${locale}: ${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; ${sped} of ${windows.length} windows sped up (max ${tempoMax}x)${absorbed ? `; ${absorbed}` : ""}${carried.length ? `; with the ${carried.join(" and ")}` : ""}; ${track}\n`);
   for (const note of sound.notes) ctx.stdout.write(`  ${note}\n`);
   if (journal.reused) ctx.stdout.write(`  ${journal.reused} answers paid for by an earlier run came from the speech journal, not bought again\n`);
   if (fallbacks.length) ctx.stdout.write(`  line-by-line fallback for: ${fallbacks.join(", ")}\n`);
@@ -333,11 +349,12 @@ async function dryRun(dubs, project, timeline, ctx, credentials) {
     const estimate = dub.requests.reduce((sum, request) => sum + billableForRequest(request.body), 0);
     const now = pending.reduce((sum, request) => sum + billableForRequest(request.body), 0);
     const rate = rateFor(readJson(dub.files.fit, null), dub.locale, project.doc, timeline);
-    const windows = layoutDub(timeline, estimatedLengths(dub.texts, rate));
+    const windows = await layoutDubTolerant(timeline, estimatedLengths(dub.texts, rate));
     const over = windows.filter((window) => window.over).length;
     const sped = windows.filter((window) => !window.over && window.tempo > 1).length;
+    const absorbed = overrunSummary(windows);
     ctx.stdout.write(`${dub.locale}: ${dub.requests.length} requests, ${pending.length} to synthesize; about ${now} billable characters now (${estimate} for the track)\n`);
-    ctx.stdout.write(`  at ${rate} characters a second: ${sped} of ${windows.length} windows would speed up, ${over} would not fit even at ${MAX_TEMPO}x\n`);
+    ctx.stdout.write(`  at ${rate} characters a second: ${sped} of ${windows.length} windows would speed up, ${over} would not fit even at ${MAX_TEMPO}x${absorbed ? `; ${absorbed}` : ""}\n`);
   }
   if (credentials.token) {
     const status = await speechStatus(clientOptions(ctx, credentials));

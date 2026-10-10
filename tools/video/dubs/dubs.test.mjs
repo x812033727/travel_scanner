@@ -380,6 +380,81 @@ test("dub writes a track per locale, speeds up a tight window, and reports a win
   assert.match(redo.out.stdout, /ko: 1 requests synthesized/);
 });
 
+test("a window over by a few frames at 1.15x is let through: into the pause after it, else sped up alone; one over by 0.6 s still fails its locale", async () => {
+  const box = sandbox();
+  const doc = geminiDoc(fixture());
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(doc, null, 2)}\n`);
+  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+  // At this server's 60 ms a character: en's "questions" window (x9fe) runs 0.17 s over at
+  // 1.15x and the next window's line can wait; ko's opening window runs 0.23 s over and x9fe
+  // after it is too full to wait; ja's x9fe runs 0.6 s over, past the tolerance.
+  const texts = {
+    en: (line) => (line.id === "x9fe" ? "x".repeat(26) : `EN ${line.id}`),
+    ko: (line) => (line.id === "k7p2" ? "k".repeat(42) : line.id === "m4qa" ? "m".repeat(51) : line.id === "x9fe" ? "x".repeat(16) : `KO ${line.id}`),
+    ja: (line) => (line.id === "x9fe" ? "x".repeat(34) : `JA ${line.id}`),
+  };
+  for (const [locale, textFor] of Object.entries(texts)) writeFileSync(path.join(box.dir, "i18n", `${locale}.json`), JSON.stringify(translationFor(doc, textFor)));
+  const server = fakeServer();
+  const ffmpeg = fakeFfmpeg();
+  await narrate(box, server, ffmpeg);
+  const timeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
+  const gap = framesFor(msToSamples(GAP_MS));
+
+  const run = capture(box, server, ffmpeg);
+  assert.equal(await main(["dub", "--slug", box.slug, "--locale", "en,ko,ja"], run.ctx), EXIT.lint, "ja alone is over");
+
+  // en: the overrun passes the slide change; the next window's first line starts a gap after it.
+  const en = dubArtifacts(box.workdir, "en");
+  assert.ok(existsSync(en.track("m4a")), "the English track was written");
+  const enFit = JSON.parse(readFileSync(en.fit, "utf8"));
+  assert.deepEqual(enFit.over, []);
+  const [, questions, next] = enFit.windows;
+  assert.deepEqual([questions.lines, questions.tempo, questions.slack_frames, questions.over, questions.absorbed, questions.overrun_seconds], [["x9fe"], MAX_TEMPO, -5, false, "next-slack", 0.17]);
+  assert.deepEqual([next.lines, next.tempo, next.shifted_frames, next.over], [["b3tn"], 1, 10, false]);
+  assert.equal(enFit.windows.filter((window) => window.shifted_frames).length, 1, "only the window after the overrun moved");
+  const enTimeline = JSON.parse(readFileSync(en.timeline, "utf8"));
+  const spoke = enTimeline.lines.find((line) => line.id === "x9fe");
+  const waited = enTimeline.lines.find((line) => line.id === "b3tn");
+  assert.equal(spoke.end_frame, questions.end_frame - framesFor(msToSamples(GUARD_MS)) + 5);
+  assert.equal(waited.start_frame, spoke.end_frame + gap, "the next line waits a gap after the overrun, so no two clips overlap");
+  assert.equal(enTimeline.windows[1].absorbed, "next-slack", "the dub's timeline carries the window's record too");
+  assert.equal(enTimeline.tempo_max, MAX_TEMPO);
+  assert.equal(parseWav(readFileSync(en.narration)).samples.length, timeline.total_frames * SAMPLES_PER_FRAME);
+  assert.match(run.out.stdout, /^en: .*1 of 5 windows sped up \(max 1\.15x\); 1 window ran 0\.17 s long: absorbed by the pause after it \(questions\); /m);
+
+  // ko: no room after the window, so it alone goes past 1.15x, and the next window stays put.
+  const ko = dubArtifacts(box.workdir, "ko");
+  assert.ok(existsSync(ko.track("m4a")));
+  const koFit = JSON.parse(readFileSync(ko.fit, "utf8"));
+  assert.deepEqual(koFit.over, []);
+  const [hook, after] = koFit.windows;
+  assert.deepEqual([hook.lines, hook.tempo, hook.over, hook.absorbed, hook.overrun_seconds], [["k7p2", "m4qa"], 1.21, false, "tempo", 0.23]);
+  assert.ok(hook.slack_frames >= 0, "at its own tempo the window fits again");
+  assert.deepEqual([after.tempo, after.shifted_frames], [1, undefined]);
+  assert.equal(koFit.tempo_max, 1.21);
+  assert.ok(existsSync(path.join(ko.audio, "m4qa.x1.21.wav")), "the faster take is kept beside the clip");
+  assert.ok(existsSync(path.join(ko.audio, "m4qa.x1.15.wav")), "after the 1.15x one that did not fit");
+  assert.match(run.out.stdout, /^ko: .*1 of 5 windows sped up \(max 1\.21x\); 1 window ran 0\.23 s long: sped up to 1\.21x \(hook\); /m);
+
+  // ja: 0.6 s is past the tolerance, so the window is over and the translator gets its budget.
+  const ja = dubArtifacts(box.workdir, "ja");
+  assert.ok(!existsSync(ja.track("m4a")));
+  const jaFit = JSON.parse(readFileSync(ja.fit, "utf8"));
+  assert.deepEqual(jaFit.over.map((line) => [line.id, line.chars, line.window_over_seconds]), [["x9fe", 34, 0.6]]);
+  assert.deepEqual([jaFit.windows[1].over, jaFit.windows[1].absorbed, jaFit.windows[1].tempo], [true, undefined, MAX_TEMPO]);
+  assert.match(run.out.stdout, /ja: .*1 windows do not fit even at 1.15x/);
+  assert.doesNotMatch(run.out.stdout, /ja: .*ran .* long/);
+
+  const status = capture(box, server, ffmpeg);
+  await main(["status", "--slug", box.slug], status.ctx);
+  assert.match(status.out.stdout, /dubs: en current \(en\.m4a\); ja over \(1 lines to shorten \(dubs\/ja\/fit\.json\)\); ko current \(ko\.m4a\)/);
+
+  // The dry run plans with the same tolerance.
+  const dry = capture(box, server, ffmpeg);
+  assert.equal(await main(["dub", "--slug", box.slug, "--locale", "en", "--dry-run"], dry.ctx), EXIT.ok);
+  assert.match(dry.out.stdout, /would not fit even at 1\.15x(; 1 window ran [\d.]+ s long: .*)?$/m);
+});
+
 test("--line-by-line sends one request a line, so a scene is never paid for twice", async () => {
   const box = sandbox();
   const doc = geminiDoc(fixture());
