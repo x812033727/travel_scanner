@@ -12,7 +12,8 @@ import { readApprovals } from "../core/approvals.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { cuePieces } from "../core/captions.mjs";
 import { lookHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
-import { dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, sandbox } from "../core/fixtures/load.mjs";
+import { dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, lexiconProposals, sandbox } from "../core/fixtures/load.mjs";
+import { isValidTerm, validateLexicon } from "../core/lexicon.mjs";
 import { shortsFile } from "../shorts/episode.mjs";
 import { atomicWrite, readJson, ROOT, UsageError } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
@@ -668,6 +669,51 @@ test("auto takes a video from a topic to the outline, waits for the owner, then 
   const status = await pipelineStatus({ slug, root: box.root, workdir: path.join(box.work, slug) });
   assert.equal(status.next.id, "narration synthesized");
   assert.deepEqual(automatedVideos(box.work).map((state) => [state.slug, state.verified, state.listener_done]), [[slug, true, true]]);
+});
+
+test("a dictionary term the writer proposes that lint would refuse is left out, so it fails no video's lint; a word left unknown goes back to the writer as any lint error does", async () => {
+  const box = sandbox();
+  const reworded = fixture();
+  const site = fakeSite({ answers: { writer: () => ({ video: reworded }) } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-10T06:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  const state = { slug: box.slug, title: "模型怎麼選", status: "active", created_at: "2026-10-10T05:54:00.000Z", format: "slides", replans: 0, notes: [] };
+  automation.persist(state);
+  const dictionary = () => readJson(path.join(box.videos, "lexicon.json"));
+  const seeded = Object.keys(dictionary().terms);
+
+  // The proposal of 2026-10-09: 8B went into the shared dictionary, validateLexicon refused the
+  // dictionary, and every later video ended "lint still fails after 3 fixes".
+  const spoken = fixture();
+  spoken.scenes[0].lines[0].text = `有 8B 參數的新模型出來，${spoken.scenes[0].lines[0].text}`;
+  assert.equal(await automation.saveAndLint(state, { video: spoken, lexicon_additions: { "8B": null, "6abc": null, Ai2: null } }), null);
+  assert.deepEqual(Object.keys(dictionary().terms), [...seeded, "Ai2"]);
+  assert.deepEqual(validateLexicon(dictionary()), []);
+  assert.deepEqual(state.lexicon_added, ["Ai2"]);
+  assert.equal(site.calls.run.length, 0, "8B is read as B, which needs no entry: nothing fails and no fix is asked for");
+
+  // A word that is unknown without its refused entry is the line's lint error, never the dictionary's.
+  const unknown = fixture();
+  unknown.scenes[0].lines[0].text = `代號 6abc 的新模型出來，${unknown.scenes[0].lines[0].text}`;
+  assert.equal(await automation.saveAndLint(state, { video: unknown, lexicon_additions: { "6abc": null } }), null, "the writer's fix rewords the line");
+  assert.equal(site.calls.run.length, 1);
+  assert.equal(site.calls.run[0].payload.lint_errors.length, 1);
+  assert.match(site.calls.run[0].payload.lint_errors[0], /^scenes\[0\]\.lines\[0\] .*"abc" is not in docs\/videos\/lexicon\.json/);
+  assert.deepEqual(Object.keys(dictionary().terms), [...seeded, "Ai2"]);
+
+  // Whatever a writer proposes, what the worker merges is what validateLexicon accepts.
+  const proposals = lexiconProposals();
+  assert.equal(await automation.saveAndLint(state, { video: fixture(), lexicon_additions: proposals }), null);
+  const merged = Object.keys(dictionary().terms).filter((term) => term in proposals);
+  assert.deepEqual(validateLexicon(dictionary()), []);
+  assert.ok(merged.length > 0 && merged.length < Object.keys(proposals).length, "some proposals are taken and some left out");
+  assert.ok(merged.every(isValidTerm));
+  // The worker's own limits are as they were: 40 plain characters, a spoken form of 80 at most.
+  assert.equal(dictionary().terms[`Q${"x".repeat(39)}`], "念法");
+  assert.equal(dictionary().terms["Q#"], "念".repeat(80));
+  for (const term of [`Q${"x".repeat(40)}`, "Q Code", "Q!", "Q中", "Q_x", "8", "8B", "0abc", "_x", "中"]) assert.equal(term in dictionary().terms, false, term);
+  assert.equal(site.calls.run.length, 1, "none of it is a lint error");
 });
 
 test("the planner sees every video on /admin/videos and may not retell an article one of them used", async () => {

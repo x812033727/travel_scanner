@@ -40,6 +40,23 @@ export const storyFixture = () => JSON.parse(readFileSync(STORY_FIXTURE_FILE, "u
 export const storyBrief = () => readFileSync(path.join(FIXTURES, "story", "brief.md"), "utf8");
 export const storySeries = () => JSON.parse(readFileSync(path.join(FIXTURES, "story", "series.json"), "utf8"));
 
+/**
+ * A writer's lexicon_additions made to try what the worker merges into the shared dictionary:
+ * terms that start with each kind of character (a letter, a digit, a joiner, a space, a CJK or
+ * full-width or accented letter, nothing) and end each way up to and past the worker's 40
+ * characters, each with a spoken form taken in turn from usable and unusable ones. Every value
+ * survives JSON, as a model's answer does.
+ */
+export function lexiconProposals() {
+  const starts = ["Q", "z", "0", "8", "_", "-", ".", "+", "#", "'", " ", "!", "中", "Ａ", "é", ""];
+  const rests = ["", "B", "abc", "5", "-5.5", ".js", "#", "_x", "'s", " Code", "!", "中", "x".repeat(38), "x".repeat(39), "x".repeat(40)];
+  const spoken = [null, "念法", "  念法  ", null, "", "   ", "念".repeat(80), "念".repeat(81), 5, false, [], {}];
+  const proposals = {};
+  let turn = 0;
+  for (const start of starts) for (const rest of rests) proposals[`${start}${rest}`] = spoken[turn++ % spoken.length];
+  return proposals;
+}
+
 // Every throwaway directory made here is removed when the test process exits (node --test runs
 // each test file in a process of its own), so a run leaves nothing in the system's temporary
 // directory. VIDEO_KEEP_SANDBOX=1 keeps them for a look after a failure.
