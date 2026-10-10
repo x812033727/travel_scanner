@@ -1,6 +1,6 @@
 # 影片產線：每支影片的語言與上架（設計）
 
-2026-09-27 起草。前提是 [`DESIGN.md`](DESIGN.md) 的五語 CC、[`DUBS.md`](DUBS.md) 的配音音軌（怎麼塞回時間軸、Studio 怎麼上傳）、[`HANDS-OFF.md`](HANDS-OFF.md) 的「可以上架」與 YouTube API 兩步，以及票 `2026-09-24-video-youtube-sync`（T8）。這份寫：一支影片的「語言」是什麼、站主在哪裡選、工人怎麼只做選了的、上架怎麼等語言做好。教學與漫劇都適用；漫劇的配音是第二期。票的 id 是 `2026-09-27-video-languages-*`，加上改寫的 `2026-09-26-video-dubs-worker` 與 T8。
+2026-09-27 起草。前提是 [`DESIGN.md`](DESIGN.md) 的四語 CC、[`DUBS.md`](DUBS.md) 的配音音軌（怎麼塞回時間軸、Studio 怎麼上傳）、[`HANDS-OFF.md`](HANDS-OFF.md) 的「可以上架」與 YouTube API 兩步，以及票 `2026-09-24-video-youtube-sync`（T8）。這份寫：一支影片的「語言」是什麼、站主在哪裡選、工人怎麼只做選了的、上架怎麼等語言做好。教學與漫劇都適用；漫劇的配音是第二期。票的 id 是 `2026-09-27-video-languages-*`，加上改寫的 `2026-09-26-video-dubs-worker` 與 T8。
 
 ## 一句話
 
@@ -10,7 +10,7 @@
 
 | 站主說的 | 這份怎麼做 |
 | --- | --- |
-| 目前教學應該要有多種語言的方式 | 一支影片可以掛四種語言（en、ja、ko、zh-CN），每種語言有三個部件：標題與說明、CC、配音 |
+| 目前教學應該要有多種語言的方式 | 一支影片可以掛三種語言（en、ja、ko；zh-CN 在 2026-10-09 拿掉，見文末「歷史」），每種語言有三個部件：標題與說明、CC、配音 |
 | 製作好繁體中文版後，再讓我決定要不要製作哪些多國語言 | 語言面板在成片核准後出現；預設什麼都不勾；設定分頁的「語言預設」只是預先勾選 |
 | 決定後再發布 | 「可以上架」要等語言決定了、選了的部件都做好或有跳過的原因，才排上架時間 |
 | 多國語言指的是不同語言的標題跟 CC 還有語音等 | 三個部件各自可選；縮圖 YouTube 不能分語言，所以沒有這一項 |
@@ -42,7 +42,7 @@
 | `video_projects.locales_decided_at` | 站主第一次儲存語言面板的時間（含「只出繁體中文」）；`null` 就是還沒決定 |
 | `video_projects.dub_locales` | 不再讀寫；遷移把它搬進 `locales`（三個部件都 true），欄位留著不刪（同 `subscription_max_usage_percent` 的做法） |
 | 遷移 | 已在 YouTube 上的、或 `dub_locales` 非空的影片，`locales_decided_at` 設成遷移時間；其餘留 `null`，站主要決定一次 |
-| `PUT /admin/videos/{slug}/languages` | `{"locales": {…}}`；只收 en、ja、ko、zh-CN；勾 dub 就強制 captions；漫劇拒收 dub；寫 `locales_decided_at`（第一次）與 audit `video_locales_set`；已放棄的影片拒絕。取代 `PUT …/dubs` |
+| `PUT /admin/videos/{slug}/languages` | `{"locales": {…}}`；只收 en、ja、ko；勾 dub 就強制 captions；漫劇拒收 dub；寫 `locales_decided_at`（第一次）與 audit `video_locales_set`；已放棄的影片拒絕。取代 `PUT …/dubs` |
 | `ProjectSummary`／`ProjectOut` | 帶 `locales`、`locales_decided_at`、`languages`（每個語言每個部件 `ready`｜`working`｜`skipped: <原因>`｜`uploaded`，伺服器從最新的 `languages` 審核算出）；工人從既有的影片清單就看得到 |
 | 審核 gate `languages` | 取代 `dubs`（`Gate` 留著 `dubs` 讓舊列讀得出來，CHECK 加 `languages`）。payload `{ locales: { en: { metadata: "ready", captions: "ready", dub: "ready" }, ja: { …, dub: "skipped", reason } } }`，檔案：說明欄 `.txt`、字幕 `.srt`、音軌（role `dub_<locale>`，m4a、mp3 或 wav，照配音做出來的格式），加上當下的 `metadata.json`（role `metadata`）與綁定核准來源的語言清單（role `languages_manifest`，雜湊就是審核的 content hash；YouTube 同步只收有這兩份的批次，見 [`APPROVED-LANGUAGE-PACKAGE.md`](APPROVED-LANGUAGE-PACKAGE.md)）。**沒有配音的批次伺服器直接核准**（沒有站主要做的事）；有配音的等站主在 Studio 上傳後按「已上傳」 |
 | 設定分頁 | `caption_locales` 與 `drama_caption_locales`（[`DRAMA-FLOW.md`](DRAMA-FLOW.md)）改成「語言面板預先勾選」：只影響面板打開時勾了什麼，不會自己做任何語言 |
@@ -56,7 +56,6 @@
 | 英文 | ☐ | ☐ | ☐ |
 | 日文 | ☐ | ☐ | ☐ |
 | 韓文 | ☐ | ☐ | ☐ |
-| 簡體中文 | ☐ | ☐ | ☐ |
 
 三顆鈕：「照預設勾選」（設定分頁的預先勾選）、「只出繁體中文」（存空的 `locales`，寫 `locales_decided_at`）、「儲存」。每一格旁邊顯示狀態：製作中、已完成、跳過（原因）、已上傳（配音）。上架後面板還在，多勾就再做一批；取消勾選只對還沒送上 YouTube 的部件有效，已經送上去的要站主自己在 Studio 刪，面板會這樣寫。
 
@@ -87,14 +86,14 @@
 
 旁白不是 zh-TW 的影片（`narration_locale`，例如 `en`）：面板不會列 zh-TW，但 `captions`、`package`、`qa` 永遠要它（`alwaysLocales`），所以語言一決定，工人先把 zh-TW 的標題說明與 CC 翻一次（不配音），再做勾了的；什麼都沒勾時只把 `captions` 與 `package` 重寫一次，不送語言批次。成片審核卡也永遠帶旁白語言與 zh-TW 的標題說明。
 
-沒勾語言、或按了「只出繁體中文」的影片：`captions` 只寫 zh-TW，`package` 只有 zh-TW，跟現在比少了四個語系的檔案，其餘一個位元組都不變。`caption_locales` 不再驅動任何工作。
+沒勾語言、或按了「只出繁體中文」的影片：`captions` 只寫 zh-TW，`package` 只有 zh-TW，跟現在比少了三個語系的檔案，其餘一個位元組都不變。`caption_locales` 不再驅動任何工作。
 
 之後多勾的：工人看到 `locales` 裡有 ready／skipped 都沒有的部件就再做一批，送新的 `languages` 審核（舊的 superseded）。
 
 ## 成本
 
-- 翻譯：每個語言一次翻譯加一次審稿呼叫（現在四語都做，之後只做勾的，只會少不會多）。
-- 配音：`DUBS.md` §成本（一條 10 分鐘約 US$0.135；四條約 US$0.54；月額度要先調高）。
+- 翻譯：每個語言一次翻譯加一次審稿呼叫（現在三語都做，之後只做勾的，只會少不會多）。
+- 配音：`DUBS.md` §成本（一條 10 分鐘約 US$0.135；三條約 US$0.41；月額度要先調高）。
 - YouTube 配額：T8 一支約 2,100 單位，語系少配額也少（`captions.insert` 一個語系 400）。
 
 ## 與其他票的關係
@@ -116,3 +115,7 @@
 | `video-languages-skill-docs` | `publish.md`、`automated.md`、`drama.md`、`README.md` 的字幕與配音列、`DUBS.md` 指到這份 | `.agents/skills/youtube-video/references`、`docs/videos/README.md`、`docs/videos/DUBS.md` | dubs-worker |
 
 順序：api → web 與 dubs-worker 平行 → T8 → skill-docs。api 落地後第二批三支（成片已核准、`locales_decided_at` 為 `null`）會出現在「需要你」等語言決定，這是預期的。
+
+## 歷史
+
+- 2026-10-09：站主把 zh-CN 從影片的語言拿掉（「預計四語就好」）：一支影片是 zh-TW 旁白，可加 en、ja、ko 三種語言的標題說明、CC 與配音。已經在 YouTube 上掛了 zh-CN 標題或字幕的影片照舊留著，站只會加、不會刪。網站本身仍是五個語系（文章、介面、`apps/api/app/i18n.py`），影片的語言表不再跟它（`tools/video/core/schema.mjs` 的 `LOCALES`）。

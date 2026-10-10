@@ -134,9 +134,9 @@ test("the language choice is read as the site writes it: only the ticked languag
   mkdirSync(box.workdir, { recursive: true });
   assert.equal(readLanguages(box.workdir), null, "no file: no choice");
   assert.equal(chosenLocales(null, "captions"), null);
-  assert.deepEqual(captionLocalesOf(null), ["zh-TW", "en", "ja", "ko", "zh-CN"], "without a choice every locale is made, as before");
+  assert.deepEqual(captionLocalesOf(null), ["zh-TW", "en", "ja", "ko"], "without a choice every locale is made, as before");
 
-  writeLanguages(box.workdir, { locales: { ja: { metadata: true, captions: false, dub: true }, en: { metadata: true, captions: false, dub: false }, "zh-CN": { metadata: false, captions: false, dub: false }, "zh-TW": { metadata: true } }, decided_at: "2026-09-27T10:00:00Z", synced_at: "2026-09-27T10:05:00Z" });
+  writeLanguages(box.workdir, { locales: { ja: { metadata: true, captions: false, dub: true }, en: { metadata: true, captions: false, dub: false }, ko: { metadata: false, captions: false, dub: false }, "zh-TW": { metadata: true } }, decided_at: "2026-09-27T10:00:00Z", synced_at: "2026-09-27T10:05:00Z" });
   const written = readJson(path.join(box.workdir, LANGUAGES_FILE));
   assert.equal(written.synced_at, "2026-09-27T10:05:00Z");
   const choice = readLanguages(box.workdir);

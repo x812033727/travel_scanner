@@ -27,7 +27,7 @@
 | 裁決 | `judge`／`verdict` | 查核模型對一份文件的判斷：每個必要項目「有／弱／無」、問題清單、雷同作品清單、一行備註 |
 | 免關卡 | `hands_off` | 文件、劇本、設定圖、分鏡都由查核與伺服器規則決定 |
 | 畫面等級 | `visual_tier`、鏡頭的 `visual` | 一集裡多少鏡頭買片段：`clips` 全部、`hybrid` 四成、`stills` 一成；其餘鏡頭是 `visual: "still"`，關鍵影格加運鏡 |
-| 合集 | `compilation`、影片 `<作品>-full` | 全部集數完成後，把每集成片依序接成一支：集間 2 秒章節卡、片尾 4 秒卡、章節＝每集、五語字幕合併、企劃寫標題／說明／標籤／縮圖 |
+| 合集 | `compilation`、影片 `<作品>-full` | 全部集數完成後，把每集成片依序接成一支：集間 2 秒章節卡、片尾 4 秒卡、章節＝每集、四語字幕合併、企劃寫標題／說明／標籤／縮圖 |
 | 冷開場 | — | 合集模式的每一集沒有片頭卡：第一句就是鉤子，最後一句是懸念，之後沒有任何總結 |
 
 ## 流程
@@ -43,7 +43,7 @@
      → 設定圖（judge 最高分自動選）→ 旁白（Jev）→ 關鍵影格 → 分鏡（judge 自動核准）→ 片段（只買 visual: clip 的鏡頭）→ 配樂 → 合成（still 鏡頭走 zoompan）→ 字幕 → qa → 成片自動核准 → 上傳包 → 上架確認自動核准
      → 前情寫回 → 自動開下一集（series_max_in_flight 集同時）
   → 全部集數 done：作品 finished → 工人拿到 compilation 工作
-  → 合集：企劃寫標題／說明／標籤／縮圖 → render 章節卡與縮圖 → compile 串接 → 五語標題與說明 → qa（6 項）→ 成片自動核准 → 上傳包 → 進「可以上架」
+  → 合集：企劃寫標題／說明／標籤／縮圖 → render 章節卡與縮圖 → compile 串接 → 四語標題與說明 → qa（6 項）→ 成片自動核准 → 上傳包 → 進「可以上架」
   → 站主從作品頁或「可以上架」卡下載 1080p 成片 → Studio 上傳私人 → 貼網址、選上架時間
 ```
 
@@ -297,7 +297,7 @@ payload 是 `tools/video/review/sync.mjs` 送審 `script` 關卡時的 `coverage
 - **一鍵開拍**（`NewBingeForm`，漫劇分頁最上面）：題材六張卡（名稱＋一句話）、主角（女主／男主／雙男主）、故事前提（選填；自訂必填）、總長度（30–480，預設 120）、每集分鐘（2–4）、畫面做法（全片段／混合／靜圖，各一句說明）、風格預設、備註；改動 300 ms 後向 `binge-quote` 要估算，顯示「N 集，M 篇（每篇 K 集）· 片段 S 秒 · 圖片 I 張 · 約 US$X」與四條預算，不夠的標紅並寫「先到設定分頁調高」；按「一鍵開拍」→ `POST …/series`（`hands_off: true`、`compilation: true`、`open_ended: false`）→ 開作品頁。
 - **作品卡與作品頁**（`BingePills`）：題材、畫面等級、「免關卡」、合集狀態（等每集完成／等工人開始／製作中／完成）、「共 N 分鐘」。作品頁多「免關卡」勾選（`PATCH` `hands_off`，關掉就回到逐份核准）、完結後「做合集」（`POST …/actions/compile`）。文件區塊照舊顯示每版的備註，所以自動核准的裁決與退回理由（「查核：…」「[auto] 查核沒過：…」）都看得到。
 - **合集區**：合集影片的標題、目前步驟（`STEP_LABELS`）、待站主數、「開影片」，以及 `CompilationDownload`：`download_available` 時「下載 1080p 成片」（`/api/admin-video-download/<slug>`），否則「成片還在工人的工作區」。
-- **可以上架**：合集的卡片寫「作品 X 的合集」，同一個下載連結；上傳包的其他檔（縮圖、五語字幕與說明）照舊從審核檔案區下載。
+- **可以上架**：合集的卡片寫「作品 X 的合集」，同一個下載連結；上傳包的其他檔（縮圖、四語字幕與說明）照舊從審核檔案區下載。
 - **設定**：`series_max_in_flight` 上限 6（`SERIES_IN_FLIGHT_MAX`）。
 - 字串在 `admin.videoSeries.binge.*`、`genres.*`、`leads.*`、`tiers.*`、`compilation*`、`admin.videoReviews.downloadCompilation` 等，五語都有（`npm run check:i18n`）。
 

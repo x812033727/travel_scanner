@@ -57,7 +57,7 @@ metadata:
 | 作品：名稱、主幹（每個核准點的討論）、討論串、劇本關卡、一致性（人物表、設定圖存檔、前情）、張力規格、指令、坑 | `.agents/skills/youtube-video/references/series.md` |
 | 作品的代理提示（設定集、總綱、篇章細綱、每集撰稿與查核、前情） | `.agents/skills/youtube-video/references/prompts/series-setting.md`、`series-outline.md`、`series-chapter.md`、`writer-series.md`、`verifier-series.md` |
 | 一鍵合集：一鍵表單與報價、免關卡的規則、節奏規格與爽點、畫面等級上限、`compile` 指令、下載、坑 | `.agents/skills/youtube-video/references/series.md` 的「合集作品（一鍵）」；still 鏡頭的 `visual` 與運鏡關鍵字在 `drama.md` |
-| 一鍵合集的代理提示（文件裁決、合集的標題／說明／標籤／縮圖與四語翻譯） | `.agents/skills/youtube-video/references/prompts/verifier-series-doc.md`、`planner-compilation.md`；工人實際送出的文字是 `tools/video/automation/prompts.mjs` |
+| 一鍵合集的代理提示（文件裁決、合集的標題／說明／標籤／縮圖與三語翻譯） | `.agents/skills/youtube-video/references/prompts/verifier-series-doc.md`、`planner-compilation.md`；工人實際送出的文字是 `tools/video/automation/prompts.mjs` |
 | 品牌故事：工人拿到什麼、一步一次呼叫的主幹、長度從哪裡來、查核（段落、PDF、`reviewer_only`、紀年換算）、畫面、卡住時站主怎麼辦 | `.agents/skills/youtube-video/references/story.md` |
 | Shorts：三條內容線、腳本格式、`build`／`check-audio`／`qa`／`package`／`push`／`import` 與結束碼、12 項品管沒過時怎麼修、實測的規範、工人的 Shorts 步驟、坑 | `.agents/skills/youtube-video/references/shorts.md`；上架的做法在 `publish.md` 的「Shorts 的上架」 |
 | Shorts 的代理提示（每週排片、補題、實測的撰稿與查核、每週報告） | `.agents/skills/youtube-video/references/prompts/shorts-plan.md`、`shorts-brief.md`、`shorts-lab.md`、`shorts-report.md`；工人實際送出的文字是 `tools/video/shorts/prompts.mjs` |
