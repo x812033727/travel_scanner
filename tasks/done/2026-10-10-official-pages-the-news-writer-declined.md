@@ -1,13 +1,13 @@
 ---
 id: 2026-10-10-official-pages-the-news-writer-declined
 title: Official pages the news writer declined become video topic candidates
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-official-accounts
 claimed_at: 2026-10-10T08:58:33Z
 created_at: 2026-10-10T07:35:26Z
-completed_at:
+completed_at: 2026-10-10T09:23:47Z
 branch: claude/official-video-topics
 depends_on:
   - 2026-10-10-add-official-changelog-and-developer-update
@@ -44,7 +44,7 @@ newsworthy, no article is written, and the planner never sees it.
 - [x] The planner prompt says how to treat an official topic.
 - [x] A first set of sources is opted in in `sources.json`.
 - [x] `docs/videos/AUTOMATION.md` describes the third source and its two limits.
-- [ ] The duration receipt is re-bound by an independent reviewer.
+- [x] The duration receipt is re-bound by an independent reviewer.
 
 ## Steps
 
@@ -64,7 +64,7 @@ newsworthy, no article is written, and the planner never sees it.
       "Anthropic engineering", "GitHub Changelog" and "Cursor changelog".
 - [x] Tests: `apps/api/tests/test_video_automation_topics.py` and
       `tools/video/automation/prompts.test.mjs`.
-- [ ] Receipt: `tools/video/long-form/review.mjs` binds `schemas.py` and `prompts.mjs`.
+- [x] Receipt: `tools/video/long-form/review.mjs` binds `schemas.py` and `prompts.mjs`.
       An agent other than the author reviews the two diffs for DURATION_ONLY, appends an
       increment to `docs/videos/long-form/review.md` and updates `review.json`.
 
@@ -80,6 +80,11 @@ npm run check:tasks
 
 ## Notes
 
+- Receipt: reviewer `claude-pr-review-official-topics` (a separate agent that wrote none of
+  the change) reviewed commit `30544d813` for DURATION_ONLY and passed it; the increment is
+  "Official pages as video topics increment" in `docs/videos/long-form/review.md`. It binds
+  the bytes of that commit: if a rebase or a merge with main changes `schemas.py` or
+  `prompts.mjs` again, the two hashes have to be reviewed and bound again.
 - Decided with the plan the owner approved on 2026-10-10: the switch is the per-source
   config key, not a checkbox on `/admin/videos`. A setting would need a migration and
   changes to six receipt-bound files; the key needs neither, and turning it on is the
