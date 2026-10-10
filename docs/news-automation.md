@@ -58,9 +58,10 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    candidate already drafting. Matching a page to a story by event rather than by link
    (through Jev) is not built; both wait on an owner decision (task
    `2026-10-06-match-news-evidence-by-event`).
-   A source with `evidence_from_feed_summary` (the Claude Platform release notes, whose
-   entries all link to anchors on one page) is not fetched page by page: each entry's feed
-   summary is its evidence, its anchor URL the canonical URL, and revalidation and
+   A source with `evidence_from_feed_summary` (the Claude Platform release notes and the
+   Claude Code changelog, whose entries all link to anchors on one page) is not fetched
+   page by page: each entry's feed summary is its evidence, its anchor URL the canonical
+   URL, and revalidation and
    「用最新來源重新查核」 read the entry from the feed again. A URL of that site the feed does
    not list (an aged-out entry, a page linked from another source) is read as a page.
    A source whose dated entries of the last week keep failing for more than six hours is
@@ -259,6 +260,17 @@ reply, and the dropped bounds are written into the field descriptions.
    parser settings (`items_path`, `article_ids`, `include_path_prefixes`,
    `max_entries_per_scan`, `max_entry_age_hours`, …). Every source in the file keeps the
    72-hour window; raise it only for a feed that adds posts days after their own date.
+   `max_entries_per_scan` is the top of the listing, not a number of new entries: the
+   first N entries are looked at on every scan (20 unless set, 50 at most), so an entry
+   that has dropped below N before a scan is never read. A feed item's summary is its
+   `summary`, `description` or `content`, and `content:encoded` only when none of those
+   has text. Two sources may share a host (two listings of one site), but when a page is
+   read the scanner and revalidation keep one source per host, whichever comes last. So
+   sources sharing a host must agree on `role`, first-party and the page-reading keys
+   (`article_*`, `exclude_*`), and a source with `evidence_from_feed_summary` must be the
+   only one on its host; `tests/test_news_sources_cli.py` checks both against the file.
+   Which company each source covers, and which official pages cannot be read yet and
+   why, is in [`official-ai-accounts.md`](official-ai-accounts.md).
    One evidence page is enough to draft; automatic
    publication needs a second website, which the scanner only finds through the article's
    own links, so the list pairs press feeds with the first-party hosts they cite. A link

@@ -1,11 +1,11 @@
 ---
 id: 2026-10-09-dub-skipped-because-jev-still-hears
 title: Dub skipped because Jev still hears lines wrong is the top skip reason
-status: in-progress
+status: open
 priority: P1
 area: tools
-owner: claude-fable-5.1
-claimed_at: 2026-10-09T15:28:30Z
+owner:
+claimed_at:
 created_at: 2026-10-09T14:49:20Z
 completed_at:
 branch:
@@ -95,3 +95,8 @@ three dubs ticked, and its `languages` card showing dubs ready rather than skipp
   (4 skips, a retake that overran its window).
 - The ready tracks were never uploaded either; see
   `2026-10-09-languages-card-says-the-site-cannot`.
+- 2026-10-10: merged as #1416 and live. Checked in the video-worker container:
+  `VIDEO_SECOND_OPINION` set, `WHISPER_MODEL=medium`, faster-whisper 1.2.1 imports, `HF_HOME`
+  on the volume is writable and huggingface.co answers 200. The model has not been fetched
+  yet: the first dub check after this downloads about 1.5 GB. Still open for the measurement:
+  compare the next ten videos' first languages batch with the baseline above.
