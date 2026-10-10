@@ -1,6 +1,6 @@
 # 全自動路線：AI 撰稿、台灣口音旁白、自動做成片
 
-這條路線的成品是一支投影片加旁白的影片。旁白由伺服器代為合成（頻道聲音是 Gemini 的 Sulafat；Azure 是另一個供應商，站主覺得它的聲音太平），畫面由 HTML 版型截圖，合成用 ffmpeg。每支先只出繁體中文（CC 與標題說明）；其他語言（en、ja、ko、zh-CN 的標題說明、CC、配音）由站主在成片核准後為每支影片勾選才做（`docs/videos/LANGUAGES.md`，下面第 13 步）。關卡有四個（`docs/videos/HANDS-OFF.md`），前三個由 AI 決定，站主決定的是語言與上架時間：
+這條路線的成品是一支投影片加旁白的影片。旁白由伺服器代為合成（頻道聲音是 Gemini 的 Sulafat；Azure 是另一個供應商，站主覺得它的聲音太平），畫面由 HTML 版型截圖，合成用 ffmpeg。每支先只出繁體中文（CC 與標題說明）；其他語言（en、ja、ko 的標題說明、CC、配音）由站主在成片核准後為每支影片勾選才做（`docs/videos/LANGUAGES.md`，下面第 13 步）。關卡有四個（`docs/videos/HANDS-OFF.md`），前三個由 AI 決定，站主決定的是語言與上架時間：
 
 | 關卡 | 誰決定 | 什麼時候才輪到站主 |
 | --- | --- | --- |
@@ -90,7 +90,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 
 寫作重點：
 
-- **旁白語言**：預設 zh-TW。英文影片在 `video.json` 頂層寫 `"narration_locale": "en"`（2026-09-28 起，英文第一季 `docs/ai-video-en-season-01/`），`youtube.default_language` 也要是 `en`。這時：lint 只要求全大寫的縮寫（SEC、GPT、API）進字典，一般英文字照寫；字典裡含中文的唸法（`p95 → P 九十五`）自動不套用，跟配音一樣；`voice.style` 寫英文版的語氣（`tools/video/dubs/plan.mjs` 的 `DUB_STYLES.en` 可以直接抄）；`check-audio` 以 `en` 轉寫與判斷，同音字與語助詞規則不用；`i18n-sheet` 以英文為原文翻成 zh-TW、ja、ko、zh-CN，配音也可以做 zh-TW；說明欄的標籤文字用英文版。長度估算沿用每分鐘 250 個「單位」（一個英文字算兩單位，約 125 字／分），Gemini 實唸約 150 字／分，所以估計偏長兩成，跟中文一樣。
+- **旁白語言**：預設 zh-TW。英文影片在 `video.json` 頂層寫 `"narration_locale": "en"`（2026-09-28 起，英文第一季 `docs/ai-video-en-season-01/`），`youtube.default_language` 也要是 `en`。這時：lint 只要求全大寫的縮寫（SEC、GPT、API）進字典，一般英文字照寫；字典裡含中文的唸法（`p95 → P 九十五`）自動不套用，跟配音一樣；`voice.style` 寫英文版的語氣（`tools/video/dubs/plan.mjs` 的 `DUB_STYLES.en` 可以直接抄）；`check-audio` 以 `en` 轉寫與判斷，同音字與語助詞規則不用；`i18n-sheet` 以英文為原文翻成 zh-TW、ja、ko，配音也可以做 zh-TW；說明欄的標籤文字用英文版。長度估算沿用每分鐘 250 個「單位」（一個英文字算兩單位，約 125 字／分），Gemini 實唸約 150 字／分，所以估計偏長兩成，跟中文一樣。
 - **分類**（`category`，可省略；2026-10 起）：`/admin/videos` 篩選用，代碼與站上的 `VIDEO_CATEGORIES`（`tools/video/core/schema.mjs`，同 `apps/api/app/models.py`）一致，共十個：`ai-terms`（AI 名詞解釋）、`ai-news`（AI／科技時事）、`tutorial`（教學實作）、`comparison`（比較評測）、`explainer`（觀念解說）、`story`（品牌故事）、`drama`（漫劇）、`long-drama`（長篇劇）、`travel`（旅遊）、`other`（其他）；寫別的 lint 會擋。worker 的每次回報（`flow.mjs` 的 `report()`，狀態檔的 `category` 優先，其次 `video.json`）與 `review-push` 都會帶上它；站上只替還沒分類的影片填，站主在頁面上改過的分類不會被回報蓋掉，所以每個階段都送是安全的。品牌故事由 story 流程自動寫 `"story"`，第一次回報就帶；其他影片沒寫就是「未分類」，等站主在頁面上歸類。
 - **句子 id**：用 `ids` 產生，是穩定的短碼。插入新句子時不要重新編號，翻譯、快取和站主的唸錯標記都靠它對齊。
 - **章節**：有 `chapter` 的場景會開一個 YouTube 章節，也就是進度條上可以點選的段落。
@@ -131,7 +131,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 - 每月上限由站主在後台卡片設定。超過時伺服器以 429 拒絕，請求不會送到 Azure，所以不會產生費用。
 - Gemini 以送出的文字字數計，和 Azure 分開算，預設每月 300,000 字（約一百支 10 分鐘影片）。
 - 實測合成語速約每分鐘 300 字（48 kHz 單聲道），工具估計用 250，所以 `lint` 估的長度偏長。2026-10-04 一支說書口吻的插圖投影片量到相反的結果：`lint` 估 12.2 分鐘，合成旁白實際 13.07 分鐘（約長 7%）；每個狀態的估計秒數也偏短，估計時過關的狀態到真實時間軸上超過 8 秒，要到 QA 的 `pace` 項才量得到。只量過這一支，原因還沒分開量（口吻、語速、停頓都有可能），所以估計可能偏長也可能偏短：長度與每個狀態的秒數都以 `tts` 之後的實際時間軸為準，接近 8 秒的狀態撰稿時就先拆。長度規則只有 8 分鐘以上（站主 2026-10-04 定）：`target_minutes` 的上緣是撰稿瞄準的長度，不是上限，估計超過上緣 `lint` 不再警告；不為了壓進目標刪事實，也不灌水。每集至少 8 分鐘（普通漫劇除外）：`lint` 估計不足 8 分鐘、`target_minutes` 下限低於 8 都是錯誤；成片品管的 `assemble` 項量到成片不足 8 分鐘就不過，要加寫旁白後重跑 `tts` 與 `assemble`。知識科普／AI名詞用10分鐘製作目標，品牌故事保留13分鐘；五類長片另外核對當前正文及成片各480秒、speech hash與影格綁定，片頭片尾不計正文。普通工人／CLI會忽略 `VIDEO_MIN_EPISODE_MINUTES=0`；只有 Node test runner 及 repository 的 `assemble/smoke.mjs` 短範例入口可放寬估算／通用成片門檻，五類長片的實測正文門檻始終不受該變數影響。
-- 配音音軌（`dub`）以送出的翻譯字數計：一支 10 分鐘的影片，en 約 10,000、ja 約 6,000、ko 約 6,500、zh-CN 約 5,000 個 Gemini 字元，四條約 28,000（含場景切分的標記）。額度不夠時把 `video_speech_gemini_monthly_character_limit` 調高。翻譯與審稿的模型呼叫只花在站主勾了的語言上（每語一次翻譯加一次審稿）。
+- 配音音軌（`dub`）以送出的翻譯字數計：一支 10 分鐘的影片，en 約 10,000、ja 約 6,000、ko 約 6,500 個 Gemini 字元，三條約 23,000（含場景切分的標記）。額度不夠時把 `video_speech_gemini_monthly_character_limit` 調高。翻譯與審稿的模型呼叫只花在站主勾了的語言上（每語一次翻譯加一次審稿）。
 
 ## 坑
 

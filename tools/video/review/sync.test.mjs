@@ -875,7 +875,7 @@ function publishPackage(box) {
     slug: box.slug, title: "AI 模型怎麼挑", description: "本文", tags: ["AI 模型"], chapters: [{ at: "00:00", title: "開場" }, { at: "00:10", title: "三個問題" }, { at: "00:20", title: "結論" }],
     default_language: "zh-TW", localizations: { en: { title: "en title", description: "en body" } },
     final_sha256: sha(final), thumbnail: "thumbnail.jpg", captions: ["captions/en.srt", "captions/zh-TW.srt"],
-    skipped_caption_locales: { ja: "no translation", ko: "no translation", "zh-CN": "no translation" },
+    skipped_caption_locales: { ja: "no translation", ko: "no translation" },
     contains_synthetic_media: false, disclosure_reason: "slides read by a stock TTS voice",
   };
   const bytes = `${JSON.stringify(metadata, null, 2)}\n`;
@@ -1011,7 +1011,7 @@ test("a worker holding the old package cannot submit while the owner's replaceme
 test("language reviews fit the summary limit without losing any locale, files or full skip reasons", async (t) => {
   const emptyReasonSummary = "語言：en 標題說明、CC、配音跳過（）。沒有要你上傳的配音";
   const boundaryReason = "𠮷".repeat(500 - [...emptyReasonSummary].length);
-  const longReasons = Object.fromEntries(["en", "ja", "ko", "zh-CN"].map((locale) => [locale, `${locale}: ${Array.from({ length: 120 }, (_, index) => `line-${index}`).join(", ")} 無法塞入視窗𠮷`]));
+  const longReasons = Object.fromEntries(["en", "ja", "ko"].map((locale) => [locale, `${locale}: ${Array.from({ length: 120 }, (_, index) => `line-${index}`).join(", ")} 無法塞入視窗𠮷`]));
   for (const [label, reasons, detailed] of [["exactly 500 Unicode characters", { en: boundaryReason }, true], ["several long locale reasons", longReasons, false]]) {
     await t.test(label, async () => {
       const chosen = Object.fromEntries(Object.keys(reasons).map((locale) => [locale, { metadata: true, captions: true, dub: true }]));
@@ -1034,8 +1034,8 @@ test("language reviews fit the summary limit without losing any locale, files or
 });
 
 // docs/videos/APPROVED-LANGUAGE-PACKAGE.md: what YouTube sync takes a language batch with.
-const CHOSEN = { en: { metadata: true, captions: true }, ja: { captions: true }, "zh-CN": { metadata: true, dub: true } };
-const DUB_GIVEN_UP = { "zh-CN": "配音字數超出時間軸，改用字幕" };
+const CHOSEN = { en: { metadata: true, captions: true }, ja: { captions: true }, ko: { metadata: true, dub: true } };
+const DUB_GIVEN_UP = { ko: "配音字數超出時間軸，改用字幕" };
 const identity = (row) => ({ review_id: row.id, content_sha256: row.content_sha256 });
 const sameFile = (a, b) => ["role", "sha256", "size", "content_type"].every((key) => a?.[key] === b?.[key]);
 
@@ -1049,7 +1049,7 @@ test("a language batch names the upload confirmation, final cut and choice it be
   t.after(() => rmSync(box.base, { recursive: true, force: true }));
   await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
   const batch = site.newest("languages");
-  assert.deepEqual(batch.files.map((file) => file.role), ["description_en", "captions_en", "captions_ja", "description_zh-CN", "captions_zh-CN", "metadata", "languages_manifest"]);
+  assert.deepEqual(batch.files.map((file) => file.role), ["description_en", "captions_en", "captions_ja", "description_ko", "captions_ko", "metadata", "languages_manifest"]);
   const manifestBytes = readFileSync(path.join(box.workdir, "review", "languages.json"));
   assert.equal(batch.content_sha256, sha(manifestBytes));
   assert.deepEqual(batch.files.at(-1), { role: "languages_manifest", sha256: sha(manifestBytes), size: manifestBytes.length, content_type: "application/json" });
@@ -1062,7 +1062,7 @@ test("a language batch names the upload confirmation, final cut and choice it be
   assert.deepEqual([manifest.schema_version, manifest.slug], [1, box.slug]);
   assert.deepEqual(manifest.source, { publish: identity(site.newest("publish")), final: identity(site.newest("final")), script: null, branding_hash: null, speech_hash: timeline.speech_hash, compilation_hash: null });
   assert.deepEqual(manifest.choice, { locales: siteChoice(CHOSEN), decided_at: DECIDED_AT });
-  assert.deepEqual(manifest.choice.locales, { en: { metadata: true, captions: true, dub: false }, ja: { metadata: false, captions: true, dub: false }, "zh-CN": { metadata: true, captions: true, dub: true } });
+  assert.deepEqual(manifest.choice.locales, { en: { metadata: true, captions: true, dub: false }, ja: { metadata: false, captions: true, dub: false }, ko: { metadata: true, captions: true, dub: true } });
   assert.deepEqual(manifest.locales, batch.payload.locales);
   assert.deepEqual(manifest.files, batch.files.slice(0, -1), "every file but the manifest itself");
   const metadata = JSON.parse(metadataBytes);
@@ -1075,7 +1075,7 @@ test("a language batch names the upload confirmation, final cut and choice it be
 
 test("an English-narrated video's own language is its original: its dub is a skip with the reason, its captions the confirmation's own", async (t) => {
   const chosen = { en: { metadata: true, captions: true, dub: true }, ja: { metadata: true, captions: true } };
-  const { box, site } = await confirmedVideo({ name: "en", chosen, translated: ["zh-TW", "ja", "ko", "zh-CN"] });
+  const { box, site } = await confirmedVideo({ name: "en", chosen, translated: ["zh-TW", "ja", "ko"] });
   t.after(() => rmSync(box.base, { recursive: true, force: true }));
   await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
   const batch = site.newest("languages");
@@ -2137,7 +2137,7 @@ test("the script gate sends the checker's similar works and retention verdict wh
 const COMPILATION_FRAMES = EPISODES.reduce((sum, slug) => sum + EPISODE_FRAMES[slug], 0) + EPISODES.length * 60 + 120;
 
 test("a compilation reports its series, goes up for the final gate with the six-item check and a capped preview, and its package keeps final.mp4 home", async () => {
-  const box = compilationSandbox({ captions: Object.fromEntries(EPISODES.map((slug) => [slug, ["zh-TW", "en", "ja", "ko", "zh-CN"]])) });
+  const box = compilationSandbox({ captions: Object.fromEntries(EPISODES.map((slug) => [slug, ["zh-TW", "en", "ja", "ko"]])) });
   writeTranslations(box, box.doc);
   const compiled = compileContext(box, fakeFfmpeg({ total: COMPILATION_FRAMES }));
   assert.equal(await main(["compile", "--slug", box.slug], compiled.ctx), EXIT.ok, compiled.out.stderr);
