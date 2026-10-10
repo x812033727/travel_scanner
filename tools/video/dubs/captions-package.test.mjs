@@ -95,7 +95,8 @@ test("captions of a locale with a current dub follow the dub's timing; the other
   const en = currentDub(project, box.workdir, "en", speech);
   assert.equal(en.locale, "en");
   assert.ok(en.file.endsWith(path.join("dubs", "en.m4a")));
-  assert.equal(dubRole("zh-CN"), "dub_zh_cn");
+  assert.equal(dubRole("ko"), "dub_ko");
+  assert.equal(dubRole("zh-CN"), "dub_zh_cn", "an older package's track, from before zh-CN left the video languages");
 
   const captionLines = captionTimelineOf(en).lines;
   assert.equal(captionLines[0].end_frame, captionLines[1].start_frame, "a dubbed line's cues run to the next dubbed line");
@@ -231,10 +232,10 @@ test("review-push --gate dubs sends the tracks bound to a manifest, and the owne
 test("the final review page plays each dub track beside the video", () => {
   const doc = fixture();
   const timeline = { ...estimateTimeline(doc), speech_hash: "abc123" };
-  const html = finalReviewHtml(doc, timeline, { problems: [] }, [{ locale: "en", format: "m4a", tempo_max: 1 }, { locale: "zh-CN", format: "mp3", tempo_max: 1.1 }]);
+  const html = finalReviewHtml(doc, timeline, { problems: [] }, [{ locale: "en", format: "m4a", tempo_max: 1 }, { locale: "ko", format: "mp3", tempo_max: 1.1 }]);
   assert.match(html, /<h2>配音音軌<\/h2>/);
   assert.match(html, /<audio controls preload="none" src="\.\.\/dubs\/en\.m4a">/);
-  assert.match(html, /<audio controls preload="none" src="\.\.\/dubs\/zh-CN\.mp3">/);
+  assert.match(html, /<audio controls preload="none" src="\.\.\/dubs\/ko\.mp3">/);
   assert.match(html, /最快處 1\.1 倍速/);
   assert.doesNotMatch(finalReviewHtml(doc, timeline, { problems: [] }), /配音音軌/);
 });

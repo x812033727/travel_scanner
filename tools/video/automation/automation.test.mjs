@@ -2298,7 +2298,7 @@ test("from the picked outline to YouTube without the owner: the final gate sends
   assert.deepEqual([metadata.contains_synthetic_media, metadata.disclosure_reason], [false, "slides read by a stock TTS voice; YouTube's disclosure covers realistic synthetic people, events and places"]);
   assert.deepEqual(Object.keys(metadata).slice(-2), ["contains_synthetic_media", "disclosure_reason"], "the same two keys last, as qa writes them");
   assert.deepEqual(metadata.captions, ["captions/zh-TW.srt"]);
-  assert.deepEqual(Object.keys(metadata.skipped_caption_locales), ["en", "ja", "ko", "zh-CN"], "with no choice written yet, every locale without a file says why");
+  assert.deepEqual(Object.keys(metadata.skipped_caption_locales), ["en", "ja", "ko"], "with no choice written yet, every locale without a file says why");
   assert.equal(metadata.language_choice, null);
   const uploadMd = readFileSync(path.join(workdir, "upload", "UPLOAD.md"), "utf8");
   assert.doesNotMatch(uploadMd, /- \[ \]/, "no self-check list: the automatic checks cover it");
@@ -2724,7 +2724,7 @@ test("the worker draws a language's own thumbnail before its batch with render -
   const { thumbnail_locales: drawn, thumbnail_locale_gaps: gaps, ...rest } = readJson(work("frames", "manifest.json"));
   assert.deepEqual(rest, manifest, "the manifest gains the language thumbnails and nothing else");
   assert.deepEqual(drawn, { en: { file: "thumbnails/en.jpg", hash: localizedThumbnailHash(project.doc, project.translations.en) } });
-  assert.deepEqual(Object.keys(gaps), ["ja", "ko", "zh-CN"], "the untranslated languages are notes");
+  assert.deepEqual(Object.keys(gaps), ["ja", "ko"], "the untranslated languages are notes");
   for (const name of kept) assert.ok(readFileSync(work(name)).equals(bytes[name]), `${name} is not touched`);
   assert.deepEqual(await statusOf(), steps, "the final stays approved and the frames current");
   const metadata = readJson(video.upload("metadata.json"));
@@ -3023,11 +3023,13 @@ test("an English-narrated video the owner gives no other language gets zh-TW onc
 // the cue boundaries, and the caption reviewer the glossary and the boundaries
 // (2026-10-05-caption-translation-chain-upgrade, prompts.test.mjs pins the sections); the
 // shortening and rewording passes kept their bytes.
+// 2026-10-09: zh-CN left the video languages (the owner: four languages are enough), so every
+// text says "four languages" and the zh-CN register and length lines are gone; all four changed.
 const ZH_TW_PROMPT_SHA256 = {
-  translator: "effa201292e5589a8341501689969bfcc076a7c85be8afe9de1f4cc35833b957",
-  caption_reviewer: "a46eca4ef3d8535d7f2c22723f8597ddd90f74db0ef81b78c0da03b3d70f1749",
-  "translator:shorten": "eb96a8de3915d89bed631a93463d0b22344f44e442b5465abe57fcc06b1d6ac6",
-  "translator:reword": "627d9729bd01b766d025ed82b9edde4dc5fd4f051372a14f8e1bad3b88a9eb6a",
+  translator: "ef34287d2ac2449dac34a105d26ab9d8e255a2e6fa41ceda7304c78b269bba64",
+  caption_reviewer: "52456f5b30e7c539cb0c84e105fc821ece01c4fb323a573f4d49cfa7e8c62647",
+  "translator:shorten": "4253eeb617b7998df7ec725e74d9bebaa64e83018371b2d695748a9758f9d5be",
+  "translator:reword": "d87f8a43b9c5ecd33c9da5e6f9cb19f6331f0261752c3140a824a1994ff53481",
 };
 const promptSha = (text) => createHash("sha256").update(text).digest("hex");
 
@@ -3042,8 +3044,8 @@ test("a zh-TW video's translator and caption reviewer prompts are the same bytes
   }
   assert.deepEqual([INSTRUCTIONS.translator, INSTRUCTIONS.caption_reviewer, TRANSLATOR_SHORTEN, TRANSLATOR_REWORD].map(promptSha), Object.values(ZH_TW_PROMPT_SHA256));
 
-  assert.deepEqual(Object.keys(SOURCE_INSTRUCTIONS), ["en", "ja", "ko", "zh-CN"], "every narration language but zh-TW");
-  const names = { en: "English", ja: "Japanese", ko: "Korean", "zh-CN": "Simplified Chinese (mainland China)" };
+  assert.deepEqual(Object.keys(SOURCE_INSTRUCTIONS), ["en", "ja", "ko"], "every narration language but zh-TW");
+  const names = { en: "English", ja: "Japanese", ko: "Korean" };
   for (const [source, texts] of Object.entries(SOURCE_INSTRUCTIONS)) {
     assert.deepEqual(Object.keys(texts), Object.keys(ZH_TW_PROMPT_SHA256));
     for (const [key, text] of Object.entries(texts)) {

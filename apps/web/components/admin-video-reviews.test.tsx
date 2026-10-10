@@ -431,7 +431,7 @@ describe("AdminVideoReviews", () => {
         locales = body.locales;
         return Promise.resolve(Response.json({ ...summary, locales, reviews: [] }));
       }
-      if (url.includes("/admin/video-automation/settings")) return Promise.resolve(Response.json({ caption_locales: ["ja", "zh-CN"], drama: { drama_caption_locales: ["en"] } }));
+      if (url.includes("/admin/video-automation/settings")) return Promise.resolve(Response.json({ caption_locales: ["ja", "ko"], drama: { drama_caption_locales: ["en"] } }));
       if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json([summary]));
       return Promise.resolve(Response.json({
         ...summary, ready_to_upload: false, locales, locales_decided_at: "2026-09-27T04:30:00Z",
@@ -467,7 +467,7 @@ describe("AdminVideoReviews", () => {
     fireEvent.click(within(panel).getByRole("button", { name: "照預設勾選" }));
     await waitFor(() => expect(box("日文 CC 字幕").checked).toBe(true));
     expect(box("日文 標題與說明").checked).toBe(true);
-    expect(box("簡體中文 CC 字幕").checked).toBe(true);
+    expect(box("韓文 標題與說明").checked).toBe(true);
     expect(box("英文 標題與說明").checked).toBe(false);
     expect(box("韓文 配音").checked).toBe(false);
     expect(save).toHaveProperty("disabled", false);

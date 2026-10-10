@@ -4,6 +4,7 @@ from typing import Any
 
 import pytest
 
+from app.guides.pack_ingest import lint_document
 from app.guides.schemas import CalloutBlock, GuideDocument
 from app.news_automation.policy import (
     CRYPTO_DISCLAIMERS,
@@ -77,13 +78,20 @@ def test_explicit_warning_in_either_callout_field_does_not_create_a_second_notic
     original = document(locale, block)
     before = original.model_dump(mode="json")
 
-    # The news policy and generic finance lint agree even on an existing title-only warning.
+    # News accepts an explicit warning in either callout field without rewriting it.
+    # The shared finance rule keeps requiring the marker in the body for other articles.
     assert disclaimer_problems(original, locale) == []
+    if field == "title":
+        assert any(
+            problem.code == "finance_no_disclaimer"
+            for problem in lint_document(original, "life", topics=["finance", "crypto"])
+        )
     noticed = with_crypto_disclaimer(original, "crypto", locale)
     callouts = [block for block in noticed.blocks if isinstance(block, CalloutBlock)]
     assert len(callouts) == 1
     assert callouts[0].title == before["blocks"][1]["title"]
-    assert CRYPTO_MARKERS[locale] in callouts[0].text
+    assert noticed.model_dump(mode="json") == before
+    assert document_fingerprint(noticed) == document_fingerprint(original)
     assert noticed.blocks[-1] == original.blocks[-1]
     assert disclaimer_problems(noticed, locale) == []
     assert with_crypto_disclaimer(noticed, "crypto", locale) == noticed
@@ -119,13 +127,56 @@ def test_reported_japanese_and_korean_endings_survive_the_correction_round(
     callouts = [block for block in normalized.blocks if isinstance(block, CalloutBlock)]
     assert len(callouts) == 1
     assert callouts[0].title == title
-    assert CRYPTO_MARKERS[locale] in callouts[0].text
+    assert callouts[0].text == text
     assert disclaimer_problems(normalized, locale) == []
     assert with_crypto_disclaimer(normalized, "crypto", locale) == normalized
-    # Normalizing model-authored wording requires a new review hash; it is not silently
-    # treated as a site addition or rebound to an old passing assessment.
-    assert document_fingerprint(normalized) != original_hash
+    assert normalized == corrected
+    assert document_fingerprint(normalized) == original_hash
     assert document_fingerprint(corrected) == original_hash
+
+
+@pytest.mark.parametrize("locale,title,text", [
+    (
+        "en", "Not investment advice",
+        "This report does not provide investment recommendations.",
+    ),
+    (
+        "ja", "投資助言ではありません",
+        "本記事は報道内容を整理したもので、投資を勧めるものではありません。",
+    ),
+])
+def test_a_reviewers_removal_of_a_redundant_tail_is_not_undone(
+    locale: str, title: str, text: str,
+) -> None:
+    marker = CRYPTO_MARKERS[locale]
+    suffix = f" {marker}。" if locale == "ja" else f" {marker}."
+    translated = document(locale, {
+        "type": "callout", "title": title, "text": text + suffix,
+    })
+    corrected = document(locale, {"type": "callout", "title": title, "text": text})
+
+    # The correction retains the warning in its title. Reattaching the removed fragment
+    # used to give the second reviewer exactly the input the first reviewer had refused.
+    retained = with_crypto_disclaimer(corrected, "crypto", locale)
+    assert retained == corrected
+    callout = next(block for block in retained.blocks if isinstance(block, CalloutBlock))
+    assert callout.text == text
+    assert disclaimer_problems(retained, locale) == []
+    assert document_fingerprint(retained) != document_fingerprint(translated)
+    assert document_fingerprint(retained) == document_fingerprint(corrected)
+
+
+def test_an_explicit_warning_does_not_bypass_other_hard_checks() -> None:
+    original = document("en", {
+        "type": "callout", "title": "Not investment advice", "text": "Reader notice.",
+    }, {"type": "paragraph", "text": "This is a buy signal."})
+    before = original.model_dump(mode="json")
+    problems = hard_policy_problems(original, "crypto", "en", source_count=1)
+
+    assert disclaimer_problems(original, "en") == []
+    assert any(problem.startswith("no_table:") for problem in problems)
+    assert "crypto_recommendation: price or trading language is not allowed" in problems
+    assert original.model_dump(mode="json") == before
 
 
 @pytest.mark.parametrize("locale", list(CRYPTO_MARKERS))
@@ -193,17 +244,14 @@ def test_a_warning_in_plain_prose_does_not_satisfy_the_required_callout() -> Non
     assert disclaimer_problems(noticed, "en") == []
 
 
-def test_a_full_callout_is_held_without_truncating_it_or_creating_a_duplicate() -> None:
+def test_a_full_callout_keeps_its_valid_title_warning_without_a_body_append() -> None:
     original = document("ja", {
         "type": "callout", "title": "投資助言ではありません", "text": "本文" * 1000,
     })
     noticed = with_crypto_disclaimer(original, "crypto", "ja")
     assert noticed == original
     assert len([block for block in noticed.blocks if isinstance(block, CalloutBlock)]) == 1
-    assert any(
-        problem.startswith("finance_no_disclaimer")
-        for problem in disclaimer_problems(noticed, "ja")
-    )
+    assert disclaimer_problems(noticed, "ja") == []
 
 
 @pytest.mark.parametrize("vertical", ["ai", "tech"])

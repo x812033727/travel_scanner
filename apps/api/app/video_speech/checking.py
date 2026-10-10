@@ -43,18 +43,12 @@ TRANSCRIBE_INSTRUCTIONS = (
     "(for example AI, GPT, p95). Write numbers the way they are spoken. Do not correct, "
     "summarize or add anything. Output only the transcript."
 )
-# One prompt per track language (the values of TrackLanguage in schemas.py). zh-CN keeps
-# Mandarin's rules in Simplified characters, numbers included, since a zh-CN script writes them
-# in words as often as a zh-TW one does. The other three are read from translations that write
-# numbers as digits, so their transcribers are left to do the same.
+# One prompt per track language (the values of TrackLanguage in schemas.py). The three dubs are
+# read from translations that write numbers as digits, so their transcribers are left to do the
+# same. A zh-CN dub is not made since 2026-10-09 (a video's languages are four), so it has no
+# prompt any more.
 TRANSCRIBE_INSTRUCTIONS_BY_LANGUAGE: dict[str, str] = {
     NARRATION_LANGUAGE: TRANSCRIBE_INSTRUCTIONS,
-    "zh-CN": (
-        "Transcribe this Mandarin narration word for word in Simplified Chinese characters as "
-        "used in mainland China. Write English words and acronyms as Latin letters the way they "
-        "are spoken (for example AI, GPT, p95). Write numbers the way they are spoken. Do not "
-        "correct, summarize or add anything. Output only the transcript."
-    ),
     "en": (
         "Transcribe this English narration word for word. Write acronyms and product names as "
         "Latin letters the way they are spoken (for example AI, GPT, p95). Do not correct, "
@@ -82,7 +76,6 @@ TERMS_HINT = (
 )
 SOUND_ALIKE_SCRIPT = {
     NARRATION_LANGUAGE: "Chinese characters",
-    "zh-CN": "Chinese characters",
     "en": "other words",
     "ja": "kana",
     "ko": "Hangul",

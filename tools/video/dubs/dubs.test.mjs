@@ -132,7 +132,6 @@ test("budgets follow the slot and the rate; an overflowing window shrinks every 
   // Before a dub is measured, its rate is the narration's own rate scaled per language.
   const anchor = narrationRate(doc, timeline);
   assert.ok(anchor > 0);
-  assert.equal(defaultRate("zh-CN", doc, timeline), Math.round(anchor * 100) / 100);
   assert.equal(defaultRate("en", doc, timeline), Math.round(anchor * RATE_RATIOS.en * 100) / 100);
   assert.equal(defaultRate("en", doc, null), DEFAULT_RATES.en, "without a timeline, the fixed starting value");
 });
@@ -318,8 +317,8 @@ test("dub writes a track per locale, speeds up a tight window, and reports a win
 
   const unchosen = capture(box, server, ffmpeg);
   assert.equal(await main(["dub", "--slug", box.slug, "--dry-run"], unchosen.ctx), EXIT.ok);
+  // Every dub locale without a choice; zh-CN, once left out here, is no longer a video language (2026-10-09).
   for (const locale of ["en", "ja", "ko"]) assert.match(unchosen.out.stdout, new RegExp(`^${locale}: `, "m"));
-  assert.doesNotMatch(unchosen.out.stdout, /^zh-CN: /m, "zh-CN is dubbed only when chosen");
 
   const sheet = capture(box, server, ffmpeg);
   assert.equal(await main(["i18n-sheet", "--slug", box.slug, "--locale", "en"], sheet.ctx), EXIT.ok);

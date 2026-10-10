@@ -17,8 +17,10 @@ import { localizationPlanProblems } from "../production/retention.mjs";
 export const SCHEMA_VERSION = 1;
 // drama: AI-generated shots instead of slides (docs/videos/DRAMA.md); its rules live in drama.mjs.
 export const FORMATS = ["slides", "screencast", DRAMA_FORMAT];
-// Same order as apps/api/app/i18n.py; zh-TW is the narration language.
-export const LOCALES = ["zh-TW", "en", "ja", "ko", "zh-CN"];
+// The languages a video can carry (docs/videos/LANGUAGES.md): zh-TW is the narration language,
+// the other three are the ones the owner may add. The site itself has five locales
+// (apps/api/app/i18n.py, with zh-CN); the owner dropped zh-CN from videos on 2026-10-09.
+export const LOCALES = ["zh-TW", "en", "ja", "ko"];
 export const NARRATION_LOCALE = "zh-TW";
 /** The locale a video is narrated in: its `narration_locale`, zh-TW when it has none or an unknown one. */
 export const narrationLocale = (doc) => (LOCALES.includes(doc?.narration_locale) ? doc.narration_locale : NARRATION_LOCALE);

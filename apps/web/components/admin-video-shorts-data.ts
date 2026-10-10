@@ -9,7 +9,7 @@ export type ShortsState = (typeof SHORTS_STATES)[number];
 export type SlotStatus = "open" | "planned" | "assigned" | "locked" | "scheduled" | "published" | "missed" | "skipped";
 export const VIEWS = ["calendar", "library", "metrics", "costs", "topics", "report", "settings"] as const;
 export type View = (typeof VIEWS)[number];
-export const SHORTS_LOCALES = ["en", "ja", "ko", "zh-CN"] as const;
+export const SHORTS_LOCALES = ["en", "ja", "ko"] as const;
 export type ShortsLocale = (typeof SHORTS_LOCALES)[number];
 
 export type Slot = {

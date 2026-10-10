@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "找網頁設計公司前：需求書、報價與交付清單",
@@ -56,10 +59,8 @@
               "text": "用你自己的素材和文字說明需求。參考網站可以"
             },
             {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
+              "type": "text",
+              "text": "標記"
             },
             {
               "type": "text",
@@ -169,6 +170,7 @@
           "width": 1600,
           "height": 900,
           "caption": "把網站需求寫成可操作、可檢查、可交接的工作。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -269,6 +271,1050 @@
         },
         {
           "title": "WordPress 軟體授權",
+          "url": "https://wordpress.org/about/license/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Before Hiring a Web Design Agency: The Brief, Quotes and Deliverables Checklist",
+      "description": "Before hiring a web design agency, define your site's audience, key actions and deliverables so you can compare quotes. Using a small studio as an example, this guide covers page and template counts, content duties, feature specs, mobile and accessibility checks, account and source-file handover, and post-launch maintenance terms. An editable requirements checklist helps reduce extra costs and communication gaps; no agency recommendations are included.",
+      "hero": {
+        "src": "/guides/web-design-agency-brief/hero-en.jpg",
+        "alt": "Original illustrations of documents, a screen and folders show website requirements, acceptance testing and assets for handover.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "“We want a polished website” is a useful starting point for discussion, but not a suitable basis for a quote. Two websites may each have ten pages, yet ten articles sharing one template and ten pages requiring different interactions involve very different amounts of design and maintenance work."
+        },
+        {
+          "type": "paragraph",
+          "text": "A project brief does not need to be a hefty specification document. Start by telling the agency what visitors need to accomplish, what you can provide and what counts as completed delivery. This makes differences between quotes traceable to actual work. The following adaptable brief uses a hypothetical small studio offering craft classes."
+        },
+        {
+          "type": "heading",
+          "text": "Define Visitor Tasks Before Deciding What Goes on the Site",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The studio wants to introduce its brand, help visitors find suitable classes and receive enrollment inquiries. The brief can begin with three tasks: view class details and transportation information, compare dates and suitability, and submit an inquiry with contact information. Specify the completion screen for each task, rather than simply listing “Home, About Us, Contact Us.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "Next, specify what is outside the current phase, such as live availability, online payments and member accounts. These boundaries affect data sources, error handling and administrative permissions. If the site only accepts inquiries through a form, its confirmation message must not suggest that a place has been reserved."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Explain your requirements using your own materials and text. On reference websites, you can "
+            },
+            {
+              "type": "text",
+              "text": "highlight"
+            },
+            {
+              "type": "text",
+              "text": " the navigation style, information order or proportion of whitespace you like to help the designer understand your aims; do not ask them to copy someone else's images, wording or entire visual design. Also note what does not work for you, such as excessive animation or a contact option that is hard to find on mobile."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "List Pages, Templates, Content and Features Separately",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Start by drawing a site tree, then mark shared templates. For example, a homepage, a brand introduction page, a class listing page, six class detail pages and a contact page total ten pages, but may require only five main templates. Clarify whether you can add data yourself as the number of classes grows, or whether the agency must lay out every new page."
+        },
+        {
+          "type": "paragraph",
+          "text": "Assign responsibility for each content item: who writes class descriptions, takes photos, obtains instructors' consent to use their likenesses, organizes prices, supplies English translations and uploads how many entries. If images are not ready, provide their aspect ratios, quantities and intended uses, and agree on a replacement schedule. Approving a design with placeholder text does not mean the final content has been proofread."
+        },
+        {
+          "type": "paragraph",
+          "text": "Feature descriptions should cover the starting point, inputs, success and failure. For a contact form, for example, specify its fields, the recipient's email address, how missing information is flagged and how delivery failures are detected. For payment, booking or third-party integrations, separately list account eligibility requirements, fees and integration responsibilities; do not merely name a service."
+        },
+        {
+          "type": "heading",
+          "text": "Compare Quotes Alongside Rules for Changes",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Put each agency's quote into the same scope comparison table, listing design templates, content entries, revision rounds, integrations, data migration and training. Two quotes with the same total may differ because one includes content upload while the other delivers an empty website. Price differences may also reflect image production, language versions or post-launch support, so page counts alone are not enough."
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose the project has four milestones: requirements confirmation, visual design approval, feature completion and handover. Ask for inspectable results at each stage. Payment arrangements are for both parties to negotiate, but deliverables should be specific, such as a mobile class-page prototype, a testable form and a complete asset inventory, rather than simply “eighty percent complete.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "A change order need not be complicated: state the new requirement, affected pages, additional cost, delivery date and approval date. Distinguish fixes needed to meet the original specifications, agreed revision rounds and new features so that replacing a photo does not trigger another dispute. For work that cannot yet be priced, list the assumptions and when an estimate will follow, leaving room for decisions."
+        },
+        {
+          "type": "heading",
+          "text": "Test Complete Workflows, Not Just Homepage Screenshots",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Use titles of realistic length, longer names, phone photos and potentially incomplete data for acceptance testing. Find a class from the homepage, read its restrictions, submit the form and check that the administrator receives the notification. Only by completing the whole sequence can you tell whether the information and features connect properly. Use agreed test data in forms and tell recipients how to recognize it."
+        },
+        {
+          "type": "paragraph",
+          "text": "On mobile, check whether menus open and close, tables overflow, buttons are obscured, images crop out key details and the site remains usable with enlarged text. W3C's introductory checks also cover keyboard focus, headings, image alternative text and form labels. These can serve as preliminary checks, but passing them does not mean a comprehensive accessibility evaluation is complete."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the site must meet a specific accessibility standard, state its version, level, scope and evaluation method in advance, and have people with the relevant expertise perform acceptance testing. W3C recommends incorporating these responsibilities and evaluations into the development process and maintaining accessibility over time. Do not wait until the final day to make “accessibility” a promise with no defined testing scope."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Define acceptance-testing paths around visitor tasks, covering success, failure and return actions.",
+            "Use content of realistic length and check it on the agreed devices, browsers and text-zoom settings.",
+            "For each issue, record the URL, steps, expected and actual results, and date.",
+            "After fixes, repeat the affected workflows and retain a record of unfinished items and who is responsible for follow-up."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Hand Over Assets, Permissions and Data Needed to Rebuild",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The deliverables checklist should identify account ownership for the domain, hosting, administration system, analytics tools and integrated services. Separately list original design files, code, images, content, configuration instructions and licensing records. Not every platform provides code you can deploy yourself. If using a hosted service, confirm what can be exported and the restrictions on leaving the platform before signing the contract."
+        },
+        {
+          "type": "paragraph",
+          "text": "Using WordPress does not mean that handing over a single export file is enough. The official tool exports posts, pages and related content data in WXR format. During handover, also confirm how to back up and restore website files, the database, media, and theme and plugin settings. Practice in an agreed test environment so that missing essential data is discovered before a failure."
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress software is licensed under GPLv2 or later, but the project may also include photos, fonts, external services and paid support. Record each item's source, usage terms, person responsible for renewal and expiration date. Do not assume all materials can be used freely just because the site uses open-source software. Transfer accounts through appropriate permissions and secure channels, rather than leaving shared passwords in the requirements document indefinitely."
+        },
+        {
+          "type": "heading",
+          "text": "Define the Scope of Post-Launch Maintenance",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Maintenance can be divided into content updates, system updates, backup and recovery, and incident handling, with frequency, responsibility and billing specified for each. Ask the agency how quickly it responds to reported failures, how it classifies them and whether actual repairs are included. A “one-year warranty” without a defined scope can easily create mismatched expectations."
+        },
+        {
+          "type": "paragraph",
+          "text": "Test the updates you will handle yourself, too. Actually add a class, replace an image and preview the mobile page, using the account permissions you will receive after handover. Video tutorials and operating instructions should match the delivered version and identify fields you should not change yourself, giving future studio staff a reliable reference."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before closing the project, mark each requirement as completed, deferred or canceled, and record the reason. Launch marks the start of a new phase: changing classes, additional content and user feedback will continue to require revisions. A clear management process keeps every small update from feeling like a new website project."
+        },
+        {
+          "type": "image",
+          "src": "/guides/web-design-agency-brief/diagram-1-en.svg",
+          "alt": "Four sections cover task definition, scope confirmation, acceptance testing and asset handover for an outsourced website, each listing information to check.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Turn website requirements into work that can be carried out, checked and handed over.",
+          "description": "Four sections cover task definition, scope confirmation, acceptance testing and asset handover for an outsourced website, each listing information to check.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Requirement",
+            "Hypothetical Studio Example",
+            "Acceptance Evidence"
+          ],
+          "rows": [
+            [
+              "Main task",
+              "Submit a contact request after reading about a class",
+              "Complete workflow and notification results"
+            ],
+            [
+              "Pages and templates",
+              "Ten content pages and five main templates",
+              "Page list and shared-template descriptions"
+            ],
+            [
+              "Content responsibilities",
+              "The studio supplies photos; the agency uploads six classes",
+              "Materials inventory and upload completion status"
+            ],
+            [
+              "Usability",
+              "Select classes on mobile and use the form with a keyboard",
+              "Test conditions, issues and fix records"
+            ],
+            [
+              "Handover and maintenance",
+              "Accounts, source files, backups and operating tutorials",
+              "Asset inventory, permissions list and recovery procedures"
+            ]
+          ],
+          "caption": "An original sample project brief; actual page counts, specifications, fees and acceptance criteria depend on the project agreement."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Requirements You Can Check Make Quotes Easier to Compare",
+          "text": "Keep a version of the requirements that everyone can access, and record the impact of additions separately. Do not replace workflow acceptance testing with presentation screenshots, or assume that receiving an administrator account completes the handover of all assets."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Estimate the Full Website Budget First",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Schedule Regular Website Maintenance",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Understand WordPress Backup and Recovery",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "W3C Planning and Managing Web Accessibility",
+          "url": "https://www.w3.org/WAI/planning-and-managing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C Easy Checks for Web Accessibility",
+          "url": "https://www.w3.org/WAI/test-evaluate/easy-checks/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress Content Export Tool",
+          "url": "https://wordpress.org/documentation/article/tools-export-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress Software License",
+          "url": "https://wordpress.org/about/license/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Webデザイン会社を探す前に：要件書・見積もり・納品リスト",
+      "description": "Webデザイン会社を探す前に、サイトの対象者、主な操作、納品内容を明確に書き出すと、見積もりを比較しやすくなります。本記事では小さな工房のサイト要件を例に、ページ数とテンプレート数、コンテンツの担当、機能仕様、スマートフォンとアクセシビリティの検収、アカウントや元ファイルの引き継ぎを整理し、公開後の保守の取り決め方も解説します。そのまま書き換えて使える要件リストで、追加費用や認識のずれを減らす手助けをします。制作会社のおすすめ一覧は掲載していません。",
+      "hero": {
+        "src": "/guides/web-design-agency-brief/hero-ja.jpg",
+        "alt": "書類、画面、フォルダーのオリジナルイラストで、サイトの要件、操作の検収、引き継ぐ資産を表現。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "「上質なサイトが欲しい」は話し合いの出発点には適していますが、そのまま見積もりの根拠にはできません。同じ十ページのサイトでも、共通テンプレートを使う十本の記事と、それぞれ異なる操作が必要な十種類のページでは、デザインや保守の作業量が大きく変わります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要件書を分厚い仕様書にする必要はありません。訪問者が何を達成するのか、自分たちが何を提供できるのか、何をもって納品完了とするのかを制作会社に伝えれば、見積もりの違いを実際の作業に結び付けて確認できます。以下では、ハンドメイド講座を開く小さな工房を想定し、書き換えて使える要件のひな形を作ります。"
+        },
+        {
+          "type": "heading",
+          "text": "まず訪問者のタスクを書き、その後にサイトに載せるものを決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "工房はブランドを紹介し、訪問者に適した講座を見つけてもらい、受講の申し込み希望を送ってもらいたいと考えています。要件書にはまず、講座内容とアクセス情報を確認する、日程と自分に合うかを比較する、連絡先を含む希望内容を送信する、という三つのタスクを書けます。各タスクに完了時の画面を指定し、「トップページ、私たちについて、お問い合わせ」と並べるだけで終わらせないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "次に、今回対応しないことを明記します。例えば、残席数のリアルタイム表示、オンライン決済、会員アカウントは設けない、といった内容です。こうした境界は、データの取得元、エラー処理、管理画面の権限に影響します。フォームでの問い合わせだけなら、席が確保されたと誤解させる確認メッセージを表示してはいけません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ご自身の素材と言葉で要望を説明しましょう。参考サイトには"
+            },
+            {
+              "type": "text",
+              "text": "印を付けて"
+            },
+            {
+              "type": "text",
+              "text": "、好みのナビゲーションの方式、情報の順序、余白の比率を示すことで、デザイナーに目的を伝えられます。他人の画像や文章、ビジュアル一式をそのまま再現するよう求めてはいけません。アニメーションが多すぎる、スマートフォンでは問い合わせへの入口が見つけにくいなど、合わない点も書き出しましょう。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "ページ、テンプレート、コンテンツ、機能を分けて列挙する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まずサイトの構成をツリー形式で示し、共通テンプレートを使う箇所に印を付けるとよいでしょう。例えば、トップページ一ページ、ブランド紹介一ページ、講座一覧一ページ、六つの講座詳細ページ、お問い合わせページで計十ページですが、主なテンプレートは五種類だけで済むかもしれません。講座が増えたとき、自分たちでデータを追加できるのか、ページごとに制作会社へレイアウトを依頼する必要があるのか、事前に確認しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "コンテンツの責任は項目ごとに割り振ります。講座紹介を書く人、写真を撮る人、講師の肖像使用の同意を得る人、料金を整理する人、英訳を用意する人、そして登録する件数を決めます。画像がまだ用意できていない場合は、先に縦横比、点数、用途を伝え、差し替え日程を取り決めます。仮の文章でデザインを承認しても、正式なコンテンツの校正が完了したことにはなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "機能の説明には、操作の起点、入力内容、成功時と失敗時の挙動を含めます。例えば、お問い合わせフォームに必要な項目、送信先のメールアドレス、未入力時の案内、送信失敗を検知する方法です。決済、予約、外部ツールと連携する場合は、アカウントの利用資格、費用、連携の担当を別途記載し、サービス名だけで済ませないようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "見積もりの比較と併せて変更ルールを整理する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "各社の見積もりを同じ作業範囲表にまとめ、デザインのテンプレート、コンテンツ件数、修正回数、機能連携、データ移行、操作研修を列挙します。総額が同じでも、片方はコンテンツ登録を含み、もう片方は空のサイトを納品するだけかもしれません。差額は画像制作、多言語版、公開後のサポートから生じることもあるため、ページ数だけでは比較できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プロジェクトを要件確認、ビジュアル確定、機能完成、引き継ぎの四つの節目に分ける場合、各段階に確認可能な成果物を求められます。支払い条件は双方で協議して決めますが、成果物は「八割完成」とだけ書くのではなく、モバイル版の講座ページのプロトタイプ、テスト可能なフォーム、完全な資産リストなど、具体的に示すべきです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "変更依頼書は複雑にする必要はありません。追加要件、影響するページ、追加費用、納期、確認日を明記すれば十分です。当初の仕様に対する不具合の修正、合意済みの修正回数に含まれる作業、機能追加を区別し、写真を差し替えるたびに議論をやり直さずに済むようにします。まだ見積もれない部分は、前提条件と追加見積もりの時期を先に記載し、判断の余地を残します。"
+        },
+        {
+          "type": "heading",
+          "text": "検収ではトップページの画像を見るだけでなく、実際に操作する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "本番相当の長さの見出し、長めの氏名、スマートフォンで撮影した写真、欠落する可能性のあるデータを使って検収しましょう。トップページから講座を探し、制約事項を読み、フォームを送信して、管理者が通知を受け取るところまで一通り操作して初めて、情報と機能がつながっているかが分かります。フォームのテストには合意したテストデータを使い、受信者にも見分け方を伝えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "スマートフォンでの検収では、メニューを開閉できるか、表がはみ出さないか、ボタンが隠れていないか、画像の重要な部分が切れていないか、文字を拡大しても操作できるかを確認します。W3C の入門チェックには、キーボードフォーカス、見出し、画像の代替テキスト、フォームのラベルも含まれます。これらは初期チェックに組み込めますが、通過しても包括的なアクセシビリティ評価が完了したことにはなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "特定のアクセシビリティ基準への適合が必要な場合は、バージョン、レベル、対象範囲、評価方法を事前に明記し、対応する能力を持つ人に検収を依頼します。W3C は、関連する責任と評価を制作工程に組み込み、継続的に維持することを推奨しています。最終日になってから、テスト範囲もない「アクセシビリティ対応」という約束だけで済ませてはいけません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "訪問者のタスクに沿って検収の操作経路を列挙し、成功、失敗、戻る操作を含める。",
+            "実際の長さのコンテンツを使い、合意した端末、ブラウザー、文字の拡大・縮小条件で確認する。",
+            "問題ごとに URL、操作手順、期待する結果と実際の結果を記録し、日付を添える。",
+            "修正後は影響する操作をもう一度行い、未完了項目と今後の担当者を記録に残す。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "資産、権限、再構築に必要なデータを引き継ぐ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "納品リストには、ドメイン、ホスティング、管理画面、分析ツール、連携サービスのアカウントが誰に帰属するかを記載し、デザインの元ファイル、コード、画像、コンテンツ、設定手順、ライセンス資料も別途列挙します。どのプラットフォームでも、自分たちでデプロイできるコードを引き渡せるとは限りません。管理を任せるサービスを使う場合は、何をエクスポートできるのか、プラットフォームから移行する際にどのような制約があるのかを契約前に確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress を使っていても、エクスポートファイルを渡すだけで十分とは限りません。公式ツールが出力する WXR は、投稿、固定ページ、関連コンテンツのデータです。引き継ぎ時には、サイトのファイル、データベース、メディア、テーマやプラグインの設定をどのようにバックアップし、復元するかも確認する必要があります。合意したテスト環境で手順を試し、障害が起きてから必要なデータの不足に気付く事態を避けましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress ソフトウェアは GPLv2 またはそれ以降のバージョンのライセンスを採用していますが、プロジェクト全体には写真、フォント、外部サービス、有料サポートも含まれる可能性があります。出典、利用条件、更新手続きの担当者、有効期限を項目ごとに記録し、オープンソースソフトウェアを使っているからといって、すべての素材を自由に使えると決めつけないようにします。アカウントの引き継ぎは適切な権限設定と安全な経路を通じて行い、共有パスワードを要件書に長期間貼り付けたままにしないようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "公開後の保守にもサービス範囲を定める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "保守項目は、コンテンツ更新、システム更新、バックアップと復元、障害対応に分け、それぞれ頻度、担当者、料金体系を明記できます。障害の連絡からどれくらいで応答するのか、どのように重要度を分類するのか、実際の復旧作業まで含むのかを制作会社に説明してもらいましょう。「一年保証」も内容が定義されていなければ、期待の食い違いが生じやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自分たちで更新できる部分も検収が必要です。実際に講座を追加し、画像を差し替え、スマートフォン向けページをプレビューして、引き継ぎ後に付与されるアカウント権限で操作していることを確認しましょう。操作説明の動画やマニュアルは納品版に対応させ、自分たちで変更しないほうがよい項目も示しておけば、工房の担当者が交代しても参照できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プロジェクトを終了する前に、要件リストの各項目を完了、延期、中止のいずれかに分類し、理由を残します。サイト公開は新たな段階の始まりです。その後も講座の変更、コンテンツの追加、利用者の意見に応じた修正が発生します。明確な管理方法があれば、小さな更新のたびに新しいサイト制作プロジェクトを始めるような事態を避けられます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/web-design-agency-brief/diagram-1-ja.svg",
+          "alt": "四つの区画で、サイト制作の外注におけるタスクの定義、範囲の確認、操作の検収、資産の引き継ぎを説明し、それぞれ照合すべき資料を列挙。",
+          "width": 1600,
+          "height": 900,
+          "caption": "サイトの要件を、操作・確認・引き継ぎができる作業として書き出しましょう。",
+          "description": "四つの区画で、サイト制作の外注におけるタスクの定義、範囲の確認、操作の検収、資産の引き継ぎを説明し、それぞれ照合すべき資料を列挙。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "要件項目",
+            "工房を想定した例",
+            "検収資料"
+          ],
+          "rows": [
+            [
+              "主なタスク",
+              "講座内容を読んで問い合わせを送信する",
+              "一連の操作経路と通知結果"
+            ],
+            [
+              "ページとテンプレート",
+              "十ページのコンテンツ、五種類の主要テンプレート",
+              "ページ一覧と共通テンプレートの説明"
+            ],
+            [
+              "コンテンツの担当",
+              "工房が写真を提供し、制作会社が六講座分を登録",
+              "素材一覧と登録の完了状況"
+            ],
+            [
+              "操作のしやすさ",
+              "スマートフォンで講座を選び、キーボードでフォームを操作",
+              "条件、問題、修正の記録"
+            ],
+            [
+              "引き継ぎと保守",
+              "アカウント、元ファイル、バックアップ、操作説明",
+              "資産一覧、権限一覧、復元方法"
+            ]
+          ],
+          "caption": "オリジナルの要件書例。実際のページ数、仕様、費用、検収条件はプロジェクトの合意内容によります。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "要件を確認できれば、見積もりを比較しやすくなる",
+          "text": "全員が参照できる版の要件書を保管し、追加項目の影響は別途記録しましょう。表示画面のスクリーンショットで操作の検収を済ませたり、管理画面のアカウントを受け取っただけで、すべての資産の引き継ぎが完了したと考えたりしないようにしましょう。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "まずサイト全体の予算を見積もる",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイト保守の定期作業を計画する",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress のバックアップと復元を理解する",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "W3C Webアクセシビリティの計画と管理",
+          "url": "https://www.w3.org/WAI/planning-and-managing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C アクセシビリティ入門チェック",
+          "url": "https://www.w3.org/WAI/test-evaluate/easy-checks/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress コンテンツのエクスポートツール",
+          "url": "https://wordpress.org/documentation/article/tools-export-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress ソフトウェアライセンス",
+          "url": "https://wordpress.org/about/license/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "웹 디자인 업체를 찾기 전에: 요구사항 정의서, 견적과 납품 목록",
+      "description": "웹 디자인 업체를 찾기 전에 사이트의 대상 이용자, 주요 동작과 납품 내용을 명확히 적어야 견적을 비교할 수 있습니다. 이 글은 소규모 스튜디오의 웹사이트 요구사항을 예로 들어 페이지와 템플릿 수, 콘텐츠 담당, 기능 명세, 모바일 및 접근성 검수, 계정과 원본 파일 인계를 정리하고, 사이트 공개 후 유지관리를 어떻게 합의할지 설명합니다. 바로 수정해 쓸 수 있는 요구사항 목록으로 추가 비용과 소통의 어긋남을 줄이도록 돕습니다. 업체 추천 목록은 제공하지 않습니다.",
+      "hero": {
+        "src": "/guides/web-design-agency-brief/hero-ko.jpg",
+        "alt": "문서, 화면, 폴더를 묘사한 자체 제작 이미지로 웹사이트 요구사항, 동작 검수와 인계 자산을 보여 줍니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "“완성도 높은 웹사이트를 만들고 싶다”는 말은 논의의 출발점으로는 적합하지만, 그대로 견적의 근거로 삼기에는 부족합니다. 같은 열 페이지짜리 사이트라도 동일한 템플릿을 적용한 글 열 편과 서로 다른 상호작용이 필요한 열 종류의 페이지는 디자인과 유지관리 작업량이 크게 다릅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "요구사항 정의서를 두꺼운 명세 문서로 만들 필요는 없습니다. 방문자가 무엇을 완료해야 하는지, 여러분이 무엇을 제공할 수 있는지, 어떤 상태를 납품 완료로 볼 것인지를 디자인 업체에 먼저 알려 주면 견적 차이를 실제 작업과 연결해 파악할 수 있습니다. 아래에서는 공예 강좌를 운영하는 소규모 스튜디오를 가정해 수정 가능한 요구사항 양식을 만들어 봅니다."
+        },
+        {
+          "type": "heading",
+          "text": "방문자가 할 일을 먼저 적고 사이트에 넣을 내용을 정하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "스튜디오는 브랜드를 소개하고, 방문자가 자신에게 맞는 강좌를 찾아 수강 신청 의사를 전달하도록 하고 싶습니다. 요구사항 정의서에는 먼저 세 가지 작업을 적을 수 있습니다. 강좌 내용과 교통편 확인, 날짜와 본인에게 맞는 정도 비교, 연락 가능한 정보가 담긴 문의 제출입니다. 각 작업을 마쳤을 때의 화면도 지정해, 단순히 “홈, 소개, 문의”만 나열하지 않도록 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "다음으로 이번 단계에서 다루지 않을 사항을 명시하세요. 예를 들어 실시간 잔여 정원 표시, 온라인 결제, 회원 계정은 제공하지 않는다고 정할 수 있습니다. 이러한 경계는 데이터 출처, 오류 처리와 관리자 권한에 영향을 줍니다. 단순한 문의 양식이라면 자리가 확보되었다고 오해하게 만드는 확인 메시지를 표시해서는 안 됩니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "자신의 자료와 글로 요구사항을 설명하세요. 참고 사이트에서는 "
+            },
+            {
+              "type": "text",
+              "text": "표시"
+            },
+            {
+              "type": "text",
+              "text": "를 통해 마음에 드는 탐색 방식, 정보 순서나 여백 비율을 전달해 디자이너가 의도를 이해하도록 하세요. 다른 사람의 이미지, 문구와 시각 디자인 전체를 그대로 베껴 달라고 요청해서는 안 됩니다. 애니메이션이 너무 많거나 모바일에서 연락 메뉴를 찾기 어렵다는 등 적합하지 않은 부분도 적으세요."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "페이지, 템플릿, 콘텐츠와 기능을 따로 정리하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 사이트 구성을 트리 형태로 정리한 뒤 공통 템플릿을 표시하는 것이 좋습니다. 예를 들어 홈 한 페이지, 브랜드 소개 한 페이지, 강좌 목록 한 페이지, 강좌 상세 여섯 페이지와 문의 페이지를 합치면 총 열 페이지지만, 주요 템플릿은 다섯 종류만 필요할 수 있습니다. 강좌 수가 늘어나면 직접 데이터를 추가할 수 있는지, 아니면 페이지마다 업체에 편집을 맡겨야 하는지 미리 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "콘텐츠 담당은 항목별로 배정해야 합니다. 강좌 소개 작성, 사진 촬영, 강사 초상 사용 동의 확보, 가격 정리, 영어 번역 제공을 누가 맡고, 콘텐츠를 몇 건 등록할지 정하세요. 이미지가 아직 준비되지 않았다면 비율, 수량과 용도를 먼저 제공하고 교체 일정을 합의하세요. 임시 문구로 디자인 승인을 받았다고 해서 실제 콘텐츠의 교정까지 끝난 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기능 설명에는 시작 지점, 입력, 성공과 실패가 포함되어야 합니다. 예를 들어 문의 양식에 어떤 항목이 필요한지, 누구의 이메일로 보낼지, 누락된 입력을 어떻게 알릴지, 전송 실패를 어떻게 발견할지 적어야 합니다. 결제, 예약이나 외부 도구를 연동한다면 계정 이용 자격, 비용과 연동 담당을 따로 명시하고, 서비스 이름만 적는 데 그치지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "견적을 비교할 때 변경 규칙도 함께 정리하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "각 업체의 견적을 같은 작업 범위표에 넣고 디자인 템플릿, 콘텐츠 건수, 수정 횟수, 기능 연동, 데이터 이전과 교육을 나열하세요. 총액이 같아도 한 견적에는 콘텐츠 등록이 포함되고 다른 견적은 빈 사이트만 납품할 수 있습니다. 가격 차이는 이미지 제작, 언어 버전이나 사이트 공개 후 지원에서 생길 수도 있으므로 페이지 수만 비교해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "프로젝트를 요구사항 확인, 시각 디자인 확정, 기능 완성과 인계의 네 단계로 나눈다면, 각 단계에 확인 가능한 결과물을 첨부하도록 요청할 수 있습니다. 대금 지급 방식은 양측이 협의하되, 결과물은 모바일 강좌 페이지 프로토타입, 테스트 가능한 양식과 전체 자산 목록처럼 구체적이어야 합니다. 단순히 “팔십 퍼센트 완료”라고만 적어서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "변경 요청서는 복잡할 필요가 없습니다. 추가 요구사항, 영향을 받는 페이지, 추가 비용, 납기와 확인 날짜를 명확히 적으면 됩니다. 기존 명세에서 벗어난 오류의 수정, 합의된 수정 횟수에 따른 작업, 새 기능 추가를 구분하면 사진 한 장을 바꿀 때마다 다시 논쟁하는 일을 피할 수 있습니다. 아직 견적을 내기 어려운 부분은 가정과 추가 견적 시점을 먼저 적어 의사결정의 여지를 남기세요."
+        },
+        {
+          "type": "heading",
+          "text": "검수에서는 홈 화면 캡처만 보지 말고 실제 동작을 끝까지 확인하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "실제 사용할 길이의 제목, 긴 이름, 휴대폰으로 찍은 사진과 누락될 수 있는 데이터를 사용해 검수하세요. 홈에서 강좌를 찾고, 제한 사항을 읽고, 양식을 제출한 뒤 관리자가 알림을 받는 데까지 전 과정을 거쳐야 정보와 기능이 제대로 연결되는지 알 수 있습니다. 양식 테스트에는 합의된 테스트 데이터를 사용하고, 수신자에게도 이를 구별하는 방법을 알려 주세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "모바일 검수에서는 메뉴를 열고 닫을 수 있는지, 표가 화면 밖으로 넘치는지, 버튼이 가려지는지, 이미지의 중요한 부분이 잘리는지, 글자를 확대해도 조작할 수 있는지 확인해야 합니다. W3C의 기초 점검에도 키보드 초점, 제목, 이미지 대체 텍스트와 양식 레이블이 포함됩니다. 이를 초기 점검 항목으로 삼을 수 있지만, 통과했다고 해서 포괄적인 접근성 평가를 완료한 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "특정 접근성 표준을 충족해야 한다면 버전, 등급, 범위와 평가 방법을 미리 명시하고, 그에 맞는 역량을 갖춘 사람에게 검수를 맡겨야 합니다. W3C는 관련 책임과 평가를 제작 과정에 포함하고 지속적으로 유지관리할 것을 권장합니다. 마지막 날에야 “접근성”을 테스트 범위도 없는 한마디 약속으로 다루지 마세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "방문자가 할 일을 기준으로 검수 경로를 정하고, 성공·실패·되돌아가기 동작을 포함하세요.",
+            "실제 길이의 콘텐츠로 합의된 기기, 브라우저와 글자 확대·축소 조건에서 확인하세요.",
+            "문제마다 URL, 조작 단계, 예상 결과와 실제 결과를 기록하고 날짜를 덧붙이세요.",
+            "수정 후 영향을 받은 과정을 다시 실행하고, 미완료 항목과 후속 담당자를 기록해 두세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "자산, 권한과 재구축에 필요한 데이터를 인계하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "납품 목록에는 도메인, 호스팅, 관리자 페이지, 분석 도구와 연동 서비스 계정의 소유 주체가 포함되어야 합니다. 디자인 원본 파일, 코드, 이미지, 콘텐츠, 설정 설명과 라이선스 자료도 별도로 나열하세요. 모든 플랫폼에서 직접 배포할 수 있는 코드를 받을 수 있는 것은 아닙니다. 관리형 서비스를 이용한다면 계약 전에 무엇을 내보낼 수 있는지, 플랫폼을 떠날 때 어떤 제한이 있는지 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress를 사용한다고 해서 내보내기 파일 하나만 전달하면 충분한 것도 아닙니다. 공식 도구로 내보내는 WXR에는 글, 페이지와 관련 콘텐츠 데이터가 담깁니다. 인계할 때는 사이트 파일, 데이터베이스, 미디어, 테마와 플러그인 설정의 백업 및 복원 방법도 확인해야 합니다. 합의된 테스트 환경에서 연습해 두면 장애가 난 뒤에야 필요한 데이터가 없다는 사실을 발견하는 일을 피할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 소프트웨어는 GPLv2 또는 이후 버전의 라이선스를 적용하지만, 전체 프로젝트에는 사진, 글꼴, 외부 서비스와 유료 지원도 포함될 수 있습니다. 항목별로 출처, 이용 조건, 갱신 담당자와 만료일을 기록하고, 오픈 소스 소프트웨어를 쓴다는 이유로 모든 자료를 자유롭게 사용할 수 있다고 추정하지 마세요. 계정은 적절한 권한 설정과 안전한 경로를 통해 인계하고, 공유 비밀번호를 요구사항 문서에 장기간 적어 두지 않도록 하세요."
+        },
+        {
+          "type": "heading",
+          "text": "사이트 공개 후 유지관리에도 서비스 범위를 정하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "유지관리 항목은 콘텐츠 업데이트, 시스템 업데이트, 백업 및 복원, 장애 처리로 나누고 각각 주기, 담당자와 과금 방식을 명시할 수 있습니다. 장애 신고 후 얼마 안에 응답하는지, 장애 등급을 어떻게 구분하는지, 실제 복구까지 포함하는지 업체에 설명을 요청하세요. “일 년간 보증”도 내용을 정하지 않으면 서로 다른 기대를 갖기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 업데이트할 수 있는 부분도 검수해야 합니다. 실제로 강좌 하나를 추가하고, 이미지를 바꾸고, 모바일 페이지를 미리 보면서 향후 받을 계정 권한으로 작업하고 있는지 확인하세요. 교육 영상과 사용 문서는 납품 버전에 맞아야 하며, 직접 변경하지 않는 것이 좋은 항목도 표시해야 합니다. 그래야 스튜디오의 담당자가 바뀌어도 참고할 근거가 남습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "프로젝트를 마치기 전에 요구사항 목록의 각 항목을 완료, 연기 또는 취소로 표시하고 이유를 남기세요. 사이트 공개는 새로운 단계의 시작입니다. 이후에도 강좌 변경, 콘텐츠 추가와 사용자 피드백에 따라 수정이 필요합니다. 관리 방식을 명확히 정해 두어야 작은 업데이트를 할 때마다 웹사이트 프로젝트를 새로 시작하는 듯한 상황을 피할 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/web-design-agency-brief/diagram-1-ko.svg",
+          "alt": "네 구역에서 웹사이트 외주의 작업 정의, 범위 확인, 동작 검수와 자산 인계를 설명하고, 각 구역에 대조·확인할 자료를 나열합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "웹사이트 요구사항을 실행하고, 점검하고, 인계할 수 있는 작업으로 적으세요.",
+          "description": "네 구역에서 웹사이트 외주의 작업 정의, 범위 확인, 동작 검수와 자산 인계를 설명하고, 각 구역에 대조·확인할 자료를 나열합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "요구사항 항목",
+            "스튜디오의 가상 사례",
+            "검수 자료"
+          ],
+          "rows": [
+            [
+              "주요 작업",
+              "강좌를 읽은 뒤 연락 요청 제출",
+              "전체 조작 경로와 알림 결과"
+            ],
+            [
+              "페이지와 템플릿",
+              "콘텐츠 열 페이지, 주요 템플릿 다섯 종류",
+              "페이지 목록과 공통 템플릿 설명"
+            ],
+            [
+              "콘텐츠 담당",
+              "스튜디오는 사진 제공, 업체는 강좌 여섯 개 등록",
+              "자료 목록과 콘텐츠 등록 완료 상태"
+            ],
+            [
+              "사용성",
+              "모바일로 강좌 선택, 키보드로 양식 조작",
+              "조건, 문제와 수정 기록"
+            ],
+            [
+              "인계와 유지관리",
+              "계정, 원본 파일, 백업과 사용 교육",
+              "자산표, 권한표와 복원 방법"
+            ]
+          ],
+          "caption": "자체 작성한 요구사항 정의서 예시입니다. 실제 페이지 수, 명세, 비용과 검수 조건은 프로젝트 합의에 따릅니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "요구사항을 확인할 수 있어야 견적 비교도 쉬워집니다",
+          "text": "모두가 열람할 수 있는 요구사항 문서 버전을 보관하고, 추가 항목의 영향은 따로 기록하세요. 시연 화면 캡처로 동작 검수를 대신하지 말고, 관리자 계정을 받았다는 사실을 모든 자산 인계가 끝났다는 뜻으로 여기지도 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 전체 예산부터 산정하기",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 유지관리 정기 작업 계획하기",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 백업과 복원 이해하기",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "W3C 웹 접근성 계획 및 관리",
+          "url": "https://www.w3.org/WAI/planning-and-managing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C 접근성 기초 점검",
+          "url": "https://www.w3.org/WAI/test-evaluate/easy-checks/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 콘텐츠 내보내기 도구",
+          "url": "https://wordpress.org/documentation/article/tools-export-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 소프트웨어 라이선스",
+          "url": "https://wordpress.org/about/license/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "找网页设计公司前：需求书、报价与交付清单",
+      "description": "找网页设计公司前，先把网站要服务的人、主要操作与交付内容写清楚，才能比较报价。本文以小型工作室的网站需求为例，整理页面与模板数量、内容责任、功能规格、手机与无障碍验收、账号及源文件交接，并说明上线后维护怎么约定。提供可直接改写的需求清单，帮助减少追加费用与沟通偏差，不列服务商推荐名单。",
+      "hero": {
+        "src": "/guides/web-design-agency-brief/hero-zh-cn.jpg",
+        "alt": "原创文档、屏幕和文件夹图像，呈现网站需求、操作验收与交接资产。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "“想要一个有质感的网站”适合作为讨论起点，却不适合直接作为报价依据。同样是十页网站，十篇套用相同模板的文章，与十种需要不同交互的页面，设计和维护的工作量会相差很多。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需求书不必写成厚重的规格文档。先让设计公司知道访客要完成什么、你能提供什么，以及怎样才算交付完成，就能把报价差异追溯到实际工作。以下以开设手工课程的小工作室为假设场景，建立可修改的需求模板。"
+        },
+        {
+          "type": "heading",
+          "text": "先写访客任务，再决定网站要放什么",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "工作室想介绍品牌、让访客找到适合的课程并提出报名需求。需求书可以先写三个任务：查看课程内容与交通信息、比较日期和适合程度、提交可供联系的需求。每个任务都指定完成界面，避免只列“首页、关于我们、联系我们”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接着注明哪些事情本期不处理，例如没有实时剩余名额、没有在线收款，也没有会员账号。这些边界会影响数据来源、错误处理和后台权限。如果只是通过表单咨询，页面就不能显示让人误以为已预留座位的确认消息。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "用你自己的素材和文字说明需求。可以在参考网站上"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "喜欢的导航方式、信息顺序或留白比例，让设计师理解目的；不要要求照搬别人的图片、文案和整套视觉设计。也要写出不适合的地方，例如动画太多、手机端联系入口难找。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "把页面、模板、内容与功能分开列",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "建议先画出网站树状清单，再标注共用模板。例如首页一页、品牌介绍一页、课程列表一页、六个课程详情页及联系页，共十页，但可能只需五种主要模板。课程数量增加时，是自行新增数据，还是每页都要请服务商排版，应先问清楚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "内容责任要逐项分配：谁写课程介绍、拍照片、取得老师肖像使用同意、整理价格、提供英文翻译，以及录入多少条内容。如果图片还没准备好，先提供比例、数量与用途，并约定替换时间。使用示例文字通过设计审核，不等于正式内容已完成校对。"
+        },
+        {
+          "type": "paragraph",
+          "text": "功能描述应包含起点、输入、成功与失败。例如联系表单需要哪些字段、发送到谁的邮箱、漏填如何提醒，以及如何发现发送失败。如果对接付款、预约或第三方工具，要另列账号资格、费用与集成责任，不要只写一个服务名称。"
+        },
+        {
+          "type": "heading",
+          "text": "比较报价时，一并整理变更规则",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把各家报价放进同一张范围表，列出设计模板、内容条数、修改轮次、功能对接、数据迁移与使用培训。相同总价可能一份包含内容录入，另一份只交空白网站；差额也可能来自图片制作、语言版本或上线后支持，不能只比较页数。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假设项目分成需求确认、视觉定稿、功能完成与交接四个里程碑，可以要求每阶段附上可检查的成果。付款安排由双方商定，但成果应具体，例如移动端课程页面原型、可测试的表单及完整资产清单，而非只写“完成八成”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "变更单不必复杂，写清楚新增需求、受影响页面、额外费用、交付时间与确认日期即可。把修正原规格的错误、既定修改轮次与新增功能分开，避免每次换一张照片都重新争论。对于还无法估价的部分，先列出假设和补充估价时间，保留决策空间。"
+        },
+        {
+          "type": "heading",
+          "text": "验收要完成真实操作，不只看首页截图",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "请用实际使用长度的标题、较长姓名、手机照片和可能缺漏的数据验收。从首页找课程、阅读限制、提交表单，再到管理员收到通知，完整走完这段流程，才知道信息和功能是否衔接顺畅。测试表单应使用约定的测试数据，并让接收人知道如何识别。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手机验收要看菜单能否开关、表格是否溢出、按钮是否被遮挡、图片是否裁掉重点，以及放大文字后仍能操作。W3C 的入门检查也涵盖键盘焦点、标题、图片替代文本与表单标签；这些可以列为初步检查，通过仍不代表已完成全面无障碍评估。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果需要符合特定无障碍标准，应事先写明版本、等级、范围和评估方式，请具备相应能力的人员验收。W3C 建议把相关责任与评估纳入制作流程并持续维护。不要等到最后一天，才把“无障碍”当成一句没有测试范围的承诺。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "按访客任务列出验收路径，涵盖成功、失败和返回操作。",
+            "使用真实长度的内容，在约定的设备、浏览器与文字缩放条件下检查。",
+            "每个问题都记录网址、操作步骤、预期与实际结果，并附上日期。",
+            "修正后重新走完受影响的流程，保留未完成事项与后续负责人。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "交接资产、权限与可重建的数据",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "交付清单应包含域名、主机、后台、分析工具及集成服务的账号归属，另列设计源文件、代码、图片、内容、配置说明和授权资料。不是每种平台都能交出可自行部署的代码；如果采用托管服务，要在签约前确认能导出什么，以及离开平台的限制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用 WordPress 也不代表只交一个导出文件就足够。官方工具导出的 WXR 包含文章、页面和相关内容数据；交接时还应确认网站文件、数据库、媒体、主题与插件设置如何备份与恢复。可以在约定的测试环境中演练，避免到发生故障时才发现缺少必要数据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 软件采用 GPLv2 或更新版本的许可证，但整个项目还可能包含照片、字体、外部服务和付费支持。逐项记录来源、使用条件、续约人和到期日，不要因为用了开源软件就推定所有素材都可任意使用。账号交接应通过适当的权限与安全渠道，避免把共用密码长期贴在需求文档中。"
+        },
+        {
+          "type": "heading",
+          "text": "上线后维护也要有服务范围",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "维护事项可分为内容更新、系统更新、备份恢复与故障处理，分别注明频率、负责人和收费方式。请服务商说明故障报修后多久响应、如何分级，以及是否包含实际修复；“一年保修”如果没有界定内容，很容易产生不同预期。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自己能更新的部分也要验收。请实际新增一个课程、替换图片并预览手机页面，确认使用的是日后会取得的账号权限。视频教程和操作文档应对应交付版本，并标出哪些字段不宜自行改动，让工作室换人接手时仍有依据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "结项前把需求清单逐项标为完成、延期或取消，并留下原因。网站上线是新阶段的开始，后续课程变动、内容增加和用户反馈仍会带来修改；有明确的管理方式，才不会每次小更新都像重新开一个网站项目。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/web-design-agency-brief/diagram-1-zh-cn.svg",
+          "alt": "四个区块说明网站外包的任务定义、范围确认、操作验收与资产交接，各列出需要核对的资料。",
+          "width": 1600,
+          "height": 900,
+          "caption": "把网站需求写成可操作、可检查、可交接的工作。",
+          "description": "四个区块说明网站外包的任务定义、范围确认、操作验收与资产交接，各列出需要核对的资料。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "需求字段",
+            "工作室的假设示例",
+            "验收资料"
+          ],
+          "rows": [
+            [
+              "主要任务",
+              "阅读课程后提交联系需求",
+              "完整操作路径与通知结果"
+            ],
+            [
+              "页面与模板",
+              "十页内容、五种主要模板",
+              "页面清单及共用模板说明"
+            ],
+            [
+              "内容责任",
+              "工作室提供照片，服务商录入六门课",
+              "素材清单及内容录入完成状态"
+            ],
+            [
+              "操作可用性",
+              "手机选课、键盘操作表单",
+              "条件、问题与修正记录"
+            ],
+            [
+              "交接维护",
+              "账号、源文件、备份与操作教学",
+              "资产表、权限表与恢复方式"
+            ]
+          ],
+          "caption": "原创需求书示例；实际页数、规格、费用与验收条件依项目协议确定。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "需求能被检查，报价才容易比较",
+          "text": "保留一份所有人都能查阅的需求版本，新增事项另行记录影响。不要用展示截图取代操作验收，也不要把拿到后台账号直接等同于完成所有资产交接。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先估算网站的完整预算",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排网站维护的固定工作",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "理解 WordPress 备份与恢复",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "W3C 规划与管理网页无障碍",
+          "url": "https://www.w3.org/WAI/planning-and-managing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C 无障碍入门检查",
+          "url": "https://www.w3.org/WAI/test-evaluate/easy-checks/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 内容导出工具",
+          "url": "https://wordpress.org/documentation/article/tools-export-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 软件许可",
           "url": "https://wordpress.org/about/license/",
           "checked_on": "2026-09-14"
         }

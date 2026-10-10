@@ -1,0 +1,2299 @@
+{
+  "schema_version": 1,
+  "slug": "curio-u02",
+  "format": "slides",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "用翻解密檔案的口吻講：開場壓低放慢，像掀開第一頁；流傳的版本講得像朋友聚會上的奇聞，帶笑；回到文件就收起笑，每個年份和數字前停半拍；「其實」亮起來；傍晚客機那一段像講故事，壓低；法院與豁免令那一章平而清楚；章末的問句輕輕上揚、停一拍再走；結尾不嘲笑任何人，語氣誠實。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "custom",
+    "style": "cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9",
+    "negative": "",
+    "motion": "slow push in or gentle drift, no morphing, no cuts",
+    "candidates": 3
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "為什麼「51 區」這個名字，CIA 等了 58 年才正式印在文件上？｜奇聞檔案局",
+    "description": "一個 1955 年就有的地方，為什麼 CIA 的正式文件到 2013 年才第一次印出「Area 51」和它在地圖上的位置？那 400 頁講的是一架飛機，不是外星人。\n給聽過 51 區，但沒讀過 2013 年那份文件的人。\n\n奇聞檔案局第二份檔案。流傳的版本：1947 年羅斯威爾、1989 年遮著臉的電視訪談、2019 年的「衝進 51 區」。文件裡的版本：1955 年 4 月 12 日的選址、只是地圖編號的 Area 51；七萬英尺的 U-2 在客機飛行員眼裡像火球，CIA 史家自己寫它占了那十幾年 UFO 通報的一半以上（沒有附統計）；1995 年起的總統豁免令寫「Groom Lake 附近的空軍作業地點」，所以政府承認有這個地方，只是不說名字；2005 年的資訊自由法申請等了八年，2013 年版印出名字和第 58 頁的地圖，而 1967 年的一份文件早就印過這兩個字。結尾用三個問題檢查「S-4 有九艘飛碟」的說法。\n\n只講文件裡有的；流傳的版本標明出處；在世人物只引述他說過的話。資料截至 2026-10-10。\n\n插圖由 AI 生成，近代真實人物只畫背影；照片為公有領域檔案，出處見圖片來源。",
+    "tags": [
+      "51區",
+      "Area 51",
+      "外星人",
+      "UFO",
+      "CIA 解密",
+      "U-2",
+      "羅斯威爾",
+      "奇聞檔案局",
+      "衝進51區",
+      "未解之謎"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "飛碟？\n**是飛機**",
+      "tag": "外星與太空",
+      "sub": "2013 年解密的檔案",
+      "shot": "hook-saucer-legend"
+    }
+  },
+  "sources": [
+    {
+      "title": "National Security Archive EBB 434: The Secret History of the U-2 and Area 51 (2013)",
+      "url": "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB434/",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "CIA history (Pedlow & Welzenbach), Chapter 1",
+      "url": "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB434/docs/U2%20-%20Chapter%201.pdf",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "CIA history (Pedlow & Welzenbach), Chapter 2",
+      "url": "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB434/docs/U2%20-%20Chapter%202.pdf",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "CIA history (Pedlow & Welzenbach), Chapter 6",
+      "url": "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB434/docs/U2%20-%20Chapter%206.pdf",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "CIA: the 1998 version (272 pages)",
+      "url": "https://www.cia.gov/resources/csi/books-monographs/the-cia-and-the-u-2-program-1954-1974/",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "CIA: Area 51 and the Accidental Test Flight",
+      "url": "https://www.cia.gov/stories/story/area-51-and-the-accidental-test-flight/",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Federal Register: Presidential Determination 95-45",
+      "url": "https://www.govinfo.gov/content/pkg/FR-1995-10-10/html/95-25244.htm",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "U.S. National Archives: Project BLUE BOOK",
+      "url": "https://www.archives.gov/research/military/air-force/ufos",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "GAO/NSIAD-95-187: Roswell records",
+      "url": "https://www.govinfo.gov/content/pkg/GAOREPORTS-NSIAD-95-187/html/GAOREPORTS-NSIAD-95-187.htm",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "National Security Archive EBB 443: The Area 51 File",
+      "url": "https://nsarchive.gwu.edu/briefing-book/intelligence/2013-10-29/area-51-file-secret-aircraft-soviet-MiGs",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "FindLaw: Frost v. Rumsfeld (Kasza v. Browner)",
+      "url": "https://caselaw.findlaw.com/court/us-9th-circuit/1054233.html",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Reuters via CSMonitor, 2013-08-17",
+      "url": "https://www.csmonitor.com/USA/Latest-News-Wires/2013/0817/Area-51-is-real-say-CIA-documents",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "NPR, 2019-07-15",
+      "url": "https://web.archive.org/web/20250615143117/https://www.npr.org/2019/07/15/741938966/",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "AP via KTVU, 2019-09-20",
+      "url": "https://www.ktvu.com/news/about-75-people-gather-at-area-51-gate-1-person-arrested",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "CBS News, 2000-04-17",
+      "url": "https://www.cbsnews.com/news/satellite-image-of-area-51/",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "The Space Review: Skylab and Area 51",
+      "url": "https://thespacereview.com/article/4518/1",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Skeptic: The Strange Case of Bob Lazar",
+      "url": "https://www.skeptic.com/article/the-strange-case-of-bob-lazar/",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "KNPR, 2015-02-12",
+      "url": "https://knpr.org/knpr/2015-02/area-51-whistleblower-speaks-ufo-conference",
+      "checked_on": "2026-10-10"
+    }
+  ],
+  "assets": [
+    {
+      "path": "docs/videos/curio-u02/photos/roswell-1947.jpg",
+      "source": "Wikimedia Commons: Roswell Daily Record front page, 8 July 1947",
+      "license": "Public domain (US, copyright not renewed)",
+      "url": "https://commons.wikimedia.org/wiki/File:RoswellDailyRecordJuly8,1947.jpg"
+    },
+    {
+      "path": "docs/videos/curio-u02/photos/u2-usaf.jpg",
+      "source": "Wikimedia Commons: U.S. Air Force air-to-air view of a U-2 (TR-1), 1985",
+      "license": "Public domain (U.S. federal government work)",
+      "url": "https://commons.wikimedia.org/wiki/File:Usaf.u2.750pix.jpg"
+    },
+    {
+      "path": "docs/videos/curio-u02/photos/bluebook-chart-1952.jpg",
+      "source": "Wikimedia Commons / U.S. National Archives: Appendix I to Project Blue Book Status Report No. 8 (NARA 595542)",
+      "license": "Public domain (U.S. federal government work)",
+      "url": "https://commons.wikimedia.org/wiki/File:Appendix_I_to_Project_Blue_Book_Status_Report_Number_8_-_NARA_-_595542.jpg"
+    },
+    {
+      "path": "docs/videos/curio-u02/photos/usgs-1968-aerial.jpg",
+      "source": "Wikimedia Commons / USGS: aerial photograph of Area 51, 28 August 1968",
+      "license": "Public domain (USGS)",
+      "url": "https://commons.wikimedia.org/wiki/File:Area_51_28_August_1968_2.jpg"
+    },
+    {
+      "path": "docs/videos/curio-u02/photos/cia-1967-page17.png",
+      "source": "Wikimedia Commons / CIA FOIA DOC_0001471747, 1967, PDF p.17, printed Page 15",
+      "license": "Public domain (U.S. federal government work)",
+      "url": "https://commons.wikimedia.org/wiki/File:CIA_BYE2369-67_page17.gif"
+    },
+    {
+      "path": "docs/videos/curio-u02/photos/a12-flying.jpg",
+      "source": "Wikimedia Commons: U.S. Air Force air-to-air view of a Lockheed A-12, 1960s",
+      "license": "Public domain (U.S. federal government work)",
+      "url": "https://commons.wikimedia.org/wiki/File:A12-flying.jpg"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "51 區：2013 年才正式印出來的名字",
+      "template": "title",
+      "data": {
+        "tag": "奇聞檔案局 U02",
+        "title": "1955 年就有的地方\n名字 **2013 年**才正式印出來",
+        "subtitle": "CIA 自己的計畫史，約 400 頁"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "qfsw",
+          "text": "二〇一三年，CIA 才第一次正式印出 Area 51。",
+          "emotion": "壓低、放慢，像翻開檔案的第一頁；「Area 51」清楚"
+        }
+      ]
+    },
+    {
+      "id": "hook-saucer-legend",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a desert valley at night, a lone rancher in a bathrobe standing by his pickup truck with both hands on his head in disbelief, staring at a classic flying saucer shape hovering silently above a distant row of hangars, in focus: the saucer's smooth metal underside, light from the moon and from beneath the saucer.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ctmu",
+          "text": "你以為那裡藏的是飛碟和外星人。",
+          "emotion": "放慢放輕，像在轉述別人說的話"
+        }
+      ]
+    },
+    {
+      "id": "hook-plane-reveal",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot on a dry lake bed at noon, a long-winged aircraft of plain unmarked metal roaring just overhead, a ground crewman in overalls ducking and clutching his cap, sharpest detail: the underside of the long thin wing passing over him, hard sunlight from directly above.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c1",
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "ae9v",
+          "text": "其實，它藏的是一架飛機。",
+          "emotion": "「其實」亮起來，短句停住"
+        },
+        {
+          "id": "phbr",
+          "text": "那文件裡到底寫了什麼？",
+          "emotion": "問句上揚，輕輕收"
+        }
+      ]
+    },
+    {
+      "id": "legend-chapter",
+      "chapter": "流傳的版本：外星人、羅斯威爾、衝進 51 區",
+      "template": "chapter",
+      "data": {
+        "number": "02",
+        "title": "流傳的版本",
+        "subtitle": "大家聽過的那一個"
+      },
+      "lines": [
+        {
+          "id": "a7v2",
+          "text": "先講大家聽過的版本，電影和網路講了幾十年。",
+          "emotion": "像拉開椅子坐下來講故事，語速放鬆"
+        }
+      ]
+    },
+    {
+      "id": "legend-sign-night",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a dirt road in the desert at night, a young hiker with a backpack leaning in close to a plain blank metal sign on a post, holding a flashlight up to it with his mouth open, low hills behind, the flashlight beam the only light.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "62gk",
+          "text": "內華達的沙漠裡有一片禁區，闖進去的人會被攔下來。"
+        }
+      ]
+    },
+    {
+      "id": "legend-tv-night",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a living room in the evening, a man in a cardigan seen from behind leaning forward on a sofa toward an old boxy television cabinet whose face is turned away from the viewer, a bowl of popcorn tipping in his lap, centre of attention: the popcorn spilling, the only light the glow from the set.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "n2e6",
+          "text": "一九八九年，拉斯維加斯的電視台播了一段訪談。",
+          "emotion": "年份放慢"
+        }
+      ]
+    },
+    {
+      "id": "legend-viewer",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman's face on the same sofa, eyes wide and one hand clapped over her mouth, a knitted blanket pulled up to her chin, her face lit by a flickering glow from the front, the room dim behind her.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "wbu6",
+          "text": "一個男人遮著臉說，他在那裡幫忙研究九艘飛碟。",
+          "emotion": "壓低聲音，像在講祕密"
+        }
+      ]
+    },
+    {
+      "id": "legend-list",
+      "template": "bullets",
+      "data": {
+        "title": "流傳的版本",
+        "items": [
+          "那裡藏著**外星飛碟**",
+          "羅斯威爾的殘骸運到了這裡",
+          "反向工程九艘飛碟",
+          "動力是「元素 115」"
+        ],
+        "source": "1989 年電視訪談與之後的轉述；全部是聲稱"
+      },
+      "claims": [
+        "c5",
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "d2rz",
+          "text": "這個版本有四個固定的細節：那裡藏著外星飛碟。",
+          "reveal": 1
+        },
+        {
+          "id": "ynqm",
+          "text": "一九四七年羅斯威爾的殘骸，就是運到了這裡。",
+          "reveal": 1
+        },
+        {
+          "id": "6ztw",
+          "text": "有人在裡面反向工程九艘飛碟。",
+          "reveal": 1
+        },
+        {
+          "id": "6t64",
+          "text": "飛碟的動力，是一種叫元素一一五的東西。",
+          "reveal": 1,
+          "emotion": "放慢，帶一點笑意"
+        }
+      ]
+    },
+    {
+      "id": "legend-roswell-front-page",
+      "template": "screenshot",
+      "data": {
+        "title": "1947 年 7 月 8 日的頭版",
+        "image": "docs/videos/curio-u02/photos/roswell-1947.jpg",
+        "highlight": {
+          "x": 4,
+          "y": 4,
+          "w": 92,
+          "h": 30
+        },
+        "caption": "羅斯威爾當地報紙：陸軍機場「捕獲飛碟」；隔天改口是氣象氣球",
+        "credit": "圖：Wikimedia Commons，公有領域"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "fhdd",
+          "text": "一九四七年七月，羅斯威爾陸軍機場說撿到飛碟。",
+          "emotion": "像在唸報紙標題"
+        },
+        {
+          "id": "tqzr",
+          "text": "隔天就改口，說是追蹤雷達用的氣象氣球。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "legend-balloon",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of open scrubland on a clear morning, a soldier in a field cap seen from behind shading his eyes as a tall pale weather balloon trailing a long train of foil and sticks rises into the sky, the eye rests on the dangling train of debris, sun from the upper right.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "n8pv",
+          "text": "一九九四年空軍再查，說最可能是機密氣球計畫的殘骸。"
+        }
+      ]
+    },
+    {
+      "id": "legend-ranch",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a dusty ranch at midday, a rancher in a wide-brimmed hat crouching to pick up a shiny scrap of foil from the dirt, a goat nosing at his elbow, in focus: the foil between his fingers, hard sun from above.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "prxk",
+          "text": "羅斯威爾在新墨西哥，殘骸運去內華達，沒有任何紀錄。"
+        }
+      ]
+    },
+    {
+      "id": "legend-storm-road",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a two-lane highway through scrubland at sunrise, a young woman in a glittery alien headband standing on the shoulder with her thumb out, a line of parked cars and tents far behind her, sharpest detail: the headband's springy antennae, low sun from the left.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "3ify",
+          "text": "二〇一九年，臉書上一個玩笑活動，約大家衝進五十一區。"
+        }
+      ]
+    },
+    {
+      "id": "legend-storm-stats",
+      "template": "stats",
+      "data": {
+        "title": "2019 年「衝進 51 區」",
+        "stats": [
+          {
+            "value": "100 萬＋",
+            "label": "按了參加",
+            "note": "7 月 15 日前，臉書活動"
+          },
+          {
+            "value": "數十人",
+            "label": "真的到大門口",
+            "note": "9 月 20 日清晨；AP 約 75、NPR 約 40"
+          },
+          {
+            "value": "約 1,500 人",
+            "label": "前一晚小鎮的派對",
+            "note": "郡警的估計"
+          }
+        ],
+        "source": "AP 2019-09-20；NPR 2019-07-15、09-20"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "hmvs",
+          "text": "七月中，按參加的人就超過一百萬。",
+          "reveal": 1
+        },
+        {
+          "id": "74zr",
+          "text": "九月二十日早上，真的走到大門口的，幾十個人。",
+          "reveal": 1,
+          "emotion": "停一拍，「幾十個人」帶笑"
+        },
+        {
+          "id": "yrfh",
+          "text": "前一晚附近小鎮的派對，大約一千五百人。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "legend-no-paper",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist's two empty hands held open over an empty wooden document tray on a library desk in the afternoon, a pencil behind her ear, the eye rests on the bare bottom of the tray, sun from a tall window on the left.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c5",
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "mvsb",
+          "text": "這些說法有一個共同點，沒有任何一份文件。",
+          "emotion": "放慢，「沒有任何一份文件」停住"
+        }
+      ]
+    },
+    {
+      "id": "legend-big-2013",
+      "template": "big",
+      "data": {
+        "kicker": "直到",
+        "text": "**2013**",
+        "sub": "CIA 自己的計畫史解密，約 400 頁，第一次正式印出 Area 51"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "3vip",
+          "text": "直到二〇一三年，CIA 自己的計畫史解密了。",
+          "emotion": "「直到」之後亮起來"
+        }
+      ]
+    },
+    {
+      "id": "legend-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an archive reading room on a sunny morning, a researcher in a cardigan lifting a thick plain document out of a cardboard archive box with both hands, dust glittering in the sunbeam, in focus: the document's worn edge, sun from a skylight.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "a4sp",
+          "text": "那這份文件裡的 51 區，到底是什麼？",
+          "emotion": "問句上揚，停一拍再走"
+        }
+      ]
+    },
+    {
+      "id": "site-chapter",
+      "chapter": "1955 年：為什麼 U-2 選在這裡試飛",
+      "template": "chapter",
+      "data": {
+        "number": "03",
+        "title": "1955 年，為什麼選這裡",
+        "subtitle": "一架飛機和一片乾湖床"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "imdu",
+          "text": "第一頁，一九五五年，美國要一架飛得很高的飛機。",
+          "emotion": "收起笑，語氣轉正"
+        }
+      ]
+    },
+    {
+      "id": "site-small-plane",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a small propeller plane on a clear morning, a man in a suit seen from behind pressing his hat to his head and leaning to the round porthole, another man's elbow just visible beside him, sharpest detail: the land far below through the porthole, sun pouring in.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "zybc",
+          "text": "四月十二日，負責人坐小飛機飛過內華達找地方。",
+          "emotion": "日期放慢"
+        }
+      ]
+    },
+    {
+      "id": "site-dry-lake",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view from the air at midday, a pale dry salt flat with a long straight faint strip beside it among bare hills, the pilot's leather-helmeted head and shoulder in the lower corner of the frame looking down, the eye rests on the straight strip, sun from directly above.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "er8k",
+          "text": "他們看到一片鹽湖，旁邊有一條像跑道的直線。"
+        }
+      ]
+    },
+    {
+      "id": "site-dust-boot",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of a polished dress shoe sinking to the ankle into fine loose dust on a flat strip of ground at noon, a puff of dust rising, a trouser cuff above it, centre of attention: the dust pouring over the shoe's edge, harsh sun from above.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "csek",
+          "text": "天上看像鋪過的路，踩下去是陷到腳踝的土。"
+        }
+      ]
+    },
+    {
+      "id": "site-plane-banks",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small propeller plane banking low over a dry lake bed in clear daylight, a jackrabbit sitting upright in the dust below watching it go, in focus: the rabbit's tall ears, sun from the left.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "4ijy",
+          "text": "要是真的降落，飛機會翻過去，計畫的人全在上面。",
+          "emotion": "帶一點笑，又有點後怕"
+        }
+      ]
+    },
+    {
+      "id": "site-washington-map",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a wood-panelled office on an overcast afternoon, a man in shirtsleeves seen from behind pinning a large plain map to the wall with both hands, a steaming cup on the desk behind him, sharpest detail: the pin between his fingers, daylight from a window on the left.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "kvtk",
+          "text": "回到華盛頓才發現，那片地不在原子能委員會的場區。"
+        }
+      ]
+    },
+    {
+      "id": "site-rectangle",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand holding a fountain pen drawing a small rectangle on a plain map spread on a desk, a ruler beside it, the eye rests on the pen's nib, afternoon daylight from the right.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "hq9j",
+          "text": "他們請委員會把它劃進來，艾森豪總統也批准了。"
+        }
+      ]
+    },
+    {
+      "id": "site-big-area51",
+      "template": "big",
+      "data": {
+        "kicker": "地圖上的編號",
+        "text": "**Area 51**",
+        "sub": "1955 年：加進原子能委員會內華達試驗場的一小塊長方形"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "d4kt",
+          "text": "這塊地在地圖上的編號，就叫 Area 51。",
+          "emotion": "停一拍，「Area 51」一字一字"
+        }
+      ]
+    },
+    {
+      "id": "site-names-table",
+      "template": "table",
+      "data": {
+        "title": "這個地方的名字",
+        "columns": [
+          "名字",
+          "怎麼來的",
+          "時間"
+        ],
+        "rows": [
+          [
+            "Area 51",
+            "地圖編號",
+            "1955"
+          ],
+          [
+            "天堂牧場",
+            "強森取的",
+            "1955"
+          ],
+          [
+            "夢境",
+            "無線電呼號",
+            "60 年代末"
+          ]
+        ],
+        "source": "CIA 史 p.56–57；CIA 2015 年文章"
+      },
+      "claims": [
+        "c11",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "p7zb",
+          "text": "這個地方的名字不只一個，地圖編號是 Area 51。",
+          "reveal": 1
+        },
+        {
+          "id": "ngai",
+          "text": "設計飛機的強森叫它天堂牧場，好讓人願意來。",
+          "reveal": 1,
+          "emotion": "帶笑"
+        },
+        {
+          "id": "ez3c",
+          "text": "後來無線電裡的呼號，叫夢境。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "site-runway-july",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a freshly paved runway across a dry lake bed in late afternoon, a road worker in overalls walking toward the viewer with a shovel over his shoulder and a lunch pail swinging, a row of plain hangars far behind, centre of attention: the shovel blade, low warm sun from the right.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "5vb9",
+          "text": "七月，跑道鋪好了，基地可以用了，人陸續搬進去。"
+        }
+      ]
+    },
+    {
+      "id": "site-u2-photo",
+      "template": "screenshot",
+      "data": {
+        "title": "U-2 偵察機",
+        "image": "docs/videos/curio-u02/photos/u2-usaf.jpg",
+        "highlight": {
+          "x": 10,
+          "y": 20,
+          "w": 80,
+          "h": 55
+        },
+        "caption": "美國空軍的空對空照片，1985 年；設計目標是七萬英尺以上",
+        "credit": "圖：Wikimedia Commons，公有領域"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "cc7z",
+          "text": "要在這裡試飛的飛機，叫 U-2。"
+        },
+        {
+          "id": "fss6",
+          "text": "機翼又細又長，設計的目標是七萬英尺以上。",
+          "reveal": 1,
+          "emotion": "「七萬英尺」放慢"
+        }
+      ]
+    },
+    {
+      "id": "site-steps-first-flights",
+      "template": "steps",
+      "data": {
+        "title": "從選址到首飛，1955 年",
+        "steps": [
+          {
+            "title": "4 月 12 日",
+            "detail": "小飛機飛過內華達，選中 Groom Lake"
+          },
+          {
+            "title": "8 月 1 日",
+            "detail": "滑行測試中意外離地"
+          },
+          {
+            "title": "8 月 4 日",
+            "detail": "第一次計畫內的飛行"
+          },
+          {
+            "title": "8 月 8 日",
+            "detail": "「官方」首飛，到 32,000 英尺"
+          }
+        ],
+        "source": "CIA 史 p.56、69–70（2013 年解密版）"
+      },
+      "claims": [
+        "c10",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "mjcy",
+          "text": "時間軸是這樣，四月十二日選定地點。",
+          "reveal": 1
+        },
+        {
+          "id": "9x6y",
+          "text": "八月一日滑行測試，飛機自己飄起來了。",
+          "reveal": 1,
+          "emotion": "「自己飄起來」帶驚訝"
+        },
+        {
+          "id": "fc3a",
+          "text": "八月四日，第一次計畫內的飛行。",
+          "reveal": 1
+        },
+        {
+          "id": "3xn7",
+          "text": "八月八日長官都到了，官方的首飛，三萬兩千英尺。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "site-test-pilot",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a dry lake bed at midday, a test pilot in a leather jacket standing in the open cockpit of a long-winged plain metal aircraft, both eyebrows raised high and mouth open, one hand still on the canopy rail, in focus: his startled face, hard sun from above.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "dmpa",
+          "text": "試飛員事後說，他根本沒打算飛，人就在空中了。",
+          "emotion": "像在學他的口氣"
+        }
+      ]
+    },
+    {
+      "id": "site-engineer-deadline",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from behind of a stocky engineer in rolled shirtsleeves standing on a runway with his hands on his hips, watching a long-winged aircraft climb away into a clear sky, a clipboard tucked under one arm, sharpest detail: the climbing aircraft, sun from the right.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "eb8q",
+          "text": "設計的人答應過八個月內飛起來，他做到了。"
+        }
+      ]
+    },
+    {
+      "id": "site-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of open rangeland at noon, a cowboy on horseback shading his eyes with one hand and looking straight up at a tiny glint high in the sky, his horse's ears pricked, the eye rests on the cowboy's tilted hat, sun from directly above.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "w4ig",
+          "text": "一架飛機要藏成這樣，是因為它飛得有多高？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "silver-chapter",
+      "chapter": "七萬英尺的銀光：1950 年代 UFO 通報為什麼暴增",
+      "template": "chapter",
+      "data": {
+        "number": "04",
+        "title": "七萬英尺上的銀光",
+        "subtitle": "UFO 通報從這裡開始增加"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "eu2z",
+          "text": "這一章回答：為什麼五〇年代末，飛碟通報突然變多。"
+        }
+      ]
+    },
+    {
+      "id": "silver-stats-altitude",
+      "template": "stats",
+      "data": {
+        "title": "高度：U-2 vs 當時的飛機",
+        "stats": [
+          {
+            "value": "70,000+ 英尺",
+            "label": "U-2 的設計高度",
+            "note": "約 21 公里"
+          },
+          {
+            "value": "10,000–20,000 英尺",
+            "label": "1950 年代中的客機"
+          },
+          {
+            "value": "40,000 英尺以下",
+            "label": "當時的軍機",
+            "note": "B-47、B-57"
+          }
+        ],
+        "source": "CIA 史 第 1 章、p.72（2013 年解密版）"
+      },
+      "claims": [
+        "c14",
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "7btc",
+          "text": "U-2 的設計高度七萬英尺以上，大約二十一公里。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "hnbv",
+          "text": "當時的客機，飛一萬到兩萬英尺。",
+          "reveal": 1
+        },
+        {
+          "id": "edmc",
+          "text": "那時候沒有人相信，有人能飛到六萬英尺以上。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "silver-airliner-dusk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside an airliner cockpit at dusk, the captain seen from behind in a peaked cap, one arm raised and pointing up through the windscreen, the sky beyond the glass dark with a faint bright dot high above, centre of attention: his pointing finger, the last light from the horizon far ahead.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "2xtp",
+          "text": "傍晚，一架往西飛的客機，天已經黑了。",
+          "emotion": "壓低，像在講故事的開頭"
+        }
+      ]
+    },
+    {
+      "id": "silver-u2-sunlit",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot of a long thin-winged aircraft of plain polished metal very high in a deep clear sky at dusk, its wings catching a low sun and blazing, the pilot's helmeted head just visible in the little cockpit, in focus: the blazing wing edge, light from a sun below the frame.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "bxrh",
+          "text": "再往上四萬英尺的 U-2 還曬得到太陽，機翼在發亮。"
+        }
+      ]
+    },
+    {
+      "id": "silver-pilot-face",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a dim airliner cockpit at dusk, a pilot in a peaked cap and headset turning toward his co-pilot with wide eyes and pointing one finger up through the windscreen, a warm orange glow falling on his face from above, the sky outside deep and dark.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "wrj7",
+          "text": "在客機飛行員眼裡，那是一個會發光的火球。",
+          "emotion": "「火球」停一拍"
+        }
+      ]
+    },
+    {
+      "id": "silver-steps-sighting",
+      "template": "steps",
+      "data": {
+        "title": "一次 UFO 目擊怎麼發生",
+        "steps": [
+          {
+            "title": "傍晚，客機往西飛",
+            "detail": "兩萬英尺，天已經黑了"
+          },
+          {
+            "title": "六萬英尺的 U-2 還照得到太陽",
+            "detail": "地平線更遠，太陽還沒下山"
+          },
+          {
+            "title": "機翼反光，像一團火",
+            "detail": "在下面四萬英尺的飛行員眼裡"
+          },
+          {
+            "title": "通報塔台、寫信給空軍",
+            "detail": "信寄到代頓的調查單位"
+          },
+          {
+            "title": "藍皮書對 U-2 飛行紀錄",
+            "detail": "對外只能說是自然現象"
+          }
+        ],
+        "source": "CIA 史 pp.72–73（2013 年解密版）"
+      },
+      "claims": [
+        "c15",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "ukhp",
+          "text": "整個過程是這樣：客機往西飛，天黑了。",
+          "reveal": 1
+        },
+        {
+          "id": "vfrv",
+          "text": "六萬英尺上的 U-2 還照得到太陽。",
+          "reveal": 1
+        },
+        {
+          "id": "nbfm",
+          "text": "飛機的機翼反著光，看起來就像一團火。",
+          "reveal": 1
+        },
+        {
+          "id": "wmx4",
+          "text": "飛行員通報塔台，有人還寫信給空軍。",
+          "reveal": 1
+        },
+        {
+          "id": "rfz7",
+          "text": "空軍核對 U-2 的飛行紀錄，對外只說自然現象。",
+          "reveal": 1,
+          "emotion": "「只能說」加重"
+        }
+      ]
+    },
+    {
+      "id": "silver-dayton-office",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a busy military office on a sunny morning, an officer in uniform at a desk piled high with plain envelopes, slitting one open with a letter knife, a ceiling fan above, in focus: the letter knife, daylight from a row of tall panes on the right.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "ydx7",
+          "text": "收這些信的，是代頓一個空軍單位，藍皮書計畫。"
+        }
+      ]
+    },
+    {
+      "id": "silver-bluebook-chart",
+      "template": "screenshot",
+      "data": {
+        "title": "藍皮書的通報頻率圖，1952 年夏天",
+        "image": "docs/videos/curio-u02/photos/bluebook-chart-1952.jpg",
+        "highlight": {
+          "x": 5,
+          "y": 15,
+          "w": 90,
+          "h": 70
+        },
+        "caption": "1952 年 6 到 9 月每天的 UFO 通報數；國家檔案館藏的藍皮書狀態報告附件",
+        "credit": "圖：Wikimedia Commons，公有領域"
+      },
+      "claims": [
+        "c15",
+        "c16",
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "vjea",
+          "text": "藍皮書五二年夏天的通報圖，那時 U-2 還沒出生。",
+          "emotion": "帶一點笑"
+        },
+        {
+          "id": "2kvi",
+          "text": "U-2 開始試飛之後，通報又大幅增加。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "silver-bluebook-stats",
+      "template": "stats",
+      "data": {
+        "title": "藍皮書計畫，1947–1969",
+        "stats": [
+          {
+            "value": "12,618 件",
+            "label": "收到的通報"
+          },
+          {
+            "value": "701 件",
+            "label": "到最後仍列「未解」"
+          },
+          {
+            "value": "1969 年 12 月",
+            "label": "空軍宣布結束",
+            "note": "結論：沒有證據指向外星飛行器"
+          }
+        ],
+        "source": "美國國家檔案館 Project Blue Book 專頁"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "e4ic",
+          "text": "藍皮書二十二年收了一萬兩千多件通報。",
+          "reveal": 1
+        },
+        {
+          "id": "5v2r",
+          "text": "到結束還有七百零一件，列為未解。",
+          "reveal": 1,
+          "emotion": "「七百零一件」清楚"
+        },
+        {
+          "id": "4qzc",
+          "text": "一九六九年底結案，結論是沒有證據指向外星飛行器。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "silver-quote-half",
+      "template": "quote",
+      "data": {
+        "kicker": "CIA 自己的計畫史裡的一句話",
+        "quote": "U-2 and later OXCART flights accounted for more than one-half of all UFO reports during the late 1950s and most of the 1960s.",
+        "translation": "U-2 和後來的 OXCART 飛行，占了 1950 年代末到 1960 年代大部分時間所有 UFO 通報的一半以上",
+        "source": "Pedlow & Welzenbach，CIA 史 p.73（1992 年寫成，2013 年解密）"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "9z2d",
+          "text": "CIA 自己寫的計畫歷史裡，有這麼一句話。",
+          "emotion": "停一拍再唸"
+        },
+        {
+          "id": "5civ",
+          "text": "U-2 和後來的偵察機，占了飛碟通報的一半以上。",
+          "reveal": 1,
+          "emotion": "放慢，一字一字"
+        }
+      ]
+    },
+    {
+      "id": "silver-historian",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a historian's hands at a sunlit desk holding a magnifying lens over the foot of a plain typed page, a row of tiny footnote marks showing only as dots, centre of attention: the lens, daylight from the left.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "7awj",
+          "text": "這句是 CIA 史家自己寫的，沒有附任何統計。",
+          "emotion": "語氣誠實，提醒的口吻"
+        }
+      ]
+    },
+    {
+      "id": "silver-phone-check",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a plain Air Force office in the late afternoon, one officer in uniform at a wooden desk running his finger down a thick open flight log while a sighting report lies beside it, a brass desk lamp unlit, low sun from a window on the left.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "7ve6",
+          "text": "調查員請華盛頓的計畫人員，核對 U-2 的飛行紀錄。"
+        }
+      ]
+    },
+    {
+      "id": "silver-stamp",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of an officer's hand pressing a rubber stamp down onto a plain sheet on a desk, the stamp's face hidden against the sheet, a stack of finished sheets beside it, sharpest detail: the knuckles pressing down, hard noon light from the side.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "w94n",
+          "text": "大部分通報就這樣消掉，但不能告訴寫信的人為什麼。"
+        }
+      ]
+    },
+    {
+      "id": "silver-reply-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a farmer in overalls at a roadside mailbox on a sunny morning, holding an opened plain letter at arm's length and scratching his head under his cap, a dog sitting at his feet looking up, in focus: the letter, sun from the left.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "9tra",
+          "text": "寫信的人收到的回覆，是自然現象四個字。",
+          "emotion": "帶一點同情的笑"
+        }
+      ]
+    },
+    {
+      "id": "silver-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a desert road at noon, a jeep driving away toward bare hills, a woman in the passenger seat turned to look back at a plain blank sign on a post, centre of attention: the sign's empty face, sun from directly above.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "urkg",
+          "text": "連飛碟都替它擋了，名字為什麼還要藏五十八年？",
+          "emotion": "問句上揚，停一拍再走"
+        }
+      ]
+    },
+    {
+      "id": "secret-chapter",
+      "chapter": "保密 58 年的方法：禁區、豁免令、塗黑",
+      "template": "chapter",
+      "data": {
+        "number": "05",
+        "title": "保密的方法",
+        "subtitle": "承認有這個地方，不說名字和用途"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "6udd",
+          "text": "先糾正：政府承認有這個地方，只是不說名字。",
+          "emotion": "語氣轉正，像在更正一個常見的說法"
+        }
+      ]
+    },
+    {
+      "id": "secret-commute-plane",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on an airfield apron at sunrise, a line of workers in jackets carrying lunch pails climbing the steps into a plain twin-engine transport plane, the nearest one yawning hugely, the eye rests on his lunch pail, low sun from the right.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "iqc3",
+          "text": "工人搭定期班機進出，週一從加州飛來，週五飛回。"
+        }
+      ]
+    },
+    {
+      "id": "secret-crash-wreath",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a mechanic's oil-stained hands laying a small bunch of wildflowers at the foot of a plain hangar wall in the morning, his cap held under his arm, in focus: the flowers, soft sun from the left.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "f9zc",
+          "text": "一九五五年十一月，一架班機失事，十四人罹難。",
+          "emotion": "放慢，沉一點"
+        }
+      ]
+    },
+    {
+      "id": "secret-signing",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand in a white cuff signing a plain document with a fountain pen on a polished desk, the folded edge of a flag blurred behind, sharpest detail: the pen's nib, daylight from a tall pane on the left.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "z7ew",
+          "text": "一九九五年起，總統每年簽一份豁免令給一個地方。",
+          "emotion": "日期放慢"
+        }
+      ]
+    },
+    {
+      "id": "secret-quote-groom",
+      "template": "quote",
+      "data": {
+        "kicker": "命令裡怎麼稱呼它",
+        "quote": "the United States Air Force's operating location near Groom Lake, Nevada",
+        "translation": "美國空軍在內華達州格魯姆湖附近的作業地點",
+        "source": "聯邦公報 1995-10-10，總統決定 95-45"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "nhjp",
+          "text": "命令裡的稱呼：空軍在格魯姆湖附近的作業地點。",
+          "emotion": "像在唸公文，平而清楚"
+        },
+        {
+          "id": "4pj9",
+          "text": "豁免的是有害廢棄物的資訊，因為那會洩露機密。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "secret-every-year",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clerk in a cardigan at a filing cabinet in a sunny office, sliding one more plain folder onto a short stack of identical folders on top, centre of attention: the stack, daylight from the right.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "tkbk",
+          "text": "這份命令年年簽，公報上查得到的至少到二〇〇三年。"
+        }
+      ]
+    },
+    {
+      "id": "secret-widow-steps",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a courthouse's stone steps on an overcast afternoon, a woman in a dark coat climbing them alone with a plain folder held to her chest, pigeons scattering, the eye rests on the folder, flat overcast daylight.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "zczm",
+          "text": "背景是一場官司：前工人說，基地露天燒有害廢棄物。"
+        }
+      ]
+    },
+    {
+      "id": "secret-gavel",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a judge's hand bringing a plain wooden gavel down on its block, the sleeve of a black robe, in focus: the gavel head, light from a high courtroom pane at midday.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "2if2",
+          "text": "一九九八年法院駁回，理由是這件事本身就是國家機密。"
+        }
+      ]
+    },
+    {
+      "id": "secret-mosaic",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old woman in an apron sitting at a garden table in the afternoon, placing one small square tile into a half-finished mosaic on the table, a tabby cat asleep on the chair beside her, sun from the right.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "km7k",
+          "text": "法院叫它馬賽克理論，一片沒事，拼起來就洩密。",
+          "emotion": "「拼起來」停一拍"
+        }
+      ]
+    },
+    {
+      "id": "secret-1998-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a reader at a library table on a sunny afternoon, holding open a thick plain book whose pages are striped with heavy black bars, her eyebrows raised, centre of attention: the black bars, sun from a tall pane on the left.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "fnxk",
+          "text": "同一年，CIA 出了這本史書的第一版，兩百七十二頁。"
+        }
+      ]
+    },
+    {
+      "id": "secret-big-272",
+      "template": "big",
+      "data": {
+        "kicker": "1998 年版",
+        "text": "**272** 頁",
+        "sub": "提到 Area 51 的字句全部塗黑；原版 1992 年寫成，機密"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "3ink",
+          "text": "所有講到這個地方的句子，全部塗黑。",
+          "emotion": "「全部塗黑」短而重"
+        }
+      ]
+    },
+    {
+      "id": "secret-usgs-photo",
+      "template": "screenshot",
+      "data": {
+        "title": "1968 年 8 月 28 日，美國地質調查局的航照",
+        "image": "docs/videos/curio-u02/photos/usgs-1968-aerial.jpg",
+        "highlight": {
+          "x": 15,
+          "y": 10,
+          "w": 70,
+          "h": 80
+        },
+        "caption": "跑道和機棚清清楚楚；這類航照一直放在公開的檔案庫裡",
+        "credit": "圖：Wikimedia Commons，公有領域"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "gkzc",
+          "text": "可是這個地方從天上看，一點都不祕密。",
+          "emotion": "帶笑"
+        },
+        {
+          "id": "64nc",
+          "text": "這張一九六八年的政府航照，一直放在公開的檔案庫裡。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "secret-skylab",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a space station module, an astronaut in a white suit floating sideways at a round porthole with a bulky camera held to his eye, the curve of the planet filling the porthole, the eye rests on the camera lens, sunlight blazing in.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "6cpb",
+          "text": "一九七四年，太空站的太空人違反指示拍了它。",
+          "emotion": "「違反指示」帶笑"
+        }
+      ]
+    },
+    {
+      "id": "secret-memo-analyst",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an analyst in a sunlit office holding a plain photographic print up to the daylight with both hands, his forehead creased, a plain memo sheet on the desk below, in focus: the print's glossy edge, light from the front.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "i4if",
+          "text": "事後的備忘錄寫，那趟任務只有這個地方被交代不准拍。"
+        }
+      ]
+    },
+    {
+      "id": "secret-satellite-2000",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a dressing gown at a kitchen table on a sunny morning, grinning over a large plain photographic print of an airfield seen from above, a cereal bowl pushed aside, sharpest detail: the print, sun from the right.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c30"
+      ],
+      "lines": [
+        {
+          "id": "7ac8",
+          "text": "二〇〇〇年，俄國衛星照片上了網，解析度兩公尺。"
+        }
+      ]
+    },
+    {
+      "id": "secret-compare-versions",
+      "template": "compare",
+      "data": {
+        "title": "1998 年版 vs 2013 年版",
+        "left": {
+          "heading": "1998 年版",
+          "points": [
+            "272 頁",
+            "Area 51 全部塗黑",
+            "沒有地圖",
+            "飛行員姓名塗黑"
+          ]
+        },
+        "right": {
+          "heading": "2013 年版",
+          "points": [
+            "約 400 頁",
+            "印出 Area 51",
+            "第 58 頁一整頁地圖",
+            "姓名、代號、經費恢復"
+          ]
+        },
+        "verdict": "地點大家早就知道；新的是名字和地圖",
+        "source": "CIA 1998 年版；國家安全檔案館 EBB 434，2013"
+      },
+      "claims": [
+        "c1",
+        "c24",
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "amji",
+          "text": "一九九八年版，兩百七十二頁，名字全塗黑，沒有地圖。",
+          "reveal": 1
+        },
+        {
+          "id": "583d",
+          "text": "二〇一三年版，名字印上去了，還多了一整頁地圖。",
+          "reveal": 1,
+          "emotion": "「印上去了」亮起來"
+        }
+      ]
+    },
+    {
+      "id": "secret-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an archive counter in the morning, a woman in a raincoat sliding a plain request form across the counter with one finger, a clerk's hands reaching for it from the other side, centre of attention: the form, daylight from a skylight.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mxr3",
+          "text": "那二〇一三年，到底是什麼變了？",
+          "emotion": "問句上揚，輕輕收"
+        }
+      ]
+    },
+    {
+      "id": "release-chapter",
+      "chapter": "2013 年解密：名字、地圖，和一件等了八年的申請",
+      "template": "chapter",
+      "data": {
+        "number": "06",
+        "title": "2013 年的解密",
+        "subtitle": "一件申請，等了八年"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "vr9v",
+          "text": "變的不是政府，是一個人等了八年的申請。",
+          "emotion": "揭曉的口氣，短句"
+        }
+      ]
+    },
+    {
+      "id": "release-request-2005",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly researcher seen from behind at a post office counter on a sunny morning, sliding a thick plain envelope across to the clerk's waiting hands, the eye rests on the envelope, sun from the left.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "7cqn",
+          "text": "二〇〇五年，一位研究者送出資訊公開的申請。",
+          "emotion": "年份放慢"
+        }
+      ]
+    },
+    {
+      "id": "release-black-bars-window",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand holding a plain page striped with black bars up against bright daylight, the light glowing through the paper around the bars, in focus: the largest black bar, light from behind the page.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "a54j",
+          "text": "他要的很簡單：同一本書，塗黑少一點的版本。"
+        }
+      ]
+    },
+    {
+      "id": "release-approved",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a government office on a sunny afternoon, a reviewer in a cardigan seen from behind lowering a thick stack of pages into a wire out-tray, a potted plant on the sill, sharpest detail: the stack, daylight from the left.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c1",
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "e6xb",
+          "text": "二〇一三年六月二十五日，CIA 核准公開新版。",
+          "emotion": "日期一字一字"
+        }
+      ]
+    },
+    {
+      "id": "release-published",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young journalist on a sunny rooftop terrace, holding a thick plain document open with both hands, mouth open in surprise, a pigeon on the ledge beside her, centre of attention: the document, sun from above.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "e5rz",
+          "text": "八月十五日，國家安全檔案館放上網，媒體跟著報導。"
+        }
+      ]
+    },
+    {
+      "id": "release-memo-1967",
+      "template": "screenshot",
+      "data": {
+        "title": "1967 年的 CIA 文件：OXCART 偵察北越的計畫",
+        "image": "docs/videos/curio-u02/photos/cia-1967-page17.png",
+        "highlight": {
+          "x": 10,
+          "y": 8,
+          "w": 80,
+          "h": 40
+        },
+        "caption": "這一頁早就印著 Area 51；2013 年新的是「刻意」承認，加上地圖",
+        "credit": "圖：Wikimedia Commons，公有領域"
+      },
+      "claims": [
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "hjrh",
+          "text": "標題都說 CIA 終於承認 51 區存在，這樣講不太準。"
+        },
+        {
+          "id": "k9az",
+          "text": "一九六七年的一份文件，早就印過這個名字。",
+          "reveal": 1,
+          "emotion": "「早就」加重"
+        }
+      ]
+    },
+    {
+      "id": "release-quote-reuters",
+      "template": "quote",
+      "data": {
+        "kicker": "路透社 2013 年 8 月 17 日的用詞",
+        "quote": "the first deliberate official references to Area 51",
+        "translation": "第一次刻意的、官方的提及",
+        "source": "Reuters（Steve Gorman），Christian Science Monitor 轉載"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "wi7t",
+          "text": "路透社的說法比較準：第一次刻意的、官方的提及。"
+        },
+        {
+          "id": "wsg8",
+          "text": "申請的人說，這是第一次有高層決定，承認名字和位置。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "release-map-page",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a researcher's desk at midday, a plain map page lying open with a pale lake shape and a small rectangle drawn beside it, a researcher's hand flat on the page with the index finger pointing at the rectangle, sun from a skylight.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "e43u",
+          "text": "第五十八頁是一整頁地圖，右下角還標著拉斯維加斯。"
+        }
+      ]
+    },
+    {
+      "id": "release-pilot-glove",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a sunlit apron, a pilot in a bulky pressure suit and a round helmet seen from behind walking toward a parked aircraft, one gloved hand raised in a wave, sun from the right.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "sdcw",
+          "text": "飛行員的名字、計畫的代號、花了多少錢，這次都看得到了。"
+        }
+      ]
+    },
+    {
+      "id": "release-bookshop",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a little bookshop on a sunny afternoon, a man in a tweed jacket reaching up for a plain thick book on a high shelf, a cat asleep on the shelf beside it, sharpest detail: the book's spine under his fingers, sun from the shopfront on the left.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "v2vq",
+          "text": "一位英國史家說，這些新內容他的書早就寫過了。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "release-spokesman-page",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a journalist with reading glasses on her nose at a sunlit desk, holding a thick plain document open with both hands and reading it, her eyes on the page, daylight from the right.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "p3ma",
+          "text": "CIA 發言人說，讀者找不到任何關於外星人的字。"
+        }
+      ]
+    },
+    {
+      "id": "release-a12-photo",
+      "template": "screenshot",
+      "data": {
+        "title": "A-12 偵察機，1960 年代",
+        "image": "docs/videos/curio-u02/photos/a12-flying.jpg",
+        "highlight": {
+          "x": 10,
+          "y": 25,
+          "w": 80,
+          "h": 50
+        },
+        "caption": "U-2 之後在這裡試飛的飛機：三倍音速、九萬英尺；1962 年 4 月首飛",
+        "credit": "圖：Wikimedia Commons，公有領域"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "wyp5",
+          "text": "史書的後半是下一架飛機，A-12，一九六二年在這裡首飛。"
+        },
+        {
+          "id": "4ccd",
+          "text": "三倍音速，九萬英尺，比 U-2 更高更快。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "release-mig",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a test pilot in a flight suit walking across a sunlit apron toward a plain unmarked swept-wing jet, helmet in hand, a mechanic waving from the wing, the eye rests on the jet's pointed nose, sun from the left.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "fn2f",
+          "text": "之後是弄到手的蘇聯米格機，和七七年的隱形驗證機。"
+        }
+      ]
+    },
+    {
+      "id": "release-still-redacted",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a reader at a sunlit kitchen table fanning the pages of a thick plain document, many pages still striped with black bars, one eyebrow raised, in focus: the striped pages, sun from the right.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "qdua",
+          "text": "新版還是有很多塗黑，內部的另一份歷史還沒全部公開。"
+        }
+      ]
+    },
+    {
+      "id": "release-big-58",
+      "template": "big",
+      "data": {
+        "kicker": "1955 → 2013",
+        "text": "**58** 年",
+        "sub": "從選址到名字正式印出來；承認的是一架飛機"
+      },
+      "claims": [
+        "c1",
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "rka8",
+          "text": "五十八年，名字才印上文件，承認的是一架飛機。",
+          "emotion": "「五十八年」放慢，最後一句平而清楚"
+        }
+      ]
+    },
+    {
+      "id": "release-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a valley under a starry night sky, a boy sitting on the tailgate of a pickup truck pointing straight up with his whole arm, a thermos beside him, sharpest detail: his pointing hand, light from a full moon on the right.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "rjct",
+          "text": "所以，外星人呢？",
+          "emotion": "問句上揚，帶一點挑眉"
+        }
+      ]
+    },
+    {
+      "id": "check-chapter",
+      "chapter": "三個問題檢查「S-4 的九艘飛碟」",
+      "template": "chapter",
+      "data": {
+        "number": "07",
+        "title": "三個問題再問一次",
+        "subtitle": "S-4 的九艘飛碟"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "as8n",
+          "text": "上一集的三個問題，套在那段一九八九年的訪談上。"
+        }
+      ]
+    },
+    {
+      "id": "check-steps-three",
+      "template": "steps",
+      "data": {
+        "title": "三個問題：S-4 的九艘飛碟",
+        "steps": [
+          {
+            "title": "最早出現在哪裡",
+            "detail": "1989 年，拉斯維加斯一家電視台的訪談"
+          },
+          {
+            "title": "誰在什麼場合說的",
+            "detail": "他自己；先化名遮臉，同年稍後具名"
+          },
+          {
+            "title": "解釋了什麼、解釋不了什麼",
+            "detail": "沒有任何文件；2013 年解密後仍沒有外星人"
+          }
+        ],
+        "source": "Skeptic 2026-04；KNPR 2015-02；EBB 434"
+      },
+      "claims": [
+        "c3",
+        "c6",
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "xtkt",
+          "text": "第一個問題，最早出處：一九八九年的電視訪談。",
+          "reveal": 1
+        },
+        {
+          "id": "c8jp",
+          "text": "第二個，誰說的？他自己，先化名遮臉，同一年才具名。",
+          "reveal": 1
+        },
+        {
+          "id": "6jcd",
+          "text": "第三個，它解釋不了為什麼沒有任何文件。",
+          "reveal": 1,
+          "emotion": "停一拍，「沒有任何文件」清楚"
+        }
+      ]
+    },
+    {
+      "id": "check-empty-drawers",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a sunlit records room shrugging with both palms up beside a tall cabinet with every drawer pulled out and empty, centre of attention: the nearest empty drawer, daylight from a high pane on the left.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "4yy9",
+          "text": "他說念過的兩所學校，都查無他的就學紀錄。"
+        }
+      ]
+    },
+    {
+      "id": "check-regret",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from behind of a man in a windbreaker standing alone at a desert overlook at noon, hands in his pockets, looking out over a vast empty valley, the eye rests on his hunched shoulders, sun from directly above.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "ggmd",
+          "text": "二十五年後他說，真希望當年沒有接受那次訪談。",
+          "emotion": "放慢，溫一點"
+        }
+      ]
+    },
+    {
+      "id": "check-compare-believed-record",
+      "template": "compare",
+      "data": {
+        "title": "大家以為的 51 區 vs 文件裡的 51 區",
+        "left": {
+          "heading": "大家以為的",
+          "points": [
+            "外星飛碟",
+            "羅斯威爾的殘骸",
+            "反向工程",
+            "元素 115"
+          ]
+        },
+        "right": {
+          "heading": "文件裡的",
+          "points": [
+            "U-2，1955 年選址",
+            "A-12，1962 年首飛",
+            "米格機、隱形驗證機",
+            "2013 年解密約 400 頁"
+          ]
+        },
+        "verdict": "文件裡有飛機，沒有飛碟",
+        "source": "左：1989 年訪談；右：CIA 史 2013 年解密版"
+      },
+      "claims": [
+        "c1",
+        "c6",
+        "c10",
+        "c20",
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "ydye",
+          "text": "大家以為的是飛碟、殘骸、反向工程、元素一一五。",
+          "reveal": 1
+        },
+        {
+          "id": "v24x",
+          "text": "文件裡的是 U-2、A-12、米格機，和四百頁的計畫史。",
+          "reveal": 1,
+          "emotion": "「文件裡」之後放慢，一項一項"
+        }
+      ]
+    },
+    {
+      "id": "check-own-plane",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of a man in a work shirt at the half-open sliding door of a plain hangar at noon, one hand on the door, a sliver of a long thin wing in the shade inside, in focus: his hand on the door, sun from behind him.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "2nea",
+          "text": "我的看法是，政府藏的是自己的飛機，不是飛碟。",
+          "emotion": "放慢，像在下一個小結論"
+        }
+      ]
+    },
+    {
+      "id": "check-campfire-stories",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot around a campfire at night in a dry valley, an old man with a bushy moustache telling a story with his arms spread wide, three children small in the foreground with their backs to the viewer, sharpest detail: his spread hands, light from the fire.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "9v4v",
+          "text": "地方越神祕，故事就越多，但故事的數量不是證據。",
+          "emotion": "「不是證據」平而清楚"
+        }
+      ]
+    },
+    {
+      "id": "check-no-mocking",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot across a diner counter at noon, a waitress in a paper cap setting a mug of coffee in front of a smiling customer in a jacket with a small green alien badge pinned to it, sun from the diner's front on the left.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ktc6",
+          "text": "不笑相信外星人的人，也不替政府背書，只講文件裡有的。"
+        }
+      ]
+    },
+    {
+      "id": "check-training-range",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a straight road running toward bare hills at noon, a guard in sunglasses seen from behind at a lowered barrier, the road beyond completely empty, the eye rests on the barrier's striped arm, sun from directly above.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c33",
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "ew6b",
+          "text": "現在試什麼仍是機密，官方只說它是訓練場的一部分。"
+        }
+      ]
+    },
+    {
+      "id": "check-stats-answer",
+      "template": "stats",
+      "data": {
+        "title": "這份檔案的三個年份",
+        "stats": [
+          {
+            "value": "1955",
+            "label": "4 月 12 日選址",
+            "note": "為 U-2 找試飛場"
+          },
+          {
+            "value": "2005",
+            "label": "資訊自由法申請",
+            "note": "要塗黑少一點的版本"
+          },
+          {
+            "value": "2013",
+            "label": "名字和地圖印出來",
+            "note": "6 月 25 日核准，8 月 15 日公開"
+          }
+        ],
+        "source": "CIA 史 p.56；國家安全檔案館 EBB 434"
+      },
+      "claims": [
+        "c1",
+        "c10",
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "s22u",
+          "text": "回到開場的問題：一九五五年，選址。",
+          "reveal": 1,
+          "emotion": "放慢，像在收攏"
+        },
+        {
+          "id": "n5uk",
+          "text": "二〇〇五年，一個人送出申請。",
+          "reveal": 1
+        },
+        {
+          "id": "75dq",
+          "text": "二〇一三年印在文件上，等了八年，承認的是一架飛機。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "check-big-answer",
+      "template": "big",
+      "data": {
+        "kicker": "這份檔案：存檔",
+        "text": "不是突然承認\n是**有人問了八年**",
+        "sub": "承認的是一架飛機，不是飛碟；裡面現在試什麼，仍是機密"
+      },
+      "claims": [
+        "c1",
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "5j56",
+          "text": "不是突然承認，是有人問了八年，名字才印上去。",
+          "emotion": "放慢，最後一句輕"
+        }
+      ]
+    },
+    {
+      "id": "check-comment-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a boy on a sunny porch step reading a plain comic book, a toy flying saucer and a toy aircraft on the step beside him, his tongue poking out in concentration, in focus: the two toys, sun from the right.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "28pp",
+          "text": "你第一次聽到 51 區，是哪部電影？留言告訴我。",
+          "emotion": "問句上揚，親切"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "這份檔案：存檔",
+        "cta": "你第一次聽到 51 區是從哪部電影？留言告訴我",
+        "lines": [
+          "1955 選址 → 2005 申請 → 2013 印出名字",
+          "下一份檔案：麥田圈"
+        ]
+      },
+      "lines": [
+        {
+          "id": "qh8p",
+          "text": "下一份檔案是麥田圈，兩個老先生的告白，記得訂閱。"
+        }
+      ]
+    }
+  ]
+}

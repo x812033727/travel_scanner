@@ -34,7 +34,7 @@ CASES = sorted(path.name for path in CONTRACT.iterdir() if path.is_dir())
 # What each case's batch adds to its confirmation: the translated titles YouTube gets, and the
 # caption tracks (the narration's and zh-TW's always come from the confirmation itself).
 EXPECTED = {
-    "zh-tw-narration": ({"en", "zh-CN"}, {"zh-TW", "en", "ja", "zh-CN"}),
+    "zh-tw-narration": ({"en", "ko"}, {"zh-TW", "en", "ja", "ko"}),
     "zh-tw-dubbed": (set(), {"zh-TW", "ja"}),
     "en-narration": ({"zh-TW", "ja"}, {"en", "zh-TW", "ja"}),
 }
