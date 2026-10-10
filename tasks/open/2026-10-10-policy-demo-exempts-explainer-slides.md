@@ -1,15 +1,15 @@
 ---
 id: 2026-10-10-policy-demo-exempts-explainer-slides
 title: QA policy: the demonstration score is a tutorial rule; an illustrated story (explainer, 奇聞檔案局, So That's Why) is judged without it
-status: open
+status: review
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-policy-demo
+claimed_at: 2026-10-10T11:16:51Z
 created_at: 2026-10-10T20:00:00Z
 completed_at:
-branch:
-depends_on:
+branch: claude/policy-demo-explainer
+depends_on: []
 scope:
   - apps/api/app/video_automation/judge.py
   - apps/api/app/video_automation/admin_api.py
@@ -40,25 +40,25 @@ should agree.
 
 ## Definition of done
 
-- [ ] `judge_policy` asks the `demo` question only for a tutorial-shaped video: skipped (None)
+- [x] `judge_policy` asks the `demo` question only for a tutorial-shaped video: skipped (None)
       when the project's `category` is `explainer` or `story`, or the format is a drama; the
       site decides from its own rows (the category the worker reported or the owner set), not
       from the request body alone.
-- [ ] `policy_note` and the review card read 「有示範：不適用（解說）」 instead of a number for
+- [x] `policy_note` and the review card read 「有示範：不適用（解說）」 instead of a number for
       those videos; `passed` ignores `demo` when it is None (as it does for stories).
-- [ ] The tool side (`tools/video/qa/policy.mjs`) shows the same wording in the QA item and the
+- [x] The tool side (`tools/video/qa/policy.mjs`) shows the same wording in the QA item and the
       tests cover a None `demo`.
-- [ ] `docs/videos/HANDS-OFF.md` §自動品管 says which categories are asked the demonstration
+- [x] `docs/videos/HANDS-OFF.md` §自動品管 says which categories are asked the demonstration
       question.
 
 ## Steps
 
-- [ ] Read `judge.py` (`judge_policy`, the story branch, `POLICY_MIN_DEMO`) and
+- [x] Read `judge.py` (`judge_policy`, the story branch, `POLICY_MIN_DEMO`) and
       `tests/test_video_judge.py` for how the story exemption is tested.
-- [ ] Thread the category: `JudgePolicyIn` keeps its strict shape; the server looks the project
+- [x] Thread the category: `JudgePolicyIn` keeps its strict shape; the server looks the project
       up by slug (`VideoProject.category`), falling back to asking `demo` when the category is
       unknown.
-- [ ] Tests on both sides; `cd apps/api && uv run pytest tests/test_video_judge.py`,
+- [x] Tests on both sides; `cd apps/api && uv run pytest tests/test_video_judge.py`,
       `node --test tools/video/qa/policy.test.mjs tools/video/qa/checks.test.mjs`.
 
 ## How to verify
@@ -71,3 +71,31 @@ with 「有示範：不適用」 and the final gate approves itself when the oth
 - 2026-10-10 filed from the curio-h01 pilot (`2026-10-10-history-curiosity-pilot`). Until it
   lands, the owner approves the final gate of these videos on /admin/videos; the QA report on
   the card shows every other item green.
+- 2026-10-10 done on `claude/policy-demo-explainer` (claude-opus-policy-demo):
+  - `policy_questions_for` now reads `shorts_line`, `category` and `format` from the video's own
+    row in one query and answers a fourth set, `explainer`: the three questions a cut Short is
+    asked, read by `read_policy_answers(answers, "explainer")` with the tutorial's thresholds.
+    The response's `demo` is null, `questions` is `explainer`, and the note is
+    「Jev：符合立場 0.85、有示範：不適用（解說）、建議 0.05、業配 0.10，通過」. `JudgePolicyIn` is
+    unchanged, so a request that names a category, a format or a question set is still a 422.
+  - Order of the decision: brand-story series (its own five) → cut Short (its own note) →
+    category `explainer`/`story` or format `drama` → tutorial. No row, or a row without a
+    category on a non-drama format, is asked all four as before.
+  - Exempting the drama format also takes the `demo` question away from
+    `2026-09-28-video-drama-policy-questions`; what is left of that ticket is the owner's
+    decision on whether a drama needs questions of its own (for example the story's "nobody run
+    down"). It was not touched here.
+  - `curio-h01` passes only if its row says `category: explainer`. The worker reports the
+    category from `video.json` and the server takes it only while the row has none; if the row
+    was created without it, set it on /admin/videos before running `qa` again.
+  - The tests the scope names did not exist: the API cases are in the new
+    `apps/api/tests/test_video_judge.py` (the story and cut cases stay in
+    `test_video_story_policy.py`, untouched and still green), the tool cases in the new
+    `tools/video/qa/policy.test.mjs`. `admin_api.py`, `schemas.py` and `checks.mjs` needed no
+    change: the note comes from the server and the tool prints it as it is.
+  - `claim` refused at first because `2026-10-09-video-languages-are-four-drop-zh` is still
+    marked in progress with a scope of whole directories, although its work merged as #1413;
+    claimed with `--force`. That ticket needs `done`.
+  - `node tools/video/long-form/cli.mjs check` reports
+    `stale duration review binding: apps/api/app/video_automation/judge.py`. The receipt
+    (`docs/videos/long-form/review.md`, `review.json`) is left for an independent reviewer.
