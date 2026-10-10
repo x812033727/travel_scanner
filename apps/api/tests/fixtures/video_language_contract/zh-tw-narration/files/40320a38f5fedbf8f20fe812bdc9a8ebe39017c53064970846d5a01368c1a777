@@ -15,9 +15,9 @@
       "title": "en title of fixture-minimal",
       "description": "en description of fixture-minimal.\n\n📌 Chapters\n00:00 開場\n00:14 三個問題\n00:27 結論\n\n📚 Sources\n範例來源: https://example.com/models\n\n#entag"
     },
-    "zh-CN": {
-      "title": "zh-CN title of fixture-minimal",
-      "description": "zh-CN description of fixture-minimal.\n\n📌 章节\n00:00 開場\n00:14 三個問題\n00:27 結論\n\n📚 参考资料\n範例來源：https://example.com/models\n\n#zhCNtag"
+    "ko": {
+      "title": "ko title of fixture-minimal",
+      "description": "ko description of fixture-minimal.\n\n📌 챕터\n00:00 開場\n00:14 三個問題\n00:27 結論\n\n📚 참고 자료\n範例來源: https://example.com/models\n\n#kotag"
     }
   },
   "chapters": [
@@ -40,18 +40,18 @@
   "skipped_thumbnail_locales": {
     "en": "i18n/en.json has no thumbnail words (i18n-sheet --locale en --parts metadata, then i18n-merge)",
     "ja": "i18n/ja.json has no thumbnail words (i18n-sheet --locale ja --parts metadata, then i18n-merge)",
-    "zh-CN": "i18n/zh-CN.json has no thumbnail words (i18n-sheet --locale zh-CN --parts metadata, then i18n-merge)"
+    "ko": "i18n/ko.json has no thumbnail words (i18n-sheet --locale ko --parts metadata, then i18n-merge)"
   },
   "captions": [
     "captions/en.srt",
     "captions/ja.srt",
-    "captions/zh-CN.srt",
+    "captions/ko.srt",
     "captions/zh-TW.srt"
   ],
   "skipped_caption_locales": {},
   "dubs": [],
   "skipped_dub_locales": {
-    "zh-CN": "配音字數超出時間軸，改用字幕"
+    "ko": "配音字數超出時間軸，改用字幕"
   },
   "language_choice": {
     "en": {
@@ -64,7 +64,7 @@
       "captions": true,
       "dub": false
     },
-    "zh-CN": {
+    "ko": {
       "metadata": true,
       "captions": true,
       "dub": true
