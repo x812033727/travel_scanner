@@ -148,7 +148,8 @@ export function dubsForUpload(project, workdir, speech, locales = defaultDubLoca
       continue;
     }
     const dub = currentDub(project, workdir, locale, speech);
-    if (dub && !dub.stale) dubs.push({ locale, file: dub.file, format: dub.format, total_frames: dub.total_frames, tempo_max: dub.tempo_max ?? 1, ...(dub.branding_hash ? { branding_hash: dub.branding_hash } : {}) });
+    // `kept`: the lines whose retake did not fit, so the track carries their earlier take (dubs/cli.mjs --keep-fitting).
+    if (dub && !dub.stale) dubs.push({ locale, file: dub.file, format: dub.format, total_frames: dub.total_frames, tempo_max: dub.tempo_max ?? 1, ...(dub.branding_hash ? { branding_hash: dub.branding_hash } : {}), ...(Array.isArray(dub.kept) && dub.kept.length ? { kept: dub.kept.map(String) } : {}) });
   }
   return { dubs, skipped };
 }

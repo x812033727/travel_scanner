@@ -3754,9 +3754,13 @@ export class Automation {
    * times; then Jev listens (`check-audio --locale`) and the flagged lines are retaken,
    * MAX_DUB_RETAKE_ROUNDS times, and the lines still heard wrong after that are reworded by the
    * translator and dubbed again, MAX_DUB_REWORD_ROUNDS times. A retake that no longer fits its
-   * window goes back to the shortening. What still fails after that, and what needs the owner (a
-   * voice that speaks one language, a missing key), gives the locale up with the reason instead
-   * of blocking the video. A service that is down or a limit (exit 4) defers this video only, and
+   * window goes back to the shortening while a shortening round is left; after that the line
+   * keeps its earlier take, which fitted (`dub --keep-fitting`), and the locale is ready with
+   * those lines named, since only their wording was in doubt. What still fails, and what needs
+   * the owner (a voice that speaks one language, a missing key), gives the locale up with the
+   * reason instead of blocking the video; the reason goes to the admin card as it is, so it
+   * names lines and rounds, never a path on the host or a command to run by hand. A service
+   * that is down or a limit (exit 4) defers this video only, and
    * the lane goes on with the others; a STOP file that ends `dub`, a retake or the check (exit 6)
    * defers it for the rest of the run. Either way the next visit goes on from the takes already
    * paid for, and a retake that exited 4 without making a take gives its round back. A paid
@@ -3783,22 +3787,33 @@ export class Automation {
     const flags = path.join(workdir, "review", `check-flags.${locale}.json`);
     const checkArgs = ["check-audio", "--slug", slug, "--locale", locale];
     const overLines = () => readJson(dubArtifacts(workdir, locale).fit, null)?.over;
+    const flaggedIds = () => {
+      try {
+        return [...flaggedLines(readJson(flags))].sort();
+      } catch {
+        return [];
+      }
+    };
     // The flagged lines' takes as they are (a retake writes each one's <id>.wav again): a retake
     // that exits 4 having changed none of them made no take, so its round is given back, as for
     // the narration (retakeStopped's giveBack). An outage repeated round after round would
     // otherwise spend every retake and send lines never retaken to the rewording.
     const flaggedTakes = () => {
-      let ids;
-      try {
-        ids = flaggedLines(readJson(flags));
-      } catch {
-        ids = new Set();
-      }
       const audio = dubArtifacts(workdir, locale).audio;
-      return JSON.stringify([...ids].sort().map((id) => {
+      return JSON.stringify(flaggedIds().map((id) => {
         const file = path.join(audio, `${id}.wav`);
         return [id, existsSync(file) ? createHash("sha256").update(readFileSync(file)).digest("hex") : null];
       }));
+    };
+    // The reasons a locale is given up with are shown on the admin card as they are (giveUpDub):
+    // a tool's last line with its "run … again" instruction cut, or the ids of the lines that do
+    // not fit, with the rounds spent on them.
+    const forCard = (result) => lastLine(result.out).replace(/;\s*(?:after [^;]*, )?run\b.*$/, "");
+    const shortening = () => `${rounds.shorten} shortening round${rounds.shorten === 1 ? "" : "s"}`;
+    const unfit = (over, result, after) => {
+      const ids = (Array.isArray(over) ? over : []).map((line) => line.id);
+      if (!ids.length) return `the dub could not be laid out: ${forCard(result)}`;
+      return `${ids.join(", ")} ${ids.length === 1 ? "does not fit its window" : "do not fit their windows"} even at ${MAX_TEMPO}x after ${after}`;
     };
     // A paid request whose answer was lost: the video waits for the owner, and the owner's retry
     // runs this locale again, its check included, though its track may already read as current.
@@ -3812,6 +3827,8 @@ export class Automation {
     const unfinished = (what, result) => this.defer(state, `${slug}: ${locale} ${what} could not finish (${lastLine(result.out)})`, { what: what === "dub check" ? "check-audio" : "dub", everyone: Boolean(everyones(result.out)) });
     // Each pass makes the track (only the lines whose words changed are synthesized again) and
     // checks it; a reworded line or a retake that no longer fits starts another pass.
+    // The lines that kept their earlier take because the retake did not fit (fit.json `kept`).
+    let kept = [];
     for (;;) {
       let made = await this.speech(slug, dubArgs);
       while (made.code === 1 && rounds.shorten < MAX_DUB_SHORTEN_ROUNDS) {
@@ -3826,11 +3843,7 @@ export class Automation {
         made = await this.speech(slug, dubArgs);
       }
       if (made.code === ctx.EXIT.incomplete) return stopped("dub", made);
-      if (made.code === 1) {
-        const over = overLines() ?? [];
-        const why = over.length ? `${over.length} lines (${over.map((line) => line.id).join(", ")}) do not fit even at ${MAX_TEMPO}x after ${rounds.shorten} shortening round${rounds.shorten === 1 ? "" : "s"}` : lastLine(made.out);
-        return this.giveUpDub(state, locale, why);
-      }
+      if (made.code === 1) return this.giveUpDub(state, locale, unfit(overLines(), made, shortening()));
       if (speechUncertain(made)) return lost(`dub ${locale}`, made);
       if (made.code === 3) return this.giveUpDub(state, locale, `dub needs the owner: ${lastLine(made.out)}`);
       if (made.code === 4) return unfinished("dub", made);
@@ -3841,7 +3854,11 @@ export class Automation {
         rounds.retakes += 1;
         remember();
         const takes = flaggedTakes();
-        const redo = await this.speech(slug, [...dubArgs, "--redo", flags]);
+        // With the shortening rounds spent, a retake that no longer fits its window gives the
+        // line its earlier take back (dub --keep-fitting): that take fitted, only its wording
+        // was in doubt, and the locale goes out with those lines named rather than given up.
+        const keep = rounds.shorten >= MAX_DUB_SHORTEN_ROUNDS;
+        const redo = await this.speech(slug, [...dubArgs, "--redo", flags, ...(keep ? ["--keep-fitting"] : [])]);
         if (redo.code === ctx.EXIT.incomplete) return stopped("dub retake", redo);
         if (redo.code === 4) {
           if (flaggedTakes() === takes) rounds.retakes -= 1;
@@ -3850,15 +3867,20 @@ export class Automation {
         if (speechUncertain(redo)) return lost(`dub ${locale} retake`, redo);
         // The new take is longer than its window allows: the next pass's `dub` reports the same
         // window and shortens it, while shortening rounds are left.
-        if (redo.code === 1 && overLines()?.length && rounds.shorten < MAX_DUB_SHORTEN_ROUNDS) {
+        if (redo.code === 1 && overLines()?.length && !keep) {
           refit = true;
           break;
         }
-        if (redo.code === 1 || redo.code === 3) return this.giveUpDub(state, locale, `the retake failed: ${lastLine(redo.out)}`);
+        // Not even the earlier take fits the window now (or there was none to keep).
+        if (redo.code === 1) return this.giveUpDub(state, locale, unfit(overLines(), redo, `the retake and ${shortening()}`));
+        if (redo.code === 3) return this.giveUpDub(state, locale, `the retake needs the owner: ${forCard(redo)}`);
         if (redo.code !== 0) return this.block(state, `dub ${locale} retake failed: ${lastLine(redo.out, 2)}`);
+        kept = readJson(dubArtifacts(workdir, locale).fit, null)?.kept ?? [];
+        if (kept.length) break;
         check = await this.speech(slug, checkArgs);
       }
       if (refit) continue;
+      if (kept.length) break;
       if (check.code === 1 && rounds.reword < MAX_DUB_REWORD_ROUNDS) {
         rounds.reword += 1;
         remember();
@@ -3871,19 +3893,29 @@ export class Automation {
       if (check.code === ctx.EXIT.incomplete) return stopped("dub check", check);
       if (check.code === 1) {
         const reworded = rounds.reword ? ` and ${rounds.reword} rewording round${rounds.reword === 1 ? "" : "s"}` : "";
-        return this.giveUpDub(state, locale, `Jev still hears lines wrong after ${rounds.retakes} retake${rounds.retakes === 1 ? "" : "s"}${reworded}: ${lastLine(check.out)}`);
+        const ids = flaggedIds();
+        return this.giveUpDub(state, locale, `Jev still hears ${ids.length ? ids.join(", ") : "some lines"} wrong after ${rounds.retakes} retake${rounds.retakes === 1 ? "" : "s"}${reworded}`);
       }
       if (speechUncertain(check)) return lost(`check-audio ${locale}`, check);
-      if (check.code === 3) return this.giveUpDub(state, locale, `the dub check needs the owner: ${lastLine(check.out)}`);
+      if (check.code === 3) return this.giveUpDub(state, locale, `the dub check needs the owner: ${forCard(check)}`);
       if (check.code !== 0) return this.block(state, `check-audio ${locale} failed: ${lastLine(check.out, 2)}`);
       break;
+    }
+    const plural = (count, word) => (count ? `${count} ${word}${count === 1 ? "" : "s"}` : "");
+    const rounding = [plural(rounds.shorten, "shortening round"), plural(rounds.retakes, "retake"), plural(rounds.reword, "rewording round")].filter(Boolean).join(", ");
+    // The lines that kept their earlier take are named with what Jev heard in them (the check's
+    // record), for the log and the notes; the batch names them beside the track (review/sync.mjs).
+    let ending = "Jev passed every line";
+    if (kept.length) {
+      const heard = readJson(path.join(workdir, "review", `check.${locale}.json`), null)?.lines ?? {};
+      const named = kept.map((id) => (typeof heard[id]?.heard === "string" ? `${id} (heard as 「${heard[id].heard}」)` : id)).join(", ");
+      ending = `kept the earlier take of ${named}: the retake did not fit its window`;
+      state.notes.push(`${locale} dub ${ending}`);
     }
     if (state.languages) delete state.languages[locale];
     saveState(workdir, state);
     await report(ctx, this.api, state, "languages");
-    const plural = (count, word) => (count ? `${count} ${word}${count === 1 ? "" : "s"}` : "");
-    const rounding = [plural(rounds.shorten, "shortening round"), plural(rounds.retakes, "retake"), plural(rounds.reword, "rewording round")].filter(Boolean).join(", ");
-    return `${slug}: ${locale} dub made${rounding ? ` after ${rounding}` : ""}; Jev passed every line`;
+    return `${slug}: ${locale} dub made${rounding ? ` after ${rounding}` : ""}; ${ending}`;
   }
 
   /** Give a locale's dub up with the reason (dubs/<locale>/skipped.json); the batch reports it, the video goes on. */

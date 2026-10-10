@@ -160,18 +160,20 @@ test("ffmpeg arguments: pitch-kept tempo, then the video's loudness and the uplo
 });
 
 /** The narration server: status with a Gemini month, and 60 ms of tone a character plus the break. */
+/** The speech server: 60 ms a character, times `stretch` (a test sets it to make a retake run long). */
 function fakeServer() {
   const calls = [];
-  const fetchImpl = async (url, init) => {
+  const server = { calls, stretch: 1 };
+  server.fetchImpl = async (url, init) => {
     calls.push({ url, init });
     if (url.endsWith("/api/video/speech/status")) {
       return Response.json({ configured: false, voices: [], monthly_limit: 0, used: 0, remaining: 0, gemini_configured: true, gemini_monthly_limit: 300000, gemini_used: 1000 });
     }
     const body = JSON.parse(init.body);
-    const audio = concatSamples(body.segments.flatMap((segment) => [tone(segment.parts.reduce((sum, part) => sum + part.text.length, 0) * 60), quiet(segment.break_after_ms)]));
+    const audio = concatSamples(body.segments.flatMap((segment) => [tone(segment.parts.reduce((sum, part) => sum + part.text.length, 0) * 60 * server.stretch), quiet(segment.break_after_ms)]));
     return new Response(encodeWav(audio), { status: 200, headers: { "Content-Type": "audio/wav", "X-Billable-Characters": "10" } });
   };
-  return { calls, fetchImpl };
+  return server;
 }
 
 /** ffmpeg as the dub sees it: a measurement, a shortened copy for atempo, a plain copy otherwise. */
@@ -378,6 +380,55 @@ test("dub writes a track per locale, speeds up a tight window, and reports a win
   const redo = capture(box, server, ffmpeg);
   assert.equal(await main(["dub", "--slug", box.slug, "--locale", "ko", "--redo", flags], redo.ctx), EXIT.ok);
   assert.match(redo.out.stdout, /ko: 1 requests synthesized/);
+});
+
+test("--keep-fitting gives a retaken line its earlier take back when the retake no longer fits its window", async () => {
+  const box = sandbox();
+  const doc = geminiDoc(fixture());
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(doc, null, 2)}\n`);
+  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+  // The opening window is tight already: its two lines fit only sped up.
+  writeFileSync(path.join(box.dir, "i18n", "ko.json"), JSON.stringify(translationFor(doc, (line) => (line.id === "k7p2" ? "k".repeat(42) : line.id === "m4qa" ? "m".repeat(46) : `KO ${line.id}`))));
+  const server = fakeServer();
+  const ffmpeg = fakeFfmpeg();
+  await narrate(box, server, ffmpeg);
+  const made = capture(box, server, ffmpeg);
+  assert.equal(await main(["dub", "--slug", box.slug, "--locale", "ko"], made.ctx), EXIT.ok, made.out.stdout + made.out.stderr);
+  const ko = dubArtifacts(box.workdir, "ko");
+  const take = path.join(ko.audio, "k7p2.wav");
+  const earlier = readFileSync(take);
+  const key = JSON.parse(readFileSync(ko.cache, "utf8")).lines.k7p2;
+  const flags = path.join(box.workdir, "review", "check-flags.ko.json");
+  mkdirSync(path.dirname(flags), { recursive: true });
+  writeFileSync(flags, JSON.stringify({ flags: ["k7p2"] }));
+
+  // The voice now reads the line three times as slowly: the retake cannot fit even at MAX_TEMPO.
+  server.stretch = 3;
+  const kept = capture(box, server, ffmpeg);
+  assert.equal(await main(["dub", "--slug", box.slug, "--locale", "ko", "--redo", flags, "--keep-fitting"], kept.ctx), EXIT.ok, kept.out.stdout + kept.out.stderr);
+  assert.match(kept.out.stdout, /^ko: kept the earlier take of k7p2: the retake did not fit its window$/m);
+  assert.match(kept.out.stdout, /^ko: 1 requests synthesized/m, "the retake was bought, then set aside");
+  assert.ok(readFileSync(take).equals(earlier), "the earlier take is back on disk");
+  const cache = JSON.parse(readFileSync(ko.cache, "utf8"));
+  assert.equal(cache.lines.k7p2, key);
+  assert.match(cache.stretched.k7p2, new RegExp(`^${key}@1\\.\\d\\d$`), "its sped-up copy was made again from the earlier take");
+  const fit = JSON.parse(readFileSync(ko.fit, "utf8"));
+  assert.deepEqual([fit.over, fit.kept], [[], ["k7p2"]]);
+  assert.deepEqual(JSON.parse(readFileSync(ko.timeline, "utf8")).kept, ["k7p2"], "the track's record names the kept line for the languages batch");
+  assert.ok(existsSync(ko.track("m4a")));
+
+  // Without the flag the long retake stands and the window is reported over, as before.
+  const plain = capture(box, server, ffmpeg);
+  assert.equal(await main(["dub", "--slug", box.slug, "--locale", "ko", "--redo", flags], plain.ctx), EXIT.lint);
+  const over = JSON.parse(readFileSync(ko.fit, "utf8"));
+  assert.ok(over.over.some((line) => line.id === "k7p2"), JSON.stringify(over.over));
+  assert.equal(over.kept, undefined);
+  assert.ok(!readFileSync(take).equals(earlier), "the long take stays");
+
+  // --keep-fitting means nothing without a retake to keep from.
+  const alone = capture(box, server, ffmpeg);
+  assert.equal(await main(["dub", "--slug", box.slug, "--locale", "ko", "--keep-fitting"], alone.ctx), EXIT.usage);
+  assert.match(alone.out.stderr, /--keep-fitting goes with --redo/);
 });
 
 test("--line-by-line sends one request a line, so a scene is never paid for twice", async () => {
