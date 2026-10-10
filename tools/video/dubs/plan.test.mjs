@@ -8,11 +8,14 @@ import { EXIT, main } from "../cli.mjs";
 import { enBrief, enFixture, fixture, fixtureBrief, fixtureLexicon } from "../core/fixtures/load.mjs";
 import { eachLine, LOCALES, textHash } from "../core/schema.mjs";
 import { dubArtifacts, lintProject, loadProject } from "../core/state.mjs";
-import { estimateTimeline, SAMPLE_RATE, speechHash } from "../core/timeline.mjs";
+import { estimateTimeline, FPS, framesFor, msToSamples, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash } from "../core/timeline.mjs";
 import { checkFiles, dubLexicon as checkerDubLexicon, lexiconFor, spokenForm } from "../tts/check.mjs";
 import { billableForRequest, geminiText, planRequests } from "../tts/requests.mjs";
 import { concatSamples, encodeWav } from "../tts/wav.mjs";
-import { dubLexicon, dubScript, speechLexicon } from "./plan.mjs";
+import {
+  GAP_MS, GUARD_MS, MAX_TEMPO, MAX_TEMPO_OVERRUN, OVERRUN_TOLERANCE_SECONDS,
+  absorbOverruns, dubLexicon, dubScript, layoutDub, layoutDubTolerant, overrunSummary, shiftWindow, speechLexicon, windowLimit,
+} from "./plan.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
 process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
@@ -238,3 +241,97 @@ for (const [source, target, external] of [["zh-TW", "en", false], ["en", "zh-TW"
     assert.deepEqual(JSON.parse(readFileSync(path.join(path.dirname(path.dirname(box.file)), "lexicon.json"), "utf8")), box.lexicon);
   });
 }
+
+// Three slide windows, one line each, cut like production's: a 160-frame "who-first", a
+// 100-frame "home-bits", a 60-frame "tail". Lines start where their window does, as the
+// timeline builder lays them (a reveal lands on a line's start).
+function threeWindows() {
+  const scenes = [["who-first", 0, 160], ["home-bits", 160, 260], ["tail", 260, 320]];
+  return {
+    total_frames: 320,
+    scenes: scenes.map(([id, start, end]) => ({ id, states: [{ reveal: 0, start_frame: start, end_frame: end }] })),
+    lines: scenes.map(([id, start, end], index) => ({ id: `l${index}`, scene: id, start_frame: start, end_frame: end, audio_samples: (end - start) * SAMPLES_PER_FRAME })),
+  };
+}
+
+/** Clip samples that make `window` stick out by `frames` once sped up to MAX_TEMPO. */
+function overBy(window, frames) {
+  return Math.round(MAX_TEMPO * (windowLimit(window) - window.start_frame + frames) * SAMPLES_PER_FRAME) - 100;
+}
+
+const framesOf = (ms) => framesFor(msToSamples(ms));
+
+test("a window over by a few frames is let through: the pause after it first, its own tempo second, still over past both", async () => {
+  assert.equal(OVERRUN_TOLERANCE_SECONDS, 0.3);
+  assert.equal(MAX_TEMPO_OVERRUN, 1.25);
+  const timeline = threeWindows();
+  const [first, second, third] = layoutDub(timeline, new Map([["l0", 1600], ["l1", 1600], ["l2", 1600]]));
+  const originals = new Map(timeline.lines.map((line) => [line.id, line]));
+  const guard = framesOf(GUARD_MS);
+  const gap = framesOf(GAP_MS);
+  const lay = (samples) => layoutDubTolerant(timeline, new Map([["l0", samples[0]], ["l1", samples[1]], ["l2", samples[2]]]));
+  const room = (window, fraction) => Math.round((window.end_frame - window.start_frame) * fraction * SAMPLES_PER_FRAME);
+
+  // Over by 0.07 s (two frames, production's ko "who-first"): the overrun ends inside the guard,
+  // and the next window is not touched.
+  const strict = layoutDub(timeline, new Map([["l0", overBy(first, 2)], ["l1", room(second, 0.4)], ["l2", room(third, 0.4)]]));
+  assert.deepEqual([strict[0].over, strict[0].tempo, strict[0].slack_frames], [true, MAX_TEMPO, -2], "without the tolerance the window is over at MAX_TEMPO");
+  const inGuard = await lay([overBy(first, 2), room(second, 0.4), room(third, 0.4)]);
+  assert.deepEqual([inGuard[0].over, inGuard[0].absorbed, inGuard[0].overrun_seconds, inGuard[0].tempo, inGuard[0].slack_frames], [false, "next-slack", 0.07, MAX_TEMPO, -2]);
+  assert.ok(inGuard[0].lines.at(-1).end_frame <= first.end_frame, "the voice still ends before the slide changes");
+  assert.equal(inGuard[1].shifted_frames, undefined);
+  assert.equal(inGuard[1].lines[0].start_frame, second.start_frame);
+  assert.equal(overrunSummary(inGuard), "1 window ran 0.07 s long: absorbed by the pause after it (who-first)");
+
+  // Over by 0.2 s (six frames): past the slide change, so the next window's first line waits
+  // for it, the gap between, and that window's slack takes the shift; the third does not move.
+  const shifted = await lay([overBy(first, 6), room(second, 0.4), room(third, 0.4)]);
+  assert.deepEqual([shifted[0].over, shifted[0].absorbed, shifted[0].overrun_seconds, shifted[0].tempo], [false, "next-slack", 0.2, MAX_TEMPO]);
+  const spoke = shifted[0].lines.at(-1).end_frame;
+  assert.equal(spoke, windowLimit(first) + 6);
+  assert.equal(shifted[1].lines[0].start_frame, spoke + gap, "the next line starts a gap after the overrun");
+  assert.equal(shifted[1].shifted_frames, 6 - guard + gap);
+  assert.deepEqual([shifted[1].over, shifted[1].tempo, shifted[1].absorbed], [false, 1, undefined]);
+  assert.deepEqual(shifted[2].lines, (await lay([1600, room(second, 0.4), room(third, 0.4)]))[2].lines, "the window after the next is as it was");
+  assert.ok(shifted[1].lines[0].end_frame <= windowLimit(second));
+
+  // Over by 0.27 s (eight frames, production's sec-ai ko) with a next window too full to wait:
+  // this window alone is sped up past MAX_TEMPO, to 1.21x here, and nothing else changes.
+  const sped = await lay([overBy(first, 8), room(second, 0.95), room(third, 0.4)]);
+  assert.deepEqual([sped[0].over, sped[0].absorbed, sped[0].overrun_seconds, sped[0].tempo], [false, "tempo", 0.27, 1.21]);
+  assert.ok(sped[0].tempo > MAX_TEMPO && sped[0].tempo <= MAX_TEMPO_OVERRUN);
+  assert.ok(sped[0].lines.at(-1).end_frame <= windowLimit(first), "at its own tempo the window fits its limit again");
+  assert.equal(sped[0].lines[0].audio_samples, Math.round(overBy(first, 8) / 1.21));
+  assert.equal(sped[1].lines[0].start_frame, second.start_frame);
+  assert.equal(sped[1].shifted_frames, undefined);
+  assert.equal(overrunSummary(sped), "1 window ran 0.27 s long: sped up to 1.21x (who-first)");
+
+  // The pause is preferred even when the tempo would do: the same eight frames with room after.
+  const paused = await lay([overBy(first, 8), room(second, 0.4), room(third, 0.4)]);
+  assert.deepEqual([paused[0].absorbed, paused[0].tempo, paused[1].shifted_frames], ["next-slack", MAX_TEMPO, 8 - guard + gap]);
+
+  // Over by 0.6 s: beyond the tolerance, so the window stays over for the translator.
+  const still = await lay([overBy(first, 18), room(second, 0.4), room(third, 0.4)]);
+  assert.deepEqual([still[0].over, still[0].absorbed, still[0].tempo, still[0].slack_frames], [true, undefined, MAX_TEMPO, -18]);
+  assert.equal(still[1].lines[0].start_frame, second.start_frame);
+  assert.equal(overrunSummary(still), null);
+
+  // Within the tolerance but neither way works: a short last window (no window after it, only the
+  // guard) over by eight frames needs more than MAX_TEMPO_OVERRUN.
+  const last = await lay([1600, 1600, overBy(third, 8)]);
+  assert.deepEqual([last[2].over, last[2].absorbed, last[2].tempo], [true, undefined, MAX_TEMPO]);
+  assert.ok(MAX_TEMPO * (windowLimit(third) - third.start_frame + 8) / (windowLimit(third) - third.start_frame) > MAX_TEMPO_OVERRUN);
+
+  // Two windows let through read as one line, in window order.
+  const both = await lay([overBy(first, 2), room(second, 0.95), overBy(third, 1)]);
+  assert.equal(overrunSummary(both), "2 windows ran long: who-first 0.07 s absorbed by the pause after it; tail 0.03 s absorbed by the pause after it");
+
+  // shiftWindow keeps a window's rhythm: with kept starts only the lines the overrun reaches move.
+  const two = { ...first, lines: [{ id: "a", scene: "who-first", start_frame: 0, end_frame: 20, audio_samples: 20 * SAMPLES_PER_FRAME, tempo: 1 }, { id: "b", scene: "who-first", start_frame: 80, end_frame: 100, audio_samples: 20 * SAMPLES_PER_FRAME, tempo: 1 }], tempo: 1, kept_starts: true, over: false, slack_frames: 57 };
+  const twoOriginals = new Map([["a", { start_frame: 0 }], ["b", { start_frame: 80 }]]);
+  const moved = shiftWindow(two, twoOriginals, 10);
+  assert.deepEqual(moved.lines.map((line) => [line.start_frame, line.end_frame, line.tempo]), [[10, 30], [80, 100]].map(([start, end]) => [start, end, 1]));
+  assert.deepEqual([moved.shifted_frames, moved.over, moved.slack_frames], [10, false, windowLimit(first) - 100]);
+  assert.equal(await absorbOverruns([{ ...first, lines: [], over: false }], originals).then((out) => out[0].absorbed), undefined, "a window that fits is left alone");
+  assert.equal(FPS, 30);
+});
