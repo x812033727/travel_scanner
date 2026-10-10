@@ -55,6 +55,15 @@ genuinely sent unknown request.
 
 ## Notes
 
+Additional Oct10 postproduction diagnosis: admission metadata persistence can
+also fail before any normal transport. Actual SH5 v2 receipt-rename refusal
+d4e7dcd1 retains the old/temp raw read, four absent processes and zero LANG
+intents/returns/POST/PUT. Three private relay sources retry only the same
+fsynced receipt rename on EPERM/EBUSY, without a new SQL timestamp or API call;
+23 focused cases pass. This private operational repair does not implement the
+normal paid admission/dispatch boundary. Genuine sent/unknown holds remain.
+
+
 Actual retained operation44a0a83921d0fc12a5f0365aa17e55d211e4df402ef61bdbe69d351c504e674e
 has held journalc8070fa5535d9294ef150525c858d128d9a123c8c74b35f457e950b5e8329943.
 Its sent-to-held interval is106ms and its reason is the reviews admission GET429.
@@ -94,3 +103,35 @@ Additional actual recovery examples on October9:
 Both examples retain original counters,approved media and actual paid history.
 The genuine old FREE unknown and Mods STOP remain unchanged. This note records
 diagnosis only; the shared implementation remains open.
+
+Current35 recovery also reproduced the same distinction for Travel ASR b3ab:
+closed caller137 retains82 synthesis/94 ASR results, while full original wire
+af81c5fa contains no transport for the exact full native transcribeBody key.
+Normal exact-key reconciliation receipt7d4af1c1 archives the raw request first;
+the genuine next ASR returned200 without resetting cached checks or rounds.
+
+Future admission hardening should reject invalid or excessively future read
+times and separately validate the host-check age. Private source-only advice
+d4349e4a records the same-host guards and original source hashes. No future
+timestamp was observed at that historical admission snapshot. This remains a
+diagnostic follow-up, not authority to replay genuine unknown requests or
+extend read freshness.
+
+A later SH6 Tail zero-write dry retained22 genuine host checks. Its last host
+timestamp was71ms later than native finish while SQL age was332.867ms; the
+exact guard instant was not logged, so the precise failing host age is unknown.
+The original v1 dry returned3, all four actual processes closed, auto remained
+unchanged and no native/progress intent was created. The interrupted v2 dry
+retains UNKNOWN original true exit and zero writes, without a success claim.
+The v3 readiness refusal returned3 before any native spawn; its three actual
+processes closed. Successful v4 dry returned native/coordinator true0 with
+four actual processes closed; the one actual v4 execute then returned true0
+and one ordinary progress PUT200. These preserved purposes were never replayed.
+
+The private clock helper waits at most five seconds per original completed read
+using actual local time, without restamping SQL/host evidence. It preserves the
+original native0..60-second and readiness0..15-second age checks plus the original
+120-second readiness deadline. Native16 focused cases and readiness10 cases pass.
+This private bounded wait is not a repository admission/dispatch implementation
+fix. Genuine sent/unknown paid holds remain protected; this task remains open
+and unclaimed, with no blind retry authority.

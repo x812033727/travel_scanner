@@ -1,9 +1,374 @@
 # Stalled production recovery, 2026-10-08
 
-Owner request: complete stalled video production directly. This record is updated
-only from actual stage results. Generated media and detailed logs remain outside Git.
+Owner request: complete stalled video production directly. The six Mandarin
+exports are locally verified. Final Embedding normal reviews/current LANG and
+consumer: The actual five-stage normal result afeea784bc67021bb15ae0e03558cf992f81f6d103996e06f29f7d63a8f39ea0 finished at 02:19:09.134 UTC on October10, with publish-push, publish-pull, languages-push, languages-pull and status all code0/signal null. The two known PUBLISH stages were inherited without replay. Through this review phase, retained accounting was two review POSTs and30 API PUTs (27 file PUTs, two new ordinary progress PUTs and one preserved earlier progress PUT). All returned transports are known; provider and YouTube actions were zero. The later original Tail adds one ordinary PUT, making the final retained postproduction total31 PUTs/two review POSTs.;
+Current LANG 58a34711-763d-4743-ad60-2459e8eff469 is approved, content d746e0dd8fd66e72d299a40a2da7b40ed0eb6e4d462870c8e764d8b900f87159, decided at 02:14:38.688093 UTC on October10. It records the three genuine native EN/JA/KO SKIPs, five captions, four translated text packages and thumbnails, with metadata dubs empty. Existing recordings and owner choices remain. Automatic approval does not establish owner listening or Studio confirmation.; Ordinary consumer e34af8e27ff1d89b9057420e618396e5d96ef2329bea6a8e620a964c3a7c4b05 verified all27 owner-resolved stored attachment SHA/size/type values. Composite package53f1eb728828269f8e01df142c62ddc203304d20090da9bfd5bc23a28a56ab46 is distinct from metadata a82db264d75646c42899b94fa37f75ae42a20b1176a39a3be48489e899392b7a. The final Root fresh consumer stdout25e6afd1eca24efa0bf5ba43f6aab634b42fc264495f4a7e16ad83f0937c3a3f again verifies identical imported module bytes, all27 files, reviews, approval pins and package; backend stage is upload package approved, ready_to_upload true and YouTube ID null. Root review46199f515fe7be88fe9a0abd8cf1a5aabf1e56beedfad19450ba9aefa758c7e3 records original Plink8884 true0 and actual CIM rows empty, with no provider/API/YouTube action or owner acceptance inferred..
+Local delivery, original queue bookkeeping and owned shared-lease closure:
+The actual local Embedding delivery contains18 copied files and384598942 bytes, all source/destination full SHA/size verified. DELIVERY-STATUS b832c35ec4bbaf253e6adae1e8803b385c7464d602e09e52aad70b9c1009acef and index46d9b66d53b438ee0775f25e9cbdf042ff24edebb1fac52122e2da63346bb34d include the Mandarin final, five captions, four translated text packages and thumbnails; all17 local links resolve. Independent peer cceee3cfd8cc1256c4a2bc4452dffb80665ccace19d0f7e757367a848b3bd41c verifies the complete delivery and normal27-file consumer. Native SKIP recordings remain retained; no uploaded dubs or owner playback is invented.; The one actual original approved-PUBLISH Tail completed at 03:51:04.887 UTC, native b6a12d48fc1ccae61e7d37294ea39db9ab3ab5aa412195d2544a3f182a7d8c35 and coordinator c90b0050ed78ebc7ac9cdbb9d0b7e64d216a0779864b745bd8864b57899890d3. Original session93545/coordinator13028 and native21276 returned true0; actual four-process closure0e1de471a2bb0342e155fc9870fe6b89759759f9509a8118f5ff25852455b24a covers13028/18528/21276/26736 with empty CIM rows. One ordinary review-pull runs; one progress PUT returns HTTP200 at 03:50:03.669 UTC with body a066227f901ded357e46bca0878c1c7c256ac3d0cfe243c0f277f57b1a33418c. Auto e51c68cd becomes b21507fe, changing only status active to done and one actual publish approval note; all original84 notes and blocked history remain. All14 pipeline steps are unchanged,13 done and on YouTube false. Provider/POST/filePUT/YouTube actions are zero; project lease absent. Root exact review1c3292ce and independent once peer029e006e pass. Earlier dry v1 true3/zero writes, v2 interrupted original true exit UNKNOWN/zero writes, and v3 true3/no native/three actual processes closed remain preserved. Successful v4 dry fb2f47d9 returned original/native true0 with all four actual processes closed before authority069afc0d and this unique execute. No uncertain purpose was replayed.;
+Root released only its own SH5 descriptor, original EXIT22a903b77b27ec29195779484d88bc6bf37c85aea928cf83f858d4d14e8cce32 and kernel readback aaf2857d4f45c470bdd7bad53af25e3c7b5e02c830782c1c3add8c60f542ee0f. A separate SH6 acquired e4a0c3b5, identity PID2891881/boot50bbbda8-93b7-454c-a4ba-3eb691a1aafe/ticks11554439/tokenc233cae1-81c1-444c-9176-6a57760d2002, without extending SH5. After actual Tail and fresh consumer closure, Root alone requested SH6 RELEASE89f3f86a3ad5639a6a6a2014008d2a40b3cc80f683feabe8022f4b6e4ba8e163. Original EXIT13f7f092d844ff48797fe4df8f5721706a2ac59c3604783ef795a8af98de4bad records exact-owned-release/only own fd released at 03:53:26.796848 UTC. Root final proof b04d6588c33bc7857c301d0e463cd21427a328e993bce2a1e7f7f7da7e114c8f retains original three receipt bytes and proves original birth not live and exact FLOCK absent. Original release8316 and reader27904 both true0/actual CIM empty; provider/API/holds changes zero. Other owners locks and Mods STOP are untouched.. Generated media/logs remain outside Git.
 
-## Current verified continuation,23:40 Taipei,2026-10-09
+
+## Final receipt handoff,2026-10-10
+
+The six Mandarin exports remain locally verified. Embedding retains three
+genuine native SKIPs (35fb8670), the normal five-caption/four-text/thumbnail
+package (61e5a42d/a82db264), and all paid history. Travel EN/JA passed native
+automatic checks; KO is skipped. Its later backend YouTube/Studio confirmation
+was external, with no YouTube action or owner playback performed by this recovery.
+FREE/DevDay normal language consumers and delivery are verified; Mods stays held.
+
+Final returned/read-back receipt evidence:
+- The actual five-stage normal result afeea784bc67021bb15ae0e03558cf992f81f6d103996e06f29f7d63a8f39ea0 finished at 02:19:09.134 UTC on October10, with publish-push, publish-pull, languages-push, languages-pull and status all code0/signal null. The two known PUBLISH stages were inherited without replay. Through this review phase, retained accounting was two review POSTs and30 API PUTs (27 file PUTs, two new ordinary progress PUTs and one preserved earlier progress PUT). All returned transports are known; provider and YouTube actions were zero. The later original Tail adds one ordinary PUT, making the final retained postproduction total31 PUTs/two review POSTs.
+- Current LANG 58a34711-763d-4743-ad60-2459e8eff469 is approved, content d746e0dd8fd66e72d299a40a2da7b40ed0eb6e4d462870c8e764d8b900f87159, decided at 02:14:38.688093 UTC on October10. It records the three genuine native EN/JA/KO SKIPs, five captions, four translated text packages and thumbnails, with metadata dubs empty. Existing recordings and owner choices remain. Automatic approval does not establish owner listening or Studio confirmation.
+- Ordinary consumer e34af8e27ff1d89b9057420e618396e5d96ef2329bea6a8e620a964c3a7c4b05 verified all27 owner-resolved stored attachment SHA/size/type values. Composite package53f1eb728828269f8e01df142c62ddc203304d20090da9bfd5bc23a28a56ab46 is distinct from metadata a82db264d75646c42899b94fa37f75ae42a20b1176a39a3be48489e899392b7a. The final Root fresh consumer stdout25e6afd1eca24efa0bf5ba43f6aab634b42fc264495f4a7e16ad83f0937c3a3f again verifies identical imported module bytes, all27 files, reviews, approval pins and package; backend stage is upload package approved, ready_to_upload true and YouTube ID null. Root review46199f515fe7be88fe9a0abd8cf1a5aabf1e56beedfad19450ba9aefa758c7e3 records original Plink8884 true0 and actual CIM rows empty, with no provider/API/YouTube action or owner acceptance inferred.
+- The actual local Embedding delivery contains18 copied files and384598942 bytes, all source/destination full SHA/size verified. DELIVERY-STATUS b832c35ec4bbaf253e6adae1e8803b385c7464d602e09e52aad70b9c1009acef and index46d9b66d53b438ee0775f25e9cbdf042ff24edebb1fac52122e2da63346bb34d include the Mandarin final, five captions, four translated text packages and thumbnails; all17 local links resolve. Independent peer cceee3cfd8cc1256c4a2bc4452dffb80665ccace19d0f7e757367a848b3bd41c verifies the complete delivery and normal27-file consumer. Native SKIP recordings remain retained; no uploaded dubs or owner playback is invented.
+- The one actual original approved-PUBLISH Tail completed at 03:51:04.887 UTC, native b6a12d48fc1ccae61e7d37294ea39db9ab3ab5aa412195d2544a3f182a7d8c35 and coordinator c90b0050ed78ebc7ac9cdbb9d0b7e64d216a0779864b745bd8864b57899890d3. Original session93545/coordinator13028 and native21276 returned true0; actual four-process closure0e1de471a2bb0342e155fc9870fe6b89759759f9509a8118f5ff25852455b24a covers13028/18528/21276/26736 with empty CIM rows. One ordinary review-pull runs; one progress PUT returns HTTP200 at 03:50:03.669 UTC with body a066227f901ded357e46bca0878c1c7c256ac3d0cfe243c0f277f57b1a33418c. Auto e51c68cd becomes b21507fe, changing only status active to done and one actual publish approval note; all original84 notes and blocked history remain. All14 pipeline steps are unchanged,13 done and on YouTube false. Provider/POST/filePUT/YouTube actions are zero; project lease absent. Root exact review1c3292ce and independent once peer029e006e pass. Earlier dry v1 true3/zero writes, v2 interrupted original true exit UNKNOWN/zero writes, and v3 true3/no native/three actual processes closed remain preserved. Successful v4 dry fb2f47d9 returned original/native true0 with all four actual processes closed before authority069afc0d and this unique execute. No uncertain purpose was replayed.
+- Root released only its own SH5 descriptor, original EXIT22a903b77b27ec29195779484d88bc6bf37c85aea928cf83f858d4d14e8cce32 and kernel readback aaf2857d4f45c470bdd7bad53af25e3c7b5e02c830782c1c3add8c60f542ee0f. A separate SH6 acquired e4a0c3b5, identity PID2891881/boot50bbbda8-93b7-454c-a4ba-3eb691a1aafe/ticks11554439/tokenc233cae1-81c1-444c-9176-6a57760d2002, without extending SH5. After actual Tail and fresh consumer closure, Root alone requested SH6 RELEASE89f3f86a3ad5639a6a6a2014008d2a40b3cc80f683feabe8022f4b6e4ba8e163. Original EXIT13f7f092d844ff48797fe4df8f5721706a2ac59c3604783ef795a8af98de4bad records exact-owned-release/only own fd released at 03:53:26.796848 UTC. Root final proof b04d6588c33bc7857c301d0e463cd21427a328e993bce2a1e7f7f7da7e114c8f retains original three receipt bytes and proves original birth not live and exact FLOCK absent. Original release8316 and reader27904 both true0/actual CIM empty; provider/API/holds changes zero. Other owners locks and Mods STOP are untouched.
+
+Preserved postproduction history: SH4 native file-parts PUBLISH push/pull both
+returned0, with approved a7749f05/a82db264. Its subsequent LANG failure returned4
+before any LANG transport; original cumulative API history was19 PUTs/one review
+POST. Root released only its own SH4 descriptor (EXIT ca00f07a). Separate SH5
+acquired d4c79dee without extending SH4. The first SH5 purpose refused before
+API on historical numeric PID reuse; its failed v1 evidence50076370 remains.
+The second purpose closed after a DB-receipt rename EPERM (d4e7dcd1): four
+processes were independently absent, and LANG intents/returns/wire/POST/PUT
+were all zero. The complete old/temp receipt and every failed authority remain.
+
+The private b228cdce historical registry is limited to17 hash-bound predecessor
+lifetimes and passed58 offline cases; current newly owned roles still use the
+canonical closure check. Three private relay sources now share a same-byte,
+rename-only EPERM/EBUSY retry with unchanged SQL/host timestamps and freshness.
+All23 focused source/temp95 cases passed (18e4fec1), including the preserved
+original receipt bytes. These are private recovery wrappers, not permanent
+repository implementations or proof of successful final normal submission.
+At that preserved SH4/SH5 checkpoint, original provider/correction caps and
+the 19 PUT/one POST history remained unchanged; one LANG POST and one original
+bookkeeping PUT remained. Final returned counts are recorded above. Genuine FREE UNKNOWN,
+STOPs and media are preserved. No owner listening,upload or public visibility
+is inferred. The five repository follow-ups remain open and unclaimed.
+
+## Current verified delivery,2026-10-10
+
+At06:03:19 Taipei the genuine V8 selected-dub producer reaches three native
+SKIPs,retaining English/Japanese/Korean recordings and the Mandarin final.
+Korean's final156-line check has141 literal matches,14 Jev clears and one
+remaining flag33fd;its last proposal changes numbers and is refused normally.
+Actual terminal99f49efb/skip3daeb9f8 preserve commands7/5/6/4 and the original
+two shortening,two retake and two reword rounds. Japanese retains five flags,
+English one;none establishes an owner-listened audible defect. The whole
+V8 result35fb8670 and supervisor7fa86378 close0;independent actual closure
+75415fe3 proves all four owned PIDs absent and the once lock absent.
+Closed wire3d492624 records234 synthesis HTTP200/8635 characters,268 ASR200
+and eight Jev200:all510 speech POSTs have their actual HTTP200 results.
+Cumulative retained history is1323 speech POSTs,nine model POSTs and29238
+synthesis characters,with no new uncertain response or API write in this stage.
+These counts describe recorded transport,not an invoice or owner acceptance.
+At06:20:10 the reviewed zero-provider V7 local finisher genuinely closes0,
+61e5a42d/9b5126c6. Both normal captions/package commands return0; metadata
+a82db264 preserves final24b8e2b5,all primary fields and the original owner
+choice. Five caption tracks have157/164/182/172/157 cues for zh-TW/en/ja/ko/zh-CN.
+All three skipped-dub caption views use the approved narration timeline with
+no timing problems;prior generated dub-timing captions are archived intact.
+Four translated titles/descriptions and thumbnails remain current. Independent
+c0d8ddb physical readback proves all four native PIDs and local23144 absent,
+with no project lease. The prior V6 pre-command EPERM rejection and original
+authority/logs remain unchanged;its cause is unproved. A reviewed exact-CIM
+helper passes real live/self,exited-child and fault refusal tests. Final normal
+review,approved consumer,local delivery and queue bookkeeping were still
+pending at that historical06:20 snapshot; their final actual receipts belong
+to the final handoff above.
+
+At07:02:22 Taipei the first genuine SH4 normal-review once closes held,
+9d60f26c;publish-push42788 returns4,45e584d6. Its complete wire retains one
+ordinary progress PUT with HTTP200 and no file PUT or review POST. The private
+wrapper rejects the native multipart file PUT query before any file transport:
+sync.mjs uses the same bound SHA with part/parts/size and4MiB chunks. All old
+intents,results and closure evidence remain retained. Source preparation only
+permits these exact bound-file chunks;all other query routes remain forbidden.
+No review approval,consumer or done-state is inferred from this failed once.
+Old shared segment3 actually released at06:28:55,EXIT0c874454. Its separate
+successor segment4 acquired at06:43:16,2950bf89,under a new7200-second bound;
+only the owning shared file descriptor will be released after real closure.
+
+Travel's English continuation genuinely closed at01:15:06 Taipei after exact
+b3ab zero-wire reconciliation7d4af1c1. Both English and Japanese have96 current
+WAV/transcript checks with all Jev flags cleared. Their complete tracks78c01e09
+and e378500e pass decoded loudness/true peak checks; Korean remains a genuine
+normal SKIP after two shortening rounds. The last English continuation added
+nine synthesis,eleven ASR and two Jev HTTP200 responses,with no translator.
+Earlier paid recordings remain counted and all original artifacts are retained.
+
+The normal Travel finisher closed at01:23:15 with the approved PUBLISH a27111f4
+bound to metadata a830006d. At that point LANG de46c045/4cdb8503 was pending
+actual Studio dub upload confirmation; ordinary LANG pull returned3
+and the approved-package consumer truthfully refused this unapproved LANG.
+At01:42:31 the exact native approved-PUBLISH bookkeeping closed0,c5596f49;
+auto6d2aab81 is done while retaining the old block as history. One ordinary
+progress PUT returned200; all980 protected files,source/reviews/choices/counters
+remain unchanged. The pipeline still truthfully leaves on YouTube unfinished.
+All23 normal owner attachment files were read back and copied with matching
+before/after host and local SHA-256,309528020 bytes total. The local Travel
+review page includes the actual final,English/Japanese tracks and five captions.
+No Studio confirmation,listening or YouTube action was inferred from those files.
+Fresh01:43:24 normal consumer72b6ccba then observed a separate backend update:
+YouTube id Ztg1vzKfLBM,English/Japanese uploaded,and the same LANG4cdb approved
+at01:42:40. Actual read_approved_package(verify_files=True) now succeeds with
+package1f1e6bc5 and all29 attachments verified unchanged. This records backend
+confirmation; neither public visibility nor owner playback was independently
+checked,and our continuation made zero YouTube actions.
+
+Embedding's current35 V4 closed at01:27:21 on Windows EPERM after113 new
+synthesis HTTP200 responses/9611 billed characters and three ASR HTTP200
+responses. The third transcript is complete in the exact5575 confirmed temp;
+canonical SENT plus complete temp,wire and all158 English WAVs are retained.
+With the earlier11 recordings/985 characters,the cumulative paid synthesis
+history is124 responses/10596 characters. A separately reviewed known-answer
+promotion genuinely closed0 at01:39:44,c344099b: native reuse1/sender0,
+canonical bytes equal the full confirmed temp ce77492a,cache unchanged,
+no forget and zero providers/API. All158 WAV SHA/identities matched the approved
+baseline in the independent01:41 postread. The successor uses only the two
+reviewed Windows persistence modules at their original canonical URLs.
+The three native selected-language stages remain unfinished at this checkpoint.
+
+V5 then reused the known5575 answer normally and retained all121 cached English
+synthesis requests. It closed3 at01:56:22 on another Windows canonical rename
+EPERM after25 additional ASR HTTP200 responses,with no synthesis/model/API
+transport. The complete139d answer is in both the confirmed temp ccbed9a9
+and generation-bound answer632f;27 current checked lines and158 WAVs are kept.
+Known-only promotion665f3321 closed0 at02:07:36 with native reuse1/sender0,
+exact confirmed bytes,unchanged temp/answer/cache/all158 WAVs and zero providers/API.
+Cumulative paid history remains124 synthesis responses/10596 characters and28 ASR.
+
+A separate three-case actual Windows fault fixture efc5cae7 reproduces a two-second
+delete-denied destination: the original630ms rename wait fails while the bounded
+10230ms candidate succeeds without rewriting or resending. Permanent refusal
+retains the original destination and complete temp. Only four bounded rename
+wait entries were added in the private0316d2bf candidate; loader40fedeaa preserves
+both original module URLs. The production handle owner is still unproved.
+A new continuation must retain this complete history and genuine checked cache.
+
+FREE/DevDay and their actual approved consumer/local language delivery remain
+complete. The old bounded shared read lease a522 genuinely exited at02:09:01,
+fde53aac,after both remaining native scopes closed. Only its own shared fd was
+released; the current35 read-only preflight proves the old birth absent and
+unchanged settings/owner choices with no active stage/media jobs. A separate
+bounded segment2 was acquired at02:14:42,6440e776,on the same kernel shared
+READ lock with new PID1965336/birth8450373 and a fresh7200-second bound.
+Current scope c0fa1515 matches the reviewed settings/owner state; the original
+a522 EXIT and all failed-run receipts remain unchanged. V6-segment2 genuinely
+launched once at02:22:36 with authorityb537fbf1,node44420/supervisor42412;
+its independent9752/44304 receiver produced a true completed SQL read.
+All121 English synthesis requests are reused; the new Japanese/Korean first
+pass quote is242 requests/9981 characters under the original native limits.
+V6-segment2 closed3 at02:30:03,98caeddd,after45 additional ASR HTTP200
+responses and no synthesis/model/API transport. Its actual resultd7e902a2
+records another canonical rename EPERM after the full10230ms retry window;
+there are no three-language terminals. Cumulative speech history is197
+responses:124 synthesis/10596 characters and73 ASR. The72 checked English
+lines,158 WAVs and exact9cd SENT6f9cfbcf,temp5cbde5de and staged answer4372016a
+remain preserved. Known answer19368c1e was independently reused through the
+ordinary closed-producer journal in an owned copy with sender0,without changing
+the current canonical/cache. All177 original control/WAV files are archived.
+Read-only Restart Manager and DELETE-access checks found no current holder
+or permanent ACL denial; the failure-time cause remains unproved.
+
+A private9d8dccaa journal candidate handles only its own genuinely completed
+response when final Windows canonical rename refuses. It first validates the
+exact sent generation,fsynced stage/body/answer and immutable recovery archive,
+then returns the actual received answer for the normal caller to save and release.
+It never invents a canonical confirmation or retries transport. A separate
+current-producer proof preserves subsequent ordinary closed recovery after a
+consumer interruption. Root and independent peer each passed15 actual offline
+fault/restart fixtures. Loaderc1fff337 preserves original native URLs and the
+original correction,cost,owner and historical UNKNOWN/SENT gates. Repository
+adoption is separately tracked in open tickets. The source tests alone do not
+establish a production result. Actual V7-segment2 onceauthoritya71896be binds
+the complete197-response history and known9cd native recovery. It launched
+at02:48:08 with supervisor35400/node17476; independent receiver45040/Plink9480
+delivered actual completed SQL at02:48:29. The normal stages continue with
+all121 English synthesis requests cached,under the unchanged15-second admission,
+shared6440 expiry and original correction/cost gates. No three-language terminal
+or owner acceptance is claimed from this launch. At02:52:26 actual normal cache
+proof8c107f7c shows the exact9cd heard/intended/currentclip match and zero new
+matching transport requests. The first full English check at02:57:35 covered
+all156 lines with18 genuine flags. First normal retake used17 synthesis requests;
+its03:03:12 recheck has146 literal matches,four Jev-approved and six remaining
+flags. Second normal retake bought only those six requests,all HTTP200,and is
+rebuilding the current track. No manual flag clearing or whole-track acceptance
+is inferred. The177-file pre-retake archive retains every original recording;
+current retaken English clips may legitimately differ from that archived cohort.
+The second retake recheck left two flagged lines. Native rewording round one
+accepted re8q; its current66-character take now matches the intended sentence
+exactly. Both round-one and round-two proposals for4hdb exceed the declared
+78-character limit,at86 and108 characters,and were refused without truncation.
+The remaining query's/queries possessive/plural ambiguity has a Jev score0.14;
+this is an unresolved automated flag,not proof of a definite audible defect.
+At03:11 the ordinary English stage genuinely reached SKIP,f5e490fe/9dcc96b5,
+after two retakes and two rewording rounds. The two real correction keys remain
+consumed; V7 English added24 synthesis HTTP200/1569 characters,108 ASR HTTP200,
+three Jev HTTP200 and two model POSTs. No English accepted track,manual clearing,
+extra round or owner listening is claimed. The same producer began Japanese
+at03:11:34; at03:19:52,89 of its121 original planned request keys have successful
+TTS HTTP200,with32 not yet complete. Korean and both remaining native terminals
+are still unfinished. All final caption/package/review/delivery stages wait for
+the genuine three-language results and physically closed producer.
+Japanese's first pass closed at03:22:59:all121 original planned bundles succeeded,
+with126 actual synthesis HTTP200/5227 characters including five normal fallback
+or split requests. Eight measured windows still exceed the permitted1.15x timing.
+The genuine first shortening model and ordinary merge changed only those eight
+IDs;immutable receiptad9aa720 pins the request,successful merge fdafeed4 and
+consumed decision. Other three translation bytes remain unchanged. The same
+producer is rebuilding those eight short takes before transcript QA. This does
+not imply a completed Japanese track or approval. The short-take rebuild genuinely
+closed0 at03:27:18. First full Japanese QA closed1 at03:45:46 after156 actual
+ASR HTTP200:79 literal matches,30 Jev-approved and47 native flags. This records
+automated flags,not independently heard pronunciation defects. Its first normal
+retake closed0 at03:52:23;the full recheck reduced47 flags to30. Second retake
+closed0 at04:03:29;its full04:06:13 recheck has87 literal matches,45 Jev-approved
+and24 flags. Both normal retakes are spent. First native reword accepted21 IDs
+and refused three changed-number proposals. The ordinary04:07:06 merge b02c6fb0
+and consumed key3e12b423 preserve the other three locales. The21 new synthesis
+HTTP200 responses are saved;their track rebuild and QA were unfinished at04:11.
+
+V7 then genuinely closed3 at04:15:31 after the original bounded shared lease
+expired at04:14:42. Its final Japanese check closed3; this is a held frontier,
+not a final quality judgement or a Japanese SKIP. All four owned Windows
+processes are physically absent. Result bc6cbe8a records813 cumulative speech
+POSTs,four models and20603 synthesized characters; no API writes were added.
+The closed e1540b1e snapshot preserves1952 current work files,all298 SDK files,
+all four authoritative translations and the four consumed correction keys.
+Japanese retains one shortening,two retakes and one rewording round used.
+
+Exact last request8846 is independently proved to have zero transport by
+7d2ff129: its native body matches the current Japanese wbuc WAV; the complete
+wire contains620 requests and620 HTTP200 responses,none for8846. Its journal
+SENT occurred after the shared lease expiry and after the previous different
+request completed. The guard refuses before counters,logging or networking.
+The held journal and raw bytes remain preserved pending narrow reconciliation.
+Of156 current Japanese clips,148 match retained transcript cache and eight
+still need a real check. Korean is unstarted. A seeded native boundary passes
+four actual offline fixtures and retains Japanese command counts5/4/3/2;
+English's genuine SKIP is inherited by bytes. No new paid continuation or
+segment3 acquisition was claimed at that checkpoint. Mods STOP remains exact.
+
+Segment3 genuinely acquired its new7200-second shared READ lease at04:30:52,
+91293b81/16d1e945,PID2265355/birth9267360. Kernel fd3 and all nine exact raw
+receipts are verified;the new full scope815a18aa matches240fe except its two
+actual read timestamps. The previous segment2 was not extended. At04:34:33,
+the separately reviewed zero-provider recovery350c31a2 genuinely closed0:
+25 original raw evidence files are archived and SHA-verified,only NoWire8846
+was forgotten by the normal journal command,and the five block/status fields
+were restored to the native active shape. JA1/2/1/check_stopped,the four consumed
+keys and all other1950 snapshot file identities remain unchanged. New auto
+13088314 and fresh actual DB88b3cc78 are read back; provider/API calls are zero.
+The exact reviewed V8 once genuinely launched at04:52:15 with authority59fca45a,
+parent6080bd1d and retained command seeds. Actual supervisor45076/node21156,
+relay43280/Plink16264 births are recorded;the independent receiver completed
+fresh actual SQL at04:52:36. English f5e is inherited without a new command;
+Japanese dub6 preserves seed5/4/3/2. Japanese/Korean terminals and final package
+remain pending. Korean is not yet started. Original rounds are durably remembered before dispatch;
+source-only receipt1e63ab51 confirms that a future hold cannot reset them.
+At05:03:12 Japanese genuinely reaches native SKIP833ed199/a068f3d0 after both
+original retakes and rewords. Its final156 check has97 literal matches,54 Jev
+clears and five flags;these are automated transcript findings,not owner listening.
+V8's first new speech is exact8846 ASR200. Its last Japanese rewrite accepts11,
+refuses changed numbers/31>29,and normally merges ad417fec with other locales
+unchanged. Eleven new synthesis200 total339 characters;prior cached recordings
+and all consumed rounds remain. Korean starts05:03:15;its first planned121
+requests generate130 actual synthesis200 including nine normal fallbacks.
+After two shortenings,dub3 passes fit and closes0 at05:17:17. First complete156
+check closes1 at05:32:43 with107 literal matches,seven Jev clears and42 flags;
+the original first retake is now running. Final Korean outcome remains pending.
+Mods STOP f5bbf969 has a fresh unchanged
+current35 receipt1167df3f. Owner playback and publication remain external
+actions. Travel's Studio confirmation is now recorded by the backend.
+The documentation PR is still draft; its new head has not established passing CI.
+
+## Earlier verified continuation,00:55 Taipei,2026-10-10
+
+FREE and DevDay now have sixteen current READY metadata/caption parts and six
+truthful normal SKIPPED dub terminals. DevDay KO closed at00:20:57 after two
+shortening rounds; line2gup still exceeds its budget. Its two genuine correction
+models,71 speech responses/3335 billed characters and11 API writes remain
+counted; cumulative totals are12 models,759 speech routes,42799 characters and
+95 API writes. LANG e4aa95f1/593a60cd records the real result. FREE retains
+LANG e7e7d4c7/fe1ef8be and its original UNKNOWN without replay.
+
+At00:40 the normal read_approved_package(verify_files=True) consumer verified
+both original approved finals plus their current LANG overlays and all five
+caption tracks. Twenty approved small files were copied and hash checked in
+`<home>/mokaair-work/handoff/branding-peak-20261008/continuation/delivery-current35`.
+Own old guardian leases were archived after exact dead PID-birth checks;
+closure d64d8bd6 and postread10d3fd8a prove canonical/private LEASEs absent,
+DevDay STOP51755 restored and FREE STOP8849 plus all three UNKNOWN files intact.
+
+Travel EN saved82 new synthesis responses and94 ASR results before closing
+at00:23:57 with dependent work pending. The prior86-character known-200
+replacement is already completed and must not be purchased again. Exact b3ab
+held02dc6cc6 was proven to have zero matching wire entries and bound to the
+normal current k3ji WAV/transcribeBody. Original100 EN WAVs/check cache and
+Japanese142-file cohort/Korean SKIP are archived; the current35 successor will
+forget only that proven pretransport key and continue the normal stage.
+
+The external00:24:56 worker replacement preserves the reviewed code, credentials
+and relevant settings. A bounded shared read lock a5220d5e was acquired at00:43
+on the existing deployment lock, with actual kernel PID/birth/inode proof.
+It creates no deploy hold and must release after both remaining producers and
+normal consumers close, or expire within7200 seconds. Admission timestamps
+remain actual completed SQL reads with the original15-second rule.
+
+Embedding's exact e36 zero-provider reconcile genuinely closed at00:55:20,
+receipt c4646f39: only the proven untransmitted key was forgotten through native
+f601. All14 current EN WAV/cache files,unchanged auto/rounds,11 successful paid
+recordings/985 characters,old156 WAVs/78 images/14 journals and two historical
+SENT receipts remain preserved. A reviewed current35 independent-receiver
+successor continues under the same original2/2/2 rounds and12-key limit.
+No completed English Travel or selected Embedding dub is claimed yet.
+
+Mods remains held. Six Mandarin movies are in the local delivery index;
+Travel/Embedding selected-language completion is still in progress.
+No YouTube action or owner playback is claimed.
+
+## Earlier verified continuation,00:18 Taipei,2026-10-10
+
+Travel's exact English continuation launched once at00:07:56,PID1729150.
+The original known-200 locally lost86-character request was archived with its
+raw paid receipt and native terminal,then forgotten through normal f601 at
+00:08:12. The same ff0 body returned200/X-Billable-Characters86 at00:08:20;
+actual9kyw WAV c1380e66,502124 bytes and native cache3390fa30 prove persistence.
+Earlier paid1 remains counted. Japanese's142-file cohort and Korean's genuine
+SKIP remain guarded. No English completion or owner listening is claimed yet.
+
+DevDay's reviewed current840 KO-only once launched at00:13 after an exact
+conditional project STOP handoff. Source e54965a0 uses a separate real DB
+reader and the unchanged15-second admission rule. Current approved83060 LANG,
+eight ready text parts and genuine EN/JA SKIPs were verified before releasing
+only DevDay51755; FREE8849 and original true UNKNOWN remain held.
+Authority26d06df1,supervisor1745854,node1745855 and reader1746557 bind the run.
+First new paid body is exactly d430,now successful200; four already confirmed
+paid answers are reused through normal synthesis. Original10 models/688 speech
+routes/39464 actual billed characters/84 API writes remain counted.
+
+Embedding's exact e36 hold has verified zero matching wire requests after11
+successful recordings/985 characters. Its first zero-provider reconciliation
+attempt stopped before archive or forget because Windows path separators
+misidentified two already hash-proven historical SENT receipts. Actual closure
+a3adbfc8 preserves all17 current cache/control identities,held7eea6e36 and old
+journals; the lease is absent and no key was forgotten. A versioned exact
+path-normalization successor is approved with zero providers/API. The reviewed
+independent receiver preserves actual read timestamps while the paid parent is
+busy; its real17-second blocked-parent fixture still receives a140ms-old read.
+The three-dub successor is conditional on actual zero-provider reconciliation
+and retains native2/2/2 rounds,max12 correction keys,all paid history and media.
+No third paid launch or completed Embedding dub is claimed at this checkpoint.
+
+Mods remains exact STOPf5bbf969. Six Mandarin movies remain in the local
+delivery index; selected-language assembly/readback is still in progress.
+No YouTube action,owner playback or new acceptance is claimed.
+
+## Earlier verified continuation,23:40 Taipei,2026-10-09
 
 Travel's Japanese dub genuinely completed at23:29:52 with all96 current
 transcript/WAV checks and all Jev flags cleared. Normal rounds were two shorten,
