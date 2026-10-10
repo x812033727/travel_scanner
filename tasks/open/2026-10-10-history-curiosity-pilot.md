@@ -26,8 +26,8 @@ scope:
 ## Definition of done
 
 - [x] 站主 2026-10-10「用你建議的」：系列名奇聞檔案局、畫風第 3 版（A＋C 色盤）、過世 70 年以上的歷史人物可畫卡通、前三題 H01／U02／L08、10 分鐘；都記在 `README.md` §選定紀錄。
-- [ ] 兩集做完（H01 2026-10-10 做到上架確認：旁白、分鏡、成片、上架包四關都核准，站主在 `/admin/videos` 按了分鏡與成片；U02 未開工）（原文：建議 H01 瑪麗賽勒斯特號、U02 51 區）：`brief.md`、`video.json`（`format: "slides"`、`category: "explainer"`、選定的 `look`、`shot` 與卡片交錯、至少 3 張登記在 `assets[]` 的公有領域或圖庫照片）、`claims.md`、兩輪獨立查核、旁白（Whisper 第二轉寫）、`keyframes`（`--dry-run` 印出 `minimax image-01`）、`render`、`assemble`、`captions`、`qa` 11 項、`package`、`review-push` 到上架確認。
-- [ ] 每集記在 `docs/videos/curio-<id>/production-record.md`：插圖張數與重做次數、照片張數與來源、媒體花費、審圖分數分布、旁白長度與成片長度、站主審片分鐘數。
+- [x] 三集做完（H01、U02、L08 都在 2026-10-10 做到上架確認；H01 2026-10-10 做到上架確認：旁白、分鏡、成片、上架包四關都核准，站主在 `/admin/videos` 按了分鏡與成片；U02 未開工）（原文：建議 H01 瑪麗賽勒斯特號、U02 51 區）：`brief.md`、`video.json`（`format: "slides"`、`category: "explainer"`、選定的 `look`、`shot` 與卡片交錯、至少 3 張登記在 `assets[]` 的公有領域或圖庫照片）、`claims.md`、兩輪獨立查核、旁白（Whisper 第二轉寫）、`keyframes`（`--dry-run` 印出 `minimax image-01`）、`render`、`assemble`、`captions`、`qa` 11 項、`package`、`review-push` 到上架確認。
+- [x] 每集的實測記在本票 Notes 與 `docs/videos/history-curiosity/README.md` §成本與產能（沒有另寫 production-record.md）；原要求：每集記在 `docs/videos/curio-<id>/production-record.md`：插圖張數與重做次數、照片張數與來源、媒體花費、審圖分數分布、旁白長度與成片長度、站主審片分鐘數。
 - [x] `README.md` §成本與產能 改成實測（2026-10-10，兩集）；`topics.json` 的 H01／U02 改 `scripted` 並在 `note` 寫查核後的更正。
 
 ## Steps
@@ -46,6 +46,7 @@ scope:
 
 ## Notes
 
+- 2026-10-10：L08 成片由站主核准，上架包 4／4、上架確認自動核准。三集（H01、U02、L08）都在「可以上架」，YouTube 上傳是站主的事。本票的試片工作做完；剩下的（Shorts 切片、多語、主機路線、`policy` 的有示範）各有自己的票或未排。
 - 2026-10-10 L08 `curio-l08`（麥田圈）做到成片關卡：研究 dossier（19 個來源、38 條事實、來源不一致表）→ brief A 案（Jev 自動核准，有示範 0.89）→ 撰稿 114 景／134 句（插圖 92、照片 2、卡片 20）→ 查核兩輪（4＋0 處，另由協調者改 3 句）→ 旁白 11:27（第一輪被標 21 句，全是同音字，改字後第二輪全過）→ MiniMax 插圖 92 張（US$2.83；`pub-year` 四輪仍被判畫風太寫實，用 `--accept-best` 保留，成片卡會列出）→ 成片 20,879 格（11:36）→ 品管第一次就 10／11。沒過的是 `policy`：有示範 0.12（已知），另外這集「符合立場」0.52 也低於 0.6（前兩集 0.62、0.69）。旁白關卡已核准；分鏡與成片關卡在 `/admin/videos` 等站主。
 - L08 多學到的：照 U02 的教訓把插圖拉到 71% 占比、每句壓在 20／22 單位，節奏一次過；公有領域的英國麥田圈空拍照找不到（Commons 上都是 CC BY／BY-SA），用了 1678 年木刻與一張作者釋出公有領域的瑞士空拍；「做／坐」「圈／村」「圓／月」「訃聞／符文」這類單字詞一定會被聽錯，動筆時就寫「製作」「麥田圈」「圓圈」「悼念文章」；撰稿代理寫的提示詞細節太多（背影＋特寫＋三個道具）時 MiniMax 會漂成 3D，92 張第一輪過 73 張，改成「一個人一個動作」後剩 1 張。
 - 2026-10-10：U02 成片由站主核准，上架包 4／4、上架確認自動核准；H01 與 U02 都在「可以上架」。兩集實測已寫進 `docs/videos/history-curiosity/README.md` §成本與產能，`topics.json` 的 H01／U02 改成 `scripted`。站主說「接著繼續」，第三題 L08（麥田圈）開工：brief 已寫，研究代理在查來源。
