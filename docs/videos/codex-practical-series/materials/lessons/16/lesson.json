@@ -1,0 +1,35 @@
+{
+  "id": 16,
+  "title": "分工與獨立分析",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test",
+  "intentionalFailures": [],
+  "manualChecks": [],
+  "steps": [
+    "先讀docs/subagent-lab.md，寫輸入、只讀範圍與兩份獨立輸出路徑。",
+    "A分析資料/測試/日期；B分析HTML/互動/CSS/storage，兩者不得改core。",
+    "在App或CLI可用入口實際派發；沒有入口用獨立聊天並正確標示。",
+    "將真實結果存analysis-data/UI，不複製作者示例冒充代理結果。",
+    "主代理重現每個可操作問題；舊claim3以fixture真值2裁決。",
+    "Browser沒跑的結果保持NOT RUN；只採納已核對發現。"
+  ],
+  "transferExercise": null,
+  "expectedReport": {
+    "revision": "weekly-report-v2",
+    "timezone": "Asia/Taipei",
+    "weekStart": "2026-10-05",
+    "weekEnd": "2026-10-11",
+    "total": 5,
+    "completedInWeek": 2,
+    "pending": 1,
+    "unknownCompleted": 1
+  }
+}

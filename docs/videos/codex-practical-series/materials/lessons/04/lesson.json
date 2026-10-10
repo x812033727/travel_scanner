@@ -1,0 +1,26 @@
+{
+  "id": 4,
+  "title": "AGENTS 與檔案規則",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test",
+  "intentionalFailures": [],
+  "manualChecks": [],
+  "steps": [
+    "先讀當前v1資料契約及core，不把候選規則當正確來源。",
+    "將只改指定檔、ID識別、原測試保留、無依賴與真實檢查寫入AGENTS.md。",
+    "在本課新聊天確認Codex實際讀到的規則範圍，保留真正回覆。",
+    "用docs/rules-review.md覆核title唯一的候選說法，指出與兩筆Read衝突。",
+    "跑node --test；規則檔改善不等於已執行瀏覽器或功能修復。",
+    "輸出規則的用途、載入範圍、此次檢查與NOT RUN。"
+  ],
+  "transferExercise": null,
+  "expectedReport": null
+}

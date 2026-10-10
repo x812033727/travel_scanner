@@ -1,0 +1,39 @@
+{
+  "id": 10,
+  "title": "響應式與鍵盤操作",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test",
+  "intentionalFailures": [],
+  "manualChecks": [
+    "390px",
+    "1280px",
+    "Tab focus"
+  ],
+  "steps": [
+    "先跑Node資料測試，然後真正開HTTP；它們不是畫面驗收。",
+    "把視窗調390px，觀察main的900px min-width造成水平溢出。",
+    "只修CSS/必要HTML，保留label、button與focus-visible。",
+    "在390px和1280px實際檢查長標題、搜尋、匯入表單、Tab與刪除後焦點。",
+    "把結果填入docs/browser-acceptance.md；沒跑的格保持NOT RUN。",
+    "challenge加長中文與無空白字串，不能撐寬畫面。"
+  ],
+  "transferExercise": null,
+  "expectedReport": {
+    "revision": "weekly-report-v2",
+    "timezone": "Asia/Taipei",
+    "weekStart": "2026-10-05",
+    "weekEnd": "2026-10-11",
+    "total": 5,
+    "completedInWeek": 2,
+    "pending": 1,
+    "unknownCompleted": 1
+  }
+}

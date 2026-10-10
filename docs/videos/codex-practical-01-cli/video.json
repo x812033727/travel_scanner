@@ -1,0 +1,2210 @@
+{
+  "schema_version": 1,
+  "slug": "codex-practical-01-cli",
+  "format": "slides",
+  "category": "tutorial",
+  "target_minutes": [
+    12,
+    18
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Codex 實作 01 CLI：讀懂專案與測試，別把「跑完」當成「做對」",
+    "description": "用同一個待辦網站起點，實際讓 Codex CLI 執行只讀檢查：讀五份檔案、跑核心測試、解讀兩個通過與一個失敗，再把問題寫成有範圍、有驗收的下一輪任務。\n\n本片以教學卡片重現真實 exec 事件與工具輸出；不是原生 App 或 TUI 螢幕錄影。模型這輪沒有修改程式，也沒有啟動瀏覽器。網站操作與 reference 的三個通過測試是作者另外執行的參考驗證，來源分別標示。\n\n跟做材料：codex-practical-01-materials.zip，完整解壓後依 README 進入 start。reference 是作者提供的參考實作；challenge 是換題練習。教材取得連結需在交付套件完成後補入。\n\n實跑日期：2026-10-11（台灣時間）。Codex CLI 0.162.0-alpha.17.2；核心測試 Node.js v24.13.0。版本可能不同，執行前用本機 --help 核對。",
+    "tags": [
+      "Codex",
+      "Codex CLI",
+      "實作教學",
+      "測試",
+      "待辦網站"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**跑完≠做對**",
+      "tag": "CODEX 實作 01 CLI"
+    }
+  },
+  "sources": [
+    {
+      "title": "Codex CLI",
+      "url": "https://learn.chatgpt.com/docs/codex/cli",
+      "checked_on": "2026-10-11"
+    },
+    {
+      "title": "Codex CLI reference",
+      "url": "https://learn.chatgpt.com/docs/cli/reference",
+      "checked_on": "2026-10-11"
+    },
+    {
+      "title": "Codex non-interactive mode",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "checked_on": "2026-10-11"
+    },
+    {
+      "title": "Codex best practices",
+      "url": "https://learn.chatgpt.com/docs/learn/best-practices",
+      "checked_on": "2026-10-11"
+    },
+    {
+      "title": "Codex troubleshooting",
+      "url": "https://learn.chatgpt.com/docs/reference/troubleshooting",
+      "checked_on": "2026-10-11"
+    },
+    {
+      "title": "Python http.server",
+      "url": "https://docs.python.org/3/library/http.server.html",
+      "checked_on": "2026-10-11"
+    },
+    {
+      "title": "MDN JavaScript modules",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules",
+      "checked_on": "2026-10-11"
+    },
+    {
+      "title": "MDN localStorage",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage",
+      "checked_on": "2026-10-11"
+    }
+  ],
+  "assets": [],
+  "subtitles": {
+    "burn_in": false
+  },
+  "scenes": [
+    {
+      "id": "first-verdict",
+      "chapter": "先把現況看清楚",
+      "template": "stats",
+      "data": {
+        "title": "同一份起點，先留下基線",
+        "stats": [
+          {
+            "value": "2",
+            "label": "測試通過"
+          },
+          {
+            "value": "1",
+            "label": "測試失敗"
+          },
+          {
+            "value": "0",
+            "label": "Codex 修改的檔案"
+          }
+        ],
+        "source": "01 CLI session-01 · 2026-10-11"
+      },
+      "claims": [
+        "C01",
+        "C02"
+      ],
+      "lines": [
+        {
+          "id": "687df2",
+          "text": "Codex 已經讀完專案，測試卻還有一個失敗。",
+          "reveal": 1
+        },
+        {
+          "id": "bbf9d9",
+          "text": "這次我們保留失敗，先把它變成能核對的基線。",
+          "reveal": 1
+        },
+        {
+          "id": "dda09a",
+          "text": "知道原本哪裡沒做，才看得出下一次改對了沒。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "project-promise",
+      "template": "title",
+      "data": {
+        "title": "讀懂待辦網站，再決定下一步",
+        "subtitle": "Codex 實作 01 · CLI｜真實 exec 檢查紀錄",
+        "tag": "同一專案，持續做成任務與週報工具"
+      },
+      "claims": [
+        "C03"
+      ],
+      "lines": [
+        {
+          "id": "0e2ed0",
+          "text": "你可能已經會把需求交給 Codex，卻很難判斷結果。"
+        },
+        {
+          "id": "54963a",
+          "text": "這個系列用同一個小網站，把判斷的方法做完整。"
+        }
+      ]
+    },
+    {
+      "id": "what-to-deliver",
+      "chapter": "準備可以重做的起點",
+      "template": "bullets",
+      "data": {
+        "title": "這一輪的交付物",
+        "items": [
+          "五份檔案的用途與界線",
+          "實際測試、失敗位置、尚未驗證",
+          "下一輪的目標、範圍與驗收"
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C03"
+      ],
+      "lines": [
+        {
+          "id": "14b488",
+          "text": "今天交的是一份檢查報告，還不是新增功能。",
+          "reveal": 1
+        },
+        {
+          "id": "a90d59",
+          "text": "報告要指得出檔案，也要留下真的執行過的結果。",
+          "reveal": 1
+        },
+        {
+          "id": "96934b",
+          "text": "最後把問題收斂成下一輪能驗收的小任務。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "unpack-all",
+      "template": "bullets",
+      "data": {
+        "title": "先解開完整教材",
+        "items": [
+          "取得 codex-practical-01-materials.zip",
+          "完整解壓：start／reference／challenge",
+          "進入 start，不先複製 reference"
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C03"
+      ],
+      "lines": [
+        {
+          "id": "6219ad",
+          "text": "下載本課教材，完整解壓到新的練習資料夾。",
+          "reveal": 1
+        },
+        {
+          "id": "b97d92",
+          "text": "先進入起始資料夾，保留參考答案作為最後對照。",
+          "reveal": 1
+        },
+        {
+          "id": "b61ddf",
+          "text": "混用不同課的起點，測試數和問題都會跟著改變。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "folder-roles",
+      "template": "table",
+      "data": {
+        "title": "三個資料夾，三種用途",
+        "columns": [
+          "資料夾",
+          "用途"
+        ],
+        "rows": [
+          [
+            "start",
+            "這次實際檢查的五檔起點"
+          ],
+          [
+            "reference",
+            "作者參考實作，供最後核對"
+          ],
+          [
+            "challenge",
+            "換一個情境，自行交檢查報告"
+          ]
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C03",
+        "C04"
+      ],
+      "lines": [
+        {
+          "id": "4a2b6e",
+          "text": "起始資料保留一個還沒完成的篩選功能。",
+          "reveal": 1
+        },
+        {
+          "id": "53b205",
+          "text": "參考資料由作者提供，不是這輪模型改出的成果。",
+          "reveal": 1
+        },
+        {
+          "id": "2e9705",
+          "text": "換題練習則留給你重做，看看方法是否真的學會。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "environment-commands",
+      "template": "code",
+      "data": {
+        "code": "codex --version\nnode --version\npy --version",
+        "caption": "環境核對指令｜在 PowerShell 輸入"
+      },
+      "claims": [
+        "C05"
+      ],
+      "lines": [
+        {
+          "id": "67003a",
+          "text": "先確認終端機能找到 Codex、測試工具和網頁伺服器。"
+        },
+        {
+          "id": "fa3e71",
+          "text": "版本先記下來，出現差異時才有線索。"
+        }
+      ]
+    },
+    {
+      "id": "recorded-versions",
+      "template": "table",
+      "data": {
+        "title": "這次錄製的版本",
+        "columns": [
+          "工具",
+          "實際值"
+        ],
+        "rows": [
+          [
+            "Codex CLI",
+            "0.162.0-alpha.17.2"
+          ],
+          [
+            "Node.js",
+            "v24.13.0"
+          ]
+        ],
+        "source": "01 CLI session-01 · 2026-10-11"
+      },
+      "claims": [
+        "C05"
+      ],
+      "lines": [
+        {
+          "id": "7c0a04",
+          "text": "畫面是本次實跑版本，不是所有人的指定安裝版本。",
+          "reveal": 1
+        },
+        {
+          "id": "b85146",
+          "text": "你可以用自己的版本跟做，先以本機說明核對參數。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "correct-folder",
+      "template": "code",
+      "data": {
+        "code": "Set-Location \"你的教材路徑\\start\"\nGet-Location\nGet-ChildItem -Name",
+        "caption": "跟做指令｜把第一行路徑換成你的 start"
+      },
+      "claims": [
+        "C03"
+      ],
+      "lines": [
+        {
+          "id": "38a0b2",
+          "text": "切到起始資料夾，確認目前位置，再列出檔案。"
+        },
+        {
+          "id": "2ab690",
+          "text": "如果只看到資料夾，通常還在教材外層。"
+        }
+      ]
+    },
+    {
+      "id": "five-file-contract",
+      "template": "table",
+      "data": {
+        "title": "本課起點只有這五份主要檔案",
+        "columns": [
+          "檔案",
+          "負責"
+        ],
+        "rows": [
+          [
+            "index.html",
+            "頁面結構"
+          ],
+          [
+            "style.css",
+            "畫面樣式"
+          ],
+          [
+            "app.js",
+            "瀏覽器事件、呈現與保存"
+          ],
+          [
+            "core.mjs",
+            "資料規則"
+          ],
+          [
+            "core.test.mjs",
+            "三個核心測試"
+          ]
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C06"
+      ],
+      "lines": [
+        {
+          "id": "d2aa40",
+          "text": "核對這五個名字，確認拿到本課相同的起點。",
+          "reveal": 1
+        },
+        {
+          "id": "7a7069",
+          "text": "本課瀏覽器程式的副檔名是這個，不要自行換名。",
+          "reveal": 1
+        },
+        {
+          "id": "842026",
+          "text": "先有一致的材料，後面的結果才比得起來。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "baseline-before-change",
+      "template": "bullets",
+      "data": {
+        "title": "先保留原本的狀態",
+        "items": [
+          "教材 manifest 可核對來源",
+          "本次五檔前後 SHA-256 一致",
+          "這一輪沒有提交修改"
+        ],
+        "source": "01 CLI session-01 · 2026-10-11"
+      },
+      "claims": [
+        "C02"
+      ],
+      "lines": [
+        {
+          "id": "24143a",
+          "text": "本次檢查前後，五份檔案的內容雜湊一致。",
+          "reveal": 1
+        },
+        {
+          "id": "a6d45a",
+          "text": "這讓我們能區分檢查報告和已經改好的專案。",
+          "reveal": 1
+        },
+        {
+          "id": "346cca",
+          "text": "你練習時也保留起點，別靠記憶猜原本的樣子。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "boundary-question",
+      "chapter": "讀出五份檔案的界線",
+      "template": "bullets",
+      "data": {
+        "title": "讀專案，先問責任在哪裡",
+        "items": [
+          "哪裡決定資料規則？",
+          "哪裡把按鈕接到規則？",
+          "哪裡負責把結果顯示出來？"
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C06"
+      ],
+      "lines": [
+        {
+          "id": "f5f5a3",
+          "text": "不用一開始就看懂每一行，先找出責任的分界。",
+          "reveal": 1
+        },
+        {
+          "id": "ac2945",
+          "text": "同一個症狀可能來自資料，也可能來自畫面事件。",
+          "reveal": 1
+        },
+        {
+          "id": "0432f4",
+          "text": "知道分界，下一輪才不會把整個專案一起改掉。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "html-module",
+      "template": "code",
+      "data": {
+        "code": "<script type=\"module\" src=\"app.js\"></script>",
+        "caption": "index.html:23｜session-01 起點原文"
+      },
+      "claims": [
+        "C06",
+        "C07"
+      ],
+      "lines": [
+        {
+          "id": "441af0",
+          "text": "這行把頁面接到瀏覽器程式，檔名必須對得上。"
+        },
+        {
+          "id": "29d340",
+          "text": "它使用模組載入，所以開啟方式也影響測試。"
+        }
+      ]
+    },
+    {
+      "id": "html-structure",
+      "template": "bullets",
+      "data": {
+        "title": "頁面提供可操作的入口",
+        "items": [
+          "新增表單與輸入欄位",
+          "三種篩選選單與任務清單",
+          "計數、提示與練習資料重設"
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C06"
+      ],
+      "lines": [
+        {
+          "id": "9be0f8",
+          "text": "頁面檔提供表單和清單的位置，還有篩選選單。",
+          "reveal": 1
+        },
+        {
+          "id": "13fc0b",
+          "text": "有選單不代表篩選做完，它只是使用者操作的入口。",
+          "reveal": 1
+        },
+        {
+          "id": "045397",
+          "text": "真正決定清單內容的規則，還要往程式裡找。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "css-responsibility",
+      "template": "bullets",
+      "data": {
+        "title": "樣式檔處理外觀",
+        "items": [
+          "版面與小螢幕排列",
+          "完成項目的刪除線",
+          "鍵盤焦點的外框"
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C06"
+      ],
+      "lines": [
+        {
+          "id": "c25c10",
+          "text": "樣式檔控制排列、完成效果和焦點外框。",
+          "reveal": 1
+        },
+        {
+          "id": "1acad8",
+          "text": "它不能證明資料是否被正確保存，也不負責篩選。",
+          "reveal": 1
+        },
+        {
+          "id": "4a89c0",
+          "text": "畫面看起來正常，核心規則仍可能有缺口。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "core-versus-browser",
+      "template": "table",
+      "data": {
+        "title": "資料規則和瀏覽器程式分開",
+        "columns": [
+          "核心 core.mjs",
+          "瀏覽器 app.js"
+        ],
+        "rows": [
+          [
+            "新增、切換、刪除、篩選",
+            "監聽表單、勾選、按鈕"
+          ],
+          [
+            "資料編碼與解碼",
+            "讀寫 localStorage"
+          ],
+          [
+            "回傳資料結果",
+            "依結果重畫清單"
+          ]
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C06",
+        "C08"
+      ],
+      "lines": [
+        {
+          "id": "15091f",
+          "text": "核心處理資料規則，瀏覽器程式接住操作。",
+          "reveal": 1
+        },
+        {
+          "id": "ae475a",
+          "text": "編碼資料和真的寫入瀏覽器儲存，是不同的責任。",
+          "reveal": 1
+        },
+        {
+          "id": "1ab4e5",
+          "text": "所以核心測試通過，不能直接等於整個網站通過。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "render-boundary",
+      "template": "code",
+      "data": {
+        "code": "const shown = visibleTasks(tasks, filter.value);",
+        "caption": "app.js:22｜session-01 起點原文"
+      },
+      "claims": [
+        "C06"
+      ],
+      "lines": [
+        {
+          "id": "4f2655",
+          "text": "這行把目前資料和選單值交給篩選函式。"
+        },
+        {
+          "id": "408db7",
+          "text": "畫面使用回傳的清單，決定哪些任務要出現。"
+        }
+      ]
+    },
+    {
+      "id": "save-boundary",
+      "template": "code",
+      "data": {
+        "code": "localStorage.setItem(key, encodeTasks(tasks));",
+        "caption": "app.js:16 的呼叫摘錄｜完整行含 try/catch"
+      },
+      "claims": [
+        "C06",
+        "C09"
+      ],
+      "lines": [
+        {
+          "id": "f7ae44",
+          "text": "保存的資料由核心編碼，再由瀏覽器寫入。"
+        },
+        {
+          "id": "7652db",
+          "text": "只有這個瀏覽器來源的儲存區會收到它。"
+        }
+      ]
+    },
+    {
+      "id": "data-not-server",
+      "template": "bullets",
+      "data": {
+        "title": "目前沒有帳號與伺服器資料庫",
+        "items": [
+          "資料保存在這個瀏覽器來源",
+          "CLI 測試不會自動讀到網頁的資料",
+          "重新整理與保存必須另外檢查"
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C06",
+        "C08",
+        "C09"
+      ],
+      "lines": [
+        {
+          "id": "aa96ef",
+          "text": "這是本機練習網站，沒有帳號和伺服器資料庫。",
+          "reveal": 1
+        },
+        {
+          "id": "465bff",
+          "text": "終端機的核心測試，也不會自動取得網頁儲存的任務。",
+          "reveal": 1
+        },
+        {
+          "id": "8289db",
+          "text": "要確認保存，得真的在瀏覽器重新整理再看結果。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "evidence-levels",
+      "template": "table",
+      "data": {
+        "title": "兩種驗證，各回答一件事",
+        "columns": [
+          "核心測試",
+          "瀏覽器操作"
+        ],
+        "rows": [
+          [
+            "資料規則符合斷言嗎？",
+            "事件與模組真的能運作嗎？"
+          ],
+          [
+            "輸入是否被意外改動？",
+            "重新整理後資料還在嗎？"
+          ]
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C08"
+      ],
+      "lines": [
+        {
+          "id": "d73429",
+          "text": "核心測試能快速定位規則，但範圍只到測試寫的地方。",
+          "reveal": 1
+        },
+        {
+          "id": "ccc1c4",
+          "text": "瀏覽器操作則檢查載入、事件和保存是否接起來。",
+          "reveal": 1
+        },
+        {
+          "id": "245513",
+          "text": "把兩種證據分開，才不會誤把半套驗收當成完成。"
+        }
+      ]
+    },
+    {
+      "id": "prompt-contract",
+      "chapter": "把提示變成可驗收的要求",
+      "template": "steps",
+      "data": {
+        "title": "把檢查要求写成明確契約",
+        "steps": [
+          {
+            "title": "目的",
+            "detail": "理解起點，不修改"
+          },
+          {
+            "title": "動作",
+            "detail": "讀五檔，實跑既有測試"
+          },
+          {
+            "title": "證據",
+            "detail": "結果、位置、未驗證項"
+          },
+          {
+            "title": "交付",
+            "detail": "報告與下一輪任務"
+          }
+        ],
+        "source": "baseline-prompt.txt · session-01"
+      },
+      "claims": [
+        "C10"
+      ],
+      "lines": [
+        {
+          "id": "799eb2",
+          "text": "提示不用寫得玄，先把目的和動作講清楚。",
+          "reveal": 1
+        },
+        {
+          "id": "97ef02",
+          "text": "再指定要留下什麼證據，避免只收到一段心得。",
+          "reveal": 1
+        },
+        {
+          "id": "7b333a",
+          "text": "最後要求下一輪任務，讓報告能接到真正的工作。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "prompt-readonly",
+      "template": "code",
+      "data": {
+        "code": "這是教學的待辦網站起始材料。只讀檢查，不要修改任何檔案，\n也不要修正故意保留的測試失敗。",
+        "caption": "原始提示第 1 段｜僅為卡片換行"
+      },
+      "claims": [
+        "C10"
+      ],
+      "lines": [
+        {
+          "id": "526dbd",
+          "text": "先把只讀和保留失敗寫明，這輪只建立基線。"
+        },
+        {
+          "id": "b011ea",
+          "text": "如果模型順手修掉問題，後面就少了可比較的起點。"
+        }
+      ]
+    },
+    {
+      "id": "prompt-file-map",
+      "template": "code",
+      "data": {
+        "code": "請列出五份主要檔案的用途，\n以及資料操作和瀏覽器介面的界線。",
+        "caption": "原始提示第 2 段｜僅為卡片換行"
+      },
+      "claims": [
+        "C10"
+      ],
+      "lines": [
+        {
+          "id": "a8cdf8",
+          "text": "要求用途還不夠，還要它說明兩層之間的界線。"
+        },
+        {
+          "id": "05384f",
+          "text": "你得到的應該是責任地圖，不只是檔名清單。"
+        }
+      ]
+    },
+    {
+      "id": "prompt-execute",
+      "template": "code",
+      "data": {
+        "code": "實際執行 node --test core.test.mjs，\n記下通過數、失敗數、失敗測試名稱與退出碼。",
+        "caption": "原始提示第 3 段｜僅為卡片換行"
+      },
+      "claims": [
+        "C10"
+      ],
+      "lines": [
+        {
+          "id": "e5fe6b",
+          "text": "這段指定實際執行，不接受讀完程式後猜測結果。"
+        },
+        {
+          "id": "5c3c1d",
+          "text": "測試名稱和退出碼能幫你回頭找到真正的問題。"
+        }
+      ]
+    },
+    {
+      "id": "prompt-separate-proof",
+      "template": "code",
+      "data": {
+        "code": "讀取失敗測試和對應程式，\n指出觀察到的現況與仍需驗證的假說，\n不要把假說寫成實測事實。",
+        "caption": "原始提示第 4 段｜僅為卡片換行"
+      },
+      "claims": [
+        "C10"
+      ],
+      "lines": [
+        {
+          "id": "e00698",
+          "text": "讀程式推論出的行為，和操作看到的行為要分開。"
+        },
+        {
+          "id": "0acfbd",
+          "text": "報告寫得肯定，不會讓沒有做過的測試突然成立。"
+        }
+      ]
+    },
+    {
+      "id": "prompt-next-task",
+      "template": "code",
+      "data": {
+        "code": "最後給下一個任務的目標、修改範圍和驗收條件；\n這一次只交檢查報告。",
+        "caption": "原始提示最後一段｜僅為卡片換行"
+      },
+      "claims": [
+        "C10"
+      ],
+      "lines": [
+        {
+          "id": "a7ebae",
+          "text": "報告最後要能交棒，下一輪才有清楚的起終點。"
+        },
+        {
+          "id": "267a0b",
+          "text": "完整提示在教材裡，這幾張卡是原文分段。"
+        }
+      ]
+    },
+    {
+      "id": "save-prompt",
+      "template": "code",
+      "data": {
+        "code": "Get-Content ..\\baseline-prompt.txt -Raw |\n  codex exec --sandbox read-only --skip-git-repo-check `\n    -C . --output-last-message ..\\baseline-answer.md -",
+        "caption": "PowerShell 跟做命令｜不是錄製的完整原始 argv"
+      },
+      "claims": [
+        "C11"
+      ],
+      "lines": [
+        {
+          "id": "0d561c",
+          "text": "從起點把附上的提示送入一次執行，最後回覆另存檔案。"
+        },
+        {
+          "id": "646a80",
+          "text": "畫面保留命令，方便你重做後比較自己的報告。"
+        }
+      ]
+    },
+    {
+      "id": "command-flags",
+      "template": "table",
+      "data": {
+        "title": "命令上這幾個位置要對",
+        "columns": [
+          "位置",
+          "作用"
+        ],
+        "rows": [
+          [
+            "--sandbox read-only",
+            "以只讀限制執行"
+          ],
+          [
+            "-C .",
+            "使用目前起點目錄"
+          ],
+          [
+            "--output-last-message",
+            "保存最後報告"
+          ],
+          [
+            "末尾的 -",
+            "從標準輸入讀提示"
+          ]
+        ],
+        "source": "Codex CLI 官方 reference · 2026-10-11"
+      },
+      "claims": [
+        "C11"
+      ],
+      "lines": [
+        {
+          "id": "9f5aa5",
+          "text": "只讀限制是執行設定，不只是文字裡拜託模型。",
+          "reveal": 1
+        },
+        {
+          "id": "1e2e6a",
+          "text": "目前目錄必須是起點，報告則保存在起點外面。",
+          "reveal": 1
+        },
+        {
+          "id": "0c8c48",
+          "text": "教材不是版本庫，所以這個命令明確略過版本庫檢查。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "recording-is-real",
+      "template": "bullets",
+      "data": {
+        "title": "本次真實執行留下了什麼",
+        "items": [
+          "原始提示與完整執行參數",
+          "24 筆事件及工具輸出",
+          "最後報告、版本、時間與雜湊"
+        ],
+        "source": "01 CLI session-01 · 2026-10-11"
+      },
+      "claims": [
+        "C01",
+        "C12"
+      ],
+      "lines": [
+        {
+          "id": "5fac21",
+          "text": "本次錄製保留原始提示、執行參數和事件紀錄。",
+          "reveal": 1
+        },
+        {
+          "id": "3758fb",
+          "text": "後面終端卡片是從實際輸出重現，不是假裝螢幕錄影。",
+          "reveal": 1
+        },
+        {
+          "id": "86c82d",
+          "text": "個人路徑不放進畫面，完整紀錄另行保存。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "report-first-line",
+      "template": "quote",
+      "data": {
+        "quote": "只讀檢查已完成，未修改任何檔案，也未修正刻意保留的失敗。",
+        "source": "session-01/answer.md · 真實回覆摘錄",
+        "kicker": "模型回覆，要接著核對"
+      },
+      "claims": [
+        "C02",
+        "C12"
+      ],
+      "lines": [
+        {
+          "id": "2beaf5",
+          "text": "模型回覆說沒有改檔，我們再用檔案雜湊核對。"
+        },
+        {
+          "id": "6d044f",
+          "text": "這次兩邊一致，才有依據把基線保留下來。"
+        }
+      ]
+    },
+    {
+      "id": "two-exit-codes",
+      "template": "table",
+      "data": {
+        "title": "成功結束的是哪一層？",
+        "columns": [
+          "程序",
+          "退出碼與意義"
+        ],
+        "rows": [
+          [
+            "Codex exec",
+            "0：這輪報告完成"
+          ],
+          [
+            "node --test",
+            "1：既有測試有失敗"
+          ]
+        ],
+        "source": "01 CLI session-01 · 2026-10-11"
+      },
+      "claims": [
+        "C01"
+      ],
+      "lines": [
+        {
+          "id": "a2a9de",
+          "text": "這裡有兩個退出碼，回答的是兩個不同問題。",
+          "reveal": 1
+        },
+        {
+          "id": "4d3a74",
+          "text": "模型完成檢查，可以成功結束，同時報告測試失敗。",
+          "reveal": 1
+        },
+        {
+          "id": "dc8a49",
+          "text": "不要看到外層成功，就把網站也寫成已經完成。"
+        }
+      ]
+    },
+    {
+      "id": "baseline-test",
+      "chapter": "讀懂測試失敗的意思",
+      "template": "terminal",
+      "data": {
+        "title": "真實測試輸出摘錄／重新排版",
+        "command": "node --test core.test.mjs",
+        "output": [
+          "ℹ tests 3\nℹ suites 0",
+          "ℹ pass 2\nℹ fail 1",
+          "ℹ cancelled 0\nℹ skipped 0\nℹ todo 0"
+        ],
+        "ran_on": "2026-10-11",
+        "tool_version": "Node.js v24.13.0",
+        "prompt": ">"
+      },
+      "claims": [
+        "C01"
+      ],
+      "lines": [
+        {
+          "id": "b00305",
+          "text": "這是模型真的執行過的測試，完整輸出保留在事件裡。",
+          "reveal": 1
+        },
+        {
+          "id": "56d905",
+          "text": "總共三個測試，兩個通過，一個失敗，內層退出碼是一。",
+          "reveal": 1
+        },
+        {
+          "id": "ab58ee",
+          "text": "起點預期就是這個結果，失敗不代表操作做錯。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "three-tests",
+      "template": "table",
+      "data": {
+        "title": "三個測試的範圍",
+        "columns": [
+          "範圍",
+          "本次結果"
+        ],
+        "rows": [
+          [
+            "新增、修剪文字、輸入限制",
+            "通過"
+          ],
+          [
+            "切換、篩選、刪除的組合",
+            "失敗於未完成篩選"
+          ],
+          [
+            "版本資料編解碼與錯誤輸入",
+            "通過"
+          ]
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C13"
+      ],
+      "lines": [
+        {
+          "id": "f18b70",
+          "text": "新增資料和編解碼測試通過，問題集中在中間這組。",
+          "reveal": 1
+        },
+        {
+          "id": "983b95",
+          "text": "它包含好幾個斷言，並不只有單一動作。",
+          "reveal": 1
+        },
+        {
+          "id": "313f21",
+          "text": "所以還要找到實際停住的位置，不能只看測試名稱。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "failure-location",
+      "template": "table",
+      "data": {
+        "title": "先讀預期和實際",
+        "columns": [
+          "欄位",
+          "內容"
+        ],
+        "rows": [
+          [
+            "位置",
+            "core.test.mjs:17"
+          ],
+          [
+            "情境",
+            "兩筆任務，把 a 設為完成"
+          ],
+          [
+            "預期",
+            "未完成篩選只留下 b"
+          ],
+          [
+            "實際",
+            "a 和 b 都出現"
+          ]
+        ],
+        "source": "01 CLI session-01 · 2026-10-11"
+      },
+      "claims": [
+        "C13"
+      ],
+      "lines": [
+        {
+          "id": "8caa22",
+          "text": "測試建立兩筆任務，再把第一筆設成完成。",
+          "reveal": 1
+        },
+        {
+          "id": "7b66e7",
+          "text": "未完成篩選應該只留下第二筆，實際卻留下兩筆。",
+          "reveal": 1
+        },
+        {
+          "id": "87ba3e",
+          "text": "這個差異，比一句篩選壞了更能指引下一步。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "unfinished-function",
+      "template": "code",
+      "data": {
+        "code": "export function visibleTasks(tasks, filter) {\n  return tasks;\n}",
+        "caption": "core.mjs:17–19｜session-01 起點原文"
+      },
+      "claims": [
+        "C13"
+      ],
+      "lines": [
+        {
+          "id": "1c233a",
+          "text": "對應函式目前直接回傳全部任務，沒有使用篩選條件。"
+        },
+        {
+          "id": "379c68",
+          "text": "這是教材刻意留下的實作位置，不是隨機製造的錯誤。"
+        }
+      ]
+    },
+    {
+      "id": "observed-not-guessed",
+      "template": "bullets",
+      "data": {
+        "title": "此刻已觀察到",
+        "items": [
+          "未完成篩選包含了已完成任務",
+          "對應函式忽略 filter",
+          "測試停在第 17 行的斷言"
+        ],
+        "source": "01 CLI session-01 · 2026-10-11"
+      },
+      "claims": [
+        "C13"
+      ],
+      "lines": [
+        {
+          "id": "27e409",
+          "text": "這三件事有測試輸出和程式內容支持。",
+          "reveal": 1
+        },
+        {
+          "id": "2a8a2d",
+          "text": "先把已觀察到的事講清楚，不急著猜其他功能。",
+          "reveal": 1
+        },
+        {
+          "id": "5da0a6",
+          "text": "後續修改也要對著這些證據確認，不能只換個說法。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "assertions-after-failure",
+      "template": "table",
+      "data": {
+        "title": "同一個測試，後段沒有跑到",
+        "columns": [
+          "斷言位置",
+          "本次狀態"
+        ],
+        "rows": [
+          [
+            "第 16 行：原始資料未被改動",
+            "已執行並通過"
+          ],
+          [
+            "第 17 行：未完成篩選",
+            "已執行並失敗"
+          ],
+          [
+            "第 18–20 行：已完成、刪除等",
+            "本輪未執行到"
+          ]
+        ],
+        "source": "01 CLI session-01 · 2026-10-11"
+      },
+      "claims": [
+        "C13"
+      ],
+      "lines": [
+        {
+          "id": "a6de74",
+          "text": "前一行確認原始資料未被改動，這個斷言通過了。",
+          "reveal": 1
+        },
+        {
+          "id": "974d40",
+          "text": "下一行失敗後，同一個測試裡的後段就沒有跑到。",
+          "reveal": 1
+        },
+        {
+          "id": "3d8656",
+          "text": "因此不能把後面的刪除功能也宣稱這輪驗證過。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hypothesis-versus-fact",
+      "template": "compare",
+      "data": {
+        "title": "這時候，網頁行為仍是推論",
+        "left": {
+          "heading": "程式推論",
+          "points": [
+            "畫面篩選可能仍顯示全部"
+          ]
+        },
+        "right": {
+          "heading": "本輪模型實測",
+          "points": [
+            "只執行核心測試",
+            "沒有啟動瀏覽器"
+          ]
+        },
+        "source": "session-01/answer.md · 真實回覆"
+      },
+      "claims": [
+        "C08",
+        "C12"
+      ],
+      "lines": [
+        {
+          "id": "fe9509",
+          "text": "讀程式可以推論畫面篩選也會有問題。",
+          "reveal": 1
+        },
+        {
+          "id": "2b3330",
+          "text": "可是這輪模型沒有開瀏覽器，推論還不是實際操作結果。",
+          "reveal": 1
+        },
+        {
+          "id": "6577c6",
+          "text": "接著用網頁操作，把這個缺口補成另一份證據。"
+        }
+      ]
+    },
+    {
+      "id": "http-start-command",
+      "chapter": "把程式推論接到瀏覽器證據",
+      "template": "code",
+      "data": {
+        "code": "py -m http.server 4173 --bind 127.0.0.1",
+        "caption": "跟做指令｜在 start 目錄啟動，另開瀏覽器"
+      },
+      "claims": [
+        "C14"
+      ],
+      "lines": [
+        {
+          "id": "87c6d8",
+          "text": "保持終端機開著，用本機伺服器提供這個資料夾。"
+        },
+        {
+          "id": "f9c082",
+          "text": "網址和檔案目錄要一起對，才是在測相同的網站。"
+        }
+      ]
+    },
+    {
+      "id": "http-url",
+      "template": "big",
+      "data": {
+        "text": "http://127.0.0.1:4173/",
+        "kicker": "瀏覽器網址列",
+        "sub": "目前終端機：start｜停止伺服器：Ctrl+C"
+      },
+      "claims": [
+        "C14",
+        "C09"
+      ],
+      "lines": [
+        {
+          "id": "111f55",
+          "text": "瀏覽器打開畫面上的網址，別把命令貼到網址列。"
+        },
+        {
+          "id": "4429f7",
+          "text": "練習結束回終端機停止伺服器，資料仍留在瀏覽器。"
+        }
+      ]
+    },
+    {
+      "id": "file-versus-http",
+      "template": "compare",
+      "data": {
+        "title": "雙擊 HTML，換了載入方式",
+        "left": {
+          "heading": "雙擊檔案",
+          "points": [
+            "file://",
+            "模組載入受到檔案來源限制"
+          ]
+        },
+        "right": {
+          "heading": "本機伺服器",
+          "points": [
+            "http://127.0.0.1:4173/",
+            "透過相同來源載入模組"
+          ]
+        },
+        "source": "MDN Modules · 2026-10-11"
+      },
+      "claims": [
+        "C07",
+        "C14"
+      ],
+      "lines": [
+        {
+          "id": "8e6e74",
+          "text": "雙擊頁面會走檔案網址，和本機網頁來源不同。",
+          "reveal": 1
+        },
+        {
+          "id": "09b651",
+          "text": "這個起點使用模組，應該透過伺服器測試。",
+          "reveal": 1
+        },
+        {
+          "id": "3860bb",
+          "text": "如果只有外觀出現卻不能新增，先核對開啟方式。"
+        }
+      ]
+    },
+    {
+      "id": "file-failure-observed",
+      "template": "table",
+      "data": {
+        "title": "這次真的看見了載入方式的差異",
+        "columns": [
+          "入口",
+          "作者另外實跑的觀察"
+        ],
+        "rows": [
+          [
+            "file:// 起點",
+            "2 個錯誤，觀察到跨來源限制"
+          ],
+          [
+            "本機 HTTP 起點",
+            "可新增、完成並重新整理保存"
+          ]
+        ],
+        "source": "Edge browser/receipt.json · 2026-10-11"
+      },
+      "claims": [
+        "C07",
+        "C14",
+        "C15"
+      ],
+      "lines": [
+        {
+          "id": "ff35f7",
+          "text": "作者另外用檔案網址打開起點，觀察到兩個載入錯誤。",
+          "reveal": 1
+        },
+        {
+          "id": "acfadc",
+          "text": "改用本機網頁來源後，再操作新增、完成和重新整理。",
+          "reveal": 1
+        },
+        {
+          "id": "475a05",
+          "text": "這個排錯先修正開啟方式，不需要先改程式湊成功。"
+        }
+      ]
+    },
+    {
+      "id": "browser-filter-method",
+      "template": "steps",
+      "data": {
+        "title": "用同一個情境核對篩選",
+        "steps": [
+          {
+            "title": "新增兩筆",
+            "detail": "讀專案、做網站"
+          },
+          {
+            "title": "完成第一筆",
+            "detail": "留下另一筆未完成"
+          },
+          {
+            "title": "選未完成",
+            "detail": "起點目前仍顯示兩筆"
+          }
+        ],
+        "source": "Edge browser/receipt.json · 2026-10-11"
+      },
+      "claims": [
+        "C15"
+      ],
+      "lines": [
+        {
+          "id": "707baf",
+          "text": "在起點新增兩筆，勾選第一筆，再切成未完成篩選。",
+          "reveal": 1
+        },
+        {
+          "id": "6b3eba",
+          "text": "作者另外用瀏覽器實跑，起點仍顯示兩筆。",
+          "reveal": 1
+        },
+        {
+          "id": "89ceba",
+          "text": "這份網頁證據支持剛才的推論，但來源要分開標示。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "author-reference-compare",
+      "template": "table",
+      "data": {
+        "title": "作者參考版，用來看驗收的樣子",
+        "columns": [
+          "驗證",
+          "start／reference"
+        ],
+        "rows": [
+          [
+            "核心測試",
+            "2 通過 1 失敗／3 通過"
+          ],
+          [
+            "未完成篩選",
+            "顯示 2 筆／顯示 1 筆"
+          ],
+          [
+            "來源",
+            "原始教材／作者參考實作"
+          ]
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C04",
+        "C16"
+      ],
+      "lines": [
+        {
+          "id": "520c4a",
+          "text": "參考版的三個核心測試通過，未完成篩選只留下另一筆。",
+          "reveal": 1
+        },
+        {
+          "id": "a5dccc",
+          "text": "它是作者參考實作，不能當成這輪模型的修改成果。",
+          "reveal": 1
+        },
+        {
+          "id": "2408e2",
+          "text": "先看到正確結果的形狀，才知道下一輪要驗什麼。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "browser-additional-checks",
+      "template": "table",
+      "data": {
+        "title": "另外檢查了哪些網頁行為",
+        "columns": [
+          "檢查",
+          "兩版觀察"
+        ],
+        "rows": [
+          [
+            "重新整理",
+            "任務和完成狀態保留"
+          ],
+          [
+            "同名任務刪除",
+            "只刪選定的身分"
+          ],
+          [
+            "標記字串",
+            "當成文字顯示"
+          ],
+          [
+            "390 像素寬",
+            "沒有水平溢出"
+          ]
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C15"
+      ],
+      "lines": [
+        {
+          "id": "cd5f6d",
+          "text": "網頁檢查還包括重新整理和同名任務刪除。",
+          "reveal": 1
+        },
+        {
+          "id": "8b67d6",
+          "text": "同一個標題可以有不同身分，刪除必須對到那一筆。",
+          "reveal": 1
+        },
+        {
+          "id": "a558e3",
+          "text": "這些觀察補上介面證據，並不擴大核心測試的範圍。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "storage-check-scope",
+      "template": "bullets",
+      "data": {
+        "title": "壞掉的儲存資料，先保留",
+        "items": [
+          "兩版皆顯示無法讀取的提示",
+          "原始損壞資料沒有被覆寫",
+          "重設只處理練習專用資料"
+        ],
+        "source": "Edge browser/receipt.json · 2026-10-11"
+      },
+      "claims": [
+        "C15"
+      ],
+      "lines": [
+        {
+          "id": "3f3469",
+          "text": "作者也檢查損壞的儲存資料，兩版都保留原值。",
+          "reveal": 1
+        },
+        {
+          "id": "58b412",
+          "text": "重設練習只處理專用資料，不該清空其他網站資料。",
+          "reveal": 1
+        },
+        {
+          "id": "208278",
+          "text": "遇到保存問題先看提示，別直接用清空全部代替診斷。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "same-origin-for-reload",
+      "template": "bullets",
+      "data": {
+        "title": "保存檢查，要用同一個來源",
+        "items": [
+          "同一個協定、主機、連接埠",
+          "新增、完成，再重新整理",
+          "換來源時不要當成資料遺失"
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C09"
+      ],
+      "lines": [
+        {
+          "id": "df955a",
+          "text": "重新整理測試要留在同一個來源，連接埠也要相同。",
+          "reveal": 1
+        },
+        {
+          "id": "8574a1",
+          "text": "換了網址或連接埠，瀏覽器可能使用另一個儲存區。",
+          "reveal": 1
+        },
+        {
+          "id": "0fc574",
+          "text": "那時看不到任務，不足以證明保存函式有問題。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "next-task-goal",
+      "chapter": "把報告交成下一輪任務",
+      "template": "table",
+      "data": {
+        "title": "下一輪任務：只完成篩選",
+        "columns": [
+          "欄位",
+          "要求"
+        ],
+        "rows": [
+          [
+            "目標",
+            "全部／未完成／已完成"
+          ],
+          [
+            "範圍",
+            "core.mjs 的 visibleTasks"
+          ],
+          [
+            "保留",
+            "既有測試與瀏覽器檔案"
+          ]
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "d18454",
+          "text": "下一輪把目標限定在三種篩選，不順手重做頁面。",
+          "reveal": 1
+        },
+        {
+          "id": "ee7811",
+          "text": "修改範圍指向一個函式，其餘檔案先保留。",
+          "reveal": 1
+        },
+        {
+          "id": "c61394",
+          "text": "這樣結果不對時，也比較容易找到造成差異的地方。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "next-task-acceptance",
+      "template": "table",
+      "data": {
+        "title": "驗收不能只寫「正常」",
+        "columns": [
+          "情境",
+          "應該看到"
+        ],
+        "rows": [
+          [
+            "兩筆，一筆完成，選全部",
+            "兩筆，順序不變"
+          ],
+          [
+            "選未完成",
+            "只有未完成那筆"
+          ],
+          [
+            "選已完成",
+            "只有完成那筆"
+          ],
+          [
+            "空清單",
+            "空清單，不出錯"
+          ]
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "0f7016",
+          "text": "寫出具體情境：兩筆裡一筆完成，三種篩選各看到什麼。",
+          "reveal": 1
+        },
+        {
+          "id": "3228f8",
+          "text": "再把空清單列進去，避免只做出剛好成功的示範。",
+          "reveal": 1
+        },
+        {
+          "id": "2b3259",
+          "text": "驗收說得清楚，模型和你才是在回答同一個問題。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "invariants",
+      "template": "bullets",
+      "data": {
+        "title": "這次修改不該造成的差異",
+        "items": [
+          "不改原始資料",
+          "不重排原有順序",
+          "篩選不改總數或保存內容"
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "f207d1",
+          "text": "篩選決定顯示哪些任務，不該偷偷改掉原始資料。",
+          "reveal": 1
+        },
+        {
+          "id": "dcf1f1",
+          "text": "順序、總數和保存內容，也不是這個任務要變動的東西。",
+          "reveal": 1
+        },
+        {
+          "id": "2db9a8",
+          "text": "把這些限制寫入驗收，就能攔住看似方便的額外修改。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "next-prompt-suggestion",
+      "template": "code",
+      "data": {
+        "code": "完成 core.mjs 的 visibleTasks 三種篩選。\n只修改該函式，不改測試與瀏覽器檔案。\n重跑既有測試，再逐項記錄網頁驗收與未驗證項。",
+        "caption": "下一輪提示建議｜本輪沒有執行這段"
+      },
+      "claims": [
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "163465",
+          "text": "這段是下一輪可用的任務提示，本次只交報告。"
+        },
+        {
+          "id": "617da4",
+          "text": "真正修改時，依同一套驗收重新跑，別提前填成功。"
+        }
+      ]
+    },
+    {
+      "id": "deliverable-status",
+      "template": "table",
+      "data": {
+        "title": "報告裡，把狀態寫完整",
+        "columns": [
+          "證據",
+          "本課狀態"
+        ],
+        "rows": [
+          [
+            "模型檢查",
+            "完成，沒有改檔"
+          ],
+          [
+            "模型內執行測試",
+            "2 通過 1 失敗"
+          ],
+          [
+            "作者參考測試與網頁核對",
+            "另有實跑紀錄"
+          ],
+          [
+            "下一輪模型修補",
+            "本輪未執行"
+          ]
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C01",
+        "C04",
+        "C15",
+        "C16",
+        "C17"
+      ],
+      "lines": [
+        {
+          "id": "243e4c",
+          "text": "模型檢查、作者對照和下一輪任務，各自寫清楚。",
+          "reveal": 1
+        },
+        {
+          "id": "1e0423",
+          "text": "不要把參考程式通過，寫成模型已經完成修補。",
+          "reveal": 1
+        },
+        {
+          "id": "3882fb",
+          "text": "把狀態講準，才知道真正還缺哪一個動作。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "failure-wrong-directory",
+      "chapter": "卡住時，先縮小問題",
+      "template": "table",
+      "data": {
+        "title": "找不到測試檔，先核對目錄",
+        "columns": [
+          "看見的問題",
+          "先做的事"
+        ],
+        "rows": [
+          [
+            "找不到 core.test.mjs",
+            "列出目前目錄檔案"
+          ],
+          [
+            "只有 start／reference",
+            "進入 start 再執行"
+          ]
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C18"
+      ],
+      "lines": [
+        {
+          "id": "f89da7",
+          "text": "如果找不到測試檔，先列出目前目錄，不急著叫模型補檔。",
+          "reveal": 1
+        },
+        {
+          "id": "ea3ff5",
+          "text": "教材外層和起點目錄不同，回到正確位置再跑。",
+          "reveal": 1
+        },
+        {
+          "id": "55c908",
+          "text": "路徑問題修好以前，測試結果無法代表這份專案。"
+        }
+      ]
+    },
+    {
+      "id": "failure-auth-or-quota",
+      "template": "table",
+      "data": {
+        "title": "模型沒有執行，和測試失敗分開",
+        "columns": [
+          "情況",
+          "處理"
+        ],
+        "rows": [
+          [
+            "尚未登入",
+            "依官方登入流程處理"
+          ],
+          [
+            "額度或服務錯誤",
+            "保留訊息，不填成測試結果"
+          ],
+          [
+            "沒有工具執行紀錄",
+            "要求明確列出未執行項"
+          ]
+        ],
+        "source": "Codex troubleshooting · 2026-10-11"
+      },
+      "claims": [
+        "C19"
+      ],
+      "lines": [
+        {
+          "id": "52a21e",
+          "text": "如果登入或額度卡住，模型可能根本沒有檢查專案。",
+          "reveal": 1
+        },
+        {
+          "id": "427ebd",
+          "text": "保留錯誤訊息，報告標成未執行，不填成測試失敗。",
+          "reveal": 1
+        },
+        {
+          "id": "651473",
+          "text": "能讀回覆還不夠，還要確認有相對應的執行紀錄。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "failure-test-code",
+      "template": "table",
+      "data": {
+        "title": "測試退出碼 1，保留完整上下文",
+        "columns": [
+          "需要留下",
+          "原因"
+        ],
+        "rows": [
+          [
+            "執行命令與日期",
+            "確認是同一次測試"
+          ],
+          [
+            "測試名與失敗位置",
+            "找到斷言"
+          ],
+          [
+            "預期與實際",
+            "知道差在哪裡"
+          ]
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C13",
+        "C18"
+      ],
+      "lines": [
+        {
+          "id": "645acf",
+          "text": "測試失敗時，保留命令和失敗位置，不只截紅色訊息。",
+          "reveal": 1
+        },
+        {
+          "id": "25c0e3",
+          "text": "預期和實際能幫你確認，是資料差異還是環境問題。",
+          "reveal": 1
+        },
+        {
+          "id": "5d66bd",
+          "text": "本課已知有一個待實作位置，先解讀再決定要不要改。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "failure-web-start",
+      "template": "bullets",
+      "data": {
+        "title": "頁面能看，按鈕卻沒反應",
+        "items": [
+          "先核對是否 file://",
+          "改用本機伺服器網址",
+          "再看模組與事件，不先改樣式"
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C07",
+        "C18"
+      ],
+      "lines": [
+        {
+          "id": "37d9b4",
+          "text": "如果看得到頁面，按鈕卻沒反應，先看網址開頭。",
+          "reveal": 1
+        },
+        {
+          "id": "011844",
+          "text": "先用本機伺服器重做，再決定是不是程式問題。",
+          "reveal": 1
+        },
+        {
+          "id": "b0ac2c",
+          "text": "只看到外觀正常，不能證明瀏覽器程式已經載入。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "failure-port-in-use",
+      "template": "table",
+      "data": {
+        "title": "連接埠已占用，不要混到另一份網站",
+        "columns": [
+          "選擇",
+          "要一起改"
+        ],
+        "rows": [
+          [
+            "停止自己原本的練習伺服器",
+            "再於這份 start 啟動"
+          ],
+          [
+            "改用其他本機連接埠",
+            "命令、網址與保存來源"
+          ]
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C09",
+        "C14",
+        "C18"
+      ],
+      "lines": [
+        {
+          "id": "15f1ac",
+          "text": "如果連接埠被占用，先確認是不是自己的上一個練習。",
+          "reveal": 1
+        },
+        {
+          "id": "5f0dae",
+          "text": "換連接埠也可以，但網址要一起改，保存來源也會換。",
+          "reveal": 1
+        },
+        {
+          "id": "699a5e",
+          "text": "瀏覽器若還開著舊站，測到的就不是這份起點。"
+        }
+      ]
+    },
+    {
+      "id": "transfer-task",
+      "chapter": "把方法用到自己的問題",
+      "template": "steps",
+      "data": {
+        "title": "換題：自己重做一次兩版比較",
+        "steps": [
+          {
+            "title": "準備",
+            "detail": "start、reference 各用全新副本"
+          },
+          {
+            "title": "情境",
+            "detail": "分別執行相同的核心測試"
+          },
+          {
+            "title": "交付",
+            "detail": "說明差異，寫第 03 課的窄範圍交接"
+          }
+        ],
+        "source": "01 變式 · 獨立練習"
+      },
+      "claims": [
+        "C20"
+      ],
+      "lines": [
+        {
+          "id": "f670e7",
+          "text": "現在不看前面的報告，自己重做一次兩版比較。",
+          "reveal": 1
+        },
+        {
+          "id": "d191d1",
+          "text": "各用全新副本跑同一個命令，先寫預測，再看結果。",
+          "reveal": 1
+        },
+        {
+          "id": "eb4aa0",
+          "text": "最後說明差異，交出第三課能接手的範圍和驗收。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "transfer-what-to-look-for",
+      "template": "bullets",
+      "data": {
+        "title": "換題時，要找的證據",
+        "items": [
+          "哪份副本跑出哪個退出碼？",
+          "哪個檔案和斷言解釋差異？",
+          "已驗證、推論、未執行能分開嗎？"
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C20"
+      ],
+      "lines": [
+        {
+          "id": "50947f",
+          "text": "先把每份目錄和退出碼對上，別只抄最後的數字。",
+          "reveal": 1
+        },
+        {
+          "id": "523617",
+          "text": "再用檔案和斷言解釋，為什麼只有起點有這個紅燈。",
+          "reveal": 1
+        },
+        {
+          "id": "7883f2",
+          "text": "沒有操作過的那一層，就老實列入尚未驗證。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "report-self-check",
+      "template": "bullets",
+      "data": {
+        "title": "交出去以前，自己讀一次",
+        "items": [
+          "檔案用途能指回來源",
+          "每個實測都有命令、結果、版本",
+          "下一輪範圍與驗收可直接照做"
+        ],
+        "source": "01 五檔教材 · 作者提供"
+      },
+      "claims": [
+        "C10",
+        "C20"
+      ],
+      "lines": [
+        {
+          "id": "06edb4",
+          "text": "交報告前，逐句確認它能不能指回來源和操作。",
+          "reveal": 1
+        },
+        {
+          "id": "95a6fe",
+          "text": "如果只有感覺正常，就再補一個能核對的具體結果。",
+          "reveal": 1
+        },
+        {
+          "id": "d26aa9",
+          "text": "下一輪任務能直接照做，才算把這次檢查交完整。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "bullets",
+      "data": {
+        "title": "有基線，下一次修改才看得懂",
+        "items": [
+          "五檔責任地圖",
+          "2 通過 1 失敗的基線",
+          "有範圍、有驗收的下一輪任務"
+        ],
+        "source": "01 CLI · 本課交付"
+      },
+      "claims": [
+        "C01",
+        "C03"
+      ],
+      "lines": [
+        {
+          "id": "69ebbb",
+          "text": "這次留下五檔責任地圖，以及兩個通過、一個失敗的基線。",
+          "reveal": 1
+        },
+        {
+          "id": "4a1288",
+          "text": "你最常遇到的是工作目錄、測試判讀，還是網頁開啟問題？",
+          "reveal": 1
+        },
+        {
+          "id": "a37aab",
+          "text": "訂閱後，接著用同一專案，把需求收斂成能驗收的任務。",
+          "reveal": 1
+        }
+      ]
+    }
+  ]
+}

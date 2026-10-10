@@ -1,0 +1,29 @@
+{
+  "id": 5,
+  "title": "重現同名刪除故障",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test",
+  "intentionalFailures": [
+    "start",
+    "challenge"
+  ],
+  "manualChecks": [],
+  "steps": [
+    "建立三筆同名Read但ID a/b/c，指定刪b；先寫預期[a,c]。",
+    "跑tests/identity.test.mjs，確認錯版依title把同名全部刪掉。",
+    "讀removeTask與app傳入id，將錯誤限定到刪除條件。",
+    "只改core的ID比較；同一重現與全部node --test都重跑。",
+    "HTTP畫面確認刪其中一筆仍留下另一筆，未操作不得記PASS。",
+    "challenge使用完成狀態不同的三筆同名項目，仍只刪指定ID。"
+  ],
+  "transferExercise": "教材挑戰：三筆同名Read，ID a/b/c，只有b完成；刪b應保留a/c。課綱補充：a/b同名「寫報告」、a未完成/b完成、c「買午餐」未完成；搜尋「報告」+Active，刪畫面中的a，再回All；不要把畫面位置當原始索引。",
+  "expectedReport": null
+}

@@ -1,0 +1,35 @@
+{
+  "id": 14,
+  "title": "唯讀 MCP",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test",
+  "intentionalFailures": [],
+  "manualChecks": [],
+  "steps": [
+    "先跑node --test tests/mcp.test.mjs，證明stdio、只讀清單與拒絕寫入。",
+    "讀docs/mcp-lab.md，用node mcp-server.mjs啟動；輸入initialize/resources/list/read請求。",
+    "確認URI兩項與tool兩項，read_weekly_report回5/2/1/1。",
+    "用當前Codex MCP入口註冊本課絕對server路徑並讀回；未連成功明示。",
+    "真正經MCP讀fixture或report，保存工具結果；要求write_task與外部路徑應拒絕。",
+    "核對fixture原文/雜湊不變，停止本課server。"
+  ],
+  "transferExercise": null,
+  "expectedReport": {
+    "revision": "weekly-report-v2",
+    "timezone": "Asia/Taipei",
+    "weekStart": "2026-10-05",
+    "weekEnd": "2026-10-11",
+    "total": 5,
+    "completedInWeek": 2,
+    "pending": 1,
+    "unknownCompleted": 1
+  }
+}
