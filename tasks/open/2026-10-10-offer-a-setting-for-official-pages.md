@@ -18,6 +18,17 @@ scope:
   - apps/api/app/video_automation/topics.py
   - apps/web/components/admin-video-settings-tutorial.tsx
   - docs/videos/AUTOMATION.md
+  - apps/web/components/admin-video-settings.tsx
+  - apps/web/components/admin-video-settings.test.tsx
+  - apps/web/messages/en/admin.json
+  - apps/web/messages/ja/admin.json
+  - apps/web/messages/ko/admin.json
+  - apps/web/messages/zh-CN/admin.json
+  - apps/web/messages/zh-TW/admin.json
+  - apps/api/tests/test_video_automation_settings.py
+  - apps/api/tests/test_video_automation_topics.py
+  - docs/videos/long-form/review.json
+  - docs/videos/long-form/review.md
 ---
 
 # Offer a setting for official pages as a video topic source
@@ -30,7 +41,7 @@ off, or a source on, means editing that file and loading it on the host. The oth
 topic sources have a checkbox on `/admin/videos` (`topic_from_site`, `topic_from_search`).
 
 This was left out on purpose on 2026-10-10: a setting needs a migration and changes to
-six files bound by the duration receipt, and the per-source key was enough to ship. Build
+ten files bound by the duration receipt, and the per-source key was enough to ship. Build
 it only if the owner asks for one-click control.
 
 ## Definition of done
@@ -55,6 +66,9 @@ cd apps/api && uv run pytest tests/test_video_automation_topics.py tests/test_vi
 
 ## Notes
 
+- The scope does not name the migration: add its path when the number is known.
+  `apps/web/components/admin-video-settings.tsx` is not bound by the receipt but has to
+  change: it holds the settings type and the list of keys the tutorial part saves.
 - Bound by the receipt among these: `models.py`, `schemas.py`, `settings.py`,
   `test_video_automation_settings.py`, `admin-video-settings-tutorial.tsx` and the five
   `admin.json` files.

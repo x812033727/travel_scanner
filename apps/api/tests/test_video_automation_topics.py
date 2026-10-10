@@ -12,6 +12,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 from app.db import Base
 from app.news_automation import sources_cli
 from app.news_automation.models import NewsCandidate, NewsEvidence, NewsSource
+from app.news_automation.policy import JEV_FINAL_HOLD
 from app.video_automation import topics
 from app.video_automation.schemas import TopicView
 
@@ -128,7 +129,8 @@ async def test_a_page_without_stored_evidence_or_a_date_is_still_offered(
 
     found, _ = await topics.official_topics(session, now=NOW)
 
-    assert [(topic.summary, topic.date) for topic in found] == [("", "2026-10-08")]
+    # No date of its own: the day the scanner first saw it is not sent in its place.
+    assert [(topic.summary, topic.date) for topic in found] == [("", None)]
 
 
 @pytest.mark.asyncio
@@ -137,7 +139,8 @@ async def test_only_the_writers_own_refusal_from_an_opted_in_source_counts(
 ) -> None:
     opted_in = await _source(session, "Opted in")
     kept = await _candidate(session, opted_in, "https://opted-in.example/kept")
-    # Every row below differs from the kept one in exactly one way.
+    # Each row is the kept one with one field changed, or a state the pipeline really
+    # leaves a candidate in (those change status and error_code together).
     not_offered: dict[str, dict[str, Any]] = {
         # The first scan's back catalogue, never read.
         "baseline": {"error_code": "news_baseline"},
@@ -147,7 +150,10 @@ async def test_only_the_writers_own_refusal_from_an_opted_in_source_counts(
         # Rejected for another reason than the writer's "not newsworthy".
         "other-refusal": {"error_code": "news_hard_checks_failed"},
         "in-flight": {"status": "discovered", "error_code": None},
-        "held": {"status": "manual_review", "error_code": "news_jev_hold"},
+        "held": {"status": "manual_review", "error_code": JEV_FINAL_HOLD},
+        # The judge asked for a rewrite and the writer then declined the story: the same
+        # error code as the kept row, waiting for the owner. Only the status keeps it out.
+        "handed-back": {"status": "needs_redraft"},
         # The writer declined it and the owner then rejected it by hand.
         "owner-rejected": {"human_decision": "reject"},
         "old": {"created_at": NOW - timedelta(days=15)},
@@ -191,7 +197,9 @@ async def test_a_source_read_from_its_feed_summary_is_named_and_left_out(
 @pytest.mark.asyncio
 async def test_official_topics_are_newest_first_and_capped(session: AsyncSession) -> None:
     source = await _source(session, "Busy")
-    for index in range(topics.OFFICIAL_LIMIT + 3):
+    # Oldest inserted first: without an ORDER BY the rows come back in insertion order
+    # on SQLite, which would be oldest first and fail the assertions below.
+    for index in reversed(range(topics.OFFICIAL_LIMIT + 3)):
         await _candidate(
             session,
             source,
@@ -253,6 +261,19 @@ async def test_gather_puts_official_pages_between_the_site_and_the_search(
     source = await _source(session, "Claude developer blog")
     # gather_topics reads the clock itself, so this candidate is dated from the real one.
     await _candidate(session, source, PAGE, created_at=datetime.now(UTC) - timedelta(hours=3))
+    # A source the owner opted in although it is read from its feed summary: its entry is
+    # not a topic, and the reason reaches the endpoint's notes beside the other topics.
+    changelog = await _source(
+        session,
+        "Claude Code changelog",
+        config_json={"video_topics": True, "evidence_from_feed_summary": True},
+    )
+    await _candidate(
+        session,
+        changelog,
+        "https://code.claude.com/docs/en/changelog#2-1-296",
+        created_at=datetime.now(UTC) - timedelta(hours=2),
+    )
     search = [
         TopicView(source="search", title="The same page, found again", summary="", url=PAGE),
         TopicView(source="search", title="Another page", summary="", url="https://other.example/a"),
@@ -267,7 +288,7 @@ async def test_gather_puts_official_pages_between_the_site_and_the_search(
         ("official", PAGE),
         ("search", "https://other.example/a"),
     ]
-    assert out.notes == []
+    assert len(out.notes) == 1 and "Claude Code changelog" in out.notes[0]
 
 
 @pytest.mark.asyncio

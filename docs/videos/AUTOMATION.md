@@ -111,14 +111,15 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 **官方頁面當題目**（2026-10-10 加；站主要從官方的更新與教學貼文做影片）：
 - **為什麼要有**：官方發的新聞站上會寫成文章，本來就從「站上文章」這條路進來。官方的教學貼文不一樣，新聞撰稿會判成「不算新聞」，不會有文章，企劃模型以前看不到。
-- **哪些會成為題目**（`apps/api/app/video_automation/topics.py` 的 `official_topics`）：新聞來源的設定帶 `video_topics: true`、啟用中、是第一方的，它的候選裡狀態是 `rejected`、原因是 `news_not_eligible`、沒有人按過決定、14 天內的，新到舊最多 20 筆。題目的 `source` 是 `official`，標題是「來源名稱｜原標題」，摘要取那一頁摘錄的前 500 字，`slug` 是空的。
+- **哪些會成為題目**（`apps/api/app/video_automation/topics.py` 的 `official_topics`）：新聞來源的設定帶 `video_topics: true`、啟用中、是第一方的，它的候選裡狀態是 `rejected`、原因是 `news_not_eligible`、沒有人按過決定、14 天內的，新到舊最多 20 筆。題目的 `source` 是 `official`，標題是「來源名稱｜原標題」，摘要取那一頁摘錄的前 500 字，`slug` 是空的。`date` 是頁面自己的發布日；網頁列表型的來源（Claude blog、Anthropic engineering）沒有日期，題目的 `date` 就是空的，14 天從掃描器第一次看到那一頁算起，所以列表把舊文章換上來時，舊文章也可能出現在候選裡。
 - **順序**：站上文章 → 官方頁面 → 搜尋結果；搜尋結果裡跟官方頁面同一個網址的會丟掉。
-- **開關**：沒有後台勾選框。在 `apps/api/app/news_automation/sources.json` 把來源的 `config` 加上 `video_topics: true`，再到主機載入（[`news-automation.md`](../news-automation.md) 的 Sources 一節）。沒有任何來源帶這個鍵時，選題跟以前完全一樣。第一批帶鍵的是 Claude blog、Claude developer blog、Anthropic engineering、GitHub Changelog、Cursor changelog（2026-10-10；`tests/test_video_automation_topics.py` 會對照檔案）。OpenAI 與 Gemini 的更新頁目前掃描器讀不到，所以不在裡面。各家官方頁面與對應的來源在 [`official-ai-accounts.md`](../official-ai-accounts.md)。
+- **開關**：沒有後台勾選框。在 `apps/api/app/news_automation/sources.json` 把來源的 `config` 加上 `video_topics: true`，再到主機載入（[`news-automation.md`](../news-automation.md) 的 Sources 一節）。沒有任何來源帶這個鍵時，選題跟以前完全一樣。對主機上已經有的來源加上或拿掉這個鍵，算一次設定變更：載入時會從主機重新驗證那個來源，驗證被拒的話那個新聞來源會被關掉，所以載入後要讀回報、把被拒的再載一次。這個改動比來源先部署的話，五個來源是新增，不會多驗一輪。第一批帶鍵的是 Claude blog、Claude developer blog、Anthropic engineering、GitHub Changelog、Cursor changelog（2026-10-10；`tests/test_video_automation_topics.py` 會對照檔案）。OpenAI 與 Gemini 的更新頁目前掃描器讀不到，所以不在裡面。各家官方頁面與對應的來源在 [`official-ai-accounts.md`](../official-ai-accounts.md)。
 - **企劃怎麼處理**：提示詞要它把官方頁面排在搜尋結果前面，`source_guide` 回 `null`、網址放 `source_urls` 第一個，更新類的內容照含金量規則的四步講。
-- **兩個限制**：
+- **三個限制**：
   - 只有被判成不算新聞的頁面會出現。已經發成新聞的走站上文章那條路；停在待審查或需重寫的不會出現。
   - 自動路線還不能實際操作工具（票 `2026-10-09-give-the-automated-route-a-way`），所以官方題目做出來的是「這次更新改了什麼、現在該怎麼做」的說明片，依據是官方頁面上的範例。要實作示範的教學仍然走手動路線。
-- **先跳過的來源**：以 feed 摘要當依據的來源（Claude Code 更新紀錄、Claude Platform 更新紀錄）。它們每一則都指向同一個大頁面，工人的讀頁上限是 3 MB，讀不了；這種來源帶了鍵也不會出題目，`notes` 會寫原因。
+  - 〈不重複選題〉的程式檢查只管站上文章。官方頁面做過影片（或那支被放棄）之後，14 天內仍然在候選裡，只靠企劃模型讀 `earlier_videos` 避開；退回重寫時企劃改選官方頁面，影片記的 `source_guide` 也還是原來那篇文章。兩件事都在票 `2026-10-10-refuse-a-second-video-of-an`。
+- **先跳過的來源**：以 feed 摘要當依據的來源（Claude Code 更新紀錄、Claude Platform 更新紀錄）。它們每一則都指向同一個共用頁面的錨點，工人讀到的會是整頁的開頭（前 40,000 字），不是那一則；Claude Code 更新紀錄那一頁還有 4.8 MB，超過工人 3 MB 的讀頁上限，整頁都讀不了。這種來源帶了鍵也不會出題目，`notes` 會寫原因（票 `2026-10-10-let-the-video-worker-read-one`）。
 
 ## 站主指定文章的教學影片（2026-10-05 加）
 

@@ -87,7 +87,7 @@ npm run check:tasks
   `prompts.mjs` again, the two hashes have to be reviewed and bound again.
 - Decided with the plan the owner approved on 2026-10-10: the switch is the per-source
   config key, not a checkbox on `/admin/videos`. A setting would need a migration and
-  changes to six receipt-bound files; the key needs neither, and turning it on is the
+  changes to ten receipt-bound files; the key needs neither, and turning it on is the
   same owner-approved host load every `sources.json` change needs
   (`2026-10-10-load-the-changelog-and-developer-news`).
 - One change from the plan: no note is added when no source opts in. The plan had one;
@@ -95,8 +95,19 @@ npm run check:tasks
   merged, and "nothing changes until a source is loaded" is the safer promise. The note
   for a skipped summary-evidence source stays, because it only appears once the owner has
   opted such a source in.
-- The worker needs no change beyond the prompt: `flow.mjs` and `client.mjs` pass topics
-  through without reading `source`.
+- The worker passes topics through without reading `source` (`flow.mjs`, `client.mjs`),
+  so only the prompt changed here. Two of its paths do not cover a topic without a site
+  article, though: nothing in code refuses a second video of the same official page, and
+  a re-plan that moves to an official page keeps the previous article as `source_guide`.
+  Both are `2026-10-10-refuse-a-second-video-of-an`; `flow.mjs` is receipt-bound and was
+  outside this task.
+- Reviewed from six angles on 2026-10-10 after the merge with main, each finding checked
+  by a second agent. Fixed here: a topic from a source without dates no longer carries
+  the scan day as its date; the tests now pin the status filter (a `needs_redraft` row),
+  the ordering (oldest inserted first) and the note's way into the endpoint's answer;
+  the reason a summary-evidence source is skipped is stated correctly (a shared page,
+  and only the Claude Code changelog is also past 3 MB); the host-load ticket says that
+  it switches this on.
 - The exclusion test was checked by breaking the code: with the `human_decision` filter
   removed and the key read as truthy instead of `is True`, it failed on the
   owner-rejected row and on the row whose key is the string "true".
@@ -109,7 +120,9 @@ npm run check:tasks
     tutorial still goes through the manual route.
 - A summary-evidence source is skipped because the worker's page reader refuses pages
   over 3 MB (`tools/video/automation/fetch.mjs`), and such entries all point at one
-  shared page. That leaves the Claude Code changelog out for now.
+  shared page. That leaves the Claude Code changelog and the Claude Platform release
+  notes out for now; only the first is over 3 MB, the second would be read from the top
+  of its page and not at the entry.
 - OpenAI and Gemini are not in the first set: their update pages cannot be read by the
   scanner yet (`docs/official-ai-accounts.md`).
 - Follow-ups filed with this work: the worker reads one entry of a shared changelog page;

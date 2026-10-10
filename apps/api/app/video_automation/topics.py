@@ -123,6 +123,11 @@ async def official_topics(
     the planner sees it. The rows are the writer's own "not newsworthy" with no person
     involved (the predicate of ``backfill_cli.refetch_pool``): a candidate still in the
     pipeline, held for review, or rejected by the owner is not offered.
+
+    A topic's date is the page's own publication date. A source without dates (an HTML
+    listing) gives none: the day the scanner first saw the link says nothing about how
+    old the page is, and a listing can bring an old post into view. The two weeks are
+    counted from that first sight either way.
     """
     opted_in = [
         source
@@ -137,9 +142,11 @@ async def official_topics(
     names: dict[UUID, str] = {}
     for source in opted_in:
         if summary_is_evidence(source):
-            # Every entry is an anchor on one shared page, and that page is past what the
-            # worker reads (tools/video/automation/fetch.mjs MAX_PAGE_BYTES).
-            notes.append(f"「{source.name}」每一則都指向同一個大頁面，工人讀不了，不當題目")
+            # Every entry is an anchor on one shared page. The worker would read that page
+            # from its top (tools/video/automation/fetch.mjs: the first MAX_PAGE_CHARS, or
+            # nothing when the page is past MAX_PAGE_BYTES, as the Claude Code changelog
+            # is), not the entry the topic names.
+            notes.append(f"「{source.name}」每一則都指向同一個共用頁面，工人讀不到那一則，不當題目")
         else:
             names[source.id] = source.name
     if not names:
@@ -168,7 +175,11 @@ async def official_topics(
             title=f"{names[candidate.source_id]}｜{candidate.source_title}"[:300],
             summary=" ".join((excerpt or "").split())[:500],
             url=candidate.canonical_url,
-            date=(candidate.source_published_at or candidate.created_at).date().isoformat(),
+            date=(
+                candidate.source_published_at.date().isoformat()
+                if candidate.source_published_at
+                else None
+            ),
         )
         for candidate, excerpt in rows
     ]
