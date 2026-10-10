@@ -32,7 +32,9 @@ export type ChecklistItem = { key: string; label: string; done: boolean };
 // The languages a video can get on top of Traditional Chinese, in the page's order, and the three
 // parts each one is made of (docs/videos/LANGUAGES.md): titles and descriptions, closed captions,
 // a dub track. A dub track is timed with its captions, so choosing it means choosing them too.
-export const LOCALES = ["en", "ja", "ko", "zh-CN"] as const;
+// zh-CN left the video pipeline on 2026-10-09 (a video's languages are four); an older review
+// that names it still renders, after these, with its own label.
+export const LOCALES = ["en", "ja", "ko"] as const;
 export type Locale = (typeof LOCALES)[number];
 export const LOCALE_PARTS = ["metadata", "captions", "dub"] as const;
 export type LocalePart = (typeof LOCALE_PARTS)[number];
@@ -655,7 +657,7 @@ function CopyField({ label, value, rows }: { label: string; value: string; rows:
  *   payload.package    { ok, final_sha256, items: [{ id: files | descriptions | captions | disclosure, ok, detail, warnings? }] }
  *   payload.minutes    number     the video's length in minutes
  *   payload.chapters   number     how many chapters
- *   payload.locales    string[]   the locales that have captions and a description, e.g. ["zh-TW", "zh-CN", "en", "ja", "ko"]
+ *   payload.locales    string[]   the locales that have captions and a description, e.g. ["zh-TW", "en", "ja", "ko"] (an older package may also list "zh-CN")
  *   payload.zh         { title, description, tags: string[] }   the zh-TW metadata the owner pastes
  *   payload.disclosure { synthetic: boolean, reason: string }   whether to tick Studio's "altered or synthetic content"
  *   files[]            { role, sha256, size, content_type } with the roles
