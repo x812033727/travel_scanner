@@ -843,7 +843,7 @@ test('the worker\'s knock does what is due, and is quiet on a site that has no c
 test('translated captions keep every timestamp while allowing different text', () => {
   const timeline = buildTimeline(script(), phrasesOf(script()).map(() => 3));
   const chinese = srt(timeline);
-  for (const locale of ['en', 'ja', 'ko', 'zh-CN']) {
+  for (const locale of ['en', 'ja', 'ko']) {
     const translated = srt({ ...timeline, cues: timeline.cues.map((cue) => ({ ...cue, text: 'Translated line' })) });
     const captions = new Map([['zh-TW', chinese], [locale, translated]]);
     assert.equal(captionsItem({ captions, timeline, locales: [locale] }).ok, true);
@@ -882,15 +882,15 @@ test('push includes exactly the selected translated caption roles for server upl
   const { directory } = builtDirectory(t);
   const timeline = JSON.parse(readFileSync(path.join(directory, 'timeline.json'), 'utf8'));
   const translated = srt({ ...timeline, cues: timeline.cues.map((cue) => ({ ...cue, text: 'Translation' })) });
-  for (const locale of ['en', 'ja', 'ko', 'zh-CN']) writeFileSync(path.join(directory, 'upload', locale + '.srt'), translated);
+  for (const locale of ['en', 'ja', 'ko']) writeFileSync(path.join(directory, 'upload', locale + '.srt'), translated);
   refreshQaInputs(directory);
-  packageBuild({ directory, settings: { locales: ['en', 'zh-CN'] } });
+  packageBuild({ directory, settings: { locales: ['en', 'ko'] } });
   const { client, calls } = fakeSite();
   const result = await push({ directory, client });
   assert.equal(result.publish.status, 'approved');
   const review = calls.filter(([kind]) => kind === 'submit').map(([, , value]) => value).find((value) => value.gate === 'publish');
-  assert.deepEqual(review.payload.locales, ['zh-TW', 'en', 'zh-CN']);
-  assert.deepEqual(review.files.filter((file) => file.role.startsWith('captions_')).map((file) => file.role), ['captions_zh-TW', 'captions_en', 'captions_zh-CN']);
+  assert.deepEqual(review.payload.locales, ['zh-TW', 'en', 'ko']);
+  assert.deepEqual(review.files.filter((file) => file.role.startsWith('captions_')).map((file) => file.role), ['captions_zh-TW', 'captions_en', 'captions_ko']);
   assert.ok(!review.files.some((file) => file.role === 'thumbnail'));
 });
 

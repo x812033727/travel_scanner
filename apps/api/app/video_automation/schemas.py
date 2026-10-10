@@ -27,8 +27,11 @@ from app.video_media.catalog import MEDIA_VENDORS, find_model
 ProviderName = Literal["claude_code", "codex", "openai", "anthropic", "minimax", "gemini"]
 ApiProviderName = Literal["openai", "anthropic", "minimax", "gemini"]
 Stage = Literal["planner", "writer", "verifier", "listener", "translator", "caption_reviewer"]
-CaptionLocale = Literal["en", "ja", "ko", "zh-CN"]
-TopicWord = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=40)]
+# The languages the language panel pre-ticks for a new video, besides zh-TW: the owner decided
+# on 2026-10-09 that a video's languages are four (zh-TW narration plus en, ja, ko).
+CaptionLocale = Literal["en", "ja", "ko"]
+CAPTION_LOCALES: tuple[CaptionLocale, ...] = get_args(CaptionLocale)
+TopicWord =Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=40)]
 # The owner's standing instructions for one stage: the settings tab's text, which the worker
 # appends to that stage's prompt. Which prompt a stage gets depends on the video's format.
 StandingText = Annotated[str, StringConstraints(strip_whitespace=True, max_length=4000)]
@@ -142,7 +145,7 @@ class DramaSettings(StrictModel):
     drama_stage_models: dict[Stage, StageModel] | None = None
     drama_stage_instructions: dict[Stage, StandingText] = Field(default_factory=dict)
     drama_voice: VoiceSettings | None = None
-    drama_caption_locales: list[CaptionLocale] = Field(default_factory=list, max_length=4)
+    drama_caption_locales: list[CaptionLocale] = Field(default_factory=list, max_length=3)
     drama_auto_approve_audio: bool = True
     drama_auto_approve_final: bool = True
     drama_max_verify_rounds: int = Field(default=3, ge=1, le=5)
@@ -180,7 +183,7 @@ class _SettingsFields(StrictModel):
     voice: VoiceSettings
     target_minutes_min: int = Field(ge=EPISODE_MIN_MINUTES, le=30)
     target_minutes_max: int = Field(ge=EPISODE_MIN_MINUTES, le=30)
-    caption_locales: list[CaptionLocale] = Field(max_length=4)
+    caption_locales: list[CaptionLocale] = Field(max_length=3)
     max_drafts_per_month: int = Field(ge=0, le=60)
     monthly_token_budget_millions: int = Field(ge=1, le=500)
     max_verify_rounds: int = Field(ge=1, le=5)

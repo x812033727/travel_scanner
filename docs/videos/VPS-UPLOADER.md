@@ -51,7 +51,7 @@ Chromium 操作 YouTube Studio。服務使用 Node 24、Playwright、SQLite 與�
 4. **「準備／傳送素材」期間保留頁面。** 每次請求最多傳 4 MiB；離開、網路中斷或
    網站重啟後可以按「繼續傳送到 VPS」，從 VPS 已收到的位置接續。
 5. 顯示「VPS 已排入佇列」後，可以關閉網頁。VPS 會獨立完成私人影片、詳細資料、縮圖、
-   每份字幕與每組翻譯。新影片、既有影片都只接受私人狀態。
+   每份字幕、每組翻譯與每條已核准的配音音軌（見下方「配音音軌」）。新影片、既有影片都只接受私人狀態。
 6. 遇到登入、驗證、頻道不符或 Studio 欄位變動，工作停在「需要你接手」。進遠端桌面
    檢查後回後台按繼續。程式不填 Google 密碼、不解驗證碼，也不繞過登入阻擋。
 7. 完成後重新打開進度會把影片 ID 記錄到網站；若寫回失敗可按「記錄影片連結」。
@@ -63,6 +63,53 @@ Chromium 操作 YouTube Studio。服務使用 Node 24、Playwright、SQLite 與�
 開始傳 MP4 後若來不及取得 ID 就中斷，必須填回既有影片網址才能繼續，不能盲目重新上傳。
 若此時上傳包已重新審核，可填原影片網址後取消舊工作，避免重跑舊資料。
 舊工作完成或取消後，出現新版核准包時會顯示「將新版核准包送到 VPS」。
+
+## 配音音軌（`dub_<locale>` 步驟）
+
+**YouTube Data API 做不到這件事。** 2026-10-10 查 Data API v3 的 discovery document
+（revision `20261006`）：只有 `captions.insert`／`captions.update` 收媒體檔，沒有 audioTracks
+資源，也沒有任何上傳或管理音軌的方法。網站的 API 同步因此只能送標題、說明與字幕，永遠送不了
+配音；配音只能經 Studio「語言」頁放上去。這個步驟就是由本服務去按那一頁的按鈕。2026-10-09
+站主發現十六條按過「已上傳」的配音其實不在 YouTube 上，才有這個步驟。
+
+步驟順序是：`video` → `details` → `thumbnail` → `captions_<locale>` → `localization_<locale>` →
+`dub_<locale>` → `verify`。
+
+- **素材**：已核准的 `languages` 審核裡狀態是 ready 的配音，網站以角色 `dub_<locale>`
+  （語系小寫、連字號改底線：`dub_en`、`dub_ja`、`dub_ko`、`dub_zh_cn`）連同審核紀錄的
+  SHA-256、大小與內容類型交給服務，來源綁定與核准規則和 `captions_<locale>` 完全相同。
+  略過（skipped）的配音沒有檔案；`languages` 審核未核准時整個上傳包被拒絕，什麼都不送。
+  原旁白語言不收配音。服務依內容類型決定副檔名：`audio/mp4` → `.m4a`、`audio/mpeg` → `.mp3`、
+  `audio/wav`／`audio/x-wav` → `.wav`；單檔上限 1 GiB，一份 manifest 最多 12 個檔案。
+- **Studio 操作**：先確認影片是私人 → 開 `/video/<id>/translations` → 找該語言的列
+  （沒有就「Add language」加上）→ 配音格（selector `dubCell`）→ 按「Add」→ 把檔案放進
+  對話框的檔案欄位（selector `dubFile`）→ 等「Publish」可按 → 按「Publish」→ 等對話框關閉、
+  該格顯示 Published。這裡的 Publish 發布的是音軌，不是影片的瀏覽權限；最後的 `verify`
+  會再確認影片仍是私人。
+- **不重複**：該格已顯示 Published 時整步略過，不刪除、不取代、不再傳一次。換掉一條音軌
+  要先刪除，那是站主的決定。
+- **停下來的情況**：找不到配音格或找到多個、格子裡不是「Add」（例如上次中斷留下的草稿）
+  → `studio_changed`；格子出現自動配音字樣 → `dub_needs_review`（先由站主刪除自動配音）；
+  按了 Publish 但該格沒有顯示 Published → `save_unconfirmed`；影片不是私人 →
+  `private_required`。停下時和其他步驟一樣記錄 `needs_action`、代碼與 `current_step`，
+  站主進遠端桌面看畫面後再按繼續。本服務目前沒有自動截圖，任何步驟都沒有。
+- **中斷後續跑**：`dub_<locale>` 與它的收據在同一次寫入裡記為完成。服務在 Studio 已發布、
+  紀錄還沒寫下時中斷的話，續跑會重讀那一列，看到 Published 就不再傳第二次。
+- **收據**：工作檢視（`GET /projects/:slug`、`GET /jobs/:id`）多一個 `dubs` 陣列，每條
+  `{ locale, sha256, state }`：`placed` 是這筆工作親手放上去的；`present` 是 Studio 那一列
+  本來就有已發布的配音，服務沒有送檔（無法證明那條就是這個 SHA-256，包括上面的中斷續跑）；
+  `pending` 是步驟還沒完成。
+- **還沒接上的事**：收據目前不會自動核准 `languages` 審核。現在仍是站主核准那張卡之後，
+  上傳包才帶配音；讓收據取代站主的按鈕是另一個決定。後台進度清單也還沒有 `dub_<locale>`
+  步驟的文字。
+- **只收私人影片**：和其他步驟一樣，已公開的影片會停在 `private_required`，所以已上架影片
+  缺的配音目前不能走這條路補。
+- **`dubCell`、`dubFile` 和其他 selector 一樣是暫定的**，「Add」「Publish」「Published」
+  「Add language」等英文字樣與對話框流程也是，只在合成 DOM 上測過，沒看過真實 Studio。
+
+頻道要先具備兩個一次性設定，都是站主的事（[`DUBS.md`](DUBS.md) §站主要做的事）：
+「進階功能」已啟用；「允許自動配音」取消，否則英文會先被自動配音佔住，上傳自己的英文音軌前
+要先刪掉它。
 
 ## 在獨立 VPS 準備容器
 
@@ -259,6 +306,7 @@ JSON 僅接受該常數列出的鍵，例如 `{ "title": "#title-textarea #textb
 | private_required | 核對原影片；服務不會把公開影片自行改成私人 |
 | interrupted / video_id_required | 核對是否已有影片，必要時貼原影片網址，再繼續 |
 | studio_changed / save_unconfirmed | 先檢查畫面與更新操作器，不要連續盲按重試 |
+| dub_needs_review | 該語言已有自動配音；站主在 Studio 刪除後再繼續，並確認「允許自動配音」已取消 |
 | file_hash_mismatch | 核對素材與磁碟；不略過完整 SHA-256 驗證 |
 
 工作 SQLite 紀錄每一步、已知影片 ID、素材雜湊與傳送位移。服務重啟時，原先 running 的
@@ -292,6 +340,8 @@ JSON 僅接受該常數列出的鍵，例如 `{ "title": "#title-textarea #textb
 網站工作 ID 為 `sha256(slug + ':' + approved metadata sha256)`。工作建立後的標題與說明
 固定在該 manifest；更改後台表單不會改寫進行中的工作。新核准版本可帶原影片 ID 建立另一筆，
 但原工作 active 時會拒絕。素材只接受核准的本機 review-store 檔案，不接受任意下載 URL。
+manifest 的檔案角色是 `final`、`thumbnail`、`captions_<locale>` 與 `dub_<locale>`；工作檢視
+除了 `steps`、`files`，另有 `dubs`（每條配音的語系、SHA-256 與 `placed`／`present`／`pending`）。
 
 ## 驗證
 
@@ -334,6 +384,15 @@ npm run typecheck:web
 - 離開後台再重開；重新讀取 Studio 持久化內容，核對網站記錄的 ID 為同一支影片。
 - 在素材傳送中重啟網站；在 Studio 工作中重啟 uploader；確認位移復原、人工確認與不重複上傳。
 - 驗證登入逾時、Google 驗證要求、公開影片拒絕、不同頻道拒絕、兩筆排隊與舊字幕更新。
+- 配音音軌：先用**一支私人影片、一個配音語系**驗收，再擴到其他語系。逐項記錄版本與結果：
+  - 頻道已啟用「進階功能」，且「允許自動配音」已取消（英文尤其要確認該列沒有自動配音）。
+  - Studio 收不收 `.m4a`；不收就改用 `--format mp3` 重做配音再驗一次。
+  - 影片還是私人時能不能加音軌。
+  - 音軌的「Publish」會不會動到影片的瀏覽權限（預期不會；`verify` 會擋下變成非私人的影片）。
+  - `dubCell`、`dubFile`、「Add」「Publish」「Published」是否與真實畫面相符；檔案處理多久後
+    Publish 才可按。
+  - 重跑同一工作不會出現第二條音軌；Studio 工作中重啟 uploader 後續跑也不會。
+  - 收據 `dubs` 的語系與 SHA-256 和核准的 `languages` 審核一致，並在播放器實際切到該音軌聽過。
 - 選擇器若需調整，將真實觀察整理成不含登入機密的 fixture，再重跑回歸測試。
 
 參考：[Studio 上傳流程](https://support.google.com/youtube/answer/57407?hl=en)、

@@ -514,7 +514,7 @@ test("translationContext builds the glossary from the dictionary terms the video
   assert.deepEqual(translationContext({ ...video, sources: undefined, youtube: {}, thumbnail: undefined }, { terms: {} }).glossary, { terms: [], sources: [] });
 });
 
-test("a glossary term is kept the same across all four locales: each translator's final carries it verbatim, and a transliterated one is caught", () => {
+test("a glossary term is kept the same across all three locales: each translator's final carries it verbatim, and a transliterated one is caught", () => {
   const video = fixture();
   video.scenes[1].lines[0].text = "第一個問題是，用 Claude Code 寫程式，還是用 GPT-5.5 聊天。";
   const { glossary } = translationContext(video, { schema_version: 1, terms: { "Claude Code": "克勞德扣德", GPT: "G P T" } });
@@ -523,7 +523,6 @@ test("a glossary term is kept the same across all four locales: each translator'
     en: "First, what job is it for: writing code with Claude Code, or chatting with GPT-5.5?",
     ja: "1つ目は、Claude Code でコードを書くのか、GPT-5.5 と話すのかです。",
     ko: "첫째, Claude Code 로 코드를 쓸지, GPT-5.5 와 대화할지입니다.",
-    "zh-CN": "第一个问题是，用 Claude Code 写代码，还是用 GPT-5.5 聊天。",
   };
   const answer = (locale, text) => JSON.stringify({
     draft: { worksheet: { locale, lines: [{ id: "x9fe", text: `${text} (draft)` }] } },

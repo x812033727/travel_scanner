@@ -10,12 +10,18 @@ import copy
 import hashlib
 import json
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from typing import Any
 
 from app.models import VideoProject, VideoReview
-from app.video_reviews.schemas import DUB_LOCALES, LOCALE_PARTS, LocalesIn
+from app.video_reviews.schemas import (
+    DUB_LOCALES,
+    LOCALE_PARTS,
+    RETIRED_LOCALES,
+    LocalesIn,
+    without_retired_locales,
+)
 from app.video_reviews.storage import ReviewStore, valid_sha256
 from app.video_youtube.errors import Refused
 from app.video_youtube.requests import localizations, text_problem
@@ -29,8 +35,15 @@ def invalid(detail: str) -> Refused:
 
 
 def choices(raw: Any) -> dict[str, dict[str, bool]]:
+    """The owner's choice as the worker and the manifest read it, in the page's order.
+
+    A language the video is no longer made in (zh-CN before 2026-10-09) is left out rather
+    than refused, whether it comes from the project or from an approved batch's manifest: the
+    batch's other languages were approved and keep syncing.
+    """
     if not isinstance(raw, dict):
         raise invalid("語言選擇格式不正確，請重新儲存語言設定")
+    raw = without_retired_locales(raw)
     for locale, entry in raw.items():
         if locale not in DUB_LOCALES or not isinstance(entry, dict):
             raise invalid("語言選擇格式不正確，請重新儲存語言設定")
@@ -211,6 +224,9 @@ class Composition:
     captions: dict[str, dict[str, Any]]
     sha256: str
     approval_pin: dict[str, Any]
+    # Ready dub tracks of the approved language batch, by locale. No YouTube API takes them;
+    # only the Studio uploader does (docs/videos/VPS-UPLOADER.md).
+    dubs: dict[str, dict[str, Any]] = field(default_factory=dict)
 
 
 def compose(
@@ -229,6 +245,7 @@ def compose(
     pin: dict[str, Any] = {"publish": identity(publish), "languages": None, "choice": current}
     metadata = copy.deepcopy(base)
     captions = dict(base_captions)
+    dubs: dict[str, dict[str, Any]] = {}
     narration = base.get("default_language", "zh-TW")
     if not isinstance(narration, str) or not narration:
         raise invalid("核准上傳包的原旁白語言不正確，請重新送審")
@@ -270,18 +287,22 @@ def compose(
             or manifest.get("slug") != slug
         ):
             raise invalid("語言來源清單版本或影片不符，請重新送審")
+        # A batch approved with a language the video is no longer made in (zh-CN before
+        # 2026-10-09) still matches once that language is ignored on both sides; its files stay
+        # in the batch, verified like the rest, and are sent nowhere.
         choice = manifest.get("choice")
+        stored = (
+            without_retired_locales(choice.get("locales")) if isinstance(choice, dict) else None
+        )
         if (
             not isinstance(choice, dict)
             or "decided_at" not in choice
-            or choice.get("locales") != current
-            or choices(choice["locales"]) != choice["locales"]
+            or stored != current
+            or choices(stored) != stored
         ):
             raise invalid("語言選擇已變更，請依目前勾選內容重新送審")
-        if (
-            translated.get("language_choice") != current
-            or choices(translated["language_choice"]) != translated["language_choice"]
-        ):
+        declared = without_retired_locales(translated.get("language_choice"))
+        if declared != current or choices(declared) != declared:
             raise invalid("語言 metadata 不是目前勾選的語言，請重新送審")
         expected_files = files_by_role(manifest.get("files"))
         if expected_files != {
@@ -292,10 +313,14 @@ def compose(
         reported = manifest.get("locales")
         if (
             not isinstance(reported, dict)
-            or set(reported) != set(current)
+            or set(reported) - RETIRED_LOCALES != set(current)
             or batch.payload.get("locales") != reported
         ):
             raise invalid("語言清單與審核項目不符，請重新送審")
+        retired = {locale for locale in reported if locale in RETIRED_LOCALES}
+        retired_roles = {
+            f"{prefix}{locale}" for locale in retired for prefix in ("description_", "captions_")
+        } | {f"dub_{locale.lower().replace('-', '_')}" for locale in retired}
         allowed_roles = {"metadata", "languages_manifest"}
         for locale, selection in current.items():
             parts = reported[locale]
@@ -341,7 +366,9 @@ def compose(
                     captions[locale] = item
                 elif item["content_type"] not in ("audio/mp4", "audio/mpeg", "audio/wav"):
                     raise invalid("配音附件格式不正確，請重新送審")
-        if set(files) != allowed_roles:
+                else:
+                    dubs[locale] = item
+        if set(files) - retired_roles != allowed_roles:
             raise invalid("語言包附有未選取或未完成的素材，請重新送審")
         if verify_files:
             for item in files.values():
@@ -387,4 +414,6 @@ def compose(
         sha = hashlib.sha256(
             json.dumps(pin, sort_keys=True, separators=(",", ":")).encode()
         ).hexdigest()
-    return Composition(metadata, dict(sorted(captions.items())), sha, pin)
+    return Composition(
+        metadata, dict(sorted(captions.items())), sha, pin, dict(sorted(dubs.items()))
+    )

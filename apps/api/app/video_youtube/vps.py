@@ -211,6 +211,11 @@ async def assets(
 ) -> list[tuple[dict[str, Any], Path]]:
     result: list[tuple[dict[str, Any], Path]] = []
     entries = {f"captions_{locale}": value for locale, value in pack.captions.items()}
+    # The ready dub tracks of the approved language batch, under the producer's role names
+    # (dub_en, dub_zh_cn). A skipped dub has no file, and an unapproved batch never composes.
+    entries.update(
+        {f"dub_{locale.lower().replace('-', '_')}": value for locale, value in pack.dubs.items()}
+    )
     if pack.thumbnail:
         entries["thumbnail"] = pack.thumbnail
     if need_video and pack.final:
