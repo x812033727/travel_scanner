@@ -53,6 +53,27 @@ export const CREDIT_MAX_CHARS = 60;
 // tool_version; code, diagram, screenshot and screencast: caption).
 export const SOURCE_MAX_CHARS = 48;
 export const SOURCED_TEMPLATES = ["bullets", "compare", "steps", "table"];
+// A photo card's caption is one line of card text under the print, and its tilt a small one: a
+// print pasted by hand, not a picture falling off the slide (docs/videos/history-curiosity/look.md §照片).
+export const PHOTO_CAPTION_MAX_CHARS = 40;
+export const PHOTO_TILT_MAX = 3;
+const PHOTO_TILTS = [1.5, 2, 2.5];
+/**
+ * The degrees a photo card's print is turned: `tilt` when the scene gives one, else by the scene's
+ * id, so the same scene always leans the same way and a video's photographs lean both ways.
+ */
+export function photoTilt(id, tilt) {
+  if (typeof tilt === "number" && Number.isFinite(tilt) && Math.abs(tilt) <= PHOTO_TILT_MAX) return tilt;
+  let hash = 2166136261;
+  for (const char of String(id ?? "")) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619) >>> 0;
+  return (hash % 2 ? 1 : -1) * PHOTO_TILTS[Math.floor(hash / 2) % PHOTO_TILTS.length];
+}
+const imageProblem = (data) =>
+  !(isAssetPath(data.image, /\.(png|jpe?g|webp)$/i) || isStockPath(data.image)) &&
+  `image must be a repository path under ${ASSET_ROOTS.join(" or ")}, or a stock photo fetched into the work directory (stock/<sha256>.png|jpg|webp)`;
+const creditProblem = (data) =>
+  data.credit !== undefined && !(isText(data.credit) && !data.credit.includes("\n") && visibleLength(data.credit) <= CREDIT_MAX_CHARS) &&
+  `credit must be one line of text (at most ${CREDIT_MAX_CHARS} characters)`;
 const sourceProblem = (data) =>
   data.source !== undefined && !(isText(data.source) && !data.source.includes("\n") && visibleLength(data.source) <= SOURCE_MAX_CHARS) &&
   `source must be one line of text (at most ${SOURCE_MAX_CHARS} characters)`;
@@ -125,16 +146,28 @@ export const TEMPLATE_SPECS = {
   },
   screenshot: {
     check: (data) => [
-      !(isAssetPath(data.image, /\.(png|jpe?g|webp)$/i) || isStockPath(data.image)) &&
-        `image must be a repository path under ${ASSET_ROOTS.join(" or ")}, or a stock photo fetched into the work directory (stock/<sha256>.png|jpg|webp)`,
+      imageProblem(data),
       data.highlight !== undefined && !(data.highlight && ["x", "y", "w", "h"].every((key) => isPercent(data.highlight[key]))) && "highlight must be { x, y, w, h } in percent",
       data.caption !== undefined && !isText(data.caption) && "caption must be text",
       // Optional, and the description credits the picture whether or not the slide does (the
       // owner burns no text in by default): one short line in the picture's corner.
-      data.credit !== undefined && !(isText(data.credit) && !data.credit.includes("\n") && visibleLength(data.credit) <= CREDIT_MAX_CHARS) &&
-        `credit must be one line of text (at most ${CREDIT_MAX_CHARS} characters)`,
+      creditProblem(data),
     ],
     capacity: (data) => (data.highlight ? 1 : 0),
+  },
+  // A real photograph shown as a print pasted on the ground: an archive picture, a stock photo,
+  // never a capture of a page (that is `screenshot`). The same two places a screenshot's picture
+  // may come from; render holds it to an assets[] entry, where its source and licence are.
+  photo: {
+    check: (data) => [
+      imageProblem(data),
+      data.caption !== undefined && !(isText(data.caption) && !data.caption.includes("\n") && visibleLength(data.caption) <= PHOTO_CAPTION_MAX_CHARS) &&
+        `caption must be one line of text (at most ${PHOTO_CAPTION_MAX_CHARS} characters)`,
+      creditProblem(data),
+      data.tilt !== undefined && !(typeof data.tilt === "number" && Number.isFinite(data.tilt) && Math.abs(data.tilt) <= PHOTO_TILT_MAX) &&
+        `tilt must be a number of degrees from -${PHOTO_TILT_MAX} to ${PHOTO_TILT_MAX}`,
+    ],
+    capacity: () => 0,
   },
   // The next four came from a reference video (2026-09-26): concrete little artefacts instead of
   // one slide of text left up for half a minute.
@@ -244,14 +277,32 @@ const knowsChapters = (state) => (state.chapterCount ?? 0) >= 2 && (state.chapte
 
 // A stock photo's credit, in the picture's corner over the highlight's scrim: a dark pill with
 // one short line, cut with an ellipsis rather than wrapped should the lint cap ever be passed.
-const CREDIT_CSS =
-  ".t-screenshot .credit{position:absolute;right:16px;bottom:14px;max-width:80%;padding:6px 16px;border-radius:999px;" +
+const creditCss = (template) =>
+  `.t-${template} .credit{position:absolute;right:16px;bottom:14px;max-width:80%;padding:6px 16px;border-radius:999px;` +
   "background:rgba(8,24,25,.62);color:rgba(255,255,255,.88);font-size:22px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}";
+const CREDIT_CSS = creditCss("screenshot");
+
+// The photo card: the print is as tall as the room between the chapter label and YouTube's
+// controls allows and as wide as its photograph makes it (a portrait or a square fits by height
+// like any other), centred, so a Short cut from the middle of the slide keeps it. The white
+// border, the shadow and the tilt are the print's; the entrance animates the mount around it,
+// because an entrance ends on `transform: none` and would straighten a print it animated.
+const PHOTO_CSS =
+  ".t-photo{top:140px;align-items:center}" +
+  ".t-photo .frame{flex:1;min-height:0;width:100%;padding:26px 0;display:flex;align-items:center;justify-content:center}" +
+  ".t-photo .mount{height:100%}" +
+  ".t-photo .print{position:relative;height:100%;border:24px solid #fdfbf5;border-radius:4px;background:#fdfbf5;transform:rotate(var(--tilt,0deg));" +
+  "box-shadow:0 2px 6px rgba(0,0,0,.28),0 26px 60px rgba(0,0,0,.42)}" +
+  ".t-photo .print img{display:block;height:100%;width:auto;max-width:1560px;object-fit:cover}" +
+  ".t-photo .caption-line{margin-top:10px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--paper)}";
+// A portrait's print is narrower than its credit: the capsule keeps its lower right corner and
+// runs out over the print's left edge like a label stuck across it, instead of being cut short.
+const PHOTO_CREDIT_CSS = ".t-photo .print .credit{max-width:1400px}";
 
 // CSS a template carries in its own page instead of the theme, so that adding the template moved
 // no other video's frame keys. A function takes the scene's data: a screenshot slide carries the
 // credit CSS only when it draws a credit, so every other screenshot page is byte for byte what it was.
-const TEMPLATE_CSS = { terminal: TERMINAL_CSS, screenshot: (data) => (data.credit ? CREDIT_CSS : "") };
+const TEMPLATE_CSS = { terminal: TERMINAL_CSS, screenshot: (data) => (data.credit ? CREDIT_CSS : ""), photo: (data) => PHOTO_CSS + (data.credit ? creditCss("photo") + PHOTO_CREDIT_CSS : "") };
 const templateCss = (scene) => {
   const own = TEMPLATE_CSS[scene.template];
   return typeof own === "function" ? own(scene.data ?? {}) : own ?? "";
@@ -328,6 +379,12 @@ const RENDERERS = {
     const src = isStockPath(data.image) ? workUrl(data.image) : assetUrl(data.image);
     const credit = data.credit ? `<div class="credit">${richText(data.credit)}</div>` : "";
     return `${heading(data, state.first)}<div class="frame"><div ${enterClass(state.first, "shot", 1)}><img src="${src}" alt="">${box}${credit}</div></div>${data.caption ? `<div class="caption-line">${richText(data.caption)}</div>` : ""}`;
+  },
+  photo(data, state) {
+    const src = isStockPath(data.image) ? workUrl(data.image) : assetUrl(data.image);
+    const credit = data.credit ? `<div class="credit">${richText(data.credit)}</div>` : "";
+    const print = `<div class="print" style="--tilt:${photoTilt(state.sceneId, data.tilt)}deg"><img src="${src}" alt="">${credit}</div>`;
+    return `<div class="frame"><div ${enterClass(state.first, "mount", 0)}>${print}</div></div>${data.caption ? `<div class="caption-line">${richText(data.caption)}</div>` : ""}`;
   },
   chat(data, state) {
     const show = state.visible(data.messages.length);
@@ -413,6 +470,7 @@ export function slideHtml(scene, state) {
   if (!renderer) throw new Error(`unknown template ${scene.template}`);
   const context = {
     ...state,
+    sceneId: scene.id,
     visible: (count) => visibility(count, state.totalReveals, state.reveal, state.previousReveal, state.first),
   };
   return page(`${chrome(scene, state)}<main class="content t-${scene.template}">${renderer(scene.data, context)}</main>`, SIZE, templateCss(scene));

@@ -15,6 +15,17 @@ import { STORY_INSTRUCTIONS } from "./story-prompts.mjs";
 
 const SKILL = path.join(".agents", "skills", "youtube-video", "references");
 
+/**
+ * The showcase as the worker's writer reads it: without the photo card and the assets[] entry it
+ * needs. An automated video has no photograph files yet (the same reason TEMPLATE_GUIDE keeps the
+ * writer off diagram and screenshot), and a shape the writer can copy is one it will use; the
+ * local route writes photo cards by hand (docs/videos/history-curiosity/look.md §照片).
+ */
+export function workerShowcase(showcase) {
+  const { assets: _assets, ...rest } = showcase;
+  return { ...rest, scenes: showcase.scenes.filter((scene) => scene.template !== "photo") };
+}
+
 /** The reference texts every writing stage reads, loaded once from the repository. */
 export function references(root) {
   const read = (...parts) => readFileSync(path.join(root, ...parts), "utf8");
@@ -22,7 +33,7 @@ export function references(root) {
     script_writing: read(SKILL, "script-writing.md"),
     formats: read(SKILL, "formats.md"),
     channel: read("docs", "videos", "README.md"),
-    showcase: JSON.parse(read("tools", "video", "templates", "fixtures", "showcase", "video.json")),
+    showcase: workerShowcase(JSON.parse(read("tools", "video", "templates", "fixtures", "showcase", "video.json"))),
     minimal: JSON.parse(read("tools", "video", "core", "fixtures", "minimal", "video.json")),
     // The drama route (docs/videos/DRAMA.md): its reference and its example, for the drama stages.
     drama: read(SKILL, "drama.md"),
