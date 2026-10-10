@@ -1,0 +1,10 @@
+PreToolUse Bash id=c1 cd "<lab>" && ls -a && cat src/fare.mjs README* && npm test 2>&1 | tail -30
+PermissionRequest Bash id=---- cd "<lab>" && ls -a && cat src/fare.mjs README* && npm test 2>&1 | tail -30 | mode=default | suggestions=1 first=Bash(npm test *)
+PreToolUse Glob id=c2 **/*
+PreToolUse Read id=c3 src/fare.mjs
+PostToolUse Glob id=c2 **/* | response_chars=342
+PostToolUse Read id=c3 src/fare.mjs | response_chars=696
+PreToolUse Edit id=c4 src/fare.mjs
+PermissionRequest Edit id=---- src/fare.mjs | mode=default | suggestions=1
+PreToolUse Read id=c5 README.md
+PostToolUse Read id=c5 README.md | response_chars=340
