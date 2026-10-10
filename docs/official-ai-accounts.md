@@ -12,8 +12,8 @@ Last verified: 2026-10-10
 - **查證依據**：該公司自己的網站、說明中心或官方組織頁有連到這個帳號。查證時沒有打開 x.com
   看帳號本身，所以「已查證」的意思是「官方頁面指向它」。
 - **掃描器狀態**有四種：
-  - 來源名稱（例如 `Anthropic news`）：已經在 `sources.json` 裡。
-  - `候選`：票 `2026-10-10-add-official-changelog-and-developer-update` 要測試後加入。
+  - 來源名稱（例如 `Anthropic news`）：已經在 `sources.json` 裡。在檔案裡不代表正式站已經載入：
+    每次改完都要在主機上跑一次 `sources_cli`（見 `news-automation.md` 的 Sources 一節）。
   - `讀不到：原因`：測過，掃描器現在的讀法吃不了。
   - `未測`：還沒人用掃描器的解析器測過。
 - 個別列的查證日期與檔頭不同時，寫在備註。
@@ -29,14 +29,19 @@ Last verified: 2026-10-10
 
 | X 帳號 | 發什麼 | 查證依據 | 官網頁面 | 掃描器狀態 |
 | --- | --- | --- | --- | --- |
-| [`@AnthropicAI`](https://x.com/AnthropicAI) | 公司消息、研究、模型發布 | <https://www.anthropic.com/> 頁尾 | <https://www.anthropic.com/news> | `Anthropic news` |
-| [`@claudeai`](https://x.com/claudeai) | Claude 產品更新 | <https://claude.com/> 頁尾 | <https://claude.com/resources/articles> | `Claude blog`（網址待修，見備註） |
-| [`@ClaudeDevs`](https://x.com/ClaudeDevs) | 開發者更新、Claude Code 更新紀錄 | 只有第三方：<https://awesomeagents.ai/news/anthropic-claudedevs-x-account-launch/> | <https://claude.dev/>、<https://code.claude.com/docs/en/changelog>、<https://platform.claude.com/docs/en/release-notes/feed.xml> | `Claude Platform release notes`；其餘兩個是`候選` |
+| [`@AnthropicAI`](https://x.com/AnthropicAI) | 公司消息、研究、模型發布 | <https://www.anthropic.com/> 頁尾 | <https://www.anthropic.com/news>；<https://www.anthropic.com/engineering> | `Anthropic news`、`Anthropic engineering` |
+| [`@claudeai`](https://x.com/claudeai) | Claude 產品更新 | <https://claude.com/> 頁尾 | <https://claude.com/resources/product-announcements> | `Claude blog` |
+| [`@ClaudeDevs`](https://x.com/ClaudeDevs) | 開發者更新、Claude Code 更新紀錄 | 只有第三方：<https://awesomeagents.ai/news/anthropic-claudedevs-x-account-launch/> | <https://claude.dev/>、<https://code.claude.com/docs/en/changelog>、<https://platform.claude.com/docs/en/release-notes/feed.xml> | `Claude developer blog`、`Claude Code changelog`、`Claude Platform release notes` |
 
 備註：
 
 - `claude.com/blog` 在 2026-10 轉址到 `claude.com/resources/articles`，文章路徑從 `/blog/<slug>` 變成
-  `/resources/articles/<slug>`。`Claude blog` 這一列的設定還只收 `/blog/`，照設定現在讀不到任何一篇。
+  `/resources/articles/<slug>`。`Claude blog` 這一列在 2026-10-10 改讀「Product announcements」分類頁；
+  改之前它只收 `/blog/`，讀不到任何一篇。
+- 開發者文章從 2026-07 起發在 `claude.dev`（Claude Code 的實作指南、新模型的用法）；
+  `anthropic.com/engineering` 從 2026-05 之後沒有新文章。
+- Claude Code 更新紀錄一個版本一則，一天一到兩則，標題只有版本號；頁面本身 4.8 MB，超過掃描器的上限，
+  所以讀的是 feed 裡的那一則。
 - Claude Code 沒有自己的官方帳號，產品頁只連到 `@claudeai`。
 - Claude 各 App 的更新紀錄 <https://support.claude.com/en/articles/12138966-release-notes>
   `讀不到：整份是一頁、按日期分段，每一則沒有自己的網址`。大的項目在 `Claude blog` 與
@@ -86,7 +91,7 @@ Last verified: 2026-10-10
 | [`@MSFTCopilot`](https://x.com/MSFTCopilot) | Copilot 更新 | <https://www.microsoft.com/en-us/microsoft-copilot/for-individuals> 頁尾 | Microsoft Copilot blog；<https://blogs.microsoft.com/> | `讀不到：回 403`；公司消息走 `Microsoft official blog` |
 | [`@MSFTResearch`](https://x.com/MSFTResearch) | 研究 | <https://www.microsoft.com/en-us/research/> 頁尾 | <https://www.microsoft.com/en-us/research/> | `Microsoft Research blog` |
 | [`@code`](https://x.com/code) | VS Code 更新 | <https://code.visualstudio.com/> 頁尾 | <https://code.visualstudio.com/> | `讀不到：feed 會列出日期在未來的 Insiders 版` |
-| [`@github`](https://x.com/github) | GitHub 與 Copilot 更新 | <https://github.com/features/copilot> 頁尾 | <https://github.blog/>；<https://github.blog/changelog/> | `GitHub blog`；Changelog 是`候選` |
+| [`@github`](https://x.com/github) | GitHub 與 Copilot 更新 | <https://github.com/features/copilot> 頁尾 | <https://github.blog/>；<https://github.blog/changelog/> | `GitHub blog`、`GitHub Changelog`（只收標題有 Copilot 的） |
 | `@GitHubCopilot` | Copilot | 未查證：GitHub 的 Copilot 頁只連到 `@github` | — | — |
 
 備註：
@@ -117,12 +122,12 @@ Last verified: 2026-10-10
 
 | X 帳號 | 發什麼 | 查證依據 | 官網頁面 | 掃描器狀態 |
 | --- | --- | --- | --- | --- |
-| [`@cursor_ai`](https://x.com/cursor_ai) | 產品更新 | <https://cursor.com/> 頁尾 | <https://cursor.com/blog>；<https://cursor.com/changelog> | `Cursor blog`；Changelog 是`候選` |
+| [`@cursor_ai`](https://x.com/cursor_ai) | 產品更新 | <https://cursor.com/> 頁尾 | <https://cursor.com/blog>；<https://cursor.com/changelog> | `Cursor blog`、`Cursor changelog` |
 | [`@cognition`](https://x.com/cognition) | Devin 與公司消息 | <https://cognition.com/> 頁尾 | <https://cognition.com/blog> | `Cognition blog` |
 | [`@huggingface`](https://x.com/huggingface) | 公司與社群消息 | <https://huggingface.co/> 頁尾 | <https://huggingface.co/blog> | `Hugging Face blog` |
 | [`@NVIDIAAI`](https://x.com/NVIDIAAI) | AI 相關消息 | <https://www.nvidia.com/en-us/ai/> 頁尾 | <https://blogs.nvidia.com/> | `NVIDIA blog` |
-| [`@openrouter`](https://x.com/openrouter) | 模型上架、產品更新 | <https://openrouter.ai/about> 頁尾 | <https://openrouter.ai/blog/> | `候選` |
-| [`@ollama`](https://x.com/ollama) | 產品更新 | <https://ollama.com/> 頁尾 | <https://ollama.com/blog> | `候選` |
+| [`@openrouter`](https://x.com/openrouter) | 模型上架、產品更新 | <https://openrouter.ai/about> 頁尾 | <https://openrouter.ai/blog/> | `OpenRouter announcements` |
+| [`@ollama`](https://x.com/ollama) | 產品更新 | <https://ollama.com/> 頁尾 | <https://ollama.com/blog> | `Ollama blog` |
 
 備註：Windsurf 在 2026-06-02 改成 Devin Desktop，`windsurf.com` 轉到 `devin.ai/desktop`。`@windsurf`
 之後怎麼了、有沒有 Devin 專用帳號，都沒有查到；只有 `@cognition` 確認過。
@@ -136,6 +141,17 @@ Last verified: 2026-10-10
 | [`@LumaLabsAI`](https://x.com/LumaLabsAI) | 產品更新 | <https://github.com/lumalabs> 組織頁 | Luma 官網 | `未測` |
 | [`@suno`](https://x.com/suno) | 產品更新 | <https://suno.com/about> 頁尾 | <https://suno.com/> | `未測` |
 | `@ElevenLabs` 或 `@elevenlabsio` | 產品更新 | 互相矛盾：<https://github.com/elevenlabs> 寫 `@elevenlabs`，<https://huggingface.co/elevenlabs> 寫 `@elevenlabsio` | <https://elevenlabs.io/blog> | `ElevenLabs blog` |
+
+## 讀不到的頁面有哪些票
+
+- 一頁到底、按日期分段的更新紀錄（Claude 各 App、OpenAI API、ChatGPT／Codex、Gemini API、Gemini App）：
+  `2026-10-10-read-each-dated-section-of-a`。
+- VS Code 的 feed 會列出未來日期的 Insiders 版：`2026-10-10-let-a-news-source-leave-entries`。
+- Google Developers blog 的 robots.txt 回轉址：`2026-10-10-decide-whether-the-news-fetcher-follows`
+  （要不要跟轉址是站主的決定）。
+- 回 403 或要跑 JavaScript 的網站（xAI、Perplexity、Microsoft Copilot、Meta AI、Qwen、Z.ai、Midjourney、
+  Runway）沒有開票：掃描器不跑瀏覽器，這些要等對方提供 feed。這幾列的原因來自 2026-09-30 的調查
+  （票 `2026-09-30-cover-every-major-ai-agent-company`），這次沒有重測。
 
 ## 為什麼不讀 X
 
