@@ -1,0 +1,8 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { fare } from './fares.mjs';
+
+test('a child fare rounds up', () => {
+  assert.equal(fare(45, true), 23);
+});
+// checked

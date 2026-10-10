@@ -1,0 +1,6 @@
+# b1: the Agent call's subagent_type was "log-scout"; this is the summary of the task_notification that came back (status completed)
+J1103｜queue-2026-10-08.log｜7
+
+共 1 筆
+
+判斷依據：以 `start` 行為開始，以 `done` 行為結束（`fail` 後面也有 `done ... failed`）。J1103 在 queue-2026-10-08.log 只有 `start` 與 `step`，沒有 `done`。另一個檔案 queue-2026-10-09.log 的所有 job 都已結束。
