@@ -42,7 +42,7 @@ S1 的主張都靠 NPR Illinois 這一份逐字稿判定；NCPR 與 NPR 主站�
 | 16 | 事後，這家公司的公關向記者保證：冷鏈才是最主要的原因；這仍是公司的說明 | `basket-pr/sxg5`、`basket-primary/3gc9`、`basket-still-statement/3svm`、說明欄第 2 段 | S1：記者說 BJ's 的公關人員事後向他保證，冷鏈是最主要的原因（primary reason） | 200 | CONFIRMED | 措辭（不是事實修改）：`3gc9`「全程冷藏的冷鏈，才是最主要的原因。」→「公關說，全程冷藏的冷鏈才是最主要的原因。」 |
 | 17 | 卡片「同一份報導，兩種考量」：左欄購物籃理由（乳品採購）；右欄經濟學者的後方收貨與冷藏室、採購的冷鏈、公關說冷鏈才是主因；結語「都是受訪者的說明，不是測量結果」 | `basket-compare.data`、`c3p4` | S1（第 8、11、13、16 列） | 200 | CONFIRMED | — |
 | 18 | 「卡片右邊是冷藏的理由，有三個人提到」 | `basket-compare/s5ua` | S1：除了卡片上這三位，報導還說另一家連鎖超市的發言人兩種理由都提了（本集沒有用他） | 200 | CHANGED | 「有三個人提到。」→「列出三個人的說法。」 |
-| 19 | 卡片來源欄：採購與公關「任職於」BJ's | `basket-compare.data.source` | S1 只稱這個人是 BJ's 的公關人員（PR person），沒有說雇用關係 | 200 | NOT FOUND | 「NPR 2014 年採訪｜採購與公關任職於 BJ's」→「NPR 2014 年採訪｜BJ's 的乳品採購與公關」 |
+| 19 | 卡片來源欄：採購與公關「任職於」BJ's | `basket-compare.data.source` | S1 只稱這個人是 BJ's 的公關人員（PR person），沒有說雇用關係 | 200 | CHANGED | 「NPR 2014 年採訪｜採購與公關任職於 BJ's」→「NPR 2014 年採訪｜BJ's 的乳品採購與公關」（查核者原判 NOT FOUND：公關的雇用關係在逐字稿查不到，這個細節已從來源欄拿掉。協調者 2026-10-10 把這一欄改標 CHANGED：本表的列號 19 與 claims.md 的主張編號 c19 是兩回事，成片品管的 facts 項目卻把兩者對在一起，誤報蔬果研究那幾景還在引用查不到的主張。） |
 | 20 | 意見：兩種考量可以同時出現；只看位置沒辦法斷定超市怎麼想；「要你多買」很順口，但是解釋不是測量 | `basket-both/79qe`、`ybgz`、`cuhv`、`eug8`、`5xim` | `brief.md` 站主觀點 | — | OUT OF SCOPE | — （標成「我的看法是」，與站主觀點一致） |
 | 21 | 記者在報導結尾說，這次訪問到的人沒有誰拿得出一份測量過牛奶位置的實證研究 | `measure-chapter/yk2s`、`measure-nobody/pudc`、`measure-binder/8h8j`、說明欄第 2 段 | S1 記者倒數第二次發言：他說談過的人裡，沒有誰桌上有一本題為「牛奶最佳位置的實證研究」的資料夾 | 200 | CONFIRMED | — |
 | 22 | 所以那次採訪分不出兩種考量各占多少；這句話只限那次採訪，不是說全世界沒有人研究過，也不能說各占一半 | `measure-no-ratio/p9td`、`pt5j`、`v94b`、`xp4w`、`answer-no-ratio/9pdr`、`answer-big.data.sub`、`outro.data.lines[0]`、說明欄第 2、4 段 | S1：整篇沒有任何比例；記者的結語是兩個理由都答「是」最保險 | 200 | CONFIRMED | — （沒有延伸成「沒有研究」） |
