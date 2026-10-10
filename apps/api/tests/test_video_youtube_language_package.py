@@ -20,7 +20,7 @@ from app.video_youtube.errors import Refused
 from tests.test_video_youtube import Site, open_site
 from tests.test_video_youtube_sync import SLUG, SRT, _entry, _package, _put
 
-LOCALES = ("en", "ja", "ko", "zh-CN")
+LOCALES = ("en", "ja", "ko")
 CHOICES = {locale: {"metadata": True, "captions": True, "dub": False} for locale in LOCALES}
 
 
@@ -228,7 +228,7 @@ async def site(monkeypatch: pytest.MonkeyPatch, tmp_path: Any) -> AsyncIterator[
         yield value
 
 
-async def test_latest_approved_batch_adds_four_languages_and_keeps_original_video_fields(
+async def test_latest_approved_batch_adds_three_languages_and_keeps_original_video_fields(
     site: Site,
 ) -> None:
     batch = await _language_batch(site)
@@ -399,7 +399,7 @@ async def test_ready_parts_need_files_but_explicit_skipped_caption_is_allowed(si
 
     await _replace_manifest(site, batch, skip)
     result = await _composed(site)
-    assert set(result.captions) == {"zh-TW", "en", "ja", "zh-CN"}
+    assert set(result.captions) == {"zh-TW", "en", "ja"}
     await _replace_manifest(
         site, batch, lambda manifest: manifest["locales"]["ko"].update(captions="ready")
     )
@@ -480,14 +480,53 @@ async def test_even_rehashed_approved_metadata_must_match_the_manifest_and_origi
         await _composed(site)
 
 
-async def test_chinese_dub_role_uses_the_producers_canonical_underscore_form(site: Site) -> None:
+async def test_an_approved_batch_that_named_zh_cn_keeps_syncing_its_other_languages(
+    site: Site,
+) -> None:
+    """zh-CN left the video pipeline on 2026-10-09 (a video's languages are four). A batch
+    approved before then carries a zh-CN choice, a zh-CN part and its files (the dub role in
+    the producer's underscore spelling); the choice stored on the video may still name it, until
+    migration 0128 runs, or not. Either way the batch matches the choice once zh-CN is ignored on
+    both sides, its en part is sent, and nothing of zh-CN is."""
+    selected = {
+        "en": {"metadata": True, "captions": True, "dub": False},
+        "zh-CN": {"metadata": False, "captions": True, "dub": True},
+    }
+    batch = await _language_batch(site, selected=selected)
+    assert {"captions_zh-CN", "dub_zh_cn"} <= {file["role"] for file in batch.manifest["files"]}
+    before = await _composed(site)
+    assert set(before.metadata["localizations"]) == {"en"}
+    assert set(before.captions) == {"zh-TW", "en"}
+    assert before.approval_pin["languages"]["review_id"] == str(batch.review_id)
+    assert before.approval_pin["choice"] == {"en": selected["en"]}
+    async with site.factory() as session:
+        project = await session.get(VideoProject, batch.project_id)
+        assert project is not None
+        project.locales = {"en": selected["en"]}
+        await session.commit()
+    after = await _composed(site)
+    assert (after.metadata, after.captions, after.sha256) == (
+        before.metadata,
+        before.captions,
+        before.sha256,
+    ), "the migration's rewrite changes nothing the batch sends"
+    # A real change of choice is still a change.
+    async with site.factory() as session:
+        project = await session.get(VideoProject, batch.project_id)
+        assert project is not None
+        project.locales = {"en": selected["en"], "ko": {"captions": True}}
+        await session.commit()
+    with pytest.raises(Refused, match="語言選擇已變更"):
+        await _composed(site)
+
+
+async def test_a_choice_of_zh_cn_alone_sends_only_traditional_chinese(site: Site) -> None:
     selected = {"zh-CN": {"metadata": False, "captions": True, "dub": True}}
     await _language_batch(site, selected=selected)
     result = await _composed(site)
     assert result.metadata["localizations"] == {}
-    assert set(result.captions) == {"zh-TW", "zh-CN"}
-    assert set(result.dubs) == {"zh-CN"}
-    assert result.dubs["zh-CN"].content_type == "audio/mp4"
+    assert set(result.captions) == {"zh-TW"}
+    assert result.approval_pin["languages"] is None
 
 
 @pytest.mark.parametrize("status", ["pending", "rejected", "approved"])

@@ -502,7 +502,7 @@ test("a compilation walks its own steps: planned metadata, cards, the join, the 
   state = await drawnStatus();
   assert.equal(state.steps[2].done, true);
   assert.equal(state.next.id, "metadata translated");
-  assert.match(state.next.todo, /i18n\/<locale>\.json with title, description, tags and chapters for en, ja, ko, zh-CN/);
+  assert.match(state.next.todo, /i18n\/<locale>\.json with title, description, tags and chapters for en, ja, ko/);
   // A re-cut episode voids the join.
   writeEpisode(drawn.work, "wuxia-ep-3");
   state = await drawnStatus();
@@ -567,12 +567,12 @@ test("a compilation walks its own steps: planned metadata, cards, the join, the 
   assert.equal(state.next.id, "final video approved", "made from the current text, it is complete again");
 
   // Every locale made from earlier text (the usual re-plan): the step that was done says why it reopened.
-  const files = ["en", "ja", "ko", "zh-CN"].map((locale) => path.join(drawn.dir, "i18n", `${locale}.json`));
+  const files = ["en", "ja", "ko"].map((locale) => path.join(drawn.dir, "i18n", `${locale}.json`));
   const stamp = (hashes) => { for (const each of files) atomicWrite(each, JSON.stringify({ ...JSON.parse(readFileSync(each, "utf8")), source_hashes: hashes })); };
   stamp(compilationSourceHashes(replanned((doc) => { doc.youtube.title = "上一版的標題"; })));
   state = await drawnStatus();
   assert.equal(state.next.id, "metadata translated");
-  assert.equal(state.next.note, "missing, incomplete or made from earlier zh-TW text: en, ja, ko, zh-CN");
+  assert.equal(state.next.note, "missing, incomplete or made from earlier zh-TW text: en, ja, ko");
   const i18nWarnings = () => lintProject(loadProject({ slug: drawn.slug, root: drawn.root })).warnings.filter((warning) => warning.path.startsWith("i18n/")).map((warning) => `${warning.path}: ${warning.message}`);
   assert.deepEqual(i18nWarnings(), files.map((each) => `i18n/${path.basename(each)}: translations older than the zh-TW text: title`), "lint says what status says");
   // A chapter title alone: lintCompilation keys chapters by card scene, and lint reads the worker's by episode slug.

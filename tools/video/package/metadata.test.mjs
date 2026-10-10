@@ -102,7 +102,7 @@ test("package requires fresh reviews of published compilation text before replac
   writeFileSync(info, JSON.stringify({ spoiler_context: context }));
   assert.equal((await packageRun()).code, EXIT.owner);
   assert.equal(readFileSync(metadataFile, "utf8"), existing);
-  const translations = Object.fromEntries(["en", "ja", "ko", "zh-CN"].map((locale) => [locale, readJson(path.join(box.dir, "i18n", `${locale}.json`), null)]));
+  const translations = Object.fromEntries(["en", "ja", "ko"].map((locale) => [locale, readJson(path.join(box.dir, "i18n", `${locale}.json`), null)]));
   const fields = publicTexts({ doc: box.doc, translations, timeline: readJson(path.join(box.workdir, "timeline.json"), null) });
   const receipts = { schema_version: 1, locales: Object.fromEntries(Object.entries(fields).map(([locale, text]) => [locale, { passed: true, input_sha256: reviewHash(context, locale, text) }])) };
   writeFileSync(path.join(box.dir, COMPILATION_REVIEW_FILE), JSON.stringify(receipts));

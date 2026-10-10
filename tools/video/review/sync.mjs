@@ -54,7 +54,7 @@ export const STEP_LABELS = {
   "metadata planned": "合集標題與說明",
   "cards rendered": "章節卡與縮圖",
   "video compiled": "合集串接",
-  "metadata translated": "五語標題與說明",
+  "metadata translated": "四語標題與說明",
   brief: "企劃書",
   "outline approved": "站主選好大綱",
   "script passes lint": "稿子通過檢查",
