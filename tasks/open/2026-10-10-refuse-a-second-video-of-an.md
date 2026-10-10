@@ -38,7 +38,7 @@ search result.
    know which pages became videos. So an official page already made into a video, or one
    whose video the owner dropped, is kept out only by the planner matching an English page
    title against an earlier zh-TW video title. With a 72-hour draft interval one page is
-   offered on four or more later drafts.
+   offered on three or four later drafts.
 2. **A re-plan that moves to an official page keeps the previous article.** `replan()`
    sets `state.source_guide = requested?.source_guide ?? answer.source_guide ??
    state.source_guide`, so the `null` the prompt asks for falls through to the old slug.
@@ -61,7 +61,8 @@ Found by the review of the official-topics change on 2026-10-10. Neither was fix
 - [ ] Tests for both in `tools/video/automation/automation.test.mjs`.
 - [ ] `docs/videos/AUTOMATION.md` moves the third limit of 官方頁面當題目 into 不重複選題 as
       a rule the code enforces.
-- [ ] The duration receipt is re-bound for `flow.mjs` by an independent reviewer.
+- [ ] The duration receipt is re-bound for `flow.mjs` and `automation.test.mjs` (both
+      bound) by an independent reviewer.
 
 ## Steps
 

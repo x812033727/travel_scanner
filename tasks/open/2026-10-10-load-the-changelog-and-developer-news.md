@@ -67,10 +67,13 @@ Running a command on the production host needs the owner's go-ahead each time.
 validation error. `GET /api/travel/guides?locale=zh-TW&kind=life&topic=ai-news&sort=news`
 is where a published story from them would show.
 
-For the video topics: the five rows are enabled, and once one of them has a candidate
+For the video topics (do not call `GET /video/automation/topics` by hand to look: one
+call spends up to five of the day's Brave queries and one of the worker's twelve hourly
+lookups): the five rows are enabled, and once one of them has a candidate
 the writer declined (`rejected`, `news_not_eligible`, no human decision), the worker's
-topic list (`GET /video/automation/topics`) carries it with `source: "official"`. Record
-what it returned, or that no page has been declined yet.
+next scheduled draft is offered it with `source: "official"`. Count those rows in
+`news_candidates` for the five sources, or read the topics of the worker's next draft,
+and record the count here, or that no page has been declined yet.
 
 ## Notes
 

@@ -22,6 +22,8 @@ scope:
   - docs/videos/long-form/review.json
   - docs/videos/long-form/review.md
   - apps/api/app/news_automation/sources.json
+  - apps/web/app/api/video/automation/topics/route.ts
+  - docs/videos/ai-terms/README.md
 ---
 
 # Official pages the news writer declined become video topic candidates
@@ -43,7 +45,7 @@ newsworthy, no article is written, and the planner never sees it.
       no note).
 - [x] The planner prompt says how to treat an official topic.
 - [x] A first set of sources is opted in in `sources.json`.
-- [x] `docs/videos/AUTOMATION.md` describes the third source and its two limits.
+- [x] `docs/videos/AUTOMATION.md` describes the third source and its limits.
 - [x] The duration receipt is re-bound by an independent reviewer.
 
 ## Steps
@@ -111,18 +113,20 @@ npm run check:tasks
 - The exclusion test was checked by breaking the code: with the `human_decision` filter
   removed and the key read as truthy instead of `is True`, it failed on the
   owner-rejected row and on the row whose key is the string "true".
-- Two limits, written into `AUTOMATION.md`:
+- Three limits, written into `AUTOMATION.md`. The third came from the review: no code
+  check refuses a second video of an official page, and a re-plan keeps the previous
+  article (`2026-10-10-refuse-a-second-video-of-an`). The first two:
   - Only pages the writer declined become official topics. A page that became a news
     story arrives as a site article; one held for review is not offered.
   - The automated route cannot operate a tool yet
     (`2026-10-09-give-the-automated-route-a-way`), so an official topic becomes a
     "what changed and what to do now" video resting on cited evidence. A hands-on
     tutorial still goes through the manual route.
-- A summary-evidence source is skipped because the worker's page reader refuses pages
-  over 3 MB (`tools/video/automation/fetch.mjs`), and such entries all point at one
-  shared page. That leaves the Claude Code changelog and the Claude Platform release
-  notes out for now; only the first is over 3 MB, the second would be read from the top
-  of its page and not at the entry.
+- A summary-evidence source is skipped because its entries all point at anchors on one
+  shared page: the worker would read the top of that page (the first 40,000 characters,
+  `tools/video/automation/fetch.mjs`), not the entry. The Claude Code changelog page is
+  also 4.8 MB, past the reader's 3 MB limit, so it cannot be read at all. That leaves
+  the Claude Code changelog and the Claude Platform release notes out for now.
 - OpenAI and Gemini are not in the first set: their update pages cannot be read by the
   scanner yet (`docs/official-ai-accounts.md`).
 - Follow-ups filed with this work: the worker reads one entry of a shared changelog page;
