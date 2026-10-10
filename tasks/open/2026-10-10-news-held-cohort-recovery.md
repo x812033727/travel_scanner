@@ -38,7 +38,8 @@ New arrivals are outside this operation.
 - [x] Capture full current candidate, source, draft, assessment and run data.
 - [x] Check ownership, create an isolated branch and claim this narrow operation.
 - [ ] Repair the disclaimer correction loop and verify production readiness.
-- [ ] Run a three-item source-refresh pilot, inspect its decisions, then continue.
+- [x] Run a three-item source-refresh pilot and inspect its decisions.
+- [ ] Continue the remaining source cohort after repairing the pilot defects.
 - [ ] Correct saved editorial drafts and redrafts; resolve duplicate and failures.
 - [ ] Reconcile all 208 outcomes and verify published locales.
 
@@ -55,12 +56,20 @@ a judge approval, local tests and CI are distinct stages.
   The cohort snapshot digest and completion ledger are in
   `docs/news-held-cohort-recovery-2026-10-10.md`.
 - The code-repair task is `2026-10-10-news-disclaimer-correction-loop`.
-- A 76-ID source-refresh plan and guarded operator are prepared externally,
-  dry-run by default with a maximum batch of three. Production execution is
-  pending peer review and real DB/RQ dry-run.
+- Source76: guarded pilot3 executed after independent review and real dry-run.
+  One five-language publication has actual public verification; two are held
+  for navigation/source attribution defects. Remaining73 were not dispatched.
 - The 08:55 Taipei host preflight found the deploy lock held and four uncertain
   paid-video stage records. Their actual ownership/liveness must be inspected
   before scheduling a deployment; do not clear unrelated paid-work evidence.
 - The old `2026-10-07-resolve-current-news-review-and-redraft` task stays with
   its existing owner/worktree. This operation neither closes nor edits it.
-- No production mutation has occurred in this recovery operation yet.
+- Two duplicate rejections have real audit/assessment readback. Twenty-one
+  reviewed drafts (59 locale commits) were saved in bounded3 batches, with
+  independent SQL preservation readback; these remain unpublished and held.
+- Timeout2: actual old runtime and genuine verified/judge-approved draft checks
+  passed. Each received one enqueue after full durable archival; outcomes are
+  pending, with no replay of unknown jobs and no claim of publication.
+- A second completed code task, 2026-10-10-exclude-system-topic-navigation-from-news,
+  repairs the pilot's navigation false positive. Both repairs are in draft PR1411;
+  merge/deploy and the other owner's shared video lease remain separate gates.

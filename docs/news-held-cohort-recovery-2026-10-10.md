@@ -31,7 +31,8 @@ items (88 review, 51 redraft); the remaining 69 current holds are newer.
 - Refresh changed sources through the existing service. Correct factual or
   translation defects using supported sources, then use the normal independent
   verification, locale, hard-check and final-review gates.
-- Fix the disclaimer correction cycle before releasing dependent paid stages.
+- Fix the disclaimer correction cycle and system-navigation factual-verification
+  payload before releasing dependent model stages.
 - Submit a small pilot, observe persisted outcomes and public locales, then
   continue the cohort in bounded batches.
 
@@ -58,13 +59,56 @@ close the older task owned by `codex-news-backlog-review`.
 - [x] Check shared ownership and claim the isolated repair/operation tasks.
 - [x] Reproduce and fix the disclaimer correction cycle; 267 relevant tests,
       full API Ruff and mypy app/tests passed. Independent code review passed.
+- [x] Reproduce and fix the factual verifier treating system topic navigation
+      as an unsupported claim. Fifteen cases fail before the repair; the 282
+      affected-suite tests pass afterward, with independent review and all
+      API Ruff/mypy checks passing (470 app files, 381 test files).
 - [ ] Obtain a verified production repair with deployment guards intact.
-- [ ] Complete a guarded source-refresh pilot and read its actual outcomes.
+- [x] Complete a guarded source-refresh pilot and read its actual outcomes.
 - [ ] Resolve the remaining source, editorial, redraft and technical holds.
 - [ ] Reconcile all 208 IDs into verified final outcomes or explicit remaining
       blockers with follow-up tickets; verify public locales for publications.
 
-No production mutation has been performed by this recovery operation yet.
+## Verified production actions
+
+The source pilot used exactly three original IDs. Clef-omni candidate
+`45c60793-4f8e-492c-8534-c96a5ce46842` published its five locales at 09:23 Taipei.
+Actual public API and HTML checks confirm matching published versions, titles,
+H1s, canonical URLs and bodies. Anthropic biolab candidate `0f71c3b3` remains
+held for a system-navigation false positive; Google calls candidate `6e27eb54`
+remains held for source attribution. Neither hold is called completed.
+
+The two duplicate decisions were applied through the real rejection service
+and independently read back, with original drafts, sources and histories kept:
+
+- OSS Scanner `ad6ae991-b9f2-4eac-aea0-4dd5a0a8187c`: rejection audit
+  `73d2e3b1-4a4a-44b5-a42c-4ea429a72a8f`; the published Cyber Mission article
+  remains unchanged.
+- Foresight `7d8fa6d8-54fd-49c3-ac2b-6630e22b3e2f`: rejection audit
+  `36758e55-de63-4dc4-bf47-87e90435fd1d`; its retained main article is an
+  unpublished five-language draft.
+
+Twenty-one independently reviewed editorial corrections were saved through
+the real guide service in seven batches of three: 59 locale commits. Each batch
+has independent SQL readback proving exact corrected documents, preserved
+candidate holds/retries/cache, source/history rows, untouched locales and null
+publication pointers. These drafts are saved and still await normal review.
+
+The two known subscription-CLI timeouts retain genuine matching draft verification
+and judge approval. Each was enqueued once at 09:39 Taipei to resume the existing
+worker route, after full immutable baseline archival and actual-runtime checks:
+Surface `38ca14e5` audit `116a429d-0bcd-4b90-ab01-e6b925ba4200`; NVIDIA
+`c407d08b` audit `6c9e283c-e678-474a-a4d8-e7849c3a3ffb`. Enqueue receipts do
+not establish publication or vendor settlement. Unknown outcomes are never replayed.
+
+The 09:32 Taipei readback of the original 208 IDs, before those two enqueues,
+contained 1 published, 2 rejected, 113 manual review, 90 redraft and 2 failed.
+The remaining 73 source-refresh IDs and 90 redrafts wait for the reviewed runtime
+repair. The rewrite caps and old partial drafts remain intact.
+
+Durable phase intents/audits are stored in the verified named volume at
+`/var/lib/mokaair/video-reviews/ops-news-review-20261010-6f71/`, with host copies
+and local logs. No fake approval marker, cap reset or settings change was used.
 
 The original four uncertain video-stage jobs are terminal records with completed
 timestamps, not live provider calls. They remain untouched. The deployment lock
@@ -73,7 +117,6 @@ No lease is removed or process stopped by this news operation; deployment must
 wait for its proper release. The source-refresh pilot is independent of that
 flow and does not rebuild or restart containers.
 
-Two duplicate decisions are being reviewed: OSS Scanner is already covered by
-the published Anthropic Cyber Mission article; the Foresight slug conflict is
-the same event as another retained, unpublished five-locale draft. Do not describe
-the latter as a published article or discard its existing draft.
+Both code repairs are in draft PR #1411. Merge and deployment require the owner
+gate; the existing shared video deployment lease must be released by its owner.
+Neither local tests nor CI are reported as production readiness.
