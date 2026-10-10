@@ -1,0 +1,1790 @@
+{
+  "schema_version": 1,
+  "slug": "claude-code-mcp-hands-on",
+  "format": "slides",
+  "category": "tutorial",
+  "source_guide": "claude-code-mcp-local-server-workshop",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "這一支是照著紀錄講的實作：像把一個九十五行的程式和它自己寫的紀錄攤在同事面前，一行一行對給他看，穩、清楚、不誇大。開場的問句壓低放慢；指著畫面上的程式與紀錄時放慢；「連上」「呼叫」「送到」三件事分開講，各停半拍；一千零八十九這些數字前停半拍；講到只有一次、沒有拆開看、沒有看過的地方，平實不遮掩；章首的問句輕輕上揚。"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Claude Code MCP 教學：自己寫 95 行的 MCP 伺服器，接三次、不接三次",
+    "description": "自己寫的 MCP 伺服器接進 Claude Code 之後，答案真的是工具給的嗎？這支寫一個 95 行、不裝套件的伺服器，同一個問題不接三次、接上三次，逐項對。\n給會用 claude -p、但 MCP 只照 README 貼過一行的人。\n\n想照著做：伺服器、資料、每一種設定和所有腳本都在 https://github.com/x812033727/travel_scanner/tree/main/docs/videos/claude-code-mcp-hands-on/demo\n\n你會學到：\n・MCP、Claude 自己的工具、Skill 怎麼選；伺服器先手動送四則訊息驗，再寫九行的 .mcp.json\n・不問 Claude 也能確認：串流開頭連上了、串流裡有呼叫、伺服器自己的紀錄收到了，三件事分開看\n・計分（各 3 次）：沒有接上全對 0／3，接上 3／3；沒有接上的三次沒說不知道也沒編答案，把工具呼叫寫成文字就結束\n・第一個請求比沒有接上的平均：2 個工具多 1,089 個 token；12 個工具再多 189；關掉延後載入再多 534，但整次相加反而少 3,166（後兩種各 1 次，不下結論）\n・拿不到答案的三種（各 1 次）：沒有允許規則（呼叫了、沒送到）、伺服器起不來（沒連上）、工具回錯誤（送到了、回的是錯誤）\n\n照著打的時候\n・先把 gear-lab/ 複製到 repo 以外的資料夾再跑；留在 repo 裡，repo 自己的 CLAUDE.md 和 skills 會被載入。variants/mcp.project.json 放成 .mcp.json，hook-log/ 的兩個檔放成 .claude/settings.json 與 .claude/hooks/seen.mjs。\n・指令是 bash 的寫法。畫面沒列的：前面是 env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=紀錄檔 與 timeout 300；旗標還有 --model sonnet、--setting-sources project,local、--no-session-persistence、--max-budget-usd 1、--debug-file；要求從 prompts/ask.txt 走標準輸入，輸出存成串流檔。完整的一行在 session.sh。\n・片中每一次都加 --strict-mcp-config，只接指定的伺服器；不加，別處設定的 MCP 伺服器（個人層、外掛、專案的 .mcp.json）也會載入。帳號上的連接器是另一個開關，指令前面的 ENABLE_CLAUDEAI_MCP_SERVERS=false 關的就是它。這兩句是官方頁的說法，這支沒有跑不加的情況。\n・gear.mjs 畫面上是 95 行裡的 55 行，完整的檔在 gear-lab/server/gear.mjs。手動測試會在 server/requests.txt 記六行，每次開 session 前都刪掉這個檔，紀錄才會是畫面上的八行。\n・省事：WORK=repo 以外的資料夾 bash session.sh 名字 臂（各臂寫在 session.sh 開頭），跑完用 tally.mjs 計分。每次都會用掉你的額度。\n\n怎麼跑的\n・Windows 11、Git Bash、Node.js v24.13.0、Claude Code 2.1.295，2026-10-10。session 共 12 次，都是 --model sonnet（claude-sonnet-5-5），沒有重跑。\n・每一次的偵錯紀錄有 1 行提到 advisor、2 行提到連接器（只數行數）；串流與用量裡沒有別的模型，也沒有別的伺服器。\n・沒有觀察的：不加嚴格模式的情況（官方頁寫 -p 之下專案的 .mcp.json 不問就載入）、互動式畫面與 /mcp、遠端伺服器與登入、resources 與 prompts、新版規格寫法的伺服器、其他模型與平台、不是官方的 API 主機（官方頁寫那時工具一開始就全部載入）、那 1,089 個 token 的組成。\n・說明欄的文章（查核日 2026-09-14）用官方 SDK 寫待辦資料的唯讀工具、用測試客戶端驗，步驟和這支不同，也沒寫新版規格先探測再握手。",
+    "tags": [
+      "Claude Code MCP",
+      "Claude Code MCP 教學",
+      "Claude Code",
+      ".mcp.json 怎麼寫",
+      "自己寫 MCP server",
+      "MCP 伺服器",
+      "Claude Code 教學",
+      "MCP 工具沒有被呼叫",
+      "claude -p mcp-config",
+      "Mokaair"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "Claude Code MCP 實作",
+      "headline": "三次接上\n**全對**",
+      "sub": "同一個問題各 3 次：沒有接上 0／3 全對，接上自己寫的 MCP 伺服器 3／3"
+    }
+  },
+  "sources": [
+    {
+      "title": "Connect Claude Code to tools via MCP｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Connect your first MCP server｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/mcp-quickstart",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Extend Claude Code｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/features-overview",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Manage costs effectively｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/costs",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "CLI reference｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Configure permissions｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Security｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/security",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Connect to external tools with MCP｜Agent SDK",
+      "url": "https://code.claude.com/docs/en/agent-sdk/mcp",
+      "checked_on": "2026-10-10"
+    }
+  ],
+  "assets": [],
+  "subtitles": {
+    "burn_in": false
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "同一個問題問六次：接上 MCP 伺服器，答案從哪裡來",
+      "template": "title",
+      "data": {
+        "tag": "Claude Code MCP 實作",
+        "title": "一個 95 行的伺服器，\n**不接三次、接上三次**",
+        "subtitle": "同一個問題，答案是不是工具給的，分三件事看"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "qrxp",
+          "text": "G-417 放在哪個貨架？這個答案，只在我的一份庫存表裡。",
+          "emotion": "壓低放慢，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "result-1",
+      "template": "code",
+      "data": {
+        "code": "01 +     0ms start\n02 +    11ms server/discover asks 2026-07-28\n03 +   149ms initialize asks 2025-11-25\n04 +   259ms notifications/initialized\n05 +   887ms tools/list\n06 +  4271ms tools/call find_gear {\"code\":\"G-417\"}\n07 +  4661ms tools/call low_stock {\"below\":3}\n08 +  8702ms end",
+        "caption": "n1 留下的 server/requests.txt｜全檔 8 行｜實際跑過 2026-10-10｜Claude Code 2.1.295"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "8mdd",
+          "text": "同一個問題，我問了 Claude Code 六次：三次沒有接上我的 MCP 伺服器，三次接上。",
+          "emotion": "「六次」前停半拍"
+        }
+      ]
+    },
+    {
+      "id": "result-2",
+      "template": "code",
+      "data": {
+        "code": "01 +     0ms start\n02 +    11ms server/discover asks 2026-07-28\n03 +   149ms initialize asks 2025-11-25\n04 +   259ms notifications/initialized\n05 +   887ms tools/list\n06 +  4271ms tools/call find_gear {\"code\":\"G-417\"}\n07 +  4661ms tools/call low_stock {\"below\":3}\n08 +  8702ms end",
+        "highlight": [
+          6,
+          7
+        ],
+        "caption": "n1 留下的 server/requests.txt｜全檔 8 行｜實際跑過 2026-10-10｜Claude Code 2.1.295"
+      },
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "acta",
+          "text": "接上的三次，伺服器自己的紀錄裡，都有亮起來的這兩行查詢。",
+          "emotion": "指著畫面，放慢"
+        },
+        {
+          "id": "4q9r",
+          "text": "三次的回覆，都跟庫存表一樣。"
+        }
+      ]
+    },
+    {
+      "id": "flow",
+      "chapter": "MCP 伺服器是什麼，跟 Claude 自己的工具、Skill 怎麼選",
+      "template": "steps",
+      "data": {
+        "title": "接上的那一次，伺服器收到什麼（n1）",
+        "steps": [
+          {
+            "title": "被啟動",
+            "detail": "start"
+          },
+          {
+            "title": "先被問新版，再握手",
+            "detail": "server/discover\ninitialize"
+          },
+          {
+            "title": "列工具",
+            "detail": "tools/list"
+          },
+          {
+            "title": "被呼叫",
+            "detail": "tools/call find_gear\ntools/call low_stock"
+          },
+          {
+            "title": "結束",
+            "detail": "end"
+          }
+        ],
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜n1 的紀錄"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "k3e8",
+          "text": "它怎麼拿到的？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "r5qs",
+          "text": "這個 MCP 伺服器是另一個程式，由 Claude Code 啟動。",
+          "reveal": 1
+        },
+        {
+          "id": "9bxm",
+          "text": "Claude Code 先問它會不會新版的協定；它回答不認得，雙方接著用舊的方式握手。",
+          "reveal": 1,
+          "emotion": "放慢"
+        },
+        {
+          "id": "z8kv",
+          "text": "握手之後，Claude Code 請它列出有哪些工具。",
+          "reveal": 1
+        },
+        {
+          "id": "8wr3",
+          "text": "Claude 需要用到的時候才會呼叫；這一次，它呼叫了兩個工具。",
+          "reveal": 1
+        },
+        {
+          "id": "wg9j",
+          "text": "session 結束，它的標準輸入被關掉，它記下最後一行，跟著結束。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "connect",
+      "template": "quote",
+      "data": {
+        "kicker": "什麼時候該接",
+        "quote": "Connect a server when you find yourself copying data into chat from another tool",
+        "translation": "發現自己一直把別的工具裡的資料複製貼進對話，就接一個伺服器",
+        "source": "Claude Code 文件｜mcp｜2026-10-10"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "jjwb",
+          "text": "什麼時候該接？你一直把別的系統的資料複製貼給 Claude 的時候。",
+          "reveal": 1,
+          "emotion": "問句上揚，答案放穩"
+        }
+      ]
+    },
+    {
+      "id": "choose",
+      "template": "table",
+      "data": {
+        "title": "要它查的東西在哪裡",
+        "columns": [
+          "資料在哪裡",
+          "怎麼做"
+        ],
+        "rows": [
+          [
+            "專案裡的檔案",
+            "Claude 自己讀取"
+          ],
+          [
+            "有命令列工具的系統",
+            "讓它直接執行那個工具"
+          ],
+          [
+            "Claude 碰不到的系統",
+            "接 MCP 伺服器"
+          ],
+          [
+            "要的是做法，不是資料",
+            "寫成 Skill"
+          ]
+        ],
+        "source": "第 1 列：r1 跑過 1 次｜其餘：官方 costs、features-overview"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "ftdk",
+          "text": "資料就在專案裡，Claude 自己會讀取；後面有一次實際的例子。",
+          "reveal": 1
+        },
+        {
+          "id": "bz28",
+          "text": "那個系統有命令列工具，就讓它直接執行，不會多一份工具清單。",
+          "reveal": 1
+        },
+        {
+          "id": "hxim",
+          "text": "Claude 碰不到的系統，才接 MCP 伺服器。",
+          "reveal": 1,
+          "emotion": "「才」加重"
+        },
+        {
+          "id": "4mdi",
+          "text": "以我的用法，只在它自己的工具碰不到的地方接。"
+        },
+        {
+          "id": "my23",
+          "text": "它拿得到資料、卻不知道怎麼做，那是 Skill 的工作。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "files",
+      "chapter": "自己寫 MCP 伺服器：95 行，先手動驗，再寫 .mcp.json",
+      "template": "terminal",
+      "data": {
+        "title": "開跑之前的專案（n1 之前重建的）",
+        "command": "find . -type f | sort",
+        "output": [
+          "./.claude/hooks/seen.mjs\n./.claude/settings.json\n./.mcp.json\n./README.md\n./package.json\n./server/gear.mjs\n./server/hand.jsonl\n./server/stock.tsv"
+        ],
+        "ran_on": "2026-10-10",
+        "tool_version": "sort (GNU coreutils) 8.32"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "9qa4",
+          "text": "那個伺服器要寫多少東西？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "4upv",
+          "text": "練習專案一共八個檔：伺服器、庫存表、MCP 的設定檔；最前面兩個是記錄用的 hook。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "stock",
+      "template": "table",
+      "data": {
+        "title": "庫存表 server/stock.tsv（全檔 25 行裡的 3 行）",
+        "columns": [
+          "原檔第幾行",
+          "code",
+          "name",
+          "shelf",
+          "left"
+        ],
+        "rows": [
+          [
+            "2",
+            "G-108",
+            "行李秤",
+            "A-03",
+            "2"
+          ],
+          [
+            "3",
+            "G-121",
+            "登山杖",
+            "B-11",
+            "3"
+          ],
+          [
+            "15",
+            "G-417",
+            "頭燈",
+            "D-07",
+            "37"
+          ]
+        ],
+        "highlight": 2,
+        "source": "demo 的資料檔｜gen-stock.mjs 產生的假資料"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "6gfe",
+          "text": "庫存表有二十四項，四個欄位：代號、名稱、貨架、剩幾個。",
+          "reveal": 2
+        },
+        {
+          "id": "98hu",
+          "text": "G-417 是頭燈，放在 D-07，剩三十七個。",
+          "reveal": 1,
+          "emotion": "一項一項念清楚"
+        },
+        {
+          "id": "5yzp",
+          "text": "剩下不到三個的有四項；另外兩項剛好剩三個，不算。"
+        }
+      ]
+    },
+    {
+      "id": "srv-note",
+      "template": "code",
+      "data": {
+        "code": "// 收到的每一則訊息，記一行在 server/requests.txt\nfunction note(what) {\n  seen += 1;\n  const n = String(seen).padStart(2, '0');\n  const ms = String(Date.now() - started).padStart(6);\n  appendFileSync(join(here, 'requests.txt'),\n    `${n} +${ms}ms ${what}\\n`);\n}",
+        "highlight": [
+          6,
+          7
+        ],
+        "caption": "server/gear.mjs｜第 14–21 行（全檔 95 行）｜不裝任何套件"
+      },
+      "claims": [
+        "c8",
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "76eh",
+          "text": "伺服器只有一個檔，九十五行，不裝套件。",
+          "emotion": "「九十五行」放慢"
+        },
+        {
+          "id": "3dsr",
+          "text": "它每收到一則訊息就記錄一行；開場那份紀錄，就是這一段寫的。"
+        }
+      ]
+    },
+    {
+      "id": "srv-tools",
+      "template": "code",
+      "data": {
+        "code": "const TOOLS = [{\n  name: 'find_gear',\n  description: '查一個器材代號放在哪個貨架、還剩幾個。',\n  inputSchema: { type: 'object', required: ['code'],\n    properties: { code: { type: 'string' } } },\n}, {\n  name: 'low_stock',\n  description: '列出剩餘數量低於 below 的器材。',\n  inputSchema: { type: 'object', required: ['below'],\n    properties: { below: { type: 'integer' } } },\n}];",
+        "highlight": [
+          2,
+          3,
+          7,
+          8
+        ],
+        "caption": "server/gear.mjs｜第 23–33 行（全檔 95 行）"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "yyjh",
+          "text": "兩個工具：一個查代號在哪個貨架，一個列出快沒貨的。"
+        },
+        {
+          "id": "6vjy",
+          "text": "亮起來的名稱和說明，列出工具的時候會交出去。"
+        }
+      ]
+    },
+    {
+      "id": "srv-call-1",
+      "template": "code",
+      "data": {
+        "code": "function call({ name, arguments: args = {} }) {\n  if (name === 'find_gear') {\n    const row = rows.find(([id]) => id === args.code);\n    if (!row) return say(`查無代號：${args.code}`, true);\n    const [code, what, shelf, left] = row;\n    return say(`${code} ${what}｜貨架 ${shelf}｜剩 ${left}`);\n  }\n  if (name === 'low_stock') {\n    const low = rows.filter((r) => Number(r[3]) < args.below);\n    const list = low.map((r) => `${r[0]} ${r[1]} 剩 ${r[3]}`);\n    return say(list.join('\\n') || '沒有');\n  }",
+        "highlight": [
+          4
+        ],
+        "caption": "server/gear.mjs｜第 38–49 行（全檔 95 行）"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "k6qp",
+          "text": "有呼叫進來的時候，先在庫存表裡找那個代號。"
+        },
+        {
+          "id": "zq5y",
+          "text": "亮起來的這一行：查不到，就回覆一則標成錯誤的結果。",
+          "emotion": "指著畫面，放慢"
+        }
+      ]
+    },
+    {
+      "id": "srv-call-2",
+      "template": "code",
+      "data": {
+        "code": "function call({ name, arguments: args = {} }) {\n  if (name === 'find_gear') {\n    const row = rows.find(([id]) => id === args.code);\n    if (!row) return say(`查無代號：${args.code}`, true);\n    const [code, what, shelf, left] = row;\n    return say(`${code} ${what}｜貨架 ${shelf}｜剩 ${left}`);\n  }\n  if (name === 'low_stock') {\n    const low = rows.filter((r) => Number(r[3]) < args.below);\n    const list = low.map((r) => `${r[0]} ${r[1]} 剩 ${r[3]}`);\n    return say(list.join('\\n') || '沒有');\n  }",
+        "highlight": [
+          6
+        ],
+        "caption": "server/gear.mjs｜第 38–49 行（全檔 95 行）"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "wuew",
+          "text": "找到的話，就回覆一行：代號、名稱、貨架、剩幾個。"
+        }
+      ]
+    },
+    {
+      "id": "srv-answer-1",
+      "template": "code",
+      "data": {
+        "code": "    return {\n      protocolVersion: version,\n      capabilities: { tools: {} },\n      serverInfo: { name: 'gear-desk', version: '0.1.0' },\n      instructions: '器材租借櫃台庫存：代號、貨架、剩餘數量。',\n    };\n  }\n  if (method === 'ping') return {};\n  if (method === 'tools/list') return { tools: TOOLS };\n  if (method === 'tools/call') return call(params);\n  return null;\n}",
+        "highlight": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "caption": "server/gear.mjs｜第 57–68 行（全檔 95 行）"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "iquv",
+          "text": "握手的回覆有四樣：它使用哪一版協定、它有工具、它的名字，和一句用途說明。"
+        }
+      ]
+    },
+    {
+      "id": "srv-answer-2",
+      "template": "code",
+      "data": {
+        "code": "    return {\n      protocolVersion: version,\n      capabilities: { tools: {} },\n      serverInfo: { name: 'gear-desk', version: '0.1.0' },\n      instructions: '器材租借櫃台庫存：代號、貨架、剩餘數量。',\n    };\n  }\n  if (method === 'ping') return {};\n  if (method === 'tools/list') return { tools: TOOLS };\n  if (method === 'tools/call') return call(params);\n  return null;\n}",
+        "highlight": [
+          9,
+          10,
+          11
+        ],
+        "caption": "server/gear.mjs｜第 57–68 行（全檔 95 行）"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "97bz",
+          "text": "下面亮起來的三行：列出工具、呼叫工具；不認得的方法，交回空值。"
+        }
+      ]
+    },
+    {
+      "id": "srv-loop-1",
+      "template": "code",
+      "data": {
+        "code": "lines.on('line', (line) => {\n  let message;\n  try { message = JSON.parse(line); } catch { message = null; }\n  if (!message) return note('not JSON');\n  note(brief(message));\n  if (message.id === undefined) return; // 通知不用回\n  const result = answer(message);\n  const reply = result ? { result }\n    : { error: { code: -32601, message: 'Method not found' } };\n  const out = { jsonrpc: '2.0', id: message.id, ...reply };\n  process.stdout.write(`${JSON.stringify(out)}\\n`);\n});",
+        "highlight": [
+          6
+        ],
+        "caption": "server/gear.mjs｜第 83–94 行（全檔 95 行）"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "8dc3",
+          "text": "訊息一行一則。亮起來的這一行：沒有編號的是通知，不必回覆。"
+        }
+      ]
+    },
+    {
+      "id": "srv-loop-2",
+      "template": "code",
+      "data": {
+        "code": "lines.on('line', (line) => {\n  let message;\n  try { message = JSON.parse(line); } catch { message = null; }\n  if (!message) return note('not JSON');\n  note(brief(message));\n  if (message.id === undefined) return; // 通知不用回\n  const result = answer(message);\n  const reply = result ? { result }\n    : { error: { code: -32601, message: 'Method not found' } };\n  const out = { jsonrpc: '2.0', id: message.id, ...reply };\n  process.stdout.write(`${JSON.stringify(out)}\\n`);\n});",
+        "highlight": [
+          8,
+          9
+        ],
+        "caption": "server/gear.mjs｜第 83–94 行（全檔 95 行）"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "xxwp",
+          "text": "交回空值的，一律回覆：找不到這個方法。"
+        },
+        {
+          "id": "4wju",
+          "text": "Claude Code 開頭問的那一句新版協定，照這段程式，得到的就是這個回覆。",
+          "emotion": "把前面那一步接起來"
+        }
+      ]
+    },
+    {
+      "id": "hand-cmd",
+      "template": "code",
+      "data": {
+        "code": "node server/gear.mjs < server/hand.jsonl",
+        "caption": "在專案資料夾裡執行｜Node.js v24.13.0｜四則訊息在 server/hand.jsonl"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "23yj",
+          "text": "接上之前，先自己測試一次：把四則訊息，從檔案送進它的標準輸入。",
+          "emotion": "轉向動手，語氣亮一點"
+        }
+      ]
+    },
+    {
+      "id": "hand",
+      "template": "table",
+      "data": {
+        "title": "四則訊息，回來三行",
+        "columns": [
+          "我送的方法",
+          "它回的重點",
+          "怎麼認"
+        ],
+        "rows": [
+          [
+            "initialize",
+            "\"protocolVersion\":\"2025-11-25\"",
+            "它講哪一版"
+          ],
+          [
+            "notifications/initialized",
+            "（沒有回覆）",
+            "通知不用回"
+          ],
+          [
+            "tools/list",
+            "\"name\":\"find_gear\"、\"name\":\"low_stock\"",
+            "兩個工具都在"
+          ],
+          [
+            "tools/call",
+            "G-417 頭燈｜貨架 D-07｜剩 37",
+            "跟庫存表一樣"
+          ]
+        ],
+        "source": "實際跑過 2026-10-10｜Node.js v24.13.0｜手動測試"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "q7t4",
+          "text": "握手的那一則訊息，它回覆自己使用的協定版本。",
+          "reveal": 1
+        },
+        {
+          "id": "4wbr",
+          "text": "通知那一則沒有回覆，本來就不必回覆。",
+          "reveal": 1
+        },
+        {
+          "id": "waat",
+          "text": "列出工具那一則，兩個工具的名稱都在。",
+          "reveal": 1
+        },
+        {
+          "id": "6aez",
+          "text": "呼叫那一則，回覆就是庫存表裡的那一行。",
+          "reveal": 1,
+          "emotion": "收穩"
+        }
+      ]
+    },
+    {
+      "id": "trust",
+      "template": "bullets",
+      "data": {
+        "title": "讓 Claude Code 替你啟動它之前",
+        "items": [
+          "stdio 的 MCP 伺服器是在你機器上執行的程式",
+          "先看 .mcp.json 的 command 與 args",
+          "自己在終端機執行一次那一行",
+          "這支的 gear.mjs：只讀 stock.tsv、只寫 requests.txt，不連網路"
+        ],
+        "source": "第 1 點：官方 mcp 頁｜2、3：我的做法｜4：這支的檔案"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "7jtk",
+          "text": "提醒一件事：這種 MCP 伺服器，是在你的機器上執行的程式。",
+          "reveal": 1,
+          "emotion": "語氣收一點，認真"
+        },
+        {
+          "id": "r6ne",
+          "text": "所以別人的專案，先打開設定檔，看它要執行哪一行指令。",
+          "reveal": 1
+        },
+        {
+          "id": "wcay",
+          "text": "自己在終端機執行一次，再讓 Claude Code 去執行。",
+          "reveal": 1
+        },
+        {
+          "id": "75sr",
+          "text": "這次的伺服器只讀一個檔、只寫一個檔，不連網路。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "mcpjson",
+      "template": "code",
+      "data": {
+        "code": "{\n  \"mcpServers\": {\n    \"gear\": {\n      \"type\": \"stdio\",\n      \"command\": \"node\",\n      \"args\": [\"server/gear.mjs\"]\n    }\n  }\n}",
+        "highlight": [
+          5,
+          6
+        ],
+        "caption": ".mcp.json｜全檔 9 行｜示範資料夾裡叫 variants/mcp.project.json"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "au34",
+          "text": "設定檔一共九行，放在專案的根目錄。",
+          "emotion": "放慢，讓人看清楚"
+        },
+        {
+          "id": "7vqn",
+          "text": "亮起來的兩行合起來，就是 Claude Code 會替你執行的指令。"
+        }
+      ]
+    },
+    {
+      "id": "scopes",
+      "template": "screencast",
+      "data": {
+        "title": "官方的範圍表",
+        "caption": "Claude Code 文件｜mcp｜MCP installation scopes｜2026-10-10 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://code.claude.com/docs/en/mcp#mcp-installation-scopes"
+          },
+          {
+            "action": "wait",
+            "selector": "#mcp-installation-scopes"
+          },
+          {
+            "action": "capture",
+            "focus": "#mcp-installation-scopes"
+          }
+        ]
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "mzx8",
+          "text": "設定有三個範圍；這個設定檔在專案那一層，這次用旗標指定。"
+        },
+        {
+          "id": "9x6d",
+          "text": "互動式的畫面會先問你要不要用；那個畫面，這次沒有看過。",
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "cmd",
+      "template": "table",
+      "data": {
+        "title": "跑一次的指令，拆開看",
+        "columns": [
+          "指令的這一段",
+          "做什麼"
+        ],
+        "rows": [
+          [
+            "claude -p，要求從檔案走標準輸入",
+            "不開畫面，做完就結束"
+          ],
+          [
+            "--strict-mcp-config --mcp-config .mcp.json",
+            "只接這個檔裡的伺服器"
+          ],
+          [
+            "--allowedTools \"mcp__gear__*\"",
+            "允許 gear 的每一個工具"
+          ],
+          [
+            "--tools ToolSearch",
+            "內建工具只留工具搜尋"
+          ],
+          [
+            "--output-format stream-json --verbose",
+            "留下每一次工具呼叫"
+          ]
+        ],
+        "source": "指令實際跑過 2026-10-10｜不加嚴格模式的情況：官方頁，沒跑｜其餘旗標在說明欄"
+      },
+      "claims": [
+        "c17",
+        "c18",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "t6cv",
+          "text": "每一次都是不開畫面的新 session，問題從檔案送進去。",
+          "reveal": 1
+        },
+        {
+          "id": "xw7h",
+          "text": "嚴格模式加上指定設定檔：只接這個檔裡的伺服器。",
+          "reveal": 1
+        },
+        {
+          "id": "9q2i",
+          "text": "少了嚴格模式，你在別處設定過的伺服器也會進來。"
+        },
+        {
+          "id": "iz3p",
+          "text": "允許規則要指名伺服器，後面才能用星號。",
+          "reveal": 1
+        },
+        {
+          "id": "sx76",
+          "text": "內建工具只留工具搜尋；沒有接上的時候，它沒有工具能讀取庫存表。",
+          "reveal": 1
+        },
+        {
+          "id": "kjrg",
+          "text": "這不是平常的環境，是為了對照。",
+          "emotion": "平實交代"
+        },
+        {
+          "id": "665q",
+          "text": "輸出存成串流，每一次工具呼叫都留在裡面。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ask",
+      "chapter": "怎麼確認答案是 MCP 工具給的：連上、呼叫、送到，分開看",
+      "template": "chat",
+      "data": {
+        "title": "六次問的都是這一句",
+        "messages": [
+          {
+            "side": "right",
+            "name": "我",
+            "text": "G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？"
+          }
+        ]
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "gt4b",
+          "text": "接上了。Claude 真的用了嗎？",
+          "emotion": "問句上揚，帶一點懷疑"
+        },
+        {
+          "id": "9r2r",
+          "text": "六次問的都是這一句。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "seen-4",
+      "template": "steps",
+      "data": {
+        "title": "同一次呼叫，在四個地方（n1）",
+        "steps": [
+          {
+            "title": "串流開頭",
+            "detail": "gear\nconnected"
+          },
+          {
+            "title": "串流裡的呼叫",
+            "detail": "mcp__gear__find_gear\n{\"code\":\"G-417\"}"
+          },
+          {
+            "title": "伺服器的紀錄",
+            "detail": "tools/call find_gear\n{\"code\":\"G-417\"}"
+          },
+          {
+            "title": "hook 紀錄",
+            "detail": "PreToolUse\nmcp__gear__find_gear"
+          }
+        ],
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜n1"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "xgun",
+          "text": "串流開頭那一筆，伺服器的狀態是連上了；這只說明接上。",
+          "reveal": 1,
+          "emotion": "「只說明」加重"
+        },
+        {
+          "id": "huf4",
+          "text": "串流裡有一筆工具呼叫：伺服器名加工具名，參數是 G-417；這說明 Claude 呼叫了。",
+          "reveal": 1
+        },
+        {
+          "id": "gm9c",
+          "text": "伺服器自己的紀錄裡有同一筆；這才說明呼叫送到了。",
+          "reveal": 1,
+          "emotion": "「這才」放慢"
+        },
+        {
+          "id": "4cm7",
+          "text": "第四個地方，是專案裡接的一個記錄用的 hook。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "requests3",
+      "template": "table",
+      "data": {
+        "title": "接上的那一次，三個請求（n1）",
+        "columns": [
+          "請求",
+          "Claude 呼叫的",
+          "內容"
+        ],
+        "rows": [
+          [
+            "1",
+            "ToolSearch",
+            "select:mcp__gear__find_gear,mcp__gear__low_stock"
+          ],
+          [
+            "2",
+            "mcp__gear__find_gear\nmcp__gear__low_stock",
+            "{\"code\":\"G-417\"}\n{\"below\":3}"
+          ],
+          [
+            "3",
+            "（文字回覆）",
+            "貨架 D-07、剩 37、低於 3 的四項"
+          ]
+        ],
+        "source": "實際跑過 2026-10-10｜n1｜延後載入是預設：官方 mcp 頁"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "ght5",
+          "text": "工具的定義預設延後載入；第一個請求，它先用工具搜尋，點名這兩個工具。",
+          "reveal": 1
+        },
+        {
+          "id": "7wy2",
+          "text": "第二個請求，同時呼叫兩個工具；到第三個請求才回答。",
+          "reveal": 2
+        },
+        {
+          "id": "ytkc",
+          "text": "接上的三次都是三個請求；沒有接上的三次，各一個。",
+          "emotion": "數字放慢，後面會用到"
+        }
+      ]
+    },
+    {
+      "id": "hook-set",
+      "template": "code",
+      "data": {
+        "code": "    \"PostToolUse\": [\n      {\n        \"matcher\": \"mcp__.*|ToolSearch\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"node\",\n            \"args\": [\n              \"${CLAUDE_PROJECT_DIR}/.claude/hooks/seen.mjs\"",
+        "highlight": [
+          3
+        ],
+        "caption": ".claude/settings.json｜第 16–24 行（全檔 83 行，示範資料夾：hook-log/）"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "86t6",
+          "text": "記錄用的 hook 在專案的設定檔，不擋任何東西。"
+        },
+        {
+          "id": "3x9w",
+          "text": "亮起來的比對條件：有結果之後，只記錄 MCP 工具和工具搜尋。"
+        }
+      ]
+    },
+    {
+      "id": "seen-log",
+      "template": "table",
+      "data": {
+        "title": "n1 的 hook 紀錄，第 3–6 行（全檔 6 行）",
+        "columns": [
+          "事件",
+          "工具",
+          "來源",
+          "參數或結果"
+        ],
+        "rows": [
+          [
+            "PreToolUse",
+            "mcp__gear__find_gear",
+            "source=dynamic",
+            "{\"code\":\"G-417\"}"
+          ],
+          [
+            "PostToolUse",
+            "mcp__gear__find_gear",
+            "source=dynamic",
+            "response_chars=48"
+          ],
+          [
+            "PreToolUse",
+            "mcp__gear__low_stock",
+            "source=dynamic",
+            "{\"below\":3}"
+          ],
+          [
+            "PostToolUse",
+            "mcp__gear__low_stock",
+            "source=dynamic",
+            "response_chars=83"
+          ]
+        ],
+        "source": "實際跑過 2026-10-10｜2.1.295｜results/n1.seen.txt"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "3n8z",
+          "text": "hook 紀錄裡，兩個工具各有兩行：呼叫之前一行，有結果之後一行。",
+          "reveal": 4
+        },
+        {
+          "id": "r6n4",
+          "text": "接上的那三次，這四個地方每一次都對得上。",
+          "emotion": "平實交代"
+        }
+      ]
+    },
+    {
+      "id": "tool-result",
+      "template": "quote",
+      "data": {
+        "kicker": "find_gear 交回來的結果（n1）",
+        "quote": "G-417 頭燈｜貨架 D-07｜剩 37",
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜n1"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "yz4t",
+          "text": "工具交回來的就是這一行；字是伺服器的程式組出來的。"
+        }
+      ]
+    },
+    {
+      "id": "score",
+      "template": "table",
+      "data": {
+        "title": "六次，逐項數",
+        "columns": [
+          "項目",
+          "沒有接上（f1–f3）",
+          "接上（n1–n3）"
+        ],
+        "rows": [
+          [
+            "串流開頭有 gear",
+            "0／3",
+            "3／3，connected"
+          ],
+          [
+            "串流裡的 gear 工具呼叫",
+            "0、0、0",
+            "2、2、2"
+          ],
+          [
+            "伺服器紀錄裡的 tools/call",
+            "沒有紀錄檔",
+            "2、2、2"
+          ],
+          [
+            "hook 紀錄裡的 gear 工具",
+            "沒有紀錄檔",
+            "3／3"
+          ],
+          [
+            "答案全對",
+            "0／3",
+            "3／3"
+          ]
+        ],
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜各 3 次"
+      },
+      "claims": [
+        "c26",
+        "c1",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "xr23",
+          "text": "串流開頭有沒有這個伺服器：沒有接上的三次是零，接上的三次都連上了。",
+          "reveal": 1
+        },
+        {
+          "id": "c39a",
+          "text": "串流裡的工具呼叫：零筆，對每一次兩筆。",
+          "reveal": 1
+        },
+        {
+          "id": "iht8",
+          "text": "伺服器自己的紀錄：一邊連紀錄檔都沒有，一邊每一次兩筆。",
+          "reveal": 1
+        },
+        {
+          "id": "47vi",
+          "text": "hook 紀錄：一樣沒有紀錄檔，對三次都有。",
+          "reveal": 1
+        },
+        {
+          "id": "scsg",
+          "text": "答案全對：沒接的零次，接上的三次都對。",
+          "reveal": 1,
+          "emotion": "放慢收穩"
+        }
+      ]
+    },
+    {
+      "id": "f-reply-1",
+      "template": "code",
+      "data": {
+        "code": "我先看一下工作目錄裡有哪些檔案。\n\n\n<invoke name=\"Glob\">\n<parameter name=\"pattern\">**/*</parameter>\n</invoke>",
+        "highlight": [
+          1
+        ],
+        "caption": "f3 的回覆全文｜results/f3.reply.md（全檔 6 行）｜實際跑過 2026-10-10｜Claude Code 2.1.295"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "gn3k",
+          "text": "沒有接上的三次，沒有說不知道，也沒有編一個答案。",
+          "emotion": "放慢，兩個「沒有」都講清楚"
+        },
+        {
+          "id": "u3qq",
+          "text": "它先寫了一句：要看看工作目錄裡有哪些檔案。"
+        }
+      ]
+    },
+    {
+      "id": "f-reply-2",
+      "template": "code",
+      "data": {
+        "code": "我先看一下工作目錄裡有哪些檔案。\n\n\n<invoke name=\"Glob\">\n<parameter name=\"pattern\">**/*</parameter>\n</invoke>",
+        "highlight": [
+          4,
+          5,
+          6
+        ],
+        "caption": "f3 的回覆全文｜results/f3.reply.md（全檔 6 行）｜實際跑過 2026-10-10｜Claude Code 2.1.295"
+      },
+      "claims": [
+        "c27",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "66n7",
+          "text": "接著把搜尋檔案的工具呼叫寫成文字，就結束了。"
+        },
+        {
+          "id": "chb8",
+          "text": "這個 session 沒有那個工具；三次都沒有貨架、沒有數量。"
+        }
+      ]
+    },
+    {
+      "id": "limits",
+      "template": "bullets",
+      "data": {
+        "title": "這張表能說到哪裡",
+        "items": [
+          "三次對三次：夠說有差，不夠說每次",
+          "沒有接上的那一邊沒有讀取檔案的工具：為了對照",
+          "一個模型、一個平台、一個版本"
+        ],
+        "source": "實際跑過 2026-10-10｜第 1 點是 calc.mjs 的實算"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "bgfx",
+          "text": "三次對三次，夠說有差，不夠說每一次都會這樣。",
+          "reveal": 1,
+          "emotion": "平實，不遮掩"
+        },
+        {
+          "id": "sdya",
+          "text": "沒有接上的那一邊，沒有任何讀取檔案的工具；那是為了對照。",
+          "reveal": 1
+        },
+        {
+          "id": "yr3b",
+          "text": "模型、平台、版本，都只量了一種。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "r1",
+      "template": "table",
+      "data": {
+        "title": "不接伺服器，改給讀取檔案的工具（r1，1 次）",
+        "columns": [
+          "看什麼",
+          "這一次"
+        ],
+        "rows": [
+          [
+            "它呼叫的工具",
+            "Glob、Grep，再 Read server/stock.tsv"
+          ],
+          [
+            "貨架、數量、低於 3 的四項",
+            "都跟庫存表一樣"
+          ],
+          [
+            "照事先講定的規則",
+            "不算全對：回覆裡有 G-121、G-466"
+          ],
+          [
+            "它提這兩項的原因",
+            "說明它們剛好剩 3 個，不算低於 3"
+          ]
+        ],
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜r1｜1 次"
+      },
+      "claims": [
+        "c30",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "mhmq",
+          "text": "所以另外跑了一次：不接伺服器，把搜尋和讀取檔案的工具還給它。",
+          "reveal": 1
+        },
+        {
+          "id": "fdba",
+          "text": "這一次，它自己找到庫存表；貨架、數量，還有不到三個的那四項，都跟庫存表一樣。",
+          "reveal": 1
+        },
+        {
+          "id": "t3qs",
+          "text": "照事先講定的規則，它不算全對：回覆裡出現了剛好剩三個的那兩個代號。",
+          "reveal": 1,
+          "emotion": "平實，照規則講"
+        },
+        {
+          "id": "qcgk",
+          "text": "可是它提這兩個代號，是為了說明它們不算；兩種讀法都在這裡。",
+          "reveal": 1
+        },
+        {
+          "id": "eyaq",
+          "text": "資料在專案裡的這一次，不接 MCP 也拿得到。",
+          "emotion": "收穩"
+        }
+      ]
+    },
+    {
+      "id": "cost",
+      "chapter": "沒用到的 MCP 工具占多少 token；設定好了卻拿不到答案的三種情況",
+      "template": "table",
+      "data": {
+        "title": "第一個請求的 token：每多接一些，多了多少",
+        "columns": [
+          "接了什麼",
+          "第一個請求多了",
+          "跟誰比",
+          "請求數"
+        ],
+        "rows": [
+          [
+            "2 個工具（n1–n3 平均）",
+            "+1,089",
+            "沒有接上的三次平均",
+            "3"
+          ],
+          [
+            "12 個工具（w1，1 次）",
+            "+189",
+            "上一列",
+            "3"
+          ],
+          [
+            "12 個工具，ENABLE_TOOL_SEARCH=false（u1，1 次）",
+            "+534",
+            "上一列",
+            "2"
+          ]
+        ],
+        "source": "實際跑過 2026-10-10｜2.1.295｜同邊最多差 5｜前兩格四捨五入"
+      },
+      "claims": [
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "hbi4",
+          "text": "已經接上、卻沒用到的工具，占多少？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "dxt8",
+          "text": "接上兩個工具的三次，第一個請求平均多一千零八十九個 token。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "xhjq",
+          "text": "這一千多個裡面有什麼，這一次沒有拆開來看。"
+        },
+        {
+          "id": "tnyq",
+          "text": "旁邊再擺一個伺服器、十個沒人用的工具：這一次，只再多了一百八十九個。",
+          "reveal": 1
+        },
+        {
+          "id": "m5jd",
+          "text": "關掉延後載入，十二個工具一次全部載入：這一次，又多了五百三十四個。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "total",
+      "template": "stats",
+      "data": {
+        "title": "同樣 12 個工具：一次全部載入（u1）比延後載入（w1）",
+        "stats": [
+          {
+            "value": "+534",
+            "label": "第一個請求",
+            "note": "u1 比 w1 多"
+          },
+          {
+            "value": "−3,166",
+            "label": "整次的請求相加",
+            "note": "u1 比 w1 少"
+          },
+          {
+            "value": "3 對 2",
+            "label": "請求數",
+            "note": "w1 對 u1"
+          }
+        ],
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜各 1 次"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "gnkm",
+          "text": "第一個請求，一次全部載入的那一次比較大。",
+          "reveal": 1
+        },
+        {
+          "id": "tms7",
+          "text": "可是把整次的請求加起來，它反而少了三千一百六十六個。",
+          "reveal": 1,
+          "emotion": "「反而」前停半拍"
+        },
+        {
+          "id": "5w4q",
+          "text": "延後載入多了一趟工具搜尋的來回：三個請求，對兩個。",
+          "reveal": 1
+        },
+        {
+          "id": "ngrk",
+          "text": "兩種各只有一次；哪一種比較省，這裡不下結論。",
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "search-shot",
+      "template": "screencast",
+      "data": {
+        "title": "官方的 ENABLE_TOOL_SEARCH 表",
+        "caption": "Claude Code 文件｜mcp｜Configure tool search｜2026-10-10 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://code.claude.com/docs/en/mcp#configure-tool-search"
+          },
+          {
+            "action": "wait",
+            "selector": "#configure-tool-search"
+          },
+          {
+            "action": "capture",
+            "focus": "#configure-tool-search"
+          }
+        ]
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "2grm",
+          "text": "延後載入是預設值；這個環境變數設成關閉，工具就一次全部載入。"
+        },
+        {
+          "id": "652j",
+          "text": "以我的用法，沒在用的伺服器就關掉。"
+        }
+      ]
+    },
+    {
+      "id": "p1",
+      "template": "quote",
+      "data": {
+        "kicker": "沒有允許規則的那一次（p1），工具結果是這一句",
+        "quote": "Claude requested permissions to use mcp__gear__find_gear, but you haven't granted it yet.",
+        "translation": "Claude 要求使用這個工具的權限，但你還沒有給",
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜p1｜1 次"
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "xv4a",
+          "text": "設定好了，卻拿不到答案，有三種情況。",
+          "emotion": "轉場，語氣提起來"
+        },
+        {
+          "id": "rdgf",
+          "text": "第一種：指令裡沒有允許規則。這一次，兩個呼叫都被拒絕。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "p1-req-1",
+      "template": "code",
+      "data": {
+        "code": "01 +     0ms start\n02 +     6ms server/discover asks 2026-07-28\n03 +    14ms initialize asks 2025-11-25\n04 +    15ms notifications/initialized\n05 +    20ms tools/list\n06 +  7342ms end",
+        "highlight": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "caption": "p1 留下的 server/requests.txt｜全檔 6 行｜實際跑過 2026-10-10｜Claude Code 2.1.295"
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "35hq",
+          "text": "這一次，伺服器照樣啟動、握手、列出工具；串流開頭也是連上的。"
+        }
+      ]
+    },
+    {
+      "id": "p1-req-2",
+      "template": "code",
+      "data": {
+        "code": "01 +     0ms start\n02 +     6ms server/discover asks 2026-07-28\n03 +    14ms initialize asks 2025-11-25\n04 +    15ms notifications/initialized\n05 +    20ms tools/list\n06 +  7342ms end",
+        "highlight": [
+          6
+        ],
+        "caption": "p1 留下的 server/requests.txt｜全檔 6 行｜實際跑過 2026-10-10｜Claude Code 2.1.295"
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "x3b9",
+          "text": "可是列出工具之後，下一行就是結束：沒有任何一筆呼叫送到。",
+          "emotion": "指著畫面，放慢"
+        },
+        {
+          "id": "3q8s",
+          "text": "Claude 的回覆說權限沒有給，它不猜數字。"
+        }
+      ]
+    },
+    {
+      "id": "x1",
+      "template": "table",
+      "data": {
+        "title": "伺服器起不來的那一次（x1，1 次）",
+        "columns": [
+          "看哪裡",
+          "看到什麼"
+        ],
+        "rows": [
+          [
+            "串流開頭那一筆",
+            "gear 的狀態是 failed"
+          ],
+          [
+            "server/requests.txt",
+            "沒有這個檔；整次 9 秒結束"
+          ],
+          [
+            "Claude 的回覆",
+            "沒有說伺服器沒連上"
+          ],
+          [
+            "自己執行 node server/gone.mjs",
+            "Error: Cannot find module，結束碼 1"
+          ]
+        ],
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜第 4 列：手動"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "m8m2",
+          "text": "第二種：設定檔指向一個不存在的檔案。這一次，串流開頭的狀態是失敗。",
+          "reveal": 1
+        },
+        {
+          "id": "6kfb",
+          "text": "伺服器沒有留下紀錄檔，整次九秒就結束。",
+          "reveal": 1
+        },
+        {
+          "id": "ukdj",
+          "text": "Claude 的回覆，完全沒有提伺服器壞了。",
+          "reveal": 1,
+          "emotion": "「完全沒有」加重"
+        },
+        {
+          "id": "3r85",
+          "text": "原因在串流裡看不到；自己執行設定檔裡那一行就看得到：找不到模組，結束碼是一。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "miss",
+      "template": "chat",
+      "data": {
+        "title": "問一個庫存表裡沒有的代號（e1）",
+        "messages": [
+          {
+            "side": "right",
+            "name": "我",
+            "text": "G-999 放在哪個貨架、還剩幾個？"
+          }
+        ]
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "rud3",
+          "text": "第三種：查一個庫存表裡面沒有的代號。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "e1",
+      "template": "table",
+      "data": {
+        "title": "工具回錯誤的那一次（e1，1 次）",
+        "columns": [
+          "看哪裡",
+          "看到什麼"
+        ],
+        "rows": [
+          [
+            "工具結果",
+            "查無代號：G-999（is_error 是 true）"
+          ],
+          [
+            "hook 紀錄",
+            "find_gear 這一筆：PostToolUseFailure，沒有 PostToolUse"
+          ],
+          [
+            "Claude 回覆的第一句",
+            "查不到代號 G-999,庫存系統回報「查無代號」,所以沒有它的貨架或數量資料。"
+          ]
+        ],
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜e1"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "siuj",
+          "text": "這一次，工具交回來的是伺服器寫的那一句，標成錯誤。",
+          "reveal": 1
+        },
+        {
+          "id": "c4zf",
+          "text": "這一筆呼叫，hook 收到的是失敗的事件，沒有成功的那一種。",
+          "reveal": 1
+        },
+        {
+          "id": "mnhe",
+          "text": "Claude 的回覆照著說查不到，沒有編出貨架。",
+          "reveal": 1,
+          "emotion": "收穩"
+        }
+      ]
+    },
+    {
+      "id": "keep",
+      "chapter": "MCP 伺服器怎麼留下來、停用，換成你的資料",
+      "template": "table",
+      "data": {
+        "title": "留下來，和停用",
+        "columns": [
+          "你要的",
+          "做法"
+        ],
+        "rows": [
+          [
+            "隊友都拿得到",
+            ".mcp.json 交進版控"
+          ],
+          [
+            "只停用這一個，不刪檔",
+            "設定的 disabledMcpjsonServers 加它的名稱"
+          ],
+          [
+            "改了 .mcp.json",
+            "重開 session 才會讀到"
+          ]
+        ],
+        "source": "官方 mcp、mcp-quickstart 頁｜2026-10-10｜沒有跑過"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "6kbz",
+          "text": "這個伺服器怎麼留下來？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "5gcs",
+          "text": "設定檔交進版控，隊友都拿得到同一個伺服器。",
+          "reveal": 1
+        },
+        {
+          "id": "q4tg",
+          "text": "只想停用這一個，在設定的停用清單加上它的名字。",
+          "reveal": 1
+        },
+        {
+          "id": "qf52",
+          "text": "設定檔改過之後，要重開 session 才會讀到。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "yours",
+      "template": "steps",
+      "data": {
+        "title": "換成你的一份資料",
+        "steps": [
+          {
+            "title": "先填三格",
+            "detail": "工具叫什麼、要哪個\n參數、查不到回哪一句"
+          },
+          {
+            "title": "手動送訊息",
+            "detail": "tools/call 回的是\n你預期的那一行"
+          },
+          {
+            "title": "接上，對三個地方",
+            "detail": "串流裡的呼叫、伺服器\n的紀錄、回覆裡的值"
+          }
+        ],
+        "source": "這支的核對方式｜腳本與資料在說明欄的示範資料夾"
+      },
+      "claims": [
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "cued",
+          "text": "換成你的資料，先填三格：工具叫什麼、要哪個參數、查不到時回哪一句。",
+          "reveal": 1,
+          "emotion": "轉向觀眾，語氣亮一點"
+        },
+        {
+          "id": "8dee",
+          "text": "手動送訊息，看它回的是不是你預期的那一行。",
+          "reveal": 1
+        },
+        {
+          "id": "inb2",
+          "text": "接上之後，核對三個地方：串流裡的呼叫、伺服器的紀錄、回覆裡的值。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "article",
+      "template": "cta",
+      "data": {
+        "kicker": "延伸閱讀",
+        "title": "建立自己的唯讀 MCP 工具",
+        "sub": "用官方套件寫的另一種做法｜連結在說明欄"
+      },
+      "claims": [
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "2qvf",
+          "text": "說明欄的文章，用官方套件寫另一個只能讀取的工具，做法和這裡不一樣。"
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "template": "outro",
+      "data": {
+        "title": "接上的三次：\n**伺服器都收到那兩筆查詢，答案全對**",
+        "cta": "你最常從哪個系統複製資料貼給 Claude？留言告訴我",
+        "lines": [
+          "串流裡的 gear 工具呼叫：0、0、0 對 2、2、2",
+          "伺服器紀錄裡的 tools/call：沒有紀錄檔 對 2、2、2",
+          "答案全對：0／3 對 3／3（各 3 次，一個模型）"
+        ]
+      },
+      "claims": [
+        "c39",
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "2xm3",
+          "text": "三次接上，三次答對，答案來自工具。",
+          "emotion": "放慢收穩"
+        },
+        {
+          "id": "p6sq",
+          "text": "你最常從哪個系統複製資料？",
+          "emotion": "問句上揚，親切"
+        },
+        {
+          "id": "dhbe",
+          "text": "想看更多實作，歡迎訂閱。",
+          "emotion": "輕快，帶笑"
+        }
+      ]
+    }
+  ]
+}

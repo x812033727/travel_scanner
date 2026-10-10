@@ -1,0 +1,4 @@
+PreToolUse ToolSearch query=select:mcp__gear__find_gear,mcp__gear__low_stock
+PostToolUse ToolSearch response_chars=143
+PreToolUse mcp__gear__find_gear source=dynamic {"code":"G-999"}
+PostToolUseFailure mcp__gear__find_gear source=dynamic error=查無代號：G-999

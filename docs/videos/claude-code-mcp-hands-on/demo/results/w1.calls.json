@@ -1,0 +1,80 @@
+{
+  "session": "w1",
+  "claude_code_version": "2.1.295",
+  "model": "claude-sonnet-5-5",
+  "mcp_servers": [
+    {
+      "name": "gear",
+      "status": "connected",
+      "source": "dynamic"
+    },
+    {
+      "name": "gear-more",
+      "status": "connected",
+      "source": "dynamic"
+    }
+  ],
+  "tools": [
+    "ToolSearch",
+    "mcp__gear__find_gear",
+    "mcp__gear__low_stock",
+    "mcp__gear-more__adjust_stock",
+    "mcp__gear-more__cancel_reservation",
+    "mcp__gear-more__check_in",
+    "mcp__gear-more__check_out",
+    "mcp__gear-more__daily_summary",
+    "mcp__gear-more__list_reservations",
+    "mcp__gear-more__move_shelf",
+    "mcp__gear-more__price_quote",
+    "mcp__gear-more__repair_ticket",
+    "mcp__gear-more__reserve_gear"
+  ],
+  "permission_denials": [],
+  "permission_denied_messages": [],
+  "calls": [
+    {
+      "call": "ToolSearch",
+      "input": {
+        "query": "select:mcp__gear__find_gear,mcp__gear__low_stock",
+        "max_results": 5
+      },
+      "is_error": null,
+      "result": [
+        {
+          "type": "tool_reference",
+          "tool_name": "mcp__gear__find_gear"
+        },
+        {
+          "type": "tool_reference",
+          "tool_name": "mcp__gear__low_stock"
+        }
+      ]
+    },
+    {
+      "call": "mcp__gear__find_gear",
+      "input": {
+        "code": "G-417"
+      },
+      "is_error": null,
+      "result": [
+        {
+          "type": "text",
+          "text": "G-417 頭燈｜貨架 D-07｜剩 37"
+        }
+      ]
+    },
+    {
+      "call": "mcp__gear__low_stock",
+      "input": {
+        "below": 3
+      },
+      "is_error": null,
+      "result": [
+        {
+          "type": "text",
+          "text": "G-108 行李秤 剩 2\nG-233 雪鏡 剩 1\nG-352 營燈 剩 0\nG-590 潛水鏡 剩 2"
+        }
+      ]
+    }
+  ]
+}
