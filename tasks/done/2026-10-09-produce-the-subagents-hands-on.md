@@ -1,13 +1,13 @@
 ---
 id: 2026-10-09-produce-the-subagents-hands-on
 title: Produce the subagents hands-on tutorial under the content-value rules
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-5-video-reference-comparison
 claimed_at: 2026-10-09T20:07:40Z
 created_at: 2026-10-09T20:07:39Z
-completed_at:
+completed_at: 2026-10-10T03:08:36Z
 branch: claude/subagents-hands-on-video
 depends_on: []
 scope:
@@ -33,13 +33,14 @@ goes as far as the publish gate on `/admin/videos`; uploading stays the owner's.
 - [x] Two independent fact checks (`verify-1.md`, `verify-2.md`), their findings applied.
 - [x] Narration synthesized and checked until no line was flagged; the audio gate approved it.
 - [x] Its files in the repository.
-- [ ] The cut, and the final and publish gates.
+- [x] The cut, and the final and publish gates: final 11 of 11 on the first submission with the
+  judge's demonstration score at 0.89, publish 4 of 4, both approved by the server.
 - [ ] Uploading to YouTube, which is the owner's.
 
 ## Steps
 
 - [x] Plan, run, write, verify twice, narrate.
-- [ ] `render`, `assemble`, `captions`, `review-push --gate final`, `package`,
+- [x] `render`, `assemble`, `captions`, `review-push --gate final`, `package`,
   `review-push --gate publish`; languages: zh-TW only (the owner, in chat).
 
 ## How to verify
