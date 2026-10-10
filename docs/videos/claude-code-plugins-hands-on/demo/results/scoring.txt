@@ -1,0 +1,192 @@
+SCORING, by the rules the brief fixed before any session ("計分規則"). 2026-10-10, Claude Code 2.1.295,
+--model sonnet (reported as claude-sonnet-5-5 in every session), Windows 11, Git Bash, headless
+(claude -p), --permission-mode default. Twelve sessions, one each; nothing was rerun.
+Every cell below is read from the stream, the two hook records or the files the session left; none
+is taken from what the model said about itself.
+
+1. The main line: the same request (ship-b.txt) in project B, three times with --plugin-dir, three times without
+
+run | Skill: listed / used / effect            | subagent: listed / used / effect         | hook: plugin listed / used / effect | all three parts
+k1  | yes / yes / yes                          | yes / yes / yes                          | yes / yes (5 lines = 5 Edit+Write) / see g1 | yes
+k2  | yes / yes / yes                          | yes / yes / yes                          | yes / yes (4 lines = 4 Edit+Write) / see g1 | yes
+k3  | yes / yes / yes                          | yes / yes / yes                          | yes / yes (4 lines = 4 Edit+Write) / see g1 | yes
+n1  | no / no / no                             | no / no / no                             | no / no (0 lines, 3 Edit calls) / -         | no
+n2  | no / no / no                             | no / no / no                             | no / no (0 lines, 3 Edit calls) / -         | no
+n3  | no / no / no                             | no / no / no                             | no / no (0 lines, 3 Edit calls) / -         | no
+
+  listed  = the init event's skills / agents list names it (hook row: the plugin is on the plugins list)
+  used    = the stream holds a Skill call / an Agent call that names it (hook row: the guard's own
+            record has one line from the plugin for every Edit or Write call in the stream)
+  effect  = releases/v1.2.1.md exists with the template's three headings word for word / the
+            subagent's report names J2103 and J2204 and has a line "共 2 筆" (hook row: only g1 asks
+            for an edit the guard stops; see table 5)
+
+The nine cells as counts, with the plugin (k1 to k3) and without it (n1 to n3):
+  part      | listed    | used      | effect
+  Skill     | 3/3 | 0/3 | 3/3 | 0/3 | 3/3 | 0/3
+  subagent  | 3/3 | 0/3 | 3/3 | 0/3 | 3/3 | 0/3
+  hook      | 3/3 | 0/3 | 3/3 | 0/3 | 1/1 (g1, one session) | not asked without the plugin
+"All three parts": 3 of 3 with the plugin, 0 of 3 without. No n session lists a seed part.
+The brief's condition for outcome 1 (at least 2 of 3 with, 0 of 3 without, no seed part on a bare
+list) is met. calc.mjs: a 3-to-0 split is 1 way in 20 if the plugin made no difference.
+
+2. What else each main-line run did (recorded, not part of the nine cells)
+
+run | F1 | F2 | F3 | F4 file, headings | F5  | unfinished jobs named in the replies | what happened to "用 log-scout" in the request
+k1  | yes | yes | yes | yes, 3 of 3     | yes | 2 of 2 | Agent call, subagent_type "ship-kit:log-scout", ran in the background, 1 result line
+k2  | yes | yes | yes | yes, 3 of 3     | yes | 2 of 2 | the same, 2 result lines (the report arrived after the first reply)
+k3  | yes | yes | yes | yes, 3 of 3     | yes | 2 of 2 | the same, 2 result lines
+n1  | yes | no  | yes | no, 0 of 3      | no  | 2 of 2 | no Agent call; the main conversation read both logs itself
+n2  | yes | yes | yes | no, 0 of 3      | no  | 2 of 2 | no Agent call; read both logs itself
+n3  | yes | yes | yes | no, 0 of 3      | no  | 2 of 2 | no Agent call; read both logs itself
+The three n replies, the sentence about log-scout (word for word):
+  n1: 這個環境裡沒有 `log-scout` 這個 agent 或 skill,所以我直接讀了 `logs/` 下的兩個檔案。
+  n2: 這次 session 沒有 `log-scout` 這個 agent 或 skill，所以我直接讀 `logs/` 下的兩個檔案自己比對。
+  n3: 這個環境裡沒有 `log-scout` 這個 agent 或 skill，所以我直接讀 `logs/` 下的兩個檔案自己比對 `start` 與 `done`：
+      and its last line: 如果你有 `log-scout` 的 plugin，需要先安裝或啟用我才能呼叫它。
+The subagent's report (k1 to k3): k1 is the three lines the agent file asks for and nothing else.
+k2 and k3 add an explanation after "共 2 筆" (so that line is not the last one), k3 also corrects
+a line number inside the report, and k2 and k3 mention J2202 (a finished job) while explaining why
+it does not count. The rule fixed beforehand asks for both ids and a line "共 2 筆": met 3 of 3.
+n1's CHANGELOG has no "## Unreleased" heading left (it renamed the heading): F2 no.
+
+3. Names: on the init lists, and in the calls
+
+where                                  | with only the plugin (k1 k2 k3 g1 s1 r1 x1)   | project and plugin (b1)                   | only the project (o1)
+init plugins                           | ship-kit (source "ship-kit@inline", version "0.1.0", path <plugin>) | the same            | none of the seed's
+init skills                            | ship-kit:release-prep                         | release-prep and ship-kit:release-prep    | release-prep
+init agents                            | ship-kit:log-scout                            | log-scout and ship-kit:log-scout          | log-scout
+init slash_commands                    | ship-kit:release-prep                         | release-prep and ship-kit:release-prep    | release-prep
+Skill call, input "skill"              | "ship-kit:release-prep" (k1 k2 k3 r1; 4 of 4) | "release-prep"                            | "release-prep"
+"Base directory for this skill"        | <plugin>\skills\release-prep (k1 k2 k3 r1)    | <lab>\.claude\skills\release-prep         | <lab>\.claude\skills\release-prep
+Agent call, input "subagent_type"      | "ship-kit:log-scout" (k1 k2 k3 r1; 4 of 4)    | "log-scout"                               | "log-scout"
+hook events for the subagent           | SubagentStart:ship-kit:log-scout              | SubagentStart:log-scout                   | SubagentStart:log-scout
+calls under it, in the hook record     | by=ship-kit:log-scout                         | by=log-scout                              | by=log-scout
+slash expansion (x1)                   | UserPromptExpansion slash_command name=ship-kit:release-prep source=plugin | not run        | not run
+hook names in the stream               | PreToolUse:Edit, PreToolUse:Write (no prefix, no key that names the plugin) | the same      | the same
+the text of a blocked edit (g1)        | "This hook comes from the ship-kit@inline plugin." | not run                              | not run
+The request says "log-scout" without a prefix. In the four plugin-only sessions that delegated,
+the model wrote the prefixed type itself every time, so no call with the unprefixed name was ever
+sent to a session that had only the plugin's agent: whether such a call would reach it was not
+observed. In b1, where both exist, the unprefixed call ran the project's agent and the unprefixed
+Skill call loaded the project's skill; the plugin's two were listed and not used.
+
+4. The guard, every session
+
+run | Edit+Write calls | guard lines: from the plugin / from the project | pass / block | PLUGIN_ROOT on the lines | hook_response lines for PreToolUse:Edit and :Write (exit 0 / other)
+k1  | 5 | 5 / 0 | 5 / 0 | backslash                        | 10 / 0
+k2  | 4 | 4 / 0 | 4 / 0 | backslash                        |  8 / 0
+k3  | 4 | 4 / 0 | 4 / 0 | backslash                        |  8 / 0
+n1  | 3 | 0 / 0 | -     | (no record file)                 |  3 / 0
+n2  | 3 | 0 / 0 | -     | (no record file)                 |  3 / 0
+n3  | 3 | 0 / 0 | -     | (no record file)                 |  3 / 0
+b1  | 4 | 4 / 4 | 8 / 0 | plugin lines backslash, project lines unset | 12 / 0
+g1  | 1 | 1 / 0 | 0 / 1 | backslash                        |  1 / 1 (exit 2, outcome error)
+s1  | 1 | 0 / 0 | -     | (no record file)                 |  1 / 1 (exit 1, outcome error)
+r1  | 3 | 3 / 0 | 3 / 0 | backslash                        |  6 / 0
+x1  | 4 | 4 / 0 | 4 / 0 | backslash                        |  8 / 0
+o1  | 5 | 0 / 5 | 5 / 0 | unset                            | 10 / 0
+The project's logging hook answers every PreToolUse too, so one Edit has one exit-0 line without
+any guard, two with one guard, three with both guards (b1: 9 for 3 Edit calls, 3 for 1 Write call).
+"backslash" is the environment variable CLAUDE_PLUGIN_ROOT as the guard's process received it.
+The hook's command line, as the blocked edit's tool result prints it in g1, is the plugin folder
+written with backslashes followed by the literal "/scripts/guard.mjs" from the hooks file.
+
+5. The same request (guard-b.txt), the adapted plugin and the one whose hooks file was not adapted
+
+                                   | g1 (kit.sh good)                                  | s1 (kit.sh stale; validate: "Validation passed")
+plugin on the init list            | ship-kit, plugin_errors 0                          | ship-kit, plugin_errors 0
+stderr of the session              | 0 bytes                                            | 0 bytes
+Edit src/fares.test.mjs            | stopped by a hook (is_error true)                  | ran
+the tool result                    | 4 lines, quoted in results/g1.blocked-edit.txt     | "The file <lab>\src\fares.test.mjs has been updated successfully. (...)"
+the existing test file afterwards  | unchanged (sha256 6aa2fe229839400c before and after) | changed (6aa2fe229839400c -> e01c5fc49cacb8f4), last line "// checked"
+the guard's record                 | 1 line: guard(plugin) Edit fares.test.mjs -> block | PLUGIN_ROOT backslash | no file was written
+hook_response for PreToolUse:Edit  | exit 2 "error" (the guard) and exit 0 (the logger) | exit 1 "error" (node: Cannot find module '<lab>\.claude\hooks\guard.mjs') and exit 0 (the logger)
+permission_denials on the result   | 1 (the Edit)                                       | 0
+the final reply                    | says the ship-kit plugin's PreToolUse hook stopped it | "已在 `src/fares.test.mjs` 最後加上 `// checked`，其他檔案沒動。"
+Where s1's failure can be seen: the hook_response line of the stream (only with
+--include-hook-events) and one line of the debug file (only with --debug-file). Where it cannot:
+the init event's plugin_errors, the session's stderr, the Edit's tool result, the reply.
+The brief's condition for "validated, yet the hook did not arrive" (empty guard record and a
+changed test file) is met, for this one session.
+
+6. r1: reads not pre-approved (--allowedTools Edit,Write,Skill,Agent,Task; one session)
+  Read <plugin>/skills/release-prep/template.md -> refused: asked. Tool result: "Claude requested
+    permissions to read from <plugin>\skills\release-prep\template.md, but you haven't granted it
+    yet." The logging hook has the PermissionRequest line (mode=default suggestions=1); the stream
+    has a permission_denied line with decision_reason_type "workingDir", decision_reason "Path is
+    outside allowed working directories"; permission_denials lists the Read.
+  Reads inside the project: 3 by the main conversation and 1 Glob + 2 Read under the subagent, all ran
+    without a request. The Skill call and the Agent call ran.
+  Scored: skill listed yes, used yes, effect NO (no releases/v1.2.1.md: the reply says it could not
+    read the template and did not guess the headings) | agent yes, yes, yes | hook 3 lines = 3 Edit
+    calls | all three parts no. F1 F2 F3 yes, F4 no, F5 yes.
+
+7. x1: the prefixed slash command (/ship-kit:release-prep 1.2.1; one session)
+  Logging hook: "UserPromptExpansion slash_command name=ship-kit:release-prep source=plugin".
+  No Skill call in the stream and no "Base directory for this skill" message. The first call is a
+  Read of <plugin>/skills/release-prep/template.md (ran; Read is pre-approved in this arm).
+  F1 to F5 all yes, 3 of 3 headings (the note's three sections were left empty this time).
+  Guard: 4 lines from the plugin = 4 Edit+Write calls.
+
+8. First request of the main conversation, input side (input + cache write + cache read tokens)
+  with the plugin (k1 k2 k3):    11353, 11356, 11353   min 11353, max 11356, mean 11354.0
+  without the plugin (n1 n2 n3): 11232, 11232, 11230   min 11230, max 11232, mean 11231.3
+  difference of the means 122.7 tokens; smallest pairwise difference 121, largest 126; the widest
+  spread inside one arm is 3. The two arms do not overlap, so the number can be said: about 120
+  tokens on the first request for this plugin attached and not yet used (one skill and one agent
+  with one-line descriptions; the hook adds nothing a model reads).
+  Project A, one session each: with project parts and the plugin (b1) 11476, with project parts
+  only (o1) 11345: 131 more. Other first requests: g1 11331, s1 11324 (guard-b.txt); r1 11354
+  (ship-b.txt); x1 11689 (the slash command: the first request already carries the skill's body).
+  k1's init lists one more shipped skill ("slides", Claude Code's own) than k2 and k3; its first
+  request is the same 11353 as k3's.
+
+9. claude plugin validate, Claude Code 2.1.295 (run twice by the runner, 09:19Z inside m-checks.sh and
+   09:23Z to 09:26Z alone; both equal the planner's record byte for byte)
+  variant     | last line                                                   | exit | a part that validates and still does not arrive
+  good        | ✔ Validation passed                                         | 0    | -
+  stale       | ✔ Validation passed                                         | 0    | the hook (s1, one session: ran, table 5)
+  noscript    | ✔ Validation passed                                         | 0    | not run in a session
+  inside      | ✔ Validation passed                                         | 0    | not run in a session (official page: parts inside .claude-plugin/ do not load)
+  nomanifest  | ✔ Validation passed                                         | 0    | -
+  minimal     | ✔ Validation passed with warnings (3 warnings)              | 0    | -
+  typo        | ✔ Validation passed with warnings (1 warning)               | 0    | -
+  badjson     | ✘ Validation failed                                         | 1    |
+  noname      | ✘ Validation failed                                         | 1    |
+  hookpath    | ✘ Validation failed                                         | 1    |
+  nowrap      | ✘ Validation failed                                         | 1    |
+  badagent    | ✘ Validation failed                                         | 1    |
+  good --strict    | ✔ Validation passed                                    | 0    |
+  minimal --strict | ✘ Validation failed (--strict treats warnings as errors) | 1  |
+  Five stopped, two warned, five passed; three of the five that passed are deliberately broken.
+
+10. What each session's init event listed: Claude Code's own / the seed's / anything else
+  run | plugins   | skills      | agents    | slash commands
+  k1  | 3 / 1 / 0 | 22 / 1 / 0  | 6 / 1 / 0 | 59
+  n1  | 3 / 0 / 0 | 21 / 0 / 0  | 6 / 0 / 0 | 57
+  k2  | 3 / 1 / 0 | 21 / 1 / 0  | 6 / 1 / 0 | 58
+  n2  | 3 / 0 / 0 | 21 / 0 / 0  | 6 / 0 / 0 | 57
+  k3  | 3 / 1 / 0 | 21 / 1 / 0  | 6 / 1 / 0 | 58
+  n3  | 3 / 0 / 0 | 21 / 0 / 0  | 6 / 0 / 0 | 57
+  b1  | 3 / 1 / 0 | 21 / 2 / 0  | 6 / 2 / 0 | 59
+  g1  | 3 / 1 / 0 | 21 / 1 / 0  | 6 / 1 / 0 | 58
+  s1  | 3 / 1 / 0 | 21 / 1 / 0  | 6 / 1 / 0 | 58
+  r1  | 3 / 1 / 0 | 21 / 1 / 0  | 6 / 1 / 0 | 58
+  x1  | 3 / 1 / 0 | 21 / 1 / 0  | 6 / 1 / 0 | 58
+  o1  | 3 / 0 / 0 | 21 / 1 / 0  | 6 / 1 / 0 | 58
+  Slash commands that are not also on the skills list: 36 in every session. MCP servers and tools:
+  0 in every session. Tools: Task Edit Glob Grep Read Skill Write in every session (no Bash).
+  plugin_errors: absent in every session. Instruction files loaded: 0 in every session.
+
+11. The four outcomes the brief promises, and the level of evidence each reached
+  1. Move the three parts into a plugin folder and load it into a second project: holds. The six
+     files equal the ones kit.sh builds (m-checks.sh, diff -r exit 0); 3 of 3 with, 0 of 3 without.
+     Level: 跑過 (ran, with input, action, result, date and version on record). Three runs a side.
+  2. Check each part in three places: holds; all nine cells filled from records and files. Level: 跑過.
+  3. Read what validate stops and what it lets through: holds; the twelve variants and the two
+     --strict runs equal the planner's. "Validated, yet a part did not arrive": holds for the hook,
+     in the one session s1. Level: 跑過 (the s1 half is one run: "this time").
+  4. What changes when a part moves into a plugin (names, paths, who wins when both exist): each
+     of b1, r1 and x1 gave a clear result. Level: 跑過, one run each: "this time".
+  None reaches 看過: no interactive screen was opened.

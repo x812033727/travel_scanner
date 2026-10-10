@@ -1,0 +1,16 @@
+PreToolUse by=main id=c1 Skill skill=ship-kit:release-prep keys=skill,args
+PreToolUse by=main id=c2 Agent type=ship-kit:log-scout background=- prompt_chars=199
+SubagentStart agent=ship-kit:log-scout
+PostToolUse by=main id=c2 Agent type=ship-kit:log-scout background=- prompt_chars=199 | status=async_launched
+PreToolUse by=main id=c3 Read package.json
+PreToolUse by=main id=c4 Read CHANGELOG.md
+PreToolUse by=ship-kit:log-scout id=c5 Glob .
+PreToolUse by=main id=c6 Read README.md
+PreToolUse by=main id=c7 Read <plugin>/skills/release-prep/template.md
+PreToolUse by=ship-kit:log-scout id=c8 Read logs/sync-2026-10-08.log
+PreToolUse by=ship-kit:log-scout id=c9 Read logs/sync-2026-10-09.log
+PreToolUse by=main id=c10 Edit package.json
+PreToolUse by=main id=c11 Edit CHANGELOG.md
+PreToolUse by=main id=c12 Edit README.md
+PreToolUse by=main id=c13 Write releases/v1.2.1.md
+SubagentStop agent=ship-kit:log-scout
