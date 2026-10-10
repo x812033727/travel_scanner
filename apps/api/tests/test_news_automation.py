@@ -838,47 +838,160 @@ def test_html_listing_filters_by_query_string_and_every_format_by_title_keyword(
     assert [row.url for row in kept] == ["https://example.com/1"]
 
 
-def _claude_blog_card(slug: str, title: str, date: str) -> str:
-    # One card of claude.com/blog as Webflow renders it (2026-10-04): the visible date and
-    # title are plain divs, the date sits again in a hidden fs-list block, and the card
-    # carries three anchors to the post, two of them with only a screen-reader span and
-    # one with no text at all.
+def _claude_blog_card(slug: str, title: str, date: str, excerpt: str) -> str:
+    # One card of claude.com/resources/product-announcements (2026-10-10): the whole card is
+    # a single anchor, and its text is the type, the date, the title, the excerpt and the
+    # product tag, in that order.
     return (
-        '<div role="listitem" class="blog_cms_item w-dyn-item"><div class="card_blog_wrap">'
-        f'<div class="card_blog_content"><div class="u-text-style-caption">{date}</div>'
-        f'<div class="card_blog_title u-text-style-h6">{title}</div></div>'
-        f'<div class="u-display-none"><div fs-list-field="heading">{title}</div>'
-        f'<div fs-list-fieldtype="date" fs-list-field="date">{date}</div></div>'
-        f'<a data-cta="Blog page" href="/blog/{slug}" class="clickable_link w-inline-block">'
-        f'<span class="clickable_text u-sr-only">{title}</span></a>'
-        '<div class="w-condition-invisible"><a target="_blank" href="#" class="clickable_link">'
-        f'<span class="clickable_text u-sr-only">{title}</span></a></div>'
-        f'<a aria-hidden="true" fs-list-element="item-link" href="/blog/{slug}"></a>'
-        "</div></div>"
+        f'<a href="/resources/articles/{slug}" class="ResourceCard__card">'
+        '<div class="ResourceCard__header"><span class="ResourceCard__type"><svg></svg>Article'
+        f'</span><span class="ResourceCard__meta">{date}</span></div>'
+        f'<div class="ResourceCard__body"><h3 class="ResourceCard__title">{title}</h3>'
+        f'<p class="ResourceCard__excerpt">{excerpt}</p>'
+        '<div class="ResourceCard__products"><span>Claude Code</span></div></div></a>'
     )
 
 
 def test_claude_blog_listing_yields_one_undated_entry_per_card() -> None:
-    # The hourly scanner missed "Customize Claude Code with mods" (2026-10-01) because the
-    # source had not been loaded on the host, not because the listing is unreadable: this
-    # pins what the shipped config reads from the page, so a markup change is caught here
-    # and not as a silent empty scan. The cards carry no <time>, so the entries are
-    # undated and the first scan records them as seen (scanner.BASELINE); a post the
-    # listing did not show before is read as new on the scans after that.
+    # claude.com/blog moved in October 2026: it redirects to /resources/articles and a post
+    # is /resources/articles/<slug>. The config still filtered on /blog/ and read nothing,
+    # and the fixture of the old markup kept passing; only reading the live page showed it.
+    # This pins the shipped config against the page as it is now. The listing also links to
+    # videos and to anthropic.com, which are not this source's posts. The cards carry no
+    # <time>, so the entries are undated: the first scan records them as seen
+    # (scanner.BASELINE), and a card the listing did not show before is read as new.
     listing = (
-        '<html><body><nav><a href="/blog">Blog</a><a href="/ja/blog">日本語ブログ</a>'
+        '<html><body><nav><a href="/resources/articles">Articles and announcements</a>'
+        '<a href="/blog">The blog, which now redirects</a>'
         '<a href="/pricing">Pricing overview and plans</a></nav>'
-        '<div role="list" class="w-dyn-items">'
-        + _claude_blog_card("claude-code-mods", "Customize Claude Code with mods", "Oct 1, 2026")
-        + _claude_blog_card("build-plugins-for-claude", "Build plugins for Claude", "Sep 25, 2026")
-        + "</div></body></html>"
+        '<a href="https://www.youtube.com/watch?v=abc" class="ResourceCard__card">'
+        "Video Introducing Claude Sonnet 5.5</a>"
+        '<a href="https://www.anthropic.com/claude-haiku-5-5" class="ResourceCard__card">'
+        "Article Oct 7, 2026 Claude Haiku 5.5</a>"
+        + _claude_blog_card(
+            "claude-code-mods",
+            "Customize Claude Code with mods",
+            "Oct 1, 2026",
+            "Change how Claude Code behaves and looks with a few lines of TypeScript.",
+        )
+        + _claude_blog_card(
+            "build-plugins-for-claude",
+            "Build plugins for Claude",
+            "Sep 25, 2026",
+            "The excerpt of the second card.",
+        )
+        + "</body></html>"
     ).encode()
-    news = parse_entries(listing, "html", "https://claude.com/blog", _source_config("Claude blog"))
-    assert [(row.title, row.url) for row in news] == [
-        ("Customize Claude Code with mods", "https://claude.com/blog/claude-code-mods"),
-        ("Build plugins for Claude", "https://claude.com/blog/build-plugins-for-claude"),
+    news = parse_entries(
+        listing,
+        "html",
+        "https://claude.com/resources/product-announcements",
+        _source_config("Claude blog"),
+    )
+    assert [row.url for row in news] == [
+        "https://claude.com/resources/articles/claude-code-mods",
+        "https://claude.com/resources/articles/build-plugins-for-claude",
     ]
+    # The card's whole text is the entry title; the candidate takes the page's own title.
+    assert news[0].title == (
+        "Article Oct 1, 2026 Customize Claude Code with mods Change how Claude Code behaves"
+        " and looks with a few lines of TypeScript. Claude Code"
+    )
     assert all(row.published_at is None for row in news)
+
+
+def test_claude_developer_blog_story_is_its_body_div() -> None:
+    # claude.dev posts have no <article> or <main>: with the default tags the page reads as
+    # empty (found on 2026-10-10, when the feed validated and every page gave no text).
+    page = (
+        b"<html><head><title>Claude Code in the cloud / claude.dev Blog</title></head><body>"
+        b'<div class="th"><a href="/blog/">All posts in the developer blog</a></div>'
+        b'<div class="prose" id="body"><section class="art-section">'
+        b"<p>You probably run Claude Code in a terminal on your own laptop.</p>"
+        b"<p>A cloud session runs the same loop on a machine that stays on.</p>"
+        b"</section></div>"
+        b'<div class="foot"><p>Subscribe to the developer newsletter.</p></div>'
+        b"</body></html>"
+    )
+    url = "https://claude.dev/blog/claude-code-in-the-cloud/"
+    article = read_article(page, url, _source_config("Claude developer blog"))
+    assert "terminal on your own laptop" in article.text
+    assert "a machine that stays on" in article.text
+    assert "Subscribe" not in article.text and "All posts" not in article.text
+    assert read_article(page, url).text == ""
+
+
+def test_a_feed_item_without_a_description_is_read_from_content_encoded() -> None:
+    # The Claude Code changelog (Mintlify) puts the whole entry in <content:encoded> and has
+    # no <description>; without it the summary was empty and the source could not validate.
+    rss = (
+        b'<?xml version="1.0" encoding="UTF-8"?>'
+        b'<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel>'
+        b"<title><![CDATA[Claude Code changelog]]></title>"
+        b"<description><![CDATA[Release notes for Claude Code.]]></description>"
+        b"<item><title><![CDATA[2.1.296]]></title>"
+        b"<link>https://code.claude.com/docs/en/changelog#2-1-296</link>"
+        b"<pubDate>Fri, 09 Oct 2026 19:44:41 GMT</pubDate>"
+        b"<content:encoded><![CDATA[<p><strong>Added</strong></p><ul>"
+        b"<li>Added <code>autoCompactWindow</code> to subagent frontmatter</li></ul>]]>"
+        b"</content:encoded></item>"
+        # An item with both keeps its description: the fallback changes no feed that
+        # already gave a summary.
+        b"<item><title>2.1.295</title>"
+        b"<link>https://code.claude.com/docs/en/changelog#2-1-295</link>"
+        b"<description>Bug fixes.</description>"
+        b"<content:encoded><![CDATA[<p>The whole list of fixes.</p>]]></content:encoded></item>"
+        b"</channel></rss>"
+    )
+    config = _source_config("Claude Code changelog")
+    assert config["evidence_from_feed_summary"] is True
+    first, second = parse_entries(
+        rss, "rss", "https://code.claude.com/docs/en/changelog/rss.xml", config
+    )
+    assert (first.title, first.url) == (
+        "2.1.296",
+        "https://code.claude.com/docs/en/changelog#2-1-296",
+    )
+    assert first.summary == "Added Added autoCompactWindow to subagent frontmatter"
+    assert first.published_at == datetime(2026, 10, 9, 19, 44, 41, tzinfo=UTC)
+    assert second.summary == "Bug fixes."
+
+
+def test_github_changelog_is_read_for_copilot_entries_only() -> None:
+    rss = (
+        b"<rss><channel>"
+        b"<item><title>Claude Haiku 5.5 in GitHub Copilot</title>"
+        b"<link>https://github.blog/changelog/2026-10-07-claude-haiku-5-5-in-github-copilot"
+        b"</link></item>"
+        b"<item><title>Repository rulesets: new bypass options</title>"
+        b"<link>https://github.blog/changelog/2026-10-07-repository-rulesets</link></item>"
+        b"<item><title>Local sandboxing for GitHub copilot now generally available</title>"
+        b"<link>https://github.blog/changelog/2026-10-07-local-sandboxing</link></item>"
+        b"</channel></rss>"
+    )
+    kept = parse_entries(
+        rss, "rss", "https://github.blog/changelog/feed/", _source_config("GitHub Changelog")
+    )
+    assert [row.url.rsplit("/", 1)[-1] for row in kept] == [
+        "2026-10-07-claude-haiku-5-5-in-github-copilot",
+        "2026-10-07-local-sandboxing",
+    ]
+
+
+def test_openrouter_listing_takes_announcement_posts_and_not_the_category_link() -> None:
+    listing = (
+        b'<a href="/blog/announcements/">Announcements</a>'
+        b'<a href="/blog/engineering/routing-a-million-requests/">Routing a million requests</a>'
+        b'<a href="/blog/announcements/batch-api/">Batch API: half-price inference by bundling'
+        b" requests Sep 22, 2026</a>"
+    )
+    news = parse_entries(
+        listing,
+        "html",
+        "https://openrouter.ai/blog/",
+        _source_config("OpenRouter announcements"),
+    )
+    assert [row.url for row in news] == ["https://openrouter.ai/blog/announcements/batch-api/"]
 
 
 def test_news_tls_context_still_verifies_but_drops_python_313_strict_mode() -> None:

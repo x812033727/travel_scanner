@@ -1,0 +1,10 @@
+# k2: the Agent call's subagent_type was "ship-kit:log-scout"; this is the summary of the task_notification that came back (status completed)
+J2103｜sync-2026-10-08.log｜8
+J2204｜sync-2026-10-09.log｜11
+共 2 筆
+
+判斷依據：每個 job 以 `start <job>` 開始，以 `done <job> ...` 作為結束，`done` 後面可接 ok 或 failed。`fail` 行單獨出現不算結束，因為 J2202 之後仍有 `done J2202 failed`。`step` 與 `beat` 只是進度或心跳。J2103 與 J2204 都沒有 `done` 行，所以判定未結束。
+
+檔案路徑：
+- <lab>\logs\sync-2026-10-08.log
+- <lab>\logs\sync-2026-10-09.log

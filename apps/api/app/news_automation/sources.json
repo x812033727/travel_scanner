@@ -1,5 +1,5 @@
 {
-  "reviewed_on": "2026-09-30",
+  "reviewed_on": "2026-10-10",
   "sources": [
     {
       "name": "OpenAI News",
@@ -60,15 +60,15 @@
     },
     {
       "name": "Claude blog",
-      "url": "https://claude.com/blog",
+      "url": "https://claude.com/resources/product-announcements",
       "format": "html",
       "role": "evidence",
       "vertical": "ai",
       "is_first_party": true,
       "enabled": true,
       "scan_interval_minutes": 60,
-      "config": {"include_path_prefixes": ["/blog/"], "minimum_title_length": 12},
-      "note": "Anthropic's product blog (Claude apps, Claude Code, connectors); no RSS. Separate from anthropic.com/news, which carries company and model announcements. HTML listings keep the default 20 entries per scan: several blogs pin older posts first, and a source's first scan only records its listing as seen (scanner.BASELINE)."
+      "config": {"include_path_prefixes": ["/resources/articles/"], "minimum_title_length": 12},
+      "note": "Anthropic's product posts (Claude apps, Claude Code, connectors); no RSS. Separate from anthropic.com/news, which carries company and model announcements. claude.com/blog moved in October 2026: it redirects to /resources/articles and every post is now /resources/articles/<slug>, so the old /blog/ prefix read nothing. The listing is the Product announcements category and not /resources/articles: on 2026-10-10 the two showed the same product posts, and half of what /resources/articles added was customer stories the writer would decline. Each card is one link whose text starts with the type and the date; the candidate takes the page's own title. The first card is a pinned older post, which a source's first scan records as seen (scanner.BASELINE); the listing shows about seven cards, so the default 20 entries per scan covers it."
     },
     {
       "name": "Claude Platform release notes",
@@ -81,6 +81,42 @@
       "scan_interval_minutes": 60,
       "config": {"evidence_from_feed_summary": true},
       "note": "Anthropic's API release notes. Every entry links to an anchor on one shared page, so the entry's feed summary (about 1,200 characters, the day's notes in full) is the evidence and revalidation reads the feed, not the page."
+    },
+    {
+      "name": "Claude developer blog",
+      "url": "https://claude.dev/rss.xml",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 5, "article_tags": [], "article_ids": ["body"]},
+      "note": "Anthropic's developer posts since July 2026 (Claude Code field guides, building with a new model, agent automations); a few a week, most of them how-to pieces the writer will decline as news. The story is div#body: the pages have no <article> or <main>, and without the id the page reads as empty (2026-10-10: 15,000 and 26,000 characters with it)."
+    },
+    {
+      "name": "Claude Code changelog",
+      "url": "https://code.claude.com/docs/en/changelog/rss.xml",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 720,
+      "config": {"evidence_from_feed_summary": true, "max_entries_per_scan": 2},
+      "note": "One entry per Claude Code version, one or two a day, titled with the bare version number. Every entry links to an anchor on one shared page of 4.8 MB, over the fetcher's 2 MB cap, so the feed entry is the evidence; it sits in <content:encoded>, which feeds.parse_xml_feed reads when an item has no description. Twice a day and the top two entries only: most versions are lists of small fixes the writer will decline, and this keeps that to four candidates a day."
+    },
+    {
+      "name": "Anthropic engineering",
+      "url": "https://www.anthropic.com/engineering",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/engineering/"], "minimum_title_length": 12, "max_entries_per_scan": 50},
+      "note": "Anthropic's engineering posts; shares its host with Anthropic news. Quiet since May 2026 (developer posts now go to claude.dev), kept for the occasional long piece. The listing shows all 25 posts, so the cap is 50 and not the default 20: with 20, removing one post would bring the twenty-first into view as an undated entry the scanner had never seen, and an old post would be read as new."
     },
     {
       "name": "Hugging Face blog",
@@ -293,6 +329,18 @@
       "note": "GitHub's announcements, Copilot and developer AI tools included."
     },
     {
+      "name": "GitHub Changelog",
+      "url": "https://github.blog/changelog/feed/",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_title_keywords": ["Copilot"], "max_entries_per_scan": 10},
+      "note": "GitHub's product changelog, read for Copilot only: the feed covers all of GitHub (ten entries, about three days), and five of the ten named Copilot on 2026-10-10. One page per entry, 2,500 to 3,000 characters. Shares its host with GitHub blog."
+    },
+    {
       "name": "Cloudflare blog",
       "url": "https://blog.cloudflare.com/rss/",
       "format": "rss",
@@ -422,6 +470,18 @@
       "scan_interval_minutes": 60,
       "config": {"include_path_prefixes": ["/blog/"], "exclude_path_prefixes": ["/blog/topic"], "minimum_title_length": 12},
       "note": "Cursor (Anysphere) product and model announcements; no feed."
+    },
+    {
+      "name": "Cursor changelog",
+      "url": "https://cursor.com/changelog/rss.xml",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 5},
+      "note": "Cursor's release notes: two or three dated entries a month, one page per entry (2,500 to 7,000 characters). Shares its host with Cursor blog."
     },
     {
       "name": "Cognition blog",
@@ -566,6 +626,30 @@
       "scan_interval_minutes": 60,
       "config": {"max_entries_per_scan": 5},
       "note": "ASUS press site feed."
+    },
+    {
+      "name": "Ollama blog",
+      "url": "https://ollama.com/blog/rss.xml",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 5},
+      "note": "Ollama's announcements (new local models, app integrations, pricing): one to three dated posts a month, pages of 4,000 to 5,000 characters."
+    },
+    {
+      "name": "OpenRouter announcements",
+      "url": "https://openrouter.ai/blog/",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/blog/announcements/"], "minimum_title_length": 14},
+      "note": "OpenRouter's product and model-availability posts. The blog index is read as an HTML listing and not through a feed, because only a listing can be narrowed to /blog/announcements/. The minimum title length is 14 and not 12 so the link to the category page itself (\"Announcements\", 13 characters) is not taken for a post."
     }
   ]
 }

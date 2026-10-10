@@ -35,3 +35,11 @@ can pair with a first-party page.
 ## Notes
 
 - No X, no scraping, no paid API without the owner's decision.
+- 2026-10-10: the owner asked again, this time for the official X accounts to follow. The
+  list, each checked against a first-party page, is in `docs/official-ai-accounts.md`. The X
+  API is now pay-per-use only (https://docs.x.com/x-api/getting-started/pricing, read
+  2026-10-10): $0.005 per post read, $0.010 per user read, at most 3 million post reads per
+  billing cycle, no free tier. Following all 40 listed accounts was estimated at 30 to 42
+  US dollars a month, assuming five to seven posts per account a day (assumed, not
+  measured). The owner saw the price and decided not to use the API; a post would still be
+  a lead and not evidence. The decision above stands.

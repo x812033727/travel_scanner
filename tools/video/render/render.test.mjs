@@ -136,7 +136,7 @@ test("a stock photo is read from the work directory: listed in assets[], fetched
     { path: where, message: `${stock} is not in assets[]: stock fetch writes the entry there, and without it the description carries no credit` },
     { path: where, message: `${stock} is not in the work directory; fetch it with stock fetch (node tools/video/cli.mjs)` },
   ]);
-  doc.assets = [{ path: stock, source: "Photo by Lukas Rodriguez on Pexels", license: "Pexels License", author: "Lukas Rodriguez", url: "https://www.pexels.com/photo/seoul-at-night-3573351/" }];
+  doc.assets = [...showcase.assets, { path: stock, source: "Photo by Lukas Rodriguez on Pexels", license: "Pexels License", author: "Lukas Rodriguez", url: "https://www.pexels.com/photo/seoul-at-night-3573351/" }];
   assert.deepEqual(renderProblems(doc), [], "without root or work directory only the data is checked, as before");
   assert.deepEqual(renderProblems(doc, root).map((problem) => problem.message), [], "without a work directory the file is not looked for");
   assert.match(renderProblems(doc, root, { workdir })[0].message, /not in the work directory/);
@@ -698,4 +698,66 @@ test("a compilation whose thumbnail source changed is told to plan its metadata 
   out = "";
   assert.equal(await main(languages, ctx), EXIT.ok, out);
   assert.ok(opened > 0);
+});
+
+test("a photo card's photograph must exist and be in assets[], and its bytes are part of the key", () => {
+  const root = tempDir("video-photo-root-");
+  const workdir = tempDir("video-photo-work-");
+  const file = "docs/videos/a-video/photos/ship.jpg";
+  const doc = structuredClone(showcase);
+  const index = doc.scenes.findIndex((scene) => scene.id === "old-print");
+  // Only the photo card is looked at here: the temporary root has none of the other scenes' files.
+  doc.scenes = [doc.scenes[0], { ...doc.scenes[index], data: { ...doc.scenes[index].data, image: file } }];
+  doc.assets = [];
+  const where = "scenes[1] (old-print).data";
+  assert.deepEqual(sceneAssets(doc.scenes[1]), [file]);
+  assert.deepEqual(renderProblems(doc), [{ path: where, message: `${file} is not in assets[]: a photograph's source and licence go there, and without it the description carries no credit` }], "held to assets[] with no root at all");
+  assert.deepEqual(renderProblems(doc, root).map((problem) => problem.message), [
+    `${file} is not in assets[]: a photograph's source and licence go there, and without it the description carries no credit`,
+    `${file} does not exist`,
+  ]);
+  doc.assets = [{ path: "docs/videos/a-video/photos/another.jpg", source: "Somewhere", license: "Public domain" }];
+  assert.match(renderProblems(doc)[0].message, /is not in assets\[\]/, "the entry names the same path");
+  doc.assets = [{ path: file, source: "Wikimedia Commons: a ship", license: "Public domain" }];
+  assert.deepEqual(renderProblems(doc), []);
+  assert.match(renderProblems(doc, root)[0].message, /ship\.jpg does not exist/);
+  mkdirSync(path.join(root, path.dirname(file)), { recursive: true });
+  writeFileSync(path.join(root, file), "jpg one");
+  assert.deepEqual(renderProblems(doc, root, { workdir }), []);
+
+  const state = (plan) => plan.scenes.find((scene) => scene.id === "old-print").states;
+  const one = state(renderPlan(doc, "t", root, { workdir }));
+  assert.equal(one.length, 1, "a single state: nothing on the card is revealed");
+  assert.match(one[0].html, /<img src="https:\/\/video\.local\/repo\/docs\/videos\/a-video\/photos\/ship\.jpg" alt="">/);
+  assert.equal(state(renderPlan(doc, "t", root, { workdir }))[0].key, one[0].key, "the same bytes, the same key");
+  const title = (plan) => plan.scenes[0].states[0].key;
+  const before = title(renderPlan(doc, "t", root, { workdir }));
+  writeFileSync(path.join(root, file), "jpg two");
+  const two = state(renderPlan(doc, "t", root, { workdir }));
+  assert.equal(two[0].html, one[0].html);
+  assert.notEqual(two[0].key, one[0].key, "a swapped photograph redraws its card");
+  assert.equal(title(renderPlan(doc, "t", root, { workdir })), before, "and only its card");
+
+  // A stock photo: the screenshot's rules, the entry and the fetched file.
+  const sha = "d".repeat(64);
+  const stock = `stock/${sha}.jpg`;
+  doc.scenes[1].data.image = stock;
+  assert.deepEqual(renderProblems(doc, root, { workdir }).map((problem) => problem.message), [
+    `${stock} is not in assets[]: stock fetch writes the entry there, and without it the description carries no credit`,
+    `${stock} is not in the work directory; fetch it with stock fetch (node tools/video/cli.mjs)`,
+  ]);
+  doc.assets = [{ path: stock, source: "Photo by Somebody on Pexels", license: "Pexels License" }];
+  mkdirSync(path.join(workdir, "stock"));
+  writeFileSync(path.join(workdir, "stock", `${sha}.jpg`), "stock one");
+  assert.deepEqual(renderProblems(doc, root, { workdir }), []);
+  const first = state(renderPlan(doc, "t", root, { workdir }))[0];
+  writeFileSync(path.join(workdir, "stock", `${sha}.jpg`), "stock two");
+  assert.notEqual(state(renderPlan(doc, "t", root, { workdir }))[0].key, first.key);
+});
+
+test("a screenshot of the repository's own page still needs no assets[] entry", () => {
+  const root = fileURLToPath(new URL("../../../", import.meta.url));
+  const doc = structuredClone(showcase);
+  delete doc.assets;
+  assert.deepEqual(renderProblems(doc, root).map((problem) => problem.path), [`scenes[${doc.scenes.findIndex((scene) => scene.id === "old-print")}] (old-print).data`]);
 });

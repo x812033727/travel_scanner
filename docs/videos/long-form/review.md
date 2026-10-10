@@ -3351,6 +3351,402 @@ PASS is DURATION_ONLY for the six rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Policy judge demonstration-question increment (PR #1424): 1 file (2026-10-10)
+
+Reviewer: `claude-pr-review-1424-policy`. Author: `claude-fable-5.1`. Scope: DURATION_ONLY for the one changed binding below, reviewed at `c776540dd` ("fix(video): the drama format alone does not exempt a video from the demonstration question") on claude/policy-demo-explainer, whose other commit of its own is `feffaa86b` ("feat(video): the demonstration question is asked of tutorials only"). The reviewer wrote no part of those commits and edits only this report and review.json.
+
+Baseline: `1bd1d47ceab109b1425af01f1571173e95004c8e`, the head of origin/main and the merge base. The bound hash of the file is its blob at the baseline (computed with Node's crypto over `git show origin/main:<path>`), the other 107 bindings are current, and the branch changes neither receipt file nor anything under tools/video/long-form. The head bytes hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: apps/api/app/video_automation/judge.py` and nothing else. Every prior increment is preserved and the registry remains 108 files.
+
+- `apps/api/app/video_automation/judge.py`: `fe502055df82612df2dee120c9db78ff54029c0514a73df683ad8ce2e14e9637` -> `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7`.
+
+Findings, `apps/api/app/video_automation/judge.py` (+59/−18), read whole in the diff. Every changed line belongs to the policy judge: the module docstring's paragraph on which questions a video is asked; the `PolicyQuestions` literal, which gains `"explainer"`; the new `NO_DEMO_CATEGORIES = frozenset({"explainer", "story"})`; `PolicyVerdict`'s docstring; `read_policy_answers`, which takes a `questions` argument and, for an explainer, reads no `demo` and holds the verdict to the other three thresholds; the new `DEMO_NOT_ASKED` string and `policy_note`, whose `demo` may be None; `policy_questions_for`, which now reads `VideoProject.category` beside `shorts_line` and answers `"explainer"` for a row filed as `explainer` or `story` (a brand-story series episode and a cut Short are decided first, as before; no row, no category, and every other category, a drama's included, stay `"tutorial"`); and `judge_policy`, which asks an explainer the cut Short's three questions. The author's description holds. `POLICY_MIN_STANCE`, `POLICY_MIN_DEMO`, `POLICY_MAX_ADVICE` and `POLICY_MAX_SPONSORED` are not in the diff; they are score thresholds, not lengths. The outline judge, the pick note, the keyframe and audio judges and everything else in the module that reads a target, a minute count or a measured clock is the same bytes.
+
+Findings, the unbound new test `apps/api/tests/test_video_judge.py` (+267): seven tests of which questions are asked per category and format, the verdicts and notes, and that the request cannot name its own category. Its numbers are Jev scores (0.85, 0.17, 0.05, 0.1 and the like) and HTTP statuses; no episode length, target or floor is set, asserted or loosened.
+
+Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, target_seconds, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. The category named `explainer` here selects a question set only; it is not the explainer length profile and nothing reads it to choose a length. A case-insensitive scan of the 446 changed lines (412 added, 34 removed) of all six files in the branch's diff for minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, floor, plans.json, policy.json, process.env, seconds, frame, 時長, 片長, 長度, length, .skip and .only finds two lines, neither in judge.py: `load_runtime_settings` in the new API test (the settings loader's name) and the task file quoting this receipt's own failure message. The branch touches six files: the one above and five unbound ones (`apps/api/tests/test_video_judge.py`, `docs/videos/HANDS-OFF.md`, the task file, `tools/video/qa/policy.mjs`, `tools/video/qa/policy.test.mjs`).
+
+Ran (in a worktree at `c776540dd`, Node on Windows):
+
+- the hashing of the changed path against the receipt, the baseline blob and the head, with a CR, BOM and trailing-LF check;
+- `node tools/video/long-form/cli.mjs check` before rebinding, which named this one binding only;
+- a reading of `git diff origin/main...HEAD` for judge.py, test_video_judge.py, HANDS-OFF.md, qa/policy.mjs and qa/policy.test.mjs;
+- the scan described above.
+
+The CLI check, review.test.mjs and repo-hygiene.test.mjs are run after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept, as a product choice, exempting the `explainer` and `story` categories from the demonstration question, nor asking them the cut Short's wording of the other three; whether the policy judge is right is outside DURATION_ONLY.
+- Noted, not judged: the new comment in the unbound `tools/video/qa/policy.mjs` and the header of `policy.test.mjs` list "a drama" among the videos not asked for a demonstration, while judge.py at this head still asks a drama all four unless its category says otherwise. A comment, not a duration rule.
+- The five unbound changed files are not reviewed or bound here; they were read for the duration question only.
+- No video was judged, rendered or measured. pytest, ruff, mypy, the tool suites other than the three named above, lint, typecheck and CI were not run for this increment.
+- The 107 bindings this branch did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Photo card increment (PR #1425): 4 files (2026-10-10)
+
+Reviewer: `claude-pr-review-1425-photo-card`. Author: `claude-fable-5.1` (the receipt's `author_agent`, left as it stands; the commit's own trailer names Claude Opus 5.5 as co-author). Scope: DURATION_ONLY for the four changed bindings below, reviewed at `7611fd5bc403d39878d7b4084947b9cd1dba18e6` ("feat(video): a photo card pastes a real photograph as a print, with its credit"), the one commit of its own on claude/photo-paste-card (PR #1425), which adds a slide template `photo`. The reviewer wrote no part of that commit and edits only this report and review.json.
+
+Baseline: `1bd1d47ceab109b1425af01f1571173e95004c8e`, the merge base (origin/main at #1414). origin/main at review time, `88e46c2c25990aa12e4c59681d889f8247f7fb32` (#1420), is three commits further and differs from the merge base in no bound path and in neither receipt file. While this increment was being written the branch gained `79457338b98e8696c13488621701dcde9a78cdfd` ("Merge branch 'main' into claude/photo-paste-card"), whose parents are the reviewed commit and that origin/main: what it brings is main's own movement, 17 files, none of them bound and none a receipt file, so all 108 bound paths are the same blobs at that head as at the reviewed commit, and this increment is committed on top of it. Immutable Git blobs pass `durationReviewProblems` at the merge base and at origin/main for the report and all 108 REVIEW_FILES, under the "Dub skip-rate increment" above; the branch changes neither receipt file, nor review.mjs, nor anything under docs/videos/long-form or tools/video/long-form. Each of the four changed files matches its existing receipt and table at that baseline (the bound hash is the origin/main blob); its committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these four bindings, while the other 104 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `docs/videos/README.md`: `d03bddbb08af187f4fd62d1fcfd4fe9c77f8af6e5b73485c71bda686ac46df28` -> `09dee8b3c79a09ddd1d84ec8453d62582c75516cd58270c153f75e0ed75cb125`.
+- `tools/video/automation/automation.test.mjs`: `3b7f956b3e9b366b8b1bf9ab392d9c40d36ce3542941fa2678824611259e08c0` -> `d3c047a828ffa1000423b6412d4e0ae880ca2c7f3da1933c53b729d2119f8d09`.
+- `tools/video/automation/prompts.mjs`: `75f17ea823f2fc1f7ea39b3ae21df401d9329333222434e9d97ea632bbf02388` -> `2dc3f65a6aaa1845c6c248d80494190ee2fef05cfa27303e0b407739060241e0`.
+- `tools/video/core/schema.mjs`: `580c3eaf35c2ed4fc294658efdc54f77624ef3bb18837e04483580a7a3556470` -> `0202f27c4aa2d59c64fccb0fd495033a58999809943935c7004fc45d183ac94b`.
+
+The description handed to the reviewer with this increment (the name added to the template list, a sentence in the writer prompt's template guide, a test line, one row in the channel README's template table, nothing about lengths) differs from the diff in two places: prompts.mjs gains a function and no guide sentence, and the README gains six rows and a changed count. The findings below are from the diff.
+
+Findings, `tools/video/core/schema.mjs` (+1/−0): `"photo",` is added to `TEMPLATES` at line 38, between `"screenshot"` and `"chat"`, so the list holds 17 names instead of 16. Across tools/video the list is read in two lines, both in this module (273–274): the check that a scene's `template` is one of the list, `shot` or `screencast`, and that check's message. Everything below the new line moves one line down and keeps its bytes: `DEFAULT_TARGET_MINUTES = [8, 12]` (line 53), `MIN_EPISODE_MINUTES = 8` (line 56), `target_minutes` among the document keys (line 93), `action_seconds` in `SCENE_KEYS` (line 126) and its 1-to-8 check with the cast and policy conditions (lines 280–290), the long-anime policy required for an anime episode over eight minutes (line 308), and the `[min, max]` shape of `target_minutes` (lines 332–340). The lines naming a duration term number 25 at both revisions and are the same lines.
+
+Findings, `tools/video/automation/prompts.mjs` (+12/−1): two hunks. Lines 18–28 add a doc comment and an exported `workerShowcase(showcase)`, which returns the showcase without its `assets` key and without the scenes whose template is `photo`; line 36 has `references()` pass the parsed showcase fixture through it. No prompt text changes: `TEMPLATE_GUIDE` (line 99, was 88), `RULES_HEAD` and every stage's instructions are the same bytes eleven lines lower, and no writer prompt names the card. On this branch the unbound showcase fixture gains one `photo` scene (`old-print`, one narration line) and one `assets[]` entry; `workerShowcase` over the branch's fixture is deep-equal, and equal as serialised JSON, to origin/main's fixture (17 scenes, `target_minutes` `[0.5, 5]` at both revisions), and so is `references(root).showcase`. What the writing stages are handed as `showcase` (flow.mjs line 2691, beside the settings' `target_minutes`) is therefore the object it was at the baseline. The lines naming a duration term number 88 at both revisions and are the same lines: the planner's and writer's eight-minute texts, the Shorts' 25 to 55 seconds, the drama's 2 to 4 minutes, `action_seconds`, the explainer's 10-minute target and the long-anime runtime_spec instructions are untouched.
+
+Findings, `tools/video/automation/automation.test.mjs` (+1/−0): one assertion at line 89, inside "a model's answer is read as JSON, fenced or not": `references(ROOT).showcase` holds no `photo` scene and no `assets`. It sets or asserts no minute, second, frame or floor. The lines naming a duration term number 220 at both revisions and are the same lines.
+
+Findings, `docs/videos/README.md` (+7/−1): (a) line 49, the sentence above the template table, opens 「17 種投影片版型」 where it opened 「15 種」. The rest of that line is the same bytes, including its clause on the illustrated slides' cadence, 「插圖投影片每 5–8 秒一張、至少佔一半時間」: replacing the count in the old line gives the new line exactly. (b) Six rows are added to the table between `screenshot` and `outro`: `photo` (a real photograph shown as a pasted print: 24px white border, `tilt` −3° to 3° or ±1.5°, ±2° or ±2.5° by scene id, soft shadow, centred; `caption` one line of at most 40 characters under the print; `credit` one line of at most 60 characters as a capsule at its lower right; the photograph must be listed in `assets[]` or `render` refuses it), and the five templates the table had not listed, `chat` (1–3 bubbles), `quote`, `stats` (1–4 numbers), `terminal` and `cta`. The table now has 17 rows, one per name in `TEMPLATES`; at the baseline it had 11 rows for 16 names under a sentence that said 15. The numbers in the added rows are pixels, degrees, character caps and counts of elements; none is a length of time. The 長度 row (the 8-minute floor with ordinary drama excepted, the 8–12 default target, 10 minutes for the three seasons and AI terms, 8–20 whole minutes with a default of 10 for the flat explainer, 13 for the brand story, 480 seconds of body and cut, the drama's 2–4 and the compilation's 30–480) is the same bytes. The lines naming a duration term number 12 at both revisions; the only one that differs is line 49.
+
+How long a `photo` scene runs: like any slide, by its narration. `core/lint.mjs`, `core/timeline.mjs`, `core/duration.mjs` and `qa/checks.mjs` are bound, are not in the branch's diff and do not name the template; the unbound `TEMPLATE_SPECS.photo` (read as context) carries a `check` of its fields and `capacity: () => 0`, and no length.
+
+Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, chapter budgets, the cadence limits, or any covered state. A case-insensitive scan of the 23 changed lines (21 added, 2 removed) of the four diffs for minute, 分鐘, 秒, 長度, 集長, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json, process.env, cadence, chapter, budget, 預算 and 節奏 finds two lines: the old and the new README line 49, for 秒 in the cadence clause that is the same on both sides. A scan for the bare character 章 adds one line, 「完整文章」 in the `cta` row, which is "article" and not a chapter. The branch touches 13 files: the four above and nine unbound ones (`docs/videos/ILLUSTRATED.md`, `docs/videos/history-curiosity/look.md`, `tasks/open/2026-10-10-photo-paste-card.md`, `tools/video/media/stock.mjs`, `tools/video/render/plan.mjs`, `tools/video/render/render.test.mjs`, `tools/video/templates/fixtures/showcase/video.json`, `tools/video/templates/templates.mjs`, `tools/video/templates/templates.test.mjs`).
+
+Ran (in a worktree at `7611fd5bc`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the hashing of all 108 bindings against the receipt, the table, the origin/main blobs, the head blobs and the working tree (four stale, 104 current), with a CR, BOM and trailing-LF check of each changed file;
+- `durationReviewProblems` against the merge base and against origin/main through `git show`, which returned no problem at either;
+- a reading of the four diffs, and of the diffs of templates.mjs, render/plan.mjs, media/stock.mjs, the showcase fixture, ILLUSTRATED.md, look.md and the task file as context;
+- the comparison of `workerShowcase` over the branch's fixture with origin/main's fixture;
+- the duration-term counts and the scan;
+- `git diff --check origin/main...HEAD`, which exited 0;
+- after the merge `79457338b` arrived: a comparison of the diff it brings with origin/main's movement since the merge base (the same diff), and of all 108 bound paths and both receipt files between `7611fd5bc` and `79457338b` (no blob differs).
+
+On the reviewed bytes, these exited 0:
+
+- `node --test tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs`, 17 passed;
+- `node --test --test-name-pattern="a model's answer is read as JSON, fenced or not" tools/video/automation/automation.test.mjs`, 1 passed.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the photo card, its layout, the `assets[]` rule or keeping the card from the worker's writer as product choices; they were read, not judged.
+- The README's 17 was compared with `TEMPLATES` only. The bound `references/automated.md`, which this branch does not touch, still says 「共 16 種」; that is a count of templates, not a duration, and is noted, not judged, here.
+- The nine unbound changed files are not reviewed or bound here; seven were read as context and the two unbound tests only scanned for duration terms. How long a photograph stays on screen (look.md's 「一張照片停 4–8 秒」, an unchanged line of an unbound file) is not a rule this receipt binds.
+- No video was written, rendered, assembled or measured; no photo card was drawn by the reviewer.
+- The rest of automation.test.mjs, templates.test.mjs, render.test.mjs, the full tool and API suites, lint, typecheck and CI were not run for this increment.
+- The 104 bindings this branch did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the four rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Dictionary-merge rule increment: 2 files (2026-10-10)
+
+Reviewer: `claude-pr-review-lexicon-merge-20261010`. Author: `claude-opus-5-5-lexicon-merge-fix`. Scope: DURATION_ONLY for the two changed bindings below, reviewed at `d5550634b91272c9f4cf520b145acad913156c82` ("fix(video): do not merge dictionary terms that lint refuses") on claude/lexicon-merge-letter-first. The reviewer wrote no part of that commit and edits only this report and review.json.
+
+Baseline: `e5570358e3bcd76c80229b51b1d5c3be7d2f90d5`, origin/main (#1417) and the commit's parent. Immutable Git blobs pass `durationReviewProblems` there for the report and all 108 REVIEW_FILES, under the "History-and-curiosity series plan increment (PR #1407)" above; the commit changes neither receipt file nor review.mjs. Each of the two changed files matches its existing receipt and table at that baseline; its committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these two bindings, while the other 106 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `tools/video/automation/automation.test.mjs`: `f2e7b1d4852c43d1c68217666d9c6e617dc4fd3c4a2709d8f4e144cb6c388721` -> `cebd0bc1ef7d31e92594a4b6dc9b8cabc4d1b83a907f1c20071f5be92ebf30fd`.
+- `tools/video/automation/flow.mjs`: `4de8bbedb777f17a66a04064c0bd612a2a23ea8cf206d798fb449851a6a46bc7` -> `bc2b6ef828c116abd57849b49300a832899ba9ea61733d76392e22c083cfc892`.
+
+The question: does the commit change anything that decides how long a video is: a duration target or minimum, the pacing arithmetic, a scene or line count, a duration check, or what the planner or the writer is told about length? It does not. It narrows which of a writer's proposed pronunciation-dictionary terms are written into the dictionary.
+
+Findings, `tools/video/automation/flow.mjs` (+7/−2), three places and no other line:
+
+- line 25: the import from `../core/lexicon.mjs` gains `isProposableTerm` beside `emptyLexicon`;
+- lines 382–386: a comment above `mergeLexicon`;
+- line 393: in `mergeLexicon`'s loop over a writer's `lexicon_additions`, the test of the proposed term, `/^[A-Za-z0-9][A-Za-z0-9.+#'_-]{0,39}$/`, becomes `isProposableTerm(term)`.
+
+`mergeLexicon` writes the proposed terms into the shared `docs/videos/lexicon.json`. The rest of it is the same bytes: a term already listed is skipped, a spoken form is null or a non-blank string of at most 80 characters (line 394), and the file is written only when a term was added (line 398). Its one caller is `saveAndLint` (line 2778), whose loop is unchanged too: `lintErrors` at line 2788, `MAX_LINT_FIXES` of 3 (line 83) with its "lint still fails after 3 fixes" (line 2793), and the fix round's call of the writer (line 2795) with the payload it had: `video`, `lint_errors`, `line_ids` and `draftBudget`, which is a picture prompt's character budget (line 3060).
+
+The rule as it is now: `isProposableTerm` (lexicon.mjs lines 37–39, unbound) is `isValidTerm(term)`, a string that starts with a Latin letter (lines 24–26), together with `/^[A-Za-z0-9.+#'_-]{1,40}$/`. Both rules were run over 8,421 strings: every string of up to three characters from an alphabet of 20 (letters, digits, the six characters `. + # ' _ -`, a space, punctuation, a CJK, a full-width and an accented letter, a newline). 471 are taken by both, 471 by the old rule alone, every one of which starts with a digit, and none by the new rule alone. A term of 39 or 40 characters that starts with a letter is taken by both, and one of 41 by neither. So the merge takes what it took before less the terms that start with a digit, and nothing it did not take before.
+
+Why that moves no length:
+
+- The estimate does not read the dictionary. Lint builds its timeline with `estimateTimeline(doc, cpm)` (lint.mjs line 430), which counts each line's spoken units at 250 a minute (`estimateSamples`, timeline.mjs lines 43–44) from the line's own `say` or `text`. The chapter checks, the eight-minute floor, `target_minutes` and the long anime's body estimate (lint.mjs lines 455–485) read that timeline. The dictionary enters `lintVideo` in two places, each an error and neither a length: `validateLexicon` (line 388) and the unknown-term check (lines 399–400). lint.mjs and timeline.mjs are bound and unchanged.
+- The measured audio can depend on an entry: at synthesis a term that has a spoken form is sent with that form as its alias (`spokenParts`, tts/requests.mjs, unbound and unchanged). The commit admits no entry that was not admitted before, so it gives no word a spoken form it could not have had. The entries it now leaves out start with a digit, and `validateLexicon` reports such an entry as a lint error for every narrated video whose dictionary holds it (lint.mjs line 388), so `saveAndLint` returned no passing script for a video whose dictionary held one. What is synthesized for a script that passes lint is what was synthesized before.
+- What goes back to the writer is an error lint already had. A narration's "8B" is read as the letter B (`latinTerms` starts a term at a letter, and `isKnownTerm` takes any single letter), so there is no error and no fix round. A word that stays unknown ("6abc" is read as "abc") is its line's `"abc" is not in docs/videos/lexicon.json` error, the text a writer gets for a word it proposed nothing for, in the same `lint_errors` round. A reworded line can come back a few characters longer or shorter, as after any lint fix, and the rewritten script passes through the same `saveAndLint` and the same floor (lint.mjs line 471). The writer's payload is built by `scriptPayload` as before, with `target_minutes` at line 2690 and the dictionary's keys at line 2692: a dictionary without such an entry is a shorter list of keys and says nothing about length. The instructions the planner and the writer read are in prompts.mjs, which the commit does not touch.
+
+Findings, `tools/video/automation/automation.test.mjs` (+47/−1): the import from `../core/fixtures/load.mjs` gains `lexiconProposals` (line 15), a new line 16 imports `isValidTerm` and `validateLexicon`, and one test is added at lines 673–716, between "auto takes a video from a topic to the outline…" and "the planner sees every video on /admin/videos…" (166 top-level tests, 165 before). It calls `saveAndLint` three times on a slides fixture in a sandbox:
+
+- with `{ "8B": null, "6abc": null, Ai2: null }` and a line that says "8B": only `Ai2` is merged, the dictionary passes `validateLexicon`, `lexicon_added` is `["Ai2"]` and the writer is not asked again;
+- with a line that says "6abc" and that term proposed: one fix round, whose single `lint_errors` entry is the "abc" message, and the dictionary is as it was;
+- with the 237 proposals of `lexiconProposals()`: every merged term passes `isValidTerm`, a 40-character term and an 80-character spoken form are kept, ten named terms are not, and no fix round follows.
+
+Every assertion is on the dictionary's keys and values, `validateLexicon`'s result, `lexicon_added`, the number of writer runs or the text of a lint error. None reads a timeline, a frame count, a minute or a target. No existing test, helper or assertion changes: every other line is the same bytes, one line lower after the imports and 46 lower after the new test. Among them is `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` (line 37, line 36 before), under which the new test runs as the rest of the file does.
+
+The seven unbound files were read as context, to be sure no length hides behind the changed import:
+
+- `tools/video/core/lexicon.mjs` (+24/−1) adds `isValidTerm`, the `PROPOSED_TERM` pattern and `isProposableTerm`. In `validateLexicon` the condition `!/^[A-Za-z]/.test(term)` becomes `!isValidTerm(term)`, the same answer for every key of an object, which is always a string. `latinTerms`, `isKnownTerm`, `unknownTerms`, `unknownTermsFor`, `substitutions`, `termPattern`, `termsUsed` and `entriesUsed` are the same bytes.
+- `tools/video/automation/story.mjs` (+3/−3) makes the same swap in `addTerms`, the brand story's merge: the import, a comment and the one condition.
+- `tools/video/core/fixtures/load.mjs` (+17/−0) adds `lexiconProposals()`. `fixture`, `sandbox` and the other loaders are unchanged.
+- `tools/video/core/lexicon.test.mjs` (+20/−1) and `tools/video/automation/story.test.mjs` (+52/−1) add tests of the above.
+- Two task files, one done and one open.
+
+Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the 250 characters a minute of the estimate, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, chapter budgets, or any covered state. A case-insensitive scan for minute, 分鐘, 秒, 長度, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json, process.env, cpm, budget and pause_after finds nothing in the 57 changed lines (54 added, 3 removed) of the two bound diffs and nothing in the 122 changed lines of the five unbound code diffs. In the two task files it finds four lines, which say that the two files are bound by the duration receipt and that the change is duration-neutral. Lines naming one of those terms number 115 in flow.mjs and 298 in automation.test.mjs at both revisions, the same lines in the same order. The commit touches nine files, the two above and the seven unbound ones; none is under apps, docs or tools/video/long-form.
+
+Ran (in the worktree at `d5550634b`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell, node_modules borrowed by a junction from another worktree of this repository and removed afterwards):
+
+- the hashing of every bound path at the baseline and at the head, where these two alone differ, and of the two against the receipt, the table and the working tree;
+- `durationReviewProblems` against the baseline through `git show`, which returned no problem, and against the head, which returned the two stale bindings and nothing else;
+- a reading of the two diffs, of the seven unbound diffs as context, and of the flow, lint, timeline, lexicon and tts code named above;
+- the comparison of the two rules over the 8,421 strings and at lengths 1, 39, 40, 41 and 42;
+- the duration-term counts and the scan;
+- `git diff --check` over the commit, which exited 0.
+
+On the reviewed bytes, each of these exited 0:
+
+- `node --test --test-skip-pattern="a project another process holds is left alone" tools/video/automation/automation.test.mjs`, 211 of 211 counting subtests, the 165 other top-level tests among them;
+- `node --test tools/video/core/lexicon.test.mjs tools/video/automation/story.test.mjs`, 26 of 26;
+- `node --test tools/video/core/lint.test.mjs`, 45 of 45;
+- `node --test tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs`, 25 of 25.
+
+The one test left out of automation.test.mjs, "a project another process holds is left alone…" (line 5581; line 5535 at the baseline, the same bytes), does not finish on Windows: its child process imports project-lease.mjs by a drive-letter path and exits with ERR_UNSUPPORTED_ESM_URL_SCHEME, and the test waits for it without end. The file was first run whole and stopped there after 138 top-level tests had passed, the new one among them; that run was ended by hand and the file run again without that test.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the rule, the limits of 40 and 80 characters, or the choice to leave a refused proposal out without telling the writer as product choices. It answers the duration question alone.
+- lexicon.mjs, lexicon.test.mjs, story.mjs, story.test.mjs, fixtures/load.mjs and the two task files are unbound. They were read as context and are not reviewed or bound here.
+- The host's incident in the commit message and the task file (the "8B" and "6abc" entries, the four blocked drafts and their times) is the author's account and was not checked on the host. The author's statement that the three test files fail with the old rule put back was not reproduced.
+- Nothing here repairs a dictionary that already holds an entry starting with a digit. Such a file fails lint for every narrated video until the entry is removed by hand, as the commit says. No host's dictionary was read.
+- That no script was synthesized with such an entry was read from the worker's route: lint refuses the dictionary and `saveAndLint` returns the error. A video made by hand with the CLI beside a hand-edited dictionary was not traced.
+- No writer, planner or listener was run. How a model rewords a line whose proposal was left out, and by how many characters, was not observed. Only that the fix round, its payload and the checks after it are the code they were.
+- The lease test of automation.test.mjs named above was not run to its end on this machine. It is outside both hunks.
+- No audio was synthesized and no video assembled or measured for this increment.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 106 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Dictionary-merge rule merge with main (#1413) follow-up: 26 files (2026-10-10)
+
+Reviewer: `claude-pr-review-lexicon-merge-20261010-b`, a second pass by the reviewer of the "Dictionary-merge rule increment" above. It wrote none of the branch's commits and none of #1413's, judged the one merged file's bytes on its own reading, and edited only this report and review.json. Author: `claude-opus-5-5-lexicon-merge-fix`, the branch's author. Scope: DURATION_ONLY for tools/video/automation/automation.test.mjs's merged bytes, plus the merge re-binding of the 25 files only #1413 changed, on claude/lexicon-merge-letter-first. The merge joins the branch's `2040852786a3fcdb52bda387f3b80dd2509b17b2` ("docs(video): duration review increment for the dictionary-merge rule"), whose receipt is the increment above, with origin/main `ab35cc3890603771028a49230fd0db072579ec40` (#1413, "feat(video): a video's languages are four, zh-CN leaves the pipeline"). Both sides come from `e5570358e` (#1417). The session coordinating the branch started the merge with `git merge origin/main --no-commit`, and it was not committed when this was written: what was reviewed is the index and the working tree, which hold the same bytes for every one of the 108 bound files.
+
+The receipt union. Both sides had changed review.md and review.json, and Git left both in conflict. Both were rebuilt from the three stages of the index (`git show :1:`, `:2:` and `:3:`, the base and the two sides), not from the conflict markers. This report now holds both increments verbatim: #1413's "Video languages are four increment (zh-CN leaves the pipeline)" from origin/main, then the branch's own, then this one. That order is the side merged in, then the branch's own section, then the merge, as earlier merge follow-ups in this report have it. Each side had only appended its one section after the "History-and-curiosity series plan increment (PR #1407)" and changed table rows. The preamble and the 112 sections before that point are byte-identical at `e5570358e` and on both sides. #1413's section here is origin/main's byte for byte (19,838 bytes) and the branch's is `204085278`'s (13,876 bytes), each with its own Verdict line and the blank line after it. Each side's receipt passes `durationReviewProblems` against its own tree (read by `git show`).
+
+Baseline, by bound file, against both receipts:
+
+- Twenty-five files match #1413's reviewed hash: the 26 its increment lists, less automation.test.mjs. In each case the merged bytes equal `ab35cc389`'s, and the branch left them at `e5570358e`'s bytes. So these are merge re-binds of the hashes #1413's increment reviewed, with no new bytes.
+- One file, tools/video/automation/flow.mjs, matches the branch's hash (`bc2b6ef828c116abd57849b49300a832899ba9ea61733d76392e22c083cfc892`). The merged bytes equal `204085278`'s, which are `d5550634b`'s, the commit the increment above reviewed, and main left the file at `e5570358e`'s (`4de8bbed…`, as #1413's increment says). Its row is unchanged from the increment above.
+- One file, tools/video/automation/automation.test.mjs, matches neither (477,489 bytes, 6,754 lines, `6c2523909cfcbbfa922b3e5347aad86adf4cc7d461e99032c8946020901f6080`). Both sides changed it from `e5570358e` (`f2e7b1d4…`): the branch to `cebd0bc1…`, #1413 to `34510564…`. Git merged it without a conflict, and the merged bytes equal `git merge-file` of the two sides over `e5570358e`'s copy.
+- The other 81 bound files are the same on both sides and in the working tree.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for review.json's conflict markers, which it could not parse. Read against the merged tree, the branch's receipt was stale for exactly the 25 #1413 files and automation.test.mjs, and #1413's for exactly automation.test.mjs and flow.mjs. The merged file holds no CR byte or BOM and ends in LF. review.mjs is the same on both sides, so the registry stays exactly 108 paths, with 26 hashes rebound against the increment above and the other 82 unchanged.
+
+Findings, tools/video/automation/automation.test.mjs. The two parts sit apart in the file:
+
+- Against `ab35cc389` (+47/−1), the changed lines are, line for line, the branch's own change from `e5570358e`, which the increment above reviewed: the fixtures import gaining `lexiconProposals` (line 15), the import of `isValidTerm` and `validateLexicon` (line 16), and the one test "a dictionary term the writer proposes that lint would refuse is left out…" at lines 673–716, still between "auto takes a video from a topic to the outline…" (line 622) and "the planner sees every video on /admin/videos…" (line 718). Main's file with that import line replaced and that block put before the same test is the merged file, byte for byte. So the merged file is main's version plus the single test and the import lines already reviewed, and nothing else.
+- Against `204085278` (+10/−8), they are, line for line, #1413's own change from `e5570358e`, which #1413's increment reviewed: the skipped caption locales without zh-CN (line 2347), the thumbnail gaps (line 2760), a two-line comment and the four hashes of `ZH_TW_PROMPT_SHA256` (lines 3059–3065), and the keys and names of `SOURCE_INSTRUCTIONS` (lines 3080–3081).
+
+Neither part reads the other. The new test names no caption locale, thumbnail, prompt hash or `SOURCE_INSTRUCTIONS`, and #1413's five hunks are in three tests and in one constant with the comment above it. None is in an import, in `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` (line 37 still) or in a helper the new test calls: `fakeSite`, `context` and `smallRefs` are defined at lines 209–391, and `fixture`, `sandbox` and `automationClient` are imported. The new test asserts what it asserted: the dictionary's keys and values, `validateLexicon`'s result, `lexicon_added`, the number of writer runs and the text of a lint error. It passes on the merged tree, where flow.mjs loads #1413's schema.mjs, prompts.mjs and dubs/plan.mjs. The file's lines naming a duration term (the list of the increment above) number 298 at `e5570358e`, on both sides and in the merged file, the same lines in the same order, and none of #1413's 18 changed lines names one.
+
+What the increment above read around flow.mjs still stands in the merged tree: lint.mjs, timeline.mjs and tts/requests.mjs are the same bytes at `e5570358e`, on both sides and in the index, and lexicon.mjs, story.mjs and fixtures/load.mjs are the branch's, which #1413 did not touch. #1413 changed prompts.mjs, schema.mjs and dubs/plan.mjs. Its increment reads the first two as bound files and the third as context. In the third, `speechLexicon` and `dubLexicon`, which keep every key of the dictionary whatever language the narration is in, are outside its three hunks, and `CHINESE_LOCALES`, which chooses between them, loses zh-CN alone.
+
+Across the merge there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. No duration assertion is removed or loosened.
+
+Ran (in the worktree with the merge in the index, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell, node_modules borrowed by a junction from another worktree of this repository and removed afterwards):
+
+- the hashing of every bound path against both receipts, the three revisions, the index and the working tree;
+- `durationReviewProblems` against `e5570358e`, `204085278` and `ab35cc389` through `git show`, which returned no problem for any of the three, and with each side's receipt against the merged tree;
+- the comparison of review.md at the three stages, section by section, and of the rebuilt report with them;
+- `git merge-file` of automation.test.mjs, a line-for-line comparison of each part with the other side's own change, and the rebuilding of the merged file from main's;
+- a reading of #1413's five hunks in the file and of dubs/plan.mjs's diff;
+- the duration-term counts.
+
+On the merged bytes, each of these exited 0:
+
+- `node --test --test-skip-pattern="a project another process holds is left alone" tools/video/automation/automation.test.mjs`, 211 of 211 counting subtests, the 165 other top-level tests among them. The test left out is the one the increment above describes, now at line 5583 and the same bytes;
+- `node --test tools/video/core/lexicon.test.mjs tools/video/core/lint.test.mjs`, 53 of 53;
+- `node --test tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs`, 25 of 25.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- #1413's 25 other files are bound as its increment reviewed them, and are not reviewed again here. #1413's part of automation.test.mjs was compared with #1413's own change and read; it is not judged afresh.
+- This follow-up does not review #1413: not the decision to drop zh-CN, and not the unbound files it changed.
+- The merge was not committed when this was written. The receipt binds the bytes of the index as they were then; a bound file changed before or after the merge commit needs its own increment.
+- Of the eleven bound tool tests #1413 changed, automation.test.mjs alone was run here, less its lease test, which does not finish on Windows. story.test.mjs was not run again on the merged tree.
+- No writer, planner, translator or voice was run, and no video was assembled or measured.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this follow-up.
+- The 82 bindings this merge did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the 26 rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Dictionary-merge rule merge with main (#1416) follow-up: 6 files (2026-10-10)
+
+Reviewer: `claude-pr-review-lexicon-merge-20261010-c`, a third pass by the reviewer of the two "Dictionary-merge rule" sections above. It wrote none of the branch's commits and none of #1416's, judged the two merged files' bytes on its own reading, and edited only this report and review.json. Author: `claude-opus-5-5-lexicon-merge-fix`, the branch's author. Scope: DURATION_ONLY for the merged bytes of tools/video/automation/flow.mjs and tools/video/automation/automation.test.mjs, plus the merge re-binding of the four files only #1416 changed, on claude/lexicon-merge-letter-first. The merge joins the branch's `d02b4ec917c972d0d49b05232d47ea6a467746bc` ("Merge main into claude/lexicon-merge-letter-first"), whose receipt is the follow-up above, with origin/main `91f418c82df077694c981a5446f75b663488d377` (#1416, "fix(video): three reasons the worker gave up on 49 dub tracks"). Both sides come from `ab35cc389` (#1413). The session coordinating the branch started the merge with `git merge origin/main --no-commit`, and it was not committed when this was written: what was reviewed is the index and the working tree, which hold the same bytes for every one of the 108 bound files.
+
+The receipt union. Both sides had changed review.md and review.json, and Git left both in conflict. Both were rebuilt from the three stages of the index (`git show :1:`, `:2:` and `:3:`, the base and the two sides), not from the conflict markers. This report holds every increment verbatim: #1416's "Dub skip-rate increment (second opinion, overrun tolerance, kept takes)" from origin/main, then the branch's own two sections, then this one. That order is the side merged in, then the branch's own sections, then the merge, as earlier merge follow-ups in this report have it. #1413's "Video languages are four increment" is in the common base and stays once, where main has it: both sides had appended after it, #1416 its one section and the branch its two, and changed table rows. The preamble and the 113 sections up to and including it are byte-identical at `ab35cc389` and on both sides. #1416's section here is origin/main's byte for byte (11,756 bytes) and the branch's two are `d02b4ec91`'s (13,876 and 10,149 bytes), each with its own Verdict line and the blank line after it. Each side's receipt passes `durationReviewProblems` against its own tree (read by `git show`).
+
+Baseline, by bound file, against both receipts:
+
+- Four files match #1416's reviewed hash: captions-package.test.mjs, dubs.test.mjs and plan.test.mjs under tools/video/dubs, and tools/video/review/sync.mjs. In each case the merged bytes equal `91f418c82`'s, and the branch left them at `ab35cc389`'s bytes. So these are merge re-binds of the hashes #1416's increment reviewed, with no new bytes.
+- Two files match neither receipt. Both sides changed each of them from `ab35cc389`, Git merged each without a conflict, and the merged bytes of each equal `git merge-file` of the two sides over `ab35cc389`'s copy:
+  - tools/video/automation/flow.mjs, 253,526 bytes and 4,113 lines, `b15fff400a5ebcbc89f68bf9795d3b392da4c1dce4f6a8e58067e902f85409d2`. From `4de8bbed…` the branch went to `bc2b6ef8…` and #1416 to `15ff4c13…`.
+  - tools/video/automation/automation.test.mjs, 485,878 bytes and 6,844 lines, `5b7c04011f43798843fd7d9e146de490dc06890e6808f3e3544a3ee7cf97f05d`. From `34510564…` the branch went to `6c252390…` and #1416 to `3b7f956b…`.
+- The other 102 bound files are the same on both sides and in the working tree.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for review.json's conflict markers, which it could not parse. Read against the merged tree, the branch's receipt was stale for exactly the four #1416 files and the two merged ones, and #1416's for exactly the two merged ones. The two merged files hold no CR byte or BOM and end in LF. review.mjs is the same on both sides, so the registry stays exactly 108 paths, with six hashes rebound against the follow-up above and the other 102 unchanged.
+
+Findings, tools/video/automation/flow.mjs. The two parts sit apart in the file:
+
+- Against `91f418c82` (+7/−2), the changed lines are, line for line, the change the "Dictionary-merge rule increment" reviewed at `d5550634b`: the import from `../core/lexicon.mjs` gaining `isProposableTerm` (line 25), the comment above `mergeLexicon` (lines 382–386) and the term test in its loop, `!isProposableTerm(term) || term in lexicon.terms` (line 393). Main's file with those three edits made by hand is the merged file, byte for byte. So the merged file is main's version plus the reviewed hunks, and nothing else.
+- Against `d02b4ec91` (+63/−25), they are, line for line, #1416's own change from `ab35cc389`, which its increment reviewed, and they sit where that increment says: the import from `../dubs/plan.mjs` gaining `overrunSummary` beside `MAX_TEMPO` (line 36), and 18 hunks between lines 3758 and 3929, every one in `makeDub`'s doc comment (lines 3756–3776) or its body (lines 3777–3930).
+
+#1416's part does not reach the dictionary. `mergeLexicon` with its comment (lines 383–400), `saveAndLint` (2771–2797) with its one call of `mergeLexicon` (line 2778), `lintErrors` (523–526), `MAX_LINT_FIXES` (line 83), `scriptPayload` (2680–2702) and `draftBudget` (3060–3069) are the same bytes at the same lines as at `d5550634b`, and no hunk of #1416's touches any of them. None of #1416's 88 changed lines names the lexicon, the dictionary, a term or lint. The merged file names `mergeLexicon` twice, `isProposableTerm` three times and `lexicon_additions` once, as the reviewed commit does. So how a proposed term is accepted reads as it was reviewed: the import, the one condition, and the unchanged checks around it.
+
+Findings, tools/video/automation/automation.test.mjs. Here too the two parts sit apart:
+
+- Against `91f418c82` (+47/−1), the changed lines are, line for line, the change reviewed at `d5550634b`: the fixtures import gaining `lexiconProposals` (line 15), the import of `isValidTerm` and `validateLexicon` (line 16), and the one test "a dictionary term the writer proposes that lint would refuse is left out…" at lines 673–716, still between the tests at lines 622 and 718. Main's file with that import line replaced and that block put before the same test is the merged file, byte for byte. So this merged file too is main's version plus the single test and the import lines already reviewed, and nothing else.
+- Against `d02b4ec91` (+100/−10), they are, line for line, #1416's own change from `ab35cc389`, which its increment reviewed: the import from `../dubs/plan.mjs` gaining `overrunSummary` (line 24), the comment above `fakeDub` and the helper itself (lines 2404–2458), the reworded give-up reasons in two dub tests (lines 3437–3439 and 3515–3521), one assertion added to the retake test at line 3665, and three new tests with a `HOST_ONLY` pattern (lines 3459–3482 and 3672–3722). The file has 169 top-level tests: the 166 of the follow-up above and #1416's three.
+
+Neither part reads the other. The dictionary test makes no dub and calls no `fakeDub`. #1416's hunks touch neither that test, nor `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` (line 37 still), nor a helper the test calls: `fakeSite`, `context` and `smallRefs` are at lines 209–391, and `fixture`, `sandbox` and `automationClient` are imported from files #1416 did not change. The test asserts what it asserted, and it passes on the merged tree.
+
+Lines naming a duration term (the list of the "Dictionary-merge rule increment") number 115 in flow.mjs on the branch and 116 in main's file and in the merged file, and 298 and 305 in automation.test.mjs. In both files the merged lines are main's lines, the same in the same order. The reviewed change adds none. The lines #1416 adds are its increment's to answer for: one in `makeDub`'s doc comment and eight in the test file, one of them the fake dub's `total_frames: timeline.total_frames` line rewritten around those same words. They name a dub window's frames and overrun seconds and a dub line's budget, never an episode's length.
+
+What the first increment read around the dictionary still stands in the merged tree. lexicon.mjs, lint.mjs, timeline.mjs, tts/requests.mjs, story.mjs and fixtures/load.mjs are not among the 19 files #1416's commit changes, and its dubs/plan.mjs hunks name neither `speechLexicon`, `dubLexicon` nor `CHINESE_LOCALES`.
+
+Across the merge there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. No duration assertion is removed or loosened.
+
+Ran (in the worktree with the merge in the index, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell, node_modules borrowed by a junction from another worktree of this repository and removed afterwards):
+
+- the hashing of every bound path against both receipts, the three revisions, the index and the working tree;
+- `durationReviewProblems` against `ab35cc389`, `d02b4ec91` and `91f418c82` through `git show`, which returned no problem for any of the three, and with each side's receipt against the merged tree;
+- the comparison of review.md at the three stages, section by section, and of the rebuilt report with them;
+- for each of the two files, `git merge-file`, a line-for-line comparison of each part with the other side's own change and with the change reviewed at `d5550634b`, and the rebuilding of the merged file from main's;
+- the comparison of the five functions named above between `d5550634b` and the merged flow.mjs;
+- a reading of #1416's diffs of the two files, and of the hunk headers of its dubs/plan.mjs diff;
+- the duration-term counts.
+
+On the merged bytes, each of these exited 0:
+
+- `node --test --test-skip-pattern="a project another process holds is left alone" tools/video/automation/automation.test.mjs`, 214 of 214 counting subtests, the 168 other top-level tests among them. The test left out is the lease test the first increment describes, now at line 5673 and the same bytes;
+- `node --test tools/video/core/lexicon.test.mjs tools/video/automation/story.test.mjs`, 26 of 26;
+- `node --test tools/video/core/lint.test.mjs tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs`, 70 of 70.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- #1416's four other files are bound as its increment reviewed them, and are not reviewed again here. #1416's parts of flow.mjs and automation.test.mjs were compared with #1416's own change and read; they are not judged afresh.
+- This follow-up does not review #1416: not the overrun tolerance, the kept takes or the reworded reasons, and not the unbound files it changed.
+- The merge was not committed when this was written. The receipt binds the bytes of the index as they were then; a bound file changed before or after the merge commit needs its own increment.
+- The lease test of automation.test.mjs was not run, since it does not finish on Windows. dubs.test.mjs, plan.test.mjs and captions-package.test.mjs, which #1416 changed, were not run here.
+- No writer, planner, translator or voice was run, and no video was dubbed, assembled or measured.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this follow-up.
+- The 102 bindings this merge did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the six rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Dictionary-merge rule merge with main (#1424) follow-up: 1 file (2026-10-10)
+
+Reviewer: `claude-pr-review-lexicon-merge-20261010-d`, a fourth pass by the reviewer of the three "Dictionary-merge rule" sections above. It wrote none of the branch's commits and none of main's, and edited only this report and review.json. Author: `claude-opus-5-5-lexicon-merge-fix`, the branch's author. Scope: DURATION_ONLY for the merge re-binding of the one file only #1424 changed, apps/api/app/video_automation/judge.py, on claude/lexicon-merge-letter-first. No bound file has new bytes in this merge. It joins the branch's `b11ea800593da988a5a3edbc185a44f6477cab30` with origin/main `b406d78cd9c93ae6ffde773c0167e30be3b01d6d` (#1424, "feat(video): the policy check asks for a demonstration only of tutorial-shaped videos"). Both sides come from `1bd1d47ce` (#1414). The session coordinating the branch started the merge with `git merge origin/main --no-commit`, and it was not committed when this was written: what was reviewed is the index and the working tree, which hold the same bytes for every one of the 108 bound files.
+
+The branch since the follow-up above. That follow-up's merge was committed as `0df361c15`. The two merges after it, `16edca74b` (#1418) and `b11ea8005` (#1414), changed no bound file and neither receipt file: all 108 bound files, review.md and review.json are the same bytes at `0df361c15` and at `b11ea8005`. So the receipt of the follow-up above is the branch's receipt at this merge.
+
+The receipt union. Both sides had changed review.md and review.json, and Git left both in conflict. Both were rebuilt from the three stages of the index (`git show :1:`, `:2:` and `:3:`, the base and the two sides), not from the conflict markers. This report holds every increment verbatim: #1424's "Policy judge demonstration-question increment (PR #1424)" from origin/main, then the branch's own three sections, then this one. That order is the side merged in, then the branch's own sections, then the merge, as earlier merge follow-ups in this report have it. Both sides had appended after the "Dub skip-rate increment (second opinion, overrun tolerance, kept takes)", #1424 its one section and the branch its three, and changed table rows. The preamble and the 114 sections up to and including it are byte-identical at `1bd1d47ce` and on both sides. #1424's section here is origin/main's byte for byte (6,091 bytes) and the branch's three are `b11ea8005`'s (13,876, 10,149 and 12,086 bytes), each with its own Verdict line and the blank line after it. Each side's receipt passes `durationReviewProblems` against its own tree (read by `git show`).
+
+Baseline, by bound file, against both receipts:
+
+- One file matches #1424's reviewed hash: apps/api/app/video_automation/judge.py, `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7`. The merged bytes equal `b406d78cd`'s, and the branch left the file at `1bd1d47ce`'s bytes (`fe502055…`). So this is a merge re-bind of the hash #1424's increment reviewed, with no new bytes.
+- Two files match the branch's hash: tools/video/automation/flow.mjs, `b15fff400a5ebcbc89f68bf9795d3b392da4c1dce4f6a8e58067e902f85409d2`, and tools/video/automation/automation.test.mjs, `5b7c04011f43798843fd7d9e146de490dc06890e6808f3e3544a3ee7cf97f05d`. The merged bytes equal `b11ea8005`'s, which are the bytes the follow-up above bound, and main left both at `1bd1d47ce`'s (`15ff4c13…` and `3b7f956b…`). Their rows are unchanged from the follow-up above. Against main's copies the two still differ by the change reviewed at `d5550634b` alone, line for line (+7/−2 and +47/−1).
+- No bound file was changed by both sides.
+- The other 105 bound files are the same on both sides and in the working tree.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for review.json's conflict markers, which it could not parse. Read against the merged tree, the branch's receipt was stale for exactly judge.py, and #1424's for exactly flow.mjs and automation.test.mjs. judge.py holds no CR byte or BOM and ends in LF. review.mjs is the same on both sides, so the registry stays exactly 108 paths, with one hash rebound against the follow-up above and the other 107 unchanged.
+
+This follow-up has no finding of its own, since no bound file's bytes are new. What #1424 changed in judge.py (+59/−18) is read in its increment above, and what the branch changed in flow.mjs and automation.test.mjs in the three sections above. Main's four commits since `1bd1d47ce` (#1422, #1419, #1420 and #1424) change 25 files. Of the bound ones judge.py is the only one, and the two under tools/video are qa/policy.mjs and qa/policy.test.mjs, both unbound. So nothing the earlier sections read around the dictionary moved: lexicon.mjs, lint.mjs, timeline.mjs, tts/requests.mjs, story.mjs and fixtures/load.mjs are not among the 25.
+
+Across the merge nothing bound changes but judge.py, as #1424's increment reviewed it. There is no change by this merge to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. No duration assertion is removed or loosened.
+
+Ran (in the worktree with the merge in the index, Node v24.13.0 on Windows):
+
+- the hashing of every bound path against both receipts, the three revisions, the index and the working tree;
+- `durationReviewProblems` against `1bd1d47ce`, `b11ea8005`, `b406d78cd` and `0df361c15` through `git show`, which returned no problem for any of the four, and with each side's receipt against the merged tree;
+- the comparison of all 108 bound files and of both receipt files between `0df361c15` and `b11ea8005`;
+- the comparison of review.md at the three stages, section by section, and of the rebuilt report with them;
+- a line-for-line comparison of flow.mjs and automation.test.mjs over main's copies with the change reviewed at `d5550634b`.
+
+No test was run for this follow-up but the CLI check and review.test.mjs, which are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- judge.py is bound as #1424's increment reviewed it, and is not reviewed again here. This follow-up does not review #1424, #1422, #1419 or #1420.
+- The branch's merges of #1418 and #1414 were not reviewed. Only this was checked: that they changed no bound file and neither receipt file.
+- The merge was not committed when this was written. The receipt binds the bytes of the index as they were then; a bound file changed before or after the merge commit needs its own increment.
+- No tool, API or web test was run on the merged tree. automation.test.mjs was last run for the follow-up above, and its lease test does not finish on Windows.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this follow-up.
+- The 107 bindings this merge did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Dictionary-merge rule merge with main (#1425) follow-up: 4 files (2026-10-10)
+
+Reviewer: `claude-pr-review-lexicon-merge-20261010-e`, a fifth pass by the reviewer of the four "Dictionary-merge rule" sections above. It wrote none of the branch's commits and none of main's, judged the one merged file's bytes on its own reading, and edited only this report and review.json. Author: `claude-opus-5-5-lexicon-merge-fix`, the branch's author. Scope: DURATION_ONLY for tools/video/automation/automation.test.mjs's merged bytes, plus the merge re-binding of the three files only #1425 changed, on claude/lexicon-merge-letter-first. The merge joins the branch's `eababadc08f12cf1e752f8829a2a61f4bfcda975` with origin/main `26bed1dec30bc32e6173b68c039fb47e24997157` (#1425, "feat(video): a photo card pastes a real photograph as a print, with its credit"). Both sides come from `c61944d18` (#1415). The other commit main gained, `c49ab1a48` (#1426), changes no bound file and neither receipt file. The session coordinating the branch started the merge with `git merge origin/main --no-commit`, and it was not committed when this was written: what was reviewed is the index and the working tree, which hold the same bytes for every one of the 108 bound files.
+
+The branch since the follow-up above. That follow-up's merge was committed as `5322818c9`. The merge after it, `eababadc0` (#1415), changed no bound file and neither receipt file: all 108 bound files, review.md and review.json are the same bytes at `5322818c9` and at `eababadc0`. So the receipt of the follow-up above is the branch's receipt at this merge.
+
+The receipt union. Both sides had changed review.md and review.json, and Git left both in conflict. Both were rebuilt from the three stages of the index (`git show :1:`, `:2:` and `:3:`, the base and the two sides), not from the conflict markers. This report holds every increment verbatim: #1425's "Photo card increment (PR #1425)" from origin/main, then the branch's own four sections, then this one. That order is the side merged in, then the branch's own sections, then the merge, as earlier merge follow-ups in this report have it. Both sides had appended after the "Policy judge demonstration-question increment (PR #1424)", #1425 its one section and the branch its four, and changed table rows. The preamble and the 115 sections up to and including it are byte-identical at `c61944d18` and on both sides. #1425's section here is origin/main's byte for byte (11,917 bytes) and the branch's four are `eababadc0`'s (13,876, 10,149, 12,086 and 7,346 bytes), each with its own Verdict line and the blank line after it. Each side's receipt passes `durationReviewProblems` against its own tree.
+
+Baseline, by bound file, against both receipts:
+
+- Three files match #1425's reviewed hash: docs/videos/README.md, tools/video/automation/prompts.mjs and tools/video/core/schema.mjs. In each case the merged bytes equal `26bed1dec`'s, and the branch left them at `c61944d18`'s bytes. So these are merge re-binds of the hashes #1425's increment reviewed, with no new bytes.
+- One file matches the branch's hash: tools/video/automation/flow.mjs, `b15fff400a5ebcbc89f68bf9795d3b392da4c1dce4f6a8e58067e902f85409d2`. The merged bytes equal `eababadc0`'s, and main left the file at `c61944d18`'s (`15ff4c13…`). Its row is unchanged from the follow-up above, and over main's copy it still differs by the change reviewed at `d5550634b` alone, line for line (+7/−2).
+- One file matches neither receipt: tools/video/automation/automation.test.mjs, 486,063 bytes and 6,845 lines, `70dfee0aac57ee1c6bf9f0e75025a2de58069cf2908133ba7d2048a2a349927f`. From `3b7f956b…` the branch went to `5b7c0401…` and #1425 to `d3c047a8…`. Git merged it without a conflict, and the merged bytes equal `git merge-file` of the two sides over `c61944d18`'s copy.
+- The other 103 bound files are the same on both sides and in the working tree.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for review.json's conflict markers, which it could not parse. Read against the merged tree, the branch's receipt was stale for exactly the three #1425 files and automation.test.mjs, and #1425's for exactly automation.test.mjs and flow.mjs. The merged file holds no CR byte or BOM and ends in LF. review.mjs is the same on both sides, so the registry stays exactly 108 paths, with four hashes rebound against the follow-up above and the other 104 unchanged.
+
+Findings, tools/video/automation/automation.test.mjs. The two parts sit apart in the file:
+
+- Against `26bed1dec` (+47/−1), the changed lines are, line for line, the change the "Dictionary-merge rule increment" reviewed at `d5550634b`: the fixtures import gaining `lexiconProposals` (line 15), the import of `isValidTerm` and `validateLexicon` (line 16), and the one test "a dictionary term the writer proposes that lint would refuse is left out…" at lines 674–717, still between the same two tests, now at lines 623 and 719. Main's file with that import line replaced and that block put before the same test is the merged file, byte for byte. So the merged file is main's version plus the reviewed hunks, and nothing else.
+- Against `eababadc0` (+1/−0), the one changed line is #1425's own, which its increment reviewed: line 90, the last assertion of the test "a model's answer is read as JSON, fenced or not" (lines 80–91). It reads `assert.ok(!refs.showcase.scenes.some((scene) => scene.template === "photo") && refs.showcase.assets === undefined, "less the photo card: an automated video has no photograph files");`, where `refs` is `references(ROOT)`. So the merged file is equally the branch's file plus that one line.
+
+Main's line is nowhere near the dictionary test or what it calls. It sits 584 lines above the test and above its helpers, `fakeSite` (line 210), `context` (line 372) and `smallRefs` (line 392), each one line lower than before and the same bytes. The dictionary test hands the worker `smallRefs`, whose showcase is `{ scenes: [] }`, and never calls `references`, so what #1425 changed in `references` (prompts.mjs, bound and read in its increment) does not reach it. `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` is still line 37. The file's lines naming a duration term (the list of the "Dictionary-merge rule increment") number 305 at `c61944d18`, on both sides and in the merged file, the same lines, and main's line names none. The file has 169 top-level tests, as before.
+
+Across the merge there is no change by the merged bytes to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. No duration assertion is removed or loosened.
+
+Ran (in the worktree with the merge in the index, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell, node_modules borrowed by a junction from another worktree of this repository for the one test run and removed afterwards):
+
+- the hashing of every bound path against both receipts, the three revisions, the index and the working tree;
+- `durationReviewProblems` against `c61944d18`, `eababadc0`, `26bed1dec` and `5322818c9`, which returned no problem for any of the four, and with each side's receipt against the merged tree;
+- the comparison of all 108 bound files and of both receipt files between `5322818c9` and `eababadc0`;
+- the comparison of review.md at the three stages, section by section, and of the rebuilt report with them;
+- `git merge-file` of automation.test.mjs, a line-for-line comparison of each part with the other side's own change and with the change reviewed at `d5550634b`, and the rebuilding of the merged file from main's;
+- a reading of main's line in its test, and of #1425's increment above.
+
+On the merged bytes, this exited 0:
+
+- `node --test --test-name-pattern="dictionary term the writer proposes" --test-name-pattern="a model's answer is read as JSON, fenced or not" tools/video/automation/automation.test.mjs`, 2 of 2: the dictionary test and the test that holds main's line.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- #1425's three other files are bound as its increment reviewed them, and are not reviewed again here. Its line in automation.test.mjs was compared with its own change and read; it is not judged afresh.
+- This follow-up does not review #1425 or #1426: not the photo card, and not the unbound files they changed.
+- The branch's merge of #1415 was not reviewed. Only this was checked: that it changed no bound file and neither receipt file.
+- The merge was not committed when this was written. The receipt binds the bytes of the index as they were then; a bound file changed before or after the merge commit needs its own increment.
+- The other 167 tests of automation.test.mjs were not run on the merged tree. The whole file was last run for the "merge with main (#1416) follow-up", and its lease test does not finish on Windows.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this follow-up.
+- The 104 bindings this merge did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the four rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -3362,7 +3758,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
 | `.claude/skills/youtube-video/SKILL.md` | `4088bb1beede893b19b503281118a86ef6806a37243c9bfcb85dd70d2e91d101` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
-| `apps/api/app/video_automation/judge.py` | `fe502055df82612df2dee120c9db78ff54029c0514a73df683ad8ce2e14e9637` |
+| `apps/api/app/video_automation/judge.py` | `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7` |
 | `apps/api/app/video_automation/models.py` | `14da996043cdc076a96c9051e7edf1556ca76dcf2b3d9ff3d68ef648516e1dd7` |
 | `apps/api/app/video_automation/schemas.py` | `8a7b331074ca60276213a211011ac87952b34019d832b391f8d4129d11291ad7` |
 | `apps/api/app/video_automation/series.py` | `ca8e61d2431752d78f6e7bc5c98c26dd1c862d8ccb2bf596aa124b088f378dea` |
@@ -3394,7 +3790,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `docs/videos/DESIGN.md` | `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `8bf5a55173e25c07c18b865853ffd37e839408ccf731bdc3c4ebf208e195b5b5` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
-| `docs/videos/README.md` | `d03bddbb08af187f4fd62d1fcfd4fe9c77f8af6e5b73485c71bda686ac46df28` |
+| `docs/videos/README.md` | `09dee8b3c79a09ddd1d84ec8453d62582c75516cd58270c153f75e0ed75cb125` |
 | `docs/videos/long-form/README.md` | `dd639c0c85595881d1bda64541d28f29e8d90f1067e541c08eb28dc9c4543c3b` |
 | `docs/videos/long-form/plans.json` | `f1d2b4d17a3c9ee0271b5af88c16d5e2d3bf2faaea5d1d90c4c1da7c789044c3` |
 | `docs/videos/long-form/policy.json` | `6f08e7cd27b98710dc308bdb7ea44a6db4b1c8891d0731d5387d9b2245636bad` |
@@ -3407,10 +3803,10 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `3b7f956b3e9b366b8b1bf9ab392d9c40d36ce3542941fa2678824611259e08c0` |
+| `tools/video/automation/automation.test.mjs` | `70dfee0aac57ee1c6bf9f0e75025a2de58069cf2908133ba7d2048a2a349927f` |
 | `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
-| `tools/video/automation/flow.mjs` | `15ff4c13bc5a9e7e77f5a500653a96d6360b6c5d68cb02142d3340bee2462eec` |
-| `tools/video/automation/prompts.mjs` | `75f17ea823f2fc1f7ea39b3ae21df401d9329333222434e9d97ea632bbf02388` |
+| `tools/video/automation/flow.mjs` | `b15fff400a5ebcbc89f68bf9795d3b392da4c1dce4f6a8e58067e902f85409d2` |
+| `tools/video/automation/prompts.mjs` | `2dc3f65a6aaa1845c6c248d80494190ee2fef05cfa27303e0b407739060241e0` |
 | `tools/video/automation/series.mjs` | `2b687e0e5251f8b01904f3018bc658e4322888959af9d8dc0931d71a41e5e381` |
 | `tools/video/automation/series.test.mjs` | `1974b5d8db7177c920bc85ec35acf8abc4a0177b80947596ed5b551e813c53d6` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
@@ -3428,7 +3824,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/lint.mjs` | `d08806c964fbe6d69e38202f6b37b0d3ffdafcec0455d8356253a3044da27c92` |
 | `tools/video/core/lint.test.mjs` | `13c9a41c13ed096b0cdc55a979b7b6405af67c4a07b1077181dcd80350050cd5` |
 | `tools/video/core/narration-locale.test.mjs` | `db350dea6710d783a076d3449685125649f161d7465a476971d3b691c36d5088` |
-| `tools/video/core/schema.mjs` | `580c3eaf35c2ed4fc294658efdc54f77624ef3bb18837e04483580a7a3556470` |
+| `tools/video/core/schema.mjs` | `0202f27c4aa2d59c64fccb0fd495033a58999809943935c7004fc45d183ac94b` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
 | `tools/video/core/screenplay.test.mjs` | `fe2765c5f2fa42d7cfe5a2e542063c32c4349b585c649552a31b2088aaaec180` |
 | `tools/video/core/stages.test.mjs` | `2e22980d5fe28d63d555e5cce7c18f56fb7042cdab52fa03a76b076ecca3c332` |

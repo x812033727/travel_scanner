@@ -88,8 +88,10 @@ Jev 或網站暫時不行時大綱等一下，之後再問：API 說 Jev 這次�
 | `facts` | 最後一輪查核標成 NOT FOUND 的說法，已經不在稿子裡 | `verify-*.md` 對 `video.json` |
 | `links` | 說明欄的每個網址都回 200，文章連結是已發布的文章 | 工人用固定的 User-Agent 抓，每個網域間隔 1 秒 |
 | `thumbnail` | 1280×720、< 2 MB、縮到手機寬度時標題字高仍然夠大 | render 的縮圖檢查 |
-| `policy` | Jev：旁白照頻道立場寫、有示範或實算、沒有投資醫療法律政治建議、沒有業配 | 新端點 `POST /video/automation/judge/policy`，門檻同上 |
+| `policy` | Jev：旁白照頻道立場寫、有示範或實算（只問教學類的影片，見下面）、沒有投資醫療法律政治建議、沒有業配 | 新端點 `POST /video/automation/judge/policy`，門檻同上 |
 | `disclosure` | 依規則決定要不要勾「變造或合成內容」：投影片加一般 TTS 不需要；漫劇一律要勾 | 寫進上傳包的 `metadata.json`，不會讓品管失敗 |
+
+**誰會被問「有示範」**：這一題是教學影片的規矩，伺服器依自己資料庫裡這支影片的那一列決定（`judge.policy_questions_for`），工人的請求不能指定。分類（`category`，見 §影片分類）是 `explainer` 觀念解說或 `story` 品牌故事的影片不問這一題：回應的 `demo` 是 `null`、`questions` 是 `explainer`，備註寫「有示範：不適用（解說）」，`passed` 只看其餘三題。其他分類（`tutorial`、`ai-terms`、`ai-news`、`comparison`、`travel`、`other`……）照舊四題都問；伺服器查不到這支影片、或影片還沒分類時，也照舊問。只看分類、不看格式：漫劇（`format` 是 `drama`）照舊四題都問，漫劇要問哪些題由站主決定（票 `2026-09-28-video-drama-policy-questions`）。品牌故事作品的集另有自己的五題（`STORY.md`），長片精華 Shorts 也不問示範（`SHORTS.md`）。奇聞檔案局、原來如此這類用史料或道理講一件事的影片，分類填 `explainer` 就不會卡在這一題。
 
 **過關規則**（伺服器端，`final_qa_passed`）：`qa.ok` 為真、`qa.final_sha256` 等於這份審核的雜湊，而且伺服器自己列的必要項目每一項都在、都過。最後這一條是為了避免少跑了某一項的舊版工具被當成全部通過。設定「自動品管全過就核准成片」開著時，審核在送達的當下就核准，備註寫「自動品管 11 項全過，依設定自動核准」。
 
