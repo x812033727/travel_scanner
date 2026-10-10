@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from typing import Any, cast
+from urllib.parse import urlsplit
 from uuid import uuid4
 
 import pytest
@@ -28,6 +29,39 @@ def test_the_reviewed_source_file_loads_and_pairs_press_with_first_party_hosts()
         in_vertical = [row for row in rows if row.vertical == vertical]
         assert any(row.is_first_party for row in in_vertical), vertical
         assert any(not row.is_first_party for row in in_vertical), vertical
+
+
+# How a page of a host is read: the story region and what is left out of it.
+PAGE_KEYS = (
+    "article_tags",
+    "article_ids",
+    "article_classes",
+    "exclude_tags",
+    "exclude_ids",
+    "exclude_classes",
+)
+
+
+def test_sources_sharing_a_host_agree_on_how_its_pages_are_read() -> None:
+    # The scanner and revalidation look a page's source up by host and keep one source per
+    # host, whichever enabled row comes last (scanner.scan_source, validation._source_index).
+    # Two listings on one host are fine (blog.google has two) as long as either row would
+    # read the host's pages the same way. A row whose feed summary is the evidence must be
+    # alone on its host: the other row's pages would be compared against a summary.
+    by_host: dict[str, list[SourceWrite]] = {}
+    for row in sources_cli.load_file(sources_cli.DEFAULT_FILE):
+        if row.enabled:
+            by_host.setdefault(urlsplit(row.url).hostname or "", []).append(row)
+    shared = {host: found for host, found in by_host.items() if len(found) > 1}
+    assert shared, "the file has hosts with two listings; an empty result means a broken test"
+    for host, found in shared.items():
+        first = found[0]
+        for row in found:
+            assert not row.config.get("evidence_from_feed_summary"), (host, row.name)
+            assert (row.role, row.is_first_party) == (first.role, first.is_first_party), host
+            assert {key: row.config.get(key) for key in PAGE_KEYS} == {
+                key: first.config.get(key) for key in PAGE_KEYS
+            }, (host, row.name)
 
 
 def rows() -> list[SourceWrite]:
