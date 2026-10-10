@@ -2,7 +2,7 @@
 
 查核基準日：2026-10-11（Asia/Taipei）。`video.json` 的 `claims` 對應下表。此文件與稿件同一作者，不是 verify-1，也不代表媒體或站主驗收。
 
-原始紀錄根目錄：`C:/Users/x8120/mokaair-work/codex-practical-series/runs/lesson-01-cli`。上片只展示去識別的相對檔名、實際輸出節錄與日期；原始 stderr、個人完整路徑不加入卡片。節錄、來源 hash 及作者網頁／reference 來源標記見 [author-evidence.json](author-evidence.json)。
+原始紀錄根目錄：`<home>/mokaair-work/codex-practical-series/runs/lesson-01-cli`。上片只展示去識別的相對檔名、實際輸出節錄與日期；原始 stderr、個人完整路徑不加入卡片。節錄、來源 hash 及作者網頁／reference 來源標記見 [author-evidence.json](author-evidence.json)。
 
 | ID | 主張及範圍 | 依據 | 作者核對／獨立狀態 |
 | --- | --- | --- | --- |
@@ -33,3 +33,5 @@
 - 純材料跟做：五檔來源、start2/1與reference3/0、目錄修複、HTTP預覽、變式交接。不能因作者自行跑過就省略。
 - 不參與撰稿者另寫 verify-1；不把本文件冒充獨立驗證。
 - TTS後再量正文與總長；字數估14分鐘不是實際可播放片長。
+
+公開定位說明：`<home>` 與 `<repo>` 是去識別佔位，不供直接執行。精確路徑與未遮罩原始收據保存在 repo 外；既有收據 SHA-256 仍綁定原始位元組。

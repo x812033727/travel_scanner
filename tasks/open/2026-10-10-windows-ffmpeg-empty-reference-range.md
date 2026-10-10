@@ -38,4 +38,6 @@ The existing reference-analysis test fails on Windows when its 4–6 second rang
 
 ## Notes
 
-2026-10-11: Reproduced twice, including a standalone run (1 test/1 fail). Root course changes do not alter these files. Logs: `C:/Users/x8120/mokaair-work/codex-practical-series/runs/reference-analysis-rerun.log` and `test-tools.log`. Test failure contains `Nothing was written into output file, because at least one of its streams received no packets`. This is a recorded unresolved broader-check failure, not a passing course check. No fix attempted in this ticket.
+2026-10-11: Reproduced twice, including a standalone run (1 test/1 fail). Root course changes do not alter these files. Logs: `<home>/mokaair-work/codex-practical-series/runs/reference-analysis-rerun.log` and `test-tools.log`. Test failure contains `Nothing was written into output file, because at least one of its streams received no packets`. This is a recorded unresolved broader-check failure, not a passing course check. No fix attempted in this ticket.
+
+公開定位說明：`<home>` 與 `<repo>` 是去識別佔位，不供直接執行。精確路徑與未遮罩原始收據保存在 repo 外；既有收據 SHA-256 仍綁定原始位元組。

@@ -59,7 +59,7 @@ node exec-run.mjs --run run-01 --codex $codexBinary
 node verify-result.mjs run-01
 ```
 
-本機查核例為 `C:/Users/x8120/AppData/Local/OpenAI/Codex/bin/0e65bed3f58320a4/codex.exe`（0.162.0-alpha.17.2）；hash 目錄與版本只作查核紀錄，讀者以自己的 Application 路徑和 --version 為準。先前 run-01 已存在就選新 run ID，不能覆蓋。
+本機查核例為 `<home>/AppData/Local/OpenAI/Codex/bin/0e65bed3f58320a4/codex.exe`（0.162.0-alpha.17.2）；hash 目錄與版本只作查核紀錄，讀者以自己的 Application 路徑和 --version 為準。先前 run-01 已存在就選新 run ID，不能覆蓋。
 
 互動 TUI 啟動前執行 `codex --version` 和 `codex --help`，保留本機版本。斜線指令如 `/plan`、`/agent` 屬於 TUI；`codex exec` 不具相同互動控制。
 本段是**待執行提示**，模型與瀏覽器結果均未驗證；對話中需核對自己的實際 cwd，不能貼佔位路徑後讓模型猜：
@@ -179,3 +179,5 @@ $LASTEXITCODE
 - [原生 App 功能與入口](https://learn.chatgpt.com/docs/features)；2026-10-11 實際開啟官方頁。
 
 這些官方頁已實際開啟；產品能力與入口依當日文件，固定真相與使用者資料規則由本教材定義。錄製當天再核對 UI／命令可用性及版本，App 與 CLI 可能不同。價格、額度、速度不作本片成果，沒有實測就不編數字。
+
+公開定位說明：`<home>` 與 `<repo>` 是去識別佔位，不供直接執行。精確路徑與未遮罩原始收據保存在 repo 外；既有收據 SHA-256 仍綁定原始位元組。

@@ -3,7 +3,7 @@
   "checked_on": "2026-10-10T17:53:02.345Z",
   "reviewer": "codex_feasibility; did not author lesson materials",
   "evidence_kind": "independent curriculum/source review plus targeted runtime checks",
-  "snapshot_root": "C:/Users/x8120/mokaair-work/codex-practical-series/runs/materials-final-audit-20261011",
+  "snapshot_root": "<home>/mokaair-work/codex-practical-series/runs/materials-final-audit-20261011",
   "no_provider_or_model_calls": true,
   "native_codex_app_observed": false,
   "broad_suite_not_repeated": true,
@@ -122,7 +122,7 @@
     {
       "lesson": 17,
       "kind": "persistent missing-input failure reproduction",
-      "run": "C:\\Users\\x8120\\mokaair-work\\codex-practical-series\\runs\\independent-final-check-20261010174917347\\missing-input",
+      "run": "<home>\\mokaair-work\\codex-practical-series\\runs\\independent-final-check-20261010174917347\\missing-input",
       "args": [
         "--run",
         "missing-input",
@@ -283,7 +283,7 @@
     "results": [
       {
         "file": "exec-run.mjs",
-        "original_snapshot_path": "C:\\Users\\x8120\\mokaair-work\\codex-practical-series\\runs\\materials-final-audit-20261011\\17\\start\\exec-run.mjs",
+        "original_snapshot_path": "<home>\\mokaair-work\\codex-practical-series\\runs\\materials-final-audit-20261011\\17\\start\\exec-run.mjs",
         "current_repository_path": "docs\\videos\\codex-practical-series\\materials\\source\\exec-run.mjs",
         "original_raw_sha256": "d87a8ec978a9d19398b113bb25c6f31999196af2cdf6fdf3eb3d90e4f4eb1d14",
         "current_raw_sha256": "c99694b17eab1e027cd6c920545f170dfc990954d854c7d5ef7088fea5402c46",
@@ -295,7 +295,7 @@
       },
       {
         "file": "verify-result.mjs",
-        "original_snapshot_path": "C:\\Users\\x8120\\mokaair-work\\codex-practical-series\\runs\\materials-final-audit-20261011\\17\\start\\verify-result.mjs",
+        "original_snapshot_path": "<home>\\mokaair-work\\codex-practical-series\\runs\\materials-final-audit-20261011\\17\\start\\verify-result.mjs",
         "current_repository_path": "docs\\videos\\codex-practical-series\\materials\\source\\verify-result.mjs",
         "original_raw_sha256": "0faaee0008fbbc3f61ca8e06de82035086bedcf494bdc49708cd358906c9fa05",
         "current_raw_sha256": "f2b39dd3e0d0734fbdaddb66a363f060da63f488f4a2652caa9c71c2a4f87064",
@@ -307,7 +307,7 @@
       },
       {
         "file": "tests/automation.test.mjs",
-        "original_snapshot_path": "C:\\Users\\x8120\\mokaair-work\\codex-practical-series\\runs\\materials-final-audit-20261011\\17\\start\\tests\\automation.test.mjs",
+        "original_snapshot_path": "<home>\\mokaair-work\\codex-practical-series\\runs\\materials-final-audit-20261011\\17\\start\\tests\\automation.test.mjs",
         "current_repository_path": "docs\\videos\\codex-practical-series\\materials\\source\\tests\\automation.test.mjs",
         "original_raw_sha256": "5a118bbb6b062a79238d074fd2a254f4737e41fc776d975890d8257a49c3734d",
         "current_raw_sha256": "1161e84a3ae1e4b9313523727c6288e0df9fe9075ebce8d66fc38419f4092802",
@@ -346,11 +346,11 @@
     "historical_repository_hashes_retained": true,
     "prior_tracked_receipt_sha256": "b008373fbd88401f9b7a0b78750a741b9d198dc3b616a043fba3386823b17b47",
     "external_audit": {
-      "path": "C:/Users/x8120/mokaair-work/codex-practical-series/runs/zip-root-followalong-20261011-182045/lesson18-zip-root-audit.json",
+      "path": "<home>/mokaair-work/codex-practical-series/runs/zip-root-followalong-20261011-182045/lesson18-zip-root-audit.json",
       "sha256": "12ef68a194a0e568243506d376dd8f668dfb75fe252d45e5db1c1866da656828"
     },
     "external_diff": {
-      "path": "C:/Users/x8120/mokaair-work/codex-practical-series/runs/zip-root-followalong-20261011-182045/lesson18-zip-root-diff.patch",
+      "path": "<home>/mokaair-work/codex-practical-series/runs/zip-root-followalong-20261011-182045/lesson18-zip-root-diff.patch",
       "sha256": "35e3b067039a5f175ee41e68ea7f4d4d01d6c6b5e7ee3c13d05dcbe92c7a4cd9"
     },
     "method": "Independently reverse the saved unified ZIP-path patch in memory; current documents must match supplied current hashes, and reconstructed prior document bytes must match all three historical independently audited hashes. No files were reconstructed on disk.",
@@ -360,7 +360,7 @@
     "scope_judgment_retained": "core.mjs/archiveTasks TODO; author-provided archive/restore IO and practice.yml scaffold; restricted allowed scope plus optional new tests/archive-boundary; existing tests/fixture/source preserved",
     "no_provider_model_app_browser_media_or_test_reruns": true,
     "setup_followalong_receipt": {
-      "path": "C:/Users/x8120/mokaair-work/codex-practical-series/runs/zip-root-followalong-20261011-182045/content-check.json",
+      "path": "<home>/mokaair-work/codex-practical-series/runs/zip-root-followalong-20261011-182045/content-check.json",
       "sha256": "dfcd8a9c610194be8789a36846ef8ca4eceb7e34b887fc0a543c9f45eec6f4f9",
       "reported_status": "PASS",
       "package_count": 18,
@@ -368,5 +368,6 @@
       "copied_file_comparisons": 1029,
       "executed_by": "claude_reference; read and hash-verified by codex_feasibility, not replayed in this continuation"
     }
-  }
+  },
+  "public_copy_note": "Public copy: <home>/<repo> locators are redacted placeholders, not executable paths. Exact paths and unredacted raw bytes remain outside Git. Existing receipt/log/report/source/approval hashes continue to bind their original artifacts, not this sanitized public copy."
 }

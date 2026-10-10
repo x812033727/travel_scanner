@@ -39,4 +39,6 @@ Use the bundled Node 24.19 on Windows to run tools/video/automation/automation.t
 
 ## Notes
 
-2026-10-10: Filed during Codex course validation. Logs: C:/Users/x8120/mokaair-work/codex-practical-series/runs/test-tools.log. The owned test process tree was stopped; the broad suite is incomplete, not green. tools/video/automation/automation.test.mjs is in the active photo-paste-card task scope, so no implementation change or overlapping claim was made. This ticket remains open until that ownership is released.
+2026-10-10: Filed during Codex course validation. Logs: `<home>/mokaair-work/codex-practical-series/runs/test-tools.log`. The owned test process tree was stopped; the broad suite is incomplete, not green. tools/video/automation/automation.test.mjs is in the active photo-paste-card task scope, so no implementation change or overlapping claim was made. This ticket remains open until that ownership is released.
+
+公開定位說明：`<home>` 與 `<repo>` 是去識別佔位，不供直接執行。精確路徑與未遮罩原始收據保存在 repo 外；既有收據 SHA-256 仍綁定原始位元組。

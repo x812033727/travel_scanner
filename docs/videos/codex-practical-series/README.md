@@ -4,9 +4,15 @@
 
 本目錄保存可重做的規格與教材。**規格、作者參考程式、產品操作、成片、站主跟做與發布各自驗收。** 尚未取得的產品操作和媒體不列為完成。實際狀態見 [STATUS.md](STATUS.md)；原始執行與媒體放在 repository 外。
 
+## 首課試製與教材
+
+CLI第01課本機試製已完成，實長13分27秒，繁中CC及11項成片技術品管通過。教材為 build-07 的 `codex-practical-01-materials.zip`；媒體為 `<home>/mokaair-work/codex-practical-series/media/codex-practical-01-cli/final.mp4`。這是本機交付定位，公開影片與教材下載入口尚未發布。詳細來源、核准及待驗收狀態见 [首課製作紀錄](../codex-practical-01-cli/PRODUCTION-STATE.md) 和 [媒體收據](evidence/lesson-01-media.json)。
+
+先完成教材主案例、換題練習和判斷理由；站主首課回饋用於修訂模板，再接03／05及其餘批次。App原生操作素材仍待取得。
+
 ## 怎麼開始學
 
-本機交付：[首課教材 ZIP](C:/Users/x8120/mokaair-work/codex-practical-series/build-07/delivery/codex-practical-01-materials.zip)；[18份 ZIP manifest](C:/Users/x8120/mokaair-work/codex-practical-series/build-07/delivery/manifest.json)。公開教材下載入口尚未發布；其他環境可使用下方 build 指令重建。
+最新交付為 build-07 的 18 份教材 ZIP，build-08 提供相同位元組的重建對照；檔名與 SHA-256 見 [教材 manifest 索引](evidence/packages.json)。公開教材下載入口尚未發布；可使用下方 build 指令，在自己的 repo 外目錄重建。
 
 1. 選一課及 App／CLI 版本，取得該課的教材 ZIP。
 2. 將完整 ZIP 解到新的練習資料夾。先讀 README、驗收與提示詞，再進入 `start`，不要先複製參考答案。
@@ -45,15 +51,15 @@ App 版本把專案選擇、輸入位置、結果檢查與保存完整示範；C
 
 ## 教材產生與檢查
 
-從 repository 根目錄執行，ZIP 與展開的練習專案寫到 repo 外：
+先確認 Node.js 22 以上與 Python 3 可用（`node --version`、`python --version`）；從 repository 根目錄執行，ZIP 與展開的練習專案寫到系統暫存目錄中的全新資料夾：
 
 ```powershell
 node tools/codex-practical/course.mjs check
 node --test tools/codex-practical/labs.test.mjs
-$courseDelivery = Join-Path 'C:/Users/x8120/mokaair-work/codex-practical-series' ('build-' + [DateTimeOffset]::UtcNow.ToString('yyyyMMdd-HHmmss'))
+$courseDelivery = Join-Path -Path ([System.IO.Path]::GetTempPath()) -ChildPath ('codex-practical-build-' + [DateTimeOffset]::UtcNow.ToString('yyyyMMdd-HHmmss'))
 node tools/codex-practical/course.mjs build `
   --output $courseDelivery `
-  --python C:/Users/x8120/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe
+  --python python
 ```
 
 輸出包含 18 份 `codex-practical-NN-materials.zip` 與 manifest。每份 ZIP 有 start／reference／challenge、操作 README、提示詞、驗收、獨立答案及檔案 SHA-256。每次選新目錄，既有輸出會被保留。`materials/lessons/NN` 在 repo 只有文字說明，完整快照在外部 build 目錄；原始碼與逐課差異在 `materials/source` 與 `tools/codex-practical/labs.mjs`，不提交大量重複快照。
@@ -67,3 +73,5 @@ node tools/codex-practical/course.mjs build `
 所有實測保留輸入、實際命令、工具版本、結果及日期。模型對照在執行前決定輸入與計分，保留沒成功的結果，不只挑成功回合。教材測試與未參與撰稿者重做分開；站主首課跟做回饋再用於修訂。
 
 語音使用現有頻道 Sulafat 與既有製作關卡。先做字數／額度 dry-run，再執行已授權的階段。媒體產物放 repo 外；合併、部署、上傳與公開發布另列收據。
+
+公開定位說明：`<home>` 與 `<repo>` 是去識別佔位，不供直接執行。精確路徑與未遮罩原始收據保存在 repo 外；既有收據 SHA-256 仍綁定原始位元組。

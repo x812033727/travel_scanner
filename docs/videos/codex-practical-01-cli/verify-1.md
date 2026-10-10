@@ -1,6 +1,6 @@
 # CLI 01 獨立事實與教學查核
 
-查核日期：2026-10-11（Asia/Taipei）。查核者：practice_design；未撰寫本片的 video.json、script.md、claims.md 或 author-evidence.json。查核者曾編製課程材料，因此本報告是對影片稿件的獨立查核，不冒充完全不熟悉教材的新手學習驗收。
+查核日期：2026-10-11（Asia/Taipei）。查核者：practice_design；未撰寫本片 video.json、script.md、claims.md 或 author-evidence.json 的教學內容；本次只遮罩 claims.md 的公開定位資訊。查核者曾編製課程材料，因此本報告是對影片稿件的獨立查核，不冒充完全不熟悉教材的新手學習驗收。
 
 結論：本版稿件 20 項主張 PASS，沒有未修正的事實錯誤；CLI 稿件事實／教學關卡通過。C20 已改為全新 start/reference 的只讀比較與第 03 課交接，沒有提前教同名刪除或篩選實作。本結論不涵蓋 Codex App、TTS 聽感、合成影片、站主播放驗收或上架。
 
@@ -8,16 +8,16 @@
 
 | 檔案 | SHA-256 |
 | --- | --- |
-| video.json | `4ff3c4981a53b42319b33045fa6df1cdfa4f19a3c60b0b55da54fd2ded00c93a` |
-| claims.md | `04a833a864afd789162819623822b82ef647ea14eb92939c4ed8b4ac98c32137` |
-| script.md | `60ba0243a4b9375f6b86fa31d6d3e3203706fbde7b2f7e6e68eacf3126ffb427` |
+| video.json | `aedaef1c2c4af4958f01a9522bfc23e949f92c3945be73c38998739f314d99d2` |
+| claims.md | `a73120df8d9a55cb5ea736425ca9c5c4d41cc5dfd95061d976390e92b22882f7` |
+| script.md | `c438eaa86823ccba156f840ebfbfeb9ea4d89fa614d12c704cafd51f87b37eb9` |
 | author-evidence.json | `06cdbdc632d483182325e2afaf5d331ef602f78078c7fa2b6e51281943d4c52c` |
 
 若上述來源改動，這份關卡需重新綁定及查核；不能把本結論套用到新版。
 
 ## 原始證據及重做方法
 
-直接讀取 repo 外原始紀錄，而非只讀作者整理表：`C:/Users/x8120/mokaair-work/codex-practical-series/runs/lesson-01-cli` 下的 session-01/prompt.txt、invocation.json、events.jsonl、answer.md、receipt.json、source-hashes.json、reference-tests.log、test-receipt.json、browser/receipt.json，以及 start/reference 五份程式。
+直接讀取 repo 外原始紀錄，而非只讀作者整理表：`<home>/mokaair-work/codex-practical-series/runs/lesson-01-cli` 下的 session-01/prompt.txt、invocation.json、events.jsonl、answer.md、receipt.json、source-hashes.json、reference-tests.log、test-receipt.json、browser/receipt.json，以及 start/reference 五份程式。
 
 | 原始檔 | SHA-256 |
 | --- | --- |
@@ -28,7 +28,7 @@
 | reference-tests.log | `03ff6b5087c4466904dae7302aa030252d7c720dd62927900ef5b34dcb7b0a05` |
 | browser/receipt.json | `862915e4fb5a45d522d0ceff699011f919e365cda7085dbffff0b62f5819ddf3` |
 
-以 materializeLesson(1) 建立全新副本到 `C:/Users/x8120/mokaair-work/codex-practical-series/runs/independent-verify-01-cli-20261011`。這不是另一輪 Codex 生成；沒有重送模型、登入或付費請求。從各 snapshot 實際重跑 `node --test core.test.mjs`：start exit 1／3 tests／2 pass／1 fail；reference exit 0／3 pass／0 fail；challenge exit 1／2 pass／1 fail。另在錯誤目錄實跑同一命令，exit 1，回到 start 後取得上述基線。
+以 materializeLesson(1) 建立全新副本到 `<home>/mokaair-work/codex-practical-series/runs/independent-verify-01-cli-20261011`。這不是另一輪 Codex 生成；沒有重送模型、登入或付費請求。從各 snapshot 實際重跑 `node --test core.test.mjs`：start exit 1／3 tests／2 pass／1 fail；reference exit 0／3 pass／0 fail；challenge exit 1／2 pass／1 fail。另在錯誤目錄實跑同一命令，exit 1，回到 start 後取得上述基線。
 
 五份 start 檔與原實跑 start 的逐 byte SHA-256 全數一致：app.js `001e6fc55774b50732e6878bb336d1d4346e4d4f49739f659d570cfab5e1cf3c`；core.mjs `547831a8cf66422104f88bd17a903579cc1a6fba5c3aaf53cc4f7d6573f68c12`；core.test.mjs `111187cc469b5d2bf551126d72b8584589f97ac7bab6816f899502c6b498ebc1`；index.html `5740079d2988294ef077375172d2b34845f5798d465c03dcea9f18d2c4e64a07`；style.css `8fa375135810ed68890ee1bae3a331cf78690dafcd8ef8d8e711df80e115327c`。上層 baseline-prompt.txt 亦與原提示逐 byte 同 hash。
 
@@ -87,3 +87,9 @@ PASS 表示主張在稿件實際限定的範圍內成立；未執行的建議、
 2026-10-11 影片 JSON 來源重新綁定（practice_design 獨立比對）：以 `git show :docs/videos/codex-practical-01-cli/video.json` 讀取原查核版本，原 SHA-256 `0bdff9e7b8679fca51c7b21d2e8d4915c785b104828aaf5e6d147dab340051e6` 保留為歷史來源。解析兩版 JSON 後逐欄位比對，唯一差異為 `baseline-test.data.title` 新增「真實測試輸出摘錄／重新排版」（實際 JSON 路徑 `$.scenes.30.data.title`）；沒有刪除或修改其他欄位。這是非口播的畫面標籤；lines、命令、輸出、claims 全部未變。新版 SHA-256 `a912a176d6981e4fcfc86097e96aa2f36d6ff3ca67290199fe3350455055fa17` 已綁定於上表；script.md、claims.md、author-evidence.json 雜湊均與上次查核一致，因此既有 20 項 PASS 保留。本次只核對來源差異，沒有重新執行模型、瀏覽器、語音或影片驗收。
 
 2026-10-11 聽辨用字增量獨立查核與來源重新綁定（practice_design；未撰寫替換句）：直接讀取 `media/codex-practical-01-cli/review/history/listener-rewrite-1` 保存的完整前版，video.json 原 hash `a912a176d6981e4fcfc86097e96aa2f36d6ff3ca67290199fe3350455055fa17`、script.md 原 hash `8892b61e1493f144bd6f59966db96296f58cb28e06057a808b8ac4e2ccfa4a04` 均與上次查核綁定一致。兩版 JSON 逐欄位比對只有 `$.scenes.9.lines.2.text` 一處改動，ID `346cca` 保留：「你跟做時也保留起點，別靠記憶猜原本的樣子。」改為「你練習時也保留起點，別靠記憶猜原本的樣子。」；script.md 亦恰好只替換同一句。這次只將「跟做」改為「練習」，保留起點的要求與語意一致，未新增事實、數字、專名、命令或實测結果，其他卡片、主張與行 ID 全部未變。新版 video.json `4ff3c4981a53b42319b33045fa6df1cdfa4f19a3c60b0b55da54fd2ded00c93a`、script.md `60ba0243a4b9375f6b86fa31d6d3e3203706fbde7b2f7e6e68eacf3126ffb427` 已綁定於上表；claims.md、author-evidence.json 及教材／錄製提示的保護雜湊未變，20 項主張 PASS 保留。替換句由 rename_code_audit 建議、root 套用，本查核者獨立核對增量；沒有把聽辨改字等同配音、整片或站主驗收通過。
+
+公開定位說明：`<home>` 與 `<repo>` 是去識別佔位，不供直接執行。精確路徑與未遮罩原始收據保存在 repo 外；既有收據 SHA-256 仍綁定原始位元組。
+
+2026-10-11 公開定位遮罩增量與 claims 來源重新綁定：practice_design 只將 claims.md 的私人使用者路徑換成 `<home>`，並加入不供執行的公開定位說明；原版 hash `04a833a864afd789162819623822b82ef647ea14eb92939c4ed8b4ac98c32137` 與完整前版仍保存於 repo 外。未編寫此次遮罩的 rename_code_audit 直接比對前後完整檔案，C01–C20 表格逐位元組相同，新版 claims.md hash `a73120df8d9a55cb5ea736425ca9c5c4d41cc5dfd95061d976390e92b22882f7` 已綁定於上表，20 項 PASS 保留。其獨立收據 `independent-locator-audit-final.json` hash 為 `bd4099c940b77a2fd695955793f119c645c7c9bb7f3d5167220612a2d7728644`；公開 evidence 中既有原始收據、製作來源與核准 hash 仍指向未遮罩的原始產物，不是目前公開副本的 hash。此次遮罩未修改影片旁白、卡片、教材程式或模型輸入。
+
+2026-10-11 片尾畫面節奏增量獨立查核與影片來源重新綁定（practice_design；未編寫此畫面修改）：直接比對 repo 外 `media/codex-practical-01-cli/review/history/pace-fix-1` 的完整前版。前版 video.json `4ff3c4981a53b42319b33045fa6df1cdfa4f19a3c60b0b55da54fd2ded00c93a`、script.md `60ba0243a4b9375f6b86fa31d6d3e3203706fbde7b2f7e6e68eacf3126ffb427` 均與前次綁定一致；解析後只有 `$.scenes.59` 的八處畫面差異：template 由 outro 改為 bullets；刪除非口播 cta；三條原有 data.lines 原樣移至 data.items；新增畫面 source；三句各新增 reveal:1。全部 162 句的文字與 ID、60 張卡片的其他欄位及 claims 均完全相同。authoring.mjs 只修改片尾卡片宣告；script.md 只將片尾「畫面：outro」換成「畫面：bullets」。新版 video.json `aedaef1c2c4af4958f01a9522bfc23e949f92c3945be73c38998739f314d99d2`、script.md `c438eaa86823ccba156f840ebfbfeb9ea4d89fa614d12c704cafd51f87b37eb9` 已綁定於上表，20 項 PASS 保留。此項與公開定位遮罩是兩筆獨立增量；本次只查核來源，不代替新畫面目視、旁白、字幕、成片 QA 或站主播放驗收。
