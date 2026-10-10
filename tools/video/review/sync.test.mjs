@@ -1288,7 +1288,7 @@ test("invalid file uploads are isolated, while invalid project reports and reads
 
 test("every pipeline step of every format has a label for the site", () => {
   for (const id of [...SLIDES_STEPS, ...DRAMA_STEPS, ...COMPILATION_STEPS]) assert.ok(STEP_LABELS[id], `no label for "${id}"`);
-  assert.deepEqual(COMPILATION_STEPS.map((id) => STEP_LABELS[id]), ["合集標題與說明", "章節卡與縮圖", "合集串接", "五語標題與說明", "成片核准", "上傳包", "已上 YouTube"]);
+  assert.deepEqual(COMPILATION_STEPS.map((id) => STEP_LABELS[id]), ["合集標題與說明", "章節卡與縮圖", "合集串接", "四語標題與說明", "成片核准", "上傳包", "已上 YouTube"]);
   assert.deepEqual(REVIEW_GATES, ["outline", "script", "look", "audio", "storyboard", "final", "publish", "languages", "dubs"]);
 });
 
