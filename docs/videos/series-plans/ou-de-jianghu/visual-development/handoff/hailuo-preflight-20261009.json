@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "date_local": "2026-10-09",
+  "episode": "ou-de-jianghu-e001",
+  "user_route_instruction": "使用hailuoai",
+  "authorization": {
+    "hailuo_web_route_selected": true,
+    "whole_asset_adoption": false,
+    "whole_budget_adoption": false,
+    "paid_judge": false,
+    "paid_generation": false,
+    "purchase_or_renewal": false,
+    "note": "The reply selected Hailuo AI but did not explicitly answer the concrete budget/adoption question; do not infer financial approval."
+  },
+  "browser": {
+    "provider": "Chrome extension",
+    "page": "https://hailuoai.video/create/image-to-video",
+    "signed_in": true,
+    "plan_label": "Max",
+    "available_credits_observed": 27000,
+    "selected_model": "MiniMax H3",
+    "mode": "起始/結束幀",
+    "resolution": "2K",
+    "aspect_ratio": "16:9",
+    "seconds": 4,
+    "outputs": 1,
+    "displayed_credits_per_request": 48,
+    "prompt_empty": true,
+    "start_frame_loaded": false,
+    "end_frame_loaded": false,
+    "create_clicked": false,
+    "charges_requested": 0,
+    "ai_polish": "not_checked",
+    "audio_control": "not_checked",
+    "observed_seconds_options": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  "capabilities": {
+    "upload_api": "documented filechooser.setFiles; not exercised on Hailuo",
+    "download_api": "documented waitForEvent(download)/downloadMedia; not exercised on Hailuo",
+    "previous_media": "One existing October 4 H3 2K 5-second item visible; not an output of this run"
+  },
+  "evidence": {
+    "screenshot": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/qa/hailuo-preflight-20261009.jpg",
+    "screenshot_sha256": "73475000e4a69d851d361656e91208492c2831f17c6933d7e359e91c49b3d7a5"
+  },
+  "budget_context": {
+    "source": "episode-plan/budget-and-batches.json",
+    "period_1_cap_with_10_percent_credits": 26980.8,
+    "period_2_cap_with_10_percent_credits": 21753.6,
+    "total_cap_with_10_percent_credits": 48734.4,
+    "available_balance_covers_first_period_arithmetic_only": true,
+    "second_period_available": null,
+    "second_period_available_verified": false,
+    "renewal_date_verified": false,
+    "subscription_price_verified": false,
+    "full_package_cash_cap_historical_usd": 677.4817,
+    "cash_cap_is_current_quote": false
+  },
+  "scope_limit": "This preflight does not approve look/plan, upload images, synthesize speech, create keyframes, generate video, purchase credits, or renew a subscription."
+}

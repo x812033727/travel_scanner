@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-10-08T14:12:59.008Z",
+  "status": "current_candidate_package_verified",
+  "receipt": {
+    "path": "independent-views-receipt.json",
+    "sha256": "1ea2580d5e299a1795ee48799e1db6a996826b036b50023dd658f8f120e40112"
+  },
+  "prompts": {
+    "path": "independent-view-prompts.json",
+    "sha256": "3c9d144b6eedfdc2c0fffb754bd4ff406d1224df0d87be883e0a2ba854094b6a"
+  },
+  "checks": {
+    "source_files_sha256": 12,
+    "media_sha256_bytes_and_native_dimensions": 30,
+    "prompt_sha256": 30,
+    "reference_sha256": 30,
+    "appearance_pointer_and_sha256": 30,
+    "latest_unique_character_views": 27,
+    "characters": 9
+  },
+  "native_output_gaps": {
+    "below_recommended_long_edge": 18,
+    "exact_ratio_differences": 9,
+    "pixel_rounding_only": 7,
+    "substantive_ratio_differences": [
+      "shen-guihe-three-quarter-halfbody-v1",
+      "ji-wushuang-three-quarter-halfbody-v1"
+    ]
+  },
+  "reviews": [
+    {
+      "path": "independent-main-review.md",
+      "sha256": "617ba59162b43a13df6561ffe65f612e62a4b28f8d7e9c6e046576da7af2fffc"
+    },
+    {
+      "path": "independent-supporting-review.md",
+      "sha256": "5650dd9e3cb98112834a3c4b0ceba7a16a7da9aafa45e9b11e496701c49b48f1"
+    }
+  ],
+  "browser_evidence": {
+    "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/browser-verification.json",
+    "sha256": "d8e41696c1b4310b9f9f04c00c54468ab2e1063b14e47d63c9b65bb0d7025f0e",
+    "verified_at": "2026-10-08T14:11:40.882Z",
+    "image_count": 27,
+    "saved_asset_versions": 30,
+    "all_images_loaded": true,
+    "all_images_decoded": true,
+    "two_animation_frames_awaited": true,
+    "diagnosis": "Previous screenshots checked complete/naturalWidth but did not await asynchronous decode and paint; half/full images were blank before decoding. Existing contain CSS and image boxes were valid.",
+    "css_changed": false,
+    "builder_rerun": false,
+    "images_modified": false,
+    "original_png_hashes_unchanged": true,
+    "gallery_sha256": "99313e256d79c740577e5b79d039e661b1c4a60c941dda6b25adf265eb51ca21",
+    "all_images_within_containers": true,
+    "object_fit": "contain",
+    "desktop_viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "desktop_scrolled_to": "character-shen-guihe",
+    "desktop_first_row_metrics": [
+      {
+        "src": "shen-guihe-front-headshot-v1.png",
+        "complete": true,
+        "native": [
+          1254,
+          1254
+        ],
+        "bbox": {
+          "x": 39,
+          "y": 139.46875,
+          "width": 416.65625,
+          "height": 416.65625
+        },
+        "container": {
+          "x": 39,
+          "y": 139.46875,
+          "width": 416.65625,
+          "height": 416.65625
+        },
+        "object_fit": "contain",
+        "within_container": true
+      },
+      {
+        "src": "shen-guihe-three-quarter-halfbody-v1.png",
+        "complete": true,
+        "native": [
+          1003,
+          1568
+        ],
+        "bbox": {
+          "x": 511.65625,
+          "y": 139.46875,
+          "width": 416.671875,
+          "height": 651.375
+        },
+        "container": {
+          "x": 511.65625,
+          "y": 139.46875,
+          "width": 416.671875,
+          "height": 651.375
+        },
+        "object_fit": "contain",
+        "within_container": true
+      },
+      {
+        "src": "shen-guihe-full-body-v1.png",
+        "complete": true,
+        "native": [
+          1024,
+          1536
+        ],
+        "bbox": {
+          "x": 984.328125,
+          "y": 139.46875,
+          "width": 416.65625,
+          "height": 624.984375
+        },
+        "container": {
+          "x": 984.328125,
+          "y": 139.46875,
+          "width": 416.65625,
+          "height": 624.984375
+        },
+        "object_fit": "contain",
+        "within_container": true
+      }
+    ],
+    "character_filter": true,
+    "all_nine_character_filters_tested": true,
+    "lightbox": true,
+    "lightbox_decode": true,
+    "escape_closes_lightbox": true,
+    "mobile_width": 390,
+    "mobile_height": 844,
+    "mobile_single_column": true,
+    "mobile_scrolled_to": [
+      "character-ji-wushuang",
+      "ji-wushuang-full-body"
+    ],
+    "mobile_fullbody_metrics": [
+      {
+        "src": "ji-wushuang-full-body-v1.png",
+        "complete": true,
+        "native": [
+          1024,
+          1536
+        ],
+        "bbox": {
+          "x": 27,
+          "y": 56.28125,
+          "width": 336,
+          "height": 504
+        },
+        "container": {
+          "x": 27,
+          "y": 56.28125,
+          "width": 336,
+          "height": 504
+        },
+        "object_fit": "contain",
+        "within_container": true
+      }
+    ],
+    "horizontal_overflow": false,
+    "page_errors": [],
+    "screenshots": [
+      {
+        "path": "gallery-desktop.png",
+        "sha256": "3366d98acb6d6eda25221fcf222221193486283061950b05aaf7e981c7846458"
+      },
+      {
+        "path": "gallery-mobile.png",
+        "sha256": "510bf4388ae9f2db234622f3083745799f80705a41eeccddc595242bd526173e"
+      },
+      {
+        "path": "gallery-mobile-fullbody.png",
+        "sha256": "7fbf6b08e81a450d52427d3864812a762b562641eeffd47b072b56748cd497b9"
+      },
+      {
+        "path": "gallery-lightbox.png",
+        "sha256": "7afbef344b2eb654f849c1140d31e753e28b74ea3345edbc090a35ba02cb2545"
+      }
+    ],
+    "screenshot_visual_inspection": {
+      "status": "inspected_via_view_image",
+      "reviewer": "codex-ep1-route-audit",
+      "screenshots": [
+        "gallery-desktop.png",
+        "gallery-mobile.png",
+        "gallery-mobile-fullbody.png",
+        "gallery-lightbox.png"
+      ],
+      "findings": [
+        "Desktop first row shows front headshot, half-body and entire full-body image; no blank decode placeholders.",
+        "Mobile screenshot is scrolled to a visible character card, with single-column images.",
+        "Mobile full-body and lightbox show crown, robe silhouette and shoe area within image bounds.",
+        "This verifies gallery rendering only, not owner acceptance of character designs."
+      ],
+      "passed": true
+    },
+    "owner_accepted": false,
+    "runtime_integrated": false
+  },
+  "verifier": {
+    "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/verify-package.mjs",
+    "sha256": "a0fb6294006e77f5ff33af4a2b203f4d1a01b19dfee6ab3dbc7bb3be540e225b"
+  },
+  "owner_accepted": false,
+  "runtime_integrated": false,
+  "note": "Verified generated candidates and gallery rendering; no individual image adoption, size exception acceptance, runtime look approval or animation acceptance asserted."
+}

@@ -12,7 +12,7 @@ import { parseArgs } from "node:util";
 
 import { tidiedNote } from "./automation/tidy.mjs";
 import { approve, GATES } from "./core/approvals.mjs";
-import { docDir, resolveWorkdir, ROOT, UsageError } from "./core/paths.mjs";
+import { docDir, readJson, resolveWorkdir, ROOT, UsageError } from "./core/paths.mjs";
 import { eachLine, LINE_ID } from "./core/schema.mjs";
 import { StageError, runCaptions } from "./core/stages.mjs";
 import { narrativeHash, writeScreenplay } from "./core/screenplay.mjs";
@@ -93,6 +93,9 @@ Usage: node tools/video/cli.mjs <command> [options]
   audition, tts, review, render, assemble, package, youtube-sync
                                                    media stages, each built by its own ticket
   look, keyframes, clips, music, media-status      the drama format's generation stages (docs/videos/DRAMA.md)
+  look import --slug S --character ID --image PNG --source JSON [--judge] [--dry-run]
+                                                   import a base character candidate offline; --file remains project video.json;
+                                                   --judge explicitly requests the normal paid judge; choosing and approval remain separate
   stock search --query Q [--provider pexels|pixabay] [--orientation landscape|portrait|square] [--per-page N] [--page N] [--slug S] [--json]
                                                    stock photo candidates with the credit each vendor asks for; nothing is downloaded
   stock fetch --slug S --provider P --id N [--workdir D] [--json]
@@ -191,6 +194,22 @@ async function cmdApprove(args, ctx) {
   if (!values.slug || !values.gate) throw new UsageError("approve needs --slug and --gate");
   if (!Object.hasOwn(GATES, values.gate)) throw new UsageError(`--gate must be one of ${Object.keys(GATES).join(", ")}`);
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: values.slug, root: ctx.root });
+  if (values.gate === "look") {
+    const manifest = readJson(path.join(workdir, "characters", "manifest.json"), null);
+    if (Object.values(manifest?.characters ?? {}).some((entry) => entry.candidates?.some((candidate) => candidate.external_import))) {
+      const { lookHash } = await import("./core/drama.mjs");
+      const { lookChosen } = await import("./core/state.mjs");
+      const { externalCandidateProblem } = await import("./media/series-store.mjs");
+      const { doc } = loadProject({ slug: values.slug, root: ctx.root });
+      const chosen = lookChosen(manifest, readJson(path.join(workdir, "characters", "choice.json"), null), lookHash(doc));
+      if (!chosen || doc.characters.some((character) => !chosen[character.id])) throw new UsageError("imported look is incomplete or outdated; judge and choose the current character sheets first");
+      for (const character of doc.characters) {
+        const candidate = manifest.characters[character.id]?.candidates.find((each) => each.n === chosen[character.id]);
+        const problem = externalCandidateProblem(candidate, { workdir, sourceRoot: ctx.root, character, look: doc.look });
+        if (!candidate || problem) throw new UsageError(`${character.id}: ${problem ?? "chosen candidate is missing"}`);
+      }
+    }
+  }
   const entry = await approve({ gate: values.gate, docDir: docDir(values.slug, ctx.root), workdir, now: ctx.now(), note: values.note });
   ctx.stdout.write(`approved ${entry.gate}: ${entry.file} sha256 ${entry.sha256.slice(0, 12)} at ${entry.approved_at}\n`);
   return EXIT.ok;
