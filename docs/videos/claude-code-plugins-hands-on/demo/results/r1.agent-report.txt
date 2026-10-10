@@ -1,0 +1,6 @@
+# r1: the Agent call's subagent_type was "ship-kit:log-scout"; this is the summary of the task_notification that came back (status completed)
+J2103｜sync-2026-10-08.log｜8
+J2204｜sync-2026-10-09.log｜11
+共 2 筆
+
+判定依據：只有 `start` 行、沒有同一 job 編號的 `done` 行，就算未結束（`fail` 之後若還有 `done ... failed` 就算已結束）。

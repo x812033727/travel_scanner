@@ -1,0 +1,11 @@
+01:00:02 beat  queue=3 workers=1
+01:00:05 start J2101 fetch fares-north.csv
+01:00:41 step  J2101 1/2
+01:01:10 done  J2101 ok 214 rows
+01:01:12 start J2102 fetch fares-south.csv
+01:01:55 step  J2102 1/2
+01:02:20 done  J2102 ok 187 rows
+01:02:22 start J2103 merge fares-all.csv
+01:02:58 step  J2103 1/3
+01:03:30 beat  queue=0 workers=1
+01:15:00 beat  queue=0 workers=0
