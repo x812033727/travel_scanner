@@ -1,0 +1,17 @@
+name | arm | input side of each request of the main conversation (input + cache write + cache read) | first request
+k1 | kit | 11353, 12602, 13419, 15119, 15567 | 11353
+n1 | bare | 11232, 11689, 13055, 14044 | 11232
+k2 | kit | 11356, 12660, 13472, 14701, 15824 | 11356
+n2 | bare | 11232, 11785, 13151, 14104 | 11232
+k3 | kit | 11353, 12624, 13438, 14626, 15829 | 11353
+n3 | bare | 11230, 11785, 13154, 14110 | 11230
+b1 | both | 11476, 12797, 13607, 15470 | 11476
+g1 | guard | 11331, 11577, 11938 | 11331
+s1 | stale | 11324, 11569, 11888 | 11324
+r1 | strict | 11354, 12650, 13483, 15070 | 11354
+x1 | slash | 11689, 12541, 13638 | 11689
+o1 | origin | 11345, 12651, 13461, 14554, 15617 | 11345
+
+first request, arm kit (plugin loaded, ship-b.txt): 11353, 11356, 11353 | min 11353, max 11356, mean 11354.0
+first request, arm bare (no plugin, ship-b.txt): 11232, 11232, 11230 | min 11230, max 11232, mean 11231.3
+difference of the two means: 122.7 | smallest pairwise difference 121, largest 126 | widest spread inside one arm: 3

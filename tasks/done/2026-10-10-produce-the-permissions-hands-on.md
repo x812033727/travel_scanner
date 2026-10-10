@@ -1,13 +1,13 @@
 ---
 id: 2026-10-10-produce-the-permissions-hands-on
 title: Produce the permission-rules hands-on tutorial under the content-value rules
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-5-video-reference-comparison
 claimed_at: 2026-10-10T07:25:58Z
 created_at: 2026-10-10T07:25:55Z
-completed_at:
+completed_at: 2026-10-10T11:12:45Z
 branch: claude/permissions-hands-on-video
 depends_on: []
 scope:
@@ -44,13 +44,14 @@ thumbnails (see Notes).
 - [x] Narration synthesized and checked until no line was flagged; the audio gate approved it.
 - [x] Its files in the repository.
 - [x] The thumbnails of five earlier tutorials given a subject; their packages rebuilt.
-- [ ] The cut, and the final and publish gates.
+- [x] The cut, and the final and publish gates: an 11:09 cut, final 11 of 11, publish 4 of 4; the
+  package is in the work directory's `upload/`.
 - [ ] Uploading to YouTube, which is the owner's.
 
 ## Steps
 
 - [x] Plan, run, write, verify twice, narrate.
-- [ ] `render`, `assemble`, `captions`, `review-push --gate final`, `package`,
+- [x] `render`, `assemble`, `captions`, `review-push --gate final`, `package`,
   `review-push --gate publish`; languages: zh-TW only (the owner, in chat).
 
 ## How to verify

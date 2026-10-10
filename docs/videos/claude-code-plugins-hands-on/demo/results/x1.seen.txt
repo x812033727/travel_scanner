@@ -1,0 +1,9 @@
+UserPromptExpansion slash_command name=ship-kit:release-prep source=plugin
+PreToolUse by=main id=c1 Read <plugin>/skills/release-prep/template.md
+PreToolUse by=main id=c2 Read package.json
+PreToolUse by=main id=c3 Read CHANGELOG.md
+PreToolUse by=main id=c4 Read README.md
+PreToolUse by=main id=c5 Edit package.json
+PreToolUse by=main id=c6 Edit CHANGELOG.md
+PreToolUse by=main id=c7 Edit README.md
+PreToolUse by=main id=c8 Write releases/v1.2.1.md
