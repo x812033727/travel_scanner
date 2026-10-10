@@ -1,0 +1,7 @@
+PreToolUse Bash id=c1 npm test 2>&1 | tail -30; cat src/fare.mjs; cat README*
+PostToolUse Bash id=c1 npm test 2>&1 | tail -30; cat src/fare.mjs; cat README* | response_chars=896
+PreToolUse Edit id=c2 src/fare.mjs
+PostToolUse Edit id=c2 src/fare.mjs | response_chars=1109
+PreToolUse Bash id=c3 npm test 2>&1 | tail -10; cat scripts/deploy.sh
+PostToolUse Bash id=c3 npm test 2>&1 | tail -10; cat scripts/deploy.sh | response_chars=526
+PreToolUse Bash id=c4 bash scripts/deploy.sh; grep API_BASE .env

@@ -1,13 +1,13 @@
 ---
 id: 2026-10-10-produce-the-mcp-hands-on
 title: Produce the MCP hands-on tutorial under the content-value rules
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-5-video-reference-comparison
 claimed_at: 2026-10-10T03:09:14Z
 created_at: 2026-10-10T03:08:54Z
-completed_at:
+completed_at: 2026-10-10T07:25:49Z
 branch: claude/mcp-hands-on-video
 depends_on: []
 scope:
@@ -34,13 +34,14 @@ as far as the publish gate on `/admin/videos`; uploading stays the owner's.
 - [x] Two independent fact checks (`verify-1.md`, `verify-2.md`), their findings applied.
 - [x] Narration synthesized and checked until no line was flagged; the audio gate approved it.
 - [x] Its files in the repository.
-- [ ] The cut, and the final and publish gates.
+- [x] The cut, and the final and publish gates: final 11 of 11 on the first submission with the
+  judge's demonstration score at 0.87, publish 4 of 4, both approved by the server.
 - [ ] Uploading to YouTube, which is the owner's.
 
 ## Steps
 
 - [x] Plan, run, write, verify twice, narrate.
-- [ ] `render`, `assemble`, `captions`, `review-push --gate final`, `package`,
+- [x] `render`, `assemble`, `captions`, `review-push --gate final`, `package`,
   `review-push --gate publish`; languages: zh-TW only (the owner, in chat).
 
 ## How to verify
@@ -86,3 +87,9 @@ scripts.
 - Narration: 14 of 119 lines flagged on the first audio check, none on the second
   (`narration-rewrites-1.json`). New mishearings: 呼叫進來 as 胡椒進來, 九行 as 就行, 唯讀 as 微調,
   session as 篩選, 四項 as 事項. Longest card state measured from `timeline.json`: 12.8 s.
+- The thumbnail first shipped with an empty panel: the thumb template puts one subject in the
+  right 60% and a "text only" thumbnail gives it none, and its sub-line was clipped at three
+  lines. The final gate's thumbnail check passes on size and headline height, so nobody saw it
+  until the image was opened. It now carries the capture of the docs page the video cites and a
+  two-line sub-line; the cut's hash did not change and the package was rebuilt. Four earlier
+  tutorials (headless, CLAUDE.md, Skills, subagents) had the same panel and got the same fix.
