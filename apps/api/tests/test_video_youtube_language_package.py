@@ -486,6 +486,8 @@ async def test_chinese_dub_role_uses_the_producers_canonical_underscore_form(sit
     result = await _composed(site)
     assert result.metadata["localizations"] == {}
     assert set(result.captions) == {"zh-TW", "zh-CN"}
+    assert set(result.dubs) == {"zh-CN"}
+    assert result.dubs["zh-CN"].content_type == "audio/mp4"
 
 
 @pytest.mark.parametrize("status", ["pending", "rejected", "approved"])
