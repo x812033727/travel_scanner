@@ -1,11 +1,11 @@
 ---
 id: 2026-10-10-news-held-cohort-recovery
 title: Resolve the 208 held news candidates inspected on October 10
-status: in-progress
+status: open
 priority: P1
 area: ops
-owner: codex-news-recovery-6f71
-claimed_at: 2026-10-10T00:53:32Z
+owner:
+claimed_at:
 created_at: 2026-10-10T00:53:31Z
 completed_at:
 branch: codex/news-recovery-20261010
@@ -28,9 +28,9 @@ New arrivals are outside this operation.
 
 - [ ] All 208 IDs have a persisted final decision/publication or a documented
       unresolved blocker with its own follow-up and preserved artifacts.
-- [ ] Published articles have actual public locale verification, independently
+- [x] Published articles have actual public locale verification, independently
       of queue/worker success.
-- [ ] All writes have exact guards, durable intent/audit receipts and readback;
+- [x] All writes have exact guards, durable intent/audit receipts and readback;
       model/commit/queue uncertainty and previous judge caps remain preserved.
 
 ## Steps
@@ -64,12 +64,24 @@ a judge approval, local tests and CI are distinct stages.
   before scheduling a deployment; do not clear unrelated paid-work evidence.
 - The old `2026-10-07-resolve-current-news-review-and-redraft` task stays with
   its existing owner/worktree. This operation neither closes nor edits it.
-- Two duplicate rejections have real audit/assessment readback. Twenty-one
-  reviewed drafts (59 locale commits) were saved in bounded3 batches, with
-  independent SQL preservation readback; these remain unpublished and held.
+- Two duplicate rejections have real audit/assessment readback. Thirty-two
+  reviewed drafts (106 locale commits) were saved in bounded batches, with
+  independent full SQL and actual audit before/after/version verification;
+  these remain unpublished and held.
 - Timeout2: actual old runtime and genuine verified/judge-approved draft checks
-  passed. Each received one enqueue after full durable archival; outcomes are
-  pending, with no replay of unknown jobs and no claim of publication.
+  passed. Each received one enqueue after full durable archival, completed
+  saved five-language drafts and normal reviews, then entered actual source
+  change holds. Neither is published; do not replay the old timeout plans.
 - A second completed code task, 2026-10-10-exclude-system-topic-navigation-from-news,
   repairs the pilot's navigation false positive. Both repairs are in draft PR1411;
   merge/deploy and the other owner's shared video lease remain separate gates.
+- Fresh 10:10 Taipei exact208 readback: 1 published, 2 rejected, 115 manual
+  review and 90 redraft, no failed. Remaining routes are75 source,90 redraft,
+  32 saved corrections,5 unchanged reverify and3 source extension/completion.
+  All205 nonterminal candidates remain explicitly pending.
+- Prepared source73/source2 new-run operators and owner90 recovery have passed
+  independent reviews and real host dry pilots. Actual apply still requires
+  the exact corrected deployed runtime; no additional dispatch took place.
+- Source extension/completion follow-up:
+  2026-10-10-add-audited-source-extension-for-held; finance contextual-lint
+  follow-up: 2026-10-10-distinguish-reported-and-negated-trading-verbs.

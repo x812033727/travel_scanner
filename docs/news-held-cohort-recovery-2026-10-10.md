@@ -88,23 +88,58 @@ and independently read back, with original drafts, sources and histories kept:
   `36758e55-de63-4dc4-bf47-87e90435fd1d`; its retained main article is an
   unpublished five-language draft.
 
-Twenty-one independently reviewed editorial corrections were saved through
-the real guide service in seven batches of three: 59 locale commits. Each batch
+Thirty-two independently reviewed editorial corrections were saved through
+the real guide service: the first 21 drafts/59 locale commits, the Google calls
+draft/five locale commits, and ten further drafts/42 locale commits. Each batch
 has independent SQL readback proving exact corrected documents, preserved
 candidate holds/retries/cache, source/history rows, untouched locales and null
-publication pointers. These drafts are saved and still await normal review.
+publication pointers. All 106 actual save audits also match the reviewed
+before/after documents and version increments. These drafts are saved and
+still await normal review. Corrections address unsupported forecasts, source
+attribution, dates, model names, scope and translation fidelity; unchanged
+saved languages were preserved.
 
 The two known subscription-CLI timeouts retain genuine matching draft verification
 and judge approval. Each was enqueued once at 09:39 Taipei to resume the existing
 worker route, after full immutable baseline archival and actual-runtime checks:
 Surface `38ca14e5` audit `116a429d-0bcd-4b90-ab01-e6b925ba4200`; NVIDIA
-`c407d08b` audit `6c9e283c-e678-474a-a4d8-e7849c3a3ffb`. Enqueue receipts do
-not establish publication or vendor settlement. Unknown outcomes are never replayed.
+`c407d08b` audit `6c9e283c-e678-474a-a4d8-e7849c3a3ffb`. Both completed saved
+five-language drafts and their normal subsequent review stages, then entered
+`manual_review/news_evidence_changed`. Neither is published. The original
+timeout intents must not be replayed; source follow-up uses a new guarded run.
+Enqueue receipts do not establish publication or vendor settlement.
+Unknown outcomes are never replayed.
 
-The 09:32 Taipei readback of the original 208 IDs, before those two enqueues,
-contained 1 published, 2 rejected, 113 manual review, 90 redraft and 2 failed.
-The remaining 73 source-refresh IDs and 90 redrafts wait for the reviewed runtime
-repair. The rewrite caps and old partial drafts remain intact.
+The 10:10 Taipei readback of the original 208 IDs contains 1 published,
+2 rejected, 115 manual review and 90 redraft; no failed candidates remain.
+The 205 nonterminal IDs have mutually exclusive next routes:
+
+| Next route | Count | Current evidence and dependency |
+| --- | ---: | --- |
+| Source refresh | 75 | Original remaining73 plus the two completed timeout resumes; new sealed runs, production dry3/dry2 pass, corrected runtime required |
+| Owner redraft recovery | 90 | Exact original IDs; production dry3 pass, corrected runtime required, old judge history/42 rewrite caps/86 partial drafts retained |
+| Saved corrections awaiting normal re-verification | 32 | Actual 106 saves and independent SQL/audit readback; corrected runtime and fresh guards required |
+| Unchanged drafts awaiting normal re-verification | 5 | Anthropic biolab, Muse, Citrix, Emerald and FDA; corrected runtime and fresh guards required |
+| Source extension/completion | 3 | GitHub/SB1000, Orchard and Microsoft physical AI; audited source workflow required |
+
+The final per-ID ledger is `<home>/.codex/news-review/20261010-6f71/`.
+`cohort-readback-final.json` is the actual production snapshot; the sealed
+completion ledger joins it to the immutable original cohort, save receipts,
+public checks, remaining plans and follow-up tickets. A saved correction is
+not a completed review or publication.
+
+The source operators preserve the original pilot receipts. New runs exclude
+the three already executed pilots; a finished dispatch is never re-enqueued
+when its RQ result expires. Actual refresh commits are followed by fresh,
+locked full-row comparison before one dispatch. Independent operator tests
+cover real save/refresh services, lost acknowledgements, stale ORM reads,
+unknown intents and preservation of candidate/source/history/locale state.
+
+The source extension/completion follow-up is
+`2026-10-10-add-audited-source-extension-for-held`. Later official signing
+evidence and Orchard's versioned author paper cannot be inserted through
+raw evidence writes or fabricated evidence-change holds. Microsoft physical
+AI's unchanged draft needs the complete excerpt of its existing source.
 
 Durable phase intents/audits are stored in the verified named volume at
 `/var/lib/mokaair/video-reviews/ops-news-review-20261010-6f71/`, with host copies
@@ -117,6 +152,9 @@ No lease is removed or process stopped by this news operation; deployment must
 wait for its proper release. The source-refresh pilot is independent of that
 flow and does not rebuild or restart containers.
 
-Both code repairs are in draft PR #1411. Merge and deployment require the owner
+Both code repairs are in draft PR #1411. All 22 repository CI checks passed
+on code commit `5f152be3e36ce873cd561a911baf60828bde160a`; the final records-only
+commit receives its own required checks. Merge and deployment require the owner
 gate; the existing shared video deployment lease must be released by its owner.
-Neither local tests nor CI are reported as production readiness.
+The production runtime remains `35f99a16d7e4bcd5807845cdeded929894bf21ac`.
+Local tests and CI do not establish a deployed repair.
