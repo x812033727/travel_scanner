@@ -4,7 +4,7 @@ The owner asked to inspect the review/redraft queues, then explicitly asked to
 process them. The inspected cohort is the 208 candidate IDs in
 `<home>/.codex/news-review/20261010-6f71/snapshot.json`, captured at 08:36 Taipei.
 New arrivals are outside this recovery cohort. The immutable snapshot SHA-256 is
-`8545e0f27902e0765a8a73eb21eaabf24cc5241adddf9a7217e38c2fe8aab84f5`.
+`8545e0f27902e0765a8a73eb21eaabf24cc5241addf9a7217e38c2fe8aab84f5`.
 
 ## Starting state
 
@@ -122,7 +122,8 @@ The 205 nonterminal IDs have mutually exclusive next routes:
 | Unchanged drafts awaiting normal re-verification | 5 | Anthropic biolab, Muse, Citrix, Emerald and FDA; corrected runtime and fresh guards required |
 | Source extension/completion | 3 | GitHub/SB1000, Orchard and Microsoft physical AI; audited source workflow required |
 
-The final per-ID ledger is `<home>/.codex/news-review/20261010-6f71/`.
+The final per-ID ledger is `original208-recovery-ledger.json` under
+`<home>/.codex/news-review/20261010-6f71/`.
 `cohort-readback-final.json` is the actual production snapshot; the sealed
 completion ledger joins it to the immutable original cohort, save receipts,
 public checks, remaining plans and follow-up tickets. A saved correction is
