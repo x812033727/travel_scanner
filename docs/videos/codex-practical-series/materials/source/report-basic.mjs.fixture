@@ -1,0 +1,25 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
+import { decodeTasks, weeklyReport } from './core.mjs';
+export function reportArguments(args) {
+  const [input, ...options] = args; const result = { input };
+  if (!input || input.startsWith('--') || options.length % 2) throw new Error('Usage: node report.mjs INPUT --from YYYY-MM-DD --to YYYY-MM-DD [--out NEWFILE]');
+  for (let i=0;i<options.length;i+=2) {
+    const key = options[i].slice(2);
+    if (!['from','to','out'].includes(key) || !options[i].startsWith('--') || result[key] !== undefined) throw new Error('Unknown or duplicate option');
+    result[key] = options[i+1];
+  }
+  if (!result.from || !result.to) throw new Error('Both --from and --to are required');
+  return result;
+}
+export function runReport(args) {
+  const options = reportArguments(args);
+  const tasks = decodeTasks(readFileSync(options.input, 'utf8'));
+  const result = weeklyReport(tasks, options.from, options.to);
+  if (options.out) writeFileSync(options.out, JSON.stringify(result,null,2)+'\n', { flag:'wx' });
+  return result;
+}
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  try { console.log(JSON.stringify(runReport(process.argv.slice(2)), null, 2)); }
+  catch(error) { console.error(error.message); process.exitCode=1; }
+}

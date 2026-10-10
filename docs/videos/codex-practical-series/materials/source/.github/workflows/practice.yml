@@ -1,0 +1,19 @@
+name: Small Steps deterministic acceptance
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+      - run: node --test
+      - run: node report.mjs fixtures/tasks.json --from 2026-10-05 --to 2026-10-11 --out report.json
+      - run: node archive.mjs fixtures/tasks.json --cutoff 2026-10-04T15:59:59.999Z --out archive-run --apply
+      - run: node restore.mjs archive-run/backup.json restored.json
+
+# Educational workflow example. Shipping this file does not prove GitHub CI ran.
+# Review/pin action revisions under your own repository policy before production use.

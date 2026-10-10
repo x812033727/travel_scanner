@@ -1,0 +1,39 @@
+{
+  "id": 18,
+  "title": "封存、CI 與還原專題",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test",
+  "intentionalFailures": [
+    "start",
+    "challenge"
+  ],
+  "manualChecks": [],
+  "steps": [
+    "讀資料契約，先寫completed且已知日期<=cutoff、unknown/pending保留、輸入不變的案例。",
+    "start 的 archiveTasks 是 TODO/throw scaffold；跑 node --test 保留 archive-not-implemented，自己實作新功能。",
+    "驗證cutoff格式、驗資料、按ID保持順序分類；不要讀reference後整包覆蓋。",
+    "preview：node archive.mjs fixtures/tasks.json --cutoff 2026-10-04T15:59:59.999Z --out archive-run。確認old一筆/retained4/unknown1且無寫入，再加--apply。",
+    "核對backup.json原文、archived/retained/receipt；用restore.mjs還原到新檔並逐byte比較。",
+    "在自己的練習repo採用CI例子，真的push跑完才記CI PASS；未執行記NOT RUN。",
+    "challenge另保留unknown誤封存缺陷；再測cutoff equality、壞備份與既有輸出，來源和舊結果都保留。"
+  ],
+  "transferExercise": null,
+  "expectedReport": {
+    "revision": "weekly-report-v2",
+    "timezone": "Asia/Taipei",
+    "weekStart": "2026-10-05",
+    "weekEnd": "2026-10-11",
+    "total": 5,
+    "completedInWeek": 2,
+    "pending": 1,
+    "unknownCompleted": 1
+  }
+}

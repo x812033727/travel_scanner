@@ -1,0 +1,387 @@
+{
+  "schema_version": 1,
+  "series_id": "codex-practical",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "接手專案先建立基準：知道哪裡能跑、哪裡還沒做",
+      "topic": "baseline",
+      "outcomes": [
+        "建立只含本集起始五檔的工作副本，跑出並解讀教材基準 2 通過／1 失敗。",
+        "分辨起始版刻意未完成的篩選、作者參考版 3 通過與模型實作成果三種狀態。",
+        "用本機 HTTP 預覽驗證已存在的新增、完成與儲存，寫出第 03 集要接手的範圍。"
+      ],
+      "app_slug": "codex-practical-01-app",
+      "cli_slug": "codex-practical-01-cli",
+      "materials": "materials/lessons/01",
+      "target_minutes": [
+        12,
+        18
+      ],
+      "prerequisites": [],
+      "challenge": "在兩份全新副本分別執行 start 與 reference 的同一測試，說明為什麼只有起始版紅燈，再寫一段給第03集的窄範圍交接。"
+    },
+    {
+      "number": 2,
+      "title": "先把需求講清楚：用 Plan 寫出能開工的計畫",
+      "topic": "plan",
+      "outcomes": [
+        "把搜尋與篩選需求寫成範圍、輸入、可觀察結果，去掉『做漂亮一點』這種不可驗收的要求。",
+        "在真正的 Plan 模式先讀專案，再得到可執行的步驟與待確認事項。",
+        "用不改產品程式的差異檢查，區分計畫、實作與驗收。"
+      ],
+      "app_slug": "codex-practical-02-app",
+      "cli_slug": "codex-practical-02-cli",
+      "materials": "materials/lessons/02",
+      "target_minutes": [
+        12,
+        18
+      ],
+      "prerequisites": [
+        1
+      ],
+      "challenge": "把需求改成只搜尋 title，保留大小寫不敏感，但關鍵字為空時不過濾；自行給兩個正例、一個反例，判斷計畫是否包含它們。"
+    },
+    {
+      "number": 3,
+      "title": "新增搜尋與篩選：讓需求、程式和畫面對得上",
+      "topic": "filter-search",
+      "outcomes": [
+        "用固定任務驗證搜尋和完成狀態取交集，保留原始任務順序與資料。",
+        "讓 Codex 依已定計畫只修改 core.mjs，讀既有測試與畫面接線，逐項核對差異。",
+        "分別核對核心測試、瀏覽器搜尋、空結果與資料保留，說明各項證據能證明的範圍。"
+      ],
+      "app_slug": "codex-practical-03-app",
+      "cli_slug": "codex-practical-03-cli",
+      "materials": "materials/lessons/03",
+      "target_minutes": [
+        12,
+        18
+      ],
+      "prerequisites": [
+        2
+      ],
+      "challenge": "改成搜尋「 報告 」並加入「寫報告、報告校對、買午餐」；一筆完成，核對三個篩選，不讓文字前後空白影響結果。"
+    },
+    {
+      "number": 4,
+      "title": "寫一份有用的 AGENTS.md：每次都能照規矩交付",
+      "topic": "agents-md",
+      "outcomes": [
+        "把經常重貼的範圍、測試與回報要求寫成當集專案的 AGENTS.md。",
+        "在新對話只讀驗收，核對規則是否被讀取、資料真相與實際回報是否相符。",
+        "區分當次需求、專案指示與強制測試，避免把 Markdown 當成硬性阻擋。"
+      ],
+      "app_slug": "codex-practical-04-app",
+      "cli_slug": "codex-practical-04-cli",
+      "materials": "materials/lessons/04",
+      "target_minutes": [
+        12,
+        18
+      ],
+      "prerequisites": [
+        3
+      ],
+      "challenge": "讀 challenge 的 docs/rules-review.md 候選規則，指出以 title 當識別與穩定 ID/允許同名的衝突；只修 AGENTS.md/docs/data-contract.md，再用同名不同 ID 案例說明正確規則，不改產品。"
+    },
+    {
+      "number": 5,
+      "title": "兩筆同名任務一起消失：用 ID 修對真正的 bug",
+      "topic": "id-bug",
+      "outcomes": [
+        "從同名但不同 ID 的兩筆任務重現錯刪，寫出預期與實際差異。",
+        "辨認位置、標題與穩定 ID 的用途，限制刪除只命中選定 ID。",
+        "用既有 identity 回歸測試與篩選後再次刪除，確認修復涵蓋同名情境。"
+      ],
+      "app_slug": "codex-practical-05-app",
+      "cli_slug": "codex-practical-05-cli",
+      "materials": "materials/lessons/05",
+      "target_minutes": [
+        12,
+        18
+      ],
+      "prerequisites": [
+        4
+      ],
+      "challenge": "在三筆任務中加入兩筆同名，其中一筆完成；搜尋後刪未完成那筆，核對另一筆與第三筆都留下。"
+    },
+    {
+      "number": 6,
+      "title": "讓測試替你抓回歸：先紅、修好、再確認沒壞別的",
+      "topic": "tests",
+      "outcomes": [
+        "把『All 篩選不得改變原順序』寫成失敗的測試。",
+        "用修改前紅燈、修復後綠燈證明測試能捕捉這個缺陷。",
+        "區分資料函式、儲存與瀏覽器操作的驗證邊界。"
+      ],
+      "app_slug": "codex-practical-06-app",
+      "cli_slug": "codex-practical-06-cli",
+      "materials": "materials/lessons/06",
+      "target_minutes": [
+        12,
+        18
+      ],
+      "prerequisites": [
+        5
+      ],
+      "challenge": "在 meaningful.test.mjs 用 Object.freeze 的 a/b/c 輸入呼叫 All，應不拋錯、輸出與原順序一致；再用完成/未完成混合任務查 active，核對未顯示任務與原輸入不變。"
+    },
+    {
+      "number": 7,
+      "title": "Codex 說做完了：審查差異，找出測試沒看到的問題",
+      "topic": "review",
+      "outcomes": [
+        "在先不改檔的審查中，給每項發現觸發條件、位置、影響與驗證方式。",
+        "用任務標題包含 HTML 的固定資料證明 innerHTML 插入的錯誤呈現。",
+        "把審查意見轉成窄修復，再以原案例與完整測試驗收。"
+      ],
+      "app_slug": "codex-practical-07-app",
+      "cli_slug": "codex-practical-07-cli",
+      "materials": "materials/lessons/07",
+      "target_minutes": [
+        12,
+        18
+      ],
+      "prerequisites": [
+        6
+      ],
+      "challenge": "把標題改成 <img src=x> 與『中文 & 符號』，說明為何資料存得下與畫面安全呈現是兩項驗收。"
+    },
+    {
+      "number": 8,
+      "title": "把改動留下、也能還原：從差異到本機提交",
+      "topic": "git",
+      "outcomes": [
+        "在獨立練習 repo 讀懂工作區、暫存區與提交差異，只提交本次任務。",
+        "用檔案還原修正一個未提交的錯字，保留其他合理修改。",
+        "交出有觸發、結果與驗收紀錄的 PR 草稿，而不把本機 commit 當成已發布。"
+      ],
+      "app_slug": "codex-practical-08-app",
+      "cli_slug": "codex-practical-08-cli",
+      "materials": "materials/lessons/08",
+      "target_minutes": [
+        12,
+        18
+      ],
+      "prerequisites": [
+        7
+      ],
+      "challenge": "保留 core.test.mjs 的新增測試、排除 docs 的未完成筆記，核對 staged diff 後寫一則一句話提交摘要。"
+    },
+    {
+      "number": 9,
+      "title": "完成時間不能用猜的：升級資料並做出可信週報",
+      "topic": "data-report",
+      "outcomes": [
+        "把 v1 任務升級成有 completedAt 的 v2，舊完成任務保持時間未知。",
+        "用臺灣日曆日的含首尾週區間算週報，區分已知完成、待辦、未知時間。",
+        "用固定五筆真相核對報表與資料儲存，避免把現在時間補給舊任務。",
+        "分別匯入合法 JSON/CSV 與非法 CSV，核對整批拒絕不造成部分寫入，且既有任務保留。"
+      ],
+      "app_slug": "codex-practical-09-app",
+      "cli_slug": "codex-practical-09-cli",
+      "materials": "materials/lessons/09",
+      "target_minutes": [
+        12,
+        18
+      ],
+      "prerequisites": [
+        8
+      ],
+      "challenge": "把查詢改成 --from 2026-10-12 --to 2026-10-18；先手算既有五筆應為本週0，另加一筆落在臺灣週一00:00的完成任務驗證邊界。"
+    },
+    {
+      "number": 10,
+      "title": "用畫面條件改 UI：手機寬度與鍵盤操作都能驗收",
+      "topic": "ui",
+      "outcomes": [
+        "把『手機能用』拆成窄屏不溢位、長標題換行與控制項可觸及三項條件。",
+        "用390px寬度與Tab/Enter完成一次任務操作，不只看桌機截圖。",
+        "修CSS的固定最小寬度，保留資料邏輯與週報結果。"
+      ],
+      "app_slug": "codex-practical-10-app",
+      "cli_slug": "codex-practical-10-cli",
+      "materials": "materials/lessons/10",
+      "target_minutes": [
+        12,
+        18
+      ],
+      "prerequisites": [
+        9
+      ],
+      "challenge": "加入100字以內的長中文標題，在360px與390px各核對；同時用鍵盤完成並刪除篩選內的任務。"
+    },
+    {
+      "number": 11,
+      "title": "重構不要順手改行為：把重複週報邏輯收回核心",
+      "topic": "refactor",
+      "outcomes": [
+        "找到UI與CLI重複計算週報的位置，說明一個權威邏輯來源的用途。",
+        "重構後以相同fixture證明欄位、區間與結果保持一致。",
+        "用未知時間、區間邊界與輸入不變的測試守住外部行為。"
+      ],
+      "app_slug": "codex-practical-11-app",
+      "cli_slug": "codex-practical-11-cli",
+      "materials": "materials/lessons/11",
+      "target_minutes": [
+        12,
+        18
+      ],
+      "prerequisites": [
+        9,
+        10
+      ],
+      "challenge": "加入「全部任務待辦」與「全部完成但時間未知」兩份小輸入，確認UI與CLI共用函式不會憑空算出本週完成。"
+    },
+    {
+      "number": 12,
+      "title": "換一段對話也能接著做：用檔案交接，先驗過期說法",
+      "topic": "handoff",
+      "outcomes": [
+        "寫出含來源版本、實際狀態、未完成項與下一步的handoff。",
+        "讓新對話先核對程式和測試，識別教材故意過期的完成宣告。",
+        "把接手的第一個任務限制為可驗收的小步，不依賴上一段對話記憶。"
+      ],
+      "app_slug": "codex-practical-12-app",
+      "cli_slug": "codex-practical-12-cli",
+      "materials": "materials/lessons/12",
+      "target_minutes": [
+        12,
+        18
+      ],
+      "prerequisites": [
+        11
+      ],
+      "challenge": "故意把handoff中的一個區間或檔名改成舊值，新開對話核對它是否發現，並記錄修正前後文字。"
+    },
+    {
+      "number": 13,
+      "title": "把驗收流程做成 Skill：能被找到，也真的做完檢查",
+      "topic": "skill",
+      "outcomes": [
+        "將重複的測試、週報真相與UI清單寫成專案範圍的verify-delivery技能。",
+        "分別確認檔案有效、被發現、被選擇與檢查完成四種狀態。",
+        "用一個失敗案例驗證技能會保留問題與待驗證項，不把提醒寫成強制關卡。"
+      ],
+      "app_slug": "codex-practical-13-app",
+      "cli_slug": "codex-practical-13-cli",
+      "materials": "materials/lessons/13",
+      "target_minutes": [
+        12,
+        18
+      ],
+      "prerequisites": [
+        12
+      ],
+      "challenge": "把某一項固定報告預期寫錯，執行技能並要求以fixtures真相定位差異，再修技能說明而不是改fixture。"
+    },
+    {
+      "number": 14,
+      "title": "讓 Codex 查本地任務資料：接一個只讀 MCP",
+      "topic": "mcp",
+      "outcomes": [
+        "先測試本機stdio MCP服務，再在當前入口配置與核對連線。",
+        "區分伺服器連上、工具被呼叫、來源結果被採用三種證據。",
+        "用拒絕寫入與工具故障案例確認只讀邊界，不用外部帳號演練。"
+      ],
+      "app_slug": "codex-practical-14-app",
+      "cli_slug": "codex-practical-14-cli",
+      "materials": "materials/lessons/14",
+      "target_minutes": [
+        12,
+        18
+      ],
+      "prerequisites": [
+        13
+      ],
+      "challenge": "以 read_weekly_report 查 from=2026-10-12、to=2026-10-18，預測本週已知完成 0；再要求讀取不存在資源 practice://missing 及呼叫 write_task，核對真實拒絕，區分有效的零筆統計、資源錯誤與未提供的寫入工具。"
+    },
+    {
+      "number": 15,
+      "title": "兩個工作同時做：用 worktree 隔離，再整合驗收",
+      "topic": "worktree",
+      "outcomes": [
+        "從同一Git基線建立兩個獨立工作目錄，確認路徑與分支。",
+        "讓介面提示與週報 --compact 分別提交，核對每個提交只含自己的範圍，再逐一整合。",
+        "整合後跑完整測試與瀏覽器核對，識別並修復衝突。"
+      ],
+      "app_slug": "codex-practical-15-app",
+      "cli_slug": "codex-practical-15-cli",
+      "materials": "materials/lessons/15",
+      "target_minutes": [
+        12,
+        18
+      ],
+      "prerequisites": [
+        8,
+        14
+      ],
+      "challenge": "完成主流程後從相同已整合基線另開兩個 worktree，讓 A/B 都改 index.html 那句提示而產生文案衝突；保留必要資訊，解釋最終文字和解衝突步驟，重跑 UI/報表驗收，KEEP-MY-NOTE 仍未提交。"
+    },
+    {
+      "number": 16,
+      "title": "把獨立檢查交給代理：回報要核對，主對話要負責",
+      "topic": "subagents",
+      "outcomes": [
+        "把資料/測試和鍵盤/UI審查拆成兩個不重疊的只讀子任務。",
+        "檢視真實代理活動與回報，區分已啟動、已完成和已採納。",
+        "用主對話複驗代理發現，合併成帶來源與待驗證項的交付結論。"
+      ],
+      "app_slug": "codex-practical-16-app",
+      "cli_slug": "codex-practical-16-cli",
+      "materials": "materials/lessons/16",
+      "target_minutes": [
+        12,
+        18
+      ],
+      "prerequisites": [
+        15
+      ],
+      "challenge": "故意給其中一位過期說明，讓它以源程式核對；主對話辨認未執行的畫面結論並要求進一步證據。"
+    },
+    {
+      "number": 17,
+      "title": "把週報變成可重複工作：App 排程、CLI 非互動各自完成",
+      "topic": "automation",
+      "outcomes": [
+        "先手動跑通固定週報與驗收，再為重複工作設定輸入與輸出記錄。",
+        "在本入口完成一次真實執行並核對狀態、結果和失敗處理。",
+        "區分App原生排程與CLI exec指令碼；兩套教材分別儲存證據，不拿一種成功代替另一種。"
+      ],
+      "app_slug": "codex-practical-17-app",
+      "cli_slug": "codex-practical-17-cli",
+      "materials": "materials/lessons/17",
+      "target_minutes": [
+        18,
+        25
+      ],
+      "prerequisites": [
+        13,
+        16
+      ],
+      "challenge": "把區間改為 2026-10-12..18，真跑一次並核對 completedInWeek 0、pending 1、unknownCompleted 1、total 5；再用不存在的來源製造保留紀錄的缺檔失敗，分清預檢失敗未呼叫模型與真正模型失敗。"
+    },
+    {
+      "number": 18,
+      "title": "綜合實作：先預覽、再歸檔，還能從備份恢復",
+      "topic": "capstone",
+      "outcomes": [
+        "把歸檔需求拆成截止時間、保留規則、預覽/執行與備份恢復契約。",
+        "按明確cutoff只歸檔已知時間且不晚於界限的完成任務，保留待辦與未知時間。",
+        "跑完整驗收並實際恢復，對照原始資料證明可回退。",
+        "交出新對話能複驗的完成包，分別記錄作者參考、模型成果與入口證據。"
+      ],
+      "app_slug": "codex-practical-18-app",
+      "cli_slug": "codex-practical-18-cli",
+      "materials": "materials/lessons/18",
+      "target_minutes": [
+        18,
+        25
+      ],
+      "prerequisites": [
+        17
+      ],
+      "challenge": "加入一筆completedAt恰等於cutoff、一筆晚1毫秒、一筆completed=true/null，預測後執行預覽：前者歸檔，後兩者保留；再用新目錄apply並完整恢復。"
+    }
+  ]
+}

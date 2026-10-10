@@ -1,0 +1,30 @@
+{
+  "id": 1,
+  "title": "確認目前專案與基準",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test core.test.mjs",
+  "intentionalFailures": [
+    "start",
+    "challenge"
+  ],
+  "manualChecks": [],
+  "steps": [
+    "完整解壓本包；在 start 核對五個檔名、Get-Location/pwd、node --version。",
+    "執行 node --test core.test.mjs，記錄3 tests/2 pass/1 fail及exit1。",
+    "讀 core.test.mjs 第17行的 Active預期[b]與實際[a,b]，對照visibleTasks。",
+    "目前位置為 start；照 ../baseline-prompt.txt 送出只讀檢查，將模型報告與自己測試分開保存。",
+    "在另一個终端機用本機HTTP預覽新增Read/Build、勾選Read、reload；未操作寫NOT RUN。",
+    "到reference再跑同一命令；challenge找出Completed失敗與start不同。",
+    "只交檔案地圖、已知缺口及第03課的函式範圍/驗收，不改實作。"
+  ],
+  "transferExercise": "主變式：不讀前一輪報告，用全新 start/reference 重跑同一 node --test core.test.mjs，解釋差異並交第03課範圍。另做 challenge：只讀診斷 Completed 失敗，不實作。",
+  "expectedReport": null
+}

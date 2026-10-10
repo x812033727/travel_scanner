@@ -1,0 +1,35 @@
+{
+  "id": 11,
+  "title": "有證据的重構",
+  "authorship": "author-built teaching reference; no model execution claim",
+  "snapshots": [
+    "start",
+    "reference",
+    "challenge"
+  ],
+  "startDirectory": "start",
+  "referenceDirectory": "reference",
+  "challengeDirectory": "challenge",
+  "testCommand": "node --test",
+  "intentionalFailures": [],
+  "manualChecks": [],
+  "steps": [
+    "保存report CLI對固定資料的原JSON輸出及exit code。",
+    "讀report.mjs的重複統計，找出核心已有weeklyReport。",
+    "把CLI保留參數、读檔、呼叫核心與輸出；不重複日期算法。",
+    "同一fixture與日期跑重構前後，逐欄比對結果。",
+    "以日期倒序、非法文件、已存在輸出檢查失敗行為與來源保留。",
+    "最後跑node --test並交只含report範圍的diff。"
+  ],
+  "transferExercise": null,
+  "expectedReport": {
+    "revision": "weekly-report-v2",
+    "timezone": "Asia/Taipei",
+    "weekStart": "2026-10-05",
+    "weekEnd": "2026-10-11",
+    "total": 5,
+    "completedInWeek": 2,
+    "pending": 1,
+    "unknownCompleted": 1
+  }
+}

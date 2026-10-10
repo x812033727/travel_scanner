@@ -1,0 +1,13 @@
+:root{font-family:system-ui,sans-serif;color:#163d44;background:#f2f5ef;color-scheme:light}
+*{box-sizing:border-box}body{margin:0}main{max-width:800px;margin:auto;padding:40px 24px}
+h1{font-size:clamp(2rem,6vw,3rem);line-height:1.15}p{line-height:1.65}.eyebrow{font-size:.8rem;letter-spacing:.1em}
+label{display:block;font-weight:600}input,select,button{font:inherit;min-height:46px;border:1px solid #a6bcb4;border-radius:8px;padding:10px 12px}
+input{min-width:0;max-width:100%}button{background:#176c63;color:white;cursor:pointer}select{background:white}
+:focus-visible{outline:3px solid #bf542a;outline-offset:4px}.form-row,.toolbar,.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.form-row{margin:12px 0}.form-row>input{flex:1}.toolbar{justify-content:space-between}.toolbar input{max-width:220px}
+ul{padding:0;list-style:none}li{display:flex;gap:12px;align-items:center;background:white;padding:12px;border:1px solid #d2dfd7;border-radius:12px;margin:12px 0}
+li label{display:flex;gap:12px;align-items:center;flex:1;min-width:0}li input{width:22px;min-height:22px;flex:none}li span{overflow-wrap:anywhere}
+li input:checked+span{text-decoration:line-through;color:#536660}li button{background:white;color:#85382d;flex:none}
+#message{min-height:1.7em;color:#85382d}section,details{margin-top:28px}summary{min-height:44px;cursor:pointer}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#e4ede5;padding:14px}code{overflow-wrap:anywhere}[hidden]{display:none!important}
+@media(max-width:480px){main{padding:24px 16px}.form-row{align-items:stretch;flex-direction:column}.toolbar{align-items:stretch}.toolbar label{width:100%}.toolbar input{max-width:100%;width:100%}li{flex-wrap:wrap}}
