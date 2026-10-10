@@ -10,7 +10,7 @@ import copy
 import hashlib
 import json
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from typing import Any
 
@@ -224,6 +224,9 @@ class Composition:
     captions: dict[str, dict[str, Any]]
     sha256: str
     approval_pin: dict[str, Any]
+    # Ready dub tracks of the approved language batch, by locale. No YouTube API takes them;
+    # only the Studio uploader does (docs/videos/VPS-UPLOADER.md).
+    dubs: dict[str, dict[str, Any]] = field(default_factory=dict)
 
 
 def compose(
@@ -242,6 +245,7 @@ def compose(
     pin: dict[str, Any] = {"publish": identity(publish), "languages": None, "choice": current}
     metadata = copy.deepcopy(base)
     captions = dict(base_captions)
+    dubs: dict[str, dict[str, Any]] = {}
     narration = base.get("default_language", "zh-TW")
     if not isinstance(narration, str) or not narration:
         raise invalid("核准上傳包的原旁白語言不正確，請重新送審")
@@ -362,6 +366,8 @@ def compose(
                     captions[locale] = item
                 elif item["content_type"] not in ("audio/mp4", "audio/mpeg", "audio/wav"):
                     raise invalid("配音附件格式不正確，請重新送審")
+                else:
+                    dubs[locale] = item
         if set(files) - retired_roles != allowed_roles:
             raise invalid("語言包附有未選取或未完成的素材，請重新送審")
         if verify_files:
@@ -408,4 +414,6 @@ def compose(
         sha = hashlib.sha256(
             json.dumps(pin, sort_keys=True, separators=(",", ":")).encode()
         ).hexdigest()
-    return Composition(metadata, dict(sorted(captions.items())), sha, pin)
+    return Composition(
+        metadata, dict(sorted(captions.items())), sha, pin, dict(sorted(dubs.items()))
+    )

@@ -79,3 +79,10 @@ public watch page of the accepted video lists the locales under
   already says the operator must settle this before enabling the service. A dub step does
   not change that question, it only adds one more thing the operator does.
 - Until this lands, the owner uploads by hand from the card; the card now says so.
+- 2026-10-10: the code half is merged as #1414 and deployed (1bd1d47ce): the approved pack
+  carries `dub_<locale>` assets and the uploader has the step, tested against the synthetic
+  Studio (selectors `dubCell`, `dubFile` provisional). The Data API still has no audio track
+  resource (discovery revision 20261006). Open for: the live acceptance, the receipt
+  approving the languages review (`vps.py` `action()` "record"; `compose()` only releases an
+  approved batch, so the button's meaning has to change with it), a label for the step in
+  `admin-video-vps-upload.tsx`, and whether already-public videos may be opened.

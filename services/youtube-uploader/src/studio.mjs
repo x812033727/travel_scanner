@@ -1,6 +1,6 @@
 import { linkSync, existsSync, readFileSync } from "node:fs";
 import path from "node:path";
-import { LANGUAGES, Refused, VIDEO } from "./contract.mjs";
+import { DUB_MEDIA, LANGUAGES, Refused, VIDEO, dubLocale } from "./contract.mjs";
 
 // Only DOM controls are used. No private Studio endpoints, cookie extraction or stealth flags.
 // Studio is not a stable API: ambiguous/missing controls pause instead of choosing a fallback.
@@ -15,6 +15,10 @@ export const DEFAULT_SELECTORS = {
   translations: "ytcp-video-translation-row, ytgn-video-translation-row",
   captionsCell: "#captions, #subtitles",
   localizationCell: "#metadata, #title-description",
+  // Provisional like every selector here: the dub (audio track) cell of a language row and the
+  // file input its Add dialog offers. Neither has been seen on a real Studio page.
+  dubCell: "#audio, #dub",
+  dubFile: 'input[type="file"][accept*="audio"]',
   syntheticGroup: "ytcp-video-metadata-editor-advanced",
 };
 export class Studio {
@@ -65,7 +69,9 @@ export class Studio {
   asset(job, role) {
     const file = job.manifest.files.find((f) => f.role === role);
     if (!file) throw new Refused("file_missing");
-    const extension = role === "final" ? ".mp4" : role === "thumbnail" ? (file.content_type === "image/png" ? ".png" : ".jpg") : file.content_type === "text/vtt" ? ".vtt" : ".srt";
+    const extension = role === "final" ? ".mp4" : role === "thumbnail" ? (file.content_type === "image/png" ? ".png" : ".jpg")
+      : dubLocale(role) ? DUB_MEDIA[file.content_type] : file.content_type === "text/vtt" ? ".vtt" : ".srt";
+    if (!extension) throw new Refused("file_missing");
     const target = path.join(this.store.directory, job.id, role + extension);
     if (!existsSync(target)) linkSync(this.store.file(job, file.sha256), target);
     return target;
@@ -183,6 +189,36 @@ export class Studio {
     }
     return this.unique(row);
   }
+  // Studio: Languages page -> the language row -> Dub cell -> Add -> the file -> Publish.
+  // The Data API has no audio track method, so this page is the only way a dub goes up.
+  async dub(step, locale, job) {
+    const row = await this.languageRow(locale);
+    const cell = await this.unique(this.control("dubCell", row));
+    const before = await cell.innerText();
+    // An automatic dub must be deleted by the owner before a file can replace it.
+    if (/\bauto/i.test(before)) throw new Refused("dub_needs_review");
+    // A published dub is never replaced or duplicated: replacing means deleting the track
+    // first, which is the owner's decision. The receipt says "present", not "placed".
+    if (/\bPublished\b/.test(before)) return { dub: "present" };
+    // Only a row without any dub offers Add. A draft left by an interrupted run offers
+    // something else, so the job pauses instead of sending the file a second time.
+    await this.click(cell.getByRole("button", { name: "Add", exact: true }));
+    const dialog = await this.unique(this.page.getByRole("dialog"));
+    await (await this.unique(this.control("dubFile"))).setInputFiles(this.asset(job, step));
+    // Studio enables Publish once it has taken the whole file; wait, do not force the click.
+    const publish = await this.unique(this.button("Publish", dialog));
+    const until = Date.now() + 30 * 60 * 1000;
+    while (!await publish.isEnabled()) {
+      await this.guard();
+      if (Date.now() >= until) throw new Refused("save_unconfirmed");
+      await this.page.waitForTimeout(500);
+    }
+    // This publishes an audio track, not the video's visibility; verify re-checks Private.
+    await this.click(publish);
+    await dialog.waitFor({ state: "hidden" });
+    if (!/\bPublished\b/.test(await cell.innerText())) throw new Refused("save_unconfirmed");
+    return { dub: "placed" };
+  }
   async step(step, job) {
     const id = job.video_id;
     if (step === "details") {
@@ -203,6 +239,8 @@ export class Studio {
     // Verify privacy before opening each language editor.
     await this.openPrivate(id);
     await this.goto("/video/" + id + "/translations");
+    const dubbed = dubLocale(step);
+    if (dubbed) return this.dub(step, dubbed, job);
     const captions = step.startsWith("captions_");
     const locale = step.slice(captions ? 9 : 13);
     const row = await this.languageRow(locale);
