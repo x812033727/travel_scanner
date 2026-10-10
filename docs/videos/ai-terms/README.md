@@ -120,7 +120,7 @@ ja、ko 是草稿，第一集做字幕翻譯時由審稿模型確認；改了就
 4. 上架後：`terms.json` 填 `video_id`、`published_at`，`status` 改 `published`；影片加進總清單與分類清單。片尾指向它的那些集（別列的 `related` 含它）下次做時就能連到它。
 5. 站主看數據要改順序，只改 `tier` 或 `suggested_order`，不動已發布的列。
 
-主機工人目前只從最近 14 天發布的文章與搜尋挑題（`apps/api/app/video_automation/topics.py` 的 `SITE_DAYS`），名詞文章 2026-09-14 發布，已經不在窗口內；所以第一批由 session 逐集發起，工人接手每一集的後續步驟。要讓工人在沒有新題目時自己從名詞庫接下一個名詞，是票 `2026-09-29-video-worker-takes-next-ai-term`（P3，站主決定要不要）。
+主機工人目前從最近 14 天發布的文章、開啟了的新聞來源裡被判成不算新聞的官方頁面，以及搜尋挑題（`apps/api/app/video_automation/topics.py`；文章的窗口是 `SITE_DAYS`），名詞文章 2026-09-14 發布，已經不在窗口內；所以第一批由 session 逐集發起，工人接手每一集的後續步驟。要讓工人在沒有新題目時自己從名詞庫接下一個名詞，是票 `2026-09-29-video-worker-takes-next-ai-term`（P3，站主決定要不要）。
 
 ## 總覽集
 

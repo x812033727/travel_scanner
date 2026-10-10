@@ -353,7 +353,8 @@ async def list_tool_videos(
 
 @tool_router.get("/topics", response_model=TopicsOut)
 async def get_video_topics(tool: VideoTool, session: Session) -> TopicsOut:
-    """Candidate topics for the next draft: the site's recent articles, then a web search."""
+    """Candidate topics for the next draft: the site's recent articles, official pages the
+    news writer declined, then a web search."""
     await enforce_named_rate_limit(
         "video_topics", str(tool.id), limit=TOPIC_LOOKUPS_PER_HOUR, window_seconds=3600
     )

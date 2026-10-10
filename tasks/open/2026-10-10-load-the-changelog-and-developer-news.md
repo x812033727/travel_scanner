@@ -37,6 +37,13 @@ Running a command on the production host needs the owner's go-ahead each time.
       whether the two 2026-09-30 batches were ever loaded.
 - [ ] `--apply` has run, and every source it refused is listed here with the reason.
 - [ ] The old "Claude blog" row (`https://claude.com/blog`) is switched off.
+- [ ] Official pages as video topics: when the deployed commit includes
+      `2026-10-10-official-pages-the-news-writer-declined`, this load also writes
+      `video_topics: true` on Claude blog, Claude developer blog, Anthropic engineering,
+      GitHub Changelog and Cursor changelog, which switches that feature on
+      (`docs/videos/AUTOMATION.md`, 官方頁面當題目). The owner is told so when asked.
+      If the load ran from a deploy without that change, it is written here that a
+      second load is still needed, and the second dry run shows those five as updates.
 - [ ] A day later: each new source has scanned without `stuck`, and the number of
       candidates it filed is noted.
 
@@ -60,8 +67,21 @@ Running a command on the production host needs the owner's go-ahead each time.
 validation error. `GET /api/travel/guides?locale=zh-TW&kind=life&topic=ai-news&sort=news`
 is where a published story from them would show.
 
+For the video topics (do not call `GET /video/automation/topics` by hand to look: one
+call spends up to five of the day's Brave queries and one of the worker's twelve hourly
+lookups): the five rows are enabled, and once one of them has a candidate
+the writer declined (`rejected`, `news_not_eligible`, no human decision), the worker's
+next scheduled draft is offered it with `source: "official"`. Count those rows in
+`news_candidates` for the five sources, or read the topics of the worker's next draft,
+and record the count here, or that no page has been declined yet.
+
 ## Notes
 
+- Order matters for the video-topics key. Deployed together with the official-topics
+  change, the five rows are plain creates. Loaded first without it, the later load is
+  five updates: a changed `config` re-validates an enabled source from the host, and a
+  refused validation stores the row switched off, so its news scan stops too. Read the
+  apply report and load again any row it refused.
 - All eight rows validated on 2026-10-10 from a development machine through
   `validate_source_configuration`. The host has another address: Cloudflare in front of
   `claude.com`, `claude.dev`, `code.claude.com` and `www.anthropic.com` answered 403 to
