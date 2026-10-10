@@ -103,7 +103,6 @@ const KNOWN = {
   "tasks/2026-09-21-taiwan-zh-tw-third-sub-batch.md": { "user-path": 1 },
   "tasks/2026-09-27-correct-wordpress-user-roles-unrelated-ai.md": { "user-path": 2 },
   "tasks/2026-09-27-general-audience-ai-agent-versus-chatbot.md": { "user-path": 1 },
-  "tasks/2026-09-27-general-audience-ai-citation-checking-video.md": { "user-path": 1 },
   "tasks/2026-09-27-integrate-batch029-wordpress-contact-guides.md": { "user-path": 2 },
   "tasks/2026-09-27-localize-wordpress-chat-and-booking-batch029.md": { "user-path": 4 },
   "tasks/2026-09-27-localize-wordpress-contact-forms-and-smtp.md": { "user-path": 3 },

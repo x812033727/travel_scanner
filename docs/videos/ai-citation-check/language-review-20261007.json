@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "kind": "standalone_source_and_translation_review",
+  "slug": "ai-citation-check",
+  "reviewer": "language_review_contract",
+  "reviewer_is_original_translator": false,
+  "translation_edit_actor": "root_operator",
+  "translation_review_snapshot_at": "2026-10-07T09:40:01.853Z",
+  "reviewed_file_snapshot_at": "2026-10-07T09:47:27.355Z",
+  "verdict": "ready_after_fixes_applied",
+  "remaining_text_fixes": [],
+  "scope": {
+    "locales": ["en", "ja", "ko", "zh-CN"],
+    "caption_entries_per_locale": 143,
+    "total_caption_entries": 572,
+    "metadata": ["title", "description", "tags", "six_chapter_titles"],
+    "official_source_claims": true,
+    "actual_draft_caption_timing": true,
+    "localized_thumbnail_words": "absent_in_all_four_files",
+    "dub_budget": "not_applicable_without_an_owner_selected_dub_worksheet",
+    "authority": "local_text_and_source_review_only"
+  },
+  "source_binding": {
+    "file": "video.json",
+    "bytes": 24643,
+    "sha256": "ba96bc7d5d1cc5d6fd20172064baefabd2bb319b00ba67387b02b4e90c5e3423",
+    "prior_visual_revision_sha256": "c1e01a5a8797445bd147606ad8ae87427c9adb9aa0f57a959474d30a01b968b0",
+    "latest_visual_revision_review": "Only two existing verdict strings were moved into second title lines. All 143 source rows, voice, chapters, YouTube metadata, sources and thumbnail are unchanged. This is a text-difference check, not rendered-media approval.",
+    "original_before_visual_revision_sha256": "a9b9eb260a2d61a6f430fdb74e2193a6327fb3267aa7c430b39105235f8d3cd2",
+    "all_143_zhTW_text_and_source_hashes_unchanged": true,
+    "youtube_sources_thumbnail_unchanged": true,
+    "source_line_fingerprint": {
+      "algorithm": "SHA-256 of UTF-8 JSON.stringify(native eachLine order mapped to {id,scene,text,source_hash})",
+      "sha256": "de930e7d1a8f84f0c38beb608ce04839eece169191210bebd11f704cce7db88a"
+    },
+    "metadata_source_hashes": {
+      "title": "abcf653ffc32",
+      "description": "c50fa91fe14d",
+      "tags": "c7a4f69d87bb",
+      "chapters": {
+        "hook": "39311a9af8b0",
+        "mock-answer": "68c27064abb8",
+        "open-link": "a86d3b1e1ee8",
+        "claim-split": "2f9fa7e95999",
+        "context": "eac3207e691f",
+        "corrected": "31224e6eace0"
+      }
+    },
+    "speech_hash": "399237f659e75fc5",
+    "timeline_sha256": "3ef9c3e53d35f4192ca8207220ce2b4f0809e10cada127c20ac8a68665d841b5"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Anthropic",
+      "source_kind": "official_primary_documentation",
+      "title": "Reduce hallucinations - Claude Platform Docs",
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations",
+      "final_url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations",
+      "accessed_at": "2026-10-07T09:38:03.581Z",
+      "access_method": "public_unauthenticated_GET_plus_web_text_read",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 361732,
+      "response_sha256": "0a9c390223bc10bd76b8e94141f35f3f1e1b64c7581abb409ce3aec33e07b070",
+      "last_modified_header": null,
+      "visible_publication_or_update_date": null,
+      "original_video_checked_on": "2026-09-27",
+      "historical_access_limit": "The retained September 27 record was read; this review does not independently recreate that day's network response.",
+      "supports": ["C1", "C2", "C3", "C5"],
+      "checked_meaning": "Citations support auditing individual claims; unsupported claims should be withdrawn. Admitting uncertainty and grounding in source text reduce errors without eliminating them. Critical information still requires validation."
+    },
+    {
+      "id": "S2",
+      "publisher": "Mokaair",
+      "source_kind": "first_party_CTA_article",
+      "title": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+      "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics",
+      "final_url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics",
+      "accessed_at": "2026-10-07T09:38:07.222Z",
+      "access_method": "public_unauthenticated_GET_and_read_local_article_source",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 514970,
+      "response_sha256": "424c9083bcd5fb4562449e6c99e3570d62d88c85547fadaf9428797f174a6b6d",
+      "last_modified_header": null,
+      "update_date_verified": false,
+      "web_reader_limit": "The web tool returned inaccessible; the subsequent direct public GET returned 200 and the expected article title and teaching content.",
+      "supports": ["C4_editorial_context", "C5_editorial_context", "ci068_to_ci071_CTA"],
+      "checked_meaning": "The beginner article covers asking for sources, identifying missing information and allowing an admission of not knowing. It is an explanatory article, not a guarantee of model correctness."
+    }
+  ],
+  "supporting_files": [
+    {"file": "claims.md", "bytes": 2697, "sha256": "686e31e4f080c21cba4d9cfc55740585609df8cf7d262c3e07a789c9cb1c9c66"},
+    {"file": "demo-log.md", "bytes": 1299, "sha256": "a50901a8fee551af310c743ef4e8275f8129fefc58fff2f104d9e6894eba45c4"},
+    {"file": "verify-1.md", "bytes": 4574, "sha256": "b2563cd62d40ea168a46daf1d300d2a180e791e096df081e78dccbdc97be4ed0"},
+    {"file": "verify-2.md", "bytes": 14691, "sha256": "130f7b7b5f63f91843c3aa64dbf30b7c5e2be205b1cab633b4f140639e4eafa9"},
+    {"file": "docs/videos/lexicon.json", "bytes": 3406, "sha256": "862d277aaf4359e9e07b5f3281f59eabb240f5ea3227c174f692cf2d0237f675"},
+    {"file": "apps/api/app/guides/content/ai-chat-prompt-basics.json", "bytes": 25574, "sha256": "0c9f72e7f6df06bdeee014fb3c365942f25286ab43e2132fd60eea0e043ae3a4"}
+  ],
+  "locales": [
+    {"locale": "en", "file": "i18n/en.json", "bytes": 20037, "sha256": "d3fa6fe0ec97cec0b13ed2ac381c78796e7ad57fb1010df964ac5d0c670abd24", "caption_entries": 143, "source_hash_mismatches": [], "orphan_ids": [], "metadata_hash_status": "all_current", "metadata_field_problems": [], "title_characters": 59, "maximum_entry_characters": 80, "chapter_count": 6, "thumbnail_status": "missing", "applied_speed_fixes": ["ci025", "ci113"], "applied_full_review_fixes": ["ci117", "ci062", "ci068", "ci098"], "verdict": "ready_after_fixes_applied"},
+    {"locale": "ja", "file": "i18n/ja.json", "bytes": 22187, "sha256": "b4e506bdac60e6d60e75b3df42e0cf1c5fdde4c0fc122260dec3b6ccf2ab816e", "caption_entries": 143, "source_hash_mismatches": [], "orphan_ids": [], "metadata_hash_status": "all_current", "metadata_field_problems": [], "title_characters": 28, "maximum_entry_characters": 36, "chapter_count": 6, "thumbnail_status": "missing", "applied_speed_fixes": ["ci055"], "applied_full_review_fixes": ["ci091", "ci105"], "verdict": "ready_after_fixes_applied"},
+    {"locale": "ko", "file": "i18n/ko.json", "bytes": 21688, "sha256": "becbc66517ff02bdc13b006af231a4dc45a3b53c731f9eac7ebb055c7d94af0d", "caption_entries": 143, "source_hash_mismatches": [], "orphan_ids": [], "metadata_hash_status": "all_current", "metadata_field_problems": [], "title_characters": 32, "maximum_entry_characters": 38, "chapter_count": 6, "thumbnail_status": "missing", "applied_speed_fixes": [], "applied_full_review_fixes": ["ci105"], "verdict": "ready_after_fixes_applied"},
+    {"locale": "zh-CN", "file": "i18n/zh-CN.json", "bytes": 19477, "sha256": "b3064a01e966e7b6cd2cae7e40894046445e89bb1ef5a97bb71fa010cbeafe0f", "caption_entries": 143, "source_hash_mismatches": [], "orphan_ids": [], "metadata_hash_status": "all_current", "metadata_field_problems": [], "title_characters": 20, "maximum_entry_characters": 25, "chapter_count": 6, "thumbnail_status": "missing", "applied_speed_fixes": [], "applied_full_review_fixes": ["ci141"], "verdict": "ready_after_fixes_applied"}
+  ],
+  "critical_semantics": {
+    "mock_answer_is_editorial_and_not_any_real_model_output": "preserved_in_all_four_locales_ci004_ci005_ci077",
+    "reduce_does_not_mean_eliminate": "preserved_in_all_four_locales_ci045_ci046_ci050",
+    "citation_does_not_guarantee_correctness": "preserved_in_all_four_locales_ci033_ci058_ci073",
+    "unsupported_claims_withdrawn_and_uncertainty_retained": "preserved_in_all_four_locales_ci034_ci038_ci062_ci107_ci135",
+    "historical_access_date_is_not_document_update_date": "preserved_in_all_four_descriptions_and_ci055; zh-CN_ci141_date_meaning_restored",
+    "first_description_line_article_CTA": "preserved_after_en_ci068_fix_and_independently_checked_in_actual_draft_metadata",
+    "three_steps_and_one_minute_are_editorial_practice_not_measured_guarantees": "preserved_in_context; no_success_rate_or_completion_time_measurement_claim"
+  },
+  "draft_evidence": {
+    "root": "OP/render-preview/ai-citation-check",
+    "native_caption_log": "OP/logs/20261007T093841Z-draft-captions.log",
+    "native_caption_exit_receipt": "OP/logs/20261007T093841Z-draft-captions.exit.json",
+    "independent_method": "Read actual SRTs with native parseSrt/checkCues; independently rebuild all cues with buildCues and compare text/start/end exactly.",
+    "caption_problems_all_five_locales": [],
+    "srt_files": [
+      {"locale": "zh-TW", "file": "captions/zh-TW.srt", "bytes": 12089, "cues": 143, "sha256": "4f4a3b2646d2978f59ea5018c02025bb6c12cb7a0ac170c81f32837c55beb9c0"},
+      {"locale": "en", "file": "captions/en.srt", "bytes": 13048, "cues": 143, "sha256": "91455c8a0e23fc611679fd513581c617192ebd0188981c27bf219fdf1cfecd06"},
+      {"locale": "ja", "file": "captions/ja.srt", "bytes": 14889, "cues": 144, "sha256": "0b587a8d12323ddb5d07cd8aa9048b0c6699ac15207efe335a3736db70bcd00c"},
+      {"locale": "ko", "file": "captions/ko.srt", "bytes": 14903, "cues": 148, "sha256": "6657b24f912400fbe4addb0ba11c3108d315ffa984380b2d41a125bfe1dd54a4"},
+      {"locale": "zh-CN", "file": "captions/zh-CN.srt", "bytes": 12171, "cues": 143, "sha256": "a36e1b690d6e31893e34db2f374a69b601b047cde00632364ef102b8dd84de6e"}
+    ],
+    "metadata_file": "review/metadata-draft/metadata-draft.json",
+    "metadata_bytes": 7823,
+    "metadata_sha256": "014459f94b52a86e2e40a122fe65640fa539a7b70c00903b7e4e532aa6d98b22",
+    "metadata_created_at": "2026-10-07T09:47:03.472Z",
+    "metadata_sources_current": true,
+    "metadata_problems": [],
+    "metadata_chapters": 6,
+    "first_line_zhTW": "🔗 完整文章：https://mokaair.com/zh-TW/life/ai-chat-prompt-basics?utm_source=youtube&utm_medium=video&utm_campaign=ai-citation-check",
+    "article_route_for_all_five_draft_locales": "zh-TW/life/ai-chat-prompt-basics",
+    "is_native_upload_package": false
+  },
+  "fix_summary": {
+    "speed_fixes_independently_verified": 3,
+    "full_review_fixes_recommended_and_applied": 8,
+    "full_review_fix_kinds": {"meaning": 6, "facts": 1, "readability": 1, "glossary": 0, "cue_order": 0, "budget": 0, "metadata": 0, "thumbnail": 0},
+    "all_11_edits_are_text_only": true,
+    "all_line_source_hashes_preserved": true,
+    "all_non_line_fields_preserved": true
+  },
+  "approval_boundary": {
+    "owner_language_selection_checked_or_created": false,
+    "review_API_called": false,
+    "native_language_gate_approved": false,
+    "dubs_generated_or_approved": false,
+    "audio_QA_approved": false,
+    "final_video_approved": false,
+    "upload_or_publish_authorized": false,
+    "unknown_ASR_hold_resolved": false,
+    "limits": "Localized thumbnail words are absent. This standalone review does not select locales, approve a dub, fabricate a native manifest, resolve the preserved unknown ASR request or approve an upload package. Any change to pinned text or metadata requires rebinding this review."
+  }
+}
