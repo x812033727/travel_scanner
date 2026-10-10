@@ -3180,24 +3180,102 @@ PASS is DURATION_ONLY for the nine rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Video languages are four increment (zh-CN leaves the pipeline): 26 files (2026-10-09)
+
+Reviewer: `claude-pr-review-languages-four`. Author: `claude-fable-5.1`. Scope: DURATION_ONLY for the 26 changed bindings below, reviewed at `11f5c7421def5e93559fe81418dc021349a225d7` ("test(video): the site label is 四語標題與說明 now") on claude/video-languages-four. The branch holds five commits: `5878c605b` ("feat(video): a video's languages are four, zh-CN leaves the pipeline (api, web)"), `935e694bb` (the same, "tools, docs, skill"), the merge `7b1d91026`, `d161f5832` ("test(api): regenerate the language contract fixtures without zh-CN") and the head; the owner's decision of 2026-10-09 is 「預計四語就好」: a video is narrated in zh-TW with en, ja and ko to add, and the site keeps its five locales. The reviewer wrote no part of those commits and edits only this report and review.json.
+
+Baseline: `d4f074c4da1473fac04b46aa9e70d7a733bcc560`, origin/main (#1409) and the merge base. Immutable Git blobs pass `durationReviewProblems` there for the report and all 108 REVIEW_FILES, under the "Languages-card wording increment (PR #1405)" above; the branch changes neither receipt file, nor review.mjs, nor anything under docs/videos/long-form or tools/video/long-form. Each of the 26 changed files matches its existing receipt and table at that baseline; its committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these 26 bindings, while the other 82 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `.agents/skills/youtube-video/SKILL.md`: `78a2b05461ae00cbfddd2c75e505de960f634d2887f84750712b948634c6b045` -> `4088bb1beede893b19b503281118a86ef6806a37243c9bfcb85dd70d2e91d101`.
+- `.agents/skills/youtube-video/references/automated.md`: `4816f3eec0d7b0f162389c7e56d37abfde40fbb0678d3a0e45991771cdaa9da6` -> `6852c8ae98a94ba4571696e14728d72cdad54963cecb9b6eeadd8651d6e41d0d`.
+- `.claude/skills/youtube-video/SKILL.md`: `78a2b05461ae00cbfddd2c75e505de960f634d2887f84750712b948634c6b045` -> `4088bb1beede893b19b503281118a86ef6806a37243c9bfcb85dd70d2e91d101` (byte-identical to the `.agents` copy at both revisions).
+- `apps/api/app/video_automation/models.py`: `54cedbf59e1cbfb373a2091c849804cdba3c054118f6272a168799831d6939e0` -> `14da996043cdc076a96c9051e7edf1556ca76dcf2b3d9ff3d68ef648516e1dd7`.
+- `apps/api/app/video_automation/schemas.py`: `08ad195d6c5befa11e15a307d04a9f38e441701605cc2559571c2e1e65ec21ab` -> `8a7b331074ca60276213a211011ac87952b34019d832b391f8d4129d11291ad7`.
+- `apps/api/app/video_automation/settings.py`: `eacb5d7aea4ca3acb969e3210d99920ca06a371b7dc19f7fec7e8da999b300c3` -> `9941b3244e15cf6b1d8aaec32c68ab2424f84adb32804a179652d93fb3977ca3`.
+- `apps/api/app/video_reviews/admin_service.py`: `0081b1b472f7e70243799d4aad81d0c763da6109a959506a9da7498b75fae70c` -> `82b4aec7003b3f71887fe0787b0dba7805d664b80e1a3cee0da1dadb24516117`.
+- `apps/api/app/video_reviews/schemas.py`: `e494a9e56fc6f425cd5b23b782aed7bf84f2b9329a1096ae90e5277282249559` -> `fb9b0d89a7c1b96b1f2ee77ffe7fc73df8ec09d508c15529efff7ae8a8982a70`.
+- `apps/web/components/admin-video-review-card.tsx`: `0c36f63cf55240e8de32596ee7ca7e7095145658c172788aaf1b2631313219a5` -> `d1e51c2914178294dc14c3ca9bdbfcc38164a249e7f9a05cf509268c1a67b8b5`.
+- `apps/web/components/admin-video-reviews.test.tsx`: `cc6b6bdfa232d1169faedc68a73b16f36f2f110fc1c24d34a2bf5df526d8425b` -> `13b095cb04c112d0cbf826a544276b2284c421ae7f0ae319eb72d7b88601df00`.
+- `docs/videos/DESIGN.md`: `ed68170ef2ccd7bb2657a867bc8bac05ecf9426bffbc291b7219bc3febb62221` -> `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405`.
+- `docs/videos/README.md`: `c5ac8cb060836704ac3b5c1127ce90f27177eddce2002211b69cba9ecd8d290b` -> `d03bddbb08af187f4fd62d1fcfd4fe9c77f8af6e5b73485c71bda686ac46df28`.
+- `tools/video/automation/automation.test.mjs`: `f2e7b1d4852c43d1c68217666d9c6e617dc4fd3c4a2709d8f4e144cb6c388721` -> `34510564b46d040b3addfd2bdba2a8865dd7244e97d259033597e7ea7f8504c0`.
+- `tools/video/automation/prompts.mjs`: `4da2bae5b173bf24b7b6a87f9cc41531b5bd89cb36f025ad2582c71ae8fa254b` -> `75f17ea823f2fc1f7ea39b3ae21df401d9329333222434e9d97ea632bbf02388`.
+- `tools/video/core/narration-locale.test.mjs`: `e42075ee53802451cb51ff3aa39252d358d3a9b8584f631c37f96d017c98eefc` -> `db350dea6710d783a076d3449685125649f161d7465a476971d3b691c36d5088`.
+- `tools/video/core/schema.mjs`: `d810ca82a8ef459faea23efa0afcbf1029d08521cb50c09e157bb19598ac172f` -> `580c3eaf35c2ed4fc294658efdc54f77624ef3bb18837e04483580a7a3556470`.
+- `tools/video/core/stages.test.mjs`: `6ed67af324ba3ff07a59678300365833619553cbb460ddd0dc64d97b2608a511` -> `2e22980d5fe28d63d555e5cce7c18f56fb7042cdab52fa03a76b076ecca3c332`.
+- `tools/video/core/state.test.mjs`: `d074d836f10479e95d90572719c69c2621e51f34cdd60572870a75e69fcf313d` -> `327eac9a271451f2f1d4954850dbed0ab4102be170f744cc953cb071f1ce0d08`.
+- `tools/video/dubs/captions-package.test.mjs`: `7eb0a10630b447dd17ffeafe3d99059c0fe3f392d58838dffd10a59373734f28` -> `88527c334aeea86dedff5ff15cb4672585ca303c973e4253078cb6c11e4e1871`.
+- `tools/video/dubs/dubs.test.mjs`: `61057bc8ad18f8a85a0ff1a56ba75139251d22c8c819494da96d0002c91c7d1b` -> `134767f7e954cdc31c6f7e4c2823dff6132d4c7d72a429a0d2f48fe37786566e`.
+- `tools/video/dubs/plan.test.mjs`: `94e61419eda766e722c07675f1f75a569f3eb07fdeecce5c03dc862db1a0d572` -> `b2c8a0294ac71554baffa2a2fa76e1ef6b0bc6aff992af3da1b2c35e0142658b`.
+- `tools/video/package/package.test.mjs`: `6e43fbb128ccbf863279aab9259f093fb87b81e461e7b062b5f47c903bae0163` -> `ec0a56363e66f4410af6d759b2497c39cc1aabd7bd3aacd449628b5b8b7b0047`.
+- `tools/video/qa/qa.test.mjs`: `b27d4ce3e3b6b0329488b549095cd51d61311a5cc644125b4087da99157c1281` -> `6bf6455a5077e93a7473a3c6720e53dfb77d3a8433317de0b6dbabc933de0d16`.
+- `tools/video/review/sync.mjs`: `c4ae35a7a88513b76f1997a77d3dff39829d69262971479b39f86ac9d76ee21c` -> `570c3fa5999eb7edf17e0e2e1c01b1602a326c8c191c3ce9ad20e65b38af2cba`.
+- `tools/video/review/sync.test.mjs`: `ae5d0c052271bf2694432f95deedcf89a005935335977104faf592aace0249a1` -> `c5272cd5154eb2b19fc4a16124671a51d01689150ee3bb5c23dc8c29ccc45644`.
+- `tools/video/tts/check.test.mjs`: `8da7502e68ba7bea2cb3bbdba3bf711bbfbb950b16429a480f5d0075b7670353` -> `0b4e2e68cb1aa38cfa0a5971df1b029e788850b3bac0461709a79b467801499b`.
+
+Findings, `tools/video/automation/prompts.mjs` (+17/−18): seven places, every one a language list or a register. `RULES_HEAD` (line 47) says "captions in four languages" instead of five. The translator's text (lines 387–390) loses "zh-CN about as long as the source" from its reading-pace clause and "zh-CN mainland wording in Simplified characters" from its register list, and is rewrapped: the figures that remain are the same, "en at most about 80 characters a line, ja and ko about 40", "Title at most 100 characters" and "tags at most 500 characters in total". `translator:compilation` (lines 1354–1355) loses the zh-CN register. The explainer's text (line 1433) says four languages instead of five. `translator:shorten` (line 1626) and `translator:reword` (lines 1650–1651) lose "zh-CN Simplified" from their register parentheses; the shorten text's sentence about "seconds" and "window_over_seconds" (lines 1622–1624) and both texts' "stay within max_chars" are the same words. `SOURCE_NAMES` (line 1665) loses its zh-CN entry, so `SOURCE_INSTRUCTIONS` has three keys instead of four; `fromSource` (line 1686) says four languages; its `shortRegister` anchor (line 1694) is now `"ko 합니다체)"` and the translator's two swap pairs (lines 1699–1700) and the caption reviewer's (line 1707) match the new text, so the swapped texts for an en-, ja- or ko-narrated video keep "en at most about 80 characters a line, ja, ko and zh-TW about 40". No other line changes. The duration texts are the same bytes at the same line or one line higher: the planner's "the whole at least 8 minutes and aimed at the upper end of target_minutes" (line 243), the writer's one sentence of "about 25 characters, at most 40" (line 285), the two Shorts of 25 to 55 seconds (line 303), "250 spoken characters a minute: never under 8 minutes" (line 311), the drama's 2 to 4 minutes (line 523) and `action_seconds` 1 to 8 (line 567), the explainer's 10-minute production target with its eight-minute body and cut (lines 1430–1431), the series texts' "never under 8 minutes" (lines 1518 and 1557), the episode Shorts (line 1576) and the long-anime runtime_spec and action_seconds instructions (lines 1731–1749). The lines naming a duration term number 88 at both revisions. `max_chars` is read by the shorten and reword passes from the worksheet; where it is computed, `lineBudgets` in dubs/plan.mjs (unbound, read as context), the slot, gap, tempo and overhead are untouched, and `RATE_RATIOS` and `DEFAULT_RATES` lose only their zh-CN entry (en 2.6 and 15, ja 1.35 and 7.8, ko 1.15 and 6.7, zh-TW 5.8 as before).
+
+Findings, `tools/video/core/schema.mjs` (+4/−2): `LOCALES` is `["zh-TW", "en", "ja", "ko"]` with a three-line comment naming the owner's decision and the site's five locales in its place; `NARRATION_LOCALE`, `narrationLocale` and the `narration_locale` validation that reads the list (lines 317–318) are unchanged. Everything below moves two lines down and keeps its bytes: `MIN_EPISODE_MINUTES = 8` (line 55), `target_minutes` among the document keys (line 92), `action_seconds` in `SCENE_KEYS` (line 125) and its 1-to-8 check with the cast and policy conditions (lines 279–289), the long-anime policy required for an anime episode over eight minutes (lines 307–308), and the `[min, max]` shape of `target_minutes` (lines 331–339). The lines naming a duration term number 25 at both revisions. `localizationPlanProblems`, imported from production/retention.mjs (unbound, +4/−2, read as context), checks `planned_locales` against its own list, now en, ja, ko; it reads no length.
+
+Findings, `tools/video/review/sync.mjs` (+1/−1): `STEP_LABELS["metadata translated"]` is 「四語標題與說明」 instead of 「五語」, the label of a compilation's step on the site. The other labels, the steps and their order, and everything the module sends are the same bytes; the lines naming a duration term number 72 at both revisions.
+
+Findings, the five API files. `video_automation/models.py` (+1/−1): `DEFAULT_CAPTION_LOCALES` loses zh-CN; the drama budgets below it, the settings table's CHECK constraint `target_minutes_min BETWEEN 8 AND 30 AND target_minutes_max BETWEEN 8 AND 30` (lines 164–165) and the column defaults 8 and 12 (lines 246–247) are the same bytes, and its 42 duration-term lines are the same. `video_automation/schemas.py` (+7/−4): `CaptionLocale` is `Literal["en", "ja", "ko"]` with a comment and a `CAPTION_LOCALES` tuple beside it, and `drama_caption_locales` (line 148) and `caption_locales` (line 186) take `max_length=3` instead of 4, a count of languages; `EPISODE_MIN_MINUTES = 8` (line 54), `target_minutes_min` and `target_minutes_max` with their `ge=EPISODE_MIN_MINUTES, le=30` (lines 184–185) and the min-not-over-max validator (lines 195–196), the explainer and series duration fields and the anime policy fields are unchanged. One cosmetic slip in the same hunk, `TopicWord =Annotated[...]` without a space after `=`, is not a rule and ruff accepts it. `video_automation/settings.py` (+13/−2): a `current_caption_locales(stored)` reader that drops a stored language no longer in `CAPTION_LOCALES`, used by `drama_values` and `settings_values`; `target_minutes_min` and `target_minutes_max` are read in the same function as before. `video_reviews/schemas.py` (+16/−3): `DubLocale` loses zh-CN, `RETIRED_LOCALES = {"zh-CN"}` and `without_retired_locales(raw)` are added, and `DubLocalesIn.locales` takes `max_length=len(DUB_LOCALES)`; the file's eight duration-term lines are the same. `video_reviews/admin_service.py` (+6/−4): `locale_choices` passes a stored choice through `without_retired_locales` before validating it, and the `set_locales` docstring names three languages instead of four; no gate, state transition or duration read changes, and its 40 duration-term lines are the same. The data migration 0128 (unbound, read as context) removes zh-CN keys from stored choices, settings and batches and names no minute, second or target.
+
+Findings, `apps/web/components/admin-video-review-card.tsx` (+4/−2) and `admin-video-reviews.test.tsx` (+2/−2): the card's `LOCALES` constant loses zh-CN with a comment that an older review naming it still renders after the three, and a doc comment's example `payload.locales` loses it; the test's settings fixture pre-ticks ja and ko instead of ja and zh-CN and expects 「韓文 標題與說明」 ticked where it expected 「簡體中文 CC 字幕」. The components' duration-term lines number 62 and 92 at both revisions; `admin-video-explainer-duration.test.tsx` and `admin-video-settings-tutorial.tsx` are not touched.
+
+Findings, the documents and skill. `docs/videos/DESIGN.md` (+3/−3): the 字幕 and 中繼資料 rows of the first table and step 11 of the pipeline table say four languages; the 長度 row (at least 8 minutes, 8–12 default target, the upper end an aim) is the same bytes. `docs/videos/README.md` (+3/−3): the 合集, 字幕 and 配音音軌 rows say four, three languages; the 長度 row (8-minute floor, 10 minutes for the three seasons and AI terms, 8–20 for the flat explainer, 13 for the brand story, 480 seconds of body and cut, the drama's 2–4 and the compilation's 30–480) is the same bytes. The two `youtube-video/SKILL.md` copies (+1/−1): the compilation prompt row says 三語翻譯. `references/automated.md` (+3/−3): the opening paragraph and the 旁白語言 bullet list three languages; the dub-cost bullet, which sizes the Gemini character quota for "一支 10 分鐘的影片", drops zh-CN's 5,000 characters so the total reads 23,000 instead of 28,000 while en 10,000, ja 6,000 and ko 6,500 are the same; the 10 minutes there is the example's length, not a rule. The 長度規則 bullet (8 分鐘以上, the 10- and 13-minute targets, 480 秒, `VIDEO_MIN_EPISODE_MINUTES`) is the same bytes. The lines naming a duration term number 7 in each SKILL copy and 16 in automated.md at both revisions.
+
+Findings, the eleven bound tool tests (+50/−58 together). Each change replaces a four-locale list or expectation with a three-locale one, or a zh-CN example with ko: `automation.test.mjs` (skipped caption locales, thumbnail gaps, the four `SOURCE_INSTRUCTIONS` hashes and keys); `narration-locale.test.mjs` (the validation message, `targetLocales`, `dubLocales`, `captionLocalesOf`); `stages.test.mjs` (`captionLocalesOf(null)`, a written choice); `state.test.mjs` (the todo and note strings, the i18n files written); `captions-package.test.mjs` (`dubRole("ko")`, and `dubRole("zh-CN")` kept as an older package's track; the review HTML's second dub is ko); `dubs.test.mjs` (the `defaultRate("zh-CN")` assertion, whose ratio was 1.0, is dropped and the en assertions against `RATE_RATIOS.en` and `DEFAULT_RATES.en` stand; the dry-run dub lists three locales); `plan.test.mjs` (`chinese` is zh-TW alone, the zh-CN lexicon assertion dropped, the third CLI case en → ko); `package.test.mjs` (skipped locales and thumbnails); `qa.test.mjs` (the captions and metadata details name four locales); `sync.test.mjs` (skipped locales, the chosen languages and given-up dub are ko, batch roles, the manifest, the compilation label 「四語標題與說明」, the merged captions); `tts/check.test.mjs` (`DUB_LOCALES`, `parseDubLocale` rejects zh-CN, `trackFiles("ko")`, the zh-CN same-sound and filler test of six lines removed with a comment, the `--locale` usage message). No test that asserts a minute, second, frame or floor changes: the duration-term lines number the same in every file at both revisions (automation 206, narration-locale 3, stages 15, state 83, captions-package 9, dubs 43, plan 4, package 35, qa 40, sync 159, check 12).
+
+Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. A case-insensitive scan of the 234 changed lines (128 added, 106 removed) of the 26 diffs for minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json and process.env finds nothing. The branch touches 89 files: the 26 above and 63 unbound ones (other skill references, `video_shorts`, `video_speech` and `video_youtube` modules and their tests, migration 0128 and its test, the language contract fixtures, other web components, eleven other docs under docs/videos, a task file, and tool modules and tests under automation, compile, core, dubs, package, production, render, review, shorts, templates and tts). `tools/video/automation/flow.mjs` is not among them: its receipt hash `4de8bbed…` is current.
+
+Ran (in the worktree at `11f5c7421`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the hashing of every bound path against the receipt, the baseline and the head, with a CR, BOM and trailing-LF check of each changed file;
+- `durationReviewProblems` against the baseline through `git show`, which returned no problem;
+- a reading of the 26 diffs, and of dubs/plan.mjs, production/retention.mjs, core/stages.mjs, migration 0128 and prompts.test.mjs as context;
+- the duration-term counts and the scan;
+- `git diff --check origin/main...HEAD`, which exited 0;
+- `ruff check` of `video_automation/schemas.py`, which passed.
+
+On the reviewed bytes, this exited 0:
+
+- `pytest tests/test_video_automation_settings.py tests/test_migration_0128_video_languages_four.py tests/test_video_reviews.py tests/test_video_youtube_language_package.py tests/test_video_explainer_duration.py` in apps/api, 156 passed and 4 skipped.
+
+A `node --test` run over the eleven bound tool tests plus `automation/prompts.test.mjs`, `core/lint.test.mjs`, `qa/duration.test.mjs` and `core/duration.test.mjs` was started on the reviewed bytes but stopped before it reported, the machine being loaded by other agents' runs; no result of it is claimed.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the decision to drop zh-CN, the reader that silently drops a stored zh-CN choice, or the migration as product choices; they were read, not judged.
+- The 63 unbound changed files are not reviewed or bound here. Of them, dubs/plan.mjs, retention.mjs, stages.mjs, migration 0128 and prompts.test.mjs were read as context and the rest only in the diff stat.
+- No video was written, translated, dubbed, rendered or measured. That the three remaining dubs still fit their windows was not observed; only that the budgets' inputs did not change.
+- The tool tests (Node), the Vitest files, `check:i18n`, lint, typecheck, mypy, the full tool and API suites and CI were not run to completion for this increment (a Vitest run by another agent was in progress in apps/web and was not read).
+- The 82 bindings this branch did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the 26 rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
-| `.agents/skills/youtube-video/SKILL.md` | `78a2b05461ae00cbfddd2c75e505de960f634d2887f84750712b948634c6b045` |
-| `.agents/skills/youtube-video/references/automated.md` | `4816f3eec0d7b0f162389c7e56d37abfde40fbb0678d3a0e45991771cdaa9da6` |
+| `.agents/skills/youtube-video/SKILL.md` | `4088bb1beede893b19b503281118a86ef6806a37243c9bfcb85dd70d2e91d101` |
+| `.agents/skills/youtube-video/references/automated.md` | `6852c8ae98a94ba4571696e14728d72cdad54963cecb9b6eeadd8651d6e41d0d` |
 | `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
-| `.claude/skills/youtube-video/SKILL.md` | `78a2b05461ae00cbfddd2c75e505de960f634d2887f84750712b948634c6b045` |
+| `.claude/skills/youtube-video/SKILL.md` | `4088bb1beede893b19b503281118a86ef6806a37243c9bfcb85dd70d2e91d101` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `fe502055df82612df2dee120c9db78ff54029c0514a73df683ad8ce2e14e9637` |
-| `apps/api/app/video_automation/models.py` | `54cedbf59e1cbfb373a2091c849804cdba3c054118f6272a168799831d6939e0` |
-| `apps/api/app/video_automation/schemas.py` | `08ad195d6c5befa11e15a307d04a9f38e441701605cc2559571c2e1e65ec21ab` |
+| `apps/api/app/video_automation/models.py` | `14da996043cdc076a96c9051e7edf1556ca76dcf2b3d9ff3d68ef648516e1dd7` |
+| `apps/api/app/video_automation/schemas.py` | `8a7b331074ca60276213a211011ac87952b34019d832b391f8d4129d11291ad7` |
 | `apps/api/app/video_automation/series.py` | `ca8e61d2431752d78f6e7bc5c98c26dd1c862d8ccb2bf596aa124b088f378dea` |
-| `apps/api/app/video_automation/settings.py` | `eacb5d7aea4ca3acb969e3210d99920ca06a371b7dc19f7fec7e8da999b300c3` |
-| `apps/api/app/video_reviews/admin_service.py` | `0081b1b472f7e70243799d4aad81d0c763da6109a959506a9da7498b75fae70c` |
-| `apps/api/app/video_reviews/schemas.py` | `e494a9e56fc6f425cd5b23b782aed7bf84f2b9329a1096ae90e5277282249559` |
+| `apps/api/app/video_automation/settings.py` | `9941b3244e15cf6b1d8aaec32c68ab2424f84adb32804a179652d93fb3977ca3` |
+| `apps/api/app/video_reviews/admin_service.py` | `82b4aec7003b3f71887fe0787b0dba7805d664b80e1a3cee0da1dadb24516117` |
+| `apps/api/app/video_reviews/schemas.py` | `fb9b0d89a7c1b96b1f2ee77ffe7fc73df8ec09d508c15529efff7ae8a8982a70` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
 | `apps/api/migrations/versions/0122_video_anime_production_policy.py` | `91f97905e9a689cc47aef8eac60735175a4048bfb5788fa1d204acb43ee11ea7` |
 | `apps/api/tests/test_migration_0118_video_min_8_minutes.py` | `c479dfd800de1fcbd1fb71d0b47d4fcb922675b314b31b680e8195cac898c28e` |
@@ -3210,8 +3288,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/tests/test_video_explainer_duration.py` | `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
-| `apps/web/components/admin-video-review-card.tsx` | `0c36f63cf55240e8de32596ee7ca7e7095145658c172788aaf1b2631313219a5` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `cc6b6bdfa232d1169faedc68a73b16f36f2f110fc1c24d34a2bf5df526d8425b` |
+| `apps/web/components/admin-video-review-card.tsx` | `d1e51c2914178294dc14c3ca9bdbfcc38164a249e7f9a05cf509268c1a67b8b5` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `13b095cb04c112d0cbf826a544276b2284c421ae7f0ae319eb72d7b88601df00` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
@@ -3220,10 +3298,10 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/web/messages/ko/admin.json` | `18fed6863285acaf879157707bb30995cd1f8a2eeb167d4c5d4e7cd4953cb8d3` |
 | `apps/web/messages/zh-CN/admin.json` | `c52f64ca0388c4e850742df482b28cbc868911bcf23edee91b5b9c99f7ba781d` |
 | `apps/web/messages/zh-TW/admin.json` | `9e3a0402625543d1ca4e77328eaefdcd151f187590bed477fe31dd7bc0573db4` |
-| `docs/videos/DESIGN.md` | `ed68170ef2ccd7bb2657a867bc8bac05ecf9426bffbc291b7219bc3febb62221` |
+| `docs/videos/DESIGN.md` | `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
-| `docs/videos/README.md` | `c5ac8cb060836704ac3b5c1127ce90f27177eddce2002211b69cba9ecd8d290b` |
+| `docs/videos/README.md` | `d03bddbb08af187f4fd62d1fcfd4fe9c77f8af6e5b73485c71bda686ac46df28` |
 | `docs/videos/long-form/README.md` | `dd639c0c85595881d1bda64541d28f29e8d90f1067e541c08eb28dc9c4543c3b` |
 | `docs/videos/long-form/plans.json` | `f1d2b4d17a3c9ee0271b5af88c16d5e2d3bf2faaea5d1d90c4c1da7c789044c3` |
 | `docs/videos/long-form/policy.json` | `6f08e7cd27b98710dc308bdb7ea44a6db4b1c8891d0731d5387d9b2245636bad` |
@@ -3236,10 +3314,10 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `f2e7b1d4852c43d1c68217666d9c6e617dc4fd3c4a2709d8f4e144cb6c388721` |
+| `tools/video/automation/automation.test.mjs` | `34510564b46d040b3addfd2bdba2a8865dd7244e97d259033597e7ea7f8504c0` |
 | `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
 | `tools/video/automation/flow.mjs` | `4de8bbedb777f17a66a04064c0bd612a2a23ea8cf206d798fb449851a6a46bc7` |
-| `tools/video/automation/prompts.mjs` | `4da2bae5b173bf24b7b6a87f9cc41531b5bd89cb36f025ad2582c71ae8fa254b` |
+| `tools/video/automation/prompts.mjs` | `75f17ea823f2fc1f7ea39b3ae21df401d9329333222434e9d97ea632bbf02388` |
 | `tools/video/automation/series.mjs` | `2b687e0e5251f8b01904f3018bc658e4322888959af9d8dc0931d71a41e5e381` |
 | `tools/video/automation/series.test.mjs` | `1974b5d8db7177c920bc85ec35acf8abc4a0177b80947596ed5b551e813c53d6` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
@@ -3256,19 +3334,19 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
 | `tools/video/core/lint.mjs` | `d08806c964fbe6d69e38202f6b37b0d3ffdafcec0455d8356253a3044da27c92` |
 | `tools/video/core/lint.test.mjs` | `13c9a41c13ed096b0cdc55a979b7b6405af67c4a07b1077181dcd80350050cd5` |
-| `tools/video/core/narration-locale.test.mjs` | `e42075ee53802451cb51ff3aa39252d358d3a9b8584f631c37f96d017c98eefc` |
-| `tools/video/core/schema.mjs` | `d810ca82a8ef459faea23efa0afcbf1029d08521cb50c09e157bb19598ac172f` |
+| `tools/video/core/narration-locale.test.mjs` | `db350dea6710d783a076d3449685125649f161d7465a476971d3b691c36d5088` |
+| `tools/video/core/schema.mjs` | `580c3eaf35c2ed4fc294658efdc54f77624ef3bb18837e04483580a7a3556470` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
 | `tools/video/core/screenplay.test.mjs` | `fe2765c5f2fa42d7cfe5a2e542063c32c4349b585c649552a31b2088aaaec180` |
-| `tools/video/core/stages.test.mjs` | `6ed67af324ba3ff07a59678300365833619553cbb460ddd0dc64d97b2608a511` |
+| `tools/video/core/stages.test.mjs` | `2e22980d5fe28d63d555e5cce7c18f56fb7042cdab52fa03a76b076ecca3c332` |
 | `tools/video/core/state.mjs` | `f45f65951076d48fe61280fc99b3c9d839614775c469fd1fd25d5046633aec26` |
-| `tools/video/core/state.test.mjs` | `d074d836f10479e95d90572719c69c2621e51f34cdd60572870a75e69fcf313d` |
+| `tools/video/core/state.test.mjs` | `327eac9a271451f2f1d4954850dbed0ab4102be170f744cc953cb071f1ce0d08` |
 | `tools/video/core/timeline.mjs` | `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a` |
 | `tools/video/core/timeline.test.mjs` | `8eedaa0b04f56d22b65becbf23e39e23e051f2d6850f63a5bf7c496583b9b00a` |
-| `tools/video/dubs/captions-package.test.mjs` | `7eb0a10630b447dd17ffeafe3d99059c0fe3f392d58838dffd10a59373734f28` |
-| `tools/video/dubs/dubs.test.mjs` | `61057bc8ad18f8a85a0ff1a56ba75139251d22c8c819494da96d0002c91c7d1b` |
+| `tools/video/dubs/captions-package.test.mjs` | `88527c334aeea86dedff5ff15cb4672585ca303c973e4253078cb6c11e4e1871` |
+| `tools/video/dubs/dubs.test.mjs` | `134767f7e954cdc31c6f7e4c2823dff6132d4c7d72a429a0d2f48fe37786566e` |
 | `tools/video/dubs/freshness.test.mjs` | `c882af3d55bff72c410e930b0e0f187770782a937952bb9efba3ab40e44a5b30` |
-| `tools/video/dubs/plan.test.mjs` | `94e61419eda766e722c07675f1f75a569f3eb07fdeecce5c03dc862db1a0d572` |
+| `tools/video/dubs/plan.test.mjs` | `b2c8a0294ac71554baffa2a2fa76e1ef6b0bc6aff992af3da1b2c35e0142658b` |
 | `tools/video/long-form/cli.mjs` | `3a0b26f900daaf1a08f7ed210ad1239d7f172035fa1e14c6dafc28bf55dedfa4` |
 | `tools/video/long-form/integration.test.mjs` | `aa69f38653fb7c6a7fd0c6daed93ccde1e031987e3169f6c8d9456f38c8b605c` |
 | `tools/video/long-form/plans.mjs` | `9680960509931642c679a9db9a3a1d6e419280558f9eb431358bfd1ee781e103` |
@@ -3278,19 +3356,19 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/media/clips.test.mjs` | `626e678fc76d08210aad82a850f393c66009e9c3a7fce815a8097e686602b238` |
 | `tools/video/media/look-keyframes.test.mjs` | `3413923fc1485cc03ffd29a18594c8ae48280710e1b81d7f6882d6f76db8f954` |
 | `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
-| `tools/video/package/package.test.mjs` | `6e43fbb128ccbf863279aab9259f093fb87b81e461e7b062b5f47c903bae0163` |
+| `tools/video/package/package.test.mjs` | `ec0a56363e66f4410af6d759b2497c39cc1aabd7bd3aacd449628b5b8b7b0047` |
 | `tools/video/production/anime-input.mjs` | `515e917f4d06c0117222ce09717345f9d4288c1e0357491e5f1097f782477f13` |
 | `tools/video/production/anime-input.test.mjs` | `76b4082fd9245ea331c04d430f82aa5e4afa742d4f830c0794531cc4bbe80d02` |
 | `tools/video/qa/checks.mjs` | `0c13be6eb906f9a322eab71dd18974a2cfa3f9d9b27cc5a9cba9f3570891567b` |
 | `tools/video/qa/checks.test.mjs` | `e93fe80fb6ef0366da6728e397f78e355e6000847836a0a7e31ae63615211317` |
 | `tools/video/qa/cli.mjs` | `b0b0a5ea57f5a060b38d732bc335944bbadbcd8d75bbaa50310fb1d29d01c17e` |
 | `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
-| `tools/video/qa/qa.test.mjs` | `b27d4ce3e3b6b0329488b549095cd51d61311a5cc644125b4087da99157c1281` |
-| `tools/video/review/sync.mjs` | `c4ae35a7a88513b76f1997a77d3dff39829d69262971479b39f86ac9d76ee21c` |
-| `tools/video/review/sync.test.mjs` | `ae5d0c052271bf2694432f95deedcf89a005935335977104faf592aace0249a1` |
+| `tools/video/qa/qa.test.mjs` | `6bf6455a5077e93a7473a3c6720e53dfb77d3a8433317de0b6dbabc933de0d16` |
+| `tools/video/review/sync.mjs` | `570c3fa5999eb7edf17e0e2e1c01b1602a326c8c191c3ce9ad20e65b38af2cba` |
+| `tools/video/review/sync.test.mjs` | `c5272cd5154eb2b19fc4a16124671a51d01689150ee3bb5c23dc8c29ccc45644` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
-| `tools/video/tts/check.test.mjs` | `8da7502e68ba7bea2cb3bbdba3bf711bbfbb950b16429a480f5d0075b7670353` |
+| `tools/video/tts/check.test.mjs` | `0b4e2e68cb1aa38cfa0a5971df1b029e788850b3bac0461709a79b467801499b` |
 | `tools/video/tts/synthesis.mjs` | `589ebe665bd281aaefba6749d61148f4c7011f71c962513efd5a6cd6830f3cb3` |
 | `tools/video/tts/tts.test.mjs` | `6f7dda4d4cb36292ca5445a83698d74c693464a9502b88be731564ef5c923403` |

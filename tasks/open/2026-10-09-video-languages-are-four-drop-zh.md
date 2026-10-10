@@ -69,10 +69,14 @@ with no choice at all.
 ## Steps
 
 - [x] Survey (read-only agent, 2026-10-09).
-- [ ] Tools, docs and skill on branch `claude/video-languages-four-tools` (agent).
-- [ ] API, migration and web on branch `claude/video-languages-four-apps` (agent).
-- [ ] Merge both into `claude/video-languages-four`, regenerate the contract fixtures with
-      `tools/video/review/language-contract.mjs`, run every check, open the PR.
+- [x] Tools, docs and skill (an agent's uncommitted worktree, taken over as a patch and
+      committed here after its agent could no longer be resumed).
+- [x] API, migration and web on branch `claude/video-languages-four-apps` (agent).
+- [x] Merge both into `claude/video-languages-four`, regenerate the contract fixtures
+      (`LANGUAGE_CONTRACT_WRITE=1 node --test tools/video/review/language-contract.test.mjs`),
+      run every check, open the PR.
+- [ ] After the deploy: the panel of a video that had zh-CN ticked shows three rows; the
+      settings tab loads; "照預設勾選" ticks en, ja, ko.
 
 ## How to verify
 
