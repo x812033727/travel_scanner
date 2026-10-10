@@ -20,7 +20,7 @@ import { dubArtifacts, loadProject, pipelineStatus } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
 import { localizedThumbnailHash } from "../core/translations.mjs";
 import { RendererError } from "../render/browser.mjs";
-import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
+import { dubFingerprint, dubScript, overrunSummary, translationHash } from "../dubs/plan.mjs";
 import { ITEM_IDS } from "../qa/checks.mjs";
 import { jpegBytes } from "../qa/test-images.mjs";
 import { PART_BYTES } from "../review/sync.mjs";
@@ -2392,11 +2392,17 @@ function fakeDub(box, slug, workdir, plan, checks) {
         return overrun();
       }
       if (!redo && overRuns[locale] <= (plan[locale]?.over ?? 0)) return overrun();
-      writeFileSync(files.fit, JSON.stringify({ ...base, tempo_max: 1.07, over: [] }));
+      // `plan[locale].absorbed` is the windows the real dub let through over their slides
+      // (plan.mjs absorbOverruns), as fit.json records them.
+      const absorbed = plan[locale]?.absorbed ?? [];
+      const windows = absorbed.map((window) => ({ scene: window.scene, state: 0, start_frame: 0, end_frame: 0, lines: [first], tempo: window.tempo ?? 1.15, slack_frames: -1, over: false, absorbed: window.absorbed, overrun_seconds: window.overrun_seconds }));
+      const tempoMax = Math.max(1.07, ...windows.map((window) => window.tempo));
+      writeFileSync(files.fit, JSON.stringify({ ...base, tempo_max: tempoMax, windows, over: [] }));
       const lines = timeline.lines.map((line) => ({ id: line.id, scene: line.scene, start_frame: line.start_frame + 5, end_frame: line.start_frame + 5 + Math.ceil(line.audio_samples / 2 / 1600), audio_samples: Math.floor(line.audio_samples / 2), tempo: 1 }));
-      writeFileSync(files.timeline, JSON.stringify({ ...base, format: "m4a", file: `${locale}.m4a`, total_frames: timeline.total_frames, tempo_max: 1.07, windows: [], lines }));
+      writeFileSync(files.timeline, JSON.stringify({ ...base, format: "m4a", file: `${locale}.m4a`, total_frames: timeline.total_frames, tempo_max: tempoMax, windows, lines }));
       writeFileSync(files.track("m4a"), Buffer.from(`${locale} track of ${words}`));
-      return { code: 0, out: `${locale}: 3 requests synthesized` };
+      const summary = overrunSummary(windows);
+      return { code: 0, out: `${locale}: 3 requests synthesized; 0 of 5 windows sped up (max ${tempoMax}x)${summary ? `; ${summary}` : ""}; ${files.track("m4a")}\nnext: check-audio` };
     }
     checkRuns[locale] = (checkRuns[locale] ?? 0) + 1;
     const text = loadProject({ slug, root: box.root }).translations[locale].lines[first].text;
@@ -3392,6 +3398,30 @@ test("a window that does not fit is shortened once and the dub is made; two roun
   assert.equal(await video.step(), null);
   assert.deepEqual(video.onSite().languages.ko.dub, { state: "skipped", reason });
   assert.equal(video.onSite().ready_to_upload, true, "a skipped part does not hold the upload");
+});
+
+test("a window `dub` let through over its slide is no shortening round: the batch and the notes say how it was absorbed", async () => {
+  // `dub` itself absorbs an overrun of a few frames (plan.mjs absorbOverruns) and exits 0, so no
+  // shortening round runs: en's window leaned on the pause after it, ko's went to 1.21x alone.
+  const video = await finishedVideo({ dubs: {
+    en: { absorbed: [{ scene: "questions", absorbed: "next-slack", overrun_seconds: 0.1 }] },
+    ko: { absorbed: [{ scene: "hook", absorbed: "tempo", tempo: 1.21, overrun_seconds: 0.27 }] },
+  } });
+  video.choose({ en: { metadata: false, captions: true, dub: true }, ko: { metadata: false, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: ko captions translated and reviewed$/);
+  assert.equal(await video.step(), "chatgpt-ads-off: en dub made; Jev passed every line; 1 window ran 0.1 s long: absorbed by the pause after it (questions)");
+  assert.equal(await video.step(), "chatgpt-ads-off: ko dub made; Jev passed every line; 1 window ran 0.27 s long: sped up to 1.21x (hook)");
+  assert.deepEqual(video.calls("translator", "shorten"), [], "nothing was shortened");
+  assert.ok(video.state().notes.includes("en dub: 1 window ran 0.1 s long: absorbed by the pause after it (questions)"));
+  assert.ok(video.state().notes.includes("ko dub: 1 window ran 0.27 s long: sped up to 1.21x (hook)"));
+  assert.ok(!existsSync(dubArtifacts(video.workdir, "en").skipped) && !existsSync(dubArtifacts(video.workdir, "ko").skipped), "neither locale was given up");
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(en captions\+dub, ko captions\+dub\)$/);
+  const [batch] = video.reviews("languages");
+  assert.deepEqual([batch.payload.locales.en.dub, batch.payload.locales.ko.dub], ["ready", "ready"]);
+  const metadata = readJson(video.upload("metadata.json"));
+  assert.deepEqual(metadata.dubs.map((dub) => [dub.locale, dub.tempo_max]), [["en", 1.15], ["ko", 1.21]], "the upload package carries the tempo the track reached");
+  assert.deepEqual(metadata.skipped_dub_locales, {});
 });
 
 test("a line heard wrong on every retake is reworded, the dub is made again for it, and it passes", async () => {
