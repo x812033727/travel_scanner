@@ -342,40 +342,6 @@ def _is_crypto_disclaimer(block: object, locale: str) -> bool:
     )
 
 
-def _canonical_disclaimer_text(document: GuideDocument, locale: str) -> GuideDocument:
-    """Keep an explicit existing warning in its callout, using the finance lint's phrase.
-
-    The generic finance lint requires the canonical marker in the body. A translation may
-    have it only in the title, or use a different negative ending: fix that same callout
-    rather than adding a duplicate that the locale reviewer repeatedly removes.
-    """
-    marker = CRYPTO_MARKERS[locale]
-    replacements: dict[int, str] = {}
-    for index, block in enumerate(document.blocks):
-        if not _is_crypto_disclaimer(block, locale) or not isinstance(block, CalloutBlock):
-            continue
-        if marker.casefold() in block.text.casefold():
-            continue
-        text = block.text
-        for variant in _TRANSLATED_CRYPTO_MARKERS.get(locale, ()):
-            if variant in text:
-                text = text.replace(variant, marker)
-                break
-        if text == block.text:
-            text += f" {marker}。" if locale in {"zh-TW", "zh-CN", "ja"} else f" {marker}."
-        # Do not trim an author's content or turn a valid stored block into a validation
-        # exception. If the canonical phrase cannot fit, the finance lint still holds it.
-        if len(text) > 2000:
-            continue
-        replacements[index] = text
-    if not replacements:
-        return document
-    encoded = document.model_dump(mode="json")
-    for index, text in replacements.items():
-        encoded["blocks"][index]["text"] = text
-    return GuideDocument.model_validate(encoded)
-
-
 def is_site_disclaimer(block: object) -> bool:
     return (
         isinstance(block, dict)
@@ -389,7 +355,9 @@ def with_crypto_disclaimer(document: GuideDocument, vertical: str, locale: str) 
     if vertical != "crypto":
         return document
     if any(_is_crypto_disclaimer(block, locale) for block in document.blocks):
-        return _canonical_disclaimer_text(document, locale)
+        # Keep an explicit title/body warning as authored. Appending the marker to its body
+        # undoes a reviewer's removal of a redundant tail and makes round two fail again.
+        return document
     title, text = CRYPTO_DISCLAIMERS[locale]
     encoded = document.model_dump(mode="json")
     notice = {"type": "callout", "tone": "info", "title": title, "text": text}
@@ -577,13 +545,16 @@ def hard_policy_problems(
         "tech": ["tech", "tech-news"],
         "crypto": ["finance", "crypto"],
     }[vertical]
-    # Match the insertion helper's explicit title/translation recognition, while satisfying
-    # the shared finance lint's canonical-body rule. No warning is added to a missing one.
-    linted = _canonical_disclaimer_text(document, locale) if vertical == "crypto" else document
+    has_crypto_disclaimer = vertical == "crypto" and any(
+        _is_crypto_disclaimer(block, locale) for block in document.blocks
+    )
+    # News recognizes an explicit warning in either callout field. Keep the generic finance
+    # rule unchanged for other articles, and retain every other error on the original text.
     problems = [
         f"{problem.code}: {problem.message}"
-        for problem in lint_document(linted, "life", topics=topics)
+        for problem in lint_document(document, "life", topics=topics)
         if problem.level == "error"
+        and not (problem.code == "finance_no_disclaimer" and has_crypto_disclaimer)
     ]
     problems.extend(_punctuation_problems(document, locale))
     if not any(isinstance(block, SummaryBlock) for block in document.blocks):
@@ -603,14 +574,11 @@ def hard_policy_problems(
     text = _visible_text(document)
     if vertical == "crypto":
         marker = CRYPTO_MARKERS[locale].casefold()
-        disclaimer_blocks = [
-            block for block in document.blocks if _is_crypto_disclaimer(block, locale)
-        ]
-        if marker not in text and not disclaimer_blocks:
+        if marker not in text and not has_crypto_disclaimer:
             problems.append(f"crypto_disclaimer: missing {CRYPTO_MARKERS[locale]}")
         if any(term.casefold() in text for term in FORBIDDEN_CRYPTO):
             problems.append("crypto_recommendation: price or trading language is not allowed")
-        if not disclaimer_blocks:
+        if not has_crypto_disclaimer:
             problems.append("crypto_disclaimer_block: disclaimer must be a callout")
     if vertical == "tech" and any(term.casefold() in text for term in FORBIDDEN_TECH):
         problems.append("tech_recommendation: buying or actionable exploit advice is not allowed")
