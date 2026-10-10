@@ -33,13 +33,16 @@ export function themeHash(css = readFileSync(THEME_FILE, "utf8")) {
   return hash(css);
 }
 
+// The templates that show a picture file named by `data.image`.
+const IMAGE_TEMPLATES = new Set(["screenshot", "photo"]);
+
 /**
- * The files a scene draws: its diagram or its screenshot, as a repository path or a stock photo's
- * work-directory path (stock/<sha256>.<ext>, templates.mjs isStockPath).
+ * The files a scene draws: its diagram, its screenshot or its photograph, as a repository path or
+ * a stock photo's work-directory path (stock/<sha256>.<ext>, templates.mjs isStockPath).
  */
 export function sceneAssets(scene) {
   if (scene.template === "diagram" && typeof scene.data?.svg === "string") return [scene.data.svg];
-  if (scene.template === "screenshot" && typeof scene.data?.image === "string") return [scene.data.image];
+  if (IMAGE_TEMPLATES.has(scene.template) && typeof scene.data?.image === "string") return [scene.data.image];
   return [];
 }
 
@@ -53,8 +56,9 @@ export function assetFile(asset, { root, workdir = null }) {
  * Template data problems for the whole video, labelled like lint's. With `root`, also the asset
  * files: they must exist, and an SVG must not script or reach the network. A stock photo must be
  * listed in assets[] (that is where the description's credit comes from; `stock fetch` writes the
- * entry) and, with `workdir`, be fetched into it. A drama's shots are generated clips, not
- * slides: lint checks their prompts and the media stages draw them.
+ * entry) and, with `workdir`, be fetched into it. A photo card's photograph is someone's picture
+ * wherever its file is, so a repository photograph must be listed in assets[] too. A drama's
+ * shots are generated clips, not slides: lint checks their prompts and the media stages draw them.
  */
 export function renderProblems(doc, root = null, { workdir = null } = {}) {
   const problems = [];
@@ -71,6 +75,7 @@ export function renderProblems(doc, root = null, { workdir = null } = {}) {
         if (workdir && !existsSync(path.join(workdir, asset))) problems.push({ path: where, message: `${asset} is not in the work directory; fetch it with stock fetch (node tools/video/cli.mjs)` });
         continue;
       }
+      if (scene.template === "photo" && !listed(asset)) problems.push({ path: where, message: `${asset} is not in assets[]: a photograph's source and licence go there, and without it the description carries no credit` });
       if (!root) continue;
       const file = path.join(root, asset);
       if (!existsSync(file)) problems.push({ path: where, message: `${asset} does not exist` });
