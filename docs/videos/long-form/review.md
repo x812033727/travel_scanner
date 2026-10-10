@@ -3351,6 +3351,41 @@ PASS is DURATION_ONLY for the six rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Policy judge demonstration-question increment (PR #1424): 1 file (2026-10-10)
+
+Reviewer: `claude-pr-review-1424-policy`. Author: `claude-fable-5.1`. Scope: DURATION_ONLY for the one changed binding below, reviewed at `c776540dd` ("fix(video): the drama format alone does not exempt a video from the demonstration question") on claude/policy-demo-explainer, whose other commit of its own is `feffaa86b` ("feat(video): the demonstration question is asked of tutorials only"). The reviewer wrote no part of those commits and edits only this report and review.json.
+
+Baseline: `1bd1d47ceab109b1425af01f1571173e95004c8e`, the head of origin/main and the merge base. The bound hash of the file is its blob at the baseline (computed with Node's crypto over `git show origin/main:<path>`), the other 107 bindings are current, and the branch changes neither receipt file nor anything under tools/video/long-form. The head bytes hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: apps/api/app/video_automation/judge.py` and nothing else. Every prior increment is preserved and the registry remains 108 files.
+
+- `apps/api/app/video_automation/judge.py`: `fe502055df82612df2dee120c9db78ff54029c0514a73df683ad8ce2e14e9637` -> `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7`.
+
+Findings, `apps/api/app/video_automation/judge.py` (+59/−18), read whole in the diff. Every changed line belongs to the policy judge: the module docstring's paragraph on which questions a video is asked; the `PolicyQuestions` literal, which gains `"explainer"`; the new `NO_DEMO_CATEGORIES = frozenset({"explainer", "story"})`; `PolicyVerdict`'s docstring; `read_policy_answers`, which takes a `questions` argument and, for an explainer, reads no `demo` and holds the verdict to the other three thresholds; the new `DEMO_NOT_ASKED` string and `policy_note`, whose `demo` may be None; `policy_questions_for`, which now reads `VideoProject.category` beside `shorts_line` and answers `"explainer"` for a row filed as `explainer` or `story` (a brand-story series episode and a cut Short are decided first, as before; no row, no category, and every other category, a drama's included, stay `"tutorial"`); and `judge_policy`, which asks an explainer the cut Short's three questions. The author's description holds. `POLICY_MIN_STANCE`, `POLICY_MIN_DEMO`, `POLICY_MAX_ADVICE` and `POLICY_MAX_SPONSORED` are not in the diff; they are score thresholds, not lengths. The outline judge, the pick note, the keyframe and audio judges and everything else in the module that reads a target, a minute count or a measured clock is the same bytes.
+
+Findings, the unbound new test `apps/api/tests/test_video_judge.py` (+267): seven tests of which questions are asked per category and format, the verdicts and notes, and that the request cannot name its own category. Its numbers are Jev scores (0.85, 0.17, 0.05, 0.1 and the like) and HTTP statuses; no episode length, target or floor is set, asserted or loosened.
+
+Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, target_seconds, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. The category named `explainer` here selects a question set only; it is not the explainer length profile and nothing reads it to choose a length. A case-insensitive scan of the 446 changed lines (412 added, 34 removed) of all six files in the branch's diff for minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, floor, plans.json, policy.json, process.env, seconds, frame, 時長, 片長, 長度, length, .skip and .only finds two lines, neither in judge.py: `load_runtime_settings` in the new API test (the settings loader's name) and the task file quoting this receipt's own failure message. The branch touches six files: the one above and five unbound ones (`apps/api/tests/test_video_judge.py`, `docs/videos/HANDS-OFF.md`, the task file, `tools/video/qa/policy.mjs`, `tools/video/qa/policy.test.mjs`).
+
+Ran (in a worktree at `c776540dd`, Node on Windows):
+
+- the hashing of the changed path against the receipt, the baseline blob and the head, with a CR, BOM and trailing-LF check;
+- `node tools/video/long-form/cli.mjs check` before rebinding, which named this one binding only;
+- a reading of `git diff origin/main...HEAD` for judge.py, test_video_judge.py, HANDS-OFF.md, qa/policy.mjs and qa/policy.test.mjs;
+- the scan described above.
+
+The CLI check, review.test.mjs and repo-hygiene.test.mjs are run after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept, as a product choice, exempting the `explainer` and `story` categories from the demonstration question, nor asking them the cut Short's wording of the other three; whether the policy judge is right is outside DURATION_ONLY.
+- Noted, not judged: the new comment in the unbound `tools/video/qa/policy.mjs` and the header of `policy.test.mjs` list "a drama" among the videos not asked for a demonstration, while judge.py at this head still asks a drama all four unless its category says otherwise. A comment, not a duration rule.
+- The five unbound changed files are not reviewed or bound here; they were read for the duration question only.
+- No video was judged, rendered or measured. pytest, ruff, mypy, the tool suites other than the three named above, lint, typecheck and CI were not run for this increment.
+- The 107 bindings this branch did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Photo card increment (PR #1425): 4 files (2026-10-10)
 
 Reviewer: `claude-pr-review-1425-photo-card`. Author: `claude-fable-5.1` (the receipt's `author_agent`, left as it stands; the commit's own trailer names Claude Opus 5.5 as co-author). Scope: DURATION_ONLY for the four changed bindings below, reviewed at `7611fd5bc403d39878d7b4084947b9cd1dba18e6` ("feat(video): a photo card pastes a real photograph as a print, with its credit"), the one commit of its own on claude/photo-paste-card (PR #1425), which adds a slide template `photo`. The reviewer wrote no part of that commit and edits only this report and review.json.
@@ -3417,7 +3452,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
 | `.claude/skills/youtube-video/SKILL.md` | `4088bb1beede893b19b503281118a86ef6806a37243c9bfcb85dd70d2e91d101` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
-| `apps/api/app/video_automation/judge.py` | `fe502055df82612df2dee120c9db78ff54029c0514a73df683ad8ce2e14e9637` |
+| `apps/api/app/video_automation/judge.py` | `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7` |
 | `apps/api/app/video_automation/models.py` | `14da996043cdc076a96c9051e7edf1556ca76dcf2b3d9ff3d68ef648516e1dd7` |
 | `apps/api/app/video_automation/schemas.py` | `8a7b331074ca60276213a211011ac87952b34019d832b391f8d4129d11291ad7` |
 | `apps/api/app/video_automation/series.py` | `ca8e61d2431752d78f6e7bc5c98c26dd1c862d8ccb2bf596aa124b088f378dea` |
