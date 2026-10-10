@@ -1,0 +1,3 @@
+{"jsonrpc":"2.0","id":1,"result":{"protocolVersion":"2025-11-25","capabilities":{"tools":{}},"serverInfo":{"name":"gear-desk","version":"0.1.0"},"instructions":"器材租借櫃台庫存：代號、貨架、剩餘數量。"}}
+{"jsonrpc":"2.0","id":2,"result":{"tools":[{"name":"find_gear","description":"查一個器材代號放在哪個貨架、還剩幾個。","inputSchema":{"type":"object","required":["code"],"properties":{"code":{"type":"string"}}}},{"name":"low_stock","description":"列出剩餘數量低於 below 的器材。","inputSchema":{"type":"object","required":["below"],"properties":{"below":{"type":"integer"}}}}]}}
+{"jsonrpc":"2.0","id":3,"result":{"content":[{"type":"text","text":"G-417 頭燈｜貨架 D-07｜剩 37"}],"isError":false}}
