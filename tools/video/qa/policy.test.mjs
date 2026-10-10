@@ -3,7 +3,7 @@ import { test } from "node:test";
 
 import { policyVerdict } from "./policy.mjs";
 
-// An explainer, a story, a drama and a cut Short are not asked for a demonstration
+// A video filed as an explainer or a story, and a cut Short, are not asked for a demonstration
 // (apps/api/app/video_automation/judge.py `policy_questions_for`): the answer's `demo` is null.
 
 test("an answer whose demo is null passes or fails on the judge's flag and shows the site's note", () => {

@@ -37,7 +37,7 @@ const SCORES = ["stance", "demo", "advice", "sponsored"];
  * { stance, demo, advice, sponsored, passed, note }: `passed` is the verdict and `note` is Jev's
  * sentence for the review card, passed or not. An answer without a verdict is a failure, never
  * a pass. `demo` is null for a video that is not asked for a demonstration (an explainer, a
- * story, a drama, a cut Short): the site's note says so (「有示範：不適用（解說）」), and the line
+ * story, a cut Short): the site's note says so (「有示範：不適用（解說）」), and the line
  * written here when there is no note says it was not asked instead of leaving it out.
  */
 export function policyVerdict(answer) {
