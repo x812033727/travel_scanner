@@ -20,7 +20,7 @@ import { writeAnimeActs } from "./anime-write.mjs";
 import { approvalState, approve, GATES, sha256File } from "../core/approvals.mjs";
 import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { craftChecks } from "../core/craft.mjs";
-import { EXPLAINER_PRESET, hasCast, illustrated, resolveLook, SLIDES_PRESETS, slidesPresetFor } from "../core/drama.mjs";
+import { hasCast, illustrated, isExplainerPreset, resolveLook, SLIDES_PRESETS, slidesPresetFor } from "../core/drama.mjs";
 import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon, isProposableTerm } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
@@ -346,7 +346,7 @@ export function planProblem(plan, taken, usedGuides = new Set(), format = "slide
   if (!SLUG.test(plan.slug ?? "")) return `slug "${plan.slug}" is not lowercase kebab-case of at most 60 characters`;
   if (taken.has(plan.slug)) return `slug "${plan.slug}" is already used by an earlier video`;
   if (typeof plan.brief !== "string") return "brief is missing";
-  const sections = format !== "drama" ? REQUIRED_SECTIONS : preset === EXPLAINER_PRESET ? EXPLAINER_SECTIONS : DRAMA_SECTIONS;
+  const sections = format !== "drama" ? REQUIRED_SECTIONS : isExplainerPreset(preset) ? EXPLAINER_SECTIONS : DRAMA_SECTIONS;
   const missing = sections.filter((heading) => !plan.brief.includes(heading));
   if (missing.length) return `brief lacks ${missing.join(", ")}`;
   const stanceIssues = stanceProblems(plan.brief, stance);
@@ -472,8 +472,8 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     const preset = stylePreset ?? drama.style_preset ?? "cinematic-3d";
     settled.look = { preset, ...(video.look ?? {}) };
     if (isLongAnime(series)) settled.look.preset = "anime-2d";
-    if (preset === EXPLAINER_PRESET) {
-      settled.look.preset = EXPLAINER_PRESET;
+    if (isExplainerPreset(preset)) {
+      settled.look.preset = preset;
       settled.characters = [];
     }
     // New automatic productions use selectable CC, even if an old site setting or writer
@@ -501,7 +501,7 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     // explainer (a one-off of the flat-explainer preset) has no cast whatever the writer returned.
     settled.series = { slug: series.slug, episode: series.episode, chapter: series.chapter };
     const book = new Map((cast ?? []).map((character) => [character.id, character]));
-    settled.characters = settled.look?.preset === EXPLAINER_PRESET ? [] : (video.characters ?? []).map((character) => book.get(character?.id) ?? character).sort((a, b) => (a?.id < b?.id ? -1 : a?.id > b?.id ? 1 : 0));
+    settled.characters = isExplainerPreset(settled.look?.preset) ? [] : (video.characters ?? []).map((character) => book.get(character?.id) ?? character).sort((a, b) => (a?.id < b?.id ? -1 : a?.id > b?.id ? 1 : 0));
   }
   // Production authority comes from the approved request, never model-generated metadata.
   if (hasAnimePolicy(series)) {
@@ -928,7 +928,7 @@ export class Automation {
   variantOf(state) {
     const episode = episodeVariant(state);
     if (episode) return episode;
-    return state.format === "drama" && state.style_preset === EXPLAINER_PRESET ? "explainer" : null;
+    return state.format === "drama" && isExplainerPreset(state.style_preset) ? "explainer" : null;
   }
 
   /**

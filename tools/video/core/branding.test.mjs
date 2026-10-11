@@ -43,7 +43,10 @@ test("only new explainers use the series default; absent, disabled and invalid r
   b.current(seriesPreset(), "sothatswhy");
   assert.equal((await selectBrandingForBuild({ ...b, doc: explainer })).intro.frames, 357);
   assert.equal((await selectBrandingForBuild({ ...b, doc: explainer, adoptCurrent: true })).intro.frames, 357);
-  for (const other of [doc, { format: "screencast" }, { format: "drama", look: { preset: "anime" } }, { ...doc, title: "原來如此", look: { preset: "flat-explainer" } }]) {
+  // cute-cartoon is So That's Why redrawn, so it keeps the series' bookends; cute-mystery is
+  // another series' explainer and wears the channel's until it has bookends of its own.
+  assert.equal((await selectBrandingForBuild({ ...b, doc: { format: "drama", look: { preset: "cute-cartoon" } } })).intro.frames, 357);
+  for (const other of [doc, { format: "screencast" }, { format: "drama", look: { preset: "anime" } }, { format: "drama", look: { preset: "cute-mystery" } }, { ...doc, title: "原來如此", look: { preset: "flat-explainer" } }]) {
     assert.equal((await selectBrandingForBuild({ ...b, doc: other })).intro.frames, 150);
   }
   assert.equal(await selectBrandingForBuild({ ...b, doc: { format: "shorts", look: explainer.look } }), null);

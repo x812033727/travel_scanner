@@ -2057,6 +2057,14 @@ test("an explainer one-off plans a question's bible with no cast, and its brief 
   assert.equal(documentVariant("bible", ONE_OFF), "bible");
   assert.equal(documentVariant("setting", SERIES), "setting");
   assert.match(instructionsFor("planner", "drama", "", "bible-explainer"), /BIBLE of ONE explainer episode/);
+  // The two cute presets are explainers too: same question-shaped bible, same brief sections.
+  for (const preset of ["flat-explainer", "cute-cartoon", "cute-mystery"]) {
+    assert.equal(isExplainerOneOff({ ...explainer, style_preset: preset }), true, preset);
+    assert.equal(documentVariant("bible", { ...explainer, style_preset: preset }), "bible-explainer", preset);
+    assert.equal(isExplainerOneOff({ ...SERIES, style_preset: preset }), false, `${preset}: a long series is never an explainer`);
+    assert.equal(documentVariant("bible", { ...SERIES, style_preset: preset }), "bible", preset);
+  }
+  assert.equal(isExplainerOneOff({ ...explainer, style_preset: "ink-wash" }), false);
 
   const outline = { title: "為什麼雷聲總比閃電晚到？", logline: "光比聲音快太多。", question: "為什麼雷聲總比閃電晚到？", answer: "光比聲音快太多。", reasons: ["光速約每秒三十萬公里", "聲速約每秒三百四十公尺"], hook: "閃電亮了，你數到幾？", closing: "下一題：彩虹為什麼是彎的？", sources: ["https://en.wikipedia.org/wiki/Speed_of_sound"] };
   const bible = { body_md: "# 雷聲\n## 問題\n…\n", body_json: { characters: [], acts: [{ number: 1, title: "光先到", summary: "s", shots: 4 }], outline, music: "輕快", not_doing: [], lexicon: {} } };
@@ -2066,9 +2074,14 @@ test("an explainer one-off plans a question's bible with no cast, and its brief 
   assert.match(documentProblem("bible", { ...bible, body_json: { ...bible.body_json, outline: { ...outline, answer: "" } } }, explainerJob), /outline\.answer/);
   assert.match(documentProblem("bible", { ...bible, body_json: { ...bible.body_json, outline: { ...outline, sources: ["http://x"] } } }, explainerJob), /https pages/);
   assert.match(documentProblem("bible", bible, { ...job("bible"), series: ONE_OFF }), /characters must list the cast/, "a story one-off still needs its cast");
+  for (const preset of ["cute-cartoon", "cute-mystery"]) {
+    const cuteJob = { ...job("bible"), series: { ...explainer, style_preset: preset } };
+    assert.equal(documentProblem("bible", bible, cuteJob), null, preset);
+    assert.match(documentProblem("bible", { ...bible, body_json: { ...bible.body_json, characters: ONE_OFF_CAST } }, cuteJob), /must be empty/, preset);
+  }
 
   const brief = episodeBrief(explainer, { number: 1, title: outline.title, logline: outline.logline }, [], outline);
-  assert.deepEqual(checkBrief(brief, "drama", "flat-explainer"), []);
+  for (const preset of ["flat-explainer", "cute-cartoon", "cute-mystery"]) assert.deepEqual(checkBrief(brief, "drama", preset), [], preset);
   assert.match(brief, /## 一句答案\n光比聲音快太多。/);
   assert.match(brief, /### 選項 A：為什麼雷聲總比閃電晚到？\n一行說明：光比聲音快太多。\n開場鉤子：「閃電亮了，你數到幾？」/);
   assert.match(brief, /- https:\/\/en\.wikipedia\.org\/wiki\/Speed_of_sound/);
@@ -2144,6 +2157,18 @@ test("an explainer one-off goes from its question's bible to a narrator-only scr
     assert.equal(digestOf(canonicalJson(rest)), payload, `${stage}:${variant} payload`);
   }
 });
+
+// Until each cute preset has prompts of its own, it is written from the explainer's: the writer
+// is told to answer look.preset "flat-explainer", and the worker saves the request's instead.
+for (const [preset, shortsSeries] of [["cute-cartoon", "sothatswhy"], ["cute-mystery", "illustrated"]]) {
+  test(`a ${preset} one-off runs the explainer's stages, keeps its own preset, and its Shorts carry the ${shortsSeries} series`, async () => {
+    const { site, video, shorts } = await explainerOneOffRun(preset, { preset: "flat-explainer" });
+    assert.deepEqual(site.calls.run.map((call) => [call.stage, call.variant]), EXPLAINER_STAGE_PINS.map(([stage, variant]) => [stage, variant]));
+    assert.equal(site.calls.run[0].payload.drama_settings.style_preset, preset);
+    assert.deepEqual(video.look, { preset });
+    assert.deepEqual(shorts.map((short) => short.series), [shortsSeries, shortsSeries]);
+  });
+}
 
 const ANIME_SERIES = { ...SERIES, slug: "borrowed-dawn", title: "借來的黎明", kind: "series", category: "anime", genre: "custom", lead: "ensemble", tone: "no-romance", style_preset: "anime-2d", target_minutes: 22, planned_episodes: 120, episodes_per_chapter: 12, chapters: 10, open_ended: false, hands_off: false, compilation: false, production_policy: "long-anime-v1", runtime_spec: { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 } };
 const sourceSeason = (number) => JSON.parse(readFileSync(new URL(`../../../docs/videos/series-plans/borrowed-dawn/season-${String(number).padStart(2, "0")}.json`, import.meta.url), "utf8"));

@@ -14,7 +14,7 @@ import path from "node:path";
 
 import { hasAnimePolicy, isLongAnime, isClosedAnimeFinale, validateAnimePolicy } from "../core/anime-policy.mjs";
 import { craftGateProblems } from "../core/craft.mjs";
-import { EXPLAINER_PRESET, shotLooksProblem } from "../core/drama.mjs";
+import { isExplainerPreset, shotLooksProblem } from "../core/drama.mjs";
 import { atomicWrite, readJson } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
@@ -55,7 +55,7 @@ export const isOneOff = (series) => series?.kind === "one-off";
  * Whether a one-off is an illustrated explainer (docs/videos/so-thats-why/): the owner picked the
  * flat-explainer preset, so its bible is a question's, with no cast.
  */
-export const isExplainerOneOff = (series) => isOneOff(series) && series?.style_preset === EXPLAINER_PRESET;
+export const isExplainerOneOff = (series) => isOneOff(series) && isExplainerPreset(series?.style_preset);
 /** The planner prompt of a document: its kind, or the explainer's bible. */
 export const documentVariant = (kind, series) => (kind === "bible" && isExplainerOneOff(series) ? "bible-explainer" : kind);
 /** Whether a series' genre carries the retention rules (the classic xianxia series does not). */

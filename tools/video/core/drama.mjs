@@ -111,6 +111,21 @@ export const PRESETS = {
     negative: "photorealistic, 3D render, cinematic lighting, text, letters, watermark, logo, brand marks, real person's likeness, mascot, recurring cartoon character, extra fingers, deformed hands, cluttered background",
     motion: "slow push in or gentle drift, no morphing, no cuts",
   },
+  // The explainer family's two cute cartoon looks: the same narrator-only stills as
+  // flat-explainer, drawn as a chibi cartoon. cute-cartoon is 原來如此事務所's (So That's Why,
+  // docs/videos/so-thats-why/), cute-mystery is 奇聞檔案局's (docs/videos/history-curiosity/).
+  // Positive text only: they are written for MiniMax image-01, which has no negative prompt, so
+  // everything the look refuses has to be said as what it is.
+  "cute-cartoon": {
+    style: "cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, bright flat colours with soft cel shading on a warm cream paper ground, ink navy, mustard yellow, stamp red only on the answer, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9",
+    negative: "",
+    motion: "slow push in or gentle drift, no morphing, no cuts",
+  },
+  "cute-mystery": {
+    style: "cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9",
+    negative: "",
+    motion: "slow push in or gentle drift, no morphing, no cuts",
+  },
   // The channel's own illustrated slides (docs/videos/ILLUSTRATED.md): pictures between the dark
   // data cards, so they share theme.css's ground and accents; no cast, no text in the picture.
   // Written as a printmaker's brief, not a render's: uneven ink, misregistered flat colour and
@@ -140,7 +155,20 @@ export const PRESETS = {
   },
   custom: { style: "", negative: "", motion: "" },
 };
+// The first explainer preset. Kept for the tests that import it; nothing compares with it:
+// "is this an explainer" is isExplainerPreset, "whose identity does it wear" is explainerSeries.
 export const EXPLAINER_PRESET = "flat-explainer";
+/**
+ * The explainer family: a narrator, still pictures, no cast, the eight-minute floor. The API
+ * (apps/api/app/video_automation/schemas.py EXPLAINER_PRESETS) and the web
+ * (apps/web/lib/video-presets.ts) keep the same list; core/explainer-family.test.mjs compares them.
+ */
+export const EXPLAINER_PRESETS = Object.freeze(["flat-explainer", "cute-cartoon", "cute-mystery"]);
+/** Whether a look preset is one of the explainer family's. */
+export const isExplainerPreset = (preset) => EXPLAINER_PRESETS.includes(preset);
+// Whose identity an explainer wears: its series' bookends, thumbnail and Shorts theme, or null
+// for the channel's own. Being an explainer and being So That's Why are two questions.
+const EXPLAINER_IDENTITY = Object.freeze({ "flat-explainer": "sothatswhy", "cute-cartoon": "sothatswhy", "cute-mystery": null });
 /** The print looks a slides video's illustrations rotate through (docs/videos/ILLUSTRATED.md §第二輪), in rotation order. */
 export const SLIDES_PRESETS = ["riso-teal", "riso-navy", "riso-forest", "riso-plum", "linocut-teal"];
 /** The look a slides video's illustrations take when nothing chooses one (the first of the rotation). */
@@ -191,8 +219,10 @@ const hash16 = (...parts) => {
 
 export const isDrama = (doc) => doc?.format === DRAMA_FORMAT;
 export const isSeriesEpisode = (doc) => isDrama(doc) && isObject(doc.series);
-/** A drama drawn in the explainer preset: narrator only, every shot a still. */
-export const isExplainer = (doc) => isDrama(doc) && doc.look?.preset === EXPLAINER_PRESET;
+/** A drama drawn in one of the explainer presets: narrator only, every shot a still. */
+export const isExplainer = (doc) => isDrama(doc) && isExplainerPreset(doc.look?.preset);
+/** The series whose identity an explainer wears ("sothatswhy"), or null: the channel's, or not an explainer. */
+export const explainerSeries = (doc) => (isExplainer(doc) ? EXPLAINER_IDENTITY[doc.look.preset] : null);
 /**
  * Whether the eight-minute floor (MIN_EPISODE_MINUTES) holds: slides, screencasts and the
  * explainer, never a drama episode, a brand story or a compilation.
@@ -209,7 +239,7 @@ const CATALOGUE_SLUG = /^(?:sothatswhy-|ai-term-|story-)/;
 export function isKnowledgeLongform(doc) {
   return Boolean(doc && LONG_FORMATS.has(doc.format) && !doc.compilation && (
     KNOWLEDGE_CATEGORIES.has(doc.category)
-    || doc.look?.preset === "flat-explainer"
+    || isExplainerPreset(doc.look?.preset)
     || CATALOGUE_SLUG.test(doc.slug ?? "")
   ));
 }
@@ -554,7 +584,7 @@ export function validateDrama(doc, errors, validateVoice) {
   if (!drama && doc.look !== undefined && !pictures) errors.push({ path: "look", message: `a slides video with no "${SHOT_TEMPLATE}" scenes has nothing to draw with a look` });
   const explainer = isExplainer(doc);
   const cards = explainer ? EXPLAINER_CARD_TEMPLATES : CARD_TEMPLATES;
-  if (explainer && characterIds.size) errors.push({ path: "characters", message: `an explainer (look preset "${EXPLAINER_PRESET}") has no characters: the narrator tells it` });
+  if (explainer && characterIds.size) errors.push({ path: "characters", message: `an explainer (look preset "${doc.look.preset}") has no characters: the narrator tells it` });
   if (drama && doc.series !== undefined) {
     validateSeries(doc.series, errors, isLongAnime(doc));
     // An episode lists its cast by id, so lookHash changes only when the cast itself changes

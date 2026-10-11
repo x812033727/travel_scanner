@@ -5,7 +5,7 @@
 // passes one route's check does not fail the other's.
 import { cadenceProblems, HOOK_SECONDS as ILLUSTRATED_HOOK_SECONDS } from "./cadence.mjs";
 import { craftProblems } from "./craft.mjs";
-import { cueCoverageProblems, emotionProblems, EXPLAINER_PRESET, hasCast, illustrated, isDrama, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
+import { cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, youtubeWarnings } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
@@ -132,7 +132,7 @@ export function briefSections(markdown) {
 /** The brief sections a video must fill: `preset` is a drama's look preset. */
 export function briefSectionsFor(format = "slides", preset = null) {
   if (format !== "drama") return BRIEF_SECTIONS;
-  return preset === EXPLAINER_PRESET ? BRIEF_SECTIONS_EXPLAINER : BRIEF_SECTIONS_DRAMA;
+  return isExplainerPreset(preset) ? BRIEF_SECTIONS_EXPLAINER : BRIEF_SECTIONS_DRAMA;
 }
 
 export function checkBrief(markdown, format = "slides", preset = null) {
