@@ -1,13 +1,13 @@
 ---
 id: 2026-10-11-cute-explainers-own-series-prompts
 title: Cute explainers are written from their own series' prompts; the request form offers cute-cartoon and cute-mystery
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-explainer-pr3
 claimed_at: 2026-10-11T10:45:22Z
 created_at: 2026-10-11T04:01:38Z
-completed_at:
+completed_at: 2026-10-11T13:04:04Z
 branch: claude/explainer-series-prompts
 depends_on:
   - 2026-10-11-explainer-request-names-its-image-model
@@ -105,6 +105,7 @@ the request form lists the two cute presets, minutes 8 to 20, `MiniMax image-01`
 
 ## Notes
 
+- 2026-10-11 live. Deployed by this ticket's session at 12:55-12:57Z as 73c84ca7f (#1447 alone on top of 0c93720e6; no migration; the deploy script's 3 of 3 health checks). Before it, the hard gate: no row with a cute preset in video_drama_series or video_drama_requests (0 and 0). After it, read-only on the host: the shared verify script 11 of 11; the request model has image_model and the cute default table, the refusal code is in the filing path, no earlier one-off row names a model, explainer-series.mjs loads in the worker with both series' variants and draftLineIds, the family helper answers true, true, true, false; no paid stage job was cut by the restart. Not yet proven on the host: a model has not read the new texts (no cute request has been filed), and the digests of flat-explainer's instructions were not recomputed inside the container.
 - 2026-10-11 filed from the design. No host model has read the new texts: the first episode of
   each series is a pilot the owner reads at the bible and script gates, and it may block at
   keyframes (design 5.6). Every later wording change stops an unfinished cute run with
