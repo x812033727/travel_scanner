@@ -19,6 +19,7 @@ import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, keyframeProblems, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
+import { resolveWatermark, watermarkRecord } from "../core/watermark.mjs";
 import {
   bedLevel,
   bedLoudnessArgs,
@@ -278,6 +279,9 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
     ctx.stderr.write("frames/manifest.json is missing or was rendered for an older script; run render first\n");
     return EXIT.usage;
   }
+  // The channel mark (docs/videos/WATERMARK.md) is render's decision: the cards were drawn with
+  // the one the manifest names, or with none, and the shots take the same.
+  const mark = resolveWatermark(manifest.watermark);
   const drama = isDrama(doc);
   const pictures = illustrated(doc);
   const inputs = await mediaInputs(doc, workdir, workBase, manifest, speech, visual);
@@ -401,7 +405,9 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
       const strips = inputs?.subtitles ? subtitleTrack(scene, manifest.subtitles.cues, manifest.subtitles.blank) : null;
       // A dissolve overlays the previous scene's last frame, so its segment is keyed on that too.
       const previousKey = scene.transition === "dissolve" && index > 0 ? keys[index - 1] : null;
-      const key = motion ? motionSegmentKey(scene, scene.move, strips, previousKey) : clipSegmentKey(scene, fit, strips, previousKey);
+      // A moving card whose own frame already carries the mark is not given a second one.
+      const laid = mark && (!scene.card || scene.marked === false) ? mark : null;
+      const key = motion ? motionSegmentKey(scene, scene.move, strips, previousKey, laid) : clipSegmentKey(scene, fit, strips, previousKey, laid);
       keys[index] = key;
       const segment = path.join(segmentsDir, `${scene.id}-${key}.mp4`);
       segmentFiles.push(segment);
@@ -419,8 +425,8 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
       }
       const partial = `${segment}.partial.mp4`;
       const args = motion
-        ? motionSegmentArgs({ keyframe: source, frames: scene.frames, move: scene.move, subtitlesList, dissolveFrom, outFile: partial })
-        : clipSegmentArgs({ clip: source, frames: scene.frames, fit, fromFrame: scene.from_frame ?? 0, subtitlesList, dissolveFrom, outFile: partial });
+        ? motionSegmentArgs({ keyframe: source, frames: scene.frames, move: scene.move, subtitlesList, dissolveFrom, mark: laid, outFile: partial })
+        : clipSegmentArgs({ clip: source, frames: scene.frames, fit, fromFrame: scene.from_frame ?? 0, subtitlesList, dissolveFrom, mark: laid, outFile: partial });
       await runTool(tools.ffmpeg, args);
       renameSync(partial, segment);
       encoded += 1;
@@ -574,7 +580,8 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
       // frame at from_s, which is pulled out by number and compared with the segment's frame 0.
       const frame = path.join(buildDir, `source-${scene.id}-${keys[index]}.png`);
       if (!existsSync(frame)) await runTool(tools.ffmpeg, frameArgs(resolve(scene.clip.file), scene.from_frame, frame));
-      const value = parsePsnr((await runTool(tools.ffmpeg, psnrArgs(segmentFiles[index], 0, frame))).stderr);
+      // The segment's frame carries the channel mark and the clip's does not: its box is left out.
+      const value = parsePsnr((await runTool(tools.ffmpeg, psnrArgs(segmentFiles[index], 0, frame, mark ? { mask: mark.box } : undefined))).stderr);
       record.source = scene.source;
       record.source_frame_psnr = Number.isFinite(value) ? Number(value.toFixed(2)) : "inf";
       const problem = sourceFrameProblem(scene, value);
@@ -599,6 +606,9 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
     // very files of the set and a measured set's targets, for a reader of this file.
     ...(inputs?.sfx ? { sfx_hash: sfxHash(doc), sfx_set_hash: sfxSetHash(doc, inputs.sfx.manifest) } : {}),
     ...(applied ? { branding: applied } : {}),
+    // The mark this cut carries, for a reader of this file and for a Short reframed from the cut
+    // (shorts/from-drama.mjs keeps its window off the box); nothing compares it with a default.
+    ...(mark ? { watermark: watermarkRecord(mark) } : {}),
     problems,
     metrics: {
       frames: presented.total_frames,
