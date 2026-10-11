@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-10-11T05:23:46Z
 completed_at:
-branch:
+branch: claude/news-fetcher-http2
 depends_on: []
 scope:
   - apps/api/app/news_automation/fetch.py
@@ -74,6 +74,17 @@ On the host, `/admin/news?tab=sources` shows CFTC press releases with a recent s
 scan and `consecutive_failures` back at 0.
 
 ## Notes
+
+- 2026-10-11, stopped on the owner's word with a fix written and unproven, on branch
+  `claude/news-fetcher-http2` (pushed, no pull request): `httpx[http2]` in
+  `apps/api/pyproject.toml` and `uv.lock`, and `http2=True` on the fetcher's client. Through
+  the fetcher on a development machine CFTC, github.blog and anthropic.com answer 200 with
+  it, but they answer 200 there without it too: only the host's address is challenged, so
+  this proves nothing about the fix. Also unsettled: from the host, `curl --http1.1`
+  (which offers only http/1.1) got 200, so the ALPN list alone may not be the whole
+  fingerprint. To prove it, send one request with and one without HTTP/2 from the host
+  using httpx itself (the api image has no `h2`; a throwaway environment on the host needs
+  the owner's go-ahead), before any pull request.
 
 - 2026-10-11 08:46Z, reproduced read-only inside the api container on the host. **The
   pinned-IP guess in "Why" is wrong.** For the CFTC feed:

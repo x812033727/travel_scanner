@@ -126,8 +126,14 @@ class SafeNewsFetcher:
         rate_limiter: RateLimiter | None = None,
     ) -> None:
         self._external_client = client
+        # HTTP/2 is on for what it does to the TLS handshake. Without it httpx offers
+        # "http/1.1" as its only protocol (ALPN), and Cloudflare challenges exactly that
+        # handshake on some publishers: CFTC's feed answered 403 to it for four days in
+        # October 2026 while curl (which offers h2 too) and urllib (which offers nothing)
+        # got 200 from the same host. The pinned request still works: over HTTP/2 the
+        # authority comes from the Host header, not from the address in the URL.
         self._client = client or httpx.AsyncClient(
-            timeout=timeout_seconds, follow_redirects=False, verify=tls_context()
+            timeout=timeout_seconds, follow_redirects=False, verify=tls_context(), http2=True
         )
         self._resolver = resolver
         self._distributed_rate_limiter = rate_limiter
