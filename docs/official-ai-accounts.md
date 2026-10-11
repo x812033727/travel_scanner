@@ -105,7 +105,7 @@ Last verified: 2026-10-10
 
 | X 帳號 | 發什麼 | 查證依據 | 官網頁面 | 掃描器狀態 |
 | --- | --- | --- | --- | --- |
-| [`@MistralAI`](https://x.com/MistralAI) | 公司與產品消息 | <https://mistral.ai/> 頁尾 | <https://mistral.ai/news> | `Mistral AI news` |
+| [`@MistralAI`](https://x.com/MistralAI) | 公司與產品消息 | <https://mistral.ai/> 頁尾 | <https://mistral.ai/news> | `Mistral AI news`（在清單裡，但 2026-10-11 從主機驗證被拒：抓取器的安全或 robots 檢查不允許，載入後是停用的） |
 | [`@perplexity_ai`](https://x.com/perplexity_ai) | 產品更新 | <https://github.com/perplexityai> 組織頁 | Perplexity 官網 | `讀不到：回 403` |
 | [`@deepseek_ai`](https://x.com/deepseek_ai) | 模型發布 | <https://api-docs.deepseek.com/> 頁尾 | <https://api-docs.deepseek.com/> | `讀不到：沒有文章列表，robots.txt 回的是網頁` |
 | [`@Alibaba_Qwen`](https://x.com/Alibaba_Qwen) | 模型發布 | <https://github.com/QwenLM> 組織頁 | Qwen 官網 | `讀不到：頁面要跑 JavaScript` |
