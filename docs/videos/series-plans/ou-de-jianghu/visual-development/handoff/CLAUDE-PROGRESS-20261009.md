@@ -493,6 +493,9 @@ D 軌（子代理，同一套 builder，資料夾 `O/next-D-claude-20261009/<sho
 
 方法上的事：取回影片的 JS 存成 `H/retrieve-video-js.txt`（詳情頁要等 7 秒才水合，太早跑會回 NO_ITEM；JS 裡一旦有 `return`，最後一個運算式就不會自動回傳，要寫 `return hit`）；`tab-8` 這輪不見了，`seed` 一個分頁取回也夠；D 軌子代理可以在供應商跑最後幾支的空檔先量下一包的台詞，建包子代理（`a1e28a02d5fc5facd`，model opus）用 SendMessage 續用，不用重開。
 
+
+**D 軌子代理的接續狀態（它這輪結束前交出的）**：第 14 包已做 6 鏡（a04-s063／080／083／085／086／087；a04-s085／086／087 無台詞只有 README 與收據；a04-s084→s085 若照鎖定 5 秒溢出 2.073 s 可被無台詞的 a04-s085 吸收，但台詞跨剪點仍要站主決定），R 共 258 個。接續方法：拿最新的 builder `O/next-D-claude-20261009/a04-s087-video-t1/build-candidate.py`，在 `SHOTS` 字典最後加一筆 `'<shot>-video-t1': (O/'<shot>-video-t1-official.mp4', O/'qa/video-review-<shot>-t<take>.json', [...])`，台詞照 `P/continuation-plan/video.json` 的 `scenes[].lines[]` 順序，有後台錄音寫 `('backend', 'NNN-<lineid>')`、否則 `('web', '<lineid>')`、無台詞 `[]`；建新資料夾、複製 builder 進去，`PYTHONUTF8=1 python <folder>/build-candidate.py` 跑（資料夾必須是新的）。核准過的規則都已在 builder 裡：重複候選列取 duration-audit 用的錄音 sha（第 6 包）、無 window 列只在同一錄音檔時忽略（第 11 包）、字起點讀 `start` 或 `start_original_seconds`（第 11 包）、window 與前一句重疊且重疊處靜音時夾到前一句結尾（第 13 包）；固定規則：台詞 PCM 逐位元相同、不變速不剪、停頓用 `pause_after_ms`（預設 300 ms）、場尾 +700 ms（全集最後一場 +1,500 ms）、前導延伸到第一個 ASR 字前 80 ms、溢出時前導 0 且台詞超出畫面只出 D 不合成。它的量測腳本只在它的暫存區，下一個 session 要量台詞需求時照同一套算法重寫。
+
 ## 做完這集的額度估算（2026-10-10 凌晨，依 v4 的 420 個買入鏡）
 
 | 項目 | 鏡 | 點 |
