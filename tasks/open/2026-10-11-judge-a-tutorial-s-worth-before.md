@@ -129,6 +129,22 @@ files, as fixtures, fail; a hands-on film's pass.
 
 ## Notes
 
+- What a second model can answer from the brief alone: per outcome, whether the viewer can
+  already get that result in a minute; whether an outcome is a single step of another; whether
+  at least one outcome makes or changes the subject; whether 「不用這個方法：…」 is there (a string
+  match) and the list has two to four items (a count). What needs the script: narration about
+  the making, a chapter that never uses the subject, the title's verb carried out. What needs
+  the script and the subject's own file or the run log: whether the lines on the cards are
+  the ones that matter, whether the simple way was run on the same input, whether the result
+  shown is the run's own.
+- The value rules tell the listener to report a sentence about the making, a chapter that
+  never uses the subject and an example the simple way equals. The automated listener's answer
+  has no place for a report and it may not drop a sentence, so what it finds stays in the
+  script and nobody is told. The check has to carry these, or the listener needs a report.
+- Three things wording cannot settle and only this check can: whether the way named under
+  「不用這個方法」 really is the simplest, whether a reasonable viewer would have predicted the
+  result, and whether a simple way run once with a vague prompt was made to fail.
+
 - The judges' "publish" and "rework" are a model's reading of text. Only the two refused
   films carry the owner's own verdict.
 - The demonstration score was the one signal that caught the film refused on 2026-10-09

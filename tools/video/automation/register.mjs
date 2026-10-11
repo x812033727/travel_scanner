@@ -37,7 +37,8 @@ Teaching route (plain slides; writing only):
   can do after watching in 示範或實算. Choose an example for that benefit, not because an API
   is easy to demonstrate. An audience of everyday users needs a useful workflow, not an
   internal-code tour. That does not close the thing being taught: its own file is on the
-  cards, the lines that make it work each with what they do, and the viewer changes at
+  cards (for a command or a setting with no file, the full line or the fields), the lines
+  that make it work each with what they do, and the viewer changes at
   least one of them. Introduce mechanisms and terms only when they explain an observed
   result or help the viewer take the next step; keep their exact official meaning.
 - Use one main worked example, a purposeful contrast and a transfer exercise. Show the
@@ -48,7 +49,9 @@ Teaching route (plain slides; writing only):
   when the method applies or fails; the exercise changes a meaningful requirement and gives
   an answer or checking method. These may be variations of the main case, not unrelated demos,
   but each one uses the subject and ends on an observed result the main example did not
-  give. The same check on other names, or a task done without the subject, is neither.
+  give. The same check on other names with the same kind of result, the same check on
+  another state of the same input, or a task done without the subject, is neither; one such
+  state may stand once, as the likely failure.
 - Reuse the same objects, names and diagram layout across chapters, revealing one new relation
   or state at a time. No forced chapter location, new metaphor, 「你以為…其實」 turn or closing
   question: a short conclusion or the next practical question is enough. If a comparison helps,
@@ -73,7 +76,9 @@ Teaching route (plain slides; writing only):
   captures public: no login, OBS, secrets or private account screens.
 - Untested labels are honest disclosure, not completion of a practical learning promise.
   A part that was not run is run before the script is written, or cut; a label does not keep
-  it in the video to reach the running time, and the label is the card's, never a sentence
+  it in the video. The labelled walkthrough above is only for a step that is not an outcome
+  and stands on an official example (keeping it, turning it off, a documented failure), and
+  the label is the card's, never a sentence
   of narration.
   If evidence for the core demonstration is missing, record that teaching gap for revision;
   do not call the tutorial ready because its length, layout or technical checks pass. Before
@@ -98,9 +103,9 @@ Teaching route (plain slides; writing only):
 // (docs/videos/claude-code-mods-delivery-check-tutorial): a supplied mod whose source never
 // appeared reported whether three file names were in a folder the viewer already had open.
 // Thirteen tutorials were then read against the same yes-or-no questions; what the two refused
-// ones failed and the others passed is the worth of the main example, the subject opened on
-// screen, the unpredicted opening result, and narration that talks about the making
-// (tasks: 2026-10-11-tutorial-worth-rules).
+// ones failed and the others passed is the subject opened on screen, an unpredicted observed
+// result and a main result from a real run, and all ten hands-on films talked about their own
+// making (tasks: 2026-10-11-tutorial-worth-rules).
 export const VALUE_RULES = `
 Content value (every slides video, teaching cards and illustrated storytelling alike; where these
 rules and a route's rules disagree, these win):
@@ -115,32 +120,63 @@ rules and a route's rules disagree, these win):
   (a version, a price, a menu), a caution on its own (be careful, think first, ask before
   installing), or 「了解」「認識」「知道」 something. Neither is a result the viewer can already
   get in about a minute with what they use today (a look at the folder or the screen, one
-  ordinary prompt, one common command), however it is worded as an action, nor a single step
-  of another outcome (pasting a path, pressing a button). Running a command and judging its output
-  against what was asked is an outcome: the judging is the skill. When the sources carry fewer
+  ordinary prompt, one common command), whoever the audience is and however it is worded as
+  an action, nor a single step of another outcome (pasting a path, pressing a button), nor
+  making a thing that gives only such a result: the test is on what the made thing gives the
+  viewer. A judgment on the illustrated route is not measured this way. Running a command and judging its output
+  against what was asked is an outcome when no such quick way gives the same judgment: the
+  judging is the skill. When the sources carry fewer
   than two real outcomes, the planner takes another topic from "topics", or says so on the
   brief's first line (「含金量不足：<what is missing>」); it does not pad. The section is a list,
-  one outcome an item; where the brief's template says one or two, this rule's two to four holds.
+  one outcome an item; where the planner's line for this section says one or two, this rule's
+  two to four holds.
 - In a tutorial the main example is worth the method. 示範或實算 names the simplest way the
-  viewer already has to the same result, with no setup, as 「不用這個方法：…」, and the example
+  viewer already has to the same result, with no setup, as 「不用這個方法：…」: the first of
+  these that reaches it, a look at the folder or the screen, one common command, one ordinary
+  prompt, the product's nearest built-in feature; the example
   stands only when the subject does something that way cannot, shown as an observed difference
-  with the simple way run beside it. When the simple way gives the same result, the example is wrong for the
-  video: take another example or another topic, or open the brief with 「含金量不足：…」.
+  with the simple way run beside it on the same input. Where that way cannot be run here (an
+  interactive screen, a signed-in account, a worker that runs nothing), its arm is CITED and
+  its card says so. The difference is something the viewer can then do that the simple way
+  cannot do at all, or a measured cost or failure of the simple way; where the answer appears
+  (a panel, a button, a time beside it) is not one. The main example's result is shown in the
+  run's own words, on a card whose source names the run; a summary of what somebody reported
+  is not that card. When the simple way gives the same result and the viewer loses nothing the
+  video demonstrates, the example is wrong for the
+  video: the planner takes another example or another topic, or opens the brief with
+  「含金量不足：…」, and a writer given such a brief reports it and does not write around it.
   Telling the viewer in a late chapter that the simpler tool is enough does not repair it. The
-  other arm of a comparison is that simplest way the viewer would really use, never nothing at
-  all (a Skill against the same steps left in CLAUDE.md, not against no instructions).
-- In a tutorial the viewer makes or changes the subject. At least one outcome has the viewer
+  other arm of that side-by-side run is the simplest way the viewer would really use, never nothing at
+  all (a Skill against the same steps left in CLAUDE.md, not against no instructions), unless
+  nothing is what the viewer uses today; a control run without the subject may still show
+  that the subject caused the result.
+- In a tutorial the viewer makes or changes the subject: the thing the title names that the
+  viewer installs, writes or sets (the mod, the Skill, the hook, the command), not the errand
+  the example runs it on. At least one outcome has the viewer
   write it, have it written or edit it, and the cards show its own content: the lines that
-  make it work, each with what it does. A supplied package the viewer only runs is not an outcome, whoever the
+  make it work, each with what it does (for a command or a setting with no file, the full
+  line or the fields). A file that fits on three cards is shown whole; of a longer one the
+  cards show every line the viewer changes and the lines that call the product, and the
+  caption gives the lines shown out of how many. Having it written counts only with one
+  logged run from the request on the cards to the file on the cards; a request shown as
+  「可以這樣說」 beside a supplied package is the package. A supplied package the viewer only runs is not an outcome, whoever the
   audience is: a viewer who does not write code still sees the file and changes the line that
-  carries their own case, and that change is run. What the viewer needs to repeat the main
-  example is on the cards; a download saves typing and never replaces what the video shows.
-  The verb in the title (做、寫、建立、設定) is carried out on screen.
-- A tutorial opens on a result the viewer would not have predicted: a measured number, a
-  failure, the obvious way not doing what it was expected to. A result anyone would guess (it
-  is loaded, so it works; the file is absent, so it is reported absent) does not open one. Runs with
+  carries their own case, and that change is run. What the viewer writes or changes to repeat
+  the main example is on the cards in full, the rest as the excerpts the card rule allows;
+  a download saves typing and never replaces what the video shows.
+  The verb in the brief's title and the video's title (做、寫、建立、設定) is carried out on
+  screen.
+- A tutorial's main example gives a result the viewer would not have predicted: a measured
+  number, a failure, the obvious way not doing what it was expected to. It is the example's
+  own result (RUN or SEEN; CITED where nothing can be run here), not an operator's slip (a
+  mistyped name) and not a result anyone would guess (it is loaded, so it works; the file is
+  absent, so it is reported absent). The video opens on it, or on the useful outcome with
+  that result as the turn of the main example; among results that qualify, the one with the
+  strongest evidence opens. Runs with
   nothing unexpected in them mean the example is too easy: plan the case where the obvious
-  approach fails, and lead with it.
+  approach fails, and build the main example on it. A writer or a listener who finds no such
+  result, or no run of the simple way, in the run log reports it for a new plan: an expected
+  result is never worded as a surprise, and a comparison that was not run is never written.
 - Evidence has three levels, and each outcome names the highest it has. SEEN: observed in the
   product's own interface. RUN: a real run recorded with its input, action, result, date and
   tool version (a command, a test, a headless session). CITED: an official example with its
@@ -200,7 +236,9 @@ rules and a route's rules disagree, these win):
   cut, not shrunk. A choice among alternatives is a table; steps draws a
   sequence.
 - An update or a guide is told as numbered points, each in the same four moves: what the
-  viewer did before, what changed, exactly what to do now, and the exception.
+  viewer did before, what changed, exactly what to do now, and the exception. An update's
+  points are not a main example: the tutorial rules on the main example and on making the
+  subject apply to it only where a point is itself a worked example.
 - Every sentence of narration carries a fact, a step, a reason, a result or a choice; the cta
   card's sentence and the outro's comment question and subscribe invitation are the three
   exceptions. Where a fact comes from is the card's own field and the description ("source"
@@ -211,26 +249,33 @@ rules and a route's rules disagree, these win):
   names the page and the day; a number from the video's own run, a limit in its own code or
   the owner's own incident is said as that, and its card names the run, the file or the date.
   「以官網為準」 is never the fallback: a number with neither source is left out. The narration
-  never talks about the video's own making: what was or was not run, recorded, seen or
-  verified, who reported a result, what a card is or is not (「這支影片沒有跑過」「還沒看過」
-  「這是整理卡，不是錄影」「尚待驗證」). That is the card's label and the description's; the
-  narration says what the step does, and a part nobody ran is run or cut. At most two
+  never talks about the video's own making: whether a part was run, recorded, seen or
+  verified, which of the video's makers reported a run's result, what a card is or is not
+  (「這支影片沒有跑過」「還沒看過」
+  「這是整理卡，不是錄影」「尚待驗證」). That is the card's label and the description's, the
+  opening's included; the narration says what the step does. Saying a number or a result as
+  this video's own run's, or what a run did and how many times it was made, is the step, not
+  the making. In a tutorial a part nobody ran is run or cut, unless it is a step that may
+  stand on CITED evidence (keeping it, turning it off, a documented failure), which keeps
+  its card's label. At most two
   sentences in a video set a scene or describe a picture; pointing at the card on screen
   (「亮起來的這一行」) is not one of them. A comparison is used once, where the mechanism is
   hard to see, and kept, never a new one per chapter. Pictures may still travel; the words do
   not follow them.
 - The length comes from substance: a second worked example, a common failure and how to find
-  it, a contrast, an exercise. Each of those uses the subject and adds an observed result the
-  main example did not give; a habit that would read the same in a video on another subject
-  (a file can exist and be empty; read before you trust) is restating. Never from a chapter on
+  it, a contrast, an exercise. In a tutorial each of those uses the subject and adds an observed result the
+  main example did not give (outside a tutorial: a sourced fact the earlier chapters did not
+  give); a habit that would read the same in a video on another subject
+  (a file can exist and be empty) is restating. Never from a chapter on
   something one line answers, from
   restating, or from scene-setting. When the material ends short of the minimum, add an
   example the sources carry or say so in the report; do not fill.
 - A listener keeps these rules as well: it reports a sentence that carries nothing, a source
   spoken in the narration, a sentence about the video's own making, a chapter one line would
-  answer, a chapter that never uses the subject, a main example the simple way equals, or an
+  answer, a chapter that never uses the subject, a main example the simple way equals (those two
+  in a tutorial only), or an
   outcome with no proof, for a
-  writer revision; it never repairs one by inventing a fact, a run or an example.
+  writer revision, or for a new plan when the example itself is at fault; it never repairs one by inventing a fact, a run or an example.
 `.trim();
 
 // The words the audio check has misheard on this channel, each with the wording that passed
@@ -261,7 +306,6 @@ export const MISHEARD_WORDS = [
   ["指到", "對應"],
   ["搬去 hook", "改用 hook 來做"],
   ["本機", "這台機器"],
-  ["我沒有跑過", "這支影片沒有跑過"],
   ["交辦", "把工作交出去"],
   ["指定前景", "指定不放到背景"],
   ["背景送回來的", "晚一點才送回來的"],

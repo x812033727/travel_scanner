@@ -81,9 +81,9 @@ film under a label.
 - [x] The rules sent to the planner, the writer and the listener of a slides video say: a
       result the viewer can already reach in a minute is not an outcome; a tutorial's main
       example has to beat the simple way, shown side by side; the subject is opened on the
-      cards and the viewer changes it; a tutorial opens on a result nobody would guess; the
-      narration does not talk about the making; a contrast or an exercise uses the subject
-      and adds a result.
+      cards and the viewer changes it; the main example gives a result nobody would guess;
+      the narration does not talk about the making; a contrast or an exercise uses the
+      subject and adds a result.
 - [x] The teaching route's three sentences that led the refused film are amended.
 - [x] The same rules are in the hand-driven guide (`script-writing.md`, the planner and
       writer prompt references).
@@ -120,7 +120,23 @@ node tools/video/long-form/cli.mjs check
 - The answer sheets, the film texts the judges read and the scripts that built the table were
   kept outside the repository, in the session that made them. The questions are in the gate
   task.
-- `MISHEARD_WORDS` still maps 「我沒有跑過」 to 「這支影片沒有跑過」. The new rule keeps that
-  sentence out of the narration altogether; the entry is left as it is.
+- `MISHEARD_WORDS` mapped 「我沒有跑過」 to 「這支影片沒有跑過」, the first sentence the new rule
+  keeps out of the narration. The pair and its row in `script-writing.md` are removed.
+- Three reviewers read the first wording before it was pushed. What they found and what was
+  changed for it: read to the letter, the two films the judges rated highest were refused
+  (they open on the useful outcome, and for `claude -p` the simple way gives the same answer
+  in another form), so the opening may be the useful outcome with the unpredicted result as
+  the example's turn, and the example is wrong only when the viewer loses nothing the video
+  demonstrates. "Run or cut" contradicted the older sentence that lets a keep-or-undo step
+  stand on an official example; that step is excepted. "Never talks about the making"
+  contradicted "a number from the video's own run is said as that"; saying a result as the
+  video's own is now named as the step. The new tutorial sentences are limited to tutorials
+  and do not reach an update's numbered points. A writer who finds no unpredicted result or
+  no run of the simple way reports it for a new plan, so the rule does not push anyone to
+  word a surprise.
+- Loopholes wording cannot close, by the same review: whether the way named under
+  「不用這個方法」 really is the simplest, whether the lines on the cards are the ones that
+  matter, and whether a reasonable viewer would have predicted the result. Each needs a
+  second reader, which is the gate task.
 - `node --test tools/*.test.mjs` on this Windows machine: 296 of 298 pass, one skipped, and
   `reference-analysis.test.mjs` (--compare) fails. It imports none of the files changed here.

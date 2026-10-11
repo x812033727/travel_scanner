@@ -31,10 +31,15 @@ receipt that day:
   one or two concrete things the viewer can DO afterwards`. `VALUE_RULES`, appended to the
   same prompt, says two to four and now adds that its number holds. The template should say
   the same thing as the rule.
+- The same file tells the planner that a teaching-card outline's 案例與結果 line names "the
+  recurring example, useful outcome and evidence status", and tells the writer that "Teaching
+  cards need no reversal: open on the example's useful outcome and identify its evidence
+  status." The value rules now keep the evidence status on the card, the opening's included,
+  and let the main example's unpredicted result open.
 - `.agents/skills/youtube-video/SKILL.md` rule 11 (and its copy under `.claude/skills/`)
   summarises the six content-value rules of 2026-10-09 and not what 2026-10-11 added.
 
-Two smaller things from the same reading belong here because they are rule text:
+One smaller thing from the same reading belongs here because it is rule text:
 
 - Seven of the ten hands-on tutorials do not show on a card the full command the viewer must
   type; their cards say the remaining flags are in the description. The rule that allows it:
@@ -42,13 +47,13 @@ Two smaller things from the same reading belong here because they are rule text:
   its parts go in a table and the whole command in the description." Decide whether the
   command for the main example may be split at all, or must be written with the shell's own
   line continuation and run that way.
-- `MISHEARD_WORDS` maps 「我沒有跑過」 to 「這支影片沒有跑過」. The narration is no longer
-  allowed to say either.
 
 ## Definition of done
 
 - [ ] The planner's template and `VALUE_RULES` give one number for the outcomes, and the
       template asks for a list.
+- [ ] The planner's and the writer's lines on a teaching card's opening say what the value
+      rules say: the useful outcome or the unpredicted result, the evidence status on the card.
 - [ ] `SKILL.md` rule 11 names the 2026-10-11 additions, in both copies.
 - [ ] The rule for a command too long for a card is decided and written, with one of the
       seven films' commands as the test case.
