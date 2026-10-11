@@ -2422,3 +2422,49 @@ unclaimed audited-ledger correction task records the needed capability.
 Old claims/source rows are not silently changed or counted as repaired.
 The last208 census remains129published/50manual/19redraft/1failed/6duplicate/
 3rejected at10:07Z, not a new census after these draft saves.
+
+
+### 2026-10-11 19:15 Taipei: saved drafts closed, original review requests and conditional PR approval
+
+All six corrections are genuinely saved through thirty original Guide draft
+routes: five locales per candidate, v1 to unpublished v2. Independent actual
+native full-state readbacks are now complete: first-three receipt649275c7,
+Clef51e2612b, Fablea018f630 and Glassesa79a5de4. Source/Evidence, original
+claims, cache, caps, private assets and historical typed rows are preserved.
+These receipts establish draft saves, not new model passes or publication.
+
+Math08b29fb0, plugins5a605c0b and Fableb80743ad each received one original
+router.verify_candidate request at11:08Z after concrete peer0232045b and
+fresh full12 CAS. All three acknowledged retry3 to4. At the11:09 native
+readback Math was in locale review, plugins had queued its final judge,
+and Fable was legitimately deferred; no completed publication is inferred.
+Original jobs remain responsible for fact, language, final-editor and
+current-source gates. No manual cap, Source or Evidence edit was made.
+
+Clef's first attempt refused at pre-route CAS because the hourly scanner
+advanced only Source.last_scanned_at/next_scan_at/updated_at. Its stable
+operation intent was genuinely absent in the11:11 read-only receipt4752245e.
+The new v3 plan preserved the same intent name, changed only fresh CAS
+constants and passed incremental peer17b33345; this did not replay a paid
+or committed operation. The original source gate at11:14:36 genuinely
+committed news_evidence_changed for all three HF model cards. It preserved
+native same-story False; only primary/Space revalidation fetch metadata
+and the three native candidate hold fields changed. SourceGate itself
+queued no job, made no model call and published nothing. Full independent
+post-hold readback and an original refresh request still remain separate.
+
+PR1444 is attached and draft, with no-auto-merge set. The owner explicitly
+authorized merge/deploy only after all four required CI checks pass,
+normal deployment-lock release and host preflight. Its first API CI failed
+only missing messages for eleven navigation-repair error codes. A separate
+narrow claimed i18n task adds55 matching messages; localization3passed,
+Ruff passed and mypy app/tests860files passed locally. New-head CI has not
+passed yet. The production code remains3591/#1439; no navigation removal
+has been applied. The verified READ lock holder is the video runtime lease
+PID1805315; its authorized task was notified to finish safely and normally
+release its own lease. No foreign lock or hold was altered.
+
+Sanders and Glasses still require the separately filed audited correction
+of their retained historical claim ledgers before navigation cleanup.
+The last original208 census remains the dated10:07Z count129published;
+there is no claim that the entire backlog is finished.
