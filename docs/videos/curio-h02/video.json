@@ -1,0 +1,2508 @@
+{
+  "schema_version": 1,
+  "slug": "curio-h02",
+  "format": "slides",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    10,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "開場帶一點意外，揭出地名後收穩；道別的日期放慢，親情不煽情；空堡逐件看清，字與十字留半拍；船員困在天氣裡時略緊；傳聞與考古換成清楚的判讀口吻；團隊宣告不加勝利語氣；最後把未結說得誠實而溫和。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "custom",
+    "style": "cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9",
+    "negative": "",
+    "motion": "slow push in or gentle drift, no morphing, no cuts",
+    "candidates": 3
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "羅阿諾克「消失的殖民地」：CROATOAN 到底是什麼意思？｜奇聞檔案局",
+    "description": "一百一十多人不在了，木樁上的 CROATOAN 卻讓總督約翰．懷特很高興。照他自己的記述，那是約好的搬家留言，指向克羅托安人的島，今天哈特拉斯島一帶。\n奇聞檔案局 H02。從 1587 年的道別，回到 1590 年清晨的空堡：樹上的 CRO、柵欄木樁上的 CROATOAN、沒有加上的遇難十字、拆下的房屋與受潮的箱子。去處讀懂了，他為什麼仍沒能找到人？\n後來的祖先傳聞、大旱、刻字石、黃銅戒指與地圖補丁，各自能說明多少？島上與內陸的兩條考古線有線索，也有年代與交易的疑點。「有去處」和「已解案」之間，還缺能確定屬於殖民者的人與聚落證據。\n\n主要史料、考古來源與採用圖片於 2026-10-12 刷新；其餘研究於 2026-10-10 查核。原始返航記述是懷特留下的唯一目擊文字，後世轉述與現代研究不當成他的親見。\n插圖由 AI 生成；版畫及受洗、遺址圖均為後世作品，非1587年現場紀錄；1893年遺址圖的刻字位置也與目擊文字不同。",
+    "tags": [
+      "羅阿諾克",
+      "CROATOAN",
+      "失落殖民地",
+      "克羅托安",
+      "奇聞檔案局",
+      "歷史懸案",
+      "約翰懷特",
+      "哈特拉斯島",
+      "Virginia Dare",
+      "未解之謎"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**不是咒語**",
+      "tag": "歷史懸案",
+      "sub": "他知道去處，卻沒找到人",
+      "shot": "hook-white-happy"
+    }
+  },
+  "sources": [
+    {
+      "title": "John White, 1587 and 1590 narratives, Hakluyt Vol. XIII",
+      "url": "https://www.gutenberg.org/cache/epub/25645/pg25645-images.html",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "National Humanities Center: John White 1590, modern spelling",
+      "url": "https://nationalhumanitiescenter.org/pds/amerbegin/exploration/text6/white.pdf",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "NPS Fort Raleigh: 1587 The Lost Colony",
+      "url": "https://www.nps.gov/fora/learn/historyculture/1587-the-lost-colony.htm",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "NPS Fort Raleigh: 1590 Rescue Voyage",
+      "url": "https://www.nps.gov/fora/learn/historyculture/1590-rescue-voyage.htm",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "NPS Fort Raleigh: Major Theories of the Lost Colony",
+      "url": "https://www.nps.gov/fora/learn/historyculture/major-theories-of-the-lost-colony.htm",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "NCpedia: Croatoan Indians",
+      "url": "https://www.ncpedia.org/croatoan-indians",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "John Lawson, A New Voyage to Carolina, 1709",
+      "url": "https://www.gutenberg.org/ebooks/1838",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Stahle et al. 1998: The Lost Colony and Jamestown Droughts, abstract",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=9554842&rettype=abstract&retmode=text",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "NCpedia: Dare Stones",
+      "url": "https://www.ncpedia.org/dare-stones",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Encyclopedia Virginia: The Roanoke Colonies",
+      "url": "https://encyclopediavirginia.org/entries/roanoke-colonies-the/",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Smithsonian 2017: The Mystery of Roanoke Endures Yet Another Cruel Twist",
+      "url": "https://www.smithsonianmag.com/history/mystery-roanoke-endures-yet-another-cruel-twist-180962837/",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "National Geographic 2015: Lost Colony, Hatteras archaeology",
+      "url": "https://www.nationalgeographic.com/culture/article/150807-lost-colony-roanoke-hatteras-outer-banks-archaeology",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "First Colony Foundation 2026-06-04: The Lost Colony is Found",
+      "url": "https://www.firstcolonyfoundation.org/news/lost-colony-is-found/",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Smithsonian 2020: New Evidence That Roanoke Colony Moved Inland",
+      "url": "https://www.smithsonianmag.com/smart-news/new-evidence-roanoke-colonys-disappearance-180976248/",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "East Carolina University: Croatan Archaeological Site Collection, ring analysis",
+      "url": "https://digital.lib.ecu.edu/special/ead/findingaids/1061/",
+      "checked_on": "2026-10-12"
+    }
+  ],
+  "assets": [
+    {
+      "path": "stock/13d6c3c507e6155fee47b2c247ee88ff24ea4fc36498dac8542d910a2f6526ef.jpg",
+      "source": "Wikimedia Commons／Library of Congress: The Englishmen's arrival in Virginia (de Bry, 1590; after John White). Not a record of the 1587 landing.",
+      "license": "Public domain (PD-old-100-expired)",
+      "author": "Theodor de Bry, engraver; after John White",
+      "url": "https://commons.wikimedia.org/wiki/File:The_Englishmen%27s_arrival_in_Virginia_LCCN2001696963.jpg",
+      "sha256": "13d6c3c507e6155fee47b2c247ee88ff24ea4fc36498dac8542d910a2f6526ef"
+    },
+    {
+      "path": "stock/485da4dab0e4dfc7980301bf3fab61b508a099146a998a162f1753f939c09487.jpg",
+      "source": "Wikimedia Commons: Baptism of Virginia Dare, published 1876. Later imagined scene; not an eyewitness image of 1587.",
+      "license": "Public domain (PD-US)",
+      "author": "William Ludwell Sheppard (1833–1912)",
+      "url": "https://commons.wikimedia.org/wiki/File:Baptism_of_Virginia_Dare.jpeg",
+      "sha256": "485da4dab0e4dfc7980301bf3fab61b508a099146a998a162f1753f939c09487"
+    },
+    {
+      "path": "stock/54495b4e26c7c1ff265295e31ecbc545df9d2f1a7b2479eb18302bac587c3d0c.jpg",
+      "source": "Wikimedia Commons: Ruins of the English Settlement at Roanoke, published 1893. A later imagined scene whose lettering location differs from White's account; not contemporary evidence.",
+      "license": "Public domain (PD-Art, PD-old-70)",
+      "author": "John Parker Davis",
+      "url": "https://commons.wikimedia.org/wiki/File:Ruins_of_the_English_Settlement_at_Roanoke.jpg",
+      "sha256": "54495b4e26c7c1ff265295e31ecbc545df9d2f1a7b2479eb18302bac587c3d0c"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook-white-happy",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, beside a coastal timber palisade at sunrise in 1590, an elderly bearded English governor lifts his eyebrows with a relieved smile. One wool cap sits on his head, his hands stay below the frame. Behind him are only plain pointed vertical wooden stakes and the sea, without stonework, battlements or a castle. His face fills the centre third. Light comes from the rising sun.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c1",
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "530240f0",
+          "text": "一百多人不在了，懷特卻寫自己很高興。",
+          "emotion": "帶一點意外，句尾收穩"
+        }
+      ],
+      "chapter": "讓他高興的留言"
+    },
+    {
+      "id": "hook-blank-post",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up, at an abandoned coastal settlement at sunrise, a plain wooden palisade post stands with a smooth stripped patch of bark. The timber fills the centre third. Light falls from the side. The surface is blank.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "c396bf52",
+          "text": "你以為克羅托安，是看不懂的神祕暗號。",
+          "emotion": "放輕，稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "hook-island-home",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, on a low Atlantic barrier island at morning, a single reed-roofed coastal dwelling stands beside dunes. The doorway is the central subject. Sunlight comes through thin sea haze. The only shapes are the dwelling, reeds, dunes and shoreline. The doorway is empty. No people, birds, animals, cartoon mascots or faces appear anywhere in the scene.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c8",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "f8974907",
+          "text": "其實那是地名，也是約好的搬家記號。",
+          "emotion": "亮起來，說完收住"
+        }
+      ]
+    },
+    {
+      "id": "hook-empty-track",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, at a sandy coastal fork in morning, an elderly English traveler pauses with one boot lifted. An unmarked path runs into the centre third. Daylight comes from the open sky. The man is the same elderly bearded English governor as the opening, shown in 1590. Late-sixteenth-century English clothing: plain linen shirt, wool doublet, period breeches and stockings, with a plain wool cap if a hat is visible. No modern hats, uniforms, backpacks, jeans, shorts or sneakers.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "5cae000c",
+          "text": "那他為什麼還是沒找到人呢？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "hook-place-not-verdict",
+      "template": "compare",
+      "data": {
+        "title": "地名讀懂了，案件還沒結",
+        "left": {
+          "heading": "知道去處",
+          "points": [
+            "CROATOAN：克羅托安"
+          ]
+        },
+        "right": {
+          "heading": "未確定下落",
+          "points": [
+            "不能證明每個人的命運"
+          ]
+        },
+        "source": "懷特1590記述｜NPS主要假說"
+      },
+      "claims": [
+        "c8",
+        "c15",
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "abb7999e",
+          "text": "讀到刻下的文字，就知道應該去哪裡找。",
+          "reveal": 1
+        },
+        {
+          "id": "37eb7619",
+          "text": "有去處，卻沒有人的下落。",
+          "reveal": 1
+        }
+      ],
+      "chapter": "三年前的道別"
+    },
+    {
+      "id": "farewell-landfall",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, off an Atlantic barrier island at midday in 1587, a single small sailing vessel approaches a shallow inlet. The timber bow sits in the centre third. Sunlight reflects from the water.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "ad443391",
+          "text": "一五八七年七月，船隊把家庭帶到這裡。"
+        }
+      ]
+    },
+    {
+      "id": "farewell-arrival-print",
+      "template": "photo",
+      "data": {
+        "image": "stock/13d6c3c507e6155fee47b2c247ee88ff24ea4fc36498dac8542d910a2f6526ef.jpg",
+        "caption": "1590年後世版畫，非1587年抵達實拍",
+        "credit": "Photo: de Bry／美國國會圖書館（公有領域）",
+        "tilt": 1.5
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "0378a93d",
+          "text": "這張抵達版畫，出版時殖民者已經失聯。"
+        }
+      ]
+    },
+    {
+      "id": "farewell-northern-bay",
+      "template": "quote",
+      "data": {
+        "kicker": "北方的預定目的地",
+        "quote": "乞沙比克灣",
+        "source": "懷特1587年航程記述｜NPS 1587"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "7d3976ee",
+          "text": "他們原本要住的地方，其實在更北邊的海灣。",
+          "emotion": "稍放慢，句尾收住"
+        }
+      ]
+    },
+    {
+      "id": "farewell-destination-compare",
+      "template": "compare",
+      "data": {
+        "title": "目的地在北，停留地在南",
+        "left": {
+          "heading": "乞沙比克灣",
+          "points": [
+            "原定建立殖民地"
+          ]
+        },
+        "right": {
+          "heading": "羅阿諾克島",
+          "points": [
+            "先找前一批留下的人"
+          ]
+        },
+        "source": "懷特1587記述｜NPS1587航程"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "de9770ac",
+          "text": "原定的殖民地在乞沙比克灣，這裡只是中途站。",
+          "reveal": 1
+        },
+        {
+          "id": "e8e1f755",
+          "text": "領航員卻拒絕繼續北上，要大家留在羅阿諾克。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "farewell-old-dwelling",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, in a neglected island clearing on a summer afternoon, an abandoned timber dwelling stands with its roof still complete above tall weeds. The empty doorway sits in the centre third. Daylight enters through the doorway. The only shapes are timber, weeds and sand.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "609abd25",
+          "text": "這裡不是新地方，早一批英格蘭人曾經住過。",
+          "emotion": "稍放慢，句尾收住"
+        }
+      ]
+    },
+    {
+      "id": "farewell-deer-melon",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close shot inside an abandoned wooden hut with an intact roof. A chibi deer bends its head down, holding a melon-vine leaf between its open lips; the lowered muzzle and bitten leaf fill the centre third. The vine runs across the dirt floor with a small melon attached. Draw as a flat YouTube explainer cartoon: parchment-yellow deer, deep navy outlines and wooden background, muted teal vine and leaves, simple solid-colour shapes without realistic brown or bright green. Soft daylight enters from the doorway; do not show a wide landscape.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "cb08d4da",
+          "text": "舊屋已經長滿了瓜，懷特還看見鹿走進去吃。"
+        }
+      ]
+    },
+    {
+      "id": "farewell-repair-wall",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot, in a sandy settlement at late afternoon, a settler raises a timber beam onto a partly repaired wall. The wooden beam crosses the centre third. Sunlight enters from the open clearing. The scene is set in 1587, and the visible person is an adult English settler. Late-sixteenth-century English clothing: plain linen shirt, wool doublet, period breeches and stockings, with a plain wool cap if a hat is visible. No modern hats, uniforms, backpacks, jeans, shorts or sneakers. The worker is an adult, not a child. The wall consists only of timber uprights, wooden planks and beams, not stone, brick or concrete.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c1",
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "bd947762",
+          "text": "一百一十多人開始修屋，要把這裡變成家。"
+        }
+      ]
+    },
+    {
+      "id": "farewell-manteo",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, beside a reed shelter during daylight, a coastal Algonquian man in a simple hide garment lifts an open hand while speaking. His expressive face is the central subject, with a bare head and short hair. Light comes from the sky.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "07721bae",
+          "text": "曼提歐是克羅托安人，協助英格蘭人與族人溝通。",
+          "emotion": "稍放慢，句尾收住"
+        }
+      ]
+    },
+    {
+      "id": "farewell-trade-hand",
+      "template": "shot",
+      "data": {
+        "prompt": "Still-life close-up on a sandy shore in 1587 at noon. A small dried fish lies on a flat woven reed mat on the ground. The fish and mat occupy the centre third, with daylight from above. This is a symbolic exchange prop, not a witnessed event. Only the fish, mat and sand are visible; no hands, people, faces, heads, animals or modern objects.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c6",
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "f6e27da0",
+          "text": "懷特說島上的人是朋友，關係卻不是始終和平。"
+        }
+      ]
+    },
+    {
+      "id": "farewell-uneasy-colonist",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, at the edge of a coastal clearing in daylight, a bearded settler presses his lips together with an uneasy expression. His felt cap and face sit in the centre third. Soft daylight comes from the side. The scene is set in 1587, and the visible person is an adult English settler. Late-sixteenth-century English clothing: plain linen shirt, wool doublet, period breeches and stockings, with a plain wool cap if a hat is visible. No modern hats, uniforms, backpacks, jeans, shorts or sneakers.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "069ea2a2",
+          "text": "克羅托安人曾遭英格蘭人誤襲，雙方也有過嫌隙。"
+        }
+      ]
+    },
+    {
+      "id": "farewell-thin-food",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot, in a settlement storehouse in morning, a wooden bowl holds a sparse handful of grain. The bowl fills the centre third on an earthen floor. Daylight comes through the doorway. The only shapes are bowl, grain and floor.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "1ff46026",
+          "text": "食物不穩，冬天又要來，補給成了當務之急。",
+          "emotion": "稍放慢，句尾收住"
+        }
+      ]
+    },
+    {
+      "id": "farewell-baptism-print",
+      "template": "photo",
+      "data": {
+        "image": "stock/485da4dab0e4dfc7980301bf3fab61b508a099146a998a162f1753f939c09487.jpg",
+        "caption": "1876年受洗想像圖，非當年現場紀錄",
+        "credit": "Photo: W. L. Sheppard（公有領域）",
+        "tilt": -2
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "86a65e1b",
+          "text": "這幅受洗圖，是兩百多年後的人想像的場景。"
+        }
+      ]
+    },
+    {
+      "id": "farewell-grandfather",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, inside a simple timber dwelling on a summer morning, an elderly bearded man bends over a small wooden cradle. The cradle is the central focus. Light enters through an open doorway. The man is the same elderly bearded English governor as the opening, shown in 1587. Late-sixteenth-century English clothing: plain linen shirt, wool doublet, period breeches and stockings, with a plain wool cap if a hat is visible. No modern hats, uniforms, backpacks, jeans, shorts or sneakers.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "51dcd3dc",
+          "text": "總督懷特的女兒，在八月十八日生下一個女孩。"
+        }
+      ]
+    },
+    {
+      "id": "farewell-newborn",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, inside the timber dwelling in morning, a sleeping newborn rests in a plain linen wrap inside a wooden cradle. The linen bundle fills the centre third. Daylight falls from a side opening.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "9950a707",
+          "text": "外孫女叫維吉尼亞戴爾，成了聚落的新生命。",
+          "emotion": "稍放慢，句尾收住"
+        }
+      ]
+    },
+    {
+      "id": "farewell-august-dates",
+      "template": "table",
+      "data": {
+        "title": "1587年8月的三個日子",
+        "columns": [
+          "日期",
+          "可確認的行動"
+        ],
+        "rows": [
+          [
+            "22日",
+            "請懷特回英格蘭求援"
+          ],
+          [
+            "25日",
+            "聯名文件作證"
+          ],
+          [
+            "27日",
+            "懷特離島；孩子出生9天"
+          ]
+        ],
+        "source": "懷特1587記述｜Hakluyt卷13"
+      },
+      "claims": [
+        "c3",
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "55c9e647",
+          "text": "八月二十二日，大家請懷特回英格蘭求援。",
+          "reveal": 1
+        },
+        {
+          "id": "385bc548",
+          "text": "二十五日的聯名文件，證明他是受託回去。",
+          "reveal": 1
+        },
+        {
+          "id": "be38542e",
+          "text": "二十七日早上他離開，孩子出生才過九天。",
+          "emotion": "稍放慢，句尾收住",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "farewell-reluctant-governor",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, on a wooden landing at morning, an elderly English governor holds a folded plain document against his chest. The blank folded paper is in the centre third. Daylight reaches him from the shoreline. The man is the same elderly bearded English governor as the opening, shown in 1587. Late-sixteenth-century English clothing: plain linen shirt, wool doublet, period breeches and stockings, with a plain wool cap if a hat is visible. No modern hats, uniforms, backpacks, jeans, shorts or sneakers.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "ea6f1c25",
+          "text": "他原先不願離開，最後帶著請求踏上了歸途。"
+        }
+      ]
+    },
+    {
+      "id": "farewell-mark-agreement",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, beside a palisade in afternoon, a settler tests a carving knife against a blank stripped patch on a timber post. The knife tip occupies the centre third. Sunlight falls over his sleeve from the left. The scene is set in 1587, and the visible person is an adult English settler. Late-sixteenth-century English clothing: plain linen shirt, wool doublet, period breeches and stockings, with a plain wool cap if a hat is visible. No modern hats, uniforms, backpacks, jeans, shorts or sneakers.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "1b1b3b7d",
+          "text": "臨走之前，他們約好搬走時要刻下新的去處。"
+        }
+      ]
+    },
+    {
+      "id": "farewell-inland-plan",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, on a mainland trail in daylight, a lone traveler looks into an opening between tall trees. His small figure stands in the centre third. Light filters from the open sky above the path. The scene is set in 1587, and the visible person is an adult English settler. Late-sixteenth-century English clothing: plain linen shirt, wool doublet, period breeches and stockings, with a plain wool cap if a hat is visible. No modern hats, uniforms, backpacks, jeans, shorts or sneakers. This is a hypothetical relocation illustration, not a depiction of a confirmed journey.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "421fe082",
+          "text": "當時還有往內陸搬的計畫，約五十英里之遠。",
+          "emotion": "稍放慢，句尾收住"
+        }
+      ]
+    },
+    {
+      "id": "farewell-distress-knife",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up, beside a timber wall in daylight, one hand holds a short carving knife above an untouched wooden surface. The steel blade fills the centre third. Light arrives from the side; the wood remains blank. Set in 1587. Only one adult hand with a plain period linen sleeve and the carving knife are visible; no full figure or face. Keep the wood blank, with no lettering or cross.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "e86ab0b4",
+          "text": "假如遇到危險，就在地名上方另外刻個十字。"
+        }
+      ]
+    },
+    {
+      "id": "farewell-england-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, at an English harbor in autumn daylight, an elderly traveler stands beside a sealed supply barrel and looks toward the water. The barrel sits in the centre third. Overcast daylight comes from above. Late-sixteenth-century England. The man is the same elderly bearded English governor as the opening. Late-sixteenth-century English clothing: plain linen shirt, wool doublet, period breeches and stockings, with a plain wool cap if a hat is visible. No modern hats, uniforms, backpacks, jeans, shorts or sneakers.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "e4b5d68e",
+          "text": "他原以為隔年春天能回來，事情卻一再耽擱。"
+        }
+      ]
+    },
+    {
+      "id": "farewell-armada",
+      "template": "quote",
+      "data": {
+        "kicker": "1588年｜英格蘭防守背景",
+        "quote": "西班牙無敵艦隊",
+        "source": "事件名稱，非逐字引述｜NPS 1590"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "5a4ea7a7",
+          "text": "西班牙無敵艦隊逼近，英格蘭得先顧本土防守。",
+          "emotion": "稍放慢，句尾收住"
+        }
+      ]
+    },
+    {
+      "id": "farewell-delayed-return",
+      "template": "steps",
+      "data": {
+        "title": "不是一次順利的補給",
+        "steps": [
+          {
+            "title": "1588年本土防守"
+          },
+          {
+            "title": "補給船交戰後折返"
+          },
+          {
+            "title": "1590年搭私掠船返航"
+          }
+        ],
+        "source": "NPS1590航程｜Encyclopedia Virginia"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "deafa764",
+          "text": "一五八八年，軍艦與商船得留在英格蘭附近。",
+          "reveal": 1
+        },
+        {
+          "id": "590718a5",
+          "text": "同年出發的補給船，跟法國人交戰後折返。",
+          "reveal": 1
+        },
+        {
+          "id": "384b98db",
+          "text": "直到一五九〇年，他才搭上願意順道的私掠船。",
+          "emotion": "稍放慢，句尾收住",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "farewell-three-years-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, on a ship's rail in early morning, an elderly man grips the timber railing while looking toward a distant low coastline. His hand is the focus in the centre third. Dawn light comes from the horizon. The man is the same elderly bearded English governor as the opening, shown in 1590. Late-sixteenth-century English clothing: plain linen shirt, wool doublet, period breeches and stockings, with a plain wool cap if a hat is visible. No modern hats, uniforms, backpacks, jeans, shorts or sneakers.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c2",
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "7ca9a959",
+          "text": "只是去搬補給，他回來時還能看見什麼呢？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "return-landing-date",
+      "template": "quote",
+      "data": {
+        "kicker": "1590年返島",
+        "quote": "1590年8月18日",
+        "source": "日期整理｜懷特1590年記述／NPS 1590"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "53923c71",
+          "text": "一五九〇年八月十八日，懷特又回到羅阿諾克。"
+        }
+      ],
+      "chapter": "清晨的空堡"
+    },
+    {
+      "id": "return-trumpet-dark",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, in an open boat near shore before dawn, one English sailor raises a brass trumpet toward the coast. The trumpet bell sits in the centre third. A faint horizon supplies the light. The visible person is an adult English sailor in 1590. Late-sixteenth-century English clothing: plain linen shirt, wool doublet, period breeches and stockings, with a plain wool cap if a hat is visible. No modern hats, uniforms, backpacks, jeans, shorts or sneakers. No modern white sailor cap, naval uniform, peaked captain's cap or pirate costume.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "6387c813",
+          "text": "前一晚吹號又唱歌，岸上始終沒有人回應。",
+          "emotion": "平穩，重點稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "return-walk-ashore",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot, on a coastal landing at sunrise, one traveler steps from wet sand onto a narrow island trail. His leather boot is the central subject. Light comes from the newly risen sun. Set in 1590. Only the lower leg in period stockings and a plain leather boot are visible; crop below the knee. No full figure, modern shoes, backpacks or shorts.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "c8106dd9",
+          "text": "天亮後他們上岸，沿著沙地去找當年的住處。"
+        }
+      ]
+    },
+    {
+      "id": "return-tree-cro",
+      "template": "quote",
+      "data": {
+        "kicker": "樹幹上的三字母",
+        "quote": "CRO",
+        "source": "懷特1590年返航記述｜NPS 1590航程"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "6abe644b",
+          "text": "第一處是在樹幹上，只有克羅托安的前三字母。"
+        }
+      ]
+    },
+    {
+      "id": "return-post-croatoan",
+      "template": "quote",
+      "data": {
+        "kicker": "柵欄入口的木樁",
+        "quote": "CROATOAN",
+        "source": "懷特1590年返航記述｜NPS 1590"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "8697084e",
+          "text": "另一處在柵欄入口，是一根去掉樹皮的木樁。",
+          "emotion": "平穩，重點稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "return-two-carvings",
+      "template": "compare",
+      "data": {
+        "title": "兩處刻字，別合成一棵樹",
+        "left": {
+          "heading": "樹幹",
+          "points": [
+            "CRO"
+          ]
+        },
+        "right": {
+          "heading": "柵欄入口木樁",
+          "points": [
+            "CROATOAN",
+            "離地5英尺，約1.5公尺"
+          ]
+        },
+        "source": "懷特1590記述｜NPS1590航程"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "01e14e26",
+          "text": "樹上是三個字母，木樁上是完整的克羅托安。",
+          "reveal": 1
+        },
+        {
+          "id": "527830a9",
+          "text": "木樁上的刻字很高，離地約一點五公尺。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "return-dismantled-houses",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, in the former settlement at morning, a rectangular bare foundation lies beside lowered timber pieces. The earthen rectangle is the central subject. Sunlight comes from the open sky. The only shapes are earth, timber and weeds. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "543e602a",
+          "text": "當年的房屋已經拆下來，不是還留著空房間。",
+          "emotion": "平穩，重點稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "return-defensive-palisade",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot, inside the island enclosure at morning, a wall of tall whole tree trunks rises around a projecting corner. The corner occupies the centre third. Daylight filters down from above. The timbers are plain. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "3ee52e06",
+          "text": "住處被高大樹幹圍起，像是一個防守用的堡壘。"
+        }
+      ]
+    },
+    {
+      "id": "return-heavy-metal",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up, on a grassy settlement floor at noon, a heavy iron bar lies partly covered by weed stems. The rough iron surface fills the centre third. Sunlight comes from the side. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "d30453cd",
+          "text": "鐵條和鉛還散在裡面，重物快被雜草蓋住了。"
+        }
+      ]
+    },
+    {
+      "id": "return-creek-search",
+      "template": "quote",
+      "data": {
+        "kicker": "沿溪搜索",
+        "quote": "船艇與小炮",
+        "source": "搜尋對象摘要｜懷特1590年返航記述"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "86b291b5",
+          "text": "他們沿溪找以前的船艇，也找留下的幾門小炮。",
+          "emotion": "平穩，重點稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "return-empty-mooring",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, beside a shallow creek at noon, an unused timber mooring peg stands at the water's edge. The peg sits in the centre third. Sunlight comes through low reeds. The only shapes are peg, reeds, bank and water. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "9e5b48ba",
+          "text": "這些都沒有找到，卻不等於知道是誰把它帶走。"
+        }
+      ]
+    },
+    {
+      "id": "return-opened-chest",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, at the end of an old earth trench in afternoon, an open wooden storage chest rests on damp soil. Its broken lid sits in the centre third. Light comes from the open clearing. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "c11d2375",
+          "text": "在舊壕溝的盡頭，有五只箱子，原本藏起來，又被挖開了。"
+        }
+      ]
+    },
+    {
+      "id": "return-chests-and-damage",
+      "template": "stats",
+      "data": {
+        "title": "箱子留下什麼",
+        "stats": [
+          {
+            "value": "5只",
+            "label": "曾藏起、又被挖開",
+            "note": "其中3只是懷特的"
+          },
+          {
+            "value": "受損",
+            "label": "書封遭撕；畫框與地圖雨損"
+          },
+          {
+            "value": "鏽蝕",
+            "label": "盔甲嚴重生鏽"
+          }
+        ],
+        "source": "懷特1590記述｜印刷頁384–385"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "435e5db2",
+          "text": "其中三只是懷特的，他留在這裡的東西壞掉了。",
+          "emotion": "平穩，重點稍放慢",
+          "reveal": 1
+        },
+        {
+          "id": "3f471fa8",
+          "text": "書封被扯下，畫框和地圖已經被雨水泡壞了。",
+          "reveal": 1
+        },
+        {
+          "id": "a1530843",
+          "text": "盔甲鏽得很厲害，箱子也回答不了人去了哪。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "return-ruined-frame",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, inside an opened chest at afternoon, a plain wooden picture frame has split along its swollen edge. The damaged joint fills the centre third. Daylight enters over the chest rim. The frame contains blank ruined backing. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "344d40fb",
+          "text": "損毀的箱子，不能直接證明整個聚落遭到攻擊。",
+          "emotion": "平穩，重點稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "return-white-inference",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, beside an earth trench at afternoon, an elderly governor frowns while looking down at a ruined chest. His expressive face occupies the centre third. Light comes from the clear sky. The man is the same elderly bearded English governor as the opening, shown in 1590. Late-sixteenth-century English clothing: plain linen shirt, wool doublet, period breeches and stockings, with a plain wool cap if a hat is visible. No modern hats, uniforms, backpacks, jeans, shorts or sneakers.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "ecc48106",
+          "text": "懷特怪罪當地敵人，那是他對箱子遭遇的推測。"
+        }
+      ]
+    },
+    {
+      "id": "return-message-rule",
+      "template": "table",
+      "data": {
+        "title": "約定的讀法",
+        "columns": [
+          "記號",
+          "對懷特的意思"
+        ],
+        "rows": [
+          [
+            "刻地名",
+            "搬遷的新去處"
+          ],
+          [
+            "地名上加十字",
+            "陷入困境"
+          ],
+          [
+            "CROATOAN；無十字",
+            "他認為人到了朋友的島"
+          ]
+        ],
+        "source": "懷特1590記述｜唯一目擊文字"
+      },
+      "claims": [
+        "c8",
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "369cdc7d",
+          "text": "搬走時，刻下地名；遇難時，加十字，這是約好的讀法。",
+          "reveal": 1
+        },
+        {
+          "id": "d510fc74",
+          "text": "木樁刻著克羅托安，沒有求救的十字。",
+          "emotion": "平穩，重點稍放慢",
+          "reveal": 1
+        },
+        {
+          "id": "ddac8184",
+          "text": "懷特寫道他很高興，認為人平安到了朋友的島。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "return-hope-has-limit",
+      "template": "quote",
+      "data": {
+        "kicker": "讀懂留言之後",
+        "quote": "有去處，未定下落",
+        "source": "本集判讀｜懷特1590年返航記述"
+      },
+      "claims": [
+        "c15",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "e3138e28",
+          "text": "這是他讀懂留言的當下，不是每個人後來的結局。",
+          "emotion": "平穩，尾句收住"
+        }
+      ]
+    },
+    {
+      "id": "return-one-witness",
+      "template": "shot",
+      "data": {
+        "prompt": "Over-the-shoulder shot, in a quiet room during daylight years later, a single elderly writer holds a quill above a blank sheet. The quill rests in the centre third. Light comes through a window. The page is plain. Late-sixteenth-century England. The man is the same elderly bearded English governor as the opening. Late-sixteenth-century English clothing: plain linen shirt, wool doublet, period breeches and stockings, with a plain wool cap if a hat is visible. No modern hats, uniforms, backpacks, jeans, shorts or sneakers.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "4b1ee5e0",
+          "text": "留下文字的目擊者只有懷特，後人多是再轉述。",
+          "emotion": "平穩，重點稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "return-next-step",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, at a coastal inlet in afternoon, a single small vessel waits beyond a shifting sandbar. The sail sits in the centre third. Light comes from the open sky over the shallow water. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "5c3267a5",
+          "text": "有了去處，他還差哪一步才能找到人呢？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "route-croatoan-place",
+      "template": "quote",
+      "data": {
+        "kicker": "族名，也是地名",
+        "quote": "克羅托安",
+        "source": "名稱用法摘要｜NCpedia／NPS"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "f842d461",
+          "text": "克羅托安既是族名，也是那群人居住的地方。"
+        }
+      ],
+      "chapter": "沒有走完的五十英里"
+    },
+    {
+      "id": "route-hatteras-coast",
+      "template": "shot",
+      "data": {
+        "prompt": "Bird's eye view, above a long Atlantic barrier island in afternoon, a curved strip of sand separates the sea from a shallow sound. The central sand ridge is the focus. Daylight comes from directly above. The shoreline is unmarked. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c16",
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "948e50c0",
+          "text": "大致是今天的哈特拉斯島一帶，在羅阿諾克南方。",
+          "emotion": "稍放慢，句尾收住"
+        }
+      ]
+    },
+    {
+      "id": "route-two-fifties",
+      "template": "compare",
+      "data": {
+        "title": "兩個五十英里，兩種方向",
+        "left": {
+          "heading": "先前準備",
+          "points": [
+            "往內陸約50英里"
+          ]
+        },
+        "right": {
+          "heading": "後來刻字",
+          "points": [
+            "南邊克羅托安",
+            "約在羅阿諾克以南50英里"
+          ]
+        },
+        "source": "懷特1590記述｜Smithsonian2020"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "d37cb405",
+          "text": "先前計畫是往內陸約五十英里，去找更好住處。",
+          "reveal": 1
+        },
+        {
+          "id": "9ee17073",
+          "text": "現在留言指向南邊的島，是另一個方向的線索。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "route-diverging-directions",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot, on a sandy shore at noon, one traveler holds a plain brass compass beside a forked driftwood branch. The fork is the central object. Sunlight comes from above. The compass surface is plain and unmarked.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "ced77e9e",
+          "text": "兩個五十英里，不能合成同一次搬家的計畫。",
+          "emotion": "稍放慢，句尾收住"
+        }
+      ]
+    },
+    {
+      "id": "route-governor-ready",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, on a ship's boarding ladder at afternoon, an elderly English traveler tightens the strap on a canvas satchel. The buckle sits in the centre third. Daylight comes from the coast. The man is the same elderly bearded English governor as the opening, shown in 1590. Late-sixteenth-century English clothing: plain linen shirt, wool doublet, period breeches and stockings, with a plain wool cap if a hat is visible. No modern hats, uniforms, backpacks, jeans, shorts or sneakers. His bag is a simple period canvas satchel, not a modern hiking backpack.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c15",
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "69efb42f",
+          "text": "懷特把這裡當成朋友的島，準備沿海去找他們。"
+        }
+      ]
+    },
+    {
+      "id": "route-broken-cable",
+      "template": "quote",
+      "data": {
+        "kicker": "航程受阻",
+        "quote": "斷纜、失錨",
+        "source": "事件摘要｜懷特1590年返航記述"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "ebd0c9ba",
+          "text": "出發時纜繩又斷，船失去了一個停泊用的錨。"
+        }
+      ]
+    },
+    {
+      "id": "route-last-anchor",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot, on a ship's wet foredeck in afternoon, one heavy iron anchor rests beside a coil of hemp cable. The anchor is the central subject. Light falls from an overcast sky. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "8a6d5e5d",
+          "text": "四套錨纜最後只剩一套，風浪卻越來越大了。",
+          "emotion": "稍放慢，句尾收住"
+        }
+      ]
+    },
+    {
+      "id": "route-water-left-ashore",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, on a sandy landing in daylight, a plain water barrel lies beside the rising tide. The wooden barrel occupies the centre third. Light comes from the open sky. The only shapes are barrel, sand and water. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "b9a5329e",
+          "text": "裝淡水的桶還留在岸上，船上的糧食也快不足。"
+        }
+      ]
+    },
+    {
+      "id": "route-captain-decision",
+      "template": "quote",
+      "data": {
+        "kicker": "先讓船停得住",
+        "quote": "停泊與安全",
+        "source": "本集判讀｜懷特1590年返航記述"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "7de7ba3d",
+          "text": "能不能停住船，成了比找到留言更急的問題。",
+          "emotion": "略緊，說完收住"
+        }
+      ]
+    },
+    {
+      "id": "route-southward-plan",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, over open Atlantic water during daylight, a single sailing ship turns away from a shallow coastline. Its raised mainsail occupies the centre third. Daylight comes through high clouds. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "737af853",
+          "text": "他們先決定往南補給，過完冬天再回來找人。",
+          "emotion": "稍放慢，句尾收住"
+        }
+      ]
+    },
+    {
+      "id": "route-forced-changes",
+      "template": "steps",
+      "data": {
+        "title": "返航途中又改了兩次",
+        "steps": [
+          {
+            "title": "南下補給",
+            "detail": "原計畫千里達一帶過冬"
+          },
+          {
+            "title": "1590年8月28日",
+            "detail": "風暴逼迫再改航"
+          },
+          {
+            "title": "亞速群島→英格蘭"
+          }
+        ],
+        "source": "懷特1590記述｜印刷頁385–388"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "148173a7",
+          "text": "南下的目標是千里達一帶，先要有水和食物。",
+          "reveal": 1
+        },
+        {
+          "id": "7b5dbe96",
+          "text": "八月二十八日又遇風暴，原先航路走不通了。",
+          "reveal": 1
+        },
+        {
+          "id": "9b24aa1a",
+          "text": "船只好改往亞速群島，最後回到英格蘭的港口。",
+          "emotion": "稍放慢，句尾收住",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "route-storm-sail",
+      "template": "quote",
+      "data": {
+        "kicker": "未完成的尋人航程",
+        "quote": "天氣阻住了去路",
+        "source": "事件摘要｜懷特1590年返航記述／NPS"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "89cdc105",
+          "text": "去處雖然寫得清楚，壞天氣卻讓船無法過去找。"
+        }
+      ]
+    },
+    {
+      "id": "route-england-return",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, at an English harbor in late autumn daylight, an elderly traveler lowers his canvas bag onto a landing. The bag occupies the centre third. Cold daylight comes from above the harbor wall. The man is the same elderly bearded English governor as the opening, shown in 1590. Late-sixteenth-century English clothing: plain linen shirt, wool doublet, period breeches and stockings, with a plain wool cap if a hat is visible. No modern hats, uniforms, backpacks, jeans, shorts or sneakers. His bag is a simple period canvas satchel, not a modern hiking backpack.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c18",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "bd649f94",
+          "text": "懷特沒到克羅托安，也沒能帶回家人的消息。"
+        }
+      ]
+    },
+    {
+      "id": "route-third-birthday",
+      "template": "quote",
+      "data": {
+        "kicker": "1590年8月18日",
+        "quote": "維吉尼亞．戴爾的三歲生日",
+        "source": "日期對照，未證實當時仍在世｜懷特記述"
+      },
+      "claims": [
+        "c2",
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "adeea438",
+          "text": "他上岸的那天，偏偏就是外孫女的三歲生日。",
+          "emotion": "放輕，不煽情"
+        }
+      ]
+    },
+    {
+      "id": "route-later-clues-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, on a broad coastal trail at late afternoon, a single narrow path continues past reed beds into the distance. The opening between reeds sits in the centre third. Sunlight arrives from the far end. The only shapes are trail, reeds and sand. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "c2450101",
+          "text": "那這一百多人，後來還有人留下什麼線索嗎？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "h02-history-late-story",
+      "template": "quote",
+      "data": {
+        "kicker": "一百多年後的記錄",
+        "quote": "祖先故事",
+        "source": "傳聞摘要｜勞森1709年出版著作"
+      },
+      "claims": [
+        "h02e1"
+      ],
+      "lines": [
+        {
+          "id": "72d80a5e",
+          "text": "再往後追，一段祖先故事要等到一百多年後才留下。"
+        }
+      ],
+      "chapter": "遲到一百年的故事"
+    },
+    {
+      "id": "h02-history-lawson-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, in an early eighteenth-century study during daylight, one English traveller places a closed plain leather journal on his desk. The journal occupies the centre third. Window light falls across the wood. The adult English traveler wears a plain early-eighteenth-century coat, waistcoat and breeches, without modern hats, backpacks or casualwear.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e1"
+      ],
+      "lines": [
+        {
+          "id": "04fe502e",
+          "text": "勞森的書在一七零九年出版，記下島民的祖先故事。",
+          "emotion": "年份清楚，語氣平穩"
+        }
+      ]
+    },
+    {
+      "id": "h02-history-ancestor-memory",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, outside a coastal dwelling in early eighteenth-century morning, an elderly Indigenous coastal resident gestures toward the sea with one open palm. The thoughtful face sits in the centre third. Daylight falls from the doorway. The elder wears simple early-eighteenth-century Hatteras coastal clothing without modern hats, backpacks or casualwear; no Plains-style feathered war bonnet.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e1"
+      ],
+      "lines": [
+        {
+          "id": "d1c58c2b",
+          "text": "哈特拉斯人說，祖先有白人，也能像英格蘭人讀書。",
+          "emotion": "說轉述，語氣中性"
+        }
+      ]
+    },
+    {
+      "id": "h02-history-record-not-witness",
+      "template": "shot",
+      "data": {
+        "prompt": "Over-the-shoulder shot, in an early eighteenth-century study at noon, one traveller holds a quill over a blank sheet. The quill and sheet fill the centre third. Light enters through a small window. The adult English traveler wears a plain early-eighteenth-century coat, waistcoat and breeches, without modern hats, backpacks or casualwear.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e1"
+      ],
+      "lines": [
+        {
+          "id": "e8d5e691",
+          "text": "這不是一五八七年現場留下的紀錄。",
+          "emotion": "重點落在現場紀錄"
+        }
+      ]
+    },
+    {
+      "id": "h02-history-generation-gap",
+      "template": "compare",
+      "data": {
+        "title": "祖先故事，能認出誰？",
+        "left": {
+          "heading": "留下的記錄",
+          "points": [
+            "1709 年出版的記錄"
+          ]
+        },
+        "right": {
+          "heading": "尚未接上的人",
+          "points": [
+            "1587 年殖民者"
+          ]
+        },
+        "source": "Lawson《A New Voyage to Carolina》"
+      },
+      "claims": [
+        "h02e1"
+      ],
+      "lines": [
+        {
+          "id": "aae17c5d",
+          "text": "祖先的故事，隔了一百多年。",
+          "reveal": 1,
+          "emotion": "一百多年讀清楚，不加懸疑"
+        },
+        {
+          "id": "a9e17aca",
+          "text": "還不能認出某個殖民者的身分。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "h02-history-killing-rumour",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, in an early seventeenth-century office during daylight, one clerk unfolds a plain sealed paper packet. The packet sits in the centre third. Window light touches its folded edge. The adult clerk wears a plain early-seventeenth-century English linen shirt and doublet, without modern hats, uniforms or casualwear.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e2"
+      ],
+      "lines": [
+        {
+          "id": "56df705f",
+          "text": "另一個故事，說波瓦坦下令殺害了那些殖民者。",
+          "emotion": "轉述口吻，避免演成確定結局"
+        }
+      ]
+    },
+    {
+      "id": "h02-history-rumour-distance",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, in an early seventeenth-century office at noon, a bearded clerk raises one doubtful eyebrow over a closed journal. His puzzled expression fills the centre third. Light comes from a nearby window. The adult clerk wears a plain early-seventeenth-century English linen shirt and doublet, without modern hats, uniforms or casualwear.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e2"
+      ],
+      "lines": [
+        {
+          "id": "4f036f32",
+          "text": "史崔奇的記載是轉述，沒有他親眼看到屠殺的紀錄。",
+          "emotion": "二手資訊輕輕收穩"
+        }
+      ]
+    },
+    {
+      "id": "h02-history-tree-rings",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up, on a research table in morning, a plain wood core shows tightly spaced growth rings along its cut surface. The ring pattern fills the centre third. Daylight comes through a high window. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e3"
+      ],
+      "lines": [
+        {
+          "id": "7068cff0",
+          "text": "還有一條生存壓力的線索，藏在維吉尼亞的樹木年輪。",
+          "emotion": "引出新線索，語調微亮"
+        }
+      ]
+    },
+    {
+      "id": "h02-history-drought-sequence",
+      "template": "stats",
+      "data": {
+        "title": "區域樹輪重建",
+        "stats": [
+          {
+            "value": "1587–1589",
+            "label": "Virginia 樹輪資料"
+          },
+          {
+            "value": "800 年",
+            "label": "序列中最嚴重旱期"
+          }
+        ],
+        "source": "Stahle 等，Science 1998｜NCBI 摘要"
+      },
+      "claims": [
+        "h02e3"
+      ],
+      "lines": [
+        {
+          "id": "10df3871",
+          "text": "殖民的那三年間，區域遭遇大旱。",
+          "reveal": 1,
+          "emotion": "三年與八百年清楚區分"
+        },
+        {
+          "id": "0fdf36de",
+          "text": "是八百年重建中最嚴重的一段。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "h02-history-survival-pressure",
+      "template": "quote",
+      "data": {
+        "kicker": "區域乾旱",
+        "quote": "可能增加生存壓力",
+        "source": "推論摘要，未解人員去向｜1998年Virginia樹輪研究"
+      },
+      "claims": [
+        "h02e3"
+      ],
+      "lines": [
+        {
+          "id": "dd29a13e",
+          "text": "區域乾旱可能加重糧食壓力，卻回答不了人去了哪裡。",
+          "emotion": "可能兩字清楚，句尾收穩"
+        }
+      ]
+    },
+    {
+      "id": "h02-history-romantic-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, in a nineteenth-century publisher's room at morning, one anonymous reader raises a closed plain clothbound book with a curious smile. The book occupies the centre third. Daylight falls from a tall window.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e4"
+      ],
+      "lines": [
+        {
+          "id": "c3df0b73",
+          "text": "到了十九世紀，失落殖民地又成了文學作品的題材。"
+        }
+      ]
+    },
+    {
+      "id": "h02-history-ruins-picture",
+      "template": "photo",
+      "data": {
+        "image": "stock/54495b4e26c7c1ff265295e31ecbc545df9d2f1a7b2479eb18302bac587c3d0c.jpg",
+        "caption": "1893 年後人想像｜刻字位置與目擊記述不同",
+        "credit": "John Parker Davis｜公有領域",
+        "tilt": -1.5
+      },
+      "claims": [
+        "h02e5"
+      ],
+      "lines": [
+        {
+          "id": "8b0f9364",
+          "text": "這張畫，把地名刻在一棵大樹上。",
+          "emotion": "先說畫面，再說年代，不煽情"
+        },
+        {
+          "id": "8c0f94f7",
+          "text": "這是一八九三年後人的想像。"
+        }
+      ]
+    },
+    {
+      "id": "h02-history-stones-appear",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, inside a museum storeroom during daylight, one stone rests alone on a low wooden shelf. The rough stone is the central subject. Daylight enters from a side window. Its surface is plain. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e6"
+      ],
+      "lines": [
+        {
+          "id": "9a193f80",
+          "text": "一九三七年起，四十幾塊號稱記載命運的刻字石出現。"
+        }
+      ]
+    },
+    {
+      "id": "h02-history-stone-inspection",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, on a museum worktable at noon, one gloved hand holds a magnifying glass above a plain stone surface. The lens occupies the centre third. Light falls from the high window. Only the specified hand and object; no face, full body or other characters.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e6"
+      ],
+      "lines": [
+        {
+          "id": "b2a1a98c",
+          "text": "後來多數被判成偽造，最先出現的那塊也沒定論。"
+        }
+      ]
+    },
+    {
+      "id": "h02-history-artifact-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, in a nineteenth-century reading room during daylight, an anonymous elderly reader tilts his head with a questioning expression. His face sits in the centre third. Window light falls across his brow.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e6"
+      ],
+      "lines": [
+        {
+          "id": "03ad5279",
+          "text": "傳聞還不能定案，挖出來的器物又要怎麼判斷？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-four-questions",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, in a conservation room at morning, one small metal ring rests in the centre of an otherwise empty padded worktable. The ring is the central subject. Daylight enters through a high window. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e7",
+        "h02e9"
+      ],
+      "lines": [
+        {
+          "id": "eb0658d3",
+          "text": "器物不會報名字，要先看材質，再追年代和出土位置。"
+        }
+      ],
+      "chapter": "器物會不會認人"
+    },
+    {
+      "id": "h02-find-ring-discovered",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up, in a conservation room at morning, one gloved hand cradles a worn ring on its open palm. The ring fills the centre third. Light falls from the window beside the table. Only the specified hand and object; no face, full body or other characters.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e7"
+      ],
+      "lines": [
+        {
+          "id": "b9949b9c",
+          "text": "哈特拉斯島曾挖出一枚戒指。",
+          "emotion": "新物件出場，有好奇感"
+        },
+        {
+          "id": "ba949d2f",
+          "text": "被當成金子與英格蘭家族線索。"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-brass-analysis",
+      "template": "quote",
+      "data": {
+        "kicker": "戒指的材料分析",
+        "quote": "銅與鋅：黃銅",
+        "source": "材料分析摘要，未認出主人｜ECU／Smithsonian，2017"
+      },
+      "claims": [
+        "h02e7"
+      ],
+      "lines": [
+        {
+          "id": "21a67841",
+          "text": "後來的材料分析，認出它是銅和鋅組成的黃銅。"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-owner-remains",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, on a conservation worktable at noon, one worn brass ring rests beside an empty shallow tray. The ring occupies the centre third. Side daylight highlights its uneven surface. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e7",
+        "h02e9"
+      ],
+      "lines": [
+        {
+          "id": "3c1a27d4",
+          "text": "材質認出來了，原本配戴戒指的人卻仍然無從確定。"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-material-owner",
+      "template": "compare",
+      "data": {
+        "title": "材料認得出，主人呢？",
+        "left": {
+          "heading": "分析結果",
+          "points": [
+            "黃銅"
+          ]
+        },
+        "right": {
+          "heading": "仍待指認",
+          "points": [
+            "當年的持有人"
+          ]
+        },
+        "source": "Smithsonian 2017｜戒指材料分析"
+      },
+      "claims": [
+        "h02e7",
+        "h02e9"
+      ],
+      "lines": [
+        {
+          "id": "adae2990",
+          "text": "分析能認出戒指是黃銅。",
+          "reveal": 1
+        },
+        {
+          "id": "aeae2b23",
+          "text": "卻無法替我們認出當年的持有人。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "h02-find-dating-first",
+      "template": "quote",
+      "data": {
+        "kicker": "戒指附近的器物",
+        "quote": "年代跨至十八世紀初",
+        "source": "附近器物脈絡，非戒指定年｜Smithsonian，2017"
+      },
+      "claims": [
+        "h02e8"
+      ],
+      "lines": [
+        {
+          "id": "14d603d3",
+          "text": "戒指附近的器物，年代跨到十八世紀初。",
+          "emotion": "年代比對讀清楚"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-mixed-layer",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, beside a coastal excavation in daylight, a single exposed soil face contains pottery fragments at different depths. The fragments sit in the centre third. Natural light falls from above the trench. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e8"
+      ],
+      "lines": [
+        {
+          "id": "ab3af46c",
+          "text": "其他歐洲器物，也與十七世紀中期的物品混在一起。"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-not-automatically-1587",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind, in an archaeological archive during daylight, one researcher places a pottery fragment into an empty padded drawer. The fragment occupies the centre third. Light comes from a side window.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e8",
+        "h02e9"
+      ],
+      "lines": [
+        {
+          "id": "8087c100",
+          "text": "所以一件歐洲器物，不能直接歸進一五八七年。"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-context-question",
+      "template": "quote",
+      "data": {
+        "kicker": "看年代，也看出土脈絡",
+        "quote": "器物年代／原本出土地層",
+        "source": "本集判讀方法，非新發掘成果｜NPS／既有報導"
+      },
+      "claims": [
+        "h02e8",
+        "h02e9"
+      ],
+      "lines": [
+        {
+          "id": "15e3784d",
+          "text": "除了器物的年代，還要看它原本在什麼地層裡出土。"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-context-hand",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, at a modern excavation in daylight, one gloved hand points at a pottery fragment embedded in an exposed soil layer. The fragment sits in the centre third. Light comes from the open trench above. Only the specified hand and object; no face, full body or other characters.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e8",
+        "h02e9"
+      ],
+      "lines": [
+        {
+          "id": "72e32d98",
+          "text": "它和哪些物品一起出土？"
+        },
+        {
+          "id": "73e32f2b",
+          "text": "這些東西，是否屬於同一年代？"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-trade-route",
+      "template": "quote",
+      "data": {
+        "kicker": "歐洲器物",
+        "quote": "可能透過交易進入村落",
+        "source": "可能路徑摘要，非定居判定｜NPS／Smithsonian"
+      },
+      "claims": [
+        "h02e10"
+      ],
+      "lines": [
+        {
+          "id": "515ebefd",
+          "text": "歐洲製造的東西，也可能透過交易進入原住民村落。"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-origin-not-carrier",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up, beside an old coastal trading shelter in daylight, one hand supports a plain ceramic bowl by its base. The bowl fills the centre third. Light comes from the open doorway. Generic historical trade illustration matching the preceding late-sixteenth-century scene. Only one bare adult hand and the bowl are visible; no full figure, face or modern accessories. Only the specified hand and object; no face, full body or other characters.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e10",
+        "h02e9"
+      ],
+      "lines": [
+        {
+          "id": "f9f6eb48",
+          "text": "認出器物的產地，還不能認出把它帶到這裡的那個人。"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-map-patch",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, on a plain archival desk at morning, one folded blank paper chart bears a small rectangular repair patch. The patch sits in the centre third. Window light falls across the paper fibres. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e11"
+      ],
+      "lines": [
+        {
+          "id": "3bd684e6",
+          "text": "另一條搜索路線，從懷特地圖上遮住圖案的補丁開始。"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-westward-clue",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, on an archival desk in daylight, one paper chart bears a small rectangular repair patch across a faint geometric mark. The patch fills the centre third. Light comes from the window. This is a schematic paper prop with no lettering. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e11"
+      ],
+      "lines": [
+        {
+          "id": "0e523c82",
+          "text": "補丁下的堡壘狀符號，指向羅阿諾克西邊的內陸。"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-bertie-excavation",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from behind, at an inland riverside excavation in midday, one archaeologist kneels beside a small squared trench. The trench sits in the centre third. Sunlight falls through nearby trees.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e12"
+      ],
+      "lines": [
+        {
+          "id": "c9ab868d",
+          "text": "伯蒂郡的內陸發掘，陸續找出英格蘭製造的器物。"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-two-site-trays",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot, in an archaeological workroom at noon, one divided wooden tray contains two separate clusters of pottery sherds. The tray sits in the centre third. Daylight falls through a high window. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e12"
+      ],
+      "lines": [
+        {
+          "id": "de06c81d",
+          "text": "團隊追著內陸線索搜尋。"
+        },
+        {
+          "id": "dd06c68a",
+          "text": "前後找到兩處器物集中的地點。"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-scattered-farms",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, beside an inland river in morning, one small hypothetical timber farmhouse stands beside an open field. The doorway occupies the centre third. Daylight comes through scattered trees. The house is a reconstruction illustration. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e13"
+      ],
+      "lines": [
+        {
+          "id": "f93ec640",
+          "text": "團隊把這些地點，看成殖民者分散建立農場的證據。"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-announcement-dates",
+      "template": "compare",
+      "data": {
+        "title": "宣告和較早的評估",
+        "left": {
+          "heading": "2026-06-04",
+          "points": [
+            "FCF：宣告找到了"
+          ]
+        },
+        "right": {
+          "heading": "2025-07-11",
+          "points": [
+            "NPS：尚無確定連結"
+          ]
+        },
+        "source": "FCF 宣告2026-06-04｜NPS 頁2025-07-11"
+      },
+      "claims": [
+        "h02e13",
+        "h02e14"
+      ],
+      "lines": [
+        {
+          "id": "b475efb8",
+          "text": "二零二六年六月，團隊宣告找到了。",
+          "reveal": 1
+        },
+        {
+          "id": "b575f14b",
+          "text": "這仍是發掘方提出的判斷。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "h02-find-earlier-official-page",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind, in a modern archive at afternoon, one researcher holds a closed plain report folder. The folder sits in the centre third. Light comes through a side window.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e14"
+      ],
+      "lines": [
+        {
+          "id": "c556a225",
+          "text": "公園管理局的理論頁，在這次宣告前一年就已更新。"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-inference-step",
+      "template": "quote",
+      "data": {
+        "kicker": "器物位置 → 聚落推論",
+        "quote": "仍需獨立檢驗",
+        "source": "本集判讀方法，非新結果｜FCF主張／NPS較早評估"
+      },
+      "claims": [
+        "h02e13",
+        "h02e15"
+      ],
+      "lines": [
+        {
+          "id": "a2a221f7",
+          "text": "把器物的出土位置連成殖民聚落，還需要獨立檢驗。"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-other-explanations",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, inside an archaeological storage room at afternoon, one ceramic fragment rests in an open shallow drawer. The drawer occupies the centre third. Light comes from the high window. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e10",
+        "h02e15"
+      ],
+      "lines": [
+        {
+          "id": "40e75a82",
+          "text": "要把器物指認給殖民者，就得排除晚來與交易的可能。"
+        }
+      ]
+    },
+    {
+      "id": "h02-find-closure-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, on a research desk in afternoon, one gloved hand holds a plain pottery sherd above an empty soft tray. The sherd fills the centre third. Side daylight shows its broken edge. Only the specified hand and object; no face, full body or other characters.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e15"
+      ],
+      "lines": [
+        {
+          "id": "4b1e4b43",
+          "text": "那要找到什麼證據，才能把這份檔案真正結掉？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "h02-close-link-life",
+      "template": "quote",
+      "data": {
+        "kicker": "要結案，還需要",
+        "quote": "器物 ↔ 可確認的生活現場",
+        "source": "本集條件式判讀，非已找到原屋｜NPS較早評估"
+      },
+      "claims": [
+        "h02e15"
+      ],
+      "lines": [
+        {
+          "id": "6aaa024d",
+          "text": "要結案，還得把器物和那批人的生活現場連起來。"
+        }
+      ],
+      "chapter": "有去處，沒有定案"
+    },
+    {
+      "id": "h02-close-identified-house",
+      "template": "quote",
+      "data": {
+        "kicker": "如果房屋能確定屬於他們",
+        "quote": "器物才多了生活脈絡",
+        "source": "本集條件式例子，非已出土房屋｜NPS較早評估"
+      },
+      "claims": [
+        "h02e15"
+      ],
+      "lines": [
+        {
+          "id": "c33bbeea",
+          "text": "假如房屋能確定屬於他們，器物才多了生活的脈絡。"
+        }
+      ]
+    },
+    {
+      "id": "h02-close-evidence-missing",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up, on a research table at noon, one empty specimen tray waits beside a blank tag. The tray fills the centre third. Daylight falls from above the table. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e16"
+      ],
+      "lines": [
+        {
+          "id": "7aaa7142",
+          "text": "公園局較早的評估，還沒確定哪座村落屬於他們。"
+        }
+      ]
+    },
+    {
+      "id": "h02-close-evidence-levels",
+      "template": "compare",
+      "data": {
+        "title": "兩種不同的證據",
+        "left": {
+          "heading": "當時的目擊記述",
+          "points": [
+            "留言與沒有十字"
+          ]
+        },
+        "right": {
+          "heading": "後來的推論",
+          "points": [
+            "分散或融入"
+          ]
+        },
+        "source": "懷特1590記述｜NPS主要假說頁2025"
+      },
+      "claims": [
+        "h02e16",
+        "h02e17"
+      ],
+      "lines": [
+        {
+          "id": "3bcd9337",
+          "text": "刻字是懷特親眼所見。",
+          "reveal": 1,
+          "emotion": "目擊和推論分清"
+        },
+        {
+          "id": "3acd91a4",
+          "text": "分散或融入，是後人提出的解釋。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "h02-close-white-did-not-meet",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, beside a coastal palisade in late afternoon, an elderly bearded English governor looks toward the open gate with a thoughtful expression. His face sits in the centre third. Light comes from the coast beyond the gate. The man is the same elderly bearded English governor as the opening, shown in 1590. Late-sixteenth-century English clothing: plain linen shirt, wool doublet, period breeches and stockings, with a plain wool cap if a hat is visible. No modern hats, uniforms, backpacks, jeans, shorts or sneakers.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e17"
+      ],
+      "lines": [
+        {
+          "id": "6469b019",
+          "text": "懷特確實看到了刻字，卻沒能親眼確認家人的去向。"
+        }
+      ]
+    },
+    {
+      "id": "h02-close-many-possible-routes",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, at the edge of a coastal marsh during daylight, one sandy path forks between inland reeds and the shoreline. The fork sits in the centre third. Sunlight falls from the open sky. Object-only illustration: no people, human faces, character mascots, personified objects or extra animals.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e16"
+      ],
+      "lines": [
+        {
+          "id": "2b2d8064",
+          "text": "搬遷、分散或融入，都是順著線索提出的可能方向。"
+        }
+      ]
+    },
+    {
+      "id": "h02-close-persons-unknown",
+      "template": "quote",
+      "data": {
+        "kicker": "目前取得的器物資料",
+        "quote": "仍無法認出每個人的結局",
+        "source": "本集判讀｜NPS較早評估與既有器物個案"
+      },
+      "claims": [
+        "h02e16"
+      ],
+      "lines": [
+        {
+          "id": "f08503c5",
+          "text": "光靠目前這些器物，仍然認不出每個人最後的結局。",
+          "emotion": "保留未知，溫和收穩"
+        }
+      ]
+    },
+    {
+      "id": "h02-close-grandfather-unfinished",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, on a ship's deck in late afternoon, an elderly bearded governor stands beside the rail while looking toward a distant low island. His quiet expression sits in the centre third. Sunlight comes over the water. The man is the same elderly bearded English governor as the opening, shown in 1590. Late-sixteenth-century English clothing: plain linen shirt, wool doublet, period breeches and stockings, with a plain wool cap if a hat is visible. No modern hats, uniforms, backpacks, jeans, shorts or sneakers.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "h02e17"
+      ],
+      "lines": [
+        {
+          "id": "9b2c16c8",
+          "text": "這位祖父讀懂了搬家的留言，卻沒到它指向的地方。"
+        }
+      ]
+    },
+    {
+      "id": "h02-close-unclosed-file",
+      "template": "quote",
+      "data": {
+        "kicker": "去處留下線索",
+        "quote": "航程未完成，實際去向未確認",
+        "source": "本集判讀｜懷特1590記述／NPS"
+      },
+      "claims": [
+        "h02e16",
+        "h02e17"
+      ],
+      "lines": [
+        {
+          "id": "bf77b9cc",
+          "text": "檔案留下了一個去處，追尋卻斷在未完成的航程。"
+        }
+      ]
+    },
+    {
+      "id": "h02-close-outro",
+      "template": "outro",
+      "data": {
+        "title": "未結"
+      },
+      "claims": [
+        "h02e16",
+        "h02e17"
+      ],
+      "lines": [
+        {
+          "id": "a89c5c7f",
+          "text": "搬家留言，去向未定。"
+        },
+        {
+          "id": "a79c5aec",
+          "text": "想追哪條線索？"
+        },
+        {
+          "id": "aa9c5fa5",
+          "text": "訂閱，續查懸案。"
+        }
+      ]
+    }
+  ]
+}
