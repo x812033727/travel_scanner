@@ -128,8 +128,11 @@ every earlier one-off row has `image_model` NULL.
 - `node tools/video/long-form/cli.mjs check` is red on the 13 files of design 4.3 and on nothing
   else, as expected: the receipt is the independent reviewer's to re-issue.
 - Not run locally: the `@integration` case in `test_video_drama_request_image_model.py` (needs
-  PostgreSQL; CI runs it) and the whole of `npm run test:tools` if the note below does not say it
-  ran. No pull-request-1 test posts a cute preset over HTTP, so none needed the runtime-settings
-  patch.
+  PostgreSQL; CI runs it) and the whole of `npm run test:tools` (the step above stays unticked:
+  CI's `web-checks` and `video-tests` run it). `automation.test.mjs` was run whole on Windows
+  with `--test-timeout=180000`: 233 of 234 passed and the one cancelled is the project-lease
+  test that hangs on Windows (`ERR_UNSUPPORTED_ESM_URL_SCHEME` in its child process), untouched
+  by this change. No pull-request-1 test posts a cute preset over HTTP, so none needed the
+  runtime-settings patch.
 - The web test file tests the cute presets on `requestImageModel` only (they are not in the
   form); pull request 3 adds the rendered cases when it adds them to `REQUEST_PRESETS`.
