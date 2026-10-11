@@ -5961,3 +5961,145 @@ What went into the repository on 2026-10-11
 runner: the demo copy and the seed that ran are the same files.
 $ diff -r <seed> docs/videos/claude-code-skills-hands-on/demo --exclude=results
 [exit 0] (no difference)
+
+================================================================================================
+ITEM 23   The line a viewer types, run once exactly as the card shows it (hand1; added after the
+          twenty-two sessions above and before the script was written)
+================================================================================================
+Why: the command on the cards has to be one a viewer can type. session-2.sh's line carries the
+script's variables and the session logs print <logs> and <seed>, so neither can be typed as it
+stands. demo/typed-cmd.sh is the same command with relative file names, without SKILL_LOG (the
+logging hook then writes its default file, .claude/seen.log, inside the project) and without the
+session name: the flags are those of all thirty-four earlier sessions. It was sourced unchanged
+from the project folder, so the nine lines below are the nine lines that ran. The project is
+the skill arm's, built by session-2.sh --dry in <work>/hand/unit-kit (10 folders above it by the
+same count; not compared with any other session's request size). CLAUDE_EFFORT=high, as above.
+$ bash <runner>/hand.sh
+Expected: exit 0; the first check 1, the second 4, the third the PreToolUse line; F1 to F5 yes.
+Actual: exit 0, stderr 0 bytes; the first check 1; the second 5, not 4; the third the PreToolUse
+line; F1 to F5 yes. The fifth request: this session looked for an existing releases/ folder
+(Glob, call 6) and, after writing the release note, edited it once more (call 11), which took
+one more round. So of today's ten sessions in which Claude picked the skill up by itself, eight
+sent 4 requests and two (skf3, hand1) sent 5; the nine CLAUDE.md sessions all sent 3.
+Match: yes, except the request count, which is one higher than expected.
+The two greps were first tried, without a model, on seven of today's streams: the count of
+distinct message ids equals drift.mjs's "requests to the model" in each (sk1 4, md1 3, sx1 3,
+skf3 5, skl1 4, mdl1 3, no1 4), and the count of '"name":"Skill"' lines is 1, 0, 0, 1, 1, 0, 0.
+hand1 belongs to no arm's three sessions. With it, today's sessions number 23 and the sum of the
+reported total_cost_usd values is 0.997699.
+
+<work>/hand/hand1.session.log in full:
+# hand1 | start 2026-10-11T11:54:06Z | CLAUDE_EFFORT=high
+## the project (built by: DRY=<work>/hand/unit-kit bash <seed>/session-2.sh hand1 skill ship --dry)
+$ cd <work>/hand/unit-kit && find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/release-prep/SKILL.md
+./.claude/skills/release-prep/template.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ cat ../ship.txt
+0.3.1 要出了，幫我把該改的地方都改好。
+## the nine lines, as typed (demo/typed-cmd.sh, sha256[0:16] 32be8b077c240367)
+$ env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 timeout 300 \
+    claude -p --model sonnet \
+    --setting-sources project,local --strict-mcp-config \
+    --tools "Read,Glob,Grep,Edit,Write,Skill" \
+    --allowedTools "Read,Glob,Grep,Edit,Write,Skill" \
+    --no-session-persistence \
+    --output-format stream-json --verbose \
+    --debug-file ../debug.log \
+    < ../ship.txt > ../stream.jsonl 2> ../stderr.txt
+[exit 0] (22 s, ended 2026-10-11T11:54:29Z)
+$ wc -c < ../stderr.txt
+0
+$ grep -c '"name":"Skill"' ../stream.jsonl
+1
+$ grep -o '"id":"msg_[^"]*"' ../stream.jsonl | sort -u | wc -l
+5
+$ cat .claude/seen.log
+PreToolUse Skill release-prep keys=skill,args
+$ find . -type f -not -path './.claude/*' | sort
+./CHANGELOG.md
+./README.md
+./package.json
+./releases/v0.3.1.md
+./src/units.mjs
+$ grep -h '^#' releases/*.md
+# v0.3.1
+## 這一版改了什麼
+## 升級要注意
+## 怎麼確認
+## scored like the others (the project copied to <work>/hand/hand1.lab, the stream to hand1.stream.jsonl)
+$ node <seed>/tally.mjs <work>/hand/hand1.stream.jsonl
+== hand1 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success, 13 turns, 0 permission denials, cost USD 0.053211600000000005, output tokens 1848
+   built-in tools offered (6): Edit Glob Grep Read Skill Write
+   MCP servers 0, MCP tools 0 | plugins shipped with Claude Code: 3, other plugins: 0
+   skills the session started with: 22 = the project's 1 (release-prep) + shipped with Claude Code 21 + anything else 0
+   the project's skills among the slash commands: release-prep
+   call  1 Skill release-prep args="0.3.1" [input keys: skill,args]
+   call  2 Read package.json
+   call  3 Read CHANGELOG.md
+   call  4 Read README.md
+   call  5 Read .claude/skills/release-prep/template.md
+   call  6 Glob releases/*
+   call  7 Edit package.json
+   call  8 Edit CHANGELOG.md
+   call  9 Edit README.md
+   call 10 Write releases/v0.3.1.md
+   call 11 Edit releases/v0.3.1.md
+   Skill tool called for release-prep: yes (call 1) | other Skill calls: none
+   skill or instruction files opened with a tool: Read .claude/skills/release-prep/template.md
+   the procedure's text appears in: a user message (added by Claude Code)
+   the template's text appears in: the result of Read (call 5)
+   first request: input 2 + cache write 3452 + cache read 5366 = 8820 tokens | whole session: 51493
+   files written: package.json, CHANGELOG.md, README.md, releases/v0.3.1.md
+   last line of the reply: 下一步：git tag v0.3.1
+   files in the project afterwards: CHANGELOG.md README.md package.json releases/v0.3.1.md src/units.mjs
+   F1 package.json version is 0.3.1: yes (it is 0.3.1)
+   F2 CHANGELOG.md: dated heading yes (## v0.3.1 (2026-10-11)), Unreleased kept above it yes, items moved under it yes -> yes
+   F3 README.md says Latest release: v0.3.1: yes (Latest release: v0.3.1)
+   F4 releases/v0.3.1.md: file yes, template headings 3 of 3 -> yes
+   F5 last line starts with 下一步： and has git tag v0.3.1: yes
+   not scored: src/units.mjs sha256[0:16] a3e0a9bd16d2da03
+$ node <seed>/drift.mjs <work>/hand/hand1.stream.jsonl
+== hand1 | against the seed (package.json, CHANGELOG.md, README.md, src/units.mjs)
+   package.json: changed | CHANGELOG.md: changed | README.md: changed | src/units.mjs: same
+   new files outside .claude: releases/v0.3.1.md
+   package.json version: 0.3.1 | CHANGELOG.md has a 0.3.1 heading: yes
+   the release was carried out (version no longer 0.3.0, or a file under releases/): yes
+   marks of another procedure: CHANGELOG lines starting "- [": 0 | README "## Usage": no | another procedure's last line: no
+   Skill calls, in order: release-prep
+   last line of the reply starts with 下一步: yes
+   requests to the model: 5 (input tokens of each: 8820, 9305, 10176, 11399, 11793) | sum 51493
+   turns 13 | output tokens 1848 | reported cost USD 0.053211600000000005 | 16 s
+# hand1 | end 2026-10-11T11:54:31Z
+
+## Runner note, 2026-10-11, between 12:01Z and 12:13Z (after item 23; no session was run for this note)
+- demo/typed-cmd.sh (the nine lines of item 23, sha256[0:16] 32be8b077c240367) is in the demo
+  folder and in the seed that ran it; "diff -r <seed> demo --exclude=results" still prints nothing.
+  hand1's log above is also saved as demo/results/2026-10-11.hand1.session.txt.
+- The version line of the program behind the second check of item 23:
+  $ wc --version | head -1
+  wc (GNU coreutils) 8.32
+- hand1's fifth request, from its stream (runner: inspect.mjs): call 10 is a Write of
+  releases/v0.3.1.md whose first line is the template's "# vX.Y.Z"; call 11 is an Edit of that
+  file with old_string "# vX.Y.Z" and new_string "# v0.3.1". skf3 did the same (item 19).
+- Two official pages were opened again for the cards that quote them, with the user agent
+  "Mokaair-editorial/1.0 (https://mokaair.com)" and no other header:
+  2026-10-11T12:00Z  https://code.claude.com/docs/en/skills.md             200  107130 bytes
+  2026-10-11T12:00Z  https://code.claude.com/docs/en/features-overview.md  200   28566 bytes
+  2026-10-11T12:00Z  https://code.claude.com/docs/en/skills                200  (id="where-skills-live" is in the page)
+  Read off them today: "a skill's body loads only when it's used"; "skill descriptions are loaded
+  into context so Claude knows what's available, but full skill content only loads when invoked";
+  supporting files "loaded when needed"; when_to_use is "Appended to `description` in the skill
+  listing"; uploads to claude.ai allow only name, description, license, compatibility, metadata,
+  allowed-tools; "To run a skill directly, put its name at the start of your message";
+  skillOverrides "off" hides a skill from Claude and from the / menu; "Commit `.claude/skills/`
+  to version control"; "Workspace trust doesn't gate this field. Claude Code applies a project
+  skill's `allowed-tools` even in a `-p` run in a folder you've never trusted."; and on
+  features-overview, CLAUDE.md "Loads: Every session, automatically" against a skill's "On
+  demand", and "Claude interprets the instructions; outcome can vary".
