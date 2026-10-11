@@ -564,8 +564,9 @@ async def test_the_same_request_is_one_job_and_a_failed_one_is_retried_three_tim
     [
         (None, "gemini-3-pro-image", 0.134),
         ("gemini-3.1-flash-image", "gemini-3.1-flash-image", 0.067),
+        ("image-01", "image-01", 0.0035),
     ],
-    ids=["pro-default", "flash-series-override"],
+    ids=["pro-default", "flash-series-override", "minimax-one-off-override"],
 )
 async def test_a_refunded_retry_restores_the_selected_model_price_on_the_same_job(
     tmp_path: Path,
@@ -583,6 +584,8 @@ async def test_a_refunded_retry_restores_the_selected_model_price_on_the_same_jo
     original_id = job.id
     assert created and job.status == "failed" and job.attempts == 1
     assert job.model == expected_model and float(job.usd_estimate) == 0
+    if series_model == "image-01":
+        assert job.provider == "minimax", "a one-off explainer's image-01 is asked of MiniMax"
     assert await meter.used(ctx.redis, meter.IMAGES) == 0
 
     ctx.session.found = job  # type: ignore[attr-defined]
@@ -601,6 +604,28 @@ async def test_a_refunded_retry_restores_the_selected_model_price_on_the_same_jo
     assert job_view(same).usd_estimate == expected_usd
     assert await meter.used(ctx.redis, meter.IMAGES) == 1
     assert len(fake_provider.requests) == 2, "a ready job is returned without another purchase"
+
+
+@pytest.mark.asyncio
+async def test_a_series_model_whose_vendor_has_no_key_is_refused_before_anything_is_spent(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value="image-01"))
+    ctx = _context(tmp_path, FakeProvider(), row=_row(image_model="gemini-3-pro-image"))
+    ctx.runtime = Settings(hotspot_guide_gemini_api_key="g", minimax_api_key="")
+    with pytest.raises(MediaJobFailed) as refused:
+        await submit_job(ctx, "image", _image())
+    assert (refused.value.status, refused.value.code) == (503, "video_media_not_configured")
+    assert await meter.used(ctx.redis, meter.IMAGES) == 0
+
+
+def test_the_vendor_of_a_series_model_is_chosen_as_the_first_picture_will_choose_it() -> None:
+    assert service.series_image_vendor(_row(), "image-01") == "minimax"
+    on_minimax = _row(image_provider="minimax", image_model="image-01")
+    assert service.series_image_vendor(on_minimax, "gemini-3-pro-image") == "gemini"
+    with pytest.raises(MediaJobFailed) as refused:
+        service.series_image_vendor(_row(), "nope")
+    assert (refused.value.status, refused.value.code) == (422, "video_media_model_not_allowed")
 
 
 @pytest.mark.asyncio

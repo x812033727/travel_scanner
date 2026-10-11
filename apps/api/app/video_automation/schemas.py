@@ -64,6 +64,15 @@ def is_explainer_preset(preset: str | None) -> bool:
     return preset in EXPLAINER_PRESETS
 
 
+# The image model a one-off of this preset is drawn with when its request names none. The cute
+# looks are positive-only text written for MiniMax image-01 (US$0.0035 a picture at 1K), so the
+# server stores that id on the one-off's series row instead of following the drama settings'
+# model. flat-explainer is deliberately absent: with no model named it follows the settings, as
+# it always has. The request form preselects the same id (apps/web/lib/video-presets.ts
+# PRESET_IMAGE_MODEL), and tools/video/core/explainer-family.test.mjs compares the two tables.
+PRESET_IMAGE_MODELS: dict[str, str] = {"cute-cartoon": "image-01", "cute-mystery": "image-01"}
+
+
 # The slides route and other long-form videos have an eight-minute minimum (migration 0117).
 EPISODE_MIN_MINUTES = 8
 EXPLAINER_MIN_MINUTES = 8
@@ -427,6 +436,10 @@ class DramaRequestIn(StrictModel):
 
     ``premise`` is the story in the owner's words; with ``source_guide`` it says what to make of
     that article. The worker takes the oldest request before any scheduled draft.
+
+    An explainer may name the ``image_model`` its pictures are drawn with; a cute preset that
+    names none is given ``image-01`` here, so the value on the payload is the one that is stored,
+    audited and checked for a key. Every other preset is refused one.
     """
 
     premise: str = Field(min_length=1, max_length=4000)
@@ -435,6 +448,12 @@ class DramaRequestIn(StrictModel):
     style_preset: StylePreset = "cinematic-3d"
     target_minutes: int = Field(default=3, ge=1, le=EXPLAINER_MAX_MINUTES, strict=True)
     note: str | None = Field(default=None, min_length=1, max_length=2000)
+    image_model: str | None = Field(default=None, min_length=1, max_length=128)
+
+    @field_validator("image_model")
+    @classmethod
+    def _image_model(cls, value: str | None) -> str | None:
+        return _known_image_model(value)
 
     @model_validator(mode="after")
     def _episode_length(self) -> Self:
@@ -445,6 +464,18 @@ class DramaRequestIn(StrictModel):
                 raise ValueError(f"an explainer is at least {EXPLAINER_MIN_MINUTES} minutes")
         elif self.target_minutes > SERIES_MAX_MINUTES:
             raise ValueError(f"a drama episode is at most {SERIES_MAX_MINUTES} minutes")
+        return self
+
+    @model_validator(mode="after")
+    def _image_model_for_preset(self) -> Self:
+        if self.image_model is not None and not is_explainer_preset(self.style_preset):
+            raise ValueError(
+                "image_model is for an explainer preset only: a cast drama is drawn with the "
+                "settings' image model, whose reference sheets hold a face across shots"
+            )
+        if self.image_model is None and (default := PRESET_IMAGE_MODELS.get(self.style_preset)):
+            # Checked like a named one, so a retired default is refused by name, never stored.
+            self.image_model = _known_image_model(default)
         return self
 
     @field_validator("premise", "title", "note")

@@ -99,6 +99,7 @@ from app.video_automation.schemas import (
 from app.video_automation.series import SeriesRefused
 from app.video_automation.stories import import_story_rows
 from app.video_automation.topics import gather_topics
+from app.video_media.jobs import MediaJobFailed, key_for, series_image_vendor
 from app.video_reviews.admin_service import LIST_LIMIT, list_projects
 from app.video_reviews.schemas import ProjectSummary, VideoFormat
 from app.video_shorts.schemas import ShortsFilter, ShortsState
@@ -384,12 +385,27 @@ async def create_drama_request(
     """The owner asks for a one-off drama: a one-episode series whose story bible the worker
     plans on its next round (docs/videos/DRAMA-FLOW.md §二); the answer names the series in
     ``series_slug``. Refused while the drama route is switched off, so nothing queues for a
-    worker that will never take it."""
+    worker that will never take it. Refused too when the request names an image model (an
+    explainer's own, or the ``image-01`` a cute preset is given) whose vendor has no key on the
+    site: the first picture would fail after the planning and the script were paid for. A
+    request that names none follows the settings' model and is not looked up here."""
     row = await service.settings_row(session)
     if not row.drama_enabled:
         raise AppError(
             409, "video_drama_disabled", "漫劇還沒開啟：先在影片審核的設定分頁打開 AI 漫劇"
         )
+    if payload.image_model is not None:
+        try:
+            vendor = series_image_vendor(row, payload.image_model)
+        except MediaJobFailed as error:
+            raise AppError(error.status, error.code, error.detail) from error
+        if not key_for(await load_runtime_settings(session), vendor):
+            raise AppError(
+                409,
+                "video_drama_image_model_not_configured",
+                f"網站還沒有 {vendor} 的金鑰，圖片模型 {payload.image_model} 畫不了這支解說；"
+                f"先到 AI 設定填 {vendor} 的金鑰，或改選別的圖片模型",
+            )
     try:
         return await drama_series.create_one_off(session, user, payload)
     except SeriesRefused as error:
