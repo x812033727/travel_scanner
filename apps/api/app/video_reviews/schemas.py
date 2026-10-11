@@ -65,6 +65,15 @@ LOCALE_PARTS: tuple[LocalePart, ...] = get_args(LocalePart)
 # Where a chosen part stands: not made yet, made (in a languages review), given up with a reason,
 # or, a dub track, uploaded by the owner (its languages review approved).
 LanguageState = Literal["working", "ready", "skipped", "uploaded"]
+# Where the owner's request to make a skipped dub again stands (docs/videos/DUBS.md §再做一次;
+# migration 0131): asked, taken by the worker, then made, skipped again or refused. "expired"
+# is a request nobody took for a day; it is read from the request's time and never stored.
+DubRetryStatus = Literal["requested", "taken", "made", "skipped", "refused", "expired"]
+# Why a skipped dub cannot be asked for again right now, shown in place of the button. The web
+# catalog's ``videoReviews.dubRetryBlocked`` keys are these codes, spelled the same.
+DubRetryBlocker = Literal[
+    "narration", "tidied", "publish_pending", "not_adopted", "blocked", "stopped"
+]
 # Persisted main-worker registration, not a process heartbeat or media/readiness verdict.
 WorkerState = Literal[
     "not_adopted", "registered", "blocked", "stopped", "done", "dropped", "unavailable"
@@ -136,6 +145,16 @@ class ProjectIn(BaseModel):
     shorts_line: ShortsLine | None = None
     shorts_series: str | None = Field(default=None, pattern=SHORTS_SERIES_PATTERN)
     source_slug: str | None = Field(default=None, pattern=SLUG_PATTERN)
+    # The worker's word on the owner's dub retry requests (migration 0131):
+    # {"ja": {"id": "<uuid>", "status": "taken"}} or {"id", "status": "refused", "reason"}.
+    # Read leniently (dub_retry.apply_worker): what is not understood is ignored, never a 422.
+    dub_retries: dict[str, Any] | None = None
+
+    @field_validator("dub_retries", mode="before")
+    @classmethod
+    def _an_object_or_nothing(cls, value: Any) -> Any:
+        # A report is the worker's whole word on a video: a malformed echo must not refuse it.
+        return value if isinstance(value, dict) else None
 
 
 class ReviewFile(BaseModel):
@@ -270,6 +289,26 @@ class LanguagePartOut(BaseModel):
     reason: str | None = None
 
 
+class DubRetryOut(BaseModel):
+    """The owner's latest request to make one locale's skipped dub again, as the page and the
+    worker read it (docs/videos/DUBS.md §再做一次)."""
+
+    id: UUID
+    # The effective status: "expired" is derived, the stored one stays "requested".
+    status: DubRetryStatus
+    # Requested and not expired, or taken: the worker may still act on it.
+    open: bool = False
+    # Open, and requested more than 30 minutes ago or taken more than 2 hours ago.
+    stalled: bool = False
+    requested_at: datetime
+    taken_at: datetime | None = None
+    finished_at: datetime | None = None
+    # skipped: the new skip reason; refused: the worker's sentence, or the site's.
+    reason: str | None = None
+    # The skip reason at the click.
+    replaced_reason: str | None = None
+
+
 class ProjectSummary(BaseModel):
     slug: str
     title: str
@@ -303,6 +342,11 @@ class ProjectSummary(BaseModel):
     locales_decided_at: datetime | None = None
     languages: dict[DubLocale, dict[LocalePart, LanguagePartOut]] = Field(default_factory=dict)
     ready_to_upload: bool = False
+    # The owner's requests to make a skipped dub again (migration 0131): the latest per locale,
+    # only for a dub that is chosen now; and, for a chosen dub that reads skipped with no open
+    # request, why it cannot be asked for again. Both empty for a Short.
+    dub_retries: dict[DubLocale, DubRetryOut] = Field(default_factory=dict)
+    dub_retry_blocked: dict[DubLocale, DubRetryBlocker] = Field(default_factory=dict)
     # Read from the worker volume; null for Shorts, whose producer is independent.
     worker_state: WorkerState | None = None
     # The languages with a dub track chosen, for a page from before the language panel.

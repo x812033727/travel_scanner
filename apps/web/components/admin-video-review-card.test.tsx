@@ -161,4 +161,57 @@ describe("a languages card with a dub track", () => {
     expect(card.textContent).toContain("「新增語言」");
     expect(within(card).queryByRole("button", { name: "我已經在 Studio 傳好這些配音" })).toBeNull();
   });
+
+  // Ticket 2026-10-10-let-the-owner-re-request-a: a finished track may keep, for a few lines, the
+  // take Jev heard differently from the script, because the retake did not fit its window. The
+  // worker sends those lines' ids beside the track (kept_lines); until now only the summary named
+  // them, and not at all when it was too long. The card says it next to the download, and asks
+  // for the whole track to be heard: the ids map to nothing else on the page.
+  const english = { metadata: "ready", captions: "ready", dub: "ready", file: "en.m4a", format: "m4a", file_role: "dub_en" };
+  const keptLine = (count: number, lines: string) => `${count} 句（${lines}）用的是 Jev 聽起來和稿子不一樣的那一版錄音：重錄塞不進時間，所以沿用。上傳前請把整條音軌聽一遍`;
+
+  it("the languages card names the kept lines of a dub beside its track", () => {
+    const review: Review = {
+      ...languages,
+      payload: { locales: { ja: { metadata: "ready", captions: "ready", dub: "ready", file: "ja.m4a", format: "m4a", file_role: "dub_ja" }, en: { ...english, kept_lines: ["k7p2", "m3q9"] } } },
+      files: [...languages.files, { role: "dub_ja", sha256: "2".repeat(64), size: 24_000_000, content_type: "audio/mp4" }],
+    };
+    // A reader sees it too: it is something to know about the track, not an action.
+    render(<ReviewCard slug="meta-anti-scam-2fa-passkey" review={review} canManage={false} onDecided={vi.fn()} />);
+    const card = screen.getByRole("article", { name: "語言" });
+    const rows = [...card.querySelectorAll("li")];
+    // Still one list item per language and then the three Studio steps: the line is not a list item.
+    expect(rows).toHaveLength(2 + 3);
+    expect(rows[0].textContent).toContain("英文");
+    const line = within(rows[0]).getByText(keptLine(2, "k7p2、m3q9"));
+    expect(line.tagName).toBe("SPAN");
+    // In the dub's own cell, right after its download.
+    expect(line.previousElementSibling).toBe(within(rows[0]).getByRole("link", { name: "下載 en.m4a" }));
+    // The other language's track kept nothing, so it says nothing.
+    expect(rows[1].textContent).toContain("日文");
+    expect(within(rows[1]).getByRole("link", { name: "下載 ja.m4a" })).toBeTruthy();
+    expect(rows[1].textContent).not.toContain("那一版錄音");
+  });
+
+  it("a dub without kept lines, or with a malformed list, shows no such line", () => {
+    const skipped = { metadata: "ready", captions: "ready", dub: { status: "skipped", reason: "1.15 倍還塞不下" }, kept_lines: ["k7p2"] };
+    // No key, an empty list, a bare id, entries that are not ids, a map; and a list beside a dub that was not made.
+    for (const entry of [english, { ...english, kept_lines: [] }, { ...english, kept_lines: "k7p2" }, { ...english, kept_lines: [null, {}, "", ["k7p2"]] }, { ...english, kept_lines: { 0: "k7p2" } }, skipped]) {
+      const { unmount } = render(<ReviewCard slug="meta-anti-scam-2fa-passkey" review={{ ...languages, payload: { locales: { en: entry } } }} canManage onDecided={vi.fn()} />);
+      const card = screen.getByRole("article", { name: "語言" });
+      expect(card.textContent).toContain("英文");
+      expect(card.textContent).not.toContain("那一版錄音");
+      expect(card.textContent).not.toContain("{count}");
+      unmount();
+    }
+  });
+
+  it("an approved languages card still names the kept lines of its dub", () => {
+    const approved: Review = { ...languages, payload: { locales: { en: { ...english, kept_lines: ["k7p2"] } } }, status: "approved", decided_at: "2026-10-09T10:05:00Z" };
+    render(<ReviewCard slug="meta-anti-scam-2fa-passkey" review={approved} canManage onDecided={vi.fn()} />);
+    const card = screen.getByRole("article", { name: "語言" });
+    expect(within(card).getByText(keptLine(1, "k7p2"))).toBeTruthy();
+    expect(within(card).getByRole("link", { name: "下載 en.m4a" })).toBeTruthy();
+    expect(within(card).queryByRole("button", { name: "我已經在 Studio 傳好這些配音" })).toBeNull();
+  });
 });

@@ -189,6 +189,9 @@ const QA_ITEMS = ["assemble", "render", "narration", "pace", "captions", "metada
 const PACKAGE_ITEMS = ["files", "descriptions", "captions", "disclosure"];
 const LANGUAGE_PARTS = ["metadata", "captions", "dub"];
 const LANGUAGES_AUTO_NOTE = "這一批沒有要你上傳的配音，依規則自動核准";
+// The site's reason when a dub made again comes out as the very batch that was sent back
+// (apps/api/app/video_reviews/dub_retry.py SAME_AS_SENT_BACK).
+const SAME_AS_SENT_BACK = "重做出來的音軌和先前那一批語言審核一模一樣，那一批已經被退回或被取代，網站沒有再開新的審核卡；翻譯或規則沒變之前，再做一次也會一樣";
 
 /** Jev's answer on an outline, as the judge endpoint shapes it (judge.py OutlinePick). */
 function jevPick(choice, { passed = true, stance = 0.9, demo = 0.8, advice = 0.1, keys = ["A", "B"] } = {}) {
@@ -221,6 +224,9 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
    * The video as the worker's list carries it (apps/api/app/video_reviews/schemas.py
    * ProjectSummary): the owner's choice, where each chosen part stands from the languages
    * reviews (admin_service.language_states, oldest batch first), and the ready-to-upload verdict.
+   * A row may carry the owner's requests to make a given-up dub again, `dub_retries[locale] =
+   * {id, status, open}` (DubRetryOut; a test places one on the row): one the worker took makes
+   * that dub read as in the making, whatever the batches say.
    */
   const withLanguages = (video) => {
     const languages = {};
@@ -240,6 +246,7 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
         }
       }
     }
+    for (const [locale, request] of Object.entries(video.dub_retries ?? {})) if (request?.status === "taken" && languages[locale]?.dub) languages[locale].dub = { state: "working", reason: null };
     const confirmed = reviewsOf(video.slug).some((review) => review.gate === "publish" && review.status === "approved");
     const settled = Object.values(languages).every((parts) => Object.values(parts).every((part) => part.state !== "working"));
     return { ...video, locales: video.locales ?? {}, locales_decided_at: video.locales_decided_at ?? null, languages, ready_to_upload: !video.dropped_at && !video.youtube_video_id && confirmed && Boolean(video.locales_decided_at) && settled };
@@ -341,11 +348,34 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
         const known = listed.get(slug) ?? { slug, dropped_at: null, dropped_note: null, source_guide: null, youtube_video_id: null };
         // As the server does (admin_service.upsert_project): a report without the id clears it.
         listed.set(slug, { ...known, title: body.title, stage: body.stage, checklist: body.checklist, retry_acknowledged_id: body.retry_acknowledged_id ?? known.retry_acknowledged_id, source_guide: body.source_guide ?? known.source_guide, youtube_video_id: body.youtube_video_id ?? null });
-        return json({ slug, reviews: reviewsOf(slug) });
+        // The worker's word on the owner's dub requests (dub_retry.apply_worker): "taken" only
+        // moves a request the site still holds open under that id, a refusal closes a waiting or a
+        // taken one once, and anything else is ignored. The answer shows how each stands now,
+        // which is the worker's compare-and-set; a site from before the requests has no such key.
+        for (const [locale, said] of Object.entries(body.dub_retries ?? {})) {
+          const held = known.dub_retries?.[locale];
+          if (!held || held.id !== said?.id) continue;
+          if (said.status === "taken" && held.status === "requested" && held.open) held.status = "taken";
+          else if (said.status === "refused" && ["requested", "taken"].includes(held.status)) Object.assign(held, { status: "refused", open: false, reason: String(said.reason ?? "").slice(0, 500) });
+        }
+        return json({ slug, reviews: reviewsOf(slug), ...("dub_retries" in known ? { dub_retries: known.dub_retries } : {}) });
       }
       if (sub && init.method === "POST") {
         const list = reviewsOf(slug);
         const same = list.find((review) => review.gate === body.gate && review.content_sha256 === body.content_sha256 && (review.subject ?? null) === (body.subject ?? null));
+        if (body.gate === "languages") {
+          // A batch closes the requests it answers (dub_retry.close_on_batch), also when the site
+          // answers it with a review it already has: as made or skipped, or as refused when the
+          // track it names is on a review that was sent back or superseded and so shows no card.
+          const counted = !same || ["pending", "approved"].includes(same.status);
+          for (const [locale, held] of Object.entries(listed.get(slug)?.dub_retries ?? {})) {
+            const parts = body.payload?.locales?.[locale] ?? {};
+            const dub = partState(parts.dub);
+            if (dub === "ready" && counted && ["requested", "taken"].includes(held.status)) Object.assign(held, { status: "made", open: false });
+            else if (dub === "ready" && !counted && held.status === "taken") Object.assign(held, { status: "refused", open: false, reason: SAME_AS_SENT_BACK });
+            else if (dub === "skipped" && held.status === "taken") Object.assign(held, { status: "skipped", open: false, reason: parts.dub?.reason ?? parts.reason ?? null });
+          }
+        }
         if (same && same.status !== "pending") return json(same);
         if (same) {
           // The same file sent again while it waits: the newer payload replaces the older one and the rules run again.
@@ -2407,7 +2437,9 @@ test("from the picked outline to YouTube without the owner: the final gate sends
  * `checks[locale]` is how many
  * `check-audio --locale` runs flag the first line before every line passes, or a function of the
  * line's current translation that says whether it is flagged; the flags file and the heard text
- * are written as the real check writes them.
+ * are written as the real check writes them. `dub --dry-run` buys and writes nothing and counts
+ * as no run: it answers `plan[locale].dry` (a result, or a function called at that moment, the
+ * last one before the worker tells the site it takes a request), else exit 0.
  */
 function fakeDub(box, slug, workdir, plan, checks) {
   const overRuns = {};
@@ -2417,6 +2449,10 @@ function fakeDub(box, slug, workdir, plan, checks) {
   return (command) => {
     const [name] = command;
     const locale = command[command.indexOf("--locale") + 1];
+    if (name === "dub" && command.includes("--dry-run")) {
+      const dry = plan[locale]?.dry;
+      return (typeof dry === "function" ? dry() : dry) ?? { code: 0, out: `${locale}: dry run` };
+    }
     const timeline = readJson(path.join(workdir, "timeline.json"));
     const first = timeline.lines[0].id;
     if (name === "dub") {
@@ -3848,6 +3884,573 @@ test("a language ticked after the worker tidied the video is reported as skipped
   assert.deepEqual(video.onSite().languages.en, { metadata: { state: "ready", reason: null } }, "a part made before the tidy keeps its state");
   assert.deepEqual(video.onSite().languages.ja, { metadata: { state: "skipped", reason }, captions: { state: "skipped", reason }, dub: { state: "skipped", reason } });
   assert.deepEqual([video.state().status, video.listed().stage], ["done", "languages skipped"]);
+});
+
+// The owner's request to make a given-up dub again (docs/videos/DUBS.md §再做一次): the site's
+// list row carries it as dub_retries[locale] = {id, status, open} (the fake site's withLanguages
+// and its PUT and POST handlers play the site's side), and the worker keeps its own record in
+// auto.json's dub_retries.
+const DUB_REQUEST = "0d3b7c1e-6f0a-4c59-9d57-0d6a3f1c2b11";
+const DUB_REQUEST_AGAIN = "7f3c1d0e-5a2b-4c8d-9e1f-0a1b2c3d4e5f";
+const DUB_REQUEST_THIRD = "5c9e2a7b-3d1f-4b6a-8e0c-2f4a6b8c0d1e";
+const DRY_RUN_REFUSED = { code: 2, out: "timeline.json was built for an older script; run tts again" };
+const DRY_RUN_REFUSAL = "配音工具說現在做不了：timeline.json was built for an older script";
+/** The dub commands (dry runs included) and dub checks run since `from`. */
+const dubRuns = (video, from = 0) => video.runs.slice(from).filter((run) => /^(dub|check-audio) .*--locale/.test(run));
+const dryRun = (video, locale) => `dub --slug ${video.slug} --locale ${locale} --dry-run`;
+const dubAndCheck = (video, locale) => [`dub --slug ${video.slug} --locale ${locale}`, `check-audio --slug ${video.slug} --locale ${locale}`];
+const autoFile = (video) => path.join(video.workdir, "auto.json");
+/** The site's list as a lane's unit reads it now (GET /api/video/automation/videos). */
+const siteList = async (video) => (await video.ctx.fetch(`${SITE}/api/video/automation/videos?shorts=exclude`, { headers: { authorization: `Bearer ${TOKEN}` } })).json();
+
+/**
+ * Another lane of the same worker, whose unit is handed `rows(the site's list)` as its list: a
+ * list read before some other lane's step, or one that shows more language work as due.
+ */
+function laneWithList(video, rows) {
+  const fetch = video.ctx.fetch;
+  const ctx = {
+    ...video.ctx,
+    fetch: async (url, init = {}) => (new URL(url).pathname === "/api/video/automation/videos" ? Response.json(rows(await (await fetch(url, init)).json())) : fetch(url, init)),
+  };
+  const lane = new Automation(ctx, automationClient(ctx), video.site.settings);
+  lane.refs = smallRefs;
+  return lane;
+}
+
+/**
+ * A finished video whose ko dub the worker gave up on because a window never fitted, the batch
+ * that says so in and approved on arrival, and nothing left to do. `dubs` is the plan the fake
+ * `dub` reads on every run, so a test changes it to stand for rules that changed since; `ask`
+ * places the owner's request on the site's row, `request` reads it back.
+ */
+async function givenUpDub(options = {}) {
+  const dubs = { ko: { over: Infinity } };
+  const video = await finishedVideo({ ...options, dubs });
+  video.choose({ ko: { metadata: false, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: ko captions translated and reviewed$/);
+  const [, reason] = /^chatgpt-ads-off: ko dub given up \((.+)\); the video goes on without it$/.exec(await video.step()) ?? [];
+  assert.ok(reason, "the ko dub is given up");
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(ko captions\+dub\)$/);
+  assert.equal(await video.step(), null);
+  assert.deepEqual(video.onSite().languages.ko.dub, { state: "skipped", reason });
+  const skipped = dubArtifacts(video.workdir, "ko").skipped;
+  assert.equal(readJson(skipped).reason, reason);
+  const ask = (id = DUB_REQUEST) => {
+    video.listed().dub_retries = { ko: { id, status: "requested", open: true, replaced_reason: reason } };
+  };
+  return { video, dubs, reason, skipped, ask, request: () => video.listed().dub_retries.ko };
+}
+
+test("a skipped dub asked for again is taken once the site agrees, cleared, made and heard with the rules as they are now, and its batch closes the request", async () => {
+  const { video, dubs, reason, skipped, ask, request } = await givenUpDub();
+  assert.equal(reason, `k7p2 does not fit its window even at 1.15x after ${MAX_DUB_SHORTEN_ROUNDS} shortening rounds`);
+  // The rules changed since the give-up (the tolerance of a few frames stands for them): the window fits now.
+  dubs.ko.over = 0;
+  ask();
+  // What each `dub` run finds: the dry run comes before the site is told anything, the real one
+  // only once the site holds the request as taken, the skip is gone and the rounds start again.
+  const found = [];
+  const played = video.ctx.runCommand;
+  video.ctx.runCommand = async (command, runCtx) => {
+    if (command[0] === "dub") found.push({ dry: command.includes("--dry-run"), request: request().status, skip: existsSync(skipped), rounds: video.state().languages?.ko ?? null });
+    return played(command, runCtx);
+  };
+  const [ran, reports, batches] = [video.runs.length, video.site.calls.reports.length, video.reviews("languages").length];
+  assert.equal(await video.step(), "chatgpt-ads-off: ko dub made; Jev passed every line");
+  assert.deepEqual(dubRuns(video, ran), [dryRun(video, "ko"), ...dubAndCheck(video, "ko")]);
+  assert.deepEqual(found, [
+    { dry: true, request: "requested", skip: true, rounds: null },
+    { dry: false, request: "taken", skip: false, rounds: { shorten: 0, retakes: 0, reword: 0, check_stopped: true } },
+  ]);
+  assert.deepEqual(video.site.calls.reports[reports].dub_retries, { ko: { id: DUB_REQUEST, status: "taken" } }, "the first word to the site is the take");
+  assert.ok(!existsSync(skipped));
+  assert.deepEqual([video.state().dub_retries.ko.id, video.state().dub_retries.ko.status], [DUB_REQUEST, "taken"]);
+  assert.ok(video.state().notes.includes("ko dub asked for again by the owner"));
+  assert.equal(video.state().languages?.ko, undefined, "Jev passed the track: the rounds are forgotten");
+  assert.deepEqual([request().status, request().open], ["taken", true], "the request ends with the batch, not before");
+  assert.equal(video.reviews("languages").length, batches);
+
+  assert.equal(await video.step(), "chatgpt-ads-off: language batch sent to /admin/videos (ko dub)");
+  const [batch, earlier] = video.reviews("languages");
+  assert.deepEqual([batch.payload.locales.ko.dub, batch.status, earlier.status], ["ready", "pending", "approved"], "the track waits for the owner on a new card");
+  assert.deepEqual(batch.files.map((file) => file.role), ["captions_ko", "dub_ko", "metadata", "languages_manifest"]);
+  assert.equal(readJson(path.join(video.workdir, "captions", "manifest.json")).locales.ko.timing, "dub", "the ko captions were cut again on the new track");
+  assert.deepEqual([request().status, request().open], ["made", false]);
+  assert.equal(video.state().dub_retries.ko.status, "sent");
+  assert.equal(await video.step(), null, "taken once");
+  assert.equal(video.onSite().languages.ko.dub.state, "ready");
+  assert.equal(dubRuns(video, ran).length, 3);
+});
+
+test("a dub given up because Jev still heard a line wrong and asked for again is made and checked again before any batch", async () => {
+  let wrong = true;
+  const video = await finishedVideo({ checks: { en: () => wrong } });
+  video.choose({ en: { metadata: false, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+  const reason = `Jev still hears k7p2 wrong after ${MAX_DUB_RETAKE_ROUNDS} retakes and ${MAX_DUB_REWORD_ROUNDS} rewording rounds`;
+  assert.equal(await video.step(), `chatgpt-ads-off: en dub given up (${reason}); the video goes on without it`);
+  assert.match(await video.step(), /language batch sent/);
+  assert.equal(await video.step(), null);
+  // This kind of give-up leaves a track that reads as current: the skip alone keeps a track Jev
+  // never passed out of the batch, so clearing it must also make the track unheard.
+  const files = dubArtifacts(video.workdir, "en");
+  assert.ok(existsSync(files.track("m4a")) && existsSync(files.skipped));
+
+  wrong = false;
+  video.listed().dub_retries = { en: { id: DUB_REQUEST, status: "requested", open: true, replaced_reason: reason } };
+  const [ran, batches] = [video.runs.length, video.reviews("languages").length];
+  assert.equal(await video.step(), "chatgpt-ads-off: en dub made; Jev passed every line");
+  assert.deepEqual(dubRuns(video, ran), [dryRun(video, "en"), ...dubAndCheck(video, "en")]);
+  assert.ok(!video.runs.slice(ran).some((run) => run.startsWith("review-push")), "nothing is sent in the unit that clears the skip");
+  assert.equal(video.reviews("languages").length, batches);
+  assert.ok(!existsSync(files.skipped));
+
+  assert.equal(await video.step(), "chatgpt-ads-off: language batch sent to /admin/videos (en dub)");
+  const [batch] = video.reviews("languages");
+  assert.deepEqual([batch.payload.locales.en.dub, batch.status, video.listed().dub_retries.en.status], ["ready", "pending", "made"]);
+  assert.equal(await video.step(), null);
+});
+
+test("a dub asked for again that gives up with the same reason sends the same batch, which closes the request, and the next unit has nothing to do", async () => {
+  // The translator's shortening never comes back shorter: each try spends one round and changes no word.
+  const { video, reason, skipped, ask, request } = await givenUpDub({ shorten: (body) => ({ lines: body.payload.lines.map((line) => ({ id: line.id, text: line.text })) }) });
+  assert.equal(reason, "k7p2 does not fit its window even at 1.15x after 1 shortening round");
+  const [first] = video.reviews("languages");
+  rmSync(skipped);
+  ask();
+  const ran = video.runs.length;
+  assert.equal(await video.step(), `chatgpt-ads-off: ko dub given up (${reason}); the video goes on without it`);
+  assert.deepEqual(dubRuns(video, ran), [dryRun(video, "ko"), `dub --slug ${video.slug} --locale ko`], "a request is taken whether or not the skip file is still there");
+  assert.equal(readJson(skipped).reason, reason, "the skip is this try's own");
+  assert.deepEqual([request().status, request().open], ["taken", true], "the batch ends the request, not the give-up");
+
+  assert.equal(await video.step(), "chatgpt-ads-off: language batch sent to /admin/videos (ko dub)");
+  assert.deepEqual(video.reviews("languages"), [first], "the same bytes: the site answers with the batch it has and adds no review");
+  assert.equal(first.status, "approved");
+  assert.deepEqual([request().status, request().open, request().reason], ["skipped", false, reason]);
+  assert.equal(video.state().dub_retries.ko.status, "sent");
+  const quiet = video.runs.length;
+  assert.equal(await video.step(), null);
+  assert.equal(video.runs.length, quiet, "no loop: nothing is made or sent again");
+  assert.deepEqual(video.onSite().languages.ko.dub, { state: "skipped", reason });
+});
+
+test("a second lane with the older list neither clears nor buys a dub asked for again twice", async () => {
+  const { video, dubs, ask, request } = await givenUpDub();
+  dubs.ko.over = 0;
+  ask();
+  // What a second lane read before the first lane's unit: the request waiting, the dub skipped.
+  const older = await siteList(video);
+  assert.deepEqual([older[0].dub_retries.ko.status, older[0].languages.ko.dub.state], ["requested", "skipped"]);
+  assert.equal(await video.step(), "chatgpt-ads-off: ko dub made; Jev passed every line");
+
+  const second = laneWithList(video, () => older);
+  const [ran, taken] = [video.runs.length, video.site.calls.reports.filter((report) => report.dub_retries?.ko?.status === "taken").length];
+  const line = await second.step();
+  assert.deepEqual(dubRuns(video, ran), [], "no dry run, no dub, no check: the take is on record in auto.json");
+  assert.equal(video.site.calls.reports.filter((report) => report.dub_retries?.ko?.status === "taken").length, taken, "and the site is not asked again");
+  assert.equal(video.state().notes.filter((note) => note === "ko dub asked for again by the owner").length, 1);
+  // The track is heard, so the lane with the older list may well send the batch that answers the request.
+  assert.equal(line, "chatgpt-ads-off: language batch sent to /admin/videos (ko dub)");
+  assert.deepEqual([video.reviews("languages")[0].payload.locales.ko.dub, request().status], ["ready", "made"]);
+  assert.equal(await video.step(), null);
+});
+
+test("a dub asked for again whose take died after the site's yes is cleared and made on the next visit", async () => {
+  const { video, dubs, reason, skipped } = await givenUpDub();
+  dubs.ko.over = 0;
+  // The site holds the request as taken; the worker died after recording the site's yes.
+  const died = () => {
+    atomicWrite(autoFile(video), JSON.stringify({ ...video.state(), languages: { ko: { shorten: 0, retakes: 0, reword: 0, check_stopped: true } }, dub_retries: { ko: { id: DUB_REQUEST, status: "taking", at: "2026-09-27T10:05:00.000Z" } } }));
+    video.listed().dub_retries = { ko: { id: DUB_REQUEST, status: "taken", open: true, replaced_reason: reason } };
+  };
+  died();
+  assert.ok(existsSync(skipped), "before the skip was cleared");
+  let ran = video.runs.length;
+  assert.equal(await video.step(), "chatgpt-ads-off: ko dub made; Jev passed every line");
+  assert.deepEqual(dubRuns(video, ran), [dryRun(video, "ko"), ...dubAndCheck(video, "ko")], "nothing was cleared yet, so the guards, the site's yes and the clearing are done again");
+  assert.ok(!existsSync(skipped));
+  assert.deepEqual([video.state().dub_retries.ko.status, video.listed().dub_retries.ko.status], ["taken", "taken"]);
+
+  // The same death one statement later, the skip already gone: a track is on disk that nobody
+  // heard. The take is past its guards and goes on as taken; were they asked again and refused
+  // now (the dry run would), the request would close over a cleared skip.
+  died();
+  dubs.ko.dry = DRY_RUN_REFUSED;
+  ran = video.runs.length;
+  assert.equal(await video.step(), "chatgpt-ads-off: ko dub made; Jev passed every line");
+  assert.deepEqual(dubRuns(video, ran), dubAndCheck(video, "ko"));
+  assert.deepEqual([video.state().dub_retries.ko.status, video.listed().dub_retries.ko.status], ["taken", "taken"]);
+  assert.equal(video.state().languages?.ko, undefined);
+
+  assert.equal(await video.step(), "chatgpt-ads-off: language batch sent to /admin/videos (ko dub)");
+  assert.deepEqual([video.reviews("languages")[0].payload.locales.ko.dub, video.listed().dub_retries.ko.status], ["ready", "made"]);
+});
+
+test("a dub request the site no longer holds open is not started", async () => {
+  const { video, dubs, reason, skipped, ask } = await givenUpDub();
+  dubs.ko.over = 0;
+  // Between the list this unit read and the worker's word, the owner's request changed on the site.
+  const changes = {
+    "replaced by a newer request": () => ({ ko: { id: DUB_REQUEST_AGAIN, status: "requested", open: true, replaced_reason: reason } }),
+    "withdrawn with the dub's tick": () => ({}),
+    "run out after a day": () => ({ ko: { id: DUB_REQUEST, status: "expired", open: false, replaced_reason: reason } }),
+  };
+  for (const [what, changed] of Object.entries(changes)) {
+    ask();
+    // The dry run is the last step before the worker tells the site.
+    dubs.ko.dry = () => {
+      video.listed().dub_retries = changed();
+      return null;
+    };
+    const [ran, reports] = [video.runs.length, video.site.calls.reports.length];
+    assert.equal(await video.step(), null, what);
+    assert.deepEqual(dubRuns(video, ran), [dryRun(video, "ko")], `${what}: no dub is bought`);
+    assert.deepEqual(video.site.calls.reports.slice(reports).map((report) => report.dub_retries), [{ ko: { id: DUB_REQUEST, status: "taken" } }], `${what}: the worker asked, and the site's answer did not confirm it`);
+    assert.ok(existsSync(skipped), what);
+    assert.deepEqual([video.state().dub_retries, video.state().languages?.ko], [undefined, undefined], `${what}: nothing recorded, nothing reset`);
+  }
+});
+
+test("a dub request on a tidied video is refused with the reason, nothing runs and no batch is posted", async () => {
+  const { video, reason, skipped, ask, request } = await givenUpDub();
+  video.listed().youtube_video_id = "dQw4w9WgXcQ";
+  assert.match(await video.step(), /on YouTube as dQw4w9WgXcQ/);
+  assert.equal(await video.step(), null);
+  const now = new Date(Date.now() + 8 * 24 * 3600 * 1000);
+  const day = now.toISOString().slice(0, 10);
+  const tidied = tidyRound({ base: video.box.work, repos: [video.box.root], site: video.automation.site, now });
+  assert.equal(tidied.cleared?.slug, video.slug, JSON.stringify(tidied.held.concat(tidied.undated)));
+
+  // The site refuses such a click (video_dub_retry_tidied); this request got past it.
+  ask();
+  const [runs, batches] = [video.runs.length, video.reviews("languages").length];
+  const refusal = `工作檔已在 ${day} 清掉，成片與配音的錄音都不在了，這條配音沒辦法再做`;
+  assert.equal(await video.step(), `chatgpt-ads-off: ko dub asked for again, not made: ${refusal}`);
+  assert.doesNotMatch(refusal, HOST_ONLY);
+  assert.equal(video.runs.length, runs, "nothing runs, not even the dry run");
+  assert.equal(video.reviews("languages").length, batches, "no batch");
+  assert.deepEqual([request().status, request().open, request().reason], ["refused", false, refusal]);
+  assert.deepEqual(video.site.calls.reports.at(-1).dub_retries, { ko: { id: DUB_REQUEST, status: "refused", reason: refusal } });
+  assert.deepEqual([video.state().status, video.state().dub_retries.ko.status], ["done", "refused"]);
+  assert.ok(existsSync(skipped));
+  assert.equal(await video.step(), null, "answered once");
+
+  // The tidy ran while a request was already taken (its round reads the first lane's last list).
+  // The dub reads as in the making there, and the answer is the refusal again, never the partial
+  // batch a tidied video's newly ticked parts get.
+  atomicWrite(autoFile(video), JSON.stringify({ ...video.state(), dub_retries: { ko: { id: DUB_REQUEST_AGAIN, status: "taken", at: "2026-09-27T10:05:00.000Z" } } }));
+  video.listed().dub_retries = { ko: { id: DUB_REQUEST_AGAIN, status: "taken", open: true, replaced_reason: reason } };
+  assert.equal(await video.step(), `chatgpt-ads-off: ko dub asked for again, not made: ${refusal}`);
+  assert.deepEqual([video.runs.length, video.reviews("languages").length], [runs, batches]);
+  assert.deepEqual([request().id, request().status, request().reason], [DUB_REQUEST_AGAIN, "refused", refusal]);
+  assert.equal(await video.step(), null);
+  assert.deepEqual(video.onSite().languages.ko.dub, { state: "skipped", reason });
+});
+
+test("a dub request whose dry run fails is refused with the tool's sentence, the skip stays and the video is not blocked", async () => {
+  const { video, dubs, reason, skipped, ask, request } = await givenUpDub();
+  dubs.ko.dry = DRY_RUN_REFUSED;
+  ask();
+  const [ran, batches] = [video.runs.length, video.reviews("languages").length];
+  assert.equal(await video.step(), `chatgpt-ads-off: ko dub asked for again, not made: ${DRY_RUN_REFUSAL}`);
+  assert.doesNotMatch(DRY_RUN_REFUSAL, HOST_ONLY, "the cell shows the reason as it is: the tool's instruction to run a command is cut");
+  assert.deepEqual(dubRuns(video, ran), [dryRun(video, "ko")]);
+  assert.equal(readJson(skipped).reason, reason);
+  assert.deepEqual([video.state().status, video.state().blocked, video.state().deferred_until], ["done", undefined, undefined]);
+  assert.deepEqual([request().status, request().open, request().reason], ["refused", false, DRY_RUN_REFUSAL]);
+  assert.deepEqual([video.state().dub_retries.ko.status, video.state().dub_retries.ko.reason], ["refused", DRY_RUN_REFUSAL]);
+  assert.ok(video.state().notes.includes(`ko dub not made again: ${DRY_RUN_REFUSAL}`));
+  assert.equal(video.reviews("languages").length, batches);
+  assert.equal(await video.step(), null, "answered once");
+  assert.equal(dubRuns(video, ran).length, 1);
+
+  // The owner asks again once the cause is gone: a new request is looked at afresh.
+  delete dubs.ko.dry;
+  dubs.ko.over = 0;
+  ask(DUB_REQUEST_AGAIN);
+  assert.equal(await video.step(), "chatgpt-ads-off: ko dub made; Jev passed every line");
+  assert.deepEqual([request().status, video.state().dub_retries.ko.id], ["taken", DUB_REQUEST_AGAIN]);
+});
+
+test("a dub request whose dry run notes lines without a current translation is refused although the tool exits 0", async () => {
+  const { video, dubs, reason, skipped, ask, request } = await givenUpDub();
+  // The dry run only notes them (dubs/cli.mjs dryRun); the real run would stop on them before it
+  // writes fit.json, and the shortening rounds would be spent on the earlier attempt's list.
+  dubs.ko.over = 0;
+  dubs.ko.dry = { code: 0, out: "ko: 1 lines have no current translation (k7p2)\nserver: Gemini ready; no monthly limit" };
+  ask();
+  const [ran, batches, asked] = [video.runs.length, video.reviews("languages").length, video.site.calls.run.length];
+  const refusal = "這個語言有幾句翻譯已經不是現在的版本，要先補上翻譯才能再做配音；這條配音先不做";
+  assert.equal(await video.step(), `chatgpt-ads-off: ko dub asked for again, not made: ${refusal}`);
+  assert.doesNotMatch(refusal, HOST_ONLY);
+  assert.deepEqual(dubRuns(video, ran), [dryRun(video, "ko")], "no dub is bought");
+  assert.equal(video.site.calls.run.length, asked, "and no shortening pass is asked of the translator");
+  assert.equal(readJson(skipped).reason, reason);
+  assert.deepEqual([video.state().status, video.state().blocked, video.state().deferred_until], ["done", undefined, undefined]);
+  assert.deepEqual([request().status, request().open, request().reason], ["refused", false, refusal]);
+  assert.equal(video.reviews("languages").length, batches);
+  assert.equal(await video.step(), null, "answered once");
+});
+
+test("a dub request on a video whose final cut is no longer the approved one is refused before anything runs", async () => {
+  const { video, dubs, reason, skipped, ask, request } = await givenUpDub();
+  dubs.ko.over = 0;
+  // The approval binds final.mp4's bytes (core/approvals.mjs): one more byte and it reads stale.
+  // Without this guard the track would be bought and no later visit could send its batch.
+  const final = path.join(video.workdir, "final.mp4");
+  writeFileSync(final, Buffer.concat([readFileSync(final), Buffer.from([0])]));
+  ask();
+  const [ran, batches] = [video.runs.length, video.reviews("languages").length];
+  const refusal = "成片在工人這裡對不上核准的版本（成片換過或還沒核准），現在做不了配音";
+  assert.equal(await video.step(), `chatgpt-ads-off: ko dub asked for again, not made: ${refusal}`);
+  assert.doesNotMatch(refusal, HOST_ONLY);
+  assert.deepEqual(dubRuns(video, ran), [], "not even the dry run");
+  assert.equal(readJson(skipped).reason, reason);
+  assert.deepEqual([request().status, request().open, request().reason], ["refused", false, refusal]);
+  assert.deepEqual([video.state().status, video.state().dub_retries.ko.status, video.reviews("languages").length], ["done", "refused", batches]);
+  assert.equal(await video.step(), null, "answered once");
+});
+
+test("a dub request whose dry run meets a limit waits untaken", async () => {
+  const { video, dubs, skipped, ask, request } = await givenUpDub();
+  dubs.ko.dry = { code: 4, out: RATE_LIMITED };
+  ask();
+  const reports = video.site.calls.reports.length;
+  assert.match(await video.step(), /^chatgpt-ads-off: ko dub could not be checked \(請求過於頻繁，請稍後再試\); deferred until \d{4}-/);
+  assert.deepEqual([request().status, request().open], ["requested", true]);
+  assert.ok(!video.site.calls.reports.slice(reports).some((report) => report.dub_retries), "the site is told nothing");
+  assert.ok(existsSync(skipped));
+  // A rate limit is everyone's trouble: the wait is not counted toward a block.
+  assert.deepEqual([video.state().status, video.state().dub_retries, video.state().defer_count, video.state().defer_shared], ["done", undefined, 1, 1]);
+  assert.equal(await video.step(), null, "not looked at again in this run");
+
+  delete dubs.ko.dry;
+  dubs.ko.over = 0;
+  nextRun(video.automation, video.clock);
+  assert.equal(await video.step(), "chatgpt-ads-off: ko dub made; Jev passed every line");
+  assert.deepEqual([request().status, video.state().defer_count], ["taken", undefined]);
+});
+
+test("a dub request is refused while another language's track is stale", async () => {
+  const dubs = { ko: { over: Infinity } };
+  const video = await finishedVideo({ dubs });
+  video.choose({ en: { metadata: false, captions: true, dub: true }, ko: { metadata: false, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: ko captions translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: en dub made; Jev passed every line$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: ko dub given up /);
+  assert.match(await video.step(), /language batch sent/);
+  assert.equal(await video.step(), null);
+  assert.deepEqual([video.onSite().languages.en.dub.state, video.onSite().languages.ko.dub.state], ["ready", "skipped"]);
+
+  // The voice changed since en's track was made: the batch would be written without it.
+  const en = dubArtifacts(video.workdir, "en");
+  atomicWrite(en.timeline, JSON.stringify({ ...readJson(en.timeline), speech_fingerprint: "an older voice" }));
+  dubs.ko.over = 0;
+  video.listed().dub_retries = { ko: { id: DUB_REQUEST, status: "requested", open: true } };
+  const [ran, batches] = [video.runs.length, video.reviews("languages").length];
+  const refusal = "en 的配音在工人這裡已經不是現在的版本（詞庫、聲音或片頭片尾改過），重送語言包會漏掉它；這條配音先不做";
+  assert.equal(await video.step(), `chatgpt-ads-off: ko dub asked for again, not made: ${refusal}`);
+  assert.doesNotMatch(refusal, HOST_ONLY);
+  assert.deepEqual(dubRuns(video, ran), [], "refused before even the dry run");
+  assert.ok(existsSync(dubArtifacts(video.workdir, "ko").skipped));
+  assert.deepEqual([video.listed().dub_retries.ko.status, video.listed().dub_retries.ko.reason], ["refused", refusal]);
+  assert.deepEqual([video.state().status, video.reviews("languages").length], ["done", batches]);
+});
+
+test("a dub request on a video whose upload package can no longer be written is refused, nothing is cleared or bought and the video is not blocked", async () => {
+  const { video, dubs, skipped, ask, request } = await givenUpDub();
+  dubs.ko.over = 0;
+  const [ran, batches] = [video.runs.length, video.reviews("languages").length];
+  // Each is a test `package` applies to the cut before it writes anything (package/cli.mjs run).
+  const breakages = [
+    { id: DUB_REQUEST, file: "checks.json", change: (checks) => ({ ...checks, visual_hash: "0".repeat(64) }), why: "成片不在了，或它的檢查記錄比現在的腳本和畫面舊" },
+    { id: DUB_REQUEST_AGAIN, file: "timeline.json", change: (timeline) => ({ ...timeline, audio_evidence: undefined }), why: "成片不是用現在這份旁白錄音合成的" },
+    // A cut made with channel bookends the work directory no longer selects (it has no branding.json).
+    { id: DUB_REQUEST_THIRD, file: "checks.json", change: (checks) => ({ ...checks, branding: { hash: "0".repeat(64), intro_frames: 0, body_frames: 900, outro_frames: 0 } }), why: "成片用的片頭片尾和現在選的不一樣" },
+  ];
+  for (const { id, file, change, why } of breakages) {
+    const whole = readFileSync(path.join(video.workdir, file));
+    atomicWrite(path.join(video.workdir, file), JSON.stringify(change(JSON.parse(whole))));
+    ask(id);
+    const refusal = `${why}，上傳包寫不出來，做了配音也送不出語言審核；這條配音先不做`;
+    assert.equal(await video.step(), `chatgpt-ads-off: ko dub asked for again, not made: ${refusal}`);
+    assert.doesNotMatch(refusal, HOST_ONLY);
+    assert.deepEqual(dubRuns(video, ran), [], `${file}: no dub run at all, not even the dry run`);
+    assert.ok(existsSync(skipped), file);
+    assert.notEqual(video.state().status, "blocked", video.state().blocked);
+    assert.deepEqual([request().id, request().status, request().reason], [id, "refused", refusal]);
+    assert.equal(video.reviews("languages").length, batches, `${file}: no languages review is added`);
+    writeFileSync(path.join(video.workdir, file), whole);
+  }
+  assert.equal(await video.step(), null);
+});
+
+test("a dub asked for again that comes out as the very batch the owner sent back is answered once with that reason, and the next unit has nothing to do", async () => {
+  const { video, dubs, reason, ask, request } = await givenUpDub();
+  dubs.ko.over = 0;
+  ask();
+  assert.equal(await video.step(), "chatgpt-ads-off: ko dub made; Jev passed every line");
+  assert.match(await video.step(), /language batch sent/);
+  const [made] = video.reviews("languages");
+  assert.deepEqual([made.status, request().status], ["pending", "made"]);
+  // The owner sends the card back. A batch that was sent back counts for nothing: the dub reads skipped again.
+  Object.assign(made, { status: "rejected", note: "這條聽起來不對", decided_at: "2026-09-27T11:00:00Z" });
+  assert.equal(await video.step(), null);
+  assert.deepEqual(video.onSite().languages.ko.dub, { state: "skipped", reason });
+
+  // Asked once more with nothing changed: the same takes make the same track.
+  ask(DUB_REQUEST_AGAIN);
+  const [ran, batches] = [video.runs.length, video.reviews("languages").length];
+  assert.equal(await video.step(), "chatgpt-ads-off: ko dub made; Jev passed every line");
+  assert.deepEqual(dubRuns(video, ran), [dryRun(video, "ko"), ...dubAndCheck(video, "ko")]);
+  assert.match(await video.step(), /language batch sent/);
+  assert.equal(video.reviews("languages").length, batches, "the same bytes: the site answers with the review that was sent back and opens no card");
+  assert.equal(video.reviews("languages")[0], made);
+  assert.deepEqual([request().id, request().status, request().open, request().reason], [DUB_REQUEST_AGAIN, "refused", false, SAME_AS_SENT_BACK]);
+  assert.deepEqual([video.state().status, video.state().dub_retries.ko.status], ["done", "sent"]);
+  const quiet = video.runs.length;
+  assert.equal(await video.step(), null);
+  assert.equal(video.runs.length, quiet, "nothing is made or sent again");
+});
+
+test("a STOP file leaves a dub request and its skip untouched", async () => {
+  const { video, dubs, skipped, ask, request } = await givenUpDub();
+  dubs.ko.over = 0;
+  ask();
+  const stop = path.join(video.workdir, "STOP");
+  // The file arrives while the unit is at its last free step: nothing is said to the site after it.
+  dubs.ko.dry = () => {
+    writeFileSync(stop, "");
+    return null;
+  };
+  const [ran, reports] = [video.runs.length, video.site.calls.reports.length];
+  assert.equal(await video.step(), "chatgpt-ads-off: taking the ko dub request was not sent or written: the project's STOP file holds it");
+  const untouched = (what) => {
+    assert.deepEqual([request().status, request().open], ["requested", true], what);
+    assert.ok(existsSync(skipped), what);
+    assert.deepEqual([video.state().dub_retries, video.state().languages?.ko, video.state().status], [undefined, undefined, "done"], what);
+    assert.equal(video.site.calls.reports.length, reports, `${what}: nothing is reported`);
+    assert.deepEqual(dubRuns(video, ran), [dryRun(video, "ko")], what);
+  };
+  untouched("the file arrived during the unit");
+  // While the file lies there the video is passed over.
+  nextRun(video.automation);
+  assert.equal(await video.step(), null);
+  untouched("held");
+
+  rmSync(stop);
+  delete dubs.ko.dry;
+  nextRun(video.automation);
+  assert.equal(await video.step(), "chatgpt-ads-off: ko dub made; Jev passed every line");
+  assert.equal(request().status, "taken");
+});
+
+test("a list without dub requests from an older site changes nothing", async () => {
+  const { video, dubs, skipped } = await givenUpDub();
+  dubs.ko.over = 0;
+  assert.equal("dub_retries" in video.listed(), false, "the row of a site from before the requests");
+  // Whatever this worker's own record says, without the site's word nothing is taken, cleared or reported.
+  atomicWrite(autoFile(video), JSON.stringify({ ...video.state(), dub_retries: { ko: { id: DUB_REQUEST, status: "taking", at: "2026-09-27T10:05:00.000Z" } } }));
+  const before = readFileSync(autoFile(video), "utf8");
+  const [ran, reports] = [video.runs.length, video.site.calls.reports.length];
+  for (const row of [undefined, null, [], "ko"]) {
+    if (row === undefined) delete video.listed().dub_retries;
+    else video.listed().dub_retries = row;
+    assert.equal(await video.step(), null, JSON.stringify(row));
+  }
+  assert.deepEqual([video.runs.length, video.site.calls.reports.length], [ran, reports]);
+  assert.ok(existsSync(skipped));
+  assert.equal(readFileSync(autoFile(video), "utf8"), before);
+});
+
+test("a limit while making a dub asked for again keeps the request taken, and the next visit goes on without clearing again", async () => {
+  const { video, dubs, skipped, ask, request } = await givenUpDub();
+  dubs.ko.over = 0;
+  ask();
+  // The month's characters run out at the first request of the real `dub`.
+  const played = video.ctx.runCommand;
+  let outage = 1;
+  video.ctx.runCommand = async (command, runCtx) => {
+    if (!(command[0] === "dub" && !command.includes("--dry-run") && outage > 0)) return played(command, runCtx);
+    outage -= 1;
+    video.runs.push(command.join(" "));
+    return { code: 4, out: BUDGET_SPENT };
+  };
+  assert.match(await video.step(), /^chatgpt-ads-off: ko dub could not finish \(本月的語音字數預算.+\); deferred until \d{4}-/);
+  assert.deepEqual([request().status, request().open], ["taken", true], "taken until the batch, however long the wait");
+  assert.deepEqual([video.state().status, video.state().dub_retries.ko.status, video.state().languages.ko], ["done", "taken", { shorten: 0, retakes: 0, reword: 0, check_stopped: true }]);
+  assert.ok(!existsSync(skipped));
+
+  nextRun(video.automation, video.clock);
+  const [ran, taken] = [video.runs.length, video.site.calls.reports.filter((report) => report.dub_retries?.ko?.status === "taken").length];
+  assert.equal(await video.step(), "chatgpt-ads-off: ko dub made; Jev passed every line");
+  assert.deepEqual(dubRuns(video, ran), dubAndCheck(video, "ko"), "no second dry run: the take is on record");
+  assert.equal(video.state().notes.filter((note) => note === "ko dub asked for again by the owner").length, 1, "cleared and reset once");
+  // Every report repeats the worker's word on a request it holds; the site takes it once.
+  assert.ok(video.site.calls.reports.filter((report) => report.dub_retries?.ko?.status === "taken").length > taken);
+  assert.equal(request().status, "taken");
+  assert.match(await video.step(), /language batch sent/);
+  assert.deepEqual([request().status, video.reviews("languages")[0].status], ["made", "pending"]);
+});
+
+test("a refused dub request whose report did not arrive is reported again first", async () => {
+  const { video, dubs, skipped, ask, request } = await givenUpDub();
+  dubs.ko.dry = DRY_RUN_REFUSED;
+  ask();
+  // The site is away for the report that carries the refusal.
+  const fetch = video.ctx.fetch;
+  let away = true;
+  video.ctx.fetch = async (url, init = {}) => {
+    if (away && init.method === "PUT" && new URL(url).pathname === `/api/video/reviews/${video.slug}` && JSON.parse(init.body).dub_retries?.ko?.status === "refused") return Response.json({ detail: "temporarily unavailable" }, { status: 503 });
+    return fetch(url, init);
+  };
+  const worker = new Automation(video.ctx, automationClient(video.ctx), video.site.settings);
+  worker.refs = smallRefs;
+  assert.match(await worker.step(), /^chatgpt-ads-off: a request could not finish \(.*temporarily unavailable\); deferred until /);
+  assert.deepEqual([video.state().dub_retries.ko.status, video.state().dub_retries.ko.reason], ["refused", DRY_RUN_REFUSAL], "the refusal is on record before it is told");
+  assert.deepEqual([request().status, request().open], ["requested", true], "the site still waits");
+
+  away = false;
+  nextRun(worker, video.clock);
+  const ran = video.runs.length;
+  assert.equal(await worker.step(), "chatgpt-ads-off: ko dub request answered again");
+  assert.deepEqual(dubRuns(video, ran), [], "the guards are not asked again");
+  assert.deepEqual([request().status, request().open, request().reason], ["refused", false, DRY_RUN_REFUSAL]);
+  assert.equal(video.state().notes.filter((note) => note.startsWith("ko dub not made again")).length, 1);
+  assert.ok(existsSync(skipped));
+  assert.deepEqual([video.state().status, video.state().defer_count], ["done", undefined]);
+  assert.equal(await worker.step(), null);
+});
+
+test("a dub asked for again keeps the batch back while it is unheard, even when the list in hand still shows it skipped", async () => {
+  let wrong = true;
+  const video = await finishedVideo({ checks: { ko: () => wrong } });
+  video.choose({ ko: { metadata: false, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: ko captions translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: ko dub given up \(Jev still hears k7p2 wrong /);
+  assert.match(await video.step(), /language batch sent/);
+  assert.equal(await video.step(), null);
+  // As a unit that took the request and then met a limit left it: the skip cleared, the rounds
+  // unheard, and on disk the track of the earlier try, which reads as current.
+  const files = dubArtifacts(video.workdir, "ko");
+  rmSync(files.skipped);
+  atomicWrite(autoFile(video), JSON.stringify({ ...video.state(), languages: { ko: { shorten: 0, retakes: 0, reword: 0, check_stopped: true } }, dub_retries: { ko: { id: DUB_REQUEST, status: "taken", at: "2026-09-27T10:05:00.000Z" } } }));
+  // Another lane read its list before the take: the request waits there, the dub is skipped, and
+  // other language work is due (the captions read as in the making), so a batch is on its way.
+  const lane = laneWithList(video, (rows) => rows.map((row) => {
+    assert.equal(row.languages.ko.dub.state, "skipped");
+    return { ...row, dub_retries: { ko: { id: DUB_REQUEST, status: "requested", open: true } }, languages: { ko: { captions: { state: "working", reason: null }, dub: row.languages.ko.dub } } };
+  }));
+  wrong = false;
+  const [ran, batches] = [video.runs.length, video.reviews("languages").length];
+  assert.equal(await lane.step(), "chatgpt-ads-off: ko dub made; Jev passed every line");
+  assert.deepEqual(video.runs.slice(ran).map((run) => run.split(" ")[0]).filter((name) => ["dub", "check-audio", "review-push"].includes(name)), ["dub", "check-audio"], "made and heard, not sent");
+  assert.deepEqual(dubRuns(video, ran), dubAndCheck(video, "ko"), "and not taken a second time");
+  assert.equal(video.reviews("languages").length, batches);
+  assert.equal(video.state().languages?.ko, undefined);
 });
 
 // The narration line Jev keeps hearing wrong (docs/videos/HANDS-OFF.md §旁白): the fixture's
