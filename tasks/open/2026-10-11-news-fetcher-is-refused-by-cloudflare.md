@@ -75,6 +75,25 @@ scan and `consecutive_failures` back at 0.
 
 ## Notes
 
+- 2026-10-11 09:17Z: **HTTP/2 does not fix it.** Tried from the host in a one-off
+  container of the api image (`docker run --rm`, `h2` installed into the container's own
+  /tmp): httpx 0.28.1 against the CFTC feed answered 403 with `cf-mitigated: challenge`
+  over HTTP/1.1 and over HTTP/2, by name and with the fetcher's pinned request, twice
+  each. Controls a minute later: curl from the host 200, `urllib` in the api container 200.
+  The change that was written for it (`httpx[http2]`, `http2=True`) sits unmerged on
+  branch `claude/news-fetcher-http2`; do not open it as a pull request.
+- Putting the runs together: a Python TLS handshake that offers a protocol list (ALPN) is
+  challenged, whichever list; a Python handshake that offers none passes (urllib, and the
+  hand-built socket tests); curl offers a list and passes, with another TLS library. httpx
+  always offers one (httpcore sets it at connect), so nothing in httpx's settings avoids
+  it. This is an inference from six observations, not something Cloudflare states.
+- What is left as a fix: carry the fetcher's requests on a transport that does not go
+  through httpcore's connection, as `UrllibTransport` in `app/guides/pack_ingest.py` does
+  for Wikimedia (which refuses httpx the same way), while keeping what `_request` does
+  today: the resolved address checked and pinned, SNI and certificate checked against the
+  name, the size cap while reading, no redirects followed. That is a design, not a
+  one-line change.
+
 - 2026-10-11 08:46Z, reproduced read-only inside the api container on the host. **The
   pinned-IP guess in "Why" is wrong.** For the CFTC feed:
   - httpx answers 403 with `cf-mitigated: challenge` whether it connects by name or by
