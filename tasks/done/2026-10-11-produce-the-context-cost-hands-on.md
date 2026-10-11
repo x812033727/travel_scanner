@@ -1,13 +1,13 @@
 ---
 id: 2026-10-11-produce-the-context-cost-hands-on
 title: Produce the context-cost hands-on tutorial under the content-value rules
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-5-video-reference-comparison
 claimed_at: 2026-10-11T05:03:29Z
 created_at: 2026-10-11T05:03:16Z
-completed_at:
+completed_at: 2026-10-11T13:17:36Z
 branch: claude/context-cost-hands-on-video
 depends_on: []
 scope:
@@ -35,13 +35,14 @@ gate on `/admin/videos`; uploading stays the owner's.
 - [x] Two independent fact checks (`verify-1.md`, `verify-2.md`), their findings applied.
 - [x] Narration synthesized and checked until no line was flagged; the audio gate approved it.
 - [x] Its files in the repository.
-- [ ] The cut, and the final and publish gates.
+- [x] The cut, and the final and publish gates: a 10:31 cut, final 11 of 11, publish 4 of 4; the
+  package is in the work directory's `upload/`.
 - [ ] Uploading to YouTube, which is the owner's.
 
 ## Steps
 
 - [x] Plan, review the plan, run, write, verify twice, narrate.
-- [ ] `render`, `assemble`, `captions`, `review-push --gate final`, `package`,
+- [x] `render`, `assemble`, `captions`, `review-push --gate final`, `package`,
   `review-push --gate publish`; languages: zh-TW only (the owner, in chat).
 
 ## How to verify
