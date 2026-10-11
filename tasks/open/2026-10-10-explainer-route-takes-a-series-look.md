@@ -11,21 +11,7 @@ completed_at:
 branch:
 depends_on:
 scope:
-  - apps/api/app/video_automation/schemas.py
-  - apps/api/app/video_automation/settings.py
-  - apps/api/app/video_automation/admin_api.py
-  - apps/api/app/video_media/jobs.py
-  - apps/api/migrations/versions
-  - apps/api/tests/test_video_media_jobs.py
-  - apps/api/tests/test_video_automation_settings.py
-  - apps/web/components/admin-video-settings.tsx
-  - apps/web/components/admin-video-series.tsx
-  - apps/web/messages
-  - tools/video/core/drama.mjs
-  - tools/video/core/drama.test.mjs
-  - tools/video/automation/prompts.mjs
-  - tools/video/automation/flow.mjs
-  - tools/video/automation/flow.test.mjs
+  - docs/videos/explainer-route
 ---
 
 # Explainer route: a series' own look, pillars and image model (MiniMax) instead of So That's Why's
@@ -86,6 +72,41 @@ on the host once their local pilots pass.
 field, and a request made with them draws with MiniMax.
 
 ## Notes
+
+- 2026-10-11 the design is in the repository: [`docs/videos/explainer-route/`](../../docs/videos/explainer-route)
+  (`DESIGN.md`, the owner's decisions in `DECISIONS.md`, pull request 3's prompt texts in
+  `prompt-texts.md`, the three work orders under `orders/`). The work lands as three pull
+  requests in this order, each deployed before the next starts, each with its own child ticket
+  that holds its files; this ticket's `scope` was narrowed to the design folder so it no longer
+  holds code:
+  1. presets, migration and family recognition on tools, API and web (design section 3): its
+     ticket is filed by its implementer on that pull request's branch;
+  2. `2026-10-11-explainer-request-names-its-image-model` (section 4): the request's image model, `image-01` by default
+     for the cute presets, the key check at filing;
+  3. `2026-10-11-cute-explainers-own-series-prompts` (section 5): the series' own prompts and the two presets in
+     the request form.
+  This ticket closes when the three are deployed and the owner has filed the first cute request.
+- 2026-10-11 what moved out of the definition of done above, and where it went:
+  - the names are final (`cute-cartoon`, `cute-mystery`); the series and binge forms do not
+    offer them (an explainer is a one-off) and the request form offers them from pull request 3;
+  - the series' brief reaches the prompts from a registry in the tools keyed by preset, as
+    instruction text, **not** from the payload (new variants, so `flat-explainer`'s bytes do not
+    move);
+  - `screenshot` and `photo` cards for the host's explainer writer:
+    `2026-10-11-host-explainer-writer-image-cards` (the cute presets get `steps` and `table` instead);
+  - So That's Why "redrawn by MiniMax" on the host: only new `cute-cartoon` requests; the 192
+    planned episodes move in `2026-10-11-sothatswhy-planned-episodes-move-to-cute`;
+  - 奇聞檔案局's own intro, thumbnail series and Shorts theme (it takes the channel's for now):
+    `2026-10-11-curio-series-own-intro-thumbnail-shorts`;
+  - a cute explainer's failing picture blocks instead of being kept as the best take:
+    `2026-10-11-cute-explainer-keeps-best-take`;
+  - found by the design and filed separately: `2026-10-11-series-endpoints-cute-default-and-key`,
+    `2026-10-11-explainer-named-gemini-model-draws-at`, `2026-10-11-long-series-own-image-model-disagreement`,
+    `2026-10-11-image-status-reads-slides-image-key`, `2026-10-11-hands-off-explainer-bible-judged-with`,
+    `2026-10-11-explainer-docs-that-are-payload-or`, `2026-10-11-explainer-shorts-saved-before-the-checker`,
+    `2026-10-11-settings-default-style-offers-explainer-presets`.
+  - "How to verify" above names `tools/video/automation/flow.test.mjs`, which does not exist;
+    each child ticket has its own commands.
 
 - 2026-10-10 filed from the history-and-curiosity plan. Local pilots
   (`2026-10-10-history-curiosity-pilot`) run as illustrated slides and do not need this; the

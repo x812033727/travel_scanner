@@ -1,13 +1,13 @@
 ---
 id: 2026-10-10-photo-paste-card
 title: Slides: a photo card that pastes a real photograph on the series ground with its credit
-status: review
+status: done
 priority: P3
 area: tools
 owner: claude-opus-photo-card
 claimed_at: 2026-10-10T11:13:20Z
 created_at: 2026-10-10T16:20:00Z
-completed_at:
+completed_at: 2026-10-11T04:04:02Z
 branch: claude/photo-paste-card
 depends_on: []
 scope:
@@ -74,6 +74,10 @@ photograph under 📷 圖片來源; `node --test tools/video/templates/templates
 
 ## Notes
 
+- 2026-10-11 closed. The work merged as pull request #1425 and is live on the host: deployed in
+  `6a26eff42` on 2026-10-11 and verified there (17 templates; the host's writer is not offered the
+  photo card). What it left open is in `2026-10-10-photo-card-edge-cases` and
+  `2026-10-10-host-writer-prompt-forbids-photo`.
 - 2026-10-10 filed from the history-and-curiosity plan. Until it lands, `screenshot` with
   `data.credit` is the stopgap.
 - 2026-10-10 (claude-opus-photo-card) built on `claude/photo-paste-card`. What was decided, and
