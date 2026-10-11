@@ -11,6 +11,7 @@ import { CHANNEL_ACCENT } from "../core/accent.mjs";
 import { isLongAnime } from "../core/anime-policy.mjs";
 import { SERIES_SEPARATOR, TAGS_MAX_CHARS, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_MAX_CHARS, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
 import { HEARD_RULES, REGISTER_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
+import { EXPLAINER_SERIES_INSTRUCTIONS } from "./explainer-series.mjs";
 import { STORY_INSTRUCTIONS } from "./story-prompts.mjs";
 
 const SKILL = path.join(".agents", "skills", "youtube-video", "references");
@@ -773,11 +774,15 @@ export function instructionsFor(stage, format = "slides", standing = "", variant
   // A brand story's stages (docs/videos/STORY.md) are variants kept in story-prompts.mjs.
   const fromSourceText = SOURCE_INSTRUCTIONS[source]?.[variant ? `${stage}:${variant}` : stage];
   const anime = isLongAnime(series);
-  const base = (anime ? animeInstructions(stage, variant) : null) || fromSourceText || (variant && (VARIANT_INSTRUCTIONS[`${stage}:${variant}`] || STORY_INSTRUCTIONS[`${stage}:${variant}`])) || (format === "drama" && DRAMA_INSTRUCTIONS[stage]) || INSTRUCTIONS[stage];
+  // An explainer series with a profile of its own (explainer-series.mjs) has its stage texts there.
+  const seriesOwn = variant && Object.hasOwn(EXPLAINER_SERIES_INSTRUCTIONS, `${stage}:${variant}`) ? EXPLAINER_SERIES_INSTRUCTIONS[`${stage}:${variant}`] : null;
+  const base = (anime ? animeInstructions(stage, variant) : null) || fromSourceText || (variant && (VARIANT_INSTRUCTIONS[`${stage}:${variant}`] || STORY_INSTRUCTIONS[`${stage}:${variant}`] || seriesOwn)) || (format === "drama" && DRAMA_INSTRUCTIONS[stage]) || INSTRUCTIONS[stage];
   const parts = [base];
   // A binge series' genre section (docs/videos/BINGE.md) for the stages that plan, write or
   // check the story; the listener, the translator and the caption reviewer do not need it.
-  const genre = !anime && GENRE_STAGES.has(stage) ? genreBlock(series) : "";
+  // A one-off's series row carries the long-series form's default genre, which is none of such
+  // an explainer's business: its stages take no genre section.
+  const genre = !anime && base !== seriesOwn && GENRE_STAGES.has(stage) ? genreBlock(series) : "";
   if (genre) parts.push(genre);
   const belief = typeof stance === "string" && STANCE_STAGES.has(stage) ? stance.trim() : "";
   if (belief) parts.push(`${STANCE_HEADING}\n${belief}`);

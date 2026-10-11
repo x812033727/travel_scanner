@@ -706,6 +706,15 @@ None. No API change, no new i18n key.
 - No existing run needs draining (nine instruction digests and the payload digests identical).
   The one run that would stop is a cute video filed by direct API call between PR 1 and now;
   check there is none (host check 1).
+  - **Correction, 2026-10-11 (review of the implementation):** such a run would *not* stop.
+    `run-receipts.mjs` `find()` matches a stale journal only on the same stage **and** variant,
+    and this pull request changes the variant a cute one-off is asked under (`bible-explainer`
+    to `bible-explainer-mystery`, `explainer` to `explainer-cartoon`, and so on). The old
+    journal is therefore never found: the worker starts a new journal and a new paid call
+    beside the orphaned one, with no `video_ai_receipt_input_changed`. Host check 1 (no
+    unfinished one-off in a cute preset) is a **hard step before the deploy**, not a courtesy.
+    The sentence below about later wording changes holds as written: within one variant a
+    changed text does stop the unfinished cute run of that stage.
 - **Expect the first host episodes of each series to block at keyframes** if any picture of 100
   to 140 still fails after two prompt-fix rounds (the pilots passed about 80% on the first
   take). The owner retries from the block; nothing is lost. This is the known cost of option (b).

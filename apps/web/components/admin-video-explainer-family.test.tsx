@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 import { EXPLAINER_PRESETS, isExplainerPreset } from "@/lib/video-presets";
@@ -12,8 +12,13 @@ vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user:
 const STORY_PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "custom"];
 
 function mount(requests: Record<string, unknown>[] = []) {
-  vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+  const posts: Record<string, unknown>[] = [];
+  vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
     const url = String(input);
+    if (url.endsWith("/drama-requests") && init?.method === "POST") {
+      posts.push(JSON.parse(String(init.body)) as Record<string, unknown>);
+      return Promise.resolve(Response.json({ series_slug: null }, { status: 201 }));
+    }
     if (url.endsWith("/drama-requests")) return Promise.resolve(Response.json({ requests }));
     if (url.includes("/series?")) return Promise.resolve(Response.json({ series: [] }));
     if (url.includes("/series/binge-quote")) return Promise.resolve(Response.json({ episodes: 40, chapters: 4, episodes_per_chapter: 10, clip_seconds: 0, images: 10, judge_calls: 10, usd: 1, budgets: {}, ok: true }));
@@ -22,6 +27,7 @@ function mount(requests: Record<string, unknown>[] = []) {
   }));
   const bootstrap: AdminBootstrap = { admin_roles: [], admin_capabilities: ["content.read", "content.manage"], navigation: [], pending_counts: {}, system_status: {}, environment: "test", can_deploy: false, can_manage_database: false };
   render(<AdminOperationsProvider bootstrap={bootstrap}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+  return { posts };
 }
 
 /** The option values of the one select in `form` that picks a style preset. */
@@ -70,11 +76,28 @@ describe("the explainer family of style presets", () => {
     }
   });
 
-  // The hold: the two cute presets are filed from the site only once each has its own prompts.
-  // The pull request that adds those prompts changes this list on purpose.
-  it("does not offer the cute presets in the request form yet", () => {
+  // Each explainer preset is written from its own series' prompts
+  // (tools/video/automation/explainer-series.mjs), so the request form offers all three.
+  it("offers the three explainer presets in the request form, the two cute ones among them", () => {
     mount();
-    expect(styleOptions(openForm("新的漫劇"))).toEqual(["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom"]);
+    expect(styleOptions(openForm("新的漫劇"))).toEqual(["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "cute-cartoon", "cute-mystery", "custom"]);
+  });
+
+  it.each(["cute-mystery", "cute-cartoon"])("gives %s the explainer's 8 to 20 minutes and files it under its own preset", async (preset) => {
+    const { posts } = mount();
+    const form = within(openForm("新的漫劇"));
+    fireEvent.change(form.getByRole("textbox", { name: "故事前提（必填）" }), { target: { value: "瑪麗·賽勒斯特號上的人去了哪裡？" } });
+    const minutes = form.getByRole("spinbutton") as HTMLInputElement;
+    expect([minutes.value, minutes.min, minutes.max]).toEqual(["3", "1", "8"]);
+    fireEvent.change(form.getByRole("combobox", { name: "風格" }), { target: { value: preset } });
+    expect([minutes.value, minutes.min, minutes.max]).toEqual(["10", "8", "20"]);
+    expect(form.getByLabelText("8–20 分鐘")).toBe(minutes);
+    fireEvent.click(form.getByRole("button", { name: "排進製作" }));
+    await waitFor(() => expect(posts).toHaveLength(1));
+    expect(posts[0]).toMatchObject({ style_preset: preset, target_minutes: 10 });
+    // This harness has no settings to read, so no model is shown or sent: the server stores the
+    // preset's own (admin-video-request-image-model.test.tsx files it with a catalogue).
+    expect(Object.hasOwn(posts[0], "image_model")).toBe(false);
   });
 
   it("offers a series and a binge series the story presets only", () => {
@@ -90,8 +113,9 @@ describe("the explainer family of style presets", () => {
     expect(queue.textContent).not.toContain("cute-mystery");
   });
 
-  // The second hold: a drama with no preset of its own takes the settings' default, so the two
-  // cute presets are not a default either until they have prompts (lib/video-presets.ts).
+  // The second hold: a drama with no preset of its own takes the settings' default and is still
+  // written from the story prompts, so the two cute presets are not a default; whether they ever
+  // are is ticket 2026-10-11-settings-default-style-offers-explainer-presets (lib/video-presets.ts).
   it("leaves the cute presets out of the settings' default-style select, a saved one kept", () => {
     const values = () => within(screen.getByRole("combobox")).getAllByRole("option").map((option) => (option as HTMLOptionElement).value);
     const first = render(<DefaultStyleSelect presets={STYLE_PRESETS} value="flat-explainer" onChange={() => undefined} />);

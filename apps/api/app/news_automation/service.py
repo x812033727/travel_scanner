@@ -4,8 +4,10 @@ import base64
 import hashlib
 import json
 import math
+import re
 from datetime import UTC, date, datetime
 from typing import Any, cast
+from urllib.parse import urlsplit
 from uuid import UUID
 
 from redis.asyncio import Redis
@@ -244,6 +246,397 @@ async def held_bundle_snapshot(
         "state": state,
         "sha256": held_bundle_digest(state),
     }
+
+
+def _legacy_navigation_url(url: str) -> bool:
+    """Only known listing forms; a path under one of these listings is still an article.
+
+    This is a conservative structural restriction, not proof that a retained page was
+    non-evidence. The separate full-body review and saved-document guards supply that.
+    """
+    parts = urlsplit(url)
+    if parts.scheme != "https" or parts.query or parts.fragment:
+        return False
+    roots = {
+        "www.theverge.com": {
+            "/news",
+            "/policy",
+            "/tech",
+            "/gadgets",
+            "/ai-artificial-intelligence",
+        },
+        "www.coindesk.com": {"/policy", "/newsletters", "/business", "/tech", "/markets"},
+    }
+    path = parts.path.rstrip("/")
+    if parts.netloc in roots:
+        return path in roots[parts.netloc]
+    return (
+        parts.netloc == "techcrunch.com"
+        and re.fullmatch(r"/(?:category|tag)/[a-z0-9]+(?:-[a-z0-9]+)*", path) is not None
+    )
+
+
+def _navigation_reference_key(url: str) -> tuple[str, str] | None:
+    """Treat ordinary publisher URL aliases as citations to the same listing."""
+    try:
+        parts = urlsplit(url)
+        scheme = parts.scheme.lower()
+        if scheme not in {"http", "https"} or parts.hostname is None:
+            return None
+        if parts.username is not None or parts.password is not None:
+            return None
+        if parts.port not in {None, 80 if scheme == "http" else 443}:
+            return None
+        return parts.hostname.lower(), parts.path.rstrip("/")
+    except ValueError:
+        return None
+
+
+def _document_cites_navigation(value: object, urls: set[str]) -> bool:
+    """Match complete links, including inline prose, without matching article descendants."""
+    if isinstance(value, dict):
+        return any(_document_cites_navigation(item, urls) for item in value.values())
+    if isinstance(value, list):
+        return any(_document_cites_navigation(item, urls) for item in value)
+    if not isinstance(value, str):
+        return False
+    selected = {_navigation_reference_key(url) for url in urls}
+    for token in re.findall(
+        r"https?://[^\s<>\"'\[\]{}“”‘’「」『』«»]+", value, flags=re.IGNORECASE
+    ):
+        key = _navigation_reference_key(token.rstrip(".,;:!?。，；：！？)）"))
+        if key is not None and key in selected:
+            return True
+    return False
+
+
+async def repair_held_navigation(
+    session: AsyncSession,
+    redis: Redis,
+    candidate_id: UUID,
+    manifest: dict[str, Any],
+    review: dict[str, Any],
+    *,
+    manifest_sha256: str,
+    review_sha256: str,
+    actor: User | None = None,
+) -> dict[str, Any]:
+    """Dry-run or remove explicitly reviewed legacy listings in the caller's transaction.
+
+    Every removed row is archived in a genuine actor audit. Saved documents, claim text,
+    sources, assets, append-only history and retry/judge caps remain unchanged. A changed
+    evidence hash invalidates old review eligibility; this never fetches, approves,
+    commits or queues anything. CLI intent and transaction handling are separate.
+    """
+    from app.auth.service import effective_admin_capabilities, user_is_suspended
+
+    manifest_keys = {
+        "schema",
+        "candidate_id",
+        "operation_id",
+        "expected_snapshot",
+        "review_sha256",
+        "evidence_ids",
+        "reason",
+    }
+    review_keys = {
+        "schema",
+        "candidate_id",
+        "reviewer",
+        "reviewed_at",
+        "conclusion",
+        "evidence_sha256",
+        "documents_sha256",
+        "claim_ledger_sha256",
+        "navigation",
+    }
+    if (
+        set(manifest) != manifest_keys
+        or set(review) != review_keys
+        or manifest["schema"] != "mokaair-news-held-navigation-repair-v1"
+        or review["schema"] != "mokaair-news-held-navigation-review-v1"
+        or manifest["candidate_id"] != str(candidate_id)
+        or review["candidate_id"] != str(candidate_id)
+        or manifest["review_sha256"] != review_sha256
+        or not isinstance(manifest["reason"], str)
+        or len(manifest["reason"].strip()) < 20
+        or not isinstance(review["reviewer"], str)
+        or not review["reviewer"].strip()
+        or review["conclusion"] != "navigation_repair_only"
+        or any(
+            not isinstance(value, str) or re.fullmatch(r"[0-9a-f]{64}", value) is None
+            for value in (manifest_sha256, review_sha256)
+        )
+    ):
+        raise AppError(422, "news_navigation_manifest_invalid", "導航修補與獨立審查規格不符")
+    try:
+        operation_id = str(UUID(manifest["operation_id"]))
+        reviewed_at = datetime.fromisoformat(review["reviewed_at"])
+    except (ValueError, TypeError, AttributeError) as error:
+        raise AppError(422, "news_navigation_manifest_invalid", "操作編號或審查時間不符") from error
+    if (
+        operation_id != manifest["operation_id"]
+        or reviewed_at.tzinfo is None
+        or not (0 <= (datetime.now(UTC) - reviewed_at).total_seconds() <= 86400)
+    ):
+        raise AppError(422, "news_navigation_manifest_invalid", "操作編號或審查時間不符")
+    with session.no_autoflush:
+        if actor is not None and (
+            not actor.is_active
+            or actor.deleted_at is not None
+            or user_is_suspended(actor)
+            or "content.manage" not in await effective_admin_capabilities(session, actor)
+        ):
+            raise AppError(403, "news_navigation_actor_required", "需要具內容管理權限的操作者")
+        snapshot = await held_bundle_snapshot(session, redis, candidate_id, lock=actor is not None)
+        state = snapshot["state"]
+        expected = manifest["expected_snapshot"]
+        if (
+            not isinstance(expected, dict)
+            or set(expected) != {"schema", "candidate_id", "captured_at", "state", "sha256"}
+            or expected["schema"] != HELD_STATE_SCHEMA
+            or expected["candidate_id"] != str(candidate_id)
+        ):
+            raise AppError(409, "news_navigation_state_changed", "完整修補快照不符")
+        if (
+            held_bundle_digest(expected["state"]) != expected["sha256"]
+            or expected["sha256"] != snapshot["sha256"]
+        ):
+            raise AppError(409, "news_navigation_state_changed", "候選、來源或完整歷史已變更")
+        try:
+            captured = datetime.fromisoformat(expected["captured_at"])
+        except (ValueError, TypeError) as error:
+            raise AppError(409, "news_navigation_snapshot_expired", "修補快照已過期") from error
+        if (
+            captured.tzinfo is None
+            or not 0 <= (datetime.now(UTC) - captured).total_seconds() <= 900
+        ):
+            raise AppError(409, "news_navigation_snapshot_expired", "修補快照已過期")
+        candidate = state["candidate"]
+        if (
+            candidate["status"] not in {"manual_review", "shadow_review"}
+            or candidate["guide_article_id"] is None
+            or candidate["published_at"] is not None
+            or state["live_jobs"]
+            or any(row["status"] == "running" for row in state["runs"])
+            or len(state["source"]) != 1
+            or not state["source"][0]["enabled"]
+            or state["source"][0]["scan_lock_until"] is not None
+            or len(state["article"]) != 1
+            or len(state["locales"]) != len(LOCALES)
+            or {row["locale"] for row in state["locales"]} != set(LOCALES)
+            or any(
+                row["published_version"] is not None or row["published_at"] is not None
+                for row in state["locales"]
+            )
+        ):
+            raise AppError(
+                409, "news_navigation_busy", "候選必須保留五語草稿且沒有發布或執行中的工作"
+            )
+        started = candidate["processing_started_at"]
+        if started is not None and not any(
+            row["status"] in {"succeeded", "failed"}
+            and row["finished_at"] is not None
+            and datetime.fromisoformat(started)
+            <= datetime.fromisoformat(row["finished_at"])
+            <= datetime.now(UTC)
+            for row in state["runs"]
+        ):
+            raise AppError(409, "news_navigation_busy", "缺少原生工作的完成紀錄")
+        if any(row["action"] == "news_navigation_evidence_repaired" for row in state["audits"]):
+            raise AppError(409, "news_navigation_operation_used", "已有修補紀錄；請先讀取原收據")
+        ids = manifest["evidence_ids"]
+        if (
+            not isinstance(ids, list)
+            or not ids
+            or any(type(value) is not str for value in ids)
+            or len(set(ids)) != len(ids)
+        ):
+            raise AppError(422, "news_navigation_selection_invalid", "需要不重複的精確證據編號")
+        chosen = [row for row in state["evidence"] if row["id"] in ids]
+        retained = [row for row in state["evidence"] if row["id"] not in ids]
+        if (
+            len(chosen) != len(ids)
+            or not retained
+            or not any(row["url"] == candidate["canonical_url"] for row in retained)
+        ):
+            raise AppError(422, "news_navigation_selection_invalid", "必須保留原始報導與實際證據")
+        urls = {row["url"] for row in chosen}
+        site = urlsplit(candidate["canonical_url"]).hostname
+        if any(
+            not _legacy_navigation_url(row["url"])
+            or urlsplit(row["url"]).hostname != site
+            or row["is_first_party"]
+            for row in chosen
+        ):
+            raise AppError(422, "news_navigation_not_listing", "只能處理已獨立確認的同站導覽頁")
+        documents = {
+            row["locale"]: GuideDocument.model_validate(row["draft_json"]).model_dump(mode="json")
+            for row in state["locales"]
+        }
+        if any(_document_cites_navigation(document, urls) for document in documents.values()):
+            raise AppError(
+                409, "news_navigation_still_cited", "先透過原有草稿編輯修正仍被引用的導航頁"
+            )
+        # Historical claims remain authoritative provenance, even after a draft edit.
+        # This repair cannot remove any URL they cite or rewrite the ledger itself.
+        ledger = candidate["claim_ledger_json"]
+        if not isinstance(ledger, list) or any(not isinstance(claim, dict) for claim in ledger):
+            raise AppError(422, "news_navigation_review_mismatch", "主張來源規格不符")
+        for claim in ledger:
+            claim_urls = claim.get("source_urls", [])
+            if not isinstance(claim_urls, list) or any(type(url) is not str for url in claim_urls):
+                raise AppError(422, "news_navigation_review_mismatch", "主張來源規格不符")
+            if _document_cites_navigation(claim_urls, urls):
+                raise AppError(409, "news_navigation_claim_source", "導航頁仍被原始主張紀錄引用")
+        document_hashes = {
+            locale: held_bundle_digest(document) for locale, document in documents.items()
+        }
+        if (
+            review["evidence_sha256"] != held_bundle_digest(state["evidence"])
+            or held_bundle_digest(review["documents_sha256"]) != held_bundle_digest(document_hashes)
+            or review["claim_ledger_sha256"] != held_bundle_digest(candidate["claim_ledger_json"])
+            or not isinstance(review["navigation"], list)
+            or len(review["navigation"]) != len(chosen)
+        ):
+            raise AppError(
+                422, "news_navigation_review_mismatch", "獨立審查未綁定完整來源、主張與五語草稿"
+            )
+        proofs = review["navigation"]
+        if any(
+            not isinstance(proof, dict)
+            or set(proof)
+            != {
+                "evidence_id",
+                "url",
+                "classification",
+                "excerpt_sha256",
+                "reason",
+                "current_source",
+                "current_source_sha256",
+                "source_artifact_sha256",
+            }
+            or type(proof["evidence_id"]) is not str
+            for proof in proofs
+        ):
+            raise AppError(422, "news_navigation_review_mismatch", "每個導航頁需要完整獨立判斷")
+        by_id = {proof["evidence_id"]: proof for proof in proofs}
+        if len(by_id) != len(proofs) or set(by_id) != set(ids):
+            raise AppError(422, "news_navigation_review_mismatch", "導航頁審查編號不符")
+        for row in chosen:
+            proof = by_id[row["id"]]
+            if (
+                not isinstance(row["excerpt"], str)
+                or not row["excerpt"].strip()
+                or not isinstance(proof["source_artifact_sha256"], str)
+                or re.fullmatch(r"[0-9a-f]{64}", proof["source_artifact_sha256"]) is None
+                or not isinstance(proof["current_source"], dict)
+                or proof["current_source_sha256"] != held_bundle_digest(proof["current_source"])
+                or proof["url"] != row["url"]
+                or proof["classification"] != "system_navigation"
+                or proof["excerpt_sha256"] != hashlib.sha256(row["excerpt"].encode()).hexdigest()
+                or not isinstance(proof["reason"], str)
+                or len(proof["reason"].strip()) < 20
+            ):
+                raise AppError(422, "news_navigation_review_mismatch", "導航頁全文或判斷不符")
+            current = proof["current_source"]
+            if (
+                set(current) != {"url", "resolved_url", "fetched_at", "status", "title", "excerpt"}
+                or current["url"] != row["url"]
+                or type(current["status"]) is not int
+                or current["status"] != 200
+                or not isinstance(current["resolved_url"], str)
+                or current["resolved_url"].rstrip("/") != row["url"].rstrip("/")
+                or not isinstance(current["title"], str)
+                or not current["title"].strip()
+                or not isinstance(current["excerpt"], str)
+                or not current["excerpt"].strip()
+            ):
+                raise AppError(422, "news_navigation_review_mismatch", "需要可讀的當前導航頁全文")
+            try:
+                fetched_at = datetime.fromisoformat(current["fetched_at"])
+            except (ValueError, TypeError) as error:
+                raise AppError(
+                    422, "news_navigation_review_mismatch", "來源讀取時間不符"
+                ) from error
+            if (
+                fetched_at.tzinfo is None
+                or not 0 <= (reviewed_at - fetched_at).total_seconds() <= 86400
+            ):
+                raise AppError(422, "news_navigation_review_mismatch", "來源讀取時間不符")
+        new_evidence_hash = evidence_fingerprint(retained)
+        plan = {
+            "candidate_id": str(candidate_id),
+            "operation_id": operation_id,
+            "before_sha256": snapshot["sha256"],
+            "removed_evidence": chosen,
+            "retained_evidence": retained,
+            "before_evidence_hash": candidate["evidence_hash"],
+            "after_evidence_hash": new_evidence_hash,
+            "documents_sha256": document_hashes,
+            "fresh_verification_required": True,
+            "model_calls": 0,
+            "queue_calls": 0,
+            "applied": False,
+        }
+        if actor is None:
+            return plan
+        row = await session.get(NewsCandidate, candidate_id, populate_existing=True)
+        assert row is not None
+        for item in await session.scalars(
+            select(NewsEvidence).where(NewsEvidence.id.in_([UUID(value) for value in ids]))
+        ):
+            await session.delete(item)
+        row.evidence_hash = new_evidence_hash
+        row.would_publish = False
+        row.error_code = "news_navigation_evidence_repaired"
+        row.error_detail = "已封存並移除獨立確認的舊導航證據；需要重新查核五語草稿"
+        audit(
+            session,
+            actor,
+            "news_navigation_evidence_repaired",
+            f"news-candidate:{candidate_id}",
+            operation_id=operation_id,
+            manifest_sha256=manifest_sha256,
+            review_sha256=review_sha256,
+            reviewer=review["reviewer"],
+            reason=manifest["reason"],
+            before_candidate=candidate,
+            before_source=state["source"],
+            before_evidence=state["evidence"],
+            after_evidence=retained,
+            before_snapshot_sha256=snapshot["sha256"],
+            documents_sha256=document_hashes,
+            claim_ledger=candidate["claim_ledger_json"],
+            navigation_review=proofs,
+            fresh_verification_required=True,
+            queue_calls=0,
+        )
+        await session.flush()
+        after = await held_bundle_snapshot(session, redis, candidate_id, lock=True)
+        for key in state:
+            if key not in {"candidate", "evidence", "audits"} and held_bundle_digest(
+                state[key]
+            ) != held_bundle_digest(after["state"][key]):
+                raise AppError(409, "news_navigation_state_changed", "修補期間其他完整狀態已變更")
+        if held_bundle_digest(retained) != held_bundle_digest(after["state"]["evidence"]):
+            raise AppError(409, "news_navigation_state_changed", "保留來源有非預期變更")
+        changed = after["state"]["candidate"]
+        allowed = {"evidence_hash", "would_publish", "error_code", "error_detail", "updated_at"}
+        if any(
+            held_bundle_digest(candidate[key]) != held_bundle_digest(changed[key])
+            for key in candidate
+            if key not in allowed
+        ):
+            raise AppError(409, "news_navigation_state_changed", "候選有非預期變更")
+        old_audits = {item["id"]: item for item in state["audits"]}
+        new_audits = {item["id"]: item for item in after["state"]["audits"]}
+        if len(new_audits) != len(old_audits) + 1 or any(
+            held_bundle_digest(new_audits.get(key)) != held_bundle_digest(value)
+            for key, value in old_audits.items()
+        ):
+            raise AppError(409, "news_navigation_state_changed", "原始審核紀錄有非預期變更")
+        return {**plan, "applied": True, "after_snapshot": after}
 
 
 async def ingest_held_bundle(
@@ -894,9 +1287,7 @@ async def candidate_detail(session: AsyncSession, candidate_id: UUID) -> Candida
         for locale, document in row.draft_bundle_json.items()
         if locale in LOCALES
     }
-    waiting_on_duplicate = (
-        row.status == "manual_review" and row.error_code == DUPLICATE_UNCERTAIN
-    )
+    waiting_on_duplicate = row.status == "manual_review" and row.error_code == DUPLICATE_UNCERTAIN
     article = (
         await session.get(GuideArticle, row.guide_article_id)
         if row.guide_article_id is not None
@@ -1294,9 +1685,7 @@ async def clear_duplicate_candidate(
     if row is None:
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
     if row.status != "manual_review" or row.error_code != DUPLICATE_UNCERTAIN:
-        raise AppError(
-            409, "news_candidate_not_duplicate_uncertain", "這個候選沒有在等待重複判定"
-        )
+        raise AppError(409, "news_candidate_not_duplicate_uncertain", "這個候選沒有在等待重複判定")
     session.add(
         NewsAssessment(
             candidate_id=row.id,

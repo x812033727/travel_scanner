@@ -83,11 +83,10 @@ const ASPECTS = ["world", "bonds", "structure", "mood"] as const;
 const TONES = ["dual-male-leads-subtext", "dual-male-leads-explicit", "hetero-leads", "no-romance"] as const;
 const PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "custom"] as const;
 // A one-off episode may also be an illustrated explainer (narrator only, all stills); a series
-// runs the story prompts, which need a cast, so its forms keep the story presets. The two cute
-// explainer presets (cute-cartoon, cute-mystery) are known to the API and to the labels but are
-// not offered here yet: they join REQUEST_PRESETS in the pull request that gives each its own
-// prompts, since until then a cute request would be written from So That's Why's.
-const REQUEST_PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom"] as const;
+// runs the story prompts, which need a cast, so its forms keep the story presets. Each explainer
+// preset is planned, written and checked from its own series' prompts
+// (tools/video/automation/explainer-series.mjs EXPLAINER_VARIANTS).
+const REQUEST_PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "cute-cartoon", "cute-mystery", "custom"] as const;
 const DRAMA_MINUTES = { min: 1, max: 8, default: 3 } as const;
 const EXPLAINER_MINUTES = { min: 8, max: 20, default: 10 } as const;
 /** The length a one-off request may ask for: every explainer preset runs 8 to 20 minutes. */
@@ -96,13 +95,16 @@ export const requestMinutes = (preset: string) => (isExplainerPreset(preset) ? E
  * The image-model field of a one-off request. Only an explainer may name its model (a cast drama
  * needs reference sheets), and only while the catalogue has models to show. `choice` is the
  * owner's own pick, null until they make one; `models` are the catalogue's, retired ones left
- * out. A cute preset starts on its own model (PRESET_IMAGE_MODEL) when the catalogue offers it,
- * which is what the server stores for an unnamed one anyway; "" follows the drama settings.
+ * out. A preset with a model of its own (PRESET_IMAGE_MODEL, the cute looks) starts on it and
+ * has no entry that follows the drama settings: the server stores that model for a request that
+ * names none, whatever the settings say, so such an entry would promise what does not happen.
+ * `listed` is false when the catalogue does not carry that model, and the form then lists it by
+ * its id. "" (flat-explainer's start) follows the drama settings.
  */
-export function requestImageModel(preset: string, choice: string | null, models: readonly { value: string }[]): { offered: boolean; presetDefault: string; value: string } {
-  const wanted = PRESET_IMAGE_MODEL[preset];
-  const presetDefault = wanted && models.some((option) => option.value === wanted) ? wanted : "";
-  return { offered: isExplainerPreset(preset) && models.length > 0, presetDefault, value: choice ?? presetDefault };
+export function requestImageModel(preset: string, choice: string | null, models: readonly { value: string }[]): { offered: boolean; presetDefault: string; listed: boolean; value: string } {
+  const presetDefault = PRESET_IMAGE_MODEL[preset] ?? "";
+  const listed = !presetDefault || models.some((option) => option.value === presetDefault);
+  return { offered: isExplainerPreset(preset) && models.length > 0, presetDefault, listed, value: choice ?? presetDefault };
 }
 const LONG_ANIME_RUNTIME: RuntimeSpec = { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 };
 const isLongAnime = (series: SeriesSummary) => !series.planning_only && series.production_policy === "long-anime-v1";
@@ -438,6 +440,7 @@ function NewDramaForm({ onFiled, media, configured, noKey }: { onFiled: (seriesS
         {image.offered && <label className="grid gap-2 text-sm font-semibold">{t("imageModel")}
           <select className={control} value={image.value} disabled={busy} onChange={(event) => setImageChoice(event.target.value)}>
             {!image.presetDefault && <option value="">{t("imageModelFollows")}</option>}
+            {!image.listed && <option value={image.presetDefault}>{image.presetDefault}</option>}
             {imageModels.map((option) => <option key={`${option.provider}:${option.value}`} value={option.value}>{option.label} · {mediaProviderLabels[option.provider]}{configured && !configured.includes(option.provider) ? ` (${noKey})` : ""}{option.usd_per_image ? ` · US$${option.usd_per_image}` : ""}</option>)}
           </select>
         </label>}

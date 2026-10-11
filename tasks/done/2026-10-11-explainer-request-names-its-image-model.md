@@ -1,13 +1,13 @@
 ---
 id: 2026-10-11-explainer-request-names-its-image-model
 title: Explainer request names its image model: cute presets default to image-01, a model with no key is refused at filing
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-explainer-pr2
 claimed_at: 2026-10-11T08:47:22Z
 created_at: 2026-10-11T04:01:35Z
-completed_at:
+completed_at: 2026-10-11T10:44:34Z
 branch: claude/explainer-image-model
 depends_on:
   - 2026-10-11-explainer-family-cute-presets
@@ -136,3 +136,7 @@ every earlier one-off row has `image_model` NULL.
   runtime-settings patch.
 - The web test file tests the cute presets on `requestImageModel` only (they are not in the
   form); pull request 3 adds the rendered cases when it adds them to `REQUEST_PRESETS`.
+- 2026-10-11 archived by the implementer of pull request 3: pull request #1443 merged this
+  change to main on 2026-10-11. It is **not deployed yet**: the release (web, API and worker
+  tools together) and the host checks of design 4.6 are still to come, so the deploy and
+  host-check boxes above stay unticked and nothing here says it is live.
