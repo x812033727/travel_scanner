@@ -1,13 +1,13 @@
 ---
 id: 2026-10-10-policy-demo-exempts-explainer-slides
 title: QA policy: the demonstration score is a tutorial rule; an illustrated story (explainer, 奇聞檔案局, So That's Why) is judged without it
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-opus-policy-demo
 claimed_at: 2026-10-10T11:16:51Z
 created_at: 2026-10-10T20:00:00Z
-completed_at:
+completed_at: 2026-10-11T02:41:23Z
 branch: claude/policy-demo-explainer
 depends_on: []
 scope:
@@ -68,6 +68,7 @@ with 「有示範：不適用」 and the final gate approves itself when the oth
 
 ## Notes
 
+- 2026-10-11 live: another session deployed main at 6a26eff42 (02:32Z). Read-only verification in the containers, 18 of 18: the api image answers the explainer question set (demo None passes, the note says 不適用), the routing check gives explainer for an explainer row and tutorial for the rest, and the worker's tool prints "demo not asked". No approved video was re-pushed to prove it; the next explainer to reach the final gate (after sothatswhy-b26, which the owner approved by hand at 10 of 11) is the first real one.
 - 2026-10-10 filed from the curio-h01 pilot (`2026-10-10-history-curiosity-pilot`). Until it
   lands, the owner approves the final gate of these videos on /admin/videos; the QA report on
   the card shows every other item green.
