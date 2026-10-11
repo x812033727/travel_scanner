@@ -1,14 +1,14 @@
 ---
 id: 2026-10-08-delivery-check-remaining-native-evidence
 title: Complete remaining native evidence for delivery-check tutorial
-status: open
+status: blocked
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5-worth-rules
+claimed_at: 2026-10-11T09:51:57Z
 created_at: 2026-10-08T20:54:52Z
 completed_at:
-branch:
+branch: claude/tutorial-worth-rules
 depends_on: []
 scope:
   - docs/videos/claude-code-mods-delivery-check-tutorial/native-followup.md
@@ -39,3 +39,10 @@ Compare the fixed source hashes, actual pane results, timestamps and unchanged-i
 ## Notes
 
 Completed film: `docs/videos/claude-code-mods-delivery-check-tutorial/production-review.md`; final SHA `0513aadf1ed7183a5c072b0249c1f73a339aa9190b40a9c11e2e69dbbb67eb8e`. External evidence lives under `<home>/mokaair-work/mods-clarity-20261009/`. Original STOP and all prior evidence remain preserved. The original native validator warning was author metadata only; adding attribution is not a reason to invalidate the tested runtime. This task does not authorize paid reproduction, a new course Mod, owner acceptance, YouTube upload/publication, merge or deployment.
+- 2026-10-11: the owner watched the finished film and refused it (its substance is too low
+  to publish; the measurements are in `tasks/done/2026-10-11-tutorial-worth-rules.md`). More
+  native evidence for this cut would not change that: the fault is the example, a supplied
+  mod that reports whether three file names are in a folder, and that its source is never on
+  screen. Blocked until the owner asks for a remake. If one is made, the 274 lines in
+  `materials/delivery-check/hooks/` are the channel's only pane mod and the place to start:
+  open them on screen and have the viewer change the three names.
