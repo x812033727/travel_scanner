@@ -2060,10 +2060,11 @@ test("an explainer one-off plans a question's bible with no cast, and its brief 
   assert.equal(documentVariant("bible", ONE_OFF), "bible");
   assert.equal(documentVariant("setting", SERIES), "setting");
   assert.match(instructionsFor("planner", "drama", "", "bible-explainer"), /BIBLE of ONE explainer episode/);
-  // The two cute presets are explainers too: same question-shaped bible, same brief sections.
-  for (const preset of ["flat-explainer", "cute-cartoon", "cute-mystery"]) {
+  // The two cute presets are explainers too: same question-shaped bible, same brief sections,
+  // planned from their own series' variant.
+  for (const [preset, bibleVariant] of [["flat-explainer", "bible-explainer"], ["cute-cartoon", "bible-explainer-cartoon"], ["cute-mystery", "bible-explainer-mystery"]]) {
     assert.equal(isExplainerOneOff({ ...explainer, style_preset: preset }), true, preset);
-    assert.equal(documentVariant("bible", { ...explainer, style_preset: preset }), "bible-explainer", preset);
+    assert.equal(documentVariant("bible", { ...explainer, style_preset: preset }), bibleVariant, preset);
     assert.equal(isExplainerOneOff({ ...SERIES, style_preset: preset }), false, `${preset}: a long series is never an explainer`);
     assert.equal(documentVariant("bible", { ...SERIES, style_preset: preset }), "bible", preset);
   }
@@ -2172,15 +2173,95 @@ test("an explainer one-off whose row names an image model writes it into series.
   assert.deepEqual(video.look, { preset: "flat-explainer" });
 });
 
-// Until each cute preset has prompts of its own, it is written from the explainer's: the writer
-// is told to answer look.preset "flat-explainer", and the worker saves the request's instead.
-for (const [preset, shortsSeries] of [["cute-cartoon", "sothatswhy"], ["cute-mystery", "illustrated"]]) {
-  test(`a ${preset} one-off runs the explainer's stages, keeps its own preset, and its Shorts carry the ${shortsSeries} series`, async () => {
-    const { site, video, shorts } = await explainerOneOffRun(preset, { preset: "flat-explainer" });
-    assert.deepEqual(site.calls.run.map((call) => [call.stage, call.variant]), EXPLAINER_STAGE_PINS.map(([stage, variant]) => [stage, variant]));
-    assert.equal(site.calls.run[0].payload.drama_settings.style_preset, preset);
-    assert.deepEqual(video.look, { preset });
-    assert.deepEqual(shorts.map((short) => short.series), [shortsSeries, shortsSeries]);
+// Each cute preset is planned, written and checked from its own series' prompts
+// (explainer-series.mjs), beside the flat-explainer one above, which is not edited for them.
+const CUTE_ONE_OFFS = {
+  "cute-mystery": {
+    series: "奇聞檔案局",
+    variants: ["bible-explainer-mystery", "explainer-mystery"],
+    outline: { reasons: ["流傳的版本：雷聲是比較晚才發出來的。", "紀錄：光速約每秒三十萬公里。", "紀錄：聲速約每秒三百四十公尺。", "目前最站得住的解釋：同時發生，光先到。"], closing: "存檔。下一份檔案，我們繼續翻。", pillar: "M" },
+    bibleOf: /BIBLE of ONE 奇聞檔案局 file/,
+    brief: /## 原因\n- 流傳的版本：[^\n]+\n- 紀錄：[^\n]+\n- 紀錄：[^\n]+\n- 目前最站得住的解釋：/,
+    // The channel's thumbnail: a tag and a sub, no pillar, no layout, no variants.
+    thumbnail: { template: "thumb", data: { headline: "光？\n**先到**", tag: "奇異現象", sub: "數三秒的檔案", shot: "flash" } },
+    shorts: "illustrated",
+  },
+  "cute-cartoon": {
+    series: "原來如此事務所",
+    variants: ["bible-explainer-cartoon", "explainer-cartoon"],
+    outline: { reasons: ["光速約每秒三十萬公里", "聲速約每秒三百四十公尺"], closing: "下一題：彩虹為什麼是彎的？", pillar: "science" },
+    bibleOf: /BIBLE of ONE 原來如此事務所 episode/,
+    brief: /## 原因\n- 光速約每秒三十萬公里\n- 聲速約每秒三百四十公尺/,
+    // So That's Why's own thumbnail, as the fixture carries it.
+    thumbnail: explainerFixture().thumbnail,
+    shorts: "sothatswhy",
+  },
+};
+
+for (const [preset, expected] of Object.entries(CUTE_ONE_OFFS)) {
+  test(`a ${preset} one-off is planned, written and checked with ${expected.series}'s own prompts, keeps only its preset of the look and its thumbnail as written, and drafts its two Shorts`, async () => {
+    const box = sandbox();
+    // The row a cute request gets: the long-series form's defaults, and the model the server stored.
+    const curio = { ...ONE_OFF, title: "雷聲", premise: "為什麼雷聲總比閃電晚到？", style_preset: preset, target_minutes: 10, genre: "xianxia-bonds", lead: "dual-male", visual_tier: "clips", image_model: "image-01" };
+    const slug = "one-off-7a1b2c3d-e001";
+    const outline = { title: "為什麼雷聲總比閃電晚到？", logline: "光比聲音快太多。", question: "為什麼雷聲總比閃電晚到？", answer: "光比聲音快太多。", hook: "閃電亮了，你數到幾？", sources: ["https://en.wikipedia.org/wiki/Speed_of_sound"], ...expected.outline };
+    const bible = { body_md: "# 雷聲\n## 問題\n主軸：…\n", body_json: { characters: [], acts: [{ number: 1, title: "光先到", summary: "s", shots: 4 }], outline, music: "輕快", not_doing: [], lexicon: {} } };
+    const drafted = JSON.parse(readFileSync(new URL("../core/fixtures/explainer/shorts.json", import.meta.url), "utf8")).map(({ titles, description, scenes }) => ({ titles, description, scenes }));
+    const [bibleVariant, stageVariant] = expected.variants;
+    const answers = {
+      [`planner:${bibleVariant}`]: () => bible,
+      // The writer answers another series' preset and a style and a negative of its own: none of it is kept.
+      [`writer:${stageVariant}`]: () => ({ video: { ...explainerFixture(), slug, look: { preset: "flat-explainer", style: "my own", negative: "text" }, thumbnail: expected.thumbnail }, claims: "c1｜光速｜https://en.wikipedia.org/wiki/Speed_of_sound｜2026-09-28｜race\n", lexicon_additions: {}, shorts: drafted }),
+    };
+    const episode = { number: 1, chapter_number: 1, title: outline.title, logline: outline.logline, beats: outline, status: "ready", slug: null, recap: null, started_at: null, finished_at: null, video: null };
+    const setting = { id: "b1", kind: "bible", chapter_number: 0, version: 1, ...bible, status: "approved" };
+    const oneOffStart = (body) => ({
+      request: { id: "curio-request", premise: curio.premise, title: "雷聲", source_guide: null, style_preset: preset, target_minutes: 10, note: null, status: "started", slug: body.slug, series_slug: curio.slug, episode_number: 1 },
+      episode: { ...episode, status: "started", slug: body.slug },
+      context: { series: curio, setting, outline: null, chapter: null, chapter_number: 1, chapter_range: [1, 1], episode: null, episodes: [episode], recaps: [], mysteries: [] },
+    });
+    const site = fakeSite({ jobs: [job("bible", { series: curio, chapter_number: null, context: { ...job("bible").context, series: curio, setting: null, mysteries: [] } }), job("episode", { series: { ...curio, status: "active", episodes_ready: 1 }, episode })], answers, oneOffStart });
+    const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-28T01:00:00Z") });
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+
+    assert.match(await automation.step(), /the story bible planned \(version 1\)/);
+    const planner = site.calls.run[0];
+    assert.equal(planner.variant, bibleVariant);
+    assert.match(planner.instructions, expected.bibleOf);
+    assert.equal(planner.instructions, instructionsFor("planner", "drama", "", bibleVariant), "the row's genre adds no section to a series' own text");
+    assert.doesNotMatch(planner.instructions, /Genre and retention|仙俠/);
+    assert.equal(planner.payload.genre_spec, null, "nor does the story genre's spec ride in the payload");
+    assert.equal(planner.payload.series.genre, "xianxia-bonds", "seriesFacts is what it was");
+    assert.equal(planner.payload.drama_settings.style_preset, preset);
+
+    assert.match(await automation.step(), /started from the approved story bible/);
+    const dir = path.join(box.root, "docs", "videos", slug);
+    assert.match(readFileSync(path.join(dir, "brief.md"), "utf8"), expected.brief);
+    const state = automatedVideos(box.work).find((each) => each.slug === slug);
+    assert.equal(state.style_preset, preset);
+
+    assert.match(await automation.step(), /script drafted and passes lint; 2 Shorts drafted/);
+    const writer = site.calls.run.find((call) => call.stage === "writer");
+    assert.equal(writer.variant, stageVariant);
+    assert.equal(writer.instructions, instructionsFor("writer", "drama", "", stageVariant));
+    assert.equal(writer.payload.beats.pillar, expected.outline.pillar, "the bible's pillar reaches the writer in beats");
+    assert.ok(writer.instructions.includes(`"look": {"preset": "${preset}"}`));
+    // The budget the payload carries at its top level is one the writer's text explains.
+    assert.equal(writer.payload.prompt_budget_chars, 1000);
+    assert.match(writer.instructions, /"prompt_budget_chars", when the payload carries it at its top level, is the most characters\s+any one shot's "prompt" may have/);
+    const video = readJson(path.join(dir, "video.json"));
+    assert.deepEqual(video.look, { preset }, "the series' look is not the writer's to change");
+    assert.deepEqual(video.characters, []);
+    assert.deepEqual(video.thumbnail, expected.thumbnail, "the thumbnail arrives as written");
+    assert.equal(readJson(path.join(dir, "series.json")).image_model, "image-01");
+    assert.deepEqual(JSON.parse(readFileSync(shortsFile(slug, box.root), "utf8")).map((short) => short.series), [expected.shorts, expected.shorts]);
+
+    assert.match(await automation.step(), /fact-check round 1/);
+    const verifier = site.calls.run.find((call) => call.stage === "verifier");
+    assert.equal(verifier.variant, stageVariant);
+    assert.equal(verifier.instructions, instructionsFor("verifier", "drama", "", stageVariant));
+    assert.deepEqual(site.calls.run.map((call) => `${call.stage}/${call.variant}`), [`planner/${bibleVariant}`, `writer/${stageVariant}`, `verifier/${stageVariant}`]);
   });
 }
 

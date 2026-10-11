@@ -437,3 +437,16 @@ test("a line on a flat-explainer's or a story one-off's bible and screenplay is 
   assert.equal(digest(instructionsFor("planner", "drama", "", "discuss")), "88d7f55145ecff3e0910f33dc056b86dd8464595e1c626720bae3a2ed0f2cab9");
   assert.equal(digest(instructionsFor("writer", "drama", "", "discuss")), "06c8d01e814728158f137b681e9438de81f050654d641bf7d90116cce3c0c0a6");
 });
+
+test("a line on a cute explainer's bible and screenplay is answered under its own series' discussion variant, which has texts of its own", async () => {
+  for (const [preset, variant] of [["cute-cartoon", "discuss-cartoon"], ["cute-mystery", "discuss-mystery"]]) {
+    assert.deepEqual(await discussionCalls(preset), [["planner", "drama", variant], ["writer", "drama", variant]], preset);
+    const planner = instructionsFor("planner", "drama", "", variant);
+    const writer = instructionsFor("writer", "drama", "", variant);
+    assert.match(planner, /You are the planner answering the OWNER'S LINE on this episode's bible/);
+    assert.match(writer, /You are the writer answering the OWNER'S LINE on this episode's screenplay/);
+    assert.notEqual(planner, instructionsFor("planner", "drama", "", "discuss"));
+    assert.notEqual(writer, instructionsFor("writer", "drama", "", "discuss"));
+    assert.ok(writer.includes(`"look": {"preset": "${preset}"}`), "a rewrite stays the video its series' guide describes");
+  }
+});

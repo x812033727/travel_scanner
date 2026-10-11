@@ -13,7 +13,7 @@ import { HEADLINE, HEADLINE_SERIES, headlineRule } from "../qa/thumbnail.mjs";
 import { thumbnailSeries } from "../render/plan.mjs";
 import { EPISODE_SERIES, episodeSeries, ILLUSTRATED_SERIES } from "../shorts/episode.mjs";
 import { thumbnailProblems } from "../templates/templates.mjs";
-import { EXPLAINER_PRESET, EXPLAINER_PRESETS, explainerSeries, hasCast, isExplainer, isExplainerPreset, isKnowledgeLongform, keyframeKey, lookHash, needsMinimumLength, PRESET_NAMES, PRESETS, resolveLook, timesSilentShots } from "./drama.mjs";
+import { EXPLAINER_PRESET, EXPLAINER_PRESETS, explainerSeries, hasCast, isExplainer, isExplainerPreset, isKnowledgeLongform, keyframeKey, lookHash, needsMinimumLength, pictureVarietyProblems, PRESET_NAMES, PRESETS, resolveLook, timesSilentShots } from "./drama.mjs";
 import { dramaFixture, explainerFixture } from "./fixtures/load.mjs";
 import { BRIEF_SECTIONS_EXPLAINER, briefSectionsFor, lintVideo } from "./lint.mjs";
 import { validateVideo } from "./schema.mjs";
@@ -108,7 +108,11 @@ test("each of the three presets is held to the explainer's rules: no cast, still
     if (explainerSeries(doc) !== "sothatswhy") continue;
     const linted = lintVideo(doc);
     assert.deepEqual(linted.errors, baseline.errors, preset);
-    assert.deepEqual(linted.warnings, baseline.warnings, preset);
+    // The fixture is written for the flat look; a cute look is also held to the picture-variety
+    // rules (explainer-cute.test.mjs), which warn about it and add nothing for flat-explainer.
+    const variety = pictureVarietyProblems(doc).warnings.map((warning) => warning.message);
+    assert.equal(variety.length, preset === "flat-explainer" ? 0 : 2, preset);
+    assert.deepEqual(linted.warnings.filter((warning) => !variety.includes(warning.message)), baseline.warnings, preset);
   }
   assert.equal(briefSectionsFor("drama", "ink-wash").includes("問題"), false);
 });

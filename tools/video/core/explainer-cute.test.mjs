@@ -3,8 +3,12 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { EXPLAINER_CARD_TEMPLATES, pictureVarietyProblems } from "./drama.mjs";
+import { episodeBrief } from "../automation/series.mjs";
+import { renderProblems, thumbnailSeries } from "../render/plan.mjs";
+import { thumbnailHtml } from "../templates/templates.mjs";
+import { CUTE_EXPLAINER_CARD_TEMPLATES, CUTE_EXPLAINER_PRESETS, EXPLAINER_CARD_TEMPLATES, explainerCardTemplates, isCuteExplainer, pictureVarietyProblems } from "./drama.mjs";
 import { explainerFixture } from "./fixtures/load.mjs";
+import { checkBrief, lintVideo, thumbnailHeadlineProblems } from "./lint.mjs";
 import { validateVideo } from "./schema.mjs";
 
 const base = explainerFixture();
@@ -22,4 +26,65 @@ test("flat-explainer keeps its six cards, and the picture-variety rules still le
   assert.deepEqual(validateVideo(withCards("flat-explainer")).map((error) => error.message), [sixCards, sixCards]);
   assert.deepEqual(variety("flat-explainer", ["push in", "push in", "push in"]), { errors: [], warnings: [] });
   assert.deepEqual(variety("flat-explainer", ["push in", "pull out"], "Medium shot of a chibi farmer at a gate at dawn, low sun from the left"), { errors: [], warnings: [] });
+});
+
+test("the cute presets may also use steps and table cards, and no card beyond those eight", () => {
+  assert.deepEqual([...CUTE_EXPLAINER_PRESETS], ["cute-cartoon", "cute-mystery"]);
+  assert.deepEqual(CUTE_EXPLAINER_CARD_TEMPLATES, ["title", "chapter", "outro", "big", "stats", "compare", "steps", "table"]);
+  assert.equal(explainerCardTemplates("flat-explainer"), EXPLAINER_CARD_TEMPLATES);
+  assert.equal(explainerCardTemplates("ink-wash"), EXPLAINER_CARD_TEMPLATES, "a name that is no cute preset gets the explainer's six");
+  for (const preset of CUTE_EXPLAINER_PRESETS) {
+    assert.equal(explainerCardTemplates(preset), CUTE_EXPLAINER_CARD_TEMPLATES);
+    const doc = withCards(preset);
+    assert.equal(isCuteExplainer(doc), true, preset);
+    assert.deepEqual(validateVideo(preset === "cute-mystery" ? { ...doc, thumbnail: CHANNEL_THUMBNAIL } : doc), [], preset);
+    const quote = { id: "said", template: "quote", data: { quote: "q", source: "s" }, lines: [{ id: "q0ex", text: "他說了一句話。" }] };
+    assert.match(validateVideo({ ...doc, scenes: [...doc.scenes.slice(0, 4), quote, ...doc.scenes.slice(4)] })[0].message, /one of the cards title, chapter, outro, big, stats, compare, steps, table$/, preset);
+  }
+  for (const other of [withCards("flat-explainer"), { ...base, format: "slides", look: { preset: "cute-mystery" } }, { ...base, look: undefined }, undefined]) assert.equal(isCuteExplainer(other), false);
+});
+
+// 奇聞檔案局 wears the channel's thumbnail (owner's decision 1): a tag and a sub, no pillar, no layout.
+const CHANNEL_THUMBNAIL = { template: "thumb", data: { headline: "光？\n**先到**", tag: "奇異現象", sub: "數三秒的檔案", shot: "flash" } };
+
+test("a cute-mystery script wears the channel's thumbnail: valid as the writer is told to write it, and So That's Why's fields are refused", () => {
+  const mystery = { ...withCards("cute-mystery"), thumbnail: CHANNEL_THUMBNAIL, youtube: { ...base.youtube, title: "為什麼雷聲總比閃電晚到？｜奇聞檔案局" } };
+  assert.deepEqual(validateVideo(mystery), []);
+  assert.equal(thumbnailSeries(mystery), null);
+  assert.deepEqual(renderProblems(mystery), []);
+  assert.deepEqual(thumbnailHeadlineProblems(mystery), []);
+  const html = thumbnailHtml(mystery.thumbnail, { series: thumbnailSeries(mystery), slug: mystery.slug });
+  assert.equal(html.includes("原來如此事務所") || html.includes("thumb-stamp") || /pillar-/.test(html), false, "nothing of So That's Why's thumbnail is drawn");
+  const withData = (extra) => ({ ...mystery, thumbnail: { ...mystery.thumbnail, data: { ...mystery.thumbnail.data, ...extra } } });
+  assert.match(renderProblems(withData({ pillar: "H" }))[0].message, /pillar must be one of business/);
+  assert.match(renderProblems(withData({ layout: "right" }))[0].message, /layout must be one of a, b, c/);
+  // cute-cartoon is So That's Why redrawn and keeps that series' thumbnail.
+  assert.equal(thumbnailSeries(withCards("cute-cartoon")), "sothatswhy");
+  assert.deepEqual(renderProblems(withCards("cute-cartoon")), []);
+});
+
+test("a 奇聞檔案局 brief with the labelled 原因 lines has the explainer's sections, and its script lints without an error of this format", () => {
+  const series = { slug: "one-off-1", kind: "one-off", title: "t", premise: "p", style_preset: "cute-mystery", target_minutes: 10, genre: "xianxia-bonds" };
+  const brief = episodeBrief(series, { number: 1, title: "t", logline: "l" }, [], { question: "q", answer: "a", hook: "h", reasons: ["流傳的版本：x", "紀錄：y", "紀錄：z", "目前最站得住的解釋：w"], closing: "存檔。", sources: ["https://example.org/"] });
+  assert.deepEqual(checkBrief(brief, "drama", "cute-mystery"), []);
+  assert.match(brief, /## 原因\n- 流傳的版本：x\n- 紀錄：y\n- 紀錄：z\n- 目前最站得住的解釋：w\n/);
+  const mystery = { ...withCards("cute-mystery"), thumbnail: CHANNEL_THUMBNAIL };
+  const linted = lintVideo(mystery, { brief, lexicon: { schema_version: 1, terms: {} }, minEpisodeMinutes: 0 });
+  assert.deepEqual(linted.errors.filter((error) => /card|template|thumbnail|look|characters/.test(`${error.path} ${error.message}`)), []);
+});
+
+test("the picture-variety rules hold a cute explainer's stills as they hold illustrated slides", () => {
+  for (const preset of CUTE_EXPLAINER_PRESETS) {
+    const same = variety(preset, ["push in", "push in", "push in"]);
+    assert.equal(same.errors.length, 1, preset);
+    assert.match(same.errors[0].message, /3 stills in a row under "push in"/);
+    assert.equal(variety(preset, ["push in", "pull out", "push in"]).errors.length, 0, preset);
+    // The look's own words in a prompt pin every picture to one finish: the cute looks' as well as the print looks'.
+    for (const word of ["chibi", "cartoon", "flat colours", "thick dark outlines", "cel-shaded"]) {
+      const restated = variety(preset, ["push in", "pull out"], `Medium shot of a ${word} farmer at a gate at dawn, low sun from the left`).warnings.map((warning) => warning.message).join(" | ");
+      assert.ok(restated.includes(`restate the look ("${word}")`), `${preset}: ${word}: ${restated}`);
+    }
+    // Palette words are also things, so they are not counted: a navy officer is a person.
+    assert.doesNotMatch(variety(preset, ["push in", "pull out"], "Medium shot of a navy officer at a harbour gate at dawn, low sun from the left").warnings.map((warning) => warning.message).join(" | "), /restate the look/, preset);
+  }
 });

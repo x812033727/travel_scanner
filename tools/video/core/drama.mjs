@@ -19,6 +19,14 @@ export const CARD_TEMPLATES = ["title", "chapter", "outro"];
 // An explainer (the flat-explainer preset, docs/videos/so-thats-why/) also puts its numbers and
 // comparisons on cards between the illustrations.
 export const EXPLAINER_CARD_TEMPLATES = [...CARD_TEMPLATES, "big", "stats", "compare"];
+// The cute explainer looks (2026-10-10) were piloted as illustrated slides and keep on the host
+// what those pilots were measured with: the steps and table cards, the judge's yes/no checks
+// (media/keyframes.mjs) and the picture-variety rules (pictureVarietyProblems). flat-explainer
+// is not one of them and keeps what it had.
+export const CUTE_EXPLAINER_PRESETS = Object.freeze(["cute-cartoon", "cute-mystery"]);
+export const CUTE_EXPLAINER_CARD_TEMPLATES = [...EXPLAINER_CARD_TEMPLATES, "steps", "table"];
+/** The cards an explainer of this preset may put between its shots. */
+export const explainerCardTemplates = (preset) => (CUTE_EXPLAINER_PRESETS.includes(preset) ? CUTE_EXPLAINER_CARD_TEMPLATES : EXPLAINER_CARD_TEMPLATES);
 export const NARRATOR = "narrator";
 export const CHARACTER_ID = /^[a-z][a-z0-9-]{1,23}$/;
 export const FIT_MODES = ["auto", "freeze", "slow", "trim"];
@@ -223,6 +231,8 @@ export const isSeriesEpisode = (doc) => isDrama(doc) && isObject(doc.series);
 export const isExplainer = (doc) => isDrama(doc) && isExplainerPreset(doc.look?.preset);
 /** The series whose identity an explainer wears ("sothatswhy"), or null: the channel's, or not an explainer. */
 export const explainerSeries = (doc) => (isExplainer(doc) ? EXPLAINER_IDENTITY[doc.look.preset] : null);
+/** A drama drawn in one of the cute explainer looks (CUTE_EXPLAINER_PRESETS). */
+export const isCuteExplainer = (doc) => isDrama(doc) && CUTE_EXPLAINER_PRESETS.includes(doc?.look?.preset);
 /**
  * Whether the eight-minute floor (MIN_EPISODE_MINUTES) holds: slides, screencasts and the
  * explainer, never a drama episode, a brand story or a compilation.
@@ -583,7 +593,7 @@ export function validateDrama(doc, errors, validateVoice) {
   if (!drama && pictures && doc.look === undefined) errors.push({ path: "look", message: "illustrations need a look: name a preset such as \"" + SLIDES_PRESET + "\" (docs/videos/ILLUSTRATED.md)" });
   if (!drama && doc.look !== undefined && !pictures) errors.push({ path: "look", message: `a slides video with no "${SHOT_TEMPLATE}" scenes has nothing to draw with a look` });
   const explainer = isExplainer(doc);
-  const cards = explainer ? EXPLAINER_CARD_TEMPLATES : CARD_TEMPLATES;
+  const cards = explainer ? explainerCardTemplates(doc.look?.preset) : CARD_TEMPLATES;
   if (explainer && characterIds.size) errors.push({ path: "characters", message: `an explainer (look preset "${doc.look.preset}") has no characters: the narrator tells it` });
   if (drama && doc.series !== undefined) {
     validateSeries(doc.series, errors, isLongAnime(doc));
@@ -811,6 +821,9 @@ const LOOK_WORDS = /\b(?:flat (?:editorial )?illustration|editorial illustration
 // Where and when the light comes from: a video told entirely at night under one lamp is the
 // other sameness (the first scripts put a lamp in a quarter of their pictures and the night in
 // half); more than half of the pictures in the dark is a warning per video.
+// The cute looks' own words (docs/videos/history-curiosity/look.md §每張 prompt 怎麼寫): the medium
+// only, since their palette words are also things (a navy officer, cream in a jug).
+const CUTE_LOOK_WORDS = /\b(?:cartoon(?:ish|y)?|chibi|kawaii|anime|cel[- ]shad(?:ed|ing)|flat colou?rs?|thick (?:clean |dark )*outlines?)\b/i;
 const DARK_LIGHT = /\b(?:night|midnight|dusk|late evening|after dark|\d\s*a\.?m\b|lamp|lamplight|lantern|candle|torch|moonlight|neon|street[- ]?light|floodlight|single (?:hanging |bare |pendant )?(?:bulb|light))\b/i;
 export const DARK_SHARE_WARN = 1 / 2;
 // Words of a prompt that are not a place or an object (grammar, sizes, light, materials, the
@@ -843,7 +856,8 @@ const fewIds = (ids) => `${ids.slice(0, 4).join(", ")}${ids.length > 4 ? ` and $
 export function pictureVarietyProblems(doc) {
   const errors = [];
   const warnings = [];
-  if (!illustrated(doc)) return { errors, warnings };
+  const cute = isCuteExplainer(doc);
+  if (!illustrated(doc) && !cute) return { errors, warnings };
   const shots = [];
   doc.scenes.forEach((scene, index) => {
     if (isShot(scene)) shots.push({ scene, where: `scenes[${index}] (${scene.id})` });
@@ -861,7 +875,7 @@ export function pictureVarietyProblems(doc) {
     if (run === SAME_MOVE_RUN_MAX + 1) errors.push({ path: `${where}.data.camera`, message: `${SAME_MOVE_RUN_MAX + 1} stills in a row under "${move}"; alternate the moves (push in, pull out, pan left, pan right, tilt up, tilt down, drift)` });
     const prompt = String(scene.data?.prompt ?? "");
     if (!SHOT_SIZE.test(prompt)) unsized.push(scene.id);
-    const look = prompt.match(LOOK_WORDS);
+    const look = prompt.match(LOOK_WORDS) ?? (cute ? prompt.match(CUTE_LOOK_WORDS) : null);
     if (look) {
       restated.push(scene.id);
       lookWords.add(look[0].toLowerCase());

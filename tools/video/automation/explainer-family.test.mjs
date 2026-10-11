@@ -52,15 +52,17 @@ test("a story request still takes the look preset its writer answered", () => {
   assert.ok(saved.characters.length > 0);
 });
 
-test("every explainer preset takes the question's brief sections, bible and stage prompts; a story preset takes none of them", () => {
+test("every explainer preset takes the question's brief sections and its own series' bible and stage variants; a story preset takes none of them", () => {
   const lacks = (preset) => planProblem({ slug: "why-thunder-is-late", brief: "" }, new Set(), new Set(), "drama", "", preset);
   const variant = (style_preset) => Automation.prototype.variantOf.call(null, { format: "drama", style_preset });
   const oneOff = (style_preset) => ({ kind: "one-off", style_preset });
+  const variants = { "flat-explainer": ["explainer", "bible-explainer"], "cute-cartoon": ["explainer-cartoon", "bible-explainer-cartoon"], "cute-mystery": ["explainer-mystery", "bible-explainer-mystery"] };
+  assert.deepEqual(Object.keys(variants), [...EXPLAINER_PRESETS]);
   for (const preset of EXPLAINER_PRESETS) {
     assert.match(lacks(preset), /^brief lacks ## 問題, ## 一句答案, /, preset);
-    assert.equal(variant(preset), "explainer", preset);
+    assert.equal(variant(preset), variants[preset][0], preset);
     assert.equal(isExplainerOneOff(oneOff(preset)), true, preset);
-    assert.equal(documentVariant("bible", oneOff(preset)), "bible-explainer", preset);
+    assert.equal(documentVariant("bible", oneOff(preset)), variants[preset][1], preset);
     assert.equal(isExplainerOneOff({ kind: "series", style_preset: preset }), false, `${preset}: a long series is never an explainer`);
   }
   assert.match(lacks("ink-wash"), /^brief lacks ## 故事前提, /);

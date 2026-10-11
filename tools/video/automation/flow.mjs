@@ -46,6 +46,7 @@ import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview,
 import { AutomationError, OUTPUT_INVALID, PAUSE_CODES, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { acquireProjectLease, ProjectLeaseError } from "../core/project-lease.mjs";
 import { discussStep, SCRIPT_DISCUSSION_VARIANTS } from "./discuss.mjs";
+import { explainerProfile, explainerVariants, isExplainerStageVariant } from "./explainer-series.mjs";
 import { JOB_GONE_KIND, RunReceiptError } from "./run-receipts.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { advanceStory, fixStoryPrompts } from "./story.mjs";
@@ -475,6 +476,10 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     settled.look = { preset, ...(video.look ?? {}) };
     if (isLongAnime(series)) settled.look.preset = "anime-2d";
     if (isExplainerPreset(preset)) {
+      // A series with a profile of its own (explainer-series.mjs) is drawn from its look's words
+      // alone: a style or a negative the writer added would replace the look every picture is
+      // held to (and MiniMax reads a negative as more prompt), so only the preset is kept.
+      if (explainerProfile(preset)) settled.look = { preset };
       settled.look.preset = preset;
       settled.characters = [];
     }
@@ -995,7 +1000,7 @@ export class Automation {
   variantOf(state) {
     const episode = episodeVariant(state);
     if (episode) return episode;
-    return state.format === "drama" && isExplainerPreset(state.style_preset) ? "explainer" : null;
+    return state.format === "drama" ? explainerVariants(state.style_preset)?.stage ?? null : null;
   }
 
   /**
@@ -3115,7 +3120,7 @@ export class Automation {
     if (problem) return this.retryLater(state, "writer", `the script ${problem}`);
     this.cleared(state, "writer");
     // An explainer's and an illustrated slides video's two Shorts are drafted with the script (docs/videos/ILLUSTRATED.md).
-    const shorts = this.variantOf(state) === "explainer" || illustrated(JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"))) ? this.saveShorts(state, answer.shorts) : null;
+    const shorts = isExplainerStageVariant(this.variantOf(state)) || illustrated(JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"))) ? this.saveShorts(state, answer.shorts) : null;
     saveState(this.workdir(state.slug), state);
     await report(this.ctx, this.api, state, "fact-checked");
     return `${state.slug}: script drafted and passes lint${shorts ? `; ${shorts}` : ""}`;
