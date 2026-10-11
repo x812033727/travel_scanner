@@ -1,13 +1,13 @@
 ---
 id: 2026-10-11-explainer-family-cute-presets
 title: Explainer family PR 1: cute-cartoon and cute-mystery presets on tools, API and web
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-explainer-pr1
 claimed_at: 2026-10-11T03:57:49Z
 created_at: 2026-10-11T03:57:19Z
-completed_at:
+completed_at: 2026-10-11T08:47:03Z
 branch: claude/explainer-presets
 depends_on: []
 scope:
@@ -185,3 +185,6 @@ On the host after the deploy (read-only):
 - Follow-ups nobody has filed yet (from the design): `screenshot` and `photo` cards for the
   host's explainer writer; 奇聞檔案局's own intro, thumbnail series and Shorts theme (until then
   its Shorts carry the `illustrated` series).
+- 2026-10-11 closed by the implementer of pull request 2: pull request #1435 is merged and was
+  verified live on the host the same day at commit `3591cda88` (seven presets in the API, the
+  three CHECK constraints, alembic at 0131).

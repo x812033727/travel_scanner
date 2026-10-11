@@ -2244,6 +2244,13 @@ export class Automation {
       slug: series.slug,
       episode: episode.number,
       chapter: episode.chapter_number,
+      // The site draws every picture of this episode with the series row's model (apps/api
+      // video_media/jobs.py series_image_model), and the media stages read it here
+      // (media/stages.mjs imageStatus), so the tool sizes, prices and budgets for the model the
+      // server will use. Written only for a one-off whose row names one: the key's presence alone
+      // wraps every image cache key (imageSelectionVersion), so a one-off that names none keeps
+      // the file it always had, and a long series keeps reusing its character sheets.
+      ...(oneOff && typeof series.image_model === "string" && series.image_model ? { image_model: series.image_model } : {}),
       title: episode.title,
       logline: episode.logline,
       characters: cast,
@@ -3120,12 +3127,29 @@ export class Automation {
    * writer may name one of its own), the longest camera word the writer may choose and that
    * model's limit, counted as media/keyframes.mjs counts a shot's request; never more than the
    * writer's own 1000. The first draft and every whole-script rewrite after it (a lint fix, a
-   * screenplay or prompt fix) carry it, so a rewrite cannot lengthen a prompt past it. A drama
-   * and a story are drawn otherwise and hear nothing; a look that leaves no room at all is the
-   * keyframes stage's to refuse, with the owner's number.
+   * screenplay or prompt fix) carry it, so a rewrite cannot lengthen a prompt past it. A look
+   * that leaves no room at all is the keyframes stage's to refuse, with the owner's number.
+   *
+   * An explainer one-off whose series.json names its image model (the same fact the media stages
+   * read) hears that model's budget under its own preset's look. The figure assumes the camera is
+   * one of the seven camera words; lint allows a camera of up to 120 characters, and the
+   * keyframes stage counts each shot's real one. Every other drama, an explainer that follows the
+   * settings' model, and a story are drawn otherwise and hear nothing, as before.
    */
   draftBudget(state) {
-    if (state.format === "drama" || state.story) return {};
+    if (state.story) return {};
+    if (state.format === "drama") {
+      if (!state.series || !isExplainerPreset(state.style_preset)) return {};
+      try {
+        const model = readJson(path.join(docDir(state.slug, this.ctx.root), "series.json"), null)?.image_model;
+        if (typeof model !== "string" || !model) return {};
+        const limit = imagePromptLimit({ provider: imageModelVendor(model, null) }, null);
+        const budget = shotPromptBudget({ look: resolveLook({ preset: state.style_preset }), camera: LONGEST_CAMERA_WORD, cast: null, limit });
+        return { prompt_budget_chars: Math.min(budget, WRITER_PROMPT_MAX) };
+      } catch {
+        return {};
+      }
+    }
     try {
       const limit = imagePromptLimit({ provider: slidesImageVendor(this.settings) }, null);
       const budget = shotPromptBudget({ look: HEAVIEST_SLIDES_LOOK, camera: LONGEST_CAMERA_WORD, cast: null, limit });

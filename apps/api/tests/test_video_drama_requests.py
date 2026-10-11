@@ -182,6 +182,7 @@ async def test_a_new_request_is_a_one_off_series_with_its_episode_and_an_audit_e
         "style_preset": "cinematic-3d",
         "target_minutes": 2,
         "source_guide": "shanhaijing-birds",
+        "image_model": None,
     }
     assert session.commits == 1
     titled = await drama_series.create_one_off(

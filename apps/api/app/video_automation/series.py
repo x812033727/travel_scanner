@@ -1303,6 +1303,7 @@ async def create_one_off(
         open_ended=False,
         status="setting",
         note=payload.note,
+        image_model=payload.image_model,
         created_by_user_id=actor.id,
         created_at=now,
         updated_at=now,
@@ -1338,6 +1339,7 @@ async def create_one_off(
                 "style_preset": payload.style_preset,
                 "target_minutes": payload.target_minutes,
                 "source_guide": payload.source_guide,
+                "image_model": payload.image_model,
             },
         )
     )

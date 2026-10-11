@@ -173,4 +173,13 @@ test("the tools, the API and the web name the same explainer family", () => {
   const webList = /^export const EXPLAINER_PRESETS = \[([^\]]*)\] as const;$/m.exec(web);
   assert.ok(webList, "video-presets.ts declares EXPLAINER_PRESETS on one line");
   assert.deepEqual(names(webList[1]), [...EXPLAINER_PRESETS]);
+  // The image model a cute one-off takes when its request names none: the server stores it and
+  // the request form preselects it, each from its own copy of one table.
+  const apiModels = /^PRESET_IMAGE_MODELS: dict\[str, str\] = \{([^}]*)\}$/m.exec(api);
+  assert.ok(apiModels, "schemas.py declares PRESET_IMAGE_MODELS on one line");
+  const webModels = /^export const PRESET_IMAGE_MODEL: Readonly<Record<string, string>> = \{([^}]*)\};$/m.exec(web);
+  assert.ok(webModels, "video-presets.ts declares PRESET_IMAGE_MODEL on one line");
+  assert.deepEqual(names(apiModels[1]), ["cute-cartoon", "image-01", "cute-mystery", "image-01"]);
+  assert.deepEqual(names(webModels[1]), names(apiModels[1]));
+  for (const [index, name] of names(apiModels[1]).entries()) if (index % 2 === 0) assert.ok(isExplainerPreset(name) && name !== "flat-explainer", `${name}: a cute explainer preset`);
 });
