@@ -659,8 +659,11 @@ test("the worker drafts an episode with the looks that cover it, in series.json 
   const cast = {};
   for (const number of [1, 2]) {
     const slug = episodeSlug("wenjian", number);
-    await automation.draftEpisode({ id: `r${number}`, slug, title: "", premise: SERIES.premise, target_minutes: 3 }, { series: SERIES, setting, episodes: [], recaps: [], mysteries: [] }, { ...beats(number), chapter_number: 1, beats: beats(number) });
+    await automation.draftEpisode({ id: `r${number}`, slug, title: "", premise: SERIES.premise, target_minutes: 3 }, { series: { ...SERIES, image_model: "gemini-3.1-flash-image" }, setting, episodes: [], recaps: [], mysteries: [] }, { ...beats(number), chapter_number: 1, beats: beats(number) });
     cast[number] = readJson(path.join(box.root, "docs", "videos", slug, "series.json")).characters.find((character) => character.id === "shen-lan");
+    // A long series whose row names an image model still writes no key: the key alone would wrap
+    // every image cache key, and its episodes would stop reusing the series' character sheets.
+    assert.equal(Object.hasOwn(readJson(path.join(box.root, "docs", "videos", slug, "series.json")), "image_model"), false, `episode ${number}: no image_model key for a long series`);
     assert.equal(readFileSync(path.join(box.root, "docs", "videos", slug, "brief.md"), "utf8").includes(loose), number === 2, `episode ${number}'s brief`);
   }
   assert.equal(cast[1].appearance, CAST[0].appearance);
@@ -2100,9 +2103,9 @@ const EXPLAINER_STAGE_PINS = [
 const digestOf = (text) => createHash("sha256").update(text, "utf8").digest("hex");
 
 /** One explainer one-off in `preset`, from its bible to its first fact-check; the writer answers `look`. */
-async function explainerOneOffRun(preset, look = {}) {
+async function explainerOneOffRun(preset, look = {}, row = {}) {
   const box = sandbox();
-  const explainer = { ...ONE_OFF, title: "雷聲", premise: "為什麼雷聲總比閃電晚到？", style_preset: preset };
+  const explainer = { ...ONE_OFF, title: "雷聲", premise: "為什麼雷聲總比閃電晚到？", style_preset: preset, ...row };
   const slug = "one-off-7a1b2c3d-e001";
   const outline = { title: "為什麼雷聲總比閃電晚到？", logline: "光比聲音快太多。", question: "為什麼雷聲總比閃電晚到？", answer: "光比聲音快太多。", reasons: ["光速約每秒三十萬公里", "聲速約每秒三百四十公尺"], hook: "閃電亮了，你數到幾？", sources: ["https://en.wikipedia.org/wiki/Speed_of_sound"] };
   const bible = { body_md: "# 雷聲\n## 問題\n…\n", body_json: { characters: [], acts: [{ number: 1, title: "光先到", summary: "s", shots: 4 }], outline, music: "輕快", not_doing: [], lexicon: {} } };
@@ -2143,12 +2146,15 @@ async function explainerOneOffRun(preset, look = {}) {
   assert.deepEqual(JSON.parse(readFileSync(shortsFile(slug, box.root), "utf8")).map((short) => short.slug), [`${slug}-short-1`, `${slug}-short-2`]);
   assert.match(await automation.step(), /fact-check round 1/);
   assert.equal(site.calls.run.find((call) => call.stage === "verifier").variant, "explainer");
-  return { site, video, shorts: JSON.parse(readFileSync(shortsFile(slug, box.root), "utf8")) };
+  return { site, video, writer, seriesInfo: readJson(path.join(dir, "series.json")), shorts: JSON.parse(readFileSync(shortsFile(slug, box.root), "utf8")) };
 }
 
 test("an explainer one-off goes from its question's bible to a narrator-only script with its two Shorts", async () => {
-  const { site, shorts } = await explainerOneOffRun("flat-explainer");
+  const { site, shorts, writer, seriesInfo } = await explainerOneOffRun("flat-explainer");
   assert.deepEqual(shorts.map((short) => short.series), ["sothatswhy", "sothatswhy"]);
+  // No model named: the file and the writer's payload are what they always were.
+  assert.equal(Object.hasOwn(seriesInfo, "image_model"), false, "a one-off that names no image model writes no key");
+  assert.equal(Object.hasOwn(writer.payload, "prompt_budget_chars"), false, "and its writer hears no budget");
   assert.deepEqual(site.calls.run.map((call) => [call.stage, call.variant]), EXPLAINER_STAGE_PINS.map(([stage, variant]) => [stage, variant]));
   for (const [index, [stage, variant, instructions, payload]] of EXPLAINER_STAGE_PINS.entries()) {
     const call = site.calls.run[index];
@@ -2156,6 +2162,14 @@ test("an explainer one-off goes from its question's bible to a narrator-only scr
     assert.equal(digestOf(call.instructions), instructions, `${stage}:${variant} instructions`);
     assert.equal(digestOf(canonicalJson(rest)), payload, `${stage}:${variant} payload`);
   }
+});
+
+// flat-explainer on purpose: the cute presets get prompts of their own later, and this must not move with them.
+test("an explainer one-off whose row names an image model writes it into series.json, and its writer hears that model's prompt budget", async () => {
+  const { seriesInfo, writer, video } = await explainerOneOffRun("flat-explainer", {}, { image_model: "image-01" });
+  assert.equal(seriesInfo.image_model, "image-01", "the fact the media stages read (media/stages.mjs imageStatus)");
+  assert.equal(writer.payload.prompt_budget_chars, 1000);
+  assert.deepEqual(video.look, { preset: "flat-explainer" });
 });
 
 // Until each cute preset has prompts of its own, it is written from the explainer's: the writer
