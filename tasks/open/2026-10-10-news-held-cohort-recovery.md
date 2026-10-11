@@ -605,3 +605,15 @@ The complete local API suite is still running and real PostgreSQL remains
 a required CI gate. This implementation and the accumulated recovery
 records are carried by codex/news-held-bundle-ingestion; the original208
 production-recovery definition of done remains unchecked and active.
+
+PR1439 remains a draft. Its full local API run ended7118pass/458skip/1fail:
+15 new news errors lacked locale sentences. The separately claimed catalog
+task2026-10-11-translate-held-news-ingestion-error-messages corrects only
+app/i18n.py; existing13 localization cases, full API Ruff and mypy app471
+pass afterward. All four ingestion source/test hashes remain unchanged.
+Actual PostgreSQL CI on the previous documentation-only head93c30547 ran all
+179 news cases with no skips, including the three new lock/editor/version
+cases; independent receipt e5935556 binds the true markers/collection order.
+All necessary CI still must pass at the final PR head. The prior complete
+local failure is preserved honestly, and no owner merge/deploy approval,
+production draft ingestion or published Secure/Bitmine correction is inferred.

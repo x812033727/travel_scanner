@@ -2076,3 +2076,29 @@ CI must execute the actual PostgreSQL NOWAIT/editor tests before merge.
 The original208 recovery remains open. CFTC is not natively ingested,
 Secure's eight-leaf wording correction is local only, and no new production
 deployment, asset generation or publication is claimed by this code change.
+
+2026-10-11 15:44 Taipei: draft PR1439 carries the audited draft-ingestion
+implementation and the recovery records. Its initial tools/video CI failure
+was the same eight personal-path references in Root's notes. They were
+replaced with home placeholders, all three hygiene cases pass locally, and
+the amended head's tools/video checks pass. No frozen ingestion file changed.
+The complete local API run finished exit1:7118 passed,458 skipped,1 failure
+in1050.19s. Existing error-localization coverage found15 new codes without
+catalog sentences. CI api-tests1/4 independently showed the same sole omission;
+this was our defect rather than a baseline failure or an approval problem.
+Separately claimed task2026-10-11-translate-held-news-ingestion-error-messages
+adds75 sentences to the five existing locales, preserving every prior catalog
+byte and all four reviewed ingestion files. Its frozen catalog is d0c8d74c.
+The existing localization/i18n tests now pass13 cases, full API Ruff passes
+and mypy app471 passes. This targeted fix does not relabel the earlier failed
+complete run as passing; final required CI must validate the final PR head.
+Actual PostgreSQL CI on head93c30547 ran179 news-module cases without a skip.
+Nonauthor receipt e5935556 binds actual status markers and pinned collection
+order, including the three final real lock/editor/version cases. It explicitly
+discloses that these are status-marker/order results, not invented named JUnit.
+The CFTC unexecuted operator plan7d61a75f preserves the original five-language
+draft and independent review; the old artifacts cannot be sent directly to
+the new contracts. Deployment, fresh capture, truthful new draft-only envelope,
+dry run, one save/readback and native reverify remain separate operations.
+No merge/deployment approval, CFTC ingestion, new provider call or public
+Secure/Bitmine correction is inferred. The original208 recovery remains open.
