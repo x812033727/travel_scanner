@@ -1,13 +1,13 @@
 ---
 id: 2026-10-11-translate-held-news-ingestion-error-messages
 title: Translate held-news ingestion error messages
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: codex-news-held-error-copy
 claimed_at: 2026-10-11T07:38:39Z
 created_at: 2026-10-11T07:38:38Z
-completed_at:
+completed_at: 2026-10-11T07:45:57Z
 branch: codex/news-held-bundle-ingestion
 depends_on: []
 scope:
