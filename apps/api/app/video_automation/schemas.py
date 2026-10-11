@@ -46,10 +46,24 @@ SUBJECT_VARIANTS = ("a", "b")
 # The drama format's media settings (docs/videos/DRAMA.md); the vendors are the site's keys.
 MediaProvider = Literal["gemini", "minimax"]
 ClipResolution = Literal["720p", "768p", "1080p", "2k", "4k"]
-StylePreset = Literal["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom"]
-# The illustrated explainer (docs/videos/so-thats-why/): narrator only, no cast. Only a one-off
-# may use it; a long series and a story series are written from prompts that need a cast.
-EXPLAINER_PRESET: StylePreset = "flat-explainer"
+StylePreset = Literal[
+    "cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "cute-cartoon", "cute-mystery",
+    "custom",
+]
+# The illustrated explainer family: narrator only, no cast, 8 to 20 minutes. flat-explainer is
+# So That's Why (docs/videos/so-thats-why/), cute-cartoon the same series redrawn as a cute
+# cartoon, cute-mystery the history-and-curiosity series (docs/videos/history-curiosity/). Only
+# a one-off may use one; a long series and a story series are written from prompts that need a
+# cast. The tools (tools/video/core/drama.mjs) and the web (apps/web/lib/video-presets.ts) keep
+# the same list, and tools/video/core/explainer-family.test.mjs reads this line to compare them.
+EXPLAINER_PRESETS: tuple[StylePreset, ...] = ("flat-explainer", "cute-cartoon", "cute-mystery")
+
+
+def is_explainer_preset(preset: str | None) -> bool:
+    """Whether a style preset is one of the explainer family's."""
+    return preset in EXPLAINER_PRESETS
+
+
 # The slides route and other long-form videos have an eight-minute minimum (migration 0117).
 EPISODE_MIN_MINUTES = 8
 EXPLAINER_MIN_MINUTES = 8
@@ -424,7 +438,7 @@ class DramaRequestIn(StrictModel):
 
     @model_validator(mode="after")
     def _episode_length(self) -> Self:
-        if self.style_preset == EXPLAINER_PRESET:
+        if is_explainer_preset(self.style_preset):
             if "target_minutes" not in self.model_fields_set:
                 self.target_minutes = EXPLAINER_DEFAULT_MINUTES
             if self.target_minutes < EXPLAINER_MIN_MINUTES:
@@ -710,7 +724,7 @@ class SeriesIn(StrictModel):
 
     A ``one-off`` is one episode with one story bible: its numbers are fixed at one whatever
     was sent, and aspects and tone may be left out (docs/videos/DRAMA-FLOW.md §二). Only a
-    one-off may take EXPLAINER_PRESET: the explainer has no cast, and the other kinds' prompts
+    one-off may take an explainer preset: the explainer has no cast, and the other kinds' prompts
     write one that the drama lint then refuses on every episode.
 
     A ``story`` series (docs/videos/STORY.md) is always hands-off, stills only and never
@@ -787,12 +801,12 @@ class SeriesIn(StrictModel):
                 raise ValueError(problem)
         elif self.runtime_spec is not None or self.category is not None or self.lead == "ensemble":
             raise ValueError("anime category, runtime_spec and ensemble require long-anime-v1")
-        if self.style_preset == EXPLAINER_PRESET and self.kind != "one-off":
+        if is_explainer_preset(self.style_preset) and self.kind != "one-off":
             raise ValueError(
-                f'style_preset "{EXPLAINER_PRESET}" is for a one-off explainer only: '
+                f'style_preset "{self.style_preset}" is for a one-off explainer only: '
                 "a long series and a story series have a cast"
             )
-        if self.style_preset == EXPLAINER_PRESET:
+        if is_explainer_preset(self.style_preset):
             if "target_minutes" not in self.model_fields_set:
                 self.target_minutes = EXPLAINER_DEFAULT_MINUTES
             if self.target_minutes < EXPLAINER_MIN_MINUTES:
@@ -817,7 +831,7 @@ class SeriesIn(StrictModel):
                 raise ValueError("a story series needs the look every story shares")
         else:
             if (
-                not long_anime and self.style_preset != EXPLAINER_PRESET
+                not long_anime and not is_explainer_preset(self.style_preset)
                 and self.target_minutes > SERIES_MAX_MINUTES
             ):
                 raise ValueError(
@@ -825,7 +839,7 @@ class SeriesIn(StrictModel):
                     "a story or a one-off explainer may run longer"
                 )
             if (
-                self.style_preset == EXPLAINER_PRESET
+                is_explainer_preset(self.style_preset)
                 and self.target_minutes > EXPLAINER_MAX_MINUTES
             ):
                 raise ValueError(f"an explainer is at most {EXPLAINER_MAX_MINUTES} minutes")
@@ -849,8 +863,8 @@ class SeriesPatch(StrictModel):
     The length may reach STORY_MAX_MINUTES and the daily count and the look may be set only on
     a story series; the service refuses them on the other kinds, which keep their limits.
     ``episodes_per_day`` or ``image_model`` sent as null lifts the daily limit or follows the
-    settings tab again. EXPLAINER_PRESET stays a one-off's, and a one-off's bible fixes which
-    side of it the one-off is on (series.patch_problem).
+    settings tab again. An explainer preset stays a one-off's, and a one-off's bible fixes
+    whether it is an explainer and which one (series.patch_problem).
     """
 
     title: str | None = Field(default=None, min_length=1, max_length=200)

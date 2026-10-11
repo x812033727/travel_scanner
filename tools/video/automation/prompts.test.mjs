@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
@@ -624,4 +625,23 @@ test("the writer says the numbers, closes on three sentences, unlocks screencast
   assert.match(verifier, /The site's own checked article does: a mokaair\.com page in\s+"sources" whose text shows the day it was checked, and only for a number whose official page\s+is among the failed fetches/);
   assert.match(verifier, /NOT FOUND \(drop the number or the sentence\)/);
   assert.match(verifier, /never replace it with 「以官網為準」/);
+});
+
+// A change here moves the durable key of every unfinished explainer journal (the instructions
+// are part of a stage's inputs), so each such stage is asked, and paid for, again: deploy with
+// none unfinished, then update the digest. The cute explainer presets get variants of their own
+// so that these four never have to move for them.
+test("the four explainer instruction texts are byte for byte what they were", () => {
+  const sha256 = (text) => createHash("sha256").update(text, "utf8").digest("hex");
+  const pinned = {
+    "planner:bible-explainer": "55ffd024da8e9da7443dca79f973424efcdf277de3a9fa1ec3415af764391a90",
+    "planner:explainer": "32b471d9fcf00ac4540446ba89cbf335f4c4180241b5246301ad3662009451ed",
+    "writer:explainer": "185af9a701ecbb1317f00dd130cbf260e8e664a7275a423bad66c415cb703e72",
+    "verifier:explainer": "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842",
+  };
+  for (const [key, digest] of Object.entries(pinned)) {
+    const [stage, variant] = key.split(":");
+    assert.equal(sha256(EXPLAINER_INSTRUCTIONS[key]), digest, key);
+    assert.equal(sha256(instructionsFor(stage, "drama", "", variant)), digest, `${key} as composed`);
+  }
 });
