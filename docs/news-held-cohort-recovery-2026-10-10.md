@@ -22,14 +22,15 @@ items (88 review, 51 redraft); the remaining 69 current holds are newer.
 
 ## Recovery gates
 
-Latest verified original208 snapshot: SQL2026-10-11T06:31:33.353568Z has
-124 published,52 manual_review,22 needs_redraft,1 failed,6 duplicate and
-3 rejected. All124 publications have matching dated five-locale public
-receipts; this snapshot does not refetch all620 public pages. RQ at06:31:44Z
-has no live original-cohort jobs. Current ledger1219-with-public1214-sealed-v5 is
-8e78c8bab1a44173702577383aed976f2a2a93e486dc386c9eee3abf917047c9.
-The74 review/redraft holds, one failure and six duplicate audits remain
-unfinished. The newly published Secure article also has a separately recorded
+Latest verified original208 snapshot: SQL2026-10-11T10:07:09.934328Z has
+129 published,50 manual_review,19 needs_redraft,1 failed,6 duplicate and
+3 rejected. All129 publications have matching dated five-locale public
+receipts; this snapshot does not refetch all645 public pages. The three newest
+publications have15 fresh exact API/HTML proofs at10:06:31.762992Z.
+Current ledger1250-sealed-v5 is
+8b62303c1de6ae95ea4fe6cb81de5f0227a67a6ba9fc40ccad0e982dc5324b43.
+The69 review/redraft holds, one failure and six duplicate audits remain
+unfinished. The published Secure article also has a separately recorded
 liquidity precision correction pending; public verification proves delivery,
 and its substantive content review does not claim a clean result.
 
@@ -2102,3 +2103,322 @@ the new contracts. Deployment, fresh capture, truthful new draft-only envelope,
 dry run, one save/readback and native reverify remain separate operations.
 No merge/deployment approval, CFTC ingestion, new provider call or public
 Secure/Bitmine correction is inferred. The original208 recovery remains open.
+
+2026-10-11 16:37 Taipei: the owner explicitly authorized PR1439 merge after
+four required CI checks and deployment after normal video-owner lock release.
+Final ef9ba5d0 passed all four checks; the PostgreSQL news cases executed in CI.
+Fresh host preflight at08:12:46UTC proved all four locks free, no hold, clean
+checkout and no queued/running paid video stages. The video owner preserved
+temporary media and released their own lock; Root changed no foreign lease.
+PR1439 merged08:13:13 to3591cda8 and the normal deploy finished08:18:30,
+DEPLOY_EXIT=0. Actual host verification returned15PASS/0FAIL, including all
+runtime source hashes, native CLI, health, containers and migration head0131.
+The native migration-backup log and subsequent file stat prove a343423202-byte
+database dump created08:15:21; this is actual readback, not an assumed backup.
+
+The CFTC pilot used a fresh native full-state capture5088d4e7/state3c01bf9b,
+the truthful new independent draft review27416d34, exact manifest27db92ca and
+review envelope18128b75. Independent packet review38c976fc passed. Native dry
+reported no save, queue or model call. One native apply committed five v1
+unpublished drafts to article dd61ff45-c0d5-4b5b-8c2e-c7e32163ca78 under
+actor42917354, with genuine save/ingestion audits and durable CID intent.
+Independent readbackc3531609 proves only the candidate Guide FK/update time
+changed; original cache2/retry4/cap2/Source22/Evidence2/runs58/assessments37
+and all nine old audits remained intact.
+
+A separate trusted-admin native verify operation resolved the active,
+nondeleted, nonsuspended actor and content.manage capability, locked and
+compared the whole post-save state2d6049d2, and invoked the original route
+once. This was a native administrator operation, not an authenticated HTTP
+request. Its genuine audit9dc7958c binds the ingestion audit2432c35e and the
+article, cache5/retry5 and the native candidate job. No token was minted and
+no separate enqueue or retry was performed. Factual and all five locale
+reviews passed, and a private hero was created through the normal pipeline.
+The final judge initially selected publish, but its source-current check
+failed and downgraded the outcome to manual/news_evidence_changed. The actual
+08:32:47 snapshot1ac03376 has no publication or live job. Two native safe
+read-only fetches confirm official CFTC article HTTP403 with and without the
+Last-Modified condition. Preserve all media, drafts, old reviews and intents;
+the blocker is tracked in2026-10-11-expose-upstream-http-status-and-recover.
+
+Bitwise NEAR ETF has a new independently reviewed five-language local bundle
+8eee4b36/review06a44b4d, but its fresh native capturee709af82 contains a13-item
+claim ledger instead of the older reviewed15-item ledger. Complete Evidence
+rows remain equal after datetime normalization. An explicit review against
+the actual13-item ledger is required before preparing its native envelope;
+no Bitwise ingestion, approval or publication is claimed at this checkpoint.
+
+2026-10-11 16:53 Taipei: Bitwise NEAR ETF actual current13-ledger review
+08cc0ffa dated08:38:05 passed before native manifest3cc3ae79/review1f927b60,
+independent packet6ac9e1d1 and native dry. One native apply committed08:43:48,
+article4a1eac1f-f285-4fe0-bbed-7f40efb594db five unpublished v1 drafts.
+Independent readback0ad58165 proves actor42917354, genuine save/ingestion
+c9ea27b4 audit, unchanged Source22/Evidence2/cache2/retry7/cap2/old runs56,
+assessments44 and audits10. Only candidate Guide FK/update time changed.
+The separate native trusted-admin verify route ran exactly once, prechecking
+active/nondeleted/nonsuspended actor/content.manage and complete post-save
+CAS0f7f2e10, with durable local and native CID.verify.intent. Its original
+service and router owned commit and sole enqueue; this was not authenticated
+HTTP. The actual job suffix8 passed factual/all locale/final judge checks.
+The 08:51:13 native captureb2c7561a proves published08:50:18, retry8, live0,
+article5 published v3 revision joins. The stale error-detail text still says
+waiting for a publish button; status, timestamps and revisions establish the
+actual result. All5 API/HTML public GETs passed exact native published body,
+version/date/H1/canonical checks, receipt da5c8e8d. No Save or queue replay.
+Meta/Muse permission-dispute local complete five b0d8447b preserves stored
+Evidence2/current17 ledger and differentiates candidateevent9/30 from report
+10/1; full-content independent review remains in progress. Fresh native CAS
+48da7d23 at08:50:33/state da1f5201 equals the old whole native state; its900s
+expiry09:05:33 is genuine, not an advanced old capture. No Meta save yet.
+
+2026-10-11 17:22 Taipei: Meta Muse privacy complete five b0d8447b passed
+independent full-content review3cb88216 and exact native packet abb29330,
+review1a8f7525/linkageaec1e7cc/peer d95f9c85. Native dry reported no
+commit/queue/model call; one actual apply at09:01:18 saved article
+2bb1d651-b90c-4391-9bf5-79fbfad3aef4 with five unpublished v1 drafts and
+genuine ingestion35fa43aa. Independent save readback af263943 preserved
+all old49runs/37assessments/8audits/cache2/retry4/Source22/Evidence2/current17
+claim items. One original trusted-admin verify route used complete CAS and
+stable private CID.verify.intent. Duplicate judge PASS normally requeued
+retry5 to6 through the deployed original service; this was not another Root
+verify. Actual final536318da at09:07:21 was manual/news_evidence_changed,
+unpublished/live0 after fact/all-locales/final judge. Independent final
+readback8d03dae5 preserves all old rows, verifies five v2 onlyhero revisions,
+all current review fingerprints and two private assets. The exact old
+Evidence persisted unchanged; Source changed only four normal scan fields.
+Root native SafeNewsFetcher diagnostic b7520af1 at09:08:55 returned200;
+exact diff f1b9944b proves the5861-character core before Related News and
+title are identical, while two related cards reorder and one card date changes.
+Native same_story/legacy_match remainfalse, so no source-current override.
+Fresh actual09:14:35 capture693b49fb/state1c66da11, whole CAS/active actor/
+content.manage/no jobs/private one-time intent and independent script review
+389ef116 guarded a single original router.refresh_candidate_evidence call
+(script4e4f50e0). Both sources actually refreshed; its response is discovered/
+news_evidence_refreshed/expectedretry7, not publication proof. Actual09:21:42
+postrefresh capture d32ea690 shows locale_review/retry7/new Evidence hash
+87ea61d7/livejobs2, five unchanged unpublished v2 docs and same private assets2.
+Normal review is in progress. No second queue, cap reset, Evidence injection
+or new operator asset generation. No Meta publication is claimed yet.
+
+Agents-control five v2 manifest48158feb fixes the sole Simplified-character
+FAQ leaf found in independent v1; independent full-content v2 review86a469c6
+passes dated-source/content checks. Native category remainscrypto; the real
+crypto secondary angle is preserved and AI primary is an editorial proposal.
+No native save/provider operation is attempted until its audited category
+route exists. Own unclaimed recovery ticket now records the v2 exact result.
+Held75 followup coverage762de10e verifies the exact dated1219 membership:
+13 have CID-specific defect followups,62 still have only the original recovery
+umbrella. This is a diagnostic gap, not backlog completion. Fresh native
+three existingGuide captures (DonDavis/Strategy/California) verify five
+unpublished v1 drafts/private assets2/live0 each. Guarded source fetches200
+confirm DonDavis exact current story; Strategy changes only market widgets;
+California extraction keeps the article body but drops headers/nav/JSONLD.
+Full-content diagnosis and minimal five-language corrections are underway.
+The proven rotating-source-widget issue is filed as unclaimed task
+2026-10-11-exclude-rotating-source-widgets-from-news; no parser change done.
+
+
+2026-10-11 17:34 Taipei: Meta single native source refresh completed, and
+actual after-refresh final346f21f5/state973ba6c6 at09:22:57 proves publication
+09:21:59.381782Z/retry7/live0/all5 published v4. Fresh source hash87ea61d7
+binds the ordinary new verification, five locale reviews and Opus final judge;
+no new JEV review is claimed. Five v2-to-v3 changes are only both SourceRefs'
+checked_on dates10/1->10/11; v3-to-v4 publication bodies are identical.
+Actual public proof9bbeed73 at09:25:17 passes all5 API/HTML200 exact published
+body/version/date/H1/canonical. Nativeactor refresh was one call; source/
+review/cache/history/cap/private-to-public asset joins await final independent
+readback receipt. The current snapshot confirms publication, not stale error
+text that still says waiting for a button.
+Whole exact208 SQL1240 at09:26:52 (raw1b74f579, ledger168852b4) is126published,
+53manual/19redraft/1failed/6duplicate/3rejected. All126 have matching dated
+five-locale proofs; this does not mean630freshGETs. RQ1240 actual09:27:09
+(raw eb227a4f) has no live/queued original208 or global news jobs, with all
+Started/Scheduled/Deferred counts0, cleanup=false/no mutation/model call.
+Three fresh existing-Guide full-content/source/history diagnosis6bfbca7c
+identifies DonDavis wording/enactment/FEC precision, Strategy trading-word
+false positives with dated disclosure scope, and eight California overclaims
+of worldwide lack of corroboration. California's2239 source extraction is
+complete old-story正文, not solely navigation; only native audited refresh
+can establish current Evidence. Local15 author proposals are sealed:
+Don3e2efea2(v2 two Korean wording fixes; immutable v1 retained), Strategy
+70591bf5, California9fce97e8. Allfive native schema/write/date/hardpolicy
+checks pass per package, original Hero/SourceRefs/cache/fullhistory retained.
+Independent full-content proposal review and fresh native CAS precede any
+original native draft-save call. None of these three has been saved or
+reverified during this continuation. Template v1 creation produced an empty
+local file because PowerShell Replace chose a char overload; it is preserved,
+v2 is a new Root-authored native-original-route template, no Host mutation.
+
+
+2026-10-11 17:50 Taipei: Meta actual after-refresh published/public evidence
+now has independent final readback287efca9: one genuine native actor refresh,
+current-hash verification/five locale/Opus final judge, old JEV assessments
+kept historical, old typed history/caps/assets preserved, all5 actual public
+API/HTML proof9bbeed73 joined to native published v4. No extra native replay.
+Fresh dated original75 coverage successor80072911 joins actual1240:15 specific
+CID followups/60 umbrella-only. This is the dated75 matrix, including two now
+published rows; it is not a claim of60 current holds or native eligibility.
+Three corrected five-locale packages passed independent actual全文 review:
+Don20f0fcbd / Strategy4fd3b5b3 / California c5e58708, all draft_correction_only.
+The existing-Guide original put_draft template v4bd7cee13 passed independent
+111 actual-derived pure guard cases (18 positive/93 negative/zero accepted
+bad cases), receipt c1a28e2f. Earlier failed/empty templates remain immutable.
+Concrete private packets v2 index74b23225 binds all five proposals, true peer
+receipts, fresh native whole12 CAS09:38:33/40/46 and original v4 template.
+Don staging v1 failed on root-without-DAC traversal after data copy, before any
+native save. Immutable errors retained. All3 data-only v2 staging succeeded
+09:47:21-33 via API uid10001 creating0600 data inside0700 owned directories;
+no database/model/enqueue/publication call. Concrete packet peer is pending,
+and none of these3 corrected drafts has yet been saved or reverified.
+Current foreign Cloudflare task note on origin/main27b77 confirms HTTP/2
+does not resolve CFTC403; its HTTP2 branch is unmerged with no PR. Proposed
+urllib transport is unimplemented, and the source/security gate stays held.
+
+
+2026-10-11 18:00 Taipei: Actual Don and Strategy original native put_draft
+calls saved all5 corrected locales v1->v2 at09:49:35/49Z. Fresh readbacks
+a604ed5f/state31b0207c and0214e83c/stateda1e88a5 have no live work or
+publication. Independent actualtwo-save peer c500219b reconstructs every
+native complete revision/audit/body/actor and preserves Source22, Evidence,
+candidate/cache/caps/history/assets/all other state. California first apply
+was correctly refused before native intent because its ordinary source scan
+advanced exactly3 Source timestamps; all other19 Source fields and11 groups
+were unchanged. Read-only physical intent absence7eee1dd7 proves no native
+save intent at09:51:19. NEW fullCAS8113b6 + private uniqueOP packet006c6fe6
+and bindingpeer d30a1b89 then saved all5 California locales v1->v2 at09:55:14,
+actual readback9aa4c63a/statea0c4752d/09:55:21. Independent actualsavepeer
+97cc7bb5 validates all5 native revisions/audits and all complete othergroups;
+manual/news_evidence_changed/retry4/live0/unpublished remain unchanged.
+All3 draft corrections are now genuinely saved; no publication is claimed.
+Don original native verify route was invoked once after static peer270e03fe,
+ACK discovered/news_reverify_requested/retry8. Actual09:58:18 dc9bc72e
+readback is verifying/live2, still unpubv2; expected job8 is not returned by
+the route and is not itself a completion or paid-call identity proof.
+Strategy original publish gate was invoked once with full savedCAS and zero
+current-Evidence verification matching the corrected TW fingerprint. The real
+route rejected source_content_changed for its exact Decrypt page and committed
+the source hold; raw68c710d1/statea8b4d898 at09:58:40 remains retry5/live0/v2
+unpublished. Runtime typed comparison permits only error_code/error_detail/
+updated_at on candidate; no queue/provider call or new assessment/audit/asset.
+This was a genuinely publication-capable route with a stale-verification guard,
+not a read-only probe; normal HTTP and Redis rate-limit activity is expected.
+Concrete existing native CA/Strategy refresh scripts are under independent
+review, with no native refresh executed for either candidate at this update.
+
+
+2026-10-11 18:08 Taipei: California and Strategy original native source refresh
+routes each completed once, after independent peers b603b502/332ad615. Actual
+ACKs are retry5/retry6, and respective interim native readbacks b83c63ae/
+504ecb64 prove ordinary locale_review/verifying with live work; ACKs alone
+are not job completion. Fresh normal final captures prove all3 published:
+Don ff3a6f5e/state0bf7b69e at10:04:52, actual publication10:01:26.849287Z,
+retry8; California42d2c4ca/state2f75e3aa at10:04:58, publication10:01:39.501894Z,
+retry5; Strategy8698f9ea/statef3fddb50 at10:05:05, publication10:04:21.864639Z,
+retry6. All3 have5 published v4 locales/live0. Don/Strategy stale ready error
+codes do not override actual status/pub pointers/revisions. No operator manual
+Evidence/source-policy/cap/asset write or second verify/refresh was performed.
+Native-derived public input8a98c866 joins each real published revision to its
+locale/version/full body/time. Actual proof b0b3825c at10:06:31.762992Z passes
+all15 API/HTML200/full document/version/date/H1/canonical,30 paced GETs0 POST.
+Combined final Source/Evidence/history/model/audit/asset/public proof review
+is pending; publication and public checks are already evidenced independently
+of the earlier enqueue ACK.
+Fresh whole exact208 census1250 raw00a6d158/ledger8b62303c at10:07:09.934328Z
+has129 published,50 manual_review,19 needs_redraft,1 failed,6 duplicate and
+3 rejected. All129 have matching dated five-locale proofs, not645 fresh GETs.
+The69 review/redraft holds, one failure and six duplicate audits remain open.
+Six next native complete-content captures at10:02:12-42Z indexbe2f5629 prove
+all6 old held Guides have five locales/live0. First3:08b29fb0 OpenAI mathematics,
+0c72c4f4 Sanders superintelligence proposal,5a605c0b ChatGPT interfaces; last3:
+b80743ad Fable safeguards,ddf85a1f Meta glasses,f7b72226 Cloudflare Clef.
+Independent full-content diagnostics are in progress, with no new save,
+provider, enqueue, publication, current-source or category approval for them.
+
+
+2026-10-11 18:20 Taipei: The three actually published corrections now have a
+complete independent final readback, d3609c35, PASS175, sixteen unchanged
+input seals. Don's twenty-nine actual worker-changed content leaves were read
+against all stored/current source text and fourteen claims, with no new
+content blocker. California's real final publisher is JEV; Don and Strategy
+have genuine Claude final judges. All old complete Source/history/cap rows,
+fifteen actual latest locale fingerprints, native revision/audit actor joins
+and fifteen public API/HTML200 checks are retained. This closes these three
+items only; original208 remains129 published/50 manual/19 redraft/1 failed/
+6 duplicate/3 rejected at the dated10:07:09 snapshot.
+The original208 RQ census at10:07:21.295073Z has no active/queued cohort work,
+no global news queued/started/scheduled/deferred work, three idle workers,
+and registry cleanup=false. Raw SHA256: 1327472a539d06e0b4a12cf04629e366db0363b63cae04d78b9d7402aeed744a.
+The corrected local coverage parser, helper023107ce/receipt6b944f29, retains
+empty owners as null rather than swallowing the next claimed_at line. Four
+parser regression examples and all current task-owner fields were checked.
+Dated held75 still has15 individually tracked CIDs and60 umbrella-only CIDs;
+the supplied1250 overlay has5 published/50 manual/19 redraft/1 failed.
+This is dated tracking coverage, not a source/content clearance or completion.
+The last-three full-content diagnosis5989c4b6 reads15 entire documents,
+15 stored Evidence bodies and51 claims. It identifies precise Fable signup
+versus post-validation application wording; five-language unsupported Muse
+Charm and an EN Gen3 weight comparison; and Clef versus Clef-flash results,
+Kev-specific restrictions and unsupported future support-speed predictions.
+New minimal authored five-locale packages and crossed independent review
+are in progress. No new Guide save/model/queue/publication exists for these six.
+Six primary nativeRO checks plus sixteen secondary nativeRO checks now cover
+all22 retained source URLs, allHTTP200: thirteen native_same_story=true,
+nine false. Six false results are Verge changing news/topic/category pages;
+three are Clef/clef-flash/Kev Hugging Face model cards requiring substantive
+diff review. The benchmark Space remains only10 extracted characters, a shell
+page that cannot prove benchmark facts. These diagnostics do not replace
+normal native publication revalidation or update any Evidence/Source/Redis.
+The sixteen-secondary indexdec816e5 binds real per-URL full stored/current
+text and native hashes at10:16:14-10:17:49Z. The separate primary indexa821e967
+is at10:09:22-53Z. These are honest separate times, not one atomic source gate.
+Sanders0c72c4f4 and Meta glassesddf85a1f have a new explicit operational
+follow-up after the existing audited-navigation-repair implementation.
+Known changing retained URLs make immediate paid re-verification premature;
+their genuine Guide text can be corrected separately while preserving all
+source rows/history. No unowned implementation task or foreign claim changed.
+
+
+## 2026-10-11 18:55 Taipei: six native corrections and audited-navigation code
+
+Six independent five-language content reviews and the independent v5 strict
+Guide-reference guard are sealed. Clef received five genuine original
+guides.router.put_draft saves at10:45Z, versions1->2. Full native readback
+51e2612b closes198 independent checks, five complete revision/audit joins
+and all old typed rows. Source22, Evidence5, claims, private assets, caps,
+candidate cache and retry/status remain unchanged; this is draft-only.
+
+The other five old10:39 save packets were not invoked after their sources'
+hourly10:43 scan. NEW10:46 captures show only the three genuine scanner
+clocks changed in each complete Source22; nineteen other Source fields and
+eleven other groups remain typed-identical. No CAS field was excluded.
+NEW five-packet peer de371067 and private-stage1dfb4d8b bind those complete
+fresh states. Each original native save was invoked once, reporting all25
+locale saves at10:51:51-10:52:20Z; indexc06586a4. Independent complete
+post-save readback for these five is pending. No normal verification,
+source refresh, model job or publication was dispatched by these saves.
+
+The existing audited-navigation task now implements a dry-run-first,
+active-content-manager CLI/service with900s whole12 CAS/NOWAIT, exact
+listing selection, dated full stored/current-body review, actor archive,
+unchanged native Source/history/assets/caps and a changed Evidence hash
+requiring fresh review. Any saved-document or historical-claim citation
+refuses removal, including ordinary URL aliases and Unicode quotations.
+Stable CID.navigation-repair intent survives unknown outcomes; no queue,
+fetch, paid model, automatic replay or publication is performed.
+
+Independent source review72f04c0b and final-test-formatting peer5818d2be
+close all reported findings. Final focused tests36pass/3Postgres integration
+skip; relevant three-suite tests524pass/6Postgres skip preceded the final
+regressions. Ruff passes; mypy app+tests passes859files. PostgreSQL NOWAIT
+cases are present but not locally executed. This code is not merged or
+deployed, and will be offered as a draft PR requiring its own permission.
+
+Two real retained historical ledgers prevent navigation removal even
+after Guide references are corrected: Sanders claim12 still cites policy/
+AI listings for the unsupported20-country assertion; Glasses claim14
+still cites tech for Muse Charm. The audited-navigation task correctly
+refuses these; deployment alone cannot recover these stories. A separate
+unclaimed audited-ledger correction task records the needed capability.
+Old claims/source rows are not silently changed or counted as repaired.
+The last208 census remains129published/50manual/19redraft/1failed/6duplicate/
+3rejected at10:07Z, not a new census after these draft saves.
