@@ -5,6 +5,7 @@ import { EXPLAINER_PRESETS, isExplainerPreset } from "@/lib/video-presets";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { AdminVideoSeries } from "./admin-video-series";
 import { STYLE_PRESETS } from "./admin-video-settings";
+import { DefaultStyleSelect } from "./admin-video-settings-drama";
 
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: null, sessionIdentity: null, status: undefined }) }));
 
@@ -87,5 +88,18 @@ describe("the explainer family of style presets", () => {
     const queue = await screen.findByRole("region", { name: "發起的漫劇" });
     expect(queue.textContent).toContain("可愛卡通解說（奇聞檔案局）");
     expect(queue.textContent).not.toContain("cute-mystery");
+  });
+
+  // The second hold: a drama with no preset of its own takes the settings' default, so the two
+  // cute presets are not a default either until they have prompts (lib/video-presets.ts).
+  it("leaves the cute presets out of the settings' default-style select, a saved one kept", () => {
+    const values = () => within(screen.getByRole("combobox")).getAllByRole("option").map((option) => (option as HTMLOptionElement).value);
+    const first = render(<DefaultStyleSelect presets={STYLE_PRESETS} value="flat-explainer" onChange={() => undefined} />);
+    expect(values()).toEqual(["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom"]);
+    expect((screen.getByRole("combobox") as HTMLSelectElement).value).toBe("flat-explainer");
+    first.unmount();
+    render(<DefaultStyleSelect presets={STYLE_PRESETS} value="cute-mystery" onChange={() => undefined} />);
+    expect(values()).toEqual(["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "cute-mystery", "custom"]);
+    expect((screen.getByRole("combobox") as HTMLSelectElement).value).toBe("cute-mystery");
   });
 });

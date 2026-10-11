@@ -7,3 +7,12 @@ export const EXPLAINER_PRESETS = ["flat-explainer", "cute-cartoon", "cute-myster
 
 /** Whether a style preset is one of the explainer family's. */
 export const isExplainerPreset = (preset: string): boolean => (EXPLAINER_PRESETS as readonly string[]).includes(preset);
+
+// Not yet a choice for the settings' default style: a drama that carries no preset of its own takes
+// the default, and these two have no prompts of their own before pull request 3 of
+// docs/videos/explainer-route/DESIGN.md; they join the select with it (ticket 2026-10-11-settings-default-style-offers-explainer-presets).
+export const DEFAULT_STYLE_HELD_PRESETS: readonly string[] = ["cute-cartoon", "cute-mystery"];
+
+/** The presets the default-style select offers: the held ones left out, the saved value always kept. */
+export const defaultStyleChoices = (presets: readonly string[], saved: string): string[] =>
+  presets.filter((preset) => preset === saved || !DEFAULT_STYLE_HELD_PRESETS.includes(preset));

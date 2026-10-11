@@ -34,6 +34,7 @@ scope:
   - apps/api/tests/test_video_explainer_duration.py
   - apps/web/lib/video-presets.ts
   - apps/web/components/admin-video-settings.tsx
+  - apps/web/components/admin-video-settings-drama.tsx
   - apps/web/components/admin-video-series.tsx
   - apps/web/components/admin-video-explainer-family.test.tsx
   - apps/web/components/admin-video-explainer-duration.test.tsx
@@ -152,6 +153,9 @@ On the host after the deploy (read-only):
   the two as soon as the API does, and `settle()` falls back to the settings' preset. Do not
   file a cute request by a direct API call either: until the prompts land it is written from
   So That's Why's prompts and drawn by the settings' image model.
+- **Default-style select.** The settings tab's default-style select hides `cute-cartoon` and
+  `cute-mystery` until pull request 3 (`DEFAULT_STYLE_HELD_PRESETS` in
+  `apps/web/lib/video-presets.ts`; a saved cute value stays visible). The API still accepts them.
 - **Rollback.** The previous release reads the upgraded database while no row uses a cute name;
   if one does, its list endpoints answer 500 until that row is changed. The downgrade refuses
   while such a row exists.
