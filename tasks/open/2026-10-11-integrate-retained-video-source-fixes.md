@@ -68,7 +68,7 @@ scope:
 
 原 branding.mjs SHA256 1d5c89b5e54ebfee67fae5fececa7b4e8d5e1dba7dd145dca6e459bfe5d4658c；原 check.test.mjs receipt SHA256 42f9bdbcb3b4454fb9d945f3899da36bcc3d70c045d31196f0c931a692f906d1。Mandarin 離線證據在 C:/Users/x8120/mokaair-work/stalled-video-completion-20261008/embedding-audio/particle-offline-recheck.json。
 
-此草稿只寫入 scratch；沒有 claim/release/done、修改原 worktree、model/provider request 或正式站操作。
+本輪僅恢復共享待辦；没有接管source任務、修改原worktree、model/provider request或正式站操作。
 
 原始保留分支／核對HEAD：
 - `codex/stalled-videos-completion-20261008@b9940f18c1dfed8b493ceb9778df4c845728d4e2`。
