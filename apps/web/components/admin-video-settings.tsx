@@ -271,6 +271,16 @@ export function mediaChoice(options: MediaOptions | undefined, kind: keyof Media
 }
 
 /**
+ * Every image model the catalogue offers, whichever vendor serves it, each with its vendor: the
+ * list a picker of one image model shows (the slides' picker in admin-video-settings-tutorial.tsx
+ * builds the same list; a one-off explainer's request form uses this one). Empty when the
+ * settings read is missing or an older site sends no image catalogue.
+ */
+export function imageModelOptions(options: MediaOptions | undefined): Array<MediaOption & { provider: MediaProvider }> {
+  return MEDIA_PROVIDERS.flatMap((provider) => (options?.images?.[provider] ?? []).map((option) => ({ ...option, provider })));
+}
+
+/**
  * One part's save: PUT only that part's fields. The view that comes back is the whole, handed to
  * the page and returned to the part, which resets its draft from it (the server trims and drops
  * what it does not keep); null when the save failed.
