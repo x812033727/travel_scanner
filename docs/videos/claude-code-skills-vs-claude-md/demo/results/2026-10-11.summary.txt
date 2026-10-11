@@ -1,0 +1,102 @@
+2026-10-11, Claude Code 2.1.295, --model sonnet (claude-sonnet-5-5). Twenty-two headless sessions;
+how each was run and its full log are in ../../runlog.txt, section 2026-10-11.
+sk = the release-prep skill, md = the same procedure in CLAUDE.md, skf/mdf = five skills / a
+CLAUDE.md with five procedures, skl/mdl = the look request, no = no procedure, sx = /release-prep 0.3.1.
+
+## node tally.mjs <the twenty-two streams> (the table it prints last)
+name | Skill called | F1 version | F2 changelog | F3 readme | F4 release note | F5 last line | SKILL.md opened with a tool | first request tokens | turns
+sk1 | yes | yes | yes | yes | yes | yes | no | 8818 | 11
+md1 | no | yes | yes | yes | yes | yes | no | 9240 | 9
+sk2 | yes | yes | yes | yes | yes | yes | no | 8811 | 11
+md2 | no | yes | yes | yes | yes | yes | no | 9238 | 9
+sk3 | yes | yes | yes | yes | yes | yes | no | 8812 | 11
+md3 | no | yes | yes | yes | yes | yes | no | 9240 | 9
+skf1 | yes | yes | yes | yes | yes | yes | no | 9041 | 11
+mdf1 | no | yes | yes | yes | yes | yes | no | 9909 | 9
+skf2 | yes | yes | yes | yes | yes | yes | no | 9042 | 11
+mdf2 | no | yes | yes | yes | yes | yes | no | 9907 | 9
+skf3 | yes | yes | yes | yes | yes | yes | no | 9039 | 12
+mdf3 | no | yes | yes | yes | yes | yes | no | 9908 | 9
+skl1 | yes | no | no | no | no | no | no | 8828 | 8
+mdl1 | no | no | no | no | no | no | no | 9253 | 6
+skl2 | yes | no | no | no | no | no | no | 8826 | 8
+mdl2 | no | no | no | no | no | no | no | 9257 | 6
+skl3 | yes | no | no | no | no | no | no | 8825 | 8
+mdl3 | no | no | no | no | no | no | no | 9252 | 6
+no1 | no | yes | no | yes | no | no | no | 8753 | 10
+sx1 | no | yes | yes | yes | yes | yes | no | 9178 | 9
+sx2 | no | yes | yes | yes | yes | yes | no | 9178 | 9
+sx3 | no | yes | yes | yes | yes | yes | no | 9182 | 9
+
+## node drift.mjs <the twenty-two streams> (the table it prints last)
+name | seed files changed | new files | release carried out | "- [" lines | Skill calls | requests | first request | all requests | turns | cost USD
+sk1 | package.json CHANGELOG.md README.md | releases/v0.3.1.md | yes | 0 | release-prep | 4 | 8818 | 39606 | 11 | 0.0511896
+md1 | package.json CHANGELOG.md README.md | releases/v0.3.1.md | yes | 0 | none | 3 | 9240 | 30284 | 9 | 0.041936
+sk2 | package.json CHANGELOG.md README.md | releases/v0.3.1.md | yes | 0 | release-prep | 4 | 8811 | 39524 | 11 | 0.044976199999999994
+md2 | package.json CHANGELOG.md README.md | releases/v0.3.1.md | yes | 0 | none | 3 | 9238 | 30307 | 9 | 0.039088
+sk3 | package.json CHANGELOG.md README.md | releases/v0.3.1.md | yes | 0 | release-prep | 4 | 8812 | 39566 | 11 | 0.0461428
+md3 | package.json CHANGELOG.md README.md | releases/v0.3.1.md | yes | 0 | none | 3 | 9240 | 30297 | 9 | 0.0388828
+skf1 | package.json CHANGELOG.md README.md | releases/v0.3.1.md | yes | 0 | release-prep | 4 | 9041 | 40603 | 11 | 0.04759580000000001
+mdf1 | package.json CHANGELOG.md README.md | releases/v0.3.1.md | yes | 0 | none | 3 | 9909 | 32422 | 9 | 0.0469242
+skf2 | package.json CHANGELOG.md README.md | releases/v0.3.1.md | yes | 0 | release-prep | 4 | 9042 | 40468 | 11 | 0.047300800000000004
+mdf2 | package.json CHANGELOG.md README.md | releases/v0.3.1.md | yes | 0 | none | 3 | 9907 | 32378 | 9 | 0.040338
+skf3 | package.json CHANGELOG.md README.md | releases/v0.3.1.md | yes | 0 | release-prep | 5 | 9039 | 52288 | 12 | 0.052972
+mdf3 | package.json CHANGELOG.md README.md | releases/v0.3.1.md | yes | 0 | none | 3 | 9908 | 32495 | 9 | 0.041756600000000005
+skl1 | none | none | no | 0 | release-prep | 4 | 8828 | 39052 | 8 | 0.043156400000000004
+mdl1 | none | none | no | 0 | none | 3 | 9253 | 29301 | 6 | 0.0367028
+skl2 | none | none | no | 0 | release-prep | 4 | 8826 | 39440 | 8 | 0.0456666
+mdl2 | none | none | no | 0 | none | 3 | 9257 | 29471 | 6 | 0.034887600000000005
+skl3 | none | none | no | 0 | release-prep | 4 | 8825 | 38959 | 8 | 0.0428044
+mdl3 | none | none | no | 0 | none | 3 | 9252 | 29400 | 6 | 0.033088
+no1 | package.json CHANGELOG.md README.md | none | yes | 0 | none | 4 | 8753 | 38749 | 10 | 0.0422758
+sx1 | package.json CHANGELOG.md README.md | releases/v0.3.1.md | yes | 0 | none | 3 | 9178 | 30397 | 9 | 0.0437002
+sx2 | package.json CHANGELOG.md README.md | releases/v0.3.1.md | yes | 0 | none | 3 | 9178 | 30390 | 9 | 0.0415856
+sx3 | package.json CHANGELOG.md README.md | releases/v0.3.1.md | yes | 0 | none | 3 | 9182 | 30433 | 9 | 0.041517200000000004
+
+## each session's hook log (<name>.seen.log)
+sk1 | PreToolUse Skill release-prep keys=skill,args;
+md1 | InstructionsLoaded session_start Project CLAUDE.md;
+sk2 | PreToolUse Skill release-prep keys=skill,args;
+md2 | InstructionsLoaded session_start Project CLAUDE.md;
+sk3 | PreToolUse Skill release-prep keys=skill,args;
+md3 | InstructionsLoaded session_start Project CLAUDE.md;
+skf1 | PreToolUse Skill release-prep keys=skill,args;
+mdf1 | InstructionsLoaded session_start Project CLAUDE.md;
+skf2 | PreToolUse Skill release-prep keys=skill,args;
+mdf2 | InstructionsLoaded session_start Project CLAUDE.md;
+skf3 | PreToolUse Skill release-prep keys=skill,args;
+mdf3 | InstructionsLoaded session_start Project CLAUDE.md;
+skl1 | PreToolUse Skill release-prep keys=skill,args;
+mdl1 | InstructionsLoaded session_start Project CLAUDE.md;
+skl2 | PreToolUse Skill release-prep keys=skill,args;
+mdl2 | InstructionsLoaded session_start Project CLAUDE.md;
+skl3 | PreToolUse Skill release-prep keys=skill;
+mdl3 | InstructionsLoaded session_start Project CLAUDE.md;
+no1 | (no file or empty)
+sx1 | UserPromptExpansion slash_command release-prep source=projectSettings;
+sx2 | UserPromptExpansion slash_command release-prep source=projectSettings;
+sx3 | UserPromptExpansion slash_command release-prep source=projectSettings;
+
+## the last line of each reply
+sk1 | 下一步：git tag v0.3.1
+md1 | 下一步：git tag v0.3.1
+sk2 | 下一步：git tag v0.3.1
+md2 | 下一步：git tag v0.3.1
+sk3 | 下一步：git tag v0.3.1
+md3 | 下一步：git tag v0.3.1
+skf1 | 下一步：git tag v0.3.1
+mdf1 | 下一步：git tag v0.3.1
+skf2 | 下一步：git tag v0.3.1
+mdf2 | 下一步：git tag v0.3.1
+skf3 | 下一步：git tag v0.3.1
+mdf3 | 下一步：git tag v0.3.1
+skl1 | 我這次只做檢查，沒有改任何檔案。`release-prep` 流程（改 `package.json`、CHANGELOG 新增 v0.3.1 標題、README、`releases/v0.3.1.md`）還沒執行，你確認 CHANGELOG 沒問題後說一聲，我就照流程跑。
+mdl1 | 需要我現在照發版流程做 0.3.1 嗎？
+skl2 | 另外我只做了檢查，沒有改任何檔案：`package.json` 和 README 還是 0.3.0。需要的話，叫我跑發版準備（改版號、把 Unreleased 搬到 v0.3.1、更新 README、寫 `releases/v0.3.1.md`）就可以。
+mdl2 | 目前 Unreleased 只有一條。要正式準備 0.3.1 發版的話跟我說一聲，我會照 CLAUDE.md 的五步處理。
+skl3 | 你只要我檢查 CHANGELOG，所以我沒有執行發版流程。要的話我可以接著做 release-prep：改版號、把 Unreleased 搬到 `## v0.3.1 (2026-10-11)`、更新 README、新增 `releases/v0.3.1.md`。
+mdl3 | 要準備 0.3.1 發版的話，跟我說一聲，我會照 CLAUDE.md 的五個步驟處理。
+no1 | - 這個目錄不是 git 儲存庫，所以我沒有建立 commit 或 tag。
+sx1 | 下一步：git tag v0.3.1
+sx2 | 下一步：git tag v0.3.1
+sx3 | 下一步：git tag v0.3.1
