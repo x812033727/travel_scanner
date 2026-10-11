@@ -58,7 +58,7 @@ Running a command on the production host needs the owner's go-ahead each time.
       `/admin/news` (sources tab).
 - [x] Tick the host-load item on the two 2026-09-30 tickets if the dry run shows their
       sources were created or already present.
-- [ ] Update the scanner-status column of `docs/official-ai-accounts.md` for any source
+- [x] Update the scanner-status column of `docs/official-ai-accounts.md` for any source
       the host refused.
 
 ## How to verify
@@ -96,8 +96,8 @@ and record the count here, or that no page has been declined yet.
   - In the dry run Google DeepMind blog and CFTC press releases also failed validation;
     both were unchanged rows, so the load did not touch them. Worth a look if they show
     as stuck.
-  - Still open: the day-later check, and the scanner-status column of
-    `docs/official-ai-accounts.md` for Mistral (listed there as a working source).
+  - Still open: the day-later check. The Mistral row of `docs/official-ai-accounts.md`
+    now says the host refused it.
 
 - Order matters for the video-topics key. Deployed together with the official-topics
   change, the five rows are plain creates. Loaded first without it, the later load is
