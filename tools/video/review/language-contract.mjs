@@ -123,7 +123,7 @@ function writeTranslations(box, doc, locales) {
  * upload package from here, and review-push sends it. `name` is a core fixture (minimal is
  * narrated in zh-TW, en in English).
  */
-export async function languageVideo({ name = "minimal", slug = name === "en" ? "fixture-en" : "fixture-minimal", translated = ["en", "ja", "ko", "zh-CN"] } = {}) {
+export async function languageVideo({ name = "minimal", slug = name === "en" ? "fixture-en" : "fixture-minimal", translated = ["en", "ja", "ko"] } = {}) {
   const box = sandbox(slug, name);
   mkdirSync(box.workdir, { recursive: true });
   const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
@@ -194,9 +194,9 @@ export async function confirmedVideo({ name, chosen, skippedDubs = {}, readyDubs
 // approving the batch once it is up in Studio); and an English-narrated one whose own language is
 // chosen as well (its title, captions and dub are the video's own).
 export const CONTRACT_CASES = {
-  "zh-tw-narration": { name: "minimal", chosen: { en: { metadata: true, captions: true }, ja: { captions: true }, "zh-CN": { metadata: true, dub: true } }, skippedDubs: { "zh-CN": "配音字數超出時間軸，改用字幕" } },
+  "zh-tw-narration": { name: "minimal", chosen: { en: { metadata: true, captions: true }, ja: { captions: true }, ko: { metadata: true, dub: true } }, skippedDubs: { ko: "配音字數超出時間軸，改用字幕" } },
   "zh-tw-dubbed": { name: "minimal", chosen: { ja: { captions: true, dub: true } }, readyDubs: { ja: "mp3" } },
-  "en-narration": { name: "en", chosen: { en: { metadata: true, captions: true, dub: true }, ja: { metadata: true, captions: true } }, translated: ["zh-TW", "ja", "ko", "zh-CN"] },
+  "en-narration": { name: "en", chosen: { en: { metadata: true, captions: true, dub: true }, ja: { metadata: true, captions: true } }, translated: ["zh-TW", "ja", "ko"] },
 };
 
 /** One case as the site holds it after the batch: the project, its review rows and every stored file. */

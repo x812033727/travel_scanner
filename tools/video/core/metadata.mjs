@@ -20,7 +20,6 @@ export const TAGS_MAX_CHARS = 500;
 // Section labels of the composed description, per locale; `parens` wrap a picture's licence.
 export const LABELS = {
   "zh-TW": { chapters: "章節", article: "完整文章", sources: "參考資料", pictures: "圖片來源", colon: "：", parens: ["（", "）"] },
-  "zh-CN": { chapters: "章节", article: "完整文章", sources: "参考资料", pictures: "图片来源", colon: "：", parens: ["（", "）"] },
   en: { chapters: "Chapters", article: "Full article", sources: "Sources", pictures: "Image credits", colon: ": ", parens: [" (", ")"] },
   ja: { chapters: "チャプター", article: "記事全文", sources: "参考資料", pictures: "画像の出典", colon: "：", parens: ["（", "）"] },
   ko: { chapters: "챕터", article: "전체 글", sources: "참고 자료", pictures: "이미지 출처", colon: ": ", parens: [" (", ")"] },

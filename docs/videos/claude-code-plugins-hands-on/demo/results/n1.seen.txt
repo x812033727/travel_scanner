@@ -1,0 +1,10 @@
+PreToolUse by=main id=c1 Glob **/*
+PreToolUse by=main id=c2 Grep \b1\.2\.0\b|\b1\.2\.1\b
+PreToolUse by=main id=c3 Read CHANGELOG.md
+PreToolUse by=main id=c4 Read package.json
+PreToolUse by=main id=c5 Read README.md
+PreToolUse by=main id=c6 Read logs/sync-2026-10-08.log
+PreToolUse by=main id=c7 Read logs/sync-2026-10-09.log
+PreToolUse by=main id=c8 Edit package.json
+PreToolUse by=main id=c9 Edit README.md
+PreToolUse by=main id=c10 Edit CHANGELOG.md

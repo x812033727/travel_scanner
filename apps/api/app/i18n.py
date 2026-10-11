@@ -2002,6 +2002,84 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_topic_unavailable": "The required news topic is not available",
         "news_verification_required": "Verify this article before publishing it",
         "news_verification_stale": "The Traditional Chinese draft changed; verify it again",
+        "news_event_date_invalid": (
+            "The article date or date in the page address does not meet the candidate and "
+            "source date rules"
+        ),
+        "news_ingestion_actor_required": (
+            "An active account with content management permission is required"
+        ),
+        "news_ingestion_busy": "The candidate is published, not on hold, or has unfinished work",
+        "news_ingestion_candidate_mismatch": "The draft bundle is for a different news candidate",
+        "news_ingestion_digest_invalid": "The draft bundle or review file hash is invalid",
+        "news_ingestion_guide_exists": (
+            "This candidate already has an article; use the existing draft editor"
+        ),
+        "news_ingestion_manifest_invalid": (
+            "The draft ingestion manifest does not match the required format"
+        ),
+        "news_ingestion_operation_used": (
+            "This operation already has a save record; check it instead of retrying"
+        ),
+        "news_ingestion_policy_failed": "The draft bundle failed the required editorial checks",
+        "news_ingestion_review_mismatch": (
+            "The review record is invalid or does not match this operation, all five drafts and "
+            "stored evidence"
+        ),
+        "news_ingestion_slug_invalid": "The article page address is invalid or reserved",
+        "news_ingestion_snapshot_expired": (
+            "The ingestion snapshot expired or has an invalid capture time"
+        ),
+        "news_ingestion_source_busy": "The source is missing or locked for scanning",
+        "news_ingestion_source_mismatch": (
+            "The drafts' source references do not match the stored evidence"
+        ),
+        "news_ingestion_state_changed": (
+            "The candidate, source or complete history no longer matches the snapshot"
+        ),
+        "news_navigation_actor_required": (
+            "An active account with content management permission is required."
+        ),
+        "news_navigation_busy": (
+            "Repair requires a held, unpublished candidate with five saved drafts, an available s"
+            "ource and no unfinished work."
+        ),
+        "news_navigation_claim_source": (
+            "The original claim record still cites this navigation page, so its evidence cannot b"
+            "e removed."
+        ),
+        "news_navigation_manifest_invalid": (
+            "The repair manifest or independent review has an invalid format, operation ID or rev"
+            "iew time."
+        ),
+        "news_navigation_not_listing": (
+            "Only independently verified navigation listings from the same source website can be "
+            "repaired."
+        ),
+        "news_navigation_operation_used": (
+            "This candidate already has a repair record. Check its receipt instead of repeating t"
+            "he operation."
+        ),
+        "news_navigation_review_mismatch": (
+            "The independent review is invalid or does not match the stored evidence, claims, fiv"
+            "e drafts and dated, readable navigation pages."
+        ),
+        "news_navigation_selection_invalid": (
+            "Choose unique, valid evidence IDs and retain the original report and actual evidence"
+            "."
+        ),
+        "news_navigation_snapshot_expired": (
+            "The repair snapshot has expired or has an invalid capture time. Read a fresh snapsho"
+            "t before repairing."
+        ),
+        "news_navigation_state_changed": (
+            "The candidate, sources, drafts or complete history no longer match the repair snapsh"
+            "ot."
+        ),
+        "news_navigation_still_cited": (
+            "The saved drafts still cite this navigation page. Correct those references in the dr"
+            "aft editor first."
+        ),
     },
     "ja": {
         "news_article_already_published": "このニュース記事には公開済みの版があります",
@@ -2042,6 +2120,72 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_topic_unavailable": "必要なニューストピックを利用できません",
         "news_verification_required": "公開前にこの記事を検証してください",
         "news_verification_stale": "繁体字中国語の原稿が変更されました。再検証してください",
+        "news_event_date_invalid": (
+            "記事の日付またはページアドレス内の日付が、"
+            "候補と情報源の日付の条件を満たしていません"
+        ),
+        "news_ingestion_actor_required": "コンテンツ管理権限を持つ有効なアカウントが必要です",
+        "news_ingestion_busy": "候補が公開済み、保留中ではない、または未完了の処理があります",
+        "news_ingestion_candidate_mismatch": "この原稿一式は別のニュース候補のものです",
+        "news_ingestion_digest_invalid": "原稿一式または審査ファイルのハッシュ値が無効です",
+        "news_ingestion_guide_exists": (
+            "この候補には既に記事があります。既存の原稿編集画面を使ってください"
+        ),
+        "news_ingestion_manifest_invalid": "原稿の取り込みマニフェストが必要な形式と一致しません",
+        "news_ingestion_operation_used": (
+            "この操作には既に保存記録があります。再実行せずにその記録を確認してください"
+        ),
+        "news_ingestion_policy_failed": "原稿一式が必須の編集チェックに合格していません",
+        "news_ingestion_review_mismatch": (
+            "審査記録が無効か、この操作、5言語の原稿または保存済みの根拠と一致しません"
+        ),
+        "news_ingestion_slug_invalid": "記事のページアドレスが無効か、予約済みです",
+        "news_ingestion_snapshot_expired": (
+            "取り込み用のスナップショットが期限切れか、取得時刻が無効です"
+        ),
+        "news_ingestion_source_busy": "情報源が存在しないか、スキャン用にロックされています",
+        "news_ingestion_source_mismatch": "原稿の出典情報が保存済みの根拠と一致しません",
+        "news_ingestion_state_changed": (
+            "候補、情報源または履歴全体がスナップショットと一致しなくなりました"
+        ),
+        "news_navigation_actor_required": "コンテンツ管理権限を持つ有効なアカウントが必要です。",
+        "news_navigation_busy": (
+            "修正するには、候補が保留中かつ未公開で、5言語の原稿と利用可能な情報源がそろい、未完"
+            "了の処理がないことが必要です。"
+        ),
+        "news_navigation_claim_source": (
+            "元の主張記録がこのナビゲーションページを引用しています。その根拠情報は削除できません"
+            "。"
+        ),
+        "news_navigation_manifest_invalid": (
+            "修正用のマニフェストまたは独立審査の形式、操作番号、審査日時が要件に一致しません。"
+        ),
+        "news_navigation_not_listing": (
+            "修正できるのは、同じ情報源サイトのナビゲーション用一覧ページであると独立審査で確認さ"
+            "れたものだけです。"
+        ),
+        "news_navigation_operation_used": (
+            "この候補にはすでに修正記録があります。操作を繰り返さず、元の処理記録を確認してくださ"
+            "い。"
+        ),
+        "news_navigation_review_mismatch": (
+            "独立審査が無効か、保存済みの根拠情報・主張記録・5言語の原稿・読み取り日時が確認でき"
+            "るナビゲーションページの全文と一致しません。"
+        ),
+        "news_navigation_selection_invalid": (
+            "重複のない有効な根拠情報のIDを指定し、元の報道記事と実際の根拠情報を残してください。"
+        ),
+        "news_navigation_snapshot_expired": (
+            "修正用のスナップショットが期限切れか、取得日時が無効です。修正前に新しいスナップショ"
+            "ットを取得してください。"
+        ),
+        "news_navigation_state_changed": (
+            "候補、情報源、原稿、または履歴全体が修正用のスナップショットと一致しません。"
+        ),
+        "news_navigation_still_cited": (
+            "保存済みの原稿がこのナビゲーションページを引用しています。先に原稿エディターで参照を"
+            "修正してください。"
+        ),
     },
     "ko": {
         "news_article_already_published": "이 뉴스 기사에는 이미 게시된 버전이 있습니다",
@@ -2082,6 +2226,73 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_topic_unavailable": "필요한 뉴스 주제를 사용할 수 없습니다",
         "news_verification_required": "게시하기 전에 이 기사를 검증해 주세요",
         "news_verification_stale": "번체 중국어 초안이 변경되었습니다. 다시 검증해 주세요",
+        "news_event_date_invalid": (
+            "기사 날짜 또는 페이지 주소의 날짜가 후보 및 출처의 날짜 규칙에 맞지 않습니다"
+        ),
+        "news_ingestion_actor_required": "콘텐츠 관리 권한이 있는 활성 계정이 필요합니다",
+        "news_ingestion_busy": (
+            "후보가 이미 게시되었거나 보류 상태가 아니거나 아직 끝나지 않은 작업이 있습니다"
+        ),
+        "news_ingestion_candidate_mismatch": "이 초안 묶음은 다른 뉴스 후보의 것입니다",
+        "news_ingestion_digest_invalid": "초안 묶음 또는 검토 파일의 해시가 유효하지 않습니다",
+        "news_ingestion_guide_exists": (
+            "이 후보에는 이미 기사가 있습니다. 기존 초안 편집기를 사용하세요"
+        ),
+        "news_ingestion_manifest_invalid": "초안 가져오기 명세가 필요한 형식과 일치하지 않습니다",
+        "news_ingestion_operation_used": (
+            "이 작업에는 이미 저장 기록이 있습니다. 재시도하지 말고 해당 기록을 확인하세요"
+        ),
+        "news_ingestion_policy_failed": "초안 묶음이 필수 편집 검사를 통과하지 못했습니다",
+        "news_ingestion_review_mismatch": (
+            "검토 기록이 유효하지 않거나 이 작업, 5개 언어 초안 또는 저장된 근거와 일치하지 "
+            "않습니다"
+        ),
+        "news_ingestion_slug_invalid": "기사 페이지 주소가 유효하지 않거나 예약되어 있습니다",
+        "news_ingestion_snapshot_expired": (
+            "가져오기 스냅샷이 만료되었거나 캡처 시간이 유효하지 않습니다"
+        ),
+        "news_ingestion_source_busy": "출처가 없거나 스캔 잠금이 설정되어 있습니다",
+        "news_ingestion_source_mismatch": "초안의 출처 정보가 저장된 근거와 일치하지 않습니다",
+        "news_ingestion_state_changed": (
+            "후보, 출처 또는 전체 이력이 더 이상 스냅샷과 일치하지 않습니다"
+        ),
+        "news_navigation_actor_required": "콘텐츠 관리 권한이 있는 활성 계정이 필요합니다.",
+        "news_navigation_busy": (
+            "수정하려면 보류 중인 미게시 후보에 5개 언어의 저장된 초안과 사용 가능한 출처가 있어"
+            "야 하며, 미완료 작업이 없어야 합니다."
+        ),
+        "news_navigation_claim_source": (
+            "원래 주장 기록이 아직 이 탐색 페이지를 인용하고 있어 해당 근거를 삭제할 수 없습니다."
+        ),
+        "news_navigation_manifest_invalid": (
+            "수정 명세 또는 독립 검토의 형식, 작업 ID나 검토 시각이 요구 조건에 맞지 않습니다."
+        ),
+        "news_navigation_not_listing": (
+            "동일한 출처 사이트의 탐색용 목록 페이지로 독립 검토에서 확인된 항목만 수정할 수 있습"
+            "니다."
+        ),
+        "news_navigation_operation_used": (
+            "이 후보에는 이미 수정 기록이 있습니다. 작업을 반복하지 말고 원래 처리 기록을 확인해 "
+            "주세요."
+        ),
+        "news_navigation_review_mismatch": (
+            "독립 검토가 유효하지 않거나 저장된 근거, 주장 기록, 5개 언어의 초안 또는 조회 시각이"
+            " 확인된 탐색 페이지의 전체 내용과 일치하지 않습니다."
+        ),
+        "news_navigation_selection_invalid": (
+            "중복되지 않는 유효한 근거 ID를 지정하고 원래 보도 기사와 실제 근거를 남겨 주세요."
+        ),
+        "news_navigation_snapshot_expired": (
+            "수정 스냅샷이 만료되었거나 캡처 시각이 유효하지 않습니다. 수정 전에 새 스냅샷을 조회"
+            "해 주세요."
+        ),
+        "news_navigation_state_changed": (
+            "후보, 출처, 초안 또는 전체 이력이 수정 스냅샷과 더 이상 일치하지 않습니다."
+        ),
+        "news_navigation_still_cited": (
+            "저장된 초안이 아직 이 탐색 페이지를 인용하고 있습니다. 먼저 초안 편집기에서 해당 참"
+            "조를 수정해 주세요."
+        ),
     },
     "zh-TW": {
         "news_article_already_published": "這篇新聞已有公開版本",
@@ -2118,6 +2329,46 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_topic_unavailable": "新聞主題尚未建立",
         "news_verification_required": "請先查核文章再發布",
         "news_verification_stale": "繁中草稿已修改，請重新查核",
+        "news_event_date_invalid": "文章日期或網址中的日期不符合候選與來源的日期規則",
+        "news_ingestion_actor_required": "需要具有內容管理權限的有效帳號",
+        "news_ingestion_busy": "候選已發布、不在待處理狀態，或仍有未完成的工作",
+        "news_ingestion_candidate_mismatch": "草稿內容包屬於另一個新聞候選",
+        "news_ingestion_digest_invalid": "草稿內容包或審查檔案的雜湊不符",
+        "news_ingestion_guide_exists": "此候選已有文章，請使用既有草稿編輯流程",
+        "news_ingestion_manifest_invalid": "草稿匯入清單不符合所需格式",
+        "news_ingestion_operation_used": "此操作已有保存紀錄，請查看原紀錄，不要重複執行",
+        "news_ingestion_policy_failed": "草稿內容包未通過必要的編輯政策檢查",
+        "news_ingestion_review_mismatch": "審查紀錄無效，或未對應此操作、五語草稿及保存的來源證據",
+        "news_ingestion_slug_invalid": "文章網址代稱格式不符，或已被保留",
+        "news_ingestion_snapshot_expired": "匯入快照已過期，或擷取時間不符",
+        "news_ingestion_source_busy": "來源不存在，或仍有掃描鎖定",
+        "news_ingestion_source_mismatch": "草稿的來源引用與保存的證據不符",
+        "news_ingestion_state_changed": "候選、來源或完整歷史已與快照不同",
+        "news_navigation_actor_required": "需要具有內容管理權限的有效帳號。",
+        "news_navigation_busy": (
+            "修補前候選須處於待審且未發布狀態、具備已保存的五語草稿與可用來源，且沒有未完成的工作"
+            "。"
+        ),
+        "news_navigation_claim_source": "原始主張紀錄仍引用此導覽頁，不能移除這筆證據。",
+        "news_navigation_manifest_invalid": (
+            "修補清單或獨立審查的格式、操作編號或審查時間不符合要求。"
+        ),
+        "news_navigation_not_listing": "只能修補經獨立審查確認的同一來源網站導覽頁。",
+        "news_navigation_operation_used": "此候選已有修補紀錄，請查看原處理紀錄，不要重複執行。",
+        "news_navigation_review_mismatch": (
+            "獨立審查無效，或未對應完整證據、主張紀錄、五語草稿，以及附有讀取時間的可讀導覽頁全文"
+            "。"
+        ),
+        "news_navigation_selection_invalid": (
+            "請指定不重複的有效證據編號，並保留原始報導及實際證據。"
+        ),
+        "news_navigation_snapshot_expired": (
+            "修補快照已過期，或擷取時間不符；修補前請重新讀取快照。"
+        ),
+        "news_navigation_state_changed": "候選、來源、草稿或完整歷史已與修補快照不符。",
+        "news_navigation_still_cited": (
+            "已保存的草稿仍引用此導覽頁，請先透過草稿編輯器修正這些引用。"
+        ),
     },
     "zh-CN": {
         "news_article_already_published": "这篇新闻已有公开版本",
@@ -2154,6 +2405,46 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_topic_unavailable": "新闻主题尚未建立",
         "news_verification_required": "请先核查文章再发布",
         "news_verification_stale": "繁体中文草稿已修改，请重新核查",
+        "news_event_date_invalid": "文章日期或网址中的日期不符合候选与来源的日期规则",
+        "news_ingestion_actor_required": "需要具有内容管理权限的有效账号",
+        "news_ingestion_busy": "候选已发布、不在待处理状态，或仍有未完成的工作",
+        "news_ingestion_candidate_mismatch": "草稿内容包属于另一个新闻候选",
+        "news_ingestion_digest_invalid": "草稿内容包或审查文件的哈希不符",
+        "news_ingestion_guide_exists": "此候选已有文章，请使用现有草稿编辑流程",
+        "news_ingestion_manifest_invalid": "草稿导入清单不符合所需格式",
+        "news_ingestion_operation_used": "此操作已有保存记录，请查看原记录，不要重复执行",
+        "news_ingestion_policy_failed": "草稿内容包未通过必要的编辑政策检查",
+        "news_ingestion_review_mismatch": "审查记录无效，或未对应此操作、五语草稿及保存的来源证据",
+        "news_ingestion_slug_invalid": "文章页面地址格式不符，或已被保留",
+        "news_ingestion_snapshot_expired": "导入快照已过期，或获取时间不符",
+        "news_ingestion_source_busy": "来源不存在，或仍有扫描锁定",
+        "news_ingestion_source_mismatch": "草稿的来源引用与保存的证据不符",
+        "news_ingestion_state_changed": "候选、来源或完整历史已与快照不同",
+        "news_navigation_actor_required": "需要具有内容管理权限的有效账号。",
+        "news_navigation_busy": (
+            "修补前候选须处于待审且未发布状态、具备已保存的五语草稿与可用来源，且没有未完成的工作"
+            "。"
+        ),
+        "news_navigation_claim_source": "原始主张记录仍引用此导航页，不能移除这笔证据。",
+        "news_navigation_manifest_invalid": (
+            "修补清单或独立审查的格式、操作编号或审查时间不符合要求。"
+        ),
+        "news_navigation_not_listing": "仅可修补经独立审查确认的同一来源网站导航页。",
+        "news_navigation_operation_used": "此候选已有修补记录，请查看原处理记录，不要重复执行。",
+        "news_navigation_review_mismatch": (
+            "独立审查无效，或未对应完整证据、主张记录、五语草稿，以及附有读取时间的可读导航页全文"
+            "。"
+        ),
+        "news_navigation_selection_invalid": (
+            "请指定不重复的有效证据编号，并保留原始报道及实际证据。"
+        ),
+        "news_navigation_snapshot_expired": (
+            "修补快照已过期，或获取时间无效；修补前请重新读取快照。"
+        ),
+        "news_navigation_state_changed": "候选、来源、草稿或完整历史已与修补快照不符。",
+        "news_navigation_still_cited": (
+            "已保存的草稿仍引用此导航页，请先通过草稿编辑器修正这些引用。"
+        ),
     },
 }
 for _news_locale, _news_errors in _NEWS_AUTOMATION_ERRORS.items():

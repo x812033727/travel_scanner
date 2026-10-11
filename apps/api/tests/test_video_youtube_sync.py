@@ -748,7 +748,7 @@ async def test_partial_language_retry_retains_its_pinned_package_and_done_detail
         site.google.refuse.clear()
         await sync.run_sync(SLUG, site.factory)
         assert len(site.google.updates) == 1
-        assert len(site.google.tracks[STUDIO_ID]) == 5
+        assert len(site.google.tracks[STUDIO_ID]) == 4
         result = await _project(site)
         assert result.youtube_sync is not None and result.youtube_sync["status"] == "done"
 

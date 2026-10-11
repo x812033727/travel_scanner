@@ -1,0 +1,24 @@
+{
+  "round": 2,
+  "reason": "still misheard after one re-recording",
+  "rewrites": [
+    {
+      "id": "6xgi",
+      "scene": "choose-table",
+      "before": "要自己的窗格、自己的指令，或者要改寫事件，才輪到 mod。",
+      "after": "要在畫面上加自己的介面、自己的指令，或者要改寫事件，才輪到 mod。"
+    },
+    {
+      "id": "d57r",
+      "scene": "validate-pipe",
+      "before": "第二行說：這個 hook 站在擋得了呼叫的位置，而且沒有 catch，出錯時沒人接手。",
+      "after": "第二行說：這個 hook 站在擋得了呼叫的位置，而且沒有 catch，出錯時沒有人替它處理。"
+    },
+    {
+      "id": "2a6n",
+      "scene": "why-calls",
+      "before": "我自己的界線是：原始碼讀得完、這一行看過，我才載入。",
+      "after": "我自己的原則是：原始碼讀得完、calls 那一行也看過，我才載入。"
+    }
+  ]
+}

@@ -139,8 +139,8 @@ test("a finished video passes every check but the judge that is not built yet, a
   assert.deepEqual(failed.map((item) => [item.id, item.detail]), [["policy", "judge endpoint not available"]]);
   const byId = Object.fromEntries(report.items.map((item) => [item.id, item]));
   assert.match(byId.pace.detail, /^5 slide states, the longest [\d.]+ s; none over 15 s$/);
-  assert.match(byId.captions.detail, /caption files for zh-TW, en, ja, ko, zh-CN, every translation current/);
-  assert.match(byId.metadata.detail, /for zh-TW, en, ja, ko, zh-CN; 3 chapters$/);
+  assert.match(byId.captions.detail, /caption files for zh-TW, en, ja, ko, every translation current/);
+  assert.match(byId.metadata.detail, /for zh-TW, en, ja, ko; 3 chapters$/);
   assert.equal(byId.facts.detail, "verify-1.md marks 1 claims NOT FOUND (9); no scene cites them");
   assert.equal(byId.links.detail, "1 links open");
   assert.match(byId.thumbnail.detail, /^1280x720 JPEG, 4 KB; the headline is about 34 px tall at 320 px wide$/);
@@ -477,8 +477,8 @@ test("a compiled series passes its six checks without a judge, and a re-cut epis
   assert.deepEqual(report.items.map((item) => item.id), COMPILATION_ITEM_IDS);
   const byId = Object.fromEntries(report.items.map((item) => [item.id, item]));
   assert.match(byId.assemble.detail, new RegExp(`^${COMPILATION_FRAMES} frames, -14.4 LUFS; every check passed$`));
-  assert.equal(byId.captions.detail, "caption files for zh-TW, en, ja, ko, zh-CN, merged from every episode");
-  assert.match(byId.metadata.detail, /for zh-TW, en, ja, ko, zh-CN; 3 chapters$/);
+  assert.equal(byId.captions.detail, "caption files for zh-TW, en, ja, ko, merged from every episode");
+  assert.match(byId.metadata.detail, /for zh-TW, en, ja, ko; 3 chapters$/);
   assert.equal(byId.links.detail, "the description has no links");
   assert.match(byId.disclosure.detail, /^tick altered or synthetic content: a drama/);
   assert.equal(server.calls.some((call) => call.url.endsWith("/judge/policy")), false, "no judge for a compilation");

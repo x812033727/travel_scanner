@@ -1,0 +1,3114 @@
+RUN LOG: claude-code-mcp-hands-on
+Date: 2026-10-10 (all times UTC, taken from the commands' own output; the machine's clock is UTC+8,
+so the same runs are 2026-10-10 09:21 to 09:33 Taipei time). Model-free checks 01:21 to 01:23Z,
+the twelve sessions 01:24:30Z to 01:28:46Z, the dry run from demo/ 01:32Z.
+Claude Code: 2.1.295 (Claude Code)
+Node.js: v24.13.0
+bash: GNU bash, version 5.3.15(1)-release (x86_64-pc-cygwin)  (Git Bash; uname: MINGW64_NT-10.0-26200-ARM64 3.6.9)
+find / sort / head / cat: find (GNU findutils) 4.10.0, sort / head / cat (GNU coreutils) 8.32
+OS: Windows 11 Home 10.0.26200
+Model: every session passed --model sonnet (session.sh's default; MODEL was never set). The init
+event names the model claude-sonnet-5-5 in all twelve sessions; so does every assistant message,
+and it is the only key of every result line's modelUsage. No other model name appears in any
+stream (runner's models.mjs, printed under every item).
+Login: subscription (init reports apiKeySource "none").
+Where the shell came from: Git Bash started by the Claude Code desktop app. The shell holds 31
+variables whose names start with CLAUDE or ANTHROPIC; the sessions inherited them. Their names
+and values are not recorded. session.sh's one status line about them reads, in every session:
+"ANTHROPIC_BASE_URL set, to an anthropic.com host | ENABLE_TOOL_SEARCH not set".
+Budget: 12 model sessions allowed, 12 used (11 required + the optional r1). No session failed, none
+was rerun, --force was never used, there is no <logs>/replaced/ folder. total_cost_usd added up
+over the twelve result lines: 0.1435.
+
+How to read this log
+- Item numbers are the brief's ("要先實作", items 0 to 15).
+- <work> is the video's work folder outside the repository, <seed> is <work>/_tools/seed,
+  <lab> is <work>/run/gear-lab (rebuilt from the seed before every session), <logs> is
+  <work>/run/logs, <runner> is <work>/_tools/runner, <repo> is the repository checkout, <tmp> is
+  the temporary directory's claude-code-mcp-hands-on folder. The home directory is written
+  <home>. session.sh's own "show" filter writes <lab>, <logs>, <seed>, <work>, <home>, <user>,
+  <host>, <uuid>, toolu_<id>; the runner's scripts write <lab>, <uuid>, toolu_<id>.
+  One more replacement was made when this file was put together: in x1's record two debug lines
+  were cut at 200 columns in the middle of a path, so session.sh's filter could only replace the
+  home part; what was left of that path is written "<a path under <lab>, cut at 200 columns>".
+  Trailing blanks at the ends of lines were removed. Nothing else in a quoted output was changed.
+- WORK was set to the video's work folder for every command, as the planner did. <lab> lies below
+  the home directory (7 folders above it, session.sh's count; one of them has .claude settings,
+  which the script counts and never opens).
+- "[exit N]" is the exit code captured right after a command.
+- "runner" marks a check that is not in the brief. The runner's scripts live in <runner>:
+    one.sh <name> <arm>      runs "WORK=<work> bash <seed>/session.sh <name> <arm>" (never --dry,
+                             never --force), saves what it printed, then runs models.mjs.
+    many.sh <name>:<arm> ... one.sh for each pair; stops before the next session if session.sh or
+                             claude did not exit 0, a model other than sonnet or haiku was named,
+                             tally counted a server, tool, plugin, skill or agent that is neither
+                             the seed's nor shipped, or the hook record's three counts were not
+                             all 0. It never stopped.
+    models.mjs               every string under a key containing "model" anywhere in a stream,
+                             the keys of modelUsage, and the init event's lists as counts (only
+                             gear and gear-more are ever named). Run after every session.
+    extras.mjs               what the seed's tally.mjs does not print: the seed's mcp_servers
+                             entries in full, the system lines, each request's three token
+                             counts, each tool result's keys, the final reply in full.
+    summary.mjs              the brief's rule for outcome 3, from tally's table.
+    debug-view.sh            from each debug record, the lines that name the seed's server
+                             together with the version exchange, and a few counts.
+    diff-mchecks.sh          the runner's m-checks.txt against the planner's.
+    results.mjs, build-demo.sh, demo-dry.sh, assemble.mjs   write demo/ and this file.
+  Copies of models.mjs, extras.mjs and summary.mjs are in demo/runner/.
+- Raw files (stream.jsonl, debug.txt, stderr.txt, seen.txt, session.txt, <name>.lab/) stay in
+  <logs>. Nothing was rebuilt, replaced or deleted.
+- The streams carry one rate_limit_event line each. No script here reads them and they are not
+  quoted. No session id, message uuid or tool-call id is quoted. The debug records were read
+  only through session.sh's own filter and debug-view.sh; each has 2 lines that mention claude.ai
+  connectors and 1 line that mentions an advisor (counted, never printed), and 0 lines that name
+  an MCP server other than the seed's.
+- The init event of every session lists 6 agents, 21 skills and 3 plugins. tally.mjs counts those
+  that are not shipped with Claude Code: 0, 0 and 0 in all twelve sessions. Their names are not
+  recorded here.
+
+Before anything was run (step 1 of the runner's task)
+- Read in full: session.sh, tally.mjs, m-checks.sh, gear-lab/server/gear.mjs,
+  variants/more.server.mjs, hook-log/seen.mjs, hook-log/settings.json, check-server.mjs,
+  check-seen.mjs, check-tally.mjs, gen-stock.mjs, calc.mjs, measure-seed.mjs, the four
+  variants/mcp.*.json, the three prompts, truth.json.
+- gear.mjs imports node:fs (appendFileSync, readFileSync), node:path, node:readline and node:url
+  only. It reads server/stock.tsv next to itself, appends to server/requests.txt next to itself,
+  reads stdin and writes stdout. No network module, no child process, no path outside its own
+  folder. more.server.mjs: the same, with appendFileSync only (requests-more.txt). A search of
+  the whole seed for net, http, https, dgram, tls, fetch(, WebSocket, child_process, spawn, exec
+  finds child_process only in the three check-*.mjs scripts (they start node on the seed's own
+  files in a temporary folder) and no network module anywhere.
+- The eleven dry runs are part of m-checks.sh (item 2) and build in <work>/run/dry-lab; <lab> and
+  <logs> did not exist yet apart from the empty <logs> made for m-checks.txt.
+
+================================================================================================
+ITEMS 0, 1, 2   Model-free checks (M0 to M10)
+================================================================================================
+$ mkdir -p <work>/run/logs
+$ WORK=<work> bash <seed>/m-checks.sh > <work>/run/logs/m-checks.txt 2>&1
+[exit 0]
+
+Expected: the planner's record (<work>/_tools/logs/m-checks-planner.txt); every "[exit N]" is 0.
+Actual: 763 lines, 38 "[exit N]" lines, all 0. After masking time stamps, the +ms column of
+requests.txt and the seconds of one "[exit 0] (N s" line, the runner's output differs from the
+planner's in ONE line:
+  planner: 8 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | ...
+  runner:  7 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | ...
+(the dry folder was one level deeper when the planner ran it; the other counts are the same).
+Match: yes, apart from that count. The brief says "37 個指令"; both records have 38 "[exit N]"
+lines (the brief's number is off by one, not the output).
+Note: m-checks.sh itself runs "git init -q" inside a temporary folder it makes and deletes (M10,
+to test that session.sh refuses a run folder inside a repository). That is the seed's own check;
+the runner ran no git command on the repository.
+
+runner: $ bash <runner>/diff-mchecks.sh
+planner lines: 763 | runner lines: 763
+planner [exit N] lines: 38 | runner: 38 | runner not 0: 0
+623c623
+< 8 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+---
+> 7 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+[diff exit 1]
+
+The full output of m-checks.sh follows (763 lines; nothing trimmed).
+----------------------------------------------------------------------------------------------
+# 2026-10-10T01:21:03Z | every command below is run from <seed>
+
+$ claude --version
+2.1.295 (Claude Code)
+[exit 0]
+
+$ node --version
+v24.13.0
+[exit 0]
+
+$ bash --version | head -1
+GNU bash, version 5.3.15(1)-release (x86_64-pc-cygwin)
+[exit 0]
+
+$ find --version | head -1; sort --version | head -1; head --version | head -1; cat --version | head -1
+find (GNU findutils) 4.10.0
+sort (GNU coreutils) 8.32
+head (GNU coreutils) 8.32
+cat (GNU coreutils) 8.32
+[exit 0]
+
+$ claude --help | grep -E -- '^  --(mcp-config|strict-mcp-config|tools|allowedTools|setting-sources|no-session-persistence|debug-file|model|max-budget-usd)[ ,]' | cut -c1-78
+  --allowedTools, --allowed-tools <tools...>
+  --debug-file <path>                   Write debug logs to a specific file pa
+  --max-budget-usd <amount>             Maximum dollar amount to spend on API
+  --mcp-config <configs...>             Load MCP servers from JSON files or
+  --model <model>                       Model for the current session. Provide
+  --no-session-persistence              Disable session persistence - sessions
+  --setting-sources <sources>           Comma-separated list of setting source
+  --strict-mcp-config                   Only use MCP servers from --mcp-config
+  --tools <tools...>                    Specify the list of available tools fr
+[exit 0]
+
+$ claude mcp --help | grep -E '^  (add|add-json|get|list|remove|reset-project-choices) ' | cut -c1-78
+  add [options] <name> <commandOrUrl> [args...]  Add an MCP server to Claude C
+  add-json [options] <name> <json>      Add an MCP server (stdio, SSE, HTTP, o
+  get <name>                            Get details about an MCP server.
+  list                                  List configured MCP servers. Unapprove
+  remove [options] <name>               Remove an MCP server
+  reset-project-choices                 Reset all approved and rejected
+[exit 0]
+
+$ node measure-seed.mjs
+sha256[0:16]      lines  max chars  max columns  bom  cr  card  file
+811b445d346fa548     28        119          119  no   no  -     calc.mjs
+9899b747b66833c8     50        198          198  no   no  -     check-seen.mjs
+fd297643f56f54c8     88        164          164  no   no  -     check-server.mjs
+72ea8dfa2eee980d     80        250          250  no   no  -     check-tally.mjs
+a90b02a1b387321b      4         49           49  no   no  fits  gear-lab/README.md
+07d2015fcf8632a6      6         22           22  no   no  fits  gear-lab/package.json
+f9759d87960cc0c8     95         63           63  no   no  fits  gear-lab/server/gear.mjs
+891f7c32cb484022      4        152          152  no   no  -     gear-lab/server/hand.jsonl
+205f5c1fc7ca6128     25         20           24  no   no  fits  gear-lab/server/stock.tsv
+8fa0533b127b88b8     48        223          223  no   no  -     gen-stock.mjs
+ba674b4c22b0953b     55         64           64  no   no  fits  hook-log/seen.mjs
+9b4b69c38dc3ba74     83         60           60  no   no  fits  hook-log/settings.json
+b33bc142a3b3d806     73        182          182  no   no  -     m-checks.sh
+00d6138604619db9     42        207          207  no   no  -     measure-seed.mjs
+162514288e1f212e      1         31           53  no   no  fits  prompts/ask.txt
+                  visible characters (a chat card holds 44): 31
+f3fc80a2d0f23b53      1         16           27  no   no  fits  prompts/idle.txt
+                  visible characters (a chat card holds 44): 16
+d6b8597b9c52b87b      1         18           30  no   no  fits  prompts/miss.txt
+                  visible characters (a chat card holds 44): 18
+f3765a2b9ab101d0    286        283          283  no   no  -     session.sh
+1bef20adfd1fd2fe    174        513          513  no   no  -     tally.mjs
+718ec32a292b9ebb     88         24           24  no   no  -     truth.json
+bdd0720db4192a3b      9         33           33  no   no  fits  variants/mcp.broken.json
+0c64fed187074b0d      9         33           33  no   no  fits  variants/mcp.project.json
+4698f73badeffda8      9         58           58  no   no  fits  variants/mcp.rooted.json
+ad45f70fd557e9ff     14         33           33  no   no  fits  variants/mcp.wide.json
+9e2e02aab6cc4406     65        107          130  no   no  -     variants/more.server.mjs
+[exit 0]
+
+$ node gen-stock.mjs --check
+same  gear-lab/server/stock.tsv
+same  truth.json
+24 rows | below 3: G-108 G-233 G-352 G-590 | exactly 3: G-121 G-466
+[exit 0]
+
+$ node check-server.mjs
+## node server/gear.mjs, one message at a time (> sent, < received)
+> {"jsonrpc":"2.0","id":"probe","method":"server/discover","params":{"_meta":{"io.modelcontextprotocol/protocolVersion":"2026-07-28","io.modelcontextprotocol/clientCapabilities":{}}}}
+< {"jsonrpc":"2.0","id":"probe","error":{"code":-32601,"message":"Method not found"}}
+> {"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"by-hand","version":"0"}}}
+< {"jsonrpc":"2.0","id":1,"result":{"protocolVersion":"2025-11-25","capabilities":{"tools":{}},"serverInfo":{"name":"gear-desk","version":"0.1.0"},"instructions":"器材租借櫃台庫存：代號、貨架、剩餘數量。"}}
+> {"jsonrpc":"2.0","method":"notifications/initialized"}
+  (no reply)
+> {"jsonrpc":"2.0","id":2,"method":"tools/list"}
+< {"jsonrpc":"2.0","id":2,"result":{"tools":[{"name":"find_gear","description":"查一個器材代號放在哪個貨架、還剩幾個。","inputSchema":{"type":"object","required":["code"],"properties":{"code":{"type":"string"}}}},{"name":"low_stock","description":"列出剩餘數量低於 below 的器材。","inputSchema":{"type":"object","required":["below"],"properties":{"below":{"type":"integer"}}}}]}}
+> {"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"find_gear","arguments":{"code":"G-417"}}}
+< {"jsonrpc":"2.0","id":3,"result":{"content":[{"type":"text","text":"G-417 頭燈｜貨架 D-07｜剩 37"}],"isError":false}}
+> {"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"low_stock","arguments":{"below":3}}}
+< {"jsonrpc":"2.0","id":4,"result":{"content":[{"type":"text","text":"G-108 行李秤 剩 2\nG-233 雪鏡 剩 1\nG-352 營燈 剩 0\nG-590 潛水鏡 剩 2"}],"isError":false}}
+> {"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"find_gear","arguments":{"code":"G-999"}}}
+< {"jsonrpc":"2.0","id":5,"result":{"content":[{"type":"text","text":"查無代號：G-999"}],"isError":true}}
+> {"jsonrpc":"2.0","id":6,"method":"tools/call","params":{"name":"sell_gear","arguments":{}}}
+< {"jsonrpc":"2.0","id":6,"result":{"content":[{"type":"text","text":"沒有這個工具：sell_gear"}],"isError":true}}
+> {"jsonrpc":"2.0","id":7,"method":"resources/list"}
+< {"jsonrpc":"2.0","id":7,"error":{"code":-32601,"message":"Method not found"}}
+> {"jsonrpc":"2.0","id":8,"method":"initialize","params":{"protocolVersion":"1999-01-01","capabilities":{},"clientInfo":{"name":"by-hand","version":"0"}}}
+< {"jsonrpc":"2.0","id":8,"result":{"protocolVersion":"2025-11-25","capabilities":{"tools":{}},"serverInfo":{"name":"gear-desk","version":"0.1.0"},"instructions":"器材租借櫃台庫存：代號、貨架、剩餘數量。"}}
+> this line is not JSON
+  (no reply)
+> {"jsonrpc":"2.0","id":9,"method":"ping"}
+< {"jsonrpc":"2.0","id":9,"result":{}}
+[server exit 0 after stdin closed | stderr bytes: 0]
+## server/requests.txt (the +ms column is the time since the server started; it differs every run)
+01 +     0ms start
+02 +     9ms server/discover asks 2026-07-28
+03 +    12ms initialize asks 2025-11-25
+04 +    13ms notifications/initialized
+05 +   330ms tools/list
+06 +   333ms tools/call find_gear {"code":"G-417"}
+07 +   334ms tools/call low_stock {"below":3}
+08 +   335ms tools/call find_gear {"code":"G-999"}
+09 +   336ms tools/call sell_gear {}
+10 +   336ms resources/list
+11 +   337ms initialize asks 1999-01-01
+12 +   338ms not JSON
+13 +   685ms ping
+14 +   710ms end
+## what tools/list hands over
+gear: 2 tools (find_gear, low_stock), 302 characters of JSON
+gear-more: 10 tools (reserve_gear, cancel_reservation, check_out, check_in, list_reservations, move_shelf, adjust_stock, price_quote, repair_ticket, daily_summary), 1997 characters of JSON
+[gear-more exit 0 | requests-more.txt lines: 5]
+[exit 0]
+
+$ node check-seen.mjs
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+exit 0 | stdout bytes: 0 | stderr bytes: 0
+--- the record
+PreToolUse ToolSearch query=select:mcp__gear__find_gear
+PreToolUse mcp__gear__find_gear source=made-up-source {"code":"G-417"}
+PostToolUse mcp__gear__find_gear source=made-up-source response_chars=34
+PostToolUseFailure mcp__gear__find_gear source=made-up-source error=made-up error that names <lab> and runs on
+PermissionRequest mcp__gear__find_gear source=made-up-source
+PermissionDenied mcp__gear__find_gear source=made-up-source reason=made-up reason
+PreToolUse mcp__(another server) source=-
+PostToolUseFailure mcp__(another server) source=- error=-
+PreToolUse Read server/stock.tsv
+PreToolUse Read (outside the project)
+InstructionsLoaded session_start Project CLAUDE.md
+InstructionsLoaded session_start User (outside the project)
+[exit 0]
+
+$ node check-tally.mjs | cut -c1-260
+== made-up-on | model made-up-model | Claude Code 0.0.0 | permission mode default
+   result success (is_error false), 3 turns, 1 ms, cost USD 0 | permission denials 0
+   built-in tools offered (1): ToolSearch | ToolSearch listed: yes
+   MCP servers on the init line: the seed's 1 (gear=connected) + any other 0 | entries skipped at start-up: 0
+   MCP tools on the init line: the seed's 2 (mcp__gear__find_gear mcp__gear__low_stock) + any other 0
+   not shipped with Claude Code: plugins 0 | skills 0 of 2 | agents 0 of 2
+   models on the messages: made-up-model
+      modelUsage made-up-model in 9 + cache write 1500 + cache read 20000, out 90
+   call  1 ToolSearch {"query":"select:mcp__gear__find_gear,mcp__gear__low_stock","max_results":5}
+     back  1 is_error=- 75 chars [tool_reference] [tool_reference mcp__gear__find_gear] ⏎ [tool_reference mcp__gear__low_stock]
+   call  2 mcp__gear__find_gear {"code":"G-417"}
+     back  2 is_error=false 21 chars [text] G-417 頭燈｜貨架 D-07｜剩 37
+   call  3 mcp__gear__low_stock {"below":3}
+     back  3 is_error=false 53 chars [text] G-108 行李秤 剩 2 ⏎ G-233 雪鏡 剩 1 ⏎ G-352 營燈 剩 0 ⏎ G-590 潛水鏡 剩 2
+   tool calls: to the seed's MCP tools 2 (answered with an error: 0) | ToolSearch 1 | other built-in 0 | to any other MCP server 0 | tool-result characters 149
+   the server's own record: 7 lines, tools/call 2 | start > initialize asks 2025-11-25 > notifications/initialized > tools/list > end
+   the stream and the server agree on the number of calls: yes (stream 2, server 2; a denied call reaches the stream but not the server)
+   system lines by subtype: init 1
+   requests: 4 | first request 6503 tokens | last request 7203 tokens | all requests added up 27612 | output 40 | result line usage 21509
+   final reply (54 chars): shelf D-07 yes | left 37 yes | low stock named 4 of 4 (G-108 G-233 G-352 G-590) | at exactly 3: none | other real codes: none | codes not in the file: none | other shelves: none | G-999 named: no
+   scored: all right yes | offered an answer yes
+      | G-417 在貨架 D-07，還剩 37 個。
+      | 低於 3 的：G-108、G-233、G-352、G-590
+== made-up-off | model made-up-model | Claude Code 0.0.0 | permission mode default
+   result success (is_error false), 3 turns, 1 ms, cost USD 0 | permission denials 0
+   built-in tools offered (1): ToolSearch | ToolSearch listed: yes
+   MCP servers on the init line: the seed's 0 (none) + any other 0 | entries skipped at start-up: 0
+   MCP tools on the init line: the seed's 0 (none) + any other 0
+   not shipped with Claude Code: plugins 0 | skills 0 of 2 | agents 0 of 2
+   models on the messages: made-up-model
+      modelUsage made-up-model in 9 + cache write 1500 + cache read 20000, out 90
+   tool calls: to the seed's MCP tools 0 (answered with an error: 0) | ToolSearch 0 | other built-in 0 | to any other MCP server 0 | tool-result characters 0
+   the server's own record: no requests.txt (the process never started)
+   the stream and the server agree on the number of calls: nothing to compare (stream 0, server -; a denied call reaches the stream but not the server)
+   system lines by subtype: init 1
+   requests: 1 | first request 6503 tokens | last request 6503 tokens | all requests added up 6503 | output 10 | result line usage 21509
+   final reply (35 chars): shelf D-07 no | left 37 no | low stock named 0 of 4 (none) | at exactly 3: none | other real codes: none | codes not in the file: G-001 | other shelves: B-02 | G-999 named: no
+   scored: all right no | offered an answer yes
+      | G-417 應該在 B-02，大概還有 5 個。G-001 也快沒了。
+== made-up-denied | model made-up-model | Claude Code 0.0.0 | permission mode default
+   result success (is_error false), 3 turns, 1 ms, cost USD 0 | permission denials 1 (mcp__gear__find_gear)
+   built-in tools offered (1): ToolSearch | ToolSearch listed: yes
+   MCP servers on the init line: the seed's 1 (gear=connected) + any other 0 | entries skipped at start-up: 0
+   MCP tools on the init line: the seed's 2 (mcp__gear__find_gear mcp__gear__low_stock) + any other 0
+   not shipped with Claude Code: plugins 0 | skills 0 of 2 | agents 0 of 2
+   models on the messages: made-up-model
+      modelUsage made-up-model in 9 + cache write 1500 + cache read 20000, out 90
+   call  1 mcp__gear__find_gear {"code":"G-417"}
+     back  1 is_error=true 90 chars [string] made-up denial that names <lab>
+   tool calls: to the seed's MCP tools 1 (answered with an error: 1) | ToolSearch 0 | other built-in 0 | to any other MCP server 0 | tool-result characters 90
+   the server's own record: 5 lines, tools/call 0 | start > initialize asks 2025-11-25 > notifications/initialized > tools/list > end
+   the stream and the server agree on the number of calls: no (stream 1, server 0; a denied call reaches the stream but not the server)
+   system lines by subtype: init 1
+   requests: 2 | first request 6903 tokens | last request 7003 tokens | all requests added up 13906 | output 20 | result line usage 21509
+   final reply (12 chars): shelf D-07 no | left 37 no | low stock named 0 of 4 (none) | at exactly 3: none | other real codes: none | codes not in the file: none | other shelves: none | G-999 named: no
+   scored: all right no | offered an answer no
+      | 我沒有權限使用這個工具。
+== made-up-foreign | model made-up-model | Claude Code 0.0.0 | permission mode default
+   result success (is_error false), 3 turns, 1 ms, cost USD 0 | permission denials 0
+   built-in tools offered (1): ToolSearch | ToolSearch listed: yes
+   MCP servers on the init line: the seed's 1 (gear=connected) + any other 1 | entries skipped at start-up: 0
+   MCP tools on the init line: the seed's 2 (mcp__gear__find_gear mcp__gear__low_stock) + any other 1
+   not shipped with Claude Code: plugins 0 | skills 0 of 2 | agents 0 of 2
+   models on the messages: made-up-model
+      modelUsage made-up-model in 9 + cache write 1500 + cache read 20000, out 90
+   call  1 mcp__(another server) (not shown)
+     back  1 is_error=false 18 chars [string] (not shown)
+   tool calls: to the seed's MCP tools 0 (answered with an error: 0) | ToolSearch 0 | other built-in 0 | to any other MCP server 1 | tool-result characters 18
+   the server's own record: 5 lines, tools/call 0 | start > initialize asks 2025-11-25 > notifications/initialized > tools/list > end
+   the stream and the server agree on the number of calls: yes (stream 0, server 0; a denied call reaches the stream but not the server)
+   system lines by subtype: init 1
+   requests: 2 | first request 6903 tokens | last request 7003 tokens | all requests added up 13906 | output 20 | result line usage 21509
+   final reply (7 chars): shelf D-07 no | left 37 no | low stock named 0 of 4 (none) | at exactly 3: none | other real codes: none | codes not in the file: none | other shelves: none | G-999 named: no
+   scored: all right no | offered an answer no
+      | made up
+
+name | seed servers | other servers | MCP tools listed | seed tool calls | errors | ToolSearch | server tools/call | denials | all right | offered | requests | first request | last request | all requests | output | cost USD | turns | ms
+made-up-on | gear=connected | 0 | 2 | 2 | 0 | 1 | 2 | 0 | yes | yes | 4 | 6503 | 7203 | 27612 | 40 | 0 | 3 | 1
+made-up-off | - | 0 | 0 | 0 | 0 | 0 | - | 0 | no | yes | 1 | 6503 | 6503 | 6503 | 10 | 0 | 3 | 1
+made-up-denied | gear=connected | 0 | 2 | 1 | 1 | 0 | 0 | 1 | no | no | 2 | 6903 | 7003 | 13906 | 20 | 0 | 3 | 1
+made-up-foreign | gear=connected | 1 | 2 | 0 | 0 | 0 | 0 | 0 | no | no | 2 | 6903 | 7003 | 13906 | 20 | 0 | 3 | 1
+[exit 0]
+
+$ node calc.mjs | head -5
+all-or-nothing split: with the file n of n, without it 0 of n
+  n = 2: 1 way in 6 (16.7%) if the file made no difference
+  n = 3: 1 way in 20 (5.0%) if the file made no difference
+  n = 4: 1 way in 70 (1.4%) if the file made no difference
+  n = 5: 1 way in 252 (0.4%) if the file made no difference
+[exit 0]
+
+$ bash session.sh dry-off off --dry | sed -n '/^\$ find/,/^\$ sha256sum/p;/^\$ cat .mcp.json/,/^}/p;/^## the request/,$p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/dry-off.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --tools ToolSearch --allowedTools "mcp__gear__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/dry-off.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/dry-off.stream.jsonl 2> <logs>/dry-off.stderr.txt
+[dry run: no session was started; <lab> here is the dry folder, and <logs> was not touched]
+[exit 0]
+
+$ bash session.sh dry-on on --dry | sed -n '/^\$ find/,/^\$ sha256sum/p;/^\$ cat .mcp.json/,/^}/p;/^## the request/,$p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/dry-on.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --allowedTools "mcp__gear__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/dry-on.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/dry-on.stream.jsonl 2> <logs>/dry-on.stderr.txt
+[dry run: no session was started; <lab> here is the dry folder, and <logs> was not touched]
+[exit 0]
+
+$ bash session.sh dry-noallow noallow --dry | sed -n '/^\$ find/,/^\$ sha256sum/p;/^\$ cat .mcp.json/,/^}/p;/^## the request/,$p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/dry-noallow.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/dry-noallow.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/dry-noallow.stream.jsonl 2> <logs>/dry-noallow.stderr.txt
+[dry run: no session was started; <lab> here is the dry folder, and <logs> was not touched]
+[exit 0]
+
+$ bash session.sh dry-miss miss --dry | sed -n '/^\$ find/,/^\$ sha256sum/p;/^\$ cat .mcp.json/,/^}/p;/^## the request/,$p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## the request (miss.txt)
+G-999 放在哪個貨架、還剩幾個？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/dry-miss.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --allowedTools "mcp__gear__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/dry-miss.debug.txt \
+    < <seed>/prompts/miss.txt > <logs>/dry-miss.stream.jsonl 2> <logs>/dry-miss.stderr.txt
+[dry run: no session was started; <lab> here is the dry folder, and <logs> was not touched]
+[exit 0]
+
+$ bash session.sh dry-broken broken --dry | sed -n '/^\$ find/,/^\$ sha256sum/p;/^\$ cat .mcp.json/,/^}/p;/^## the request/,$p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gone.mjs"]
+    }
+  }
+}
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/dry-broken.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --allowedTools "mcp__gear__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/dry-broken.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/dry-broken.stream.jsonl 2> <logs>/dry-broken.stderr.txt
+[dry run: no session was started; <lab> here is the dry folder, and <logs> was not touched]
+[exit 0]
+
+$ bash session.sh dry-wide wide --dry | sed -n '/^\$ find/,/^\$ sha256sum/p;/^\$ cat .mcp.json/,/^}/p;/^## the request/,$p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/more.mjs
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    },
+    "gear-more": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/more.mjs"]
+    }
+  }
+}
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/dry-wide.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --allowedTools "mcp__gear__*,mcp__gear-more__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/dry-wide.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/dry-wide.stream.jsonl 2> <logs>/dry-wide.stderr.txt
+[dry run: no session was started; <lab> here is the dry folder, and <logs> was not touched]
+[exit 0]
+
+$ bash session.sh dry-wideup wideup --dry | sed -n '/^\$ find/,/^\$ sha256sum/p;/^\$ cat .mcp.json/,/^}/p;/^## the request/,$p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/more.mjs
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    },
+    "gear-more": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/more.mjs"]
+    }
+  }
+}
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/dry-wideup.seen.txt ENABLE_TOOL_SEARCH=false \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --allowedTools "mcp__gear__*,mcp__gear-more__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/dry-wideup.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/dry-wideup.stream.jsonl 2> <logs>/dry-wideup.stderr.txt
+[dry run: no session was started; <lab> here is the dry folder, and <logs> was not touched]
+[exit 0]
+
+$ bash session.sh dry-files files --dry | sed -n '/^\$ find/,/^\$ sha256sum/p;/^\$ cat .mcp.json/,/^}/p;/^## the request/,$p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/dry-files.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --tools ToolSearch,Read,Glob,Grep --allowedTools "mcp__gear__*,Read,Glob,Grep" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/dry-files.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/dry-files.stream.jsonl 2> <logs>/dry-files.stderr.txt
+[dry run: no session was started; <lab> here is the dry folder, and <logs> was not touched]
+[exit 0]
+
+$ bash session.sh dry-up up --dry | sed -n '/^\$ find/,/^\$ sha256sum/p;/^\$ cat .mcp.json/,/^}/p;/^## the request/,$p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/dry-up.seen.txt ENABLE_TOOL_SEARCH=false \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --allowedTools "mcp__gear__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/dry-up.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/dry-up.stream.jsonl 2> <logs>/dry-up.stderr.txt
+[dry run: no session was started; <lab> here is the dry folder, and <logs> was not touched]
+[exit 0]
+
+$ bash session.sh dry-idle idle --dry | sed -n '/^\$ find/,/^\$ sha256sum/p;/^\$ cat .mcp.json/,/^}/p;/^## the request/,$p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## the request (idle.txt)
+用一句話說明 TSV 檔是什麼。
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/dry-idle.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --allowedTools "mcp__gear__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/dry-idle.debug.txt \
+    < <seed>/prompts/idle.txt > <logs>/dry-idle.stream.jsonl 2> <logs>/dry-idle.stderr.txt
+[dry run: no session was started; <lab> here is the dry folder, and <logs> was not touched]
+[exit 0]
+
+$ bash session.sh dry-rooted rooted --dry | sed -n '/^\$ find/,/^\$ sha256sum/p;/^\$ cat .mcp.json/,/^}/p;/^## the request/,$p'
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["${CLAUDE_PROJECT_DIR:-.}/server/gear.mjs"]
+    }
+  }
+}
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/dry-rooted.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --allowedTools "mcp__gear__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/dry-rooted.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/dry-rooted.stream.jsonl 2> <logs>/dry-rooted.stderr.txt
+[dry run: no session was started; <lab> here is the dry folder, and <logs> was not touched]
+[exit 0]
+
+$ bash session.sh dry-on on --dry
+# dry-on | arm on | start 2026-10-10T01:22:52Z
+## the project before the session (rebuilt from <seed>/gear-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+ba674b4c22b0953b *./.claude/hooks/seen.mjs
+9b4b69c38dc3ba74 *./.claude/settings.json
+0c64fed187074b0d *./.mcp.json
+a90b02a1b387321b *./README.md
+07d2015fcf8632a6 *./package.json
+f9759d87960cc0c8 *./server/gear.mjs
+891f7c32cb484022 *./server/hand.jsonl
+205f5c1fc7ca6128 *./server/stock.tsv
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## above the project (counts only)
+7 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## two variables that change how tools load (never their values): ANTHROPIC_BASE_URL set, to an anthropic.com host | ENABLE_TOOL_SEARCH not set
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/dry-on.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --allowedTools "mcp__gear__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/dry-on.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/dry-on.stream.jsonl 2> <logs>/dry-on.stderr.txt
+[dry run: no session was started; <lab> here is the dry folder, and <logs> was not touched]
+[exit 0]
+
+$ bash session.sh dry-on on --dry > /dev/null; (cd "$DRY" && find . -type f -not -path "./.claude/*" | sort && wc -l server/gear.mjs server/stock.tsv && head -5 server/stock.tsv)
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+  95 server/gear.mjs
+  25 server/stock.tsv
+ 120 total
+code	name	shelf	left
+G-108	行李秤	A-03	2
+G-121	登山杖	B-11	3
+G-134	防水袋	A-09	14
+G-150	頸枕	C-02	21
+[exit 0]
+
+$ (cd "$DRY" && cat .mcp.json)
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+[exit 0]
+
+$ (cd "$DRY" && node server/gear.mjs < server/hand.jsonl | cut -c1-68; echo "[node exit ${PIPESTATUS[0]}]"; sed -E "s/\+ *[0-9]+ms/+<n>ms/" server/requests.txt)
+{"jsonrpc":"2.0","id":1,"result":{"protocolVersion":"2025-11-25","ca
+{"jsonrpc":"2.0","id":2,"result":{"tools":[{"name":"find_gear","desc
+{"jsonrpc":"2.0","id":3,"result":{"content":[{"type":"text","text":"
+[node exit 0]
+01 +<n>ms start
+02 +<n>ms initialize asks 2025-11-25
+03 +<n>ms notifications/initialized
+04 +<n>ms tools/list
+05 +<n>ms tools/call find_gear {"code":"G-417"}
+06 +<n>ms end
+[exit 0]
+
+$ (cd "$DRY" && node server/gear.mjs < server/hand.jsonl | tail -1)
+{"jsonrpc":"2.0","id":3,"result":{"content":[{"type":"text","text":"G-417 頭燈｜貨架 D-07｜剩 37"}],"isError":false}}
+[exit 0]
+
+# gone: (cd <lab> && node server/gone.mjs; echo "[node exit $?]"), the lines that start with Error or hold code:
+$ gone
+Error: Cannot find module <the full path of server/gone.mjs>
+  code: 'MODULE_NOT_FOUND',
+[node exit 1]
+[exit 0]
+
+$ guard g1 on > /dev/null 2>&1; records
+g1.lab g1.session.txt g1.stderr.txt g1.stream.jsonl
+[exit 0]
+
+$ guard g1 on > /dev/null; echo "[session.sh exit $?]"; records
+refused: g1 already has records in <logs> (4 entries).
+Pick another name (for example g1r), or pass --force to move them aside.
+[session.sh exit 3]
+g1.lab g1.session.txt g1.stderr.txt g1.stream.jsonl
+[exit 0]
+
+$ guard g1 on --dry | tail -1; records
+[dry run: no session was started; <lab> here is the dry folder, and <logs> was not touched]
+g1.lab g1.session.txt g1.stderr.txt g1.stream.jsonl
+[exit 0]
+
+$ guard g1 on --force 2>&1 > /dev/null | sed -E "s#g1\.[0-9TZ]+#g1.<time>#"; records; aside
+moved the old records of g1 to <logs>/replaced/g1.<time>/
+g1.lab g1.session.txt g1.stderr.txt g1.stream.jsonl replaced
+g1.lab g1.session.txt g1.stderr.txt g1.stream.jsonl
+[exit 0]
+
+$ LAB="$scratch/repo/lab" LOGS="$scratch/logs" CLAUDE=true bash session.sh g2 on; echo "[session.sh exit $?]"; ls "$scratch/repo"
+refused: a run folder is inside a git repository. Set WORK (or LAB, LOGS, DRY) to a folder outside any repository.
+[session.sh exit 4]
+[exit 0]
+
+$ DRY="$scratch/repo/dry" bash session.sh g2 on --dry; echo "[session.sh exit $?]"; ls "$scratch/repo"
+refused: a run folder is inside a git repository. Set WORK (or LAB, LOGS, DRY) to a folder outside any repository.
+[session.sh exit 4]
+[exit 0]
+
+$ grep -c -i -E "$user|\b${HOSTNAME:-no-host-name}\b" "$scratch/logs/g1.session.txt"; grep -c -E "<lab>|<logs>|<seed>" "$scratch/logs/g1.session.txt"
+0
+12
+[exit 0]
+
+$ sed -n "/^\[the claude command/,\$p" "$scratch/logs/g1.session.txt" | cut -c1-200 | head -40
+[the claude command was replaced by "true": no session was started, no model was called]
+[exit 0] (0 s, ended 2026-10-10T01:23:33Z)
+[stream lines: 0 | stderr bytes: 0]
+$ head -6 <logs>/g1.stderr.txt (cut at 160 columns)
+## what the server kept (server/requests.txt in the project; the file is not in the seed)
+(no such file: the server process never started)
+## what the logging hook saw (<logs>/g1.seen.txt)
+(empty: no hook event reached the logger)
+## anything that is not the seed's, counted from the hook record (each should be 0)
+lines with (another server): 0 | with (outside the project): 0 | instruction files loaded (the project has none): 0
+## from the stream
+$ grep -c '"name":"mcp__gear' <logs>/g1.stream.jsonl
+0
+$ grep -c '"name":"ToolSearch"' <logs>/g1.stream.jsonl
+0
+$ node <seed>/tally.mjs <logs>/g1.stream.jsonl
+== g1 | model undefined | Claude Code undefined | permission mode undefined
+   result undefined (is_error undefined), undefined turns, undefined ms, cost USD undefined | permission denials 0
+   built-in tools offered (0): none | ToolSearch listed: no
+   MCP servers on the init line: (no mcp_servers key) the seed's 0 (none) + any other 0 | entries skipped at start-up: 0
+   MCP tools on the init line: the seed's 0 (none) + any other 0
+   not shipped with Claude Code: plugins 0 | skills 0 of 0 | agents 0 of 0
+   models on the messages: none seen
+   tool calls: to the seed's MCP tools 0 (answered with an error: 0) | ToolSearch 0 | other built-in 0 | to any other MCP server 0 | tool-result characters 0
+   the server's own record: no requests.txt (the process never started)
+   the stream and the server agree on the number of calls: nothing to compare (stream 0, server -; a denied call reaches the stream but not the server)
+   system lines by subtype: none
+   requests: 0 | first request null tokens | last request null tokens | all requests added up 0 | output 0 | result line usage null
+   final reply (0 chars): shelf D-07 no | left 37 no | low stock named 0 of 4 (none) | at exactly 3: none | other real codes: none | codes not in the file: none | other shelves: none | G-999 named: no
+   scored: all right no | offered an answer no
+## the debug record on MCP
+$ grep -ci mcp <logs>/g1.debug.txt
+$ grep -i mcp <logs>/g1.debug.txt | grep -w -E 'gear(-more)?' | head -14 (time stamps cut, lists emptied, 200 columns)
+$ lines that say MCP server "<name>" with a name that is not the seed's (count only)
+0
+$ lines that mention claude.ai connectors (count only)
+# g1 | end 2026-10-10T01:23:36Z
+[exit 0]
+----------------------------------------------------------------------------------------------
+
+================================================================================================
+ITEM 3   n1: connected, first session; the ten stop-checks
+================================================================================================
+$ WORK=<work> bash <seed>/session.sh n1 on
+# n1 | arm on | start 2026-10-10T01:24:30Z
+## the project before the session (rebuilt from <seed>/gear-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+ba674b4c22b0953b *./.claude/hooks/seen.mjs
+9b4b69c38dc3ba74 *./.claude/settings.json
+0c64fed187074b0d *./.mcp.json
+a90b02a1b387321b *./README.md
+07d2015fcf8632a6 *./package.json
+f9759d87960cc0c8 *./server/gear.mjs
+891f7c32cb484022 *./server/hand.jsonl
+205f5c1fc7ca6128 *./server/stock.tsv
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## above the project (counts only)
+7 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## two variables that change how tools load (never their values): ANTHROPIC_BASE_URL set, to an anthropic.com host | ENABLE_TOOL_SEARCH not set
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/n1.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --allowedTools "mcp__gear__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/n1.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/n1.stream.jsonl 2> <logs>/n1.stderr.txt
+[exit 0] (18 s, ended 2026-10-10T01:24:52Z)
+[stream lines: 11 | stderr bytes: 0]
+$ head -6 <logs>/n1.stderr.txt (cut at 160 columns)
+## what the server kept (server/requests.txt in the project; the file is not in the seed)
+01 +     0ms start
+02 +    11ms server/discover asks 2026-07-28
+03 +   149ms initialize asks 2025-11-25
+04 +   259ms notifications/initialized
+05 +   887ms tools/list
+06 +  4271ms tools/call find_gear {"code":"G-417"}
+07 +  4661ms tools/call low_stock {"below":3}
+08 +  8702ms end
+## what the logging hook saw (<logs>/n1.seen.txt)
+PreToolUse ToolSearch query=select:mcp__gear__find_gear,mcp__gear__low_stock
+PostToolUse ToolSearch response_chars=143
+PreToolUse mcp__gear__find_gear source=dynamic {"code":"G-417"}
+PostToolUse mcp__gear__find_gear source=dynamic response_chars=48
+PreToolUse mcp__gear__low_stock source=dynamic {"below":3}
+PostToolUse mcp__gear__low_stock source=dynamic response_chars=83
+## anything that is not the seed's, counted from the hook record (each should be 0)
+lines with (another server): 0 | with (outside the project): 0 | instruction files loaded (the project has none): 0
+## from the stream
+$ grep -c '"name":"mcp__gear' <logs>/n1.stream.jsonl
+2
+$ grep -c '"name":"ToolSearch"' <logs>/n1.stream.jsonl
+1
+$ node <seed>/tally.mjs <logs>/n1.stream.jsonl
+== n1 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success (is_error false), 4 turns, 7676 ms, cost USD 0.016101400000000002 | permission denials 0
+   built-in tools offered (1): ToolSearch | ToolSearch listed: yes
+   MCP servers on the init line: the seed's 1 (gear=connected [other keys: source]) + any other 0 | entries skipped at start-up: 0
+   MCP tools on the init line: the seed's 2 (mcp__gear__find_gear mcp__gear__low_stock) + any other 0
+   not shipped with Claude Code: plugins 0 | skills 0 of 21 | agents 0 of 6
+   models on the messages: claude-sonnet-5-5
+      modelUsage claude-sonnet-5-5 in 6 + cache write 2622 + cache read 8407, out 392
+   call  1 ToolSearch {"query":"select:mcp__gear__find_gear,mcp__gear__low_stock","max_results":5}
+     back  1 is_error=- 75 chars [tool_reference] [tool_reference mcp__gear__find_gear] ⏎ [tool_reference mcp__gear__low_stock]
+   call  2 mcp__gear__find_gear {"code":"G-417"}
+   call  3 mcp__gear__low_stock {"below":3}
+     back  2 is_error=- 21 chars [text] G-417 頭燈｜貨架 D-07｜剩 37
+     back  3 is_error=- 53 chars [text] G-108 行李秤 剩 2 ⏎ G-233 雪鏡 剩 1 ⏎ G-352 營燈 剩 0 ⏎ G-590 潛水鏡 剩 2
+   tool calls: to the seed's MCP tools 2 (answered with an error: 0) | ToolSearch 1 | other built-in 0 | to any other MCP server 0 | tool-result characters 149
+   the server's own record: 8 lines, tools/call 2 | start > server/discover asks 2026-07-28 > initialize asks 2025-11-25 > notifications/initialized > tools/list > end
+   the stream and the server agree on the number of calls: yes (stream 2, server 2; a denied call reaches the stream but not the server)
+   system lines by subtype: init 1, post_turn_summary 1
+   requests: 3 | first request 3340 tokens | last request 4003 tokens | all requests added up 11035 | output 234 | result line usage 11035
+   final reply (209 chars): shelf D-07 yes | left 37 yes | low stock named 4 of 4 (G-108 G-233 G-352 G-590) | at exactly 3: none | other real codes: none | codes not in the file: none | other shelves: none | G-999 named: no
+   scored: all right yes | offered an answer yes
+      | **G-417(頭燈)**:放在貨架 **D-07**,還剩 **37** 個。
+      | **庫存低於 3 的項目:**
+      | | 代號 | 器材 | 剩餘 |
+      | |------|------|------|
+      | | G-108 | 行李秤 | 2 |
+      | | G-233 | 雪鏡 | 1 |
+      | | G-352 | 營燈 | 0(已無庫存) |
+      | | G-590 | 潛水鏡 | 2 |
+      | 其中 G-352 營燈已經沒貨,可能需要優先補貨。
+## the debug record on MCP
+$ grep -ci mcp <logs>/n1.debug.txt
+24
+$ grep -i mcp <logs>/n1.debug.txt | grep -w -E 'gear(-more)?' | head -14 (time stamps cut, lists emptied, 200 columns)
+[...] MCP server "gear": Starting connection with timeout of 30000ms
+[...] MCP server "gear": Successfully connected (transport: stdio) in 2399ms
+[...] MCP server "gear": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-desk","version":"
+[...] [...] Server "gear" connected with subscribe=false
+[...] MCP server "gear": Calling MCP tool: find_gear
+[...] MCP server "gear": Tool 'find_gear' completed successfully in 15ms
+[...] MCP server "gear": Calling MCP tool: low_stock
+[...] MCP server "gear": Tool 'low_stock' completed successfully in 3ms
+[...] MCP server "gear": Terminating MCP server process tree
+[...] MCP server "gear": STDIO connection closed after 8s (cleanly)
+[...] MCP server "gear": Cleared connection cache for reconnection
+$ lines that say MCP server "<name>" with a name that is not the seed's (count only)
+0
+$ lines that mention claude.ai connectors (count only)
+2
+# n1 | end 2026-10-10T01:24:55Z
+[session.sh exit 0]
+[stderr of session.sh: 0 bytes]
+
+runner: $ node <runner>/models.mjs <logs>/n1.stream.jsonl
+-- models.mjs n1.stream.jsonl
+   init model: claude-sonnet-5-5 | apiKeySource: none | init events: 1
+   model: claude-sonnet-5-5 (x5)
+   modelUsage key: claude-sonnet-5-5 (x1)
+   mcp_servers: 1 | the seed's: gear=connected | not the seed's: 0
+   tools: 3 | built-in: ToolSearch | mcp tools of the seed's servers: 2 | mcp tools of any other server: 0
+   agents: 6 | skills: 21 | plugins: 3 | slash_commands: 57 | memory_paths keys: no key
+   init keys: agents analytics_disabled apiKeySource capabilities claude_code_version cwd fast_mode_disabled_reason fast_mode_state mcp_servers messaging_socket_path model output_style per_turn_effort_active permissionMode plugins powershell_path product_feedback_disabled scratchpad_path session_id skills slash_commands subtype terminal_slash_commands tools type uuid view_mode
+   stream line types: system 2, assistant 4, rate_limit_event 1, user 3, result 1
+   verdict: only sonnet (or haiku) named | nothing but the seed's MCP on the init line
+
+Expected (brief, item 3): the ten checks pass; gear=connected with two tools; calls to
+mcp__gear__find_gear and mcp__gear__low_stock; two tools/call lines in the server's record; the
+reply all right. Unknown before the run: what Claude Code sends first, which version it asks
+for, whether ToolSearch is accepted by --tools and listed, how the model reaches a deferred tool,
+what mcp_server.source says, how many requests.
+Actual, check by check:
+ 1. [exit 0]; result success; stderr 0 bytes.                                             pass
+ 2. model claude-sonnet-5-5 on the init line, on all messages, only key of modelUsage.     pass
+ 3. MCP servers: the seed's 1 (gear=connected) + any other 0; MCP tools: the seed's 2 + any
+    other 0.                                                                               pass
+ 4. not shipped with Claude Code: plugins 0 | skills 0 of 21 | agents 0 of 6.              pass
+ 5. hook record: another server 0, outside the project 0, instruction files 0; debug record:
+    0 lines naming a server that is not the seed's; 2 lines mention connectors (count).    pass
+ 6. above the project: .mcp.json 0, CLAUDE.md 0, .git 0, .claude settings 1 (as the planner
+    saw); ANTHROPIC_BASE_URL set, to an anthropic.com host; ENABLE_TOOL_SEARCH not set.    pass
+ 7. built-in tools offered (1): ToolSearch | ToolSearch listed: yes. --tools ToolSearch was
+    accepted, and with it the init line lists ToolSearch and both MCP tools.               pass
+ 8. the server's own record exists (8 lines).                                              pass
+ 9. order: start > server/discover asks 2026-07-28 > initialize asks 2025-11-25 >
+    notifications/initialized > tools/list > tools/call x2 > end. Claude Code sent the
+    2026-07-28 probe first, got -32601 Method not found from gear.mjs, and went on to the
+    initialize handshake asking 2025-11-25 in the same server process (one "start" line).
+    The debug record says protocolEra "legacy", negotiatedProtocolVersion "2025-11-25". No
+    ping, no other method. "end" is there: stdin was closed before the process went away.  pass
+10. call 2 mcp__gear__find_gear {"code":"G-417"} and call 3 mcp__gear__low_stock {"below":3},
+    each with a "back" line. The "back" lines read is_error=- , not is_error=false: a
+    successful MCP tool result in the stream has NO is_error key (runner's extras.mjs, item 15:
+    keys tool_use_id,type,content). The brief expected "is_error=false".                   pass,
+                                                                         with that difference
+Then the result: 2 calls to the seed's tools, 0 errors, ToolSearch 1; the stream and the server
+agree (2 and 2); hook record 2 PreToolUse + 2 PostToolUse for mcp__gear__ with source=dynamic,
+plus PreToolUse and PostToolUse for ToolSearch; reply all right yes; 3 requests; first request
+3340 tokens. How the model reached the deferred tools: ONE ToolSearch call with the query
+"select:mcp__gear__find_gear,mcp__gear__low_stock" (it already knew both names), whose result
+is two tool_reference blocks; then both gear tools in one request; then the answer.
+Match: yes. Differences from the plan: is_error is absent on success; mcp_servers entries carry a
+third key, source ("dynamic"); a system line with subtype post_turn_summary ends the stream.
+
+================================================================================================
+ITEM 4   f1: not connected, first
+================================================================================================
+$ WORK=<work> bash <seed>/session.sh f1 off
+# f1 | arm off | start 2026-10-10T01:25:06Z
+## the project before the session (rebuilt from <seed>/gear-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+ba674b4c22b0953b *./.claude/hooks/seen.mjs
+9b4b69c38dc3ba74 *./.claude/settings.json
+0c64fed187074b0d *./.mcp.json
+a90b02a1b387321b *./README.md
+07d2015fcf8632a6 *./package.json
+f9759d87960cc0c8 *./server/gear.mjs
+891f7c32cb484022 *./server/hand.jsonl
+205f5c1fc7ca6128 *./server/stock.tsv
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## above the project (counts only)
+7 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## two variables that change how tools load (never their values): ANTHROPIC_BASE_URL set, to an anthropic.com host | ENABLE_TOOL_SEARCH not set
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/f1.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --tools ToolSearch --allowedTools "mcp__gear__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/f1.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/f1.stream.jsonl 2> <logs>/f1.stderr.txt
+[exit 0] (7 s, ended 2026-10-10T01:25:15Z)
+[stream lines: 8 | stderr bytes: 0]
+$ head -6 <logs>/f1.stderr.txt (cut at 160 columns)
+## what the server kept (server/requests.txt in the project; the file is not in the seed)
+(no such file: the server process never started)
+## what the logging hook saw (<logs>/f1.seen.txt)
+(empty: no hook event reached the logger)
+## anything that is not the seed's, counted from the hook record (each should be 0)
+lines with (another server): 0 | with (outside the project): 0 | instruction files loaded (the project has none): 0
+## from the stream
+$ grep -c '"name":"mcp__gear' <logs>/f1.stream.jsonl
+0
+$ grep -c '"name":"ToolSearch"' <logs>/f1.stream.jsonl
+0
+$ node <seed>/tally.mjs <logs>/f1.stream.jsonl
+== f1 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success (is_error false), 1 turns, 4590 ms, cost USD 0.010735000000000001 | permission denials 0
+   built-in tools offered (1): ToolSearch | ToolSearch listed: yes
+   MCP servers on the init line: the seed's 0 (none) + any other 0 | entries skipped at start-up: 0
+   MCP tools on the init line: the seed's 0 (none) + any other 0
+   not shipped with Claude Code: plugins 0 | skills 0 of 21 | agents 0 of 6
+   models on the messages: claude-sonnet-5-5
+      modelUsage claude-sonnet-5-5 in 2 + cache write 1711 + cache read 535, out 378
+   tool calls: to the seed's MCP tools 0 (answered with an error: 0) | ToolSearch 0 | other built-in 0 | to any other MCP server 0 | tool-result characters 0
+   the server's own record: no requests.txt (the process never started)
+   the stream and the server agree on the number of calls: nothing to compare (stream 0, server -; a denied call reaches the stream but not the server)
+   system lines by subtype: init 1, thinking_tokens 2, post_turn_summary 1
+   requests: 1 | first request 2248 tokens | last request 2248 tokens | all requests added up 2248 | output 2 | result line usage 2248
+   final reply (498 chars): shelf D-07 no | left 37 no | low stock named 0 of 4 (none) | at exactly 3: none | other real codes: none | codes not in the file: none | other shelves: none | G-999 named: no
+   scored: all right no | offered an answer no
+      | 我先看一下工作目錄裡有哪些庫存資料。
+      | <invoke name="Glob">
+      | <parameter name="pattern">**/*</parameter>
+      | </invoke>
+      | <invoke name="Grep">
+      | <parameter name="pattern">G-417</parameter>
+      | <parameter name="output_mode">content</parameter>
+      | <parameter name="-n">true</parameter>
+      | </invoke>
+      | <invoke name="Glob">
+## the debug record on MCP
+$ grep -ci mcp <logs>/f1.debug.txt
+7
+$ grep -i mcp <logs>/f1.debug.txt | grep -w -E 'gear(-more)?' | head -14 (time stamps cut, lists emptied, 200 columns)
+$ lines that say MCP server "<name>" with a name that is not the seed's (count only)
+0
+$ lines that mention claude.ai connectors (count only)
+2
+# f1 | end 2026-10-10T01:25:16Z
+[session.sh exit 0]
+[stderr of session.sh: 0 bytes]
+
+runner: $ node <runner>/models.mjs <logs>/f1.stream.jsonl
+-- models.mjs f1.stream.jsonl
+   init model: claude-sonnet-5-5 | apiKeySource: none | init events: 1
+   model: claude-sonnet-5-5 (x3)
+   modelUsage key: claude-sonnet-5-5 (x1)
+   mcp_servers: 0 | the seed's: none | not the seed's: 0
+   tools: 1 | built-in: ToolSearch | mcp tools of the seed's servers: 0 | mcp tools of any other server: 0
+   agents: 6 | skills: 21 | plugins: 3 | slash_commands: 57 | memory_paths keys: no key
+   init keys: agents analytics_disabled apiKeySource capabilities claude_code_version cwd fast_mode_disabled_reason fast_mode_state mcp_servers messaging_socket_path model output_style per_turn_effort_active permissionMode plugins powershell_path product_feedback_disabled scratchpad_path session_id skills slash_commands subtype terminal_slash_commands tools type uuid view_mode
+   stream line types: system 4, assistant 2, rate_limit_event 1, result 1
+   verdict: only sonnet (or haiku) named | nothing but the seed's MCP on the init line
+
+Expected: MCP servers the seed's 0 + any other 0; 0 MCP tools; no tool call; no requests.txt;
+empty hook record; all right no. Unknown: whether it says it does not know or makes one up.
+Actual: all of the expected lines. mcp_servers is on the init line as an empty list; ToolSearch
+is still listed (the only tool). 1 request, first request 2248 tokens. The reply is neither
+"I do not know" nor a made-up shelf: after one sentence ("我先看一下工作目錄裡有哪些庫存資料。")
+the model WROTE tool calls as text, for Glob and Grep, tools this session does not have, and
+the turn ended there. No shelf, no number, no gear code other than G-417. Scored: all right no,
+offered an answer no. The full reply is under item 15 and in demo/results/f1.reply.md.
+Match: yes for everything the brief fixed; the form of the reply was not foreseen.
+
+================================================================================================
+ITEM 5   n2: connected, second
+================================================================================================
+$ WORK=<work> bash <seed>/session.sh n2 on
+# n2 | arm on | start 2026-10-10T01:25:24Z
+## the project before the session (rebuilt from <seed>/gear-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+ba674b4c22b0953b *./.claude/hooks/seen.mjs
+9b4b69c38dc3ba74 *./.claude/settings.json
+0c64fed187074b0d *./.mcp.json
+a90b02a1b387321b *./README.md
+07d2015fcf8632a6 *./package.json
+f9759d87960cc0c8 *./server/gear.mjs
+891f7c32cb484022 *./server/hand.jsonl
+205f5c1fc7ca6128 *./server/stock.tsv
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## above the project (counts only)
+7 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## two variables that change how tools load (never their values): ANTHROPIC_BASE_URL set, to an anthropic.com host | ENABLE_TOOL_SEARCH not set
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/n2.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --allowedTools "mcp__gear__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/n2.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/n2.stream.jsonl 2> <logs>/n2.stderr.txt
+[exit 0] (13 s, ended 2026-10-10T01:25:38Z)
+[stream lines: 11 | stderr bytes: 0]
+$ head -6 <logs>/n2.stderr.txt (cut at 160 columns)
+## what the server kept (server/requests.txt in the project; the file is not in the seed)
+01 +     0ms start
+02 +    10ms server/discover asks 2026-07-28
+03 +    29ms initialize asks 2025-11-25
+04 +    31ms notifications/initialized
+05 +    37ms tools/list
+06 +  2787ms tools/call find_gear {"code":"G-417"}
+07 +  3117ms tools/call low_stock {"below":3}
+08 +  9256ms end
+## what the logging hook saw (<logs>/n2.seen.txt)
+PreToolUse ToolSearch query=select:mcp__gear__find_gear,mcp__gear__low_stock
+PostToolUse ToolSearch response_chars=143
+PreToolUse mcp__gear__find_gear source=dynamic {"code":"G-417"}
+PostToolUse mcp__gear__find_gear source=dynamic response_chars=48
+PreToolUse mcp__gear__low_stock source=dynamic {"below":3}
+PostToolUse mcp__gear__low_stock source=dynamic response_chars=83
+## anything that is not the seed's, counted from the hook record (each should be 0)
+lines with (another server): 0 | with (outside the project): 0 | instruction files loaded (the project has none): 0
+## from the stream
+$ grep -c '"name":"mcp__gear' <logs>/n2.stream.jsonl
+2
+$ grep -c '"name":"ToolSearch"' <logs>/n2.stream.jsonl
+1
+$ node <seed>/tally.mjs <logs>/n2.stream.jsonl
+== n2 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success (is_error false), 4 turns, 7089 ms, cost USD 0.0118562 | permission denials 0
+   built-in tools offered (1): ToolSearch | ToolSearch listed: yes
+   MCP servers on the init line: the seed's 1 (gear=connected [other keys: source]) + any other 0 | entries skipped at start-up: 0
+   MCP tools on the init line: the seed's 2 (mcp__gear__find_gear mcp__gear__low_stock) + any other 0
+   not shipped with Claude Code: plugins 0 | skills 0 of 21 | agents 0 of 6
+   models on the messages: claude-sonnet-5-5
+      modelUsage claude-sonnet-5-5 in 6 + cache write 1507 + cache read 9531, out 391
+   call  1 ToolSearch {"query":"select:mcp__gear__find_gear,mcp__gear__low_stock","max_results":5}
+     back  1 is_error=- 75 chars [tool_reference] [tool_reference mcp__gear__find_gear] ⏎ [tool_reference mcp__gear__low_stock]
+   call  2 mcp__gear__find_gear {"code":"G-417"}
+   call  3 mcp__gear__low_stock {"below":3}
+     back  2 is_error=- 21 chars [text] G-417 頭燈｜貨架 D-07｜剩 37
+     back  3 is_error=- 53 chars [text] G-108 行李秤 剩 2 ⏎ G-233 雪鏡 剩 1 ⏎ G-352 營燈 剩 0 ⏎ G-590 潛水鏡 剩 2
+   tool calls: to the seed's MCP tools 2 (answered with an error: 0) | ToolSearch 1 | other built-in 0 | to any other MCP server 0 | tool-result characters 149
+   the server's own record: 8 lines, tools/call 2 | start > server/discover asks 2026-07-28 > initialize asks 2025-11-25 > notifications/initialized > tools/list > end
+   the stream and the server agree on the number of calls: yes (stream 2, server 2; a denied call reaches the stream but not the server)
+   system lines by subtype: init 1, post_turn_summary 1
+   requests: 3 | first request 3343 tokens | last request 4006 tokens | all requests added up 11044 | output 233 | result line usage 11044
+   final reply (198 chars): shelf D-07 yes | left 37 yes | low stock named 4 of 4 (G-108 G-233 G-352 G-590) | at exactly 3: none | other real codes: none | codes not in the file: none | other shelves: none | G-999 named: no
+   scored: all right yes | offered an answer yes
+      | **G-417(頭燈)**:放在貨架 **D-07**,剩 **37** 個。
+      | **庫存低於 3 的項目:**
+      | | 代號 | 品項 | 剩餘 |
+      | |---|---|---|
+      | | G-108 | 行李秤 | 2 |
+      | | G-233 | 雪鏡 | 1 |
+      | | G-352 | 營燈 | 0(已缺貨) |
+      | | G-590 | 潛水鏡 | 2 |
+      | 其中 G-352 營燈已經沒有庫存,需要優先補貨。
+## the debug record on MCP
+$ grep -ci mcp <logs>/n2.debug.txt
+24
+$ grep -i mcp <logs>/n2.debug.txt | grep -w -E 'gear(-more)?' | head -14 (time stamps cut, lists emptied, 200 columns)
+[...] MCP server "gear": Starting connection with timeout of 30000ms
+[...] MCP server "gear": Successfully connected (transport: stdio) in 541ms
+[...] MCP server "gear": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-desk","version":"
+[...] [...] Server "gear" connected with subscribe=false
+[...] MCP server "gear": Calling MCP tool: find_gear
+[...] MCP server "gear": Tool 'find_gear' completed successfully in 6ms
+[...] MCP server "gear": Calling MCP tool: low_stock
+[...] MCP server "gear": Tool 'low_stock' completed successfully in 4ms
+[...] MCP server "gear": Terminating MCP server process tree
+[...] MCP server "gear": STDIO connection closed after 9s (cleanly)
+[...] MCP server "gear": Cleared connection cache for reconnection
+$ lines that say MCP server "<name>" with a name that is not the seed's (count only)
+0
+$ lines that mention claude.ai connectors (count only)
+2
+# n2 | end 2026-10-10T01:25:40Z
+[session.sh exit 0]
+[stderr of session.sh: 0 bytes]
+
+runner: $ node <runner>/models.mjs <logs>/n2.stream.jsonl
+-- models.mjs n2.stream.jsonl
+   init model: claude-sonnet-5-5 | apiKeySource: none | init events: 1
+   model: claude-sonnet-5-5 (x5)
+   modelUsage key: claude-sonnet-5-5 (x1)
+   mcp_servers: 1 | the seed's: gear=connected | not the seed's: 0
+   tools: 3 | built-in: ToolSearch | mcp tools of the seed's servers: 2 | mcp tools of any other server: 0
+   agents: 6 | skills: 21 | plugins: 3 | slash_commands: 57 | memory_paths keys: no key
+   init keys: agents analytics_disabled apiKeySource capabilities claude_code_version cwd fast_mode_disabled_reason fast_mode_state mcp_servers messaging_socket_path model output_style per_turn_effort_active permissionMode plugins powershell_path product_feedback_disabled scratchpad_path session_id skills slash_commands subtype terminal_slash_commands tools type uuid view_mode
+   stream line types: system 2, assistant 4, rate_limit_event 1, user 3, result 1
+   verdict: only sonnet (or haiku) named | nothing but the seed's MCP on the init line
+
+Expected: as n1.
+Actual: as n1 line for line: gear=connected, 2 tools, ToolSearch select once, both tools called
+in one request, server record 8 lines in the same order (probe, then initialize asks
+2025-11-25), stream 2 = server 2, hook record 6 lines, all right yes, 3 requests, first request
+3343 tokens.
+Match: yes.
+
+================================================================================================
+ITEM 6   f2: not connected, second
+================================================================================================
+$ WORK=<work> bash <seed>/session.sh f2 off
+# f2 | arm off | start 2026-10-10T01:25:55Z
+## the project before the session (rebuilt from <seed>/gear-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+ba674b4c22b0953b *./.claude/hooks/seen.mjs
+9b4b69c38dc3ba74 *./.claude/settings.json
+0c64fed187074b0d *./.mcp.json
+a90b02a1b387321b *./README.md
+07d2015fcf8632a6 *./package.json
+f9759d87960cc0c8 *./server/gear.mjs
+891f7c32cb484022 *./server/hand.jsonl
+205f5c1fc7ca6128 *./server/stock.tsv
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## above the project (counts only)
+7 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## two variables that change how tools load (never their values): ANTHROPIC_BASE_URL set, to an anthropic.com host | ENABLE_TOOL_SEARCH not set
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/f2.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --tools ToolSearch --allowedTools "mcp__gear__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/f2.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/f2.stream.jsonl 2> <logs>/f2.stderr.txt
+[exit 0] (9 s, ended 2026-10-10T01:26:07Z)
+[stream lines: 6 | stderr bytes: 0]
+$ head -6 <logs>/f2.stderr.txt (cut at 160 columns)
+## what the server kept (server/requests.txt in the project; the file is not in the seed)
+(no such file: the server process never started)
+## what the logging hook saw (<logs>/f2.seen.txt)
+(empty: no hook event reached the logger)
+## anything that is not the seed's, counted from the hook record (each should be 0)
+lines with (another server): 0 | with (outside the project): 0 | instruction files loaded (the project has none): 0
+## from the stream
+$ grep -c '"name":"mcp__gear' <logs>/f2.stream.jsonl
+0
+$ grep -c '"name":"ToolSearch"' <logs>/f2.stream.jsonl
+0
+$ node <seed>/tally.mjs <logs>/f2.stream.jsonl
+== f2 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success (is_error false), 1 turns, 3902 ms, cost USD 0.0049826 | permission denials 0
+   built-in tools offered (1): ToolSearch | ToolSearch listed: yes
+   MCP servers on the init line: the seed's 0 (none) + any other 0 | entries skipped at start-up: 0
+   MCP tools on the init line: the seed's 0 (none) + any other 0
+   not shipped with Claude Code: plugins 0 | skills 0 of 21 | agents 0 of 6
+   models on the messages: claude-sonnet-5-5
+      modelUsage claude-sonnet-5-5 in 2 + cache write 668 + cache read 1583, out 199
+   tool calls: to the seed's MCP tools 0 (answered with an error: 0) | ToolSearch 0 | other built-in 0 | to any other MCP server 0 | tool-result characters 0
+   the server's own record: no requests.txt (the process never started)
+   the stream and the server agree on the number of calls: nothing to compare (stream 0, server -; a denied call reaches the stream but not the server)
+   system lines by subtype: init 1, post_turn_summary 1
+   requests: 1 | first request 2253 tokens | last request 2253 tokens | all requests added up 2253 | output 2 | result line usage 2253
+   final reply (229 chars): shelf D-07 no | left 37 no | low stock named 0 of 4 (none) | at exactly 3: none | other real codes: none | codes not in the file: none | other shelves: none | G-999 named: no
+   scored: all right no | offered an answer no
+      | 我先看一下工作目錄裡有哪些檔案。
+      | <invoke name="Glob">
+      | <parameter name="pattern">**/*</parameter>
+      | </invoke>
+      | <invoke name="Grep">
+      | <parameter name="pattern">G-417</parameter>
+      | <parameter name="output_mode">files_with_matches</parameter>
+      | </invoke>
+## the debug record on MCP
+$ grep -ci mcp <logs>/f2.debug.txt
+7
+$ grep -i mcp <logs>/f2.debug.txt | grep -w -E 'gear(-more)?' | head -14 (time stamps cut, lists emptied, 200 columns)
+$ lines that say MCP server "<name>" with a name that is not the seed's (count only)
+0
+$ lines that mention claude.ai connectors (count only)
+2
+# f2 | end 2026-10-10T01:26:09Z
+[session.sh exit 0]
+[stderr of session.sh: 0 bytes]
+
+runner: $ node <runner>/models.mjs <logs>/f2.stream.jsonl
+-- models.mjs f2.stream.jsonl
+   init model: claude-sonnet-5-5 | apiKeySource: none | init events: 1
+   model: claude-sonnet-5-5 (x3)
+   modelUsage key: claude-sonnet-5-5 (x1)
+   mcp_servers: 0 | the seed's: none | not the seed's: 0
+   tools: 1 | built-in: ToolSearch | mcp tools of the seed's servers: 0 | mcp tools of any other server: 0
+   agents: 6 | skills: 21 | plugins: 3 | slash_commands: 57 | memory_paths keys: no key
+   init keys: agents analytics_disabled apiKeySource capabilities claude_code_version cwd fast_mode_disabled_reason fast_mode_state mcp_servers messaging_socket_path model output_style per_turn_effort_active permissionMode plugins powershell_path product_feedback_disabled scratchpad_path session_id skills slash_commands subtype terminal_slash_commands tools type uuid view_mode
+   stream line types: system 2, assistant 2, rate_limit_event 1, result 1
+   verdict: only sonnet (or haiku) named | nothing but the seed's MCP on the init line
+
+Expected: as f1.
+Actual: as f1. 1 request, first request 2253 tokens. Reply: one sentence, then Glob and Grep
+written as text. All right no, offered an answer no.
+Match: yes.
+
+================================================================================================
+ITEM 7   n3: connected, third
+================================================================================================
+$ WORK=<work> bash <seed>/session.sh n3 on
+# n3 | arm on | start 2026-10-10T01:26:13Z
+## the project before the session (rebuilt from <seed>/gear-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+ba674b4c22b0953b *./.claude/hooks/seen.mjs
+9b4b69c38dc3ba74 *./.claude/settings.json
+0c64fed187074b0d *./.mcp.json
+a90b02a1b387321b *./README.md
+07d2015fcf8632a6 *./package.json
+f9759d87960cc0c8 *./server/gear.mjs
+891f7c32cb484022 *./server/hand.jsonl
+205f5c1fc7ca6128 *./server/stock.tsv
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## above the project (counts only)
+7 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## two variables that change how tools load (never their values): ANTHROPIC_BASE_URL set, to an anthropic.com host | ENABLE_TOOL_SEARCH not set
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/n3.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --allowedTools "mcp__gear__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/n3.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/n3.stream.jsonl 2> <logs>/n3.stderr.txt
+[exit 0] (10 s, ended 2026-10-10T01:26:25Z)
+[stream lines: 11 | stderr bytes: 0]
+$ head -6 <logs>/n3.stderr.txt (cut at 160 columns)
+## what the server kept (server/requests.txt in the project; the file is not in the seed)
+01 +     0ms start
+02 +     8ms server/discover asks 2026-07-28
+03 +    18ms initialize asks 2025-11-25
+04 +    31ms notifications/initialized
+05 +    47ms tools/list
+06 +  2932ms tools/call find_gear {"code":"G-417"}
+07 +  3575ms tools/call low_stock {"below":3}
+08 +  7610ms end
+## what the logging hook saw (<logs>/n3.seen.txt)
+PreToolUse ToolSearch query=select:mcp__gear__find_gear,mcp__gear__low_stock
+PostToolUse ToolSearch response_chars=143
+PreToolUse mcp__gear__find_gear source=dynamic {"code":"G-417"}
+PostToolUse mcp__gear__find_gear source=dynamic response_chars=48
+PreToolUse mcp__gear__low_stock source=dynamic {"below":3}
+PostToolUse mcp__gear__low_stock source=dynamic response_chars=83
+## anything that is not the seed's, counted from the hook record (each should be 0)
+lines with (another server): 0 | with (outside the project): 0 | instruction files loaded (the project has none): 0
+## from the stream
+$ grep -c '"name":"mcp__gear' <logs>/n3.stream.jsonl
+2
+$ grep -c '"name":"ToolSearch"' <logs>/n3.stream.jsonl
+1
+$ node <seed>/tally.mjs <logs>/n3.stream.jsonl
+== n3 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success (is_error false), 4 turns, 7322 ms, cost USD 0.011710600000000002 | permission denials 0
+   built-in tools offered (1): ToolSearch | ToolSearch listed: yes
+   MCP servers on the init line: the seed's 1 (gear=connected [other keys: source]) + any other 0 | entries skipped at start-up: 0
+   MCP tools on the init line: the seed's 2 (mcp__gear__find_gear mcp__gear__low_stock) + any other 0
+   not shipped with Claude Code: plugins 0 | skills 0 of 21 | agents 0 of 6
+   models on the messages: claude-sonnet-5-5
+      modelUsage claude-sonnet-5-5 in 6 + cache write 1506 + cache read 9523, out 377
+   call  1 ToolSearch {"query":"select:mcp__gear__find_gear,mcp__gear__low_stock","max_results":5}
+     back  1 is_error=- 75 chars [tool_reference] [tool_reference mcp__gear__find_gear] ⏎ [tool_reference mcp__gear__low_stock]
+   call  2 mcp__gear__find_gear {"code":"G-417"}
+   call  3 mcp__gear__low_stock {"below":3}
+     back  2 is_error=- 21 chars [text] G-417 頭燈｜貨架 D-07｜剩 37
+     back  3 is_error=- 53 chars [text] G-108 行李秤 剩 2 ⏎ G-233 雪鏡 剩 1 ⏎ G-352 營燈 剩 0 ⏎ G-590 潛水鏡 剩 2
+   tool calls: to the seed's MCP tools 2 (answered with an error: 0) | ToolSearch 1 | other built-in 0 | to any other MCP server 0 | tool-result characters 149
+   the server's own record: 8 lines, tools/call 2 | start > server/discover asks 2026-07-28 > initialize asks 2025-11-25 > notifications/initialized > tools/list > end
+   the stream and the server agree on the number of calls: yes (stream 2, server 2; a denied call reaches the stream but not the server)
+   system lines by subtype: init 1, post_turn_summary 1
+   requests: 3 | first request 3339 tokens | last request 4005 tokens | all requests added up 11035 | output 219 | result line usage 11035
+   final reply (186 chars): shelf D-07 yes | left 37 yes | low stock named 4 of 4 (G-108 G-233 G-352 G-590) | at exactly 3: none | other real codes: none | codes not in the file: none | other shelves: none | G-999 named: no
+   scored: all right yes | offered an answer yes
+      | **G-417(頭燈)**:放在貨架 **D-07**,剩 **37** 個。
+      | **庫存低於 3 的器材:**
+      | | 代號 | 品名 | 剩餘 |
+      | |---|---|---|
+      | | G-108 | 行李秤 | 2 |
+      | | G-233 | 雪鏡 | 1 |
+      | | G-352 | 營燈 | 0 |
+      | | G-590 | 潛水鏡 | 2 |
+      | 其中 G-352 營燈已經沒有庫存。
+## the debug record on MCP
+$ grep -ci mcp <logs>/n3.debug.txt
+24
+$ grep -i mcp <logs>/n3.debug.txt | grep -w -E 'gear(-more)?' | head -14 (time stamps cut, lists emptied, 200 columns)
+[...] MCP server "gear": Starting connection with timeout of 30000ms
+[...] MCP server "gear": Successfully connected (transport: stdio) in 415ms
+[...] MCP server "gear": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-desk","version":"
+[...] [...] Server "gear" connected with subscribe=false
+[...] MCP server "gear": Calling MCP tool: find_gear
+[...] MCP server "gear": Tool 'find_gear' completed successfully in 6ms
+[...] MCP server "gear": Calling MCP tool: low_stock
+[...] MCP server "gear": Tool 'low_stock' completed successfully in 11ms
+[...] MCP server "gear": Terminating MCP server process tree
+[...] MCP server "gear": STDIO connection closed after 7s (cleanly)
+[...] MCP server "gear": Cleared connection cache for reconnection
+$ lines that say MCP server "<name>" with a name that is not the seed's (count only)
+0
+$ lines that mention claude.ai connectors (count only)
+2
+# n3 | end 2026-10-10T01:26:27Z
+[session.sh exit 0]
+[stderr of session.sh: 0 bytes]
+
+runner: $ node <runner>/models.mjs <logs>/n3.stream.jsonl
+-- models.mjs n3.stream.jsonl
+   init model: claude-sonnet-5-5 | apiKeySource: none | init events: 1
+   model: claude-sonnet-5-5 (x5)
+   modelUsage key: claude-sonnet-5-5 (x1)
+   mcp_servers: 1 | the seed's: gear=connected | not the seed's: 0
+   tools: 3 | built-in: ToolSearch | mcp tools of the seed's servers: 2 | mcp tools of any other server: 0
+   agents: 6 | skills: 21 | plugins: 3 | slash_commands: 57 | memory_paths keys: no key
+   init keys: agents analytics_disabled apiKeySource capabilities claude_code_version cwd fast_mode_disabled_reason fast_mode_state mcp_servers messaging_socket_path model output_style per_turn_effort_active permissionMode plugins powershell_path product_feedback_disabled scratchpad_path session_id skills slash_commands subtype terminal_slash_commands tools type uuid view_mode
+   stream line types: system 2, assistant 4, rate_limit_event 1, user 3, result 1
+   verdict: only sonnet (or haiku) named | nothing but the seed's MCP on the init line
+
+Expected: as n1.
+Actual: as n1 and n2. First request 3339 tokens, 3 requests, all right yes.
+Match: yes.
+
+================================================================================================
+ITEM 8   f3: not connected, third
+================================================================================================
+$ WORK=<work> bash <seed>/session.sh f3 off
+# f3 | arm off | start 2026-10-10T01:26:31Z
+## the project before the session (rebuilt from <seed>/gear-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+ba674b4c22b0953b *./.claude/hooks/seen.mjs
+9b4b69c38dc3ba74 *./.claude/settings.json
+0c64fed187074b0d *./.mcp.json
+a90b02a1b387321b *./README.md
+07d2015fcf8632a6 *./package.json
+f9759d87960cc0c8 *./server/gear.mjs
+891f7c32cb484022 *./server/hand.jsonl
+205f5c1fc7ca6128 *./server/stock.tsv
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## above the project (counts only)
+7 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## two variables that change how tools load (never their values): ANTHROPIC_BASE_URL set, to an anthropic.com host | ENABLE_TOOL_SEARCH not set
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/f3.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --tools ToolSearch --allowedTools "mcp__gear__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/f3.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/f3.stream.jsonl 2> <logs>/f3.stderr.txt
+[exit 0] (7 s, ended 2026-10-10T01:26:39Z)
+[stream lines: 8 | stderr bytes: 0]
+$ head -6 <logs>/f3.stderr.txt (cut at 160 columns)
+## what the server kept (server/requests.txt in the project; the file is not in the seed)
+(no such file: the server process never started)
+## what the logging hook saw (<logs>/f3.seen.txt)
+(empty: no hook event reached the logger)
+## anything that is not the seed's, counted from the hook record (each should be 0)
+lines with (another server): 0 | with (outside the project): 0 | instruction files loaded (the project has none): 0
+## from the stream
+$ grep -c '"name":"mcp__gear' <logs>/f3.stream.jsonl
+0
+$ grep -c '"name":"ToolSearch"' <logs>/f3.stream.jsonl
+0
+$ node <seed>/tally.mjs <logs>/f3.stream.jsonl
+== f3 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success (is_error false), 1 turns, 3176 ms, cost USD 0.0042226 | permission denials 0
+   built-in tools offered (1): ToolSearch | ToolSearch listed: yes
+   MCP servers on the init line: the seed's 0 (none) + any other 0 | entries skipped at start-up: 0
+   MCP tools on the init line: the seed's 0 (none) + any other 0
+   not shipped with Claude Code: plugins 0 | skills 0 of 21 | agents 0 of 6
+   models on the messages: claude-sonnet-5-5
+      modelUsage claude-sonnet-5-5 in 2 + cache write 668 + cache read 1583, out 123
+   tool calls: to the seed's MCP tools 0 (answered with an error: 0) | ToolSearch 0 | other built-in 0 | to any other MCP server 0 | tool-result characters 0
+   the server's own record: no requests.txt (the process never started)
+   the stream and the server agree on the number of calls: nothing to compare (stream 0, server -; a denied call reaches the stream but not the server)
+   system lines by subtype: init 1, thinking_tokens 2, post_turn_summary 1
+   requests: 1 | first request 2253 tokens | last request 2253 tokens | all requests added up 2253 | output 2 | result line usage 2253
+   final reply (92 chars): shelf D-07 no | left 37 no | low stock named 0 of 4 (none) | at exactly 3: none | other real codes: none | codes not in the file: none | other shelves: none | G-999 named: no
+   scored: all right no | offered an answer no
+      | 我先看一下工作目錄裡有哪些檔案。
+      | <invoke name="Glob">
+      | <parameter name="pattern">**/*</parameter>
+      | </invoke>
+## the debug record on MCP
+$ grep -ci mcp <logs>/f3.debug.txt
+7
+$ grep -i mcp <logs>/f3.debug.txt | grep -w -E 'gear(-more)?' | head -14 (time stamps cut, lists emptied, 200 columns)
+$ lines that say MCP server "<name>" with a name that is not the seed's (count only)
+0
+$ lines that mention claude.ai connectors (count only)
+2
+# f3 | end 2026-10-10T01:26:41Z
+[session.sh exit 0]
+[stderr of session.sh: 0 bytes]
+
+runner: $ node <runner>/models.mjs <logs>/f3.stream.jsonl
+-- models.mjs f3.stream.jsonl
+   init model: claude-sonnet-5-5 | apiKeySource: none | init events: 1
+   model: claude-sonnet-5-5 (x3)
+   modelUsage key: claude-sonnet-5-5 (x1)
+   mcp_servers: 0 | the seed's: none | not the seed's: 0
+   tools: 1 | built-in: ToolSearch | mcp tools of the seed's servers: 0 | mcp tools of any other server: 0
+   agents: 6 | skills: 21 | plugins: 3 | slash_commands: 57 | memory_paths keys: no key
+   init keys: agents analytics_disabled apiKeySource capabilities claude_code_version cwd fast_mode_disabled_reason fast_mode_state mcp_servers messaging_socket_path model output_style per_turn_effort_active permissionMode plugins powershell_path product_feedback_disabled scratchpad_path session_id skills slash_commands subtype terminal_slash_commands tools type uuid view_mode
+   stream line types: system 4, assistant 2, rate_limit_event 1, result 1
+   verdict: only sonnet (or haiku) named | nothing but the seed's MCP on the init line
+
+Expected: as f1.
+Actual: as f1 and f2. 1 request, first request 2253 tokens. Reply: one sentence, then Glob
+written as text. All right no, offered an answer no.
+Match: yes.
+The six runs of the main example are complete: n arm 3 of 3 all right with a tool call matched by
+the server's record each time; f arm 0 of 3 all right, 0 of 3 offered an answer.
+
+================================================================================================
+ITEM 9   w1: one more server that only sits there, twelve tools
+================================================================================================
+$ WORK=<work> bash <seed>/session.sh w1 wide
+# w1 | arm wide | start 2026-10-10T01:26:49Z
+## the project before the session (rebuilt from <seed>/gear-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/more.mjs
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+ba674b4c22b0953b *./.claude/hooks/seen.mjs
+9b4b69c38dc3ba74 *./.claude/settings.json
+ad45f70fd557e9ff *./.mcp.json
+a90b02a1b387321b *./README.md
+07d2015fcf8632a6 *./package.json
+f9759d87960cc0c8 *./server/gear.mjs
+891f7c32cb484022 *./server/hand.jsonl
+9e2e02aab6cc4406 *./server/more.mjs
+205f5c1fc7ca6128 *./server/stock.tsv
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    },
+    "gear-more": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/more.mjs"]
+    }
+  }
+}
+## above the project (counts only)
+7 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## two variables that change how tools load (never their values): ANTHROPIC_BASE_URL set, to an anthropic.com host | ENABLE_TOOL_SEARCH not set
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/w1.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --allowedTools "mcp__gear__*,mcp__gear-more__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/w1.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/w1.stream.jsonl 2> <logs>/w1.stderr.txt
+[exit 0] (15 s, ended 2026-10-10T01:27:07Z)
+[stream lines: 11 | stderr bytes: 0]
+$ head -6 <logs>/w1.stderr.txt (cut at 160 columns)
+## what the server kept (server/requests.txt in the project; the file is not in the seed)
+01 +     0ms start
+02 +     8ms server/discover asks 2026-07-28
+03 +    32ms initialize asks 2025-11-25
+04 +    49ms notifications/initialized
+05 +    65ms tools/list
+06 +  3187ms tools/call find_gear {"code":"G-417"}
+07 +  3524ms tools/call low_stock {"below":3}
+08 +  7896ms end
+## what the ten-tool server kept (server/requests-more.txt)
+01 +     0ms start
+02 +     7ms server/discover
+03 +    30ms initialize
+04 +    52ms notifications/initialized
+05 +    62ms tools/list
+06 +  7898ms end
+## what the logging hook saw (<logs>/w1.seen.txt)
+PreToolUse ToolSearch query=select:mcp__gear__find_gear,mcp__gear__low_stock
+PostToolUse ToolSearch response_chars=144
+PreToolUse mcp__gear__find_gear source=dynamic {"code":"G-417"}
+PostToolUse mcp__gear__find_gear source=dynamic response_chars=48
+PreToolUse mcp__gear__low_stock source=dynamic {"below":3}
+PostToolUse mcp__gear__low_stock source=dynamic response_chars=83
+## anything that is not the seed's, counted from the hook record (each should be 0)
+lines with (another server): 0 | with (outside the project): 0 | instruction files loaded (the project has none): 0
+## from the stream
+$ grep -c '"name":"mcp__gear' <logs>/w1.stream.jsonl
+2
+$ grep -c '"name":"ToolSearch"' <logs>/w1.stream.jsonl
+1
+$ node <seed>/tally.mjs <logs>/w1.stream.jsonl
+== w1 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success (is_error false), 4 turns, 7369 ms, cost USD 0.012651 | permission denials 0
+   built-in tools offered (1): ToolSearch | ToolSearch listed: yes
+   MCP servers on the init line: the seed's 2 (gear=connected [other keys: source], gear-more=connected [other keys: source]) + any other 0 | entries skipped at start-up: 0
+   MCP tools on the init line: the seed's 12 (mcp__gear__find_gear mcp__gear__low_stock mcp__gear-more__adjust_stock mcp__gear-more__cancel_reservation mcp__gear-more__check_in mcp__gear-more__check_out mcp__gear-more__daily_summary mcp__gear-more__list_reservations mcp__gear-more__move_shelf mcp__gear-more__price_quote mcp__gear-more__repair_ticket mcp__gear-more__reserve_gear) + any other 0
+   not shipped with Claude Code: plugins 0 | skills 0 of 21 | agents 0 of 6
+   models on the messages: claude-sonnet-5-5
+      modelUsage claude-sonnet-5-5 in 6 + cache write 1692 + cache read 9905, out 389
+   call  1 ToolSearch {"query":"select:mcp__gear__find_gear,mcp__gear__low_stock","max_results":5}
+     back  1 is_error=- 75 chars [tool_reference] [tool_reference mcp__gear__find_gear] ⏎ [tool_reference mcp__gear__low_stock]
+   call  2 mcp__gear__find_gear {"code":"G-417"}
+   call  3 mcp__gear__low_stock {"below":3}
+     back  2 is_error=- 21 chars [text] G-417 頭燈｜貨架 D-07｜剩 37
+     back  3 is_error=- 53 chars [text] G-108 行李秤 剩 2 ⏎ G-233 雪鏡 剩 1 ⏎ G-352 營燈 剩 0 ⏎ G-590 潛水鏡 剩 2
+   tool calls: to the seed's MCP tools 2 (answered with an error: 0) | ToolSearch 1 | other built-in 0 | to any other MCP server 0 | tool-result characters 149
+   the server's own record: 8 lines, tools/call 2 | start > server/discover asks 2026-07-28 > initialize asks 2025-11-25 > notifications/initialized > tools/list > end | requests-more.txt 6 lines
+   the stream and the server agree on the number of calls: yes (stream 2, server 2; a denied call reaches the stream but not the server)
+   system lines by subtype: init 1, post_turn_summary 1
+   requests: 3 | first request 3530 tokens | last request 4191 tokens | all requests added up 11603 | output 231 | result line usage 11603
+   final reply (197 chars): shelf D-07 yes | left 37 yes | low stock named 4 of 4 (G-108 G-233 G-352 G-590) | at exactly 3: none | other real codes: none | codes not in the file: none | other shelves: none | G-999 named: no
+   scored: all right yes | offered an answer yes
+      | **G-417(頭燈)**:放在貨架 **D-07**,剩 **37** 個。
+      | **庫存低於 3 的器材:**
+      | | 代號 | 品名 | 剩餘 |
+      | |---|---|---|
+      | | G-108 | 行李秤 | 2 |
+      | | G-233 | 雪鏡 | 1 |
+      | | G-352 | 營燈 | 0(已無庫存) |
+      | | G-590 | 潛水鏡 | 2 |
+      | 營燈 G-352 已經缺貨,可能需要優先補貨。
+## the debug record on MCP
+$ grep -ci mcp <logs>/w1.debug.txt
+31
+$ grep -i mcp <logs>/w1.debug.txt | grep -w -E 'gear(-more)?' | head -14 (time stamps cut, lists emptied, 200 columns)
+[...] MCP server "gear": Starting connection with timeout of 30000ms
+[...] MCP server "gear-more": Starting connection with timeout of 30000ms
+[...] MCP server "gear": Successfully connected (transport: stdio) in 627ms
+[...] MCP server "gear": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-desk","version":"
+[...] [...] Server "gear" connected with subscribe=false
+[...] MCP server "gear-more": Successfully connected (transport: stdio) in 537ms
+[...] MCP server "gear-more": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-more","versi
+[...] [...] Server "gear-more" connected with subscribe=false
+[...] MCP server "gear": Calling MCP tool: find_gear
+[...] MCP server "gear": Tool 'find_gear' completed successfully in 6ms
+[...] MCP server "gear": Calling MCP tool: low_stock
+[...] MCP server "gear": Tool 'low_stock' completed successfully in 4ms
+[...] MCP server "gear": Terminating MCP server process tree
+[...] MCP server "gear-more": Terminating MCP server process tree
+$ lines that say MCP server "<name>" with a name that is not the seed's (count only)
+0
+$ lines that mention claude.ai connectors (count only)
+2
+# w1 | end 2026-10-10T01:27:08Z
+[session.sh exit 0]
+[stderr of session.sh: 0 bytes]
+
+runner: $ node <runner>/models.mjs <logs>/w1.stream.jsonl
+-- models.mjs w1.stream.jsonl
+   init model: claude-sonnet-5-5 | apiKeySource: none | init events: 1
+   model: claude-sonnet-5-5 (x5)
+   modelUsage key: claude-sonnet-5-5 (x1)
+   mcp_servers: 2 | the seed's: gear=connected, gear-more=connected | not the seed's: 0
+   tools: 13 | built-in: ToolSearch | mcp tools of the seed's servers: 12 | mcp tools of any other server: 0
+   agents: 6 | skills: 21 | plugins: 3 | slash_commands: 57 | memory_paths keys: no key
+   init keys: agents analytics_disabled apiKeySource capabilities claude_code_version cwd fast_mode_disabled_reason fast_mode_state mcp_servers messaging_socket_path model output_style per_turn_effort_active permissionMode plugins powershell_path product_feedback_disabled scratchpad_path session_id skills slash_commands subtype terminal_slash_commands tools type uuid view_mode
+   stream line types: system 2, assistant 4, rate_limit_event 1, user 3, result 1
+   verdict: only sonnet (or haiku) named | nothing but the seed's MCP on the init line
+
+Expected: gear=connected and gear-more=connected, 12 MCP tools; the two gear tools called, all
+right; requests-more.txt has the handshake and tools/list and no tools/call. Unknown: the first
+request.
+Actual: all of that. gear-more got the same probe first (its record does not log versions:
+start > server/discover > initialize > notifications/initialized > tools/list > end). The
+ToolSearch call is the same select query for the two gear tools. No call to gear-more. 3
+requests, first request 3530 tokens.
+Match: yes.
+
+================================================================================================
+ITEM 10   u1: the same project, ENABLE_TOOL_SEARCH=false
+================================================================================================
+$ WORK=<work> bash <seed>/session.sh u1 wideup
+# u1 | arm wideup | start 2026-10-10T01:27:12Z
+## the project before the session (rebuilt from <seed>/gear-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/more.mjs
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+ba674b4c22b0953b *./.claude/hooks/seen.mjs
+9b4b69c38dc3ba74 *./.claude/settings.json
+ad45f70fd557e9ff *./.mcp.json
+a90b02a1b387321b *./README.md
+07d2015fcf8632a6 *./package.json
+f9759d87960cc0c8 *./server/gear.mjs
+891f7c32cb484022 *./server/hand.jsonl
+9e2e02aab6cc4406 *./server/more.mjs
+205f5c1fc7ca6128 *./server/stock.tsv
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    },
+    "gear-more": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/more.mjs"]
+    }
+  }
+}
+## above the project (counts only)
+7 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## two variables that change how tools load (never their values): ANTHROPIC_BASE_URL set, to an anthropic.com host | ENABLE_TOOL_SEARCH not set
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/u1.seen.txt ENABLE_TOOL_SEARCH=false \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --allowedTools "mcp__gear__*,mcp__gear-more__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/u1.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/u1.stream.jsonl 2> <logs>/u1.stderr.txt
+[exit 0] (10 s, ended 2026-10-10T01:27:23Z)
+[stream lines: 9 | stderr bytes: 0]
+$ head -6 <logs>/u1.stderr.txt (cut at 160 columns)
+## what the server kept (server/requests.txt in the project; the file is not in the seed)
+01 +     0ms start
+02 +     6ms server/discover asks 2026-07-28
+03 +    13ms initialize asks 2025-11-25
+04 +    15ms notifications/initialized
+05 +    19ms tools/list
+06 +  1996ms tools/call find_gear {"code":"G-417"}
+07 +  2345ms tools/call low_stock {"below":3}
+08 +  6648ms end
+## what the ten-tool server kept (server/requests-more.txt)
+01 +     0ms start
+02 +     6ms server/discover
+03 +     8ms initialize
+04 +    11ms notifications/initialized
+05 +    13ms tools/list
+06 +  6640ms end
+## what the logging hook saw (<logs>/u1.seen.txt)
+PreToolUse mcp__gear__find_gear source=dynamic {"code":"G-417"}
+PostToolUse mcp__gear__find_gear source=dynamic response_chars=48
+PreToolUse mcp__gear__low_stock source=dynamic {"below":3}
+PostToolUse mcp__gear__low_stock source=dynamic response_chars=83
+## anything that is not the seed's, counted from the hook record (each should be 0)
+lines with (another server): 0 | with (outside the project): 0 | instruction files loaded (the project has none): 0
+## from the stream
+$ grep -c '"name":"mcp__gear' <logs>/u1.stream.jsonl
+2
+$ grep -c '"name":"ToolSearch"' <logs>/u1.stream.jsonl
+0
+$ node <seed>/tally.mjs <logs>/u1.stream.jsonl
+== u1 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success (is_error false), 3 turns, 6159 ms, cost USD 0.021194400000000002 | permission denials 0
+   built-in tools offered (0): none | ToolSearch listed: no
+   MCP servers on the init line: the seed's 2 (gear=connected [other keys: source], gear-more=connected [other keys: source]) + any other 0 | entries skipped at start-up: 0
+   MCP tools on the init line: the seed's 12 (mcp__gear__find_gear mcp__gear__low_stock mcp__gear-more__adjust_stock mcp__gear-more__cancel_reservation mcp__gear-more__check_in mcp__gear-more__check_out mcp__gear-more__daily_summary mcp__gear-more__list_reservations mcp__gear-more__move_shelf mcp__gear-more__price_quote mcp__gear-more__repair_ticket mcp__gear-more__reserve_gear) + any other 0
+   not shipped with Claude Code: plugins 0 | skills 0 of 21 | agents 0 of 6
+   models on the messages: claude-sonnet-5-5
+      modelUsage claude-sonnet-5-5 in 4 + cache write 4371 + cache read 4062, out 289
+   call  1 mcp__gear__find_gear {"code":"G-417"}
+   call  2 mcp__gear__low_stock {"below":3}
+     back  1 is_error=- 21 chars [text] G-417 頭燈｜貨架 D-07｜剩 37
+     back  2 is_error=- 53 chars [text] G-108 行李秤 剩 2 ⏎ G-233 雪鏡 剩 1 ⏎ G-352 營燈 剩 0 ⏎ G-590 潛水鏡 剩 2
+   tool calls: to the seed's MCP tools 2 (answered with an error: 0) | ToolSearch 0 | other built-in 0 | to any other MCP server 0 | tool-result characters 74
+   the server's own record: 8 lines, tools/call 2 | start > server/discover asks 2026-07-28 > initialize asks 2025-11-25 > notifications/initialized > tools/list > end | requests-more.txt 6 lines
+   the stream and the server agree on the number of calls: yes (stream 2, server 2; a denied call reaches the stream but not the server)
+   system lines by subtype: init 1, post_turn_summary 1
+   requests: 2 | first request 4064 tokens | last request 4373 tokens | all requests added up 8437 | output 204 | result line usage 8437
+   final reply (189 chars): shelf D-07 yes | left 37 yes | low stock named 4 of 4 (G-108 G-233 G-352 G-590) | at exactly 3: none | other real codes: none | codes not in the file: none | other shelves: none | G-999 named: no
+   scored: all right yes | offered an answer yes
+      | **G-417(頭燈)**:放在貨架 D-07,剩 37 個。
+      | **庫存低於 3 的器材:**
+      | | 代號 | 品名 | 剩餘 |
+      | |---|---|---|
+      | | G-108 | 行李秤 | 2 |
+      | | G-233 | 雪鏡 | 1 |
+      | | G-352 | 營燈 | 0(已缺貨) |
+      | | G-590 | 潛水鏡 | 2 |
+      | G-352 營燈已經沒有庫存,可能需要優先補貨。
+## the debug record on MCP
+$ grep -ci mcp <logs>/u1.debug.txt
+30
+$ grep -i mcp <logs>/u1.debug.txt | grep -w -E 'gear(-more)?' | head -14 (time stamps cut, lists emptied, 200 columns)
+[...] MCP server "gear": Starting connection with timeout of 30000ms
+[...] MCP server "gear-more": Starting connection with timeout of 30000ms
+[...] MCP server "gear": Successfully connected (transport: stdio) in 357ms
+[...] MCP server "gear": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-desk","version":"
+[...] [...] Server "gear" connected with subscribe=false
+[...] MCP server "gear-more": Successfully connected (transport: stdio) in 309ms
+[...] MCP server "gear-more": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-more","versi
+[...] [...] Server "gear-more" connected with subscribe=false
+[...] MCP server "gear": Calling MCP tool: find_gear
+[...] MCP server "gear": Tool 'find_gear' completed successfully in 3ms
+[...] MCP server "gear": Calling MCP tool: low_stock
+[...] MCP server "gear": Tool 'low_stock' completed successfully in 2ms
+[...] MCP server "gear": Terminating MCP server process tree
+[...] MCP server "gear-more": Terminating MCP server process tree
+$ lines that say MCP server "<name>" with a name that is not the seed's (count only)
+0
+$ lines that mention claude.ai connectors (count only)
+2
+# u1 | end 2026-10-10T01:27:24Z
+[session.sh exit 0]
+[stderr of session.sh: 0 bytes]
+
+runner: $ node <runner>/models.mjs <logs>/u1.stream.jsonl
+-- models.mjs u1.stream.jsonl
+   init model: claude-sonnet-5-5 | apiKeySource: none | init events: 1
+   model: claude-sonnet-5-5 (x4)
+   modelUsage key: claude-sonnet-5-5 (x1)
+   mcp_servers: 2 | the seed's: gear=connected, gear-more=connected | not the seed's: 0
+   tools: 12 | built-in: none | mcp tools of the seed's servers: 12 | mcp tools of any other server: 0
+   agents: 6 | skills: 21 | plugins: 3 | slash_commands: 57 | memory_paths keys: no key
+   init keys: agents analytics_disabled apiKeySource capabilities claude_code_version cwd fast_mode_disabled_reason fast_mode_state mcp_servers messaging_socket_path model output_style per_turn_effort_active permissionMode plugins powershell_path product_feedback_disabled scratchpad_path session_id skills slash_commands subtype terminal_slash_commands tools type uuid view_mode
+   stream line types: system 2, assistant 3, rate_limit_event 1, user 2, result 1
+   verdict: only sonnet (or haiku) named | nothing but the seed's MCP on the init line
+
+Expected: the same two servers and 12 tools; no ToolSearch call; a first request larger than
+w1's. Unknown: whether ToolSearch is listed, how many requests.
+Actual: two servers connected, 12 MCP tools. ToolSearch is NOT on the init line: "built-in tools
+offered (0): none", although --tools ToolSearch was passed. No ToolSearch call; the two gear
+tools were called in the FIRST request. 2 requests (w1: 3). First request 4064 tokens (w1: 3530).
+All requests added up 8437 (w1: 11603). All right yes. The hook record has 4 lines (no
+ToolSearch lines).
+Match: yes; the first request is larger than w1's, as expected.
+
+================================================================================================
+ITEM 11   p1: connected, no allow rule
+================================================================================================
+$ WORK=<work> bash <seed>/session.sh p1 noallow
+# p1 | arm noallow | start 2026-10-10T01:27:32Z
+## the project before the session (rebuilt from <seed>/gear-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+ba674b4c22b0953b *./.claude/hooks/seen.mjs
+9b4b69c38dc3ba74 *./.claude/settings.json
+0c64fed187074b0d *./.mcp.json
+a90b02a1b387321b *./README.md
+07d2015fcf8632a6 *./package.json
+f9759d87960cc0c8 *./server/gear.mjs
+891f7c32cb484022 *./server/hand.jsonl
+205f5c1fc7ca6128 *./server/stock.tsv
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## above the project (counts only)
+7 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## two variables that change how tools load (never their values): ANTHROPIC_BASE_URL set, to an anthropic.com host | ENABLE_TOOL_SEARCH not set
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/p1.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/p1.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/p1.stream.jsonl 2> <logs>/p1.stderr.txt
+[exit 0] (11 s, ended 2026-10-10T01:27:44Z)
+[stream lines: 13 | stderr bytes: 0]
+$ head -6 <logs>/p1.stderr.txt (cut at 160 columns)
+## what the server kept (server/requests.txt in the project; the file is not in the seed)
+01 +     0ms start
+02 +     6ms server/discover asks 2026-07-28
+03 +    14ms initialize asks 2025-11-25
+04 +    15ms notifications/initialized
+05 +    20ms tools/list
+06 +  7342ms end
+## what the logging hook saw (<logs>/p1.seen.txt)
+PreToolUse ToolSearch query=select:mcp__gear__find_gear,mcp__gear__low_stock
+PostToolUse ToolSearch response_chars=143
+PreToolUse mcp__gear__find_gear source=dynamic {"code":"G-417"}
+PermissionRequest mcp__gear__find_gear source=dynamic
+PreToolUse mcp__gear__low_stock source=dynamic {"below":3}
+PermissionRequest mcp__gear__low_stock source=dynamic
+## anything that is not the seed's, counted from the hook record (each should be 0)
+lines with (another server): 0 | with (outside the project): 0 | instruction files loaded (the project has none): 0
+## from the stream
+$ grep -c '"name":"mcp__gear' <logs>/p1.stream.jsonl
+2
+$ grep -c '"name":"ToolSearch"' <logs>/p1.stream.jsonl
+1
+$ node <seed>/tally.mjs <logs>/p1.stream.jsonl
+== p1 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success (is_error false), 4 turns, 6978 ms, cost USD 0.0117218 | permission denials 2 (mcp__gear__find_gear, mcp__gear__low_stock)
+   built-in tools offered (1): ToolSearch | ToolSearch listed: yes
+   MCP servers on the init line: the seed's 1 (gear=connected [other keys: source]) + any other 0 | entries skipped at start-up: 0
+   MCP tools on the init line: the seed's 2 (mcp__gear__find_gear mcp__gear__low_stock) + any other 0
+   not shipped with Claude Code: plugins 0 | skills 0 of 21 | agents 0 of 6
+   models on the messages: claude-sonnet-5-5
+      modelUsage claude-sonnet-5-5 in 6 + cache write 1496 + cache read 9529, out 382
+   call  1 ToolSearch {"query":"select:mcp__gear__find_gear,mcp__gear__low_stock","max_results":5}
+     back  1 is_error=- 75 chars [tool_reference] [tool_reference mcp__gear__find_gear] ⏎ [tool_reference mcp__gear__low_stock]
+   call  2 mcp__gear__find_gear {"code":"G-417"}
+   call  3 mcp__gear__low_stock {"below":3}
+     back  2 is_error=true 89 chars [string] Claude requested permissions to use mcp__gear__find_gear, but you haven't granted it yet.
+     back  3 is_error=true 89 chars [string] Claude requested permissions to use mcp__gear__low_stock, but you haven't granted it yet.
+   tool calls: to the seed's MCP tools 2 (answered with an error: 2) | ToolSearch 1 | other built-in 0 | to any other MCP server 0 | tool-result characters 253
+   the server's own record: 6 lines, tools/call 0 | start > server/discover asks 2026-07-28 > initialize asks 2025-11-25 > notifications/initialized > tools/list > end
+   the stream and the server agree on the number of calls: no (stream 2, server 0; a denied call reaches the stream but not the server)
+   system lines by subtype: init 1, permission_denied 2, post_turn_summary 1
+   requests: 3 | first request 3340 tokens | last request 3995 tokens | all requests added up 11031 | output 224 | result line usage 11031
+   final reply (179 chars): shelf D-07 no | left 37 no | low stock named 0 of 4 (none) | at exactly 3: none | other real codes: none | codes not in the file: none | other shelves: none | G-999 named: no
+   scored: all right no | offered an answer no
+      | 我沒辦法查詢庫存：`mcp__gear__find_gear` 和 `mcp__gear__low_stock` 兩個工具的使用權限都沒有被授予，呼叫被拒絕了。
+      | 所以目前我無法告訴你 G-417 的貨架與剩餘數量，也無法列出庫存低於 3 的項目，我不會憑空猜測數字。
+      | 請在權限提示中允許這兩個 gear 工具（或把它們加入允許清單），我就能立刻重新查詢。
+## the debug record on MCP
+$ grep -ci mcp <logs>/p1.debug.txt
+22
+$ grep -i mcp <logs>/p1.debug.txt | grep -w -E 'gear(-more)?' | head -14 (time stamps cut, lists emptied, 200 columns)
+[...] MCP server "gear": Starting connection with timeout of 30000ms
+[...] MCP server "gear": Successfully connected (transport: stdio) in 414ms
+[...] MCP server "gear": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-desk","version":"
+[...] [...] Server "gear" connected with subscribe=false
+[...] MCP server "gear": Terminating MCP server process tree
+[...] MCP server "gear": STDIO connection closed after 7s (cleanly)
+[...] MCP server "gear": Cleared connection cache for reconnection
+$ lines that say MCP server "<name>" with a name that is not the seed's (count only)
+0
+$ lines that mention claude.ai connectors (count only)
+2
+# p1 | end 2026-10-10T01:27:46Z
+[session.sh exit 0]
+[stderr of session.sh: 0 bytes]
+
+runner: $ node <runner>/models.mjs <logs>/p1.stream.jsonl
+-- models.mjs p1.stream.jsonl
+   init model: claude-sonnet-5-5 | apiKeySource: none | init events: 1
+   model: claude-sonnet-5-5 (x5)
+   modelUsage key: claude-sonnet-5-5 (x1)
+   mcp_servers: 1 | the seed's: gear=connected | not the seed's: 0
+   tools: 3 | built-in: ToolSearch | mcp tools of the seed's servers: 2 | mcp tools of any other server: 0
+   agents: 6 | skills: 21 | plugins: 3 | slash_commands: 57 | memory_paths keys: no key
+   init keys: agents analytics_disabled apiKeySource capabilities claude_code_version cwd fast_mode_disabled_reason fast_mode_state mcp_servers messaging_socket_path model output_style per_turn_effort_active permissionMode plugins powershell_path product_feedback_disabled scratchpad_path session_id skills slash_commands subtype terminal_slash_commands tools type uuid view_mode
+   stream line types: system 4, assistant 4, rate_limit_event 1, user 3, result 1
+   verdict: only sonnet (or haiku) named | nothing but the seed's MCP on the init line
+
+Expected: init as the n arm; permission denials at least 1 named mcp__gear__...; the server's
+record has the handshake and tools/list and 0 tools/call; stream and server disagree; the reply
+says it cannot use the tool. Unknown: the text of the denied tool result, whether a
+permission_denied system line exists, whether PermissionRequest or PermissionDenied reach the
+hook.
+Actual: gear=connected, 2 tools. The model did the same as in the n arm (ToolSearch select, then
+both tools in one request). Both calls were denied: permission denials 2 (mcp__gear__find_gear,
+mcp__gear__low_stock), each with the tool_input the model wrote. The denied tool result is a
+plain string with is_error true:
+  "Claude requested permissions to use mcp__gear__find_gear, but you haven't granted it yet."
+Two system lines with subtype permission_denied carry tool_name and the same message. The
+server's record: 6 lines, tools/call 0; it starts with "start", so the server process WAS
+started and listed its tools although no call reached it. Stream 2, server 0. Hook record:
+PreToolUse for each denied call, then PermissionRequest for each; no PermissionDenied, no
+PostToolUse, no PostToolUseFailure for them. The reply names both tools, says the calls were
+denied and that it will not guess. All right no, offered an answer no. First request 3340.
+Match: yes.
+
+================================================================================================
+ITEM 12   e1: a code that is not in the data
+================================================================================================
+$ WORK=<work> bash <seed>/session.sh e1 miss
+# e1 | arm miss | start 2026-10-10T01:27:49Z
+## the project before the session (rebuilt from <seed>/gear-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+ba674b4c22b0953b *./.claude/hooks/seen.mjs
+9b4b69c38dc3ba74 *./.claude/settings.json
+0c64fed187074b0d *./.mcp.json
+a90b02a1b387321b *./README.md
+07d2015fcf8632a6 *./package.json
+f9759d87960cc0c8 *./server/gear.mjs
+891f7c32cb484022 *./server/hand.jsonl
+205f5c1fc7ca6128 *./server/stock.tsv
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## above the project (counts only)
+7 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## two variables that change how tools load (never their values): ANTHROPIC_BASE_URL set, to an anthropic.com host | ENABLE_TOOL_SEARCH not set
+## the request (miss.txt)
+G-999 放在哪個貨架、還剩幾個？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/e1.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --allowedTools "mcp__gear__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/e1.debug.txt \
+    < <seed>/prompts/miss.txt > <logs>/e1.stream.jsonl 2> <logs>/e1.stderr.txt
+[exit 0] (11 s, ended 2026-10-10T01:28:01Z)
+[stream lines: 9 | stderr bytes: 0]
+$ head -6 <logs>/e1.stderr.txt (cut at 160 columns)
+## what the server kept (server/requests.txt in the project; the file is not in the seed)
+01 +     0ms start
+02 +     8ms server/discover asks 2026-07-28
+03 +    19ms initialize asks 2025-11-25
+04 +    23ms notifications/initialized
+05 +    27ms tools/list
+06 +  3083ms tools/call find_gear {"code":"G-999"}
+07 +  7392ms end
+## what the logging hook saw (<logs>/e1.seen.txt)
+PreToolUse ToolSearch query=select:mcp__gear__find_gear,mcp__gear__low_stock
+PostToolUse ToolSearch response_chars=143
+PreToolUse mcp__gear__find_gear source=dynamic {"code":"G-999"}
+PostToolUseFailure mcp__gear__find_gear source=dynamic error=查無代號：G-999
+## anything that is not the seed's, counted from the hook record (each should be 0)
+lines with (another server): 0 | with (outside the project): 0 | instruction files loaded (the project has none): 0
+## from the stream
+$ grep -c '"name":"mcp__gear' <logs>/e1.stream.jsonl
+1
+$ grep -c '"name":"ToolSearch"' <logs>/e1.stream.jsonl
+1
+$ node <seed>/tally.mjs <logs>/e1.stream.jsonl
+== e1 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success (is_error false), 3 turns, 7098 ms, cost USD 0.010944200000000001 | permission denials 0
+   built-in tools offered (1): ToolSearch | ToolSearch listed: yes
+   MCP servers on the init line: the seed's 1 (gear=connected [other keys: source]) + any other 0 | entries skipped at start-up: 0
+   MCP tools on the init line: the seed's 2 (mcp__gear__find_gear mcp__gear__low_stock) + any other 0
+   not shipped with Claude Code: plugins 0 | skills 0 of 21 | agents 0 of 6
+   models on the messages: claude-sonnet-5-5
+      modelUsage claude-sonnet-5-5 in 6 + cache write 1587 + cache read 9221, out 274
+   call  1 ToolSearch {"query":"select:mcp__gear__find_gear,mcp__gear__low_stock","max_results":5}
+     back  1 is_error=- 75 chars [tool_reference] [tool_reference mcp__gear__find_gear] ⏎ [tool_reference mcp__gear__low_stock]
+   call  2 mcp__gear__find_gear {"code":"G-999"}
+     back  2 is_error=true 10 chars [string] 查無代號：G-999
+   tool calls: to the seed's MCP tools 1 (answered with an error: 1) | ToolSearch 1 | other built-in 0 | to any other MCP server 0 | tool-result characters 85
+   the server's own record: 7 lines, tools/call 1 | start > server/discover asks 2026-07-28 > initialize asks 2025-11-25 > notifications/initialized > tools/list > end
+   the stream and the server agree on the number of calls: yes (stream 1, server 1; a denied call reaches the stream but not the server)
+   system lines by subtype: init 1, post_turn_summary 1
+   requests: 3 | first request 3328 tokens | last request 3806 tokens | all requests added up 10814 | output 168 | result line usage 10814
+   final reply (117 chars): shelf D-07 no | left 37 no | low stock named 0 of 4 (none) | at exactly 3: none | other real codes: none | codes not in the file: none | other shelves: none | G-999 named: yes
+   scored: all right no | offered an answer no
+      | 查不到代號 G-999,庫存系統回報「查無代號」,所以沒有它的貨架或數量資料。
+      | 可能是代號打錯或這個器材尚未登錄。如果你想確認,可以給我正確代號再查一次,或我可以用 `low_stock` 列出庫存偏低的器材,看看有沒有相近的代號。
+## the debug record on MCP
+$ grep -ci mcp <logs>/e1.debug.txt
+22
+$ grep -i mcp <logs>/e1.debug.txt | grep -w -E 'gear(-more)?' | head -14 (time stamps cut, lists emptied, 200 columns)
+[...] MCP server "gear": Starting connection with timeout of 30000ms
+[...] MCP server "gear": Successfully connected (transport: stdio) in 538ms
+[...] MCP server "gear": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-desk","version":"
+[...] [...] Server "gear" connected with subscribe=false
+[...] MCP server "gear": Calling MCP tool: find_gear
+[...] MCP server "gear" 查無代號：G-999
+[...] MCP server "gear": Tool 'find_gear' failed after 0s: 查無代號：G-999
+[...] MCP server "gear": Terminating MCP server process tree
+[...] MCP server "gear": STDIO connection closed after 7s (cleanly)
+[...] MCP server "gear": Cleared connection cache for reconnection
+$ lines that say MCP server "<name>" with a name that is not the seed's (count only)
+0
+$ lines that mention claude.ai connectors (count only)
+2
+# e1 | end 2026-10-10T01:28:03Z
+[session.sh exit 0]
+[stderr of session.sh: 0 bytes]
+
+runner: $ node <runner>/models.mjs <logs>/e1.stream.jsonl
+-- models.mjs e1.stream.jsonl
+   init model: claude-sonnet-5-5 | apiKeySource: none | init events: 1
+   model: claude-sonnet-5-5 (x4)
+   modelUsage key: claude-sonnet-5-5 (x1)
+   mcp_servers: 1 | the seed's: gear=connected | not the seed's: 0
+   tools: 3 | built-in: ToolSearch | mcp tools of the seed's servers: 2 | mcp tools of any other server: 0
+   agents: 6 | skills: 21 | plugins: 3 | slash_commands: 57 | memory_paths keys: no key
+   init keys: agents analytics_disabled apiKeySource capabilities claude_code_version cwd fast_mode_disabled_reason fast_mode_state mcp_servers messaging_socket_path model output_style per_turn_effort_active permissionMode plugins powershell_path product_feedback_disabled scratchpad_path session_id skills slash_commands subtype terminal_slash_commands tools type uuid view_mode
+   stream line types: system 2, assistant 3, rate_limit_event 1, user 2, result 1
+   verdict: only sonnet (or haiku) named | nothing but the seed's MCP on the init line
+
+Expected: one mcp__gear__find_gear {"code":"G-999"}; back is_error=true with 查無代號：G-999; the
+server's record has that tools/call; the reply says not found and names no shelf. Unknown:
+whether PostToolUseFailure reaches the hook.
+Actual: all of the expected lines. The model again asked ToolSearch for BOTH tools by name
+first, then called find_gear only. The tool result in the stream is a plain string
+"查無代號：G-999" with is_error true (a successful result is a list with one text block and no
+is_error key). Hook record: PostToolUseFailure mcp__gear__find_gear source=dynamic
+error=查無代號：G-999, and no PostToolUse for that call. The debug record: "Tool 'find_gear'
+failed after 0s: 查無代號：G-999". The reply says the code was not found, names no shelf and no
+other code, and offers to list low stock. other shelves none, codes not in the file none, G-999
+named yes.
+Match: yes.
+
+================================================================================================
+ITEM 13   x1: .mcp.json points at a file that does not exist
+================================================================================================
+$ WORK=<work> bash <seed>/session.sh x1 broken
+# x1 | arm broken | start 2026-10-10T01:28:06Z
+## the project before the session (rebuilt from <seed>/gear-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+ba674b4c22b0953b *./.claude/hooks/seen.mjs
+9b4b69c38dc3ba74 *./.claude/settings.json
+bdd0720db4192a3b *./.mcp.json
+a90b02a1b387321b *./README.md
+07d2015fcf8632a6 *./package.json
+f9759d87960cc0c8 *./server/gear.mjs
+891f7c32cb484022 *./server/hand.jsonl
+205f5c1fc7ca6128 *./server/stock.tsv
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gone.mjs"]
+    }
+  }
+}
+## above the project (counts only)
+7 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## two variables that change how tools load (never their values): ANTHROPIC_BASE_URL set, to an anthropic.com host | ENABLE_TOOL_SEARCH not set
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/x1.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --allowedTools "mcp__gear__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/x1.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/x1.stream.jsonl 2> <logs>/x1.stderr.txt
+[exit 0] (9 s, ended 2026-10-10T01:28:17Z)
+[stream lines: 8 | stderr bytes: 0]
+$ head -6 <logs>/x1.stderr.txt (cut at 160 columns)
+## what the server kept (server/requests.txt in the project; the file is not in the seed)
+(no such file: the server process never started)
+## what the logging hook saw (<logs>/x1.seen.txt)
+(empty: no hook event reached the logger)
+## anything that is not the seed's, counted from the hook record (each should be 0)
+lines with (another server): 0 | with (outside the project): 0 | instruction files loaded (the project has none): 0
+## from the stream
+$ grep -c '"name":"mcp__gear' <logs>/x1.stream.jsonl
+0
+$ grep -c '"name":"ToolSearch"' <logs>/x1.stream.jsonl
+0
+$ node <seed>/tally.mjs <logs>/x1.stream.jsonl
+== x1 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success (is_error false), 1 turns, 4365 ms, cost USD 0.0085766 | permission denials 0
+   built-in tools offered (1): ToolSearch | ToolSearch listed: yes
+   MCP servers on the init line: the seed's 1 (gear=failed [other keys: source]) + any other 0 | entries skipped at start-up: 0
+   MCP tools on the init line: the seed's 0 (none) + any other 0
+   not shipped with Claude Code: plugins 0 | skills 0 of 21 | agents 0 of 6
+   models on the messages: claude-sonnet-5-5
+      modelUsage claude-sonnet-5-5 in 2 + cache write 854 + cache read 1583, out 484
+   tool calls: to the seed's MCP tools 0 (answered with an error: 0) | ToolSearch 0 | other built-in 0 | to any other MCP server 0 | tool-result characters 0
+   the server's own record: no requests.txt (the process never started)
+   the stream and the server agree on the number of calls: nothing to compare (stream 0, server -; a denied call reaches the stream but not the server)
+   system lines by subtype: init 1, thinking_tokens 2, post_turn_summary 1
+   requests: 1 | first request 2439 tokens | last request 2439 tokens | all requests added up 2439 | output 4 | result line usage 2439
+   final reply (665 chars): shelf D-07 no | left 37 no | low stock named 0 of 4 (none) | at exactly 3: none | other real codes: none | codes not in the file: none | other shelves: none | G-999 named: no
+   scored: all right no | offered an answer no
+      | 先看一下工作目錄裡有沒有庫存資料檔。
+      | <invoke name="Glob">
+      | <parameter name="pattern">**/*</parameter>
+      | <parameter name="path"><lab></parameter>
+      | </invoke>
+      | <invoke name="Grep">
+      | <parameter name="pattern">G-417</parameter>
+      | <parameter name="path"><lab></parameter>
+      | <parameter name="output_mode">content</parameter>
+      | <parameter name="-n">true</parameter>
+## the debug record on MCP
+$ grep -ci mcp <logs>/x1.debug.txt
+14
+$ grep -i mcp <logs>/x1.debug.txt | grep -w -E 'gear(-more)?' | head -14 (time stamps cut, lists emptied, 200 columns)
+[...] MCP server "gear": Starting connection with timeout of 30000ms
+[...] MCP server "gear": version negotiation probe closed the stdio server (rmcp-class pre-init hard close); respawning pinned legacy
+[...] "MCP server \"gear\": stderr of the stdio server before restarting it: node:internal/modules/cjs/loader:1424\r\n  throw err;\r\n  ^\r\n\r\nError: Cannot find module '<a path under <lab>, cut at 200 columns>
+[...] "MCP server \"gear\" Server stderr: node:internal/modules/cjs/loader:1424\r\n  throw err;\r\n  ^\r\n\r\nError: Cannot find module '<a path under <lab>, cut at 200 columns>
+[...] MCP server "gear": Connection failed after 661ms (CONNECTION_CLOSED): Connection closed
+[...] MCP server "gear" Connection failed (CONNECTION_CLOSED): Connection closed
+$ lines that say MCP server "<name>" with a name that is not the seed's (count only)
+0
+$ lines that mention claude.ai connectors (count only)
+2
+# x1 | end 2026-10-10T01:28:18Z
+[session.sh exit 0]
+[stderr of session.sh: 0 bytes]
+
+runner: $ node <runner>/models.mjs <logs>/x1.stream.jsonl
+-- models.mjs x1.stream.jsonl
+   init model: claude-sonnet-5-5 | apiKeySource: none | init events: 1
+   model: claude-sonnet-5-5 (x3)
+   modelUsage key: claude-sonnet-5-5 (x1)
+   mcp_servers: 1 | the seed's: gear=failed | not the seed's: 0
+   tools: 1 | built-in: ToolSearch | mcp tools of the seed's servers: 0 | mcp tools of any other server: 0
+   agents: 6 | skills: 21 | plugins: 3 | slash_commands: 57 | memory_paths keys: no key
+   init keys: agents analytics_disabled apiKeySource capabilities claude_code_version cwd fast_mode_disabled_reason fast_mode_state mcp_servers messaging_socket_path model output_style per_turn_effort_active permissionMode plugins powershell_path product_feedback_disabled scratchpad_path session_id skills slash_commands subtype terminal_slash_commands tools type uuid view_mode
+   stream line types: system 4, assistant 2, rate_limit_event 1, result 1
+   verdict: only sonnet (or haiku) named | nothing but the seed's MCP on the init line
+
+Expected: gear listed with a status other than connected (failed expected), or not listed; 0 MCP
+tools; entries skipped at start-up 0; no requests.txt; no tool call; no answer. Unknown: whether
+the reply mentions the server, what the debug record says, how long it takes.
+Actual: gear=failed (source "dynamic"); MCP tools 0; entries skipped 0 and the init line has no
+mcp_server_errors key at all; no requests.txt; no tool call; hook record empty. The whole run
+took 9 s (n arm: 10 to 18 s): no 30-second wait. The debug record, in order: starting connection
+with a 30000 ms timeout; "version negotiation probe closed the stdio server (rmcp-class
+pre-init hard close); respawning pinned legacy" (the process died before answering the probe,
+and Claude Code started the command a second time without the probe); Node's own stderr with
+"Error: Cannot find module" and the path; "Connection failed after 661ms (CONNECTION_CLOSED):
+Connection closed". The reply does NOT say that a server failed to connect. Like the f arm it
+wrote tool calls as text (Glob, Grep, and a Glob for **/.mcp.json). 1 request, first request
+2439 tokens (f arm: 2248 to 2253). All right no, offered an answer no.
+Match: yes. Where to look, as the brief planned: the init line's status, and the command run by
+hand (M8 in item 2: Cannot find module, exit 1). In this version the debug record also holds
+Node's error text; the stream does not.
+
+================================================================================================
+ITEM 14   r1: not connected, but with Read, Glob and Grep (optional; the spare session)
+================================================================================================
+$ WORK=<work> bash <seed>/session.sh r1 files
+# r1 | arm files | start 2026-10-10T01:28:31Z
+## the project before the session (rebuilt from <seed>/gear-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+ba674b4c22b0953b *./.claude/hooks/seen.mjs
+9b4b69c38dc3ba74 *./.claude/settings.json
+0c64fed187074b0d *./.mcp.json
+a90b02a1b387321b *./README.md
+07d2015fcf8632a6 *./package.json
+f9759d87960cc0c8 *./server/gear.mjs
+891f7c32cb484022 *./server/hand.jsonl
+205f5c1fc7ca6128 *./server/stock.tsv
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## above the project (counts only)
+7 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## two variables that change how tools load (never their values): ANTHROPIC_BASE_URL set, to an anthropic.com host | ENABLE_TOOL_SEARCH not set
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/r1.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --tools ToolSearch,Read,Glob,Grep --allowedTools "mcp__gear__*,Read,Glob,Grep" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/r1.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/r1.stream.jsonl 2> <logs>/r1.stderr.txt
+[exit 0] (11 s, ended 2026-10-10T01:28:44Z)
+[stream lines: 14 | stderr bytes: 0]
+$ head -6 <logs>/r1.stderr.txt (cut at 160 columns)
+## what the server kept (server/requests.txt in the project; the file is not in the seed)
+(no such file: the server process never started)
+## what the logging hook saw (<logs>/r1.seen.txt)
+PreToolUse Glob
+PreToolUse Grep
+PreToolUse Read server/stock.tsv
+## anything that is not the seed's, counted from the hook record (each should be 0)
+lines with (another server): 0 | with (outside the project): 0 | instruction files loaded (the project has none): 0
+## from the stream
+$ grep -c '"name":"mcp__gear' <logs>/r1.stream.jsonl
+0
+$ grep -c '"name":"ToolSearch"' <logs>/r1.stream.jsonl
+0
+$ node <seed>/tally.mjs <logs>/r1.stream.jsonl
+== r1 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success (is_error false), 4 turns, 7586 ms, cost USD 0.0188232 | permission denials 0
+   built-in tools offered (4): Glob Grep Read ToolSearch | ToolSearch listed: yes
+   MCP servers on the init line: the seed's 0 (none) + any other 0 | entries skipped at start-up: 0
+   MCP tools on the init line: the seed's 0 (none) + any other 0
+   not shipped with Claude Code: plugins 0 | skills 0 of 21 | agents 0 of 6
+   models on the messages: claude-sonnet-5-5
+      modelUsage claude-sonnet-5-5 in 6 + cache write 2771 + cache read 12986, out 513
+   call  1 Glob {"pattern":"**/*"}
+   call  2 Grep {"pattern":"G-417","output_mode":"content"}
+     back  1 is_error=- 128 chars [string] README.md ⏎ server\hand.jsonl ⏎ server\stock.tsv ⏎ package.json ⏎ server\gear.mjs
+     back  2 is_error=- 162 chars [string] server\hand.jsonl:4:{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"find_gear","arguments":{"code":"G-41 ⏎ server\stock.tsv:15:G-417	頭燈	D-07	37
+   call  3 Read {"file_path":"<lab>\\server\\stock.tsv"}
+     back  3 is_error=- 504 chars [string] 1	code	name	shelf	left ⏎ 2	G-108	行李秤	A-03	2 ⏎ 3	G-121	登山杖	B-11	3 ⏎ 4	G-134	防水袋	A-09	14 ⏎ 5	G-150	頸枕	C-02	21
+   tool calls: to the seed's MCP tools 0 (answered with an error: 0) | ToolSearch 0 | other built-in 3 | to any other MCP server 0 | tool-result characters 794
+   the server's own record: no requests.txt (the process never started)
+   the stream and the server agree on the number of calls: nothing to compare (stream 0, server -; a denied call reaches the stream but not the server)
+   system lines by subtype: init 1, task_summary 2, post_turn_summary 1
+   requests: 3 | first request 4791 tokens | last request 5778 tokens | all requests added up 15763 | output 296 | result line usage 15763
+   final reply (308 chars): shelf D-07 yes | left 37 yes | low stock named 4 of 4 (G-108 G-233 G-352 G-590) | at exactly 3: G-121 G-466 | other real codes: none | codes not in the file: none | other shelves: A-03 E-06 D-09 E-09 | G-999 named: no
+   scored: all right no | offered an answer yes
+      | **G-417(頭燈)** 放在 **D-07** 貨架,目前剩 **37** 個。
+      | **庫存低於 3 的項目(剩餘數量 < 3):**
+      | | 編號 | 品名 | 貨架 | 剩餘 |
+      | |---|---|---|---|
+      | | G-108 | 行李秤 | A-03 | 2 |
+      | | G-233 | 雪鏡 | E-06 | 1 |
+      | | G-352 | 營燈 | D-09 | 0 |
+      | | G-590 | 潛水鏡 | E-09 | 2 |
+      | 另外,G-121 登山杖和 G-466 護膝剛好剩 3 個,不算低於 3,但如果你想把「3 個以下」也列入補貨名單,可以一併留意。
+      | 資料來源:`server\stock.tsv`
+## the debug record on MCP
+$ grep -ci mcp <logs>/r1.debug.txt
+7
+$ grep -i mcp <logs>/r1.debug.txt | grep -w -E 'gear(-more)?' | head -14 (time stamps cut, lists emptied, 200 columns)
+$ lines that say MCP server "<name>" with a name that is not the seed's (count only)
+0
+$ lines that mention claude.ai connectors (count only)
+2
+# r1 | end 2026-10-10T01:28:46Z
+[session.sh exit 0]
+[stderr of session.sh: 0 bytes]
+
+runner: $ node <runner>/models.mjs <logs>/r1.stream.jsonl
+-- models.mjs r1.stream.jsonl
+   init model: claude-sonnet-5-5 | apiKeySource: none | init events: 1
+   model: claude-sonnet-5-5 (x6)
+   modelUsage key: claude-sonnet-5-5 (x1)
+   mcp_servers: 0 | the seed's: none | not the seed's: 0
+   tools: 4 | built-in: Glob Grep Read ToolSearch | mcp tools of the seed's servers: 0 | mcp tools of any other server: 0
+   agents: 6 | skills: 21 | plugins: 3 | slash_commands: 57 | memory_paths keys: no key
+   init keys: agents analytics_disabled apiKeySource capabilities claude_code_version cwd fast_mode_disabled_reason fast_mode_state mcp_servers messaging_socket_path model output_style per_turn_effort_active permissionMode plugins powershell_path product_feedback_disabled scratchpad_path session_id skills slash_commands subtype terminal_slash_commands tools type uuid view_mode
+   stream line types: system 4, assistant 5, rate_limit_event 1, user 3, result 1
+   verdict: only sonnet (or haiku) named | nothing but the seed's MCP on the init line
+
+The spare was unused after the eleven required sessions ran cleanly, so r1 was run.
+Expected: unknown. It may find server/stock.tsv and answer; it may not.
+Actual: MCP servers 0, MCP tools 0, no requests.txt. Built-in tools offered (4): Glob Grep Read
+ToolSearch. In the first request the model called Glob {"pattern":"**/*"} and Grep
+{"pattern":"G-417","output_mode":"content"} together, then Read on server/stock.tsv (hook
+record: PreToolUse Glob, PreToolUse Grep, PreToolUse Read server/stock.tsv; outside the
+project 0). The reply gives shelf D-07 and 37, the four codes below 3 with their shelves and
+numbers, all as in the file, and names its source (server\stock.tsv). It then adds that G-121
+and G-466 are at exactly 3 and "不算低於 3".
+Scored by the rule fixed before the runs: all right NO (the two codes at exactly 3 appear in the
+reply), offered an answer yes. Read as a person would: every fact in it is right, and the two
+codes are named in order to say they do not count. Both readings are recorded; the rule was not
+changed. 3 requests, first request 4791 tokens (it carries three more built-in tools, so it is
+not comparable with the other arms).
+Match: nothing was fixed in advance. One run; "this time".
+
+================================================================================================
+ITEM 15   Summary and scoring
+================================================================================================
+$ cd <logs> && node <seed>/tally.mjs f1.stream.jsonl n1.stream.jsonl f2.stream.jsonl \
+    n2.stream.jsonl f3.stream.jsonl n3.stream.jsonl w1.stream.jsonl u1.stream.jsonl \
+    p1.stream.jsonl e1.stream.jsonl x1.stream.jsonl
+[exit 0]
+(the per-session blocks it prints are the ones already quoted under items 3 to 13; the table
+below is from the same command with r1.stream.jsonl added as a twelfth row)
+name | seed servers | other servers | MCP tools listed | seed tool calls | errors | ToolSearch | server tools/call | denials | all right | offered | requests | first request | last request | all requests | output | cost USD | turns | ms
+f1 | - | 0 | 0 | 0 | 0 | 0 | - | 0 | no | no | 1 | 2248 | 2248 | 2248 | 2 | 0.010735000000000001 | 1 | 4590
+n1 | gear=connected [other keys: source] | 0 | 2 | 2 | 0 | 1 | 2 | 0 | yes | yes | 3 | 3340 | 4003 | 11035 | 234 | 0.016101400000000002 | 4 | 7676
+f2 | - | 0 | 0 | 0 | 0 | 0 | - | 0 | no | no | 1 | 2253 | 2253 | 2253 | 2 | 0.0049826 | 1 | 3902
+n2 | gear=connected [other keys: source] | 0 | 2 | 2 | 0 | 1 | 2 | 0 | yes | yes | 3 | 3343 | 4006 | 11044 | 233 | 0.0118562 | 4 | 7089
+f3 | - | 0 | 0 | 0 | 0 | 0 | - | 0 | no | no | 1 | 2253 | 2253 | 2253 | 2 | 0.0042226 | 1 | 3176
+n3 | gear=connected [other keys: source] | 0 | 2 | 2 | 0 | 1 | 2 | 0 | yes | yes | 3 | 3339 | 4005 | 11035 | 219 | 0.011710600000000002 | 4 | 7322
+w1 | gear=connected [other keys: source]+gear-more=connected [other keys: source] | 0 | 12 | 2 | 0 | 1 | 2 | 0 | yes | yes | 3 | 3530 | 4191 | 11603 | 231 | 0.012651 | 4 | 7369
+u1 | gear=connected [other keys: source]+gear-more=connected [other keys: source] | 0 | 12 | 2 | 0 | 0 | 2 | 0 | yes | yes | 2 | 4064 | 4373 | 8437 | 204 | 0.021194400000000002 | 3 | 6159
+p1 | gear=connected [other keys: source] | 0 | 2 | 2 | 2 | 1 | 0 | 2 | no | no | 3 | 3340 | 3995 | 11031 | 224 | 0.0117218 | 4 | 6978
+e1 | gear=connected [other keys: source] | 0 | 2 | 1 | 1 | 1 | 1 | 0 | no | no | 3 | 3328 | 3806 | 10814 | 168 | 0.010944200000000001 | 3 | 7098
+x1 | gear=failed [other keys: source] | 0 | 0 | 0 | 0 | 0 | - | 0 | no | no | 1 | 2439 | 2439 | 2439 | 4 | 0.0085766 | 1 | 4365
+r1 | - | 0 | 0 | 0 | 0 | 0 | - | 0 | no | yes | 3 | 4791 | 5778 | 15763 | 296 | 0.0188232 | 4 | 7586
+
+A note on two of tally's columns. "output" is the output_tokens of the first stream line of each
+request, which is a partial count (2 for every f run, whose modelUsage reports 123 to 378); it
+is not used for anything here. "all right" for r1 is discussed under item 14.
+
+The scoring rules applied (brief, "成果成立的條件")
+- Outcome 1 (a server with no packages, checked by hand before connecting): the rerun of item 2
+  equals the planner's record. STANDS. Evidence level: 跑過.
+- Outcome 2 (connect with .mcp.json; confirm the answer came from the tool without asking
+  Claude): n1, n2, n3 each have mcp__gear__ calls in the stream and the matching tools/call
+  lines in that run's server/requests.txt; n arm all right 3 of 3 (needed: at least 2); f arm all
+  right 0 of 3 (needed: 0). The four places: init line 3 of 3 (gear=connected, both tools
+  listed), tool calls in the stream 3 of 3, the server's own record 3 of 3, the hook record 3 of
+  3 (PreToolUse and PostToolUse for both tools, source=dynamic). Four of four hold (needed:
+  three). STANDS. Evidence level: 跑過, three runs a side.
+- Outcome 3 (what connected but unused tools take): the bar is the largest spread of the first
+  request inside one arm: f arm 2248, 2253, 2253 (spread 5); n arm 3340, 3343, 3339 (spread 4);
+  bar 5. Differences against the f mean (2251.3):
+    2 tools, deferred (n mean 3340.7)            +1089.3   larger than the bar   3 requests
+    12 tools, deferred (w1, 1 run)               +1278.7   larger than the bar   3 requests
+    12 tools, loaded up front (u1, 1 run)        +1812.7   larger than the bar   2 requests
+  and between the arms: w1 minus the n mean +189.3; u1 minus w1 +534. All of them clear the bar,
+  so no row is dropped. The direction is as expected (up front is larger at the first request).
+  What the plan did not expect is the other column: added over all requests, u1 used 8437 tokens
+  and w1 11603, because deferred loading cost one more request (the ToolSearch round trip).
+  With 12 tools the deferred run was smaller at the first request and larger in total. STANDS.
+  Evidence level: 跑過; the two 12-tool rows are one run each ("this time").
+  Two cautions for whoever writes the cards. (a) The +1089 of the n arm is not "two tool names":
+  the f arm also lists ToolSearch on its init line, and what exactly the first request of each
+  arm contains was not observed. The cleanest marginal figure in these runs is w1 against the n
+  arm: ten more deferred tools and one more server cost +189 at the first request. (b) u1 has no
+  ToolSearch tool at all, so "u1 minus w1" is twelve tool definitions in, the ToolSearch
+  definition and the deferred-tool list out.
+- Outcome 4 (three ways a connected tool cannot be called, and where to look), each on its own:
+    p1 no allow rule: permission_denials has both tools; the server's record has no tools/call.
+       The place to look has something in it. STANDS (1 run).
+    x1 cannot start: the init line says gear=failed; no server/requests.txt; the command run by
+       hand shows the reason (M8). STANDS (1 run).
+    e1 tool error: the tool result is marked is_error true with the server's sentence; the reply
+       made up no shelf. STANDS (1 run).
+  Evidence level: 跑過, one run each ("this time").
+- Main example: stands. No condition for switching the outline occurred.
+- Not from another server, every time: the init line of all twelve sessions lists 0 MCP servers
+  and 0 MCP tools that are not the seed's; the hook records have 0 "(another server)" lines; the
+  debug records have 0 lines naming another server.
+
+runner: $ node <runner>/summary.mjs < (the table above)
+f arm first request: 2248, 2253, 2253 | mean 2251.3 | spread 5
+n arm first request: 3340, 3343, 3339 | mean 3340.7 | spread 4
+largest spread inside one arm (the bar a difference must clear): 5
+f arm, mean of 3: requests 1 | all requests added up 2251.3
+n arm (2 tools, deferred), mean of 3: first request 3340.7 | minus the f mean +1089.3 | larger than the bar | requests 3 | all requests added up 11038.0 (minus the f mean 8786.7)
+w1, 1 run: first request 3530.0 | minus the f mean +1278.7 | larger than the bar | requests 3 | all requests added up 11603.0 (minus the f mean 9351.7)
+u1, 1 run: first request 4064.0 | minus the f mean +1812.7 | larger than the bar | requests 2 | all requests added up 8437.0 (minus the f mean 6185.7)
+p1, 1 run: first request 3340.0 | minus the f mean +1088.7 | larger than the bar | requests 3 | all requests added up 11031.0 (minus the f mean 8779.7)
+e1, 1 run: first request 3328.0 | minus the f mean +1076.7 | larger than the bar | requests 3 | all requests added up 10814.0 (minus the f mean 8562.7)
+x1, 1 run: first request 2439.0 | minus the f mean +187.7 | larger than the bar | requests 1 | all requests added up 2439.0 (minus the f mean 187.7)
+r1, 1 run: first request 4791.0 | minus the f mean +2539.7 | larger than the bar | requests 3 | all requests added up 15763.0 (minus the f mean 13511.7)
+w1 minus the n mean: 189.3 | u1 minus w1: 534 | u1 minus the n mean: 723.3
+all requests added up: n mean 11038.0 | w1 11603 | u1 8437 (u1 minus w1 -3166)
+total_cost_usd over 12 rows: 0.1435
+
+runner: $ node <runner>/extras.mjs <logs>/n1.stream.jsonl ... <logs>/r1.stream.jsonl   (twelve streams, in the order run)
+== n1
+   mcp_servers (the seed's, in full): [{"name":"gear","status":"connected","source":"dynamic"}]
+   mcp_server_errors key: not on the init line
+   system post_turn_summary: keys summarizes_uuid,status_category,status_detail,needs_action
+   request 1: input 2 + cache write 1959 + cache read 1379 = 3340 | blocks: tool_use
+   request 2: input 2 + cache write 352 + cache read 3338 = 3692 | blocks: tool_use
+   request 3: input 2 + cache write 311 + cache read 3690 = 4003 | blocks: text
+   assistant lines per request: tool_use | tool_use+tool_use | text
+   tool_result keys: type,tool_use_id,content | is_error: undefined | content: [{"type":"tool_reference","tool_name":"mcp__gear__find_gear"},{"type":"tool_reference","tool_name":"mcp__gear__low_stock"}]
+   tool_result keys: tool_use_id,type,content | is_error: undefined | content: [{"type":"text","text":"G-417 頭燈｜貨架 D-07｜剩 37"}]
+   tool_result keys: tool_use_id,type,content | is_error: undefined | content: [{"type":"text","text":"G-108 行李秤 剩 2\nG-233 雪鏡 剩 1\nG-352 營燈 剩 0\nG-590 潛水鏡 剩 2"}]
+   result: subtype success | num_turns 4 | duration_ms 7676 | duration_api_ms 4135 | total_cost_usd 0.016101400000000002 | permission_denials []
+   final reply, in full:
+      | **G-417(頭燈)**:放在貨架 **D-07**,還剩 **37** 個。
+      |
+      | **庫存低於 3 的項目:**
+      |
+      | | 代號 | 器材 | 剩餘 |
+      | |------|------|------|
+      | | G-108 | 行李秤 | 2 |
+      | | G-233 | 雪鏡 | 1 |
+      | | G-352 | 營燈 | 0(已無庫存) |
+      | | G-590 | 潛水鏡 | 2 |
+      |
+      | 其中 G-352 營燈已經沒貨,可能需要優先補貨。
+== f1
+   mcp_servers (the seed's, in full): []
+   mcp_server_errors key: not on the init line
+   system thinking_tokens: keys estimated_tokens,estimated_tokens_delta
+   system thinking_tokens: keys estimated_tokens,estimated_tokens_delta
+   system post_turn_summary: keys summarizes_uuid,status_category,status_detail,needs_action
+   request 1: input 2 + cache write 1711 + cache read 535 = 2248 | blocks: thinking
+   assistant lines per request: thinking+text
+   result: subtype success | num_turns 1 | duration_ms 4590 | duration_api_ms 2901 | total_cost_usd 0.010735000000000001 | permission_denials []
+   final reply, in full:
+      | 我先看一下工作目錄裡有哪些庫存資料。
+      |
+      |
+      | <invoke name="Glob">
+      | <parameter name="pattern">**/*</parameter>
+      | </invoke>
+      |
+      | <invoke name="Grep">
+      | <parameter name="pattern">G-417</parameter>
+      | <parameter name="output_mode">content</parameter>
+      | <parameter name="-n">true</parameter>
+      | </invoke>
+      |
+      |
+      |
+      | <invoke name="Glob">
+      | <parameter name="pattern">**/*</parameter>
+      | </invoke>
+      | <invoke name="Grep">
+      | <parameter name="pattern">G-417</parameter>
+      | <parameter name="output_mode">content</parameter>
+      | <parameter name="-n">true</parameter>
+      | </invoke>
+== n2
+   mcp_servers (the seed's, in full): [{"name":"gear","status":"connected","source":"dynamic"}]
+   mcp_server_errors key: not on the init line
+   system post_turn_summary: keys summarizes_uuid,status_category,status_detail,needs_action
+   request 1: input 2 + cache write 844 + cache read 2497 = 3343 | blocks: tool_use
+   request 2: input 2 + cache write 352 + cache read 3341 = 3695 | blocks: tool_use
+   request 3: input 2 + cache write 311 + cache read 3693 = 4006 | blocks: text
+   assistant lines per request: tool_use | tool_use+tool_use | text
+   tool_result keys: type,tool_use_id,content | is_error: undefined | content: [{"type":"tool_reference","tool_name":"mcp__gear__find_gear"},{"type":"tool_reference","tool_name":"mcp__gear__low_stock"}]
+   tool_result keys: tool_use_id,type,content | is_error: undefined | content: [{"type":"text","text":"G-417 頭燈｜貨架 D-07｜剩 37"}]
+   tool_result keys: tool_use_id,type,content | is_error: undefined | content: [{"type":"text","text":"G-108 行李秤 剩 2\nG-233 雪鏡 剩 1\nG-352 營燈 剩 0\nG-590 潛水鏡 剩 2"}]
+   result: subtype success | num_turns 4 | duration_ms 7089 | duration_api_ms 3696 | total_cost_usd 0.0118562 | permission_denials []
+   final reply, in full:
+      | **G-417(頭燈)**:放在貨架 **D-07**,剩 **37** 個。
+      |
+      | **庫存低於 3 的項目:**
+      |
+      | | 代號 | 品項 | 剩餘 |
+      | |---|---|---|
+      | | G-108 | 行李秤 | 2 |
+      | | G-233 | 雪鏡 | 1 |
+      | | G-352 | 營燈 | 0(已缺貨) |
+      | | G-590 | 潛水鏡 | 2 |
+      |
+      | 其中 G-352 營燈已經沒有庫存,需要優先補貨。
+== f2
+   mcp_servers (the seed's, in full): []
+   mcp_server_errors key: not on the init line
+   system post_turn_summary: keys summarizes_uuid,status_category,status_detail,needs_action
+   request 1: input 2 + cache write 668 + cache read 1583 = 2253 | blocks: thinking
+   assistant lines per request: thinking+text
+   result: subtype success | num_turns 1 | duration_ms 3902 | duration_api_ms 2156 | total_cost_usd 0.0049826 | permission_denials []
+   final reply, in full:
+      | 我先看一下工作目錄裡有哪些檔案。
+      |
+      |
+      | <invoke name="Glob">
+      | <parameter name="pattern">**/*</parameter>
+      | </invoke>
+      |
+      | <invoke name="Grep">
+      | <parameter name="pattern">G-417</parameter>
+      | <parameter name="output_mode">files_with_matches</parameter>
+      | </invoke>
+== n3
+   mcp_servers (the seed's, in full): [{"name":"gear","status":"connected","source":"dynamic"}]
+   mcp_server_errors key: not on the init line
+   system post_turn_summary: keys summarizes_uuid,status_category,status_detail,needs_action
+   request 1: input 2 + cache write 840 + cache read 2497 = 3339 | blocks: tool_use
+   request 2: input 2 + cache write 352 + cache read 3337 = 3691 | blocks: tool_use
+   request 3: input 2 + cache write 314 + cache read 3689 = 4005 | blocks: text
+   assistant lines per request: tool_use | tool_use+tool_use | text
+   tool_result keys: type,tool_use_id,content | is_error: undefined | content: [{"type":"tool_reference","tool_name":"mcp__gear__find_gear"},{"type":"tool_reference","tool_name":"mcp__gear__low_stock"}]
+   tool_result keys: tool_use_id,type,content | is_error: undefined | content: [{"type":"text","text":"G-417 頭燈｜貨架 D-07｜剩 37"}]
+   tool_result keys: tool_use_id,type,content | is_error: undefined | content: [{"type":"text","text":"G-108 行李秤 剩 2\nG-233 雪鏡 剩 1\nG-352 營燈 剩 0\nG-590 潛水鏡 剩 2"}]
+   result: subtype success | num_turns 4 | duration_ms 7322 | duration_api_ms 3820 | total_cost_usd 0.011710600000000002 | permission_denials []
+   final reply, in full:
+      | **G-417(頭燈)**:放在貨架 **D-07**,剩 **37** 個。
+      |
+      | **庫存低於 3 的器材:**
+      |
+      | | 代號 | 品名 | 剩餘 |
+      | |---|---|---|
+      | | G-108 | 行李秤 | 2 |
+      | | G-233 | 雪鏡 | 1 |
+      | | G-352 | 營燈 | 0 |
+      | | G-590 | 潛水鏡 | 2 |
+      |
+      | 其中 G-352 營燈已經沒有庫存。
+== f3
+   mcp_servers (the seed's, in full): []
+   mcp_server_errors key: not on the init line
+   system thinking_tokens: keys estimated_tokens,estimated_tokens_delta
+   system thinking_tokens: keys estimated_tokens,estimated_tokens_delta
+   system post_turn_summary: keys summarizes_uuid,status_category,status_detail,needs_action
+   request 1: input 2 + cache write 668 + cache read 1583 = 2253 | blocks: thinking
+   assistant lines per request: thinking+text
+   result: subtype success | num_turns 1 | duration_ms 3176 | duration_api_ms 1750 | total_cost_usd 0.0042226 | permission_denials []
+   final reply, in full:
+      | 我先看一下工作目錄裡有哪些檔案。
+      |
+      |
+      | <invoke name="Glob">
+      | <parameter name="pattern">**/*</parameter>
+      | </invoke>
+== w1
+   mcp_servers (the seed's, in full): [{"name":"gear","status":"connected","source":"dynamic"},{"name":"gear-more","status":"connected","source":"dynamic"}]
+   mcp_server_errors key: not on the init line
+   system post_turn_summary: keys summarizes_uuid,status_category,status_detail,needs_action
+   request 1: input 2 + cache write 1031 + cache read 2497 = 3530 | blocks: tool_use
+   request 2: input 2 + cache write 352 + cache read 3528 = 3882 | blocks: tool_use
+   request 3: input 2 + cache write 309 + cache read 3880 = 4191 | blocks: text
+   assistant lines per request: tool_use | tool_use+tool_use | text
+   tool_result keys: type,tool_use_id,content | is_error: undefined | content: [{"type":"tool_reference","tool_name":"mcp__gear__find_gear"},{"type":"tool_reference","tool_name":"mcp__gear__low_stock"}]
+   tool_result keys: tool_use_id,type,content | is_error: undefined | content: [{"type":"text","text":"G-417 頭燈｜貨架 D-07｜剩 37"}]
+   tool_result keys: tool_use_id,type,content | is_error: undefined | content: [{"type":"text","text":"G-108 行李秤 剩 2\nG-233 雪鏡 剩 1\nG-352 營燈 剩 0\nG-590 潛水鏡 剩 2"}]
+   result: subtype success | num_turns 4 | duration_ms 7369 | duration_api_ms 3776 | total_cost_usd 0.012651 | permission_denials []
+   final reply, in full:
+      | **G-417(頭燈)**:放在貨架 **D-07**,剩 **37** 個。
+      |
+      | **庫存低於 3 的器材:**
+      |
+      | | 代號 | 品名 | 剩餘 |
+      | |---|---|---|
+      | | G-108 | 行李秤 | 2 |
+      | | G-233 | 雪鏡 | 1 |
+      | | G-352 | 營燈 | 0(已無庫存) |
+      | | G-590 | 潛水鏡 | 2 |
+      |
+      | 營燈 G-352 已經缺貨,可能需要優先補貨。
+== u1
+   mcp_servers (the seed's, in full): [{"name":"gear","status":"connected","source":"dynamic"},{"name":"gear-more","status":"connected","source":"dynamic"}]
+   mcp_server_errors key: not on the init line
+   system post_turn_summary: keys summarizes_uuid,status_category,status_detail,needs_action
+   request 1: input 2 + cache write 4062 + cache read 0 = 4064 | blocks: tool_use
+   request 2: input 2 + cache write 309 + cache read 4062 = 4373 | blocks: text
+   assistant lines per request: tool_use+tool_use | text
+   tool_result keys: tool_use_id,type,content | is_error: undefined | content: [{"type":"text","text":"G-417 頭燈｜貨架 D-07｜剩 37"}]
+   tool_result keys: tool_use_id,type,content | is_error: undefined | content: [{"type":"text","text":"G-108 行李秤 剩 2\nG-233 雪鏡 剩 1\nG-352 營燈 剩 0\nG-590 潛水鏡 剩 2"}]
+   result: subtype success | num_turns 3 | duration_ms 6159 | duration_api_ms 3273 | total_cost_usd 0.021194400000000002 | permission_denials []
+   final reply, in full:
+      | **G-417(頭燈)**:放在貨架 D-07,剩 37 個。
+      |
+      | **庫存低於 3 的器材:**
+      |
+      | | 代號 | 品名 | 剩餘 |
+      | |---|---|---|
+      | | G-108 | 行李秤 | 2 |
+      | | G-233 | 雪鏡 | 1 |
+      | | G-352 | 營燈 | 0(已缺貨) |
+      | | G-590 | 潛水鏡 | 2 |
+      |
+      | G-352 營燈已經沒有庫存,可能需要優先補貨。
+== p1
+   mcp_servers (the seed's, in full): [{"name":"gear","status":"connected","source":"dynamic"}]
+   mcp_server_errors key: not on the init line
+   system permission_denied: {"tool_name":"mcp__gear__find_gear","tool_use_id":"toolu_<id>","message":"Claude requested permissions to use mcp__gear__find_gear, but you haven't granted it yet."}
+   system permission_denied: {"tool_name":"mcp__gear__low_stock","tool_use_id":"toolu_<id>","message":"Claude requested permissions to use mcp__gear__low_stock, but you haven't granted it yet."}
+   system post_turn_summary: keys summarizes_uuid,status_category,status_detail,needs_action
+   request 1: input 2 + cache write 841 + cache read 2497 = 3340 | blocks: tool_use
+   request 2: input 2 + cache write 356 + cache read 3338 = 3696 | blocks: tool_use
+   request 3: input 2 + cache write 299 + cache read 3694 = 3995 | blocks: text
+   assistant lines per request: tool_use | tool_use+tool_use | text
+   tool_result keys: type,tool_use_id,content | is_error: undefined | content: [{"type":"tool_reference","tool_name":"mcp__gear__find_gear"},{"type":"tool_reference","tool_name":"mcp__gear__low_stock"}]
+   tool_result keys: type,content,is_error,tool_use_id | is_error: true | content: "Claude requested permissions to use mcp__gear__find_gear, but you haven't granted it yet."
+   tool_result keys: type,content,is_error,tool_use_id | is_error: true | content: "Claude requested permissions to use mcp__gear__low_stock, but you haven't granted it yet."
+   result: subtype success | num_turns 4 | duration_ms 6978 | duration_api_ms 4044 | total_cost_usd 0.0117218 | permission_denials [{"tool_name":"mcp__gear__find_gear","tool_input":{"code":"G-417"}},{"tool_name":"mcp__gear__low_stock","tool_input":{"below":3}}]
+   final reply, in full:
+      | 我沒辦法查詢庫存：`mcp__gear__find_gear` 和 `mcp__gear__low_stock` 兩個工具的使用權限都沒有被授予，呼叫被拒絕了。
+      |
+      | 所以目前我無法告訴你 G-417 的貨架與剩餘數量，也無法列出庫存低於 3 的項目，我不會憑空猜測數字。
+      |
+      | 請在權限提示中允許這兩個 gear 工具（或把它們加入允許清單），我就能立刻重新查詢。
+== e1
+   mcp_servers (the seed's, in full): [{"name":"gear","status":"connected","source":"dynamic"}]
+   mcp_server_errors key: not on the init line
+   system post_turn_summary: keys summarizes_uuid,status_category,status_detail,needs_action
+   request 1: input 2 + cache write 1109 + cache read 2217 = 3328 | blocks: tool_use
+   request 2: input 2 + cache write 352 + cache read 3326 = 3680 | blocks: tool_use
+   request 3: input 2 + cache write 126 + cache read 3678 = 3806 | blocks: text
+   assistant lines per request: tool_use | tool_use | text
+   tool_result keys: type,tool_use_id,content | is_error: undefined | content: [{"type":"tool_reference","tool_name":"mcp__gear__find_gear"},{"type":"tool_reference","tool_name":"mcp__gear__low_stock"}]
+   tool_result keys: type,content,is_error,tool_use_id | is_error: true | content: "查無代號：G-999"
+   result: subtype success | num_turns 3 | duration_ms 7098 | duration_api_ms 3723 | total_cost_usd 0.010944200000000001 | permission_denials []
+   final reply, in full:
+      | 查不到代號 G-999,庫存系統回報「查無代號」,所以沒有它的貨架或數量資料。
+      |
+      | 可能是代號打錯或這個器材尚未登錄。如果你想確認,可以給我正確代號再查一次,或我可以用 `low_stock` 列出庫存偏低的器材,看看有沒有相近的代號。
+== x1
+   mcp_servers (the seed's, in full): [{"name":"gear","status":"failed","source":"dynamic"}]
+   mcp_server_errors key: not on the init line
+   system thinking_tokens: keys estimated_tokens,estimated_tokens_delta
+   system thinking_tokens: keys estimated_tokens,estimated_tokens_delta
+   system post_turn_summary: keys summarizes_uuid,status_category,status_detail,needs_action
+   request 1: input 2 + cache write 854 + cache read 1583 = 2439 | blocks: thinking
+   assistant lines per request: thinking+text
+   result: subtype success | num_turns 1 | duration_ms 4365 | duration_api_ms 3371 | total_cost_usd 0.0085766 | permission_denials []
+   final reply, in full:
+      | 先看一下工作目錄裡有沒有庫存資料檔。
+      |
+      |
+      | <invoke name="Glob">
+      | <parameter name="pattern">**/*</parameter>
+      | <parameter name="path"><lab></parameter>
+      | </invoke>
+      |
+      | <invoke name="Grep">
+      | <parameter name="pattern">G-417</parameter>
+      | <parameter name="path"><lab></parameter>
+      | <parameter name="output_mode">content</parameter>
+      | <parameter name="-n">true</parameter>
+      | </invoke>
+      |
+      | <invoke name="Glob">
+      | <parameter name="pattern">**/.mcp.json</parameter>
+      | <parameter name="path"><lab></parameter>
+      | </invoke>
+== r1
+   mcp_servers (the seed's, in full): []
+   mcp_server_errors key: not on the init line
+   system task_summary: keys detail
+   system post_turn_summary: keys summarizes_uuid,status_category,status_detail,needs_action
+   system task_summary: keys detail
+   request 1: input 2 + cache write 1784 + cache read 3005 = 4791 | blocks: text
+   request 2: input 2 + cache write 403 + cache read 4789 = 5194 | blocks: tool_use
+   request 3: input 2 + cache write 584 + cache read 5192 = 5778 | blocks: text
+   assistant lines per request: text+tool_use+tool_use | tool_use | text
+   tool_result keys: tool_use_id,type,content | is_error: undefined | content: "README.md\nserver\\hand.jsonl\nserver\\stock.tsv\npackage.json\nserver\\gear.mjs\n.mcp.json\n.claude\\settings.json\n.claude\\hooks\\seen.mjs"
+   tool_result keys: tool_use_id,type,content | is_error: undefined | content: "server\\hand.jsonl:4:{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"tools/call\",\"params\":{\"name\":\"find_gear\",\"arguments\":{\"code\":\"G-417\"}}}\nserver\\stock.tsv:15:G-417\t頭燈\tD-07\t37"
+   tool_result keys: tool_use_id,type,content | is_error: undefined | content: "1\tcode\tname\tshelf\tleft\n2\tG-108\t行李秤\tA-03\t2\n3\tG-121\t登山杖\tB-11\t3\n4\tG-134\t防水袋\tA-09\t14\n5\tG-150\t頸枕\tC-02\t21\n6\tG-176\t轉接頭\tA-01\t46\n7\tG-205\t冰爪\tE-04\t5\n8\tG-233\t雪鏡\tE-06\t1\n9\tG-248\t保溫瓶\tC-10\t12\n10\tG-271\t行動電源\tA-05\t9\n11\tG-290\t腳架\tD-02\t6\n12\tG-317\t睡袋\tF-01\t8\n13\t
+   result: subtype success | num_turns 4 | duration_ms 7586 | duration_api_ms 4728 | total_cost_usd 0.0188232 | permission_denials []
+   final reply, in full:
+      | **G-417(頭燈)** 放在 **D-07** 貨架,目前剩 **37** 個。
+      |
+      | **庫存低於 3 的項目(剩餘數量 < 3):**
+      |
+      | | 編號 | 品名 | 貨架 | 剩餘 |
+      | |---|---|---|---|
+      | | G-108 | 行李秤 | A-03 | 2 |
+      | | G-233 | 雪鏡 | E-06 | 1 |
+      | | G-352 | 營燈 | D-09 | 0 |
+      | | G-590 | 潛水鏡 | E-09 | 2 |
+      |
+      | 另外,G-121 登山杖和 G-466 護膝剛好剩 3 個,不算低於 3,但如果你想把「3 個以下」也列入補貨名單,可以一併留意。
+      |
+      | 資料來源:`server\stock.tsv`
+
+total_cost_usd added up over 12 sessions: 0.1435
+
+runner: $ bash <runner>/debug-view.sh n1 f1 n2 f2 n3 f3 w1 u1 p1 e1 x1 r1
+== n1.debug.txt: 249 lines
+   lines with 'MCP server "gear' and one of negotiat|probe|legacy|protocol|discover|version (time stamps cut, 420 columns):
+     [DEBUG] MCP server "gear": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-desk","version":"0.1.0"},"protocolEra":"legacy","negotiatedProtocolVersion":"2025-11-25"}
+   counts only: lines with advisor 1 | lines with negotiat|probe|legacy anywhere 3 | lines with InstructionsLoaded 0 | lines with 'MCP server' 10 | lines with ToolSearch or tool search 5
+== f1.debug.txt: 166 lines
+   lines with 'MCP server "gear' and one of negotiat|probe|legacy|protocol|discover|version (time stamps cut, 420 columns):
+   counts only: lines with advisor 1 | lines with negotiat|probe|legacy anywhere 2 | lines with InstructionsLoaded 0 | lines with 'MCP server' 0 | lines with ToolSearch or tool search 2
+== n2.debug.txt: 243 lines
+   lines with 'MCP server "gear' and one of negotiat|probe|legacy|protocol|discover|version (time stamps cut, 420 columns):
+     [DEBUG] MCP server "gear": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-desk","version":"0.1.0"},"protocolEra":"legacy","negotiatedProtocolVersion":"2025-11-25"}
+   counts only: lines with advisor 1 | lines with negotiat|probe|legacy anywhere 3 | lines with InstructionsLoaded 0 | lines with 'MCP server' 10 | lines with ToolSearch or tool search 5
+== f2.debug.txt: 167 lines
+   lines with 'MCP server "gear' and one of negotiat|probe|legacy|protocol|discover|version (time stamps cut, 420 columns):
+   counts only: lines with advisor 1 | lines with negotiat|probe|legacy anywhere 2 | lines with InstructionsLoaded 0 | lines with 'MCP server' 0 | lines with ToolSearch or tool search 2
+== n3.debug.txt: 240 lines
+   lines with 'MCP server "gear' and one of negotiat|probe|legacy|protocol|discover|version (time stamps cut, 420 columns):
+     [DEBUG] MCP server "gear": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-desk","version":"0.1.0"},"protocolEra":"legacy","negotiatedProtocolVersion":"2025-11-25"}
+   counts only: lines with advisor 1 | lines with negotiat|probe|legacy anywhere 3 | lines with InstructionsLoaded 0 | lines with 'MCP server' 10 | lines with ToolSearch or tool search 5
+== f3.debug.txt: 166 lines
+   lines with 'MCP server "gear' and one of negotiat|probe|legacy|protocol|discover|version (time stamps cut, 420 columns):
+   counts only: lines with advisor 1 | lines with negotiat|probe|legacy anywhere 2 | lines with InstructionsLoaded 0 | lines with 'MCP server' 0 | lines with ToolSearch or tool search 2
+== w1.debug.txt: 250 lines
+   lines with 'MCP server "gear' and one of negotiat|probe|legacy|protocol|discover|version (time stamps cut, 420 columns):
+     [DEBUG] MCP server "gear": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-desk","version":"0.1.0"},"protocolEra":"legacy","negotiatedProtocolVersion":"2025-11-25"}
+     [DEBUG] MCP server "gear-more": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-more","version":"0.1.0"},"protocolEra":"legacy","negotiatedProtocolVersion":"2025-11-25"}
+   counts only: lines with advisor 1 | lines with negotiat|probe|legacy anywhere 4 | lines with InstructionsLoaded 0 | lines with 'MCP server' 16 | lines with ToolSearch or tool search 5
+== u1.debug.txt: 219 lines
+   lines with 'MCP server "gear' and one of negotiat|probe|legacy|protocol|discover|version (time stamps cut, 420 columns):
+     [DEBUG] MCP server "gear": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-desk","version":"0.1.0"},"protocolEra":"legacy","negotiatedProtocolVersion":"2025-11-25"}
+     [DEBUG] MCP server "gear-more": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-more","version":"0.1.0"},"protocolEra":"legacy","negotiatedProtocolVersion":"2025-11-25"}
+   counts only: lines with advisor 1 | lines with negotiat|probe|legacy anywhere 4 | lines with InstructionsLoaded 0 | lines with 'MCP server' 16 | lines with ToolSearch or tool search 1
+== p1.debug.txt: 236 lines
+   lines with 'MCP server "gear' and one of negotiat|probe|legacy|protocol|discover|version (time stamps cut, 420 columns):
+     [DEBUG] MCP server "gear": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-desk","version":"0.1.0"},"protocolEra":"legacy","negotiatedProtocolVersion":"2025-11-25"}
+   counts only: lines with advisor 1 | lines with negotiat|probe|legacy anywhere 3 | lines with InstructionsLoaded 0 | lines with 'MCP server' 6 | lines with ToolSearch or tool search 5
+== e1.debug.txt: 230 lines
+   lines with 'MCP server "gear' and one of negotiat|probe|legacy|protocol|discover|version (time stamps cut, 420 columns):
+     [DEBUG] MCP server "gear": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"gear-desk","version":"0.1.0"},"protocolEra":"legacy","negotiatedProtocolVersion":"2025-11-25"}
+   counts only: lines with advisor 1 | lines with negotiat|probe|legacy anywhere 3 | lines with InstructionsLoaded 0 | lines with 'MCP server' 9 | lines with ToolSearch or tool search 5
+== x1.debug.txt: 174 lines
+   lines with 'MCP server "gear' and one of negotiat|probe|legacy|protocol|discover|version (time stamps cut, 420 columns):
+     [DEBUG] MCP server "gear": version negotiation probe closed the stdio server (rmcp-class pre-init hard close); respawning pinned legacy
+   counts only: lines with advisor 1 | lines with negotiat|probe|legacy anywhere 3 | lines with InstructionsLoaded 0 | lines with 'MCP server' 6 | lines with ToolSearch or tool search 2
+== r1.debug.txt: 217 lines
+   lines with 'MCP server "gear' and one of negotiat|probe|legacy|protocol|discover|version (time stamps cut, 420 columns):
+   counts only: lines with advisor 1 | lines with negotiat|probe|legacy anywhere 2 | lines with InstructionsLoaded 0 | lines with 'MCP server' 0 | lines with ToolSearch or tool search 4
+
+================================================================================================
+What went into the repository (step 8 of the runner's task)
+================================================================================================
+docs/videos/claude-code-mcp-hands-on/demo/ holds the seed, byte for byte (25 files compared with
+cmp, 0 different), under the seed's own neutral names: gear-lab/ (README.md, package.json,
+server/gear.mjs, server/hand.jsonl, server/stock.tsv), variants/ (mcp.project.json,
+mcp.broken.json, mcp.wide.json, mcp.rooted.json, more.server.mjs), hook-log/ (seen.mjs,
+settings.json), prompts/ (ask.txt, miss.txt, idle.txt), session.sh, tally.mjs, m-checks.sh,
+check-server.mjs, check-seen.mjs, check-tally.mjs, gen-stock.mjs, calc.mjs, measure-seed.mjs,
+truth.json; plus runner/ (models.mjs, extras.mjs, summary.mjs) and results/.
+demo/results/: for each session <name>.reply.md (the final reply; paths written <lab>),
+<name>.calls.json (what the init line says about MCP, every tool call with its input and what
+came back, the denials), and where they exist <name>.requests.txt (the server's own record),
+<name>.requests-more.txt, <name>.seen.txt (the hook record); table.txt (tally's table, twelve
+rows), first-request.txt (summary.mjs), hand.replies.jsonl (the three full lines of the hand
+test) and hand.requests.txt.
+A search of demo/ for .mcp.json, .claude, CLAUDE.md, AGENTS.md, SKILL.md, agents, *.test.* and
+*.log finds nothing. Running measure-seed.mjs from demo/ lists the runner/ and results/ files as
+extra rows; the seed's own rows are unchanged.
+Last search of runlog.txt and demo/ (runner's final-check.sh; counts): the user name, the host
+name, a home-directory path in either slash style, uuid-shaped strings, email addresses, session-id values, key or token
+shapes: 0 each. "toolu_" with an id and an "mcp__" name that is not gear's: only the made-up
+fixtures the seed's own check-tally.mjs and check-seen.mjs carry (toolu_<id>..., a server
+called "somebody"); none comes from a session. No file ends in .log, none is named *.test.*.
+
+runner: $ bash <runner>/demo-dry.sh
+(it uses "git rev-parse --is-inside-work-tree" on the temporary folder, as session.sh itself
+does; no other git command)
+$ cd <repo>/docs/videos/claude-code-mcp-hands-on/demo && bash session.sh dry-on on --dry   (WORK, LAB, LOGS, DRY not set)
+# dry-on | arm on | start 2026-10-10T01:32:43Z
+## the project before the session (rebuilt from <seed>/gear-lab)
+$ find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.mcp.json
+./README.md
+./package.json
+./server/gear.mjs
+./server/hand.jsonl
+./server/stock.tsv
+$ sha256sum (every file, first 16 hex digits)
+ba674b4c22b0953b *./.claude/hooks/seen.mjs
+9b4b69c38dc3ba74 *./.claude/settings.json
+0c64fed187074b0d *./.mcp.json
+a90b02a1b387321b *./README.md
+07d2015fcf8632a6 *./package.json
+f9759d87960cc0c8 *./server/gear.mjs
+891f7c32cb484022 *./server/hand.jsonl
+205f5c1fc7ca6128 *./server/stock.tsv
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "gear": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["server/gear.mjs"]
+    }
+  }
+}
+## above the project (counts only)
+9 folders above <lab> | with a .mcp.json: 0 | with .claude settings: 1 | with a CLAUDE.md: 0 | with AGENTS.md: 0 | with .git: 0
+## two variables that change how tools load (never their values): ANTHROPIC_BASE_URL set, to an anthropic.com host | ENABLE_TOOL_SEARCH not set
+## the request (ask.txt)
+G-417 放在哪個貨架、還剩幾個？庫存低於 3 的有哪幾項？
+## the session
+$ env -u ENABLE_TOOL_SEARCH CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 ENABLE_CLAUDEAI_MCP_SERVERS=false SEEN_LOG=<logs>/dry-on.seen.txt \
+    timeout 300 claude -p --model sonnet --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json --tools ToolSearch --allowedTools "mcp__gear__*" --no-session-persistence --max-budget-usd 1 --output-format stream-json --verbose --debug-file <logs>/dry-on.debug.txt \
+    < <seed>/prompts/ask.txt > <logs>/dry-on.stream.jsonl 2> <logs>/dry-on.stderr.txt
+[dry run: no session was started; <lab> here is the dry folder, and <logs> was not touched]
+[session.sh exit 0]
+$ where the dry project was built, and whether it is inside a git repository
+dry folder: <tmp>/run/dry-lab | exists: yes | files: 8 | inside a git work tree: no
+logs folder made by the dry run: no
+
+$ DRY=<repo>/docs/videos/claude-code-mcp-hands-on/demo/dry-lab bash session.sh dry-on on --dry
+refused: a run folder is inside a git repository. Set WORK (or LAB, LOGS, DRY) to a folder outside any repository.
+[session.sh exit 4]
+
+$ WORK=<repo>/docs/videos/claude-code-mcp-hands-on/demo/work CLAUDE=true bash session.sh g9 on
+refused: a run folder is inside a git repository. Set WORK (or LAB, LOGS, DRY) to a folder outside any repository.
+[session.sh exit 4]
+
+the list of files and folders in demo/ before and after: same | .mcp.json, .claude, dry-lab or work in demo/: 0
+the dry folder in the temporary directory was removed afterwards: yes
+
+================================================================================================
+與企劃不同或企劃時不知道的事
+================================================================================================
+1. Claude Code 2.1.295 先送的是新版的探測，再退回握手。伺服器紀錄的第二行每一次都是
+   "server/discover asks 2026-07-28"，gear.mjs 回 -32601 Method not found，第三行是
+   "initialize asks 2025-11-25"，同一個伺服器程序（只有一行 start）。偵錯紀錄寫
+   protocolEra "legacy"、negotiatedProtocolVersion "2025-11-25"。接上的七次（n1–n3、w1、u1、
+   p1、e1）與 gear-more 的兩次都一樣。只會握手的伺服器在這個版本接得上，不用加任何環境變數。
+2. 握手之後只有 notifications/initialized、tools/list、tools/call。沒有 ping、沒有
+   resources/list、prompts/list（伺服器沒宣告那兩種能力）。結束時有 "end" 那一行：stdin 先被
+   關掉；偵錯紀錄寫 "Terminating MCP server process tree" 與 "STDIO connection closed after
+   Ns (cleanly)"。
+3. --tools ToolSearch 被接受，init 的 tools 是 ToolSearch 加上 MCP 工具；延後載入時 MCP 工具
+   照樣列在 init 裡，名稱與呼叫時相同（mcp__gear__find_gear）。沒接的那一臂 init 也列
+   ToolSearch（唯一的工具），mcp_servers 是空的清單。
+4. 模型怎麼找到延後載入的工具：每一次都先叫一次 ToolSearch，query 是
+   "select:mcp__gear__find_gear,mcp__gear__low_stock"（它已經知道名稱，直接點名），結果是兩個
+   tool_reference 區塊；下一個請求同時叫兩個 gear 工具；第三個請求回答。六次（n1–n3、w1、
+   p1、e1）一模一樣，e1 只需要一個工具也點了兩個。所以接上的每一次是 3 個請求。
+5. 成功的 MCP 工具結果在串流裡沒有 is_error 這個鍵（tally 印成 "is_error=-"），內容是一個
+   text 區塊的清單；企劃預期的是 is_error=false。出錯（e1）與被拒絕（p1）的結果才有
+   is_error true，而且內容是一個字串，不是區塊清單。
+6. init 的 mcp_servers 每一筆多一個鍵 source，值是 "dynamic"；hook 輸入的 mcp_server.source
+   也是 "dynamic"（用 --mcp-config 傳進去的伺服器）。企劃不知道會是哪個值。
+7. 沒接的三次都不是「說不知道」，也不是「編一個」：模型寫了一句「我先看一下工作目錄裡有哪些
+   檔案／庫存資料」，接著把 Glob、Grep 的工具呼叫寫成文字（這個 session 沒有這兩個工具），
+   那一輪就結束了。沒有貨架、沒有數量。照計分規則是「全對 no、給了答案 no」。x1 也是同一種
+   回覆。企劃的二分法（說不知道／編一個）沒有涵蓋這一種；片中要引原文。
+8. 第一個請求：f 臂 2248、2253、2253，n 臂 3340、3343、3339，同臂最大差 5 與 4。n 比 f 多
+   1089；企劃依官方說法預期「只多工具名稱與一行 instructions」，實際多出來的不只這些（多了
+   什麼沒有觀察到）。同樣是延後載入，多十個工具與一個伺服器（w1）只再多 189。
+9. 12 個工具一次全部載入（u1）第一個請求比 w1 多 534，但只要 2 個請求；全部請求相加 u1 是
+   8437、w1 是 11603。這個問題、這個數量之下，延後載入的總量比較大。u1 的 init 裡沒有
+   ToolSearch（內建工具 0 個），雖然指令照樣有 --tools ToolSearch。
+10. p1：伺服器程序有被啟動（紀錄有 start、握手、tools/list），只是沒有 tools/call。被拒絕的
+    工具結果原文是 "Claude requested permissions to use mcp__gear__find_gear, but you haven't
+    granted it yet."；串流有兩行 subtype permission_denied 的 system；hook 收到
+    PermissionRequest（每個工具一次），沒有 PermissionDenied。permission_denials 每一筆帶著
+    模型寫的參數。回覆說兩個工具的權限沒有被授予、不會憑空猜。
+11. e1：hook 收到 PostToolUseFailure（error=查無代號：G-999），同一次呼叫沒有 PostToolUse。
+    回覆沒有編貨架。
+12. x1：狀態是 failed，整次 9 秒，沒有等 30 秒（偵錯紀錄：661 毫秒後 Connection closed）。
+    偵錯紀錄有一行企劃沒料到的："version negotiation probe closed the stdio server
+    (rmcp-class pre-init hard close); respawning pinned legacy"：探測還沒回、程序就死了，
+    Claude Code 不帶探測再啟動一次，所以那一行指令被跑了兩次。Node 的錯誤原文在偵錯紀錄裡，
+    不在串流裡；init 沒有 mcp_server_errors 這個鍵。回覆沒有提到伺服器沒接上。第一個請求
+    2439，比 f 臂多 188（多了什麼沒有觀察到）。
+13. r1（選做，跑了）：模型自己 Glob、Grep、Read 找到 server/stock.tsv，貨架、數量、四項低於
+    3 的都對，還附了資料來源。它另外說明 G-121、G-466 剛好是 3、不算低於 3；照事先講定的
+    規則，這兩個代號出現就不算「全對」，所以計分是 no。規則沒有改，兩種讀法都記在第 14 項。
+14. 每一次串流的最後有一行 subtype post_turn_summary 的 system；f1、f3、x1 另有
+    thinking_tokens，r1 有 task_summary。沒接的那幾次模型有 thinking 區塊。
+15. tally 的 output 欄取的是每個請求第一行的 output_tokens，是不完整的數（f 臂都是 2，
+    modelUsage 是 123 到 378）。這一欄沒有用在任何判定上，卡片不要引。
+16. 企劃寫 m-checks 有 37 個指令；企劃自己的紀錄與這次都是 38 個 "[exit N]"。這次專案上面
+    是 7 層資料夾，企劃那次是 8 層。其餘逐行相同。
+17. init 列了 3 個 plugins、21 個 skills、6 個 agents，tally 判定全部是 Claude Code 內建的
+    （不是內建的各 0 個）。種子以外的 MCP 伺服器與工具十二次都是 0。偵錯紀錄每一次有 2 行
+    提到連接器、1 行提到 advisor（只數，不印）；modelUsage 每一次都只有 claude-sonnet-5-5。
+18. 種子沒有改。沒有失敗、沒有重跑、沒有用 --force、沒有用 rooted 臂（相對路徑的 args 接得
+    上）。
+
+================================================================================================
+仍然沒有觀察到
+================================================================================================
+- 任何互動式畫面：/mcp、核准 .mcp.json 的畫面、/context、對話裡工具呼叫的那一列、權限詢問。
+  全片最高到「跑過」，沒有一件到「看過」。
+- 不加 --strict-mcp-config 時，專案的 .mcp.json 在 -p 之下會不會自己載入。看到的只有反面：
+  加了這個旗標、不傳 --mcp-config，三次都沒有載入。
+- claude mcp add、list、get、remove、reset-project-choices 的輸出：一個都沒有跑。
+- 第一個請求裡到底有什麼。n 比 f 多的 1089、x1 比 f 多的 188，各由哪些內容組成（ToolSearch
+  的定義、工具名稱清單、伺服器的 instructions、伺服器失敗的通知）看不到，只有總數。
+- Claude Code 有沒有把「gear 沒接上」告訴模型。x1 的回覆沒有提，模型去找了 .mcp.json；
+  只有一次，分不出來。
+- 伺服器的 instructions 與工具的 description 有沒有幫上忙：沒有對照。
+- ToolSearch 用關鍵字搜尋（不是 select 點名）的樣子：六次都是點名。
+- 模型在只需要一部分工具時會不會只載入那一部分：e1 只用一個也點了兩個，只有一次。
+- 伺服器啟動很慢、中途當掉、往 stdout 印雜訊時的樣子；30 秒的等待上限。
+- 沒有允許規則時 hook 的 PermissionDenied：這次沒有觸發（-p、預設權限模式）；別的權限模式
+  沒有跑。
+- 工具多到幾個，延後載入才划算：只有 2 個與 12 個，12 個的兩種各一次。
+- 只講新版協定（2026-07-28）的伺服器、用 SDK 寫的伺服器、遠端伺服器、OAuth、resources、
+  prompts、subagent 裡的 MCP 工具。
+- 其他模型、其他平台：十二次都是 claude-sonnet-5-5、Windows 11 的 Git Bash、Claude Code
+  2.1.295。up、idle、rooted 三臂只有 dry run。
+- 每邊三次：夠說「有差」，不夠說「每次都會」。

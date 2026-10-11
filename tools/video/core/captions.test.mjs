@@ -131,7 +131,7 @@ test("wrapCue breaks near the middle, after punctuation, into lines that fit", (
   assert.equal(english.split("\n").length, 2);
 });
 
-for (const locale of ["zh-TW", "zh-CN", "ja"]) {
+for (const locale of ["zh-TW", "ja"]) {
   test(`${locale} wraps versions, prices and product names only at complete token boundaries`, () => {
     for (const token of ["4.0", "0.50", "GPT-6", "C++", "C#", "A_B", "O'Neil"]) {
       const rules = { ...LOCALE_RULES[locale], maxChars: Math.ceil(measure(token, zh) + 1) };
@@ -226,12 +226,6 @@ for (const [locale, id, text, expected] of [
   ["ja", "wpuc", "私の選択です。これは測定ではなく、私の意見です。毎日の要約には、ちゃんと読める中で一番安いモデル。金額はわずかです。", [
     [54764, "私の選択です。これは測定ではな\nく、私の意見です。毎日の要約には"],
     [100400, "ちゃんと読める中で一番安\nいモデル。金額はわずかです"],
-  ]],
-  ["zh-CN", "dgig", "AI 安全中心的报告指出，到了七月，Claude Fable 5 达到了 15.8%。", [
-    [100400, "AI 安全中心的报告指出，到了七\n月，Claude Fable 5 达到了 15.8%"],
-  ]],
-  ["zh-CN", "akm3", "我的看法是：安全要靠系统真正挡住，而不是靠提示词里的一句“不要”。", [
-    [100400, "我的看法是：安全要靠系统真正挡\n住，而不是靠提示词里的一句“不要”"],
   ]],
 ]) {
   test(`${locale}/${id} preserves safe rendered cues and raw punctuation timing weights`, () => {
@@ -374,8 +368,6 @@ test("a timeline without timing keeps the SRT and VTT it produced before measure
   for (const [locale, texts, cues, srt, vtt] of [
     ["zh-TW", ["每次有新模型出來，排行榜就換一次第一名，你真的每次都要跟著換嗎？還是應該先想清楚自己要它做什麼，再決定要不要換？", "有公布的：算力、記憶體容量、功耗，還有記憶體頻寬，每秒 300 GB。好。", "第一句話說完了。第二句比較長一點，中間有個逗號，然後結束。第三句也在這裡。"],
       6, "1d62f0bc22f2301e0ca9d8fc6d667af7e6836826d5dcfcdcdd7fa421a3bdbbcc", "6d7d4f6480abf5d82646439597cd47199ef543b53a366b8c0f33a48eefdd7609"],
-    ["zh-CN", ["每次有新模型出来，排行榜就换一次第一名，你真的每次都要跟着换吗？还是应该先想清楚自己要它做什么，再决定要不要换？", "有公布的：算力、内存容量、功耗，还有内存带宽，每秒 300 GB。好。", "第一句话说完了。第二句比较长一点，中间有个逗号，然后结束。第三句也在这里。"],
-      5, "fb2a433a2eb5b29d6744e9d8832743bb7d4f9187e146f5a107c83f1639996730", "50543468f48d94c081c2ae9616213a4ec0ed228a22cad6c5272d227ca1af3a60"],
     ["en", ["Every time a new model comes out, the leaderboard gets a new number one. Do you really switch every time, or decide first what you need it for?", "What was published: compute, memory capacity, power draw, and memory bandwidth, 300 GB a second. Okay.", "The first sentence is done. The second one is a bit longer, with a comma in the middle, and then it ends. The third is here too."],
       6, "62e6b02d2b1a70cc46ce98bf140c927a3347d72278d800e275291671d234d723", "eaac3f6385ac09a0ecebef566864a1f92526d021ef6d09bc1882e1144cd1963b"],
     ["ja", ["では、AIはあなたの仕事を奪うのか。私の答えは「まずタスクを奪う。しかも2月の見出しが示したより速く」です。", "私の選択です。これは測定ではなく、私の意見です。毎日の要約には、ちゃんと読める中で一番安いモデル。金額はわずかです。", "公開されたのは演算性能、メモリ容量、消費電力、そしてメモリ帯域で、毎秒 300 GB です。"],

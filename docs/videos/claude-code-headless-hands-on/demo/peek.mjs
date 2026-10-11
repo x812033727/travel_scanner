@@ -1,0 +1,12 @@
+import { readFileSync } from 'node:fs';
+const text = readFileSync(process.argv[2], 'utf8').trim();
+const events = text.split('\n').map((line) => JSON.parse(line));
+const init = events.find((event) => event.subtype === 'init');
+const last = events.findLast((e) => e.type === 'result');
+const own = init.tools.filter((t) => !t.startsWith('mcp__'));
+const mcp = init.tools.length - own.length;
+const denied = last.permission_denials.map((d) => d.tool_name);
+console.log('events:', events.length, 'last:', last.subtype);
+console.log('start: ', init.model, init.permissionMode);
+console.log('tools: ', own.join(' '), `(+${mcp} MCP)`);
+console.log('denied:', denied.join(' ') || '-');

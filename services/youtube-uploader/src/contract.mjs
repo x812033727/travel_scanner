@@ -6,6 +6,13 @@ export const VIDEO = /^[A-Za-z0-9_-]{11}$/;
 export const CHANNEL = /^UC[A-Za-z0-9_-]{22}$/;
 export const CHUNK = 4 * 1024 * 1024;
 export const LANGUAGES = { "zh-TW": "Chinese (Taiwan)", "zh-CN": "Chinese (China)", en: "English", ja: "Japanese", ko: "Korean" };
+// A dub track is a file of the approved language batch under the producer's role name: the
+// locale in lower case with underscores (dub_en, dub_zh_cn). Studio's accepted audio formats
+// are not confirmed on a real channel; the extension follows the approved content type.
+export const DUB_MEDIA = { "audio/mp4": ".m4a", "audio/mpeg": ".mp3", "audio/wav": ".wav", "audio/x-wav": ".wav" };
+export function dubLocale(role) {
+  return Object.keys(LANGUAGES).find((locale) => "dub_" + locale.toLowerCase().replaceAll("-", "_") === role) ?? null;
+}
 export const ACTIVE = new Set(["staging", "queued", "running", "needs_action"]);
 export class Refused extends Error {
   constructor(code, status = 409) { super(code); this.code = code; this.status = status; }
@@ -27,15 +34,18 @@ export function validateManifest(value, channel) {
       || m.tags.join(",").length > 500 || !object(m.localizations)
       || Object.entries(m.localizations).some(([locale, entry]) => !Object.hasOwn(LANGUAGES, locale)
         || locale === m.default_language || !object(entry) || !field(entry.title, 100) || !description(entry.description))) throw new Refused("invalid_metadata", 422);
-  if (!Array.isArray(value.files) || value.files.length > 8) throw new Refused("invalid_files", 422);
+  if (!Array.isArray(value.files) || value.files.length > 12) throw new Refused("invalid_files", 422);
   const roles = new Set();
   const files = value.files.map((f) => {
     if (!object(f) || typeof f.role !== "string" || !HASH.test(f.sha256) || !Number.isSafeInteger(f.size) || f.size < 1
         || f.size > 100 * 1024 ** 3 || roles.has(f.role)) throw new Refused("invalid_files", 422);
     roles.add(f.role);
     const media = f.role === "final" ? ["video/mp4"] : f.role === "thumbnail" ? ["image/png", "image/jpeg"]
-      : f.role.startsWith("captions_") && Object.hasOwn(LANGUAGES, f.role.slice(9)) ? ["text/plain", "application/x-subrip", "text/vtt"] : [];
-    if (!media.includes(f.content_type) || (f.role !== "final" && f.size > 20 * 1024 ** 2)) throw new Refused("invalid_files", 422);
+      : f.role.startsWith("captions_") && Object.hasOwn(LANGUAGES, f.role.slice(9)) ? ["text/plain", "application/x-subrip", "text/vtt"]
+      // The narration's own language is the video's original audio, never a second track.
+      : dubLocale(f.role) && dubLocale(f.role) !== m.default_language ? Object.keys(DUB_MEDIA) : [];
+    const limit = f.role === "final" ? Infinity : dubLocale(f.role) ? 1024 ** 3 : 20 * 1024 ** 2;
+    if (!media.includes(f.content_type) || f.size > limit) throw new Refused("invalid_files", 422);
     return { role: f.role, sha256: f.sha256, size: f.size, content_type: f.content_type };
   });
   if (!value.video_id && !roles.has("final")) throw new Refused("video_missing", 422);
@@ -51,5 +61,6 @@ export function validateManifest(value, channel) {
 export function jobSteps(manifest) {
   return ["video", "details", ...(manifest.files.some((f) => f.role === "thumbnail") ? ["thumbnail"] : []),
     ...manifest.files.filter((f) => f.role.startsWith("captions_")).map((f) => f.role),
-    ...Object.keys(manifest.metadata.localizations).map((locale) => "localization_" + locale), "verify"];
+    ...Object.keys(manifest.metadata.localizations).map((locale) => "localization_" + locale),
+    ...manifest.files.filter((f) => dubLocale(f.role)).map((f) => f.role), "verify"];
 }

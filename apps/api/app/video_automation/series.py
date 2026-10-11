@@ -63,7 +63,6 @@ from app.video_automation.schemas import (
     EXPLAINER_DEFAULT_MINUTES,
     EXPLAINER_MAX_MINUTES,
     EXPLAINER_MIN_MINUTES,
-    EXPLAINER_PRESET,
     ONE_OFF_EPISODES,
     SERIES_MAX_MINUTES,
     BingeQuoteOut,
@@ -89,6 +88,7 @@ from app.video_automation.schemas import (
     SeriesWithdrawnOut,
     StoryHold,
     StoryQuotaOut,
+    is_explainer_preset,
 )
 from app.video_media.catalog import JUDGE_USD_PER_CALL, find_model
 from app.video_media.meter import spend_by_slug
@@ -213,10 +213,11 @@ def require_production_series(series: VideoDramaSeries) -> None:
         )
 
 
-# An illustrated explainer (docs/videos/so-thats-why/) is a one-off in EXPLAINER_PRESET: its bible
-# is a question's, with no cast, and its outline carries the answer, the reasons and the sources.
+# An illustrated explainer (docs/videos/so-thats-why/) is a one-off in one of EXPLAINER_PRESETS:
+# its bible is a question's, with no cast, and its outline carries the answer, the reasons and
+# the sources.
 def is_explainer(series: VideoDramaSeries) -> bool:
-    return is_one_off(series) and series.style_preset == EXPLAINER_PRESET
+    return is_one_off(series) and is_explainer_preset(series.style_preset)
 
 
 def _explainer_bible_problem(body: dict[str, Any]) -> str | None:
@@ -1302,6 +1303,7 @@ async def create_one_off(
         open_ended=False,
         status="setting",
         note=payload.note,
+        image_model=payload.image_model,
         created_by_user_id=actor.id,
         created_at=now,
         updated_at=now,
@@ -1337,6 +1339,7 @@ async def create_one_off(
                 "style_preset": payload.style_preset,
                 "target_minutes": payload.target_minutes,
                 "source_guide": payload.source_guide,
+                "image_model": payload.image_model,
             },
         )
     )
@@ -1427,7 +1430,7 @@ def patch_target_minutes(series: VideoDramaSeries, changes: dict[str, Any]) -> i
     if "target_minutes" in changes:
         return cast(int | None, changes["target_minutes"])
     if "style_preset" in changes and is_one_off(series):
-        explainer = changes["style_preset"] == EXPLAINER_PRESET
+        explainer = is_explainer_preset(changes["style_preset"])
         if explainer != is_explainer(series):
             return EXPLAINER_DEFAULT_MINUTES if explainer else 3
         if explainer and series.target_minutes < EXPLAINER_MIN_MINUTES:
@@ -1440,11 +1443,14 @@ def patch_problem(
 ) -> SeriesRefused | None:
     """Why a change the schema accepts does not fit this kind of series, or None.
 
-    Only a one-off takes EXPLAINER_PRESET: a long series and a story series are written with a
-    cast, which the explainer's lint refuses on every episode. A one-off may move into or out of
-    the explainer only before the worker wrote its bible (``docs``, any version): an explainer's
-    bible is a question's with no cast and a story's has one, so the bible already written would
-    no longer fit. To change sides after that, the owner withdraws the one-off and files a new one.
+    Only a one-off takes an explainer preset: a long series and a story series are written with
+    a cast, which the explainer's lint refuses on every episode. A one-off may move into or out
+    of the explainer only before the worker wrote its bible (``docs``, any version): an
+    explainer's bible is a question's with no cast and a story's has one, so the bible already
+    written would no longer fit. Nor may it move from one explainer preset to another after
+    that: each is a series of its own (its pillars, its content rules, its bookends), and the
+    bible was written for the one it was filed in. To change after that, the owner withdraws
+    the one-off and files a new one.
 
     Only a story series has a daily count and a shared look. A one-off explainer runs 8–20
     minutes; other dramas stay within SERIES_MAX_MINUTES. A story series stays hands-off,
@@ -1472,18 +1478,25 @@ def patch_problem(
             )
         return None
     if "style_preset" in changes:
-        explainer = changes["style_preset"] == EXPLAINER_PRESET
+        explainer = is_explainer_preset(changes["style_preset"])
         if explainer and not is_one_off(series):
             return SeriesRefused(
                 422,
                 "video_series_explainer_one_off",
-                "扁平插畫解說只給單集作品用：長篇與品牌故事都有角色，解說沒有",
+                "插畫解說只給單集作品用：長篇與品牌故事都有角色，解說沒有",
             )
-        if explainer != is_explainer(series) and any(doc.kind == "bible" for doc in docs):
+        written = any(doc.kind == "bible" for doc in docs)
+        if written and explainer != is_explainer(series):
             return SeriesRefused(
                 409,
                 "video_series_explainer_fixed",
                 "故事聖經已經寫了，不能在解說與故事之間換風格；要換請撤回這部再重新發起",
+            )
+        if written and explainer and changes["style_preset"] != series.style_preset:
+            return SeriesRefused(
+                409,
+                "video_series_explainer_fixed",
+                "故事聖經已經寫了，不能換成另一個解說系列的風格；要換請撤回這部再重新發起",
             )
     if not is_story(series):
         if changes.get("episodes_per_day") is not None or changes.get("look") is not None:
@@ -1494,7 +1507,7 @@ def patch_problem(
             minutes = patch_target_minutes(series, changes)
             explainer = (
                 is_one_off(series)
-                and changes.get("style_preset", series.style_preset) == EXPLAINER_PRESET
+                and is_explainer_preset(changes.get("style_preset", series.style_preset))
             )
             if minutes is None:
                 return SeriesRefused(422, "video_series_minutes_required", "影片長度不能留空")

@@ -18,7 +18,12 @@ questions instead of the tutorial's: written to the stance, an observation left 
 no advice, not sponsored, nobody named run down. The server picks the set from the video's own
 series (``policy_questions_for``). A Short cut from a long video (docs/videos/SHORTS.md, line
 "cut") is a highlight too short to hold a demonstration, so it is asked the tutorial's questions
-without that one; every other video, a drama's included, is asked as before.
+without that one. The demonstration is a tutorial's rule: a video the site's own row files as an
+explainer or a story (``VideoProject.category``) tells something rather than shows a step to
+follow, so it is asked the same three and its note says the demonstration does not apply. Every
+other video is asked all four as before: one the site does not know or has not categorised, and
+a drama's too, whose questions are the owner's to decide (ticket
+2026-09-28-video-drama-policy-questions).
 
 Payload contracts the worker writes (tools/video, ticket video-hands-off-worker):
 
@@ -280,18 +285,22 @@ class JudgePolicyIn(StrictModel):
     viewpoint: str = Field(default="", max_length=8_000)
 
 
-# Which questions a narration was asked: the tutorial's four, which every video but a brand
-# story or a cut Short is asked, the story's five (docs/videos/STORY.md), or a cut Short's three:
-# the tutorial's without the demonstration (docs/videos/SHORTS.md §自動品管).
-PolicyQuestions = Literal["tutorial", "story", "cut"]
+# Which questions a narration was asked: the tutorial's four, the story's five
+# (docs/videos/STORY.md), a cut Short's three: the tutorial's without the demonstration
+# (docs/videos/SHORTS.md §自動品管), or an explainer's: the same three, for a video whose category
+# says it demonstrates nothing (docs/videos/HANDS-OFF.md §自動品管).
+PolicyQuestions = Literal["tutorial", "story", "cut", "explainer"]
+# The categories (app.models.VIDEO_CATEGORIES) that are not asked for a demonstration; every
+# other category, and a video without one, is, whatever its format.
+NO_DEMO_CATEGORIES = frozenset({"explainer", "story"})
 
 
 class PolicyVerdict(BaseModel):
     """What Jev said about a narration; ``passed`` is the verdict of the set it was asked.
 
     A tutorial's verdict carries the four scores it always did (``observation`` and
-    ``disparage`` are None); a story's and a cut Short's have no ``demo`` (None), since it was
-    not asked.
+    ``disparage`` are None); a story's, a cut Short's and an explainer's have no ``demo``
+    (None), since it was not asked.
     """
 
     stance: float
@@ -424,16 +433,22 @@ def read_outline_answers(answers: dict[str, Any], options: list[OutlineOption]) 
     )
 
 
-def read_policy_answers(answers: dict[str, Any]) -> PolicyVerdict:
-    stance, demo = _noul(answers, "stance"), _noul(answers, "demo")
+def read_policy_answers(
+    answers: dict[str, Any], questions: Literal["tutorial", "explainer"] = "tutorial"
+) -> PolicyVerdict:
+    """A tutorial's verdict on its four, or an explainer's on the three it was asked: the same
+    thresholds, with no ``demo`` to hold it to."""
+    stance = _noul(answers, "stance")
+    demo = _noul(answers, "demo") if questions == "tutorial" else None
     advice, sponsored = _noul(answers, "advice"), _noul(answers, "sponsored")
     passed = (
         stance >= POLICY_MIN_STANCE
-        and demo >= POLICY_MIN_DEMO
+        and (demo is None or demo >= POLICY_MIN_DEMO)
         and advice <= POLICY_MAX_ADVICE
         and sponsored <= POLICY_MAX_SPONSORED
     )
     return PolicyVerdict(
+        questions=questions,
         stance=stance,
         demo=demo,
         advice=advice,
@@ -539,14 +554,21 @@ def pick_note(
     return f"{head}：{body}；沒過關（{'；'.join(reasons)}）"
 
 
-def policy_note(stance: float, demo: float, advice: float, sponsored: float, passed: bool) -> str:
-    body = f"符合立場 {stance:.2f}、有示範 {demo:.2f}、建議 {advice:.2f}、業配 {sponsored:.2f}"
+# What the note says in place of a score when the demonstration was not asked.
+DEMO_NOT_ASKED = "有示範：不適用（解說）"
+
+
+def policy_note(
+    stance: float, demo: float | None, advice: float, sponsored: float, passed: bool
+) -> str:
+    shown = DEMO_NOT_ASKED if demo is None else f"有示範 {demo:.2f}"
+    body = f"符合立場 {stance:.2f}、{shown}、建議 {advice:.2f}、業配 {sponsored:.2f}"
     if passed:
         return f"Jev：{body}，通過"
     reasons = []
     if stance < POLICY_MIN_STANCE:
         reasons.append(f"符合立場低於 {POLICY_MIN_STANCE}")
-    if demo < POLICY_MIN_DEMO:
+    if demo is not None and demo < POLICY_MIN_DEMO:
         reasons.append(f"有示範低於 {POLICY_MIN_DEMO}")
     if advice > POLICY_MAX_ADVICE:
         reasons.append(f"建議高於 {POLICY_MAX_ADVICE}")
@@ -622,12 +644,25 @@ async def video_series_kind(session: AsyncSession, slug: str) -> str | None:
 
 async def policy_questions_for(session: AsyncSession, slug: str) -> PolicyQuestions:
     """The story's questions for an episode of a brand-story series (docs/videos/STORY.md
-    §伺服器), a cut Short's for a Short on the "cut" line, the tutorial's for every other video,
-    a drama's included."""
+    §伺服器), a cut Short's for a Short on the "cut" line, an explainer's for a video whose own
+    row says it demonstrates nothing (category ``explainer`` or ``story``), and the tutorial's
+    for every other video: one the site has no row for or has not categorised, a drama's
+    included, is still asked for a demonstration."""
     if await video_series_kind(session, slug) == "story":
         return "story"
-    line = await session.scalar(select(VideoProject.shorts_line).where(VideoProject.slug == slug))
-    return "cut" if line == "cut" else "tutorial"
+    row = (
+        await session.execute(
+            select(VideoProject.shorts_line, VideoProject.category).where(
+                VideoProject.slug == slug
+            )
+        )
+    ).first()
+    if row is None:
+        return "tutorial"
+    line, category = row
+    if line == "cut":
+        return "cut"
+    return "explainer" if category in NO_DEMO_CATEGORIES else "tutorial"
 
 
 async def judge_policy(
@@ -644,7 +679,8 @@ async def judge_policy(
     """Whether a narration keeps to the stance and sells or advises nothing, asked in one Jev
     call with the questions of the video's own kind (``policy_questions_for``): a tutorial's
     also asks for something shown, a brand story's for an observation left and nobody run
-    down. The server looks the video up by ``slug``; the request cannot choose the set."""
+    down, and a video filed as an explainer or a story is not asked for a demonstration. The server
+    looks the video up by ``slug``; the request cannot choose the set."""
     state = policy_state(stance, viewpoint, script)
     kind = await policy_questions_for(session, slug)
     if kind == "story":
@@ -654,6 +690,11 @@ async def judge_policy(
     if kind == "cut":
         return read_cut_policy_answers(
             await _ask(settings, redis, state, cut_policy_questions(), client)
+        )
+    if kind == "explainer":
+        # The same three a cut Short is asked: the tutorial's words, the demonstration left out.
+        return read_policy_answers(
+            await _ask(settings, redis, state, cut_policy_questions(), client), "explainer"
         )
     return read_policy_answers(await _ask(settings, redis, state, policy_questions(), client))
 

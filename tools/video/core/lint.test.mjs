@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { dramaBrief, dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, fixtureBrief, fixtureLexicon, storyBrief, storyFixture, storySeries } from "./fixtures/load.mjs";
-import { announcesList, billableEstimate, briefSections, checkBrief, episodeScriptProblems, HEDGE_AFTER_UNWRITTEN, HEDGE_FAMILY, lintVideo, OPENING_SECONDS, OUTRO_SENTENCES, productionShotProblems, stancePoints, stanceProblems, templateSimilarity, thumbnailHeadlineProblems } from "./lint.mjs";
+import { announcesList, billableEstimate, briefSections, checkBrief, episodeScriptProblems, HEDGE_AFTER_UNWRITTEN, HEDGE_FAMILY, lintVideo, OPENING_SECONDS, OUTRO_SENTENCES, productionShotProblems, SOURCING_FAMILY, SOURCING_MAX, stancePoints, stanceProblems, templateSimilarity, thumbnailHeadlineProblems } from "./lint.mjs";
 import { captionsItem } from "../qa/checks.mjs";
 import { estimateTimeline, FPS } from "./timeline.mjs";
 import { eachLine, MIN_EPISODE_MINUTES, minEpisodeMinutes, textHash } from "./schema.mjs";
@@ -656,6 +656,22 @@ test("the hedge family is counted across the whole narration: twice is a warning
   assert.deepEqual(result.warnings.map((warning) => warning.path), ["scenes"]);
   assert.match(result.warnings[0].message, /hedges 3 times \(「以官網為準」×1, 「公告沒寫」×1, 「不代表」×1\)/);
   assert.match(result.warnings[0].message, /leave the disclaimer to the description/);
+});
+
+test("sourcing talk is counted across the whole narration: a third 「文件寫」 or 「官方說」 is a warning that names each phrase, a company's own claim is not counted", () => {
+  for (const phrase of ["文件寫", "文件說", "部落格說", "官方說", "根據官方"]) assert.ok(SOURCING_FAMILY.includes(phrase), phrase);
+  assert.equal(SOURCING_MAX, 2);
+  const long = closed(stretched());
+  long.scenes[1].lines[0].text = "文件寫，它用你的權限執行。";
+  long.scenes[1].lines[1].text = "谷歌說它比較快。";
+  long.scenes[2].lines[0].text = "官方說預設就是開的。";
+  assert.deepEqual(lintVideo(long, context()).warnings, [], "twice is allowed, and a named company is not sourcing talk");
+  long.scenes[2].lines[1].text = "部落格說只裝信得過的來源。";
+  const result = lintVideo(long, context());
+  assert.deepEqual(result.errors, []);
+  assert.deepEqual(result.warnings.map((warning) => warning.path), ["scenes"]);
+  assert.match(result.warnings[0].message, /names its source 3 times \(「文件寫」×1, 「官方說」×1, 「部落格說」×1\)/);
+  assert.match(result.warnings[0].message, /state the fact, and leave where it is from to the card's source field and the description/);
 });
 
 test("the bare 「不代表」 is the channel's rhetoric, not a hedge: two plain 「X 不代表 Y」 sentences do not warn, 「沒列，不代表沒有」 does", () => {

@@ -136,7 +136,6 @@ test('an all-pass run binds every local QA input and still permits packaging and
     assert.equal(qa.inputs.files[name], sha256(readFileSync(path.join(directory, name))), name);
   }
   assert.equal(qa.inputs.files['upload/ko.srt'], null);
-  assert.equal(qa.inputs.files['upload/zh-CN.srt'], null);
   const client = site();
   const result = await push({ directory, client });
   assert.equal(result.waits, null);

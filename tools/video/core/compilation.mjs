@@ -60,7 +60,6 @@ const VIDEO_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 // The chapter label a locale falls back to when every title would not fit the description.
 const EPISODE_LABELS = {
   "zh-TW": (n) => `第 ${n} 集`,
-  "zh-CN": (n) => `第 ${n} 集`,
   ja: (n) => `第${n}話`,
   ko: (n) => `${n}화`,
   en: (n) => `Episode ${n}`,

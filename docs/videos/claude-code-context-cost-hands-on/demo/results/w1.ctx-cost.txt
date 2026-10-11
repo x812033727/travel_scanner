@@ -1,0 +1,44 @@
+$ node ctx-cost.mjs w1.stream.jsonl
+== w1 | Claude Code 2.1.295 | claude-sonnet-5-5 | mode default
+   init: built-in tools 8 | MCP servers 1 (connected), tools 2
+         skills 22 | agents 7 | slash commands 58 | plugins 3
+   each request: input + cache write + cache read = input side
+   -- before request 1:
+      other system lines: 2
+   request 1: 2 + 5,301 + 7,071 = 12,374
+   -- after request 1: Claude wrote 0 chars of text, 3 tool calls
+      tool calls: Skill, Agent, ToolSearch (inputs 390 chars)
+      tool result Skill: 29 chars
+      tool result Agent: 1,027 chars (launched in the background)
+      tool result ToolSearch: 1 chars
+      added by Claude Code (synthetic): 521 chars
+      hooks ran, main and under Agent: 7 | with output: 0
+      other system lines: 9
+   request 2: 2 + 1,568 + 12,372 = 13,942 (+1,568)
+   -- after request 2: Claude wrote 0 chars of text, 5 tool calls
+      tool calls: Read x4, mcp__(a server) (inputs 495 chars)
+      tool result Read: 101 chars
+      tool result Read: 214 chars
+      tool result Read: 141 chars
+      tool result Read: 56 chars
+      tool result mcp__(a server): 21 chars
+      hooks ran, main and under Agent: 16 | with output: 0
+      other system lines: 21
+   request 3: 2 + 932 + 13,940 = 14,874 (+932)
+   -- after request 3: Claude wrote 0 chars of text, 4 tool calls
+      tool calls: Edit x3, Write (inputs 1,006 chars)
+      tool result Edit: 195 chars
+      tool result Edit: 195 chars
+      tool result Edit: 192 chars
+      tool result Write: 191 chars
+      task notification: 69 chars
+      hooks ran, main and under Agent: 13 | with output: 0
+      other system lines: 15
+   request 4: 2 + 1,900 + 14,872 = 16,774 (+1,900)
+   first 12,374 | last 16,774 | grew +4,400 over 4 requests
+   -- after the last request:
+      other system lines: 1
+   under Agent calls: 3 requests of their own | largest input side 5,412
+   result 1: success | turns 14 | cost USD 0.0903812
+      usage 8 + 9,701 + 48,255, output 2,289 | models in modelUsage: 1
+[exit 0]

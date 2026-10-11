@@ -116,7 +116,7 @@ class PairingView(BaseModel):
 
 
 # The languages a track is read in: the narration's zh-TW, and the dubs' (docs/videos/DUBS.md).
-TrackLanguage = Literal["zh-TW", "en", "ja", "ko", "zh-CN"]
+TrackLanguage = Literal["zh-TW", "en", "ja", "ko"]
 
 
 class TranscribeIn(BaseModel):

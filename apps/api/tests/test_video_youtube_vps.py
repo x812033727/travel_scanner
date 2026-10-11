@@ -210,6 +210,74 @@ async def test_vps_new_language_digest_is_not_mistaken_for_completed_job(
         assert all(f["role"] != "final" for f in remote.manifest["files"])
 
 
+DUBBED = {locale: {"metadata": False, "captions": True, "dub": True} for locale in ("en", "ja")}
+
+
+def _skip_japanese_dub(manifest: dict[str, Any]) -> None:
+    manifest["locales"]["ja"]["dub"] = {"status": "skipped", "reason": "does not fit the cut"}
+    manifest["files"] = [file for file in manifest["files"] if file["role"] != "dub_ja"]
+
+
+async def _dubbed_site(
+    monkeypatch: pytest.MonkeyPatch, site: Site, remote: Remote
+) -> dict[str, Any]:
+    """An approved batch with a ready English dub and a skipped Japanese one."""
+    await _configure_vps(site)
+    monkeypatch.setattr(vps, "load_runtime_settings", AsyncMock(return_value=site.settings))
+    monkeypatch.setattr(
+        vps,
+        "http_client",
+        lambda: httpx.AsyncClient(transport=httpx.MockTransport(remote.respond)),
+    )
+    batch = await _language_batch(site, selected=DUBBED)
+    ready = next(file for file in batch.manifest["files"] if file["role"] == "dub_en")
+    await _replace_manifest(site, batch, _skip_japanese_dub)
+    return dict(ready)
+
+
+async def test_vps_carries_the_ready_dub_of_the_approved_batch_and_not_the_skipped_one(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    async with open_site(monkeypatch, tmp_path) as site:
+        remote = Remote()
+        ready = await _dubbed_site(monkeypatch, site, remote)
+        result = await begin(site)
+        files = remote.manifest["files"]
+        # The file is the one the review holds: same hash, size and content type.
+        assert [f for f in files if f["role"].startswith("dub_")] == [ready]
+        assert ready["content_type"] == "audio/mp4"
+        assert {f["role"] for f in files if f["role"].startswith("captions_")} == {
+            "captions_zh-TW",
+            "captions_en",
+            "captions_ja",
+        }
+        for _ in range(len(files) + 1):
+            async with site.factory() as session:
+                result = await vps.stage(session, SLUG)
+        assert result["job"]["state"] == "queued"
+        assert remote.uploads[ready["sha256"]] == b"dub-en"
+
+
+@pytest.mark.parametrize("status", ["pending", "rejected"])
+async def test_vps_sends_no_dub_of_an_unapproved_batch(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path, status: str
+) -> None:
+    async with open_site(monkeypatch, tmp_path) as site:
+        remote = Remote()
+        await _dubbed_site(monkeypatch, site, remote)
+        async with site.factory() as session:
+            review = await session.scalar(
+                select(VideoReview).where(VideoReview.gate == "languages")
+            )
+            assert review
+            review.status = status
+            await session.commit()
+        with pytest.raises(Refused) as denied:
+            await begin(site)
+        assert denied.value.code == "video_youtube_languages_invalid"
+        assert not remote.calls and not remote.manifest
+
+
 @pytest.mark.parametrize("status", ["pending", "rejected"])
 async def test_vps_unapproved_languages_are_refused_without_writes(
     multilingual: tuple[Site, Remote], status: str

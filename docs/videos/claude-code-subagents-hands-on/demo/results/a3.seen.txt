@@ -1,0 +1,18 @@
+PreToolUse by=main Glob -
+PreToolUse by=main Grep logs
+PreToolUse by=main Agent type=log-scout keys=description,prompt,subagent_type model=- background=- prompt_chars=378 mark_in_prompt=no
+SubagentStart agent=log-scout
+PostToolUse by=main Agent status=async_launched model=claude-sonnet-5-5 last_request_tokens=- tool_calls=- keys=isAsync,status,agentId,description,resolvedModel,prompt,outputFile,canReadOutputFile,canContinueAgent
+PreToolUse by=log-scout Glob .
+PreToolUse by=log-scout Read logs/queue-2026-10-01.log
+PreToolUse by=log-scout Grep logs
+PreToolUse by=log-scout Grep logs
+PreToolUse by=log-scout Grep logs
+PreToolUse by=log-scout Grep logs
+PreToolUse by=log-scout Grep logs
+PreToolUse by=log-scout Grep logs
+PreToolUse by=log-scout Grep logs
+PreToolUse by=log-scout Grep logs
+PreToolUse by=log-scout Grep logs
+PreToolUse by=log-scout Grep logs
+SubagentStop agent=log-scout last_chars=749 mark_in_last=no

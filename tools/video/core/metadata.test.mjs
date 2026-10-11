@@ -159,7 +159,6 @@ test("the description credits the stock photos after the sources, in the vendors
   assert.match(composeDescription({ body: "Body", assets, locale: "en" }), /^Body\n\n📷 Image credits\nPhoto by Lukas Rodriguez on Pexels \(Pexels License\): https:\/\/www\.pexels\.com[^\n]*\nImage by Josch13 from Pixabay \(Pixabay Content License\): https/);
   assert.match(composeDescription({ body: "Body", assets, locale: "ko" }), /\n\n📷 이미지 출처\nPhoto by Lukas Rodriguez on Pexels \(Pexels License\): https/);
   assert.match(composeDescription({ body: "Body", assets, locale: "ja" }), /\n\n📷 画像の出典\nPhoto by Lukas Rodriguez on Pexels（Pexels License）：https/);
-  assert.match(composeDescription({ body: "Body", assets, locale: "zh-CN" }), /\n\n📷 图片来源\n/);
   assert.equal(composeDescription({ body: "Body", assets: [own], locale: "en" }), "Body", "own diagrams: no block, so the descriptions of the videos that list them do not move");
   assert.equal(composeDescription({ body: "Body", locale: "en" }), "Body");
   assert.equal(creditLine({ path: "p", source: " Photo by A on Pexels ", license: " ", author: "A" }, "ko"), "Photo by A on Pexels", "no licence, no page: the credit alone");

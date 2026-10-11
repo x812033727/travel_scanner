@@ -1,6 +1,6 @@
 # 全自動路線：AI 撰稿、台灣口音旁白、自動做成片
 
-這條路線的成品是一支投影片加旁白的影片。旁白由伺服器代為合成（頻道聲音是 Gemini 的 Sulafat；Azure 是另一個供應商，站主覺得它的聲音太平），畫面由 HTML 版型截圖，合成用 ffmpeg。每支先只出繁體中文（CC 與標題說明）；其他語言（en、ja、ko、zh-CN 的標題說明、CC、配音）由站主在成片核准後為每支影片勾選才做（`docs/videos/LANGUAGES.md`，下面第 13 步）。關卡有四個（`docs/videos/HANDS-OFF.md`），前三個由 AI 決定，站主決定的是語言與上架時間：
+這條路線的成品是一支投影片加旁白的影片。旁白由伺服器代為合成（頻道聲音是 Gemini 的 Sulafat；Azure 是另一個供應商，站主覺得它的聲音太平），畫面由 HTML 版型截圖，合成用 ffmpeg。每支先只出繁體中文（CC 與標題說明）；其他語言（en、ja、ko 的標題說明、CC、配音）由站主在成片核准後為每支影片勾選才做（`docs/videos/LANGUAGES.md`，下面第 13 步）。關卡有四個（`docs/videos/HANDS-OFF.md`），前三個由 AI 決定，站主決定的是語言與上架時間：
 
 | 關卡 | 誰決定 | 什麼時候才輪到站主 |
 | --- | --- | --- |
@@ -14,6 +14,12 @@
 為什麼這樣設計、YouTube 與 Azure 的規則，寫在 `docs/videos/DESIGN.md`；頻道的版型、配色與聲音寫在 `docs/videos/README.md`。這份只寫**怎麼做**。
 
 路徑寫法：`<ROOT>` 是 repo 根目錄；`<VIDEO_WORKDIR>` 是影片的工作資料夾，預設在使用者家目錄下，可以用 `--workdir` 或環境變數 `VIDEO_WORKDIR` 改；`<SLUG>` 是影片代號；`<VIDEO_DOCS>` 是這支影片在 repo 裡的資料夾 `docs/videos/<SLUG>/`，只放文字檔。音檔、畫面、mp4 只放在 `<VIDEO_WORKDIR>/<SLUG>/`，絕不進 git（repo 是公開的）。
+
+## 教學卡片與插圖說書
+
+工具教學及以案例講概念的影片，可在 `brief.md` 的「示範或實算」寫 `製作路線：教學卡片`：同一案例從效果、原理、操作前的信任與風險，帶到步驟及預期／實際結果。詳讀 `script-writing.md` 的〈教學卡片〉。它仍是 `format: "slides"`，用卡片逐步圖解及公開官方頁 `screencast`，沒有 `shot`，因此不跑付費 keyframes，也不受插圖占比或每章換地點規格要求；plain-slides 每狀態 15 秒 QA、8 分鐘下限、所有查核及審核不變。
+
+自動工人會清空 `assets`，不輸出檔案型 `diagram`／`screenshot`；有來源與授權的真實 SVG 只由本機撰稿路線管理。公開頁截圖不等於實際安裝或測試。示範缺真實輸出時，必須標記未實測和預期結果；不能編造終端輸出，也不擴張成登入後介面或 OBS 錄影。已有插圖說書照原規格；更動已核准影片的結構要另作腳本修訂，不能用只改逐句用字的 `restyle` 加操作場景。新腳本仍須重新查核，媒體變動須重新錄製與審核，不沿用舊雜湊當成完成。
 
 ## 一次性設定（站主做，代理不經手任何金鑰）
 
@@ -44,7 +50,7 @@
 | 10 | `review-push --gate final`：先跑 `qa`（11 項，寫到 `review/qa.json`；字幕與標題說明兩項只看 zh-TW 加已選的語言），再送成片（720p 預覽、聯絡表、縮圖、標題說明、`payload.qa`） | 工具 | `review/qa.json` | 11 項全過、`final_sha256` 等於這份 `final.mp4`，伺服器就核准；沒過的才由站主在 `/admin/videos` 看；`review-pull` 記下。`qa` 結束碼 4（Jev 或連結檢查連不上）就不送，下一輪再試 |
 | 11 | `package`（寫完就跑上傳包檢查、揭露答案寫進 `metadata.json`），再 `review-push --gate publish` 送上架確認：完整上傳包（`final`、`thumbnail`、`captions_<語系>`、`description_<語系>`、`metadata`）加 `payload.package` | 工具 | `upload/`（含只剩操作步驟的 `UPLOAD.md`） | 4 項全過、雜湊等於 `upload/metadata.json`，伺服器就核准；`review-pull` 記下。影片要等第 13 步的語言都做好才進「可以上架」，站主隨時可以先上傳 mp4 |
 | 12 | 站主照 `UPLOAD.md` 在 Studio 上傳成私人，到 `/admin/videos` 的影片頁貼上網址、選上架時間 | 站主 | YouTube 影片 | 工人下一輪把影片 ID 寫回 `video.json` 的 `youtube.video_id`，影片標成完成；公開由站主選的時間決定，語言還在做時排程等語言做好才送出 |
-| 13 | 語言（`docs/videos/LANGUAGES.md`），**成片核准後、站主在 `/admin/videos` 的影片頁「這支影片的語言」勾了才做**（四語 × 標題說明、CC、配音，或「只出繁體中文」）。工人把選擇抄成 `<VIDEO_WORKDIR>/<SLUG>/languages.json`，然後每個語言：`i18n-sheet --locale <語系> --parts <勾了的 metadata,captions>`（勾配音時每句帶 `max_chars`）→ 翻譯代理（`prompts/caption-translate.md`）→ `i18n-merge` → 審稿代理（`prompts/caption-review.md`）→ 再 merge；勾配音的再 `dub --locale <語系>` → 塞不下的句子走翻譯代理的縮短模式（`caption-translate.md` 最後一節）→ `i18n-merge` → 再 `dub`（最多 2 輪）→ `check-audio --locale <語系>` → `dub --redo`（最多 2 輪）；全部做好 `captions`（有配音的語系跟配音的時間）→ `package` → `review-push --gate languages` | 工具、翻譯與審稿代理、站主 | `<VIDEO_DOCS>/i18n/<語系>.json`、`captions/<語系>.srt`、`dubs/<語系>.m4a`、`upload/` 裡對應的檔 | 沒有配音的批次伺服器直接核准；有配音的，站主照 `UPLOAD.md` 的「配音音軌」在 Studio「語言」上傳後按「已在 Studio 上傳配音」。做不出來的配音寫進 `dubs/<語系>/skipped.json`，不擋影片。規則在 `publish.md` 的「語言」與 `docs/videos/DUBS.md` |
+| 13 | 語言（`docs/videos/LANGUAGES.md`），**成片核准後、站主在 `/admin/videos` 的影片頁「這支影片的語言」勾了才做**（四語 × 標題說明、CC、配音，或「只出繁體中文」）。工人把選擇抄成 `<VIDEO_WORKDIR>/<SLUG>/languages.json`，然後每個語言：`i18n-sheet --locale <語系> --parts <勾了的 metadata,captions>`（勾配音時每句帶 `max_chars`）→ 翻譯代理（`prompts/caption-translate.md`）→ `i18n-merge` → 審稿代理（`prompts/caption-review.md`）→ 再 merge；勾配音的再 `dub --locale <語系>` → 塞不下的句子走翻譯代理的縮短模式（`caption-translate.md` 最後一節）→ `i18n-merge` → 再 `dub`（最多 2 輪）→ `check-audio --locale <語系>` → `dub --redo`（最多 2 輪）；全部做好 `captions`（有配音的語系跟配音的時間）→ `package` → `review-push --gate languages` | 工具、翻譯與審稿代理、站主 | `<VIDEO_DOCS>/i18n/<語系>.json`、`captions/<語系>.srt`、`dubs/<語系>.m4a`、`upload/` 裡對應的檔 | 沒有配音的批次伺服器直接核准；有配音的，站主照 `UPLOAD.md` 的「配音音軌」在 Studio「語言」上傳後按「我已經在 Studio 傳好這些配音」。做不出來的配音寫進 `dubs/<語系>/skipped.json`，不擋影片。規則在 `publish.md` 的「語言」與 `docs/videos/DUBS.md` |
 
 第 4 步聽眾審稿最常抓到的四種問題：代理替站主編經驗（「我都自己測過」）；台灣介面有中文名稱卻寫英文 UI 名；預測沒標成意見；引用站上已經過期的圖解。
 
@@ -84,7 +90,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 
 寫作重點：
 
-- **旁白語言**：預設 zh-TW。英文影片在 `video.json` 頂層寫 `"narration_locale": "en"`（2026-09-28 起，英文第一季 `docs/ai-video-en-season-01/`），`youtube.default_language` 也要是 `en`。這時：lint 只要求全大寫的縮寫（SEC、GPT、API）進字典，一般英文字照寫；字典裡含中文的唸法（`p95 → P 九十五`）自動不套用，跟配音一樣；`voice.style` 寫英文版的語氣（`tools/video/dubs/plan.mjs` 的 `DUB_STYLES.en` 可以直接抄）；`check-audio` 以 `en` 轉寫與判斷，同音字與語助詞規則不用；`i18n-sheet` 以英文為原文翻成 zh-TW、ja、ko、zh-CN，配音也可以做 zh-TW；說明欄的標籤文字用英文版。長度估算沿用每分鐘 250 個「單位」（一個英文字算兩單位，約 125 字／分），Gemini 實唸約 150 字／分，所以估計偏長兩成，跟中文一樣。
+- **旁白語言**：預設 zh-TW。英文影片在 `video.json` 頂層寫 `"narration_locale": "en"`（2026-09-28 起，英文第一季 `docs/ai-video-en-season-01/`），`youtube.default_language` 也要是 `en`。這時：lint 只要求全大寫的縮寫（SEC、GPT、API）進字典，一般英文字照寫；字典裡含中文的唸法（`p95 → P 九十五`）自動不套用，跟配音一樣；`voice.style` 寫英文版的語氣（`tools/video/dubs/plan.mjs` 的 `DUB_STYLES.en` 可以直接抄）；`check-audio` 以 `en` 轉寫與判斷，同音字與語助詞規則不用；`i18n-sheet` 以英文為原文翻成 zh-TW、ja、ko，配音也可以做 zh-TW；說明欄的標籤文字用英文版。長度估算沿用每分鐘 250 個「單位」（一個英文字算兩單位，約 125 字／分），Gemini 實唸約 150 字／分，所以估計偏長兩成，跟中文一樣。
 - **分類**（`category`，可省略；2026-10 起）：`/admin/videos` 篩選用，代碼與站上的 `VIDEO_CATEGORIES`（`tools/video/core/schema.mjs`，同 `apps/api/app/models.py`）一致，共十個：`ai-terms`（AI 名詞解釋）、`ai-news`（AI／科技時事）、`tutorial`（教學實作）、`comparison`（比較評測）、`explainer`（觀念解說）、`story`（品牌故事）、`drama`（漫劇）、`long-drama`（長篇劇）、`travel`（旅遊）、`other`（其他）；寫別的 lint 會擋。worker 的每次回報（`flow.mjs` 的 `report()`，狀態檔的 `category` 優先，其次 `video.json`）與 `review-push` 都會帶上它；站上只替還沒分類的影片填，站主在頁面上改過的分類不會被回報蓋掉，所以每個階段都送是安全的。品牌故事由 story 流程自動寫 `"story"`，第一次回報就帶；其他影片沒寫就是「未分類」，等站主在頁面上歸類。
 - **句子 id**：用 `ids` 產生，是穩定的短碼。插入新句子時不要重新編號，翻譯、快取和站主的唸錯標記都靠它對齊。
 - **章節**：有 `chapter` 的場景會開一個 YouTube 章節，也就是進度條上可以點選的段落。
@@ -125,7 +131,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 - 每月上限由站主在後台卡片設定。超過時伺服器以 429 拒絕，請求不會送到 Azure，所以不會產生費用。
 - Gemini 以送出的文字字數計，和 Azure 分開算，預設每月 300,000 字（約一百支 10 分鐘影片）。
 - 實測合成語速約每分鐘 300 字（48 kHz 單聲道），工具估計用 250，所以 `lint` 估的長度偏長。2026-10-04 一支說書口吻的插圖投影片量到相反的結果：`lint` 估 12.2 分鐘，合成旁白實際 13.07 分鐘（約長 7%）；每個狀態的估計秒數也偏短，估計時過關的狀態到真實時間軸上超過 8 秒，要到 QA 的 `pace` 項才量得到。只量過這一支，原因還沒分開量（口吻、語速、停頓都有可能），所以估計可能偏長也可能偏短：長度與每個狀態的秒數都以 `tts` 之後的實際時間軸為準，接近 8 秒的狀態撰稿時就先拆。長度規則只有 8 分鐘以上（站主 2026-10-04 定）：`target_minutes` 的上緣是撰稿瞄準的長度，不是上限，估計超過上緣 `lint` 不再警告；不為了壓進目標刪事實，也不灌水。每集至少 8 分鐘（普通漫劇除外）：`lint` 估計不足 8 分鐘、`target_minutes` 下限低於 8 都是錯誤；成片品管的 `assemble` 項量到成片不足 8 分鐘就不過，要加寫旁白後重跑 `tts` 與 `assemble`。知識科普／AI名詞用10分鐘製作目標，品牌故事保留13分鐘；五類長片另外核對當前正文及成片各480秒、speech hash與影格綁定，片頭片尾不計正文。普通工人／CLI會忽略 `VIDEO_MIN_EPISODE_MINUTES=0`；只有 Node test runner 及 repository 的 `assemble/smoke.mjs` 短範例入口可放寬估算／通用成片門檻，五類長片的實測正文門檻始終不受該變數影響。
-- 配音音軌（`dub`）以送出的翻譯字數計：一支 10 分鐘的影片，en 約 10,000、ja 約 6,000、ko 約 6,500、zh-CN 約 5,000 個 Gemini 字元，四條約 28,000（含場景切分的標記）。額度不夠時把 `video_speech_gemini_monthly_character_limit` 調高。翻譯與審稿的模型呼叫只花在站主勾了的語言上（每語一次翻譯加一次審稿）。
+- 配音音軌（`dub`）以送出的翻譯字數計：一支 10 分鐘的影片，en 約 10,000、ja 約 6,000、ko 約 6,500 個 Gemini 字元，三條約 23,000（含場景切分的標記）。額度不夠時把 `video_speech_gemini_monthly_character_limit` 調高。翻譯與審稿的模型呼叫只花在站主勾了的語言上（每語一次翻譯加一次審稿）。
 
 ## 坑
 

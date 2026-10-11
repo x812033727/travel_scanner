@@ -18,6 +18,7 @@ import { AutomationError, automationClient, RUN_PENDING } from "./client.mjs";
 import { answerProblem, discussStep, documentDiscussionPayload, parseSubject, revisedDocumentProblem, unusableReply } from "./discuss.mjs";
 import { Automation, automatedVideos, DEFER_LIMIT, DEFER_MAX_MS, PENDING_RECHECK_MS, settle } from "./flow.mjs";
 import { instructionsFor, SERIES_INSTRUCTIONS } from "./prompts.mjs";
+import { canonicalJson } from "./run-receipts.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { scriptCheckBinding, scriptCheckMatches } from "../core/script-check.mjs";
 import { craftChecks } from "../core/craft.mjs";
@@ -658,8 +659,11 @@ test("the worker drafts an episode with the looks that cover it, in series.json 
   const cast = {};
   for (const number of [1, 2]) {
     const slug = episodeSlug("wenjian", number);
-    await automation.draftEpisode({ id: `r${number}`, slug, title: "", premise: SERIES.premise, target_minutes: 3 }, { series: SERIES, setting, episodes: [], recaps: [], mysteries: [] }, { ...beats(number), chapter_number: 1, beats: beats(number) });
+    await automation.draftEpisode({ id: `r${number}`, slug, title: "", premise: SERIES.premise, target_minutes: 3 }, { series: { ...SERIES, image_model: "gemini-3.1-flash-image" }, setting, episodes: [], recaps: [], mysteries: [] }, { ...beats(number), chapter_number: 1, beats: beats(number) });
     cast[number] = readJson(path.join(box.root, "docs", "videos", slug, "series.json")).characters.find((character) => character.id === "shen-lan");
+    // A long series whose row names an image model still writes no key: the key alone would wrap
+    // every image cache key, and its episodes would stop reusing the series' character sheets.
+    assert.equal(Object.hasOwn(readJson(path.join(box.root, "docs", "videos", slug, "series.json")), "image_model"), false, `episode ${number}: no image_model key for a long series`);
     assert.equal(readFileSync(path.join(box.root, "docs", "videos", slug, "brief.md"), "utf8").includes(loose), number === 2, `episode ${number}'s brief`);
   }
   assert.equal(cast[1].appearance, CAST[0].appearance);
@@ -2056,6 +2060,15 @@ test("an explainer one-off plans a question's bible with no cast, and its brief 
   assert.equal(documentVariant("bible", ONE_OFF), "bible");
   assert.equal(documentVariant("setting", SERIES), "setting");
   assert.match(instructionsFor("planner", "drama", "", "bible-explainer"), /BIBLE of ONE explainer episode/);
+  // The two cute presets are explainers too: same question-shaped bible, same brief sections,
+  // planned from their own series' variant.
+  for (const [preset, bibleVariant] of [["flat-explainer", "bible-explainer"], ["cute-cartoon", "bible-explainer-cartoon"], ["cute-mystery", "bible-explainer-mystery"]]) {
+    assert.equal(isExplainerOneOff({ ...explainer, style_preset: preset }), true, preset);
+    assert.equal(documentVariant("bible", { ...explainer, style_preset: preset }), bibleVariant, preset);
+    assert.equal(isExplainerOneOff({ ...SERIES, style_preset: preset }), false, `${preset}: a long series is never an explainer`);
+    assert.equal(documentVariant("bible", { ...SERIES, style_preset: preset }), "bible", preset);
+  }
+  assert.equal(isExplainerOneOff({ ...explainer, style_preset: "ink-wash" }), false);
 
   const outline = { title: "為什麼雷聲總比閃電晚到？", logline: "光比聲音快太多。", question: "為什麼雷聲總比閃電晚到？", answer: "光比聲音快太多。", reasons: ["光速約每秒三十萬公里", "聲速約每秒三百四十公尺"], hook: "閃電亮了，你數到幾？", closing: "下一題：彩虹為什麼是彎的？", sources: ["https://en.wikipedia.org/wiki/Speed_of_sound"] };
   const bible = { body_md: "# 雷聲\n## 問題\n…\n", body_json: { characters: [], acts: [{ number: 1, title: "光先到", summary: "s", shots: 4 }], outline, music: "輕快", not_doing: [], lexicon: {} } };
@@ -2065,30 +2078,47 @@ test("an explainer one-off plans a question's bible with no cast, and its brief 
   assert.match(documentProblem("bible", { ...bible, body_json: { ...bible.body_json, outline: { ...outline, answer: "" } } }, explainerJob), /outline\.answer/);
   assert.match(documentProblem("bible", { ...bible, body_json: { ...bible.body_json, outline: { ...outline, sources: ["http://x"] } } }, explainerJob), /https pages/);
   assert.match(documentProblem("bible", bible, { ...job("bible"), series: ONE_OFF }), /characters must list the cast/, "a story one-off still needs its cast");
+  for (const preset of ["cute-cartoon", "cute-mystery"]) {
+    const cuteJob = { ...job("bible"), series: { ...explainer, style_preset: preset } };
+    assert.equal(documentProblem("bible", bible, cuteJob), null, preset);
+    assert.match(documentProblem("bible", { ...bible, body_json: { ...bible.body_json, characters: ONE_OFF_CAST } }, cuteJob), /must be empty/, preset);
+  }
 
   const brief = episodeBrief(explainer, { number: 1, title: outline.title, logline: outline.logline }, [], outline);
-  assert.deepEqual(checkBrief(brief, "drama", "flat-explainer"), []);
+  for (const preset of ["flat-explainer", "cute-cartoon", "cute-mystery"]) assert.deepEqual(checkBrief(brief, "drama", preset), [], preset);
   assert.match(brief, /## 一句答案\n光比聲音快太多。/);
   assert.match(brief, /### 選項 A：為什麼雷聲總比閃電晚到？\n一行說明：光比聲音快太多。\n開場鉤子：「閃電亮了，你數到幾？」/);
   assert.match(brief, /- https:\/\/en\.wikipedia\.org\/wiki\/Speed_of_sound/);
   assert.doesNotMatch(brief, /## 角色/);
 });
 
-test("an explainer one-off goes from its question's bible to a narrator-only script with its two Shorts", async () => {
+// What the three stage calls of a flat-explainer one-off are asked with: sha256 of the
+// instructions, and of canonicalJson(payload) less `today` and `lexicon`. A change to either
+// moves the durable key of every unfinished flat-explainer stage journal, so that stage is
+// asked, and paid for, again.
+const EXPLAINER_STAGE_PINS = [
+  ["planner", "bible-explainer", "55ffd024da8e9da7443dca79f973424efcdf277de3a9fa1ec3415af764391a90", "bfa88ed9b8beaef5377880ae79efb081f5e5283c1e4ab4279df4bd0239d13078"],
+  ["writer", "explainer", "185af9a701ecbb1317f00dd130cbf260e8e664a7275a423bad66c415cb703e72", "b0a4a2982e77bf9ea76eb9047260bbe568eb36ac2577dc206791ca8912401e81"],
+  ["verifier", "explainer", "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842", "3d6d4812ec7814b0b9ce8712dcf8bcf08a752913d69125941600eecc32c38f54"],
+];
+const digestOf = (text) => createHash("sha256").update(text, "utf8").digest("hex");
+
+/** One explainer one-off in `preset`, from its bible to its first fact-check; the writer answers `look`, and the request asks for `minutes`. */
+async function explainerOneOffRun(preset, look = {}, row = {}, minutes = 8) {
   const box = sandbox();
-  const explainer = { ...ONE_OFF, title: "雷聲", premise: "為什麼雷聲總比閃電晚到？", style_preset: "flat-explainer" };
+  const explainer = { ...ONE_OFF, title: "雷聲", premise: "為什麼雷聲總比閃電晚到？", style_preset: preset, ...row };
   const slug = "one-off-7a1b2c3d-e001";
   const outline = { title: "為什麼雷聲總比閃電晚到？", logline: "光比聲音快太多。", question: "為什麼雷聲總比閃電晚到？", answer: "光比聲音快太多。", reasons: ["光速約每秒三十萬公里", "聲速約每秒三百四十公尺"], hook: "閃電亮了，你數到幾？", sources: ["https://en.wikipedia.org/wiki/Speed_of_sound"] };
   const bible = { body_md: "# 雷聲\n## 問題\n…\n", body_json: { characters: [], acts: [{ number: 1, title: "光先到", summary: "s", shots: 4 }], outline, music: "輕快", not_doing: [], lexicon: {} } };
   const drafted = JSON.parse(readFileSync(new URL("../core/fixtures/explainer/shorts.json", import.meta.url), "utf8")).map(({ titles, description, scenes }) => ({ titles, description, scenes }));
   const answers = {
     "planner:bible-explainer": () => bible,
-    "writer:explainer": () => ({ video: { ...explainerFixture(), slug, look: {} }, claims: "c1｜光速｜https://en.wikipedia.org/wiki/Speed_of_sound｜2026-09-28｜race\n", lexicon_additions: {}, shorts: drafted }),
+    "writer:explainer": () => ({ video: { ...explainerFixture(), slug, look }, claims: "c1｜光速｜https://en.wikipedia.org/wiki/Speed_of_sound｜2026-09-28｜race\n", lexicon_additions: {}, shorts: drafted }),
   };
   const episode = { number: 1, chapter_number: 1, title: outline.title, logline: outline.logline, beats: outline, status: "ready", slug: null, recap: null, started_at: null, finished_at: null, video: null };
   const setting = { id: "b1", kind: "bible", chapter_number: 0, version: 1, ...bible, status: "approved" };
   const oneOffStart = (body) => ({
-    request: { id: "explainer-request", premise: explainer.premise, title: "雷聲", source_guide: null, style_preset: "flat-explainer", target_minutes: 8, note: null, status: "started", slug: body.slug, series_slug: explainer.slug, episode_number: 1 },
+    request: { id: "explainer-request", premise: explainer.premise, title: "雷聲", source_guide: null, style_preset: preset, target_minutes: minutes, note: null, status: "started", slug: body.slug, series_slug: explainer.slug, episode_number: 1 },
     episode: { ...episode, status: "started", slug: body.slug },
     context: { series: explainer, setting, outline: null, chapter: null, chapter_number: 1, chapter_range: [1, 1], episode: null, episodes: [episode], recaps: [], mysteries: [] },
   });
@@ -2105,19 +2135,155 @@ test("an explainer one-off goes from its question's bible to a narrator-only scr
   const dir = path.join(box.root, "docs", "videos", slug);
   assert.match(readFileSync(path.join(dir, "brief.md"), "utf8"), /^# 為什麼雷聲總比閃電晚到？\n\n## 問題\n/);
   const state = automatedVideos(box.work).find((each) => each.slug === slug);
-  assert.equal(state.style_preset, "flat-explainer");
+  assert.equal(state.style_preset, preset);
   assert.deepEqual(state.source_urls, outline.sources, "the checker reads the pages the bible names");
 
   assert.match(await automation.step(), /script drafted and passes lint; 2 Shorts drafted/);
   const writer = site.calls.run.find((call) => call.stage === "writer");
   assert.equal(writer.variant, "explainer");
   const video = readJson(path.join(dir, "video.json"));
-  assert.equal(video.look.preset, "flat-explainer", "the writer cannot drop the explainer preset");
+  assert.equal(video.look.preset, preset, "the writer cannot drop or change the request's explainer preset");
   assert.deepEqual(video.characters, []);
   assert.deepEqual(JSON.parse(readFileSync(shortsFile(slug, box.root), "utf8")).map((short) => short.slug), [`${slug}-short-1`, `${slug}-short-2`]);
   assert.match(await automation.step(), /fact-check round 1/);
   assert.equal(site.calls.run.find((call) => call.stage === "verifier").variant, "explainer");
+  return { site, video, writer, seriesInfo: readJson(path.join(dir, "series.json")), shorts: JSON.parse(readFileSync(shortsFile(slug, box.root), "utf8")) };
+}
+
+test("an explainer one-off goes from its question's bible to a narrator-only script with its two Shorts", async () => {
+  const { site, shorts, writer, seriesInfo } = await explainerOneOffRun("flat-explainer");
+  assert.deepEqual(shorts.map((short) => short.series), ["sothatswhy", "sothatswhy"]);
+  // No model named: the file and the writer's payload are what they always were.
+  assert.equal(Object.hasOwn(seriesInfo, "image_model"), false, "a one-off that names no image model writes no key");
+  assert.equal(Object.hasOwn(writer.payload, "prompt_budget_chars"), false, "and its writer hears no budget");
+  assert.deepEqual(site.calls.run.map((call) => [call.stage, call.variant]), EXPLAINER_STAGE_PINS.map(([stage, variant]) => [stage, variant]));
+  for (const [index, [stage, variant, instructions, payload]] of EXPLAINER_STAGE_PINS.entries()) {
+    const call = site.calls.run[index];
+    const { today: _today, lexicon: _lexicon, ...rest } = call.payload;
+    assert.equal(digestOf(call.instructions), instructions, `${stage}:${variant} instructions`);
+    assert.equal(digestOf(canonicalJson(rest)), payload, `${stage}:${variant} payload`);
+  }
 });
+
+// flat-explainer on purpose: the cute presets get prompts of their own later, and this must not move with them.
+test("an explainer one-off whose row names an image model writes it into series.json, and its writer hears that model's prompt budget", async () => {
+  const { seriesInfo, writer, video } = await explainerOneOffRun("flat-explainer", {}, { image_model: "image-01" });
+  assert.equal(seriesInfo.image_model, "image-01", "the fact the media stages read (media/stages.mjs imageStatus)");
+  assert.equal(writer.payload.prompt_budget_chars, 1000);
+  assert.deepEqual(video.look, { preset: "flat-explainer" });
+});
+
+// The first draft is handed 140 fresh line ids, whatever length the request asks for: the count
+// is part of the seed the ids are minted from, so it is part of the pinned writer payload above.
+test("a flat-explainer one-off asked for 20 minutes is still handed 140 line ids", async () => {
+  const { writer } = await explainerOneOffRun("flat-explainer", {}, {}, 20);
+  assert.deepEqual(writer.payload.target_minutes, [20, 20]);
+  assert.equal(writer.payload.line_ids.length, 140);
+  const eight = await explainerOneOffRun("flat-explainer");
+  assert.deepEqual(eight.writer.payload.target_minutes, [8, 8]);
+  assert.deepEqual(writer.payload.line_ids, eight.writer.payload.line_ids, "the same ids at any length");
+});
+
+// Each cute preset is planned, written and checked from its own series' prompts
+// (explainer-series.mjs), beside the flat-explainer one above, which is not edited for them.
+const CUTE_ONE_OFFS = {
+  "cute-mystery": {
+    series: "奇聞檔案局",
+    variants: ["bible-explainer-mystery", "explainer-mystery"],
+    outline: { reasons: ["流傳的版本：雷聲是比較晚才發出來的。", "紀錄：光速約每秒三十萬公里。", "紀錄：聲速約每秒三百四十公尺。", "目前最站得住的解釋：同時發生，光先到。"], closing: "存檔。下一份檔案，我們繼續翻。", pillar: "M" },
+    bibleOf: /BIBLE of ONE 奇聞檔案局 file/,
+    brief: /## 原因\n- 流傳的版本：[^\n]+\n- 紀錄：[^\n]+\n- 紀錄：[^\n]+\n- 目前最站得住的解釋：/,
+    // The channel's thumbnail: a tag and a sub, no pillar, no layout, no variants.
+    thumbnail: { template: "thumb", data: { headline: "光？\n**先到**", tag: "奇異現象", sub: "數三秒的檔案", shot: "flash" } },
+    shorts: "illustrated",
+    // The longest episode the form allows: 12 line ids a minute, since a cute line is 24 characters at most.
+    minutes: 20,
+    lineIds: 240,
+  },
+  "cute-cartoon": {
+    series: "原來如此事務所",
+    variants: ["bible-explainer-cartoon", "explainer-cartoon"],
+    outline: { reasons: ["光速約每秒三十萬公里", "聲速約每秒三百四十公尺"], closing: "下一題：彩虹為什麼是彎的？", pillar: "science" },
+    bibleOf: /BIBLE of ONE 原來如此事務所 episode/,
+    brief: /## 原因\n- 光速約每秒三十萬公里\n- 聲速約每秒三百四十公尺/,
+    // So That's Why's own thumbnail, as the fixture carries it.
+    thumbnail: explainerFixture().thumbnail,
+    shorts: "sothatswhy",
+    // The default length: the 140 every first draft is handed.
+    minutes: 10,
+    lineIds: 140,
+  },
+};
+
+for (const [preset, expected] of Object.entries(CUTE_ONE_OFFS)) {
+  test(`a ${preset} one-off is planned, written and checked with ${expected.series}'s own prompts, keeps only its preset of the look and its thumbnail as written, and drafts its two Shorts`, async () => {
+    const box = sandbox();
+    // The row a cute request gets: the long-series form's defaults, and the model the server stored.
+    const curio = { ...ONE_OFF, title: "雷聲", premise: "為什麼雷聲總比閃電晚到？", style_preset: preset, target_minutes: expected.minutes, genre: "xianxia-bonds", lead: "dual-male", visual_tier: "clips", image_model: "image-01" };
+    const slug = "one-off-7a1b2c3d-e001";
+    const outline = { title: "為什麼雷聲總比閃電晚到？", logline: "光比聲音快太多。", question: "為什麼雷聲總比閃電晚到？", answer: "光比聲音快太多。", hook: "閃電亮了，你數到幾？", sources: ["https://en.wikipedia.org/wiki/Speed_of_sound"], ...expected.outline };
+    const bible = { body_md: "# 雷聲\n## 問題\n主軸：…\n", body_json: { characters: [], acts: [{ number: 1, title: "光先到", summary: "s", shots: 4 }], outline, music: "輕快", not_doing: [], lexicon: {} } };
+    const drafted = JSON.parse(readFileSync(new URL("../core/fixtures/explainer/shorts.json", import.meta.url), "utf8")).map(({ titles, description, scenes }) => ({ titles, description, scenes }));
+    const [bibleVariant, stageVariant] = expected.variants;
+    const answers = {
+      [`planner:${bibleVariant}`]: () => bible,
+      // The writer answers another series' preset and a style and a negative of its own: none of it is kept.
+      [`writer:${stageVariant}`]: () => ({ video: { ...explainerFixture(), slug, look: { preset: "flat-explainer", style: "my own", negative: "text" }, thumbnail: expected.thumbnail }, claims: "c1｜光速｜https://en.wikipedia.org/wiki/Speed_of_sound｜2026-09-28｜race\n", lexicon_additions: {}, shorts: drafted }),
+    };
+    const episode = { number: 1, chapter_number: 1, title: outline.title, logline: outline.logline, beats: outline, status: "ready", slug: null, recap: null, started_at: null, finished_at: null, video: null };
+    const setting = { id: "b1", kind: "bible", chapter_number: 0, version: 1, ...bible, status: "approved" };
+    const oneOffStart = (body) => ({
+      request: { id: "curio-request", premise: curio.premise, title: "雷聲", source_guide: null, style_preset: preset, target_minutes: expected.minutes, note: null, status: "started", slug: body.slug, series_slug: curio.slug, episode_number: 1 },
+      episode: { ...episode, status: "started", slug: body.slug },
+      context: { series: curio, setting, outline: null, chapter: null, chapter_number: 1, chapter_range: [1, 1], episode: null, episodes: [episode], recaps: [], mysteries: [] },
+    });
+    const site = fakeSite({ jobs: [job("bible", { series: curio, chapter_number: null, context: { ...job("bible").context, series: curio, setting: null, mysteries: [] } }), job("episode", { series: { ...curio, status: "active", episodes_ready: 1 }, episode })], answers, oneOffStart });
+    const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-28T01:00:00Z") });
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+
+    assert.match(await automation.step(), /the story bible planned \(version 1\)/);
+    const planner = site.calls.run[0];
+    assert.equal(planner.variant, bibleVariant);
+    assert.match(planner.instructions, expected.bibleOf);
+    assert.equal(planner.instructions, instructionsFor("planner", "drama", "", bibleVariant), "the row's genre adds no section to a series' own text");
+    assert.doesNotMatch(planner.instructions, /Genre and retention|仙俠/);
+    assert.equal(planner.payload.genre_spec, null, "nor does the story genre's spec ride in the payload");
+    assert.equal(planner.payload.series.genre, "xianxia-bonds", "seriesFacts is what it was");
+    assert.equal(planner.payload.drama_settings.style_preset, preset);
+
+    assert.match(await automation.step(), /started from the approved story bible/);
+    const dir = path.join(box.root, "docs", "videos", slug);
+    assert.match(readFileSync(path.join(dir, "brief.md"), "utf8"), expected.brief);
+    const state = automatedVideos(box.work).find((each) => each.slug === slug);
+    assert.equal(state.style_preset, preset);
+
+    assert.match(await automation.step(), /script drafted and passes lint; 2 Shorts drafted/);
+    const writer = site.calls.run.find((call) => call.stage === "writer");
+    assert.equal(writer.variant, stageVariant);
+    assert.equal(writer.instructions, instructionsFor("writer", "drama", "", stageVariant));
+    assert.equal(writer.payload.beats.pillar, expected.outline.pillar, "the bible's pillar reaches the writer in beats");
+    assert.deepEqual(writer.payload.target_minutes, [expected.minutes, expected.minutes]);
+    assert.equal(writer.payload.line_ids.length, expected.lineIds, "enough ids for the length asked, never fewer than 140");
+    assert.equal(new Set(writer.payload.line_ids).size, expected.lineIds, "each one distinct");
+    assert.ok(writer.instructions.includes(`"look": {"preset": "${preset}"}`));
+    // The budget the payload carries at its top level is one the writer's text explains.
+    assert.equal(writer.payload.prompt_budget_chars, 1000);
+    assert.match(writer.instructions, /"prompt_budget_chars", when the payload carries it at its top level, is the most characters\s+any one shot's "prompt" may have/);
+    const video = readJson(path.join(dir, "video.json"));
+    assert.deepEqual(video.look, { preset }, "the series' look is not the writer's to change");
+    assert.deepEqual(video.characters, []);
+    assert.deepEqual(video.thumbnail, expected.thumbnail, "the thumbnail arrives as written");
+    assert.equal(readJson(path.join(dir, "series.json")).image_model, "image-01");
+    assert.deepEqual(JSON.parse(readFileSync(shortsFile(slug, box.root), "utf8")).map((short) => short.series), [expected.shorts, expected.shorts]);
+
+    assert.match(await automation.step(), /fact-check round 1/);
+    const verifier = site.calls.run.find((call) => call.stage === "verifier");
+    assert.equal(verifier.variant, stageVariant);
+    assert.equal(verifier.instructions, instructionsFor("verifier", "drama", "", stageVariant));
+    assert.deepEqual(site.calls.run.map((call) => `${call.stage}/${call.variant}`), [`planner/${bibleVariant}`, `writer/${stageVariant}`, `verifier/${stageVariant}`]);
+  });
+}
 
 const ANIME_SERIES = { ...SERIES, slug: "borrowed-dawn", title: "借來的黎明", kind: "series", category: "anime", genre: "custom", lead: "ensemble", tone: "no-romance", style_preset: "anime-2d", target_minutes: 22, planned_episodes: 120, episodes_per_chapter: 12, chapters: 10, open_ended: false, hands_off: false, compilation: false, production_policy: "long-anime-v1", runtime_spec: { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 } };
 const sourceSeason = (number) => JSON.parse(readFileSync(new URL(`../../../docs/videos/series-plans/borrowed-dawn/season-${String(number).padStart(2, "0")}.json`, import.meta.url), "utf8"));

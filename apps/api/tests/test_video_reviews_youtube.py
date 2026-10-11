@@ -675,7 +675,7 @@ def test_the_upload_package_files_are_accepted_by_the_review_schema() -> None:
             "size": 1,
             "content_type": "application/x-subrip",
         },
-        {"role": "captions_zh_cn", "sha256": "2" * 64, "size": 1, "content_type": "text/vtt"},
+        {"role": "captions_ko", "sha256": "2" * 64, "size": 1, "content_type": "text/vtt"},
         {"role": "description_zh-TW", "sha256": "f" * 64, "size": 1, "content_type": "text/plain"},
         {"role": "metadata", "sha256": "1" * 64, "size": 1, "content_type": "application/json"},
     ]

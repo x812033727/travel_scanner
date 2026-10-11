@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
-    "software",
+    "content-marketing",
     "marketing",
-    "content-marketing"
+    "software",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "設計思考怎麼練：從訪談到可測試的小原型",
@@ -73,10 +76,8 @@
               "text": "研究開始前，說明目的、過程、是否錄音、資料用途與退出方式，取得相應同意。記錄時區分參與者實際說的內容、你觀察到的行為及自己的解讀。若只是和同學排演提問，就"
             },
             {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
+              "type": "text",
+              "text": "標記"
             },
             {
               "type": "text",
@@ -169,6 +170,7 @@
           "width": 1600,
           "height": 900,
           "caption": "做出小原型，是為了學到足以改變下一個決定的資訊。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -269,6 +271,1070 @@
         },
         {
           "title": "GOV.UK：深入訪談與中性提問",
+          "url": "https://www.gov.uk/service-manual/user-research/using-in-depth-interviews",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：研究知情同意",
+          "url": "https://www.gov.uk/service-manual/user-research/getting-users-consent-for-research",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Practicing Design Thinking: From Interviews to Small, Testable Prototypes",
+      "description": "Design thinking helps frame everyday and service problems without making every exercise a sticky-note-filled workshop. An original community umbrella-lending scenario explains interview preparation, observation versus conjecture, scoped problem definitions, idea comparison and small prototypes. Steps, a method comparison table and original diagrams help beginners turn discussion into decisions they can check, without mistaking a few opinions for everyone's needs.",
+      "hero": {
+        "src": "/guides/design-thinking-practice/hero-en.jpg",
+        "alt": "Mokaair's original illustration of research documents, prototype screens and folders, representing the transformation of everyday problems into testable solutions.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A community wants to improve its rainy-day umbrella-lending service. Someone proposes an app, someone suggests adding umbrella stands, and someone else thinks a deposit system would help. These are all possible solutions. But without knowing why residents do not borrow umbrellas or why they fail to return them, voting directly on features may simply mean choosing the answers everyone knows best."
+        },
+        {
+          "type": "paragraph",
+          "text": "The following original community umbrella-lending exercise demonstrates methods for moving from understanding a situation to testing ideas. The concepts draw on Stanford d.school, Design Council, IDEO.org and GOV.UK resources accessed on 2026-9-14. All resident reactions are treated as scenarios awaiting confirmation, not presented as real interviews, implementation results or case studies from the source websites."
+        },
+        {
+          "type": "heading",
+          "text": "Treat design thinking as an iterative way to explore",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Stanford d.school's introductory tools organize methods into modes such as empathize, define, ideate, prototype and test, and explain that you can start wherever it makes sense. Design Council's Double Diamond emphasizes exploring and defining the problem before developing and testing solutions. These frameworks help teams see where to focus their work; they need not be treated as fixed checkpoints passed through only once."
+        },
+        {
+          "type": "paragraph",
+          "text": "The community umbrella-lending exercise can begin with a list of things to understand: who might need to borrow an umbrella, where borrowing currently takes place, what restrictions apply to returns and how much effort staff spend managing the service. Do not start by making increased app usage the goal, because whether an app needs to exist is precisely one of the unanswered questions."
+        },
+        {
+          "type": "paragraph",
+          "text": "If testing reveals that the problem lies in return locations rather than the borrowing process, you can revisit the problem definition. Having already drawn the screens does not mean development must continue. The value of the exercise is for each step to produce new understanding that guides what to do next, rather than merely completing a polished set of deliverables."
+        },
+        {
+          "type": "heading",
+          "text": "Ask about real experiences without putting answers into the questions",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First list the situations you need to understand, then prepare an interview guide. Instead of asking whether participants find the umbrella-lending system troublesome, invite them to describe what they did the last time they encountered rain while out. Follow up by asking what information they saw, how they decided and what they ultimately did. Open, neutral questions are more likely to reveal factors you had not considered."
+        },
+        {
+          "type": "paragraph",
+          "text": "Participants should include different roles relevant to the topic, such as residents who might borrow umbrellas, people who have used the service and those responsible for organizing the umbrella stands. An introductory exercise does not require a fixed participant count supposedly suitable for every study. Start by explaining which situations you have selected, whose perspectives are missing and how these limitations might affect your understanding."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Before research begins, explain its purpose, process, whether audio will be recorded, how data will be used and how to withdraw, and obtain the appropriate consent. In your notes, distinguish participants' actual words, the behavior you observe and your own interpretations. If you are only rehearsing questions with classmates, "
+            },
+            {
+              "type": "text",
+              "text": "label"
+            },
+            {
+              "type": "text",
+              "text": " it as a practice interview; do not treat answers from classmates role-playing residents as real needs."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Turn the data into an actionable problem",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After the interviews, organize specific incidents before comparing whether they point to similar difficulties. Not knowing whether an umbrella can be returned to another building, being unable to find an umbrella stand when heading out and finding no usable umbrellas at a stand may require different responses. Do not lump them together as a poor user experience simply because they all involve borrowing umbrellas."
+        },
+        {
+          "type": "paragraph",
+          "text": "For this original exercise, a provisional question could be: How might we help residents who move between buildings know where they can return an umbrella before borrowing one? This wording leaves room for paper signs, explanations at the desk or digital prompts, and makes the scope easier to define than asking how to create the most user-friendly umbrella-lending app. Without supporting research, still mark the question as an assumption."
+        },
+        {
+          "type": "paragraph",
+          "text": "IDEO.org's approach to framing a design challenge reminds us that a problem's scope should consider the people involved, context, constraints and intended impact while allowing different solutions. You can also add constraints to the exercise, such as no additional on-duty staff or information that must be easy to update. These conditions must have a basis; they cannot be invented on the spot to favor a preferred solution."
+        },
+        {
+          "type": "heading",
+          "text": "Propose different approaches, then compare them against criteria",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For return information, initial ideas might include umbrella-handle labels, umbrella-stand maps, verbal reminders when borrowing or a simple web page. During ideation, first clarify each approach, including who will see it, when they will see it and how it will be maintained. If several ideas merely change colors within the same app, you have not yet explored genuinely different solutions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Once the ideas are organized, compare how well they meet needs, their implementation burden and their key assumptions. An umbrella-handle label might travel with the umbrella but would need to withstand wear. A web page is easy to update, but you must check whether residents will open the link. These are original lines of reasoning, not test findings. List what needs verification instead of immediately assigning each solution a precise score."
+        },
+        {
+          "type": "paragraph",
+          "text": "When choosing a solution, record your reasons and any criteria set aside. If the community is short-staffed, you might first test whether labels and fixed notices can communicate the rules before considering digitization. Voting can support discussion, but the most votes only reflect the choices of those participating at that moment. They cannot replace understanding users or prove that a solution already works."
+        },
+        {
+          "type": "heading",
+          "text": "Build only a small prototype sufficient to test the key assumption",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A prototype does not have to be a launch-ready website. To find out whether residents understand return locations, you can start with paper labels and a simplified map. To check the sequence from borrowing to receiving a reminder, you can use role-play or clickable screens. Write down what you want to learn before deciding how much time to spend making it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Set a concrete task: for example, ask participants to explain where they would return an umbrella after starting from Building A and ending an activity near Building B. Observe how they find information, then ask about their reasoning. Do not rush to point them toward the answer. If an explanation is necessary for them to continue, record where you intervened so that prompted completion is not counted as unassisted success."
+        },
+        {
+          "type": "paragraph",
+          "text": "Label the prototype as an exercise, use fictional building names and test data, and tell participants that no umbrellas will actually be lent out and no rules will change. Address an important uncertainty at a time. After testing, summarize which assumptions were supported, which were challenged and which single aspect to change in the next version."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Define the everyday situation and list the roles and questions to understand, along with existing information.",
+            "Prepare a neutral interview guide, obtain consent, then record events while keeping interpretations separate.",
+            "Write a clearly scoped problem, propose different solutions and explain the comparison criteria.",
+            "Build a small prototype that tests a key assumption, then revise the problem or approach based on feedback."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Let feedback shape the next decision, not just reflections",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After testing, you can organize your notes into three columns: what happened, possible causes and next steps. Suppose a participant mistakenly believes umbrellas can be returned to any building. Keep the version and instructions they saw in the record, then consider whether the wording, map or service rules need adjustment. When the cause is still unconfirmed, do not write it up as a definitive research insight."
+        },
+        {
+          "type": "paragraph",
+          "text": "A small qualitative exercise can help uncover problems, but it cannot directly establish proportions across all residents. Decisions about formal investment or changes to the system require data suited to the decision, confirmation from management and further validation. Success in the exercise can mean identifying something worth changing; there is no need to claim that umbrella borrowing has already increased."
+        },
+        {
+          "type": "paragraph",
+          "text": "To close, record the decision, who is responsible, how the next check will be conducted and the data retention arrangements. Keep versions so that later changes can be traced. You can also choose to stop pursuing a solution: if it increases the management burden or requires resources you do not currently have, document the reasons clearly. Design thinking should help teams make better-grounded decisions."
+        },
+        {
+          "type": "image",
+          "src": "/guides/design-thinking-practice/diagram-1-en.svg",
+          "alt": "Four original cards document questions, definitions, comparisons and testing for umbrella lending; they do not reproduce the Double Diamond or teaching cards.",
+          "width": 1600,
+          "height": 900,
+          "caption": "A small prototype is a way to learn information that can change your next decision.",
+          "description": "Four original cards document questions, definitions, comparisons and testing for umbrella lending; they do not reproduce the Double Diamond or teaching cards.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Current problem",
+            "Possible exercise",
+            "What you cannot directly infer"
+          ],
+          "rows": [
+            [
+              "The borrowing context is unclear",
+              "Interview people about their most recent experience of being caught in the rain",
+              "Every resident has the same needs"
+            ],
+            [
+              "The problem is too broad",
+              "Clarify the people involved, constraints and goals",
+              "A one-sentence problem definition will always be correct"
+            ],
+            [
+              "There is only one approach",
+              "Compare labels, notices and web pages",
+              "The option with the most votes is the most effective"
+            ],
+            [
+              "It is unclear whether the rules are understandable",
+              "Use paper labels and task-based testing",
+              "Understanding guarantees that umbrellas will be returned"
+            ],
+            [
+              "A decision on committing resources is needed",
+              "Organize the evidence and implementation conditions",
+              "A small exercise has proven operational effectiveness"
+            ]
+          ],
+          "caption": "Methods and limits of interpretation organized around an original umbrella-lending scenario, not a workshop handout from any particular institution."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Empathy requires understanding; it cannot replace asking",
+          "text": "Imagining yourself as a user can help you formulate questions, but it still cannot establish other people's needs. Without research data, explicitly retain assumptions as assumptions and plan a next step that can confirm or disprove them."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Distinguish the scope of UI, UX and research",
+              "kind": "life",
+              "slug": "ui-ux-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Map user journeys and touchpoints",
+              "kind": "life",
+              "slug": "customer-journey-funnel"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Turn the exercise process into a credible case study",
+              "kind": "life",
+              "slug": "portfolio-case-study"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Stanford d.school: Design Thinking Modes and Tool Use",
+          "url": "https://dschool.stanford.edu/tools/design-thinking-bootleg",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Design Council: The Double Diamond and Iterative Exploration",
+          "url": "https://www.designcouncil.org.uk/resources/the-double-diamond/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "IDEO.org: Framing a Design Challenge",
+          "url": "https://www.designkit.org/methods/frame-your-design-challenge.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: In-Depth Interviews and Neutral Questions",
+          "url": "https://www.gov.uk/service-manual/user-research/using-in-depth-interviews",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: Informed Consent for Research",
+          "url": "https://www.gov.uk/service-manual/user-research/getting-users-consent-for-research",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "デザイン思考の練習法：インタビューから検証できる小さなプロトタイプへ",
+      "description": "デザイン思考は暮らしやサービスの問題を整理するのに役立ちますが、毎回、付箋だらけのワークショップにする必要はありません。この記事では、地域の傘の貸出を題材にした独自の想定場面を使い、インタビューの準備、観察と推測の区別、範囲を絞った問題定義、アイデアの比較、小さなプロトタイプの作成を解説します。実践手順、手法の比較表、オリジナルの図解を通じて、初心者が議論を検証可能な判断につなげ、少数の意見を全員のニーズと見なさないようにするための方法を紹介します。",
+      "hero": {
+        "src": "/guides/design-thinking-practice/hero-ja.jpg",
+        "alt": "Mokaair オリジナルの調査資料、プロトタイプ画面、フォルダーのイラスト。暮らしの問題を検証可能な案へと変えることを表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "地域で雨の日の傘の貸出サービスを改善しようとすると、アプリを作ろうという人も、傘立てを増やしたいという人も、保証金制に変えるべきだという人もいます。どれも選択肢になり得ますが、住民がなぜ借りないのか、借りた傘をなぜ返さないのかが分からないまま、いきなり投票で機能を選んでも、皆が最もよく知る答えを選んでいるだけかもしれません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下では、地域の傘の貸出を題材にした独自の練習を通じて、状況の理解からアイデアの検証までの方法を示します。考え方は、2026 年 9 月 14 日に閲覧した Stanford d.school、Design Council、IDEO.org、GOV.UK の資料を参考にしています。住民の反応はすべて確認が必要な想定として扱い、実際のインタビューや導入成果、参照サイトの事例を装ったものではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "デザイン思考を、行き来しながら探る方法として捉える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Stanford d.school の入門ツールは、共感、問題定義、発想、プロトタイプ作成、テストといったモードで手法を整理し、適切なところから始められると説明しています。Design Council のダブルダイヤモンドは、まず問題を探索して定義し、その後に解決策を発展させて検証することを重視しています。これらの枠組みは、チームが作業の要点を把握するためのもので、一度だけ順番に通過する固定の段階と捉える必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "地域の傘の貸出を題材にした練習は、誰が傘を借りる必要があるのか、今はどこで借りているのか、返却にはどのような制約があるのか、管理担当者が対応にどれだけ手間をかけているのか、といった確認事項の一覧から始められます。この時点では、アプリの利用率向上を目標にしないようにします。そもそもアプリが必要かどうかこそ、まだ答えの出ていない問いだからです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テストの結果、問題が借りる際の操作ではなく返却場所にあると分かれば、問題定義に戻って見直せます。画面を描き終えたからといって、開発を続ける必要はありません。練習の価値は、各段階で新たな理解を得て、それを基に次に何をすべきか決めることにあります。見栄えのよい成果物を一式そろえることではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "実体験について尋ね、質問に答えを埋め込まない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず理解する必要のある状況を挙げ、それからインタビューの質問項目を用意します。「傘の貸出システムは面倒だと思いませんか」と聞くより、直近で外出中に雨に遭ったときにどう対処したかを話してもらい、そのときどんな情報を見たか、どう判断したか、最終的にどうしたかを掘り下げます。自由に答えられる中立的な質問なら、当初は想定していなかった要因を聞き出せる可能性が高まります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "対象者には、傘を借りる可能性のある住民、貸出サービスを利用したことがある人、傘立ての整理を担当する人など、テーマに関わる異なる立場の人を含めます。入門の練習で、あらゆる調査に通用するとされる固定の人数を目指す必要はありません。まず、どのような状況を選び、誰が対象から漏れているか、そうした制約が理解にどう影響し得るかを説明します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "調査を始める前に、目的、流れ、録音の有無、データの用途、途中で参加をやめる方法を説明し、それぞれに必要な同意を得ます。記録では、参加者が実際に話した内容、観察した行動、自分の解釈を区別します。同級生と質問の練習をするだけなら、"
+            },
+            {
+              "type": "text",
+              "text": "明記"
+            },
+            {
+              "type": "text",
+              "text": "して練習用のインタビューであることを示し、住民役の同級生の回答を実際のニーズとして扱わないようにします。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "データを整理し、行動につなげられる問いにする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "インタビュー後は、まず具体的な出来事を整理し、それらが似た困りごとを示しているか比較します。借りた傘を別の棟で返せるか分からないこと、外出時に傘立てが見つからないこと、傘立てに使える傘がないことは、それぞれ異なる対応が必要かもしれません。どれも傘の貸出に関係するというだけで、「ユーザー体験が悪い」とひとくくりにしないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この独自の練習では、ひとまず「棟をまたいで移動する住民が、傘を借りる前に返却できる場所を知るにはどうすればよいか」と書けます。この問いなら、紙の表示、受付での説明、デジタルの案内などの可能性を残せます。「最も使いやすい傘貸出アプリをどう作るか」よりも、範囲を定めやすくなります。調査の裏付けがなければ、その問いの横に仮説であることを明記しておく必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "IDEO.org のデザインチャレンジの手法は、問題の範囲を定める際に、対象者、状況、制約、実現したい効果を考慮し、さまざまな解決策を許容するよう促しています。練習に「当番の人員を増やせない」「情報を更新しやすくする必要がある」といった制約を加えてもよいでしょう。ただし、これらの条件には根拠が必要で、特定の案を優先するためにその場で作り上げてはいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "まず異なる方法を出し、その後で条件に照らして比べる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "返却情報を伝える方法としては、傘の柄に付けるラベル、傘立ての地図、貸出時の口頭での案内、簡単なウェブページなどが考えられます。発想の段階では、誰が、いつ目にするのか、どう維持管理するのかも含めて、方法を明確にします。いくつかのアイデアが同じアプリの色を変えただけなら、異なる解決策を十分に探ったとはいえません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "アイデアを整理したら、ニーズとの適合度、実行の負担、重要な仮説で比較します。傘の柄のラベルは傘と一緒に移動できますが、摩耗への対応が必要です。ウェブページは更新しやすい一方で、住民がリンクを開くか確認する必要があります。これらは独自に想定した考察であり、テストの結論ではありません。各案にいきなり精密な点数を付けるのではなく、検証が必要な点を列挙します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "案を選ぶ際は、その理由と、採用しなかった案の判断条件を残します。地域の人手が足りなければ、まずラベルと常設の掲示でルールを伝えられるかテストし、その後にデジタル化を検討することもできます。投票は議論に役立ちますが、最多票はその時点の参加者の選択を示すだけです。利用者への理解に代わるものでも、その案がすでに有効だという証明でもありません。"
+        },
+        {
+          "type": "heading",
+          "text": "重要な仮説を検証するのに十分な、小さなプロトタイプだけを作る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "プロトタイプは、公開できるウェブサイトである必要はありません。住民が返却場所を理解できるか知りたいなら、まず紙のラベルと簡略化した地図を作れます。貸出から注意事項の案内までの順序を確認したいなら、ロールプレイやクリックできる画面を使えます。先に何を学びたいかを書き出し、それから制作にどれだけ時間をかけるか決めます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "具体的な課題を設定します。例えば、甲棟を出発し、活動終了後は乙棟の近くにいるという場面で、どこへ返却しに行くかを参加者に説明してもらいます。情報をどう探すか観察し、その後で判断の理由を尋ねます。途中で急いで答えを指し示さないようにします。説明しなければ先に進めない場合は、どこで介入したかを記録し、ヒントを受けて完了できたことを、自力での成功と見なさないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プロトタイプには練習用であることを表示し、架空の棟名とテストデータを使います。また、実際に傘を貸し出したり、ルールを変更したりするものではないと参加者に伝えます。一度に取り組むのは重要な不確実性に絞り、テスト後はどの仮説が支持され、どの仮説が疑問を突き付けられたか、次の版では何を変えるかを整理します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "暮らしの中の状況を定め、理解すべき関係者、問題、既存の資料を列挙する。",
+            "中立的なインタビューの質問項目を用意し、同意を得てから出来事を記録し、解釈と区別する。",
+            "範囲を絞った問いを書き、異なる案を出し、比較の条件を説明する。",
+            "重要な仮説を検証できる小さなプロトタイプを作り、フィードバックに基づいて問いや方法を修正する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "フィードバックを感想で終わらせず、次の判断につなげる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "テスト後は、「起きたこと」「考えられる原因」「次の一手」の三欄で整理できます。例えば、参加者がすべての棟で返却できると誤解した場合、参加者が見たバージョンと説明を記録に残し、文言、地図、サービスのルールのどれを調整すべきか検討します。原因がまだ確認できていないなら、調査から得られた洞察として断定的に書かないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "少数を対象にした質的な練習は問題の発見に役立ちますが、住民全体に占める割合を直接推計することはできません。本格的な投資や制度変更を決めるには、その判断に必要なデータ、管理側の確認、その後の検証も必要です。練習の成功基準は、修正する価値のある点を見つけることでも構いません。傘の貸出利用率がすでに向上したと主張する必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に、決定事項、担当者、次回の確認方法、データの保存方針を記録し、その後の変更をたどれるようにバージョンを残します。ある案を中止する選択もできます。管理の負担が増える、現時点では持っていない資源が必要になるといった場合は、理由を明確に書きます。デザイン思考は、チームがより根拠のある判断を下すために役立つべきものです。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/design-thinking-practice/diagram-1-ja.svg",
+          "alt": "傘の貸出の問題を題材に、質問、定義、比較、検証の記録を示す独自の四枚のカード。ダブルダイヤモンドや学習カードの複製ではありません。",
+          "width": 1600,
+          "height": 900,
+          "caption": "小さなプロトタイプを作るのは、次の判断を変えるだけの情報を得るためです。",
+          "description": "傘の貸出の問題を題材に、質問、定義、比較、検証の記録を示す独自の四枚のカード。ダブルダイヤモンドや学習カードの複製ではありません。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "現在の問題",
+            "使える練習",
+            "直接は導けない結論"
+          ],
+          "rows": [
+            [
+              "傘を借りる状況が分からない",
+              "直近で雨に遭った体験を聞く",
+              "すべての住民に同じニーズがある"
+            ],
+            [
+              "問題の範囲が広すぎる",
+              "対象者、制約、目標を整理する",
+              "一文の問題定義がいつまでも正しい"
+            ],
+            [
+              "方法が一つしかない",
+              "ラベル、掲示、ウェブページを比較する",
+              "最多票の案が最も有効である"
+            ],
+            [
+              "ルールが明確か分からない",
+              "紙のラベルと課題によるテスト",
+              "理解できれば必ず返却する"
+            ],
+            [
+              "資源を投入するか決める必要がある",
+              "根拠と実行条件を整理する",
+              "小さな練習で運営上の効果が実証された"
+            ]
+          ],
+          "caption": "独自に想定した傘の貸出の場面を使い、手法と解釈の限界を整理したものです。特定機関のワークショップ教材ではありません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "共感には理解が必要で、尋ねることの代わりにはならない",
+          "text": "自分を利用者の立場に置いて想像することは、問いを考える助けになりますが、それだけでは他者のニーズを証明できません。調査データがないときは、仮説であることを明示したままにし、それを確かめたり覆したりできる次の一手を計画します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "UI、UX、リサーチの担当範囲を区別する",
+              "kind": "life",
+              "slug": "ui-ux-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ユーザージャーニーと接点を整理する",
+              "kind": "life",
+              "slug": "customer-journey-funnel"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "練習の過程を信頼できる事例としてまとめる",
+              "kind": "life",
+              "slug": "portfolio-case-study"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Stanford d.school：デザイン思考のモードとツールの使い方",
+          "url": "https://dschool.stanford.edu/tools/design-thinking-bootleg",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Design Council：ダブルダイヤモンドと反復的な探索",
+          "url": "https://www.designcouncil.org.uk/resources/the-double-diamond/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "IDEO.org：デザインチャレンジの定義",
+          "url": "https://www.designkit.org/methods/frame-your-design-challenge.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：深掘りインタビューと中立的な質問",
+          "url": "https://www.gov.uk/service-manual/user-research/using-in-depth-interviews",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：調査のインフォームド・コンセント",
+          "url": "https://www.gov.uk/service-manual/user-research/getting-users-consent-for-research",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "디자인 씽킹 연습법: 인터뷰부터 테스트 가능한 작은 프로토타입까지",
+      "description": "디자인 씽킹은 일상과 서비스의 문제를 정리하는 데 활용할 수 있지만, 매번 포스트잇을 가득 붙이는 워크숍으로 진행할 필요는 없습니다. 이 글은 자체 구성한 주거 단지 우산 대여 시나리오를 통해 인터뷰 준비, 관찰과 추측의 구분, 범위가 명확한 문제 정의, 아이디어 비교, 작은 프로토타입 제작 방법을 설명합니다. 실행 단계, 방법 비교표, 자체 제작 도해를 함께 제공해 초보자가 논의를 검토 가능한 결정으로 연결하고, 소수의 의견을 모두의 요구로 받아들이지 않도록 돕습니다.",
+      "hero": {
+        "src": "/guides/design-thinking-practice/hero-ko.jpg",
+        "alt": "일상 문제를 검증 가능한 방안으로 바꾸는 과정을 나타낸 Mokaair 자체 제작 연구 문서, 프로토타입 화면, 폴더 일러스트.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "주거 단지에서 비 오는 날의 우산 대여 서비스를 개선하려고 합니다. 누군가는 앱을 만들자고 하고, 누군가는 우산 거치대를 늘리자고 하며, 보증금 방식으로 바꿔야 한다는 의견도 나옵니다. 모두 가능한 방안이지만, 주민들이 왜 빌리지 않는지, 빌린 뒤 왜 반납하지 않는지도 모른 채 투표로 기능을 고른다면 그저 모두에게 가장 익숙한 답을 선택하는 데 그칠 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "아래에서는 자체 구성한 주거 단지 우산 대여 연습 사례를 통해 상황을 이해하는 것부터 아이디어를 테스트하는 것까지의 방법을 보여 줍니다. 개념은 2026년 9월 14일에 확인한 Stanford d.school, Design Council, IDEO.org, GOV.UK 자료를 참고했습니다. 등장하는 주민 반응은 모두 확인이 필요한 상황으로 제시하며, 실제 인터뷰나 실행 성과, 출처 사이트의 사례인 것처럼 제시하지 않았습니다."
+        },
+        {
+          "type": "heading",
+          "text": "디자인 씽킹을 오가며 탐색하는 방식으로 보기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Stanford d.school의 입문 도구는 공감, 문제 정의, 아이디어 발상, 프로토타입, 테스트 등의 모드로 방법을 정리하며, 적합한 지점에서 시작할 수 있다고 설명합니다. Design Council의 더블 다이아몬드는 먼저 문제를 탐색하고 정의한 뒤, 방안을 발전시키고 검증하는 것을 강조합니다. 이러한 프레임워크는 팀이 작업의 초점을 파악하도록 돕는 것이며, 한 번만 통과하는 고정된 단계로 받아들일 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "주거 단지 우산 대여 연습은 알아볼 사항의 목록에서 시작할 수 있습니다. 누가 우산을 빌릴 필요가 있는지, 현재 어디서 빌리는지, 반납에는 어떤 제약이 있는지, 관리 담당자가 처리에 얼마나 공을 들이는지 등을 적습니다. 이때는 앱 이용률 향상을 목표로 삼지 마세요. 앱 자체가 필요한지부터 아직 답하지 못한 문제이기 때문입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "테스트 후 문제가 대여 절차가 아니라 반납 장소에 있다는 사실을 발견했다면, 돌아가서 문제 정의를 조정할 수 있습니다. 화면을 이미 그렸다고 해서 반드시 개발을 계속해야 하는 것은 아닙니다. 연습의 가치는 보기 좋은 결과물 한 세트를 갖추는 데 있지 않습니다. 각 단계에서 새롭게 이해한 내용을 바탕으로 다음에 무엇을 해야 할지 결정하는 데 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "실제 경험을 묻고, 질문에 답을 미리 넣지 않기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 이해해야 할 상황을 나열한 뒤 인터뷰 질문지를 준비합니다. 우산 대여 시스템이 번거롭다고 생각하는지 묻기보다는, 최근 외출 중 비를 만났을 때 어떻게 대처했는지 설명해 달라고 요청할 수 있습니다. 이어서 당시 어떤 정보를 보았는지, 어떻게 판단했는지, 결국 무엇을 했는지 물어봅니다. 개방적이고 중립적인 질문을 하면 미처 생각하지 못했던 요인을 들을 가능성이 높아집니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "대상에는 우산을 빌릴 가능성이 있는 입주민, 우산 대여 서비스를 이용해 본 사람, 우산 거치대를 정리하는 사람 등 주제와 관련된 다양한 역할을 포함해야 합니다. 입문 연습에서 모든 연구에 적용된다고 주장하는 고정된 인원수를 맞출 필요는 없습니다. 어떤 상황을 선택했고 누구를 빠뜨렸는지, 이러한 한계가 이해에 어떤 영향을 줄 수 있는지부터 설명합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "연구를 시작하기 전에 목적, 과정, 녹음 여부, 자료의 용도, 참여 철회 방법을 설명하고 이에 대한 동의를 받습니다. 기록할 때는 참여자가 실제로 말한 내용, 관찰한 행동, 자신의 해석을 구분합니다. 동급생과 질문을 예행연습하는 것뿐이라면 연습 인터뷰라고 "
+            },
+            {
+              "type": "text",
+              "text": "표시"
+            },
+            {
+              "type": "text",
+              "text": "하고, 동급생이 입주민 역할로 한 답변을 실제 요구로 받아들이지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "자료를 실행으로 이어질 수 있는 문제로 정리하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "인터뷰 후에는 먼저 구체적인 사건을 정리하고, 비슷한 어려움을 가리키는지 비교합니다. 우산을 빌린 뒤 다른 동에 반납해도 되는지 모르는 상황, 외출할 때 우산 거치대를 찾지 못하는 상황, 거치대에 쓸 수 있는 우산이 없는 상황은 각각 다른 대응이 필요할 수 있습니다. 모두 우산 대여와 관련이 있다는 이유만으로 사용자 경험이 좋지 않다는 말로 합치지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "자체 구성한 연습에서는 문제를 잠정적으로 이렇게 적을 수 있습니다. 여러 동을 오가는 입주민이 우산을 빌리기 전에 반납 가능한 장소를 알 수 있게 하려면 어떻게 해야 할까요? 이 질문은 종이 안내, 안내 데스크의 설명, 디지털 알림 등의 가능성을 열어 두며, 가장 쓰기 좋은 우산 대여 앱을 어떻게 만들지 묻는 것보다 범위를 정하기 쉽습니다. 연구로 뒷받침되지 않았다면 문제 옆에 가정이라는 점을 명시해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "IDEO.org의 디자인 과제 정의 방법은 문제의 범위를 정할 때 대상, 상황, 제약, 달성하려는 영향을 고려하고 다양한 방안을 허용해야 한다고 강조합니다. 연습에 근무 인력을 추가할 수 없다거나 정보를 쉽게 갱신할 수 있어야 한다는 등의 제약을 더할 수도 있습니다. 이러한 조건에는 근거가 있어야 하며, 특정 방안을 선호한다는 이유로 즉석에서 만들어 내서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "서로 다른 방법을 제안한 뒤 조건으로 비교하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "반납 정보를 전달하는 방법으로는 우산 손잡이 라벨, 거치대 지도, 대여 시 구두 안내, 간단한 웹페이지 등을 먼저 생각할 수 있습니다. 아이디어를 낼 때는 누가 언제 보게 되는지, 어떻게 유지·관리할지까지 방법을 명확히 설명합니다. 여러 아이디어가 같은 앱 안에서 색만 바꾸는 수준이라면 아직 서로 다른 해법을 충분히 탐색한 것이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "아이디어를 정리한 뒤에는 요구에 부합하는 정도, 실행 부담, 중요한 가정을 기준으로 비교합니다. 우산 손잡이 라벨은 우산과 함께 이동할 수 있지만 마모에 대응해야 합니다. 웹페이지는 쉽게 갱신할 수 있지만 입주민이 링크를 열어 보는지 확인해야 합니다. 이는 자체적으로 추론한 내용이지 테스트 결론이 아닙니다. 각 방안에 바로 정밀한 점수를 매기기보다 검증이 필요한 부분을 나열해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "방안을 선택할 때는 선택 이유와 배제한 조건을 기록해 둡니다. 단지의 인력이 부족하다면 라벨과 고정 안내문으로 규칙을 전달할 수 있는지 먼저 테스트한 뒤 디지털화를 고려할 수 있습니다. 투표는 논의를 도울 수 있지만, 가장 많은 표를 얻었다는 것은 당시 참여자들의 선택을 나타낼 뿐입니다. 사용자에 대한 이해를 대신할 수 없으며, 방안의 효과가 이미 입증되었다는 뜻도 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "핵심 가정을 검증할 만큼만 작은 프로토타입 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "프로토타입이 반드시 공개 운영할 수 있는 웹사이트일 필요는 없습니다. 입주민이 반납 장소를 이해하는지 알고 싶다면 종이 라벨과 간소화한 지도를 먼저 만들 수 있습니다. 대여부터 안내까지의 순서를 확인하려면 역할극이나 클릭 가능한 화면을 활용할 수 있습니다. 무엇을 알아내려는지 먼저 적고, 제작에 얼마나 시간을 들일지 결정합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "구체적인 과제를 설계합니다. 예를 들어 A동에서 출발해 활동을 마친 뒤 B동 근처에 있을 때 어디로 반납하러 갈지 참여자에게 설명해 달라고 요청합니다. 정보를 어떻게 찾는지 관찰한 뒤 판단 이유를 묻습니다. 진행 중에 서둘러 답을 가리키지 마세요. 설명이 있어야 계속할 수 있다면 개입한 지점을 기록해, 힌트를 받고 완료한 것을 자연스러운 성공으로 간주하지 않도록 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "프로토타입에 연습용임을 표시하고, 가상의 동 이름과 테스트 데이터를 사용합니다. 참여자에게 실제로 우산을 빌려주거나 규칙을 바꾸는 것이 아니라는 점도 알립니다. 한 번에 중요한 불확실성부터 다루고, 테스트 후에는 어떤 가정이 뒷받침되었는지, 어떤 가정에 반하는 결과가 나왔는지, 다음 버전에서 무엇 하나를 바꿀지 정리합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "일상 속 상황의 범위를 정하고, 알아볼 역할과 문제, 기존 자료를 나열합니다.",
+            "중립적인 인터뷰 질문지를 준비하고, 동의를 받은 뒤 사건을 기록하며 해석을 구분합니다.",
+            "범위가 명확한 문제를 적고, 서로 다른 방안을 제안하며 비교 조건을 설명합니다.",
+            "핵심 가정을 검증할 수 있는 작은 프로토타입을 만들고, 피드백에 따라 문제나 방법을 수정합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "피드백을 소감에 그치지 않고 다음 결정으로 연결하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "테스트 후에는 일어난 일, 가능한 원인, 다음 단계의 세 열로 정리할 수 있습니다. 참여자가 모든 동에 반납할 수 있다고 오해했다고 가정해 봅시다. 기록에는 참여자가 본 버전과 설명을 남겨 두고, 문구와 지도, 서비스 규칙 중 무엇을 조정해야 할지 검토합니다. 원인이 아직 확인되지 않았다면 단정적인 어조로 연구 인사이트처럼 적지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "소규모 질적 연구 연습은 문제를 발견하는 데 도움이 되지만, 전체 입주민에서 차지하는 비율을 바로 추정할 수는 없습니다. 정식 투자나 제도 변경을 결정하려면 의사결정에 필요한 자료, 관리 측의 확인, 후속 검증이 더 필요합니다. 연습의 성공 기준은 수정할 가치가 있는 부분을 찾아내는 것으로 삼을 수 있으며, 우산 대여율이 이미 높아졌다고 주장할 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마무리할 때는 결정 사항, 담당자, 다음 점검 방식, 자료 보관 계획을 기록하고 버전을 남겨 이후 수정 이력을 추적할 수 있게 합니다. 어떤 방안은 중단하기로 선택할 수도 있습니다. 관리 부담을 늘리거나 현재 없는 자원이 필요하다면 그 이유를 명확히 적습니다. 디자인 씽킹은 팀이 더 탄탄한 근거로 결정하도록 도와야 합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/design-thinking-practice/diagram-1-ko.svg",
+          "alt": "자체 제작한 네 장의 카드가 우산 대여 문제를 통해 질문, 정의, 비교, 검증 기록을 보여 줍니다. 더블 다이아몬드나 교육용 카드를 복제한 것이 아닙니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "작은 프로토타입은 다음 결정을 바꿀 만한 정보를 얻기 위해 만듭니다.",
+          "description": "자체 제작한 네 장의 카드가 우산 대여 문제를 통해 질문, 정의, 비교, 검증 기록을 보여 줍니다. 더블 다이아몬드나 교육용 카드를 복제한 것이 아닙니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "현재 문제",
+            "활용할 수 있는 연습",
+            "바로 추론할 수 없는 것"
+          ],
+          "rows": [
+            [
+              "우산 대여 상황을 잘 모름",
+              "최근 비를 만난 경험 인터뷰",
+              "모든 입주민의 요구가 같다는 것"
+            ],
+            [
+              "문제 범위가 너무 넓음",
+              "대상, 제약, 목표 정리",
+              "한 문장의 문제 정의가 언제나 옳다는 것"
+            ],
+            [
+              "방법이 하나뿐임",
+              "라벨, 안내문, 웹페이지 비교",
+              "최다 득표 방안이 가장 효과적이라는 것"
+            ],
+            [
+              "규칙이 명확한지 확신이 없음",
+              "종이 라벨과 과제 테스트",
+              "이해하면 반드시 반납한다는 것"
+            ],
+            [
+              "투입 여부를 결정해야 함",
+              "근거와 실행 조건 정리",
+              "작은 연습만으로 운영 성과가 입증되었다는 것"
+            ]
+          ],
+          "caption": "자체 구성한 우산 대여 상황으로 방법과 해석의 한계를 정리한 자료이며, 특정 기관의 워크숍 교재가 아닙니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "공감에는 이해가 필요하며, 질문을 대신할 수 없습니다",
+          "text": "자신을 사용자라고 상상하면 질문을 만드는 데 도움이 되지만, 다른 사람의 요구를 입증할 수는 없습니다. 연구 자료가 없다면 가정임을 명확히 남기고, 이를 확인하거나 반박할 수 있는 다음 단계를 계획합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "UI, UX, 리서치의 업무 범위 구분하기",
+              "kind": "life",
+              "slug": "ui-ux-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "사용자 여정과 접점 정리하기",
+              "kind": "life",
+              "slug": "customer-journey-funnel"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "연습 과정을 신뢰할 수 있는 사례로 작성하기",
+              "kind": "life",
+              "slug": "portfolio-case-study"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Stanford d.school: 디자인 씽킹 모드와 도구 활용",
+          "url": "https://dschool.stanford.edu/tools/design-thinking-bootleg",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Design Council: 더블 다이아몬드와 반복 탐색",
+          "url": "https://www.designcouncil.org.uk/resources/the-double-diamond/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "IDEO.org: 디자인 과제 정의하기",
+          "url": "https://www.designkit.org/methods/frame-your-design-challenge.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: 심층 인터뷰와 중립적인 질문",
+          "url": "https://www.gov.uk/service-manual/user-research/using-in-depth-interviews",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: 충분한 설명에 근거한 연구 참여 동의",
+          "url": "https://www.gov.uk/service-manual/user-research/getting-users-consent-for-research",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "设计思维怎么练：从访谈到可测试的小原型",
+      "description": "设计思维可以用来梳理生活与服务问题，但不必把每次练习都做成贴满便签纸的工作坊。本文以原创社区借伞情境，说明如何准备访谈、区分观察与推测、定义有范围的问题，再比较点子并制作小原型。附操作步骤、方法比较表及原创图解，帮助初学者把讨论转成可检查的决定，也避免把少量意见当成所有人的需求。",
+      "hero": {
+        "src": "/guides/design-thinking-practice/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创研究文档、原型界面与文件夹插图，代表把生活问题转成可验证方案。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "社区想改善雨天借伞服务，有人提议做 App，有人想增加伞架，也有人认为应该改用押金。这些都是可能的方案，但如果还不知道居民为什么不借、借了为什么没还，直接投票选功能可能只是在挑大家最熟悉的答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以原创社区借伞练习，示范从理解情境到测试想法的方法。概念参考 2026 年 9 月 14 日查阅的 Stanford d.school、Design Council、IDEO.org 与 GOV.UK 资料。所有居民反应均作为待确认情境，没有冒充真实访谈、实施成果或来源网站的案例。"
+        },
+        {
+          "type": "heading",
+          "text": "把设计思维当成往返探索的方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Stanford d.school 的入门工具以共情、定义、构思、原型与测试等模式组织方法，并说明可以从适合的位置开始。Design Council 的双钻石则强调先探索并界定问题，再发展与检验方案。这些框架帮助团队看见工作重点，不必被当成只走一次的固定关卡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "社区借伞练习的起点可以是一份待了解事项清单：谁会需要借伞、目前在哪里借、归还有哪些限制、管理人员花多少精力处理。这时先不要把提升 App 使用率当成目标，因为 App 是否需要存在，正是还没回答的问题。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果测试后发现问题出在归还地点，而不是借用操作，就可以回头调整问题定义。已经画好界面不代表必须继续开发。练习的价值是让每一步产生新的理解，并用它决定接下来应该做什么，而非凑齐一组漂亮的交付文档。"
+        },
+        {
+          "type": "heading",
+          "text": "用真实经历提问，避免先把答案塞进问题",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先列出需要理解的情境，再准备访谈提纲。比起问你是不是觉得借伞系统很麻烦，可以请参与者描述最近一次出门遇雨时怎么处理，再追问当时看见什么信息、如何决定及最后怎么做。开放且中性的问题比较有机会听到原先没想到的因素。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对象应包含和题目相关的不同角色，例如可能借伞的住户、使用过借伞服务的人，以及负责整理伞架的人。不需要在入门练习中追求一个号称适用所有研究的固定人数；先说明选择哪些情境、漏掉哪些人，以及这些限制可能如何影响理解。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "研究开始前，说明目的、过程、是否录音、资料用途与退出方式，取得相应同意。记录时区分参与者实际说的内容、你观察到的行为及自己的解读。若只是和同学排练提问，就"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "为练习访谈，不把同学扮演的住户回答当成真正需求。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "把资料整理成能采取行动的问题",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "访谈后先整理具体事件，再比较它们是否指向相近的困难。借伞后不知道能否跨楼栋归还、出门时找不到伞架，以及伞架缺少可用雨伞，可能需要不同处理。不要只因都和借伞有关，就把它们合并成用户体验不好。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原创练习可暂写成：如何让跨楼栋活动的住户，在借伞前就知道可归还的位置？这个问法保留纸质标识、柜台说明或数字提示等可能性，也比如何做出最好用的借伞 App 更容易界定范围。若没有研究支持，仍要在问题旁注明它是假设。"
+        },
+        {
+          "type": "paragraph",
+          "text": "IDEO.org 的设计挑战方法提醒，问题范围应考虑对象、情境、限制及想达成的影响，并容许不同方案。你也可以为练习加上限制，例如不能新增值班人手、信息需方便更新；这些条件必须有来源，不能为了偏好某个方案而临时编造。"
+        },
+        {
+          "type": "heading",
+          "text": "先提出不同做法，再用条件比较",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "针对归还信息，可以先想伞柄标签、伞架地图、借用时的口头提醒或简单网页。构思时先把做法说清楚，包括谁会看见、在什么时候看到，以及要如何维护。若几个点子只是在同一个 App 里换颜色，还没有真正探索不同解法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "整理点子后，用需求匹配度、执行负担与重要假设来比较。伞柄标签可能随伞移动，但需要处理磨损；网页容易更新，却要确认住户是否会打开链接。这些是原创推演，不是测试结论，应列出需要验证的地方，而不是直接给每个方案一个精准分数。"
+        },
+        {
+          "type": "paragraph",
+          "text": "选方案时保留理由与被舍弃的条件。若社区人手不足，可能先测标签和固定告示是否能传达规则，再考虑数字化。投票可以协助讨论，但最高票只代表当下参与者的选择，不能代替对用户的理解，也不证明方案已经有效。"
+        },
+        {
+          "type": "heading",
+          "text": "只做足以检验关键假设的小原型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "原型不一定是能上线的网站。若想知道住户看不看得懂归还位置，可以先做纸质标签和简化地图；如果要检查借用到提醒的顺序，可以用角色扮演或可点击界面。先写出要学到什么，再决定投入多少制作时间。"
+        },
+        {
+          "type": "paragraph",
+          "text": "设计一个具体任务，例如从甲栋出发，活动结束后在乙栋附近，请参与者说明会去哪里归还。观察他如何找信息，再询问判断理由。过程中不要急着指向答案；如果必须解释才能继续，就记下介入的位置，避免把受到提示的完成当成自然成功。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在原型上标明它是练习，使用虚构楼栋与测试数据，并让参与者知道不会真的借出雨伞或更改规则。一次先处理重要的不确定性，测试后整理哪些假设获得支持、哪些被挑战，以及下一版要改哪一件事。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "界定生活情境，列出待了解角色、问题与现有资料。",
+            "准备中性访谈提纲，取得同意后记录事件并区分解读。",
+            "写出有范围的问题，提出不同方案并说明比较条件。",
+            "制作能检验关键假设的小原型，根据反馈修正问题或做法。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "让反馈形成下一个决定，而非只有心得",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "测试后可以用三栏整理：发生的事、可能原因、下一步。假设参与者把归还范围误认为所有楼栋，记录应保留他看见的版本与说明，再考虑是字句、地图还是服务规则需要调整。原因尚未确认时，就不要用肯定语气写成研究洞察。"
+        },
+        {
+          "type": "paragraph",
+          "text": "少量定性练习可以帮助发现问题，却无法直接推估所有住户的比例。若要决定正式投资或制度变更，还需要符合决策需求的资料、管理方确认及后续验证。练习成功的标准可以是找出值得修改的地方，不必宣称已经提升借伞率。"
+        },
+        {
+          "type": "paragraph",
+          "text": "收尾时记录决定、负责人、下一次检查方式及资料保存安排，保留版本让之后的修改有迹可循。也可以选择停止某个方案：如果它增加管理负担，或需要取得目前没有的资源，就把原因写清楚。设计思维应协助团队做出更有依据的决定。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/design-thinking-practice/diagram-1-zh-cn.svg",
+          "alt": "四张原创卡片以借伞问题呈现提问、定义、比较与验证的记录，并非翻制双钻石或教学卡。",
+          "width": 1600,
+          "height": 900,
+          "caption": "做出小原型，是为了学到足以改变下一个决定的信息。",
+          "description": "四张原创卡片以借伞问题呈现提问、定义、比较与验证的记录，并非翻制双钻石或教学卡。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "目前的问题",
+            "可采用的练习",
+            "不能直接推断"
+          ],
+          "rows": [
+            [
+              "不了解借伞情境",
+              "访谈最近一次遇雨经历",
+              "每位住户都有相同需求"
+            ],
+            [
+              "问题范围太广",
+              "整理对象、限制与目标",
+              "一句问题定义永远正确"
+            ],
+            [
+              "只有一个做法",
+              "比较标签、告示及网页",
+              "得票最多就最有效"
+            ],
+            [
+              "不确定规则是否清楚",
+              "纸质标签与任务测试",
+              "看懂就一定会归还"
+            ],
+            [
+              "需要决定是否投入",
+              "整理证据及执行条件",
+              "小练习已证明运营成效"
+            ]
+          ],
+          "caption": "以原创借伞情境整理方法与判断界限，不是特定机构的工作坊讲义。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "共情需要理解，不能代替询问",
+          "text": "把自己想象成用户有助于提出问题，仍不能证明他人的需求。没有研究资料时，明确保留假设，并安排能确认或推翻它的下一步。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "分清 UI、UX 与研究的工作范围",
+              "kind": "life",
+              "slug": "ui-ux-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "梳理用户旅程与接触点",
+              "kind": "life",
+              "slug": "customer-journey-funnel"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "将练习过程写成可信案例",
+              "kind": "life",
+              "slug": "portfolio-case-study"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Stanford d.school：设计思维模式及工具使用",
+          "url": "https://dschool.stanford.edu/tools/design-thinking-bootleg",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Design Council：双钻石与反复探索",
+          "url": "https://www.designcouncil.org.uk/resources/the-double-diamond/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "IDEO.org：界定设计挑战",
+          "url": "https://www.designkit.org/methods/frame-your-design-challenge.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：深入访谈与中性提问",
           "url": "https://www.gov.uk/service-manual/user-research/using-in-depth-interviews",
           "checked_on": "2026-09-14"
         },

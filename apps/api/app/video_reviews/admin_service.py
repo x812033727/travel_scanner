@@ -77,7 +77,8 @@ from app.video_automation.settings import (
     look_pick_note,
 )
 from app.video_media.meter import SlugSpend, spend_by_slug
-from app.video_reviews.producer_state import worker_state
+from app.video_reviews import dub_retry
+from app.video_reviews.producer_state import worker_view
 from app.video_reviews.schemas import (
     BROWSE_STATES,
     DUB_LOCALES,
@@ -87,7 +88,10 @@ from app.video_reviews.schemas import (
     CategoryIn,
     DecisionIn,
     DropIn,
+    DubLocale,
     DubLocalesIn,
+    DubRetryBlocker,
+    DubRetryOut,
     FacetCount,
     FinalRenewalIn,
     FinalRenewalState,
@@ -103,8 +107,9 @@ from app.video_reviews.schemas import (
     ReviewIn,
     ReviewOut,
     WorkerState,
+    without_retired_locales,
 )
-from app.video_reviews.storage import ReviewStore, valid_slug
+from app.video_reviews.storage import ReviewStore, StorageRefused, valid_slug
 from app.video_shorts import costs as shorts_costs
 from app.video_shorts import slots as shorts_slots
 from app.video_shorts.settings import auto_approves_shorts
@@ -373,8 +378,9 @@ def decision_problem(review: VideoReview, decision: DecisionIn) -> str | None:
 
 def locale_choices(project: VideoProject) -> dict[str, LocaleChoice]:
     """The owner's language choice as stored (docs/videos/LANGUAGES.md), empty for a shape no
-    page wrote."""
-    raw = project.locales if isinstance(project.locales, dict) else {}
+    page wrote. A language the video is no longer made in (zh-CN, chosen before 2026-10-09) is
+    left out, not an error: the other languages keep working."""
+    raw = without_retired_locales(project.locales if isinstance(project.locales, dict) else {})
     try:
         chosen = LocalesIn.model_validate({"locales": raw}).locales
     except ValueError:
@@ -395,8 +401,22 @@ def _part_state(value: Any) -> tuple[str | None, str | None]:
     return None, None
 
 
+def _dub_file_sha(review: VideoReview, locale: str, parts: dict[str, Any]) -> str | None:
+    """The SHA-256 of the dub track a languages batch attaches for this locale, or None: the
+    file under the role the entry names, or under the role review-push gives a dub."""
+    named = parts.get("file_role")
+    role = named if isinstance(named, str) else f"dub_{locale.lower().replace('-', '_')}"
+    for item in review.files or []:
+        if isinstance(item, dict) and item.get("role") == role:
+            sha = item.get("sha256")
+            return sha if isinstance(sha, str) and sha else None
+    return None
+
+
 def language_states(
-    choices: dict[str, LocaleChoice], reviews: Iterable[VideoReview]
+    choices: dict[str, LocaleChoice],
+    reviews: Iterable[VideoReview],
+    retries: dict[str, Any] | None = None,
 ) -> dict[str, dict[str, LanguagePartOut]]:
     """Where each chosen part stands, from the languages reviews (docs/videos/LANGUAGES.md).
 
@@ -405,6 +425,14 @@ def language_states(
     "ready" or "skipped" (with the worker's reason) is that; a dub track "ready" in an approved
     batch is "uploaded", since approving the batch is how the owner says they uploaded it;
     a chosen part no batch has reported is "working". Sent-back batches count for nothing.
+
+    A track the owner already confirmed stays "uploaded" when a later pending batch restates
+    the same file: every batch lists every chosen language again, so after one dub is made
+    again the others would otherwise fall back to "ready" although nothing of theirs is new.
+
+    ``retries`` is the video's ``dub_retries`` (docs/videos/DUBS.md §再做一次). A chosen dub
+    whose request the worker took reads "working" until its batch or the worker's refusal
+    ends the request; a request that is only asked changes nothing here.
     """
     states: dict[str, dict[str, LanguagePartOut]] = {
         locale: {part: LanguagePartOut(state="working") for part in choice.chosen()}
@@ -418,6 +446,7 @@ def language_states(
         ),
         key=lambda review: review.created_at or EPOCH,
     )
+    confirmed: dict[str, set[str]] = {}
     for review in batches:
         reported = review.payload.get("locales") if isinstance(review.payload, dict) else None
         if not isinstance(reported, dict):
@@ -432,12 +461,39 @@ def language_states(
                 state, reason = _part_state(parts[part])
                 if state not in ("ready", "skipped"):
                     continue
-                if state == "ready" and part == "dub" and review.status == "approved":
-                    state = "uploaded"
+                if state == "ready" and part == "dub":
+                    track = _dub_file_sha(review, locale, parts)
+                    if review.status == "approved":
+                        state = "uploaded"
+                        if track is not None:
+                            confirmed.setdefault(locale, set()).add(track)
+                    elif track is not None and track in confirmed.get(locale, ()):
+                        state = "uploaded"
                 states[locale][part] = LanguagePartOut(
                     state=state, reason=(reason or fallback) if state == "skipped" else None
                 )
+    if isinstance(retries, dict):
+        for locale, entry in retries.items():
+            if "dub" in states.get(locale, {}) and dub_retry.reads_working(entry):
+                states[locale]["dub"] = LanguagePartOut(state="working")
     return states
+
+
+def _batch_dubs(payload: dict[str, Any]) -> dict[str, tuple[str | None, str | None]]:
+    """What a languages batch says of each locale's dub: its state and, for a skip, the reason
+    (the entry's own, or the older shape's beside the parts). A locale whose entry does not name
+    the dub is left out."""
+    reported = payload.get("locales") if isinstance(payload, dict) else None
+    if not isinstance(reported, dict):
+        return {}
+    dubs: dict[str, tuple[str | None, str | None]] = {}
+    for locale, parts in reported.items():
+        if not isinstance(parts, dict) or "dub" not in parts:
+            continue
+        fallback = parts.get("reason") if isinstance(parts.get("reason"), str) else None
+        state, reason = _part_state(parts["dub"])
+        dubs[str(locale)] = (state, reason or fallback)
+    return dubs
 
 
 def languages_need_owner(payload: dict[str, Any]) -> bool:
@@ -515,11 +571,49 @@ def _summary(
     download_available: bool = False,
     hold: shorts_slots.Hold | None = None,
     producer: WorkerState | None = None,
+    tidied_at: str | None = None,
+    publish_usable: bool | None = None,
 ) -> dict[str, Any]:
     choices = locale_choices(project)
-    states = languages if languages is not None else language_states(choices, [])
+    stored_retries = project.dub_retries or {}
+    states = (
+        languages if languages is not None else language_states(choices, [], stored_retries)
+    )
     is_short = project.shorts_line is not None
+    # The owner's requests to make a skipped dub again, and why one cannot be asked for now
+    # (docs/videos/DUBS.md §再做一次). A Short has no language panel, so neither. Without the
+    # video's publish reviews (the lists do not load them) "a batch could be used" is read from
+    # what the row knows: an upload confirmation was approved, or the video is on YouTube.
+    retries: dict[str, DubRetryOut] = {}
+    retry_blocked: dict[str, DubRetryBlocker] = {}
+    if not is_short:
+        usable = (
+            publish_usable
+            if publish_usable is not None
+            else (publish_approved_at is not None or project.youtube_video_id is not None)
+        )
+        retries = dub_retry.views(
+            stored_retries,
+            [locale for locale, choice in choices.items() if choice.dub],
+            datetime.now(UTC),
+        )
+        for locale, parts in states.items():
+            dub = parts.get("dub")
+            asked = retries.get(locale)
+            if dub is None or dub.state != "skipped" or (asked is not None and asked.open):
+                continue
+            code = dub_retry.blocker(
+                reason=dub.reason,
+                tidied_at=tidied_at,
+                producer=producer,
+                stage=project.stage,
+                publish_usable=usable,
+            )
+            if code is not None:
+                retry_blocked[locale] = code
     return {
+        "dub_retries": retries,
+        "dub_retry_blocked": retry_blocked,
         "shorts_line": project.shorts_line,
         "shorts_series": project.shorts_series,
         "source_slug": project.source_slug,
@@ -603,6 +697,26 @@ async def _reviews(
     return list(rows)
 
 
+def _apply_dub_retry(
+    session: AsyncSession, project: VideoProject, applied: dub_retry.Applied
+) -> None:
+    """Store what a report or a batch did to the dub retry requests, one audit row per
+    transition. Every change dub_retry makes comes with an event, so no event means nothing to
+    write. The caller holds the project's row lock and commits."""
+    if not applied.events:
+        return
+    project.dub_retries = applied.retries
+    for event in applied.events:
+        session.add(
+            AdminAuditLog(
+                actor_user_id=None,
+                action=event.action,
+                target=f"video_project:{project.id}",
+                metadata_json={"slug": project.slug, **event.details},
+            )
+        )
+
+
 async def upsert_project(
     session: AsyncSession, store: ReviewStore, slug: str, payload: ProjectIn
 ) -> ProjectOut:
@@ -650,6 +764,14 @@ async def upsert_project(
     # A stale or unrelated report cannot consume a newer retry request.
     if payload.retry_acknowledged_id == project.retry_request_id:
         project.retry_acknowledged_id = payload.retry_acknowledged_id
+    # The worker's word on the owner's dub retry requests: it takes one, or says why it will
+    # not. Only the request it names by id moves, and the answer below shows what came of it,
+    # so the worker starts nothing the site did not agree to (docs/videos/DUBS.md §再做一次).
+    _apply_dub_retry(
+        session,
+        project,
+        dub_retry.apply_worker(project.dub_retries or {}, payload.dub_retries, now),
+    )
     project.last_synced_at = now
     project.updated_at = now
     current = _current_final(await _reviews(session, project)) if project.id else None
@@ -691,9 +813,11 @@ async def project_view(session: AsyncSession, slug: str, work_dir: str | None = 
     reviews = await _reviews(session, project)
     pending = sum(1 for review in reviews if review.status == "pending")
     spend = await spend_by_slug(session, [project.slug])
-    languages = language_states(locale_choices(project), reviews)
+    languages = language_states(locale_choices(project), reviews, project.dub_retries or {})
     compiled = work_dir is not None and slug in await compilation_slugs(session)
     held = await shorts_slots.holds(session, [slug]) if project.shorts_line is not None else {}
+    # One bounded read of auto.json gives the registration and the tidy date.
+    seen = worker_view(work_dir, slug) if project.shorts_line is None else None
     return ProjectOut(
         **_summary(
             project,
@@ -704,7 +828,13 @@ async def project_view(session: AsyncSession, slug: str, work_dir: str | None = 
             compilation=compiled,
             download_available=compiled and download_file(work_dir, slug) is not None,
             hold=held.get(slug),
-            producer=worker_state(work_dir, slug) if project.shorts_line is None else None,
+            producer=seen.state if seen is not None else None,
+            tidied_at=seen.tidied_at if seen is not None else None,
+            # The page has every review, so it reads the rule the producer binds a batch by;
+            # the lists keep _summary's approximation.
+            publish_usable=dub_retry.publish_usable(
+                reviews, on_youtube=project.youtube_video_id is not None
+            ),
         ),
         reviews=[_review_out(review) for review in reviews],
     )
@@ -886,25 +1016,32 @@ async def _summaries(
     held = await shorts_slots.holds(
         session, [project.slug for project, _count, _at in listed if project.shorts_line]
     )
-    return [
-        ProjectSummary(
-            **_summary(
-                project,
-                int(count),
-                spend.get(project.slug),
-                approved_at,
-                language_states(locale_choices(project), batches.get(project.id, [])),
-                compilation=project.slug in compiled,
-                download_available=project.slug in compiled
-                and download_file(work_dir, project.slug) is not None,
-                hold=held.get(project.slug),
-                producer=worker_state(work_dir, project.slug)
-                if project.shorts_line is None
-                else None,
+    summaries: list[ProjectSummary] = []
+    for project, count, approved_at in listed:
+        # One bounded read of auto.json per video gives the registration and the tidy date.
+        seen = worker_view(work_dir, project.slug) if project.shorts_line is None else None
+        summaries.append(
+            ProjectSummary(
+                **_summary(
+                    project,
+                    int(count),
+                    spend.get(project.slug),
+                    approved_at,
+                    language_states(
+                        locale_choices(project),
+                        batches.get(project.id, []),
+                        project.dub_retries or {},
+                    ),
+                    compilation=project.slug in compiled,
+                    download_available=project.slug in compiled
+                    and download_file(work_dir, project.slug) is not None,
+                    hold=held.get(project.slug),
+                    producer=seen.state if seen is not None else None,
+                    tidied_at=seen.tidied_at if seen is not None else None,
+                )
             )
         )
-        for project, count, approved_at in listed
-    ]
+    return summaries
 
 
 def _browse_scope() -> Any:
@@ -1423,6 +1560,21 @@ async def submit_review(
                 ),
                 default=-1,
             )
+    if payload.gate == "languages":
+        # A languages batch is the answer to a dub the owner asked for again
+        # (docs/videos/DUBS.md §再做一次), and it closes the request in the transaction that
+        # stores it, the identical-batch return below included: that one commits too, so a
+        # retry that gives up with the same reason still ends. ``counted`` is whether the
+        # states will read the review this resolves to; a batch equal to one that was sent
+        # back or superseded shows no card, so its track is not made as far as the owner sees.
+        counted = same is None or same.status in ("pending", "approved")
+        _apply_dub_retry(
+            session,
+            project,
+            dub_retry.close_on_batch(
+                project.dub_retries or {}, _batch_dubs(payload.payload), now, counted=counted
+            ),
+        )
     if same is not None and same.status != "pending":
         await session.commit()  # release the project lock on an idempotent resend
         return _review_out(same)
@@ -1790,16 +1942,37 @@ def _record_locales(
 ) -> None:
     """Store a language choice, note when it was first decided, and log it as
     ``video_locales_set``: the owner's, or with no actor and ``marks`` saying so, the server's
-    (``_decide_story_locales``). The caller commits."""
+    (``_decide_story_locales``). The caller commits.
+
+    A dub that leaves the choice takes its waiting retry request with it (dub_retries;
+    docs/videos/DUBS.md §再做一次): nothing was touched for it yet. One the worker already took
+    stays, hidden while the dub is not chosen, and goes on when it is ticked again. The audit
+    row names the locales whose request went.
+    """
     project.locales = chosen
     project.locales_decided_at = project.locales_decided_at or now
     project.updated_at = now
+    kept, withdrawn = dub_retry.withdraw_unchosen(
+        project.dub_retries or {},
+        [
+            locale
+            for locale, choice in chosen.items()
+            if isinstance(choice, dict) and choice.get("dub")
+        ],
+    )
+    if withdrawn:
+        project.dub_retries = kept
     session.add(
         AdminAuditLog(
             actor_user_id=actor.id if actor is not None else None,
             action="video_locales_set",
             target=f"video_project:{project.id}",
-            metadata_json={"slug": project.slug, "locales": chosen, **(marks or {})},
+            metadata_json={
+                "slug": project.slug,
+                "locales": chosen,
+                **(marks or {}),
+                **({"dub_retries_withdrawn": withdrawn} if withdrawn else {}),
+            },
         )
     )
 
@@ -1871,20 +2044,206 @@ async def retry_project(session: AsyncSession, slug: str, user: User) -> Project
     return await project_view(session, slug)
 
 
+async def _automation_enabled(session: AsyncSession) -> bool:
+    """Whether the worker runs at all: the settings row exists and 「自動產生草稿」 is on.
+    While it is off the worker does nothing, so nothing should queue for it."""
+    row = await session.scalar(
+        select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
+    )
+    return row is not None and bool(row.enabled)
+
+
+def _caption_text(store: ReviewStore, slug: str, sha256: str) -> str | None:
+    """A caption file of the review store as text, at most CAPTION_BYTES_MAX of it, or None
+    when it cannot be read. Runs in a thread."""
+    try:
+        path = store.path(slug, sha256)
+        if path is None:
+            return None
+        with path.open("rb") as source:
+            return source.read(dub_retry.CAPTION_BYTES_MAX).decode("utf-8-sig")
+    except (OSError, UnicodeError, StorageRefused):
+        return None
+
+
+def _dub_retry_blocked(code: DubRetryBlocker, tidied_at: str | None) -> AppError:
+    """The refusal for a skipped dub that cannot be asked for again, by dub_retry.blocker's
+    code. The page shows the same cause in place of the button (``dub_retry_blocked``)."""
+    if code == "narration":
+        return AppError(
+            409,
+            "video_dub_retry_narration",
+            "這個語言就是影片原本的旁白，沒有另一條配音可做",
+        )
+    if code == "tidied":
+        day = f"（{tidied_at[:10]}）" if tidied_at else ""
+        return AppError(
+            409,
+            "video_dub_retry_tidied",
+            f"這支影片的工作檔已經清掉{day}，成片與配音的錄音都不在了，這裡沒辦法再做一次",
+        )
+    if code == "publish_pending":
+        return AppError(
+            409,
+            "video_dub_retry_publish_pending",
+            "網站上最新的上架確認不是核准的（還在等、被退回，或沒有），"
+            "重做的配音進不了語言包；等有核准的上架確認之後再要求",
+        )
+    if code == "not_adopted":
+        return AppError(
+            409,
+            "video_dub_retry_worker_absent",
+            "這支影片不在工人的工作區（不是這台工人做的，或已經放棄），工人接不到這個要求",
+        )
+    if code == "blocked":
+        return AppError(
+            409,
+            "video_dub_retry_video_blocked",
+            "這支影片卡住了，工人不會處理它的語言；先按「重試這支影片」，動起來之後再要求",
+        )
+    return AppError(
+        409,
+        "video_dub_retry_worker_stopped",
+        "工人被 STOP 檔停住了；移掉之後再要求",
+    )
+
+
+async def request_dub_retry(
+    session: AsyncSession,
+    store: ReviewStore,
+    slug: str,
+    user: User,
+    locale: DubLocale,
+    *,
+    work_dir: str | None,
+    speech: dub_retry.SpeechRoom,
+) -> ProjectOut:
+    """The owner asks the worker to make a skipped dub track again (docs/videos/DUBS.md
+    §再做一次).
+
+    It only records the request: the dub keeps reading "skipped" until the worker takes it, so
+    nothing is held for a request nobody takes, and one not taken within a day ends by itself.
+    Refused, with the reason, whenever the worker could not act on it or the result could not
+    be used: a dub that is not skipped, the narration's own language, a video whose work files
+    were cleared, no usable upload confirmation, a video the worker does not hold or that is
+    stuck, a stopped worker, automation switched off. The month's speech budget is checked
+    last, against the size of the locale's captions; it is a read, not a reservation: the dub
+    tool checks again before it buys and every synthesis reserves. A second click while a
+    request is open returns it as it is, with no second audit row and no budget check.
+    """
+    project = await _project(session, slug, lock=True)
+    _refuse_dropped(project)
+    now = datetime.now(UTC)
+    # A value no writer stores (not an object) reads as no request, as everywhere else.
+    stored = project.dub_retries
+    retries: dict[str, Any] = stored if isinstance(stored, dict) else {}
+    previous = dub_retry.view(retries.get(locale), now)
+    if previous is not None and previous.open:
+        return await project_view(session, slug, work_dir)
+    reviews = await _reviews(session, project)
+    part = (
+        language_states(locale_choices(project), reviews, retries).get(locale, {}).get("dub")
+    )
+    if project.shorts_line is not None or part is None or part.state != "skipped":
+        raise AppError(409, "video_dub_retry_not_skipped", "只有跳過的配音可以再做一次")
+    seen = worker_view(work_dir, slug)
+    code = dub_retry.blocker(
+        reason=part.reason,
+        tidied_at=seen.tidied_at,
+        producer=seen.state,
+        stage=project.stage,
+        publish_usable=dub_retry.publish_usable(
+            reviews, on_youtube=project.youtube_video_id is not None
+        ),
+    )
+    if code is not None:
+        raise _dub_retry_blocked(code, seen.tidied_at)
+    if not await _automation_enabled(session):
+        raise AppError(
+            409,
+            "video_automation_disabled",
+            "影片自動化還沒開啟：先在影片審核的設定分頁打開「自動產生草稿」",
+        )
+    if not speech.configured:
+        raise AppError(
+            503,
+            "video_speech_not_configured",
+            "網站的 Gemini 金鑰還沒設定：請在「AI 設定 → API 金鑰」填 Gemini 金鑰",
+        )
+    captions = dub_retry.caption_sha(reviews, locale)
+    text = (
+        await asyncio.to_thread(_caption_text, store, slug, captions)
+        if captions is not None
+        else None
+    )
+    needed = dub_retry.estimate_characters(text)
+    if speech.limit > 0:
+        if not speech.available or speech.used is None:
+            raise AppError(
+                503,
+                "video_speech_meter_unavailable",
+                "讀不到本月的語音用量，先不接受這個要求；稍後再試",
+            )
+        if speech.used + needed > speech.limit:
+            remaining = max(0, speech.limit - speech.used)
+            raise AppError(
+                429,
+                "video_speech_budget_exhausted",
+                f"本月的 Gemini 語音字數預算（{speech.limit} 字）只剩 {remaining} 字，"
+                f"不夠再做一條配音（約 {needed} 字）；"
+                "可調高 VIDEO_SPEECH_GEMINI_MONTHLY_CHARACTER_LIMIT，或等下個月",
+            )
+    entry = dub_retry.new_request(
+        user_id=user.id, reason=part.reason, characters=needed, now=now
+    )
+    project.dub_retries = {**retries, locale: entry}
+    project.updated_at = now
+    # The worker's list is the newest LIST_LIMIT videos by this column: a request on an older
+    # video must reach it, as a renewed final cut does.
+    project.last_synced_at = now
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="video_dub_retry_requested",
+            target=f"video_project:{project.id}",
+            metadata_json={
+                "slug": slug,
+                "locale": locale,
+                "request_id": entry["id"],
+                "replaced_reason": part.reason,
+                "estimated_characters": needed,
+                "speech_used": speech.used,
+                "speech_limit": speech.limit,
+                # The effective status, so a request that expired is on record as that.
+                "previous": (
+                    {"id": str(previous.id), "status": previous.status}
+                    if previous is not None
+                    else None
+                ),
+            },
+        )
+    )
+    await session.commit()
+    return await project_view(session, slug, work_dir)
+
+
 async def set_locales(
     session: AsyncSession, slug: str, user: User, payload: LocalesIn
 ) -> ProjectOut:
     """The owner decides a video's languages on the language panel (docs/videos/LANGUAGES.md).
 
-    Every video is made in Traditional Chinese; here the owner says which of en, ja, ko and
-    zh-CN to add and what of each. An empty choice is a decision too ("only Traditional
+    Every video is made in Traditional Chinese; here the owner says which of en, ja and ko to
+    add and what of each. An empty choice is a decision too ("only Traditional
     Chinese"), and the first save of either kind is what lets the video go up. The worker makes
     only what was chosen, once the final cut is approved; a drama takes no dub yet. The choice is
     the owner's: the pipeline's reports never carry one, and a dropped video takes none. Only a
     brand story, which runs without the owner, has the server decide from the settings when its
     video first reports (``_decide_story_locales``); the owner may change that here too.
+
+    The row is locked: a save may drop a waiting dub retry request (``_record_locales``), a
+    column the worker's report and its batches write too.
     """
-    project = await _project(session, slug)
+    project = await _project(session, slug, lock=True)
     _refuse_dropped(project)
     await _apply_locales(session, project, user, payload)
     return await project_view(session, slug)
@@ -1894,8 +2253,9 @@ async def set_dub_locales(
     session: AsyncSession, slug: str, user: User, payload: DubLocalesIn
 ) -> ProjectOut:
     """The dub checkboxes of a page from before the language panel: a ticked language gets all
-    three parts, an unticked one loses its dub and keeps the rest (docs/videos/DUBS.md)."""
-    project = await _project(session, slug)
+    three parts, an unticked one loses its dub and keeps the rest (docs/videos/DUBS.md). Locked
+    for the same reason as ``set_locales``."""
+    project = await _project(session, slug, lock=True)
     _refuse_dropped(project)
     current = locale_choices(project)
     merged: dict[str, LocaleChoice] = {}

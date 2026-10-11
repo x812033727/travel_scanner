@@ -11,14 +11,14 @@ import { appliedBranding, brandingCurrent, presentationTimeline, readBranding, v
 import { toSrt } from "../core/captions.mjs";
 import { isCompilation } from "../core/compilation.mjs";
 import { atomicWrite, isInside, readJson, UsageError } from "../core/paths.mjs";
-import { narrationLocale } from "../core/schema.mjs";
+import { LOCALES as VIDEO_LOCALES, NARRATION_LOCALE, narrationLocale } from "../core/schema.mjs";
 import { captionLocalesOf, currentDub, dubLocalesOf, dubRole, dubsForUpload, localeCues, localeTexts, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { speechHash, FPS } from "../core/timeline.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
 
 const HASH = /^[a-f0-9]{64}$/;
 const UUID = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
-const LOCALES = ["en", "ja", "ko", "zh-CN"];
+const LOCALES = VIDEO_LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const requireThat = (condition, message) => { if (!condition) throw new UsageError(message); };
 const identity = (row) => ({ review_id: row.id, content_sha256: row.content_sha256 });

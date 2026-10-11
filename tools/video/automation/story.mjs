@@ -33,7 +33,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { approve } from "../core/approvals.mjs";
-import { emptyLexicon } from "../core/lexicon.mjs";
+import { emptyLexicon, isProposableTerm } from "../core/lexicon.mjs";
 import { lintVideo } from "../core/lint.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, readText } from "../core/paths.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
@@ -639,14 +639,14 @@ function numberClaims(key, rows, previous = []) {
   });
 }
 
-/** The writer's lexicon additions into the shared dictionary, by the rules flow.mjs's mergeLexicon keeps. */
+/** The writer's lexicon additions into the shared dictionary, by the rule flow.mjs's mergeLexicon keeps (isProposableTerm). */
 function addTerms(root, additions) {
   if (!isObject(additions)) return [];
   const file = lexiconFile(root);
   const lexicon = readJson(file, { schema_version: 1, terms: {} });
   const added = [];
   for (const [term, spoken] of Object.entries(additions)) {
-    if (!/^[A-Za-z0-9][A-Za-z0-9.+#'_-]{0,39}$/.test(term) || term in lexicon.terms) continue;
+    if (!isProposableTerm(term) || term in lexicon.terms) continue;
     if (spoken !== null && (typeof spoken !== "string" || !spoken.trim() || spoken.length > 80)) continue;
     lexicon.terms[term] = spoken === null ? null : spoken.trim();
     added.push(term);

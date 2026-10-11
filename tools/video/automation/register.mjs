@@ -25,6 +25,362 @@ export const TWIST_MARKER = "你以為";
 /** Seconds the hook has to land in an illustrated video (core/cadence.mjs HOOK_SECONDS says the same). */
 export const HOOK_SECONDS = 20;
 
+// A writing-only route inside the existing slides format. This does not alter the storytelling
+// register, voice, schema, pause calculation or QA, and is not sent to drama or translation stages.
+export const TEACHING_RULES = `
+Teaching route (plain slides; writing only):
+- For a tool tutorial or a concept taught through a worked example, the planner writes
+  「製作路線：教學卡片」 inside the brief's existing 示範或實算 section. The writer follows the
+  chosen outline. An already approved illustrated outline stays illustrated unless the owner
+  requested a revision; do not silently restyle or change its scenes in a listener pass.
+- Name the intended viewer, a concrete task or decision they need to improve, and what they
+  can do after watching in 示範或實算. Choose an example for that benefit, not because an API
+  is easy to demonstrate. An audience of everyday users needs a useful workflow, not an
+  internal-code tour. That does not close the thing being taught: its own file is on the
+  cards (for a command or a setting with no file, the full line or the fields), the lines
+  that make it work each with what they do, and the viewer changes at
+  least one of them. Introduce mechanisms and terms only when they explain an observed
+  result or help the viewer take the next step; keep their exact official meaning.
+- Use one main worked example, a purposeful contrast and a transfer exercise. Show the
+  problem and useful outcome early. Provide the starting materials and complete input,
+  actions, observable result, why it happened, and how to diagnose a likely failure. Cover
+  trust and risk BEFORE installation or any action that grants access; other examples give
+  their relevant prerequisites. Compare expected and observed results. The contrast teaches
+  when the method applies or fails; the exercise changes a meaningful requirement and gives
+  an answer or checking method. These may be variations of the main case, not unrelated demos,
+  but each one uses the subject and ends on an observed result the main example did not
+  give. The same check on other names with the same kind of result, the same check on
+  another state of the same input, or a task done without the subject, is neither; one such
+  state may stand once, as the likely failure.
+- Reuse the same objects, names and diagram layout across chapters, revealing one new relation
+  or state at a time. No forced chapter location, new metaphor, 「你以為…其實」 turn or closing
+  question: a short conclusion or the next practical question is enough. If a comparison helps,
+  keep one mapping throughout and say where it stops matching the real mechanism.
+- This is "format": "slides" with no "shot" scenes, not a new schema field or a QA exemption.
+  Use existing cards (steps, compare, chat, code, quote, stats) and public official-page
+  screencasts. The automated worker keeps no image assets: build a logical diagram as progressive
+  card states or show the actual diagram on a public source page. No diagram/screenshot file
+  templates or invented asset paths; omit an optional capture focus selector when none is known.
+  Do not add a shot to satisfy an illustration quota. Use a real
+  screencast capture for the thumbnail when available, otherwise a text-only thumb.
+- The illustration quota, chapter-specific places and storytelling register below apply only
+  to illustrated storytelling, not this teaching route. Its existing plain-slides QA still
+  limits a state to 15 seconds; aim for meaningful reveals every 5 to 8 seconds without hiding
+  the step before a beginner can read it. The eight-minute minimum, CC, facts, pronunciation,
+  audio review and final QA remain unchanged; no repetition or silence to fill the runtime.
+- A documentation screenshot proves what the page says, not that an installation or test ran.
+  Record the input, action, expected result, observed result and evidence for each demonstration
+  in 示範或實算 and claims.md. If no run evidence is supplied, label the result as expected and
+  the walkthrough as untested; never invent a successful run or a first-person test. Terminal
+  output must be copied from a real run with its date and tool version. Keep official-page
+  captures public: no login, OBS, secrets or private account screens.
+- Untested labels are honest disclosure, not completion of a practical learning promise.
+  A part that was not run is run before the script is written, or cut; a label does not keep
+  it in the video. The labelled walkthrough above is only for a step that is not an outcome
+  and stands on an official example (keeping it, turning it off, a documented failure), and
+  the label is the card's, never a sentence
+  of narration.
+  If evidence for the core demonstration is missing, record that teaching gap for revision;
+  do not call the tutorial ready because its length, layout or technical checks pass. Before
+  production, an independent first-use review must establish whether the provided materials
+  let the intended viewer reproduce, explain, diagnose and adapt the example. A read-only
+  script review does not establish successful execution; never invent learner validation.
+- A listener preserves the chosen route and all scene/line ids. Report missing steps, unclear
+  mappings, weak viewer benefit, missing contrasts/exercises or absent run evidence for a
+  writer revision; never repair them by inventing facts,
+  adding scenes or claiming a result. Leave "pause_after_ms" out; the tool still sets the beats.
+`.trim();
+
+// What a slides video has to be worth to its viewer, whichever route it takes. The owner's review
+// of 2026-10-09 set it: a reference tutorial covered our whole nine-minute video in fifteen
+// seconds and spent the rest teaching, while a quarter of our sentences named where a fact came
+// from. Sent to the planner, the writer and the listener of a slides video, after the teaching
+// route and before the register; not sent to drama, story, explainer or translation stages.
+// Its first use (docs/videos/claude-code-mods-hands-on, the same day) found 21 places where a
+// planner and a writer had to guess; the evidence levels, the limits of the risk cap, what to
+// do when real text does not fit a card and where a card names its source answer those.
+// On 2026-10-11 the owner refused a finished tutorial that met every rule then written
+// (docs/videos/claude-code-mods-delivery-check-tutorial): a supplied mod whose source never
+// appeared reported whether three file names were in a folder the viewer already had open.
+// Thirteen tutorials were then read against the same yes-or-no questions; what the two refused
+// ones failed and the others passed is the subject opened on screen, an unpredicted observed
+// result and a main result from a real run, and all ten hands-on films talked about their own
+// making (tasks: 2026-10-11-tutorial-worth-rules).
+export const VALUE_RULES = `
+Content value (every slides video, teaching cards and illustrated storytelling alike; where these
+rules and a route's rules disagree, these win):
+- The route follows the subject. When the subject is something the viewer operates (a tool, a
+  feature, a setting, a command, a prompting technique, a workflow), the video is a tutorial and
+  takes the teaching route. The illustrated route is for a subject with nothing to operate (a
+  company's decision, a market, a history), and its outcomes are the judgments the viewer can
+  make afterwards.
+- 觀眾看完能做到的事 holds two to four things the viewer could not do before this video and can
+  do after it, each written as the action, the thing acted on and how the viewer knows it
+  worked. These are not outcomes: something the viewer could look up and read off in one line
+  (a version, a price, a menu), a caution on its own (be careful, think first, ask before
+  installing), or 「了解」「認識」「知道」 something. Neither is a result the viewer can already
+  get in about a minute with what they use today (a look at the folder or the screen, one
+  ordinary prompt, one common command), whoever the audience is and however it is worded as
+  an action, nor a single step of another outcome (pasting a path, pressing a button), nor
+  making a thing that gives only such a result: the test is on what the made thing gives the
+  viewer. A judgment on the illustrated route is not measured this way. Running a command and judging its output
+  against what was asked is an outcome when no such quick way gives the same judgment: the
+  judging is the skill. When the sources carry fewer
+  than two real outcomes, the planner takes another topic from "topics", or says so on the
+  brief's first line (「含金量不足：<what is missing>」); it does not pad. The section is a list,
+  one outcome an item; where the planner's line for this section says one or two, this rule's
+  two to four holds.
+- In a tutorial the main example is worth the method. 示範或實算 names the simplest way the
+  viewer already has to the same result, with no setup, as 「不用這個方法：…」: the first of
+  these that reaches it, a look at the folder or the screen, one common command, one ordinary
+  prompt, the product's nearest built-in feature; the example
+  stands only when the subject does something that way cannot, shown as an observed difference
+  with the simple way run beside it on the same input. Where that way cannot be run here (an
+  interactive screen, a signed-in account, a worker that runs nothing), its arm is CITED and
+  its card says so. The difference is something the viewer can then do that the simple way
+  cannot do at all, or a measured cost or failure of the simple way; where the answer appears
+  (a panel, a button, a time beside it) is not one. The main example's result is shown in the
+  run's own words, on a card whose source names the run; a summary of what somebody reported
+  is not that card. When the simple way gives the same result and the viewer loses nothing the
+  video demonstrates, the example is wrong for the
+  video: the planner takes another example or another topic, or opens the brief with
+  「含金量不足：…」, and a writer given such a brief reports it and does not write around it.
+  Telling the viewer in a late chapter that the simpler tool is enough does not repair it. The
+  other arm of that side-by-side run is the simplest way the viewer would really use, never nothing at
+  all (a Skill against the same steps left in CLAUDE.md, not against no instructions), unless
+  nothing is what the viewer uses today; a control run without the subject may still show
+  that the subject caused the result.
+- In a tutorial the viewer makes or changes the subject: the thing the title names that the
+  viewer installs, writes or sets (the mod, the Skill, the hook, the command), not the errand
+  the example runs it on. At least one outcome has the viewer
+  write it, have it written or edit it, and the cards show its own content: the lines that
+  make it work, each with what it does (for a command or a setting with no file, the full
+  line or the fields). A file that fits on three cards is shown whole; of a longer one the
+  cards show every line the viewer changes and the lines that call the product, and the
+  caption gives the lines shown out of how many. Having it written counts only with one
+  logged run from the request on the cards to the file on the cards; a request shown as
+  「可以這樣說」 beside a supplied package is the package. A supplied package the viewer only runs is not an outcome, whoever the
+  audience is: a viewer who does not write code still sees the file and changes the line that
+  carries their own case, and that change is run. What the viewer writes or changes to repeat
+  the main example is on the cards in full, the rest as the excerpts the card rule allows;
+  a download saves typing and never replaces what the video shows.
+  The verb in the brief's title and the video's title (做、寫、建立、設定) is carried out on
+  screen.
+- A tutorial's main example gives a result the viewer would not have predicted: a measured
+  number, a failure, the obvious way not doing what it was expected to. It is the example's
+  own result (RUN or SEEN; CITED where nothing can be run here), not an operator's slip (a
+  mistyped name) and not a result anyone would guess (it is loaded, so it works; the file is
+  absent, so it is reported absent). The video opens on it, or on the useful outcome with
+  that result as the turn of the main example; among results that qualify, the one with the
+  strongest evidence opens. Runs with
+  nothing unexpected in them mean the example is too easy: plan the case where the obvious
+  approach fails, and build the main example on it. A writer or a listener who finds no such
+  result, or no run of the simple way, in the run log reports it for a new plan: an expected
+  result is never worded as a surprise, and a comparison that was not run is never written.
+- Evidence has three levels, and each outcome names the highest it has. SEEN: observed in the
+  product's own interface. RUN: a real run recorded with its input, action, result, date and
+  tool version (a command, a test, a headless session). CITED: an official example with its
+  page, or a worked calculation. An outcome with none of the three is dropped, not softened.
+  The script never shows or tells a lower level as a higher one, and 示範或實算 lists as
+  「要先實作：…」 each thing a higher level would need: no run at all, or run but never seen
+  where there is something to see (a command and its output have nothing more to see). A
+  run counts once it is in the video's run log with its command, output, date and tool
+  version, whoever made it. When the plan comes before the runs, an outcome names the level
+  its listed run will give and stands until the runs are made; they are made and recorded
+  before the outline is chosen, and an outcome whose run failed or was not made is dropped
+  then.
+  The result that opens the video is the strongest evidence there is, a test's output when
+  nothing was seen. For something a model wrote on request, the proof is the artefact and the
+  runs made on it; the request is shown as 「可以這樣說」 unless one logged run goes from that
+  request to that artefact. A step that is not an outcome (keeping it, turning it off) may
+  stand on CITED evidence, and its card says so.
+- A warning about the subject itself (it is not sandboxed, it costs money, it can break) is one
+  chapter at most, said once, with the one check that answers it. It is never the title, the
+  hook or the angle, unless the subject itself is an incident. The cap does not cover what a
+  tutorial owes its viewer anyway: a common failure and how to find it, what the video's own
+  example does not catch, the exception in an update's fourth move, and a card's label of
+  what was and was not run, which is repeated wherever it applies. That label is the card's
+  (its source, its caption, its date), not a sentence of narration. The owner's own incident may open a tutorial as the reason for its
+  example.
+- Chapters follow the questions a viewer asks, in the order they ask them: what do I get (the
+  result first, on screen), how is it different from what I already use, how do I do it, how
+  do I know it worked, how do I keep it or undo it. Each chapter answers the question the one
+  before it raised. The opening chapter is the result alone; the mechanism is the second
+  chapter. Tutorials share this order; what must differ from an earlier video is the
+  example, the opening and the sequence of cards. Name the tools the viewer already uses and give the rule for choosing between them
+  in one sentence each (「一直重貼同一段指示，寫成 Skill」), and say plainly when the simpler
+  tool is enough. When loading or installing grants access, the check that settles trust
+  comes before it, wherever the loading step falls in that order. On the teaching route a
+  second worked example is that route's contrast; the main example still carries the video.
+- Every step the viewer is meant to repeat shows the exact thing to type or press, in full, on
+  a code, chat, steps or terminal card: the command, the sentence to say to the model, the
+  setting's name. The narration says what it does, not its characters. When real text does
+  not fit a card (code: 64 characters a line, 9 lines beside a title and a caption and 12
+  beside a caption alone; chat: 44 characters; terminal: 78 columns, no home directory):
+  re-wrap the source file itself and run it again, so the card still shows the real file;
+  or show a contiguous excerpt and name the whole file in the caption and the description.
+  Real output that is too long or carries a home directory is excerpted in whole lines, in
+  their order, or the run is made again from a folder whose path fits; it is never edited. A request longer than a
+  chat bubble goes on a code card as plain text. Never alter a character. A real line too
+  long for a terminal card, or a tool result read out of a session rather than printed by a
+  terminal, goes on a quote, compare, steps or table card whose "source" names the run
+  (「實跑 2026-10-09｜<tool and version>」); the events of one run in order are a steps
+  card. One card holds one level of evidence: when its rows differ, split it, or name the
+  odd row's level in that row or by its number in the source. A command too long for a
+  terminal card goes on a code card when it fits as typed; otherwise its parts go in a
+  table and the whole command in the description. An excerpt's caption gives the file and
+  the line range it shows. A terminal card's tool_version names the program that printed
+  the output. A source line takes the room of a row: a table or a list at its limit gives
+  up its title or splits. A quote card holds one sentence of its source, or the clause that
+  carries the fact. The render stage judges a full card: what it reports as overflowing is
+  cut, not shrunk. A choice among alternatives is a table; steps draws a
+  sequence.
+- An update or a guide is told as numbered points, each in the same four moves: what the
+  viewer did before, what changed, exactly what to do now, and the exception. An update's
+  points are not a main example: the tutorial rules on the main example and on making the
+  subject apply to it only where a point is itself a worked example.
+- Every sentence of narration carries a fact, a step, a reason, a result or a choice; the cta
+  card's sentence and the outro's comment question and subscribe invitation are the three
+  exceptions. Where a fact comes from is the card's own field and the description ("source"
+  on a quote, stats, bullets, compare, steps or table card; the date and version on a
+  terminal card; the caption of a code card or a screencast): the narration states the fact
+  and never opens on its source (「文件寫」「文件說」「部落格說」「官方說」「官方表示」
+  「根據官方」; lint counts the family). A number from an official page is said, and its card
+  names the page and the day; a number from the video's own run, a limit in its own code or
+  the owner's own incident is said as that, and its card names the run, the file or the date.
+  「以官網為準」 is never the fallback: a number with neither source is left out. The narration
+  never talks about the video's own making: whether a part was run, recorded, seen or
+  verified, which of the video's makers reported a run's result, what a card is or is not
+  (「這支影片沒有跑過」「還沒看過」
+  「這是整理卡，不是錄影」「尚待驗證」). That is the card's label and the description's, the
+  opening's included; the narration says what the step does. Saying a number or a result as
+  this video's own run's, or what a run did and how many times it was made, is the step, not
+  the making. In a tutorial a part nobody ran is run or cut, unless it is a step that may
+  stand on CITED evidence (keeping it, turning it off, a documented failure), which keeps
+  its card's label. At most two
+  sentences in a video set a scene or describe a picture; pointing at the card on screen
+  (「亮起來的這一行」) is not one of them. A comparison is used once, where the mechanism is
+  hard to see, and kept, never a new one per chapter. Pictures may still travel; the words do
+  not follow them.
+- The length comes from substance: a second worked example, a common failure and how to find
+  it, a contrast, an exercise. In a tutorial each of those uses the subject and adds an observed result the
+  main example did not give (outside a tutorial: a sourced fact the earlier chapters did not
+  give); a habit that would read the same in a video on another subject
+  (a file can exist and be empty) is restating. Never from a chapter on
+  something one line answers, from
+  restating, or from scene-setting. When the material ends short of the minimum, add an
+  example the sources carry or say so in the report; do not fill.
+- A listener keeps these rules as well: it reports a sentence that carries nothing, a source
+  spoken in the narration, a sentence about the video's own making, a chapter one line would
+  answer, a chapter that never uses the subject, a main example the simple way equals (those two
+  in a tutorial only), or an
+  outcome with no proof, for a
+  writer revision, or for a new plan when the example itself is at fault; it never repairs one by inventing a fact, a run or an example.
+`.trim();
+
+// The words the audio check has misheard on this channel, each with the wording that passed
+// (the table in script-writing.md §給 TTS 唸的稿子 also says what each was heard as). The check
+// transcribes the synthesized voice and compares it with the script; two tutorials on
+// 2026-10-09 had 13 and 19 of 151 lines flagged on their first check, and a line that was only
+// recorded again was flagged again. Sent to the slides writer and listener.
+export const MISHEARD_WORDS = [
+  ["實跑", "實際跑過"],
+  ["行程", "執行中的程式"],
+  ["讀檔", "讀取檔案"],
+  ["數什麼", "要數什麼"],
+  ["擋呼叫的", "負責擋下呼叫的"],
+  ["窗格", "畫面上的介面"],
+  ["沒人接手", "沒有人替它處理"],
+  ["界線", "原則"],
+  ["餵假事件", "送假事件進去"],
+  ["印出", "顯示的是"],
+  ["放行", "讓它通過"],
+  ["無介面", "不開畫面的"],
+  ["那一欄", "這個欄位"],
+  ["沒接的那次", "沒有接上的那一次"],
+  ["測試是紅的", "測試沒有通過"],
+  ["有檔、沒檔", "有 CLAUDE.md、沒有 CLAUDE.md（說出檔名）"],
+  ["有檔案", "有 CLAUDE.md（說出檔名）"],
+  ["被叫到", "被呼叫"],
+  ["含糊的那一份", "寫得含糊的那一份"],
+  ["指到", "對應"],
+  ["搬去 hook", "改用 hook 來做"],
+  ["本機", "這台機器"],
+  ["交辦", "把工作交出去"],
+  ["指定前景", "指定不放到背景"],
+  ["背景送回來的", "晚一點才送回來的"],
+  ["是主對話自己", "是由主對話寫出來的"],
+  ["報告檔", "那份報告"],
+  ["沒有量", "沒有量到"],
+  ["呼叫進來", "有呼叫進來的時候"],
+  ["九行", "一共九行"],
+  ["唯讀工具", "只能讀取的工具"],
+  ["互動式 session", "互動式的畫面"],
+  ["握手那一則", "握手的那一則訊息"],
+  ["先比禁止", "先比對禁止規則"],
+  ["三條禁止", "禁止規則有三條"],
+  ["那一次，", "在這一次執行裡，"],
+  ["位址", "網址（指的是 URL 時）"],
+  ["多一行", "會多出一行"],
+  ["執行了。", "被執行了。"],
+  ["對上就", "對上了就"],
+  ["四項", "那四項"],
+  ["同一句要求", "同樣的一句要求"],
+  ["同事也要", "你的同事也要"],
+  ["怎麼搬？", "怎麼搬過去？"],
+  ["帶上旗標", "加上載入外掛的旗標"],
+  ["用同一個旗標", "加上同一個旗標"],
+  ["這支 hook", "這一支 hook"],
+  ["拿一句會用到", "拿一個會用到"],
+  ["只載入外掛", "只有載入外掛"],
+  ["沒有載入的三次", "沒有載入外掛的那三次"],
+  ["拼錯的鍵", "拼錯的欄位"],
+  ["不問 Claude", "不用問 Claude"],
+  ["那一筆的清單", "那一筆紀錄裡的清單"],
+  ["尺取十一", "那把尺取十一"],
+  ["比尺大", "比那把尺大"],
+  ["在尺以內", "在誤差範圍以內"],
+  ["什麼時候進請求", "是什麼時候送進去的"],
+  ["第一個請求比基準", "第一個請求的用量比基準"],
+  ["影片量到的", "影片實際量到的"],
+  ["這些數字怎麼量", "這些數字是怎麼量出來的"],
+  ["MCP 那一列", "看 MCP 這一列的時候"],
+  ["延後載入一起", "延後載入的機制一起"],
+  ["直接載入", "一開始就載入"],
+  ["七行就", "一共七行，就"],
+  ["交出 subagent", "把工作交給 subagent"],
+  ["那支 hook", "同一支 hook"],
+  ["只是為了量。", "只是為了量測用的。"],
+  ["延後載入，每多", "用延後載入的時候，每多"],
+  ["延後多出來的", "延後載入多出來的"],
+  ["延後載入的這一次", "用延後載入的這一次"],
+  ["延後載入的減預設的", "用延後載入的，減預設的"],
+  ["延後的到底是什麼", "被延後的到底是什麼"],
+  ["只開八個內建工具的練習專案", "練習專案只開八個內建工具"],
+  ["只多六十九", "多出來的是六十九"],
+  ["多出來的只有名稱", "多出來的只是名稱而已"],
+  ["只接指定的伺服器", "也只連接指定的伺服器"],
+  ["沒接伺服器的", "沒有接伺服器的"],
+  ["沒接、接上", "沒有接伺服器、接上"],
+  ["同一個工具數", "工具數量相同的兩次"],
+  ["推回零個", "回推到零個"],
+  ["定義合計", "工具定義加起來"],
+  ["兩個、十個那兩級", "兩個和十個工具那兩次"],
+  ["一開始就載入的那一次", "一開始就全部載入的那一次"],
+  ["那一次重跑", "把這一次重新跑"],
+  ["卻零個工具", "可是一個工具都沒有"],
+];
+
+export const HEARD_RULES = `
+Words the audio check mishears (zh-TW narration): the check transcribes the synthesized voice
+and compares it with the script, and a homophone is heard the same way when it is recorded
+again, so it is the wording that changes. Write the form on the right from the start:
+${MISHEARD_WORDS.map(([written, instead]) => `「${written}」→「${instead}」`).join("、")}.
+What they share: a one-character verb, a two-character term, or a short sentence that starts
+without its subject. Add a character or two, or use the commoner spoken word. Numbers,
+Latin-script words and proper names stay exactly as written, and the facts do not change.
+`.trim();
+
 export const REGISTER_RULES = `
 The narration is TOLD, not explained (the storytelling register, docs/videos/ILLUSTRATED.md):
 - The first sentence is a counter-intuitive claim or the viewer's own question; the hook has landed

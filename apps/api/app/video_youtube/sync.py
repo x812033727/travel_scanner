@@ -109,6 +109,9 @@ class Package:
     thumbnail: PackageFile | None
     captions: dict[str, PackageFile] = field(default_factory=dict)
     approval_pin: dict[str, Any] = field(default_factory=dict)
+    # Ready dub tracks of the approved language batch. The Data API has no audio track method,
+    # so nothing in this module sends them; the VPS Studio uploader does (vps.assets).
+    dubs: dict[str, PackageFile] = field(default_factory=dict)
 
 
 # --- the approved package ------------------------------------------------------------------------
@@ -221,6 +224,7 @@ def read_approved_package(
         thumbnail=base.thumbnail,
         captions={locale: _file(item) for locale, item in composed.captions.items()},
         approval_pin=composed.approval_pin,
+        dubs={locale: _file(item) for locale, item in composed.dubs.items()},
     )
 
 

@@ -1,0 +1,16 @@
+CHANGELOG 沒有發現漏記。
+
+`src/units.mjs` 目前只有兩個函式，都有對應的條目：
+
+| 程式碼 | CHANGELOG |
+|---|---|
+| `cToF` | v0.2.0：First version, with cToF |
+| `kmToMiles` | v0.3.0：Add kmToMiles |
+| `kmToMiles` 四捨五入到小數兩位 | Unreleased：kmToMiles rounds to two decimals |
+
+有兩點供你參考：
+
+- 這個目錄不是 git repo，我沒辦法對照 v0.3.0 之後的 commit 或 diff。上面的結論只代表「現在的程式碼跟 CHANGELOG 對得起來」，不代表 v0.3.0 之後沒有被記漏的改動。如果你有別的版本控制或記得做過其他修改，要再確認。
+- 四捨五入會改變 `kmToMiles` 的回傳值，使用者如果依賴原本的精確數值會受影響。要不要在條目裡寫明這是行為變更，由你決定。
+
+目前 Unreleased 只有一條。要正式準備 0.3.1 發版的話跟我說一聲，我會照 CLAUDE.md 的五步處理。

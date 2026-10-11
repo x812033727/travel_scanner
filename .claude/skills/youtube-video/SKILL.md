@@ -57,7 +57,7 @@ metadata:
 | 作品：名稱、主幹（每個核准點的討論）、討論串、劇本關卡、一致性（人物表、設定圖存檔、前情）、張力規格、指令、坑 | `.agents/skills/youtube-video/references/series.md` |
 | 作品的代理提示（設定集、總綱、篇章細綱、每集撰稿與查核、前情） | `.agents/skills/youtube-video/references/prompts/series-setting.md`、`series-outline.md`、`series-chapter.md`、`writer-series.md`、`verifier-series.md` |
 | 一鍵合集：一鍵表單與報價、免關卡的規則、節奏規格與爽點、畫面等級上限、`compile` 指令、下載、坑 | `.agents/skills/youtube-video/references/series.md` 的「合集作品（一鍵）」；still 鏡頭的 `visual` 與運鏡關鍵字在 `drama.md` |
-| 一鍵合集的代理提示（文件裁決、合集的標題／說明／標籤／縮圖與四語翻譯） | `.agents/skills/youtube-video/references/prompts/verifier-series-doc.md`、`planner-compilation.md`；工人實際送出的文字是 `tools/video/automation/prompts.mjs` |
+| 一鍵合集的代理提示（文件裁決、合集的標題／說明／標籤／縮圖與三語翻譯） | `.agents/skills/youtube-video/references/prompts/verifier-series-doc.md`、`planner-compilation.md`；工人實際送出的文字是 `tools/video/automation/prompts.mjs` |
 | 品牌故事：工人拿到什麼、一步一次呼叫的主幹、長度從哪裡來、查核（段落、PDF、`reviewer_only`、紀年換算）、畫面、卡住時站主怎麼辦 | `.agents/skills/youtube-video/references/story.md` |
 | Shorts：三條內容線、腳本格式、`build`／`check-audio`／`qa`／`package`／`push`／`import` 與結束碼、12 項品管沒過時怎麼修、實測的規範、工人的 Shorts 步驟、坑 | `.agents/skills/youtube-video/references/shorts.md`；上架的做法在 `publish.md` 的「Shorts 的上架」 |
 | Shorts 的代理提示（每週排片、補題、實測的撰稿與查核、每週報告） | `.agents/skills/youtube-video/references/prompts/shorts-plan.md`、`shorts-brief.md`、`shorts-lab.md`、`shorts-report.md`；工人實際送出的文字是 `tools/video/shorts/prompts.mjs` |
@@ -79,6 +79,7 @@ metadata:
 8. **檔案先落地**：每完成一段稿子就存檔，session 被切斷時留下的是檔案，不是對話。
 9. **金鑰與權杖不經過代理。** 旁白的金鑰（Gemini 用網站既有的金鑰，Azure 由站主填）只在正式站後台；本機工具的影片工具權杖靠 `login` 配對取得：代理把印出的連結交給站主，站主在後台按「允許」，權杖直接寫進本機檔案。權杖不能出現在對話、檔案或指令參數裡。
 10. **除了漫劇，每集都要 8 分鐘以上**（站主 2026-10-01 定）：投影片、原來如此事務所、人工錄製都算；漫劇（單集、作品、一鍵合集）與 Shorts 不算。全自動路線由後台設定（下限 8）、`lint` 與成片品管的 `assemble` 項擋；人工錄製在 `brief.md` 的目標長度就寫 8 分鐘以上。講不滿 8 分鐘就加內容或併題，不要交短片。沒有上限（站主 2026-10-04 定）：`target_minutes` 的上緣是撰稿瞄準的長度，超過沒關係，`lint` 不再警告；不為了壓進目標刪事實，也不灌水。
+11. **每一支投影片影片都要過含金量六條**（站主 2026-10-09 定）：觀眾看完能做到二到四件之前做不到的事（查一行就有的事、只有提醒都不算）；每一件在畫面上有證明（真的跑過的紀錄、附出處的官方範例或實算）；章節照觀眾會問的順序排，並講清楚跟他已經在用的工具怎麼選；要照做的每一步有完整能照打的指令或提示詞；旁白每一句都帶資訊，出處放卡片與說明欄，風險只講一段；長度靠例子、對照與練習，不靠比喻或重述。主題是觀眾會自己操作的東西就走教學卡片。細節在 `.agents/skills/youtube-video/references/script-writing.md` 的〈含金量〉，工人送出的原文是 `tools/video/automation/register.mjs` 的 `VALUE_RULES`；漫劇、品牌故事、原來如此與 Shorts 不算。
 
 ## 全自動路線
 
@@ -95,7 +96,7 @@ metadata:
 | 7 | `render` → `assemble` → `captions`（只有繁中） | 工具 | 聯絡表看過；`checks.json` 全過 |
 | 8 | `review-push --gate final`：先跑 `qa`（11 項自動品管），再送 720p 成片與報告 | 工具 | 11 項全過就自動核准；沒過的才**由站主在 `/admin/videos` 看** → `review-pull` |
 | 9 | `package`（含上傳包檢查）→ `review-push --gate publish` 送完整上傳包 → 站主照 `UPLOAD.md` 在 Studio 上傳成「私人」、在後台貼上網址與上架時間 | 工具、站主 | 4 項全過就自動核准；影片 ID 由工人寫回 `video.json` |
-| 10 | 語言（`docs/videos/LANGUAGES.md`）：站主在影片頁勾每個語言要哪些部件（標題說明、CC、配音）或「只出繁體中文」→ 工人只做勾了的（翻譯、審稿；配音含縮短與重錄）→ `captions` → `package` → `review-push --gate languages` | 站主、工具、翻譯代理 | 都做好影片才進「可以上架」、排程才送出；有配音的卡片要站主在 Studio 上傳後按「已在 Studio 上傳配音」 |
+| 10 | 語言（`docs/videos/LANGUAGES.md`）：站主在影片頁勾每個語言要哪些部件（標題說明、CC、配音）或「只出繁體中文」→ 工人只做勾了的（翻譯、審稿；配音含縮短與重錄）→ `captions` → `package` → `review-push --gate languages` | 站主、工具、翻譯代理 | 都做好影片才進「可以上架」、排程才送出；有配音的卡片要站主在 Studio 上傳後按「我已經在 Studio 傳好這些配音」 |
 
 `status --slug <SLUG>` 隨時印出做到哪一步、下一個指令是什麼。核准綁檔案雜湊：稿子或旁白改了，舊的核准自動失效，後面的指令會以結束碼 3 拒絕，要重新 `review-push`。後台頁用不了時，才用有選項的提問問站主，再 `approve --gate …` 記下。
 
