@@ -1,6 +1,6 @@
 # claims：claude-code-skills-hands-on
 
-重排日 2026-10-11。大綱：選項 D（`brief.md`「大綱」最前面；主例是「同一段流程留在 CLAUDE.md」對「搬成 Skill」）。製作路線：教學卡片，`format: "slides"`，沒有 `shot`，沒有 `shorts.json`，沒有翻譯檔。10-09 那一版（選項 A）的 claims 在這個檔的 git 紀錄裡；它的 `verify-1.md`、`verify-2.md` 查的是那一版。這一版由沒有參與撰稿的代理在 2026-10-11 查核過（`verify-3.md`：188 個主張，十二項發現，修正後通過）；每一項改了什麼、哪一項沒動，寫在那個檔的最後，這份檔案已經是改過之後的樣子。
+重排日 2026-10-11。大綱：選項 D（`brief.md`「大綱」最前面；主例是「同一段流程留在 CLAUDE.md」對「搬成 Skill」）。製作路線：教學卡片，`format: "slides"`，沒有 `shot`，沒有 `shorts.json`，沒有翻譯檔。10-09 那一版（選項 A）的 claims 在這個檔的 git 紀錄裡；它的 `verify-1.md`、`verify-2.md` 查的是那一版。這一版由沒有參與撰稿的代理在 2026-10-11 查核過（`verify-3.md`：188 個主張，十二項發現，修正後通過）；同一天第二個獨立代理讀了改過的地方（206 個主張，通過，三項發現）。每一項改了什麼、哪一項沒動，寫在那個檔的兩個「What the writer changed」段落，這份檔案已經是改過之後的樣子。
 
 寫法：`c 編號｜主張（旁白或畫面上的說法）｜依據｜查核日｜用到的場景`。依據是官方頁的網址，或 repo 裡的檔案與行號。沿用 10-09 編號的主張保留原編號；c51 起是這一版新增的。空號（場景拿掉，主張跟著拿掉）：c1、c2、c6 到 c10、c14、c18、c25 到 c27、c30 到 c36、c39 到 c42、c44、c47 到 c49。
 
@@ -109,11 +109,11 @@ c66｜用斜線叫（sx1–sx3；看到第 18 到 20 項的結果之後加跑的
 
 c67｜損益是估計，不是量到的門檻：9,269 除以 425 是 21.8，旁白說「大約二十二」，接著說「照這兩個平均來估」「這是這個小專案的估計，不是門檻」，卡片的出處寫「22 個請求是估計，不是門檻」。它是兩個三次平均相除（425 還靠只有一次的基準）；9,269 裡約九成五是多出來的那一趟把對話再讀一次，而這個對話一開始只有約 8,750 個 token（六個工具、沒有 MCP、四個檔的專案）。同一個除法換另外兩對會得到別的數字：五段流程那一對是 12,021 除以 867.3，約 13.9；只要它看一下那一對是 9,759.7 除以 427.7，約 22.8。用斜線叫沒有這一筆（c66）｜RUN 第 5895–5896 行；RUN 第 5874–5877 行、第 5879–5885 行；c52、c53；`verify-3.md` 第 1 項｜2026-10-11｜rule
 
-c68｜練習（核對方式）：從自己的 CLAUDE.md 挑一段偶爾才用的流程搬成 `SKILL.md`，同一句要求兩邊各跑三次，數三件事（步驟做到幾次、Skill 有沒有被呼叫、請求有幾個與各有多大）。答案的樣子就是這支的主例；步驟兩邊一樣時照請求數與 token 決定。四個數法都有卡片：c58 的兩個 grep 與 c70 的兩個 grep｜c51、c52、c53、c58、c70｜2026-10-11｜yours
+c68｜練習（核對方式）：從自己的 CLAUDE.md 挑一段偶爾才用的流程搬成 `SKILL.md`，同一句要求兩邊各跑三次，數三件事（步驟做到幾次、Skill 有沒有被呼叫、請求有幾個、一共多大）。答案的樣子就是這支的主例；步驟兩邊一樣時照請求數與 token 決定。四個數法都有卡片：c58 的兩個 grep 與 c70 的兩個 grep｜c51、c52、c53、c58、c70｜2026-10-11｜yours
 
 c69｜範圍：兩天 35 次 session 都是 claude-sonnet-5-5、Windows 11 的 Git Bash、Claude Code 2.1.295、不開畫面；每一次只開六個內建工具（Edit、Glob、Grep、Read、Skill、Write）、MCP 伺服器 0 個，專案是四個檔，所以對話一開始約 8,750 個 token（no1 的第一個請求 8,753），整個 session 的數字是三到五個這種大小的請求相加。每一種放法 3 次（沒有流程的基準 1 次，hand1 1 次）；CLAUDE.md 最長試到 59 行。互動式畫面、其他模型與平台、開更多工具或接 MCP 的情況沒有觀察；旁白說這些會讓數字變，是推論｜RUN 第 2469–2483 行；RUN 第 2525–2553 行；RUN 第 2895–2896 行；RUN 第 5782 行；RUN 第 5942–5955 行｜2026-10-11｜scope
 
-c70｜從串流讀出 token 的兩個 grep（查核之後加的；跑過，不呼叫模型，在 hand1 的專案資料夾裡對它留下的串流打的；顯示的程式是 grep）：`grep -m1 assistant ../stream.jsonl | tr ',{' '\n\n' | grep -m3 input_tokens` 印出第一個請求的三個數字 2、3452、5366，相加是 8,820；`grep num_turns ../stream.jsonl | tr ',{' '\n\n' | grep -m3 input_tokens` 印出結果那一行的三個數字 10、6425、45058，相加是 51,493（這一次五個請求）。兩個總和等於 `tally.mjs` 對同一個串流印的「first request」與「whole session」；同樣的兩行對 sk1、md1、sx1、skf3 四個串流也對得上。第一行靠的是 init 那一行沒有 assistant 這個字（0 筆）、第二行靠的是 num_turns 只出現在結果那一行（1 筆），都只在 Claude Code 2.1.295 的串流上試過｜RUN 第 6123–6136 行；RUN 第 6143–6151 行（另外四個串流）；RUN 第 6077 行｜2026-10-11｜chk-first、chk-whole、yours
+c70｜從串流讀出 token 的兩個 grep（查核之後加的；跑過，不呼叫模型，在 hand1 的專案資料夾裡對它留下的串流打的；顯示的程式是 grep）：`grep -m1 assistant ../stream.jsonl | tr ',{' '\n\n' | grep -m3 input_tokens` 印出第一個請求的三個數字 2、3452、5366，相加是 8,820；`grep num_turns ../stream.jsonl | tr ',{' '\n\n' | grep -m3 input_tokens` 印出結果那一行的三個數字 10、6425、45058，相加是 51,493（這一次五個請求）。兩個總和等於 `tally.mjs` 對同一個串流印的「first request」與「whole session」；同樣的兩行對 sk1、md1、sx1、skf3 四個串流也對得上。第一行靠的是 init 那一行沒有 assistant 這個字（0 筆）、第二行靠的是 num_turns 只出現在結果那一行（1 筆），都只在 Claude Code 2.1.295 的串流上試過（同一天的第二次獨立閱讀對 23 個串流都對得上）。第一行另外有一個前提：串流的第一行（init）帶著專案資料夾的路徑與 Skill、外掛的名稱，其中任何一個含有 assistant 這個字，這一行就什麼都印不出來、也不報錯。較嚴的寫法 grep -m1 「"type":"assistant"」 有 86 欄，終端機卡的指令只放得下 76 欄，所以卡片留著跑過的那一行｜RUN 第 6123–6136 行；RUN 第 6143–6151 行（另外四個串流）；RUN 第 6077 行｜2026-10-11｜chk-first、chk-whole、yours
 
 c71｜「一定不能漏的那一步，官方的建議是交給 hook」是引用，不是這支量到的：官方 features-overview 的 Hook vs Skill 比較寫「Use a hook when the action must happen the same way every time and doesn't need Claude to think.」，同一張表的 Determinism 那一列是 Hook「Always fires on its event; the trigger is guaranteed」、Skill「Claude interprets the instructions; outcome can vary」。卡片是這一句的引文，出處寫「引用，沒有跑過」。這支沒有任何一次漏掉該做的步驟（發版那一句，有交代的 25 次五步都做到），也沒有跑過會強制某一步的 hook（唯一的 hook 只做記錄）。前一句旁白「Skill 被呼叫了，做不做還是它自己判斷」有 c64 的三次與上面那一列兩個依據｜https://code.claude.com/docs/en/features-overview（Hook vs Skill，2026-10-11 重開，原檔第 174–185 行）；c64；`verify-3.md` 第 2 項｜2026-10-11｜rule-hook
 
@@ -140,5 +140,5 @@ c71｜「一定不能漏的那一步，官方的建議是交給 hook」是引用
 ## 進度
 
 - 57 個場景都寫完，`lint` 0 個錯誤、0 個警告，估 11.7 分鐘，125 句。
-- 獨立查核做過一輪（`verify-3.md`，2026-10-11），十二項發現裡要改的都改了；改完之後沒有再查第二輪。
+- 獨立查核做過一輪（`verify-3.md`，2026-10-11），十二項發現裡要改的都改了；改完之後第二個獨立代理讀過一輪（通過），它的三項發現兩項照改，一項留著（較嚴的指令放不進終端機卡）。
 - 還沒做：站主選大綱、聽稿、發音試聽、旁白合成、出畫面、成片。這次只改了企劃、執行紀錄、`video.json` 與這份檔案。

@@ -171,6 +171,8 @@ No headless session was run for any of this. Nothing was synthesized or rendered
 
 Also added, from the two blind readings rather than from this report: two terminal cards, `chk-first` and `chk-whole`, with a one-line command each that reads the token counts out of the stream. They were typed in hand1's project folder on the stream hand1 left, without a model, and their sums equal what `tally.mjs` prints for the same stream (and for four other kept streams). `runlog.txt`, Runner note 2, item 2; `claims.md` c70. `yours` now names size beside the request count.
 
+Changed in the same commit and missing from this list when it was first written (the second reading below found it): to keep the composed description under 5,000 bytes, three things were cut from `youtube.description`. The line 「・session 從 Claude Code 桌面版開的 Git Bash 啟動（CLAUDE_EFFORT 設成 high）；一般終端機沒有試過。」 was removed, which took a disclosed run condition out of `video.json`; the two file names in the bullet about the demo folder's neutral names were shortened to 「variants/ 底下的中性檔名」; and the sentence naming `tally.mjs` and `drift.mjs` was dropped. The first of these is put back in a shorter form after the second reading; see the end of this file.
+
 Left as it was, because it needs a new run:
 - Turning the 22-request estimate into a measured figure (a project with more tools and a longer conversation, both arms).
 - A control run without `--setting-sources` for 「個人的 Skill 不會載入」 (finding 12 notes it rests on the documentation and on the per-session counts).
@@ -178,3 +180,99 @@ Left as it was, because it needs a new run:
 - Any session in which a required step is skipped or an enforcing hook is run; the Hook rule stays a citation.
 
 Not addressed by this section: the raw streams are still outside the repository, as the report's last paragraph says; the run log's transcriptions are what a reader can check.
+
+## The second independent reading (a second independent agent, 2026-10-11)
+
+A second agent, which wrote neither the script nor the first report, read the changes made after the fact-check: branch head `765508af7` against `be6458021`. Its report follows unchanged, down to "What the writer changed after the second reading".
+
+# Second independent reading of the changes made after the fact-check (2026-10-11)
+
+Read at branch head 765508af7 against be6458021. Verdict: pass. Claims checked: 206.
+
+## Findings
+
+### 1. [should_fix] video.json, youtube.description, the block 「怎麼跑的」 (not narration, not a card)
+
+- As it now stands: Now: 「・Windows 11、Git Bash、Node.js v24.13.0、Claude Code 2.1.295，全部 --model sonnet（claude-sonnet-5-5）、不開畫面。2026-10-09 跑 12 次，2026-10-11 跑 23 次，沒有重跑；紀錄在 runlog.txt。」 The line that stood at be6458021, 「・session 從 Claude Code 桌面版開的 Git Bash 啟動（CLAUDE_EFFORT 設成 high）；一般終端機沒有試過。」, is gone.
+- Problem: A run condition that the fact-checked version disclosed was dropped, and the writer's change list in verify-3.md does not mention it. Nothing in video.json now says that every session inherited CLAUDE_EFFORT=high from the desktop app's shell and that an ordinary terminal was not tried. The nine typed lines do not set that variable, so a viewer who types them runs under a condition the film's runs did not have. Nothing the description still says is false; a caveat is missing.
+- Evidence: Comparing the description line by line, base against head: the strings CLAUDE_EFFORT, 桌面版 and 一般終端機 are in the base video.json and absent from the head. runlog.txt lines 10-14 ("Git Bash started by the Claude Code desktop app ... CLAUDE_EFFORT=high") and line 5992 ("# hand1 | start 2026-10-11T11:54:06Z | CLAUDE_EFFORT=high"). brief.md line 592: 「它對不開畫面的 session 有沒有作用，沒有量過。」 The reason is room: linting a scratch export of the branch head, the composed description is 4,982 of 5,000 bytes, and putting the old line back verbatim gives "5105 bytes once composed, at most 5000".
+- Smallest fix: Put the condition back in a form that fits. Tested on a scratch copy (lint 0 errors, 0 warnings): change 「全部 --model sonnet（claude-sonnet-5-5）、不開畫面。」 to 「全部 --model sonnet（claude-sonnet-5-5）、不開畫面，從桌面版開的 Git Bash 啟動（CLAUDE_EFFORT=high）。」 and drop 「不放也行，畫面上的 grep 數得出來。」 from the hook bullet. This can be done after recording; it touches no narration and no card.
+
+### 2. [note] scene `yours`, narration line 64ts; the same wording in youtube.description (「你會學到」, third bullet)
+
+- As it now stands: 「數三件事：步驟做到幾次、Skill 有沒有被呼叫、請求有幾個、各有多大。」 and 「再數三件事：Skill 工具被叫了幾次、送了幾個請求與各有多大、檔案改了哪些」
+- Problem: 「各有多大」 reads as the size of each request. The two new cards show how to read the first request and the whole session, not each request, and the description no longer points to tally.mjs or drift.mjs, which print the per-request sizes. A small imprecision in an instruction, not a claim about a result.
+- Evidence: chk-first reads only the first line that contains "assistant" (grep -m1); chk-whole reads the result line's totals. The base description's sentence 「tally.mjs 與 drift.mjs 列出工具呼叫、五步的結果、請求數與 token」 is not in the head.
+- Smallest fix: Optional, and only worth doing before the narration is recorded: 「數三件事：步驟做到幾次、Skill 有沒有被呼叫、請求有幾個、一共多大。」; in the description 「送了幾個請求、一共多大」.
+
+### 3. [note] scene `chk-first`, data.command
+
+- As it now stands: grep -m1 assistant ../stream.jsonl | tr ',{' '\n\n' | grep -m3 input_tokens
+- Problem: The card is correct as run. For a viewer it relies on one thing outside the command: the stream's first line (the init event) must not contain the string "assistant". That line carries the viewer's own folder path and user name (fields cwd and scratchpad_path) and the names of skills, agents, plugins and slash commands. A project kept in a folder such as ai-assistant, or a project skill with that word in its name, makes the command print nothing, with no error. chk-whole has no such dependence in the streams I read (num_turns is on exactly one line in all 23).
+- Evidence: Fields of hand1's init line read from the kept stream: cwd, scratchpad_path, skills, agents, plugins, slash_commands. On all 23 kept 2026-10-11 streams the first "assistant" line is the first assistant event (line 2; line 4 or 5 in the six look streams, after system/thinking_tokens lines). claims.md c70 already says the two commands were tried only on Claude Code 2.1.295 streams. The stricter pattern, grep -m1 '"type":"assistant"' ../stream.jsonl | tr ',{' '\n\n' | grep -m3 input_tokens, prints the same three lines on hand1's stream.
+- Smallest fix: None required. If the writer wants it sturdier, use the stricter pattern; the card then has to be re-typed on hand1's kept stream and recorded in runlog.txt (no model needed), since cards show commands as run.
+
+## Recomputed
+
+THE TWO NEW CARDS
+- chk-first. Card command: grep -m1 assistant ../stream.jsonl | tr ',{' '\n\n' | grep -m3 input_tokens. It equals runlog.txt line 6127 character for character (one occurrence in the log). Card output equals lines 6128-6130: "input_tokens":2 / "cache_creation_input_tokens":3452 / "cache_read_input_tokens":5366. Sum 2 + 3,452 + 5,366 = 8,820, which is tally.mjs's "first request ... = 8820 tokens" for hand1 (line 6058) and the first of the five request sizes on line 6077. Narration x4n9 says 八千八百二十: correct. tool_version "grep (GNU grep) 3.0" is line 6138; ran_on 2026-10-11 matches the 12:41:09Z header on line 6123.
+- chk-whole. Card command: grep num_turns ../stream.jsonl | tr ',{' '\n\n' | grep -m3 input_tokens. It equals line 6132 (one occurrence). Output equals lines 6133-6135: 10 / 6425 / 45058. Sum 10 + 6,425 + 45,058 = 51,493 = tally's "whole session: 51493" = 8,820 + 9,305 + 10,176 + 11,399 + 11,793. Narration mkte says 五個請求，五萬一千多個: correct.
+- Re-run by me, no model: the kept work folder is on this machine, outside the repository. In <work>/hand/unit-kit, on ../stream.jsonl (31 lines, byte-identical to hand1.stream.jsonl), both commands typed exactly as on the cards print the same three lines each, exit 0. grep -c assistant gives 13, the first line has 0 hits, num_turns is on 1 line.
+- All 23 kept streams of 2026-10-11 (hand1 plus 22), parsed with my own script and spot-checked with the real commands on eight: the first command's three numbers equal the first request's size in 23 of 23, and the second command's three numbers equal the sum over distinct message ids in 23 of 23.
+- Would a viewer get the same kind of output: yes, plausibly. ../stream.jsonl is the file the nine typed lines write, and both commands work on every arm's stream (Skill, CLAUDE.md, slash, look, no procedure). The numbers will differ, and the cache write and cache read split moves from run to run. The one dependence particular to a stream is in the third finding.
+
+HEADLINE FIGURES, recomputed from the kept streams
+- Whole session: sk 39,606 / 39,524 / 39,566, mean 39,565.3, requests 4, 4, 4. md 30,284 / 30,307 / 30,297, mean 30,296.0, requests 3, 3, 3. Difference 9,269.3. sx 30,397 / 30,390 / 30,433, mean 30,406.7, requests 3, 3, 3.
+- First request: no1 8,753. sk 8,818 / 8,811 / 8,812 (+60.7). md 9,240 / 9,238 / 9,240 (+486.3). skf 9,041 / 9,042 / 9,039 (+287.7). mdf 9,909 / 9,907 / 9,908 (+1,155.0).
+- Requests elsewhere: skf 4, 4, 5; mdf 3, 3, 3; skl 4, 4, 4; mdl 3, 3, 3; hand1 5. Of the ten sessions in which Claude called the Skill itself, eight sent 4 and two sent 5 (skf3, hand1).
+- Break-even: 9,269.3 / 425.7 = 21.8. Five procedures: 12,021.3 / 867.3 = 13.9. Look request: 9,759.7 / 427.7 = 22.8.
+- In video.json, 3／3 appears 28 times before and after; 486, 61, 30,407, 3、3、3 for the slash call and 4、4、4 are unchanged in every scene that had them. 39,565, 30,296 and 9,269 each lost one occurrence, all from the old source line of `rule` (「9,269＝39,565−30,296」), which the estimate note replaced. No headline figure reads differently anywhere.
+
+THE TWELVE FINDINGS, as the script now stands (every listed change is in video.json)
+1. ca57 「照這兩個平均來估，大約隔二十二個用不到的請求才打平。」; new qygu 「這是這個小專案的估計，不是門檻。」; w3yy 「這三次量到的是：讓 Claude 自己叫，每用一次多九千兩百多個 token。」; `rule` source 「實際跑過 2026-10-11｜各 3 次｜22 個請求是估計，不是門檻」. Fixes the finding; nothing new.
+2. `rule` title 「搬不搬，看量到的這三件事」 with three measured rows. New quote card `rule-hook`; 8tpx 「Skill 被呼叫了，做不做還是它自己判斷。」; gvba 「一定不能漏的那一步，官方的建議是交給 hook。」. Fixes the finding; details under the quote card below.
+3. `rule` row 3 「Claude 自己叫：多 1 個請求、9,269 個 token（十次裡兩次多 2 個）」; `five` row 「送了幾個請求｜3、3、3｜4、4、5」 with iank 「請求數是三個對四個；五個 Skill 那一邊，有一次是五個。」; outro 「Claude 自己叫多 1 到 2 個請求；用 /名稱 叫不會」; haev 「可是 Claude 自己叫 Skill 的這三次，都多送一個請求。」. All match the streams.
+4. `scope` item 「只開六個工具、沒有 MCP：對話一開始約 8,750 個 token」; u6y3 「換了模型、平台，或是開更多工具，這些數字會變；更長的 CLAUDE.md，結果也可能不同。」. All 35 session logs print six tools and no MCP servers; no1 is 8,753. That more tools change the numbers is an inference, which claims.md c69 says; it is a caveat, not a result.
+5. `vs-md` verdict 「照不照做，這幾次兩邊一樣；選的是大小」; nmsp 「這幾次五個步驟兩邊一樣，不用為了讓它更照做而搬。」; f5ah 「寫了什麼，它就做什麼；放哪裡，這幾次都一樣。」; 2gv9 「這幾次五步兩邊都全中；差的是每個請求四百多個 token。」; `rule` row 1 「這幾次沒有差，不用為了更照做而搬」.
+6. The four reply files are in demo/results; 268x 「兩邊都沒有動任何一個檔案，都回答沒有漏記。」 stands (see the replies below).
+7. 9kyr 「這一次的引數是它自己填的，裡面寫著：使用者只要求先檢查。」. In the kept streams skl1's args are 「0.3.1 — 使用者只要求先檢查 CHANGELOG 有沒有漏記的」, skl2's 「0.3.1 — 只檢查 CHANGELOG 有沒有漏記的」, and skl3 passed none.
+8. The two event lines in runlog.txt (6154-6155) equal events 22 and 27 of hand1's kept stream: a Write whose content starts "# vX.Y.Z", then an Edit from "# vX.Y.Z" to "# v0.3.1".
+9. `vs-md` points 「第一個請求量到 +486 個 token」 and 「第一個請求量到 +61 個 token」; `rule` row 2 「第一個請求量到：CLAUDE.md +486，Skill +61 個 token」. The context-cost rows that c52 cites are at lines 227 and 229 of the page I fetched.
+10. wc33 「內文是從 CLAUDE.md 那一段搬過來的，步驟只改了第四步。」 (my diff of the two files: only the two lines of step 4 differ); wzhx 「前四步各對應一個檔案，和一個看得到的結果。」.
+11. 7dzy 「五個步驟三次也都做到；計分的項目，和寫好的那一份沒有一項不同。」.
+12. Nothing changed, as the writer says.
+
+THE QUOTE CARD
+Fetched 2026-10-11T12:57Z: https://code.claude.com/docs/en/features-overview.md, HTTP 200, 28,566 bytes (the size the runner recorded at 12:00Z), user agent "docs-reader/1.0", no other header. Line 174 is the tab "Hook vs Skill". Line 185: "**Use a hook** when the action must happen the same way every time and doesn't need Claude to think. For example: ...". The card's quote is that first sentence, word for word, without the bold. The translation is faithful. The source line reads 「Claude Code 文件｜features-overview｜Hook vs Skill｜2026-10-11｜引用，沒有跑過」, so the card says it is cited and not run. Line 189 of the same tab ("If a rule must hold every time, make it a hook rather than a prompt instruction.") supports gvba directly. Line 181 ("Claude interprets the instructions; outcome can vary") supports 8tpx, together with the three look sessions.
+
+THE REPLIES
+All six files under demo/results equal the result text in the kept streams (640, 849, 622, 585, 512 and 495 characters). skl1: 「以現有程式碼來看，沒有發現漏記。」 skl2: 「CHANGELOG 沒有發現漏記。」 skl3: 「目前看不出有漏記。」 mdl1: 「CHANGELOG 沒有漏記。」 mdl2: 「CHANGELOG 沒有發現漏記。」 mdl3: 「CHANGELOG 沒有漏記。」 Each adds that the folder has no git history to compare against. None of the six sessions made an Edit or Write call.
+
+NARRATION AND LINT
+Eighteen narration sentences are new or reworded: haev, wzhx, wc33, x4n9, mkte, f5ah, iank, 7dzy, 9kyr, nmsp, w3yy, ca57, qygu, 8tpx, gvba, 64ts, u6y3, 2gv9. Each states what the evidence shows, or marks an estimate or a result of these runs. None talks about what was or was not run, recorded, seen or verified. Linting an export of the branch head in the scratch folder gives 0 errors and 0 warnings, 11.7 minutes, 125 lines.
+
+WHAT I COUNTED (206): 56 changed sentences and fields across the twelve findings; 57 checks on the two cards (10 on the cards and log, 46 on the kept streams, 1 on the stricter pattern); 6 on the quote card; 12 on the replies; 18 narration sentences; 45 figure comparisons and recomputations; 12 others (lint, nine description lines, the six-tool count, the effort setting).
+
+## Summary
+
+The script is ready to be recorded: no narration sentence or card has to change first.
+
+- **The twelve fixes:** every change the writer lists is in video.json, each fixes what its finding says, and none adds a claim the evidence does not support.
+- **The two new terminal cards:** both commands match the run log character for character, and their outputs sum to 8,820 and 51,493, as the tally script prints. I re-ran both on the kept stream without a model and got the same lines, and they give the right figures on all 23 kept streams.
+- **The quote card:** it is the official sentence word for word, and it is labelled as cited, not run.
+- **The four added replies:** they are the streams' own text, and all six replies say nothing is missing.
+- **Headline figures:** 3 of 3 on both sides, 486 against 61, 39,565 against 30,296, 9,269 and the slash call's 3 requests read the same everywhere.
+
+One thing should be put back before publishing. The description lost the line saying the sessions were started from the desktop app's Git Bash with CLAUDE_EFFORT=high, and the writer's change list does not mention it. It was cut for the 5,000-byte limit; a wording that fits is in the finding, and it touches no narration.
+
+Two optional notes: 「各有多大」 in line 64ts promises per-request sizes the cards do not show, and the first new command prints nothing if the viewer's folder path contains the word "assistant".
+
+I changed nothing in the repository and ran no session.
+
+## What the writer changed after the second reading (2026-10-11, before any speech was synthesized)
+
+No session was run. The lint ends with 0 errors and 0 warnings, 57 scenes, 125 lines.
+
+1. **Should fix, the run condition: applied in the wording the reader tested.** `youtube.description`, 「怎麼跑的」, first bullet: 「全部 --model sonnet（claude-sonnet-5-5）、不開畫面，從桌面版開的 Git Bash 啟動（CLAUDE_EFFORT=high）。」 The sentence 「不放也行，畫面上的 grep 數得出來。」 was dropped from the hook bullet to make room. The omission from the first change list is now recorded above, in "What the writer changed for each finding".
+2. **Note, 「各有多大」: applied, because it is narration.** Line 64ts reads 「數三件事：步驟做到幾次、Skill 有沒有被呼叫、請求有幾個、一共多大。」; the description's third bullet reads 「送了幾個請求、一共多大」. `claims.md` c68 follows.
+3. **Note, the stricter pattern on `chk-first`: left.** The reader's stricter command, `grep -m1 '"type":"assistant"' ../stream.jsonl | tr ',{' '\n\n' | grep -m3 input_tokens`, is 86 columns; a terminal card's command holds 76. The shortest quoted form, `grep -m1 '"assistant"' …`, is 79. So the card keeps the command as it was run (75 columns) and nothing was re-typed. The dependence the reader names (the stream's first line must not contain the word assistant, which a folder or skill name could put there) is added to `claims.md` c70.
