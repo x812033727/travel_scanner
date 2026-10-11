@@ -7449,6 +7449,42 @@ test("a slides video's writer hears the prompt budget of the image model the set
   assert.equal(slidesImageVendor(undefined), null);
 });
 
+// The test above asks image-01 and Gemini alike and reads the writer's own 1000 from both, so it
+// cannot tell a wrong vendor or a wrong look from the right one. Here the model's limit is low
+// enough that nothing is capped: each number is one preset's look under one vendor's limit.
+test("an explainer's writer hears the budget of its row's image model under its own preset's look, uncapped when that is under the writer's own limit", async () => {
+  const { IMAGE_PROMPT_LIMITS, shotPromptBudget } = await import("../media/prompt-budget.mjs");
+  const { resolveLook } = await import("../core/drama.mjs");
+  const box = sandbox();
+  const slug = "budget-explainer";
+  const seriesFile = path.join(docDir(slug, box.root), "series.json");
+  mkdirSync(path.dirname(seriesFile), { recursive: true });
+  const budgetFor = (preset, model) => {
+    writeFileSync(seriesFile, JSON.stringify({ slug: "one-off-x", episode: 1, image_model: model, characters: [] }));
+    const site = fakeSite({ settings: {} });
+    const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-06T10:00:00Z") });
+    return new Automation(ctx, automationClient(ctx), site.settings).draftBudget({ slug, format: "drama", style_preset: preset, series: { slug: "one-off-x", episode: 1, chapter: 1, kind: "one-off" } });
+  };
+  const before = IMAGE_PROMPT_LIMITS.minimax;
+  assert.equal(before, 1500);
+  // Lowered for this test alone, so that no budget reaches the writer's own 1000.
+  IMAGE_PROMPT_LIMITS.minimax = 1200;
+  try {
+    const heard = Object.fromEntries(["cute-cartoon", "cute-mystery", "flat-explainer"].map((preset) => [preset, budgetFor(preset, "image-01").prompt_budget_chars]));
+    assert.deepEqual(heard, { "cute-cartoon": 793, "cute-mystery": 770, "flat-explainer": 756 }, "each preset's own look, under MiniMax's limit");
+    assert.equal(new Set(Object.values(heard)).size, 3, "another preset's look would give another number");
+    for (const [preset, budget] of Object.entries(heard)) {
+      assert.equal(budget, shotPromptBudget({ look: resolveLook({ preset }), camera: "pan right", limit: 1200 }), `${preset}: counted as keyframes counts a shot`);
+      assert.ok(budget < 1000, `${preset}: the writer's own limit plays no part`);
+      // Gemini's vendor is read from the model's id, and its 4000 leaves more than the writer's 1000.
+      assert.deepEqual(budgetFor(preset, "gemini-3-pro-image"), { prompt_budget_chars: 1000 }, preset);
+    }
+  } finally {
+    IMAGE_PROMPT_LIMITS.minimax = before;
+  }
+  assert.deepEqual(budgetFor("cute-mystery", "image-01"), { prompt_budget_chars: 1000 }, "at image-01's real 1500 the writer's own limit is the tighter one");
+});
+
 test("a programming error in the retry transport still ends the run: it is not reported to the owner as a block", async () => {
   const slug = "retry-transport-bug";
   const video = blockedVideo({ slug, blocked: "writer failed 2 times in a row: the script had no video object", extra: { failures: { writer: 2 } }, others: ["retry-transport-neighbour"] });
