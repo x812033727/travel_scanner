@@ -4079,6 +4079,73 @@ PASS is DURATION_ONLY for the two rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Dub re-request increment (ask for a skipped dub again): 11 files (2026-10-11)
+
+Reviewer: `claude-pr-review-dub-retry`, an instance that wrote none of the branch's commits and edited only this report and review.json. Author: `claude-opus-5-5`, the branch's author, with its worker agents. Scope: DURATION_ONLY for the bytes of the eleven files below at `ba84feb7ef2d4ad55aa29340c4f805ae2a45c1f6` ("Merge origin/main into claude/dub-retry-request"), the head of claude/dub-retry-request, against the baseline `6a26eff42707603d8f80586ae0efb7c85a13fe15` (main at #1421), which the head has merged. The change lets the owner ask, from the language panel, for a dub track the worker gave up on to be made again. One question was asked of each file: does the change touch a duration rule?
+
+Between the baseline and the head 31 files differ. Eleven of them are bound, the ones below; neither receipt file is among the 31, so both were main's bytes when this review began (report sha256 `7baa17e4719405438f0742b3337b79cee25ca5cfd2d9771652eb987bb9ebf507`, the hash review.json held). The working tree was clean and the eleven files in it are the head's bytes (`git diff --quiet ba84feb7e` for them exited 0).
+
+Rebound, from the hash main's receipt held to the hash of the head's bytes:
+
+- `apps/api/app/video_reviews/admin_service.py`: `82b4aec7003b3f71887fe0787b0dba7805d664b80e1a3cee0da1dadb24516117` -> `4cf2dceda72b3bd09f471e2263a9d4a96ba1d8a1375c554b0225d1ae12352856`.
+- `apps/api/app/video_reviews/schemas.py`: `fb9b0d89a7c1b96b1f2ee77ffe7fc73df8ec09d508c15529efff7ae8a8982a70` -> `b0a5f18ebb966075e1a87c66e3e4aa4e76a8b18d21b5096514374076704f6120`.
+- `apps/web/components/admin-video-review-card.tsx`: `d1e51c2914178294dc14c3ca9bdbfcc38164a249e7f9a05cf509268c1a67b8b5` -> `4d22f999dcb70dfca1bd436421ecfe04cd9c7b9d869c0295bc4946be26e3e7a8`.
+- `apps/web/components/admin-video-reviews.test.tsx`: `13b095cb04c112d0cbf826a544276b2284c421ae7f0ae319eb72d7b88601df00` -> `522f72db3d27c7b6a7eb0dd9d7eec76ef02976eacfe77317b4791cae6f6decf2`.
+- `apps/web/messages/en/admin.json`: `ec12ddb73856f2d1a9d6070961eea5107bce485143f91099da94a7d0a73b9dd5` -> `05bcef7df472e9bc9e746bd74876eb7ff71f8a07c40f0aad8c00e571bd1099a9`.
+- `apps/web/messages/ja/admin.json`: `e8d2065f71307dfca69d746b80d68c146a3c955c6f89b69f5c939f14d5a42e32` -> `bbec48ba26a743599a664a8ef87439efe10fcb7573b51d799ff877af4e918942`.
+- `apps/web/messages/ko/admin.json`: `18fed6863285acaf879157707bb30995cd1f8a2eeb167d4c5d4e7cd4953cb8d3` -> `3a2987daebbba5eae098ea529a69182cd865e9e57073a5b8a5d1d38689006ea5`.
+- `apps/web/messages/zh-CN/admin.json`: `c52f64ca0388c4e850742df482b28cbc868911bcf23edee91b5b9c99f7ba781d` -> `e32eb998be5ac974739959c7bc7774c45ded4132049071cf6e1f84fb0e6ff102`.
+- `apps/web/messages/zh-TW/admin.json`: `9e3a0402625543d1ca4e77328eaefdcd151f187590bed477fe31dd7bc0573db4` -> `83515bfdca898ae48457694d750b08e6ca70308013787a9c3ef7eed6e8ec1add`.
+- `tools/video/automation/automation.test.mjs`: `70dfee0aac57ee1c6bf9f0e75025a2de58069cf2908133ba7d2048a2a349927f` -> `5230f845437eb61bd6cd301e9d6d3cde65de9144476e7a176b248db1b9daf7d3`.
+- `tools/video/automation/flow.mjs`: `b15fff400a5ebcbc89f68bf9795d3b392da4c1dce4f6a8e58067e902f85409d2` -> `bf3684d50d25418408389497efb05c63290de6a633418c196289e2477d458b6f`.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these eleven bindings and exited 1, and a hash of all 108 bound files in the working tree against review.json found the same eleven and nothing else. The registry stays 108 paths, with eleven hashes rebound and the other 97 as main has them.
+
+Findings, `tools/video/automation/flow.mjs` (+223/−7, fourteen hunks):
+
+- Three import lines: `rmSync`, `assembledAudioProblems`, the three branding readers and `checksCurrent` from package/cli.mjs. Each is an existing export of a file the change does not touch (package/cli.mjs line 98, audio-evidence.mjs line 78, branding.mjs lines 50, 68 and 72). Nothing under tools/video/core, dubs, qa, package, tts, assemble or long-form differs between the baseline and the head.
+- `forCard` moves from inside `makeDub` to module scope (line 544), the same expression; the two lines it leaves in `makeDub` are a comment. These are the only changed lines inside `makeDub` (line 3994), so how a track is made is as main has it: `dub`, the shortening rounds up to `MAX_TEMPO`, Jev's check, the retakes and the rewording, with `MAX_TEMPO` still imported from dubs/plan.mjs and the round limits outside every hunk.
+- `packageRefusal` (line 760) reads checks.json, timeline.json and branding.json and returns a sentence or null. Its three tests are the ones package/cli.mjs applies before it writes (lines 128–135 and 152 there): the branding equality, which compares `body_frames` with the timeline's `total_frames` and the checked frame count with intro + body + outro; `checksCurrent`; and `assembledAudioProblems`. They are equalities between what was recorded and what is on disk. None sets a length, a floor or a frame count, and the function writes nothing. It omits the compilation branch of the original; a refusal here closes a retry request and does not block, defer or change the video.
+- `dubRetryEcho` and the `report` change add a `dub_retries` key to what a report sends and return the site's answer. `DUB_RETRY_REASON_MAX = 500` is a character count of a reason.
+- In `languages` (line 3520): the requests are looked at first, a dub this worker is making again is kept pending, and once the batch is in its record is marked `sent`. No length is read or written.
+- `dubRetries`, `takeDubRetry`, `startDubRetry` and `refuseDubRetry` (lines 3640–3755) are the request's lifecycle: guards (tidied, the script present, the final gate approved, not the narration's own language, `packageRefusal`, the other languages' tracks current, `dub --dry-run`), the report that says "taken", then the locale's rounds set to zero with `check_stopped`, the skip file removed, and `makeDub`. Zeroing the rounds gives the retry the same number of shortening, retake and reword rounds a first attempt has; it does not change what fits a window. `speechHash` is called to ask `dubsStatus` which tracks are current, as `languages` already does.
+- None of the 223 added lines names minutes, target_seconds, action_seconds, `MAX_TEMPO`, an overrun, `slidesMinutes`, `effectiveEpisodeMinutes`, 480, 14,400 or a frame rate. The only numerals with a unit of time are in dates (`slice(0, 10)` of an ISO timestamp).
+
+So flow.mjs does not alter the narration timeline (timeline.json is read, never written, by the new code), the QA duration checks (qa and core untouched; no hunk near them), or the rule for a dub track's length (the windows, `MAX_TEMPO` and `absorbOverruns` in dubs/plan.mjs, untouched).
+
+Findings, `tools/video/automation/automation.test.mjs` (+605/−2): the fake site learns the requests and the fake `dub` a dry run, and one block of new tests (from line 3886) covers taking, refusing, a second lane, the tidy and the batch. Of its changed lines the ones near a duration term are fixtures: a `branding` record with `body_frames: 900` written into checks.json to make `packageRefusal` refuse; a date eight days ahead (`8 * 24 * 3600 * 1000` ms) so the tidy runs; and the give-up reason "does not fit its window even at 1.15x", asserted as main's `makeDub` already words it. No assertion about minutes, the eight-minute floor, 480 s or 14,400 frames is added, removed or loosened; both removed lines are a fake-site return and a comment.
+
+Findings, `apps/api/app/video_reviews/admin_service.py` (+388/−30) and `schemas.py` (+44/−0): the service gains the retry request (asking, its budget and state guards, the audit row), carries `dub_retries` and `dub_retry_blocked` on the summaries and reads the worker's echo in `upsert_project`; `language_states` now takes the requests into account when it names a dub's state. The schemas add `DubRetryStatus`, `DubRetryBlocker`, `DubRetryOut` and two summary fields, and `ProjectIn.dub_retries`. The one changed line in either file that names a time is a comment in `DubRetryOut` ("requested more than 30 minutes ago or taken more than 2 hours ago"), which describes when a request reads as stalled; the constants themselves and the 24-hour expiry are in apps/api/app/video_reviews/dub_retry.py, unbound. They time a request, not a video. No changed line names a video's minutes or seconds, `target_minutes`, a floor or a frame count, and no existing field's bounds change.
+
+Findings, `apps/web/components/admin-video-review-card.tsx` (+19/−2) and `admin-video-reviews.test.tsx` (+327/−0): a `DubRetry` type, two optional summary fields, and in `LanguagesBody` a line that lists a finished track's `kept_lines`. The test file adds the panel's tests for the button and each state of a request. The times they show are the request's (30 minutes, 2 hours, 24 hours) and timestamps; nothing reads or shows a video's length.
+
+Findings, the five `apps/web/messages/*/admin.json` (+25/−0 each, two hunks each at the same lines, 2263 and 2283): `dubKeptLines`, 16 `dubRetry*` strings and a `dubRetryBlocked` group of six under `videoReviews`, the same keys in every language. Their only durations are the request's 30 minutes, 2 hours and 24 hours. No existing string is changed or removed, so every string a duration rule is shown with is as main has it.
+
+No file changes a duration rule: not the tutorial's 10-minute default or its 8–20 range, the drama's 1–8, the brand story's 13 minutes, the eight-minute floor for a non-drama video, the 480 s / 14,400-frame QA floor, the long-form animation policy, target_seconds or action_seconds, the measured evidence, or plans.json.
+
+Ran (in the worktree at `ba84feb7e`, Node v24.13.0 on Windows; this reviewer fetched nothing and ran no test suite):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the eleven stale bindings and exited 1;
+- the hashing, with Node's crypto over the files' bytes, of all 108 bound files against review.json, and of review.md;
+- `git diff --stat` and `--numstat` of the baseline against the head, and the list of changed files under tools/video/core, dubs, qa, package, tts, assemble and long-form and under docs/videos/long-form, which is empty;
+- a reading of every changed line of flow.mjs, schemas.py, admin-video-review-card.tsx and the English admin.json; of the hunk headers and removed lines of admin_service.py, automation.test.mjs and the five admin.json; and of `makeDub`'s opening (flow.mjs lines 3973–4012) and the package tool's tests (package/cli.mjs lines 98–163) as context;
+- a scan of the changed lines of each of the eleven files for duration terms (duration, minute, second, hour, frames, target_, action_seconds, 480, 14,400, policy, measured, timeline, floor, plans.json, and their Chinese, Japanese and Korean words), with the hits read as printed (each cut at 260 characters).
+
+The CLI check and review.test.mjs are run after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- The added lines of admin_service.py, automation.test.mjs, admin-video-reviews.test.tsx and the four non-English catalogs were covered by the term scan and their hunk headers, not read line by line. That the four translations say what the English says was not checked beyond the keys' hits.
+- The 20 unbound files the change touches, among them dub_retry.py, migration 0129, producer_state.py, admin-video-reviews.tsx, tidy.mjs and the three documents, were not reviewed. The request's 24 hours, 30 minutes and 2 hours are taken as the author describes them and were not traced in dub_retry.py.
+- Whether `packageRefusal` matches package/cli.mjs test for test in every case (the compilation branch, the clips argument passed as null) is a correctness question outside this scope and is not judged, nor is the retry's cost, its budget guards, its concurrency between lanes or the feature as a product choice.
+- No dub was made, no planner or worker was run, and no rendered cut or measured narration was produced. No API test, ruff, mypy, lint, typecheck, i18n check or tool suite was run, nor CI.
+- This increment binds the head's tree only: a later commit or merge with main that changes any of the eleven files, or either receipt file, needs its own follow-up.
+- The 97 bindings left at main's hashes are not covered afresh.
+
+PASS is DURATION_ONLY for the eleven rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -4095,8 +4162,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/app/video_automation/schemas.py` | `e51d5729ec66f50f204b4c2cb0849d0a85290be01d71ce43d0d9019cb42baca3` |
 | `apps/api/app/video_automation/series.py` | `ca8e61d2431752d78f6e7bc5c98c26dd1c862d8ccb2bf596aa124b088f378dea` |
 | `apps/api/app/video_automation/settings.py` | `9941b3244e15cf6b1d8aaec32c68ab2424f84adb32804a179652d93fb3977ca3` |
-| `apps/api/app/video_reviews/admin_service.py` | `82b4aec7003b3f71887fe0787b0dba7805d664b80e1a3cee0da1dadb24516117` |
-| `apps/api/app/video_reviews/schemas.py` | `fb9b0d89a7c1b96b1f2ee77ffe7fc73df8ec09d508c15529efff7ae8a8982a70` |
+| `apps/api/app/video_reviews/admin_service.py` | `4cf2dceda72b3bd09f471e2263a9d4a96ba1d8a1375c554b0225d1ae12352856` |
+| `apps/api/app/video_reviews/schemas.py` | `b0a5f18ebb966075e1a87c66e3e4aa4e76a8b18d21b5096514374076704f6120` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
 | `apps/api/migrations/versions/0122_video_anime_production_policy.py` | `91f97905e9a689cc47aef8eac60735175a4048bfb5788fa1d204acb43ee11ea7` |
 | `apps/api/tests/test_migration_0118_video_min_8_minutes.py` | `c479dfd800de1fcbd1fb71d0b47d4fcb922675b314b31b680e8195cac898c28e` |
@@ -4109,16 +4176,16 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/tests/test_video_explainer_duration.py` | `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
-| `apps/web/components/admin-video-review-card.tsx` | `d1e51c2914178294dc14c3ca9bdbfcc38164a249e7f9a05cf509268c1a67b8b5` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `13b095cb04c112d0cbf826a544276b2284c421ae7f0ae319eb72d7b88601df00` |
+| `apps/web/components/admin-video-review-card.tsx` | `4d22f999dcb70dfca1bd436421ecfe04cd9c7b9d869c0295bc4946be26e3e7a8` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `522f72db3d27c7b6a7eb0dd9d7eec76ef02976eacfe77317b4791cae6f6decf2` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `ec12ddb73856f2d1a9d6070961eea5107bce485143f91099da94a7d0a73b9dd5` |
-| `apps/web/messages/ja/admin.json` | `e8d2065f71307dfca69d746b80d68c146a3c955c6f89b69f5c939f14d5a42e32` |
-| `apps/web/messages/ko/admin.json` | `18fed6863285acaf879157707bb30995cd1f8a2eeb167d4c5d4e7cd4953cb8d3` |
-| `apps/web/messages/zh-CN/admin.json` | `c52f64ca0388c4e850742df482b28cbc868911bcf23edee91b5b9c99f7ba781d` |
-| `apps/web/messages/zh-TW/admin.json` | `9e3a0402625543d1ca4e77328eaefdcd151f187590bed477fe31dd7bc0573db4` |
+| `apps/web/messages/en/admin.json` | `05bcef7df472e9bc9e746bd74876eb7ff71f8a07c40f0aad8c00e571bd1099a9` |
+| `apps/web/messages/ja/admin.json` | `bbec48ba26a743599a664a8ef87439efe10fcb7573b51d799ff877af4e918942` |
+| `apps/web/messages/ko/admin.json` | `3a2987daebbba5eae098ea529a69182cd865e9e57073a5b8a5d1d38689006ea5` |
+| `apps/web/messages/zh-CN/admin.json` | `e32eb998be5ac974739959c7bc7774c45ded4132049071cf6e1f84fb0e6ff102` |
+| `apps/web/messages/zh-TW/admin.json` | `83515bfdca898ae48457694d750b08e6ca70308013787a9c3ef7eed6e8ec1add` |
 | `docs/videos/DESIGN.md` | `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `8bf5a55173e25c07c18b865853ffd37e839408ccf731bdc3c4ebf208e195b5b5` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
@@ -4135,9 +4202,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `70dfee0aac57ee1c6bf9f0e75025a2de58069cf2908133ba7d2048a2a349927f` |
+| `tools/video/automation/automation.test.mjs` | `5230f845437eb61bd6cd301e9d6d3cde65de9144476e7a176b248db1b9daf7d3` |
 | `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
-| `tools/video/automation/flow.mjs` | `b15fff400a5ebcbc89f68bf9795d3b392da4c1dce4f6a8e58067e902f85409d2` |
+| `tools/video/automation/flow.mjs` | `bf3684d50d25418408389497efb05c63290de6a633418c196289e2477d458b6f` |
 | `tools/video/automation/prompts.mjs` | `61632a08cd1b036796b900e2274babf49316960adef8ff974f52bbaf73b8f85d` |
 | `tools/video/automation/series.mjs` | `2b687e0e5251f8b01904f3018bc658e4322888959af9d8dc0931d71a41e5e381` |
 | `tools/video/automation/series.test.mjs` | `1974b5d8db7177c920bc85ec35acf8abc4a0177b80947596ed5b551e813c53d6` |
