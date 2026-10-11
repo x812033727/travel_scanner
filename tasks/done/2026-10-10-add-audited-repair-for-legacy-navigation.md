@@ -1,14 +1,14 @@
 ---
 id: 2026-10-10-add-audited-repair-for-legacy-navigation
 title: Add audited repair for legacy navigation evidence in held news
-status: open
+status: done
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: codex-news-recovery-6f71
+claimed_at: 2026-10-11T10:23:39Z
 created_at: 2026-10-10T06:40:38Z
-completed_at:
-branch:
+completed_at: 2026-10-11T10:54:18Z
+branch: codex/news-recovery-followup-20261011
 depends_on: []
 scope:
   - apps/api/app/news_automation/service.py
@@ -30,24 +30,24 @@ blindly retried or converted into successful evidence by deleting database rows.
 
 ## Definition of done
 
-- [ ] Provide a dry-run-first, actor-audited service/CLI path for one exact held,
+- [x] Provide a dry-run-first, actor-audited service/CLI path for one exact held,
   unpublished candidate with a complete fresh candidate/evidence/guide/history
   CAS and no active DB/RQ work.
-- [ ] Require independently reviewable proof that each proposed legacy URL is
+- [x] Require independently reviewable proof that each proposed legacy URL is
   system navigation rather than an authored source or claim. Preserve the full
   before/after evidence and affected document provenance; never silently drop
   an unreadable source, relax its qualification, or manufacture a source hash.
-- [ ] Preserve all old assessments, pipeline runs, revisions, actor audits and
+- [x] Preserve all old assessments, pipeline runs, revisions, actor audits and
   judge caps. Any content change must go through the genuine guide-save path.
-- [ ] Keep correction separate from fresh verification/enqueue/publication, with
+- [x] Keep correction separate from fresh verification/enqueue/publication, with
   new auditable intent and unknown-outcome reconciliation. Do not replay the
   existing `refresh_in_flight` intent or infer publication from dispatch.
 
 ## Steps
 
-- [ ] Claim this task and inspect the exact evidence role and saved guide sources
+- [x] Claim this task and inspect the exact evidence role and saved guide sources
   before deciding the narrow native correction contract.
-- [ ] Add focused tests for CAS drift, active ownership, navigation versus
+- [x] Add focused tests for CAS drift, active ownership, navigation versus
   authored links, rollback, complete history preservation and uncertain intent.
 
 ## How to verify
@@ -107,3 +107,32 @@ binds original Save6/full19 archives, exact new job6 and judge6 finished states,
 native worker revision/audit joins, full old history and zero operator saves.
 Unmodified dedicated Pure5 correctly refuses the post-scan Source row drift;
 that refusal is preserved rather than turned into an invented production proof.
+
+
+2026-10-11 18:55 Taipei implementation and validation:
+Claim owner codex-news-recovery-6f71, branch codex/news-recovery-followup-20261011.
+The owner explicitly allowed only test_news_automation.py to overlap the
+still-owned video task2026-10-10-let-the-owner-re-request-a; its holder and
+task were preserved. The --force claim used only this authorized exception.
+Fresh pre-PR branch/remote/PR surveys show no competing open PR on service.py
+or test_news_automation.py; origin/main still has PR1439 as their last news
+implementation. The broad video claim was not released or edited.
+
+Service/CLI details and exact schema keys are in repair_held_navigation and
+run_navigation_repair. Use --repair-held-navigation MANIFEST --candidate-id
+CID --bundle-sha256 RAW_SHA --review-file REVIEW --review-sha256 RAW_SHA for
+dry-run; apply additionally requires --apply --actor-email. Review binds full
+Evidence/all5documents/claim ledger, stored excerpt, dated current200 body,
+resolved URL, body canonical hash and independently checked raw source receipt.
+All inputs/old native rows remain preserved. Fresh verification and publication
+use separate original routes after an actual committed repair/readback.
+
+Ruff passes these three paths; mypy app+tests passes859files; final navigation
+tests36pass/3Postgres skip. The relevant news automation/pipeline/judge suite
+passed524 with6Postgres skips before final regression additions. Independent
+source review72f04c0baa55f0bb9ee036dfb9f1306a2f94e53ec52f53900f8a74949fd3233e;
+format-only final test peer5818d2bede11a35c9cab14c41ebdd47dfc41d5edd7c9b5c9d7218c7eefe9320e.
+Full AST matches; unrelated old test formatting was restored. PostgreSQL
+NOWAIT coverage exists but must run in CI/integration; no production repair
+has been executed by this implementation. Ledger-cited URLs deliberately
+remain blocked and are separately tracked by2026-10-11-add-audited-correction-for-obsolete-held.

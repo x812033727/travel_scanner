@@ -51,6 +51,7 @@ from app.news_automation.policy import (
     content_fingerprint,
     document_fingerprint,
     event_date_problems,
+    evidence_fingerprint,
     evidence_present,
     evidence_site,
     evidence_sufficient,
@@ -3006,6 +3007,586 @@ async def _call_held_ingestion(session, redis, candidate_id, manifest, review, a
         review_sha256="b" * 64,
         actor=actor,
     )
+
+
+async def _navigation_repair_case(database_pair=None):
+    import hashlib
+
+    from app.models import User
+    from app.news_automation import service
+    from app.news_automation.models import NewsAssessment, NewsAsset, NewsPipelineRun
+
+    engine, factory, redis, cid, actor_id, bundle, draft_review = await _held_ingestion_case(
+        database_pair
+    )
+    # A normal article under /news is a different complete URL from the /news listing.
+    primary_url = "https://www.theverge.com/news/123456/example-announcement"
+    async with factory() as session:
+        candidate = await session.get(NewsCandidate, cid)
+        source = await session.get(NewsSource, candidate.source_id)
+        source.url = "https://www.theverge.com/rss/index.xml"
+        source.is_first_party = False
+        candidate.canonical_url = primary_url
+        evidence = await session.scalar(
+            select(NewsEvidence).where(NewsEvidence.candidate_id == cid)
+        )
+        evidence.url = primary_url
+        evidence.is_first_party = False
+        candidate.claim_ledger_json = [
+            {"claim": "The report describes an update.", "source_urls": [primary_url]}
+        ]
+        await session.commit()
+        bundle["expected_snapshot"] = await service.held_bundle_snapshot(session, redis, cid)
+        draft_review["evidence_sha256"] = service.held_bundle_digest(
+            bundle["expected_snapshot"]["state"]["evidence"]
+        )
+        for document in bundle["documents"].values():
+            document["sources"][0]["url"] = primary_url
+        draft_review["documents_sha256"] = {
+            locale: service.held_bundle_digest(doc) for locale, doc in bundle["documents"].items()
+        }
+        await _call_held_ingestion(
+            session, redis, cid, bundle, draft_review, await session.get(User, actor_id)
+        )
+        await session.commit()
+        candidate.status = "manual_review"
+        candidate.would_publish = True
+        navigation = NewsEvidence(
+            candidate_id=cid,
+            role="evidence",
+            is_first_party=False,
+            url="https://www.theverge.com/news",
+            title="News listing",
+            content_hash="c" * 64,
+            excerpt=(
+                "News listing: unrelated report one, unrelated report two, and section navigation."
+            ),
+        )
+        session.add(navigation)
+        await session.flush()
+        rows = await session.scalars(select(NewsEvidence).where(NewsEvidence.candidate_id == cid))
+        candidate.evidence_hash = evidence_fingerprint(
+            [{"url": item.url, "content_hash": item.content_hash} for item in rows]
+        )
+        for status in ("succeeded", "failed"):
+            session.add(
+                NewsPipelineRun(
+                    candidate_id=cid,
+                    stage="verification",
+                    status=status,
+                    attempt=2,
+                    idempotency_key=f"retained-{cid}-{status}",
+                    provider="anthropic",
+                    model="old-checker",
+                    input_tokens=123,
+                    output_tokens=45,
+                    metadata_json={"original": ["完整歷史", status]},
+                    finished_at=datetime.now(UTC),
+                )
+            )
+        asset_content = b"retained private test asset bytes"
+        session.add(
+            NewsAsset(
+                candidate_id=cid,
+                variant="hero",
+                storage_key=f"news/{cid}/private.png",
+                public_filename=f"retained-{cid}.png",
+                content_type="image/png",
+                sha256=hashlib.sha256(asset_content).hexdigest(),
+                size=len(asset_content),
+                width=1200,
+                height=630,
+                content=asset_content,
+                is_public=False,
+            )
+        )
+        for assessment_type, locale in [("verification", None)] + [
+            ("locale_review", loc) for loc in bundle["documents"]
+        ]:
+            session.add(
+                NewsAssessment(
+                    candidate_id=cid,
+                    assessment_type=assessment_type,
+                    locale=locale,
+                    verdict="pass",
+                    provider="anthropic",
+                    model="old-checker",
+                    evidence_hash=candidate.evidence_hash,
+                    prompt_version=candidate.prompt_version,
+                    reasons_json=["Stored pass against the previous evidence."],
+                    details_json={
+                        "document_sha256": document_fingerprint(
+                            GuideDocument.model_validate(bundle["documents"][locale or "zh-TW"])
+                        )
+                    },
+                )
+            )
+        await session.commit()
+        snapshot = await service.held_bundle_snapshot(session, redis, cid)
+        stored = next(
+            item for item in snapshot["state"]["evidence"] if item["id"] == str(navigation.id)
+        )
+        current = {
+            "url": navigation.url,
+            "resolved_url": navigation.url,
+            "fetched_at": datetime.now(UTC).isoformat(),
+            "status": 200,
+            "title": navigation.title,
+            "excerpt": navigation.excerpt,
+        }
+        review = {
+            "schema": "mokaair-news-held-navigation-review-v1",
+            "candidate_id": str(cid),
+            "reviewer": "Independent navigation reviewer",
+            "reviewed_at": datetime.now(UTC).isoformat(),
+            "conclusion": "navigation_repair_only",
+            "evidence_sha256": service.held_bundle_digest(snapshot["state"]["evidence"]),
+            "documents_sha256": {
+                row["locale"]: service.held_bundle_digest(row["draft_json"])
+                for row in snapshot["state"]["locales"]
+            },
+            "claim_ledger_sha256": service.held_bundle_digest(candidate.claim_ledger_json),
+            "navigation": [
+                {
+                    "evidence_id": stored["id"],
+                    "url": stored["url"],
+                    "classification": "system_navigation",
+                    "excerpt_sha256": hashlib.sha256(stored["excerpt"].encode()).hexdigest(),
+                    "reason": (
+                        "Both full bodies list unrelated stories and navigation; "
+                        "neither supplies an authored claim."
+                    ),
+                    "current_source": current,
+                    "current_source_sha256": service.held_bundle_digest(current),
+                    "source_artifact_sha256": "d" * 64,
+                }
+            ],
+        }
+        manifest = {
+            "schema": "mokaair-news-held-navigation-repair-v1",
+            "candidate_id": str(cid),
+            "operation_id": str(uuid4()),
+            "expected_snapshot": snapshot,
+            "review_sha256": "b" * 64,
+            "evidence_ids": [stored["id"]],
+            "reason": (
+                "Remove only this independently reviewed legacy listing, archive it, "
+                "then require fresh ordinary verification."
+            ),
+        }
+    return engine, factory, redis, cid, actor_id, manifest, review
+
+
+async def _call_navigation_repair(session, redis, cid, manifest, review, actor=None):
+    from app.news_automation.service import repair_held_navigation
+
+    return await repair_held_navigation(
+        session,
+        redis,
+        cid,
+        manifest,
+        review,
+        manifest_sha256="a" * 64,
+        review_sha256="b" * 64,
+        actor=actor,
+    )
+
+
+@pytest.mark.asyncio
+async def test_navigation_repair_archives_exact_rows_preserves_history_and_requires_fresh_review():
+    from app.models import User
+    from app.news_automation import service
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _navigation_repair_case()
+    try:
+        async with factory() as session:
+            before = manifest["expected_snapshot"]["state"]
+            candidate = await session.get(NewsCandidate, cid)
+            assert len(before["runs"]) == 2 and len(before["assets"]) == 1
+            assert sum(row["assessment_type"] == "judge" for row in before["assessments"]) == 2
+            assert await service._latest_pass(session, candidate, "verification") is not None
+            assert await service._latest_pass(session, candidate, "locale_review") is not None
+            plan = await _call_navigation_repair(session, redis, cid, manifest, review)
+            assert not plan["applied"] and not session.new and not session.deleted
+            assert (await service.held_bundle_snapshot(session, redis, cid))["state"] == before
+            result = await _call_navigation_repair(
+                session, redis, cid, manifest, review, await session.get(User, actor_id)
+            )
+            await session.commit()
+            after = (await service.held_bundle_snapshot(session, redis, cid))["state"]
+            for group in before:
+                if group not in {"candidate", "evidence", "audits"}:
+                    assert after[group] == before[group]
+            for key, value in before["candidate"].items():
+                if key not in {
+                    "evidence_hash",
+                    "would_publish",
+                    "error_code",
+                    "error_detail",
+                    "updated_at",
+                }:
+                    assert after["candidate"][key] == value
+            assert len(after["evidence"]) == len(before["evidence"]) - 1
+            assert after["candidate"]["evidence_hash"] != before["candidate"]["evidence_hash"]
+            assert after["candidate"]["would_publish"] is False
+            candidate = await session.get(NewsCandidate, cid)
+            assert await service._latest_pass(session, candidate, "verification") is None
+            assert await service._latest_pass(session, candidate, "locale_review") is None
+            assert (
+                result["fresh_verification_required"]
+                and result["queue_calls"] == result["model_calls"] == 0
+            )
+            old = {row["id"]: row for row in before["audits"]}
+            assert {row["id"]: row for row in after["audits"] if row["id"] in old} == old
+            added = [row for row in after["audits"] if row["id"] not in old]
+            assert len(added) == 1 and added[0]["actor_user_id"] == str(actor_id)
+            metadata = added[0]["metadata_json"]
+            assert metadata["before_evidence"] == before["evidence"]
+            assert metadata["after_evidence"] == after["evidence"]
+            assert metadata["navigation_review"] == review["navigation"]
+            assert metadata["claim_ledger"] == before["candidate"]["claim_ledger_json"]
+            manifest["expected_snapshot"] = await service.held_bundle_snapshot(session, redis, cid)
+            manifest["operation_id"] = str(uuid4())
+            with pytest.raises(AppError) as used:
+                await _call_navigation_repair(
+                    session, redis, cid, manifest, review, await session.get(User, actor_id)
+                )
+            assert used.value.code == "news_navigation_operation_used"
+        assert await redis.lrange("rq:queue:news", 0, -1) == []
+    finally:
+        await redis.aclose()
+        await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "mode",
+    [
+        "source",
+        "audit",
+        "rq",
+        "published",
+        "claim",
+        "mixed_claim",
+        "document",
+        "empty_excerpt",
+        "article",
+    ],
+)
+async def test_navigation_repair_refuses_drift_busy_authored_and_still_cited_sources(mode):
+    from app.models import AdminAuditLog, User
+    from app.news_automation import service
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _navigation_repair_case()
+    try:
+        async with factory() as session:
+            candidate = await session.get(NewsCandidate, cid)
+            nav = await session.get(NewsEvidence, UUID(manifest["evidence_ids"][0]))
+            if mode == "source":
+                (
+                    await session.get(NewsSource, candidate.source_id)
+                ).name = "A concurrent source change"
+            elif mode == "audit":
+                session.add(
+                    AdminAuditLog(
+                        actor_user_id=actor_id,
+                        action="concurrent_edit",
+                        target=f"news-candidate:{cid}",
+                    )
+                )
+            elif mode == "rq":
+                await redis.lpush("rq:queue:news", f"news-candidate-{cid}-99")
+            elif mode == "published":
+                candidate.published_at = datetime.now(UTC)
+            elif mode in {"claim", "mixed_claim"}:
+                urls = [nav.url] + ([candidate.canonical_url] if mode == "mixed_claim" else [])
+                candidate.claim_ledger_json = [
+                    {"claim": "Retained historical assertion", "source_urls": urls}
+                ]
+            elif mode == "document":
+                from app.guides.models import GuideArticleLocale
+
+                locale = await session.scalar(
+                    select(GuideArticleLocale).where(
+                        GuideArticleLocale.article_id == candidate.guide_article_id
+                    )
+                )
+                doc = deepcopy(locale.draft_json)
+                doc["sources"].append(
+                    {"title": nav.title, "url": nav.url, "checked_on": "2026-10-01"}
+                )
+                locale.draft_json = doc
+            elif mode == "empty_excerpt":
+                nav.excerpt = "   "
+            elif mode == "article":
+                nav.url = "https://www.theverge.com/news/123456/an-authored-article"
+            await session.commit()
+            if mode not in {"source", "audit", "rq"}:
+                manifest["expected_snapshot"] = await service.held_bundle_snapshot(
+                    session, redis, cid
+                )
+            before = await service.held_bundle_snapshot(session, redis, cid)
+            with pytest.raises(AppError) as refused:
+                await _call_navigation_repair(
+                    session, redis, cid, manifest, review, await session.get(User, actor_id)
+                )
+            assert (
+                refused.value.code
+                == {
+                    "source": "news_navigation_state_changed",
+                    "audit": "news_navigation_state_changed",
+                    "rq": "news_navigation_state_changed",
+                    "published": "news_navigation_busy",
+                    "claim": "news_navigation_claim_source",
+                    "mixed_claim": "news_navigation_claim_source",
+                    "document": "news_navigation_still_cited",
+                    "empty_excerpt": "news_navigation_review_mismatch",
+                    "article": "news_navigation_not_listing",
+                }[mode]
+            )
+            await session.rollback()
+            assert (await service.held_bundle_snapshot(session, redis, cid))["state"] == before[
+                "state"
+            ]
+    finally:
+        await redis.aclose()
+        await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "mode",
+    [
+        "expired",
+        "future_source",
+        "blank_source",
+        "redirect",
+        "source_hash",
+        "unhashable_id",
+        "primary",
+    ],
+)
+async def test_navigation_repair_requires_exact_readable_dated_independent_proof(mode):
+    from app.news_automation import service
+
+    engine, factory, redis, cid, _actor_id, manifest, review = await _navigation_repair_case()
+    try:
+        proof = review["navigation"][0]
+        if mode == "expired":
+            manifest["expected_snapshot"]["captured_at"] = (
+                datetime.now(UTC) - timedelta(minutes=16)
+            ).isoformat()
+        elif mode == "future_source":
+            proof["current_source"]["fetched_at"] = (
+                datetime.now(UTC) + timedelta(minutes=1)
+            ).isoformat()
+        elif mode == "blank_source":
+            proof["current_source"]["excerpt"] = " "
+        elif mode == "redirect":
+            proof["current_source"]["resolved_url"] = "https://www.theverge.com/news/123/authored"
+        elif mode == "source_hash":
+            proof["current_source_sha256"] = "0" * 64
+        elif mode == "unhashable_id":
+            proof["evidence_id"] = []
+        elif mode == "primary":
+            manifest["evidence_ids"] = [
+                row["id"] for row in manifest["expected_snapshot"]["state"]["evidence"]
+            ]
+        if mode in {"future_source", "blank_source", "redirect"}:
+            proof["current_source_sha256"] = service.held_bundle_digest(proof["current_source"])
+        async with factory() as session:
+            before = await service.held_bundle_snapshot(session, redis, cid)
+            with pytest.raises(AppError):
+                await _call_navigation_repair(session, redis, cid, manifest, review)
+            assert not session.new and not session.deleted
+            assert (await service.held_bundle_snapshot(session, redis, cid))["state"] == before[
+                "state"
+            ]
+    finally:
+        await redis.aclose()
+        await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_navigation_repair_caller_rollback_restores_rows_and_actor_audit():
+    from app.models import User
+    from app.news_automation import service
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _navigation_repair_case()
+    try:
+        async with factory() as session:
+            await _call_navigation_repair(
+                session, redis, cid, manifest, review, await session.get(User, actor_id)
+            )
+            await session.rollback()
+            assert (await service.held_bundle_snapshot(session, redis, cid))["state"] == manifest[
+                "expected_snapshot"
+            ]["state"]
+    finally:
+        await redis.aclose()
+        await engine.dispose()
+
+
+@pytest.mark.parametrize(
+    "text,cited",
+    [
+        ("https://www.theverge.com/news", True),
+        ("See https://www.theverge.com/news/ for the listing.", True),
+        ("[Listing](https://www.theverge.com/news?utm_source=test)", True),
+        ("https://www.theverge.com/news#latest", True),
+        ("The listing is https://www.theverge.com/news。", True),
+        ("http://www.theverge.com/news", True),
+        ("HTTPS://WWW.THEVERGE.COM/news", True),
+        ("https://www.theverge.com:443/news", True),
+        ("'https://www.theverge.com/news'", True),
+        ("參見「https://www.theverge.com/news」", True),
+        ("See “https://www.theverge.com/news”", True),
+        ("See ‘https://www.theverge.com/news’", True),
+        ("https://www.theverge.com/news/123456/an-article", False),
+        ("https://www.theverge.com/newsletters", False),
+        ("https://www.theverge.com.example/news", False),
+    ],
+)
+def test_navigation_repair_citation_matches_complete_urls_and_keeps_authored_descendants(
+    text, cited
+):
+    from app.news_automation.service import _document_cites_navigation
+
+    document = {"blocks": [{"text": text}], "sources": []}
+    assert _document_cites_navigation(document, {"https://www.theverge.com/news"}) is cited
+
+
+@pytest.mark.asyncio
+async def test_navigation_repair_audit_insert_failure_rolls_back_all_native_changes():
+    from sqlalchemy import event
+
+    from app.models import AdminAuditLog, User
+    from app.news_automation import service
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _navigation_repair_case()
+
+    def refuse_audit(_mapper, _connection, target):
+        if target.action == "news_navigation_evidence_repaired":
+            raise RuntimeError("Repair audit insert failed")
+
+    event.listen(AdminAuditLog, "before_insert", refuse_audit)
+    try:
+        async with factory() as session:
+            with pytest.raises(RuntimeError, match="audit insert failed"):
+                await _call_navigation_repair(
+                    session, redis, cid, manifest, review, await session.get(User, actor_id)
+                )
+            await session.rollback()
+            assert (await service.held_bundle_snapshot(session, redis, cid))["state"] == manifest[
+                "expected_snapshot"
+            ]["state"]
+    finally:
+        event.remove(AdminAuditLog, "before_insert", refuse_audit)
+        await redis.aclose()
+        await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("locked_group", ["candidate", "evidence", "locales"])
+async def test_navigation_repair_postgres_nowait_refuses_live_editor_without_partial_repair(
+    held_ingestion_postgres, locked_group
+):
+    from app.guides.models import GuideArticleLocale
+    from app.models import User
+    from app.news_automation import service
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _navigation_repair_case(
+        held_ingestion_postgres
+    )
+    models = {"candidate": NewsCandidate, "evidence": NewsEvidence, "locales": GuideArticleLocale}
+    model = cast(Any, models[locked_group])
+    locked_id = manifest["expected_snapshot"]["state"][locked_group]
+    locked_id = locked_id["id"] if locked_group == "candidate" else locked_id[0]["id"]
+    try:
+        async with factory() as owner, factory() as operator:
+            await owner.scalar(select(model).where(model.id == UUID(locked_id)).with_for_update())
+            with pytest.raises(DBAPIError):
+                await _call_navigation_repair(
+                    operator, redis, cid, manifest, review, await operator.get(User, actor_id)
+                )
+            await operator.rollback()
+            await owner.rollback()
+        async with factory() as session:
+            assert (await service.held_bundle_snapshot(session, redis, cid))["state"] == manifest[
+                "expected_snapshot"
+            ]["state"]
+    finally:
+        await redis.aclose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("outcome", ["unknown_before_write", "lost_commit_ack"])
+async def test_navigation_repair_cli_durable_intent_refuses_same_candidate_with_a_new_nonce(
+    outcome, tmp_path, monkeypatch
+):
+    import hashlib
+
+    from app.news_automation import backfill_cli, service
+
+    engine, factory, redis, cid, _actor_id, manifest, review = await _navigation_repair_case()
+    intent_dir = tmp_path / "intent"
+    intent_dir.mkdir(mode=0o700)
+    monkeypatch.setattr(backfill_cli, "INGESTION_INTENT_DIR", intent_dir)
+    monkeypatch.setattr(backfill_cli, "SessionFactory", factory)
+    monkeypatch.setattr(backfill_cli, "get_redis", lambda: redis)
+    monkeypatch.setattr(backfill_cli, "engine", SimpleNamespace(dispose=AsyncMock()))
+    commits = 0
+    original_commit = AsyncSession.commit
+
+    async def lost_ack(session):
+        nonlocal commits
+        commits += 1
+        await original_commit(session)
+        raise RuntimeError("Commit acknowledgement lost")
+
+    def pinned_files():
+        review_path = tmp_path / "review.json"
+        review_path.write_text(json.dumps(review), encoding="utf-8")
+        review_sha = hashlib.sha256(review_path.read_bytes()).hexdigest()
+        manifest["review_sha256"] = review_sha
+        manifest_path = tmp_path / "manifest.json"
+        manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+        return {
+            "manifest_path": manifest_path,
+            "manifest_sha256": hashlib.sha256(manifest_path.read_bytes()).hexdigest(),
+            "review_path": review_path,
+            "review_sha256": review_sha,
+            "apply": True,
+            "actor_email": "ingestion-owner@example.com",
+        }
+
+    try:
+        if outcome == "unknown_before_write":
+            backfill_cli._ingestion_intent(cid, uuid4(), purpose="navigation-repair", unknown=True)
+            expected_error = SystemExit
+        else:
+            monkeypatch.setattr(AsyncSession, "commit", lost_ack)
+            with pytest.raises(RuntimeError, match="acknowledgement lost"):
+                await backfill_cli.run_navigation_repair(cid, **pinned_files())
+            expected_error = AppError
+        original_intent = next(intent_dir.iterdir()).read_bytes()
+        manifest["operation_id"] = str(uuid4())
+        async with factory() as session:
+            before = await service.held_bundle_snapshot(session, redis, cid)
+            manifest["expected_snapshot"] = before
+        with pytest.raises(expected_error):
+            await backfill_cli.run_navigation_repair(cid, **pinned_files())
+        async with factory() as session:
+            assert (await service.held_bundle_snapshot(session, redis, cid))["state"] == before[
+                "state"
+            ]
+        assert commits == (1 if outcome == "lost_commit_ack" else 0)
+        assert next(intent_dir.iterdir()).read_bytes() == original_intent
+        assert len(list(intent_dir.iterdir())) == 1
+        assert await redis.lrange("rq:queue:news", 0, -1) == []
+    finally:
+        await redis.aclose()
+        await engine.dispose()
 
 
 @pytest.mark.asyncio
