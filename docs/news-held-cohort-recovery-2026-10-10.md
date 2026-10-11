@@ -2484,7 +2484,7 @@ and Clef receipt 5815007708003a869ffb9e1117daaee32920d9f4d04cd34736760e0c73f6425
 join the stored full documents, old history, native publication audits and
 twenty locale pages. Public proof hashes are ac2ffb7abc5842d32150210510d3068c9b6735fbd9fc0a2ef6d9c62f53547685
 and bb9929e3df6b689d16a5fa7cac184786e0409b00411ba833180bb843f6f0c8a6.
-These receipts live under C:/Users/x8120/.codex/news-review/20261010-6f71.
+These receipts live under <home>/.codex/news-review/20261010-6f71.
 
 The fresh fixed-original208 census at 2026-10-11T11:32:38.063446Z reports
 133 published, 46 manual review, 19 needs redraft, 1 failed, 6 duplicate
