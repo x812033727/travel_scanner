@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
-import { assetUrl, BRAND, captureRef, CREDIT_MAX_CHARS, escapeHtml, headlineCount, inlineSvg, isStockPath, PHOTO_CAPTION_MAX_CHARS, PHOTO_TILT_MAX, photoTilt, richText, sceneProblems, slideHtml, SOURCE_MAX_CHARS, SOURCED_TEMPLATES, svgProblems, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_LAYOUTS, THUMB_TONES, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailRotation, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
+import { assetUrl, BRAND, captureRef, CREDIT_MAX_CHARS, escapeHtml, headlineCount, inlineSvg, isStockPath, MARK_OVERLAID, PHOTO_CAPTION_MAX_CHARS, PHOTO_TILT_MAX, photoTilt, richText, sceneProblems, slideHtml, SOURCE_MAX_CHARS, SOURCED_TEMPLATES, svgProblems, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_LAYOUTS, THUMB_TONES, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailRotation, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
 
 const showcase = JSON.parse(readFileSync(new URL("./fixtures/showcase/video.json", import.meta.url), "utf8"));
 const scene = (id) => structuredClone(showcase.scenes.find((each) => each.id === id));
@@ -82,6 +82,20 @@ test("the chapter label is drawn when given and the brand always is", () => {
   const html = slideHtml(scene("numbers"), state({ chapter: "比一比" }));
   assert.match(html, /<div class="chrome-chapter">比一比<\/div><div class="chrome-brand">MOKAAIR<\/div>/);
   assert.doesNotMatch(slideHtml(scene("numbers"), state({ chapter: null })), /chrome-chapter/);
+});
+
+test("a video that carries the channel mark shows its picture where the brand word was, and nothing else of the page changes", () => {
+  const mark = { src: "data:image/png;base64,AAAA", box: { x: 1622, y: 54, width: 208, height: 74 } };
+  const brand = '<div class="chrome-brand">MOKAAIR</div>';
+  const plain = slideHtml(scene("numbers"), state({ chapter: "比一比" }));
+  const marked = slideHtml(scene("numbers"), state({ chapter: "比一比", mark }));
+  assert.match(marked, /<div class="chrome-chapter">比一比<\/div><img class="chrome-mark" alt="" src="data:image\/png;base64,AAAA" style="position:absolute;left:1622px;top:54px;width:208px;height:74px">/);
+  assert.doesNotMatch(marked, /chrome-brand/);
+  assert.equal(marked.replace(/<img class="chrome-mark"[^>]*>/, brand), plain, "only the corner differs: the head and the theme are untouched");
+  // A card assemble will move leaves the corner to the overlay, which stays still.
+  const overlaid = slideHtml(scene("numbers"), state({ chapter: "比一比", mark: MARK_OVERLAID }));
+  assert.equal(overlaid, plain.replace(brand, ""));
+  assert.equal(visibleText(marked), visibleText(overlaid), "the picture adds no text for the glyph check to cover");
 });
 
 test("with the chapter count known, the corner says 02 / 06 and a bar marks the chapters seen and current", () => {

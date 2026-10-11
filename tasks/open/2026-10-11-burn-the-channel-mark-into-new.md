@@ -12,6 +12,7 @@ branch: claude/video-logo-watermark-b075f1
 depends_on: []
 scope:
   - tools/video/watermark
+  - tools/video/cli.mjs
   - tools/video/core/watermark.mjs
   - tools/video/core/watermark.test.mjs
   - tools/video/templates/templates.mjs

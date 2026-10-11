@@ -103,6 +103,8 @@ Usage: node tools/video/cli.mjs <command> [options]
                                                    inspect or install a fixed intro/outro package for new long videos
   assemble --slug S [--workdir D] [--adopt-branding]
                                                    explicitly add current branding to an existing unapproved cut
+  render --slug S [--workdir D] [--adopt-watermark]
+                                                   explicitly draw an existing unapproved cut with the channel mark (docs/videos/WATERMARK.md)
   compile --slug <series>-full [--workdir D] [--force] [--dry-run] [--adopt-branding]
                                                    join a binge series' cleared episodes into its compilation, with
                                                    chapter cards, merged captions and chapters (docs/videos/BINGE.md)

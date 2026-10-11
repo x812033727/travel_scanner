@@ -8,16 +8,17 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { explainerSeries, isShot } from "../core/drama.mjs";
+import { explainerSeries, illustrated, isShot } from "../core/drama.mjs";
 import { LOCALES, narrationLocale } from "../core/schema.mjs";
 import { localizedThumbnail, localizedThumbnailHash, thumbnailGap } from "../core/translations.mjs";
+import { watermarkDataUri } from "../core/watermark.mjs";
 
 /** The series whose own thumbnail a video wears (templates.mjs THUMB_SERIES), or null. */
 export const thumbnailSeries = (doc) => explainerSeries(doc);
 import { estimateTimeline } from "../core/timeline.mjs";
 import { screencastHtml, screencastPlan } from "../screencast/scene.mjs";
 import { captureCount, isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
-import { captureRef, isStockPath, ORIGIN, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
+import { captureRef, isStockPath, MARK_OVERLAID, ORIGIN, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
 
 export const THEME_FILE = fileURLToPath(new URL("../templates/theme.css", import.meta.url));
 // Chapter cards and the title card say where they are themselves; a label on top would repeat it.
@@ -138,11 +139,17 @@ export function thumbnailSubject(data, { keyframes = {}, screencasts = {} } = {}
  * null until the scene is taken). With `translations` (locale to i18n file), every other
  * caption locale whose thumbnail words are current gets its own thumbnail in
  * `thumbnail.locales` ({ locale, file, hash, html, key, text }), the same picture and layout with
- * its words; `thumbnail.gaps` says why each other locale has none.
+ * its words; `thumbnail.gaps` says why each other locale has none. With `watermark` (the mark
+ * render selected, core/watermark.mjs), every card carries the channel mark in its corner and
+ * comes back `marked: true`; a card assemble will move (`movesAsCard`) leaves the corner empty and
+ * comes back `marked: false`, for assemble to lay the mark over its segment, where it stays
+ * still. Without one, the plan is what it was.
  */
-export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = {}, screencasts = {}, translations = null, workdir = null } = {}) {
+export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = {}, screencasts = {}, translations = null, workdir = null, watermark = null } = {}) {
   const timeline = estimateTimeline(doc);
   const chapterCount = doc.scenes.filter((scene) => scene.chapter).length;
+  const drawn = watermark ? { src: watermarkDataUri(watermark), box: watermark.box } : null;
+  const cardsMove = illustrated(doc);
   let chapter = null;
   let chapterNumber = 0;
   const scenes = doc.scenes.map((scene, index) => {
@@ -151,9 +158,11 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
       chapterNumber += 1;
     }
     if (isShot(scene)) return { id: scene.id, template: scene.template, kind: "clip", states: [] };
+    const mark = !drawn ? null : cardsMove && movesAsCard(timeline.scenes[index].states) ? MARK_OVERLAID : drawn;
+    const marked = mark ? { marked: mark !== MARK_OVERLAID } : {};
     if (isScreencast(scene)) {
-      const states = screencastStates(scene, timeline.scenes[index].states, screencasts[scene.id], theme, { chapter, chapterNumber, chapterCount });
-      return { id: scene.id, template: scene.template, kind: "stills", states };
+      const states = screencastStates(scene, timeline.scenes[index].states, screencasts[scene.id], theme, { chapter, chapterNumber, chapterCount, ...(mark ? { mark } : {}) });
+      return { id: scene.id, template: scene.template, kind: "stills", states, ...marked };
     }
     const totalReveals = scene.lines.reduce((sum, line) => sum + (line.reveal ?? 0), 0);
     const assets = root ? sceneAssets(scene).map((asset) => assetFile(asset, { root, workdir })).filter(Boolean).map((file) => readFileSync(file)) : [];
@@ -169,10 +178,11 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
         chapter: NO_CHAPTER_LABEL.has(scene.template) ? null : chapter,
         chapterNumber,
         chapterCount,
+        ...(mark ? { mark } : {}),
       });
       return { reveal: state.reveal, first: stateIndex === 0, html, key: hash(theme, html, assetHash), text: visibleText(html) };
     });
-    return { id: scene.id, template: scene.template, kind: "stills", states };
+    return { id: scene.id, template: scene.template, kind: "stills", states, ...marked };
   });
   // `locale` is a caption locale's own thumbnail, which may be set in its own font (fonts.mjs).
   // `offset` moves a B or C variant one layout and tone on from A's (templates.mjs thumbnailRotation).
@@ -209,6 +219,13 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
   }
   return { scenes, thumbnail };
 }
+
+/**
+ * Whether assemble lays this card out as a moving picture: in an illustrated slides video a card
+ * with one state drifts like a keyframe (assemble/drama.mjs layoutDrama, `cardMotion`), and a
+ * mark drawn into it would creep with the card and jump back at the cut to the next shot.
+ */
+export const movesAsCard = (states) => states.length === 1;
 
 /** Where a caption locale's own thumbnail is written in the work directory (and in upload/). */
 export const localeThumbnailFile = (locale) => `thumbnails/${locale}.jpg`;

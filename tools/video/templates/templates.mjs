@@ -458,7 +458,25 @@ export function chrome(scene, state) {
     : "";
   const index = knowsChapters(state) ? `<span class="index">${pad(state.chapterNumber)} / ${pad(state.chapterCount)}</span>` : "";
   const label = state.chapter ? `<div class="chrome-chapter">${index}${escapeHtml(state.chapter)}</div>` : "";
-  return `${bar}${label}<div class="chrome-brand">${BRAND}</div>`;
+  return `${bar}${label}${cornerMark(state.mark)}`;
+}
+
+// A scene whose corner is left empty: assemble lays the channel mark over its segment instead.
+export const MARK_OVERLAID = "overlaid";
+
+/**
+ * The top right corner. A video that carries the channel mark (docs/videos/WATERMARK.md) shows
+ * its picture there, `state.mark` being `{ src, box }`: the same PNG, at the same pixels, that
+ * assemble lays over the shots, so the mark does not move when a slide follows a picture. The
+ * place is written on the element and the picture travels as a data URI, since a page may load
+ * nothing from tools/; theme.css is not touched, so a video without the mark draws the brand
+ * word exactly as it always did.
+ */
+function cornerMark(mark) {
+  if (mark === MARK_OVERLAID) return "";
+  if (!mark) return `<div class="chrome-brand">${BRAND}</div>`;
+  const { x, y, width, height } = mark.box;
+  return `<img class="chrome-mark" alt="" src="${mark.src}" style="position:absolute;left:${x}px;top:${y}px;width:${width}px;height:${height}px">`;
 }
 
 /**
