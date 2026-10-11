@@ -1,20 +1,22 @@
 ---
 id: 2026-10-11-cute-explainers-own-series-prompts
 title: Cute explainers are written from their own series' prompts; the request form offers cute-cartoon and cute-mystery
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-explainer-pr3
+claimed_at: 2026-10-11T10:45:22Z
 created_at: 2026-10-11T04:01:38Z
 completed_at:
-branch:
+branch: claude/explainer-series-prompts
 depends_on:
   - 2026-10-11-explainer-request-names-its-image-model
 scope:
   - tools/video/automation/explainer-series.mjs
   - tools/video/automation/explainer-series.test.mjs
   - tools/video/automation/prompts.mjs
+  - tools/video/automation/prompts.test.mjs
+  - tools/video/automation/automation.test.mjs
   - tools/video/automation/flow.mjs
   - tools/video/automation/series.mjs
   - tools/video/automation/series.test.mjs
@@ -25,6 +27,8 @@ scope:
   - tools/video/media/keyframes.mjs
   - tools/video/media/look-keyframes.test.mjs
   - apps/web/components/admin-video-series.tsx
+  - apps/web/components/admin-video-settings-drama.tsx
+  - apps/web/lib/video-presets.ts
   - apps/web/components/admin-video-explainer-family.test.tsx
   - apps/web/components/admin-video-request-image-model.test.tsx
   - docs/videos/DRAMA-FLOW.md
