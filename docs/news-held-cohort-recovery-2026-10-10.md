@@ -2468,3 +2468,34 @@ Sanders and Glasses still require the separately filed audited correction
 of their retained historical claim ledgers before navigation cleanup.
 The last original208 census remains the dated10:07Z count129published;
 there is no claim that the entire backlog is finished.
+
+
+## Four original corrected stories published; actual census 19:32 Taipei
+
+Math advisory, TechCrunch plugins, Fable biology and Cloudflare Clef have
+now completed their original native route. Each has five published v4
+documents, matching API and page GETs, and full independent final readback.
+The first three used fresh Claude final judges (no new JEV); Clef has a
+fresh final JEV and no new Opus final-edit. Native audit wording is not
+treated as proof of an editor call that did not occur.
+
+Independent first-three receipt 011d1010f05343265b45d98c8f00c2bd8729eaa0d903495f97e82a2376f5de61
+and Clef receipt 5815007708003a869ffb9e1117daaee32920d9f4d04cd34736760e0c73f64251
+join the stored full documents, old history, native publication audits and
+twenty locale pages. Public proof hashes are ac2ffb7abc5842d32150210510d3068c9b6735fbd9fc0a2ef6d9c62f53547685
+and bb9929e3df6b689d16a5fa7cac184786e0409b00411ba833180bb843f6f0c8a6.
+These receipts live under C:/Users/x8120/.codex/news-review/20261010-6f71.
+
+The fresh fixed-original208 census at 2026-10-11T11:32:38.063446Z reports
+133 published, 46 manual review, 19 needs redraft, 1 failed, 6 duplicate
+and 3 rejected. Census SHA 672c2a3b9c3ff12364a14b5b7908fe520b05df0890b5de8d218aaa66477a6396;
+sealed ledger SHA 098d20704b12e46ae99d641c285ab1768c082a93f611e5164e57404f73664c9f.
+All 133 publications have matching five-locale public proof; the older
+129 proofs retain their own observation times. This is not a new GET of
+every historical page and the original backlog remains incomplete.
+
+Sanders/Glasses remain held for audited historical-claim correction.
+PR1444 still requires current-head four-check CI, normal lock release and
+fresh host preflight. Its owner-approved conditional merge/deploy remains
+in force. Main advanced to 9852f14b (#1442), so the PR must be updated and
+rechecked. No navigation removal or foreign-lock cleanup has occurred.
