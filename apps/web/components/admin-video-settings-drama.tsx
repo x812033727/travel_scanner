@@ -10,6 +10,7 @@ import {
 import { fieldClass } from "@/components/community/ui";
 import { Link } from "@/i18n/navigation";
 import { settingsHref } from "@/lib/admin-settings-ownership";
+import { defaultStyleChoices } from "@/lib/video-presets";
 
 // The drama's settings (docs/videos/DRAMA-FLOW.md, section 1), on the drama tab inside
 // admin-video-drama-settings.tsx: the switch and topics, the drama's own stage models (read only),
@@ -50,6 +51,20 @@ const labelKey: Record<NumberField, string> = {
   monthly_clip_seconds_budget: "drama_monthly_clip_seconds_budget", monthly_images_budget: "drama_monthly_images_budget", monthly_judge_calls_budget: "drama_monthly_judge_calls_budget",
   monthly_music_budget: "drama_monthly_music_budget", max_usd_per_video: "drama_max_usd_per_video",
 };
+
+/**
+ * The default-style select. The server's list minus the presets held back from being a default
+ * (lib/video-presets.ts); a held preset that is already the saved value stays, so the select
+ * never shows another style than the one stored.
+ */
+export function DefaultStyleSelect({ presets, value, disabled, onChange }: { presets: readonly string[]; value: string; disabled?: boolean; onChange: (preset: string) => void }) {
+  const t = useTranslations("admin.videoSettings");
+  return (
+    <select className={fieldClass} value={value} disabled={disabled} onChange={(event) => onChange(event.target.value)}>
+      {defaultStyleChoices(presets, value).map((preset) => <option key={preset} value={preset}>{t(`stylePresets.${preset}`)}</option>)}
+    </select>
+  );
+}
 
 export function AdminVideoSettingsDrama({ view, prompts, canManage, onSaved }: SectionProps) {
   const t = useTranslations("admin.videoSettings");
@@ -148,9 +163,7 @@ export function AdminVideoSettingsDrama({ view, prompts, canManage, onSaved }: S
       </div>
       <div className="grid gap-3 md:grid-cols-4">
         <label className="block text-sm font-semibold">{t("fields.drama_style_preset")}
-          <select className={fieldClass} value={drama.style_preset} disabled={disabled} onChange={(event) => edit({ style_preset: event.target.value as DramaSettings["style_preset"] })}>
-            {(view.style_presets ?? [...STYLE_PRESETS]).map((preset) => <option key={preset} value={preset}>{t(`stylePresets.${preset}`)}</option>)}
-          </select>
+          <DefaultStyleSelect presets={view.style_presets ?? STYLE_PRESETS} value={drama.style_preset} disabled={disabled} onChange={(preset) => edit({ style_preset: preset as DramaSettings["style_preset"] })} />
         </label>
         {numberFields.shape.map(numberInput)}
       </div>

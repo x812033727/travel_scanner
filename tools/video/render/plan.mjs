@@ -8,12 +8,12 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { isExplainer, isShot } from "../core/drama.mjs";
+import { explainerSeries, isShot } from "../core/drama.mjs";
 import { LOCALES, narrationLocale } from "../core/schema.mjs";
 import { localizedThumbnail, localizedThumbnailHash, thumbnailGap } from "../core/translations.mjs";
 
 /** The series whose own thumbnail a video wears (templates.mjs THUMB_SERIES), or null. */
-export const thumbnailSeries = (doc) => (isExplainer(doc) ? "sothatswhy" : null);
+export const thumbnailSeries = (doc) => explainerSeries(doc);
 import { estimateTimeline } from "../core/timeline.mjs";
 import { screencastHtml, screencastPlan } from "../screencast/scene.mjs";
 import { captureCount, isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";

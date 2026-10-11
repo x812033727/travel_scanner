@@ -5,7 +5,7 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 
 import { readApprovals } from "./approvals.mjs";
-import { isExplainer } from "./drama.mjs";
+import { explainerSeries } from "./drama.mjs";
 import { atomicWrite, readJson, UsageError } from "./paths.mjs";
 import { FPS, frameToMs } from "./timeline.mjs";
 
@@ -59,7 +59,7 @@ export function readCurrentBranding(workBase, { series = null } = {}) {
 
 /** Only an absent series registry falls back; an explicit disabled choice stays disabled. */
 export function readDefaultBranding(workBase, doc) {
-  const series = isExplainer(doc) ? "sothatswhy" : null;
+  const series = explainerSeries(doc);
   if (series && existsSync(path.join(workBase, currentBrandingFile(series)))) return readCurrentBranding(workBase, { series });
   return readCurrentBranding(workBase);
 }

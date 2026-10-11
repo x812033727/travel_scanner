@@ -14,6 +14,7 @@ import { Button } from "@/components/community/ui";
 import { Link } from "@/i18n/navigation";
 import { useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
+import { isExplainerPreset } from "@/lib/video-presets";
 
 // The drama tab of /admin/videos (docs/videos/SERIES.md): a long series is planned document by
 // document (the setting book, the whole-series outline, each chapter's detailed outline), each
@@ -80,10 +81,15 @@ const ASPECTS = ["world", "bonds", "structure", "mood"] as const;
 const TONES = ["dual-male-leads-subtext", "dual-male-leads-explicit", "hetero-leads", "no-romance"] as const;
 const PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "custom"] as const;
 // A one-off episode may also be an illustrated explainer (narrator only, all stills); a series
-// runs the story prompts, which need a cast, so its forms keep the story presets.
+// runs the story prompts, which need a cast, so its forms keep the story presets. The two cute
+// explainer presets (cute-cartoon, cute-mystery) are known to the API and to the labels but are
+// not offered here yet: they join REQUEST_PRESETS in the pull request that gives each its own
+// prompts, since until then a cute request would be written from So That's Why's.
 const REQUEST_PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom"] as const;
 const DRAMA_MINUTES = { min: 1, max: 8, default: 3 } as const;
 const EXPLAINER_MINUTES = { min: 8, max: 20, default: 10 } as const;
+/** The length a one-off request may ask for: every explainer preset runs 8 to 20 minutes. */
+export const requestMinutes = (preset: string) => (isExplainerPreset(preset) ? EXPLAINER_MINUTES : DRAMA_MINUTES);
 const LONG_ANIME_RUNTIME: RuntimeSpec = { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 };
 const isLongAnime = (series: SeriesSummary) => !series.planning_only && series.production_policy === "long-anime-v1";
 const GUIDE_SLUG = /^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$/;
@@ -370,11 +376,9 @@ function NewDramaForm({ onFiled }: { onFiled: (seriesSlug: string | null) => voi
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const guideOk = !guide.trim() || GUIDE_SLUG.test(guide.trim());
-  const duration = preset === "flat-explainer" ? EXPLAINER_MINUTES : DRAMA_MINUTES;
+  const duration = requestMinutes(preset);
   const changePreset = (next: (typeof REQUEST_PRESETS)[number]) => {
-    if ((next === "flat-explainer") !== (preset === "flat-explainer")) {
-      setMinutes(next === "flat-explainer" ? EXPLAINER_MINUTES.default : DRAMA_MINUTES.default);
-    }
+    if (isExplainerPreset(next) !== isExplainerPreset(preset)) setMinutes(requestMinutes(next).default);
     setPreset(next);
   };
   const file = async () => {
@@ -408,7 +412,7 @@ function NewDramaForm({ onFiled }: { onFiled: (seriesSlug: string | null) => voi
             {REQUEST_PRESETS.map((each) => <option key={each} value={each}>{t(`presets.${each}`)}</option>)}
           </select>
         </label>
-        <label className="grid gap-2 text-sm font-semibold">{preset === "flat-explainer" ? t("minutes", { minutes: `${duration.min}–${duration.max}` }) : t("targetMinutes")}<input className={control} type="number" min={duration.min} max={duration.max} value={minutes} disabled={busy} onChange={(event) => setMinutes(Number(event.target.value))} /></label>
+        <label className="grid gap-2 text-sm font-semibold">{isExplainerPreset(preset) ? t("minutes", { minutes: `${duration.min}–${duration.max}` }) : t("targetMinutes")}<input className={control} type="number" min={duration.min} max={duration.max} value={minutes} disabled={busy} onChange={(event) => setMinutes(Number(event.target.value))} /></label>
       </div>
       <label className="grid gap-2 text-sm font-semibold">{t("requestNote")}<textarea className={control} rows={2} value={note} disabled={busy} maxLength={2000} placeholder={t("requestNotePlaceholder")} onChange={(event) => setNote(event.target.value)} /></label>
       {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
