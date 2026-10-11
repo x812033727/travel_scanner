@@ -1,15 +1,15 @@
 ---
 id: 2026-10-10-explainer-route-takes-a-series-look
 title: Explainer route: a series' own look, pillars and image model (MiniMax) instead of So That's Why's
-status: open
+status: done
 priority: P2
 area: api
 owner:
 claimed_at:
 created_at: 2026-10-10T16:20:00Z
-completed_at:
+completed_at: 2026-10-11T13:04:28Z
 branch:
-depends_on:
+depends_on: []
 scope:
   - docs/videos/explainer-route
 ---
@@ -73,6 +73,7 @@ field, and a request made with them draws with MiniMax.
 
 ## Notes
 
+- 2026-10-11 all three pull requests are live (#1435, #1443, #1447; the host runs 73c84ca7f). What this ticket's definition of done still lists and did not ship is in the follow-up tickets named in the note below; the ticket is closed on that basis.
 - 2026-10-11 the design is in the repository: [`docs/videos/explainer-route/`](../../docs/videos/explainer-route)
   (`DESIGN.md`, the owner's decisions in `DECISIONS.md`, pull request 3's prompt texts in
   `prompt-texts.md`, the three work orders under `orders/`). The work lands as three pull
