@@ -1708,3 +1708,69 @@ test("look run by hand under the project's STOP file, or while another producer 
   assert.equal(site.state.images.length, images, "no sheet was drawn");
   assert.deepEqual(files(), before, "no sheet or choice was written");
 });
+
+// Which question a picture is judged with is part of what the judge is paid for and of the
+// verdict a shot keeps: flat-explainer is scored on the rubric, on a server that offers the
+// yes/no fault checks too, as it was before the cute looks took the checks.
+test("a flat-explainer's stills stay on the scored rubric on a server that offers the fault checks", async () => {
+  const flat = sandbox("fixture-explainer", "explainer");
+  const site = mediaSite({ status: { ...STATUS, limits: { judge_checks: 1 } }, verdicts: () => ({ overall: 8, passed: true }) });
+  const run = context(flat, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", flat.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.ok(site.state.judges.length > 0);
+  assert.ok(keyframeChecks().every((item) => item.cost > 0), "a fault check carries what it costs the picture");
+  assert.ok(site.state.judges.every((request) => request.rubric.every((item) => item.cost === undefined)), "the scored rubric, not the checks");
+  assert.match(site.state.images[0].prompt, /Style: flat editorial illustration/);
+});
+
+// The cute looks were piloted as illustrated slides and measured with the nine yes/no checks, so
+// the host judges them the same way. A shot that still fails after its takes and two prompt-fix
+// rounds blocks the video (flow.mjs: keeping the judge's best take is an illustrated video's alone).
+test("a cute explainer's stills are judged by the nine fault checks the illustrated slides are, and scored on the rubric by a server without them", async () => {
+  const checksStatus = { ...STATUS, limits: { judge_checks: 1 } };
+  assert.deepEqual(keyframeChecks().map((item) => item.key), ["text", "anatomy", "detached", "subject", "frame", "style", "details", "awkward", "generated"]);
+  for (const preset of ["cute-mystery", "cute-cartoon"]) {
+    const box = sandbox("fixture-explainer", "explainer");
+    rewrite(box, (doc) => {
+      doc.look = { preset };
+      doc.subtitles = { burn_in: false };
+    });
+    const site = mediaSite({ status: checksStatus, verdicts: () => ({ overall: 9.29, passed: true }) });
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+    assert.ok(site.state.judges.length > 0);
+    // No style plate on this route: the style question is the context's, not a plate's.
+    for (const request of site.state.judges) assert.deepEqual(request.rubric, keyframeChecks(), preset);
+    assert.match(site.state.images[0].prompt, /Style: cute Taiwanese YouTube explainer cartoon/);
+    assert.ok(site.state.images.every((request) => request.references.length === 0), "no style plate and no sheet");
+    // An older server without the checks still scores them on the rubric.
+    const older = sandbox("fixture-explainer", "explainer");
+    rewrite(older, (doc) => {
+      doc.look = { preset };
+      doc.subtitles = { burn_in: false };
+    });
+    const olderSite = mediaSite({ verdicts: () => ({ overall: 8, passed: true }) });
+    const olderRun = context(older, olderSite.fetchImpl);
+    assert.equal(await main(["keyframes", "--slug", older.slug], olderRun.ctx), EXIT.ok, olderRun.out.stderr);
+    assert.ok(olderSite.state.judges.length > 0 && olderSite.state.judges.every((request) => request.rubric.every((item) => item.cost === undefined)), preset);
+  }
+});
+
+test("--accept-best is still refused for a cute explainer: its failing picture is the prompt's to fix, then the owner's retry", async () => {
+  const box = sandbox("fixture-explainer", "explainer");
+  rewrite(box, (doc) => {
+    doc.look = { preset: "cute-mystery" };
+    doc.subtitles = { burn_in: false };
+  });
+  const [failing] = explainerFixture().scenes.filter((scene) => scene.template === "shot").map((scene) => scene.id);
+  const site = mediaSite({ status: { ...STATUS, limits: { judge_checks: 1 } }, verdicts: (kind, request) => (kind === "keyframe" && request.context.shot.id === failing ? { overall: 4, passed: false, problems: ["text: a word on the sign"] } : { overall: 9, passed: true }) });
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.lint, run.out.stderr);
+  const file = path.join(box.workdir, "keyframes", "manifest.json");
+  const before = readFileSync(file, "utf8");
+  assert.equal(JSON.parse(before).shots[failing].needs_review, true);
+  const refused = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--accept-best", "all"], refused.ctx), EXIT.usage);
+  assert.match(refused.out.stderr, /--accept-best keeps pictures of an illustrated video alone .* fix the prompts of its shots instead/);
+  assert.equal(readFileSync(file, "utf8"), before, "nothing is kept, and the shot still waits for its prompt");
+});

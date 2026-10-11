@@ -14,13 +14,18 @@ import { hasAnimePolicy, isLongAnime } from "../core/anime-policy.mjs";
 import { atomicWrite, docDir, readJson } from "../core/paths.mjs";
 import { AutomationError, OUTPUT_INVALID, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { JOB_GONE_KIND } from "./run-receipts.mjs";
-import { documentProblem } from "./series.mjs";
+import { EXPLAINER_DISCUSS_VARIANTS, explainerVariants } from "./explainer-series.mjs";
+import { documentProblem, isExplainerOneOff } from "./series.mjs";
 
 export const REPLY_MAX_CHARS = 8_000;
 // The writer's variants that answer a line on a screenplay (answerScript). Both are durable jobs
 // (client.mjs run), so one may still be running on the server when its unit ends; flow.mjs reads
 // a video's saved runs by these to take the discussion up before the video's own stages.
-export const SCRIPT_DISCUSSION_VARIANTS = Object.freeze(["discuss", "anime-discuss-plan"]);
+export const SCRIPT_DISCUSSION_VARIANTS = Object.freeze(["discuss", "anime-discuss-plan", ...EXPLAINER_DISCUSS_VARIANTS]);
+/** The discussion variant of a series document: an explainer series' own for its bible, else the story's. */
+export const documentDiscussVariant = (series) => (isExplainerOneOff(series) ? explainerVariants(series.style_preset)?.discuss ?? "discuss" : "discuss");
+/** The discussion variant of a screenplay: an explainer series' own, else the story's. */
+export const scriptDiscussVariant = (state) => (state?.format === "drama" ? explainerVariants(state.style_preset)?.discuss ?? "discuss" : "discuss");
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
 
@@ -184,7 +189,7 @@ export async function answerDocument(automation, job) {
   if (await takeUnposted(automation, dir, job.message.id) !== undefined) return `series ${series.slug}: the planner's answer on ${job.subject}, kept when the site did not take it, is posted`;
   let answer;
   try {
-    answer = await automation.stage("planner", slug, documentDiscussionPayload(automation, job), 32_000, "drama", "discuss", series);
+    answer = await automation.stage("planner", slug, documentDiscussionPayload(automation, job), 32_000, "drama", documentDiscussVariant(series), series);
   } catch (error) {
     if (!(error instanceof AutomationError)) throw error;
     if (error.code === OUTPUT_INVALID) {
@@ -384,7 +389,7 @@ async function answerHeld(automation, job, state) {
         const revision = await automation.animeRewrite(state, { message: job.message.body_md, thread: threadOf(job), subject: job.subject }, video, "writer", `discuss-${job.message.id}`);
         answer = { reply: answer.reply, revised: { video: revision.video } };
       } else answer = { reply: answer.reply, revised: null };
-    } else answer = await automation.stage("writer", state.slug, scriptDiscussionPayload(automation, job, state, video), 32_000, "drama", "discuss");
+    } else answer = await automation.stage("writer", state.slug, scriptDiscussionPayload(automation, job, state, video), 32_000, "drama", scriptDiscussVariant(state));
   } catch (error) {
     if (!(error instanceof AutomationError)) throw error;
     if (error.code === OUTPUT_INVALID) {
