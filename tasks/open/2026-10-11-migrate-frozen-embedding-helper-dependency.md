@@ -1,11 +1,11 @@
 ---
 id: 2026-10-11-migrate-frozen-embedding-helper-dependency
 title: Preserve and migrate the frozen Embedding task helper before retiring b136
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-closeout
-claimed_at: 2026-10-11T15:21:04Z
+owner:
+claimed_at:
 created_at: 2026-10-11T15:08:01Z
 completed_at:
 branch: codex/historical-branches-cleanup-20261011
