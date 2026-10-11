@@ -101,8 +101,27 @@ scan and `consecutive_failures` back at 0.
 - Claiming this task was refused on 2026-10-11: `2026-10-10-let-the-owner-re-request-a`
   is in progress with all of `apps/api/tests` in its scope. Nothing in the repository was
   changed for this note beyond the note itself.
-- Next: send httpx's exact header set through urllib, and urllib's through httpx, to see
-  which side the challenge follows; try `http2=True` with `h2` in a throwaway environment.
+- 2026-10-11 08:51Z, isolated with hand-built requests over a plain TLS socket from the
+  api container (same headers every time, standard-library TLS context):
+  - no ALPN offered: 200.
+  - ALPN offering only `http/1.1`: 403 with `cf-mitigated: challenge`, twice out of twice.
+  - ALPN offering `http/1.1` and `h2`: the server selects `h2` (the request was then sent
+    as HTTP/1.1, so its answer says nothing more).
+  - The headers do not matter: httpx's header set and order, urllib's, with and without
+    `Accept`, all answered 200 over a socket without ALPN, also with httpx's own TLS
+    context; and httpx sending urllib's exact four headers was still challenged.
+  **Cause: the TLS handshake advertises HTTP/1.1 as its only protocol.** httpx without
+  HTTP/2 does that (httpcore sets ALPN to `http/1.1`); curl offers `h2` as well and
+  urllib offers nothing, and both pass. The pinned IP is not involved.
+  - The second no-ALPN request answered 429: the probing itself reached this host's rate
+    limit, so the tests stopped there.
+- What a fix could be, not built: let the fetcher's client speak HTTP/2 (`http2=True`
+  needs the `h2` package in the api image), which makes the handshake look like curl's;
+  or give its TLS context an ALPN list that includes `h2`. Either has to be tried against
+  CFTC from the host, and the pinned-IP request with `Host` and SNI has to keep working
+  over HTTP/2 (`:authority` comes from the URL, so the pinned shape may need a transport
+  that pins the address instead). Whether other publishers behind Cloudflare apply the
+  same rule is not known: `www.anthropic.com` and `mistral.ai` did not challenge httpx.
 
 - A source that fails for more than six hours on recent entries is meant to show as
   `stuck` on `/admin/news`; this one shows `failed` because the listing itself is refused.
