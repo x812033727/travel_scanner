@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { existsSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
@@ -8,6 +9,7 @@ import { atomicWrite } from "../core/paths.mjs";
 import { AutomationError, OUTPUT_INVALID, RUN_UNCERTAIN } from "./client.mjs";
 import { answerDocument, answerScript, blockedReply, documentDiscussionPayload, lostReply, refusedReply } from "./discuss.mjs";
 import { Automation } from "./flow.mjs";
+import { instructionsFor } from "./prompts.mjs";
 
 test("discussion retains draft parent versions and missing parents without granting approval", () => {
   const automation = { reference: () => ({}), dramaPayload: () => ({ drama_settings: {} }) };
@@ -397,4 +399,41 @@ test("a line waits for a video the unit's loop left alone, though the video's wa
   // The next unit visits the video first; at rest after that visit, its line is answered.
   assert.equal(await worker.step(), "held-e001: the writer answered the owner on script:1");
   assert.deepEqual([sent, answered, waiting.length], [["writer:discuss for held-e001"], ["m1"], 0]);
+});
+
+/**
+ * The model requests of one line on `preset`'s bible and one on its screenplay, as
+ * [stage, format, variant] each: the two discussion calls a one-off has.
+ */
+async function discussionCalls(preset) {
+  const box = sandbox();
+  const asked = [];
+  const stage = async (name, _slug, _payload, _tokens, format, variant) => {
+    asked.push([name, format, variant]);
+    return { reply: "ok", revised: null };
+  };
+  const series = { slug: "one-off-1", kind: "one-off", title: "t", premise: "p", style_preset: preset, target_minutes: 10, genre: "xianxia-bonds" };
+  const planner = { workBase: box.work, reference: () => ({}), dramaPayload: () => ({ drama_settings: {} }), stage, api: { messageAnswer: async () => ({ revision: null }) } };
+  assert.match(await answerDocument(planner, { message: { id: "m1", body_md: "shorter hook" }, subject: "bible", thread: [], series, doc: { kind: "bible", version: 1, status: "review", body_md: "# t", body_json: { characters: [] } }, context: {} }), /the planner answered the owner on bible$/);
+  const slug = "one-off-1-e001";
+  atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "active", format: "drama", style_preset: preset, notes: [], verified: true, listener_done: true, created_at: "2026-10-05T01:00:00Z" }));
+  atomicWrite(path.join(box.root, "docs", "videos", slug, "video.json"), JSON.stringify({ slug, scenes: [] }));
+  const ctx = { root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, stdout: { write: () => {} }, stderr: { write: () => {} }, now: () => new Date("2026-10-06T10:00:00Z") };
+  const writer = new Automation(ctx, { messageAnswer: async () => ({}) }, {});
+  writer.scriptPayload = (_state, extra) => ({ ...extra });
+  writer.freshIds = () => [];
+  writer.stage = stage;
+  assert.match(await answerScript(writer, { message: { id: "m2", body_md: "slower" }, subject: "script:1", thread: [], series: { slug: series.slug }, episode: { slug } }), /the writer answered the owner on script:1$/);
+  return asked;
+}
+
+// The instructions are part of a discussion's durable key (client.mjs run): the digests are
+// main's before an explainer series had a discussion variant of its own.
+test("a line on a flat-explainer's or a story one-off's bible and screenplay is answered under the story's discuss variant, with the instructions it had", async () => {
+  const digest = (text) => createHash("sha256").update(text, "utf8").digest("hex");
+  for (const preset of ["flat-explainer", "ink-wash", "cinematic-3d"]) {
+    assert.deepEqual(await discussionCalls(preset), [["planner", "drama", "discuss"], ["writer", "drama", "discuss"]], preset);
+  }
+  assert.equal(digest(instructionsFor("planner", "drama", "", "discuss")), "88d7f55145ecff3e0910f33dc056b86dd8464595e1c626720bae3a2ed0f2cab9");
+  assert.equal(digest(instructionsFor("writer", "drama", "", "discuss")), "06c8d01e814728158f137b681e9438de81f050654d641bf7d90116cce3c0c0a6");
 });

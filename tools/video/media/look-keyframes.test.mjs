@@ -1708,3 +1708,17 @@ test("look run by hand under the project's STOP file, or while another producer 
   assert.equal(site.state.images.length, images, "no sheet was drawn");
   assert.deepEqual(files(), before, "no sheet or choice was written");
 });
+
+// Which question a picture is judged with is part of what the judge is paid for and of the
+// verdict a shot keeps: flat-explainer is scored on the rubric, on a server that offers the
+// yes/no fault checks too, as it was before the cute looks took the checks.
+test("a flat-explainer's stills stay on the scored rubric on a server that offers the fault checks", async () => {
+  const flat = sandbox("fixture-explainer", "explainer");
+  const site = mediaSite({ status: { ...STATUS, limits: { judge_checks: 1 } }, verdicts: () => ({ overall: 8, passed: true }) });
+  const run = context(flat, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", flat.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.ok(site.state.judges.length > 0);
+  assert.ok(keyframeChecks().every((item) => item.cost > 0), "a fault check carries what it costs the picture");
+  assert.ok(site.state.judges.every((request) => request.rubric.every((item) => item.cost === undefined)), "the scored rubric, not the checks");
+  assert.match(site.state.images[0].prompt, /Style: flat editorial illustration/);
+});
