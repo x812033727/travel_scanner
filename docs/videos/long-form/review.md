@@ -4284,6 +4284,70 @@ PASS is DURATION_ONLY for the seven rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Explainer image model (a one-off explainer names its image model) increment: 13 files (2026-10-11)
+
+Reviewer: `claude-opus-receipt-explainer-pr2`. Author: `claude-opus-explainer-pr2`. Scope: DURATION_ONLY for the thirteen changed bindings below, reviewed at `8103c33c9e8e403f550ddea75c22fba1a15c87fe`, the merge of origin/main (`27b77b47c`, #1441) into claude/explainer-image-model at `f16672f125f5deb0033c6095ca0d7b73d4f9434d` ("tasks: what was and was not run locally for the explainer image-model change"). The branch is pull request 2 of docs/videos/explainer-route/DESIGN.md: five commits (`259d5cb5b`, `df2a21d07`, `9990afa37`, `2858e1892`, `f16672f12`) over `3591cda88` (#1435). The reviewer wrote none of them, made the merge (no conflict; main's only change since the merge base is one task file), and edits only this report and review.json.
+
+Baseline: origin/main at `27b77b47c`. Between the merge base `3591cda88` and that commit main changed neither receipt file, so the receipt the merge carries is main's, the "Dub re-request merge with main (#1435) and migration renumber follow-up" above; the branch changed neither receipt file either. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these thirteen bindings, the thirteen that docs/videos/explainer-route/DESIGN.md section 4.3 names; the other 95 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `apps/api/app/video_automation/schemas.py`: `e03d2bead4cfd2c9245d3afb788ed11f31bbf2d9ec4aab565a9fb948eb2ba8fa` -> `4247c4bbbb118d14bc4cd90358d129843936f17fbc3e1cff0217d461ce02d70d`.
+- `apps/api/app/video_automation/series.py`: `6dd73fd48500f0bb168e6ced4e19964f13dd5f18c9758a6caafa3fa6a865d847` -> `cb9d3e01465a6f072d44fdcedae659f538686a634a03351171f8f67d8bfaa155`.
+- `apps/api/tests/test_video_drama_requests.py`: `07ddbcaadf668a13565969ca44e2542dee4f6ad83791bcc8f67d785302734c59` -> `441b11622f444564a22f4ea43e94fad431a777577ce2ba60bd522c8510b25eef`.
+- `apps/web/components/admin-video-series.tsx`: `a6bf22c535b18c03bd1a5b77cffbeb77e33f40b8b28b03c125553183e06c8067` -> `b6c26a0e7bef415e2aebb88a8b09e10a8ccb1b1d4b49a269e04627cee58a48a7`.
+- `apps/web/messages/en/admin.json`: `af82ee554a4a5a3ba46114302b5c7cda0b86e6b31ec9559fa0249206a64e28ad` -> `d57d403f5cf9d7d8bd1dc40512bcee86416cf0a52e5ca0d80e205d30ad9c6d33`.
+- `apps/web/messages/ja/admin.json`: `00493fd6a1d0e508def816f81285620939780164d677ff887ded781e9dbb40cf` -> `852fe1e05b0c39346ce560ead01bcdee7b99de0e19add71b7704ea93e881dc2b`.
+- `apps/web/messages/ko/admin.json`: `e91226cdbbc6d905eb6a568e2484d31f167477fea2f5eeb0d548612758f5398b` -> `c11c8b1270fffef9cbb5169c0ae6cd1be117a86babe4723015aa66e1555d43ec`.
+- `apps/web/messages/zh-CN/admin.json`: `7437d362bced2531df5358d71b3f7374ab81431a26867813c56557c7ffb4160c` -> `e4d26cdacab4e08f30f32d5c3cb8af8105cc9cdc6d52244a93c3b2b36dde0c75`.
+- `apps/web/messages/zh-TW/admin.json`: `f6c95ee5bf40091ae6dca9c89cbdf6cf82b1cc231c92bc31115f615a494baf88` -> `5bcf83e0206b519232835e95cac57bfcf8db60cb7e9a3783577c446d3828122f`.
+- `tools/video/automation/automation.test.mjs`: `5230f845437eb61bd6cd301e9d6d3cde65de9144476e7a176b248db1b9daf7d3` -> `fe55a3b866b3fa639852ddd8064c46978290593730fee5b987258ed461b8cc1b`.
+- `tools/video/automation/flow.mjs`: `489db4cab75a529de63ad4a9ce9ff44288832cec74fe6f08159d20cf25c06651` -> `6b0fc710cc21812fd88204e99a773582ae51acd69b16fe11f6147aa0a22b1519`.
+- `tools/video/automation/series.test.mjs`: `62707700b6b7dea0361e24b035d1e55c17d1f01147218fe38d57a74d9fa778b8` -> `49626904a2594f6ffa430ea16975b8ba06828d242e413f221c5e63d85284020a`.
+- `tools/video/media/look-keyframes.test.mjs`: `3413923fc1485cc03ffd29a18594c8ae48280710e1b81d7f6882d6f76db8f954` -> `29772a7098486e5f0b7e289d9a6eb10e1af4e4d0aa2bf5f6a744d5bef3cd5b31`.
+
+What the change is: a one-off explainer request may carry an `image_model`; a cute preset that names none is stored with `image-01`; the worker writes a one-off's model into its series.json, where the media stages already read it; the explainer writer of such a one-off hears that model's per-shot prompt budget; and the request form offers the field. Every hunk below adds a field, a validator, a pass-through of the value, a label, or a prompt-character budget. No number a length rule uses moves.
+
+Findings, tools (4 files):
+
+- `tools/video/automation/flow.mjs` (+28/−4, two hunks): in `draftEpisode` the series.json it writes gains `image_model` only for a one-off whose row names one (a spread of an empty object otherwise). The key picks the model the pictures are drawn with and wraps the image cache keys; it is not read by any length rule. `draftBudget` used to return `{}` for every drama; it now returns `{ prompt_budget_chars }` for an explainer one-off whose series.json names a model, computed by `shotPromptBudget` and capped at `WRITER_PROMPT_MAX`. That figure is a count of characters in each shot's image prompt (prompts.mjs lines 135, 704), not of seconds or minutes, and the writer's `target_minutes` comes from `episodeMinutes`/`effectiveEpisodeMinutes`, which are outside both hunks. The slides branch of `draftBudget` is unchanged.
+- `tools/video/automation/automation.test.mjs` (+20/−1): one import (`docDir`) and new assertions on `draftBudget` for one-offs with and without the key, plus three uncapped prompt-budget figures (1093, 1070, 1056 characters). No assertion about minutes, the floor, 480 s or 14,400 frames is added, removed or loosened.
+- `tools/video/automation/series.test.mjs` (+19/−5): a long series whose row names a model writes no key; an explainer one-off with no model writes no key and its writer hears no budget; a new case with `image-01` checks the key and a budget of 1000. The request in the drafted episodes still asks for 3 minutes and the explainer one-off for the minutes it asked before.
+- `tools/video/media/look-keyframes.test.mjs` (+55/−1): the fake site's price lookup reads either catalogue shape, and a new test checks that a cute one-off naming `image-01` is drawn at 1K by MiniMax within its prompt budget while one naming none is drawn at 2K by the settings' model. It touches sizes, prices and prompt characters, no length.
+
+Findings, API (3 files):
+
+- `apps/api/app/video_automation/schemas.py` (+31/−0): `PRESET_IMAGE_MODELS`, an `image_model` field on `DramaRequestIn` (1 to 128 characters, checked by the existing `_known_image_model`), and a second `model_validator`, `_image_model_for_preset`, that refuses the field for a non-explainer preset and fills the cute presets' default. `_episode_length` and the field `target_minutes` (default 3, `ge=1`, `le=EXPLAINER_MAX_MINUTES`) are outside the hunks, and `EPISODE_MIN_MINUTES = 8`, `EXPLAINER_MIN_MINUTES = 8`, `EXPLAINER_MAX_MINUTES = 20`, `EXPLAINER_DEFAULT_MINUTES = 10`, `SERIES_MAX_MINUTES = 8` and `STORY_MAX_MINUTES = 20` are the same lines (the new constant sits above them).
+- `apps/api/app/video_automation/series.py` (+2/−0): `create_one_off` stores `payload.image_model` on the row and puts it in the audit entry. `target_minutes` is passed as before.
+- `apps/api/tests/test_video_drama_requests.py` (+1/−0): the audit entry the test expects gains `"image_model": None`; its `target_minutes: 2` is unchanged.
+
+Findings, web (6 files):
+
+- `apps/web/components/admin-video-series.tsx` (+35/−7): an `image_model` field on `SeriesSummary`, `requestImageModel` (which model the form offers and preselects), the `NewDramaForm` select and its state, the value in the POST body, and the stored model shown beside the minutes in two summaries. `DRAMA_MINUTES` (1, 8, default 3), `EXPLAINER_MINUTES` (8, 20, default 10), `requestMinutes` and the minutes input are unchanged; the POST still sends `target_minutes: minutes`. The changed lines that name minutes carry the old expression whole and append the model after it.
+- `apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json` (+3/−0 each, at the same lines 2381 and 2814 in every language): `imageModel` and `imageModelFollows` in the request form, `imageModel` in the series page. No line was removed and none carries a number or a unit of time; `targetMinutes` and `minutesEach` are as main has them.
+
+A scan of the added and removed lines of flow.mjs, the two API source files and admin-video-series.tsx for `minutes`, `target_seconds`, `duration` and `480` finds only the three web lines above, each repeating an unchanged expression. Under tools/video/core, qa, long-form, tts, assemble and package the only file that differs between the merge base and the head is the unbound test core/explainer-family.test.mjs (+9/−0, which compares the API's and the web's preset-to-model tables); the unbound files of the change (admin_api.py, video_media/jobs.py, video-presets.ts, admin-video-settings.tsx, DRAMA-FLOW.md, explainer-family.test.mjs, stages.test.mjs and three API and web test files) were read as context for what the bound lines call, not reviewed.
+
+Ran (in the worktree at the merge, Node on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the thirteen stale bindings and exited 1;
+- a reading of the diff of each of the thirteen files against origin/main;
+- the hashing, with Node's crypto over the files' bytes, of all 108 bound files against review.json, which found the same thirteen and nothing else;
+- the scan named above;
+- `node --test` over core/duration.test.mjs, core/explainer-family.test.mjs, automation/series.test.mjs, media/look-keyframes.test.mjs and qa/duration.test.mjs: 147 of 147.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge the choice of `image-01` for the cute presets, the refusal of a model without a key, the prompt budget's value or the form as product choices, nor whether a cast drama should be refused the field.
+- automation.test.mjs was not run here, nor any API test, ruff, mypy, Vitest, lint, typecheck or i18n check. The API and web findings rest on reading the diffs and the tests' text.
+- That the four translations say what the English says was not checked beyond their keys.
+- No writer was run, no picture was drawn, and no rendered cut or measured narration was produced.
+- This increment binds the tree at the merge only: a later commit or merge with main that changes any of the thirteen files, or either receipt file, needs its own follow-up. The 95 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the thirteen rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -4297,8 +4361,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7` |
 | `apps/api/app/video_automation/models.py` | `e8351836b3d09a939c31f18501ba3e160e98706e327a1172cc35170fc76b9ccc` |
-| `apps/api/app/video_automation/schemas.py` | `e03d2bead4cfd2c9245d3afb788ed11f31bbf2d9ec4aab565a9fb948eb2ba8fa` |
-| `apps/api/app/video_automation/series.py` | `6dd73fd48500f0bb168e6ced4e19964f13dd5f18c9758a6caafa3fa6a865d847` |
+| `apps/api/app/video_automation/schemas.py` | `4247c4bbbb118d14bc4cd90358d129843936f17fbc3e1cff0217d461ce02d70d` |
+| `apps/api/app/video_automation/series.py` | `cb9d3e01465a6f072d44fdcedae659f538686a634a03351171f8f67d8bfaa155` |
 | `apps/api/app/video_automation/settings.py` | `9941b3244e15cf6b1d8aaec32c68ab2424f84adb32804a179652d93fb3977ca3` |
 | `apps/api/app/video_reviews/admin_service.py` | `4cf2dceda72b3bd09f471e2263a9d4a96ba1d8a1375c554b0225d1ae12352856` |
 | `apps/api/app/video_reviews/schemas.py` | `e6264fda6e55564231a0b42bb0120e386e12541e16192b8f77581f5dfb35b2a2` |
@@ -4310,20 +4374,20 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/tests/test_video_anime_production_policy.py` | `b9fe3f9ff8ffd0b1d36089f2f684d60bb2e2c7712e4549940c472abb4c59efb1` |
 | `apps/api/tests/test_video_anime_review_policy.py` | `eacb78a7e6692e530730b49e3bb89698d1b2a3976ac8f1d836bbc435b16276d8` |
 | `apps/api/tests/test_video_automation_settings.py` | `cd0e6beaa6e3d9976e0dade995fdcad85ea9e246b6d265d6e2b52bb79f466a92` |
-| `apps/api/tests/test_video_drama_requests.py` | `07ddbcaadf668a13565969ca44e2542dee4f6ad83791bcc8f67d785302734c59` |
+| `apps/api/tests/test_video_drama_requests.py` | `441b11622f444564a22f4ea43e94fad431a777577ce2ba60bd522c8510b25eef` |
 | `apps/api/tests/test_video_explainer_duration.py` | `45bdcbe9ec7c7c47e437b6d65ec967801e8553acbbf1c8285d734f8a7242eddc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `cb28b0a7173ad4712a70c5e378b3b0d6e4d760731620f38d9400a221b305a6ac` |
 | `apps/web/components/admin-video-review-card.tsx` | `4d22f999dcb70dfca1bd436421ecfe04cd9c7b9d869c0295bc4946be26e3e7a8` |
 | `apps/web/components/admin-video-reviews.test.tsx` | `522f72db3d27c7b6a7eb0dd9d7eec76ef02976eacfe77317b4791cae6f6decf2` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
-| `apps/web/components/admin-video-series.tsx` | `a6bf22c535b18c03bd1a5b77cffbeb77e33f40b8b28b03c125553183e06c8067` |
+| `apps/web/components/admin-video-series.tsx` | `b6c26a0e7bef415e2aebb88a8b09e10a8ccb1b1d4b49a269e04627cee58a48a7` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `af82ee554a4a5a3ba46114302b5c7cda0b86e6b31ec9559fa0249206a64e28ad` |
-| `apps/web/messages/ja/admin.json` | `00493fd6a1d0e508def816f81285620939780164d677ff887ded781e9dbb40cf` |
-| `apps/web/messages/ko/admin.json` | `e91226cdbbc6d905eb6a568e2484d31f167477fea2f5eeb0d548612758f5398b` |
-| `apps/web/messages/zh-CN/admin.json` | `7437d362bced2531df5358d71b3f7374ab81431a26867813c56557c7ffb4160c` |
-| `apps/web/messages/zh-TW/admin.json` | `f6c95ee5bf40091ae6dca9c89cbdf6cf82b1cc231c92bc31115f615a494baf88` |
+| `apps/web/messages/en/admin.json` | `d57d403f5cf9d7d8bd1dc40512bcee86416cf0a52e5ca0d80e205d30ad9c6d33` |
+| `apps/web/messages/ja/admin.json` | `852fe1e05b0c39346ce560ead01bcdee7b99de0e19add71b7704ea93e881dc2b` |
+| `apps/web/messages/ko/admin.json` | `c11c8b1270fffef9cbb5169c0ae6cd1be117a86babe4723015aa66e1555d43ec` |
+| `apps/web/messages/zh-CN/admin.json` | `e4d26cdacab4e08f30f32d5c3cb8af8105cc9cdc6d52244a93c3b2b36dde0c75` |
+| `apps/web/messages/zh-TW/admin.json` | `5bcf83e0206b519232835e95cac57bfcf8db60cb7e9a3783577c446d3828122f` |
 | `docs/videos/DESIGN.md` | `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `8bf5a55173e25c07c18b865853ffd37e839408ccf731bdc3c4ebf208e195b5b5` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
@@ -4340,12 +4404,12 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `5230f845437eb61bd6cd301e9d6d3cde65de9144476e7a176b248db1b9daf7d3` |
+| `tools/video/automation/automation.test.mjs` | `fe55a3b866b3fa639852ddd8064c46978290593730fee5b987258ed461b8cc1b` |
 | `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
-| `tools/video/automation/flow.mjs` | `489db4cab75a529de63ad4a9ce9ff44288832cec74fe6f08159d20cf25c06651` |
+| `tools/video/automation/flow.mjs` | `6b0fc710cc21812fd88204e99a773582ae51acd69b16fe11f6147aa0a22b1519` |
 | `tools/video/automation/prompts.mjs` | `61632a08cd1b036796b900e2274babf49316960adef8ff974f52bbaf73b8f85d` |
 | `tools/video/automation/series.mjs` | `ceb9dabd7e887af14e8a0a3867f2ccfeb54ee1ac11a117a62bd48642e36955e0` |
-| `tools/video/automation/series.test.mjs` | `62707700b6b7dea0361e24b035d1e55c17d1f01147218fe38d57a74d9fa778b8` |
+| `tools/video/automation/series.test.mjs` | `49626904a2594f6ffa430ea16975b8ba06828d242e413f221c5e63d85284020a` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
 | `tools/video/core/anime-policy.mjs` | `2c53db1a18e27780b032a019b37912197c13bb4aadc6a130cecdc60371482ecd` |
 | `tools/video/core/anime-policy.test.mjs` | `74b9f1360829efed4c2f1e529b403024877e255d51430a5a2636ac7c5a24b3c6` |
@@ -4380,7 +4444,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
 | `tools/video/media/clips.test.mjs` | `626e678fc76d08210aad82a850f393c66009e9c3a7fce815a8097e686602b238` |
-| `tools/video/media/look-keyframes.test.mjs` | `3413923fc1485cc03ffd29a18594c8ae48280710e1b81d7f6882d6f76db8f954` |
+| `tools/video/media/look-keyframes.test.mjs` | `29772a7098486e5f0b7e289d9a6eb10e1af4e4d0aa2bf5f6a744d5bef3cd5b31` |
 | `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
 | `tools/video/package/package.test.mjs` | `ec0a56363e66f4410af6d759b2497c39cc1aabd7bd3aacd449628b5b8b7b0047` |
 | `tools/video/production/anime-input.mjs` | `515e917f4d06c0117222ce09717345f9d4288c1e0357491e5f1097f782477f13` |
