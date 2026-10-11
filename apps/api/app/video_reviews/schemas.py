@@ -66,7 +66,7 @@ LOCALE_PARTS: tuple[LocalePart, ...] = get_args(LocalePart)
 # or, a dub track, uploaded by the owner (its languages review approved).
 LanguageState = Literal["working", "ready", "skipped", "uploaded"]
 # Where the owner's request to make a skipped dub again stands (docs/videos/DUBS.md §再做一次;
-# migration 0129): asked, taken by the worker, then made, skipped again or refused. "expired"
+# migration 0131): asked, taken by the worker, then made, skipped again or refused. "expired"
 # is a request nobody took for a day; it is read from the request's time and never stored.
 DubRetryStatus = Literal["requested", "taken", "made", "skipped", "refused", "expired"]
 # Why a skipped dub cannot be asked for again right now, shown in place of the button. The web
@@ -145,7 +145,7 @@ class ProjectIn(BaseModel):
     shorts_line: ShortsLine | None = None
     shorts_series: str | None = Field(default=None, pattern=SHORTS_SERIES_PATTERN)
     source_slug: str | None = Field(default=None, pattern=SLUG_PATTERN)
-    # The worker's word on the owner's dub retry requests (migration 0129):
+    # The worker's word on the owner's dub retry requests (migration 0131):
     # {"ja": {"id": "<uuid>", "status": "taken"}} or {"id", "status": "refused", "reason"}.
     # Read leniently (dub_retry.apply_worker): what is not understood is ignored, never a 422.
     dub_retries: dict[str, Any] | None = None
@@ -342,7 +342,7 @@ class ProjectSummary(BaseModel):
     locales_decided_at: datetime | None = None
     languages: dict[DubLocale, dict[LocalePart, LanguagePartOut]] = Field(default_factory=dict)
     ready_to_upload: bool = False
-    # The owner's requests to make a skipped dub again (migration 0129): the latest per locale,
+    # The owner's requests to make a skipped dub again (migration 0131): the latest per locale,
     # only for a dub that is chosen now; and, for a chosen dub that reads skipped with no open
     # request, why it cannot be asked for again. Both empty for a Short.
     dub_retries: dict[DubLocale, DubRetryOut] = Field(default_factory=dict)

@@ -2276,7 +2276,7 @@ class VideoProject(Timestamped, Base):
         DateTime(timezone=True), nullable=True
     )
     # The owner's "make this skipped dub again" requests, one record per locale: the latest
-    # request and how it ended (docs/videos/DUBS.md §再做一次; migration 0129). The worker reads
+    # request and how it ended (docs/videos/DUBS.md §再做一次; migration 0131). The worker reads
     # it on its list row and answers in its report; app/video_reviews/dub_retry.py owns the
     # transitions.
     dub_retries: Mapped[dict[str, Any]] = mapped_column(

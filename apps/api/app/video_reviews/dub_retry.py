@@ -1,6 +1,6 @@
 """The owner's request to make a skipped dub track again (docs/videos/DUBS.md §再做一次).
 
-``video_projects.dub_retries`` (migration 0129) holds, per locale, the latest request and how it
+``video_projects.dub_retries`` (migration 0131) holds, per locale, the latest request and how it
 ended. This module owns every transition of that record and every rule that reads it, as pure
 functions over the stored dicts, the review rows and ``now``; admin_service.py does the reading,
 the writing, the audit rows and the refusals, so nothing here raises.

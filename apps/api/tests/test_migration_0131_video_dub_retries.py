@@ -1,4 +1,4 @@
-"""Exercise the 0129 column migration: offline everywhere, and on a real PostgreSQL schema.
+"""Exercise the 0131 column migration: offline everywhere, and on a real PostgreSQL schema.
 
 0001 creates a fresh schema from the current models, so the PostgreSQL part removes the column
 first to exercise the upgrade branch that production takes.
@@ -24,7 +24,7 @@ from sqlalchemy.engine import Connection
 from app.db import engine
 from app.models import VideoProject
 
-MIGRATION = "0129_video_dub_retries"
+MIGRATION = "0131_video_dub_retries"
 PATH = Path(__file__).resolve().parents[1] / "migrations" / "versions" / f"{MIGRATION}.py"
 TABLE = "video_projects"
 COLUMN = "dub_retries"
@@ -51,10 +51,10 @@ def columns(connection: Connection) -> dict[str, Any]:
     return {item["name"]: item for item in sa.inspect(connection).get_columns(TABLE)}
 
 
-def test_the_revision_follows_0128_and_fits_the_id_column() -> None:
+def test_the_revision_follows_0130_and_fits_the_id_column() -> None:
     migration = load_migration()
     assert migration.revision == MIGRATION
-    assert migration.down_revision == "0128_video_languages_four"
+    assert migration.down_revision == "0130_video_cute_presets"
     assert len(migration.revision) <= 32, "alembic_version.version_num is 32 characters"
     assert (migration.TABLE, migration.COLUMN) == (TABLE, COLUMN)
     # A fresh database (0001) builds the column from the model: the two must agree.

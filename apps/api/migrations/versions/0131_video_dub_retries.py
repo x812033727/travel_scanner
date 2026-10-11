@@ -1,7 +1,7 @@
 """The owner's requests to make a skipped dub track again (docs/videos/DUBS.md §再做一次).
 
-Revision ID: 0129_video_dub_retries
-Revises: 0128_video_languages_four
+Revision ID: 0131_video_dub_retries
+Revises: 0130_video_cute_presets
 
 A dub the worker gave up on (a line that does not fit its window, a line Jev still hears wrong)
 reads "skipped" on the language panel for good: its state comes from the languages batches, and
@@ -27,8 +27,8 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
-revision: str = "0129_video_dub_retries"
-down_revision: str | None = "0128_video_languages_four"
+revision: str = "0131_video_dub_retries"
+down_revision: str | None = "0130_video_cute_presets"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 

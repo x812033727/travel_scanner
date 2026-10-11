@@ -145,7 +145,8 @@ On the host after the deploy (read-only):
   change this file's `Revises:` line and `down_revision` to `0129_video_dub_retries` (nothing
   else: the number, the file name and the test constants already fit); if this merges first,
   #1432 renumbers to 0131 and revises 0130. `tests/test_schema.py` goes red on two heads, so
-  it cannot be missed.
+  it cannot be missed. Outcome (2026-10-11): this merged first as #1435, and #1432 was renumbered
+  to `0131_video_dub_retries`, revising `0130_video_cute_presets`.
 - **Deploy.** Web, API and tools in one deploy. Every machine that runs the worker pulls the
   tools before any cute row exists: an old worker would take a cute one-off as a story, pay for
   a bible with a cast and be refused each round. Do not pick a cute preset as the drama default
