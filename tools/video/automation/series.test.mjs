@@ -18,6 +18,7 @@ import { AutomationError, automationClient, RUN_PENDING } from "./client.mjs";
 import { answerProblem, discussStep, documentDiscussionPayload, parseSubject, revisedDocumentProblem, unusableReply } from "./discuss.mjs";
 import { Automation, automatedVideos, DEFER_LIMIT, DEFER_MAX_MS, PENDING_RECHECK_MS, settle } from "./flow.mjs";
 import { instructionsFor, SERIES_INSTRUCTIONS } from "./prompts.mjs";
+import { canonicalJson } from "./run-receipts.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { scriptCheckBinding, scriptCheckMatches } from "../core/script-check.mjs";
 import { craftChecks } from "../core/craft.mjs";
@@ -2074,21 +2075,33 @@ test("an explainer one-off plans a question's bible with no cast, and its brief 
   assert.doesNotMatch(brief, /## 角色/);
 });
 
-test("an explainer one-off goes from its question's bible to a narrator-only script with its two Shorts", async () => {
+// What the three stage calls of a flat-explainer one-off are asked with: sha256 of the
+// instructions, and of canonicalJson(payload) less `today` and `lexicon`. A change to either
+// moves the durable key of every unfinished flat-explainer stage journal, so that stage is
+// asked, and paid for, again.
+const EXPLAINER_STAGE_PINS = [
+  ["planner", "bible-explainer", "55ffd024da8e9da7443dca79f973424efcdf277de3a9fa1ec3415af764391a90", "bfa88ed9b8beaef5377880ae79efb081f5e5283c1e4ab4279df4bd0239d13078"],
+  ["writer", "explainer", "185af9a701ecbb1317f00dd130cbf260e8e664a7275a423bad66c415cb703e72", "b0a4a2982e77bf9ea76eb9047260bbe568eb36ac2577dc206791ca8912401e81"],
+  ["verifier", "explainer", "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842", "3d6d4812ec7814b0b9ce8712dcf8bcf08a752913d69125941600eecc32c38f54"],
+];
+const digestOf = (text) => createHash("sha256").update(text, "utf8").digest("hex");
+
+/** One explainer one-off in `preset`, from its bible to its first fact-check; the writer answers `look`. */
+async function explainerOneOffRun(preset, look = {}) {
   const box = sandbox();
-  const explainer = { ...ONE_OFF, title: "雷聲", premise: "為什麼雷聲總比閃電晚到？", style_preset: "flat-explainer" };
+  const explainer = { ...ONE_OFF, title: "雷聲", premise: "為什麼雷聲總比閃電晚到？", style_preset: preset };
   const slug = "one-off-7a1b2c3d-e001";
   const outline = { title: "為什麼雷聲總比閃電晚到？", logline: "光比聲音快太多。", question: "為什麼雷聲總比閃電晚到？", answer: "光比聲音快太多。", reasons: ["光速約每秒三十萬公里", "聲速約每秒三百四十公尺"], hook: "閃電亮了，你數到幾？", sources: ["https://en.wikipedia.org/wiki/Speed_of_sound"] };
   const bible = { body_md: "# 雷聲\n## 問題\n…\n", body_json: { characters: [], acts: [{ number: 1, title: "光先到", summary: "s", shots: 4 }], outline, music: "輕快", not_doing: [], lexicon: {} } };
   const drafted = JSON.parse(readFileSync(new URL("../core/fixtures/explainer/shorts.json", import.meta.url), "utf8")).map(({ titles, description, scenes }) => ({ titles, description, scenes }));
   const answers = {
     "planner:bible-explainer": () => bible,
-    "writer:explainer": () => ({ video: { ...explainerFixture(), slug, look: {} }, claims: "c1｜光速｜https://en.wikipedia.org/wiki/Speed_of_sound｜2026-09-28｜race\n", lexicon_additions: {}, shorts: drafted }),
+    "writer:explainer": () => ({ video: { ...explainerFixture(), slug, look }, claims: "c1｜光速｜https://en.wikipedia.org/wiki/Speed_of_sound｜2026-09-28｜race\n", lexicon_additions: {}, shorts: drafted }),
   };
   const episode = { number: 1, chapter_number: 1, title: outline.title, logline: outline.logline, beats: outline, status: "ready", slug: null, recap: null, started_at: null, finished_at: null, video: null };
   const setting = { id: "b1", kind: "bible", chapter_number: 0, version: 1, ...bible, status: "approved" };
   const oneOffStart = (body) => ({
-    request: { id: "explainer-request", premise: explainer.premise, title: "雷聲", source_guide: null, style_preset: "flat-explainer", target_minutes: 8, note: null, status: "started", slug: body.slug, series_slug: explainer.slug, episode_number: 1 },
+    request: { id: "explainer-request", premise: explainer.premise, title: "雷聲", source_guide: null, style_preset: preset, target_minutes: 8, note: null, status: "started", slug: body.slug, series_slug: explainer.slug, episode_number: 1 },
     episode: { ...episode, status: "started", slug: body.slug },
     context: { series: explainer, setting, outline: null, chapter: null, chapter_number: 1, chapter_range: [1, 1], episode: null, episodes: [episode], recaps: [], mysteries: [] },
   });
@@ -2105,18 +2118,31 @@ test("an explainer one-off goes from its question's bible to a narrator-only scr
   const dir = path.join(box.root, "docs", "videos", slug);
   assert.match(readFileSync(path.join(dir, "brief.md"), "utf8"), /^# 為什麼雷聲總比閃電晚到？\n\n## 問題\n/);
   const state = automatedVideos(box.work).find((each) => each.slug === slug);
-  assert.equal(state.style_preset, "flat-explainer");
+  assert.equal(state.style_preset, preset);
   assert.deepEqual(state.source_urls, outline.sources, "the checker reads the pages the bible names");
 
   assert.match(await automation.step(), /script drafted and passes lint; 2 Shorts drafted/);
   const writer = site.calls.run.find((call) => call.stage === "writer");
   assert.equal(writer.variant, "explainer");
   const video = readJson(path.join(dir, "video.json"));
-  assert.equal(video.look.preset, "flat-explainer", "the writer cannot drop the explainer preset");
+  assert.equal(video.look.preset, preset, "the writer cannot drop or change the request's explainer preset");
   assert.deepEqual(video.characters, []);
   assert.deepEqual(JSON.parse(readFileSync(shortsFile(slug, box.root), "utf8")).map((short) => short.slug), [`${slug}-short-1`, `${slug}-short-2`]);
   assert.match(await automation.step(), /fact-check round 1/);
   assert.equal(site.calls.run.find((call) => call.stage === "verifier").variant, "explainer");
+  return { site, video, shorts: JSON.parse(readFileSync(shortsFile(slug, box.root), "utf8")) };
+}
+
+test("an explainer one-off goes from its question's bible to a narrator-only script with its two Shorts", async () => {
+  const { site, shorts } = await explainerOneOffRun("flat-explainer");
+  assert.deepEqual(shorts.map((short) => short.series), ["sothatswhy", "sothatswhy"]);
+  assert.deepEqual(site.calls.run.map((call) => [call.stage, call.variant]), EXPLAINER_STAGE_PINS.map(([stage, variant]) => [stage, variant]));
+  for (const [index, [stage, variant, instructions, payload]] of EXPLAINER_STAGE_PINS.entries()) {
+    const call = site.calls.run[index];
+    const { today: _today, lexicon: _lexicon, ...rest } = call.payload;
+    assert.equal(digestOf(call.instructions), instructions, `${stage}:${variant} instructions`);
+    assert.equal(digestOf(canonicalJson(rest)), payload, `${stage}:${variant} payload`);
+  }
 });
 
 const ANIME_SERIES = { ...SERIES, slug: "borrowed-dawn", title: "借來的黎明", kind: "series", category: "anime", genre: "custom", lead: "ensemble", tone: "no-romance", style_preset: "anime-2d", target_minutes: 22, planned_episodes: 120, episodes_per_chapter: 12, chapters: 10, open_ended: false, hands_off: false, compilation: false, production_policy: "long-anime-v1", runtime_spec: { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 } };
