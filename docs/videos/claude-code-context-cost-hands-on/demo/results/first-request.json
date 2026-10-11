@@ -1,0 +1,356 @@
+{
+  "note": "First request of the main conversation per run: input + cache_write + cache_read = input_side. One model, one version, one machine; base runs z1 and z2, every other arm once.",
+  "runs": [
+    {
+      "name": "z1",
+      "arm": "base",
+      "started": "2026-10-11T02:48:53Z",
+      "claude_code": "2.1.295",
+      "model": "claude-sonnet-5-5",
+      "permission_mode": "default",
+      "requests": 1,
+      "first_request": {
+        "input": 2,
+        "cache_write": 11268,
+        "cache_read": 0,
+        "input_side": 11270
+      },
+      "result": "success",
+      "turns": 1,
+      "cost_usd": 0.045186000000000004,
+      "init_counts": {
+        "built_in_tools": 8,
+        "mcp_tools": 0,
+        "mcp_servers": 0,
+        "skills": 22,
+        "agents": 6,
+        "slash_commands": 58,
+        "plugins": 3
+      }
+    },
+    {
+      "name": "t1",
+      "arm": "all",
+      "started": "2026-10-11T02:49:30Z",
+      "claude_code": "2.1.295",
+      "model": "claude-sonnet-5-5",
+      "permission_mode": "default",
+      "requests": 1,
+      "first_request": {
+        "input": 2,
+        "cache_write": 12317,
+        "cache_read": 0,
+        "input_side": 12319
+      },
+      "result": "success",
+      "turns": 1,
+      "cost_usd": 0.049451999999999996,
+      "init_counts": {
+        "built_in_tools": 8,
+        "mcp_tools": 2,
+        "mcp_servers": 1,
+        "skills": 22,
+        "agents": 7,
+        "slash_commands": 58,
+        "plugins": 3
+      }
+    },
+    {
+      "name": "m1",
+      "arm": "memory",
+      "started": "2026-10-11T02:50:15Z",
+      "claude_code": "2.1.295",
+      "model": "claude-sonnet-5-5",
+      "permission_mode": "default",
+      "requests": 1,
+      "first_request": {
+        "input": 2,
+        "cache_write": 5842,
+        "cache_read": 5649,
+        "input_side": 11493
+      },
+      "result": "success",
+      "turns": 1,
+      "cost_usd": 0.0246818,
+      "init_counts": {
+        "built_in_tools": 8,
+        "mcp_tools": 0,
+        "mcp_servers": 0,
+        "skills": 21,
+        "agents": 6,
+        "slash_commands": 57,
+        "plugins": 3
+      }
+    },
+    {
+      "name": "s1",
+      "arm": "skill",
+      "started": "2026-10-11T02:50:56Z",
+      "claude_code": "2.1.295",
+      "model": "claude-sonnet-5-5",
+      "permission_mode": "default",
+      "requests": 1,
+      "first_request": {
+        "input": 2,
+        "cache_write": 4713,
+        "cache_read": 6536,
+        "input_side": 11251
+      },
+      "result": "success",
+      "turns": 1,
+      "cost_usd": 0.0202732,
+      "init_counts": {
+        "built_in_tools": 8,
+        "mcp_tools": 0,
+        "mcp_servers": 0,
+        "skills": 22,
+        "agents": 6,
+        "slash_commands": 58,
+        "plugins": 3
+      }
+    },
+    {
+      "name": "a1",
+      "arm": "agent",
+      "started": "2026-10-11T02:52:05Z",
+      "claude_code": "2.1.295",
+      "model": "claude-sonnet-5-5",
+      "permission_mode": "default",
+      "requests": 1,
+      "first_request": {
+        "input": 2,
+        "cache_write": 4438,
+        "cache_read": 6802,
+        "input_side": 11242
+      },
+      "result": "success",
+      "turns": 1,
+      "cost_usd": 0.0192264,
+      "init_counts": {
+        "built_in_tools": 8,
+        "mcp_tools": 0,
+        "mcp_servers": 0,
+        "skills": 21,
+        "agents": 7,
+        "slash_commands": 57,
+        "plugins": 3
+      }
+    },
+    {
+      "name": "c1",
+      "arm": "mcp",
+      "started": "2026-10-11T02:52:37Z",
+      "claude_code": "2.1.295",
+      "model": "claude-sonnet-5-5",
+      "permission_mode": "default",
+      "requests": 1,
+      "first_request": {
+        "input": 2,
+        "cache_write": 4828,
+        "cache_read": 7071,
+        "input_side": 11901
+      },
+      "result": "success",
+      "turns": 1,
+      "cost_usd": 0.0208602,
+      "init_counts": {
+        "built_in_tools": 8,
+        "mcp_tools": 2,
+        "mcp_servers": 1,
+        "skills": 21,
+        "agents": 6,
+        "slash_commands": 57,
+        "plugins": 3
+      }
+    },
+    {
+      "name": "u1",
+      "arm": "upfront",
+      "started": "2026-10-11T02:53:00Z",
+      "claude_code": "2.1.295",
+      "model": "claude-sonnet-5-5",
+      "permission_mode": "default",
+      "requests": 1,
+      "first_request": {
+        "input": 2,
+        "cache_write": 11436,
+        "cache_read": 0,
+        "input_side": 11438
+      },
+      "result": "success",
+      "turns": 1,
+      "cost_usd": 0.045858,
+      "init_counts": {
+        "built_in_tools": 7,
+        "mcp_tools": 2,
+        "mcp_servers": 1,
+        "skills": 21,
+        "agents": 6,
+        "slash_commands": 57,
+        "plugins": 3
+      }
+    },
+    {
+      "name": "h1",
+      "arm": "hook",
+      "started": "2026-10-11T02:53:27Z",
+      "claude_code": "2.1.295",
+      "model": "claude-sonnet-5-5",
+      "permission_mode": "default",
+      "requests": 1,
+      "first_request": {
+        "input": 2,
+        "cache_write": 4382,
+        "cache_read": 6802,
+        "input_side": 11186
+      },
+      "result": "success",
+      "turns": 1,
+      "cost_usd": 0.0190224,
+      "init_counts": {
+        "built_in_tools": 8,
+        "mcp_tools": 0,
+        "mcp_servers": 0,
+        "skills": 21,
+        "agents": 6,
+        "slash_commands": 57,
+        "plugins": 3
+      }
+    },
+    {
+      "name": "p1",
+      "arm": "plugin",
+      "started": "2026-10-11T02:53:52Z",
+      "claude_code": "2.1.295",
+      "model": "claude-sonnet-5-5",
+      "permission_mode": "default",
+      "requests": 1,
+      "first_request": {
+        "input": 2,
+        "cache_write": 4511,
+        "cache_read": 6802,
+        "input_side": 11315
+      },
+      "result": "success",
+      "turns": 1,
+      "cost_usd": 0.0195184,
+      "init_counts": {
+        "built_in_tools": 8,
+        "mcp_tools": 0,
+        "mcp_servers": 0,
+        "skills": 22,
+        "agents": 7,
+        "slash_commands": 58,
+        "plugins": 4
+      }
+    },
+    {
+      "name": "z2",
+      "arm": "base",
+      "started": "2026-10-11T02:54:18Z",
+      "claude_code": "2.1.295",
+      "model": "claude-sonnet-5-5",
+      "permission_mode": "default",
+      "requests": 1,
+      "first_request": {
+        "input": 2,
+        "cache_write": 4386,
+        "cache_read": 6802,
+        "input_side": 11190
+      },
+      "result": "success",
+      "turns": 1,
+      "cost_usd": 0.0190184,
+      "init_counts": {
+        "built_in_tools": 8,
+        "mcp_tools": 0,
+        "mcp_servers": 0,
+        "skills": 21,
+        "agents": 6,
+        "slash_commands": 57,
+        "plugins": 3
+      }
+    },
+    {
+      "name": "z3",
+      "arm": "base",
+      "started": "2026-10-11T03:02:55Z",
+      "claude_code": "2.1.295",
+      "model": "claude-sonnet-5-5",
+      "permission_mode": "default",
+      "requests": 1,
+      "first_request": {
+        "input": 2,
+        "cache_write": 4382,
+        "cache_read": 6802,
+        "input_side": 11186
+      },
+      "result": "success",
+      "turns": 1,
+      "cost_usd": 0.0190224,
+      "init_counts": {
+        "built_in_tools": 8,
+        "mcp_tools": 0,
+        "mcp_servers": 0,
+        "skills": 21,
+        "agents": 6,
+        "slash_commands": 57,
+        "plugins": 3
+      }
+    },
+    {
+      "name": "w1",
+      "arm": "work",
+      "started": "2026-10-11T03:03:25Z",
+      "claude_code": "2.1.295",
+      "model": "claude-sonnet-5-5",
+      "permission_mode": "default",
+      "requests": 4,
+      "first_request": {
+        "input": 2,
+        "cache_write": 5301,
+        "cache_read": 7071,
+        "input_side": 12374
+      },
+      "result": "success",
+      "turns": 14,
+      "cost_usd": 0.0903812,
+      "init_counts": {
+        "built_in_tools": 8,
+        "mcp_tools": 2,
+        "mcp_servers": 1,
+        "skills": 22,
+        "agents": 7,
+        "slash_commands": 58,
+        "plugins": 3
+      }
+    },
+    {
+      "name": "n1",
+      "arm": "note",
+      "started": "2026-10-11T03:04:10Z",
+      "claude_code": "2.1.295",
+      "model": "claude-sonnet-5-5",
+      "permission_mode": "default",
+      "requests": 1,
+      "first_request": {
+        "input": 2,
+        "cache_write": 4462,
+        "cache_read": 6802,
+        "input_side": 11266
+      },
+      "result": "success",
+      "turns": 1,
+      "cost_usd": 0.0193224,
+      "init_counts": {
+        "built_in_tools": 8,
+        "mcp_tools": 0,
+        "mcp_servers": 0,
+        "skills": 21,
+        "agents": 6,
+        "slash_commands": 57,
+        "plugins": 3
+      }
+    }
+  ]
+}
