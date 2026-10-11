@@ -526,6 +526,102 @@ Skill 工具沒有被叫到、五個步驟卻做到了：看 `skill or instructi
 
 站主 2026-10-09 交代：繼續做 AI 教學；做法照前幾支（大綱依建議選、只出繁體中文）。
 
+### 2026-10-11 重排：主例的另一邊換成「同一段流程留在 CLAUDE.md」
+
+這一節寫在 2026-10-11 的任何 session 之前。站主 2026-10-11 否決另一支做完的教學片之後，規則補了「主例要贏過簡單做法」（`tools/video/automation/register.mjs` 的 `VALUE_RULES`，`script-writing.md`〈站主否決一支做完的教學片之後補的〉）。同一天這支被盲評為「重做」，四點：主打的 0／3 對 3／3 是拿「有 Skill」跟「什麼都沒交代」比，觀眾真正會用的「同一段流程留在 CLAUDE.md」只跑過一次（c1，五步都做到）；選用規則都是引用官方頁，沒有接到任何一個量到的結果；十一句旁白在講這支片怎麼做的；完整的 `claude -p` 指令沒有上卡片、記錄用的 hook 只放了一部分。
+
+不用這個方法：同一段五步的發版流程，留在專案根目錄的 CLAUDE.md 裡（`demo/variants/CLAUDE.release.md`，21 行）。這是這支的觀眾現在的放法：不用建資料夾、不用寫 frontmatter，每個 session 自動載入。照規則的順序，看一眼資料夾、一行常見指令都拿不到「五步照做」；一句普通的提示拿得到，但要每次把五步重打一遍，觀眾早就因為這樣把它寫進 CLAUDE.md 了。所以並排的另一邊是 CLAUDE.md，不是「沒有 Skill」。10-09 的 n1 到 n3（什麼都沒交代）留著當對照，證明那兩步是指示造成的，不再當主例。
+
+Skill 比 CLAUDE.md 多的東西，官方頁怎麼說、這台機器量不量得到：
+
+| 差別 | 官方頁的說法（2026-10-09 抓取，「會過期的事實」有網址） | 10-09 已經有的 | 這次怎麼量 |
+| --- | --- | --- | --- |
+| 載入的時機 | CLAUDE.md 每個 session 整份載入；Skill 開場只有 description，內文用到才載入 | 第一個請求比沒有流程時多：Skill 58（三次平均）、CLAUDE.md 486（c1，一次） | 同一句要求各三次，讀第一個請求的 token |
+| 用到的那一次 | 內文在被叫到時才進對話 | s1 到 s3 是 11 輪、整個 session 約三萬九千個 token；c1 是 9 輪、約三萬個。片中沒講 | 同上，再數請求數與整個 session 的 token |
+| 照做的程度 | CLAUDE.md 建議 200 行以內，越長越不容易被照做；流程長了搬去 Skill | c1 一次，五步都做到 | CLAUDE.md 一段流程三次、五段流程三次，各自對同樣內容的 Skill |
+| 不該啟動的時候 | Claude 依 description 判斷要不要用；`disable-model-invocation: true` 讓它只能由你叫 | 沒有 | 一句提到版本、但只要它看一下的要求，兩邊各三次 |
+| 叫得動 | `/名稱 引數` 直接叫；CLAUDE.md 沒有這個入口 | x1 一次，五步都做到 | 不重跑，沿用 x1 |
+| 附檔 | SKILL.md 可以連到同一個資料夾的檔，讀到才載入 | 有 Skill 的每一次都用 Read 打開 template.md；c1 的發版說明檔沒有最上面的版本標題，因為 CLAUDE.md 只列了三個二級標題 | 不另外排：範本檔放在 repo 的任何地方、由 CLAUDE.md 指過去也做得到，這不是 Skill 才有的能力 |
+
+「步驟有沒有照做」與「占多少」這次都重跑，不拿 10-09 的數字湊：今天的專案資料夾路徑不同、日期不同，第一個請求的大小會跟著變；同一對的兩邊一定在同一天、同一個資料夾跑。
+
+要先實作（2026-10-11；每一項都在 `runlog.txt` 加一段）。檔案放 `demo/`，執行時整份複製到 repo 外的 `<work>/seed`，專案建在 `<work>/run/skill-lab`，紀錄放 `<work>/run/logs`。
+
+新增的檔案（不改 10-09 的任何一個檔，雜湊照舊）：
+
+- `demo/variants/CLAUDE.five.md`（59 行）：前 21 行就是 `CLAUDE.release.md`，後面接四段別的流程：記一筆更新紀錄、新增換算函式、處理回報的錯誤、README 的使用範例。四段各自寫了只准動哪些檔，其中三段規定了別的 CHANGELOG 寫法或別的最後一行，跟發版那一段不一樣：真的 CLAUDE.md 長大之後就是這個樣子。
+- `demo/variants/add-converter.skill.md`、`bug-report.skill.md`、`readme-example.skill.md`：後三段各自寫成 Skill（「記一筆更新紀錄」用 10-09 就有的 `changelog-entry.skill.md`）。四個 Skill 的內文與 CLAUDE.five.md 的對應段落逐字相同，`check-five.mjs` 會比。
+- `demo/prompts/look.txt`：`0.3.1 快要出了，先幫我看一下 CHANGELOG 有沒有漏記的。`（35 個字）。這句提到版本要出了，但只要它看。專案的 Unreleased 只有一條，跟 `src/units.mjs` 對得上，所以正確的結果是回答「沒有漏」、一個檔都不改。
+- `demo/session-2.sh`：`session.sh` 的指令一個旗標都不改，加上今天的臂與第二句要求。臂：`none`、`claudemd`（CLAUDE.release.md）、`skill`（10-09 寫好的那一份與範本）、`claudemd5`（CLAUDE.five.md）、`skill5`（五個 Skill）、`gated`（見下面的條件）。
+- `demo/drift.mjs`：跑完之後跟種子比：四個檔哪幾個被改、多了哪些檔、發版有沒有被執行（版號不是 0.3.0，或 `releases/` 底下有檔）、有沒有別段流程的痕跡（CHANGELOG 出現 `- [` 開頭的行、README 出現 `## Usage`、最後一行是別段規定的句子），以及這一次的大小：送了幾個請求、每個請求的 token、整個 session 的 token、輪數、回報費用。
+- `demo/check-five.mjs`、`demo/m-checks-2.sh`：不呼叫模型的檢查。
+
+第 17 項　不呼叫模型的檢查。
+
+    WORK=<work> bash <work>/seed/m-checks-2.sh > <work>/run/logs/m-checks-2.log 2>&1
+
+預期：每個指令 `[exit 0]`；10-09 的種子檔雜湊照舊；五種臂各自的檔案清單（`none` 6 個檔、`claudemd` 與 `claudemd5` 7 個、`skill` 8 個、`skill5` 12 個）；`check-five.mjs` 五行 `same`；`skill5` 與 `skill` 的 validate 都是 `✔ Validation passed`；`drift.mjs` 對兩組假造的 session 分得出「沒動」與「發版被執行」。
+
+一次 session 的指令（第 18 到 21 項共用；與 10-09 逐旗標相同，`<request>` 是 `ship.txt` 或 `look.txt`）：
+
+    bash <work>/seed/session-2.sh <名字> <臂> <ship|look>
+
+    env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 SKILL_LOG=<logs>/<名字>.seen.log \
+      timeout 300 claude -p --model sonnet \
+      --setting-sources project,local --strict-mcp-config \
+      --tools "Read,Glob,Grep,Edit,Write,Skill" \
+      --allowedTools "Read,Glob,Grep,Edit,Write,Skill" \
+      --no-session-persistence \
+      --output-format stream-json --verbose \
+      --debug-file <logs>/<名字>.debug.log \
+      < <seed>/prompts/<request> \
+      > <logs>/<名字>.stream.jsonl 2> <logs>/<名字>.stderr.txt
+
+啟動 session 的 shell 一樣是 Claude Code 桌面版開的 Git Bash。第 17 項看到它今天帶的 `CLAUDE_EFFORT` 是 `xhigh`，10-09 的十二次是 `high`；執行前把這個變數設回 `high`，讓兩天的 session 帶同一個值，`session.log` 會印出實際帶進去的值。它對不開畫面的 session 有沒有作用，沒有量過。
+
+第 18 項　同一段流程、同一句要求：CLAUDE.md 對 Skill，各三次（`sk1`、`md1`、`sk2`、`md2`、`sk3`、`md3`，輪流跑）。
+
+    bash <work>/seed/session-2.sh sk1 skill ship
+    bash <work>/seed/session-2.sh md1 claudemd ship
+
+- `sk1` 先跑，兼作今天的做法檢查（同第 3 項的七件事：結束碼 0、stderr 空、模型全名、工具恰好六個、專案的 Skill 1 個且「其他」0 個、hook 紀錄沒有專案以外的東西、專案上面沒有指示檔）。任何一件不對就停。
+- 預期：兩邊 F1 到 F5 都是三次全中（依 c1 與 s1 到 s3）。`md` 的第一個請求比 `sk` 多四百多個 token；`sk` 多送一個請求（叫 Skill 的那一趟）。會不會有一邊在 CHANGELOG 那一步出錯，不知道。
+- 怎麼認：`session.log` 裡 `tally` 的 `F1` 到 `F5` 與 `first request:`，`drift` 的 `requests to the model:` 與 `turns`。
+- 支持什麼：兩邊每一步都一樣，代表「搬成 Skill」沒有讓 Claude 更照做，主例不能再講成 Skill 補上了那兩步。有一步差兩次以上，那一步就是主例。
+
+第 19 項　CLAUDE.md 長到五段流程：對五個 Skill，各三次（`skf1`、`mdf1`、`skf2`、`mdf2`、`skf3`、`mdf3`）。
+
+    bash <work>/seed/session-2.sh skf1 skill5 ship
+    bash <work>/seed/session-2.sh mdf1 claudemd5 ship
+
+- 預期：不知道。`mdf` 這邊五段都在眼前，「記一筆更新紀錄」那一段寫著不要新增版本標題、不要搬項目，跟發版的第 2 步相反；可能混到，也可能三次都照發版那一段做。`skf` 這邊預期只叫 `release-prep`（10-09 的 o1 一次是這樣）。第一個請求：`mdf` 比 `md` 再多約一千個 token，`skf` 比 `sk` 多兩三百個。
+- 怎麼認：同上，加 `drift` 的 `marks of another procedure:` 與 `Skill calls, in order:`。
+- 支持什麼：`mdf` 在任何一步比 `skf` 少兩次以上，或三次裡兩次以上混到別段，這就是「理所當然的做法會失敗」的情況，主例建在這一對上。兩邊一樣，代表這種長度的 CLAUDE.md 還撐得住，官方那句「越長越不照做」在這裡沒有量到。
+
+第 20 項　不該啟動發版的那一句：兩邊各三次（`skl1`、`mdl1`、`skl2`、`mdl2`、`skl3`、`mdl3`），專案同第 18 項。
+
+    bash <work>/seed/session-2.sh skl1 skill look
+    bash <work>/seed/session-2.sh mdl1 claudemd look
+
+- 預期：不知道。Skill 的 `when_to_use` 寫的正是「使用者說某一版要出了」，Claude 可能把它叫起來、把五步做完；CLAUDE.md 這邊整段流程每次都在，也可能照做，也可能只看不改。
+- 怎麼認：`drift` 的 `the release was carried out:` 與四個檔各自的 `same`／`changed`；`tally` 的 `Skill tool called for release-prep:`。
+- 支持什麼：哪一邊在三次裡兩次以上把發版做掉了，哪一邊就有一個量到的失敗；另一邊沒有，就是兩種放法的差別。兩邊都沒有，這一題沒有差別。兩邊都做掉了，差別不在放哪裡，在那句 `when_to_use` 與流程的寫法。
+- 條件：任何一邊在三次裡兩次以上把發版做掉，才加跑 `gated` 三次（`gl1` 到 `gl3`）：`release-prep.gated.skill.md` 是寫好的那一份多一行 `disable-model-invocation: true`，同一句 `look.txt`。那一行是 CLAUDE.md 沒有的開關；它擋不擋得住，跑了才知道。條件沒成立就不建那個檔、不跑。
+
+第 21 項　今天的基準：`no1`，沒有任何流程，`ship.txt`，一次。只用它的第一個請求當「沒有流程時」的大小。
+
+    bash <work>/seed/session-2.sh no1 none ship
+
+合計 19 次，條件成立時 22 次；另外不留備用。因為逾時或斷線沒有結果的那一次，用新的名字（加 `r`）重跑，失敗的留在紀錄裡。
+
+判定，跑之前講定，跑完不改：
+
+1. 「步驟有差」：同一對的兩邊，任何一個計分項在三次裡差兩次以上。計分項是 F1 到 F5（規則同 10-09 的「計分規則」）、「混到別段」（`drift` 的三種痕跡任何一種，或 `src/units.mjs` 被改）、以及 `look.txt` 那一題的「發版被執行」。
+2. 「成本有差」：同一句要求之下，CLAUDE.md 那一邊的第一個請求比 Skill 那一邊多出來的 token，大於兩邊各自三次之間最大的差距。用到 Skill 的那一次多花的（請求數、整個 session 的 token）一起報，不只報對 Skill 有利的那一半。回報費用會跟著快取變（同一個開頭第二次跑就便宜），只列出來，不拿來比。
+3. 第 1 點在任何一對成立：那一對是主例，那個失敗是觀眾猜不到的結果，放開場或主例的轉折。
+4. 第 1 點都不成立、第 2 點成立：兩邊照做的程度一樣，量到的差別只有成本。片子照實講成「搬成 Skill 沒有讓它更照做」，選用規則用量到的兩個方向（平常省多少、用到時多花多少）寫；這種情況下主例靠的是成本與 `/名稱` 這個入口，回報裡要明講，讓站主判斷夠不夠。
+5. 兩點都不成立（每一步都一樣，token 的差也在同一臂三次的差距以內）：停在這裡，`brief.md` 第一行寫「含金量不足：…」與量到的數字，不寫稿。
+
 ## 大綱
 
 三個選項用同一個練習專案、同一批執行紀錄，差在主線與排法。片長以每分鐘 250 字估。寫到 session 的卡片內容與數字都是預期，跑完照實際結果改。前四支的開場卡片分別是 title、compare、terminal（mods）、title、steps、terminal（Hook）、title、code、terminal（headless）、title、chat、stats（CLAUDE.md）；這三個選項都不這樣開。
