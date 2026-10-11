@@ -15,7 +15,7 @@ import { lookHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
 import { dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, lexiconProposals, sandbox } from "../core/fixtures/load.mjs";
 import { isValidTerm, validateLexicon } from "../core/lexicon.mjs";
 import { shortsFile } from "../shorts/episode.mjs";
-import { atomicWrite, readJson, ROOT, UsageError } from "../core/paths.mjs";
+import { atomicWrite, docDir, readJson, ROOT, UsageError } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { dubArtifacts, loadProject, pipelineStatus } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
@@ -7420,6 +7420,25 @@ test("a slides video's writer hears the prompt budget of the image model the set
   assert.deepEqual(budgetFor({}, {}), { prompt_budget_chars: 1000 }, "a legacy state with no format is a slides video; nothing names a model");
   assert.deepEqual(budgetFor({ slides: { slides_media_enabled: true, slides_image_model: "image-01" } }, { format: "drama" }), {}, "a drama draws otherwise");
   assert.deepEqual(budgetFor({ slides: { slides_media_enabled: true, slides_image_model: "image-01" } }, { format: "slides", story: { chapters: [] } }), {}, "a story draws otherwise");
+  // An explainer one-off whose series.json names its image model hears that model's budget under
+  // its own preset's look (the key the media stages read); nothing else of a drama hears one.
+  const oneOff = (preset, more = {}) => ({ format: "drama", style_preset: preset, series: { slug: "one-off-x", episode: 1, chapter: 1, kind: "one-off" }, ...more });
+  const seriesFile = path.join(docDir(slug, box.root), "series.json");
+  assert.deepEqual(budgetFor({}, oneOff("cute-mystery")), {}, "no series.json: nothing names a model");
+  mkdirSync(path.dirname(seriesFile), { recursive: true });
+  writeFileSync(seriesFile, JSON.stringify({ slug: "one-off-x", episode: 1, characters: [] }));
+  assert.deepEqual(budgetFor({}, oneOff("flat-explainer")), {}, "a series.json without the key: the settings' model draws, and the writer hears nothing, as before");
+  writeFileSync(seriesFile, JSON.stringify({ slug: "one-off-x", episode: 1, image_model: "image-01", characters: [] }));
+  for (const preset of ["cute-mystery", "cute-cartoon", "flat-explainer"]) assert.deepEqual(budgetFor({}, oneOff(preset)), { prompt_budget_chars: 1000 }, `${preset} under image-01's 1500 still leaves more than the writer's own 1000`);
+  assert.deepEqual(budgetFor({}, oneOff("cinematic-3d")), {}, "a cast drama hears nothing even beside the key");
+  assert.deepEqual(budgetFor({}, { format: "drama", style_preset: "cute-mystery" }), {}, "no series: nothing to read the model from");
+  assert.deepEqual(budgetFor({}, oneOff("cute-mystery", { story: { chapters: [] } })), {}, "a story draws otherwise");
+  writeFileSync(seriesFile, JSON.stringify({ slug: "one-off-x", episode: 1, image_model: "gemini-3-pro-image", characters: [] }));
+  assert.deepEqual(budgetFor({}, oneOff("cute-mystery")), { prompt_budget_chars: 1000 }, "a named Gemini model: 4000");
+  // The uncapped figures hold the cute looks to the decided texts (docs/videos/explainer-route/DECISIONS.md).
+  assert.equal(shotPromptBudget({ look: resolveLook({ preset: "cute-cartoon" }), camera: "pan right", limit: 1500 }), 1093);
+  assert.equal(shotPromptBudget({ look: resolveLook({ preset: "cute-mystery" }), camera: "pan right", limit: 1500 }), 1070);
+  assert.equal(shotPromptBudget({ look: resolveLook({ preset: "flat-explainer" }), camera: "pan right", limit: 1500 }), 1056);
   // The vendor read from the settings, which name the slides model by id alone.
   assert.equal(slidesImageVendor({ slides: { slides_media_enabled: true, slides_image_model: "image-01" } }), "minimax");
   assert.equal(slidesImageVendor({ slides: { slides_media_enabled: true, slides_image_model: null }, drama: { image_provider: "gemini", image_model: "gemini-3-pro-image" } }), "gemini");

@@ -95,6 +95,13 @@
 - 劇本關卡對**每一支**漫劇都開（`stepsFor` 拿掉 `|| doc.series` 的條件；`series_script_gate` 顯示為「劇本先給我看」，關掉就自動核准）。劇本關卡在任何圖片或片段花錢之前。
 - 之後的製作照 HANDS-OFF：`auto_pick_look`、`auto_approve_storyboard` 由站主看過第一支之後打開；旁白 Jev 全過自動核准；成片自動品管。站主被找的只有出錯的項目。
 - 遷移把還在 `queued` 的單集請求各建成一部 `one-off` 作品（bible 待寫）；已 `started` 的走完舊路。
+- **解說片可以指定自己的圖片模型**（2026-10-11；設計在 [`explainer-route/DESIGN.md`](explainer-route/DESIGN.md) 第 4 節）。「新的漫劇」表單選了解說類風格（`flat-explainer`、`cute-cartoon`、`cute-mystery`）才會出現「這一支的圖片模型」；有角色的漫劇不能指定（設定圖要靠設定分頁那個模型撐住臉），API 對這種請求回 422。
+  - `flat-explainer` 不選就是「跟漫劇設定一樣」：請求不帶 `image_model`，作品列是 NULL，跟以前完全一樣。
+  - 兩個可愛風格的畫風文字是為 MiniMax `image-01` 寫的（只有正向描述）。請求沒指定時，伺服器在 `DramaRequestIn` 就補成 `image-01`（`schemas.py` 的 `PRESET_IMAGE_MODELS`；表單預選同一個，`apps/web/lib/video-presets.ts` 的 `PRESET_IMAGE_MODEL`），所以存進作品列、寫進稽核紀錄、拿去查金鑰的是同一個值。
+  - 這個值存在單集作品列的 `video_drama_series.image_model`（0111 就有的欄位，沒有新 migration），圖片工作本來就照它選模型（`video_media/jobs.py` 的 `series_image_model`）。
+  - **送出時就擋沒有金鑰的模型**：請求指定了模型（或可愛風格補上的 `image-01`），而那個模型的供應商在網站上沒有金鑰，`POST /admin/video-automation/drama-requests` 回 409 `video_drama_image_model_not_configured`，什麼都不建立，企劃跟劇本的錢不會先花掉。供應商用 `series_image_vendor` 判斷，跟第一張圖送出時是同一段程式。沒指定模型的請求不查（跟著設定走，跟以前一樣）。
+  - 工人開始這一集時，把作品列的模型寫進 `docs/videos/<slug>/series.json` 最上層的 `image_model`（只有單集、而且作品列有指定時才寫；長篇作品不寫）。圖片階段讀的就是這個鍵：`image-01` 畫 1K、照目錄價 US$0.0035 計、提示詞上限算 MiniMax 的 1,500 字元；撰稿模型也會收到 `prompt_budget_chars`。這個鍵光是存在就會換掉每張圖的快取鍵，所以**不要補寫進已經開始的影片**。
+  - 已知的限制：指定 Gemini 模型的解說片畫 1K（跟著設定走的是 2K）；`POST /series` 與 `PATCH /series/{slug}` 不走這裡的預設與金鑰檢查；送出時的金鑰檢查只代表當下。
 
 站主真正要碰的：單集是「前提 → 故事聖經 → 劇本 → 語言 → 上架時間」，作品是「前提 → 設定集 → 總綱 → 每篇細綱 → 每集劇本 → 語言 → 上架時間」。
 

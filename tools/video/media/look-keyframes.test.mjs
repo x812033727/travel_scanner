@@ -69,7 +69,7 @@ function mediaSite({ verdicts, status = STATUS, actualImageModel = () => status.
       // Like the server, choose from the series, independently of the global status response,
       // and price a 2K picture with the slides choice's 2K price.
       const model = actualImageModel();
-      const price = request.size === "2K" ? status.slides_image.usd_per_image_2k : status.models.images.gemini.find((entry) => entry.value === model).usd_per_image;
+      const price = request.size === "2K" ? (status.slides_image ?? status.image).usd_per_image_2k : Object.values(status.models.images).flat().find((entry) => entry.value === model).usd_per_image;
       const bytes = PNG(`${model}|${request.prompt}|${request.seed ?? ""}|${(request.references ?? []).map((reference) => reference.sha256).join(",")}`);
       state.files.set(SHA(bytes), bytes);
       return Response.json({ id: `img${state.images.length}`, status: "ready", file: { sha256: SHA(bytes), size: bytes.length, content_type: "image/png" }, usd_estimate: price, error: null, retry_after_seconds: 0 }, { status: 200 });
@@ -639,6 +639,60 @@ test("an explainer has no look: look refuses it, and keyframes draw every still 
   const manifest = manifestOf(box, "keyframes");
   assert.equal(manifest.look_hash, lookHash(explainerFixture()));
   assert.deepEqual(Object.keys(manifest.shots).sort(), [...shots].sort());
+});
+
+test("a cute explainer one-off whose series.json names image-01 is sized, priced and budgeted for MiniMax, while one that names none still asks the settings' model for 2K", async () => {
+  const { shotPromptBudget } = await import("./prompt-budget.mjs");
+  const { resolveLook } = await import("../core/drama.mjs");
+  // The settings draw with Gemini 3 Pro at 2K; the catalogue also offers MiniMax image-01 at 1K.
+  const status = {
+    ...STATUS,
+    image: { ...STATUS.image, usd_per_image_2k: 0.134 },
+    models: { ...STATUS.models, images: { ...STATUS.models.images, minimax: [{ value: "image-01", label: "MiniMax image-01", description: null, status: "stable", resolutions: [], durations: [], reference_images: 1, native_audio: false, usd_per_second: null, usd_per_image: 0.0035, usd_per_track: null }] } },
+    limits: { image_prompt_chars: 4000, image_prompt_chars_minimax: 1500 },
+  };
+  const box = sandbox("fixture-explainer", "explainer");
+  const doc = rewrite(box, (video) => {
+    video.look = { preset: "cute-mystery" };
+    video.series = { slug: "one-off-x", episode: 1, chapter: 1 };
+  });
+  writeFileSync(path.join(box.dir, "series.json"), `${JSON.stringify({ slug: "one-off-x", episode: 1, image_model: "image-01", characters: [] }, null, 2)}\n`);
+  const shots = doc.scenes.filter((scene) => scene.template === "shot");
+  const look = resolveLook(doc.look);
+  const budgetOf = (scene) => shotPromptBudget({ look, camera: scene.data.camera, cast: "", limit: 1500 });
+  const site = mediaSite({ status, verdicts: () => ({ overall: 8, passed: true }), actualImageModel: () => "image-01" });
+
+  const dry = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, dry.out.stderr);
+  assert.match(dry.out.stdout, /server: minimax image-01 \(provider key checked on submit\); pictures at 1K/);
+  for (const scene of shots) {
+    assert.ok(budgetOf(scene) > 1000 && budgetOf(scene) < 1100, `${scene.id}: ${budgetOf(scene)} under MiniMax's 1500, not Gemini's 4000`);
+    assert.ok(dry.out.stdout.includes(`  prompt budget: ${scene.data.prompt.length} of ${budgetOf(scene)} characters\n`), `${scene.id}: ${budgetOf(scene)}`);
+  }
+  assert.doesNotMatch(dry.out.stdout, /OVER BUDGET/);
+  assert.equal(site.state.images.length, 0, "a dry run draws nothing");
+
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", shots[0].id], run.ctx), EXIT.ok, run.out.stderr);
+  assert.equal(site.state.images.length, 1);
+  const [request] = site.state.images;
+  assert.equal(request.shot_id, shots[0].id);
+  assert.equal(Object.hasOwn(request, "size"), false, "image-01 sells 1K only: no size is asked for");
+  assert.equal(Object.hasOwn(request, "negative_prompt"), false, "a cute look is positive text only");
+  const manifest = manifestOf(box, "keyframes");
+  assert.deepEqual(manifest.image, { provider: "minimax", model: "image-01" });
+  assert.equal(manifest.image_selection_version, 1);
+  assert.equal(manifest.shots[shots[0].id].prompt_budget_chars, budgetOf(shots[0]));
+
+  // The counter-case: the same site, an explainer whose series names no model. The settings'
+  // model draws it, at the 2K it is priced for.
+  const plain = sandbox("fixture-explainer", "explainer");
+  const settingsSite = mediaSite({ status, verdicts: () => ({ overall: 8, passed: true }) });
+  const plainRun = context(plain, settingsSite.fetchImpl);
+  const first = explainerFixture().scenes.find((scene) => scene.template === "shot").id;
+  assert.equal(await main(["keyframes", "--slug", plain.slug, "--shot", first], plainRun.ctx), EXIT.ok, plainRun.out.stderr);
+  assert.equal(settingsSite.state.images[0].size, "2K");
+  assert.deepEqual(manifestOf(plain, "keyframes").image, { provider: "gemini", model: PRO_MODEL });
 });
 
 /** The sandbox's video.json, changed by `edit` and written back. */

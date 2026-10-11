@@ -11,7 +11,9 @@ vendor refused or failed: a generation that succeeded is billed even when our do
 The models are the settings tab's, but for one exception: a picture for a video that is an
 episode of a series naming its own ``image_model`` is drawn with that model (a brand story
 draws with Gemini 3.1 Flash Image while the dramas keep the settings' Pro; docs/videos/
-STORY.md). The server looks the series up from the video's slug; the request names no model.
+STORY.md). A one-off explainer whose request named a model, or took a cute preset's image-01,
+is drawn with it the same way (docs/videos/DRAMA-FLOW.md §二). The server looks the series up
+from the video's slug; the request names no model.
 """
 
 from __future__ import annotations
@@ -189,6 +191,13 @@ def _series_image_model(row: VideoAutomationSettings, model_id: str) -> tuple[st
         model_id,
         f"作品指定的圖片模型 {model_id} 不能用；請在作品上換一個，或清空改用設定分頁的模型",
     )
+
+
+def series_image_vendor(row: VideoAutomationSettings, model_id: str) -> str:
+    """The vendor a picture is asked of when a series names ``model_id``, chosen exactly as
+    ``submit_job`` chooses it (the settings' image vendor first, a retired model refused), so
+    filing a request asks the question the first picture will ask."""
+    return _series_image_model(row, model_id)[0]
 
 
 def _slides_image_model(row: VideoAutomationSettings) -> tuple[str, MediaModel]:

@@ -1,15 +1,16 @@
 ---
 id: 2026-10-11-explainer-request-names-its-image-model
 title: Explainer request names its image model: cute presets default to image-01, a model with no key is refused at filing
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-explainer-pr2
+claimed_at: 2026-10-11T08:47:22Z
 created_at: 2026-10-11T04:01:35Z
 completed_at:
-branch:
-depends_on: []
+branch: claude/explainer-image-model
+depends_on:
+  - 2026-10-11-explainer-family-cute-presets
 scope:
   - apps/api/app/video_automation/schemas.py
   - apps/api/app/video_automation/series.py
@@ -60,26 +61,26 @@ implementer on that pull request's branch; when it is on main, add its id to thi
 
 ## Definition of done
 
-- [ ] API (design 4.1 items 1 to 6): `PRESET_IMAGE_MODELS` in `schemas.py`;
+- [x] API (design 4.1 items 1 to 6): `PRESET_IMAGE_MODELS` in `schemas.py`;
       `DramaRequestIn.image_model` validated by `_known_image_model`, refused on a non-explainer
       preset, defaulted to `image-01` for the two cute presets and left `None` for
       `flat-explainer`; `create_one_off` stores it on the series row and in the audit entry;
       `series_image_vendor` in `video_media/jobs.py`; `create_drama_request` answers 409
       `video_drama_image_model_not_configured` when the named or defaulted model's vendor has no
       key, and looks nothing up when no model is named. No migration (the column exists since 0111).
-- [ ] Tools (items 7 to 9): `draftEpisode` writes `image_model` into a one-off's `series.json`
+- [x] Tools (items 7 to 9): `draftEpisode` writes `image_model` into a one-off's `series.json`
       (never a long series'); `draftBudget` returns `prompt_budget_chars` for an explainer whose
       `series.json` names a model (1000 with today's looks). No change to `media/*`.
-- [ ] Web (items 10 to 14): `PRESET_IMAGE_MODEL`, `imageModelOptions`, `requestImageModel`, the
+- [x] Web (items 10 to 14): `PRESET_IMAGE_MODEL`, `imageModelOptions`, `requestImageModel`, the
       image-model select in `NewDramaForm` for explainer presets, the model on the one-off card
       and the series header, three strings in each of the five `admin.json`. `REQUEST_PRESETS`
       stays at five values: the cute presets join the form in pull request 3.
-- [ ] `docs/videos/DRAMA-FLOW.md` section 二 carries the documentation.
+- [x] `docs/videos/DRAMA-FLOW.md` section 二 carries the documentation.
       `.agents/skills/youtube-video/references/drama.md` is **not** edited: it is read into every
       drama payload, and one changed byte stops every unfinished drama stage.
-- [ ] The tests of design 4.2, including the corrected `look-keyframes.test.mjs` case and the
+- [x] The tests of design 4.2, including the corrected `look-keyframes.test.mjs` case and the
       tests that must pass unedited.
-- [ ] `flat-explainer` naming no model produces the same row, `series.json`, writer payload and
+- [x] `flat-explainer` naming no model produces the same row, `series.json`, writer payload and
       cache keys as before (owner's decision 4).
 - [ ] The duration receipt (`docs/videos/long-form/review.json`, `review.md`) is re-issued for the 13 bound files of
       design 4.3 by an agent that did not write the change (`DURATION_ONLY` increment), and
@@ -88,12 +89,12 @@ implementer on that pull request's branch; when it is on main, add its id to thi
 
 ## Steps
 
-- [ ] Confirm pull request 1 is on main and on the host (`/admin/videos` settings list shows the
+- [x] Confirm pull request 1 is on main and on the host (`/admin/videos` settings list shows the
       two cute labels; the worker prints the three `EXPLAINER_PRESETS`).
-- [ ] Read design sections 1, 2 and 4, and `orders/order-pr2.json` beside it for the wording the
+- [x] Read design sections 1, 2 and 4, and `orders/order-pr2.json` beside it for the wording the
       design refers to ("order 2 change 11", "order 2 test 1" and so on). Find every site by its
       quoted statement, not by line number.
-- [ ] Before pushing, grep pull request 1's merged tests for an HTTP post of a cute preset: any
+- [x] Before pushing, grep pull request 1's merged tests for an HTTP post of a cute preset: any
       such test must patch `admin_api.load_runtime_settings`.
 - [ ] Run `npm run test:tools` whole once, without piping it through `tail`.
 - [ ] Hand the receipt to an independent agent; then deploy (design 4.5: confirm the worker's
@@ -116,3 +117,22 @@ every earlier one-off row has `image_model` NULL.
   `PATCH /series/{slug}` bypass the default and the key check, the dry run says
   `(provider key checked on submit)`. Each has its own follow-up ticket filed the same day.
 - The pull request text must say the filing refusal covers named and defaulted models only.
+- 2026-10-11 implemented on `claude/explainer-image-model` (pull request not opened by the
+  implementer). Pull request 1 landed every helper under the design's name, so nothing was
+  renamed. Claimed with `--force`: the refusal named `2026-10-10-let-the-owner-re-request-a`,
+  whose pull request #1432 is merged while its ticket is still in `tasks/open`.
+- What proves decision 4: `series.test.mjs` `EXPLAINER_STAGE_PINS` (the three flat-explainer
+  payload and instruction digests) passes unedited, and the same test now also asserts that the
+  one-off's `series.json` has no own `image_model` key and its writer payload no
+  `prompt_budget_chars`.
+- `node tools/video/long-form/cli.mjs check` is red on the 13 files of design 4.3 and on nothing
+  else, as expected: the receipt is the independent reviewer's to re-issue.
+- Not run locally: the `@integration` case in `test_video_drama_request_image_model.py` (needs
+  PostgreSQL; CI runs it) and the whole of `npm run test:tools` (the step above stays unticked:
+  CI's `web-checks` and `video-tests` run it). `automation.test.mjs` was run whole on Windows
+  with `--test-timeout=180000`: 233 of 234 passed and the one cancelled is the project-lease
+  test that hangs on Windows (`ERR_UNSUPPORTED_ESM_URL_SCHEME` in its child process), untouched
+  by this change. No pull-request-1 test posts a cute preset over HTTP, so none needed the
+  runtime-settings patch.
+- The web test file tests the cute presets on `requestImageModel` only (they are not in the
+  form); pull request 3 adds the rendered cases when it adds them to `REQUEST_PRESETS`.
