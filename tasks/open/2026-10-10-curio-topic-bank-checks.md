@@ -1,14 +1,14 @@
 ---
 id: 2026-10-10-curio-topic-bank-checks
 title: Curio topic bank: independent re-check of H02-H07, then H08 and the other four axes in small batches
-status: open
+status: in-progress
 priority: P3
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-curio-topics
+claimed_at: 2026-10-11T17:39:46Z
 created_at: 2026-10-10T14:38:30Z
 completed_at:
-branch: claude/curio-topic-checks
+branch: claude/curio-topic-bank-second-batch
 depends_on: []
 scope:
   - docs/videos/history-curiosity/topic-checks
