@@ -112,7 +112,10 @@ these, none of them yet run through a judge model:
 - [x] Ask the owner who decides when it fails. Answered 2026-10-11: the writer gets it back
       automatically, before speech is paid for, with the statements it failed; the owner sees
       it only when the writer's revisions are used up.
-- [ ] Still to ask: how many revisions before it becomes the owner's.
+- [x] How many revisions: two. Answered 2026-10-11 (「修訂兩次，用完才給我」): a failing brief or
+      script goes back to its writer twice, and what still fails after the second revision
+      reaches the owner with the statements it failed. Whether the brief and the script each
+      get their own two was not asked; that reading is the builder's to confirm.
 - [ ] Put the statements to the production judge on the thirteen films' briefs and scripts
       and compare with the table before trusting any threshold. A judge's numeric scores have
       sat at one value on this channel until its questions were yes-or-no.
