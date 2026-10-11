@@ -16,10 +16,10 @@
 2026-10-11 重排後（以這三件為準；下面 10-09 的四件留著當紀錄，其中成果 1 的對照已經換掉）：
 
 - **把 CLAUDE.md 裡的一段流程搬成專案的 Skill。** 動作：建 `.claude/skills/release-prep/`，在最上面加 `name`、`description`、`when_to_use` 三行，內文從 CLAUDE.md 那一段搬過來，第四步改成連到同一個資料夾的 `template.md`，再跑 `claude plugin validate .claude/skills`。對象：練習專案的五步發版流程。怎麼知道做對了：validate 顯示 `✔ Validation passed`、結束碼 0；跑一次之後串流開頭的 skills 清單裡有 `release-prep`。證明：`SKILL.md` 19 行與 `template.md` 7 行整份上卡片，搬之前的 CLAUDE.md 第 3 到 21 行也上卡片；validate 四種寫法的結果（M7）。級別：跑過（validate 是 10-09；清單是 sk1）。
-- **不問 Claude，確認這一次 Skill 有沒有被叫到、送了幾個請求、五步做到幾步。** 動作：在專案資料夾裡照打 `demo/typed-cmd.sh` 的九行，再打 `grep -c '"name":"Skill"' ../stream.jsonl` 與 `grep -o '"id":"msg_[^"]*"' ../stream.jsonl | sort -u | wc -l`，最後用 `find` 與 `grep` 看檔案。對象：這一次不開畫面的 session。怎麼知道做對了：第一個數字是 Skill 工具呼叫的筆數，第二個是請求數（與 `drift.mjs` 數的相同），檔案與回覆的最後一行對得上五個步驟。證明：hand1（第 23 項，照卡片九行逐字跑的那一次）與 sk1、md1。級別：跑過。
+- **不問 Claude，確認這一次 Skill 有沒有被叫到、送了幾個請求、五步做到幾步。** 動作：在專案資料夾裡照打 `demo/typed-cmd.sh` 的九行，再打 `grep -c '"name":"Skill"' ../stream.jsonl` 與 `grep -o '"id":"msg_[^"]*"' ../stream.jsonl | sort -u | wc -l`，再用 `grep -m1 assistant ../stream.jsonl | tr ',{' '\n\n' | grep -m3 input_tokens` 與 `grep num_turns …` 的同一種寫法讀出第一個請求與整個 session 的 token，最後用 `find` 與 `grep` 看檔案。對象：這一次不開畫面的 session。怎麼知道做對了：第一個數字是 Skill 工具呼叫的筆數，第二個是請求數（與 `drift.mjs` 數的相同），讀 token 的兩行各印三個數字、相加等於 `tally.mjs` 印的大小，檔案與回覆的最後一行對得上五個步驟。證明：hand1（第 23 項，照卡片九行逐字跑的那一次；讀 token 的兩行是查核之後對它留下的串流打的，不呼叫模型）與 sk1、md1。級別：跑過。
 - **用量到的三個數字，決定一段流程留在 CLAUDE.md 還是搬成 Skill、用的時候自己叫還是讓 Claude 判斷。** 動作：同一句要求，兩種放法各跑三次，比步驟做到幾次、第一個請求多帶幾個 token、送了幾個請求。對象：自己 CLAUDE.md 裡的一段流程。怎麼知道做對了：步驟兩邊一樣時，照另外兩個數字選。片中的數字：五步 3／3 對 3／3（五段流程也是）；第一個請求比沒有流程時多 486 對 61 個 token；Claude 自己叫 Skill 的那一次 4 個請求、39,565 個 token，留在 CLAUDE.md 是 3 個、30,296，用 `/release-prep 0.3.1` 是 3 個、30,407。證明：第 18 到 22 項。級別：跑過。
 
-不是成果、片中照樣會講的步驟（靠官方頁，卡片上標明）：Skill 分三次進到對話；位置表；`when_to_use` 是 Claude Code 自己加的欄位；Skill 該被叫卻沒被叫時的查法（這種情況兩天 35 次 session 都沒有出現，只引用）；`.claude/skills/` 進版控、`skillOverrides` 設成 `"off"`、刪掉資料夾；別人的 Skill 可以用 `allowed-tools` 替自己預先核准工具。
+不是成果、片中照樣會講的步驟（靠官方頁，卡片上標明）：Skill 分三次進到對話；位置表；`when_to_use` 是 Claude Code 自己加的欄位；Skill 該被叫卻沒被叫時的查法（這種情況兩天 35 次 session 都沒有出現，只引用）；`.claude/skills/` 進版控、`skillOverrides` 設成 `"off"`、刪掉資料夾；別人的 Skill 可以用 `allowed-tools` 替自己預先核准工具；一定要成立的那一步交給 Hook（官方 Hook 對 Skill 的建議，這支沒有量到任何一步被漏掉）。
 
 以下是 10-09 的原文。
 
@@ -700,6 +700,13 @@ Skill 比 CLAUDE.md 多的東西，官方頁怎麼說、這台機器量不量得
 
 仍然沒有觀察到，片中不寫成發生過：兩種放法做出不同檔案或不同最後一行的要求；長到會被少照做的 CLAUDE.md；任何一邊在只要它看的時候把發版做掉（所以 `disable-model-invocation` 沒有東西可擋，沒跑）；Skill 該被叫卻沒被叫；同一個 session 的第二輪以後；互動式畫面、其他模型與平台。回報費用跟著快取變，只列不比。
 
+獨立查核之後（2026-10-11，`verify-3.md`：188 個主張，十二項發現，修正後通過；沒有再跑任何 session）。查核確認的：五步兩邊 3／3、第一個請求 +486 對 +61、成對的三次 4 個請求對 3 個、用斜線叫 3 個請求、只要它看的六次都沒有改檔，卡片上的檔案、指令與輸出逐字對得上，21 條官方說明都查得到。查核指出、片中已經照改的四件事，讀這份企劃的人也照這個理解：
+
+1. 「大約 22 個請求打平」是兩個小樣本平均相除的估計，不是門檻。9,269 裡約九成五是多出來的那一趟把對話再讀一次，而這個對話一開始只有約 8,750 個 token（六個工具、沒有 MCP、四個檔的專案）；同一個除法在五段流程那一對是 13.9，在只要它看一下那一對是 22.8。
+2. 「一定要成立的那一步交給 Hook」不是這次量到的：發版那一句，有交代的 25 次五步都做到，沒有任何一次漏掉該做的步驟，也沒有跑過會強制某一步的 hook。它是官方 Hook 對 Skill 的建議，片中改成引文卡，標明引用、沒有跑過。
+3. 「多 1 個請求」只在成對的三次裡是定數；Claude 自己叫 Skill 的十次裡有兩次多 2 個。
+4. 「兩邊一樣」是這幾次沒有觀察到差別：每臂三次、一個模型、一段五步的流程，分不出九成與十成。
+
 ## 大綱
 
 三個選項用同一個練習專案、同一批執行紀錄，差在主線與排法。片長以每分鐘 250 字估。寫到 session 的卡片內容與數字都是預期，跑完照實際結果改。前四支的開場卡片分別是 title、compare、terminal（mods）、title、steps、terminal（Hook）、title、code、terminal（headless）、title、chat、stats（CLAUDE.md）；這三個選項都不這樣開。
@@ -712,7 +719,7 @@ Skill 比 CLAUDE.md 多的東西，官方頁怎麼說、這台機器量不量得
 
 案例與結果：「練習專案 unit-kit，同一段五步的發版流程放兩個地方：CLAUDE.md 的一段（21 行的檔），或 `.claude/skills/release-prep/`（19 行的 SKILL.md 與 7 行的範本）。同一句『0.3.1 要出了，幫我把該改的地方都改好。』各三次。結果：五步 3／3 對 3／3；第一個請求比沒有流程時多 486 對 61 個 token；Claude 自己叫 Skill 的那一次 4 個請求、CLAUDE.md 3 個、用斜線叫 3 個。證據狀態：跑過，2026-10-11，第 18 到 23 項；description 含糊的三次與 validate 是 2026-10-09 跑的。」
 
-估 11.0 分鐘（lint），120 句，54 個場景。
+估 11.7 分鐘（lint），125 句，57 個場景（獨立查核之後的數字；查核前是 11.0 分鐘、120 句、54 個場景，改了什麼見 `verify-3.md` 最後一節）。
 
 第一章　流程從 CLAUDE.md 搬成 Skill，Claude 會更照做嗎（約 27 秒）｜回答「我會得到什麼」
 - title；table「同一句要求，兩邊各跑三次」（五步 3／3 對 3／3；第一個請求 +486 對 +61；請求數 3、3、3 對 4、4、4）；chat：那句要求。
@@ -722,20 +729,20 @@ Skill 比 CLAUDE.md 多的東西，官方頁怎麼說、這台機器量不量得
 - steps（引用）：Skill 分三次進到對話；stats：第一個請求比沒有流程時多 +61、+486、+288、+1,155；table：用到的那一次，3 個請求對 4 個、30,296 對 39,565；compare：常用的留著，偶爾才用的搬。
 - 下一個問題：「那十九行長什麼樣子？」
 
-第三章　SKILL.md 怎麼寫：從 CLAUDE.md 那一段搬過來（約 126 秒）｜回答「怎麼做」
+第三章　SKILL.md 怎麼寫：從 CLAUDE.md 那一段搬過來（約 127 秒）｜回答「怎麼做」
 - terminal：搬之前的專案（md1 開跑前的 `find`）；code 兩張：CLAUDE.md 第 3–14 行、第 13–21 行；screencast：官方位置表；code：SKILL.md 第 1–5 行兩張（description、when_to_use）、第 7–15 行、第 12–19 行兩張（第四步改成連到範本、第五步）；code：template.md 全檔；terminal：搬過去之後的專案（sk1 開跑前的 `find`）；code 與 table：`claude plugin validate` 與四種寫法的結果。
 - 下一個問題：「Claude 真的有打開它嗎？」
 
-第四章　怎麼確認 Claude 叫了 Skill：照打九行，再數三件事（約 157 秒）｜回答「怎麼知道做對了」
-- code 四張：`demo/typed-cmd.sh` 全檔九行，每張亮不同的行；terminal：第一件，`grep -c` 數 Skill 工具呼叫（hand1，1）；steps 與 table：Skill 在 sk1 紀錄裡的三個地方、流程的文字從哪裡進來；terminal：第二件，數請求（hand1，5）；terminal 四張：第三件，兩邊做完之後的 `find` 與發版說明檔的標題（md1、sk1）；compare：兩邊回覆的最後一行；table：逐項計分 3／3 對 3／3；table：什麼都沒交代的四次。
+第四章　怎麼確認 Claude 叫了 Skill：照打九行，再數三件事（約 175 秒）｜回答「怎麼知道做對了」
+- code 四張：`demo/typed-cmd.sh` 全檔九行，每張亮不同的行；terminal：第一件，`grep -c` 數 Skill 工具呼叫（hand1，1）；steps 與 table：Skill 在 sk1 紀錄裡的三個地方、流程的文字從哪裡進來；terminal：第二件，數請求（hand1，5）；terminal 兩張：從串流讀出第一個請求與整個 session 的 token（hand1 留下的串流，查核之後加的，不呼叫模型）；terminal 四張：第三件，兩邊做完之後的 `find` 與發版說明檔的標題（md1、sk1）；compare：兩邊回覆的最後一行；table：逐項計分 3／3 對 3／3；table：什麼都沒交代的四次。
 - 下一個問題：「那什麼情況下，兩邊會不一樣？」
 
-第五章　五段流程、含糊的 description、只要它看一下：兩邊會不一樣嗎（約 143 秒）｜對照、第二個例子、常見失敗
-- code 與 table：CLAUDE.md 長到五段（第 23–28 行，跟發版第二步相反的那一段），3／3 對 3／3，沒有混到；code 與 table：含糊的 description，3／3 也被叫到（10-09）；chat、quote、table、quote：只要它看一下，Skill 3／3 被叫起來、兩邊都沒有改檔、多一個請求；chat、table、bullets：用斜線叫，三個請求、五步 3／3；steps（引用）：Skill 該被叫卻沒有時的查法。
+第五章　五段流程、含糊的 description、只要它看一下：兩邊會不一樣嗎（約 149 秒）｜對照、第二個例子、常見失敗
+- code 與 table：CLAUDE.md 長到五段（第 23–28 行，跟發版第二步相反的那一段），3／3 對 3／3，沒有混到，請求數 3、3、3 對 4、4、5；code 與 table：含糊的 description，3／3 也被叫到（10-09）；chat、quote、table、quote：只要它看一下，Skill 3／3 被叫起來、兩邊都沒有改檔、多一個請求；chat、table、bullets：用斜線叫，三個請求、五步 3／3；steps（引用）：Skill 該被叫卻沒有時的查法。
 - 每一個試法都用到 Skill，各多給一個主例沒有的實測結果。
 
-第六章　留在 CLAUDE.md 還是搬成 Skill：選用規則、留下來、關掉（約 115 秒）｜回答「怎麼留下來或關掉」
-- table：四條規則，各接一個量到的結果（不用為了更照做而搬；偶爾才用的搬；要用時自己用斜線叫；一定要成立的交給 Hook）；table（引用）：留下來、關掉、移除；bullets（引用）：別人的 Skill 先看開頭，全片只講一次；steps：換成你的一段流程；bullets：這些數字屬於哪一組；cta；outro。
+第六章　留在 CLAUDE.md 還是搬成 Skill：選用規則、留下來、關掉（約 132 秒）｜回答「怎麼留下來或關掉」
+- table：三條規則，各接一個量到的結果（這幾次沒有差，不用為了更照做而搬；偶爾才用的搬；要用時自己用斜線叫），出處寫明「大約 22 個請求打平」是估計、不是門檻；quote（引用，沒有跑過）：一定要成立的那一步交給 Hook，是官方 Hook 對 Skill 的建議，不是這支量到的；table（引用）：留下來、關掉、移除；bullets（引用）：別人的 Skill 先看開頭，全片只講一次；steps：換成你的一段流程；bullets：這些數字屬於哪一組；cta；outro。
 
 示範的位置：md 對 sk 在第一、二、四章；mdf 對 skf、v、skl 對 mdl、sx 在第五章；hand1 在第四章；M7 在第三章。
 收尾的下一步：留言題「你的 CLAUDE.md，哪一段流程很少用到？」

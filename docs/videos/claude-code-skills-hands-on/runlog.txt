@@ -6103,3 +6103,53 @@ $ node <seed>/drift.mjs <work>/hand/hand1.stream.jsonl
   skill's `allowed-tools` even in a `-p` run in a folder you've never trusted."; and on
   features-overview, CLAUDE.md "Loads: Every session, automatically" against a skill's "On
   demand", and "Claude interprets the instructions; outcome can vary".
+
+## Runner note 2, 2026-10-11, after the independent fact-check (verify-3.md); no session was run
+Three things the fact-check asked for that need no model. Everything below was read from files
+the 2026-10-11 sessions left in <work>; nothing was rebuilt.
+1. The four look-request replies that were not yet in the repository (finding 6) are saved,
+   unchanged, as demo/results/2026-10-11.skl2.reply.txt, .skl3.reply.txt, .mdl2.reply.txt and
+   .mdl3.reply.txt (runner: reply.mjs, the result event's text of each kept stream). Their first
+   statements: skl2 "**CHANGELOG 沒有發現漏記。**"; skl3 "... 目前看不出有漏記。"; mdl2 "CHANGELOG
+   沒有發現漏記。"; mdl3 "CHANGELOG 沒有漏記。". With skl1 and mdl1 all six replies are now in
+   demo/results.
+2. Two greps that read the token counts out of a stream (both blind readings asked for a command
+   the viewer can type). They were typed in hand1's project folder, on the stream hand1 left, and
+   tried on four other kept streams; in every case the three numbers of the first command add up
+   to tally.mjs's "first request" and the three of the second to its "whole session"
+   (hand1: 2 + 3452 + 5366 = 8820; 10 + 6425 + 45058 = 51493). The word "assistant" is on no line
+   before the first assistant message (the init line has 0 hits), and "num_turns" is on one line,
+   the result. Output in full:
+# 2026-10-11T12:41:09Z | in <work>/hand/unit-kit, on the stream hand1 left (../stream.jsonl); no session
+$ grep -c assistant ../stream.jsonl; head -1 ../stream.jsonl | grep -c assistant
+13
+0
+$ grep -m1 assistant ../stream.jsonl | tr ',{' '\n\n' | grep -m3 input_tokens
+"input_tokens":2
+"cache_creation_input_tokens":3452
+"cache_read_input_tokens":5366
+[exit 0]
+$ grep num_turns ../stream.jsonl | tr ',{' '\n\n' | grep -m3 input_tokens
+"input_tokens":10
+"cache_creation_input_tokens":6425
+"cache_read_input_tokens":45058
+[exit 0]
+$ grep --version | head -1; tr --version | head -1
+grep (GNU grep) 3.0
+tr (GNU coreutils) 8.32
+## the same stream as tally.mjs and drift.mjs read it (from hand1's log)
+   first request: input 2 + cache write 3452 + cache read 5366 = 8820 tokens | whole session: 51493
+   requests to the model: 5 (input tokens of each: 8820, 9305, 10176, 11399, 11793) | sum 51493
+## the same two greps on four other kept streams, with tally's line for each
+sk1 | first: "input_tokens":2 "cache_creation_input_tokens":4604 "cache_read_input_tokens":4212 | whole: "input_tokens":8 "cache_creation_input_tokens":7180 "cache_read_input_tokens":32418 
+sk1 | tally: first request: input 2 + cache write 4604 + cache read 4212 = 8818 tokens | whole session: 39606
+md1 | first: "input_tokens":2 "cache_creation_input_tokens":4139 "cache_read_input_tokens":5099 | whole: "input_tokens":6 "cache_creation_input_tokens":6018 "cache_read_input_tokens":24260 
+md1 | tally: first request: input 2 + cache write 4139 + cache read 5099 = 9240 tokens | whole session: 30284
+sx1 | first: "input_tokens":2 "cache_creation_input_tokens":4077 "cache_read_input_tokens":5099 | whole: "input_tokens":6 "cache_creation_input_tokens":6150 "cache_read_input_tokens":24241 
+sx1 | tally: first request: input 2 + cache write 4077 + cache read 5099 = 9178 tokens | whole session: 30397
+skf3 | first: "input_tokens":2 "cache_creation_input_tokens":3671 "cache_read_input_tokens":5366 | whole: "input_tokens":10 "cache_creation_input_tokens":6528 "cache_read_input_tokens":45750 
+skf3 | tally: first request: input 2 + cache write 3671 + cache read 5366 = 9039 tokens | whole session: 52288
+3. hand1's two event lines for calls 10 and 11 (finding 8; runner: inspect.mjs on hand1's kept
+   stream, tool inputs cut at 400 characters, neither line was cut):
+22 assistant tool_use Write {"file_path":"<lab>\\releases\\v0.3.1.md","content":"# vX.Y.Z\n\n## 這一版改了什麼\n\n- kmToMiles 的結果現在會四捨五入到小數點後兩位。\n\n## 升級要注意\n\n- kmToMiles 的回傳值可能和 v0.3.0 略有不同（最多兩位小數）；若有依賴完整精度的地方，請留意。\n\n## 怎麼確認\n\n- 呼叫 kmToMiles，確認回傳值最多只有兩位小數。\n"}
+27 assistant tool_use Edit {"replace_all":false,"file_path":"<lab>\\releases\\v0.3.1.md","old_string":"# vX.Y.Z","new_string":"# v0.3.1"}
