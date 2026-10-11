@@ -61,3 +61,13 @@ This task is open and unclaimed. Claude and all other projects are outside the f
 - [ ] b136 先沿 `2026-10-11-migrate-frozen-embedding-helper-dependency` 確認合法 successor 的新 guard，不改或重放旧 frozen manifest。
 
 新聞審核 16.49 GiB（fe41 8.86、6f71 7.62）仍有 520／208 cohort 續作；整根不能視為可刪副本。翻譯發布 13.89 GiB 中，all-missing-20261007 約 9.68 GiB 仍承接未完工作，應先挑已發布子批次逐筆驗 release receipt、source/hash、owner、備份恢復。精確外部資料候選與限制見本機 `large-data-next-candidates.json`；本輪未刪除這些外部資料。
+
+### 已發布翻譯材料的封存候選
+
+容量為 2026-10-11 22:35–22:48 的父目錄快照；三組合計約 0.504 GiB，仍須排除共用／後續引用，不代表全部可回收。
+
+- [ ] `C:/Users/x8120/.codex/article-localization-release/batch026-wordpress-operations`（約 0.166 GiB）：按已結案四篇的 source、final manifest、v5 terminal journal、public QA 與 hold 收尾重新核對檔案雜湊。 確認原 owner 與後續任務不再直接依賴此資料路徑；把失敗 v4 和成功 v5 一起封存、驗證還原後，再清本機副本。
+- [ ] `C:/Users/x8120/.codex/article-localization-release/batch018-web-basics`（約 0.168 GiB）：重核四篇 exact source、manifest、terminal journal、final acceptance 和 post-clear 收據；不要只看內容票的早期 Notes。 保留舊 failed release 與 backup 的因果證據，確認 owner/path 無後續依賴，再封存並驗證還原。
+- [ ] `C:/Users/x8120/.codex/article-localization-release/batch012-selection`（約 0.17 GiB）：先以 Otaru/Sapporo terminal release 子目錄為最小封存範圍，核對 source/review/journal/public QA 的 exact hashes。 確認新 Sapporo route 票與 Jeju handoff 是否引用舊原始 proof；有依賴先移交可還原證據，不直接刪整個 batch012-selection。
+
+先核對既有 done 發布票、完整 source/review/release 原始證據與 owner，再做可還原備份。這次只列候選，沒有重跑正式站、發布或刪除外部材料。
