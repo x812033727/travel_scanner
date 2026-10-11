@@ -1,7 +1,7 @@
 ---
 id: 2026-10-10-let-the-owner-re-request-a
 title: Let the owner re-request a skipped dub from the languages card
-status: in-progress
+status: blocked
 priority: P2
 area: api
 owner: claude-opus-5-5
@@ -76,3 +76,8 @@ again from the panel ends with a ja track on its card.
 
 - Found while fixing `2026-10-09-dub-given-up-as-the-retake`, whose first draft of the
   give-up reason said "tick it again"; that would have been false.
+- 2026-10-11: the code is on main (pull request 1432, with the migration renumbered to
+  `0131_video_dub_retries`). What is left is the host check in How to verify, and that waits
+  for a deploy the owner has not yet called. Moved to `blocked` so this task's scope stops
+  holding `tools/video/automation` and the receipt while nothing here is being edited; set it
+  back to `open` and claim it again for the host check.
