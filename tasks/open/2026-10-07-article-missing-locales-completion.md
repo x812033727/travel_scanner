@@ -1,14 +1,14 @@
 ---
 id: 2026-10-07-article-missing-locales-completion
 title: Complete all missing published travel and life article locales
-status: in-progress
+status: open
 priority: P1
 area: ops
-owner: codex-article-localization-4e16
-claimed_at: 2026-10-07T14:28:12Z
+owner:
+claimed_at:
 created_at: 2026-10-07T04:49:38Z
 completed_at:
-branch: codex/article-locales-release-20261007
+branch: codex/article-locales-wave3-20261007
 depends_on: []
 scope:
   - docs/article-localization/coverage-20261007.md
