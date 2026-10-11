@@ -1,0 +1,2016 @@
+{
+  "schema_version": 1,
+  "slug": "claude-code-skills-vs-claude-md",
+  "format": "slides",
+  "category": "tutorial",
+  "source_guide": "claude-code-skills-skill-md",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "這一支是把兩種放法並排對給同事看：穩、清楚、不誇大。開場的問句壓低放慢；三次全中、四個對三個這些數字前停半拍；指著畫面上的檔案與紀錄時放慢；講到 Skill 比較貴、被叫了卻沒做的地方，平實不遮掩；章末的問句輕輕上揚。"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Claude Code Skills 教學：CLAUDE.md 的流程搬成 SKILL.md，兩邊各跑三次",
+    "description": "發版流程從 CLAUDE.md 搬成 Skill，Claude Code 會比較照做嗎？這支把同一段五步的流程放在兩個地方，同一句要求各跑三次，逐步數，再量兩邊各占多少。\n給 CLAUDE.md 裡有一段越寫越長的流程、正在想要不要搬成 Skill 的人。\n\n照著做：練習專案、兩種放法的檔案和腳本在 https://github.com/x812033727/travel_scanner/tree/main/docs/videos/claude-code-skills-vs-claude-md/demo\n\n你會學到：\n・SKILL.md 的寫法：開頭的 description 與 when_to_use、五個查得出來的步驟、一份範本，和它跟 CLAUDE.md 那一段差在哪\n・claude plugin validate 只管格式：欄位名稱打錯只是警告\n・照打九行、不開畫面跑一次，再數三件事：Skill 工具被叫了幾次、送了幾個請求、一共多大、檔案改了哪些\n・五個步驟：留在 CLAUDE.md 3／3，搬成 Skill 3／3；流程長到五段（CLAUDE.md 59 行）也是 3／3 對 3／3\n・第一個請求比沒有流程時多：一個 Skill +61 個 token，留在 CLAUDE.md +486；五個 Skill +288，五段都在 CLAUDE.md +1,155\n・用到的那一次（各三次）：Claude 自己叫 Skill 是 4 個請求、平均 39,565 個 token；留在 CLAUDE.md 是 3 個、30,296；用 /release-prep 0.3.1 自己叫是 3 個、30,407\n・只要它看一下 CHANGELOG 的那一句：兩邊都沒有改檔案；Skill 還是被叫了 3／3，多一個請求\n・description 寫得含糊的三次，Skill 也都被叫到\n\n照著打的時候\n・畫面上的九行是 demo/typed-cmd.sh 的全文，在專案資料夾裡用 Git Bash 打；要求那一句存成上一層的 ship.txt。CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 是不讀寫自動記憶，timeout 300 是最多等五分鐘。macOS、Linux 沒有試過。\n・示範資料夾的 Skill 與 CLAUDE.md 存成 variants/ 底下的中性檔名；自己做就照畫面上的路徑放。\n・記錄用的 hook 在 skill-log/：settings.json 放成 .claude/settings.json，seen.mjs 放成 .claude/hooks/seen.mjs，預設寫進 .claude/seen.log。\n・每次跑之前把專案還原；demo/session-2.sh 會重建專案、跑一次、留下紀錄。\n\n怎麼跑的\n・Windows 11、Git Bash、Node.js v24.13.0、Claude Code 2.1.295，全部 --model sonnet（claude-sonnet-5-5）、不開畫面，從桌面版開的 Git Bash 啟動（CLAUDE_EFFORT=high）。2026-10-09 跑 12 次，2026-10-11 跑 23 次，沒有重跑；紀錄在 runlog.txt。\n・2026-10-11：每一種放法 3 次；沒有流程的基準 1 次；用斜線叫的 3 次是看到前面的結果之後加跑的；照畫面九行打的那 1 次不算進任何一種的三次。Claude 自己叫 Skill 的十次裡，八次 4 個請求、兩次 5 個。\n・每個 session 只開六個工具、沒有 MCP，對話一開始約 8,750 個 token；整個 session 的數字跟著這個大小走。「大約 22 個請求打平」是兩個平均相除的估計，不是門檻。\n・「什麼都沒交代」的對照是 10-09 的 3 次加 10-11 的 1 次；description 含糊的 3 次與 validate 是 10-09 跑的。\n・token 是每個請求讀進去的輸入（含快取），整個 session 是各個請求相加。回報的費用跟著快取變，沒有拿來比。\n・沒有觀察的：兩邊做出不同結果的要求、長過 59 行的 CLAUDE.md、Skill 該被叫卻沒被叫、同一個 session 的第二輪之後、互動式畫面、個人與外掛的 Skill、其他模型與平台。Skill 分三次載入、位置表、when_to_use、留下與關掉、別人的 Skill 先看開頭、一定要成立的交給 hook，都引用官方文件，畫面有標。",
+    "tags": [
+      "Claude Code Skills",
+      "SKILL.md",
+      "Claude Code",
+      "CLAUDE.md",
+      "Claude Code Skills 教學",
+      "SKILL.md 怎麼寫",
+      "Claude Code 教學",
+      "Skill 跟 CLAUDE.md 差別",
+      "AI 寫程式",
+      "Mokaair"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "Claude Code Skills 實作",
+      "headline": "搬成 Skill，\n**有差嗎**",
+      "sub": "同一段流程各三次：CLAUDE.md 3／3，Skill 3／3",
+      "capture": "places-shot"
+    }
+  },
+  "sources": [
+    {
+      "title": "Extend Claude with skills｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/skills",
+      "checked_on": "2026-10-11"
+    },
+    {
+      "title": "Extend Claude Code｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/features-overview",
+      "checked_on": "2026-10-11"
+    },
+    {
+      "title": "Hooks reference｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/hooks",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "CLI reference｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Debug your configuration｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/debug-your-config",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Extend agents with skills｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/agent-sdk/skills",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Use Claude Code features in the SDK｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/agent-sdk/claude-code-features",
+      "checked_on": "2026-10-09"
+    },
+    {
+      "title": "Specification｜Agent Skills",
+      "url": "https://agentskills.io/specification",
+      "checked_on": "2026-10-09"
+    }
+  ],
+  "assets": [],
+  "subtitles": {
+    "burn_in": false
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "流程從 CLAUDE.md 搬成 Skill，Claude 會更照做嗎",
+      "template": "title",
+      "data": {
+        "tag": "Claude Code Skills 實作",
+        "title": "發版流程搬成 Skill，\n**Claude 有更照做嗎？**",
+        "subtitle": "同一段流程：留在 CLAUDE.md、寫成 Skill，同一句要求各跑三次"
+      },
+      "claims": [
+        "c51"
+      ],
+      "lines": [
+        {
+          "id": "qtzw",
+          "text": "流程從 CLAUDE.md 搬成 Skill，Claude 會比較照做嗎？",
+          "emotion": "壓低放慢，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "six",
+      "template": "table",
+      "data": {
+        "title": "同一句要求，兩邊各跑三次",
+        "columns": [
+          "同一段發版流程",
+          "留在 CLAUDE.md",
+          "搬成 Skill"
+        ],
+        "rows": [
+          [
+            "五個步驟都做到",
+            "3／3",
+            "3／3"
+          ],
+          [
+            "第一個請求，比沒有流程時多",
+            "+486 個 token",
+            "+61 個 token"
+          ],
+          [
+            "這一次送了幾個請求",
+            "3、3、3",
+            "4、4、4"
+          ]
+        ],
+        "source": "實際跑過 2026-10-11｜Claude Code 2.1.295｜sonnet｜各 3 次"
+      },
+      "claims": [
+        "c51",
+        "c52",
+        "c53"
+      ],
+      "lines": [
+        {
+          "id": "dzps",
+          "text": "同樣的一句要求，兩邊各跑三次：五個步驟，都是三次全中。",
+          "reveal": 1,
+          "emotion": "「都是三次全中」放慢"
+        },
+        {
+          "id": "efj4",
+          "text": "差在大小。CLAUDE.md 每個請求多帶四百八十六個 token，Skill 六十一個。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "haev",
+          "text": "可是 Claude 自己叫 Skill 的這三次，都多送一個請求。",
+          "reveal": 1,
+          "emotion": "「多送一個」加重"
+        }
+      ]
+    },
+    {
+      "id": "ask",
+      "template": "chat",
+      "data": {
+        "title": "我對 Claude 說的那句話",
+        "messages": [
+          {
+            "side": "right",
+            "name": "我",
+            "text": "0.3.1 要出了，幫我把該改的地方都改好。"
+          }
+        ]
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "yiqa",
+          "text": "我說的只有這一句，兩邊一字不差。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "loads",
+      "chapter": "Skill 跟 CLAUDE.md 差在哪：什麼時候載入、占多少",
+      "template": "steps",
+      "data": {
+        "title": "Skill 分三次進到對話",
+        "steps": [
+          {
+            "title": "session 開始",
+            "detail": "每個 Skill 只有\n名稱和 description"
+          },
+          {
+            "title": "用得上，或你打 /名稱",
+            "detail": "整份 SKILL.md\n才進到對話"
+          },
+          {
+            "title": "SKILL.md 點到的檔",
+            "detail": "Claude 去讀，\n才進來"
+          }
+        ],
+        "source": "Claude Code 文件｜skills｜2026-10-11｜官方說明"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "yza9",
+          "text": "大小為什麼不一樣？差在什麼時候載入。",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "rmcw",
+          "text": "每個 session 開始，Claude 只拿到每個 Skill 的名稱和 description。",
+          "reveal": 1
+        },
+        {
+          "id": "dx2p",
+          "text": "description 就是一句用途說明。"
+        },
+        {
+          "id": "i8yg",
+          "text": "它判斷用得上，或者你打斜線加名稱，整份 SKILL.md 才進到對話。",
+          "reveal": 1,
+          "emotion": "「才」放慢"
+        },
+        {
+          "id": "ffhz",
+          "text": "SKILL.md 裡點到的其他檔，要等 Claude 去讀才進來。",
+          "reveal": 1
+        },
+        {
+          "id": "z5re",
+          "text": "CLAUDE.md 不一樣：每個 session 一開始，整份都載入。",
+          "emotion": "前後對比，放慢"
+        }
+      ]
+    },
+    {
+      "id": "cost",
+      "template": "stats",
+      "data": {
+        "title": "第一個請求，比沒有流程時多幾個 token",
+        "stats": [
+          {
+            "value": "+61",
+            "label": "一個 Skill",
+            "note": "3 次平均"
+          },
+          {
+            "value": "+486",
+            "label": "同一段留在 CLAUDE.md",
+            "note": "3 次平均"
+          },
+          {
+            "value": "+288",
+            "label": "五個 Skill",
+            "note": "3 次平均"
+          },
+          {
+            "value": "+1,155",
+            "label": "五段流程都在 CLAUDE.md",
+            "note": "3 次平均"
+          }
+        ],
+        "source": "實際跑過 2026-10-11｜Claude Code 2.1.295｜沒有流程時 8,753 個（1 次）"
+      },
+      "claims": [
+        "c52"
+      ],
+      "lines": [
+        {
+          "id": "buet",
+          "text": "量出來：一個 Skill，第一個請求只多六十一個 token，是清單裡的一行。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "3g5h",
+          "text": "同一段流程留在 CLAUDE.md，多四百八十六個，每個請求都帶著。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "vhit",
+          "text": "流程長到五段：五個 Skill，多兩百八十八個。",
+          "reveal": 1
+        },
+        {
+          "id": "bnp8",
+          "text": "五段都寫在 CLAUDE.md，多一千一百五十五個。",
+          "reveal": 1
+        },
+        {
+          "id": "vpkg",
+          "text": "什麼流程都沒有的時候，第一個請求是八千七百多個 token。"
+        }
+      ]
+    },
+    {
+      "id": "used",
+      "template": "table",
+      "data": {
+        "title": "用到的那一次：整個 session",
+        "columns": [
+          "發版那一句，各三次",
+          "留在 CLAUDE.md",
+          "Skill，Claude 自己叫"
+        ],
+        "rows": [
+          [
+            "送了幾個請求",
+            "3、3、3",
+            "4、4、4"
+          ],
+          [
+            "讀進去的 token（平均）",
+            "30,296",
+            "39,565"
+          ]
+        ],
+        "source": "實際跑過 2026-10-11｜Claude Code 2.1.295｜sonnet｜各 3 次"
+      },
+      "claims": [
+        "c53"
+      ],
+      "lines": [
+        {
+          "id": "pdh5",
+          "text": "用到的那一次，方向反過來。",
+          "emotion": "轉折，停半拍"
+        },
+        {
+          "id": "f4fu",
+          "text": "Claude 自己叫 Skill，那一次呼叫本身就是一個請求：四個對三個。",
+          "reveal": 1
+        },
+        {
+          "id": "9trw",
+          "text": "整個 session 讀進去的 token，三萬九千多，對三萬出頭。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "fmwa",
+          "text": "Skill 省的是用不到的時候；用到的那一次，它比較貴。",
+          "emotion": "前後兩半分開"
+        }
+      ]
+    },
+    {
+      "id": "vs-md",
+      "template": "compare",
+      "data": {
+        "title": "常用的留著，偶爾才用的搬",
+        "left": {
+          "heading": "留在 CLAUDE.md",
+          "points": [
+            "第一個請求量到 +486 個 token",
+            "用到時 3 個請求"
+          ]
+        },
+        "right": {
+          "heading": "搬成 Skill",
+          "points": [
+            "第一個請求量到 +61 個 token",
+            "Claude 自己叫：4 個請求"
+          ]
+        },
+        "verdict": "照不照做，這幾次兩邊一樣；選的是大小",
+        "source": "實際跑過 2026-10-11｜Claude Code 2.1.295｜sonnet｜各 3 次"
+      },
+      "claims": [
+        "c52",
+        "c53"
+      ],
+      "lines": [
+        {
+          "id": "4ayi",
+          "text": "常常用到的流程，留在 CLAUDE.md：它本來就在，用的時候不必多一趟。",
+          "reveal": 1
+        },
+        {
+          "id": "vrnv",
+          "text": "偶爾才用的流程，搬成 Skill：平常每個請求少帶四百多個 token。",
+          "reveal": 1,
+          "emotion": "「偶爾才用」放慢"
+        },
+        {
+          "id": "3nik",
+          "text": "那十九行，長什麼樣子？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "before",
+      "chapter": "SKILL.md 怎麼寫：從 CLAUDE.md 那一段搬過來",
+      "template": "terminal",
+      "data": {
+        "title": "搬之前的專案（流程在 CLAUDE.md）",
+        "command": "find . -type f | sort",
+        "output": [
+          "./.claude/hooks/seen.mjs\n./.claude/settings.json\n./CHANGELOG.md\n./CLAUDE.md\n./README.md\n./package.json\n./src/units.mjs"
+        ],
+        "ran_on": "2026-10-11",
+        "tool_version": "sort (GNU coreutils) 8.32"
+      },
+      "claims": [
+        "c54"
+      ],
+      "lines": [
+        {
+          "id": "4s7j",
+          "text": "練習專案很小：一個函式檔、一份 CHANGELOG、一份 README，流程寫在 CLAUDE.md。",
+          "reveal": 1
+        },
+        {
+          "id": "kzh2",
+          "text": "最上面兩個檔是記錄用的 hook：Skill 被呼叫、指示檔被載入，各記成一行。"
+        }
+      ]
+    },
+    {
+      "id": "md-file-1",
+      "template": "code",
+      "data": {
+        "code": "## 發版準備\n\n版號用使用者指定的那一版，下面寫成 X.Y.Z。\n只動下面列的檔案，不改 src/。五步照順序做完。\n\n1. package.json：version 改成 X.Y.Z。\n2. CHANGELOG.md：在「## Unreleased」下面加一個標題\n   「## vX.Y.Z (YYYY-MM-DD)」，日期用今天；把 Unreleased\n   底下的項目搬到新標題底下。Unreleased 標題留著。\n3. README.md：「Latest release:」那一行改成 vX.Y.Z。\n4. 新增 releases/vX.Y.Z.md：照下面的三個標題寫，\n   標題一個字都不要改。",
+        "caption": "CLAUDE.md｜第 3–14 行（全檔 21 行）｜搬之前"
+      },
+      "claims": [
+        "c55"
+      ],
+      "lines": [
+        {
+          "id": "enyy",
+          "text": "搬之前，流程是 CLAUDE.md 裡的一段：一個標題，底下五個步驟。",
+          "emotion": "放慢，讓人看清楚"
+        },
+        {
+          "id": "wzhx",
+          "text": "前四步各對應一個檔案，和一個看得到的結果。"
+        }
+      ]
+    },
+    {
+      "id": "md-file-2",
+      "template": "code",
+      "data": {
+        "code": "4. 新增 releases/vX.Y.Z.md：照下面的三個標題寫，\n   標題一個字都不要改。\n5. 回覆的最後一行固定寫：下一步：git tag vX.Y.Z\n\n發版單的三個標題：\n\n    ## 這一版改了什麼\n    ## 升級要注意\n    ## 怎麼確認",
+        "highlight": [
+          3,
+          7,
+          8,
+          9
+        ],
+        "caption": "CLAUDE.md｜第 13–21 行（全檔 21 行）｜搬之前"
+      },
+      "claims": [
+        "c55"
+      ],
+      "lines": [
+        {
+          "id": "a597",
+          "text": "第五步規定回覆的最後一行；發版說明的三個標題，直接列在最下面。"
+        }
+      ]
+    },
+    {
+      "id": "places-shot",
+      "template": "screencast",
+      "data": {
+        "title": "官方的位置表",
+        "caption": "Claude Code 文件｜skills｜Choose where skills load｜2026-10-09 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://code.claude.com/docs/en/skills#where-skills-live"
+          },
+          {
+            "action": "wait",
+            "selector": "#where-skills-live"
+          },
+          {
+            "action": "capture",
+            "focus": "#where-skills-live"
+          }
+        ]
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "zv9y",
+          "text": "Skill 可以放在專案、個人的家目錄，或是外掛裡。"
+        },
+        {
+          "id": "c6be",
+          "text": "這次只做專案的：跟著版控走，隊友都拿得到。"
+        }
+      ]
+    },
+    {
+      "id": "fm-1",
+      "template": "code",
+      "data": {
+        "code": "---\nname: release-prep\ndescription: 準備發版：改版號、CHANGELOG、README，寫發版單。\nwhen_to_use: 使用者說某一版要出了、要出新版、要 bump 版號時。\n---",
+        "highlight": [
+          3
+        ],
+        "caption": ".claude/skills/release-prep/SKILL.md｜第 1–5 行（全檔 19 行）"
+      },
+      "claims": [
+        "c12",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "q6tk",
+          "text": "搬過去，先在檔案最上面加這幾行，是給 Claude 挑選用的。",
+          "emotion": "放慢，讓人看清楚"
+        },
+        {
+          "id": "es38",
+          "text": "亮起來的 description，寫這個 Skill 做什麼。"
+        }
+      ]
+    },
+    {
+      "id": "fm-2",
+      "template": "code",
+      "data": {
+        "code": "---\nname: release-prep\ndescription: 準備發版：改版號、CHANGELOG、README，寫發版單。\nwhen_to_use: 使用者說某一版要出了、要出新版、要 bump 版號時。\n---",
+        "highlight": [
+          4
+        ],
+        "caption": ".claude/skills/release-prep/SKILL.md｜第 1–5 行｜when_to_use：官方 skills 頁 2026-10-11"
+      },
+      "claims": [
+        "c12",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "56h3",
+          "text": "下一行寫使用者會怎麼開口，像是說某一個版本要出了。"
+        },
+        {
+          "id": "6s4n",
+          "text": "這一行是 Claude Code 自己加的，規格裡沒有；拿到別處用，就併進 description。"
+        }
+      ]
+    },
+    {
+      "id": "body-0",
+      "template": "code",
+      "data": {
+        "code": "# 發版準備\n\n版號用使用者指定的那一版，下面寫成 X.Y.Z。\n只動下面列的檔案，不改 src/。五步照順序做完。\n\n1. package.json：version 改成 X.Y.Z。\n2. CHANGELOG.md：在「## Unreleased」下面加一個標題\n   「## vX.Y.Z (YYYY-MM-DD)」，日期用今天；把 Unreleased\n   底下的項目搬到新標題底下。Unreleased 標題留著。",
+        "caption": ".claude/skills/release-prep/SKILL.md｜第 7–15 行（全檔 19 行）"
+      },
+      "claims": [
+        "c15",
+        "c56"
+      ],
+      "lines": [
+        {
+          "id": "wc33",
+          "text": "內文是從 CLAUDE.md 那一段搬過來的，步驟只改了第四步。",
+          "emotion": "放慢，讓人看清楚"
+        }
+      ]
+    },
+    {
+      "id": "body-2",
+      "template": "code",
+      "data": {
+        "code": "1. package.json：version 改成 X.Y.Z。\n2. CHANGELOG.md：在「## Unreleased」下面加一個標題\n   「## vX.Y.Z (YYYY-MM-DD)」，日期用今天；把 Unreleased\n   底下的項目搬到新標題底下。Unreleased 標題留著。\n3. README.md：「Latest release:」那一行改成 vX.Y.Z。\n4. 新增 releases/vX.Y.Z.md：照 [template.md](template.md)\n   的三個標題寫，標題一個字都不要改。\n5. 回覆的最後一行固定寫：下一步：git tag vX.Y.Z",
+        "highlight": [
+          6,
+          7
+        ],
+        "caption": ".claude/skills/release-prep/SKILL.md｜第 12–19 行（亮的是原檔第 17–18 行）"
+      },
+      "claims": [
+        "c15",
+        "c56"
+      ],
+      "lines": [
+        {
+          "id": "vfmt",
+          "text": "第四步：三個標題不列在這裡，改成連到旁邊的範本檔。"
+        }
+      ]
+    },
+    {
+      "id": "body-3",
+      "template": "code",
+      "data": {
+        "code": "1. package.json：version 改成 X.Y.Z。\n2. CHANGELOG.md：在「## Unreleased」下面加一個標題\n   「## vX.Y.Z (YYYY-MM-DD)」，日期用今天；把 Unreleased\n   底下的項目搬到新標題底下。Unreleased 標題留著。\n3. README.md：「Latest release:」那一行改成 vX.Y.Z。\n4. 新增 releases/vX.Y.Z.md：照 [template.md](template.md)\n   的三個標題寫，標題一個字都不要改。\n5. 回覆的最後一行固定寫：下一步：git tag vX.Y.Z",
+        "highlight": [
+          8
+        ],
+        "caption": ".claude/skills/release-prep/SKILL.md｜第 12–19 行（亮的是原檔第 19 行）"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "awga",
+          "text": "最後一步，規定回覆的最後一行寫什麼：下一步要打的標籤指令。"
+        }
+      ]
+    },
+    {
+      "id": "template",
+      "template": "code",
+      "data": {
+        "code": "# vX.Y.Z\n\n## 這一版改了什麼\n\n## 升級要注意\n\n## 怎麼確認",
+        "caption": ".claude/skills/release-prep/template.md｜全檔 7 行"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "69jt",
+          "text": "範本放在同一個資料夾：一行版本標題，加三個小標題。"
+        }
+      ]
+    },
+    {
+      "id": "tree",
+      "template": "terminal",
+      "data": {
+        "title": "搬過去之後的專案（沒有 CLAUDE.md）",
+        "command": "find . -type f | sort",
+        "output": [
+          "./.claude/hooks/seen.mjs\n./.claude/settings.json\n./.claude/skills/release-prep/SKILL.md\n./.claude/skills/release-prep/template.md\n./CHANGELOG.md\n./README.md\n./package.json\n./src/units.mjs"
+        ],
+        "ran_on": "2026-10-11",
+        "tool_version": "sort (GNU coreutils) 8.32"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "biwg",
+          "text": "兩個檔放進去，專案多一個資料夾；CLAUDE.md 那一段就拿掉。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "validate-cmd",
+      "template": "code",
+      "data": {
+        "code": "claude plugin validate .claude/skills",
+        "caption": "在專案資料夾裡執行｜Claude Code 2.1.295｜輸出的第一行是資料夾的完整路徑"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "bdid",
+          "text": "寫完先跑這一行，它會檢查每一份 SKILL.md 開頭的格式。",
+          "emotion": "指著畫面，放慢"
+        }
+      ]
+    },
+    {
+      "id": "validate",
+      "template": "table",
+      "data": {
+        "title": "四份 SKILL.md，各驗一次",
+        "columns": [
+          "哪一份",
+          "它顯示的訊息",
+          "結束碼"
+        ],
+        "rows": [
+          [
+            "寫好的",
+            "✔ Validation passed",
+            "0"
+          ],
+          [
+            "description 的引號沒關",
+            "YAML frontmatter failed to parse",
+            "1"
+          ],
+          [
+            "description 打成 descriptions",
+            "No description in frontmatter",
+            "0"
+          ],
+          [
+            "description 寫得含糊",
+            "✔ Validation passed",
+            "0"
+          ]
+        ],
+        "source": "實際跑過 2026-10-09｜claude plugin validate 2.1.295"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "ij86",
+          "text": "寫好的這一份，檢查通過。",
+          "reveal": 1
+        },
+        {
+          "id": "ut9q",
+          "text": "description 少關一個引號的那一份，報錯，結束碼是一。",
+          "reveal": 1
+        },
+        {
+          "id": "mpfb",
+          "text": "欄位名稱多打一個字母，只是警告，結束碼還是零。",
+          "reveal": 1,
+          "emotion": "帶一點意外"
+        },
+        {
+          "id": "6xpy",
+          "text": "它只管格式：description 寫得含糊的版本，一樣通過。",
+          "reveal": 1,
+          "emotion": "「只管格式」加重"
+        },
+        {
+          "id": "n9af",
+          "text": "寫好了。Claude 真的有打開它嗎？",
+          "emotion": "問句上揚，帶一點懷疑"
+        }
+      ]
+    },
+    {
+      "id": "cmd-1",
+      "chapter": "怎麼確認 Claude 叫了 Skill：照打九行，再數三件事",
+      "template": "code",
+      "data": {
+        "code": "env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 timeout 300 \\\n  claude -p --model sonnet \\\n  --setting-sources project,local --strict-mcp-config \\\n  --tools \"Read,Glob,Grep,Edit,Write,Skill\" \\\n  --allowedTools \"Read,Glob,Grep,Edit,Write,Skill\" \\\n  --no-session-persistence \\\n  --output-format stream-json --verbose \\\n  --debug-file ../debug.log \\\n  < ../ship.txt > ../stream.jsonl 2> ../stderr.txt",
+        "highlight": [
+          1,
+          2,
+          9
+        ],
+        "caption": "demo/typed-cmd.sh｜全檔 9 行｜在專案資料夾裡照打｜實際跑過 2026-10-11（hand1）"
+      },
+      "claims": [
+        "c57",
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "gb99",
+          "text": "怎麼確認？在專案資料夾裡，照打這一共九行。",
+          "emotion": "「一共九行」放慢"
+        },
+        {
+          "id": "4sng",
+          "text": "它不開畫面，做完就結束；要求從上一層的文字檔讀進去。"
+        }
+      ]
+    },
+    {
+      "id": "cmd-2",
+      "template": "code",
+      "data": {
+        "code": "env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 timeout 300 \\\n  claude -p --model sonnet \\\n  --setting-sources project,local --strict-mcp-config \\\n  --tools \"Read,Glob,Grep,Edit,Write,Skill\" \\\n  --allowedTools \"Read,Glob,Grep,Edit,Write,Skill\" \\\n  --no-session-persistence \\\n  --output-format stream-json --verbose \\\n  --debug-file ../debug.log \\\n  < ../ship.txt > ../stream.jsonl 2> ../stderr.txt",
+        "highlight": [
+          3
+        ],
+        "caption": "demo/typed-cmd.sh｜全檔 9 行｜在專案資料夾裡照打｜實際跑過 2026-10-11（hand1）"
+      },
+      "claims": [
+        "c20",
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "47nq",
+          "text": "亮起來的這一行，設定來源只列專案的兩層，個人的 Skill 不會載入。"
+        }
+      ]
+    },
+    {
+      "id": "cmd-3",
+      "template": "code",
+      "data": {
+        "code": "env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 timeout 300 \\\n  claude -p --model sonnet \\\n  --setting-sources project,local --strict-mcp-config \\\n  --tools \"Read,Glob,Grep,Edit,Write,Skill\" \\\n  --allowedTools \"Read,Glob,Grep,Edit,Write,Skill\" \\\n  --no-session-persistence \\\n  --output-format stream-json --verbose \\\n  --debug-file ../debug.log \\\n  < ../ship.txt > ../stream.jsonl 2> ../stderr.txt",
+        "highlight": [
+          4,
+          5
+        ],
+        "caption": "demo/typed-cmd.sh｜全檔 9 行｜在專案資料夾裡照打｜實際跑過 2026-10-11（hand1）"
+      },
+      "claims": [
+        "c20",
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "nig7",
+          "text": "工具只給讀寫檔案的五個，再加上 Skill。"
+        },
+        {
+          "id": "7snu",
+          "text": "它沒有執行指令的工具，第五步才寫成告訴我下一步。"
+        }
+      ]
+    },
+    {
+      "id": "cmd-4",
+      "template": "code",
+      "data": {
+        "code": "env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 timeout 300 \\\n  claude -p --model sonnet \\\n  --setting-sources project,local --strict-mcp-config \\\n  --tools \"Read,Glob,Grep,Edit,Write,Skill\" \\\n  --allowedTools \"Read,Glob,Grep,Edit,Write,Skill\" \\\n  --no-session-persistence \\\n  --output-format stream-json --verbose \\\n  --debug-file ../debug.log \\\n  < ../ship.txt > ../stream.jsonl 2> ../stderr.txt",
+        "highlight": [
+          7,
+          9
+        ],
+        "caption": "demo/typed-cmd.sh｜全檔 9 行｜在專案資料夾裡照打｜實際跑過 2026-10-11（hand1）"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "cprk",
+          "text": "輸出存成串流：每一次工具呼叫，和最後的回覆，都在裡面。"
+        }
+      ]
+    },
+    {
+      "id": "chk-skill",
+      "template": "terminal",
+      "data": {
+        "title": "第一件：Skill 工具被叫了幾次（hand1）",
+        "command": "grep -c '\"name\":\"Skill\"' ../stream.jsonl",
+        "output": [
+          "1"
+        ],
+        "ran_on": "2026-10-11",
+        "tool_version": "grep (GNU grep) 3.0"
+      },
+      "claims": [
+        "c58"
+      ],
+      "lines": [
+        {
+          "id": "9z3u",
+          "text": "跑完數三件事。第一件：串流裡名稱是 Skill 的工具呼叫，有一筆。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "seen-3",
+      "template": "steps",
+      "data": {
+        "title": "Skill 在紀錄裡的三個地方（sk1）",
+        "steps": [
+          {
+            "title": "開頭那一筆的 skills 清單",
+            "detail": "有 release-prep"
+          },
+          {
+            "title": "第 1 筆工具呼叫：Skill",
+            "detail": "{\"skill\":\"release-prep\",\n\"args\":\"0.3.1\"}"
+          },
+          {
+            "title": "第 5 筆工具呼叫：Read",
+            "detail": ".claude/skills/release-prep/\ntemplate.md"
+          }
+        ],
+        "source": "實際跑過 2026-10-11｜Claude Code 2.1.295｜sk1"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "fhm7",
+          "text": "串流開頭那一筆有一份 Skill 清單，這個 Skill 的名字在裡面。",
+          "reveal": 1
+        },
+        {
+          "id": "2a7n",
+          "text": "Claude 的第一個工具呼叫就是 Skill，點名它；版本號碼是它自己填的。",
+          "reveal": 1,
+          "emotion": "「第一個」加重"
+        },
+        {
+          "id": "x2be",
+          "text": "讀完專案的三個檔之後，第五個呼叫，打開了範本。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "body-in",
+      "template": "table",
+      "data": {
+        "title": "流程的文字從哪裡進來（sk1）",
+        "columns": [
+          "串流的事件",
+          "是什麼",
+          "內容"
+        ],
+        "rows": [
+          [
+            "Skill 呼叫的結果那一筆",
+            "工具的結果",
+            "Launching skill: release-prep"
+          ],
+          [
+            "緊接著的下一筆：開頭",
+            "user 訊息，標了 isSynthetic",
+            "Base directory for this skill:"
+          ],
+          [
+            "緊接著的下一筆：結尾",
+            "同一則訊息",
+            "ARGUMENTS: 0.3.1"
+          ]
+        ],
+        "source": "實際跑過 2026-10-11｜Claude Code 2.1.295｜sk1"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "agt8",
+          "text": "工具的結果只有一行：正在啟動這個 Skill。",
+          "reveal": 1
+        },
+        {
+          "id": "97pg",
+          "text": "流程全文在下一筆，是 Claude Code 補進對話的一則訊息。",
+          "reveal": 1
+        },
+        {
+          "id": "6tz2",
+          "text": "結尾附上版本號碼。沒有任何一次，是它自己去打開 SKILL.md 來讀。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "chk-req",
+      "template": "terminal",
+      "data": {
+        "title": "第二件：送了幾個請求（hand1）",
+        "command": "grep -o '\"id\":\"msg_[^\"]*\"' ../stream.jsonl | sort -u | wc -l",
+        "output": [
+          "5"
+        ],
+        "ran_on": "2026-10-11",
+        "tool_version": "wc (GNU coreutils) 8.32"
+      },
+      "claims": [
+        "c58"
+      ],
+      "lines": [
+        {
+          "id": "hyiq",
+          "text": "第二件：數請求。照打的這一次是五個。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "dsax",
+          "text": "它把範本的標題照抄進發版說明，再回頭改成版本號碼，多了一趟。"
+        }
+      ]
+    },
+    {
+      "id": "chk-first",
+      "template": "terminal",
+      "data": {
+        "title": "第一個請求有多大（hand1）",
+        "command": "grep -m1 assistant ../stream.jsonl | tr ',{' '\\n\\n' | grep -m3 input_tokens",
+        "output": [
+          "\"input_tokens\":2\n\"cache_creation_input_tokens\":3452\n\"cache_read_input_tokens\":5366"
+        ],
+        "ran_on": "2026-10-11",
+        "tool_version": "grep (GNU grep) 3.0"
+      },
+      "claims": [
+        "c70"
+      ],
+      "lines": [
+        {
+          "id": "x4n9",
+          "text": "請求有多大，也讀得出來。第一個請求的這三個數字相加，是八千八百二十個 token。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "chk-whole",
+      "template": "terminal",
+      "data": {
+        "title": "整個 session 有多大（hand1）",
+        "command": "grep num_turns ../stream.jsonl | tr ',{' '\\n\\n' | grep -m3 input_tokens",
+        "output": [
+          "\"input_tokens\":10\n\"cache_creation_input_tokens\":6425\n\"cache_read_input_tokens\":45058"
+        ],
+        "ran_on": "2026-10-11",
+        "tool_version": "grep (GNU grep) 3.0"
+      },
+      "claims": [
+        "c70"
+      ],
+      "lines": [
+        {
+          "id": "mkte",
+          "text": "結果那一行的三個數字相加，是整個 session：這一次五個請求，五萬一千多個。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "md-find",
+      "template": "terminal",
+      "data": {
+        "title": "留在 CLAUDE.md：做完之後（md1）",
+        "command": "find . -type f -not -path './.claude/*' | sort",
+        "output": [
+          "./CHANGELOG.md\n./CLAUDE.md\n./README.md\n./package.json\n./releases/v0.3.1.md\n./src/units.mjs"
+        ],
+        "ran_on": "2026-10-11",
+        "tool_version": "sort (GNU coreutils) 8.32"
+      },
+      "claims": [
+        "c59"
+      ],
+      "lines": [
+        {
+          "id": "6gum",
+          "text": "第三件：看檔案。流程留在 CLAUDE.md 的這一次，多了一個檔：發版說明。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "s-find",
+      "template": "terminal",
+      "data": {
+        "title": "搬成 Skill：做完之後（sk1）",
+        "command": "find . -type f -not -path './.claude/*' | sort",
+        "output": [
+          "./CHANGELOG.md\n./README.md\n./package.json\n./releases/v0.3.1.md\n./src/units.mjs"
+        ],
+        "ran_on": "2026-10-11",
+        "tool_version": "sort (GNU coreutils) 8.32"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "g5y6",
+          "text": "搬成 Skill 的這一次，多的也是同一個檔。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "md-heads",
+      "template": "terminal",
+      "data": {
+        "title": "留在 CLAUDE.md：發版說明檔的標題（md1）",
+        "command": "grep -h '^#' releases/*.md",
+        "output": [
+          "## 這一版改了什麼\n## 升級要注意\n## 怎麼確認"
+        ],
+        "ran_on": "2026-10-11",
+        "tool_version": "grep (GNU grep) 3.0"
+      },
+      "claims": [
+        "c60"
+      ],
+      "lines": [
+        {
+          "id": "ysxq",
+          "text": "打開來比。CLAUDE.md 那一邊是三個小標題，一個字都不差。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "s-heads",
+      "template": "terminal",
+      "data": {
+        "title": "搬成 Skill：發版說明檔的標題（sk1）",
+        "command": "grep -h '^#' releases/*.md",
+        "output": [
+          "# v0.3.1\n## 這一版改了什麼\n## 升級要注意\n## 怎麼確認"
+        ],
+        "ran_on": "2026-10-11",
+        "tool_version": "grep (GNU grep) 3.0"
+      },
+      "claims": [
+        "c29",
+        "c60"
+      ],
+      "lines": [
+        {
+          "id": "2xrx",
+          "text": "Skill 這一邊多出最上面的版本標題：範本檔有那一行，CLAUDE.md 沒有列。",
+          "reveal": 1
+        },
+        {
+          "id": "f5ah",
+          "text": "寫了什麼，它就做什麼；放哪裡，這幾次都一樣。",
+          "emotion": "平實，收一下"
+        }
+      ]
+    },
+    {
+      "id": "last",
+      "template": "compare",
+      "data": {
+        "title": "回覆的最後一行",
+        "left": {
+          "heading": "留在 CLAUDE.md（md1）",
+          "points": [
+            "下一步：git tag v0.3.1"
+          ]
+        },
+        "right": {
+          "heading": "搬成 Skill（sk1）",
+          "points": [
+            "下一步：git tag v0.3.1"
+          ]
+        },
+        "source": "實際跑過 2026-10-11｜Claude Code 2.1.295｜md1、sk1"
+      },
+      "claims": [
+        "c61"
+      ],
+      "lines": [
+        {
+          "id": "8pn3",
+          "text": "回覆的最後一行，兩邊都是下一步的指令，一字不差。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "score",
+      "template": "table",
+      "data": {
+        "columns": [
+          "各三次，逐項數",
+          "留在 CLAUDE.md",
+          "搬成 Skill"
+        ],
+        "rows": [
+          [
+            "1 版號",
+            "3／3",
+            "3／3"
+          ],
+          [
+            "2 CHANGELOG",
+            "3／3",
+            "3／3"
+          ],
+          [
+            "3 README",
+            "3／3",
+            "3／3"
+          ],
+          [
+            "4 發版說明檔",
+            "3／3",
+            "3／3"
+          ],
+          [
+            "5 最後一行的下一步",
+            "3／3",
+            "3／3"
+          ],
+          [
+            "Skill 工具被叫到",
+            "0／3",
+            "3／3"
+          ]
+        ],
+        "source": "實際跑過 2026-10-11｜Claude Code 2.1.295｜sonnet｜各 3 次"
+      },
+      "claims": [
+        "c51"
+      ],
+      "lines": [
+        {
+          "id": "w22n",
+          "text": "逐項來數。五個步驟，兩邊都是三次全中。",
+          "reveal": 5,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "hvu3",
+          "text": "Skill 那一邊，三次都是 Claude 自己叫的，都是第一個工具呼叫。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "control",
+      "template": "table",
+      "data": {
+        "title": "對照：什麼都沒交代的四次",
+        "columns": [
+          "步驟",
+          "做到幾次"
+        ],
+        "rows": [
+          [
+            "版號、README",
+            "4／4"
+          ],
+          [
+            "CHANGELOG",
+            "2／4"
+          ],
+          [
+            "發版說明檔",
+            "0／4"
+          ],
+          [
+            "最後一行的下一步",
+            "0／4"
+          ]
+        ],
+        "source": "實際跑過 2026-10-09 三次、2026-10-11 一次｜2.1.295"
+      },
+      "claims": [
+        "c62"
+      ],
+      "lines": [
+        {
+          "id": "xjue",
+          "text": "什麼都沒交代的四次，版本號碼和 README 照樣改對。",
+          "reveal": 1
+        },
+        {
+          "id": "ynvy",
+          "text": "CHANGELOG 對了兩次。",
+          "reveal": 1
+        },
+        {
+          "id": "9p5j",
+          "text": "發版說明和下一步，四次裡一次都沒有。",
+          "reveal": 2,
+          "emotion": "「一次都沒有」加重"
+        },
+        {
+          "id": "x7zr",
+          "text": "那兩步是有人交代才做的；寫在 CLAUDE.md 或寫成 Skill，都算交代了。"
+        },
+        {
+          "id": "qes8",
+          "text": "那什麼情況下，兩邊會不一樣？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "five-file",
+      "chapter": "五段流程、含糊的 description、只要它看一下：兩邊會不一樣嗎",
+      "template": "code",
+      "data": {
+        "code": "## 記一筆更新紀錄\n\n1. 只改 CHANGELOG.md，其他檔案都不要動。\n2. 在「## Unreleased」底下加一行，開頭用 [fix]、[feat]\n   或 [docs] 標出種類。\n3. 不要新增版本標題，不要搬動已經有的項目。",
+        "highlight": [
+          6
+        ],
+        "caption": "CLAUDE.md（長到五段的版本）｜第 23–28 行（全檔 59 行）"
+      },
+      "claims": [
+        "c63"
+      ],
+      "lines": [
+        {
+          "id": "x4s5",
+          "text": "第一個試法：CLAUDE.md 長到五段流程，一共五十九行。"
+        },
+        {
+          "id": "2azp",
+          "text": "亮起來的這一行，跟發版的第二步相反：不要新增版本標題。",
+          "emotion": "指著畫面，放慢"
+        }
+      ]
+    },
+    {
+      "id": "five",
+      "template": "table",
+      "data": {
+        "title": "五段流程，同樣的一句要求",
+        "columns": [
+          "各三次",
+          "五段都在 CLAUDE.md",
+          "五個 Skill"
+        ],
+        "rows": [
+          [
+            "五個步驟都做到",
+            "3／3",
+            "3／3"
+          ],
+          [
+            "混到別段流程的規定",
+            "0／3",
+            "0／3"
+          ],
+          [
+            "被呼叫的 Skill",
+            "沒有 Skill",
+            "只有 release-prep"
+          ],
+          [
+            "送了幾個請求",
+            "3、3、3",
+            "4、4、5"
+          ]
+        ],
+        "source": "實際跑過 2026-10-11｜Claude Code 2.1.295｜sonnet｜各 3 次"
+      },
+      "claims": [
+        "c63",
+        "c53"
+      ],
+      "lines": [
+        {
+          "id": "kgw4",
+          "text": "同樣的一句要求再跑三次：五個步驟還是三次全中，沒有混到別段。",
+          "reveal": 2,
+          "emotion": "帶一點意外"
+        },
+        {
+          "id": "edhx",
+          "text": "搬成五個 Skill，也是三次全中，被呼叫的只有發版那一個。",
+          "reveal": 1
+        },
+        {
+          "id": "iank",
+          "text": "請求數是三個對四個；五個 Skill 那一邊，有一次是五個。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "vague-fm",
+      "template": "code",
+      "data": {
+        "code": "---\nname: release-prep\ndescription: 專案維護用的流程說明。\n---",
+        "highlight": [
+          3
+        ],
+        "caption": ".claude/skills/release-prep/SKILL.md（含糊的版本）｜第 1–4 行（全檔 18 行）"
+      },
+      "claims": [
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "wv7i",
+          "text": "第二個試法：description 換成一句含糊的話，使用者怎麼開口的那一行拿掉。"
+        },
+        {
+          "id": "gbef",
+          "text": "名稱和內文，一個字都沒有動。"
+        }
+      ]
+    },
+    {
+      "id": "vague-score",
+      "template": "table",
+      "data": {
+        "title": "只換開頭，各三次",
+        "columns": [
+          "項目",
+          "寫好的（s1–s3）",
+          "含糊的（v1–v3）"
+        ],
+        "rows": [
+          [
+            "Skill 工具被叫到",
+            "3／3",
+            "3／3"
+          ],
+          [
+            "五個步驟都做到",
+            "3／3",
+            "3／3"
+          ]
+        ],
+        "source": "實際跑過 2026-10-09｜Claude Code 2.1.295｜sonnet｜各 3 次"
+      },
+      "claims": [
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "qncs",
+          "text": "同樣的一句要求再跑三次：寫得含糊的這一份，三次也都被呼叫。",
+          "reveal": 1,
+          "emotion": "帶一點意外"
+        },
+        {
+          "id": "7dzy",
+          "text": "五個步驟三次也都做到；計分的項目，和寫好的那一份沒有一項不同。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "look-ask",
+      "template": "chat",
+      "data": {
+        "title": "只要它看一下",
+        "messages": [
+          {
+            "side": "right",
+            "name": "我",
+            "text": "0.3.1 快要出了，先幫我看一下 CHANGELOG 有沒有漏記的。"
+          }
+        ]
+      },
+      "claims": [
+        "c64"
+      ],
+      "lines": [
+        {
+          "id": "rzh5",
+          "text": "第三個試法換一句話：提到版本要出了，可是只要它看一下。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "look-call",
+      "template": "quote",
+      "data": {
+        "kicker": "Skill 那一邊的第一個工具呼叫（skl1）",
+        "quote": "{\"skill\":\"release-prep\",\"args\":\"0.3.1 — 使用者只要求先檢查 CHANGELOG 有沒有漏記的\"}",
+        "source": "實際跑過 2026-10-11｜Claude Code 2.1.295｜不開畫面的 session｜skl1"
+      },
+      "claims": [
+        "c64"
+      ],
+      "lines": [
+        {
+          "id": "7dqv",
+          "text": "Skill 那一邊，三次都先把 Skill 叫了起來。",
+          "emotion": "帶一點意外"
+        },
+        {
+          "id": "9kyr",
+          "text": "這一次的引數是它自己填的，裡面寫著：使用者只要求先檢查。"
+        }
+      ]
+    },
+    {
+      "id": "look-score",
+      "template": "table",
+      "data": {
+        "title": "只要它看一下，各三次",
+        "columns": [
+          "項目",
+          "留在 CLAUDE.md",
+          "搬成 Skill"
+        ],
+        "rows": [
+          [
+            "改了任何一個檔",
+            "0／3",
+            "0／3"
+          ],
+          [
+            "Skill 工具被叫到",
+            "0／3",
+            "3／3"
+          ],
+          [
+            "送了幾個請求",
+            "3、3、3",
+            "4、4、4"
+          ]
+        ],
+        "source": "實際跑過 2026-10-11｜Claude Code 2.1.295｜sonnet｜各 3 次"
+      },
+      "claims": [
+        "c64",
+        "c65"
+      ],
+      "lines": [
+        {
+          "id": "268x",
+          "text": "兩邊都沒有動任何一個檔案，都回答沒有漏記。",
+          "reveal": 1
+        },
+        {
+          "id": "drj6",
+          "text": "Skill 被呼叫三次，五個步驟一步都沒有做：它是讀了之後自己判斷的說明。",
+          "reveal": 1,
+          "emotion": "「一步都沒有做」放慢"
+        },
+        {
+          "id": "mfkt",
+          "text": "代價是多一趟請求：四個對三個。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "look-reply",
+      "template": "quote",
+      "data": {
+        "kicker": "Skill 那一邊：回覆的最後一段（skl3）",
+        "quote": "你只要我檢查 CHANGELOG，所以我沒有執行發版流程。",
+        "source": "實際跑過 2026-10-11｜Claude Code 2.1.295｜不開畫面的 session｜skl3"
+      },
+      "claims": [
+        "c65"
+      ],
+      "lines": [
+        {
+          "id": "tu4m",
+          "text": "回覆裡它自己說明：你只要我檢查，所以沒有執行。"
+        }
+      ]
+    },
+    {
+      "id": "slash-ask",
+      "template": "chat",
+      "data": {
+        "title": "不等它判斷，直接叫",
+        "messages": [
+          {
+            "side": "right",
+            "name": "我",
+            "text": "/release-prep 0.3.1"
+          }
+        ]
+      },
+      "claims": [
+        "c66"
+      ],
+      "lines": [
+        {
+          "id": "e8ec",
+          "text": "要省掉那一趟，就在訊息最前面打斜線加名稱，後面接版本號碼。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "slash-score",
+      "template": "table",
+      "data": {
+        "title": "發版那一句，三種叫法",
+        "columns": [
+          "各三次",
+          "留在 CLAUDE.md",
+          "Claude 自己叫",
+          "用斜線叫"
+        ],
+        "rows": [
+          [
+            "五個步驟都做到",
+            "3／3",
+            "3／3",
+            "3／3"
+          ],
+          [
+            "送了幾個請求",
+            "3、3、3",
+            "4、4、4",
+            "3、3、3"
+          ],
+          [
+            "讀進去的 token（平均）",
+            "30,296",
+            "39,565",
+            "30,407"
+          ]
+        ],
+        "source": "實際跑過 2026-10-11｜各 3 次｜用斜線叫那一欄是後來加跑的"
+      },
+      "claims": [
+        "c66",
+        "c53"
+      ],
+      "lines": [
+        {
+          "id": "zhy6",
+          "text": "用斜線叫，不必等它判斷：三個請求，五步三次全中。",
+          "reveal": 2
+        },
+        {
+          "id": "dfhm",
+          "text": "整個 session 的大小，跟留在 CLAUDE.md 只差一百多個 token。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "zzw5",
+          "text": "這個入口，CLAUDE.md 沒有。"
+        }
+      ]
+    },
+    {
+      "id": "slash-trace",
+      "template": "bullets",
+      "data": {
+        "title": "用斜線叫的時候，紀錄長這樣",
+        "items": [
+          "串流裡的 Skill 工具呼叫：0 筆",
+          "記錄檔的一行：UserPromptExpansion slash_command release-prep",
+          "三次都用 Read 打開了 template.md"
+        ],
+        "source": "實際跑過 2026-10-11｜Claude Code 2.1.295｜sx1–sx3"
+      },
+      "claims": [
+        "c66"
+      ],
+      "lines": [
+        {
+          "id": "nb9x",
+          "text": "這時候串流裡沒有 Skill 工具的呼叫，剛才的第一件事會數到零。",
+          "reveal": 1
+        },
+        {
+          "id": "is7h",
+          "text": "看得到的是記錄檔裡的另一個事件：使用者打的指令被展開。",
+          "reveal": 1
+        },
+        {
+          "id": "m86g",
+          "text": "範本檔，三次它都自己去打開。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "check-order",
+      "template": "steps",
+      "data": {
+        "title": "Skill 該被叫卻沒有，照這個順序查",
+        "steps": [
+          {
+            "title": "驗格式",
+            "detail": "claude plugin\nvalidate"
+          },
+          {
+            "title": "看清單",
+            "detail": "串流開頭\n有沒有它的名字"
+          },
+          {
+            "title": "看 description",
+            "detail": "有沒有寫\n什麼時候用"
+          },
+          {
+            "title": "直接叫",
+            "detail": "/名稱\n放在訊息最前面"
+          }
+        ],
+        "source": "第 1、2、4 步跑過｜第 3 步與沒被叫到的情況：官方 skills 頁"
+      },
+      "claims": [
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "7txm",
+          "text": "反過來，Skill 該被呼叫卻沒有：先檢查格式，再看串流開頭的清單裡有沒有它。",
+          "reveal": 2
+        },
+        {
+          "id": "btee",
+          "text": "清單裡有，就回頭看 description 有沒有寫什麼時候用。",
+          "reveal": 1
+        },
+        {
+          "id": "k4ic",
+          "text": "今天就要用，直接用斜線叫它。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "rule",
+      "chapter": "留在 CLAUDE.md 還是搬成 Skill：選用規則、留下來、關掉",
+      "template": "table",
+      "data": {
+        "title": "搬不搬，看量到的這三件事",
+        "columns": [
+          "量到的",
+          "所以"
+        ],
+        "rows": [
+          [
+            "五步：兩邊都 3／3，五段流程也是",
+            "這幾次沒有差，不用為了更照做而搬"
+          ],
+          [
+            "第一個請求量到：CLAUDE.md +486，Skill +61 個 token",
+            "偶爾才用的流程，搬成 Skill"
+          ],
+          [
+            "Claude 自己叫：多 1 個請求、9,269 個 token（十次裡兩次多 2 個）",
+            "要用的時候，自己用 /名稱 叫"
+          ]
+        ],
+        "source": "實際跑過 2026-10-11｜各 3 次｜22 個請求是估計，不是門檻"
+      },
+      "claims": [
+        "c51",
+        "c52",
+        "c53",
+        "c67"
+      ],
+      "lines": [
+        {
+          "id": "8j7r",
+          "text": "所以這段流程，到底要不要搬？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "nmsp",
+          "text": "這幾次五個步驟兩邊一樣，不用為了讓它更照做而搬。",
+          "reveal": 1
+        },
+        {
+          "id": "ketb",
+          "text": "偶爾才用的流程，搬成 Skill：平常每個請求少帶四百多個 token。",
+          "reveal": 1,
+          "emotion": "「偶爾才用」放慢"
+        },
+        {
+          "id": "w3yy",
+          "text": "這三次量到的是：讓 Claude 自己叫，每用一次多九千兩百多個 token。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "jfcy",
+          "text": "九千兩百除以四百二十五，大約二十二。"
+        },
+        {
+          "id": "ca57",
+          "text": "照這兩個平均來估，大約隔二十二個用不到的請求才打平。"
+        },
+        {
+          "id": "qygu",
+          "text": "這是這個小專案的估計，不是門檻。",
+          "emotion": "平實，放慢"
+        },
+        {
+          "id": "yt8a",
+          "text": "自己用斜線叫，就沒有這一筆。"
+        }
+      ]
+    },
+    {
+      "id": "rule-hook",
+      "template": "quote",
+      "data": {
+        "kicker": "Hook 對 Skill：官方的建議",
+        "quote": "Use a hook when the action must happen the same way every time and doesn't need Claude to think.",
+        "translation": "每一次都要照同樣的方式發生、又不需要 Claude 思考的動作，用 hook",
+        "source": "Claude Code 文件｜features-overview｜Hook vs Skill｜2026-10-11｜引用，沒有跑過"
+      },
+      "claims": [
+        "c71",
+        "c64"
+      ],
+      "lines": [
+        {
+          "id": "8tpx",
+          "text": "Skill 被呼叫了，做不做還是它自己判斷。"
+        },
+        {
+          "id": "gvba",
+          "text": "一定不能漏的那一步，官方的建議是交給 hook。",
+          "reveal": 1,
+          "emotion": "「一定不能漏」加重"
+        }
+      ]
+    },
+    {
+      "id": "keep",
+      "template": "table",
+      "data": {
+        "title": "留下來，和關掉",
+        "columns": [
+          "你要的",
+          "做法"
+        ],
+        "rows": [
+          [
+            "隊友都拿得到",
+            ".claude/skills/ commit 進版控"
+          ],
+          [
+            "只關這一個，不改檔",
+            "設定裡 skillOverrides 設成 \"off\""
+          ],
+          [
+            "不要了",
+            "刪掉那個資料夾"
+          ]
+        ],
+        "source": "Claude Code 文件｜skills｜2026-10-11｜引用，沒有跑過"
+      },
+      "claims": [
+        "c45"
+      ],
+      "lines": [
+        {
+          "id": "475r",
+          "text": "留下來，就把那個資料夾交進版控，隊友都拿得到。",
+          "reveal": 1
+        },
+        {
+          "id": "dxh7",
+          "text": "只想關掉這一個、又不改檔，在設定裡把它設成關閉。",
+          "reveal": 1
+        },
+        {
+          "id": "sk69",
+          "text": "不想要了，刪掉那個資料夾就好。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "trust",
+      "template": "bullets",
+      "data": {
+        "title": "別人的 Skill 放進來之前",
+        "items": [
+          "allowed-tools：Skill 可以替自己預先核准工具",
+          "沒信任過的資料夾裡跑 claude -p，也會套用",
+          "先看每一份 SKILL.md 的開頭"
+        ],
+        "source": "Claude Code 文件｜skills｜2026-10-11｜官方說明"
+      },
+      "claims": [
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "pudi",
+          "text": "提醒一件事：別人專案裡的 Skill，可以在開頭替自己預先核准工具。",
+          "reveal": 1,
+          "emotion": "語氣收一點，認真"
+        },
+        {
+          "id": "2ena",
+          "text": "就算是沒有信任過的資料夾，不開畫面執行的時候也會套用。",
+          "reveal": 1
+        },
+        {
+          "id": "fgpk",
+          "text": "所以抓下來的專案，先把每一份 SKILL.md 的開頭看一遍。",
+          "reveal": 1,
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "yours",
+      "template": "steps",
+      "data": {
+        "title": "換成你的一段流程",
+        "steps": [
+          {
+            "title": "挑一段偶爾才用的",
+            "detail": "從 CLAUDE.md\n搬成 SKILL.md"
+          },
+          {
+            "title": "照打那九行",
+            "detail": "同一句要求，\n兩邊各跑三次"
+          },
+          {
+            "title": "數三件事",
+            "detail": "步驟、Skill 呼叫、\n請求數與大小"
+          }
+        ],
+        "source": "核對：步驟兩邊一樣，就照請求數與 token 決定"
+      },
+      "claims": [
+        "c68",
+        "c70"
+      ],
+      "lines": [
+        {
+          "id": "sgpu",
+          "text": "換成你的：從 CLAUDE.md 挑一段偶爾才用的流程，搬成 SKILL.md。",
+          "reveal": 1,
+          "emotion": "轉向觀眾，語氣亮一點"
+        },
+        {
+          "id": "zzmj",
+          "text": "同樣的一句要求，兩邊各跑三次。",
+          "reveal": 1
+        },
+        {
+          "id": "64ts",
+          "text": "數三件事：步驟做到幾次、Skill 有沒有被呼叫、請求有幾個、一共多大。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "scope",
+      "template": "bullets",
+      "data": {
+        "title": "這些數字只屬於這一組",
+        "items": [
+          "Claude Code 2.1.295，不開畫面的 session",
+          "一個模型：sonnet（claude-sonnet-5-5）",
+          "Windows 11 的 Git Bash",
+          "只開六個工具、沒有 MCP：對話一開始約 8,750 個 token",
+          "每一種 3 次；CLAUDE.md 最長 59 行"
+        ],
+        "source": "runlog.txt｜2026-10-09 與 2026-10-11 兩段"
+      },
+      "claims": [
+        "c69"
+      ],
+      "lines": [
+        {
+          "id": "u6y3",
+          "text": "換了模型、平台，或是開更多工具，這些數字會變；更長的 CLAUDE.md，結果也可能不同。",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "article",
+      "template": "cta",
+      "data": {
+        "kicker": "完整文章",
+        "title": "建立第一個 SKILL.md",
+        "sub": "同一個主題的文字版｜連結在說明欄"
+      },
+      "claims": [
+        "c50"
+      ],
+      "lines": [
+        {
+          "id": "edha",
+          "text": "說明欄裡的那篇文章，從建立第一個 SKILL.md 開始教。"
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "template": "outro",
+      "data": {
+        "title": "同一段流程，兩邊各三次：\n**五個步驟都是 3／3**",
+        "cta": "你的 CLAUDE.md 裡，哪一段流程其實很少用到？留言告訴我",
+        "lines": [
+          "五個步驟：留在 CLAUDE.md 3／3，搬成 Skill 3／3",
+          "第一個請求：CLAUDE.md +486 個 token，Skill +61",
+          "Claude 自己叫多 1 到 2 個請求；用 /名稱 叫不會"
+        ]
+      },
+      "claims": [
+        "c51",
+        "c52",
+        "c53",
+        "c66"
+      ],
+      "lines": [
+        {
+          "id": "2gv9",
+          "text": "這幾次五步兩邊都全中；差的是每個請求四百多個 token。",
+          "emotion": "放慢收穩"
+        },
+        {
+          "id": "mxht",
+          "text": "你的 CLAUDE.md，哪一段流程很少用到？",
+          "emotion": "問句上揚，親切"
+        },
+        {
+          "id": "5ypk",
+          "text": "想看更多實際跑過的教學，訂閱頻道。",
+          "emotion": "輕快，帶笑"
+        }
+      ]
+    }
+  ]
+}

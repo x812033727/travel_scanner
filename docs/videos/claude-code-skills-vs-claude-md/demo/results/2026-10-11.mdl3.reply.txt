@@ -1,0 +1,15 @@
+CHANGELOG 沒有漏記。
+
+`src/units.mjs` 目前只有兩個函式，都對得上：
+
+| 項目 | 程式碼 | CHANGELOG |
+|---|---|---|
+| `cToF` | 有 | v0.2.0「First version, with cToF」 |
+| `kmToMiles` | 有 | v0.3.0「Add kmToMiles」 |
+| `kmToMiles` 四捨五入到兩位小數 | `Math.round(km * 0.621371 * 100) / 100` | Unreleased「kmToMiles rounds to two decimals」 |
+
+這個目錄不是 git repo，我沒辦法比對 commit 紀錄。所以這個結論只代表目前的 `src/` 跟 CHANGELOG 一致。如果有改動沒進到 `src/`（例如文件或設定的變更），我看不到。
+
+另外，`package.json` 和 README 目前還是 0.3.0，這是發版前的正常狀態。
+
+要準備 0.3.1 發版的話，跟我說一聲，我會照 CLAUDE.md 的五個步驟處理。

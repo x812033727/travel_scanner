@@ -1,4 +1,8 @@
-# Claude Code Skills 實作：把發版流程寫成 SKILL.md，同一句要求跑九次，看 Claude 有沒有拿起來用
+# Claude Code Skills 實作：把 CLAUDE.md 裡的發版流程搬成 SKILL.md，同一句要求兩邊各跑三次，看差在哪
+
+這支片 2026-10-10 第一次做成代號 `claude-code-skills-hands-on`；2026-10-11 重寫之後改用新代號 `claude-code-skills-vs-claude-md`，舊專案在站上標為停止。這個資料夾就是舊代號那個資料夾改名來的，10-09 的企劃、執行紀錄與舊的兩份查核都留在裡面；紀錄裡出現舊代號的地方（執行過的指令、repo 外的影片工作區 `claude-code-skills-hands-on/…`）照當時的樣子留著。
+
+2026-10-11 重排過。現在的主例是「同一段流程留在 CLAUDE.md」對「搬成 Skill」，各三次：五個步驟兩邊都是三次全中，量到的差別只有大小。這份企劃以三個地方為準，其餘是 10-09 的原樣，留著當紀錄：「觀眾看完能做到的事」最前面的「2026-10-11 重排後」、「示範或實算」裡的「2026-10-11 重排」與「執行紀錄（2026-10-11）」、「大綱」的選項 D 與 E。主例靠的是成本與 `/名稱` 這個入口，不是 Skill 做到了 CLAUDE.md 做不到的結果。站主 2026-10-11 對這份重寫的稿子的決定是「先查核與重讀，過了再出片」（由協調的 session 轉述）；查核與重讀都通過了（`verify-3.md`）。
 
 企劃日 2026-10-09。這份企劃寫在任何 Claude Code session 之前：練習專案、Skill 的各個版本、記錄腳本、計分腳本，企劃已經用不呼叫模型的指令跑過；會呼叫模型的 session 一次都還沒跑。大綱裡寫到 session 結果的句子與數字都是預期，等「示範或實算」的「要先實作」做完，照實際結果改；跑不出來的成果那時拿掉。
 
@@ -10,6 +14,16 @@
 - 搜尋的問題：「Claude Code Skills 教學」「SKILL.md 怎麼寫」「Claude Code skill 沒有觸發」「skill description 怎麼寫」「Claude Code skill 跟 CLAUDE.md 差別」「.claude/skills 放哪裡」「claude -p skill」。
 
 ## 觀眾看完能做到的事
+
+2026-10-11 重排後（以這三件為準；下面 10-09 的四件留著當紀錄，其中成果 1 的對照已經換掉）：
+
+- **把 CLAUDE.md 裡的一段流程搬成專案的 Skill。** 動作：建 `.claude/skills/release-prep/`，在最上面加 `name`、`description`、`when_to_use` 三行，內文從 CLAUDE.md 那一段搬過來，第四步改成連到同一個資料夾的 `template.md`，再跑 `claude plugin validate .claude/skills`。對象：練習專案的五步發版流程。怎麼知道做對了：validate 顯示 `✔ Validation passed`、結束碼 0；跑一次之後串流開頭的 skills 清單裡有 `release-prep`。證明：`SKILL.md` 19 行與 `template.md` 7 行整份上卡片，搬之前的 CLAUDE.md 第 3 到 21 行也上卡片；validate 四種寫法的結果（M7）。級別：跑過（validate 是 10-09；清單是 sk1）。
+- **不問 Claude，確認這一次 Skill 有沒有被叫到、送了幾個請求、五步做到幾步。** 動作：在專案資料夾裡照打 `demo/typed-cmd.sh` 的九行，再打 `grep -c '"name":"Skill"' ../stream.jsonl` 與 `grep -o '"id":"msg_[^"]*"' ../stream.jsonl | sort -u | wc -l`，再用 `grep -m1 assistant ../stream.jsonl | tr ',{' '\n\n' | grep -m3 input_tokens` 與 `grep num_turns …` 的同一種寫法讀出第一個請求與整個 session 的 token，最後用 `find` 與 `grep` 看檔案。對象：這一次不開畫面的 session。怎麼知道做對了：第一個數字是 Skill 工具呼叫的筆數，第二個是請求數（與 `drift.mjs` 數的相同），讀 token 的兩行各印三個數字、相加等於 `tally.mjs` 印的大小，檔案與回覆的最後一行對得上五個步驟。證明：hand1（第 23 項，照卡片九行逐字跑的那一次；讀 token 的兩行是查核之後對它留下的串流打的，不呼叫模型）與 sk1、md1。級別：跑過。
+- **用量到的三個數字，決定一段流程留在 CLAUDE.md 還是搬成 Skill、用的時候自己叫還是讓 Claude 判斷。** 動作：同一句要求，兩種放法各跑三次，比步驟做到幾次、第一個請求多帶幾個 token、送了幾個請求。對象：自己 CLAUDE.md 裡的一段流程。怎麼知道做對了：步驟兩邊一樣時，照另外兩個數字選。片中的數字：五步 3／3 對 3／3（五段流程也是）；第一個請求比沒有流程時多 486 對 61 個 token；Claude 自己叫 Skill 的那一次 4 個請求、39,565 個 token，留在 CLAUDE.md 是 3 個、30,296，用 `/release-prep 0.3.1` 是 3 個、30,407。證明：第 18 到 22 項。級別：跑過。
+
+不是成果、片中照樣會講的步驟（靠官方頁，卡片上標明）：Skill 分三次進到對話；位置表；`when_to_use` 是 Claude Code 自己加的欄位；Skill 該被叫卻沒被叫時的查法（這種情況兩天 35 次 session 都沒有出現，只引用）；`.claude/skills/` 進版控、`skillOverrides` 設成 `"off"`、刪掉資料夾；別人的 Skill 可以用 `allowed-tools` 替自己預先核准工具；一定要成立的那一步交給 Hook（官方 Hook 對 Skill 的建議，這支沒有量到任何一步被漏掉）。
+
+以下是 10-09 的原文。
 
 每一件寫成：動作／對象／怎麼知道做對了／畫面上的證明與證據級別。級別照含金量規則：看過（在產品自己的介面上看到）、跑過（留了輸入、動作、結果、日期、版本的執行）、引用（附出處的官方範例或實算）。這支沒有任何一件到「看過」：`/skills`、`/context` 的 Skills 那一列、斜線選單都只有互動式 session 會畫，這次的執行方式（不開畫面的 `claude -p`）觀察不到，所以不排需要它們的證明。
 
@@ -122,7 +136,7 @@ M 開頭是不呼叫模型的指令，企劃已經跑過（2026-10-09，Windows 
 - `<work>`：影片工作區裡這支影片的資料夾。`<seed>` 是 `<work>/_tools/seed`。
 - `<lab>`：拋棄式專案，預設 `<work>/run/skill-lab`，每一次 session 之前由 `session.sh` 從種子重建。紀錄放 `<logs>`，預設 `<work>/run/logs`。`--dry` 用另一個資料夾 `<work>/run/dry-lab`，不碰 `<lab>` 與 `<logs>`。三個都可以用環境變數 `LAB`、`LOGS`、`DRY` 改。
 - 只寫 `<lab>`、`<logs>` 與 dry 資料夾。站主家目錄底下的 Claude Code 設定、個人的 Skill、同步下來的 Skill、個人層的 CLAUDE.md、自動記憶，一個字都不讀、不寫、不顯示。`session.sh` 對 `<lab>` 上面的每一層資料夾只數「有沒有 `.claude/skills`」之類的個數，不列名稱。
-- Skill 的檔在種子裡用中性的檔名（`variants/release-prep.specific.skill.md` 等），不叫 `SKILL.md`，也不在 `.claude/skills/` 底下：種子之後會整份放進 repo 的 `docs/videos/claude-code-skills-hands-on/demo/`，那裡如果有一個真的 `.claude/skills/<名稱>/SKILL.md`，任何人在這個 repo 開的 Claude Code session 都可能把它當成 Skill。`session.sh` 在建專案時才把它們複製成 `<lab>/.claude/skills/release-prep/SKILL.md` 與 `template.md`。`CLAUDE.release.md` 同理，建專案時才變成 `<lab>/CLAUDE.md`。種子裡沒有任何 `*.test.*` 檔。
+- Skill 的檔在種子裡用中性的檔名（`variants/release-prep.specific.skill.md` 等），不叫 `SKILL.md`，也不在 `.claude/skills/` 底下：種子之後會整份放進 repo 的 `docs/videos/claude-code-skills-vs-claude-md/demo/`，那裡如果有一個真的 `.claude/skills/<名稱>/SKILL.md`，任何人在這個 repo 開的 Claude Code session 都可能把它當成 Skill。`session.sh` 在建專案時才把它們複製成 `<lab>/.claude/skills/release-prep/SKILL.md` 與 `template.md`。`CLAUDE.release.md` 同理，建專案時才變成 `<lab>/CLAUDE.md`。種子裡沒有任何 `*.test.*` 檔。
 - 模型：全部的 session 都用 `--model sonnet`；init 那一行回報的完整模型名稱記下來。同一個比較的各臂一定同一個模型。
 - session 的數量：必跑 11 次（s 三次、n 三次、v 三次、x 一次、c 一次），另留 1 次備用，給跟模型無關的失敗（逾時、斷線）重跑用。備用沒用掉，才跑第 14 項的 o1。合計最多 12 次。
 - 同一個名字不能跑第二次：`session.sh` 看到 `<logs>` 裡已經有那個名字的紀錄就拒絕（結束碼 3）。重跑用新的名字（例如 `n2r`），失敗的那一次留在紀錄裡。真的要重用名字才加 `--force`，舊紀錄會搬到 `<logs>/replaced/`，不會刪。`--dry` 任何時候都可以跑，不動紀錄（前一支有一次的原始檔就是被 `--dry` 重建掉的）。
@@ -430,8 +444,8 @@ Skill 工具沒有被叫到、五個步驟卻做到了：看 `skill or instructi
 
 最後印出一張表（每一次一列：Skill 有沒有被叫到、F1–F5、有沒有自己打開 `SKILL.md`、第一個請求的 token、幾輪）。這張表就是片中計分表的來源。
 
-- `docs/videos/claude-code-skills-hands-on/runlog.txt`：每個指令、輸出、結束碼、日期、版本；每一次 session 的 `session.log` 全文。原始串流、偵錯紀錄與 `.lab/` 複製留在工作區，不進 repo（串流裡有 cwd、session id、工具清單）。寫出的發版單要進卡片的話，把那一個檔另存到 `demo/results/`。
-- 種子的副本放 `docs/videos/claude-code-skills-hands-on/demo/`，檔名照種子的中性檔名，不要還原成 `.claude/skills/…/SKILL.md` 或 `CLAUDE.md`。資料夾叫 `demo`，`npm run test:docs-videos` 不會去跑裡面的檔；裡面本來也沒有 `*.test.*`。
+- `docs/videos/claude-code-skills-vs-claude-md/runlog.txt`：每個指令、輸出、結束碼、日期、版本；每一次 session 的 `session.log` 全文。原始串流、偵錯紀錄與 `.lab/` 複製留在工作區，不進 repo（串流裡有 cwd、session id、工具清單）。寫出的發版單要進卡片的話，把那一個檔另存到 `demo/results/`。
+- 種子的副本放 `docs/videos/claude-code-skills-vs-claude-md/demo/`，檔名照種子的中性檔名，不要還原成 `.claude/skills/…/SKILL.md` 或 `CLAUDE.md`。資料夾叫 `demo`，`npm run test:docs-videos` 不會去跑裡面的檔；裡面本來也沒有 `*.test.*`。
 - 提交前跑 `npm run test:tools`：`tools/repo-hygiene.test.mjs` 會擋使用者名稱與家目錄。`runlog.txt` 提交前再搜一次使用者名稱與家目錄的路徑。
 - 把「執行紀錄」那張表的「未實測」換成實際結果，補一節「跑出來、企劃時還不知道的事」，大綱裡的預期數字照著改。
 
@@ -526,207 +540,263 @@ Skill 工具沒有被叫到、五個步驟卻做到了：看 `skill or instructi
 
 站主 2026-10-09 交代：繼續做 AI 教學；做法照前幾支（大綱依建議選、只出繁體中文）。
 
+### 2026-10-11 重排：主例的另一邊換成「同一段流程留在 CLAUDE.md」
+
+這一節寫在 2026-10-11 的任何 session 之前。站主 2026-10-11 否決另一支做完的教學片之後，規則補了「主例要贏過簡單做法」（`tools/video/automation/register.mjs` 的 `VALUE_RULES`，`script-writing.md`〈站主否決一支做完的教學片之後補的〉）。同一天這支被盲評為「重做」，四點：主打的 0／3 對 3／3 是拿「有 Skill」跟「什麼都沒交代」比，觀眾真正會用的「同一段流程留在 CLAUDE.md」只跑過一次（c1，五步都做到）；選用規則都是引用官方頁，沒有接到任何一個量到的結果；十一句旁白在講這支片怎麼做的；完整的 `claude -p` 指令沒有上卡片、記錄用的 hook 只放了一部分。
+
+不用這個方法：同一段五步的發版流程，留在專案根目錄的 CLAUDE.md 裡（`demo/variants/CLAUDE.release.md`，21 行）。這是這支的觀眾現在的放法：不用建資料夾、不用寫 frontmatter，每個 session 自動載入。照規則的順序，看一眼資料夾、一行常見指令都拿不到「五步照做」；一句普通的提示拿得到，但要每次把五步重打一遍，觀眾早就因為這樣把它寫進 CLAUDE.md 了。所以並排的另一邊是 CLAUDE.md，不是「沒有 Skill」。10-09 的 n1 到 n3（什麼都沒交代）留著當對照，證明那兩步是指示造成的，不再當主例。
+
+Skill 比 CLAUDE.md 多的東西，官方頁怎麼說、這台機器量不量得到：
+
+| 差別 | 官方頁的說法（2026-10-09 抓取，「會過期的事實」有網址） | 10-09 已經有的 | 這次怎麼量 |
+| --- | --- | --- | --- |
+| 載入的時機 | CLAUDE.md 每個 session 整份載入；Skill 開場只有 description，內文用到才載入 | 第一個請求比沒有流程時多：Skill 58（三次平均）、CLAUDE.md 486（c1，一次） | 同一句要求各三次，讀第一個請求的 token |
+| 用到的那一次 | 內文在被叫到時才進對話 | s1 到 s3 是 11 輪、整個 session 約三萬九千個 token；c1 是 9 輪、約三萬個。片中沒講 | 同上，再數請求數與整個 session 的 token |
+| 照做的程度 | CLAUDE.md 建議 200 行以內，越長越不容易被照做；流程長了搬去 Skill | c1 一次，五步都做到 | CLAUDE.md 一段流程三次、五段流程三次，各自對同樣內容的 Skill |
+| 不該啟動的時候 | Claude 依 description 判斷要不要用；`disable-model-invocation: true` 讓它只能由你叫 | 沒有 | 一句提到版本、但只要它看一下的要求，兩邊各三次 |
+| 叫得動 | `/名稱 引數` 直接叫；CLAUDE.md 沒有這個入口 | x1 一次，五步都做到 | 不重跑，沿用 x1 |
+| 附檔 | SKILL.md 可以連到同一個資料夾的檔，讀到才載入 | 有 Skill 的每一次都用 Read 打開 template.md；c1 的發版說明檔沒有最上面的版本標題，因為 CLAUDE.md 只列了三個二級標題 | 不另外排：範本檔放在 repo 的任何地方、由 CLAUDE.md 指過去也做得到，這不是 Skill 才有的能力 |
+
+「步驟有沒有照做」與「占多少」這次都重跑，不拿 10-09 的數字湊：今天的專案資料夾路徑不同、日期不同，第一個請求的大小會跟著變；同一對的兩邊一定在同一天、同一個資料夾跑。
+
+要先實作（2026-10-11；每一項都在 `runlog.txt` 加一段）。檔案放 `demo/`，執行時整份複製到 repo 外的 `<work>/seed`，專案建在 `<work>/run/skill-lab`，紀錄放 `<work>/run/logs`。
+
+新增的檔案（不改 10-09 的任何一個檔，雜湊照舊）：
+
+- `demo/variants/CLAUDE.five.md`（59 行）：前 21 行就是 `CLAUDE.release.md`，後面接四段別的流程：記一筆更新紀錄、新增換算函式、處理回報的錯誤、README 的使用範例。四段各自寫了只准動哪些檔，其中三段規定了別的 CHANGELOG 寫法或別的最後一行，跟發版那一段不一樣：真的 CLAUDE.md 長大之後就是這個樣子。
+- `demo/variants/add-converter.skill.md`、`bug-report.skill.md`、`readme-example.skill.md`：後三段各自寫成 Skill（「記一筆更新紀錄」用 10-09 就有的 `changelog-entry.skill.md`）。四個 Skill 的內文與 CLAUDE.five.md 的對應段落逐字相同，`check-five.mjs` 會比。
+- `demo/prompts/look.txt`：`0.3.1 快要出了，先幫我看一下 CHANGELOG 有沒有漏記的。`（35 個字）。這句提到版本要出了，但只要它看。專案的 Unreleased 只有一條，跟 `src/units.mjs` 對得上，所以正確的結果是回答「沒有漏」、一個檔都不改。
+- `demo/session-2.sh`：`session.sh` 的指令一個旗標都不改，加上今天的臂與第二句要求。臂：`none`、`claudemd`（CLAUDE.release.md）、`skill`（10-09 寫好的那一份與範本）、`claudemd5`（CLAUDE.five.md）、`skill5`（五個 Skill）、`gated`（見下面的條件）。
+- `demo/drift.mjs`：跑完之後跟種子比：四個檔哪幾個被改、多了哪些檔、發版有沒有被執行（版號不是 0.3.0，或 `releases/` 底下有檔）、有沒有別段流程的痕跡（CHANGELOG 出現 `- [` 開頭的行、README 出現 `## Usage`、最後一行是別段規定的句子），以及這一次的大小：送了幾個請求、每個請求的 token、整個 session 的 token、輪數、回報費用。
+- `demo/check-five.mjs`、`demo/m-checks-2.sh`：不呼叫模型的檢查。
+
+第 17 項　不呼叫模型的檢查。
+
+    WORK=<work> bash <work>/seed/m-checks-2.sh > <work>/run/logs/m-checks-2.log 2>&1
+
+預期：每個指令 `[exit 0]`；10-09 的種子檔雜湊照舊；五種臂各自的檔案清單（`none` 6 個檔、`claudemd` 與 `claudemd5` 7 個、`skill` 8 個、`skill5` 12 個）；`check-five.mjs` 五行 `same`；`skill5` 與 `skill` 的 validate 都是 `✔ Validation passed`；`drift.mjs` 對兩組假造的 session 分得出「沒動」與「發版被執行」。
+
+一次 session 的指令（第 18 到 21 項共用；與 10-09 逐旗標相同，`<request>` 是 `ship.txt` 或 `look.txt`）：
+
+    bash <work>/seed/session-2.sh <名字> <臂> <ship|look>
+
+    env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 SKILL_LOG=<logs>/<名字>.seen.log \
+      timeout 300 claude -p --model sonnet \
+      --setting-sources project,local --strict-mcp-config \
+      --tools "Read,Glob,Grep,Edit,Write,Skill" \
+      --allowedTools "Read,Glob,Grep,Edit,Write,Skill" \
+      --no-session-persistence \
+      --output-format stream-json --verbose \
+      --debug-file <logs>/<名字>.debug.log \
+      < <seed>/prompts/<request> \
+      > <logs>/<名字>.stream.jsonl 2> <logs>/<名字>.stderr.txt
+
+啟動 session 的 shell 一樣是 Claude Code 桌面版開的 Git Bash。第 17 項看到它今天帶的 `CLAUDE_EFFORT` 是 `xhigh`，10-09 的十二次是 `high`；執行前把這個變數設回 `high`，讓兩天的 session 帶同一個值，`session.log` 會印出實際帶進去的值。它對不開畫面的 session 有沒有作用，沒有量過。
+
+第 18 項　同一段流程、同一句要求：CLAUDE.md 對 Skill，各三次（`sk1`、`md1`、`sk2`、`md2`、`sk3`、`md3`，輪流跑）。
+
+    bash <work>/seed/session-2.sh sk1 skill ship
+    bash <work>/seed/session-2.sh md1 claudemd ship
+
+- `sk1` 先跑，兼作今天的做法檢查（同第 3 項的七件事：結束碼 0、stderr 空、模型全名、工具恰好六個、專案的 Skill 1 個且「其他」0 個、hook 紀錄沒有專案以外的東西、專案上面沒有指示檔）。任何一件不對就停。
+- 預期：兩邊 F1 到 F5 都是三次全中（依 c1 與 s1 到 s3）。`md` 的第一個請求比 `sk` 多四百多個 token；`sk` 多送一個請求（叫 Skill 的那一趟）。會不會有一邊在 CHANGELOG 那一步出錯，不知道。
+- 怎麼認：`session.log` 裡 `tally` 的 `F1` 到 `F5` 與 `first request:`，`drift` 的 `requests to the model:` 與 `turns`。
+- 支持什麼：兩邊每一步都一樣，代表「搬成 Skill」沒有讓 Claude 更照做，主例不能再講成 Skill 補上了那兩步。有一步差兩次以上，那一步就是主例。
+
+第 19 項　CLAUDE.md 長到五段流程：對五個 Skill，各三次（`skf1`、`mdf1`、`skf2`、`mdf2`、`skf3`、`mdf3`）。
+
+    bash <work>/seed/session-2.sh skf1 skill5 ship
+    bash <work>/seed/session-2.sh mdf1 claudemd5 ship
+
+- 預期：不知道。`mdf` 這邊五段都在眼前，「記一筆更新紀錄」那一段寫著不要新增版本標題、不要搬項目，跟發版的第 2 步相反；可能混到，也可能三次都照發版那一段做。`skf` 這邊預期只叫 `release-prep`（10-09 的 o1 一次是這樣）。第一個請求：`mdf` 比 `md` 再多約一千個 token，`skf` 比 `sk` 多兩三百個。
+- 怎麼認：同上，加 `drift` 的 `marks of another procedure:` 與 `Skill calls, in order:`。
+- 支持什麼：`mdf` 在任何一步比 `skf` 少兩次以上，或三次裡兩次以上混到別段，這就是「理所當然的做法會失敗」的情況，主例建在這一對上。兩邊一樣，代表這種長度的 CLAUDE.md 還撐得住，官方那句「越長越不照做」在這裡沒有量到。
+
+第 20 項　不該啟動發版的那一句：兩邊各三次（`skl1`、`mdl1`、`skl2`、`mdl2`、`skl3`、`mdl3`），專案同第 18 項。
+
+    bash <work>/seed/session-2.sh skl1 skill look
+    bash <work>/seed/session-2.sh mdl1 claudemd look
+
+- 預期：不知道。Skill 的 `when_to_use` 寫的正是「使用者說某一版要出了」，Claude 可能把它叫起來、把五步做完；CLAUDE.md 這邊整段流程每次都在，也可能照做，也可能只看不改。
+- 怎麼認：`drift` 的 `the release was carried out:` 與四個檔各自的 `same`／`changed`；`tally` 的 `Skill tool called for release-prep:`。
+- 支持什麼：哪一邊在三次裡兩次以上把發版做掉了，哪一邊就有一個量到的失敗；另一邊沒有，就是兩種放法的差別。兩邊都沒有，這一題沒有差別。兩邊都做掉了，差別不在放哪裡，在那句 `when_to_use` 與流程的寫法。
+- 條件：任何一邊在三次裡兩次以上把發版做掉，才加跑 `gated` 三次（`gl1` 到 `gl3`）：`release-prep.gated.skill.md` 是寫好的那一份多一行 `disable-model-invocation: true`，同一句 `look.txt`。那一行是 CLAUDE.md 沒有的開關；它擋不擋得住，跑了才知道。條件沒成立就不建那個檔、不跑。
+
+第 21 項　今天的基準：`no1`，沒有任何流程，`ship.txt`，一次。只用它的第一個請求當「沒有流程時」的大小。
+
+    bash <work>/seed/session-2.sh no1 none ship
+
+合計 19 次，條件成立時 22 次；另外不留備用。因為逾時或斷線沒有結果的那一次，用新的名字（加 `r`）重跑，失敗的留在紀錄裡。
+
+判定，跑之前講定，跑完不改：
+
+1. 「步驟有差」：同一對的兩邊，任何一個計分項在三次裡差兩次以上。計分項是 F1 到 F5（規則同 10-09 的「計分規則」）、「混到別段」（`drift` 的三種痕跡任何一種，或 `src/units.mjs` 被改）、以及 `look.txt` 那一題的「發版被執行」。
+2. 「成本有差」：同一句要求之下，CLAUDE.md 那一邊的第一個請求比 Skill 那一邊多出來的 token，大於兩邊各自三次之間最大的差距。用到 Skill 的那一次多花的（請求數、整個 session 的 token）一起報，不只報對 Skill 有利的那一半。回報費用會跟著快取變（同一個開頭第二次跑就便宜），只列出來，不拿來比。
+3. 第 1 點在任何一對成立：那一對是主例，那個失敗是觀眾猜不到的結果，放開場或主例的轉折。
+4. 第 1 點都不成立、第 2 點成立：兩邊照做的程度一樣，量到的差別只有成本。片子照實講成「搬成 Skill 沒有讓它更照做」，選用規則用量到的兩個方向（平常省多少、用到時多花多少）寫；這種情況下主例靠的是成本與 `/名稱` 這個入口，回報裡要明講，讓站主判斷夠不夠。
+5. 兩點都不成立（每一步都一樣，token 的差也在同一臂三次的差距以內）：停在這裡，`brief.md` 第一行寫「含金量不足：…」與量到的數字，不寫稿。
+
+第 22 項（第 18 到 20 項跑完之後才加的，2026-10-11T11:42Z；不在原本講定的清單裡，寫稿時要標明是後加的）　用斜線直接叫，三次（`sx1`、`sx2`、`sx3`），專案同 `skill` 臂，要求是 `slash.txt`。
+
+    bash <work>/seed/session-2.sh sx1 skill slash
+
+- 為什麼加：第 18 項看到 Skill 那一邊每次都多送一個請求（叫 Skill 工具的那一趟），整個 session 多九千多個 token；第 20 項看到只要它看一下的時候 Skill 也三次都被叫起來。第 20 項沒有任何一邊把發版做掉，`gated` 的條件沒成立，那三次不跑。10-09 的 x1（一次，用含糊的那一份）是 9 輪、整個 session 三萬個 token，跟 CLAUDE.md 那一邊一樣少；如果今天用寫好的那一份重跑三次也是這樣，「自己叫」就是 CLAUDE.md 做不到、又量得出好處的那一件事。
+- 預期（依 x1）：串流裡沒有 Skill 工具呼叫，hook 紀錄一行 `UserPromptExpansion slash_command release-prep source=projectSettings`；送三個請求；F1 到 F5 全中。
+- 支持什麼：三次都是三個請求、五步全中，選用規則可以寫成「讓它自己判斷多一趟，自己叫不用」。不是的話照實寫，x1 那一次的說法也跟著收回。
+
+合計改成 22 次（18 次已經跑完，加 `no1` 與這三次）。
+
+第 23 項（22 次跑完、寫稿之前加的，2026-10-11）　觀眾要照打的那一行，照卡片逐字跑一次（`hand1`）。
+
+- 為什麼加：盲評第四點是完整的 `claude -p` 指令沒有上卡片。`session-2.sh` 裡那一行帶著腳本的變數，紀錄裡印的那一行帶著 `<logs>`、`<seed>` 這些代稱，兩種都不能照打。卡片上要放的是觀眾在自己的專案資料夾裡打得出來的一行（旗標與 34 次 session 相同，檔名改成相對路徑、拿掉只給記錄腳本用的 `SKILL_LOG`），所以它本身要照打跑一次才算數。
+- 做法：用 `session-2.sh` 的 `--dry` 把 `skill` 臂的專案建在 `<work>/hand/unit-kit`，`ship.txt` 放在它的上一層；在專案資料夾裡執行 `demo/typed-cmd.sh` 的內容（九行，就是卡片上的那九行），接著打三個檢查：`grep -c '"name":"Skill"' ../stream.jsonl`、`grep -o '"id":"msg_[^"]*"' ../stream.jsonl | sort -u | wc -l`、`cat .claude/seen.log`。後兩個先不經模型對今天的七個串流試過：第二個數出來的個數與 `drift.mjs` 的 `requests to the model` 相同（4、3、3、5、4、3、4）。
+- 預期：結束碼 0；第一個檢查是 1、第二個是 4、第三個是一行 `PreToolUse Skill release-prep keys=skill,args`；五步全中。
+- 這一次不算進任何一臂的三次裡，只當那張指令卡與三張檢查卡的出處。合計 23 次。
+
+### 執行紀錄（2026-10-11；原文在 `runlog.txt` 的 2026-10-11 那一段，表在 `demo/results/2026-10-11.summary.txt`）
+
+第 17 到 23 項都跑過：session 23 次，全部 `--model sonnet`（init 回報 claude-sonnet-5-5）、Claude Code 2.1.295、Windows 11 的 Git Bash，全部結束碼 0、stderr 空，沒有重跑。`gated` 的條件沒成立，沒跑。10-09 的種子檔一個都沒改。
+
+發版那一句（`ship.txt`），每格是三次（`no1` 一次）：
+
+| 項目 | 沒有流程（no1） | Skill，Claude 自己叫（sk1–3） | 留在 CLAUDE.md（md1–3） | Skill，用斜線叫（sx1–3） | 五個 Skill（skf1–3） | 五段的 CLAUDE.md（mdf1–3） |
+| --- | --- | --- | --- | --- | --- | --- |
+| F1 到 F5 全部做到 | 0／1（F1、F3 有，F2、F4、F5 沒有） | 3／3 | 3／3 | 3／3 | 3／3 | 3／3 |
+| 別段流程的痕跡 | 0／1 | 0／3 | 0／3 | 0／3 | 0／3 | 0／3 |
+| Skill 工具被叫到 | 0／1 | 3／3 | 0／3 | 0／3 | 3／3（只有 release-prep） | 0／3 |
+| 第一個請求的 token | 8753 | 8818、8811、8812 | 9240、9238、9240 | 9178、9178、9182 | 9041、9042、9039 | 9909、9907、9908 |
+| 送了幾個請求 | 4 | 4、4、4 | 3、3、3 | 3、3、3 | 4、4、5 | 3、3、3 |
+| 整個 session 的 token | 38749 | 39606、39524、39566 | 30284、30307、30297 | 30397、30390、30433 | 40603、40468、52288 | 32422、32378、32495 |
+
+只要它看一下的那一句（`look.txt`）：
+
+| 項目 | Skill（skl1–3） | 留在 CLAUDE.md（mdl1–3） |
+| --- | --- | --- |
+| 四個種子檔有任何一個被改 | 0／3 | 0／3 |
+| 發版被執行 | 0／3 | 0／3 |
+| Skill 工具被叫到 | 3／3（都是第一筆呼叫） | 0／3 |
+| 送了幾個請求 | 4、4、4 | 3、3、3 |
+| 整個 session 的 token | 39052、39440、38959 | 29301、29471、29400 |
+
+平均與差值：第一個請求比沒有流程時多，Skill 60.7、CLAUDE.md 486.3、五個 Skill 287.7、五段的 CLAUDE.md 1155.0；CLAUDE.md 減 Skill 是 425.7（九種配對是 420 到 429），五段是 867.3；同一臂三次之間最多差 7。整個 session：Skill（Claude 自己叫）39565.3、CLAUDE.md 30296.0、斜線 30406.7；Skill 減 CLAUDE.md 是 9269.3，斜線減 CLAUDE.md 是 110.7。9269.3 除以 425.7 是 21.8。
+
+照講定的判定：
+
+1. 「步驟有差」：哪一對都沒有。一段流程、五段流程、只要它看一下，三對的每一個計分項都一樣。
+2. 「成本有差」：成立。CLAUDE.md 那一邊的第一個請求比 Skill 多 425.7 個 token（五段 867.3），遠大於同一臂的差距 7。反方向一起報：Claude 自己把 Skill 叫起來的那一次多送一個請求、整個 session 多 9,269 個 token，只要它看一下的時候也一樣（多 9,760）。用斜線叫沒有這一筆（多 111）。
+3. 所以是講定的第 4 種情況：兩邊照做的程度一樣，量到的差別是成本。片子照實講成「搬成 Skill 沒有讓它更照做」。
+
+判斷（重排的人的看法，請站主在選大綱時決定夠不夠）：這個例子撐得起一支片，但撐它的不是「Skill 補上了 Claude 漏掉的步驟」。照規則，主例要有「簡單做法做不到的事，或簡單做法量得出來的成本或失敗」。量到的是：CLAUDE.md 每個請求多帶 426 個 token（約是沒有流程時第一個請求的 4.9%；五段是 9.9%），以及 CLAUDE.md 沒有 `/release-prep 0.3.1` 這個入口，用這個入口叫的三次跟留在 CLAUDE.md 一樣是三個請求。成本不大，而且讓 Claude 自己判斷時 Skill 反而比較貴，片中兩個方向都講。如果站主認為「同一個結果、省幾百個 token」不夠當一支教學片的主例，那就是含金量不足，要換的是例子：這個主題要贏過 CLAUDE.md，得找一段 CLAUDE.md 真的會出錯的流程（比這次的 59 行長得多），或用到只有 Skill 有的開關（`disable-model-invocation`、`allowed-tools`、`context: fork`）而且看得出差別的情況，這兩種這次都沒有量到。
+
+跑出來、企劃時不知道的事，寫稿時照這裡：
+
+1. 搬成 Skill，五個步驟沒有更照做：3／3 對 3／3。10-09 的 0／3 對 3／3 量到的是「有交代」對「沒交代」，不是 Skill 對 CLAUDE.md；加上 `no1`，沒交代的是發版說明檔 0／4、最後一行 0／4、CHANGELOG 2／4。
+2. 用到的那一次 Skill 比較大：4 個請求對 3 個，39,565 對 30,296 個 token。多的那個請求就是叫 Skill 工具的那一趟。
+3. 用斜線叫沒有那一趟：3 個請求，30,407 個 token。這三次是看了第 1、2 點之後加跑的，卡片出處要寫明。
+4. 只要它看一下，Skill 也三次都被叫起來，五個步驟一步都沒做；其中兩次模型自己在引數裡寫了「使用者只要求先檢查」。兩邊都沒有改任何檔案。
+5. 59 行、五段流程（三段的規定跟發版相反）的 CLAUDE.md，三次都照發版那一段做，沒有混到別段。
+6. CLAUDE.md 那一邊的發版說明檔沒有最上面的 `# v0.3.1`（六次都是，c1 也是）：CLAUDE.md 只列了三個二級標題；Skill 那一邊照 `template.md`，有那一行。這是寫了什麼的差別，不是放哪裡的差別。
+7. 今天通過 F5 的十五次（加 hand1 是十六次），冒號都是全形（10-09 十次裡九次是半形）。
+8. 照卡片九行打的那一次（hand1）送了 5 個請求，不是預期的 4 個：它把範本的 `# vX.Y.Z` 照抄進發版說明，再多一趟改成 `# v0.3.1`（skf3 也是這樣）。今天 Claude 自己叫 Skill 的十次裡，八次 4 個請求、兩次 5 個；留在 CLAUDE.md 的九次都是 3 個。
+9. 第一個請求的大小跟 10-09 只差幾個 token（沒有流程 8753 對 8750 到 8754）。啟動 session 的 shell 今天帶 `CLAUDE_EFFORT=xhigh`，執行前設回 10-09 的 `high`。
+
+仍然沒有觀察到，片中不寫成發生過：兩種放法做出不同檔案或不同最後一行的要求；長到會被少照做的 CLAUDE.md；任何一邊在只要它看的時候把發版做掉（所以 `disable-model-invocation` 沒有東西可擋，沒跑）；Skill 該被叫卻沒被叫；同一個 session 的第二輪以後；互動式畫面、其他模型與平台。回報費用跟著快取變，只列不比。
+
+獨立查核之後（2026-10-11，`verify-3.md`：188 個主張，十二項發現，修正後通過；沒有再跑任何 session）。查核確認的：五步兩邊 3／3、第一個請求 +486 對 +61、成對的三次 4 個請求對 3 個、用斜線叫 3 個請求、只要它看的六次都沒有改檔，卡片上的檔案、指令與輸出逐字對得上，21 條官方說明都查得到。查核指出、片中已經照改的四件事，讀這份企劃的人也照這個理解：
+
+1. 「大約 22 個請求打平」是兩個小樣本平均相除的估計，不是門檻。9,269 裡約九成五是多出來的那一趟把對話再讀一次，而這個對話一開始只有約 8,750 個 token（六個工具、沒有 MCP、四個檔的專案）；同一個除法在五段流程那一對是 13.9，在只要它看一下那一對是 22.8。
+2. 「一定要成立的那一步交給 Hook」不是這次量到的：發版那一句，有交代的 25 次五步都做到，沒有任何一次漏掉該做的步驟，也沒有跑過會強制某一步的 hook。它是官方 Hook 對 Skill 的建議，片中改成引文卡，標明引用、沒有跑過。
+3. 「多 1 個請求」只在成對的三次裡是定數；Claude 自己叫 Skill 的十次裡有兩次多 2 個。
+4. 「兩邊一樣」是這幾次沒有觀察到差別：每臂三次、一個模型、一段五步的流程，分不出九成與十成。
+
 ## 大綱
 
-三個選項用同一個練習專案、同一批執行紀錄，差在主線與排法。片長以每分鐘 250 字估。寫到 session 的卡片內容與數字都是預期，跑完照實際結果改。前四支的開場卡片分別是 title、compare、terminal（mods）、title、steps、terminal（Hook）、title、code、terminal（headless）、title、chat、stats（CLAUDE.md）；這三個選項都不這樣開。
+兩個選項用同一個練習專案、同一批執行紀錄（2026-10-09 的 12 次與 2026-10-11 的 23 次），主例都是「同一段流程留在 CLAUDE.md」對「搬成 Skill」，差在排法。`video.json` 已經照選項 D 寫好，並通過一次獨立查核與一次重讀（`verify-3.md`）；選 E 的話要重排場景與旁白、重新查核。片長以每分鐘 250 字估。10-09 的選項 A、B、C 不再是選項，見這一節最後的「試過、不再用的大綱」。
 
-### 選項 A：五個步驟逐步數。有 Skill、沒有 Skill 各跑三次，再只換 description 跑三次（推薦）
+### 選項 D：同一段流程，留在 CLAUDE.md 對搬成 Skill，各跑三次（推薦）
 
-一行說明：主例子是發版流程的五個步驟與六次對照，照觀眾會問的五個問題走；description 的比較與 validate 是後半的對照與常見失敗。和 B 差在主線（先給「有用」的結果，再講它什麼時候沒被用到；B 從沒被用到開始查），和 C 差在排法（一個例子走到底，不是並列的重點）。
+一行說明：照觀眾會問的五個問題排。開場是量到、而且猜不到的結果（搬過去沒有更照做），第二章講大小為什麼不一樣與怎麼選，第三章把 CLAUDE.md 那一段搬成 SKILL.md，第四章照打九行、數三件事、兩邊並排，第五章三個試法（五段流程、含糊的 description、只要它看一下）與用斜線叫，第六章是接到量測結果的選用規則與怎麼留下、關掉。和 E 差在排法：D 一個例子從頭走到尾，E 把同一批結果拆成三個可以跳著看的編號重點。
 
-開場鉤子：「發版要改四個檔，我每次都漏一個。同一句話，我讓 Claude Code 做了六次：沒有 Skill 的三次，發版單一次都沒有寫；加上十九行的 SKILL.md 之後，三次都寫了，而且是 Claude 自己決定打開它的。」
+開場鉤子：「流程從 CLAUDE.md 搬成 Skill，Claude 會比較照做嗎？同樣的一句要求，兩邊各跑三次：五個步驟，都是三次全中。差在大小。」
 
-案例與結果：「練習專案 skill-lab（套件名 unit-kit）：兩個換算函式、一份有 Unreleased 段落的 CHANGELOG、一行寫著最新版本的 README；發版的五個步驟只寫在 Skill 裡。有用的結果：同一句『0.3.1 要出了，幫我把該改的地方都改好』，有 Skill 時四個檔都改對、多一份照範本寫的發版單、最後一行告訴我下一步。證據狀態：種子、記錄腳本、計分腳本與 validate，企劃 2026-10-09 用不呼叫模型的指令跑過；九次 session 還沒跑，等要先實作第 3–11 項。」
+案例與結果：「練習專案 unit-kit，同一段五步的發版流程放兩個地方：CLAUDE.md 的一段（21 行的檔），或 `.claude/skills/release-prep/`（19 行的 SKILL.md 與 7 行的範本）。同一句『0.3.1 要出了，幫我把該改的地方都改好。』各三次。結果：五步 3／3 對 3／3；第一個請求比沒有流程時多 486 對 61 個 token；Claude 自己叫 Skill 的那一次 4 個請求、CLAUDE.md 3 個、用斜線叫 3 個。證據狀態：跑過，2026-10-11，第 18 到 23 項；description 含糊的三次與 validate 是 2026-10-09 跑的。」
 
-全片約 650 秒（約 10 分 50 秒，約 2,710 字）。
+估 11.7 分鐘（lint），125 句，57 個場景（獨立查核之後的數字；查核前是 11.0 分鐘、120 句、54 個場景，改了什麼見 `verify-3.md` 最後一節）。
 
-第一章　同一句話跑六次：有 Skill 和沒有的差別（約 25 秒）｜回答「我會得到什麼」
-- 教什麼：有那個 Skill 和沒有，同一句要求的結果差在哪。只放結果。
-- title: 片名；副標「十九行的 SKILL.md，同一句要求跑九次」
-- table（source 標六次執行的日期、版本、模型；先亮「發版單」那一列）: 「六次，逐步數」三欄，哪一步／沒有 Skill／有 Skill。只放兩列：寫了發版單 0／3、3／3；最後一行給了下一步 0／3、3／3
-- chat: 我對 Claude 說的那句話，一個泡泡（`prompts/ship.txt` 原文）
-- 下一個問題（第二章用它開頭）：「我那句話沒提到 Skill，Claude 怎麼知道要打開它？」
+第一章　流程從 CLAUDE.md 搬成 Skill，Claude 會更照做嗎（約 27 秒）｜回答「我會得到什麼」
+- title；table「同一句要求，兩邊各跑三次」（五步 3／3 對 3／3；第一個請求 +486 對 +61；請求數 3、3、3 對 4、4、4）；chat：那句要求。
+- 下一個問題：「大小為什麼不一樣？」
 
-第二章　Skill 是什麼，跟 CLAUDE.md、Hook 怎麼選（約 95 秒）｜回答「跟我已經在用的差在哪」
-- 教什麼：Skill 是一個資料夾加一份 SKILL.md；開場只有名稱與 description 進脈絡，被叫到才載入內文，內文點到的檔要讀才載入；跟當次的要求、CLAUDE.md、rules、Hook、subagent 怎麼選，各一句。
-- steps（官方說明，source 標 skills 頁與日期）: 「Skill 分三次進到對話」：session 開始，每個 Skill 只有名稱和 description／Claude 判斷用得上，或你打 /名稱，整份 SKILL.md 才進來／SKILL.md 裡點到的檔，Claude 去讀才進來
-- quote: 「a skill's body loads only when it's used」與中文；kicker「內文叫到才載入」；source「Claude Code 文件｜skills｜抓取當天的日期」
-- compare（官方 features-overview 的比較表，source 標頁名與日期）: 左「CLAUDE.md」：每個 session 自動載入／整份都在／適合「一律這樣做」的規則。右「Skill」：用到才載入／開場只有一行／適合參考資料與叫得動的流程。verdict「一段話長成流程，就搬去右邊」
-- table（逐列亮出；Skill 那一列標亮；source 標 features-overview 與 skills 頁）: 「這段話該放哪」兩欄，你要的／放這裡。只有這一次用得到／這次的要求裡直接講；每個 session 都要知道的慣例／CLAUDE.md；只跟某些路徑有關／`.claude/rules/` 加 `paths`；步驟多、偶爾才用的流程／Skill；每一次都一定要成立／Hook 或權限規則；會洗版的大量搜尋與閱讀／subagent
-- screencast: 官方 features-overview 頁「Context cost by feature」那張表
-- 下一個問題：「那十九行長什麼樣？」
+第二章　Skill 跟 CLAUDE.md 差在哪：什麼時候載入、占多少（約 92 秒）｜回答「跟我已經在用的差在哪」
+- steps（引用）：Skill 分三次進到對話；stats：第一個請求比沒有流程時多 +61、+486、+288、+1,155；table：用到的那一次，3 個請求對 4 個、30,296 對 39,565；compare：常用的留著，偶爾才用的搬。
+- 下一個問題：「那十九行長什麼樣子？」
 
-第三章　SKILL.md 怎麼寫：兩行開頭、五個步驟、一份範本（約 150 秒）｜回答「怎麼做」
-- 教什麼：練習專案；資料夾放哪；frontmatter 的兩行各寫什麼；內文寫成查得出來的步驟；範本放在旁邊的檔；寫完先 validate。
-- terminal: 開跑之前的專案，`find . -type f -not -path './.claude/*' | sort`：四個檔（第 2 項的輸出）
-- screencast: 官方 skills 頁的位置表（專案、個人、外掛）；旁白一句：這支放專案的 `.claude/skills/`，進版控，隊友都拿得到
-- code: `SKILL.md` 第 1–5 行，亮第 3 行（description：做什麼）
-- code: 同一段，亮第 4 行（`when_to_use`：使用者會怎麼說）
-- compare（官方 best-practices 頁的好壞範例，source 標頁名與日期）: 左「Helps with PDFs.」右「Extracts text and tables from PDF files, fills PDF forms, and merges multiple PDFs. Use when working with PDF documents or when the user mentions PDFs, forms, or document extraction.」verdict「寫做什麼，也寫什麼時候用」
-- code: `SKILL.md` 第 7–15 行，亮第 12–15 行（第 1、2 步：每一步都指到一個檔、一個看得到的結果）
-- code: `SKILL.md` 第 12–19 行，亮第 17–18 行（第 4 步：範本在旁邊的檔）
-- code: `template.md` 全檔 7 行
-- table（逐列亮出；source「這支影片的計分規則，寫在跑之前」）: 「五個步驟，各在哪裡看得到」兩欄。版號／package.json 的 version；CHANGELOG／有日期的標題，Unreleased 還在；README／Latest release 那一行；發版單／releases/v0.3.1.md 的三個標題；下一步／回覆的最後一行
-- table（M7，source 標 validate 的那一次）: 「寫完先驗一次」三欄，哪一份／validate 說／結束碼。寫好的／Validation passed／0；引號沒關／YAML frontmatter failed to parse／1；description 打成 descriptions／No description in frontmatter／0。旁白：壞掉的那一份，Skill 還是會載入，只是開頭那幾行全部不算
-- 下一個問題：「寫好了。Claude 真的有打開它嗎？」
+第三章　SKILL.md 怎麼寫：從 CLAUDE.md 那一段搬過來（約 127 秒）｜回答「怎麼做」
+- terminal：搬之前的專案（md1 開跑前的 `find`）；code 兩張：CLAUDE.md 第 3–14 行、第 13–21 行；screencast：官方位置表；code：SKILL.md 第 1–5 行兩張（description、when_to_use）、第 7–15 行、第 12–19 行兩張（第四步改成連到範本、第五步）；code：template.md 全檔；terminal：搬過去之後的專案（sk1 開跑前的 `find`）；code 與 table：`claude plugin validate` 與四種寫法的結果。
+- 下一個問題：「Claude 真的有打開它嗎？」
 
-第四章　怎麼確認 Skill 被叫到、又照做了（約 180 秒）｜回答「怎麼知道做對了」
-- 教什麼：跑一次的指令；三個看得到 Skill 的地方；五步的計分表；被叫到不等於照做，三次能說到哪裡。
-- table（source 標那幾次執行；完整指令在說明欄）: 「跑一次的指令，拆開看」兩欄。`claude -p`，要求從檔案送進去／不開畫面，做完就結束；`--setting-sources project,local`／不載入我個人的 Skill 與設定；`--tools "Read,Glob,Grep,Edit,Write,Skill"`／只給讀寫檔案的工具，加上 Skill 工具；`--output-format stream-json --verbose`／留下每一次工具呼叫和最後的回覆
-- steps（s1 那一次依序發生的事；source 標那一次）: 「Skill 在紀錄裡出現三次」：開頭那一筆的 skills 清單裡有 release-prep／Claude 的第 N 筆工具呼叫是 Skill，點名 release-prep／下一筆是 Read，打開 template.md
-- code: `settings.json` 第 3–11 行（`PreToolUse` 配 `Skill` 接一支記錄腳本）；說明文字寫全文 44 行在說明欄
-- code: `s1.seen.log` 全檔（預期一行）；說明文字寫哪一次、日期、版本
-- terminal: 有 Skill 的那一次，做完之後的 `find …`：多了 `./releases/v0.3.1.md`（s1）
-- terminal: 同一次，`head -8 CHANGELOG.md`（s1）
-- terminal: 沒有 Skill 的那一次，同兩個指令（n1；兩張）
-- quote: 有 Skill 那一次回覆的最後一行原文；kicker「回覆的最後一行」；source 標 s1
-- table（全片的核心；逐列亮出；source 標六次的日期、版本、模型）: 「六次，逐步數」三欄。Skill 工具被叫到 —／3、？／3；版號 ？、？；CHANGELOG ？、？；README ？、？；發版單 0／3、3／3；下一步 0／3、3／3
-- bullets（source「這支影片的做法｜runlog」與 skills 頁）: 「這張表能說到哪裡」：三次對零次，夠說這個 Skill 有改變結果／不夠說它每次都會被叫到／被叫到，也不等於每一步都照做，所以分兩列數
-- 下一個問題：「同一份內文，開頭那兩行寫得隨便一點，還會被叫到嗎？」
+第四章　怎麼確認 Claude 叫了 Skill：照打九行，再數三件事（約 175 秒）｜回答「怎麼知道做對了」
+- code 四張：`demo/typed-cmd.sh` 全檔九行，每張亮不同的行；terminal：第一件，`grep -c` 數 Skill 工具呼叫（hand1，1）；steps 與 table：Skill 在 sk1 紀錄裡的三個地方、流程的文字從哪裡進來；terminal：第二件，數請求（hand1，5）；terminal 兩張：從串流讀出第一個請求與整個 session 的 token（hand1 留下的串流，查核之後加的，不呼叫模型）；terminal 四張：第三件，兩邊做完之後的 `find` 與發版說明檔的標題（md1、sk1）；compare：兩邊回覆的最後一行；table：逐項計分 3／3 對 3／3；table：什麼都沒交代的四次。
+- 下一個問題：「那什麼情況下，兩邊會不一樣？」
 
-第五章　沒被用到的時候：description、直接叫、占多少脈絡（約 150 秒）｜常見失敗與對照
-- 教什麼：只換 description 的三次；沒被叫到時怎麼直接叫；直接叫走的是另一條路；一個 Skill 平常占多少、跟寫進 CLAUDE.md 比。
-- compare（兩個真的檔案的開頭）: 左「寫好的」：第 3–4 行。右「含糊的」：`description: 專案維護用的流程說明。` verdict 由結果決定（預期「名稱一樣，內文一樣，只差這兩行」）
-- table（v1–v3 與 s1–s3；source 標六次）: 「只換開頭，被叫到幾次」兩欄：寫好的 ？／3、含糊的 ？／3；下面一列「自己用 Read 打開 SKILL.md」各幾次
-- chat: `/release-prep 0.3.1`（`slash.txt` 原文）
-- code: `x1.seen.log` 全檔（預期一行 `UserPromptExpansion …`）；旁白：直接叫不經過 Skill 工具，前一章那個 hook 看不到，要接這一個事件
-- table（官方說明，source 標 skills 頁與日期）: 「誰可以叫」三欄，frontmatter／你／Claude。預設／可以／可以；`disable-model-invocation: true`／可以／不行，description 也不進脈絡；`user-invocable: false`／不行／可以
-- stats（逐個亮出；source 標 n、s、c 各一次與日期、版本）: 「第一個請求多了多少 token」：沒有 Skill 當作 0；有 Skill，多 ？；同一段寫在 CLAUDE.md，多 ？
-- table（常見失敗第 3、4 條，官方，source 標兩頁與日期）: 「另外兩個原因」：存成 `.claude/skills/名稱.md`，要改成資料夾裡的 `SKILL.md`／叫到之後不會重讀，最重要的指示放最上面
-- 下一個問題：「這個 Skill 要怎麼留下來？哪一步不該留在這裡？」
+第五章　五段流程、含糊的 description、只要它看一下：兩邊會不一樣嗎（約 149 秒）｜對照、第二個例子、常見失敗
+- code 與 table：CLAUDE.md 長到五段（第 23–28 行，跟發版第二步相反的那一段），3／3 對 3／3，沒有混到，請求數 3、3、3 對 4、4、5；code 與 table：含糊的 description，3／3 也被叫到（10-09）；chat、quote、table、quote：只要它看一下，Skill 3／3 被叫起來、兩邊都沒有改檔、多一個請求；chat、table、bullets：用斜線叫，三個請求、五步 3／3；steps（引用）：Skill 該被叫卻沒有時的查法。
+- 每一個試法都用到 Skill，各多給一個主例沒有的實測結果。
 
-第六章　怎麼留下來、關掉，和該搬去 Hook 的那一步（約 50 秒）｜回答「怎麼留下來或關掉」
-- 教什麼：進版控；不改檔關掉一個；移除；別人的 Skill 先看開頭；一定不能漏的那一步搬去 Hook；換成自己的流程。
-- table（官方說明，source 標 skills 頁與日期）: 「留下來，和關掉」：`.claude/skills/`／commit 進去，隊友都拿得到；只關這一個，不改檔／設定裡 `skillOverrides` 設成 `"off"`；不要了／刪掉那個資料夾。對主題本身的提醒只在這裡講一次：別人 repo 的 Skill 可以替自己預先核准工具，放進來之前先看每一份的開頭
-- steps（練習二）: 「換成你的一段流程」：寫下你平常會怎麼開口／做對了在哪裡看得到／有、沒有各跑三次，看有沒有那一筆 Skill 呼叫
-- cta: 站上文章〈Claude Code｜建立第一個 SKILL.md〉；副標「連結在說明欄」
-- outro: 三句。回答開場：「十九行，九次：有 Skill 的三次都寫了發版單，沒有的三次一次都沒有。」留言題。訂閱邀請（下一支的題目還沒定，企劃不代寫）
+第六章　留在 CLAUDE.md 還是搬成 Skill：選用規則、留下來、關掉（約 132 秒）｜回答「怎麼留下來或關掉」
+- table：三條規則，各接一個量到的結果（這幾次沒有差，不用為了更照做而搬；偶爾才用的搬；要用時自己用斜線叫），出處寫明「大約 22 個請求打平」是估計、不是門檻；quote（引用，沒有跑過）：一定要成立的那一步交給 Hook，是官方 Hook 對 Skill 的建議，不是這支量到的；table（引用）：留下來、關掉、移除；bullets（引用）：別人的 Skill 先看開頭，全片只講一次；steps：換成你的一段流程；bullets：這些數字屬於哪一組；cta；outro。
 
-示範的位置：S-n、S-s 在第一章（結果）與第四章（做法與計分表）；M7 在第三章；S-v、S-x、S-c 在第五章。
-收尾的下一步：留言題「你的 CLAUDE.md 裡，哪一段其實該搬成 Skill？」
+示範的位置：md 對 sk 在第一、二、四章；mdf 對 skf、v、skl 對 mdl、sx 在第五章；hand1 在第四章；M7 在第三章。
+收尾的下一步：留言題「你的 CLAUDE.md，哪一段流程很少用到？」
 
-數字不如預期時怎麼改：有 Skill 那一臂不是三次都被叫到，開場與計分表照實寫（例如「三次有兩次是它自己打開的」），鉤子的最後半句跟著改。含糊那一臂也三次都被叫到，第五章的比較表照實放，旁白改成「這三次連含糊的也被叫到；名稱本身就在清單裡」，寫法退回官方的好壞範例。沒有 Skill 的三次也改了 README 或 CHANGELOG，第四章多一句「猜得到的步驟不用寫」。
+跟 10-09 那一版比，拿掉的：0／3 對 3／3 當主打、Skill 對 CLAUDE.md 的官方比較卡與官方的 description 好壞範例（沒有接到量到的結果）、記錄用 hook 的設定檔節錄（只放了一部分；hook 現在只當量測工具，它記下的那一行照樣當證據）、「這張表能說到哪裡」那一張、x1 的三張（換成今天的三次）、官方的「Skill 是說明不是腳本」引文（換成只要它看一下的那三次）。
 
-### 選項 B：Skill 沒被用到的時候，照四步查
+### 選項 E：搬不搬，三個量到的問題（指南式，編號重點）
 
-一行說明：主線換成排查。從「SKILL.md 明明寫了，Claude 沒有用」出發，把同一批執行排成四步：檔案有沒有壞、清單裡有沒有、description 有沒有寫什麼時候用、直接用斜線叫。比 A 更貼近搜尋「skill 沒有觸發」的人；代價是「它有用」的六次對照到後半才出現，而且第三步靠 v1–v3 真的出現「沒被叫到」，含糊那一臂三次都被叫到的話這個選項的中段撐不起來。
+一行說明：同一批執行紀錄排成三個編號重點，每一點同樣四步（以前怎麼放、量到什麼、現在怎麼做、例外），觀眾可以跳到要的那一點。和 D 差在排法：SKILL.md 的寫法不是獨立的一章，拆進第二點；「怎麼確認 Claude 叫了它」只留兩張檢查卡。代價是「把 Skill 寫出來」這件事被切散，照著從頭做一遍的人要來回找。
 
-開場鉤子：「我寫了一個 Skill，Claude 沒有用。先別改內文：`claude plugin validate` 跑一次，它告訴我 description 的引號沒關，開頭那幾行全部不算。Skill 沒被用到，照四步查。」
+開場鉤子：「同一段發版流程，寫在 CLAUDE.md、寫成 Skill，Claude 都照做，三次對三次。該不該搬，剩下三個問題，每一個我都量了。」
 
-案例與結果：「同一個練習專案 skill-lab，貫穿全片的是同一個 Skill 的四個版本與一張『被叫到幾次』的表。有用的結果：Skill 沒被用到時，四步之內找得到原因。證據狀態：validate 企劃 2026-10-09 跑過；v1–v3、x1 與六次對照都還沒跑，等要先實作第 3–12 項。」
+案例與結果：「同選項 D：練習專案 unit-kit、同一句要求、兩種放法各三次。結果相同（五步 3／3 對 3／3；第一個請求比沒有流程時多 486 對 61 個 token；Claude 自己叫 Skill 的那三次 4 個請求、留在 CLAUDE.md 與用斜線叫都是 3 個）。證據狀態：跑過，2026-10-11。」
 
-全片約 640 秒（約 10 分 40 秒，約 2,670 字）。
+估 10 到 11 分鐘。
 
-第一章　寫了卻沒被用到，先驗檔案（約 25 秒）｜回答「我會得到什麼」
-- 教什麼：一行指令就看得出 frontmatter 壞了。
-- title: 片名；副標「沒被用到的時候，照四步查」
-- quote: validate 的那一句 `At runtime this skill loads with empty metadata`；kicker「引號沒關」；source 標 M7 那一次
-- stats（source 同上）: 「結束碼 1」壞掉的那一份；「結束碼 0」寫好的那一份
-- 下一個問題：「它說的 metadata 是什麼？Claude 平常看得到 Skill 的哪一部分？」
+第一章　兩種放法都照做：三次對三次（約 30 秒）｜結果先上畫面
+- title；table：五步 3／3 對 3／3、第一個請求 +486 對 +61、請求數 3、3、3 對 4、4、4；chat：那句要求。
 
-第二章　Skill 是什麼，Claude 開場看得到哪一部分（約 85 秒）｜回答「跟我已經在用的差在哪」
-- steps: Skill 分三次進到對話（同 A 第二章）
-- compare: CLAUDE.md 對 Skill（同 A）
-- table: 「這段話該放哪」（同 A）
-- 下一個問題：「第一步，怎麼驗？」
+第二章　一、它平常占多少（約 150 秒）
+- 以前：流程一段一段往 CLAUDE.md 加。量到：每個請求多帶 486 個 token，五段是 1,155；寫成 Skill 是 61 與 288。現在：偶爾才用的那一段搬成 Skill。例外：每個 session 都用得到的留著。
+- chapter（編號 1）；steps（引用）：Skill 分三次進到對話；stats：四個數字；code：CLAUDE.md 那一段與 SKILL.md 的 frontmatter、內文、範本；table：validate 的四個結果。
 
-第三章　第一、二步：檔案有沒有壞，清單裡有沒有（約 130 秒）｜回答「怎麼做」之一
-- code: `SKILL.md` 第 1–5 行
-- table: 「寫完先驗一次」（M7，同 A 第三章）
-- table（官方，標明沒跑過 session）: validate 查不出來的：存成 `名稱.md` 沒有資料夾、description 寫得不好
-- table: 跑一次的指令，拆開看（同 A 第四章）
-- steps（s1；source 標那一次）: 開頭那一筆的 skills 清單裡有沒有 release-prep
-- 下一個問題：「清單裡有，還是沒被叫到呢？」
+第三章　二、用到的那一次多花多少（約 170 秒）
+- 以前：等 Claude 自己判斷。量到：它自己叫 Skill 的三次各多一個請求、約 9,269 個 token，只要它看一下的三次也被叫起來。現在：要用的時候自己打 `/release-prep 0.3.1`，三個請求。例外：十次裡有兩次多兩個請求；「大約 22 個請求打平」是估計。
+- chapter（編號 2）；code：照打的九行；terminal：數 Skill 呼叫、數請求、讀 token 的四行；table：三種叫法；chat、quote、table：只要它看一下。
 
-第四章　第三步：description 有沒有寫什麼時候用（約 150 秒）｜回答「怎麼做」之二
-- compare: 兩份 frontmatter（同 A 第五章）
-- compare（官方）: best-practices 的好壞範例
-- chat: 那句要求（`ship.txt`）
-- code: `settings.json` 第 3–11 行；`s1.seen.log`
-- table: 「只換開頭，被叫到幾次」
-- 下一個問題：「改不動 description，或今天就要用呢？」
+第四章　三、它有沒有更照做（約 170 秒）
+- 以前：以為搬成 Skill 會比較照做。量到：五步兩邊都 3／3，五段流程的 CLAUDE.md 也 3／3，description 寫得含糊也 3／3 被叫到；什麼都沒交代的四次，發版說明與下一步是 0／4。現在：不用為了更照做而搬。例外：一定不能漏的那一步交給 Hook（官方的建議，引用）。
+- chapter（編號 3）；terminal 四張：兩邊做完之後的檔案與發版說明檔的標題；table：逐項計分；table：什麼都沒交代的四次；code 與 table：五段流程、含糊的 description；quote（引用）：Hook 對 Skill。
 
-第五章　第四步：直接叫，以及被叫到之後有沒有照做（約 170 秒）｜回答「怎麼知道做對了」
-- chat: `/release-prep 0.3.1`
-- code: `x1.seen.log`
-- code: `SKILL.md` 第 7–15、12–19 行；`template.md`
-- terminal: s1 與 n1 做完之後的 `find`（兩張）
-- table: 「六次，逐步數」
-- bullets: 這張表能說到哪裡
-- 下一個問題：「都查完了，這個 Skill 值不值得留？」
+第五章　留下來、關掉，換成你的一段流程（約 80 秒）
+- table（引用）：留下來、關掉、移除；bullets（引用）：別人的 Skill 先看開頭；steps：換成你的一段流程；bullets：這些數字屬於哪一組；cta；outro。
 
-第六章　留不留：占多少脈絡，哪一步搬去 Hook（約 80 秒）｜回答「怎麼留下來或關掉」
-- stats: 第一個請求多了多少 token（三個數字）
-- table: 「誰可以叫」（官方）
-- table: 「留下來，和關掉」；提醒只在這裡講一次
-- steps（練習二）
-- cta: 站上文章〈Claude Code｜建立第一個 SKILL.md〉
-- outro: 三句。回答開場：「四步：檔案有沒有壞、清單裡有沒有、description 有沒有寫什麼時候用、直接叫。」留言題。訂閱邀請
+示範的位置：md 對 sk 在第一、二、三、四章；mdf 對 skf、v 在第四章；skl 對 mdl、sx、hand1 在第三章；M7 在第二章。
+收尾的下一步：留言題「你的 CLAUDE.md，哪一段流程很少用到？」
 
-示範的位置：M7 在第一、三章；S-v 在第四章；S-x、S-s、S-n 在第五章；S-c 在第六章。
-收尾的下一步：站上文章〈Claude Code｜Skill 何時啟動：手動呼叫與自動選用〉。
+### 試過、不再用的大綱（2026-10-09 的 A、B、C）
 
-### 選項 C：從 CLAUDE.md 搬出來。同一段流程放兩個地方，五個編號重點（指南式）
+這三個是 10-09 企劃時的選項，全文在這個檔的 git 紀錄與舊代號 `claude-code-skills-hands-on` 那一版裡。它們的主例都是「有 Skill」對「什麼都沒交代」，2026-10-11 的規則不接受這種對照（並排的另一邊要是觀眾真的會用的簡單做法），所以不再列為選項：
 
-一行說明：接著前一支講。把「發版流程」從 CLAUDE.md 搬成 Skill，五個編號重點，每一點同樣四步（以前怎麼放、哪裡不夠、現在怎麼做、例外），各自帶一段執行紀錄。觀眾可以跳到要的那一點；和 A、B 差在主軸是「搬」與脈絡成本，六次對照只是第三點的證據。代價：開場靠 c1 那一次與 token 的差，只有一次；「以前／哪裡不夠」有一半只能靠官方說明。
+- A（10-09 選的，做成了舊片）：五個步驟逐步數，有 Skill、沒有 Skill 各三次，再只換 description 三次。主打 0／3 對 3／3。
+- B：從「Skill 沒被用到」開始，照四步查。兩天 35 次 session 裡，這種情況一次都沒有出現，中段沒有證據。
+- C：從 CLAUDE.md 搬出來的五個編號重點。它的排法留在選項 E；它當時靠的是只有一次的 c1。
 
-開場鉤子：「同一段發版流程，寫在 CLAUDE.md，我每一次開 session 都帶著它；搬成 Skill，開場只剩一行。五步搬過去，每一步我都量過。」
+### 建議
 
-案例與結果：「同一個練習專案 skill-lab，同一段五個步驟的流程，一次放在 CLAUDE.md、一次放在 Skill。有用的結果：流程還是照做，平常不占脈絡。證據狀態：同選項 A，session 都還沒跑；c1 只有一次。」
+選 D。它照觀眾會問的順序排，「把 CLAUDE.md 那一段搬成 SKILL.md」在畫面上從頭做完，量到的結果各自落在它回答的那個問題上；稿子已經照它寫好、查核過。E 適合想直接跳到「該不該搬」的觀眾，但寫 Skill 的步驟被拆散，而且要重寫與重新查核。
 
-全片約 630 秒（約 10 分 30 秒，約 2,630 字）。
+站主 2026-10-11 的決定（由協調的 session 轉述，原話）：對這份重寫的稿子（選項 D，「兩邊都照做，差別是成本」），「先查核與重讀，過了再出片」；查核與重讀都已經通過（`verify-3.md`）。對怎麼送上站，「用新代號，舊專案標停止」。
 
-第一章　同一段流程，兩個放法（約 25 秒）｜結果先上畫面
-- title: 片名；副標「從 CLAUDE.md 搬出來，五步」
-- stats: 第一個請求多了多少 token（寫在 CLAUDE.md、寫成 Skill）
-- 下一個問題：「哪一種話該搬？」
-
-第二章　一、挑出該搬的那一段（約 100 秒）
-- 以前：流程一條一條往 CLAUDE.md 加。哪裡不夠：每個 session 都載入，檔案越長越不容易被照做（官方說明）。現在：步驟多、偶爾才用的搬成 Skill。例外：每個 session 都要知道的一句話留著。
-- chapter: 編號 1（後面四點同樣用 `chapter` 卡的編號）
-- compare: CLAUDE.md 對 Skill
-- table: 「這段話該放哪」
-- screencast: features-overview 的脈絡成本表
-- 下一個問題：「搬過去，檔案怎麼寫？」
-
-第三章　二、資料夾、兩行開頭、五個步驟（約 130 秒）
-- 以前：一段沒有開頭的說明。哪裡不夠：Claude 開場只看得到名稱和 description。現在：開頭寫做什麼、什麼時候用；範本放旁邊的檔。例外：只想自己叫的流程加 `disable-model-invocation: true`。
-- chapter: 編號 2
-- code: `SKILL.md` 三張節錄；`template.md`
-- compare（官方）: 好壞範例
-- table: 「寫完先驗一次」（M7）
-- 下一個問題：「搬過去之後，它還會照做嗎？」
-
-第四章　三、搬完量一次（約 170 秒）
-- 以前：問 Claude「你有這個 Skill 嗎」。哪裡不夠：答得出來不等於用了。現在：同一句要求，有、沒有各三次，看那一筆 Skill 呼叫，逐步數。例外：三次全中不是保證。
-- chapter: 編號 3
-- chat: 那句要求
-- table: 跑一次的指令，拆開看
-- steps: Skill 在紀錄裡出現三次
-- terminal: s1 與 n1 的 `find`（兩張）
-- table: 「六次，逐步數」
-- 下一個問題：「它沒被叫到的時候呢？」
-
-第五章　四、沒被叫到：改開頭，或直接叫（約 120 秒）
-- 以前：去改內文。哪裡不夠：沒被打開的 Skill，內文寫什麼都沒用。現在：改 description，或 `/名稱`。例外：名稱本身也在清單裡。
-- chapter: 編號 4
-- compare: 兩份 frontmatter
-- table: 「只換開頭，被叫到幾次」
-- chat: `/release-prep 0.3.1`；code: `x1.seen.log`
-- 下一個問題：「還有哪一步不該留在 Skill 裡？」
-
-第六章　五、一定不能漏的那一步搬去 Hook（約 85 秒）
-- 以前：在 Skill 裡寫「務必」。哪裡不夠：Skill 是 Claude 讀了之後自己判斷的說明，叫到之後也不會重讀（官方說明）。現在：那一步寫成 Hook；Skill 留流程。例外：別人的 Skill 先看開頭。
-- chapter: 編號 5
-- table（官方 features-overview 的 Hook 對 Skill）
-- table: 「留下來，和關掉」
-- cta: 站上文章〈Claude Code｜建立第一個 SKILL.md〉
-- outro: 三句。回答開場：「五步搬過去：挑、寫、量、改開頭、把不能漏的交給 Hook。」留言題。訂閱邀請
-
-示範的位置：S-c 在第一章；M7 在第三章；S-s、S-n 在第四章；S-v、S-x 在第五章。
-收尾的下一步：留言題「你搬出去的第一段會是什麼？」
-
-### 建議與選大綱時要一起決定的事
+### 10-09 選大綱時一起決定的事（紀錄；裡面說的 A、B、C 是上面那三個不再用的大綱）
 
 - 建議選 A。它照觀眾會問的順序排；開場的結果是全片最強的證據（六次，逐步數）；description 的比較與 validate 不是另一個示範，是同一個 Skill 在「沒被用到」時的後續。B 最貼近「skill 沒有觸發」的搜尋，但中段要 v1–v3 真的出現沒被叫到。C 最能接上前一支，但開場靠只有一次的 c1。
 - 三個選項都要先跑 session 才能定稿，而且結果會改到開場的數字。成果成立的條件見「觀眾看完能做到的事」最後一段。
