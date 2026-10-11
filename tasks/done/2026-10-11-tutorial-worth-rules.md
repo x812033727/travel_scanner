@@ -105,7 +105,7 @@ node tools/video/long-form/cli.mjs check
 
 ## Notes
 
-- Deployed on 2026-10-11 at 11:49 UTC with main at 9852f14b2, on the owner's word; the host check passed 11 of 11 and the worker's copy of the rules carries the new sentences. The same day the owner had every film the reading did not pass sent back: 58 rewrite tasks, `2026-10-11-rewrite-<slug>`, from 82 scripted films read (24 were called worth publishing as they are). Six tutorials the host worker was still producing with nothing run were paused there.
+- Deployed on 2026-10-11 at 11:49 UTC with main at 9852f14b2, on the owner's word; the host check passed 11 of 11 and the worker's copy of the rules carries the new sentences. The same day the owner had every film the reading did not pass sent back: 58 rewrite tasks, `2026-10-11-rewrite-<slug>`, from 83 scripted films read (22 were called worth publishing as they are; three of the other 61 need no task: one stopped by the owner, one refused earlier and replaced, one already being rewritten). Six tutorials the host worker was still producing with nothing run were paused there.
 
 - The owner's decisions on 2026-10-11, after reading the measurements: stop the refused film
   on the site (done, 10:19 UTC); merge this change when its checks pass and let it reach the
