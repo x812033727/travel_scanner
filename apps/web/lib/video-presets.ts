@@ -14,3 +14,14 @@ export const isExplainerPreset = (preset: string): boolean => (EXPLAINER_PRESETS
 // it; tools/video/core/explainer-family.test.mjs reads the line below to compare the two. A
 // preset listed here never follows the drama settings' model, so the form offers no such entry.
 export const PRESET_IMAGE_MODEL: Readonly<Record<string, string>> = { "cute-cartoon": "image-01", "cute-mystery": "image-01" };
+
+// Not a choice for the settings' default style: a drama that carries no preset of its own takes
+// the default but is still planned and written from the story prompts, so under a cute default
+// its script gets the cute look, loses its cast and is refused by lint. Whether the select should
+// offer them at all is ticket 2026-10-11-settings-default-style-offers-explainer-presets; the
+// request form does offer them (admin-video-series.tsx REQUEST_PRESETS).
+export const DEFAULT_STYLE_HELD_PRESETS: readonly string[] = ["cute-cartoon", "cute-mystery"];
+
+/** The presets the default-style select offers: the held ones left out, the saved value always kept. */
+export const defaultStyleChoices = (presets: readonly string[], saved: string): string[] =>
+  presets.filter((preset) => preset === saved || !DEFAULT_STYLE_HELD_PRESETS.includes(preset));

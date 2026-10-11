@@ -113,15 +113,17 @@ describe("the explainer family of style presets", () => {
     expect(queue.textContent).not.toContain("cute-mystery");
   });
 
-  // The hold on the settings' default style ended with the cute presets' own prompts: the select
-  // lists every preset the server sends, whichever is saved.
-  it.each(["flat-explainer", "cute-mystery", "cinematic-3d"])("offers every stored preset in the settings' default-style select with %s saved", (saved) => {
-    const picked: string[] = [];
-    render(<DefaultStyleSelect presets={STYLE_PRESETS} value={saved} onChange={(preset) => picked.push(preset)} />);
-    const select = screen.getByRole("combobox") as HTMLSelectElement;
-    expect(within(select).getAllByRole("option").map((option) => (option as HTMLOptionElement).value)).toEqual([...STYLE_PRESETS]);
-    expect(select.value).toBe(saved);
-    fireEvent.change(select, { target: { value: "cute-cartoon" } });
-    expect(picked).toEqual(["cute-cartoon"]);
+  // The second hold: a drama with no preset of its own takes the settings' default and is still
+  // written from the story prompts, so the two cute presets are not a default; whether they ever
+  // are is ticket 2026-10-11-settings-default-style-offers-explainer-presets (lib/video-presets.ts).
+  it("leaves the cute presets out of the settings' default-style select, a saved one kept", () => {
+    const values = () => within(screen.getByRole("combobox")).getAllByRole("option").map((option) => (option as HTMLOptionElement).value);
+    const first = render(<DefaultStyleSelect presets={STYLE_PRESETS} value="flat-explainer" onChange={() => undefined} />);
+    expect(values()).toEqual(["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom"]);
+    expect((screen.getByRole("combobox") as HTMLSelectElement).value).toBe("flat-explainer");
+    first.unmount();
+    render(<DefaultStyleSelect presets={STYLE_PRESETS} value="cute-mystery" onChange={() => undefined} />);
+    expect(values()).toEqual(["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "cute-mystery", "custom"]);
+    expect((screen.getByRole("combobox") as HTMLSelectElement).value).toBe("cute-mystery");
   });
 });
