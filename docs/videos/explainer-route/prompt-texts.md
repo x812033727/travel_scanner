@@ -1,5 +1,7 @@
 # Pull request 3: the prompt texts of the two new explainer series
 
+> **2026-10-11:** this file is the design-time version; the shipped texts live in [`tools/video/automation/explainer-series.mjs`](../../../tools/video/automation/explainer-series.mjs) (digests pinned in `explainer-series.test.mjs` beside it) and differ from sections 3 and 4 below.
+
 > Revised 2026-10-11 by the synthesis ([`DESIGN.md`](DESIGN.md) section 5.1): critique-pr3 must-fix 2 to 4
 > and the cheap should-fix items were applied to the source in section 3, and this file was
 > regenerated from it. The digests in section 4 are therefore new; the implementer recomputes and

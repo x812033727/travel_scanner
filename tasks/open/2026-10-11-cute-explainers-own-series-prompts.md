@@ -34,6 +34,8 @@ scope:
   - apps/web/components/admin-video-explainer-family.test.tsx
   - apps/web/components/admin-video-request-image-model.test.tsx
   - docs/videos/DRAMA-FLOW.md
+  - docs/videos/explainer-route/DESIGN.md
+  - docs/videos/explainer-route/prompt-texts.md
   - docs/videos/long-form/review.json
   - docs/videos/long-form/review.md
 ---
@@ -81,8 +83,10 @@ before it.
 
 ## Steps
 
-- [ ] Confirm pull request 2 is on main and on the host, and that no one-off row in a cute
-      preset has an episode short of the script gate (design 5.7 item 1).
+- [ ] **Hard step before the deploy:** confirm pull request 2 is on main and on the host, and
+      that no one-off row in a cute preset has an episode short of the script gate (design 5.7
+      item 1). Such a run is not stopped by the deploy: it is asked, and paid for, a second time
+      under the new variant name (see the correction in the notes).
 - [x] Read design sections 1, 2 and 5, `prompt-texts.md`, and `orders/order-pr3.json` for the
       test lists the design refers to. `orders/verify-pr3.mjs.txt` is the script the prototype
       was checked with: turn it into `node:test` cases group by group.
@@ -114,8 +118,9 @@ the request form lists the two cute presets, minutes 8 to 20, `MiniMax image-01`
   request 2: the two cute *writer* texts gain one bullet that says what the payload's top-level
   `prompt_budget_chars` is (the flat explainer's text explains the key only on `fix.targets`, and
   does not move). So `writer:explainer-cartoon` is 14,310 characters and `writer:explainer-mystery`
-  16,423; the other eight texts hash exactly as `prompt-texts.md` section 4 lists them. All ten
-  digests are pinned in `explainer-series.test.mjs`, computed from the committed file.
+  16,423; the other eight texts hashed exactly as `prompt-texts.md` section 4 lists them (before
+  the review fixes of the last note, which moved all ten). All ten digests are pinned in
+  `explainer-series.test.mjs`, computed from the committed file.
 - Byte-stability: the first commit after the claim holds only tests, written and run on main
   before any code changed (`6c6b4e6f6`): the composed instructions of the existing explainer and
   discussion variants, bare, with a one-off's row and with standing instructions; the bible and
@@ -128,7 +133,8 @@ the request form lists the two cute presets, minutes 8 to 20, `MiniMax image-01`
   under a MiniMax limit lowered for the test), so a wrong vendor or look turns it red; and the
   request form no longer offers "same as the drama settings" for a preset with a model of its own
   (`requestImageModel` returns `listed`; a default the catalogue lacks is listed by its id).
-  The hold on the settings' default-style select (`DEFAULT_STYLE_HELD_PRESETS`) is removed.
+  (The hold on the settings' default-style select was removed here and restored after review:
+  see the last note.)
 - Tests of pull request 1 that pinned "a cute preset runs the explainer's stages" were changed on
   purpose: `automation/explainer-family.test.mjs`, `core/explainer-family.test.mjs` (a cute look
   now gets the two variety warnings on the flat fixture) and the two cute loop tests in
@@ -136,5 +142,33 @@ the request form lists the two cute presets, minutes 8 to 20, `MiniMax image-01`
 - `node tools/video/long-form/cli.mjs check` is red on nine bound files and nothing else: the
   eight of design 5.4 and `tools/video/automation/automation.test.mjs` (the budget test). The
   receipt is the independent reviewer's to re-issue.
-- Not done: the receipt, the deploy and the host checks; `npm run test:tools` whole (see the pull
-  request text for what was run).
+- Not done: the receipt, the deploy and the host checks.
+- **Correction, 2026-10-11 (review).** The first note above says every later wording change
+  stops an unfinished cute run with `video_ai_receipt_input_changed`. That holds only for a
+  change of wording *within one variant* after this deploy. It does not cover this deploy itself:
+  `run-receipts.mjs` matches a stale journal on the same stage and variant, and a cute one-off
+  filed by direct API before this deploy has its journals under `bible-explainer` and
+  `explainer`, while the worker now asks under `bible-explainer-<series>` and
+  `explainer-<series>`. Nothing stops: a new journal and a new paid call start beside the
+  orphaned one. So the pre-deploy host check "no unfinished one-off with a cute preset" is a
+  hard step (marked in Steps), and design 5.6 carries the same dated correction.
+- 2026-10-11 after review, on the same branch (main merged in first, #1442):
+  - The hold on the settings' default-style select is **back** (owner's decision today):
+    `DEFAULT_STYLE_HELD_PRESETS`, `defaultStyleChoices`, the filtered select and pull request
+    1's test are as on main, with only the comment changed. A preset-less drama under a cute
+    default is still planned and written from the story prompts, then `settle()` forces the
+    look and empties the cast, lint refuses, and it blocks after one planner call and up to four
+    writer calls. Whether to offer them is `2026-10-11-settings-default-style-offers-explainer-presets`. The request form keeps the two presets.
+  - The first draft of a cute explainer is handed `max(140, ceil(target_minutes * 12))` line
+    ids (`flow.mjs` `draftLineIds`); every other draft keeps exactly 140, and the pinned
+    flat-explainer writer payload passes unedited.
+  - Text fixes in `explainer-series.mjs`: a chapter marker on the first scene of each part and
+    of each chapter inside part 3; the source rule only for cards that have a `source` field;
+    a shot is about 4 to 7 seconds (also in the head every text shares, so all ten digests
+    moved and are re-pinned); the 奇聞檔案局 checker also flags a product likeness and a
+    thumbnail that carries a `pillar` field.
+  - `core/explainer-cute.test.mjs` no longer claims a pillar is refused on the channel's
+    thumbnail: one of So That's Why's four ids is accepted and drawn as nothing, which is why
+    the checker flags it.
+  - `docs/videos/explainer-route/prompt-texts.md` now says at its top that it is the
+    design-time version and that the shipped texts live in `explainer-series.mjs`.
