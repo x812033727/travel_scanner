@@ -35,6 +35,7 @@ export const TEMPLATES = [
   "big",
   "diagram",
   "screenshot",
+  "photo",
   "chat",
   "quote",
   "stats",
