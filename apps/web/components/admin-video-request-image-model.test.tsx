@@ -178,8 +178,60 @@ describe("the image model of a one-off explainer request", () => {
   });
 });
 
-// The request form does not offer the cute presets until each has its own prompts, so what the
-// field does for them is held on the helper the form is built on.
+// A preset with an image model of its own (PRESET_IMAGE_MODEL): the server stores that model for
+// a request that names none, so the form starts on it and has no entry that follows the settings.
+describe("the image model of a cute explainer request", () => {
+  const values = (field: HTMLElement) => within(field).getAllByRole("option").map((each) => (each as HTMLOptionElement).value);
+
+  it.each(["cute-mystery", "cute-cartoon"])("preselects image-01 for %s, offers no entry to follow the drama settings, and files it", async (preset) => {
+    const { form, style, file } = await openForm();
+    style(preset);
+    const field = form.getByRole("combobox", { name: FIELD }) as HTMLSelectElement;
+    expect(field.value).toBe("image-01");
+    expect(within(field).getAllByRole("option").map((each) => each.textContent)).toEqual(["Gemini 3 Pro Image · Google Gemini API · US$0.134", "MiniMax image-01 · MiniMax API · US$0.0035"]);
+    expect(within(field).queryByText(FOLLOWS)).toBeNull();
+    expect(await file()).toMatchObject({ style_preset: preset, target_minutes: 10, image_model: "image-01" });
+  });
+
+  it("keeps the owner's pick between the two cute presets and drops it on leaving them", async () => {
+    const { form, style, file } = await openForm();
+    style("cute-mystery");
+    const field = () => form.getByRole("combobox", { name: FIELD }) as HTMLSelectElement;
+    fireEvent.change(field(), { target: { value: "gemini-3-pro-image" } });
+    style("cute-cartoon");
+    expect(field().value).toBe("gemini-3-pro-image");
+    expect(await file()).toMatchObject({ style_preset: "cute-cartoon", image_model: "gemini-3-pro-image" });
+    // flat-explainer has no model of its own: the pick is dropped and the settings are followed.
+    style("flat-explainer");
+    expect(field().value).toBe("");
+    expect(values(field())).toEqual(["", "gemini-3-pro-image", "image-01"]);
+    style("cute-mystery");
+    expect(field().value).toBe("image-01");
+    // A pick made under flat-explainer does not follow into a cute preset either.
+    style("flat-explainer");
+    fireEvent.change(field(), { target: { value: "gemini-3-pro-image" } });
+    style("cute-mystery");
+    expect(field().value).toBe("image-01");
+    style("ink-wash");
+    expect(form.queryByRole("combobox", { name: FIELD })).toBeNull();
+    expect(Object.hasOwn(await file(), "image_model")).toBe(false);
+  });
+
+  // Before: the form fell back to the entry that follows the drama settings, and the server
+  // stored image-01 all the same, so the owner was shown one model and got another.
+  it("lists image-01 by its id when the catalogue lacks it, still with no entry to follow the settings, and files it", async () => {
+    const { form, style, file } = await openForm({ images: { gemini: [GEMINI] }, configured: ["gemini"] });
+    style("cute-mystery");
+    const field = form.getByRole("combobox", { name: FIELD }) as HTMLSelectElement;
+    expect(field.value).toBe("image-01");
+    expect(within(field).getAllByRole("option").map((each) => each.textContent)).toEqual(["image-01", "Gemini 3 Pro Image · Google Gemini API · US$0.134"]);
+    expect(await file()).toMatchObject({ style_preset: "cute-mystery", image_model: "image-01" });
+    // flat-explainer beside it keeps its entry, and no stray id.
+    style("flat-explainer");
+    expect(values(form.getByRole("combobox", { name: FIELD }))).toEqual(["", "gemini-3-pro-image"]);
+  });
+});
+
 describe("requestImageModel", () => {
   const models = imageModelOptions({ images: CATALOGUE, clips: { gemini: [], minimax: [] }, music: { gemini: [], minimax: [] } });
 
@@ -191,26 +243,28 @@ describe("requestImageModel", () => {
 
   it.each(["cute-cartoon", "cute-mystery"])("starts %s on image-01 with no entry to follow the settings", (preset) => {
     expect(PRESET_IMAGE_MODEL[preset]).toBe("image-01");
-    expect(requestImageModel(preset, null, models)).toEqual({ offered: true, presetDefault: "image-01", value: "image-01" });
+    expect(requestImageModel(preset, null, models)).toEqual({ offered: true, presetDefault: "image-01", listed: true, value: "image-01" });
   });
 
   it("keeps the owner's pick over a cute preset's default, across both cute presets", () => {
-    for (const preset of ["cute-cartoon", "cute-mystery"]) expect(requestImageModel(preset, "gemini-3-pro-image", models)).toEqual({ offered: true, presetDefault: "image-01", value: "gemini-3-pro-image" });
+    for (const preset of ["cute-cartoon", "cute-mystery"]) expect(requestImageModel(preset, "gemini-3-pro-image", models)).toEqual({ offered: true, presetDefault: "image-01", listed: true, value: "gemini-3-pro-image" });
     // The form drops a pick only when the default changes or the family is left: the two share one.
     expect(PRESET_IMAGE_MODEL["cute-cartoon"]).toBe(PRESET_IMAGE_MODEL["cute-mystery"]);
     expect(PRESET_IMAGE_MODEL["flat-explainer"]).toBeUndefined();
   });
 
-  it("has no default to preselect when the catalogue lacks image-01, and offers the settings' entry instead", () => {
+  // The server stores image-01 for a cute request that names none whatever the catalogue lists,
+  // so the default stands and is only marked as not listed; it never falls back to the settings.
+  it("keeps a cute preset on image-01 when the catalogue lacks it, marked as not listed", () => {
     const geminiOnly = models.filter((each) => each.provider === "gemini");
-    expect(requestImageModel("cute-mystery", null, geminiOnly)).toEqual({ offered: true, presetDefault: "", value: "" });
+    expect(requestImageModel("cute-mystery", null, geminiOnly)).toEqual({ offered: true, presetDefault: "image-01", listed: false, value: "image-01" });
   });
 
   it("follows the settings for flat-explainer, and offers nothing to a cast preset or without models", () => {
-    expect(requestImageModel("flat-explainer", null, models)).toEqual({ offered: true, presetDefault: "", value: "" });
-    expect(requestImageModel("flat-explainer", "image-01", models)).toEqual({ offered: true, presetDefault: "", value: "image-01" });
+    expect(requestImageModel("flat-explainer", null, models)).toEqual({ offered: true, presetDefault: "", listed: true, value: "" });
+    expect(requestImageModel("flat-explainer", "image-01", models)).toEqual({ offered: true, presetDefault: "", listed: true, value: "image-01" });
     expect(requestImageModel("cinematic-3d", null, models).offered).toBe(false);
     expect(requestImageModel("custom", null, models).offered).toBe(false);
-    expect(requestImageModel("cute-cartoon", null, [])).toEqual({ offered: false, presetDefault: "", value: "" });
+    expect(requestImageModel("cute-cartoon", null, []).offered).toBe(false);
   });
 });
