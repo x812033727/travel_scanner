@@ -1,11 +1,11 @@
 ---
 id: 2026-10-11-follow-up-retained-c-drive-worktrees
 title: Follow up retained Codex C drive worktrees when their work finishes
-status: open
+status: in-progress
 priority: P3
 area: meta
-owner:
-claimed_at:
+owner: codex-closeout
+claimed_at: 2026-10-11T15:19:37Z
 created_at: 2026-10-11T14:40:49Z
 completed_at:
 branch: codex/historical-branches-cleanup-20261011
@@ -13,6 +13,7 @@ depends_on: []
 scope:
   - tasks/open/2026-10-11-follow-up-retained-c-drive-worktrees.md
   - tasks/worktree-cleanup-20261011.md
+  - tasks/worktree-closeout-20261011.md
 ---
 
 # Follow up retained Codex C drive worktrees when their work finishes

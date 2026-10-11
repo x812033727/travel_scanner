@@ -1,14 +1,14 @@
 ---
 id: 2026-10-11-migrate-frozen-embedding-helper-dependency
 title: Preserve and migrate the frozen Embedding task helper before retiring b136
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-closeout
+claimed_at: 2026-10-11T15:21:04Z
 created_at: 2026-10-11T15:08:01Z
 completed_at:
-branch:
+branch: codex/historical-branches-cleanup-20261011
 depends_on: []
 scope:
   - docs/videos/recovery/2026-10-06-frozen-helper-migration.md
@@ -24,18 +24,18 @@ scope:
 
 ## Definition of done
 
-- [ ] 紀錄並保存 original manifest、immutable handoff、executor 與唯一 b136 helper 的原始完整位元組、SHA-256、大小及安全還原結果；保留原件。
+- [x] 紀錄並保存 original manifest、immutable handoff、executor 與唯一 b136 helper 的原始完整位元組、SHA-256、大小及安全還原結果；保留原件。
 - [ ] 在不執行 producer、不連網、不改舊 frozen pins 的前提下，完整列出引用此絕對路徑的 manifest / guard / launcher，區分封存證據、可執行但已停止的舊 wrapper 與真正仍被 successor 依賴的路徑。
-- [ ] 說明獨立於 b136 checkout 的 helper 保留位置及可重現還原方式；對原始副本做 exact bytes / SHA / size readback。若需新 successor guard / manifest，另走正式 owner、scope 及 review，不在這張 docs 票直接改寫或授權啟動。
-- [ ] 用不含 dispatch、provider、主機寫入的離線 fixture 證明新方案不再以 b136 作為即時輸入，且仍能檢出缺檔與 hash 漂移；保留停止狀態與所有原證據。
-- [ ] 交付清理前的依賴清單與 root 判準：沒有真正持續依賴、source / receipt 已保全、fresh process / app ownership / exact HEAD / status CAS 都通過後，才可由清理流程另行移除；本票本身不刪 checkout。
+- [x] 說明獨立於 b136 checkout 的 helper 保留位置及可重現還原方式；對原始副本做 exact bytes / SHA / size readback。若需新 successor guard / manifest，另走正式 owner、scope 及 review，不在這張 docs 票直接改寫或授權啟動。
+- [x] 用不含 dispatch、provider、主機寫入的離線 fixture 證明新方案不再以 b136 作為即時輸入，且仍能檢出缺檔與 hash 漂移；保留停止狀態與所有原證據。
+- [x] 交付清理前的依賴清單與 root 判準：沒有真正持續依賴、source / receipt 已保全、fresh process / app ownership / exact HEAD / status CAS 都通過後，才可由清理流程另行移除；本票本身不刪 checkout。
 
 ## Steps
 
-- [ ] 唯讀核對凍結證據與本票 hash；對任何漂移停止此清理判定。
+- [x] 唯讀核對凍結證據與本票 hash；對任何漂移停止此清理判定。
 - [ ] 建立 helper / manifest / executor 的完整封存與還原紀錄，列出所有 direct 與 transitive path dependencies。
 - [ ] 撰寫穩定位置與 successor 遷移／封存方案，請現任實際 owner 審閱依賴邊界。
-- [ ] 僅執行離線、zero-provider fixture 檢查並保存結果；回填可否解除 checkout 依賴的精確結論。
+- [x] 僅執行離線、zero-provider fixture 檢查並保存結果；回填可否解除 checkout 依賴的精確結論。
 
 ## How to verify
 
@@ -51,3 +51,9 @@ scope:
 - e931 舊單位已 CLOSED / stopped HOLD（`PRIVATE_STAGE_FAILED_PRESERVE_EVIDENCE`，exit 4）；保留 31 old + 4 new ASR，未知第 5 筆 reservation 沒有已知 provider response。不 replay 舊 wrapper、不放鬆 pins、不釋放 reservation、不改 paid counter、不啟動 provider。
 - Embedding 的原 source checkout 為 `ai-series-next-20261004`，其他 successor、媒體與外部收據另有位置。G 備份、原媒體／共用 Shorts 清理、owner listening、上傳／公開、內容重寫均留在既有任務。
 - 本票 `open` / unclaimed；只有完成 owner/scope/review 手續才可另做實際 production successor 改動。清理復原並不授權更改任何生產狀態。
+
+## 2026-10-11 closeout readback
+
+保存四份原件並 exact bytes / SHA / size 還原通過，12 個離線案例通過。詳細方案見 scope 內 recovery 文件；完整證據在 `<home>/.codex/scratch/codex-closeout-20261011/helper-recovery/`。舊 guard -> collector 有實際 ESM import 原 b136 helper，不能用一份 archive 代替 owner 的依賴釋出。277 檔 bounded index 已交付，兩個大型 timing snapshot 及真正 successor adoption 尚待核對。
+
+**保留 b136，任務未結案。** 待現任實際 owner 確認舊包只供封存且沒有 successor 使用，或另建經審查的 collector / guard / manifest 採用獨立保存 helper；不修改原 frozen pins、不重放 producer，不操作 Claude 或《偶的江湖》。
