@@ -54,6 +54,11 @@ writer instructions contain the three template names in the forbidding sentence.
 
 ## Notes
 
+- 2026-10-11 the explainer-route design (docs/videos/explainer-route/DESIGN.md, section 6) checked
+  the step above: its three pull requests do not change this sentence (a different paragraph of
+  `prompts.mjs`, the slides writer's), so this ticket is not folded in and stands on its own. The
+  opposite question for the explainer writer, offering it `photo` properly, is
+  `2026-10-11-host-explainer-writer-image-cards`.
 - 2026-10-10 filed from the pre-deploy review of #1425. Rated low: the template guide in the
   prompt does not list `photo`, and the README row itself says an unregistered photograph is
   refused. The cost when it happens is one video's narration and pictures.
