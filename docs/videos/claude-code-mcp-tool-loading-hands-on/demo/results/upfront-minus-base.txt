@@ -1,0 +1,7 @@
+base: zf | first request 11,200 | one run, no spread
+bar: 11 (the larger of the spread and --floor 11)
+name | requests | first = input + write + read | minus base | last | grew
+zf | 1 | 11,200 = 2 + 4,396 + 6,802 | (base) | 11,200 | +0
+u2 | 1 | 11,446 = 2 + 11,444 + 0 | +246 | 11,446 | +0
+u10 | 1 | 12,141 = 2 + 12,139 + 0 | +941 | 12,141 | +0
+u40 | 1 | 14,786 = 2 + 14,784 + 0 | +3,586 | 14,786 | +0

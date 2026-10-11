@@ -1,0 +1,1778 @@
+{
+  "schema_version": 1,
+  "slug": "claude-code-mcp-tool-loading-hands-on",
+  "format": "slides",
+  "category": "tutorial",
+  "source_guide": "claude-code-context-compact-clear",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "這一支是照著量測紀錄講的：像把一張梯子形的表攤在同事面前，一級一級指給他看，穩、清楚、不誇大。開場的問句壓低放慢；每個數字前停半拍，數字本身放慢；兩種載入對比時，後半句提起來；講到計算、只有一次、沒有跑過的地方，平實不遮掩；「分不出來」「拆不開」說清楚，不帶遺憾；章首與章末的問句輕輕上揚。"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Claude Code MCP 工具延後載入實測：2、10 和 40 個工具，第一個請求多多少",
+    "description": "接上 MCP 伺服器，工具延後載入（Claude Code 的預設）還是一開始就載入，第一個請求比較小？同一個伺服器開 2、10、40 個工具，兩種各量一次；再看用到一個延後工具的那一次。\n給想多接幾個 MCP 伺服器的人。\n\n想照著做：練習專案、伺服器和量測腳本都在 https://github.com/x812033727/travel_scanner/tree/main/docs/videos/claude-code-mcp-tool-loading-hands-on/demo\n\n這次量到的（第一個請求＝輸入＋快取寫入＋快取讀取；基準 2 次、其餘每種 1 次）\n條件：只開 8 個內建工具、沒有別的延後工具的練習專案；一個這台機器上的 stdio 伺服器，每個定義約 150 個字元；sonnet。\n・2 個工具：延後 +710、直接載入 +246，直接相減 +467（直接載入小）\n・10 個：+811、+941，相減 −127（延後小）。延後那一次的開頭清單多列一個內建 skill，照規則重跑，用重跑的。\n・40 個：+1,214、+3,586，相減 −2,369（延後小）\n・延後的減預設的基準（兩次平均）；直接載入的減「沒接伺服器、同樣關掉」的基準。\n・每多一個工具：延後約 +13（名稱 22 到 24 個字元），直接載入約 +87 到 +88（定義 146 到 151 個字元）；並排，不是換算。\n・伺服器接上、零個工具 +69；另外約 618（計算）等第一個延後工具出現才進來，拆不開。\n・交叉在 2 與 10 個工具之間；「約 8 個」是兩級之間連直線算的，中間沒有跑。\n・用到一個工具（40 個工具、要求點名了工具，各 1 次）：延後 3 個請求，+256、+141；直接載入 2 個請求。兩次的開頭清單不同，照規則不相減。\n・平常的 session 可能還有別的延後載入的工具（官方 Agent SDK 的 tool search 頁），固定的那一段可能本來就在，你的交叉點會不同。\n・官方 mcp 頁：不設時，ANTHROPIC_BASE_URL 指到非第一方主機、Agent Platform 上 4.5 之前的模型、Azure 上的 Foundry 會改成一開始就載入；片中的表沒列 true 這個值。\n・上一支（context 用量實測）量的是第一個伺服器：兩個工具 +713 對 +250。\n\n照著打的時候\n・WORK 要指到 git 儲存庫以外的資料夾，不然腳本會拒絕。不要把 LAB 或 DRY 指到自己的資料夾。\n・WORK=repo 以外的資料夾 bash session.sh 名字 arm；arm 是 base、off、d0、d2、d10、d40、u2、u10、u40、use-d40、use-u40。片中 z1、z2＝base，zf＝off，d10r＝d10，kd＝use-d40。\n・串流存在 WORK/run/logs/名字.stream.jsonl，腳本在 demo/；把 ctx-cost.mjs 複製到串流旁邊，片中的三個指令就能照打：\nnode ctx-cost.mjs z1.stream.jsonl z2.stream.jsonl d10r.stream.jsonl --base z1,z2 --quiet\nnode ctx-cost.mjs zf.stream.jsonl u10.stream.jsonl --quiet\nnode ctx-cost.mjs kd.stream.jsonl | head -20\n・「在你的專案」那 11 行沒有照打跑過，會送出五個請求；ctx-cost.mjs 放在專案的上一層（串流旁邊）。\n・用 bash 跑：Windows 用 Git Bash；macOS 預設的 zsh 不會把 $F、$M 拆開，先打 bash 再貼。PowerShell 5.1 的輸出重導向會把串流存成 UTF-16。\n・要看偵錯紀錄：指令加 --debug-file 檔名（官方 CLI reference 頁）；開頭清單是串流的第一行。\n・十四次回報的費用合計約 0.48 美元（每次 0.019 到 0.062），照做會用掉額度。串流裡有路徑與用量資料，不要貼給別人。\n\n怎麼跑的\n・Windows 11 的 Git Bash、Claude Code 2.1.295、Node.js v24.13.0，2026-10-11；十四次都是 sonnet、不開畫面。\n・沒有跑的：auto 與門檻、alwaysLoad（引用官方 mcp 頁）、其他工具數、用關鍵字找工具、長 session、遠端或要登入的伺服器、好幾個伺服器、互動式的畫面、其他模型與平台。",
+    "tags": [
+      "Claude Code MCP",
+      "MCP 佔 context",
+      "ENABLE_TOOL_SEARCH",
+      "Claude Code tool search",
+      "MCP 工具延後載入",
+      "ToolSearch",
+      "MCP server 太多",
+      "Claude Code token",
+      "Claude Code 教學",
+      "Mokaair"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "Claude Code MCP 實測",
+      "headline": "延後載入\n**+467**",
+      "sub": "比直接載入多的 token；\n2 個工具，只開 8 個內建工具",
+      "capture": "mcp-page"
+    }
+  },
+  "sources": [
+    {
+      "title": "Connect Claude Code to tools via MCP｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "checked_on": "2026-10-11"
+    },
+    {
+      "title": "Scale to many tools with tool search｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/agent-sdk/tool-search",
+      "checked_on": "2026-10-11"
+    },
+    {
+      "title": "Tools reference｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/tools-reference",
+      "checked_on": "2026-10-11"
+    },
+    {
+      "title": "CLI reference｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "checked_on": "2026-10-11"
+    }
+  ],
+  "assets": [],
+  "subtitles": {
+    "burn_in": false
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "MCP 工具延後載入對直接載入：2、10、40 個工具，第一個請求各多幾個 token",
+      "template": "title",
+      "data": {
+        "tag": "Claude Code MCP 實測",
+        "title": "MCP 工具延後載入：\n**第一個請求就比較小嗎**",
+        "subtitle": "同一個伺服器，開 2、10、40 個工具；兩種載入各量一次"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "2a65",
+          "text": "MCP 工具延後載入，第一個請求比較小嗎？",
+          "emotion": "壓低放慢，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "two-forty",
+      "template": "compare",
+      "data": {
+        "title": "這個練習專案、這個伺服器：第一個請求多幾個 token",
+        "left": {
+          "heading": "開 2 個工具",
+          "points": [
+            "延後載入（預設）：+710",
+            "直接載入（一開始就載入）：+246"
+          ]
+        },
+        "right": {
+          "heading": "開 40 個工具",
+          "points": [
+            "延後載入（預設）：+1,214",
+            "直接載入：+3,586"
+          ]
+        },
+        "source": "2026-10-11 跑過｜只開 8 個內建工具｜各減各的沒接伺服器基準，各 1 次"
+      },
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "5pdx",
+          "text": "練習專案只開八個內建工具。兩個工具：延後載入多七百一十個 token，一開始就載入多兩百四十六。",
+          "reveal": 1,
+          "emotion": "數字前停半拍"
+        },
+        {
+          "id": "zrt8",
+          "text": "四十個就反過來：一千兩百一十四，對三千五百八十六。",
+          "reveal": 1,
+          "emotion": "「反過來」加重"
+        }
+      ]
+    },
+    {
+      "id": "cross",
+      "template": "table",
+      "data": {
+        "title": "同一個工具數，兩種載入直接相減",
+        "columns": [
+          "工具數",
+          "延後，減基準",
+          "直接載入，減基準",
+          "延後 − 直接載入"
+        ],
+        "rows": [
+          [
+            "2",
+            "+710",
+            "+246",
+            "+467：直接載入小"
+          ],
+          [
+            "10",
+            "+811（重跑的那一次）",
+            "+941",
+            "−127：延後小"
+          ],
+          [
+            "40",
+            "+1,214",
+            "+3,586",
+            "−2,369：延後小"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜每種 1 次，差 11 以內不算｜每個定義約 150 個字元的伺服器"
+      },
+      "claims": [
+        "c2",
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "xfz9",
+          "text": "交叉在兩個和十個之間。",
+          "reveal": 3
+        }
+      ]
+    },
+    {
+      "id": "mcp-page",
+      "chapter": "延後載入延後了什麼：每多一個工具多多少，固定的那一段多大",
+      "template": "screencast",
+      "data": {
+        "title": "官方頁：MCP 工具的延後載入",
+        "caption": "Claude Code 文件｜mcp｜Scale with MCP tool search｜2026-10-11 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://code.claude.com/docs/en/mcp#scale-with-mcp-tool-search"
+          },
+          {
+            "action": "wait",
+            "selector": "#scale-with-mcp-tool-search"
+          },
+          {
+            "action": "capture",
+            "focus": "#scale-with-mcp-tool-search",
+            "zoom": 1.3
+          }
+        ]
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "2zkh",
+          "text": "兩個工具的時候，延後載入為什麼反而比較大？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "jxij",
+          "text": "先看延後載入：被延後的到底是什麼。"
+        }
+      ]
+    },
+    {
+      "id": "only-names",
+      "template": "quote",
+      "data": {
+        "kicker": "官方 mcp 頁：session 開始時載入的只有這些",
+        "quote": "Only tool names and server instructions load at session start",
+        "translation": "session 開始時，只載入工具的名稱和伺服器的說明",
+        "source": "Claude Code 文件｜mcp｜2026-10-11｜引用"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "dec2",
+          "text": "官方的說明是：開始的時候，只載入工具的名稱，和伺服器的一段說明。"
+        },
+        {
+          "id": "tsux",
+          "text": "完整的定義，等模型去找那個工具才載入。",
+          "reveal": 1
+        },
+        {
+          "id": "ye4n",
+          "text": "負責找的是一個內建工具，叫 ToolSearch。"
+        }
+      ]
+    },
+    {
+      "id": "values",
+      "template": "table",
+      "data": {
+        "title": "一個環境變數決定：ENABLE_TOOL_SEARCH",
+        "columns": [
+          "值",
+          "MCP 工具怎麼載入",
+          "這支影片"
+        ],
+        "rows": [
+          [
+            "不設",
+            "全部延後，用到才載入",
+            "跑過"
+          ],
+          [
+            "false",
+            "全部一開始就載入",
+            "跑過"
+          ],
+          [
+            "auto",
+            "定義合計不到 context window 的 10%：一開始就載入",
+            "沒有跑"
+          ],
+          [
+            "auto:N",
+            "同上，百分比自己訂（0 到 100）",
+            "沒有跑"
+          ]
+        ],
+        "source": "官方 mcp 頁｜2026-10-11｜第 2 欄引用｜不設另有例外，見說明欄"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "8uvx",
+          "text": "由一個環境變數決定。不設，就是全部延後；設成關閉，全部一開始就載入。",
+          "reveal": 2
+        },
+        {
+          "id": "fq7k",
+          "text": "還有自動的門檻：工具定義加起來不到脈絡視窗的一成，才一開始就載入。",
+          "reveal": 2
+        },
+        {
+          "id": "d9dd",
+          "text": "這個值，這支影片沒有跑過。",
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "tool-def",
+      "template": "code",
+      "data": {
+        "code": "export const TOOLS = [\n  ['find_gear', 'code', 'string', 'find', 'left',\n    '查一個器材代號放在哪個貨架、還剩幾個。'],\n  ['low_stock', 'below', 'integer', 'lt', 'left',\n    '列出剩餘數量低於 below 的器材。'],",
+        "highlight": [
+          2,
+          3
+        ],
+        "caption": "server/tools.mjs｜第 4–8 行（全檔 85 行，四十個工具）｜示範資料夾：lab/server/tools.mjs｜每一列：名稱、參數、型別、做法、欄位、說明"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "k2fp",
+          "text": "這次的伺服器，是器材租借櫃台的庫存查詢，一共四十個工具。"
+        },
+        {
+          "id": "nh3s",
+          "text": "每個工具：一個名稱、一句說明、一個參數。",
+          "emotion": "指著畫面"
+        }
+      ]
+    },
+    {
+      "id": "tool-def-2",
+      "template": "code",
+      "data": {
+        "code": "export const TOOLS = [\n  ['find_gear', 'code', 'string', 'find', 'left',\n    '查一個器材代號放在哪個貨架、還剩幾個。'],\n  ['low_stock', 'below', 'integer', 'lt', 'left',\n    '列出剩餘數量低於 below 的器材。'],",
+        "highlight": [
+          4,
+          5
+        ],
+        "caption": "server/tools.mjs｜第 4–8 行（全檔 85 行，四十個工具）｜示範資料夾：lab/server/tools.mjs｜交給用戶端的定義每個約 150 個字元；40 個工具時 tools/list 回的定義陣列 6,003 個字元"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "szhf",
+          "text": "交給用戶端的定義，每個大約一百五十個字元。"
+        },
+        {
+          "id": "3knh",
+          "text": "四十個加起來，六千個字元上下。"
+        }
+      ]
+    },
+    {
+      "id": "per-tool",
+      "template": "table",
+      "data": {
+        "title": "每多一個工具，第一個請求多幾個 token",
+        "columns": [
+          "怎麼載入",
+          "2 → 10 個",
+          "10 → 40 個",
+          "每個工具交出去的字元"
+        ],
+        "rows": [
+          [
+            "延後載入",
+            "+12.6",
+            "+13.4",
+            "名稱：22.3、24.2 個"
+          ],
+          [
+            "直接載入",
+            "+86.9",
+            "+88.2",
+            "定義：146.4、151 個"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜六種各 1 次｜並排，不是換算；這個伺服器的數字"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "wusm",
+          "text": "用延後載入的時候，每多一個工具，大約多十三個 token。",
+          "reveal": 1,
+          "emotion": "數字前停半拍"
+        },
+        {
+          "id": "2k3r",
+          "text": "多出來的只是名稱而已，每個二十幾個字元。"
+        },
+        {
+          "id": "6gxh",
+          "text": "一開始就載入，每多一個大約多八十七、八十八。",
+          "reveal": 1
+        },
+        {
+          "id": "djiq",
+          "text": "送的是整個定義，約一百五十個字元。"
+        },
+        {
+          "id": "k98e",
+          "text": "並排看，不是換算。",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "fixed",
+      "template": "table",
+      "data": {
+        "title": "跟工具數無關的那一段",
+        "columns": [
+          "看什麼",
+          "第一個請求多",
+          "怎麼來的"
+        ],
+        "rows": [
+          [
+            "伺服器接上，零個工具",
+            "+69",
+            "跑過（1 次），減基準"
+          ],
+          [
+            "延後那條線推回零個工具，再減上一列",
+            "約 +618",
+            "計算減跑過；零到兩個之間沒有跑"
+          ],
+          [
+            "沒接伺服器，只把延後載入關掉",
+            "−3：分不出來",
+            "跑過（1 次）；差 11 以內不算"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜第 2 列是計算｜這一段裡各是什麼，拆不開"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "pxxc",
+          "text": "那兩個工具的時候，延後載入多出來的七百一十，是什麼？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "xewz",
+          "text": "伺服器接上去、一個工具都不開，多出來的是六十九。",
+          "reveal": 1
+        },
+        {
+          "id": "fvrj",
+          "text": "用兩個和十個工具那兩次，回推到零個，減掉六十九，還有大約六百一十八。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "npp6",
+          "text": "這是算出來的，不是跑出來的。",
+          "emotion": "平實，不遮掩"
+        },
+        {
+          "id": "titq",
+          "text": "沒接伺服器、只把延後載入關掉，差三個，分不出來。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "fixed-2",
+      "template": "stats",
+      "data": {
+        "title": "所以：兩個工具時，延後為什麼反而大",
+        "stats": [
+          {
+            "value": "+69",
+            "label": "伺服器本身（零個工具，跑過）"
+          },
+          {
+            "value": "約 618",
+            "label": "第一個延後的工具出現才進來（計算）",
+            "note": "裡面各是什麼，拆不開"
+          },
+          {
+            "value": "+246",
+            "label": "2 個工具直接載入，一共（減它的基準）"
+          }
+        ],
+        "source": "2026-10-11 跑過＋計算｜d0、d2、d10r、u2 各 1 次"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "939t",
+          "text": "所以伺服器本身，只占六十九。",
+          "reveal": 1
+        },
+        {
+          "id": "2n57",
+          "text": "另外大約六百一十八，等第一個延後的工具出現才進來。",
+          "reveal": 1
+        },
+        {
+          "id": "d9q5",
+          "text": "裡面各是什麼，這次拆不開。",
+          "emotion": "平實"
+        },
+        {
+          "id": "6wn6",
+          "text": "兩個工具一開始就載入，一共才多兩百四十六，比這一段還小，所以延後反而大。",
+          "reveal": 1,
+          "emotion": "結論放穩"
+        }
+      ]
+    },
+    {
+      "id": "mcp-file",
+      "chapter": "怎麼量：同樣的一句話，每次只差一件事，三個欄位相加再相減",
+      "template": "code",
+      "data": {
+        "code": "{\n  \"mcpServers\": {\n    \"gear\": {\n      \"type\": \"stdio\",\n      \"command\": \"node\",\n      \"args\": [\"server/gear.mjs\", \"10\"]\n    }\n  }\n}",
+        "highlight": [
+          6
+        ],
+        "caption": ".mcp.json｜全檔 9 行｜示範資料夾：parts/mcp.n10.json｜第 6 行最後的數字就是開幾個工具"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "fakd",
+          "text": "這些數字是怎麼量出來的？先看伺服器的設定檔，一共九行。",
+          "emotion": "問句上揚，接著放穩"
+        },
+        {
+          "id": "68fc",
+          "text": "亮起來這一行，最後的數字就是開幾個工具。",
+          "emotion": "指著畫面"
+        }
+      ]
+    },
+    {
+      "id": "gear-count",
+      "template": "code",
+      "data": {
+        "code": "// 啟動時給的數字決定提供幾個工具；沒給就是全部。\nconst asked = Number(process.argv[2] ?? TOOLS.length);\nconst count = Number.isInteger(asked) && asked >= 0\n  ? Math.min(asked, TOOLS.length) : TOOLS.length;\nconst OPEN = TOOLS.slice(0, count);",
+        "highlight": [
+          2
+        ],
+        "caption": "server/gear.mjs｜第 20–24 行（全檔 148 行）｜示範資料夾：lab/server/gear.mjs｜四十個工具都只讀取 server/stock.tsv"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "uma9",
+          "text": "伺服器啟動時讀這個數字，只提供前面那幾個工具。"
+        },
+        {
+          "id": "ymgw",
+          "text": "同一個伺服器，就能開兩個、十個、四十個。"
+        }
+      ]
+    },
+    {
+      "id": "ask",
+      "template": "chat",
+      "data": {
+        "title": "掛著不用的十二次，送的是這一句",
+        "messages": [
+          {
+            "side": "right",
+            "text": "不要使用任何工具，直接回答：一年有幾個月？"
+          },
+          {
+            "side": "left",
+            "text": "一年有 12 個月。"
+          }
+        ]
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "mmug",
+          "text": "掛著不用的每一次，都送同樣的一句話：不要用任何工具，直接回答。",
+          "reveal": 1
+        },
+        {
+          "id": "pja2",
+          "text": "用不到工具，所以只有一個請求；要量測的就是這一個。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "flags",
+      "template": "table",
+      "data": {
+        "title": "每一次都一樣的旗標（完整的一行在 demo/session.sh）",
+        "columns": [
+          "旗標",
+          "作用"
+        ],
+        "rows": [
+          [
+            "--setting-sources project,local",
+            "只讀取這個專案的設定"
+          ],
+          [
+            "--strict-mcp-config",
+            "只接指定的 MCP 伺服器"
+          ],
+          [
+            "--output-format stream-json --verbose",
+            "每個請求的用量都在輸出裡"
+          ],
+          [
+            "--tools（列了九個名字）",
+            "開頭清單上 8 個內建工具（設 false 的 5 次是 7 個），沒有 Bash"
+          ]
+        ],
+        "source": "十四次都有｜第 1、2 列：官方 CLI reference 頁；第 3、4 列：這十四次看到的"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "r6j8",
+          "text": "旗標也每次相同：只讀取這個專案的設定，也只連接指定的伺服器。",
+          "reveal": 2
+        },
+        {
+          "id": "k26t",
+          "text": "輸出用串流格式，才留得下用量；內建工具只開八個，關掉延後載入時是七個，都沒有 Bash。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "no-other",
+      "template": "quote",
+      "data": {
+        "kicker": "官方 Agent SDK 的 tool search 頁：會被延後的，還包括",
+        "quote": "plus the built-in tools that load on demand",
+        "translation": "加上用到才載入的內建工具",
+        "source": "官方文件｜agent-sdk/tool-search｜2026-10-11｜引用"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "nknj",
+          "text": "這個條件要記住：這八個內建工具，沒有一個是延後載入的。",
+          "emotion": "放慢，說清楚"
+        },
+        {
+          "id": "cqgj",
+          "text": "官方 Agent SDK 的頁面寫：有些內建工具，也是用到才載入。",
+          "reveal": 1
+        },
+        {
+          "id": "zh3p",
+          "text": "那一段你那邊可能早就在，交叉點也會不同。"
+        }
+      ]
+    },
+    {
+      "id": "three",
+      "template": "table",
+      "data": {
+        "title": "第一個請求＝三個欄位相加",
+        "columns": [
+          "哪一次",
+          "輸入",
+          "快取寫入",
+          "快取讀取",
+          "相加"
+        ],
+        "rows": [
+          [
+            "z1（沒接伺服器）",
+            "2",
+            "4,398",
+            "6,802",
+            "11,202"
+          ],
+          [
+            "d2（延後，2 個工具）",
+            "2",
+            "11,911",
+            "0",
+            "11,913"
+          ],
+          [
+            "d10r（延後，10 個工具）",
+            "2",
+            "4,675",
+            "7,337",
+            "12,014"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜各 1 次｜十四次的每一個請求，輸入都是 2"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "8m7d",
+          "text": "第一個請求的用量，是三個欄位相加：輸入、快取寫入、快取讀取。",
+          "reveal": 1
+        },
+        {
+          "id": "utfg",
+          "text": "這十四次，輸入這個欄位，每個請求都只有兩個 token。",
+          "reveal": 2,
+          "emotion": "「都只有」放慢"
+        },
+        {
+          "id": "jq22",
+          "text": "其餘怎麼分，每次不同，所以只比相加。",
+          "emotion": "結論放穩"
+        }
+      ]
+    },
+    {
+      "id": "minus",
+      "template": "table",
+      "data": {
+        "title": "三種相減，每一種只差一件事",
+        "columns": [
+          "要看什麼",
+          "誰減誰",
+          "兩邊只差"
+        ],
+        "rows": [
+          [
+            "延後載入多帶多少",
+            "延後的那一次 − 沒接伺服器的兩次平均",
+            "有沒有接伺服器"
+          ],
+          [
+            "直接載入多帶多少",
+            "直接載入的那一次 − 沒接伺服器、同樣關掉的那一次",
+            "有沒有接伺服器"
+          ],
+          [
+            "哪一種小",
+            "同一個工具數：延後 − 直接載入",
+            "那個環境變數"
+          ]
+        ],
+        "source": "這支影片的讀數規則，跑之前訂的｜demo/runner/ladder.mjs"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "ncha",
+          "text": "延後載入的那幾次，減的是沒接伺服器的基準，兩次的平均。",
+          "reveal": 1
+        },
+        {
+          "id": "wpcg",
+          "text": "一開始就載入的，要減另一個基準：一樣沒接伺服器，一樣把延後載入關掉。",
+          "reveal": 1,
+          "emotion": "「另一個」加重"
+        },
+        {
+          "id": "tja5",
+          "text": "要比哪一種小，就拿工具數量相同的兩次，直接相減。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "cmd-parts",
+      "template": "table",
+      "data": {
+        "title": "相減的那一行（完整的一行在說明欄）",
+        "columns": [
+          "指令的這一段",
+          "是什麼"
+        ],
+        "rows": [
+          [
+            "node ctx-cost.mjs",
+            "讀數的腳本，示範資料夾裡的一個檔"
+          ],
+          [
+            "z1.stream.jsonl z2.stream.jsonl",
+            "沒接伺服器的兩次"
+          ],
+          [
+            "d10r.stream.jsonl",
+            "10 個工具、延後載入的那一次（重跑的）"
+          ],
+          [
+            "--base z1,z2",
+            "拿前兩次的平均當基準"
+          ],
+          [
+            "--quiet",
+            "只顯示最後那張表"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜demo/results/card.txt"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "w6xd",
+          "text": "相減交給腳本：沒有接伺服器的兩份串流，加上十個工具、延後載入的那一份。",
+          "reveal": 3
+        },
+        {
+          "id": "n82f",
+          "text": "再告訴它，拿前兩份的平均當基準。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "subtract",
+      "template": "table",
+      "data": {
+        "title": "它顯示的表（六欄裡的三欄）",
+        "columns": [
+          "name",
+          "first = input + write + read",
+          "minus base"
+        ],
+        "rows": [
+          [
+            "z1",
+            "11,202 = 2 + 4,398 + 6,802",
+            "(base)"
+          ],
+          [
+            "z2",
+            "11,204 = 2 + 4,400 + 6,802",
+            "(base)"
+          ],
+          [
+            "d10r",
+            "12,014 = 2 + 4,675 + 7,337",
+            "+811"
+          ]
+        ],
+        "highlight": 2,
+        "source": "2026-10-11 跑過｜Node.js v24.13.0｜d10r：10 個工具重跑的那一次"
+      },
+      "claims": [
+        "c27",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "4kzc",
+          "text": "表上先是兩次基準，各自三個數字的相加。",
+          "reveal": 2
+        },
+        {
+          "id": "tsn7",
+          "text": "最後一列是十個工具、延後載入：減掉基準，多八百一十一。",
+          "reveal": 1,
+          "emotion": "數字前停半拍"
+        },
+        {
+          "id": "d6ex",
+          "text": "這一列是重跑的結果，原因等一下說。"
+        }
+      ]
+    },
+    {
+      "id": "upfront-cmd",
+      "template": "terminal",
+      "data": {
+        "title": "直接載入的那一次：減同樣關掉的基準（zf）",
+        "command": "node ctx-cost.mjs zf.stream.jsonl u10.stream.jsonl --quiet",
+        "output": [
+          "base: zf | first request 11,200 | one run, no spread\nname | requests | first = input + write + read | minus base | last | grew\nzf | 1 | 11,200 = 2 + 4,396 + 6,802 | (base) | 11,200 | +0",
+          "u10 | 1 | 12,141 = 2 + 12,139 + 0 | +941 | 12,141 | +0"
+        ],
+        "ran_on": "2026-10-11",
+        "tool_version": "Node.js v24.13.0"
+      },
+      "claims": [
+        "c27",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "pmk7",
+          "text": "一開始就全部載入的那一次也一樣，只是基準換成關掉的那一次。",
+          "reveal": 1
+        },
+        {
+          "id": "ea8q",
+          "text": "十個工具一開始就載入，多九百四十一；比延後的八百一十一還多。",
+          "reveal": 1,
+          "emotion": "數字前停半拍"
+        }
+      ]
+    },
+    {
+      "id": "yours-1",
+      "template": "code",
+      "data": {
+        "code": "cd 你的專案\nP='不要使用任何工具，直接回答：一年有幾個月？'\nF='--strict-mcp-config --output-format stream-json --verbose'\nM='--mcp-config .mcp.json'\nclaude -p \"$P\" $F > ../warm.jsonl\nclaude -p \"$P\" $F > ../none.jsonl\nclaude -p \"$P\" $F $M > ../deferred.jsonl\nENABLE_TOOL_SEARCH=false claude -p \"$P\" $F > ../none-off.jsonl\nENABLE_TOOL_SEARCH=false claude -p \"$P\" $F $M > ../upfront.jsonl",
+        "highlight": [
+          5,
+          6,
+          7
+        ],
+        "caption": "在你的專案（根目錄要有 .mcp.json）：前 9 行（共 11 行）｜這個寫法這支影片沒有跑過；跑的是加了隔離旗標的同一個做法｜會送出五個請求，算在你的用量裡"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "tesz",
+          "text": "換成你的專案：先暖身一次、不採用；然後沒有接伺服器、接上伺服器，各跑一次。",
+          "emotion": "轉向觀眾，語氣亮一點"
+        },
+        {
+          "id": "3zqq",
+          "text": "照做會真的送出五個請求。",
+          "emotion": "提醒的語氣，放平"
+        }
+      ]
+    },
+    {
+      "id": "yours-1b",
+      "template": "code",
+      "data": {
+        "code": "cd 你的專案\nP='不要使用任何工具，直接回答：一年有幾個月？'\nF='--strict-mcp-config --output-format stream-json --verbose'\nM='--mcp-config .mcp.json'\nclaude -p \"$P\" $F > ../warm.jsonl\nclaude -p \"$P\" $F > ../none.jsonl\nclaude -p \"$P\" $F $M > ../deferred.jsonl\nENABLE_TOOL_SEARCH=false claude -p \"$P\" $F > ../none-off.jsonl\nENABLE_TOOL_SEARCH=false claude -p \"$P\" $F $M > ../upfront.jsonl",
+        "highlight": [
+          8,
+          9
+        ],
+        "caption": "在你的專案：前 9 行（共 11 行）｜這個寫法這支影片沒有跑過；跑的是加了隔離旗標的同一個做法｜串流存在專案外面；用 bash 跑：Git Bash，或在 macOS 預設的 zsh 先打 bash"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "xcxt",
+          "text": "再關掉延後載入，沒有接伺服器、接上，各跑一次。"
+        },
+        {
+          "id": "ctib",
+          "text": "這幾行這支影片沒有跑過，跑的是加了隔離旗標的版本。",
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "yours-2",
+      "template": "code",
+      "data": {
+        "code": "node ../ctx-cost.mjs ../none.jsonl ../deferred.jsonl\nnode ../ctx-cost.mjs ../none-off.jsonl ../upfront.jsonl",
+        "caption": "後 2 行｜ctx-cost.mjs 放在專案的上一層｜先看 init：接上的那份要 connected、tools 數要對，其餘個數兩份相同｜哪一種小：直接比兩張表的 first（deferred 對 upfront）｜平常的 session 可能還有別的延後載入的工具（官方 SDK 頁），你量到的交叉點會不一樣"
+      },
+      "claims": [
+        "c26",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "3uyr",
+          "text": "各減各的基準：用延後載入的，減預設的；一開始就全部載入的，減關掉的。"
+        },
+        {
+          "id": "ufjn",
+          "text": "可是每一種只跑一次，靠得住嗎？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "lists",
+      "chapter": "怎麼知道量對了：先比開頭清單，再認出是哪一種載入",
+      "template": "table",
+      "data": {
+        "title": "先比開頭的清單，再比 token",
+        "columns": [
+          "哪一次",
+          "清單上的 skill",
+          "斜線指令",
+          "第一個請求（相加）"
+        ],
+        "rows": [
+          [
+            "w0（暖身，不用）",
+            "22：多一個內建的 slides",
+            "58",
+            "11,204"
+          ],
+          [
+            "z1（基準）",
+            "21",
+            "57",
+            "11,202"
+          ],
+          [
+            "z2（基準）",
+            "21",
+            "57",
+            "11,204"
+          ],
+          [
+            "d10（10 個工具，延後）",
+            "22：多一個內建的 slides",
+            "58",
+            "12,016"
+          ],
+          [
+            "d10r（同一種重跑）",
+            "21",
+            "57",
+            "12,014"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜十四次裡 w0、d10、ku 多列｜多列的原因沒有查"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "4b4v",
+          "text": "什麼都沒接的專案跑了三次，相加只差零到兩個 token。",
+          "reveal": 3
+        },
+        {
+          "id": "m5ks",
+          "text": "但第一次，串流開頭的清單多了一個內建的 Skill。",
+          "emotion": "「但」之後語氣提起來"
+        },
+        {
+          "id": "brrn",
+          "text": "十個工具的那一次也多列了。照事先的規則，清單不同就不能跟基準相減。",
+          "reveal": 1
+        },
+        {
+          "id": "8zqs",
+          "text": "把這一次重新跑一遍：前後只相差兩個 token。",
+          "reveal": 1
+        },
+        {
+          "id": "2v42",
+          "text": "上一支影片，同樣多列一個，卻差了八十左右；原因沒有查。",
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "bar",
+      "template": "stats",
+      "data": {
+        "title": "多少以內，算分不出來",
+        "stats": [
+          {
+            "value": "2",
+            "label": "個 token：兩次基準相差（z1、z2）"
+          },
+          {
+            "value": "11",
+            "label": "個 token：這次的那把尺",
+            "note": "跑之前訂的下限；前幾支同樣設定重跑最多差 10"
+          }
+        ],
+        "source": "2026-10-11 跑過｜尺＝兩次基準的差與 11 取大｜跑之前訂的讀數規則"
+      },
+      "claims": [
+        "c15",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "zc67",
+          "text": "所以要先比清單的個數，再比 token。",
+          "emotion": "提醒的語氣"
+        },
+        {
+          "id": "47ri",
+          "text": "清單相同的兩次基準，只相差兩個。",
+          "reveal": 1
+        },
+        {
+          "id": "2kmk",
+          "text": "當成誤差的那把尺取十一，是跑之前訂的下限；差值不超過十一，就說分不出來。",
+          "reveal": 1,
+          "emotion": "放慢，說清楚"
+        }
+      ]
+    },
+    {
+      "id": "which",
+      "template": "table",
+      "data": {
+        "title": "怎麼認出這一次是哪一種載入（10 個工具）",
+        "columns": [
+          "哪一次",
+          "開頭清單的內建工具",
+          "偵錯紀錄的兩行（這一版看到的字）"
+        ],
+        "rows": [
+          [
+            "照預設（d10r）",
+            "8 個，有 ToolSearch",
+            "mode=tst, ENABLE_TOOL_SEARCH=undefined, result=true｜另一行：0/10 deferred tools included"
+          ],
+          [
+            "設成 false（u10）",
+            "7 個，沒有 ToolSearch",
+            "mode=standard, ENABLE_TOOL_SEARCH=false, result=false｜沒有 deferred tools included 那一行"
+          ]
+        ],
+        "source": "2026-10-11 跑過，各 1 次｜0/10＝10 個延後的工具帶了 0 個｜這一版看到的"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "6w5e",
+          "text": "怎麼認出是延後載入？照預設跑的時候，開頭清單上有 ToolSearch。",
+          "reveal": 1,
+          "emotion": "問句上揚，接著放穩"
+        },
+        {
+          "id": "qb9u",
+          "text": "偵錯紀錄寫：十個延後的工具，帶了零個。"
+        },
+        {
+          "id": "kq5p",
+          "text": "關掉之後，清單上沒有 ToolSearch，偵錯紀錄也沒有那個數字。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "which-2",
+      "template": "table",
+      "data": {
+        "title": "清單上有 ToolSearch，不等於有延後載入的工具",
+        "columns": [
+          "哪一次（都照預設）",
+          "開頭清單的內建工具",
+          "偵錯紀錄（這一版看到的字）"
+        ],
+        "rows": [
+          [
+            "沒接伺服器（z1）",
+            "8 個，有 ToolSearch",
+            "Tool search disabled: no deferred tools available to search"
+          ],
+          [
+            "接上，零個工具（d0）",
+            "8 個，有 ToolSearch",
+            "Tool search disabled: no deferred tools available to search"
+          ]
+        ],
+        "source": "2026-10-11 跑過｜各 1 次｜w0、z2 也一樣｜只是這一版看到的字"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "i2cc",
+          "text": "但沒接伺服器的時候，清單上照樣有 ToolSearch；偵錯紀錄卻寫沒有可以延後的工具。",
+          "reveal": 1,
+          "emotion": "「卻」加重"
+        },
+        {
+          "id": "8pgv",
+          "text": "接上伺服器、可是一個工具都沒有的時候，也一樣。",
+          "reveal": 1
+        },
+        {
+          "id": "yv4n",
+          "text": "所以只看清單不夠。偵錯紀錄的寫法，是這一版看到的。",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "server-record",
+      "template": "code",
+      "data": {
+        "code": "01 +     1ms start with 10 of 40 tools\n02 +     8ms server/discover asks 2026-07-28\n03 +    18ms initialize asks 2025-11-25\n04 +    19ms notifications/initialized\n05 +    23ms tools/list\n06 +  3100ms end",
+        "highlight": [
+          5
+        ],
+        "caption": "server/requests.txt（伺服器自己寫的紀錄）｜d10r 那一次，全檔 6 行｜示範資料夾：results/d10r.server-requests.txt｜u10 那一次也是 6 行、tools/list 1 次"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "59rf",
+          "text": "伺服器自己也留了紀錄。亮起來的這一行，是用戶端來問工具清單。",
+          "emotion": "指著畫面"
+        },
+        {
+          "id": "jac5",
+          "text": "兩種載入方式，都只問了一次。"
+        }
+      ]
+    },
+    {
+      "id": "line",
+      "template": "table",
+      "data": {
+        "title": "跟交出去的字元數成不成比例（跑之前訂的檢查）",
+        "columns": [
+          "怎麼載入",
+          "用 2、10 兩級推 40",
+          "量到",
+          "相差",
+          "容許"
+        ],
+        "rows": [
+          [
+            "延後（名稱 41、219、946 個字元）",
+            "+1,223.5",
+            "+1,214",
+            "−9.5",
+            "55.9"
+          ],
+          [
+            "直接（定義 302、1,473、6,003 個字元）",
+            "+3,629.6",
+            "+3,586",
+            "−43.6",
+            "53.6"
+          ]
+        ],
+        "source": "2026-10-11 跑過＋計算｜三個點、各 1 次｜都是減各自的基準"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "b7kj",
+          "text": "token 跟字元數成不成比例，是跑之前訂好的檢查：用兩個和十個工具那兩次，推四十個。"
+        },
+        {
+          "id": "pegh",
+          "text": "延後載入，推的和實際量到的，差不到十個 token。",
+          "reveal": 1
+        },
+        {
+          "id": "ybx3",
+          "text": "一開始就載入的那一邊差四十四個，兩邊都在容許的範圍裡。",
+          "reveal": 1
+        },
+        {
+          "id": "4x62",
+          "text": "三個點、各一次：這一次，跟字元數成比例。",
+          "emotion": "結論放穩"
+        }
+      ]
+    },
+    {
+      "id": "limits",
+      "template": "bullets",
+      "data": {
+        "title": "這張表能說到哪裡",
+        "items": [
+          "基準 2 次，其餘每種 1 次：都是「這一次」",
+          "一個模型、一個版本、Windows 的 Git Bash",
+          "這個伺服器：每個定義約 150 個字元、一個參數",
+          "只開 8 個內建工具，沒有別的延後載入的工具"
+        ],
+        "source": "這支影片的做法｜demo/results/first-request.txt"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "9epw",
+          "text": "基準兩次，其餘每一種只有一次；一個模型、一個版本、一個平台。",
+          "reveal": 2,
+          "emotion": "平實，不遮掩"
+        },
+        {
+          "id": "z69u",
+          "text": "定義都很短，也沒有別的延後載入的工具；換個條件，就要重新量測。",
+          "reveal": 2
+        },
+        {
+          "id": "wamh",
+          "text": "那真的用到工具的時候呢？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "use-ask",
+      "chapter": "用到一個延後載入的工具：先用一個請求去找工具",
+      "template": "code",
+      "data": {
+        "code": "用 gear 的 find_gear 查 G-417 在哪個貨架、剩幾個，只答一行。",
+        "caption": "這一次的要求｜demo/prompts/use.txt，全檔 1 行｜伺服器開 40 個工具；要求裡點名了工具（kd，1 次）"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "q5ny",
+          "text": "換一句會用到工具的要求，伺服器開四十個工具。"
+        },
+        {
+          "id": "zvvt",
+          "text": "要求裡直接點名了要用哪一個工具。",
+          "emotion": "放慢，說清楚"
+        }
+      ]
+    },
+    {
+      "id": "kd-steps",
+      "template": "steps",
+      "data": {
+        "title": "延後載入、用到一個工具：這一次的三個請求",
+        "steps": [
+          {
+            "title": "第 1 個請求",
+            "detail": "之後模型呼叫 ToolSearch：select 加工具全名"
+          },
+          {
+            "title": "第 2 個請求：+256",
+            "detail": "找到 1 個工具參照、0 個字元的文字；模型呼叫 find_gear"
+          },
+          {
+            "title": "第 3 個請求：+141",
+            "detail": "工具結果 21 個字元；模型回答"
+          }
+        ],
+        "source": "2026-10-11 跑過｜kd（1 次）｜要求裡點名了工具"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "6fhz",
+          "text": "用延後載入的這一次，一共三個請求。",
+          "reveal": 1
+        },
+        {
+          "id": "zavm",
+          "text": "第一個請求之後，模型沒有直接查，先去找工具。"
+        },
+        {
+          "id": "r96h",
+          "text": "找到之後，第二個請求的用量比第一個多兩百五十六。",
+          "reveal": 1,
+          "emotion": "數字前停半拍"
+        },
+        {
+          "id": "p5s8",
+          "text": "呼叫工具、拿到結果之後的第三個請求，再多一百四十一。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "kd-term-1",
+      "template": "terminal",
+      "data": {
+        "title": "kd 的串流：第 5–11 行（這個指令共顯示 20 行）",
+        "command": "node ctx-cost.mjs kd.stream.jsonl | head -20",
+        "output": [
+          "   request 1: 2 + 5,361 + 7,071 = 12,434\n   -- after request 1: Claude wrote 0 chars of text, 1 tool call\n      tool calls: ToolSearch (inputs 55 chars)\n      tool result ToolSearch: 1 tool reference, 0 chars of text",
+          "      hooks ran, main and under Agent: 2 | with output: 0\n      other system lines: 2\n   request 2: 2 + 256 + 12,432 = 12,690 (+256)"
+        ],
+        "ran_on": "2026-10-11",
+        "tool_version": "Node.js v24.13.0"
+      },
+      "claims": [
+        "c21",
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "dt25",
+          "text": "紀錄裡看得到：找工具的結果沒有文字，只有一個工具的參照。",
+          "reveal": 1,
+          "emotion": "指著畫面"
+        },
+        {
+          "id": "vgrf",
+          "text": "第二個請求多的兩百五十六，都在快取寫入。",
+          "reveal": 1
+        },
+        {
+          "id": "czm6",
+          "text": "裡面還有找工具的呼叫，定義占多少，分不出來。",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "kd-term-2",
+      "template": "terminal",
+      "data": {
+        "title": "同一個指令的輸出：第 11–17 行",
+        "command": "node ctx-cost.mjs kd.stream.jsonl | head -20",
+        "output": [
+          "   request 2: 2 + 256 + 12,432 = 12,690 (+256)\n   -- after request 2: Claude wrote 0 chars of text, 1 tool call\n      tool calls: mcp__(a server) (inputs 16 chars)\n      tool result mcp__(a server): 21 chars",
+          "      hooks ran, main and under Agent: 2 | with output: 0\n      other system lines: 2\n   request 3: 2 + 141 + 12,688 = 12,831 (+141)"
+        ],
+        "ran_on": "2026-10-11",
+        "tool_version": "Node.js v24.13.0"
+      },
+      "claims": [
+        "c21",
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "ecsn",
+          "text": "接著才呼叫查庫存的工具，結果是二十一個字元。",
+          "reveal": 1
+        },
+        {
+          "id": "mad8",
+          "text": "最後一個請求再多一百四十一；答案是對的。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "kd-kept",
+      "template": "stats",
+      "data": {
+        "title": "載入的定義，之後還帶著嗎（40 個延後的工具，帶了幾個）",
+        "stats": [
+          {
+            "value": "0/40",
+            "label": "第 1 個請求：找工具之前"
+          },
+          {
+            "value": "1/40",
+            "label": "第 2 個請求"
+          },
+          {
+            "value": "1/40",
+            "label": "第 3 個請求"
+          }
+        ],
+        "source": "kd（1 次）的偵錯紀錄｜格式官方沒有文件，這一版看到的"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "r6s9",
+          "text": "偵錯紀錄裡，四十個延後的工具，第一個請求帶了零個。",
+          "reveal": 1
+        },
+        {
+          "id": "rdaq",
+          "text": "找到之後的兩個請求，都帶著一個。",
+          "reveal": 2
+        },
+        {
+          "id": "k587",
+          "text": "在這一次執行裡，載入的定義到結束都還帶著；只看到這兩個請求。",
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "side",
+      "template": "table",
+      "data": {
+        "title": "同樣的一句要求，兩種載入各跑一次（只並排，不相減）",
+        "columns": [
+          "這一次看到的",
+          "延後載入（kd）",
+          "直接載入（ku）"
+        ],
+        "rows": [
+          [
+            "請求數",
+            "3",
+            "2"
+          ],
+          [
+            "找工具（ToolSearch）",
+            "1 次",
+            "0 次"
+          ],
+          [
+            "每個請求比前一個多",
+            "+256、+141",
+            "+133"
+          ],
+          [
+            "伺服器的紀錄",
+            "tools/list 1 次、tools/call 1 次",
+            "tools/list 1 次、tools/call 1 次"
+          ],
+          [
+            "開頭清單上的 skill",
+            "21",
+            "22：多一個內建的 slides"
+          ]
+        ],
+        "source": "2026-10-11 跑過，各 1 次｜要求裡點名了工具｜清單不同，照規則不相減"
+      },
+      "claims": [
+        "c23",
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "q6gh",
+          "text": "同樣的一句要求，一開始就載入的也跑了一次：兩個請求，不用找工具。",
+          "reveal": 2
+        },
+        {
+          "id": "a4i9",
+          "text": "兩邊的伺服器，工具清單都只在開頭被問一次，用到的時候沒有再問。",
+          "reveal": 2
+        },
+        {
+          "id": "n8ve",
+          "text": "但那一次的開頭清單，又多列了那個 Skill。",
+          "reveal": 1,
+          "emotion": "「又」加重"
+        },
+        {
+          "id": "fi8h",
+          "text": "照規則不能相減，只能並排：三個請求對兩個。",
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "decide",
+      "chapter": "該留著延後還是直接載入：照工具數決定，再量自己的",
+      "template": "steps",
+      "data": {
+        "title": "照這張表，我會這樣做",
+        "steps": [
+          {
+            "title": "先確認是哪一種載入",
+            "detail": "開頭清單、偵錯紀錄；再數伺服器的工具"
+          },
+          {
+            "title": "工具多的：留預設",
+            "detail": "這裡 10、40 個工具時，延後小 127、2,369"
+          },
+          {
+            "title": "工具很少、每次都用的：量一次直接載入",
+            "detail": "這裡 2 個工具時，直接載入小 467"
+          }
+        ],
+        "source": "第 2、3 步：2026-10-11 跑過的三列｜這個伺服器、這個練習專案"
+      },
+      "claims": [
+        "c24",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "i4je",
+          "text": "所以該怎麼設定？我會先確認現在是哪一種載入，再數伺服器有幾個工具。",
+          "reveal": 1,
+          "emotion": "問句上揚，接著放穩"
+        },
+        {
+          "id": "6pc2",
+          "text": "工具多的伺服器，留著預設：這裡十個、四十個工具，都是延後比較小。",
+          "reveal": 1
+        },
+        {
+          "id": "tr9q",
+          "text": "工具很少、每一輪都用得到的，我會關掉延後載入量一次：這裡兩個工具，這樣少四百六十七。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "cross-calc",
+      "template": "stats",
+      "data": {
+        "title": "交叉點在哪裡（這個伺服器、這個練習專案）",
+        "stats": [
+          {
+            "value": "2 與 10 之間",
+            "label": "量到的：2 個時直接載入小，10 個時延後小"
+          },
+          {
+            "value": "約 8 個",
+            "label": "這兩級之間連直線算出來的",
+            "note": "計算；中間一個工具數都沒有跑"
+          }
+        ],
+        "source": "2026-10-11 跑過＋計算｜demo/results/ladder-3.txt"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "ksbq",
+          "text": "交叉點，實際量到的只有：在兩個和十個工具之間。",
+          "reveal": 1
+        },
+        {
+          "id": "i428",
+          "text": "兩級之間連一條直線，算出來大約八個；這是計算，中間沒有跑過。",
+          "reveal": 1,
+          "emotion": "「這是計算」放慢"
+        },
+        {
+          "id": "6ctw",
+          "text": "換一個伺服器，這個數字可能就不一樣。"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "template": "code",
+      "data": {
+        "code": "# Disable tool search entirely\nENABLE_TOOL_SEARCH=false claude",
+        "highlight": [
+          2
+        ],
+        "caption": "官方 mcp 頁的範例（引用）｜整個 session 的 MCP 工具都一開始就載入｜這支跑過同一個變數，加在不開畫面的指令前面"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "7kuy",
+          "text": "關掉延後載入，是在指令前面加這個環境變數。"
+        },
+        {
+          "id": "8rt3",
+          "text": "它管的是整個 session 的所有伺服器。",
+          "emotion": "放慢，說清楚"
+        }
+      ]
+    },
+    {
+      "id": "always",
+      "template": "quote",
+      "data": {
+        "kicker": "只讓一個伺服器直接載入：在它的設定加 \"alwaysLoad\": true",
+        "quote": "Use this for a small number of tools that Claude needs on every turn, since each upfront tool consumes context that would otherwise be available for your conversation.",
+        "translation": "用在每一輪都需要的少數工具：一開始就載入的每個工具，都會占掉對話可以用的脈絡",
+        "source": "Claude Code 文件｜mcp｜2026-10-11｜引用，這支沒有跑"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "vbcb",
+          "text": "只想讓一個伺服器一開始就載入，官方另有設定，寫在它自己的設定裡。",
+          "reveal": 1
+        },
+        {
+          "id": "rehz",
+          "text": "這個設定，這支影片沒有跑過。",
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "usual",
+      "template": "bullets",
+      "data": {
+        "title": "把這張表搬到你的專案之前",
+        "items": [
+          "這個練習專案沒有別的延後載入的工具",
+          "平常的 session 可能有用到才載入的內建工具（官方 SDK 頁講 SDK，引用）",
+          "固定的那一段可能早就在：你的交叉點會不一樣"
+        ],
+        "source": "第 1 項：這十四次看到的｜第 2 項：引用｜第 3 項：這支沒有量"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "q3e3",
+          "text": "最後一個條件：這個練習專案沒有別的延後載入的工具，你平常的 session 可能有。",
+          "reveal": 2
+        },
+        {
+          "id": "7gwb",
+          "text": "固定的那六百多，你那邊可能早就在了，交叉點會不一樣；量自己的才算數。",
+          "reveal": 1,
+          "emotion": "轉向觀眾，放穩"
+        }
+      ]
+    },
+    {
+      "id": "article",
+      "template": "cta",
+      "data": {
+        "kicker": "延伸閱讀",
+        "title": "上下文整理：context、compact 與 clear",
+        "sub": "對話變長之後：查看、摘要、清空｜連結在說明欄"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "zan2",
+          "text": "對話變長之後怎麼整理，說明欄的那篇文章有步驟。"
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "template": "outro",
+      "data": {
+        "title": "這個練習專案、這個伺服器，這一次：\n**交叉在 2 與 10 個工具之間**",
+        "cta": "你接的 MCP 伺服器有幾個工具？量出來哪一種比較小？留言告訴我",
+        "lines": [
+          "2 個：延後 +710、直接載入 +246｜10 個：+811、+941｜40 個：+1,214、+3,586",
+          "伺服器本身 +69；第一個延後的工具出現才進來的約 618（計算）",
+          "只開 8 個內建工具、沒有別的延後工具的專案；每個定義約 150 個字元；每種 1 次"
+        ]
+      },
+      "claims": [
+        "c30",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "gpw2",
+          "text": "這一次，交叉在兩個和十個工具之間。",
+          "emotion": "放慢收穩"
+        },
+        {
+          "id": "ax26",
+          "text": "你的伺服器有幾個工具？",
+          "emotion": "問句上揚，親切"
+        },
+        {
+          "id": "m2hr",
+          "text": "更多實作，歡迎訂閱。",
+          "emotion": "輕快，帶笑"
+        }
+      ]
+    }
+  ]
+}
