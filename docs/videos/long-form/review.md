@@ -4079,6 +4079,91 @@ PASS is DURATION_ONLY for the two rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Explainer family (cute-cartoon, cute-mystery) increment: 20 files (2026-10-11)
+
+Reviewer: `claude-opus-receipt-explainer-pr1`. Author: `claude-opus-explainer-pr1`. Scope: DURATION_ONLY for the twenty changed bindings below, reviewed at `75c1112e542e45be8018cc4bc7813f4c3d30c21a`, the merge of origin/main (`f5d65e233`) into claude/explainer-presets at `48b307cff6710bc7d0b713f2a2aa26094ad340b9` ("feat(web): label the two cute explainer presets; the request form holds them back"). The branch is pull request 1 of docs/videos/explainer-route/DESIGN.md: four commits (`d927a619a`, `53ae98f9f`, `d03b40d60`, `48b307cff`) over `b1e27575e` (#1431). The reviewer wrote none of them, made the merge (no conflict), and edits only this report and review.json.
+
+Baseline: origin/main at `f5d65e233`. Between the merge base `b1e27575e` and that commit main changed neither receipt file, so the receipt the merge carries is main's, the "Official pages as video topics fourth merge with main" follow-up above. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these twenty bindings; the other 88 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `apps/api/app/video_automation/models.py`: `14da996043cdc076a96c9051e7edf1556ca76dcf2b3d9ff3d68ef648516e1dd7` -> `e8351836b3d09a939c31f18501ba3e160e98706e327a1172cc35170fc76b9ccc`.
+- `apps/api/app/video_automation/schemas.py`: `e51d5729ec66f50f204b4c2cb0849d0a85290be01d71ce43d0d9019cb42baca3` -> `e03d2bead4cfd2c9245d3afb788ed11f31bbf2d9ec4aab565a9fb948eb2ba8fa`.
+- `apps/api/app/video_automation/series.py`: `ca8e61d2431752d78f6e7bc5c98c26dd1c862d8ccb2bf596aa124b088f378dea` -> `6dd73fd48500f0bb168e6ced4e19964f13dd5f18c9758a6caafa3fa6a865d847`.
+- `apps/api/tests/test_video_explainer_duration.py`: `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` -> `45bdcbe9ec7c7c47e437b6d65ec967801e8553acbbf1c8285d734f8a7242eddc`.
+- `apps/web/components/admin-video-explainer-duration.test.tsx`: `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` -> `cb28b0a7173ad4712a70c5e378b3b0d6e4d760731620f38d9400a221b305a6ac`.
+- `apps/web/components/admin-video-series.tsx`: `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` -> `a6bf22c535b18c03bd1a5b77cffbeb77e33f40b8b28b03c125553183e06c8067`.
+- `apps/web/messages/en/admin.json`: `ec12ddb73856f2d1a9d6070961eea5107bce485143f91099da94a7d0a73b9dd5` -> `673f2fdc373bd9006b6cc468fd0dcb54a3aad945e23667af68398d2f05ad634c`.
+- `apps/web/messages/ja/admin.json`: `e8d2065f71307dfca69d746b80d68c146a3c955c6f89b69f5c939f14d5a42e32` -> `72c957267607196c0de2d7d42a2efbd6e1664a38931ebefb01293a711f7b0549`.
+- `apps/web/messages/ko/admin.json`: `18fed6863285acaf879157707bb30995cd1f8a2eeb167d4c5d4e7cd4953cb8d3` -> `03a31d8f078582def3c1d50509db547b8387481f07c8558d586b9bf4560a4de8`.
+- `apps/web/messages/zh-CN/admin.json`: `c52f64ca0388c4e850742df482b28cbc868911bcf23edee91b5b9c99f7ba781d` -> `fd0cdd30cb4f6a2f41818d76abab3f00bd054b3b6f49aa3ea04ae78ee69c6ad6`.
+- `apps/web/messages/zh-TW/admin.json`: `9e3a0402625543d1ca4e77328eaefdcd151f187590bed477fe31dd7bc0573db4` -> `ed8dbd5feaa18db810617e2ea7de0fe22c0e330bb643c61aa59be53ba9544f2b`.
+- `tools/video/automation/flow.mjs`: `b15fff400a5ebcbc89f68bf9795d3b392da4c1dce4f6a8e58067e902f85409d2` -> `d52225faa9793228c9478376f3ed6681574d3c1c18e24a1f5a0b4a4cacba340b`.
+- `tools/video/automation/series.mjs`: `2b687e0e5251f8b01904f3018bc658e4322888959af9d8dc0931d71a41e5e381` -> `ceb9dabd7e887af14e8a0a3867f2ccfeb54ee1ac11a117a62bd48642e36955e0`.
+- `tools/video/automation/series.test.mjs`: `1974b5d8db7177c920bc85ec35acf8abc4a0177b80947596ed5b551e813c53d6` -> `62707700b6b7dea0361e24b035d1e55c17d1f01147218fe38d57a74d9fa778b8`.
+- `tools/video/core/branding.mjs`: `aaad784dc23fe4bc1fc08c2871a5cd122ba483c500a07f128cb836dd8f05c8c7` -> `d9391d4832301395714cd3741a745fbf248a617fbd2850fe382e473a08ed7fd7`.
+- `tools/video/core/branding.test.mjs`: `bebfeabcb0855bffc18f0334dd1a6206bb374552467edb036d999ca5398374cb` -> `85530e76a4b26ca3a61fea99c1852a554c73db15c0248b9f32f0dabb1cdb0621`.
+- `tools/video/core/drama.mjs`: `33a471d5eb78be2ab972594501ab1a4ae3fc8fbba751c509b33a1c5f75b60fd2` -> `e691c3a4ae58f0c20e0dd7f4faba3f722af4d9b146ce77cd54412dd667c5e577`.
+- `tools/video/core/duration.mjs`: `e92c104bc62babf18f47c75b67416807484f1af794b94cd8790350990dba8edd` -> `12009ae5d12cba73e55ff462e9f9dd107350d53bea1da5a65bf59a1a39e13285`.
+- `tools/video/core/duration.test.mjs`: `388bda7c57e548c2f50165a713e038e147645d283409c1f09393e8eef68652ba` -> `a5b3e9c54368628d4b929b8050eb3ad925cc1b9c1fbd5b88bd3bf5ca010358f6`.
+- `tools/video/core/lint.mjs`: `d08806c964fbe6d69e38202f6b37b0d3ffdafcec0455d8356253a3044da27c92` -> `53a0134f9221a1b3db3f6bd8fe0ff6b36b05fb1f11d42da033a0668af04fb9bc`.
+
+What the change is: "is this an explainer" used to compare a look preset with the one name `flat-explainer`; it now asks whether the preset is in a list of three, `flat-explainer`, `cute-cartoon` and `cute-mystery`. The list is `EXPLAINER_PRESETS` in tools/video/core/drama.mjs, in apps/api/app/video_automation/schemas.py and in apps/web/lib/video-presets.ts (new, unbound). No number moves: every hunk below either swaps the comparison for the membership test, adds the two names to a list of presets, or adds a label.
+
+Findings, tools (9 files):
+
+- `tools/video/core/drama.mjs`: two new entries of `PRESETS` (style text, an empty negative, the motion line of flat-explainer), `EXPLAINER_PRESETS`, `isExplainerPreset` and `explainerSeries`. `isExplainer` becomes `isDrama(doc) && isExplainerPreset(doc.look?.preset)`, and `isKnowledgeLongform` asks `isExplainerPreset(doc.look?.preset)` where it compared with `"flat-explainer"`. `needsMinimumLength` is the same bytes and reads `isExplainer`, so a drama in either cute preset is held to the eight-minute floor and a drama in any other preset is not, as before. `timesSilentShots`, `LONG_FORMATS`, `KNOWLEDGE_CATEGORIES` and `CATALOGUE_SLUG` are unchanged. The fifth hunk changes the text of a validation message.
+- `tools/video/core/duration.mjs`: one import and one line. `effectiveEpisodeMinutes` returns early on `!isExplainerPreset(preset)` where it returned early on `preset !== EXPLAINER_PRESET`. The body under it is unchanged: no target gives 10, a target under 8 gives 10, anything above 20 or not a safe integer throws. `KNOWLEDGE_MIN_SECONDS = 480` and the target constants are outside the hunks.
+- `tools/video/core/lint.mjs`: one import and `briefSectionsFor`, which picks the explainer's brief sections for the family. The length check (lines 469 to 475: `needsMinimumLength(doc) ? minEpisodeMinutes() : 0`) is unchanged.
+- `tools/video/core/branding.mjs`: `readDefaultBranding` takes the series from `explainerSeries(doc)`: `sothatswhy` for flat-explainer and cute-cartoon, none for cute-mystery. It chooses which bookends a cut wears. Bookends never count as content (duration.mjs, unchanged), so the measured body is the same either way.
+- `tools/video/automation/flow.mjs`: five lines. `planProblem` picks the explainer's brief sections for the family; `settle` keeps the requested preset (it wrote the constant, which was the same value for the only member) and empties the cast for the family; `variantOf` returns "explainer" for the family. `episodeMinutes` (line 67) and `slidesMinutes` are unchanged and call `effectiveEpisodeMinutes` with the preset as before.
+- `tools/video/automation/series.mjs`: `isExplainerOneOff` asks the family. It picks the bible's prompt; it holds no length.
+- `tools/video/core/duration.test.mjs`: the two `effectiveEpisodeMinutes` tests loop over the three presets with the same values (legacy 0, 3, 7, none give 10; 8 to 20 kept; 21, fractions, strings throw); `isKnowledgeLongform` is asserted true for each preset alone and false for ink-wash; a new test holds a cute-mystery cut to 14,400 frames and refuses 14,399. No assertion was removed or loosened.
+- `tools/video/core/branding.test.mjs`: cute-cartoon gets the series' 357-frame intro, cute-mystery the channel's 150.
+- `tools/video/automation/series.test.mjs` (+58/−7): the explainer one-off test runs once per preset; the request in it still asks for 8 minutes.
+
+Findings, API (4 files):
+
+- `apps/api/app/video_automation/models.py`: `STYLE_PRESETS` gains the two names, so `STYLE_PRESET_CHECK` accepts them (migration 0130, unbound, recreates the three checks).
+- `apps/api/app/video_automation/schemas.py`: `StylePreset` gains the two names; `EXPLAINER_PRESET` gives way to `EXPLAINER_PRESETS` and `is_explainer_preset`. `EPISODE_MIN_MINUTES = 8`, `EXPLAINER_MIN_MINUTES = 8`, `EXPLAINER_MAX_MINUTES = 20`, `EXPLAINER_DEFAULT_MINUTES = 10`, `SERIES_MAX_MINUTES = 8` and `STORY_MAX_MINUTES = 20` are the same lines. Each of the six comparisons with the constant is now the membership test and no comparison is left behind: `DramaRequestIn._episode_length` (default 10, refuse under 8, the field's own `le=20`), and in `SeriesIn` the one-off-only rule, the default 10 and the floor of 8, the exemption from the 8-minute ceiling of a drama, and the ceiling of 20.
+- `apps/api/app/video_automation/series.py`: `is_explainer`, `patch_target_minutes` (crossing into the family takes 10, out of it 3, a short legacy explainer re-selected takes 10) and both sites of `patch_problem` (the one-off-only rule, and the 8 to 20 check against the effective preset) ask the family. One new refusal: after its bible is written a one-off may not move from one explainer preset to another. It adds a 409 and changes no length. The 1 to 8 check for everything else is unchanged.
+- `apps/api/tests/test_video_explainer_duration.py`: the accept (8, 10, 20), refuse (7, 21), default (10) and patch tests are parametrised over `EXPLAINER_PRESETS`; four rows join the style-only patch table. The drama assertions (default 3) stand.
+
+Findings, web (7 files):
+
+- `apps/web/components/admin-video-series.tsx`: `requestMinutes(preset)` returns `EXPLAINER_MINUTES` (8, 20, default 10) for the family and `DRAMA_MINUTES` (1, 8, default 3) otherwise; the new-request form reads its bounds, its default on a style change and its label from it. Both constants are unchanged. `REQUEST_PRESETS` still offers flat-explainer only, so the form cannot yet file a cute request; if a later pull request adds the two, they get 8 to 20 from the same function. The series form's `minutesOk` (line 305) is unchanged and never offered an explainer preset.
+- `apps/web/components/admin-video-explainer-duration.test.tsx`: one new case asserts the two ranges for the three explainer presets and the four story presets.
+- `apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json`: six added lines each, the two labels in three `presets` blocks. No line was removed and no label carries a number.
+
+Site by site, for a preset of `cute-cartoon` or `cute-mystery`:
+
+- `effectiveEpisodeMinutes`: 10 when absent or under 8, kept from 8 to 20, throws above. Same as flat-explainer.
+- `isKnowledgeLongform`: true by the preset alone, so `knowledgeDurationProblems` measures 480 seconds of body.
+- `needsMinimumLength`: true, so lint and QA's assemble item use `minEpisodeMinutes()`.
+- `DramaRequestIn`, `SeriesIn`, `patch_problem`: 8 to 20, default 10; never the drama's 1 to 8.
+- the web request form: 8 to 20, default 10.
+
+A search of tools/, apps/api/app, apps/web/components, apps/web/lib and apps/web/app, tests and messages aside, for `flat-explainer` and for the old constant finds no comparison left: only the preset lists, comments, the fixture, and the long-form catalogue's `backend_inputs` (plans.mjs and admin-catalog.mjs, unchanged, still `flat-explainer` at 10 minutes). For an existing preset nothing moves: the three membership tests give `flat-explainer` the answer the comparison gave, and `cinematic-3d`, `anime-2d`, `ink-wash` and `custom` the answer they had.
+
+Ran (in the worktree at the merge, Node on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the twenty stale bindings and exited 1;
+- a reading of the diff of each of the twenty files against origin/main, and of the unbound files in the same change as context (render/plan.mjs, shorts/episode.mjs, video-presets.ts, admin-video-settings.tsx, migration 0130);
+- the search named above;
+- `node --test` over core/duration.test.mjs, core/explainer-family.test.mjs, core/branding.test.mjs, automation/explainer-family.test.mjs, automation/series.test.mjs, qa/duration.test.mjs, long-form/plans.test.mjs and long-form/integration.test.mjs: 125 of 125.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the two looks, their style text or the choice of whose bookends each wears, and it does not judge the new refusal as a product choice.
+- No API test, ruff, mypy, Vitest, lint or typecheck was run, and migration 0130 was read, not run. The API and web findings rest on reading the diffs and the tests' text.
+- The settings tab now lists the two presets as a default style. What a request filed with a cute default is written from (the prompts are still So That's Why's) is the later pull requests' subject and is not judged here; its length rules are the family's at every site above.
+- No writer was run, and no rendered cut or measured narration was produced. Whether a cute explainer's script reaches eight minutes was not observed, only that the floor refuses one that does not.
+- The 88 bindings this change left alone are not covered afresh. A later merge with main that changes any of the twenty, or either receipt file, needs its own follow-up.
+
+PASS is DURATION_ONLY for the twenty rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Dub re-request increment (ask for a skipped dub again): 11 files (2026-10-11)
 
 Reviewer: `claude-pr-review-dub-retry`, an instance that wrote none of the branch's commits and edited only this report and review.json. Author: `claude-opus-5-5`, the branch's author, with its worker agents. Scope: DURATION_ONLY for the bytes of the eleven files below at `ba84feb7ef2d4ad55aa29340c4f805ae2a45c1f6` ("Merge origin/main into claude/dub-retry-request"), the head of claude/dub-retry-request, against the baseline `6a26eff42707603d8f80586ae0efb7c85a13fe15` (main at #1421), which the head has merged. The change lets the owner ask, from the language panel, for a dub track the worker gave up on to be made again. One question was asked of each file: does the change touch a duration rule?
@@ -4158,9 +4243,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `.claude/skills/youtube-video/SKILL.md` | `4088bb1beede893b19b503281118a86ef6806a37243c9bfcb85dd70d2e91d101` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7` |
-| `apps/api/app/video_automation/models.py` | `14da996043cdc076a96c9051e7edf1556ca76dcf2b3d9ff3d68ef648516e1dd7` |
-| `apps/api/app/video_automation/schemas.py` | `e51d5729ec66f50f204b4c2cb0849d0a85290be01d71ce43d0d9019cb42baca3` |
-| `apps/api/app/video_automation/series.py` | `ca8e61d2431752d78f6e7bc5c98c26dd1c862d8ccb2bf596aa124b088f378dea` |
+| `apps/api/app/video_automation/models.py` | `e8351836b3d09a939c31f18501ba3e160e98706e327a1172cc35170fc76b9ccc` |
+| `apps/api/app/video_automation/schemas.py` | `e03d2bead4cfd2c9245d3afb788ed11f31bbf2d9ec4aab565a9fb948eb2ba8fa` |
+| `apps/api/app/video_automation/series.py` | `6dd73fd48500f0bb168e6ced4e19964f13dd5f18c9758a6caafa3fa6a865d847` |
 | `apps/api/app/video_automation/settings.py` | `9941b3244e15cf6b1d8aaec32c68ab2424f84adb32804a179652d93fb3977ca3` |
 | `apps/api/app/video_reviews/admin_service.py` | `4cf2dceda72b3bd09f471e2263a9d4a96ba1d8a1375c554b0225d1ae12352856` |
 | `apps/api/app/video_reviews/schemas.py` | `b0a5f18ebb966075e1a87c66e3e4aa4e76a8b18d21b5096514374076704f6120` |
@@ -4173,19 +4258,19 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/tests/test_video_anime_review_policy.py` | `eacb78a7e6692e530730b49e3bb89698d1b2a3976ac8f1d836bbc435b16276d8` |
 | `apps/api/tests/test_video_automation_settings.py` | `cd0e6beaa6e3d9976e0dade995fdcad85ea9e246b6d265d6e2b52bb79f466a92` |
 | `apps/api/tests/test_video_drama_requests.py` | `07ddbcaadf668a13565969ca44e2542dee4f6ad83791bcc8f67d785302734c59` |
-| `apps/api/tests/test_video_explainer_duration.py` | `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` |
+| `apps/api/tests/test_video_explainer_duration.py` | `45bdcbe9ec7c7c47e437b6d65ec967801e8553acbbf1c8285d734f8a7242eddc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
-| `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
+| `apps/web/components/admin-video-explainer-duration.test.tsx` | `cb28b0a7173ad4712a70c5e378b3b0d6e4d760731620f38d9400a221b305a6ac` |
 | `apps/web/components/admin-video-review-card.tsx` | `4d22f999dcb70dfca1bd436421ecfe04cd9c7b9d869c0295bc4946be26e3e7a8` |
 | `apps/web/components/admin-video-reviews.test.tsx` | `522f72db3d27c7b6a7eb0dd9d7eec76ef02976eacfe77317b4791cae6f6decf2` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
-| `apps/web/components/admin-video-series.tsx` | `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` |
+| `apps/web/components/admin-video-series.tsx` | `a6bf22c535b18c03bd1a5b77cffbeb77e33f40b8b28b03c125553183e06c8067` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `05bcef7df472e9bc9e746bd74876eb7ff71f8a07c40f0aad8c00e571bd1099a9` |
-| `apps/web/messages/ja/admin.json` | `bbec48ba26a743599a664a8ef87439efe10fcb7573b51d799ff877af4e918942` |
-| `apps/web/messages/ko/admin.json` | `3a2987daebbba5eae098ea529a69182cd865e9e57073a5b8a5d1d38689006ea5` |
-| `apps/web/messages/zh-CN/admin.json` | `e32eb998be5ac974739959c7bc7774c45ded4132049071cf6e1f84fb0e6ff102` |
-| `apps/web/messages/zh-TW/admin.json` | `83515bfdca898ae48457694d750b08e6ca70308013787a9c3ef7eed6e8ec1add` |
+| `apps/web/messages/en/admin.json` | `af82ee554a4a5a3ba46114302b5c7cda0b86e6b31ec9559fa0249206a64e28ad` |
+| `apps/web/messages/ja/admin.json` | `00493fd6a1d0e508def816f81285620939780164d677ff887ded781e9dbb40cf` |
+| `apps/web/messages/ko/admin.json` | `e91226cdbbc6d905eb6a568e2484d31f167477fea2f5eeb0d548612758f5398b` |
+| `apps/web/messages/zh-CN/admin.json` | `7437d362bced2531df5358d71b3f7374ab81431a26867813c56557c7ffb4160c` |
+| `apps/web/messages/zh-TW/admin.json` | `f6c95ee5bf40091ae6dca9c89cbdf6cf82b1cc231c92bc31115f615a494baf88` |
 | `docs/videos/DESIGN.md` | `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `8bf5a55173e25c07c18b865853ffd37e839408ccf731bdc3c4ebf208e195b5b5` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
@@ -4204,23 +4289,23 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
 | `tools/video/automation/automation.test.mjs` | `5230f845437eb61bd6cd301e9d6d3cde65de9144476e7a176b248db1b9daf7d3` |
 | `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
-| `tools/video/automation/flow.mjs` | `bf3684d50d25418408389497efb05c63290de6a633418c196289e2477d458b6f` |
+| `tools/video/automation/flow.mjs` | `489db4cab75a529de63ad4a9ce9ff44288832cec74fe6f08159d20cf25c06651` |
 | `tools/video/automation/prompts.mjs` | `61632a08cd1b036796b900e2274babf49316960adef8ff974f52bbaf73b8f85d` |
-| `tools/video/automation/series.mjs` | `2b687e0e5251f8b01904f3018bc658e4322888959af9d8dc0931d71a41e5e381` |
-| `tools/video/automation/series.test.mjs` | `1974b5d8db7177c920bc85ec35acf8abc4a0177b80947596ed5b551e813c53d6` |
+| `tools/video/automation/series.mjs` | `ceb9dabd7e887af14e8a0a3867f2ccfeb54ee1ac11a117a62bd48642e36955e0` |
+| `tools/video/automation/series.test.mjs` | `62707700b6b7dea0361e24b035d1e55c17d1f01147218fe38d57a74d9fa778b8` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
 | `tools/video/core/anime-policy.mjs` | `2c53db1a18e27780b032a019b37912197c13bb4aadc6a130cecdc60371482ecd` |
 | `tools/video/core/anime-policy.test.mjs` | `74b9f1360829efed4c2f1e529b403024877e255d51430a5a2636ac7c5a24b3c6` |
 | `tools/video/core/approvals.mjs` | `d97e182fb942071e49cbd9fb64a35efcb327251048945c388fa8678c28065577` |
 | `tools/video/core/approvals.test.mjs` | `51c4a632685a36221dcaf6ac926d5256879c1540f709b708945770d9e5e6adaf` |
-| `tools/video/core/branding.mjs` | `aaad784dc23fe4bc1fc08c2871a5cd122ba483c500a07f128cb836dd8f05c8c7` |
-| `tools/video/core/branding.test.mjs` | `bebfeabcb0855bffc18f0334dd1a6206bb374552467edb036d999ca5398374cb` |
-| `tools/video/core/drama.mjs` | `33a471d5eb78be2ab972594501ab1a4ae3fc8fbba751c509b33a1c5f75b60fd2` |
+| `tools/video/core/branding.mjs` | `d9391d4832301395714cd3741a745fbf248a617fbd2850fe382e473a08ed7fd7` |
+| `tools/video/core/branding.test.mjs` | `85530e76a4b26ca3a61fea99c1852a554c73db15c0248b9f32f0dabb1cdb0621` |
+| `tools/video/core/drama.mjs` | `e691c3a4ae58f0c20e0dd7f4faba3f722af4d9b146ce77cd54412dd667c5e577` |
 | `tools/video/core/drama.test.mjs` | `c6dc0ef74464fcb9e47397f59b3902938c628ed86ec2f53819eeba88537f22c6` |
-| `tools/video/core/duration.mjs` | `e92c104bc62babf18f47c75b67416807484f1af794b94cd8790350990dba8edd` |
-| `tools/video/core/duration.test.mjs` | `388bda7c57e548c2f50165a713e038e147645d283409c1f09393e8eef68652ba` |
+| `tools/video/core/duration.mjs` | `12009ae5d12cba73e55ff462e9f9dd107350d53bea1da5a65bf59a1a39e13285` |
+| `tools/video/core/duration.test.mjs` | `a5b3e9c54368628d4b929b8050eb3ad925cc1b9c1fbd5b88bd3bf5ca010358f6` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `d08806c964fbe6d69e38202f6b37b0d3ffdafcec0455d8356253a3044da27c92` |
+| `tools/video/core/lint.mjs` | `53a0134f9221a1b3db3f6bd8fe0ff6b36b05fb1f11d42da033a0668af04fb9bc` |
 | `tools/video/core/lint.test.mjs` | `13c9a41c13ed096b0cdc55a979b7b6405af67c4a07b1077181dcd80350050cd5` |
 | `tools/video/core/narration-locale.test.mjs` | `db350dea6710d783a076d3449685125649f161d7465a476971d3b691c36d5088` |
 | `tools/video/core/schema.mjs` | `0202f27c4aa2d59c64fccb0fd495033a58999809943935c7004fc45d183ac94b` |

@@ -2,7 +2,7 @@ import { fireEvent, render, screen, waitFor, within } from "@testing-library/rea
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 import { AdminOperationsProvider } from "./admin-operations-provider";
-import { AdminVideoSeries } from "./admin-video-series";
+import { AdminVideoSeries, requestMinutes } from "./admin-video-series";
 
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: null, sessionIdentity: null, status: undefined }) }));
 
@@ -34,6 +34,11 @@ afterEach(() => {
 });
 
 describe("explainer duration input", () => {
+  it("gives every explainer preset the 8 to 20 minute range and every story preset 1 to 8", () => {
+    for (const preset of ["flat-explainer", "cute-cartoon", "cute-mystery"]) expect(requestMinutes(preset)).toEqual({ min: 8, max: 20, default: 10 });
+    for (const preset of ["cinematic-3d", "anime-2d", "ink-wash", "custom"]) expect(requestMinutes(preset)).toEqual({ min: 1, max: 8, default: 3 });
+  });
+
   it("changes the default and bounds only when crossing the explainer style", () => {
     const { form } = openForm();
     const style = form.getByRole("combobox", { name: "風格" });

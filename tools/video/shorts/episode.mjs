@@ -5,7 +5,7 @@
 // its work directory, moving as they did in the long video.
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
-import { EXPLAINER_PRESET, hasPictures } from '../core/drama.mjs';
+import { explainerSeries, hasPictures } from '../core/drama.mjs';
 import { docDir, lexiconFile, readJson, resolveWorkdir, ROOT } from '../core/paths.mjs';
 import { episodeShort, validate } from './core.mjs';
 
@@ -16,7 +16,7 @@ export const EPISODE_SERIES = 'sothatswhy';
 export const ILLUSTRATED_SERIES = 'illustrated';
 
 /** The series of a long video's Shorts: an explainer's, else the illustrated slides'. */
-export const episodeSeries = (video) => (video?.format === 'drama' && video?.look?.preset === EXPLAINER_PRESET ? EPISODE_SERIES : ILLUSTRATED_SERIES);
+export const episodeSeries = (video) => (explainerSeries(video) === EPISODE_SERIES ? EPISODE_SERIES : ILLUSTRATED_SERIES);
 
 /** The fields the tool decides for the video's Short number `index` (0 or 1), over a draft. */
 export const episodeShortFields = (slug, index, series = EPISODE_SERIES) => ({ schema_version: 2, slug: `${slug}-short-${index + 1}`, format: 'shorts', locale: 'zh-TW', line: 'cut', series, source: { slug } });
