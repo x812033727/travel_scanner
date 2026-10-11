@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-add-openai-deployment-safety-hub-as
 title: Add OpenAI Deployment Safety Hub as a first-party news source (openai.com article pages refuse the scanner)
-status: open
+status: done
 priority: P1
 area: api
 owner:
 claimed_at:
 created_at: 2026-09-30T10:34:33Z
-completed_at:
+completed_at: 2026-10-11T02:43:09Z
 branch: claude/gifted-rubin-umw5s4
 depends_on: []
 scope:
@@ -28,7 +28,7 @@ characters and states the launch, the date and the Preparedness ratings), while 
 - [x] `sources.json` lists the Safety Hub index as an `html` evidence source, first-party, AI.
 - [x] `max_entries_per_scan` is 1: the index lists newest first, so the first scan takes only
       the newest system card and older ones are never drafted as news.
-- [ ] Loaded on the host with `sources_cli` (dry run, then `--apply`), after the deploy.
+- [x] Loaded on the host with `sources_cli` (dry run, then `--apply`), after the deploy.
 
 ## How to verify
 
@@ -49,3 +49,4 @@ source `succeeded` after its first scan.
   `ai-news-gpt-61-sol-20260929` is published first, Jev's duplicate check should catch it;
   if not, reject the candidate in `/admin/news`.
 - 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5-news-4-9 (since 2026-09-30T10:35:07Z) was stale and is released so it stops locking its scope. Landed: #1041. Still open: Load on host with sources_cli (dry run, then --apply) after deploy.
+- 2026-10-11: loaded on the host at 02:38Z with `sources_cli --apply`, after the deploy of 6a26eff42 (see `2026-10-10-load-the-changelog-and-developer-news` for the per-source result). The dry run showed this batch had never been loaded before.

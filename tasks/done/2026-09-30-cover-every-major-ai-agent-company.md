@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-cover-every-major-ai-agent-company
 title: Cover every major AI agent company and the big tech companies with official news sources
-status: open
+status: done
 priority: P1
 area: api
 owner:
 claimed_at:
 created_at: 2026-09-30T11:31:52Z
-completed_at:
+completed_at: 2026-10-11T02:43:02Z
 branch: claude/gifted-rubin-umw5s4
 depends_on: []
 scope:
@@ -33,7 +33,7 @@ Cursor, TSMC, Samsung, Intel, AMD, Qualcomm, MediaTek and others.
       two articles, robots.txt); results in the notes, readable or not and why.
 - [x] The readable ones added to `sources.json` with notes and a small `max_entries_per_scan`
       for HTML listings.
-- [ ] Loaded on the host with `sources_cli` after the deploy.
+- [x] Loaded on the host with `sources_cli` after the deploy.
 - 2026-09-30 survey (44 entries, a sonnet agent through the scanner's parsers, then rechecked by
   the coordinator; full table in the PR discussion, raw results were in `/root/news49/survey/`).
   **Added (15):** Mistral, Cohere, Cursor, Cognition, Replit, Manus, Amazon (AI titles only),
@@ -55,3 +55,4 @@ Cursor, TSMC, Samsung, Intel, AMD, Qualcomm, MediaTek and others.
 ## Notes
 
 - 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5-news-4-9 (since 2026-09-30T11:31:53Z) was stale and is released so it stops locking its scope. Landed: #1041. Still open: Loaded on the host with sources_cli after the deploy.
+- 2026-10-11: loaded on the host at 02:38Z with `sources_cli --apply`, after the deploy of 6a26eff42 (see `2026-10-10-load-the-changelog-and-developer-news` for the per-source result). The dry run showed this batch had never been loaded before.
