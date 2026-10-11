@@ -90,7 +90,12 @@ from app.news_automation.models import (
 from app.news_automation.pipeline import JEV_QUOTA_PAUSED, RESUME_MARKER, current_switches
 from app.news_automation.policy import evidence_site_count, hard_policy_problems
 from app.news_automation.schemas import Vertical
-from app.news_automation.service import audit, held_bundle_snapshot, ingest_held_bundle
+from app.news_automation.service import (
+    audit,
+    held_bundle_snapshot,
+    ingest_held_bundle,
+    repair_held_navigation,
+)
 from app.news_automation.sources_cli import admin_actor
 from app.news_automation.validation import refresh_evidence
 
@@ -164,7 +169,13 @@ def _ingestion_json(path: Path, expected_sha256: str) -> dict[str, Any]:
     return value
 
 
-def _ingestion_intent(candidate_id: UUID, operation_id: UUID, **metadata: object) -> None:
+def _ingestion_intent(
+    candidate_id: UUID,
+    operation_id: UUID,
+    *,
+    purpose: Literal["ingestion", "navigation-repair"] = "ingestion",
+    **metadata: object,
+) -> None:
     """Create once, fsync before DB mutation, and retain on every outcome.
 
     An existing intent is uncertain, even after a local validation/transaction failure.
@@ -185,7 +196,8 @@ def _ingestion_intent(candidate_id: UUID, operation_id: UUID, **metadata: object
         raise SystemExit("Ingestion intent directory must belong to this user with mode 0700")
     # A stable candidate reservation also refuses a different nonce after an unknown
     # result. O_EXCL prevents two local operators racing with different operation IDs.
-    path = directory / f"{candidate_id}.intent.json"
+    suffix = "" if purpose == "ingestion" else ".navigation-repair"
+    path = directory / f"{candidate_id}{suffix}.intent.json"
     try:
         with path.open("xb") as stream:
             stream.write(
@@ -290,6 +302,81 @@ async def run_held_ingestion(
                 if apply:
                     await session.commit()
                     result = {**result, "committed": True, "applied": True}
+                return result
+            except BaseException:
+                await session.rollback()
+                raise
+    finally:
+        await engine.dispose()
+
+
+async def run_navigation_repair(
+    candidate_id: UUID,
+    *,
+    manifest_path: Path,
+    manifest_sha256: str,
+    review_path: Path,
+    review_sha256: str,
+    apply: bool,
+    actor_email: str | None,
+) -> dict[str, Any]:
+    """Read pinned files, validate first, reserve once and commit an exact native repair.
+
+    Use --repair-held-navigation MANIFEST --candidate-id CID --bundle-sha256 SHA
+    --review-file REVIEW --review-sha256 SHA for a non-mutating plan. Apply additionally
+    requires --apply --actor-email. The strict manifest/review keys are validated by
+    repair_held_navigation. No fetch, model, queue or publication action follows.
+    """
+    try:
+        manifest = _ingestion_json(manifest_path, manifest_sha256)
+        review = _ingestion_json(review_path, review_sha256)
+        async with SessionFactory() as session:
+            redis = get_redis()
+            actor = None
+            if apply:
+                if not actor_email:
+                    raise SystemExit("--actor-email is required with --apply")
+                actor = await admin_actor(session, actor_email)
+                if actor is None:
+                    raise SystemExit("The actor must be an active administrator")
+            plan = await repair_held_navigation(
+                session,
+                redis,
+                candidate_id,
+                manifest,
+                review,
+                manifest_sha256=manifest_sha256,
+                review_sha256=review_sha256,
+            )
+            await session.rollback()
+            if not apply:
+                return plan
+            if apply:
+                actor = await admin_actor(session, actor_email or "")
+                if actor is None:
+                    raise SystemExit("The actor must be an active administrator")
+                _ingestion_intent(
+                    candidate_id,
+                    UUID(manifest["operation_id"]),
+                    purpose="navigation-repair",
+                    manifest_sha256=manifest_sha256,
+                    review_sha256=review_sha256,
+                    actor_user_id=str(actor.id),
+                )
+            try:
+                result = await repair_held_navigation(
+                    session,
+                    redis,
+                    candidate_id,
+                    manifest,
+                    review,
+                    manifest_sha256=manifest_sha256,
+                    review_sha256=review_sha256,
+                    actor=actor if apply else None,
+                )
+                if apply:
+                    await session.commit()
+                    result = {**result, "committed": True}
                 return result
             except BaseException:
                 await session.rollback()
@@ -762,6 +849,12 @@ def main() -> None:
         metavar="MANIFEST",
         help="Validate one reviewed five-language held draft; save only with --apply",
     )
+    pools.add_argument(
+        "--repair-held-navigation",
+        type=Path,
+        metavar="MANIFEST",
+        help="Validate an independently reviewed legacy-navigation repair; write only with --apply",
+    )
     parser.add_argument("--candidate-id", type=UUID, help="Exact candidate for ingestion only")
     parser.add_argument("--bundle-sha256", help="Raw ingestion manifest SHA-256")
     parser.add_argument("--review-file", type=Path, help="Independent draft-only review envelope")
@@ -802,14 +895,41 @@ def main() -> None:
         help="Recorded on each candidate and its audit row",
     )
     args = parser.parse_args()
+    if args.repair_held_navigation:
+        if args.candidate_id is None or args.since is not None or args.limit is not None:
+            parser.error(
+                "Navigation repair requires exactly --candidate-id, without --since or --limit"
+            )
+        if not args.bundle_sha256 or args.review_file is None or not args.review_sha256:
+            parser.error("Navigation repair requires pinned manifest and independent review files")
+        if args.actor_email is not None and not args.apply:
+            parser.error("Navigation dry-run does not accept --actor-email")
+        report = asyncio.run(
+            run_navigation_repair(
+                args.candidate_id,
+                manifest_path=args.repair_held_navigation,
+                manifest_sha256=args.bundle_sha256,
+                review_path=args.review_file,
+                review_sha256=args.review_sha256,
+                apply=args.apply,
+                actor_email=args.actor_email,
+            )
+        )
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+        return
     if args.capture_ingestion_state or args.ingest_held_bundle:
         if args.candidate_id is None or args.since is not None or args.limit is not None:
             parser.error("Ingestion requires exactly --candidate-id, without --since or --limit")
         if args.capture_ingestion_state and (
-            args.apply or any(
+            args.apply
+            or any(
                 value is not None
-                for value in (args.actor_email, args.bundle_sha256, args.review_file,
-                              args.review_sha256)
+                for value in (
+                    args.actor_email,
+                    args.bundle_sha256,
+                    args.review_file,
+                    args.review_sha256,
+                )
             )
         ):
             parser.error("State capture accepts only --candidate-id")
