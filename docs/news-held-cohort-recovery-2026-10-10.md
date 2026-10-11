@@ -2008,7 +2008,7 @@ Jump providing liquidity does not guarantee willing counterparties or execution.
 Actual publication/public15 proof remains valid, but Secure content-clean PASS=false;
 local minimal correction preparation is in progress, no native correction performed.
 Audited-ingestion managed worktree completed at
-C:\Users\x8120\.codex\worktrees\news-held-bundle-ingestion\travel_scanㄐ,
+<home>\.codex\worktrees\news-held-bundle-ingestion\travel_scanㄐ,
 branch codex/news-held-bundle-ingestion based on latest main506aaf5957d9a34244edf1e4b29d3a476c2fce52.
 Root copied the existing unowned ingestion task and narrowly added pipeline.py.
 Own claim refused broad apps/api/tests overlap with the video dub task

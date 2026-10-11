@@ -1,13 +1,13 @@
 ---
 id: 2026-10-10-add-audited-held-news-bundle-ingestion
 title: Add audited ingestion for held news draft bundles
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: codex-news-held-bundle-ingestion
 claimed_at: 2026-10-11T06:46:06Z
 created_at: 2026-10-10T06:04:34Z
-completed_at:
+completed_at: 2026-10-11T07:26:51Z
 branch: codex/news-held-bundle-ingestion
 depends_on: []
 scope:
@@ -72,7 +72,7 @@ authorized production operation; inspect actual SQL/RQ history afterward.
 
 ## Notes
 
-- External evidence root: `C:\Users\x8120\.codex\news-review\20261010-6f71\`.
+- External evidence root: `<home>\.codex\news-review\20261010-6f71\`.
 - Actual `processed-held25-actual-0563.json`, SHA256
   `985b829eac27cee719cc335d52318c4c224cb9614ad37f7a725f6a0e42e304cb`,
   captured the exact 25 selected candidates at 05:49:01 UTC.
@@ -157,3 +157,11 @@ authorized production operation; inspect actual SQL/RQ history afterward.
   generation, new model approval or publication. Those remain separately
   guarded operations under the open original208 recovery task. The full news
   cohort and the published Secure/Bitmine corrections remain unfinished.
+- At 2026-10-11T07:28Z the complete API run had emitted a failure marker,
+  with its final traceback and cause still pending. The draft PR must retain
+  that unresolved validation result until diagnosed; focused news passes and
+  independent reviews do not establish that the complete suite passed.
+- PR1439's initial tools check found eight new personal-path references in
+  Root's own records. They were replaced with `<home>` placeholders without
+  changing the four frozen implementation/test files. The three repository
+  hygiene tests pass locally afterward; CI must validate the amended head.

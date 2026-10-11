@@ -76,7 +76,7 @@ tests, queued checks and a model answer do not prove public correction.
 - Read-only native-route feasibility:
   `securitize-minor-postpublication-correction-route-readonly-feasibility-v2.json`,
   SHA256 `dd9e42547b6789de32085f115e26e4daedbab50bc02964d061dbfc72d68c9974`.
-- Evidence root: `C:\Users\x8120\.codex\news-review\20261010-6f71`.
+- Evidence root: `<home>\.codex\news-review\20261010-6f71`.
 - `report_major_error` disables the whole vertical and records a major safety
   incident; it is unsuitable for this wording correction. No major-error
   incident, direct status edit, source extension or generic publication bypass

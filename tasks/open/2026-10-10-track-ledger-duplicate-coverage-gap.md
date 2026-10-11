@@ -44,7 +44,7 @@ Run focused news automation tests for a pending match that later fails, a genuin
 
 ## Notes
 
-- Original runtime evidence is outside the checkout at `C:\Users\x8120\.codex\news-review\20261010-6f71\`.
+- Original runtime evidence is outside the checkout at `<home>\.codex\news-review\20261010-6f71\`.
 - `owner90-batch02-terminal-0457.capture/sql.json` SHA256 `bcefe068d6b392be50b949d588be2cd74ede5b327b6fe93973d254e766288844` captured the exact terminal state at 04:51:31Z.
 - Independent bound-source comparison `owner90-native-duplicate2-source-comparison-independent.json` SHA256 `4b36b2d612885a6845ff7d61b61bcb0f7066ce03cab914e0ebf466920e3fd45f` supports the same-event finding; it does not establish the historical JEV parent.
 - `owner90-native-duplicate2-published-guide-discovery-readonly.sql` SHA256 `c3b02aefcb371e7503a9117b5e0bb66f9bf9c33f224bf73d6d711e7cf24a9572` is a prepared bounded read-only search, not yet executed.

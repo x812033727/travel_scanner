@@ -150,7 +150,7 @@ a judge approval, local tests and CI are distinct stages.
   interrupted video task to resume its existing tail and normal own release;
   message sent, task resumed. No foreign lock/process was modified here.
 - Latest details and verified digests are in the external durable STATE.md
-  under C:/Users/x8120/.codex/news-review/20261010-6f71/ and host receipts.
+  under <home>/.codex/news-review/20261010-6f71/ and host receipts.
 - PR1411 merged at 03:57:14 UTC as 58160456755ffecbef4478ee16122e24350c5673,
   after all 22 latest-head CI checks passed and the video owner's lease
   released normally. One standard deployment completed at 04:00:39 UTC;

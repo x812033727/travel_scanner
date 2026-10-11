@@ -61,4 +61,4 @@ joins and prior public proofs. It explicitly reports this defect. The historical
 duplicate assessment does not record a matched-parent FK; current same-event
 coverage is independently established, not a reconstructed historical edge.
 Evidence is preserved outside the repository under
-`C:\Users\x8120\.codex\news-review\20261010-6f71`.
+`<home>\.codex\news-review\20261010-6f71`.

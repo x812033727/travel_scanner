@@ -65,7 +65,7 @@ row and audit after a separately bounded production operation.
 
 ## Notes
 
-- External root: `C:\Users\x8120\.codex\news-review\20261010-6f71\`.
+- External root: `<home>\.codex\news-review\20261010-6f71\`.
 - Actual selected-25 capture `processed-held25-actual-0563.json`, SHA256
   `985b829eac27cee719cc335d52318c4c224cb9614ad37f7a725f6a0e42e304cb`.
 - Bound source/category research

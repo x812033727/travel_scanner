@@ -59,7 +59,7 @@ and genuine native audit before starting a separate normal review. A current
 
 ## Notes
 
-Root evidence directory is `C:\Users\x8120\.codex\news-review\20261010-6f71`.
+Root evidence directory is `<home>\.codex\news-review\20261010-6f71`.
 `source73-20-step-0602-invoke.one-batch/stdout.raw` contains the native 409;
 `source73-20-reconcile-0605.capture` retains full SQL/RQ and durable checkpoints.
 The batch's first candidate `9044428a-2288-4f15-bd0a-56d3c108da61` was already
