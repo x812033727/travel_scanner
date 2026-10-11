@@ -11,10 +11,10 @@
 
 ## 當前製作
 
-- 來源刷新與四張公有領域圖片完成，詳 `research-refresh.md`。圖片已以 SHA-256 檔名放入工作區 `stock/`，複製後再次讀回雜湊一致。
+- 來源刷新與四張公有領域圖片下載完成，現行成片採用其中三張，詳 `research-refresh.md`。圖片已以 SHA-256 檔名放入工作區 `stock/`，複製後再次讀回雜湊一致。
 - 本機路線：插圖投影片、MiniMax image-01、Gemini Sulafat、1080p、繁中 CC 不燒字幕。正文及成片各至少八分鐘，目標十至十一分鐘，實際時間以媒體量測為準。
-- 現行稿109景、134句、68個插圖鏡頭，另有三張公有領域史料圖。來源 SHA-256 為 `4dfe4d73dd458323949542ba5c22cd68a7838cbdc237b36543b07ea18620322e`；完整旁白134句檢查全過，最新音訊時間軸已由後台核准並讀回。1080p成片11:20.5及134條繁中CC已完成；全片解碼exit 0、19張成片抽樣未見阻塞問題，但正文平均幀率嚴格檢查有差異且null muxer報時間戳警告，原結果保留。成片QA為9／11，分鏡及成片已送審、待站主決定；上傳包未生成。詳 `delivery.md` 及本檔末段。
-- 未選擇本集額外語言；先製作繁中版。未上傳 YouTube，未公開。其他關卡和上架決定不從本次大綱答覆推定。
+- 現行稿109景、134句、68個插圖鏡頭，另有三張公有領域史料圖。來源 SHA-256 為 `4dfe4d73dd458323949542ba5c22cd68a7838cbdc237b36543b07ea18620322e`；完整旁白134句檢查全過，最新音訊時間軸已由後台核准並讀回。1080p成片11:20.5及134條繁中CC已完成；全片解碼exit 0、19張成片抽樣未見阻塞問題，但正文平均幀率嚴格檢查有差異且null muxer報時間戳警告，原結果保留。站主已明確核准目前分鏡與成片（含四張保留圖），正式站及本機批准均綁原媒體雜湊；繁中上傳包4／4檢查通過、publish已核准。詳 `delivery.md`。
+- 本集正式選擇只出繁中，後台及本機語言決定已同步。原完整QA 9／11保持不變；語言決定後的官方字幕單項檢查通過。`ready_to_upload=true`，未上傳YouTube、未公開；這些狀態均有實際讀回。
 
 ## 工具收據
 
@@ -129,7 +129,7 @@
 
 官方keyframes來源重綁為68張unchanged、0生成／0新增評圖；`accept-best` 只保留四個已逐圖覆核的實際take。現行manifest SHA `92961cfc19a1109001fdc82e1f2b4cde66042580d41eb898c67930acdfc67055`；全部68張實檔SHA及99個unique候選／選用檔均對回快照。獨立405項檢查通過，原judge／takes、297筆ledger與cache不變；診斷收據 `_audit/storyboard-pending-92961cfc-independent-receipt.json` SHA `cd4de15285698757bfb2b1ac285b8cc0be14744020e46f47bc0c5871a86adc2e`。
 
-分鏡review `e8cbd0f9-bf91-4a9b-b8f9-8fff70d9a946` 綁相同manifest，實際後台狀態仍pending。68張／三頁聯絡表及四張保留圖已送達；整體最低分7.18、頂層problems為空，但52張native passed圖仍保存個別soft remarks。以實際payload執行正式站原 `storyboard_check_passed` 函式、threshold=7，結果false；這是保留備註與自動核准條件的差異，未刪除原remarks或改門檻。修復另列 [待辦票](../../../tasks/open/2026-10-11-align-storyboard-approval-with-retained-soft.md)。
+分鏡review `e8cbd0f9-bf91-4a9b-b8f9-8fff70d9a946` 綁相同manifest，當時後台狀態為pending；後續22:36已核准，見末段。68張／三頁聯絡表及四張保留圖已送達；整體最低分7.18、頂層problems為空，但52張native passed圖仍保存個別soft remarks。以實際payload執行正式站原 `storyboard_check_passed` 函式、threshold=7，結果false；這是保留備註與自動核准條件的差異，未刪除原remarks或改門檻。修復另列 [待辦票](../../../tasks/open/2026-10-11-align-storyboard-approval-with-retained-soft.md)。
 
 原生render於 `2026-10-11T20:54:23.035Z` 啟動，exit 0，60個非shot畫面狀態全部新渲染，無版面／缺字問題。`frames/manifest.json` SHA `fbcee7b24a321044e189eeee34f2e6f4dd6d3c3f1ea0deaa9afa1d3e43f5edc0`，綁現行source、visual hash `75becb74ee2f79c7` 及完整109景。縮圖SHA `93427f863a7eb0a42504aa333c46265b3a8e4970cf3a01045a499a38d1f74b25`，1280×720。
 
@@ -149,7 +149,7 @@ assemble於 `2026-10-11T21:24:41.780Z` 結束、exit 0，109／109景完成。�
 
 ## 獨立成片檢查與界線
 
-唯一一次full audit共299項，290通過／9未過，原收據 `_audit/delivery-audit-full-20261012.json` SHA `2b50bae4122f6398d78d3f135ca05b0bcd59397057ca030fb01e864891cb4fbe`。八項是額外字幕三語缺件、QA非11／11、分鏡／成片／publish未核准及上傳metadata缺件；另一項為正文 `avg_frame_rate=15494400/516461`（約30.001103668），不等於helper要求的exact30。正文實測20175幀、r_frame_rate=30/1、容器672.5秒、video stream672.475260秒，差24.74ms。成片實測20415幀／30fps／680.5秒，H264／AAC48k stereo；原音、正文及成片完整decode各exit 0，但null muxer重複DTS警告12974／13124仍保留。這些數值沒有取代人耳聲畫同步或完整播放器驗收。
+唯一一次full audit共299項，290通過／9未過，原收據 `_audit/delivery-audit-full-20261012.json` SHA `2b50bae4122f6398d78d3f135ca05b0bcd59397057ca030fb01e864891cb4fbe`。八項是額外字幕三語缺件、QA非11／11、分鏡／成片／publish未核准及上傳metadata缺件；另一項為正文 `avg_frame_rate=15494400/516461`（約30.001104），不等於helper要求的exact30。正文實測20175幀、r_frame_rate=30/1、容器672.5秒、video stream672.475260秒，差24.74ms。成片實測20415幀／30fps／680.5秒，H264／AAC48k stereo；原音、正文及成片完整decode各exit 0，但null muxer重複DTS警告12974／13124仍保留。這些數值沒有取代人耳聲畫同步或完整播放器驗收。
 
 為確認新警告，另作兩次純packet metadata讀回，未重跑decode或修改媒體。正文20175／成片20415個video packets，原PTS及DTS沒有重複，packet DTS沒有非單調；將精確有理數換算成30Hz後，正文12974／12975及成片13124／13125各落在同一格，成片索引多150幀、正好五秒片頭。這重現了null muxer警告，支持時間基取整的解釋；不把精確CFR／完整聲畫同步改成PASS。正文及成片完整SHA在讀回前後不變，原full audit的九個FAIL完整保留。新收據 `_audit/timestamp-packet-readback-20261012.json` SHA `997c2d22695a00dfdd4a210ae8c05c1b25fd9bd87bbecbf00ff590563b48423e` 保存兩個raw packet JSON及其完整SHA。
 
@@ -157,6 +157,24 @@ assemble於 `2026-10-11T21:24:41.780Z` 結束、exit 0，109／109景完成。�
 
 成片抽樣實際開啟19個unique PNG，16個正文點加4個品牌相鄰界線（最後正文格共用），175項來源／frame／bytes檢查通過，未見阻塞視覺問題。QC SHA `76ba8578e8374404bdb719f97220d49812dfbecf589af6260d24681acfdb82b4`，詳 `visual-review.md`。抽樣helper原1ms PTS guard對正文尾段最多24.74ms差異回exit 1，原收據保留；新recovery receipt SHA `1385bd833d59369ee1544f7ea5746f9b071560611fc09bfecc61d4224bae583c` 明列nominal frame time與actual PTS，沒有重擷取或假稱完全同步通過。抽樣後成片完整SHA未變。
 
-package工具要求當前成片已核准；目前沒有執行繞過核准的package／publish，沒有上傳YouTube或公開。待站主實看分鏡與成片，確認四張保留圖及本集語言，再讀回決定並完成上傳包。
+上述21:28交付時，package工具因成片待核准而未執行，沒有上傳YouTube或公開。當時等待站主確認四張保留圖及本集語言；後續決定與完成紀錄見下段。
 
 交付文件的獨立覆核確認299項分類與待驗界線；delivery摘要補明第八項為QA未全過，原覆核收據保留。推送前task check通過1850檔；staged whitespace check只有凍結brief末尾空行提醒，排除此一檔後通過。brief完整SHA仍 `7475f2d93110b9cde572aac2531ccd77ec98a0e23f7c922987eff69b9d221404`，保留已核准bytes，沒有為格式提醒改寫來源。兩支Shorts仍只是腳本；本次只修其中JSON多餘末尾空行，未製作Shorts媒體。
+
+## 站主核准、繁中選擇與完成上傳包
+
+站主回覆「只出繁體中文（建議）」及「核准分鏡與成片，只出繁中（建議）」，包含審核問題中列明的四張保留圖。原分鏡及成片卡分別於 `2026-10-11T22:36:39.268917Z`、`2026-10-11T22:38:46.372034Z` 保存approved，完整hash仍為 `92961cfc19a1109001fdc82e1f2b4cde66042580d41eb898c67930acdfc67055` 與 `d86471c94a661023f697f2261bab8c8a61a8bf203a1a1c09b9f3ace28eb1c5a6`。正式GET及本機review-pull均確認；沒有再問相同核准，也沒有新製作或重購媒體。
+
+後台「只出繁體中文」實際保存 `locales={}`，決定時間 `2026-10-11T22:39:38.663108Z`。本機以官方 `writeLanguages` 從該讀回同步，沒有虛構時間；`languages.json` SHA `c107ffc1b2d1cf4405a918d5d915e8183852db37911b6dfb6993ce7ab6f9effe`。批准／語言收據 `_audit/owner-approval-language-receipt-20261012.json` SHA `cf98d557c041ff595fadb8671ff31c694d0fff1526e2e3f68ed80697d92b9bf7`，原QA、字幕manifest及後台快照完整保存於 `_audit/owner-approval-snapshot-20261012/`。
+
+製包前獨立source/media檢查99／99通過，68張selected圖片及所有來源／音訊／成片pins不變，收據SHA `269f8e7cbcd79449568bb6e7461600c728705e9995f0ed0cff64fd6ce68fe7b5`。captions與package分別於22:40:10及22:40:11啟動，均exit 0；134 cues仍為原SRT/VTT bytes，無其他語言或dub。`upload/metadata.json` SHA `e616ccd4515b2c7ba382b25903a3f9f73fec4ab0e5fce32e46a5e4a46b07d89e`；包內final實拷與已批准MP4完整SHA相同。
+
+獨立package覆核42／42通過，收據 `_audit/zh-TW-package-independent-readback-20261012.json` SHA `c4cbcb47eb0a3935a47052b44d79d27dfdcfef2e1bb4e7c81192e30df92ed3ca`。官方四項包檢查全過，七章／來源／圖片credits／繁中說明與官方compose結果相同；官方 `captionsItem` 對當前繁中選擇單項通過。原完整QA9／11及原full audit九個FAIL均原樣保存，未重跑解碼或付費政策judge；兩個來源GET403及播放器驗證界線不變。
+
+`review-push --gate publish` 於22:41:53完成exit 0，review `fb4ff837-1f5b-4a32-8f7e-baa27a251f9d` 已approved，決定時間 `2026-10-11T22:41:53.985239Z`，綁上述metadata完整SHA。五個附件為繁中SRT（12290 bytes／`c8d49f95…`）、繁中說明（4170 bytes／`ce74effa…`）、完整成片（204325624 bytes／`d86471c9…`）、metadata（5792 bytes／`e616ccd4…`）、縮圖（132769 bytes／`93427f86…`）；實際GET讀回及本機批准同步完成。後台 `ready_to_upload=true`、`youtube_video_id=null`；stage字串 `on YouTube` 是流程下一步，不表示已上傳。Chrome實見「可以上架」，「已上YouTube」未勾；證據 `_audit/h02-ready-zh-TW-20261012.jpg`。
+
+製包另發現共用 `UPLOAD.md` 模板把category27誤寫「科學與技術」。本repo schema明定27 Education、28 Science & Technology；本集metadata保持27，本機操作說明只更正為「教育（27）」並保留原檔。原說明SHA `64d1559fe9adfd54010b7fd803ab9244dd86086479b4c98fa8ac79209f2f9167`、更正後 `2e967201f934954e3708b0263c454b5c0ac8af365632091f66ff944e36966ca7`。UPLOAD.md不是送審附件，五個附件及metadata完全不變；共用程式另開 `2026-10-11-render-upload-checklist-category-labels-from`，本次不越scope修模板。
+
+最終publish獨立覆核41／41通過，收據 `_audit/final-publish-package-independent-readback-20261012.json` SHA `8e3442f4c7c3761e6d85066739aa74009f5cb4ba7bda8e0f8b41ab9b2ed3455c`：五個附件metadata與本機實檔hash／size／type均相同，四個current本機批准有效，語言決定時間吻合；重讀官方包檢查4／4且與publish payload相同。原UPLOAD說明比較恰一處label修改，metadata與媒體不變。遠端consumer GET實際bytes仍未另驗。
+
+交付狀態為站主已核准的繁中上傳包。沒有YouTube上傳、排程或公開，也沒有merge／deployment；完整播放器播放、聽音及CC疊字未另由代理驗收，不能從正式批准或4／4包檢查反推。

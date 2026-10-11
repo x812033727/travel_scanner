@@ -1,13 +1,13 @@
 ---
 id: 2026-10-11-curio-h02-production
 title: Produce Curio H02 Roanoke episode from the checked topic
-status: open
+status: done
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-gpt6-curio
+claimed_at: 2026-10-11T22:36:00Z
 created_at: 2026-10-11T16:47:36Z
-completed_at:
+completed_at: 2026-10-11T22:45:20Z
 branch: codex/curio-h02-production-20261012
 depends_on: []
 scope:
@@ -24,7 +24,7 @@ Owner requested continuation of 奇聞檔案局 on 2026-10-12 (Asia/Taipei). The
 
 - [x] Source-backed brief, script and claims; independent fact and listener reviews.
 - [x] Narration and MiniMax image-01 illustrations produced within existing effective limits, with no uncertain paid retries.
-- [ ] 1080p final with at least eight minutes of substantive narration, Traditional Chinese CC and verified upload package.
+- [x] 1080p final with at least eight minutes of substantive narration, Traditional Chinese CC and verified upload package.
 - [x] Current backend review readback and delivery hashes; owner gates and YouTube state reported separately.
 
 ## Steps
@@ -35,8 +35,8 @@ Owner requested continuation of 奇聞檔案局 on 2026-10-12 (Asia/Taipei). The
 - [x] Dry-run and produce narration; resolve audio flags, submit and pull audio review.
 - [x] Dry-run and produce illustrations, submit/pull storyboard; render and inspect the selected stills.
 - [x] Assemble and caption the current source.
-- [ ] Obtain the current storyboard and final decisions.
-- [ ] Final QA, upload package, backend readback and receipt-bound delivery.
+- [x] Obtain the current storyboard and final decisions.
+- [x] Final QA, upload package, backend readback and receipt-bound delivery.
 
 ## How to verify
 
@@ -58,3 +58,4 @@ Run `node tools/video/cli.mjs lint --slug curio-h02`, `status --slug curio-h02`,
 - 2026-10-12: assembly and captions completed exit 0. 1080p final is 680.5 seconds / 20415 frames, SHA `d86471c94a661023f697f2261bab8c8a61a8bf203a1a1c09b9f3ace28eb1c5a6`; 134 Traditional Chinese cues include the five-second intro offset. Current final review `a3f6b386-f6ec-41ce-a5e2-9ded114a605b` is pending/manual, with all four retained takes listed. QA is 9/11: additional locales await owner selection and two Smithsonian automated GETs return 403, despite actual browser bodies being readable. All seven backend attachment metadata hashes/sizes match local files; actual remote playback/bytes remain unverified. YouTube ID is null, no upload package or publish approval exists.
 - 2026-10-12: one full independent audit returned 290/299 PASS, eight known language/QA/review/package failures and one strict body avg-frame-rate mismatch (30.001103668 versus exact 30). Narration, body and final complete decode all exit 0; null-mux DTS warnings retained. Final probe is exact 30fps / 680.5 seconds. Nineteen unique final sample images were actually viewed, 175 checks PASS, no blocking visual issue. This is not full playback/listening or CC-player acceptance. Full evidence is in repository-external `_audit/`, summarized in `docs/videos/curio-h02/delivery.md` and `production.md`. Await owner storyboard/final and per-episode language decisions before packaging; do not restart or repurchase existing media.
 - 2026-10-12: packet-only readback reproduced the null-mux warnings after rounding distinct PTS to a 30 Hz time base; original body/final PTS and DTS have no duplicates and DTS is monotonic. Original audit failures and media bytes remain unchanged; strict CFR and owner playback are not claimed. Claim will be released while awaiting the owner. Resume this branch and existing external receipts/media instead of starting a competing production; a draft PR preserves this work without merge or deployment.
+- 2026-10-12: owner explicitly replied 「核准分鏡與成片，只出繁中（建議）」. Current storyboard/final decisions were saved in the existing backend cards and pulled against unchanged hashes; zh-TW-only choice saved with actual backend timestamp 2026-10-11T22:39:38.663108Z and synchronized via official writeLanguages. Captions/package exited 0, independent prepackage source checks 99/99 and package checks 42/42 passed. Official package 4/4 passed; publish fb4ff837-1f5b-4a32-8f7e-baa27a251f9d approved against metadata e616ccd4515b2c7ba382b25903a3f9f73fec4ab0e5fce32e46a5e4a46b07d89e. Backend ready_to_upload=true with five current attachments and YouTube ID null. Native historical QA stays 9/11; current official caption-only delta passes, without repeated paid policy judging or decode. Full playback/listening/CC-player verification remains distinct. Local instructions corrected category label to Education (27), preserving metadata/media and the original generated instructions; shared-template fix filed separately. Delivery scope is complete without YouTube upload/publication, merge or deployment.
