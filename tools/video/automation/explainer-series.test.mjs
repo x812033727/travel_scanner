@@ -8,7 +8,7 @@ import { CUTE_EXPLAINER_PRESETS, EXPLAINER_PRESETS, explainerCardTemplates } fro
 import { dramaFixture, sandbox } from "../core/fixtures/load.mjs";
 import { documentDiscussionPayload, documentDiscussVariant, SCRIPT_DISCUSSION_VARIANTS, scriptDiscussVariant } from "./discuss.mjs";
 import { cardRules, EXPLAINER_DISCUSS_VARIANTS, EXPLAINER_SERIES_INSTRUCTIONS, EXPLAINER_SERIES_PROFILES, EXPLAINER_VARIANTS, explainerProfile, explainerVariants, isExplainerStageVariant } from "./explainer-series.mjs";
-import { Automation, planProblem, settle } from "./flow.mjs";
+import { Automation, DRAFT_LINE_IDS, planProblem, PROFILED_LINE_IDS_PER_MINUTE, settle } from "./flow.mjs";
 import { instructionsFor, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
 import { canonicalJson } from "./run-receipts.mjs";
 import { documentInputs, documentPayload, documentVariant } from "./series.mjs";
@@ -98,20 +98,26 @@ test("one table maps each explainer preset to its variants; every name fits the 
   }
 });
 
-// Computed from this file's module as committed, never copied from the design's orders. A change
-// to any of them is a new prompt: it stops every unfinished run of that cute series at that stage
-// with video_ai_receipt_input_changed, and never a flat-explainer one (the pins of group 1).
+// Computed from this file's module as committed, never copied from the design's orders. A later
+// change of wording within one variant is a new prompt: an unfinished journal of the same stage
+// AND variant then has other inputs, and the run stops with video_ai_receipt_input_changed (never
+// a flat-explainer one: the pins of group 1). That is all it covers. run-receipts.mjs matches a
+// stale journal on stage and variant, so a run whose variant NAME changes is not stopped: a cute
+// one-off filed before these variants existed, and still unfinished when they are deployed, has
+// its journal under "explainer" or "bible-explainer", and the worker would start a new journal and
+// a new paid call beside that orphan. Hence the hard step before the deploy: no unfinished
+// one-off in a cute preset on the host (docs/videos/explainer-route/DESIGN.md 5.7 item 1).
 const SERIES_TEXT_PINS = {
-  "planner:bible-explainer-cartoon": [5802, "20c1a532ad3ffec98c219aa99c28185de95aaf72ef2cd7879bff88d9713e6bbb"],
-  "writer:explainer-cartoon": [14310, "914a8755093ae6e859a719499aeeef771d5362dd15beb109e376919e572f470f"],
-  "verifier:explainer-cartoon": [4299, "47f82dfe89a3187964608f589513ef2ab6a35fc8f1c2fa6750cd30de0e7996ff"],
-  "planner:discuss-cartoon": [6529, "bbed6c573d1906262c275a57f38108db015794fd7925429d648e504e78d6f767"],
-  "writer:discuss-cartoon": [12775, "d6e2413cdf587fc9fbb38551faf751837248cf5028be073569a84a9675e2e8b2"],
-  "planner:bible-explainer-mystery": [8518, "6af531eb54da7534334a07a292b51b8a767fe1dff04f4699229486385bd2943e"],
-  "writer:explainer-mystery": [16423, "469569af118b3e5e5af1fa6e5f67ff07392e28e2b13fe31cb8a3e955c17f744b"],
-  "verifier:explainer-mystery": [6066, "294b02dbcf64d5be26674fae713b09dfd958362d32356e2cb154f0dd8ca76b43"],
-  "planner:discuss-mystery": [9147, "8eb3c680ca1784854091f0fd5c6878139a5423ed2117037c434784bcde085353"],
-  "writer:discuss-mystery": [14969, "b7d75b482fc4b6335b9a2e92716853bcb2f1cb0e8bfe47869181d39ee37f08c0"],
+  "planner:bible-explainer-cartoon": [5808, "29f313dc579e1d0ba33c01ded86192e9481b304c4f19b503e0878ee7c3eeb42b"],
+  "writer:explainer-cartoon": [14561, "f87bfdd183ca67d36c3eeabada20d41f9e4acee95aa85375b12e986026958663"],
+  "verifier:explainer-cartoon": [4305, "6f41570e5090987327a200b7790a6ecdec88c8a0350de2ca49b74cb4e7ca95db"],
+  "planner:discuss-cartoon": [6535, "55f72efd0699be1c7e516ac3968406d45a7ae422205c7a1fcc388e0d5151e416"],
+  "writer:discuss-cartoon": [13026, "18803a4b888d229458f277dd24411f1b014c1c20a8b8610130b0105966dff997"],
+  "planner:bible-explainer-mystery": [8524, "99a4ac0950d63243a888c0b262eb6bcb76813392dc8170d9a5c555a20051fca6"],
+  "writer:explainer-mystery": [16697, "25aac0342d921950426f19bfc6de8e79cbf211932ce84b82dca5f99187363d89"],
+  "verifier:explainer-mystery": [6194, "ab0adfcec0f59fc6c377523ba8272aa33cdb76f736af84e7de256f31b2784722"],
+  "planner:discuss-mystery": [9153, "01d86f18d726f153ccee4692c740cdd1a3906d7588fbc475eefd69b1059b2e9c"],
+  "writer:discuss-mystery": [15243, "7ff80d609a811b944e6fc678232db09ba02433438babd2d4056960e5914aa528"],
 };
 
 test("the ten texts of the two profiled series are the pinned ones, composed with no genre section", () => {
@@ -163,6 +169,28 @@ test("each series' texts name their own series, look, cards and rules, and nothi
   // Both checkers also check the packaging, not only the narration and the cards.
   for (const variant of ["explainer-cartoon", "explainer-mystery"]) {
     assert.match(text("verifier", variant), /in youtube\.title and youtube\.description and in the\s+thumbnail \(headline, sub, and each variant's\)/, variant);
+  }
+  // The channel's thumbnail accepts a So That's Why pillar id without drawing it
+  // (core/explainer-cute.test.mjs), so the 奇聞檔案局 checker is the one that catches the field.
+  assert.match(text("verifier", "explainer-mystery"), /a thumbnail that carries a "pillar" field \(the\s+series wears the channel's thumbnail, which has none\)/);
+  assert.doesNotMatch(text("verifier", "explainer-cartoon"), /carries a "pillar" field/, "So That's Why's thumbnail has a pillar");
+  // Both look rules forbid a product likeness, and both checkers flag one.
+  for (const variant of ["explainer-cartoon", "explainer-mystery"]) {
+    assert.match(text("writer", variant), /product likeness/, variant);
+    assert.match(text("verifier", variant), /a logo, a\s+product\s+likeness/, variant);
+  }
+  // A chapter marker opens each part, and each chapter inside part 3.
+  for (const variant of ["explainer-cartoon", "discuss-cartoon"]) assert.match(text("writer", variant), /sits on the first scene of each part, and of each chapter inside\s+part 3 \(so part 3 carries three or four of them, not one\)/, variant);
+  for (const variant of ["explainer-mystery", "discuss-mystery"]) assert.match(text("writer", variant), /sits on the first scene of each part, and of each chapter inside\s+part 3 \(so part 3 carries one for each 「紀錄：」 line, not one for the whole part\)/, variant);
+  for (const [stage, variant] of [...sent(EXPLAINER_VARIANTS["cute-cartoon"]), ...sent(EXPLAINER_VARIANTS["cute-mystery"])]) {
+    // One sentence a shot, a sentence of up to 24 characters at about 3.4 a second: about 7 seconds at most.
+    assert.match(text(stage, variant), /a new picture about every 4 to 7 seconds/, `${stage}:${variant}`);
+    assert.doesNotMatch(text(stage, variant), /4 to 6 seconds/, `${stage}:${variant}`);
+    if (stage !== "writer") continue;
+    assert.match(text(stage, variant), /about 4 to 7 seconds \(a line\s+of 24 characters takes about 7;/, `${stage}:${variant}`);
+    // "big" has no "source" field (templates.mjs): the rule is for the cards that have one.
+    assert.match(text(stage, variant), /A card that has a "source" field and\s+states a fact names where it is from there/, `${stage}:${variant}`);
+    assert.match(text(stage, variant), /"title", "chapter", "big" and "outro" have no such field/, `${stage}:${variant}`);
   }
   // The likeness rule of 奇聞檔案局, said the same way to every stage that can act on it.
   for (const [stage, variant] of sent(EXPLAINER_VARIANTS["cute-mystery"])) assert.match(text(stage, variant), /never drawn as that person/, `${stage}:${variant}`);
@@ -256,4 +284,25 @@ test("settle keeps only the preset of a cute look, whatever the writer answered;
     assert.deepEqual(settled.thumbnail, written.thumbnail, "settle never writes the thumbnail");
     assert.deepEqual(settle({ ...written, look: undefined }, { slug: "curio", settings, sourceGuide: null, root: sandbox().root, format: "drama", stylePreset: preset }).look, { preset }, `${preset}: a writer that left the look out`);
   }
+});
+
+// ---------------------------------------------------------------------------------------------
+// 6. Line ids. The writer takes its line ids from the payload and may not invent one, and a cute
+// line is 24 characters at most: 140 ids end near 14 to 16 minutes, and the form allows 20.
+
+test("a cute explainer's first draft is handed 12 line ids a minute and never fewer than 140; every other draft is handed exactly 140", () => {
+  const ids = (state) => Automation.prototype.draftLineIds.call(null, state);
+  const drama = (preset, minutes) => ({ format: "drama", style_preset: preset, target_minutes: minutes });
+  assert.deepEqual([DRAFT_LINE_IDS, PROFILED_LINE_IDS_PER_MINUTE], [140, 12]);
+  for (const preset of CUTE_EXPLAINER_PRESETS) {
+    assert.deepEqual([8, 10, 11, 12, 15, 20].map((minutes) => ids(drama(preset, minutes))), [140, 140, 140, 144, 180, 240], preset);
+    assert.equal(ids(drama(preset, undefined)), 140, `${preset}: no target on the state`);
+    assert.equal(ids({ ...drama(preset, 20), format: "slides" }), 140, `${preset}: a slides video is no explainer of the series`);
+  }
+  // The count is part of the seed the ids are minted from: these payloads must not move.
+  for (const preset of ["flat-explainer", "ink-wash", "cinematic-3d", "anime-2d", "custom", null]) {
+    for (const minutes of [1, 8, 10, 20]) assert.equal(ids(drama(preset, minutes)), 140, `${preset} at ${minutes}`);
+  }
+  assert.equal(ids({ format: "slides", target_minutes: 12 }), 140);
+  assert.equal(ids({}), 140);
 });

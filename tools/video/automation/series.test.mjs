@@ -2103,8 +2103,8 @@ const EXPLAINER_STAGE_PINS = [
 ];
 const digestOf = (text) => createHash("sha256").update(text, "utf8").digest("hex");
 
-/** One explainer one-off in `preset`, from its bible to its first fact-check; the writer answers `look`. */
-async function explainerOneOffRun(preset, look = {}, row = {}) {
+/** One explainer one-off in `preset`, from its bible to its first fact-check; the writer answers `look`, and the request asks for `minutes`. */
+async function explainerOneOffRun(preset, look = {}, row = {}, minutes = 8) {
   const box = sandbox();
   const explainer = { ...ONE_OFF, title: "雷聲", premise: "為什麼雷聲總比閃電晚到？", style_preset: preset, ...row };
   const slug = "one-off-7a1b2c3d-e001";
@@ -2118,7 +2118,7 @@ async function explainerOneOffRun(preset, look = {}, row = {}) {
   const episode = { number: 1, chapter_number: 1, title: outline.title, logline: outline.logline, beats: outline, status: "ready", slug: null, recap: null, started_at: null, finished_at: null, video: null };
   const setting = { id: "b1", kind: "bible", chapter_number: 0, version: 1, ...bible, status: "approved" };
   const oneOffStart = (body) => ({
-    request: { id: "explainer-request", premise: explainer.premise, title: "雷聲", source_guide: null, style_preset: preset, target_minutes: 8, note: null, status: "started", slug: body.slug, series_slug: explainer.slug, episode_number: 1 },
+    request: { id: "explainer-request", premise: explainer.premise, title: "雷聲", source_guide: null, style_preset: preset, target_minutes: minutes, note: null, status: "started", slug: body.slug, series_slug: explainer.slug, episode_number: 1 },
     episode: { ...episode, status: "started", slug: body.slug },
     context: { series: explainer, setting, outline: null, chapter: null, chapter_number: 1, chapter_range: [1, 1], episode: null, episodes: [episode], recaps: [], mysteries: [] },
   });
@@ -2173,6 +2173,17 @@ test("an explainer one-off whose row names an image model writes it into series.
   assert.deepEqual(video.look, { preset: "flat-explainer" });
 });
 
+// The first draft is handed 140 fresh line ids, whatever length the request asks for: the count
+// is part of the seed the ids are minted from, so it is part of the pinned writer payload above.
+test("a flat-explainer one-off asked for 20 minutes is still handed 140 line ids", async () => {
+  const { writer } = await explainerOneOffRun("flat-explainer", {}, {}, 20);
+  assert.deepEqual(writer.payload.target_minutes, [20, 20]);
+  assert.equal(writer.payload.line_ids.length, 140);
+  const eight = await explainerOneOffRun("flat-explainer");
+  assert.deepEqual(eight.writer.payload.target_minutes, [8, 8]);
+  assert.deepEqual(writer.payload.line_ids, eight.writer.payload.line_ids, "the same ids at any length");
+});
+
 // Each cute preset is planned, written and checked from its own series' prompts
 // (explainer-series.mjs), beside the flat-explainer one above, which is not edited for them.
 const CUTE_ONE_OFFS = {
@@ -2185,6 +2196,9 @@ const CUTE_ONE_OFFS = {
     // The channel's thumbnail: a tag and a sub, no pillar, no layout, no variants.
     thumbnail: { template: "thumb", data: { headline: "光？\n**先到**", tag: "奇異現象", sub: "數三秒的檔案", shot: "flash" } },
     shorts: "illustrated",
+    // The longest episode the form allows: 12 line ids a minute, since a cute line is 24 characters at most.
+    minutes: 20,
+    lineIds: 240,
   },
   "cute-cartoon": {
     series: "原來如此事務所",
@@ -2195,6 +2209,9 @@ const CUTE_ONE_OFFS = {
     // So That's Why's own thumbnail, as the fixture carries it.
     thumbnail: explainerFixture().thumbnail,
     shorts: "sothatswhy",
+    // The default length: the 140 every first draft is handed.
+    minutes: 10,
+    lineIds: 140,
   },
 };
 
@@ -2202,7 +2219,7 @@ for (const [preset, expected] of Object.entries(CUTE_ONE_OFFS)) {
   test(`a ${preset} one-off is planned, written and checked with ${expected.series}'s own prompts, keeps only its preset of the look and its thumbnail as written, and drafts its two Shorts`, async () => {
     const box = sandbox();
     // The row a cute request gets: the long-series form's defaults, and the model the server stored.
-    const curio = { ...ONE_OFF, title: "雷聲", premise: "為什麼雷聲總比閃電晚到？", style_preset: preset, target_minutes: 10, genre: "xianxia-bonds", lead: "dual-male", visual_tier: "clips", image_model: "image-01" };
+    const curio = { ...ONE_OFF, title: "雷聲", premise: "為什麼雷聲總比閃電晚到？", style_preset: preset, target_minutes: expected.minutes, genre: "xianxia-bonds", lead: "dual-male", visual_tier: "clips", image_model: "image-01" };
     const slug = "one-off-7a1b2c3d-e001";
     const outline = { title: "為什麼雷聲總比閃電晚到？", logline: "光比聲音快太多。", question: "為什麼雷聲總比閃電晚到？", answer: "光比聲音快太多。", hook: "閃電亮了，你數到幾？", sources: ["https://en.wikipedia.org/wiki/Speed_of_sound"], ...expected.outline };
     const bible = { body_md: "# 雷聲\n## 問題\n主軸：…\n", body_json: { characters: [], acts: [{ number: 1, title: "光先到", summary: "s", shots: 4 }], outline, music: "輕快", not_doing: [], lexicon: {} } };
@@ -2216,7 +2233,7 @@ for (const [preset, expected] of Object.entries(CUTE_ONE_OFFS)) {
     const episode = { number: 1, chapter_number: 1, title: outline.title, logline: outline.logline, beats: outline, status: "ready", slug: null, recap: null, started_at: null, finished_at: null, video: null };
     const setting = { id: "b1", kind: "bible", chapter_number: 0, version: 1, ...bible, status: "approved" };
     const oneOffStart = (body) => ({
-      request: { id: "curio-request", premise: curio.premise, title: "雷聲", source_guide: null, style_preset: preset, target_minutes: 10, note: null, status: "started", slug: body.slug, series_slug: curio.slug, episode_number: 1 },
+      request: { id: "curio-request", premise: curio.premise, title: "雷聲", source_guide: null, style_preset: preset, target_minutes: expected.minutes, note: null, status: "started", slug: body.slug, series_slug: curio.slug, episode_number: 1 },
       episode: { ...episode, status: "started", slug: body.slug },
       context: { series: curio, setting, outline: null, chapter: null, chapter_number: 1, chapter_range: [1, 1], episode: null, episodes: [episode], recaps: [], mysteries: [] },
     });
@@ -2246,6 +2263,9 @@ for (const [preset, expected] of Object.entries(CUTE_ONE_OFFS)) {
     assert.equal(writer.variant, stageVariant);
     assert.equal(writer.instructions, instructionsFor("writer", "drama", "", stageVariant));
     assert.equal(writer.payload.beats.pillar, expected.outline.pillar, "the bible's pillar reaches the writer in beats");
+    assert.deepEqual(writer.payload.target_minutes, [expected.minutes, expected.minutes]);
+    assert.equal(writer.payload.line_ids.length, expected.lineIds, "enough ids for the length asked, never fewer than 140");
+    assert.equal(new Set(writer.payload.line_ids).size, expected.lineIds, "each one distinct");
     assert.ok(writer.instructions.includes(`"look": {"preset": "${preset}"}`));
     // The budget the payload carries at its top level is one the writer's text explains.
     assert.equal(writer.payload.prompt_budget_chars, 1000);

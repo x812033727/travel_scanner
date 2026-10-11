@@ -69,9 +69,10 @@ curious viewer would ask, answered`,
   4. The answer, about a minute: the brief's one-sentence answer said plainly, on a "big" card.
   5. The close, about 20 seconds: the next question only when the brief or the owner's notes
      name it, and an invitation to subscribe.
-  "chapter" (the scene field) sits on the first scene of each part, each part at least 10 s,
-  named as a viewer would search, never 背景 or 結論. The series' intro and outro clips are
-  added by the tool: do not write them; the "outro" card is yours.`,
+  "chapter" (the scene field) sits on the first scene of each part, and of each chapter inside
+  part 3 (so part 3 carries three or four of them, not one). Each stretch a marker opens is at
+  least 10 s and is named as a viewer would search, never 背景 or 結論. The series' intro and
+  outro clips are added by the tool: do not write them; the "outro" card is yours.`,
   thumbnailGuide: `"thumbnail": {template: "thumb", data: {headline: the question
   shortened, at most 2 lines of ≤ 10 characters (\\n between them, **one word** stressed), tag: the
   pillar's name (商業, 科學, 旅遊 or 科技), pillar: business|science|travel|tech (the one
@@ -178,10 +179,12 @@ today,`,
      the brief's closing says, on a "big" or the "outro" card; the next file is named only when
      the brief or the owner's notes name it (otherwise 「下一份檔案，我們繼續翻」), and an
      invitation to subscribe.
-  "chapter" (the scene field) sits on the first scene of each part, each part at least 10 s,
-  named as a viewer would search (「1994 年空軍怎麼解釋」「DNA 比對的結果」), never 背景 or 結論.
-  Every chapter has one medium shot whose point is a person's expression. The channel's intro and
-  outro clips are added by the tool: do not write them; the "outro" card is yours.`,
+  "chapter" (the scene field) sits on the first scene of each part, and of each chapter inside
+  part 3 (so part 3 carries one for each 「紀錄：」 line, not one for the whole part). Each
+  stretch a marker opens is at least 10 s and is named as a viewer would search
+  (「1994 年空軍怎麼解釋」「DNA 比對的結果」), never 背景 or 結論. Every chapter has one medium
+  shot whose point is a person's expression. The channel's intro and outro clips are added by
+  the tool: do not write them; the "outro" card is yours.`,
   thumbnailGuide: `"thumbnail": {template: "thumb", data: {headline: at most 6
   characters in all, on one line or on two lines of at most 3 with \\n where a word ends (a
   Chinese character counts one; a number or a Latin word counts one, and at most two of those;
@@ -241,8 +244,9 @@ unexplained where the sources leave it open`,
   verifierFlags: `Flag a legend told as fact, a prophecy told as fulfilled, and hearsay (據說, 有人說) used as
 evidence; a hedge the sources need but the line lacks; a picture prompt that names a real person,
 or depicts a person who is living or died within the last 70 years of "today" (or whose year of
-death "sources" do not give) by name, by face or by any feature that identifies them, a logo,
-gore or anything written on; a character, a
+death "sources" do not give) by name, by face or by any feature that identifies them, a logo, a
+product likeness, gore or anything written on; a thumbnail that carries a "pillar" field (the
+series wears the channel's thumbnail, which has none); a character, a
 clip or a card template this format does not have; and a card number that disagrees with the
 narration. An invented cartoon person in a prompt is not a fault, and neither is a cartoon of a
 person the sources show died more than 70 years ago: the series draws them.`,
@@ -260,7 +264,7 @@ const common = (p) => `
 ${p.opening} with a 10-minute production target (or the explicit "target_minutes"; actual narration
 body and finished cut must each be at least 8 minutes, excluding intro/outro from the body) by a
 single narrator in synthesized Taiwanese Mandarin over cute cartoon illustrations drawn by an
-image model, a new picture every 4 to 6 seconds, with cards for numbers and contrasts between
+image model, a new picture about every 4 to 7 seconds, with cards for numbers and contrasts between
 them and switchable captions (CC) in four languages; nothing is burned into the picture. There is
 NO cast and no dialogue: a picture may show people, but nobody speaks and nobody is a character;
 the narrator tells it.
@@ -314,8 +318,9 @@ const PICTURE_RULES = `
   for the picture (push in on the object, pull out to reveal the place, pan along a row, tilt up
   a tall thing, drift on a quiet moment); never the move of the shot before, and lint refuses
   three in a row.
-- A shot carries one spoken sentence, two only when both are short: 4 to 6 seconds (lint refuses
-  more than 12, warns over 10). One idea per picture; a long explanation is more pictures.
+- A shot carries one spoken sentence, two only when both are short: about 4 to 7 seconds (a line
+  of 24 characters takes about 7; lint refuses more than 12, warns over 10). One idea per
+  picture; a long explanation is more pictures.
   Alternate wide (the place), medium (a person doing something) and close-up (hands, an
   object); give each chapter its own place and props; at most half of the pictures at night or
   under a lamp (lint counts).
@@ -338,9 +343,10 @@ const REVEALS = { stats: "stats: one per number", compare: "compare: 2, left the
 export const cardRules = (cards) => `- Cards between shots, and only these:
 ${CARD_ORDER.filter((name) => cards.includes(name)).map((name) => `  - ${CARD_GUIDE[name]};`).join("\n")}
   A line with "reveal": 1 shows the card's next item (${CARD_ORDER.filter((name) => cards.includes(name) && REVEALS[name]).map((name) => REVEALS[name]).join("; ")}); a
-  card's reveals never exceed its items (lint refuses). A card that states a fact names where
-  it is from in "source" (one line, at most 48 characters: 「TIME 1991-09-23」「NASA 2017」). A
-  card's numbers are in claims.md like the narration's. No other template: no photo, screenshot,
+  card's reveals never exceed its items (lint refuses). A card that has a "source" field and
+  states a fact names where it is from there (one line, at most 48 characters:
+  「TIME 1991-09-23」「NASA 2017」); "title", "chapter", "big" and "outro" have no such field.
+  Every card's numbers are in claims.md like the narration's. No other template: no photo, screenshot,
   diagram, screencast, quote or bullets (the automated route has no image files, and lint
   refuses them in this format).`;
 

@@ -5,7 +5,7 @@ import test from "node:test";
 
 import { episodeBrief } from "../automation/series.mjs";
 import { renderProblems, thumbnailSeries } from "../render/plan.mjs";
-import { thumbnailHtml } from "../templates/templates.mjs";
+import { TEMPLATE_SPECS, thumbnailHtml } from "../templates/templates.mjs";
 import { CUTE_EXPLAINER_CARD_TEMPLATES, CUTE_EXPLAINER_PRESETS, EXPLAINER_CARD_TEMPLATES, explainerCardTemplates, isCuteExplainer, pictureVarietyProblems } from "./drama.mjs";
 import { explainerFixture } from "./fixtures/load.mjs";
 import { checkBrief, lintVideo, thumbnailHeadlineProblems } from "./lint.mjs";
@@ -45,9 +45,12 @@ test("the cute presets may also use steps and table cards, and no card beyond th
 });
 
 // 奇聞檔案局 wears the channel's thumbnail (owner's decision 1): a tag and a sub, no pillar, no layout.
+// The tools do not refuse a "pillar" there: one of So That's Why's four ids passes and is drawn
+// as nothing, so it is the writer's text that leaves the field out and the checker's that flags it
+// (automation/explainer-series.test.mjs).
 const CHANNEL_THUMBNAIL = { template: "thumb", data: { headline: "光？\n**先到**", tag: "奇異現象", sub: "數三秒的檔案", shot: "flash" } };
 
-test("a cute-mystery script wears the channel's thumbnail: valid as the writer is told to write it, and So That's Why's fields are refused", () => {
+test("a cute-mystery script wears the channel's thumbnail: valid as the writer is told to write it; one of So That's Why's pillar ids is accepted and draws nothing, while its layout is refused", () => {
   const mystery = { ...withCards("cute-mystery"), thumbnail: CHANNEL_THUMBNAIL, youtube: { ...base.youtube, title: "為什麼雷聲總比閃電晚到？｜奇聞檔案局" } };
   assert.deepEqual(validateVideo(mystery), []);
   assert.equal(thumbnailSeries(mystery), null);
@@ -56,8 +59,16 @@ test("a cute-mystery script wears the channel's thumbnail: valid as the writer i
   const html = thumbnailHtml(mystery.thumbnail, { series: thumbnailSeries(mystery), slug: mystery.slug });
   assert.equal(html.includes("原來如此事務所") || html.includes("thumb-stamp") || /pillar-/.test(html), false, "nothing of So That's Why's thumbnail is drawn");
   const withData = (extra) => ({ ...mystery, thumbnail: { ...mystery.thumbnail, data: { ...mystery.thumbnail.data, ...extra } } });
-  assert.match(renderProblems(withData({ pillar: "H" }))[0].message, /pillar must be one of business/);
-  assert.match(renderProblems(withData({ layout: "right" }))[0].message, /layout must be one of a, b, c/);
+  // A real pillar id is not refused by the channel's thumbnail, and changes nothing that is drawn.
+  for (const pillar of ["business", "science", "travel", "tech"]) {
+    assert.deepEqual(renderProblems(withData({ pillar })), [], pillar);
+    assert.deepEqual(validateVideo(withData({ pillar })), [], pillar);
+    assert.equal(thumbnailHtml(withData({ pillar }).thumbnail, { series: null, slug: mystery.slug }), html, `${pillar}: the same picture as with no pillar`);
+  }
+  // 奇聞檔案局's own pillar letters are no id the thumbnail knows: the refusal names So That's Why's four.
+  assert.deepEqual(renderProblems(withData({ pillar: "H" })).map((problem) => problem.message), ["thumbnail.data.pillar must be one of business, science, travel, tech"]);
+  // So That's Why's "right" layout is refused: the channel's layouts are a, b and c.
+  assert.deepEqual(renderProblems(withData({ layout: "right" })).map((problem) => problem.message), ["thumbnail.data.layout must be one of a, b, c"]);
   // cute-cartoon is So That's Why redrawn and keeps that series' thumbnail.
   assert.equal(thumbnailSeries(withCards("cute-cartoon")), "sothatswhy");
   assert.deepEqual(renderProblems(withCards("cute-cartoon")), []);
@@ -87,4 +98,21 @@ test("the picture-variety rules hold a cute explainer's stills as they hold illu
     // Palette words are also things, so they are not counted: a navy officer is a person.
     assert.doesNotMatch(variety(preset, ["push in", "pull out"], "Medium shot of a navy officer at a harbour gate at dawn, low sun from the left").warnings.map((warning) => warning.message).join(" | "), /restate the look/, preset);
   }
+});
+
+// The cute writers are told that a card with a "source" field names its source there, and which
+// cards have none (automation/explainer-series.mjs cardRules): this is that list, read from the templates.
+test("of the eight cute cards, stats, compare, steps and table take a source line; title, chapter, big and outro have no such field", () => {
+  const valid = {
+    title: { title: "t" }, chapter: { title: "t" }, big: { text: "t" }, outro: { title: "t" },
+    stats: { stats: [{ value: "1", label: "l" }] },
+    compare: { left: { heading: "a", points: ["p"] }, right: { heading: "b", points: ["p"] } },
+    steps: { steps: [{ title: "a" }, { title: "b" }] },
+    table: { columns: ["a", "b"], rows: [["1", "2"]] },
+  };
+  assert.deepEqual(Object.keys(valid).sort(), [...CUTE_EXPLAINER_CARD_TEMPLATES].sort());
+  const problems = (name, data) => TEMPLATE_SPECS[name].check(data).filter(Boolean);
+  for (const name of Object.keys(valid)) assert.deepEqual(problems(name, valid[name]), [], name);
+  const checksSource = Object.keys(valid).filter((name) => problems(name, { ...valid[name], source: 5 }).some((problem) => /source/.test(problem)));
+  assert.deepEqual(checksSource, ["stats", "compare", "steps", "table"]);
 });

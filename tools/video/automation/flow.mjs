@@ -98,6 +98,14 @@ const SEED_OFFSET_COMMANDS = new Set(["keyframes"]);
 // draft is told the budget of the model that will draw it, counted as media/keyframes.mjs
 // counts it, so a MiniMax video's prompts are not written to a limit the model has not got.
 const WRITER_PROMPT_MAX = 1000;
+// The fresh line ids a first draft is handed; the writer may never invent one. The number is
+// part of the seed the ids are minted from (freshIds), so for every draft that had 140 it stays
+// exactly 140: another number is other ids, another payload, and a paid writer call again for a
+// journal left unfinished. A cute explainer's lines are held to 24 characters at most
+// (explainer-series.mjs LINE_RULES), where 140 of them end near 14 to 16 minutes while its request
+// may ask for 20: its count grows with the episode's target, and is 140 up to 11 minutes.
+export const DRAFT_LINE_IDS = 140;
+export const PROFILED_LINE_IDS_PER_MINUTE = 12;
 const LONGEST_CAMERA_WORD = SLIDES_CAMERA_WORDS.reduce((longest, word) => (word.length > longest.length ? word : longest));
 // The looks a slides video may end up drawn in: the channel's print rotation (settle picks one
 // by the slug) and the writer's own choice among them, or tech-story, which the scripts from
@@ -3084,6 +3092,16 @@ export class Automation {
     return null;
   }
 
+  /**
+   * How many fresh line ids the first draft is handed: DRAFT_LINE_IDS, or more for an explainer
+   * series with a profile of its own (the cute presets) whose episode is long.
+   */
+  draftLineIds(state) {
+    if (state.format !== "drama" || !explainerProfile(state.style_preset)) return DRAFT_LINE_IDS;
+    const minutes = Number(state.target_minutes);
+    return Number.isFinite(minutes) ? Math.max(DRAFT_LINE_IDS, Math.ceil(minutes * PROFILED_LINE_IDS_PER_MINUTE)) : DRAFT_LINE_IDS;
+  }
+
   /** Line ids for the model to use, none already in the script (the same alphabet as `ids`). */
   freshIds(state, video, count) {
     const taken = new Set(video ? [...eachLine(video)].map(({ line }) => line.id) : []);
@@ -3113,7 +3131,7 @@ export class Automation {
     const brief = readFileSync(path.join(dir, "brief.md"), "utf8");
     const option = outlineOptions(brief).find((each) => each.key === state.chosen) ?? null;
     const sources = await readSources(this.read, siteSources(state.source_guide, state.source_urls, this.ctx.root));
-    const answer = isLongAnime(state) ? await this.animeRewrite(state, { brief, chosen_option: option, sources }) : await this.stage("writer", state.slug, this.scriptPayload(state, { brief, chosen_option: option, sources, line_ids: this.freshIds(state, null, 140), ...this.draftBudget(state) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
+    const answer = isLongAnime(state) ? await this.animeRewrite(state, { brief, chosen_option: option, sources }) : await this.stage("writer", state.slug, this.scriptPayload(state, { brief, chosen_option: option, sources, line_ids: this.freshIds(state, null, this.draftLineIds(state)), ...this.draftBudget(state) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
     if (typeof answer.claims === "string") writeFileSync(path.join(dir, "claims.md"), answer.claims.endsWith("\n") ? answer.claims : `${answer.claims}\n`);
     const problem = await this.saveAndLint(state, answer);
     saveState(this.workdir(state.slug), state);
