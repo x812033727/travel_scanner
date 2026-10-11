@@ -191,6 +191,13 @@ async def _claim_capacity(
     # candidate must see the status the first job committed, not the one it loaded.
     # Candidate before settings is the order report_major_error takes the same locks in.
     await session.refresh(candidate, with_for_update=True)
+    # A sweep or an already-queued judge may arrive after the ingestion's last RQ read.
+    # Preserve its reviewed Guide until a genuine native reverify/refresh hands it off.
+    if candidate.status in {"discovered", "failed"} and await news_service._held_ingestion_pending(
+        session, candidate
+    ):
+        await session.rollback()
+        return "skipped", None
     settings = await settings_row(session, lock=True)
     if not settings.enabled:
         await session.rollback()
@@ -417,7 +424,16 @@ async def _save_guide_bundle(
     slug: str,
     event_date: Any,
     documents: dict[Locale, GuideDocument],
+    *,
+    actor: User | None = None,
+    provenance: dict[str, Any] | None = None,
+    commit: bool = True,
 ) -> tuple[GuideArticle, dict[Locale, int]]:
+    """Save native revisions; an editor's caller can own the whole transaction.
+
+    The automatic pipeline retains its original system actor and commit behavior.
+    ``commit=False`` never commits part of an ingestion before its audit is written.
+    """
     now = datetime.now(UTC)
     topic = await session.scalar(
         select(GuideTopic).where(
@@ -489,14 +505,14 @@ async def _save_guide_bundle(
                 version=version,
                 action=action,
                 document_json=encoded,
-                created_by_user_id=None,
+                created_by_user_id=actor.id if actor else None,
                 created_at=now,
             )
         )
         versions[typed_locale] = version
     audit(
         session,
-        None,
+        actor,
         "news_draft_bundle_saved",
         f"news-candidate:{candidate.id}",
         candidate_id=str(candidate.id),
@@ -504,8 +520,12 @@ async def _save_guide_bundle(
         prompt_version=candidate.prompt_version,
         policy_version=candidate.policy_version,
         evidence_sha256=candidate.evidence_hash,
+        **({"owner_bundle_provenance": provenance} if provenance is not None else {}),
     )
-    await session.commit()
+    if commit:
+        await session.commit()
+    else:
+        await session.flush()
     return article, versions
 
 

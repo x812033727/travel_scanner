@@ -2002,6 +2002,41 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_topic_unavailable": "The required news topic is not available",
         "news_verification_required": "Verify this article before publishing it",
         "news_verification_stale": "The Traditional Chinese draft changed; verify it again",
+        "news_event_date_invalid": (
+            "The article date or date in the page address does not meet the candidate and "
+            "source date rules"
+        ),
+        "news_ingestion_actor_required": (
+            "An active account with content management permission is required"
+        ),
+        "news_ingestion_busy": "The candidate is published, not on hold, or has unfinished work",
+        "news_ingestion_candidate_mismatch": "The draft bundle is for a different news candidate",
+        "news_ingestion_digest_invalid": "The draft bundle or review file hash is invalid",
+        "news_ingestion_guide_exists": (
+            "This candidate already has an article; use the existing draft editor"
+        ),
+        "news_ingestion_manifest_invalid": (
+            "The draft ingestion manifest does not match the required format"
+        ),
+        "news_ingestion_operation_used": (
+            "This operation already has a save record; check it instead of retrying"
+        ),
+        "news_ingestion_policy_failed": "The draft bundle failed the required editorial checks",
+        "news_ingestion_review_mismatch": (
+            "The review record is invalid or does not match this operation, all five drafts and "
+            "stored evidence"
+        ),
+        "news_ingestion_slug_invalid": "The article page address is invalid or reserved",
+        "news_ingestion_snapshot_expired": (
+            "The ingestion snapshot expired or has an invalid capture time"
+        ),
+        "news_ingestion_source_busy": "The source is missing or locked for scanning",
+        "news_ingestion_source_mismatch": (
+            "The drafts' source references do not match the stored evidence"
+        ),
+        "news_ingestion_state_changed": (
+            "The candidate, source or complete history no longer matches the snapshot"
+        ),
     },
     "ja": {
         "news_article_already_published": "このニュース記事には公開済みの版があります",
@@ -2042,6 +2077,34 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_topic_unavailable": "必要なニューストピックを利用できません",
         "news_verification_required": "公開前にこの記事を検証してください",
         "news_verification_stale": "繁体字中国語の原稿が変更されました。再検証してください",
+        "news_event_date_invalid": (
+            "記事の日付またはページアドレス内の日付が、"
+            "候補と情報源の日付の条件を満たしていません"
+        ),
+        "news_ingestion_actor_required": "コンテンツ管理権限を持つ有効なアカウントが必要です",
+        "news_ingestion_busy": "候補が公開済み、保留中ではない、または未完了の処理があります",
+        "news_ingestion_candidate_mismatch": "この原稿一式は別のニュース候補のものです",
+        "news_ingestion_digest_invalid": "原稿一式または審査ファイルのハッシュ値が無効です",
+        "news_ingestion_guide_exists": (
+            "この候補には既に記事があります。既存の原稿編集画面を使ってください"
+        ),
+        "news_ingestion_manifest_invalid": "原稿の取り込みマニフェストが必要な形式と一致しません",
+        "news_ingestion_operation_used": (
+            "この操作には既に保存記録があります。再実行せずにその記録を確認してください"
+        ),
+        "news_ingestion_policy_failed": "原稿一式が必須の編集チェックに合格していません",
+        "news_ingestion_review_mismatch": (
+            "審査記録が無効か、この操作、5言語の原稿または保存済みの根拠と一致しません"
+        ),
+        "news_ingestion_slug_invalid": "記事のページアドレスが無効か、予約済みです",
+        "news_ingestion_snapshot_expired": (
+            "取り込み用のスナップショットが期限切れか、取得時刻が無効です"
+        ),
+        "news_ingestion_source_busy": "情報源が存在しないか、スキャン用にロックされています",
+        "news_ingestion_source_mismatch": "原稿の出典情報が保存済みの根拠と一致しません",
+        "news_ingestion_state_changed": (
+            "候補、情報源または履歴全体がスナップショットと一致しなくなりました"
+        ),
     },
     "ko": {
         "news_article_already_published": "이 뉴스 기사에는 이미 게시된 버전이 있습니다",
@@ -2082,6 +2145,36 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_topic_unavailable": "필요한 뉴스 주제를 사용할 수 없습니다",
         "news_verification_required": "게시하기 전에 이 기사를 검증해 주세요",
         "news_verification_stale": "번체 중국어 초안이 변경되었습니다. 다시 검증해 주세요",
+        "news_event_date_invalid": (
+            "기사 날짜 또는 페이지 주소의 날짜가 후보 및 출처의 날짜 규칙에 맞지 않습니다"
+        ),
+        "news_ingestion_actor_required": "콘텐츠 관리 권한이 있는 활성 계정이 필요합니다",
+        "news_ingestion_busy": (
+            "후보가 이미 게시되었거나 보류 상태가 아니거나 아직 끝나지 않은 작업이 있습니다"
+        ),
+        "news_ingestion_candidate_mismatch": "이 초안 묶음은 다른 뉴스 후보의 것입니다",
+        "news_ingestion_digest_invalid": "초안 묶음 또는 검토 파일의 해시가 유효하지 않습니다",
+        "news_ingestion_guide_exists": (
+            "이 후보에는 이미 기사가 있습니다. 기존 초안 편집기를 사용하세요"
+        ),
+        "news_ingestion_manifest_invalid": "초안 가져오기 명세가 필요한 형식과 일치하지 않습니다",
+        "news_ingestion_operation_used": (
+            "이 작업에는 이미 저장 기록이 있습니다. 재시도하지 말고 해당 기록을 확인하세요"
+        ),
+        "news_ingestion_policy_failed": "초안 묶음이 필수 편집 검사를 통과하지 못했습니다",
+        "news_ingestion_review_mismatch": (
+            "검토 기록이 유효하지 않거나 이 작업, 5개 언어 초안 또는 저장된 근거와 일치하지 "
+            "않습니다"
+        ),
+        "news_ingestion_slug_invalid": "기사 페이지 주소가 유효하지 않거나 예약되어 있습니다",
+        "news_ingestion_snapshot_expired": (
+            "가져오기 스냅샷이 만료되었거나 캡처 시간이 유효하지 않습니다"
+        ),
+        "news_ingestion_source_busy": "출처가 없거나 스캔 잠금이 설정되어 있습니다",
+        "news_ingestion_source_mismatch": "초안의 출처 정보가 저장된 근거와 일치하지 않습니다",
+        "news_ingestion_state_changed": (
+            "후보, 출처 또는 전체 이력이 더 이상 스냅샷과 일치하지 않습니다"
+        ),
     },
     "zh-TW": {
         "news_article_already_published": "這篇新聞已有公開版本",
@@ -2118,6 +2211,21 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_topic_unavailable": "新聞主題尚未建立",
         "news_verification_required": "請先查核文章再發布",
         "news_verification_stale": "繁中草稿已修改，請重新查核",
+        "news_event_date_invalid": "文章日期或網址中的日期不符合候選與來源的日期規則",
+        "news_ingestion_actor_required": "需要具有內容管理權限的有效帳號",
+        "news_ingestion_busy": "候選已發布、不在待處理狀態，或仍有未完成的工作",
+        "news_ingestion_candidate_mismatch": "草稿內容包屬於另一個新聞候選",
+        "news_ingestion_digest_invalid": "草稿內容包或審查檔案的雜湊不符",
+        "news_ingestion_guide_exists": "此候選已有文章，請使用既有草稿編輯流程",
+        "news_ingestion_manifest_invalid": "草稿匯入清單不符合所需格式",
+        "news_ingestion_operation_used": "此操作已有保存紀錄，請查看原紀錄，不要重複執行",
+        "news_ingestion_policy_failed": "草稿內容包未通過必要的編輯政策檢查",
+        "news_ingestion_review_mismatch": "審查紀錄無效，或未對應此操作、五語草稿及保存的來源證據",
+        "news_ingestion_slug_invalid": "文章網址代稱格式不符，或已被保留",
+        "news_ingestion_snapshot_expired": "匯入快照已過期，或擷取時間不符",
+        "news_ingestion_source_busy": "來源不存在，或仍有掃描鎖定",
+        "news_ingestion_source_mismatch": "草稿的來源引用與保存的證據不符",
+        "news_ingestion_state_changed": "候選、來源或完整歷史已與快照不同",
     },
     "zh-CN": {
         "news_article_already_published": "这篇新闻已有公开版本",
@@ -2154,6 +2262,21 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_topic_unavailable": "新闻主题尚未建立",
         "news_verification_required": "请先核查文章再发布",
         "news_verification_stale": "繁体中文草稿已修改，请重新核查",
+        "news_event_date_invalid": "文章日期或网址中的日期不符合候选与来源的日期规则",
+        "news_ingestion_actor_required": "需要具有内容管理权限的有效账号",
+        "news_ingestion_busy": "候选已发布、不在待处理状态，或仍有未完成的工作",
+        "news_ingestion_candidate_mismatch": "草稿内容包属于另一个新闻候选",
+        "news_ingestion_digest_invalid": "草稿内容包或审查文件的哈希不符",
+        "news_ingestion_guide_exists": "此候选已有文章，请使用现有草稿编辑流程",
+        "news_ingestion_manifest_invalid": "草稿导入清单不符合所需格式",
+        "news_ingestion_operation_used": "此操作已有保存记录，请查看原记录，不要重复执行",
+        "news_ingestion_policy_failed": "草稿内容包未通过必要的编辑政策检查",
+        "news_ingestion_review_mismatch": "审查记录无效，或未对应此操作、五语草稿及保存的来源证据",
+        "news_ingestion_slug_invalid": "文章页面地址格式不符，或已被保留",
+        "news_ingestion_snapshot_expired": "导入快照已过期，或获取时间不符",
+        "news_ingestion_source_busy": "来源不存在，或仍有扫描锁定",
+        "news_ingestion_source_mismatch": "草稿的来源引用与保存的证据不符",
+        "news_ingestion_state_changed": "候选、来源或完整历史已与快照不同",
     },
 }
 for _news_locale, _news_errors in _NEWS_AUTOMATION_ERRORS.items():

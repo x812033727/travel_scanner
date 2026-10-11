@@ -1,19 +1,28 @@
 from __future__ import annotations
 
+import base64
+import hashlib
+import json
 import math
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from typing import Any, cast
 from uuid import UUID
 
 from redis.asyncio import Redis
-from sqlalchemy import and_, case, func, or_, select
+from sqlalchemy import and_, case, func, inspect, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
 from app.ai.catalog import MODEL_CATALOG, Capability
 from app.guides import admin_service
-from app.guides.models import GuideArticle, GuideArticleLocale
-from app.guides.schemas import GuideDocument, Kind
+from app.guides.models import (
+    GuideArticle,
+    GuideArticleLocale,
+    GuideArticleRevision,
+    GuideArticleTopic,
+)
+from app.guides.schemas import GuideDocument, Kind, article_slug
+from app.guides.service import _target as guide_target
 from app.hotspots.ai_search import research_model
 from app.i18n import Locale
 from app.models import AdminAuditLog, User
@@ -27,6 +36,7 @@ from app.news_automation.fetch import RedisHostRateLimiter
 from app.news_automation.models import (
     LOCALES,
     NewsAssessment,
+    NewsAsset,
     NewsAutomationSettings,
     NewsCandidate,
     NewsEvidence,
@@ -37,6 +47,7 @@ from app.news_automation.policy import (
     EVIDENCE_REFRESH_MARKER,
     ZH_DRAFT_READY,
     document_fingerprint,
+    event_date_problems,
     evidence_fingerprint,
     evidence_present,
     evidence_site_count,
@@ -111,6 +122,376 @@ def audit(
             metadata_json={"system_actor": actor is None, **metadata},
         )
     )
+
+
+HELD_BUNDLE_SCHEMA = "mokaair-news-held-bundle-ingestion-v1"
+HELD_STATE_SCHEMA = "mokaair-news-held-bundle-state-v1"
+HELD_REVIEW_SCHEMA = "mokaair-news-held-bundle-draft-review-v1"
+HELD_INGESTION_ACTION = "news_held_bundle_ingested"
+HELD_INGESTION_STATUSES = frozenset({"manual_review", "shadow_review", "needs_redraft", "failed"})
+
+
+def held_bundle_digest(value: object) -> str:
+    """Whole JSON, including value types; unlike the editorial fingerprint, omit nothing."""
+    return hashlib.sha256(
+        json.dumps(
+            value, sort_keys=True, ensure_ascii=False, separators=(",", ":"), allow_nan=False
+        ).encode("utf-8")
+    ).hexdigest()
+
+
+def _held_row(row: Any) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for column in inspect(type(row)).column_attrs:
+        value = getattr(row, column.key)
+        if isinstance(value, datetime):
+            value = value.replace(tzinfo=UTC) if value.tzinfo is None else value.astimezone(UTC)
+            value = value.isoformat(timespec="microseconds")
+        elif isinstance(value, (UUID, date)):
+            value = str(value)
+        elif isinstance(value, bytes):
+            value = {"base64": base64.b64encode(value).decode("ascii")}
+        result[column.key] = value
+    return result
+
+
+async def _held_live_jobs(redis: Redis, candidate_id: UUID) -> list[str]:
+    """Read candidate and judge jobs, including retained hashes and live queue registries.
+
+    Redis failure propagates: an unavailable queue is not evidence that it is idle.
+    """
+    prefixes = (f"news-candidate-{candidate_id}-", f"news-judge-{candidate_id}-")
+    live: set[str] = set()
+    for prefix in prefixes:
+        async for key in redis.scan_iter(match=f"rq:job:{prefix}*"):
+            status = await redis.hget(key, "status")
+            if isinstance(status, bytes):
+                status = status.decode("ascii")
+            if status not in {"finished", "failed", "stopped", "canceled"}:
+                live.add(key.decode() if isinstance(key, bytes) else str(key))
+    members = list(await redis.lrange("rq:queue:news", 0, -1))
+    for registry in ("rq:wip:news", "rq:scheduled:news", "rq:deferred:news"):
+        members.extend(cast(list[bytes | str], await redis.zrange(registry, 0, -1)))
+    for member in members:
+        text = member.decode() if isinstance(member, bytes) else str(member)
+        if text.startswith(prefixes):
+            live.add(text)
+    return sorted(live)
+
+
+async def held_bundle_snapshot(
+    session: AsyncSession, redis: Redis, candidate_id: UUID, *, lock: bool = False
+) -> dict[str, Any]:
+    """Capture every selected row/column, including full evidence and append-only history.
+
+    ``lock`` is for ingestion's caller-owned transaction. PostgreSQL NOWAIT refuses a
+    worker/editor rather than waiting and applying an old snapshot after they finish.
+    Nested JSON is preserved verbatim; only mapped UUID/date/binary values are encoded.
+    """
+
+    async def rows(model: Any, condition: Any) -> list[dict[str, Any]]:
+        statement = select(model).where(condition).execution_options(populate_existing=True)
+        if lock:
+            statement = statement.with_for_update(nowait=True)
+        return sorted(
+            (_held_row(row) for row in await session.scalars(statement)),
+            key=lambda row: str(row["id"]),
+        )
+
+    with session.no_autoflush:
+        candidates = await rows(NewsCandidate, NewsCandidate.id == candidate_id)
+        if not candidates:
+            raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
+        candidate = candidates[0]
+        state: dict[str, Any] = {"candidate": candidate}
+        state["source"] = await rows(NewsSource, NewsSource.id == UUID(candidate["source_id"]))
+        for key, model in (
+            ("evidence", NewsEvidence),
+            ("runs", NewsPipelineRun),
+            ("assessments", NewsAssessment),
+            ("assets", NewsAsset),
+        ):
+            state[key] = await rows(model, model.candidate_id == candidate_id)
+        article_id = candidate["guide_article_id"]
+        article_condition = GuideArticle.id == UUID(article_id) if article_id else False
+        state["article"] = await rows(GuideArticle, article_condition)
+        state["locales"] = await rows(
+            GuideArticleLocale,
+            GuideArticleLocale.article_id == UUID(article_id) if article_id else False,
+        )
+        locale_ids = [UUID(row["id"]) for row in state["locales"]]
+        state["revisions"] = await rows(
+            GuideArticleRevision, GuideArticleRevision.article_locale_id.in_(locale_ids)
+        )
+        state["topics"] = await rows(
+            GuideArticleTopic,
+            GuideArticleTopic.article_id == UUID(article_id) if article_id else False,
+        )
+        targets = [f"news-candidate:{candidate_id}", f"news-source:{candidate['source_id']}"]
+        if article_id:
+            targets.extend(
+                [
+                    guide_target(UUID(article_id)),
+                    *[guide_target(UUID(article_id), locale) for locale in LOCALES],
+                ]
+            )
+        state["audits"] = await rows(AdminAuditLog, AdminAuditLog.target.in_(targets))
+        state["live_jobs"] = await _held_live_jobs(redis, candidate_id)
+    return {
+        "schema": HELD_STATE_SCHEMA,
+        "candidate_id": str(candidate_id),
+        "captured_at": datetime.now(UTC).isoformat(),
+        "state": state,
+        "sha256": held_bundle_digest(state),
+    }
+
+
+async def ingest_held_bundle(
+    session: AsyncSession,
+    redis: Redis,
+    candidate_id: UUID,
+    manifest: dict[str, Any],
+    review: dict[str, Any],
+    *,
+    manifest_sha256: str,
+    review_sha256: str,
+    actor: User | None = None,
+) -> dict[str, Any]:
+    """Validate, or atomically save an owner-authored five-language draft.
+
+    Actor None is a read-only dry run. A review is a dated, trusted administrator's
+    provenance document, never a model assessment or permission to publish. The CLI
+    pins its raw bytes and records a durable intent before calling the write path.
+    Caller must commit once on success and roll back any exception. Original cached
+    drafts, status, errors, decisions, retry count and judge history remain untouched.
+    """
+    from app.auth.service import effective_admin_capabilities
+    from app.news_automation.pipeline import _save_guide_bundle
+
+    required = {
+        "schema",
+        "candidate_id",
+        "operation_id",
+        "slug",
+        "event_date",
+        "expected_snapshot",
+        "documents",
+        "review_sha256",
+    }
+    if set(manifest) != required or manifest["schema"] != HELD_BUNDLE_SCHEMA:
+        raise AppError(422, "news_ingestion_manifest_invalid", "草稿匯入規格不符")
+    if manifest["candidate_id"] != str(candidate_id):
+        raise AppError(422, "news_ingestion_candidate_mismatch", "候選與內容包不符")
+    operation_id = str(UUID(manifest["operation_id"]))
+    if operation_id != manifest["operation_id"] or manifest["review_sha256"] != review_sha256:
+        raise AppError(422, "news_ingestion_review_mismatch", "審稿收據或操作編號不符")
+    if any(
+        len(value) != 64 or any(c not in "0123456789abcdef" for c in value)
+        for value in (manifest_sha256, review_sha256)
+    ):
+        raise AppError(422, "news_ingestion_digest_invalid", "檔案雜湊不符")
+    with session.no_autoflush:
+        if actor is not None and (
+            not actor.is_active
+            or "content.manage" not in await effective_admin_capabilities(session, actor)
+        ):
+            raise AppError(403, "news_ingestion_actor_required", "需要具內容管理權限的操作者")
+        snapshot = await held_bundle_snapshot(session, redis, candidate_id, lock=actor is not None)
+        state = snapshot["state"]
+        previous = [
+            row
+            for row in state["audits"]
+            if row["action"] == HELD_INGESTION_ACTION
+            and row["metadata_json"].get("operation_id") == operation_id
+        ]
+        if previous:
+            # No implicit replay, even when the caller knows a previous save completed.
+            raise AppError(409, "news_ingestion_operation_used", "此操作已有保存紀錄；請讀取原收據")
+        expected = manifest["expected_snapshot"]
+        if (
+            set(expected) != {"schema", "candidate_id", "captured_at", "state", "sha256"}
+            or expected["schema"] != HELD_STATE_SCHEMA
+            or expected["candidate_id"] != str(candidate_id)
+            or held_bundle_digest(expected["state"]) != expected["sha256"]
+            or held_bundle_digest(expected["state"]) != snapshot["sha256"]
+        ):
+            raise AppError(409, "news_ingestion_state_changed", "候選、來源或完整歷史已變更")
+        captured = datetime.fromisoformat(expected["captured_at"])
+        if (
+            captured.tzinfo is None
+            or not 0 <= (datetime.now(UTC) - captured).total_seconds() <= 900
+        ):
+            raise AppError(409, "news_ingestion_snapshot_expired", "匯入快照已過期")
+        candidate_state = state["candidate"]
+        if (
+            candidate_state["status"] not in HELD_INGESTION_STATUSES
+            or candidate_state["published_at"] is not None
+            or state["live_jobs"]
+            or any(row["status"] == "running" for row in state["runs"])
+        ):
+            raise AppError(409, "news_ingestion_busy", "候選已發布或仍有工作執行中")
+        processing_started = candidate_state["processing_started_at"]
+        if processing_started is not None:
+            # Native holds retain the original claim clock. Require a completed native
+            # run after that clock; a bare clock is not proof that its worker stopped.
+            started = datetime.fromisoformat(processing_started)
+            now = datetime.now(UTC)
+            if started > now or not any(
+                row["status"] in {"succeeded", "failed"}
+                and row["finished_at"] is not None
+                and started <= datetime.fromisoformat(row["finished_at"]) <= now
+                for row in state["runs"]
+            ):
+                raise AppError(409, "news_ingestion_busy", "處理時間缺少已完成的原生工作紀錄")
+        if len(state["source"]) != 1 or state["source"][0]["scan_lock_until"] is not None:
+            raise AppError(409, "news_ingestion_source_busy", "来源不存在或掃描尚未結束")
+        if candidate_state["guide_article_id"] is not None:
+            raise AppError(409, "news_ingestion_guide_exists", "已有文章；請使用原有草稿編輯流程")
+        if article_slug(manifest["slug"]) != manifest["slug"] or len(manifest["slug"]) > 120:
+            raise AppError(422, "news_ingestion_slug_invalid", "文章網址代稱不符")
+        if manifest["slug"] in admin_service.RESERVED_SLUGS:
+            raise AppError(422, "news_ingestion_slug_invalid", "文章網址代稱已保留")
+        if set(manifest["documents"]) != set(LOCALES):
+            raise AppError(422, "news_locale_bundle_incomplete", "五個語言版本必須完整")
+        documents = {
+            cast(Locale, locale): GuideDocument.model_validate(value)
+            for locale, value in manifest["documents"].items()
+        }
+        evidence = [row for row in state["evidence"] if row["role"] == "evidence"]
+        if not evidence:
+            raise AppError(422, "news_evidence_insufficient", "缺少保存的來源證據")
+        source_refs = sorted(
+            [
+                {"title": row["title"], "url": row["url"], "checked_on": row["retrieved_at"][:10]}
+                for row in evidence
+            ],
+            key=lambda row: row["url"],
+        )
+        pending: dict[str, list[str]] = {}
+        for locale, document in documents.items():
+            admin_service._validate_document(document, None)
+            if (
+                sorted(
+                    [item.model_dump(mode="json") for item in document.sources],
+                    key=lambda row: row["url"],
+                )
+                != source_refs
+            ):
+                raise AppError(422, "news_ingestion_source_mismatch", "草稿來源與保存證據不符")
+            problems = hard_policy_problems(
+                document,
+                cast(Vertical, candidate_state["vertical"]),
+                locale,
+                source_count=len({row["url"] for row in evidence}),
+            )
+            if any(not problem.startswith("no_hero:") for problem in problems):
+                raise AppError(422, "news_ingestion_policy_failed", "; ".join(problems))
+            pending[locale] = problems
+        event_day = date.fromisoformat(manifest["event_date"])
+        if candidate_state["event_date"] != event_day.isoformat() or event_date_problems(
+            event_day,
+            manifest["slug"],
+            [
+                date.fromisoformat(row["source_date"] or row["retrieved_at"][:10])
+                for row in evidence
+            ],
+        ):
+            raise AppError(422, "news_event_date_invalid", "日期與候選或來源不符")
+        document_sha = {
+            locale: held_bundle_digest(doc.model_dump(mode="json"))
+            for locale, doc in documents.items()
+        }
+        review_keys = {
+            "schema",
+            "candidate_id",
+            "reviewer",
+            "reviewed_at",
+            "conclusion",
+            "documents_sha256",
+            "evidence_sha256",
+            "candidate_evidence_hash",
+            "blocking_content_problems",
+            "pending_policy_problems",
+        }
+        if (
+            set(review) != review_keys
+            or review["schema"] != HELD_REVIEW_SCHEMA
+            or review["candidate_id"] != str(candidate_id)
+            or not isinstance(review["reviewer"], str)
+            or not review["reviewer"].strip()
+            or review["conclusion"] != "draft_ingestion_only"
+            or review["blocking_content_problems"] != []
+            or held_bundle_digest(review["documents_sha256"]) != held_bundle_digest(document_sha)
+            or review["evidence_sha256"] != held_bundle_digest(state["evidence"])
+            or review["candidate_evidence_hash"] != candidate_state["evidence_hash"]
+            or held_bundle_digest(review["pending_policy_problems"]) != held_bundle_digest(pending)
+        ):
+            raise AppError(422, "news_ingestion_review_mismatch", "審稿收據未綁定五稿與完整來源")
+        reviewed = datetime.fromisoformat(review["reviewed_at"])
+        if reviewed.tzinfo is None or reviewed > datetime.now(UTC):
+            raise AppError(422, "news_ingestion_review_mismatch", "審稿時間不符")
+        result = {
+            "candidate_id": str(candidate_id),
+            "operation_id": operation_id,
+            "applied": False,
+            "committed": False,
+            "saved_in_transaction": False,
+            "documents_sha256": document_sha,
+            "pending_policy_problems": pending,
+            "approval": False,
+            "queued": 0,
+            "model_calls": 0,
+            "publication_verified": False,
+        }
+        if actor is None:
+            return result
+        if await _held_live_jobs(redis, candidate_id):
+            raise AppError(409, "news_ingestion_busy", "候選仍有佇列工作")
+        candidate = await session.get(NewsCandidate, candidate_id)
+        assert candidate is not None
+        provenance = {
+            "operation_id": operation_id,
+            "manifest_sha256": manifest_sha256,
+            "review_sha256": review_sha256,
+            "reviewer": review["reviewer"],
+            "reviewed_at": review["reviewed_at"],
+            "before_sha256": snapshot["sha256"],
+            "evidence_sha256": review["evidence_sha256"],
+            "author_kind": "owner",
+            "held_retry_count": candidate.retry_count,
+            "documents_sha256": document_sha,
+            "pending_policy_problems": pending,
+        }
+        article, versions = await _save_guide_bundle(
+            session,
+            candidate,
+            manifest["slug"],
+            event_day,
+            documents,
+            actor=actor,
+            provenance=provenance,
+            commit=False,
+        )
+        audit(
+            session,
+            actor,
+            HELD_INGESTION_ACTION,
+            f"news-candidate:{candidate_id}",
+            **provenance,
+            article_id=str(article.id),
+            locale_versions=versions,
+            candidate_evidence_hash=candidate.evidence_hash,
+            document_fingerprints={
+                locale: document_fingerprint(doc) for locale, doc in documents.items()
+            },
+        )
+        await session.flush()
+        return {
+            **result,
+            "saved_in_transaction": True,
+            "article_id": str(article.id),
+            "locale_versions": versions,
+        }
 
 
 async def settings_row(session: AsyncSession, *, lock: bool = False) -> NewsAutomationSettings:
@@ -654,12 +1035,18 @@ async def retry_candidate(
 async def reverify_candidate(
     session: AsyncSession, actor: User, candidate_id: UUID, payload: CandidateAction
 ) -> CandidateDetail:
-    row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
+    row = await session.get(
+        NewsCandidate, candidate_id, with_for_update=True, populate_existing=True
+    )
     if row is None:
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
-    if row.status not in {"manual_review", "shadow_review", "failed"}:
+    ingested_redraft = row.status == "needs_redraft" and await _ingested_bundle_available(
+        session, row
+    )
+    if row.status not in {"manual_review", "shadow_review", "failed"} and not ingested_redraft:
         raise AppError(409, "news_candidate_not_retryable", "這個候選目前不能重新查核")
     await _queue_reverify(session, row, payload.reason)
+    handoff = await _held_ingestion_handoff(session, row)
     audit(
         session,
         actor,
@@ -667,9 +1054,141 @@ async def reverify_candidate(
         f"news-candidate:{row.id}",
         reason=payload.reason,
         retry_count=row.retry_count,
+        **handoff,
     )
     await session.commit()
     return await candidate_detail(session, row.id)
+
+
+async def _held_ingestion_audit(session: AsyncSession, row: NewsCandidate) -> AdminAuditLog | None:
+    """A durable native owner save fence, even if its Guide is later edited."""
+    if row.guide_article_id is None:
+        return None
+    with session.no_autoflush:
+        saved = await session.scalar(
+            select(AdminAuditLog)
+            .where(
+                AdminAuditLog.target == f"news-candidate:{row.id}",
+                AdminAuditLog.action == HELD_INGESTION_ACTION,
+            )
+            .order_by(AdminAuditLog.created_at.desc(), AdminAuditLog.id.desc())
+            .limit(1)
+        )
+    if (
+        saved is None
+        or saved.actor_user_id is None
+        or saved.metadata_json.get("system_actor") is not False
+        or saved.metadata_json.get("author_kind") != "owner"
+        or saved.metadata_json.get("article_id") != str(row.guide_article_id)
+    ):
+        return None
+    return saved
+
+
+async def _held_ingestion_handoff(session: AsyncSession, row: NewsCandidate) -> dict[str, object]:
+    saved = await _held_ingestion_audit(session, row)
+    return (
+        {"held_ingestion_audit_id": str(saved.id), "article_id": str(row.guide_article_id)}
+        if saved is not None
+        else {}
+    )
+
+
+async def _held_ingestion_pending(session: AsyncSession, row: NewsCandidate) -> bool:
+    """Only a committed native reverify/refresh handoff ends the initial draft fence.
+
+    A late scheduler/judge job or a marker alone cannot replace the reviewed bundle.
+    Once handed off, the owner's later ordinary retry keeps its existing behaviour.
+    """
+    saved = await _held_ingestion_audit(session, row)
+    if saved is None:
+        return False
+    held_retry = saved.metadata_json.get("held_retry_count")
+    if type(held_retry) is not int:
+        return True
+    with session.no_autoflush:
+        handoffs = await session.scalars(
+            select(AdminAuditLog).where(
+                AdminAuditLog.target == saved.target,
+                AdminAuditLog.action.in_(
+                    ("news_candidate_reverify_requested", "news_candidate_evidence_refreshed")
+                ),
+                AdminAuditLog.created_at >= saved.created_at,
+                AdminAuditLog.actor_user_id.is_not(None),
+            )
+        )
+        for handoff in handoffs:
+            metadata = handoff.metadata_json
+            retry = metadata.get("retry_count")
+            if (
+                metadata.get("system_actor") is False
+                and metadata.get("held_ingestion_audit_id") == str(saved.id)
+                and metadata.get("article_id") == str(row.guide_article_id)
+                and type(retry) is int
+                and held_retry < retry <= row.retry_count
+            ):
+                return False
+    return True
+
+
+async def _ingested_bundle_available(session: AsyncSession, row: NewsCandidate) -> bool:
+    """One narrow route out of a missing-Guide hold, through ordinary fresh reverify.
+
+    Require the genuine actor-owned native save, all five current whole documents and
+    versions, and their actual revision rows. No editorial-fingerprint exemptions, asset
+    edits, partial cache, review declaration or automatic draft run can grant this route.
+    """
+    saved = await _held_ingestion_audit(session, row)
+    if saved is None:
+        return False
+    metadata = saved.metadata_json
+    if (
+        metadata.get("article_id") != str(row.guide_article_id)
+        or metadata.get("candidate_evidence_hash") != row.evidence_hash
+    ):
+        return False
+    article = await session.scalar(
+        select(GuideArticle)
+        .where(GuideArticle.id == row.guide_article_id)
+        .with_for_update(nowait=True)
+        .execution_options(populate_existing=True)
+    )
+    if article is None:
+        return False
+    locales = list(
+        await session.scalars(
+            select(GuideArticleLocale)
+            .where(GuideArticleLocale.article_id == row.guide_article_id)
+            .order_by(GuideArticleLocale.locale, GuideArticleLocale.id)
+            .with_for_update(nowait=True)
+            .execution_options(populate_existing=True)
+        )
+    )
+    if {item.locale for item in locales} != set(LOCALES):
+        return False
+    versions = {item.locale: item.version for item in locales}
+    hashes = {item.locale: held_bundle_digest(item.draft_json) for item in locales}
+    if (
+        any(item.published_version is not None for item in locales)
+        or held_bundle_digest(versions) != held_bundle_digest(metadata.get("locale_versions"))
+        or held_bundle_digest(hashes) != held_bundle_digest(metadata.get("documents_sha256"))
+    ):
+        return False
+    for item in locales:
+        revision = await session.scalar(
+            select(GuideArticleRevision).where(
+                GuideArticleRevision.article_locale_id == item.id,
+                GuideArticleRevision.version == item.version,
+            )
+        )
+        if (
+            revision is None
+            or revision.action != "created"
+            or revision.created_by_user_id != saved.actor_user_id
+            or held_bundle_digest(revision.document_json) != hashes[item.locale]
+        ):
+            return False
+    return True
 
 
 async def refresh_candidate_evidence(
@@ -744,6 +1263,7 @@ async def refresh_candidate_evidence(
             )
         )
     await _queue_reverify(session, row, payload.reason, marker=EVIDENCE_REFRESH_MARKER)
+    handoff = await _held_ingestion_handoff(session, row)
     audit(
         session,
         actor,
@@ -753,6 +1273,8 @@ async def refresh_candidate_evidence(
         changed_urls=changed,
         previous_evidence_sha256=previous_hash,
         evidence_sha256=row.evidence_hash,
+        **handoff,
+        **({"retry_count": row.retry_count} if handoff else {}),
     )
     await session.commit()
     return await candidate_detail(session, row.id)
@@ -884,7 +1406,11 @@ async def _queue_reverify(
         raise AppError(409, "news_draft_unavailable", "候選尚未建立可編輯的五語草稿")
     locale_rows = list(
         await session.scalars(
-            select(GuideArticleLocale).where(GuideArticleLocale.article_id == row.guide_article_id)
+            select(GuideArticleLocale)
+            .where(GuideArticleLocale.article_id == row.guide_article_id)
+            .order_by(GuideArticleLocale.locale, GuideArticleLocale.id)
+            .with_for_update(nowait=True)
+            .execution_options(populate_existing=True)
         )
     )
     documents = {
