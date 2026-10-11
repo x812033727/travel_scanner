@@ -4231,6 +4231,59 @@ PASS is DURATION_ONLY for the eleven rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Dub re-request merge with main (#1435) and migration renumber follow-up: 7 files (2026-10-11)
+
+Reviewer: `claude-opus-renumber-1432`, an instance working at the owner's request. It wrote none of the branch's commits before `d46458479` and no part of #1435. Unlike the reviewers of the sections above it is not only a reader here: it made the merge `c6df93b077b260ac123b235587726a56e8b3e1f3` ("Merge origin/main into claude/dub-retry-request") and the commit `f3a6b756beaee1e6a007ff6c290007cd1c1d7dfb` ("fix(video): the dub retry migration is 0131 and revises 0130_video_cute_presets"), and then wrote this section and review.json. Author: `claude-opus-5-5`, the branch's author, whose receipt this stays. Scope: DURATION_ONLY for the bytes of the seven files below at `f3a6b756b`. The merge joins the branch's `d464584797b19564e151265a8b0af9d0c8cc49bc` with main at `49e3928d46fa97b0958685cbb3c16e500e9ad51b` (#1435); their merge base is `6a26eff42707603d8f80586ae0efb7c85a13fe15` (#1421), the baseline of the "Dub re-request increment" above. No binding is reviewed afresh for what it does: six are the two sides' reviewed changes in one file, and one is a comment that names a migration number.
+
+The receipt union. Both sides had changed review.md and review.json since `6a26eff42`, each by appending one section and changing hashes in the table, and the merge conflicted in both. This report is now main's text through its "Explainer family (cute-cartoon, cute-mystery) increment", then the branch's "Dub re-request increment", then this section: the side merged in, the branch's own section, the merge, as the follow-ups above have it. The resolving script took both sections from the conflicted file and refused to write unless every section of `d46458479`'s report and of `49e3928d4`'s report (128 each, the bindings heading left out) was found whole in the result, which has 129 before this one. The table was then rewritten from the merged working tree, one row per REVIEW_FILES path, and review.json from the same hashes.
+
+By bound file, comparing the merge base, the branch, main and the merged tree for all 108 paths:
+
+- 83 paths are the same bytes in all four.
+- Fourteen changed on main only and are main's bytes, bound as main's section reviewed them: video_automation/models.py, schemas.py and series.py, test_video_explainer_duration.py, admin-video-explainer-duration.test.tsx, admin-video-series.tsx, series.mjs, series.test.mjs, branding.mjs, branding.test.mjs, drama.mjs, duration.mjs, duration.test.mjs and lint.mjs.
+- Five changed on the branch only: video_reviews/admin_service.py, video_reviews/schemas.py, admin-video-review-card.tsx, admin-video-reviews.test.tsx and automation.test.mjs. Four are the bytes the section above bound. schemas.py was changed again by `f3a6b756b`, see below.
+- Six changed on both sides and merged without a conflict: the five apps/web/messages/*/admin.json files and tools/video/automation/flow.mjs. For each, the added and removed lines of `git diff 6a26eff42 d46458479` are byte for byte those of `git diff 49e3928d4 c6df93b07`, and the added and removed lines of `git diff 6a26eff42 49e3928d4` are byte for byte those of `git diff d46458479 c6df93b07`: the merged file is main's change and the branch's change, each whole, in separate hunks (admin.json +25/−0 from the branch and +6/−0 from main in every locale; flow.mjs +223/−7 from the branch and +6/−6 from main). Main's six changed lines of flow.mjs replace `EXPLAINER_PRESET` with `isExplainerPreset(...)` at the import, `planProblem`, `settle` (two places) and `variantOf`; none of the branch's added or removed lines of flow.mjs contains "preset", "explainer", "minutes" or "duration", and the merged file no longer names `EXPLAINER_PRESET` anywhere. `node --check` accepts it.
+- `apps/api/app/video_reviews/schemas.py`: `f3a6b756b` changes three comment lines of it (+3/−3), each from "migration 0129" to "migration 0131", and nothing else. The migration was renumbered because #1435's `0130_video_cute_presets` took the place after `0128_video_languages_four`; what it does is unchanged. A comment's migration number is not a duration rule.
+
+Rebound, from the hash the branch's section bound to the hash of the bytes at `f3a6b756b` (main's receipt held a third hash for the first six, in its own section above):
+
+- `apps/api/app/video_reviews/schemas.py`: `b0a5f18ebb966075e1a87c66e3e4aa4e76a8b18d21b5096514374076704f6120` -> `e6264fda6e55564231a0b42bb0120e386e12541e16192b8f77581f5dfb35b2a2`.
+- `apps/web/messages/en/admin.json`: `05bcef7df472e9bc9e746bd74876eb7ff71f8a07c40f0aad8c00e571bd1099a9` -> `af82ee554a4a5a3ba46114302b5c7cda0b86e6b31ec9559fa0249206a64e28ad`.
+- `apps/web/messages/ja/admin.json`: `bbec48ba26a743599a664a8ef87439efe10fcb7573b51d799ff877af4e918942` -> `00493fd6a1d0e508def816f81285620939780164d677ff887ded781e9dbb40cf`.
+- `apps/web/messages/ko/admin.json`: `3a2987daebbba5eae098ea529a69182cd865e9e57073a5b8a5d1d38689006ea5` -> `e91226cdbbc6d905eb6a568e2484d31f167477fea2f5eeb0d548612758f5398b`.
+- `apps/web/messages/zh-CN/admin.json`: `e32eb998be5ac974739959c7bc7774c45ded4132049071cf6e1f84fb0e6ff102` -> `7437d362bced2531df5358d71b3f7374ab81431a26867813c56557c7ffb4160c`.
+- `apps/web/messages/zh-TW/admin.json`: `83515bfdca898ae48457694d750b08e6ca70308013787a9c3ef7eed6e8ec1add` -> `f6c95ee5bf40091ae6dca9c89cbdf6cf82b1cc231c92bc31115f615a494baf88`.
+- `tools/video/automation/flow.mjs`: `bf3684d50d25418408389497efb05c63290de6a633418c196289e2477d458b6f` -> `489db4cab75a529de63ad4a9ce9ff44288832cec74fe6f08159d20cf25c06651`.
+
+The registry stays 108 paths. Against main's receipt eleven rows differ, the eleven files of the "Dub re-request increment"; the other 97 are as main has them.
+
+The section above names "migration 0129" among the unbound files it did not review. That file is now apps/api/migrations/versions/0131_video_dub_retries.py; the section is kept as its reviewer wrote it.
+
+Ran (in a worktree of the branch, Node v24.13.0 on Windows; the reviewer ran `git fetch origin` once before the merge):
+
+- the four-way comparison of all 108 bound paths (`git cat-file blob` at the three commits, and the working tree after the merge);
+- the comparison of changed lines for the six files changed on both sides, and the scan of the branch's flow.mjs lines for the four terms above;
+- the union as a script, with the whole-section check named above, after which `durationReviewProblems` returned nothing against the merged tree;
+- `node --check tools/video/automation/flow.mjs`;
+- in apps/api at `f3a6b756b`, from the local uv cache: `alembic heads`, which printed one head, `0131_video_dub_retries`; `pytest tests/test_schema.py tests/test_migration_0131_video_dub_retries.py tests/test_migration_0130_video_cute_presets.py tests/test_migration_sql_dialect.py`, 12 passed and 2 skipped (the two that need PostgreSQL); `ruff check .`, clean;
+- `npm run check:tasks`, which exited 0.
+
+The CLI check, review.test.mjs and `git diff --check` are run after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- For schemas.py the reviewer is also the one who changed the three comment lines. The independence the receipt's pair names holds for everything the branch's author wrote; for those three lines it is this instance checking its own edit, stated here so that nobody reads more into it.
+- No binding is reviewed afresh. The two sections above keep their own revision-specific claims; neither the dub retry nor the explainer family is judged again, and whether the two features behave together at run time (a retried dub of a cute explainer) was not tried.
+- The merged admin.json files were compared as lines, not parsed for key collisions beyond what git's merge reports; `npm run check:i18n`, lint, typecheck and the web tests were not run, nor mypy, the API suite beyond the four files named, the tool suites, or CI.
+- The PostgreSQL parts of the two migration tests were skipped here and run only in CI.
+- No dub was made, no planner or worker was run, and no rendered cut or measured narration was produced.
+- This follow-up binds the tree at `f3a6b756b` only: a later commit or merge with main that changes any of the seven files, or either receipt file, needs its own follow-up.
+- The 101 bindings this follow-up left at the hashes the two sections above bound are not covered afresh.
+
+PASS is DURATION_ONLY for the seven rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -4248,7 +4301,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/app/video_automation/series.py` | `6dd73fd48500f0bb168e6ced4e19964f13dd5f18c9758a6caafa3fa6a865d847` |
 | `apps/api/app/video_automation/settings.py` | `9941b3244e15cf6b1d8aaec32c68ab2424f84adb32804a179652d93fb3977ca3` |
 | `apps/api/app/video_reviews/admin_service.py` | `4cf2dceda72b3bd09f471e2263a9d4a96ba1d8a1375c554b0225d1ae12352856` |
-| `apps/api/app/video_reviews/schemas.py` | `b0a5f18ebb966075e1a87c66e3e4aa4e76a8b18d21b5096514374076704f6120` |
+| `apps/api/app/video_reviews/schemas.py` | `e6264fda6e55564231a0b42bb0120e386e12541e16192b8f77581f5dfb35b2a2` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
 | `apps/api/migrations/versions/0122_video_anime_production_policy.py` | `91f97905e9a689cc47aef8eac60735175a4048bfb5788fa1d204acb43ee11ea7` |
 | `apps/api/tests/test_migration_0118_video_min_8_minutes.py` | `c479dfd800de1fcbd1fb71d0b47d4fcb922675b314b31b680e8195cac898c28e` |
