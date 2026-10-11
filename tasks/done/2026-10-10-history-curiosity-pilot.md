@@ -1,13 +1,13 @@
 ---
 id: 2026-10-10-history-curiosity-pilot
 title: 歷史與奇異：站主選畫風與前三題後，本機做兩集試片並記實測
-status: review
+status: done
 priority: P2
 area: docs
 owner: claude-fable-curio
 claimed_at: 2026-10-10T00:32:30Z
 created_at: 2026-10-10T16:20:00Z
-completed_at:
+completed_at: 2026-10-10T14:38:27Z
 branch: claude/history-curiosity-video-series-aade32
 depends_on: []
 scope:
@@ -32,13 +32,13 @@ scope:
 
 ## Steps
 
-- [ ] 先 `gh pr list` 與 `npm run tasks -- list`，確認沒有別的 session 在做同一批檔；claim。
-- [ ] 讀 `youtube-video` skill、`docs/videos/ILLUSTRATED.md`、`docs/videos/history-curiosity/look.md`；本機工具要先借 node_modules（含 `pinyin-pro`）與 ffmpeg。
-- [ ] 企劃代理寫 `brief.md`（兩三個大綱），站主選或照建議；撰稿代理寫 `video.json` 與 `claims.md`，照 look.md 的 prompt 規則（一個主體一個動作、不寫風格、文字不畫）。
-- [ ] 查核：換人一輪，改超過 3 個事實再換人；每個數字寫來源與確認日期。
-- [ ] 照片：`stock search`／`stock fetch` 或維基共享資源的公有領域檔（手動下載到工作目錄、寫進 `assets[]`），先用 `screenshot` 版型放。
-- [ ] `tts` → `check-audio` → `pace.mjs` → `keyframes` → `render` → `assemble` → `captions` → `qa` → `package` → `review-push`；每一關的收據留在工作目錄。
-- [ ] 回寫實測與 `topics.json`；站主看成片後把要改的畫風寫回 `look.md`。
+- [x] 先 `gh pr list` 與 `npm run tasks -- list`，確認沒有別的 session 在做同一批檔；claim。
+- [x] 讀 `youtube-video` skill、`docs/videos/ILLUSTRATED.md`、`docs/videos/history-curiosity/look.md`；本機工具要先借 node_modules（含 `pinyin-pro`）與 ffmpeg。
+- [x] 企劃代理寫 `brief.md`（兩三個大綱），站主選或照建議；撰稿代理寫 `video.json` 與 `claims.md`，照 look.md 的 prompt 規則（一個主體一個動作、不寫風格、文字不畫）。
+- [x] 查核：換人一輪，改超過 3 個事實再換人；每個數字寫來源與確認日期。
+- [x] 照片：`stock search`／`stock fetch` 或維基共享資源的公有領域檔（手動下載到工作目錄、寫進 `assets[]`），先用 `screenshot` 版型放。
+- [x] `tts` → `check-audio` → `pace.mjs` → `keyframes` → `render` → `assemble` → `captions` → `qa` → `package` → `review-push`；每一關的收據留在工作目錄。
+- [x] 回寫實測與 `topics.json`；站主看成片後把要改的畫風寫回 `look.md`。
 
 ## How to verify
 

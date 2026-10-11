@@ -15,6 +15,17 @@ import { STORY_INSTRUCTIONS } from "./story-prompts.mjs";
 
 const SKILL = path.join(".agents", "skills", "youtube-video", "references");
 
+/**
+ * The showcase as the worker's writer reads it: without the photo card and the assets[] entry it
+ * needs. An automated video has no photograph files yet (the same reason TEMPLATE_GUIDE keeps the
+ * writer off diagram and screenshot), and a shape the writer can copy is one it will use; the
+ * local route writes photo cards by hand (docs/videos/history-curiosity/look.md §照片).
+ */
+export function workerShowcase(showcase) {
+  const { assets: _assets, ...rest } = showcase;
+  return { ...rest, scenes: showcase.scenes.filter((scene) => scene.template !== "photo") };
+}
+
 /** The reference texts every writing stage reads, loaded once from the repository. */
 export function references(root) {
   const read = (...parts) => readFileSync(path.join(root, ...parts), "utf8");
@@ -22,7 +33,7 @@ export function references(root) {
     script_writing: read(SKILL, "script-writing.md"),
     formats: read(SKILL, "formats.md"),
     channel: read("docs", "videos", "README.md"),
-    showcase: JSON.parse(read("tools", "video", "templates", "fixtures", "showcase", "video.json")),
+    showcase: workerShowcase(JSON.parse(read("tools", "video", "templates", "fixtures", "showcase", "video.json"))),
     minimal: JSON.parse(read("tools", "video", "core", "fixtures", "minimal", "video.json")),
     // The drama route (docs/videos/DRAMA.md): its reference and its example, for the drama stages.
     drama: read(SKILL, "drama.md"),
@@ -203,12 +214,15 @@ ${TEACHING_RULES}
 
 ${VALUE_RULES}
 
-You are the planner. From "topics" (the site's recent checked articles, then web results) pick ONE
-topic inside "scope", outside "avoid", not already covered by "earlier_videos", timely and useful to
-a Taiwanese viewer, and write the brief the owner chooses an outline from. "earlier_videos" holds
-every video made or started, including ones the owner dropped: do not retell the same news,
-product offer or article under another title, and never pick a site article in "used_guides".
-Prefer a site article: the video can then point back to it. When "requested_guide" is present the
+You are the planner. From "topics" (the site's recent checked articles, then official pages, then
+web results) pick ONE topic inside "scope", outside "avoid", not already covered by
+"earlier_videos", timely and useful to a Taiwanese viewer, and write the brief the owner chooses an
+outline from. "earlier_videos" holds every video made or started, including ones the owner dropped:
+do not retell the same news, product offer or article under another title, and never pick a site
+article in "used_guides". Prefer a site article: the video can then point back to it. A topic whose
+"source" is "official" is a company's own page (a product update, a how-to post) the site has no
+article for: prefer it to a web result, return "source_guide": null with its url first in
+"source_urls", and tell an update in the rules' four moves. When "requested_guide" is present the
 owner asked for a video of THAT site article: plan it and nothing else. "topics" is empty; "sources"
 holds the article as the site serves it. Return its slug as "source_guide" and its url first in
 "source_urls". "scope" and "used_guides" do not apply to it; "earlier_videos" still keeps your angle
