@@ -4348,6 +4348,90 @@ PASS is DURATION_ONLY for the thirteen rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Explainer series prompts (the cute explainers are written from their own series' texts) increment: 9 files (2026-10-11)
+
+Reviewer: `claude-opus-receipt-explainer-pr3`. Author: `claude-opus-explainer-pr3`. Scope: DURATION_ONLY for the nine changed bindings below, reviewed at `7ee2f452db0ef9debe3f6d16a37492d054882b0f`, the merge of origin/main (`b12ae9f6d`, #1445) into claude/explainer-series-prompts at `a0beb22388b3fa80b363cfe4b2837d8e27277f05` ("docs(video): a cute one-off filed before the deploy is paid for twice, not stopped; why the default-style select still hides the cute presets"). The branch is pull request 3 of docs/videos/explainer-route/DESIGN.md: nine commits (`7e0ca6a43`, `6c6b4e6f6`, `96cd54c92`, `90a0d18ce`, `edc0ba76c`, `4ca1f8d3b`, `78b9d2042`, `0d5ac481b`, `a0beb2238`) and an earlier merge of origin/main (`a01b6be25`). The reviewer wrote none of them, made the merge at the head (no conflict; what main gained since the branch last held it is #1445, 59 files under tasks/), and edits only this report and review.json.
+
+Baseline: origin/main at `b12ae9f6d`. Neither the branch nor #1445 changed a receipt file, so the receipt the merge carries is main's, the "Explainer image model" increment above. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these nine bindings: the eight that docs/videos/explainer-route/DESIGN.md section 5.4 names and tools/video/automation/automation.test.mjs, which `90a0d18ce` added a test to after that list was written. They are the nine bound files among the 24 that differ between origin/main and the merge; the other 99 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `apps/web/components/admin-video-series.tsx`: `b6c26a0e7bef415e2aebb88a8b09e10a8ccb1b1d4b49a269e04627cee58a48a7` -> `c64bfba40979fef3f8291ae2582a8cc2bb55644d4be0655ba75b39f767677d8a`.
+- `tools/video/automation/automation.test.mjs`: `fe55a3b866b3fa639852ddd8064c46978290593730fee5b987258ed461b8cc1b` -> `4bea77e72473edd7affc7a7b1b36862c1ba7f93f430cf34dfd32b63745250a05`.
+- `tools/video/automation/discuss.mjs`: `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` -> `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21`.
+- `tools/video/automation/flow.mjs`: `6b0fc710cc21812fd88204e99a773582ae51acd69b16fe11f6147aa0a22b1519` -> `88e44aac739df507703cdddfd021151f2edcd4366bc03e594c0cf0e9688483a9`.
+- `tools/video/automation/prompts.mjs`: `61632a08cd1b036796b900e2274babf49316960adef8ff974f52bbaf73b8f85d` -> `a67ffdc314274301d80f403f182d5206aeb5e7cb2989b6b6b4f1220adea0a9ac`.
+- `tools/video/automation/series.mjs`: `ceb9dabd7e887af14e8a0a3867f2ccfeb54ee1ac11a117a62bd48642e36955e0` -> `d512034bbc99c0bc9ec7bbdbcfafa9ea6b548eedd877aa6754bbb81b04cd4c37`.
+- `tools/video/automation/series.test.mjs`: `49626904a2594f6ffa430ea16975b8ba06828d242e413f221c5e63d85284020a` -> `f0ecd19d2dc779ad2ca304c37a59bab72f322d00ec50fb33e3b183f409760b28`.
+- `tools/video/core/drama.mjs`: `e691c3a4ae58f0c20e0dd7f4faba3f722af4d9b146ce77cd54412dd667c5e577` -> `90de23ad4cc9e1c5ed44e6aae6ab4ccf104d8bac6bd13810122e5ed6853570e4`.
+- `tools/video/media/look-keyframes.test.mjs`: `29772a7098486e5f0b7e289d9a6eb10e1af4e4d0aa2bf5f6a744d5bef3cd5b31` -> `a29f3901db7d3c6eac0c01f634cb2d1b4b59688ab6f72788bbfa7bae401f1f13`.
+
+What the change is: a one-off in a cute preset was planned, written, checked and discussed with So That's Why's flat-explainer texts, under the variants `bible-explainer`, `explainer` and `discuss`. It now has variants of its own (`bible-explainer-cartoon`, `explainer-cartoon`, `discuss-cartoon` and the three that end in `-mystery`), whose texts are built in tools/video/automation/explainer-series.mjs, a new file the registry does not bind. The cute looks also take the steps and table cards, the picture-variety lint and the nine yes/no picture checks; the first draft of a cute episode longer than 11 minutes is handed more line ids; and the request form offers the two presets. Unlike the two pull requests before it, this one holds two things with a bearing on length: the count of line ids (flow.mjs, bound) and what the new texts tell a writer about length (unbound, reached through the bound `instructionsFor`). Each is judged on its own below. No constant a length rule reads moves, and no existing preset's text, count or bound changes.
+
+Findings, tools (8 files):
+
+- `tools/video/automation/flow.mjs` (+26/−3): one import; `DRAFT_LINE_IDS = 140` and `PROFILED_LINE_IDS_PER_MINUTE = 12`, the first of which was the literal in `write`; `draftLineIds(state)` and its call in `write` (judged under "The line ids" below). In `settle`, a preset with a profile keeps `{ preset }` alone of the look: the line under it, unchanged, already forced the request's preset, so `look.preset`, which `isExplainer`, `needsMinimumLength` and `isKnowledgeLongform` read, is the value it was, and what is dropped is a style or a negative the writer added. `variantOf` returns "explainer" for flat-explainer as before, the series' own stage variant for a cute preset and null for everything else as before. The Shorts are drafted for `isExplainerStageVariant(...)`, true for the three stage variants, where the line compared with "explainer". `episodeMinutes`, `slidesMinutes`, `scriptPayload` (`target_minutes: [T, T]`), `saveAndLint`, `MAX_LINT_FIXES = 3`, the 40 fresh ids of every fix round and `usesRegister` (false for every drama, so no pause beat is set on an explainer of any preset) are outside the hunks.
+- `tools/video/automation/prompts.mjs` (+7/−2): one import, and in `instructionsFor` a series' own text is offered after `VARIANT_INSTRUCTIONS` and `STORY_INSTRUCTIONS` in the same chain, so every key that had a text keeps it; the genre section is left out when the base is a series' own text, and for every other call the condition is the old one. `EXPLAINER_COMMON` and flat-explainer's stage texts are outside the diff, and series.test.mjs still finds their pinned digests. The genre section a cute one-off no longer gets is that of the long-series form's default genre, which its row carries (xianxia-bonds: a premise seed, the satisfaction types, a title and a thumbnail formula, the visual tier's line). Printed from the worktree it holds no minute and no second, and flat-explainer's three stages still get it.
+- `tools/video/automation/discuss.mjs` (+9/−4): which discussion variant a bible's or a screenplay's thread is answered with, and `SCRIPT_DISCUSSION_VARIANTS` gains the two cute ones. A revised screenplay still goes through `saveAndLint` (line 436, unchanged) and a discussion still hands 40 line ids (line 253, unchanged).
+- `tools/video/automation/series.mjs` (+5/−2): `documentVariant` picks the bible's variant by the preset, and `documentPayload` sends `genre_spec: null` for a cute one-off. No length.
+- `tools/video/core/drama.mjs` (+17/−3): `CUTE_EXPLAINER_PRESETS`, `CUTE_EXPLAINER_CARD_TEMPLATES` (the explainer's six and "steps", "table"), `explainerCardTemplates`, `isCuteExplainer` and `CUTE_LOOK_WORDS`; `validateDrama` asks `explainerCardTemplates(preset)`, which answers flat-explainer with the list it had; `pictureVarietyProblems` also reads a cute explainer. That function reads prompts and camera words and no timeline (its one error is three stills in a row under one move). A steps or a table card has no length of its own: a card lasts as long as the lines spoken over it. `isExplainer`, `needsMinimumLength`, `isKnowledgeLongform`, `timesSilentShots`, `MAX_SHOT_SECONDS = 12`, `WARN_SHOT_SECONDS = 10`, `MIN_MEDIAN_SHOT_SECONDS_NARRATED = 3` and the lines of `shotProblems` are outside the hunks.
+- `tools/video/automation/automation.test.mjs` (+36/−0): one new test of `draftBudget`, in characters of a shot's prompt (793, 770 and 756 under a limit lowered to 1200 for the test; 1000 at the real 1500). No assertion about minutes, the floor or frames is added, removed or loosened.
+- `tools/video/automation/series.test.mjs` (+116/−15): `explainerOneOffRun` takes the minutes its request asks (8 when not given, as it was). A new test hands a flat-explainer asked for 20 minutes 140 ids, the same ids as at 8. The two cute end-to-end tests ask cute-mystery for 20 minutes (`target_minutes: [20, 20]`, 240 distinct ids) and cute-cartoon for 10 (`[10, 10]`, 140). The test they replace expected a cute one-off to run flat-explainer's variants and asserted no length.
+- `tools/video/media/look-keyframes.test.mjs` (+66/−0): three tests of which question a still is judged with, and that `--accept-best` is still refused for a cute explainer. No length.
+
+Findings, web (1 file):
+
+- `apps/web/components/admin-video-series.tsx` (+14/−11): `REQUEST_PRESETS` gains `cute-cartoon` and `cute-mystery`; `requestImageModel` also answers `listed`, and the form lists a preset's own model by its id when the catalogue lacks it. `DRAMA_MINUTES` (1, 8, default 3), `EXPLAINER_MINUTES` (8, 20, default 10), `requestMinutes`, `changePreset` and the minutes input are unchanged. Both presets are in `EXPLAINER_PRESETS` of apps/web/lib/video-presets.ts, so the form bounds a cute request to 8 to 20 minutes with 10 as the default, which is what the "Explainer family" increment above said a later pull request would get. The API, which this branch does not touch, refuses anything else.
+
+The line ids:
+
+- From the code: `draftLineIds` returns 140 unless `state.format === "drama"` and `explainerProfile(state.style_preset)` is not null, and `explainerProfile` answers by `Object.hasOwn` over a frozen table whose two keys are the cute presets. Called from the worktree: 140 for flat-explainer, cinematic-3d, anime-2d, ink-wash, custom, no preset and the names of two `Object.prototype` members at 8, 9, 10, 11, 12, 15 and 20 minutes; 140 for slides, screencast, shorts and no format with any preset and any minutes; for either cute preset 140 at 8 to 11 minutes, 144 at 12 and 12 more a minute to 240 at 20, and 140 when the minutes are not a finite number. `write` sets `state.target_minutes` from `episodeMinutes` on its first line, so a cute state holds 8 to 20 there. A long anime does not reach the call.
+- Whether 12 a minute is enough: lint's estimate (`estimateTimeline`) reads `DEFAULT_CPM = 250` spoken units a minute, 4.17 a second, and adds 300 ms after every line and 700 ms more after a scene's last. With every id used and one line a shot, a line of the 20 units the text aims at is 5.8 s, so 12 of them are 69.6 s for each minute asked: 13.93 minutes for a 12-minute request and 23.21 for a 20-minute one (116%); at the 24-unit ceiling 16.25 and 27.08 (135%). The target is reached from 17 units a line when each line is its own scene and from 19 when four share one, as under a card; the 480 seconds from 5 to 13 units a line, whatever the request. At the 3.4 units a second the text gives for the voice a line is longer, so the same script measures longer than lint estimates it.
+- What it replaces: 140 ids at a 20-minute request end at 13.55 minutes with 20-unit lines and 15.80 with 24-unit ones, short of the target and well over the floor.
+- The count is not a length rule. A draft that comes out short is refused by lint ("write more narration") and each of the three fix rounds hands 40 more ids; the floor is lint's error on the estimate and QA's 480 measured seconds, and neither reads the count.
+
+What the texts say about length (tools/video/automation/explainer-series.mjs, read whole; `instructionsFor` sends each of the ten texts as it is):
+
+- All ten open on flat-explainer's own sentence: a 10-minute production target, or the explicit "target_minutes"; narration body and finished cut each at least 8 minutes, intro and outro not counted in the body. That is `effectiveEpisodeMinutes` (10 when absent or under 8, kept from 8 to 20, a throw above, the same for the three presets when called) and `knowledgeDurationProblems` (480 s of body and of cut). "Running over the target is fine" and "never fill the minimum with repeated narration, slower delivery, silence or extended channel bookends" are flat-explainer's words too.
+- The shape (the writer's text and the screenplay discussion's) gives lengths for the 10-minute target: for 原來如此事務所 a hook within 20 seconds, about 2 minutes, 6 to 7 minutes, about a minute and about 20 seconds; for 奇聞檔案局 the same hook, about 1.5 minutes, 6 to 7 minutes, about 1.5 minutes and about 20 seconds. Both add up to 580 to 640 s. For another target "the hook and the close keep theirs and the three middle parts scale in the same proportion. The parts together reach the target and never fall under 8 minutes." It names no length outside 8 to 20 minutes.
+- The bible (the planner's text and the bible discussion's) sizes its outline at "250 spoken characters a minute; the whole aimed at "series.target_minutes", never under 8 minutes; over it is fine", flat-explainer's words and lint's rate.
+- A shot: "a new picture about every 4 to 7 seconds", and "one spoken sentence, two only when both are short: about 4 to 7 seconds (a line of 24 characters takes about 7; lint refuses more than 12, warns over 10)". On lint's estimate one 20-unit line is a 5.80 s shot, one 24-unit line 6.77 s, two of 18 units 9.97 s and two of 24 units 12.83 s, which lint refuses and the text rules out. 12 and 10 are `MAX_SHOT_SECONDS` and `WARN_SHOT_SECONDS`; 4 s is above the 3 s median under which lint warns.
+- Chapters: "each stretch a marker opens is at least 10 s" is `CHAPTER_MIN_SECONDS`; the five parts carry at least `MIN_CHAPTERS`; a hook within 20 seconds is inside the 30 s after which lint warns on a drama's opening chapter.
+- The two Shorts: "25 to 55 seconds each", the sentence flat-explainer's text has. Shorts are outside the family's rule.
+
+Recorded observations. None is a rule change and none lets an episode under the floor; they are weaknesses of the texts or of the count:
+
+1. Two rates. The bible is sized at 250 characters a minute, which is lint's; the writer's line rule says "the voice reads about 3.4 characters a second" (docs/videos/history-curiosity/README.md gives it as measured). A writer who sizes an 8-minute request as exactly eight minutes of speech at 3.4 a second, counting no pause, writes 1,632 units, which lint estimates at 7.94 minutes in 20-unit lines and 7.68 in 24-unit ones and sends back to be written longer. At 9 minutes the same sizing estimates 8.91 and 8.70. So only a request for exactly 8 minutes is exposed, to one fix round and not to a short cut. The writer's text could say that lint counts 250 a minute.
+2. The line rule says "40 is where lint refuses the line". Lint warns above 40 spoken units (lint.mjs lines 413 and 414) and refuses nothing for a line's length. The text is the stricter of the two.
+3. Taken at the low end of each range the shape's parts add up to 580 s for the 10-minute target, 20 s short of it, and to 472 s when the middle parts are scaled by eight tenths for an 8-minute request. The paragraph's last sentence, quoted above, settles which wins, and lint refuses the draft either way.
+4. 12 ids a minute is exact, not generous, for a script whose lines mostly share scenes: four 20-unit lines a scene with every id used estimate at 12.67 minutes for a 12-minute request and 21.11 for a 20-minute one (106%), and lines under 19 units there fall short of the target on the first draft. A fix round's 40 ids cover it.
+5. Nothing in the texts or in lint bounds the lines spoken over one card state of a drama-format explainer; QA's pace item does, at 15 measured seconds a state. At 3.4 units a second two 24-unit sentences over one state are about 15.4 s, and about 16.2 s on the closing card, which also takes the 1.5 s tail and of which the text says "under one or two sentences"; two 20-unit sentences there are about 13.9 s. Flat-explainer's text bounds it no better; the cute text did not make it worse.
+6. The "4 to 7 seconds" cadence is advice. Lint's cadence rules (8 s a picture, 6 s on average, half the runtime illustrated) read illustrated slides alone, so a cute explainer, a drama by format, is held to 12 s a shot at lint and 15 s a state at QA, as flat-explainer is.
+7. The file that now holds a cute explainer's length wording is not in `REVIEW_FILES`, where flat-explainer's (prompts.mjs) is. A later change to explainer-series.mjs will not make this receipt stale.
+
+The floor's own sites are not in this change. No file under apps/api, tools/video/qa or tools/video/long-form differs between origin/main and the head, nor do core/duration.mjs, core/lint.mjs, core/schema.mjs, core/timeline.mjs or core/cadence.mjs. A search of tools/video and apps/api/app, tests aside, finds no comparison with the stage variant "explainer" left: the one line of `write` that had it now asks `isExplainerStageVariant`.
+
+Ran (in the worktree at the merge, Node on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the nine stale bindings and exited 1;
+- a reading of the diff of each of the nine files against origin/main, of explainer-series.mjs whole, and of the hunks of media/keyframes.mjs and apps/web/lib/video-presets.ts as context;
+- the hashing, with Node's crypto over the files' bytes, of all 108 bound files against review.json, which found the same nine, and their comparison with `git diff --name-only origin/main HEAD`;
+- a script kept outside the repository that imports the worktree's modules and calls `Automation.prototype.draftLineIds`, `estimateTimeline`, `effectiveEpisodeMinutes`, `genreBlock` and `instructionsFor`; every count and every estimated figure above is its output, and the figures at 3.4 units a second in observation 5 are arithmetic on timeline.mjs's constants;
+- a scan of the added and removed lines of the nine files for minutes, seconds, targets, durations, frames, pace and the numbers 480, 600, 780, 140 and 40, which finds the line-id lines of flow.mjs, the minutes of the series.test.mjs cases above and nothing else that is a length;
+- `node --test` over core/duration.test.mjs, core/explainer-family.test.mjs, core/explainer-cute.test.mjs, automation/explainer-series.test.mjs, automation/explainer-family.test.mjs, automation/series.test.mjs, automation/discuss.test.mjs, media/look-keyframes.test.mjs and qa/duration.test.mjs: 185 of 185; and automation/automation.test.mjs with `--test-name-pattern "explainer|line ids|prompt budget"`: 8 of 8.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the ten texts as briefs: the content rules, who may be drawn, the cards, the thumbnails and the two series' structures as product choices are not judged, nor are the nine picture checks or the refusal of `--accept-best`.
+- No writer was run, no picture was drawn, and no narration was synthesized or measured. Whether a cute writer follows the shape, and what the voice measures (3.4 units a second is the series document's figure), was not observed; only that lint and QA refuse an episode that comes out short.
+- automation.test.mjs was not run whole, nor any API test, ruff, mypy, Vitest, lint, typecheck or i18n check. The web finding rests on reading the diff.
+- What a cute one-off that was filed before the deploy does to its unfinished model calls (the new variants are other journals) is the ticket's deploy note and is not judged here.
+- This increment binds the tree at the merge only: a later commit or merge with main that changes any of the nine files, or either receipt file, needs its own follow-up. The 99 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the nine rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -4381,7 +4465,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/web/components/admin-video-review-card.tsx` | `4d22f999dcb70dfca1bd436421ecfe04cd9c7b9d869c0295bc4946be26e3e7a8` |
 | `apps/web/components/admin-video-reviews.test.tsx` | `522f72db3d27c7b6a7eb0dd9d7eec76ef02976eacfe77317b4791cae6f6decf2` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
-| `apps/web/components/admin-video-series.tsx` | `b6c26a0e7bef415e2aebb88a8b09e10a8ccb1b1d4b49a269e04627cee58a48a7` |
+| `apps/web/components/admin-video-series.tsx` | `c64bfba40979fef3f8291ae2582a8cc2bb55644d4be0655ba75b39f767677d8a` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
 | `apps/web/messages/en/admin.json` | `d57d403f5cf9d7d8bd1dc40512bcee86416cf0a52e5ca0d80e205d30ad9c6d33` |
 | `apps/web/messages/ja/admin.json` | `852fe1e05b0c39346ce560ead01bcdee7b99de0e19add71b7704ea93e881dc2b` |
@@ -4404,12 +4488,12 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `fe55a3b866b3fa639852ddd8064c46978290593730fee5b987258ed461b8cc1b` |
-| `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
-| `tools/video/automation/flow.mjs` | `6b0fc710cc21812fd88204e99a773582ae51acd69b16fe11f6147aa0a22b1519` |
-| `tools/video/automation/prompts.mjs` | `61632a08cd1b036796b900e2274babf49316960adef8ff974f52bbaf73b8f85d` |
-| `tools/video/automation/series.mjs` | `ceb9dabd7e887af14e8a0a3867f2ccfeb54ee1ac11a117a62bd48642e36955e0` |
-| `tools/video/automation/series.test.mjs` | `49626904a2594f6ffa430ea16975b8ba06828d242e413f221c5e63d85284020a` |
+| `tools/video/automation/automation.test.mjs` | `4bea77e72473edd7affc7a7b1b36862c1ba7f93f430cf34dfd32b63745250a05` |
+| `tools/video/automation/discuss.mjs` | `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21` |
+| `tools/video/automation/flow.mjs` | `88e44aac739df507703cdddfd021151f2edcd4366bc03e594c0cf0e9688483a9` |
+| `tools/video/automation/prompts.mjs` | `a67ffdc314274301d80f403f182d5206aeb5e7cb2989b6b6b4f1220adea0a9ac` |
+| `tools/video/automation/series.mjs` | `d512034bbc99c0bc9ec7bbdbcfafa9ea6b548eedd877aa6754bbb81b04cd4c37` |
+| `tools/video/automation/series.test.mjs` | `f0ecd19d2dc779ad2ca304c37a59bab72f322d00ec50fb33e3b183f409760b28` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
 | `tools/video/core/anime-policy.mjs` | `2c53db1a18e27780b032a019b37912197c13bb4aadc6a130cecdc60371482ecd` |
 | `tools/video/core/anime-policy.test.mjs` | `74b9f1360829efed4c2f1e529b403024877e255d51430a5a2636ac7c5a24b3c6` |
@@ -4417,7 +4501,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/approvals.test.mjs` | `51c4a632685a36221dcaf6ac926d5256879c1540f709b708945770d9e5e6adaf` |
 | `tools/video/core/branding.mjs` | `d9391d4832301395714cd3741a745fbf248a617fbd2850fe382e473a08ed7fd7` |
 | `tools/video/core/branding.test.mjs` | `85530e76a4b26ca3a61fea99c1852a554c73db15c0248b9f32f0dabb1cdb0621` |
-| `tools/video/core/drama.mjs` | `e691c3a4ae58f0c20e0dd7f4faba3f722af4d9b146ce77cd54412dd667c5e577` |
+| `tools/video/core/drama.mjs` | `90de23ad4cc9e1c5ed44e6aae6ab4ccf104d8bac6bd13810122e5ed6853570e4` |
 | `tools/video/core/drama.test.mjs` | `c6dc0ef74464fcb9e47397f59b3902938c628ed86ec2f53819eeba88537f22c6` |
 | `tools/video/core/duration.mjs` | `12009ae5d12cba73e55ff462e9f9dd107350d53bea1da5a65bf59a1a39e13285` |
 | `tools/video/core/duration.test.mjs` | `a5b3e9c54368628d4b929b8050eb3ad925cc1b9c1fbd5b88bd3bf5ca010358f6` |
@@ -4444,7 +4528,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
 | `tools/video/media/clips.test.mjs` | `626e678fc76d08210aad82a850f393c66009e9c3a7fce815a8097e686602b238` |
-| `tools/video/media/look-keyframes.test.mjs` | `29772a7098486e5f0b7e289d9a6eb10e1af4e4d0aa2bf5f6a744d5bef3cd5b31` |
+| `tools/video/media/look-keyframes.test.mjs` | `a29f3901db7d3c6eac0c01f634cb2d1b4b59688ab6f72788bbfa7bae401f1f13` |
 | `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
 | `tools/video/package/package.test.mjs` | `ec0a56363e66f4410af6d759b2497c39cc1aabd7bd3aacd449628b5b8b7b0047` |
 | `tools/video/production/anime-input.mjs` | `515e917f4d06c0117222ce09717345f9d4288c1e0357491e5f1097f782477f13` |
