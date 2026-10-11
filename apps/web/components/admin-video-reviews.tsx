@@ -7,7 +7,7 @@ import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
 import { CategoryPanel, VideoBrowser } from "@/components/admin-video-browser";
 import {
-  CompilationDownload, control, finalApproved, isBlocked, type LocaleChoice, LOCALE_PARTS, LOCALES, mp4Retired, needsOwner, partStateLabel, type Project,
+  CompilationDownload, control, finalApproved, isBlocked, type LanguagePart, type LocaleChoice, LOCALE_PARTS, LOCALES, mp4Retired, needsOwner, partStateLabel, type Project,
   type ProjectSummary, PublishPill, publishState, REFRESH_MS, readyToUpload, type Review, ReviewCard, SLUG, UploadPackage, UploadedForm, fileUrl,
   useRefresh, useWhen, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
@@ -115,10 +115,13 @@ type LanguageDefaults = { caption_locales?: string[]; drama?: { drama_caption_lo
  * and the video is not scheduled until every chosen part is made. A dub track is timed with its
  * captions, so ticking it ticks them; a drama cannot be dubbed yet (docs/videos/DUBS.md). The panel
  * stays after the video is public: more can be ticked, and unticking only holds for what is not on
- * YouTube yet.
+ * YouTube yet. A dub track the worker gave up on can be asked for again from its cell
+ * (docs/videos/DUBS.md): the cell says where that request stands, how the last one ended, and why
+ * the track cannot be asked for when it cannot.
  */
 function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; project: Project; canManage: boolean; onSaved: () => void }) {
   const t = useTranslations("admin.videoReviews");
+  const when = useWhen();
   const drama = (project.format ?? "slides") === "drama";
   // The boxes follow the saved choice whenever it changes (a save, or another admin's), while an
   // edit in progress survives the page's minute-by-minute reads that bring the same choice back.
@@ -133,6 +136,11 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  // The language whose request the alert says was not sent, "" for every other error. A click
+  // that failed after the server recorded it (the answer was lost) shows as an open request on
+  // the next read, and the alert then goes: what the cell says is the server's word.
+  const [refused, setRefused] = useState("");
+  const shownError = refused && project.dub_retries?.[refused]?.open ? "" : error;
   const decided = Boolean(project.locales_decided_at);
   const changed = JSON.stringify(chosen) !== savedKey;
   const nothingSaved = Object.keys(chosenBody(saved)).length === 0;
@@ -145,6 +153,7 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
   const put = async (locales: Record<string, Required<LocaleChoice>>) => {
     setBusy(true);
     setError("");
+    setRefused("");
     setMessage("");
     try {
       await api(`/admin/videos/${slug}/languages`, { method: "PUT", body: JSON.stringify({ locales }) });
@@ -159,6 +168,7 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
   const tickDefaults = async () => {
     setBusy(true);
     setError("");
+    setRefused("");
     try {
       const settings = await api<LanguageDefaults>("/admin/video-automation/settings");
       const defaults = (drama ? settings.drama?.drama_caption_locales : settings.caption_locales) ?? [];
@@ -169,7 +179,84 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
       setBusy(false);
     }
   };
+  // The language whose skipped dub is being asked for again right now, "" when none.
+  const [retrying, setRetrying] = useState("");
+  const retryDub = async (locale: (typeof LOCALES)[number]) => {
+    if (!window.confirm(t("dubRetryConfirm", { locale: t(`locales.${locale}`) }))) return;
+    setRetrying(locale);
+    setError("");
+    setRefused("");
+    setMessage("");
+    try {
+      await api(`/admin/videos/${slug}/languages/${locale}/dub/retry`, { method: "POST" });
+      onSaved();
+    } catch (problem) {
+      setError(t("dubRetryError", { message: problem instanceof Error ? problem.message : "" }));
+      setRefused(locale);
+      // Read the video again all the same: the page may be out of date, or the request stored.
+      onSaved();
+    } finally {
+      setRetrying("");
+    }
+  };
   const locked = !canManage || busy;
+  // A languages review waits for the owner: a retry that failed again beside another language's
+  // track leaves one with nothing new on it, and YouTube sync waits for its button.
+  const cardWaits = project.reviews.some((review) => review.gate === "languages" && review.status === "pending");
+  /**
+   * What a chosen dub's cell says under its state about the owner's request to make a skipped track
+   * again, read from the project as the server last sent it, never from the click: an open request
+   * says since when it waits or is being made, a closed one how it ended (at most one such line),
+   * and a skipped dub then gets the server's reason why it cannot be asked for, or, for a manager
+   * who has not unticked it, the button with what it costs.
+   */
+  const dubRetry = (locale: (typeof LOCALES)[number], state: LanguagePart | undefined) => {
+    const retry = project.dub_retries?.[locale];
+    const blocked = project.dub_retry_blocked?.[locale];
+    const open = Boolean(retry?.open);
+    const skipped = state?.state === "skipped";
+    // The first of these that is a timestamp, as the page writes times; requested_at is the fallback.
+    const at = (...stamps: Array<string | null | undefined>) => {
+      const stamp = stamps.find((each) => typeof each === "string" && Number.isFinite(Date.parse(each)));
+      return stamp ? when(stamp) : "";
+    };
+    const lines: Array<{ key: string; line: string }> = [];
+    const say = (key: string, values: Record<string, string>) => lines.push({ key, line: t(key, values) });
+    if (retry && open && retry.status === "requested") say(retry.stalled ? "dubRetryRequestedStalled" : "dubRetryRequested", { when: at(retry.requested_at) });
+    if (retry && open && retry.status === "taken") {
+      say(retry.stalled ? "dubRetryTakenStalled" : "dubRetryTaken", { when: at(retry.taken_at, retry.requested_at) });
+      if (retry.replaced_reason) say("dubRetryWas", { reason: retry.replaced_reason });
+    }
+    if (retry && !open && state?.state === "ready" && retry.status === "made") say("dubRetryMade", { when: at(retry.finished_at, retry.requested_at) });
+    // Made, its languages review sent back, and no earlier one counts (it replaced a review that
+    // still waited): the dub reads as not made, there is no skip to ask about, and the server
+    // would refuse the click, so the cell says that much and offers nothing.
+    if (retry && !open && state?.state === "working" && retry.status === "made") say("dubRetryMadeSentBackAlone", { when: at(retry.finished_at, retry.requested_at) });
+    if (retry && !open && skipped) {
+      // The track was made, and the languages review that carried it was sent back.
+      if (retry.status === "made") say("dubRetryMadeSentBack", { when: at(retry.finished_at, retry.requested_at) });
+      if (retry.status === "skipped") say(cardWaits ? "dubRetrySkippedAgainCard" : "dubRetrySkippedAgain", { when: at(retry.finished_at, retry.requested_at) });
+      if (retry.status === "refused") say("dubRetryRefused", { when: at(retry.requested_at), reason: retry.reason ?? "" });
+      if (retry.status === "expired") say("dubRetryExpired", { when: at(retry.requested_at) });
+    }
+    // A code this page has no sentence for says nothing, and still offers no button.
+    if (!open && skipped && blocked && t.has(`dubRetryBlocked.${blocked}`)) say(`dubRetryBlocked.${blocked}`, {});
+    const offered = !open && skipped && !blocked && canManage && chosen[locale].dub;
+    // Rendered for every saved dub, also with nothing in it, so that the line the next read
+    // brings (the request is waiting, taken, ended) is announced; the click itself says nothing.
+    return <>
+      <span aria-live="polite" className="block">{lines.map(({ key, line }) => <span key={key} className="mt-1 block text-xs text-[var(--muted)]">{line}</span>)}</span>
+      {offered && <>
+        <span className="mt-1 block text-xs">
+          <button type="button" disabled={busy || Boolean(retrying)} aria-label={`${t(`locales.${locale}`)} ${t("parts.dub")} ${t("dubRetryButton")}`}
+            className="font-semibold text-[var(--teal)] underline underline-offset-4 disabled:opacity-50" onClick={() => void retryDub(locale)}>
+            {retrying === locale ? t("saving") : t("dubRetryButton")}
+          </button>
+        </span>
+        <span className="mt-1 block text-xs text-[var(--muted)]">{t("dubRetryCost")}</span>
+      </>}
+    </>;
+  };
   return <section aria-label={t("languagesTitle")} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
     <p className="font-bold">{t("languagesTitle")}</p>
     {!finalApproved(project) ? <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesLater")}</p> : <>
@@ -188,12 +275,13 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
                 <input type="checkbox" aria-label={`${t(`locales.${locale}`)} ${t(`parts.${part}`)}`} checked={chosen[locale][part]} disabled={locked || dubOff} onChange={(event) => toggle(locale, part, event.target.checked)} />
                 {state && <span className="text-xs text-[var(--muted)]">{partStateLabel(t, state.state, state.reason)}</span>}
               </label>
+              {part === "dub" && saved[locale].dub && dubRetry(locale, state)}
             </td>;
           })}
         </tr>)}</tbody>
       </table>
-      {error && <p role="alert" className="mt-2 text-sm text-red-800">{error}</p>}
-      {message && !error && <p role="status" className="mt-2 text-sm text-[var(--muted)]">{message}</p>}
+      {shownError && <p role="alert" className="mt-2 text-sm text-red-800">{shownError}</p>}
+      {message && !shownError && <p role="status" className="mt-2 text-sm text-[var(--muted)]">{message}</p>}
       <div className="mt-3 flex flex-wrap gap-3">
         <Button secondary disabled={locked} onClick={() => void tickDefaults()}>{t("tickDefaults")}</Button>
         <Button secondary disabled={locked || (decided && nothingSaved)} onClick={() => void put({})}>{t("zhOnly")}</Button>

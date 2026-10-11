@@ -9,6 +9,7 @@ from typing import Any, cast
 from unittest.mock import AsyncMock, MagicMock
 from uuid import uuid4
 
+import fakeredis.aioredis
 import pytest
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
@@ -20,10 +21,11 @@ from app.config import Settings
 from app.db import get_session
 from app.models import VIDEO_CATEGORIES, User, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError, app_error_handler
+from app.providers.usage_meter import GEMINI_SPEECH_PROVIDER, reserve_azure_speech_characters
 from app.video_automation.judge import QA_AUTO_APPROVED_NOTE
 from app.video_automation.models import VideoDramaEpisode, VideoDramaRequest, VideoDramaSeries
 from app.video_automation.settings import AUTO_APPROVED_STORYBOARD_NOTE
-from app.video_reviews import admin_api, admin_service
+from app.video_reviews import admin_api, admin_service, dub_retry
 from app.video_reviews.schemas import (
     VIDEO_CATEGORY_CODES,
     CategoryIn,
@@ -997,6 +999,8 @@ async def test_admin_routes_need_content_capabilities(
     monkeypatch.setattr(admin_service, "set_locales", languages)
     category = AsyncMock()
     monkeypatch.setattr(admin_service, "set_category", category)
+    dub_again = AsyncMock()
+    monkeypatch.setattr(admin_service, "request_dub_retry", dub_again)
     empty_page = {
         "items": [], "total": 0, "page": 1, "pages": 0, "facets": {"category": [], "state": []},
     }
@@ -1010,6 +1014,7 @@ async def test_admin_routes_need_content_capabilities(
         refused = await client.post(review, json={"decision": "approve"})
         not_dropped = await client.post("/api/v1/admin/videos/v/drop", json={"note": "重複"})
         not_retried = await client.post("/api/v1/admin/videos/v/retry")
+        not_asked = await client.post("/api/v1/admin/videos/v/languages/ja/dub/retry")
         not_dubbed = await client.put("/api/v1/admin/videos/v/dubs", json={"locales": ["en"]})
         not_chosen = await client.put(
             "/api/v1/admin/videos/v/languages", json={"locales": {"en": {"captions": True}}}
@@ -1025,11 +1030,14 @@ async def test_admin_routes_need_content_capabilities(
     assert refused.status_code == 403, "a viewer can read but not decide"
     assert not_dropped.status_code == 403, "nor drop a video"
     assert not_retried.status_code == 403, "nor retry a blocked video"
+    assert not_asked.status_code == 403, "nor ask for a skipped dub again"
+    assert not_asked.json()["code"] == "admin_capability_required"
     assert not_dubbed.status_code == 403, "nor pick its dub languages"
     assert not_chosen.status_code == 403, "nor decide its languages"
     decide.assert_not_awaited()
     drop.assert_not_awaited()
     retry.assert_not_awaited()
+    dub_again.assert_not_awaited()
     dubs.assert_not_awaited()
     languages.assert_not_awaited()
 
@@ -1053,6 +1061,185 @@ async def test_content_manager_can_request_a_blocked_video_retry(
     assert response.status_code == 200
     assert response.json()["retry_request_id"] == view["retry_request_id"]
     request.assert_awaited_once()
+
+
+def _dub_retry_view(request_id: str) -> dict[str, Any]:
+    return {
+        "slug": "v", "title": "AI 模型怎麼挑", "stage": "done", "checklist": [],
+        "youtube_video_id": None, "last_synced_at": "2026-10-10T12:40:03Z", "pending": 0,
+        "locales": {"ja": {"metadata": True, "captions": True, "dub": True}},
+        "languages": {"ja": {"dub": {"state": "skipped", "reason": "k7p2 does not fit"}}},
+        "dub_retries": {
+            "ja": {
+                "id": request_id,
+                "status": "requested",
+                "open": True,
+                "requested_at": "2026-10-10T12:40:03Z",
+                "replaced_reason": "k7p2 does not fit",
+            }
+        },
+        "reviews": [],
+    }
+
+
+@pytest.mark.asyncio
+async def test_content_manager_can_ask_for_a_skipped_dub_again(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """The route reads the month's Gemini speech meter and the settings, and hands the service
+    what it needs to decide: the review store, the work directory and the room that is left."""
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
+    redis = fakeredis.aioredis.FakeRedis()
+    assert await reserve_azure_speech_characters(
+        redis, 1_234, 0, provider=GEMINI_SPEECH_PROVIDER
+    )
+    # Azure's meter is another one: a dub is always Gemini speech.
+    assert await reserve_azure_speech_characters(redis, 99_000, 0)
+    work = tmp_path / "work"
+    state: dict[str, Any] = {
+        "settings": Settings(
+            video_review_dir=str(tmp_path),
+            video_work_dir=str(work),
+            hotspot_guide_gemini_api_key="gemini-key",
+            video_speech_gemini_monthly_character_limit=50_000,
+        )
+    }
+
+    async def settings(_: Any) -> Settings:
+        return state["settings"]
+
+    monkeypatch.setattr(admin_api, "load_runtime_settings", settings)
+    monkeypatch.setattr(admin_api, "get_redis", lambda: redis)
+    request_id = str(uuid4())
+    asked = AsyncMock(return_value=_dub_retry_view(request_id))
+    monkeypatch.setattr(admin_service, "request_dub_retry", asked)
+    url = "/api/v1/admin/videos/v/languages/ja/dub/retry"
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(owner)), base_url="http://test"
+    ) as client:
+        response = await client.post(url)
+        state["settings"] = Settings(
+            video_review_dir=str(tmp_path),
+            video_work_dir=str(work),
+            hotspot_guide_gemini_api_key=None,
+            video_speech_gemini_monthly_character_limit=0,
+        )
+        unlimited = await client.post(url)
+    assert response.status_code == 200, response.text
+    body = response.json()
+    assert body["dub_retries"]["ja"] == {
+        "id": request_id,
+        "status": "requested",
+        "open": True,
+        "stalled": False,
+        "requested_at": "2026-10-10T12:40:03Z",
+        "taken_at": None,
+        "finished_at": None,
+        "reason": None,
+        "replaced_reason": "k7p2 does not fit",
+    }
+    assert body["dub_retry_blocked"] == {}, "the page reads both fields on every project"
+    first = asked.await_args_list[0]
+    store = first.args[1]
+    assert isinstance(store, ReviewStore) and store.root == tmp_path
+    assert first.args[2:] == ("v", owner, "ja")
+    assert first.kwargs == {
+        "work_dir": str(work),
+        "speech": dub_retry.SpeechRoom(configured=True, limit=50_000, used=1_234, available=True),
+    }
+    assert unlimited.status_code == 200
+    assert asked.await_args_list[1].kwargs["speech"] == dub_retry.SpeechRoom(
+        configured=False, limit=0, used=1_234, available=True
+    )
+    assert asked.await_count == 2
+
+
+@pytest.mark.asyncio
+async def test_an_unknown_locale_is_a_422(monkeypatch: pytest.MonkeyPatch) -> None:
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
+    asked = AsyncMock()
+    monkeypatch.setattr(admin_service, "request_dub_retry", asked)
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(owner)), base_url="http://test"
+    ) as client:
+        answers = [
+            await client.post(f"/api/v1/admin/videos/v/languages/{locale}/dub/retry")
+            for locale in ("zh-TW", "zh-CN", "fr", "JA", "all")
+        ]
+        not_a_post = await client.get("/api/v1/admin/videos/v/languages/ja/dub/retry")
+    assert [answer.status_code for answer in answers] == [422] * 5, "a video dubs in en, ja, ko"
+    assert not_a_post.status_code == 405
+    asked.assert_not_awaited()
+
+
+def test_an_open_request_is_ignored_for_a_dub_no_longer_chosen() -> None:
+    """``dub_retries`` beside the batches (docs/videos/DUBS.md §再做一次): a request the worker
+    took makes a chosen dub read "working"; one that is only asked, ended or unreadable changes
+    nothing; and none of them brings back a part the owner no longer chooses."""
+    skipped = _batch(
+        "approved",
+        {
+            "locales": {
+                "ja": {
+                    "metadata": "ready",
+                    "captions": "ready",
+                    "dub": {"status": "skipped", "reason": "塞不下"},
+                }
+            }
+        },
+        20,
+    )
+    entry = dub_retry.new_request(
+        user_id=uuid4(), reason="塞不下", characters=6_000, now=datetime(2026, 10, 10, tzinfo=UTC)
+    )
+    taken = {"ja": {**entry, "status": "taken", "taken_at": "2026-10-10T00:04:00+00:00"}}
+
+    def dub(locales: dict[str, Any], retries: Any) -> Any:
+        choices = admin_service.locale_choices(
+            VideoProject(slug="v", title="t", stage="s", locales=locales)
+        )
+        states = admin_service.language_states(choices, [skipped], retries)
+        assert states["ja"]["captions"].state == "ready", "only the dub is ever touched"
+        part = states["ja"].get("dub")
+        return None if part is None else (part.state, part.reason)
+
+    with_dub = {"ja": {"metadata": True, "captions": True, "dub": True}}
+    without = {"ja": {"metadata": True, "captions": True}}
+    assert dub(with_dub, taken) == ("working", None)
+    assert dub(without, taken) is None, "un-ticked: the request is paused and shows nothing"
+    assert dub(with_dub, {"ja": entry}) == ("skipped", "塞不下"), "asked is not being made"
+    for status in ("made", "skipped", "refused"):
+        assert dub(with_dub, {"ja": {**entry, "status": status}}) == ("skipped", "塞不下")
+    # Another locale's request, no record, and stored data that is not a record.
+    unread: list[Any] = [
+        None,
+        {},
+        {"ko": taken["ja"]},
+        {"ja": "taken"},
+        {"ja": {"status": "taken"}},
+        [],
+    ]
+    for retries in unread:
+        assert dub(with_dub, retries) == ("skipped", "塞不下"), retries
+    # The two-argument callers stand: no third argument is no request.
+    assert admin_service.language_states(
+        admin_service.locale_choices(
+            VideoProject(slug="v", title="t", stage="s", locales=with_dub)
+        ),
+        [skipped],
+    )["ja"]["dub"].state == "skipped"
+    # The summary reads the same record: the request is listed, and nothing is "blocked" while
+    # the dub is in the making.
+    project = VideoProject(
+        slug="v", title="t", stage="done", locales=with_dub, dub_retries=taken, checklist=[],
+        last_synced_at=datetime(2026, 10, 10, tzinfo=UTC),
+    )
+    summary = ProjectSummary(**admin_service._summary(project, 0))
+    assert summary.languages["ja"]["dub"].state == "working"
+    assert summary.dub_retries["ja"].status == "taken" and summary.dub_retries["ja"].open
+    assert summary.dub_retry_blocked == {}
 
 
 @pytest.mark.asyncio

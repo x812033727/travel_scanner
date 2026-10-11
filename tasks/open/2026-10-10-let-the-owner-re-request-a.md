@@ -1,19 +1,32 @@
 ---
 id: 2026-10-10-let-the-owner-re-request-a
 title: Let the owner re-request a skipped dub from the languages card
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-10-10T12:27:27Z
 created_at: 2026-10-10T06:00:00Z
 completed_at:
-branch:
+branch: claude/dub-retry-request
 depends_on: []
 scope:
   - apps/api/app/video_reviews
-  - tools/video/automation/flow.mjs
+  - apps/api/app/models.py
+  - apps/api/migrations/versions
+  - apps/api/tests
+  - tools/video/automation
+  - tools/video/review
+  - tools/video/dubs
   - apps/web/components/admin-video-reviews.tsx
+  - apps/web/components/admin-video-reviews.test.tsx
+  - apps/web/components/admin-video-review-card.tsx
+  - apps/web/components/admin-video-review-card.test.tsx
+  - apps/web/messages
+  - docs/videos/LANGUAGES.md
+  - docs/videos/DUBS.md
+  - docs/videos/AUTOMATION.md
+  - docs/videos/long-form
 ---
 
 # Let the owner re-request a skipped dub from the languages card

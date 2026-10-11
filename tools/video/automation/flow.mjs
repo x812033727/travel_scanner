@@ -10,7 +10,7 @@
 // the final cut, the package check approves the upload, Jev's line check approves the narration.
 // What still waits for a person: a check that did not pass, an outline Jev could not pick after
 // the rewrites, a blocked video, and the upload itself, whose YouTube id comes back from the site.
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
 
@@ -18,7 +18,8 @@ import { CHANNEL_ACCENT } from "../core/accent.mjs";
 import { hasAnimePolicy, isLongAnime, requireAnimePolicy } from "../core/anime-policy.mjs";
 import { writeAnimeActs } from "./anime-write.mjs";
 import { approvalState, approve, GATES, sha256File } from "../core/approvals.mjs";
-import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
+import { assembledAudioProblems, audioEvidenceProblems } from "../core/audio-evidence.mjs";
+import { appliedBranding, brandingCurrent, readBranding } from "../core/branding.mjs";
 import { craftChecks } from "../core/craft.mjs";
 import { hasCast, illustrated, isExplainerPreset, resolveLook, SLIDES_PRESETS, slidesPresetFor } from "../core/drama.mjs";
 import { effectiveEpisodeMinutes } from "../core/duration.mjs";
@@ -35,6 +36,7 @@ import { estimateTimeline, speechHash } from "../core/timeline.mjs";
 import { localizedThumbnailHash } from "../core/translations.mjs";
 import { MAX_TEMPO, overrunSummary } from "../dubs/plan.mjs";
 import { checkPackage, listFiles, METADATA_FILE, packageLocalesWanted, UPLOAD_DIR } from "../package/check.mjs";
+import { checksCurrent } from "../package/cli.mjs";
 import { productionForEpisode } from "../production/design.mjs";
 import { localizationPlan, writeLocalizationRetention } from "../production/retention.mjs";
 import { buildSheet, SHEET_PARTS, sheetContext, withoutContext } from "../i18n/cli.mjs";
@@ -536,6 +538,10 @@ async function run(ctx, command) {
 }
 
 const lastLine = (out, lines = 1) => out.trim().split("\n").slice(-lines).join(" ");
+// The reasons a locale's dub is given up with, or a request to make it again is refused with, are
+// shown on the admin card as they are (giveUpDub, refuseDubRetry): a tool's last line with its
+// "run … again" instruction cut, so the card never carries a command to run by hand.
+const forCard = (result) => lastLine(result.out).replace(/;\s*(?:after [^;]*, )?run\b.*$/, "");
 /**
  * A speech command (tts, dub, check-audio) that stopped because a paid request went out and its
  * answer was lost (tts/client.mjs SPEECH_UNCERTAIN, exit 3 with the code in its last line). It
@@ -746,6 +752,33 @@ function packageChoiceStale(workdir) {
 }
 
 /**
+ * Why `package` would refuse this cut as it is on disk now, or null: the tests package/cli.mjs
+ * applies before it writes anything (run(): the branding, checksCurrent, the audio evidence), in
+ * its order. Free: no request, nothing written. A dub asked for again is only worth buying when
+ * its batch can be built afterwards (takeDubRetry). The sentence is shown on the admin card.
+ */
+function packageRefusal(project, workdir) {
+  const { doc, lexicon } = project;
+  const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
+  const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+  const applied = appliedBranding(checks);
+  let branded = false;
+  try {
+    branded = brandingCurrent(checks, readBranding(workdir)) && (!applied || (applied.body_frames === timeline?.total_frames
+      && checks.metrics?.frames === applied.intro_frames + applied.body_frames + applied.outro_frames
+      && checks.speech_hash === timeline?.speech_hash));
+  } catch {
+    // A branding.json that cannot be read is not the selection the cut was made with.
+    branded = false;
+  }
+  if (!branded) return "成片用的片頭片尾和現在選的不一樣";
+  const keyframes = illustrated(doc) ? readJson(path.join(workdir, ARTIFACTS.keyframes), null) : null;
+  if (!existsSync(path.join(workdir, ARTIFACTS.video)) || !checksCurrent(doc, lexicon, checks, null, keyframes)) return "成片不在了，或它的檢查記錄比現在的腳本和畫面舊";
+  if (assembledAudioProblems(timeline, checks, workdir).length) return "成片不是用現在這份旁白錄音合成的";
+  return null;
+}
+
+/**
  * Whether the video is past its upload confirmation: the publish review approved (status done)
  * or the owner's YouTube id recorded. Its package went up with that review, and nothing writes or
  * pushes the publish gate again.
@@ -769,6 +802,32 @@ function recorded(state, root) {
 // (Automation.shownStage).
 const REPORTED_STAGE = new WeakMap();
 
+// How much of a refusal's reason the site keeps (apps/api/app/video_reviews/dub_retry.py REASON_MAX).
+const DUB_RETRY_REASON_MAX = 500;
+/** Why a dub asked for again cannot be made on a tidied video (tidy.mjs), as the admin card shows it. */
+const tidiedDubRetry = (state) => `工作檔已在 ${String(state.tidied_at).slice(0, 10)} 清掉，成片與配音的錄音都不在了，這條配音沒辦法再做`;
+
+/**
+ * The worker's word on the owner's requests to make a given-up dub again, as a report carries it
+ * (ProjectIn.dub_retries, docs/videos/DUBS.md §再做一次): per locale `{id, status: "taken"}` for a
+ * request this worker took, `{id, status: "refused", reason}` for one it refused, from auto.json's
+ * `dub_retries`, then `extra` on top (the take a report asks the site to confirm). A record that
+ * is `taking` (the site said yes, the skip not cleared yet) or `sent` (its batch is in) says
+ * nothing. The site takes "taken" only from a request it still holds open under that id and
+ * "refused" once, so saying it again in every report is harmless, and it is what brings a word
+ * the site never received (a report that failed) there with the next one. Null with nothing to say.
+ */
+function dubRetryEcho(state, extra = null) {
+  const echo = {};
+  for (const [locale, mine] of Object.entries(state.dub_retries ?? {})) {
+    if (!mine?.id) continue;
+    if (mine.status === "taken") echo[locale] = { id: mine.id, status: "taken" };
+    else if (mine.status === "refused") echo[locale] = { id: mine.id, status: "refused", reason: String(mine.reason ?? "").slice(0, DUB_RETRY_REASON_MAX) };
+  }
+  Object.assign(echo, extra ?? {});
+  return Object.keys(echo).length ? echo : null;
+}
+
 /**
  * Hand everything the automation knows to /admin/videos: title, stage, checklist, article, format,
  * category, YouTube id. `deferred` is the label of a video waiting on its own (Automation.defer):
@@ -776,8 +835,13 @@ const REPORTED_STAGE = new WeakMap();
  * it; any report without it takes the row off again, so the next stage that reports clears it.
  * `progress` is a translation's row the same way (Automation.unitCheckpoint), until the next
  * report without it.
+ *
+ * Every report also carries the worker's word on the owner's requests to make a given-up dub
+ * again (dubRetryEcho; `dubRetries` adds this report's own, the "taken" a take asks the site to
+ * confirm), and resolves to the site's answer, the video as the site now holds it, which is how
+ * a take reads whether its request is still the one the site holds open (takeDubRetry).
  */
-async function report(ctx, api, state, stage, { deferred = null, progress = null } = {}) {
+async function report(ctx, api, state, stage, { deferred = null, progress = null, dubRetries = null } = {}) {
   const workdir = resolveWorkdir({ env: ctx.env, slug: state.slug, root: ctx.root, home: ctx.home });
   const status = await pipelineStatus({ slug: state.slug, root: ctx.root, workdir });
   const guide = mainGuide(state);
@@ -787,7 +851,8 @@ async function report(ctx, api, state, stage, { deferred = null, progress = null
   const waiting = deferred && !blocked.length ? [{ key: "deferred", label: deferred, done: false }] : [];
   // A translation part by part (Automation.unitCheckpoint): how many units are reviewed so far.
   const partial = progress && !blocked.length ? [{ key: "languages_progress", label: progress.slice(0, 120), done: false }] : [];
-  await api.report(state.slug, {
+  const echo = dubRetryEcho(state, dubRetries);
+  const answer = await api.report(state.slug, {
     title: state.title || state.slug,
     stage: stage.slice(0, 40),
     checklist: [...blocked, ...waiting, ...partial, ...checklistFrom(status.steps)],
@@ -800,10 +865,12 @@ async function report(ctx, api, state, stage, { deferred = null, progress = null
     ...(state.retry_request_id ? { retry_acknowledged_id: state.retry_request_id } : {}),
     // What kind of block it is (`block()`), for a site that will read it; today's ignores the key.
     ...(state.status === "blocked" && state.blocked_kind ? { blocked_kind: state.blocked_kind } : {}),
+    ...(echo ? { dub_retries: echo } : {}),
   });
   REPORTED_STAGE.set(state, stage);
   if (waiting.length) state.deferred_reported = true;
   else delete state.deferred_reported;
+  return answer;
 }
 
 export class Automation {
@@ -3455,6 +3522,9 @@ export class Automation {
     const slug = state.slug;
     const video = (this.site ?? []).find((each) => each.slug === slug);
     if (!video || video.dropped_at || !video.locales_decided_at) return null;
+    // The owner's requests to make a given-up dub again come first (docs/videos/DUBS.md §再做一次).
+    const asked = await this.dubRetries(state, video);
+    if (asked) return asked;
     const dir = docDir(slug, ctx.root);
     const workdir = this.workdir(slug);
     if (!existsSync(path.join(dir, "video.json"))) return null;
@@ -3465,6 +3535,13 @@ export class Automation {
     writeLanguages(workdir, { locales: video.locales ?? {}, decided_at: video.locales_decided_at, synced_at: ctx.now().toISOString() });
     const choice = readLanguages(workdir);
     const pending = this.pendingLanguages(video, choice);
+    // A dub this worker is making again stays pending whatever an older list says: no batch goes before it is heard.
+    for (const [locale, mine] of Object.entries(state.dub_retries ?? {})) {
+      if (mine?.status !== "taken" || !choice?.locales?.[locale]?.dub) continue;
+      const entry = pending.find((each) => each.locale === locale);
+      if (!entry) pending.push({ locale, parts: ["dub"] });
+      else if (!entry.parts.includes("dub")) entry.parts.push("dub");
+    }
     // A zh-TW video reads nothing more than before; one narrated in another language may still
     // owe its zh-TW, which no choice lists (channelLocale).
     const zhNarrated = narrationLocale(readJson(path.join(dir, "video.json"), null)) === NARRATION_LOCALE;
@@ -3528,6 +3605,15 @@ export class Automation {
     if (pushed.code === ctx.EXIT.lint) return this.block(state, `language submission rejected: ${lastLine(pushed.out, 2)}`);
     // Any other failed push waits for this video alone (submissionFailure).
     if (pushed.code !== 0) return this.defer(state, `${slug}: could not send the language batch: ${lastLine(pushed.out, 2)}`, { what: "review-push", everyone: Boolean(everyones(pushed.out)) });
+    // The batch names every chosen dub, so it is the answer to each dub this worker was making
+    // again: the site closed those requests on it (made, skipped, or refused when the batch
+    // equals one that was sent back), and the record here stops keeping the dub pending.
+    const retried = Object.entries(state.dub_retries ?? {}).filter(([locale, mine]) => mine?.status === "taken" && choice?.locales?.[locale]?.dub);
+    if (retried.length) {
+      const at = ctx.now().toISOString();
+      state.dub_retries = { ...state.dub_retries, ...Object.fromEntries(retried.map(([locale, mine]) => [locale, { ...mine, status: "sent", at }])) };
+      saveState(workdir, state);
+    }
     // A batch with no dub track is approved on arrival, and recorded now.
     const unrecorded = await this.pulled(state, "languages", GATES.languages({ workdir }));
     // A pull that ended in a block, or in a deferral the page was told about, has said what the
@@ -3535,6 +3621,137 @@ export class Automation {
     if (!(unrecorded && (state.status === "blocked" || state.deferred_reported))) await report(ctx, this.api, state, "languages sent");
     if (unrecorded) return unrecorded;
     return `${slug}: language batch sent to /admin/videos (${pending.map(({ locale, parts }) => `${locale} ${parts.join("+")}`).join(", ")})`;
+  }
+
+  /**
+   * The owner's requests to make a given-up dub again (docs/videos/DUBS.md §再做一次), which the
+   * site's list row carries as `dub_retries[locale] = {id, status, open}`: per unit one request is
+   * taken, refused or answered again, before any other language work. Null when there is nothing
+   * to do about them, and for every row of a site from before the requests (no `dub_retries`
+   * key), where nothing is touched.
+   *
+   * auto.json's `dub_retries[locale] = {id, status, at}` is this worker's own record of the last
+   * request it met, kept after the end: it is what stops a second lane or an older list from
+   * taking the same request twice. `taking`: the site said yes, the skip may not be cleared yet;
+   * `taken`: cleared, the dub is being made or its batch is owed; `sent`: its batch is in;
+   * `refused`: not made, with `reason`. A request ends on the site only with an answer: the
+   * ordinary batch (languages), or the refusal a report carries (dubRetryEcho).
+   */
+  async dubRetries(state, video) {
+    const requests = video.dub_retries;
+    if (!requests || typeof requests !== "object" || Array.isArray(requests)) return null;
+    const slug = state.slug;
+    for (const [locale, theirs] of Object.entries(requests)) {
+      if (!theirs?.id) continue;
+      const mine = state.dub_retries?.[locale];
+      if (mine?.id === theirs.id) {
+        if (mine.status === "refused") {
+          // Refused here and still open there: the report that said so never arrived. Every report says it again.
+          if (!theirs.open) continue;
+          await report(this.ctx, this.api, state, this.shownStage(state));
+          return `${slug}: ${locale} dub request answered again`;
+        }
+        if (!theirs.open) continue;
+        // The tidy ran while the request was open (its round reads the first lane's last list): the cut and the takes are gone.
+        if (state.tidied_at && ["taking", "taken"].includes(mine.status)) return this.refuseDubRetry(state, locale, theirs.id, tidiedDubRetry(state));
+        // Taken (the dub loop of languages() goes on with it) or sent: nothing to take again.
+        if (mine.status !== "taking") continue;
+        // A take that died once its skip was gone is past its guards and the site's yes: it goes on
+        // as a taken one. Refusing it now would leave a cleared skip behind a closed request, and
+        // a later batch would send a track nobody heard (core/stages.mjs dubsForUpload).
+        if (!existsSync(dubArtifacts(this.workdir(slug), locale).skipped)) {
+          this.fence(slug, `making the ${locale} dub again`);
+          return this.startDubRetry(state, locale, theirs.id);
+        }
+      } else if (!theirs.open) continue;
+      const line = await this.takeDubRetry(state, video, locale, theirs);
+      if (line !== null) return line;
+    }
+    return null;
+  }
+
+  /**
+   * Take one request to make a given-up dub again. Nothing is cleared or bought before the site
+   * confirmed the take: first the free guards (the cut the owner approved is the one on disk, the
+   * upload package can still be written from it, the other languages' tracks are still sendable,
+   * and `dub --dry-run` passes), each of which refuses the request with a sentence the admin card
+   * shows as it is. The dry run tests what `dub` tests before it plans (the script lints, the
+   * voice is a Gemini one, timeline.json is of this script, the cut's branding is the one chosen),
+   * and its note that lines have no current translation is read as a refusal too, since it still
+   * exits 0. It does not test the tool token, the site's Gemini key, the month's characters, the
+   * branding asset files or the project lease: those meet the real run, which gives the dub up
+   * again with the tool's reason, waits, or blocks. Then the report that says "taken",
+   * whose answer must show this very request as taken (one withdrawn, expired or replaced since
+   * the list was read is not started: null). Only then the rounds are zeroed with `check_stopped`
+   * (so a track that exists is made and heard again, never sent as it is), the skip is cleared
+   * and the dub is made as any other (makeDub); the takes, their cache and fit.json stay, which
+   * is what keeps the retry cheap. State, file, state: a crash at any point resumes, and an old
+   * skip is never mistaken for this attempt's give-up.
+   */
+  async takeDubRetry(state, video, locale, theirs) {
+    const { ctx } = this;
+    const slug = state.slug;
+    const dir = docDir(slug, ctx.root);
+    const workdir = this.workdir(slug);
+    const refuse = (reason) => this.refuseDubRetry(state, locale, theirs.id, reason);
+    if (state.tidied_at) return refuse(tidiedDubRetry(state));
+    if (!existsSync(path.join(dir, "video.json"))) return refuse("工人這裡找不到這支影片的腳本，沒辦法重做");
+    if ((await approvalState({ gate: "final", docDir: dir, workdir })).status !== "approved") return refuse("成片在工人這裡對不上核准的版本（成片換過或還沒核准），現在做不了配音");
+    const project = loadProject({ slug, root: ctx.root });
+    const narrated = narrationLocale(project.doc);
+    if (narrated === locale) return refuse("這是影片原本旁白的語言，不另做重複配音");
+    // The tests `package` applies to the cut, before even the dry run: a track whose batch could
+    // not be built is not bought, and a published video is not blocked for it.
+    const why = packageRefusal(project, workdir);
+    if (why) return refuse(`${why}，上傳包寫不出來，做了配音也送不出語言審核；這條配音先不做`);
+    // The batch restates every chosen locale from the work directory as it is now: a track the
+    // site holds as made that is no longer current here would drop out of it.
+    const dubs = dubsStatus(project, workdir, speechHash(project.doc, project.lexicon));
+    const others = Object.entries(video.locales ?? {})
+      .filter(([other, chosen]) => other !== locale && other !== narrated && chosen?.dub && ["ready", "uploaded"].includes(video.languages?.[other]?.dub?.state) && dubs[other]?.status !== "current")
+      .map(([other]) => other);
+    if (others.length) return refuse(`${others.join("、")} 的配音在工人這裡已經不是現在的版本（詞庫、聲音或片頭片尾改過），重送語言包會漏掉它；這條配音先不做`);
+    const dry = await run(ctx, ["dub", "--slug", slug, "--locale", locale, "--dry-run"]);
+    // A limit or the site away: the request stays as it is and is looked at again after the wait.
+    if (dry.code === 4) return this.defer(state, `${slug}: ${locale} dub could not be checked (${lastLine(dry.out)})`, { what: "dub", everyone: Boolean(everyones(dry.out)) });
+    if (dry.code !== 0) return refuse(`配音工具說現在做不了：${forCard(dry)}`);
+    // The dry run only notes such lines and exits 0; the real run stops on them before it writes
+    // fit.json, and makeDub would spend its shortening rounds on the earlier attempt's list.
+    if (/lines have no current translation/.test(dry.out)) return refuse("這個語言有幾句翻譯已經不是現在的版本，要先補上翻譯才能再做配音；這條配音先不做");
+    this.fence(slug, `taking the ${locale} dub request`);
+    const seen = await report(ctx, this.api, state, this.shownStage(state), { dubRetries: { [locale]: { id: theirs.id, status: "taken" } } });
+    const answer = seen?.dub_retries?.[locale];
+    if (answer?.id !== theirs.id || answer.status !== "taken") return null;
+    this.fence(slug, `clearing the ${locale} dub's skip`);
+    state.languages = { ...(state.languages ?? {}), [locale]: { shorten: 0, retakes: 0, reword: 0, check_stopped: true } };
+    state.dub_retries = { ...(state.dub_retries ?? {}), [locale]: { id: theirs.id, status: "taking", at: ctx.now().toISOString() } };
+    saveState(workdir, state);
+    return this.startDubRetry(state, locale, theirs.id);
+  }
+
+  /** The end of a take the site confirmed (takeDubRetry): the skip goes, the record says taken, and the dub is made. */
+  startDubRetry(state, locale, id) {
+    const workdir = this.workdir(state.slug);
+    rmSync(dubArtifacts(workdir, locale).skipped, { force: true });
+    state.dub_retries = { ...(state.dub_retries ?? {}), [locale]: { id, status: "taken", at: this.ctx.now().toISOString() } };
+    state.notes.push(`${locale} dub asked for again by the owner`);
+    saveState(workdir, state);
+    return this.makeDub(state, locale);
+  }
+
+  /**
+   * A request to make a dub again that this worker will not carry out: recorded with its reason
+   * (the admin card shows it as it is, so it names no path on the host and no command), noted,
+   * and told to the site, which closes the request as refused. Nothing in the work directory
+   * but auto.json changes, and the video is neither blocked nor deferred. A report that fails
+   * is the unit's error (move); the record stays and the next visit says it again (dubRetries).
+   */
+  async refuseDubRetry(state, locale, id, reason) {
+    state.dub_retries = { ...(state.dub_retries ?? {}), [locale]: { id, status: "refused", reason: reason.slice(0, DUB_RETRY_REASON_MAX), at: this.ctx.now().toISOString() } };
+    state.notes.push(`${locale} dub not made again: ${reason}`);
+    saveState(this.workdir(state.slug), state);
+    await report(this.ctx, this.api, state, this.shownStage(state));
+    return `${state.slug}: ${locale} dub asked for again, not made: ${reason}`;
   }
 
   /**
@@ -3813,9 +4030,8 @@ export class Automation {
       }));
     };
     // The reasons a locale is given up with are shown on the admin card as they are (giveUpDub):
-    // a tool's last line with its "run … again" instruction cut, or the ids of the lines that do
-    // not fit, with the rounds spent on them.
-    const forCard = (result) => lastLine(result.out).replace(/;\s*(?:after [^;]*, )?run\b.*$/, "");
+    // a tool's last line with its "run … again" instruction cut (forCard), or the ids of the
+    // lines that do not fit, with the rounds spent on them.
     const shortening = () => `${rounds.shorten} shortening round${rounds.shorten === 1 ? "" : "s"}`;
     const unfit = (over, result, after) => {
       const ids = (Array.isArray(over) ? over : []).map((line) => line.id);
