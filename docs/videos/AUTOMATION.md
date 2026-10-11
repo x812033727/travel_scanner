@@ -120,7 +120,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 - 已經有一支沒被放棄的教學影片在講這篇（`VideoProject.source_guide`）：409 `video_slides_request_article_used`，訊息寫出是哪一支。要重做就先放棄那支，沒有強制排的開關。
 - 自動產線（`enabled`）關著：409 `video_automation_disabled`。關著時工人什麼都不做，請求永遠不會被拿走。
 
-**端點**：資料表 `video_slides_requests`（migration 0126），存的狀態是 `queued`／`started`／`done`／`cancelled`。
+**端點**：資料表 `video_slides_requests`（migration 0127），存的狀態是 `queued`／`started`／`done`／`cancelled`。
 
 | 誰 | 端點 | 權限 |
 | --- | --- | --- |
@@ -219,9 +219,9 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 **跳過的配音再做一次**（2026-10-10 加；站主那一側在 `LANGUAGES.md` §跳過的配音再做一次，工人的每一步與理由在 `DUBS.md` §再做一次）。工人放棄的配音留著 `dubs/<l>/skipped.json`，站上讀成「跳過」，上面三步都不會再碰它。站主在語言面板按「再做一次」之後，影片清單那一列多一筆 `dub_retries[<l>] = {id, status, open}`（`ProjectSummary`；沒有這個鍵的是舊版網站，工人什麼都不碰）。語言那一步（`languages()`）在做任何其他語言工作之前先處理它（`dubRetries`），一輪一筆：
 
-- **還沒接的要求**（`open`，而且 `auto.json` 沒有同一個 `id` 的紀錄）：先做不花錢的檢查。工作檔沒被清、`video.json` 在、成片核准對得上、不是旁白自己的語言、`package` 對成片的三個測試都過（片頭片尾、`checks.json` 與 `final.mp4`、旁白錄音）、別的語言在站上已完成的音軌在這裡仍是 current，最後 `dub --locale <l> --dry-run`。不過就拒絕：原因記進 `auto.json` 與 notes，回報 `dub_retries: {<l>: {id, status: "refused", reason}}`，影片不卡住、不延後、什麼檔都沒動。`--dry-run` 結束碼 4 是延後，要求原封不動。
+- **還沒接的要求**（`open`，而且 `auto.json` 沒有同一個 `id` 的紀錄）：先做不花錢的檢查。工作檔沒被清、`video.json` 在、成片核准對得上、不是旁白自己的語言、`package` 對成片的三個測試都過（片頭片尾、`checks.json` 與 `final.mp4`、旁白錄音）、別的語言在站上已完成的音軌在這裡仍是 current，最後 `dub --locale <l> --dry-run`（結束碼 0 但輸出寫著有句子沒有現在版本的翻譯，也算不過）。不過就拒絕：原因記進 `auto.json` 與 notes，回報 `dub_retries: {<l>: {id, status: "refused", reason}}`，影片不卡住、不延後、什麼檔都沒動。`--dry-run` 結束碼 4 是延後，要求原封不動；這個延後照一般的延後計數，不是大家共同的原因而連續第 7 次時影片會卡住（`deferred:dub`）。
 - **接手**：回報 `dub_retries: {<l>: {id, status: "taken"}}`，並從 `PUT /video/reviews/<slug>` 的回應確認這筆 `id` 真的成了 `taken`（要求在這之間被撤掉、過期或換新，就不開始）。確認之後才依序：`auto.json` 把那個語言的輪數歸零並標 `check_stopped`、紀錄寫 `taking`；刪 `skipped.json`；紀錄改 `taken`；然後就是上面第 2 步的 `makeDub`。`STOP` 檔或失去 `LEASE` 會在回報之前擋下，什麼都沒送、沒清。
-- **已經接了的**：`auto.json` 的紀錄是 `taken` 時不再檢查、不再清，上面第 2、3 步照平常接著走。站上這時把那一格讀成「製作中」；就算這條 lane 手上的清單比接手還舊、仍寫著「跳過」，工人自己紀錄是 `taken` 的配音也算待做，所以音軌沒重新聽完之前不會有批次送出去。
+- **已經接了的**：`auto.json` 的紀錄是 `taken` 時不再檢查、不再清，上面第 2、3 步照平常接著走。站上這時把那一格讀成 `working`（頁面寫「尚未完成」，下面一行說工人已接手）；就算這條 lane 手上的清單比接手還舊、仍寫著「跳過」，工人自己紀錄是 `taken` 的配音也算待做，所以音軌沒重新聽完之前不會有批次送出去。
 - **結束**：第 3 步的批次就是答案，沒有另外的回報。網站在存批次的同一筆交易把要求結束成 `made`（有音軌，而且那一批算數）、`skipped`（又放棄，批次裡是新的原因）或 `refused`（位元組和站主退回的那一批完全一樣，網站沒有新增審核）。批次和舊的一模一樣、網站沒有多一筆審核時也照樣結束。`review-push` 成功後工人把紀錄改成 `sent`。
 - **工人的紀錄**：`auto.json` 的 `dub_retries[<l>] = {id, status, at}`，`status` 是 `taking`｜`taken`｜`sent`｜`refused`（附 `reason`），結束後也留著，另一條 lane 或一份舊清單才不會把同一筆接兩次。每一次回報（任何階段的）都把 `taken` 與 `refused` 再帶一遍，網站只採用一次；拒絕的回報沒送到時，下一輪先補報。
 - **清掉工作檔的影片**：端點與那一格本來就擋，漏進來的要求工人照樣拒絕（原因寫清掉的日期），而且不送清理後新勾部件的那種只列部分語言的批次。

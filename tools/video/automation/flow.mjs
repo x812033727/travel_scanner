@@ -3674,8 +3674,13 @@ export class Automation {
    * Take one request to make a given-up dub again. Nothing is cleared or bought before the site
    * confirmed the take: first the free guards (the cut the owner approved is the one on disk, the
    * upload package can still be written from it, the other languages' tracks are still sendable,
-   * and `dub --dry-run` passes every precondition of the real run), each of which refuses the
-   * request with a sentence the admin card shows as it is; then the report that says "taken",
+   * and `dub --dry-run` passes), each of which refuses the request with a sentence the admin card
+   * shows as it is. The dry run tests what `dub` tests before it plans (the script lints, the
+   * voice is a Gemini one, timeline.json is of this script, the cut's branding is the one chosen),
+   * and its note that lines have no current translation is read as a refusal too, since it still
+   * exits 0. It does not test the tool token, the site's Gemini key, the month's characters, the
+   * branding asset files or the project lease: those meet the real run, which gives the dub up
+   * again with the tool's reason, waits, or blocks. Then the report that says "taken",
    * whose answer must show this very request as taken (one withdrawn, expired or replaced since
    * the list was read is not started: null). Only then the rounds are zeroed with `check_stopped`
    * (so a track that exists is made and heard again, never sent as it is), the skip is cleared
@@ -3710,6 +3715,9 @@ export class Automation {
     // A limit or the site away: the request stays as it is and is looked at again after the wait.
     if (dry.code === 4) return this.defer(state, `${slug}: ${locale} dub could not be checked (${lastLine(dry.out)})`, { what: "dub", everyone: Boolean(everyones(dry.out)) });
     if (dry.code !== 0) return refuse(`配音工具說現在做不了：${forCard(dry)}`);
+    // The dry run only notes such lines and exits 0; the real run stops on them before it writes
+    // fit.json, and makeDub would spend its shortening rounds on the earlier attempt's list.
+    if (/lines have no current translation/.test(dry.out)) return refuse("這個語言有幾句翻譯已經不是現在的版本，要先補上翻譯才能再做配音；這條配音先不做");
     this.fence(slug, `taking the ${locale} dub request`);
     const seen = await report(ctx, this.api, state, this.shownStage(state), { dubRetries: { [locale]: { id: theirs.id, status: "taken" } } });
     const answer = seen?.dub_retries?.[locale];

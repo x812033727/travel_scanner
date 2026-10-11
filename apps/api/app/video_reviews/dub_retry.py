@@ -46,9 +46,14 @@ FALLBACK_CHARACTERS = 10_000
 CAPTION_BYTES_MAX = 1024 * 1024
 REASON_MAX = 500
 # The two skips no retry can fix, as the worker writes them: the narration's own language
-# (tools/video/review/sync.mjs NARRATION_DUB_SKIP) and a part ticked after the work files were
-# cleared (tools/video/automation/flow.mjs tidiedLanguages).
+# (tools/video/review/sync.mjs NARRATION_DUB_SKIP, or the sentence tools/video/review/renewal.mjs
+# puts in its place on every batch of a video whose final cut was renewed) and a part ticked
+# after the work files were cleared (tools/video/automation/flow.mjs tidiedLanguages).
 NARRATION_DUB_SKIP = "這是影片原本旁白的語言，不另做重複配音"
+NARRATION_DUB_SKIP_RENEWED = (
+    "This language is the original narration; no duplicate dub is generated."
+)
+NARRATION_DUB_SKIPS = (NARRATION_DUB_SKIP, NARRATION_DUB_SKIP_RENEWED)
 TIDIED_SKIP_PREFIX = "工作檔已在 "
 # How the site ends a taken request whose re-made batch is byte-identical to one that was sent
 # back or superseded: submit_review answers with that review and creates none, so no card
@@ -339,7 +344,7 @@ def blocker(
     A work directory the API cannot read ("unavailable", or no producer at all) blocks nothing:
     it is not evidence of anything.
     """
-    if reason == NARRATION_DUB_SKIP:
+    if reason in NARRATION_DUB_SKIPS:
         return "narration"
     if tidied_at or (reason or "").startswith(TIDIED_SKIP_PREFIX):
         return "tidied"

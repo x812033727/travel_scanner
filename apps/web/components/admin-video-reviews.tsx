@@ -136,6 +136,11 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  // The language whose request the alert says was not sent, "" for every other error. A click
+  // that failed after the server recorded it (the answer was lost) shows as an open request on
+  // the next read, and the alert then goes: what the cell says is the server's word.
+  const [refused, setRefused] = useState("");
+  const shownError = refused && project.dub_retries?.[refused]?.open ? "" : error;
   const decided = Boolean(project.locales_decided_at);
   const changed = JSON.stringify(chosen) !== savedKey;
   const nothingSaved = Object.keys(chosenBody(saved)).length === 0;
@@ -148,6 +153,7 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
   const put = async (locales: Record<string, Required<LocaleChoice>>) => {
     setBusy(true);
     setError("");
+    setRefused("");
     setMessage("");
     try {
       await api(`/admin/videos/${slug}/languages`, { method: "PUT", body: JSON.stringify({ locales }) });
@@ -162,6 +168,7 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
   const tickDefaults = async () => {
     setBusy(true);
     setError("");
+    setRefused("");
     try {
       const settings = await api<LanguageDefaults>("/admin/video-automation/settings");
       const defaults = (drama ? settings.drama?.drama_caption_locales : settings.caption_locales) ?? [];
@@ -178,12 +185,16 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
     if (!window.confirm(t("dubRetryConfirm", { locale: t(`locales.${locale}`) }))) return;
     setRetrying(locale);
     setError("");
+    setRefused("");
     setMessage("");
     try {
       await api(`/admin/videos/${slug}/languages/${locale}/dub/retry`, { method: "POST" });
       onSaved();
     } catch (problem) {
       setError(t("dubRetryError", { message: problem instanceof Error ? problem.message : "" }));
+      setRefused(locale);
+      // Read the video again all the same: the page may be out of date, or the request stored.
+      onSaved();
     } finally {
       setRetrying("");
     }
@@ -217,6 +228,10 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
       if (retry.replaced_reason) say("dubRetryWas", { reason: retry.replaced_reason });
     }
     if (retry && !open && state?.state === "ready" && retry.status === "made") say("dubRetryMade", { when: at(retry.finished_at, retry.requested_at) });
+    // Made, its languages review sent back, and no earlier one counts (it replaced a review that
+    // still waited): the dub reads as not made, there is no skip to ask about, and the server
+    // would refuse the click, so the cell says that much and offers nothing.
+    if (retry && !open && state?.state === "working" && retry.status === "made") say("dubRetryMadeSentBackAlone", { when: at(retry.finished_at, retry.requested_at) });
     if (retry && !open && skipped) {
       // The track was made, and the languages review that carried it was sent back.
       if (retry.status === "made") say("dubRetryMadeSentBack", { when: at(retry.finished_at, retry.requested_at) });
@@ -227,8 +242,10 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
     // A code this page has no sentence for says nothing, and still offers no button.
     if (!open && skipped && blocked && t.has(`dubRetryBlocked.${blocked}`)) say(`dubRetryBlocked.${blocked}`, {});
     const offered = !open && skipped && !blocked && canManage && chosen[locale].dub;
+    // Rendered for every saved dub, also with nothing in it, so that the line the next read
+    // brings (the request is waiting, taken, ended) is announced; the click itself says nothing.
     return <>
-      {lines.map(({ key, line }) => <span key={key} className="mt-1 block text-xs text-[var(--muted)]">{line}</span>)}
+      <span aria-live="polite" className="block">{lines.map(({ key, line }) => <span key={key} className="mt-1 block text-xs text-[var(--muted)]">{line}</span>)}</span>
       {offered && <>
         <span className="mt-1 block text-xs">
           <button type="button" disabled={busy || Boolean(retrying)} aria-label={`${t(`locales.${locale}`)} ${t("parts.dub")} ${t("dubRetryButton")}`}
@@ -263,8 +280,8 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
           })}
         </tr>)}</tbody>
       </table>
-      {error && <p role="alert" className="mt-2 text-sm text-red-800">{error}</p>}
-      {message && !error && <p role="status" className="mt-2 text-sm text-[var(--muted)]">{message}</p>}
+      {shownError && <p role="alert" className="mt-2 text-sm text-red-800">{shownError}</p>}
+      {message && !shownError && <p role="status" className="mt-2 text-sm text-[var(--muted)]">{message}</p>}
       <div className="mt-3 flex flex-wrap gap-3">
         <Button secondary disabled={locked} onClick={() => void tickDefaults()}>{t("tickDefaults")}</Button>
         <Button secondary disabled={locked || (decided && nothingSaved)} onClick={() => void put({})}>{t("zhOnly")}</Button>

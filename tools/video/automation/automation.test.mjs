@@ -3892,6 +3892,7 @@ test("a language ticked after the worker tidied the video is reported as skipped
 // auto.json's dub_retries.
 const DUB_REQUEST = "0d3b7c1e-6f0a-4c59-9d57-0d6a3f1c2b11";
 const DUB_REQUEST_AGAIN = "7f3c1d0e-5a2b-4c8d-9e1f-0a1b2c3d4e5f";
+const DUB_REQUEST_THIRD = "5c9e2a7b-3d1f-4b6a-8e0c-2f4a6b8c0d1e";
 const DRY_RUN_REFUSED = { code: 2, out: "timeline.json was built for an older script; run tts again" };
 const DRY_RUN_REFUSAL = "配音工具說現在做不了：timeline.json was built for an older script";
 /** The dub commands (dry runs included) and dub checks run since `from`. */
@@ -4173,6 +4174,45 @@ test("a dub request whose dry run fails is refused with the tool's sentence, the
   assert.deepEqual([request().status, video.state().dub_retries.ko.id], ["taken", DUB_REQUEST_AGAIN]);
 });
 
+test("a dub request whose dry run notes lines without a current translation is refused although the tool exits 0", async () => {
+  const { video, dubs, reason, skipped, ask, request } = await givenUpDub();
+  // The dry run only notes them (dubs/cli.mjs dryRun); the real run would stop on them before it
+  // writes fit.json, and the shortening rounds would be spent on the earlier attempt's list.
+  dubs.ko.over = 0;
+  dubs.ko.dry = { code: 0, out: "ko: 1 lines have no current translation (k7p2)\nserver: Gemini ready; no monthly limit" };
+  ask();
+  const [ran, batches, asked] = [video.runs.length, video.reviews("languages").length, video.site.calls.run.length];
+  const refusal = "這個語言有幾句翻譯已經不是現在的版本，要先補上翻譯才能再做配音；這條配音先不做";
+  assert.equal(await video.step(), `chatgpt-ads-off: ko dub asked for again, not made: ${refusal}`);
+  assert.doesNotMatch(refusal, HOST_ONLY);
+  assert.deepEqual(dubRuns(video, ran), [dryRun(video, "ko")], "no dub is bought");
+  assert.equal(video.site.calls.run.length, asked, "and no shortening pass is asked of the translator");
+  assert.equal(readJson(skipped).reason, reason);
+  assert.deepEqual([video.state().status, video.state().blocked, video.state().deferred_until], ["done", undefined, undefined]);
+  assert.deepEqual([request().status, request().open, request().reason], ["refused", false, refusal]);
+  assert.equal(video.reviews("languages").length, batches);
+  assert.equal(await video.step(), null, "answered once");
+});
+
+test("a dub request on a video whose final cut is no longer the approved one is refused before anything runs", async () => {
+  const { video, dubs, reason, skipped, ask, request } = await givenUpDub();
+  dubs.ko.over = 0;
+  // The approval binds final.mp4's bytes (core/approvals.mjs): one more byte and it reads stale.
+  // Without this guard the track would be bought and no later visit could send its batch.
+  const final = path.join(video.workdir, "final.mp4");
+  writeFileSync(final, Buffer.concat([readFileSync(final), Buffer.from([0])]));
+  ask();
+  const [ran, batches] = [video.runs.length, video.reviews("languages").length];
+  const refusal = "成片在工人這裡對不上核准的版本（成片換過或還沒核准），現在做不了配音";
+  assert.equal(await video.step(), `chatgpt-ads-off: ko dub asked for again, not made: ${refusal}`);
+  assert.doesNotMatch(refusal, HOST_ONLY);
+  assert.deepEqual(dubRuns(video, ran), [], "not even the dry run");
+  assert.equal(readJson(skipped).reason, reason);
+  assert.deepEqual([request().status, request().open, request().reason], ["refused", false, refusal]);
+  assert.deepEqual([video.state().status, video.state().dub_retries.ko.status, video.reviews("languages").length], ["done", "refused", batches]);
+  assert.equal(await video.step(), null, "answered once");
+});
+
 test("a dub request whose dry run meets a limit waits untaken", async () => {
   const { video, dubs, skipped, ask, request } = await givenUpDub();
   dubs.ko.dry = { code: 4, out: RATE_LIMITED };
@@ -4228,6 +4268,8 @@ test("a dub request on a video whose upload package can no longer be written is 
   const breakages = [
     { id: DUB_REQUEST, file: "checks.json", change: (checks) => ({ ...checks, visual_hash: "0".repeat(64) }), why: "成片不在了，或它的檢查記錄比現在的腳本和畫面舊" },
     { id: DUB_REQUEST_AGAIN, file: "timeline.json", change: (timeline) => ({ ...timeline, audio_evidence: undefined }), why: "成片不是用現在這份旁白錄音合成的" },
+    // A cut made with channel bookends the work directory no longer selects (it has no branding.json).
+    { id: DUB_REQUEST_THIRD, file: "checks.json", change: (checks) => ({ ...checks, branding: { hash: "0".repeat(64), intro_frames: 0, body_frames: 900, outro_frames: 0 } }), why: "成片用的片頭片尾和現在選的不一樣" },
   ];
   for (const { id, file, change, why } of breakages) {
     const whole = readFileSync(path.join(video.workdir, file));

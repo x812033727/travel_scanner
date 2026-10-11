@@ -12,7 +12,7 @@ from __future__ import annotations
 import json
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from typing import Any, get_args
+from typing import Any, cast, get_args
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
 
@@ -429,6 +429,7 @@ def test_unticking_withdraws_only_requested_entries_of_the_locales_dropped() -> 
             },
             "narration",
         ),
+        ({"reason": dub_retry.NARRATION_DUB_SKIP_RENEWED, "producer": "stopped"}, "narration"),
         ({"tidied_at": TIDIED_AT, "publish_usable": False, "producer": "blocked"}, "tidied"),
         ({"reason": TIDIED_SKIP, "publish_usable": False, "producer": "stopped"}, "tidied"),
         ({"reason": None, "tidied_at": TIDIED_AT}, "tidied"),
@@ -611,13 +612,23 @@ def test_the_narration_sentence_is_the_one_the_worker_writes() -> None:
         pytest.skip("the video tools are not in this checkout")
     source = path.read_text(encoding="utf-8")
     assert f'const NARRATION_DUB_SKIP = "{dub_retry.NARRATION_DUB_SKIP}";' in source
+    # A video whose final cut was renewed sends the same skip in another sentence.
+    renewed = (REPO / "tools" / "video" / "review" / "renewal.mjs").read_text(encoding="utf-8")
+    assert f'reason: "{dub_retry.NARRATION_DUB_SKIP_RENEWED}"' in renewed
+    assert dub_retry.NARRATION_DUB_SKIPS == (
+        dub_retry.NARRATION_DUB_SKIP,
+        dub_retry.NARRATION_DUB_SKIP_RENEWED,
+    )
 
 
 def test_the_tidied_prefix_is_how_the_worker_starts_that_skip_reason() -> None:
     path = REPO / "tools" / "video" / "automation" / "flow.mjs"
     if not path.is_file():
         pytest.skip("the video tools are not in this checkout")
-    assert f"`{dub_retry.TIDIED_SKIP_PREFIX}${{" in path.read_text(encoding="utf-8")
+    # The skip reason of tidiedLanguages itself: flow.mjs has a second sentence with the same
+    # opening (the refusal of a retry), which the API never reads by its prefix.
+    opening = f"`{dub_retry.TIDIED_SKIP_PREFIX}${{day}} 清掉，成片與旁白都不在了"
+    assert opening in path.read_text(encoding="utf-8")
 
 
 @pytest.mark.asyncio
@@ -959,9 +970,9 @@ async def test_a_dub_that_is_not_skipped_or_not_chosen_is_refused(
     ("case", "blocked", "refusal", "says"),
     [
         ("tidied", "tidied", "video_dub_retry_tidied", "工作檔已經清掉（2026-10-08）"),
-        ("publish_waiting", "publish_pending", "video_dub_retry_publish_pending", "上傳確認"),
-        ("youtube_rejected", "publish_pending", "video_dub_retry_publish_pending", "上傳確認"),
-        ("youtube_unconfirmed", "publish_pending", "video_dub_retry_publish_pending", "上傳確認"),
+        ("publish_waiting", "publish_pending", "video_dub_retry_publish_pending", "上架確認"),
+        ("youtube_rejected", "publish_pending", "video_dub_retry_publish_pending", "上架確認"),
+        ("youtube_unconfirmed", "publish_pending", "video_dub_retry_publish_pending", "上架確認"),
         ("not_adopted", "not_adopted", "video_dub_retry_worker_absent", "不在工人的工作區"),
         ("blocked", "blocked", "video_dub_retry_video_blocked", "重試這支影片"),
         ("stop_file", "stopped", "video_dub_retry_worker_stopped", "STOP"),
@@ -1329,6 +1340,102 @@ async def test_a_batch_identical_to_one_the_owner_sent_back_ends_the_request_as_
     fresh = await _submit(site, _made(site, sha="9" * 64, track=b"ja track, other takes"))
     assert fresh.status == "pending" and fresh.id != card.id
     assert (await _page(site, work)).dub_retries["ja"].status == "made"
+
+
+@pytest.mark.asyncio
+async def test_a_made_track_sent_back_after_a_card_that_still_waited_leaves_no_batch_that_counts(
+    site: Site, work: Path
+) -> None:
+    """Asked while the first languages card still waits (another language's track nobody has
+    confirmed), the re-made batch replaces that card. Sent back, no batch counts any more:
+    every part reads "working", the request stays as it ended, and the click is refused, so
+    the page says so in a line of its own instead of the skip reason and the button."""
+    await _seed(site, locales=("en", "ja"))
+    _auto(work)
+    en_track = _file(site, b"en track", "dub_en", "audio/mp4")
+    waiting = await _submit(
+        site,
+        ReviewIn(
+            gate="languages",
+            content_sha256="a" * 64,
+            summary="語言：en 配音，ja 跳過",
+            payload={
+                "locales": {
+                    "en": {"metadata": "ready", "captions": "ready", "dub": "ready"},
+                    "ja": {
+                        "metadata": "ready",
+                        "captions": "ready",
+                        "dub": {"status": "skipped", "reason": SKIP},
+                    },
+                }
+            },
+            files=[en_track],
+        ),
+    )
+    assert waiting.status == "pending", "the en track waits for the owner"
+    request = (await _ask(site, work)).dub_retries["ja"]
+    await _take(site, request.id)
+    card = await _submit(
+        site,
+        ReviewIn(
+            gate="languages",
+            content_sha256="b" * 64,
+            summary="語言：en、ja 配音",
+            payload={
+                "locales": {
+                    "en": {"metadata": "ready", "captions": "ready", "dub": "ready"},
+                    "ja": {"metadata": "ready", "captions": "ready", "dub": "ready"},
+                }
+            },
+            files=[en_track, _file(site, b"ja track", "dub_ja", "audio/mp4")],
+        ),
+    )
+    statuses = {row.id: row.status for row in await _rows(site) if row.gate == "languages"}
+    assert statuses == {waiting.id: "superseded", card.id: "pending"}
+    made = await _page(site, work)
+    assert made.dub_retries["ja"].status == "made"
+    assert made.languages["en"]["dub"].state == "ready", "nobody confirmed the en track"
+    assert made.languages["ja"]["dub"].state == "ready"
+
+    await _decide(site, card.id, "reject", "聽起來不對")
+    back = await _page(site, work)
+    assert {
+        (locale, part): state.state
+        for locale, parts in back.languages.items()
+        for part, state in parts.items()
+    } == {
+        (locale, part): "working"
+        for locale in ("en", "ja")
+        for part in ("metadata", "captions", "dub")
+    }
+    ended = back.dub_retries["ja"]
+    assert (ended.id, ended.status, ended.open) == (request.id, "made", False)
+    assert back.dub_retry_blocked == {}, "a blocker is named only for a skipped dub"
+    with pytest.raises(AppError) as error:
+        await _ask(site, work)
+    assert (error.value.status, error.value.code) == (409, "video_dub_retry_not_skipped")
+    assert (await _stored(site))["ja"]["id"] == str(request.id)
+
+
+@pytest.mark.asyncio
+async def test_a_stored_value_that_is_not_an_object_reads_as_no_request_at_the_click(
+    site: Site, work: Path
+) -> None:
+    """No writer stores anything but an object; a row repaired by hand may hold something else.
+    Every reader takes that as no request, and so does the click, which then writes a clean
+    object over it."""
+    await _ready(site, work)
+    async with site.factory() as session:
+        project = await session.scalar(select(VideoProject).where(VideoProject.slug == SLUG))
+        assert project is not None
+        project.dub_retries = cast(Any, ["ja"])
+        await session.commit()
+    before = await _page(site, work)
+    assert before.dub_retries == {} and before.languages["ja"]["dub"].state == "skipped"
+    asked = await _ask(site, work)
+    assert asked.dub_retries["ja"].status == "requested"
+    stored = (await _project_row(site)).dub_retries
+    assert isinstance(stored, dict) and list(stored) == ["ja"]
 
 
 @pytest.mark.asyncio

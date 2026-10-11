@@ -1403,6 +1403,8 @@ describe("asking for a skipped dub again from the language panel", () => {
   const at = (iso: string) => new Intl.DateTimeFormat("zh-TW", { dateStyle: "medium", timeStyle: "short" }).format(new Date(iso)).replace(/\s+/g, " ");
   const COST = "會再花語音合成、逐句聽寫和 Jev 檢查的額度，送出前會先看本月的語音額度。影片上架滿 7 天後，只要沒有等你決定的審核卡，工作檔就會清掉，清掉後不能再做；還想再做的語言，請在按語言審核卡的按鈕之前先要求";
   const BUTTON = "日文 配音 再做一次";
+  // What the made line says of the other languages' tracks on the card: true whether or not they were confirmed.
+  const OTHERS = "卡片會把其他語言的音軌再列一次：這個面板上寫「你說已上傳」的不用重傳，其餘的還沒有確認過，要和這一條一起上傳。";
   const part = (state: string, reason: string | null = null) => ({ state, reason });
   const made = { metadata: part("ready"), captions: part("ready") };
   const all = { metadata: true, captions: true, dub: true };
@@ -1587,7 +1589,7 @@ describe("asking for a skipped dub again from the language panel", () => {
       dub_retries: { en: request("made", { taken_at: TAKEN, finished_at: ENDED }), ja: request("skipped", { taken_at: TAKEN, finished_at: ENDED, reason: AGAIN }), ko: request("refused", { finished_at: ENDED, reason: WHY }) },
     }));
     const first = await open();
-    expect(within(first.row(0)).getByText(`再做一次做出來了（${at(ENDED)}）：到下面的語言審核卡下載這條音軌，上傳到 Studio 後按卡片上的按鈕。卡片會把其他語言的音軌再列一次，只有這一條是新的。這個語言的字幕也照新配音重切過，YouTube 上已有的字幕不會自動更換。其他跳過的語言還想再做的話，請先要求再按卡片上的按鈕：影片上架滿 7 天後，審核卡一核准工作檔就會清掉`)).toBeTruthy();
+    expect(within(first.row(0)).getByText(`再做一次做出來了（${at(ENDED)}）：到下面的語言審核卡下載這條音軌，上傳到 Studio 後按卡片上的按鈕。${OTHERS}這個語言的字幕也照新配音重切過，YouTube 上已有的字幕不會自動更換。其他跳過的語言還想再做的話，請先要求再按卡片上的按鈕：影片上架滿 7 天後，審核卡一核准工作檔就會清掉`)).toBeTruthy();
     expect(within(first.row(0)).queryByRole("button")).toBeNull();
     expect(first.row(1).textContent).toContain(`跳過（${AGAIN}）`);
     expect(within(first.row(1)).getByText(`${at(ENDED)} 再做了一次，還是做不出來，原因如上`)).toBeTruthy();
@@ -1613,6 +1615,59 @@ describe("asking for a skipped dub again from the language panel", () => {
     const button = within(row(1)).getByRole("button", { name: BUTTON });
     expect(line.compareDocumentPosition(button) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(row(1).textContent).not.toContain("再做一次做出來了");
+  });
+
+  it("a made dub beside another language's track nobody confirmed does not call its own track the only new one", async () => {
+    // Asked while the first languages card still waited: the new batch replaced it, so the English track was never confirmed.
+    stub(() => ({ ...video, pending: 1, languages: { en: { ...made, dub: part("ready") }, ja: { ...made, dub: part("ready") } }, dub_retries: { ja: request("made", { taken_at: TAKEN, finished_at: ENDED }) } }));
+    const { panel, row } = await open();
+    const [english, japanese] = [0, 1].map((index) => row(index).querySelectorAll("td")[2] as HTMLElement);
+    // The English cell is in the panel's own words a track still to upload, and the Japanese line sends the owner to it.
+    expect(english.textContent).toBe("已完成");
+    expect(japanese.textContent).toContain(OTHERS);
+    expect(panel.textContent).not.toContain("只有這一條是新的");
+    expect(offers(panel)).toHaveLength(0);
+  });
+
+  it("a re-made track sent back when no earlier languages review counts says so and offers nothing", async () => {
+    // The new batch had replaced a card that still waited; sent back, no batch counts, so every part reads as not made.
+    const none = { metadata: part("working"), captions: part("working"), dub: part("working") };
+    stub(() => ({ ...video, languages: { en: none, ja: none }, dub_retries: { ja: request("made", { taken_at: TAKEN, finished_at: ENDED }) } }));
+    const { panel, row } = await open();
+    const cell = row(1).querySelectorAll("td")[2] as HTMLElement;
+    const line = `${at(ENDED)} 再做一次做出來的音軌，那一批語言審核被退回了，在它之前也沒有還算數的語言審核（它取代了當時還在等你決定的那一張），所以這支影片現在沒有算數的語言審核，這一格暫時不能再要求。翻譯或規則沒變之前，工人送出的還是被退回的那一批，不會有新的審核卡`;
+    expect(within(cell).getByText(line)).toBeTruthy();
+    // The state's own label stays the only place that word is written, and the server would refuse a click.
+    expect(cell.textContent).toBe(`尚未完成${line}`);
+    expect(offers(panel)).toHaveLength(0);
+    expect(within(panel).queryByText(COST)).toBeNull();
+    expect(row(0).querySelectorAll("td")[2].textContent).toBe("尚未完成");
+  });
+
+  it("the alert of a request whose answer was lost goes once the video reads as asked", async () => {
+    // The server stored the request and the answer failed on the way back: the page reads the video again at once.
+    let stored = false;
+    const posts = stub(() => (stored ? { ...video, dub_retries: { ja: request("requested", { open: true }) } } : video), () => {
+      stored = true;
+      return Response.json({ code: "bad_gateway", detail: "上游沒有回應" }, { status: 502 });
+    });
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(true);
+    try {
+      const { panel, row } = await open();
+      fireEvent.click(within(panel).getByRole("button", { name: BUTTON }));
+      const waiting = await within(row(1)).findByText(`已要求再做一次（${at(ASKED)}），等工人下一輪接手；這時還沒開始做`);
+      expect(posts).toHaveLength(1);
+      // What the cell says is the server's word, and nothing beside it says the request was not sent.
+      await waitFor(() => expect(within(panel).queryByRole("alert")).toBeNull());
+      expect(panel.textContent).not.toContain("沒有送出");
+      expect(offers(panel)).toHaveLength(0);
+      // The line arrives in a region a screen reader announces; every saved dub has one, also while it says nothing.
+      expect(waiting.parentElement?.getAttribute("aria-live")).toBe("polite");
+      expect(row(0).querySelectorAll("td")[2].querySelector("[aria-live=polite]")?.textContent).toBe("");
+      expect(row(0).querySelectorAll("td")[1].querySelector("[aria-live]")).toBeNull();
+    } finally {
+      confirm.mockRestore();
+    }
   });
 
   it("a dub that failed again while a languages card waits says the card has nothing new for it", async () => {

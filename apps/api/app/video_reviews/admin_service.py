@@ -2086,8 +2086,8 @@ def _dub_retry_blocked(code: DubRetryBlocker, tidied_at: str | None) -> AppError
         return AppError(
             409,
             "video_dub_retry_publish_pending",
-            "網站上最新的上傳確認不是核准的（還在等、被退回，或沒有），"
-            "重做的配音進不了語言包；等有核准的上傳確認之後再要求",
+            "網站上最新的上架確認不是核准的（還在等、被退回，或沒有），"
+            "重做的配音進不了語言包；等有核准的上架確認之後再要求",
         )
     if code == "not_adopted":
         return AppError(
@@ -2134,7 +2134,9 @@ async def request_dub_retry(
     project = await _project(session, slug, lock=True)
     _refuse_dropped(project)
     now = datetime.now(UTC)
-    retries = project.dub_retries or {}
+    # A value no writer stores (not an object) reads as no request, as everywhere else.
+    stored = project.dub_retries
+    retries: dict[str, Any] = stored if isinstance(stored, dict) else {}
     previous = dub_retry.view(retries.get(locale), now)
     if previous is not None and previous.open:
         return await project_view(session, slug, work_dir)
