@@ -2,17 +2,29 @@ from __future__ import annotations
 
 import gzip
 import json
+import os
+from collections.abc import AsyncIterator
+from copy import deepcopy
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from types import SimpleNamespace
-from typing import Any
+from typing import Any, cast
 from unittest.mock import AsyncMock, Mock
 from uuid import UUID, uuid4
 
 import httpx
 import pytest
-from sqlalchemy import select
-from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
+from sqlalchemy import Table, select
+from sqlalchemy import text as sql_text
+from sqlalchemy.engine import make_url
+from sqlalchemy.exc import DBAPIError
+from sqlalchemy.ext.asyncio import (
+    AsyncEngine,
+    AsyncSession,
+    async_sessionmaker,
+    create_async_engine,
+)
+from sqlalchemy.pool import NullPool
 
 import app.news_automation as news_automation_package
 from app.config import get_settings
@@ -2836,3 +2848,973 @@ def test_news_punctuation_recognizes_a_url_split_between_text_nodes() -> None:
         ],
     }])
     assert _punctuation_problems(document) == []
+
+
+async def _held_ingestion_case(database_pair=None):
+    from fakeredis.aioredis import FakeRedis
+
+    from app.models import AdminRoleAssignment, User
+    from app.news_automation import service
+    from app.news_automation.models import LOCALES, NewsAssessment
+    from tests.test_news_pipeline import EVENT_DAY, FIRST_PARTY_URL, database, seed_candidate
+
+    if database_pair is None:
+        engine, factory = await database()
+        async with engine.begin() as connection:
+            await connection.run_sync(
+                lambda sync: cast(Table, AdminRoleAssignment.__table__).create(sync)
+            )
+    else:
+        engine, factory = database_pair
+    redis = FakeRedis()
+    async with factory() as session:
+        actor = User(email="ingestion-owner@example.com", is_admin=True)
+        session.add(actor)
+        candidate = await seed_candidate(session, status="needs_redraft")
+        candidate.event_date = EVENT_DAY
+        candidate.retry_count = 4
+        candidate.error_code = "news_hard_checks_failed"
+        candidate.draft_bundle_json = {"zh-TW": {"old": "cached"}, "ja": {"old": "cached"}}
+        candidate.evidence_hash = "e" * 64
+        session.add(
+            NewsEvidence(
+                candidate_id=candidate.id,
+                role="evidence",
+                is_first_party=True,
+                url=FIRST_PARTY_URL,
+                title="Original report",
+                source_date=EVENT_DAY,
+                content_hash="f" * 64,
+                excerpt="The complete stored report and its qualifications.",
+            )
+        )
+        for _ in range(2):
+            session.add(
+                NewsAssessment(
+                    candidate_id=candidate.id,
+                    assessment_type="judge",
+                    verdict="revise",
+                    reasons_json=["Old rewrite direction"],
+                    details_json={"action": "redraft"},
+                    prompt_version="old",
+                )
+            )
+        from app.guides.models import GuideTopic
+
+        session.add(GuideTopic(slug="ai-news", section="life", names_json={"en": "AI news"}))
+        await session.commit()
+        snapshot = await service.held_bundle_snapshot(session, redis, candidate.id)
+        evidence = snapshot["state"]["evidence"][0]
+        documents = {}
+        pending = {}
+        for locale in LOCALES:
+            document = GuideDocument.model_validate(
+                {
+                    "title": f"A source-bound report {locale}",
+                    "description": "What the announcement establishes and what it leaves open.",
+                    "blocks": [
+                        {
+                            "type": "summary",
+                            "items": [
+                                "The announcement describes an update.",
+                                "The original report states its limitations.",
+                            ],
+                        },
+                        {"type": "paragraph", "text": "The original source describes the update."},
+                        {"type": "heading", "level": 2, "text": "What was announced"},
+                        {"type": "heading", "level": 2, "text": "Source limitations"},
+                        {"type": "heading", "level": 2, "text": "What remains open"},
+                        {
+                            "type": "table",
+                            "header": ["Point", "Source statement"],
+                            "rows": [["Scope", "A documented announcement"]],
+                        },
+                        {
+                            "type": "callout",
+                            "tone": "info",
+                            "title": "Source limitations",
+                            "text": "Read the original report for its qualifications.",
+                        },
+                        {
+                            "type": "faq",
+                            "items": [
+                                {
+                                    "question": "What was announced?",
+                                    "answer": "The source describes an update.",
+                                },
+                                {
+                                    "question": "What remains open?",
+                                    "answer": "The source describes limitations.",
+                                },
+                            ],
+                        },
+                        {
+                            "type": "link",
+                            "text": "News in this topic",
+                            "url": f"https://mokaair.com/{locale}/life/topics/ai-news",
+                        },
+                    ],
+                    "sources": [
+                        {
+                            "title": evidence["title"],
+                            "url": evidence["url"],
+                            "checked_on": evidence["retrieved_at"][:10],
+                        }
+                    ],
+                }
+            )
+            documents[locale] = document.model_dump(mode="json")
+            pending[locale] = hard_policy_problems(document, "ai", locale, source_count=1)
+            assert pending[locale] and all(p.startswith("no_hero:") for p in pending[locale])
+        review = {
+            "schema": service.HELD_REVIEW_SCHEMA,
+            "candidate_id": str(candidate.id),
+            "reviewer": "Independent editor",
+            "reviewed_at": datetime.now(UTC).isoformat(),
+            "conclusion": "draft_ingestion_only",
+            "blocking_content_problems": [],
+            "documents_sha256": {
+                locale: service.held_bundle_digest(doc) for locale, doc in documents.items()
+            },
+            "evidence_sha256": service.held_bundle_digest(snapshot["state"]["evidence"]),
+            "candidate_evidence_hash": candidate.evidence_hash,
+            "pending_policy_problems": pending,
+        }
+        manifest = {
+            "schema": service.HELD_BUNDLE_SCHEMA,
+            "candidate_id": str(candidate.id),
+            "operation_id": str(uuid4()),
+            "slug": f"held-report-{EVENT_DAY:%Y%m%d}",
+            "event_date": EVENT_DAY.isoformat(),
+            "expected_snapshot": snapshot,
+            "documents": documents,
+            "review_sha256": "b" * 64,
+        }
+    return engine, factory, redis, candidate.id, actor.id, manifest, review
+
+
+async def _call_held_ingestion(session, redis, candidate_id, manifest, review, actor=None):
+    from app.news_automation.service import ingest_held_bundle
+
+    return await ingest_held_bundle(
+        session,
+        redis,
+        candidate_id,
+        manifest,
+        review,
+        manifest_sha256="a" * 64,
+        review_sha256="b" * 64,
+        actor=actor,
+    )
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_saves_five_native_actor_revisions_without_reopening_or_publishing(
+    monkeypatch,
+):
+    from app.guides.models import GuideArticleLocale, GuideArticleRevision
+    from app.models import AdminAuditLog, User
+    from app.news_automation import service
+    from app.news_automation.models import NewsAssessment, NewsPipelineRun
+    from app.news_automation.schemas import CandidateAction
+
+    engine, factory, redis, candidate_id, actor_id, manifest, review = await _held_ingestion_case()
+    async with factory() as session:
+        before = await service.held_bundle_snapshot(session, redis, candidate_id)
+        dry = await _call_held_ingestion(session, redis, candidate_id, manifest, review)
+        assert not dry["applied"] and not dry["committed"] and not session.new
+        actor = await session.get(User, actor_id)
+        result = await _call_held_ingestion(session, redis, candidate_id, manifest, review, actor)
+        assert result["saved_in_transaction"] and not result["committed"]
+        await session.commit()
+        after = await service.held_bundle_snapshot(session, redis, candidate_id)
+        original = before["state"]["candidate"]
+        updated = after["state"]["candidate"]
+        assert {
+            k: v for k, v in updated.items() if k not in {"guide_article_id", "updated_at"}
+        } == {k: v for k, v in original.items() if k not in {"guide_article_id", "updated_at"}}
+        assert len(after["state"]["assessments"]) == 2
+        assert all(item["hero"] is None for item in manifest["documents"].values())
+        locales = list(await session.scalars(select(GuideArticleLocale)))
+        revisions = list(await session.scalars(select(GuideArticleRevision)))
+        assert len(locales) == len(revisions) == 5
+        assert all(item.version == 1 and item.published_version is None for item in locales)
+        assert all(
+            item.created_by_user_id == actor_id and item.action == "created" for item in revisions
+        )
+        audits = list(await session.scalars(select(AdminAuditLog)))
+        assert len(audits) == 2 and all(item.actor_user_id == actor_id for item in audits)
+        saved_audit = next(item for item in audits if item.action == service.HELD_INGESTION_ACTION)
+        assert saved_audit.metadata_json["review_sha256"] == "b" * 64
+        assert list(await session.scalars(select(NewsPipelineRun))) == []
+        assert len(list(await session.scalars(select(NewsAssessment)))) == 2
+        row = await session.get(NewsCandidate, candidate_id)
+        assert await service._ingested_bundle_available(session, row)
+        with pytest.raises(AppError) as used:
+            await _call_held_ingestion(session, redis, candidate_id, manifest, review, actor)
+        assert used.value.code == "news_ingestion_operation_used"
+        assert len(list(await session.scalars(select(GuideArticleRevision)))) == 5
+        assert len(list(await session.scalars(select(AdminAuditLog)))) == 2
+        existing_guide_manifest = deepcopy(manifest)
+        existing_guide_manifest["operation_id"] = str(uuid4())
+        existing_guide_manifest["expected_snapshot"] = after
+        with pytest.raises(AppError) as existing:
+            await _call_held_ingestion(
+                session, redis, candidate_id, existing_guide_manifest, review, actor
+            )
+        assert existing.value.code == "news_ingestion_guide_exists"
+        # A whole-document change hidden by the policy fingerprint cannot grant reverify.
+        changed = deepcopy(locales[0].draft_json)
+        changed["sources"][0]["checked_on"] = "2026-01-01"
+        locales[0].draft_json = changed
+        await session.flush()
+        assert not await service._ingested_bundle_available(session, row)
+        await session.rollback()
+        actor = await session.get(User, actor_id)
+        monkeypatch.setattr(service, "candidate_detail", AsyncMock(return_value="readback"))
+        await service.reverify_candidate(
+            session, actor, candidate_id, CandidateAction(reason="Check the ingested drafts")
+        )
+        row = await session.get(NewsCandidate, candidate_id)
+        assert row.draft_bundle_json == manifest["documents"]
+        assert row.retry_count == 5 and row.status == "discovered"
+        assert row.error_code == "news_reverify_requested" and row.human_decision is None
+        assert row.published_at is None
+        assert len(list(await session.scalars(select(NewsAssessment)))) == 2
+        assert all(
+            item.published_version is None
+            for item in await session.scalars(select(GuideArticleLocale))
+        )
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("group", ["source", "evidence", "assessments", "candidate", "audits"])
+async def test_held_ingestion_rejects_complete_history_and_typed_source_drift(group):
+    from app.news_automation import service
+
+    engine, factory, redis, candidate_id, _actor, manifest, review = await _held_ingestion_case()
+    expected = manifest["expected_snapshot"]
+    if group == "source":
+        expected["state"][group][0]["config_json"] = {"trust": True}
+    elif group == "evidence":
+        expected["state"][group][0]["excerpt"] += " changed"
+    elif group == "candidate":
+        expected["state"][group]["retry_count"] = True
+    elif group == "audits":
+        expected["state"][group].append({"id": str(uuid4()), "action": "old"})
+    else:
+        expected["state"][group][0]["reasons_json"] = ["Changed original direction"]
+    expected["sha256"] = service.held_bundle_digest(expected["state"])
+    async with factory() as session:
+        with pytest.raises(AppError, match="完整歷史"):
+            await _call_held_ingestion(session, redis, candidate_id, manifest, review)
+        assert not session.new and not session.dirty
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "failure", ["partial", "review", "source", "policy", "slug", "running", "rq"]
+)
+async def test_held_ingestion_refuses_invalid_or_busy_input_without_a_save(failure):
+    from app.news_automation import service
+    from app.news_automation.models import NewsPipelineRun
+
+    engine, factory, redis, candidate_id, _actor, manifest, review = await _held_ingestion_case()
+    async with factory() as session:
+        if failure == "partial":
+            del manifest["documents"]["ko"]
+        elif failure == "review":
+            review["documents_sha256"]["en"] = "0" * 64
+        elif failure == "source":
+            manifest["documents"]["en"]["sources"][0]["url"] = "https://unreviewed.example/fact"
+        elif failure == "policy":
+            manifest["documents"]["en"]["blocks"] = [{"type": "paragraph", "text": "Only text"}]
+        elif failure == "slug":
+            manifest["slug"] = "../outside-20260922"
+        elif failure == "running":
+            session.add(
+                NewsPipelineRun(
+                    candidate_id=candidate_id,
+                    stage="verification-1",
+                    status="running",
+                    idempotency_key=str(uuid4()),
+                )
+            )
+            await session.commit()
+        else:
+            await redis.hset(f"rq:job:news-judge-{candidate_id}-4-hold", "status", "queued")
+        if failure in {"running", "rq"}:
+            manifest["expected_snapshot"] = await service.held_bundle_snapshot(
+                session, redis, candidate_id
+            )
+        with pytest.raises((AppError, ValueError)) as refused:
+            await _call_held_ingestion(session, redis, candidate_id, manifest, review)
+        if failure in {"running", "rq"}:
+            assert isinstance(refused.value, AppError)
+            assert refused.value.code == "news_ingestion_busy"
+        assert not session.new and not session.dirty
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_rolls_back_all_five_locales_on_fourth_revision_failure():
+    from sqlalchemy import event
+
+    from app.guides.models import (
+        GuideArticle,
+        GuideArticleLocale,
+        GuideArticleRevision,
+        GuideArticleTopic,
+    )
+    from app.models import AdminAuditLog, User
+    from app.news_automation.models import NewsAssessment
+
+    engine, factory, redis, candidate_id, actor_id, manifest, review = await _held_ingestion_case()
+    count = 0
+
+    def refuse_fourth(_mapper, _connection, _row):
+        nonlocal count
+        count += 1
+        if count == 4:
+            raise RuntimeError("Fourth revision failed")
+
+    event.listen(GuideArticleRevision, "before_insert", refuse_fourth)
+    try:
+        async with factory() as session:
+            actor = await session.get(User, actor_id)
+            with pytest.raises(RuntimeError, match="Fourth revision"):
+                await _call_held_ingestion(session, redis, candidate_id, manifest, review, actor)
+            await session.rollback()
+        async with factory() as session:
+            assert list(await session.scalars(select(GuideArticle))) == []
+            assert list(await session.scalars(select(GuideArticleLocale))) == []
+            assert list(await session.scalars(select(GuideArticleRevision))) == []
+            assert list(await session.scalars(select(GuideArticleTopic))) == []
+            assert list(await session.scalars(select(AdminAuditLog))) == []
+            assert len(list(await session.scalars(select(NewsAssessment)))) == 2
+            assert len(list(await session.scalars(select(NewsSource)))) == 1
+            assert (await session.get(NewsCandidate, candidate_id)).guide_article_id is None
+    finally:
+        event.remove(GuideArticleRevision, "before_insert", refuse_fourth)
+        await redis.aclose()
+        await engine.dispose()
+
+
+def test_held_ingestion_input_and_unknown_intent_are_not_replayed(tmp_path, monkeypatch):
+    import hashlib
+
+    from app.news_automation import backfill_cli
+
+    manifest = tmp_path / "manifest.json"
+    raw = b'{"schema":"one","schema":"two"}'
+    manifest.write_bytes(raw)
+    with pytest.raises(ValueError, match="Duplicate JSON key"):
+        backfill_cli._ingestion_json(manifest, hashlib.sha256(raw).hexdigest())
+    with pytest.raises(SystemExit, match="raw SHA"):
+        backfill_cli._ingestion_json(manifest, "0" * 64)
+    intent_dir = tmp_path / "intent"
+    intent_dir.mkdir(mode=0o700)
+    monkeypatch.setattr(backfill_cli, "INGESTION_INTENT_DIR", intent_dir)
+    candidate_id, operation_id = uuid4(), uuid4()
+    backfill_cli._ingestion_intent(candidate_id, operation_id, manifest_sha256="a" * 64)
+    saved = next(intent_dir.iterdir()).read_bytes()
+    with pytest.raises(SystemExit, match="do not retry"):
+        backfill_cli._ingestion_intent(candidate_id, operation_id, manifest_sha256="a" * 64)
+    with pytest.raises(SystemExit, match="do not retry"):
+        backfill_cli._ingestion_intent(candidate_id, uuid4(), manifest_sha256="a" * 64)
+    assert next(intent_dir.iterdir()).read_bytes() == saved
+    backfill_cli._ingestion_intent(uuid4(), uuid4(), manifest_sha256="a" * 64)
+    assert len(list(intent_dir.iterdir())) == 2
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_source_audit_only_changes_the_snapshot():
+    from app.models import AdminAuditLog
+    from app.news_automation import service
+
+    engine, factory, redis, cid, _actor, manifest, review = await _held_ingestion_case()
+    async with factory() as session:
+        candidate = await session.get(NewsCandidate, cid)
+        source_before = manifest["expected_snapshot"]["state"]["source"]
+        session.add(
+            AdminAuditLog(
+                action="news_source_validated",
+                target=f"news-source:{candidate.source_id}",
+                metadata_json={"same_configuration": True},
+            )
+        )
+        await session.commit()
+        current = await service.held_bundle_snapshot(session, redis, cid)
+        assert current["state"]["source"] == source_before
+        assert len(current["state"]["audits"]) == 1
+        with pytest.raises(AppError) as changed:
+            await _call_held_ingestion(session, redis, cid, manifest, review)
+        assert changed.value.code == "news_ingestion_state_changed"
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("clock", ["terminal", "unexplained", "future"])
+async def test_held_ingestion_processing_clock_requires_a_real_finished_run(clock):
+    from app.news_automation import service
+    from app.news_automation.models import NewsPipelineRun
+
+    engine, factory, redis, cid, _actor, manifest, review = await _held_ingestion_case()
+    async with factory() as session:
+        candidate = await session.get(NewsCandidate, cid)
+        started = datetime.now(UTC) - timedelta(minutes=5)
+        candidate.processing_started_at = (
+            datetime.now(UTC) + timedelta(minutes=5) if clock == "future" else started
+        )
+        if clock in {"terminal", "future"}:
+            session.add(
+                NewsPipelineRun(
+                    candidate_id=cid,
+                    stage="zh-draft",
+                    status="failed",
+                    started_at=started,
+                    finished_at=started + timedelta(minutes=1),
+                    idempotency_key=str(uuid4()),
+                )
+            )
+        await session.commit()
+        manifest["expected_snapshot"] = await service.held_bundle_snapshot(session, redis, cid)
+        if clock == "terminal":
+            result = await _call_held_ingestion(session, redis, cid, manifest, review)
+            assert not result["applied"] and candidate.processing_started_at is not None
+        else:
+            with pytest.raises(AppError) as busy:
+                await _call_held_ingestion(session, redis, cid, manifest, review)
+            assert busy.value.code == "news_ingestion_busy"
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.parametrize(
+    "extra",
+    [
+        ["--judge-holds"],
+        ["--judge-redrafts"],
+        ["--refetch-source", "one"],
+        ["--resume-saved-bundles"],
+        ["--jev-quota-holds"],
+        ["--ingest-held-bundle", "one.json"],
+        ["--apply"],
+        ["--actor-email", "one@example.com"],
+        ["--since", "2026-10-01"],
+        ["--review-sha256", "0" * 64],
+    ],
+)
+def test_held_ingestion_cli_rejects_mixed_capture_modes_before_opening_db(extra, monkeypatch):
+    import sys
+
+    from app.news_automation import backfill_cli
+
+    def forbidden(*_args, **_kwargs):
+        pytest.fail("Mixed arguments reached a database operation")
+
+    monkeypatch.setattr(backfill_cli, "run_held_ingestion", forbidden)
+    monkeypatch.setattr(backfill_cli, "run", forbidden)
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["backfill_cli", "--capture-ingestion-state", "--candidate-id", str(uuid4()), *extra],
+    )
+    with pytest.raises(SystemExit) as rejected:
+        backfill_cli.main()
+    assert rejected.value.code == 2
+
+
+def _held_cli_files(tmp_path, manifest, review):
+    import hashlib
+
+    review_path = tmp_path / "review.json"
+    review_path.write_text(json.dumps(review), encoding="utf-8")
+    review_sha = hashlib.sha256(review_path.read_bytes()).hexdigest()
+    manifest["review_sha256"] = review_sha
+    bundle_path = tmp_path / "bundle.json"
+    bundle_path.write_text(json.dumps(manifest), encoding="utf-8")
+    return {
+        "bundle_path": bundle_path,
+        "bundle_sha256": hashlib.sha256(bundle_path.read_bytes()).hexdigest(),
+        "review_path": review_path,
+        "review_sha256": review_sha,
+        "apply": True,
+        "actor_email": "ingestion-owner@example.com",
+    }
+
+
+@pytest.mark.parametrize(
+    "mode,flag",
+    [
+        ("capture", "--bundle-sha256"),
+        ("capture", "--review-sha256"),
+        ("capture", "--actor-email"),
+        ("backlog", "--bundle-sha256"),
+        ("backlog", "--review-sha256"),
+    ],
+)
+def test_held_ingestion_cli_explicit_empty_flags_cannot_switch_to_backlog(mode, flag, monkeypatch):
+    import sys
+
+    from app.news_automation import backfill_cli
+
+    def forbidden(*_args, **_kwargs):
+        pytest.fail("An explicit empty ingestion flag reached a database/dispatch operation")
+
+    monkeypatch.setattr(backfill_cli, "run_held_ingestion", forbidden)
+    monkeypatch.setattr(backfill_cli, "run", forbidden)
+    base = (
+        ["--capture-ingestion-state", "--candidate-id", str(uuid4())]
+        if mode == "capture"
+        else ["--since", "2026-10-01", "--apply", "--actor-email", "one@example.com"]
+    )
+    monkeypatch.setattr(sys, "argv", ["backfill_cli", *base, flag, ""])
+    with pytest.raises(SystemExit) as rejected:
+        backfill_cli.main()
+    assert rejected.value.code == 2
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_cli_unknown_intent_refuses_before_any_guide_write(
+    tmp_path, monkeypatch
+):
+    from app.guides.models import GuideArticleRevision
+    from app.models import AdminAuditLog
+    from app.news_automation import backfill_cli
+
+    engine, factory, redis, cid, _actor, manifest, review = await _held_ingestion_case()
+    args = _held_cli_files(tmp_path, manifest, review)
+    intent_dir = tmp_path / "intent"
+    intent_dir.mkdir(mode=0o700)
+    monkeypatch.setattr(backfill_cli, "INGESTION_INTENT_DIR", intent_dir)
+    monkeypatch.setattr(backfill_cli, "SessionFactory", factory)
+    monkeypatch.setattr(backfill_cli, "get_redis", lambda: redis)
+    monkeypatch.setattr(backfill_cli, "engine", SimpleNamespace(dispose=AsyncMock()))
+    backfill_cli._ingestion_intent(cid, UUID(manifest["operation_id"]), unknown=True)
+    original = next(intent_dir.iterdir()).read_bytes()
+    with pytest.raises(SystemExit, match="do not retry"):
+        await backfill_cli.run_held_ingestion(cid, **args)
+    manifest["operation_id"] = str(uuid4())
+    args = _held_cli_files(tmp_path, manifest, review)
+    with pytest.raises(SystemExit, match="do not retry"):
+        await backfill_cli.run_held_ingestion(cid, **args)
+    async with factory() as session:
+        assert (await session.get(NewsCandidate, cid)).guide_article_id is None
+        assert list(await session.scalars(select(GuideArticleRevision))) == []
+        assert list(await session.scalars(select(AdminAuditLog))) == []
+    assert next(intent_dir.iterdir()).read_bytes() == original
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_cli_lost_commit_ack_keeps_intent_and_refuses_replay(
+    tmp_path, monkeypatch
+):
+    from sqlalchemy.ext.asyncio import AsyncSession
+
+    from app.guides.models import GuideArticleRevision
+    from app.models import AdminAuditLog
+    from app.news_automation import backfill_cli
+
+    engine, factory, redis, cid, _actor, manifest, review = await _held_ingestion_case()
+    args = _held_cli_files(tmp_path, manifest, review)
+    intent_dir = tmp_path / "intent"
+    intent_dir.mkdir(mode=0o700)
+    monkeypatch.setattr(backfill_cli, "INGESTION_INTENT_DIR", intent_dir)
+    monkeypatch.setattr(backfill_cli, "SessionFactory", factory)
+    monkeypatch.setattr(backfill_cli, "get_redis", lambda: redis)
+    monkeypatch.setattr(backfill_cli, "engine", SimpleNamespace(dispose=AsyncMock()))
+    original_commit = AsyncSession.commit
+    commits = 0
+
+    async def lost_ack(session):
+        nonlocal commits
+        commits += 1
+        assert len(list(intent_dir.iterdir())) == 1
+        await original_commit(session)
+        raise RuntimeError("Commit acknowledgement lost")
+
+    monkeypatch.setattr(AsyncSession, "commit", lost_ack)
+    with pytest.raises(RuntimeError, match="acknowledgement lost"):
+        await backfill_cli.run_held_ingestion(cid, **args)
+    with pytest.raises(AppError) as used:
+        await backfill_cli.run_held_ingestion(cid, **args)
+    assert used.value.code == "news_ingestion_operation_used" and commits == 1
+    async with factory() as session:
+        assert len(list(await session.scalars(select(GuideArticleRevision)))) == 5
+        assert len(list(await session.scalars(select(AdminAuditLog)))) == 2
+        assert (await session.get(NewsCandidate, cid)).status == "needs_redraft"
+    assert len(list(intent_dir.iterdir())) == 1
+    assert await redis.lrange("rq:queue:news", 0, -1) == []
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("failure", ["array", "schema", "review", "partial"])
+async def test_held_ingestion_cli_invalid_bundle_has_no_intent_or_mutation(
+    failure,
+    tmp_path,
+    monkeypatch,
+):
+    import hashlib
+
+    from app.models import AdminAuditLog
+    from app.news_automation import backfill_cli
+
+    engine, factory, redis, cid, _actor, manifest, review = await _held_ingestion_case()
+    if failure == "schema":
+        manifest["schema"] = "publication-approval"
+    elif failure == "review":
+        review["documents_sha256"]["en"] = "0" * 64
+    elif failure == "partial":
+        del manifest["documents"]["en"]
+    args = _held_cli_files(tmp_path, manifest, review)
+    if failure == "array":
+        args["bundle_path"].write_bytes(b"[]")
+        args["bundle_sha256"] = hashlib.sha256(b"[]").hexdigest()
+    intent_dir = tmp_path / "intent"
+    intent_dir.mkdir(mode=0o700)
+    monkeypatch.setattr(backfill_cli, "INGESTION_INTENT_DIR", intent_dir)
+    monkeypatch.setattr(backfill_cli, "SessionFactory", factory)
+    monkeypatch.setattr(backfill_cli, "get_redis", lambda: redis)
+    monkeypatch.setattr(backfill_cli, "engine", SimpleNamespace(dispose=AsyncMock()))
+    with pytest.raises((SystemExit, AppError)):
+        await backfill_cli.run_held_ingestion(cid, **args)
+    assert list(intent_dir.iterdir()) == []
+    async with factory() as session:
+        assert (await session.get(NewsCandidate, cid)).guide_article_id is None
+        assert list(await session.scalars(select(AdminAuditLog))) == []
+    assert await redis.lrange("rq:queue:news", 0, -1) == []
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "status,marker",
+    [
+        ("failed", "news_processing_stale"),
+        ("discovered", None),
+        ("discovered", "news_judge_redraft"),
+        ("discovered", "news_resume_saved_bundle"),
+        ("discovered", "news_reverify_requested"),
+    ],
+)
+async def test_held_ingestion_pending_fence_skips_late_worker_even_after_final_rq_read(
+    status,
+    marker,
+    monkeypatch,
+):
+    from app.models import User
+    from app.news_automation import pipeline, service
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _held_ingestion_case()
+    actual_live_jobs = service._held_live_jobs
+    calls = 0
+
+    async def late_enqueue(client, candidate_id):
+        nonlocal calls
+        result = await actual_live_jobs(client, candidate_id)
+        calls += 1
+        if calls == 2:
+            # A sweep already selected this CID before the ingestion's row lock.
+            await client.hset(f"rq:job:news-candidate-{candidate_id}-4", "status", "queued")
+        return result
+
+    async with factory() as session:
+        row = await session.get(NewsCandidate, cid)
+        row.status, row.error_code = "failed", "news_processing_stale"
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        await session.commit()
+        manifest["expected_snapshot"] = await service.held_bundle_snapshot(session, redis, cid)
+        monkeypatch.setattr(service, "_held_live_jobs", late_enqueue)
+        await _call_held_ingestion(
+            session, redis, cid, manifest, review, await session.get(User, actor_id)
+        )
+        await session.commit()
+        assert calls == 2
+        # A late judge can change the original hold after the ingestion commits.
+        row.status, row.error_code = status, marker
+        await session.commit()
+        before = await service.held_bundle_snapshot(session, redis, cid)
+        outcome, settings = await pipeline._claim_capacity(session, row)
+        assert (outcome, settings) == ("skipped", None)
+        after = await service.held_bundle_snapshot(session, redis, cid)
+        assert after["state"] == before["state"]
+        assert len(after["state"]["locales"]) == 5
+        assert len(after["state"]["assessments"]) == 2
+        assert after["state"]["candidate"]["draft_bundle_json"] == {
+            "zh-TW": {"old": "cached"},
+            "ja": {"old": "cached"},
+        }
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_native_reverify_hands_off_then_keeps_owner_retry_compatible(
+    monkeypatch,
+):
+    from app.models import User
+    from app.news_automation import pipeline, service
+    from app.news_automation.schemas import CandidateAction
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _held_ingestion_case()
+    async with factory() as session:
+        actor = await session.get(User, actor_id)
+        await _call_held_ingestion(session, redis, cid, manifest, review, actor)
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        await session.commit()
+        row = await session.get(NewsCandidate, cid)
+        assert await service._held_ingestion_pending(session, row)
+        monkeypatch.setattr(service, "candidate_detail", AsyncMock(return_value="readback"))
+        await service.reverify_candidate(session, actor, cid, CandidateAction(reason="Reverify"))
+        assert not await service._held_ingestion_pending(session, row)
+        assert row.draft_bundle_json == manifest["documents"] and row.retry_count == 5
+        outcome, _settings = await pipeline._claim_capacity(session, row)
+        assert outcome == "claimed" and row.error_code == pipeline.REVERIFY_MARKER
+        # Once handed to the real pipeline, its later hold can use the original owner retry.
+        row.status = "failed"
+        row.error_code = "news_verification_failed"
+        await session.commit()
+        actor = await session.get(User, actor_id)
+        await service.retry_candidate(session, actor, cid, CandidateAction(reason="Retry"))
+        assert row.retry_count == 6 and row.error_code is None
+        outcome, _settings = await pipeline._claim_capacity(session, row)
+        assert outcome == "claimed"
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("failure", ["actor", "article", "audit", "retry_type", "retry_old"])
+async def test_held_ingestion_unbound_handoff_audit_cannot_end_pending_fence(failure):
+    from app.models import AdminAuditLog, User
+    from app.news_automation import service
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _held_ingestion_case()
+    async with factory() as session:
+        await _call_held_ingestion(
+            session, redis, cid, manifest, review, await session.get(User, actor_id)
+        )
+        await session.commit()
+        row = await session.get(NewsCandidate, cid)
+        saved = await service._held_ingestion_audit(session, row)
+        metadata = {
+            "system_actor": False,
+            "held_ingestion_audit_id": str(saved.id),
+            "article_id": str(row.guide_article_id),
+            "retry_count": 5,
+        }
+        row.retry_count = 5
+        if failure == "article":
+            metadata["article_id"] = str(uuid4())
+        elif failure == "audit":
+            metadata["held_ingestion_audit_id"] = str(uuid4())
+        elif failure == "retry_type":
+            metadata["retry_count"] = True
+        elif failure == "retry_old":
+            metadata["retry_count"] = 4
+        session.add(
+            AdminAuditLog(
+                actor_user_id=None if failure == "actor" else actor_id,
+                target=f"news-candidate:{cid}",
+                action="news_candidate_reverify_requested",
+                metadata_json=metadata,
+            )
+        )
+        await session.commit()
+        assert await service._held_ingestion_pending(session, row)
+    await redis.aclose()
+    await engine.dispose()
+
+
+async def _held_ingestion_edit_en(factory, cid, actor_id, documents, monkeypatch):
+    from app.guides import admin_service
+    from app.guides.schemas import DraftWrite
+    from app.models import User
+
+    monkeypatch.setattr(admin_service, "article_detail", AsyncMock(return_value="readback"))
+    changed = deepcopy(documents["en"])
+    changed["title"] = "An editor changed this whole draft"
+    async with factory() as writer:
+        row = await writer.get(NewsCandidate, cid)
+        await admin_service.save_draft(
+            writer,
+            await writer.get(User, actor_id),
+            row.guide_article_id,
+            "en",
+            DraftWrite(expected_version=1, document=GuideDocument.model_validate(changed)),
+        )
+    return changed
+
+
+async def _held_ingestion_assert_committed_editor_drift(database_pair, monkeypatch):
+    from app.guides.models import GuideArticleLocale
+    from app.models import User
+    from app.news_automation import service
+    from app.news_automation.schemas import CandidateAction
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _held_ingestion_case(
+        database_pair
+    )
+    try:
+        async with factory() as reader:
+            await _call_held_ingestion(
+                reader, redis, cid, manifest, review, await reader.get(User, actor_id)
+            )
+            await reader.commit()
+            row = await reader.get(NewsCandidate, cid)
+            retained = list(await reader.scalars(select(GuideArticleLocale)))
+            assert all(item.version == 1 for item in retained)
+            await _held_ingestion_edit_en(
+                factory, cid, actor_id, manifest["documents"], monkeypatch
+            )
+            assert not await service._ingested_bundle_available(reader, row)
+            assert next(item for item in retained if item.locale == "en").version == 2
+            with pytest.raises(AppError) as refused:
+                await service.reverify_candidate(
+                    reader, await reader.get(User, actor_id), cid, CandidateAction(reason="Verify")
+                )
+            assert refused.value.code == "news_candidate_not_retryable"
+            assert row.retry_count == 4 and row.status == "needs_redraft"
+            await reader.rollback()
+        assert await redis.lrange("rq:queue:news", 0, -1) == []
+    finally:
+        await redis.aclose()
+        if database_pair is None:
+            await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_refreshes_retained_locales_after_committed_editor_drift(monkeypatch):
+    await _held_ingestion_assert_committed_editor_drift(None, monkeypatch)
+
+
+@pytest.fixture
+async def held_ingestion_postgres() -> AsyncIterator[
+    tuple[AsyncEngine, async_sessionmaker[AsyncSession]]
+]:
+    """Real two-connection locking, strictly in an isolated local integration schema."""
+    from app.models import AdminRoleAssignment
+    from tests.test_news_pipeline import NEWS_TABLES
+
+    if os.getenv("RUN_INTEGRATION_TESTS") != "1":
+        pytest.skip("requires isolated PostgreSQL integration services")
+    url = get_settings().database_url
+    assert make_url(url).host in {"localhost", "127.0.0.1", "::1", "postgres", "db"}
+    assert make_url(url).get_backend_name() == "postgresql"
+    schema = f"held_ingestion_test_{uuid4().hex}"
+    engine = create_async_engine(
+        url, poolclass=NullPool, execution_options={"schema_translate_map": {None: schema}}
+    )
+    tables = [cast(Table, model.__table__) for model in (*NEWS_TABLES, AdminRoleAssignment)]
+    try:
+        async with engine.begin() as connection:
+            await connection.execute(sql_text(f'CREATE SCHEMA "{schema}"'))
+            await connection.run_sync(lambda sync: Base.metadata.create_all(sync, tables=tables))
+        yield engine, async_sessionmaker(engine, expire_on_commit=False)
+    finally:
+        async with engine.begin() as connection:
+            await connection.execute(sql_text(f'DROP SCHEMA IF EXISTS "{schema}" CASCADE'))
+        await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_postgres_candidate_nowait_conflict_has_no_partial_save(
+    held_ingestion_postgres,
+):
+    from app.guides.models import GuideArticleRevision
+    from app.models import AdminAuditLog, User
+
+    _engine, factory, redis, cid, actor_id, manifest, review = await _held_ingestion_case(
+        held_ingestion_postgres
+    )
+    try:
+        async with factory() as blocker, factory() as contender:
+            await blocker.scalar(
+                select(NewsCandidate).where(NewsCandidate.id == cid).with_for_update()
+            )
+            with pytest.raises(DBAPIError) as conflict:
+                await _call_held_ingestion(
+                    contender, redis, cid, manifest, review, await contender.get(User, actor_id)
+                )
+            assert conflict.value.orig.sqlstate == "55P03"
+            await contender.rollback()
+            assert list(await contender.scalars(select(GuideArticleRevision))) == []
+            assert list(await contender.scalars(select(AdminAuditLog))) == []
+            assert (await contender.get(NewsCandidate, cid)).guide_article_id is None
+            await blocker.rollback()
+    finally:
+        await redis.aclose()
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_postgres_reverify_locks_block_native_editor_until_commit(
+    held_ingestion_postgres,
+    monkeypatch,
+):
+    from app.guides import admin_service
+    from app.guides.models import GuideArticleLocale
+    from app.guides.schemas import DraftWrite
+    from app.models import User
+    from app.news_automation import service
+
+    _engine, factory, redis, cid, actor_id, manifest, review = await _held_ingestion_case(
+        held_ingestion_postgres
+    )
+    try:
+        async with factory() as reader:
+            await _call_held_ingestion(
+                reader, redis, cid, manifest, review, await reader.get(User, actor_id)
+            )
+            await reader.commit()
+            row = await reader.get(NewsCandidate, cid, with_for_update=True, populate_existing=True)
+            assert await service._ingested_bundle_available(reader, row)
+            async with factory() as writer:
+                await writer.execute(sql_text("SET LOCAL lock_timeout = '100ms'"))
+                with pytest.raises(DBAPIError) as blocked:
+                    await admin_service.save_draft(
+                        writer,
+                        await writer.get(User, actor_id),
+                        row.guide_article_id,
+                        "en",
+                        DraftWrite(
+                            expected_version=1,
+                            document=GuideDocument.model_validate(manifest["documents"]["en"]),
+                        ),
+                    )
+                assert blocked.value.orig.sqlstate == "55P03"
+                await writer.rollback()
+            await service._queue_reverify(reader, row, "Use the locked five drafts")
+            await reader.commit()
+            assert row.draft_bundle_json == manifest["documents"]
+            assert all(
+                item.version == 1 for item in await reader.scalars(select(GuideArticleLocale))
+            )
+        # Native editing can commit normally after the reader's transaction releases its locks.
+        await _held_ingestion_edit_en(factory, cid, actor_id, manifest["documents"], monkeypatch)
+        async with factory() as check:
+            en = await check.scalar(
+                select(GuideArticleLocale).where(GuideArticleLocale.locale == "en")
+            )
+            assert en.version == 2
+    finally:
+        await redis.aclose()
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_postgres_committed_version_drift_invalidates_retained_orm(
+    held_ingestion_postgres,
+    monkeypatch,
+):
+    await _held_ingestion_assert_committed_editor_drift(held_ingestion_postgres, monkeypatch)
