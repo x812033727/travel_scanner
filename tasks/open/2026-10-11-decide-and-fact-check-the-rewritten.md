@@ -11,59 +11,62 @@ completed_at:
 branch:
 depends_on: []
 scope:
-  - docs/videos/claude-code-skills-hands-on
+  - docs/videos/claude-code-skills-vs-claude-md
 ---
 
 # Decide and fact-check the rewritten Skills hands-on tutorial
 
 ## Why
 
-`docs/videos/claude-code-skills-hands-on` was rewritten on 2026-10-11 (task
+The Skills tutorial was rewritten on 2026-10-11 (task
 `2026-10-11-rewrite-the-skills-hands-on-tutorial`) so that its main example is the same
-procedure kept in CLAUDE.md beside the same procedure as a Skill. The runs showed no difference
-in any scored step; the measured differences are sizes (CLAUDE.md adds 486 tokens to the first
-request against the Skill's 61; a session in which Claude calls the Skill itself sends one or
-two requests more; the slash call does not). The rewrite says so on screen. What is still open
-before anything downstream starts:
+procedure kept in CLAUDE.md beside the same procedure as a Skill. This task held what was open
+after the rewrite. Both of its questions are answered; what is left is production, which the
+owner wants run by another agent under its own task. This file stays open until that task
+exists, so that what the producer needs is not lost; close it when the production task is filed.
 
-- The owner has not chosen the new outline (option D in `brief.md`). The brief asks the owner
-  to judge whether an example that stands on a few hundred tokens a request and on the slash
-  entry point is enough for a tutorial, or whether the example has to change.
-- An independent fact-check was made the same day (`verify-3.md`: 188 claims, twelve findings,
-  pass after fixes) and its fixes were applied. Nobody has read the script again since those
-  fixes, which added three scenes and five narration lines.
+- **The owner's decision** (relayed by the coordinating session on 2026-10-11, the owner's
+  words): on the rewritten script, 「先查核與重讀，過了再出片」; on how it goes to the site,
+  「用新代號，舊專案標停止」. The film is now `claude-code-skills-vs-claude-md`; the old project
+  `claude-code-skills-hands-on` was stopped on the site at 13:21 UTC by the coordinating session.
+- **The fact-check** is `docs/videos/claude-code-skills-vs-claude-md/verify-3.md`: an
+  independent check (188 claims, pass after fixes), the fixes, a second independent reading of
+  the fixes (206 claims, pass), and what was changed after it.
 
 ## Definition of done
 
-- [ ] The owner's decision on option D is recorded (`approve --gate outline`, or the brief's
-      first line reads 「含金量不足：…」 and the film is dropped or replanned).
+- [x] The owner's decision on the rewritten script is recorded (brief.md, first paragraphs).
 - [x] An independent fact-check of the rewritten script: `verify-3.md`, 2026-10-11.
-- [ ] If it goes ahead: a short second reading of what changed after `verify-3.md` (its last
-      section lists every change), by someone who did not make the changes.
-- [ ] If it goes ahead: the cards the writer doubted fit the frame (`look-call`, a one-line JSON
-      quote; `slash-score`, a four-column table; `rule` row 3, a long cell) are judged by the
-      render stage, and cut or split if it reports an overflow.
+- [x] A second reading of what changed after the fact-check: appended to `verify-3.md`.
+- [ ] A production task exists and names what is listed under Notes.
 
 ## Steps
 
-- [ ] Ask the owner with options: go ahead with option D; replan the example; drop the film.
-- [ ] The second reading, then the listener pass, then speech and render as usual.
+- [ ] File the production task (speech and everything after it), then close this one.
 
 ## How to verify
 
-`node tools/video/cli.mjs status --slug claude-code-skills-hands-on` shows the outline approved.
-The status line "fact-checked" only tests that `verify-1.md` exists, so it has been ticked since
-2026-10-09 and says nothing about this script; read `verify-3.md` instead.
+`node tools/video/cli.mjs lint --slug claude-code-skills-vs-claude-md` ends with 0 errors, and
+`docs/videos/claude-code-skills-vs-claude-md/verify-3.md` has both readings and both change lists.
 
 ## Notes
 
-- The run log's 2026-10-11 section and `demo/results/2026-10-11.summary.txt` hold every number.
-- All 125 narration lines need speech again: 47 are new and most of the 78 kept ids were reworded.
-- What `verify-3.md` says a reader cannot rely on, and the script now words accordingly: the
-  22-request break-even is an estimate on a small project, not a threshold; "give the must-hold
-  step to a Hook" is the official recommendation, not something measured here; "one more
-  request" held in the three paired runs and was two more in two of ten sessions; "the two
-  sides are the same" means no difference was observed in three runs an arm.
+What the producer starts from, as of 2026-10-11 13:30 UTC:
+
+- Nothing has been made or sent for the new slug: no outline push, no speech request, no work
+  folder. One `tts --dry-run` was made on the old slug at 13:18 UTC (103 requests, about 3,790
+  billable characters; it synthesized nothing and wrote nothing into the old work folder).
+- The outline gate has not been pushed and no approval is recorded. The brief offers two
+  options the tool sends in full, D (recommended, the one `video.json` follows) and E; if the
+  judge picks E, the script does not match the pick.
+- Languages: zh-TW only. Write the languages file for the new slug before captions and QA.
+- All 125 narration lines need speech (47 new ids, 78 kept, most reworded). A line the audio
+  check mishears is reworded, not just recorded again, and each rewording is recorded.
+- Three cards may not fit the frame and are judged at render: `look-call` (a one-line JSON
+  quote), `slash-score` (four columns) and `rule` row 3 (a long cell). What overflows is cut or
+  split, and no real output is edited.
+- `video.json` has the same `source_guide` as the old film (`claude-code-skills-skill-md`).
+- The old cut's work folder stays where it is and is not touched.
 - Left because each needs a new run: a measured break-even on a larger project; a control run
   without `--setting-sources`; the CLAUDE.md arm with the `# vX.Y.Z` title line written in
   (`claims.md`, c60).

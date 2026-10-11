@@ -6153,3 +6153,20 @@ skf3 | tally: first request: input 2 + cache write 3671 + cache read 5366 = 9039
    stream, tool inputs cut at 400 characters, neither line was cut):
 22 assistant tool_use Write {"file_path":"<lab>\\releases\\v0.3.1.md","content":"# vX.Y.Z\n\n## 這一版改了什麼\n\n- kmToMiles 的結果現在會四捨五入到小數點後兩位。\n\n## 升級要注意\n\n- kmToMiles 的回傳值可能和 v0.3.0 略有不同（最多兩位小數）；若有依賴完整精度的地方，請留意。\n\n## 怎麼確認\n\n- 呼叫 kmToMiles，確認回傳值最多只有兩位小數。\n"}
 27 assistant tool_use Edit {"replace_all":false,"file_path":"<lab>\\releases\\v0.3.1.md","old_string":"# vX.Y.Z","new_string":"# v0.3.1"}
+
+## Runner note 3, 2026-10-11 (the folder was renamed; no session was run for this note)
+This folder was docs/videos/claude-code-skills-hands-on when everything above was recorded. On
+2026-10-11 the owner decided that the rewritten film is produced under a new slug and the old
+project is stopped, and the folder became docs/videos/claude-code-skills-vs-claude-md. Nothing
+above was edited for the rename: a command or path that names the old folder is the command as
+it was run, and "RUN LOG: claude-code-skills-hands-on" on the first line is the old slug. The
+video work area outside the repository that the 2026-10-09 section calls <work> also still has
+the old name.
+One dry run was made on the old slug before the rename, at 13:18 UTC on 2026-10-11 (it wrote nothing into the old work folder):
+  $ node --import <the resolve hook that borrows pinyin-pro> tools/video/cli.mjs tts --slug claude-code-skills-hands-on --dry-run
+  103 requests, 103 to synthesize; about 3790 billable characters now (3790 for the whole video, 0.8% of the free tier)
+  voices: gemini:Sulafat 3790 characters (narrator)
+  [exit 0]
+It synthesized nothing. Its third output line, the server's count of characters left this
+month, is left out here. No speech, picture or video has been made for the rewritten script,
+nothing was sent to the site for it, and no work folder exists for the new slug.

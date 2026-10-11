@@ -1,5 +1,7 @@
 Checked by an independent agent that did not write the script, on 2026-10-11. It read the script as it stood before the changes listed at the end of this file (branch head `be6458021`). Everything from the heading below down to "What the writer changed" is that agent's report, unchanged; the last section was added by the writer afterwards and says what was changed for each finding and what was left.
 
+The film was first made as `claude-code-skills-hands-on` on 2026-10-10 and rewritten under the new slug `claude-code-skills-vs-claude-md` on 2026-10-11. Both reports in this file were written while the folder still had the old name; their text is unchanged, and the files they name are the ones in this folder.
+
 # Independent fact-check of the rewritten Skills script (2026-10-11)
 
 Verdict: pass_after_fixes. Claims checked: 188.
@@ -276,3 +278,11 @@ No session was run. The lint ends with 0 errors and 0 warnings, 57 scenes, 125 l
 1. **Should fix, the run condition: applied in the wording the reader tested.** `youtube.description`, 「怎麼跑的」, first bullet: 「全部 --model sonnet（claude-sonnet-5-5）、不開畫面，從桌面版開的 Git Bash 啟動（CLAUDE_EFFORT=high）。」 The sentence 「不放也行，畫面上的 grep 數得出來。」 was dropped from the hook bullet to make room. The omission from the first change list is now recorded above, in "What the writer changed for each finding".
 2. **Note, 「各有多大」: applied, because it is narration.** Line 64ts reads 「數三件事：步驟做到幾次、Skill 有沒有被呼叫、請求有幾個、一共多大。」; the description's third bullet reads 「送了幾個請求、一共多大」. `claims.md` c68 follows.
 3. **Note, the stricter pattern on `chk-first`: left.** The reader's stricter command, `grep -m1 '"type":"assistant"' ../stream.jsonl | tr ',{' '\n\n' | grep -m3 input_tokens`, is 86 columns; a terminal card's command holds 76. The shortest quoted form, `grep -m1 '"assistant"' …`, is 79. So the card keeps the command as it was run (75 columns) and nothing was re-typed. The dependence the reader names (the stream's first line must not contain the word assistant, which a folder or skill name could put there) is added to `claims.md` c70.
+
+## After both readings: the move to the new slug (2026-10-11)
+
+Not read by either agent above. No narration line and no card changed.
+
+- The folder was renamed from `claude-code-skills-hands-on` to `claude-code-skills-vs-claude-md` and `video.json`'s `slug` follows. The demo link in `youtube.description` names the new folder; that made the composed description 5,003 bytes, so its first words went from 「想照著做：…都在」 to 「照著做：…在」.
+- `brief.md`: the 大綱 section now offers two options the outline tool sends in full, D (recommended, the one the script follows) and E (the same results as three numbered points); the three options of 2026-10-09 are a short note. The first paragraphs carry the rename and the owner's two decisions of 2026-10-11.
+- `claims.md` and the two task files point at the new folder. `runlog.txt` got a note about the rename and nothing else; recorded commands that name the old folder are as they were run.

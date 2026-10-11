@@ -11,14 +11,14 @@ completed_at: 2026-10-11T12:13:44Z
 branch: claude/skills-hands-on-rewrite
 depends_on: []
 scope:
-  - docs/videos/claude-code-skills-hands-on
+  - docs/videos/claude-code-skills-vs-claude-md
 ---
 
 # Rewrite the Skills hands-on tutorial against the CLAUDE.md arm
 
 ## Why
 
-`docs/videos/claude-code-skills-hands-on` is a finished ten-minute tutorial on Claude Code
+`docs/videos/claude-code-skills-vs-claude-md` is a finished ten-minute tutorial on Claude Code
 Skills (2026-10-09). On 2026-10-11 the owner refused another tutorial for too little substance,
 the content-value rules were tightened (`tools/video/automation/register.mjs`, `VALUE_RULES`),
 and a blind reading judged this film "rework":
@@ -41,7 +41,7 @@ and a blind reading judged this film "rework":
       rule to a measured result, has no sentence about the film's own making, and carries the
       command a viewer types on a card as typed.
 - [x] `claims.md` points every claim at its evidence.
-- [x] `node tools/video/cli.mjs lint --slug claude-code-skills-hands-on` ends with 0 errors.
+- [x] `node tools/video/cli.mjs lint --slug claude-code-skills-vs-claude-md` ends with 0 errors.
 
 Not part of this task, filed as `2026-10-11-decide-and-fact-check-the-rewritten`: the
 owner's choice of the outline (option D, or "the example does not carry a film") and an
@@ -60,13 +60,13 @@ independent fact-check of the rewritten script (the two verify files are for the
 ## How to verify
 
 ```bash
-node tools/video/cli.mjs lint --slug claude-code-skills-hands-on     # 0 errors
+node tools/video/cli.mjs lint --slug claude-code-skills-vs-claude-md     # 0 errors
 node --test tools/repo-hygiene.test.mjs tools/docs-videos-tests.test.mjs
 # the model-free checks of the new seed files (needs Claude Code and Git Bash):
-WORK=/tmp/skills-work bash docs/videos/claude-code-skills-hands-on/demo/m-checks-2.sh
+WORK=/tmp/skills-work bash docs/videos/claude-code-skills-vs-claude-md/demo/m-checks-2.sh
 ```
 
-The numbers on the cards are in `docs/videos/claude-code-skills-hands-on/demo/results/2026-10-11.summary.txt`;
+The numbers on the cards are in `docs/videos/claude-code-skills-vs-claude-md/demo/results/2026-10-11.summary.txt`;
 how each was produced is in `runlog.txt` from the line `2026-10-11   THE CLAUDE.md ARM`.
 
 ## Notes

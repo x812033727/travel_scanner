@@ -1,10 +1,10 @@
-# claims：claude-code-skills-hands-on
+# claims：claude-code-skills-vs-claude-md
 
 重排日 2026-10-11。大綱：選項 D（`brief.md`「大綱」最前面；主例是「同一段流程留在 CLAUDE.md」對「搬成 Skill」）。製作路線：教學卡片，`format: "slides"`，沒有 `shot`，沒有 `shorts.json`，沒有翻譯檔。10-09 那一版（選項 A）的 claims 在這個檔的 git 紀錄裡；它的 `verify-1.md`、`verify-2.md` 查的是那一版。這一版由沒有參與撰稿的代理在 2026-10-11 查核過（`verify-3.md`：188 個主張，十二項發現，修正後通過）；同一天第二個獨立代理讀了改過的地方（206 個主張，通過，三項發現）。每一項改了什麼、哪一項沒動，寫在那個檔的兩個「What the writer changed」段落，這份檔案已經是改過之後的樣子。
 
 寫法：`c 編號｜主張（旁白或畫面上的說法）｜依據｜查核日｜用到的場景`。依據是官方頁的網址，或 repo 裡的檔案與行號。沿用 10-09 編號的主張保留原編號；c51 起是這一版新增的。空號（場景拿掉，主張跟著拿掉）：c1、c2、c6 到 c10、c14、c18、c25 到 c27、c30 到 c36、c39 到 c42、c44、c47 到 c49。
 
-簡寫：`RUN` = `docs/videos/claude-code-skills-hands-on/runlog.txt`（第 2465 行起是 2026-10-11 那一段）；`DEMO` = `docs/videos/claude-code-skills-hands-on/demo`；`BRIEF` = `docs/videos/claude-code-skills-hands-on/brief.md`；`SUM` = `DEMO/results/2026-10-11.summary.txt`。卡片上 Skill 與 CLAUDE.md 的路徑是它們在拋棄式專案裡的路徑，內容取自 `DEMO/variants/` 裡中性檔名的那一份。
+簡寫：`RUN` = `docs/videos/claude-code-skills-vs-claude-md/runlog.txt`（第 2465 行起是 2026-10-11 那一段）；`DEMO` = `docs/videos/claude-code-skills-vs-claude-md/demo`；`BRIEF` = `docs/videos/claude-code-skills-vs-claude-md/brief.md`；`SUM` = `DEMO/results/2026-10-11.summary.txt`。卡片上 Skill 與 CLAUDE.md 的路徑是它們在拋棄式專案裡的路徑，內容取自 `DEMO/variants/` 裡中性檔名的那一份。
 
 卡片上的檔案內容、終端機輸出與從 session 讀出來的字都不是手打的。`video.json` 由一支放在 repo 外的腳本產生，它做了這些檢查才寫檔：`code` 卡從 `DEMO/` 依行號切出來（任何一行超過 64 個字元、或行數超過卡片放得下的就停）；`terminal` 卡的輸出要是 `RUN` 裡那個指令後面連續的幾整行；`quote`、`compare`、表格與條列裡引用執行結果的字串要能在 `RUN` 裡逐字找到；三句要求讀自 `DEMO/prompts/`；出處那一行超過 48 個字就停。之後直接改 `video.json` 的人，改到這幾種卡片時請對回原檔。
 
