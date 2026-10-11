@@ -4,6 +4,9 @@ Mokaair 選定一組 1920×1080、30 fps 的固定素材：5 秒／150 格無標
 以及 3 秒／90 格的按讚、分享、開啟小鈴鐺片尾。音軌沿用原素材的音效。
 媒體和選定的 `manifest.json` 留在 repository 外；Git 只保存工具、測試及規格。
 
+畫面右上角的頻道浮水印是另一件事，它跟著程式碼走，見 [WATERMARK.md](WATERMARK.md)。
+片頭片尾本身不疊浮水印。
+
 ## 安裝與採用
 
 素材包包含 `intro.mp4`、`outro.mp4`、`manifest.json`。manifest 範例：
