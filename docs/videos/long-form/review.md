@@ -4432,6 +4432,76 @@ PASS is DURATION_ONLY for the nine rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Branch video-logo-watermark increment: 1 file (2026-10-12)
+
+Reviewer: `claude-pr-review-video-logo-watermark`. Author: `claude-video-watermark`. Scope: DURATION_ONLY for the one changed binding below, reviewed at `d375b5428` ("feat(video): the channel mark is laid over every shot of a long cut"), the head of claude/video-logo-watermark-b075f1: three commits (`ecf1f434c`, `e71c8e5fa`, `d375b5428`) on `6b5370b6f` (#1401). The reviewer wrote none of them and edits only this report and review.json. The working tree also held uncommitted files of the author's (docs/videos/BRANDING.md, docs/videos/WATERMARK.md, five files under tools/video/shorts and five under tasks/open); none is a bound file and none was touched. While this review ran the author committed those files as `3c7a3a119` ("feat(video): both kinds of Short carry the channel mark; a reframed drama keeps off its episode's"), 12 files, none of them bound; the bound file is the same bytes at both commits, and the count of 15 below is taken at `d375b5428`.
+
+Baseline: `6b5370b6f`, the merge base with main. `git show 6b5370b6f:tools/video/assemble/cli.mjs` hashes to `1820b81f551dac573fe0f9b9dd47146304dbc83a330751fc16087ddfbad83c5e`, the value bound before this increment: 1 of 1 matches, so the diff read here is all of the unreviewed change to that file. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly this binding. It is the one bound file among the 15 that differ between the merge base and the head; the bytes in the working tree equal the head's. The other 107 remain current, every prior increment is preserved and the registry remains 108 files.
+
+- `tools/video/assemble/cli.mjs`: `1820b81f551dac573fe0f9b9dd47146304dbc83a330751fc16087ddfbad83c5e` -> `79cc3fb76bf9968bf6ac78d2a121d4e57591f0fd4ae624eef4ae7027679adb8b`.
+
+What the change is: a channel mark, a small PNG registered by its SHA-256 in tools/video/core/watermark.mjs (a new file the registry does not bind), is laid in the corner of every clip and motion segment of a long cut. Render decides whether a video carries it and says so in frames/manifest.json; assemble follows the manifest. The mark is a picture over frames that exist; nothing in the change adds, removes, slows or holds a frame.
+
+Findings, tools (1 file):
+
+- `tools/video/assemble/cli.mjs` (+14/−4), five hunks:
+  - one import (`resolveWatermark`, `watermarkRecord`);
+  - line 284, `const mark = resolveWatermark(manifest.watermark)`, after the manifest's `visual_hash` is checked and after `animeBodyDurationProblems` (line 266) has already answered. It returns null without a record and throws a `UsageError` when the record names bytes the checkout lacks: a new way for the run to stop before any segment is encoded, and no way for it to pass;
+  - lines 409 and 410, `laid` (the mark, or null for a moving card whose own frame carries it) is handed to `motionSegmentKey` and `clipSegmentKey` as a fifth argument. `scene.frames`, `fit`, `strips`, `previousKey` and `scene.from_frame` reach the keys as they did;
+  - lines 428 and 429, `mark: laid` is added to the arguments of `motionSegmentArgs` and `clipSegmentArgs`. `frames: scene.frames`, `fit` and `fromFrame` on those two lines are the values they were;
+  - line 584, the source-frame PSNR of a shot cut from another shot's clip is taken with the mark's box painted black on both sides; lines 609 to 611, checks.json gains `watermark: { id, sha256, box }` when the cut carries a mark.
+- Outside the hunks and unchanged: the timeline and its `speech_hash` gate (lines 260 to 265), `animeBodyDurationProblems` (266), `clipFrames`, `offered`, `fitPlan` and `animeShotFitProblems` (323 to 353, and 395 to 402), `timeline.total_frames` at the mix, the effects track and `wrapVideo` (466, 483, 502), `presentationTimeline` (509), `checkProbe(probe, { frames: presented.total_frames })` (514), `freezeProblem` (571), `sha256File(candidate)` and `final_sha256` (593, 599), `metrics.frames` and `metrics.fps` (614, 615), and `animeDurationProblems` and `animeRuntimeProof` with their input `{ doc, timeline, presented, timelineCurrent, checks, finalSha256 }` (635 to 638).
+
+What the new arguments do where they land (tools/video/assemble/drama.mjs and plan.mjs, read as context; neither is bound):
+
+- `overlayInputs` appends `-i <mark.png>`, one frame, with no `-loop` and no `-t`, after the strips and the dissolve's picture, so the indices of those two inputs are what they were. `overlayGraph` scales it to its box and lays it with `overlay=x:y` on `[pic]` before the dissolve and the strips. `[pic]` is the main input of that overlay and still ends in `trim=end_frame=<frames>`; `encodeArgs` still carries `-frames:v <frames>`, and a motion segment's keyframe input still carries `-t seconds(frames)`. The overlay has no `shortest` and no `eof_action`: the default repeats the mark's one frame for as long as the main input lasts and ends with it.
+- `markKey` adds the mark's id, SHA-256 and place to a segment's cache key only when a mark is laid; with none the key is the one it was, so an unmarked video's cached segments are found again and a marked one's are encoded once under a new name. A key names a file; no check reads it as a length.
+- `psnrArgs` with a mask still selects one frame by number and stops at `-frames:v 1`. Without a mask its graph is the old string.
+- `layoutDrama` copies render's `marked` onto a moving card's scene. `frames` there comes from `base`, unchanged.
+
+Tried, to find a way the overlay moves a segment's length: the committed `clipSegmentArgs` and `motionSegmentArgs` were run through ffmpeg (N-125875, Windows) on a 150-frame test clip and a 1920x1080 still, each case once without the mark and once with the registered v1 PNG, and the packets of each result counted with ffprobe:
+
+- a clip asked for 90 frames: 90 and 90;
+- a clip padded by 30 held frames to 180: 180 and 180;
+- a clip slowed to 0.8 from frame 30 and asked for 150: 150 and 150;
+- a clip asked for 90 with a dissolve: 90 and 90;
+- a clip asked for 200 frames with a fit of no slowing and no hold, which the 150-frame source cannot fill: 150 and 150. The mark's frame is not repeated past the picture's end, so a segment that comes out short stays short and `checkProbe` still sees it;
+- a motion segment of 75 frames, and one with a dissolve: 75 and 75 in both.
+
+Whether the new key of checks.json can be read by a length check: `knowledgeDurationProblems`, `animeDurationProblems` and `animeRuntimeProof` (core/duration.mjs, unchanged since the merge base) read `speech_hash`, `branding`, `metrics.frames`, `metrics.fps`, `metrics.shots`, `runtime_policy_hash` and `final_sha256` of the checks and no other key, and none hashes the object whole. A search of tools/video and apps/api/app, tests aside, finds `checks.watermark` read in one place, tools/video/shorts/from-drama.mjs in the author's uncommitted tree, which takes the box to place a Short's crop window. `final_sha256` is still the hash of the candidate file after the mux; a marked cut has other bytes and so another hash, bound by the same lines.
+
+No file under apps/api, tools/video/qa, tools/video/long-form or tools/video/package differs between the merge base and the head, nor do core/duration.mjs, core/timeline.mjs, core/branding.mjs, core/anime-policy.mjs, core/lint.mjs, core/schema.mjs or core/drama.mjs. The 600 and 780 second targets, the 480 second measured floor (14,400 frames), the eight-minute floor, `target_minutes`, `MIN_EPISODE`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, the source hashes, the covered status and the anime runtime policy are in none of the hunks.
+
+Recorded observations. None is a rule change and none lets a cut of another length pass:
+
+1. The graph that fixes a segment's frames (`trim=end_frame`, `-frames:v`, the looped inputs) lives in tools/video/assemble/drama.mjs, which is not in `REVIEW_FILES`. This change to it (+38/−16) was read and measured above, but a later one will not make this receipt stale.
+2. The masked PSNR at line 584 leaves a box of 208 by 74 pixels out of the comparison of a cut shot's first frame with its source frame. That is a picture check made slightly less strict, in that box alone, and no length.
+3. `resolveWatermark` runs before the ffmpeg lookup, so a manifest that names a mark this checkout does not hold stops assemble with a usage error where it used to go on. Run render again is the message's own remedy.
+4. A marked video's clip and motion segments take new keys, so the first assemble after render adopts a mark encodes all of them again. The frames asked of each are the same.
+
+Ran (in the worktree at the head, Node 24 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the one stale binding and exited 1;
+- `git diff --name-only 6b5370b6f..HEAD` against `REVIEW_FILES`, and `sha256sum` of the file at the merge base, at the head and in the working tree;
+- a reading of the diff of cli.mjs, of its lines 258 to 437 and 496 to 645 whole, of core/watermark.mjs whole, and of the diffs of assemble/drama.mjs and assemble/plan.mjs as context;
+- a script kept outside the repository that imports the worktree's drama.mjs and watermark.mjs, builds the seven pairs of ffmpeg commands above, runs them and counts packets; it also confirms that both segment keys are unchanged when no mark is passed and differ when one is;
+- a scan of the added and removed lines of cli.mjs for frames, seconds, minutes, duration, timeline, fit, target, runtime, final and the numbers 480, 600, 780 and 14400, which finds the four lines of the key and the segment arguments, where `scene.frames` and `fit` stand unchanged on both sides, and nothing else;
+- `node --test` over assemble/assemble.test.mjs, assemble/drama.test.mjs, core/duration.test.mjs, qa/duration.test.mjs, core/watermark.test.mjs, core/timeline.test.mjs and core/branding.test.mjs: 91 of 91.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the mark as a product choice: its look, size, place, which videos get it, the pin in watermark.json, the refusals of `--adopt-watermark` and whether the mark sits once on a dissolve's frames were not judged.
+- No whole video was assembled. The measurements are of single segments made from a test pattern, without subtitle strips; the strips' overlay comes after the mark's and its own `eof_action=pass` is unchanged. No slide (stills) segment was encoded: this file's change does not reach that path, and render's side of the mark (tools/video/render, tools/video/templates) is outside the bound files and was not reviewed.
+- tools/video/assemble/smoke.mjs was not run, nor the whole of `npm run test:tools` or `npm run test:docs-videos`, nor any API or web check.
+- The author's uncommitted files, among them the Shorts tools that read `checks.watermark`, were not reviewed. They change no bound file today.
+- This increment binds the tree at the head only: a later commit or merge with main that changes this file, or either receipt file, needs its own follow-up. The 107 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -4484,7 +4554,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `docs/videos/so-thats-why/README.md` | `cabb9054898149fa0f512fc192825149c467ac25be283b754174098c83e2a661` |
 | `docs/videos/so-thats-why/season2/README.md` | `e560411dc91f1928b2cf9506a044e55ae7f5f65450199118bd165464599f1218` |
 | `tools/video/assemble/assemble.test.mjs` | `76a51bc9c90b7b23ac91b22bf0278b8f61173ca3d418794b2112ae8eade96403` |
-| `tools/video/assemble/cli.mjs` | `1820b81f551dac573fe0f9b9dd47146304dbc83a330751fc16087ddfbad83c5e` |
+| `tools/video/assemble/cli.mjs` | `79cc3fb76bf9968bf6ac78d2a121d4e57591f0fd4ae624eef4ae7027679adb8b` |
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
