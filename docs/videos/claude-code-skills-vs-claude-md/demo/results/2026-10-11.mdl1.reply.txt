@@ -1,0 +1,16 @@
+就現有內容看，CHANGELOG 沒有漏記。
+
+**對照結果**
+- `src/units.mjs` 目前只有兩個匯出函式：`cToF` 和 `kmToMiles`。
+- `cToF` 記在 v0.2.0（First version），`kmToMiles` 記在 v0.3.0（Add kmToMiles）。
+- Unreleased 的「kmToMiles rounds to two decimals」對得上程式碼：`Math.round(km * 0.621371 * 100) / 100`。
+
+**我沒辦法確認的部分**
+- 這個資料夾不是 git repo，沒有歷史可以 diff。所以我只能確認「目前的程式碼」都有對應條目，無法確認 v0.3.0 之後有沒有改過別的、但現在看不出來的東西（例如行為微調、刪掉的東西）。
+- 如果你在別處有 v0.3.0 的 tag 或備份，可以拿來對一次 `src/units.mjs`。
+
+**發版前順帶看到的**
+- `package.json` 版本和 README 的「Latest release」現在都還是 v0.3.0，發 0.3.1 時要改。
+- 這次還只有一條變更，而且是行為改動（四捨五入），發 patch 版 0.3.1 還是 0.4.0 可以再想一下。
+
+需要我現在照發版流程做 0.3.1 嗎？
