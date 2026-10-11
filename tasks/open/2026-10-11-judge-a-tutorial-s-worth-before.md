@@ -109,9 +109,10 @@ these, none of them yet run through a judge model:
 
 ## Steps
 
-- [ ] Ask the owner first: who decides when it fails (the writer gets it back automatically,
-      or the owner sees it), and how many revisions before it becomes theirs. Changing who
-      decides at a gate is the owner's call (`docs/videos/HANDS-OFF.md`).
+- [x] Ask the owner who decides when it fails. Answered 2026-10-11: the writer gets it back
+      automatically, before speech is paid for, with the statements it failed; the owner sees
+      it only when the writer's revisions are used up.
+- [ ] Still to ask: how many revisions before it becomes the owner's.
 - [ ] Put the statements to the production judge on the thirteen films' briefs and scripts
       and compare with the table before trusting any threshold. A judge's numeric scores have
       sat at one value on this channel until its questions were yes-or-no.

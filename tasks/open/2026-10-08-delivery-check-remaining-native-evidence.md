@@ -46,3 +46,6 @@ Completed film: `docs/videos/claude-code-mods-delivery-check-tutorial/production
   screen. Blocked until the owner asks for a remake. If one is made, the 274 lines in
   `materials/delivery-check/hooks/` are the channel's only pane mod and the place to start:
   open them on screen and have the viewer change the three names.
+- 2026-10-11 10:19 UTC: the owner chose to stop the project on the site, and it is stopped
+  there (`dropped_at` set, reason in its note). The private upload on YouTube is the owner's
+  to delete or keep.

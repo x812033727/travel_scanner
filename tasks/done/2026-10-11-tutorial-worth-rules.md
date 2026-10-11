@@ -105,6 +105,12 @@ node tools/video/long-form/cli.mjs check
 
 ## Notes
 
+- The owner's decisions on 2026-10-11, after reading the measurements: stop the refused film
+  on the site (done, 10:19 UTC); merge this change when its checks pass and let it reach the
+  host with the next deploy; when the worth check exists, a failing film goes back to its
+  writer first; post the Codex lesson's reading on pull request 1429. Not yet given: the
+  owner's own verdict on the four hands-on films the judges called "rework".
+
 - This is prompt text. It reaches the automated worker after a deploy, and an agent driving
   the tools by hand only through the skill. Nothing checks it: the gate is
   `2026-10-11-judge-a-tutorial-s-worth-before`.
