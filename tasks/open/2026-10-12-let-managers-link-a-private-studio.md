@@ -96,3 +96,10 @@ touched API files, `mypy app` (472 files), `mypy tests` (390 files),
 `lint:web`, `typecheck:web`, `check:i18n` (5 locales/25 namespaces), and
 `check:tasks` passed. Production deploy, backend readback and independent
 duration-receipt rebind remain with the parent work; keep this ticket in progress.
+
+Independent boundary review follow-up: the private form now requires a connected
+channel, and both it and `finalApproved` use the current (newest) final review,
+so an older approval cannot cover a pending imported cut. The API also refuses
+private-only linking while an approved publish package exists or an active
+YouTube sync holds its lease. Focused web 100/100 and API 68/68 tests, API
+ruff and mypy app/tests, and web typecheck passed after these changes.

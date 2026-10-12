@@ -119,6 +119,7 @@ from app.video_youtube.client import YoutubeClient, YoutubeError
 from app.video_youtube.errors import Refused
 from app.video_youtube.requests import as_dict
 from app.video_youtube.state import parse_time, public_state
+from app.video_youtube.state import running as youtube_sync_running
 
 LIVE = ("pending", "approved", "rejected")
 # The list's cap, and how many public Shorts the Shorts tab gets at once: the public ones
@@ -2472,7 +2473,17 @@ async def link_youtube(
             raise AppError(
                 409, "video_youtube_already_linked", "這支影片已有 YouTube 連結，沒有覆寫"
             )
+        if youtube_sync_running(project.youtube_sync):
+            raise AppError(
+                409, "video_youtube_private_sync_running", "YouTube 同步進行中，沒有記錄連結"
+            )
         reviews = await _reviews(session, project)
+        if any(review.gate == "publish" and review.status == "approved" for review in reviews):
+            raise AppError(
+                409,
+                "video_youtube_private_package_exists",
+                "已有核准的上架包，不能提早記錄私人連結",
+            )
         final = _current_final(reviews)
         if (
             project.format == "shorts"

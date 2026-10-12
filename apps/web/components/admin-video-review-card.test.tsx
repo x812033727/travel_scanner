@@ -67,7 +67,8 @@ describe("language results and upload package readiness", () => {
     expect(publishState({ ...complete, youtube_video_id: "abcdefghijk", youtube_publish_at: "2999-01-01T00:00:00Z" })).toBe("scheduled");
     expect(publishState({ ...complete, youtube_video_id: "abcdefghijk", youtube_publish_at: "2026-01-01T00:00:00Z" }, Date.parse("2026-10-13T00:00:00Z"))).toBe("published");
     expect(finalApproved({ ...complete, youtube_video_id: "abcdefghijk", reviews: [{ ...final, payload: { ...final.payload, imported: { captions: true } }, status: "pending" }] })).toBe(false);
-    expect(finalApproved({ ...complete, youtube_video_id: "abcdefghijk", reviews: [{ ...final, payload: { ...final.payload, imported: { captions: true } }, status: "pending" }, { ...final, status: "approved" }] })).toBe(true);
+    expect(finalApproved({ ...complete, youtube_video_id: "abcdefghijk", reviews: [{ ...final, payload: { ...final.payload, imported: { captions: true } }, status: "pending" }, { ...final, status: "approved" }] })).toBe(false);
+    expect(finalApproved({ ...complete, youtube_video_id: "abcdefghijk", reviews: [{ ...final, status: "approved" }, { ...final, payload: { ...final.payload, imported: { captions: true } }, status: "pending" }] })).toBe(true);
   });
 });
 

@@ -171,8 +171,9 @@ export const readyToUpload = (project: ProjectSummary) => !project.dropped_at &&
 /** An imported cut with no approved final stays pending when its private Studio link is recorded. */
 export const finalApproved = (project: ProjectSummary & { reviews?: Review[] }) => {
   const reviews = project.reviews ?? [];
-  if (reviews.some((review) => review.gate === "final" && review.status === "pending" && review.payload.imported)
-    && !reviews.some((review) => review.gate === "final" && review.status === "approved")) return false;
+  // The API orders reviews newest first; an older approval cannot approve a newer imported cut.
+  const currentFinal = reviews.find((review) => review.gate === "final" && !review.subject);
+  if (currentFinal?.status === "pending" && currentFinal.payload.imported) return false;
   return project.checklist.some((item) => item.key === "final_video_approved" && item.done)
     || Boolean(project.publish_approved_at || project.locales_decided_at || project.youtube_video_id)
     || reviews.some((review) => review.gate === "final" && review.status === "approved");

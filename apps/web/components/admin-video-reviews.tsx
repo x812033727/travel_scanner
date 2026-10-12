@@ -396,9 +396,10 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
     : undefined);
   const retired = project ? mp4Retired(project) : false;
   const state = project ? publishState(project) : null;
-  const pendingFinal = Boolean(project?.reviews.some((review) => review.gate === "final" && review.status === "pending"
-    && review.payload.imported && typeof review.payload.imported === "object" && !Array.isArray(review.payload.imported)
-    && /^[0-9a-f]{64}$/i.test(review.content_sha256) && review.files.some((file) => file.role === "preview")));
+  const currentFinal = project?.reviews.find((review) => review.gate === "final" && !review.subject);
+  const pendingFinal = Boolean(currentFinal?.status === "pending"
+    && currentFinal.payload.imported && typeof currentFinal.payload.imported === "object" && !Array.isArray(currentFinal.payload.imported)
+    && /^[0-9a-f]{64}$/i.test(currentFinal.content_sha256) && currentFinal.files.some((file) => file.role === "preview"));
   // A Short is nine by sixteen, and its languages are the Shorts settings', not this video's.
   const short = Boolean(project?.shorts_line);
   // The owner may upload the final cut as private as soon as the upload confirmation is approved;
@@ -435,7 +436,7 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
       <AdminVideoRenewal key={project.slug} project={project} canManage={manage.allowed} onSubmitted={load} />
       {project.youtube_sync && <YoutubeSyncPanel slug={slug} sync={project.youtube_sync} canManage={manage.allowed && !dropped} onChange={load} />}
       {readyToUpload(project) && manage.allowed && <SendToYoutube slug={slug} confirmation={approvedPackage(project.reviews)} connection={connection} sync={project.youtube_sync} mp4Gone={retired} onSent={load} />}
-      {pendingFinal && !dropped && !short && !project.youtube_video_id && !approvedPackage(project.reviews) && !syncRunning(project.youtube_sync) && manage.allowed
+      {pendingFinal && !dropped && !short && !project.youtube_video_id && !approvedPackage(project.reviews) && !syncRunning(project.youtube_sync) && connection?.linked && manage.allowed
         && <UploadedForm slug={slug} onLinked={load} privateOnly />}
       {project.youtube_video_id && !dropped && manage.allowed && connection?.linked && approvedPackage(project.reviews) && !syncRunning(project.youtube_sync) && <details className="rounded-2xl border border-[var(--line)] p-4">
         <summary className="cursor-pointer font-bold">{ty("resendTitle")}</summary>

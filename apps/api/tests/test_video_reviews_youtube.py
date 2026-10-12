@@ -440,7 +440,8 @@ async def test_private_only_rejects_existing_duplicate_and_unreviewed_links(
     project = _project()
     final = _pending_imported_final(project)
     monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
-    monkeypatch.setattr(admin_service, "_reviews", AsyncMock(return_value=[final]))
+    reviews_lookup = AsyncMock(return_value=[final])
+    monkeypatch.setattr(admin_service, "_reviews", reviews_lookup)
     youtube = FakeYoutube(youtube_item(VIDEO_ID, privacy="private"))
     link_channel(monkeypatch, youtube)
 
@@ -478,6 +479,17 @@ async def test_private_only_rejects_existing_duplicate_and_unreviewed_links(
     final.content_sha256 = "a" * 64
     project.shorts_line = "cut"
     assert await denied_code(_private_link_session()) == "video_youtube_private_review_required"
+    project.shorts_line = None
+    package = _pending_imported_final(project)
+    package.gate = "publish"
+    package.status = "approved"
+    reviews_lookup.return_value = [final, package]
+    assert await denied_code(_private_link_session()) == "video_youtube_private_package_exists"
+    reviews_lookup.return_value = [final]
+    project.youtube_sync = {
+        "status": "running", "lease_until": (datetime.now(UTC) + timedelta(minutes=5)).isoformat()
+    }
+    assert await denied_code(_private_link_session()) == "video_youtube_private_sync_running"
 
 
 @pytest.mark.asyncio

@@ -603,19 +603,23 @@ describe("AdminVideoReviews", () => {
     const base = { ...summary, slug: "pending-recut", pending: 1, ready_to_upload: false, reviews: [pendingFinal] };
     const cases = [
       { name: "reader", capabilities: ["content.read"], project: base },
+      { name: "channel not linked", capabilities: ["content.read", "content.manage"], project: base, connectionLinked: false },
       { name: "not imported", capabilities: ["content.read", "content.manage"], project: { ...base, reviews: [final] } },
       { name: "missing preview", capabilities: ["content.read", "content.manage"], project: { ...base, reviews: [{ ...final, files: [] }] } },
       { name: "bad content hash", capabilities: ["content.read", "content.manage"], project: { ...base, reviews: [{ ...pendingFinal, content_sha256: "invalid" }] } },
       { name: "approved upload package exists", capabilities: ["content.read", "content.manage"], project: { ...base, reviews: [pendingFinal, { ...pendingFinal, gate: "publish", status: "approved" }] } },
+      { name: "newer approved final supersedes older pending import", capabilities: ["content.read", "content.manage"], project: { ...base, reviews: [{ ...pendingFinal, status: "approved" }, pendingFinal] } },
       { name: "already linked", capabilities: ["content.read", "content.manage"], project: { ...base, youtube_video_id: "4gJhMFqYqC4" } },
       { name: "dropped", capabilities: ["content.read", "content.manage"], project: { ...base, dropped_at: "2026-10-12T00:00:00Z" } },
       { name: "active sync", capabilities: ["content.read", "content.manage"], project: { ...base, youtube_sync: { status: "running", interrupted: false, request: {}, steps: [], progress: null, error: null, started_at: null, finished_at: null } } },
     ];
-    for (const { name, capabilities, project } of cases) {
+    for (const { name, capabilities, project, connectionLinked } of cases) {
       const posts: string[] = [];
       vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
         if (init?.method === "POST") posts.push(String(input));
-        return Promise.resolve(Response.json(project));
+        return Promise.resolve(Response.json(String(input).endsWith("/admin/video-youtube")
+          ? { linked: connectionLinked ?? true, channel_title: "Mokaair" }
+          : project));
       }));
       window.history.replaceState(null, "", "/?video=pending-recut");
       render(<AdminOperationsProvider bootstrap={bootstrap(capabilities)}><AdminVideoReviews /></AdminOperationsProvider>);
