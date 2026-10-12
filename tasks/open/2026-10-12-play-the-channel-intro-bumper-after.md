@@ -9,8 +9,7 @@ claimed_at:
 created_at: 2026-10-12T07:44:57Z
 completed_at:
 branch:
-depends_on:
-  - 2026-10-12-narrated-videos-open-on-a-30
+depends_on: []
 scope:
   - tools/video/assemble/branding.mjs
   - tools/video/core/branding.mjs
@@ -50,6 +49,8 @@ Wanted order: condensation (chapter 1) -> bumper -> chapter 2 onward -> outro.
 - [ ] BRANDING.md describes the new placement and the offset rule.
 
 ## Steps
+
+- [ ] Start only after PR #1467 has merged (it adds the condensation this task builds on).
 
 - [ ] Read docs/videos/BRANDING.md and tools/video/assemble/branding.mjs, core/branding.mjs,
       core/duration.mjs, compile/ to find every place that adds `intro_frames` from frame 0.
