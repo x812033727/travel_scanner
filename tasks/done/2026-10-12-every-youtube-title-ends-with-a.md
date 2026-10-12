@@ -1,14 +1,14 @@
 ---
 id: 2026-10-12-every-youtube-title-ends-with-a
 title: Every YouTube title ends with a per-language CC captions tag
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-cc-captions
 claimed_at: 2026-10-12T01:59:18Z
 created_at: 2026-10-12T01:59:11Z
-completed_at:
-branch:
+completed_at: 2026-10-12T04:20:58Z
+branch: claude/video-title-cc-captions-660076
 depends_on: []
 scope:
   - tools/video/core/metadata.mjs
@@ -65,3 +65,6 @@ so a viewer sees in search results that the video has captions.
 - 2026-10-12: CI went red on `admin-video-slides-requests.test.tsx` "withdraws a queued request": a
   date time bomb (its cancelled_at 2026-10-05T03:00Z fell outside the one-week window at
   2026-10-12T03:00Z), red on main too. Fixed here by pinning the test's clock.
+- 2026-10-12: merged as #1455 (1e987faaa) and deployed 04:14:55–04:19:05Z, no migration; host
+  verify 13/13 including `captioned` in the api image and `withCaptionTag` in the video worker.
+  Titles already on YouTube are not rewritten; a video gets the tag when it is sent or re-sent.
