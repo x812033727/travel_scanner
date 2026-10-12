@@ -112,12 +112,14 @@ from app.video_reviews.schemas import (
 from app.video_reviews.storage import ReviewStore, StorageRefused, valid_slug
 from app.video_shorts import costs as shorts_costs
 from app.video_shorts import slots as shorts_slots
+from app.video_shorts.claim import duration_seconds
 from app.video_shorts.settings import auto_approves_shorts
 from app.video_youtube import connection
 from app.video_youtube.client import YoutubeClient, YoutubeError
 from app.video_youtube.errors import Refused
 from app.video_youtube.requests import as_dict
 from app.video_youtube.state import parse_time, public_state
+from app.video_youtube.state import running as youtube_sync_running
 
 LIVE = ("pending", "approved", "rejected")
 # The list's cap, and how many public Shorts the Shorts tab gets at once: the public ones
@@ -2388,12 +2390,64 @@ async def youtube_publication(session: AsyncSession, video_id: str) -> YoutubePu
     return publication_of(video, channel_id)
 
 
+async def _verify_private_youtube_video(session: AsyncSession, video_id: str) -> None:
+    """Fail closed when Studio cannot prove this is an unscheduled private video on our channel."""
+    try:
+        async with _linked_youtube(session) as (channel_id, client):
+            videos = await client.videos(
+                [video_id], parts="snippet,status,contentDetails,processingDetails"
+            )
+    except Refused as error:
+        raise AppError(error.status, error.code, error.detail) from error
+    except (YoutubeError, httpx.HTTPError) as error:
+        raise AppError(
+            502, "video_youtube_private_verify_failed", "無法向 YouTube 驗證私人影片，沒有記錄連結"
+        ) from error
+    video = next((item for item in videos if item.get("id") == video_id), None)
+    if video is None:
+        raise AppError(
+            409, "video_youtube_private_not_found", "連結頻道找不到這支影片，沒有記錄連結"
+        )
+    snippet = as_dict(video.get("snippet"))
+    status = as_dict(video.get("status"))
+    if not channel_id or snippet.get("channelId") != channel_id:
+        raise AppError(409, "video_youtube_private_channel", "影片不屬於連結的頻道，沒有記錄連結")
+    if status.get("privacyStatus") != "private" or status.get("publishAt"):
+        raise AppError(409, "video_youtube_not_private", "影片不是未排程的私人影片，沒有記錄連結")
+    processing = as_dict(video.get("processingDetails"))
+    details = as_dict(video.get("contentDetails"))
+    duration = duration_seconds(details.get("duration"))
+    if processing.get("processingStatus") != "succeeded" or duration is None or duration <= 0:
+        raise AppError(
+            409,
+            "video_youtube_private_unprocessed",
+            "影片尚未處理完成或沒有可播放長度，沒有記錄連結",
+        )
+
+
+async def _lock_private_youtube_id(session: AsyncSession, video_id: str) -> None:
+    """Serialize opt-in claims of one ID until commit, including while YouTube is queried."""
+    try:
+        dialect = session.get_bind().dialect.name
+    except (AttributeError, RuntimeError):
+        dialect = ""
+    if dialect == "postgresql":
+        lock_key = int.from_bytes(
+            hashlib.sha256(f"private-youtube-link:{video_id}".encode()).digest()[:8],
+            "big",
+            signed=True,
+        )
+        await session.execute(select(func.pg_advisory_xact_lock(lock_key)))
+
+
 async def link_youtube(
     session: AsyncSession,
     slug: str,
     user: User,
     video_id: str,
     publish_at: datetime | None,
+    *,
+    private_only: bool = False,
 ) -> ProjectOut:
     """The owner uploaded the final cut in Studio: record the video's id and when it goes public.
 
@@ -2401,16 +2455,59 @@ async def link_youtube(
     the linked channel reports (``youtube_publication``): the time a public video was
     published, or the time a private one is scheduled for; a video that is neither keeps no
     publish time, and the audit row and the page say why. Pasting again overwrites (a wrong link
-    is corrected the same way); the worker reads the id back on its next round and writes it
-    into the work directory's video.json.
+    is corrected the same way). The opt-in private-only entry is stricter: it is available only
+    for a pending imported final, refuses an existing or duplicated ID, and verifies privacy
+    and channel ownership before recording anything. The worker reads the id back on its next
+    round and writes it into the work directory's video.json.
     """
     if publish_at is not None and publish_at.tzinfo is None:
         raise AppError(422, "video_youtube_publish_at_naive", "上架時間要帶時區")
-    project = await _project(session, slug)
+    if private_only and publish_at is not None:
+        raise AppError(422, "video_youtube_private_publish_at", "私人連結不能附上公開時間")
+    if private_only:
+        await _lock_private_youtube_id(session, video_id)
+    project = await _project(session, slug, lock=private_only)
     _refuse_dropped(project)
+    if private_only:
+        if project.youtube_video_id is not None:
+            raise AppError(
+                409, "video_youtube_already_linked", "這支影片已有 YouTube 連結，沒有覆寫"
+            )
+        if youtube_sync_running(project.youtube_sync):
+            raise AppError(
+                409, "video_youtube_private_sync_running", "YouTube 同步進行中，沒有記錄連結"
+            )
+        reviews = await _reviews(session, project)
+        if any(review.gate == "publish" and review.status == "approved" for review in reviews):
+            raise AppError(
+                409,
+                "video_youtube_private_package_exists",
+                "已有核准的上架包，不能提早記錄私人連結",
+            )
+        final = _current_final(reviews)
+        if (
+            project.format == "shorts"
+            or project.shorts_line is not None
+            or final is None
+            or final.status != "pending"
+            or not isinstance((final.payload or {}).get("imported"), dict)
+            or re.fullmatch(r"[0-9a-f]{64}", final.content_sha256 or "") is None
+            or not any(item.get("role") == "preview" for item in final.files or [])
+        ):
+            raise AppError(
+                409, "video_youtube_private_review_required", "只可為待審的匯入成片記錄私人連結"
+            )
+        other_slug = await session.scalar(
+            select(VideoProject.slug).where(
+                VideoProject.youtube_video_id == video_id, VideoProject.id != project.id
+            )
+        )
+        if other_slug is not None:
+            raise AppError(409, "video_youtube_id_in_use", "這個 YouTube ID 已連結其他影片")
+        await _verify_private_youtube_video(session, video_id)
     source: str | None = "owner" if publish_at is not None else None
     reason: str | None = None
-    if publish_at is None:
+    if publish_at is None and not private_only:
         reported = await youtube_publication(session, video_id)
         publish_at, reason = reported.publish_at, reported.reason
         source = "youtube" if publish_at is not None else None
@@ -2429,6 +2526,7 @@ async def link_youtube(
                 "publish_at": publish_at.isoformat() if publish_at else None,
                 "publish_at_source": source,
                 "publish_at_reason": reason,
+                **({"private_only": True} if private_only else {}),
             },
         )
     )

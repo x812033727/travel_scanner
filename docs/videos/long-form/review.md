@@ -4546,6 +4546,32 @@ PASS is DURATION_ONLY for the one rebound hash below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1475 private Studio link increment: 9 files (2026-10-12)
+
+Reviewer: `codex-pr-review-1475-duration`. Author: `codex-admin-studio-link-ui-8bc3`. Scope: DURATION_ONLY for the nine changed bindings below, reviewed at `2d5552fe8d7edec44b09c698fff592b3ca35a5fd` on `codex/curio-five-recuts-20261012`, pull request #1475. The reviewer wrote none of the API, web or locale changes and edited only this report, review.json and the narrow receipt task record.
+
+Baseline: merge base `a933427269e55365c3f3eed4769ca70ce9a8e692`. For each of the nine paths, SHA-256 of `git show <merge-base>:<path>` equals the existing `review.json` binding; all nine matches were checked against the Git blob bytes. These are exactly the bound paths changed through the author commit; the other 99 bindings remain current. Before this increment, `node tools/video/long-form/cli.mjs check` reported exactly these nine stale bindings.
+
+- `apps/api/app/video_reviews/admin_service.py`: `4cf2dceda72b3bd09f471e2263a9d4a96ba1d8a1375c554b0225d1ae12352856` -> `61a0095ccb186e45fc89f08bd20085a20aea68f13c9192478b9cbec4e5aa169d`.
+- `apps/api/app/video_reviews/schemas.py`: `e6264fda6e55564231a0b42bb0120e386e12541e16192b8f77581f5dfb35b2a2` -> `57cdfedd70afb65aa96e42699c7e52dd3d45faccf7919b58ee1a54779f0962a0`.
+- `apps/web/components/admin-video-review-card.tsx`: `4d22f999dcb70dfca1bd436421ecfe04cd9c7b9d869c0295bc4946be26e3e7a8` -> `62e4b249e15e2bfde32e0752977a9a54d0fc6d5a2a8e47a05ea04dbb7b63b9cf`.
+- `apps/web/components/admin-video-reviews.test.tsx`: `522f72db3d27c7b6a7eb0dd9d7eec76ef02976eacfe77317b4791cae6f6decf2` -> `2fbef750199daaf8fd1efeea37196526e67f00b2641adf3b23c9159ddf1a00b2`.
+- `apps/web/messages/en/admin.json`: `d57d403f5cf9d7d8bd1dc40512bcee86416cf0a52e5ca0d80e205d30ad9c6d33` -> `0c70216be4ad74532bcab45690a387bf1985a3182dab8e2a1012af46908940dd`.
+- `apps/web/messages/ja/admin.json`: `852fe1e05b0c39346ce560ead01bcdee7b99de0e19add71b7704ea93e881dc2b` -> `ff376aa2443bea8459550d4234f86e2e9ec97c0b3bc6f027e41837801f70ea4d`.
+- `apps/web/messages/ko/admin.json`: `c11c8b1270fffef9cbb5169c0ae6cd1be117a86babe4723015aa66e1555d43ec` -> `73a3b5206c52f29bc785752326777f98a5034a1677d3170cac4e9b81e6232f2f`.
+- `apps/web/messages/zh-CN/admin.json`: `e4d26cdacab4e08f30f32d5c3cb8af8105cc9cdc6d52244a93c3b2b36dde0c75` -> `cadfb6bb968b2b3f825973f6bd4974d6f7e38bda575c4a1772e97121fbc6b38b`.
+- `apps/web/messages/zh-TW/admin.json`: `5bcf83e0206b519232835e95cac57bfcf8db60cb7e9a3783577c446d3828122f` -> `e1787c72f2dc5f46141411a3efd0305d10833bcc1101dfe2d6c14aae564e5d25`.
+
+Findings: `admin_service.py` (+102/−4) adds an opt-in private-only link check for a pending imported final. It reads the linked channel's YouTube metadata, requires an unscheduled private video with processing succeeded and `duration_seconds(contentDetails.duration) > 0`, and refuses duplicate IDs, already linked targets, approved upload packages and active syncs. The positive duration is a playable-upload existence check; it neither sets an episode target nor weakens an existing floor. The parser is imported from `video_shorts.claim` and is unchanged. `schemas.py` (+3/−0) adds the optional `private_only` request flag. The unbound admin API route and focused API tests were read as context; they pass the flag and cover rejection without commit.
+
+Findings: `admin-video-review-card.tsx` (+27/−18) keeps the newest pending imported final awaiting approval, distinguishes a linked ID without a public timestamp from public or scheduled states, and sends the private-only flag from its form. `admin-video-reviews.test.tsx` (+78/−1) tests the new link, pending review, linked-channel gate and related UI states. The five admin locale files (+5/−1 each) add the link and privacy-verification wording and rename the catalog's ID filter to “Linked to YouTube.” A locale sentence mentions video length only as the positive processing check above. None of these nine files changes `target_minutes`, `MIN_EPISODE`, `VIDEO_MIN_EPISODE_MINUTES`, 600/780-second targets, the eight-minute or 480-second floor, runtime specs, action seconds, source hashes or covered status. The long-form duration implementation, plans and QA files are outside the diff.
+
+Ran: `git diff a933427269e5..2d5552fe8d7e` for all nine bindings; SHA-256 over each merge-base Git blob, current file bytes and the old receipt; `git ls-files --eol` (LF); pre-edit `node tools/video/long-form/cli.mjs check` (only nine expected stale bindings). After rebinding, `node tools/video/long-form/cli.mjs check` and `node --test tools/video/long-form/review.test.mjs` both passed.
+
+Non-claims: this is a duration-only review of the nine bound revisions, not owner playback, Studio publication verification, production deployment or a full test-suite result. The link's positive duration check does not establish that a particular uploaded film meets a long-form minimum; those limits remain governed by their unchanged files.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -4562,8 +4588,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/app/video_automation/schemas.py` | `4247c4bbbb118d14bc4cd90358d129843936f17fbc3e1cff0217d461ce02d70d` |
 | `apps/api/app/video_automation/series.py` | `cb9d3e01465a6f072d44fdcedae659f538686a634a03351171f8f67d8bfaa155` |
 | `apps/api/app/video_automation/settings.py` | `9941b3244e15cf6b1d8aaec32c68ab2424f84adb32804a179652d93fb3977ca3` |
-| `apps/api/app/video_reviews/admin_service.py` | `4cf2dceda72b3bd09f471e2263a9d4a96ba1d8a1375c554b0225d1ae12352856` |
-| `apps/api/app/video_reviews/schemas.py` | `e6264fda6e55564231a0b42bb0120e386e12541e16192b8f77581f5dfb35b2a2` |
+| `apps/api/app/video_reviews/admin_service.py` | `61a0095ccb186e45fc89f08bd20085a20aea68f13c9192478b9cbec4e5aa169d` |
+| `apps/api/app/video_reviews/schemas.py` | `57cdfedd70afb65aa96e42699c7e52dd3d45faccf7919b58ee1a54779f0962a0` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
 | `apps/api/migrations/versions/0122_video_anime_production_policy.py` | `91f97905e9a689cc47aef8eac60735175a4048bfb5788fa1d204acb43ee11ea7` |
 | `apps/api/tests/test_migration_0118_video_min_8_minutes.py` | `c479dfd800de1fcbd1fb71d0b47d4fcb922675b314b31b680e8195cac898c28e` |
@@ -4576,16 +4602,16 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/tests/test_video_explainer_duration.py` | `45bdcbe9ec7c7c47e437b6d65ec967801e8553acbbf1c8285d734f8a7242eddc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `cb28b0a7173ad4712a70c5e378b3b0d6e4d760731620f38d9400a221b305a6ac` |
-| `apps/web/components/admin-video-review-card.tsx` | `4d22f999dcb70dfca1bd436421ecfe04cd9c7b9d869c0295bc4946be26e3e7a8` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `522f72db3d27c7b6a7eb0dd9d7eec76ef02976eacfe77317b4791cae6f6decf2` |
+| `apps/web/components/admin-video-review-card.tsx` | `62e4b249e15e2bfde32e0752977a9a54d0fc6d5a2a8e47a05ea04dbb7b63b9cf` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `2fbef750199daaf8fd1efeea37196526e67f00b2641adf3b23c9159ddf1a00b2` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `c64bfba40979fef3f8291ae2582a8cc2bb55644d4be0655ba75b39f767677d8a` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `d57d403f5cf9d7d8bd1dc40512bcee86416cf0a52e5ca0d80e205d30ad9c6d33` |
-| `apps/web/messages/ja/admin.json` | `852fe1e05b0c39346ce560ead01bcdee7b99de0e19add71b7704ea93e881dc2b` |
-| `apps/web/messages/ko/admin.json` | `c11c8b1270fffef9cbb5169c0ae6cd1be117a86babe4723015aa66e1555d43ec` |
-| `apps/web/messages/zh-CN/admin.json` | `e4d26cdacab4e08f30f32d5c3cb8af8105cc9cdc6d52244a93c3b2b36dde0c75` |
-| `apps/web/messages/zh-TW/admin.json` | `5bcf83e0206b519232835e95cac57bfcf8db60cb7e9a3783577c446d3828122f` |
+| `apps/web/messages/en/admin.json` | `0c70216be4ad74532bcab45690a387bf1985a3182dab8e2a1012af46908940dd` |
+| `apps/web/messages/ja/admin.json` | `ff376aa2443bea8459550d4234f86e2e9ec97c0b3bc6f027e41837801f70ea4d` |
+| `apps/web/messages/ko/admin.json` | `73a3b5206c52f29bc785752326777f98a5034a1677d3170cac4e9b81e6232f2f` |
+| `apps/web/messages/zh-CN/admin.json` | `cadfb6bb968b2b3f825973f6bd4974d6f7e38bda575c4a1772e97121fbc6b38b` |
+| `apps/web/messages/zh-TW/admin.json` | `e1787c72f2dc5f46141411a3efd0305d10833bcc1101dfe2d6c14aae564e5d25` |
 | `docs/videos/DESIGN.md` | `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `8bf5a55173e25c07c18b865853ffd37e839408ccf731bdc3c4ebf208e195b5b5` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
