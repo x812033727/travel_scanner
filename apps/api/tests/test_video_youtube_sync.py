@@ -192,7 +192,7 @@ async def test_a_studio_upload_gets_its_details_captions_thumbnail_and_schedule(
     assert _steps(project) == {"details": "done", "captions": "done", "thumbnail": "done"}
     assert (project.youtube_video_id, project.youtube_publish_at) == (STUDIO_ID, when)
     sent = site.google.updates[-1]
-    assert sent["snippet"]["title"] == "AI 模型怎麼挑？排行榜第一不一定最好用"
+    assert sent["snippet"]["title"] == "AI 模型怎麼挑？排行榜第一不一定最好用 | CC字幕"
     assert sent["status"]["privacyStatus"] == "private"
     assert sent["status"]["publishAt"] == "2030-01-02T12:00:00Z"
     assert sent["status"]["embeddable"] is True, "what the owner set in Studio stays"
@@ -443,8 +443,8 @@ async def test_an_english_narration_reaches_a_studio_video_as_its_defaults(
     assert sent["snippet"]["defaultLanguage"] == "en"
     assert sent["snippet"]["defaultAudioLanguage"] == "en"
     assert sent["localizations"] == {
-        "zh-TW": ENGLISH_METADATA["localizations"]["zh-TW"],
-        "ja": ENGLISH_METADATA["localizations"]["ja"],
+        "zh-TW": {"title": "AI 模型怎麼挑 | CC字幕", "description": "這支影片回答怎麼挑 AI 模型。"},
+        "ja": {"title": "AIモデルの選び方 | 字幕付き", "description": "選び方。"},
     }
 
 
@@ -603,7 +603,7 @@ async def test_original_publish_followed_by_approved_languages_sends_all_five(
         "zh-TW",
         *LOCALES,
     }
-    assert site.google.updates[-1]["snippet"]["title"] == _publish().title
+    assert site.google.updates[-1]["snippet"]["title"] == f"{_publish().title} | CC字幕"
     assert site.google.updates[-1]["snippet"]["tags"] == batch.base_metadata["tags"]
     assert site.google.updates[-1]["status"]["privacyStatus"] == "private"
     assert site.google.thumbnails[STUDIO_ID] == JPEG

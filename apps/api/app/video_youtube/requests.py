@@ -44,11 +44,29 @@ STATUS_FIELDS = (
 )
 # The same language under the tags YouTube may hand back for it.
 LANGUAGE_ALIASES = {"zh-hant": "zh-tw", "zh-hans": "zh-cn"}
+# What every title ends with, per language, so a viewer sees in the search results that the
+# video has captions (the owner's rule of 2026-10-12: 影片標題都要有「| CC字幕」, worded per
+# language). The worker adds it when it composes the package (tools/video/core/metadata.mjs
+# CAPTION_TAGS, the same table); the site adds it again on the way out, once, for the packages
+# approved before the rule and for a title the owner retyped on the card.
+CAPTION_TAGS = {
+    "zh-TW": " | CC字幕",
+    "en": " | CC Subtitles",
+    "ja": " | 字幕付き",
+    "ko": " | CC 자막",
+}
 
 
 def as_dict(value: object) -> dict[str, Any]:
     """``value`` when it is a JSON object, else an empty one: YouTube's answers are read loosely."""
     return cast(dict[str, Any], value) if isinstance(value, dict) else {}
+
+
+def captioned(title: str, language: str) -> str:
+    """``title`` ending with its language's captions tag, added once."""
+    tag = CAPTION_TAGS.get(language, CAPTION_TAGS["en"])
+    bare = title.rstrip()
+    return bare if bare.endswith(tag.strip()) else f"{bare}{tag}"
 
 
 def text_problem(title: str, description: str) -> str | None:
@@ -118,7 +136,10 @@ def localizations(metadata: dict[str, Any]) -> dict[str, dict[str, str]]:
             continue
         title, description = values.get("title"), values.get("description")
         if isinstance(title, str) and title.strip() and isinstance(description, str):
-            result[str(locale)] = {"title": title, "description": description}
+            result[str(locale)] = {
+                "title": captioned(title, str(locale)),
+                "description": description,
+            }
     return result
 
 
@@ -138,7 +159,7 @@ def insert_body(metadata: dict[str, Any], title: str, description: str) -> dict[
         status["containsSyntheticMedia"] = synthetic
     return {
         "snippet": {
-            "title": title,
+            "title": captioned(title, language),
             "description": description,
             "tags": _tags(metadata),
             "categoryId": _category(metadata),
@@ -170,7 +191,7 @@ def update_body(
     status_now = as_dict(current.get("status"))
     snippet = {key: copy.deepcopy(snippet_now[key]) for key in SNIPPET_FIELDS if key in snippet_now}
     snippet.update(
-        title=title,
+        title=captioned(title, language),
         description=description,
         tags=_tags(metadata),
         categoryId=_category(metadata, snippet_now.get("categoryId")),

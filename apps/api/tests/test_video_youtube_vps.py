@@ -303,7 +303,7 @@ async def test_no_google_oauth_needed_and_staging_resumes_at_vps_offsets(
     result = await begin(site, title="改寫標題", description="完整說明\n00:00 開場")
     assert not result["linked"] and result["job"]["state"] == "staging"
     m = remote.manifest
-    assert m["metadata"]["title"] == "改寫標題"
+    assert m["metadata"]["title"] == "改寫標題 | CC字幕"
     assert m["metadata"]["description"] == "完整說明\n00:00 開場"
     assert m["metadata"]["contains_synthetic_media"] is False
     assert "zh-TW" not in m["metadata"]["localizations"]

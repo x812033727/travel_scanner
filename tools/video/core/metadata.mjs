@@ -25,6 +25,25 @@ export const LABELS = {
   ko: { chapters: "챕터", article: "전체 글", sources: "참고 자료", pictures: "이미지 출처", colon: ": ", parens: [" (", ")"] },
 };
 
+// What every title ends with, per locale, so a viewer sees in the search results that the video
+// has captions (the owner's rule of 2026-10-12: 影片標題都要有「| CC字幕」, worded per language).
+// Every video carries at least its narration's captions, so the generic wording is always true.
+// apps/api/app/video_youtube/requests.py CAPTION_TAGS holds the same table for the packages
+// approved before this rule; keep the two in step.
+export const CAPTION_TAGS = {
+  "zh-TW": " | CC字幕",
+  en: " | CC Subtitles",
+  ja: " | 字幕付き",
+  ko: " | CC 자막",
+};
+
+/** `title` ending with its locale's captions tag, added once (a title that has it stays as it is). */
+export function withCaptionTag(title, locale) {
+  const tag = CAPTION_TAGS[locale] ?? CAPTION_TAGS.en;
+  const bare = title.trimEnd();
+  return bare.endsWith(tag.trim()) ? bare : `${bare}${tag}`;
+}
+
 /**
  * One entry of video.json's assets[]: the three fields the schema requires (path, source,
  * license) and the two `stock fetch` adds (tools/video/media/stock.mjs). `source` is the credit
