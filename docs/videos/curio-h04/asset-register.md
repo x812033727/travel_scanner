@@ -61,3 +61,16 @@
 | [return-to-trail](vector-art/return-to-trail.svg) | 結尾回顧形狀不同、路徑不完整 |
 
 作者與獨立覆核者均逐張實看原生1920×1080 PNG；7張SVG及7張PNG SHA全部符合整合提案，0材料性問題。外部 `footprint-vector-proposal.json` SHA `23e44df5b1b5a4c701496f7e0be48e51010c487db896a1eb49a4f6f1ba45ff3b`；`footprint-vector-independent-review.md` SHA `beca585de31dd369880fb85cba56914025b5c7e0d3e084564f646b49a822e24a`。兩輪付費小樣保留在外部稽核目錄，不改其judge結果。
+
+## 第八張原創向量：高處帳篷與低處林緣
+
+2026-10-12 追加 [hook-slope.svg](vector-art/hook-slope.svg)，以原生 `diagram` 顯示小型低長帳篷、圓緩開闊雪坡及低處林緣；不畫人物、臉部圖形、完整行走路線、精確距離或坡度。此為自行編寫的 SVG 形狀與繁中文字，沒有修改 AI bitmap 或描摹歷史照片。署名／權利為 `Mokaair original`；caption 為「位置關係示意／非現場影像・未按比例」。
+
+| 綁定項目 | SHA-256 |
+|---|---|
+| 1600×900 原創 SVG | `b8ab394218041401cd66934ddb3fe67f3a80398b8b5cf31e0de34494bf0dbbc4` |
+| 原生 1920×1080 提案預覽 PNG | `ad5302d02618212179a557d24a28eda8b81eeccd9697a2ae51271c43ade86466` |
+| `_audit/slope-vector-proposal.json` | `6ea4aae1bda99a279d1468c8307c9809e5f094747d5770270fa24a2f9836a7a0` |
+| `_audit/slope-vector-independent-review.md` | `0019b806756656bb1c6a0b40339db2462d95e46194f4b3d567c6620a8c1009c1` |
+
+作者與獨立覆核者均實看該原生預覽，0 material／layout 必修。Root 已整合至 `video.json` SHA `250e1d192dd7463cb3f73236a9eadcba52ceb0cb01b9ddb135d4428744eee5f9`，並追加對應 `assets[]` 的原創署名；本集現有八張 SVG。原生 PNG 位於外部 `_audit/slope-vector-preview/hook-slope.png`，只是提案預覽，正式 render 仍須重新核對。原生成圖的擬人問題與所有候選／評分保留在 `_audit/keyframes-before-bulk-fixes/`、`_audit/slope-and-boots-integration/keyframes/` 及先前像素報告，不改判為通過。

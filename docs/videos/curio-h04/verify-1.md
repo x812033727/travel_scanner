@@ -168,3 +168,27 @@ JSON 全樹只有兩處差異：`scenes[99].lines[0]`（`bi2x`）與 `scenes[99]
 `search-objects` 精確採用已審的帳內冬靴、外套及布袋提示詞，與「仍留在帳內」旁白一致；其審查 `_audit/search-objects-prompt-review.md` SHA-256 為 `908870861c1f681696c4900fea32b19c4291943a5fb0dc80b69db0ad1c51c1e5`。它不宣稱精確物品清單或原始擺放位置。其他旁白、voice／emotion、停頓、字卡、diagram／SVG 參照、claims、assets 及運鏡均未變；`claims.md` SHA-256 仍為 `3ca492d642fc4c3e4a3ea690c50d41e5d2f119b2937af993d51961ea09ae2989`。
 
 **0 新增事實修正、0 must-fix；事實查核 PASS 延伸綁定 `30eb4fa9…`。** 四句文字修訂會改變 speech hash，不把舊音訊驗收當作新句已通過；本次沒有聽讀新 TTS、改寫媒體或干預執行中的 producer。後續仍須對新音訊及生成圖分別實際覆核。
+
+## 2026-10-12 八鏡材料性畫面修正回讀
+
+獨立逐欄比對 `_audit/keyframes-before-bulk-fixes/video-before.json`（`30eb4fa95a6a3737d2d3e328ae409a86158550ea40c917829762a256049634c4`）與現行 **`a7c23cd82f138834c85c1d41eaf4ba50725d20cb320924ae842c63246bb0dc33`**，全樹恰有八個 `data.prompt` 差異：`hook-slope`、`journey-pack`、`search-empty-interior`、`tent-cut-detail`、`remaining-boots`、`tent-opening-empty`、`spring-empty-ravine`、`archive-reader-back`。
+
+將已審 `_audit/bulk-prompt-fixes-round1.json`（SHA `d6407cdc3a33dbffb038b541aa85d7509266f52f24b73904b70daa219416d3df`）及 `_audit/middle-material-prompt-proposal.json`（SHA `2066f42e4c57c9fd4579348cb36d9acb67e19e396fe67c39027905554edd5632`）的八個 after 精確套入記憶體前版，可重建現行完整 JSON。它們修正營地與林緣關係、用品或人物造形、冬季帳內背景、切口、毛氈靴，以及誤生聚落／峭峰；不新增歷史實測值、人物身分或當夜動作。門口雪面提案已刪除未受擾動的過度限定字。
+
+全部 **119 個 line 物件**逐項相同，包含旁白、emotion 與停頓；voice、look、camera、字卡／圖說、主張、assets、metadata 及所有其他欄位完全未變。`claims.md` SHA 仍為 `3ca492d642fc4c3e4a3ea690c50d41e5d2f119b2937af993d51961ea09ae2989`。備份與目前外部 `timeline.json` 逐位元相同，SHA 均為 `f4ab52a1e7ccceccd88576b8bbc8f273cb35f204730ec3d4bb825c251305dc82`；收據所記 speech hash 仍為 `296feca213cf8271`，pictures hash 改為 `1b4cf094f12e9b3c`。
+
+**0 新增事實修正、0 腳本 must-fix；事實查核 PASS 延伸綁定 `a7c23cd8…`。** 這是來源與時間軸的增量回讀，八張重繪仍須另行 actual selected 像素覆核；本次未改來源／媒體／manifest、未接受候選或呼叫付費程序。
+
+## 2026-10-12 位置向量整合與帳內鞋子提示詞回讀
+
+本段由 `h03_research` 追加，只核本次來源差異；此代理是新 SVG 作者，圖像另有 `h04_audio_wording` 的獨立實看報告，不冒稱作者自查為獨立像素覆核。
+
+由 `_audit/slope-and-boots-integration/video-before.json`（`a7c23cd82f138834c85c1d41eaf4ba50725d20cb320924ae842c63246bb0dc33`）出發，在記憶體只套已審提案的 `hook-slope.template/data`、收據的 `remaining-boots.data.prompt`，並追加一筆 `Mokaair original` 的位置 SVG asset，重建結果與現行 **`250e1d192dd7463cb3f73236a9eadcba52ceb0cb01b9ddb135d4428744eee5f9`** 完整 JSON 精確相同。機讀證據為外部 `_audit/slope-and-boots-factual-readback.json`。
+
+`hook-slope` 保留 c01 及 `86sh` 問句，改以高處帳篷、低處林緣、中間開闊雪坡的通用位置關係示意承接原主張；caption 明列非現場影像、未按比例。沒有新增實測位置、距離、坡角、九人路線、離營動作或原因結論。`remaining-boots` 只將背景限定為封閉帆布帳壁與地布，避免生成海面；仍是用品情境，不宣稱復原原帳篷當時開閉狀態或精確物品配置。
+
+最終向量提案 SHA 為 `6ea4aae1bda99a279d1468c8307c9809e5f094747d5770270fa24a2f9836a7a0`；SVG／原生提案 PNG 已實算 SHA 與提案吻合。獨立像素覆核 `_audit/slope-vector-independent-review.md` SHA 為 `0019b806756656bb1c6a0b40339db2462d95e46194f4b3d567c6620a8c1009c1`，判定 PASS、0 material；素材署名與揭露已登錄 `asset-register.md`。
+
+全部 **119 個 line 物件**（含 emotion、停頓）、voice、look、主張及其他未列欄位完全相同。`claims.md` SHA 仍為 `3ca492d642fc4c3e4a3ea690c50d41e5d2f119b2937af993d51961ea09ae2989`。回讀時備份與當前 `timeline.json` 逐位元相同，SHA 均為 `f4ab52a1e7ccceccd88576b8bbc8f273cb35f204730ec3d4bb825c251305dc82`；此處不把未變旁白時間視為新 diagram 已完成正式 render。結構為 100 景、64 張 AI shot、36 個非 shot 場景，含八張原創 SVG。
+
+**0 新增事實修正、0 腳本 must-fix；事實查核 PASS 延伸綁定 `250e1d19…`。** 這次只追加本報告與素材登錄，沒有修改 canonical source／媒體／manifest 或呼叫 provider。新的鞋子 selected、正式字卡／成片、字幕與聲音，仍由各自像素及播放覆核證據判定，不由這份來源回讀代替。

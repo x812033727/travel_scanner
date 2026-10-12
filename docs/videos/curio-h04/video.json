@@ -166,6 +166,11 @@
       "path": "docs/videos/curio-h04/vector-art/return-to-trail.svg",
       "source": "奇聞檔案局 H04 原創足跡形態示意；非現場照片、未按比例",
       "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04/vector-art/hook-slope.svg",
+      "source": "奇聞檔案局 H04 原創位置關係示意；非現場影像、未按比例",
+      "license": "Mokaair original"
     }
   ],
   "scenes": [
@@ -268,11 +273,10 @@
     },
     {
       "id": "hook-slope",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Wide view from a lower forest edge looking uphill in cold morning light. Foreground tree trunks frame a broad, rounded, treeless Ural upper hillside in the distance. A small low ridge tent sits far uphill, separated from the foreground trees by a long open snow-covered incline. The upper slope meets a smooth curved skyline. The tent and the open ground between it and the forest remain central.",
-        "camera": "tilt down",
-        "visual": "still"
+        "svg": "docs/videos/curio-h04/vector-art/hook-slope.svg",
+        "caption": "位置關係示意／非現場影像・未按比例"
       },
       "claims": [
         "c01"
@@ -342,7 +346,7 @@
       "id": "journey-pack",
       "template": "shot",
       "data": {
-        "prompt": "Close-up in a simple lodging room in morning light. A generic mittened hand fastens a plain canvas rucksack buckle at the centre of the frame; only the hand and bag are visible. The wooden bench beneath has generous empty margins.",
+        "prompt": "Extreme close-up of a single closed rectangular metal buckle on a plain canvas rucksack flap. One leather strap passes through the buckle and rests flat against the woven fabric. The buckle occupies the centre, with canvas folds filling the frame around it. A narrow edge of the wooden bench is visible along the bottom. Soft morning window light reveals the metal, leather and cloth.",
         "camera": "drift",
         "visual": "still"
       },
@@ -477,7 +481,7 @@
       "id": "search-empty-interior",
       "template": "shot",
       "data": {
-        "prompt": "Medium view through the entrance of an empty ridge tent on a bright overcast day. Packed fabric bundles rest on the floor and daylight enters through the doorway. The opening frames the centre, with enough room to see the unoccupied space.",
+        "prompt": "Medium view from inside an empty canvas ridge tent toward its open entrance on a winter day. Packed fabric bundles rest along both sides of the canvas-covered floor, leaving the central space vacant. Through the doorway, a continuous snow-covered slope fills the view beneath pale cold daylight. Snow banks border the entrance and reflect cool light onto the canvas and belongings.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -552,7 +556,7 @@
       "chapter": "帳篷與腳印留下什麼",
       "template": "shot",
       "data": {
-        "prompt": "Extreme close-up of a small section of old canvas spread flat on a clean workbench in daylight. A single short cut through the woven material is visible at centre; the fabric is surrounded by empty table surface. Window light makes the cut edges visible.",
+        "prompt": "Extreme close-up of plain woven canvas lying flat on a wooden workbench in daylight. A short straight slit crosses the central fabric, with two nearly parallel woven edges separated by a narrow dark line. Fine loose threads remain visible along these cut edges. The canvas fills nearly the entire frame, with a thin strip of wooden tabletop around it.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -670,7 +674,7 @@
       "id": "remaining-boots",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of several worn felt boots resting irregularly by bundled blankets inside an empty shelter in daylight. One boot lies on its side near the central pair. Natural light enters from the doorway, and no person occupies the scene.",
+        "prompt": "Close-up inside a fully enclosed canvas ridge tent in cold diffuse daylight. Two plain wool-felt boots with visibly coarse matte fibres rest beside a folded wool blanket on a continuous canvas groundsheet. The rounded boot shafts and thick felt surfaces occupy the centre. A seamless curved canvas back wall fills the entire background edge to edge. Soft cool light is diffused through the fabric walls. The frame contains only boots, folded blanket, groundsheet and continuous canvas walls.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -707,7 +711,7 @@
       "id": "tent-opening-empty",
       "template": "shot",
       "data": {
-        "prompt": "Close-up looking outward through an open tent flap in diffuse daytime light. Beyond the central opening lies an unoccupied expanse of snow. A folded blanket remains just inside the lower edge; the composition emphasizes the threshold without showing an exit action.",
+        "prompt": "Close-up from inside an empty canvas ridge tent, looking outward through a broad triangular entrance in diffuse cold daylight. Continuous white snow fills the centre and lower middle of the opening, rising into an open snow-covered slope beyond. Plain canvas flaps frame only the left and right edges. A narrow strip of flat canvas groundsheet runs along the bottom edge. The central snow and vacant threshold are the dominant shapes.",
         "camera": "drift",
         "visual": "still"
       },
@@ -989,7 +993,7 @@
       "id": "spring-empty-ravine",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of an unoccupied mountain gully during spring daylight. Patches of old snow lie among wet stones and sparse grass, with a narrow meltwater channel crossing the centre. This is landscape context only, with no people, remains or objects.",
+        "prompt": "Medium close view across the bottom of a shallow natural gully in spring daylight. A narrow meltwater stream curves through wet rounded stones at the centre. Small patches of old snow rest between the stones and sparse grass. A low grassy bank fills the upper edge, while the damp streambed fills the foreground and middle distance.",
         "camera": "drift",
         "visual": "still"
       },
@@ -1136,7 +1140,7 @@
       "id": "archive-reader-back",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot. Rear view of an anonymous researcher at a daylight archive table, shown at a distance with the back of the head obscured by perspective. The person holds a closed unmarked case folder with both hands. A bright window lights the table and plain shelves.",
+        "prompt": "Over-the-shoulder medium shot of an anonymous researcher seated at an archive table in daylight. The back of the head and one shoulder occupy the lower left foreground. The tabletop extends forward beyond the shoulder. A closed plain case folder lies flat in the centre of the table, with its bound paper edge clearly visible. The researcher faces the folder and the bright window beyond the table. Simple archive shelves fill the side background.",
         "camera": "tilt down",
         "visual": "still"
       },

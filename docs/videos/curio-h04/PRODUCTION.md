@@ -79,10 +79,10 @@
 
 - 已授權的 `ngnu` 單次重試成功，後續原生第二轉寫亦依同音規則排除疑義；授權已使用，不擴及其他不確定請求。
 - `nueh` 另遇 Windows journal rename EPERM，但有完整 confirmed 暫存答案。確認程序退出並核對音檔、請求與答案 SHA 後恢復收到的原件，原生 replay 證明 0 新供應商呼叫；證據在 `transcript-journal-recovery-5f88ed3df1ea/`。
-- 21 張提示完成独立覆核後套用：14 張山坡／營地明示圓緩無樹的烏拉爾高處山坡，7 張足跡明示鞋底形壓實雪隆起。只改 `data.prompt`；來源 SHA `ae85b2c4f5c1b95ca782603725b4a162140ece65c32b7cccafd6df82f695cb35`，旁白、主張、voice、look 與運鏡未改。原小樣與 manifest 已備份到 `pilot-before-prompt-fix/`，尚待重新產生兩張材料性問題小樣。
+- 21 張提示完成獨立覆核後套用：14 張山坡／營地明示圓緩無樹的烏拉爾高處山坡，7 張足跡明示鞋底形壓實雪隆起。只改 `data.prompt`；來源 SHA `ae85b2c4f5c1b95ca782603725b4a162140ece65c32b7cccafd6df82f695cb35`，旁白、主張、voice、look 與運鏡未改。原小樣與 manifest 已備份到 `pilot-before-prompt-fix/`，尚待重新產生兩張材料性問題小樣。
 - `check-audio-2026-10-12T06-09-24-919Z` 完成 119/119 句，exit 1：92 句逐字符合、6 句同音／語助詞符合、4 句 Jev 通過、5 句經第二轉寫排除，12 句仍標記。這是機器逐句檢查，不等於站主完整聽音。
 - 12 句先備份原音檔及檢查結果，再以原稿原聲音設定僅重錄被標句；dry-run 12 requests、237 計費字元、當月剩 9,274,408 字元。沒有重錄其餘 107 句或更改共享字典。
-- 第一次局部重錄 exit0：12 requests／237字元，103 requests沿用；正文601.3333秒、117狀態、最長7.7秒，0節奏問題。後续轉寫的 `c5xt` 再遇相同 Windows rename EPERM，完整答案已核對並零呼叫恢復，收據在 `transcript-journal-recovery-a309097ba6c5/`。
+- 第一次局部重錄 exit0：12 requests／237字元，103 requests沿用；正文601.3333秒、117狀態、最長7.7秒，0節奏問題。後續轉寫的 `c5xt` 再遇相同 Windows rename EPERM，完整答案已核對並零呼叫恢復，收據在 `transcript-journal-recovery-a309097ba6c5/`。
 - 5 張足跡圖僅調整景別前綴，使原生 lint 可辨識 close-up／medium／wide；後段逐字保持。來源 SHA `169d607735c155abb988c62643db72567f9d947498d479e1d691ba98bd24a6a0`，speech hash 保持 `d9e4eeb59801eac3`；`framing-prefix-backup/receipt.json` 保存差異與回復原件。
 - 新一筆 `h6hn`（「小雪板影響的範圍，也和整片山坡崩塌不同。」、4.07秒）轉寫於06:20:22 UTC送出後回HTTP502，request SHA `39e05552faf3621f1dda22da5977ad0d9d3e73c7ca6cd660711cd3b61c21ed09` 留在held。站主另行授權「僅重試這一筆一次（建議）」；兩張修正版小樣結束後才執行，不把前一筆授權延用或並行啟動兩個producer。
 - `h6hn` 單次授權重試已成功，後續第二轉寫與原稿相符，原生排除疑義；`authorized-transcript-retry-39e05552faf3/` 保存同筆的授權與釋放證據。
@@ -92,8 +92,8 @@
 
 - 第二輪小樣帳篷圖（selected SHA `ff45b01656ddc79cd760f24657f97d955b863a8e1c1b9af6dfc7ff50e81d6391`）實看可保留；足跡圖雖原生judge通過，仍呈雲團形，獨立覆核列材料性問題。兩輪原生圖片帳本合計US$0.14，所有舊take及manifest均留在稽核備份。
 - 七個足跡景改為已逐張實看的原創SVG `diagram`，標示非現場照片／未按比例；詳見[素材登錄](asset-register.md)。source `4979754cb76c36e8301ec6bab8d12b414a15f876b92459954440e95d8b6fce21`，只改七個template/data及七筆原創資產，speech hash保持；65張情境插圖仍占正文57.83%，原生節奏檢查0問題。
-- 三輪原稿重錄後僅改寫仍標記的 `xzmn/c5xt/a6qq/u3tt`。独立事實覆核及原生 `rewriteProblems` 均通過；「雪板」、九人、可能／特定條件／不能反推時刻的限制保持。已解除的 `88ft` 未套備案、未再購音訊。原生 `review/rewrites.json` 記下四句before/after/heard，不改Jev舊結果。
-- 四句改写後source `692be6289870c02c4f40e41d3c500cd00b7c3e15e6399b95c289d2cebd6e2b80`；再按獨立覆核只把 `search-objects` 提示中的用品移到帳篷內，使畫面與旁白一致。現行source `30eb4fa95a6a3737d2d3e328ae409a86158550ea40c917829762a256049634c4`、speech hash `296feca213cf8271`；claims、voice、look與其他115句保持。
+- 三輪原稿重錄後僅改寫仍標記的 `xzmn/c5xt/a6qq/u3tt`。獨立事實覆核及原生 `rewriteProblems` 均通過；「雪板」、九人、可能／特定條件／不能反推時刻的限制保持。已解除的 `88ft` 未套備案、未再購音訊。原生 `review/rewrites.json` 記下四句before/after/heard，不改Jev舊結果。
+- 四句改寫後source `692be6289870c02c4f40e41d3c500cd00b7c3e15e6399b95c289d2cebd6e2b80`；再按獨立覆核只把 `search-objects` 提示中的用品移到帳篷內，使畫面與旁白一致。現行source `30eb4fa95a6a3737d2d3e328ae409a86158550ea40c917829762a256049634c4`、speech hash `296feca213cf8271`；claims、voice、look與其他115句保持。
 - 改寫第一輪 dry-run：4 requests／91計費字元；只合成這四句，後續原生檢查仍需完成。插圖完整65張dry-run：一次各一張估US$0.88，最多三次各US$2.63（總量估算，已有兩張可沿用），低於US$80有效上限。
 
 ### 旁白通過與正式站回讀
@@ -102,6 +102,24 @@
 - `check-audio-2026-10-12T06-39-06-762Z` exit0：101逐字符合、8同音／語助詞符合、4 Jev通過、6第二轉寫排除，0 flagged。新增四句全部直接符合，0新Jev calls。
 - audio review `f28e20d8-8c02-4b9b-8af9-a50b8494b847`，正式站於 `2026-10-12T06:40:28.403576Z` 自動核准；content SHA `f4ab52a1e7ccceccd88576b8bbc8f273cb35f204730ec3d4bb825c251305dc82` 與timeline一致。原生 `review-pull` exit0，`reviews-2026-10-12T06-41-06.412Z.json` GET200再次讀回approved。這是來源綁定的音訊機器關卡，不等同站主完整聽音。
 - 65張插圖主批次已起跑，沿用兩張正確小樣；不重買足跡圖。最新文件測試199 passed／0 failed，SVG原生預覽及增量來源覆核均完成。
+
+### 字卡、縮圖與字幕預覽覆核
+
+- 主批次執行期間，以相同原生 renderer、字型、主題與時間軸在外部 `_audit/card-previews/` 產出35景／52個 settled states；manifest SHA `b0acfd61bc9516150a90a5578049638a2aee2c56e6dc22cd9574f32885c89b43`，source與timeline前後不變。三組獨立覆核逐張實看並核對全部52個PNG SHA，0重大問題；正式frames、入場轉場及成片尚待製作。
+- 縮圖prototype使用已覆核的空帳篷selected，1280×720與320×180均實看可讀；沒有B/C變體。原尺寸SHA `eac7d20091c50e6562dc3a660c427a5674bf5e1d85931c1f0b90d93a90957b6d`，正式thumbnail仍待render。
+- 原生繁中字幕預覽119 cues、0缺句、0機械問題，已納入預計片頭150 frames；只寫 `_audit/caption-preview/`。SRT SHA `e5a657e934ee241ecbc9494e02a1e02be9723aaf94dc055db9188eba689827ad`。另做逐句語意斷行覆核；播放器CC與完整聽音均未驗證。
+- 原生metadata預檢0問題，說明欄3027 bytes／1918字元，包含12項研究與文書來源及3張原件署名。章節預覽為00:00、00:35、01:45、03:53、04:54、07:29、09:17；最終以正式branding、成片與上傳包回讀為準。
+- 已實看的第一批插圖有三張材料性問題待集中修正：`hook-slope` 把營地放在近處林緣低地、`journey-pack` 把背包畫成擬人角色、`search-empty-interior` 把帳門外畫成暖季綠地。完整judge與舊take保留；沒有依高分直接採用，也未以accept-best清除這三項。
+
+### 插圖主批次修正與續製
+
+- 第一輪完整批次已有30張selected，於07:06 UTC遇HTTP502停止。唯讀診斷確認當時正式站容器正在重建，`science-snow-slab` 精確資料庫查詢無job，local jobs亦無pending；保留已完成結果後正常接續。這不是vendor帳單稽核，未聲稱供應商零計費，也未更動主機或其他工作的部署。
+- 實際像素覆核共找出八張材料性問題；修改八個prompt後產生11張候選，六張解除原問題。`hook-slope` 新圖卻在帳篷上生出臉形，`remaining-boots` 新圖帳門外呈海面，兩項另作窄範圍修正；沒有依judge高分直接當作合格。
+- `hook-slope` 改成第八張原創SVG，明示高處帳篷、低處林緣與開闊雪坡，caption「位置關係示意／非現場影像・未按比例」。作者、root及獨立覆核者實看1920×1080原生預覽，0材料性／版面問題；proposal SHA `6ea4aae1bda99a279d1468c8307c9809e5f094747d5770270fa24a2f9836a7a0`，獨立報告SHA `0019b806756656bb1c6a0b40339db2462d95e46194f4b3d567c6620a8c1009c1`。
+- 靴子景只將背景改成連續帆布內牆與穿布散射光，避免生成外景；此為取景限制，不宣稱1959帳門的封閉狀態。新提示已獨立覆核，selected實圖另行驗收。
+- 07:23:30 UTC整合後source SHA `250e1d192dd7463cb3f73236a9eadcba52ceb0cb01b9ddb135d4428744eee5f9`、pictures hash `1cde42a6586e459b`；119句、speech hash `296feca213cf8271`、timeline SHA `f4ab52a1e7ccceccd88576b8bbc8f273cb35f204730ec3d4bb825c251305dc82` 保持。完整前版selected與take備份在 `slope-and-boots-integration/`。
+- 原生lint仍0 errors／4 warnings；64張AI圖dry-run ready，全部每張最多三次估US$2.59，當時媒體帳本累計US$0.86（不是全片完整費用）。正常resume保留28張未變selected，補35張未生成圖與1張改提示靴子，未使用force。
+- 繁中119條字幕語意覆核找出10處詞內斷行，已準備只改換行位置的修正及來源／時間綁定檢查；尚待正式captions輸出後套用。正式render、assemble、player字幕及完整播放／聽音仍待驗證。
 
 `_audit/preflight-reviews.json` 與 `_audit/preflight-settings.json` 保存唯讀預檢。
 `_audit/plan-check.json`、`review-push-2026-10-12T04-53-20-715Z.receipt.json`、
