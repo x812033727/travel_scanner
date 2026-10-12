@@ -73,7 +73,12 @@ v3 的外框位置（影片框 (180,390)／(1020,390) 各 720×405、訂閱圓�
 片尾外框改照這些位置畫（`SLOTS`，外框在元素外 5 px），站主看過樣片同意後安裝：
 全頻道 `mokaair-brand-package-v4-endscreen`、系列 `mokaair-sothatswhy-bookends-v3-endscreen`，
 outro.mp4 SHA `00eb9ccc8449fa8b47de0aab290b8aa7d55b09962c12a127e0f0c9c5f7834396`，聲音與時間同 v3。
-猶他那支再用 v4 重組並重新人工送審。
+猶他那支再用 v4 重組（16,128 格、-14.1 LUFS，final SHA 前綴 `ed292fecfd9a`）。第一次重送被
+審片檔案區擋下（507 `video_review_store_full`：19.999／20 GB，大宗是 DevDay 換版 2.0 GB、
+Codex 新聞審查 1.1 GB、戰役稽核 1.0 GB）。站主選擇把上限提高到 40 GB：主機 `.env` 加
+`VIDEO_REVIEW_MAX_TOTAL_BYTES=40000000000`（改前備份於 `/root/env-backup-<UTC>`，維持 mode 600），
+只重建 api 容器；`/health`、`/ready`、公開首頁 200。之後重送成功（manual pending）。
+之前那筆 v3 成片的待審被這次送審取代。
 
 新片上架：Studio「片尾」→「從影片匯入」選 `oxEtlA8GWas`，把三個元素的開始時間改成
 影片長度減 17 秒。
