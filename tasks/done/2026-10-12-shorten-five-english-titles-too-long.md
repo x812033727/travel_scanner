@@ -1,13 +1,13 @@
 ---
 id: 2026-10-12-shorten-five-english-titles-too-long
 title: Shorten five English titles too long for the captions tag
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-cc-captions
 claimed_at: 2026-10-12T06:45:47Z
 created_at: 2026-10-12T06:42:00Z
-completed_at:
+completed_at: 2026-10-12T07:08:54Z
 branch:
 depends_on: []
 scope:
@@ -27,7 +27,7 @@ was 97-100 characters, too long even for 「｜CC」. The owner asked for them t
 
 - [x] `video-youtube-caption-titles --set-title VIDEO_ID LANGUAGE TITLE` gives a title new words
       before the tag goes on; the audit log keeps the old title.
-- [ ] Run on the host with the five shortened titles below; the report after shows too_long 0.
+- [x] Run on the host with the five shortened titles below; the report after shows too_long 0.
 
 ## The five titles (each at most 86 characters, so 「｜CC Subtitles」 fits)
 
@@ -41,3 +41,6 @@ was 97-100 characters, too long even for 「｜CC」. The owner asked for them t
 
 - The approved upload packages still hold the long English titles; a later re-send from the card
   would send them again. Public videos are not re-sent by the site, so this is left as it is.
+- 2026-10-12 07:06Z: #1465 deployed (6eddf6990, verify 14/14); the run with the five `--set-title`
+  changed the five (250 units). The plain report after: to_change 0, too_long 0. Every video on
+  the channel but the OAuth demo now ends each title with its captions tag.
