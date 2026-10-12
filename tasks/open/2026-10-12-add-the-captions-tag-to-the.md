@@ -14,6 +14,10 @@ scope:
   - apps/api/app/video_youtube
   - apps/api/app/cli.py
   - apps/api/tests/test_video_youtube_retitle.py
+  - apps/api/tests/test_video_youtube.py
+  - tools/video/core/metadata.mjs
+  - tools/video/core/metadata.test.mjs
+  - tools/video/core/compilation.test.mjs
 ---
 
 # Add the captions tag to the titles of videos already on YouTube
@@ -41,3 +45,9 @@ after `--apply` shows `to_change: 0`.
   title is the owner's call.
 - The site's sender still refuses to touch a public video (sync.py); this command is the owner's
   one-off exception to that rule, written to AdminAuditLog as `video_youtube_title_captioned`.
+- 2026-10-12 first report on the host (after #1459): 35 videos, 18 to change, 16 too long (mostly
+  English localizations near 100 characters), and uZ9TlblvrCw already carried a hand-added
+  「｜ CC字幕」 in all four languages, which the first version would have tagged twice. The owner
+  chose: the short tag 「｜CC」 when the full one does not fit (for new uploads too), and skip the
+  OAuth verification demo 5qjK1zopOkI (`--skip`). `captioned`/`withCaptionTag` now replace any
+  trailing captions tag instead of adding beside it.

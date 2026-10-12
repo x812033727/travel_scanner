@@ -264,9 +264,12 @@ test("lint reports the translations' state by field and by episode slug, and a t
   assert.deepEqual(en1, ["1 chapters without a translated title (keyed by episode slug): wuxia-ep-3"]);
   const ja = lint.warnings.filter((warning) => warning.path === "i18n/ja.json").map((warning) => warning.message);
   assert.deepEqual(ja, ["not translated: title", "3 chapters without a translated title (keyed by episode slug): wuxia-ep-1, wuxia-ep-2, wuxia-ep-3"]);
-  // Counted with the captions tag package adds (「｜CC字幕」, 5 characters).
-  const long = { ...doc, youtube: { ...doc.youtube, title: "字".repeat(96) } };
-  assert.match(lintCompilation(long, {}).errors[0].message, /youtube\.title: 101 characters/);
+  // Counted with the captions tag package adds: 「｜CC」 when 「｜CC字幕」 does not fit, and the
+  // full tag again when neither does, so the message says how far over the title is.
+  const fits = { ...doc, youtube: { ...doc.youtube, title: "字".repeat(96) } };
+  assert.deepEqual(lintCompilation(fits, {}).errors, []);
+  const long = { ...doc, youtube: { ...doc.youtube, title: "字".repeat(98) } };
+  assert.match(lintCompilation(long, {}).errors[0].message, /youtube\.title: 103 characters/);
   const broken = lintCompilation({ ...doc, compilation: { ...doc.compilation, episodes: [] } }, {});
   assert.ok(broken.errors.length > 0);
 });

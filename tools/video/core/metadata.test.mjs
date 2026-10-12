@@ -182,4 +182,12 @@ test("every title ends with its language's captions tag, added once", () => {
   assert.equal(withCaptionTag("AI 模型怎麼挑｜CC字幕 ", "zh-TW"), "AI 模型怎麼挑｜CC字幕", "not twice");
   assert.equal(withCaptionTag("t", "fr"), "t｜CC Subtitles", "an untabled locale reads the English tag");
   assert.deepEqual(Object.keys(CAPTION_TAGS).sort(), ["en", "ja", "ko", "zh-TW"]);
+  // A tag added by hand, or in another language, is replaced rather than added to.
+  assert.equal(withCaptionTag("Area 51｜ CC字幕", "en"), "Area 51｜CC Subtitles");
+  assert.equal(withCaptionTag("51 區｜ CC字幕｜CC字幕", "zh-TW"), "51 區｜CC字幕");
+  assert.equal(withCaptionTag("t | CC Subtitles", "ja"), "t｜字幕付き");
+  // The short tag when the full one does not fit; the full one when neither does.
+  assert.equal(withCaptionTag("a".repeat(90), "en"), `${"a".repeat(90)}｜CC`);
+  assert.equal(withCaptionTag(`${"a".repeat(90)}｜CC`, "en"), `${"a".repeat(90)}｜CC`);
+  assert.equal(withCaptionTag("a".repeat(98), "en"), `${"a".repeat(98)}｜CC Subtitles`);
 });
