@@ -1,13 +1,13 @@
 ---
 id: 2026-10-12-produce-curio-h04-dyatlov-traditional-chinese
 title: Produce Curio H04 Dyatlov Traditional Chinese video
-status: open
+status: done
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-curio-h04
+claimed_at: 2026-10-12T09:02:15Z
 created_at: 2026-10-12T04:45:10Z
-completed_at:
+completed_at: 2026-10-12T09:17:12Z
 branch: codex/curio-h04-production-20261012
 depends_on: []
 scope:
@@ -24,8 +24,8 @@ scope:
 
 - [x] 三案企劃送審且所選大綱有當前雜湊核准。
 - [x] 繁中腳本經獨立事實與聽眾審稿，來源和圖片授權可追溯。
-- [ ] 正文與成片均達 8 分鐘，旁白、分鏡、字幕與成片通過既有關卡或站主核准。
-- [ ] 繁中上傳包完成、原生檢查通過，正式站讀回一致；未驗證項目據實記錄。
+- [x] 正文與成片均達 8 分鐘，旁白、分鏡、字幕與成片通過既有關卡或站主核准。
+- [x] 繁中上傳包完成、原生檢查通過，正式站讀回一致；未驗證項目據實記錄。
 
 ## Steps
 
@@ -34,7 +34,7 @@ scope:
 - [x] 刷新一手來源與圖片授權，完成三案並送審。
 - [x] 撰稿、lint、獨立事實查核與聽眾審稿。
 - [x] 合成旁白並逐句檢查、製作及審看插圖與字卡。
-- [ ] 合成、繁中 CC、QA、核准與上傳包驗證。
+- [x] 合成、繁中 CC、QA、核准與上傳包驗證。
 
 ## How to verify
 
@@ -55,6 +55,10 @@ scope:
 - 帳篷、弱層插圖小樣實看可保留；7張原創向量示意已實看並整合，舊足跡take保留。65張情境插圖主批次製作中；正式字卡及成片尚未完成。最新文件測試199 passed／0 failed。
 - 08:02 UTC來源更新為 `3f2fdb0864afaa199e994f47bb180c6662e2e46efcc74da2c307e4268353e5e0`：現為60張AI情境插圖、12張已實看的原創SVG、3張授權文書裁切。speech/timeline不變。13項材料性畫面問題以4張SVG及9張窄範圍修圖處理；完整候選及修正收據保留在外部 `_audit/science-repairs-integration/`。08:04文件檢查199 passed／0 failed。正式render、assemble、繁中字幕與final review接續完成。
 - 08:46:30 UTC assemble exit0；正文604.0667秒、成片ffprobe 612.100秒／18,362格，final SHA `262b2018a767cd7c1bdee9ff51cd54534e14e4199ec169ca9eb2b9a203ea3d86`。60/60 AI目前圖與12/12 SVG已有實看證據；57正式字卡狀態hash均與已審預覽一致，另實看37張代表轉場。獨立成片組裝稽核0材料性阻擋；保留一格容器時間差備註。
-- 繁中119 cues完成，`_audit/caption-wrap-applied/receipt.json`證明10處僅換行、文字／時間不變；原生QA 11/11、15個連結可讀，綁目前final SHA。證據索引與完整SHA見PRODUCTION.md。本次只勾媒體製作步驟，成片核准與上傳包DoD仍開放。
+- 繁中119 cues完成，`_audit/caption-wrap-applied/receipt.json`證明10處僅換行、文字／時間不變；原生QA 11/11、15個連結可讀，綁目前final SHA。證據索引與完整SHA見PRODUCTION.md。08:53階段僅勾媒體製作步驟；後續核准與交付見下。
 - 08:52:19 UTC正式站GET200讀回分鏡review `3ba806bc-0250-4f10-9b96-35ee1c664de6` approved（08:25:59 UTC），同一 `9fe70948…` content SHA；大綱／旁白亦approved。final push隨後exit0，final review `0825f526-228e-4ad5-98de-efd02394c4bc` 於08:52:37 UTC建立，綁目前final SHA；08:52:46原生pull exit3、08:52:49 GET200均確認成片pending。只等成片及三張保留圖審看，不重問語言／分鏡；上傳包DoD保留。
 - IAB連接逾時、Chrome使用者工作階段不可用，連續播放／完整聽音／播放器CC均 `NOT_RUN`。08:53:36本機播放器僅HTTP Range206及VTT200確認，UI結果未確認，不等於播放驗收。未做YouTube上傳、公開、merge或部署。
+- 站主核准本版成片（含三張保留圖），正式站final review `0825f526-228e-4ad5-98de-efd02394c4bc` 於09:03:54.162606 UTC approved；09:04:39.055566 UTC記錄只出繁中，09:04:48原生pull exit0。接受範圍與代理完整播放／聽音／CC `NOT_RUN` 分別記錄。
+- 原生package exit0、4/4；僅修交接metadata的disclosure_reason與UPLOAD.md分類／站主確認欄，保留所有source、媒體、CC、說明。當前metadata SHA `45d8d354cc945bd68ca0f942a6a5e450ec638f10b3488cefd95ba93e619a4819`；修正版publish review `b39ab8aa-875e-44e8-8356-bc2e9a2a7d35` 於09:11:44.404712 UTC approved，09:12:47原生pull exit0、09:12:51 GET200讀回一致。既有共用模板缺陷票在H03分支／PR #1456，本集未改共用工具。
+- 09:14:00 UTC主機原生consumer唯讀驗證exit0：consumer_accepted=true、expected_package_verified=true、ready_to_upload=true；exact final／metadata／caption／thumbnail核對一致，0 mutations／0 provider calls、youtube_video_id=null。只出繁中時languages=null為原生預期。獨立包稽核JSON SHA `684ede9aef213aa8510d7f40a2bd313c2f6c3edf6490187936e9a3814090f8ae`；完整證據索引在PRODUCTION.md。
+- 已交付六檔ZIP `curio-h04-upload-zh-TW.zip`，150,825,432 bytes，SHA `c0eaca334f25a4b71cee5646c1cb5ffb68a0a4d6021f6a8bb5dd4337f929c745`，每項SHA皆驗證。09:14正式站UI亦顯示「可以上架」與修正版metadata下載；consumer結構化exit0收據 `_audit/host-approved-package-consumer.json` SHA `bef1446e308e53d817a5f61f8e6618bd6c710f6a8d27c34ca85e7b96fd5e9d63`。製作／上傳包DoD完成；YouTube上傳、公開、merge及部署未執行。

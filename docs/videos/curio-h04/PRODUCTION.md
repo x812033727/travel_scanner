@@ -9,7 +9,7 @@
 - 碰撞檢查：H04 沒有 active task 或 open PR；正式站 H04 GET 回 404，沒有既有製作要接手。
 - 正式站頻道立場已讀回，`auto_pick_outline=true`。本次大綱套用 2、3、4、6、9。
 - `brief.md` 三案已送審，站主選定 A；正式站與原生 consumer 均讀回本次雜湊的核准。
-- 完整 A 案腳本、119句旁白、60張情境插圖、12張原創SVG、正式字卡、成片與119條繁中CC已完成；獨立事實／聽眾覆核及原生QA通過。成片實測612.100秒，正文604.0667秒。大綱、旁白及分鏡核准已由正式站讀回；成片核准與上傳包尚待完成，未宣稱完整播放、聽音或播放器CC驗收。
+- 完整 A 案腳本、119句旁白、60張情境插圖、12張原創SVG、正式字卡、成片與119條繁中CC已完成；獨立事實／聽眾覆核及原生QA通過。成片實測612.100秒，正文604.0667秒。站主已核准本版成片（含三張保留圖），維持只出繁中；上傳包已核准、主機consumer逐檔驗證通過，`ready_to_upload=true`，交付ZIP已逐項核對。YouTube尚未上傳，代理完整播放／聽音／播放器CC驗收仍為 `NOT_RUN`。
 
 ## 製作界線
 
@@ -150,7 +150,16 @@
 - `review/qa.json` 綁上述final SHA，11／11項通過、15個來源連結均可讀，7章節與目前時間軸一致；QA SHA `3b3d8635a0c7ebe6417c1c8d1c1f7a62bc306a048630cf6f4555f46b0c747e9b`。三張採用既有候選／小差異的 `slope-small-feature`、`snow-return-season`、`field-weather` 仍保留原生judge評語，供站主審看成片，不把accept-best改寫成judge通過。
 - 08:52:19 UTC GET200回讀 `_audit/reviews-2026-10-12T08-52-19.312Z.json`（SHA `5915d7100cb5f689790fe611f7b183fd37d0666dd977269d12faf5529adcbb49`）：分鏡review `3ba806bc-0250-4f10-9b96-35ee1c664de6` 已於 `2026-10-12T08:25:59.333080Z` 核准，content SHA仍為 `9fe70948cf7fe998acdca585eb843cacb6ae3c8062fa17c15c55f80e760756c8`。大綱及旁白亦approved；08:16的pending紀錄保留為歷史，不再重問分鏡核准。
 - `review-push-2026-10-12T08-48-44-112Z` 已exit0（receipt SHA `63cadbe89788e7d999fc383e70b0ff4bace8f2a334f93b252085c487e6933799`）。final review `0825f526-228e-4ad5-98de-efd02394c4bc` 於 `2026-10-12T08:52:37.919984Z` 建立，綁同一final SHA；08:52:46原生pull exit3等待成片核准，已記錄分鏡approved。`_audit/reviews-2026-10-12T08-52-49.761Z.json` GET200回讀final仍pending（SHA `fe04ded924de7f3118dbc4a2a444f13790b23e59b95157882bc674dd09646c33`）。本次只請站主審看成片及三張保留圖，不重問語言或分鏡。
-- 上傳包與其consumer回讀尚未完成。瀏覽器連續播放、播放器CC顯示及完整聽音均為 `NOT_RUN`：IAB連接逾時，Chrome使用者工作階段不可用。`_audit/local-player-availability.json` 於08:53:36 UTC僅驗證本機審片頁HTTP可用：MP4 Range206回傳0–63／150,713,503 bytes，VTT200且含WEBVTT；UI開啟結果未確認，不把HTTP／字幕檔存在當作播放器驗收。
+- 08:53階段上傳包與consumer尚未完成（完成紀錄見下一節）。瀏覽器連續播放、播放器CC顯示及完整聽音均為 `NOT_RUN`：IAB連接逾時，Chrome使用者工作階段不可用。`_audit/local-player-availability.json` 於08:53:36 UTC僅驗證本機審片頁HTTP可用：MP4 Range206回傳0–63／150,713,503 bytes，VTT200且含WEBVTT；UI開啟結果未確認，不把HTTP／字幕檔存在當作播放器驗收。
+
+### 成片核准與繁中上傳包交付
+
+- 站主回覆「核准本版成片（含三張保留圖）」；final review `0825f526-228e-4ad5-98de-efd02394c4bc` 於 `2026-10-12T09:03:54.162606Z` 核准同一成片SHA `262b2018a767cd7c1bdee9ff51cd54534e14e4199ec169ca9eb2b9a203ea3d86`。繁中選擇於09:04:39.055566 UTC落地，locales={}，原生 `review-pull-2026-10-12T09-04-48-805Z` exit0。`_audit/approved-traditional-chinese-choice/receipt.json`（SHA `8ef48b7c3e92bfa176424f385b67b92c6f64a7c483eee6b9e988cba3bb58285a`）保存回覆與正式站讀回；站主接受不改寫代理完整播放／聽音／CC的 `NOT_RUN`。
+- 原生 `package-2026-10-12T09-05-37-919Z` exit0、4／4，初版metadata SHA `57c4401e3559dce43e70ea8bc98ab89c8ff8b5ba0f4aded10ab9a878609f0d05`。其後只修metadata的 `disclosure_reason`，移除本片不存在的配樂說法；UPLOAD.md改為教育（27）、目標觀眾／合成揭露欄由站主確認。category_id=27、contains_synthetic_media=false及source、成片、字幕、縮圖、說明均不變；修正後metadata SHA `45d8d354cc945bd68ca0f942a6a5e450ec638f10b3488cefd95ba93e619a4819`，原生4／4再通過。收據 `_audit/upload-handoff-editorial-correction/receipt.json` SHA `93cefff7d9c1f4771e834fc73fb9673ee69fe4b1e7503a1c3c9204396bfd4e14`；共用模板未改，既有修正票仍在H03分支／PR #1456：`2026-10-12-derive-video-upload-guide-category-and`。
+- 修正後publish review `b39ab8aa-875e-44e8-8356-bc2e9a2a7d35` 於 `2026-10-12T09:11:44.404712Z` 核准metadata `45d8d354…`；`review-push-2026-10-12T09-11-29-792Z` 與 `review-pull-2026-10-12T09-12-47-385Z` 均exit0，`_audit/reviews-2026-10-12T09-12-51.113Z.json` GET200讀回approved、ready_to_upload=true。初版publish核准只保留為歷史，不拿它代替修正版核准。
+- 本機獨立 `_audit/upload-package-independent-audit.json`（SHA `684ede9aef213aa8510d7f40a2bd313c2f6c3edf6490187936e9a3814090f8ae`）通過。root另於09:14:00.539999 UTC執行主機原生consumer唯讀稽核，exit0；`_audit/host-approved-package-consumer.log`（SHA `e45e857722a4cb350bb5034ae24fd469d3055237096ad7bdf768a53a26dc884a`）回報consumer_accepted=true、expected_package_verified=true、ready_to_upload=true，逐一核對核准metadata、成片、繁中CC及縮圖SHA，0 mutations／0 provider calls。languages=null、choice={}符合只出繁中，youtube_video_id=null。
+- 同次consumer的結構化exit0收據為 `_audit/host-approved-package-consumer.json`，SHA `bef1446e308e53d817a5f61f8e6618bd6c710f6a8d27c34ca85e7b96fd5e9d63`。root於09:14實看正式站顯示「可以上架」及目前metadata `45d8d354…`下載；外部 `h04-ready-to-upload-safe.jpg` 保留已裁除帳號區域的畫面。這是交付UI回讀，仍不代表成片播放、聽音或CC顯示通過。
+- 交付 `curio-h04-upload-zh-TW.zip`，150,825,432 bytes，SHA `c0eaca334f25a4b71cee5646c1cb5ffb68a0a4d6021f6a8bb5dd4337f929c745`。`_audit/delivery-zip-receipt.json`（SHA `177c5afa53e327ce66a544c513504fbec8363c69eb710753367cc7769d06f67a`）證明六個項目全部SHA相符：成片、縮圖、metadata、繁中說明、繁中SRT及UPLOAD.md。製作與繁中上傳包已交付；YouTube上傳、公開、PR合併及部署均未執行。
 
 `_audit/preflight-reviews.json` 與 `_audit/preflight-settings.json` 保存唯讀預檢。
 `_audit/plan-check.json`、`review-push-2026-10-12T04-53-20-715Z.receipt.json`、
