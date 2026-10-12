@@ -38,8 +38,30 @@ YouTube 結束畫面（其他影片、訂閱），並加配樂。站主的決定
 - 畫面表檢查：圖示淡出後外框才淡入、色塊沒有方形邊、字標與原片尾同位置。
 - `node --test tools/video/branding/*.test.mjs` 10/10。
 
+## 正式站安裝（2026-10-12 10:35Z）
+
+站主選「現在安裝，重製先給清單」。兩包上傳到工作卷的 `_branding-incoming-20261012/`，
+主機上 SHA 與本機相同；以 `docker compose … exec -T video-worker` 先 dry-run 再
+`branding --install`（全頻道）與 `branding --series sothatswhy --install`。回讀
+`branding --json`：全頻道 `425e6800…`（150／630 格）、系列 `f707b018…`（357／630 格）。
+舊設定自動存入 `_branding/history/2026-10-12T10-35-01-804Z-a2762202….json` 與
+`_branding/series/sothatswhy/history/2026-10-12T10-35-03-022Z-047ff12a….json`。
+安裝時 worker 閒置、沒有全域 STOP、沒有部署暫停檔。
+
+## 既有成片盤點（同一套 `adoptionRefusal` 規則，唯讀）
+
+工作區有成片的 38 支：29 支已核准或已上傳、7 支是匯入／換版交接片（有上架包與 STOP），
+都不動。符合的 2 支：
+
+- `utah-stratos-data-center-9gw-who-said`：已重製。`assemble --adopt-branding` 16,128 格
+  （150＋15,348＋630）、-14.1 LUFS、TP -1；`checks.branding` 為 `425e6800…`；final SHA 前綴
+  `6f17e31dd1c5`。captions 重做、qa 9/11（未過的 pace 與 en/ja/ko 字幕是正文與語言的既有問題，
+  與片尾無關），`review-push --gate final --manual-review` 回報 pending，等站主在後台審。
+- `icann-ai-tld-agent-preorder-check`：工作區有 Codex 戰役 `production-resume-20261010-3603`
+  放的 STOP，不碰。它已 pin 舊版，之後一般重組不會自動換新片尾；那邊釋放後要明確
+  `--adopt-branding`。
+
 ## 尚未做
 
-本紀錄只是素材準備與站主核定，不代表正式站已安裝。正式安裝、還沒核准長片的重製與
-重新送審、第一次在 Studio 設結束畫面，都是之後各自的步驟，見票
-`tasks/open/2026-10-12-lengthen-the-channel-outro-to-20.md`。
+第一次在 Studio 設結束畫面（下一支上傳的新片），以及 youtube-video skill 上架清單的更新，
+見票 `tasks/open/2026-10-12-lengthen-the-channel-outro-to-20.md`。

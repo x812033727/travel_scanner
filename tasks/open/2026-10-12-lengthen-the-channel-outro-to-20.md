@@ -48,7 +48,7 @@ Owner decisions (2026-10-12):
       current 90-frame like/share/bell animation, then 510 frames of end-screen canvas) with the
       chosen music at -16 LUFS / TP -1, and writes channel and sothatswhy package manifests.
 - [x] The owner has watched and heard the sample and approved it (2026-10-12, 21-s version).
-- [ ] Both packages are installed on the production host; new long builds get the 20-s outro.
+- [x] Both packages are installed on the production host (2026-10-12 10:35Z); new long builds get the 21-s outro.
 - [ ] Unapproved long videos are rebuilt with --adopt-branding and sit in manual review.
 - [x] BRANDING.md and a branding-release record describe the new outro and the Studio end screen.
 - [ ] The youtube-video skill's publish checklist says to import the end screen (after task
@@ -59,8 +59,8 @@ Owner decisions (2026-10-12):
 - [x] Download the current v2-cc intro/outro and the sothatswhy intro from the host (read only).
 - [x] List Audio Library candidates (no attribution required, instrumental), owner picks one.
 - [x] Write outro.mjs + tests; render sample, contact sheet, joined preview.
-- [ ] Owner approval (done), then install (dry-run first) for channel and sothatswhy.
-- [ ] Inventory unapproved long videos on the host, show the owner the count, rebuild.
+- [x] Owner approval (done), then install (dry-run first) for channel and sothatswhy.
+- [x] Inventory unapproved long videos on the host, show the owner the count (2 of 38; ICANN left under a Codex STOP), rebuild Utah.
 - [ ] Set the end screen once in Studio on the next upload; document "import from video".
 
 ## How to verify
