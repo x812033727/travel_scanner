@@ -7,6 +7,7 @@
 // STORY_VOICE_STYLE is the text the owner pastes there (it sits in speechHash, so changing it
 // records every line again).
 import { CHANNEL_ACCENT } from "../core/accent.mjs";
+import { OPENING_CHAPTER_SECONDS } from "../core/lint.mjs";
 import { eachLine, spokenText } from "../core/schema.mjs";
 
 /** The pauses, in milliseconds, the register asks for around its beats (schema: at most MAX_PAUSE_MS). */
@@ -22,8 +23,25 @@ export const PAUSE_BEATS = Object.freeze({
 /** The marker of the register's turn: what the viewer believes, then what is so. */
 export const TWIST_MARKER = "你以為";
 
-/** Seconds the hook has to land in an illustrated video (core/cadence.mjs HOOK_SECONDS says the same). */
+/** Seconds by which the hook has said the number, date or name the title promises. */
 export const HOOK_SECONDS = 20;
+
+/**
+ * The opening chapter of a narrated video, slides and explainers and brand stories alike
+ * (script-writing.md §開場濃縮; owner, 2026-10-12): the condensation before the first real
+ * chapter, there so the viewer stays out of curiosity. core/lint.mjs warns outside its seconds.
+ */
+export const CONDENSATION_RULE = `The first chapter is the condensation: ${OPENING_CHAPTER_SECONDS[0]} to ${OPENING_CHAPTER_SECONDS[1]} seconds
+  before the first real chapter, there so curiosity keeps the viewer to the end. Its first
+  sentence is the hook (the viewer's own question or a counter-intuitive claim; no greeting, no
+  「今天要來跟大家分享」), and the number, date or name the title promises is said
+  within ${HOOK_SECONDS} seconds. Then two or three of the video's strongest moments, each from a
+  later chapter (the most surprising result, the biggest number, the turn, the conflict), each
+  concrete and told up to what happened, never why or how: that answer is its chapter's, and
+  every moment teased is answered there. They are told as events, never announced as a list or
+  in the chapters' order: no table of contents (「接下來分三段」「看完你會知道」「這集講 A、B，
+  還有 C」; lint reads the whole condensation for one). Its last sentence is the question the
+  second chapter opens on.`;
 
 // A writing-only route inside the existing slides format. This does not alter the storytelling
 // register, voice, schema, pause calculation or QA, and is not sent to drama or translation stages.
@@ -205,9 +223,9 @@ rules and a route's rules disagree, these win):
 - Chapters follow the questions a viewer asks, in the order they ask them: what do I get (the
   result first, on screen), how is it different from what I already use, how do I do it, how
   do I know it worked, how do I keep it or undo it. Each chapter answers the question the one
-  before it raised. The opening chapter is the result alone; the mechanism is the second
-  chapter. Tutorials share this order; what must differ from an earlier video is the
-  example, the opening and the sequence of cards. Name the tools the viewer already uses and give the rule for choosing between them
+  before it raised. The opening chapter is the condensation: the useful result, then the
+  main example's surprise told up to what happened; the mechanism is the second chapter.
+  Tutorials share this order; what must differ from an earlier video is the example, the opening and the sequence of cards. Name the tools the viewer already uses and give the rule for choosing between them
   in one sentence each (「一直重貼同一段指示，寫成 Skill」), and say plainly when the simpler
   tool is enough. When loading or installing grants access, the check that settles trust
   comes before it, wherever the loading step falls in that order. On the teaching route a
@@ -383,8 +401,7 @@ Latin-script words and proper names stay exactly as written, and the facts do no
 
 export const REGISTER_RULES = `
 The narration is TOLD, not explained (the storytelling register, docs/videos/ILLUSTRATED.md):
-- The first sentence is a counter-intuitive claim or the viewer's own question; the hook has landed
-  within ${HOOK_SECONDS} seconds. No greeting, no 「今天要來跟大家分享」, no table of contents.
+- ${CONDENSATION_RULE}
 - The first chapter turns at least once on 「${TWIST_MARKER}…其實…」: what the viewer believes, then
   what is so, with the fact that shows it. Later chapters may turn the same way when they have a
   real reversal; never fake one.

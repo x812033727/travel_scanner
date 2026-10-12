@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { cadenceProblems, cadenceSummary, HOOK_SECONDS, illustrationShare, MAX_PICTURE_SECONDS, MIN_ILLUSTRATION_SHARE, slideStates, TARGET_AVERAGE_SECONDS } from "./cadence.mjs";
+import { cadenceProblems, cadenceSummary, illustrationShare, MAX_PICTURE_SECONDS, MIN_ILLUSTRATION_SHARE, slideStates, TARGET_AVERAGE_SECONDS } from "./cadence.mjs";
 import { fixture, illustratedFixture } from "./fixtures/load.mjs";
 import { buildTimeline, SAMPLE_RATE } from "./timeline.mjs";
 
@@ -17,7 +17,6 @@ test("the constants are the ones docs/videos/ILLUSTRATED.md names", () => {
   assert.equal(MAX_PICTURE_SECONDS, 8);
   assert.equal(TARGET_AVERAGE_SECONDS, 6);
   assert.equal(MIN_ILLUSTRATION_SHARE, 0.5);
-  assert.equal(HOOK_SECONDS, 20);
 });
 
 test("a shot is one state; cards add a state per reveal; the share counts the shots' frames", () => {

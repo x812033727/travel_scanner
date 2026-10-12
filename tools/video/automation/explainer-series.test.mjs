@@ -32,13 +32,13 @@ test("the composed instructions of the existing explainer and discussion variant
     [["planner", "drama", "", "discuss"], "88d7f55145ecff3e0910f33dc056b86dd8464595e1c626720bae3a2ed0f2cab9"],
     [["writer", "drama", "", "discuss"], "06c8d01e814728158f137b681e9438de81f050654d641bf7d90116cce3c0c0a6"],
     // With a one-off's row, as the bible's planner and its discussion are called.
-    [["planner", "drama", "", "bible-explainer", "", ROW], "4dd130e4e03cd978f0deb6196800943984c05e694c6452368e3a12956c17a298"],
+    [["planner", "drama", "", "bible-explainer", "", ROW], "142ead24593afa9e9a7d1cdd0dc04d35271f4fb971f3bcede5b47f011cb65d56"],
     [["planner", "drama", "", "discuss", "", ROW], "29078b6d8256814a28b6e822caf71e1bcb111ba8997a95fedd7820bb5e5242f4"],
-    [["writer", "drama", "", "explainer", "", ROW], "28a178a5dcf7d5bc23923bd991e30dfaa951e866c7d996ccb08b2933f94c8d00"],
+    [["writer", "drama", "", "explainer", "", ROW], "3dcbd711a3498b83388a03e8a0a1dcd59745a4e0baf9e7550954df779ba2ff8f"],
     [["verifier", "drama", "", "explainer", "", ROW], "767589242dd2d5af85305cdcee2caf1b974e30e56990d18f4a275f8eda468b78"],
     [["writer", "drama", "", "discuss", "", ROW], "1f9670db394d4ce6d41c910803be70f921e821f64ebfdf12866f2f1db92d91c2"],
     // With the owner's standing instructions and the channel's stance.
-    [["writer", "drama", "旁白慢一點", "explainer", "1. 先講事實", null], "14c4507ad298ef3c96e13116e3230debc31d9ef7ad7b2e350fe4830a626f83ba"],
+    [["writer", "drama", "旁白慢一點", "explainer", "1. 先講事實", null], "5f996d776a8b2300785cb599ad8065ed1ef124a2a568b09bb5349dc1fa69a230"],
     // The story drama's planner, which a variant with no text of its own falls back to.
     [["planner", "drama"], "675c9213407aa771820dc4ae1eb837e33049f5659636135e06d84a624e7f9de9"],
   ];
@@ -108,16 +108,16 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // a new paid call beside that orphan. Hence the hard step before the deploy: no unfinished
 // one-off in a cute preset on the host (docs/videos/explainer-route/DESIGN.md 5.7 item 1).
 const SERIES_TEXT_PINS = {
-  "planner:bible-explainer-cartoon": [5808, "29f313dc579e1d0ba33c01ded86192e9481b304c4f19b503e0878ee7c3eeb42b"],
-  "writer:explainer-cartoon": [14561, "f87bfdd183ca67d36c3eeabada20d41f9e4acee95aa85375b12e986026958663"],
+  "planner:bible-explainer-cartoon": [5896, "bb04f9e2f9f7c57c06968507f9c3a50347f9915bea7d8b276da1f94faf05e31e"],
+  "writer:explainer-cartoon": [15572, "325a0daa0d71de7046a000af3f9768f309be5ff4c56b23c99c7cd312dc2c0f84"],
   "verifier:explainer-cartoon": [4305, "6f41570e5090987327a200b7790a6ecdec88c8a0350de2ca49b74cb4e7ca95db"],
-  "planner:discuss-cartoon": [6535, "55f72efd0699be1c7e516ac3968406d45a7ae422205c7a1fcc388e0d5151e416"],
-  "writer:discuss-cartoon": [13026, "18803a4b888d229458f277dd24411f1b014c1c20a8b8610130b0105966dff997"],
-  "planner:bible-explainer-mystery": [8524, "99a4ac0950d63243a888c0b262eb6bcb76813392dc8170d9a5c555a20051fca6"],
-  "writer:explainer-mystery": [16697, "25aac0342d921950426f19bfc6de8e79cbf211932ce84b82dca5f99187363d89"],
+  "planner:discuss-cartoon": [6623, "60e73a25efa69428a56402b768f61bcbab6ad2b63fc7683ed9379685a34c78bc"],
+  "writer:discuss-cartoon": [14037, "04e110c6945d37725f1e8d1976d51c2cf5e35895f043a4793574505d10279246"],
+  "planner:bible-explainer-mystery": [8612, "ec9d6cc560b8e62c5e6319ca3838f95b2522d5ca3d19387c29d95e7e54e81c37"],
+  "writer:explainer-mystery": [17710, "d626a47faed20d7a997c12c23e09fcc3d3d34869fb1d40459861d28f1e8c6446"],
   "verifier:explainer-mystery": [6194, "ab0adfcec0f59fc6c377523ba8272aa33cdb76f736af84e7de256f31b2784722"],
-  "planner:discuss-mystery": [9153, "01d86f18d726f153ccee4692c740cdd1a3906d7588fbc475eefd69b1059b2e9c"],
-  "writer:discuss-mystery": [15243, "7ff80d609a811b944e6fc678232db09ba02433438babd2d4056960e5914aa528"],
+  "planner:discuss-mystery": [9241, "0d851d533e7c629d88e50970fb7c5d718e6671ee6e8c59e8a9cb8424e2015592"],
+  "writer:discuss-mystery": [16256, "e22831463d14b0ab4df527dc899c247cb0b260d494ea3ec4396ab6eac87024ec"],
 };
 
 test("the ten texts of the two profiled series are the pinned ones, composed with no genre section", () => {

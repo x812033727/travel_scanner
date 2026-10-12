@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { dramaBrief, dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, fixtureBrief, fixtureLexicon, storyBrief, storyFixture, storySeries } from "./fixtures/load.mjs";
-import { announcesList, billableEstimate, briefSections, checkBrief, episodeScriptProblems, HEDGE_AFTER_UNWRITTEN, HEDGE_FAMILY, lintVideo, OPENING_SECONDS, OUTRO_SENTENCES, productionShotProblems, SOURCING_FAMILY, SOURCING_MAX, stancePoints, stanceProblems, templateSimilarity, thumbnailHeadlineProblems } from "./lint.mjs";
+import { announcesList, billableEstimate, briefSections, checkBrief, episodeScriptProblems, HEDGE_AFTER_UNWRITTEN, HEDGE_FAMILY, lintVideo, OPENING_CHAPTER_SECONDS, OPENING_SECONDS, OUTRO_SENTENCES, productionShotProblems, SOURCING_FAMILY, SOURCING_MAX, stancePoints, stanceProblems, templateSimilarity, thumbnailHeadlineProblems } from "./lint.mjs";
 import { captionsItem } from "../qa/checks.mjs";
 import { estimateTimeline, FPS } from "./timeline.mjs";
 import { eachLine, MIN_EPISODE_MINUTES, minEpisodeMinutes, textHash } from "./schema.mjs";
@@ -608,8 +608,19 @@ test("a shot cut from another shot's clip must end inside that clip, and the pro
 // The minimal example stretched to episode length, its outro still last. The script's shape
 // (episodeScriptProblems) is read only on a narrated video of MIN_EPISODE_MINUTES or more, so
 // the examples that run seconds stay the templates' shape and never a script's.
+// What the example's opening chapter needs to be an episode's condensation (OPENING_CHAPTER_SECONDS):
+// moments told up to what happened, left without their answer.
+const CONDENSATION = [
+  { id: "cd01", text: "同一個問題，有人多付了十倍的錢。" },
+  { id: "cd02", text: "有一家回答得快到讓人起疑。" },
+  { id: "cd03", text: "還有一個設定，關掉之後反而更準。" },
+  { id: "cd04", text: "最貴的那一個，也不是最好用的。" },
+  { id: "cd05", text: "三個答案，都跟你想的不一樣。" },
+  { id: "cd06", text: "那到底差在哪裡？" },
+];
 function stretched(doc = fixture()) {
   doc.target_minutes = [MIN_EPISODE_MINUTES, MIN_EPISODE_MINUTES + 4];
+  doc.scenes[0].lines.push(...structuredClone(CONDENSATION));
   let n = 0;
   while (estimateTimeline(doc).total_frames / FPS / 60 < MIN_EPISODE_MINUTES + 0.5) {
     const lines = Array.from({ length: 6 }, () => ({ id: `pad${(n++).toString(36).padStart(4, "0")}`, text: "這一句只是把範例拉長到一集的長度，數字留在正文裡。" }));
@@ -642,6 +653,21 @@ test("the script's shape is read on an episode, not on a fixture-length example:
   // The function itself has no length gate: the gate is lintVideo's.
   assert.equal(episodeScriptProblems(fixture(), estimateTimeline(fixture())).length, 2);
   assert.deepEqual(episodeScriptProblems(closed(fixture()), estimateTimeline(fixture())), []);
+});
+
+test("an episode's opening chapter is the condensation: 30 to 60 seconds, a warning on either side; the examples are not read", () => {
+  assert.deepEqual(OPENING_CHAPTER_SECONDS, [30, 60]);
+  const opening = (doc) => lintVideo(doc, context()).warnings.filter((warning) => /the opening chapter runs/.test(warning.message));
+  assert.deepEqual(opening(closed(stretched())), [], "the stretched example's condensation is within the window");
+  const short = closed(stretched());
+  short.scenes[0].lines = short.scenes[0].lines.slice(0, 2);
+  const [warning] = opening(short);
+  assert.equal(warning.path, "scenes[0]");
+  assert.match(warning.message, /^the opening chapter runs about 1\d s; it is the condensation, 30 to 60 s before the first real chapter/);
+  const long = closed(stretched());
+  long.scenes[0].lines.push(...Array.from({ length: 12 }, (_, index) => ({ id: `cx${index.toString(36).padStart(2, "0")}`, text: "這一句把濃縮拉得比一分鐘還長，觀眾等不到正片。" })));
+  assert.match(messages(opening(long)), /the opening chapter runs about \d+ s; it is the condensation/);
+  assert.deepEqual(opening(fixture()), [], "the example runs seconds");
 });
 
 test("the hedge family is counted across the whole narration: twice is a warning that names each phrase, once is the description's sentence", () => {
@@ -690,13 +716,14 @@ test("the bare 「不代表」 is the channel's rhetoric, not a hedge: two plain
   assert.match(messages(result.warnings), /and 不代表／不等於 in a sentence that says something was not written/);
 });
 
-test("a table of contents in the opening is a warning: the announced parts, 「看完你會知道」, or 第一，…第二，…最後 within the first 40 seconds", () => {
-  assert.equal(OPENING_SECONDS, 40);
+test("a table of contents in the opening is a warning: the announced parts, 「看完你會知道」, or 第一，…第二，…最後 within the first 60 seconds, the longest condensation", () => {
+  assert.equal(OPENING_SECONDS, 60);
+  assert.equal(OPENING_SECONDS, OPENING_CHAPTER_SECONDS[1]);
   const long = closed(stretched());
   long.scenes[0].lines[1].text = "接下來分三段，先講價格，再講額度，最後講怎麼選。";
   const announced = lintVideo(long, context());
   assert.deepEqual(announced.warnings.map((warning) => warning.path), ["scenes[0]"]);
-  assert.match(announced.warnings[0].message, /the first 40 s read a table of contents/);
+  assert.match(announced.warnings[0].message, /the first 60 s read a table of contents/);
   long.scenes[0].lines[1].text = "看完你會知道價格、額度和怎麼選。";
   assert.match(messages(lintVideo(long, context()).warnings), /table of contents/);
   // The ordinal run needs all three; two ordinals are a list.

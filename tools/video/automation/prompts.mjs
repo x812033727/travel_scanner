@@ -10,7 +10,7 @@ import path from "node:path";
 import { CHANNEL_ACCENT } from "../core/accent.mjs";
 import { isLongAnime } from "../core/anime-policy.mjs";
 import { SERIES_SEPARATOR, TAGS_MAX_CHARS, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_MAX_CHARS, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
-import { HEARD_RULES, REGISTER_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
+import { CONDENSATION_RULE, HEARD_RULES, REGISTER_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
 import { EXPLAINER_SERIES_INSTRUCTIONS } from "./explainer-series.mjs";
 import { STORY_INSTRUCTIONS } from "./story-prompts.mjs";
 
@@ -252,6 +252,7 @@ without a channel stance, propose one and mark it as a proposal the owner confir
 ### 選項 A：<angle in a few words>
 一行說明：<the angle and how it differs from the other options>
 開場鉤子：「<the opening line as spoken; the viewer's question or a counter-intuitive claim>」
+開場濃縮：<the two or three moments the 30 to 60 second condensation teases, each told up to what happened, and the chapter that answers each>
 For illustrated storytelling: 你以為／其實：「<what the viewer believes> → <what is so, with the fact that shows it>」
 For teaching cards: 案例與結果：「<the recurring example, useful outcome and evidence status>」
 then at least 3 chapters as teaching steps or story beats, with estimated seconds (each ≥ 10 s; 250 spoken characters
@@ -297,13 +298,12 @@ concrete object the video is about; the right third of the frame is left for it>
 For teaching cards without a real capture, omit both "shot" and "capture" in the thumb;
 never create an illustration just to fill the thumbnail field.
 - Line ids: take them from "line_ids" in order; never invent one.
-- One line is one spoken sentence, about 25 characters, at most 40. The first scene's first
-  sentence is the hook (the viewer's question or the counter-intuitive claim) and the viewer knows
-  what they will get within 20 seconds: by then a concrete number, date or proper noun has been
-  said, the one the title promises. No table of contents (「接下來分三段」「接下來我會告訴你」
-  「第一…第二…最後」「先…再…最後」「看完你會知道 A、B、C」「這集講 A、B，還有 C」; lint warns): the
-  chapters announce themselves. For illustrated storytelling, 「你以為…其實」 once in
-  the video, in the first chapter; a later reversal is told without the formula. Teaching cards
+- One line is one spoken sentence, about 25 characters, at most 40. The first chapter is the
+  condensation the register below describes, the brief's 開場濃縮: the hook first, the title's
+  number, date or proper noun within 20 seconds, then the moments told without their answers. No
+  table of contents (「接下來分三段」「接下來我會告訴你」「第一…第二…最後」「先…再…最後」「看完你會知道
+  A、B、C」「這集講 A、B，還有 C」; lint warns): the chapters announce themselves. For
+  illustrated storytelling, 「你以為…其實」 once in the video, in the first chapter; a later reversal is told without the formula. Teaching cards
   need no reversal: open on the example's useful outcome and identify its evidence status.
 - The voice's performance (docs/videos/ILLUSTRATED.md §聲音表演): "voice" also takes a
   "performance" plan of yours (zh-TW, at most 200 characters) saying how THIS video is told
@@ -1487,8 +1487,8 @@ not the text or its characters):
   note?}, source?} and "compare" {title?, left {heading, points 1-5}, right {heading, points 1-5}}
   for numbers and contrasts, "outro" {title, cta?, lines?} to close. A card's numbers are in
   claims.md like the narration's.
-- Structure: the hook within 20 seconds (the counter-intuitive question, no greeting); the
-  background; 3 or 4 chapters, one reason each ("chapter" on the first scene of each, ≥ 10 s,
+- Structure: ${CONDENSATION_RULE}
+  Then the background; 3 or 4 chapters, one reason each ("chapter" on the first scene of each, ≥ 10 s,
   named as a viewer would search); the one-sentence answer, said plainly; then the next question.
 - Lines: one spoken sentence each, about 25 characters, at most 40. Every Latin-letter word is in
   "lexicon" or lexicon_additions. A line takes an "emotion" cue (zh-TW, ≤ 80 chars) where the
@@ -1532,7 +1532,8 @@ body_md sections, in this order:
 ## 問題 the question as a viewer would type it, and what most people wrongly assume.
 ## 一句答案 the answer in one plain sentence a twelve-year-old understands.
 ## 原因 3 or 4 reasons, each one sentence with the source page that supports it.
-## 大綱 ONE outline: the opening hook as the first spoken line, the chapters (one reason each)
+## 大綱 ONE outline: the opening hook as the first spoken line, the condensation's two or three
+teased moments (each with the chapter that answers it), the chapters (one reason each)
 with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the whole aimed at
 "series.target_minutes", never under 8 minutes; over it is fine), each chapter's key pictures as "picture: what the illustration shows /
 camera", where a number card sits, and the closing (the answer, then the next question).
@@ -1572,6 +1573,7 @@ question; without a channel stance, propose one and mark it as a proposal the ow
 ### 選項 A：<angle in a few words>
 一行說明：<which reason leads, what the hook is, how it differs from the other options>
 開場鉤子：「<the first spoken line: the counter-intuitive question; no greeting>」
+開場濃縮：<the two or three moments the 30 to 60 second condensation teases, each told up to what happened, and the chapter that answers each>
 then the chapters with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the whole
 aimed at "target_minutes", never under 8 minutes; over it is fine), each chapter's key pictures as "picture: what the illustration shows /
 camera" and where a number card sits, and the closing (the answer, then the next question).

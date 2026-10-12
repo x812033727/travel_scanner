@@ -3,7 +3,7 @@
 // Errors block the pipeline (the CLI exits 1); warnings are for the writer and reviewer to judge.
 // The written-language list is the one the recorded route's video_kit.py uses, so a script that
 // passes one route's check does not fail the other's.
-import { cadenceProblems, HOOK_SECONDS as ILLUSTRATED_HOOK_SECONDS } from "./cadence.mjs";
+import { cadenceProblems } from "./cadence.mjs";
 import { craftProblems } from "./craft.mjs";
 import { cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
@@ -51,11 +51,12 @@ export const HEDGE_MAX = 1;
 export const SOURCING_FAMILY = ["文件寫", "文件說", "文件還寫", "文件也寫", "文件列", "部落格寫", "部落格說", "官方說", "官方表示", "根據官方"];
 export const SOURCING_MAX = 2;
 // How far into the narration (at the estimate's 250 characters a minute) a spoken table of
-// contents still counts as the opening (D07), and the sentence shapes it takes: the announced
+// contents still counts as the opening (D07; the longest condensation, OPENING_CHAPTER_SECONDS),
+// and the sentence shapes it takes: the announced
 // parts (「接下來分三段」「接下來我會告訴你」), the promise (「看完這支影片你會知道」), an ordinal
 // run (第一…第二…最後, 先…再…最後), and an announcement (這集／這支／接下來／帶你／跟我) that lists
 // its items (、, 還有, a counted 三步, a clause-initial 再 or 最後) in its own or the next sentence.
-export const OPENING_SECONDS = 40;
+export const OPENING_SECONDS = 60;
 const OPENING_TOC = [
   /接下來(?:我們|我)?(?:會|要|就)?(?:分|分成|有|講|說|看|用|帶你看|帶你|告訴你)[一二三四五六七八九十兩\d]+(?:段|個|部分|點|件|步|道|張|題)/,
   /接下來(?:我們|我)?(?:會|要|就)?(?:告訴你|帶你看|帶你)/,
@@ -90,7 +91,12 @@ export const SUBSCRIBE_WORD = "訂閱";
 export const SENTENCE_WARN = 40;
 // An English word counts two units, so 40 is twenty words; spoken English runs to about 25 before it needs a breath.
 export const SENTENCE_WARN_EN = 50;
-export const HOOK_SECONDS = 30;
+// The opening chapter of a narrated video (script-writing.md §開場濃縮; owner, 2026-10-12): before
+// the first real chapter, 30 to 60 seconds that condense the video's strongest moments into
+// questions left open, so the viewer stays to hear them answered. A drama with a cast keeps its
+// hook, the first chapter within DRAMA_HOOK_SECONDS.
+export const OPENING_CHAPTER_SECONDS = [30, 60];
+export const DRAMA_HOOK_SECONDS = 30;
 export const SIMILARITY_WARN = 0.8;
 // SSML markup Azure also bills for, per line (a <break/> and the sentence wrapper); an estimate.
 const MARKUP_PER_LINE = 30;
@@ -457,11 +463,15 @@ export function lintVideo(doc, context = {}) {
     if (problem.includes("at least")) error("scenes", problem);
     else warn("scenes", `${problem} (estimated; the real check runs on the synthesized timeline)`);
   }
-  const hookSeconds = pictures ? ILLUSTRATED_HOOK_SECONDS : HOOK_SECONDS;
-  if (chapters[0] && chapters[0].seconds > hookSeconds) {
-    warn("scenes[0]", `the opening chapter runs about ${Math.round(chapters[0].seconds)} s; the hook should land within ${hookSeconds} s`);
-  }
   const minutes = frameToSeconds(timeline.total_frames) / 60;
+  const opening = chapters[0]?.seconds;
+  if (opening !== undefined && hasCast(doc)) {
+    if (opening > DRAMA_HOOK_SECONDS) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; the hook should land within ${DRAMA_HOOK_SECONDS} s`);
+  } else if (opening !== undefined && !isCompilation(doc) && minutes >= MIN_EPISODE_MINUTES) {
+    // Read on an episode only, as episodeScriptProblems is: the examples run seconds.
+    const [shortest, longest] = OPENING_CHAPTER_SECONDS;
+    if (opening < shortest || opening > longest) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; it is the condensation, ${shortest} to ${longest} s before the first real chapter: the hook, then two or three of the video's strongest moments told up to what happened and left without their answer, then the question the next chapter opens on (script-writing.md §開場濃縮)`);
+  }
   const [low, high] = doc.target_minutes ?? DEFAULT_TARGET_MINUTES;
   // Every episode but a drama's runs at least eight minutes. The estimate reads 250 characters a
   // minute and the voice speaks about 300, so a script that clears it here can still come out
