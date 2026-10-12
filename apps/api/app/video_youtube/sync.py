@@ -58,6 +58,7 @@ from app.video_youtube.requests import (
     CAPTION_NAME,
     as_dict,
     caption_languages,
+    captioned,
     insert_body,
     language_key,
     locale_of_role,
@@ -332,7 +333,8 @@ async def request_sync(
         if payload.description is not None
         else str(package.metadata.get("description") or "")
     )
-    problem = text_problem(title, description)
+    # Checked as YouTube will get it: with the captions tag the request bodies add.
+    problem = text_problem(captioned(title, narration_language(package.metadata)), description)
     if problem:
         raise Refused(422, "video_youtube_text_invalid", problem)
     publish_at = payload.publish_at if payload.visibility == "scheduled" else None

@@ -13,8 +13,8 @@ import { createHash } from "node:crypto";
 
 import { parseSrt } from "./captions.mjs";
 import { SERIES_SLUG } from "./drama.mjs";
-import { checkYoutubeFields, composeDescription, DESCRIPTION_MAX_BYTES } from "./metadata.mjs";
-import { validateVideo } from "./schema.mjs";
+import { checkYoutubeFields, composeDescription, DESCRIPTION_MAX_BYTES, withCaptionTag } from "./metadata.mjs";
+import { narrationLocale, validateVideo } from "./schema.mjs";
 import { visualHash } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
 
@@ -381,7 +381,7 @@ export function lintCompilation(doc, context = {}) {
   const spec = doc.compilation;
   const timeline = estimatedCompilationTimeline(doc);
   const budget = descriptionWithinBudget(doc.youtube.description, timeline, {}, { sources: doc.sources ?? [], tags: doc.youtube.tags, assets: doc.assets ?? [], category: doc.category ?? null, series: doc.series ?? null, campaign: doc.slug });
-  for (const problem of checkYoutubeFields({ title: doc.youtube.title, description: budget.description, tags: doc.youtube.tags })) error("youtube", problem);
+  for (const problem of checkYoutubeFields({ title: withCaptionTag(doc.youtube.title, narrationLocale(doc)), description: budget.description, tags: doc.youtube.tags })) error("youtube", problem);
   if (budget.shortened) warn("youtube.description", `with every chapter titled the description would pass ${DESCRIPTION_MAX_BYTES} bytes, so the chapters fall back to 「第 N 集」`);
   if (doc.youtube.title === PLACEHOLDER_TITLE) warn("youtube.title", "still the placeholder; the worker plans the title, description and thumbnail first");
   if (!doc.thumbnail) warn("thumbnail", "no thumbnail yet: the worker adds one on an episode keyframe with the planned metadata");

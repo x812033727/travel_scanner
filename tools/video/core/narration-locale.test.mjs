@@ -112,7 +112,7 @@ test("the upload metadata of an English video defaults to English and localizes 
   const { metadata, problems } = composeMetadata({ doc, timeline, translations: { "zh-TW": { title: "哪個 AI 模型值得付錢？", description: "三個問題。" } } });
   assert.deepEqual(problems, []);
   assert.equal(metadata.default_language, "en");
-  assert.equal(metadata.title, doc.youtube.title);
+  assert.equal(metadata.title, `${doc.youtube.title}｜CC Subtitles`);
   assert.match(metadata.description, /📌 Chapters/);
   assert.deepEqual(Object.keys(metadata.localizations), ["zh-TW"]);
 });

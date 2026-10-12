@@ -4432,6 +4432,46 @@ PASS is DURATION_ONLY for the nine rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Captions tag in every YouTube title increment: 2 files (2026-10-12)
+
+Reviewer: `claude-pr-review-1455-captions-tag`. Author: `claude-opus-5-5-cc-captions`. Scope: DURATION_ONLY for the two changed bindings below, reviewed at `a73f088b5f7da0ef4886f0c308584dccda89230c` ("test(video): the tests and the language contract read the captions tag") on claude/video-title-cc-captions-660076, pull request #1455. The branch is three commits (`a0be2ca7f`, `7cb2834fe`, `a73f088b5`) on origin/main. The reviewer wrote none of them and edits only this report and review.json.
+
+Baseline: origin/main at `6b5370b6fd661a8733392b79c2458bea9c70a7fb` (#1401), the merge base of the branch. Neither side changed a receipt file, so the receipt the branch carries is main's, the "Explainer series prompts" increment above. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these two bindings. They are the only bound files among the 35 that differ between origin/main and the head; the other 106 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `tools/video/core/narration-locale.test.mjs`: `db350dea6710d783a076d3449685125649f161d7465a476971d3b691c36d5088` -> `fddf009b24c976c9319d139db24fa3312fd1d942f2b4d623876d86357464d2ce`.
+- `tools/video/review/sync.test.mjs`: `c5272cd5154eb2b19fc4a16124671a51d01689150ee3bb5c23dc8c29ccc45644` -> `9660b3554cd7d82ac70b2e99dd6e354733a61eabd610c4ee2364eff59bf5b0a8`.
+
+What the change is: every YouTube title ends with its language's captions tag, written with the full-width ｜ and no spaces (zh-TW 「｜CC字幕」, en 「｜CC Subtitles」, ja 「｜字幕付き」, ko 「｜CC 자막」). The worker adds it when it composes the package (tools/video/core/metadata.mjs, unbound) and the site adds it once more on the way to YouTube (apps/api/app/video_youtube, unbound). It is a title string; no length, minute, second or frame is read or written by it.
+
+Findings, the two bound tool tests (+2/−2 together):
+
+- `tools/video/core/narration-locale.test.mjs` (+1/−1): in the test of an English video's upload metadata, `assert.equal(metadata.title, doc.youtube.title)` becomes `` assert.equal(metadata.title, `${doc.youtube.title}｜CC Subtitles`) ``. The assertions on `default_language`, the chapters line of the description and the localization keys are unchanged.
+- `tools/video/review/sync.test.mjs` (+1/−1): in the test of the final review's titles, the expected map for the English fixture becomes `{ en: "Which AI model is worth paying for? Three questions｜CC Subtitles", "zh-TW": "zh-TW title｜CC字幕" }`. The zh-TW fixture's assertion (its own title alone) is unchanged.
+
+No assertion about minutes, seconds, frames, the 10-minute explainer default, the 8–20 explainer range, drama's 1–8, the 13-minute brand story, the 8-minute non-drama floor, the 480 s / 14,400-frame QA floor, the long-form anime policy, measured evidence or plans.json is added, removed or loosened. The lines matching minute, second, frame, duration, floor, target_minutes, 480 or 14400 number the same in each file at both revisions (narration-locale 3, sync 125), and none of the four changed lines matches any of them.
+
+The floor's own sites are not in this change. No file under tools/video/qa or tools/video/long-form differs between origin/main and the head, nor do core/duration.mjs, core/lint.mjs, core/schema.mjs, core/timeline.mjs or core/cadence.mjs.
+
+Ran (in the worktree at the head, Node on Windows):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the two stale bindings and exited 1;
+- `git diff origin/main -- tools/video/core/narration-locale.test.mjs tools/video/review/sync.test.mjs`, read whole, and `git diff --stat origin/main..HEAD`;
+- the hashing, with Node's crypto over the files' bytes, of both files at origin/main (equal to the bindings in the table) and at the head;
+- a scan of the added and removed lines of the two files for duration terms, which finds none;
+- `node --test` over the two files.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge the captions-tag rule as a product choice, the title length limits YouTube applies, or the unbound files of the change (core/metadata.mjs, package/metadata.mjs, core/compilation.mjs, apps/api/app/video_youtube and their tests, the language contract fixtures).
+- No API test, ruff, mypy, Vitest, lint or typecheck was run.
+- This increment binds the tree at the head only: a later commit or merge with main that changes either file, or either receipt file, needs its own follow-up. The 106 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -4508,7 +4548,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
 | `tools/video/core/lint.mjs` | `53a0134f9221a1b3db3f6bd8fe0ff6b36b05fb1f11d42da033a0668af04fb9bc` |
 | `tools/video/core/lint.test.mjs` | `13c9a41c13ed096b0cdc55a979b7b6405af67c4a07b1077181dcd80350050cd5` |
-| `tools/video/core/narration-locale.test.mjs` | `db350dea6710d783a076d3449685125649f161d7465a476971d3b691c36d5088` |
+| `tools/video/core/narration-locale.test.mjs` | `fddf009b24c976c9319d139db24fa3312fd1d942f2b4d623876d86357464d2ce` |
 | `tools/video/core/schema.mjs` | `0202f27c4aa2d59c64fccb0fd495033a58999809943935c7004fc45d183ac94b` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
 | `tools/video/core/screenplay.test.mjs` | `fe2765c5f2fa42d7cfe5a2e542063c32c4349b585c649552a31b2088aaaec180` |
@@ -4539,7 +4579,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
 | `tools/video/qa/qa.test.mjs` | `6bf6455a5077e93a7473a3c6720e53dfb77d3a8433317de0b6dbabc933de0d16` |
 | `tools/video/review/sync.mjs` | `6f8ea2820b3eda1bc85e58e94ce11902d7fe2c7d590f10a1e73fe67200d33851` |
-| `tools/video/review/sync.test.mjs` | `c5272cd5154eb2b19fc4a16124671a51d01689150ee3bb5c23dc8c29ccc45644` |
+| `tools/video/review/sync.test.mjs` | `9660b3554cd7d82ac70b2e99dd6e354733a61eabd610c4ee2364eff59bf5b0a8` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
