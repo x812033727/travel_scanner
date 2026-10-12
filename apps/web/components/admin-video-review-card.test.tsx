@@ -1,6 +1,6 @@
 import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { chosenLanguagesComplete, publishState, PublishPill, ReviewCard, UploadPackage, type ProjectSummary, type Review } from "./admin-video-review-card";
+import { chosenLanguagesComplete, finalApproved, publishState, PublishPill, ReviewCard, UploadPackage, type ProjectSummary, type Review } from "./admin-video-review-card";
 
 // Ticket 2026-09-28-admin-video-review-the-owner-s: three final-cut approvals did not register on
 // 2026-09-28 until the owner was sent the exact titles. These pin down what the card itself does
@@ -61,8 +61,13 @@ describe("language results and upload package readiness", () => {
     expect(publishState({ ...complete, ready_to_upload: true, publish_approved_at: "2026-10-04T10:00:00Z" })).toBe("ready");
     expect(publishState({ ...complete, dropped_at: "2026-10-04T10:00:00Z" })).toBeNull();
     expect(publishState({ ...complete, shorts_line: "cut" })).toBeNull();
-    expect(publishState({ ...complete, youtube_video_id: "abcdefghijk" })).toBe("published");
+    expect(publishState({ ...complete, youtube_video_id: "abcdefghijk" })).toBe("linked");
+    render(<PublishPill project={{ ...complete, youtube_video_id: "abcdefghijk" }} />);
+    expect(screen.getByText("已連結，未記錄公開時間")).toBeTruthy();
     expect(publishState({ ...complete, youtube_video_id: "abcdefghijk", youtube_publish_at: "2999-01-01T00:00:00Z" })).toBe("scheduled");
+    expect(publishState({ ...complete, youtube_video_id: "abcdefghijk", youtube_publish_at: "2026-01-01T00:00:00Z" }, Date.parse("2026-10-13T00:00:00Z"))).toBe("published");
+    expect(finalApproved({ ...complete, youtube_video_id: "abcdefghijk", reviews: [{ ...final, payload: { ...final.payload, imported: { captions: true } }, status: "pending" }] })).toBe(false);
+    expect(finalApproved({ ...complete, youtube_video_id: "abcdefghijk", reviews: [{ ...final, payload: { ...final.payload, imported: { captions: true } }, status: "pending" }, { ...final, status: "approved" }] })).toBe(true);
   });
 });
 

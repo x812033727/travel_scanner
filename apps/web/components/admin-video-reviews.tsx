@@ -396,6 +396,9 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
     : undefined);
   const retired = project ? mp4Retired(project) : false;
   const state = project ? publishState(project) : null;
+  const pendingFinal = Boolean(project?.reviews.some((review) => review.gate === "final" && review.status === "pending"
+    && review.payload.imported && typeof review.payload.imported === "object" && !Array.isArray(review.payload.imported)
+    && /^[0-9a-f]{64}$/i.test(review.content_sha256) && review.files.some((file) => file.role === "preview")));
   // A Short is nine by sixteen, and its languages are the Shorts settings', not this video's.
   const short = Boolean(project?.shorts_line);
   // The owner may upload the final cut as private as soon as the upload confirmation is approved;
@@ -416,7 +419,7 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
         {project.youtube_video_id && <p className="text-sm">
           {t("youtube", { id: project.youtube_video_id })}
           {project.youtube_publish_at && ` · ${t("scheduledAt", { time: when(project.youtube_publish_at) })}`}
-          <span className="block text-[var(--muted)]">{retired ? t("mp4Retired") : t("previewsGone")}</span>
+          {state !== "linked" && project.publish_approved_at && <span className="block text-[var(--muted)]">{retired ? t("mp4Retired") : t("previewsGone")}</span>}
         </p>}
         {project.dropped_at && <p role="status" className="rounded-xl bg-[var(--paper)] p-3 text-sm leading-6">
           <strong>{t("droppedAt", { time: when(project.dropped_at) })}</strong>
@@ -432,7 +435,9 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
       <AdminVideoRenewal key={project.slug} project={project} canManage={manage.allowed} onSubmitted={load} />
       {project.youtube_sync && <YoutubeSyncPanel slug={slug} sync={project.youtube_sync} canManage={manage.allowed && !dropped} onChange={load} />}
       {readyToUpload(project) && manage.allowed && <SendToYoutube slug={slug} confirmation={approvedPackage(project.reviews)} connection={connection} sync={project.youtube_sync} mp4Gone={retired} onSent={load} />}
-      {project.youtube_video_id && !dropped && manage.allowed && connection?.linked && !syncRunning(project.youtube_sync) && <details className="rounded-2xl border border-[var(--line)] p-4">
+      {pendingFinal && !dropped && !short && !project.youtube_video_id && !approvedPackage(project.reviews) && !syncRunning(project.youtube_sync) && manage.allowed
+        && <UploadedForm slug={slug} onLinked={load} privateOnly />}
+      {project.youtube_video_id && !dropped && manage.allowed && connection?.linked && approvedPackage(project.reviews) && !syncRunning(project.youtube_sync) && <details className="rounded-2xl border border-[var(--line)] p-4">
         <summary className="cursor-pointer font-bold">{ty("resendTitle")}</summary>
         <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{ty("resendHelp")}</p>
         <div className="mt-3"><YoutubePublishForm key={project.youtube_sync?.finished_at ?? "resend"} slug={slug} review={approvedPackage(project.reviews)} connection={connection} canUpload={false} videoId={project.youtube_video_id} previous={project.youtube_sync?.request ?? null} onSent={load} /></div>

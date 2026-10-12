@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { act, cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { BROWSE_STATES } from "./admin-video-browser";
@@ -552,6 +552,78 @@ describe("AdminVideoReviews", () => {
     const row = [...panel.querySelectorAll("tbody tr")][0].textContent ?? "";
     expect(row.match(/已完成/g)).toHaveLength(2);
     expect(row).toContain("尚未完成");
+  });
+
+  it("links a pending imported final to its private Studio video without approving or syncing it", async () => {
+    const slug = "curio-h02-recut-20261012";
+    const videoId = "4gJhMFqYqC4";
+    const pendingFinal = {
+      ...final, status: "pending" as const,
+      payload: { ...final.payload, imported: { note: "Standalone Curio recut", captions: true } },
+      files: [...final.files, { role: "thumbnail", sha256: "d".repeat(64), size: 120_000, content_type: "image/jpeg" },
+        { role: "captions_zh-TW", sha256: "e".repeat(64), size: 12_000, content_type: "text/plain" }],
+    };
+    const project = { ...summary, slug, title: "羅阿諾克新版", pending: 1, ready_to_upload: false, reviews: [pendingFinal] };
+    const posts: Array<{ url: string; body: unknown }> = [];
+    let linked = false;
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (init?.method === "POST") {
+        posts.push({ url, body: JSON.parse(String(init.body)) });
+        linked = true;
+        return Promise.resolve(Response.json({ ...project, youtube_video_id: videoId }));
+      }
+      return Promise.resolve(Response.json(url.endsWith("/admin/video-youtube")
+        ? { linked: true, channel_title: "Mokaair" }
+        : { ...project, youtube_video_id: linked ? videoId : null }));
+    }));
+    window.history.replaceState(null, "", `/?video=${slug}`);
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const form = await screen.findByRole("form", { name: "記錄待審新版的私人影片" });
+    expect(form.textContent).toContain("不核准成片，也不修改 YouTube 設定");
+    expect(within(form).queryByLabelText("上架時間（選填）")).toBeNull();
+    const record = within(form).getByRole("button", { name: "記錄私人影片連結" });
+    expect(record).toHaveProperty("disabled", true);
+    fireEvent.change(within(form).getByRole("textbox", { name: "YouTube 網址或影片 id" }), { target: { value: `https://studio.youtube.com/video/${videoId}/edit` } });
+    fireEvent.click(record);
+    await waitFor(() => expect(posts).toHaveLength(1));
+    expect(posts).toEqual([{ url: `/api/travel/admin/videos/${slug}/youtube`, body: { url: `https://studio.youtube.com/video/${videoId}/edit`, publish_at: null, private_only: true } }]);
+    await screen.findByText("已連結，未記錄公開時間");
+    expect(screen.queryByRole("form", { name: "記錄待審新版的私人影片" })).toBeNull();
+    expect(screen.queryByText("重新送到 YouTube")).toBeNull();
+    expect(screen.queryByText(/已上架。成片 mp4 在上架滿 7 天後/)).toBeNull();
+    expect(screen.getByText("成片核准後可以選語言。")).toBeTruthy();
+    expect(screen.getByRole("article", { name: "成片" })).toBeTruthy();
+    expect(within(screen.getByRole("article", { name: "成片" })).getByRole("button", { name: "核准" })).toBeTruthy();
+  });
+
+  it("hides early Studio linking without manager access, a pending final preview, or a safe unlinked project", async () => {
+    const pendingFinal = { ...final, payload: { ...final.payload, imported: { note: "Standalone Curio recut", captions: true } },
+      files: [...final.files, { role: "thumbnail", sha256: "d".repeat(64), size: 120_000, content_type: "image/jpeg" }] };
+    const base = { ...summary, slug: "pending-recut", pending: 1, ready_to_upload: false, reviews: [pendingFinal] };
+    const cases = [
+      { name: "reader", capabilities: ["content.read"], project: base },
+      { name: "not imported", capabilities: ["content.read", "content.manage"], project: { ...base, reviews: [final] } },
+      { name: "missing preview", capabilities: ["content.read", "content.manage"], project: { ...base, reviews: [{ ...final, files: [] }] } },
+      { name: "bad content hash", capabilities: ["content.read", "content.manage"], project: { ...base, reviews: [{ ...pendingFinal, content_sha256: "invalid" }] } },
+      { name: "approved upload package exists", capabilities: ["content.read", "content.manage"], project: { ...base, reviews: [pendingFinal, { ...pendingFinal, gate: "publish", status: "approved" }] } },
+      { name: "already linked", capabilities: ["content.read", "content.manage"], project: { ...base, youtube_video_id: "4gJhMFqYqC4" } },
+      { name: "dropped", capabilities: ["content.read", "content.manage"], project: { ...base, dropped_at: "2026-10-12T00:00:00Z" } },
+      { name: "active sync", capabilities: ["content.read", "content.manage"], project: { ...base, youtube_sync: { status: "running", interrupted: false, request: {}, steps: [], progress: null, error: null, started_at: null, finished_at: null } } },
+    ];
+    for (const { name, capabilities, project } of cases) {
+      const posts: string[] = [];
+      vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+        if (init?.method === "POST") posts.push(String(input));
+        return Promise.resolve(Response.json(project));
+      }));
+      window.history.replaceState(null, "", "/?video=pending-recut");
+      render(<AdminOperationsProvider bootstrap={bootstrap(capabilities)}><AdminVideoReviews /></AdminOperationsProvider>);
+      await screen.findByRole("heading", { name: project.title });
+      expect(screen.queryByRole("form", { name: "記錄待審新版的私人影片" }), name).toBeNull();
+      expect(posts, name).toEqual([]);
+      cleanup();
+    }
   });
 
   it("keeps dramas out of the needs-you group but lists them in the catalog, and shows a one-off drama as a one-episode series on the drama tab", async () => {
@@ -1228,6 +1300,7 @@ describe("AdminVideoReviews", () => {
     expect(window.location.search).toBe("");
 
     const states = screen.getByRole("group", { name: "狀態" });
+    expect(within(states).getByRole("button", { name: /^已連結 YouTube/ })).toBeTruthy();
     fireEvent.click(within(states).getByRole("button", { name: /^已放棄/ }));
     expect(window.location.search).toBe("?state=dropped");
     await waitFor(() => expect(tableRows(screen.getByRole("table", { name: "全部影片" }))).toEqual([expect.stringContaining("舊教學")]));

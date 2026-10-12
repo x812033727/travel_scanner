@@ -450,3 +450,6 @@ class YoutubeIn(BaseModel):
 
     url: str = Field(min_length=1, max_length=500)
     publish_at: AwareDatetime | None = None
+    # The pending-imported-final entry asks the backend to verify Studio privacy before linking.
+    # The ordinary manual-link form keeps its historical publication-time behavior.
+    private_only: bool = False
