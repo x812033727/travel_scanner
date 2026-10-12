@@ -36,17 +36,21 @@ const UNDER_GAIN = 0.4;
 export const PALETTE = { cream: "F6F0E4", teal: [12, 108, 102], brown: [106, 73, 56] };
 // Measured on the last frame of mokaair-brand-package-v2-cc's outro: the wordmark stays where it was.
 export const LOGO = { x: 740, y: 225, w: 440, h: 110 };
-// Studio places elements freely; these outlines show the owner where they go. Two 16:9 videos
-// side by side under the wordmark, the round subscribe button centred under them.
+// Where the end-screen elements sit in YouTube Studio, measured in its editor on 2026-10-12 and
+// saved on oxEtlA8GWas as the template later uploads import: one row under the wordmark, video |
+// subscribe | video. Studio keeps elements inside a safe area (about y 140-912 at 1080p) and the
+// subscribe button has one fixed size, so the outlines follow Studio, not the other way round.
 export const SLOTS = {
-  videos: [{ x: 180, y: 390, w: 720, h: 405 }, { x: 1020, y: 390, w: 720, h: 405 }],
-  subscribe: { cx: 960, cy: 920, r: 95 },
-  radius: 18,
+  videos: [{ x: 109, y: 371, w: 619, h: 349 }, { x: 1190, y: 371, w: 619, h: 349 }],
+  subscribe: { cx: 960, cy: 550, r: 148 },
+  radius: 12,
 };
+// The outline sits just outside each element, so a thin frame stays visible around the cards.
+const OUTLINE_GAP = 5;
 
 export const PACKAGES = {
-  channel: { id: "mokaair-brand-package-v3-endscreen", introFlag: "intro" },
-  sothatswhy: { id: "mokaair-sothatswhy-bookends-v2-endscreen", introFlag: "series-intro" },
+  channel: { id: "mokaair-brand-package-v4-endscreen", introFlag: "intro" },
+  sothatswhy: { id: "mokaair-sothatswhy-bookends-v3-endscreen", introFlag: "series-intro" },
 };
 
 /** Signed distance to the slots, as an ffmpeg expression in X and Y (negative inside). */
@@ -81,7 +85,7 @@ export function layerPlan(dir) {
   const blob = (peak) => `${peak}*max(exp(-(pow(X-450,2)+pow(Y-450,2))/${sigma2})-${Math.exp(-450 * 450 / sigma2).toFixed(5)},0)`;
   return {
     fill: layerArgs({ width: 1920, height: 1080, rgb: [255, 255, 255], alpha: `90*clip(0.5-${d},0,1)`, outFile: path.join(dir, "fill.png") }),
-    stroke: layerArgs({ width: 1920, height: 1080, rgb: PALETTE.teal, alpha: `150*clip(2-abs(${d}+1.5),0,1)`, outFile: path.join(dir, "stroke.png") }),
+    stroke: layerArgs({ width: 1920, height: 1080, rgb: PALETTE.teal, alpha: `150*clip(2-abs(${d}-${OUTLINE_GAP}),0,1)`, outFile: path.join(dir, "stroke.png") }),
     teal: layerArgs({ width: 900, height: 900, rgb: PALETTE.teal, alpha: blob(46), outFile: path.join(dir, "blob-teal.png") }),
     brown: layerArgs({ width: 900, height: 900, rgb: PALETTE.brown, alpha: blob(34), outFile: path.join(dir, "blob-brown.png") }),
   };

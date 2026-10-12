@@ -22,12 +22,17 @@ test("the outro is 21 seconds: a held pause, the like/share/bell clip, then the 
 test("the slot outlines are a distance field over both videos and the subscribe circle", () => {
   const distance = slotDistance();
   assert.equal(distance.match(/hypot/g).length, 3);
-  assert.match(distance, /hypot\(X-960,Y-920\)-95/);
-  // The two videos sit side by side, 16:9, and the circle sits under the gap between them.
-  for (const video of SLOTS.videos) assert.equal(video.w * 9, video.h * 16);
-  assert.ok(SLOTS.videos[0].x + SLOTS.videos[0].w < SLOTS.subscribe.cx && SLOTS.subscribe.cx < SLOTS.videos[1].x + SLOTS.videos[1].w);
-  assert.ok(SLOTS.subscribe.cy - SLOTS.subscribe.r > SLOTS.videos[0].y + SLOTS.videos[0].h);
-  assert.ok(SLOTS.subscribe.cy + SLOTS.subscribe.r <= 1080);
+  assert.match(distance, /hypot\(X-960,Y-550\)-148/);
+  // One row, as saved in Studio: video | subscribe | video, symmetric about the centre, inside
+  // Studio's safe area, and clear of the wordmark above.
+  const [left, right] = SLOTS.videos;
+  const { cx, cy, r } = SLOTS.subscribe;
+  for (const video of SLOTS.videos) assert.ok(Math.abs(video.w / video.h - 16 / 9) < 0.01);
+  // Dragged in Studio's quarter-size preview, so symmetric to within a few pixels.
+  assert.ok(Math.abs(left.x + left.w / 2 + right.x + right.w / 2 - 2 * cx) <= 4);
+  assert.ok(left.x + left.w < cx - r && cx + r < right.x);
+  for (const top of [left.y, cy - r]) assert.ok(top > 335 && top >= 140);
+  for (const bottom of [left.y + left.h, cy + r]) assert.ok(bottom <= 912);
 });
 
 test("the music plays under the sound effects, rises after them and fades out at the end", () => {

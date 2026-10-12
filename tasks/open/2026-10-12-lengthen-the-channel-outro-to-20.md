@@ -8,7 +8,7 @@ owner: claude-opus-5-5-outro
 claimed_at: 2026-10-12T09:30:07Z
 created_at: 2026-10-12T09:29:07Z
 completed_at:
-branch:
+branch: claude/video-outro-studio-slots
 depends_on: []
 scope:
   - tools/video/branding/outro.mjs
@@ -61,7 +61,9 @@ Owner decisions (2026-10-12):
 - [x] Write outro.mjs + tests; render sample, contact sheet, joined preview.
 - [x] Owner approval (done), then install (dry-run first) for channel and sothatswhy.
 - [x] Inventory unapproved long videos on the host, show the owner the count (2 of 38; ICANN left under a Codex STOP), rebuild Utah.
-- [ ] Set the end screen once in Studio on the next upload; document "import from video".
+- [x] Set the end screen once in Studio; document "import from video". Saved on oxEtlA8GWas
+      (last 5 s); the v3 outlines did not fit Studio's safe area, so the outro was redrawn to
+      Studio's measured positions (v4 packages) and reinstalled.
 
 ## How to verify
 
