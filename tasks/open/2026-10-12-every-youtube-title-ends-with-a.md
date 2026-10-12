@@ -19,6 +19,7 @@ scope:
   - tools/video/package/metadata.test.mjs
   - apps/api/app/video_youtube
   - apps/api/tests
+  - apps/web/components/admin-video-slides-requests.test.tsx
   - tools/video/core/narration-locale.test.mjs
   - tools/video/review/sync.test.mjs
   - docs/videos/long-form/review.json
@@ -61,3 +62,6 @@ so a viewer sees in search results that the video has captions.
   still checks the bare title, so a title within 7 characters of 100 passes lint and is refused at
   package. A follow-up with a DURATION_ONLY review could count the tag in lint too.
 - Localizations already on YouTube that the package does not carry are sent back untouched.
+- 2026-10-12: CI went red on `admin-video-slides-requests.test.tsx` "withdraws a queued request": a
+  date time bomb (its cancelled_at 2026-10-05T03:00Z fell outside the one-week window at
+  2026-10-12T03:00Z), red on main too. Fixed here by pinning the test's clock.
