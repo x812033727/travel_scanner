@@ -9,7 +9,8 @@ now and only those titles changed. A title the tag would push past YouTube's 100
 reported and that title left as it is, the video's other titles tagged all the same:
 shortening a title is the owner's call (2026-10-12: skip the one language, not the video).
 Nothing is sent unless ``apply``, and ``limit`` caps the updates of one run so the daily quota
-(10,000) stays for the rest.
+(10,000) stays for the rest. ``rename`` gives a title new words before it is tagged: how the
+owner had the five English titles too long for any tag shortened on 2026-10-12.
 """
 
 from __future__ import annotations
@@ -55,13 +56,15 @@ def _tagged(title: str, language: str) -> str:
     return new if len(new) <= TITLE_MAX_CHARS else title
 
 
-def plan(video: dict[str, Any]) -> dict[str, Any]:
+def plan(video: dict[str, Any], rename: dict[str, str] | None = None) -> dict[str, Any]:
     """What tagging ``video`` changes: {id, privacy, titles: {language: [old, new]}, problem}.
 
     ``titles`` holds the titles that change and is empty when each already ends with its tag or
-    cannot take one; ``problem`` names the titles that cannot. A video without a default
-    language is the channel's zh-TW, as every video was before the dubs.
+    cannot take one; ``problem`` names the titles that cannot. ``rename`` ({language: words})
+    replaces a title's words before the tag goes on. A video without a default language is the
+    channel's zh-TW, as every video was before the dubs.
     """
+    rename = rename or {}
     snippet = as_dict(video.get("snippet"))
     language = snippet.get("defaultLanguage") or DEFAULT_LANGUAGE
     titles: dict[str, list[str]] = {}
@@ -71,10 +74,12 @@ def plan(video: dict[str, Any]) -> dict[str, Any]:
         (str(locale), as_dict(entry).get("title"))
         for locale, entry in as_dict(video.get("localizations")).items()
     ]
+    for locale in sorted(set(rename) - {locale for locale, _title in candidates}):
+        problems.append(f"{locale} 不是這支影片的語言，沒有改")
     for locale, title in candidates:
         if not isinstance(title, str) or not title.strip():
             continue
-        new = captioned(title, tag_language(locale))
+        new = captioned(rename.get(locale, title), tag_language(locale))
         if len(new) > TITLE_MAX_CHARS:
             problems.append(f"{locale} 加標記後 {len(new)} 字，超過 {TITLE_MAX_CHARS}，沒有改")
         elif new != title:
@@ -87,8 +92,9 @@ def plan(video: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def update_body(video: dict[str, Any]) -> dict[str, Any]:
-    """The videos.update body: everything ``video`` has now, every title with its tag.
+def update_body(video: dict[str, Any], rename: dict[str, str] | None = None) -> dict[str, Any]:
+    """The videos.update body: everything ``video`` has now, every title with its tag (in the
+    words ``rename`` gives it, when it gives one).
 
     videos.update empties any property of a sent part that the body leaves out, so the snippet,
     the status and the localizations are carried over whole (defaultAudioLanguage included).
@@ -96,14 +102,15 @@ def update_body(video: dict[str, Any]) -> dict[str, Any]:
     snippet_now = as_dict(video.get("snippet"))
     status_now = as_dict(video.get("status"))
     language = str(snippet_now.get("defaultLanguage") or DEFAULT_LANGUAGE)
+    rename = rename or {}
     keep = (*SNIPPET_FIELDS, "defaultAudioLanguage")
     snippet = {key: copy.deepcopy(snippet_now[key]) for key in keep if key in snippet_now}
     if isinstance(snippet.get("title"), str):
-        snippet["title"] = _tagged(snippet["title"], language)
+        snippet["title"] = _tagged(rename.get(language, snippet["title"]), language)
     localizations = copy.deepcopy(as_dict(video.get("localizations")))
     for locale, entry in localizations.items():
         if isinstance(entry, dict) and isinstance(entry.get("title"), str) and entry["title"]:
-            entry["title"] = _tagged(entry["title"], locale)
+            entry["title"] = _tagged(rename.get(locale) or str(entry["title"]), locale)
     return {
         "id": video.get("id"),
         "snippet": snippet,
@@ -118,14 +125,18 @@ async def caption_channel_titles(
     apply: bool,
     limit: int = DEFAULT_LIMIT,
     skip: frozenset[str] = frozenset(),
+    rename: dict[str, dict[str, str]] | None = None,
     actor: User | None = None,
 ) -> dict[str, Any]:
     """Tag the titles of every video on the linked channel; report only unless ``apply``.
 
     ``Refused`` when no channel is linked. An update YouTube refuses (a quota run out among them)
     ends the run: what was sent stays sent, the rest is reported as left for the next run. The
-    videos in ``skip`` (the OAuth verification demo, say) are read and left alone.
+    videos in ``skip`` (the OAuth verification demo, say) are read and left alone. ``rename``
+    ({video id: {language: words}}) gives titles new words first; a video it names that is not
+    on the channel is reported.
     """
+    rename = rename or {}
     report: dict[str, Any] = {
         "apply": apply,
         "limit": limit,
@@ -137,6 +148,7 @@ async def caption_channel_titles(
         "units_for_updates": 0,
         "error": None,
         "skipped": sorted(skip),
+        "renamed_missing": [],
         "plans": [],
     }
     async with _linked_youtube(session) as (_channel_id, client):
@@ -156,11 +168,14 @@ async def caption_channel_titles(
             batch = ids[start : start + 50]
             videos += await client.videos(batch, parts="snippet,status,localizations")
         report["videos"] = len(videos)
+        on_channel = {video.get("id") for video in videos}
+        report["renamed_missing"] = sorted(set(rename) - on_channel)
         sent = 0
         for video in videos:
             if video.get("id") in skip:
                 continue
-            found = plan(video)
+            words = rename.get(str(video.get("id")), {})
+            found = plan(video, words)
             if found["problem"]:
                 report["too_long"] += 1  # videos with a title left untagged, every run
             if not found["titles"]:
@@ -175,7 +190,7 @@ async def caption_channel_titles(
                 report["left"] += 1
                 continue
             try:
-                await client.update_video(update_body(video))
+                await client.update_video(update_body(video, words))
             except YoutubeError as error:
                 report["error"] = f"{found['id']}：{error}"
                 report["left"] += 1
