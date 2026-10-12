@@ -1,0 +1,830 @@
+{
+  "schema_version": 1,
+  "episodes": [
+    {
+      "slug": "curio-h02",
+      "title": "羅阿諾克「消失的殖民地」：CROATOAN 到底是什麼意思？",
+      "lines": [
+        {
+          "id": "intro01",
+          "text": "一百一十多人不在了，找到留言的懷特卻很高興。",
+          "scene": "hook-white-happy"
+        },
+        {
+          "id": "intro02",
+          "text": "木樁刻著克羅托安，旁邊沒有約好的求救記號。",
+          "scene": "return-post-croatoan"
+        },
+        {
+          "id": "intro03",
+          "text": "他懂那個名字，卻始終沒走到它指向的地方。",
+          "scene": "route-governor-ready"
+        },
+        {
+          "id": "intro04",
+          "text": "他上岸那天，還是失聯外孫女的三歲生日。",
+          "scene": "route-third-birthday"
+        },
+        {
+          "id": "intro05",
+          "text": "幾百年後，一枚戒指又把人帶回這場搜尋。",
+          "scene": "h02-find-ring-discovered"
+        },
+        {
+          "id": "intro06",
+          "text": "驗出了戒指的材質，卻仍然認不出它的主人。",
+          "scene": "h02-find-owner-remains"
+        },
+        {
+          "id": "intro07",
+          "text": "這串刻在木樁上的字，能指出去哪裡找，為什麼沒能帶回任何人的下落？",
+          "scene": "h02-close-grandfather-unfinished"
+        }
+      ],
+      "source_doc": "C:/Users/x8120/mokaair-work/curio-five-recuts-20261012/sources/curio-h02/video.json",
+      "locales": {
+        "en": {
+          "lines": [
+            {
+              "id": "intro01",
+              "text": "More than a hundred and ten people were missing from Roanoke. Yet finding their message made John White happy.",
+              "scene": "hook-white-happy"
+            },
+            {
+              "id": "intro02",
+              "text": "A post bore the name Croatoan, without the agreed distress signal.",
+              "scene": "return-post-croatoan"
+            },
+            {
+              "id": "intro03",
+              "text": "He understood the name, but never reached the place it pointed to.",
+              "scene": "route-governor-ready"
+            },
+            {
+              "id": "intro04",
+              "text": "The day he landed was his missing granddaughter's third birthday.",
+              "scene": "route-third-birthday"
+            },
+            {
+              "id": "intro05",
+              "text": "Centuries later, a ring drew people back into the search.",
+              "scene": "h02-find-ring-discovered"
+            },
+            {
+              "id": "intro06",
+              "text": "Tests identified its material. Its owner remained unknown.",
+              "scene": "h02-find-owner-remains"
+            },
+            {
+              "id": "intro07",
+              "text": "The carved message told him where to look. Why did it never lead him to the missing people?",
+              "scene": "h02-close-grandfather-unfinished"
+            }
+          ]
+        },
+        "ja": {
+          "lines": [
+            {
+              "id": "intro01",
+              "text": "百十人あまりの姿がロアノークから消えたのに、伝言を見つけたホワイトは喜びました。",
+              "scene": "hook-white-happy"
+            },
+            {
+              "id": "intro02",
+              "text": "柱にはクロアトアンの文字。約束した救難の印はありません。",
+              "scene": "return-post-croatoan"
+            },
+            {
+              "id": "intro03",
+              "text": "意味は分かったのに、その場所へは行けませんでした。",
+              "scene": "route-governor-ready"
+            },
+            {
+              "id": "intro04",
+              "text": "上陸した日は、行方不明の孫娘の三歳の誕生日でした。",
+              "scene": "route-third-birthday"
+            },
+            {
+              "id": "intro05",
+              "text": "数百年後、一つの指輪が捜索の手がかりになります。",
+              "scene": "h02-find-ring-discovered"
+            },
+            {
+              "id": "intro06",
+              "text": "材質は分かっても、持ち主は分かりません。",
+              "scene": "h02-find-owner-remains"
+            },
+            {
+              "id": "intro07",
+              "text": "行き先を示した柱の文字は、なぜ人々の消息につながらなかったのでしょうか。",
+              "scene": "h02-close-grandfather-unfinished"
+            }
+          ]
+        },
+        "ko": {
+          "lines": [
+            {
+              "id": "intro01",
+              "text": "백십여 명이 로어노크에서 사라졌는데, 메시지를 찾은 존 화이트는 기뻐했습니다.",
+              "scene": "hook-white-happy"
+            },
+            {
+              "id": "intro02",
+              "text": "기둥에는 크로아토안이라는 이름만 있었고, 약속한 구조 신호는 없었습니다.",
+              "scene": "return-post-croatoan"
+            },
+            {
+              "id": "intro03",
+              "text": "뜻은 알았지만, 그 이름이 가리키는 곳에는 가지 못했습니다.",
+              "scene": "route-governor-ready"
+            },
+            {
+              "id": "intro04",
+              "text": "상륙한 날은 실종된 외손녀의 세 번째 생일이었습니다.",
+              "scene": "route-third-birthday"
+            },
+            {
+              "id": "intro05",
+              "text": "수백 년 뒤, 반지 하나가 다시 수색의 단서가 됩니다.",
+              "scene": "h02-find-ring-discovered"
+            },
+            {
+              "id": "intro06",
+              "text": "재질은 밝혀졌지만, 주인은 알아낼 수 없었습니다.",
+              "scene": "h02-find-owner-remains"
+            },
+            {
+              "id": "intro07",
+              "text": "기둥의 글자는 어디로 가야 할지 알려줬습니다. 그런데 왜 사람들의 행방은 찾지 못했을까요?",
+              "scene": "h02-close-grandfather-unfinished"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "curio-u02",
+      "title": "為什麼「51 區」這個名字，CIA 等了 58 年才正式印在文件上？",
+      "lines": [
+        {
+          "id": "intro01",
+          "text": "為什麼五十一區早就拍得到，名字還要塗黑？",
+          "scene": "secret-usgs-photo"
+        },
+        {
+          "id": "intro02",
+          "text": "一九五五年選定的基地，五十八年後才在解密史書裡公開名字和地圖。",
+          "scene": "secret-compare-versions"
+        },
+        {
+          "id": "intro03",
+          "text": "一個要求減少塗黑的申請，讓研究者等了八年。",
+          "scene": "release-request-2005"
+        },
+        {
+          "id": "intro04",
+          "text": "可是一九六七年的另一份文件，早已出現過這個名字。",
+          "scene": "release-memo-1967"
+        },
+        {
+          "id": "intro05",
+          "text": "高空飛機反射的銀光，還引來飛行員的不明飛行物通報。",
+          "scene": "silver-u2-sunlit"
+        },
+        {
+          "id": "intro06",
+          "text": "解密後，翻開計畫史，內容卻跟飛碟傳說很不一樣。",
+          "scene": "release-spokesman-page"
+        },
+        {
+          "id": "intro07",
+          "text": "那片被反覆講起的沙漠裡，到底藏著什麼？",
+          "scene": "legend-sign-night"
+        }
+      ],
+      "source_doc": "C:/Users/x8120/mokaair-work/curio-five-recuts-20261012/sources/curio-u02/video.json",
+      "locales": {
+        "en": {
+          "lines": [
+            {
+              "id": "intro01",
+              "text": "Why black out the name Area Fifty-One when the base was already visible in photographs?",
+              "scene": "secret-usgs-photo"
+            },
+            {
+              "id": "intro02",
+              "text": "Chosen in nineteen fifty-five, the base appeared by name and on a map in a declassified history fifty-eight years later.",
+              "scene": "secret-compare-versions"
+            },
+            {
+              "id": "intro03",
+              "text": "A request for fewer blacked-out passages kept one researcher waiting eight years.",
+              "scene": "release-request-2005"
+            },
+            {
+              "id": "intro04",
+              "text": "Yet another document from nineteen sixty-seven had already used the name.",
+              "scene": "release-memo-1967"
+            },
+            {
+              "id": "intro05",
+              "text": "Sunlight reflecting off a high-flying aircraft even prompted pilots to report unidentified flying objects.",
+              "scene": "silver-u2-sunlit"
+            },
+            {
+              "id": "intro06",
+              "text": "Once declassified, the program's history looked very different from the flying-saucer stories.",
+              "scene": "release-spokesman-page"
+            },
+            {
+              "id": "intro07",
+              "text": "What was actually hidden in that much-discussed stretch of desert?",
+              "scene": "legend-sign-night"
+            }
+          ]
+        },
+        "ja": {
+          "lines": [
+            {
+              "id": "intro01",
+              "text": "写真では見えていたエリア五十一。なぜ名前は黒塗りだったのでしょうか。",
+              "scene": "secret-usgs-photo"
+            },
+            {
+              "id": "intro02",
+              "text": "一九五五年に選ばれた基地の名前と地図が、五十八年後、公開された計画史に載りました。",
+              "scene": "secret-compare-versions"
+            },
+            {
+              "id": "intro03",
+              "text": "黒塗りを減らすよう求めた研究者は、八年も待ちました。",
+              "scene": "release-request-2005"
+            },
+            {
+              "id": "intro04",
+              "text": "ところが、一九六七年の別の文書には、すでに名前が出ていました。",
+              "scene": "release-memo-1967"
+            },
+            {
+              "id": "intro05",
+              "text": "高空の飛行機が反射する光を、操縦士が未確認飛行物体として通報したことも。",
+              "scene": "silver-u2-sunlit"
+            },
+            {
+              "id": "intro06",
+              "text": "公開された計画史の中身は、空飛ぶ円盤の話とは大きく違いました。",
+              "scene": "release-spokesman-page"
+            },
+            {
+              "id": "intro07",
+              "text": "語り継がれるあの砂漠には、何が隠されていたのでしょうか。",
+              "scene": "legend-sign-night"
+            }
+          ]
+        },
+        "ko": {
+          "lines": [
+            {
+              "id": "intro01",
+              "text": "사진으로는 이미 보이던 에어리어 오십일. 왜 이름은 검게 가렸을까요?",
+              "scene": "secret-usgs-photo"
+            },
+            {
+              "id": "intro02",
+              "text": "천구백오십오 년에 정한 기지의 이름과 지도가, 오십팔 년 뒤 기밀 해제된 역사서에 나왔습니다.",
+              "scene": "secret-compare-versions"
+            },
+            {
+              "id": "intro03",
+              "text": "검게 가린 부분을 줄여 달라는 요청에, 한 연구자는 팔 년을 기다렸습니다.",
+              "scene": "release-request-2005"
+            },
+            {
+              "id": "intro04",
+              "text": "그런데 천구백육십칠 년의 다른 문서에는 이미 그 이름이 있었습니다.",
+              "scene": "release-memo-1967"
+            },
+            {
+              "id": "intro05",
+              "text": "고공 비행기가 반사한 빛을 본 조종사들이 미확인 비행 물체를 신고하기도 했죠.",
+              "scene": "silver-u2-sunlit"
+            },
+            {
+              "id": "intro06",
+              "text": "공개된 계획의 역사는 비행접시 이야기와는 크게 달랐습니다.",
+              "scene": "release-spokesman-page"
+            },
+            {
+              "id": "intro07",
+              "text": "그토록 많은 이야기를 낳은 사막에는 대체 무엇이 숨겨져 있었을까요?",
+              "scene": "legend-sign-night"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "curio-h03",
+      "title": "通古斯大爆炸：森林倒了，坑在哪裡？",
+      "lines": [
+        {
+          "id": "intro01",
+          "text": "大約兩千平方公里的森林倒了，中央卻還有樹幹站著。",
+          "scene": "central-stripped-trunk"
+        },
+        {
+          "id": "intro02",
+          "text": "一九〇八年，通古斯那聲巨響，沒有留下公認的主撞擊坑。",
+          "scene": "search-empty-ground"
+        },
+        {
+          "id": "intro03",
+          "text": "十九年後，地質學家庫利克終於走進現場，循著倒木找隕石。",
+          "scene": "kulik-follows-timber"
+        },
+        {
+          "id": "intro04",
+          "text": "抽乾一個可疑的坑，底下竟然露出老樹樁。",
+          "scene": "old-stump-bottom"
+        },
+        {
+          "id": "intro05",
+          "text": "八千萬棵倒樹，這個數字又從哪裡來？",
+          "scene": "old-calculation-table"
+        },
+        {
+          "id": "intro06",
+          "text": "連附近一座叫切科湖的湖，都成了至今還有爭論的線索。",
+          "scene": "cheko-shore"
+        },
+        {
+          "id": "intro07",
+          "text": "這場爆炸到底發生在哪裡，森林又留下了什麼證詞？",
+          "scene": "trunk-to-sky"
+        }
+      ],
+      "source_doc": "C:/Users/x8120/mokaair-work/curio-five-recuts-20261012/sources/curio-h03/video.json",
+      "locales": {
+        "en": {
+          "lines": [
+            {
+              "id": "intro01",
+              "text": "About two thousand square kilometers of forest fell, yet some central trunks stayed upright.",
+              "scene": "central-stripped-trunk"
+            },
+            {
+              "id": "intro02",
+              "text": "The Tunguska blast of nineteen oh eight left no widely accepted main impact crater.",
+              "scene": "search-empty-ground"
+            },
+            {
+              "id": "intro03",
+              "text": "Nineteen years later, geologist Kulik finally reached the site, following fallen trees in search of a meteorite.",
+              "scene": "kulik-follows-timber"
+            },
+            {
+              "id": "intro04",
+              "text": "One suspicious pit was drained. What emerged was an old tree stump.",
+              "scene": "old-stump-bottom"
+            },
+            {
+              "id": "intro05",
+              "text": "Eighty million fallen trees. Where did that number come from?",
+              "scene": "old-calculation-table"
+            },
+            {
+              "id": "intro06",
+              "text": "Even nearby Lake Cheko became a clue that researchers still debate.",
+              "scene": "cheko-shore"
+            },
+            {
+              "id": "intro07",
+              "text": "Where did this explosion actually happen, and what can the forest tell us?",
+              "scene": "trunk-to-sky"
+            }
+          ]
+        },
+        "ja": {
+          "lines": [
+            {
+              "id": "intro01",
+              "text": "およそ二千平方キロの森林が倒れたのに、中心には立ったままの幹がありました。",
+              "scene": "central-stripped-trunk"
+            },
+            {
+              "id": "intro02",
+              "text": "一九〇八年のツングースカ大爆発。広く認められた主な衝突クレーターはありません。",
+              "scene": "search-empty-ground"
+            },
+            {
+              "id": "intro03",
+              "text": "十九年後、地質学者クリクがようやく現地へ。倒木をたどって隕石を探しました。",
+              "scene": "kulik-follows-timber"
+            },
+            {
+              "id": "intro04",
+              "text": "怪しい穴の水を抜くと、出てきたのは古い切り株でした。",
+              "scene": "old-stump-bottom"
+            },
+            {
+              "id": "intro05",
+              "text": "倒れた木は八千万本。その数字はどこから来たのでしょう。",
+              "scene": "old-calculation-table"
+            },
+            {
+              "id": "intro06",
+              "text": "近くのチェコ湖まで、今も議論が続く手がかりになりました。",
+              "scene": "cheko-shore"
+            },
+            {
+              "id": "intro07",
+              "text": "爆発はどこで起きたのか。森にはどんな証拠が残されたのでしょうか。",
+              "scene": "trunk-to-sky"
+            }
+          ]
+        },
+        "ko": {
+          "lines": [
+            {
+              "id": "intro01",
+              "text": "약 이천 제곱킬로미터의 숲이 쓰러졌는데, 중심에는 서 있는 나무줄기가 있었습니다.",
+              "scene": "central-stripped-trunk"
+            },
+            {
+              "id": "intro02",
+              "text": "천구백팔 년 퉁구스카 대폭발에는, 널리 인정된 주 충돌구가 없습니다.",
+              "scene": "search-empty-ground"
+            },
+            {
+              "id": "intro03",
+              "text": "십구 년 뒤, 지질학자 쿨리크는 현장에 도착해 쓰러진 나무를 따라 운석을 찾았습니다.",
+              "scene": "kulik-follows-timber"
+            },
+            {
+              "id": "intro04",
+              "text": "의심스러운 구덩이의 물을 빼자, 오래된 나무 그루터기가 나왔습니다.",
+              "scene": "old-stump-bottom"
+            },
+            {
+              "id": "intro05",
+              "text": "쓰러진 나무가 팔천만 그루. 이 숫자는 어디서 나왔을까요?",
+              "scene": "old-calculation-table"
+            },
+            {
+              "id": "intro06",
+              "text": "근처 체코호까지, 지금도 논쟁이 이어지는 단서가 됐습니다.",
+              "scene": "cheko-shore"
+            },
+            {
+              "id": "intro07",
+              "text": "폭발은 대체 어디에서 일어났고, 숲에는 어떤 증거가 남았을까요?",
+              "scene": "trunk-to-sky"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "curio-l08",
+      "title": "為什麼 1991 年兩個英國老先生，承認麥田圈是他們做的？",
+      "lines": [
+        {
+          "id": "intro01",
+          "text": "兩個老先生當著記者做了麥田圈。",
+          "scene": "confess-sevenoaks"
+        },
+        {
+          "id": "intro02",
+          "text": "研究者看完卻說，人類做不出來。",
+          "scene": "confess-quote"
+        },
+        {
+          "id": "intro03",
+          "text": "一九九一年，道格六十七歲，戴夫六十二歲。",
+          "scene": "confess-ages"
+        },
+        {
+          "id": "intro04",
+          "text": "他們承認，那些被當成神祕現象的圓，是自己做的。",
+          "scene": "confess-reveal"
+        },
+        {
+          "id": "intro05",
+          "text": "工具裡有木板、繩子，還有一頂裝了鐵絲的棒球帽。",
+          "scene": "pub-tools"
+        },
+        {
+          "id": "intro06",
+          "text": "但公開告白以後，田裡的圖形沒停，反而越來越複雜。",
+          "scene": "after-swiss"
+        },
+        {
+          "id": "intro07",
+          "text": "多年後，道格還說，後悔把這件事告訴大家。",
+          "scene": "field-regret"
+        },
+        {
+          "id": "intro08",
+          "text": "這兩個原本守著祕密的人，為什麼選在那一年開口？",
+          "scene": "expert-question"
+        }
+      ],
+      "source_doc": "C:/Users/x8120/mokaair-work/curio-five-recuts-20261012/sources/curio-l08/video.json",
+      "locales": {
+        "en": {
+          "lines": [
+            {
+              "id": "intro01",
+              "text": "Two older men made a crop circle while a reporter watched.",
+              "scene": "confess-sevenoaks"
+            },
+            {
+              "id": "intro02",
+              "text": "A researcher examined it and said no human could have made it.",
+              "scene": "confess-quote"
+            },
+            {
+              "id": "intro03",
+              "text": "In nineteen ninety-one, Doug was sixty-seven and Dave was sixty-two.",
+              "scene": "confess-ages"
+            },
+            {
+              "id": "intro04",
+              "text": "They admitted making circles that had been treated as mysterious phenomena.",
+              "scene": "confess-reveal"
+            },
+            {
+              "id": "intro05",
+              "text": "Their tools included a plank, string, and a baseball cap fitted with wire.",
+              "scene": "pub-tools"
+            },
+            {
+              "id": "intro06",
+              "text": "But after the confession, the patterns kept appearing and grew more elaborate.",
+              "scene": "after-swiss"
+            },
+            {
+              "id": "intro07",
+              "text": "Years later, Doug said he regretted telling everyone.",
+              "scene": "field-regret"
+            },
+            {
+              "id": "intro08",
+              "text": "Why did these two men, who had kept their secret, choose that year to speak?",
+              "scene": "expert-question"
+            }
+          ]
+        },
+        "ja": {
+          "lines": [
+            {
+              "id": "intro01",
+              "text": "二人の年配の男性が、記者の前でミステリーサークルを作りました。",
+              "scene": "confess-sevenoaks"
+            },
+            {
+              "id": "intro02",
+              "text": "それを見た研究者は、人間には作れないと言いました。",
+              "scene": "confess-quote"
+            },
+            {
+              "id": "intro03",
+              "text": "一九九一年、ダグは六十七歳、デイブは六十二歳。",
+              "scene": "confess-ages"
+            },
+            {
+              "id": "intro04",
+              "text": "謎の現象とされていた円を、自分たちが作ったと認めたのです。",
+              "scene": "confess-reveal"
+            },
+            {
+              "id": "intro05",
+              "text": "道具には板とひも、針金を付けた野球帽もありました。",
+              "scene": "pub-tools"
+            },
+            {
+              "id": "intro06",
+              "text": "でも告白の後も、模様は現れ続け、さらに複雑になりました。",
+              "scene": "after-swiss"
+            },
+            {
+              "id": "intro07",
+              "text": "何年も後、ダグは公表したことを後悔していると語ります。",
+              "scene": "field-regret"
+            },
+            {
+              "id": "intro08",
+              "text": "秘密を守っていた二人が、なぜあの年に口を開いたのでしょうか。",
+              "scene": "expert-question"
+            }
+          ]
+        },
+        "ko": {
+          "lines": [
+            {
+              "id": "intro01",
+              "text": "나이 든 두 남자가 기자 앞에서 크롭 서클을 만들었습니다.",
+              "scene": "confess-sevenoaks"
+            },
+            {
+              "id": "intro02",
+              "text": "그걸 살펴본 연구자는 사람이 만들 수 없다고 했죠.",
+              "scene": "confess-quote"
+            },
+            {
+              "id": "intro03",
+              "text": "천구백구십일 년, 더그는 예순일곱 살, 데이브는 예순두 살이었습니다.",
+              "scene": "confess-ages"
+            },
+            {
+              "id": "intro04",
+              "text": "신비한 현상으로 여겨진 원들을 자신들이 만들었다고 인정했습니다.",
+              "scene": "confess-reveal"
+            },
+            {
+              "id": "intro05",
+              "text": "도구에는 널빤지와 줄, 철사를 단 야구 모자도 있었습니다.",
+              "scene": "pub-tools"
+            },
+            {
+              "id": "intro06",
+              "text": "고백 뒤에도 무늬는 계속 나타났고, 오히려 더 복잡해졌습니다.",
+              "scene": "after-swiss"
+            },
+            {
+              "id": "intro07",
+              "text": "여러 해 뒤, 더그는 사람들에게 알린 것을 후회한다고 말했습니다.",
+              "scene": "field-regret"
+            },
+            {
+              "id": "intro08",
+              "text": "비밀을 지켜 온 두 사람은 왜 하필 그해에 입을 열었을까요?",
+              "scene": "expert-question"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "curio-h01",
+      "title": "為什麼 1872 年一艘完好的船上，十個人全部消失？",
+      "lines": [
+        {
+          "id": "intro01",
+          "text": "一艘船還能航行，十個人卻全都不見了。",
+          "scene": "hook-empty-vessel"
+        },
+        {
+          "id": "intro02",
+          "text": "一八七二年，瑪麗賽勒斯特號留在大西洋上。",
+          "scene": "find-empty-ocean"
+        },
+        {
+          "id": "intro03",
+          "text": "半年的食物和水還在，唯一的小艇卻不見了。",
+          "scene": "list-davits"
+        },
+        {
+          "id": "intro04",
+          "text": "船長的劍上一度被懷疑有血，化驗卻推翻了這條線索。",
+          "scene": "court-chemist"
+        },
+        {
+          "id": "intro05",
+          "text": "一千七百零一桶酒精運到港口，才發現九桶已經空了。",
+          "scene": "answer-genoa-quay"
+        },
+        {
+          "id": "intro06",
+          "text": "有人把線索拼成了答案，可是十個人一直沒被找到。",
+          "scene": "answer-never-found"
+        },
+        {
+          "id": "intro07",
+          "text": "熱飯菜、完好的船，哪些是紀錄，哪些是後來加上的故事？",
+          "scene": "legend-tavern"
+        }
+      ],
+      "source_doc": "C:/Users/x8120/mokaair-work/curio-five-recuts-20261012/sources/curio-h01/video.json",
+      "locales": {
+        "en": {
+          "lines": [
+            {
+              "id": "intro01",
+              "text": "The ship could still sail, but all ten people aboard were gone.",
+              "scene": "hook-empty-vessel"
+            },
+            {
+              "id": "intro02",
+              "text": "In eighteen seventy-two, the Mary Celeste was left in the Atlantic.",
+              "scene": "find-empty-ocean"
+            },
+            {
+              "id": "intro03",
+              "text": "Six months of food and water remained. The only small boat was missing.",
+              "scene": "list-davits"
+            },
+            {
+              "id": "intro04",
+              "text": "Marks on the captain's sword raised suspicions of blood. Tests overturned that clue.",
+              "scene": "court-chemist"
+            },
+            {
+              "id": "intro05",
+              "text": "Seventeen hundred and one barrels of alcohol reached port. Nine turned out to be empty.",
+              "scene": "answer-genoa-quay"
+            },
+            {
+              "id": "intro06",
+              "text": "People assembled these clues into answers, but the ten missing people were never found.",
+              "scene": "answer-never-found"
+            },
+            {
+              "id": "intro07",
+              "text": "Hot meals, an undamaged ship: what came from the records, and what was added to the story later?",
+              "scene": "legend-tavern"
+            }
+          ]
+        },
+        "ja": {
+          "lines": [
+            {
+              "id": "intro01",
+              "text": "まだ航海できる船から、乗っていた十人全員がいなくなりました。",
+              "scene": "hook-empty-vessel"
+            },
+            {
+              "id": "intro02",
+              "text": "一八七二年、メアリー・セレスト号は大西洋に残されました。",
+              "scene": "find-empty-ocean"
+            },
+            {
+              "id": "intro03",
+              "text": "半年分の食料と水はあるのに、一艘だけの小舟はありません。",
+              "scene": "list-davits"
+            },
+            {
+              "id": "intro04",
+              "text": "船長の剣には血の疑いが。でも検査で、その手がかりは否定されました。",
+              "scene": "court-chemist"
+            },
+            {
+              "id": "intro05",
+              "text": "港に届いた千七百一樽のアルコール。そのうち九樽が空だったのです。",
+              "scene": "answer-genoa-quay"
+            },
+            {
+              "id": "intro06",
+              "text": "人々は手がかりをつないで答えを出そうとしましたが、十人は見つかりませんでした。",
+              "scene": "answer-never-found"
+            },
+            {
+              "id": "intro07",
+              "text": "温かい食事、無傷の船。どこまでが記録で、どこからが後の物語なのでしょうか。",
+              "scene": "legend-tavern"
+            }
+          ]
+        },
+        "ko": {
+          "lines": [
+            {
+              "id": "intro01",
+              "text": "배는 여전히 항해할 수 있었지만, 타고 있던 열 명은 모두 사라졌습니다.",
+              "scene": "hook-empty-vessel"
+            },
+            {
+              "id": "intro02",
+              "text": "천팔백칠십이 년, 메리 셀레스트호는 대서양에 남겨졌습니다.",
+              "scene": "find-empty-ocean"
+            },
+            {
+              "id": "intro03",
+              "text": "반년 치 식량과 물은 그대로인데, 유일한 작은 배는 없었습니다.",
+              "scene": "list-davits"
+            },
+            {
+              "id": "intro04",
+              "text": "선장의 칼에 피가 묻었다는 의심은 검사 결과 뒤집혔습니다.",
+              "scene": "court-chemist"
+            },
+            {
+              "id": "intro05",
+              "text": "항구에 도착한 알코올 통 천칠백한 개 중, 아홉 개가 비어 있었습니다.",
+              "scene": "answer-genoa-quay"
+            },
+            {
+              "id": "intro06",
+              "text": "사람들은 단서를 엮어 답을 내놓았지만, 사라진 열 명은 끝내 찾지 못했습니다.",
+              "scene": "answer-never-found"
+            },
+            {
+              "id": "intro07",
+              "text": "따뜻한 식사와 멀쩡한 배. 무엇이 기록이고, 무엇이 나중에 더해진 이야기일까요?",
+              "scene": "legend-tavern"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
