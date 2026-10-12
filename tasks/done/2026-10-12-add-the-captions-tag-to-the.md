@@ -1,13 +1,13 @@
 ---
 id: 2026-10-12-add-the-captions-tag-to-the
 title: Add the captions tag to the titles of videos already on YouTube
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-cc-captions
 claimed_at: 2026-10-12T04:43:37Z
 created_at: 2026-10-12T04:43:27Z
-completed_at:
+completed_at: 2026-10-12T06:22:55Z
 branch:
 depends_on: []
 scope:
@@ -32,7 +32,7 @@ owner asked on 2026-10-12 that the videos already on the channel, public ones in
 - [x] `python -m app.cli video-youtube-caption-titles` reports, for every video on the linked
       channel, which titles (default language and each localization) lack the tag; `--apply`
       sends videos.update with everything the video has and only those titles changed.
-- [ ] Run on the host: report first, then `--apply` (50 units per video, `--limit` per run).
+- [x] Run on the host: report first, then `--apply` (50 units per video, `--limit` per run).
 
 ## How to verify
 
@@ -55,3 +55,7 @@ after `--apply` shows `to_change: 0`.
   showed to_change 0. Five videos stayed whole because their English title cannot take even
   「｜CC」 (htv6rUYkVkE, jSTz6qnilmk, UWYoO3JfOK0, KurEPz5z7hA, itKTQl3ehQE). The owner chose to
   leave only that one title and tag the rest, so a too-long title no longer holds back the video.
+- 2026-10-12 06:2xZ: #1463 deployed (8d10a3966, verify 14/14); `--apply` changed the five (250 units).
+  The report after: to_change 0; too_long 5, each only its English title (111-113 characters with
+  the full tag, 101+ with 「｜CC」). Those five English titles take the tag once the owner shortens
+  them in Studio and the command runs again. 33 videos changed in all, 1,650 units.
