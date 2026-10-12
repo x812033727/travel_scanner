@@ -1,13 +1,13 @@
 ---
 id: 2026-10-12-complete-curio-h03-english-japanese-korean
 title: Complete Curio H03 English Japanese Korean languages
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-gpt6-h03-languages
 claimed_at: 2026-10-12T05:23:05Z
 created_at: 2026-10-12T05:22:27Z
-completed_at:
+completed_at: 2026-10-12T08:16:11Z
 branch: codex/curio-h03-en-ja-ko-20261012
 depends_on: []
 scope:
@@ -40,7 +40,7 @@ The owner requested English, Japanese and Korean CC and dubbed audio for the exi
 - [x] Complete YouTube sync for four metadata locales, EN/JA/KO CC and thumbnail with private visibility; retain existing Traditional Chinese CC.
 - [x] Confirm final audio Published rows and six exact Studio caption/metadata captures.
 - [x] Save final local/backend/Studio delivery evidence and explicit verification limits.
-- [ ] Open a draft PR and complete the repository task handoff.
+- [x] Open a draft PR and complete the repository task handoff.
 
 ## How to verify
 
@@ -54,7 +54,7 @@ Use bundled Node 24.19 with tools/video/cli.mjs and work base C:/Users/x8120/mok
 
 ## Notes
 
-Delivery completed: local/backend PASS at 08:02:18.655Z, private YouTube sync at 16:02 Asia/Taipei, exact Studio text PASS at 08:13:23.952Z and all nine Published components observed at 08:13:32.505Z. Only draft PR/task handoff remains:
+Delivery completed: local/backend PASS at 08:02:18.655Z, private YouTube sync at 16:02 Asia/Taipei, exact Studio text PASS at 08:13:23.952Z and all nine Published components observed at 08:13:32.505Z. [Draft PR 1469](https://github.com/x812033727/travel_scanner/pull/1469) records the language additions, stacked on PR 1456; merge is outside this delivery.
 
 - All three configured formal checks pass 139/139 lines, zero flags/unchecked lines. Each current M4A is 694.3 seconds, AAC48k stereo and fully decodes with exit 0/empty stderr. Native fit replay has 137 windows per locale and zero overruns; 500 media input pins are stable.
 - Native caption counts are EN 139, JA 147 and KO 145, each covering all 139 source IDs in order. Recomputed SRT bytes match packaged copies with no native/readability/overlap defects. Native package passes 4/4 items.
@@ -63,5 +63,5 @@ Delivery completed: local/backend PASS at 08:02:18.655Z, private YouTube sync at
 - youtube-sync-complete.json (captured 08:02:50.458Z, SHA-256 59ed9aca385bb7d2bd9154918b5a96319f65ea00f17cd61aea0e96c19a476a40) reports sync complete at 16:02 Asia/Taipei: four metadata locales, EN/JA/KO CC uploaded, existing zh-TW CC retained, thumbnail set and private visibility. The reviewed form's Chinese description exactly equals approved metadata and omits the old TC-only sentence (youtube-sync-reviewed-form.json SHA-256 e19ced25697ef6c6e16fb84bb2c2f1b06939a697d3947a138a1c497e324f1d01).
 - studio-final-all-published.json SHA-256 4b3818f9329e6ef6e1c0d47f7179ee345ff56147ded48f39e56c72a7ab0b6623 and studio-final-published.png SHA-256 a92426469d09c864c1a2a6eb442c7153196a9d203ab91d7c77e8e60677073de3 directly show EN/JA/KO audio, CC and title/description all Published on b98IdS1MB78. Language publication does not make the private video public.
 - studio-captioned-exact-readback-20261012T081323507Z.stdout.json SHA-256 f5414eb334774b53719a013ad8d3a0f0f0dcc09c7d288afe1495d0de357bfef1 passes 70 guards for six saved captures: 431 exact raw CC texts, three unchanged descriptions and three titles matching the pinned live-native caption-label policy. Matching receipt SHA-256 e8aa8458eb4b7df1aca7c41a4b60cd5586b85a41f7113bbe49569526598842f2 records actual exit 0/empty stderr. Spaces, line breaks and order remain exact; the AX-only LF mapping does not relax raw comparison.
-- No full player playback, human listening, full Studio timing or downloaded Studio SRT byte comparison was performed. Local native timing/source coverage and actual Studio publication have separate evidence. Keep this task in progress pending the draft PR; do not move/close it in this documentation update.
+- No full player playback, human listening, full Studio timing or downloaded Studio SRT byte comparison was performed. Local native timing/source coverage and actual Studio publication have separate evidence.
 - Confirmed-answer Windows recoveries and bounded JA/KO 502 resolutions are preserved in audit receipts. They do not establish a platform fix or provider billing outcome; no check verdict was manually edited. Inspect current receipts before any further production action.
