@@ -78,7 +78,7 @@ outro.mp4 SHA `00eb9ccc8449fa8b47de0aab290b8aa7d55b09962c12a127e0f0c9c5f7834396`
 Codex 新聞審查 1.1 GB、戰役稽核 1.0 GB）。站主選擇把上限提高到 40 GB：主機 `.env` 加
 `VIDEO_REVIEW_MAX_TOTAL_BYTES=40000000000`（改前備份於 `/root/env-backup-<UTC>`，維持 mode 600），
 只重建 api 容器；`/health`、`/ready`、公開首頁 200。之後重送成功（manual pending）。
-之前那筆 v3 成片的待審被這次送審取代。
+之前那筆 v3 成片的待審是否已被取代，沒有另外回讀確認；站主審片時看 final SHA 前綴 `ed292fecfd9a` 那筆。
 
 新片上架：Studio「片尾」→「從影片匯入」選 `oxEtlA8GWas`，把三個元素的開始時間改成
 影片長度減 17 秒。
