@@ -1,0 +1,2520 @@
+{
+  "schema_version": 1,
+  "slug": "curio-h05",
+  "format": "slides",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    10,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "沿著物件講一樁未解懸案；開場輕問，轉折稍亮。日期、金額與比例清楚，研究推論收斂。章末提問稍微上揚，不讚美劫機，不模仿受威脅者。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "custom",
+    "style": "2D Taiwanese YouTube explainer cartoon: thick clean dark outlines, flat colours with soft cel shading, simple clear backgrounds, subtle paper grain, deep navy blue, parchment yellow, muted teal and one warning-red accent. Backgrounds use broad colour shapes and soft cel shadows. Human characters specified in the scene have chibi proportions, big round heads, expressive eyes and comic expressions. Empty settings contain only the listed objects and natural forms. One main subject in the centre third, playful and friendly, 16:9.",
+    "negative": "",
+    "motion": "slow push in or gentle drift, no morphing, no cuts",
+    "candidates": 3
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "D.B. Cooper：人消失了，贖金為何出現在河岸？｜奇聞檔案局",
+    "description": "D.B. Cooper 帶走二十萬美元，八年多後有 5,800 美元在河岸被找到。沿著機票、領帶與贖金，看看物證為何仍沒能接回一個確定的人。\n\n找回金額占原交付贖金的 2.9%。2020 年研究分析一張原鈔上的矽藻，提出較符合五月至六月浸水的推論，沒有確定年份或抵達河岸的日期。2016 年 FBI 轉移資源、不再主動調查，也沒有宣布確認身分或最終下落。\n\nFBI 機票、贖金與領帶檔案照片保留原件；其餘為情境插圖與原生文字卡，並非案發現場攝影或研究重做。照片來源與公有領域依據列於圖片署名。僅提供繁中旁白與可開關繁體中文字幕；本集不提供劫機、航空或跳傘操作指引。",
+    "tags": [
+      "D.B. Cooper",
+      "庫柏劫機案",
+      "奇聞檔案局",
+      "河岸贖金",
+      "歷史懸案",
+      "丹庫柏"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**錢回來了**",
+      "tag": "歷史懸案",
+      "sub": "人呢？河岸的 5,800 美元",
+      "shot": "hook-empty-bank"
+    }
+  },
+  "sources": [
+    {
+      "title": "FBI D.B. Cooper Hijacking",
+      "url": "https://www.fbi.gov/history/cases-and-criminals/db-cooper-hijacking",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "FBI D.B. Cooper Plane Ticket",
+      "url": "https://www.fbi.gov/history/artifacts/d-b-cooper-plane-ticket",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "FBI Seattle，2016 年調查更新",
+      "url": "https://www.fbi.gov/contact-us/field-offices/seattle/news/press-releases/update-on-investigation-of-1971-hijacking-by-d.b.-cooper",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "FBI D.B. Cooper Redux（2007）",
+      "url": "https://archives.fbi.gov/archives/news/stories/2007/december/dbcooper_123107",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "FBI In Search of D.B. Cooper（2009）",
+      "url": "https://archives.fbi.gov/archives/news/stories/2009/march/in-search-of-d.b.-cooper",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Kaye、Meltzer（2020）鈔票矽藻研究",
+      "url": "https://www.nature.com/articles/s41598-020-70015-z",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "FAA Historical Chronology｜1971-11-24 條",
+      "url": "https://www.faa.gov/sites/faa.gov/files/about/history/chronolog_history/b-chron.pdf",
+      "checked_on": "2026-10-12"
+    }
+  ],
+  "assets": [
+    {
+      "path": "stock/d0d8c89a2e3d584d3f0956e85079d1d65b902653d2b96d59fff1b932bdd4a7aa.jpg",
+      "source": "FBI：以 Dan Cooper 名義購買的機票",
+      "license": "Public domain (PD-USGov-FBI)",
+      "author": "Federal Bureau of Investigation",
+      "credit": "FBI／公有領域",
+      "title": "D.B. Cooper Plane Ticket",
+      "url": "https://commons.wikimedia.org/wiki/File:July_2016_D.B._Cooper_Plane_Ticket_(28379315406).jpg",
+      "license_url": "https://commons.wikimedia.org/wiki/Template:PD-USGov-FBI",
+      "checked_on": "2026-10-12",
+      "sha256": "d0d8c89a2e3d584d3f0956e85079d1d65b902653d2b96d59fff1b932bdd4a7aa",
+      "width": 2400,
+      "height": 1369
+    },
+    {
+      "path": "stock/f3e989c1f24e4204a3e8163e80b163c000e8af41ec98a78dbb15901ee8beab92.jpg",
+      "source": "FBI：1980 年尋回的部分贖金",
+      "license": "Public domain (PD-USGov-FBI)",
+      "author": "Federal Bureau of Investigation",
+      "credit": "FBI／公有領域",
+      "title": "Money stolen by D. B. Cooper",
+      "url": "https://commons.wikimedia.org/wiki/File:Money_stolen_by_D._B._Cooper.jpg",
+      "license_url": "https://commons.wikimedia.org/wiki/Template:PD-USGov-FBI",
+      "checked_on": "2026-10-12",
+      "sha256": "f3e989c1f24e4204a3e8163e80b163c000e8af41ec98a78dbb15901ee8beab92",
+      "width": 1400,
+      "height": 921
+    },
+    {
+      "path": "stock/52f8ad581b3932f1060809875c43cfb05df710d0b19006db0e39083ed8604449.jpg",
+      "source": "FBI：留在機上的領帶",
+      "license": "Public domain (DOJ copyright policy; no third-party credit)",
+      "author": "Federal Bureau of Investigation",
+      "credit": "FBI／公有領域",
+      "title": "Black tie evidence photograph",
+      "url": "https://www.fbi.gov/history/cases-and-criminals/db-cooper-hijacking",
+      "license_url": "https://www.justice.gov/legalpolicies",
+      "checked_on": "2026-10-12",
+      "sha256": "52f8ad581b3932f1060809875c43cfb05df710d0b19006db0e39083ed8604449",
+      "width": 768,
+      "height": 616
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook-recovered-money",
+      "template": "photo",
+      "data": {
+        "image": "stock/f3e989c1f24e4204a3e8163e80b163c000e8af41ec98a78dbb15901ee8beab92.jpg",
+        "caption": "1980 年尋回的部分贖金｜FBI／公有領域",
+        "credit": "FBI／公有領域",
+        "tilt": 0
+      },
+      "claims": [
+        "c01",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "x8wvho",
+          "text": "他帶走二十萬美元，怎麼只剩錢回到河岸？",
+          "emotion": "數字與重點清楚，稍慢"
+        }
+      ],
+      "chapter": "錢回來，人沒有回來"
+    },
+    {
+      "id": "hook-empty-bank",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty Columbia River sandbank in clear afternoon daylight. A low strip of smooth sand meets broad calm water and a distant wooded shore. The centre contains only the gently curving shoreline, lit from the left.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c12",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "hy0n0i",
+          "text": "八年多後出現的這批鈔票，真能讓我們找到人嗎？",
+          "emotion": "輕聲提問，留懸念"
+        }
+      ]
+    },
+    {
+      "id": "hook-money-and-person",
+      "template": "compare",
+      "data": {
+        "title": "找到錢，還缺什麼",
+        "left": {
+          "heading": "物件接上了",
+          "points": [
+            "序號與贖金相符"
+          ]
+        },
+        "right": {
+          "heading": "經過仍空白",
+          "points": [
+            "誰帶到河岸？"
+          ]
+        },
+        "source": "FBI 案件頁｜查閱 2026-10-12"
+      },
+      "claims": [
+        "c12",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "xcyiet",
+          "text": "你以為贖金重新出現，案子就能跟著解開。",
+          "reveal": 1,
+          "emotion": "數字與重點清楚，稍慢"
+        },
+        {
+          "id": "0lw4i4",
+          "text": "其實，鈔票認得出來，帶錢的人卻沒有答案。",
+          "reveal": 1,
+          "emotion": "語氣稍亮，揭曉後收住"
+        }
+      ]
+    },
+    {
+      "id": "hook-ticket-wallet",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed leather wallet on a worn airline ticket counter in a daylight American airport of the early nineteen seventies. The simple folded leather form is centred. Frosted window light reveals its edge and the wooden counter.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "dnd961",
+          "text": "連那個大家熟悉的案件名字，也和機票不一樣。"
+        }
+      ]
+    },
+    {
+      "id": "hook-microscope",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a sealed metal specimen chamber in a bright electron microscopy laboratory during daytime. A simple upright cylindrical chamber stands on an enclosed rectangular base. Broad window light defines the smooth metal surface and small closed specimen port.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c16",
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "3cecc9",
+          "text": "幾十年後，一張鈔票又留下了季節的疑問。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "hook-counter-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty airline ticket counter in a small American airport in the early nineteen seventies, afternoon. A low wooden counter and one empty stool sit beneath tall plain windows. The space is lit entirely by daylight.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c02"
+      ],
+      "lines": [
+        {
+          "id": "3yy2me",
+          "text": "帶走這筆贖金的人，當初怎麼搭上那班飛機？",
+          "emotion": "語尾帶提問感"
+        }
+      ]
+    },
+    {
+      "id": "boarding-date",
+      "template": "stats",
+      "data": {
+        "title": "那張機票的日期",
+        "stats": [
+          {
+            "value": "1971 年",
+            "label": "事件年份"
+          },
+          {
+            "value": "11 月 24 日",
+            "label": "波特蘭購票"
+          }
+        ],
+        "source": "FBI 機票文物頁｜查閱 2026-10-12"
+      },
+      "claims": [
+        "c02"
+      ],
+      "lines": [
+        {
+          "id": "9gys05",
+          "text": "故事發生在一九七一年，美國波特蘭的一座機場。",
+          "reveal": 1,
+          "emotion": "數字與重點清楚，稍慢"
+        },
+        {
+          "id": "bs4cu1",
+          "text": "十一月二十四日，他在這裡用現金買下了機票。",
+          "reveal": 1,
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ],
+      "chapter": "機票上的人叫丹庫柏"
+    },
+    {
+      "id": "portland-counter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium rear view of one anonymous adult man standing at an airport counter in afternoon daylight, early nineteen seventies America. He wears an ordinary plain jacket and holds a closed wallet beside the counter. Only his back is visible. Window light fills the room.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c02"
+      ],
+      "lines": [
+        {
+          "id": "2tsxj3",
+          "text": "這名男子付了現金，要搭乘西北東方航空的班機。"
+        }
+      ]
+    },
+    {
+      "id": "ticket-original",
+      "template": "photo",
+      "data": {
+        "image": "stock/d0d8c89a2e3d584d3f0956e85079d1d65b902653d2b96d59fff1b932bdd4a7aa.jpg",
+        "caption": "以 Dan Cooper 名義購票｜FBI／公有領域",
+        "credit": "FBI／公有領域",
+        "tilt": 0
+      },
+      "claims": [
+        "c02",
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "3vkmvf",
+          "text": "這張保留下來的機票，姓名欄裡寫的是丹庫柏。",
+          "emotion": "數字與重點清楚，稍慢"
+        }
+      ]
+    },
+    {
+      "id": "one-way-ticket-envelope",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a single closed plain paper ticket envelope on a wooden airport desk in afternoon daylight. The envelope is a smooth narrow rectangle with its flap folded shut. A soft window shadow crosses the otherwise empty desk.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c02"
+      ],
+      "lines": [
+        {
+          "id": "ieh79o",
+          "text": "他買下的這張單程機票，目的地是北方的西雅圖。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "two-names",
+      "template": "compare",
+      "data": {
+        "title": "兩種名字，兩個層次",
+        "left": {
+          "heading": "Dan Cooper",
+          "points": [
+            "購票時使用的名字"
+          ]
+        },
+        "right": {
+          "heading": "D.B. Cooper",
+          "points": [
+            "後來流傳的案件稱呼"
+          ]
+        },
+        "source": "FBI 案件頁｜查閱 2026-10-12"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "448nhm",
+          "text": "丹庫柏是購票時留下的名字，真名仍未確認。",
+          "reveal": 1,
+          "emotion": "數字與重點清楚，稍慢"
+        },
+        {
+          "id": "2lcdgm",
+          "text": "大家熟悉的迪比庫柏，則是媒體流傳的稱呼。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "name-empty-seat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single empty upholstered airline seat in an early nineteen seventies passenger cabin during afternoon. The cloth backrest fills the centre, with a plain oval window beside it. Soft daylight falls across the seat cushion.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "yzbgw1",
+          "text": "一個被大家叫慣的名字，還不能確認背後的真人。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "boarding-aisle",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view along an empty passenger cabin aisle in an early nineteen seventies airliner, afternoon. Simple cloth seats and rounded overhead racks recede into the distance. The central aisle is clear and softly lit by side windows.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c02",
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "qjz1qd",
+          "text": "他搭上三〇五號班機，機票成為日後留下的物件。"
+        }
+      ]
+    },
+    {
+      "id": "folded-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one folded plain paper note resting on an aircraft tray table in a passenger cabin of the early nineteen seventies. The folded outer surface is blank and the fold is clearly visible. Gentle window light illuminates the paper.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c04"
+      ],
+      "lines": [
+        {
+          "id": "6d62mo",
+          "text": "飛行途中，他用一張紙條，把威脅交給了空服員。"
+        }
+      ]
+    },
+    {
+      "id": "briefcase-closed",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed rectangular hard-sided briefcase on a plain aircraft seat in an early nineteen seventies cabin, afternoon. Its lid is fully shut, with a simple handle and two latches visible. Side-window light defines its solid shape.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c04"
+      ],
+      "lines": [
+        {
+          "id": "85mz96",
+          "text": "他聲稱公事包裡裝著炸彈，藉此向機組提出要求。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "threat-record",
+      "template": "quote",
+      "data": {
+        "quote": "他聲稱攜帶炸彈。",
+        "source": "FBI 機票文物頁｜內容轉述",
+        "kicker": "記錄中的威脅"
+      },
+      "claims": [
+        "c04"
+      ],
+      "lines": [
+        {
+          "id": "ba5hy4",
+          "text": "能留下來追查的，是這場威脅與空服員的見聞。",
+          "emotion": "數字與重點清楚，稍慢"
+        }
+      ]
+    },
+    {
+      "id": "briefcase-latches",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of the closed metal latch on a hard-sided briefcase in a passenger cabin, early nineteen seventies. The latch lies flat against the shut case. The plain curved case edge and latch are the only central details under window light.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c04"
+      ],
+      "lines": [
+        {
+          "id": "a5w65d",
+          "text": "這項威脅的記錄，不能替公事包內的裝置效力作證。"
+        }
+      ]
+    },
+    {
+      "id": "cabin-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium rear view of one anonymous seated passenger in a plain early nineteen seventies airliner cabin. The person's back and the top of an ordinary jacket are visible between two seatbacks. Daylight enters through one oval window.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c04",
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "nqggtb",
+          "text": "這場威脅牽動的不只是一個人，還有機上的乘客。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "airport-window-day",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view from inside an empty airport waiting area at late afternoon. A broad window overlooks a plain runway and low terminal buildings. One row of simple vacant benches is centred in the foreground.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c01",
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "kap3mn",
+          "text": "飛機往西雅圖飛，地面也得面對他的要求。"
+        }
+      ]
+    },
+    {
+      "id": "demand-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed plain parcel on a simple airport service table in the early nineteen seventies, late afternoon. The parcel is wrapped in unprinted paper and secured with one plain cord. Soft daylight comes from a tall side window.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c01",
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "mnfj8v",
+          "text": "等到飛機落地，乘客和贖金會怎麼交換？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "seattle-ground",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a quiet airport apron at late afternoon in the early nineteen seventies. A generic unmarked passenger jet is parked beyond a low service cart. The aircraft and flat tarmac are lit by the last daylight.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c01",
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "t1tdc6",
+          "text": "等到飛機在西雅圖落地，錢和降落傘送上了機。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ],
+      "chapter": "乘客下機，他又飛進夜裡"
+    },
+    {
+      "id": "ransom-demand",
+      "template": "stats",
+      "data": {
+        "title": "他提出的要求",
+        "stats": [
+          {
+            "value": "200,000 美元",
+            "label": "交付的贖金"
+          },
+          {
+            "value": "4 具",
+            "label": "要求的降落傘"
+          }
+        ],
+        "source": "FBI 案件頁｜查閱 2026-10-12"
+      },
+      "claims": [
+        "c01"
+      ],
+      "lines": [
+        {
+          "id": "n2fxc1",
+          "text": "交付給他的現金總額，是整整二十萬美元的贖金。",
+          "reveal": 1,
+          "emotion": "數字與重點清楚，稍慢"
+        },
+        {
+          "id": "1f482p",
+          "text": "他還要求四具降落傘，贖金則是二十美元的鈔票。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "sealed-ransom-bag",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of one closed plain canvas carry bag on an airport service bench at dusk, early nineteen seventies. Its fabric opening is tied shut and its simple handles lie to either side. Remaining daylight illuminates the seams.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c01",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "4q0gpx",
+          "text": "這二十萬美元，後來只有很小一部分重新出現。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "packed-parachute",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single tightly folded parachute pack resting on a bare airport storeroom shelf in the early nineteen seventies. Canvas fabric and closed straps form a compact central bundle. The shelf is lit by diffuse daylight.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c01"
+      ],
+      "lines": [
+        {
+          "id": "beuc28",
+          "text": "四具降落傘指的是要求的數量，不是他身上的數量。"
+        }
+      ]
+    },
+    {
+      "id": "delivery-table",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty airport service room at dusk. A low trolley sits beside a plain open doorway leading to a brighter corridor. The trolley has one closed canvas bag, with the doorway and trolley as the only main forms.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "iqeru1",
+          "text": "地面準備的物件送上飛機之後，乘客才得以離開。"
+        }
+      ]
+    },
+    {
+      "id": "passenger-count",
+      "template": "stats",
+      "data": {
+        "title": "在西雅圖獲釋",
+        "stats": [
+          {
+            "value": "36 名",
+            "label": "乘客"
+          }
+        ],
+        "source": "FBI 案件頁｜查閱 2026-10-12"
+      },
+      "claims": [
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "kafx85",
+          "text": "當時在西雅圖獲釋的，一共是三十六名機上乘客。",
+          "reveal": 1,
+          "emotion": "數字與重點清楚，稍慢"
+        }
+      ]
+    },
+    {
+      "id": "vacant-cabin",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of empty rows of cloth passenger seats in an early nineteen seventies aircraft at dusk. The broad central aisle remains clear. Fading daylight enters through oval windows and reveals the vacant seating.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c05",
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "n83otb",
+          "text": "三十六名乘客離開之後，這趟飛行卻還沒有結束。"
+        }
+      ]
+    },
+    {
+      "id": "cabin-front-curtain",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a closed plain cabin curtain at the front of an early nineteen seventies passenger aircraft at dusk. The curtain hangs straight between two simple wall panels. Soft cabin light illuminates the fabric folds.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c05",
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "yagvt5",
+          "text": "幾名機組員還留在飛機上，必須繼續後面的航程。"
+        }
+      ]
+    },
+    {
+      "id": "people-and-object",
+      "template": "compare",
+      "data": {
+        "title": "飛機上的去留",
+        "left": {
+          "heading": "乘客",
+          "points": [
+            "36 名在西雅圖獲釋"
+          ]
+        },
+        "right": {
+          "heading": "劫機者與機組",
+          "points": [
+            "繼續第二段飛行"
+          ]
+        },
+        "source": "FBI 案件頁｜查閱 2026-10-12"
+      },
+      "claims": [
+        "c05",
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "uqvxcx",
+          "text": "乘客離開了，劫機者卻仍然留在飛機上。",
+          "reveal": 1,
+          "emotion": "數字與重點清楚，稍慢"
+        },
+        {
+          "id": "owlxfm",
+          "text": "留下的機組員，後來把飛機安全帶回地面。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "second-flight-night",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty airport runway at early night in the early nineteen seventies. The long paved strip recedes beneath a darkening sky, bordered by small evenly spaced runway lights. The centre remains open.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "vtsfnl",
+          "text": "天色轉暗之後，載著劫機者的飛機再度離開地面。"
+        }
+      ]
+    },
+    {
+      "id": "flight-sequence",
+      "template": "steps",
+      "data": {
+        "title": "飛行的兩段經過",
+        "steps": [
+          {
+            "title": "波特蘭 → 西雅圖",
+            "detail": "乘客搭機，地面交付贖金"
+          },
+          {
+            "title": "西雅圖再起飛",
+            "detail": "劫機者與機組仍在機上"
+          },
+          {
+            "title": "往雷諾途中",
+            "detail": "劫機者離開飛機"
+          }
+        ],
+        "source": "FBI 案件頁／FAA 歷史年表"
+      },
+      "claims": [
+        "c05",
+        "c06",
+        "c07"
+      ],
+      "lines": [
+        {
+          "id": "8k8waq",
+          "text": "第一段抵達西雅圖，乘客在這裡離開飛機。",
+          "reveal": 1,
+          "emotion": "數字與重點清楚，稍慢"
+        },
+        {
+          "id": "8rmuh5",
+          "text": "飛機再次起飛，往後卻少了一位機上的人。",
+          "reveal": 1
+        },
+        {
+          "id": "d8na5v",
+          "text": "就在飛往雷諾途中，他帶著贖金跳離飛機。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "tail-stairs-ground",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide rear three-quarter view of an unmarked early nineteen seventies passenger aircraft parked on a quiet apron in daylight. A high T-tail and three rear-mounted engines define the rear fuselage: two side nacelles and one centre tail inlet. A narrow lowered stairway extends from the rear underside of the fuselage down to flat pavement. The passenger wings remain ahead of the engines.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c07"
+      ],
+      "lines": [
+        {
+          "id": "l3e2nh",
+          "text": "這段經過記錄下來的出口，是飛機尾端的階梯。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "night-clouds",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a broad dark cloud layer above a distant wooded landscape at night. A narrow strip of land is visible below the clouds. The centre contains only soft cloud forms and the distant horizon.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c07",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "j01856",
+          "text": "跳離飛機的時間是晚上八點多，落地位置仍未知。"
+        }
+      ]
+    },
+    {
+      "id": "forest-unknown",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view across an empty wooded valley in overcast daylight. Low rounded hills and continuous forest surround a broad open centre. The landscape contains natural ground and trees with a distant pale horizon.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c07",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "l0lcr3",
+          "text": "知道人從飛機離開，還不能確定他在哪裡落地。"
+        }
+      ]
+    },
+    {
+      "id": "arrival-cabin",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of one empty airline seat beside an oval window in an early nineteen seventies passenger cabin. The cushion and tray are bare. Soft cabin lighting illuminates the simple cloth upholstery; the window remains dark.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c06",
+        "c08"
+      ],
+      "lines": [
+        {
+          "id": "g2w7ud",
+          "text": "機組平安降落以後，機艙裡剩下了可以追的東西。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "objects-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a shallow empty evidence tray on a plain table in a bright examination room. The tray has a low rectangular rim and an unmarked paper liner. Daylight falls across its centre from a side window.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c08"
+      ],
+      "lines": [
+        {
+          "id": "w6lulu",
+          "text": "那些留在飛機上的物件，能替他留下名字嗎？",
+          "emotion": "輕問，收斂"
+        }
+      ]
+    },
+    {
+      "id": "tie-original",
+      "template": "photo",
+      "data": {
+        "image": "stock/52f8ad581b3932f1060809875c43cfb05df710d0b19006db0e39083ed8604449.jpg",
+        "caption": "留在機上的領帶｜FBI 檔案照片",
+        "credit": "FBI／公有領域",
+        "tilt": 0
+      },
+      "claims": [
+        "c08"
+      ],
+      "lines": [
+        {
+          "id": "63ovsa",
+          "text": "這條留在飛機上的領帶，後來成為重要的物證。",
+          "emotion": "數字與重點清楚，稍慢"
+        }
+      ],
+      "chapter": "留下物件，仍缺身分"
+    },
+    {
+      "id": "tie-storage-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an open shallow archival box on a bright storage table. A single folded sheet of unmarked tissue lies inside the empty box. The box is centred under soft morning window light.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c08"
+      ],
+      "lines": [
+        {
+          "id": "hfg20z",
+          "text": "這件衣著物品被保存下來，讓調查能回頭找痕跡。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "sample-room",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a laboratory sample tube standing upright in a small rack on a clean examination bench in daytime. The single clear capped tube occupies the centre. Broad window light reveals the transparent material.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c08"
+      ],
+      "lines": [
+        {
+          "id": "yr2w73",
+          "text": "到了二〇〇一年，調查人員從這條領帶取得樣本。"
+        }
+      ]
+    },
+    {
+      "id": "sample-and-identity",
+      "template": "compare",
+      "data": {
+        "title": "樣本能接回誰",
+        "left": {
+          "heading": "領帶上的 DNA",
+          "points": [
+            "2001 年取得樣本"
+          ]
+        },
+        "right": {
+          "heading": "人的身分",
+          "points": [
+            "仍須確認樣本來源"
+          ]
+        },
+        "source": "FBI 2007 回顧｜探員說法"
+      },
+      "claims": [
+        "c08",
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "2dv25w",
+          "text": "領帶上留下了基因樣本，是一件具體的進展。",
+          "reveal": 1,
+          "emotion": "數字與重點清楚，稍慢"
+        },
+        {
+          "id": "9cuyiu",
+          "text": "但要靠它認人，還得知道樣本到底來自誰。",
+          "reveal": 1,
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "empty-name-file",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of one open empty hanging-file slot in an archive drawer during daylight. Plain divider tabs and the simple drawer frame surround the vacant central slot. Daylight falls from an unseen window.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "kb8zmc",
+          "text": "到目前公開的案件結論，這一步仍沒有確定答案。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "witness-interview-room",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty interview room in the early nineteen seventies, daytime. Two ordinary chairs face each other across a small wooden table. Broad daylight enters through a high window, illuminating the empty seats.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "gh7d6e",
+          "text": "調查也找空服員訪談，試著從她們的記憶重建外貌。"
+        }
+      ]
+    },
+    {
+      "id": "two-empty-chairs",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of two empty plain chairs spaced apart in a bright office waiting room. A simple wall and a wide window form the background. The pair of vacant chairs is centred and clearly separated.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "acbm6o",
+          "text": "探員卡爾回顧，當時有兩名空服員分開接受訪談。"
+        }
+      ]
+    },
+    {
+      "id": "interview-notebook",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one closed clothbound notebook on an interview-room desk in daytime. The plain cover and stitched spine are clearly visible. A narrow band of window light crosses the closed book.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "pk4lzt",
+          "text": "她們各自描述的外貌相近，讓調查有了辨認方向。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "portrait-limit",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty examination desk in a bright archive room. One plain upright empty picture frame stands at the centre of the desk, showing only its blank backing board. Daylight illuminates the wooden frame.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c10",
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "5g1qdi",
+          "text": "但要從外貌描述認出一個人，還得有其他證據。"
+        }
+      ]
+    },
+    {
+      "id": "investigation-candidates",
+      "template": "stats",
+      "data": {
+        "title": "到案發五週年時",
+        "stats": [
+          {
+            "value": "800 多人",
+            "label": "曾納入考慮的人選",
+            "note": "不是整段調查的總人數"
+          }
+        ],
+        "source": "FBI 案件頁｜查閱 2026-10-12"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "ekhbdm",
+          "text": "到劫機案發五週年時，考慮過的人選已有八百多名。",
+          "reveal": 1,
+          "emotion": "數字與重點清楚，稍慢"
+        }
+      ]
+    },
+    {
+      "id": "archive-many-folders",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a short row of closed plain document folders standing in a bright archive shelf. One empty gap appears between the folders at the centre. The broad wooden shelf and simple folders are lit by daylight.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "a6tel6",
+          "text": "大多數人後來被排除，數量沒有變成一個姓名。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "comparison-desk",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of two closed plain case folders placed separately on an office table in afternoon daylight. The folders have matching simple shapes with a clear gap between them. Window light spreads across the table.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c09",
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "q8jffy",
+          "text": "每出現一個人選，仍得回答物證怎麼和他相連。"
+        }
+      ]
+    },
+    {
+      "id": "search-empty-land",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view across an empty wooded clearing in overcast daylight. Low brush borders the flat open ground with a distant line of trees. The centre is a quiet stretch of natural terrain.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "gb1urz",
+          "text": "姓名以外，還有一個問題，一直沒有確定的答案。"
+        }
+      ]
+    },
+    {
+      "id": "survival-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty forested hillside under a low overcast sky. Closely spaced trees cover a rounded slope, with a narrow open foreground. Diffuse daylight makes the ground and tree line visible.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "vhxmuj",
+          "text": "帶著贖金離開飛機的庫柏，究竟有沒有活著落地？",
+          "emotion": "放低，輕問"
+        }
+      ]
+    },
+    {
+      "id": "carr-view",
+      "template": "quote",
+      "data": {
+        "quote": "卡爾認為，庫柏生還的可能性很低。",
+        "source": "FBI 2007 回顧｜探員看法轉述",
+        "kicker": "有出處的看法"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "2znsmj",
+          "text": "對這次跳傘，探員卡爾認為他生還的可能性很低。",
+          "emotion": "數字與重點清楚，稍慢"
+        }
+      ]
+    },
+    {
+      "id": "opinion-evidence-gap",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed plain evidence box beside a single empty paper tray in a bright archive room. The box and vacant tray sit apart on a broad table. Afternoon light falls evenly across both objects.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "xj1qom",
+          "text": "這是調查探員的判斷，還不是已證明的結局。"
+        }
+      ]
+    },
+    {
+      "id": "fate-remains-open",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of an open plain file binder on a bright wooden desk. The binder rings are empty and fully visible, with the covers lying flat. Daylight from a side window illuminates the central empty rings.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c10",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "fn1ooq",
+          "text": "庫柏的真實身分和最終下落，至今都還沒有確認。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "escape-story-limit",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty airport exit corridor in daytime. A plain closed door stands at the far end, with a broad clear floor leading toward it. Soft light from high side windows fills the corridor.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "tnppth",
+          "text": "所以沒被找到，不能替完美逃脫的故事作證。"
+        }
+      ]
+    },
+    {
+      "id": "objects-not-ending",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain archival storage drawer partly open in daylight. Two closed unmarked envelopes rest flat inside, separated by a simple divider. The drawer's central empty space catches window light.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c03",
+        "c09",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "7ua38j",
+          "text": "機票和領帶留下了線索，卻沒有替故事寫完結局。"
+        }
+      ]
+    },
+    {
+      "id": "river-chapter-bridge",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a Columbia River sandbank on a bright winter day in nineteen eighty. Smooth pale sand slopes gently toward calm broad water. Low brush and a wooded opposite shore remain in the distance.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "wkdz9n",
+          "text": "直到一九八〇年，另一件物證出現在河岸沙地。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "discovery-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a shallow irregular hollow in an otherwise smooth river sandbank during daylight. The small hollow has soft disturbed edges, surrounded only by sand and a few ordinary pebbles. Diffuse sunlight reveals its texture.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c12",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "ni8bje",
+          "text": "這次連錢都找到了，人的下落會跟著浮現嗎？",
+          "emotion": "提亮後收住，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "discovery-date",
+      "template": "stats",
+      "data": {
+        "title": "河岸找到贖金",
+        "stats": [
+          {
+            "value": "1980-02-10",
+            "label": "Tena Bar 河岸"
+          },
+          {
+            "value": "8 歲",
+            "label": "發現者 Brian Ingram"
+          }
+        ],
+        "source": "FBI 2009／Kaye、Meltzer（2020）"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "1w4j52",
+          "text": "一九八〇年二月十日，河岸沙地出現了贖金。",
+          "reveal": 1,
+          "emotion": "數字與重點清楚，稍慢"
+        },
+        {
+          "id": "jkxh5w",
+          "text": "找到這些鈔票的人，是一名當時八歲的男孩。",
+          "reveal": 1,
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ],
+      "chapter": "河岸只找回百分之二點九"
+    },
+    {
+      "id": "boy-bank",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide rear view of one anonymous small child standing on a broad river sandbank in daylight, nineteen eighty. The child wears a plain jacket and ordinary trousers and looks toward the ground. The figure is small, centred, and seen entirely from behind.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "oz4hby",
+          "text": "男孩叫布萊恩英格拉姆，發現地在哥倫比亞河岸。"
+        }
+      ]
+    },
+    {
+      "id": "sand-find",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a simple unmarked paper evidence packet resting on a clean board beside a daylight riverbank. The packet is fully closed, with smooth outer folds. Sand and a strip of water remain softly visible in the background.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "xaybl7",
+          "text": "河岸上的破損鈔票，把調查重新帶回那筆贖金。"
+        }
+      ]
+    },
+    {
+      "id": "money-serial-match",
+      "template": "photo",
+      "data": {
+        "image": "stock/f3e989c1f24e4204a3e8163e80b163c000e8af41ec98a78dbb15901ee8beab92.jpg",
+        "caption": "1980 年尋回的部分贖金｜FBI／公有領域",
+        "credit": "FBI／公有領域",
+        "tilt": 0
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "0fqgbq",
+          "text": "辨認這批鈔票的關鍵，是序號和當年的贖金相符。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "recovered-amount",
+      "template": "stats",
+      "data": {
+        "title": "這次找到多少",
+        "stats": [
+          {
+            "value": "5,800 美元",
+            "label": "河岸尋回的部分贖金",
+            "note": "FBI 公布金額"
+          }
+        ],
+        "source": "FBI 2009 回顧｜查閱 2026-10-12"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "vw3ni8",
+          "text": "最後確認找到的贖金金額，合計是五千八百美元。",
+          "reveal": 1,
+          "emotion": "數字與重點清楚，稍慢"
+        }
+      ]
+    },
+    {
+      "id": "fraction-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of one plain counting tray on a bright table. A single small smooth wooden block rests in one corner of its otherwise empty surface. Soft daylight reveals the tray's broad area and the small block.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "i180w7",
+          "text": "當年交付的是二十萬美元，這次到底找回了多少？",
+          "emotion": "數字慢清楚，提問"
+        }
+      ]
+    },
+    {
+      "id": "ransom-proportion",
+      "template": "steps",
+      "data": {
+        "title": "把金額放回比例",
+        "steps": [
+          {
+            "title": "5,800 ÷ 200,000",
+            "detail": "尋回金額 ÷ 原交付金額"
+          },
+          {
+            "title": "0.029 × 100",
+            "detail": "轉成百分比"
+          },
+          {
+            "title": "2.9%",
+            "detail": "只計本次尋回部分"
+          }
+        ],
+        "source": "FBI 金額｜比例實算 2026-10-12"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "56rgvu",
+          "text": "用五千八百美元，除以當初交付的二十萬美元。",
+          "reveal": 1,
+          "emotion": "數字與重點清楚，稍慢"
+        },
+        {
+          "id": "2j1ugk",
+          "text": "得到零點零二九，再乘以一百換成百分比。",
+          "reveal": 1
+        },
+        {
+          "id": "ugards",
+          "text": "結果是百分之二點九，連百分之三都不到。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "small-return",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small plain archival packet centred on a large empty storage tray in bright daylight. The packet occupies only a small part of the tray. The simple paper and tray edges are lit from the left.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c14",
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "hq1p3t",
+          "text": "這個比例回答找到多少，沒有回答其他錢在哪裡。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "other-money-unknown",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty archival shelving bay in afternoon light. One small closed plain box sits on the broad centre shelf. The surrounding shelf space is clearly empty and evenly lit.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "7bvfhj",
+          "text": "其餘贖金的去向，不能從這幾捆錢直接推出來。"
+        }
+      ]
+    },
+    {
+      "id": "place-not-route",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty river bend in bright overcast daylight. A low sandbank curves around the water beneath distant wooded hills. The continuous natural shoreline is the main central form.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "wqfnmw",
+          "text": "同樣地，發現的位置，也不是完整的搬運路線。"
+        }
+      ]
+    },
+    {
+      "id": "zone-and-bank",
+      "template": "compare",
+      "data": {
+        "title": "兩個位置，不是一條路線",
+        "left": {
+          "heading": "報稱跳傘區",
+          "points": [
+            "Ariel 一帶的推定區域"
+          ]
+        },
+        "right": {
+          "heading": "鈔票出土地",
+          "points": [
+            "Tena Bar 河岸",
+            "論文記相距約 30 公里"
+          ]
+        },
+        "source": "Kaye、Meltzer（2020）｜位置描述"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "tgq3r4",
+          "text": "論文把出土地，和原先報稱的跳傘區作比較。",
+          "reveal": 1,
+          "emotion": "數字與重點清楚，稍慢"
+        },
+        {
+          "id": "pi6auh",
+          "text": "兩邊大約相隔三十公里，但落地點並未確定。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "distance-not-drift",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view across broad calm river water toward a distant rounded wooded bank in daytime. The near shore is a smooth low strip of sand. Natural ground and water fill the centre under even daylight.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "2lt8vw",
+          "text": "這三十公里，不能直接說成鈔票漂流的距離。"
+        }
+      ]
+    },
+    {
+      "id": "transport-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a clear shallow dish containing still river water on a bright outdoor examination table. The water surface reflects the sky, with the simple circular rim visible. The background is a soft riverbank.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c16",
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "h6syro",
+          "text": "錢可能接觸過河水，可是什麼時候才接觸呢？",
+          "emotion": "自然提問"
+        }
+      ]
+    },
+    {
+      "id": "study-year",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a sealed metal examination chamber on a clean electron microscopy laboratory bench in daylight. A small closed specimen case sits beside the broad enclosed base. Soft side light defines the simple chamber and the separated case.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "g2gwqe",
+          "text": "二〇二〇年，兩名研究者把焦點放到鈔票表面。"
+        }
+      ]
+    },
+    {
+      "id": "single-bill-sample",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one closed flat specimen case on a bright laboratory table. The small square case has a smooth plain lid and a simple edge seam. It sits alone at the centre under diffuse daylight.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "rhj7vo",
+          "text": "他們實際分析的原鈔只有一張，不是全部出土贖金。"
+        }
+      ]
+    },
+    {
+      "id": "study-sample-scale",
+      "template": "compare",
+      "data": {
+        "title": "研究的樣本範圍",
+        "left": {
+          "heading": "實際分析",
+          "points": [
+            "1 張原始贖鈔",
+            "取自同一張的數個小片"
+          ]
+        },
+        "right": {
+          "heading": "不能擴大成",
+          "points": [
+            "全部出土鈔票",
+            "整筆 20 萬美元"
+          ]
+        },
+        "source": "Kaye、Meltzer（2020）｜方法"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "ys3em9",
+          "text": "從這張鈔票取下幾個小片，仍然是同一張樣本。",
+          "reveal": 1,
+          "emotion": "數字與重點清楚，稍慢"
+        },
+        {
+          "id": "yal4ge",
+          "text": "所以研究裡的線索，得先放在單張鈔票的範圍。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "diatom-observation",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a sealed specimen port in a metal examination chamber at an electron microscopy laboratory in daylight. The small smooth rectangular port sits flush with the broad metal surface. Soft laboratory light defines its narrow seam.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "z0pidb",
+          "text": "顯微鏡下，他們在鈔票上找到了一種微小藻類。"
+        }
+      ]
+    },
+    {
+      "id": "diatom-explained",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a clear capped water-sample bottle on a clean laboratory bench in daytime. The single transparent bottle contains still water and has a plain unmarked exterior. Bright window light reveals its shape.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "na689w",
+          "text": "這種微小藻類叫矽藻，研究者比較它們的種類。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "seasonal-comparison",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of two plain round sample dishes placed apart on a daylight laboratory table. Both dishes contain clear liquid and have identical simple rims. A broad empty gap separates them at the centre.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c17",
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "n8dzt2",
+          "text": "原鈔上留下的矽藻組合，和十一月的對照有差別。"
+        }
+      ]
+    },
+    {
+      "id": "modern-controls",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed plain sample container beside a river-water bottle on a clean bright bench. Both objects have smooth unmarked surfaces. Window light falls evenly across the separate container and bottle.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "j9782f",
+          "text": "對照用現代鈔票和河水，沒有案發當晚留下的水樣。"
+        }
+      ]
+    },
+    {
+      "id": "bloom-season",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty river surface in late-spring daylight. Broad calm water reflects a bright sky, with a low wooded shore in the distance. The image consists only of water, shore, and soft reflections.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "q0zto0",
+          "text": "其中一類矽藻，在引用的河川研究裡有季節差異。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "season-inference",
+      "template": "compare",
+      "data": {
+        "title": "作者推測的浸水季節",
+        "left": {
+          "heading": "案發月份",
+          "points": [
+            "11 月"
+          ]
+        },
+        "right": {
+          "heading": "較符合的季節",
+          "points": [
+            "5–6 月",
+            "年份仍未確定"
+          ]
+        },
+        "source": "Kaye、Meltzer（2020）｜研究推論"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "77qz33",
+          "text": "案發是在十一月，研究卻指向另一個季節。",
+          "reveal": 1,
+          "emotion": "數字與重點清楚，稍慢"
+        },
+        {
+          "id": "nbdnk8",
+          "text": "作者推測落在五月到六月，卻沒確定是哪一年。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "season-not-arrival",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a low riverbank where a smooth sandy shelf meets still water in bright daylight. The shoreline crosses the middle of the frame, with water on one side and dry sand on the other.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c18",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "howr48",
+          "text": "而且浸水的季節，還不是抵達這片河岸的日期。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "layers-sample",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one closed thin specimen holder on a clean electron microscopy laboratory bench in daylight. The holder is a small flat metal rectangle with a clearly defined narrow edge. Broad side light reveals its simple geometry.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "qmjt32",
+          "text": "研究還發現，有較大的矽藻留在鈔票夾層裡。"
+        }
+      ]
+    },
+    {
+      "id": "burial-experiment",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a small clear rectangular laboratory tray containing a flat layer of clean sand in a bright research room. The tray stands alone on a plain bench. Window light illuminates its transparent walls.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "lx8dlw",
+          "text": "他們另外用鈔票和沙做實驗，觀察矽藻怎麼進入。"
+        }
+      ]
+    },
+    {
+      "id": "immersion-before-burial",
+      "template": "steps",
+      "data": {
+        "title": "作者支持的解釋",
+        "steps": [
+          {
+            "title": "先浸水",
+            "detail": "鈔票接觸水體"
+          },
+          {
+            "title": "後被沙覆蓋",
+            "detail": "作者推論的先後順序"
+          }
+        ],
+        "source": "Kaye、Meltzer（2020）｜研究推論"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "n3u83z",
+          "text": "這項實驗，支持作者先浸水、後覆沙的解釋。",
+          "emotion": "自然清楚，語尾穩定",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "element-analysis-limit",
+      "template": "compare",
+      "data": {
+        "title": "元素訊號能說多少",
+        "left": {
+          "heading": "元素分析",
+          "points": [
+            "僅作定性輔助"
+          ]
+        },
+        "right": {
+          "heading": "偵測限制",
+          "points": [
+            "微小訊號接近能力極限"
+          ]
+        },
+        "source": "Kaye、Meltzer（2020）｜結果限制"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "pk9syd",
+          "text": "研究也比較元素訊號，但只能提供定性的輔助。",
+          "reveal": 1,
+          "emotion": "放慢，說清限制"
+        },
+        {
+          "id": "r53u5v",
+          "text": "部分訊號太小，已經接近這種分析能測到的極限。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "prototype-method",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a quiet electron microscopy laboratory in bright daylight. One closed specimen case rests on a clear bench beside an enclosed metal examination chamber. The chamber has a plain smooth exterior and a closed port.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "oz8f3n",
+          "text": "作者也提醒，這種季節推定方法還需要後續驗證。"
+        }
+      ]
+    },
+    {
+      "id": "simple-story-changed",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty river shore under an overcast winter sky. Broad still water meets a gently sloping sandbank, with dark leafless brush along the distant bank. Diffuse daylight keeps the ground clearly visible.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c18",
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "fmp55y",
+          "text": "它讓案發當晚就泡進河裡的簡單版本，出現疑問。"
+        }
+      ]
+    },
+    {
+      "id": "route-still-missing",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty grassy river terrace above a low sandbank in afternoon light. The open ground and the water below form two clear horizontal areas. Distant trees line the horizon.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c14",
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "jaj1pu",
+          "text": "但人怎麼移動，錢怎麼到這裡，仍沒有完整經過。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "science-chapter-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one sealed plain evidence box on a bright storage table beside an empty file tray. The box is centred and intact, while the tray remains visibly empty. Soft afternoon window light illuminates both.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c20",
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "wdpqbw",
+          "text": "錢留下了新線索，為什麼還是不能宣布破案？",
+          "emotion": "輕問，不加戲"
+        }
+      ]
+    },
+    {
+      "id": "case-answer-threshold",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain open archival folder beside a sealed evidence packet on a bright office desk. The folder has empty unmarked inner surfaces. The two separate objects are lit by afternoon window light.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "u3c7mf",
+          "text": "因為這些線索，還沒有接成能確定身分的證據。"
+        }
+      ],
+      "chapter": "不再主動調查，不是知道答案"
+    },
+    {
+      "id": "resources-date",
+      "template": "stats",
+      "data": {
+        "title": "2016 年的資源調整",
+        "stats": [
+          {
+            "value": "7 月 8 日",
+            "label": "轉移本案調查資源"
+          },
+          {
+            "value": "7 月 12 日",
+            "label": "對外公布聲明"
+          }
+        ],
+        "source": "FBI 2016-07-12 聲明｜繁中轉述"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "qu5nef",
+          "text": "二〇一六年七月八日，本案的調查資源被轉移。",
+          "reveal": 1,
+          "emotion": "重點清楚，稍慢"
+        },
+        {
+          "id": "jhjba4",
+          "text": "四天以後，美國聯邦調查局正式對外公布。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "active-investigation",
+      "template": "quote",
+      "data": {
+        "quote": "不再主動調查本案。",
+        "source": "FBI 2016-07-12 聲明｜繁中轉述",
+        "kicker": "2016 年的調查安排"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "1jbwgh",
+          "text": "經過將近四十五年，他們決定不再主動調查。",
+          "emotion": "重點清楚，稍慢"
+        }
+      ]
+    },
+    {
+      "id": "other-priorities",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a quiet office in bright afternoon light. One empty desk and a closed plain document cabinet occupy the room. A wide window illuminates the clear desk surface and simple cabinet doors.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "dxn6za",
+          "text": "調查資源轉向其他優先事項，並沒有帶來破案結論。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "status-and-answer",
+      "template": "compare",
+      "data": {
+        "title": "調查安排與案件答案",
+        "left": {
+          "heading": "資源調整",
+          "points": [
+            "不再主動調查"
+          ]
+        },
+        "right": {
+          "heading": "身分確認",
+          "points": [
+            "仍無確定辨認"
+          ]
+        },
+        "source": "FBI 2016-07-12 聲明｜繁中轉述"
+      },
+      "claims": [
+        "c21",
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "pmvj5a",
+          "text": "不再主動調查，說的是調查工作怎麼安排。",
+          "reveal": 1,
+          "emotion": "重點清楚，稍慢"
+        },
+        {
+          "id": "vz8s8t",
+          "text": "它沒有宣布找到庫柏，也沒有替他的下落定案。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "retained-evidence",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a secure archival storeroom in bright daylight. Closed plain evidence boxes sit on a short central shelf, with a simple cabinet door beside it. The room is orderly and evenly lit.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "xujqrr",
+          "text": "相關物證依然繼續保留，沒有因為這份聲明消失。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "physical-leads",
+      "template": "steps",
+      "data": {
+        "title": "仍可提供的實物線索",
+        "steps": [
+          {
+            "title": "可能相關的降落傘",
+            "detail": "仍請提供實物資訊"
+          },
+          {
+            "title": "可能相關的贖金",
+            "detail": "仍請提供實物資訊"
+          }
+        ],
+        "source": "FBI 2016-07-12 聲明｜繁中轉述"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "8t7icg",
+          "text": "如果發現可能相關的降落傘，仍可提供線索。",
+          "reveal": 1,
+          "emotion": "重點清楚，稍慢"
+        },
+        {
+          "id": "docw8e",
+          "text": "可能來自這筆贖金的現金，也在聲明列的範圍。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "evidence-reopening-limit",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one closed plain evidence locker with a simple handle in a bright archive room. The solid door fills the centre, surrounded by a narrow metal frame. Soft daylight reveals the handle and hinges.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "02zl9d",
+          "text": "保留實物線索的管道，和已確認身分仍是兩回事。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "two-kinds-of-inference",
+      "template": "compare",
+      "data": {
+        "title": "兩種不同的推論",
+        "left": {
+          "heading": "探員的看法",
+          "points": [
+            "評估生還可能性"
+          ]
+        },
+        "right": {
+          "heading": "鈔票研究",
+          "points": [
+            "推測浸水季節"
+          ]
+        },
+        "source": "FBI 2007／Kaye、Meltzer（2020）"
+      },
+      "claims": [
+        "c13",
+        "c18",
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "xdrjf4",
+          "text": "探員對生還的看法，回答的是人的命運。",
+          "reveal": 1,
+          "emotion": "重點清楚，稍慢"
+        },
+        {
+          "id": "ne1s5l",
+          "text": "研究者分析鈔票，追的是物件留下的季節線索。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "do-not-join-the-gaps",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of two closed plain evidence containers placed apart on a bright worktable. One is a small square specimen box and the other a shallow rectangular archival box. A clear empty gap separates them.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "ditcoc",
+          "text": "把兩種推論接在一起，也不會自動補成完整經過。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "research-after-statement",
+      "template": "compare",
+      "data": {
+        "title": "不同年份，不同工作",
+        "left": {
+          "heading": "2016 年",
+          "points": [
+            "調查機關調整資源"
+          ]
+        },
+        "right": {
+          "heading": "2020 年",
+          "points": [
+            "研究者發表鈔票分析"
+          ]
+        },
+        "source": "FBI 2016／Kaye、Meltzer（2020）"
+      },
+      "claims": [
+        "c21",
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "6ocrfg",
+          "text": "後來出現新的研究，能讓舊線索有新的問題。",
+          "reveal": 1,
+          "emotion": "重點清楚，稍慢"
+        },
+        {
+          "id": "0gpub5",
+          "text": "但論文發表本身，不能證明調查已經重新啟動。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "return-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty Columbia River sandbank in clear afternoon daylight. Broad water passes a low gently curving shore, with scattered natural pebbles in the foreground. The centre is open and calm.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "b2xl3y",
+          "text": "回到河岸那筆錢，我們究竟能確定哪些事情？",
+          "emotion": "輕問，準備收束"
+        }
+      ]
+    },
+    {
+      "id": "three-known-facts",
+      "template": "bullets",
+      "data": {
+        "title": "三個能留下的答案",
+        "items": [
+          "機票留下購票用名",
+          "贖金序號相符",
+          "身分與下落仍未確認"
+        ],
+        "source": "FBI 案件頁／機票文物頁／2016 聲明"
+      },
+      "claims": [
+        "c03",
+        "c12",
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "wuhlhs",
+          "text": "這張機票留下丹庫柏這個用名，卻沒有證明真名。",
+          "reveal": 1,
+          "emotion": "重點清楚，稍慢"
+        },
+        {
+          "id": "huejad",
+          "text": "河岸找回的贖金，序號能和當年的那筆錢相符。",
+          "reveal": 1
+        },
+        {
+          "id": "i9fjlf",
+          "text": "人的真實身分和最終下落，仍沒有確定的答案。",
+          "reveal": 1,
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ],
+      "chapter": "三個答案，仍少一條路線"
+    },
+    {
+      "id": "money-known-origin",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a sealed plain archival packet resting inside an open protective storage box in daylight. The packet lies flat in the centre, surrounded by clean tissue paper. Window light illuminates the careful storage.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c12",
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "nk8rvm",
+          "text": "所以錢回來了，讓我們確認的是一部分物件來源。"
+        }
+      ]
+    },
+    {
+      "id": "route-not-complete",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty river terrace with a broad stretch of sand between low grass and calm water in afternoon daylight. The continuous natural ground fills the centre, with a distant wooded bank beyond.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c14",
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "q79cb3",
+          "text": "要知道人去了哪裡，還缺把這些物件接起來的經過。"
+        }
+      ]
+    },
+    {
+      "id": "study-contribution",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a sealed plain specimen case on a clean electron microscopy laboratory bench in bright daylight. A smooth enclosed metal examination chamber stands farther behind it. The small case is the main centred object.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c20",
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "3gdgej",
+          "text": "一張鈔票上的研究，可以讓某些說法變得可疑。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "奇聞檔案局",
+        "lines": [
+          "找到 2.9% 贖金，仍未確認身分"
+        ],
+        "cta": "訂閱，繼續追物件背後的奇聞"
+      },
+      "claims": [
+        "c15",
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "gv8ke2",
+          "text": "找到百分之二點九。",
+          "emotion": "重點清楚，稍慢"
+        },
+        {
+          "id": "7zoolz",
+          "text": "哪件物證最意外？"
+        },
+        {
+          "id": "dgufsb",
+          "text": "訂閱，再追奇聞。",
+          "emotion": "自然清楚，語尾穩定"
+        }
+      ]
+    }
+  ]
+}

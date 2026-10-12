@@ -7,7 +7,10 @@
 - 題庫H05原有checked／ADOPT_WITH_CHANGES；本次重新讀取FBI、FAA、2020期刊全文及三張物證圖的來源／權利。三份當日研究已落地，圖片原檔已下載及實看，尚未完成成片呈現。
 - 三案企劃及獨立規劃覆核完成，0未解必修。原生Jev選A「從河岸贖金，倒追失蹤的人」：符合立場0.92、有示範0.95、建議0.01，正式站自動核准。不是承接H04的舊核准。
 - outline review `47f37652-00b8-4fec-a322-8f9a729af7e8`，建立及核准時間 `2026-10-12T09:47:37.209200Z`；brief SHA `b384685061f457187f4ba3c189ebc7c99dfa275607853f397c2e8ec5f5df2803`。`review-push-2026-10-12T09-47-33-209Z`、`review-pull-2026-10-12T09-47-59-872Z`均exit0，`reviews-2026-10-12T09-48-01.756Z.json` GET200讀回approved／choice=A。
-- 初始video.json僅供原生企劃登錄；完整A案稿正撰寫，並非已查核成稿或完成旁白。未執行TTS、插圖生成、render、assemble或上傳包。
+- 完整A案稿已取代初始企劃登錄稿；修正版video SHA `007bd144583905a61774bf0c7e92ac389431018bc955c2a0335cea759f984768`、claims SHA `4c1ab06a23eb749d757d56a214f2e2ac02597c84df0bab44cf1c96e900acce76`。105景、129句、2403口說單位。覆核已修正案發五週年、D.B.口說、研究推論圖解和兩次揭示的對拍，刪除五景同義補句；正式獨立覆核報告已綁定新版。
+- 原生lint於10:07:48 UTC通過（0 errors；3個空景構圖詞頻率提醒），估11分31秒、127狀態最多7.5秒、插圖估60.43%；這些仍是估算。`tts --dry-run`：127請求／2701計費字元，Sulafat ready。`keyframes --dry-run`：74鏡、MiniMax image-01 ready、1K、0超出prompt預算，約US$1單輪／US$3最多三輪。以上預檢無付費；插圖、render、assemble或上傳包仍未製作。
+- docs-videos檢查199／199通過，0 skipped（`_audit/docs-videos.log`）。這項檢查不等於音訊、圖片或播放器審看。
+- `verify-1.md`（SHA `25efe7d0bf042483f2b498679f6c6b463f9a0f84c64053bdc39ec76834a93441`）及 `listener-review.md`（SHA `63cb8c1e0cbed238d707cebb03222dabb9b7359a6c2034b135892882a925931b`）均綁定上述修正版，0未解必修。24主張全部覆核；只有五週年一組事實變更，不觸發第二事實輪。TTS於10:11 UTC開始，尚在合成，未宣稱音訊核准。
 
 ## 規格與界線
 
