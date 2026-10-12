@@ -45,15 +45,15 @@ STATUS_FIELDS = (
 # The same language under the tags YouTube may hand back for it.
 LANGUAGE_ALIASES = {"zh-hant": "zh-tw", "zh-hans": "zh-cn"}
 # What every title ends with, per language, so a viewer sees in the search results that the
-# video has captions (the owner's rule of 2026-10-12: 影片標題都要有「| CC字幕」, worded per
+# video has captions (the owner's rule of 2026-10-12: 影片標題都要有「｜CC字幕」, worded per
 # language). The worker adds it when it composes the package (tools/video/core/metadata.mjs
 # CAPTION_TAGS, the same table); the site adds it again on the way out, once, for the packages
 # approved before the rule and for a title the owner retyped on the card.
 CAPTION_TAGS = {
-    "zh-TW": " | CC字幕",
-    "en": " | CC Subtitles",
-    "ja": " | 字幕付き",
-    "ko": " | CC 자막",
+    "zh-TW": "｜CC字幕",
+    "en": "｜CC Subtitles",
+    "ja": "｜字幕付き",
+    "ko": "｜CC 자막",
 }
 
 

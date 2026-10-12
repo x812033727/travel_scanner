@@ -690,7 +690,7 @@ async def test_a_locked_short_is_scheduled_for_its_slot_under_the_owner_s_consen
     assert sent["status"]["publishAt"] == requests.publish_at_text(when)
     assert sent["status"]["selfDeclaredMadeForKids"] is False
     assert sent["status"]["containsSyntheticMedia"] is False
-    assert sent["snippet"]["title"] == "AI 真的可以？receipt | CC字幕"
+    assert sent["snippet"]["title"] == "AI 真的可以？receipt｜CC字幕"
     assert sent["snippet"]["categoryId"] == "28"
     assert sent["snippet"]["defaultLanguage"] == "zh-TW"
     assert sent["localizations"] == {}, "Traditional Chinese only, until the settings add more"

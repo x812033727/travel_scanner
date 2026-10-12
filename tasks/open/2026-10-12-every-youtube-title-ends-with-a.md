@@ -15,6 +15,7 @@ scope:
   - tools/video/core/metadata.test.mjs
   - tools/video/package/metadata.mjs
   - tools/video/core/compilation.mjs
+  - tools/video/core/compilation.test.mjs
   - tools/video/package/metadata.test.mjs
   - apps/api/app/video_youtube
   - apps/api/tests
@@ -24,14 +25,14 @@ scope:
 
 ## Why
 
-The owner asked on 2026-10-12 that every video title carry 「| CC字幕」, worded per language,
+The owner asked on 2026-10-12 that every video title carry 「｜CC字幕」, worded per language,
 so a viewer sees in search results that the video has captions.
 
 ## Definition of done
 
 - [x] Every title the site sends YouTube (videos.insert, videos.update, every localization, the
-      VPS Studio uploader) ends with its language's tag: zh-TW ` | CC字幕`, en ` | CC Subtitles`,
-      ja ` | 字幕付き`, ko ` | CC 자막`.
+      VPS Studio uploader) ends with its language's tag: zh-TW `｜CC字幕`, en `｜CC Subtitles`,
+      ja `｜字幕付き`, ko `｜CC 자막`.
 - [x] Packages the worker composes from now on already carry it (metadata.json, description.*.txt).
 - [x] The tag is added once: a title that already ends with it is left as it is.
 

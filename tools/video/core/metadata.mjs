@@ -26,15 +26,15 @@ export const LABELS = {
 };
 
 // What every title ends with, per locale, so a viewer sees in the search results that the video
-// has captions (the owner's rule of 2026-10-12: 影片標題都要有「| CC字幕」, worded per language).
+// has captions (the owner's rule of 2026-10-12: 影片標題都要有「｜CC字幕」, worded per language).
 // Every video carries at least its narration's captions, so the generic wording is always true.
 // apps/api/app/video_youtube/requests.py CAPTION_TAGS holds the same table for the packages
 // approved before this rule; keep the two in step.
 export const CAPTION_TAGS = {
-  "zh-TW": " | CC字幕",
-  en: " | CC Subtitles",
-  ja: " | 字幕付き",
-  ko: " | CC 자막",
+  "zh-TW": "｜CC字幕",
+  en: "｜CC Subtitles",
+  ja: "｜字幕付き",
+  ko: "｜CC 자막",
 };
 
 /** `title` ending with its locale's captions tag, added once (a title that has it stays as it is). */

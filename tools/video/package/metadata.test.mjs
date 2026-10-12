@@ -25,8 +25,8 @@ test("every locale's description credits the stock photos of assets[], and says 
   const translations = { en: { title: "How to pick an AI model", description: "Three questions decide it." } };
   const { problems, metadata } = composeMetadata({ doc, timeline, translations });
   assert.deepEqual(problems, []);
-  assert.equal(metadata.title, `${doc.youtube.title} | CC字幕`, "every title carries its language's captions tag");
-  assert.equal(metadata.localizations.en.title, "How to pick an AI model | CC Subtitles");
+  assert.equal(metadata.title, `${doc.youtube.title}｜CC字幕`, "every title carries its language's captions tag");
+  assert.equal(metadata.localizations.en.title, "How to pick an AI model｜CC Subtitles");
   assert.match(metadata.description, /\n\n📚 參考資料\n[^\n]+\n\n📷 圖片來源\nPhoto by Lukas Rodriguez on Pexels（Pexels License）：https:\/\/www\.pexels\.com\/photo\/seoul-at-night-3573351\/\n\n#/);
   assert.doesNotMatch(metadata.description, /Mokaair 自有圖解/, "own diagrams are not credited");
   assert.match(metadata.localizations.en.description, /\n\n📷 Image credits\nPhoto by Lukas Rodriguez on Pexels \(Pexels License\): https:\/\/www\.pexels\.com/);

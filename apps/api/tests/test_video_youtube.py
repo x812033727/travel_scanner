@@ -359,7 +359,7 @@ def test_an_update_keeps_what_the_video_has_and_replaces_only_what_the_site_owns
     assert body["id"] == "vid00000001"
     assert body["snippet"] == {
         # Every title ends with its language's captions tag (requests.CAPTION_TAGS).
-        "title": "改過的標題 | CC字幕",
+        "title": "改過的標題｜CC字幕",
         "description": "改過的說明",
         "tags": ["AI", "模型"],
         "categoryId": "28",
@@ -377,8 +377,8 @@ def test_an_update_keeps_what_the_video_has_and_replaces_only_what_the_site_owns
     }
     assert body["localizations"] == {
         "ko": {"title": "k", "description": "d"},
-        "en": {"title": "Picking an AI model | CC Subtitles", "description": "How to pick."},
-        "ja": {"title": "AIモデルの選び方 | 字幕付き", "description": "選び方。"},
+        "en": {"title": "Picking an AI model｜CC Subtitles", "description": "How to pick."},
+        "ja": {"title": "AIモデルの選び方｜字幕付き", "description": "選び方。"},
     }
     assert current["localizations"]["zh-TW"] == {"title": "old"}, "the input is not mutated"
 
@@ -455,21 +455,21 @@ def test_an_english_narration_is_both_defaults_and_keeps_zh_tw_as_a_localization
     # The own language is the snippet, so its copies go; the foreign zh-TW one is sent.
     assert body["localizations"] == {
         "ko": {"title": "k", "description": "d"},
-        "zh-TW": {"title": "AI 模型怎麼挑 | CC字幕", "description": "這支影片回答怎麼挑 AI 模型。"},
-        "ja": {"title": "AIモデルの選び方 | 字幕付き", "description": "選び方。"},
+        "zh-TW": {"title": "AI 模型怎麼挑｜CC字幕", "description": "這支影片回答怎麼挑 AI 模型。"},
+        "ja": {"title": "AIモデルの選び方｜字幕付き", "description": "選び方。"},
     }
 
 
 def test_every_title_ends_with_its_language_s_captions_tag_once() -> None:
-    assert requests.captioned("AI 模型怎麼挑", "zh-TW") == "AI 模型怎麼挑 | CC字幕"
-    assert requests.captioned("Picking a model", "en") == "Picking a model | CC Subtitles"
-    assert requests.captioned("AIモデルの選び方", "ja") == "AIモデルの選び方 | 字幕付き"
-    assert requests.captioned("AI 모델 고르기", "ko") == "AI 모델 고르기 | CC 자막"
+    assert requests.captioned("AI 模型怎麼挑", "zh-TW") == "AI 模型怎麼挑｜CC字幕"
+    assert requests.captioned("Picking a model", "en") == "Picking a model｜CC Subtitles"
+    assert requests.captioned("AIモデルの選び方", "ja") == "AIモデルの選び方｜字幕付き"
+    assert requests.captioned("AI 모델 고르기", "ko") == "AI 모델 고르기｜CC 자막"
     # A package the worker composed after the rule already has it: it is not added twice.
-    assert requests.captioned("AI 模型怎麼挑 | CC字幕", "zh-TW") == "AI 模型怎麼挑 | CC字幕"
-    assert requests.captioned("AI 模型怎麼挑 | CC字幕 ", "zh-TW") == "AI 模型怎麼挑 | CC字幕"
+    assert requests.captioned("AI 模型怎麼挑｜CC字幕", "zh-TW") == "AI 模型怎麼挑｜CC字幕"
+    assert requests.captioned("AI 模型怎麼挑｜CC字幕 ", "zh-TW") == "AI 模型怎麼挑｜CC字幕"
     # A language without a tag of its own reads the English one.
-    assert requests.captioned("t", "fr") == "t | CC Subtitles"
+    assert requests.captioned("t", "fr") == "t｜CC Subtitles"
     assert set(requests.CAPTION_TAGS) == set(requests.NARRATION_LANGUAGES)
 
 

@@ -175,11 +175,11 @@ test("hashtags drop spaces and punctuation, skip repeats in any case and stop at
 });
 
 test("every title ends with its language's captions tag, added once", () => {
-  assert.equal(withCaptionTag("AI 模型怎麼挑｜原來如此事務所", "zh-TW"), "AI 模型怎麼挑｜原來如此事務所 | CC字幕");
-  assert.equal(withCaptionTag("Picking a model", "en"), "Picking a model | CC Subtitles");
-  assert.equal(withCaptionTag("AIモデルの選び方", "ja"), "AIモデルの選び方 | 字幕付き");
-  assert.equal(withCaptionTag("AI 모델 고르기", "ko"), "AI 모델 고르기 | CC 자막");
-  assert.equal(withCaptionTag("AI 模型怎麼挑 | CC字幕 ", "zh-TW"), "AI 模型怎麼挑 | CC字幕", "not twice");
-  assert.equal(withCaptionTag("t", "fr"), "t | CC Subtitles", "an untabled locale reads the English tag");
+  assert.equal(withCaptionTag("AI 模型怎麼挑｜原來如此事務所", "zh-TW"), "AI 模型怎麼挑｜原來如此事務所｜CC字幕");
+  assert.equal(withCaptionTag("Picking a model", "en"), "Picking a model｜CC Subtitles");
+  assert.equal(withCaptionTag("AIモデルの選び方", "ja"), "AIモデルの選び方｜字幕付き");
+  assert.equal(withCaptionTag("AI 모델 고르기", "ko"), "AI 모델 고르기｜CC 자막");
+  assert.equal(withCaptionTag("AI 模型怎麼挑｜CC字幕 ", "zh-TW"), "AI 模型怎麼挑｜CC字幕", "not twice");
+  assert.equal(withCaptionTag("t", "fr"), "t｜CC Subtitles", "an untabled locale reads the English tag");
   assert.deepEqual(Object.keys(CAPTION_TAGS).sort(), ["en", "ja", "ko", "zh-TW"]);
 });
