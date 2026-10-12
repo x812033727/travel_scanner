@@ -129,13 +129,18 @@ class FakeGoogle:
         path = url.path
         if path == "/youtube/v3/channels":
             refused = self._refused("channels.list")
+            uploads = {"contentDetails": {"relatedPlaylists": {"uploads": "UU" + CHANNEL[2:]}}}
             return refused or httpx.Response(
-                200, json={"items": [self.channel] if self.channel else []}
+                200, json={"items": [{**self.channel, **uploads}] if self.channel else []}
             )
+        if path == "/youtube/v3/playlistItems":
+            refused = self._refused("playlistItems.list")
+            newest = [{"contentDetails": {"videoId": key}} for key in reversed(self.videos)]
+            return refused or httpx.Response(200, json={"items": newest[:50]})
         if path == "/youtube/v3/videos" and request.method == "GET":
             refused = self._refused("videos.list")
-            video = self.videos.get(query["id"][0])
-            return refused or httpx.Response(200, json={"items": [video] if video else []})
+            found = [self.videos[key] for key in query["id"][0].split(",") if key in self.videos]
+            return refused or httpx.Response(200, json={"items": found})
         if path == "/youtube/v3/videos" and request.method == "PUT":
             refused = self._refused("videos.update")
             if refused:

@@ -601,6 +601,27 @@ def _session_of(stored: str | None, sha256: str) -> str | None:
     return uri if sha == sha256 and uri else None
 
 
+async def _same_title_on_channel(
+    client: YoutubeClient, metadata: dict[str, Any], title: str
+) -> str | None:
+    """A video among the channel's fifty newest uploads that already carries this title.
+
+    A video uploaded in Studio but never pasted on the card is invisible to the site, and a
+    second videos.insert then puts a twin on the channel (curio-l08, 2026-10-12). Three units
+    against the upload's 1,600.
+    """
+    uploads = await client.uploads_playlist()
+    if uploads is None:
+        return None
+    language = narration_language(metadata)
+    names = [name.strip() for name in (title, str(metadata.get("title") or "")) if name.strip()]
+    titles = {*names, *(captioned(name, language).strip() for name in names)}
+    for video in await client.videos(await client.playlist_videos(uploads), parts="snippet"):
+        if str(as_dict(video.get("snippet")).get("title") or "").strip() in titles:
+            return str(video.get("id") or "") or None
+    return None
+
+
 async def _upload(run: Run) -> str:
     """videos.insert through a resumable session; returns the new video's id."""
     async with run.factory() as session:
@@ -622,6 +643,12 @@ async def _upload(run: Run) -> str:
         if state.kind == "gone":
             session_uri = None
     if session_uri is None:
+        twin = await _same_title_on_channel(client, run.package.metadata, run.request["title"])
+        if twin:
+            raise StepFailed(
+                f"頻道上已經有同名的影片（{twin}），可能已經在 Studio 傳過了，網站不再傳第二支；"
+                "是同一支的話，改用「已在 Studio 上傳」貼上它的網址"
+            )
         body = insert_body(run.package.metadata, run.request["title"], run.request["description"])
         await run.ensure_current(final)
         session_uri = await client.start_upload(body, size=size, content_type=final.content_type)
@@ -696,6 +723,17 @@ def _visibility_text(request: dict[str, Any]) -> str:
 
 async def _details(run: Run, video_id: str) -> str:
     client = await run.client()
+    async with run.factory() as session:
+        linked = await session.scalar(
+            select(VideoProject.youtube_video_id).where(VideoProject.slug == run.slug)
+        )
+    # A pasted address never silently replaces a different video the site already put on the
+    # channel: that one would be left there, forgotten (curio-l08, 2026-10-12).
+    if linked and linked != video_id and await client.video(linked) is not None:
+        raise StepFailed(
+            f"這支已經記成 {linked}，跟貼上的 {video_id} 不同，兩支都還在頻道上："
+            "先在 Studio 刪掉多的那支，再貼上留下那支的網址重送"
+        )
     video = await client.video(video_id)
     if video is None:
         raise StepFailed("找不到這支影片：網址對嗎？影片要在連結的頻道裡")
