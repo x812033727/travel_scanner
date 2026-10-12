@@ -9,7 +9,7 @@
 - 碰撞檢查：H04 沒有 active task 或 open PR；正式站 H04 GET 回 404，沒有既有製作要接手。
 - 正式站頻道立場已讀回，`auto_pick_outline=true`。本次大綱套用 2、3、4、6、9。
 - `brief.md` 三案已送審，站主選定 A；正式站與原生 consumer 均讀回本次雜湊的核准。
-- 完整 A 案腳本與四句口語修正已落地，獨立事實與聽眾審稿均 PASS、0 未解必修；119句旁白全數機器檢查通過，正式站已核准並讀回。帳篷與弱層小樣可保留，七處足跡改為已覆核原創圖解；其餘情境插圖製作中，尚未完成成片。
+- 完整 A 案腳本、119句旁白、60張情境插圖、12張原創SVG、正式字卡、成片與119條繁中CC已完成；獨立事實／聽眾覆核及原生QA通過。成片實測612.100秒，正文604.0667秒。大綱、旁白及分鏡核准已由正式站讀回；成片核准與上傳包尚待完成，未宣稱完整播放、聽音或播放器CC驗收。
 
 ## 製作界線
 
@@ -132,6 +132,25 @@
 - `snow-return-season` 三張均9.71分，原生同分取seed1，卻有中央吉祥物；root與獨立覆核者實看seed2、seed3均無人物，以seed2低圓雪坡最貼近用途。核對source／look／pictures／全部候選SHA、producer已退出、STOP與lease後，只把六個selected欄位改成既有seed2，0新呼叫。新圖SHA `4d1a6dde4ccf584a734a2a8f21e63fee15a932255f7c15a07f3732a4d9f54cbf`；仍保留judge.passed=false、needs_review=true、全部takes及原評語。備份收據 `snow-take-selection-2026-10-12T08-15-11-426Z/receipt.json`；共用工具後續另記[既有候選選圖任務](../../../tasks/open/2026-10-12-select-reviewed-existing-keyframe-take.md)，本集未改工具。
 - 原生 `keyframes --accept-best slope-small-feature,field-weather,snow-return-season` exit0，僅3張已有實看可接受小差異的圖；重新產出聯絡表，保留所有take評語，成片明確要求站主審看。舊take的問題歷史不代表每項仍存在於目前selected。08:16覆蓋核查為60/60 AI目前SHA已實看可用、12/12 SVG預覽覆核完整、0未解material。
 - storyboard review `3ba806bc-0250-4f10-9b96-35ee1c664de6` 於 `2026-10-12T08:16:23.222977Z` 送出，content SHA `9fe70948cf7fe998acdca585eb843cacb6ae3c8062fa17c15c55f80e760756c8`，60鏡／3頁聯絡表／3鏡保留。原生pull exit3及GET200讀回均pending；並未代替站主核准。繼續製作可供具體審看的成片，再請站主一併審看分鏡與成片。
+
+### 正式畫面與轉場覆核
+
+- `render-2026-10-12T08-16-42-648Z` 於08:22:30 UTC exit0：57個非shot狀態全部新繪，347秒，版面0問題。frames manifest SHA `a1f4a2095b64bc1204e2db92862e189c1759cf22559b2d064105037294f4fcd1`，visual hash `692ef48ab5b9abaa` 與現行source一致。
+- 外部 `visual-coverage.json` 逐景核對當前selected與原圖bytes：60/60 AI已有實看可用結果、12/12 SVG已覆核；57/57正式settled PNG與先前實看預覽完全相同，warnings及unresolved皆空。圖像檔名相同不足以沿用，這次逐一核對了SHA。
+- 三份 `formal-render-review-{first,middle,last}.json/md` 覆蓋全部57定格並另外實看37張代表轉場PNG：前18、中4、後15張，包含原件、足跡、切口、風吹雪、滑移及結論卡，0材料性／裁切／重疊問題。這是定格與抽樣轉場覆核，不宣稱全片播放、聽音或播放器CC已驗收。
+- 正式thumbnail SHA `eac7d20091c50e6562dc3a660c427a5674bf5e1d85931c1f0b90d93a90957b6d`，與已實看1280及320寬預覽一致。只製繁中，未因renderer印出其他語言縮圖缺字提示而啟動翻譯。
+- 原生assemble已於08:23:13 UTC啟動；完成片長、檢查與字幕收據另記，不將啟動視為成功。
+
+### 成片、繁中字幕與自動 QA
+
+- 原生 `assemble-2026-10-12T08-23-13-591Z.receipt.json` 於 `2026-10-12T08:46:30.787Z` exit0，receipt SHA `3611fe2fabe3029af3d842c7dc43a9df8c27993f19e0c47a733938a6a1a932a7`。`final.mp4` SHA `262b2018a767cd7c1bdee9ff51cd54534e14e4199ec169ca9eb2b9a203ea3d86`，150,713,503 bytes；1920×1080 H.264、48 kHz雙聲道AAC、-14 LUFS／true peak -0.9 dBFS。
+- `checks.ok=true`、problems=[]：100景、119句，正文18,122格＋片頭150格＋片尾90格＝18,362格。30 fps格數換算612.0667秒，ffprobe容器／影音均報612.100秒，相差一格；保留此時間備註，不以機械檢查代替聽感或音畫同步驗收。獨立 `_audit/final-assembly-audit.json`（SHA `a30d01484212768d8895bd42986439ed8ece5599291fe6e152143196e0766fe9`）重新核對source、speech／visual／look、timeline、音檔、成片及所有採用素材hash，0材料性阻擋。
+- 原生 `captions-2026-10-12T08-48-35-027Z.receipt.json` 產出繁中119 cues；08:48:43 UTC依已審提案只修10處換行，119句文字及時間全部不變、0問題、0 provider calls。`_audit/caption-wrap-applied/receipt.json` SHA `e35da6b1a58d7f810afbbe5b104cb5d2202b83acd22a58fee42b477f8bdb09f8`；最終SRT SHA `630b8dd14e921284b23480a4ac4b45b242913396df222de9a63fe315d79fcab1`、VTT SHA `692a10f6ae90a943a20a42fa900bd7fc0d6bd847e526afa2a73b1eae7d39b2e2`。
+- 正式字幕獨立覆核 `_audit/final-caption-audit.json`（SHA `27f8a22e1253a4af810c2a1e5e9013498df0fe527775fa7770e2c0b6692a5c97`）PASS：119／119逐句對source、timeline、150格片頭及48 kHz音訊重算，SRT／VTT文字、時間及順序相符；恰為10處換行、109條未改，每行寬≤16、最多2行、無重疊、原生problems=[]。這是字幕資料覆核，播放器顯示與聽覺同步仍未驗證。
+- `review/qa.json` 綁上述final SHA，11／11項通過、15個來源連結均可讀，7章節與目前時間軸一致；QA SHA `3b3d8635a0c7ebe6417c1c8d1c1f7a62bc306a048630cf6f4555f46b0c747e9b`。三張採用既有候選／小差異的 `slope-small-feature`、`snow-return-season`、`field-weather` 仍保留原生judge評語，供站主審看成片，不把accept-best改寫成judge通過。
+- 08:52:19 UTC GET200回讀 `_audit/reviews-2026-10-12T08-52-19.312Z.json`（SHA `5915d7100cb5f689790fe611f7b183fd37d0666dd977269d12faf5529adcbb49`）：分鏡review `3ba806bc-0250-4f10-9b96-35ee1c664de6` 已於 `2026-10-12T08:25:59.333080Z` 核准，content SHA仍為 `9fe70948cf7fe998acdca585eb843cacb6ae3c8062fa17c15c55f80e760756c8`。大綱及旁白亦approved；08:16的pending紀錄保留為歷史，不再重問分鏡核准。
+- `review-push-2026-10-12T08-48-44-112Z` 已exit0（receipt SHA `63cadbe89788e7d999fc383e70b0ff4bace8f2a334f93b252085c487e6933799`）。final review `0825f526-228e-4ad5-98de-efd02394c4bc` 於 `2026-10-12T08:52:37.919984Z` 建立，綁同一final SHA；08:52:46原生pull exit3等待成片核准，已記錄分鏡approved。`_audit/reviews-2026-10-12T08-52-49.761Z.json` GET200回讀final仍pending（SHA `fe04ded924de7f3118dbc4a2a444f13790b23e59b95157882bc674dd09646c33`）。本次只請站主審看成片及三張保留圖，不重問語言或分鏡。
+- 上傳包與其consumer回讀尚未完成。瀏覽器連續播放、播放器CC顯示及完整聽音均為 `NOT_RUN`：IAB連接逾時，Chrome使用者工作階段不可用。`_audit/local-player-availability.json` 於08:53:36 UTC僅驗證本機審片頁HTTP可用：MP4 Range206回傳0–63／150,713,503 bytes，VTT200且含WEBVTT；UI開啟結果未確認，不把HTTP／字幕檔存在當作播放器驗收。
 
 `_audit/preflight-reviews.json` 與 `_audit/preflight-settings.json` 保存唯讀預檢。
 `_audit/plan-check.json`、`review-push-2026-10-12T04-53-20-715Z.receipt.json`、

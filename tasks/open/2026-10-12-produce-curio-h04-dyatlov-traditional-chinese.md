@@ -1,11 +1,11 @@
 ---
 id: 2026-10-12-produce-curio-h04-dyatlov-traditional-chinese
 title: Produce Curio H04 Dyatlov Traditional Chinese video
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-curio-h04
-claimed_at: 2026-10-12T05:19:41Z
+owner:
+claimed_at:
 created_at: 2026-10-12T04:45:10Z
 completed_at:
 branch: codex/curio-h04-production-20261012
@@ -33,7 +33,7 @@ scope:
 - [x] 新建獨立分支並認領窄範圍；讀回當前頻道立場。
 - [x] 刷新一手來源與圖片授權，完成三案並送審。
 - [x] 撰稿、lint、獨立事實查核與聽眾審稿。
-- [ ] 合成旁白並逐句檢查、製作及審看插圖與字卡。
+- [x] 合成旁白並逐句檢查、製作及審看插圖與字卡。
 - [ ] 合成、繁中 CC、QA、核准與上傳包驗證。
 
 ## How to verify
@@ -54,3 +54,7 @@ scope:
 - 兩次轉寫答案遺失分別取得站主單筆一次重試授權，均已成功；Windows rename EPERM另依confirmed原件核對恢復，0重買。詳情與收據索引在PRODUCTION.md。
 - 帳篷、弱層插圖小樣實看可保留；7張原創向量示意已實看並整合，舊足跡take保留。65張情境插圖主批次製作中；正式字卡及成片尚未完成。最新文件測試199 passed／0 failed。
 - 08:02 UTC來源更新為 `3f2fdb0864afaa199e994f47bb180c6662e2e46efcc74da2c307e4268353e5e0`：現為60張AI情境插圖、12張已實看的原創SVG、3張授權文書裁切。speech/timeline不變。13項材料性畫面問題以4張SVG及9張窄範圍修圖處理；完整候選及修正收據保留在外部 `_audit/science-repairs-integration/`。08:04文件檢查199 passed／0 failed。正式render、assemble、繁中字幕與final review接續完成。
+- 08:46:30 UTC assemble exit0；正文604.0667秒、成片ffprobe 612.100秒／18,362格，final SHA `262b2018a767cd7c1bdee9ff51cd54534e14e4199ec169ca9eb2b9a203ea3d86`。60/60 AI目前圖與12/12 SVG已有實看證據；57正式字卡狀態hash均與已審預覽一致，另實看37張代表轉場。獨立成片組裝稽核0材料性阻擋；保留一格容器時間差備註。
+- 繁中119 cues完成，`_audit/caption-wrap-applied/receipt.json`證明10處僅換行、文字／時間不變；原生QA 11/11、15個連結可讀，綁目前final SHA。證據索引與完整SHA見PRODUCTION.md。本次只勾媒體製作步驟，成片核准與上傳包DoD仍開放。
+- 08:52:19 UTC正式站GET200讀回分鏡review `3ba806bc-0250-4f10-9b96-35ee1c664de6` approved（08:25:59 UTC），同一 `9fe70948…` content SHA；大綱／旁白亦approved。final push隨後exit0，final review `0825f526-228e-4ad5-98de-efd02394c4bc` 於08:52:37 UTC建立，綁目前final SHA；08:52:46原生pull exit3、08:52:49 GET200均確認成片pending。只等成片及三張保留圖審看，不重問語言／分鏡；上傳包DoD保留。
+- IAB連接逾時、Chrome使用者工作階段不可用，連續播放／完整聽音／播放器CC均 `NOT_RUN`。08:53:36本機播放器僅HTTP Range206及VTT200確認，UI結果未確認，不等於播放驗收。未做YouTube上傳、公開、merge或部署。
