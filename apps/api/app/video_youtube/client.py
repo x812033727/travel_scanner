@@ -247,6 +247,28 @@ class YoutubeClient:
                 found.append(video_id)
         return found
 
+    async def playlist_page(
+        self, playlist_id: str, page_token: str | None = None
+    ) -> tuple[list[str], str | None]:
+        """playlistItems.list (1 unit): one page of fifty ids and the next page's token."""
+        params = {"part": "contentDetails", "playlistId": playlist_id, "maxResults": "50"}
+        if page_token:
+            params["pageToken"] = page_token
+        body = _json(
+            await self.http.get(
+                f"{API}/playlistItems", params=params, headers=self.headers, timeout=TIMEOUT
+            )
+        )
+        items = body.get("items")
+        found: list[str] = []
+        for item in items if isinstance(items, list) else []:
+            details = item.get("contentDetails") if isinstance(item, dict) else None
+            video_id = details.get("videoId") if isinstance(details, dict) else None
+            if isinstance(video_id, str) and video_id:
+                found.append(video_id)
+        token = body.get("nextPageToken")
+        return found, token if isinstance(token, str) and token else None
+
     async def videos(self, video_ids: Sequence[str], *, parts: str) -> list[dict[str, Any]]:
         """videos.list (1 unit) for up to fifty ids at once; a video that is gone, or that the
         grant may not see, is simply not in the answer."""

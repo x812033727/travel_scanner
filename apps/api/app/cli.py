@@ -92,6 +92,8 @@ from app.video_automation.story_cli import import_story_file
 from app.video_media.prune_cli import prune_video_media
 from app.video_reviews.admin_service import backfill_youtube_publish_times
 from app.video_youtube.errors import Refused as YoutubeRefused
+from app.video_youtube.retitle import DEFAULT_LIMIT as CAPTION_TITLES_LIMIT
+from app.video_youtube.retitle import caption_channel_titles
 
 
 async def add_usage_package(email: str, package_code: str, reference: str) -> None:
@@ -443,6 +445,13 @@ async def backfill_video_publish_times(apply: bool) -> dict[str, Any]:
     reports (admin_service.backfill_youtube_publish_times); one line per video either way."""
     async with SessionFactory() as session:
         return await backfill_youtube_publish_times(session, apply=apply)
+
+
+async def caption_video_titles(apply: bool, limit: int) -> dict[str, Any]:
+    """Give the titles of the videos already on the channel their captions tag
+    (video_youtube.retitle); reports only unless ``apply``."""
+    async with SessionFactory() as session:
+        return await caption_channel_titles(session, apply=apply, limit=limit)
 
 
 def fill_hotspot_labels(files: list[str], dry_run: bool, overwrite_original: bool) -> None:
@@ -1103,6 +1112,24 @@ def main() -> None:
     publish_times.add_argument(
         "--apply", action="store_true", help="Write the times instead of only reporting them"
     )
+    caption_titles = subparsers.add_parser(
+        "video-youtube-caption-titles",
+        help=(
+            "End the title of every video already on the linked channel, and of each of its "
+            "languages, with that language's captions tag (｜CC字幕...), public videos included; "
+            "a title the tag would push past 100 characters is reported and left. Reports only "
+            "unless --apply; each update costs 50 quota units."
+        ),
+    )
+    caption_titles.add_argument(
+        "--apply", action="store_true", help="Send the updates instead of only reporting them"
+    )
+    caption_titles.add_argument(
+        "--limit",
+        type=int,
+        default=CAPTION_TITLES_LIMIT,
+        help=f"At most this many updates in one run (default {CAPTION_TITLES_LIMIT})",
+    )
     story_import = subparsers.add_parser(
         "video-story-import",
         help=(
@@ -1291,6 +1318,13 @@ def main() -> None:
     elif args.command == "video-youtube-backfill-publish-times":
         try:
             outcome = asyncio.run(backfill_video_publish_times(apply=args.apply))
+        except YoutubeRefused as refused:
+            print(f"ERROR {refused.code}: {refused.detail}", file=sys.stderr)
+            raise SystemExit(2) from None
+        print(json.dumps(outcome, ensure_ascii=False, indent=2))
+    elif args.command == "video-youtube-caption-titles":
+        try:
+            outcome = asyncio.run(caption_video_titles(apply=args.apply, limit=args.limit))
         except YoutubeRefused as refused:
             print(f"ERROR {refused.code}: {refused.detail}", file=sys.stderr)
             raise SystemExit(2) from None
