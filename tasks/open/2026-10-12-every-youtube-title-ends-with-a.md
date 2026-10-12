@@ -19,6 +19,10 @@ scope:
   - tools/video/package/metadata.test.mjs
   - apps/api/app/video_youtube
   - apps/api/tests
+  - tools/video/core/narration-locale.test.mjs
+  - tools/video/review/sync.test.mjs
+  - docs/videos/long-form/review.json
+  - docs/videos/long-form/review.md
 ---
 
 # Every YouTube title ends with a per-language CC captions tag

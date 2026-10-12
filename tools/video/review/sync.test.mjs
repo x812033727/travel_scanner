@@ -854,7 +854,7 @@ test("the final review carries the narration's and zh-TW's titles whatever the c
     rmSync(box.base, { recursive: true, force: true });
     return Object.fromEntries(Object.entries(metadata).map(([locale, fields]) => [locale, fields.title]));
   };
-  assert.deepEqual(await titles("en", "fixture-en"), { en: "Which AI model is worth paying for? Three questions", "zh-TW": "zh-TW title" });
+  assert.deepEqual(await titles("en", "fixture-en"), { en: "Which AI model is worth paying for? Three questions｜CC Subtitles", "zh-TW": "zh-TW title｜CC字幕" });
   const zh = await titles("minimal", "fixture-minimal");
   assert.deepEqual(Object.keys(zh), ["zh-TW"], "a zh-TW video sends its own title alone, as before");
 });
