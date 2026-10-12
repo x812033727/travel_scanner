@@ -1,8 +1,36 @@
 # 頻道片頭與片尾
 
 Mokaair 選定一組 1920×1080、30 fps 的固定素材：5 秒／150 格無標語片頭，
-以及 3 秒／90 格的按讚、分享、開啟小鈴鐺片尾。音軌沿用原素材的音效。
+以及 21 秒／630 格的結束畫面片尾（下節）。片頭音軌沿用原素材的音效。
 媒體和選定的 `manifest.json` 留在 repository 外；Git 只保存工具、測試及規格。
+
+## 結束畫面片尾
+
+站主 2026-10-12 決定片尾拉長、放其他影片連結並加配樂。片尾依序是：
+
+1. 1 秒停頓：原片尾第一格定格，配樂從無聲淡入。正文最後一句本來就在正文結束前約
+   1.8 秒講完，合計約 2.8 秒停頓才進動畫，片尾不會切在話尾。
+2. 3 秒原有的按讚、分享、開啟小鈴鐺動畫（90 格，畫面與音效原樣）。
+3. 17 秒結束畫面底：米白底、緩動的綠／咖啡色塊、Mokaair 字標，兩個 16:9 影片框與
+   一個圓形訂閱框只用淡外框標示位置。
+
+可點的影片卡與訂閱鈕是 YouTube Studio 的「結束畫面」元素：影片本身畫不出連結，
+YouTube Data API 也不能設定結束畫面。第一支新片在 Studio 設一次（最後 17 秒，
+元素為「最新上傳」「最適合觀眾」「訂閱」，對齊畫面上的外框），之後每支用
+「從影片匯入」複製。配樂是 YouTube 音樂庫「不需註明出處」授權的曲子，
+整段響度 -16 LUFS、TP -1，略低於正文的 -14。
+
+`tools/video/branding/outro.mjs` 從安裝中的 90 格片尾、配樂與片頭產生素材包，
+同時產出全頻道與「原來如此」兩包；輸出接著用下節的 `branding --install` 安裝：
+
+```bash
+node tools/video/branding/outro.mjs --base /outside/v2-cc/outro.mp4 \
+  --music /outside/music/track.mp3 --music-start 105.5 \
+  --intro /outside/v2-cc/intro.mp4 --series-intro /outside/sothatswhy/intro.mp4 --out /outside/package-v3
+```
+
+`--music-start` 選曲子裡的 21 秒；選曲子自然收尾的段落，結尾另有 1.5 秒淡出保險。
+素材與選曲紀錄見 [結束畫面片尾紀錄](branding-release/2026-10-12-endscreen-outro.md)。
 
 ## 安裝與採用
 
@@ -26,7 +54,7 @@ node tools/video/cli.mjs branding --workdir /video-work --json
 ```
 
 「原來如此」系列使用獨立預設。站主選定的素材包已把原 5 秒開場與 6.9 秒系列動畫
-合併為 `intro.mp4`（357 格／11.9 秒），原片尾仍是 90 格／3 秒：
+合併為 `intro.mp4`（357 格／11.9 秒），片尾與全頻道相同：
 
 ```bash
 node tools/video/cli.mjs branding --series sothatswhy --install /outside/repo/approved --workdir /video-work --dry-run
@@ -45,7 +73,7 @@ node tools/video/cli.mjs branding --series sothatswhy --workdir /video-work --js
 新片與 `--adopt-branding` 使用同一系列選擇規則。既有 pin 優先，不讀更新後的 current；
 已核准、已上傳、已有上架包與未 pin 的歷史成片保留原有保護。
 「原來如此」字幕與第二章起延後 **11.9 秒／357 格**，配音包裝使用相同片頭音軌，
-總格數加 447。不要再額外加 5 秒原開場。下文 150／90 與 5 秒示例是全頻道規格；
+總格數加 987（2026-10-12 前的舊 pin 為 447）。不要再額外加 5 秒原開場。下文 150／630 與 5 秒示例是全頻道規格；
 實際偏移一律依本片的 `checks.branding.intro_frames` 計算。
 
 Shorts 可使用另備的 1080×1920、6.9 秒獨立「原來如此」動畫素材，保留多語文字、
@@ -87,14 +115,14 @@ node tools/video/cli.mjs qa --slug VIDEO --workdir /video-work
 | `timeline.json`、`narration.wav` | 正文，保持 TTS 快取與旁白核准不變 |
 | `build/body.mp4` | 本次包裝前的正文；SHA 寫入 checks，供合集核對 |
 | `final.mp4` | 片頭＋正文＋片尾；影片規格與響度再次檢查 |
-| `checks.json` 的 `branding` | 素材 hash、150／90 格偏移、正文格數及正文檔 SHA |
+| `checks.json` 的 `branding` | 素材 hash、150／630 格偏移、正文格數及正文檔 SHA |
 | `captions/manifest.json`、`upload/metadata.json` | 綁定 `branding_hash`，拒絕沿用別版時間軸 |
 | `dubs/<locale>/narration.wav` | 配音正文；fit 仍對正文窗口計算 |
 | `dubs/<locale>/timeline.json`、上傳音軌 | 包含片頭片尾的實際時間軸與相同音效 |
 
 字幕與第二章以後的章節延後 5 秒；第一章從 `00:00` 開始，包含片頭。
 不另外建立只有 5 秒的章節。配音最後一句字幕在正文結束時截止，片尾不殘留正文字幕。
-總格數增加 240；敘事節奏的品管仍只計正文。
+總格數增加 780（2026-10-12 前的舊 pin 為 240）；敘事節奏的品管仍只計正文。
 
 合集先核對各集已核准 `final.mp4` 的 SHA，再核對 `checks.branding.body_sha256`，
 只拼接正文。各集字幕先扣掉自己的片頭時間，放入合集後，再加合集自己的片頭時間。
