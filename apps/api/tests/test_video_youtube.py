@@ -471,6 +471,15 @@ def test_every_title_ends_with_its_language_s_captions_tag_once() -> None:
     # A language without a tag of its own reads the English one.
     assert requests.captioned("t", "fr") == "t｜CC Subtitles"
     assert set(requests.CAPTION_TAGS) == set(requests.NARRATION_LANGUAGES)
+    # A tag added by hand, or in another language, is replaced rather than added to.
+    assert requests.captioned("Area 51｜ CC字幕", "en") == "Area 51｜CC Subtitles"
+    assert requests.captioned("51 區｜ CC字幕｜CC字幕", "zh-TW") == "51 區｜CC字幕"
+    assert requests.captioned("t | CC Subtitles", "ja") == "t｜字幕付き"
+    # The short tag when the full one does not fit; the full one when neither does, so the
+    # length check says how far over the title is.
+    assert requests.captioned("a" * 90, "en") == "a" * 90 + "｜CC"
+    assert requests.captioned("a" * 90 + "｜CC", "en") == "a" * 90 + "｜CC"
+    assert requests.captioned("a" * 98, "en") == "a" * 98 + "｜CC Subtitles"
 
 
 def test_a_legacy_package_without_a_language_is_zh_tw_as_before() -> None:

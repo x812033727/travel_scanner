@@ -122,8 +122,11 @@ def test_the_update_keeps_everything_and_tags_every_title() -> None:
 
 def test_a_title_the_tag_would_push_past_100_characters_is_reported_not_cut() -> None:
     found = retitle.plan(_video("v1", "字" * 96))
-    assert found["titles"] == {"zh-TW": ["字" * 96, "字" * 96 + ZH]}
-    assert found["problem"] is not None and "101" in found["problem"]
+    assert found["titles"] == {"zh-TW": ["字" * 96, "字" * 96 + "｜CC"]}
+    assert found["problem"] is None, "the short tag fits"
+    found = retitle.plan(_video("v1", "字" * 98))
+    assert found["titles"] == {"zh-TW": ["字" * 98, "字" * 98 + ZH]}
+    assert found["problem"] is not None and "103" in found["problem"]
     assert retitle.plan(_video("v2", f"已經有了{ZH}"))["titles"] == {}
 
 
@@ -135,19 +138,20 @@ async def test_a_report_sends_nothing_and_counts_the_quota(monkeypatch: pytest.M
             _video("v3", "三", snippet={"defaultLanguage": "en"}),
             _video("v4", "字" * 99),
             _video("v5", f"五{ZH}", localizations={"en": {"title": "five", "description": ""}}),
+            _video("demo", "OAuth demo"),
         ]
     )
     _link(monkeypatch, youtube)
     session = FakeSession()
-    report = await retitle.caption_channel_titles(session, apply=False)  # type: ignore[arg-type]
-    assert youtube.pages == 3 and youtube.sent == [] and session.added == []
-    assert (report["videos"], report["to_change"], report["too_long"], report["left"]) == (
-        5,
-        3,
-        1,
-        3,
+    report = await retitle.caption_channel_titles(
+        session,  # type: ignore[arg-type]
+        apply=False,
+        skip=frozenset({"demo"}),
     )
-    assert report["units_for_updates"] == 150
+    assert youtube.pages == 3 and youtube.sent == [] and session.added == []
+    counts = (report["videos"], report["to_change"], report["too_long"], report["left"])
+    assert counts == (6, 3, 1, 3)
+    assert report["units_for_updates"] == 150 and report["skipped"] == ["demo"]
     assert {item["id"]: item["titles"] for item in report["plans"]} == {
         "v1": {"zh-TW": ["一", f"一{ZH}"]},
         "v3": {"en": ["三", f"三{EN}"]},

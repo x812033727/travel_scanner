@@ -105,12 +105,18 @@ def update_body(video: dict[str, Any]) -> dict[str, Any]:
 
 
 async def caption_channel_titles(
-    session: AsyncSession, *, apply: bool, limit: int = DEFAULT_LIMIT, actor: User | None = None
+    session: AsyncSession,
+    *,
+    apply: bool,
+    limit: int = DEFAULT_LIMIT,
+    skip: frozenset[str] = frozenset(),
+    actor: User | None = None,
 ) -> dict[str, Any]:
     """Tag the titles of every video on the linked channel; report only unless ``apply``.
 
     ``Refused`` when no channel is linked. An update YouTube refuses (a quota run out among them)
-    ends the run: what was sent stays sent, the rest is reported as left for the next run.
+    ends the run: what was sent stays sent, the rest is reported as left for the next run. The
+    videos in ``skip`` (the OAuth verification demo, say) are read and left alone.
     """
     report: dict[str, Any] = {
         "apply": apply,
@@ -122,6 +128,7 @@ async def caption_channel_titles(
         "left": 0,
         "units_for_updates": 0,
         "error": None,
+        "skipped": sorted(skip),
         "plans": [],
     }
     async with _linked_youtube(session) as (_channel_id, client):
@@ -143,6 +150,8 @@ async def caption_channel_titles(
         report["videos"] = len(videos)
         sent = 0
         for video in videos:
+            if video.get("id") in skip:
+                continue
             found = plan(video)
             if not found["titles"]:
                 continue

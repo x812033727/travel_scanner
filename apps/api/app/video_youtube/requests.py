@@ -12,6 +12,7 @@ uploader can set them), and chooses the visibility and the time.
 from __future__ import annotations
 
 import copy
+import re
 from datetime import UTC, datetime
 from typing import Any, cast
 
@@ -55,6 +56,14 @@ CAPTION_TAGS = {
     "ja": "｜字幕付き",
     "ko": "｜CC 자막",
 }
+# The tag of a title the full one would push past TITLE_MAX_CHARS (the owner's choice of
+# 2026-10-12): most of those are English titles already near the limit.
+SHORT_CAPTION_TAG = "｜CC"
+# Any captions tag a title may already end with, whatever its language, bar and spacing: a title
+# tagged by hand ("｜ CC字幕" on an English title) or in another language gets its own instead.
+_TAG_TAIL = re.compile(
+    r"\s*[|｜]\s*(?:CC\s*字幕|CC\s*Subtitles|字幕付き|CC\s*자막|CC)\s*$", re.IGNORECASE
+)
 
 
 def as_dict(value: object) -> dict[str, Any]:
@@ -63,10 +72,23 @@ def as_dict(value: object) -> dict[str, Any]:
 
 
 def captioned(title: str, language: str) -> str:
-    """``title`` ending with its language's captions tag, added once."""
-    tag = CAPTION_TAGS.get(language, CAPTION_TAGS["en"])
+    """``title`` ending with its language's captions tag, once.
+
+    A tag already there, in any language or spacing, is replaced by this language's. When the
+    full tag would take the title past TITLE_MAX_CHARS the short one is used; when even that does
+    not fit, the full tag stays so the length check says by how much the title is over.
+    """
     bare = title.rstrip()
-    return bare if bare.endswith(tag.strip()) else f"{bare}{tag}"
+    while True:
+        stripped = _TAG_TAIL.sub("", bare)
+        if stripped == bare:
+            break
+        bare = stripped
+    tagged = f"{bare}{CAPTION_TAGS.get(language, CAPTION_TAGS['en'])}"
+    short = f"{bare}{SHORT_CAPTION_TAG}"
+    if len(tagged) > TITLE_MAX_CHARS and len(short) <= TITLE_MAX_CHARS:
+        return short
+    return tagged
 
 
 def text_problem(title: str, description: str) -> str | None:

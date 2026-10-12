@@ -37,11 +37,22 @@ export const CAPTION_TAGS = {
   ko: "｜CC 자막",
 };
 
-/** `title` ending with its locale's captions tag, added once (a title that has it stays as it is). */
+// The tag of a title the full one would push past TITLE_MAX_CHARS (the owner's choice of
+// 2026-10-12), and any tag a title may already end with, whatever its language and spacing.
+export const SHORT_CAPTION_TAG = "｜CC";
+const TAG_TAIL = /\s*[|｜]\s*(?:CC\s*字幕|CC\s*Subtitles|字幕付き|CC\s*자막|CC)\s*$/i;
+
+/**
+ * `title` ending with its locale's captions tag, once: a tag already there, in any language or
+ * spacing, is replaced. When the full tag would pass TITLE_MAX_CHARS the short one is used; when
+ * even that does not fit, the full tag stays so the length check says by how much.
+ */
 export function withCaptionTag(title, locale) {
-  const tag = CAPTION_TAGS[locale] ?? CAPTION_TAGS.en;
-  const bare = title.trimEnd();
-  return bare.endsWith(tag.trim()) ? bare : `${bare}${tag}`;
+  let bare = title.trimEnd();
+  for (let stripped = bare.replace(TAG_TAIL, ""); stripped !== bare; stripped = bare.replace(TAG_TAIL, "")) bare = stripped;
+  const tagged = `${bare}${CAPTION_TAGS[locale] ?? CAPTION_TAGS.en}`;
+  const short = `${bare}${SHORT_CAPTION_TAG}`;
+  return [...tagged].length > TITLE_MAX_CHARS && [...short].length <= TITLE_MAX_CHARS ? short : tagged;
 }
 
 /**

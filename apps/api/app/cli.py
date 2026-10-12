@@ -447,11 +447,11 @@ async def backfill_video_publish_times(apply: bool) -> dict[str, Any]:
         return await backfill_youtube_publish_times(session, apply=apply)
 
 
-async def caption_video_titles(apply: bool, limit: int) -> dict[str, Any]:
+async def caption_video_titles(apply: bool, limit: int, skip: list[str]) -> dict[str, Any]:
     """Give the titles of the videos already on the channel their captions tag
     (video_youtube.retitle); reports only unless ``apply``."""
     async with SessionFactory() as session:
-        return await caption_channel_titles(session, apply=apply, limit=limit)
+        return await caption_channel_titles(session, apply=apply, limit=limit, skip=frozenset(skip))
 
 
 def fill_hotspot_labels(files: list[str], dry_run: bool, overwrite_original: bool) -> None:
@@ -1130,6 +1130,13 @@ def main() -> None:
         default=CAPTION_TITLES_LIMIT,
         help=f"At most this many updates in one run (default {CAPTION_TITLES_LIMIT})",
     )
+    caption_titles.add_argument(
+        "--skip",
+        action="append",
+        default=[],
+        metavar="VIDEO_ID",
+        help="Leave this video's titles as they are (repeatable)",
+    )
     story_import = subparsers.add_parser(
         "video-story-import",
         help=(
@@ -1324,7 +1331,9 @@ def main() -> None:
         print(json.dumps(outcome, ensure_ascii=False, indent=2))
     elif args.command == "video-youtube-caption-titles":
         try:
-            outcome = asyncio.run(caption_video_titles(apply=args.apply, limit=args.limit))
+            outcome = asyncio.run(
+                caption_video_titles(apply=args.apply, limit=args.limit, skip=args.skip)
+            )
         except YoutubeRefused as refused:
             print(f"ERROR {refused.code}: {refused.detail}", file=sys.stderr)
             raise SystemExit(2) from None
