@@ -1,11 +1,11 @@
 ---
 id: 2026-10-12-produce-curio-h04-dyatlov-traditional-chinese
 title: Produce Curio H04 Dyatlov Traditional Chinese video
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-curio-h04
+claimed_at: 2026-10-12T05:19:41Z
 created_at: 2026-10-12T04:45:10Z
 completed_at:
 branch: codex/curio-h04-production-20261012
@@ -22,8 +22,8 @@ scope:
 
 ## Definition of done
 
-- [ ] 三案企劃送審且所選大綱有當前雜湊核准。
-- [ ] 繁中腳本經獨立事實與聽眾審稿，來源和圖片授權可追溯。
+- [x] 三案企劃送審且所選大綱有當前雜湊核准。
+- [x] 繁中腳本經獨立事實與聽眾審稿，來源和圖片授權可追溯。
 - [ ] 正文與成片均達 8 分鐘，旁白、分鏡、字幕與成片通過既有關卡或站主核准。
 - [ ] 繁中上傳包完成、原生檢查通過，正式站讀回一致；未驗證項目據實記錄。
 
@@ -32,7 +32,7 @@ scope:
 - [x] 查分支、worktree、遠端與 PR，確認 H04 無人製作；正式站 GET 404。
 - [x] 新建獨立分支並認領窄範圍；讀回當前頻道立場。
 - [x] 刷新一手來源與圖片授權，完成三案並送審。
-- [ ] 撰稿、lint、獨立事實查核與聽眾審稿。
+- [x] 撰稿、lint、獨立事實查核與聽眾審稿。
 - [ ] 合成旁白並逐句檢查、製作及審看插圖與字卡。
 - [ ] 合成、繁中 CC、QA、核准與上傳包驗證。
 
@@ -47,6 +47,7 @@ scope:
 - H03 已交付且其分支/PR #1456 保留；不修改 H03 來源或媒體，也不干涉其他聊天的語言工作。
 - H04 原題卡仍需製作查核：帳篷切口的「兩處/三條」各文件不同；首批發現日 26/27 日不同；不敘述確切當夜氣溫、切口數或「找到帳篷隔天」。
 - 在世檢察官懲處/離職與驗屍細節不進本片。2022 年考察只表達作者報告，不能當作 1959 年事件重演。
-- 當前大綱 SHA `32bf76ed25e862e3e7c9e0bf8d1d369a2f9ad625a270c5518ed0919592f32a63`；review `d76bc11e-0d58-4983-b7d2-378d18e17bd2` pending。Jev A=0.98、stance=0.91、demo=0.37、advice=0.01，因 demo 門檻0.60留待站主選定。已送出問題，未收到選擇前不合成旁白。
+- 當前大綱 SHA `32bf76ed25e862e3e7c9e0bf8d1d369a2f9ad625a270c5518ed0919592f32a63`；review `d76bc11e-0d58-4983-b7d2-378d18e17bd2` 已由站主於 `2026-10-12T05:19:58.330973Z` 核准 A。2026-10-12 05:22 UTC 原生 review-pull exit 0 並 GET 200 回讀一致。
 - 已有共用修正票 `2026-10-10-outline-pick-demo-exempts-explainers`，本集不擴張scope修改門檻、不重問付費judge以碰運氣。
-- `video.json` 仍是企劃佔位，非可製作腳本。後續依站主所選大綱撰寫完整稿，再獨立查核／聽眾審閱，不沿用企劃審閱代替完整稿驗收。
+- A 案完整稿 100 景／119 句已經獨立事實與聽眾覆核 PASS，0 未解必修；三張文書裁切已實看與清權。兩份覆核綁最終 video SHA `98b2fe192185644dd7a36a3deac8c4f8c9314a54486cedf1ff23cdd85dfae2f8`。docs-videos 199 tests passed。
+- 最終 TTS dry-run exit 0，115 requests、約 2,363 計費字元；已啟動原生 TTS，完成狀態及實際時長另驗。

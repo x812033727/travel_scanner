@@ -11,7 +11,8 @@
   "voice": {
     "provider": "gemini",
     "name": "Sulafat",
-    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。"
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "開場輕聲提問；鞋子與腳印的差異稍微提亮。歷史段穩定清楚，模型步驟慢半拍。談到未知時收斂，章末疑問留一點懸念，不模仿受難者或製造驚嚇。"
   },
   "subtitles": {
     "burn_in": false
@@ -28,7 +29,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "佳特洛夫事件：為何離開帳篷，走進雪夜？｜奇聞檔案局",
-    "description": "企劃階段，尚未製作成片。奇聞檔案局 H04：從帳篷、鞋子與腳印，追問九人離營的原因，檢查雪板研究能解釋到哪裡。只出繁體中文。情境插圖與雪層示意將明確標示，不冒充當晚現場攝影。",
+    "description": "佳特洛夫事件裡，多數鞋子留在帳篷，九人卻走進雪夜；留下的腳印，真的證明了全員赤腳狂奔嗎？沿著1959年的鑑定與調查紀錄，回到雪坡上，檢查雪板研究能回答什麼。\n\n2021年的模型提出特定條件下延遲滑落的可能機制；2021年測坡與2022年鄰近雪崩痕跡，增加了部分支持，仍不是事故當夜的完整證明。文書轉述與科學示意均標出來源，情境插圖不冒充當晚攝影。\n\n只提供繁體中文字幕，可由播放器開關。這是歷史與科學說書，不提供雪地搭帳或雪崩安全判斷。",
     "tags": [
       "佳特洛夫事件",
       "戴洛夫山口",
@@ -41,37 +42,2272 @@
   "thumbnail": {
     "template": "thumb",
     "data": {
-      "headline": "**為何離開**",
+      "headline": "**鞋子還在**",
       "tag": "歷史懸案",
-      "sub": "雪夜裡的空帳篷"
+      "sub": "雪夜裡的空帳篷",
+      "shot": "hook-empty-tent"
     }
   },
   "sources": [
     {
-      "title": "EPFL 2021：雪板機制與研究限制",
-      "url": "https://longread.epfl.ch/en/dossier/quand-la-science-permet-dexplorer-un-mystere-russe-vieux-de-60-ans",
+      "title": "1959年5月28日結案決定書384–387頁：俄文轉錄與掃描索引",
+      "url": "https://dyatlovpass.com/case-files-384-387-ru",
       "checked_on": "2026-10-12"
     },
     {
-      "title": "ETH 2022：後續考察報告",
+      "title": "1959年4月16日帳篷鑑定303–304頁：俄文轉錄與掃描索引",
+      "url": "https://dyatlovpass.com/case-files-303-304-ru",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "1959年4月18日Tempalov訊問309–312頁：俄文轉錄與掃描索引",
+      "url": "https://dyatlovpass.com/case-files-309-312-ru",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "1959年4月15日Slobtsov訊問298–300頁：英譯及掃描索引",
+      "url": "https://dyatlovpass.com/case-files-298-300",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Gaume與Puzrin（2021）：雪板釋放與撞擊模型",
+      "url": "https://www.nature.com/articles/s43247-020-00081-8",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Puzrin與Gaume（2022）：後續考察Comment",
+      "url": "https://www.nature.com/articles/s43247-022-00393-x",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "2022年Comment作者更正：reference 1 DOI",
+      "url": "https://www.nature.com/articles/s43247-022-00425-6",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "EPFL（2021）：模型機制與作者訪談",
+      "url": "https://longread.epfl.ch/en/dossier/quand-la-science-permet-dexplorer-un-mystere-russe-vieux-de-60-ans/",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "ETH（2022）：同一研究的後續考察解說",
       "url": "https://ethz.ch/en/news-and-events/eth-news/news/2022/03/the-dyatlov-pass-mystery-and-what-a-research-article-can-trigger.html",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "EPFL（2022）：後續考察與證據限制訪談",
+      "url": "https://actu.epfl.ch/news/intense-press-coverage-prompts-new-expeditions-to-/",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Interfax（2019）：檢方對外說明一般監督性複查",
+      "url": "https://www.interfax.ru/russia/649229",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Interfax（2020）：記者會提出雪崩解釋",
+      "url": "https://www.interfax.ru/russia/716956",
       "checked_on": "2026-10-12"
     }
   ],
-  "assets": [],
+  "assets": [
+    {
+      "path": "stock/bf338fb136401d2bb9358a7bceeb46abe20a9ee55b7bdcf263d483eb67d1963f.png",
+      "source": "1959 年結案決定書第 385 頁局部／Л. Н. Иванов（1959-05-28；Wikimedia Commons 掃描；裁切、透明留邊）",
+      "license": "PD-RU-exempt",
+      "author": "Лев Никитич Иванов (Lev Nikitich Ivanov)",
+      "url": "https://commons.wikimedia.org/wiki/File:Dyatlov.Volume_1.Page_385.jpg"
+    },
+    {
+      "path": "stock/1c31a7da3de0851b0645f7636df4a6bc07a8252447a8ad74f98e2f9dca709b40.png",
+      "source": "1959 年結案決定書第 386 頁局部／Л. Н. Иванов（1959-05-28；Wikimedia Commons 掃描；裁切、透明留邊）",
+      "license": "PD-RU-exempt",
+      "author": "Лев Никитич Иванов (Lev Nikitich Ivanov)",
+      "url": "https://commons.wikimedia.org/wiki/File:Dyatlov.Volume_1.Page_386.jpg"
+    },
+    {
+      "path": "stock/f90b4c557783827cfde143fb4ddfd59ae08e93b9b97a05026a9cb3e288ddf25d.png",
+      "source": "1959 年結案決定書第 387 頁局部／Л. Н. Иванов（1959-05-28；Wikimedia Commons 掃描；裁切、透明留邊）",
+      "license": "PD-RU-exempt",
+      "author": "Лев Никитич Иванов (Lev Nikitich Ivanov)",
+      "url": "https://commons.wikimedia.org/wiki/File:Dyatlov.Volume_1.Page_387.jpg"
+    }
+  ],
   "scenes": [
     {
-      "id": "planning-only",
-      "chapter": "企劃待選",
-      "template": "title",
+      "id": "hook-empty-tent",
+      "chapter": "鞋子留下，人卻離開",
+      "template": "shot",
       "data": {
-        "title": "佳特洛夫事件",
-        "subtitle": "企劃待選，尚非製作稿"
+        "prompt": "Wide shot on a treeless mountain slope at winter twilight. A solitary low canvas ridge tent stands in the centre, its entrance folded open toward the viewer. The empty interior and snow around the tent are visible. Natural remaining sky light falls across the fabric; only the shelter and terrain occupy the scene.",
+        "camera": "push in",
+        "visual": "still"
       },
+      "claims": [
+        "c01"
+      ],
       "lines": [
         {
-          "id": "h04plan",
-          "text": "這是企劃用佔位檔，選定大綱後才撰寫完整旁白。"
+          "id": "nvja",
+          "text": "鞋子還在帳篷裡，九個人為什麼走進雪夜？",
+          "emotion": "輕聲，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "hook-shoes",
+      "template": "title",
+      "data": {
+        "title": "鞋子留下，人卻離開",
+        "subtitle": "情境插圖與科學示意｜非當晚攝影",
+        "tag": "奇聞檔案局 H04"
+      },
+      "claims": [
+        "c02"
+      ],
+      "lines": [
+        {
+          "id": "u9ci",
+          "text": "一九五九年的佳特洛夫事件，留下了這個難題。"
+        }
+      ]
+    },
+    {
+      "id": "hook-footprints",
+      "template": "shot",
+      "data": {
+        "prompt": "Low close-up of a few irregular raised footwear traces on a snowy hillside in daylight. Narrow compacted-snow footprint forms and wider rounded boot-shaped forms stand slightly above the surrounding wind-scoured surface in the middle third. The short incomplete trail contains snow traces only.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c03",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "q82x",
+          "text": "你以為留下的是九個人赤腳狂奔的證據。",
+          "emotion": "放輕，略放慢"
+        }
+      ]
+    },
+    {
+      "id": "hook-records",
+      "template": "compare",
+      "data": {
+        "title": "腳印，能說到哪裡",
+        "left": {
+          "heading": "有紀錄",
+          "points": [
+            "鞋襪印子不同",
+            "足跡向山下"
+          ]
+        },
+        "right": {
+          "heading": "仍未知",
+          "points": [
+            "誰先離開",
+            "每個人的情緒"
+          ]
+        },
+        "source": "1959 年結案書／Tempalov 訊問"
+      },
+      "claims": [
+        "c03",
+        "c04"
+      ],
+      "lines": [
+        {
+          "id": "e4jx",
+          "text": "其實，足跡有不同鞋襪留下的印子。",
+          "emotion": "語氣稍亮",
+          "reveal": 1
+        },
+        {
+          "id": "9pkr",
+          "text": "它們指向山下，卻沒有記下每個人的心情。",
+          "emotion": "收斂",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hook-slope",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view from a forest edge looking up at a distant empty mountain slope in cold morning light. A small ridge shelter is far uphill in the central distance, separated from the trees by an open expanse. The scene holds only trees, terrain and the shelter.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c01"
+      ],
+      "lines": [
+        {
+          "id": "86sh",
+          "text": "離開帳篷的理由，要從哪些線索找起？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "journey-skis",
+      "chapter": "九個人走到山坡上",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a wooden equipment bench in a mountain lodging room during daytime. A pair of traditional wooden skis and leather straps rest across the bench, with a plain rucksack nearby. Window light reveals the materials; the central skis are the focus.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "mvpk",
+          "text": "這是一趟前往北烏拉山的冬季滑雪旅行。"
+        }
+      ]
+    },
+    {
+      "id": "journey-numbers",
+      "template": "stats",
+      "data": {
+        "title": "出發的人數",
+        "stats": [
+          {
+            "value": "10 人",
+            "label": "原先隊伍"
+          },
+          {
+            "value": "9 人",
+            "label": "一人折返後繼續"
+          }
+        ],
+        "source": "1959 年結案決定書｜卷一 384–387"
+      },
+      "claims": [
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "2dku",
+          "text": "原先出發的隊伍有十個人。",
+          "emotion": "數字清楚",
+          "reveal": 1
+        },
+        {
+          "id": "5kgy",
+          "text": "其中一人因為身體不適折返，九人繼續前進。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "journey-pack",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a simple lodging room in morning light. A generic mittened hand fastens a plain canvas rucksack buckle at the centre of the frame; only the hand and bag are visible. The wooden bench beneath has generous empty margins.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "k6p3",
+          "text": "這九個人裡，有學生，也有已經工作的成員。",
+          "emotion": "穩定敘述，重點詞稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "journey-two-backs",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot. Distant rear view of two anonymous winter travellers on a broad snowy approach in daylight. One steadies a bundled ski pole while the other adjusts its leather carrying strap. Their hoods and distant backs conceal all facial features. The paired equipment is the centre of attention.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "cwig",
+          "text": "把他們一概叫做九名大學生，會抹掉這個差別。"
+        }
+      ]
+    },
+    {
+      "id": "journey-slope-day",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a bare mountain shoulder on an overcast winter afternoon. Low wind-shaped snowdrifts cross the central slope, with a sparse tree line far below. Daylight from the clouded sky shows the open terrain without any shelter or people.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c02"
+      ],
+      "lines": [
+        {
+          "id": "2fix",
+          "text": "二月初，他們的旅程停在這片山區。"
+        }
+      ]
+    },
+    {
+      "id": "camp-platform-context",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium side view of an unoccupied snow platform cut into a slope in daylight. A low canvas ridge shelter occupies the level platform at centre; a small exposed snow bank rises behind it. This is a simple conceptual campsite with only terrain and shelter visible.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c07"
+      ],
+      "lines": [
+        {
+          "id": "qvru",
+          "text": "調查紀錄裡，最後的營地是在山坡上。"
+        }
+      ]
+    },
+    {
+      "id": "camp-rope",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a canvas tent corner and a taut guy rope anchored into snow, in pale afternoon light. The metal anchor and woven rope sit in the centre, with only a small section of fabric above. The focus is on the equipment, not a reconstruction of an action.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c07"
+      ],
+      "lines": [
+        {
+          "id": "s24k",
+          "text": "帳篷本來是遮風的地方，後來卻成了追查的起點。"
+        }
+      ]
+    },
+    {
+      "id": "search-daylight",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a mountain slope in full winter daylight. Two distant anonymous searchers seen from behind pause well downhill from a small empty tent. One gestures toward the shelter while the other stands nearby. Faces are hidden by rear-facing hoods; the tent remains central.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c08"
+      ],
+      "lines": [
+        {
+          "id": "2fqy",
+          "text": "二月底，搜救者在白天找到了帳篷。"
+        }
+      ]
+    },
+    {
+      "id": "search-date",
+      "template": "stats",
+      "data": {
+        "title": "找到帳篷",
+        "stats": [
+          {
+            "value": "1959.02.26",
+            "label": "搜救者發現帳篷",
+            "note": "事後證詞與結案書"
+          }
+        ],
+        "source": "1959 年結案書／Slobtsov 訊問"
+      },
+      "claims": [
+        "c08"
+      ],
+      "lines": [
+        {
+          "id": "rdfd",
+          "text": "日期是二月二十六日，距離出事已過了好一段時間。",
+          "emotion": "慢而清楚",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "search-empty-interior",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view through the entrance of an empty ridge tent on a bright overcast day. Packed fabric bundles rest on the floor and daylight enters through the doorway. The opening frames the centre, with enough room to see the unoccupied space.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "9rjv",
+          "text": "除去積雪、查看帳內時，裡面已經沒有人了。",
+          "emotion": "穩定敘述，重點詞稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "search-objects",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of personal camping supplies laid beside an empty fabric shelter in daylight: plain mittens, a rolled wool blanket and a canvas pouch. The objects form one compact central group, with no labels or written surfaces.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c01"
+      ],
+      "lines": [
+        {
+          "id": "eyqe",
+          "text": "多數鞋子、外衣和個人物品，仍留在帳內。"
+        }
+      ]
+    },
+    {
+      "id": "search-later-weather",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the edge of an old snowdrift in daylight, where loose grains have softened the outline of a shallow depression. Low sunlight reveals overlapping wind ripples. The whole frame is natural snow texture with a single central feature.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "yqn7",
+          "text": "搜救者見到的是後來的現場，不是離營那一刻。"
+        }
+      ]
+    },
+    {
+      "id": "search-two-times",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a closed canvas shelter on a calm snowy slope at midday. Its weathered fabric and partly buried rope show prolonged exposure; the unoccupied tent is centred against a simple open background. Natural light comes from overhead.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "9msp",
+          "text": "隔了這麼久，留下的東西還能說明多少？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "tent-cut-detail",
+      "chapter": "帳篷與腳印留下什麼",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of a small section of old canvas spread flat on a clean workbench in daylight. A single short cut through the woven material is visible at centre; the fabric is surrounded by empty table surface. Window light makes the cut edges visible.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "fyrp",
+          "text": "先看帳篷上的切口，它後來接受過專門鑑定。"
+        }
+      ]
+    },
+    {
+      "id": "tent-examination",
+      "template": "stats",
+      "data": {
+        "title": "切口的方向",
+        "stats": [
+          {
+            "value": "1959.04.16",
+            "label": "帳篷鑑定日期",
+            "note": "卷一 303–304 頁"
+          }
+        ],
+        "source": "1959 年帳篷鑑定｜卷一 303–304"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "9ihg",
+          "text": "鑑定是在四月完成，判斷切口是從內側割出的。",
+          "emotion": "慢而清楚",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "fabric-workbench",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a generic gloved hand lifting the edge of a woven fabric sample on a daylight workbench. The cloth exposes its inner surface at the centre. Only the hand, plain cloth and table are present, with light from a nearby window.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "haem",
+          "text": "判斷依據包括布料、切口，還有內側細微的損傷。"
+        }
+      ]
+    },
+    {
+      "id": "inside-fabric",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro side view of an unmarked canvas flap folded over itself in daylight. Both woven surfaces and a small rough edge are visible in the central area. A shallow background keeps attention on the fabric fibres.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "euwn",
+          "text": "內側刀切的判斷，來自對留下布料的鑑定。",
+          "emotion": "穩定敘述，重點詞稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "cut-inference",
+      "template": "compare",
+      "data": {
+        "title": "切口方向不是離帳順序",
+        "left": {
+          "heading": "鑑定支持",
+          "points": [
+            "切口由內側割出"
+          ]
+        },
+        "right": {
+          "heading": "沒有還原",
+          "points": [
+            "誰先動手",
+            "每人從哪裡出去"
+          ]
+        },
+        "source": "1959 年帳篷鑑定｜卷一 303–304"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "fmgf",
+          "text": "由內側割出，告訴我們刀切的方向。",
+          "reveal": 1
+        },
+        {
+          "id": "xcze",
+          "text": "卻不能因此補出，九個人各自怎麼離開。",
+          "emotion": "收斂",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "remaining-boots",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of several worn felt boots resting irregularly by bundled blankets inside an empty shelter in daylight. One boot lies on its side near the central pair. Natural light enters from the doorway, and no person occupies the scene.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "4jq6",
+          "text": "把留下的鞋子也算進來，離營就顯得更不尋常。",
+          "emotion": "穩定敘述，重點詞稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "document-shoes-slot",
+      "template": "screenshot",
+      "data": {
+        "image": "stock/bf338fb136401d2bb9358a7bceeb46abe20a9ee55b7bdcf263d483eb67d1963f.png",
+        "caption": "第 385 頁局部：鞋子留在帳內，並記有內側切口",
+        "credit": "1959 結案書 · PD-RU-exempt · 裁切"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "8kqa",
+          "text": "調查人員把留下的用品，當成突然離營的線索。"
+        }
+      ]
+    },
+    {
+      "id": "tent-opening-empty",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up looking outward through an open tent flap in diffuse daytime light. Beyond the central opening lies an unoccupied expanse of snow. A folded blanket remains just inside the lower edge; the composition emphasizes the threshold without showing an exit action.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "jhkz",
+          "text": "這是從物品作出的推論，沒有目擊者逐人記錄。"
+        }
+      ]
+    },
+    {
+      "id": "trail-varied",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a short uneven sequence of raised footwear traces in daylight snow. A wider felt-boot-shaped form and a narrower compacted-snow form stand above the wind-eroded surrounding surface near the centre. The trail is incomplete and irregular, with softly weathered edges.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c03",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "3hs8",
+          "text": "接著是腳印，印子的形狀並不全都相同。",
+          "emotion": "穩定敘述，重點詞稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "document-footprints-slot",
+      "template": "screenshot",
+      "data": {
+        "image": "stock/1c31a7da3de0851b0645f7636df4a6bc07a8252447a8ad74f98e2f9dca709b40.png",
+        "caption": "第 386 頁局部：八至九組足跡，鞋襪痕跡不同",
+        "credit": "1959 結案書 · PD-RU-exempt · 裁切"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "b8fk",
+          "text": "有人留下近乎赤腳的印子，例如只隔著薄襪。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "boot-print-evidence",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a broad felt-boot-shaped form of compacted snow standing slightly above the wind-scoured surrounding surface on an overcast morning. Its rounded heel and broader forefoot occupy the middle third. Only the raised snow trace and surrounding terrain are present.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c03",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "z6at",
+          "text": "也有人留下氈靴的印子，並不是全員赤腳。"
+        }
+      ]
+    },
+    {
+      "id": "felt-versus-knit",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of one plain felt boot beside a wool sock on a wooden evidence bench in daylight. The two different materials are centred with a clear gap between them. Only these objects and the bench are visible; this is a generic illustration of footwear types.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "88ft",
+          "text": "薄襪和厚靴的差別，比一句全員赤腳更接近紀錄。"
+        }
+      ]
+    },
+    {
+      "id": "footprint-count",
+      "template": "compare",
+      "data": {
+        "title": "足跡數量有不同記載",
+        "left": {
+          "heading": "結案書",
+          "points": [
+            "8–9 組"
+          ]
+        },
+        "right": {
+          "heading": "Tempalov 證詞",
+          "points": [
+            "觀察到 8 組",
+            "未確認第 9 組"
+          ]
+        },
+        "source": "1959 年結案書／Tempalov 訊問"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "kb6v",
+          "text": "結案書記的是八到九組足跡。",
+          "emotion": "數字清楚",
+          "reveal": 1
+        },
+        {
+          "id": "h63r",
+          "text": "另一份證詞記下八組，沒有確認第九組。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "broken-trail",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle view of a few raised compacted-snow footprint forms ending beside a smooth wind-scoured patch on a hillside at noon. The last distinct raised form sits in the centre, with the rest of the short trail fading into natural drift patterns. The frame contains no people.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c14",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "43t2",
+          "text": "數目有差異，不能把不完整的痕跡排成九條完整路線。"
+        }
+      ]
+    },
+    {
+      "id": "trail-downhill",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide downhill view in daylight of a short irregular trail toward a distant forest edge. Only a limited central foreground patch of raised compacted-snow footprint forms survives above the wind-scoured surface; the middle slope is smooth. Sparse trees form a low horizon.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c04",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "34gm",
+          "text": "共同留下的方向，是往山下、谷地和森林。"
+        }
+      ]
+    },
+    {
+      "id": "stride-evidence",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up from above of two separated raised boot-shaped forms of compacted snow on a winter hillside during daytime. Their spacing is visible, and both stand slightly above the wind-eroded surrounding surface in the middle third. Natural side light defines their edges, without markings or measuring equipment.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c15",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "y9t5",
+          "text": "一位勘驗者把所見步距，解讀成普通步伐。"
+        }
+      ]
+    },
+    {
+      "id": "stride-inference",
+      "template": "compare",
+      "data": {
+        "title": "步距不能讀出心情",
+        "left": {
+          "heading": "觀察與判讀",
+          "points": [
+            "所見步距像普通步伐"
+          ]
+        },
+        "right": {
+          "heading": "不能直接推論",
+          "points": [
+            "全程沒有奔跑",
+            "所有人都不害怕"
+          ]
+        },
+        "source": "1959 年 Tempalov 訊問｜卷一 312 頁"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "ngnu",
+          "text": "這能修正整隊狂奔的想像。",
+          "emotion": "語氣稍亮",
+          "reveal": 1
+        },
+        {
+          "id": "6wja",
+          "text": "卻無法保證每段路，都走得一樣，也讀不出恐懼。",
+          "emotion": "放慢",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "forest-edge-absence",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty forest edge on a winter afternoon. A small break between dark tree trunks opens onto the snowy slope in the centre. The landscape is calm and entirely unoccupied, lit by diffuse daylight.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "up4g",
+          "text": "腳印把追查帶往山下，卻沒有把九個人帶回來。"
+        }
+      ]
+    },
+    {
+      "id": "discovery-sequence",
+      "template": "steps",
+      "data": {
+        "title": "發現的時間順序",
+        "steps": [
+          {
+            "title": "二月底",
+            "detail": "找到帳篷"
+          },
+          {
+            "title": "隨後陸續",
+            "detail": "找到五人"
+          },
+          {
+            "title": "五月",
+            "detail": "找到最後四人"
+          }
+        ],
+        "source": "1959 年結案決定書｜卷一 384–387"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "nd7v",
+          "text": "二月底先找到帳篷。",
+          "reveal": 1
+        },
+        {
+          "id": "zhkv",
+          "text": "隨後陸續找到五人，搜救還在繼續。",
+          "reveal": 1
+        },
+        {
+          "id": "46sm",
+          "text": "到了五月，才找到最後四人。",
+          "emotion": "放低，穩定",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "spring-empty-ravine",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an unoccupied mountain gully during spring daylight. Patches of old snow lie among wet stones and sparse grass, with a narrow meltwater channel crossing the centre. This is landscape context only, with no people, remains or objects.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "5nwz",
+          "text": "沒有一個人能留下，當晚完整經過的親口說明。"
+        }
+      ]
+    },
+    {
+      "id": "archive-closed-folder",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed plain paper case folder on a wooden archive table in afternoon window light. Its thick bound edge and tied cotton ribbon fill the central area. The cover is blank and the surrounding desk is empty.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "peqt",
+          "text": "那調查最後寫下的自然力量，到底是什麼？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "archive-file-stack",
+      "chapter": "自然力量是什麼意思",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small stack of closed case folders on an archive shelf in daylight. One thick unmarked folder projects slightly at the centre; cotton ties hold it closed. Side light from a window reveals the paper edges and simple shelving.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "wjny",
+          "text": "一九五九年五月，調查以一份結案決定收尾。"
+        }
+      ]
+    },
+    {
+      "id": "natural-force-slot",
+      "template": "screenshot",
+      "data": {
+        "image": "stock/f90b4c557783827cfde143fb4ddfd59ae08e93b9b97a05026a9cb3e288ddf25d.png",
+        "caption": "第 387 頁原文關鍵詞：自然力量",
+        "credit": "1959 結案書 · PD-RU-exempt · 裁切"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "qeyq",
+          "text": "其中的關鍵意思，是他們無力克服的自然力量。",
+          "emotion": "穩定，關鍵詞放慢"
+        }
+      ]
+    },
+    {
+      "id": "archive-ribbon",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of a cotton ribbon tied around a thick plain document bundle on a sunlit archive desk. The central knot and uneven page edges carry the composition. The paper surfaces face down, with no writing visible.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "ca3c",
+          "text": "這個說法很寬，沒有直接指出雪板怎麼滑下來。"
+        }
+      ]
+    },
+    {
+      "id": "natural-not-supernatural",
+      "template": "compare",
+      "data": {
+        "title": "少加一個詞，意思不同",
+        "left": {
+          "heading": "原文核心",
+          "points": [
+            "自然力量"
+          ]
+        },
+        "right": {
+          "heading": "不屬原句",
+          "points": [
+            "神祕的超自然力量"
+          ]
+        },
+        "source": "1959 年結案書｜стихийная сила"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "78gf",
+          "text": "自然力量是原文的意思。",
+          "reveal": 1
+        },
+        {
+          "id": "n8qm",
+          "text": "加上神祕或超自然，就把沒有的意思塞進去了。",
+          "emotion": "輕輕加重",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "archive-many-pages",
+      "template": "shot",
+      "data": {
+        "prompt": "Side close-up of a bound document bundle opened edge-on on a plain desk in daylight. Several page edges form a small fan at centre, while their written faces remain outside the view. Soft window light illuminates the thickness of the bundle.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "f8ug",
+          "text": "而且結案書有好幾頁，還整理了物品和足跡。"
+        }
+      ]
+    },
+    {
+      "id": "archive-reader-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot. Rear view of an anonymous researcher at a daylight archive table, shown at a distance with the back of the head obscured by perspective. The person holds a closed unmarked case folder with both hands. A bright window lights the table and plain shelves.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "jqdj",
+          "text": "只摘一句結論，會錯過前面支撐判斷的那些線索。"
+        }
+      ]
+    },
+    {
+      "id": "review-timeline",
+      "template": "steps",
+      "data": {
+        "title": "後來的複查與解釋",
+        "steps": [
+          {
+            "title": "2019 年",
+            "detail": "對外說明複查"
+          },
+          {
+            "title": "2020 年",
+            "detail": "記者會提出雪崩解釋"
+          }
+        ],
+        "source": "Interfax｜2019-02-05、2020-07-11"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "ek8t",
+          "text": "二零一九年，檢方對外說明複查。",
+          "reveal": 1
+        },
+        {
+          "id": "dpfd",
+          "text": "隔年記者會提出雪崩解釋，再次引起討論。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "empty-speaking-room",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty public briefing room during daytime. A plain wooden lectern stands near the centre with one small unbranded microphone; empty chairs recede into the background. Natural window light fills the room. The setting is generic and unoccupied.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "2ebc",
+          "text": "不過，提出雪崩說法，和交代物理過程是兩回事。"
+        }
+      ]
+    },
+    {
+      "id": "slope-small-feature",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot. Low view across a broad mountain slope in daylight. A shallow step in the snow surface forms the central feature, with the distant horizon gently descending. No enormous avalanche cloud or people appear; the landscape is quiet and open.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "xzmn",
+          "text": "山坡看起來不夠陡，為什麼還可能有雪板？"
+        }
+      ]
+    },
+    {
+      "id": "camp-open-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of an empty ridge tent set below a low snow bank on a mountain slope in evening twilight. The canvas shelter is centred, and undisturbed snow extends upslope. Light comes from the remaining sky, with no artificial source.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "m3z2",
+          "text": "如果真是雪板，又為什麼可能隔了幾小時才滑落？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "science-snow-slab",
+      "chapter": "小雪板為何可能延遲",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a compact block of layered snow on a plain outdoor testing bench in daylight. Its cohesive upper section and slightly granular lower layer are visible in the centre, lit from the side. This is a generic snow sample and contains no tools or markings.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "vtj7",
+          "text": "二零二一年，兩位研究者把這些難題放進模型。"
+        }
+      ]
+    },
+    {
+      "id": "model-paper-card",
+      "template": "big",
+      "data": {
+        "text": "**小型雪板**",
+        "kicker": "2021 年可行性模型",
+        "sub": "Gaume、Puzrin｜概念示意，非當晚實測"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "6x68",
+          "text": "他們研究的是小型雪板，並非電影裡整座山轟然崩落。",
+          "emotion": "放慢，對比清楚"
+        }
+      ]
+    },
+    {
+      "id": "cohesive-snow",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro view of a cohesive snow block lying on a snow-covered outdoor bench in morning light. The upper crust remains connected as one piece, while loose grains gather along its lower edge. The compact block is central with a plain background.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "kf77",
+          "text": "雪板的意思，是一層相互連結的雪，整塊失去穩定。"
+        }
+      ]
+    },
+    {
+      "id": "buried-layer-close",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a naturally exposed layered snow bank on an empty slope in daytime. A thin looser band is visible beneath a compact upper layer at the centre. Side light shows the different textures; the picture is a conceptual material study without arrows or writing.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "4q3w",
+          "text": "如果下面藏著比較脆弱的一層，就可能先從那裡破壞。"
+        }
+      ]
+    },
+    {
+      "id": "smooth-surface",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty rounded snow surface on a treeless mountain shoulder at noon. Wind has smoothed the central area into an apparently gentle slope. The horizon and distant terrain remain simple, lit by an overcast sky.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "advd",
+          "text": "麻煩是，站在雪面上，不一定看得到底下的形狀。"
+        }
+      ]
+    },
+    {
+      "id": "surface-and-ground",
+      "template": "compare",
+      "data": {
+        "title": "平均坡度與局部坡度",
+        "left": {
+          "heading": "外表／平均",
+          "points": [
+            "看起來較平緩"
+          ]
+        },
+        "right": {
+          "heading": "模型裡的局部",
+          "points": [
+            "底下可有較陡階梯"
+          ]
+        },
+        "source": "Gaume、Puzrin 2021｜概念示意"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "zr5j",
+          "text": "平均看起來平緩，是整段坡面的印象。",
+          "reveal": 1
+        },
+        {
+          "id": "53be",
+          "text": "模型關心的，卻是帳篷上方那一小段地形。",
+          "emotion": "稍加重",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ground-step-context",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium side view of an exposed mountain ground step in clear summer daylight. A short steeper rise interrupts an otherwise gentler grassy slope at the centre. Rough soil and sparse stones define the profile; there are no structures or people.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "wetp",
+          "text": "局部有階梯，就可能和平均坡度不一樣。"
+        }
+      ]
+    },
+    {
+      "id": "snow-over-step",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium side view of a snow-covered mountain ledge in daylight. A shallow natural overhang suggests a buried ground step beneath a continuous snow cover. Keep the simple central terrain feature readable, without people, buildings or signs.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "h5qj",
+          "text": "這裡是假設雪下的弱層，也跟著局部地形傾斜。"
+        }
+      ]
+    },
+    {
+      "id": "snow-platform-cut",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty level platform cut into a small snow bank on a daylight mountain slope. A plain shovel lies horizontally on the lower level, its blade centred beside the exposed bank. No person is present and nothing is in motion.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "8tk6",
+          "text": "再加上搭帳篷時，在坡上切出一塊平台。"
+        }
+      ]
+    },
+    {
+      "id": "platform-front-face",
+      "template": "shot",
+      "data": {
+        "prompt": "Low close-up of the upright cut face of a snow bank behind a small flat platform, in soft daytime light. The compact snow rests above the open lower space; layered texture is central. The shot contains only the cut bank and the empty platform.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "3ywy",
+          "text": "這個切口，會改變上方雪層原本受支撐的狀態。"
+        }
+      ]
+    },
+    {
+      "id": "model-first-two",
+      "template": "steps",
+      "data": {
+        "title": "模型條件，先放兩件",
+        "steps": [
+          {
+            "title": "局部地形與弱層",
+            "detail": "底下可能藏著較陡的一段"
+          },
+          {
+            "title": "切出搭帳平台",
+            "detail": "改變雪層支撐"
+          }
+        ],
+        "source": "Gaume、Puzrin 2021｜概念示意"
+      },
+      "claims": [
+        "c26",
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "rajs",
+          "text": "地形和弱層，提供可能失穩的位置。",
+          "reveal": 1
+        },
+        {
+          "id": "vrd2",
+          "text": "切出平台，則改變了那裡的受力條件。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "quiet-platform",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small empty camping platform below a snow bank on a calm mountain afternoon. A low canvas tent sits in the centre and the bank above remains intact. The plain landscape has only terrain and shelter under diffuse daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "be3v",
+          "text": "但切完之後，雪板不必立刻滑落。",
+          "emotion": "穩定敘述，重點詞稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wind-moves-snow",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up across a mountain snow surface in bright daylight. Loose snow grains skim sideways along the ground toward a shallow depression in the centre; the air above remains clear. The emphasis is on wind moving existing surface snow.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "azmm",
+          "text": "另一個角色是風，它能把地上的雪搬到別處。",
+          "emotion": "穩定敘述，重點詞稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "wind-ridge",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an unoccupied mountain ridge in winter daylight. A low veil of drifting surface snow crosses the crest and gathers just below it at centre. The sky is clear of falling snow and the terrain remains simple.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "p4m5",
+          "text": "所以增加的雪，不一定是剛從天空降下來的。"
+        }
+      ]
+    },
+    {
+      "id": "drift-deposition",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a shallow snow hollow collecting windblown grains in daylight. A rounded deposit builds against the far edge in the central frame, while the near surface is scoured smoother. Side light distinguishes the accumulating mound.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "a5xc",
+          "text": "風吹來的雪如果堆在上方，就會逐漸增加重量。"
+        }
+      ]
+    },
+    {
+      "id": "weight-analogy",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a generic mittened hand adding one small folded cloth bundle onto a stack already resting on a fabric sling in daylight. The centre of the sling bends slightly under the load. This simple everyday comparison uses only the hand, cloth and sling.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c30"
+      ],
+      "lines": [
+        {
+          "id": "76ai",
+          "text": "像在同一個支撐上，慢慢多放一份重量。"
+        }
+      ]
+    },
+    {
+      "id": "model-later-two",
+      "template": "steps",
+      "data": {
+        "title": "變化可以慢慢累積",
+        "steps": [
+          {
+            "title": "風搬運積雪",
+            "detail": "上方載重增加"
+          },
+          {
+            "title": "弱層破裂擴展",
+            "detail": "雪板可能滑動"
+          }
+        ],
+        "source": "Gaume、Puzrin 2021｜概念示意"
+      },
+      "claims": [
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "zj3d",
+          "text": "重量增加，會改變弱層承受的力。",
+          "reveal": 1
+        },
+        {
+          "id": "92m4",
+          "text": "當破裂能夠擴展，連著的雪板才可能往下移動。",
+          "emotion": "放慢",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "slab-edge-displaced",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium side view of a small cohesive snow slab displaced a short distance down a simple empty slope in daylight. A shallow gap at its upper edge and a compact displaced block are central. The view is a conceptual aftermath, with no tent, person or large powder cloud.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c28",
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "m574",
+          "text": "這串過程，提供了延遲滑落的物理可能。"
+        }
+      ]
+    },
+    {
+      "id": "model-hours",
+      "template": "stats",
+      "data": {
+        "title": "模型裡的延遲",
+        "stats": [
+          {
+            "value": "數小時",
+            "label": "特定條件下的情境",
+            "note": "不是當晚的計時紀錄"
+          }
+        ],
+        "source": "Gaume、Puzrin 2021｜模型情境"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "pxkt",
+          "text": "重點是延遲數小時的情境，能否在條件下成立。",
+          "emotion": "數字放慢",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "model-snow-sample",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of two small generic snow samples in shallow plain trays on a daylight outdoor research bench. One is compact and one has a looser layer at its edge. The trays form a central group with ample empty table space.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "e9q7",
+          "text": "換了雪層厚度、強度或風搬來的雪量，結果也會變。",
+          "emotion": "穩定敘述，重點詞稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "measurement-tools",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain snow sampling tube and a closed unmarked field notebook on a sunlit outdoor bench. The cylindrical tool lies at centre; the notebook shows only its blank cover. This is generic research equipment, not a historical measurement scene.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "xchu",
+          "text": "而當年帳篷旁的每一項數值，並沒有完整量下來。"
+        }
+      ]
+    },
+    {
+      "id": "model-not-timer",
+      "template": "compare",
+      "data": {
+        "title": "條件檢驗與當夜計時",
+        "left": {
+          "heading": "模型做的事",
+          "points": [
+            "用推定時距檢驗參數"
+          ]
+        },
+        "right": {
+          "heading": "沒有做到",
+          "points": [
+            "獨立預測確切時刻"
+          ]
+        },
+        "source": "Gaume、Puzrin 2021｜模型情境"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "6n95",
+          "text": "研究還用推定的延遲時間，回頭檢查積雪條件。",
+          "emotion": "放慢",
+          "reveal": 1
+        },
+        {
+          "id": "c5xt",
+          "text": "所以不能拿算出的時間，倒填九人何時出事。",
+          "emotion": "收斂",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "small-slab-remains",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a small localized snow slab deposit on an empty mountainside in daytime. A limited cluster of compact snow blocks lies beneath a short fracture edge in the central area; most of the broad surrounding slope remains undisturbed.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "h6hn",
+          "text": "小雪板影響的範圍，也和整片山坡崩塌不同。"
+        }
+      ]
+    },
+    {
+      "id": "wind-softens-edge",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of windblown grains softening the edge of a small snow block in afternoon light. The block remains visible in the centre while its sharp boundary becomes partially covered. The frame contains only natural snow forms.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "rhik",
+          "text": "時間和風吹雪，還可能改變後來看得到的痕跡。"
+        }
+      ]
+    },
+    {
+      "id": "unmeasured-snow",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a quiet, empty mountain shoulder at midday, with a continuous unmarked snow surface extending across the centre. Distant ridges fade softly behind it. There are no structures or people; light comes from an overcast sky.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "iry6",
+          "text": "這可以回應疑問，卻不能保證當年的痕跡就是如此消失。"
+        }
+      ]
+    },
+    {
+      "id": "science-next-evidence",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot. Distant rear view of two anonymous field researchers standing on a summer hillside in daylight. One holds a plain measuring pole while the other gestures toward a ground step. They are small within the landscape, with hidden faces and the terrain feature centred.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "swkf",
+          "text": "如果模型說得通，後來的人還能找到什麼支持？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "survey-summer-ground",
+      "chapter": "後來的雪崩痕跡",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty mountain slope in late-summer daylight. Sparse grass and exposed soil reveal short natural steps across the central area. The terrain profile is visible without snow, and light comes from a high overcast sky.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "24gt",
+          "text": "研究發表後，後續考察把問題帶回山上。"
+        }
+      ]
+    },
+    {
+      "id": "survey-date",
+      "template": "stats",
+      "data": {
+        "title": "先看沒有雪的地形",
+        "stats": [
+          {
+            "value": "2021.09",
+            "label": "無人機地形測量",
+            "note": "可能帳篷位置附近"
+          }
+        ],
+        "source": "Puzrin、Gaume 2022｜作者後續報告"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "mhqb",
+          "text": "二零二一年九月，考察隊用無人機測量地形。",
+          "emotion": "日期清楚",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "survey-drone",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle close-up of a small unbranded survey drone resting on an empty summer hillside in daylight. Its compact body and propellers sit at centre on sparse grass. A simple distant ridge frames it; no pilot or screen is visible.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "mpms",
+          "text": "地形資料顯示，附近確實有局部較陡的階梯。"
+        }
+      ]
+    },
+    {
+      "id": "survey-step-close",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a short exposed soil step on a grassy mountain slope in soft afternoon light. A steeper central face interrupts the gentle ground above and below. Stones and roots reveal the natural shape without markings or equipment.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "ay45",
+          "text": "這讓平均很緩、局部較陡的想法，多了地形支持。",
+          "emotion": "穩定敘述，重點詞稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "survey-two-researchers",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot. Rear wide view of two anonymous survey workers beside a natural ground step in summer daylight. One steadies a plain pole while the other crouches to inspect the soil profile. Their distant turned backs conceal faces, and the step remains central.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "v2ar",
+          "text": "但測到的是地面，沒有同時找回當年的雪層。"
+        }
+      ]
+    },
+    {
+      "id": "snow-return-season",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an unoccupied mountain shoulder covered by winter snow in daylight. A smooth wind-shaped surface hides the ground contours, with distant bare ridges on the horizon. The centre is simple terrain without people or structures.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "nf2q",
+          "text": "雪下的弱層有多厚、多強，仍不能由地形直接代替。"
+        }
+      ]
+    },
+    {
+      "id": "avalanche-date",
+      "template": "stats",
+      "data": {
+        "title": "另一趟考察",
+        "stats": [
+          {
+            "value": "2022.01.29",
+            "label": "觀察到近期雪板雪崩痕跡",
+            "note": "鄰近山坡，並非 1959 年事故影像"
+          }
+        ],
+        "source": "Puzrin、Gaume 2022｜作者後續報告"
+      },
+      "claims": [
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "j3ju",
+          "text": "到了二零二二年一月，嚮導又見到新的雪崩痕跡。",
+          "emotion": "日期清楚",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "nearby-avalanche-context",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty snowy mountain slope in clear daylight. A localized crown break and a small deposit below it occupy the centre at a distance. This is a generic illustration of recent slab avalanche traces, not a reproduction of a particular photograph.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "z9pi",
+          "text": "兩位作者報告，附近山坡出現了兩處雪板雪崩痕跡。"
+        }
+      ]
+    },
+    {
+      "id": "separate-ridge",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view across a broad mountain basin in winter daylight, from one empty ridge toward a separate slope across the valley. The central gap between the slopes is easy to see. Natural light defines the terrain without any route lines or buildings.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "r7wf",
+          "text": "位置在鄰近山坡，不能把它搬到當年的帳篷上方。"
+        }
+      ]
+    },
+    {
+      "id": "field-camera-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up from behind of generic mittened hands holding an unbranded camera toward a distant snowy slope in daylight. The camera back is plain with its display outside the view. The lens direction and distant terrain share the central composition.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "hrcj",
+          "text": "而且拍到的是後來的痕跡，不是事故當晚的過程。"
+        }
+      ]
+    },
+    {
+      "id": "two-dates-not-one",
+      "template": "steps",
+      "data": {
+        "title": "兩種後來的支持",
+        "steps": [
+          {
+            "title": "2021 年 9 月",
+            "detail": "測地形：局部階梯"
+          },
+          {
+            "title": "2022 年 1 月",
+            "detail": "看痕跡：鄰近雪板雪崩"
+          }
+        ],
+        "source": "Puzrin、Gaume 2022｜作者後續報告"
+      },
+      "claims": [
+        "c40"
+      ],
+      "lines": [
+        {
+          "id": "2cqd",
+          "text": "二零二一年的測坡，補上了局部地形的資料。",
+          "reveal": 1
+        },
+        {
+          "id": "x8az",
+          "text": "隔年看到的痕跡，支持這一區可能有雪板雪崩。",
+          "emotion": "語氣稍亮",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "softer-snow-block",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro view of a soft cohesive snow block crumbling slightly at one corner on an outdoor research surface in daylight. The central edge exposes loose grains beneath a connected top. The background is plain snow, with no labels or tools.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "7tq6",
+          "text": "比起模型假設，後來的雪板更軟，坡也更陡。"
+        }
+      ]
+    },
+    {
+      "id": "natural-slope-no-cut",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot. Side view of an uninterrupted snow-covered mountain slope in daylight. A natural compact snow ledge is centred above smooth terrain, with no camping platform or tent present. The scene emphasizes the uncut shape of the terrain.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "6yky",
+          "text": "下方也沒有搭帳篷切出的平台，觸發條件可能不同。"
+        }
+      ]
+    },
+    {
+      "id": "model-field-difference",
+      "template": "compare",
+      "data": {
+        "title": "支持，不是完全重演",
+        "left": {
+          "heading": "後來觀察支持",
+          "points": [
+            "區域可有雪板雪崩"
+          ]
+        },
+        "right": {
+          "heading": "仍有差別",
+          "points": [
+            "雪板軟硬與坡度",
+            "切口與觸發條件"
+          ]
+        },
+        "source": "Puzrin、Gaume 2022｜作者後續報告"
+      },
+      "claims": [
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "khhj",
+          "text": "它們支持一部分條件，並沒有把整個模型重演一遍。",
+          "emotion": "收斂",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "field-weather",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an unoccupied winter mountainside under windblown snow in daytime. Visibility fades beyond a central low ridge, while surface grains sweep sideways. There are no people or equipment; the scene suggests difficult field conditions without dramatized danger.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c42"
+      ],
+      "lines": [
+        {
+          "id": "wh89",
+          "text": "那趟考察原定的雪層測試，也受到天氣阻礙。"
+        }
+      ]
+    },
+    {
+      "id": "same-evidence-folders",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of one plain closed research folder resting between two smaller blank paper folders on a daylight desk. A single photograph lies face down on the central folder. The grouped papers are the only objects and show no writing.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "r295",
+          "text": "還有一個容易忽略的差別：文章多，不等於獨立證據多。"
+        }
+      ]
+    },
+    {
+      "id": "shared-source",
+      "template": "compare",
+      "data": {
+        "title": "同一團隊的跟進",
+        "left": {
+          "heading": "研究與後續報告",
+          "points": [
+            "同一作者團隊"
+          ]
+        },
+        "right": {
+          "heading": "校方新聞",
+          "points": [
+            "解說同一研究與考察"
+          ]
+        },
+        "source": "2021 論文、2022 Comment、EPFL／ETH"
+      },
+      "claims": [
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "apqe",
+          "text": "原論文和後續文章，出自同一組作者。",
+          "reveal": 1
+        },
+        {
+          "id": "hve7",
+          "text": "校方新聞解說的也是這批考察，不能算另一次驗證。",
+          "emotion": "關鍵詞放慢",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "evidence-gap-slope",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view from beside a closed plain field case toward a distant empty mountain slope in daylight. The case rests near the centre foreground and the slope occupies the background. The composition links modern investigation with a landscape that holds no visible answer.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "vee2",
+          "text": "回到那頂帳篷，現在究竟能回答多少？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "return-to-boots",
+      "chapter": "離帳原因還缺哪一塊",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of worn felt boots beside a folded canvas sheet on a daylight archive table. The boot fibres and old fabric seams are central, lit by a window. This symbolic arrangement contains only objects, not a historical scene.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "8xtt",
+          "text": "鞋子和內側切口，確實讓離營這件事顯得急迫。",
+          "emotion": "穩定敘述，重點詞稍放慢"
+        }
+      ]
+    },
+    {
+      "id": "return-to-trail",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a low viewpoint of a short irregular footwear trail crossing an empty snowy slope toward trees in daylight. Slightly raised compacted-snow forms survive above the surrounding wind-scoured surface; only a limited central portion remains. The distance beyond is unmarked and empty.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c03",
+        "c15",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "nueh",
+          "text": "不同的足跡，則把整隊赤腳狂奔的傳說拆開了。"
+        }
+      ]
+    },
+    {
+      "id": "return-to-platform",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium side view of a small empty tent platform below a snow bank in diffuse daylight. The low canvas shelter and overlying snow bank form the central group. The surrounding slope is simple and entirely unoccupied.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "a6qq",
+          "text": "雪板研究提供的，是可能迫使人離營的一種機制。"
+        }
+      ]
+    },
+    {
+      "id": "case-status",
+      "template": "bullets",
+      "data": {
+        "title": "這份檔案，分三層看",
+        "items": [
+          "記錄：物品、切口與足跡",
+          "模型：特定條件下可行",
+          "未知：當夜完整經過"
+        ],
+        "source": "1959 年卷宗／Gaume、Puzrin 2021"
+      },
+      "claims": [
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "u6ta",
+          "text": "物品、切口和足跡，是調查留下的記錄。",
+          "reveal": 1
+        },
+        {
+          "id": "u3tt",
+          "text": "特定條件下的雪板，是能夠檢驗的解釋。",
+          "reveal": 1
+        },
+        {
+          "id": "kum7",
+          "text": "九人當晚完整的行動順序，仍沒有被還原。",
+          "emotion": "放慢，收斂",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "closing-folder",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a generic hand tying the cotton ribbon of a closed blank case folder on a daylight desk. The simple knot and folder edge occupy the centre, with the hand entering from the side. Window light falls softly across the paper.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c45"
+      ],
+      "lines": [
+        {
+          "id": "uqzu",
+          "text": "保留這段未知，也不表示每一種傳說都一樣有根據。"
+        }
+      ]
+    },
+    {
+      "id": "unclosed-case",
+      "template": "big",
+      "data": {
+        "text": "**未結**",
+        "sub": "可行的離帳機制，仍缺當晚證據"
+      },
+      "claims": [
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "tnsj",
+          "text": "離開帳篷可能和雪板威脅有關，卻還缺當晚的直接證據。",
+          "emotion": "穩定，放慢"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "奇聞檔案局",
+        "lines": [
+          "離帳原因：有模型，仍缺當夜證據"
+        ],
+        "cta": "訂閱，一起讀懂留下的線索"
+      },
+      "claims": [
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "bi2x",
+          "text": "雪板可能促成離帳。",
+          "emotion": "穩定收束"
+        },
+        {
+          "id": "x53t",
+          "text": "哪個線索最意外？",
+          "emotion": "輕問"
+        },
+        {
+          "id": "3hwp",
+          "text": "訂閱，繼續追奇聞。",
+          "emotion": "自然邀請"
         }
       ]
     }

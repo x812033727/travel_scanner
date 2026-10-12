@@ -1,0 +1,130 @@
+# H04 第一輪獨立事實查核
+
+日期：2026-10-12。查核者：`h03_verify`，未撰寫正式稿。
+
+**狀態：PASS，未解 must-fix＝0。** 已核讀最終 100 景／119 句、46 組主張、全部 `scene.data`（含圖像提示）、縮圖、YouTube 標題／說明／tags；三組事實修正及後續文書素材整合均已回讀。這是腳本事實與素材文字／局部像素查核，不是旁白、生成圖、完整成片或站主驗收通過。
+
+- 最終 `video.json` SHA-256：`98b2fe192185644dd7a36a3deac8c4f8c9314a54486cedf1ff23cdd85dfae2f8`。
+- 最終 `claims.md` SHA-256：`3ca492d642fc4c3e4a3ea690c50d41e5d2f119b2937af993d51961ea09ae2989`；46 組定義、來源與素材段已讀。
+- 全文先行核讀快照：`c4d8f146…`；作者交接：`ef0f52d8…`；root 文書整合及三句口語調整後為上述最終 SHA。所有旁白、卡片、metadata 與 prompt 已逐路徑抽出，見外部 `_audit/verify1-extractions/98b2fe192185644d.json`、同名 `.txt`／`.video.json`／`.claims.md`。
+- 差異逐項讀取存於同目錄 `handoff-delta-ef0f52d8.json`（初稿至作者交接）與 `handoff-delta-ef0f52d8-98b2fe19.json`（作者交接至最終）。抽取工具保守標記 in_progress，實際交接與最終通過狀態以本報告為準。
+- 本查核者只寫此報告；`video.json`／`claims.md` 的修正由作者／root 統一套用，未改 brief。
+
+## 本輪修正項目
+
+| # | 位置 | 原文／問題 | 建議修正與理由 | 狀態 |
+|---|---|---|---|---|
+| F1 | `euwn` | 「內側刀切是事後鑑定，不是當場一眼看穿。」 | 改為「內側刀切的判斷，來自對留下布料的鑑定。」四月鑑定可證實判斷依據，不能證明早先無人看出或猜到。 | 已套用及回讀通過 |
+| F2 | `7tq6` | 「後來這些雪板比較軟，坡也更陡。」 | 加比較基準「比起模型假設，後來的雪板更軟，坡也更陡。」2022 Comment 的比較承接 1959 模型情境，不能使觀眾以為當年雪板硬度已被實測。 | 已套用及回讀通過 |
+| F3 | `hook-footprints`、`trail-varied`、`broken-trail` 等現場足跡 prompt | 初稿把當年足跡概念寫成 shallow depressions／felt-boot depression／footprint depressions。 | 依 Slobtsov 證詞改凸起壓實足跡與較低的風蝕雪面；7 張相關 prompt 全部同步，保留短段、不完整、不同鞋襪。新增 c46 記錄同一圖像證據。 | 已套用及回讀通過；7 鏡為同一事實問題 |
+
+實質事實修正共 **3 組**，不以同一項的多處相依修改累加。交接後其他改動是 reveal 對齊、開場示意揭露、CTA、三句同義口語改寫、來源名稱及三份掃描整合，未新增第 4 組事實修正。依「>3」規則本輪不強制第二輪；root 仍可另行要求。
+
+## 每個來源的實際讀取狀態
+
+所有以下直接 GET 均使用指定 editorial User-Agent、跟隨轉址，同 host 間至少隔 1 秒；HTML 註解先剔除再讀。逐次狀態、有效 URL、擷取時間、回應 SHA-256 在外部 `_audit/verify1-sources/access.json`。HTTP 200 不單獨當作已讀證據，本表列出實際正文範圍。
+
+| ID | URL | HTTP／本輪實讀範圍 | 限制 |
+|---|---|---|---|
+| H1 | https://dyatlovpass.com/case-files-384-387-ru | 200；1959-05-28 結案決定全文俄文轉錄，384–387 頁。此前本查核者已實看 385、386 原掃描。 | 一手文件的民間轉載，不是官方檔案館直接取件。387 新像素讀取由 listener 另存收據，本輪不冒稱自己已看。 |
+| H2 | https://dyatlovpass.com/case-files-303-304-ru | 200；1959-04-16 帳篷鑑定俄文轉錄，含檢驗方法與結論。此前已實看 304 背面原掃描。 | 刀切與其他撕裂須區別；不把鑑定擴成離帳人員順序。 |
+| H3 | https://dyatlovpass.com/case-files-309-312-ru | 200；1959-04-18 Tempalov 證詞俄文正文。此前已實看 312 原掃描。 | 觀察與證人自己的原因推測分開，不採他對死亡過程的推測。 |
+| H4 | https://dyatlovpass.com/case-files-298-300 | 200；1959-04-15 Slobtsov 證詞英譯正文，26 日下午找到帳篷、清雪查看空帳篷、凸起足跡等段落。 | 沒有本輪實看 298–300 掃描，編者括號補語不當原證詞。 |
+| N21 | https://www.nature.com/articles/s43247-020-00081-8 | 200；直接 HTML 含真正正文。已讀摘要、導言、Results 地形／風搬雪／延遲機制、Discussion、Methods 個案參數段。 | Web open 登入轉址失敗，但 curl 取得正文成功。未逐式驗算完整推導、未讀補充材料／同行審查／補充影片，未重跑模型。 |
+| N22 | https://www.nature.com/articles/s43247-022-00393-x | 200；直接 HTML，已讀完整 Comment 敘事正文，包括 Into the mountains、The avalanches、No final word。 | 未另讀其引用的全部俄羅斯微氣候、雪科學、危險地圖研究；未看補充影片。作者後續報告不能當多組獨立研究。 |
+| NC | https://www.nature.com/articles/s43247-022-00425-6 | 200；更正本文直接讀取，只改 reference 1 DOI。 | 不支持「模型結果被更正」的說法，稿中也沒有這樣說。 |
+| E21 | https://longread.epfl.ch/en/dossier/quand-la-science-permet-dexplorer-un-mystere-russe-vieux-de-60-ans/ | 200；2021-01-28 校方解說全文。 | 同一作者研究，非獨立重複試驗；其刑案 reopened 字眼不採。 |
+| T21 | https://ethz.ch/en/news-and-events/eth-news/news/2021/01/ein-neuer-blick-auf-ein-altes-raetsel.html | 200；2021-01-28 校方解說全文，作同源性對照。 | 未列入當前 video.sources，僅查核輔助，不作新增影片主張。 |
+| E22 | https://actu.epfl.ch/news/intense-press-coverage-prompts-new-expeditions-to-/ | 200；2022-03-24 作者訪談全文，含未能執行測試及作者不宣稱完全破案的限制。 | 2022 敘事中的「數日後找到九人」不採；歷史時間以 H1／H3／H4 為準。 |
+| T22 | https://ethz.ch/en/news-and-events/eth-news/news/2022/03/the-dyatlov-pass-mystery-and-what-a-research-article-can-trigger.html | 200；2022-03-24 校方解說全文。 | confirmed／proving 不能擴成 1959 當夜重建已確證。 |
+| I19 | https://www.interfax.ru/russia/649229 | 200；2019-02-05 新聞正文，明確否認刑案重新偵辦，稱一般監督性複查於 2018-09 開始。 | 新聞引述檢方，不是完整官方報告；稿件「2019 年對外說明複查」可用。 |
+| I20 | https://www.interfax.ru/russia/716956 | 200；2020-07-11 記者會報導全文。 | 僅支持「檢方於記者會提出雪崩解釋」。不背書其中每項事故重建或精確氣象數字。 |
+
+Nature 的成功擷取發生於本輪 05:27 UTC；先前 `research-science.md` 記載受阻，是當時狀態，不應抹除。也不把現在取得正文改寫成所有 PDF、補充資料都已看過。2019／2020 官方完整技術報告本輪未取得，不宣稱它不存在。
+
+## 完整主張表
+
+判定針對影片實際表述；方法論界線採 CONFIRMED 表示與已讀原件／模型範圍一致，不表示已證明某個未記錄事件從未發生。`CHANGED` 表示本輪曾修正，最終版本已套用並回讀通過。
+
+| # | 主張 | 位置（句 ID／scene.data） | URL | HTTP | 判定 | 前 → 後／核對結果 |
+|---|---|---|---|---|---|---|
+| c01 | 鞋子與用品留帳，九人離開；從帳篷追線索 | nvja、86sh、eyqe | https://dyatlovpass.com/case-files-384-387-ru | 200 | CONFIRMED | 385 頁記近乎全部鞋、外衣、物品留下；稿說多數屬保守轉述，問句不替離營編原因。 |
+| c02 | 1959 年事件，旅程在二月初中斷 | u9ci、2fix | https://dyatlovpass.com/case-files-384-387-ru | 200 | CONFIRMED | 不宣稱精確死亡時刻。 |
+| c03 | 不同鞋襪印，不能說全員裸腳 | q82x、e4jx、9pkr、3hs8、b8fk、z6at、88ft、nueh；hook-records、document-footprints-slot.data | https://dyatlovpass.com/case-files-384-387-ru | 200 | CONFIRMED | 386 頁列近乎赤腳／棉襪／氈靴等；「你以為」在下一句即修正。另見 F3 畫面凹凸修正。 |
+| c04 | 足跡向山下谷地森林，不能讀出心情 | e4jx、9pkr、34gm；hook-records.data | https://dyatlovpass.com/case-files-309-312-ru | 200 | CONFIRMED | H1／H3 共同支持方向；沒有宣稱知道每個人的心理。 |
+| c05 | 北烏拉冬季滑雪行程，原十人、一人因病折返、九人繼續 | mvpk、2dku、5kgy；journey-numbers.data | https://dyatlovpass.com/case-files-384-387-ru | 200 | CONFIRMED | 384 頁名單與折返記錄支持，10−1＝9。 |
+| c06 | 成員有學生及已工作者，非九名大學生 | k6p3、cwig | https://dyatlovpass.com/case-files-384-387-ru | 200 | CONFIRMED | 384 頁另列旅遊基地教練及工程師。 |
+| c07 | 山坡帳篷為最後營地與調查起點 | qvru、s24k；camp-platform-context.data.prompt | https://dyatlovpass.com/case-files-384-387-ru | 200 | CONFIRMED | H1／H3 描述山坡搭帳平台，插圖不能當精確原貌。 |
+| c08 | 1959-02-26 白天下午發現帳篷 | 2fqy、rdfd；search-date.data | https://dyatlovpass.com/case-files-298-300 | 200 | CONFIRMED | H4 直接記當日下午，H1 也列 26 日；沒有混成首批五人的同日發現。 |
+| c09 | 清雪查看帳篷時內部無人 | 9rjv | https://dyatlovpass.com/case-files-298-300 | 200 | CONFIRMED | H4 明述 26 日除雪後確認無人。 |
+| c10 | 搜救者見到的是事後現場 | yqn7、9msp | https://dyatlovpass.com/case-files-298-300 | 200 | CONFIRMED | 事發與搜救有時間差；問句不額外宣稱痕跡怎樣消失。 |
+| c11 | 1959-04-16 鑑定認為切口由內側刀切，依布料微痕 | fyrp、9ihg、haem、euwn；tent-examination.data | https://dyatlovpass.com/case-files-303-304-ru | 200 | CHANGED | 日期與檢驗結果支持；euwn 刪去不能證明的「不是當場一眼看穿」，見 F1。 |
+| c12 | 切口方向不等於九人離帳次序 | fmgf、xcze；cut-inference.data | https://dyatlovpass.com/case-files-303-304-ru | 200 | CONFIRMED | 鑑定未識別誰先割、每個人從何處離開；未混用切口計數。 |
+| c13 | 調查以用品留帳推論突然離營，非逐人目擊 | 4jq6、8kqa、jhkz、8xtt；document-shoes-slot.data | https://dyatlovpass.com/case-files-384-387-ru | 200 | CONFIRMED | 385 頁明確以物品配置作推論；結尾「顯得急迫」維持判讀而非全知事實。 |
+| c14 | 結案書 8–9 組，Tempalov 8 組、未確認第 9 | kb6v、h63r、43t2；footprint-count.data | https://dyatlovpass.com/case-files-309-312-ru | 200 | CONFIRMED | 對 H1／H3；不把不同觀察範圍併成九條完整線。broken-trail 的 F3 同步修。 |
+| c15 | 一位勘驗者判讀普通步伐，不能推出全程不跑不怕 | y9t5、ngnu、6wja、nueh；stride-inference.data | https://dyatlovpass.com/case-files-309-312-ru | 200 | CONFIRMED | 312 頁是 Tempalov 觀察及判讀，稿保留範圍界線。 |
+| c16 | 二月底發現帳篷，隨後陸續找到五人，五月最後四人；無當夜倖存口述 | up4g、nd7v、zhkv、46sm、5nwz；discovery-sequence.data | https://dyatlovpass.com/case-files-384-387-ru | 200 | CONFIRMED | 合讀 H1／H3／H4，沒有沿用不同首批日期的單一版本。 |
+| c17 | 1959 年五月結案，自然力量使其無力克服 | peqt、wjny、qeyq；natural-force-slot.data | https://dyatlovpass.com/case-files-384-387-ru | 200 | CONFIRMED | 1959-05-28，387 頁原句；旁白為繁中轉述，最終圖片僅原文關鍵詞，非偽造直譯全文。 |
+| c18 | 自然力量沒有神祕／超自然含義，也未提供雪板機制 | ca3c、78gf、n8qm；natural-not-supernatural.data | https://dyatlovpass.com/case-files-384-387-ru | 200 | CONFIRMED | 原詞 стихийная сила；不追認是哪一家媒體加字。 |
+| c19 | 結案書多頁，內有物品足跡，不能只讀一句 | f8ug、jqdj | https://dyatlovpass.com/case-files-384-387-ru | 200 | CONFIRMED | 384–387 共四頁；稿未把全文縮成一句。 |
+| c20 | 2019 對外說明複查，2020 記者會提出雪崩說法 | ek8t、dpfd、2ebc；review-timeline.data | https://www.interfax.ru/russia/649229 、 https://www.interfax.ru/russia/716956 | 200／200 | CONFIRMED | 明標新聞來源，不說重啟刑案，不以新聞中的詳細重建當確證。 |
+| c21 | 低表觀坡度與延遲是模型欲回應的問題 | xzmn、m3z2 | https://www.nature.com/articles/s43247-020-00081-8 | 200 | CONFIRMED | 論文導言列此疑問；問句不預先認定當夜發生。 |
+| c22 | 2021 年 Gaume、Puzrin 兩人研究小型雪板可行機制 | vtj7、6x68；model-paper-card.data | https://www.nature.com/articles/s43247-020-00081-8 | 200 | CONFIRMED | 年份／作者正確；明標可行性模型、非當晚實測。 |
+| c23 | 連結雪層能以雪板形式失穩 | kf77；cohesive-snow.data.prompt | https://www.nature.com/articles/s43247-020-00081-8 | 200 | CONFIRMED | 模型 cohesive slab 簡化解說，非特殊材質鑑定。 |
+| c24 | 埋藏弱層可能先破壞 | 4q3w；buried-layer-close.data.prompt | https://www.nature.com/articles/s43247-020-00081-8 | 200 | CONFIRMED | 用條件句，未宣稱已挖到 1959 真實雪剖面。 |
+| c25 | 平均表面與局部階梯坡度不同 | advd、zr5j、53be、wetp；surface-and-ground.data | https://www.nature.com/articles/s43247-020-00081-8 | 200 | CONFIRMED | Results 地形與坡度段；無安全角度規則。 |
+| c26 | 模型假設弱層跟隨局部傾斜地形 | h5qj、rajs、vrd2；model-first-two.data | https://www.nature.com/articles/s43247-020-00081-8 | 200 | CONFIRMED | 已明說「假設」，沒有把該幾何當史料實測。 |
+| c27 | 切出搭帳平台改變支撐與受力 | 8tk6、3ywy、rajs、vrd2；model-first-two.data | https://www.nature.com/articles/s43247-020-00081-8 | 200 | CONFIRMED | 對應切坡邊界條件，不承諾任何切坡必然雪崩。 |
+| c28 | 切坡後可能延遲，非立刻滑落 | be3v、m574 | https://www.nature.com/articles/s43247-020-00081-8 | 200 | CONFIRMED | 在既述模型條件下；沒有設定固定倒數時間。 |
+| c29 | 風可搬既有積雪，堆積後增重 | azmm、p4m5、a5xc；wind-moves-snow 等 prompt | https://www.nature.com/articles/s43247-020-00081-8 | 200 | CONFIRMED | 對應 wind-driven deposition，畫面沿地搬雪，不以新降雪替代。 |
+| c30 | 慢慢加重量的布吊帶比喻 | 76ai；weight-analogy.data.prompt | —（類比） | — | OUT OF SCOPE | 未宣稱是雪板實驗或同一破壞材料；保留「像」。 |
+| c31 | 逐漸載重、弱層裂縫擴展後雪板可能滑動 | zj3d、92m4、m574；model-later-two.data | https://www.nature.com/articles/s43247-020-00081-8 | 200 | CONFIRMED | 對 Results delayed-release；不是聲稱單靠重力定律重建當晚。 |
+| c32 | 檢驗延遲數小時，推定時距參與回算，非獨立確切時刻預測 | pxkt、6n95、c5xt；model-hours、model-not-timer.data | https://www.nature.com/articles/s43247-020-00081-8 | 200 | CONFIRMED | Results 及 Methods 明列回算 Q；稿未搬回各處不同用途的小數區間。 |
+| c33 | 厚度、強度、風載雪量影響模型；當夜參數非完整現場實測 | e9q7、xchu | https://www.nature.com/articles/s43247-020-00081-8 | 200 | CONFIRMED | 參數與 Discussion 假設／不確定性支持，不說所有參數全無任何估計。 |
+| c34 | 小範圍雪板與大崩塌不同；風吹雪可能改變痕跡但非證明當年如此 | h6hn、rhik、iry6；small-slab-remains 等 prompt | https://www.nature.com/articles/s43247-020-00081-8 、 https://www.nature.com/articles/s43247-022-00393-x | 200／200 | CONFIRMED | 未普遍化為雪崩必然不留痕，也未用後來個案證明 1959 痕跡消失。 |
+| c35 | 2021 年 9 月無人機測量可能帳篷位置附近 | swkf、24gt、mhqb；survey-date.data | https://www.nature.com/articles/s43247-022-00393-x | 200 | CONFIRMED | Into the mountains 直接載明 March 與 September 分次考察。 |
+| c36 | 測地形發現局部較陡階梯 | mpms、ay45 | https://www.nature.com/articles/s43247-022-00393-x | 200 | CONFIRMED | Fig.2／DEM 說明支持；不把具體角度當現場安全門檻。 |
+| c37 | 地形測量不能還原當年雪層厚度和強度 | v2ar、nf2q | https://www.nature.com/articles/s43247-022-00393-x | 200 | CONFIRMED | 地形 DEM 與雪材力學參數不同；稿的證據邊界正確。 |
+| c38 | 作者報告 2022-01-29 鄰近坡面兩處近期雪板痕跡 | j3ju、z9pi；avalanche-date.data | https://www.nature.com/articles/s43247-022-00393-x | 200 | CONFIRMED | Fig.3d/e 日期及正文數量相符，明說作者報告，未稱當晚影片。 |
+| c39 | 後來照片在鄰近坡面，不能搬成帳篷上方當夜過程 | r7wf、hrcj | https://www.nature.com/articles/s43247-022-00393-x | 200 | CONFIRMED | 原文距帳篷附近幾公里、年份不同；稿未精確化坡向或距離。 |
+| c40 | 測坡和雪崩照片來自不同時間，各補不同支持 | 2cqd、x8az；two-dates-not-one.data | https://www.nature.com/articles/s43247-022-00393-x | 200 | CONFIRMED | 2021-09 與 2022-01 分列，未假稱同次測量。 |
+| c41 | 後來雪板更軟、坡更陡、無切坡、觸發可不同 | 7tq6、6yky、khhj；model-field-difference.data | https://www.nature.com/articles/s43247-022-00393-x | 200 | CHANGED | No final word 直接支持差異；7tq6 補「比起模型假設」，見 F2。 |
+| c42 | 2022 考察原定雪層測試受天氣阻礙 | wh89 | https://actu.epfl.ch/news/intense-press-coverage-prompts-new-expeditions-to-/ | 200 | CONFIRMED | 直接作者訪談說未能執行規劃測試，不誤說已量齊參數。 |
+| c43 | 作者跟進與校方新聞同源，網頁多不代表獨立試驗多 | r295、apqe、hve7；shared-source.data | https://www.nature.com/articles/s43247-022-00393-x 、 https://ethz.ch/en/news-and-events/eth-news/news/2022/03/the-dyatlov-pass-mystery-and-what-a-research-article-can-trigger.html | 200／200 | CONFIRMED | 作者、引用及考察內容一致；不否定後續確有新增現地資料。 |
+| c44 | 模型支持可能觸發，未重建九人當夜完整行動 | vee2、a6qq、u6ta、u3tt、kum7、tnsj、bi2x；case-status、unclosed-case、outro.data | https://www.nature.com/articles/s43247-020-00081-8 | 200 | CONFIRMED | Discussion 明說離帳後行為與位置等超出論文範圍；「未結」為系列知識狀態，非宣稱刑案仍偵辦。 |
+| c45 | 未知不表示每種傳說都有相同證據 | uqzu | —（站主觀點） | — | OUT OF SCOPE | 與 brief 站主立場一致；不作可量化科學結論。 |
+| c46 | 當年足跡示意為凸起壓實雪形、周圍風蝕低面 | hook-footprints、trail-varied、boot-print-evidence、broken-trail、trail-downhill、stride-evidence、return-to-trail.data.prompt | https://dyatlovpass.com/case-files-298-300 | 200 | CHANGED | 初稿凹洞 → 7 景均改 raised compacted-snow forms；H4 299 頁支持，未新增口播數字或宣稱真實足形復原。 |
+
+## 縮圖、metadata 與圖像涵義
+
+| 範圍 | 結果 |
+|---|---|
+| `youtube.title` | 問「為何離開帳篷」，不宣稱已破案；人物／地名與正文一致。 |
+| `youtube.description` | 多數鞋留帳、反問是否全員赤腳、2021 模型／2021 測坡／2022 鄰近痕跡均有對應。明說情境圖、繁中 CC 與非安全教學；沒有新數字。 |
+| `youtube.tags` | 題材索引，無額外事實主張。 |
+| `thumbnail.data` | 最終「鞋子還在／雪夜裡的空帳篷」有 H1 留鞋記錄支持；情境插圖不冒充事故實攝，也未寫雪崩定案。 |
+| 全部 shot prompts | F3 已解。主要為匿名背影、用品、空景、generic 雪層與模型示意；未要求重製九名死者、作者或搜救者肖像。開場 title 新增「情境插圖與科學示意｜非當晚攝影」。畫面生成後仍須像素審查。 |
+| `assets` | 最終含 385／386／387 三份原件局部，已讀 exact Commons URL、作者、PD-RU-exempt、日期及裁切／透明留邊說明，並親自實看三張 stock PNG。結果見下表；不再沿用空 assets 的較早狀態。 |
+| 來源名稱 | 最終已統一為「Interfax（2019）：檢方對外說明一般監督性複查」，與正文一致。 |
+
+### 三份素材與 caption 回讀
+
+Commons 授權頁與 API 資訊由本輪受派的 listener 逐頁核對，原件 URL／SHA／裁切矩形見 `asset-register.md` 及外部 `_audit/source-assets.json`；本查核者另外開啟實際成片用 PNG 核對內容。這裡不將 listener 的全頁像素讀取算為自己完成。
+
+| scene | 檔案 SHA-256（即 stock 檔名） | caption／實看結論 | Commons URL |
+|---|---|---|---|
+| document-shoes-slot | `bf338fb136401d2bb9358a7bceeb46abe20a9ee55b7bdcf263d483eb67d1963f` | 385 局部確有鞋子、外衣、用品、突然離營推論及內側切口；caption 相符。沒有遺體圖片或傷勢文字。 | https://commons.wikimedia.org/wiki/File:Dyatlov.Volume_1.Page_385.jpg |
+| document-footprints-slot | `1c31a7da3de0851b0645f7636df4a6bc07a8252447a8ad74f98e2f9dca709b40` | 386 足跡段確有 8–9 組及鞋襪差異；caption 相符，下面傷勢段已排除。原件內 500 公尺未被口播誤用為另一證人的 50 公尺。 | https://commons.wikimedia.org/wiki/File:Dyatlov.Volume_1.Page_386.jpg |
+| natural-force-slot | `f90b4c557783827cfde143fb4ddfd59ae08e93b9b97a05026a9cb3e288ddf25d` | 387 只呈 стихийная сила 關鍵詞，caption 正確稱關鍵詞而非完整結論；頂邊少量鄰行墨跡無新增可讀傷勢敘述。 | https://commons.wikimedia.org/wiki/File:Dyatlov.Volume_1.Page_387.jpg |
+
+三筆 assets 的作者均為 Lev Nikitich Ivanov、日期 1959-05-28、PD-RU-exempt，source 已含署名及修改說明；字幕圖說沒有把民間託管掃描說成官方檔案館直接提供。輸出檔已核 SHA 與檔名一致。
+
+## 摘要與待完成項
+
+- 已核：46 組 scene claims；41 組 CONFIRMED、3 組 CHANGED 並已回讀通過、2 組 OUT OF SCOPE（類比／站主觀點）。NOT FOUND：0，未解 must-fix：0。
+- 會變的事實：不把 2021／2022 描述成最新或唯一模型；本輪來源讀取日 2026-10-12。沒有價格、版本、在任職稱或「此後無新報告」等易過期新斷言。
+- 站主觀點不符：0；保留未知、區分模型與事件、原文優先均符合 brief。
+- Listener 報告範圍：最終 119 句，超過 40 字的句子 0；旁白 URL／拉丁詞／括號 0，say 欄 0。兩組 reveal 對齊改句及 qvru／4jq6／z6at 口語修訂已讀，沒有新事實差異。CTA 是互動用語而非查核主張。
+- 原生 lint：本查核者於最終 `98b2fe19…` 執行，**exit 0，0 errors／4 warnings**。提醒為 daylight、snow、central 詞頻及開場章約 29 秒；第一句即提出鉤子，這些不是未解事實錯誤。估長 10.1 分鐘／2063 spoken units，不等於實際 TTS 長度。
+- SECOND ROUND：**規則不強制**；本輪實質事實修正 3 組，未超過 3。
+- 腳本事實查核完成。後續仍須原生製作關卡、生成圖／版型／字幕與實際影音審查；本報告不代替那些檢查或站主核准。
