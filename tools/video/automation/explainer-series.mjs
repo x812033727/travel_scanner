@@ -6,6 +6,8 @@
 // payload, so no payload of an existing video moves and the settings page's "prompt sent" row of
 // one series is never overwritten by another's.
 import { explainerCardTemplates } from "../core/drama.mjs";
+import { OPENING_CHAPTER_SECONDS } from "../core/lint.mjs";
+import { CONDENSATION_RULE } from "./register.mjs";
 
 /**
  * The prompt variants of an explainer, by style preset: the one-off's bible ("planner:<bible>"),
@@ -58,11 +60,13 @@ curious viewer would ask, answered`,
   packaging in a picture; invented people and plain unbranded objects stand in. Nothing a
   synthetic-media disclosure would not cover.`,
   shape: `- Structure (docs/videos/so-thats-why/README.md §一集長什麼樣), in this order. The lengths
-  are for the 10-minute target; with another "target_minutes" the hook and the close keep
+  are for the 10-minute target; with another "target_minutes" the condensation and the close keep
   theirs and the three middle parts scale in the same proportion. The parts together reach
   the target and never fall under 8 minutes.
-  1. The hook, within 20 seconds: the question put the counter-intuitive way over the most
-     striking picture, then the promise that the viewer will know why. No greeting.
+  1. The condensation, ${OPENING_CHAPTER_SECONDS[0]} to ${OPENING_CHAPTER_SECONDS[1]} seconds: the question put the counter-intuitive way
+     over the most striking picture, then two or three of the reasons' most surprising facts,
+     each over its own picture and left without its why, then the promise that the viewer will
+     know why. No greeting.
   2. The background, about 2 minutes: what most people assume, and where the story starts.
   3. Three or four chapters, 6 to 7 minutes together, one reason of the brief's 原因 each, in the
      brief's order; a timeline, a number or a contrast goes on a card where it must be read.
@@ -92,7 +96,8 @@ curious viewer would ask, answered`,
 type it, and what most people wrongly assume.
 ## 一句答案 the answer in one plain sentence a twelve-year-old understands.
 ## 原因 3 or 4 reasons, each one sentence with the source page that supports it.
-## 大綱 ONE outline: the opening hook as the first spoken line; the chapters (one reason each, in
+## 大綱 ONE outline: the opening hook as the first spoken line; the condensation's two or three
+teased moments (each with the chapter that answers it); the chapters (one reason each, in
 the order of 原因) with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the whole
 aimed at "series.target_minutes", never under 8 minutes; over it is fine); each chapter's key
 pictures as "picture: one person doing one thing, and where / camera"; where a number, a timeline
@@ -162,12 +167,13 @@ today,`,
   recent. No logos and no product likenesses. Nothing a synthetic-media disclosure would not
   cover.`,
   shape: `- Structure (docs/videos/history-curiosity/README.md §一集長什麼樣), in this order. The lengths
-  are for the 10-minute target; with another "target_minutes" the hook and the close keep
+  are for the 10-minute target; with another "target_minutes" the condensation and the close keep
   theirs and the three middle parts scale in the same proportion. The parts together reach
   the target and never fall under 8 minutes.
-  1. The hook, within 20 seconds: the file's most counter-intuitive sentence, with its year,
-     number or name, over the most striking picture, then a "big" card and the promise that
-     this episode opens the file. No greeting.
+  1. The condensation, ${OPENING_CHAPTER_SECONDS[0]} to ${OPENING_CHAPTER_SECONDS[1]} seconds: the file's most counter-intuitive
+     sentence, with its year, number or name, over the most striking picture, then a "big" card,
+     then two or three of the records' strangest details, each over its own picture and left
+     without what explains it, then the promise that this episode opens the file. No greeting.
   2. 流傳的版本, about 1.5 minutes: the version people have heard, told as a story and named as
      the version that circulates.
   3. 紀錄裡有什麼, 6 to 7 minutes: one chapter for each 「紀錄：」 line of the brief's 原因 (two to
@@ -219,7 +225,8 @@ with its label and names the source page that supports it:
 - 「目前最站得住的解釋：…」 once, last: what the records together support, and what they leave
   open.
 ## 大綱 ONE outline: the opening hook as the first spoken line (the file's most
-counter-intuitive sentence, with its year, number or name); then one chapter for each line of
+counter-intuitive sentence, with its year, number or name); the condensation's two or three
+teased moments (each with the chapter that answers it); then one chapter for each line of
 原因, in the same order, with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the
 whole aimed at "series.target_minutes", never under 8 minutes; over it is fine); each chapter's
 key pictures as "picture: one person doing one thing, and where / camera"; where a number, a
@@ -375,6 +382,7 @@ not the text, its characters or its clips):
 ${PICTURE_RULES}
 ${cardRules(cards)}
 ${p.shape}
+- ${CONDENSATION_RULE}
 ${LINE_RULES}
 - "music": {prompt (English: ${p.music})} when "drama_settings.music_enabled";
   "subtitles": {"burn_in": false}; ${p.thumbnailGuide}

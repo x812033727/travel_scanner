@@ -595,9 +595,12 @@ test("the writer says the numbers, closes on three sentences, unlocks screencast
   // The persona is the owner's standing instructions'; the hook stays first.
   assert.match(writer, /The narrator may have a name, a catchphrase and a fixed closing line/);
   assert.match(writer, /The first sentence is still the hook; the name comes after it/);
-  // The opening (D07): concrete within 20 seconds, no table of contents, one 「你以為…其實」.
-  assert.match(writer, /within 20 seconds: by then a concrete number, date or proper noun has been\s+said/);
-  assert.match(writer, /No table of contents/);
+  // The opening (D07): concrete within 20 seconds, no table of contents, one 「你以為…其實」; the
+  // first chapter is the 30 to 60 second condensation (owner, 2026-10-12).
+  assert.match(writer, /The first chapter is the\s+condensation the register below describes, the brief's 開場濃縮/);
+  assert.match(writer, /number, date or proper noun within 20 seconds, then the moments told without their answers/);
+  assert.match(writer, /The first chapter is the condensation: 30 to 60 seconds\s+before the first real chapter/);
+  assert.match(writer, /No\s+table of contents/);
   assert.match(writer, /「你以為…其實」 once in\s+the video, in the first chapter/);
   // The close (D03): three sentences, the article pointed to once, in the description.
   assert.match(writer, /- outro \{title, cta\?, lines 1-4\}: no reveals\. The last scene, and its narration is exactly three\s+sentences/);
@@ -634,9 +637,9 @@ test("the writer says the numbers, closes on three sentences, unlocks screencast
 test("the four explainer instruction texts are byte for byte what they were", () => {
   const sha256 = (text) => createHash("sha256").update(text, "utf8").digest("hex");
   const pinned = {
-    "planner:bible-explainer": "55ffd024da8e9da7443dca79f973424efcdf277de3a9fa1ec3415af764391a90",
-    "planner:explainer": "32b471d9fcf00ac4540446ba89cbf335f4c4180241b5246301ad3662009451ed",
-    "writer:explainer": "185af9a701ecbb1317f00dd130cbf260e8e664a7275a423bad66c415cb703e72",
+    "planner:bible-explainer": "253bb39f6e3218d3269878e44c85f9e7afe744efc377e6fbdcf46e21f16c9d54",
+    "planner:explainer": "421bb3dc931e13f0ee57ca1de899005706316b39a6797be41e0b7dc7a77505da",
+    "writer:explainer": "baff8934c2ccf494a4dcb1c4e12327b8be9bf8803f2cb12ef9cff88d2546ebd0",
     "verifier:explainer": "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842",
   };
   for (const [key, digest] of Object.entries(pinned)) {

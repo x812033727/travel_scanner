@@ -388,14 +388,14 @@ async function steps(automation, count) {
 
 // --- the numbers ----------------------------------------------------------------------------------
 
-test("a 13-minute story is 3,250 characters over about 90 shots, the hook within 30 seconds and engine the longest; the narration may run 11:30 to 15:30", () => {
+test("a 13-minute story is 3,250 characters over about 90 shots, the hook a 30 to 60 second condensation and engine the longest; the narration may run 11:30 to 15:30", () => {
   const budgets = chapterBudgets(13);
   assert.deepEqual(budgets.map((budget) => budget.key), CHAPTER_KEYS);
   assert.equal(budgets.reduce((sum, budget) => sum + budget.seconds, 0), 13 * 60, "the seconds add up to the target");
   assert.equal(budgets.reduce((sum, budget) => sum + budget.chars, 0), 3_250, "250 characters a minute");
   const shots = budgets.reduce((sum, budget) => sum + budget.shots, 0);
   assert.ok(shots >= 85 && shots <= 100, `about 90 shots (${shots})`);
-  assert.ok(budgets[0].seconds <= 30, "the hook is said within 30 seconds");
+  assert.equal(budgets[0].seconds, 45, "the hook is given the middle of the condensation's 30 to 60 seconds");
   assert.equal(budgets.reduce((best, budget) => (budget.seconds > best.seconds ? budget : best)).key, "engine");
   for (const budget of budgets) assert.ok(budget.seconds / budget.shots >= 6 && budget.seconds / budget.shots <= 12, `${budget.key}: a shot holds 6 to 12 seconds`);
   assert.deepEqual(lengthBand(13), [11 * 60 + 30, 15 * 60 + 30]);
@@ -530,7 +530,7 @@ test("a story goes from the site's job to its first media step: started from its
   const hook = writers[0].payload;
   assert.equal(hook.chapter.key, "hook");
   assert.equal(hook.chapter.point, POINTS.hook);
-  assert.deepEqual(hook.chapter.budget, { seconds: 30, chars: 125, shots: 3 });
+  assert.deepEqual(hook.chapter.budget, { seconds: 45, chars: 188, shots: 5 });
   assert.equal(hook.plan.chapters.length, 6, "every point, for context");
   assert.deepEqual(hook.facts.map((fact) => [fact.index, fact.attributed ?? false, fact.reviewer_only ?? false]), [[0, false, false], [1, false, false], [2, true, false], [3, false, true]]);
   assert.equal(hook.caveats, PLAN.caveats);

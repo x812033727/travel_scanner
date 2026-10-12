@@ -11,8 +11,6 @@ export const MAX_PICTURE_SECONDS = 8;
 export const TARGET_AVERAGE_SECONDS = 6;
 // At least this share of the runtime is illustration; the rest is cards with the numbers.
 export const MIN_ILLUSTRATION_SHARE = 0.5;
-// The hook of an illustrated video lands within the first twenty seconds.
-export const HOOK_SECONDS = 20;
 
 /**
  * Every slide state in order: [{ scene, index, start_frame, end_frame, seconds }]. `index` is

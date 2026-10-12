@@ -2097,8 +2097,8 @@ test("an explainer one-off plans a question's bible with no cast, and its brief 
 // moves the durable key of every unfinished flat-explainer stage journal, so that stage is
 // asked, and paid for, again.
 const EXPLAINER_STAGE_PINS = [
-  ["planner", "bible-explainer", "55ffd024da8e9da7443dca79f973424efcdf277de3a9fa1ec3415af764391a90", "bfa88ed9b8beaef5377880ae79efb081f5e5283c1e4ab4279df4bd0239d13078"],
-  ["writer", "explainer", "185af9a701ecbb1317f00dd130cbf260e8e664a7275a423bad66c415cb703e72", "b0a4a2982e77bf9ea76eb9047260bbe568eb36ac2577dc206791ca8912401e81"],
+  ["planner", "bible-explainer", "253bb39f6e3218d3269878e44c85f9e7afe744efc377e6fbdcf46e21f16c9d54", "bfa88ed9b8beaef5377880ae79efb081f5e5283c1e4ab4279df4bd0239d13078"],
+  ["writer", "explainer", "baff8934c2ccf494a4dcb1c4e12327b8be9bf8803f2cb12ef9cff88d2546ebd0", "b0a4a2982e77bf9ea76eb9047260bbe568eb36ac2577dc206791ca8912401e81"],
   ["verifier", "explainer", "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842", "3d6d4812ec7814b0b9ce8712dcf8bcf08a752913d69125941600eecc32c38f54"],
 ];
 const digestOf = (text) => createHash("sha256").update(text, "utf8").digest("hex");

@@ -9,6 +9,8 @@
 //
 // This file imports nothing from prompts.mjs, which imports it.
 
+import { CONDENSATION_RULE } from "./register.mjs";
+
 export const STORY_VARIANT = "story";
 export const STORY_FIX_VARIANT = "story-fix";
 
@@ -50,8 +52,9 @@ Rules that never bend:
 `.trim();
 
 const CHAPTER_GUIDE = `
-The six chapters, in order ("chapter.key"): hook (the counter-intuitive question of
-"plan.question" and what this video answers, all said within 30 seconds), origin (where it
+The six chapters, in order ("chapter.key"): hook (the condensation, 30 to 60 seconds: the
+counter-intuitive question of "plan.question", then the story's strongest moments from the
+chapters after it, told up to what happened and left for them to explain), origin (where it
 started and who), idea (the key idea), engine (how the business works: who pays whom and why),
 turn (the cost, the setback or the reversal), now (where it stands today, then the one
 observation "plan.takeaway" leaves the viewer with).
@@ -64,7 +67,9 @@ worker merges the six chapters, numbers the claims and checks the whole with lin
 ${CHAPTER_GUIDE}
 "chapter.point" is what this chapter tells; "plan.chapters" are all six for context, so do not
 tell what another chapter tells. "previous_lines" are the last sentences of the chapter before:
-go on from them without repeating them (the hook has none).
+go on from them without repeating them (the hook has none). The hook is the one chapter that
+reaches into the others: it teases two or three of their moments (from "plan.chapters") up to
+what happened and never tells why or how, which stays theirs.
 
 Length. "chapter.budget" is this chapter's share of the story: about "chars" spoken characters
 over about "shots" shots. The plan's point is shorter than that on purpose: the rest comes from
@@ -89,8 +94,7 @@ null}, "thumbnail_shot": "<scene id>" (the hook only)}.
   "data": {"title": "<the opening question answered in a short line>", "cta": "參考資料在說明欄"},
   "lines": [...]}: its lines give the one-sentence answer to "plan.question" and one next step
   (the site article linked in the description when "plan.related_guide" names one).
-- The hook: its first sentence is the question itself or a counter-intuitive fact, no greeting;
-  within 30 seconds the viewer knows what the video answers. One of its shots draws
+- The hook: ${CONDENSATION_RULE} One of its shots draws
   "plan.thumbnail.idea" with room on the left for a headline: name it in "thumbnail_shot".
 - Pictures follow "look" (every picture's style), "image_notes" as written, and "story_rules".
   With "sensitivity" "care", never draw the accident, the injury or the protest itself: draw the

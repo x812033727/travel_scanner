@@ -62,12 +62,13 @@ export const CHAPTER_KEYS = STORY_CHAPTERS.map((chapter) => chapter.key);
 const CHAPTER_OF = new Map(STORY_CHAPTERS.map((chapter, index) => [chapter.key, { ...chapter, index }]));
 
 // How a story's length is shared (docs/videos/STORY.md §一支故事影片的規格): the narration is read
-// at 250 characters a minute (the tool's estimate), the hook is said within 30 seconds, and the
+// at 250 characters a minute (the tool's estimate), the hook is the condensation of 30 to 60
+// seconds (core/lint.mjs OPENING_CHAPTER_SECONDS) and is given the middle of it, and the
 // other five chapters share the rest in these weights, engine the longest. A shot holds 6 to 12
 // seconds; the budgets are cut to SHOT_SECONDS a shot, so a 13-minute story is 3,250 characters
 // over about 90 shots. chapterBudgets() is the one place these become a chapter's share.
 export const STORY_CPM = DEFAULT_CPM;
-export const HOOK_SECONDS = 30;
+export const HOOK_SECONDS = 45;
 export const CHAPTER_WEIGHTS = { origin: 5, idea: 4.5, engine: 7, turn: 5, now: 3.5 };
 export const SHOT_SECONDS = 8.7;
 // video.json's target_minutes around the series' target: lint warns outside it (12 to 15 for 13).
@@ -1229,7 +1230,7 @@ async function checkLength(automation, state) {
   if ((state.story.resizes ?? 0) >= LENGTH_FIX_ROUNDS) return automation.block(state, `${measured} after ${state.story.resizes} length fixes; a story runs ${formatClock(low)} to ${formatClock(high)}: the owner decides`);
   const measuredBy = chapterSeconds(timeline);
   const budgets = Object.fromEntries(chapterBudgets(target).map((budget) => [budget.key, budget.seconds]));
-  // The hook stays within its 30 seconds whatever the total does.
+  // The hook keeps its condensation's seconds whatever the total does.
   const resizable = CHAPTER_KEYS.filter((each) => each !== "hook");
   const key = long
     ? resizable.reduce((best, each) => (measuredBy[each] > measuredBy[best] ? each : best))
