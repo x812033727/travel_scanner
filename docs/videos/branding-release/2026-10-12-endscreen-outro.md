@@ -26,8 +26,8 @@ YouTube 結束畫面（其他影片、訂閱），並加配樂。站主的決定
 | 系列包 `mokaair-sothatswhy-bookends-v2-endscreen` | branding hash `f707b018be95e3488be964915bdd9494894e5cbd75f2ce39abb22a0cef6c1448` |
 
 片尾時間：0–1 秒定格停頓（配樂淡入）、1–4 秒原按讚／分享／小鈴鐺、4–21 秒結束畫面底。
-外框位置（1920×1080）：影片框 (180,390) 與 (1020,390)，各 720×405；訂閱圓心 (960,920)，
-半徑 95。Studio 設結束畫面時把元素對齊這些外框。
+v3 的外框位置（影片框 (180,390)／(1020,390) 各 720×405、訂閱圓心 (960,920) 半徑 95）
+在 Studio 放不進去，已由下文 v4 取代。
 
 ## 驗證
 
@@ -61,7 +61,23 @@ YouTube 結束畫面（其他影片、訂閱），並加配樂。站主的決定
   放的 STOP，不碰。它已 pin 舊版，之後一般重組不會自動換新片尾；那邊釋放後要明確
   `--adopt-branding`。
 
+## Studio 範本與 v4 對齊（同日稍晚）
+
+站主登入 Mokaair 的 Google 帳號後（內建瀏覽器 `authuser=1`，頻道 `UCR0rRWT4blMDUwEMx-TZ57Q`），
+在 `oxEtlA8GWas`（SynthID，8:50）設片尾範本時發現 v3 外框放不進 Studio：元素只能放在
+安全區（預覽 480×270 的 y 35–228，即 1080p 約 y 140–912），訂閱鈕固定 296 px 不能縮放。
+改排一列並由站主同意儲存：左「最符合觀眾喜好」影片 (109,371) 619×349、中訂閱
+(812,402) 296×296、右「最新上傳」影片 (1190,371) 619×349，時間 8:45:03–8:50:03（最後 5 秒，
+只蓋舊片尾與講完後的空白）。重新開啟編輯器回讀，三個元素與位置都在。
+
+片尾外框改照這些位置畫（`SLOTS`，外框在元素外 5 px），站主看過樣片同意後安裝：
+全頻道 `mokaair-brand-package-v4-endscreen`、系列 `mokaair-sothatswhy-bookends-v3-endscreen`，
+outro.mp4 SHA `00eb9ccc8449fa8b47de0aab290b8aa7d55b09962c12a127e0f0c9c5f7834396`，聲音與時間同 v3。
+猶他那支再用 v4 重組並重新人工送審。
+
+新片上架：Studio「片尾」→「從影片匯入」選 `oxEtlA8GWas`，把三個元素的開始時間改成
+影片長度減 17 秒。
+
 ## 尚未做
 
-第一次在 Studio 設結束畫面（下一支上傳的新片），以及 youtube-video skill 上架清單的更新，
-見票 `tasks/open/2026-10-12-lengthen-the-channel-outro-to-20.md`。
+youtube-video skill 上架清單的更新，見票 `tasks/open/2026-10-12-lengthen-the-channel-outro-to-20.md`。
