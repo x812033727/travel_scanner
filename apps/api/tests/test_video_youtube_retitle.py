@@ -206,3 +206,35 @@ async def test_a_refused_update_ends_the_run(monkeypatch: pytest.MonkeyPatch) ->
     assert [body["id"] for body in youtube.sent] == ["v1"]
     assert (report["changed"], report["left"]) == (1, 2)
     assert report["error"] is not None and report["error"].startswith("v2")
+
+
+def test_a_title_given_new_words_is_tagged_in_them_and_the_old_words_are_recorded() -> None:
+    long_en = "a" * 98
+    video = _video("v1", "溫度是什麼", localizations={"en": {"title": long_en, "description": "d"}})
+    found = retitle.plan(video, {"en": "Temperature"})
+    assert found["titles"] == {
+        "zh-TW": ["溫度是什麼", f"溫度是什麼{ZH}"],
+        "en": [long_en, f"Temperature{EN}"],
+    }
+    assert found["problem"] is None
+    body = retitle.update_body(video, {"en": "Temperature"})
+    assert body["localizations"]["en"] == {"title": f"Temperature{EN}", "description": "d"}
+    unknown = retitle.plan(video, {"ko": "x"})["problem"] or ""
+    assert unknown.startswith("ko 不是這支影片的語言，沒有改；en ")
+
+
+async def test_new_words_reach_the_update_and_an_unknown_video_is_reported(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    youtube = FakeYoutube(
+        [_video("v1", "一", localizations={"en": {"title": "a" * 98, "description": ""}})]
+    )
+    _link(monkeypatch, youtube)
+    report = await retitle.caption_channel_titles(
+        FakeSession(),  # type: ignore[arg-type]
+        apply=True,
+        rename={"v1": {"en": "One"}, "gone": {"en": "x"}},
+    )
+    assert report["changed"] == 1 and report["renamed_missing"] == ["gone"]
+    assert youtube.sent[0]["localizations"]["en"]["title"] == f"One{EN}"
+    assert youtube.sent[0]["snippet"]["title"] == f"一{ZH}"
