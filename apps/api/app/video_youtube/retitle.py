@@ -6,8 +6,10 @@ included, to carry it too. This walks the channel's uploads playlist (playlistIt
 per fifty), reads the videos (videos.list, 1 unit per fifty) and, for a video whose title or one of
 whose localized titles lacks the tag, sends videos.update (50 units) with everything the video has
 now and only those titles changed. A title the tag would push past YouTube's 100 characters is
-reported and the video left alone: shortening a title is the owner's call. Nothing is sent unless
-``apply``, and ``limit`` caps the updates of one run so the daily quota (10,000) stays for the rest.
+reported and that title left as it is, the video's other titles tagged all the same:
+shortening a title is the owner's call (2026-10-12: skip the one language, not the video).
+Nothing is sent unless ``apply``, and ``limit`` caps the updates of one run so the daily quota
+(10,000) stays for the rest.
 """
 
 from __future__ import annotations
@@ -47,16 +49,23 @@ def tag_language(code: object) -> str:
     return "en"
 
 
+def _tagged(title: str, language: str) -> str:
+    """``title`` with its tag, or as it is when even the short tag takes it past the limit."""
+    new = captioned(title, tag_language(language))
+    return new if len(new) <= TITLE_MAX_CHARS else title
+
+
 def plan(video: dict[str, Any]) -> dict[str, Any]:
     """What tagging ``video`` changes: {id, privacy, titles: {language: [old, new]}, problem}.
 
-    ``titles`` is empty when every title already ends with its tag. A video without a default
+    ``titles`` holds the titles that change and is empty when each already ends with its tag or
+    cannot take one; ``problem`` names the titles that cannot. A video without a default
     language is the channel's zh-TW, as every video was before the dubs.
     """
     snippet = as_dict(video.get("snippet"))
     language = snippet.get("defaultLanguage") or DEFAULT_LANGUAGE
     titles: dict[str, list[str]] = {}
-    problem = None
+    problems: list[str] = []
     candidates = [(str(language), snippet.get("title"))]
     candidates += [
         (str(locale), as_dict(entry).get("title"))
@@ -66,16 +75,15 @@ def plan(video: dict[str, Any]) -> dict[str, Any]:
         if not isinstance(title, str) or not title.strip():
             continue
         new = captioned(title, tag_language(locale))
-        if new == title:
-            continue
-        titles[locale] = [title, new]
         if len(new) > TITLE_MAX_CHARS:
-            problem = f"{locale} 加標記後 {len(new)} 字，超過 {TITLE_MAX_CHARS}，要先縮短標題"
+            problems.append(f"{locale} 加標記後 {len(new)} 字，超過 {TITLE_MAX_CHARS}，沒有改")
+        elif new != title:
+            titles[locale] = [title, new]
     return {
         "id": video.get("id"),
         "privacy": as_dict(video.get("status")).get("privacyStatus"),
         "titles": titles,
-        "problem": problem,
+        "problem": "；".join(problems) or None,
     }
 
 
@@ -91,11 +99,11 @@ def update_body(video: dict[str, Any]) -> dict[str, Any]:
     keep = (*SNIPPET_FIELDS, "defaultAudioLanguage")
     snippet = {key: copy.deepcopy(snippet_now[key]) for key in keep if key in snippet_now}
     if isinstance(snippet.get("title"), str):
-        snippet["title"] = captioned(snippet["title"], tag_language(language))
+        snippet["title"] = _tagged(snippet["title"], language)
     localizations = copy.deepcopy(as_dict(video.get("localizations")))
     for locale, entry in localizations.items():
         if isinstance(entry, dict) and isinstance(entry.get("title"), str) and entry["title"]:
-            entry["title"] = captioned(entry["title"], tag_language(locale))
+            entry["title"] = _tagged(entry["title"], locale)
     return {
         "id": video.get("id"),
         "snippet": snippet,
@@ -153,12 +161,13 @@ async def caption_channel_titles(
             if video.get("id") in skip:
                 continue
             found = plan(video)
+            if found["problem"]:
+                report["too_long"] += 1  # videos with a title left untagged, every run
             if not found["titles"]:
+                if found["problem"]:
+                    report["plans"].append(found)
                 continue
             report["plans"].append(found)
-            if found["problem"]:
-                report["too_long"] += 1
-                continue
             report["to_change"] += 1
             if not apply:
                 continue

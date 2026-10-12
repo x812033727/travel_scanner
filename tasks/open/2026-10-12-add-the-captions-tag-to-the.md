@@ -51,3 +51,7 @@ after `--apply` shows `to_change: 0`.
   chose: the short tag 「｜CC」 when the full one does not fit (for new uploads too), and skip the
   OAuth verification demo 5qjK1zopOkI (`--skip`). `captioned`/`withCaptionTag` now replace any
   trailing captions tag instead of adding beside it.
+- 2026-10-12 06:0xZ: `--skip 5qjK1zopOkI --apply` on the host changed 28 videos (1,400 units); the report after
+  showed to_change 0. Five videos stayed whole because their English title cannot take even
+  「｜CC」 (htv6rUYkVkE, jSTz6qnilmk, UWYoO3JfOK0, KurEPz5z7hA, itKTQl3ehQE). The owner chose to
+  leave only that one title and tag the rest, so a too-long title no longer holds back the video.
