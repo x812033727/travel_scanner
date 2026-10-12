@@ -2,7 +2,7 @@
 
 更新：2026-10-12（Asia/Taipei）。本集問題是「通古斯大爆炸：森林倒了，為什麼沒有隕石坑？」；製作路線為插圖投影片，沿用奇聞檔案局第 3 版畫風與 Sulafat 旁白。
 
-## 最新進度（2026-10-12T03:00Z）
+## 最新進度（2026-10-12T03:38Z）
 
 81 張最終插圖均有相同檔案 SHA 的實際觀看紀錄，沒有缺漏或過期紀錄。
 五張經 native `--accept-best` 保留的圖片仍保有原始評分、takes 與評語；這不等於站主接受。
@@ -19,11 +19,44 @@
 
 原生 render 已 exit 0：34 個非 shot 場景、56 個畫面狀態、376 秒完成，沒有版面錯誤。
 本機文件／影片規格測試 199 項通過、0 失敗。
-目前正在合成，尚未冒稱完成成片 QA 或站主審片。
+assemble 於 `2026-10-12T03:26:35.756Z` exit 0：115 景全部編碼，成片 20,829 幀／694.3 秒
+（11 分 34.3 秒），響度 -14 LUFS、true peak -1 dBFS；checks.ok=true、problems=[]。
+139 段繁中 CC 與本機 audio/final review 頁均已產生。最終成片 SHA-256：
+`e786669f5a392fde7f281c617c28f885d25df8b13535b4a37f9e2ae6eaea304e`。
+成片 review `385728b4-7bc8-4798-89fb-a5ea16102df8` 已送審並 GET 回讀 pending；
+站主尚未核准 H03 的分鏡或成片，尚未產生可核准的上傳包。
 
-最新來源 SHA `c7be5e8032fbf0775976a642bc558f408e1453f0b6b36a688decbfe0e7b8790b`。
-最後只補報紙來源作者及 AI 旁白揭露；speech `cba1834e2d1021c3`、visual `f81bccf24595cb3b`、
+QA 10／11：唯一未過為 JPL 來源對原生抓取回 HTTP 403；獨立 web 開啟已讀到官方文章內容，
+原生失敗結果仍保留。Commons 照片來源 URL 內括號被檢查器截斷的假 404 已以百分比編碼修正，
+完整網址原生 GET 200；共用 parser 問題另立任務
+[`2026-10-12-preserve-balanced-parentheses-when-extracting-video`](../../../tasks/open/2026-10-12-preserve-balanced-parentheses-when-extracting-video.md)。
+最後這項只改 `/assets/1/url`，新來源 SHA
+`a7e17af3914bedfbf1327219ef646a59a1625a26ac537914e1ea6d2a509afed6`；四項媒體 hash 全不變。
+
+獨立 CC/branding 核對 PASS：139 cue 文字、WAV hash、起訖與成片音軌吻合，
+加 5 秒位移後每句最佳 lag 均為 0 ms、最低相關 0.999931；片頭／片尾實際畫素與指定素材相符。
+SRT SHA：`4cf72b2f0d02fe8ff88ff777cc8777e2d2a3f4864ea742949a699fde6e521c59`。
+只有 zh-TW；7 個實測章節、AI 旁白／圖片揭露及兩張照片的署名均完整。
+720p 正式站播放器已確認播放至 67.22 秒後暫停，duration=694.3、readyState=4；
+該播放器沒有 CC track，不能把這段播放紀錄當成字幕顯示或完整聽音驗收。
+另備妥本機 `review/with-cc.html`，但 loopback 服務啟動遭執行政策拒絕（只回
+`blocked by policy`，沒有更詳細理由），未改用其他啟動方法；播放器 CC 實看保持 NOT_RUN。
+可交付的字幕檔為 `captions/zh-TW.srt` 與 `zh-TW.vtt`。
+共用審片播放器缺少字幕軌的問題已記入
+[`2026-10-12-load-subtitle-tracks-in-local-and`](../../../tasks/open/2026-10-12-load-subtitle-tracks-in-local-and.md)。
+
+56 個原生字卡／照片狀態已逐張實看並綁定 PNG SHA，兩組各涵蓋 17 個場景。
+第一組 26 狀態 PASS_WITH_MINOR：報紙來源字覆蓋少量原圖下緣，仍可辨識原件與來源；
+第二組 30 狀態 PASS。面積約四倍、不同能量模型及切科湖爭議的文字均與旁白相符。
+這項紀錄不等於全片播放、動態轉場或聽音驗收。
+
+URL 修正前來源 SHA `c7be5e8032fbf0775976a642bc558f408e1453f0b6b36a688decbfe0e7b8790b`。
+該次只補報紙來源作者及 AI 旁白揭露；speech `cba1834e2d1021c3`、visual `f81bccf24595cb3b`、
 look `635987294f938929`、pictures `128a0fe78ded537f` 全部不變。
+`checks.pictures_hash=5f52a91843b05416` 是實際選圖 SHA 序列的原生 `keyframesHash`，
+和提示詞的 `picturesHash` 定義不同；已重算吻合，81 張檔案均未過期。
+圖片與圖片 judge 帳本估值合計 US$2.6935，沒有待收的 provider request 或 reservation；
+這不是完整供應商帳單，TTS 實付總價未取得，不將估價當實付。
 以下為分階段的歷史紀錄；較早版本的「最新」只指該次記錄時點。
 
 ## 站主範圍

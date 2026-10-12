@@ -119,3 +119,15 @@
 分鏡 review `da0651b4-5904-4232-81ec-d71928e3e551` pending 的原因是普通通過鏡頭仍帶評語，
 不是最低分不足或圖像缺失；完整唯讀診斷見 `_audit/storyboard-pending-diagnosis.md/json`。
 尚未記錄站主分鏡或成片核准。
+
+## 最終畫面與縮圖覆核（2026-10-12）
+
+34 個非 shot 場景共 56 個原生 PNG 狀態已逐張實看，實際 SHA 與 render manifest 全部吻合。
+第一組 26 狀態 PASS_WITH_MINOR（報紙來源字覆蓋原圖下緣少量區域，但原件與來源可辨識），
+第二組 30 狀態 PASS；沒有文字溢出、缺字或科學關係錯置。原生面積字卡正確顯示
+「8,000 km² ÷ 2,000 km² ≈ 4」，照片標示 2024 年影像，不是 1908 年現場紀錄。
+
+縮圖原檔 1280×720 與 320×180 審核副本都已實看：主字「坑在哪裡」與人物表情清楚，
+右下沒有重要文字。副標及字標在小尺寸偏小，保留為 minor；原圖未修改。
+外部證據：`_audit/render-review-first17.md/json`、`render-review-last17.md/json`、`thumbnail-review.md/json`。
+靜態覆核不等同完整播放、聽音或站主核准。

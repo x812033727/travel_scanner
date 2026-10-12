@@ -24,9 +24,9 @@ Continue 奇聞檔案局 after the approved H02 delivery with the next checked t
 
 - [x] A source-checked brief and independently reviewed Traditional Chinese script answer one central question and pass native lint.
 - [ ] Current, source-bound outline, audio and storyboard decisions are recorded; no inherited H02 approvals are reused.
-- [ ] Narration and finished video each meet the eight-minute minimum; generated images and contact sheets have been inspected.
+- [x] Narration and finished video each meet the eight-minute minimum; generated images and contact sheets have been inspected.
 - [ ] Traditional Chinese CC, thumbnail, metadata, source list and upload package pass applicable checks; current backend decisions and hashes are read back.
-- [ ] Delivery records distinguish automated checks, owner review, upload and publication; no YouTube upload or publication is performed.
+- [x] Delivery records distinguish automated checks, owner review, upload and publication; no YouTube upload or publication is performed.
 
 ## Steps
 
@@ -34,14 +34,17 @@ Continue 奇聞檔案局 after the approved H02 delivery with the next checked t
 - [x] Refresh primary research, write three outline choices and submit the outline.
 - [x] Write and independently verify the script, including listener review.
 - [x] Run dry-runs, synthesize/check narration, create and inspect illustrated shots.
-- [ ] Render, assemble, produce zh-TW CC, run QA and prepare the upload package.
-- [ ] Persist delivery evidence and open a draft PR for the episode documents.
+- [x] Render, assemble, produce zh-TW CC, run QA and submit the final for owner review.
+- [ ] After owner storyboard/final approval, record the existing zh-TW-only choice and prepare/check the upload package.
+- [x] Persist delivery evidence and open a draft PR for the episode documents.
 
 ## How to verify
 
 Use the bundled Node runtime with `tools/video/cli.mjs`, slug `curio-h03`, and workdir base `C:/Users/x8120/mokaair-work/videos`. Record native lint, dry-run, stage exit receipts, review-pull results, media durations, content hashes and package checks. Inspect rendered media rather than treating a launched process or judge score as final acceptance.
 
 ## Notes
+
+The following notes are chronological snapshots; the final entries and PRODUCTION.md describe the current state.
 
 - Base: freshly fetched `origin/main` at `6b5370b6f`; no H03 production documents, media, branch or open PR existed at claim time. Existing topic-bank and pilot work is outside this scope.
 - External media and receipts: `C:/Users/x8120/mokaair-work/videos/curio-h03`; binary media must remain outside git.
@@ -55,4 +58,9 @@ Use the bundled Node runtime with `tools/video/cli.mjs`, slug `curio-h03`, and w
 - Three-image pilot is usable after actual-image review and narrow repairs. Bulk generation continues with independent visual checks; snow/night drift in three June scenes was rejected despite judge passing and locally repaired. Current production/revision lineage is in `PRODUCTION.md` and `visual-review.md`; audio hash unchanged. No final video or owner final approval yet.
 - Current production: 115 scenes, 81 illustrated shots, two photos and 139 lines; 81/81 selected images have exact-SHA viewing evidence. Five native accept-best pictures retain all original scores/takes and owner review remains pending. Metadata-only final source SHA `c7be5e8032fbf0775976a642bc558f408e1453f0b6b36a688decbfe0e7b8790b`; speech/look/pictures/visual hashes unchanged by that edit.
 - Current audio review `d91b4953-eb3f-4329-ae68-5f1dea60c8c0` approved and read back against timeline SHA `d256ebfe5e46cafadf85fc48f136a6c8ef725aafa4a87a5973db39bd9eb6ec12`. Storyboard review `da0651b4-5904-4232-81ec-d71928e3e551` pending; passing ordinary shots retain remarks rejected by the backend predicate. Follow-up is filed as `2026-10-12-reconcile-passing-storyboard-verdicts-with-nonempty`; no scores or approvals were changed.
-- Render exit 0: 56 states, no layout errors, 376 seconds. Final source documentation tests: 199 passed, 0 failed; task check: 1,849 valid files with unrelated stale-claim warnings. Assembly is in progress; final video/QA/owner acceptance are not yet complete.
+- Render exit 0: 56 states, no layout errors, 376 seconds; all 56 states visually inspected. Final source documentation tests: 199 passed, 0 failed; task check: 1,849 valid files with unrelated stale-claim warnings.
+- Assemble exit 0 at 2026-10-12T03:26:35.756Z: 115 scenes, 20,829 frames / 694.3 seconds, -14 LUFS / -1 dBFS, checks.ok=true. Captions exit 0: 139 zh-TW cues. Final review 385728b4-7bc8-4798-89fb-a5ea16102df8 is pending and binds final SHA e786669f5a392fde7f281c617c28f885d25df8b13535b4a37f9e2ae6eaea304e; GET readback confirmed.
+- Draft PR #1456: https://github.com/x812033727/travel_scanner/pull/1456; episode documents and follow-up task committed at cfd313a31. Media and private receipts remain outside git.
+- Final QA 10/11: only JPL native HTTP 403 remains; independent official-page read succeeded. Encoding the Commons asset URL parentheses fixed the parser's false 404 without changing media. Current source SHA a7e17af3914bedfbf1327219ef646a59a1625a26ac537914e1ea6d2a509afed6. Shared URL and review-player CC gaps have separate open tasks.
+- Independent 139-cue/branding review passed. Official preview playback reached 67.22 seconds; full owner playback/listening is not recorded. The preview has no CC track; local CC server startup was rejected by execution policy, with no alternative startup attempted. Player CC rendering remains NOT_RUN; SRT/VTT files are complete.
+- Await H03 owner storyboard/final approval, including five retained images; Traditional Chinese-only authorization already exists and must not be requested again. No upload package, YouTube upload, publication, merge or deployment is complete.
