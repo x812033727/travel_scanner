@@ -128,3 +128,43 @@ Commons 授權頁與 API 資訊由本輪受派的 listener 逐頁核對，原件
 - 原生 lint：本查核者於最終 `98b2fe19…` 執行，**exit 0，0 errors／4 warnings**。提醒為 daylight、snow、central 詞頻及開場章約 29 秒；第一句即提出鉤子，這些不是未解事實錯誤。估長 10.1 分鐘／2063 spoken units，不等於實際 TTS 長度。
 - SECOND ROUND：**規則不強制**；本輪實質事實修正 3 組，未超過 3。
 - 腳本事實查核完成。後續仍須原生製作關卡、生成圖／版型／字幕與實際影音審查；本報告不代替那些檢查或站主核准。
+
+## 2026-10-12 停頓調整回讀
+
+在保留上方完整覆核的前提下，逐欄比對外部 `_audit/outro-pause-correction/video-before.json` 與目前 `video.json`。前檔 SHA-256 為 `98b2fe192185644dd7a36a3deac8c4f8c9314a54486cedf1ff23cdd85dfae2f8`；目前為 **`f4291c340eef12bac0ba08980f9cbe7f39bba6309131a8fb50e379e8f31755c8`**。
+
+JSON 全樹只有兩處差異：`scenes[99].lines[0]`（`bi2x`）與 `scenes[99].lines[1]`（`x53t`）各新增 `pause_after_ms: 100`。原欄位未設定；`tools/video/core/timeline.mjs` 的 `DEFAULT_PAUSE_MS = 300`，所以兩句預設停頓各由 300 毫秒改成 100 毫秒。旁白文字、emotion／voice、全部字卡、提示詞、場景主張、metadata 與 assets 均完全相同。
+
+`claims.md` SHA-256 仍為 `3ca492d642fc4c3e4a3ea690c50d41e5d2f119b2937af993d51961ea09ae2989`，與完整覆核版本一致。**0 新增事實修正、0 新增 must-fix；事實查核 PASS 延伸綁定目前來源。** 本次只核來源差異，未讀寫音訊或其他媒體，也未重跑製作／音訊品管；先前 lint 紀錄仍明確屬於 `98b2fe19…` 版本。
+
+## 2026-10-12 已套用視覺提示詞修正回讀
+
+獨立比對外部 `_audit/pilot-before-prompt-fix/video.json`（SHA-256 `f4291c340eef12bac0ba08980f9cbe7f39bba6309131a8fb50e379e8f31755c8`）與現行來源（**`ae85b2c4f5c1b95ca782603725b4a162140ece65c32b7cccafd6df82f695cb35`**）。將已通過的 `_audit/pilot-prompt-fixes.json`（SHA-256 `597e2219be8e8b5b92848c5c474ee20cbcb17bb2e297eac17fca44f17d4641e7`）21 個 after 逐一套入記憶體中的前版，結果與現行 JSON 完全相同；再做全樹 diff，恰為 **21 處 `scene.data.prompt` 差異**。
+
+修正範圍是 14 個高坡／營地外景的圓鈍、開闊地形，以及 7 個既有現場足跡的鞋形、隆起頂面與周圍較低雪面。提案已逐項對應旁白及主張，詳見外部 `_audit/pilot-prompt-fixes-review.md`；沒有新增 1959 實測數值，沒有把後來鄰坡雪崩或現代考察搬成當晚實錄。這是讓生成圖遵守原有主張的描述修正，**0 新增事實修正、0 新增 must-fix**。
+
+所有旁白文字、emotion／voice、兩句結尾停頓、camera、look、字卡、場景主張、metadata 與 assets 保持完全相同；`claims.md` SHA-256 仍為 `3ca492d642fc4c3e4a3ea690c50d41e5d2f119b2937af993d51961ea09ae2989`。套用收據記錄 speech hash 仍為 `d9e4eeb59801eac3`，pictures hash 由 `2e0fd759eda41446` 變為 `628de277f9a81782`；本次獨立證據為來源全樹比對，未重算媒體或執行製作程序。
+
+原完整腳本覆核與前項停頓回讀保留，**事實查核 PASS 延伸綁定 `ae85b2c4…`**。此結論不代表重畫結果已通過；新 selected 圖仍待逐張像素覆核。本次只修改本查核報告，未讀寫音訊／圖像媒體或干預正在執行的音訊品管。
+
+## 2026-10-12 五處鏡位前綴回讀
+
+依 `_audit/framing-prefix-backup/receipt.json` 與實際檔案 SHA 核對，前版 `ae85b2c4f5c1b95ca782603725b4a162140ece65c32b7cccafd6df82f695cb35` 到現行 **`169d607735c155abb988c62643db72567f9d947498d479e1d691ba98bd24a6a0`**，恰等於 `_audit/framing-prefix-fixes.json`（SHA-256 `82a4dd50b12f92fe2bbba09bf41a8c000b0210361a1c587feedd47bd609539ff`）五案的精確套用。
+
+只有 `hook-footprints`、`trail-varied`、`broken-trail`、`trail-downhill`、`return-to-trail` 的 prompt 開頭改用可辨識的 Close-up／Medium shot／Wide shot，保留低斜視角；各前綴之後的內容逐位元相同。完整 JSON 其餘欄位未變，`claims.md` SHA 仍為 `3ca492d642fc4c3e4a3ea690c50d41e5d2f119b2937af993d51961ea09ae2989`。**0 新增事實修正、0 must-fix；事實查核 PASS 延伸綁定現行 `169d6077…`。** 僅追加本報告，未動凍結來源、媒體或執行中的生成程序；新圖仍待像素覆核。
+
+## 2026-10-12 七張原創圖解整合回讀
+
+以 `_audit/footprint-vector-integration/video-before.json`（`169d607735c155abb988c62643db72567f9d947498d479e1d691ba98bd24a6a0`）重建核准提案，確認現行 **`4979754cb76c36e8301ec6bab8d12b414a15f876b92459954440e95d8b6fce21`** 只有七個足跡場景的 `template`／`data` 精確改成所審 diagram，並在保留原 assets 的末尾增加七筆對應 SVG 的 Mokaair 原創署名／示意揭露；其他全部欄位完全相同。旁白、voice、場景主張與時序未變，`claims.md` SHA 仍為 `3ca492d642fc4c3e4a3ea690c50d41e5d2f119b2937af993d51961ea09ae2989`。
+
+所套用提案 SHA-256 為 `23e44df5b1b5a4c701496f7e0be48e51010c487db896a1eb49a4f6f1ba45ff3b`。本查核者已獨立實看全部七張原生 PNG、核對七 SVG／七 PNG 的 SHA，結果 PASS_WITH_NOTE、0 material；完整綁定與逐圖觀察在外部 `_audit/footprint-vector-independent-review.md`（`beca585de31dd369880fb85cba56914025b5c7e0d3e084564f646b49a822e24a`）。圖形標明非現場照片、未按比例，沒有九條完整路線、實測步距或全程情緒推論。**0 新增事實修正、0 must-fix；事實查核 PASS 延伸綁定 `4979754c…`。** 此次僅追加本報告；65 張其餘生成圖、成片節奏與音畫同步仍是後續關卡。
+
+## 2026-10-12 四句口語修訂及帳內用品提示詞回讀
+
+由 `_audit/audio-rewrite-1/video-before.json` 的 `4979754cb76c36e8301ec6bab8d12b414a15f876b92459954440e95d8b6fce21` 出發，在記憶體只套收據中的四句修訂，再套 `_audit/search-objects-correction.json` 的一個提示詞，結果與現行 **`30eb4fa95a6a3737d2d3e328ae409a86158550ea40c917829762a256049634c4`** 完整 JSON 精確相等。全樹 diff 恰為四個 `lines[].text` 與一個 `data.prompt`，沒有其餘差異；未採用備案 `88ft` 亦完全未動。
+
+四句為 `xzmn`「山坡看起來不夠陡，為什麼雪板還可能滑落？」、`c5xt`「所以不能拿算出的時間，回頭推算九人何時出事。」、`a6qq`「雪板滑動的研究，提供了可能迫使人離開營地的一種機制。」與 `u3tt`「特定條件下，雪板可能滑動，這是能夠檢驗的解釋。」已核對獨立文字審稿 `_audit/audio-rewrite-independent-review.md`（SHA-256 `fc775cd275739145a01f11ddba532a2f10586093c8bc9b62175bf61a6ec0350b`）的核准文字；可能性、條件限制及不能替九人當晚計時的意思保留，沒有新數字或新事實。
+
+`search-objects` 精確採用已審的帳內冬靴、外套及布袋提示詞，與「仍留在帳內」旁白一致；其審查 `_audit/search-objects-prompt-review.md` SHA-256 為 `908870861c1f681696c4900fea32b19c4291943a5fb0dc80b69db0ad1c51c1e5`。它不宣稱精確物品清單或原始擺放位置。其他旁白、voice／emotion、停頓、字卡、diagram／SVG 參照、claims、assets 及運鏡均未變；`claims.md` SHA-256 仍為 `3ca492d642fc4c3e4a3ea690c50d41e5d2f119b2937af993d51961ea09ae2989`。
+
+**0 新增事實修正、0 must-fix；事實查核 PASS 延伸綁定 `30eb4fa9…`。** 四句文字修訂會改變 speech hash，不把舊音訊驗收當作新句已通過；本次沒有聽讀新 TTS、改寫媒體或干預執行中的 producer。後續仍須對新音訊及生成圖分別實際覆核。

@@ -45,3 +45,19 @@
 ## 排除項與驗收界線
 
 不使用帳篷照 `Dyatlov_Pass_incident_02.jpg`（Commons 標記 possible wrong license），不使用未清權的 `case-304-back.jpg`／`case-312.jpg`，不展示 386／387 全頁傷勢段，也不生成任何仿原件文件。這次 PASS 是素材像素、版型與來源整合準備；不是全片聲音／字幕播放驗證或站主成片核准。
+
+## 原創足跡向量示意
+
+2026-10-12 追加七張原創 SVG，以原生 `diagram` 使用。AI 小樣兩輪仍把足跡畫成凹坑或圓雪堆，因此改以可核對的通用鞋底長形、平頂、短側壁及外投影表達壓實雪的隆起；沒有照描或修改歷史照片。每景 caption 均為「足跡形態示意／非現場照片・未按比例」，署名／權利為 `Mokaair original`。
+
+| SVG | 用途 |
+|---|---|
+| [hook-footprints](vector-art/hook-footprints.svg) | 開場說明隆起與周圍較低雪面 |
+| [trail-varied](vector-art/trail-varied.svg) | 不同鞋襪痕跡的寬窄概念 |
+| [boot-print-evidence](vector-art/boot-print-evidence.svg) | 通用靴底形的壓實雪示意 |
+| [broken-trail](vector-art/broken-trail.svg) | 只見短段、不連續的痕跡 |
+| [trail-downhill](vector-art/trail-downhill.svg) | 下坡與遠林方向，沒有精確距離 |
+| [stride-evidence](vector-art/stride-evidence.svg) | 所見間隔不代表全程步態或心情 |
+| [return-to-trail](vector-art/return-to-trail.svg) | 結尾回顧形狀不同、路徑不完整 |
+
+作者與獨立覆核者均逐張實看原生1920×1080 PNG；7張SVG及7張PNG SHA全部符合整合提案，0材料性問題。外部 `footprint-vector-proposal.json` SHA `23e44df5b1b5a4c701496f7e0be48e51010c487db896a1eb49a4f6f1ba45ff3b`；`footprint-vector-independent-review.md` SHA `beca585de31dd369880fb85cba56914025b5c7e0d3e084564f646b49a822e24a`。兩輪付費小樣保留在外部稽核目錄，不改其judge結果。

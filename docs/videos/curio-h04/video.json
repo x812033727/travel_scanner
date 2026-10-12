@@ -131,6 +131,41 @@
       "license": "PD-RU-exempt",
       "author": "Лев Никитич Иванов (Lev Nikitich Ivanov)",
       "url": "https://commons.wikimedia.org/wiki/File:Dyatlov.Volume_1.Page_387.jpg"
+    },
+    {
+      "path": "docs/videos/curio-h04/vector-art/hook-footprints.svg",
+      "source": "奇聞檔案局 H04 原創足跡形態示意；非現場照片、未按比例",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04/vector-art/trail-varied.svg",
+      "source": "奇聞檔案局 H04 原創足跡形態示意；非現場照片、未按比例",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04/vector-art/boot-print-evidence.svg",
+      "source": "奇聞檔案局 H04 原創足跡形態示意；非現場照片、未按比例",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04/vector-art/broken-trail.svg",
+      "source": "奇聞檔案局 H04 原創足跡形態示意；非現場照片、未按比例",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04/vector-art/trail-downhill.svg",
+      "source": "奇聞檔案局 H04 原創足跡形態示意；非現場照片、未按比例",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04/vector-art/stride-evidence.svg",
+      "source": "奇聞檔案局 H04 原創足跡形態示意；非現場照片、未按比例",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04/vector-art/return-to-trail.svg",
+      "source": "奇聞檔案局 H04 原創足跡形態示意；非現場照片、未按比例",
+      "license": "Mokaair original"
     }
   ],
   "scenes": [
@@ -139,7 +174,7 @@
       "chapter": "鞋子留下，人卻離開",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot on a treeless mountain slope at winter twilight. A solitary low canvas ridge tent stands in the centre, its entrance folded open toward the viewer. The empty interior and snow around the tent are visible. Natural remaining sky light falls across the fabric; only the shelter and terrain occupy the scene.",
+        "prompt": "Wide view across the open upper slope of a broad, rounded, treeless Ural hillside at winter twilight. Continuous snow-covered ground fills the foreground and middle distance beneath a smooth curved skyline. A low elongated canvas ridge tent occupies the centre, seen from a slight three-quarter front angle with its long roof ridge visible. Its entrance flap is folded aside, revealing a vacant shaded interior. Snow surrounds the fabric base and guy ropes. Remaining daylight illuminates the canvas.",
         "camera": "push in",
         "visual": "still"
       },
@@ -174,11 +209,10 @@
     },
     {
       "id": "hook-footprints",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Low close-up of a few irregular raised footwear traces on a snowy hillside in daylight. Narrow compacted-snow footprint forms and wider rounded boot-shaped forms stand slightly above the surrounding wind-scoured surface in the middle third. The short incomplete trail contains snow traces only.",
-        "camera": "pull out",
-        "visual": "still"
+        "svg": "docs/videos/curio-h04/vector-art/hook-footprints.svg",
+        "caption": "足跡形態示意／非現場照片・未按比例"
       },
       "claims": [
         "c03",
@@ -236,7 +270,7 @@
       "id": "hook-slope",
       "template": "shot",
       "data": {
-        "prompt": "Wide view from a forest edge looking up at a distant empty mountain slope in cold morning light. A small ridge shelter is far uphill in the central distance, separated from the trees by an open expanse. The scene holds only trees, terrain and the shelter.",
+        "prompt": "Wide view from a lower forest edge looking uphill in cold morning light. Foreground tree trunks frame a broad, rounded, treeless Ural upper hillside in the distance. A small low ridge tent sits far uphill, separated from the foreground trees by a long open snow-covered incline. The upper slope meets a smooth curved skyline. The tent and the open ground between it and the forest remain central.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -345,7 +379,7 @@
       "id": "journey-slope-day",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of a bare mountain shoulder on an overcast winter afternoon. Low wind-shaped snowdrifts cross the central slope, with a sparse tree line far below. Daylight from the clouded sky shows the open terrain without any shelter or people.",
+        "prompt": "Wide view of a broad, rounded, treeless Ural upper hillside on an overcast winter afternoon. Low wind-shaped snowdrifts cross the open central shoulder beneath a gently curved skyline. A sparse forest line lies far below in the distant valley. Clouded daylight reveals the continuous snow-covered upper ground.",
         "camera": "push in",
         "visual": "still"
       },
@@ -363,7 +397,7 @@
       "id": "camp-platform-context",
       "template": "shot",
       "data": {
-        "prompt": "Medium side view of an unoccupied snow platform cut into a slope in daylight. A low canvas ridge shelter occupies the level platform at centre; a small exposed snow bank rises behind it. This is a simple conceptual campsite with only terrain and shelter visible.",
+        "prompt": "Medium side view of a level snow platform cut into the open upper slope of a broad, rounded, treeless Ural hillside in daylight. A low canvas ridge tent occupies the platform at centre, with a small exposed snow bank behind it. Continuous open snow extends around the campsite toward a gently curved ridge. The platform, shelter and bank form the central group.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -399,7 +433,7 @@
       "id": "search-daylight",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of a mountain slope in full winter daylight. Two distant anonymous searchers seen from behind pause well downhill from a small empty tent. One gestures toward the shelter while the other stands nearby. Faces are hidden by rear-facing hoods; the tent remains central.",
+        "prompt": "Wide view across the open upper slope of a broad, rounded, treeless Ural hillside in full winter daylight. A small vacant ridge tent is centred uphill beneath a smooth curved skyline. Two distant anonymous searchers stand well downhill, seen from behind in hooded winter clothing. One gestures toward the shelter while the other stands nearby. Continuous open snow separates them from the tent.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -462,7 +496,7 @@
       "id": "search-objects",
       "template": "shot",
       "data": {
-        "prompt": "Overhead close-up of personal camping supplies laid beside an empty fabric shelter in daylight: plain mittens, a rolled wool blanket and a canvas pouch. The objects form one compact central group, with no labels or written surfaces.",
+        "prompt": "Overhead close-up inside an unoccupied canvas tent in diffuse daylight. Plain winter boots, a folded wool coat and a closed canvas pouch rest together on the fabric-covered floor in the central area. The canvas interior surrounds the belongings, with soft light entering through the open flap at the edge of the frame.",
         "camera": "drift",
         "visual": "still"
       },
@@ -498,7 +532,7 @@
       "id": "search-two-times",
       "template": "shot",
       "data": {
-        "prompt": "Medium view of a closed canvas shelter on a calm snowy slope at midday. Its weathered fabric and partly buried rope show prolonged exposure; the unoccupied tent is centred against a simple open background. Natural light comes from overhead.",
+        "prompt": "Medium view of a closed low canvas ridge tent on the open upper slope of a broad, rounded, treeless Ural hillside at midday. Weathered fabric and a partly buried guy rope occupy the centre. The surrounding snow-covered incline continues into a smooth curved skyline. Natural overhead light reveals the tent and quiet open ground.",
         "camera": "push in",
         "visual": "still"
       },
@@ -689,11 +723,10 @@
     },
     {
       "id": "trail-varied",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Overhead view of a short uneven sequence of raised footwear traces in daylight snow. A wider felt-boot-shaped form and a narrower compacted-snow form stand above the wind-eroded surrounding surface near the centre. The trail is incomplete and irregular, with softly weathered edges.",
-        "camera": "tilt up",
-        "visual": "still"
+        "svg": "docs/videos/curio-h04/vector-art/trail-varied.svg",
+        "caption": "足跡形態示意／非現場照片・未按比例"
       },
       "claims": [
         "c03",
@@ -728,11 +761,10 @@
     },
     {
       "id": "boot-print-evidence",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Close-up of a broad felt-boot-shaped form of compacted snow standing slightly above the wind-scoured surrounding surface on an overcast morning. Its rounded heel and broader forefoot occupy the middle third. Only the raised snow trace and surrounding terrain are present.",
-        "camera": "drift",
-        "visual": "still"
+        "svg": "docs/videos/curio-h04/vector-art/boot-print-evidence.svg",
+        "caption": "足跡形態示意／非現場照片・未按比例"
       },
       "claims": [
         "c03",
@@ -802,11 +834,10 @@
     },
     {
       "id": "broken-trail",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Low angle view of a few raised compacted-snow footprint forms ending beside a smooth wind-scoured patch on a hillside at noon. The last distinct raised form sits in the centre, with the rest of the short trail fading into natural drift patterns. The frame contains no people.",
-        "camera": "pan right",
-        "visual": "still"
+        "svg": "docs/videos/curio-h04/vector-art/broken-trail.svg",
+        "caption": "足跡形態示意／非現場照片・未按比例"
       },
       "claims": [
         "c14",
@@ -821,11 +852,10 @@
     },
     {
       "id": "trail-downhill",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Wide downhill view in daylight of a short irregular trail toward a distant forest edge. Only a limited central foreground patch of raised compacted-snow footprint forms survives above the wind-scoured surface; the middle slope is smooth. Sparse trees form a low horizon.",
-        "camera": "pull out",
-        "visual": "still"
+        "svg": "docs/videos/curio-h04/vector-art/trail-downhill.svg",
+        "caption": "足跡形態示意／非現場照片・未按比例"
       },
       "claims": [
         "c04",
@@ -840,11 +870,10 @@
     },
     {
       "id": "stride-evidence",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Close-up from above of two separated raised boot-shaped forms of compacted snow on a winter hillside during daytime. Their spacing is visible, and both stand slightly above the wind-eroded surrounding surface in the middle third. Natural side light defines their edges, without markings or measuring equipment.",
-        "camera": "tilt down",
-        "visual": "still"
+        "svg": "docs/videos/curio-h04/vector-art/stride-evidence.svg",
+        "caption": "足跡形態示意／非現場照片・未按比例"
       },
       "claims": [
         "c15",
@@ -1176,7 +1205,7 @@
       "id": "slope-small-feature",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot. Low view across a broad mountain slope in daylight. A shallow step in the snow surface forms the central feature, with the distant horizon gently descending. No enormous avalanche cloud or people appear; the landscape is quiet and open.",
+        "prompt": "Wide low view across the open upper slope of a broad, rounded, treeless Ural hillside in daylight. A shallow step in the snow surface forms the central feature. The broad snow-covered shoulder extends to a gently curving, gradually descending skyline. Quiet open terrain fills the frame.",
         "camera": "drift",
         "visual": "still"
       },
@@ -1186,7 +1215,7 @@
       "lines": [
         {
           "id": "xzmn",
-          "text": "山坡看起來不夠陡，為什麼還可能有雪板？"
+          "text": "山坡看起來不夠陡，為什麼雪板還可能滑落？"
         }
       ]
     },
@@ -1194,7 +1223,7 @@
       "id": "camp-open-question",
       "template": "shot",
       "data": {
-        "prompt": "Medium view of an empty ridge tent set below a low snow bank on a mountain slope in evening twilight. The canvas shelter is centred, and undisturbed snow extends upslope. Light comes from the remaining sky, with no artificial source.",
+        "prompt": "Medium view of a low vacant ridge tent beneath a small snow bank on the open upper slope of a broad, rounded, treeless Ural hillside at evening twilight. The canvas shelter is centred, with undisturbed snow extending upslope toward a smooth curved ridge. Remaining sky light illuminates the fabric and open snow.",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -1287,7 +1316,7 @@
       "id": "smooth-surface",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of an empty rounded snow surface on a treeless mountain shoulder at noon. Wind has smoothed the central area into an apparently gentle slope. The horizon and distant terrain remain simple, lit by an overcast sky.",
+        "prompt": "Wide view of a broad, rounded, treeless Ural upper hillside at noon. Wind-smoothed snow forms an apparently gentle continuous surface across the centre. The open shoulder ends in a softly curving skyline beneath an overcast sky. Surface snow and the distant rounded terrain fill the view.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1447,7 +1476,7 @@
       "id": "quiet-platform",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a small empty camping platform below a snow bank on a calm mountain afternoon. A low canvas tent sits in the centre and the bank above remains intact. The plain landscape has only terrain and shelter under diffuse daylight.",
+        "prompt": "Wide view of a small level camping platform beneath a low snow bank on the open upper slope of a broad, rounded, treeless Ural hillside on a calm afternoon. A low canvas ridge tent sits centrally, with the snow bank above it intact. Open snow-covered ground extends toward a smooth curved skyline under diffuse daylight.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1485,7 +1514,7 @@
       "id": "wind-ridge",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of an unoccupied mountain ridge in winter daylight. A low veil of drifting surface snow crosses the crest and gathers just below it at centre. The sky is clear of falling snow and the terrain remains simple.",
+        "prompt": "Wide view of a broad, rounded, treeless Ural upper ridge in winter daylight. A low veil of surface snow drifts across the smooth crest and gathers just below it at centre. Open snow-covered slopes extend around the shallow deposit beneath a plain clear sky.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1682,7 +1711,7 @@
         },
         {
           "id": "c5xt",
-          "text": "所以不能拿算出的時間，倒填九人何時出事。",
+          "text": "所以不能拿算出的時間，回頭推算九人何時出事。",
           "emotion": "收斂",
           "reveal": 1
         }
@@ -1692,7 +1721,7 @@
       "id": "small-slab-remains",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of a small localized snow slab deposit on an empty mountainside in daytime. A limited cluster of compact snow blocks lies beneath a short fracture edge in the central area; most of the broad surrounding slope remains undisturbed.",
+        "prompt": "Wide view of a small localized snow slab deposit on the open upper slope of a broad, rounded, treeless Ural hillside in daylight. A limited cluster of compact snow blocks rests beneath a short fracture edge in the central area. Most of the surrounding broad snow-covered slope remains smooth, extending toward a gently curved skyline.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -1728,7 +1757,7 @@
       "id": "unmeasured-snow",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of a quiet, empty mountain shoulder at midday, with a continuous unmarked snow surface extending across the centre. Distant ridges fade softly behind it. There are no structures or people; light comes from an overcast sky.",
+        "prompt": "Wide view of a quiet open upper shoulder of a broad, rounded, treeless Ural hillside at midday. A continuous unmarked snow surface spans the centre. Low rounded ridges fade into the distance beneath an overcast sky. The frame consists of snow-covered ground, gently curved horizons and diffuse daylight.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -2174,11 +2203,10 @@
     },
     {
       "id": "return-to-trail",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Wide shot from a low viewpoint of a short irregular footwear trail crossing an empty snowy slope toward trees in daylight. Slightly raised compacted-snow forms survive above the surrounding wind-scoured surface; only a limited central portion remains. The distance beyond is unmarked and empty.",
-        "camera": "tilt up",
-        "visual": "still"
+        "svg": "docs/videos/curio-h04/vector-art/return-to-trail.svg",
+        "caption": "足跡形態示意／非現場照片・未按比例"
       },
       "claims": [
         "c03",
@@ -2196,7 +2224,7 @@
       "id": "return-to-platform",
       "template": "shot",
       "data": {
-        "prompt": "Medium side view of a small empty tent platform below a snow bank in diffuse daylight. The low canvas shelter and overlying snow bank form the central group. The surrounding slope is simple and entirely unoccupied.",
+        "prompt": "Medium side view of a small level tent platform beneath a low snow bank on the open upper slope of a broad, rounded, treeless Ural hillside in diffuse daylight. A low vacant canvas ridge shelter and the overlying bank form the central group. Open snow-covered ground continues around the platform toward a smooth curved ridge.",
         "camera": "push in",
         "visual": "still"
       },
@@ -2206,7 +2234,7 @@
       "lines": [
         {
           "id": "a6qq",
-          "text": "雪板研究提供的，是可能迫使人離營的一種機制。"
+          "text": "雪板滑動的研究，提供了可能迫使人離開營地的一種機制。"
         }
       ]
     },
@@ -2233,7 +2261,7 @@
         },
         {
           "id": "u3tt",
-          "text": "特定條件下的雪板，是能夠檢驗的解釋。",
+          "text": "特定條件下，雪板可能滑動，這是能夠檢驗的解釋。",
           "reveal": 1
         },
         {
@@ -2297,12 +2325,14 @@
         {
           "id": "bi2x",
           "text": "雪板可能促成離帳。",
-          "emotion": "穩定收束"
+          "emotion": "穩定收束",
+          "pause_after_ms": 100
         },
         {
           "id": "x53t",
           "text": "哪個線索最意外？",
-          "emotion": "輕問"
+          "emotion": "輕問",
+          "pause_after_ms": 100
         },
         {
           "id": "3hwp",

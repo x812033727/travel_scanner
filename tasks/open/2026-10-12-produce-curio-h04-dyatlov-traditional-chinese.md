@@ -50,4 +50,6 @@ scope:
 - 當前大綱 SHA `32bf76ed25e862e3e7c9e0bf8d1d369a2f9ad625a270c5518ed0919592f32a63`；review `d76bc11e-0d58-4983-b7d2-378d18e17bd2` 已由站主於 `2026-10-12T05:19:58.330973Z` 核准 A。2026-10-12 05:22 UTC 原生 review-pull exit 0 並 GET 200 回讀一致。
 - 已有共用修正票 `2026-10-10-outline-pick-demo-exempts-explainers`，本集不擴張scope修改門檻、不重問付費judge以碰運氣。
 - A 案完整稿 100 景／119 句已經獨立事實與聽眾覆核 PASS，0 未解必修；三張文書裁切已實看與清權。兩份覆核綁最終 video SHA `98b2fe192185644dd7a36a3deac8c4f8c9314a54486cedf1ff23cdd85dfae2f8`。docs-videos 199 tests passed。
-- 最終 TTS dry-run exit 0，115 requests、約 2,363 計費字元；已啟動原生 TTS，完成狀態及實際時長另驗。
+- 119句旁白經三輪局部重錄與四句口語修正，逐句機器檢查0 flagged；正文604.0667秒、最長狀態7.7333秒。audio review `f28e20d8-8c02-4b9b-8af9-a50b8494b847` 已自動核准，2026-10-12 06:41 UTC原生pull及GET200讀回一致。真人完整播放仍待成片審看。
+- 兩次轉寫答案遺失分別取得站主單筆一次重試授權，均已成功；Windows rename EPERM另依confirmed原件核對恢復，0重買。詳情與收據索引在PRODUCTION.md。
+- 帳篷、弱層插圖小樣實看可保留；7張原創向量示意已實看並整合，舊足跡take保留。65張情境插圖主批次製作中；正式字卡及成片尚未完成。最新文件測試199 passed／0 failed。

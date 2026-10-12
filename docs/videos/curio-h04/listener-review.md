@@ -51,3 +51,60 @@
 `佳特洛夫`（`u9ci`）、`北烏拉山`（`mvpk`）、`氈靴`（`z6at`）與年份、人數是後續發音檢查重點。外文作者名、俄文關鍵詞與來源 URL 都留在畫面／來源欄，119 句沒有 URL 口播，也沒有以拉丁字母人名增加 TTS 風險。
 
 尚未聽取任何本集合成音訊。實際發音、漏字、呼吸停頓、章節／結尾時長、字幕與旁白同步，以及生成插圖是否如 prompt，均留待相應媒體關卡。此 SHA 的腳本已可進入下一個原生製作步驟，沒有剩餘 listener 必修。
+
+## 2026-10-12 追加：結尾兩處停頓縮短
+
+**PASS — 僅時間修正與既有旁白完整性核對；0 新增 listener 必修。** 上述完整審稿仍綁原 SHA `98b2fe192185644dd7a36a3deac8c4f8c9314a54486cedf1ff23cdd85dfae2f8`，保留其範圍與結論。本追加綁新版 `video.json` SHA-256 **`f4291c340eef12bac0ba08980f9cbe7f39bba6309131a8fb50e379e8f31755c8`**。
+
+已直接比較 `_audit/outro-pause-correction/video-before.json` 與目前 JSON；只有以下兩個欄位新增，沒有其他資料差異：
+
+| 句 id／JSON 路徑 | 原值 | 新值 |
+| --- | --- | --- |
+| `bi2x`／`scenes[99].lines[0].pause_after_ms` | 未設定，原生預設 300 ms | 100 ms |
+| `x53t`／`scenes[99].lines[1].pause_after_ms` | 未設定，原生預設 300 ms | 100 ms |
+
+預設值由 `tools/video/core/timeline.mjs` 的 `DEFAULT_PAUSE_MS = 300` 確認。119 句 text／say、整個 voice 物件、卡片／插圖 data 與其他內容均未變。逐一重算目前 `audio/<line-id>.wav` 的 SHA，與修正收據保存的 `audio_before` 比對：**119／119 一致，0 缺檔、0 不符**；timeline 的每句音訊樣本數與音訊 SHA 亦未變。
+
+目前 `timeline.json` SHA-256：**`281d53be4eec577370a8116e7109ed68d8557ffea0fff15ad58af4c531c436eb`**。已直接讀回時間軸並與 `timeline-before.json` 比較：
+
+- 30 fps；總長由 18,116 幀縮為 **18,104 幀＝603.4667 秒**，減少 12 幀／0.4 秒；正文仍超過 480 秒。
+- `outro` 開始仍是第 17,866 幀，結束改為第 18,104 幀：**238 幀＝7.9333 秒**（原為 250 幀＝8.3333 秒）。
+- 共 **117 個 states**，最長是 outro 的 7.9333 秒，超過 8 秒者 **0 個**。其他 scene 的起迄／state 均未變；只影響結尾三句的相鄰起迄及全片終點。
+- speech_hash 由 `d0f388eeb02c1280` 更新為 **`d9e4eeb59801eac3`**。停頓參與時間軸雜湊，因此不能把「逐句 WAV 未變」誤寫成所有音訊產物都未變。
+- 重組後 `narration.wav` 實算 SHA 為 **`c71ac88be4f7239e7109f409a51221d472ba2e75538bf18e9c9352dd560023ad`**，與 `timeline.audio_evidence.narration_sha256` 一致。串接音軌因停頓縮短而更新，屬預期結果。
+
+原生 refresh 收據 `_audit/tts-2026-10-12T05-52-48-492Z.receipt.json` 的 exit_code 為 **0**；對應 log 記錄 **0 requests synthesized、0 billable characters、115 reused**。115 是原生請求重用統計；不代替上面獨立核對的 119 個逐句 WAV。
+
+修正來源收據 SHA：`b6d4f71e4d09ae9b3d601b21ddd06af4497d43860d630d76f605f0b3b372b4ec`。本輪只讀 source、before、timeline、receipt、log 與 WAV 位元，僅追加本報告；沒有修改媒體、執行 provider 或宣稱人工聽過。root 的 check-audio 仍屬獨立流程，本追加不替它判全過。
+
+## 2026-10-12 追加：四句音訊改寫後的完整文字回讀
+
+**PASS — SCRIPT/LISTENER 增量文字覆核；0 新增 must-fix。** Reviewer：`h04_audio_wording`（四句備案作者）。本追加核對實際套用與全文口語／揭示順序，不冒充另一次獨立事實查核或實際試聽。**owner_final_playback：NOT_RUN；本 reviewer 的合成音訊試聽：NOT_RUN。**
+
+本次綁定 `video.json` SHA-256：**`30eb4fa95a6a3737d2d3e328ae409a86158550ea40c917829762a256049634c4`**。已完整回讀 **100 景、119 句**及每句 emotion、reveal、pause，並逐張核對全部非 shot 卡片 data 與口播順序。另直接比較 `_audit/audio-rewrite-1/video-before.json`（SHA-256：`4979754cb76c36e8301ec6bab8d12b414a15f876b92459954440e95d8b6fce21`）與本版：差異恰為下表四個 `line.text`，加上 `search-objects` 的一個 `data.prompt`；其餘 **115 句原文、119 句其他欄位與 voice 物件均一致**。
+
+| 句 id | 套用後文字 | 口語及上下文核對 |
+| --- | --- | --- |
+| `xzmn` | 山坡看起來不夠陡，為什麼雪板還可能滑落？ | 「雪板」有滑落動作作語境；先問坡度，下一景 `m3z2` 才問延遲，兩個問題仍分明。保留可能性，沒有把模型當成當夜紀錄。 |
+| `c5xt` | 所以不能拿算出的時間，回頭推算九人何時出事。 | 「回頭推算」比「倒填」口語；接 `6n95` 的模型條件檢查後，明確限縮能推論的時間。第二次 reveal 仍只對右欄「沒有做到／獨立預測確切時刻」，未搶先說別格內容。 |
+| `a6qq` | 雪板滑動的研究，提供了可能迫使人離開營地的一種機制。 | 將離營展開為離開營地，語意較清楚；保留可能、一種機制，接前兩個線索收束後能回應主題。shot 沒有新增 reveal；未聲稱實際移動、離營順序或完整經過已獲證明。 |
+| `u3tt` | 特定條件下，雪板可能滑動，這是能夠檢驗的解釋。 | 用三個短意群交代條件、機制及可檢驗性。仍對應 `case-status` 第二格「模型：特定條件下可行」；前一句是記錄，後一句才揭示未知，沒有越格。 |
+
+四句的數字、日期及專有詞保留，沒有以「雪崩」代換「雪板」；佳特洛夫、氈靴及 `88ft` 未修改。`search-objects` 的新 prompt 改成帳篷內的鞋子、外衣與個人物品，在文字層面與未改的 `eyqe` 一致；本輪未讀新生成圖片，不能據此判定圖片已合格。
+
+**節奏預測而非實測：** 四句含標點長度分別為 `19→20`、`20→22`、`22→26`、`18→23` 字。`a6qq` 是本版唯一超過 25 字的句子，因此前文「全部不超過 25 字」只適用其原 SHA。本句只有一個核心判斷，增加的字用於補足雪板與離營語境，目前不列必改；原生 TTS 完成後需查看該景實際 state 秒數及語速，不能沿用舊時間軸的 8 秒通過紀錄。`c5xt` 與前句重複「回頭」，但分別描述檢驗條件與禁止倒推事發時刻，不構成新歧義；不為這個輕微重複再改稿。
+
+其餘全稿維持「留下用品與足跡 → 原始文書的觀察及限制 → 小雪板模型 → 後續地形與痕跡 → 未還原的當夜」的敘事順序；日期、人數卡及同源研究卡的揭示均相符。結尾仍先給可能機制，再保留證據缺口；兩處 100 ms 停頓設定未變。文字上沒有新增懸而不答的問題、製作指令口吻或來源 URL 口播。
+
+改寫收據 `_audit/audio-rewrite-1/receipt.json` SHA-256：`8075a5ea27990f3ca55e80e183403b174a7bc9aab578e0023f32b4eeeb5c1818`。其中 `source_after=692be6289870c02c4f40e41d3c500cd00b7c3e15e6399b95c289d2cebd6e2b80` 是收據保存的四句改寫版本；本追加以包含後續 prompt 修正的 **30eb4f…** 檔案為準，不把兩個全檔 SHA 混用。收據記載四句 accepted、lint errors 0、new_provider_calls 0；正在進行的新 TTS、check-audio、字幕同步、時長及站主成片播放均由後續各自收據確認，本追加未判定它們已通過。
+
+**同輪後續補驗：四句 TTS 已完成，時間軸節奏 PASS。** 寫入文字覆核期間，原生 `_audit/tts-2026-10-12T06-38-14-443Z.receipt.json` 已回寫 succeeded／exit_code 0。本 reviewer 隨後直接重讀完成版 `timeline.json`，SHA-256 為 **`f4ab52a1e7ccceccd88576b8bbc8f273cb35f204730ec3d4bb825c251305dc82`**，speech_hash **`296feca213cf8271`**；與 `_audit/timeline-audit-1791787157050.json` 相符。30 fps、18,122 幀，總長 **604.0667 秒**，117 個 states，稽核 problems 為空。
+
+| 句 id／對應 state | 起訖幀 | 實際 state 時長 |
+| --- | --- | --- |
+| `xzmn`／`slope-small-feature` | 8,385–8,531 | 4.8667 秒 |
+| `c5xt`／`model-not-timer` 第二格 | 12,479–12,653 | 5.8000 秒 |
+| `a6qq`／`return-to-platform` | 16,887–17,059 | 5.7333 秒 |
+| `u3tt`／`case-status` 第二格 | 17,218–17,374 | 5.2000 秒 |
+
+由起訖幀直接重算全片最長 state 為 outro 的 **232 幀＝7.7333 秒**；稽核報告顯示的 7.7 是四捨五入值。所有狀態均未超過 8 秒，前段針對 `a6qq` 增長的停留時長疑慮已解除。這些是完成音檔所產生的原生時間軸資料，**不是人工對語速、口齒或聽感的核准**。check-audio 尚由 root 的獨立流程判定；字幕同步與 owner_final_playback 仍未在本輪執行。
