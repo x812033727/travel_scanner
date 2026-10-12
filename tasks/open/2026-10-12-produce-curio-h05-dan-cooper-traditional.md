@@ -50,3 +50,4 @@ Bundled Node 執行 tools/video/cli.mjs 的 lint、tts/keyframes --dry-run、che
 
 - 原生Jev於09:47:37 UTC自動核准A，review 47f37652-00b8-4fec-a322-8f9a729af7e8；brief SHA b384685061f457187f4ba3c189ebc7c99dfa275607853f397c2e8ec5f5df2803，native push/pull exit0與GET200一致。完整稿及付費媒體仍待製作。
 - 10:11 UTC：完整稿SHA 007bd144…經24主張／105景／129句的獨立事實及聽眾覆核，0未解；原生lint、兩種dry-run及docs-videos 199／199通過。TTS開始，實際時間軸、逐句讀音、生成圖與播放器仍待驗證。
+- 10:39 UTC：字卡窄修後source SHA 4bc69184…，speech／pictures hash不變；31非shot／53顯示狀態已全實看、0必修，兩份覆核增量PASS。TTS接續完成並保留已收到回應，沒有重送故障的付費請求；正文681.333秒、shot59.5157%，原生節奏通過。3pilot已雙方實看PASS；check-audio正在執行，74張完整分鏡及成片／上傳包仍待製作。

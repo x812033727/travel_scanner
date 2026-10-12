@@ -86,3 +86,10 @@
 - 站主立場2／3／4／6／9與A角度一致；未發現把推論當事實或未做實驗說成親測的意見衝突。
 
 總計24組主張，23組CONFIRMED、1組CHANGED後CONFIRMED；0 unresolved／NOT FOUND。完整129句、31個非shot data及metadata已覆核；最終結論只綁開頭列出的SHA。正式站大綱自動核准沒有代替本次查核。
+
+## 增量回讀：研究字卡揭露順序（2026-10-12）
+
+- 當前 source SHA：`4bc69184d825ff650e40366d03d90f59516ee3da2839576da21a28921129a96f`；claims 仍為 `4c1ab06a23eb749d757d56a214f2e2ac02597c84df0bab44cf1c96e900acce76`。
+- 獨立比較完整 before／after JSON：唯一差異是 `research-after-statement.data.left` 與 `data.right` 交換。2020 年研究先隨 `6ocrfg` 出現，2016 年調查資源安排第二格隨 `0gpub5` 比較；所有 line 欄位、ID、文字、reveal、claims 與其他資料完全相同。
+- c21／c23 的年份、機關決策與研究者推論界線未變；沒有新增歷史主張，也不暗示 2020 年正式重啟調查。**增量事實回讀 PASS，0 新增必修**；原24項查核仍適用。此處驗證來源資料與語句對拍，不另宣稱新 render 像素或播放器已審。
+- 逐值證據：外部 `_audit/research-card-reveal-fix/factual-readback.json`；原檔保留於同目錄 `video-before.json`。字幕預提案 `7ef045ae…` 的129句與11處純換行建議仍相符；正式字幕及時間尚待完成後另核。

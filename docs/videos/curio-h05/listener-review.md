@@ -63,3 +63,13 @@
 優先實看 `tail-stairs-ground`、`boy-bank`、`briefcase-closed`、`briefcase-latches`、`hook-empty-bank`、`forest-unknown`、`study-year`、`diatom-observation`、`burial-experiment`、`fraction-question`：分別查尾梯／引擎連接、兒童後背比例、封閉物件與擬人扣件、空地形、儀器假字／假結果、沙盤是否被誤讀為完整實驗，以及木塊計數是否被誤認為精確2.9%面積圖。只有原生算式卡提供精確比例。
 
 四個photo場景對應三張已查權利原圖；FBI贖金在開場與序號段各出現一次。機票姓名、領帶全長、殘鈔陳列及來源文字皆須在render與成片運鏡另行實看。已完成的原圖像素審查不等於這四個最終版面都通過。TTS後仍需聲音、字幕與實測節奏審查。
+
+## 2026-10-12 卡片像素覆核與增量綁定
+
+目前 `video.json` SHA-256：`4bc69184d825ff650e40366d03d90f59516ee3da2839576da21a28921129a96f`。相較以上完整稿件審閱的 `007bd144…`，精確 JSON 差異僅 `research-after-statement.data.left/right` 交換；所有旁白文字、line ID、reveal、其他場景與資料完全相同。`claims.md` 仍為 `4c1ab06a23eb749d757d56a214f2e2ac02597c84df0bab44cf1c96e900acce76`，0 新增事實修正。
+
+已用 repo 原生 HTML 模板與 msedge，在外部 audit 目錄產生並逐張實看 31 場非 shot 的 53 個 settled 預覽。h03_verify 覆核前 30 張，h04_audio_wording 覆核後 23 張；發現一項研究年份卡錯拍。作者只交換左右資料後，h03_verify 另行重渲並實看該兩張：第一句新研究先顯示 2020 年，第二句加入 2016 年資源調整，問題解除。其餘 51 個 state key 與 HTML SHA 對目前來源完全不變；原 53 張與兩張修正預覽、原判斷均保留。
+
+**卡片預覽結論：PASS_WITH_MINOR_NOTES，53／53 current states，0 未解必修。** 四個照片版面使用三份真正 stock 原件；三步比例算式、季節比較、研究樣本範圍及圖說均可讀。可保留備註為領帶署名膠囊接近尾端、卡爾引句換行拆開「生還」、並列線索使用 STEP 箭頭。55 個實看輸出與三原件均重算 SHA 相符；native layout problems 為 0。
+
+逐張 file／SHA／reviewer 與保留歷史見 `C:/Users/x8120/mokaair-work/videos/curio-h05/_audit/card-preview-independent-review.json`，SHA `85a5c6d3657d2cd30373397917acd7b78bb232267f47aab695ad6d7121dbc0e3`，及同名 `.md`。這是估計時間軸的獨立 settled 卡片預覽；未審實際 AI keyframes、正式 transition／運鏡、TTS 聽音或成片播放，亦非站主核准。

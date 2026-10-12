@@ -11,6 +11,12 @@
 - 原生lint於10:07:48 UTC通過（0 errors；3個空景構圖詞頻率提醒），估11分31秒、127狀態最多7.5秒、插圖估60.43%；這些仍是估算。`tts --dry-run`：127請求／2701計費字元，Sulafat ready。`keyframes --dry-run`：74鏡、MiniMax image-01 ready、1K、0超出prompt預算，約US$1單輪／US$3最多三輪。以上預檢無付費；插圖、render、assemble或上傳包仍未製作。
 - docs-videos檢查199／199通過，0 skipped（`_audit/docs-videos.log`）。這項檢查不等於音訊、圖片或播放器審看。
 - `verify-1.md`（SHA `25efe7d0bf042483f2b498679f6c6b463f9a0f84c64053bdc39ec76834a93441`）及 `listener-review.md`（SHA `63cb8c1e0cbed238d707cebb03222dabb9b7359a6c2034b135892882a925931b`）均綁定上述修正版，0未解必修。24主張全部覆核；只有五週年一組事實變更，不觸發第二事實輪。TTS於10:11 UTC開始，尚在合成，未宣稱音訊核准。
+- 31個非shot場景、53個reveals的獨立原生PNG預覽已逐張實看，找到 `research-after-statement` 的唯一字卡對拍問題，交換2020研究與2016資源欄位。新source SHA `4bc69184d825ff650e40366d03d90f59516ee3da2839576da21a28921129a96f`；speechHash `1573907431905568`／picturesHash `e7c7106fdb74f243`前後完全相同，旁白、line IDs、reveal與claims不變。`_audit/research-card-reveal-fix/`保存精確差異；兩份覆核追加新版綁定、僅重看這兩張，未重新購買媒體。
+- 首次TTS於10:18:27 UTC因Windows journal rename EPERM停下。該5.28秒WAV已完整收到，confirmed暫存JSON、請求SHA及WAV SHA均相符；10:21以原生journal恢復讀回且阻止任何network send，0供應商呼叫。原始檔及收據保存在 `_audit/confirmed-speech-recovery-5f199d390153/`；未forget、未重送該付費請求。10:24新版dry-run讀回94個已快取／33待抽取或合成，TTS接續中。
+- TTS接續於10:28前exit0：33請求處理、635新計費字元、94快取沿用，另1筆先前已付費journal回應取回。正文20,440 frames／681.333秒，129句／105景；timeline SHA `19dafc090ec361f08c06eb9705c3362a8e63ce9b628ca8ce0f09190fb6fcc82d`，speechHash與當前稿一致。獨立逐檔音訊／timeline重建核對全符；127狀態、原生max8.0秒、average5.4秒、插圖59.5157%、0原生節奏問題。CTA精確241frames＝8.033秒，僅超一影格的0.1秒四捨五入邊界，次長6.933秒；記錄而不重錄。
+- 新版事實／聽稿增量均通過，現報告SHA分別 `9acb1ba244b03b0fb1ba17c5a8b8b97cec8fa396ac25d30e2993f261878d8846`／`d22a0430f5af5fbe41e559ee3789354eae1ee800b22baca51abd3750647fdd4d`。31非shot／53目前reveals全數實看；原件保留比例、計算三拍與條件性文字均可讀，0未解必修。
+- 三pilot於10:32前完成：河岸第二take、公事包第一take、研究桌第一take均judge10／10、needs_review=false。4張生成共159秒、媒體帳本US$0.05；root與獨立reviewer實看3張selected，0必修，只有河岸輪廓較輕與研究腔體泛用的細節備註。`_audit/pilot-visual-review.json` SHA `b244bc9b7c26b4efbf94327be44869b35409e18a5dace04a7b7380786d5b4a70`；尚不是74張全分鏡核准。
+- 逐句check-audio已開始。尚未完成音訊關卡、完整插圖、正式render／assemble、CC、成片QA或上傳包；播放器與完整聽音仍NOT_RUN。
 
 ## 規格與界線
 
