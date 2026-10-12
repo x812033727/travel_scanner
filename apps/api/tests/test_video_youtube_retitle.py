@@ -125,9 +125,31 @@ def test_a_title_the_tag_would_push_past_100_characters_is_reported_not_cut() ->
     assert found["titles"] == {"zh-TW": ["字" * 96, "字" * 96 + "｜CC"]}
     assert found["problem"] is None, "the short tag fits"
     found = retitle.plan(_video("v1", "字" * 98))
-    assert found["titles"] == {"zh-TW": ["字" * 98, "字" * 98 + ZH]}
+    assert found["titles"] == {}
     assert found["problem"] is not None and "103" in found["problem"]
     assert retitle.plan(_video("v2", f"已經有了{ZH}"))["titles"] == {}
+
+
+def test_only_the_title_too_long_for_a_tag_is_left_the_others_are_tagged() -> None:
+    long_en = "a" * 98
+    video = _video(
+        "v1",
+        "溫度是什麼",
+        localizations={
+            "en": {"title": long_en, "description": "d"},
+            "ja": {"title": "温度とは", "description": "d"},
+        },
+    )
+    found = retitle.plan(video)
+    assert found["titles"] == {
+        "zh-TW": ["溫度是什麼", f"溫度是什麼{ZH}"],
+        "ja": ["温度とは", f"温度とは{JA}"],
+    }
+    assert found["problem"] is not None and found["problem"].startswith("en ")
+    body = retitle.update_body(video)
+    assert body["snippet"]["title"] == f"溫度是什麼{ZH}"
+    assert body["localizations"]["en"]["title"] == long_en, "left as it is, not cut"
+    assert body["localizations"]["ja"]["title"] == f"温度とは{JA}"
 
 
 async def test_a_report_sends_nothing_and_counts_the_quota(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -152,10 +174,11 @@ async def test_a_report_sends_nothing_and_counts_the_quota(monkeypatch: pytest.M
     counts = (report["videos"], report["to_change"], report["too_long"], report["left"])
     assert counts == (6, 3, 1, 3)
     assert report["units_for_updates"] == 150 and report["skipped"] == ["demo"]
+    # v4 cannot take a tag at all: it is reported with nothing to change, every run.
     assert {item["id"]: item["titles"] for item in report["plans"]} == {
         "v1": {"zh-TW": ["一", f"一{ZH}"]},
         "v3": {"en": ["三", f"三{EN}"]},
-        "v4": {"zh-TW": ["字" * 99, "字" * 99 + ZH]},
+        "v4": {},
         "v5": {"en": ["five", f"five{EN}"]},
     }
 
