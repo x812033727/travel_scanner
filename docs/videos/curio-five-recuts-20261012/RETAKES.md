@@ -5,13 +5,20 @@ recut output root. It does not alter the published originals, upload a video,
 change the specification, or claim owner listening. Run one operation at a time
 per episode: it leases the common intro directory and all four locale directories.
 
+These commands describe the original 2026-10-12 repair. Its saved receipts
+bind the historical specification bytes, so resuming that repair requires the
+archived specs described in [PORTABILITY.md](PORTABILITY.md), substituted for
+the `--spec`, `--old-spec` and `--new-spec` paths below. The portable repository
+specs are for a fresh run with new receipts.
+
 Use these shared PowerShell arguments from the repository root:
 
 ```powershell
+$curioBatch = Join-Path ([Environment]::GetFolderPath('UserProfile')) 'mokaair-work/curio-five-recuts-20261012'
 $repairArgs = @(
   '--spec', 'docs/videos/curio-five-recuts-20261012/intro-specs.json',
-  '--sources', 'C:/Users/x8120/mokaair-work/curio-five-recuts-20261012/sources',
-  '--out', 'C:/Users/x8120/mokaair-work/curio-five-recuts-20261012'
+  '--sources', (Join-Path $curioBatch 'sources'),
+  '--out', $curioBatch
 )
 ```
 
@@ -23,7 +30,7 @@ node docs/videos/curio-five-recuts-20261012/retake.mjs second-opinion @repairArg
 node docs/videos/curio-five-recuts-20261012/retake.mjs second-opinion @repairArgs --slug curio-h03 --locale en --line intro04
 ```
 
-The defaults use the existing `C:/Users/x8120/whisper/Scripts/python.exe` and
+The defaults use `<home>/whisper/Scripts/python.exe` and
 cached faster-whisper-small snapshot `536b0662742c02347bc0e980a01041f333bce120`.
 Offline mode is required, hints are removed, and the recognizer receives only
 the locale and WAV path. There is no download or paid API call. An optional
@@ -51,11 +58,11 @@ its accepted variants are the same readings of ひも/紐, 付けた/つけた a
 野球帽/野球棒. This does not add a general Japanese homophone rule.
 
 ```powershell
-$jaEvidence = 'C:/Users/x8120/mokaair-work/curio-five-recuts-20261012/curio-u02/intro/ja/independent-review-20261012/evidence.json'
+$jaEvidence = Join-Path $curioBatch 'curio-u02/intro/ja/independent-review-20261012/evidence.json'
 node docs/videos/curio-five-recuts-20261012/retake.mjs reviewed-homophone @repairArgs --slug curio-u02 --locale ja --line intro02 --evidence $jaEvidence
 node docs/videos/curio-five-recuts-20261012/retake.mjs reviewed-homophone @repairArgs --slug curio-u02 --locale ja --line intro05 --evidence $jaEvidence
 node docs/videos/curio-five-recuts-20261012/retake.mjs reviewed-homophone @repairArgs --slug curio-u02 --locale ja --line intro06 --evidence $jaEvidence
-node docs/videos/curio-five-recuts-20261012/retake.mjs reviewed-homophone @repairArgs --slug curio-l08 --locale ja --line intro05 --evidence C:/Users/x8120/mokaair-work/curio-five-recuts-20261012/curio-l08/intro/ja/independent-review-20261012/evidence.json
+node docs/videos/curio-five-recuts-20261012/retake.mjs reviewed-homophone @repairArgs --slug curio-l08 --locale ja --line intro05 --evidence (Join-Path $curioBatch 'curio-l08/intro/ja/independent-review-20261012/evidence.json')
 ```
 
 The embedded review preserves canonical kana and the reason for each exact
@@ -109,7 +116,7 @@ spoken as `はっせんまんぼん` (80,000,000 trees). The original specs file
 unchanged so previously started renders retain their source binding.
 
 ```powershell
-node docs/videos/curio-five-recuts-20261012/prepare-h03-revision.mjs --old-spec docs/videos/curio-five-recuts-20261012/intro-specs.json --new-spec docs/videos/curio-five-recuts-20261012/h03-pronunciation-specs.json --sources C:/Users/x8120/mokaair-work/curio-five-recuts-20261012/sources --out C:/Users/x8120/mokaair-work/curio-five-recuts-20261012
+node docs/videos/curio-five-recuts-20261012/prepare-h03-revision.mjs --old-spec docs/videos/curio-five-recuts-20261012/intro-specs.json --new-spec docs/videos/curio-five-recuts-20261012/h03-pronunciation-specs.json --sources (Join-Path $curioBatch 'sources') --out $curioBatch
 ```
 
 The helper makes no paid request. It verifies that the two first retakes have
@@ -131,7 +138,7 @@ Use the revised spec for the subsequent H03 plan, synthesis, alignment, checks,
 and assembly. Other episodes continue to use the original specs.
 
 ```powershell
-$h03Args = @('--spec', 'docs/videos/curio-five-recuts-20261012/h03-pronunciation-specs.json', '--sources', 'C:/Users/x8120/mokaair-work/curio-five-recuts-20261012/sources', '--out', 'C:/Users/x8120/mokaair-work/curio-five-recuts-20261012', '--slug', 'curio-h03')
+$h03Args = @('--spec', 'docs/videos/curio-five-recuts-20261012/h03-pronunciation-specs.json', '--sources', (Join-Path $curioBatch 'sources'), '--out', $curioBatch, '--slug', 'curio-h03')
 node docs/videos/curio-five-recuts-20261012/speech.mjs plan @h03Args
 node docs/videos/curio-five-recuts-20261012/speech.mjs synthesize @h03Args --locale ja
 node docs/videos/curio-five-recuts-20261012/speech.mjs align @h03Args
@@ -148,8 +155,8 @@ without adding a fact. The other seven opening lines and all dubbed scripts stay
 unchanged. It uses a separate specs file; the original and H03 files stay intact.
 
 ```powershell
-node docs/videos/curio-five-recuts-20261012/prepare-l08-revision.mjs --old-spec docs/videos/curio-five-recuts-20261012/intro-specs.json --new-spec docs/videos/curio-five-recuts-20261012/l08-wording-specs.json --sources C:/Users/x8120/mokaair-work/curio-five-recuts-20261012/sources --out C:/Users/x8120/mokaair-work/curio-five-recuts-20261012
-$l08Args = @('--spec', 'docs/videos/curio-five-recuts-20261012/l08-wording-specs.json', '--sources', 'C:/Users/x8120/mokaair-work/curio-five-recuts-20261012/sources', '--out', 'C:/Users/x8120/mokaair-work/curio-five-recuts-20261012', '--slug', 'curio-l08')
+node docs/videos/curio-five-recuts-20261012/prepare-l08-revision.mjs --old-spec docs/videos/curio-five-recuts-20261012/intro-specs.json --new-spec docs/videos/curio-five-recuts-20261012/l08-wording-specs.json --sources (Join-Path $curioBatch 'sources') --out $curioBatch
+$l08Args = @('--spec', 'docs/videos/curio-five-recuts-20261012/l08-wording-specs.json', '--sources', (Join-Path $curioBatch 'sources'), '--out', $curioBatch, '--slug', 'curio-l08')
 node docs/videos/curio-five-recuts-20261012/speech.mjs plan @l08Args
 node docs/videos/curio-five-recuts-20261012/speech.mjs synthesize @l08Args --locale zh-TW
 node docs/videos/curio-five-recuts-20261012/speech.mjs align @l08Args

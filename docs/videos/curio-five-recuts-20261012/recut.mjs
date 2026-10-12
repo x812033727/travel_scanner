@@ -3,6 +3,7 @@
 // Inputs: source-map.json from the source audit, intro-specs.json, and speech.mjs align output.
 import { createHash } from 'node:crypto';
 import { copyFileSync, existsSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from 'node:fs';
+import { homedir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
@@ -14,8 +15,8 @@ const SLUGS = ['curio-h02', 'curio-u02', 'curio-h03', 'curio-l08', 'curio-h01'];
 const OUTRO_SHA = '00eb9ccc8449fa8b47de0aab290b8aa7d55b09962c12a127e0f0c9c5f7834396';
 const args = process.argv.slice(2);
 const option = (key, fallback) => { const i = args.indexOf(key); return i < 0 ? fallback : args[i + 1]; };
-const ROOT = path.resolve(option('--output-root', 'C:/Users/x8120/mokaair-work/curio-five-recuts-20261012'));
-const BRAND = path.resolve(option('--brand-dir', 'C:/Users/x8120/mokaair-work/channel-outro-20261012/package-v4/channel'));
+const ROOT = path.resolve(option('--output-root', path.join(homedir(), 'mokaair-work/curio-five-recuts-20261012')));
+const BRAND = path.resolve(option('--brand-dir', path.join(homedir(), 'mokaair-work/channel-outro-20261012/package-v4/channel')));
 const MAP = path.resolve(option('--source-map', path.join(ROOT, 'source-map.json')));
 const SPECS = path.resolve(option('--specs', path.join(HERE, 'intro-specs.json')));
 const DRY = args.includes('--dry-run');

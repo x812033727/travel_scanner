@@ -2,11 +2,12 @@
 // Refresh the external delivery index from actual checked files. No network, upload, or approval.
 import { createHash } from 'node:crypto';
 import { createReadStream, existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
+import { homedir } from 'node:os';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 
 const { values } = parseArgs({ options: { 'output-root': { type: 'string' }, 'source-map': { type: 'string' } } });
-const root = path.resolve(values['output-root'] ?? 'C:/Users/x8120/mokaair-work/curio-five-recuts-20261012');
+const root = path.resolve(values['output-root'] ?? path.join(homedir(), 'mokaair-work/curio-five-recuts-20261012'));
 const sourceMapPath = path.resolve(values['source-map'] ?? path.join(root, 'source-map.json'));
 const slugs = ['curio-h02', 'curio-u02', 'curio-h03', 'curio-l08', 'curio-h01'];
 const locales = ['zh-TW', 'en', 'ja', 'ko'];

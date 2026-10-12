@@ -76,7 +76,11 @@
 - `speech.test.mjs` SHA-256：`197bac72a9fa613d44e5774bd8f4e8b1f1e620705861712a619b3d79be118b93`
 - `recut.mjs` 檢視版本 SHA-256：`70951c21b8f718bb9d72e0d6fe8c10de37398b936ee295e29c459e1e113d1bc0`
 
-凍結完整稿位於 `C:/Users/x8120/mokaair-work/curio-five-recuts-20261012/sources/<slug>/video.json`：
+以上為 2026-10-12 審查時的歷史位元雜湊；2026-10-13 僅移除規格中可從
+`--sources` 推得的個人主目錄路徑。新舊規格雜湊對照與原位元保存位置見
+[PORTABILITY.md](PORTABILITY.md)，本次審查紀錄及既有收據未重綁。
+
+凍結完整稿位於 `<home>/mokaair-work/curio-five-recuts-20261012/sources/<slug>/video.json`：
 
 | slug | SHA-256 |
 | --- | --- |

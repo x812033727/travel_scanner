@@ -11,7 +11,7 @@ node docs/videos/curio-five-recuts-20261012/recut.mjs
 ```
 
 The default output root is
-`C:/Users/x8120/mokaair-work/curio-five-recuts-20261012`. Overrides are
+`<home>/mokaair-work/curio-five-recuts-20261012`. Overrides are
 `--output-root`, `--source-map`, `--specs`, and `--brand-dir`. A dry run checks the
 five originals' final/body hash bindings and reports missing opening inputs. It
 does not render or write files.
@@ -112,8 +112,8 @@ upload, publication, or Studio end-screen acceptance is claimed.
 node docs/videos/curio-five-recuts-20261012/recut-smoke.mjs
 ```
 
-This builds an explicitly synthetic, isolated source under the external output
-root, invokes the real assembler and real FFmpeg, and checks its 1,740-frame
+This builds an explicitly synthetic, isolated source under the system temporary
+directory, invokes the real assembler and real FFmpeg, and checks its 1,740-frame
 result. It verifies body picture packet retention, sample-exact four-language
 sound, old-hook caption removal, the new 00:35 body caption boundary, localized
 chapter/credit preservation, and reset publication fields. It does not contact

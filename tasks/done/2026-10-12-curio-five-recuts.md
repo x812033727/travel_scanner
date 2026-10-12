@@ -54,7 +54,7 @@ Native audio checks for only the new narration remain distinct from owner listen
 
 ## Notes
 
-- External output: C:/Users/x8120/mokaair-work/curio-five-recuts-20261012.
+- External output: `<home>/mokaair-work/curio-five-recuts-20261012`.
 - Source-map.json identifies the authoritative original paths. Four use
   mokaair-work/videos/<slug>; H01 uses videos/_h01-native-delivery/curio-h01.
   The older H01 canonical final no longer matches its upload metadata, so do not use it.

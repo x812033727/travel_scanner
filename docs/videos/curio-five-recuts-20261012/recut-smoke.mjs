@@ -2,12 +2,13 @@
 // Real FFmpeg integration smoke with synthetic source media. Never reads/writes a production video.
 import { createHash } from 'node:crypto';
 import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import assert from 'node:assert/strict';
 const here = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(process.argv[2] ?? `C:/Users/x8120/mokaair-work/curio-five-recuts-20261012/assembler-smoke-${Date.now()}`);
+const root = path.resolve(process.argv[2] ?? path.join(tmpdir(), `curio-five-recuts-assembler-smoke-${Date.now()}`));
 const src = path.join(root, 'fixture-source'), out = path.join(root, 'output'), slug = 'curio-h02';
 const locales = ['zh-TW', 'en', 'ja', 'ko'];
 const bytes = (o) => `${JSON.stringify(o, null, 2)}\n`;

@@ -45,6 +45,6 @@ for the shared instructions outside that task's scope.
 ## Notes
 
 - Approved v4 SHA: 00eb9ccc8449fa8b47de0aab290b8aa7d55b09962c12a127e0f0c9c5f7834396.
-- Evidence: C:/Users/x8120/mokaair-work/curio-five-recuts-20261012/outro-timing-probe/.
+- Evidence: `<home>/mokaair-work/curio-five-recuts-20261012/outro-timing-probe/`.
 - Implementation reference: tools/video/branding/outro.mjs, FADE_FRAMES = 15.
 - Remaster correction: docs/videos/curio-five-recuts-20261012/endscreen-timing.mjs.

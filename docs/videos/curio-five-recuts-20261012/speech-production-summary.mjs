@@ -1,6 +1,7 @@
 // Read-only media audit. Writes one bounded production receipt; no speech client.
 import { createHash } from "node:crypto";
 import { existsSync, lstatSync, readdirSync, readFileSync } from "node:fs";
+import { homedir } from "node:os";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
@@ -140,7 +141,7 @@ export function auditProduction(out) {
 }
 
 export function main(args = process.argv.slice(2)) {
-  const { values } = parseArgs({ args, options: { out: { type: "string", default: "C:/Users/x8120/mokaair-work/curio-five-recuts-20261012" } } });
+  const { values } = parseArgs({ args, options: { out: { type: "string", default: path.join(homedir(), "mokaair-work/curio-five-recuts-20261012") } } });
   const summary = auditProduction(values.out), file = path.join(summary.output_root, "speech-production-summary.json");
   atomicWrite(file, json(summary));
   const readback = read(file);

@@ -3,15 +3,16 @@
 // Never invokes ffmpeg or writes media. Run after rendering: node .../endscreen-timing.mjs --require-all
 import { createHash, randomUUID } from 'node:crypto';
 import { createReadStream, existsSync, mkdirSync, readFileSync, renameSync, statSync, writeFileSync } from 'node:fs';
+import { homedir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { parseArgs } from 'node:util';
 
 const { values } = parseArgs({ options: { 'output-root': { type: 'string' }, 'probe-evidence': { type: 'string' }, 'brand-dir': { type: 'string' }, slug: { type: 'string' }, 'require-all': { type: 'boolean' }, 'dry-run': { type: 'boolean' }, 'no-index': { type: 'boolean' } } });
-const root = path.resolve(values['output-root'] ?? 'C:/Users/x8120/mokaair-work/curio-five-recuts-20261012');
+const root = path.resolve(values['output-root'] ?? path.join(homedir(), 'mokaair-work/curio-five-recuts-20261012'));
 const evidenceFile = path.resolve(values['probe-evidence'] ?? path.join(root, 'outro-timing-probe/evidence.json'));
-const brand = path.resolve(values['brand-dir'] ?? 'C:/Users/x8120/mokaair-work/channel-outro-20261012/package-v4/channel');
+const brand = path.resolve(values['brand-dir'] ?? path.join(homedir(), 'mokaair-work/channel-outro-20261012/package-v4/channel'));
 const ALLOWED = ['curio-h02', 'curio-u02', 'curio-h03', 'curio-l08', 'curio-h01'];
 const OUTRO_SHA = '00eb9ccc8449fa8b47de0aab290b8aa7d55b09962c12a127e0f0c9c5f7834396';
 const PROBE_SHA = 'cb93aa6b4384a7a41341bc697f51ec3869584f29362874a2e3dc243ae6e3d6d2';

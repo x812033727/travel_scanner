@@ -14,7 +14,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 SLUGS = ("curio-h02", "curio-u02", "curio-h03", "curio-l08", "curio-h01")
-ROOT = Path("C:/Users/x8120/mokaair-work/curio-five-recuts-20261012")
+ROOT = Path.home() / "mokaair-work" / "curio-five-recuts-20261012"
 
 
 def read(path: Path) -> dict:

@@ -4,6 +4,7 @@
 import { createHash } from "node:crypto";
 import { execFile } from "node:child_process";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { homedir } from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { parseArgs, promisify } from "node:util";
@@ -26,8 +27,8 @@ const stamp = () => new Date().toISOString();
 const same = (left, right) => JSON.stringify(left) === JSON.stringify(right);
 const fileHash = (file) => hash(readFileSync(file));
 const compare = (text) => String(text).normalize("NFKC").toLowerCase().replace(/[\p{P}\p{S}\p{Z}\s]/gu, "");
-const MODEL = "C:/Users/x8120/.cache/huggingface/hub/models--Systran--faster-whisper-small/snapshots/536b0662742c02347bc0e980a01041f333bce120";
-const PYTHON = "C:/Users/x8120/whisper/Scripts/python.exe";
+const MODEL = path.join(homedir(), ".cache/huggingface/hub/models--Systran--faster-whisper-small/snapshots/536b0662742c02347bc0e980a01041f333bce120");
+const PYTHON = path.join(homedir(), "whisper/Scripts/python.exe");
 const HELPER = path.resolve("tools/video/tts/whisper_second_opinion.py");
 // Root's explicit editorial acceptance of three exact U02 JA transcript pairs.
 // This is a fixed evidence allowlist, never a language-wide homophone rule.

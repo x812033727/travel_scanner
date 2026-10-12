@@ -4,12 +4,19 @@ The owner requested new complete versions for later reupload, with narrated
 condensed openings, end-screen links and music. English, Japanese and Korean
 openings and full audio tracks follow the same new timeline as Traditional Chinese.
 
-The delivery directory is
-`C:/Users/x8120/mokaair-work/curio-five-recuts-20261012`.
-`DELIVERY-INDEX.md` there links the films and all language assets.
-`delivery-index.json` is a fresh verification result, not a saved promise of
-completion: run `node docs/videos/curio-five-recuts-20261012/delivery-index.mjs`
-to recheck file hashes and readiness.
+The working delivery directory is
+`<home>/mokaair-work/curio-five-recuts-20261012` until the five
+private Studio uploads and backend links have been checked. The verified VPS
+copy and recovery commands are in [RESTORE-FROM-VPS.md](RESTORE-FROM-VPS.md).
+`DELIVERY-INDEX.md` inside the working or restored directory links the films
+and all language assets. The saved `delivery-index.json` records the original
+delivery check; it is not a fresh post-restore acceptance result. Verify an
+untouched restored snapshot with its `backup-verify.py` as described in
+[RESTORE-FROM-VPS.md](RESTORE-FROM-VPS.md). Do not run the index writer in that
+immutable snapshot: it rewrites manifest-listed files, and some evidence paths
+still name the original working location. A new readiness review needs a
+separate working copy and explicit rebasing of those evidence paths. The source
+map also references separately retained original source directories.
 
 | Topic | Directory | Final opening specification |
 | --- | --- | --- |
@@ -23,6 +30,11 @@ Each `upload/` directory contains `final.mp4`, four caption files, three full
 language WAV files, localized titles/descriptions/chapters, thumbnails,
 `endscreen-setup.json` and checksums. Full media is kept outside Git.
 The completed batch and final hashes are recorded in [DELIVERY-REPORT.md](DELIVERY-REPORT.md).
+The new private Studio IDs and their separate backend project mapping are in
+[STUDIO-AND-BACKEND-LINKAGE.md](STUDIO-AND-BACKEND-LINKAGE.md); the VPS recovery
+procedure is in [RESTORE-FROM-VPS.md](RESTORE-FROM-VPS.md).
+The path-only specification scrub and historical hash bindings are recorded in
+[PORTABILITY.md](PORTABILITY.md).
 
 The film order is the new narrated opening, the five-second channel bumper,
 the original second chapter onward, and the approved 21-second outro with
@@ -30,8 +42,8 @@ Golden Hour by Telecasted. Source picture packets and body PCM are compared
 with the retained originals, alongside full decode, exact frames/samples,
 caption boundaries and audio levels.
 
-After a new upload, import Studio template `oxEtlA8GWas` and position the best
-for viewer, subscription and latest-upload elements in the **last 16 seconds**.
+For each new upload, position the best for viewer, subscription and
+latest-upload elements in the **last 16 seconds**.
 The preceding second is a visible CTA transition. The rendered slots themselves
 are not clickable YouTube elements; the setup JSON supplies the exact new times.
 

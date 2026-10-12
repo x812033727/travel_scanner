@@ -1,7 +1,7 @@
 # 旁白製作收據
 
 2026-10-12 從現用檔與完整修訂歷史唯讀核對，外部收據為
-`C:/Users/x8120/mokaair-work/curio-five-recuts-20261012/speech-production-summary.json`，
+`<home>/mokaair-work/curio-five-recuts-20261012/speech-production-summary.json`，
 SHA256 `d8160b00107b8544ec00ed5b32943a98032d4de0290686715819846b036188be`。
 本次稽核沒有呼叫語音服務，也沒有修改音訊或歷史。
 
