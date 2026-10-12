@@ -1,13 +1,13 @@
 ---
 id: 2026-10-11-produce-curio-h03-tunguska-traditional-chinese
 title: Produce Curio H03 Tunguska Traditional Chinese episode
-status: open
+status: done
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-gpt6-curio-h03
+claimed_at: 2026-10-12T04:02:08Z
 created_at: 2026-10-11T23:02:26Z
-completed_at:
+completed_at: 2026-10-12T04:33:05Z
 branch: codex/curio-h03-production-20261012
 depends_on: []
 scope:
@@ -23,9 +23,9 @@ Continue 奇聞檔案局 after the approved H02 delivery with the next checked t
 ## Definition of done
 
 - [x] A source-checked brief and independently reviewed Traditional Chinese script answer one central question and pass native lint.
-- [ ] Current, source-bound outline, audio and storyboard decisions are recorded; no inherited H02 approvals are reused.
+- [x] Current, source-bound outline, audio and storyboard decisions are recorded; no inherited H02 approvals are reused.
 - [x] Narration and finished video each meet the eight-minute minimum; generated images and contact sheets have been inspected.
-- [ ] Traditional Chinese CC, thumbnail, metadata, source list and upload package pass applicable checks; current backend decisions and hashes are read back.
+- [x] Traditional Chinese CC, thumbnail, metadata, source list and upload package pass applicable checks; current backend decisions and hashes are read back.
 - [x] Delivery records distinguish automated checks, owner review, upload and publication; no YouTube upload or publication is performed.
 
 ## Steps
@@ -35,7 +35,7 @@ Continue 奇聞檔案局 after the approved H02 delivery with the next checked t
 - [x] Write and independently verify the script, including listener review.
 - [x] Run dry-runs, synthesize/check narration, create and inspect illustrated shots.
 - [x] Render, assemble, produce zh-TW CC, run QA and submit the final for owner review.
-- [ ] After owner storyboard/final approval, record the existing zh-TW-only choice and prepare/check the upload package.
+- [x] After owner storyboard/final approval, record the existing zh-TW-only choice and prepare/check the upload package.
 - [x] Persist delivery evidence and open a draft PR for the episode documents.
 
 ## How to verify
@@ -66,3 +66,9 @@ The following notes are chronological snapshots; the final entries and PRODUCTIO
 - Await H03 owner storyboard/final approval, including five retained images; Traditional Chinese-only authorization already exists and must not be requested again. No upload package, YouTube upload, publication, merge or deployment is complete.
 - Final sampling complete: two reviewers actually viewed all 45 start/middle/end frames across 15 scenes, with zero new blockers. Text/credits and selected-picture hashes match; decorative-line crops and narrowed outro whitespace are minor. Native 51 PSNR / 98 motion records and independent ffprobe match the final.
 - Owner approval question sent; latest backend readback at 2026-10-12T03:48:18Z still has storyboard and final pending. Release this task while awaiting that decision; resume from the exact final and existing language authorization, without regenerating approved media.
+
+- Owner explicitly approved the current storyboard and 11:34.3 final, including five retained pictures. Both backend reviews were recorded approved; language choice {} was persisted at 2026-10-12T04:03:36.920100Z. No paid/media regeneration occurred.
+- Native package and publish review completed; current metadata SHA 3a87c11795acfc0973521593b9930979173dc2a6bfd9d64731f4e81b6fcdc982. Independent package inventory/hash/content review passed. Backend ready_to_upload=true and native read_approved_package(...,verify_files=True) accepted the H03-only package in a READ ONLY transaction. Native languages submission exits 3 because TC-only has no extra language batch; no manifest is required or fabricated.
+- The interrupted 193 MB review transfer reused 27 SHA-verified parts and completed the remaining 20 through the existing API, with final full-hash confirmation. Follow-up: 2026-10-12-resume-review-file-transfers-from-server. A language choice change was reverted to the explicitly authorized TC-only setting and reverified; no added-language production persisted.
+- Handoff-only corrections: Education (27) display label and unsupported licensed-music wording; shared template follow-up 2026-10-12-derive-video-upload-guide-category-and. Source/media/title/description are unchanged. User approval does not invent full playback/listening/CC evidence. No YouTube upload, publication, PR merge or deployment.
+- Production scope is complete; documents remain in draft PR #1456 for owner-controlled merge. Final proof and upload steps are under the existing external H03 directory.

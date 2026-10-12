@@ -2,7 +2,51 @@
 
 更新：2026-10-12（Asia/Taipei）。本集問題是「通古斯大爆炸：森林倒了，為什麼沒有隕石坑？」；製作路線為插圖投影片，沿用奇聞檔案局第 3 版畫風與 Sulafat 旁白。
 
-## 最新進度（2026-10-12，成片待站主審看）
+## 最新進度：繁中上傳包已核准（2026-10-12）
+
+站主已回覆「核准本版分鏡與成片」，範圍為 11 分 34.3 秒版本及五張保留圖。
+正式站於 `2026-10-12T04:02:50.168388Z` 記錄分鏡核准，
+於 `2026-10-12T04:03:20.672188Z` 記錄成片核准；兩筆 review ID 與內容 SHA 均沿用下列現版。
+原本的「只出繁體中文」授權於 `2026-10-12T04:03:36.920100Z` 保存至正式站，
+locales 為空物件，表示不加其他語言；沒有重問語言或重製媒體。
+
+原生 `review-pull` 已記錄當前核准，exit 0；舊音訊 SHA 的歷史提示不影響最新音訊核准。
+`package` exit 0，產出繁中上傳包，原生檢查 4／4 通過。
+獨立檔案消費端核對通過：成片、縮圖、SRT 與原件 SHA 相同，只有 zh-TW；
+139 cue、7 個實際章節、13 筆研究來源、2 張照片署名及 AI 旁白／畫面揭露完整。
+說明欄 3,584 bytes，教育類別 `category_id=27`。
+
+只在生成的上傳指引修正分類名稱與站主需確認的 Studio 欄位，並在 metadata 的
+`disclosure_reason` 移除未使用配樂的泛用描述；`contains_synthetic_media=false` 保留為自動分類，
+實際擬真重建的 Studio 揭露仍由站主於上傳時確認。來源、所有媒體及標題說明未變。
+metadata SHA：`3a87c11795acfc0973521593b9930979173dc2a6bfd9d64731f4e81b6fcdc982`；
+UPLOAD.md SHA：`46ba0dbe59002ecae3ed6a32be062d5e54bf2d28248cece06462b8e89f6a8a54`。
+共享模板問題記入 [上傳指引任務](../../../tasks/open/2026-10-12-derive-video-upload-guide-category-and.md)。
+
+原生上傳包審核已核准並回讀：publish `31f7d43a-0bd5-4c77-a9f4-e7f186feb9e4`（2026-10-12T04:31:11.914678Z）。
+正式站 `ready_to_upload=true`，瀏覽器顯示「可以上架」。
+正式主機使用 READ ONLY transaction 執行 `read_approved_package(..., verify_files=True)` 通過，
+確認已核准成片、繁中 SRT、縮圖、metadata 與站主選擇一致。
+只有繁中時，原生 `review-push --gate languages` 明確回報沒有額外語言批次可送（exit 3）；
+原文上傳包直接供應繁中 metadata／字幕，consumer 的 `approval_pin.languages=null` 正常。
+沒有強制建立空語言批次或冒稱語言 manifest 已核准。
+
+本機交付：`C:/Users/x8120/mokaair-work/videos/curio-h03/upload/UPLOAD.md`。
+完整證據在同目錄上一層的 `_audit/delivery-proof.json`、`upload-consumer-review.md/json`、
+`backend-consumer-readback.json`；原始品管 10／11 與播放器 CC NOT_RUN 均保留。
+
+站主核准不擴大為完整播放、聽音或播放器 CC 的已驗證聲明。
+YouTube 上傳、公開發布、PR 合併及部署尚未執行。
+
+第一次送上傳包於 04:18:41Z 因 API 無回應 exit 4。唯讀查得 27 個完整分段
+（113,246,208 bytes），逐片 SHA 對回核准成片後只補剩餘 20 片；伺服器確認完整
+檔案 SHA／大小，再由原生流程送審。未重新生成媒體。原生續傳改進另記
+[分段續傳任務](../../../tasks/open/2026-10-12-resume-review-file-transfers-from-server.md)。
+語言在 04:08:32Z 被同一登入身分改成英日韓全選，來源無法歸因至特定人或對話；
+依本次明確繁中指示於 04:19:45Z 恢復空選擇並回讀。主工人未收編 H03，
+查無新增語言製作持久紀錄；最後核准及 consumer 再次驗證只有繁中。
+
+## 成片送審時的證據（2026-10-12，以下為核准前快照）
 
 81 張最終插圖均有相同檔案 SHA 的實際觀看紀錄，沒有缺漏或過期紀錄。
 五張經 native `--accept-best` 保留的圖片仍保有原始評分、takes 與評語；這不等於站主接受。
