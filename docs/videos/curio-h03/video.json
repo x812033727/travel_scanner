@@ -1,0 +1,2668 @@
+{
+  "schema_version": 1,
+  "slug": "curio-h03",
+  "format": "slides",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    10,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "開場對站著的樹帶點意外；跟庫利克找坑時好奇，樹樁揭曉後留半拍。空爆機制清楚有起伏，百萬與千萬放慢分清；八千萬的反轉輕輕點破。湖泊爭論平實，不演成陰謀；收尾把已知說穩，把未定說誠實。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "custom",
+    "style": "2D Taiwanese YouTube explainer cartoon: thick clean dark outlines, flat colours with soft cel shading, simple clear backgrounds, subtle paper grain, deep navy blue, parchment yellow, muted teal and one warning-red accent. Backgrounds use broad colour shapes and soft cel shadows. Human characters specified in the scene have chibi proportions, big round heads, expressive eyes and comic expressions. Empty settings contain only the listed objects and natural forms. One main subject in the centre third, playful and friendly, 16:9.",
+    "negative": "",
+    "motion": "slow push in or gentle drift, no morphing, no cuts",
+    "candidates": 3
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "通古斯大爆炸：森林倒了，坑在哪裡？｜奇聞檔案局",
+    "description": "約兩千平方公里的森林倒下，靠近爆炸中心的樹幹卻還站著。通古斯沒有找到公認的主撞擊坑，留下的森林反而指向天空。\n奇聞檔案局 H03：跟著庫利克走進西伯利亞，從十九年後的考察、沼澤坑底的老樹樁，看高速天體如何在空中解體，讓衝擊波抵達地面。\n八千萬棵樹是誰數的？不同模型為什麼算出不同能量？切科湖能不能算隕石坑？把現場觀察、估算前提與候選物證分開，才能看出哪些答案站得住，哪些細節還沒結案。\n\n資料截至2026-10-12。旁白由 AI 合成；情境畫面由 AI 生成，是歷史與科學概念的重建，不是1908年現場攝影；空爆示意不按比例。能量與高度均為研究模型估計，八千萬棵是流傳的粗估；切科湖成因與碎片歸屬仍有爭議。本集只提供繁體中文旁白、說明與可關閉CC。",
+    "tags": [
+      "通古斯大爆炸",
+      "通古斯",
+      "奇聞檔案局",
+      "Tunguska",
+      "空爆",
+      "庫利克",
+      "切科湖",
+      "隕石坑",
+      "西伯利亞",
+      "歷史懸案"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**坑在哪裡**",
+      "tag": "歷史懸案",
+      "sub": "倒下的森林，站著的樹幹",
+      "shot": "hook-kulik-puzzled"
+    }
+  },
+  "sources": [
+    {
+      "title": "NASA 2023: 115 Years Ago, The Tunguska Asteroid Impact Event",
+      "url": "https://www.nasa.gov/history/115-years-ago-the-tunguska-asteroid-impact-event/",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "NASA Earth Observatory: A Cosmic Explosion Over Siberia",
+      "url": "https://science.nasa.gov/earth/earth-observatory/a-cosmic-explosion-over-siberia-154488/",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "NASA Ames 2019: Tunguska Revisited",
+      "url": "https://www.nasa.gov/solar-system/tunguska-revisited-111-year-old-mystery-impact-inspires-new-more-optimistic-asteroid-predictions/",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Sandia 2007: Smaller asteroids can cause bigger damage",
+      "url": "https://newsreleases.sandia.gov/releases/2007/asteroid.html",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "APS 2018: June 30, 1908, The Tunguska Event",
+      "url": "https://www.aps.org/apsnews/2018/06/tunguska-event",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Longo 2007: The Tunguska Event, author chapter",
+      "url": "https://www-th.bo.infn.it/tunguska/Asteroids-Chapter-18.pdf",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "JPL 2013: Additional Details on the Large Feb. 15 Fireball over Russia",
+      "url": "https://www.jpl.nasa.gov/news/additional-details-on-the-large-feb-15-fireball-over-russia/",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Boslough and Bruno 2025: Misunderstandings about the Tunguska event",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12015480/",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Rogozin et al. 2017: Sedimentation rate in Cheko Lake",
+      "url": "https://link.springer.com/article/10.1134/S1028334X17100269",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Gasperini et al. 2023: Comment on the Tunguska Event and Cheko Lake",
+      "url": "https://link.springer.com/article/10.1134/S1028334X23601359",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Carbognani et al.: Computation of a possible Tunguska’s strewn field (Icarus 2024; author manuscript)",
+      "url": "https://arxiv.org/abs/2302.13620",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Andy Bruno / Origins (Ohio State): The 1908 Tunguska Event and the Threats of Tomorrow",
+      "url": "https://origins.osu.edu/milestones/june-2018-1908-tunguska-event-and-threats-tomorrow",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Tunguska eyewitness accounts, injuries, and casualties (Icarus 2019)",
+      "url": "https://doi.org/10.1016/j.icarus.2019.01.001",
+      "checked_on": "2026-10-12"
+    }
+  ],
+  "assets": [
+    {
+      "path": "stock/4021615ee82ef55923ceb551b05d1a1e3cfb4cba3859a13cb1383adb7dd12792.jpg",
+      "source": "1908《Сибирская жизнь》第135號第4頁；Alexander V. Adrianov（Александр Васильевич Адрианов）；掃描由 Wikimedia Commons 提供（PD-scan／PD-RusEmpire）",
+      "license": "Public domain: PD-scan (PD-RusEmpire)",
+      "author": "Alexander V. Adrianov（Александр Васильевич Адрианов）",
+      "url": "https://commons.wikimedia.org/wiki/File:1908-07-29-SibirskayaZshizn-135.jpg"
+    },
+    {
+      "path": "stock/d99767162754c9cafc1cea2049ba95b613ac8d4df210cd6392fc7fcda170a68b.jpg",
+      "source": "NASA Earth Observatory；Michala Garrison，以 USGS Landsat 8 資料製作（PD-USGov-NASA／PD-USGov-USGS）",
+      "license": "Public domain: PD-USGov-NASA and PD-USGov-USGS",
+      "author": "Michala Garrison / NASA Earth Observatory; Landsat data: U.S. Geological Survey",
+      "url": "https://commons.wikimedia.org/wiki/File:A_Cosmic_Explosion_Over_Siberia_(154488_-_russia_tunguskablast_oli_20240706_lrg).jpg"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook-standing-trunk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium-wide view of a Siberian clearing in summer daylight. One tall dead conifer trunk rises centrally from an irregular mound of brown earth to a jagged wooden tip. Long vertical wood grain and three tiny snapped branch stubs define its surface. Two splintered fallen trunks lie low behind it. The distant treeline occupies the bottom quarter beneath open sky. The visible forms are weathered wood, earth, distant conifers and sky. Sunlight comes from the upper left.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c01",
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "3wt8",
+          "text": "通古斯的森林倒了，中央卻有樹還站著。"
+        }
+      ],
+      "chapter": "森林倒了，坑在哪裡"
+    },
+    {
+      "id": "hook-no-crater",
+      "template": "big",
+      "data": {
+        "text": "你以為中央有**大坑**",
+        "kicker": "1908｜通古斯",
+        "sub": "現場沒有找到公認的主撞擊坑"
+      },
+      "claims": [
+        "c02"
+      ],
+      "lines": [
+        {
+          "id": "m93v",
+          "text": "你以為這麼大的爆炸，正中央一定有個大坑。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "hook-kulik-puzzled",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a Siberian field camp in daylight. One middle-aged bearded geologist raises one eyebrow and looks upward with a surprised expression. His round face occupies the exact centre third. He wears a plain 1920s wool field jacket and soft cloth cap. A simple upright trunk silhouette behind him establishes the outdoor setting. Sunlight enters from the left, represented by a small flat highlight on his cheek. The geologist and tree are drawn as flat outlined shapes.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c04"
+      ],
+      "lines": [
+        {
+          "id": "vu7c",
+          "text": "其實空中爆炸，才比較能解釋這片森林。",
+          "emotion": "語氣轉亮，重點放慢"
+        }
+      ]
+    },
+    {
+      "id": "hook-sky-above",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle view of an empty taiga clearing in morning. The only visible forms are a spacious clear sky, one tall narrow conifer trunk, rough bark, tiny jagged branch stubs and a low distant treeline. The trunk stands in the exact centre third and extends upward toward the sky, with its natural uneven top in the upper quarter of the frame. The open sky is bright and the trunk casts a small flat shadow.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c04"
+      ],
+      "lines": [
+        {
+          "id": "nys5",
+          "text": "天上的東西，怎麼把地面的樹壓倒？",
+          "emotion": "問句稍慢，尾音輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "date-of-flash",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "1908.06.30",
+            "label": "西伯利亞的早晨"
+          }
+        ],
+        "source": "NASA 歷史整理｜2023"
+      },
+      "claims": [
+        "c01"
+      ],
+      "lines": [
+        {
+          "id": "wbq3",
+          "text": "一九〇八年六月三十日，西伯利亞的早晨。",
+          "reveal": 1
+        }
+      ],
+      "chapter": "十九年後走進現場"
+    },
+    {
+      "id": "morning-trading-post",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up beside a Siberian log cabin on a summer morning in 1908. One adult resident raises their eyebrows and looks upward with widened eyes and parted lips. The head and shoulders fill the centre third; a plain linen shirt collar is visible at the bottom. A simple timber wall and a small patch of leafy woodland form the background. Bright summer daylight illuminates the resident from the upper left. The crop contains the resident's head, shirt collar, timber wall and distant leaves.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c01",
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "huyj",
+          "text": "通古斯地區出現強光，接著傳來巨響。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "witness-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view from behind on a sunny summer morning beside a plain early-twentieth-century log cabin. One adult in a simple long-sleeved linen shirt and period trousers braces both feet on green grass and brown earth. The person faces away, with empty arms lowered. The centred figure is intact and uninjured. Bright sunlight comes from the left; leafy green woodland fills the background.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "yy5f",
+          "text": "附近居民感到熱浪，還有人被震得跌倒。"
+        }
+      ]
+    },
+    {
+      "id": "tent-cloth",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a woodland camp on a sunny summer morning. One plain conical canvas tent stands at the centre on green grass and exposed brown soil. Wind lifts the loose entrance flap, revealing an empty dark opening; the straight wooden support pole holds the tent. Green conifers and leafy bushes stand far behind. The only forms are canvas, wood, grass, soil, leaves and the pale daytime sky.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "hy4f",
+          "text": "住在森林裡的人，也留下了帳篷搖晃的回憶。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "damage-area",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "約 2,000 km²",
+            "label": "倒樹區面積",
+            "note": "整體輪廓近蝴蝶形"
+          }
+        ],
+        "source": "NASA 2023｜Longo 2007"
+      },
+      "claims": [
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "xs6g",
+          "text": "倒下的森林，範圍大約兩千平方公里。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "fallen-corridor",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, a taiga hillside after a historical wind blast, several long fallen trunks lie across the ground, with their broken branches visible. One thick log anchors the centre third. Clear daylight enters from the upper right. This is a conceptual landscape, not a scientific map. Only the described setting and objects occupy the scene; there are no people, animals, faces, symbols or writing.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "saq5",
+          "text": "樹幹大致向外躺倒，留下放射狀的痕跡。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "contemporary-newspaper",
+      "template": "photo",
+      "data": {
+        "image": "stock/4021615ee82ef55923ceb551b05d1a1e3cfb4cba3859a13cb1383adb7dd12792.jpg",
+        "caption": "1908年地方報紙：當時的報導與傳聞",
+        "credit": "Alexander Adrianov｜PD-RusEmpire",
+        "tilt": -1.5
+      },
+      "claims": [
+        "c07"
+      ],
+      "lines": [
+        {
+          "id": "pbf7",
+          "text": "當年的地方報紙，很快就記下了這件怪事。"
+        }
+      ]
+    },
+    {
+      "id": "remote-river",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, a remote Siberian river bend in summer daylight, a narrow empty wooden canoe rests against a muddy bank. The canoe is centred and complete, with only water, reeds and distant forest around it. Sunlight comes from the right. No people, faces or writing appear.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c08"
+      ],
+      "lines": [
+        {
+          "id": "hyd4",
+          "text": "消息傳得出去，人要走進現場卻很困難。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "kulik-expeditions",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "1921 年",
+            "detail": "出發調查，未抵現場"
+          },
+          {
+            "title": "1927 年",
+            "detail": "終於抵達倒樹區"
+          }
+        ],
+        "source": "NASA 歷史整理｜2023"
+      },
+      "claims": [
+        "c08"
+      ],
+      "lines": [
+        {
+          "id": "6qay",
+          "text": "地質學家庫利克，在一九二一年出發調查。",
+          "reveal": 1
+        },
+        {
+          "id": "wkui",
+          "text": "那次沒能抵達，直到一九二七年才走進現場。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "kulik-trekking",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, a remote Siberian trail in summer daylight, a single geologist takes one careful step over low brush. His empty hands are relaxed by his sides. The leather boot and rough path are centred. Sunlight passes through thin foliage. One middle-aged bearded geologist in a plain 1920s wool field jacket and soft cloth cap, period trousers and leather boots is the sole person. His tools have no labels.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c08"
+      ],
+      "lines": [
+        {
+          "id": "uqmj",
+          "text": "這時距離爆炸，已經過了十九年。"
+        }
+      ]
+    },
+    {
+      "id": "supply-sack",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a 1920s expedition rest stop in morning, one closed canvas supply sack rests on a flat wooden platform above marsh water. The sack is centred with its simple tied opening facing away. Soft light comes from open sky. No people, faces, letters or modern equipment appear.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c08"
+      ],
+      "lines": [
+        {
+          "id": "myc5",
+          "text": "研究者帶著補給，穿過河道和難走的沼地。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "marsh-route",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle, a Siberian marsh in daylight, one weathered wooden plank crosses a narrow shallow muddy channel. The intact plank fills the centre third. Reeds frame the sides. Sunlight comes from the upper left. Only the described setting and objects occupy the scene; there are no people, animals, faces, symbols or writing.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c08"
+      ],
+      "lines": [
+        {
+          "id": "6w54",
+          "text": "濕軟的地面，讓尋找落點變成長期工作。"
+        }
+      ]
+    },
+    {
+      "id": "not-forgotten",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "當地早已知道",
+          "points": [
+            "親歷者留下回憶",
+            "地方報紙已有報導"
+          ]
+        },
+        "right": {
+          "heading": "調查晚到現場",
+          "points": [
+            "交通與地形困難",
+            "1927年抵達倒樹區"
+          ]
+        },
+        "source": "Longo 2007｜NASA 2023"
+      },
+      "claims": [
+        "c07",
+        "c08"
+      ],
+      "lines": [
+        {
+          "id": "zrku",
+          "text": "當地居民早就知道，報紙也已經報導。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        },
+        {
+          "id": "xgep",
+          "text": "只是研究者隔了很久，才走到倒樹的現場。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "kulik-first-view",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, at the edge of a Siberian clearing in summer daylight, one geologist pauses while looking down at the bare ground. The plain wool jacket and attentive face are centred. Light comes from the open clearing. One middle-aged bearded geologist in a plain 1920s wool field jacket and soft cloth cap, period trousers and leather boots is the sole person. His tools have no labels.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "3np7",
+          "text": "庫利克原本相信，森林底下藏著鐵隕石。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "expected-iron",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a neutral museum-style wooden surface in daylight, a single irregular iron-like rock rests still in the centre third. Its dull pitted surface is clear and the background is empty. Window light comes from the left. This is a generic specimen, not a recovered Tunguska object. No labels, people or letters appear.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c09",
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "cvt5",
+          "text": "如果大塊天體撞到地面，應該留下坑和殘骸。"
+        }
+      ]
+    },
+    {
+      "id": "kulik-follows-timber",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium rear view in a Siberian taiga clearing in daylight. One middle-aged geologist in a plain wool jacket and soft cloth cap stands beside a single naturally fallen trunk. His head is turned along the trunk toward its distant splintered end. His relaxed hands hang at his sides. The frame contains the geologist, this long broken trunk, rough earth and sparse distant trees. Sunlight comes from the right. The fallen wood remains irregular and embedded in the ground.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c03",
+        "c08"
+      ],
+      "lines": [
+        {
+          "id": "j96k",
+          "text": "他沿著樹木倒下的方向，尋找破壞的中心。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "nineteen-years",
+      "template": "big",
+      "data": {
+        "text": "森林是**現場紀錄**",
+        "sub": "留下方向，也留下不完整的細節"
+      },
+      "claims": [
+        "c03",
+        "c08"
+      ],
+      "lines": [
+        {
+          "id": "fxdt",
+          "text": "時間沖淡了很多痕跡，倒木卻還留在原地。"
+        }
+      ]
+    },
+    {
+      "id": "search-empty-ground",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close view of a level patch of moist brown mud in a Siberian clearing in daylight. Two irregular exposed tree roots border the central patch. The central mud surface is continuous, gently textured and fully visible, with a few shallow water sheen highlights. The frame contains brown earth and the two wooden roots. Soft sunlight enters from the upper left.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c02",
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "j9da",
+          "text": "他終於走到了，那塊隕石到底藏在哪裡？",
+          "emotion": "問句稍慢，尾音輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "outer-felled-trunk",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, a damaged taiga edge under clear daylight, one heavy fallen conifer rests across low ground with a distant upright trunk behind it. Splintered wood is centred. Light enters from the upper left. Only the described setting and objects occupy the scene; there are no people, animals, faces, symbols or writing.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "nn83",
+          "text": "外圍的樹躺倒了，中央卻出現另一種模樣。"
+        }
+      ],
+      "chapter": "樹比坑更會說話"
+    },
+    {
+      "id": "central-stripped-trunk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, a historical blast-damaged clearing in daylight, one upright conifer trunk has snapped branch stubs and patches of stripped bark. The whole visible trunk is centred. Side light from the right shows the rough wooden surface. Only the described setting and objects occupy the scene; there are no people, animals, faces, symbols or writing.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "c5u4",
+          "text": "有些樹幹直直站著，樹枝和樹皮卻受了損。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "two-tree-patterns",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "外圍",
+          "points": [
+            "樹木大致朝外倒伏"
+          ]
+        },
+        "right": {
+          "heading": "靠近中心",
+          "points": [
+            "部分樹幹仍直立",
+            "枝條與樹皮受損"
+          ]
+        },
+        "source": "NASA 歷史整理｜2023"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "6afz",
+          "text": "外圍的樹朝外倒下，留下受力的方向。",
+          "reveal": 1
+        },
+        {
+          "id": "8cii",
+          "text": "中央有些樹卻還站著，只剩光禿的樹幹。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "branch-stubs",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the upper section of one bare weathered tree trunk in daylight. Its naturally jagged wooden tip and several short snapped branch stubs occupy the centre third. Long vertical wood grain and dry splintered edges define the surface. Clear open sky fills the entire background. The frame contains the trunk's upper wood, its short broken branch stubs and sky. Light comes from the left.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "vw49",
+          "text": "光禿的樹幹，看起來像一根根電線桿。"
+        }
+      ]
+    },
+    {
+      "id": "kulik-examines",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a Siberian field camp in afternoon. One middle-aged bearded geologist in a soft cloth cap looks downward with a furrowed brow. His head and plain jacket collar occupy the centre third. The crop ends at the collar. A simple earth backdrop fills the remaining area. Daylight comes from the right.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "bikj",
+          "text": "庫利克仍想找到坑，證明大隕石埋在地下。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "round-marsh-pool",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, a Siberian marsh in daylight, one small rounded pool lies surrounded by soft peat and reeds. Its still water occupies the centre third. Light comes from the open sky. This is an illustrative marsh pool with no exact geographic shape. Only the described setting and objects occupy the scene; there are no people, animals, faces, symbols or writing.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "c48q",
+          "text": "沼澤裡的圓形凹地，成了他追查的目標。"
+        }
+      ]
+    },
+    {
+      "id": "drainage-ditch",
+      "template": "shot",
+      "data": {
+        "prompt": "Close overhead view of an exposed peat-pool bottom in summer daylight. Gently textured damp brown mud fills almost the entire frame. A thin shallow ribbon of still water occupies the far right edge, with soft reflections. The upper edge contains a low irregular earthen bank. The visible materials are wet peat, earth and the small remaining water ribbon. Soft daylight comes from the upper left.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "2pwk",
+          "text": "研究者抽乾其中一個坑，想看看底下有沒有鐵塊。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "old-stump-bottom",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the exposed bottom of a shallow drained peat pool in daylight. One old wooden stump remains rooted in wet brown earth. Its rough broken top is centred, and short roots visibly continue into the surrounding mud. The frame consists of aged wood and damp peat. Diffuse daylight comes from above.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "44d4",
+          "text": "結果露出來的，竟然是一個老樹樁。"
+        }
+      ]
+    },
+    {
+      "id": "stump-not-meteorite",
+      "template": "big",
+      "data": {
+        "text": "坑底是**老樹樁**",
+        "kicker": "庫利克尋找的沼澤坑",
+        "sub": "APS 2018 歷史專欄"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "qvf5",
+          "text": "這個坑沒有交出他期待的隕石。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "silent-excavation",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a historical excavation clearing in afternoon light. One plain wooden spade stands centrally in soft brown soil beside a shallow excavation. The low ground surface remains visible around it. A distant strip of reeds marks the edge of the clearing. The visible forms are the wooden spade, earth and reeds. Light comes from the left.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c11",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "vf7r",
+          "text": "一次挖錯地方，當然還不能排除所有落點。"
+        }
+      ]
+    },
+    {
+      "id": "repeat-expeditions",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a 1920s Siberian base camp in morning light. One closed leather travel case rests centrally beneath a plain canvas shelter. Its simple buckle is closed and its leather surface is plain. The case, a canvas panel, one wooden support and bare earth fill the frame. Sunlight enters from the right.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c08",
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "f2mk",
+          "text": "接下來幾年，庫利克反覆回到這裡，繼續搜尋鐵質殘骸。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "survey-tripod",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a historical forest survey clearing in daytime. One brass surveying instrument stands centrally and securely on a wooden tripod, with its tube pointed away from the viewer. The brass housing is smooth and plain. Bare earth and a softly distant treeline surround the tripod. Daylight enters from the upper left.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c08",
+        "c30"
+      ],
+      "lines": [
+        {
+          "id": "2uat",
+          "text": "搜尋留下了照片和測繪資料，後人才能重新檢查森林。"
+        }
+      ]
+    },
+    {
+      "id": "specimen-tray-empty",
+      "template": "shot",
+      "data": {
+        "prompt": "Tight overhead close-up of one shallow rectangular wooden specimen tray. Its outer wooden rim nearly touches all four edges of the image, leaving only a very narrow border of plain tabletop. Thin wooden dividers form several compartments whose bare wooden bottoms are fully visible. Warm daylight from the upper left reveals simple wood grain.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c02"
+      ],
+      "lines": [
+        {
+          "id": "yt7z",
+          "text": "可是後續搜尋，也沒有找到公認的主撞擊坑。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "negative-evidence-limit",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "搜尋得到的結果",
+          "points": [
+            "主坑未確認",
+            "主體殘骸未確認"
+          ]
+        },
+        "right": {
+          "heading": "不能直接推成",
+          "points": [
+            "天上什麼都沒來",
+            "地面破壞憑空發生"
+          ]
+        },
+        "source": "NASA 2023｜NASA EO"
+      },
+      "claims": [
+        "c02",
+        "c04"
+      ],
+      "lines": [
+        {
+          "id": "68q7",
+          "text": "找不到期待的東西，要檢查的也包括原先的假設。",
+          "reveal": 1
+        },
+        {
+          "id": "qivj",
+          "text": "會不會從一開始，就把爆炸的位置想錯了？",
+          "emotion": "問句稍慢，尾音輕輕上揚",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "trunk-to-sky",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle view from the base of a bare Siberian trunk in daylight. One vertical trunk dominates the centre and rises into open sky. Its surface shows rough exposed wood and uneven short branch stubs. A small area of root-covered earth remains visible at the bottom. The visible forms are wood, earth and sky. Bright daylight comes from above.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c03",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "f6zq",
+          "text": "樹幹留下的是受力痕跡，不是天體的照片。"
+        }
+      ]
+    },
+    {
+      "id": "generic-rock-above",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide conceptual view high above a distant forest in morning light. One small glowing stony fragment occupies the centre of the open sky, with a short fading trail extending behind it. A broad expanse of clear air separates the fragment from the treeline along the bottom edge. The visible forms are the fragment, its faint trail, sky and distant forest.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c04",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "msxv",
+          "text": "真正砸向地面的，可能先是空氣的衝擊。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "relocate-explosion",
+      "template": "big",
+      "data": {
+        "text": "把爆炸的位置\n移到**天空**",
+        "sub": "空爆：主要能量在大氣中釋放"
+      },
+      "claims": [
+        "c04",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "j3mj",
+          "text": "把爆炸移到天空，中央的直立樹就有了線索。"
+        }
+      ]
+    },
+    {
+      "id": "forest-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a Siberian clearing in summer daylight. One tall dead conifer trunk rises centrally to a narrow jagged wooden tip. Long vertical wood grain and three tiny snapped branch stubs define its surface. Its small root mound touches the bottom edge. A low distant treeline sits beneath spacious open sky. The visible forms are weathered wood, earth, distant conifers and sky. Sunlight comes from the upper right.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c13",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "54sv",
+          "text": "如果是空爆，衝擊波究竟怎麼抵達地面？",
+          "emotion": "問句稍慢，尾音輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "incoming-small-body",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide conceptual view at Earth's upper atmosphere in sunlight. One irregular stony body occupies the centre, with a short luminous trail tapering behind its direction of travel. A gentle distant atmospheric curve crosses the lower background. The visible forms are the stone, the short trail, clear air and the distant horizon. Sunlight comes from the upper left.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "derk",
+          "text": "高速天體進入大氣，前面的空氣來不及讓開。"
+        }
+      ],
+      "chapter": "天體先在空中碎了"
+    },
+    {
+      "id": "compressed-air-glow",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up conceptual view high in the daytime atmosphere. One rough irregular stone travels towards the left. A short curved luminous band sits immediately outside its left front edge. A faint short tail extends from its right rear edge towards the right. Plain bright sky fills the background. The visible forms are the stone, the short front band, the short rear tail and sky.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "ih6d",
+          "text": "空氣被猛烈壓縮，天體承受的壓力跟著升高。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "denser-air",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide conceptual view high in the daytime atmosphere. One small irregular piece of rough stone with a few uneven mineral facets travels diagonally towards the lower left. A short luminous tail tapers towards the upper right. A thin cloud band lies along the bottom edge, far below the stone. Plain bright sky separates the stone from the distant clouds. The visible forms are stone, short tail, sky and cloud.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "fdqr",
+          "text": "往更密的空氣移動，天體可能承受更大壓力。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "pressure-not-bomb",
+      "template": "big",
+      "data": {
+        "text": "壓力超過**強度**",
+        "sub": "高速穿越大氣的力學過程｜JPL 2013"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "vfvs",
+          "text": "當壓力超過它承受得住的強度，石塊開始碎裂。"
+        }
+      ]
+    },
+    {
+      "id": "first-breakup",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium conceptual view high in the daytime atmosphere. Three adjacent angular stone fragments have just separated from one compact body. Their fresh rough surfaces cluster closely around the centre, with narrow gaps of sky between them. The visible forms are these fragments and clear daylight sky. Sunlight enters from the upper right.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "asif",
+          "text": "它一碎開，更多表面就暴露在空氣裡。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "fragment-cloud",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide conceptual view high above a forest in daylight. Five small rough stone fragments form a loose cluster in the upper centre of plain bright sky. One faint short wake extends from the cluster towards the upper right. Open sky fills four fifths of the frame. A distant treeline occupies only the bottom edge, with a broad uninterrupted area of sky beneath the fragments. The visible forms are five stone fragments, a short wake, sky and the distant treeline.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "jm4w",
+          "text": "碎片急速減慢，把原本的動能交給周圍空氣。"
+        }
+      ]
+    },
+    {
+      "id": "airburst-chain",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "高速進入",
+            "detail": "前方空氣受到壓縮"
+          },
+          {
+            "title": "破碎與減速",
+            "detail": "動能快速傳給大氣"
+          },
+          {
+            "title": "衝擊波抵達地面",
+            "detail": "樹木承受壓力與氣流"
+          }
+        ],
+        "source": "JPL 2013｜Sandia 2007"
+      },
+      "claims": [
+        "c13",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "uew5",
+          "text": "天體高速進入大氣，前方空氣受到強烈壓縮。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        },
+        {
+          "id": "jm2y",
+          "text": "石塊破碎又減速，把能量快速傳給空氣。",
+          "reveal": 1
+        },
+        {
+          "id": "6s9v",
+          "text": "衝擊波傳到地面，森林就受到破壞。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "airburst-ground",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide conceptual view of a taiga valley in daylight. One compact luminous cloud occupies the centre of a broad open sky. Its irregular soft edges surround a bright central glow. The forested valley remains low along the bottom of the frame, with a large uninterrupted expanse of clear air separating the luminous cloud from the ground. The visible forms are the luminous cloud, clear sky and distant forested valley.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c04",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "fh3w",
+          "text": "這不是一顆炸彈，而是天體在大氣裡解體。"
+        }
+      ]
+    },
+    {
+      "id": "trunk-overhead",
+      "template": "shot",
+      "data": {
+        "prompt": "High-angle view looking down alongside one tall dead conifer trunk in daylight. Its narrow jagged wooden tip is near the upper centre. A long slim shaft with vertical wood grain and three tiny snapped branch stubs extends down to a small root mound far below. Several smaller distant bare trunks stand on brown earth. The visible forms are the tall central trunk, distant trunks and earth. Light comes from the upper left.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "8x3s",
+          "text": "在爆心正下方，衝擊主要從上方壓過來。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "standing-trunk-side",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a damaged forest clearing in afternoon light. One bare wooden trunk stands upright centrally on exposed roots. Several small uneven broken branch stubs remain along its sides, and patches of rough wood show through the bark. Plain brown earth fills the background. The frame consists of the upright wood, roots and earth. Side light comes from the left.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c03",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "za3v",
+          "text": "樹枝可能被剝掉，樹幹卻仍維持直立。"
+        }
+      ]
+    },
+    {
+      "id": "forces-two-positions",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "接近正下方",
+          "points": [
+            "衝擊主要來自上方",
+            "部分樹幹仍直立"
+          ]
+        },
+        "right": {
+          "heading": "外圍",
+          "points": [
+            "較大的側向推力",
+            "樹木朝外倒下"
+          ]
+        },
+        "source": "Sandia 2007｜概念簡化，非比例圖"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "fyt5",
+          "text": "接近爆心正下方，樹幹主要承受上方的衝擊。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        },
+        {
+          "id": "hbj5",
+          "text": "外圍受到較大的側向推力，樹就朝外倒下。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "root-snap",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a fallen conifer trunk on brown earth in daylight. Its near end is a deep irregular slanting fracture. Four thick jagged wooden splinters project at different lengths from the torn break, with strips of split bark along the edges. The trunk extends along the ground towards the left. The frame contains the fractured wood, rough bark and plain earth. Light comes from the right.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "a7yq",
+          "text": "同一個空爆，就能留下站著和躺著的樹。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "uneven-hills",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a Siberian valley in daylight. One sloping hillside carries an uneven line of sparse conifers. The irregular ridge occupies the centre third, with dips and gentle rises across its surface. Earth, grasses, scattered conifers and open sky form the landscape. Sunlight comes from the upper right.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c06",
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "k8ac",
+          "text": "真實森林有山坡和不同樹種，形狀不會完美對稱。"
+        }
+      ]
+    },
+    {
+      "id": "butterfly-shape",
+      "template": "big",
+      "data": {
+        "text": "整體倒樹區\n近似**蝴蝶形**",
+        "sub": "並非完美圓圈｜NASA 2023／Longo 2007"
+      },
+      "claims": [
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "musr",
+          "text": "整個倒樹區近似蝴蝶形，並不是整齊的一個圓。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "laboratory-body",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium rear view in a generic modern laboratory in daylight. One researcher stands centrally beside a bare table holding a single plain rock model. The researcher faces the table with relaxed lowered hands. The back of the head and shoulders are visible. The composition contains the researcher, tabletop, rock model and a plain softly lit wall. Daylight enters from the left.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "ew6f",
+          "text": "科學家把這些破壞，拿來回推天體的條件。"
+        }
+      ]
+    },
+    {
+      "id": "porous-stone",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a neutral laboratory tabletop in daylight. One irregular porous stone model rests centrally on the smooth surface. Small natural cavities and rough mineral texture are clearly visible across the model. The frame consists of this model and the plain tabletop. Soft daylight enters from the left.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "rz3q",
+          "text": "但石頭有多鬆、速度多快，都會改變碎裂時機。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "strong-stone",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain laboratory tabletop in daylight. One dense angular rock model rests centrally with a continuous solid surface and a few natural mineral ridges. Its intact shape is fully visible on the smooth table. The frame consists of the rock model and tabletop. Soft daylight enters from the right.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c13",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "x7bs",
+          "text": "鬆散的石塊可能較早破碎，結實的天體則可能撐得更久。"
+        }
+      ]
+    },
+    {
+      "id": "spreading-fragments",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide conceptual view high in the daytime atmosphere. Five uneven basalt shards of different sizes form a loose group across the upper centre. Each shard has broad uninterrupted dark-grey planar fracture surfaces and a few angular outer edges. Their air gaps vary. Bright open sky surrounds the whole group, with a thin distant cloud band along the bottom edge. The visible forms are basalt shards, sky and distant cloud.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "e4kb",
+          "text": "碎片沿著路徑散開多少，又會改變能量釋放在哪個位置。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "oblique-approach",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide conceptual view high in the daytime atmosphere. One small irregular piece of rough stone with uneven mineral facets travels towards the lower left along a shallow diagonal. A short luminous tail extends towards the upper right. A thin horizontal cloud band runs along the bottom edge, far below the stone. Plain bright sky fills the remaining frame. The visible forms are stone, short tail, sky and distant cloud.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "gb8q",
+          "text": "進來的角度不同，能量落在哪裡也會不同。"
+        }
+      ]
+    },
+    {
+      "id": "energy-models",
+      "template": "stats",
+      "data": {
+        "title": "兩組研究的模型估值",
+        "stats": [
+          {
+            "value": "3–5 百萬噸",
+            "label": "2007 Sandia 模型"
+          },
+          {
+            "value": "10–30 百萬噸",
+            "label": "NASA 2019介紹的模型"
+          }
+        ],
+        "source": "TNT 等效能量｜不是同一組誤差範圍"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "r359",
+          "text": "較低的一組估計，相當於三到五百萬噸炸藥。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        },
+        {
+          "id": "wfff",
+          "text": "另一組估成一千到三千萬噸，兩組的假設不同。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "energy-unit",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain scientific bench in daylight. One simple metal balance sits centrally with its beam level and both shallow metal pans fully exposed. The polished pan surfaces are smooth and plain. The frame consists of the balance and the wooden bench beneath it. Soft daylight enters from the left.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c16",
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "kcfm",
+          "text": "炸藥當量只是比較能量的單位，並不是說這裡發生核爆。"
+        }
+      ]
+    },
+    {
+      "id": "height-matters",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "能量相同",
+          "points": [
+            "在不同高度釋放"
+          ]
+        },
+        "right": {
+          "heading": "地面結果",
+          "points": [
+            "衝擊的強弱與範圍不同"
+          ]
+        },
+        "source": "Sandia 2007｜NASA 2019"
+      },
+      "claims": [
+        "c16",
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "7uyu",
+          "text": "同樣的能量，若在不同高度釋放，地面破壞也會不同。",
+          "reveal": 1
+        },
+        {
+          "id": "tfp3",
+          "text": "爆得較高，衝擊抵達地面以前，就有更多空間向外擴散。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "parameters-together",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a neutral research desk in daylight. One plain wooden box contains several smooth stone models of different sizes. The box is centred and the models rest separately within its shallow interior. Their simple solid shapes are fully visible. The frame contains the box, these models and the desk surface. Soft daylight enters from the right.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c16",
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "pefz",
+          "text": "因此只拿倒樹範圍，就想認出天體大小，會漏掉關鍵條件。"
+        }
+      ]
+    },
+    {
+      "id": "model-puzzle",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a research workbench in daylight. One unfinished wooden jigsaw rests centrally on the table. Three plain wooden pieces fit together around one open gap. The pieces show simple uninterrupted wood grain, and the tabletop is visible through the gap. The composition contains the wooden puzzle and table. Soft daylight enters from the right.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "7wqj",
+          "text": "所以空爆說得通，不等於每個參數都已算定。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "model-height",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "NASA 2019介紹的模型",
+            "detail": "約6–9英里高空釋能"
+          },
+          {
+            "title": "換算約10–14公里",
+            "detail": "原始單位是英里"
+          },
+          {
+            "title": "模型各有條件",
+            "detail": "不是1908年的直接測量"
+          }
+        ],
+        "source": "NASA Ames 2019｜1英里約1.61公里"
+      },
+      "claims": [
+        "c16",
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "cti2",
+          "text": "二〇一九年的一組模型，把主要爆炸放在高空。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        },
+        {
+          "id": "q8h7",
+          "text": "它估計離地大約十到十四公里，那是模型回推的答案。",
+          "reveal": 1
+        },
+        {
+          "id": "2etw",
+          "text": "較早研究給過別的高度，不能當成同一次的直接測量。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "modern-comparison-date",
+      "template": "stats",
+      "data": {
+        "stats": [
+          {
+            "value": "2013.02.15",
+            "label": "車里雅賓斯克火球"
+          }
+        ],
+        "source": "JPL 2013"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "69ir",
+          "text": "二〇一三年，車里雅賓斯克給了我們現代對照。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "modern-white-trail",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a generic low-rise Russian city on a sunny winter morning. A long white vapour trail crosses the upper centre of a uniformly bright pale-blue daytime sky. A small brilliant luminous head is attached to the trail's left end. Sunlit snow covers the low rooftops along the bottom edge. The visible forms are the bright sky, one luminous head, its continuous vapour trail and snowy rooftops.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "t3f2",
+          "text": "白天的天空出現火球，後面拖著長長的尾跡。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "delayed-wave",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a snow-covered city courtyard on a clear winter morning. One closed intact window in a plain building wall occupies the centre, facing a distant fading trail high in the sky. Its glass forms one continuous smooth pane. The visible forms are the window, wall, snow-covered ground, sky and faint trail. Daylight enters from the upper left.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c17",
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "dcje",
+          "text": "天空的閃光先被看見，聲波傳到地面，還需要一段時間。"
+        }
+      ]
+    },
+    {
+      "id": "window-impact",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up inside a plain room in winter daylight. Four wooden frame edges surround one broad continuous glass pane. A long thin branching fracture crosses the glass surface diagonally from the upper left towards the lower right. The fractured glass remains seated along all four frame edges. Bright daylight shines through. The frame contains the glass pane, its wooden border and a small area of plain wall.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "k386",
+          "text": "它在高空碎裂，地面仍被衝擊波波及。"
+        }
+      ]
+    },
+    {
+      "id": "modern-fragment",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up generic meteorite illustration on a plain display surface in daylight. One small dark irregular meteorite model rests centrally on a simple support. Rough mineral texture covers its compact surface. The frame contains the model, support and smooth background surface. Light comes from the upper left. The specimen is a generic explanatory example.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "35as",
+          "text": "這一次，有錄影、感測資料和落地碎片可互相核對。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "different-events",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "2013 車里雅賓斯克",
+          "points": [
+            "有現代觀測與碎片"
+          ]
+        },
+        "right": {
+          "heading": "1908 通古斯",
+          "points": [
+            "主要依歷史痕跡回推",
+            "天體大小、入射條件不同"
+          ]
+        },
+        "source": "JPL 2013｜NASA 2019"
+      },
+      "claims": [
+        "c17",
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "wxdt",
+          "text": "這一次有現代觀測，還能拿碎片互相核對。",
+          "reveal": 1
+        },
+        {
+          "id": "34vg",
+          "text": "通古斯主要靠留下的痕跡，不能直接套用答案。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "counting-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium rear view inside a quiet forestry field station in daylight. One researcher looks across a plain wooden desk toward a distant forest visible through an open window. The back of the head and shoulders occupies the centre; the desk surface is fully exposed. The composition contains the researcher, desk, window opening and distant trees. Soft daylight comes from the left.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "52jj",
+          "text": "至於人人都會背的八千萬棵，又是怎麼算出來的？",
+          "emotion": "問句稍慢，尾音輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "eighty-million",
+      "template": "big",
+      "data": {
+        "text": "**8,000 萬棵**",
+        "kicker": "常見的通古斯敘述",
+        "sub": "流傳估值，不是逐棵清點"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "vabr",
+          "text": "八千萬這個數字，出現在很多通古斯的介紹裡。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ],
+      "chapter": "八千萬棵是誰數的"
+    },
+    {
+      "id": "forest-impossible-count",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of dense Siberian woodland in daylight. One foreground tree stands centrally before many smaller distant trunks that fade gradually into the forest. Their spacing is naturally irregular. The ground is covered with earth and low vegetation. The visible forms are the foreground tree, distant trunks, foliage and woodland earth. Light filters from the upper left.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "jbd7",
+          "text": "聽起來很精確，卻不是有人拿名冊一棵棵清點。"
+        }
+      ]
+    },
+    {
+      "id": "old-calculation-table",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a simple wooden abacus resting at a slight angle on a wooden desk in daylight. Five parallel horizontal metal wires span the low rectangular frame from left to right. Each wire passes through a closely packed horizontal row of small round wooden beads. The five bead rows sit one above another. The full abacus is visible against a plain wall. The visible objects are the abacus, desk and wall.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "6cjz",
+          "text": "一篇研究評論，把它追到一九三三年的估算。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "measuring-assumption",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a historical survey workspace in daylight. One folded blank sheet of thick paper lies beside a plain wooden measuring stick. The folded paper occupies the centre. Its smooth exposed surfaces and the stick's continuous wood grain are clearly visible on a simple desk. The frame contains paper, wooden stick and tabletop. Daylight enters from the upper right.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "rkmd",
+          "text": "當時是為了估爆炸能量，先假設一個倒樹面積。"
+        }
+      ]
+    },
+    {
+      "id": "areas-not-counts",
+      "template": "stats",
+      "data": {
+        "title": "數字背後的面積",
+        "stats": [
+          {
+            "value": "約 8,000 km²",
+            "label": "1933年估算採用的假設"
+          },
+          {
+            "value": "約 2,000 km²",
+            "label": "後來現場測繪的範圍"
+          }
+        ],
+        "source": "Boslough／Bruno 2025｜Longo 2007"
+      },
+      "claims": [
+        "c06",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "pceg",
+          "text": "那個假設用了大約八千平方公里。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        },
+        {
+          "id": "bb4w",
+          "text": "後來測繪的倒樹範圍，卻只有大約兩千。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "wide-assumption",
+      "template": "big",
+      "data": {
+        "kicker": "原先假設面積 ÷ 後來測繪面積",
+        "text": "約 4 倍",
+        "sub": "8,000 km² ÷ 2,000 km² ≈ 4"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "8yu4",
+          "text": "原先假設的面積，大約是後來測繪的四倍。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "density-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a small woodland survey plot in daylight. One plain wooden stake stands centrally in the earth before several irregularly spaced tree trunks. The stake has a continuous smooth wooden surface. Low grass surrounds its base. The visible forms are the stake, earth, grass and trunks. Light comes from above.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "5cus",
+          "text": "再配上樹木密度，才能換成估計的棵數。"
+        }
+      ]
+    },
+    {
+      "id": "assumption-propagates",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "面積與密度的假設",
+            "detail": "用來估算能量與棵數"
+          },
+          {
+            "title": "後續不斷被引用",
+            "detail": "前提逐漸被省略"
+          },
+          {
+            "title": "看起來像確定統計",
+            "detail": "其實沒有逐棵清點"
+          }
+        ],
+        "source": "Boslough／Bruno 2025 的引用鏈追查"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "h5rn",
+          "text": "原本的棵數，建立在面積和樹木密度的假設上。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        },
+        {
+          "id": "phjq",
+          "text": "後來被一次次引用，當初的前提慢慢不見了。",
+          "reveal": 1
+        },
+        {
+          "id": "mkxr",
+          "text": "最後只剩八千萬，聽起來就像真的逐棵數過。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "no-new-count",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain wooden counting frame on a daylight study desk. Its round wooden beads gather unevenly along one side of simple rods. The entire rectangular frame is centred, with smooth uninterrupted wooden surfaces. The composition contains the frame, beads, rods and table. Light comes from the right.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "undx",
+          "text": "那也不能把八千萬除以四，就宣布新的正確答案。"
+        }
+      ]
+    },
+    {
+      "id": "different-density",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a taiga forest edge in daylight. One small young conifer grows centrally between larger trunks spaced unevenly across the background. Its shorter height and finer branches are clearly visible. Earth and low grass cover the ground. The visible forms are the young conifer, older trunks, foliage and ground. Sunlight enters through an opening on the left.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "76tt",
+          "text": "森林的密度、樹種和受損程度，都還需要資料。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "measurement-layers",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "比較穩妥",
+          "points": [
+            "約兩千平方公里受災"
+          ]
+        },
+        "right": {
+          "heading": "不冒充精確統計",
+          "points": [
+            "八千萬棵",
+            "確切死亡人數"
+          ]
+        },
+        "source": "Boslough／Bruno 2025｜NASA 2023"
+      },
+      "claims": [
+        "c05",
+        "c19",
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "w2u4",
+          "text": "約兩千平方公里，有後來的測繪支持。",
+          "reveal": 1
+        },
+        {
+          "id": "5w6w",
+          "text": "棵數和傷亡，卻沒有同樣完整的統計。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "inhabited-camp",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an early-twentieth-century woodland camp on a sunny summer morning. One plain canvas shelter stands beside a small woodpile on green grass and bare brown earth. The shelter is centred and its open entrance is empty. Leafy trees line the distant background. The only forms are canvas, stacked wood, grass, earth, trees and pale sky. Sunlight comes from the upper right.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c05",
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "qvai",
+          "text": "偏遠不代表沒人，居民留下了受熱和受損的經驗。"
+        }
+      ]
+    },
+    {
+      "id": "empty-stool",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up beside a plain log cabin on a summer morning. One empty wooden stool rests on green grass and bare brown earth. Its simple seat occupies the centre third, with an intact plain timber wall behind it. Bright daylight enters from the left. The only visible objects are the stool, wall, grass and earth.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "8dmz",
+          "text": "死亡人數的資料不一致，不能順口說無人傷亡。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "scattered-small-stone",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a quiet patch of Siberian soil in afternoon light. One small ordinary rounded stone lies centrally among fine grains of brown earth. Its matte mineral surface has an even natural texture. The frame consists of the pebble and surrounding soil. Soft daylight comes from the right.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "e4ma",
+          "text": "天體的碎片，有沒有留在地上？"
+        }
+      ]
+    },
+    {
+      "id": "lake-introduction",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide daylight landscape of a quiet remote Siberian lake. Open water fills the centre. A low irregular earth shore curves across the foreground with a few thin reeds. Distant forest and pale sky form the background. The foreground consists entirely of continuous earth, short grass and reeds.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "hh9k",
+          "text": "如果有碎片落下，附近一座湖會不會就是線索？",
+          "emotion": "問句稍慢，尾音輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "cheko-name",
+      "template": "big",
+      "data": {
+        "text": "**切科湖**",
+        "sub": "撞擊坑候選｜成因仍有爭議"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "g4cw",
+          "text": "這座常被提起的湖，叫做切科湖。"
+        }
+      ],
+      "chapter": "切科湖能結案嗎"
+    },
+    {
+      "id": "cheko-shore",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide generic reconstruction of a remote Siberian lakeshore in clear summer daylight. A small inlet of still water lies centrally between low gently sloping earth banks. Reeds grow near the water and sparse trees line the distance. The visible forms are water, low banks, reeds, distant trees and sky. Sunlight comes from the right.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "dd4q",
+          "text": "有研究團隊認為，湖可能是碎片撞出來的。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "lake-basin-model",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a plain scientific workbench in daylight. One clay bowl-shaped terrain model rests centrally on the table. Its hollow basin has a smooth irregular contour and gently varying slopes. Natural clay texture covers the entire model. The visible forms are the clay model and tabletop. Soft daylight enters from the left. This is a generic explanatory terrain model.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "6ru7",
+          "text": "他們研究湖盆的形狀，也檢查湖底的沉積。"
+        }
+      ]
+    },
+    {
+      "id": "shape-not-age",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "湖盆形狀",
+          "points": [
+            "可能提示形成機制"
+          ]
+        },
+        "right": {
+          "heading": "沉積年代",
+          "points": [
+            "檢查是否早於1908"
+          ]
+        },
+        "source": "Cheko 研究爭論｜2017／2023"
+      },
+      "claims": [
+        "c23",
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "i48k",
+          "text": "可是湖的形狀，只是問題的一部分。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        },
+        {
+          "id": "huin",
+          "text": "還得回答它什麼時候形成，以及底下有什麼。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "sediment-layers",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a short cylindrical core of damp sediment lying horizontally in a plain sample trough. Its upper half is exposed, showing several broad brown and grey mud bands crossing the short width of the core at different points along its length. Both ends are flat cut faces of moist compact mud. The visible objects are the sediment core, trough and plain laboratory tabletop.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "gnpc",
+          "text": "沉積物像一層層留下的紀錄，可以用來估年代。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "older-deposit",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium rear view in a generic laboratory in daylight. One researcher leans slightly toward a sediment tray on a plain table. Both hands are folded behind the back. The back of the head and shoulders is centred. The tray holds one intact muddy core with subtle natural layers. The composition contains the researcher, core tray, table and plain wall. Soft light comes from the right.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "r9ig",
+          "text": "有團隊認為，湖底的沉積比一九〇八年古老。"
+        }
+      ]
+    },
+    {
+      "id": "age-implication",
+      "template": "big",
+      "data": {
+        "text": "如果湖早已存在",
+        "sub": "就難以直接歸因於1908年的碎片"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "ze2w",
+          "text": "如果湖早就存在，就很難說它是那次撞出來的。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "response-evidence",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a quiet scientific office desk in daylight. One closed plain folder rests atop another. The upper folder is centred, and both covers have smooth blank surfaces with simple folded edges. The composition contains the two folders and wooden tabletop. Daylight comes from the left.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "cjcr",
+          "text": "支持撞擊說的研究者，後來又提出不同解讀。"
+        }
+      ]
+    },
+    {
+      "id": "sampling-location",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a field research shelter beside a Siberian lake, one intact sediment core rests horizontally in a plain wooden tray. Several natural bands of mud are clearly visible across the core. Soft morning light enters from the left. Only the tray, core and tabletop appear; surfaces are blank and unlabelled.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "vvez",
+          "text": "爭論包括泥層的定年方法，能不能支持那個年代。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "different-lake-depths",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two split sediment cores resting side by side in separate narrow metal channels on a plain table. Each exposed core is damp compact grey and brown mud, with several broad irregular layers crossing its short width along its length. The two cores have subtly different layer patterns. Their visible surfaces are soft earthy sediment with flat cut ends. The scene contains only the two sample channels and tabletop.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "vpzm",
+          "text": "沉積物的層次如何判讀，兩邊也沒有相同答案。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "cheko-evidence-table",
+      "template": "table",
+      "data": {
+        "columns": [
+          "線索",
+          "需要回答的問題"
+        ],
+        "rows": [
+          [
+            "湖形",
+            "是否只能由撞擊造成？"
+          ],
+          [
+            "年代",
+            "是否真的形成於1908？"
+          ],
+          [
+            "物證",
+            "能否連回通古斯天體？"
+          ]
+        ],
+        "source": "Rogozin 2017｜Gasperini等2023回應"
+      },
+      "claims": [
+        "c23",
+        "c24",
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "addm",
+          "text": "湖的外形，能不能只用撞擊來解釋？",
+          "reveal": 1
+        },
+        {
+          "id": "8a76",
+          "text": "這座湖，真的形成於一九〇八年嗎？",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        },
+        {
+          "id": "znur",
+          "text": "就算挖到石頭，也得確認是否來自當年的天體。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "core-awaiting",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a field laboratory bench in daylight. One hollow cylindrical metal core tube rests on a plain wooden rack. Its open end is centred and angled toward the viewer, revealing a smooth bare metallic interior. The composition contains the tube, rack and wooden bench. Soft daylight comes from the left.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c25",
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "i6te",
+          "text": "更深的鑽探，才可能檢查湖心下面藏著什麼。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "microscopic-candidate",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up generic mineral-grain illustration. One tiny irregular grain rests centrally on a smooth neutral scientific surface. Small rough facets and uneven mineral texture define its shape. The frame consists of this grain and the plain supporting surface. Light comes from the upper right. The grain is a generic explanatory example.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "5ig5",
+          "text": "過去有人找到微小顆粒，卻難以確定屬於這次爆炸。"
+        }
+      ]
+    },
+    {
+      "id": "older-ground-stone",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up beside a quiet marsh in afternoon light. One small ordinary pebble is half buried in continuous undisturbed brown soil beside a single exposed root. Its matte natural mineral surface is centred. The frame contains the pebble, root and earth. Sunlight enters from the left.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c22",
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "dqeb",
+          "text": "一顆落在泥地裡的普通石頭，可能在爆炸以前就已經存在。"
+        }
+      ]
+    },
+    {
+      "id": "identity-testing",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium rear view in a generic modern laboratory in daylight. One researcher stands beside a plain optical microscope on a wooden table, with hands folded behind the back. The back of the head and shoulders is centred. The visible forms are the researcher, microscope, tabletop and a softly lit plain wall. Daylight enters from the right.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c22",
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "fbje",
+          "text": "要把它連回一九〇八年，還得檢查出土位置和物質成分。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "possible-survival",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium conceptual view high above a distant landscape in daylight. One small dark stone descends beneath a fading luminous trail. The stone is centred within a broad expanse of clear sky, with the low distant landscape along the bottom edge. A large air gap separates the stone from the ground. The visible forms are stone, fading trail, sky and distant earth. Light comes from above.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "e5xj",
+          "text": "也有模型認為，某些條件下碎片可以存活落地。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "possible-not-found",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "模型計算",
+          "points": [
+            "某些碎片可能落地",
+            "提出可以搜尋的區域"
+          ]
+        },
+        "right": {
+          "heading": "現場發現",
+          "points": [
+            "尚未認出當年天體",
+            "未找到，不等於全部氣化"
+          ]
+        },
+        "source": "Carbognani等｜Icarus 2024 作者稿"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "hdg9",
+          "text": "但算出可能的落點，和真的找到隕石，相差很遠。",
+          "reveal": 1
+        },
+        {
+          "id": "43pz",
+          "text": "沒找到，也不能反過來說每一塊都一定化成了氣。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "sample-identity",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain laboratory bench in daylight. One small irregular rock rests centrally in a transparent shallow dish. The clear dish bottom remains visible around the rock, and both objects have plain natural surfaces. The composition contains the rock, glass dish and bench. Light comes from the left. This is a generic sample-display illustration.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c22",
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "9zvs",
+          "text": "一顆石頭必須帶著可檢驗的來歷，才有機會結案。"
+        }
+      ]
+    },
+    {
+      "id": "evidence-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a generic archive room in daylight. One closed plain file folder sits centrally on a wooden table beside a shallow sample tray. The folder cover is smooth and blank; the tray's wooden bottom is fully exposed. The visible forms are the folder, tray, table and plain background wall. Daylight falls from the upper right.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c04",
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "zxin",
+          "text": "那麼，在找到最後那塊石頭前，我們能確定多少？",
+          "emotion": "問句稍慢，尾音輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "new-forest",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of recovering Siberian woodland in clear morning light. One young living conifer stands centrally among older weathered fallen trunks. Its fresh branches contrast with the rough aged wood lying low on the ground. The visible forms are the young tree, fallen timber, earth, low vegetation and distant forest. Sunlight enters from the left.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c01",
+        "c04"
+      ],
+      "lines": [
+        {
+          "id": "3wh5",
+          "text": "爆炸發生在空中，證據留在地面的森林。"
+        }
+      ],
+      "chapter": "空爆站得住，細節仍未結"
+    },
+    {
+      "id": "modern-satellite",
+      "template": "photo",
+      "data": {
+        "image": "stock/d99767162754c9cafc1cea2049ba95b613ac8d4df210cd6392fc7fcda170a68b.jpg",
+        "caption": "2024年7月6日，通古斯地區衛星圖",
+        "credit": "NASA EO／Michala Garrison、USGS（公有領域）",
+        "tilt": 1.5
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "3umw",
+          "text": "現在的衛星看見的是森林，當年的細節還得靠證據重建。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "evidence-layers",
+      "template": "bullets",
+      "data": {
+        "items": [
+          "現場：大範圍倒樹與中央直立樹",
+          "解釋：天體在空中解體放能",
+          "未定：成分、能量與碎片歸屬"
+        ],
+        "source": "NASA 2023／2019｜研究爭論綜合"
+      },
+      "claims": [
+        "c03",
+        "c04",
+        "c16",
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "7tip",
+          "text": "樹倒下的方向、中央的樹幹，讓空爆有了根據。",
+          "reveal": 1
+        },
+        {
+          "id": "4tzv",
+          "text": "天體在空中解體放能，是最有力的解釋。",
+          "emotion": "自然說書，重點字稍微加重",
+          "reveal": 1
+        },
+        {
+          "id": "uhkz",
+          "text": "研究多偏向石質小行星，但成分和能量還沒定案。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "comet-alternative",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide conceptual view in open space. One irregular icy body occupies the centre, with a diffuse faint tail extending away into the surrounding darkness. Subtle frozen surface texture defines the compact body. The visible forms are the icy body, its soft diffuse tail and open space. Light reaches the body from the upper left. This is a generic comet-body illustration.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "uu24",
+          "text": "彗星碎片也曾是候選之一，和石質小行星的條件不同。"
+        }
+      ]
+    },
+    {
+      "id": "no-identity-sample",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain laboratory shelf in soft daylight. One transparent shallow specimen dish rests centrally on a simple support. Its smooth glass base is fully visible from rim to rim, showing the plain support beneath it. The composition consists of the clear dish, support and shelf. Soft light enters from the left.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c22",
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "ap9b",
+          "text": "要驗明天體身分，仍缺一份公認的實物樣本。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "no-saucer-needed",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a neutral archive desk in daylight. One closed plain folder rests centrally beside a simple rounded stone paperweight. The folder cover has a smooth blank surface. The visible objects are the folder, paperweight and wooden tabletop. Daylight comes from the right.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "c4kc",
+          "text": "沒有找到主坑，不會讓沒有證據的說法突然變強。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "tree-witness-ending",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle view of a historical taiga clearing in morning light. One tall bare upright trunk stands centrally against open sky. Its rough exposed wood and short broken branch stubs show clear damage. Weathered fallen timber remains low along the edges of the frame. The visible forms are upright wood, fallen wood, earth and sky. Sunlight enters from the upper left.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c03",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "mvq7",
+          "text": "最奇怪的直立樹，反而幫我們把爆炸移回天空。"
+        }
+      ]
+    },
+    {
+      "id": "case-status",
+      "template": "big",
+      "data": {
+        "text": "空爆**站得住**\n細節仍**未結**",
+        "kicker": "奇聞檔案局 H03",
+        "sub": "天體身分、精確能量、碎片與切科湖"
+      },
+      "claims": [
+        "c27",
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "bavy",
+          "text": "這份檔案的未結，是細節未結，不是什麼都不知道。",
+          "emotion": "自然說書，重點字稍微加重"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "森林倒了，答案在天空",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "讓證據說到它能說的地方"
+        ]
+      },
+      "claims": [
+        "c06",
+        "c04"
+      ],
+      "lines": [
+        {
+          "id": "wg93",
+          "text": "森林倒了，空爆能解釋。",
+          "pause_after_ms": 100
+        },
+        {
+          "id": "248y",
+          "text": "哪個線索最意外？",
+          "emotion": "問句稍慢，尾音輕輕上揚"
+        },
+        {
+          "id": "njit",
+          "text": "訂閱，一起查案。",
+          "pause_after_ms": 0
+        }
+      ]
+    }
+  ]
+}

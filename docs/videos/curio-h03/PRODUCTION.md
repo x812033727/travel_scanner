@@ -1,0 +1,75 @@
+# H03 製作紀錄
+
+更新：2026-10-12（Asia/Taipei）。本集問題是「通古斯大爆炸：森林倒了，為什麼沒有隕石坑？」；製作路線為插圖投影片，沿用奇聞檔案局第 3 版畫風與 Sulafat 旁白。
+
+## 最新進度（2026-10-12T03:00Z）
+
+81 張最終插圖均有相同檔案 SHA 的實際觀看紀錄，沒有缺漏或過期紀錄。
+五張經 native `--accept-best` 保留的圖片仍保有原始評分、takes 與評語；這不等於站主接受。
+分鏡 review `da0651b4-5904-4232-81ec-d71928e3e551` 仍 pending：48 張 native 通過的普通鏡頭
+仍帶細節評語，後端要求該欄為空。最低分 7.18 已達門檻 7，81 張 coverage 完整；
+沒有竄改評語或分數以取得核准。待辦見
+[判定契約任務](../../../tasks/open/2026-10-12-reconcile-passing-storyboard-verdicts-with-nonempty.md)。
+
+新時間軸只因面積示意改為原生「8,000 km² ÷ 2,000 km² ≈ 4」字卡而更新。
+139 段 WAV 與旁白總檔全部保持已審 SHA；音訊 review
+`d91b4953-eb3f-4329-ae68-5f1dea60c8c0` 於 `2026-10-12T02:53:47.354894Z` 自動核准，
+正式站 GET 與本機 approval 已回讀一致。最新 timeline SHA：
+`d256ebfe5e46cafadf85fc48f136a6c8ef725aafa4a87a5973db39bd9eb6ec12`。
+
+原生 render 已 exit 0：34 個非 shot 場景、56 個畫面狀態、376 秒完成，沒有版面錯誤。
+本機文件／影片規格測試 199 項通過、0 失敗。
+目前正在合成，尚未冒稱完成成片 QA 或站主審片。
+
+最新來源 SHA `c7be5e8032fbf0775976a642bc558f408e1453f0b6b36a688decbfe0e7b8790b`。
+最後只補報紙來源作者及 AI 旁白揭露；speech `cba1834e2d1021c3`、visual `f81bccf24595cb3b`、
+look `635987294f938929`、pictures `128a0fe78ded537f` 全部不變。
+以下為分階段的歷史紀錄；較早版本的「最新」只指該次記錄時點。
+
+## 站主範圍
+
+站主本次指示：「繼續製作奇聞檔案局下一支影片，一樣只出繁體中文。」
+
+製作繁中旁白、標題說明及可開關 CC。這項指示不等於任何未完成媒體的審看紀錄；YouTube 上傳、公開發布、PR 合併與部署尚未執行。
+
+## 目前證據
+
+- 企劃：站主已選 A「跟庫利克找坑，從倒樹解開空爆，再查八千萬棵與切科湖」。Jev 原選 A（0.88），立場 0.90、示範 0.10、建議 0.01；示範分數未達 0.60，後由站主明確核准。
+- 大綱 review：`8c9554c5-ceb3-48b7-ab66-fd713e681f45`，2026-10-11T23:08:38.855460Z 核准、選項 A，正式站已回讀 approved。`brief.md` SHA-256：`98e2a3a28c529714bef64d4c42bd76aca5e08ab1cb9318df5c897d7f8cb0bdfc`；送審後不再改企劃。
+- 原始題庫已完成前期覆核，本次另查 2025 年八千萬棵估算評論、2023 年切科湖正反研究、2024 年可能碎片模型及 2026 年幾何模型。研究刷新不是完整稿核准。
+- 正式站初查 `/api/video/reviews/curio-h03` 回 404，確認沒有既有 H03 製作供接續。
+- 插圖路線啟用，有效模型為 MiniMax `image-01`，每支上限 US$80；Gemini Sulafat 已配置。這是前置狀態，實際付費前仍跑 native dry-run。
+- 外部 `languages.json` 已設定沒有附加語言。聊天訊息沒有精確時間戳，因此未冒填成正式站的選擇時間；來源另存語言授權收據。
+- 完整稿 115 景、82 張插圖、2 張原件照片、139 句。字卡對拍、氣動壓力條件、沉積定年與來源書目均已修正；第一輪完整事實查核及第二輪獨立覆核通過，沒有未解問題。聽眾審稿及說書表演指令通過；尚不是音訊或成片驗收。
+- 來源補強後、時間修正前 `video.json` SHA-256：`08b8fc80c9b9720ee30cf1ccf73f8f0d540a03e8b3ec6ef77166dde43237dca2`。該次只在 sources 與 c21 追加 Icarus 2019 傷亡研究，去掉 sources 後的 JSON 與聽眾審過的版本完全相同；未更動旁白、表演或分鏡。原刊搜尋回傳內容已讀，直接 DOI／原刊 GET 403；不冒稱付費全文已讀。
+- 原生 dry-run：Sulafat 可用；82 張 MiniMax image-01 插圖每張一次預估 US$1.11、每張三次上限估 US$3.32，低於有效 US$80 本集上限。這是估價，尚未支出。
+- 139 句旁白已合成及檢查通過。初版正文 20,618 幀／687.2667 秒；片尾時間修正後只重錄 `bikj`、`ze2w` 兩句（40 計費字元），137 段原音的 SHA 保持相同。最新正文 20,589 幀／686.3 秒，speech hash `cba1834e2d1021c3`，timeline SHA `132a6d97d67b7f4cc5f354c5c4b9dd57a1fe56646464b9dd90eb23c74bf753e7`。
+- 音訊檢查：109 句字面相符、16 句同音／語助詞差異、3 句 Jev 通過、11 句由不看原稿的 Whisper 第二次轉寫排除疑慮、0 句待處理。音訊 review `4d67cd87-0db6-49b4-ade2-60b1b2b12cc8` 於 `2026-10-12T00:35:23.833237Z` 自動核准，已 GET 回讀及 review-pull；這不是站主完整試聽紀錄。
+- 開場三張插圖小樣經兩次提示詞修正後已實看，可用；自動通過但實際是帶葉活樹的版本沒有採用。其餘插圖製作中，尚未生成成片或執行最終媒體 QA。詳見 [視覺製作檢查](visual-review.md)。
+- 2026-10-12T00:04Z 最終 TTS dry-run：139 句／139 次待合成、約 2,735 計費字元，Gemini Sulafat ready；當月餘額 9,313,446 字元。原生命令 exit 0，dry-run 沒有合成費用。
+- 初次 TTS 在 `jbd7` 已收到音訊後，Windows 將 confirmed journal 暫存檔改名時出現 EPERM（exit 1）。保存的 confirmed 暫存紀錄、WAV 及當前請求 SHA 全部吻合；已備份原件，再原文恢復該紀錄。原生 journal 回放以會丟錯的 send stub 驗證 `reused: true`、0 新請求、0 新增計費，獨立代理唯讀覆核通過。該句 WAV SHA `38ce5a9648c9648615e8165a31db49e6588dfdc844b0227edd11c2ec94e542f3`，4.880 秒。沒有刪除不確定請求或重買該句；後續 TTS 從剩餘句子繼續。平台問題已在既有 [Windows speech journal rename task](../../../tasks/open/2026-10-09-windows-speech-journal-rename-failures.md) 追蹤，本集未修改共用程式。
+- 實测片尾由 8.4 秒修為 7.9 秒：只縮 `wg93` 句後停頓至 100ms、`njit` 至 0ms，保留問句後 300ms 及片尾固定 1500ms。`tts --refresh-evidence` 0 新請求／0 計費／139 段沿用，另逐一核對 139 段 WAV SHA 相同；後續兩句重錄另記。最新 `video.json` SHA `ce7418c4415cf9c8ce8c1afe9b024e562b4bc600307022ce4483d7ad5d87b590`。最新時間軸 137 狀態、最長 7.9 秒、平均 5 秒、插圖 61.33%，cadenceProblems 為空；文字、聲線及圖片提示未變。
+
+## 外部檔案
+
+製作目錄：`C:/Users/x8120/mokaair-work/videos/curio-h03`；CLI 的 `--workdir` 使用上一層 `C:/Users/x8120/mokaair-work/videos`。
+
+- `_audit/research-refresh-agent.md`：當日來源、事實界線與素材授權研究。
+- `_audit/preflight-*.json`：正式站初始查詢與有效設定。
+- `_audit/language-authorization.json`：站主繁中限定的原文與記錄時間。
+- `_audit/run-stage.mjs`：本集原生命令執行器，留下 stdout、PID、結束碼及時間收據。
+- `_audit/assets-receipt.json`：1908 年報紙剪報及 2024 年 Landsat 原圖的來源、授權、雜湊與逐張檢視紀錄。
+
+視覺修正最新來源 SHA `39699a32346ad389a58bfbbe771a63dc2ec00e1985b5a9c62e85ee0dfc6c17f0`。背景回到站主選定第 3 版的柔和 cel 陰影，保留 2D、粗線及條件式大頭人物；全片插圖依新 look 重新綁定，不冒用舊圖核准。只變更畫風敘述及特定插圖提示，旁白、聲線、已測時間軸及 speech hash 均未變；音訊核准保持有效。原始圖片、評分與來源各自保存於 `_audit/pilot-v1`、`pilot-v2`、`summer-v1`、`cel-background-v1`、`cel-pilot-v2`，沒有把失敗評分改成通過。
+
+本機文件／影片規格測試：199 項通過、0 失敗；記錄 `_audit/docs-video-tests.log`。此測試不取代圖片實查、成片 QA 或站主審片。
+
+所有音訊、影像、成片和收據保留在 repo 外；既有 H02 成片及核准未修改。
+
+2026-10-12T01:22Z 圖片提示更新：前二十景實看後，沿用十四景、修正六景，另簡化 59 個尚未生成的提示為正向有限物件列舉。最新來源 SHA `09a6de779cd2975d0a13ca1329328c46b889c431a54b7e77a4d9116d84a75e15`，look 保持 `635987294f938929`，pictures `8467939604a71642`，speech 保持 `cba1834e2d1021c3`。聲音、字幕文字、字卡、事實與時間未動。圖片仍在生產，詳見視覺檢查及外部 `_audit/positive-prompt-revision.json`；尚未完成成片。
+
+獨立差異與保全稽核 `_audit/positive-prompt-audit.md/json` 通過：恰為 65 個 `data.prompt` 變動，所有非 prompt 欄位逐項相同；20 個場景原圖、63 筆快取與 124 筆帳目均保全，備份時沒有未結請求。另一名代理完成 `_audit/pre-render-text-review.md/json`：115 景、139 句、139 個預計繁中 CC 無缺句或重疊，最多兩行、每行 16 寬字、最高 5.22 字／秒；日期、數字、来源名稱與口播一致，139 段 WAV 均匹配時間軸。此預檢不冒稱已看最終播放器字幕。
+
+2026-10-12T02:29Z：82 張均已生成並由三名代理分段實看與核對 SHA，十七個內容／素材問題集中窄修。最新來源 SHA `a32373b5b8f791bb053d04eed102d917b670037d4bab468aa5b8a410be8f38ac`，pictures `f7abfe2c72ada894`；只改十七個 prompt，look、speech、旁白、字卡、時間、claims 及 camera 不變。原生續跑沿用 65／82 圖；原批完整保存於 `_audit/material-fixes-v1`。少數純風格或小構圖偏差保留原判讀，將另列成片審看，未改 judge 或冒記通過。尚無合成成片。
+
+2026-10-12T02:46Z：集中修後只剩碎片散布、日間火球、計數框三張窄修；面積圖改為既有 native `big` 算式字卡，避開不準確的生成比例。最新來源 SHA `27d8f51b6460578ae1ac0fe60653cd5a77a024910d2009b429dc667bb01e428e`，pictures `128a0fe78ded537f`，look／speech 不變。最終規格為 115 景、81 張插圖、2 張授權原件照片、139 句繁中旁白；插圖占比約 60.66%，節奏檢查無問題。`tts --refresh-evidence` 139 段沿用、0 請求／計費；尚需完成圖片及字卡渲染、分鏡與成片審核。
