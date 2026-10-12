@@ -168,13 +168,18 @@ const knowsLanguages = (project: ProjectSummary) => typeof project.ready_to_uplo
  */
 export const readyToUpload = (project: ProjectSummary) => !project.dropped_at && !project.youtube_video_id
   && (knowsLanguages(project) ? Boolean(project.ready_to_upload) : Boolean(project.publish_approved_at));
-/** The final cut is approved: the checklist says so, or something that comes after it already happened. */
-export const finalApproved = (project: ProjectSummary & { reviews?: Review[] }) =>
-  project.checklist.some((item) => item.key === "final_video_approved" && item.done)
-  || Boolean(project.publish_approved_at || project.locales_decided_at || project.youtube_video_id)
-  || (project.reviews ?? []).some((review) => review.gate === "final" && review.status === "approved");
+/** An imported cut with no approved final stays pending when its private Studio link is recorded. */
+export const finalApproved = (project: ProjectSummary & { reviews?: Review[] }) => {
+  const reviews = project.reviews ?? [];
+  // The API orders reviews newest first; an older approval cannot approve a newer imported cut.
+  const currentFinal = reviews.find((review) => review.gate === "final" && !review.subject);
+  if (currentFinal?.status === "pending" && currentFinal.payload.imported) return false;
+  return project.checklist.some((item) => item.key === "final_video_approved" && item.done)
+    || Boolean(project.publish_approved_at || project.locales_decided_at || project.youtube_video_id)
+    || reviews.some((review) => review.gate === "final" && review.status === "approved");
+};
 
-export type PublishState = "deciding" | "making" | "packaging" | "ready" | "scheduled" | "published";
+export type PublishState = "deciding" | "making" | "packaging" | "ready" | "linked" | "scheduled" | "published";
 
 /** Reports describe completed outputs, not whether a producer is currently running. */
 export function chosenLanguagesComplete(project: ProjectSummary): boolean {
@@ -188,14 +193,14 @@ export function chosenLanguagesComplete(project: ProjectSummary): boolean {
  * Where the video is on its way to YouTube (docs/videos/LANGUAGES.md),
  * states), or null before the final cut is approved and once the video is dropped: the owner has
  * still to choose its languages, language results are incomplete (so the upload can wait to be
- * scheduled), it may be uploaded, it is scheduled, or it is public. An older API knows only
- * "ready" and the two YouTube states. A Short has none of the five: it chooses no languages of
+ * scheduled), its Studio link may be recorded, it is scheduled, or it is public. An older API knows only
+ * "ready" and the YouTube states. A Short has none of these: it chooses no languages of
  * its own, and where it stands is its shorts_state, which the server works out
  * (docs/videos/SHORTS.md) and the page shows in the same place.
  */
 export function publishState(project: ProjectSummary, now = Date.now()): PublishState | null {
   if (project.dropped_at || project.shorts_line) return null;
-  if (project.youtube_video_id) return project.youtube_publish_at && Date.parse(project.youtube_publish_at) > now ? "scheduled" : "published";
+  if (project.youtube_video_id) return !project.youtube_publish_at ? "linked" : Date.parse(project.youtube_publish_at) > now ? "scheduled" : "published";
   if (!knowsLanguages(project)) return readyToUpload(project) ? "ready" : null;
   if (!finalApproved(project)) return null;
   if (!project.locales_decided_at) return "deciding";
@@ -204,7 +209,7 @@ export function publishState(project: ProjectSummary, now = Date.now()): Publish
 }
 
 // The pill separates incomplete language results from an unavailable upload package.
-const PUBLISH_TONES: Record<PublishState, string> = { deciding: "warning", making: "pending", packaging: "pending", ready: "active", scheduled: "queued", published: "ok" };
+const PUBLISH_TONES: Record<PublishState, string> = { deciding: "warning", making: "pending", packaging: "pending", ready: "active", linked: "inactive", scheduled: "queued", published: "ok" };
 
 /** Production evidence stays separate from completed outputs, including after a YouTube upload. */
 export function ProductionPill({ project, compact = false }: { project: ProjectSummary; compact?: boolean }) {
@@ -756,7 +761,7 @@ export function UploadPackage({ slug, review, mp4Gone = false }: { slug: string;
  * when it goes public (docs/videos/HANDS-OFF.md, the YouTube API section, step one). ``publishAt``
  * fills the time in (a datetime-local value): a brand story's next free slot (admin-video-stories.tsx).
  */
-export function UploadedForm({ slug, onLinked, publishAt: suggested = "" }: { slug: string; onLinked: () => void; publishAt?: string }) {
+export function UploadedForm({ slug, onLinked, publishAt: suggested = "", privateOnly = false }: { slug: string; onLinked: () => void; publishAt?: string; privateOnly?: boolean }) {
   const t = useTranslations("admin.videoReviews");
   const [url, setUrl] = useState("");
   const [publishAt, setPublishAt] = useState(suggested);
@@ -770,7 +775,11 @@ export function UploadedForm({ slug, onLinked, publishAt: suggested = "" }: { sl
     setError("");
     try {
       // A datetime-local value is the owner's wall clock; the API wants a zoned instant.
-      await api(`/admin/videos/${slug}/youtube`, { method: "POST", body: JSON.stringify({ url: url.trim(), publish_at: publishAt ? new Date(publishAt).toISOString() : null }) });
+      await api(`/admin/videos/${slug}/youtube`, { method: "POST", body: JSON.stringify({
+        url: url.trim(),
+        publish_at: privateOnly ? null : publishAt ? new Date(publishAt).toISOString() : null,
+        ...(privateOnly ? { private_only: true } : {}),
+      }) });
       onLinked();
     } catch (problem) {
       setError(t("uploadedError", { message: problem instanceof Error ? problem.message : "" }));
@@ -778,18 +787,18 @@ export function UploadedForm({ slug, onLinked, publishAt: suggested = "" }: { sl
       setBusy(false);
     }
   };
-  return <form onSubmit={(event) => void submit(event)} className="grid gap-3 rounded-2xl border border-[var(--line)] p-4" aria-label={t("uploadedTitle")}>
-    <p className="font-bold">{t("uploadedTitle")}</p>
-    <p className="text-sm leading-6 text-[var(--muted)]">{t("uploadedHelp")}</p>
+  return <form onSubmit={(event) => void submit(event)} className="grid gap-3 rounded-2xl border border-[var(--line)] p-4" aria-label={t(privateOnly ? "privateLinkTitle" : "uploadedTitle")}>
+    <p className="font-bold">{t(privateOnly ? "privateLinkTitle" : "uploadedTitle")}</p>
+    <p className="text-sm leading-6 text-[var(--muted)]">{t(privateOnly ? "privateLinkHelp" : "uploadedHelp")}</p>
     <label className="grid gap-2 text-sm font-semibold">{t("youtubeUrl")}
       <input className={control} value={url} disabled={busy} placeholder={t("youtubeUrlPlaceholder")} onChange={(event) => setUrl(event.target.value)} />
     </label>
     {url.trim() && <p className={`text-sm ${id ? "text-[var(--muted)]" : "text-amber-800"}`}>{id ? t("youtubeId", { id }) : t("youtubeUrlInvalid")}</p>}
-    <label className="grid gap-2 text-sm font-semibold">{t("publishAt")}
+    {!privateOnly && <label className="grid gap-2 text-sm font-semibold">{t("publishAt")}
       <input type="datetime-local" className={control} value={publishAt} disabled={busy} onChange={(event) => setPublishAt(event.target.value)} />
-    </label>
+    </label>}
     {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
-    <div><Button type="submit" disabled={busy || !id}>{busy ? t("saving") : t("uploadedButton")}</Button></div>
+    <div><Button type="submit" disabled={busy || !id}>{busy ? t("saving") : t(privateOnly ? "privateLinkButton" : "uploadedButton")}</Button></div>
   </form>;
 }
 
