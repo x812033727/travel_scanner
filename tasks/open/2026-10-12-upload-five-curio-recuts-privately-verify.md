@@ -37,9 +37,10 @@ must remain gated on both Studio and VPS readback.
       with exact SHA-256 and byte-count verification after extraction.
 - [ ] After Studio, backend and VPS verification, preserve the corrected
       staging metadata and remove only
-      `<home>/mokaair-work/curio-five-recuts-20261012`, the exact
-      hardlink staging directory and temporary archive; retain a receipt and
-      independently verify local absence and freed space.
+      `<home>/mokaair-work/curio-five-recuts-20261012` and the exact
+      hardlink staging directory; retain a receipt and independently verify
+      local absence and freed space. The separately verified temporary
+      transfer archive was already removed.
 - [ ] Record new IDs, package exceptions, VPS restore instructions, and
       publication/owner-playback status in the delivery docs. Existing original
       video IDs and separate source directories remain intact.
@@ -58,8 +59,7 @@ must remain gated on both Studio and VPS readback.
 - [ ] Inspect and apply a safe backend linkage for all five new private IDs.
 - [x] Finish and independently verify the isolated VPS backup.
 - [ ] Recheck source-root identity and safety, delete only the authorized
-      local batch, hardlink staging directory and temporary archive, then
-      verify absence.
+      local batch and hardlink staging directory, then verify absence.
 - [ ] Update the draft delivery PR and run affected checks.
 
 ## How to verify
@@ -111,10 +111,15 @@ Run `npm run check:tasks` and `npm run test:docs-videos` for documentation edits
 - Do not edit the local batch during transfer: the tar snapshot and file
   manifest are immutable. Store Studio progress and title corrections beside
   the backup receipts, then retain them with the final backup.
-- At 2026-10-12 17:43 UTC, an attempted exact-path removal of the verified
-  local temporary archive was rejected by automatic approval review with only
-  `blocked by policy`. No local archive, batch or hardlink staging deletion was
-  performed; do not retry by disguising or weakening the removal command.
+- At 2026-10-12 17:33 UTC, a separate tar-only cleanup reverified the complete
+  VPS file set and removed exactly the 3,349,714,868-byte transfer archive.
+  Its `deleted_verified` receipt is
+  `<home>/mokaair-work/backup-receipts/curio-five-recuts-20261012-tar-only-deletion.json`;
+  the measured C: free-space gain was 3,349,516,288 bytes. The working folder
+  and hardlink staging directory remain. A later redundant exact-path removal
+  attempt at 17:43 UTC was rejected by automatic approval review with only
+  `blocked by policy` and did not change this state; do not retry by disguising
+  or weakening a rejected removal command.
 - At 17:54 UTC, Studio still showed all 15 English/Japanese/Korean WAV uploads
   processing. Five private full-length videos, four published caption sets and
   three end-screen elements per video had already been read back. Keep the
