@@ -1,13 +1,13 @@
 ---
 id: 2026-10-11-burn-the-channel-mark-into-new
 title: Burn the channel mark into new videos
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-video-watermark
 claimed_at: 2026-10-11T16:02:41Z
 created_at: 2026-10-11T16:02:24Z
-completed_at:
+completed_at: 2026-10-12T00:18:23Z
 branch: claude/video-logo-watermark-b075f1
 depends_on: []
 scope:
@@ -53,24 +53,24 @@ plain re-upload and does not stop someone who crops or covers it.
 
 ## Definition of done
 
-- [ ] A video rendered for the first time after this lands shows the mark in the same place on
+- [x] A video rendered for the first time after this lands shows the mark in the same place on
       every scene of the long cut: slides, cards, clips and stills under a camera move.
-- [ ] Both kinds of Short (cards, and a reframed drama) show the mark inside the safe area.
-- [ ] A video built, approved or uploaded before this lands is byte-for-byte what it was when
+- [x] Both kinds of Short (cards, and a reframed drama) show the mark inside the safe area.
+- [x] A video built, approved or uploaded before this lands is byte-for-byte what it was when
       its stages run again, and nothing reschedules it.
-- [ ] The owner has seen sample frames and agreed to the look.
+- [x] The owner has seen sample frames and agreed to the look.
 
 ## Steps
 
-- [ ] The versioned PNG, its generator and `core/watermark.mjs` (registry, selection, pin).
-- [ ] Slides and cards: `chrome()` draws the PNG; render decides once and writes the manifest.
-- [ ] Clip and motion segments: one overlay before the dissolve; the mark in the segment keys.
-- [ ] `assemble` follows the manifest; the source-frame check masks the box of the mark.
-- [ ] Shorts: the overlay in both builders; a reframed drama keeps its window off the mark of
+- [x] The versioned PNG, its generator and `core/watermark.mjs` (registry, selection, pin).
+- [x] Slides and cards: `chrome()` draws the PNG; render decides once and writes the manifest.
+- [x] Clip and motion segments: one overlay before the dissolve; the mark in the segment keys.
+- [x] `assemble` follows the manifest; the source-frame check masks the box of the mark.
+- [x] Shorts: the overlay in both builders; a reframed drama keeps its window off the mark of
       its episode.
-- [ ] `docs/videos/WATERMARK.md`; the duration receipt re-issued by an independent reviewer.
-- [ ] Sample frames to the owner.
-- [ ] Follow-up tasks filed for what this leaves out.
+- [x] `docs/videos/WATERMARK.md`; the duration receipt re-issued by an independent reviewer.
+- [x] Sample frames to the owner.
+- [x] Follow-up tasks filed for what this leaves out.
 
 ## How to verify
 
@@ -92,3 +92,8 @@ does not brighten through a dissolve, and the last frame of a Short is its first
   are served), so the slide carries it as a data URI; that also puts its bytes in the frame key.
 - No vision check ever sees a frame of a finished cut: the "free of logos and watermarks"
   questions are asked of keyframes and raw clips only, so the mark must never be drawn into those.
+- The owner saw the sample sheets (four long-cut pictures and two Shorts) on 2026-10-12 and said the look is fine.
+- Measured on real pictures and on the smoke cuts: the mark a slide drew and the mark laid over a shot sit on the same pixels (39.6 dB against each other, 15.9 dB one pixel apart); it stays still under a push-in and does not brighten through a dissolve; the Shorts smoke ends on its first frame (loop tail 40.31 dB, cover identical).
+- The duration receipt was re-issued by claude-pr-review-video-logo-watermark for tools/video/assemble/cli.mjs, the one bound file.
+- Not deployed. On this Windows machine the full test:tools run does not finish (a test file crashes the runner with ERR_UNSUPPORTED_ESM_URL_SCHEME, and tools/reference-analysis.test.mjs fails in ffmpeg; neither file is touched here), so the video test directories were run one by one and the rest is left to CI.
+- Left out, each with its own task: imported cuts, locate seeing the mark, an owner switch, the Shorts header naming the channel twice, render/repeat.mjs.
