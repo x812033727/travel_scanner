@@ -1,11 +1,11 @@
 ---
 id: 2026-10-11-produce-curio-h03-tunguska-traditional-chinese
 title: Produce Curio H03 Tunguska Traditional Chinese episode
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-gpt6-curio-h03
-claimed_at: 2026-10-11T23:02:28Z
+owner:
+claimed_at:
 created_at: 2026-10-11T23:02:26Z
 completed_at:
 branch: codex/curio-h03-production-20261012
@@ -64,3 +64,5 @@ The following notes are chronological snapshots; the final entries and PRODUCTIO
 - Final QA 10/11: only JPL native HTTP 403 remains; independent official-page read succeeded. Encoding the Commons asset URL parentheses fixed the parser's false 404 without changing media. Current source SHA a7e17af3914bedfbf1327219ef646a59a1625a26ac537914e1ea6d2a509afed6. Shared URL and review-player CC gaps have separate open tasks.
 - Independent 139-cue/branding review passed. Official preview playback reached 67.22 seconds; full owner playback/listening is not recorded. The preview has no CC track; local CC server startup was rejected by execution policy, with no alternative startup attempted. Player CC rendering remains NOT_RUN; SRT/VTT files are complete.
 - Await H03 owner storyboard/final approval, including five retained images; Traditional Chinese-only authorization already exists and must not be requested again. No upload package, YouTube upload, publication, merge or deployment is complete.
+- Final sampling complete: two reviewers actually viewed all 45 start/middle/end frames across 15 scenes, with zero new blockers. Text/credits and selected-picture hashes match; decorative-line crops and narrowed outro whitespace are minor. Native 51 PSNR / 98 motion records and independent ffprobe match the final.
+- Owner approval question sent; latest backend readback at 2026-10-12T03:48:18Z still has storyboard and final pending. Release this task while awaiting that decision; resume from the exact final and existing language authorization, without regenerating approved media.
