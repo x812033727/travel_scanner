@@ -4472,16 +4472,90 @@ PASS is DURATION_ONLY for the two rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Opening condensation (the first chapter is a 30 to 60 second condensation) increment: 8 files (2026-10-12)
+
+Reviewer: `claude-pr-review-1467-condensation`. Author: `claude-opus-5-5`. Scope: DURATION_ONLY for the eight changed bindings below, reviewed at `075d0e287a9a3cd7910e107316e069e7865b3c4f` ("feat(video): narrated videos open on a 30-60 s curiosity condensation") on claude/video-intro-30sec-summary-2366ac, pull request #1467. The branch is that one commit on origin/main. The reviewer wrote none of it and edits only this report and review.json.
+
+Baseline: origin/main at `35ac6415c41e4ac9bcce3af30defb2a2b16c8fc9` (#1466), the merge base of the branch. Neither side changed a receipt file, so the receipt the branch carries is main's, the "Captions tag in every YouTube title" increment above. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these eight bindings. They are the only bound files among the 22 that differ between origin/main and the head; the other 100 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `.agents/skills/youtube-video/SKILL.md`: `4088bb1beede893b19b503281118a86ef6806a37243c9bfcb85dd70d2e91d101` -> `66bee79d893bfb52869a6a7c3426439681a55ffb8c3746286351c365a7056e22`.
+- `.agents/skills/youtube-video/references/automated.md`: `6852c8ae98a94ba4571696e14728d72cdad54963cecb9b6eeadd8651d6e41d0d` -> `38d34f7102a104f6aaaebe095d977398dafe37ae44ce0e3b900acf4e36db7d47`.
+- `.agents/skills/youtube-video/references/formats.md`: `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` -> `c083df7c0604838d047b0c0fd9e526b191fef6940c10bbb318922e05847a34dc`.
+- `.claude/skills/youtube-video/SKILL.md`: `4088bb1beede893b19b503281118a86ef6806a37243c9bfcb85dd70d2e91d101` -> `66bee79d893bfb52869a6a7c3426439681a55ffb8c3746286351c365a7056e22`.
+- `tools/video/automation/prompts.mjs`: `a67ffdc314274301d80f403f182d5206aeb5e7cb2989b6b6b4f1220adea0a9ac` -> `d13a2dc0b3e751fbee279b0c4077e5c21eeb93d7d7d0b4adc98cb83179549424`.
+- `tools/video/automation/series.test.mjs`: `f0ecd19d2dc779ad2ca304c37a59bab72f322d00ec50fb33e3b183f409760b28` -> `d7bca5b65018f5361321ab8b98d0f323db9b195936a25d0793042c7cdb1ca1d2`.
+- `tools/video/core/lint.mjs`: `53a0134f9221a1b3db3f6bd8fe0ff6b36b05fb1f11d42da033a0668af04fb9bc` -> `0f71c3637c7bf85661982ce7c49235bd9ef2f634c8273402a7966e0e21c20b86`.
+- `tools/video/core/lint.test.mjs`: `13c9a41c13ed096b0cdc55a979b7b6405af67c4a07b1077181dcd80350050cd5` -> `0cb320ff6f46d57b90e18c6b1455f6c9312c282f79b5fccbf11a1bf19c408b26`.
+
+What the change is: the opening chapter of a narrated video becomes a condensation of 30 to 60 seconds (the hook, the title's number, date or proper noun within 20 seconds, then two or three of the video's strongest moments told without their answers). It moves seconds inside the first chapter of a video whose total is ruled as before; it is a shape of the script, not a length of the video.
+
+Findings, tools (4 files):
+
+- `tools/video/core/lint.mjs` (+18/−8): `HOOK_SECONDS = 30` and the import of cadence.mjs's `HOOK_SECONDS = 20` give way to `OPENING_CHAPTER_SECONDS = [30, 60]` and `DRAMA_HOOK_SECONDS = 30`; `OPENING_SECONDS` (how far a spoken table of contents still counts as the opening) goes from 40 to 60. The opening-chapter check stays a `warn`: a drama with a cast (`hasCast`) is warned over 30 s as before; any other video that is not a compilation is warned under 30 s or over 60 s, and only when the estimate is at least `MIN_EPISODE_MINUTES` (the constant, as `episodeScriptProblems` already reads it, not `minEpisodeMinutes()`). Before, the same warning fired over 20 s on illustrated slides and over 30 s on everything else at any length. `const minutes = frameToSeconds(timeline.total_frames) / 60` moves two lines up, unchanged, so the check can read it. `checkChapters` and its error for a chapter under 10 s, `target_minutes` and `DEFAULT_TARGET_MINUTES`, the floor (`needsMinimumLength(doc) ? minEpisodeMinutes() : 0`) and both of its errors, the warning outside the target, `episodeScriptProblems`, the long-anime body tolerance and `storyProblems` are outside the hunks. No error is added or removed.
+- `tools/video/automation/prompts.mjs` (+13/−11): the explainer brief and the illustrated brief gain a 「開場濃縮」 line, the illustrated writer's first-chapter rule names the condensation, the explainer writer's structure line becomes `${CONDENSATION_RULE}` (register.mjs, unbound: "within 20 seconds" for the title's fact, the condensation 30 to 60 seconds) and the explainer bible's outline lists the teased moments. Every "aimed at target_minutes, never under 8 minutes; over it is fine", "each ≥ 10 s" and "250 spoken characters a minute" in the hunks is context, unchanged.
+- `tools/video/automation/series.test.mjs` (+2/−2): the pinned digests of flat-explainer's `bible-explainer` and `explainer` texts are re-pinned, because prompts.mjs changed their words; the verifier's digest and the three second digests are unchanged. No assertion about length moves.
+- `tools/video/core/lint.test.mjs` (+31/−4): `stretched()` adds six condensation lines to the example's first scene so its opening chapter falls inside the window; a new test pins `[30, 60]` and checks a warning under and over it and none on the seconds-long example; the table-of-contents test reads 60 for 40. The assertions on the floor, on `target_minutes` and on chapter length are unchanged.
+
+Findings, skills (4 files):
+
+- `.agents/skills/youtube-video/SKILL.md` and its byte-identical `.claude/skills/youtube-video/SKILL.md` (+1/−1 each): the table's 「開場 30 秒」 reads 「開場濃縮 30–60 秒」.
+- `.agents/skills/youtube-video/references/formats.md` (+4/−4): the opening row of four templates (≤ 30 s, and ≤ 20 s for illustrated storytelling) reads 30–60 s, with ≤ 30 s kept for a recorded video. The other rows' shares and the totals of each template are unchanged.
+- `.agents/skills/youtube-video/references/automated.md` (+1/−1): the illustrated cadence's 「開場 20 秒內落鉤」 reads 「開場章是 30–60 秒的濃縮（20 秒內說出標題的數字或名字）」. The 5–8 s picture, the ≤ 8 s card state and the half-illustrated share are unchanged.
+
+The brand story (tools/video/automation/story.mjs, unbound): `HOOK_SECONDS` goes from 30 to 45, which `chapterBudgets` takes out of the total before the other five chapters share the rest, and `engine` absorbs the rounding, so the total is the target exactly. Called from the worktree: 690, 780 and 930 seconds at 11.5, 13 and 15.5 minutes (hook 45, engine 181, 206 and 248), and `lengthBand(13)` is `[690, 930]`, 11:30 to 15:30 as before. `LENGTH_BAND_SECONDS`, the 13-minute default and `checkLength`'s band are outside the hunks; the hook is still excluded from resizing. core/story.mjs reads no hook seconds.
+
+No assertion or constant for the 10-minute explainer default, the 8–20 explainer range, drama's 1–8, the 13-minute brand story and its 11:30–15:30 band, the 8-minute non-drama floor, the 480 s / 14,400-frame QA floor, the long-form anime policy, measured evidence or plans.json is added, removed or loosened. No file under apps/api, tools/video/qa or tools/video/long-form differs between origin/main and the head, nor do core/duration.mjs, core/schema.mjs or core/timeline.mjs; core/cadence.mjs loses only its `HOOK_SECONDS` export, which no other file reads.
+
+Recorded observations. None is a rule change and none lets an episode under the floor:
+
+1. A brand story with characters (`hasCast`: a drama format with a non-empty `characters`, up to three) takes the drama branch, so its 45-second hook budget is warned against `DRAMA_HOOK_SECONDS = 30` on every such story. The fixture's story has no characters and takes the 30 to 60 window.
+2. Under `MIN_EPISODE_MINUTES` a video without a cast (illustrated slides included) is no longer warned about its opening chapter at all; before, the hook warning read every length.
+
+Ran (in the worktree at the head, Node on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the eight stale bindings and exited 1;
+- `git diff origin/main...HEAD` over the eight files read whole, and over story.mjs, story.test.mjs, cadence.mjs and STORY.md as context, with `git diff --stat`;
+- `git ls-files --eol` for the eight files (LF in index and worktree) and the hashing, with Node's crypto over the files' bytes, of each against review.json;
+- a script kept outside the repository that imports the worktree's `chapterBudgets`, `lengthBand`, `hasCast` and the story fixture; the brand-story figures above are its output;
+- `node --test` over core/lint.test.mjs, core/cadence.test.mjs, core/duration.test.mjs, core/story.test.mjs, automation/story.test.mjs, automation/prompts.test.mjs, automation/register.test.mjs, automation/series.test.mjs and qa/duration.test.mjs.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge the condensation as a product choice, the texts of register.mjs, story-prompts.mjs, explainer-series.mjs or script-writing.md (unbound), or the seconds a drama's hook is given.
+- No writer was run and no narration was synthesized or measured: whether a writer keeps the condensation inside 30 to 60 seconds was not observed, only that lint warns either side of it and that the floor's error is untouched.
+- No API test, ruff, mypy, Vitest, lint or typecheck was run.
+- This increment binds the tree at the head only: a later commit or merge with main that changes any of the eight files, or either receipt file, needs its own follow-up. The 100 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the eight rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Opening condensation brand-story hook follow-up: 1 file (2026-10-12)
+
+Reviewer: `claude-pr-review-1467-condensation`. Author: `claude-opus-5-5`. Scope: DURATION_ONLY for the one changed binding below. The author changed tools/video/core/lint.mjs again, after the section above and on top of `075d0e287`, to act on that section's observation 1. The reviewer wrote none of the change and edits only this report and review.json.
+
+- `tools/video/core/lint.mjs`: `0f71c3637c7bf85661982ce7c49235bd9ef2f634c8273402a7966e0e21c20b86` -> `c68ebb67744bab497196b8456585a4ef4d8a39bc937b7b1316d74ed7ce681fc1`.
+
+What the change is (+3/−2): the drama-hook branch of the opening-chapter check reads `hasCast(doc) && !isStory(context.series)` for `hasCast(doc)`, with a comment above it, and the comment above `OPENING_CHAPTER_SECONDS` adds "(not a brand story)". `isStory` (core/story.mjs, already imported by lint.mjs) is `series?.kind === STORY_KIND`. A brand story with characters therefore leaves the 30-second drama hook warning and, like a brand story without them, is read against the 30 to 60 second condensation window on an episode of `MIN_EPISODE_MINUTES` or more, which its 45-second hook budget (automation/story.mjs `HOOK_SECONDS`) sits inside. Every other video takes the branch it took at `075d0e287`. Both branches are still `warn`; the constants (`OPENING_CHAPTER_SECONDS = [30, 60]`, `DRAMA_HOOK_SECONDS = 30`, `OPENING_SECONDS = 60`), `checkChapters` and its 10-second error, `target_minutes`, the floor and its two errors, `storyProblems` and the long-anime tolerance are outside the hunks. No duration rule above is touched: not the explainer's 10 minutes or 8–20, drama's 1–8, the brand story's 13 minutes and 11:30–15:30, the 8-minute floor, the 480 s / 14,400-frame QA floor, the long-form anime policy, measured evidence or plans.json.
+
+Ran: `git diff -- tools/video/core/lint.mjs` against `075d0e287`, read whole; `git ls-files --eol` (LF) and the hash with Node's crypto over the file's bytes; `node --test` over core/lint.test.mjs, core/story.test.mjs and automation/story.test.mjs. No test was added for a brand story with a cast; the branch was read, not exercised. The CLI check and review.test.mjs are run again after rebinding, with results in the hand-off.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
-| `.agents/skills/youtube-video/SKILL.md` | `4088bb1beede893b19b503281118a86ef6806a37243c9bfcb85dd70d2e91d101` |
-| `.agents/skills/youtube-video/references/automated.md` | `6852c8ae98a94ba4571696e14728d72cdad54963cecb9b6eeadd8651d6e41d0d` |
-| `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
-| `.claude/skills/youtube-video/SKILL.md` | `4088bb1beede893b19b503281118a86ef6806a37243c9bfcb85dd70d2e91d101` |
+| `.agents/skills/youtube-video/SKILL.md` | `66bee79d893bfb52869a6a7c3426439681a55ffb8c3746286351c365a7056e22` |
+| `.agents/skills/youtube-video/references/automated.md` | `38d34f7102a104f6aaaebe095d977398dafe37ae44ce0e3b900acf4e36db7d47` |
+| `.agents/skills/youtube-video/references/formats.md` | `c083df7c0604838d047b0c0fd9e526b191fef6940c10bbb318922e05847a34dc` |
+| `.claude/skills/youtube-video/SKILL.md` | `66bee79d893bfb52869a6a7c3426439681a55ffb8c3746286351c365a7056e22` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7` |
 | `apps/api/app/video_automation/models.py` | `e8351836b3d09a939c31f18501ba3e160e98706e327a1172cc35170fc76b9ccc` |
@@ -4531,9 +4605,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/automation/automation.test.mjs` | `4bea77e72473edd7affc7a7b1b36862c1ba7f93f430cf34dfd32b63745250a05` |
 | `tools/video/automation/discuss.mjs` | `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21` |
 | `tools/video/automation/flow.mjs` | `88e44aac739df507703cdddfd021151f2edcd4366bc03e594c0cf0e9688483a9` |
-| `tools/video/automation/prompts.mjs` | `a67ffdc314274301d80f403f182d5206aeb5e7cb2989b6b6b4f1220adea0a9ac` |
+| `tools/video/automation/prompts.mjs` | `d13a2dc0b3e751fbee279b0c4077e5c21eeb93d7d7d0b4adc98cb83179549424` |
 | `tools/video/automation/series.mjs` | `d512034bbc99c0bc9ec7bbdbcfafa9ea6b548eedd877aa6754bbb81b04cd4c37` |
-| `tools/video/automation/series.test.mjs` | `f0ecd19d2dc779ad2ca304c37a59bab72f322d00ec50fb33e3b183f409760b28` |
+| `tools/video/automation/series.test.mjs` | `d7bca5b65018f5361321ab8b98d0f323db9b195936a25d0793042c7cdb1ca1d2` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
 | `tools/video/core/anime-policy.mjs` | `2c53db1a18e27780b032a019b37912197c13bb4aadc6a130cecdc60371482ecd` |
 | `tools/video/core/anime-policy.test.mjs` | `74b9f1360829efed4c2f1e529b403024877e255d51430a5a2636ac7c5a24b3c6` |
@@ -4546,8 +4620,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/duration.mjs` | `12009ae5d12cba73e55ff462e9f9dd107350d53bea1da5a65bf59a1a39e13285` |
 | `tools/video/core/duration.test.mjs` | `a5b3e9c54368628d4b929b8050eb3ad925cc1b9c1fbd5b88bd3bf5ca010358f6` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `53a0134f9221a1b3db3f6bd8fe0ff6b36b05fb1f11d42da033a0668af04fb9bc` |
-| `tools/video/core/lint.test.mjs` | `13c9a41c13ed096b0cdc55a979b7b6405af67c4a07b1077181dcd80350050cd5` |
+| `tools/video/core/lint.mjs` | `c68ebb67744bab497196b8456585a4ef4d8a39bc937b7b1316d74ed7ce681fc1` |
+| `tools/video/core/lint.test.mjs` | `0cb320ff6f46d57b90e18c6b1455f6c9312c282f79b5fccbf11a1bf19c408b26` |
 | `tools/video/core/narration-locale.test.mjs` | `fddf009b24c976c9319d139db24fa3312fd1d942f2b4d623876d86357464d2ce` |
 | `tools/video/core/schema.mjs` | `0202f27c4aa2d59c64fccb0fd495033a58999809943935c7004fc45d183ac94b` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |

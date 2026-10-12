@@ -93,8 +93,8 @@ export const SENTENCE_WARN = 40;
 export const SENTENCE_WARN_EN = 50;
 // The opening chapter of a narrated video (script-writing.md §開場濃縮; owner, 2026-10-12): before
 // the first real chapter, 30 to 60 seconds that condense the video's strongest moments into
-// questions left open, so the viewer stays to hear them answered. A drama with a cast keeps its
-// hook, the first chapter within DRAMA_HOOK_SECONDS.
+// questions left open, so the viewer stays to hear them answered. A drama with a cast (not a
+// brand story) keeps its hook, the first chapter within DRAMA_HOOK_SECONDS.
 export const OPENING_CHAPTER_SECONDS = [30, 60];
 export const DRAMA_HOOK_SECONDS = 30;
 export const SIMILARITY_WARN = 0.8;
@@ -465,7 +465,8 @@ export function lintVideo(doc, context = {}) {
   }
   const minutes = frameToSeconds(timeline.total_frames) / 60;
   const opening = chapters[0]?.seconds;
-  if (opening !== undefined && hasCast(doc)) {
+  // A brand story is narrated and opens on the condensation even when its pictures have a cast.
+  if (opening !== undefined && hasCast(doc) && !isStory(context.series)) {
     if (opening > DRAMA_HOOK_SECONDS) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; the hook should land within ${DRAMA_HOOK_SECONDS} s`);
   } else if (opening !== undefined && !isCompilation(doc) && minutes >= MIN_EPISODE_MINUTES) {
     // Read on an episode only, as episodeScriptProblems is: the examples run seconds.
