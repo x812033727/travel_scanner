@@ -192,3 +192,17 @@ JSON 全樹只有兩處差異：`scenes[99].lines[0]`（`bi2x`）與 `scenes[99]
 全部 **119 個 line 物件**（含 emotion、停頓）、voice、look、主張及其他未列欄位完全相同。`claims.md` SHA 仍為 `3ca492d642fc4c3e4a3ea690c50d41e5d2f119b2937af993d51961ea09ae2989`。回讀時備份與當前 `timeline.json` 逐位元相同，SHA 均為 `f4ab52a1e7ccceccd88576b8bbc8f273cb35f204730ec3d4bb825c251305dc82`；此處不把未變旁白時間視為新 diagram 已完成正式 render。結構為 100 景、64 張 AI shot、36 個非 shot 場景，含八張原創 SVG。
 
 **0 新增事實修正、0 腳本 must-fix；事實查核 PASS 延伸綁定 `250e1d19…`。** 這次只追加本報告與素材登錄，沒有修改 canonical source／媒體／manifest 或呼叫 provider。新的鞋子 selected、正式字卡／成片、字幕與聲音，仍由各自像素及播放覆核證據判定，不由這份來源回讀代替。
+
+## 2026-10-12 四張科學機制原創向量整合
+
+本段由 h03_research 追加。此代理是 snow-over-step／slab-edge-displaced 作者，平台圖的獨立覆核者；各圖另有 root、h03_verify 或 h04_audio_wording 的獨立像素報告，作者自查不冒充獨立審核。
+
+由 _audit/science-repairs-integration/video-before.json（250e1d192dd7463cb3f73236a9eadcba52ceb0cb01b9ddb135d4428744eee5f9）出發，在記憶體精確套用六份已審提案：四個 scene.template/data 改 diagram、末尾追加四筆原創 assets，以及 **九處 data.prompt**。重建 JSON 與現行 **3f2fdb0864afaa199e994f47bb180c6662e2e46efcc74da2c307e4268353e5e0** 完全相等，沒有其他變更。四圖為 snow-over-step、platform-front-face、wind-moves-snow、slab-edge-displaced；九個提示詞為 science-snow-slab、drift-deposition、weight-analogy、small-slab-remains、science-next-evidence、snow-return-season、nearby-avalanche-context、separate-ridge、natural-slope-no-cut。
+
+六份 proposal 與六份獨立 review 均重算 SHA，對應整合收據完全相符；四張 SVG／PNG 實際檔案與提案 SHA 相同、canonical assets 逐欄相同。四圖的 asset／proposal／review 完整 SHA 表見 asset-register.md 本次追加；另兩組提示詞證據為 late-prompt-fixes-round1.json（81bbd31955a9bcf1df38417100c46a1d3fb799e8df11afa9aceed285cfada5ba）及 final-section-prompt-fixes.json（85160acfd63a5a9ef8358be077a1b08bebd6688fe995b4a3e25811a84ae8c6f3），其獨立 review SHA 分別為 c75445455ccf8ae794eaf10795ca9ea0b78c22af5572e0511f2ece2909e907cb、91f40a7574b08868a52466dd495650386ab380dad09a1032c11b56c89e99cf20。
+
+科學邊界保持：c26 的弱層幾何明列假設；c27 切口只表示支撐條件；c29 只搬運既有近地積雪；c28/c31 小雪板滑移只表示物理可能。沒有事故重演、人物受傷、1959 實測地形／風向／時距或解案宣稱。九張提示詞收斂物件和場域；有限雪塊形狀是概念構圖，不是新增當年數量紀錄。
+
+全部 **119 個 line 物件**（含 emotion、停頓）、voice、look、claims 及其餘欄位逐項相同。claims.md SHA 3ca492d642fc4c3e4a3ea690c50d41e5d2f119b2937af993d51961ea09ae2989；備份與當前 timeline.json 逐位元相同，SHA f4ab52a1e7ccceccd88576b8bbc8f273cb35f204730ec3d4bb825c251305dc82，18122 frames／30 fps＝604.0667 秒。speech_hash 仍為 296feca213cf8271，與收據一致；本次未重新合成或驗聽音訊，不新增音訊驗收結論。
+
+現行結構：100 景、60 張 AI shot、40 個非 shot 場景，含12張原創SVG；原生 illustrationShare 重算為 53.5371%。收據 SHA 5cefc615f1eaa584e88b304d3f1b67875b2bc9b6b93c10e78fd14c7bf8bcda8b。**0 新增事實修正、0 腳本 must-fix；事實查核 PASS 延伸綁定 3f2fdb0864afaa199e994f47bb180c6662e2e46efcc74da2c307e4268353e5e0。** 四個原生提案預覽已另有獨立實看；九張新 AI selected、正式 render／成片與播放器字幕仍須各自覆核。本次僅追加 asset-register.md／verify-1.md，provider calls 0，未改 source／媒體／manifest。

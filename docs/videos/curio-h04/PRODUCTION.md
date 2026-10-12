@@ -121,6 +121,18 @@
 - 原生lint仍0 errors／4 warnings；64張AI圖dry-run ready，全部每張最多三次估US$2.59，當時媒體帳本累計US$0.86（不是全片完整費用）。正常resume保留28張未變selected，補35張未生成圖與1張改提示靴子，未使用force。
 - 繁中119條字幕語意覆核找出10處詞內斷行，已準備只改換行位置的修正及來源／時間綁定檢查；尚待正式captions輸出後套用。正式render、assemble、player字幕及完整播放／聽音仍待驗證。
 
+### 全部插圖實看與科學畫面修正
+
+- `keyframes-2026-10-12T07-23-37-181Z` 於07:56:45 UTC結束，exit1；產生60張候選，64個AI景均有selected，媒體帳本累計約US$1.67。exit1包括待修圖，不表示成片通過。
+- 三組逐張覆核及前批修正回讀，全部64個當前selected實際看過。另確認13項材料性問題：4項改為原創圖解、9項只改提示詞。原生高分不能代替內容覆核；兩張只有輕微風格差異的圖另待原生保留程序，完整評語仍會進成片審核。
+- 四個科學圖解為 `snow-over-step`、`platform-front-face`、`wind-moves-snow`、`slab-edge-displaced`。各有來源綁定提案、原生1920×1080預覽及獨立實看PASS，明示模型條件／示意／未按比例或非事故重演。舊圖的裸露巨崖、懸空雪拱、空中金色降雪和擬人滑雪者不再使用。
+- 08:02:38 UTC整合收據 `_audit/science-repairs-integration/receipt.json`：source由 `250e1d192dd7463cb3f73236a9eadcba52ceb0cb01b9ddb135d4428744eee5f9` 更新為 `3f2fdb0864afaa199e994f47bb180c6662e2e46efcc74da2c307e4268353e5e0`，pictures hash `323a867570eabd15`。60個AI景、12張原創SVG，AI畫面占正文53.5371%；100景／119句／117狀態、speech hash `296feca213cf8271` 與timeline SHA `f4ab52a1e7ccceccd88576b8bbc8f273cb35f204730ec3d4bb825c251305dc82` 均未改。整合0供應商呼叫，完整前版source／selected／take／timeline／核准／媒體帳本先備份。
+- 九個局部重畫景只修正物件接觸、雪塊形狀、人物誤入與地形脈絡；未動旁白、主張、look或camera。原生lint0 errors／4既有warnings，render及cadence預檢0問題。窄範圍dry-run一次估US$0.12、最多三次估US$0.36；正常keyframes續跑，不使用force，其餘51張當前AI圖沿用。新圖必須再實看，不能把提示詞審核算成圖片完成。
+- 窄修批次 `keyframes-2026-10-12T08-03-20-728Z` 於08:12:52 UTC結束：16張新候選、60個AI景，圖片及judge帳本累計約US$1.89。三項native flag保留待處理；不是直接宣告全部機械通過。
+- `snow-return-season` 三張均9.71分，原生同分取seed1，卻有中央吉祥物；root與獨立覆核者實看seed2、seed3均無人物，以seed2低圓雪坡最貼近用途。核對source／look／pictures／全部候選SHA、producer已退出、STOP與lease後，只把六個selected欄位改成既有seed2，0新呼叫。新圖SHA `4d1a6dde4ccf584a734a2a8f21e63fee15a932255f7c15a07f3732a4d9f54cbf`；仍保留judge.passed=false、needs_review=true、全部takes及原評語。備份收據 `snow-take-selection-2026-10-12T08-15-11-426Z/receipt.json`；共用工具後續另記[既有候選選圖任務](../../../tasks/open/2026-10-12-select-reviewed-existing-keyframe-take.md)，本集未改工具。
+- 原生 `keyframes --accept-best slope-small-feature,field-weather,snow-return-season` exit0，僅3張已有實看可接受小差異的圖；重新產出聯絡表，保留所有take評語，成片明確要求站主審看。舊take的問題歷史不代表每項仍存在於目前selected。08:16覆蓋核查為60/60 AI目前SHA已實看可用、12/12 SVG預覽覆核完整、0未解material。
+- storyboard review `3ba806bc-0250-4f10-9b96-35ee1c664de6` 於 `2026-10-12T08:16:23.222977Z` 送出，content SHA `9fe70948cf7fe998acdca585eb843cacb6ae3c8062fa17c15c55f80e760756c8`，60鏡／3頁聯絡表／3鏡保留。原生pull exit3及GET200讀回均pending；並未代替站主核准。繼續製作可供具體審看的成片，再請站主一併審看分鏡與成片。
+
 `_audit/preflight-reviews.json` 與 `_audit/preflight-settings.json` 保存唯讀預檢。
 `_audit/plan-check.json`、`review-push-2026-10-12T04-53-20-715Z.receipt.json`、
 `reviews-2026-10-12T04-54-15.480Z.json` 與 `outline-review-pending.png` 保存當前送審、回讀與瀏覽器畫面。

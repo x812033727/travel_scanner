@@ -74,3 +74,29 @@
 | `_audit/slope-vector-independent-review.md` | `0019b806756656bb1c6a0b40339db2462d95e46194f4b3d567c6620a8c1009c1` |
 
 作者與獨立覆核者均實看該原生預覽，0 material／layout 必修。Root 已整合至 `video.json` SHA `250e1d192dd7463cb3f73236a9eadcba52ceb0cb01b9ddb135d4428744eee5f9`，並追加對應 `assets[]` 的原創署名；本集現有八張 SVG。原生 PNG 位於外部 `_audit/slope-vector-preview/hook-slope.png`，只是提案預覽，正式 render 仍須重新核對。原生成圖的擬人問題與所有候選／評分保留在 `_audit/keyframes-before-bulk-fixes/`、`_audit/slope-and-boots-integration/keyframes/` 及先前像素報告，不改判為通過。
+
+## 2026-10-12 四張科學機制原創向量整合
+
+已核讀正式來源 **3f2fdb0864afaa199e994f47bb180c6662e2e46efcc74da2c307e4268353e5e0**：新增下列四張自行編寫的 SVG，均以原生 diagram 使用，署名／權利為 Mokaair original。未修改 AI bitmap、未描摹研究圖或歷史影像；四筆 assets 的 path/source/license 與已審提案逐欄相符。先前八張與其審核歷史保留。
+
+| SVG | SHA-256 | 可見 caption |
+|---|---|---|
+| [snow-over-step.svg](vector-art/snow-over-step.svg) | 0f2dc02ab5d305da5ff20ca27817b8537bfb70f5aa24a750cb4728a5836f816d | 模型條件示意／弱層隨地形傾斜為假設・未按比例 |
+| [platform-front-face.svg](vector-art/platform-front-face.svg) | 480e6b08d0ce0466f19a4e9c94accf1ea0fb743e2f7634910e53900f9f6dd13d | 平台切口示意／模型條件・未按比例 |
+| [wind-moves-snow.svg](vector-art/wind-moves-snow.svg) | fa503a0c996a1c68dd454ab23fdccb13befdd81f3eee3795dc678e3c3c1de2f4 | 風搬運積雪示意／非現場影像・未按比例 |
+| [slab-edge-displaced.svg](vector-art/slab-edge-displaced.svg) | bb3d808080e3fb5ace1d6872739d9080e53ff16598456ee1eeed81f23028b1e7 | 滑移機制示意／物理可能・非事故重演 |
+
+四張作者自查與另位覆核者的原生 PNG 實看紀錄均為 PASS、0 material／layout 必修；本次逐一重算 SVG、PNG、proposal、review SHA，全部相符。這是提案預覽的核准，正式 render 與成片仍另驗。
+
+| 外部提案／獨立覆核（_audit/） | SHA-256 |
+|---|---|
+| snow-step-vector-proposal.json | 3dd2d6fa724629334d3c9f334c429ea6407a70b80f0a9fa2ef23ae3ff1b37677 |
+| snow-step-vector-independent-review.md | 5a699b5cb5f17d91128b936076d9004bd8f8b38aecc6733d933fcdb3049c2ef1 |
+| platform-vector-proposal.json | 59874c330ba714b49bbc410d8ab1ca022cc473e332b4803567dae718fca21fa6 |
+| platform-vector-independent-review.md | 5a971260b66acde57c8709df5ab974291b9c646848e821cf85c6a4f587b305be |
+| wind-vector-proposal.json | acfb208249d620e9276ab08b5621b807a5d433e5a209cc5b3393bbc6da9f2761 |
+| wind-vector-independent-review.md | e4a8b4d57175b069cfc70db26befd77eca62502169d7159e619aa93576a97931 |
+| slab-vector-proposal.json | 2b5e732a180819a2ab87d72e860c125be7dceac37a0403d1951d21158a1d39e3 |
+| slab-vector-independent-review.md | 601df7fdbde3c7655749a23f253bbafcf92d4eac07adb017eb32a0295d3a1742 |
+
+整合收據：_audit/science-repairs-integration/receipt.json，SHA 5cefc615f1eaa584e88b304d3f1b67875b2bc9b6b93c10e78fd14c7bf8bcda8b，2026-10-12 08:02:38 UTC。現有 **12 張原創 SVG、60 張 AI shot**；原生 illustrationShare 依 shot 時間計為 **53.5371%**，不把 diagram 算入 AI 插圖比率。四張原 PNG 路徑與 SHA 在各提案，舊 AI 圖／所有 takes／judge 保存在 _audit/science-repairs-integration/keyframes/，保留原失敗判斷。此次九張 prompt 修訂的新 AI 選圖尚未由本增量登錄宣告通過。

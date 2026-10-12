@@ -171,6 +171,26 @@
       "path": "docs/videos/curio-h04/vector-art/hook-slope.svg",
       "source": "奇聞檔案局 H04 原創位置關係示意；非現場影像、未按比例",
       "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04/vector-art/snow-over-step.svg",
+      "source": "奇聞檔案局 H04 原創雪下剖面示意；弱層隨地形傾斜為模型假設、未按比例",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04/vector-art/platform-front-face.svg",
+      "source": "奇聞檔案局 H04 原創平台切口側面剖面；模型條件、未按比例",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04/vector-art/wind-moves-snow.svg",
+      "source": "奇聞檔案局 H04 原創風搬運積雪示意；非現場影像、未按比例",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04/vector-art/slab-edge-displaced.svg",
+      "source": "奇聞檔案局 H04 原創雪板滑移剖面；物理可能、非事故重演",
+      "license": "Mokaair original"
     }
   ],
   "scenes": [
@@ -1247,7 +1267,7 @@
       "chapter": "小雪板為何可能延遲",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a compact block of layered snow on a plain outdoor testing bench in daylight. Its cohesive upper section and slightly granular lower layer are visible in the centre, lit from the side. This is a generic snow sample and contains no tools or markings.",
+        "prompt": "Close-up of a rectangular block of tightly packed white snow with icy faces, resting directly on a plain grey outdoor bench. One solid white upper mass meets a thin grainy base of loose white snow crystals. Cool side light reveals the frosty texture and a few white grains touching the base. The block fills the centre.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1390,11 +1410,10 @@
     },
     {
       "id": "snow-over-step",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Medium side view of a snow-covered mountain ledge in daylight. A shallow natural overhang suggests a buried ground step beneath a continuous snow cover. Keep the simple central terrain feature readable, without people, buildings or signs.",
-        "camera": "drift",
-        "visual": "still"
+        "svg": "docs/videos/curio-h04/vector-art/snow-over-step.svg",
+        "caption": "模型條件示意／弱層隨地形傾斜為假設・未按比例"
       },
       "claims": [
         "c26"
@@ -1426,11 +1445,10 @@
     },
     {
       "id": "platform-front-face",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Low close-up of the upright cut face of a snow bank behind a small flat platform, in soft daytime light. The compact snow rests above the open lower space; layered texture is central. The shot contains only the cut bank and the empty platform.",
-        "camera": "push in",
-        "visual": "still"
+        "svg": "docs/videos/curio-h04/vector-art/platform-front-face.svg",
+        "caption": "平台切口示意／模型條件・未按比例"
       },
       "claims": [
         "c27"
@@ -1497,11 +1515,10 @@
     },
     {
       "id": "wind-moves-snow",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Close-up across a mountain snow surface in bright daylight. Loose snow grains skim sideways along the ground toward a shallow depression in the centre; the air above remains clear. The emphasis is on wind moving existing surface snow.",
-        "camera": "pull out",
-        "visual": "still"
+        "svg": "docs/videos/curio-h04/vector-art/wind-moves-snow.svg",
+        "caption": "風搬運積雪示意／非現場影像・未按比例"
       },
       "claims": [
         "c29"
@@ -1536,7 +1553,7 @@
       "id": "drift-deposition",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a shallow snow hollow collecting windblown grains in daylight. A rounded deposit builds against the far edge in the central frame, while the near surface is scoured smoother. Side light distinguishes the accumulating mound.",
+        "prompt": "Low oblique close-up of a broad white snow crest rising gently from continuous snow-covered ground in daylight. The crest merges smoothly into the surrounding snow. A thin stream of fine white grains skims sideways along the ground and collects on the rounded crest. Cool side light reveals the growing deposit at the centre.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1554,7 +1571,7 @@
       "id": "weight-analogy",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a generic mittened hand adding one small folded cloth bundle onto a stack already resting on a fabric sling in daylight. The centre of the sling bends slightly under the load. This simple everyday comparison uses only the hand, cloth and sling.",
+        "prompt": "Close-up of folded cloth bundles resting directly in the sagging centre of a wide fabric sling. Every bundle touches the one below it, and the lowest bundle presses directly into the curved sling. The sling continues upward to the upper left and upper right edges, supporting the whole stack. Plain background and soft daylight.",
         "camera": "drift",
         "visual": "still"
       },
@@ -1604,11 +1621,10 @@
     },
     {
       "id": "slab-edge-displaced",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Medium side view of a small cohesive snow slab displaced a short distance down a simple empty slope in daylight. A shallow gap at its upper edge and a compact displaced block are central. The view is a conceptual aftermath, with no tent, person or large powder cloud.",
-        "camera": "tilt up",
-        "visual": "still"
+        "svg": "docs/videos/curio-h04/vector-art/slab-edge-displaced.svg",
+        "caption": "滑移機制示意／物理可能・非事故重演"
       },
       "claims": [
         "c28",
@@ -1725,7 +1741,7 @@
       "id": "small-slab-remains",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of a small localized snow slab deposit on the open upper slope of a broad, rounded, treeless Ural hillside in daylight. A limited cluster of compact snow blocks rests beneath a short fracture edge in the central area. Most of the surrounding broad snow-covered slope remains smooth, extending toward a gently curved skyline.",
+        "prompt": "Wide daylight view across an open, rounded Ural hillside. At the centre is a small patch of three irregular angular pieces of compact white snow. Their broad flat tops and pale blue broken sides rest on the snow surface immediately below a short jagged edge. The patch occupies a small part of the frame. A continuous smooth snow slope surrounds it and rises to a low curved skyline.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -1779,7 +1795,7 @@
       "id": "science-next-evidence",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot. Distant rear view of two anonymous field researchers standing on a summer hillside in daylight. One holds a plain measuring pole while the other gestures toward a ground step. They are small within the landscape, with hidden faces and the terrain feature centred.",
+        "prompt": "Wide daylight view of a late-summer Ural hillside. A short irregular earthen step crosses the central grassy slope, with shallow exposed soil below its edge and grass continuing above it. A plain pale measuring pole lies diagonally along the foreground soil at one side. The soil step and surrounding landscape dominate the composition.",
         "camera": "drift",
         "visual": "still"
       },
@@ -1898,7 +1914,7 @@
       "id": "snow-return-season",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of an unoccupied mountain shoulder covered by winter snow in daylight. A smooth wind-shaped surface hides the ground contours, with distant bare ridges on the horizon. The centre is simple terrain without people or structures.",
+        "prompt": "Wide midday view of a broad, low, rounded Ural mountain shoulder. Continuous pale snow covers the foreground and central slope, with shallow curved wind ripples softening the surface. Layers of low bare rounded ridges recede beneath a diffuse overcast sky. Snow-covered terrain and sky fill the entire composition.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1942,7 +1958,7 @@
       "id": "nearby-avalanche-context",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of an empty snowy mountain slope in clear daylight. A localized crown break and a small deposit below it occupy the centre at a distance. This is a generic illustration of recent slab avalanche traces, not a reproduction of a particular photograph.",
+        "prompt": "Wide oblique daylight view of a broad rounded snowy hillside. A short irregular fracture in the central snow surface exposes a thin pale-blue vertical edge. Directly downslope is a compact patch of several angular white snow fragments with flat faces. Smooth continuous snow surrounds the small disturbed patch, and low curved snowy ridges cross the horizon.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1960,7 +1976,7 @@
       "id": "separate-ridge",
       "template": "shot",
       "data": {
-        "prompt": "Wide view across a broad mountain basin in winter daylight, from one empty ridge toward a separate slope across the valley. The central gap between the slopes is easy to see. Natural light defines the terrain without any route lines or buildings.",
+        "prompt": "Wide winter daylight view across a broad shallow basin between two low rounded Ural hillsides. A smooth snow-covered shoulder fills the lower foreground. Across the central valley, a separate broad slope rises gently toward a rounded skyline. Pale blue shading makes the intervening ground clear. Snow surfaces, low curved ridges and open sky form the entire composition.",
         "camera": "drift",
         "visual": "still"
       },
@@ -2048,7 +2064,7 @@
       "id": "natural-slope-no-cut",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot. Side view of an uninterrupted snow-covered mountain slope in daylight. A natural compact snow ledge is centred above smooth terrain, with no camping platform or tent present. The scene emphasizes the uncut shape of the terrain.",
+        "prompt": "Wide side view of a broad rounded Ural hillside in diffuse winter daylight. The central snow surface follows one continuous convex curve from the upper shoulder into the lower slope. Shallow natural wind ripples follow this surface. Smooth snow-covered ground fills the frame beneath a gently curved skyline.",
         "camera": "pan right",
         "visual": "still"
       },

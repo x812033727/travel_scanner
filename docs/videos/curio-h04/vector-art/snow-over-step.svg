@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">雪下剖面：模型假設</title>
+  <desc id="desc">原創模型條件示意。平緩連續的雪面之下，上方相連雪層覆蓋一條薄弱層。弱層跟隨埋藏地形的局部較陡區段，是模型假設，不是1959年現場實測剖面。未按比例，沒有角度、距離或厚度數值。</desc>
+  <rect width="1600" height="900" fill="#e5eeea"/>
+
+  <!-- A continuous gentle snow surface covers every part of the buried terrain. -->
+  <path d="M105 360 Q810 306 1495 265 L1495 816 H105Z" fill="#d9e6df"/>
+  <path d="M105 360 Q810 306 1495 265 L1495 422 L992 470 Q938 473 898 494 L648 624 Q567 652 472 658 L105 700Z" fill="#fffdf5"/>
+  <path d="M105 360 Q810 306 1495 265" fill="none" stroke="#213d4c" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- A thin continuous weak layer follows the local buried terrain shape. -->
+  <path d="M105 700 L472 658 Q567 652 648 624 L898 494 Q938 473 992 470 L1495 422 L1495 436 L992 484 Q938 487 898 508 L648 638 Q567 666 472 672 L105 714Z" fill="#c6a270" stroke="#8b7655" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- Ground remains entirely buried; the local steep section is a slope, not a cliff. -->
+  <path d="M105 765 L472 723 Q567 717 648 689 L898 559 Q938 538 992 535 L1495 487 L1495 816 H105Z" fill="#b8b9a6"/>
+  <path d="M105 765 L472 723 Q567 717 648 689 L898 559 Q938 538 992 535 L1495 487" fill="none" stroke="#58817e" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M167 795 L216 786 M1175 752 L1231 740 M1365 637 L1412 629" fill="none" stroke="#99a58f" stroke-width="4" stroke-linecap="round"/>
+
+  <rect x="82" y="66" width="54" height="7" rx="3" fill="#4d8180"/>
+  <text x="82" y="132" font-size="44" font-weight="750" fill="#213d4c">雪下剖面：模型假設</text>
+  <text x="1160" y="230" font-size="36" font-weight="650" fill="#213d4c" text-anchor="middle">平緩連續的雪面</text>
+  <text x="490" y="488" font-size="39" font-weight="650" fill="#213d4c" text-anchor="middle">上方相連雪層</text>
+
+  <polyline points="815,550 945,650 1010,650" fill="none" stroke="#8b7655" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1028" y="664" font-size="35" font-weight="650" fill="#213d4c">薄弱層（假設）</text>
+  <text x="651" y="795" font-size="35" font-weight="600" fill="#213d4c" text-anchor="middle">埋藏地形的局部較陡區段</text>
+</svg>

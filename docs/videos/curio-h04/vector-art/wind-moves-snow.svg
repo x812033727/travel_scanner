@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">風搬運地表積雪：概念示意</title>
+  <desc id="desc">原創概念圖。少量雪粒貼近雪面向右搬運，左側雪面較平滑，右側淺窪處累積一小堆雪。箭頭只表示概念搬運方向，不是1959當晚的實測風向；沒有從天空降下的雪，沒有數值，未按比例。</desc>
+  <rect width="1600" height="900" fill="#e5eeea"/>
+  <rect x="82" y="66" width="54" height="7" rx="3" fill="#4d8180"/>
+  <text x="82" y="132" font-size="44" font-weight="750" fill="#213d4c">風會搬走地表的雪</text>
+
+  <!-- Continuous ground with a shallow hollow on the right. -->
+  <path d="M0 642 C230 641 420 644 645 650 C810 654 918 678 1053 698 C1190 718 1350 667 1600 654 L1600 900 H0Z" fill="#fffdf5" stroke="#213d4c" stroke-width="4"/>
+  <path d="M0 819 C310 792 583 831 825 826 C1087 822 1362 814 1600 834 L1600 900 H0Z" fill="#edf2ed"/>
+  <path d="M109 676 Q200 661 283 674 M180 703 Q289 689 393 699 M330 674 Q423 665 505 676" fill="none" stroke="#97b6ae" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Deposited snow is in direct contact with the shallow ground hollow. -->
+  <path d="M903 675 C974 664 1012 626 1092 611 C1166 598 1220 619 1270 648 C1322 675 1366 669 1407 664 C1321 685 1175 716 1053 698 C1006 691 953 683 903 675Z" fill="#fffdf5" stroke="#213d4c" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M978 673 C1078 631 1175 636 1257 667 C1174 686 1089 688 1014 679Z" fill="#dbe7df"/>
+
+  <!-- Short horizontal arrows: illustrative direction, never a measured compass bearing. -->
+  <g fill="none" stroke="#4d8180" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M350 555 H571 M548 537 L574 555 L548 573"/>
+    <path d="M704 555 H922 M899 537 L925 555 L899 573"/>
+  </g>
+  <text x="641" y="474" font-size="33" font-weight="600" fill="#4d8180" text-anchor="middle">搬運方向示意</text>
+
+  <!-- All grains stay near the surface; the upper sky is empty. -->
+  <g fill="#fffdf5" stroke="#4d8180" stroke-width="3" stroke-linejoin="round">
+    <path d="M283 618 l9 -4 7 7 -9 6Z"/>
+    <path d="M359 605 l8 -3 5 6 -7 5Z"/>
+    <path d="M436 625 l9 -5 7 7 -10 5Z"/>
+    <path d="M501 605 l8 -4 7 6 -6 7Z"/>
+    <path d="M579 620 l10 -3 5 7 -10 4Z"/>
+    <path d="M648 601 l8 -5 8 7 -9 6Z"/>
+    <path d="M713 622 l9 -3 5 7 -8 4Z"/>
+    <path d="M789 605 l10 -4 5 8 -9 5Z"/>
+    <path d="M848 628 l8 -4 7 7 -8 5Z"/>
+    <path d="M922 609 l8 -4 8 6 -9 6Z"/>
+    <path d="M986 614 l9 -3 5 7 -8 5Z"/>
+  </g>
+  <path d="M681 325 V365" fill="none" stroke="#4d8180" stroke-width="3"/>
+  <text x="681" y="302" font-size="37" font-weight="650" fill="#213d4c" text-anchor="middle">風吹動既有積雪</text>
+  <text x="334" y="768" font-size="37" font-weight="650" fill="#213d4c" text-anchor="middle">雪被搬走，表面較平滑</text>
+  <text x="1160" y="778" font-size="37" font-weight="650" fill="#213d4c" text-anchor="middle">另一處逐漸堆積</text>
+</svg>

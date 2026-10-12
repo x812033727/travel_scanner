@@ -53,3 +53,4 @@ scope:
 - 119句旁白經三輪局部重錄與四句口語修正，逐句機器檢查0 flagged；正文604.0667秒、最長狀態7.7333秒。audio review `f28e20d8-8c02-4b9b-8af9-a50b8494b847` 已自動核准，2026-10-12 06:41 UTC原生pull及GET200讀回一致。真人完整播放仍待成片審看。
 - 兩次轉寫答案遺失分別取得站主單筆一次重試授權，均已成功；Windows rename EPERM另依confirmed原件核對恢復，0重買。詳情與收據索引在PRODUCTION.md。
 - 帳篷、弱層插圖小樣實看可保留；7張原創向量示意已實看並整合，舊足跡take保留。65張情境插圖主批次製作中；正式字卡及成片尚未完成。最新文件測試199 passed／0 failed。
+- 08:02 UTC來源更新為 `3f2fdb0864afaa199e994f47bb180c6662e2e46efcc74da2c307e4268353e5e0`：現為60張AI情境插圖、12張已實看的原創SVG、3張授權文書裁切。speech/timeline不變。13項材料性畫面問題以4張SVG及9張窄範圍修圖處理；完整候選及修正收據保留在外部 `_audit/science-repairs-integration/`。08:04文件檢查199 passed／0 failed。正式render、assemble、繁中字幕與final review接續完成。
