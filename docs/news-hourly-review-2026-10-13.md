@@ -65,6 +65,10 @@ not an approval of either draft.
   `tasks/open/2026-10-13-detect-duplicate-hourly-news-events-across.md`.
   Candidate-category correction remains separately tracked in
   `tasks/open/2026-10-10-add-audited-held-news-category-correction.md`.
+- Published candidate cards still showed the old `五語已就緒，待發布` instruction
+  alongside `已發布`; rejected cards similarly retained an old hold label.
+  The display-only follow-up is
+  `tasks/open/2026-10-13-hide-stale-news-hold-instructions-after.md`.
 - A separate [draft PR #1479](https://github.com/x812033727/travel_scanner/pull/1479)
   fixes false positives for reported or negated crypto trading words. It is
   not merged or deployed and did not change these candidate outcomes.
