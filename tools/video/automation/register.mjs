@@ -86,6 +86,12 @@ Hooks (open loops):
   alone: 「兩百七十二頁，只要講到這裡的句子就塗掉」 needs nothing added, because a listener remembers
   it without being asked to. A line that only announces that another item follows (「這個地方的名字
   越來越多」) is not a hook at all, it is a table of contents; cut it and let the item land.
+- 「還記得…」 appears at most five times in an episode and never twice in a row. Passing the
+  panel is not the same as sounding right: one rewrite cleared all ten questions with ten of them,
+  and the same reader said the last four minutes had stopped being a story and become a formula,
+  while the four sister episodes used four or five each. Keep the phrase for hooks that reach back
+  minutes. Inside a chapter, carry the thing forward instead (「那根量水深的桿子，現在有用了」): a
+  hard link is not a retelling, because it moves the object on rather than reporting it again.
 - Naming a loop is not paying it. The sentence after 「還記得那…嗎？」 carries something the
   listener does not have yet: a new fact, a new number, something that happened later. Re-reading
   the line that planted it replays the hook instead of paying it, and a blind reader fails that as
