@@ -627,13 +627,17 @@ export function readChapterAnswer(answer, { key, ids, cast = [], sources = 0, fa
   // The open loops this chapter plants and pays off (script-writing.md §故事主線與鉤子), with the
   // line ids the writer was given; a loop whose payoff a later chapter owns leaves it out.
   const kept = new Set(scenes.flatMap((scene) => scene.lines.map((line) => line.id)));
+  // A loop belongs to this chapter when it plants it or pays it off. The planting chapter keeps a
+  // record with no payoff (the later chapter owns it); the paying chapter keeps one whose setup is
+  // an earlier chapter's line, which is how a cross-chapter loop survives into composeStory.
   const loops = (Array.isArray(answer.loops) ? answer.loops : [])
-    .filter((loop) => isObject(loop) && isText(loop.what) && kept.has(renamed.get(loop.setup) ?? loop.setup))
+    .filter((loop) => isObject(loop) && isText(loop.what))
     .map((loop) => {
       const setup = renamed.get(loop.setup) ?? loop.setup;
       const payoff = renamed.get(loop.payoff) ?? loop.payoff;
       return { setup, ...(kept.has(payoff) ? { payoff } : {}), what: clip(loop.what, 40) };
-    });
+    })
+    .filter((loop) => kept.has(loop.setup) || isText(loop.payoff));
   return { chapter: { key, title: clip(answer.title, 30), scenes, claims, ...(loops.length ? { loops } : {}), ...(thumbnail ? { thumbnail_shot: thumbnail } : {}) }, lexicon };
 }
 
@@ -706,8 +710,9 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
   }
   // The whole story's open loops: every chapter's, keeping only the ones whose payoff was written.
   const spoken = new Map(scenes.flatMap((scene) => scene.lines.map((line) => line.id)).map((id, order) => [id, order]));
-  const loops = CHAPTER_KEYS.flatMap((key) => (chapters[key]?.loops ?? []).map((loop) => ({ ...loop, chapter: key })))
+  const loops = [...new Map(CHAPTER_KEYS.flatMap((key) => (chapters[key]?.loops ?? []).map((loop) => ({ ...loop, chapter: key })))
     .filter((loop) => spoken.has(loop.setup) && spoken.has(loop.payoff) && spoken.get(loop.payoff) > spoken.get(loop.setup))
+    .map((loop) => [loop.setup, loop])).values()]
     .map(({ setup, payoff, what }) => ({ setup, payoff, what }));
   const shots = scenes.filter((scene) => scene.template === "shot").map((scene) => scene.id);
   const thumbnail = shots.includes(chapters.hook?.thumbnail_shot) ? chapters.hook.thumbnail_shot : shots[0];

@@ -202,6 +202,40 @@ test("the panel passes only when every required question is yes; a missing or ma
   assert.equal(panelVerdict(null).failed.length, 9);
 });
 
+test("a yes the reader quotes no line for is not a yes", () => {
+  // The questions ask for one line of the narration quoted with its id in brackets, and every one
+  // of the 240 answers the first five episodes were judged on carried one. So a yes with nothing
+  // quoted is a malformed reply, and approving a script on it would leave no auditable basis at
+  // all: a truncated or lazy answer would pass everything (PR #1478 review, 2026-10-13).
+  const ten = (entry) => ({ answers: NARRATIVE_PANEL.map((question) => ({ id: question.id, ...entry })) });
+  const quoted = panelVerdict(ten({ yes: true, evidence: "[mc1a] 一八七二年十二月四日下午。" }));
+  assert.equal(quoted.passed, true);
+  for (const [what, entry] of [
+    ["no evidence key at all", { yes: true }],
+    ["blank evidence", { yes: true, evidence: "   " }],
+    ["evidence that is not a string", { yes: true, evidence: 7 }],
+  ]) {
+    const verdict = panelVerdict(ten(entry));
+    assert.equal(verdict.passed, false, what);
+    assert.equal(verdict.failed.length, 9, what);
+    assert.equal(verdict.failed[0].evidence, "no evidence quoted", what);
+  }
+  // Something was written, but it quotes no line, so the answer still cannot be audited. The
+  // problem keeps the text so a person can see what the reader actually said.
+  const unquoted = panelVerdict(ten({ yes: true, evidence: "是，整支片都很好" }));
+  assert.equal(unquoted.passed, false);
+  assert.equal(unquoted.failed[0].evidence, "no line id quoted: 是，整支片都很好");
+  assert.match(unquoted.problems[0], /no line id quoted/);
+  // A chapter name carries no line id, so a reader quoting one quotes a line from that chapter
+  // instead; ids are short and may carry a digit or a dash.
+  for (const evidence of ["[a1] 一句。", "[tg7af] 一句。", "[q1-ex] 一句。", "前面說過 [ro101] 這句"]) {
+    assert.equal(panelVerdict(ten({ yes: true, evidence })).passed, true, evidence);
+  }
+  // A no still records what the reader quoted, so the writer knows which line to look at.
+  const no = ten({ yes: false, evidence: "[mc5b] 不見的，是船上唯一那艘小艇。" });
+  assert.equal(panelVerdict(no).failed[0].evidence, "[mc5b] 不見的，是船上唯一那艘小艇。");
+});
+
 test("lint reads the storytelling of a narrated episode: the teaser is an error, the rest are warnings, all of them tagged", () => {
   const doc = stretched();
   doc.scenes.at(-1).lines = [

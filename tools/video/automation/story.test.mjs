@@ -658,6 +658,48 @@ test("past the script, a story takes the drama's own steps to the upload: Jev's 
   assert.equal(site.reviewsOf(SLUG).some((review) => review.gate === "script" || review.gate === "outline"), false, "neither the outline nor the script went to the owner");
 });
 
+test("a loop one chapter plants and a later one pays off survives into the merged script", async () => {
+  // A story is written a chapter a call, so the chapter that plants a hook cannot write its payoff
+  // and the chapter that pays it does not own the setup line. Both halves used to be thrown away —
+  // the planting chapter's for having no payoff, the paying chapter's for a setup that is not one
+  // of its own lines — so every cross-chapter loop vanished from video.json and lint then warned
+  // that the story had none (PR #1478 review, 2026-10-13). A loop inside one chapter is the weak
+  // kind; these are the ones the rules ask for.
+  let planted = null;
+  let open = null;
+  const world = storyWorld({
+    answers: standardAnswers({
+      "writer:story": (body) => {
+        const answer = chapterAnswer(body.payload.chapter.key, body.payload);
+        if (body.payload.chapter.key === "hook") {
+          planted = answer.scenes[0].lines[0].id;
+          return { ...answer, loops: [{ setup: planted, what: "那把傘為什麼等了三千年" }] };
+        }
+        if (body.payload.chapter.key === "now") {
+          // The writer learns what is still hanging from its payload, not from the test.
+          open = body.payload.loops_open;
+          const hanging = open[0];
+          const last = answer.scenes.at(-1).lines.at(-1).id;
+          return { ...answer, loops: [{ setup: hanging.setup, payoff: last, what: hanging.what }] };
+        }
+        return answer;
+      },
+    }),
+  });
+  const { automation, video } = world;
+  await steps(automation, 20);
+  const doc = video();
+  assert.ok(doc, "the script was merged");
+  assert.deepEqual(open, [{ setup: planted, what: "那把傘為什麼等了三千年", chapter: "hook" }], "the later chapter was told the hook was still hanging");
+  assert.equal(doc.loops.length, 1, "one loop, not two halves and not none");
+  const [loop] = doc.loops;
+  assert.equal(loop.setup, planted, "the setup is the line the hook planted");
+  assert.equal(loop.what, "那把傘為什麼等了三千年");
+  const order = new Map(doc.scenes.flatMap((scene) => scene.lines).map((line, index) => [line.id, index]));
+  assert.ok(order.get(loop.payoff) > order.get(loop.setup), "and the payoff is spoken after it");
+  assert.ok(order.get(loop.setup) < 5, "the setup is in the opening chapter");
+});
+
 test("a chapter the writer answers badly is asked for again once, then the video is blocked", async () => {
   let asked = 0;
   const world = storyWorld({

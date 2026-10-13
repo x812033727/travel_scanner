@@ -283,6 +283,9 @@ const isObject = (value) => value !== null && typeof value === "object" && !Arra
  * answered otherwise or malformed is a "no" (as the checker's missing verdict is a problem in
  * series.mjs scriptVerdict). `problems` are the lines the writer is sent.
  */
+/** A line id in brackets, as the panel's own answer format prints it: `[mc1a] …`. */
+const EVIDENCE_LINE_ID = /\[[A-Za-z0-9_-]{2,}\]/;
+
 export function panelVerdict(answer) {
   const given = new Map();
   for (const entry of Array.isArray(answer?.answers) ? answer.answers : []) {
@@ -290,8 +293,13 @@ export function panelVerdict(answer) {
   }
   const answers = NARRATIVE_PANEL.map(({ id, question, required }) => {
     const entry = given.get(id);
-    const yes = entry?.yes === true;
-    const evidence = typeof entry?.evidence === "string" && entry.evidence.trim() ? entry.evidence.trim().slice(0, 200) : entry ? "no evidence quoted" : "no answer";
+    const quoted = typeof entry?.evidence === "string" && entry.evidence.trim() ? entry.evidence.trim().slice(0, 200) : null;
+    // A "yes" has to be auditable: the question asks for one line of the narration quoted with its
+    // id in brackets, so a yes with nothing quoted is a malformed answer, not an approval. Without
+    // this a truncated or lazy reply ("yes" ten times) would pass a script with no basis at all.
+    const cited = Boolean(quoted) && EVIDENCE_LINE_ID.test(quoted);
+    const yes = entry?.yes === true && cited;
+    const evidence = cited ? quoted : quoted ? `no line id quoted: ${quoted}` : entry ? "no evidence quoted" : "no answer";
     return { id, question, required, yes, evidence };
   });
   const failed = answers.filter((each) => each.required && !each.yes);
