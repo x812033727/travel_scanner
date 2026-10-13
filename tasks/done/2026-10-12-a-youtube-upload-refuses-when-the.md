@@ -1,13 +1,13 @@
 ---
 id: 2026-10-12-a-youtube-upload-refuses-when-the
 title: A YouTube upload refuses when the channel already has the video, and a Studio link never replaces a different recorded one
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-duplicate-upload
 claimed_at: 2026-10-12T13:33:37Z
 created_at: 2026-10-12T13:33:23Z
-completed_at:
+completed_at: 2026-10-13T00:15:27Z
 branch: claude/duplicate-video-upload-a5fc43
 depends_on: []
 scope:
@@ -35,7 +35,8 @@ was sent again in `studio` mode with `mLxCEB_wSLk`, and the details step overwro
 - [x] A `studio` run whose pasted id differs from a recorded `youtube_video_id` that is still on
       the channel fails the details step instead of replacing it; once the extra video is deleted
       in Studio, a retry links the pasted one.
-- [ ] Deployed.
+- [x] Deployed: merged as #1474 (5c2d32763), deployed 2026-10-13 00:12:42–00:14:06Z, no
+      migration; host verify 11/11 plus the guard present in the api image.
 - [ ] The owner deletes `XSFNRORVuYo` in Studio (keep `mLxCEB_wSLk`: the site links it and its
       EN/JA/KO dubs were uploaded to it).
 
