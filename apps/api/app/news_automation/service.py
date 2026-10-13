@@ -12,6 +12,7 @@ from uuid import UUID
 
 from redis.asyncio import Redis
 from sqlalchemy import and_, case, func, inspect, or_, select
+from sqlalchemy.exc import DBAPIError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
@@ -1402,6 +1403,8 @@ async def retry_candidate(
     row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
     if row is None:
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
+    if row.error_code == "news_navigation_evidence_repaired":
+        raise AppError(409, "news_candidate_not_refreshable", "先更新修補後保留的來源")
     if row.status not in {
         "manual_review",
         "shadow_review",
@@ -1431,6 +1434,8 @@ async def reverify_candidate(
     )
     if row is None:
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
+    if row.error_code == "news_navigation_evidence_repaired":
+        raise AppError(409, "news_candidate_not_refreshable", "先更新修補後保留的來源")
     ingested_redraft = row.status == "needs_redraft" and await _ingested_bundle_available(
         session, row
     )
@@ -1598,18 +1603,118 @@ async def refresh_candidate_evidence(
     distinct: that decision is carried to the new evidence.
     """
 
-    row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
+    row = await session.get(
+        NewsCandidate, candidate_id, with_for_update=True, populate_existing=True
+    )
     if row is None:
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
     if (
         row.status != "manual_review"
-        or row.error_code != "news_evidence_changed"
+        or row.error_code not in {"news_evidence_changed", "news_navigation_evidence_repaired"}
         or row.guide_article_id is None
     ):
         raise AppError(409, "news_candidate_not_refreshable", "這個候選不是在等來源更新")
-    evidence = list(
-        await session.scalars(select(NewsEvidence).where(NewsEvidence.candidate_id == row.id))
-    )
+    repair: dict[str, Any] | None = None
+    before_evidence: list[dict[str, Any]] | None = None
+    if row.error_code == "news_navigation_evidence_repaired":
+        if redis is None:
+            raise AppError(409, "news_navigation_refresh_unavailable", "無法確認修補工作是否完成")
+        # The repair is a separate, committed operation. Lock its complete held state
+        # before fetching retained pages so an editor, worker or another refresh cannot
+        # turn the saved receipt into an authorization for a different evidence set.
+        try:
+            snapshot = await held_bundle_snapshot(session, redis, candidate_id, lock=True)
+        except DBAPIError as error:
+            sqlstate = getattr(error.orig, "sqlstate", None) or getattr(
+                error.orig, "pgcode", None
+            )
+            if sqlstate != "55P03":
+                raise
+            await session.rollback()
+            raise AppError(
+                409, "news_navigation_refresh_busy", "來源修補仍有編輯或處理中的工作"
+            ) from error
+        state = snapshot["state"]
+        repairs = [
+            item for item in state["audits"]
+            if item["target"] == f"news-candidate:{candidate_id}"
+            and item["action"] == "news_navigation_evidence_repaired"
+            and item["actor_user_id"] is not None
+            and item["metadata_json"].get("system_actor") is False
+        ]
+        if len(repairs) != 1:
+            raise AppError(409, "news_navigation_receipt_missing", "找不到有效的人工導航修補紀錄")
+        repair = repairs[0]
+        receipt = repair["metadata_json"]
+        before = receipt.get("before_evidence")
+        retained = receipt.get("after_evidence")
+        current = state["evidence"]
+        if (
+            not isinstance(before, list)
+            or not isinstance(retained, list)
+            or not all(
+                isinstance(item, dict)
+                and isinstance(item.get("id"), str)
+                and isinstance(item.get("url"), str)
+                for item in before
+            )
+            or not all(
+                isinstance(item, dict)
+                and isinstance(item.get("id"), str)
+                and isinstance(item.get("url"), str)
+                for item in retained
+            )
+            or not retained
+            or len({item["id"] for item in before}) != len(before)
+            or len({item["id"] for item in retained}) != len(retained)
+            or not {item["id"] for item in retained} < {item["id"] for item in before}
+            or held_bundle_digest(retained) != held_bundle_digest(current)
+            or row.evidence_hash != evidence_fingerprint(current)
+            or receipt.get("fresh_verification_required") is not True
+            or receipt.get("queue_calls") != 0
+        ):
+            raise AppError(409, "news_navigation_receipt_mismatch", "保留來源或修補收據已變更")
+        retained_ids = {item["id"] for item in retained}
+        removed_urls = {
+            item["url"] for item in before
+            if item["id"] not in retained_ids
+        }
+        if (
+            state["live_jobs"]
+            or any(item["status"] == "running" for item in state["runs"])
+            or len(state["source"]) != 1
+            or not state["source"][0]["enabled"]
+            or state["source"][0]["scan_lock_until"] is not None
+            or state["candidate"]["published_at"] is not None
+            or state["candidate"]["would_publish"]
+            or len(state["locales"]) != len(LOCALES)
+            or {item["locale"] for item in state["locales"]} != set(LOCALES)
+            or any(
+                item["published_version"] is not None or item["published_at"] is not None
+                for item in state["locales"]
+            )
+        ):
+            raise AppError(409, "news_navigation_refresh_busy", "來源修補仍有工作或五語草稿不完整")
+        documents = [
+            GuideDocument.model_validate(item["draft_json"]).model_dump(mode="json")
+            for item in state["locales"]
+        ]
+        if (
+            any(_document_cites_navigation(document, removed_urls) for document in documents)
+            or _document_cites_navigation(state["candidate"]["claim_ledger_json"], removed_urls)
+        ):
+            raise AppError(409, "news_navigation_still_cited", "五語草稿或主張仍引用已移除的導航頁")
+        if held_bundle_digest(receipt.get("claim_ledger")) != held_bundle_digest(
+            state["candidate"]["claim_ledger_json"]
+        ):
+            raise AppError(409, "news_navigation_receipt_mismatch", "原始主張紀錄已變更")
+        before_evidence = current
+    evidence_query = select(NewsEvidence).where(NewsEvidence.candidate_id == row.id)
+    if repair is not None:
+        evidence_query = evidence_query.with_for_update(nowait=True).execution_options(
+            populate_existing=True
+        )
+    evidence = list(await session.scalars(evidence_query))
     previous_hash = row.evidence_hash
     distinct = (
         await session.scalar(
@@ -1655,6 +1760,15 @@ async def refresh_candidate_evidence(
         )
     await _queue_reverify(session, row, payload.reason, marker=EVIDENCE_REFRESH_MARKER)
     handoff = await _held_ingestion_handoff(session, row)
+    repair_metadata: dict[str, Any] = {}
+    if repair is not None:
+        repair_metadata = {
+            "navigation_repair_audit_id": repair["id"],
+            "before_evidence": before_evidence,
+            "after_evidence": sorted(
+                (_held_row(item) for item in evidence), key=lambda item: item["id"]
+            ),
+        }
     audit(
         session,
         actor,
@@ -1664,6 +1778,7 @@ async def refresh_candidate_evidence(
         changed_urls=changed,
         previous_evidence_sha256=previous_hash,
         evidence_sha256=row.evidence_hash,
+        **repair_metadata,
         **handoff,
         **({"retry_count": row.retry_count} if handoff else {}),
     )
@@ -1835,7 +1950,7 @@ async def approve_candidate(
     stalled = (
         confirmed
         and row.status in {"manual_review", "failed"}
-        and row.error_code != "news_evidence_changed"
+        and row.error_code not in {"news_evidence_changed", "news_navigation_evidence_repaired"}
     )
     if not (waiting or stalled) or not await verified_zh_draft(session, row):
         raise AppError(409, "news_candidate_not_approvable", "這個候選目前不能確認發布")
@@ -2044,6 +2159,8 @@ async def publish_candidate(
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
     if row.status not in {"manual_review", "shadow_review"} or row.guide_article_id is None:
         raise AppError(409, "news_candidate_not_publishable", "這個候選目前不能發布")
+    if row.error_code == "news_navigation_evidence_repaired":
+        raise AppError(409, "news_candidate_not_publishable", "先更新修補後保留的來源")
     try:
         documents, versions = await publication_bundle(session, row, redis)
     except AppError as problem:

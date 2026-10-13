@@ -265,6 +265,26 @@ describe("AdminNewsWorkspace", () => {
     expect(await screen.findByText(/已抓取最新來源並排入重新查核/)).toBeTruthy();
   });
 
+  it("offers source refresh after an audited legacy navigation repair", async () => {
+    const repaired = {
+      ...summary, id: "00000000-0000-4000-8000-000000000083",
+      source_title: "A repaired legacy article",
+      error_code: "news_navigation_evidence_repaired",
+    };
+    serveRows(repaired);
+    render(<AdminNewsWorkspace />);
+    fireEvent.click(await screen.findByRole("button", { name: /A repaired legacy article/ }));
+    expect(await screen.findByText(/舊版導覽頁證據已留下人工修補稽核/)).toBeTruthy();
+    expect(actionButtons()).toEqual(["用最新來源重新查核", "退件"]);
+    fireEvent.change(screen.getByLabelText(/原因（必填/), {
+      target: { value: "確認只刷新修補後保留的來源" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: "用最新來源重新查核" }));
+    await waitFor(() => expect(posts()).toEqual([
+      `/api/travel/admin/news/candidates/${repaired.id}/refresh-evidence`,
+    ]));
+  });
+
   it.each([
     ["published", true],
     ["manual_review", false],
@@ -329,6 +349,7 @@ describe("AdminNewsWorkspace", () => {
     ["failed", "news_processing_stale", "00000000-0000-4000-8000-000000000002", ["重新查核", "重新執行", "退件"]],
     ["needs_evidence", "news_evidence_insufficient", null, ["退件"]],
     ["manual_review", "news_evidence_changed", "00000000-0000-4000-8000-000000000002", ["用最新來源重新查核", "退件"]],
+    ["manual_review", "news_navigation_evidence_repaired", "00000000-0000-4000-8000-000000000002", ["用最新來源重新查核", "退件"]],
     ["manual_review", "news_verification_failed", "00000000-0000-4000-8000-000000000002", ["重新查核", "退件"]],
     ["manual_review", "news_hard_checks_failed", "00000000-0000-4000-8000-000000000002", ["重新查核", "退件"]],
     ["manual_review", "news_hard_checks_failed", null, ["重新執行", "退件"]],

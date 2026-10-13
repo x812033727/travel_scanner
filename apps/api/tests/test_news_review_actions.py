@@ -3,6 +3,7 @@ parks a candidate that stopped before its five-locale article existed."""
 
 from __future__ import annotations
 
+from copy import deepcopy
 from datetime import UTC, datetime, timedelta
 from typing import Any
 from unittest.mock import AsyncMock, Mock
@@ -10,6 +11,7 @@ from uuid import uuid4
 
 import pytest
 from sqlalchemy import select
+from sqlalchemy.exc import DBAPIError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import get_settings
@@ -23,6 +25,7 @@ from app.news_automation.models import (
     NewsAutomationSettings,
     NewsCandidate,
     NewsEvidence,
+    NewsPipelineRun,
 )
 from app.news_automation.policy import READY_TO_PUBLISH, ZH_DRAFT_READY, document_fingerprint
 from app.news_automation.schemas import (
@@ -32,6 +35,7 @@ from app.news_automation.schemas import (
     VerificationResult,
 )
 from app.problems import AppError
+from tests.test_news_automation import _call_navigation_repair, _navigation_repair_case
 from tests.test_news_pipeline import (
     EVENT_DAY,
     FIRST_PARTY_URL,
@@ -730,3 +734,233 @@ async def test_only_a_changed_evidence_hold_is_refreshed_and_an_unreadable_page_
     assert "TimeoutError" in unreadable.value.detail
     assert stored is not None
     assert (stored.error_code, stored.evidence_hash) == ("news_evidence_changed", "stale")
+
+
+async def repaired_navigation_case() -> tuple[Any, Any, Any, Any, Any]:
+    engine, factory, redis, candidate_id, actor_id, manifest, review = (
+        await _navigation_repair_case()
+    )
+    async with factory() as session:
+        await _call_navigation_repair(
+            session, redis, candidate_id, manifest, review, await session.get(User, actor_id)
+        )
+        await session.commit()
+    return engine, factory, redis, candidate_id, actor_id
+
+
+@pytest.mark.asyncio
+async def test_navigation_repair_refresh_uses_only_retained_source_and_links_both_audits(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory, redis, candidate_id, actor_id = await repaired_navigation_case()
+    canonical_url = "https://www.theverge.com/news/123456/example-announcement"
+    seen_urls: list[str] = []
+
+    async def refresh(_session: Any, evidence: list[NewsEvidence], **_kwargs: Any) -> Any:
+        seen_urls.extend(item.url for item in evidence)
+        assert seen_urls == [canonical_url]
+        evidence[0].content_hash = "b" * 64
+        evidence[0].excerpt = "The newly fetched complete report confirms the update."
+        return [canonical_url], []
+
+    monkeypatch.setattr(service, "refresh_evidence", refresh)
+    try:
+        async with factory() as session:
+            detail = await service.refresh_candidate_evidence(
+                session, await session.get(User, actor_id), candidate_id, ACTION, redis
+            )
+            audits = list(
+                await session.scalars(
+                    select(AdminAuditLog).where(
+                        AdminAuditLog.target == f"news-candidate:{candidate_id}"
+                    )
+                )
+            )
+            repaired = next(
+                item for item in audits if item.action == "news_navigation_evidence_repaired"
+            )
+            refreshed = next(
+                item for item in audits if item.action == "news_candidate_evidence_refreshed"
+            )
+            candidate = await session.get(NewsCandidate, candidate_id)
+        assert (detail.status, detail.error_code) == ("discovered", "news_evidence_refreshed")
+        assert candidate is not None and set(candidate.draft_bundle_json) == set(LOCALES)
+        assert refreshed.metadata_json["navigation_repair_audit_id"] == str(repaired.id)
+        assert (
+            refreshed.metadata_json["before_evidence"]
+            == repaired.metadata_json["after_evidence"]
+        )
+        assert [item["url"] for item in refreshed.metadata_json["after_evidence"]] == [
+            canonical_url
+        ]
+        assert refreshed.metadata_json["after_evidence"][0]["content_hash"] == "b" * 64
+    finally:
+        await redis.aclose()
+        await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_navigation_refresh_requires_a_real_repair_receipt(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory, redis, candidate_id, _actor_id, _manifest, _review = (
+        await _navigation_repair_case()
+    )
+    fetch = AsyncMock()
+    monkeypatch.setattr(service, "refresh_evidence", fetch)
+    try:
+        async with factory() as session:
+            candidate = await session.get(NewsCandidate, candidate_id)
+            assert candidate is not None
+            candidate.error_code = "news_navigation_evidence_repaired"
+            candidate.would_publish = False
+            await session.commit()
+            with pytest.raises(AppError) as refused:
+                await service.refresh_candidate_evidence(
+                    session, EDITOR, candidate_id, ACTION, redis
+                )
+        assert refused.value.code == "news_navigation_receipt_missing"
+        fetch.assert_not_awaited()
+    finally:
+        await redis.aclose()
+        await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("drift", ["evidence", "draft", "claim", "running", "queued"])
+async def test_navigation_refresh_refuses_drift_citations_and_live_work_before_fetch(
+    monkeypatch: pytest.MonkeyPatch, drift: str
+) -> None:
+    engine, factory, redis, candidate_id, _actor_id = await repaired_navigation_case()
+    removed_url = "https://www.theverge.com/news"
+    fetch = AsyncMock()
+    monkeypatch.setattr(service, "refresh_evidence", fetch)
+    try:
+        async with factory() as session:
+            candidate = await session.get(NewsCandidate, candidate_id)
+            assert candidate is not None and candidate.guide_article_id is not None
+            if drift == "evidence":
+                evidence = await session.scalar(
+                    select(NewsEvidence).where(NewsEvidence.candidate_id == candidate_id)
+                )
+                assert evidence is not None
+                evidence.content_hash = "d" * 64
+            elif drift == "draft":
+                locale = await session.scalar(
+                    select(GuideArticleLocale).where(
+                        GuideArticleLocale.article_id == candidate.guide_article_id,
+                        GuideArticleLocale.locale == "ja",
+                    )
+                )
+                assert locale is not None
+                document = deepcopy(locale.draft_json)
+                document["sources"][0]["url"] = removed_url
+                locale.draft_json = document
+            elif drift == "claim":
+                candidate.claim_ledger_json = [
+                    {"claim": "Old listing", "source_urls": [removed_url]}
+                ]
+            elif drift == "running":
+                session.add(
+                    NewsPipelineRun(
+                        candidate_id=candidate_id,
+                        stage="verification",
+                        status="running",
+                        attempt=99,
+                        idempotency_key=f"active-{candidate_id}",
+                        provider="anthropic",
+                        model="checker",
+                    )
+                )
+            await session.commit()
+        if drift == "queued":
+            await redis.hset(
+                f"rq:job:news-candidate-{candidate_id}-99", mapping={"status": "queued"}
+            )
+        async with factory() as session:
+            with pytest.raises(AppError) as refused:
+                await service.refresh_candidate_evidence(
+                    session, EDITOR, candidate_id, ACTION, redis
+                )
+        assert refused.value.code == {
+            "evidence": "news_navigation_receipt_mismatch",
+            "draft": "news_navigation_still_cited",
+            "claim": "news_navigation_still_cited",
+            "running": "news_navigation_refresh_busy",
+            "queued": "news_navigation_refresh_busy",
+        }[drift]
+        fetch.assert_not_awaited()
+    finally:
+        await redis.aclose()
+        await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_navigation_refresh_unreadable_source_rolls_back_and_cannot_be_repeated(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory, redis, candidate_id, actor_id = await repaired_navigation_case()
+
+    async def unreadable(_session: Any, evidence: list[NewsEvidence], **_kwargs: Any) -> Any:
+        evidence[0].content_hash = "f" * 64
+        return [], [f"source_refetch_failed:{evidence[0].url}:HTTPStatusError"]
+
+    monkeypatch.setattr(service, "refresh_evidence", unreadable)
+    try:
+        async with factory() as session:
+            before = (await service.held_bundle_snapshot(session, redis, candidate_id))["state"]
+            with pytest.raises(AppError) as refused:
+                await service.refresh_candidate_evidence(
+                    session, await session.get(User, actor_id), candidate_id, ACTION, redis
+                )
+        async with factory() as session:
+            after = (await service.held_bundle_snapshot(session, redis, candidate_id))["state"]
+        assert refused.value.code == "news_evidence_refresh_failed"
+        assert after == before
+
+        async def current(_session: Any, evidence: list[NewsEvidence], **_kwargs: Any) -> Any:
+            return [], []
+
+        monkeypatch.setattr(service, "refresh_evidence", current)
+        async with factory() as session:
+            await service.refresh_candidate_evidence(
+                session, await session.get(User, actor_id), candidate_id, ACTION, redis
+            )
+            with pytest.raises(AppError) as repeated:
+                await service.refresh_candidate_evidence(
+                    session, await session.get(User, actor_id), candidate_id, ACTION, redis
+                )
+        assert repeated.value.code == "news_candidate_not_refreshable"
+    finally:
+        await redis.aclose()
+        await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_navigation_refresh_lock_conflict_is_a_retryable_refusal(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory, redis, candidate_id, _actor_id = await repaired_navigation_case()
+    fetch = AsyncMock()
+    monkeypatch.setattr(service, "refresh_evidence", fetch)
+    monkeypatch.setattr(
+        service,
+        "held_bundle_snapshot",
+        AsyncMock(side_effect=DBAPIError("SELECT", {}, Mock(sqlstate="55P03"))),
+    )
+    try:
+        async with factory() as session:
+            with pytest.raises(AppError) as refused:
+                await service.refresh_candidate_evidence(
+                    session, EDITOR, candidate_id, ACTION, redis
+                )
+        assert refused.value.status == 409
+        assert refused.value.code == "news_navigation_refresh_busy"
+        fetch.assert_not_awaited()
+        async with factory() as session:
+            candidate = await session.get(NewsCandidate, candidate_id)
+            assert candidate is not None
+            assert candidate.error_code == "news_navigation_evidence_repaired"
+    finally:
+        await redis.aclose()
+        await engine.dispose()

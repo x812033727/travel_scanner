@@ -58,7 +58,7 @@ const statusTone: Partial<Record<NewsCandidateStatus, string>> = {
 // What happened to a candidate, which decides the explanation and the buttons it gets.
 type Situation =
   | "zhDraft" | "translationHold" | "readyToPublish" | "finalEditHold" | "jevFinalHold"
-  | "shadow" | "jevHold" | "hardChecksHold" | "fixArticle" | "duplicate" | "evidenceChanged" | "redraft"
+  | "shadow" | "jevHold" | "hardChecksHold" | "fixArticle" | "duplicate" | "evidenceChanged" | "navigationRepaired" | "redraft"
   | "failed" | "needsEvidence" | "published" | "closed" | "judgeClosed" | "working";
 type Action = "approve" | "publish" | "verify" | "notDuplicate" | "refresh" | "retry" | "reject" | "incident" | "reopen";
 const actionPath: Record<Action, string> = {
@@ -83,6 +83,7 @@ const situationActions: Record<Situation, readonly Action[]> = {
   duplicate: ["notDuplicate", "reject"],
   // The pages changed after the check: take the current text and check the article again.
   evidenceChanged: ["refresh", "reject"],
+  navigationRepaired: ["refresh", "reject"],
   redraft: ["retry", "reject"],
   failed: ["approve", "retry", "verify", "reject"],
   // Only lead-only pages: a rerun cannot find a page to cite.
@@ -101,6 +102,7 @@ function situationOf(candidate: NewsCandidateSummary): Situation {
     case "manual_review":
       if (candidate.error_code === "news_duplicate_uncertain") return "duplicate";
       if (candidate.error_code === "news_evidence_changed") return "evidenceChanged";
+      if (candidate.error_code === "news_navigation_evidence_repaired") return "navigationRepaired";
       if (candidate.error_code === "news_zh_draft_ready") return "zhDraft";
       if (candidate.error_code === "news_ready_to_publish") return "readyToPublish";
       if (candidate.error_code === "news_jev_manual") return "jevHold";
