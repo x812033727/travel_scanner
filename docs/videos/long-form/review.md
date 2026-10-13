@@ -4740,6 +4740,38 @@ PASS is DURATION_ONLY for the one rebound hash below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Translator title rule increment: 1 file (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013d`. Author: `claude-opus-5-5-narrative`. Scope: DURATION_ONLY for the one changed binding below, reviewed in the worktree `claude/youtube-narrative-flow-1cadbc` whose HEAD is `412c33c4f586f4c5e2965fe92f97ff06e54930e0` ("feat(video): a translated title carries no channel name"), the commit that made the change; the working tree was clean. `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/prompts.mjs` and named nothing else. This reviewer wrote none of the change, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edited only this report and review.json.
+
+- `tools/video/automation/prompts.mjs`: `37363cfd2068b9980462d60df67e244b198bae75ee880bcc0f25f966049e4828` -> `9e1cffa1b25c8490e420a9a58ce1c19972daca2d7a8006a456ba86a9b8a50e9a`.
+
+Baseline: SHA-256 over `git show 412c33c4f^:tools/video/automation/prompts.mjs` is `37363cfd2068b9980462d60df67e244b198bae75ee880bcc0f25f966049e4828`, exactly the value this receipt carried before this increment, which proves the binding was current when the change started. SHA-256 over `git show HEAD:tools/video/automation/prompts.mjs` and over the working-tree file are both `9e1cffa1b25c8490e420a9a58ce1c19972daca2d7a8006a456ba86a9b8a50e9a`; `git ls-files --eol` reports LF in index and worktree. The commit touches two files: this one (four insertions, one deletion) and `.agents/skills/youtube-video/references/prompts/caption-translate.md` (one insertion), which `REVIEW_FILES` does not bind. The other 107 bindings are untouched by this change and are not covered afresh. Every prior increment is preserved and the registry remains 108 files.
+
+What the change is: `git show 412c33c4f -- tools/video/automation/prompts.mjs` was read whole. It is one hunk inside `INSTRUCTIONS.translator`, the text the worker sends the caption and metadata translator. The sentence "Title at most 100 characters, no angle brackets; tags at most 500 characters in total." keeps its words and limits, and after it the text gains a rule: no channel or series name in the title or the tags, so where the zh-TW title ends on one (「｜奇聞檔案局」) the translation leaves it out, because YouTube shows the channel under the title and no name for it in the locale has been decided. The existing clause that "video" shows the slides for context moves to its own line unchanged. The file grows from 1,827 to 1,830 lines and from 139,868 to 140,089 bytes; the composed translator text grows from 5,150 to 5,355 characters. The caption reviewer's text is byte-identical in both revisions (`52456f5b…`), and no other key of `INSTRUCTIONS` is touched.
+
+Findings, duration rules: none moved. Counted in both revisions, every duration identifier appears exactly as often: `target_minutes` 12 times in both, "minute" 33, "seconds" 47 and 分鐘 once in both; `MIN_EPISODE_MINUTES`, `estimateTimeline`, `minEpisodeMinutes`, `effectiveEpisodeMinutes`, `DEFAULT_TARGET_MINUTES`, `draftBudget`, `total_frames`, `480` and `14,400` in neither. The added lines carry no numeral at all; the only numbers in the hunk are the unchanged 100-character title and 500-character tag limits, which bound metadata, not time. The rule acts on a title and its tags, which no duration check reads and which are never narrated, so no episode is longer or shorter for it; the dub constraint beside it (a line carrying "max_chars" must fit the time the zh-TW line takes) is untouched. No file under `apps/api`, `tools/video/qa`, `tools/video/long-form` or `tools/video/core` is changed, and neither is `docs/videos/long-form/plans.json` or `policy.json`: the 8-minute non-drama floor, the explainer's 10-minute default and 8–20 range, drama's 1–8, the brand story's 13 minutes, the QA `assemble` item's 480 s / 14,400 frames at 30 fps and the chapter minimum of 10 s stand exactly as the increments above bound them.
+
+Pinned digests: `node --test tools/video/automation/prompts.test.mjs tools/video/automation/explainer-series.test.mjs tools/video/automation/series.test.mjs` passes, 118 tests, 0 failed, so none of the writer, planner or verifier pins those files hold moved. The translator text is pinned elsewhere, though: `ZH_TW_PROMPT_SHA256.translator` in `tools/video/automation/automation.test.mjs` is `ef34287d2ac2449dac34a105d26ab9d8e255a2e6fa41ceda7304c78b269bba64`, which this reviewer reproduced over the parent revision's `INSTRUCTIONS.translator`; over HEAD's it is `d01b37f5c6c8278a71f207d89a138365ddf1f08a61e174d72499a1e2bffcb9a7`. The commit did not update that pin, and two tests in that file fail at HEAD: "a zh-TW video's translator and caption reviewer prompts are the same bytes as before; …" and "an English-narrated video's translator and caption reviewer, … a zh-TW video's are sent the same prompt and payload as before". That is a stale prompt pin, not a duration rule, and it is outside this increment's one binding; it is recorded here so it is not lost. `automation.test.mjs` is itself bound (`74b81299…`), so moving that pin needs its own follow-up increment.
+
+Ran (in the worktree, Node on Windows, `VIDEO_MIN_EPISODE_MINUTES` unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which named exactly this one stale binding and no other;
+- `git show 412c33c4f --stat` and `git show 412c33c4f -- tools/video/automation/prompts.mjs` read whole; `git status --porcelain`; `git ls-files --eol`; `git rev-parse HEAD`;
+- SHA-256 over the parent blob, the HEAD blob and the working-tree file, compared against the old receipt;
+- a count of every duration identifier above in the parent blob against the HEAD blob, which matched everywhere;
+- SHA-256 of `INSTRUCTIONS.translator` and `INSTRUCTIONS.caption_reviewer` imported from both revisions, against the pins in `automation.test.mjs`;
+- `node --test tools/video/automation/prompts.test.mjs tools/video/automation/explainer-series.test.mjs tools/video/automation/series.test.mjs`: 118 passed, 0 failed, 0 skipped;
+- `node --test --test-name-pattern="zh-TW|translator" tools/video/automation/automation.test.mjs`: 5 passed, 2 failed, the two named above.
+
+The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims: this review does not judge the no-channel-name rule as a product choice, nor the unbound text of `caption-translate.md`. It does not repair or rebind `automation.test.mjs`. No translator, writer or panel was run against a real model, no narration or dub was synthesized, no cut was measured and no host was contacted. The full `automation.test.mjs` suite, API tests, ruff, mypy, Vitest, web lint and typecheck were not run, and no CI result is claimed. This increment binds the file as committed at `412c33c4f`; a later commit, rebase or merge that changes it, or either receipt file, needs its own follow-up increment.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -4799,7 +4831,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/automation/automation.test.mjs` | `74b81299dc30687479e10a816245bc2496fbcc714df345103d98f44fd2d09cba` |
 | `tools/video/automation/discuss.mjs` | `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21` |
 | `tools/video/automation/flow.mjs` | `0690b19c0ae2d5ba7a52817eb4b0a4f0d14b1ea89e6c5617bbf087d66306bb49` |
-| `tools/video/automation/prompts.mjs` | `37363cfd2068b9980462d60df67e244b198bae75ee880bcc0f25f966049e4828` |
+| `tools/video/automation/prompts.mjs` | `9e1cffa1b25c8490e420a9a58ce1c19972daca2d7a8006a456ba86a9b8a50e9a` |
 | `tools/video/automation/series.mjs` | `d512034bbc99c0bc9ec7bbdbcfafa9ea6b548eedd877aa6754bbb81b04cd4c37` |
 | `tools/video/automation/series.test.mjs` | `949bffb9c32f8a2b0a81158fc442bfb09f4cf4ba7a873b9327bd7a2c43271f52` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
