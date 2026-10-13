@@ -32,13 +32,13 @@ test("the composed instructions of the existing explainer and discussion variant
     [["planner", "drama", "", "discuss"], "88d7f55145ecff3e0910f33dc056b86dd8464595e1c626720bae3a2ed0f2cab9"],
     [["writer", "drama", "", "discuss"], "06c8d01e814728158f137b681e9438de81f050654d641bf7d90116cce3c0c0a6"],
     // With a one-off's row, as the bible's planner and its discussion are called.
-    [["planner", "drama", "", "bible-explainer", "", ROW], "142ead24593afa9e9a7d1cdd0dc04d35271f4fb971f3bcede5b47f011cb65d56"],
+    [["planner", "drama", "", "bible-explainer", "", ROW], "b93cb7f20bcc65ec84bac37620e65de6ca751d92431df1a5c8eb91b824274731"],
     [["planner", "drama", "", "discuss", "", ROW], "29078b6d8256814a28b6e822caf71e1bcb111ba8997a95fedd7820bb5e5242f4"],
-    [["writer", "drama", "", "explainer", "", ROW], "3dcbd711a3498b83388a03e8a0a1dcd59745a4e0baf9e7550954df779ba2ff8f"],
+    [["writer", "drama", "", "explainer", "", ROW], "7118c05ab1d61c8ef56d2d8ea7dc91150e5d234d2f89be78bb8e4ddb73cb42ee"],
     [["verifier", "drama", "", "explainer", "", ROW], "767589242dd2d5af85305cdcee2caf1b974e30e56990d18f4a275f8eda468b78"],
     [["writer", "drama", "", "discuss", "", ROW], "1f9670db394d4ce6d41c910803be70f921e821f64ebfdf12866f2f1db92d91c2"],
     // With the owner's standing instructions and the channel's stance.
-    [["writer", "drama", "旁白慢一點", "explainer", "1. 先講事實", null], "5f996d776a8b2300785cb599ad8065ed1ef124a2a568b09bb5349dc1fa69a230"],
+    [["writer", "drama", "旁白慢一點", "explainer", "1. 先講事實", null], "9c4b38696f21e814dfd005abc13d20c1f00cc66fbdde3ba5901f512a329d0feb"],
     // The story drama's planner, which a variant with no text of its own falls back to.
     [["planner", "drama"], "675c9213407aa771820dc4ae1eb837e33049f5659636135e06d84a624e7f9de9"],
   ];
@@ -98,7 +98,10 @@ test("one table maps each explainer preset to its variants; every name fits the 
   }
 });
 
-// Computed from this file's module as committed, never copied from the design's orders. A later
+// Computed from this file's module as committed, never copied from the design's orders. Every
+// text but the two verifiers' moved on 2026-10-13: the condensation became one scene of the
+// story, the chapters became its beats, the scripts carry a "loops" table and the close no
+// longer names the next file. A later
 // change of wording within one variant is a new prompt: an unfinished journal of the same stage
 // AND variant then has other inputs, and the run stops with video_ai_receipt_input_changed (never
 // a flat-explainer one: the pins of group 1). That is all it covers. run-receipts.mjs matches a
@@ -108,16 +111,16 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // a new paid call beside that orphan. Hence the hard step before the deploy: no unfinished
 // one-off in a cute preset on the host (docs/videos/explainer-route/DESIGN.md 5.7 item 1).
 const SERIES_TEXT_PINS = {
-  "planner:bible-explainer-cartoon": [5896, "bb04f9e2f9f7c57c06968507f9c3a50347f9915bea7d8b276da1f94faf05e31e"],
-  "writer:explainer-cartoon": [15572, "325a0daa0d71de7046a000af3f9768f309be5ff4c56b23c99c7cd312dc2c0f84"],
+  "planner:bible-explainer-cartoon": [6347, "f9afae8a35b9fee5d247b6bb2a4b0729b47fd20c1f9d195eab42a76adf7ac0d2"],
+  "writer:explainer-cartoon": [23232, "2cd997894102ccdec60bb168aaeeaacdac8813dbf4398e25f5a93ac577af5df6"],
   "verifier:explainer-cartoon": [4305, "6f41570e5090987327a200b7790a6ecdec88c8a0350de2ca49b74cb4e7ca95db"],
-  "planner:discuss-cartoon": [6623, "60e73a25efa69428a56402b768f61bcbab6ad2b63fc7683ed9379685a34c78bc"],
-  "writer:discuss-cartoon": [14037, "04e110c6945d37725f1e8d1976d51c2cf5e35895f043a4793574505d10279246"],
-  "planner:bible-explainer-mystery": [8612, "ec9d6cc560b8e62c5e6319ca3838f95b2522d5ca3d19387c29d95e7e54e81c37"],
-  "writer:explainer-mystery": [17710, "d626a47faed20d7a997c12c23e09fcc3d3d34869fb1d40459861d28f1e8c6446"],
+  "planner:discuss-cartoon": [7074, "a489aa308db647b7d936eeeddcac14bed5fda21c4f2765d76acb338cc44a97f6"],
+  "writer:discuss-cartoon": [21697, "9429d3e7f4d84bc081cd5934ac0f9d2c568fb1c4402ecf70de283767641eedcf"],
+  "planner:bible-explainer-mystery": [9051, "5c7719c165af9f55033645f20b3db9d62d88eb70607830b9b5435871afeb04b0"],
+  "writer:explainer-mystery": [25440, "b4200b0f41192152aace36e11d94ca3fb6b2f850bc586a44c44b3a31297ad048"],
   "verifier:explainer-mystery": [6194, "ab0adfcec0f59fc6c377523ba8272aa33cdb76f736af84e7de256f31b2784722"],
-  "planner:discuss-mystery": [9241, "0d851d533e7c629d88e50970fb7c5d718e6671ee6e8c59e8a9cb8424e2015592"],
-  "writer:discuss-mystery": [16256, "e22831463d14b0ab4df527dc899c247cb0b260d494ea3ec4396ab6eac87024ec"],
+  "planner:discuss-mystery": [9680, "5d624fcce19d6da7ff36695548869e312d62edbddc382b1a30831db82a8edcf3"],
+  "writer:discuss-mystery": [23986, "2d194ffdaa631661cff2f461f6df1b6e7775753e0cdbe233a24f33dc544126fb"],
 };
 
 test("the ten texts of the two profiled series are the pinned ones, composed with no genre section", () => {

@@ -112,7 +112,13 @@ const TOP_KEYS = new Set([
   "compilation",
   "production_policy",
   "runtime_spec",
+  // A narrated video's open loops (script-writing.md §故事主線與鉤子): the line that plants each
+  // hook, the line that pays it off, and what it holds back; validated in validateLoops.
+  "loops",
 ]);
+const LOOP_KEYS = new Set(["setup", "payoff", "what"]);
+/** The most characters a loop's "what" may have: one phrase naming what is held back. */
+export const LOOP_WHAT_MAX = 40;
 const VOICE_KEYS = new Set(["provider", "name", "rate", "lang", "style", "model"]);
 const YOUTUBE_KEYS = new Set([
   "category_id",
@@ -371,11 +377,48 @@ export function validateVideo(doc) {
     }
   }
   validateScenes(doc.scenes, errors, doc.format, compilation, doc);
+  if (doc.loops !== undefined) validateLoops(doc.loops, doc, errors);
   // A compilation is a drama without shots, a cast or a look: compilation.mjs has its rules,
   // and the drama rules (which would demand all three) do not apply.
   if (compilation) validateCompilation(doc, errors);
   else validateDrama(doc, errors, validateVoice);
   return errors;
+}
+
+/**
+ * The "loops" table: an array of { setup, payoff, what }, both ids spoken lines of this script
+ * with the payoff after the setup in narration order, "what" one phrase of at most LOOP_WHAT_MAX
+ * characters. A broken table is an error, so the writer fixes it; how many loops a script needs
+ * is lint's (core/narrative.mjs loopProblems).
+ */
+function validateLoops(loops, doc, errors) {
+  if (!Array.isArray(loops)) {
+    errors.push({ path: "loops", message: "must be an array of { setup, payoff, what }" });
+    return;
+  }
+  const order = new Map();
+  for (const scene of Array.isArray(doc.scenes) ? doc.scenes : []) {
+    for (const line of Array.isArray(scene?.lines) ? scene.lines : []) {
+      if (isObject(line) && typeof line.id === "string" && !order.has(line.id)) order.set(line.id, order.size);
+    }
+  }
+  loops.forEach((loop, index) => {
+    const where = `loops[${index}]`;
+    if (!isObject(loop)) {
+      errors.push({ path: where, message: "must be { setup, payoff, what }" });
+      return;
+    }
+    unknownKeys(loop, LOOP_KEYS, where, errors);
+    for (const key of ["setup", "payoff"]) {
+      if (typeof loop[key] !== "string" || !LINE_ID.test(loop[key])) errors.push({ path: `${where}.${key}`, message: "must be a line id" });
+      else if (!order.has(loop[key])) errors.push({ path: `${where}.${key}`, message: `no line "${loop[key]}" in the script` });
+    }
+    if (order.has(loop.setup) && order.has(loop.payoff) && order.get(loop.payoff) <= order.get(loop.setup)) {
+      errors.push({ path: `${where}.payoff`, message: `"${loop.payoff}" is not after the setup "${loop.setup}": a loop is paid off later than it is planted` });
+    }
+    if (!isText(loop.what)) errors.push({ path: `${where}.what`, message: "must say in one phrase what the loop holds back" });
+    else if ([...loop.what.trim()].length > LOOP_WHAT_MAX) errors.push({ path: `${where}.what`, message: `${[...loop.what.trim()].length} characters; at most ${LOOP_WHAT_MAX}` });
+  });
 }
 
 /** Scenes and lines in narration order, with their position labels, for the other modules. */

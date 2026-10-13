@@ -622,10 +622,15 @@ function stretched(doc = fixture()) {
   doc.target_minutes = [MIN_EPISODE_MINUTES, MIN_EPISODE_MINUTES + 4];
   doc.scenes[0].lines.push(...structuredClone(CONDENSATION));
   let n = 0;
+  const payoffs = [];
   while (estimateTimeline(doc).total_frames / FPS / 60 < MIN_EPISODE_MINUTES + 0.5) {
-    const lines = Array.from({ length: 6 }, () => ({ id: `pad${(n++).toString(36).padStart(4, "0")}`, text: "這一句只是把範例拉長到一集的長度，數字留在正文裡。" }));
+    // An episode keeps an open loop inside every HOOK_GAP_SECONDS (core/narrative.mjs): each padded
+    // scene opens on an escalation, and its last line is where one of the condensation's loops lands.
+    const lines = Array.from({ length: 6 }, (_, index) => ({ id: `pad${(n++).toString(36).padStart(4, "0")}`, text: index === 0 ? "但這還不是最怪的，這一句只是把範例拉長。" : "這一句只是把範例拉長到一集的長度，數字留在正文裡。" }));
+    payoffs.push(lines.at(-1).id);
     doc.scenes.splice(doc.scenes.length - 1, 0, { id: `pad-${n}`, template: "bullets", data: { title: "拉長", items: ["一"] }, lines });
   }
+  doc.loops = ["cd01", "cd02", "cd03"].map((setup, index) => ({ setup, payoff: payoffs[index], what: "範例拉長用的鉤子" }));
   return doc;
 }
 // The close as script-writing.md §結尾 has it: the answer with its number, a comment question,
@@ -633,26 +638,32 @@ function stretched(doc = fixture()) {
 const THREE_SENTENCES = [
   { id: "cl01", text: "所以答案是，三個問題問完，五分鐘就能選好。" },
   { id: "cl02", text: "你每天最常叫模型做的是哪一種工作？留言告訴我。" },
-  { id: "cl03", text: "下一支拆它的價格表，訂閱頻道就不會錯過。" },
+  { id: "cl03", text: "這個頻道每週拆一個這種數字，訂閱就不會錯過。" },
 ];
 const closed = (doc) => {
   doc.scenes.at(-1).lines = structuredClone(THREE_SENTENCES);
   return doc;
 };
 
-test("the script's shape is read on an episode, not on a fixture-length example: the minimal close asks for nothing and has two sentences", () => {
+test("the script's shape is read on an episode, not on a fixture-length example: the minimal close has two sentences", () => {
   assert.deepEqual(lintVideo(fixture(), context()).warnings, [], "the example runs seconds");
   const long = stretched();
   const result = lintVideo(long, context());
   assert.deepEqual(result.errors, []);
   const where = `scenes[${long.scenes.length - 1}] (wrap)`;
-  assert.deepEqual(result.warnings.map((warning) => warning.path), [where, where]);
-  assert.match(messages(result.warnings), /the outro asks for no subscription/);
+  assert.deepEqual(result.warnings.map((warning) => warning.path), [where]);
   assert.match(messages(result.warnings), new RegExp(`the outro has 2 sentences; the close is ${OUTRO_SENTENCES}`));
+  const silent = stretched();
+  silent.scenes.at(-1).lines.at(-1).text = "完整的比較表放在說明欄的文章裡。";
+  delete silent.scenes.at(-1).lines.at(-1).say;
+  delete silent.scenes.at(-1).lines.at(-1).say_for;
+  assert.match(messages(lintVideo(silent, context()).warnings), /the outro asks for no subscription/);
   assert.deepEqual(lintVideo(closed(long), context()).warnings, []);
   // The function itself has no length gate: the gate is lintVideo's.
-  assert.equal(episodeScriptProblems(fixture(), estimateTimeline(fixture())).length, 2);
+  assert.equal(episodeScriptProblems(fixture(), estimateTimeline(fixture())).length, 1);
   assert.deepEqual(episodeScriptProblems(closed(fixture()), estimateTimeline(fixture())), []);
+  // An explainer's outro card carries the subscribe line alone; its comment question sits on the shot before it.
+  assert.deepEqual(episodeScriptProblems(fixture(), estimateTimeline(fixture()), { outroCount: false }), []);
 });
 
 test("an episode's opening chapter is the condensation: 30 to 60 seconds, a warning on either side; the examples are not read", () => {
@@ -661,6 +672,8 @@ test("an episode's opening chapter is the condensation: 30 to 60 seconds, a warn
   assert.deepEqual(opening(closed(stretched())), [], "the stretched example's condensation is within the window");
   const short = closed(stretched());
   short.scenes[0].lines = short.scenes[0].lines.slice(0, 2);
+  // The loops this example plants sit in the lines just cut; a loop with no line is a schema error.
+  delete short.loops;
   const [warning] = opening(short);
   assert.equal(warning.path, "scenes[0]");
   assert.match(warning.message, /^the opening chapter runs about 1\d s; it is the condensation, 30 to 60 s before the first real chapter/);

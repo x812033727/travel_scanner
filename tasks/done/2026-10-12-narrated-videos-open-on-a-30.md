@@ -1,13 +1,13 @@
 ---
 id: 2026-10-12-narrated-videos-open-on-a-30
 title: Narrated videos open on a 30-60 s curiosity condensation before the first real chapter
-status: review
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-10-12T06:04:09Z
 created_at: 2026-10-12T06:03:44Z
-completed_at:
+completed_at: 2026-10-13T00:50:25Z
 branch: claude/video-intro-30sec-summary-2366ac
 depends_on: []
 scope:

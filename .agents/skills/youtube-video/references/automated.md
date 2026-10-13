@@ -84,6 +84,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 ## video.json 的重點
 
 - 格式定義在 `tools/video/core/schema.mjs`。
+- **`loops`**（旁白影片都要寫；2026-10-13 起）：這支片埋了哪些鉤子、在哪裡回收，`[{"setup": "<埋的那一行 id>", "payoff": "<回收的那一行 id>", "what": "<留著什麼，40 字以內>"}]`。schema 擋不存在的行與回收在埋設之前的項目；`lint` 數夠不夠（10 分鐘至少三個、一個埋在開場濃縮），不夠是警告。寫法在 `script-writing.md` 的〈故事主線與鉤子〉。
 - 最小範例：`tools/video/core/fixtures/minimal/video.json`。
 - 每種版型各用一次的範例：`tools/video/templates/fixtures/showcase/video.json`。
 - 英文旁白的範例：`tools/video/core/fixtures/en/video.json`。
