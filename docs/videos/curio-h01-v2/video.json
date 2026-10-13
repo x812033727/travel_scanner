@@ -1,0 +1,2367 @@
+{
+  "schema_version": 1,
+  "slug": "curio-h01-v2",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "從頭到尾只講一個故事，像在跟一個朋友講：開場壓低放慢，像跟著兩個人爬上那艘船；每個日期和數字前停半拍；「還記得」開頭的句子語氣親近、略上揚；法庭與勘驗那幾段沉一點，小說那一段帶笑意；每次掛著一個問題就停住，不急著解釋；結尾不下定論，誠實但不失望。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "loops": [
+    {
+      "setup": "mc1i",
+      "payoff": "mc6r",
+      "what": "甲板上那根量水深的桿子為什麼在那裡"
+    },
+    {
+      "setup": "mc1k",
+      "payoff": "mc7i",
+      "what": "船尾那條粗繩為什麼是斷的"
+    },
+    {
+      "setup": "mc3p",
+      "payoff": "mc4g",
+      "what": "桌上那頓熱飯菜是誰加上去的"
+    },
+    {
+      "setup": "mc5q",
+      "payoff": "mc6b",
+      "what": "船長自己買下的那些股份"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "1872 年那艘沒有人的船，十個人去了哪裡？｜奇聞檔案局",
+    "description": "一八七二年十二月四日下午，一艘船在亞速群島和葡萄牙之間的大西洋上還在航行：帆張著、貨一桶都沒少、食物和水還夠半年，船上十個人一個都不在。\n\n這一集照事情被查出來的順序講完這份檔案：大副上船看到的甲板、直布羅陀副海事法院的三個月、劍上「像血」的痕跡送去化驗之後的結論、一八八四年一篇小說怎麼把熱飯菜和「小艇都在」寫進大家的記憶、勘驗官那張「少了什麼、還在什麼」的清單，最後是熱那亞卸貨時才出現的那個數字。七種說法一個一個過，留下最站得住的那一個，和它還解釋不了的事。\n\n流傳的版本一律標明是後來加上去的；沒有定論就說沒有定論。每個數字、日期與引言的出處列在下方參考資料。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似，在世或近代人物不入畫。\n\n資料截至 2026-10-10",
+    "tags": [
+      "瑪麗賽勒斯特號",
+      "幽靈船",
+      "歷史懸案",
+      "Mary Celeste",
+      "未解之謎",
+      "1872",
+      "直布羅陀",
+      "柯南道爾",
+      "海上傳說",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "船在走\n**人沒了**",
+      "tag": "歷史懸案",
+      "sub": "一八七二年的檔案",
+      "shot": "empty-wheel"
+    }
+  },
+  "sources": [
+    {
+      "title": "Smithsonian Magazine: Abandoned Ship (2007)",
+      "url": "https://web.archive.org/web/20260920054456/https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Encyclopaedia Britannica: Mary Celeste",
+      "url": "https://web.archive.org/web/20260819222317/https://www.britannica.com/topic/Mary-Celeste",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "American Heritage: Mystery of the Mary Celeste",
+      "url": "https://www.americanheritage.com/mystery-mary-celeste",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "maryceleste.net: Facts",
+      "url": "https://www.maryceleste.net/facts.htm",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "maryceleste.net: Gibraltar Chronicle 1872–73 transcripts",
+      "url": "https://www.maryceleste.net/news.htm",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "maryceleste.net: Spencer's Island",
+      "url": "https://www.maryceleste.net/spencer.htm",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "maryceleste.net: Captain Briggs",
+      "url": "https://www.maryceleste.net/briggs.htm",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "maryceleste.net: The barrels",
+      "url": "https://www.maryceleste.net/barrel.htm",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "maryceleste.net: About the mystery",
+      "url": "https://www.maryceleste.net/about.htm",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "The History Press: The ongoing mystery of the Mary Celeste (2023)",
+      "url": "https://thehistorypress.co.uk/article/the-ongoing-mystery-of-the-mary-celeste/",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "History Hit: Ghost Ship: What Happened to the Mary Celeste?",
+      "url": "https://www.historyhit.com/ghost-ship-what-happened-to-the-mary-celeste/",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Fishermen's Voice: The Mysterious Case of the Mary Celeste (2017)",
+      "url": "https://fishermensvoice.com/archives/201711TheMysteriousCaseOfTheMaryCeleste.html",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "New England Historical Society: The Mary Celeste",
+      "url": "https://newenglandhistoricalsociety.com/mysterious-disappearance-mary-celeste/",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Slate: The Mary Celeste, the unluckiest ship (2011)",
+      "url": "https://www.slate.com/articles/life/culturebox/2011/12/the_mary_celeste_the_unluckiest_ship_to_ever_sail_the_seven_seas_.html",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Skeptoid #289: The Mary Celeste (2011)",
+      "url": "https://skeptoid.com/episodes/289",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Wikisource: J. Habakuk Jephson's Statement (1884)",
+      "url": "https://en.wikisource.org/wiki/J._Habakuk_Jephson%27s_Statement",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "The Arthur Conan Doyle Encyclopedia: Mary Celeste",
+      "url": "https://www.arthur-conan-doyle.com/wiki/Mary_Celeste",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Wikimedia Commons: New York Times, 26 February 1873",
+      "url": "https://commons.wikimedia.org/wiki/File:Mary_Celeste_NYTimes_1873February26.png",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "maryceleste.net: Austin survey report, 23 Dec 1872 (full text)",
+      "url": "https://www.maryceleste.net/survey.htm",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "maryceleste.net: Dr Patron blood-stain analysis, 1873",
+      "url": "https://www.maryceleste.net/doctor.htm",
+      "checked_on": "2026-10-10"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "opening-swell",
+      "chapter": "爬上一艘沒有人的船",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a grey winter ocean at midday, long swells running, one sailor in an oilskin coat gripping a ship's rail and looking out, light from a pale overcast sky",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc1a",
+          "text": "一八七二年十二月四日下午，大西洋上風浪不小。",
+          "emotion": "沉穩開場，語速放慢，最後四個字壓重"
+        }
+      ]
+    },
+    {
+      "id": "lookout-glass",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lookout on a wooden foredeck in grey daylight, a bearded sailor in a thick knitted cap raising a brass telescope to one eye, rigging behind him, light from an overcast sky on the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc1b",
+          "text": "一艘英國帆船的瞭望手舉起望遠鏡。",
+          "emotion": "語速稍快，像剛發現什麼"
+        }
+      ]
+    },
+    {
+      "id": "crooked-sails",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the open Atlantic in flat grey daylight, a sailor at a rail in the foreground pointing across the water, beyond him a two-masted vessel with its sails set crooked and one torn, light from a high overcast sky",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc1c",
+          "text": "遠處那艘船的帆是歪的，走得晃晃悠悠。",
+          "emotion": "尾音帶疑惑"
+        }
+      ]
+    },
+    {
+      "id": "ten-aboard",
+      "template": "big",
+      "data": {
+        "text": "10 個人",
+        "kicker": "瑪麗賽勒斯特號",
+        "sub": "一個都不在船上"
+      },
+      "lines": [
+        {
+          "id": "mc1d",
+          "text": "她叫瑪麗賽勒斯特號，船上有十個人。",
+          "emotion": "唸船名時放慢，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "row-across",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small wooden rowing boat on choppy grey sea at midday, one mate in a dark pea coat pulling the oars, the tall side of a vessel rising ahead of him, light from a bright overcast sky",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc1e",
+          "text": "大副德沃划小艇過去，爬上甲板。",
+          "emotion": "動作感，語速快"
+        }
+      ]
+    },
+    {
+      "id": "empty-wheel",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty wooden deck in grey afternoon light, a ship's wheel standing loose with nobody at it, one mate alone at the far rail with his hat in his hand, light from the open sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc1f",
+          "text": "甲板上沒有人，舵邊也沒有人。",
+          "emotion": "停一拍，壓低聲音"
+        }
+      ]
+    },
+    {
+      "id": "open-hatch",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an open forehatch on wet plank decking, a sailor's hands gripping the hatch rim as he leans over dark water sloshing in the hold below, light falling from above",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc1g",
+          "text": "前艙口開著，艙底積了一公尺多的水。",
+          "emotion": "放慢，像正往下看"
+        }
+      ]
+    },
+    {
+      "id": "still-sailing",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a vessel's side deck under way by day, a sailor in shirtsleeves holding a rope as the deck leans, white water running past the hull, light from a pale sky behind him",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc1h",
+          "text": "可是船還在走，貨一桶都沒少。",
+          "emotion": "上揚，帶一點不可思議"
+        }
+      ]
+    },
+    {
+      "id": "sounding-rod",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a long wooden sounding rod lying across wet deck planks, a sailor's hand reaching down for it, a dismantled brass pump beside it, grey light from above",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc1i",
+          "text": "甲板上躺著一根量水深的桿子。",
+          "emotion": "輕描淡寫，像隨口提到"
+        }
+      ]
+    },
+    {
+      "id": "empty-davits",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of bare iron boat davits in grey afternoon light, a sailor in an oilskin staring up at the empty hooks, loose rope ends swinging from them, light from a low winter sun behind the cloud",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc1j",
+          "text": "唯一的小艇不見了。",
+          "emotion": "短句，加重"
+        }
+      ]
+    },
+    {
+      "id": "trailing-rope",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick frayed rope end trailing from a vessel's stern into the water, one sailor's hands drawing it in, the broken strands splayed, grey light from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc1k",
+          "text": "船尾拖著一條粗繩，一頭斷了，垂在海裡。",
+          "emotion": "放慢，尾音沉下來"
+        }
+      ]
+    },
+    {
+      "id": "the-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a mate standing alone in the middle of empty wooden decking in grey daylight, his cap held in both hands, turning to look around him, light from a wide pale sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc1l",
+          "text": "十個人，為什麼要離開一艘還能走的船？",
+          "emotion": "問句上揚，問完停住"
+        }
+      ]
+    },
+    {
+      "id": "decide-sail",
+      "chapter": "他把這艘空船開進直布羅陀",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a ship's mate at a chart table in a damp cabin by day, one hand flat on an open blank chart, his jaw set, light from a square skylight above him",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2a",
+          "text": "大副德沃沒有等人來救，他決定自己把船開走。"
+        }
+      ]
+    },
+    {
+      "id": "dei-gratia",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sea captain in a peaked cap on a sunlit quarterdeck, one hand resting on the wheel, looking across the water, light from a high morning sun",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2b",
+          "text": "他的船叫 Dei Gratia 號，船長是莫爾豪斯。",
+          "emotion": "介紹語氣，船名放慢"
+        }
+      ]
+    },
+    {
+      "id": "three-men",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sailor hauling a halyard on sunlit decking, two small figures working far behind him, the big empty wheel between them, light from a high morning sky",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2c",
+          "text": "他留下兩個水手，三個人把空船往東開。"
+        }
+      ]
+    },
+    {
+      "id": "gibraltar-rock",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a harbour at sunrise under a huge limestone rock, a dock worker on the quay watching two sailing vessels come in one behind the other, light from the low sun on the right",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2d",
+          "text": "九天後的早上，她跟在那艘英國船後面進了港。",
+          "emotion": "語速放緩，像靠岸"
+        }
+      ]
+    },
+    {
+      "id": "salvage-money",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clerk in a high-collared coat at a tall desk in a bright office, pressing a stamp onto a plain unmarked document, a brass inkwell beside him, light from a tall arch on the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2e",
+          "text": "救難金不是誰撿到就歸誰，要法庭判。"
+        }
+      ]
+    },
+    {
+      "id": "court-opens",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a nineteenth-century courtroom in daylight, a prosecutor in a powdered wig sitting upright behind a dark wooden bench, a stack of plain folders in front of him, light from high clerestory glass",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2f",
+          "text": "五天後開庭，檢察總長索利弗拉德坐在那裡。",
+          "emotion": "沉一點，像法庭"
+        }
+      ]
+    },
+    {
+      "id": "doesnt-believe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly official in a wig leaning forward over a courtroom rail by day, narrowing his eyes at someone out of frame, a quill held still in his hand, light from a side arch",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2g",
+          "text": "他看著德沃，覺得這個故事不對。",
+          "emotion": "懷疑，語速放慢"
+        }
+      ]
+    },
+    {
+      "id": "drunk-theory",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a vessel's hold by day, a sailor in a striped shirt crouching to put his ear against a big wooden cask, rows of casks behind him, light from an open hatch above",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2h",
+          "text": "他的推論是，船員偷喝了那些酒精。"
+        }
+      ]
+    },
+    {
+      "id": "kill-captain",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an open rowing boat pulling away from a vessel at dawn, one figure at the oars seen from behind, the dark hull filling the frame behind him, light from the horizon",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2i",
+          "text": "喝醉之後殺了船長，再划小艇逃走。",
+          "emotion": "壓低，講得像指控"
+        }
+      ]
+    },
+    {
+      "id": "cargo-stats",
+      "template": "stats",
+      "data": {
+        "title": "貨艙裡的東西",
+        "stats": [
+          {
+            "value": "1,701 桶",
+            "label": "工業用酒精"
+          },
+          {
+            "value": "1 桶",
+            "label": "被打開過"
+          }
+        ],
+        "source": "直布羅陀勘驗報告 1872-12-23"
+      },
+      "lines": [
+        {
+          "id": "mc2j",
+          "text": "問題是，那一千七百零一桶是工業用酒精。",
+          "emotion": "強調「工業用」",
+          "reveal": 1
+        },
+        {
+          "id": "mc2k",
+          "text": "喝下去會死人，而且只有一桶被打開過。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "teetotal",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a captain's hand turning a plain glass tumbler upside down on a cabin table, a jug beside it, afternoon light from the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2l",
+          "text": "而且這位船長滴酒不沾。",
+          "emotion": "輕，補一刀"
+        }
+      ]
+    },
+    {
+      "id": "not-strangest",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an official in a wig standing alone in a sunlit courthouse corridor, one hand raised as if to stop someone, a rolled blank paper under his arm, light from an arch behind him",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2m",
+          "text": "但這還不是最奇怪的地方。",
+          "emotion": "吊一下，尾音上揚"
+        }
+      ]
+    },
+    {
+      "id": "surveyor-diver",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a harbour quay at noon, a diver in a heavy brass helmet being lowered on a rope by one dock hand, green water below, light from straight above",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2n",
+          "text": "法庭派了勘驗官，連潛水夫都下去看船底。"
+        }
+      ]
+    },
+    {
+      "id": "hull-sound",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wooden hull planking just above the waterline, a surveyor's hand running along the smooth seams, sunlight from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2o",
+          "text": "船殼一點傷都沒有，桅杆也好好的。"
+        }
+      ]
+    },
+    {
+      "id": "oil-bottle",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small wooden shelf in a cabin, an upright glass oil bottle with a spool of thread beside it, a surveyor's hand hovering near it, light from a porthole",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2p",
+          "text": "大副艙的小架上，一瓶縫紉機的油還直直立著。"
+        }
+      ]
+    },
+    {
+      "id": "bow-cuts",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle shot of a wooden bow standing out of the water in a dry dock at midday, a surveyor in a bowler hat reaching up to a long gouge in the timber, light from a bright sky above him",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2q",
+          "text": "可是在船頭兩側，他們看到像刀砍出來的痕跡。"
+        }
+      ]
+    },
+    {
+      "id": "sword-under-bunk",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a sheathed sword lying in the dust under a wooden bunk, one hand reaching in for it, grey light spilling across the cabin floor",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2r",
+          "text": "船長的劍收在鞘裡，就放在床底下。",
+          "emotion": "放慢，像伸手去拿"
+        }
+      ]
+    },
+    {
+      "id": "sword-smear",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a drawn sword blade held flat in two hands by a glass pane, a dull smear along the steel, daylight from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2s",
+          "text": "劍身上有一層痕跡，像血被抹過又擦掉。",
+          "emotion": "壓低，放慢"
+        }
+      ]
+    },
+    {
+      "id": "send-to-test",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a courier in a long coat walking down a sunlit harbour street, a long wrapped parcel under one arm, a stone wall beside him, light from the right",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc2t",
+          "text": "他們把那把劍送去化驗。",
+          "emotion": "斷在這裡，停住"
+        }
+      ]
+    },
+    {
+      "id": "not-blood",
+      "chapter": "化驗說不是血",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a physician in a dark waistcoat at a laboratory bench by day, holding a glass test tube up towards the light, a plain notebook open beside him, light from a tall glass pane",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc3a",
+          "text": "化驗的結論只有三個字：不是血。",
+          "emotion": "乾淨落地，短，重"
+        }
+      ]
+    },
+    {
+      "id": "doctor-signed",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand signing the foot of a blank sheet of paper on a desk, an inkwell at the corner, light from a fanlight on the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc3b",
+          "text": "做化驗的是一位醫生，報告上簽了名。"
+        }
+      ]
+    },
+    {
+      "id": "what-about-bow",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a dockside clerk standing at the foot of a hauled-out hull in morning light, looking up with one eyebrow raised, his hat held against his chest",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc3c",
+          "text": "那船頭的刀痕呢？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "sea-tore-wood",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a naval officer in a double-breasted coat on a sunlit quay, pointing out at the open sea, a coil of rope at his feet, light from a high morning sky",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc3d",
+          "text": "三個月後，一艘美國軍艦的艦長說，那是海水撕裂的木頭。"
+        }
+      ]
+    },
+    {
+      "id": "casks-counted",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of rows of wooden casks in a vessel's hold, one tallyman kneeling between them with a piece of chalk, light falling through the open hatch",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc3e",
+          "text": "酒精桶也一桶一桶查過，沒有喝醉鬧事的痕跡。"
+        }
+      ]
+    },
+    {
+      "id": "murder-falls",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand pulling one folder out of a leaning stack on a bright desk, the rest sliding sideways, light from a doorway behind",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc3f",
+          "text": "謀殺的說法，一條一條掉了下來。",
+          "emotion": "一字一頓"
+        }
+      ]
+    },
+    {
+      "id": "three-months",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sunlit stone courthouse courtyard, one usher in a dark coat crossing it alone, a bare tree in the corner, light from above",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc3g",
+          "text": "直布羅陀的法庭查了三個多月。"
+        }
+      ]
+    },
+    {
+      "id": "deveau-recalled",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a ship's mate standing in a courtroom witness box in daylight, his cap gripped in both hands, a rail in front of him, light from a high window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc3h",
+          "text": "德沃從熱那亞被叫回來，第三次上法庭作證。"
+        }
+      ]
+    },
+    {
+      "id": "news-crossed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a newsboy on a busy city street in morning light, holding up a blank newspaper front page, a brick wall behind him",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc3i",
+          "text": "可是消息已經傳到大西洋另一邊。",
+          "emotion": "語速加快"
+        }
+      ]
+    },
+    {
+      "id": "headline-murdered",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands holding open a blank broadsheet at a breakfast table, a plain white cup at the edge, morning light from the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc3j",
+          "text": "美國報紙的標題是：船上的幹部，據信在海上遇害。"
+        }
+      ]
+    },
+    {
+      "id": "award-stats",
+      "template": "stats",
+      "data": {
+        "title": "一八七三年三月的判決",
+        "stats": [
+          {
+            "value": "1,700 英鎊",
+            "label": "判給的救難金"
+          },
+          {
+            "value": "42,643 美元",
+            "label": "船加貨的估值"
+          }
+        ],
+        "source": "直布羅陀副海事法院 1873-03"
+      },
+      "lines": [
+        {
+          "id": "mc3k",
+          "text": "隔年三月，法庭判了救難金，一千七百英鎊。",
+          "emotion": "數字放慢",
+          "reveal": 1
+        },
+        {
+          "id": "mc3l",
+          "text": "那大約只有船加貨估值的五分之一。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "morehouse-blamed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sea captain in a peaked cap standing with his hat off in a bright courtroom, looking at the floor, a wooden rail beside him, light from a window above",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc3m",
+          "text": "法院甚至還怪了莫爾豪斯船長一句。"
+        }
+      ]
+    },
+    {
+      "id": "my-view-award",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small brass balance scale on a desk, a clerk's finger tipping one pan down, flat light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc3n",
+          "text": "我的看法是，判得這麼少，等於法庭自己也不太相信。"
+        }
+      ]
+    },
+    {
+      "id": "no-verdict",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a plain open folder on a wide desk in afternoon light, a clerk's hands resting flat on either side of it, light from a window at the top of the frame",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc3o",
+          "text": "檔案查到這裡，什麼都沒有定論。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "hot-meal-legend",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old sailor in a tavern at midday telling a story with both hands, a plate of food steaming on the table in front of him, light from a doorway behind him",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc3p",
+          "text": "可是全世界後來聽到的，是桌上還有熱飯菜。",
+          "emotion": "轉折語氣"
+        }
+      ]
+    },
+    {
+      "id": "who-added",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a steaming plate of stew alone on a plain wooden table, a woman's hand setting a fork beside it, daylight from a window on the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc3q",
+          "text": "那頓飯菜，是誰加上去的？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "magazine-office",
+      "chapter": "一八八四年，有人把她寫成小說",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young writer in a tweed waistcoat at a cluttered desk in a study by day, pressing a plain bound magazine shut, light from a bay on the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4a",
+          "text": "十二年後的一八八四年，一本英國雜誌登了一篇小說。"
+        }
+      ]
+    },
+    {
+      "id": "anonymous-author",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand laying down a pen at the foot of a blank handwritten page, an unlit pipe resting on the desk edge, morning light from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4b",
+          "text": "作者沒有署名，他後來寫出了福爾摩斯。",
+          "emotion": "輕輕的得意"
+        }
+      ]
+    },
+    {
+      "id": "misspelled-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a typesetter's hand lifting one metal letter block from a wooden tray of blanks, a composing stick beside it, light from a skylight above",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4c",
+          "text": "小說裡連船名都拼錯了，拼成另一個樣子。"
+        }
+      ]
+    },
+    {
+      "id": "boats-on-davits",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a reader in an armchair by a tall window in the afternoon, holding an open blank book, a model vessel on the sill beside him, light from the glass",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4d",
+          "text": "他寫小艇都還掛在吊架上，寫船是被拖進港的。"
+        }
+      ]
+    },
+    {
+      "id": "not-in-records",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of an open plain ledger on a desk in daylight, a clerk's finger running down an empty column, light from a skylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4e",
+          "text": "這兩件事都不在法庭紀錄裡。",
+          "emotion": "短，斬釘截鐵"
+        }
+      ]
+    },
+    {
+      "id": "taken-as-real",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a crowded morning railway platform, one commuter in a bowler hat reading a plain folded magazine while people pass him, light from the glass roof",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4f",
+          "text": "讀者把它當成一篇真實的報導。",
+          "emotion": "帶一點無奈"
+        }
+      ]
+    },
+    {
+      "id": "remember-meal",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a cold untouched plate on a plain table, one diner's hand resting beside it without touching the fork, flat light from a glazed door on the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4g",
+          "text": "還記得桌上那頓熱飯菜嗎？",
+          "emotion": "回呼，語氣親近，上揚"
+        }
+      ]
+    },
+    {
+      "id": "added-later",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a market woman at a stall at noon, cupping one hand beside her mouth as she talks, a basket of apples in front of her, a shopper small in the background, light from a bright sky",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4h",
+          "text": "它不在這篇小說裡，是後來別人轉述時加上的。"
+        }
+      ]
+    },
+    {
+      "id": "warm-tea",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a chipped teacup on a saucer with a thin wisp of steam, an old man's hand curled around it, afternoon light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4i",
+          "text": "連杯子裡還溫著的茶，也是這樣長出來的。",
+          "emotion": "放慢，帶笑意"
+        }
+      ]
+    },
+    {
+      "id": "no-year-marked",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a library table in daylight, an archivist's hands spreading out a stack of blank clippings, light from a high window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4j",
+          "text": "今天開得到的來源，都沒有標那是哪一年加的。"
+        }
+      ]
+    },
+    {
+      "id": "legend-runs",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a boy running down a sloping cobbled street at midday with a plain sheet of paper held above his head, more children small behind him, light from the open sky",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4k",
+          "text": "傳說一旦跑起來，就停不下來了。",
+          "emotion": "加速"
+        }
+      ]
+    },
+    {
+      "id": "sea-monster",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a puppet show on a seaside promenade in the afternoon, a puppeteer's hands working a cloth octopus above a small stage, light from the sea behind",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4l",
+          "text": "後來的人又加了海怪，加了巨大的章魚。",
+          "emotion": "誇張一點"
+        }
+      ]
+    },
+    {
+      "id": "bermuda-triangle",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in shirtsleeves at a large plain wall chart in a bright room, drawing one big triangle on it with a thick crayon, light from a doorway on the right",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4m",
+          "text": "再後來，還有人把她算進百慕達三角。"
+        }
+      ]
+    },
+    {
+      "id": "off-portugal",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a plain unmarked sea chart on a table, a navigator's dividers set down on it by one hand, light from a window above",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4n",
+          "text": "可是她是在葡萄牙外海被發現的。",
+          "emotion": "轉回事實，語氣轉正"
+        }
+      ]
+    },
+    {
+      "id": "thousands-km",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a schoolroom at midday, a teacher stretching both arms wide in front of a plain globe on a stand, light from tall glass doors behind her",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4o",
+          "text": "那裡離百慕達，有好幾千公里。",
+          "emotion": "拉長「好幾千」"
+        }
+      ]
+    },
+    {
+      "id": "not-her-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a shipwright's hand chiselling a plain nameplate on a wooden bow in a boatyard, wood shavings on his wrist, morning light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4p",
+          "text": "這艘船本來也不叫這個名字。",
+          "emotion": "輕輕揭開"
+        }
+      ]
+    },
+    {
+      "id": "amazon-launch",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small coastal boatyard on a bright spring morning, a shipwright in a leather apron waving his cap as a wooden hull slides towards the water, light from the sea",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4q",
+          "text": "她一八六一年在加拿大新斯科舍下水，原名亞馬遜號。"
+        }
+      ]
+    },
+    {
+      "id": "renamed-1868",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a shipping agent in a frock coat at a quayside table at noon, pressing a brass stamp onto a plain form, a hand bell beside him, light from a high sun",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4r",
+          "text": "七年後賣給美國人，才改叫瑪麗賽勒斯特號。"
+        }
+      ]
+    },
+    {
+      "id": "covered-150",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand laying an open plain book face-down over a small brass nameplate on a desk, afternoon light from the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc4s",
+          "text": "一個真實的船名，被一篇小說蓋了一百五十年。",
+          "emotion": "結尾放慢，數字壓重"
+        }
+      ]
+    },
+    {
+      "id": "surveyor-list",
+      "chapter": "少了找路的工具，留下了半年的糧食",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a surveyor in a high collar at a cabin table by day, running one finger down a long blank list, his hat on the bench beside him, light from a stern window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5a",
+          "text": "小說蓋不住的，是勘驗官留下的那張清單。",
+          "emotion": "收起笑意，轉嚴肅"
+        }
+      ]
+    },
+    {
+      "id": "yawl-gone",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two bare iron davit hooks against a grey sky, a sailor's hand closing around one of them, light from behind the cloud",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5b",
+          "text": "不見的，是船上唯一那艘小艇。"
+        }
+      ]
+    },
+    {
+      "id": "rail-lowered",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a side rail swung down flat in morning light, one sailor crouching at the gap and looking down at the water, light from the open sky",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5c",
+          "text": "一側的欄杆放了下來，像是正常放艇的樣子。"
+        }
+      ]
+    },
+    {
+      "id": "sextant-missing",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an open empty velvet-lined instrument case on a bunk, a sailor's hand lifting its lid, daylight from a port window on the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5d",
+          "text": "六分儀和天文鐘也不見了。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "find-position",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a navigator on sunlit decking holding a brass sextant up to the horizon, one eye closed, light from a high morning sun",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5e",
+          "text": "那是在海上找位置用的東西。"
+        }
+      ]
+    },
+    {
+      "id": "papers-gone",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of an open desk drawer with nothing in it but dust, a mate's hand resting on the drawer front, grey daylight from a window above",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5f",
+          "text": "航海手冊和船籍文件，也一起被帶走了。"
+        }
+      ]
+    },
+    {
+      "id": "more-remained",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tidy cabin in bright daylight, a surveyor standing in the doorway with his hands in his pockets looking at the shelves, light from a skylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5g",
+          "text": "還在的東西，其實更多。",
+          "emotion": "轉折，語氣一亮"
+        }
+      ]
+    },
+    {
+      "id": "logbook-sword",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick open blank logbook on a cabin table, a pen laid across it by one hand, soft light from the left",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5h",
+          "text": "航海日誌留在桌上，船長的劍留在床底。"
+        }
+      ]
+    },
+    {
+      "id": "clothes-toys",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small cabin in daylight, a woman's hand lifting a child's dress from a hook, a wooden high chair beside her, light from a round window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5i",
+          "text": "衣服都掛在原位，小孩的衣服和玩具也在。",
+          "emotion": "語氣轉柔"
+        }
+      ]
+    },
+    {
+      "id": "still-aboard-stats",
+      "template": "stats",
+      "data": {
+        "title": "船上還留著什麼",
+        "stats": [
+          {
+            "value": "半年",
+            "label": "留下的糧食與飲水"
+          }
+        ],
+        "source": "直布羅陀勘驗報告 1872-12-23"
+      },
+      "lines": [
+        {
+          "id": "mc5j",
+          "text": "六個月的糧食和水，一樣都沒帶走。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "binnacle-knocked",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a binnacle box knocked askew on decking, its compass glass cracked, a sailor's hand steadying it, grey light from above",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5k",
+          "text": "羅經櫃被撞歪了，羅盤的玻璃罩也破了。"
+        }
+      ]
+    },
+    {
+      "id": "orderly-leaving",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cabin door standing half open in afternoon light, a coat still hanging on its hook behind it, one hand holding the door frame, light from the corridor",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5l",
+          "text": "我的看法是，這像匆忙，但有秩序地離開。"
+        }
+      ]
+    },
+    {
+      "id": "took-navigation",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a canvas satchel open on a bunk with one brass instrument inside, a sailor's hands holding the strap, daylight from a side window",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5m",
+          "text": "帶走的是找路的工具，留下的是吃的穿的。"
+        }
+      ]
+    },
+    {
+      "id": "who-were-ten",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sunlit New York pier in autumn, one dock worker leaning on a bollard watching a vessel, crates stacked behind him, light from a low sun",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5n",
+          "text": "那一趟從紐約開往熱那亞的，是十個什麼人？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "briggs-portrait",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sea captain in a dark frock coat on a pier in morning light, a rolled blank chart under one arm, a bollard beside him, light from the water",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5o",
+          "text": "船長叫布里格斯，三十七歲，麻州人。",
+          "emotion": "語速放慢，像介紹一個人"
+        }
+      ]
+    },
+    {
+      "id": "bought-share",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a captain in shirtsleeves at a shipping office counter by day, counting coins onto the wood, a brass grille behind him, light from a street window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5p",
+          "text": "他在海上跑了十幾年，還買下了這艘船的股份。"
+        }
+      ]
+    },
+    {
+      "id": "remember-this",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand tying a knot in a short length of string on a desk, a plain notebook under it, light from straight above",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5q",
+          "text": "先記住這一件事，等一下它會回來。",
+          "emotion": "壓低，像在交代"
+        }
+      ]
+    },
+    {
+      "id": "family-gangplank",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in a bonnet carrying a toddler up a gangplank on a bright autumn morning, a carpet bag in her other hand, light from the harbour",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5r",
+          "text": "十一月七日，他帶上太太莎拉和兩歲的女兒蘇菲亞。"
+        }
+      ]
+    },
+    {
+      "id": "seven-crew",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a foredeck in bright daylight, a sailor coiling a rope in the foreground, a few small figures working further back, light from a high sun",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5s",
+          "text": "加上七個船員，全船正好十個人。"
+        }
+      ]
+    },
+    {
+      "id": "last-slate",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a blank grey slate propped on a cabin shelf, a piece of chalk held near it by one hand, early light from a port window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5t",
+          "text": "石板上最後一筆，寫在十一月二十五日早上。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "santa-maria",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a green volcanic island seen from the sea at sunrise, one fisherman standing in a small boat in the foreground, light from the low sun",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5u",
+          "text": "位置在亞速群島聖瑪麗亞島外，大約十一公里。"
+        }
+      ]
+    },
+    {
+      "id": "nine-days-blank",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of an open blank ledger on a cabin table, a mate's hand resting on the empty page, grey daylight from a window above",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5v",
+          "text": "之後的九天，沒有留下任何紀錄。",
+          "emotion": "停住，留空"
+        }
+      ]
+    },
+    {
+      "id": "four-or-five",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two plain desk calendars standing side by side, a clerk's finger moving from one to the other, light from the right",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5w",
+          "text": "發現她的那一天，有的紀錄寫四日，日誌寫五日。"
+        }
+      ]
+    },
+    {
+      "id": "insurance-claim",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an insurance clerk in a waistcoat at a tall desk in a bright office, pressing a wax seal onto a plain document, a ledger beside him, light from a window on the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc5x",
+          "text": "所以在法庭上，有人說這整件事是一場保險詐騙。",
+          "emotion": "轉折，語氣一沉"
+        }
+      ]
+    },
+    {
+      "id": "fraud-first",
+      "chapter": "七種說法一個一個掉下來",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand sweeping one card off the top of a small stack on a bright desk, the rest left standing, light from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6a",
+          "text": "保險詐騙這一條，最先掉下來。"
+        }
+      ]
+    },
+    {
+      "id": "remember-share",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a shipping clerk at an office counter in daylight, holding up a plain blank certificate, a brass grille behind him, light from the window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6b",
+          "text": "還記得船長自己買下的那些股份嗎？",
+          "emotion": "回呼，上揚"
+        }
+      ]
+    },
+    {
+      "id": "he-pays",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an upturned empty cap on a cabin table with a few coins beside it, a man's hand lifting the cap, afternoon light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6c",
+          "text": "船沉了，賠的是他自己。",
+          "emotion": "短，收掉"
+        }
+      ]
+    },
+    {
+      "id": "pirates-mutiny",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sailor in a torn shirt standing alone on sunlit decking with a cutlass at his belt, his arms folded, light from a high sun",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6d",
+          "text": "海盜和叛變，也一樣站不住。"
+        }
+      ]
+    },
+    {
+      "id": "nothing-taken",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a sailor's open sea chest in daylight, folded clothes and a pipe inside, one hand resting on the lid, light from a window above",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6e",
+          "text": "船上沒有一處打鬥的痕跡。"
+        }
+      ]
+    },
+    {
+      "id": "monster-triangle",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a dust coat closing a heavy plain ledger in a bright reading room, a trolley of books behind her, light from a tall window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6f",
+          "text": "海怪和百慕達三角，紀錄裡一個字都沒有。",
+          "emotion": "乾脆，收掉"
+        }
+      ]
+    },
+    {
+      "id": "quake-waterspout",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tall waterspout over a daylight sea, one fisherman in a small boat in the foreground shielding his eyes, light from a bright hazy sky",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6g",
+          "text": "海底地震和水龍捲，聽起來都很合理。",
+          "emotion": "先給一點認同"
+        }
+      ]
+    },
+    {
+      "id": "no-damage",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a cooper's hand tapping a tight iron hoop on a wooden cask, the staves smooth and dry, warm light from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6h",
+          "text": "可是船殼和貨，都沒有受傷。",
+          "emotion": "翻掉，短"
+        }
+      ]
+    },
+    {
+      "id": "theories-table",
+      "template": "table",
+      "data": {
+        "title": "七種說法卡在哪一關",
+        "columns": [
+          "說法",
+          "誰提的",
+          "卡在哪"
+        ],
+        "rows": [
+          [
+            "海怪傳說",
+            "後來的小說",
+            "紀錄裡沒有"
+          ],
+          [
+            "海盜叛變",
+            "當年的報紙",
+            "東西都還在"
+          ],
+          [
+            "保險詐騙",
+            "當年的猜測",
+            "船長自己持股"
+          ],
+          [
+            "海震水龍捲",
+            "後來的研究",
+            "船貨都沒傷"
+          ],
+          [
+            "酒精蒸氣",
+            "當年的船主",
+            "主艙口蓋好"
+          ],
+          [
+            "誤判進水",
+            "當年的艦長",
+            "只能靠推測"
+          ]
+        ]
+      },
+      "lines": [
+        {
+          "id": "mc6i",
+          "text": "排成一張表，前四個說法連頭一關都過不了。",
+          "reveal": 2
+        },
+        {
+          "id": "mc6j",
+          "text": "海盜說出自當年的報紙，詐騙說當年就有人猜。",
+          "reveal": 2
+        },
+        {
+          "id": "mc6k",
+          "text": "剩下的兩個，才真的跟證據對得上。",
+          "emotion": "語氣轉重",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "vapour-theory",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sea captain on sunlit decking sniffing the air above an open hatch, one hand on the hatch rim, light from a high sun",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6l",
+          "text": "其中一個，是酒精蒸氣。",
+          "emotion": "短，拋出來"
+        }
+      ]
+    },
+    {
+      "id": "all-to-the-boat",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a deck in bright morning light, a captain at the rail waving one arm towards a small boat below, light from the open sea",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6m",
+          "text": "船長怕艙裡的氣爆炸，叫全員先上小艇。"
+        }
+      ]
+    },
+    {
+      "id": "owner-said-so",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a shipowner in a top hat at a quayside office window in the afternoon, jabbing one finger at the glass, light from the harbour behind him",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6n",
+          "text": "這個說法當年就有人講，船主自己也這樣主張。"
+        }
+      ]
+    },
+    {
+      "id": "main-hatch-closed",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a canvas-covered hatch cover wedged tight on decking, a sailor's boot resting on its edge, grey light from above",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6o",
+          "text": "可是主艙口是蓋好的。",
+          "emotion": "短，打斷"
+        }
+      ]
+    },
+    {
+      "id": "no-smell",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a mate standing in an open cabin doorway in daylight, breathing in with his head tilted back, an empty coat hook beside him, light from the deck above",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6p",
+          "text": "上船的人，也沒有報告聞到什麼味道。"
+        }
+      ]
+    },
+    {
+      "id": "miscalculation",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a navigator's hands over a plain chart with dividers and a pencil, one hand pausing, daylight from a window on the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6q",
+          "text": "另一個說法是：他算錯了。",
+          "emotion": "輕，像揭開"
+        }
+      ]
+    },
+    {
+      "id": "remember-rod",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a long wooden rod standing in the corner of a cabin, a sailor's hand lifting it out, daylight from a port window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6r",
+          "text": "還記得甲板上那根量水深的桿子嗎？",
+          "emotion": "回呼，上揚"
+        }
+      ]
+    },
+    {
+      "id": "pump-apart",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass pump taken apart on decking, its pieces laid in a row, an engineer's hands over them, light from straight above",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6s",
+          "text": "兩具幫浦，被拆開了一具。"
+        }
+      ]
+    },
+    {
+      "id": "coal-dust",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stevedore shovelling coal into a hold at noon, dust rising around him, light from the open sky",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6t",
+          "text": "前一趟載的是煤，煤灰可能塞住了幫浦。"
+        }
+      ]
+    },
+    {
+      "id": "chronometer-off",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass marine chronometer in its open wooden box, a captain's finger resting on the glass, afternoon light from the right",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6u",
+          "text": "天文鐘有誤差，讓他以為自己在一百二十哩以西。"
+        }
+      ]
+    },
+    {
+      "id": "captains-judgement",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sea captain alone at a cabin table in grey daylight, both hands pressed flat on a plain chart, his head bowed, light from a stern window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6v",
+          "text": "以為船要沉了，是一個船長會做的判斷。",
+          "emotion": "同理，語氣放軟"
+        }
+      ]
+    },
+    {
+      "id": "both-have-holes",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand holding up a piece of sailcloth with one round hole torn in it against a bright sky, light through the hole",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6w",
+          "text": "兩個說法，都還有破洞。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "genoa-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a Mediterranean harbour quay at noon, a dock worker in a straw hat pushing a hand cart past stacked casks, light from a high sun",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc6x",
+          "text": "可是在熱那亞的碼頭上，還有一個數字沒有人提過。"
+        }
+      ]
+    },
+    {
+      "id": "genoa-unload",
+      "chapter": "熱那亞的碼頭上，九桶是空的",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a quay at noon, a dock hand rolling a wooden cask down a plank ramp, more casks stacked behind him, light from a high sun",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7a",
+          "text": "船開到熱那亞，貨終於一桶一桶卸下來。"
+        }
+      ]
+    },
+    {
+      "id": "remember-casks",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of rows of wooden casks on a sunlit quay, a tallyman walking between them with a chalk stick in his hand, light from straight above",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7b",
+          "text": "還記得那一千七百零一桶酒精嗎？",
+          "emotion": "回呼，上揚"
+        }
+      ]
+    },
+    {
+      "id": "nine-empty",
+      "template": "big",
+      "data": {
+        "text": "9 桶是空的",
+        "kicker": "熱那亞卸貨",
+        "sub": "其他的都是滿的"
+      },
+      "lines": [
+        {
+          "id": "mc7c",
+          "text": "其中九桶，是空的。",
+          "emotion": "一字一頓，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "red-oak",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two cask ends side by side on a quay, one grain coarse and one fine, a cooper's hand touching the coarser one, light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7d",
+          "text": "這九桶跟其他的不一樣，是紅橡木做的。"
+        }
+      ]
+    },
+    {
+      "id": "porous-oak",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a cooper's hand holding a split oak stave up to the daylight, thin wet lines running down the grain, light from a workshop window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7e",
+          "text": "紅橡木的孔隙大，比較容易滲漏。",
+          "emotion": "放慢，像在解釋"
+        }
+      ]
+    },
+    {
+      "id": "best-explanation",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher in a cardigan at a reading room table in daylight, laying one plain folder open with both hands, light from a tall window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7f",
+          "text": "所以目前最站得住的解釋，是這樣的。",
+          "emotion": "吸一口氣，準備揭曉"
+        }
+      ]
+    },
+    {
+      "id": "captain-notices",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sea captain crouching at an open hatch on bright decking, one hand raised to stop the man behind him, light from a high sun",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7g",
+          "text": "船長發現艙裡有水，或者聞到不對的味道。"
+        }
+      ]
+    },
+    {
+      "id": "all-aboard",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a hull side in morning light, a small boat already in the water below with one figure at the oars, a rope ladder hanging down, light from the sea",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7h",
+          "text": "他判斷船要出事，叫全員上小艇。",
+          "emotion": "急，語速快"
+        }
+      ]
+    },
+    {
+      "id": "remember-rope",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick rope made fast to a stern cleat, a sailor's hands pulling the knot tight, light from the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7i",
+          "text": "還記得船尾那條斷掉的粗繩嗎？",
+          "emotion": "回呼，放慢"
+        }
+      ]
+    },
+    {
+      "id": "towed-behind",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a two-masted vessel seen from a small boat towed behind it in bright daylight, one person at the tiller of the boat seen from behind, light from a wide sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7j",
+          "text": "小艇被綁在繩子後面，拖著一起走。"
+        }
+      ]
+    },
+    {
+      "id": "rope-parts",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick rope snapping mid-length over open water, the frayed ends flying apart, a hand grabbing at empty air, light from straight above",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7k",
+          "text": "然後，那條繩子斷了。",
+          "emotion": "短，重，停住"
+        }
+      ]
+    },
+    {
+      "id": "sails-away",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a two-masted vessel sailing away across a bright empty sea, seen from a small boat in the foreground with one person standing in it, light from a pale sun behind",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7l",
+          "text": "船上的帆還張著，船就這樣繼續往前走。"
+        }
+      ]
+    },
+    {
+      "id": "boat-left",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small open boat alone on a wide sunlit sea, one person sitting in it with an oar across his knees, light from a high sky",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7m",
+          "text": "小艇留在海上，越離越遠。",
+          "emotion": "拉長，無力"
+        }
+      ]
+    },
+    {
+      "id": "drift-study",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher in a jumper at a desk in a bright modern office, moving one plain weather chart across the table, light from a window on the left",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7n",
+          "text": "二零零七年，有人用氣象資料回推那九天。"
+        }
+      ]
+    },
+    {
+      "id": "sailed-herself",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a plain sea chart on a table with a curved pencil line across it, a researcher's hand resting at one end, light from straight above",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7o",
+          "text": "結論是：這艘船，基本上是自己走的。",
+          "emotion": "揭曉，短"
+        }
+      ]
+    },
+    {
+      "id": "holes-remain",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand holding a plain folder half closed on a desk, one corner of a page sticking out, afternoon light from the right",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7p",
+          "text": "這個解釋也有破洞，到今天都沒有定論。",
+          "emotion": "誠實，不是失望"
+        }
+      ]
+    },
+    {
+      "id": "why-take-tools",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a canvas bag on a bunk with a brass instrument and a rolled chart inside, a hand pulling the drawstring, light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7q",
+          "text": "它解釋不了一件事：暫時下船，卻帶走了六分儀和文件。"
+        }
+      ]
+    },
+    {
+      "id": "never-found",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wide empty daylight sea from a cliff top, one woman in a shawl standing with her back to us looking out, light from a bright sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7r",
+          "text": "小艇和那十個人，從來沒有被找到。",
+          "emotion": "放慢，沉下來"
+        }
+      ]
+    },
+    {
+      "id": "reef-1885",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tropical reef in the afternoon, a sailing vessel aground on it with one figure standing on the tilted deck, light from a high sun",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7s",
+          "text": "一八八五年，一個新船長為了詐領保險，把她開上礁石。"
+        }
+      ]
+    },
+    {
+      "id": "hoax-jury",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a jury bench in a sunlit courtroom, one juror in a waistcoat sitting forward with his arms crossed, empty seats beside him, light from a high window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc7t",
+          "text": "船沒有沉，騙局被拆穿，陪審團七比五僵住了。"
+        }
+      ]
+    },
+    {
+      "id": "unsettled",
+      "template": "big",
+      "data": {
+        "text": "未結",
+        "kicker": "這份檔案",
+        "sub": "不是消失，是回不去"
+      },
+      "lines": [
+        {
+          "id": "mc7u",
+          "text": "他們不是消失，是離開之後回不去了。",
+          "emotion": "落地，慢，壓重"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "未結",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "十個人離開了一艘還能走的船"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mc7v",
+          "text": "十個人為什麼離開？最站得住的答案，是九桶漏掉的酒精。"
+        },
+        {
+          "id": "mc7w",
+          "text": "你最早聽到的，是哪一個版本？",
+          "emotion": "問句上揚，像在聊天"
+        },
+        {
+          "id": "mc7x",
+          "text": "這個頻道只講紀錄裡有的，想一起開檔案就訂閱。",
+          "emotion": "收尾，誠懇"
+        }
+      ]
+    }
+  ]
+}

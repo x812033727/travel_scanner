@@ -4572,16 +4572,104 @@ Non-claims: this is a duration-only review of the nine bound revisions, not owne
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## DURATION_ONLY 增量覆核（2026-10-13）: narrated videos tell one story with hooks, 15 files
+
+Reviewer: `claude-opus-duration-review-20261013`. Author: `claude-fable-5-1-narrative`. Scope: DURATION_ONLY for the fifteen changed bindings below, reviewed in the worktree `claude/youtube-narrative-flow-1cadbc` whose HEAD is `5c2d32763346a6abda693e15b6a4895ff2025adf` (#1474) with the change still in the working tree, task `2026-10-13-narrated-videos-tell-one-story-with`. The reviewer wrote none of it and edited only this report and review.json.
+
+Baseline: HEAD is the merge base with origin/main, so the baseline of every binding is `git show HEAD:<path>`. SHA-256 over those fifteen Git blobs equals the fifteen values this receipt carried before this increment, which proves each was current when the change started; `git ls-files --eol` reports LF in index and worktree for them. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these fifteen bindings and no others. The hand-off named thirteen of them; `tools/video/core/drama.test.mjs` and `tools/video/tts/tts.test.mjs` are bound and changed too, and both are reviewed and rebound here. The other 93 bindings are untouched by this change and are not covered afresh. Every prior increment is preserved and the registry remains 108 files.
+
+- `.agents/skills/youtube-video/SKILL.md`: `66bee79d893bfb52869a6a7c3426439681a55ffb8c3746286351c365a7056e22` -> `f75b81629e71b5371b0069ac7e10192f33c139ef748ce752cf8763797299b3e6`.
+- `.agents/skills/youtube-video/references/automated.md`: `38d34f7102a104f6aaaebe095d977398dafe37ae44ce0e3b900acf4e36db7d47` -> `135bd217d344df2a5a033cef30cbc3181c4b268d3f96c689d4b4560390de40db`.
+- `.agents/skills/youtube-video/references/formats.md`: `c083df7c0604838d047b0c0fd9e526b191fef6940c10bbb318922e05847a34dc` -> `b27b230728c1c6513fd4567cdba04797f552fd920bed33833ae9f97b70d74087`.
+- `.claude/skills/youtube-video/SKILL.md`: `66bee79d893bfb52869a6a7c3426439681a55ffb8c3746286351c365a7056e22` -> `f75b81629e71b5371b0069ac7e10192f33c139ef748ce752cf8763797299b3e6`.
+- `docs/videos/README.md`: `09dee8b3c79a09ddd1d84ec8453d62582c75516cd58270c153f75e0ed75cb125` -> `14a06ca3f3f495503c70e0f2a6197f1c63b5d104aa92261c3ccf8fd84145511a`.
+- `tools/video/automation/automation.test.mjs`: `4bea77e72473edd7affc7a7b1b36862c1ba7f93f430cf34dfd32b63745250a05` -> `cfce20c7352019324d8e07369e833ed3f0a06f55cd12237e0eafb81f180f0e9c`.
+- `tools/video/automation/flow.mjs`: `88e44aac739df507703cdddfd021151f2edcd4366bc03e594c0cf0e9688483a9` -> `0690b19c0ae2d5ba7a52817eb4b0a4f0d14b1ea89e6c5617bbf087d66306bb49`.
+- `tools/video/automation/prompts.mjs`: `d13a2dc0b3e751fbee279b0c4077e5c21eeb93d7d7d0b4adc98cb83179549424` -> `37363cfd2068b9980462d60df67e244b198bae75ee880bcc0f25f966049e4828`.
+- `tools/video/automation/series.test.mjs`: `d7bca5b65018f5361321ab8b98d0f323db9b195936a25d0793042c7cdb1ca1d2` -> `0c40a6d6154f1bff2f4b850a399bb19526b7e1a6cf2b6211356c25d1979cb931`.
+- `tools/video/core/drama.test.mjs`: `c6dc0ef74464fcb9e47397f59b3902938c628ed86ec2f53819eeba88537f22c6` -> `d24c6bc6a247f8ad33a102687078fc5dae0da5f30e87861008eb3db550c35b17`.
+- `tools/video/core/lint.mjs`: `c68ebb67744bab497196b8456585a4ef4d8a39bc937b7b1316d74ed7ce681fc1` -> `ec6490a252bb26ab520ccfe041404aaf40375f68c220dacaa0b1819d23fe419d`.
+- `tools/video/core/lint.test.mjs`: `0cb320ff6f46d57b90e18c6b1455f6c9312c282f79b5fccbf11a1bf19c408b26` -> `2c98e1c2b1747c966f281888aa37cd4494dcf3064ccaeee91270ce454d78f18e`.
+- `tools/video/core/schema.mjs`: `0202f27c4aa2d59c64fccb0fd495033a58999809943935c7004fc45d183ac94b` -> `80d2607bdecd5aaae145308924be7da310f48f8fc711e2cceba00742b445db0b`.
+- `tools/video/core/state.mjs`: `f45f65951076d48fe61280fc99b3c9d839614775c469fd1fd25d5046633aec26` -> `014450d61ce01f7bff11b48e94c52fba2f4b6e64bc9fcd4e67b22bef423ccaaa`.
+- `tools/video/tts/tts.test.mjs`: `6f7dda4d4cb36292ca5445a83698d74c693464a9502b88be731564ef5c923403` -> `85de2438461cd1325d4734a2452b92ad7cf93d0ed67aa54b9c29a801d936e212`.
+
+The author was still working while this increment was written, and `tools/video/automation/flow.mjs` and `tools/video/core/lint.mjs` moved once under it, with the same added and removed line counts. Both were read again whole and are rebound to their second revision above. What moved: lint.mjs took `isExplainer` into the existing `drama.mjs` import instead of a second import line, which is the same binding; flow.mjs began actually calling `lintWarnings`, so a writer rewrite now carries `lint_warnings` (see the flow.mjs finding). Neither revision touches a duration rule, and the first revision's hashes (`a42f8c9c…` for flow.mjs, `bdeecb14…` for lint.mjs) are recorded here only so a reader can tell the two apart. A further edit to any of the fifteen needs its own follow-up.
+
+What the change is: a narrated video's script must be told as one story. The chapters become beats in the order things happened, each opening on the consequence of the one before; the 30 to 60 second opening condensation becomes ONE scene told in order up to the first fact that makes no sense instead of a trailer of two or three later moments; a script carries a new top-level `loops` table; lint reads the storytelling of a narrated episode (chapter labels, hook cadence, the loops table and repeated facts as warnings, a close that names the next video as an error); a blind yes-or-no "storytelling panel" of ten questions is asked after the listener's edit and sends the script back to the writer twice before it waits for the owner; and the close no longer names the next video. It is a shape and a wording of the script, not a length of the video.
+
+Findings, duration rules: none moved. In the three bound files that hold or read one, every duration identifier appears exactly as often in the working tree as in the HEAD blob — `tools/video/core/lint.mjs` (`target_minutes`, `DEFAULT_TARGET_MINUTES`, `MIN_EPISODE_MINUTES`, `minEpisodeMinutes`, `needsMinimumLength`), `tools/video/core/schema.mjs` and `tools/video/automation/prompts.mjs` — and `tools/video/automation/flow.mjs` keeps its two `minEpisodeMinutes` and two `effectiveEpisodeMinutes` call sites, its sixteen `target_minutes` mentions and its five `draftBudget` uses, gaining only the two new `MIN_EPISODE_MINUTES` uses described below. In lint.mjs the floor (`const floor = needsMinimumLength(doc) ? minEpisodeMinutes() : 0`) and both of its errors, the warning outside `target_minutes`, `checkChapters` and its error for a chapter under 10 s, `OPENING_CHAPTER_SECONDS = [30, 60]`, `DRAMA_HOOK_SECONDS = 30`, `OPENING_SECONDS = 60`, `storyProblems` and the long-anime body tolerance are all outside the hunks. No file under `apps/api`, `tools/video/qa` or `tools/video/long-form` is changed, and neither are `tools/video/core/duration.mjs`, `tools/video/core/timeline.mjs`, `tools/video/automation/story.mjs`'s hook budget or `docs/videos/long-form/plans.json`: the 8-minute non-drama floor, the explainer's 10-minute default and 8–20 range, drama's 1–8, the brand story's 13 minutes and 11:30–15:30 band, the QA `assemble` item's 480 s / 14,400 frames at 30 fps, the chapter minimum of 10 s and the long-form anime policy stand exactly as the increments above bound them.
+
+Findings, tools (6 files):
+
+- `tools/video/core/lint.mjs` (+23/−10): four hunks, one of them the import line (`isExplainer` and `isNarrated`/`narrativeProblems`). The gate that reads a script's shape goes from `!drama && !english && minutes >= MIN_EPISODE_MINUTES` to `isNarrated(doc, context.series) && !english && minutes >= MIN_EPISODE_MINUTES` (`isNarrated` is `!isDrama(doc) || isExplainer(doc) || isStory(series)`, strictly wider), and inside it `narrativeProblems` adds errors and warnings tagged `narrative`. `episodeScriptProblems` gains an `{ outroCount = true }` option, and an explainer is passed `outroCount: false` so its outro card's sentence count is not read; the subscribe word is still read. `error`/`warn` gain a third `kind` argument, absent on every other problem. The opening-chapter warning keeps its `[30, 60]` window, its `minutes >= MIN_EPISODE_MINUTES` condition and its `warn` severity; only its message's words change. `minutes` is still `frameToSeconds(timeline.total_frames) / 60`. No duration error is added, removed or loosened.
+- `tools/video/core/schema.mjs` (+43/−0): `loops` joins `TOP_KEYS`, with `LOOP_KEYS`, `LOOP_WHAT_MAX = 40` and `validateLoops` — ids that exist in the script, the payoff later than the setup in narration order, `what` at most 40 characters. It reads no frames, no seconds and no minutes. `LOCALES`, `DEFAULT_TARGET_MINUTES`, `MIN_EPISODE_MINUTES`, `minEpisodeMinutes`, `eachLine`, `spokenText` and `textHash`, which the duration rules import from here, are outside the hunks.
+- `tools/video/core/state.mjs` (+8/−1): `pipelineStatus` gains a `narrative` field reporting the panel verdict as `missing` / `stale` / `passed` / `failed` from `review/narrative.json`, bound to the script by `scriptCheckMatches`. It is not a checklist step, so `stepsFor`, `definitions` and `next` are unchanged, and nothing in the QA or duration evidence path reads it.
+- `tools/video/automation/flow.mjs` (+79/−12): `narrativeGate` asks the panel on the `verifier` stage under the variant `narrative`, `bare` (so `instructionsFor` is bypassed and no standing instruction, stance or genre section is sent), and `fixScript` gains a `kind` so the panel's rounds count against `prompt_fixes.narrative` instead of `prompt_fixes.script`. The gate's own condition — `minutes < MIN_EPISODE_MINUTES` returns null, with `minutes = timeline.total_frames / FPS / 60` from `estimateTimeline` — only decides whether to ask ten questions; it sets no target and relaxes no floor, and it reads the constant, not `minEpisodeMinutes()`, so a fixture runner's relaxed floor cannot turn it on. `lintWarnings` filters `kind === "narrative"` and is passed as `lint_warnings` in the writer payload of `fixScript` and of the lint-fix loop, and only when there is one, so it rides along with a rewrite the errors or a note already asked for and starts none of its own; `...this.draftBudget(state)` is still spread into both payloads unchanged. `draftBudget`, `effectiveEpisodeMinutes` and every `target_minutes` path are outside the hunks.
+- `tools/video/automation/prompts.mjs` (+60/−23): wording for the planner, the writer, the listener's rewrite, the illustrated writer and the explainer series. Every duration sentence in or beside the hunks is carried over verbatim: "each ≥ 10 s; 250 spoken characters a minute; the whole at least 8 minutes and aimed at the upper end of `target_minutes`, which is an aim, not a limit", "never under 8 minutes; over it is fine", "the whole aimed at `series.target_minutes`, never under 8 minutes", "Total length at 250 spoken characters a minute: never under 8 minutes, and aim at the upper end of `target_minutes`… The upper end is an aim, not a limit… Never cut a sourced fact to fit it and never pad to reach it", the condensation's 30 to 60 seconds and its 20-second rule for the title's fact, and "Chapters: at least 3, the first scene has one, each at least 10 seconds". The outline gains `主線`, `轉折` and `鉤子` lines and a `loops` bullet; the outro paragraph drops "the next episode by name" and gains the refusal of 「下一集」「下一支」「下一份檔案」 in the close. See observation 1 for the one new sentence that names seconds.
+- `tools/video/core/narrative.mjs` (new, unbound) was read whole as context. Its numbers — `HOOK_GAP_SECONDS = 90`, `LOOPS_PER_10_MINUTES = 3` and `requiredLoops(minutes) = max(2, round(minutes / 10 * 3))` — are read off the estimated timeline and produce warnings only; `outroNextVideoProblems` is its one error and matches words, not lengths. Nothing in it writes a target, a floor, a chapter budget, a frame count or a measured-evidence hash, and nothing outside it reads its constants back into a duration rule.
+
+Findings, tests (4 files): `tools/video/core/lint.test.mjs` (+19/−6) teaches `stretched()` to plant an escalation and three loops so the padded example clears the new warnings, splits the outro assertions and adds the `outroCount: false` case; `doc.target_minutes = [MIN_EPISODE_MINUTES, MIN_EPISODE_MINUTES + 4]`, the `MIN_EPISODE_MINUTES + 0.5` padding loop and the 30-to-60 opening test are unchanged, and no assertion on the floor, on `target_minutes` or on chapter length moves. `tools/video/automation/automation.test.mjs` (+79/−2) adds one test of the panel (pass, two rewrites, then blocked on `prompt_fixes:narrative`) whose helper pads an explainer fixture past 8.5 minutes with `target_minutes = [10, 12]`, a value inside the existing 8–20 range, and changes one fixture sentence that named the next video; the neighbouring "a saved three-minute explainer uses ten" test is untouched. `tools/video/automation/series.test.mjs` (+6/−4) re-pins the flat-explainer `bible-explainer` and `explainer` instruction digests and the verifier's payload digest, because the planner's and the writer's words and the example script moved; no assertion about length moves. `tools/video/core/drama.test.mjs` (+9/−7) and `tools/video/tts/tts.test.mjs` (+1/−1) re-pin the minimal, illustrated, explainer and story fixtures' `speechHash`, which moved because those fixtures' closes stopped naming the next video; the drama's and the English fixture's hashes are unchanged, and a speech hash carries no duration (tts.test.mjs's own comment says the timing never enters it).
+
+Findings, skills and docs (5 files): both byte-identical `SKILL.md` copies (+5/−3 each) insert a new rule 11 for the one-story shape — which names 60–90 seconds as the hook cadence and the `loops` table, not a length — renumber the content-value rules to 12, add the `loops` table to the writer's row and add a stage 4.5 for the panel; rule 10, the 8-minute floor with its `target_minutes` sentence and its "no upper limit", is byte-identical. `references/formats.md` (+9/−9) rewrites only the 做什麼 column of five templates' opening and closing rows; every share and limit in the 比例 column is unchanged (開場濃縮 30–60 秒（人工錄製 ≤ 30 秒）, 結論 ≤ 60 秒, 結尾 ≤ 60 秒, 總結 ≤ 90 秒, 結尾卡 ≤ 15 秒, 收尾 ≤ 45 秒, 中段 55–65%, 步驟 70% and the rest). `references/automated.md` (+1/−0) adds one bullet describing the `loops` field. `docs/videos/README.md` (+2/−2) adds the owner's 2026-10-13 decision that the narration names no next video, and restates the body's opening; see observation 2.
+
+Recorded observations. None is a duration rule change and none lets an episode under the floor pass:
+
+1. `tools/video/automation/prompts.mjs`'s chapters bullet for illustrated storytelling gains "a ten-minute video has five to seven of them, 60 to 120 seconds each". It is prose the writer model reads; no code parses it, and it sits in the same bullet as the unchanged "each at least 10 seconds" and "never under 8 minutes". Its low end multiplies out to 300 seconds of chapters, under the floor, so a writer that took it literally and ignored the sentence beside it would produce a short script — which lint still refuses with the unchanged `minutes < floor` error before anything is recorded, exactly as it would have before this change. Recorded because it is the only new sentence in a bound file that names a chapter length.
+2. `docs/videos/README.md`'s 正文開場 bullet goes from 「正文開場仍是開場鉤子（`title` 版型）… 30 秒內說完…」 to 「正文開場是 30–60 秒的開場濃縮…」. That window is `OPENING_CHAPTER_SECONDS = [30, 60]` in lint.mjs, which the "Opening condensation" increment of 2026-10-12 above already reviewed and bound; this is the document catching up to the shipped warning, not a new rule. It moves seconds inside the first chapter of a video whose total is ruled as before, and 頻道片頭 5 秒, 片尾卡 約 15 秒 and the 4-second compilation card in the same section are unchanged.
+3. lint's narrated gate widens: an explainer (a drama with no cast in an explainer preset) and a brand story now also get `episodeScriptProblems` and the new narrative problems, where before only a non-drama did. Every problem on both sides of that gate is a warning except `outroNextVideoProblems`, and neither function reads a length rule.
+4. The close that names the next video is a new lint **error**, so a draft can now be refused for a sentence it was previously allowed. It blocks on words; an episode of any length passes it by deleting the phrase.
+5. Re-pinning the flat-explainer digests means an episode left unfinished on the host when this deploys has that stage asked, and paid for, again (`run-receipts.mjs`); the task's own notes say so. That is a cost, not a duration.
+
+Ran (in the worktree, Node on Windows, `VIDEO_MIN_EPISODE_MINUTES` unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which named exactly the fifteen stale bindings above;
+- SHA-256 with Node's crypto over each of the fifteen HEAD Git blobs and over each working-tree file, compared against the old receipt; `git ls-files --eol` for them (LF);
+- `git diff -U6` over all fifteen files, read whole, and `git diff -U2` over flow.mjs and lint.mjs again after they moved, plus `git diff --stat` and `git diff --numstat`, and `tools/video/core/narrative.mjs`, `tools/video/automation/flow-constants.mjs`, `tools/video/long-form/review.mjs` and `tools/video/long-form/review.test.mjs` as context;
+- a count of every duration identifier (`target_minutes`, `MIN_EPISODE`, `minEpisodeMinutes`, `effectiveEpisodeMinutes`, `DEFAULT_TARGET_MINUTES`, `draftBudget`, "8 minutes", "14,400", "10 s", 分鐘) in each HEAD blob against the working-tree file, which matched everywhere;
+- `node --test tools/video/long-form/plans.test.mjs tools/video/long-form/review.test.mjs tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs`.
+
+The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge the one-story rules, the ten panel questions, the condensation's new shape or the removal of the next-video line as product choices, nor the unbound texts of `register.mjs`, `story-prompts.mjs`, `explainer-series.mjs`, `cli.mjs`, `script-writing.md` or the changed fixtures.
+- No writer, planner or panel was run against a real model, no narration was synthesized and no cut was measured: whether a script written under these rules still reaches 8 minutes was not observed, only that every rule that measures it is unchanged.
+- No API test, ruff, mypy, Vitest, web lint or typecheck was run, and no CI result is claimed.
+- This increment binds the working tree as reviewed. A later commit, rebase or merge with main that changes any of the fifteen files, or either receipt file, needs its own follow-up increment.
+
+PASS is DURATION_ONLY for the fifteen rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Narrated one-story increment, chapter-beat follow-up: 1 file (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013`. Author: `claude-fable-5-1-narrative`. Scope: DURATION_ONLY for the one changed binding below. The author changed `tools/video/automation/automation.test.mjs` again, after the section above, and `node tools/video/long-form/cli.mjs check` named it and nothing else. The reviewer wrote none of the change and edited only this report and review.json.
+
+- `tools/video/automation/automation.test.mjs`: `cfce20c7352019324d8e07369e833ed3f0a06f55cd12237e0eafb81f180f0e9c` -> `74b81299dc30687479e10a816245bc2496fbcc714df345103d98f44fd2d09cba`.
+
+What the change is (+91/−11 against HEAD, against +79/−2 in the section above): the storytelling-panel test and its `longExplainer()` / `panelAnswers()` helpers are as reviewed above and unchanged in substance; what is new is four expectations that follow `register.mjs` `setPauseBeats` (unbound) putting `PAUSE_BEATS.cliffhanger` (1200 ms) on the last line of **every** chapter but the last, however that line ends, where before it required a question mark. Three `pauses(...)` deepEquals read `{ a1hk: 900, a2pd: 1200, a4dk: 1200, a9rl: 1200 }` for `{ a1hk: 900 }` and `{ a1hk: 900, a4dk: 1200 }`, `record.after.pauses` reads 4 for 2, and the two restyle-summary regexes gain `0 open loops, \d+ pause beats` because `registerLine` now also prints the loop count (the pause-beat count is left as `\d+`). One fixture line that named the next video was already rebound in the section above.
+
+Duration: no rule moves. Counted against its HEAD blob, this file gains exactly two `target_minutes` mentions and one `total_frames` use, all three the panel helper's own: `doc.target_minutes = [10, 12]` and the state's `target_minutes: 10`, both inside the existing 8–20 explainer range, and the padding loop `estimateTimeline(doc).total_frames / 30 / 60 < 8.5` that fills a fixture past the floor so the gate will read it. Every other duration identifier is unchanged in count (`MIN_EPISODE_MINUTES` once, as the section above describes), and `minEpisodeMinutes`, `effectiveEpisodeMinutes`, `DEFAULT_TARGET_MINUTES`, 480, 14,400 and "8 minutes" appear nowhere in it, before or after. The neighbouring "a saved three-minute explainer uses ten" test is untouched. The new test asserts round counts, a stage name, a variant, payload keys, instructions and a block kind, never a length.
+
+Recorded observation. A pause beat does reach the estimate: `estimateTimeline` reads `line.pause_after_ms ?? DEFAULT_PAUSE_MS` (core/timeline.mjs, `DEFAULT_PAUSE_MS = 300`), so each new 1200 ms beat adds 900 ms of silence — about 3.6 to 5.4 seconds on a ten-minute video of five to seven chapters, which is where this fixture's three extra beats come from. It is a pacing number, and it is recorded here because a duration rule reads the estimate it feeds. It is not a duration rule change, and it cannot let a short video through: the silence is real and lands in the rendered cut as well, so the estimate and the measured body move together; the direction is longer, never shorter, so nothing that failed the 8-minute floor or the 14,400-frame QA item before can pass on account of it; and the rule that reads it (`minutes < floor`, `minutes` from `frameToSeconds(timeline.total_frames) / 60`) is byte-identical. The warning for running over `target_minutes`'s upper end is already suppressed for a video the floor holds, so the extra seconds raise no new warning either. `setPauseBeats` itself is in `tools/video/automation/register.mjs`, which this registry does not bind; this increment binds only the test's expectations of it.
+
+Ran: `node tools/video/long-form/cli.mjs check` before the edit, naming this one stale binding; `git diff -U4 -- tools/video/automation/automation.test.mjs` read whole, with `git diff --numstat` and the `register.mjs` and `core/timeline.mjs` pause code as context; SHA-256 with Node's crypto over the file's bytes and over its HEAD blob; a count of every duration identifier in the HEAD blob against the working tree. The CLI check and review.test.mjs are run again after rebinding, with results in the hand-off.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
-| `.agents/skills/youtube-video/SKILL.md` | `66bee79d893bfb52869a6a7c3426439681a55ffb8c3746286351c365a7056e22` |
-| `.agents/skills/youtube-video/references/automated.md` | `38d34f7102a104f6aaaebe095d977398dafe37ae44ce0e3b900acf4e36db7d47` |
-| `.agents/skills/youtube-video/references/formats.md` | `c083df7c0604838d047b0c0fd9e526b191fef6940c10bbb318922e05847a34dc` |
-| `.claude/skills/youtube-video/SKILL.md` | `66bee79d893bfb52869a6a7c3426439681a55ffb8c3746286351c365a7056e22` |
+| `.agents/skills/youtube-video/SKILL.md` | `f75b81629e71b5371b0069ac7e10192f33c139ef748ce752cf8763797299b3e6` |
+| `.agents/skills/youtube-video/references/automated.md` | `135bd217d344df2a5a033cef30cbc3181c4b268d3f96c689d4b4560390de40db` |
+| `.agents/skills/youtube-video/references/formats.md` | `b27b230728c1c6513fd4567cdba04797f552fd920bed33833ae9f97b70d74087` |
+| `.claude/skills/youtube-video/SKILL.md` | `f75b81629e71b5371b0069ac7e10192f33c139ef748ce752cf8763797299b3e6` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7` |
 | `apps/api/app/video_automation/models.py` | `e8351836b3d09a939c31f18501ba3e160e98706e327a1172cc35170fc76b9ccc` |
@@ -4615,7 +4703,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `docs/videos/DESIGN.md` | `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `8bf5a55173e25c07c18b865853ffd37e839408ccf731bdc3c4ebf208e195b5b5` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
-| `docs/videos/README.md` | `09dee8b3c79a09ddd1d84ec8453d62582c75516cd58270c153f75e0ed75cb125` |
+| `docs/videos/README.md` | `14a06ca3f3f495503c70e0f2a6197f1c63b5d104aa92261c3ccf8fd84145511a` |
 | `docs/videos/long-form/README.md` | `dd639c0c85595881d1bda64541d28f29e8d90f1067e541c08eb28dc9c4543c3b` |
 | `docs/videos/long-form/plans.json` | `f1d2b4d17a3c9ee0271b5af88c16d5e2d3bf2faaea5d1d90c4c1da7c789044c3` |
 | `docs/videos/long-form/policy.json` | `6f08e7cd27b98710dc308bdb7ea44a6db4b1c8891d0731d5387d9b2245636bad` |
@@ -4628,12 +4716,12 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `4bea77e72473edd7affc7a7b1b36862c1ba7f93f430cf34dfd32b63745250a05` |
+| `tools/video/automation/automation.test.mjs` | `74b81299dc30687479e10a816245bc2496fbcc714df345103d98f44fd2d09cba` |
 | `tools/video/automation/discuss.mjs` | `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21` |
-| `tools/video/automation/flow.mjs` | `88e44aac739df507703cdddfd021151f2edcd4366bc03e594c0cf0e9688483a9` |
-| `tools/video/automation/prompts.mjs` | `d13a2dc0b3e751fbee279b0c4077e5c21eeb93d7d7d0b4adc98cb83179549424` |
+| `tools/video/automation/flow.mjs` | `0690b19c0ae2d5ba7a52817eb4b0a4f0d14b1ea89e6c5617bbf087d66306bb49` |
+| `tools/video/automation/prompts.mjs` | `37363cfd2068b9980462d60df67e244b198bae75ee880bcc0f25f966049e4828` |
 | `tools/video/automation/series.mjs` | `d512034bbc99c0bc9ec7bbdbcfafa9ea6b548eedd877aa6754bbb81b04cd4c37` |
-| `tools/video/automation/series.test.mjs` | `d7bca5b65018f5361321ab8b98d0f323db9b195936a25d0793042c7cdb1ca1d2` |
+| `tools/video/automation/series.test.mjs` | `0c40a6d6154f1bff2f4b850a399bb19526b7e1a6cf2b6211356c25d1979cb931` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
 | `tools/video/core/anime-policy.mjs` | `2c53db1a18e27780b032a019b37912197c13bb4aadc6a130cecdc60371482ecd` |
 | `tools/video/core/anime-policy.test.mjs` | `74b9f1360829efed4c2f1e529b403024877e255d51430a5a2636ac7c5a24b3c6` |
@@ -4642,18 +4730,18 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/branding.mjs` | `d9391d4832301395714cd3741a745fbf248a617fbd2850fe382e473a08ed7fd7` |
 | `tools/video/core/branding.test.mjs` | `85530e76a4b26ca3a61fea99c1852a554c73db15c0248b9f32f0dabb1cdb0621` |
 | `tools/video/core/drama.mjs` | `90de23ad4cc9e1c5ed44e6aae6ab4ccf104d8bac6bd13810122e5ed6853570e4` |
-| `tools/video/core/drama.test.mjs` | `c6dc0ef74464fcb9e47397f59b3902938c628ed86ec2f53819eeba88537f22c6` |
+| `tools/video/core/drama.test.mjs` | `d24c6bc6a247f8ad33a102687078fc5dae0da5f30e87861008eb3db550c35b17` |
 | `tools/video/core/duration.mjs` | `12009ae5d12cba73e55ff462e9f9dd107350d53bea1da5a65bf59a1a39e13285` |
 | `tools/video/core/duration.test.mjs` | `a5b3e9c54368628d4b929b8050eb3ad925cc1b9c1fbd5b88bd3bf5ca010358f6` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `c68ebb67744bab497196b8456585a4ef4d8a39bc937b7b1316d74ed7ce681fc1` |
-| `tools/video/core/lint.test.mjs` | `0cb320ff6f46d57b90e18c6b1455f6c9312c282f79b5fccbf11a1bf19c408b26` |
+| `tools/video/core/lint.mjs` | `ec6490a252bb26ab520ccfe041404aaf40375f68c220dacaa0b1819d23fe419d` |
+| `tools/video/core/lint.test.mjs` | `2c98e1c2b1747c966f281888aa37cd4494dcf3064ccaeee91270ce454d78f18e` |
 | `tools/video/core/narration-locale.test.mjs` | `fddf009b24c976c9319d139db24fa3312fd1d942f2b4d623876d86357464d2ce` |
-| `tools/video/core/schema.mjs` | `0202f27c4aa2d59c64fccb0fd495033a58999809943935c7004fc45d183ac94b` |
+| `tools/video/core/schema.mjs` | `80d2607bdecd5aaae145308924be7da310f48f8fc711e2cceba00742b445db0b` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
 | `tools/video/core/screenplay.test.mjs` | `fe2765c5f2fa42d7cfe5a2e542063c32c4349b585c649552a31b2088aaaec180` |
 | `tools/video/core/stages.test.mjs` | `2e22980d5fe28d63d555e5cce7c18f56fb7042cdab52fa03a76b076ecca3c332` |
-| `tools/video/core/state.mjs` | `f45f65951076d48fe61280fc99b3c9d839614775c469fd1fd25d5046633aec26` |
+| `tools/video/core/state.mjs` | `014450d61ce01f7bff11b48e94c52fba2f4b6e64bc9fcd4e67b22bef423ccaaa` |
 | `tools/video/core/state.test.mjs` | `327eac9a271451f2f1d4954850dbed0ab4102be170f744cc953cb071f1ce0d08` |
 | `tools/video/core/timeline.mjs` | `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a` |
 | `tools/video/core/timeline.test.mjs` | `8eedaa0b04f56d22b65becbf23e39e23e051f2d6850f63a5bf7c496583b9b00a` |
@@ -4685,4 +4773,4 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
 | `tools/video/tts/check.test.mjs` | `0b4e2e68cb1aa38cfa0a5971df1b029e788850b3bac0461709a79b467801499b` |
 | `tools/video/tts/synthesis.mjs` | `589ebe665bd281aaefba6749d61148f4c7011f71c962513efd5a6cd6830f3cb3` |
-| `tools/video/tts/tts.test.mjs` | `6f7dda4d4cb36292ca5445a83698d74c693464a9502b88be731564ef5c923403` |
+| `tools/video/tts/tts.test.mjs` | `85de2438461cd1325d4734a2452b92ad7cf93d0ed67aa54b9c29a801d936e212` |

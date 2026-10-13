@@ -38,13 +38,16 @@ import { lintVideo } from "../core/lint.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, readText } from "../core/paths.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
+import { NARRATIVE_REVIEW, narrativeRecord, PANEL_INSTRUCTIONS, panelPayload, panelVerdict } from "../core/narrative.mjs";
+import { scriptCheckMatches } from "../core/script-check.mjs";
 import { lintProject, loadProject } from "../core/state.mjs";
 import { namePattern, STORY_KIND, STORY_RULES } from "../core/story.mjs";
-import { DEFAULT_CPM, formatClock, FPS, spokenUnits } from "../core/timeline.mjs";
+import { DEFAULT_CPM, estimateTimeline, formatClock, FPS, spokenUnits } from "../core/timeline.mjs";
 import { clipHeadline } from "../story-plans/plan.mjs";
 import { AutomationError } from "./client.mjs";
 import { pageReader } from "./fetch.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
+import { NARRATIVE_VARIANT } from "./flow-constants.mjs";
 import { STORY_FIX_VARIANT, STORY_VARIANT } from "./story-prompts.mjs";
 
 // --- the numbers -------------------------------------------------------------------------------
@@ -102,6 +105,8 @@ const WRITER_TOKENS = 16_000;
 const CHECKER_TOKENS = 16_000;
 // The listener runs on Opus 5.5 by default, which always thinks; thinking counts toward the cap.
 const LISTENER_TOKENS = 16_000;
+// The storytelling panel answers ten yes-or-no questions with one quoted line each.
+const PANEL_TOKENS = 8_000;
 const FIX_TOKENS = 16_000;
 
 // What a story keeps in its work directory, relative to it: the chapters as written and checked
@@ -619,7 +624,17 @@ export function readChapterAnswer(answer, { key, ids, cast = [], sources = 0, fa
     });
   const thumbnail = renamed.get(answer.thumbnail_shot) ?? (known.has(answer.thumbnail_shot) ? answer.thumbnail_shot : null);
   const lexicon = isObject(answer.lexicon_additions) ? answer.lexicon_additions : {};
-  return { chapter: { key, title: clip(answer.title, 30), scenes, claims, ...(thumbnail ? { thumbnail_shot: thumbnail } : {}) }, lexicon };
+  // The open loops this chapter plants and pays off (script-writing.md §故事主線與鉤子), with the
+  // line ids the writer was given; a loop whose payoff a later chapter owns leaves it out.
+  const kept = new Set(scenes.flatMap((scene) => scene.lines.map((line) => line.id)));
+  const loops = (Array.isArray(answer.loops) ? answer.loops : [])
+    .filter((loop) => isObject(loop) && isText(loop.what) && kept.has(renamed.get(loop.setup) ?? loop.setup))
+    .map((loop) => {
+      const setup = renamed.get(loop.setup) ?? loop.setup;
+      const payoff = renamed.get(loop.payoff) ?? loop.payoff;
+      return { setup, ...(kept.has(payoff) ? { payoff } : {}), what: clip(loop.what, 40) };
+    });
+  return { chapter: { key, title: clip(answer.title, 30), scenes, claims, ...(loops.length ? { loops } : {}), ...(thumbnail ? { thumbnail_shot: thumbnail } : {}) }, lexicon };
 }
 
 /** Claim ids per chapter: the chapter's letter and a number (h1, e12), kept across rewrites where a row keeps its id. */
@@ -689,6 +704,11 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
       scenes.push({ id: scene.id, ...(index === 0 ? { chapter: chapter.title } : {}), template: scene.template, data: scene.data, ...(claims.length ? { claims } : {}), lines: scene.lines });
     });
   }
+  // The whole story's open loops: every chapter's, keeping only the ones whose payoff was written.
+  const spoken = new Map(scenes.flatMap((scene) => scene.lines.map((line) => line.id)).map((id, order) => [id, order]));
+  const loops = CHAPTER_KEYS.flatMap((key) => (chapters[key]?.loops ?? []).map((loop) => ({ ...loop, chapter: key })))
+    .filter((loop) => spoken.has(loop.setup) && spoken.has(loop.payoff) && spoken.get(loop.payoff) > spoken.get(loop.setup))
+    .map(({ setup, payoff, what }) => ({ setup, payoff, what }));
   const shots = scenes.filter((scene) => scene.template === "shot").map((scene) => scene.id);
   const thumbnail = shots.includes(chapters.hook?.thumbnail_shot) ? chapters.hook.thumbnail_shot : shots[0];
   const guide = isText(plan.related_guide) && existsSync(contentPackFile(plan.related_guide, root)) ? plan.related_guide : null;
@@ -711,6 +731,7 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
     ...(thumbnail ? { thumbnail: { template: "thumb", data: { headline: clipHeadline(plan.thumbnail?.headline ?? plan.subject), tag: "品牌故事", shot: thumbnail } } } : {}),
     sources: plan.sources.map((source) => ({ title: clip(source.publisher || source.url, 200), url: source.url, checked_on: source.checked })),
     assets: [],
+    ...(loops.length ? { loops } : {}),
     scenes,
   };
 }
@@ -917,6 +938,10 @@ export async function advanceStory(automation, state, next) {
     Object.assign(state, { verified: true, listener_done: true });
     automation.persist(state);
   }
+  // The six chapters are one story: the storytelling panel reads the merged script before the
+  // narration is recorded, and a required "no" sends the listener over them with its note.
+  const panelled = await narrativeGate(automation, state);
+  if (panelled) return panelled;
   if (next === "script approved") return approveScript(automation, state);
   if (next === "narration approved") {
     const length = await checkLength(automation, state);
@@ -945,7 +970,11 @@ async function writerPayload(automation, state, key, extra = {}) {
     facts: factsPayload(plan, belongs),
     caveats: plan.caveats ?? "",
     sources: await sourcesPayload(automation, state, plan, writerSourceOrder(plan, key, belongs), anchors),
-    previous_lines: previous ? chapterNarration(previous).slice(-4) : [],
+    previous_lines: previous ? chapterNarration(previous).slice(-6) : [],
+    // The spine the chapter goes on from, and the loops earlier chapters left hanging: a chapter
+    // that owns one pays it off and names it (story-prompts.mjs, script-writing.md §故事主線與鉤子).
+    spine: plan.spine ?? `${plan.question} → ${plan.takeaway}`,
+    loops_open: openLoops(automation, state, index),
     look: info.look,
     cast: (plan.cast ?? []).map(({ id, role, appearance }) => ({ id, role, appearance })),
     names,
@@ -954,6 +983,20 @@ async function writerPayload(automation, state, key, extra = {}) {
     lexicon: Object.keys(lexicon.terms ?? {}),
     ...extra,
   };
+}
+
+/** What earlier chapters planted and have not paid off: { setup, what } in the order they were planted. */
+function openLoops(automation, state, index) {
+  const chapters = readChapters(automation, state);
+  const open = [];
+  const paid = new Set();
+  for (const key of CHAPTER_KEYS.slice(0, index)) {
+    for (const loop of chapters[key]?.loops ?? []) {
+      if (isText(loop.payoff)) paid.add(loop.setup);
+      open.push({ setup: loop.setup, what: loop.what, chapter: key });
+    }
+  }
+  return open.filter((loop) => !paid.has(loop.setup));
 }
 
 /** Fresh line ids for a chapter: none that any chapter uses. */
@@ -1186,6 +1229,43 @@ async function listenChapter(automation, state, key) {
   automation.persist(state);
   if (lint.other.length) return automation.block(state, `the merged story fails lint outside its chapters: ${lint.other.slice(0, 3).join("; ")}`);
   return `${state.slug}: chapter ${key} heard: ${patched.changed.length} lines reworded, ${patched.dropped.length} dropped${patched.refused.length ? `, ${patched.refused.length} edits refused` : ""}`;
+}
+
+/**
+ * The storytelling panel on the merged story (core/narrative.mjs; owner, 2026-10-13): a reader in
+ * a fresh session answers ten yes-or-no questions on the script alone. A required "no" goes back
+ * to the listener as the owner's note would, chapter by chapter, STORY_PROMPT_FIX_ROUNDS times;
+ * after that the video waits for the owner with the questions it failed. Null when nothing is due.
+ */
+async function narrativeGate(automation, state) {
+  const dir = docDir(state.slug, automation.ctx.root);
+  const file = path.join(dir, "video.json");
+  if (!existsSync(file)) return undefined;
+  const video = JSON.parse(readFileSync(file, "utf8"));
+  const timeline = estimateTimeline(video);
+  const verdictFile = path.join(automation.workdir(state.slug), ...NARRATIVE_REVIEW);
+  const saved = readJson(verdictFile, null);
+  if (saved?.passed && scriptCheckMatches(saved, video)) return undefined;
+  const round = (saved?.round ?? 0) + 1;
+  const answer = await automation.stage("verifier", state.slug, panelPayload(video, timeline), PANEL_TOKENS, "drama", NARRATIVE_VARIANT, null, { bare: PANEL_INSTRUCTIONS });
+  const verdict = panelVerdict(answer);
+  mkdirSync(path.dirname(verdictFile), { recursive: true });
+  atomicWrite(verdictFile, `${JSON.stringify(narrativeRecord(video, verdict, round), null, 2)}\n`);
+  automation.cleared(state, "verifier");
+  state.story.narrative = { passed: verdict.passed, rounds: round, ...(verdict.passed ? {} : { failed: verdict.failed.map((each) => each.id) }) };
+  if (verdict.passed) {
+    automation.persist(state);
+    return `${state.slug}: the storytelling panel passed (round ${round})`;
+  }
+  const rounds = (state.story.narrative_fixes ?? 0) + 1;
+  if (rounds > STORY_PROMPT_FIX_ROUNDS) return automation.block(state, `the storytelling panel still fails after ${STORY_PROMPT_FIX_ROUNDS} passes: ${verdict.problems.join("；")}`, "prompt_fixes:narrative");
+  state.story.narrative_fixes = rounds;
+  state.story.owner_note = `說故事檢查沒過：${verdict.problems.join("；")}`;
+  for (const key of CHAPTER_KEYS) entryOf(state, key).listened = false;
+  state.listener_done = false;
+  state.notes.push(`storytelling panel round ${round}: ${verdict.failed.map((each) => each.id).join(", ")}`);
+  automation.persist(state);
+  return `${state.slug}: the storytelling panel sent the narration back (round ${round}: ${verdict.failed.map((each) => each.id).join(", ")}); the listener goes over the six chapters with it`;
 }
 
 /** The script gate every drama has (PR #870): a story has none, so it is approved here with the reason. */

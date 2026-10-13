@@ -71,7 +71,8 @@ test("flat-explainer is what it was: preset bytes, look hash, visual hash, compo
   const fixture = explainerFixture();
   assert.equal(lookHash(fixture), "bd2b3b49af8e9623");
   assert.equal(lookHash({ format: "drama", look: { preset: "flat-explainer" }, characters: [] }), "bd2b3b49af8e9623");
-  assert.equal(visualHash(fixture), "1ee426698cc02ed3");
+  // Moved on 2026-10-13 with the example outro card's words, which no longer name the next episode.
+  assert.equal(visualHash(fixture), "284ffa10d2a72d62");
 
   const shot = fixture.scenes.find((scene) => scene.id === "flash");
   const look = resolveLook(fixture.look);

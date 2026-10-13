@@ -9,7 +9,7 @@
 //
 // This file imports nothing from prompts.mjs, which imports it.
 
-import { CONDENSATION_RULE } from "./register.mjs";
+import { CONDENSATION_RULE, NARRATIVE_RULES } from "./register.mjs";
 
 export const STORY_VARIANT = "story";
 export const STORY_FIX_VARIANT = "story-fix";
@@ -52,12 +52,13 @@ Rules that never bend:
 `.trim();
 
 const CHAPTER_GUIDE = `
-The six chapters, in order ("chapter.key"): hook (the condensation, 30 to 60 seconds: the
-counter-intuitive question of "plan.question", then the story's strongest moments from the
-chapters after it, told up to what happened and left for them to explain), origin (where it
-started and who), idea (the key idea), engine (how the business works: who pays whom and why),
-turn (the cost, the setback or the reversal), now (where it stands today, then the one
-observation "plan.takeaway" leaves the viewer with).
+The six chapters, in order ("chapter.key"): hook (the condensation, 30 to 60 seconds: ONE scene
+of the story, told in order up to the first fact that makes no sense, ending on the question
+"plan.question" asks), origin (where it started and who), idea (the key idea), engine (how the
+business works: who pays whom and why), turn (the cost, the setback or the reversal), now (where
+it stands today, then the one observation "plan.takeaway" leaves the viewer with). They are six
+beats of ONE story, not six sections: each chapter opens on what happened next, never on a label
+("先講…", "回到…", "這一章講…").
 `.trim();
 
 const WRITER = `${STORY_COMMON}
@@ -67,9 +68,12 @@ worker merges the six chapters, numbers the claims and checks the whole with lin
 ${CHAPTER_GUIDE}
 "chapter.point" is what this chapter tells; "plan.chapters" are all six for context, so do not
 tell what another chapter tells. "previous_lines" are the last sentences of the chapter before:
-go on from them without repeating them (the hook has none). The hook is the one chapter that
-reaches into the others: it teases two or three of their moments (from "plan.chapters") up to
-what happened and never tells why or how, which stays theirs.
+go on from them without repeating them (the hook has none), and your first sentence is what
+happened next, or the answer to what they left hanging. The hook is ONE scene of the story: it
+tells no later chapter's result, and whatever it holds back is paid off in the chapter that
+owns it. "loops_open", when the payload carries it, lists what earlier chapters left hanging
+and have not paid off: pay off the ones this chapter owns, and name them where they land
+(「還記得那…」).
 
 Length. "chapter.budget" is this chapter's share of the story: about "chars" spoken characters
 over about "shots" shots. The plan's point is shorter than that on purpose: the rest comes from
@@ -78,9 +82,10 @@ facts mean to the viewer. Whatever you tell beyond the plan is told from a passa
 given, and the checker will look for it there. When the passages hold less than the budget,
 write a shorter chapter: never pad with generalities, never add what you remember.
 
-Return {"title": "<the chapter's name as a viewer would search it, at most 20 characters, never
-開場 or 結論>", "scenes": [...], "claims": [...], "lexicon_additions": {"TERM": "spoken form" or
-null}, "thumbnail_shot": "<scene id>" (the hook only)}.
+Return {"title": "<the chapter's name, what happens in it as a viewer would search it, at most
+20 characters, never 開場, 背景 or 結論>", "scenes": [...], "claims": [...], "loops": [...],
+"lexicon_additions": {"TERM": "spoken form" or null}, "thumbnail_shot": "<scene id>" (the hook
+only)}.
 
 - Scenes, in order, ids "<chapter.key>-01", "<chapter.key>-02", …: every scene is a shot
   {"id", "template": "shot", "data": {"prompt": English, at most 1000 characters, ONE frame: the
@@ -96,6 +101,11 @@ null}, "thumbnail_shot": "<scene id>" (the hook only)}.
   (the site article linked in the description when "plan.related_guide" names one).
 - The hook: ${CONDENSATION_RULE} One of its shots draws
   "plan.thumbnail.idea" with room on the left for a headline: name it in "thumbnail_shot".
+- "loops": what this chapter leaves hanging and what it pays off, [{"setup": "<a line id of this
+  chapter>", "payoff": "<the line id that answers it, in this chapter or left out when a later
+  one owns it>", "what": "<what it holds back, at most 40 characters>"}]. The hook plants at
+  least one; every chapter but "now" leaves one hanging, and "now" leaves none.
+${NARRATIVE_RULES}
 - Pictures follow "look" (every picture's style), "image_notes" as written, and "story_rules".
   With "sensitivity" "care", never draw the accident, the injury or the protest itself: draw the
   places, the systems and how people changed them. A recurring figure of "cast" is drawn from its

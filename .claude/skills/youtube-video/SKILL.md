@@ -42,7 +42,7 @@ metadata:
 | 你要做的 | 讀 |
 | --- | --- |
 | 決定是哪一種影片、每段多長 | `.agents/skills/youtube-video/references/formats.md` |
-| 寫口播稿（口語、節奏、開場濃縮 30–60 秒；給 TTS 唸的寫法在最後一節） | `.agents/skills/youtube-video/references/script-writing.md` |
+| 寫口播稿（一條故事線與鉤子、口語、節奏、開場濃縮 30–60 秒；給 TTS 唸的寫法在最後一節） | `.agents/skills/youtube-video/references/script-writing.md` |
 | 換口音或口吻的寫法之前怎麼試聽、改哪些檔 | `.agents/skills/youtube-video/references/voice-audition.md` |
 | 字卡、截圖、螢幕錄影、縮圖 | `.agents/skills/youtube-video/references/visuals.md` |
 | 標題、說明、章節、字幕、揭露、上架檢查；全自動的上架包 | `.agents/skills/youtube-video/references/publish.md` |
@@ -79,7 +79,8 @@ metadata:
 8. **檔案先落地**：每完成一段稿子就存檔，session 被切斷時留下的是檔案，不是對話。
 9. **金鑰與權杖不經過代理。** 旁白的金鑰（Gemini 用網站既有的金鑰，Azure 由站主填）只在正式站後台；本機工具的影片工具權杖靠 `login` 配對取得：代理把印出的連結交給站主，站主在後台按「允許」，權杖直接寫進本機檔案。權杖不能出現在對話、檔案或指令參數裡。
 10. **除了漫劇，每集都要 8 分鐘以上**（站主 2026-10-01 定）：投影片、原來如此事務所、人工錄製都算；漫劇（單集、作品、一鍵合集）與 Shorts 不算。全自動路線由後台設定（下限 8）、`lint` 與成片品管的 `assemble` 項擋；人工錄製在 `brief.md` 的目標長度就寫 8 分鐘以上。講不滿 8 分鐘就加內容或併題，不要交短片。沒有上限（站主 2026-10-04 定）：`target_minutes` 的上緣是撰稿瞄準的長度，超過沒關係，`lint` 不再警告；不為了壓進目標刪事實，也不灌水。
-11. **每一支投影片影片都要過含金量六條**（站主 2026-10-09 定）：觀眾看完能做到二到四件之前做不到的事（查一行就有的事、只有提醒都不算）；每一件在畫面上有證明（真的跑過的紀錄、附出處的官方範例或實算）；章節照觀眾會問的順序排，並講清楚跟他已經在用的工具怎麼選；要照做的每一步有完整能照打的指令或提示詞；旁白每一句都帶資訊，出處放卡片與說明欄，風險只講一段；長度靠例子、對照與練習，不靠比喻或重述。主題是觀眾會自己操作的東西就走教學卡片。細節在 `.agents/skills/youtube-video/references/script-writing.md` 的〈含金量〉，工人送出的原文是 `tools/video/automation/register.mjs` 的 `VALUE_RULES`；漫劇、品牌故事、原來如此與 Shorts 不算。
+11. **每一支旁白影片是一個故事，不是幾段拼起來的**（站主 2026-10-13 定）：照事情發生或被查出來的順序講，章是故事的節拍、章名寫發生了什麼，下一章第一句接住上一章留的鉤子；正文每 60–90 秒留一個沒回答的問題，每個都要回收，稿子附 `loops` 表（10 分鐘至少三個、一個埋在開場）；一個事實只講一次；開場濃縮是故事的第一個場景，不是預告片，不講後面才揭曉的結果。**片尾不講下一支影片是什麼**，指向下一支是 YouTube 結束畫面的事。細節在 `script-writing.md` 的〈故事主線與鉤子〉，工人送出的原文是 `tools/video/automation/register.mjs` 的 `NARRATIVE_RULES`；`lint` 量得到的部分會警告、片尾那句會擋，量不到的由說故事關卡的十題是非題讀。有角色的漫劇照 `drama-craft.md`。
+12. **每一支投影片影片都要過含金量六條**（站主 2026-10-09 定）：觀眾看完能做到二到四件之前做不到的事（查一行就有的事、只有提醒都不算）；每一件在畫面上有證明（真的跑過的紀錄、附出處的官方範例或實算）；章節照觀眾會問的順序排，並講清楚跟他已經在用的工具怎麼選；要照做的每一步有完整能照打的指令或提示詞；旁白每一句都帶資訊，出處放卡片與說明欄，風險只講一段；長度靠例子、對照與練習，不靠比喻或重述。主題是觀眾會自己操作的東西就走教學卡片。細節在 `.agents/skills/youtube-video/references/script-writing.md` 的〈含金量〉，工人送出的原文是 `tools/video/automation/register.mjs` 的 `VALUE_RULES`；漫劇、品牌故事、原來如此與 Shorts 不算。
 
 ## 全自動路線
 
@@ -88,9 +89,10 @@ metadata:
 | # | 階段 | 誰 | 關卡 |
 | --- | --- | --- | --- |
 | 1 | 企劃：`brief.md`，含「站主觀點」（有頻道立場時第一行寫「套用立場：N、M」）「觀眾看完能做到的事」與 2–3 個大綱 | 企劃代理（`prompts/planner.md`） | `review-push` 先問 Jev 挑大綱，過關就自動核准；立場空白或 Jev 挑不出來才**由站主在 `/admin/videos` 選** → `review-pull` |
-| 2 | 撰稿：`video.json`＋`claims.md`，新英文詞補進發音字典 | 撰稿代理（`prompts/writer-video.md`） | `lint` 零錯誤 |
+| 2 | 撰稿：`video.json`＋`claims.md`＋`loops` 表，新英文詞補進發音字典 | 撰稿代理（`prompts/writer-video.md`） | `lint` 零錯誤 |
 | 3 | 查核：換人；改超過 3 個事實就第二輪再換人 | 查核代理（`prompts/verifier-video.md`） | `verify-1.md` 完成 |
 | 4 | 聽眾優先審稿：口語、句長、術語唸法、開場鉤子 | 審稿代理 | 協調者套用修正、`lint` 再過 |
+| 4.5 | 說故事關卡：只讀稿子的盲評代理答十題是非題（`cli.mjs narrative --slug`；工人自己問） | 盲評代理 | 必答題全過；沒過退回撰稿，最多兩輪，再不過才給站主 |
 | 5 | `tts`：先 `--dry-run` 看字數與額度，再實際合成 | 工具 | 時間軸寫出、章節時間檢查過 |
 | 6 | `check-audio`（Jev 判斷）→ 被標的句子 `tts --redo` → 重錄到上限仍被標的句子交給聽眾審稿模型改寫措辭（`prompts/listener-rewrite.md`，最多兩輪）→ `review-push` | 工具、站主 | Jev 全過就自動核准；**還有被標的句子才由站主在 `/admin/videos` 核准旁白** → `review-pull` |
 | 7 | `render` → `assemble` → `captions`（只有繁中） | 工具 | 聯絡表看過；`checks.json` 全過 |

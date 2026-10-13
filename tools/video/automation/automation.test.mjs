@@ -13,12 +13,13 @@ import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { cuePieces } from "../core/captions.mjs";
 import { lookHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
 import { dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, lexiconProposals, sandbox } from "../core/fixtures/load.mjs";
+import { NARRATIVE_PANEL, PANEL_INSTRUCTIONS } from "../core/narrative.mjs";
 import { isValidTerm, validateLexicon } from "../core/lexicon.mjs";
 import { shortsFile } from "../shorts/episode.mjs";
 import { atomicWrite, docDir, readJson, ROOT, UsageError } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { dubArtifacts, loadProject, pipelineStatus } from "../core/state.mjs";
-import { speechHash, visualHash } from "../core/timeline.mjs";
+import { estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
 import { localizedThumbnailHash } from "../core/translations.mjs";
 import { RendererError } from "../render/browser.mjs";
 import { dubFingerprint, dubScript, overrunSummary, translationHash } from "../dubs/plan.mjs";
@@ -1893,6 +1894,82 @@ test("a new series episode is held from its save until its outline's approval is
   await automation.draftEpisode({ id: "request", slug, premise: series.premise, target_minutes: 10 }, { series, setting: { body_json: { characters: [] } }, episodes: [episode] }, episode);
   assert.deepEqual(seen, [true], "the report goes out while the video is held");
   assert.equal(busy.size, 0, "the hold ends with the report");
+});
+
+// The storytelling panel (core/narrative.mjs; owner, 2026-10-13): a blind reader answers ten
+// yes-or-no questions on the script alone, between the listener's edit and the gates. A required
+// "no" is a writer rewrite, MAX_PROMPT_FIX_ROUNDS of them, then the owner.
+function longExplainer() {
+  const doc = explainerFixture();
+  doc.target_minutes = [10, 12];
+  let n = 0;
+  const payoffs = [];
+  const CAMERAS = ["push in", "pan left", "tilt up", "drift"];
+  while (estimateTimeline(doc).total_frames / 30 / 60 < 8.5) {
+    // A shot holds at most 12 s of narration, so each one takes two lines; every fourth opens a
+    // chapter on an escalation, which is the open loop the body needs inside 90 s.
+    const opens = n % 4 === 0;
+    const lines = Array.from({ length: 2 }, (_, index) => ({ id: `pan${(n * 2 + index).toString(36).padStart(4, "0")}`, text: opens && index === 0 ? "但這還不是最怪的，紀錄還有下一頁。" : "這一句只是把範例拉長到一集的長度。" }));
+    if (opens) payoffs.push(lines.at(-1).id);
+    doc.scenes.splice(doc.scenes.length - 1, 0, { id: `pan-${n}`, ...(opens ? { chapter: `第 ${n / 4 + 1} 頁的紀錄` } : {}), template: "shot", data: { prompt: "A wide shot of a village square at noon, one farmer counting on his fingers beside a wooden fence, warm light from the left.", camera: CAMERAS[n % CAMERAS.length], visual: "still" }, lines });
+    n += 1;
+  }
+  const first = doc.scenes[0].lines[0].id;
+  doc.loops = payoffs.slice(0, 3).map((payoff, index) => ({ setup: index ? payoffs[index - 1] : first, payoff, what: "拉長用的鉤子" }));
+  return doc;
+}
+const panelAnswers = (overrides = {}) => ({ answers: NARRATIVE_PANEL.map((question) => ({ id: question.id, yes: overrides[question.id] ?? true, evidence: "[q1ex] 閃電亮了，你數到幾？" })) });
+
+test("the storytelling panel reads the script blind between the listener and the gates: it passes, sends it back twice, then waits for the owner", async () => {
+  const slug = "thunder-panel";
+  const box = sandbox(slug, "explainer");
+  let panels = 0;
+  const site = fakeSite({ answers: {
+    writer: () => ({ video: longExplainer() }),
+    verifier: (body) => {
+      if (body.variant !== "narrative") return { report: "# 查核\n", video: null, claims: "", changed_facts: 0 };
+      panels += 1;
+      return panels === 1 ? panelAnswers() : panelAnswers({ chapters_link: false, payoffs: false });
+    },
+  } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-13T02:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  automation.persist({ slug, title: "雷聲", format: "drama", style_preset: "flat-explainer", target_minutes: 10, source_urls: [], notes: [], status: "active", verified: true, listener_done: true });
+  const state = readJson(path.join(box.work, slug, "auto.json"));
+  assert.equal(await automation.saveAndLint(state, { video: longExplainer() }), null);
+
+  // 1. It passes: the panel is asked once, blind, and the verdict is bound to the script it read.
+  assert.match(await automation.narrativeGate(state), /the storytelling panel passed \(round 1\)/);
+  const call = site.calls.run.at(-1);
+  assert.deepEqual([call.stage, call.variant], ["verifier", "narrative"]);
+  assert.deepEqual(Object.keys(call.payload), ["narration", "questions"], "the reader is told the script and the questions, nothing else");
+  assert.equal(call.instructions, PANEL_INSTRUCTIONS, "no standing instructions, no stance, no genre section");
+  assert.match(call.payload.narration, /^# /);
+  assert.equal(call.payload.questions.length, 10);
+  const verdict = readJson(path.join(box.work, slug, "review", "narrative.json"));
+  assert.deepEqual([verdict.passed, verdict.round, verdict.failed], [true, 1, []]);
+  assert.equal(await automation.narrativeGate(state), null, "a passed panel bound to this script is not asked again");
+
+  // 2. A required "no" is a rewrite, and the script is verified, heard and read again.
+  const video = readJson(path.join(box.root, "docs", "videos", slug, "video.json"));
+  video.scenes[0].lines[0].text = "接下來我們來看三件事。";
+  assert.equal(await automation.saveAndLint(state, { video }), null);
+  assert.match(await automation.narrativeGate(state), /screenplay rewritten after the storytelling panel's note/);
+  assert.equal(state.prompt_fixes.narrative, 1);
+  assert.deepEqual([state.verified, state.listener_done], [false, false]);
+  assert.match(site.calls.run.at(-1).payload.fix.problems[0], /說故事檢查沒過：chapters_link/);
+  assert.deepEqual(readJson(path.join(box.work, slug, "review", "narrative.json")).failed, ["chapters_link", "payoffs"]);
+
+  // 3. Two rewrites are the limit (MAX_PROMPT_FIX_ROUNDS): the third "no" waits for the owner,
+  // and the owner's retry gives back that counter alone.
+  assert.match(await automation.narrativeGate(state), /screenplay rewritten after the storytelling panel's note \(round 2\)/);
+  assert.equal(state.prompt_fixes.narrative, MAX_PROMPT_FIX_ROUNDS);
+  assert.match(await automation.narrativeGate(state), /the storytelling panel sent the screenplay back 3 times/);
+  assert.equal(state.status, "blocked");
+  assert.equal(blockedKindOf(state), "prompt_fixes:narrative");
+  assert.equal(resetForRetry(state), "prompt_fixes:narrative");
+  assert.equal(state.prompt_fixes.narrative, undefined);
 });
 
 test("a saved three-minute explainer uses ten in lint fixes, script fixes and replanning, then persists the repaired target", async () => {
@@ -5215,9 +5292,11 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   assert.equal(written.format, "slides");
   assert.equal(written.look.preset, "tech-story");
   // The writer's pauses (600 on the opener, 900 on a4dk) gave way to the tool's beats: the hook
-  // after the first line, which is also the line before 「其實」, and no chapter closes on a question.
+  // after the first line, which is also the line before 「其實」, and the cliffhanger on the last
+  // line of every chapter but the last, however it ends (owner, 2026-10-13: a chapter turns on a
+  // question, a stop before the event, a number or a reversal, never the same way every time).
   const pauses = (doc) => Object.fromEntries([...eachLine(doc)].filter(({ line }) => line.pause_after_ms !== undefined).map(({ line }) => [line.id, line.pause_after_ms]));
-  assert.deepEqual(pauses(written), { a1hk: 900 });
+  assert.deepEqual(pauses(written), { a1hk: 900, a2pd: 1200, a4dk: 1200, a9rl: 1200 });
   assert.ok(existsSync(shortsFile(slug, box.root)), "an illustrated video's Shorts are saved like an explainer's");
   const writer = site.calls.run.find((call) => call.stage === "writer");
   assert.equal(writer.format, "slides", "the slides writer, not the drama's");
@@ -5226,7 +5305,7 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   assert.equal(writer.payload.prompt_budget_chars, 1000);
   assert.match(await automation.step(), /fact-check round 1/);
   assert.match(await automation.step(), /listener edit/);
-  assert.deepEqual(pauses(readJson(docFile)), { a1hk: 900 }, "the listener's own pause is cleared on save");
+  assert.deepEqual(pauses(readJson(docFile)), { a1hk: 900, a2pd: 1200, a4dk: 1200, a9rl: 1200 }, "the listener's own pause is cleared on save and the tool's beats are set again");
   assert.equal(automatedVideos(box.work)[0].verified, true, "with its pause cleared the listener's script is the checked one");
   assert.match(await automation.step(), /narration synthesized/);
   assert.match(await automation.step(), /narration checked \(Jev passed every line\) and sent for review/);
@@ -5316,7 +5395,7 @@ test("restyle retells a worker's slides video in the storytelling register: guar
         // Not a line of this video.
         { id: "zzzz", text: "多出來的一句。" },
         // Unchanged: nothing to do.
-        { id: "b2wr", text: "把你每天的工作留言告訴我，下一支我們一起挑。" },
+        { id: "b2wr", text: "把你每天的工作留言告訴我，訂閱頻道就不會錯過。" },
       ],
     }),
   };
@@ -5326,11 +5405,11 @@ test("restyle retells a worker's slides video in the storytelling register: guar
   const automation = new Automation(ctx, automationClient(ctx), site.settings);
   automation.refs = smallRefs;
 
-  assert.match(await automation.restyle(slug, { dryRun: true }), /^ranking-first: 11 lines, 1 「你以為」 turn, 0 of 3 chapters closing on a question, 2 pause beats; a restyle would send 11 lines to the listener's register pass/);
+  assert.match(await automation.restyle(slug, { dryRun: true }), /^ranking-first: 11 lines, 1 「你以為」 turn, 0 of 3 chapters closing on a question, 0 open loops, \d+ pause beats; a restyle would send 11 lines to the listener's register pass/);
   assert.equal(site.calls.run.length, 0, "the dry run asks the model nothing");
 
   const line = await automation.restyle(slug);
-  assert.match(line, /^ranking-first: 2 of 11 lines retold, 2 refused \(review\/restyle\.json\); now 11 lines, 1 「你以為」 turn, 1 of 3 chapters closing on a question, 2 pause beats; the worker fact-checks, records and reviews the narration again$/);
+  assert.match(line, /^ranking-first: 2 of 11 lines retold, 2 refused \(review\/restyle\.json\); now 11 lines, 1 「你以為」 turn, 1 of 3 chapters closing on a question, 0 open loops, \d+ pause beats; the worker fact-checks, records and reviews the narration again$/);
   const call = site.calls.run[0];
   assert.equal(call.stage, "listener");
   assert.equal(call.variant, "register");
@@ -5346,10 +5425,11 @@ test("restyle retells a worker's slides video in the storytelling register: guar
   assert.equal(lines.get("a3dk").text, "你桌上那份報告，第一名的模型會怎麼寫？");
   assert.equal(lines.get("a4dk").text, "答案可能讓你意外，三個數字到底說了什麼？");
   assert.equal(lines.get("a5nm").text, "第一個數字，最快的模型三秒就回答了。", "a line that gained a Latin word keeps its text");
-  // The beats are the tool's, from the retold text: the hook on the opener, the cliffhanger on
-  // a4dk's new closing question; the model's 1200 on a3dk and 9000 on a9rl are not taken.
+  // The beats are the tool's, from the retold text: the hook on the opener and the cliffhanger on
+  // the last line of every chapter but the last, however that line ends; the model's own 1200 on
+  // a3dk and 9000 on a9rl are not taken.
   const pauses = Object.fromEntries([...lines].filter(([, each]) => each.pause_after_ms !== undefined).map(([id, each]) => [id, each.pause_after_ms]));
-  assert.deepEqual(pauses, { a1hk: 900, a4dk: 1200 });
+  assert.deepEqual(pauses, { a1hk: 900, a2pd: 1200, a4dk: 1200, a9rl: 1200 });
   assert.equal(video.scenes.length, 9, "no scene or line added or dropped");
   const record = readJson(path.join(box.workdir, "review", "restyle.json"));
   assert.deepEqual(record.accepted, [
@@ -5358,7 +5438,7 @@ test("restyle retells a worker's slides video in the storytelling register: guar
   ]);
   assert.deepEqual(record.refused.map((entry) => entry.split(":")[0]), ["a5nm", "zzzz"]);
   assert.match(record.refused[0], /word "GPT" was added/);
-  assert.equal(record.after.pauses, 2);
+  assert.equal(record.after.pauses, 4, "the hook and a beat on every chapter's last line");
   const saved = readJson(stateFile);
   assert.equal(saved.verified, false, "the wording is new: the facts are checked once more");
   assert.equal(saved.listener_done, true, "the register pass was the listener's edit");
