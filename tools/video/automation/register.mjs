@@ -28,20 +28,120 @@ export const HOOK_SECONDS = 20;
 
 /**
  * The opening chapter of a narrated video, slides and explainers and brand stories alike
- * (script-writing.md §開場濃縮; owner, 2026-10-12): the condensation before the first real
- * chapter, there so the viewer stays out of curiosity. core/lint.mjs warns outside its seconds.
+ * (script-writing.md §開場濃縮; owner, 2026-10-12 for its seconds, 2026-10-13 for what fills
+ * them): the condensation before the first real chapter, there so the viewer stays out of
+ * curiosity. It is ONE scene of the story told in order, not a trailer of later chapters: the
+ * trailer told the twists away and the body then repeated them, which is what read as patchwork.
+ * core/lint.mjs warns outside its seconds.
  */
 export const CONDENSATION_RULE = `The first chapter is the condensation: ${OPENING_CHAPTER_SECONDS[0]} to ${OPENING_CHAPTER_SECONDS[1]} seconds
-  before the first real chapter, there so curiosity keeps the viewer to the end. Its first
-  sentence is the hook (the viewer's own question or a counter-intuitive claim; no greeting, no
-  「今天要來跟大家分享」), and the number, date or name the title promises is said
-  within ${HOOK_SECONDS} seconds. Then two or three of the video's strongest moments, each from a
-  later chapter (the most surprising result, the biggest number, the turn, the conflict), each
-  concrete and told up to what happened, never why or how: that answer is its chapter's, and
-  every moment teased is answered there. They are told as events, never announced as a list or
-  in the chapters' order: no table of contents (「接下來分三段」「看完你會知道」「這集講 A、B，
-  還有 C」; lint reads the whole condensation for one). Its last sentence is the question the
-  second chapter opens on.`;
+  before the first real chapter, there so curiosity keeps the viewer to the end. Within its first
+  four sentences the viewer is inside the story: a year or a place, and a person (or a ship, a
+  document, a machine) doing one concrete thing; no greeting, no 「今天要來跟大家分享」, no
+  introduction of the topic. The number, date or name the title promises is said
+  within ${HOOK_SECONDS} seconds. Then that one scene goes on, in the order it happened, up to the
+  first fact that makes no sense, about 15 to 25 seconds, and stops there without telling why.
+  Then it turns (「但這還不是最怪的。」) and throws three or four of the later chapters' moments,
+  in the order the video reaches them, each stranger than the one before, so the viewer wants to
+  see the whole video (owner, 2026-10-13: the opening needs many hooks). Each one is an event
+  (who did what, where, in which year) cut off just before its result, as a sentence that stops
+  or as a question; never the result, the answer or the ending (「法庭把甲板上的污跡送去化驗。」
+  is a teaser; 「化驗說那不是血。」 gives it away). Each teaser line is the setup of a loop in the
+  "loops" table, paid off in the chapter that reveals it, where the narration names it
+  (「還記得開頭那道刀痕嗎？」): that callback is not a retelling. Its picture is the shot of the
+  chapter that pays it off. The condensation's last sentence is the question the whole video
+  answers, and the second chapter opens on what happened next in the scene. The channel intro
+  bumper plays after this chapter, not before it, so the first spoken line is at 0:00. No table
+  of contents: a teaser is a moment, never a topic (「接下來我們會看到」「看完你會知道」「這集講
+  A、B，還有 C」 are not hooks; lint reads the whole condensation for them).`;
+
+/**
+ * How a narrated video is told as one story (script-writing.md §故事主線與鉤子; owner, 2026-10-13:
+ * the content "feels patchwork", viewers cannot follow it, it should be told like a story with
+ * hooks placed now and then, 50 of 100 to reach 85). Sent with CONDENSATION_RULE to every
+ * narrated writer and listener: slides storytelling, the explainer routes, the brand story.
+ * core/narrative.mjs reads what it can off the script; the blind panel reads the rest.
+ */
+export const NARRATIVE_RULES = `
+One story, not sections (the spine):
+- The video is ONE story told in the order it happened or was found out, from one person (or
+  ship, document, company) at one moment to the answer the title asks for. The brief's 主線
+  (who, from which moment, to which answer) and 轉折 (three to five events in order, each with
+  the chapter that reveals it, each more surprising than the last) are the script's order.
+- A chapter is one beat of the story: one event or one reveal, named by what happens in it
+  (「九桶是空的」「化驗說不是血」), never by its function (背景, 流傳的版本, 檔案裡有什麼, 結論,
+  最站得住的解釋, 開場). A ten-minute video has five to seven chapters of 60 to 120 seconds;
+  only the last may be 「現在怎麼看」. What a format owes its viewer (the legend named as the
+  legend, each record with its year and who made it, 「沒有定論」 said where nothing is settled,
+  the records read before the explanation) is told inside the story, wherever it falls, not as
+  the order of the chapters.
+- The next chapter's first sentence is what happened next, or the answer to what the chapter
+  before left hanging; never a label (「先講…」「回到…」「打開第一頁」「這一章回答…」「接下來」
+  「第 N 頁」; lint warns). Chapters end in turns: a question, a stop before the event (「三天
+  後，電報來了。」), a number, a reversal, never the same way every time.
+Hooks (open loops):
+- Every 60 to 90 seconds of the body, one question is left hanging, in one of four ways in
+  turn: forward (「先記住這個數字，等一下它會回來」「這件事晚一點講」), escalation (「但這還不是
+  最怪的」「問題來了」), holding back (tell what happened and stop; the why is a later
+  chapter's), or a turn (events go the other way). Lint warns on a stretch over 90 s without one.
+- Every loop is paid off later, and the payoff names it (「還記得那九桶嗎？」). The script lists
+  them in "loops": [{"setup": <line id>, "payoff": <line id>, "what": <what it holds back, ≤ 40
+  characters>}], at least three for ten minutes, three of them planted in the condensation; the
+  schema refuses a payoff before its setup. A loop with no payoff is cut or paid.
+- At most one forward hook in the whole video says so out loud. 「先記住這個數字，等一下它會回來」
+  is the one hook that steps outside the story, so once is emphasis and three times is the narrator
+  organising the video for the listener. Every other forward hook is carried by the withheld fact
+  alone: 「兩百七十二頁，只要講到這裡的句子就塗掉」 needs nothing added, because a listener remembers
+  it without being asked to. A line that only announces that another item follows (「這個地方的名字
+  越來越多」) is not a hook at all, it is a table of contents; cut it and let the item land.
+- 「還記得…」 appears at most five times in an episode and never twice in a row. Passing the
+  panel is not the same as sounding right: one rewrite cleared all ten questions with ten of them,
+  and the same reader said the last four minutes had stopped being a story and become a formula,
+  while the four sister episodes used four or five each. Keep the phrase for hooks that reach back
+  minutes. Inside a chapter, carry the thing forward instead (「那根量水深的桿子，現在有用了」): a
+  hard link is not a retelling, because it moves the object on rather than reporting it again.
+- The close may not claim more than the record does. "Save the answer for the close" is a rule
+  about telling, not a licence to settle what the sources leave open: where the record holds two
+  accounts the close says so and attributes each one aloud, and where it has only ruled things out
+  the close says nothing is settled. Attribution on a card does not count, because a listener hears
+  none of the cards and a dubbed track reads none of them. Two of the first five scripts written to
+  these rules overstated their closing answer, both while fixing a close that had re-told the body,
+  and both were caught by a fact-checker rather than by the panel.
+- Naming a loop is not paying it. The sentence after 「還記得那…嗎？」 carries something the
+  listener does not have yet: a new fact, a new number, something that happened later. Re-reading
+  the line that planted it replays the hook instead of paying it, and a blind reader fails that as
+  a retelling. With nothing new to give, cut the forward hook and its callback together: nobody
+  misses a question that was never asked, and everybody feels a promise that was not kept.
+- A fact is told once. The opening's facts come back in the body only as a callback; a number
+  said in three sentences is a warning.
+- Nothing announces what is coming, anywhere in the video, not only in the opening. A sentence
+  whose only job is to say that the explanation follows (「所以目前最站得住的解釋，是這樣的。」) is
+  cut, and the next sentence starts. Counting scaffolding is the same offence wearing other clothes
+  (「排成一張表，前四個…」「剩下的兩個…」「其中一個是…另一個說法是…」): when seven accounts fall one
+  by one, each one is an event, somebody proposing it in a year and a record knocking it down, not
+  item n of a list. Lint only reads the first 60 s for this; the panel reads the rest.
+- A summary is a retelling, and it hides in two places. The close carries only what is new (the
+  answer and its number, what is still unexplained, the question to the viewer) and never re-tells
+  the body's turns. A bridge line between chapters moves forward instead of recapping the chapter
+  just finished: the next chapter's first sentence is what happened next, and the listener needs no
+  revision. Three of the first four scripts written to these rules failed a blind read in exactly
+  those two places. To point back at a fact on purpose, name it (「還記得那…」): that is a callback,
+  not a retelling.
+The voice of someone telling it:
+- Sentences are joined the way a person tells a story to one listener: 那麼、結果、然後、但是、
+  因為、沒想到、這時候; at least a third of the sentences follow from the one before (a pronoun,
+  a connective, 「這時候」); four free-standing fact sentences in a row read as a list. Long and
+  short alternate, a reveal is short, numbers arrive one at a time. One sentence may be split
+  over two lines, the first ending on 「，」; the line limit stands.
+- The narrator is in the room: at most one sentence of their own reaction a chapter (「這就很怪
+  了」), marked as theirs where it is an opinion.
+The close:
+- The last chapter (45 to 60 seconds) answers the opening question with its number and says
+  what is still unexplained. The outro's three sentences are the answer, one question the viewer
+  answers in a comment, one invitation to subscribe with the channel's standing reason. It never
+  names the next video, the next file or the next episode (lint refuses 「下一集」「下一支」
+  「下一份檔案」 in the close): YouTube's end screen points at the next video.
+`.trim();
 
 // A writing-only route inside the existing slides format. This does not alter the storytelling
 // register, voice, schema, pause calculation or QA, and is not sent to drama or translation stages.
@@ -405,15 +505,14 @@ The narration is TOLD, not explained (the storytelling register, docs/videos/ILL
 - The first chapter turns at least once on 「${TWIST_MARKER}…其實…」: what the viewer believes, then
   what is so, with the fact that shows it. Later chapters may turn the same way when they have a
   real reversal; never fake one.
-- Every chapter's LAST sentence is the question the next chapter answers (「那它到底怎麼做到的？」);
-  the last chapter's last sentence answers the opening question instead. Never 「接下來我們來看」.
+${NARRATIVE_RULES}
 - Every chapter has at least one concrete scene or comparison a viewer can picture (a kitchen at 2 am,
   a queue at a counter, 「等於一杯咖啡的錢」), and the pictures ("shot" scenes) draw those scenes.
 - Sentences alternate long and short; a reveal is a short sentence. Numbers arrive one at a time,
   each with what it means in the viewer's day.
 - The pauses are the tool's: it sets "pause_after_ms" from the text after you answer
   (${PAUSE_BEATS.hook} after the cold open's first sentence, ${PAUSE_BEATS.reveal} on the sentence before
-  「其實」, ${PAUSE_BEATS.cliffhanger} on a chapter's closing question) and clears it everywhere else. Leave
+  「其實」, ${PAUSE_BEATS.cliffhanger} on a chapter's last sentence) and clears it everywhere else. Leave
   "pause_after_ms" out; the beats land where the words put them.
 - Facts stay facts: the register changes wording, order and rhythm, never a number, a name, a
   version or who said what; every claim still rests on "sources".
@@ -458,10 +557,11 @@ function closingLines(doc, chapters) {
 /**
  * Set the register's pause beats from the text, in place, and return the script: PAUSE_BEATS.hook
  * after the first spoken line (the cold open's first sentence), PAUSE_BEATS.reveal on the line
- * before every line that says 「其實」, PAUSE_BEATS.cliffhanger on a chapter's last line when it is
- * a question (the chapters and closers registerSummary counts). A line on two beats keeps the
- * longer pause. One line is one spoken sentence (script-writing.md), so "the sentence before"
- * is the line before, across scene boundaries.
+ * before every line that says 「其實」, PAUSE_BEATS.cliffhanger on every chapter's last line but the
+ * last chapter's (a chapter ends on a turn, whether a question, a stop before the event, a number
+ * or a reversal: NARRATIVE_RULES; the chapters and closers registerSummary counts). A line on two
+ * beats keeps the longer pause. One line is one spoken sentence (script-writing.md), so "the
+ * sentence before" is the line before, across scene boundaries.
  *
  * Every other "pause_after_ms" is cleared first, a model's included: the rule says the beats sit
  * there and nowhere else, so the tool owns the field on a register script. The model no longer
@@ -482,7 +582,7 @@ export function setPauseBeats(doc) {
     if (index > 0 && said(line).includes(REVEAL_MARKER)) beat(lines[index - 1], PAUSE_BEATS.reveal);
   }
   for (const line of closingLines(doc, chaptersOf(doc))) {
-    if (line && typeof line === "object" && QUESTION.test(said(line))) beat(line, PAUSE_BEATS.cliffhanger);
+    if (line && typeof line === "object") beat(line, PAUSE_BEATS.cliffhanger);
   }
   for (const line of lines) {
     if (beats.has(line)) line.pause_after_ms = beats.get(line);
@@ -506,6 +606,7 @@ export function registerSummary(doc) {
     twists: lines.filter((text) => text.includes(TWIST_MARKER)).length,
     chapters: chapters.length,
     chapter_questions: closers.filter((text) => QUESTION.test(text)).length,
+    loops: Array.isArray(doc.loops) ? doc.loops.length : 0,
     opener_is_greeting: GREETING.test(lines[0] ?? ""),
     pauses: [...eachLine(doc)].filter(({ line }) => Number.isInteger(line.pause_after_ms) && line.pause_after_ms > 0).length,
   };
@@ -514,5 +615,5 @@ export function registerSummary(doc) {
 /** The summary as one line for the terminal. */
 export function registerLine(summary) {
   const closers = Math.max(summary.chapters - 1, 0);
-  return `${summary.lines} lines, ${summary.twists} 「${TWIST_MARKER}」 turn${summary.twists === 1 ? "" : "s"}, ${summary.chapter_questions} of ${closers} chapter${closers === 1 ? "" : "s"} closing on a question, ${summary.pauses} pause beat${summary.pauses === 1 ? "" : "s"}${summary.opener_is_greeting ? "; the opener greets instead of hooking" : ""}`;
+  return `${summary.lines} lines, ${summary.twists} 「${TWIST_MARKER}」 turn${summary.twists === 1 ? "" : "s"}, ${summary.chapter_questions} of ${closers} chapter${closers === 1 ? "" : "s"} closing on a question, ${summary.loops ?? 0} open loop${summary.loops === 1 ? "" : "s"}, ${summary.pauses} pause beat${summary.pauses === 1 ? "" : "s"}${summary.opener_is_greeting ? "; the opener greets instead of hooking" : ""}`;
 }

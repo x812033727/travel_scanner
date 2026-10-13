@@ -61,7 +61,10 @@ test("the slides writer is told the shot template, the 5 to 8 second cadence, th
 test("the planner outlines story beats and the listener keeps the register; the fact-checker and the translators are untouched", () => {
   const planner = instructionsFor("planner", "slides");
   assert.match(planner, /你以為／其實：「<what the viewer believes>/);
-  assert.match(planner, /收尾問題：「…」/);
+  assert.match(planner, /收尾：「…」, a question, a\s+stop before the event, a number or a reversal/);
+  assert.match(planner, /主線：<the spine in one sentence/);
+  assert.match(planner, /轉折：<3 to 5 events in the order they happened/);
+  assert.match(planner, /鉤子：<the open loops this outline plants/);
   assert.match(planner, /"shot: <the picture in a few words>"/);
   // The owner's slides request (flow.mjs draftSlides): that article only, and finance told as information, never advice.
   assert.match(planner, /"requested_guide"[\s\S]*Return its slug as "source_guide" and its url first in\s+"source_urls"/);
@@ -596,16 +599,22 @@ test("the writer says the numbers, closes on three sentences, unlocks screencast
   assert.match(writer, /The narrator may have a name, a catchphrase and a fixed closing line/);
   assert.match(writer, /The first sentence is still the hook; the name comes after it/);
   // The opening (D07): concrete within 20 seconds, no table of contents, one 「你以為…其實」; the
-  // first chapter is the 30 to 60 second condensation (owner, 2026-10-12).
+  // first chapter is the 30 to 60 second condensation, one scene of the story and then three or
+  // four later moments cut off before their results (owner, 2026-10-12 and twice on 2026-10-13).
   assert.match(writer, /The first chapter is the\s+condensation the register below describes, the brief's 開場濃縮/);
-  assert.match(writer, /number, date or proper noun within 20 seconds, then the moments told without their answers/);
+  assert.match(writer, /one scene of the story told\s+in order, the title.s\s+number, date or proper noun within 20 seconds, up to the first fact\s+that makes no sense; then three or four later moments, each cut off before its result/);
+  assert.match(writer, /Then it turns \(「但這還不是最怪的。」\) and throws three or four of the later chapters' moments/);
+  assert.match(writer, /The channel intro\s+bumper plays after this chapter, not before it/);
   assert.match(writer, /The first chapter is the condensation: 30 to 60 seconds\s+before the first real chapter/);
   assert.match(writer, /No\s+table of contents/);
   assert.match(writer, /「你以為…其實」 once in\s+the video, in the first chapter/);
   // The close (D03): three sentences, the article pointed to once, in the description.
   assert.match(writer, /- outro \{title, cta\?, lines 1-4\}: no reveals\. The last scene, and its narration is exactly three\s+sentences/);
   assert.match(writer, /one invitation to subscribe\s+with a reason/);
-  assert.match(writer, /Never invent a next topic/);
+  // The close says nothing about the next video (owner, 2026-10-13); the end screen does that.
+  assert.match(writer, /The close never says what the next video, the next episode or the next file is about/);
+  assert.doesNotMatch(writer, /Never invent a next topic/);
+  assert.match(writer, /the open loops this script plants/);
   assert.match(writer, /points to the article in the description \(say 「說明欄的文章」, never 「第一行」/);
   assert.doesNotMatch(writer, /description's first line/);
   // Screencasts, in the step format steps.mjs checks.
@@ -632,14 +641,15 @@ test("the writer says the numbers, closes on three sentences, unlocks screencast
 
 // A change here moves the durable key of every unfinished explainer journal (the instructions
 // are part of a stage's inputs), so each such stage is asked, and paid for, again: deploy with
-// none unfinished, then update the digest. The cute explainer presets get variants of their own
+// none unfinished, then update the digest. Three of the four moved on 2026-10-13, when the
+// condensation became one scene of the story and the close stopped naming the next episode. The cute explainer presets get variants of their own
 // so that these four never have to move for them.
 test("the four explainer instruction texts are byte for byte what they were", () => {
   const sha256 = (text) => createHash("sha256").update(text, "utf8").digest("hex");
   const pinned = {
-    "planner:bible-explainer": "253bb39f6e3218d3269878e44c85f9e7afe744efc377e6fbdcf46e21f16c9d54",
-    "planner:explainer": "421bb3dc931e13f0ee57ca1de899005706316b39a6797be41e0b7dc7a77505da",
-    "writer:explainer": "baff8934c2ccf494a4dcb1c4e12327b8be9bf8803f2cb12ef9cff88d2546ebd0",
+    "planner:bible-explainer": "92d58c327776f8f1f8084907e2aaf0a7d8f326c2c614d1ab593dc4074ff017a2",
+    "planner:explainer": "e5b50a3fedd95008c096a63153a48e54268821be2e62254913dbc22460ac708f",
+    "writer:explainer": "11ec620a6084cd27a3916971e8d9bf68cda593229218d39ff3e00106534ff0e0",
     "verifier:explainer": "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842",
   };
   for (const [key, digest] of Object.entries(pinned)) {

@@ -5,8 +5,9 @@
 // passes one route's check does not fail the other's.
 import { cadenceProblems } from "./cadence.mjs";
 import { craftProblems } from "./craft.mjs";
-import { cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
+import { cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
+import { isNarrated, narrativeProblems } from "./narrative.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, youtubeWarnings } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
 import { isStory, storyProblems } from "./story.mjs";
@@ -298,9 +299,11 @@ function seriesProblems(doc, series, error, warn) {
  * the hedge family said more than once in the narration, sourcing talk (「文件寫」「官方說」) said
  * more than SOURCING_MAX times, an opening that reads a table of
  * contents, and an outro that asks for no subscription or has not its three sentences.
- * `timeline` is the estimate; the opening is its first OPENING_SECONDS seconds.
+ * `timeline` is the estimate; the opening is its first OPENING_SECONDS seconds. `outroCount`
+ * false leaves the outro's sentence count unread (an explainer's outro card carries the subscribe
+ * line alone); the subscribe word is read either way.
  */
-export function episodeScriptProblems(doc, timeline) {
+export function episodeScriptProblems(doc, timeline, { outroCount = true } = {}) {
   const problems = [];
   const warn = (path, message) => problems.push({ path, message });
   const counts = new Map();
@@ -339,7 +342,7 @@ export function episodeScriptProblems(doc, timeline) {
     const where = `scenes[${index}] (${scene.id})`;
     const said = (scene.lines ?? []).map((line) => line.text);
     if (!said.some((text) => text.includes(SUBSCRIBE_WORD))) warn(where, `the outro asks for no subscription: its ${OUTRO_SENTENCES} sentences answer the opening question with its number, ask one question the viewer can answer in a comment, and give one reason to subscribe (script-writing.md §結尾)`);
-    if (said.length < OUTRO_SENTENCES) warn(where, `the outro has ${said.length} sentence${said.length === 1 ? "" : "s"}; the close is ${OUTRO_SENTENCES}: the answer with its number, a comment question, a subscribe invitation with a reason`);
+    if (outroCount && said.length < OUTRO_SENTENCES) warn(where, `the outro has ${said.length} sentence${said.length === 1 ? "" : "s"}; the close is ${OUTRO_SENTENCES}: the answer with its number, a comment question, a subscribe invitation with a reason`);
   });
   return problems;
 }
@@ -384,8 +387,10 @@ export function thumbnailHeadlineProblems(doc) {
 export function lintVideo(doc, context = {}) {
   const errors = [];
   const warnings = [];
-  const error = (path, message) => errors.push({ path, message });
-  const warn = (path, message) => warnings.push({ path, message });
+  // `kind` names the family of a problem where a stage reads one (the worker hands the
+  // "narrative" warnings to the writer); the others carry none.
+  const error = (path, message, kind = null) => errors.push({ path, message, ...(kind ? { kind } : {}) });
+  const warn = (path, message, kind = null) => warnings.push({ path, message, ...(kind ? { kind } : {}) });
 
   for (const problem of validateVideo(doc)) error(problem.path, problem.message);
   if (errors.length) return { errors, warnings, summary: null };
@@ -471,7 +476,7 @@ export function lintVideo(doc, context = {}) {
   } else if (opening !== undefined && !isCompilation(doc) && minutes >= MIN_EPISODE_MINUTES) {
     // Read on an episode only, as episodeScriptProblems is: the examples run seconds.
     const [shortest, longest] = OPENING_CHAPTER_SECONDS;
-    if (opening < shortest || opening > longest) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; it is the condensation, ${shortest} to ${longest} s before the first real chapter: the hook, then two or three of the video's strongest moments told up to what happened and left without their answer, then the question the next chapter opens on (script-writing.md §開場濃縮)`);
+    if (opening < shortest || opening > longest) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; it is the condensation, ${shortest} to ${longest} s before the first real chapter: one scene of the story told in order up to the first fact that makes no sense, ending on the question the whole video answers (script-writing.md §開場濃縮)`);
   }
   const [low, high] = doc.target_minutes ?? DEFAULT_TARGET_MINUTES;
   // Every episode but a drama's runs at least eight minutes. The estimate reads 250 characters a
@@ -484,11 +489,19 @@ export function lintVideo(doc, context = {}) {
   // target_minutes is what the writer aims at, not a limit, so running over it is not warned. A
   // drama, a brand story and a long anime keep their own lengths on both sides.
   else if (minutes < low || (minutes > high && !needsMinimumLength(doc))) warn("scenes", `about ${minutes.toFixed(1)} minutes; the target is ${low}-${high}`);
-  // The script's shape (episodeScriptProblems) is read on an episode: a narrated zh-TW video of
+  // The script's shape (episodeScriptProblems) and its storytelling (core/narrative.mjs) are read
+  // on an episode: a narrated zh-TW video (slides, an explainer, a brand story; isNarrated) of
   // MIN_EPISODE_MINUTES or more, the constant and not the floor a fixture runner relaxes (the
   // examples run seconds and show the templates' shape, not a script's). A draft under the floor
-  // is already sent back to be written longer; a drama keeps its own craft; the phrases are zh-TW.
-  if (!drama && !english && minutes >= MIN_EPISODE_MINUTES) for (const problem of episodeScriptProblems(doc, timeline)) warn(problem.path, problem.message);
+  // is already sent back to be written longer; a drama with a cast keeps its own craft; the
+  // phrases are zh-TW. An explainer's outro card carries the subscribe line alone (its comment
+  // question sits on the shot before it), so its sentence count is not read.
+  if (isNarrated(doc, context.series) && !english && minutes >= MIN_EPISODE_MINUTES) {
+    for (const problem of episodeScriptProblems(doc, timeline, { outroCount: !isExplainer(doc) })) warn(problem.path, problem.message);
+    const story = narrativeProblems(doc, timeline, { minutes });
+    for (const problem of story.errors) error(problem.path, problem.message, problem.kind);
+    for (const problem of story.warnings) warn(problem.path, problem.message, problem.kind);
+  }
   if (isLongAnime(doc)) {
     const target = doc.runtime_spec.body_target_seconds;
     const seconds = frameToSeconds(timeline.total_frames);
