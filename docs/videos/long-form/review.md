@@ -4772,6 +4772,40 @@ PASS is DURATION_ONLY for the one rebound hash below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Translator pin follow-up: 1 file (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013e`. Author: `claude-opus-5-5-narrative`. Scope: DURATION_ONLY for the one changed binding below, reviewed in the worktree `claude/youtube-narrative-flow-1cadbc` whose HEAD is `c11ec523f48ed585ee0ae71c2286fe14a6e3dc13` ("fix(video): the translator pin follows the title rule"), the commit that made the change; when the review began no tracked file was modified in the working tree. `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/automation.test.mjs` and named nothing else. While the review was under way another session began modifying eleven other tracked files in the same worktree, three of them bound (`.agents/skills/youtube-video/SKILL.md`, `tools/video/automation/prompts.mjs` and `tools/video/automation/series.test.mjs`); this increment does not cover any of them, `automation.test.mjs` stayed at the new hash below throughout, and the receipt commit stages only the two receipt files. This reviewer wrote none of the change, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edited only this report and review.json.
+
+- `tools/video/automation/automation.test.mjs`: `74b81299dc30687479e10a816245bc2496fbcc714df345103d98f44fd2d09cba` -> `58039686cde482ae0bf834a938ffbfb602c472678bbca72db7e915c32c4b909b`.
+
+Baseline: SHA-256 over `git show c11ec523f^:tools/video/automation/automation.test.mjs` is `74b81299dc30687479e10a816245bc2496fbcc714df345103d98f44fd2d09cba`, exactly the value this receipt carried before this increment, which proves the binding was current when the change started. The parent `ee4ddef98` is the receipt commit of the section above, which recorded this pin as stale and left the file alone, so the two increments join without a gap. SHA-256 over `git show HEAD:tools/video/automation/automation.test.mjs` and over the working-tree file are both `58039686cde482ae0bf834a938ffbfb602c472678bbca72db7e915c32c4b909b`; `git ls-files --eol` reports LF in index and worktree. The commit touches this one file only, three insertions and one deletion by `git show --numstat`; it grows from 7,583 to 7,585 lines and from 539,209 to 539,362 bytes. The other 107 bindings are untouched by this change and are not covered afresh. Every prior increment is preserved and the registry remains 108 files.
+
+What the change is: `git show c11ec523f` was read whole. It is one hunk at the `ZH_TW_PROMPT_SHA256` table. `ZH_TW_PROMPT_SHA256.translator` goes from `ef34287d2ac2449dac34a105d26ab9d8e255a2e6fa41ceda7304c78b269bba64` to `d01b37f5c6c8278a71f207d89a138365ddf1f08a61e174d72499a1e2bffcb9a7`, and the dated history comment above the table gains two lines: on 2026-10-13 the translator was told a translated title and its tags carry no channel or series name (the owner), and the other three texts kept their bytes. A `diff` of the two revisions shows exactly those three added lines and that one replaced line; the `caption_reviewer`, `translator:shorten` and `translator:reword` pins, the `promptSha` helper, both tests that read the table, and every other assertion, fixture and comment in the file are byte-identical.
+
+The digest was recomputed here rather than taken from the author or from the section above. `tools/video` was extracted with `git archive` at `412c33c4f^` and at HEAD into a scratch directory, and each revision's `prompts.mjs` was imported and its text composed exactly as the test does: `instructionsFor(stage, format, "", variant, "", null, source)` for format `slides` and `drama` and source `undefined`, `null`, `zh-TW` and `fr`, hashed with `createHash("sha256").update(text).digest("hex")` as the file's own `promptSha` does, beside the direct digest of `INSTRUCTIONS.translator`. At HEAD (and in the working tree) all eight compositions and the direct value give `d01b37f5c6c8278a71f207d89a138365ddf1f08a61e174d72499a1e2bffcb9a7` over 5,355 characters: the new pin exactly. At `412c33c4f^` they give `ef34287d2ac2449dac34a105d26ab9d8e255a2e6fa41ceda7304c78b269bba64` over 5,150 characters: the old pin, so the movement is exactly the `prompts.mjs` change the section above reviewed and bound, 205 characters, and nothing else. As a control the same computation reproduces the three unchanged pins in both revisions — `52456f5b…` for `caption_reviewer` over 3,003 characters, `4253eeb6…` for `translator:shorten` over 2,241 and `d87f8a43…` for `translator:reword` over 2,497 — which is what shows the composition is the one the test measures. `ef34287d…` now appears in no code, test or JSON file in the repository, only in the prose of the section above and of this one.
+
+Findings, duration rules: none moved. Counted in both revisions, every duration identifier appears exactly as often: `target_minutes` 37 times in both, `MIN_EPISODE_MINUTES` once, `VIDEO_MIN_EPISODE_MINUTES` once, `estimateTimeline` twice, `draftBudget` four times, `total_frames` three times, "minute" 51 and "seconds" 12 in both; `minEpisodeMinutes`, `effectiveEpisodeMinutes`, `DEFAULT_TARGET_MINUTES`, `duration_s`, `480`, `14,400`, `14400` and 分鐘 in neither. The changed line is a 64-character digest and the added lines are a comment with no numeral but the date, so no assertion about a target, floor, chapter budget, frame count or timeline can read anything new from them. The file is a test; it declares no rule. No file under `apps/api`, `tools/video/qa`, `tools/video/long-form` or `tools/video/core` is changed, and neither is `docs/videos/long-form/plans.json` or `policy.json`: the 8-minute non-drama floor, the explainer's 10-minute default and 8–20 range, drama's 1–8, the brand story's 13 minutes, the QA `assemble` item's 480 s / 14,400 frames at 30 fps and the chapter minimum of 10 s stand exactly as the increments above bound them.
+
+The two tests the section above recorded as failing at `412c33c4f` — "a zh-TW video's translator and caption reviewer prompts are the same bytes as before; …" and "an English-narrated video's translator and caption reviewer, … a zh-TW video's are sent the same prompt and payload as before" — now pass, so the stale pin that section flagged is resolved and the test agrees with the text the host will send.
+
+Ran (in the worktree, Node 24 on Windows, `VIDEO_MIN_EPISODE_MINUTES` unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which named exactly this one stale binding and no other;
+- `git show c11ec523f` read whole, with `--numstat`; `git status --porcelain`; `git ls-files --eol`; `git rev-parse HEAD c11ec523f^ 412c33c4f^`;
+- SHA-256 over the parent blob, the HEAD blob and the working-tree file, compared against the old receipt;
+- a `diff` of the parent and HEAD blobs, read whole;
+- a count of every duration identifier above in the parent blob against the HEAD blob, which matched everywhere;
+- an independent composition of the translator, caption reviewer, shortening and rewording texts through `instructionsFor` and `promptSha`, in all eight format and source combinations, over `git archive` extracts of `412c33c4f^` and HEAD and over the working tree (once while it was clean and again after the other session's edits, which left all four texts at the same digests), against all four pins; a repository-wide search of code, tests and JSON for the old pin value;
+- `node --test --test-name-pattern="zh-TW|translator" tools/video/automation/automation.test.mjs`: 7 passed, 0 failed, 0 skipped.
+
+The CLI check, review.test.mjs and the full automation.test.mjs suite are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims: this review does not judge the no-channel-name rule as a product choice, nor re-review `prompts.mjs`, which the section above bound. No translator, writer or panel was run against a real model, no narration or dub was synthesized, no cut was measured and no host was contacted. No API test, ruff, mypy, Vitest, web lint or typecheck was run, and no CI result is claimed. This increment binds the file as committed at `c11ec523f`; a later commit, rebase or merge that changes it, or either receipt file, needs its own follow-up increment.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -4828,7 +4862,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `74b81299dc30687479e10a816245bc2496fbcc714df345103d98f44fd2d09cba` |
+| `tools/video/automation/automation.test.mjs` | `58039686cde482ae0bf834a938ffbfb602c472678bbca72db7e915c32c4b909b` |
 | `tools/video/automation/discuss.mjs` | `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21` |
 | `tools/video/automation/flow.mjs` | `0690b19c0ae2d5ba7a52817eb4b0a4f0d14b1ea89e6c5617bbf087d66306bb49` |
 | `tools/video/automation/prompts.mjs` | `9e1cffa1b25c8490e420a9a58ce1c19972daca2d7a8006a456ba86a9b8a50e9a` |
