@@ -30,6 +30,7 @@
 - 2026-10-13 下午（Asia/Taipei）THORChain／Bitget 9/28 即時稿只據當日 CoinDesk 鏈上讀數；五語仍以現在式稱被盜資金「持續」兌換，FAQ 仍說 Bitget 未公開入侵細節。[Bitget 9/30 調查公告](https://www.bitget.com/support/articles/12560603896305/)已指出第三方安全產品受侵入，[Bitget 事件總結](https://www.bitget.com/asia/academy/bitget-security-incident-what-happened-timeline-impact-response)記錄 10/02 完成提款服務恢復，[THORChain 10/06 月報](https://blog.thorchain.org/state-of-the-network-september-2026)另記 9/25–29 相關流量。人工填明確時序與五語過時句退件，後台成功提示、候選「已退件」、最新稽核及全站退件 982 讀回。固定名冊 **9 發布、43 退件、18 未有終態**；UI 待審 9、需重寫 9、已發布 605、已退件 982。
 - 2026-10-13 17:19（Asia/Taipei）後台重新載入新聞清單讀回待審 9、需重寫 9、已發布 605、已退件 982，固定名冊另按 70 個 ID 核對為 **9 發布、43 退件、18 未有終態**；不能只用全站清單數推定各 ID 終態。此處是候選狀態；Samsung 及 OpenAI 10/06 已刊 Guide 五語修訂不增加候選發布數。後台另顯示「執行失敗 2」，是執行紀錄指標，不直接等於 9 筆重寫候選。
 - 2026-10-13 17:50（Asia/Taipei）Meta Connect 固定總覽 `2ba410eb…` 對照 [Meta 9/24 官方整理](https://about.fb.com/news/2026/09/the-biggest-news-from-connect-2026/)與候選來源、claim ledger 後，以 9/23 舊事件、同場 Muse Charm 已刊、同批直播稿已退，以及動態 `/tech` 導覽頁／作者頁／無關舊文混入證據的具體原因退件。後台成功提示、重載後候選「已退件」、最新人工決定文字與全站退件 983 讀回。固定名冊為 **9 發布、44 退件、17 未有終態**。此時全站待審 8、需重寫 10；多出的第十筆是新進的 10/13 Manus／OPPO 失敗候選，不在固定 70 ID 名冊，不能把 8＋10 誤作本名冊 18 筆。
+- 2026-10-13 18:18（Asia/Taipei）重新載入正式後台讀回 **待審 9、需重寫 11、已發布 605、已退件 984**。清單的固定名冊仍是八筆待審與九筆需重寫／失敗，固定 70 ID 的已知終態維持 **9 發布、44 退件、17 未有終態**；新增 Ledger 鑑識進展一筆待審，以及 Manus／OPPO 與英國法院比特幣案兩筆執行失敗。三筆新候選的 ID、來源與故障界線另記於[流動佇列名冊](news-hourly-live-queue-2026-10-13.md)。全站退件計數多一筆不能歸功或歸因於本固定名冊。
 - 站主本次明確授權處理整個 46＋24 名冊，包含先前 10/07、10/10 批次；工作整合至既有 draft [PR #1480](https://github.com/x812033727/travel_scanner/pull/1480)。舊工作樹與舊票不在本票 scope，不能據此替它們結案。
 - 下表的「來源變更」表示自動查核偵測到快照差異，**不等於**正文事實已變；需要比對保存的原快照、現在的正文、Guide 說法及來源可讀性。`manual_review`／`shadow_review` 是保留審查；`needs_redraft`／`failed` 是不同的重寫或故障路徑。不能用無旗標 backfill、整批 retry、單憑列表「已發布」或 `exit 0` 充當逐篇驗收。
 - 「已送重新查核」只代表 UI 已建立後續工作，應讀回候選、run、Guide 五語、稽核及公開頁面的終態。本文記的是已觀察到的節點，沒有把未確認的公開頁面或語系算成完成。
@@ -81,6 +82,22 @@ Anthropic ART 補查後台「執行紀錄」：最新輪次的 `verification-1`�
 2026-10-13 稍後的獨立唯讀回查：固定名冊 9 個已發布 ID（Drake、XRP、Falcon、Flock、Citrix、NVIDIA、RedotPay、AEMA、ART）仍全列於後台「已發布」清單，全站計數 605。Guide 各語已發版本（順序 zh-TW／zh-CN／en／ja／ko）直接讀回：Drake **4／3／3／4／4**、XRP **4／3／3／4／4**、Falcon **5／5／未讀／5／未讀**、Flock **5／5／未讀／5／5**、Citrix **未讀／6／6／7／未讀**、NVIDIA **6／5／4／未讀／未讀**。RedotPay 五語 v3、ART 英韓 v6 係此前獨立讀回；AEMA 隨後另讀回 zh-TW／ko 已發布 v7，其餘三語版本未讀。AEMA UI 最末輪 `verification-1` attempt 15、四語 `locale-*` attempt 3、`judge-final` attempt 2 均成功，且最終 AI 判斷發布。後台「判斷紀錄」只列 assessments，「執行紀錄」只列 stage／status／attempt／model／tokens，**兩處均無原生 run ID 或完整 AdminAuditLog**；需另用獲允許的唯讀途徑補收據。連續 Guide 導覽後遇 429 即停止，未讀版本不可推定已發；九篇的 45 個公開語系頁目前僅核關鍵內容，尚未全文逐語驗收。已發布候選頁殘留「五語已就緒，待發布」輔助文字，不能以它推翻候選終態。
 
 本段只描述候選處置與編輯。精確的最新正式站計數應重新查 UI／資料庫，不以 `46 - 已離開列表數` 推算，因為工作期間可能有新候選進入。尚未更動的候選與具體下一步如下。
+
+### 九筆已發布候選的終態收據（18:35 補查）
+
+前段是 429 前的逐語版本快照；隨後以**精確候選 ID** 篩正式站稽核頁，九筆均讀到「成功」的發布事件，並在 Guide 編輯器逐語讀回已發版本。版本順序固定為 **zh-TW／zh-CN／en／ja／ko**。稽核事件證明候選發布動作，版本欄證明當時五語已發狀態；先前公開頁只核 H1 與本名冊列出的關鍵句／表格，不能宣稱 45 頁全文逐句驗收。候選 UI 未露出原生 run ID，不能推造收據。
+
+| 候選 | 台北時間／動作 | 成功稽核事件 | 五語已發版本 |
+| --- | --- | --- | --- |
+| [Drake](https://mokaair.com/zh-TW/admin/audit?target=b0825fb1-44dc-4c96-adab-1fe028f49113&page=1&event=024c0edd-c073-4c59-9289-aaaabcdfe557) | 13:57:23 `news_candidate_judge_published` | `024c0edd-c073-4c59-9289-aaaabcdfe557` | 4／3／3／4／4 |
+| [XRP](https://mokaair.com/zh-TW/admin/audit?target=5186a9c9-ffb1-4282-ae82-cac3676da1a4&page=1&event=7827157b-5396-4fac-887a-52aa3c6dd27a) | 14:00:10 `news_candidate_judge_published` | `7827157b-5396-4fac-887a-52aa3c6dd27a` | 4／3／3／4／4 |
+| [Falcon](https://mokaair.com/zh-TW/admin/audit?target=6384736e-5f57-48cf-a536-87bc77f98615&page=1&event=f442fde2-1770-4013-a8c1-2354d5e7f6f7) | 14:03:45 `news_candidate_judge_published` | `f442fde2-1770-4013-a8c1-2354d5e7f6f7` | 5／5／5／5／5 |
+| [Flock](https://mokaair.com/zh-TW/admin/audit?target=7bea807c-ffa3-44a2-b3be-92aee355e279&page=1&event=98896054-db9a-480f-97fe-2621168f47b5) | 14:13:08 `news_candidate_judge_published` | `98896054-db9a-480f-97fe-2621168f47b5` | 5／5／5／5／5 |
+| [NVIDIA Astra](https://mokaair.com/zh-TW/admin/audit?target=e69d8fbc-693b-4beb-90f7-3a6af0cdfcaa&page=1&event=619da299-31f5-48b9-939a-763790284930) | 14:22:05 `news_candidate_judge_published` | `619da299-31f5-48b9-939a-763790284930` | 6／5／4／5／4 |
+| [Citrix](https://mokaair.com/zh-TW/admin/audit?target=dcc3116c-dc2f-489e-84cf-79a8ba439ea6&page=1&event=b870db6d-59ba-40f8-8ad4-3d125c51c8db) | 14:26:12 `news_candidate_auto_published` | `b870db6d-59ba-40f8-8ad4-3d125c51c8db` | 6／6／6／7／7 |
+| [AEMA](https://mokaair.com/zh-TW/admin/audit?target=e0e959d9-3862-4506-bf6b-68c9f860ed07&page=1&event=1a3ff356-59f1-4d8d-b884-e5213384c4dc) | 14:29:22 `news_candidate_judge_published` | `1a3ff356-59f1-4d8d-b884-e5213384c4dc` | 7／7／7／7／7 |
+| [Anthropic ART](https://mokaair.com/zh-TW/admin/audit?target=2cb24617-530b-48b1-99c1-44d736c524a4&page=1&event=7aa10e16-aab4-4729-92e1-d8cd18229158) | 14:47:13 `news_candidate_judge_published` | `7aa10e16-aab4-4729-92e1-d8cd18229158` | 6／6／6／6／6 |
+| [RedotPay](https://mokaair.com/zh-TW/admin/audit?target=dbda9f17-0127-49a8-8f51-75248ccae17c&page=1&event=907a2f8d-55b9-4b51-9e4f-d931a0896e03) | 15:05:51 `news_candidate_auto_published` | `907a2f8d-55b9-4b51-9e4f-d931a0896e03` | 3／3／3／3／3 |
 
 ## 基線 46 筆待審查
 
@@ -164,7 +181,7 @@ Anthropic ART 補查後台「執行紀錄」：最新輪次的 `verification-1`�
 
 ## 接手順序與關卡
 
-1. **補已發布稿的證據**：Drake／XRP／Falcon／Flock／NVIDIA／Citrix／AEMA／Anthropic ART／RedotPay 已在後台顯示發布，各自公開讀回範圍見上表；仍需補可見的終態 run／稽核、已發 Guide 版本與尚未核的全文。Falcon ja、AEMA ko 初次 429 後的 H1 與關鍵段已補讀，不能再列作未開頁。
+1. **補已發布稿的剩餘證據**：九筆的候選發布稽核事件和五語 Guide 已發版本已列於上表；原生 run ID 在候選 UI 不可見，五語公開頁尚未逐句核完全文。Falcon ja、AEMA ko 初次 429 後的 H1 與關鍵段已補讀，不能再列作未開頁。
 2. **保留的八筆待審**：Kalshi 的 `/markets` 導覽頁仍需原生可讀與已稽核修復；歐盟量子、OpenAI 訓練暫停、Altman 引述、Ethereum 2030、CFTC 10/05 ANPRM、rogue AI、Microsoft 卸載推論分別依表內第一手來源與具體五語錯句修稿。Meta Connect 總覽 #2、THORChain #4、Meta 眼鏡 #20、Bernie #22、CFTC 9/24 FAQ #25、Meta Muse #41、白宮 #44 與 MoonPay #42 均已退件，不再當作待刷來源稿。其他 `source_content_changed` 須比對舊快照與當前正文，刷新可能重新抓全部來源，單一失敗仍維持保留狀態。
 3. **可修的 10/05 以後發展**：CFTC ANPRM #23 的 10/13 聯邦公報與 12/14 評論期限應補入五語，但官方原生 HTTP 403 仍擋正常重查；不得用本地可讀頁取代來源閘。另九筆 `needs_redraft`／`failed` 各有獨立內容／分類／語系／provider 障礙，見上表及下一項。
 4. **9 筆尚未有終態的 redraft／failed（以固定基線計）**：分清 AI handback、翻譯錯、來源不足、嘗試上限、provider 故障；既有 judge 已跑過的項目不應再當成「未審」整批跑。人工 `retry` 會開新的整篇撰稿並可能付費，且清掉原人工決定；只在有 run／RQ／供應商收據及單篇方案時用。French OAuth 故障先核未知結果。
