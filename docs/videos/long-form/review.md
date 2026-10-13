@@ -4660,6 +4660,45 @@ PASS is DURATION_ONLY for the one rebound hash below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Narrated one-story increment, explainer writer instruction pin follow-up: 1 file (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013b`. Author: `claude-fable-5-1-narrative`. Scope: DURATION_ONLY for the one changed binding below, reviewed in the worktree `claude/youtube-narrative-flow-1cadbc` whose HEAD is `a8c5d80d5` with the change still in the working tree. The author changed `tools/video/automation/series.test.mjs` again, after both sections above, and `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/series.test.mjs` and named nothing else. This reviewer wrote none of the change, is not the reviewer who signed the two sections above, and edited only this report and review.json.
+
+- `tools/video/automation/series.test.mjs`: `0c40a6d6154f1bff2f4b850a399bb19526b7e1a6cf2b6211356c25d1979cb931` -> `d3622c1910b8df665dcec7f12f7d5862de7738061c7ed95e4c0a70bda4df5ee3`.
+
+Baseline: SHA-256 over `git show HEAD:tools/video/automation/series.test.mjs` is `0c40a6d6154f1bff2f4b850a399bb19526b7e1a6cf2b6211356c25d1979cb931`, exactly the value this receipt carried before this increment, which proves the binding was current when the change started; `git ls-files --eol` reports LF in index and worktree. `git status --porcelain` lists this one file and no other in the whole worktree, and `git diff --numstat` reports one insertion and one deletion. The other 107 bindings are untouched by this change and are not covered afresh. Every prior increment is preserved and the registry remains 108 files.
+
+What the change is: line 2103 of `EXPLAINER_STAGE_PINS`, the sha256 of the `writer:explainer` instruction text, goes from `b782fc599e30a4165882087c1d167e8449b91e472b9cef38c31ca3ef4147ea07` to `419852aa5e1c95230fb23f565864aeac693ff3b77bb48fdb199c2f25c6439dd8`. Compared line by line, the two revisions have the same 2,478 lines, differ at line 2103 alone, and that line is identical once the single 64-character digest is masked out of both — so the payload digest beside it (`b0a4a2982e77bf9ea76eb9047260bbe568eb36ac2577dc206791ca8912401e81`) and the `planner:bible-explainer` and `verifier:explainer` rows are untouched, as is every assertion, fixture, helper and comment in the file.
+
+The digest was recomputed here rather than taken from the author. Composing the text through `instructionsFor("writer", format, standing, "explainer", stance, series, source)` as `flow.mjs` `stage()` does, and hashing it with `createHash("sha256").update(text, "utf8").digest("hex")` as the file's own `digestOf` does, gives `419852aa5e1c95230fb23f565864aeac693ff3b77bb48fdb199c2f25c6439dd8` over 14,088 characters: the new pin exactly. `VARIANT_INSTRUCTIONS["writer:explainer"]` is found before any series-own text, and this fixture's series row carries no `genre`, so `genreBlock` is empty and all four plausible argument sets (format `drama` or `slides`, the explainer series row or `null`) compose the same text and give the same digest. The same computation reproduces the two unchanged rows' pins, `29fd9e2e…` for `planner:bible-explainer` and `c1619a92…` for `verifier:explainer`, which is what shows the composition is the one the test measures. The old value is the digest of none of them, and `b782fc59…` now appears nowhere in the repository.
+
+Why it moved, and why only here: `tools/video/automation/prompts.mjs` interpolates `NARRATIVE_RULES` from `tools/video/automation/register.mjs`, which this registry does not bind. prompts.mjs is at its already-bound `37363cfd2068b9980462d60df67e244b198bae75ee880bcc0f25f966049e4828` and changed once on this branch, in `6c05f3a29`, where this pin was last set to `b782fc59…` and was correct. register.mjs then moved in five later commits — `4a20c8935`, `462907cb8`, `a530f20a2`, `b185d9408`, `267f57f20` — each adding one storytelling rule to that text, and the sister pin in the unbound `prompts.test.mjs` was updated with each (`b8acaf22…`, `d5c91bce…`, `308d6e90…`, `74327658…`, `419852aa…`) while this one was not. The hand-off named four rules; there are five added bullets across those five commits. The three content commits since (`8b9c30585`, `bc817cdfc`, `a8c5d80d5`) leave register.mjs alone, so `419852aa…` is current.
+
+Findings, duration rules: none moved. Counted in the HEAD blob against the working tree, every duration identifier in this file appears exactly as often: `target_minutes` 23 times, `MIN_EPISODE_MINUTES` once, `estimateTimeline` four times, and `minEpisodeMinutes`, `effectiveEpisodeMinutes`, `DEFAULT_TARGET_MINUTES`, `draftBudget`, `total_frames`, `480`, `14,400`, "8 minutes" and 分鐘 in neither. The file is a test; it declares no rule. No file under `apps/api`, `tools/video/qa`, `tools/video/long-form` or `tools/video/core` is changed, and neither is `docs/videos/long-form/plans.json` or `policy.json`: the 8-minute non-drama floor, the explainer's 10-minute default and 8–20 range, drama's 1–8, the brand story's 13 minutes, the QA `assemble` item's 480 s / 14,400 frames at 30 fps and the chapter minimum of 10 s stand exactly as the increments above bound them. The neighbouring "a flat-explainer one-off asked for 20 minutes is still handed 140 line ids" test is untouched and still passes.
+
+The text that moved the digest was read as context even though it is unbound. The five rules added to `NARRATIVE_RULES` since the pin was set are about hooks, callbacks, announcements and summaries: at most one forward hook says so out loud; 「還記得…」 at most five times and never twice in a row; naming a loop is not paying it; nothing announces what is coming; a summary is a retelling, and the close carries only what is new. Across all of their added lines the only number with a unit is "60 s", in "Lint only reads the first 60 s for this; the panel reads the rest", which is `OPENING_SECONDS = 60` as the opening-condensation increment of 2026-10-12 above already reviewed and bound, plus "four minutes" in a sentence reporting what a reader said. No target, floor, chapter budget, frame count or measured-evidence hash is written or read there.
+
+Recorded observation, carried over from the section above because it is now true a second time: re-pinning the `writer:explainer` instruction digest means an explainer left unfinished on the host when this deploys has its writer stage asked, and paid for, again, because the digest is the durable key of that stage's journal (`run-receipts.mjs`, and the file's own comment above the table). That is a cost, not a duration. It would have been incurred by `6c05f3a29` in any case; this one line only makes the test agree with the text the host will actually send.
+
+Ran (in the worktree, Node on Windows, `VIDEO_MIN_EPISODE_MINUTES` unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which named exactly this one stale binding and no other;
+- `git status --porcelain`, `git diff --numstat`, `git diff --stat` and `git diff -- tools/video/automation/series.test.mjs` read whole; `git ls-files --eol`;
+- SHA-256 with Node's crypto over the working-tree file and over its HEAD Git blob, compared against the old receipt;
+- a line-by-line comparison of the HEAD blob and the working tree, and a re-comparison with the one digest masked out, which left the files identical;
+- an independent composition of the `writer:explainer`, `planner:bible-explainer` and `verifier:explainer` instruction texts through `instructionsFor` and `digestOf`, against all three pins;
+- a count of every duration identifier in the HEAD blob against the working tree, which matched everywhere;
+- `git log` over the branch for `prompts.mjs`, `register.mjs`, `prompts.test.mjs`, `explainer-series.test.mjs` and `series.test.mjs`, and `git diff 6c05f3a29..HEAD -- tools/video/automation/register.mjs` read whole, as context;
+- `node --test tools/video/automation/series.test.mjs`: 80 passed, 0 failed, 0 skipped.
+
+The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims: this review does not judge the five storytelling rules as product choices, nor the unbound texts of `register.mjs`, `prompts.test.mjs` and `explainer-series.test.mjs`. No writer, planner or panel was run against a real model, no narration was synthesized, no cut was measured and no host was contacted. No API test, ruff, mypy, Vitest, web lint or typecheck was run, and no CI result is claimed. This increment binds the working tree as reviewed; a later commit, rebase or merge that changes this file, or either receipt file, needs its own follow-up increment.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -4721,7 +4760,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/automation/flow.mjs` | `0690b19c0ae2d5ba7a52817eb4b0a4f0d14b1ea89e6c5617bbf087d66306bb49` |
 | `tools/video/automation/prompts.mjs` | `37363cfd2068b9980462d60df67e244b198bae75ee880bcc0f25f966049e4828` |
 | `tools/video/automation/series.mjs` | `d512034bbc99c0bc9ec7bbdbcfafa9ea6b548eedd877aa6754bbb81b04cd4c37` |
-| `tools/video/automation/series.test.mjs` | `0c40a6d6154f1bff2f4b850a399bb19526b7e1a6cf2b6211356c25d1979cb931` |
+| `tools/video/automation/series.test.mjs` | `d3622c1910b8df665dcec7f12f7d5862de7738061c7ed95e4c0a70bda4df5ee3` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
 | `tools/video/core/anime-policy.mjs` | `2c53db1a18e27780b032a019b37912197c13bb4aadc6a130cecdc60371482ecd` |
 | `tools/video/core/anime-policy.test.mjs` | `74b9f1360829efed4c2f1e529b403024877e255d51430a5a2636ac7c5a24b3c6` |
