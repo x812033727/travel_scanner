@@ -505,6 +505,7 @@ async def test_the_owner_decides_a_video_s_languages_once_and_a_drama_or_a_dropp
     assert session.add.call_args.args[0].action == "video_locales_set"
 
     project.format = "drama"
+    assert project.category is None, "a drama with no category refuses a dub"
     with pytest.raises(AppError) as drama:
         await admin_service.set_locales(
             session, "v", owner, LocalesIn.model_validate({"locales": {"en": {"dub": True}}})
@@ -515,6 +516,23 @@ async def test_the_owner_decides_a_video_s_languages_once_and_a_drama_or_a_dropp
     )
     assert project.locales == {"en": {"metadata": False, "captions": True, "dub": False}}, (
         "a drama takes descriptions and captions"
+    )
+    # Only a drama the narrator tells alone, filed under explainer, takes a dub; every other drama
+    # category refuses one, a brand story included (its zh-TW subtitles are burned in).
+    dub_en = LocalesIn.model_validate({"locales": {"en": {"dub": True}}})
+    for category in ("story", "drama", "anime", "long-drama"):
+        project.category = category
+        with pytest.raises(AppError) as refused_dub:
+            await admin_service.set_locales(session, "v", owner, dub_en)
+        assert refused_dub.value.code == "video_locales_dub_not_for_drama", category
+    assert project.locales == {"en": {"metadata": False, "captions": True, "dub": False}}
+    project.category = "explainer"
+    await admin_service.set_locales(session, "v", owner, dub_en)
+    assert project.locales == {"en": {"metadata": False, "captions": True, "dub": True}}, (
+        "an explainer drama takes a dub"
+    )
+    await admin_service.set_locales(
+        session, "v", owner, LocalesIn.model_validate({"locales": {"en": {"captions": True}}})
     )
 
     project.dropped_at = datetime.now(UTC)

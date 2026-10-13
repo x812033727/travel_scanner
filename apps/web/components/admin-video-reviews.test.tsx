@@ -479,7 +479,7 @@ describe("AdminVideoReviews", () => {
     expect(within(panel).getByRole("button", { name: "只出繁體中文" })).toHaveProperty("disabled", true);
   });
 
-  it("waits for the final cut before offering languages, greys out a drama's dub, and lets a reader only look", async () => {
+  it("waits for the final cut before offering languages, greys out a drama's dub unless the narrator tells it alone, and lets a reader only look", async () => {
     const detail = (fields: Record<string, unknown>) => vi.fn((input: RequestInfo | URL) => Promise.resolve(Response.json(String(input).endsWith("/admin/videos?shorts=exclude") ? [summary] : { ...summary, ready_to_upload: false, ...fields })));
     window.history.replaceState(null, "", "/?video=ai-model-choice");
     vi.stubGlobal("fetch", detail({ reviews: [outline] }));
@@ -490,15 +490,40 @@ describe("AdminVideoReviews", () => {
     expect(screen.queryByText("等你決定語言")).toBeNull();
     first.unmount();
 
-    vi.stubGlobal("fetch", detail({ format: "drama", pending: 0, locales_decided_at: null, reviews: [{ ...final, status: "approved", decided_at: "2026-09-27T04:00:00Z" }] }));
+    const approvedFinal = { ...final, status: "approved", decided_at: "2026-09-27T04:00:00Z" };
+    const dramaLater = "漫劇的配音是第二期，先只能選標題說明與 CC。";
+    vi.stubGlobal("fetch", detail({ format: "drama", pending: 0, locales_decided_at: null, reviews: [approvedFinal] }));
     const second = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
     const drama = await screen.findByRole("region", { name: "這支影片的語言" });
-    expect(within(drama).getByRole("checkbox", { name: "英文 配音" })).toHaveProperty("disabled", true);
+    const greyed = within(drama).getByRole("checkbox", { name: "英文 配音" });
+    expect(greyed).toHaveProperty("disabled", true);
+    expect(greyed.closest("label")?.getAttribute("title"), "a drama with no category").toBe(dramaLater);
     expect(within(drama).getByRole("checkbox", { name: "英文 CC 字幕" })).toHaveProperty("disabled", false);
     // Nothing decided yet: the page says so, and saving nothing is a decision too.
     expect(screen.getByText("等你決定語言")).toBeTruthy();
     expect(within(drama).getByRole("button", { name: "儲存" })).toHaveProperty("disabled", false);
     second.unmount();
+
+    // Only a drama filed under explainer, which the narrator tells alone, may be dubbed: every other
+    // drama category keeps the box greyed out with the reason, a brand story included (its zh-TW
+    // subtitles are burned in). The server refuses the same (admin_service DUBBABLE_DRAMA_CATEGORIES).
+    for (const category of ["story", "drama", "anime", "long-drama"]) {
+      vi.stubGlobal("fetch", detail({ format: "drama", category, pending: 0, reviews: [approvedFinal] }));
+      const view = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+      const box = within(await screen.findByRole("region", { name: "這支影片的語言" })).getByRole("checkbox", { name: "英文 配音" });
+      expect(box, category).toHaveProperty("disabled", true);
+      expect(box.closest("label")?.getAttribute("title"), category).toBe(dramaLater);
+      view.unmount();
+    }
+    vi.stubGlobal("fetch", detail({ format: "drama", category: "explainer", pending: 0, reviews: [approvedFinal] }));
+    const explainer = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const told = await screen.findByRole("region", { name: "這支影片的語言" });
+    const dub = within(told).getByRole("checkbox", { name: "英文 配音" });
+    expect(dub).toHaveProperty("disabled", false);
+    expect(dub.closest("label")?.hasAttribute("title")).toBe(false);
+    fireEvent.click(dub);
+    expect(within(told).getByRole("checkbox", { name: "英文 CC 字幕" })).toHaveProperty("checked", true);
+    explainer.unmount();
 
     vi.stubGlobal("fetch", detail({ pending: 0, locales_decided_at: null, reviews: [{ ...final, status: "approved", decided_at: "2026-09-27T04:00:00Z" }] }));
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);

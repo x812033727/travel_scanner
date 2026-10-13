@@ -146,6 +146,15 @@ CHOICE_GATES = ("outline", "look")
 CHOICE_PROMPTS = {"outline": "請從 {} 選一個大綱", "look": "請從 {} 選一張角色設定圖"}
 # A languages batch with nothing for the owner to upload is approved as it arrives.
 LANGUAGES_AUTO_APPROVED_NOTE = "這一批沒有要你上傳的配音，依規則自動核准"
+# The drama categories whose dub the owner may choose (docs/videos/DUBS.md): a cute explainer is
+# told by the narrator alone, so its dub is a slides video's. The server sees the project row, not
+# the script, so it decides by category; the language panel greys out the box from the same set
+# (apps/web/components/admin-video-reviews.tsx DUBBABLE_DRAMA_CATEGORIES), and the dub tool reads
+# the script and has the last word (tools/video/dubs/cli.mjs spokenByCharacter): a relabelled
+# drama whose characters speak is refused there and recorded as a skipped dub. A brand story is
+# narrator-only too but burns its zh-TW subtitles into the picture; whether a dub may play over
+# them is the owner's call (task 2026-10-13-should-brand-stories-be-dubbed-over), so it is not here.
+DUBBABLE_DRAMA_CATEGORIES = frozenset({"explainer"})
 EPOCH = datetime.min.replace(tzinfo=UTC)
 ANIME_RUNTIME_KEYS = (
     "body_target_seconds",
@@ -1916,14 +1925,21 @@ async def _cancel_started_request(
 async def _apply_locales(
     session: AsyncSession, project: VideoProject, user: User, payload: LocalesIn
 ) -> None:
-    """Store the owner's language choice, note when they first decided, and log the change."""
-    if (project.format or "slides") == "drama" and any(
-        choice.dub for choice in payload.locales.values()
+    """Store the owner's language choice, note when they first decided, and log the change.
+
+    A drama takes a dub only in a category the narrator tells alone (DUBBABLE_DRAMA_CATEGORIES);
+    every other drama, one with no category included, takes titles, descriptions and captions.
+    """
+    if (
+        (project.format or "slides") == "drama"
+        and project.category not in DUBBABLE_DRAMA_CATEGORIES
+        and any(choice.dub for choice in payload.locales.values())
     ):
         raise AppError(
             422,
             "video_locales_dub_not_for_drama",
-            "漫劇的配音是第二期（docs/videos/DUBS.md），這裡先只能選標題說明與 CC",
+            "有角色說話的漫劇還不能配音（docs/videos/DUBS.md），只有分類是觀念解說（explainer）的漫劇可以；"
+            "這裡先只能選標題說明與 CC",
         )
     chosen: dict[str, Any] = {
         locale: choice.model_dump() for locale, choice in payload.locales.items()
@@ -2237,7 +2253,8 @@ async def set_locales(
     Every video is made in Traditional Chinese; here the owner says which of en, ja and ko to
     add and what of each. An empty choice is a decision too ("only Traditional
     Chinese"), and the first save of either kind is what lets the video go up. The worker makes
-    only what was chosen, once the final cut is approved; a drama takes no dub yet. The choice is
+    only what was chosen, once the final cut is approved; a drama takes a dub only in a category
+    the narrator tells alone (``DUBBABLE_DRAMA_CATEGORIES``). The choice is
     the owner's: the pipeline's reports never carry one, and a dropped video takes none. Only a
     brand story, which runs without the owner, has the server decide from the settings when its
     video first reports (``_decide_story_locales``); the owner may change that here too.
