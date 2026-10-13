@@ -1,11 +1,11 @@
 ---
 id: 2026-10-11-news-fetcher-is-refused-by-cloudflare
 title: News fetcher is refused by Cloudflare where plain curl from the host is not
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: codex-news-hourly-backlog
+claimed_at: 2026-10-13T08:39:45Z
 created_at: 2026-10-11T05:23:46Z
 completed_at:
 branch:
@@ -60,8 +60,8 @@ robots.txt is read as "not permitted" and raises that same error.
 - [ ] If the pinned request is what is refused: keep the validation of the resolved
       addresses but connect by name through a transport that pins the address (a custom
       resolver or connection pool), so the request line and TLS look ordinary.
-- [ ] A test with a fake transport for the chosen shape; the existing SSRF tests keep
-      passing.
+- [x] A test with a fake transport for the chosen shape; the existing SSRF tests keep
+      passing locally (216 passed, 6 skipped in `test_news_automation.py`).
 - [ ] Rerun `sources_cli` on the host (dry run, then apply, with the owner's go-ahead).
 
 ## How to verify
@@ -75,6 +75,7 @@ scan and `consecutive_failures` back at 0.
 
 ## Notes
 
+- 2026-10-13 (`codex-news-hourly-backlog`): PR #1480 加了**只在原生 httpx 收到 `403` 且 `cf-mitigated: challenge`** 時，每輪啟動一次標準函式庫 TLS 後備請求。沿用已驗的 allow-list URL 與已解析的 public IP，連線固定該 IP、SNI／憑證仍核原網域、同一 host rate limit、原有 robots／轉址／內容型別檢查，逐塊以 2 MiB 上限讀 body，且提早拒絕時關閉回應；後備連線不自動跟轉址，要求 `identity`，若服務端仍回壓縮內容即拒絕。每次請求限 20 秒，429／5xx 沿用最多三輪重試；其他 403 不改路徑，也沒有降低 Cloudflare 以外來源的原閘。本機 `test_news_automation.py` **218 passed、6 skipped**，Ruff／mypy 通過；從本機對 CFTC 9307-26 的單次完整 SafeNewsFetcher 抓取讀回 `200 text/html 37348`，**這不證明正式主機曾啟動後備或已恢復**。未部署、未呼叫主機 `sources_cli`，全站掃描與候選終態仍待部署後獨立驗證。先前對主機 SSH 的呼叫遭自動審核阻擋，不改通道重試；主機專屬驗收維持未完成。
 - 2026-10-11 09:17Z: **HTTP/2 does not fix it.** Tried from the host in a one-off
   container of the api image (`docker run --rm`, `h2` installed into the container's own
   /tmp): httpx 0.28.1 against the CFTC feed answered 403 with `cf-mitigated: challenge`
