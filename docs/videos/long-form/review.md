@@ -5036,6 +5036,24 @@ PASS is DURATION_ONLY for the 108 bindings below, none of which changed in this 
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Merge of main (#1478) into the dub branch: 0 files reviewed afresh (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013n`. Author: `claude-opus-5.5-dub-narrated-drama` (merge made by `claude-opus-5-5-narrative`). Scope: DURATION_ONLY verification of the receipt after merge commit `66c96fbe5a31edd44d88adefc1cff2844bbcfeeb` ("Merge origin/main into claude/dub-narrated-drama") on claude/dub-narrated-drama, pull request #1482. Its first parent `d94e8c8a5` carries this branch's receipt ending in the "Dubbing narrated dramas, rebound after #1481 increment"; its second parent `6fe8db843` (origin/main, #1478) carries main's receipt ending in the "Merge of main (#1481) into the narrative-flow branch" section. Merge base `03aa682983dcdd3290bf905f363946bcf02eafe0` (#1481). When the review began no tracked file was modified in the working tree and `node tools/video/long-form/cli.mjs check` printed only `FAIL: duration review report is stale`. This reviewer wrote none of the merge, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edited only this report and review.json. No file is reviewed afresh.
+
+What was verified:
+
+1. Bindings. All 108 paths in review.json `reviewed_files` hash (SHA-256 of the working-tree file, equal to the merge commit's blob) to their bound values, and the table below lists the same 108 paths with the same hashes. Both parents' receipts list the same 108 keys and were current for their own trees (no stale binding, `report_sha256` equal to that parent's review.md).
+2. What the merge changed. `git diff 66c96fbe5^1 66c96fbe5 --stat` lists 109 files, exactly the 109 that `git diff <merge-base> 66c96fbe5^2` lists, and every one of them equals `66c96fbe5^2`'s bytes except the two receipt files. The only paths changed on both sides are the two receipt files. Of the bound files, 15 changed in the merge (the four skill files, `docs/videos/README.md`, `tools/video/automation/{automation.test,flow,prompts,series.test}.mjs`, `tools/video/core/{drama.test,lint,lint.test,schema,state}.mjs` and `tools/video/tts/tts.test.mjs`); each equals `66c96fbe5^2`'s bytes and its bound hash equals main's reviewed value in `66c96fbe5^2`'s review.json. Three bound files (this branch's dub increment) equal `66c96fbe5^1` only, bound to this branch's reviewed value; the other 90 are identical in both parents. No bound file is identical to neither parent.
+3. The report. Splitting everything before "## Reviewed SHA256 bindings" into `## ` sections, every section of both parents appears byte-identically in the merged report, with no extra and no duplicate section: 147 `## ` headings (137 + 146 − 136) and 115 `Verdict:` lines (105 + 114 − 104) before this section. Neither parent dropped or altered a merge-base section. After the heading, the table differs from `66c96fbe5^1` in exactly the 15 main rows and from `66c96fbe5^2` in exactly the three dub rows (`apps/api/app/video_reviews/admin_service.py`, `apps/web/components/admin-video-reviews.test.tsx`, `tools/video/dubs/dubs.test.mjs`).
+
+Ran (in the worktree at `66c96fbe5`, Node on Windows): `node tools/video/long-form/cli.mjs check` before any edit; a script kept outside the repository that hashes the working tree and the blobs of the merge, both parents and the merge base, and compares both receipts and both reports as in 1 to 3; `git ls-files --eol` (LF for both receipt files). The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims: no duration behaviour is reviewed afresh; no test suite beyond review.test.mjs was run; this section binds the merge commit's tree only, and a later change to any bound file or either receipt file needs its own follow-up.
+
+PASS is DURATION_ONLY for the 108 bindings below, none of which changed in this section.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
