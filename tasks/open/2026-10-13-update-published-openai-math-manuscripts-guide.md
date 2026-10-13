@@ -1,11 +1,11 @@
 ---
 id: 2026-10-13-update-published-openai-math-manuscripts-guide
 title: Update published OpenAI math manuscripts guide with first-party corrections
-status: open
+status: review
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-math-correction
+claimed_at: 2026-10-13T08:36:28Z
 created_at: 2026-10-13T07:39:48Z
 completed_at:
 branch: codex/news-hourly-review-20261013
@@ -22,15 +22,15 @@ scope:
 
 ## Definition of done
 
-- [ ] 既刊 Guide 五語保留最初 722 份發布時點，另外準確交代 10/07 撤回 3 份、現存 719 份與 14 份修補；不混為同一時間點。
-- [ ] 對 OpenAI 官方 repo、公告、AGMAI 聲明與自然語言／Lean 證明原始論文逐句查核新增主張，清楚分開 OpenAI 自述、數學界保留意見及正式驗證結果；五語各更新、保存並走原有審稿／發布流程。
-- [ ] 五語已發版本、稽核紀錄與五個公開頁的修正句逐一讀回；未過關不能稱已完成。
+- [x] 既刊 Guide 五語保留最初 722 份發布時點，另外準確交代 10/07 撤回 3 份、現存 719 份與 14 份修補；不混為同一時間點。
+- [x] 對 OpenAI 官方 repo、公告、AGMAI 聲明與自然語言／Lean 證明原始論文逐句查核新增主張，清楚分開 OpenAI 自述、數學界保留意見及正式驗證結果；五語各更新、保存並走原有審稿／發布流程。
+- [x] 五語已發版本、稽核紀錄與五個公開頁的修正句逐一讀回；未過關不能稱已完成。
 
 ## Steps
 
-- [ ] 記錄既刊五語目前版本、原句與來源快照，核 722／719／300、10 份 reasoning summaries 的單位及 Institute for Advanced Study 非 Princeton University 附屬關係。
-- [ ] 比對 [OpenAI repo 修訂紀錄](https://github.com/openai/math/blob/main/history.md)、[OpenAI 公告](https://openai.com/index/sharing-ai-progress-in-mathematics/)、[AGMAI 聲明](https://agmai.org/)與 [Lean 落差研究](https://arxiv.org/abs/2610.08144)，僅納入可由一手來源支持的新增內容。
-- [ ] 經管理介面修五語並重新查核，按每語已發版本／公開頁讀回；將執行證據寫入 `docs/openai-math-manuscripts-update-2026-10-13.md`。
+- [x] 記錄既刊五語目前版本、原句與來源快照，核 722／719／300、10 份 reasoning summaries 的單位及 Institute for Advanced Study 非 Princeton University 附屬關係。五語原草稿／已發版皆 v2，2026-10-13 管理員後台逐語讀回。
+- [x] 比對 [OpenAI repo 修訂紀錄](https://github.com/openai/math/blob/main/history.md)、[OpenAI 公告](https://openai.com/index/sharing-ai-progress-in-mathematics/)、[AGMAI 聲明](https://agmai.org/)與 [Lean 落差研究](https://arxiv.org/abs/2610.08144)，僅納入可由一手來源支持的新增內容。
+- [x] 經管理介面修五語並重新查核，按每語已發版本／公開頁讀回；執行證據已寫入 `docs/openai-math-manuscripts-update-2026-10-13.md`。第三輪獨立覆核五語 PASS 後發布；zh-TW／zh-CN／ja／ko 為 v5、en 為 v4。
 
 ## How to verify
 
@@ -39,3 +39,5 @@ scope:
 ## Notes
 
 退件候選的五語預覽把「300/719 約 42% 已形式化」寫成 42% 未形式化，也把 10 份推理摘要寫成 10 份手稿附完整思考過程；這些錯句不可從退件草稿複製。TechCrunch 的評論有獨立更新價值，但單一評論不能取代一手驗證。此票涉及已發文章，不能從本地文件修改推論正式站已更新。
+
+2026-10-13：五語公開原句、一手來源、各語更正文案及實存草稿逐欄文案見 `docs/openai-math-manuscripts-update-2026-10-13.md`。既刊五語原先沒有 42% 與 10 份摘要的錯句；更正補上時序、300／719 約 42% **已形式化**，並修 AGMAI 誤歸因。Guide ID `0fe56758-5ac9-468e-b86e-71dabc7e0cd4`；五語原草稿／已發版 v2。第二輪獨立審稿 en v3 PASS、其餘四語 v3 FAIL；四語按回饋修存 v4，第三輪五語完整文案 PASS 後正式發布。後台 `guide_article_published` 五筆成功，五語公開頁逐一讀回；最終 zh-TW／zh-CN／ja／ko v5，en v4。既刊 Guide 編輯器採版本化草稿保存、人工發布理由與修訂紀錄，新聞候選 AI judge 不會自動審既刊稿。特定 Navier–Stokes 論文未被外推為對全部手稿的判斷。另見同題 10/07 已刊五語 Guide `e31a32b6-2f93-4a7a-ba45-ecc729e138b6` 的錯誤 162／722 約 22%：另開 `2026-10-13-correct-published-2026-10-07-openai`，本票不碰。
