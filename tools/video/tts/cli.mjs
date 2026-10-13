@@ -180,9 +180,9 @@ function remainingFor(status, voice) {
  * A pin or package that does not validate stops `assemble` with its own message; until then the
  * chapters are checked on the narration alone.
  */
-async function plannedBranding({ doc, workdir, values, ctx }) {
+async function plannedBranding({ doc, series = null, workdir, values, ctx }) {
   try {
-    return await selectBrandingForBuild({ doc, workdir, workBase: resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home }) });
+    return await selectBrandingForBuild({ doc, series, workdir, workBase: resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home }) });
   } catch (error) {
     if (!(error instanceof UsageError)) throw error;
     return null;
@@ -484,7 +484,15 @@ async function tts(args, ctx) {
   // Lint checked the chapters on an estimate; this is the real check. Chapters YouTube would not
   // show fail the run, after the files are written, so a fix to the script reuses every take whose
   // words it keeps. The run is recorded either way: its characters were paid for.
-  const chapters = checkChapters(presentationTimeline(timeline, await plannedBranding({ doc, workdir, values, ctx })));
+  const plannedBookends = await plannedBranding({ doc, series: project.series, workdir, values, ctx });
+  let presented = timeline;
+  try {
+    presented = presentationTimeline(timeline, plannedBookends);
+  } catch (error) {
+    // An intro after the first chapter of a timeline with one chapter: the chapter count is the problem reported.
+    if (!(error instanceof UsageError)) throw error;
+  }
+  const chapters = checkChapters(presented);
   recordStage(workdir, "tts", { requests: requests.length, synthesized: pending.length, fallbacks, billable, voice: doc.voice.name, voices: voices.map((entry) => entry.voice), ...(timings.size ? { timed: timings.size } : {}), ...(chapters.length ? { ok: false, chapters } : {}) }, ctx.now());
 
   ctx.stdout.write(`${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; narration ${formatClock(frameToSeconds(timeline.total_frames))}\n`);
