@@ -637,6 +637,44 @@ test("dub refuses what it cannot do: an Azure voice, a missing timeline, a bad l
   assert.match(missing.out.stdout, /en: no track; 7 lines have no current translation/);
 });
 
+test("dub refuses a drama whose characters speak with exit 3, so the worker skips that locale, and dubs a drama the narrator tells alone, cast or not", async () => {
+  const { dramaFixture, explainerFixture } = await import("../core/fixtures/load.mjs");
+  const server = fakeServer();
+  const ffmpeg = fakeFfmpeg();
+  const box = sandbox("fixture-drama", "drama");
+  const doc = dramaFixture();
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(doc, null, 2)}\n`);
+  const spoken = capture(box, server, ffmpeg);
+  // Exit 3 is the owner's, which the worker's makeDub records as a skipped dub (giveUpDub) and the
+  // video goes on; a usage error (exit 2) would block the video instead.
+  assert.equal(await main(["dub", "--slug", box.slug, "--locale", "en"], spoken.ctx), EXIT.owner);
+  assert.match(spoken.out.stderr, /^a drama whose characters speak cannot be dubbed yet: line x9fe in scene farewell is spoken by jingwei \(精衛\)/m);
+  assert.equal(server.calls.length, 0, "a refused drama asks nothing of the speech server");
+
+  // The same drama with every line the narrator's: its cast stays, drawn and never heard, the way
+  // a brand story's recurring figures are (core/story.mjs).
+  const narrated = { ...doc, scenes: doc.scenes.map((scene) => ({ ...scene, lines: scene.lines.map(({ speaker, ...line }) => line) })) };
+  assert.ok(narrated.characters.length > 0);
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(narrated, null, 2)}\n`);
+  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+  writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify(translationFor(narrated, (line) => `EN ${line.id}`)));
+  await narrate(box, server, ffmpeg);
+  const told = capture(box, server, ffmpeg);
+  assert.equal(await main(["dub", "--slug", box.slug, "--locale", "en", "--dry-run"], told.ctx), EXIT.ok, told.out.stdout + told.out.stderr);
+  assert.match(told.out.stdout, /^en: \d+ requests, \d+ to synthesize/m);
+
+  // A cute explainer has no cast at all.
+  const explainer = sandbox("fixture-explainer", "explainer");
+  const plain = explainerFixture();
+  assert.deepEqual(plain.characters ?? [], []);
+  mkdirSync(path.join(explainer.dir, "i18n"), { recursive: true });
+  writeFileSync(path.join(explainer.dir, "i18n", "en.json"), JSON.stringify(translationFor(plain, (line) => `EN ${line.id}`)));
+  await narrate(explainer, server, ffmpeg);
+  const card = capture(explainer, server, ffmpeg);
+  assert.equal(await main(["dub", "--slug", explainer.slug, "--locale", "en", "--dry-run"], card.ctx), EXIT.ok, card.out.stdout + card.out.stderr);
+  assert.match(card.out.stdout, /^en: \d+ requests, \d+ to synthesize/m);
+});
+
 test("a dub of an illustrated video carries the music bed and the cut's effects track in its own format, and status marks it stale when they change", async () => {
   const { illustratedFixture, illustratedBrief } = await import("../core/fixtures/load.mjs");
   const { mixHash, sfxHash } = await import("../core/drama.mjs");
