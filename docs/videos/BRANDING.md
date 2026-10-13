@@ -108,6 +108,7 @@ node tools/video/cli.mjs qa --slug VIDEO --workdir /video-work
 不改動全站自動核准設定；之後一般新片仍按站主既有政策送審。
 新 MP4 必須重新由站主看過，原本的 MP4 核准不會核准另一組 bytes。
 `--adopt-branding` 拒絕 Shorts、已上傳／已結束、已有成片或發布核准紀錄、已有上架包的影片。
+例外是**重做中**的成片：成片或發布核准之後，站主又核准了新的稿子、配音或分鏡（最新一筆 script／audio／storyboard 核准晚於最新一筆 final／publish 核准），舊的核准與上架包綁的是不會再存在的成片，就不再擋 `--adopt-branding`；核准紀錄不刪，已上傳／已結束的照樣拒絕（`remakingApprovedCut`，2026-10-13 五支奇聞檔案局重製片換新開場後，要換上 21 秒有配樂的新片尾）。
 合集使用 `compile --adopt-branding`，不呼叫 `assemble`。
 
 ## 片頭位置
