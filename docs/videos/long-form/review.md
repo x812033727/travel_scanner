@@ -4572,47 +4572,64 @@ Non-claims: this is a duration-only review of the nine bound revisions, not owne
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
-## Dubbing narrated dramas (a drama the narrator tells alone may be dubbed) increment: 3 files (2026-10-13)
+## Channel intro after the opening condensation increment: 5 files (2026-10-13)
 
-Reviewer: `claude-opus-duration-review-20261013h`. Author: `claude-opus-5.5-dub-narrated-drama`. Scope: DURATION_ONLY for the three changed bindings below, reviewed at `54169cebd3a8ffba8738d4a5eec655ea9b9bc210` ("tasks: explainer dub in review (#1482)") on claude/dub-narrated-drama, pull request #1482. The bound files change in the author's commits `71470dad3` (the dub tool) and `c2e22bd6f` (server, admin page and docs). The reviewer wrote none of it and edits only this report and review.json.
+Reviewer: `claude-opus-duration-review-20261013j`. Author: `claude-opus-5-5-bumper`. Scope: DURATION_ONLY for the five changed bindings below, reviewed at `4744a08f7cad3ed21dbaf838495b671ec67194b0` ("tasks: the intro-after-condensation task is in review") on claude/bumper-after-condensation, pull request #1481. The branch is two commits on origin/main: `48f6bdc57` ("feat(video): narrated long videos play the channel intro after their condensation", 18 files) and `4744a08f7` (the task file only). The reviewer wrote none of them and edits only this report and review.json.
 
-Baseline: merge base with origin/main `038f9152c5299459a2e92a5d922d657c49686db7` (#1477). For each of the three paths, SHA-256 of `git show <merge-base>:<path>` equals the existing review.json binding (the "PR #1475 private Studio link" increment above for the two site files, an earlier increment for dubs.test.mjs). Neither side changed a receipt file. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these three bindings; they are the only bound files among the eleven that differ between the merge base and the head, and the other bindings remain current. The registry remains 108 files.
+Baseline: merge base `038f9152c5299459a2e92a5d922d657c49686db7` (#1477). For each of the five paths, SHA-256 of `git show <merge-base>:<path>` equals the existing review.json binding. Neither commit touches a receipt file, so the receipt the branch carries is main's, the "PR #1475 private Studio link" increment above. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these five bindings; they are the only bound files among the 18 that differ, and the other 103 remain current. The registry remains 108 files.
 
-- `apps/api/app/video_reviews/admin_service.py`: `61a0095ccb186e45fc89f08bd20085a20aea68f13c9192478b9cbec4e5aa169d` -> `ef9fad5370f8929008ab0253456e6df479eeceb18aad16a2fe355eb79955c5a3`.
-- `apps/web/components/admin-video-reviews.test.tsx`: `2fbef750199daaf8fd1efeea37196526e67f00b2641adf3b23c9159ddf1a00b2` -> `b58c685c61cfa502157bd43cb33010dd5e3ff17263b99a7d535e591896dfe89c`.
-- `tools/video/dubs/dubs.test.mjs`: `4fb9b00853147186776b1b18f483585091fd1c35e5aaaa77db742609b898d2e1` -> `5bac54a14b8a4f080e7f65137f9b799fbf956349961a1762fe7eca8ae6a29643`.
+- `tools/video/assemble/cli.mjs`: `1820b81f551dac573fe0f9b9dd47146304dbc83a330751fc16087ddfbad83c5e` -> `0f3781cbdf0dd39faac6188f6795cc74233a9228fa7ef1a37e8ed5d16aa0cd92`.
+- `tools/video/core/branding.mjs`: `d9391d4832301395714cd3741a745fbf248a617fbd2850fe382e473a08ed7fd7` -> `917b7d8ca1cc7f493605f4452e9f200ec95c23cbc7c5c124be9490c6f8150ef5`.
+- `tools/video/core/branding.test.mjs`: `85530e76a4b26ca3a61fea99c1852a554c73db15c0248b9f32f0dabb1cdb0621` -> `dfdf0c5142448360752600b4050885bbd4ac8ed36472cf2d7e13e0c6df460382`.
+- `tools/video/core/stages.test.mjs`: `2e22980d5fe28d63d555e5cce7c18f56fb7042cdab52fa03a76b076ecca3c332` -> `c4583dba313415355131a854f3da6f568862c3ea83808313b2f1acda5c017523`.
+- `tools/video/dubs/dubs.test.mjs`: `4fb9b00853147186776b1b18f483585091fd1c35e5aaaa77db742609b898d2e1` -> `d8e1ea0e16afc5d5ec13c1e1fc4fa555ef9f4e44bd1572fda4e10d52ff356401`.
 
-What the change is: a drama told by the narrator alone may now be dubbed; a drama whose characters speak still may not. It decides whether a dub is made, not how long a video or a dub is.
+What the change is: the channel intro of a narrated long video (slides, screencasts, explainer dramas, brand stories) moves from body frame 0 to the first frame of chapter 2, so the 30 to 60 second condensation plays first and the intro follows it. Dramas with a cast, compilations and Shorts keep the intro at the start. The placement is a pin field `intro_at` (`start` or `after_first_chapter`); a pin without it is a cut made before the change and stays at the start; `assemble --intro-after-condensation` re-places a narrated cut that is not on YouTube yet. It moves where the intro sits inside the presentation, not how many frames the presentation has.
 
-Findings:
+Findings, implementation (2 files):
 
-- `admin_service.py` (+22/−5): a new `DUBBABLE_DRAMA_CATEGORIES = frozenset({"explainer"})` with a comment; `_apply_locales` refuses a drama's dub only when the project's `category` is not in that set (before: every drama), with the 422 code `video_locales_dub_not_for_drama` unchanged and its zh-TW message reworded; the `_apply_locales` and `set_locales` docstrings say the same. No changed line names minutes, seconds, frames, `target_minutes`, a floor or a runtime field.
-- `admin-video-reviews.test.tsx` (+28/−3): the language-panel test now also pins the greyed-out box's reason for a drama with no category and for the categories story, drama, anime and long-drama, and checks that an explainer drama's dub box is enabled and ticks the CC box with it. No assertion about length.
-- `dubs.test.mjs` (+38/−0): one new test. The drama fixture is refused with exit 3 (`EXIT.owner`), naming its first character line, and asks nothing of the speech server; the same drama with every speaker removed, and the explainer fixture, each pass a `--dry-run` dub whose output is pinned only as `\d+ requests, \d+ to synthesize`. No existing test, timing tolerance or expected length moves.
+- `tools/video/core/branding.mjs` (+123/−14): `validateBranding` accepts `intro_at` and adds it to the result only when it is not `start`; `brandingHash` keeps `"channel-bookends-v1"` and the same array for an intro at the start and switches to `"channel-bookends-v2"` plus the placement otherwise, so every existing pin, caption manifest and package keeps its hash. New: `placeBranding`, `narratedLong`/`defaultIntroAt` (who gets the new placement), `introAtFrame` (an applied record's `intro_at_frame`, else 0 for a start pin, else the timeline's `chapters[1].start_frame`, refused when there is no second chapter strictly inside the body), `replacementRefusal`, `pinRecord` (the pin as written now always carries `intro_at`, `start` included) and `linesAcrossIntro`. `selectBrandingForBuild` returns an existing pin unchanged; only a first build or an adoption takes `defaultIntroAt`, and the flag re-places a pin. `presentationTimeline`: `offset` reads `intro_frames ?? intro.frames` and the outro `outro_frames ?? outro.frames`; `total_frames` is still `offset + timeline.total_frames + outro`, `content_end_frame` still `offset + timeline.total_frames`, `body_total_frames` still the body. Starts at or after the intro frame and ends after it move by the intro; with the intro at 0 every start and end moves, as before. `shiftBrandingCues` moves cues at or after the intro's time and leaves earlier ones; with the intro at 0 every cue with a non-negative start moves, as before. No duration constant is named in either revision (0 lines naming target_minutes, minEpisodeMinutes, effectiveEpisodeMinutes, MIN_EPISODE, needsMinimumLength, VIDEO_MIN_EPISODE_MINUTES, runtime_spec, action_seconds, target_seconds, KNOWLEDGE_MIN, the anime duration functions, 480, 600, 780 or 14,400); lines naming total_frames, body_total_frames, content_end_frame, intro_frames, outro_frames or body_frames go from 5 to 8, the added ones being the fallbacks above and the second-chapter bound in `introAtFrame`.
+- `tools/video/assemble/cli.mjs` (+19/−4): passes `series` and the new flag to `selectBrandingForBuild`; a first build whose timeline has one chapter falls back to the start; `introAt` is found from the timeline and must be the `start_frame` of a layout scene whose preceding frames sum to it, or assemble stops with a usage error. `wrapVideo` gets `introAtFrame` and the body's own scene segments split there, joined by copy around the intro (assemble/branding.mjs, unbound: the sound is the body's mix cut on the sample grid at that frame into two clips padded to their own lengths, so four clips sum to intro + body + outro; `concat=n=3` with the original filters when the intro is at 0). `bodyFrames: timeline.total_frames` is unchanged. Two output lines are added. The four lines naming duration rules (the anime duration imports and calls) are the same in both revisions; none of the 23 changed lines names one.
 
-Duration identifiers (`target_minutes`, `MIN_EPISODE`, `minEpisodeMinutes`, `VIDEO_MIN_EPISODE_MINUTES`, `duration`, `seconds`, `_minutes`, `total_frames`, `windowLimit`, `atempo`, `tempo`/`TEMPO`, `stretch`, `keep-fitting`, `layoutDub`, `absorbOverruns`, `overrun`; case-insensitive occurrences) counted in both revisions: admin_service.py 27 -> 27, admin-video-reviews.test.tsx 76 -> 76, dubs.test.mjs 87 -> 87. None of the added or removed lines in the three files contains one.
+Findings, regression tests (3 files):
 
-Context, unbound: tools/video/dubs/cli.mjs (+33/−3) replaces the blanket drama refusal (a usage error) with `spokenByCharacter(doc)`, which refuses with a `SpeechError` for the owner (exit 3) when any line's speaker is not the narrator; a narrator-only drama then takes the same `dub` path as a slides video. The hunks touch no timing: `TEMPO_RETRY_STEP`, `windowLimit`, `layoutDub`, `layoutDubTolerant`, `absorbOverruns`, `shrinkBudgets`, `--keep-fitting` and the presentation timeline are outside them, and tools/video/dubs/plan.mjs, tools/video/core, tools/video/qa, tools/video/long-form and apps/api/app/video_automation do not differ between the merge base and the head. The admin page (admin-video-reviews.tsx) and the API test add the same category gate; DUBS.md and LANGUAGES.md describe it.
+- `tools/video/core/branding.test.mjs` (+93/−2): one existing expectation changes, the first build of a slides document now hashing with `intro_at: "after_first_chapter"`; the existing "presentation shifts content once" test (start placement, `total_frames`, chapter zero, cue round trip) is unchanged. Four new tests: who is narrated; a legacy pin keeps its hash, intro frame 0, and a rewritten pin with `intro_at: "start"` still validates to that hash; the flag's refusals; and a body of 2,400 frames with a 357-frame intro after chapter 1 presenting `total_frames` 2400 + 357 + 630, `content_end_frame` 2757, chapter-1 lines and cues at their own time, the rest moved by 357 frames, and the cue round trip back.
+- `tools/video/core/stages.test.mjs` (+43/−0): a new test with the intro after chapter 1 checks that the narration captions in two languages and the dub's captions keep chapter 1's cue times, move the rest by the intro, and that no cue plays over the intro; YouTube chapters are `[0, c2 + 357, c3 + 357]`.
+- `tools/video/dubs/dubs.test.mjs` (+41/−0): a new test dubs a cut whose intro follows chapter 1: the dub timeline's `total_frames` is the body + 780 (150 + 630), `content_end_frame` body + 150, every line is kept (the start frames map one to one: earlier ones unmoved, later ones +150), and the wrap is `concat=n=4` with the body's second half cut at `start_sample = at * 1600` to the body's end.
 
-Recorded observation, not a rule change: a narrator-only drama's dub is fitted to its picture by the unchanged slides fit/stretch rules, so a dub never changes the drama's length; how well those windows fit a drama's scene timing was not measured.
+Duration questions:
 
-Ran (in the worktree at the head, Node on Windows):
+1. Total length. Intro and outro frames are still added once, to every video: `total_frames = intro + body + outro` in both placements, and only the position of the intro changes. Run against both revisions, a 15,000-frame body with a 357/630 bookend presents 15,987 frames in each, with the intro at the start and after chapter 1. No body frame is added, removed or re-timed: the body is split, not trimmed, and assemble refuses a split that is not at a scene boundary instead of moving one.
+2. Length checks. No file under tools/video/qa or tools/video/long-form, nor core/duration.mjs, core/lint.mjs, core/schema.mjs or core/timeline.mjs, and nothing under apps/api, differs between the merge base and the head. The eight-minute floor in qa (`MIN_EPISODE_MINUTES` via `minEpisodeMinutes()`) still reads `checks.metrics.frames`, the whole measured cut, which is unchanged; `KNOWLEDGE_MIN_SECONDS = 480` still reads the body and still requires `presented.total_frames === body + intro_frames + outro_frames`, which both placements satisfy; the long-anime checks read the same sums; lint's pacing and the opening-condensation window read the body script, untouched.
+3. Old pins. Run against both revisions with a start pin: the validated pin is byte-identical (no `intro_at` key), the hash is equal, a pin rewritten with `intro_at: "start"` keeps that hash, `presentationTimeline` from an applied record is identical, `shiftBrandingCues` is identical in both directions, and `brandingJoinArgs` gives identical ffmpeg arguments for the cut and for a dub. So a video pinned before this change rebuilds its final, captions, chapters and dubs as before.
+4. Dubs and scenes. A dubbed line that would run across the intro is refused with a usage error (`linesAcrossIntro`), not dropped, cut or sped up; dub fitting, windows and tempo are outside the hunks. `captionTimelineOf` (core/stages.mjs, unbound) caps only the caption end of a line that starts before the intro at the intro's frame. No scene is shortened to make room.
 
-- `node tools/video/long-form/cli.mjs check` before any edit, which printed the three stale bindings and exited 1;
-- `git diff 038f9152c HEAD` over the three files read whole, and over tools/video/dubs/cli.mjs as context, with `git diff --stat`;
-- `git ls-files --eol` for the three files (LF in index and worktree) and the SHA-256 of each merge-base blob and current file against review.json;
-- the identifier count above with `grep -Eio` over both revisions and over the changed lines.
+Recorded observations. None changes a video's length or a length floor:
 
-The CLI check, review.test.mjs and dubs.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+1. The tts chapter check (tts/cli.mjs, unbound) passes a planned pin, not an applied record, to `presentationTimeline`. At the merge base that pin has no `intro_frames`, so every start and the total came out NaN and `checkChapters` reported no chapter under 10 s whenever branding was selected (shown by running the merge base's function: total NaN, problems `[]`). The fallback to `intro.frames` makes that YouTube chapter-display check real. It can only add a recorded `ok: false` to a tts run; it changes no frame. With the intro at the start it presents exactly what assemble presents.
+2. With the intro after chapter 1, YouTube's chapter 1 runs from 0:00 to the end of the intro, so it holds the condensation and the intro.
+3. The first successful build of an old pin rewrites branding.json with `intro_at: "start"`; the hash, which is what manifests, packages and approvals bind, stays the same.
+4. Renewal staging and handoff refuse a pin placed after chapter 1 (review/renewal.mjs, review/renewal-handoff.mjs, unbound); compile keeps an episode's chapter-1 captions and removes its intro only from the later ones (core/compilation.mjs, unbound). A compilation itself is not narrated-long and keeps its intro at the start.
+
+Ran (in the worktree at the head, Node 24 on Windows, VIDEO_MIN_EPISODE_MINUTES unset):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the five stale bindings and exited 1;
+- `git diff` from the merge base over the 18 changed files, the five bound files read whole and assemble/branding.mjs, dubs/cli.mjs, tts/cli.mjs, core/stages.mjs, core/compilation.mjs, compile/cli.mjs and the two renewal files as context;
+- SHA-256 of the merge-base blobs, the files' bytes and the receipt; `git ls-files --eol` (LF in index and worktree);
+- a script kept outside the repository that imports the merge base's (`git archive`) and the head's core/branding.mjs and assemble/branding.mjs and compares them as in questions 1 and 3 and observation 1;
+- `node --test tools/video/assemble/*.test.mjs tools/video/core/branding.test.mjs tools/video/core/stages.test.mjs tools/video/dubs/dubs.test.mjs`;
+- `node --test` over core/duration.test.mjs, qa/*.test.mjs, core/compilation.test.mjs, core/timeline.test.mjs, compile/*.test.mjs and tts/*.test.mjs, where the one failure, tts/check.test.mjs "a second transcript clears a line only Gemini misheard", fails the same way in the merge base's tree on this machine.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
 
 Non-claims:
 
-- This review does not judge whether an explainer drama should be dubbed, the brand-story question (task 2026-10-13-should-brand-stories-be-dubbed-over), the wording of the refusals, or the admin page and API test (unbound).
-- No dub was synthesized, mixed or measured; the drama tests are dry runs against a fake speech server and a fake ffmpeg.
+- This review does not judge the placement as a product choice, BRANDING.md or the task file (unbound), or the picture and sound at the join; no ffmpeg was run and no cut was built or played.
+- The assemble path with the intro after chapter 1 (the scene-boundary refusal, the split segments) was read, not exercised end to end; the four-clip sound join is exercised through the dub test's arguments.
 - No API test, ruff, mypy, Vitest, lint or typecheck was run.
-- This increment binds the tree at the head only: a later commit or merge with main that changes any of the three files, or either receipt file, needs its own follow-up.
+- This increment binds the tree at the head only: a later commit or merge with main that changes any of the five files, or either receipt file, needs its own follow-up. The 103 bindings this change left alone are not covered afresh.
 
-PASS is DURATION_ONLY for the three rebound hashes below.
+PASS is DURATION_ONLY for the five rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
@@ -4632,7 +4649,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/app/video_automation/schemas.py` | `4247c4bbbb118d14bc4cd90358d129843936f17fbc3e1cff0217d461ce02d70d` |
 | `apps/api/app/video_automation/series.py` | `cb9d3e01465a6f072d44fdcedae659f538686a634a03351171f8f67d8bfaa155` |
 | `apps/api/app/video_automation/settings.py` | `9941b3244e15cf6b1d8aaec32c68ab2424f84adb32804a179652d93fb3977ca3` |
-| `apps/api/app/video_reviews/admin_service.py` | `ef9fad5370f8929008ab0253456e6df479eeceb18aad16a2fe355eb79955c5a3` |
+| `apps/api/app/video_reviews/admin_service.py` | `61a0095ccb186e45fc89f08bd20085a20aea68f13c9192478b9cbec4e5aa169d` |
 | `apps/api/app/video_reviews/schemas.py` | `57cdfedd70afb65aa96e42699c7e52dd3d45faccf7919b58ee1a54779f0962a0` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
 | `apps/api/migrations/versions/0122_video_anime_production_policy.py` | `91f97905e9a689cc47aef8eac60735175a4048bfb5788fa1d204acb43ee11ea7` |
@@ -4647,7 +4664,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `cb28b0a7173ad4712a70c5e378b3b0d6e4d760731620f38d9400a221b305a6ac` |
 | `apps/web/components/admin-video-review-card.tsx` | `62e4b249e15e2bfde32e0752977a9a54d0fc6d5a2a8e47a05ea04dbb7b63b9cf` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `b58c685c61cfa502157bd43cb33010dd5e3ff17263b99a7d535e591896dfe89c` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `2fbef750199daaf8fd1efeea37196526e67f00b2641adf3b23c9159ddf1a00b2` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `c64bfba40979fef3f8291ae2582a8cc2bb55644d4be0655ba75b39f767677d8a` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
@@ -4668,7 +4685,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `docs/videos/so-thats-why/README.md` | `cabb9054898149fa0f512fc192825149c467ac25be283b754174098c83e2a661` |
 | `docs/videos/so-thats-why/season2/README.md` | `e560411dc91f1928b2cf9506a044e55ae7f5f65450199118bd165464599f1218` |
 | `tools/video/assemble/assemble.test.mjs` | `76a51bc9c90b7b23ac91b22bf0278b8f61173ca3d418794b2112ae8eade96403` |
-| `tools/video/assemble/cli.mjs` | `1820b81f551dac573fe0f9b9dd47146304dbc83a330751fc16087ddfbad83c5e` |
+| `tools/video/assemble/cli.mjs` | `0f3781cbdf0dd39faac6188f6795cc74233a9228fa7ef1a37e8ed5d16aa0cd92` |
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
@@ -4683,8 +4700,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/anime-policy.test.mjs` | `74b9f1360829efed4c2f1e529b403024877e255d51430a5a2636ac7c5a24b3c6` |
 | `tools/video/core/approvals.mjs` | `d97e182fb942071e49cbd9fb64a35efcb327251048945c388fa8678c28065577` |
 | `tools/video/core/approvals.test.mjs` | `51c4a632685a36221dcaf6ac926d5256879c1540f709b708945770d9e5e6adaf` |
-| `tools/video/core/branding.mjs` | `d9391d4832301395714cd3741a745fbf248a617fbd2850fe382e473a08ed7fd7` |
-| `tools/video/core/branding.test.mjs` | `85530e76a4b26ca3a61fea99c1852a554c73db15c0248b9f32f0dabb1cdb0621` |
+| `tools/video/core/branding.mjs` | `917b7d8ca1cc7f493605f4452e9f200ec95c23cbc7c5c124be9490c6f8150ef5` |
+| `tools/video/core/branding.test.mjs` | `dfdf0c5142448360752600b4050885bbd4ac8ed36472cf2d7e13e0c6df460382` |
 | `tools/video/core/drama.mjs` | `90de23ad4cc9e1c5ed44e6aae6ab4ccf104d8bac6bd13810122e5ed6853570e4` |
 | `tools/video/core/drama.test.mjs` | `c6dc0ef74464fcb9e47397f59b3902938c628ed86ec2f53819eeba88537f22c6` |
 | `tools/video/core/duration.mjs` | `12009ae5d12cba73e55ff462e9f9dd107350d53bea1da5a65bf59a1a39e13285` |
@@ -4696,13 +4713,13 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/schema.mjs` | `0202f27c4aa2d59c64fccb0fd495033a58999809943935c7004fc45d183ac94b` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
 | `tools/video/core/screenplay.test.mjs` | `fe2765c5f2fa42d7cfe5a2e542063c32c4349b585c649552a31b2088aaaec180` |
-| `tools/video/core/stages.test.mjs` | `2e22980d5fe28d63d555e5cce7c18f56fb7042cdab52fa03a76b076ecca3c332` |
+| `tools/video/core/stages.test.mjs` | `c4583dba313415355131a854f3da6f568862c3ea83808313b2f1acda5c017523` |
 | `tools/video/core/state.mjs` | `f45f65951076d48fe61280fc99b3c9d839614775c469fd1fd25d5046633aec26` |
 | `tools/video/core/state.test.mjs` | `327eac9a271451f2f1d4954850dbed0ab4102be170f744cc953cb071f1ce0d08` |
 | `tools/video/core/timeline.mjs` | `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a` |
 | `tools/video/core/timeline.test.mjs` | `8eedaa0b04f56d22b65becbf23e39e23e051f2d6850f63a5bf7c496583b9b00a` |
 | `tools/video/dubs/captions-package.test.mjs` | `a7d9462b61f182bca1b7e87149a5c461659dafeb9c54449769bc35189f352685` |
-| `tools/video/dubs/dubs.test.mjs` | `5bac54a14b8a4f080e7f65137f9b799fbf956349961a1762fe7eca8ae6a29643` |
+| `tools/video/dubs/dubs.test.mjs` | `d8e1ea0e16afc5d5ec13c1e1fc4fa555ef9f4e44bd1572fda4e10d52ff356401` |
 | `tools/video/dubs/freshness.test.mjs` | `c882af3d55bff72c410e930b0e0f187770782a937952bb9efba3ab40e44a5b30` |
 | `tools/video/dubs/plan.test.mjs` | `f06d073795553024d19098c9957ab060a9feb41569546d67f366d931244b8ab3` |
 | `tools/video/long-form/cli.mjs` | `3a0b26f900daaf1a08f7ed210ad1239d7f172035fa1e14c6dafc28bf55dedfa4` |

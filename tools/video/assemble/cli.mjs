@@ -13,7 +13,7 @@ import { burnIn, hasPictures, illustrated, isDrama, keyframesHash, lookHash, mix
 import { hasAnimePolicy, runtimePolicyHash } from "../core/anime-policy.mjs";
 import { sha256File } from "../core/approvals.mjs";
 import { animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems } from "../core/duration.mjs";
-import { presentationTimeline, selectBrandingForBuild } from "../core/branding.mjs";
+import { INTRO_AT_START, introAtFrame, placeBranding, presentationTimeline, readBranding, selectBrandingForBuild } from "../core/branding.mjs";
 import { productionClipProblems } from "../core/lint.mjs";
 import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
@@ -240,7 +240,7 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
   const { EXIT } = ctx;
   const { values, positionals } = parseArgs({
     args,
-    options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, set: { type: "string" }, force: { type: "boolean" }, "adopt-branding": { type: "boolean" } },
+    options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, set: { type: "string" }, force: { type: "boolean" }, "adopt-branding": { type: "boolean" }, "intro-after-condensation": { type: "boolean" } },
     strict: true,
     allowPositionals: true,
   });
@@ -298,8 +298,13 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
     ctx.stderr.write(`${error.message}\n`);
     return EXIT.missing;
   }
-  const branding = await selectBrandingForBuild({ doc, workdir, workBase, adoptCurrent: values["adopt-branding"] });
+  let branding = await selectBrandingForBuild({ doc, workdir, workBase, adoptCurrent: values["adopt-branding"], series: project.series, introAfterCondensation: values["intro-after-condensation"] });
   if (branding) await verifyBrandingAssets(branding, { tools });
+  // An intro after the condensation plays at the second chapter's first frame (docs/videos/BRANDING.md).
+  // A first build with a single chapter has no condensation to follow, so its intro stays first;
+  // a pin or the explicit flag asking for the other placement is refused instead.
+  if (branding?.intro_at && !timeline.chapters?.[1] && !values["intro-after-condensation"] && !readBranding(workdir)?.intro_at) branding = placeBranding(branding, INTRO_AT_START);
+  const introAt = branding ? introAtFrame(branding, timeline) : 0;
 
   let layout;
   try {
@@ -314,6 +319,13 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
   } catch (error) {
     if (!(error instanceof PlanError)) throw error;
     ctx.stderr.write(`${error.message}\n`);
+    return EXIT.usage;
+  }
+  // The chapter starts a scene, and every scene is its own segment opening on a keyframe, so the
+  // intro goes between two segments: the layout index of the scene it plays before.
+  const introSplit = introAt > 0 ? layout.findIndex((scene) => scene.start_frame === introAt) : 0;
+  if (introAt > 0 && (introSplit <= 0 || layout.slice(0, introSplit).reduce((sum, scene) => sum + scene.frames, 0) !== introAt)) {
+    ctx.stderr.write(`the intro after the first chapter must start a scene, but no segment starts at frame ${introAt}\n`);
     return EXIT.usage;
   }
   /** The frames a clip offers a shot: all of them, or those after the frame a cut from another shot starts at. */
@@ -493,7 +505,8 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
   let applied = null;
   if (branding) {
     await runTool(tools.ffmpeg, muxArgs(video, audio, bodyPartial));
-    applied = await wrapVideo({ tools, workdir, bodyFile: bodyPartial, bodyFrames: timeline.total_frames, branding, outFile: partialFinal });
+    const bodyPictures = introSplit > 0 ? { before: segmentFiles.slice(0, introSplit), after: segmentFiles.slice(introSplit) } : null;
+    applied = await wrapVideo({ tools, workdir, bodyFile: bodyPartial, bodyFrames: timeline.total_frames, branding, outFile: partialFinal, introAtFrame: introAt, bodyPictures });
     applied.body_file = "build/body.mp4";
   } else {
     await runTool(tools.ffmpeg, muxArgs(video, audio, partialFinal));
@@ -634,6 +647,8 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
   ctx.stdout.write(`${branding && !checks.ok ? candidate : final}: ${presented.total_frames} frames, ${loudness.integrated} LUFS, true peak ${loudness.truePeak} dBFS${bedText}; ${encoded} of ${layout.length} segments encoded in ${seconds} s\n`);
   for (const problem of problems) ctx.stdout.write(`CHECK ${problem}\n`);
   if (!checks.ok) return EXIT.lint;
+  if (introAt > 0) ctx.stdout.write(`intro plays after the first chapter, at ${(introAt / FPS).toFixed(2)} s; captions, chapters and dubs follow it once rebuilt\n`);
+  if (values["intro-after-condensation"]) ctx.stdout.write("branding.json now records intro_at after_first_chapter; any final or publish approval and upload package of the earlier cut no longer match this file: rebuild captions, dubs and the package, then send it for review again\n");
   ctx.stdout.write(`next: node tools/video/cli.mjs review --slug ${doc.slug}\n`);
   return EXIT.ok;
 }
