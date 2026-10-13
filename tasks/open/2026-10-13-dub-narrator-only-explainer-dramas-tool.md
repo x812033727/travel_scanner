@@ -1,7 +1,7 @@
 ---
 id: 2026-10-13-dub-narrator-only-explainer-dramas-tool
 title: Dub narrator-only explainer dramas: tool, server and language panel
-status: in-progress
+status: review
 priority: P2
 area: tools
 owner: claude-opus-5.5-dub-narrated-drama
@@ -60,6 +60,8 @@ dubbing for five narrator-only explainer episodes and could not.
 `cd apps/web && npx vitest run components/admin-video-reviews.test.tsx`.
 
 ## Notes
+
+- Pull request: #1482 (https://github.com/x812033727/travel_scanner/pull/1482).
 
 - Brand stories (`story`) are narrator-only in sound (their recurring figures are drawn, never
   heard; `core/story.mjs` refuses any other speaker), so `hasCast` would have refused them while
