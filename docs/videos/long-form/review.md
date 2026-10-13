@@ -4847,6 +4847,39 @@ PASS is DURATION_ONLY for the three rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Skill mirror increment: 1 file (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013g`. Author: `claude-opus-5-5-narrative`. Scope: DURATION_ONLY for the one changed binding below, reviewed in the worktree `claude/youtube-narrative-flow-1cadbc` whose HEAD is `835e86d0727587abacbb7e4502c4857ddec3b1cf` ("fix(video): the Tunguska pictures the judge sent back, and two last fact corrections"). The change was made in its parent `87b91229f50f70447fc1020c9eb4ecb38600b90e` ("fix(video): the Claude copy of the youtube-video skill follows the hooked-opening rule"); HEAD itself touches only four files under `docs/videos/curio-*`, and `git diff 87b91229f HEAD -- .claude .agents tools apps docs/videos/long-form` is empty. When the review began no tracked file was modified in the working tree. `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: .claude/skills/youtube-video/SKILL.md` and named nothing else. This reviewer wrote none of the change, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edited only this report and review.json.
+
+- `.claude/skills/youtube-video/SKILL.md`: `f75b81629e71b5371b0069ac7e10192f33c139ef748ce752cf8763797299b3e6` -> `16720e94c465df18cf106234237215f4e9d25df4147990f9d6a8f76f5ce2f988`.
+
+Baseline: SHA-256 over `git show 87b91229f^:.claude/skills/youtube-video/SKILL.md` is `f75b81629e71b5371b0069ac7e10192f33c139ef748ce752cf8763797299b3e6`, exactly the value this receipt carried before this increment, which proves the binding was current when the change started. The parent `3cb47d843` is the receipt commit of the section above, which recorded this mirror as unsynced and left its binding alone, so the two increments join without a gap. Those old bytes are also byte-identical (`cmp`) to `git show 548cb13fc^:.agents/skills/youtube-video/SKILL.md`, the shared copy as it stood before the hooked-opening change.
+
+New bytes equal the reviewed shared copy: SHA-256 over `git show HEAD:.claude/skills/youtube-video/SKILL.md`, over `git show 87b91229f:.claude/skills/youtube-video/SKILL.md` and over the working-tree file are all `16720e94c465df18cf106234237215f4e9d25df4147990f9d6a8f76f5ce2f988`, the same digest as `.agents/skills/youtube-video/SKILL.md` at HEAD, at `87b91229f` and in the working tree, and the same value the section above recorded and bound for that file. `cmp` of the two working-tree files reports no difference. `git ls-files --eol` reports LF in index and worktree for both. By `git show --numstat` the commit touches this one file only, two insertions and two deletions; it stays at 144 lines and grows from 25,846 to 25,894 bytes, the same sizes the section above recorded for the shared copy. The other 107 bindings are untouched by this change and are not covered afresh. Every prior increment is preserved and the registry remains 108 files.
+
+What the change is: `git show 87b91229f` was read whole. It is two hunks: rule 11 (the `loops` table holds at least three for ten minutes, three of them the opening's teasers; the condensation is one scene plus three or four later moments, each stopped before its result, with the channel intro after it; the storytelling gate reads eleven yes/no questions instead of ten) and row 4.5 of the pipeline table (eleven questions instead of ten). The added and removed lines of this commit, extracted with `grep '^[-+][^-+]'`, are byte-identical (`cmp`) to those of `git diff 548cb13fc^ 548cb13fc -- .agents/skills/youtube-video/SKILL.md`, which the section above read and bound. Rule 10 (the 8-minute floor for everything but drama and Shorts, no upper limit, `target_minutes` as the aim) is an unchanged context line.
+
+Findings, duration rules: none moved. Counted in both revisions, every duration identifier appears exactly as often: `target_minutes` once, "minute" once, 分鐘 14, 秒 10, `480` once, 30–60 once, 60–90 once, "8 分鐘" four times; `minEpisodeMinutes`, `effectiveEpisodeMinutes`, `DEFAULT_TARGET_MINUTES`, `MIN_EPISODE_MINUTES`, `draftBudget`, `estimateTimeline`, `total_frames`, `duration_s`, `14,400` and `14400` in neither. These are the counts the section above recorded for the shared copy. The file is skill prose for the Claude Code harness; it declares no rule a tool reads. No file under `apps/api`, `tools/video` or `docs/videos/long-form` is changed by this commit: the 8-minute non-drama floor, the explainer's 10-minute default and 8–20 range, drama's 1–8, the brand story's 13 minutes, the QA `assemble` item's 480 s / 14,400 frames at 30 fps and the chapter minimum of 10 s stand exactly as the increments above bound them.
+
+The mirror test the section above recorded as failing, "every shared skill has a byte-identical copy for Claude Code, and nothing lives only there", now passes, so the gap that section flagged is closed.
+
+Ran (in the worktree, Node 24 on Windows, `VIDEO_MIN_EPISODE_MINUTES` unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which named exactly this one stale binding and no other;
+- `git show 87b91229f` read whole, with `--stat` and `--numstat`; `git show 835e86d07 --stat`; `git diff 87b91229f HEAD --stat -- .claude .agents tools apps docs/videos/long-form`; `git status --short`; `git ls-files --eol`; `git rev-parse HEAD 87b91229f 87b91229f^`;
+- SHA-256 over the `.claude` copy at `87b91229f^`, `87b91229f`, HEAD and in the working tree, and over the `.agents` copy at the same three revisions and in the working tree, compared against the old receipt and the section above;
+- `cmp` of the old `.claude` bytes against `.agents` at `548cb13fc^`, of the two working-tree copies, and of this commit's changed lines against those of `548cb13fc` on the shared copy;
+- a count of every duration identifier above in the parent blob against the HEAD blob, which matched everywhere;
+- `node --test tools/skills.test.mjs`: 7 passed, 0 failed, 0 skipped.
+
+The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims: this review does not judge the hooked opening or the eleventh panel question as product choices, nor re-review the shared copy, which the section above bound. No writer, planner or panel was run against a real model, no narration was synthesized, no cut was measured and no host was contacted. The full `test:tools` suite, API tests, ruff, mypy, Vitest, web lint and typecheck were not run, and no CI result is claimed. This increment binds the file as committed at `87b91229f`; a later commit, rebase or merge that changes it, or either receipt file, needs its own follow-up increment.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -4856,7 +4889,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `.agents/skills/youtube-video/SKILL.md` | `16720e94c465df18cf106234237215f4e9d25df4147990f9d6a8f76f5ce2f988` |
 | `.agents/skills/youtube-video/references/automated.md` | `135bd217d344df2a5a033cef30cbc3181c4b268d3f96c689d4b4560390de40db` |
 | `.agents/skills/youtube-video/references/formats.md` | `b27b230728c1c6513fd4567cdba04797f552fd920bed33833ae9f97b70d74087` |
-| `.claude/skills/youtube-video/SKILL.md` | `f75b81629e71b5371b0069ac7e10192f33c139ef748ce752cf8763797299b3e6` |
+| `.claude/skills/youtube-video/SKILL.md` | `16720e94c465df18cf106234237215f4e9d25df4147990f9d6a8f76f5ce2f988` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7` |
 | `apps/api/app/video_automation/models.py` | `e8351836b3d09a939c31f18501ba3e160e98706e327a1172cc35170fc76b9ccc` |
