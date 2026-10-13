@@ -39,6 +39,10 @@ AUTH_FAILED_CLAUDE = (
     "Failed to authenticate. API Error: 403 Access to this model requires an access grant "
     "your request does not have."
 )
+ORG_DISABLED_CLAUDE = (
+    "Your organization has disabled Claude subscription access for Claude Code · "
+    "Use an Anthropic API key instead, or ask your admin to enable access"
+)
 
 # Records what it was given in the account folder, then answers like `claude -p --output-format
 # json`. The prompt decides the outcome: LIMIT answers as a spent window, FAIL exits with an error;
@@ -61,6 +65,10 @@ FAKE_CLAUDE = textwrap.dedent(
     if os.path.exists(os.path.join(folder, "signed-out")):
         notice = "Failed to authenticate. API Error: 403 Access to this model requires an "
         notice += "access grant your request does not have."
+        print(json.dumps({"type": "result", "is_error": True, "result": notice}))
+        sys.exit(1)
+    if os.path.exists(os.path.join(folder, "subscription-disabled")):
+        notice = "Your organization has disabled Claude subscription access for Claude Code"
         print(json.dumps({"type": "result", "is_error": True, "result": notice}))
         sys.exit(1)
     if "LIMIT" in prompt or os.path.exists(os.path.join(folder, "spent")):
@@ -334,7 +342,7 @@ def test_an_unrecognized_cli_failure_keeps_the_generic_error(
     [("json", 0), ("json", 1), ("stderr", 1), ("stdout", 1)],
 )
 @pytest.mark.parametrize(
-    "message", [AUTH_FAILED_CLAUDE, "Failed to refresh OAuth token"]
+    "message", [AUTH_FAILED_CLAUDE, "Failed to refresh OAuth token", ORG_DISABLED_CLAUDE]
 )
 def test_a_failed_run_that_cannot_authenticate_rests_the_account_for_every_model(
     tmp_path: Path, channel: str, exit_code: int, message: str
@@ -353,8 +361,13 @@ def test_a_failed_run_that_cannot_authenticate_rests_the_account_for_every_model
     with pytest.raises(RunRefused) as refused:
         run_claude(config, "a", _request())
     assert (refused.value.status, refused.value.code) == (503, "subscription_auth_failed")
-    assert refused.value.family == "*", "no run can sign the account in again for any model"
-    assert "account a" in refused.value.detail and "sign it in again" in refused.value.detail
+    assert refused.value.family == "*", "no run can restore this account's access for any model"
+    assert "account a" in refused.value.detail
+    if message == ORG_DISABLED_CLAUDE:
+        assert "organization admin" in refused.value.detail
+        assert "sign it in again" not in refused.value.detail
+    else:
+        assert "sign it in again" in refused.value.detail
     assert "403" not in refused.value.detail, "the CLI's output is not echoed"
     assert not any((config.state_root / "runs").iterdir()), "the failed run is cleaned up"
 
@@ -368,14 +381,18 @@ def test_a_failed_run_that_cannot_authenticate_rests_the_account_for_every_model
         "OAuth token has expired",
         "Failed to refresh OAuth token",
         "Invalid API key · Please run /login",
+        ORG_DISABLED_CLAUDE,
     ],
 )
 def test_sign_in_notices_rest_the_account_and_other_failures_do_not(message: str) -> None:
     refusal = auth_refusal("b", message)
     assert refusal is not None and refusal.code == "subscription_auth_failed"
+    if message == ORG_DISABLED_CLAUDE:
+        assert "organization admin" in refusal.detail
     assert auth_refusal("b", "API Error: 404 model not found") is None
     assert auth_refusal("b", "The selected model is unavailable.") is None
     assert auth_refusal("b", "You've hit your weekly limit") is None
+    assert auth_refusal("b", "Claude subscription access is temporarily unavailable") is None
 
 
 def test_a_long_successful_answer_that_mentions_a_403_is_still_an_answer(tmp_path: Path) -> None:
@@ -400,6 +417,13 @@ def test_a_long_successful_answer_that_mentions_a_403_is_still_an_answer(tmp_pat
         exit_code=0,
     )
     assert run_claude(config, "a", _request())["text"] == refreshed
+    quoted_org_notice = f"Prior notice: {ORG_DISABLED_CLAUDE}"
+    config = _cli_output(
+        tmp_path,
+        stdout=json.dumps({"type": "result", "is_error": False, "result": quoted_org_notice}),
+        exit_code=0,
+    )
+    assert run_claude(config, "a", _request())["text"] == quoted_org_notice
 
 
 def test_codex_runs_with_all_tools_disabled_and_rejects_any_tool_event(tmp_path: Path) -> None:
@@ -659,6 +683,20 @@ def test_a_run_that_cannot_authenticate_rests_the_account_and_every_such_account
     (config.slot_path("claude", "b") / "spent").write_text("", encoding="utf-8")
     status, body = _signed(application, {**run, "queue_seconds": 0})
     assert (status, body["code"]) == (429, "subscription_quota_paused")
+
+
+def test_disabled_claude_subscription_moves_to_the_next_signed_in_account(
+    tmp_path: Path,
+) -> None:
+    config = _config(tmp_path)
+    (config.slot_path("claude", "a") / "subscription-disabled").write_text("", encoding="utf-8")
+    run = {"tool": "claude", "model": "claude-opus-5-5", "system": "Write.", "prompt": "{}"}
+    application = AgentApplication(config, claude=Accounts({"a": 10, "b": 20}), codex=Accounts({}))  # type: ignore[arg-type]
+    status, body = _signed(application, run)
+    assert status == 200 and body["slot"] == "b"
+    assert ("claude", "a", "*") in application._runs_resting
+    assert ("claude", "a") in application._auth_failed
+    assert config.current_path("claude").read_text(encoding="utf-8").strip() == "b"
 
 
 def test_a_model_family_limit_passes_that_family_to_the_next_account_only(

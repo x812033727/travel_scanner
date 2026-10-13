@@ -1,6 +1,6 @@
 ---
 id: 2026-10-13-classify-failed-oauth-token-refresh-as
-title: Classify failed OAuth token refresh as subscription authentication failure
+title: Classify Claude OAuth and organization subscription failures
 status: review
 priority: P2
 area: api
@@ -15,7 +15,7 @@ scope:
   - apps/api/tests/test_ai_accounts_agent_runs.py
 ---
 
-# Classify failed OAuth token refresh as subscription authentication failure
+# Classify Claude OAuth and organization subscription failures
 
 ## Why
 
@@ -23,6 +23,9 @@ AI account CLI failures containing the actual notice `Failed to refresh OAuth to
 `AUTH_MESSAGE` in `apps/api/ai_accounts_agent/runs.py`. The failed account then surfaces
 as a generic `subscription_run_failed` (HTTP 502) instead of the existing
 `subscription_auth_failed` response, which rests an account that needs sign-in.
+The 2026-10-13 notice `Your organization has disabled Claude subscription access for
+Claude Code` has the same 502 outcome but requires organization access to be enabled;
+signing in the same account again alone may not help.
 
 ## Definition of done
 
@@ -31,12 +34,17 @@ as a generic `subscription_run_failed` (HTTP 502) instead of the existing
   retry or exposing the CLI notice in the API response.
 - [x] A successful answer quoting the notice remains a successful answer; unrelated
   failures keep their existing classification.
+- [x] The exact organization-disabled notice rests only the failed slot, then permits
+  the existing agent rotation to try the next signed-in slot. Its direct error detail
+  directs the owner to organization access rather than another sign-in.
 
 ## Steps
 
 - [x] Add a focused regression for the exact notice across the existing CLI output
   channels and one successful quoted answer.
 - [x] Extend only the authentication notice matcher; run focused API checks.
+- [x] Reproduce the organization-disabled notice in CLI output channels and agent
+  rotation, then verify a successful answer quoting it stays successful.
 
 ## How to verify
 
@@ -55,3 +63,11 @@ cases). After the change, `tests/test_ai_accounts_agent_runs.py` has 60 passed;
 Ruff and mypy for the touched code passed. `npm run check:tasks` passed with only
 unrelated stale-claim warnings. No provider request or production retry was made.
 Pending parent review and inclusion in draft PR #1480; not deployed.
+
+2026-10-13 organization-disabled follow-up: Before the matcher change, six new cases
+failed as expected (four failed CLI channels, direct classification, and agent
+rotation). After the narrow matcher and organization-specific detail, all 66 focused
+agent tests passed; Ruff and mypy for the two touched source files passed. The fake
+CLI test moved from disabled slot `a` to signed-in slot `b` and marked only `a` as
+resting. No real provider request or production retry was made. Pending parent review,
+CI, and deployment in the same draft PR #1480.

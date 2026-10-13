@@ -83,6 +83,12 @@ AUTH_MESSAGE = re.compile(
     r"|oauth token (?:has )?expired|failed to refresh oauth token|invalid api key",
     re.I,
 )
+# A signed-in Claude account can also lose subscription access at the organization level.
+# Its entitlement notice omits the usual "API Error: 403" prefix; another signed-in slot may
+# still work, while signing this slot in again does not restore organization access.
+CLAUDE_SUBSCRIPTION_DISABLED_MESSAGE = re.compile(
+    r"your organization has disabled claude subscription access for claude code", re.I
+)
 CLAUDE_OUTDATED_MESSAGE = re.compile(
     r"\bClaude\s+Code\s+(?P<installed>\d+\.\d+\.\d+(?:-[\w.-]+)?)\s+"
     r"does not support this model;\s*version\s+"
@@ -139,13 +145,22 @@ def limit_refusal(slot: str, *messages: str) -> RunRefused | None:
 
 
 def auth_refusal(slot: str, *messages: str) -> RunRefused | None:
-    """The rest for a failed run whose output says the account cannot authenticate, or None.
+    """The rest for a failed run whose output says the account lacks access, or None.
 
     Only a failed CLI result is looked at, and only its short notice: a long successful answer
     that quotes a 403 is an answer. The rest covers every model on the account, as no run can
-    sign it in again.
+    repair its sign-in or subscription access.
     """
-    if not AUTH_MESSAGE.search("\n".join(messages)):
+    text = "\n".join(messages)
+    if CLAUDE_SUBSCRIPTION_DISABLED_MESSAGE.search(text):
+        return RunRefused(
+            503,
+            "subscription_auth_failed",
+            f"account {slot} has no Claude subscription access "
+            "(ask its organization admin to enable access)",
+            family=ANY_MODEL,
+        )
+    if not AUTH_MESSAGE.search(text):
         return None
     return RunRefused(
         503,
@@ -387,7 +402,7 @@ def run_claude(config: AgentConfig, slot: str, request: RunRequest) -> dict[str,
     # mentions a limit (a news story about AI plans) is an answer.
     notice = str(text or "") if len(str(text or "")) <= LIMIT_NOTICE_CHARS else ""
     if failed:
-        # The sign-in notice is as short, and comes as the JSON result, on stderr, or as bare
+        # The account-access notice is as short, and comes as the JSON result, on stderr, or as bare
         # stdout when the CLI printed no JSON at all.
         bare = completed.stdout if len(completed.stdout) <= LIMIT_NOTICE_CHARS else ""
         if (auth := auth_refusal(slot, notice, completed.stderr, bare)) is not None:
