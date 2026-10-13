@@ -38,7 +38,7 @@ Kalshi 候選 `cf07bd04-7f3f-4b0d-89b9-37a715f1ecc9` 的五語 Guide 已修正�
 
 - [ ] 先查 `service.py` 的導覽修復原因碼、`refresh_candidate_evidence` 前置條件與現有後台按鈕；確認 `/markets` 的原生抓取診斷。當下 Kalshi URL 不可讀，不能僅為通過測試而降低 HTTP 200 條件。
 - [x] 實作修復後可審計的來源刷新路徑及後台文案／狀態，保留單候選、人工原因、原始快照與 run／稽核鏈。
-- [ ] 補成功、來源不可讀、證據仍被引用、競態及反覆刷新案例；避免刷新動態側欄又把候選送回永久 `source_content_changed`。
+- [x] 補成功、來源不可讀、證據仍被引用、競態與反覆刷新本地測試；刷新動態側欄導致再次 `source_content_changed` 另由既有解析修復票處理，正式站關卡未驗。
 
 ## How to verify
 
@@ -52,4 +52,4 @@ Kalshi 候選 `cf07bd04-7f3f-4b0d-89b9-37a715f1ecc9` 的五語 Guide 已修正�
 
 2026-10-13 本機實作：後端僅對 `manual_review/news_navigation_evidence_repaired` 開放既有刷新路徑，先以完整 held-state NOWAIT 快照核對同候選真人修補稽核、保留證據列與 hash、五語未發布草稿、claim ledger、沒有 live job／running run，並拒絕已移除網址再次被引用。來源刷新失敗完整 rollback；成功稽核連到修補稽核 ID 並留下刷新前後證據，仍經原本的五語 `_queue_reverify`。後台五語狀態文案只提供刷新或退件。未部署、未在正式站套用，也未對 Kalshi 候選執行；`/markets` 不可讀時，前置導覽修補仍會拒絕。來源頁動態側欄的長期穩定性需另依既有來源解析工作驗證，不能以這次本機成功案例宣稱已解決。
 
-本機檢查：`tests/test_news_review_actions.py` 61 passed；`admin-news-workspace.test.tsx` 67 passed；所涉 API Ruff、mypy、Web lint、typecheck、`check:i18n`、`check:tasks` 通過。PR／正式站結果待獨立驗證。
+本機檢查：`tests/test_news_review_actions.py` 62 passed；新增候選列首把鎖 NOWAIT 衝突回傳 409 的測試；`admin-news-workspace.test.tsx` 67 passed；所涉 API Ruff、mypy、Web lint、typecheck、`check:i18n`、`check:tasks` 通過。PR／正式站結果待獨立驗證。

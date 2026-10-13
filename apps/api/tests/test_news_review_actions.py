@@ -964,3 +964,33 @@ async def test_navigation_refresh_lock_conflict_is_a_retryable_refusal(
     finally:
         await redis.aclose()
         await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_navigation_refresh_candidate_lock_is_nowait_and_refuses_busy_row(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory, redis, candidate_id, _actor_id = await repaired_navigation_case()
+    fetch = AsyncMock()
+    monkeypatch.setattr(service, "refresh_evidence", fetch)
+    locked_get = AsyncMock(
+        side_effect=DBAPIError("SELECT FOR UPDATE NOWAIT", {}, Mock(sqlstate="55P03"))
+    )
+    try:
+        async with factory() as session:
+            monkeypatch.setattr(session, "get", locked_get)
+            with pytest.raises(AppError) as refused:
+                await service.refresh_candidate_evidence(
+                    session, EDITOR, candidate_id, ACTION, redis
+                )
+        assert refused.value.status == 409
+        assert refused.value.code == "news_navigation_refresh_busy"
+        assert locked_get.await_args.kwargs["with_for_update"] == {"nowait": True}
+        fetch.assert_not_awaited()
+        async with factory() as session:
+            candidate = await session.get(NewsCandidate, candidate_id)
+            assert candidate is not None
+            assert candidate.error_code == "news_navigation_evidence_repaired"
+    finally:
+        await redis.aclose()
+        await engine.dispose()

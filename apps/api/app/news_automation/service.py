@@ -1603,9 +1603,23 @@ async def refresh_candidate_evidence(
     distinct: that decision is carried to the new evidence.
     """
 
-    row = await session.get(
-        NewsCandidate, candidate_id, with_for_update=True, populate_existing=True
-    )
+    try:
+        row = await session.get(
+            NewsCandidate,
+            candidate_id,
+            with_for_update={"nowait": True},
+            populate_existing=True,
+        )
+    except DBAPIError as error:
+        sqlstate = getattr(error.orig, "sqlstate", None) or getattr(
+            error.orig, "pgcode", None
+        )
+        if sqlstate != "55P03":
+            raise
+        await session.rollback()
+        raise AppError(
+            409, "news_navigation_refresh_busy", "來源修補仍有編輯或處理中的工作"
+        ) from error
     if row is None:
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
     if (
