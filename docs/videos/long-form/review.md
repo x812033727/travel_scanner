@@ -4970,6 +4970,49 @@ PASS is DURATION_ONLY for the five rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Dubbing narrated dramas, rebound after #1481 increment: 3 files (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013k`. Author: `claude-opus-5.5-dub-narrated-drama` (the dub changes); the merge was made by `claude-opus-5-5-narrative`. Scope: DURATION_ONLY for the three changed bindings below, reviewed at `ec8ef1f15` ("Merge origin/main into claude/dub-narrated-drama") on claude/dub-narrated-drama, pull request #1482. Its parents are `874d31156` (the branch, whose receipt increment by `claude-opus-duration-review-20261013h` bound these three files) and `03aa68298` (#1481 on main). The merge took main's review.md and review.json whole, so the branch's increment is no longer in the receipt; this section restates and rebinds it on top of main's "Channel intro after the opening condensation" increment above. The reviewer wrote none of the code or the merge and edits only this report and review.json.
+
+Baseline: for each of the three paths, SHA-256 of `git show 03aa68298:<path>` equals the existing review.json binding, and the receipt files at the head are byte-identical to main's. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these three bindings. The registry remains 108 files.
+
+- `apps/api/app/video_reviews/admin_service.py`: `61a0095ccb186e45fc89f08bd20085a20aea68f13c9192478b9cbec4e5aa169d` -> `ef9fad5370f8929008ab0253456e6df479eeceb18aad16a2fe355eb79955c5a3`.
+- `apps/web/components/admin-video-reviews.test.tsx`: `2fbef750199daaf8fd1efeea37196526e67f00b2641adf3b23c9159ddf1a00b2` -> `b58c685c61cfa502157bd43cb33010dd5e3ff17263b99a7d535e591896dfe89c`.
+- `tools/video/dubs/dubs.test.mjs`: `d8e1ea0e16afc5d5ec13c1e1fc4fa555ef9f4e44bd1572fda4e10d52ff356401` -> `bff4e09be16e629cf807f688a227f092cc07af4380a1de583f88a1216d029a25`.
+
+What the merge is: both parents changed the same set of files since the merge base `038f9152c5299459a2e92a5d922d657c49686db7`, and the merge adds nothing of its own. Against main the head differs only in the eleven files the branch changed; against the branch it differs only in the files #1481 changed. Every file is one side's bytes except tools/video/dubs/cli.mjs and dubs.test.mjs, which both sides changed.
+
+Findings:
+
+- `admin_service.py` and `admin-video-reviews.test.tsx`: the blobs at the head equal those at `874d31156` (`1f2b4cef4` and `1fbb21331`), and `git diff 038f9152c 03aa68298` is empty for both, so main did not touch them and the merge kept the branch's bytes; the SHA-256 values above are the ones the `874d31156` section bound. That section established, and this review re-read the diffs to confirm, that `admin_service.py` (+22/−5) adds `DUBBABLE_DRAMA_CATEGORIES = frozenset({"explainer"})` and refuses a drama's dub only when its category is outside that set, with the 422 code unchanged, and that `admin-video-reviews.test.tsx` (+28/−3) pins the greyed-out box's reason for the other categories and checks that an explainer drama's dub box is enabled. In its words: "No changed line names minutes, seconds, frames, `target_minutes`, a floor or a runtime field"; "No assertion about length".
+- `dubs.test.mjs` (+79/−0 from the merge base): new bytes, read whole. `git merge-file` of the branch's and main's revisions over the merge base merges cleanly and reproduces the head byte for byte. Apart from hunk line numbers, the diff from main to the head equals the branch's diff from the merge base (+38, the narrator-only drama test: the drama fixture refused with exit 3, the narrator-only copy and the explainer passing a `--dry-run` dub pinned only as `\d+ requests, \d+ to synthesize`), and the diff from the branch to the head equals main's diff from the merge base (+41, the intro-after-condensation dub test the section above reviewed: `total_frames` body + 780, `content_end_frame` body + 150, later lines +150, `concat=n=4` with the body cut at `at * 1600`). No existing line is removed or edited; no existing test, timing tolerance or expected length moves.
+
+Duration identifiers (the regex of the `874d31156` section: `target_minutes`, `MIN_EPISODE`, `minEpisodeMinutes`, `VIDEO_MIN_EPISODE_MINUTES`, `duration`, `seconds`, `_minutes`, `total_frames`, `windowLimit`, `atempo`, `tempo`, `stretch`, `keep-fitting`, `layoutDub`, `absorbOverruns`, `overrun`; case-insensitive occurrences): admin_service.py 27 -> 27, admin-video-reviews.test.tsx 76 -> 76; dubs.test.mjs 87 at the merge base, 87 on the branch, 93 on main and 93 at the head. The six added occurrences (`total_frames` five times, `duration` once, in an ffprobe stub) are all in main's intro test; the branch's test adds none.
+
+Context, unbound: tools/video/dubs/cli.mjs at the head is the union of both sides. The diff from main to the head equals the branch's diff from the merge base (the doc comment, `NARRATOR` in the core/drama.mjs import, `spokenByCharacter` and the exit-3 refusal), and the diff from the branch to the head equals main's (`introAtFrame` and `linesAcrossIntro` in the core/branding.mjs import, the refusal of a dubbed line across the intro, `introAtFrame` passed to `wrapAudio`). Each comparison differs only in one context line, the neighbouring import the other side changed. The conflict was those two adjacent import lines, and both edits are kept; no other line differs from what the two parents wrote.
+
+Ran (in the worktree at the head, Node on Windows):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the three stale bindings and exited 1;
+- `git rev-parse` of the three files and cli.mjs at the head, both parents and the merge base; `git diff --name-only` of the head against each parent and of each parent against the merge base;
+- `git diff 038f9152c HEAD`, `038f9152c 874d31156` and `038f9152c 03aa68298` over dubs.test.mjs and cli.mjs, read whole, compared with the head against each parent after removing hunk line numbers, and `git merge-file` over the three revisions;
+- SHA-256 of each file at the head, both parents and the merge base against review.json; `git ls-files --eol` (LF in index and worktree);
+- the identifier count above with `grep -Eio` over all four revisions and over the added lines;
+- `node --test tools/video/dubs/dubs.test.mjs tools/video/core/branding.test.mjs`: 29 tests, 29 pass, both new dub tests among them.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review restates the `874d31156` section's judgement of the two site files and does not extend it; it does not judge whether an explainer drama should be dubbed, the admin page or API test (unbound), or the merge's other files.
+- No dub was synthesized, mixed or measured; the dub tests run against a fake speech server and a fake ffmpeg.
+- No API test, ruff, mypy, Vitest, lint or typecheck was run.
+- This increment binds the tree at the head only: a later commit or merge with main that changes any of the three files, or either receipt file, needs its own follow-up.
+
+PASS is DURATION_ONLY for the three rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Merge of main (#1481) into the narrative-flow branch: 0 files reviewed afresh (2026-10-13)
 
 Reviewer: `claude-opus-duration-review-20261013l`. Author: `claude-opus-5-5-narrative`. Scope: DURATION_ONLY verification of the receipt after merge commit `dec59b7c50439571f24b742c6bcc4369b8e96ad9` ("Merge origin/main into claude/youtube-narrative-flow-1cadbc") on claude/youtube-narrative-flow-1cadbc, pull request #1478. Its first parent `2f5a0023d` (`dec59b7c5^1`, "fix(video): three Tunguska aerial shots image-01 kept filling with figures") carries this branch's receipt ending in the "Panel count test increment"; its second parent (`dec59b7c5^2`, origin/main) carries main's receipt ending in the "Channel intro after the opening condensation increment" (#1481). Merge base `038f9152c5299459a2e92a5d922d657c49686db7`. When the review began no tracked file was modified in the working tree and `node tools/video/long-form/cli.mjs check` printed only `FAIL: duration review report is stale`. This reviewer wrote none of the merge, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edited only this report and review.json. No file is reviewed afresh: this section records that the merge brought in only bytes already reviewed on one side or the other.
@@ -5043,6 +5086,24 @@ PASS is DURATION_ONLY for the two rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Merge of main (#1478) into the dub branch: 0 files reviewed afresh (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013n`. Author: `claude-opus-5.5-dub-narrated-drama` (merge made by `claude-opus-5-5-narrative`). Scope: DURATION_ONLY verification of the receipt after merge commit `66c96fbe5a31edd44d88adefc1cff2844bbcfeeb` ("Merge origin/main into claude/dub-narrated-drama") on claude/dub-narrated-drama, pull request #1482. Its first parent `d94e8c8a5` carries this branch's receipt ending in the "Dubbing narrated dramas, rebound after #1481 increment"; its second parent `6fe8db843` (origin/main, #1478) carries main's receipt ending in the "Merge of main (#1481) into the narrative-flow branch" section. Merge base `03aa682983dcdd3290bf905f363946bcf02eafe0` (#1481). When the review began no tracked file was modified in the working tree and `node tools/video/long-form/cli.mjs check` printed only `FAIL: duration review report is stale`. This reviewer wrote none of the merge, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edited only this report and review.json. No file is reviewed afresh.
+
+What was verified:
+
+1. Bindings. All 108 paths in review.json `reviewed_files` hash (SHA-256 of the working-tree file, equal to the merge commit's blob) to their bound values, and the table below lists the same 108 paths with the same hashes. Both parents' receipts list the same 108 keys and were current for their own trees (no stale binding, `report_sha256` equal to that parent's review.md).
+2. What the merge changed. `git diff 66c96fbe5^1 66c96fbe5 --stat` lists 109 files, exactly the 109 that `git diff <merge-base> 66c96fbe5^2` lists, and every one of them equals `66c96fbe5^2`'s bytes except the two receipt files. The only paths changed on both sides are the two receipt files. Of the bound files, 15 changed in the merge (the four skill files, `docs/videos/README.md`, `tools/video/automation/{automation.test,flow,prompts,series.test}.mjs`, `tools/video/core/{drama.test,lint,lint.test,schema,state}.mjs` and `tools/video/tts/tts.test.mjs`); each equals `66c96fbe5^2`'s bytes and its bound hash equals main's reviewed value in `66c96fbe5^2`'s review.json. Three bound files (this branch's dub increment) equal `66c96fbe5^1` only, bound to this branch's reviewed value; the other 90 are identical in both parents. No bound file is identical to neither parent.
+3. The report. Splitting everything before "## Reviewed SHA256 bindings" into `## ` sections, every section of both parents appears byte-identically in the merged report, with no extra and no duplicate section: 147 `## ` headings (137 + 146 − 136) and 115 `Verdict:` lines (105 + 114 − 104) before this section. Neither parent dropped or altered a merge-base section. After the heading, the table differs from `66c96fbe5^1` in exactly the 15 main rows and from `66c96fbe5^2` in exactly the three dub rows (`apps/api/app/video_reviews/admin_service.py`, `apps/web/components/admin-video-reviews.test.tsx`, `tools/video/dubs/dubs.test.mjs`).
+
+Ran (in the worktree at `66c96fbe5`, Node on Windows): `node tools/video/long-form/cli.mjs check` before any edit; a script kept outside the repository that hashes the working tree and the blobs of the merge, both parents and the merge base, and compares both receipts and both reports as in 1 to 3; `git ls-files --eol` (LF for both receipt files). The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims: no duration behaviour is reviewed afresh; no test suite beyond review.test.mjs was run; this section binds the merge commit's tree only, and a later change to any bound file or either receipt file needs its own follow-up.
+
+PASS is DURATION_ONLY for the 108 bindings below, none of which changed in this section.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -5059,7 +5120,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/app/video_automation/schemas.py` | `4247c4bbbb118d14bc4cd90358d129843936f17fbc3e1cff0217d461ce02d70d` |
 | `apps/api/app/video_automation/series.py` | `cb9d3e01465a6f072d44fdcedae659f538686a634a03351171f8f67d8bfaa155` |
 | `apps/api/app/video_automation/settings.py` | `9941b3244e15cf6b1d8aaec32c68ab2424f84adb32804a179652d93fb3977ca3` |
-| `apps/api/app/video_reviews/admin_service.py` | `61a0095ccb186e45fc89f08bd20085a20aea68f13c9192478b9cbec4e5aa169d` |
+| `apps/api/app/video_reviews/admin_service.py` | `ef9fad5370f8929008ab0253456e6df479eeceb18aad16a2fe355eb79955c5a3` |
 | `apps/api/app/video_reviews/schemas.py` | `57cdfedd70afb65aa96e42699c7e52dd3d45faccf7919b58ee1a54779f0962a0` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
 | `apps/api/migrations/versions/0122_video_anime_production_policy.py` | `91f97905e9a689cc47aef8eac60735175a4048bfb5788fa1d204acb43ee11ea7` |
@@ -5074,7 +5135,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `cb28b0a7173ad4712a70c5e378b3b0d6e4d760731620f38d9400a221b305a6ac` |
 | `apps/web/components/admin-video-review-card.tsx` | `62e4b249e15e2bfde32e0752977a9a54d0fc6d5a2a8e47a05ea04dbb7b63b9cf` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `2fbef750199daaf8fd1efeea37196526e67f00b2641adf3b23c9159ddf1a00b2` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `b58c685c61cfa502157bd43cb33010dd5e3ff17263b99a7d535e591896dfe89c` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `c64bfba40979fef3f8291ae2582a8cc2bb55644d4be0655ba75b39f767677d8a` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
@@ -5129,7 +5190,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/timeline.mjs` | `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a` |
 | `tools/video/core/timeline.test.mjs` | `8eedaa0b04f56d22b65becbf23e39e23e051f2d6850f63a5bf7c496583b9b00a` |
 | `tools/video/dubs/captions-package.test.mjs` | `a7d9462b61f182bca1b7e87149a5c461659dafeb9c54449769bc35189f352685` |
-| `tools/video/dubs/dubs.test.mjs` | `d8e1ea0e16afc5d5ec13c1e1fc4fa555ef9f4e44bd1572fda4e10d52ff356401` |
+| `tools/video/dubs/dubs.test.mjs` | `bff4e09be16e629cf807f688a227f092cc07af4380a1de583f88a1216d029a25` |
 | `tools/video/dubs/freshness.test.mjs` | `c882af3d55bff72c410e930b0e0f187770782a937952bb9efba3ab40e44a5b30` |
 | `tools/video/dubs/plan.test.mjs` | `f06d073795553024d19098c9957ab060a9feb41569546d67f366d931244b8ab3` |
 | `tools/video/long-form/cli.mjs` | `3a0b26f900daaf1a08f7ed210ad1239d7f172035fa1e14c6dafc28bf55dedfa4` |
