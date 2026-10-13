@@ -14,6 +14,7 @@ import { clipsHash, drawnShotScenes, EXPLAINER_PRESET, hasCast, isExplainer, loo
 import { explainerFixture, lexiconProposals, sandbox, storyFixture, storySeries, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { isValidTerm, validateLexicon } from "../core/lexicon.mjs";
 import { BRIEF_SECTIONS_DRAMA, briefSectionsFor } from "../core/lint.mjs";
+import { NARRATIVE_PANEL } from "../core/narrative.mjs";
 import { isStory } from "../core/story.mjs";
 import { readJson } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
@@ -276,10 +277,15 @@ function context(box, fetchImpl) {
 
 const smallRefs = { script_writing: "一句一個意思，唸得出來。", formats: "", channel: "Mokaair", showcase: { scenes: [] }, minimal: {}, drama: "the drama route", drama_example: {}, drama_brief: "# brief", series: "the series route" };
 
+/** The storytelling panel's answer (core/narrative.mjs): every question yes unless `no` names one. */
+const panelAnswer = (no = []) => ({ answers: NARRATIVE_PANEL.map((question) => ({ id: question.id, yes: !no.includes(question.id), evidence: "[h1] 一把傘。" })) });
+
 const standardAnswers = (overrides = {}) => ({
   "writer:story": (body) => chapterAnswer(body.payload.chapter.key, body.payload),
   "verifier:story": (body) => checkAnswer(body.payload),
   "listener:story": (body) => listenAnswer(body.payload),
+  // The merged story is read blind by the panel before the narration is recorded.
+  "verifier:narrative": () => panelAnswer(),
   ...overrides,
 });
 
@@ -612,9 +618,10 @@ test("a story goes from the site's job to its first media step: started from its
   status = await pipelineStatus({ slug: SLUG, root: world.box.root, workdir });
   assert.equal(status.steps.some((step) => step.id === "look generated"), false);
 
-  // Eighteen model calls, one per step, each under the story's own variant (never counted as a draft).
-  assert.equal(site.calls.run.length, 18);
-  assert.deepEqual(site.calls.run.map((call) => `${call.stage}:${call.variant}`), [...Array(6).fill("writer:story"), ...Array(6).fill("verifier:story"), ...Array(6).fill("listener:story")]);
+  // Nineteen model calls, each under its own variant (never counted as a draft): six a chapter for
+  // the writer, the checker and the listener, then the storytelling panel on the merged story.
+  assert.equal(site.calls.run.length, 19);
+  assert.deepEqual(site.calls.run.map((call) => `${call.stage}:${call.variant}`), [...Array(6).fill("writer:story"), ...Array(6).fill("verifier:story"), ...Array(6).fill("listener:story"), "verifier:narrative"]);
   for (const call of site.calls.run) {
     assert.equal(call.format, "drama");
     assert.ok(call.max_output_tokens <= 32_000);

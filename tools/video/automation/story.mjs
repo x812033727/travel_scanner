@@ -1254,8 +1254,11 @@ async function narrativeGate(automation, state) {
   automation.cleared(state, "verifier");
   state.story.narrative = { passed: verdict.passed, rounds: round, ...(verdict.passed ? {} : { failed: verdict.failed.map((each) => each.id) }) };
   if (verdict.passed) {
+    // A pass is a check, not a step: the same round goes on to the script gate. The verdict file
+    // and this note are the record.
+    state.notes.push(`storytelling panel passed (round ${round})`);
     automation.persist(state);
-    return `${state.slug}: the storytelling panel passed (round ${round})`;
+    return undefined;
   }
   const rounds = (state.story.narrative_fixes ?? 0) + 1;
   if (rounds > STORY_PROMPT_FIX_ROUNDS) return automation.block(state, `the storytelling panel still fails after ${STORY_PROMPT_FIX_ROUNDS} passes: ${verdict.problems.join("；")}`, "prompt_fixes:narrative");
