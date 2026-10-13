@@ -3,44 +3,51 @@
 第二版腳本（2026-10-13 重寫，照 `script-writing.md` §故事主線與鉤子與 §開場濃縮；同一天盲評擋下
 之後又改過一次，見 [`NOTES.md`](NOTES.md)）。**事實全部沿用第一版**：每一條的編號、說法與網址都來自
 [`../curio-h01/claims.md`](../curio-h01/claims.md) 兩輪查核後的版本（查核日 2026-10-10），
-再經 [`../curio-h01/research.md`](../curio-h01/research.md)。這一版沒有新增、沒有重查、
-也沒有改動任何數字、名字或日期；只有「用到的場景 id」換成這一版的場景。改稿時從第一版拿回
+再經 [`../curio-h01/research.md`](../curio-h01/research.md)。這一版沒有新增、也沒有重查，名字一樣沒有換，「用到的場景 id」換成了這一版的場景；
+重講的時候講歪的那幾個數字、方向與出處，在第一輪查核之後改正了（見下一段）。改稿時從第一版拿回
 四條查核過但第一稿沒講的事實（c5 的爐灶與空桌子、c31 的「沒有遇上特別惡劣的天氣」、
 c44 的「沒有爆炸或火燒的痕跡」、c34 的「無充分理由被棄」），沒有新增任何沒查核過的說法。
 第一版用到而這一版沒有講的主張列在倒數第二節，第一稿有、這一稿沒有的句子列在最後一節。
 
+2026-10-13 另一個**沒有寫過這份稿子**的代理做了這一版的第一輪查核（[`verify-1.md`](verify-1.md)）：
+抽出 270 條、併成 77 列，當天把第一版引過的每一個網址重開一次，找到**重講時講歪或講強的 19 處**。
+19 處都已經改進 `video.json`（改的只有旁白的字、兩張卡片的欄位與說明欄），下面受影響的
+c1、c5、c10、c13、c20、c26、c27、c30、c45、c47、c49 各補了一行括號說明，「算出來的數字」那一節的
+兩個算術也改正了。那一輪沒有新增任何沒查核過的說法，`sources` 與 `checked_on` 不變；
+改了什麼、為什麼，寫在 [`NOTES.md`](NOTES.md) 的〈第四輪〉。
+
 格式：`編號｜主張（旁白或卡片上的說法）｜網址｜查證日｜用到的場景 id`
 
-c1｜1872 年 12 月在大西洋上被發現時船仍在航行、部分帆張著｜https://www.maryceleste.net/facts.htm ；https://www.americanheritage.com/mystery-mary-celeste｜2026-10-10｜opening-swell, crooked-sails, still-sailing, sails-away
+c1｜1872 年 12 月在大西洋上被發現時船仍在航行、部分帆張著｜https://www.maryceleste.net/facts.htm ；https://www.americanheritage.com/mystery-mary-celeste｜2026-10-10｜crooked-sails, still-sailing, sails-away
 c2｜船上原本 10 個人，一個都不在｜https://www.britannica.com/topic/Mary-Celeste ；https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/｜2026-10-10｜ten-aboard, the-question, outro
 c3｜流傳的細節不是同一個人加的：「小艇都在」（原文 "The boats were intact and slung upon the davits"）與 Marie 的拼法出自 1884 年道爾的小說；「桌上有熱的飯菜、茶還溫的」不在道爾全文裡，是別的轉述加的；熱飯菜比道爾早還是晚，今天開得了的來源都沒有標年份，所以旁白不講先後｜https://en.wikisource.org/wiki/J._Habakuk_Jephson%27s_Statement ；https://www.americanheritage.com/mystery-mary-celeste ；https://www.maryceleste.net/facts.htm｜2026-10-10｜hot-meal-legend, who-added, misspelled-name, boats-on-davits, not-in-records, remember-meal, added-later, warm-tea, no-year-marked
 c4｜艙底約 3.5 英尺（1 公尺多）的水，船仍可航行｜https://www.americanheritage.com/mystery-mary-celeste ；https://www.britannica.com/topic/Mary-Celeste｜2026-10-10｜open-hatch
-c5｜艙內濕透、廚房爐灶被撞離位、桌上沒有任何吃的喝的｜https://www.maryceleste.net/facts.htm｜2026-10-10｜galley-stove, nothing-on-table
+c5｜艙內濕透、廚房爐灶被撞離位、桌上沒有任何吃的喝的（facts.htm 的出處欄寫的是上船那天在副海事法院的證詞；Austin 1872-12-23 的勘驗報告反過來寫爐灶與炊具「in good order」，所以 galley-stove 的旁白標了「大副上船那天」）｜https://www.maryceleste.net/facts.htm｜2026-10-10｜galley-stove, nothing-on-table
 c6｜船 1861 年於新斯科舍 Spencer's Island 建造，原名 Amazon，1861-05-18 下水｜https://www.britannica.com/topic/Mary-Celeste ；https://www.maryceleste.net/spencer.htm｜2026-10-10｜not-her-name, amazon-launch
 c7｜1868 年售予美國人後改名 Mary Celeste（下水後七年）｜https://www.britannica.com/topic/Mary-Celeste｜2026-10-10｜renamed-1868
 c8｜柯南道爾 1884 年 1 月在 Cornhill Magazine 匿名發表〈J. Habakuk Jephson's Statement〉，船名寫成 Marie Celeste，加入小艇都在、船被拖進直布羅陀等虛構細節（熱飯菜不在其中，見 c3）；讀者把它當成真實報導｜https://en.wikisource.org/wiki/J._Habakuk_Jephson%27s_Statement ；https://www.arthur-conan-doyle.com/wiki/Mary_Celeste ；https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/｜2026-10-10｜magazine-office, anonymous-author, misspelled-name, boats-on-davits, taken-as-real
 c9｜柯南道爾是福爾摩斯的作者｜https://www.arthur-conan-doyle.com/wiki/Mary_Celeste｜2026-10-10｜anonymous-author
-c10｜海怪、巨大章魚、百慕達三角是後人加上的說法，法庭紀錄裡沒有｜https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/ ；https://www.americanheritage.com/mystery-mary-celeste ；https://fishermensvoice.com/archives/201711TheMysteriousCaseOfTheMaryCeleste.html ；https://www.maryceleste.net/about.htm｜2026-10-10｜sea-monster, bermuda-triangle, monster-triangle
+c10｜海怪、巨大章魚、百慕達三角是流傳加上的說法，法庭紀錄裡沒有（章魚的年代兩說：americanheritage 放在道爾之後，maryceleste.net/about.htm 寫當年就有人這樣講，所以 sea-monster 的旁白不講先後）｜https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/ ；https://www.americanheritage.com/mystery-mary-celeste ；https://fishermensvoice.com/archives/201711TheMysteriousCaseOfTheMaryCeleste.html ；https://www.maryceleste.net/about.htm｜2026-10-10｜sea-monster, bermuda-triangle, monster-triangle
 c11｜發現位置在亞速群島與葡萄牙之間；離百慕達數千公里｜https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/ ；https://www.maryceleste.net/facts.htm ；https://www.americanheritage.com/mystery-mary-celeste｜2026-10-10｜off-portugal, thousands-km
 c12｜1872-11-07 自紐約啟航，目的地熱那亞｜https://www.britannica.com/topic/Mary-Celeste ；https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/｜2026-10-10｜family-gangplank, seven-crew
-c13｜貨是 1,701 桶工業用酒精（不能喝）｜https://www.americanheritage.com/mystery-mary-celeste ；https://www.maryceleste.net/facts.htm ；https://newenglandhistoricalsociety.com/mysterious-disappearance-mary-celeste/｜2026-10-10｜cargo-stats, still-sailing, remember-casks
+c13｜貨是 1,701 桶工業用酒精（不能喝；來源寫的是 undrinkable／toxic，沒有來源說喝了會死人，skeptoid 與 maryceleste.net/about.htm 還說那是喝得下去的酒精，所以旁白只說「那不是拿來喝的」）｜https://www.americanheritage.com/mystery-mary-celeste ；https://www.maryceleste.net/facts.htm ；https://newenglandhistoricalsociety.com/mysterious-disappearance-mary-celeste/｜2026-10-10｜cargo-stats, still-sailing, remember-casks
 c14｜船長 Benjamin Spooner Briggs，37 歲，麻州 Marion 人，在海上超過十年｜https://newenglandhistoricalsociety.com/mysterious-disappearance-mary-celeste/ ；https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/｜2026-10-10｜briggs-portrait, bought-share
 c15｜Briggs 不喝酒；1872 年買了這艘船的股份（比例不講）｜https://fishermensvoice.com/archives/201711TheMysteriousCaseOfTheMaryCeleste.html ；https://www.maryceleste.net/briggs.htm｜2026-10-10｜teetotal, bought-share, remember-share, he-pays
 c16｜妻 Sarah、女兒 Sophia（1870-10-31 生，兩歲）同行｜https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/ ；https://www.maryceleste.net/briggs.htm｜2026-10-10｜family-gangplank
 c17｜船員 7 人，全船 10 人｜https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/ ；https://www.britannica.com/topic/Mary-Celeste｜2026-10-10｜seven-crew
 c18｜石板最後一筆 11 月 25 日早上，聖瑪麗亞島東端 6 哩（約 11 公里）外（時刻兩說，旁白只講「早上」）｜https://www.americanheritage.com/mystery-mary-celeste ；https://www.maryceleste.net/facts.htm ；https://www.britannica.com/topic/Mary-Celeste｜2026-10-10｜last-slate, santa-maria
 c19｜12 月 4 日下午被 Dei Gratia 發現（船上日誌記 5 日，海日中午換日；來源分歧，旁白兩個日期都講）；距最後一筆九天｜https://www.maryceleste.net/facts.htm ；https://www.americanheritage.com/mystery-mary-celeste ；https://www.britannica.com/topic/Mary-Celeste｜2026-10-10｜opening-swell, nine-days-blank, four-or-five
-c20｜Dei Gratia 是英屬（新斯科舍）雙桅帆船，船長 David Reed Morehouse｜https://www.americanheritage.com/mystery-mary-celeste ；https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/｜2026-10-10｜lookout-glass, dei-gratia
+c20｜Dei Gratia 是英屬（新斯科舍）雙桅帆船，船長 David Reed Morehouse（americanheritage 寫的是船長本人透過望遠鏡看到她；沒有來源有「瞭望手」，所以 lookout-glass 講的是船長）｜https://www.americanheritage.com/mystery-mary-celeste ；https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/｜2026-10-10｜lookout-glass, dei-gratia
 c21｜大副 Oliver Deveau 與兩人登船；之後 Deveau 帶兩名水手把船開到直布羅陀｜https://www.americanheritage.com/mystery-mary-celeste ；https://www.maryceleste.net/facts.htm｜2026-10-10｜row-across, decide-sail, three-men
 c22｜甲板無人；只剩少數帆張著，前帆與上前中帆被吹走｜https://www.americanheritage.com/mystery-mary-celeste ；https://www.maryceleste.net/facts.htm｜2026-10-10｜crooked-sails, empty-wheel
 c23｜前艙口開著，主艙口蓋好｜https://www.americanheritage.com/mystery-mary-celeste ；https://fishermensvoice.com/archives/201711TheMysteriousCaseOfTheMaryCeleste.html｜2026-10-10｜open-hatch, main-hatch-closed
 c24｜測深桿留在甲板上；兩具幫浦之一被拆開｜https://www.britannica.com/topic/Mary-Celeste ；https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/｜2026-10-10｜sounding-rod, remember-rod, pump-apart
 c25｜1,701 桶無人動過，只有一桶被打開（started）｜https://www.americanheritage.com/mystery-mary-celeste ；https://www.maryceleste.net/news.htm｜2026-10-10｜cargo-stats, casks-counted
-c26｜不見的：天文鐘、六分儀、航海手冊、船籍證；還在的：航海日誌、船長的劍（床下，鞘內）、衣物、小孩衣物與玩具、六個月糧水｜https://www.americanheritage.com/mystery-mary-celeste ；https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/ ；https://www.maryceleste.net/survey.htm｜2026-10-10｜surveyor-list, sextant-missing, find-position, papers-gone, more-remained, clothes-toys, still-aboard-stats, took-navigation, sword-under-bunk, holes-remain, why-take-tools
-c27｜羅經櫃被撞、羅盤玻璃破｜https://newenglandhistoricalsociety.com/mysterious-disappearance-mary-celeste/ ；https://fishermensvoice.com/archives/201711TheMysteriousCaseOfTheMaryCeleste.html｜2026-10-10｜binnacle-knocked, orderly-leaving
+c26｜不見的：天文鐘、六分儀、航海手冊、船籍證；還在的：航海日誌、船長的劍（床下，鞘內）、衣物、小孩衣物與玩具、六個月糧水（「六個月的糧食與飲水」出自上船的人——americanheritage 與 smithsonianmag——Austin 的勘驗報告全文沒有這個數量，所以 still-aboard-stats 的出處標證詞，cargo-stats 的 1,701／一桶仍掛勘驗報告）｜https://www.americanheritage.com/mystery-mary-celeste ；https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/ ；https://www.maryceleste.net/survey.htm｜2026-10-10｜surveyor-list, sextant-missing, find-position, papers-gone, more-remained, clothes-toys, still-aboard-stats, took-navigation, sword-under-bunk, holes-remain, why-take-tools
+c27｜羅經櫃被撞、羅盤玻璃破（兩個來源講的都是 12-04 發現時的狀態；Austin 的報告寫羅經櫃本身沒有受損、玻璃的裂痕來自燈的熱度，所以 binnacle-knocked 的旁白標了「那天」）｜https://newenglandhistoricalsociety.com/mysterious-disappearance-mary-celeste/ ；https://fishermensvoice.com/archives/201711TheMysteriousCaseOfTheMaryCeleste.html｜2026-10-10｜binnacle-knocked, orderly-leaving
 c28｜Dei Gratia 12-12 抵直布羅陀，Mary Celeste 翌晨（12-13）抵達｜https://www.americanheritage.com/mystery-mary-celeste ；https://www.maryceleste.net/news.htm｜2026-10-10｜gibraltar-rock
 c29｜副海事法院 12-18 開庭審救助請求；檢察總長兼 Queen's Proctor Frederick Solly-Flood 懷疑有罪案｜https://www.americanheritage.com/mystery-mary-celeste ；https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/｜2026-10-10｜salvage-money, court-opens, doesnt-believe
-c30｜Solly-Flood 的理論：船員偷喝酒精、酒後殺了船長（1873-01-22 致 Board of Trade 信）｜https://thehistorypress.co.uk/article/the-ongoing-mystery-of-the-mary-celeste/｜2026-10-10｜drunk-theory, kill-captain
+c30｜Solly-Flood 的理論：船員偷喝酒精、酒後殺了船長，再搭上別的船逃走（1873-01-22 致 Board of Trade 信的原文是 escape on board some vessel，不是划走小艇）｜https://thehistorypress.co.uk/article/the-ongoing-mystery-of-the-mary-celeste/｜2026-10-10｜drunk-theory, kill-captain
 c31｜12-23 勘驗（John Austin、潛水員 Ricardo Portunato）：船殼無損、沒遇過特別惡劣天氣、縫紉機油瓶直立（在大副艙的小架上）｜https://www.maryceleste.net/news.htm ；https://www.maryceleste.net/survey.htm ；https://thehistorypress.co.uk/article/the-ongoing-mystery-of-the-mary-celeste/｜2026-10-10｜surveyor-list, surveyor-diver, hull-sound, no-rough-weather, oil-bottle
 c32｜船艏兩側有「刀痕」；劍「像被血抹過又擦掉」（Austin 的勘驗用語）｜https://thehistorypress.co.uk/article/the-ongoing-mystery-of-the-mary-celeste/｜2026-10-10｜bow-cuts, sword-smear, send-to-test
 c33｜化驗（Dr. J. Patron，報告 1873-01-30 簽名 "M.D."，所以旁白的「一位醫生」成立）證明劍上與甲板上的痕跡不是血｜https://www.americanheritage.com/mystery-mary-celeste ；https://thehistorypress.co.uk/article/the-ongoing-mystery-of-the-mary-celeste/ ；https://www.maryceleste.net/doctor.htm｜2026-10-10｜not-blood, doctor-signed
@@ -55,20 +62,22 @@ c41｜沒有暴力痕跡、貨與個人物品都在，叛變、謀殺、海盜�
 c42｜海底地震（David Williams）與水龍捲說：船體與貨物無損，純假設｜https://skeptoid.com/episodes/289 ；https://www.maryceleste.net/news.htm｜2026-10-10｜quake-waterspout, no-damage
 c43｜酒精蒸氣說：船長怕爆炸，全員上小艇、用升降索拖在船後，繩索斷裂。最早是當年的人說的（Morehouse 相信氣體作響、船主 J. H. Winchester 主張自燃掀開前艙蓋），後來的研究者寫成完整版本｜https://www.americanheritage.com/mystery-mary-celeste ；https://skeptoid.com/episodes/289｜2026-10-10｜owner-said-so, vapour-theory, captain-notices, all-aboard, towed-behind, rope-parts, boat-left, sails-away
 c44｜反證：主艙口是蓋好的，登船者沒報告聞到氣味；船上沒有爆炸或火燒的痕跡｜https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/ ；https://thehistorypress.co.uk/article/the-ongoing-mystery-of-the-mary-celeste/｜2026-10-10｜main-hatch-closed, no-smell, no-burn-marks
-c45｜誤判進水說（MacGregor 2007）：天文鐘誤差讓 Briggs 以為自己在實際位置以西 120 哩；前一航次的煤灰可能堵住幫浦。這個骨幹 1873-03-04 美艦 Plymouth 艦長 Shufeldt 就提過｜https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/ ；https://www.britannica.com/topic/Mary-Celeste ；https://www.maryceleste.net/news.htm｜2026-10-10｜without-cause, miscalculation, chronometer-off, remember-rod, pump-apart, coal-dust, captains-judgement
+c45｜誤判進水說（MacGregor 2007）：天文鐘誤差讓 Briggs 的**實際位置比他以為的偏西 120 哩**（smithsonianmag：actually 120 miles west of where he thought he was，所以他以為早三天就該看到陸地），前一航次的煤灰可能堵住幫浦。這個骨幹 1873-03-04 美艦 Plymouth 艦長 Shufeldt 就提過，但沒有來源說 2007 年那份研究是從他那句話往下推的，所以 miscalculation 的旁白不把兩件事併成因果｜https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/ ；https://www.britannica.com/topic/Mary-Celeste ；https://www.maryceleste.net/news.htm｜2026-10-10｜without-cause, miscalculation, chronometer-off, remember-rod, pump-apart, coal-dust, captains-judgement
 c46｜各說法仍解釋不了：小艇從未被找到、為什麼不直接靠岸｜https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/ ；https://www.britannica.com/topic/Mary-Celeste｜2026-10-10｜both-have-holes, holes-remain, why-take-tools, never-found
-c47｜卸貨時（熱那亞）1,701 桶中 9 桶是空的｜https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/ ；https://www.maryceleste.net/about.htm｜2026-10-10｜genoa-hook, genoa-unload, remember-casks, nine-empty
+c47｜卸貨時（熱那亞）1,701 桶中 9 桶是空的（來源沒有說其餘 1,692 桶都是滿的——c25 那一桶就被打開過——maryceleste.net/about.htm 還寫這個漏損量「considered normal」，所以 nine-empty 的卡片寫「其他的沒有漏」）｜https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/ ；https://www.maryceleste.net/about.htm｜2026-10-10｜genoa-hook, genoa-unload, remember-casks, nine-empty
 c48｜空的 9 桶是紅橡木，其餘白橡木；紅橡木孔隙大、較容易滲漏｜https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/ ；https://www.maryceleste.net/barrel.htm｜2026-10-10｜red-oak, porous-oak
-c49｜目前最被接受的解釋是自願棄船（因為誤判進水或怕酒精蒸氣）、小艇失事，沒有定論｜https://skeptoid.com/episodes/289 ；https://www.britannica.com/topic/Mary-Celeste｜2026-10-10｜holes-remain, no-verdict, unsettled, outro
+c49｜目前最被接受的解釋是自願棄船（因為誤判進水或怕酒精蒸氣）、小艇失事，沒有定論（兩條路都還有破洞，mc6v 自己就這樣說，所以片尾不把它們收成一條，mc7g 的標記也把兩條都包著）｜https://skeptoid.com/episodes/289 ；https://www.britannica.com/topic/Mary-Celeste｜2026-10-10｜holes-remain, no-verdict, unsettled, outro
 c50｜2007 年 Smithsonian Channel 紀錄片（Anne MacGregor）用氣象資料回推漂流路徑，結論「它基本上是自己航行的」｜https://www.smithsonianmag.com/history/abandoned-ship-the-mary-celeste-174488104/｜2026-10-10｜drift-study, sailed-herself
 c51｜1885-01-03 船長 Gilman C. Parker 為詐保故意駛上海地附近的 Rochelois 礁；船沒沉，騙局被拆穿｜https://fishermensvoice.com/archives/201711TheMysteriousCaseOfTheMaryCeleste.html ；https://www.britannica.com/topic/Mary-Celeste｜2026-10-10｜reef-1885
 c52｜1885 年 7 月波士頓審判，陪審團 7:5 僵局｜https://www.slate.com/articles/life/culturebox/2011/12/the_mary_celeste_the_unluckiest_ship_to_ever_sail_the_seven_seas_.html ；https://fishermensvoice.com/archives/201711TheMysteriousCaseOfTheMaryCeleste.html｜2026-10-10｜hoax-jury
 
 ## 不是來源主張的句子
 
+`opening-swell` 的第一句原本是「大西洋上風浪不小」，當天的海況沒有任何來源（而 mc3d 要講勘驗官認定她沒有遇上特別惡劣的天氣），第一輪查核把它拿掉了；現在那一句只有日期與海域，掛在 c19。
+
 下面這些場景的旁白不帶可查核的事實，所以上面沒有列：`not-strangest`（升級句）、`murder-falls`（收束句）、`legend-runs`（升級句）、`remember-this`（前向鉤子）、`nine-days-blank` 的第二句與 `covered-150` 的第二句（兩個鉤子問句：「那段空白裡，船上發生了什麼事？」「那麼，當年的人自己，是怎麼解釋的？」）、`my-view-award` 與 `orderly-leaving`（標成「我的看法是」的意見，依企劃的站主觀點）。
 
-算出來的數字也不是來源的原文，是兩個已查核日期之間的算術：`covered-150` 的「蓋了一百五十年」（1872 到今天）、`magazine-office` 的「十二年後」（1872 到 1884）、`renamed-1868` 的「七年後」（1861 到 1868）、`court-opens` 的「五天後」（12-13 到 12-18）、`nine-days-blank` 的「空了九天」（11-25 到 12-04）、`sea-tore-wood` 的「三個月後」（1873-01-30 到 1873-03-04）。
+算出來的數字也不是來源的原文，是兩個已查核日期之間的算術：`covered-150` 的「蓋了一百多年」（1884 到今天；主詞是那篇小說，不是 1872 年那艘船）、`magazine-office` 的「十二年後」（1872 到 1884）、`renamed-1868` 的「七年後」（1861 到 1868）、`court-opens` 的「五天後」（12-13 到 12-18）、`nine-days-blank` 的「空了九天」（11-25 到 12-04）、`sea-tore-wood` 的「一個多月後」（1873-01-30 到 1873-03-04，相隔一個月又四天）。
 
 接回前面事實的那幾句（`remember-meal`、`no-damage`、`without-cause`、`remember-rod`、`remember-casks`、
 `holes-remain`、`remember-share`、`remember-rope`、`drift-study`、`outro`）不帶新的主張，講的還是它們指回去的
@@ -94,7 +103,7 @@ c52｜1885 年 7 月波士頓審判，陪審團 7:5 僵局｜https://www.slate.c
 - 「不見的，是船上唯一那艘小艇。」（舊 `yawl-gone`，c39）、「航海日誌留在桌上，船長的劍留在床底。」裡的劍（c26／c32）、「可是船殼和貨，都沒有受傷。」（c31）、「海怪和百慕達三角，紀錄裡一個字都沒有。」（c10）、「船長怕艙裡的氣爆炸，叫全員先上小艇。」（舊 `all-to-the-boat`，c43）：都是第二次講同一件事，第 8 題擋下。小艇留在第 1 章，劍留在第 3 章，船殼的那一句改成第 6 章點名的回呼，海怪與三角只在第 5 章講一次，上小艇只在第 7 章講一次。
 - 「那一趟從紐約開往熱那亞的，是十個什麼人？」（舊 `who-were-ten`，c12）：第 3 題擋的是第 5 章整段把航程從 11-07 重走到被發現那天。船員與航程現在在第 2 章講，就在檢察總長指控「船員殺了船長」的那個時候。
 - 「酒精桶也一桶一桶查過，沒有喝醉鬧事的痕跡。」（舊 `casks-counted`，c25）：c25 在第 2 章的 `cargo-stats` 講過一次，這個場景改講直布羅陀與熱那亞兩個數字的差別。
-- 「直布羅陀的法庭查了三個多月。」（舊 `three-months`，c36）：和前一句的「三個月後」太像，聽起來像同一個數字講兩次；c36 由「第三次上法庭作證」承擔。
+- 「直布羅陀的法庭查了三個多月。」（舊 `three-months`，c36）：和前一句的「三個月後」太像，聽起來像同一個數字講兩次（第一輪查核之後，前一句是「一個多月後」）；c36 由「第三次上法庭作證」承擔。
 - 「檔案查到這裡，什麼都沒有定論。」（舊第 3 章 `no-verdict`，c49）：和片尾的「到今天都沒有定論」是同一件事，第 8 題點名的兩處之一。現在只在第 7 章最後講一次（`no-verdict` 這個場景也移到那裡）。
 - 「它解釋不了一件事：暫時下船，卻帶走了六分儀和文件。」（c26／c46）：改成點名的回呼「還記得清單上少掉的那幾樣東西嗎？」，不再把六分儀與文件再數一遍。
-- 舊片尾的三句裡的第一句（「十個人為什麼離開？最站得住的答案，是九桶漏掉的酒精。」）：第 8 題說片尾把正片的答案再播一次。現在第一句是點名的回呼「還記得那九個空桶嗎？」，答案的數字只在第 7 章講一次。
+- 舊片尾的三句裡的第一句（「十個人為什麼離開？最站得住的答案，是九桶漏掉的酒精。」）：第 8 題說片尾把正片的答案再播一次。現在第一句是「十個人離開的理由，紀錄最後留下的是那九個空桶。」——點名那九個空桶，但不替未結的檔案下結論（第一輪查核的 R12：舊的「目前只有那九個空桶說得通」比 c49 強），答案的數字只在第 7 章講一次。
