@@ -4970,6 +4970,29 @@ PASS is DURATION_ONLY for the five rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Merge of main (#1481) into the narrative-flow branch: 0 files reviewed afresh (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013l`. Author: `claude-opus-5-5-narrative`. Scope: DURATION_ONLY verification of the receipt after merge commit `dec59b7c50439571f24b742c6bcc4369b8e96ad9` ("Merge origin/main into claude/youtube-narrative-flow-1cadbc") on claude/youtube-narrative-flow-1cadbc, pull request #1478. Its first parent `2f5a0023d` (`dec59b7c5^1`, "fix(video): three Tunguska aerial shots image-01 kept filling with figures") carries this branch's receipt ending in the "Panel count test increment"; its second parent (`dec59b7c5^2`, origin/main) carries main's receipt ending in the "Channel intro after the opening condensation increment" (#1481). Merge base `038f9152c5299459a2e92a5d922d657c49686db7`. When the review began no tracked file was modified in the working tree and `node tools/video/long-form/cli.mjs check` printed only `FAIL: duration review report is stale`. This reviewer wrote none of the merge, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edited only this report and review.json. No file is reviewed afresh: this section records that the merge brought in only bytes already reviewed on one side or the other.
+
+What was verified:
+
+1. Bindings. All 108 paths in review.json `reviewed_files` hash (SHA-256 of the working-tree file, equal to the merge commit's blob) to their bound values, and the table below lists the same 108 paths with the same hashes. Both parents' receipts list the same 108 keys, and each parent's receipt was current for its own tree (every binding equal to that parent's blob, and each parent's `report_sha256` equal to its own review.md).
+2. What the merge changed. `git diff dec59b7c5^1 dec59b7c5 --stat` lists 20 files, exactly the 20 that `git diff <merge-base> dec59b7c5^2` lists. Of these, the bound ones are only the five that main's #1481 increment covers: `tools/video/assemble/cli.mjs`, `tools/video/core/branding.mjs`, `tools/video/core/branding.test.mjs`, `tools/video/core/stages.test.mjs` and `tools/video/dubs/dubs.test.mjs`. For each, the merge's bytes equal `dec59b7c5^2`'s, this branch never touched it (`dec59b7c5^1` equals the merge base), and the bound hash is the "->" value of that increment. Every other bound file is byte-identical to `dec59b7c5^1`. The only path changed on both sides apart from the two receipt files is `tools/video/cli.mjs`, which git merged without conflict and which is not bound.
+3. Conflicted binding rows. Of the 20 bindings that differ between the two parents' receipts, the merged receipt takes main's value for the five #1481 files and this branch's value for the other 15 (among them `tools/video/core/state.mjs`), in each case the value equal to the merged file's bytes. The review.json header fields other than the ones this increment rewrites were this branch's.
+4. The report. Everything before "## Reviewed SHA256 bindings" in the merged report is byte-identical to `dec59b7c5^1`'s report up to that heading followed by main's "Channel intro after the opening condensation increment" section byte-identical to `dec59b7c5^2`'s; main's report is the merge base's report plus that section only, so no earlier section was dropped or altered on either side. After the heading, the table has the same 115 lines as each parent; it differs from `dec59b7c5^1` in exactly the five #1481 rows and from `dec59b7c5^2` in exactly the 15 rows of this branch's increments, and every row equals one parent's row.
+
+Ran (in the worktree at `dec59b7c5`, Node on Windows): `node tools/video/long-form/cli.mjs check` before any edit; a script kept outside the repository that hashes the working tree and the blobs of the merge, both parents and the merge base, and compares both receipts and both reports as in 1 to 4; `git ls-files --eol` (LF in index and worktree for both receipt files). The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- No duration behaviour is reviewed afresh; the five #1481 files rest on the increment above and the rest on this branch's increments.
+- No test suite beyond review.test.mjs, no ffmpeg, and no API test, ruff, mypy, Vitest, lint or typecheck was run.
+- This section binds the merge commit's tree only: a later commit or merge that changes any bound file, or either receipt file, needs its own follow-up.
+
+PASS is DURATION_ONLY for the 108 bindings below, none of which changed in this section.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
