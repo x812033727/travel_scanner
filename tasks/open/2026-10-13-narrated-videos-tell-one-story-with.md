@@ -1,7 +1,7 @@
 ---
 id: 2026-10-13-narrated-videos-tell-one-story-with
 title: Narrated videos tell one story with hooks and close without naming the next video
-status: in-progress
+status: review
 priority: P1
 area: tools
 owner: claude-fable-5-1-narrative
