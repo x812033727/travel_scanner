@@ -82,6 +82,13 @@ Hooks (open loops):
   schema refuses a payoff before its setup. A loop with no payoff is cut or paid.
 - A fact is told once. The opening's facts come back in the body only as a callback; a number
   said in three sentences is a warning.
+- A summary is a retelling, and it hides in two places. The close carries only what is new (the
+  answer and its number, what is still unexplained, the question to the viewer) and never re-tells
+  the body's turns. A bridge line between chapters moves forward instead of recapping the chapter
+  just finished: the next chapter's first sentence is what happened next, and the listener needs no
+  revision. Three of the first four scripts written to these rules failed a blind read in exactly
+  those two places. To point back at a fact on purpose, name it (「還記得那…」): that is a callback,
+  not a retelling.
 The voice of someone telling it:
 - Sentences are joined the way a person tells a story to one listener: 那麼、結果、然後、但是、
   因為、沒想到、這時候; at least a third of the sentences follow from the one before (a pronoun,

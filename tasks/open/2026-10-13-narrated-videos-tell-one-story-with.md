@@ -89,7 +89,7 @@ Read against the five delivered 奇聞檔案局 recuts, the rules themselves wer
 - [x] `flow.mjs` + `story.mjs`: the gate, the bare stage (no standing instructions), the rounds.
 - [x] `cli.mjs narrative`, the status line, the skill and the series docs.
 - [x] Re-pin the prompt digests; fix the fixtures' closes and the hashes that moved with them.
-- [ ] An independent DURATION_ONLY increment for the receipt-bound files this PR touches.
+- [x] An independent DURATION_ONLY increment for the receipt-bound files this PR touches.
 - [ ] The H01 comparison for the owner, and the owner's decision on the five delivered recuts.
 
 ## How to verify
