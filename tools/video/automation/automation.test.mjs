@@ -1946,7 +1946,7 @@ test("the storytelling panel reads the script blind between the listener and the
   assert.deepEqual(Object.keys(call.payload), ["narration", "questions"], "the reader is told the script and the questions, nothing else");
   assert.equal(call.instructions, PANEL_INSTRUCTIONS, "no standing instructions, no stance, no genre section");
   assert.match(call.payload.narration, /^# /);
-  assert.equal(call.payload.questions.length, 10);
+  assert.equal(call.payload.questions.length, NARRATIVE_PANEL.length, "every question, the opening_hooks one included");
   const verdict = readJson(path.join(box.work, slug, "review", "narrative.json"));
   assert.deepEqual([verdict.passed, verdict.round, verdict.failed], [true, 1, []]);
   assert.equal(await automation.narrativeGate(state), null, "a passed panel bound to this script is not asked again");
