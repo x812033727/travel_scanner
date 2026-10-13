@@ -24,6 +24,7 @@ import { encodeWav } from "../tts/wav.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
 import { confirmedVideo, DECIDED_AT, languageSite, tool, toolContext } from "./language-contract.mjs";
 import { AutomationError, RUN_UNCERTAIN } from "../automation/client.mjs";
+import { sheetKey } from "../media/series-store.mjs";
 import { acceptedPicturesOf, audioCheck, audioSummary, checklistFrom, clearedSummary, downloadNote, fitPayload, fitSummary, guideSlugs, judgeBody, judgeOutline, KEPT_REMARK_LENGTH, KEPT_REMARK_LINES, keptRemarks, MAX_ANIME_SCRIPT_BYTES, MAX_REVIEW_FILES, MAX_REVIEW_PAYLOAD_BYTES, MAX_REVIEW_SUMMARY_LENGTH, namedPictures, outlineOptions, outlineReview, PART_BYTES, payloadBytes, previewArgs, REVIEW_GATES, REVIEW_PAYLOAD_BUDGET, ReviewError, siteChoice, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems } from "./sync.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
@@ -261,7 +262,7 @@ test("review-push --gate outline whose Jev answer is lost sends the outline to t
   const again = push();
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], again.ctx), EXIT.ok, again.out.stderr);
   assert.equal(server.state.judge.length, 1);
-  assert.match(again.out.stdout, /Jev's answer on this outline was lost at 2026-09-25T06:00:00\.000Z \(HTTP 504: .*\) and is not asked again: the outline goes up for the owner without a pick \(delete review\/outline-lost\.json to ask Jev once more\)/);
+  assert.match(again.out.stdout.replaceAll("\\", "/"), /Jev's answer on this outline was lost at 2026-09-25T06:00:00\.000Z \(HTTP 504: .*\) and is not asked again: the outline goes up for the owner without a pick \(delete review\/outline-lost\.json to ask Jev once more\)/);
   assert.equal("pick" in server.state.reviews[0].payload, false);
 
   // A rewritten brief is a new question: Jev is asked, and the record of the old one goes.
@@ -1309,6 +1310,76 @@ function lookManifest(box, hash) {
   writeFileSync(path.join(box.workdir, "characters", "manifest.json"), JSON.stringify(manifest));
   return manifest;
 }
+
+function markExternal(box, manifest, id = "jingwei", n = 1) {
+  const docFile = path.join(box.dir, "video.json"), doc = JSON.parse(readFileSync(docFile, "utf8"));
+  const candidate = manifest.characters[id].candidates.find((each) => each.n === n);
+  const sourceFile = `characters/${id}/source-${n}.json`;
+  const sourceFiles = [{ path: path.relative(box.root, docFile).replaceAll("\\", "/"), sha256: sha(readFileSync(docFile)) }];
+  const receipt = Buffer.from(JSON.stringify({ source_files: sourceFiles, image_sha256: candidate.sha256 }));
+  writeFileSync(path.join(box.workdir, sourceFile), receipt);
+  candidate.external_import = { schema_version: 1, character_key: sheetKey(doc.characters.find((each) => each.id === id), doc.look), source_file: sourceFile, source_sha256: sha(receipt), source_files: sourceFiles };
+  manifest.external_imports = true;
+  return candidate;
+}
+
+test("look review omits pending imported candidates, and never uploads a character with no judged option", async () => {
+  const box = sandbox("fixture-drama", "drama"), manifest = lookManifest(box, lookHash(dramaFixture()));
+  markExternal(box, manifest).judge = null;
+  const file = path.join(box.workdir, "characters", "manifest.json");
+  writeFileSync(file, JSON.stringify(manifest));
+  const server = site(), push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "look"], push.ctx), EXIT.ok, push.out.stderr);
+  assert.deepEqual(server.state.reviews.find((review) => review.subject === "jingwei").payload.options.map((option) => option.key), ["B"]);
+  assert.equal(server.state.files.size, 3, "the pending PNG is never uploaded");
+  markExternal(box, manifest, "jingwei", 2).judge = null;
+  writeFileSync(file, JSON.stringify(manifest));
+  const blocked = site(), next = context(box, blocked.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "look"], next.ctx), EXIT.owner);
+  assert.match(next.out.stderr, /no judged candidate/);
+  assert.equal(blocked.state.files.size, 0);
+  assert.equal(blocked.state.reviews.length, 0);
+  // A new import keeps obsolete originals for audit, but never offers their stale sources.
+  manifest.characters.jingwei.candidates[0].judge = { overall: 10, passed: true };
+  manifest.characters.jingwei.candidates[0].superseded_by = "new-version";
+  manifest.characters.jingwei.candidates[1].judge = { overall: 9, passed: true };
+  writeFileSync(file, JSON.stringify(manifest));
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "look"], next.ctx), EXIT.ok, next.out.stderr);
+  assert.deepEqual(blocked.state.reviews.find((review) => review.subject === "jingwei").payload.options.map((option) => option.key), ["B"]);
+});
+
+test("look review and pull refuse unjudged or changed imported bytes/sources without recording owner approval", async () => {
+  for (const change of ["judge", "png", "source", "receipt"]) {
+    const box = sandbox("fixture-drama", "drama"), manifest = lookManifest(box, lookHash(dramaFixture()));
+    const candidate = markExternal(box, manifest);
+    const file = path.join(box.workdir, "characters", "manifest.json");
+    writeFileSync(file, JSON.stringify(manifest));
+    const server = site(), run = context(box, server.fetchImpl);
+    assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "look"], run.ctx), EXIT.ok, run.out.stderr);
+    if (change === "judge") { candidate.judge = null; writeFileSync(file, JSON.stringify(manifest)); }
+    if (change === "png") writeFileSync(path.join(box.workdir, candidate.file), "altered PNG");
+    if (change === "source") writeFileSync(path.join(box.dir, "video.json"), `${readFileSync(path.join(box.dir, "video.json"), "utf8")}\n`);
+    if (change === "receipt") writeFileSync(path.join(box.workdir, candidate.external_import.source_file), "altered receipt");
+    for (const review of server.state.reviews) Object.assign(review, { status: "approved", choice: "A", content_sha256: sha(readFileSync(file)), decided_at: "2026-10-08T10:00:00Z" });
+    assert.equal(await main(["review-pull", "--slug", box.slug], run.ctx), EXIT.owner, change);
+    assert.match(run.out.stdout, /approval not recorded/);
+    assert.deepEqual(readApprovals(box.workdir).approvals, []);
+    assert.equal(existsSync(path.join(box.workdir, "characters", "choice.json")), false);
+    if (change !== "judge") assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "look"], run.ctx), EXIT.owner, change);
+  }
+});
+
+test("judged external sheets still accept an actual hash-bound owner review through the existing look gate", async () => {
+  const box = sandbox("fixture-drama", "drama"), manifest = lookManifest(box, lookHash(dramaFixture()));
+  markExternal(box, manifest, "jingwei", 2);
+  writeFileSync(path.join(box.workdir, "characters", "manifest.json"), JSON.stringify(manifest));
+  const server = site(), run = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "look"], run.ctx), EXIT.ok, run.out.stderr);
+  for (const review of server.state.reviews) Object.assign(review, { status: "approved", choice: "B", decided_at: "2026-10-08T10:00:00Z" });
+  assert.equal(await main(["review-pull", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.equal(readApprovals(box.workdir).approvals[0].gate, "look");
+  assert.deepEqual(JSON.parse(readFileSync(path.join(box.workdir, "characters", "choice.json"), "utf8")).chosen, { jingwei: 2, yandi: 2 });
+});
 
 test("the look goes up as one review per character, and the owner's picks come back as the choice and the approval", async () => {
   const box = sandbox("fixture-drama", "drama");

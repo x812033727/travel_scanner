@@ -30,7 +30,7 @@ import { LOCALES, NARRATION_LOCALE, narrationLocale, VIDEO_CATEGORIES } from "..
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckMatches } from "../core/script-check.mjs";
 import { estimateTimeline, formatClock, speechHash } from "../core/timeline.mjs";
-import { keepSheets } from "../media/series-store.mjs";
+import { externalCandidateProblem, keepSheets } from "../media/series-store.mjs";
 import { packageFiles, packageLocales, readPackageReport, thumbnailVariants, UPLOAD_DIR, variantRole } from "../package/check.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
@@ -1068,11 +1068,21 @@ async function publishSubmission({ request, workdir, slug, project, compilation 
  * The look gate: one review per character, its candidate sheets as files, the owner picks one
  * (docs/videos/DRAMA.md). Every review is bound to characters/manifest.json.
  */
-async function lookSubmissions({ request, project, workdir }) {
+async function lookSubmissions({ ctx, request, project, workdir }) {
   const { doc } = project;
   const file = path.join(workdir, ARTIFACTS.characters);
   const manifest = readJson(file, null);
   if (!manifest?.characters) throw new ReviewError("characters/manifest.json is missing; run look first", { who: "owner" });
+  // Offline imports may wait in the manifest, but must not become unjudged review options.
+  // Validate all offered imports before uploading any file or submitting any character.
+  for (const [id, entry] of Object.entries(manifest.characters)) {
+    const offered = (entry.candidates ?? []).filter((candidate) => !candidate.external_import || (candidate.judge && !candidate.superseded_by));
+    if (!offered.length && manifest.external_imports) throw new ReviewError(`${id}: no judged candidate; run look import with --judge before look review`, { who: "owner" });
+    for (const candidate of offered) {
+      const problem = externalCandidateProblem(candidate, { workdir, sourceRoot: ctx.root, character: doc.characters?.find((each) => each.id === id), look: doc.look });
+      if (problem) throw new ReviewError(`${id}: ${problem}`, { who: "owner" });
+    }
+  }
   const sha = await sha256File(file);
   const bodies = [];
   for (const [id, entry] of Object.entries(manifest.characters)) {
@@ -1080,6 +1090,7 @@ async function lookSubmissions({ request, project, workdir }) {
     const files = [];
     const options = [];
     for (const candidate of entry.candidates ?? []) {
+      if (candidate.external_import && (!candidate.judge || candidate.superseded_by)) continue;
       const role = `candidate_${optionKey(candidate.n).toLowerCase()}`;
       files.push(await upload(request, doc.slug, path.join(workdir, candidate.file), role, imageType(candidate.file)));
       options.push({ key: optionKey(candidate.n), index: candidate.n, file_role: role, judge: { overall: candidate.judge?.overall ?? null, problems: candidate.judge?.problems ?? [] } });
@@ -1334,6 +1345,12 @@ async function recordLook(reviews, { dir, workdir, now, doc = null, ctx = null }
     const pick = option?.index ?? (review.choice ? review.choice.charCodeAt(0) - 64 : null) ?? manifest.characters[review.subject].suggested;
     if (pick) chosen[review.subject] = pick;
   }
+  for (const [id, n] of Object.entries(chosen)) {
+    const candidate = manifest.characters[id]?.candidates?.find((each) => each.n === n);
+    if (manifest.external_imports && !candidate) return { message: `approval not recorded: ${id}: chosen candidate is missing`, waiting: 1 };
+    const problem = externalCandidateProblem(candidate, { workdir, sourceRoot: ctx?.root, character: doc?.characters?.find((each) => each.id === id), look: doc?.look });
+    if (problem) return { message: `approval not recorded: ${id}: ${problem}`, waiting: 1 };
+  }
   atomicWrite(choiceFile, `${JSON.stringify({ look_hash: manifest.look_hash, chosen, chosen_at: now.toISOString() }, null, 2)}\n`);
   // Every character needs the owner's decision, not just a suggestion.
   const missing = Object.keys(manifest.characters).filter((id) => !chosen[id]);
@@ -1344,7 +1361,7 @@ async function recordLook(reviews, { dir, workdir, now, doc = null, ctx = null }
   await approve({ gate: "look", docDir: dir, workdir, now, note: `approved on /admin/videos at ${decided}; chose sheets ${picks}` });
   if (doc?.series && ctx) {
     // The chosen sheets go to the series' store, so the next episode reuses them (docs/videos/SERIES.md).
-    const kept = keepSheets({ workBase: resolveWorkBase({ env: ctx.env, root: ctx.root, home: ctx.home }), workdir, seriesSlug: doc.series.slug, doc, manifest, chosen, now });
+    const kept = keepSheets({ workBase: path.dirname(workdir), workdir, seriesSlug: doc.series.slug, doc, manifest, chosen, now });
     return { message: `approval recorded (${picks}); ${kept} sheets kept for the series`, waiting: 0 };
   }
   return { message: `approval recorded (${picks})`, waiting: 0 };

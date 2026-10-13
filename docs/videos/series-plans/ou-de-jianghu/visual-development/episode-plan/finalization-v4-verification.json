@@ -1,0 +1,208 @@
+{
+  "version": "v4",
+  "created_at": "2026-10-08T16:21:17.122Z",
+  "offline_only": true,
+  "parent_v3_video_sha256": "7f7676d1ce39a6f9dbbdc4cacc5bc8cb39b9979e66e4a906213d2ea4235014df",
+  "parent_v31_html_sha256": "6cb27db81797e35d7dc42c62e7c5d71ff6c69d4a9839d93a32e35bb7f0153a0e",
+  "changes": [
+    {
+      "id": "a04-s038",
+      "from": "Bao's open left palm",
+      "to": "Bao's open right palm",
+      "reason": "a04-s037 already shows Bao right palm; fix left/right typo without adding a transfer",
+      "before": "Insert above Bao's open left palm at the harbor. One white shell coin already lies at the centre of the palm; Luo's slender right hand has withdrawn above the top edge. Exactly one shell coin; no copper coins in this palm. Blue dusk light with a right gold edge. luo-qingyan speaks off screen.",
+      "after": "Insert above Bao's open right palm at the harbor. One white shell coin already lies at the centre of the palm; Luo's slender right hand has withdrawn above the top edge. Exactly one shell coin; no copper coins in this palm. Blue dusk light with a right gold edge. luo-qingyan speaks off screen.",
+      "kind": "prompt_consistency_correction"
+    },
+    {
+      "id": "a03-s086",
+      "from": "head and upper torso stay in the frame with the complete crown.",
+      "to": "head and upper torso stay in the frame.",
+      "reason": "Uncrowned after a03-s085; remove generic crown clause, preserve explicit without-crown body",
+      "before": "Medium close-up of ji-wushuang in the uncrowned blocking from the guest courtyard and its lamp-lit room; head and upper torso stay in the frame with the complete crown. Wushuang's face at screen right without the crown, her waist-length silver-white hair loose, the courteous calm gone from her pale face, long narrow eyes with violet shadow, the small frost-flower mark at the outer corner of her left eye, warm lamplight from below at screen left and cold blue window light behind her",
+      "after": "Medium close-up of ji-wushuang in the uncrowned blocking from the guest courtyard and its lamp-lit room; head and upper torso stay in the frame. Wushuang's face at screen right without the crown, her waist-length silver-white hair loose, the courteous calm gone from her pale face, long narrow eyes with violet shadow, the small frost-flower mark at the outer corner of her left eye, warm lamplight from below at screen left and cold blue window light behind her",
+      "kind": "prompt_consistency_correction"
+    }
+  ],
+  "diff_paths": [
+    "/scenes/272/data/prompt",
+    "/scenes/314/data/prompt"
+  ],
+  "dialogue_motion_camera_duration_unchanged": true,
+  "scene_rows": 459,
+  "shot_rows": 455,
+  "exact_seconds": 1403.533,
+  "budget_numerics_and_batches_unchanged": true,
+  "plan_counts_risk_cost_timing_unchanged": true,
+  "frame_text_count": 455,
+  "results": [
+    {
+      "name": "render",
+      "args": [
+        "docs/videos/series-plans/ou-de-jianghu/visual-development/episode-plan/render-proposal.mjs",
+        "<V4>"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-08T16:21:08.243Z",
+      "finished_at": "2026-10-08T16:21:09.304Z",
+      "stdout_file": "render.stdout",
+      "stderr_file": "render.stderr"
+    },
+    {
+      "name": "budget",
+      "args": [
+        "docs/videos/series-plans/ou-de-jianghu/visual-development/episode-plan/budget-and-batches.mjs",
+        "<V4>"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-08T16:21:09.305Z",
+      "finished_at": "2026-10-08T16:21:09.908Z",
+      "stdout_file": "budget.stdout",
+      "stderr_file": "budget.stderr"
+    },
+    {
+      "name": "lint",
+      "args": [
+        "tools/video/cli.mjs",
+        "lint",
+        "--file",
+        "<V4>\\video.json",
+        "--json"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-08T16:21:10.026Z",
+      "finished_at": "2026-10-08T16:21:10.947Z",
+      "stdout_file": "lint.stdout",
+      "stderr_file": "lint.stderr"
+    },
+    {
+      "name": "craft",
+      "args": [
+        ".agents/skills/youtube-video/scripts/drama_craft_check.mjs",
+        "<V4>\\video.json",
+        "--strict",
+        "--json"
+      ],
+      "exit_code": 1,
+      "started_at": "2026-10-08T16:21:10.947Z",
+      "finished_at": "2026-10-08T16:21:12.780Z",
+      "stdout_file": "craft.stdout",
+      "stderr_file": "craft.stderr"
+    },
+    {
+      "name": "reading",
+      "args": [
+        ".agents/skills/animation-camera/scripts/shot_reading.mjs",
+        "<V4>\\video.json",
+        "--route",
+        "hailuo",
+        "--strict",
+        "--json"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-08T16:21:12.780Z",
+      "finished_at": "2026-10-08T16:21:13.804Z",
+      "stdout_file": "reading.stdout",
+      "stderr_file": "reading.stderr"
+    },
+    {
+      "name": "plan-strict",
+      "args": [
+        ".agents/skills/animation-preproduction/scripts/shot_plan.mjs",
+        "<V4>\\video.json",
+        "--workdir",
+        "<V4>",
+        "--route",
+        "hailuo",
+        "--plan",
+        "hailuo:max",
+        "--hailuo-model",
+        "h3",
+        "--resolution",
+        "2k",
+        "--handle",
+        "0.5",
+        "--clip-takes",
+        "2",
+        "--expected-takes",
+        "1.2,1.5,2",
+        "--pilot",
+        "a02-s035,a02-s036,a02-s037",
+        "--json",
+        "--strict"
+      ],
+      "exit_code": 1,
+      "started_at": "2026-10-08T16:21:13.804Z",
+      "finished_at": "2026-10-08T16:21:15.391Z",
+      "stdout_file": "plan-strict.stdout",
+      "stderr_file": "plan-strict.stderr"
+    },
+    {
+      "name": "ready",
+      "args": [
+        ".agents/skills/animation-preproduction/scripts/plan_lock.mjs",
+        "--file",
+        "<V4>\\video.json",
+        "--workdir",
+        "<V4>",
+        "--route",
+        "hailuo",
+        "--plan",
+        "hailuo:max",
+        "--hailuo-model",
+        "h3",
+        "--resolution",
+        "2k",
+        "--handle",
+        "0.5",
+        "--clip-takes",
+        "2",
+        "--expected-takes",
+        "1.2,1.5,2",
+        "--pilot",
+        "a02-s035,a02-s036,a02-s037",
+        "--ready",
+        "--json"
+      ],
+      "exit_code": 1,
+      "started_at": "2026-10-08T16:21:15.392Z",
+      "finished_at": "2026-10-08T16:21:17.092Z",
+      "stdout_file": "ready.stdout",
+      "stderr_file": "ready.stderr"
+    }
+  ],
+  "sha256": {
+    "video.json": "cb341b457f28e5139cff6f0528722d2a0facebf8cfea90423aec572ed71ebd17",
+    "animatic.html": "cee2fc9cbe89b879e8c899bccd3888a63ddfb9f6534e09163e27c6f2872324d1",
+    "frame-text.json": "2e51f15f4588d9e4e055b1b00861cae34d1a0b78196dd3a2179a268dc4bb653d",
+    "animatic-scenes.json": "8e87d12d675b918e9e86cae9b28d94c6968777e386c4dec4c0502042266c451a",
+    "shot-plan.json": "b36b9b26ef779bbf8457a53d83390fb1b4056689e9fe9690be5fcf369e950fa1",
+    "camera-ledger.json": "d5d73de52d182e6549103d3d44a67fe3cbd4e754d821c5fa21a444c7bd2d94cf",
+    "risk-ledger.json": "9e11e63029aa25fefc105305674c8060907e5ccbcaf16b345bd61c14989d2105",
+    "proposal-edits.json": "bed6ac8f46595439caf13e3cbbfe238601b931c9d77bcf6aacd7d6992567ca99",
+    "budget-and-batches.json": "f62d04c4bbc99825d847a8818e1a0229e335f21f77f16598626e1d24741199a2",
+    "proposal-receipt.json": "7ed8f07ff4d1215157bd5e3f19f33acd24115ae9109030cd69495d84867a3b80"
+  },
+  "no_lock_written": true,
+  "no_full_length_v4_watch_claimed": true,
+  "actual_browser_targeted_review": {
+    "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/plan/preflight-20261009-v4/targeted-browser-review.json",
+    "sha256": "5583885cf2e09ff2ed390fae3bfa88744e4a47ef7bc23047636a7903516f9d75",
+    "cards": 6,
+    "scope": "implementer targeted six paused cards; not independent or full-length",
+    "all_six_screenshots_viewed": true
+  },
+  "parent_v3_unchanged": true,
+  "parent_v31_unchanged": true,
+  "source_files_match": true,
+  "historical_pending_staging": "Existing staging was created with v3; not silently rebound to v4.",
+  "external_artifact_directory": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/plan/preflight-20261009-v4",
+  "source_sha256": {
+    "docs/videos/ou-de-jianghu-e001/video.json": "82d221350032c02b3b2f8943e72e63795be36e221c45067acf5bd9a751d20443",
+    "docs/videos/ou-de-jianghu-e001/script.md": "b172896d8a1ba5a3192dbc4101cc89c63c0daa5e95c0968b07f536e2902350a4",
+    "docs/videos/ou-de-jianghu-e001/review.md": "0b6bd2408781bc7eea5093049a070d95623daa29bf81e3e736c04e0f2c05dc37",
+    "docs/videos/series-plans/ou-de-jianghu/production/ep1/beats.md": "ce238ca2f162726e0c73ad2def7154ce1823b4e9a68944dcb9958e166888bc1f"
+  },
+  "owner_accepted": false,
+  "plan_locked": false
+}

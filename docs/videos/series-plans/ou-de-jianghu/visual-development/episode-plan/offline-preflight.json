@@ -1,0 +1,437 @@
+{
+  "schema_version": 1,
+  "audited_on": "2026-10-08",
+  "repo_head": "cf7cda6ad4460c261150d46465e853554ccba429",
+  "node": "v24.19.0",
+  "status": "offline_draft_not_approved",
+  "paid_requests": 0,
+  "owner_approved": false,
+  "plan_lock_written": false,
+  "artifact_directory": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/plan/preflight-20261008",
+  "pricing_basis": "Historical tool constants dated 2026-09-26 through 2026-10-04; not current vendor quotes or account balance",
+  "commands": [
+    {
+      "script": ".agents/skills/animation-preproduction/scripts/shot_plan.mjs",
+      "args": [
+        "--slug",
+        "ou-de-jianghu-e001",
+        "--workdir",
+        "<VIDEO_WORKDIR>",
+        "--route",
+        "hailuo",
+        "--plan",
+        "hailuo:max",
+        "--hailuo-model",
+        "h3",
+        "--resolution",
+        "2k",
+        "--handle",
+        "0.5",
+        "--clip-takes",
+        "2",
+        "--expected-takes",
+        "1.2,1.5,2",
+        "--pilot",
+        "a02-s035,a02-s036,a02-s037",
+        "--json",
+        "--strict"
+      ],
+      "exit_code": 1,
+      "output": "shot-plan.json"
+    },
+    {
+      "script": ".agents/skills/animation-preproduction/scripts/shot_plan.mjs",
+      "args": [
+        "--slug",
+        "ou-de-jianghu-e001",
+        "--workdir",
+        "<VIDEO_WORKDIR>",
+        "--route",
+        "hailuo",
+        "--plan",
+        "hailuo:max",
+        "--hailuo-model",
+        "h3",
+        "--resolution",
+        "2k",
+        "--handle",
+        "0.5",
+        "--clip-takes",
+        "2",
+        "--expected-takes",
+        "1.2,1.5,2",
+        "--pilot",
+        "a02-s035,a02-s036,a02-s037",
+        "--markdown",
+        "--strict"
+      ],
+      "exit_code": 1,
+      "output": "shot-plan.md"
+    },
+    {
+      "script": ".agents/skills/animation-preproduction/scripts/plan_lock.mjs",
+      "args": [
+        "--slug",
+        "ou-de-jianghu-e001",
+        "--workdir",
+        "<VIDEO_WORKDIR>",
+        "--route",
+        "hailuo",
+        "--plan",
+        "hailuo:max",
+        "--hailuo-model",
+        "h3",
+        "--resolution",
+        "2k",
+        "--handle",
+        "0.5",
+        "--clip-takes",
+        "2",
+        "--expected-takes",
+        "1.2,1.5,2",
+        "--pilot",
+        "a02-s035,a02-s036,a02-s037",
+        "--ready",
+        "--json"
+      ],
+      "exit_code": 1,
+      "output": "ready.json"
+    },
+    {
+      "script": ".agents/skills/animation-preproduction/scripts/animatic.mjs",
+      "args": [
+        "--slug",
+        "ou-de-jianghu-e001",
+        "--workdir",
+        "<VIDEO_WORKDIR>",
+        "--route",
+        "hailuo",
+        "--plan",
+        "hailuo:max",
+        "--hailuo-model",
+        "h3",
+        "--resolution",
+        "2k",
+        "--handle",
+        "0.5",
+        "--clip-takes",
+        "2",
+        "--expected-takes",
+        "1.2,1.5,2",
+        "--pilot",
+        "a02-s035,a02-s036,a02-s037",
+        "--out",
+        "<VIDEO_WORKDIR>/ou-de-jianghu-e001/plan/preflight-20261008/animatic.html"
+      ],
+      "exit_code": 0,
+      "output": "animatic.html"
+    }
+  ],
+  "source_hashes": [
+    {
+      "path": "docs/videos/ou-de-jianghu-e001/video.json",
+      "sha256": "82d221350032c02b3b2f8943e72e63795be36e221c45067acf5bd9a751d20443"
+    },
+    {
+      "path": "docs/videos/ou-de-jianghu-e001/series.json",
+      "sha256": "4d575eb313e52ce11b8d5034bd119ba41065ecae4cb452d85540f2de3ee58df6"
+    },
+    {
+      "path": "docs/videos/ou-de-jianghu-e001/script.md",
+      "sha256": "b172896d8a1ba5a3192dbc4101cc89c63c0daa5e95c0968b07f536e2902350a4"
+    },
+    {
+      "path": "docs/videos/lexicon.json",
+      "sha256": "862d277aaf4359e9e07b5f3281f59eabb240f5ea3227c174f692cf2d0237f675"
+    },
+    {
+      "path": ".agents/skills/animation-preproduction/scripts/shot_plan.mjs",
+      "sha256": "3f3309908242a7710447c060b9b1ad316dd94683ef1849f13413593fd815ce7d"
+    },
+    {
+      "path": ".agents/skills/animation-preproduction/scripts/plan_lock.mjs",
+      "sha256": "4e5c0cd356add506e6dae80f63dee864907ae39c1587f0054d101734a0042a57"
+    },
+    {
+      "path": ".agents/skills/animation-preproduction/scripts/animatic.mjs",
+      "sha256": "c71dea47eb5e5875cd75e1addb7dda5681f02c3a4ccebb23be4275dede8ae7a0"
+    },
+    {
+      "path": ".agents/skills/animation-production/scripts/episode_estimate.mjs",
+      "sha256": "3405bb1636e5b6fdec8e17f9f1bfe1665c755109f2b51d17b173b057686d696c"
+    },
+    {
+      "path": "tools/video/core/timeline.mjs",
+      "sha256": "369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a"
+    },
+    {
+      "path": "tools/video/core/drama.mjs",
+      "sha256": "33a471d5eb78be2ab972594501ab1a4ae3fc8fbba751c509b33a1c5f75b60fd2"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "shot-plan.json",
+      "sha256": "3ae26e4c4c2e6218c14558fb2981b9b87e532f34f56fca7c39a05fb5123b374b",
+      "bytes": 1646984
+    },
+    {
+      "path": "shot-plan.md",
+      "sha256": "85ab025d27a754b283a56edcb6dfcec53168b46bd404005046f902eff1063020",
+      "bytes": 659792
+    },
+    {
+      "path": "ready.json",
+      "sha256": "294f5ceda6d100f9f304d460f0241059fbd0b3d6d30592a23d2037b461c725c4",
+      "bytes": 52504
+    },
+    {
+      "path": "animatic.html",
+      "sha256": "9467860f9e46991112fd81c4b0a82a507613ad109af50c31d240f506068317f6",
+      "bytes": 207997
+    }
+  ],
+  "counts": {
+    "shots": 455,
+    "clips": 451,
+    "stills": 3,
+    "cuts": 1,
+    "A": 207,
+    "B": 234,
+    "C": 10
+  },
+  "totals": {
+    "seconds": 1385.62,
+    "clip_seconds": 1973,
+    "utilisation": 0.6951,
+    "clip": {
+      "unit": "credits",
+      "one": 23676,
+      "expected": 32563.2,
+      "cap": 47352,
+      "usd_fee": {
+        "one": 175.369,
+        "expected": 241.1968,
+        "cap": 350.738
+      }
+    },
+    "server_side_usd": {
+      "usd_one": 69.344,
+      "usd_cap": 203.984
+    },
+    "setups": [
+      {
+        "chapter": "鑄爐黑風",
+        "setups": 8,
+        "shots": 8
+      },
+      {
+        "chapter": "齊雲山",
+        "setups": 35,
+        "shots": 35
+      },
+      {
+        "chapter": "門前兩百人",
+        "setups": 44,
+        "shots": 48
+      },
+      {
+        "chapter": "怒目",
+        "setups": 41,
+        "shots": 41
+      },
+      {
+        "chapter": "掌下",
+        "setups": 50,
+        "shots": 51
+      },
+      {
+        "chapter": "盟堂",
+        "setups": 39,
+        "shots": 39
+      },
+      {
+        "chapter": "金印",
+        "setups": 42,
+        "shots": 42
+      },
+      {
+        "chapter": "客院",
+        "setups": 9,
+        "shots": 9
+      },
+      {
+        "chapter": "外港",
+        "setups": 49,
+        "shots": 49
+      },
+      {
+        "chapter": "殘局",
+        "setups": 40,
+        "shots": 42
+      },
+      {
+        "chapter": "安神茶",
+        "setups": 21,
+        "shots": 21
+      },
+      {
+        "chapter": "無傷無血",
+        "setups": 52,
+        "shots": 53
+      },
+      {
+        "chapter": "斷弦",
+        "setups": 17,
+        "shots": 17
+      }
+    ],
+    "plan_share": {
+      "one": 0.8769,
+      "expected": 1.206,
+      "cap": 1.7538
+    }
+  },
+  "problems": [
+    {
+      "level": "review",
+      "shot": "a01-s083",
+      "what": "C 級（contact.two-person）不在小樣裡",
+      "fix": "照 shot-risk.md 重設計；劇情非要不可就用 --pilot 把它放進小樣先驗"
+    },
+    {
+      "level": "review",
+      "shot": "a02-s030",
+      "what": "C 級（hands.small-prop）不在小樣裡",
+      "fix": "照 shot-risk.md 重設計；劇情非要不可就用 --pilot 把它放進小樣先驗"
+    },
+    {
+      "level": "review",
+      "shot": "a03-s037",
+      "what": "C 級（contact.two-person）不在小樣裡",
+      "fix": "照 shot-risk.md 重設計；劇情非要不可就用 --pilot 把它放進小樣先驗"
+    },
+    {
+      "level": "review",
+      "shot": "a03-s039",
+      "what": "C 級（hands.small-prop）不在小樣裡",
+      "fix": "照 shot-risk.md 重設計；劇情非要不可就用 --pilot 把它放進小樣先驗"
+    },
+    {
+      "level": "review",
+      "shot": "a03-s050",
+      "what": "C 級（hands.small-prop）不在小樣裡",
+      "fix": "照 shot-risk.md 重設計；劇情非要不可就用 --pilot 把它放進小樣先驗"
+    },
+    {
+      "level": "review",
+      "shot": "a04-s015",
+      "what": "C 級（hands.small-prop）不在小樣裡",
+      "fix": "照 shot-risk.md 重設計；劇情非要不可就用 --pilot 把它放進小樣先驗"
+    },
+    {
+      "level": "review",
+      "shot": "a04-s053",
+      "what": "C 級（hands.small-prop）不在小樣裡",
+      "fix": "照 shot-risk.md 重設計；劇情非要不可就用 --pilot 把它放進小樣先驗"
+    },
+    {
+      "level": "review",
+      "shot": "a04-s090",
+      "what": "C 級（hands.small-prop）不在小樣裡",
+      "fix": "照 shot-risk.md 重設計；劇情非要不可就用 --pilot 把它放進小樣先驗"
+    },
+    {
+      "level": "review",
+      "shot": "a05-s032",
+      "what": "C 級（contact.two-person）不在小樣裡",
+      "fix": "照 shot-risk.md 重設計；劇情非要不可就用 --pilot 把它放進小樣先驗"
+    },
+    {
+      "level": "review",
+      "shot": "a05-s072",
+      "what": "C 級（hands.small-prop）不在小樣裡",
+      "fix": "照 shot-risk.md 重設計；劇情非要不可就用 --pilot 把它放進小樣先驗"
+    },
+    {
+      "level": "waste",
+      "shot": null,
+      "what": "片段期望 32563.2 credits，超過 Hailuo Max 一個月的 27000",
+      "fix": "換方案、分兩個月做，或用槓桿（still、切鏡、拆掉 C 級鏡頭）"
+    }
+  ],
+  "pilot": {
+    "name": "小樣",
+    "why": "鎖定包指定的小樣鏡頭：先驗身份、動作、剪接與匯入，站主看過才放量",
+    "shots": [
+      "a02-s035",
+      "a02-s036",
+      "a02-s037"
+    ],
+    "buys": [
+      "a02-s035",
+      "a02-s036",
+      "a02-s037"
+    ],
+    "cost_one": 144
+  },
+  "readiness": {
+    "ok": false,
+    "info": [
+      "還沒有鎖定檔：站主確認開拍鎖定包之後 --write，送出第一支之前再跑一次 --ready"
+    ],
+    "checks_without_frames": [
+      {
+        "id": "gate.script",
+        "ok": false,
+        "what": "script 關卡：missing"
+      },
+      {
+        "id": "gate.look",
+        "ok": false,
+        "what": "look 關卡：absent"
+      },
+      {
+        "id": "gate.audio",
+        "ok": false,
+        "what": "audio 關卡：absent"
+      },
+      {
+        "id": "gate.storyboard",
+        "ok": false,
+        "what": "storyboard 關卡：absent"
+      },
+      {
+        "id": "timeline.bound",
+        "ok": false,
+        "what": "還沒有錄好的 timeline.json：買幾秒是估的，先 tts"
+      },
+      {
+        "id": "keyframes.bound",
+        "ok": false,
+        "what": "還沒畫關鍵影格"
+      },
+      {
+        "id": "import.profile",
+        "ok": true,
+        "what": "沒有 production profile：clips import 收得進來"
+      }
+    ],
+    "missing_first_frames": 451
+  },
+  "verification": {
+    "html_shots": 455,
+    "unique_ids": 455,
+    "image_refs": 0,
+    "video_refs": 0,
+    "audio_element": false,
+    "last_end": 1403.533,
+    "nonpositive_durations": 0,
+    "remote_asset_urls": 0,
+    "source_hashes_current": true,
+    "artifact_hashes_current": true,
+    "lock_exists": false,
+    "browser_playback_verified": false,
+    "independent_cold_watch_complete": false
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "status": "reviewable-proposal-awaiting-concrete-package-decision",
+  "version": "v3",
+  "source_sha256": {
+    "docs/videos/ou-de-jianghu-e001/video.json": "82d221350032c02b3b2f8943e72e63795be36e221c45067acf5bd9a751d20443",
+    "docs/videos/ou-de-jianghu-e001/script.md": "b172896d8a1ba5a3192dbc4101cc89c63c0daa5e95c0968b07f536e2902350a4",
+    "docs/videos/ou-de-jianghu-e001/review.md": "0b6bd2408781bc7eea5093049a070d95623daa29bf81e3e736c04e0f2c05dc37",
+    "docs/videos/series-plans/ou-de-jianghu/production/ep1/beats.md": "ce238ca2f162726e0c73ad2def7154ce1823b4e9a68944dcb9958e166888bc1f"
+  },
+  "source_unchanged": true,
+  "proposal_video_sha256": "7f7676d1ce39a6f9dbbdc4cacc5bc8cb39b9979e66e4a906213d2ea4235014df",
+  "dialogue_and_duration_unchanged": true,
+  "counts": {
+    "shots": 455,
+    "clips": 420,
+    "stills": 30,
+    "cuts": 5,
+    "A": 189,
+    "B": 231,
+    "C": 0
+  },
+  "original_setups": 447,
+  "proposed_setups": 343,
+  "original_machine_c": [
+    {
+      "id": "a01-s083",
+      "original_machine_c": true,
+      "machine_grade": "A",
+      "human_grade": "B",
+      "reason": "原10C文字誤判：一人直背／一人抬兩指，沒有碰到另一人；仍須身體與手型QA。",
+      "visual": "clip",
+      "buy_s": 4,
+      "expected_takes": 1.5
+    },
+    {
+      "id": "a02-s030",
+      "original_machine_c": true,
+      "machine_grade": "A",
+      "human_grade": "B",
+      "reason": "原ring是氣功光環，不是手指搬動小戒指；縮為單一光效。",
+      "visual": "clip",
+      "buy_s": 4,
+      "expected_takes": 1.5
+    },
+    {
+      "id": "a03-s037",
+      "original_machine_c": true,
+      "machine_grade": "B",
+      "human_grade": "B",
+      "reason": "原10C文字誤判：一人直背／一人抬兩指，沒有碰到另一人；仍須身體與手型QA。",
+      "visual": "clip",
+      "buy_s": 4,
+      "expected_takes": 1.5
+    },
+    {
+      "id": "a03-s039",
+      "original_machine_c": true,
+      "machine_grade": "B",
+      "human_grade": "A",
+      "reason": "原10C：倒茶改為已倒好的結果全景，台詞「喝茶」與招待事實保留。",
+      "visual": "still",
+      "buy_s": 0,
+      "expected_takes": 1.2
+    },
+    {
+      "id": "a03-s050",
+      "original_machine_c": true,
+      "machine_grade": "A",
+      "human_grade": "A",
+      "reason": "原10C：s049拜禮後直接切已露金印，不要求衣料擦過手背。",
+      "visual": "still",
+      "buy_s": 0,
+      "expected_takes": 1.2
+    },
+    {
+      "id": "a04-s015",
+      "original_machine_c": true,
+      "machine_grade": "A",
+      "human_grade": "A",
+      "reason": "原10C：數完三枚的結果；不新增第四枚，不翻錢。",
+      "visual": "still",
+      "buy_s": 0,
+      "expected_takes": 1.2
+    },
+    {
+      "id": "a04-s053",
+      "original_machine_c": true,
+      "machine_grade": "B",
+      "human_grade": "B",
+      "reason": "原10C：原MCU看不到取子動作；取子留在畫外，臉部一個明確抬眼，s055仍可見已持黑子。",
+      "visual": "clip",
+      "buy_s": 4,
+      "expected_takes": 1.5
+    },
+    {
+      "id": "a04-s090",
+      "original_machine_c": true,
+      "machine_grade": "B",
+      "human_grade": "B",
+      "reason": "原10C：落點前持子已在首格，保留白子直到尾鏡；不用模型從棋碗夾取。",
+      "visual": "clip",
+      "buy_s": 4,
+      "expected_takes": 1.5
+    },
+    {
+      "id": "a05-s032",
+      "original_machine_c": true,
+      "machine_grade": "A",
+      "human_grade": "A",
+      "reason": "原10C：碰撞接住改為剪入已扶穩狀態，保留求助與身體支持；不生成撞擊。",
+      "visual": "still",
+      "buy_s": 0,
+      "expected_takes": 1.2
+    },
+    {
+      "id": "a05-s072",
+      "original_machine_c": true,
+      "machine_grade": "A",
+      "human_grade": "B",
+      "reason": "原10C：首格已舉錢，取消再次舉起；誓言由搖頭表演，三枚道具不運算。",
+      "visual": "clip",
+      "buy_s": 5,
+      "expected_takes": 1.5
+    }
+  ],
+  "manual_c": [
+    {
+      "id": "a02-s036",
+      "original_machine_c": false,
+      "machine_grade": "A",
+      "human_grade": "C",
+      "reason": "保留不可省的掌冠接觸，首格1cm間隙、末格接觸；人工C，必在三鏡小樣，不以機器A取代人工判斷。",
+      "visual": "clip",
+      "buy_s": 4,
+      "expected_takes": 2
+    }
+  ],
+  "totals": {
+    "imagegen_new_target": 103,
+    "imagegen_expected_requests": 135,
+    "imagegen_request_cap": 206,
+    "imagegen_usd": null,
+    "clip_one_credits": 22152,
+    "clip_expected_credits": 30494.4,
+    "clip_cap_credits": 44304,
+    "clip_expected_plus_10pct": 33543.84,
+    "clip_cap_plus_10pct": 48734.4,
+    "clip_allocated_usd": {
+      "one": 177.216,
+      "expected": 243.9552,
+      "cap": 354.432
+    },
+    "api": {
+      "one": 72.922,
+      "expected": 98.7016,
+      "cap": 223.1652,
+      "expected_plus_10pct": 108.5718,
+      "cap_plus_10pct": 245.4817
+    },
+    "full_prospective_subscription_charge_ceiling": 432,
+    "known_subscription_plus_api_cap_reserve_usd": 677.4817,
+    "note": "Two 27000-credit allocation periods are required. $432 is 2×$216 subscription cost if both periods have to be newly paid, not a checkout or top-up quote. Existing subscription sunk cost/allocation is unknown. Credits do not imply USD cash savings. Built-in imagegen USD and tax are not included in this known subtotal."
+  },
+  "render": {
+    "scene_count": 459,
+    "shot_count": 455,
+    "title_cards": 4,
+    "exact_seconds": 1403.5333333333333,
+    "continuous_spans": true,
+    "subtitle_boundary_probes": 2295,
+    "subtitle_boundaries_pass": true,
+    "last_frame_maps_to_last_scene": true,
+    "html_sha256": "2d8d5457f4056a3b99f46cf34d580b41791dd172aec0d60119b22a406b96353c",
+    "renderer_sha256": "4aaa35c690dde783ebc6532eb98e0235adf8e78c2b4664ef735929089071a986",
+    "note": "Offline regression probes do not substitute for actual browser playback and independent viewing."
+  },
+  "checks": [
+    {
+      "name": "build",
+      "exit_code": 0
+    },
+    {
+      "name": "animatic",
+      "exit_code": 0
+    },
+    {
+      "name": "animatic-scoped-render",
+      "exit_code": 0
+    },
+    {
+      "name": "lint",
+      "exit_code": 0
+    },
+    {
+      "name": "craft",
+      "exit_code": 1
+    },
+    {
+      "name": "reading",
+      "exit_code": 0
+    },
+    {
+      "name": "plan-strict",
+      "exit_code": 1
+    },
+    {
+      "name": "ready",
+      "exit_code": 1
+    }
+  ],
+  "artifact_sha256": {
+    "video.json": "7f7676d1ce39a6f9dbbdc4cacc5bc8cb39b9979e66e4a906213d2ea4235014df",
+    "animatic.html": "2d8d5457f4056a3b99f46cf34d580b41791dd172aec0d60119b22a406b96353c",
+    "shot-plan.json": "56ac4fdc1d0330d0516d8f2d8f3e2020db33594a081e2250e409a555332d57d8",
+    "camera-ledger.json": "a52ccefa14ed002805eee66c3a53f610b81a74aac1d33e8938121365857b93b6",
+    "risk-ledger.json": "9e11e63029aa25fefc105305674c8060907e5ccbcaf16b345bd61c14989d2105",
+    "proposal-edits.json": "ddc0f58747fca3c4770115c041011f831a0d185cd2663c023109c8b57222d41d"
+  },
+  "budget_sha256": "2592cb5e0c6c3f41e4b3a4a774beac9a604490c02ebc4fcaf6903db691d1e0c2",
+  "native_lock_written": false,
+  "paid_requests_submitted_by_planning_agent": 0,
+  "external_artifact_directory": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/plan/preflight-20261008-v3"
+}

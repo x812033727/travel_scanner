@@ -33,6 +33,7 @@ metadata:
 | 60 條錯誤：階段、哪個檢查抓、漏掉多少錢、預防（#51–#60 是規劃與網頁路線） | `.agents/skills/animation-production/references/error-catalogue.md` |
 | 三條路線的方案、價目、隊列、版權、操作步驟 | `.agents/skills/animation-production/references/providers-and-plans.md` |
 | 使用者指定 Hailuo／Kling 內建瀏覽器：本次工具能力、首格、三鏡 pilot、送出與下載收據 | `.agents/skills/animation-production/references/browser-production.md` |
+| Claude 桌面版內建瀏覽器跑 Hailuo 的實測能力：無水印下載走詳情頁、Slate 提示詞、設定抽屜、首格不經本機上傳的做法與其限制（2026-10-09） | `.agents/skills/animation-production/references/in-app-browser-hailuo.md` |
 | 指定「真一隻布袋喵」的鏡位與畫面感 | `.agents/skills/animation-camera/references/budaimiao-style.md`（沿用其中的觀察範圍與待驗項目） |
 | 檢討表單與 2026-10-03 試拍的填法 | `.agents/skills/animation-production/references/post-mortem.md` |
 

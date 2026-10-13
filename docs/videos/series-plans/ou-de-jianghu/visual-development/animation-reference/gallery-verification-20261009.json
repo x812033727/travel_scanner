@@ -1,0 +1,2254 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-10-08T16:54:28.853Z",
+  "status": "passed_gallery_checks",
+  "engine": "Microsoft Edge via Playwright, headless, local HTTP only",
+  "scope": "Local gallery bytes, image decoding, filtering, dialog, mobile layout and navigation. Does not accept artwork, approve a look or plan, verify lip-sync, or accept animation.",
+  "artwork_accepted": false,
+  "animation_accepted": false,
+  "production_approved": false,
+  "visual_review": {
+    "status": "reviewed_with_view_image",
+    "screenshots": [
+      {
+        "name": "final-gallery-desktop",
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/qa/final-gallery-desktop.png",
+        "sha256": "24b7e5569ca29381f166fc29e8144da2edd1f11bb823124beefb773eba3b75e2",
+        "viewport": {
+          "width": 1360,
+          "height": 1000
+        }
+      },
+      {
+        "name": "final-gallery-modal",
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/qa/final-gallery-modal.png",
+        "sha256": "c159e6f127b2abb93f7c74ab6d81ec50aa4ec343ecd315b03b4ee852b3719198",
+        "viewport": {
+          "width": 1360,
+          "height": 1000
+        }
+      },
+      {
+        "name": "final-gallery-mobile",
+        "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/qa/final-gallery-mobile.png",
+        "sha256": "0f767c660a11476b9509835e4170754aa9e5c5583f06b00f769a74cfdb50fbb6",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      }
+    ],
+    "reviewed_at_utc": "2026-10-08T16:55:28.256Z",
+    "reviewer": "codex-ou-preflight / ep1_scene_plan",
+    "method": "Actual view_image inspection of the three generated browser screenshots after automated run.",
+    "observations": {
+      "desktop": "At 1360 x 1000 the header, navigation, two filters, count and five-column gallery are legible. Thumbnails retain contain framing; no visible control/card overlap.",
+      "modal": "Shen full-body portrait displays within the dialog from crown to both feet. Caption and close button are visible. Automated Escape check passed.",
+      "mobile": "At 390 x 844 text wraps within viewport, navigation and both selectors remain visible, count wraps to its own line, and two-column cards remain within width. Lower card text naturally continues below the viewport and is scrollable."
+    },
+    "limits": [
+      "Only the three browser screenshots were visually inspected in this verification; the 146 original artworks were not individually re-reviewed here.",
+      "PNG SHA/dimensions and actual browser decode were checked for all 146 images.",
+      "This report confirms gallery rendering/interactions only; it does not accept artwork, validate animation/lip-sync, grant formal look approval, or authorize paid production."
+    ]
+  },
+  "page_errors": [],
+  "request_failures": [],
+  "inputs": {
+    "gallery": {
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/gallery.html",
+      "sha256": "2460ce9e5aad106174238a9a9ba2a2a57f3286c1fa9438a2e87d411e93e67f8f"
+    },
+    "index": {
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/gallery-index.json",
+      "sha256": "5c1a45b8f98519d06369cb8a24933d75409ec6ec14dce7ca6d8ad0f28f61fc15"
+    },
+    "verifier": {
+      "file": "<REPO>/docs/videos/series-plans/ou-de-jianghu/visual-development/animation-reference/verify-final-gallery.mjs",
+      "sha256": "9ca8d5e1c3fbe9826cf5873087dc4b9a258473ba3c54bb121b8b397dafec3fa8"
+    }
+  },
+  "category_counts": {
+    "concept": 9,
+    "portrait": 27,
+    "reference": 82,
+    "scene": 28
+  },
+  "character_counts": {
+    "bao-sanqian": 13,
+    "ensemble": 2,
+    "ji-wen": 13,
+    "ji-wushuang": 13,
+    "luo-qingyan": 13,
+    "nie-gutie": 13,
+    "scene": 28,
+    "shen-guihe": 13,
+    "xuanmen-elder": 13,
+    "yan-hui": 13,
+    "yin-wusheng": 12
+  },
+  "images": [
+    {
+      "key": "ji-wushuang-concept-v2",
+      "character": "ji-wushuang",
+      "category": "concept",
+      "src": "../../art-direction/20261008/ji-wushuang-concept-v2.png",
+      "sha256": "fdec38a26c2a1c12b18282158add024d8d6642a10d6a414025a2d3de87208682",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2314249,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wen-concept-v1",
+      "character": "ji-wen",
+      "category": "concept",
+      "src": "../../art-direction/20261008/ji-wen-concept-v1.png",
+      "sha256": "f783fab8334c619b364e88e4577c2f9158b559136a5aabdffa5fca2b538dafaa",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2385676,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "bao-sanqian-concept-v1",
+      "character": "bao-sanqian",
+      "category": "concept",
+      "src": "../../art-direction/20261008/bao-sanqian-concept-v1.png",
+      "sha256": "6bb30672161f7034f7c3ef11c2a2aad6abd419a2bd87f7c522e4dece0a0df47f",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2419458,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "nie-gutie-concept-v1",
+      "character": "nie-gutie",
+      "category": "concept",
+      "src": "../../art-direction/20261008/nie-gutie-concept-v1.png",
+      "sha256": "7a4351d8a5241bb1dd6b273a1d3d2cb512b1d8a3696a66e805fafb9984c4b88f",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2500459,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "xuanmen-elder-concept-v1",
+      "character": "xuanmen-elder",
+      "category": "concept",
+      "src": "../../art-direction/20261008/xuanmen-elder-concept-v1.png",
+      "sha256": "142c9fdee9e5d7ebd99555925516a0dd733eae6122426e36eb290234f253cf0b",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2392183,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yan-hui-concept-v1",
+      "character": "yan-hui",
+      "category": "concept",
+      "src": "../../art-direction/20261008/yan-hui-concept-v1.png",
+      "sha256": "6f3befadd7a5a73eff275c99d7bcbf67b9171d424478f79c222bed21d3e82595",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2564900,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "shen-guihe-concept-v5",
+      "character": "shen-guihe",
+      "category": "concept",
+      "src": "shen-guihe-concept-v5.png",
+      "sha256": "5cb93d8797ae6f40b1553785bfe69d0f5b61f5b521bebc6275fabd0084bff467",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1975096,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "luo-qingyan-concept-v2",
+      "character": "luo-qingyan",
+      "category": "concept",
+      "src": "../../art-direction/20261008/luo-qingyan-concept-v2.png",
+      "sha256": "717f73760fc12c716a6041ef67b4fc749386cadc80c5cf9b13ef8accfb68e2e3",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2197296,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yin-wusheng-concept-v2",
+      "character": "yin-wusheng",
+      "category": "concept",
+      "src": "../../art-direction/20261008/yin-wusheng-concept-v2.png",
+      "sha256": "ec712243937dd4118f7f2feec67d49dd046597a437b88eb2ae6000b13de788aa",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2226788,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "shen-guihe-front-headshot-v1",
+      "character": "shen-guihe",
+      "category": "portrait",
+      "src": "../../portraits/20261008/shen-guihe-front-headshot-v1.png",
+      "sha256": "96f725263d6b21e1e9f05e95166a051734491ac305b84c93a52c7df110acf606",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2220300,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "shen-guihe-three-quarter-halfbody-v2",
+      "character": "shen-guihe",
+      "category": "portrait",
+      "src": "shen-guihe-three-quarter-halfbody-v2.png",
+      "sha256": "a8a5b5ab0a0e63e0bcaf3ace7d4f31c3982c4c37302cf8898919220b2f2fd6e4",
+      "width": 1003,
+      "height": 1568,
+      "bytes": 2179259,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "shen-guihe-full-body-v3",
+      "character": "shen-guihe",
+      "category": "portrait",
+      "src": "shen-guihe-full-body-v3.png",
+      "sha256": "f92406c0e73a7458e012a1487a60cd966b128192f776ddd272028cbd3724ccac",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1903914,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wushuang-front-headshot-v1",
+      "character": "ji-wushuang",
+      "category": "portrait",
+      "src": "../../portraits/20261008/ji-wushuang-front-headshot-v1.png",
+      "sha256": "1e2abdae520dcbb9759886d151a4de51578052fe4c106bfd0b6d980f015df5d9",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2325981,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wushuang-three-quarter-halfbody-v1",
+      "character": "ji-wushuang",
+      "category": "portrait",
+      "src": "../../portraits/20261008/ji-wushuang-three-quarter-halfbody-v1.png",
+      "sha256": "90883f32278648af05dddb9e802769724ef24920f2ea20a38b897f0b12cfe1ed",
+      "width": 1003,
+      "height": 1568,
+      "bytes": 2484328,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wushuang-full-body-v1",
+      "character": "ji-wushuang",
+      "category": "portrait",
+      "src": "../../portraits/20261008/ji-wushuang-full-body-v1.png",
+      "sha256": "6ed68b1de7db15559e4b9d57c84ba92c0ffff80bf1e59970c82677d4915ecec3",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2257234,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wen-front-headshot-v1",
+      "character": "ji-wen",
+      "category": "portrait",
+      "src": "../../portraits/20261008/ji-wen-front-headshot-v1.png",
+      "sha256": "0b4dc86b4f99b643e5d128662ea02046930000ad5bc1545db9898f6abe4a75d4",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2281578,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wen-three-quarter-halfbody-v1",
+      "character": "ji-wen",
+      "category": "portrait",
+      "src": "../../portraits/20261008/ji-wen-three-quarter-halfbody-v1.png",
+      "sha256": "91b93dc7dadd29bc9bad6f665c7a12e2a1ad835957d3d64ed6220db150dfd4c2",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 2325134,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wen-full-body-v1",
+      "character": "ji-wen",
+      "category": "portrait",
+      "src": "../../portraits/20261008/ji-wen-full-body-v1.png",
+      "sha256": "8a60b9ce8f83534542d002caedc0102d65255137d9eca99190091565e3ed9a35",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2162311,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "bao-sanqian-front-headshot-v1",
+      "character": "bao-sanqian",
+      "category": "portrait",
+      "src": "../../portraits/20261008/bao-sanqian-front-headshot-v1.png",
+      "sha256": "418400b3dbd07a67bb2564467ff504c32ad7cf1c7ba91c8da66ba53a78de5391",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2433741,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "bao-sanqian-three-quarter-halfbody-v1",
+      "character": "bao-sanqian",
+      "category": "portrait",
+      "src": "../../portraits/20261008/bao-sanqian-three-quarter-halfbody-v1.png",
+      "sha256": "1ce1ad74b7eff58d2cc5a2e1ae9d3a4f2170808509b48163117a5dca1b4e0f5a",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 2519248,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "bao-sanqian-full-body-v1",
+      "character": "bao-sanqian",
+      "category": "portrait",
+      "src": "../../portraits/20261008/bao-sanqian-full-body-v1.png",
+      "sha256": "625174d287f29d8fda2791f8193a89c26476a121bea7b1d80aa52fbc9e43afd9",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2172066,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yin-wusheng-front-headshot-v1",
+      "character": "yin-wusheng",
+      "category": "portrait",
+      "src": "../../portraits/20261008/yin-wusheng-front-headshot-v1.png",
+      "sha256": "3cf1fb456dde467b6fde6bd7c9d71f2dacb88d4d950990e6ed903720177c84cf",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2188723,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yin-wusheng-three-quarter-halfbody-v2",
+      "character": "yin-wusheng",
+      "category": "portrait",
+      "src": "../../portraits/20261008/yin-wusheng-three-quarter-halfbody-v2.png",
+      "sha256": "f956ac9df33e19c711597e3225841efc858ed8eedc9cd85064c8c79e7db338eb",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 2107684,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yin-wusheng-full-body-v1",
+      "character": "yin-wusheng",
+      "category": "portrait",
+      "src": "../../portraits/20261008/yin-wusheng-full-body-v1.png",
+      "sha256": "ccf625f6813518032435c4a462a1203e6128691afda10516fe9dbcf95e5972ea",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1972758,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yan-hui-front-headshot-v1",
+      "character": "yan-hui",
+      "category": "portrait",
+      "src": "../../portraits/20261008/yan-hui-front-headshot-v1.png",
+      "sha256": "9b1d6e5cdcb1a76d2d33ebb765190252efd5a729a2627e5d9cc53d46725fd7c9",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2499044,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yan-hui-three-quarter-halfbody-v2",
+      "character": "yan-hui",
+      "category": "portrait",
+      "src": "../../portraits/20261008/yan-hui-three-quarter-halfbody-v2.png",
+      "sha256": "4a929135edf1d84f4439fdc36c65fb05c4a0e762564cc27f9cfe4241b882eacc",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 2437773,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yan-hui-full-body-v1",
+      "character": "yan-hui",
+      "category": "portrait",
+      "src": "../../portraits/20261008/yan-hui-full-body-v1.png",
+      "sha256": "5cf0a08166ecbb00a7f1a484c4bc7c8ec16ab772f5ad61f1f8390c44792caa21",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2346126,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "nie-gutie-front-headshot-v1",
+      "character": "nie-gutie",
+      "category": "portrait",
+      "src": "../../portraits/20261008/nie-gutie-front-headshot-v1.png",
+      "sha256": "31f6fbfa208e537f661a5f2aa33ee8abb388327b3150a6114ad2de3daa1406f5",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2449544,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "nie-gutie-three-quarter-halfbody-v1",
+      "character": "nie-gutie",
+      "category": "portrait",
+      "src": "../../portraits/20261008/nie-gutie-three-quarter-halfbody-v1.png",
+      "sha256": "7653997536869411b750111a2837701bf32b56674593e2fa3828fcbd25b0e7b9",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 2492950,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "nie-gutie-full-body-v1",
+      "character": "nie-gutie",
+      "category": "portrait",
+      "src": "../../portraits/20261008/nie-gutie-full-body-v1.png",
+      "sha256": "866e1e8cb75e7fabd7ebdc7ae2deca88938b79fc05f864a9c708d31d5d597115",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2354045,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "xuanmen-elder-front-headshot-v1",
+      "character": "xuanmen-elder",
+      "category": "portrait",
+      "src": "../../portraits/20261008/xuanmen-elder-front-headshot-v1.png",
+      "sha256": "60c8245d7e5b50ee9d3b9acc6b3c2236f772d1f6bb2233842b97c1b98e0322b2",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2363322,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "xuanmen-elder-three-quarter-halfbody-v1",
+      "character": "xuanmen-elder",
+      "category": "portrait",
+      "src": "../../portraits/20261008/xuanmen-elder-three-quarter-halfbody-v1.png",
+      "sha256": "3cb3d461f7938d0cf1ed4b64f9a829ad116fa88fdc831790fcd43545c8dbfe3f",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 2329845,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "xuanmen-elder-full-body-v1",
+      "character": "xuanmen-elder",
+      "category": "portrait",
+      "src": "../../portraits/20261008/xuanmen-elder-full-body-v1.png",
+      "sha256": "564e79297979b1c7bb49b3fba39d8c3e590a2fc6bae246fa37b01837ac61667d",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2177493,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "luo-qingyan-front-headshot-v1",
+      "character": "luo-qingyan",
+      "category": "portrait",
+      "src": "../../portraits/20261008/luo-qingyan-front-headshot-v1.png",
+      "sha256": "6d3b1287824195c9bb32c7e603b48bddb21164176c3465bf1b643946050d22b0",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2186555,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "luo-qingyan-three-quarter-halfbody-v2",
+      "character": "luo-qingyan",
+      "category": "portrait",
+      "src": "../../portraits/20261008/luo-qingyan-three-quarter-halfbody-v2.png",
+      "sha256": "b3ac3c04de317368f77058eb3fa7c7d7fca708b76fb694961ca69a70f24db658",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 2200488,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "luo-qingyan-full-body-v1",
+      "character": "luo-qingyan",
+      "category": "portrait",
+      "src": "../../portraits/20261008/luo-qingyan-full-body-v1.png",
+      "sha256": "9b3991c06ec0ae39acedaec6332a698d7209a75bbb3e5b245e79b6b3da96aeef",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2086214,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "shen-guihe-back-v2",
+      "character": "shen-guihe",
+      "category": "reference",
+      "src": "shen-guihe-back-v2.png",
+      "sha256": "18a2386696be9b222bb10c5084c4975ea2e4f089c1fcf2fbd89c5a1d025a52e1",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2001859,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "shen-guihe-left-profile-v2",
+      "character": "shen-guihe",
+      "category": "reference",
+      "src": "shen-guihe-left-profile-v2.png",
+      "sha256": "21681ea03160a761cc11954b4e17837b70688f42e9317d6c141d5a6b04292120",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1827128,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "shen-guihe-right-profile-v3",
+      "character": "shen-guihe",
+      "category": "reference",
+      "src": "shen-guihe-right-profile-v3.png",
+      "sha256": "aa523cc177b2421c440641ea1457c7ddaafdcbf1bd61c9a5fb759c70fcf3142e",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1843185,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "shen-guihe-left-three-quarter-v3",
+      "character": "shen-guihe",
+      "category": "reference",
+      "src": "shen-guihe-left-three-quarter-v3.png",
+      "sha256": "bcd955e80f042d5c0269236f9e49929a427b49ae7938d04cdf8422ba6570e286",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1922764,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "shen-guihe-right-three-quarter-v3",
+      "character": "shen-guihe",
+      "category": "reference",
+      "src": "shen-guihe-right-three-quarter-v3.png",
+      "sha256": "873c1bf582d95336939604a8945639eb1d05500c4621988bf83554458741ba98",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1941548,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "shen-guihe-expressions-v1",
+      "character": "shen-guihe",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/shen-guihe-expressions-v1.png",
+      "sha256": "036cf6365676e25567bd234a944890f929c4f5b409c395b92bd1b1e3ebd5fb7e",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2448537,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "shen-guihe-action-phases-v3",
+      "character": "shen-guihe",
+      "category": "reference",
+      "src": "shen-guihe-action-phases-v3.png",
+      "sha256": "c2a543bdbf29a3dea85e4a97b951f92e3eb7d181be7c0ebce03d206b4c1aca46",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1965432,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "shen-guihe-construction-details-v3",
+      "character": "shen-guihe",
+      "category": "reference",
+      "src": "shen-guihe-construction-details-v3.png",
+      "sha256": "eacdf8278c257211d1f549279a4219dc4628279f787f47e238e9f179726289c3",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2259167,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wushuang-back-v2",
+      "character": "ji-wushuang",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/ji-wushuang-back-v2.png",
+      "sha256": "4f7388f8d7932b93733513b788cf30acd60caefd7e21bddb8920655001e86ac0",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2182113,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wushuang-left-profile-v2",
+      "character": "ji-wushuang",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/ji-wushuang-left-profile-v2.png",
+      "sha256": "4885dd527af7b85f014c39da3eba2d6a2c5da597a5a752f9a6fe8428496fec38",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2073928,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wushuang-right-profile-v2",
+      "character": "ji-wushuang",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/ji-wushuang-right-profile-v2.png",
+      "sha256": "aa701ea90648093cefc497797335a462b9b1858c49be45f2ef1ca36b3f06eb0d",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2082078,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wushuang-left-three-quarter-v1",
+      "character": "ji-wushuang",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/ji-wushuang-left-three-quarter-v1.png",
+      "sha256": "9d2af24215b6a3a3e22e3932d8516f1503d7294e2cae7179846b72a82fb580e8",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2320606,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wushuang-right-three-quarter-v4",
+      "character": "ji-wushuang",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/ji-wushuang-right-three-quarter-v4.png",
+      "sha256": "7b640ea7ee0781d896cdb0509f4b24bfb69570a2ec243f626772e2d015f2989c",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2155691,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wushuang-expressions-v1",
+      "character": "ji-wushuang",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/ji-wushuang-expressions-v1.png",
+      "sha256": "45e2d2c7396d64e5fdb948a4ee0790190946d4d5b62e11cc177f4b264b3fdd4f",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2839783,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wushuang-action-phases-v1",
+      "character": "ji-wushuang",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/ji-wushuang-action-phases-v1.png",
+      "sha256": "55d6c3776b4c9f1bd5afefc7d4f75be140b822d59b0f8f823326dc54af2256ce",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2217288,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wushuang-construction-details-v1",
+      "character": "ji-wushuang",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/ji-wushuang-construction-details-v1.png",
+      "sha256": "bf49f22d5b3f6a6a44915b8beee4f8287e326014ce5db5e7776589480814d4c5",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 3063329,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wen-back-v1",
+      "character": "ji-wen",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/ji-wen-back-v1.png",
+      "sha256": "29e47eac638b17cab5159b9172c408347417ecbfabdcdff64899cc10897226e7",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2070933,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wen-left-profile-v1",
+      "character": "ji-wen",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/ji-wen-left-profile-v1.png",
+      "sha256": "41deefa64ab2ed7254395e9f85ab5aad55f8a5bf6b68f23fff133e68e960ea51",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1980176,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wen-right-profile-v1",
+      "character": "ji-wen",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/ji-wen-right-profile-v1.png",
+      "sha256": "f3a628d61296cd1f9e49fd686069f8b2d1574bbccda5df3f9455a19602b02613",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1928698,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wen-left-three-quarter-v1",
+      "character": "ji-wen",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/ji-wen-left-three-quarter-v1.png",
+      "sha256": "57c14b6f8f50bedbd2a1f1731260539652fe9fd51909e882053abd5fafb93ce4",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2110501,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wen-right-three-quarter-v1",
+      "character": "ji-wen",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/ji-wen-right-three-quarter-v1.png",
+      "sha256": "cc7ec3439fde0427d21fa95f97904fe8c0c2d5fe6cb3a8ca4050f857c2739dc5",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2068760,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wen-expressions-v1",
+      "character": "ji-wen",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/ji-wen-expressions-v1.png",
+      "sha256": "0fbb185e467375f8614640b5d3aaf807120f0ed1bc10dad8c5b02c5f14935167",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2573998,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wen-action-phases-v1",
+      "character": "ji-wen",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/ji-wen-action-phases-v1.png",
+      "sha256": "dc402f5db3ce08e00a1d62b67a83f221f417e5b5c362afb19afb4682635828f8",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2052295,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wen-construction-details-v1",
+      "character": "ji-wen",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/ji-wen-construction-details-v1.png",
+      "sha256": "134617837cabd4e159fc6c849337bac01ba22eca1460d1b98a5c180c7f503d71",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2577454,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "bao-sanqian-back-v1",
+      "character": "bao-sanqian",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/bao-sanqian-back-v1.png",
+      "sha256": "52e0e39e1f9dc425a04fcd0dd27ec1c5c546957643936b1763316dc068da4bb8",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2162756,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "bao-sanqian-left-profile-v1",
+      "character": "bao-sanqian",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/bao-sanqian-left-profile-v1.png",
+      "sha256": "3ab22c7652a7f90c33b2d785fdfe7b5623805b200550b4eb354aa52b6a3e5bc8",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1961140,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "bao-sanqian-right-profile-v1",
+      "character": "bao-sanqian",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/bao-sanqian-right-profile-v1.png",
+      "sha256": "04b853fbd0abbd9c3d042e88d286d77ea9be2dc3e0aea06502bdd37773223fc3",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1992631,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "bao-sanqian-left-three-quarter-v2",
+      "character": "bao-sanqian",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/bao-sanqian-left-three-quarter-v2.png",
+      "sha256": "bcfb803331ab18190512e68342b7bd9882b76895b4e3db6f0aa5073d5a7f81c4",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2102789,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "bao-sanqian-right-three-quarter-v1",
+      "character": "bao-sanqian",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/bao-sanqian-right-three-quarter-v1.png",
+      "sha256": "f1a9f96f5c3c95ebd0c8500ffcf67f0ea57704e1164650302a5caba6052eb1d1",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2166414,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "bao-sanqian-expressions-v1",
+      "character": "bao-sanqian",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/bao-sanqian-expressions-v1.png",
+      "sha256": "8276f655c506a812efec0378671671e3bc8460380e3fc7dec6098ff7755a2b23",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2920805,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "bao-sanqian-action-phases-v1",
+      "character": "bao-sanqian",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/bao-sanqian-action-phases-v1.png",
+      "sha256": "a52d39bbefe8f3f3ce178b5878c3f14a73e304e86640645dc17a1ab45cd9b016",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2342164,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "bao-sanqian-construction-details-v1",
+      "character": "bao-sanqian",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/bao-sanqian-construction-details-v1.png",
+      "sha256": "46eeeef64f7d6f633d2e520af7ca44e7ee94ec90c35f95260d211ead856cf06c",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2917389,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yin-wusheng-back-v1",
+      "character": "yin-wusheng",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/yin-wusheng-back-v1.png",
+      "sha256": "c265bf5223a9fab7437d398cb2bdd5e0a75f6ca6c6cd68cb7866bdbfd506f892",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1979299,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yin-wusheng-left-profile-v1",
+      "character": "yin-wusheng",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/yin-wusheng-left-profile-v1.png",
+      "sha256": "b8a72fb4d2410621bc89ed006c6f57b758d9c100a6a737dbcf8b7ef777615033",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1894771,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yin-wusheng-right-profile-v1",
+      "character": "yin-wusheng",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/yin-wusheng-right-profile-v1.png",
+      "sha256": "ca0e31f50fb7c75efdfe5949bbf3b9a409366e7a428aaf87d18f806df3d8dd9e",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1857670,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yin-wusheng-left-three-quarter-v1",
+      "character": "yin-wusheng",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/yin-wusheng-left-three-quarter-v1.png",
+      "sha256": "9acd17258ca3e7576b597ba01be976dca27712f6459d226f29f5fc2f00bba348",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1999464,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yin-wusheng-right-three-quarter-v1",
+      "character": "yin-wusheng",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/yin-wusheng-right-three-quarter-v1.png",
+      "sha256": "3a199baf05e6212ddc8732753832e5ff9648f2731ed9c1bda49811d2dc08e711",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1979187,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yin-wusheng-expressions-v1",
+      "character": "yin-wusheng",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/yin-wusheng-expressions-v1.png",
+      "sha256": "4d2013a3c2467e64119864e9e0da7a2b16a561654420b76f3b52d45372c1aa4e",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2417068,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yin-wusheng-action-phases-v1",
+      "character": "yin-wusheng",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/yin-wusheng-action-phases-v1.png",
+      "sha256": "3d787a533014aa4ecaf5c467033e58df9bfad691a70805522f95b5cde26c8418",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1990521,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yin-wusheng-construction-details-v1",
+      "character": "yin-wusheng",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/yin-wusheng-construction-details-v1.png",
+      "sha256": "223442a8946e9801cd979fde80c6c6bea8d6b159834f9c4f455dbfc2d4722e1e",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2594240,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yan-hui-back-v1",
+      "character": "yan-hui",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/yan-hui-back-v1.png",
+      "sha256": "c5d61b39978dc7774145e0f09e82a94c0944d1a7977a05af1f51d7227032a303",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2388165,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yan-hui-left-profile-v1",
+      "character": "yan-hui",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/yan-hui-left-profile-v1.png",
+      "sha256": "d2eddccc47d7c584c90f055d65aee63ec0969442fb6f98410247d55e93d4838e",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2276483,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yan-hui-right-profile-v1",
+      "character": "yan-hui",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/yan-hui-right-profile-v1.png",
+      "sha256": "c49873fb634e948236fdb7112391ddb32276afb0fcf09b19bcf4e78546eb0b79",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2278417,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yan-hui-left-three-quarter-v1",
+      "character": "yan-hui",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/yan-hui-left-three-quarter-v1.png",
+      "sha256": "742273702631ec3c8aee05eb41559540cdaad349f2bbc7b9a29752845e148e82",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2441540,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yan-hui-right-three-quarter-v3",
+      "character": "yan-hui",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/yan-hui-right-three-quarter-v3.png",
+      "sha256": "77b0ef327ab16ce3c044e71b961b09c666f241bd5e522c6a966203bd7ba00d02",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2298319,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yan-hui-expressions-v1",
+      "character": "yan-hui",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/yan-hui-expressions-v1.png",
+      "sha256": "ab3b3dd6e5f00a8f31a9215675b02df0d639a221d58e39b0e94fc0a02701badd",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 3148980,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yan-hui-action-phases-v1",
+      "character": "yan-hui",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/yan-hui-action-phases-v1.png",
+      "sha256": "b3c8cbd1c9ae121dcfa2c9ba1620c0cc404c8e90498d621a0490e247d68c6903",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2309685,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yan-hui-construction-details-v1",
+      "character": "yan-hui",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/yan-hui-construction-details-v1.png",
+      "sha256": "ae1def6ae646305b17cf6d925be5b4d9e835f5626ec2186885a56d8ed1229568",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2689456,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "nie-gutie-back-v1",
+      "character": "nie-gutie",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/nie-gutie-back-v1.png",
+      "sha256": "580607b32ce1fd002ab50c399cccd445935ed6b77cdaa1f897ed54aab8c97dfa",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2308158,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "nie-gutie-left-profile-v1",
+      "character": "nie-gutie",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/nie-gutie-left-profile-v1.png",
+      "sha256": "ee15cf2c6cb17ecbf062526ad511b12fe42d8fe9c63459c2fd708530c3334674",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2127826,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "nie-gutie-right-profile-v1",
+      "character": "nie-gutie",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/nie-gutie-right-profile-v1.png",
+      "sha256": "bd1e8b5c6812581a662f85a33b69c1c75a9e54261e5b5195baffbe6496a401c4",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2059730,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "nie-gutie-left-three-quarter-v1",
+      "character": "nie-gutie",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/nie-gutie-left-three-quarter-v1.png",
+      "sha256": "41075d893edbd4a1cfebca9c9410a3800cbd042b57c56ef2958d407230807641",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2277990,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "nie-gutie-right-three-quarter-v1",
+      "character": "nie-gutie",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/nie-gutie-right-three-quarter-v1.png",
+      "sha256": "0d5c1ac1e6918ffeb6b87566c600a884df79c4b02ed78f8e3e15f6b9fd6cb50c",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2268515,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "nie-gutie-expressions-v1",
+      "character": "nie-gutie",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/nie-gutie-expressions-v1.png",
+      "sha256": "eb248a437490992cb65643f4e194b0c288306a07e764e15018255b1e49dcf1c3",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2694538,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "nie-gutie-action-phases-v1",
+      "character": "nie-gutie",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/nie-gutie-action-phases-v1.png",
+      "sha256": "e1cb9daa152d4feb33b8d2e3edf21253b4ff0b20fc4a9dc0db10e2abb60c376b",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2240888,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "nie-gutie-construction-details-v1",
+      "character": "nie-gutie",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/nie-gutie-construction-details-v1.png",
+      "sha256": "3088f040183efe7c044174d3e9dcbabb83175c32b32abc0175ff2d5e566cd8fc",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2648694,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "xuanmen-elder-back-v2",
+      "character": "xuanmen-elder",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/xuanmen-elder-back-v2.png",
+      "sha256": "352f0f16660ee42794f34093398f584616476817fe4e61a31286ef7161bcc36d",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2012810,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "xuanmen-elder-left-profile-v1",
+      "character": "xuanmen-elder",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/xuanmen-elder-left-profile-v1.png",
+      "sha256": "49ab08d104372ff69c0c38bb1795469c5f23a40d4e3075f94771d1f9c7b4ed6f",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2067462,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "xuanmen-elder-right-profile-v1",
+      "character": "xuanmen-elder",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/xuanmen-elder-right-profile-v1.png",
+      "sha256": "e4a1e2c36dab5ebee1fdf754cabfdc928032f829240c8ad1c0cd7e61f2d656f2",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2026982,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "xuanmen-elder-left-three-quarter-v1",
+      "character": "xuanmen-elder",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/xuanmen-elder-left-three-quarter-v1.png",
+      "sha256": "d66077eccfe0830fe8b10e41857db66a595a06bd373ffc5adf54e275961bd071",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2209284,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "xuanmen-elder-right-three-quarter-v1",
+      "character": "xuanmen-elder",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/xuanmen-elder-right-three-quarter-v1.png",
+      "sha256": "61060f8b2df55dde8176d0aecd9936eba480d8134e6d093969a6fa20888fc9d1",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2234680,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "xuanmen-elder-expressions-v1",
+      "character": "xuanmen-elder",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/xuanmen-elder-expressions-v1.png",
+      "sha256": "6705c0c01eefdc0b4b6114e507e45cce7fca944bfbf31c9db01521cff01b86ec",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2501977,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "xuanmen-elder-action-phases-v2",
+      "character": "xuanmen-elder",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/xuanmen-elder-action-phases-v2.png",
+      "sha256": "a119bd502d0ffef102a92e912613016402ca8c97e5648fbca4d9bc4369dca8fc",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2047425,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "xuanmen-elder-construction-details-v1",
+      "character": "xuanmen-elder",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/xuanmen-elder-construction-details-v1.png",
+      "sha256": "ab988fa48bc7b10189de3eafbf30f53936e5a0f337c04ff71b50bb7ac784e14e",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2847680,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "luo-qingyan-back-v1",
+      "character": "luo-qingyan",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/luo-qingyan-back-v1.png",
+      "sha256": "1509c7c819bec2f3aa3ae3a91cef1b194281b02100c1c81ea7790cd33cc5b2c0",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2093688,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "luo-qingyan-left-profile-v1",
+      "character": "luo-qingyan",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/luo-qingyan-left-profile-v1.png",
+      "sha256": "284d9882fa0db9a070c96e1f7f933264d918013105a5cb9b65eed4a1c31078d7",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1970813,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "luo-qingyan-right-profile-v1",
+      "character": "luo-qingyan",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/luo-qingyan-right-profile-v1.png",
+      "sha256": "c1b4f6f364a0876eddd5a55d903583acb6f712960444b00e6509de5bb8831ba0",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1925879,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "luo-qingyan-left-three-quarter-v1",
+      "character": "luo-qingyan",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/luo-qingyan-left-three-quarter-v1.png",
+      "sha256": "733d24bffb0a57d8ba131355d1bd476ce29a3e3efebe5423ba3c608128096758",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2096094,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "luo-qingyan-right-three-quarter-v1",
+      "character": "luo-qingyan",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/luo-qingyan-right-three-quarter-v1.png",
+      "sha256": "c235a6520bbc88b188db15639e409a64c7b283638e91e5b90a8165563e190a3b",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2098523,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "luo-qingyan-expressions-v1",
+      "character": "luo-qingyan",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/luo-qingyan-expressions-v1.png",
+      "sha256": "4b49a3daf27e7afab32f24ae5d33f02f6f77f807444b6505f45b11d617858417",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2424216,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "luo-qingyan-action-phases-v1",
+      "character": "luo-qingyan",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/luo-qingyan-action-phases-v1.png",
+      "sha256": "54e600893e37c0b3685611cec675ac98295c1bb2b07195761ffd82d689ccf680",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2023132,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "luo-qingyan-construction-details-v1",
+      "character": "luo-qingyan",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/luo-qingyan-construction-details-v1.png",
+      "sha256": "24e0ad06174420d1ca1d71318088b8a9dd9b0e9b2b9079dadf89326f5beeebc2",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2656566,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ensemble-color-lineup-v3",
+      "character": "ensemble",
+      "category": "reference",
+      "src": "ensemble-color-lineup-v3.png",
+      "sha256": "094759425f5cc9c65c0fa7d839389b82771fe41a57b068a3de51b194319f9b23",
+      "width": 2172,
+      "height": 724,
+      "bytes": 2338891,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ensemble-silhouette-lineup-v2",
+      "character": "ensemble",
+      "category": "reference",
+      "src": "../../animation-reference/20261008/ensemble-silhouette-lineup-v2.png",
+      "sha256": "c4702012d161638baee841bf200c8813b1f474be9cfe650f6998b23d2abfb838",
+      "width": 2172,
+      "height": 724,
+      "bytes": 1111611,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "shen-guihe-mouth-shapes-v1",
+      "character": "shen-guihe",
+      "category": "reference",
+      "src": "shen-guihe-mouth-shapes-v1.png",
+      "sha256": "c697b0dc8998938a645eeedae711477d8bd13023b3eb84a327454dca551e3d32",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2255739,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wen-mouth-shapes-v1",
+      "character": "ji-wen",
+      "category": "reference",
+      "src": "ji-wen-mouth-shapes-v1.png",
+      "sha256": "f83e55c923671acadbf6f1e5a205b5428657040ed26ca345d25c70691fe8776a",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2474955,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "bao-sanqian-mouth-shapes-v1",
+      "character": "bao-sanqian",
+      "category": "reference",
+      "src": "bao-sanqian-mouth-shapes-v1.png",
+      "sha256": "7a6dfddc9acffd0a8dcd76054b376cdcbc340e17e792ce77e32f948ed9c6d3c4",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2775167,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "yan-hui-mouth-shapes-v1",
+      "character": "yan-hui",
+      "category": "reference",
+      "src": "yan-hui-mouth-shapes-v1.png",
+      "sha256": "c2bfb3978fa4fa702fb9a3eadf0de0a046154877faefd88717f478b8594a6dc3",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2551007,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "nie-gutie-mouth-shapes-v1",
+      "character": "nie-gutie",
+      "category": "reference",
+      "src": "nie-gutie-mouth-shapes-v1.png",
+      "sha256": "095bc2cdb4bb95e204f2e96a35e062ea86416205bb6171da61fd764e8b3e807e",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2647213,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "xuanmen-elder-mouth-shapes-v1",
+      "character": "xuanmen-elder",
+      "category": "reference",
+      "src": "xuanmen-elder-mouth-shapes-v1.png",
+      "sha256": "d03be901efe33b4189e05ae5eb60d638b15a0313d88e19ca21b73686bed68137",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2461818,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "luo-qingyan-mouth-shapes-v1",
+      "character": "luo-qingyan",
+      "category": "reference",
+      "src": "luo-qingyan-mouth-shapes-v1.png",
+      "sha256": "ca473181541554cec1e30e79c8477c86cf004a70706638533bdf39b0b25e68a3",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2366005,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "ji-wushuang-mouth-shapes-v2",
+      "character": "ji-wushuang",
+      "category": "reference",
+      "src": "ji-wushuang-mouth-shapes-v2.png",
+      "sha256": "c0650a1b5d7db95c8c6b0091154ddeca4451acb7a3eb627a3473ffc8e94e387f",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2358028,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "qiyun-mountain-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/qiyun-mountain-v1.png",
+      "sha256": "083842be5687e44245c1f2355a0afa921b2ea86405477f7c96c99f206db65e75",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2791322,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "watchtower-master-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/watchtower-master-v1.png",
+      "sha256": "4fa45bfee2fd815e7754f2f194eb7dac747a4e1dc28cb73f5f70fd8891a5ec62",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2492626,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "watchtower-angle-b-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/watchtower-angle-b-v1.png",
+      "sha256": "2bc2e82f01f97aed09387877b5f6be1649974d56e01113e056b7a7c0ade6e5b2",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2742572,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "alliance-gate-master-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/alliance-gate-master-v1.png",
+      "sha256": "b709941fe44a25e778bf0edd5d346bd3fa1cc63c122284ae11d4d69599d68053",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2803941,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "alliance-gate-stair-reverse-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/alliance-gate-stair-reverse-v1.png",
+      "sha256": "4a8f9ff7c950e9ef54c65c17772f067e04ae0817840acf8417546da695c16158",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2976138,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "alliance-hall-master-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/alliance-hall-master-v1.png",
+      "sha256": "a01c60bd4afd7d76a69b83389b5c0eb9ce640881ba68d195368acd86dbd5106e",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2261568,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "alliance-terrace-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/alliance-terrace-v1.png",
+      "sha256": "7d751d08aafd12a75d8acfaa50a8bfb92b3c0ce135c9c5a5f4555eeb8c444b1b",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2440410,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "alliance-hall-reverse-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/alliance-hall-reverse-v1.png",
+      "sha256": "36d92220f9df42d3a26d60cbec32a630cfdb42459222b590f68ff03a39488881",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2423688,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "outer-harbor-master-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/outer-harbor-master-v1.png",
+      "sha256": "3b86f59bf07a805a9dff245dd3d21e832342be0f4a051492b4411d5b6179ea72",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2725704,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "guestroom-corridor-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/guestroom-corridor-v1.png",
+      "sha256": "88137d904cdf5416711b03b40669ec560d9c94b2700f801bcfc76015f46a3e05",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2172590,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "outer-harbor-angle-b-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/outer-harbor-angle-b-v1.png",
+      "sha256": "4a63d65670026bb52176d7f7e0f4184c0174260ec700ce17c68f10c705927ac8",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2747750,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "guest-courtyard-exterior-v2",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/guest-courtyard-exterior-v2.png",
+      "sha256": "86726ff82aefd0237f3bfb5fae772c403158a770629e6871189072079c741619",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2448042,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "guest-courtyard-dark-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/guest-courtyard-dark-v1.png",
+      "sha256": "2d321468d671b8a602372985f883505066588d4edd90c56ae99098149e741913",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2240465,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "guest-courtyard-interior-v2",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/guest-courtyard-interior-v2.png",
+      "sha256": "05869ac23ffa29306d97205b415a050aa2e1abe806dd1df550169dd788183162",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1985871,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "wugui-bow-arrows-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/wugui-bow-arrows-v1.png",
+      "sha256": "625dade33175a7d079cdcad5595d9b5aca28dda8a0c9fac66bc943607d3979c2",
+      "width": 1672,
+      "height": 940,
+      "bytes": 1523235,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "surrender-document-box-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/surrender-document-box-v1.png",
+      "sha256": "b2f8808a320fa928bd1d5aa6b3b7e917a5e43846b4402d3b5c89fe48ff85aeb8",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1795144,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "blade-and-tongs-reference-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/blade-and-tongs-reference-v1.png",
+      "sha256": "6d966978f69da161ccdbdbe7186eb881cc61af10e5f216fc619497bc692b1e3d",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1769115,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "go-candle-reference-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/go-candle-reference-v1.png",
+      "sha256": "5d65ca17ecda1659fd7cd793b48752d97c33a51f26f6456e632d23a4ef1d61cc",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1845533,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "tea-tray-states-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/tea-tray-states-v1.png",
+      "sha256": "ea6e55636abee1566c8d74f35e9895b992af5b5f4de251a78c51bcbc0f8572de",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1737401,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "shell-coin-doll-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/shell-coin-doll-v1.png",
+      "sha256": "6425ddbc748c0b10bfe068738ca779f99e262a58c40bc2fbecbdab8a857ca68e",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2016309,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "controlled-crescent-nape-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/controlled-crescent-nape-v1.png",
+      "sha256": "3609ab646740af2543b1122bd485c71df49732532b226f176aaad40ec9538096",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2748635,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "controlled-anonymous-black-wind-v1",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/controlled-anonymous-black-wind-v1.png",
+      "sha256": "add73f2417f6125fe3d42ea01610273af2f8782de0543d168b66d866216b966a",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2135680,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "forge-master-v3",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/forge-master-v3.png",
+      "sha256": "2a99f4027883b1af8c77e17ab3118dc700c00d468b92d3615677f8d56ffff25e",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2169836,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "forge-angle-b-v2",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/forge-angle-b-v2.png",
+      "sha256": "3abc683060ab4ed31ee8d2bf745a11500d8a808e562e7b175f5b39636a55a6d4",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2371432,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "controlled-right-hand-seal-v2",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261008/controlled-right-hand-seal-v2.png",
+      "sha256": "bb69d26124c1be9bb40ef4bbd4e86a5b9921626818dbae235c7789ecb25cff6e",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1509759,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "chess-guestroom-master-v4",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261009/chess-guestroom-master-v4.png",
+      "sha256": "f556ac041f9d13cfdf991630d4e13bfc4482b69dd29a8dc4a725c58e0aeba84b",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1751950,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "personal-prop-states-v3",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261009/personal-prop-states-v3.png",
+      "sha256": "793553b043e0bc05a24bcea9901f16621426f95ae22ce77cc502a342170fcf6e",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1835417,
+      "sha_matches": true,
+      "browser_decode": true
+    },
+    {
+      "key": "chess-guestroom-angle-b-v4",
+      "character": "scene",
+      "category": "scene",
+      "src": "../../scene-props/20261009/chess-guestroom-angle-b-v4.png",
+      "sha256": "c776694b6d7f24511ec1902096623099efd1593fabba48f33deac7f609a57aca",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1788047,
+      "sha_matches": true,
+      "browser_decode": true
+    }
+  ],
+  "sha_verified_images": 146,
+  "browser_version": "154.0.4258.62",
+  "decoded_images": 146,
+  "filters": [
+    {
+      "character": "all",
+      "category": "all",
+      "expected": 146,
+      "actual": 146
+    },
+    {
+      "character": "all",
+      "category": "concept",
+      "expected": 9,
+      "actual": 9
+    },
+    {
+      "character": "all",
+      "category": "portrait",
+      "expected": 27,
+      "actual": 27
+    },
+    {
+      "character": "all",
+      "category": "reference",
+      "expected": 82,
+      "actual": 82
+    },
+    {
+      "character": "all",
+      "category": "scene",
+      "expected": 28,
+      "actual": 28
+    },
+    {
+      "character": "shen-guihe",
+      "category": "all",
+      "expected": 13,
+      "actual": 13
+    },
+    {
+      "character": "shen-guihe",
+      "category": "concept",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "character": "shen-guihe",
+      "category": "portrait",
+      "expected": 3,
+      "actual": 3
+    },
+    {
+      "character": "shen-guihe",
+      "category": "reference",
+      "expected": 9,
+      "actual": 9
+    },
+    {
+      "character": "shen-guihe",
+      "category": "scene",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "character": "ji-wushuang",
+      "category": "all",
+      "expected": 13,
+      "actual": 13
+    },
+    {
+      "character": "ji-wushuang",
+      "category": "concept",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "character": "ji-wushuang",
+      "category": "portrait",
+      "expected": 3,
+      "actual": 3
+    },
+    {
+      "character": "ji-wushuang",
+      "category": "reference",
+      "expected": 9,
+      "actual": 9
+    },
+    {
+      "character": "ji-wushuang",
+      "category": "scene",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "character": "ji-wen",
+      "category": "all",
+      "expected": 13,
+      "actual": 13
+    },
+    {
+      "character": "ji-wen",
+      "category": "concept",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "character": "ji-wen",
+      "category": "portrait",
+      "expected": 3,
+      "actual": 3
+    },
+    {
+      "character": "ji-wen",
+      "category": "reference",
+      "expected": 9,
+      "actual": 9
+    },
+    {
+      "character": "ji-wen",
+      "category": "scene",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "character": "bao-sanqian",
+      "category": "all",
+      "expected": 13,
+      "actual": 13
+    },
+    {
+      "character": "bao-sanqian",
+      "category": "concept",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "character": "bao-sanqian",
+      "category": "portrait",
+      "expected": 3,
+      "actual": 3
+    },
+    {
+      "character": "bao-sanqian",
+      "category": "reference",
+      "expected": 9,
+      "actual": 9
+    },
+    {
+      "character": "bao-sanqian",
+      "category": "scene",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "character": "yin-wusheng",
+      "category": "all",
+      "expected": 12,
+      "actual": 12
+    },
+    {
+      "character": "yin-wusheng",
+      "category": "concept",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "character": "yin-wusheng",
+      "category": "portrait",
+      "expected": 3,
+      "actual": 3
+    },
+    {
+      "character": "yin-wusheng",
+      "category": "reference",
+      "expected": 8,
+      "actual": 8
+    },
+    {
+      "character": "yin-wusheng",
+      "category": "scene",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "character": "yan-hui",
+      "category": "all",
+      "expected": 13,
+      "actual": 13
+    },
+    {
+      "character": "yan-hui",
+      "category": "concept",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "character": "yan-hui",
+      "category": "portrait",
+      "expected": 3,
+      "actual": 3
+    },
+    {
+      "character": "yan-hui",
+      "category": "reference",
+      "expected": 9,
+      "actual": 9
+    },
+    {
+      "character": "yan-hui",
+      "category": "scene",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "character": "nie-gutie",
+      "category": "all",
+      "expected": 13,
+      "actual": 13
+    },
+    {
+      "character": "nie-gutie",
+      "category": "concept",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "character": "nie-gutie",
+      "category": "portrait",
+      "expected": 3,
+      "actual": 3
+    },
+    {
+      "character": "nie-gutie",
+      "category": "reference",
+      "expected": 9,
+      "actual": 9
+    },
+    {
+      "character": "nie-gutie",
+      "category": "scene",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "character": "xuanmen-elder",
+      "category": "all",
+      "expected": 13,
+      "actual": 13
+    },
+    {
+      "character": "xuanmen-elder",
+      "category": "concept",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "character": "xuanmen-elder",
+      "category": "portrait",
+      "expected": 3,
+      "actual": 3
+    },
+    {
+      "character": "xuanmen-elder",
+      "category": "reference",
+      "expected": 9,
+      "actual": 9
+    },
+    {
+      "character": "xuanmen-elder",
+      "category": "scene",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "character": "luo-qingyan",
+      "category": "all",
+      "expected": 13,
+      "actual": 13
+    },
+    {
+      "character": "luo-qingyan",
+      "category": "concept",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "character": "luo-qingyan",
+      "category": "portrait",
+      "expected": 3,
+      "actual": 3
+    },
+    {
+      "character": "luo-qingyan",
+      "category": "reference",
+      "expected": 9,
+      "actual": 9
+    },
+    {
+      "character": "luo-qingyan",
+      "category": "scene",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "character": "ensemble",
+      "category": "all",
+      "expected": 2,
+      "actual": 2
+    },
+    {
+      "character": "ensemble",
+      "category": "concept",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "character": "ensemble",
+      "category": "portrait",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "character": "ensemble",
+      "category": "reference",
+      "expected": 2,
+      "actual": 2
+    },
+    {
+      "character": "ensemble",
+      "category": "scene",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "character": "scene",
+      "category": "all",
+      "expected": 28,
+      "actual": 28
+    },
+    {
+      "character": "scene",
+      "category": "concept",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "character": "scene",
+      "category": "portrait",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "character": "scene",
+      "category": "reference",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "character": "scene",
+      "category": "scene",
+      "expected": 28,
+      "actual": 28
+    }
+  ],
+  "filter_combinations": 60,
+  "modal": {
+    "key": "shen-guihe-full-body-v3",
+    "decoded": true,
+    "opened": true,
+    "escape_closed": true
+  },
+  "mobile": {
+    "inner_width": 390,
+    "document_width": 390,
+    "body_width": 390,
+    "overflow": false,
+    "viewport": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "navigation": [
+    {
+      "label": "新版文字動態分鏡",
+      "path": "/plan/preflight-20261009-v4/animatic.html",
+      "status": 200,
+      "sha256": "cee2fc9cbe89b879e8c899bccd3888a63ddfb9f6534e09163e27c6f2872324d1"
+    },
+    {
+      "label": "棋局末鏡前",
+      "path": "/scene-props/20261009/go-layout-before.svg",
+      "status": 200,
+      "sha256": "fbe1a30824890b162f3a9cabb59e122de914210e30276aba3212cc9f0401adab"
+    },
+    {
+      "label": "最後白子落盤後",
+      "path": "/scene-props/20261009/go-layout-after.svg",
+      "status": 200,
+      "sha256": "b302f76f4882d5e4bd6d6adeed2adc652abdde5519b706bca9db091f78749b97"
+    }
+  ],
+  "completed_at_utc": "2026-10-08T16:54:46.939Z",
+  "portable_path_normalization": {
+    "normalized_at_utc": "2026-10-08T16:58:19.206Z",
+    "scope": "Path serialization only; no browser rerun. Existing image/gallery/index/verifier-executed SHA and manual review evidence retained.",
+    "verifier_executed_sha256": "9ca8d5e1c3fbe9826cf5873087dc4b9a258473ba3c54bb121b8b397dafec3fa8",
+    "current_serializer_sha256": "a022d8a4c2ba7205b6110593bbc383780cf42d280513853ab592e8ec4a919977",
+    "note": "inputs.verifier.sha256 records the version used for the existing browser run; the later serializer-only change is recorded separately."
+  }
+}

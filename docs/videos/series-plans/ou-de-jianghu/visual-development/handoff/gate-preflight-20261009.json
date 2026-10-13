@@ -1,0 +1,2894 @@
+{
+  "schema_version": 1,
+  "type": "read-only-gate-preflight",
+  "episode": "ou-de-jianghu-e001",
+  "observed_at": "2026-10-08T17:37:28.082Z",
+  "source_commit": "5d20fd1aec7a61d16a374457bb9966733886f31a",
+  "temporal_scope": "All captured authorization, runtime, budget and blocker fields below describe the 17:37 UTC read-only snapshot. Subsequent authorization is recorded separately here and by the root adoption-decision receipt; do not treat historical false/absent fields as the current decision.",
+  "subsequent_user_decision": {
+    "user_reply": "採用素材與 v4，按此點數上限鎖定 plan",
+    "question_scope_reported_by_root": {
+      "adopted_materials_unique": 146,
+      "adopted_video_version": "v4",
+      "current_hailuo_period_cap_including_reserve_credits": 26980.8,
+      "pilot_cap_including_reserve_credits": 316.8,
+      "pilot_is_included_in_current_period_cap": true,
+      "second_period_only_if_credits_available": true,
+      "credit_purchase_authorized": false,
+      "subscription_renewal_authorized": false,
+      "api_spend_authorized": false,
+      "look_gate_remains_pending": true,
+      "plan_lock_authorized": true
+    },
+    "reported_after_preflight": true,
+    "execution_owner": "root",
+    "separate_record": "Root adoption-decision receipt binds the actual question and reply, resulting lock, asset manifest and budget hashes. This historical preflight does not claim that the authorized write has already run.",
+    "historical_stdout_preserved_sha256": "074be56470476f03892c0b75d6c84d73cef41af91ac5d0bd1ffa0b337d5567a2"
+  },
+  "authorization": {
+    "latest_user_route_reply": "使用hailuoai",
+    "confirmed_route": "hailuo",
+    "concrete_budget_approved": false,
+    "p7_package_approved": false,
+    "approvals_written_by_this_audit": false,
+    "plan_lock_written_by_this_audit": false,
+    "paid_requests_made_by_this_audit": false,
+    "scope_note": "Root holds the handoff claim and delegated only these two gate-preflight files plus external diagnostics. No commit, release or production source change."
+  },
+  "sources": {
+    "video": {
+      "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/plan/preflight-20261009-v4/video.json",
+      "exists": true,
+      "sha256": "cb341b457f28e5139cff6f0528722d2a0facebf8cfea90423aec572ed71ebd17",
+      "bytes": 432342
+    },
+    "budget": {
+      "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/plan/preflight-20261009-v4/budget-and-batches.json",
+      "exists": true,
+      "sha256": "f62d04c4bbc99825d847a8818e1a0229e335f21f77f16598626e1d24741199a2",
+      "bytes": 29536
+    },
+    "current_asset_manifest": {
+      "path": "<REPO>/docs/videos/series-plans/ou-de-jianghu/visual-development/handoff/asset-manifest.json",
+      "exists": true,
+      "sha256": "cbda063982c38b4135745e798659e51c88a1e529b53da5b2a810cbe68af9f540",
+      "bytes": 169430
+    },
+    "finalization": {
+      "path": "<REPO>/docs/videos/series-plans/ou-de-jianghu/visual-development/handoff/finalization-20261009.json",
+      "exists": true,
+      "sha256": "bbcf9dbfc630ff3dc8e9d06a465324b7d8a908381bad09b3d7079322b794d490",
+      "bytes": 2146428
+    },
+    "canonical_source_files": [
+      {
+        "path": "docs/videos/series-plans/ou-de-jianghu/setting.json",
+        "sha256": "50501eed994a885842b294c13dff76865e3ae7ebabba8dd1c9966788b7314d10",
+        "current_sha256": "50501eed994a885842b294c13dff76865e3ae7ebabba8dd1c9966788b7314d10"
+      },
+      {
+        "path": "docs/videos/series-plans/ou-de-jianghu/production/cast.json",
+        "sha256": "010edd7bcc01d42785cccdec74344ef38bd4887dcdd0dbf3bc6803788811b5ca",
+        "current_sha256": "010edd7bcc01d42785cccdec74344ef38bd4887dcdd0dbf3bc6803788811b5ca"
+      },
+      {
+        "path": "docs/videos/series-plans/ou-de-jianghu/production/cast-notes.md",
+        "sha256": "a58ed01c6a4829d7f8807c8e740c94a970f0d6033ff53df2206337ed5fc146ee",
+        "current_sha256": "a58ed01c6a4829d7f8807c8e740c94a970f0d6033ff53df2206337ed5fc146ee"
+      },
+      {
+        "path": "docs/videos/series-plans/ou-de-jianghu/season-01.json",
+        "sha256": "410f4963b498b93a8aa5ba09255a00661e2b2c00ce87f3c227ad1b6dde14caf8",
+        "current_sha256": "410f4963b498b93a8aa5ba09255a00661e2b2c00ce87f3c227ad1b6dde14caf8"
+      },
+      {
+        "path": "docs/videos/series-plans/ou-de-jianghu/season-02.json",
+        "sha256": "879636f0ea5797b70b817ab193928d40cdd853287385316f238a39470ea199a5",
+        "current_sha256": "879636f0ea5797b70b817ab193928d40cdd853287385316f238a39470ea199a5"
+      },
+      {
+        "path": "docs/videos/ou-de-jianghu-e001/video.json",
+        "sha256": "82d221350032c02b3b2f8943e72e63795be36e221c45067acf5bd9a751d20443",
+        "current_sha256": "82d221350032c02b3b2f8943e72e63795be36e221c45067acf5bd9a751d20443"
+      },
+      {
+        "path": "docs/videos/ou-de-jianghu-e002/video.json",
+        "sha256": "0370b635c25ea236e87f1319055f4288ac76c22bacb8389eb342fc5ad050f736",
+        "current_sha256": "0370b635c25ea236e87f1319055f4288ac76c22bacb8389eb342fc5ad050f736"
+      },
+      {
+        "path": "docs/videos/ou-de-jianghu-e003/video.json",
+        "sha256": "08eb840f2746eab2786dafdfc917aa5e6060decab5154173cddb3d2a87b6ee66",
+        "current_sha256": "08eb840f2746eab2786dafdfc917aa5e6060decab5154173cddb3d2a87b6ee66"
+      },
+      {
+        "path": "docs/videos/ou-de-jianghu-e004/video.json",
+        "sha256": "9c9d01916b8a7a81bb7dd466f57fd2fc22f852543a2951ed215bd4ce94701541",
+        "current_sha256": "9c9d01916b8a7a81bb7dd466f57fd2fc22f852543a2951ed215bd4ce94701541"
+      },
+      {
+        "path": "docs/videos/ou-de-jianghu-e005/video.json",
+        "sha256": "2abaaf5ba38896c73f859d756b60cef370cc05a720665f37a6c005551a3c4e7b",
+        "current_sha256": "2abaaf5ba38896c73f859d756b60cef370cc05a720665f37a6c005551a3c4e7b"
+      },
+      {
+        "path": "docs/videos/ou-de-jianghu-e006/video.json",
+        "sha256": "fdbe8962da00948f7a2946def5ba50fdaf45024a20e29863cfbedb0a388ce065",
+        "current_sha256": "fdbe8962da00948f7a2946def5ba50fdaf45024a20e29863cfbedb0a388ce065"
+      },
+      {
+        "path": "docs/videos/ou-de-jianghu-e007/video.json",
+        "sha256": "58c48308d41c283046b5d419f33e449a0bb23a85139e8ada5bc56118ebf7357c",
+        "current_sha256": "58c48308d41c283046b5d419f33e449a0bb23a85139e8ada5bc56118ebf7357c"
+      }
+    ]
+  },
+  "runtime": {
+    "normal_episode": "<VIDEO_WORKDIR>/ou-de-jianghu-e001",
+    "preflight_document_directory": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/plan/preflight-20261009-v4",
+    "normal_media_cli_workbase": "<VIDEO_WORKDIR>",
+    "plan_lock_file_mode_workdir_is_episode": true,
+    "normal_media_cli_workdir_is_workbase": true,
+    "snapshot_before": {
+      "characters/manifest.json": {
+        "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/characters/manifest.json",
+        "exists": false,
+        "sha256": null
+      },
+      "characters/choice.json": {
+        "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/characters/choice.json",
+        "exists": false,
+        "sha256": null
+      },
+      "keyframes/manifest.json": {
+        "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/keyframes/manifest.json",
+        "exists": false,
+        "sha256": null
+      },
+      "timeline.json": {
+        "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/timeline.json",
+        "exists": false,
+        "sha256": null
+      },
+      "approvals.json": {
+        "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/approvals.json",
+        "exists": false,
+        "sha256": null
+      },
+      "plan/lock.json": {
+        "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/plan/lock.json",
+        "exists": false,
+        "sha256": null
+      },
+      "ledger.jsonl": {
+        "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/ledger.jsonl",
+        "exists": false,
+        "sha256": null
+      }
+    },
+    "snapshot_after": {
+      "characters/manifest.json": {
+        "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/characters/manifest.json",
+        "exists": false,
+        "sha256": null
+      },
+      "characters/choice.json": {
+        "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/characters/choice.json",
+        "exists": false,
+        "sha256": null
+      },
+      "keyframes/manifest.json": {
+        "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/keyframes/manifest.json",
+        "exists": false,
+        "sha256": null
+      },
+      "timeline.json": {
+        "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/timeline.json",
+        "exists": false,
+        "sha256": null
+      },
+      "approvals.json": {
+        "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/approvals.json",
+        "exists": false,
+        "sha256": null
+      },
+      "plan/lock.json": {
+        "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/plan/lock.json",
+        "exists": false,
+        "sha256": null
+      },
+      "ledger.jsonl": {
+        "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/ledger.jsonl",
+        "exists": false,
+        "sha256": null
+      }
+    },
+    "look_snapshot": {
+      "manifest_exists": false,
+      "characters": 0,
+      "candidates": 0,
+      "note": "Point-in-time snapshot; a parallel authorized import may create this file later."
+    },
+    "protected_runtime_files_unchanged": true,
+    "concurrent_import": "Another authorized team agent is importing 9 latest base candidates offline. This snapshot does not imply absence forever, approval, choice or judge success."
+  },
+  "readiness": {
+    "executable": "<BUNDLED_NODE>",
+    "argv": [
+      ".agents/skills/animation-preproduction/scripts/plan_lock.mjs",
+      "--file",
+      "<VIDEO_WORKDIR>/ou-de-jianghu-e001/plan/preflight-20261009-v4/video.json",
+      "--workdir",
+      "<VIDEO_WORKDIR>/ou-de-jianghu-e001",
+      "--route",
+      "hailuo",
+      "--plan",
+      "hailuo:max",
+      "--hailuo-model",
+      "h3",
+      "--resolution",
+      "2k",
+      "--handle",
+      "0.5",
+      "--clip-takes",
+      "2",
+      "--expected-takes",
+      "1.2,1.5,2",
+      "--pilot",
+      "a02-s035,a02-s036,a02-s037",
+      "--ready",
+      "--json"
+    ],
+    "cwd": "<REPO>",
+    "started_at": "2026-10-08T17:37:20.575Z",
+    "ended_at": "2026-10-08T17:37:25.645Z",
+    "exit_code": 1,
+    "signal": null,
+    "stdout": {
+      "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/adoption/20261009/plan-ready-normal.stdout.json",
+      "exists": true,
+      "sha256": "074be56470476f03892c0b75d6c84d73cef41af91ac5d0bd1ffa0b337d5567a2",
+      "bytes": 49397
+    },
+    "stderr": {
+      "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/adoption/20261009/plan-ready-normal.stderr.txt",
+      "exists": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "source": {
+      "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/plan/preflight-20261009-v4/video.json",
+      "exists": true,
+      "sha256": "cb341b457f28e5139cff6f0528722d2a0facebf8cfea90423aec572ed71ebd17",
+      "bytes": 432342
+    },
+    "protected_runtime_files_unchanged": true,
+    "writes": "Only this diagnostic capture writes stdout/stderr/receipts; plan_lock --ready is read-only.",
+    "ok": false,
+    "passed": 1,
+    "failed": 429,
+    "failure_categories": {
+      "gate": 4,
+      "timeline": 1,
+      "keyframes": 1,
+      "first_frame": 420,
+      "end_frame": 3
+    },
+    "gate_states": [
+      {
+        "id": "gate.script",
+        "ok": false,
+        "what": "script 關卡：absent"
+      },
+      {
+        "id": "gate.look",
+        "ok": false,
+        "what": "look 關卡：absent"
+      },
+      {
+        "id": "gate.audio",
+        "ok": false,
+        "what": "audio 關卡：absent"
+      },
+      {
+        "id": "gate.storyboard",
+        "ok": false,
+        "what": "storyboard 關卡：absent"
+      }
+    ],
+    "info": [
+      "還沒有鎖定檔：站主確認開拍鎖定包之後 --write，送出第一支之前再跑一次 --ready"
+    ],
+    "manual": [
+      "hailuoai.video 是站主的帳號、方案對（hailuo:max），餘額 ≥ 期望 30304.8 點＋一成預留",
+      "首格上傳的路：照當次瀏覽器工具的文件確認（2026-10-04 Claude 桌面版內建瀏覽器傳不了本機圖，當時的替代是站主同意後用 Claude in Chrome 的 file_upload，或站主手動）",
+      "生成頁：H3、2k、16:9（設定面板預設 21:9）、秒數照鎖定、單鏡",
+      "AI 潤飾（Hailuo 的 AI Polish、Kling 的 AI Prompter）開或關要寫進鎖定包（--assist on|off）",
+      "負面欄：網頁真的有才貼 look.negative；沒有就不貼，也不寫進正文",
+      "下載：全部下載 → 無水印下載（結果卡的 <video> 是有浮水印的版本）",
+      "收據檔（每支一筆：首格 sha256、正文 sha256 要等於鎖定檔、送出前後餘額、job id）與停損規則備好",
+      "`drama_preflight.mjs --stage clips` 沒有 refuse（clips import 的前提同 clips：timeline、keyframes manifest、storyboard 核准、沒有 profile）"
+    ],
+    "failed_checks": [
+      {
+        "id": "gate.script",
+        "ok": false,
+        "what": "script 關卡：absent"
+      },
+      {
+        "id": "gate.look",
+        "ok": false,
+        "what": "look 關卡：absent"
+      },
+      {
+        "id": "gate.audio",
+        "ok": false,
+        "what": "audio 關卡：absent"
+      },
+      {
+        "id": "gate.storyboard",
+        "ok": false,
+        "what": "storyboard 關卡：absent"
+      },
+      {
+        "id": "timeline.bound",
+        "ok": false,
+        "what": "還沒有錄好的 timeline.json：買幾秒是估的，先 tts"
+      },
+      {
+        "id": "keyframes.bound",
+        "ok": false,
+        "what": "還沒畫關鍵影格"
+      },
+      {
+        "id": "first_frame.a01-s001",
+        "ok": false,
+        "what": "a01-s001 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s002",
+        "ok": false,
+        "what": "a01-s002 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s003",
+        "ok": false,
+        "what": "a01-s003 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s004",
+        "ok": false,
+        "what": "a01-s004 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s006",
+        "ok": false,
+        "what": "a01-s006 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s007",
+        "ok": false,
+        "what": "a01-s007 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s008",
+        "ok": false,
+        "what": "a01-s008 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s010",
+        "ok": false,
+        "what": "a01-s010 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s011",
+        "ok": false,
+        "what": "a01-s011 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s012",
+        "ok": false,
+        "what": "a01-s012 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s013",
+        "ok": false,
+        "what": "a01-s013 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s014",
+        "ok": false,
+        "what": "a01-s014 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s015",
+        "ok": false,
+        "what": "a01-s015 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s016",
+        "ok": false,
+        "what": "a01-s016 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s017",
+        "ok": false,
+        "what": "a01-s017 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s018",
+        "ok": false,
+        "what": "a01-s018 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s019",
+        "ok": false,
+        "what": "a01-s019 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s020",
+        "ok": false,
+        "what": "a01-s020 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s021",
+        "ok": false,
+        "what": "a01-s021 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s022",
+        "ok": false,
+        "what": "a01-s022 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s023",
+        "ok": false,
+        "what": "a01-s023 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s024",
+        "ok": false,
+        "what": "a01-s024 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s025",
+        "ok": false,
+        "what": "a01-s025 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s026",
+        "ok": false,
+        "what": "a01-s026 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s027",
+        "ok": false,
+        "what": "a01-s027 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s028",
+        "ok": false,
+        "what": "a01-s028 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s029",
+        "ok": false,
+        "what": "a01-s029 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s030",
+        "ok": false,
+        "what": "a01-s030 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s031",
+        "ok": false,
+        "what": "a01-s031 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s032",
+        "ok": false,
+        "what": "a01-s032 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s033",
+        "ok": false,
+        "what": "a01-s033 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s034",
+        "ok": false,
+        "what": "a01-s034 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s035",
+        "ok": false,
+        "what": "a01-s035 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s036",
+        "ok": false,
+        "what": "a01-s036 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s037",
+        "ok": false,
+        "what": "a01-s037 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s038",
+        "ok": false,
+        "what": "a01-s038 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s039",
+        "ok": false,
+        "what": "a01-s039 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s040",
+        "ok": false,
+        "what": "a01-s040 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s041",
+        "ok": false,
+        "what": "a01-s041 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s042",
+        "ok": false,
+        "what": "a01-s042 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s043",
+        "ok": false,
+        "what": "a01-s043 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s044",
+        "ok": false,
+        "what": "a01-s044 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s045",
+        "ok": false,
+        "what": "a01-s045 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s046",
+        "ok": false,
+        "what": "a01-s046 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s047",
+        "ok": false,
+        "what": "a01-s047 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s048",
+        "ok": false,
+        "what": "a01-s048 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s049",
+        "ok": false,
+        "what": "a01-s049 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s050",
+        "ok": false,
+        "what": "a01-s050 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s051",
+        "ok": false,
+        "what": "a01-s051 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s052",
+        "ok": false,
+        "what": "a01-s052 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s053",
+        "ok": false,
+        "what": "a01-s053 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s054",
+        "ok": false,
+        "what": "a01-s054 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s055",
+        "ok": false,
+        "what": "a01-s055 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s056",
+        "ok": false,
+        "what": "a01-s056 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s059",
+        "ok": false,
+        "what": "a01-s059 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s060",
+        "ok": false,
+        "what": "a01-s060 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s061",
+        "ok": false,
+        "what": "a01-s061 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s062",
+        "ok": false,
+        "what": "a01-s062 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s063",
+        "ok": false,
+        "what": "a01-s063 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s064",
+        "ok": false,
+        "what": "a01-s064 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s065",
+        "ok": false,
+        "what": "a01-s065 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s066",
+        "ok": false,
+        "what": "a01-s066 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s067",
+        "ok": false,
+        "what": "a01-s067 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s068",
+        "ok": false,
+        "what": "a01-s068 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s069",
+        "ok": false,
+        "what": "a01-s069 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s070",
+        "ok": false,
+        "what": "a01-s070 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s071",
+        "ok": false,
+        "what": "a01-s071 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s072",
+        "ok": false,
+        "what": "a01-s072 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s073",
+        "ok": false,
+        "what": "a01-s073 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s074",
+        "ok": false,
+        "what": "a01-s074 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s075",
+        "ok": false,
+        "what": "a01-s075 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s076",
+        "ok": false,
+        "what": "a01-s076 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s077",
+        "ok": false,
+        "what": "a01-s077 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s078",
+        "ok": false,
+        "what": "a01-s078 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s079",
+        "ok": false,
+        "what": "a01-s079 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s080",
+        "ok": false,
+        "what": "a01-s080 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s081",
+        "ok": false,
+        "what": "a01-s081 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s082",
+        "ok": false,
+        "what": "a01-s082 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s083",
+        "ok": false,
+        "what": "a01-s083 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s084",
+        "ok": false,
+        "what": "a01-s084 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s085",
+        "ok": false,
+        "what": "a01-s085 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s086",
+        "ok": false,
+        "what": "a01-s086 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s087",
+        "ok": false,
+        "what": "a01-s087 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s088",
+        "ok": false,
+        "what": "a01-s088 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s089",
+        "ok": false,
+        "what": "a01-s089 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s090",
+        "ok": false,
+        "what": "a01-s090 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s091",
+        "ok": false,
+        "what": "a01-s091 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s092",
+        "ok": false,
+        "what": "a01-s092 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a01-s093",
+        "ok": false,
+        "what": "a01-s093 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s003",
+        "ok": false,
+        "what": "a02-s003 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s004",
+        "ok": false,
+        "what": "a02-s004 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s005",
+        "ok": false,
+        "what": "a02-s005 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s006",
+        "ok": false,
+        "what": "a02-s006 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s007",
+        "ok": false,
+        "what": "a02-s007 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s008",
+        "ok": false,
+        "what": "a02-s008 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s009",
+        "ok": false,
+        "what": "a02-s009 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s010",
+        "ok": false,
+        "what": "a02-s010 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s011",
+        "ok": false,
+        "what": "a02-s011 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s012",
+        "ok": false,
+        "what": "a02-s012 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s013",
+        "ok": false,
+        "what": "a02-s013 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s014",
+        "ok": false,
+        "what": "a02-s014 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s015",
+        "ok": false,
+        "what": "a02-s015 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s016",
+        "ok": false,
+        "what": "a02-s016 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s017",
+        "ok": false,
+        "what": "a02-s017 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s018",
+        "ok": false,
+        "what": "a02-s018 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s019",
+        "ok": false,
+        "what": "a02-s019 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s020",
+        "ok": false,
+        "what": "a02-s020 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s021",
+        "ok": false,
+        "what": "a02-s021 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s022",
+        "ok": false,
+        "what": "a02-s022 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s023",
+        "ok": false,
+        "what": "a02-s023 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s024",
+        "ok": false,
+        "what": "a02-s024 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s025",
+        "ok": false,
+        "what": "a02-s025 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s026",
+        "ok": false,
+        "what": "a02-s026 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s027",
+        "ok": false,
+        "what": "a02-s027 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s028",
+        "ok": false,
+        "what": "a02-s028 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s029",
+        "ok": false,
+        "what": "a02-s029 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s030",
+        "ok": false,
+        "what": "a02-s030 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s031",
+        "ok": false,
+        "what": "a02-s031 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s032",
+        "ok": false,
+        "what": "a02-s032 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s033",
+        "ok": false,
+        "what": "a02-s033 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s034",
+        "ok": false,
+        "what": "a02-s034 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s035",
+        "ok": false,
+        "what": "a02-s035 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s036",
+        "ok": false,
+        "what": "a02-s036 的首格還沒畫"
+      },
+      {
+        "id": "end_frame.a02-s036",
+        "ok": false,
+        "what": "a02-s036 計畫要末格，但還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s037",
+        "ok": false,
+        "what": "a02-s037 的首格還沒畫"
+      },
+      {
+        "id": "end_frame.a02-s037",
+        "ok": false,
+        "what": "a02-s037 計畫要末格，但還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s038",
+        "ok": false,
+        "what": "a02-s038 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s039",
+        "ok": false,
+        "what": "a02-s039 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s040",
+        "ok": false,
+        "what": "a02-s040 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s041",
+        "ok": false,
+        "what": "a02-s041 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s042",
+        "ok": false,
+        "what": "a02-s042 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s043",
+        "ok": false,
+        "what": "a02-s043 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s044",
+        "ok": false,
+        "what": "a02-s044 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s045",
+        "ok": false,
+        "what": "a02-s045 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s048",
+        "ok": false,
+        "what": "a02-s048 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s049",
+        "ok": false,
+        "what": "a02-s049 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s050",
+        "ok": false,
+        "what": "a02-s050 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s051",
+        "ok": false,
+        "what": "a02-s051 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s052",
+        "ok": false,
+        "what": "a02-s052 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s053",
+        "ok": false,
+        "what": "a02-s053 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s054",
+        "ok": false,
+        "what": "a02-s054 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s055",
+        "ok": false,
+        "what": "a02-s055 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s056",
+        "ok": false,
+        "what": "a02-s056 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s058",
+        "ok": false,
+        "what": "a02-s058 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s060",
+        "ok": false,
+        "what": "a02-s060 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s061",
+        "ok": false,
+        "what": "a02-s061 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s062",
+        "ok": false,
+        "what": "a02-s062 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s063",
+        "ok": false,
+        "what": "a02-s063 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s064",
+        "ok": false,
+        "what": "a02-s064 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s066",
+        "ok": false,
+        "what": "a02-s066 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s067",
+        "ok": false,
+        "what": "a02-s067 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s068",
+        "ok": false,
+        "what": "a02-s068 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s070",
+        "ok": false,
+        "what": "a02-s070 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s071",
+        "ok": false,
+        "what": "a02-s071 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s072",
+        "ok": false,
+        "what": "a02-s072 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s073",
+        "ok": false,
+        "what": "a02-s073 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s074",
+        "ok": false,
+        "what": "a02-s074 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s075",
+        "ok": false,
+        "what": "a02-s075 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s076",
+        "ok": false,
+        "what": "a02-s076 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s077",
+        "ok": false,
+        "what": "a02-s077 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s078",
+        "ok": false,
+        "what": "a02-s078 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s079",
+        "ok": false,
+        "what": "a02-s079 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s080",
+        "ok": false,
+        "what": "a02-s080 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s081",
+        "ok": false,
+        "what": "a02-s081 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s082",
+        "ok": false,
+        "what": "a02-s082 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s083",
+        "ok": false,
+        "what": "a02-s083 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s084",
+        "ok": false,
+        "what": "a02-s084 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s085",
+        "ok": false,
+        "what": "a02-s085 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s086",
+        "ok": false,
+        "what": "a02-s086 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s087",
+        "ok": false,
+        "what": "a02-s087 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s088",
+        "ok": false,
+        "what": "a02-s088 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s089",
+        "ok": false,
+        "what": "a02-s089 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s090",
+        "ok": false,
+        "what": "a02-s090 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s091",
+        "ok": false,
+        "what": "a02-s091 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s092",
+        "ok": false,
+        "what": "a02-s092 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s093",
+        "ok": false,
+        "what": "a02-s093 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a02-s094",
+        "ok": false,
+        "what": "a02-s094 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s001",
+        "ok": false,
+        "what": "a03-s001 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s002",
+        "ok": false,
+        "what": "a03-s002 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s003",
+        "ok": false,
+        "what": "a03-s003 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s004",
+        "ok": false,
+        "what": "a03-s004 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s005",
+        "ok": false,
+        "what": "a03-s005 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s006",
+        "ok": false,
+        "what": "a03-s006 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s007",
+        "ok": false,
+        "what": "a03-s007 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s008",
+        "ok": false,
+        "what": "a03-s008 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s009",
+        "ok": false,
+        "what": "a03-s009 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s010",
+        "ok": false,
+        "what": "a03-s010 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s011",
+        "ok": false,
+        "what": "a03-s011 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s012",
+        "ok": false,
+        "what": "a03-s012 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s013",
+        "ok": false,
+        "what": "a03-s013 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s014",
+        "ok": false,
+        "what": "a03-s014 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s015",
+        "ok": false,
+        "what": "a03-s015 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s016",
+        "ok": false,
+        "what": "a03-s016 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s017",
+        "ok": false,
+        "what": "a03-s017 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s018",
+        "ok": false,
+        "what": "a03-s018 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s019",
+        "ok": false,
+        "what": "a03-s019 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s020",
+        "ok": false,
+        "what": "a03-s020 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s021",
+        "ok": false,
+        "what": "a03-s021 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s022",
+        "ok": false,
+        "what": "a03-s022 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s023",
+        "ok": false,
+        "what": "a03-s023 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s024",
+        "ok": false,
+        "what": "a03-s024 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s025",
+        "ok": false,
+        "what": "a03-s025 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s026",
+        "ok": false,
+        "what": "a03-s026 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s027",
+        "ok": false,
+        "what": "a03-s027 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s028",
+        "ok": false,
+        "what": "a03-s028 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s029",
+        "ok": false,
+        "what": "a03-s029 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s030",
+        "ok": false,
+        "what": "a03-s030 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s031",
+        "ok": false,
+        "what": "a03-s031 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s032",
+        "ok": false,
+        "what": "a03-s032 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s033",
+        "ok": false,
+        "what": "a03-s033 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s034",
+        "ok": false,
+        "what": "a03-s034 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s035",
+        "ok": false,
+        "what": "a03-s035 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s036",
+        "ok": false,
+        "what": "a03-s036 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s037",
+        "ok": false,
+        "what": "a03-s037 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s038",
+        "ok": false,
+        "what": "a03-s038 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s040",
+        "ok": false,
+        "what": "a03-s040 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s041",
+        "ok": false,
+        "what": "a03-s041 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s042",
+        "ok": false,
+        "what": "a03-s042 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s043",
+        "ok": false,
+        "what": "a03-s043 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s044",
+        "ok": false,
+        "what": "a03-s044 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s045",
+        "ok": false,
+        "what": "a03-s045 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s046",
+        "ok": false,
+        "what": "a03-s046 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s047",
+        "ok": false,
+        "what": "a03-s047 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s048",
+        "ok": false,
+        "what": "a03-s048 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s049",
+        "ok": false,
+        "what": "a03-s049 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s051",
+        "ok": false,
+        "what": "a03-s051 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s052",
+        "ok": false,
+        "what": "a03-s052 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s053",
+        "ok": false,
+        "what": "a03-s053 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s055",
+        "ok": false,
+        "what": "a03-s055 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s056",
+        "ok": false,
+        "what": "a03-s056 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s057",
+        "ok": false,
+        "what": "a03-s057 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s058",
+        "ok": false,
+        "what": "a03-s058 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s059",
+        "ok": false,
+        "what": "a03-s059 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s060",
+        "ok": false,
+        "what": "a03-s060 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s061",
+        "ok": false,
+        "what": "a03-s061 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s062",
+        "ok": false,
+        "what": "a03-s062 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s063",
+        "ok": false,
+        "what": "a03-s063 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s064",
+        "ok": false,
+        "what": "a03-s064 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s065",
+        "ok": false,
+        "what": "a03-s065 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s066",
+        "ok": false,
+        "what": "a03-s066 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s067",
+        "ok": false,
+        "what": "a03-s067 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s068",
+        "ok": false,
+        "what": "a03-s068 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s069",
+        "ok": false,
+        "what": "a03-s069 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s070",
+        "ok": false,
+        "what": "a03-s070 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s071",
+        "ok": false,
+        "what": "a03-s071 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s072",
+        "ok": false,
+        "what": "a03-s072 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s073",
+        "ok": false,
+        "what": "a03-s073 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s074",
+        "ok": false,
+        "what": "a03-s074 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s075",
+        "ok": false,
+        "what": "a03-s075 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s076",
+        "ok": false,
+        "what": "a03-s076 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s077",
+        "ok": false,
+        "what": "a03-s077 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s078",
+        "ok": false,
+        "what": "a03-s078 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s079",
+        "ok": false,
+        "what": "a03-s079 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s080",
+        "ok": false,
+        "what": "a03-s080 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s081",
+        "ok": false,
+        "what": "a03-s081 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s082",
+        "ok": false,
+        "what": "a03-s082 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s083",
+        "ok": false,
+        "what": "a03-s083 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s084",
+        "ok": false,
+        "what": "a03-s084 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s086",
+        "ok": false,
+        "what": "a03-s086 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s088",
+        "ok": false,
+        "what": "a03-s088 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s089",
+        "ok": false,
+        "what": "a03-s089 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a03-s090",
+        "ok": false,
+        "what": "a03-s090 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s001",
+        "ok": false,
+        "what": "a04-s001 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s002",
+        "ok": false,
+        "what": "a04-s002 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s003",
+        "ok": false,
+        "what": "a04-s003 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s004",
+        "ok": false,
+        "what": "a04-s004 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s006",
+        "ok": false,
+        "what": "a04-s006 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s007",
+        "ok": false,
+        "what": "a04-s007 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s008",
+        "ok": false,
+        "what": "a04-s008 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s010",
+        "ok": false,
+        "what": "a04-s010 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s011",
+        "ok": false,
+        "what": "a04-s011 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s012",
+        "ok": false,
+        "what": "a04-s012 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s013",
+        "ok": false,
+        "what": "a04-s013 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s014",
+        "ok": false,
+        "what": "a04-s014 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s016",
+        "ok": false,
+        "what": "a04-s016 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s017",
+        "ok": false,
+        "what": "a04-s017 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s018",
+        "ok": false,
+        "what": "a04-s018 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s019",
+        "ok": false,
+        "what": "a04-s019 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s020",
+        "ok": false,
+        "what": "a04-s020 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s021",
+        "ok": false,
+        "what": "a04-s021 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s022",
+        "ok": false,
+        "what": "a04-s022 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s023",
+        "ok": false,
+        "what": "a04-s023 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s024",
+        "ok": false,
+        "what": "a04-s024 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s025",
+        "ok": false,
+        "what": "a04-s025 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s026",
+        "ok": false,
+        "what": "a04-s026 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s027",
+        "ok": false,
+        "what": "a04-s027 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s028",
+        "ok": false,
+        "what": "a04-s028 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s029",
+        "ok": false,
+        "what": "a04-s029 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s030",
+        "ok": false,
+        "what": "a04-s030 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s031",
+        "ok": false,
+        "what": "a04-s031 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s032",
+        "ok": false,
+        "what": "a04-s032 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s033",
+        "ok": false,
+        "what": "a04-s033 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s034",
+        "ok": false,
+        "what": "a04-s034 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s035",
+        "ok": false,
+        "what": "a04-s035 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s036",
+        "ok": false,
+        "what": "a04-s036 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s037",
+        "ok": false,
+        "what": "a04-s037 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s039",
+        "ok": false,
+        "what": "a04-s039 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s040",
+        "ok": false,
+        "what": "a04-s040 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s041",
+        "ok": false,
+        "what": "a04-s041 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s042",
+        "ok": false,
+        "what": "a04-s042 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s043",
+        "ok": false,
+        "what": "a04-s043 的首格還沒畫"
+      },
+      {
+        "id": "end_frame.a04-s043",
+        "ok": false,
+        "what": "a04-s043 計畫要末格，但還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s044",
+        "ok": false,
+        "what": "a04-s044 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s045",
+        "ok": false,
+        "what": "a04-s045 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s046",
+        "ok": false,
+        "what": "a04-s046 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s047",
+        "ok": false,
+        "what": "a04-s047 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s048",
+        "ok": false,
+        "what": "a04-s048 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s049",
+        "ok": false,
+        "what": "a04-s049 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s050",
+        "ok": false,
+        "what": "a04-s050 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s052",
+        "ok": false,
+        "what": "a04-s052 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s053",
+        "ok": false,
+        "what": "a04-s053 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s054",
+        "ok": false,
+        "what": "a04-s054 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s055",
+        "ok": false,
+        "what": "a04-s055 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s056",
+        "ok": false,
+        "what": "a04-s056 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s057",
+        "ok": false,
+        "what": "a04-s057 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s058",
+        "ok": false,
+        "what": "a04-s058 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s059",
+        "ok": false,
+        "what": "a04-s059 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s060",
+        "ok": false,
+        "what": "a04-s060 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s061",
+        "ok": false,
+        "what": "a04-s061 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s063",
+        "ok": false,
+        "what": "a04-s063 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s064",
+        "ok": false,
+        "what": "a04-s064 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s065",
+        "ok": false,
+        "what": "a04-s065 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s066",
+        "ok": false,
+        "what": "a04-s066 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s068",
+        "ok": false,
+        "what": "a04-s068 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s069",
+        "ok": false,
+        "what": "a04-s069 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s070",
+        "ok": false,
+        "what": "a04-s070 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s072",
+        "ok": false,
+        "what": "a04-s072 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s073",
+        "ok": false,
+        "what": "a04-s073 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s074",
+        "ok": false,
+        "what": "a04-s074 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s075",
+        "ok": false,
+        "what": "a04-s075 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s076",
+        "ok": false,
+        "what": "a04-s076 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s077",
+        "ok": false,
+        "what": "a04-s077 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s078",
+        "ok": false,
+        "what": "a04-s078 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s080",
+        "ok": false,
+        "what": "a04-s080 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s081",
+        "ok": false,
+        "what": "a04-s081 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s082",
+        "ok": false,
+        "what": "a04-s082 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s083",
+        "ok": false,
+        "what": "a04-s083 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s084",
+        "ok": false,
+        "what": "a04-s084 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s085",
+        "ok": false,
+        "what": "a04-s085 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s086",
+        "ok": false,
+        "what": "a04-s086 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s087",
+        "ok": false,
+        "what": "a04-s087 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s088",
+        "ok": false,
+        "what": "a04-s088 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s089",
+        "ok": false,
+        "what": "a04-s089 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s090",
+        "ok": false,
+        "what": "a04-s090 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a04-s091",
+        "ok": false,
+        "what": "a04-s091 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s001",
+        "ok": false,
+        "what": "a05-s001 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s002",
+        "ok": false,
+        "what": "a05-s002 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s003",
+        "ok": false,
+        "what": "a05-s003 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s004",
+        "ok": false,
+        "what": "a05-s004 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s005",
+        "ok": false,
+        "what": "a05-s005 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s006",
+        "ok": false,
+        "what": "a05-s006 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s007",
+        "ok": false,
+        "what": "a05-s007 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s008",
+        "ok": false,
+        "what": "a05-s008 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s009",
+        "ok": false,
+        "what": "a05-s009 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s010",
+        "ok": false,
+        "what": "a05-s010 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s011",
+        "ok": false,
+        "what": "a05-s011 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s013",
+        "ok": false,
+        "what": "a05-s013 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s014",
+        "ok": false,
+        "what": "a05-s014 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s015",
+        "ok": false,
+        "what": "a05-s015 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s016",
+        "ok": false,
+        "what": "a05-s016 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s017",
+        "ok": false,
+        "what": "a05-s017 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s018",
+        "ok": false,
+        "what": "a05-s018 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s019",
+        "ok": false,
+        "what": "a05-s019 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s020",
+        "ok": false,
+        "what": "a05-s020 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s021",
+        "ok": false,
+        "what": "a05-s021 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s022",
+        "ok": false,
+        "what": "a05-s022 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s023",
+        "ok": false,
+        "what": "a05-s023 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s024",
+        "ok": false,
+        "what": "a05-s024 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s025",
+        "ok": false,
+        "what": "a05-s025 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s026",
+        "ok": false,
+        "what": "a05-s026 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s027",
+        "ok": false,
+        "what": "a05-s027 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s029",
+        "ok": false,
+        "what": "a05-s029 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s031",
+        "ok": false,
+        "what": "a05-s031 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s033",
+        "ok": false,
+        "what": "a05-s033 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s034",
+        "ok": false,
+        "what": "a05-s034 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s035",
+        "ok": false,
+        "what": "a05-s035 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s038",
+        "ok": false,
+        "what": "a05-s038 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s039",
+        "ok": false,
+        "what": "a05-s039 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s040",
+        "ok": false,
+        "what": "a05-s040 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s042",
+        "ok": false,
+        "what": "a05-s042 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s043",
+        "ok": false,
+        "what": "a05-s043 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s044",
+        "ok": false,
+        "what": "a05-s044 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s045",
+        "ok": false,
+        "what": "a05-s045 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s046",
+        "ok": false,
+        "what": "a05-s046 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s047",
+        "ok": false,
+        "what": "a05-s047 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s048",
+        "ok": false,
+        "what": "a05-s048 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s049",
+        "ok": false,
+        "what": "a05-s049 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s050",
+        "ok": false,
+        "what": "a05-s050 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s051",
+        "ok": false,
+        "what": "a05-s051 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s052",
+        "ok": false,
+        "what": "a05-s052 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s053",
+        "ok": false,
+        "what": "a05-s053 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s054",
+        "ok": false,
+        "what": "a05-s054 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s055",
+        "ok": false,
+        "what": "a05-s055 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s056",
+        "ok": false,
+        "what": "a05-s056 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s057",
+        "ok": false,
+        "what": "a05-s057 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s058",
+        "ok": false,
+        "what": "a05-s058 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s059",
+        "ok": false,
+        "what": "a05-s059 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s060",
+        "ok": false,
+        "what": "a05-s060 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s061",
+        "ok": false,
+        "what": "a05-s061 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s062",
+        "ok": false,
+        "what": "a05-s062 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s063",
+        "ok": false,
+        "what": "a05-s063 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s064",
+        "ok": false,
+        "what": "a05-s064 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s065",
+        "ok": false,
+        "what": "a05-s065 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s066",
+        "ok": false,
+        "what": "a05-s066 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s068",
+        "ok": false,
+        "what": "a05-s068 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s069",
+        "ok": false,
+        "what": "a05-s069 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s070",
+        "ok": false,
+        "what": "a05-s070 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s071",
+        "ok": false,
+        "what": "a05-s071 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s072",
+        "ok": false,
+        "what": "a05-s072 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s073",
+        "ok": false,
+        "what": "a05-s073 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s074",
+        "ok": false,
+        "what": "a05-s074 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s075",
+        "ok": false,
+        "what": "a05-s075 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s076",
+        "ok": false,
+        "what": "a05-s076 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s079",
+        "ok": false,
+        "what": "a05-s079 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s080",
+        "ok": false,
+        "what": "a05-s080 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s081",
+        "ok": false,
+        "what": "a05-s081 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s082",
+        "ok": false,
+        "what": "a05-s082 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s083",
+        "ok": false,
+        "what": "a05-s083 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s084",
+        "ok": false,
+        "what": "a05-s084 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s086",
+        "ok": false,
+        "what": "a05-s086 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s087",
+        "ok": false,
+        "what": "a05-s087 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s088",
+        "ok": false,
+        "what": "a05-s088 的首格還沒畫"
+      },
+      {
+        "id": "first_frame.a05-s090",
+        "ok": false,
+        "what": "a05-s090 的首格還沒畫"
+      }
+    ]
+  },
+  "plan_lock_rules": {
+    "initial_write_needs_readiness_green": false,
+    "initial_write_code_refuses": [
+      "existing lock without --force",
+      "plan problems with level=refuse"
+    ],
+    "owner_concrete_p7_confirmation_required_by_skill": true,
+    "current_refusals": [],
+    "current_warnings": [
+      {
+        "level": "waste",
+        "shot": null,
+        "what": "片段期望 30304.8 credits，超過 Hailuo Max 一個月的 27000",
+        "fix": "換方案、分兩個月做，或用槓桿（still、切鏡、拆掉 C 級鏡頭）"
+      }
+    ],
+    "missing_media_are_preproduction_todos": true,
+    "before_first_paid_clip_all_applicable_programmatic_checks_must_pass": true,
+    "accept_flag_is_existing_lock_change_order_only": true,
+    "native_lock_does_not_automatically_bind_manual_budget_or_art_manifest": true,
+    "no_write_authorization_from_route_reply": true
+  },
+  "budget": {
+    "status": "proposal-not-approved",
+    "rate_checked_on": "2026-10-08",
+    "totals": {
+      "imagegen_new_target": 103,
+      "imagegen_expected_requests": 135,
+      "imagegen_request_cap": 206,
+      "imagegen_usd": null,
+      "clip_one_credits": 22152,
+      "clip_expected_credits": 30494.4,
+      "clip_cap_credits": 44304,
+      "clip_expected_plus_10pct": 33543.84,
+      "clip_cap_plus_10pct": 48734.4,
+      "clip_allocated_usd": {
+        "one": 177.216,
+        "expected": 243.9552,
+        "cap": 354.432
+      },
+      "api": {
+        "one": 72.922,
+        "expected": 98.7016,
+        "cap": 223.1652,
+        "expected_plus_10pct": 108.5718,
+        "cap_plus_10pct": 245.4817
+      },
+      "full_prospective_subscription_charge_ceiling": 432,
+      "known_subscription_plus_api_cap_reserve_usd": 677.4817,
+      "note": "Two 27000-credit allocation periods are required. $432 is 2×$216 subscription cost if both periods have to be newly paid, not a checkout or top-up quote. Existing subscription sunk cost/allocation is unknown. Credits do not imply USD cash savings. Built-in imagegen USD and tax are not included in this known subtotal."
+    },
+    "periods": [
+      {
+        "name": "額度期A",
+        "capacity": 27000,
+        "cap": 24528,
+        "expected": 16940.4,
+        "cap_plus_reserve": 26980.8,
+        "expected_plus_reserve": 18634.44,
+        "spare_after_cap_reserve": 19.2,
+        "clip_count": 236
+      },
+      {
+        "name": "額度期B",
+        "capacity": 27000,
+        "cap": 19776,
+        "expected": 13554,
+        "cap_plus_reserve": 21753.6,
+        "expected_plus_reserve": 14909.4,
+        "spare_after_cap_reserve": 5246.4,
+        "clip_count": 184
+      }
+    ],
+    "pilot": {
+      "shots": [
+        "a02-s035",
+        "a02-s036",
+        "a02-s037"
+      ],
+      "one_credits": 144,
+      "expected_credits": 240,
+      "cap_credits": 288,
+      "expected_plus_10pct": 264,
+      "cap_plus_10pct": 316.8,
+      "take_cap": 2
+    },
+    "native_snapshot": {
+      "counts": {
+        "shots": 455,
+        "clips": 420,
+        "stills": 30,
+        "cuts": 5,
+        "A": 189,
+        "B": 231,
+        "C": 0
+      },
+      "totals": {
+        "seconds": 1385.62,
+        "clip_seconds": 1846,
+        "utilisation": 0.7044,
+        "clip": {
+          "unit": "credits",
+          "one": 22152,
+          "expected": 30304.8,
+          "cap": 44304,
+          "usd_fee": {
+            "one": 164.0807,
+            "expected": 224.4688,
+            "cap": 328.1614
+          }
+        },
+        "server_side_usd": {
+          "usd_one": 69.17,
+          "usd_cap": 202.658
+        },
+        "setups": [
+          {
+            "chapter": "鑄爐黑風",
+            "setups": 8,
+            "shots": 8
+          },
+          {
+            "chapter": "齊雲山",
+            "setups": 28,
+            "shots": 35
+          },
+          {
+            "chapter": "門前兩百人",
+            "setups": 33,
+            "shots": 48
+          },
+          {
+            "chapter": "怒目",
+            "setups": 34,
+            "shots": 41
+          },
+          {
+            "chapter": "掌下",
+            "setups": 41,
+            "shots": 51
+          },
+          {
+            "chapter": "盟堂",
+            "setups": 24,
+            "shots": 39
+          },
+          {
+            "chapter": "金印",
+            "setups": 33,
+            "shots": 42
+          },
+          {
+            "chapter": "客院",
+            "setups": 9,
+            "shots": 9
+          },
+          {
+            "chapter": "外港",
+            "setups": 36,
+            "shots": 49
+          },
+          {
+            "chapter": "殘局",
+            "setups": 24,
+            "shots": 42
+          },
+          {
+            "chapter": "安神茶",
+            "setups": 17,
+            "shots": 21
+          },
+          {
+            "chapter": "無傷無血",
+            "setups": 43,
+            "shots": 53
+          },
+          {
+            "chapter": "斷弦",
+            "setups": 13,
+            "shots": 17
+          }
+        ],
+        "plan_share": {
+          "one": 0.8204,
+          "expected": 1.1224,
+          "cap": 1.6409
+        }
+      },
+      "problems": [
+        {
+          "level": "waste",
+          "shot": null,
+          "what": "片段期望 30304.8 credits，超過 Hailuo Max 一個月的 27000",
+          "fix": "換方案、分兩個月做，或用槓桿（still、切鏡、拆掉 C 級鏡頭）"
+        }
+      ],
+      "plan": {
+        "id": "hailuo:max",
+        "label": "Hailuo Max",
+        "credits": 27000,
+        "fee_usd": 199.99,
+        "resolution": "2k",
+        "credits_per_second": 12,
+        "model": "Hailuo H3",
+        "per_clip": null
+      },
+      "production_policy": "long-anime-v1",
+      "series_production_profile": null
+    },
+    "native_expected_credits": 30304.8,
+    "manual_expected_credits": 30494.4,
+    "tool_fee_is_historical_constant": 199.99,
+    "manual_rate_historical_month_usd": 216,
+    "exclusions": [
+      "Built-in imagegen cash billing unknown",
+      "Tax unknown",
+      "Already-paid subscription allocation unknown"
+    ],
+    "warning": "The manual human-risk budget and native plan totals differ. Bind both original hashes in a concrete adoption receipt; do not edit a native lock to pretend it includes the manual envelope. Historical request target counts in the budget are not the final delivered art inventory."
+  },
+  "live_api": {
+    "observed_at": "2026-10-08T17:37:27.681Z",
+    "request_started_at": "2026-10-08T17:37:25.678Z",
+    "method": "GET",
+    "endpoint": "https://mokaair.com/api/video/media/status",
+    "ok": true,
+    "credentials_present": true,
+    "enabled": false,
+    "image": {
+      "provider": "gemini",
+      "model": "gemini-3-pro-image",
+      "configured": true,
+      "resolution": null,
+      "seconds": null,
+      "usd_per_image_2k": 0.134
+    },
+    "clip": {
+      "provider": "gemini",
+      "model": "gemini-omni-1.1-flash",
+      "configured": true,
+      "resolution": "1080p",
+      "seconds": 8
+    },
+    "max_usd_per_video": 200,
+    "judge_min_score": 7,
+    "budgets": {
+      "clip_seconds": {
+        "unit": "seconds",
+        "limit": 3000,
+        "used": 32,
+        "remaining": 2968
+      },
+      "images": {
+        "unit": "images",
+        "limit": 10000,
+        "used": 5741,
+        "remaining": 4259
+      },
+      "music": {
+        "unit": "tracks",
+        "limit": 60,
+        "used": 0,
+        "remaining": 60
+      },
+      "judge_calls": {
+        "unit": "calls",
+        "limit": 10000,
+        "used": 6599,
+        "remaining": 3401
+      }
+    },
+    "paid_call_made": false,
+    "server_write_made": false
+  },
+  "hailuo_ui_handoff": {
+    "observed_by": "root through Chrome, reported to this audit agent",
+    "observed_on": "2026-10-09",
+    "account_plan": "Max",
+    "visible_balance_credits": 27000,
+    "form": {
+      "model": "H3",
+      "mode": "first-and-last-frame",
+      "resolution": "2K",
+      "aspect": "16:9",
+      "seconds": 4,
+      "outputs": 1,
+      "quoted_credits": 48
+    },
+    "screenshot": {
+      "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/final-art/20261009/qa/hailuo-preflight-20261009.jpg",
+      "exists": true,
+      "sha256": "73475000e4a69d851d361656e91208492c2831f17c6933d7e359e91c49b3d7a5",
+      "bytes": 80948
+    },
+    "separate_primary_receipt_owned_by": "root",
+    "upload_capability": "Documented browser API; not exercised with actual local first-frame upload in this preflight",
+    "generation_submitted": false,
+    "credits_spent": false,
+    "limitation": "A visible balance/form quote is not a reservation, accepted budget or generation receipt; next balance must be checked before paid submission."
+  },
+  "blockers": [
+    "Concrete budget/P7 acceptance not given by the route-only reply.",
+    "Runtime look candidates, selection and approval are distinct; imported candidates still need the normal judge and choice route.",
+    "The live media route is disabled, so look import --judge refuses before paid submission.",
+    "Manual API cap including reserve is 245.4817 USD, above the live 200 USD per-video cap; no cap change or authorization inferred.",
+    "The v4 source is external. approve CLI accepts --slug and loads canonical repo sources, not --file; reconcile ownership and source binding before script/look approvals.",
+    "No v4 script.md has been established by this audit. Generated screenplay changes with motion/action edits even if dialogue and seconds are unchanged.",
+    "Timeline, keyframes and storyboard must be produced and verified before the first paid clip.",
+    "Local upload, completed no-watermark download, actual Hailuo generation/import and pilot acceptance remain untested."
+  ],
+  "safe_next_steps": [
+    "Keep current v4 and original budget hashes; show concrete period, pilot and API ceilings for approval.",
+    "Finish and read back authorized offline candidate imports, preserving pending judge/choice/approval states.",
+    "Resolve canonical source ownership and v4 screenplay binding without borrowing older approvals.",
+    "Only after explicit concrete P7 confirmation, write the first lock with the same planning flags, --assist off and the actual owner note; no --force needed if still absent.",
+    "Run --check after the write; complete normal look/audio/storyboard stages within authorized routes and caps; re-run --ready immediately before the first paid clip.",
+    "Use the normal episode directory for plan_lock --file --workdir, but use its parent video workbase for media CLI --workdir. Do not split runtime artifacts across the v4 document directory and normal episode."
+  ],
+  "primary_code": [
+    {
+      "path": "<REPO>/.agents/skills/animation-preproduction/scripts/plan_lock.mjs",
+      "exists": true,
+      "sha256": "4e5c0cd356add506e6dae80f63dee864907ae39c1587f0054d101734a0042a57",
+      "bytes": 37474,
+      "lines": "64-113;388-444;529-583"
+    },
+    {
+      "path": "<REPO>/.agents/skills/animation-preproduction/SKILL.md",
+      "exists": true,
+      "sha256": "7c3bdc235c879804fa7d868586373317d51a4554a47d3a964dcc43beb28a155e",
+      "bytes": 22105,
+      "lines": "112-119"
+    },
+    {
+      "path": "<REPO>/.agents/skills/animation-preproduction/scripts/shot_plan.mjs",
+      "exists": true,
+      "sha256": "3f3309908242a7710447c060b9b1ad316dd94683ef1849f13413593fd815ce7d",
+      "bytes": 69545,
+      "lines": "818-835;863-886"
+    },
+    {
+      "path": "<REPO>/.agents/skills/animation-production/scripts/episode_estimate.mjs",
+      "exists": true,
+      "sha256": "3405bb1636e5b6fdec8e17f9f1bfe1665c755109f2b51d17b173b057686d696c",
+      "bytes": 53826,
+      "lines": "178"
+    },
+    {
+      "path": "<REPO>/tools/video/media/look.mjs",
+      "exists": true,
+      "sha256": "88f6b8d04ff456798a647a87df25b85bde51ab46c963cbe6de822cb6ac1dd9c2",
+      "bytes": 31055,
+      "lines": "181-200;233-260"
+    },
+    {
+      "path": "<REPO>/tools/video/core/paths.mjs",
+      "exists": true,
+      "sha256": "ca90e2157e3161c5959363142d89df57f819fd599083a5d03777be5cdfdaa3f7",
+      "bytes": 4214,
+      "lines": "27-44"
+    },
+    {
+      "path": "<REPO>/tools/video/core/approvals.mjs",
+      "exists": true,
+      "sha256": "d97e182fb942071e49cbd9fb64a35efcb327251048945c388fa8678c28065577",
+      "bytes": 5796,
+      "lines": "28-49;74-100"
+    },
+    {
+      "path": "<REPO>/tools/video/cli.mjs",
+      "exists": true,
+      "sha256": "27a3d0de48ffbc8184f5345f163080e3b40360fde06396d90af7bdea991b696c",
+      "bytes": 19202,
+      "lines": "192-214"
+    },
+    {
+      "path": "<REPO>/tools/video/media/stages.mjs",
+      "exists": true,
+      "sha256": "5f1a991462ac4498444b894ce0b791c23d383aa3c100606412b208a4aee32a8e",
+      "bytes": 21266,
+      "lines": "116-117;133;209-210"
+    },
+    {
+      "path": "<REPO>/tools/video/media/client.mjs",
+      "exists": true,
+      "sha256": "ea25e31121416e1121ea3b1aef3e11192fec9889fb7e5c0b7aec5815f5b792b0",
+      "bytes": 15423,
+      "lines": "119-122"
+    },
+    {
+      "path": "<REPO>/tools/video/core/screenplay.mjs",
+      "exists": true,
+      "sha256": "1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389",
+      "bytes": 4393,
+      "lines": "34-38;79-80"
+    }
+  ],
+  "diagnostics": {
+    "execution": {
+      "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/adoption/20261009/plan-ready-normal.execution.json",
+      "exists": true,
+      "sha256": "aed2677251fee7c5b4295a8b2a9998d4370cacf7c19d69c039433bd6a9b31560",
+      "bytes": 1789
+    },
+    "status": {
+      "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/adoption/20261009/media-status-snapshot.json",
+      "exists": true,
+      "sha256": "dc87d920d9bedff9f56402848bba191cc9a2caf8932b2d4a326949aa48aba2f3",
+      "bytes": 1150
+    },
+    "native_plan": {
+      "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/adoption/20261009/native-plan-readonly.json",
+      "exists": true,
+      "sha256": "46763fda0b4d808afd30b1e10290a6ea723b9af11d71d0f78761f727ae391ff9",
+      "bytes": 2360
+    },
+    "capture_script": {
+      "path": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/adoption/20261009/capture-gate-preflight.mjs",
+      "exists": true,
+      "sha256": "f0d124bc2a0d25fb2b3d5d28f9b3cc4a74a213edd02093803e597d85b8a6eb68",
+      "bytes": 14334
+    }
+  },
+  "delivered_inventory": {
+    "characters": 9,
+    "concepts": 9,
+    "portraits": 27,
+    "new_character_references": 82,
+    "reused_front_views": 9,
+    "character_reference_uses": 91,
+    "static_mouth_sheets": 8,
+    "scene_and_prop_candidates": 28,
+    "unique_latest_art": 146
+  }
+}

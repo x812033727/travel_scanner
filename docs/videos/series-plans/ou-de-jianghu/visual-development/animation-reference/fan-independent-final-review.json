@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-09",
+  "reviewer": "codex-ou-scenes; independent from root image generator",
+  "method": "view_image inspection of all seven final revisions, following the separately preserved eleven-source/eleven-output review; both named fan-master images were also visually rechecked.",
+  "status": "independent_local_fan_review_completed_with_usage_restrictions",
+  "media_root": "<VIDEO_WORKDIR>/ou-de-jianghu-e001",
+  "owner_accepted": false,
+  "animation_verified": false,
+  "user_acceptance_scope": {
+    "quote": "保留目前華麗古裝與細緻人物風格",
+    "interpretation": "Only the shared art-style direction is accepted; this does not accept individual image details."
+  },
+  "reviewed_count": 7,
+  "summary": {
+    "local_fix_pass": 4,
+    "identity_costume_only_not_fan_topology_master": 3,
+    "new_identity_or_hand_anatomy_hard_errors_observed": 0,
+    "additional_generation_requested": false
+  },
+  "scope_limit": "PASS means the specified local correction is visually satisfactory at the provided image scale. It is not pixel equality, final costume/geometry lock, owner acceptance, normal-look import or animation verification.",
+  "history": "fan-independent-review.json and fan-independent-review.md remain unchanged as the earlier eleven-image review. All PNG revisions and raw prompts remain preserved.",
+  "master_policy": "Only the two named detail/prop sheets may define the fan's white-jade guards, white folded paper, closed state and absence of attached cord/chain/jade/tassel. Blue ornaments belong to the waist. The seven character/ensemble/action images do not override those structural references; restricted images cannot be used to derive fan or attachment topology.",
+  "fan_structure_masters": [
+    {
+      "file": "final-art/20261009/shen-guihe-construction-details-v3.png",
+      "observation": "左上三個扇視圖與左下持扇均為白玉、白紙、閉合；扇尾無附掛線鏈／玉／穗。右下藍色腰飾接腰扣，保持與扇分離。",
+      "sha256": "eacdf8278c257211d1f549279a4219dc4628279f787f47e238e9f179726289c3",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "file": "scene-props/20261009/personal-prop-states-v3.png",
+      "observation": "獨立扇與扇尾近圖均無藍玉、繩或穗；保留白玉扇骨、白紙與小鉸釘。此處只核扇結構，不把念珠／錢板順帶宣稱為新核准。",
+      "sha256": "793553b043e0bc05a24bcea9901f16621426f95ae22ce77cc502a342170fcf6e",
+      "width": 1672,
+      "height": 941
+    }
+  ],
+  "media": [
+    {
+      "key": "shen-guihe-full-body-v3",
+      "status": "PASS_LOCAL_FAN_FIX",
+      "observation": "右拳下額外短珠鏈／穗已消失。白玉合扇保持同一右手握姿，兩組中央藍色腰掛物各自可見腰帶接點；臉、冠羽、髮形、白銀鶴紋和全身構圖未見新增硬錯。",
+      "limit": "通過本次局部去附件修正；精確扇結構仍以指定細節／道具板為準。",
+      "file": "final-art/20261009/shen-guihe-full-body-v3.png",
+      "source": "final-art/20261009/shen-guihe-full-body-v2.png",
+      "source_sha256": "2f8f1cfaa150c036b5015cf688e68fb745c664456732d49acd2e1a8a7646e6d6",
+      "sha256": "f92406c0e73a7458e012a1487a60cd966b128192f776ddd272028cbd3724ccac",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "key": "shen-guihe-right-profile-v3",
+      "status": "IDENTITY_COSTUME_ONLY_NOT_FAN_TOPOLOGY_MASTER",
+      "observation": "合扇為白色且閉合；拳下仍有細線連一顆灰藍珠及短穗。上端在手與衣層後消失，畫面不能可靠區分接腰後被手遮住，或接於扇尾；不能寫成已確認無扇墜。右側較長腰掛物仍清楚，臉、冠羽、側身姿勢與持扇手身份未見新增硬錯。",
+      "limit": "僅供身份、側面髮衣輪廓／服裝參照，禁止作扇附件或腰掛接點母版；不把遮擋歧義宣判為角色身份失敗。",
+      "file": "final-art/20261009/shen-guihe-right-profile-v3.png",
+      "source": "final-art/20261009/shen-guihe-right-profile-v2.png",
+      "source_sha256": "0b97c92d5899cc6c704955ed4bf12a5b9009062dab80ed1d68e287b8d897126d",
+      "sha256": "aa523cc177b2421c440641ea1457c7ddaafdcbf1bd61c9a5fb759c70fcf3142e",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "key": "shen-guihe-left-three-quarter-v3",
+      "status": "IDENTITY_COSTUME_ONLY_NOT_FAN_TOPOLOGY_MASTER",
+      "observation": "原本拳下可辨的長串與短穗已去除；拳右下方袖緣仍有低對比金灰珠點樣痕，可能混在袖紋中，不能由此證實有一条仍連扇的完整鏈，也不能用作清楚的無附件接點證據。白扇閉合，中央兩組腰飾、臉、冠羽、握手與衣袍輪廓保持。",
+      "limit": "僅供身份、服裝與該視角輪廓參照；精確扇尾／附件接點禁用此圖作母版。此限制源於低對比殘影歧義，並非新增身份或手部硬錯。",
+      "file": "final-art/20261009/shen-guihe-left-three-quarter-v3.png",
+      "source": "final-art/20261009/shen-guihe-left-three-quarter-v2.png",
+      "source_sha256": "c69931d3df123ac5c13afa583d0d9549df444e6d9acc52e91372832df4d45de1",
+      "sha256": "bcd955e80f042d5c0269236f9e49929a427b49ae7938d04cdf8422ba6570e286",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "key": "shen-guihe-right-three-quarter-v3",
+      "status": "PASS_LOCAL_FAN_FIX",
+      "observation": "右拳下的額外短鏈／穗已消失。白玉扇骨與白紙葉閉合，中央兩組藍腰飾的接腰關係仍清楚；臉、冠羽、鶴紋、兩手、鞋及全身輪廓未見新增硬錯。",
+      "limit": "通過本次局部去附件修正；精確扇結構仍以指定細節／道具板為準。",
+      "file": "final-art/20261009/shen-guihe-right-three-quarter-v3.png",
+      "source": "final-art/20261009/shen-guihe-right-three-quarter-v2.png",
+      "source_sha256": "f9a78addb4f4ab3039e3c542325e6686009f13648d11ce0593416411982796e1",
+      "sha256": "873c1bf582d95336939604a8945639eb1d05500c4621988bf83554458741ba98",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "key": "shen-guihe-concept-v5",
+      "status": "IDENTITY_COSTUME_ONLY_NOT_FAN_TOPOLOGY_MASTER",
+      "observation": "右側小全身的持扇拳下仍見小珠／小玉樣物與短線，無法視為完全清除扇尾附件。扇骨白且閉合，原腰飾仍在；左側大頭像與右側全身的臉、冠羽和白銀衣袍未見新增身份硬錯。",
+      "limit": "可作身份、服裝、整體畫風參照；禁止使用小全身的拳下細節推導扇附件，亦不得記為無扇墜完全通過。",
+      "file": "final-art/20261009/shen-guihe-concept-v5.png",
+      "source": "final-art/20261009/shen-guihe-concept-v4.png",
+      "source_sha256": "f49dafe900acfe23136a504d6ab2fbe908057f4202c616bb36fe8ac41dd5e8d3",
+      "sha256": "5cb93d8797ae6f40b1553785bfe69d0f5b61f5b521bebc6275fabd0084bff467",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "key": "ensemble-color-lineup-v3",
+      "status": "PASS_LOCAL_FAN_FIX",
+      "observation": "最左沈歸鶴的拳下額外短鏈／穗已不見，白合扇保留；九名角色數量、次序、主要顏色／武器與完整冠足在本圖仍可辨。未見本次局部修正帶來的明顯身份變化。",
+      "limit": "通過可見尺度下的局部去附件修正，可供九人尺度／色彩比較；群像小尺度不能驗證逐指、精確刻紋或扇零件拓撲。",
+      "file": "final-art/20261009/ensemble-color-lineup-v3.png",
+      "source": "final-art/20261009/ensemble-color-lineup-v2.png",
+      "source_sha256": "80ef3e5c9bd29ae7ca891c4c79e9a9d5694f72a03ecd5deca2281e272a2e3f92",
+      "sha256": "094759425f5cc9c65c0fa7d839389b82771fe41a57b068a3de51b194319f9b23",
+      "width": 2172,
+      "height": 724
+    },
+    {
+      "key": "shen-guihe-action-phases-v3",
+      "status": "PASS_LOCAL_FAN_FIX",
+      "observation": "中排左坐姿原本深色的拳下扇尾現呈白玉／浅灰；九格中可見的扇骨均為白色閉合束狀，未見清楚新增扇墜。九格站坐姿、冠羽與衣袍輪廓保留。",
+      "limit": "通過本次局部深色扇尾修正，可作姿態參照；小格／手遮扇處不足以驗證精確零件、逐指或連續動作，不代表動畫已驗證。",
+      "file": "final-art/20261009/shen-guihe-action-phases-v3.png",
+      "source": "final-art/20261009/shen-guihe-action-phases-v2.png",
+      "source_sha256": "6cfbc84da41f2534aceee749da2b12991711cceded7f847819886fc5ca8816c6",
+      "sha256": "c2a543bdbf29a3dea85e4a97b951f92e3eb7d181be7c0ebce03d206b4c1aca46",
+      "width": 1536,
+      "height": 1024
+    }
+  ]
+}

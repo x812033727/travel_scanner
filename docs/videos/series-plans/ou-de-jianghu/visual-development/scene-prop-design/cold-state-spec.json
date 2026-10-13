@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "status": "editorial_state_override_spec_not_rendered",
+  "decision": "Cancel all independent cold master images after two failed 20261009 repairs; build future first frames from clean master-v4 and explicit state overrides.",
+  "base": {
+    "file": "scene-props/20261009/chess-guestroom-master-v4.png",
+    "sha256": "f556ac041f9d13cfdf991630d4e13bfc4482b69dd29a8dc4a725c58e0aeba84b",
+    "width": 1672,
+    "height": 941
+  },
+  "forbidden_model_inputs": [
+    {
+      "file": "scene-props/20261008/chess-guestroom-cold-v1.png",
+      "sha256": "31a6d340fa176da509085c93fc12453d9fb4c42b66a10bc7713440a2d9fdac4f",
+      "reason": "visible moon or window/frost continuity failure"
+    },
+    {
+      "file": "scene-props/20261008/chess-guestroom-cold-v2.png",
+      "sha256": "85d4b64e049785a151b3264e9d413654e2a451e265cb241d309d3687646ba27d",
+      "reason": "visible moon or window/frost continuity failure"
+    },
+    {
+      "file": "scene-props/20261009/chess-guestroom-cold-v3.png",
+      "sha256": "3a6831efea27933db0e2ec4d4ac58e4ff3b2a61fac843575e35ffa7ff8dd7d5e",
+      "reason": "visible moon or window/frost continuity failure"
+    },
+    {
+      "file": "scene-props/20261009/chess-guestroom-cold-v4.png",
+      "sha256": "0fc324e6cedfaeb281d2d094b363a6ea8ef3ea149b7dd7d7d8fa210b6384d8fc",
+      "reason": "visible moon or window/frost continuity failure"
+    }
+  ],
+  "common_overrides": {
+    "space": "Same unmirrored room: doorway left foreground, window right rear, low go table and two cushions retained.",
+    "window": "Closed opaque gray-blue rice paper. No moon disc, circular halo or outdoor scenery. Add local frost to frame/paper edges; do not turn paper into a transparent night view.",
+    "light": "Only cool diffuse blue window light; candle extinguished, zero flame. Open left door shows dim warm corridor lantern light.",
+    "props": "Exactly one overturned black tray, one tipped clay teapot and one tipped cup with persistent spilled tea on the left floor. One dead candle. 16 board stones per go-layout-decision after-a04-s079."
+  },
+  "shots": [
+    {
+      "shot_id": "a05-s031",
+      "actors": "Bao near left doorway withdrawing; Elder seated right, immobile. Use executable shot package for still/end-frame timing."
+    },
+    {
+      "shot_id": "a05-s035",
+      "actors": "Shen at Elder side; closed fan tucked in pale blue sash. Elder remains right. Use executable shot package for kneeling phase."
+    },
+    {
+      "shot_id": "a05-s042",
+      "actors": "Ji Wen at left entrance; Shen kneeling midground; Elder seated right with eyes now closed. Use executable shot package for exact entry phase."
+    }
+  ],
+  "applies_only_after": "a05-s030 tea spill",
+  "not_for_shot": "a05-s023 entry before spill",
+  "images_rendered": false,
+  "owner_accepted": false,
+  "animation_verified": false
+}
