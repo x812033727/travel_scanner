@@ -66,9 +66,13 @@ c52｜1885 年 7 月波士頓審判，陪審團 7:5 僵局｜https://www.slate.c
 
 ## 不是來源主張的句子
 
-下面這些場景的旁白不帶可查核的事實，所以上面沒有列：`not-strangest`（升級句）、`murder-falls`（收束句）、`legend-runs`（收束句）、`remember-this`（前向鉤子）、`nine-days-blank` 的第二句與 `covered-150` 的第二句（兩個鉤子問句：「那段空白裡，船上發生了什麼事？」「那麼，當年的人自己，是怎麼解釋的？」）、`my-view-award` 與 `orderly-leaving`（標成「我的看法是」的意見，依企劃的站主觀點）。
+下面這些場景的旁白不帶可查核的事實，所以上面沒有列：`not-strangest`（升級句）、`murder-falls`（收束句）、`legend-runs`（升級句）、`remember-this`（前向鉤子）、`nine-days-blank` 的第二句與 `covered-150` 的第二句（兩個鉤子問句：「那段空白裡，船上發生了什麼事？」「那麼，當年的人自己，是怎麼解釋的？」）、`my-view-award` 與 `orderly-leaving`（標成「我的看法是」的意見，依企劃的站主觀點）。
 
 算出來的數字也不是來源的原文，是兩個已查核日期之間的算術：`covered-150` 的「蓋了一百五十年」（1872 到今天）、`magazine-office` 的「十二年後」（1872 到 1884）、`renamed-1868` 的「七年後」（1861 到 1868）、`court-opens` 的「五天後」（12-13 到 12-18）、`nine-days-blank` 的「空了九天」（11-25 到 12-04）、`sea-tore-wood` 的「三個月後」（1873-01-30 到 1873-03-04）。
+
+接回前面事實的那幾句（`remember-meal`、`no-damage`、`without-cause`、`remember-rod`、`remember-casks`、
+`holes-remain`、`remember-share`、`remember-rope`、`drift-study`、`outro`）不帶新的主張，講的還是它們指回去的
+那一條（c3、c31／c42、c34、c24／c45、c13／c47、c26／c46、c15、c40、c19／c50、c47／c49）。
 
 `casks-counted` 的「勘驗官在直布羅陀數的是有沒有人動過，不是桶裡還剩多少」是把 c25 與 c47 兩條併起來講的一句話：直布羅陀的勘驗記的是「被打開過幾桶」，熱那亞卸貨量的是「桶裡還剩多少」，兩個數字因此不衝突。盲評讀者指出這兩句並排會讓人誤會，這一句就是為它寫的。
 
