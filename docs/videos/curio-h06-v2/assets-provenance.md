@@ -1,6 +1,6 @@
 # H06 v2｜historical-photo provenance
 
-The original five public-domain photographs were checked on 2026-10-12 for H06. On 2026-10-14, the **same bytes** were copied into the new slug's external `C:\Users\x8120\mokaair-work\videos\curio-h06-v2\stock\` directory. Each target file was SHA-256 checked before its temporary repo copy was removed. `video.json` uses `stock/<sha256>.jpg` in both `assets[]` and the five `photo` cards, so the new workdir owns the source images separately from old H06. The sixth Berlin context candidate remained excluded because its library record gives an advisory rather than affirmative public-domain status. Captions distinguish historical context photographs from the actual 1920 rescue, visit, court evidence, or samples.
+The original five public-domain photographs were checked on 2026-10-12 for H06. On 2026-10-14, the **same bytes** were copied into the new slug's external `<home>/mokaair-work/videos/curio-h06-v2/stock/` directory. Each target file was SHA-256 checked before its temporary repo copy was removed. `video.json` uses `stock/<sha256>.jpg` in both `assets[]` and the five `photo` cards, so the new workdir owns the source images separately from old H06. The sixth Berlin context candidate remained excluded because its library record gives an advisory rather than affirmative public-domain status. Captions distinguish historical context photographs from the actual 1920 rescue, visit, court evidence, or samples.
 
 ## 1. Berlin city context
 

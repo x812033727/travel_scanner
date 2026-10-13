@@ -78,20 +78,31 @@ auto-approve because its demonstration score was below the configured gate.
 The owner explicitly chose A in this task. The production review now records
 "已核准 · 選了選項 A" (2026-10-14 01:38 Asia/Taipei), and local
 `review-pull --gate outline` records that choice. The old H04 final file remains
-at `C:\Users\x8120\mokaair-work\videos\curio-h04\final.mp4` (SHA-256
+at `<home>/mokaair-work/videos/curio-h04/final.mp4` (SHA-256
 `262b2018a767cd7c1bdee9ff51cd54534e14e4199ec169ca9eb2b9a203ea3d86`);
-old H06 final remains at `C:\Users\x8120\mokaair-work\videos\curio-h06\final.mp4`
+old H06 final remains at `<home>/mokaair-work/videos/curio-h06/final.mp4`
 (SHA-256 `9a34efba5583956e76ad184aad244b991040d3eb31432f0e9e1528e6a941d8d3`).
-H04-v2 has an approved outline A and 100 new TTS takes, 8:47 total narration
-(2005 billable characters). Automated audio checking is running; the full
-render and package are still pending. H05/H06 old backend abandon remains an
-owner decision because it clears the old backend reviews/previews.
+H04-v2 has an approved outline A and 8:49 narration. The first TTS batch made
+100 takes (2005 billable characters); audio checking flagged 17 sentences, a
+bounded redo reduced this to eight, and those eight were rewritten for clarity,
+independently checked, and synthesized as eight new takes (169 characters;
+92 reused). A final one-sentence wording repair cost 25 characters. Audio
+checking now reports 101/101 sentences checked with zero flags; the backend
+approved the audio gate and local `review-pull` recorded it. H04 illustration
+generation is running. Full render and package are pending. H05/H06 old backend abandon remains an owner
+decision because it clears the old backend reviews/previews.
 
 All three v2 scripts now have source-bound claim records and independent
 `verify-1.md` reviews bound to the final document hashes. Each blind narrative
 panel passed 11/11. H04 lint has 0 errors and 0 warnings; H05 and H06 have 0
 errors and one documented static-outro pacing warning each. No v2 final MP4,
 captions or upload package exists yet.
+
+Draft PR #1484 contains the three independently reviewed scripts, source
+records and asset provenance. Its first CI run passed `test:docs-videos` but
+failed `test:tools` because new prose leaked absolute local user paths. The
+paths were replaced with `<home>` placeholders and the focused
+`repo-hygiene.test.mjs` now passes 3/3 locally; a fresh CI run is pending.
 
 Local checks on 2026-10-14: `npm run check:tasks` passed (existing stale-claim
 warnings elsewhere). `npm run test:docs-videos` ran 215 tests: 214 pass, one

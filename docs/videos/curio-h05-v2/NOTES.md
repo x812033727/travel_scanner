@@ -19,7 +19,7 @@
 
 ## 外部照片與發音交接
 
-`video.json.assets[]` 保留機票、贖金、領帶三張檔案照的來源、權利、尺寸和 SHA。2026-10-14 已從 `C:/Users/x8120/mokaair-work/videos/curio-h05/stock/` 複製到 `C:/Users/x8120/mokaair-work/videos/curio-h05-v2/stock/`，來源和目的地三檔 SHA 均與 `asset-register.md` 相符，舊檔未覆寫。正式照片框、字幕及 credit 可讀性待渲染後確認；其他情境圖也尚未產生。
+`video.json.assets[]` 保留機票、贖金、領帶三張檔案照的來源、權利、尺寸和 SHA。2026-10-14 已從 `<home>/mokaair-work/videos/curio-h05/stock/` 複製到 `<home>/mokaair-work/videos/curio-h05-v2/stock/`，來源和目的地三檔 SHA 均與 `asset-register.md` 相符，舊檔未覆寫。正式照片框、字幕及 credit 可讀性待渲染後確認；其他情境圖也尚未產生。
 
 舊工作樹 `a18a` 的來源快照包含三組後補發音選擇：`丹庫柏` 唸 `丹庫博`、`迪比庫柏` 唸 `D B 庫博`、`矽藻` 唸 `細藻`（矽藻出現兩句）。新腳本改了句子，故沒有複用舊 `say_for`；旁白前先重新試聽這些詞，如仍需覆寫，以**新句子**的文字 hash 重新設定 `say_for`，再跑 lint 和 `check-audio`。
 

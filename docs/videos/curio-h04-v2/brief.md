@@ -43,7 +43,7 @@
 
 `format: slides`、`look.preset: cute-mystery`、單人繁中旁白、可關閉繁中 CC。文件頁裁切用 `screenshot` 和 `assets[]` 來源及授權標示；足跡、雪層、風搬雪與平台切口用原創 SVG 示意。插圖中的匿名搜索者不是當事人的重現肖像。所有歷史物件、足跡與模型剖面都不得被剪成「當晚實拍」或實測證據。
 
-三張公有領域歷史文件裁切放在 repo 外 `C:\Users\x8120\mokaair-work\videos\curio-h04-v2\stock\`，檔名即其 SHA-256。九張小型原創 SVG 留在本版 `vector-art/`，並列於 `assets[]`。正式媒體前應由 renderer 的 source/asset 檢查確認位置與授權。
+三張公有領域歷史文件裁切放在 repo 外 `<home>/mokaair-work/videos/curio-h04-v2/stock/`，檔名即其 SHA-256。九張小型原創 SVG 留在本版 `vector-art/`，並列於 `assets[]`。正式媒體前應由 renderer 的 source/asset 檢查確認位置與授權。
 
 ## 查核與關卡
 

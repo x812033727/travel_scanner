@@ -10,7 +10,7 @@
 - 領帶：直接取自 [FBI 案件頁](https://www.fbi.gov/history/famous-cases/db-cooper-hijacking) 內嵌圖片，頁面未列非聯邦機構的攝影署名。依 FBI 頁尾所連結的 [DOJ 著作權政策](https://www.justice.gov/legalpolicies)，未另行標示的 DOJ 網站內容屬公有領域；第三方作品例外。本次沒有把「任何 .gov 圖都能用」當成授權依據，也沒有另取 FBI 徽章作品牌標誌。
 - FBI 案件頁、機票物件頁、[2007 年 FBI 檔案文章](https://archives.fbi.gov/archives/news/stories/2007/december/dbcooper_123107) 與 DOJ 政策均讀到正文；三個實際圖片下載皆 HTTP 200、`image/jpeg`。
 - 領帶 `/view` 頁曾逾時，但案件頁正文及其實際內嵌圖片均已成功讀取。Commons `Cooper tie` 搜尋未找到合適的領帶授權頁，故不假填 Commons 授權模板。
-- 外部證據目錄：`C:/Users/x8120/mokaair-work/videos/curio-h05/_audit/source-assets/`。其中 `commons-ticket-money.json` 留存 API 完整授權回應；`fbi-case.html`、`fbi-ticket.html` 留存官方來源；`downloads.json` 記載每檔實際請求／回應 URL、時間、尺寸、位元組與 SHA-256。圖片 URL 的 Commons 追蹤查詢參數只出現在下載收據；以下連結指向同一原檔。
+- 外部證據目錄：`<home>/mokaair-work/videos/curio-h05/_audit/source-assets/`。其中 `commons-ticket-money.json` 留存 API 完整授權回應；`fbi-case.html`、`fbi-ticket.html` 留存官方來源；`downloads.json` 記載每檔實際請求／回應 URL、時間、尺寸、位元組與 SHA-256。圖片 URL 的 Commons 追蹤查詢參數只出現在下載收據；以下連結指向同一原檔。
 
 ## A01｜Dan Cooper 機票
 
@@ -23,7 +23,7 @@
 | 作者／授權 | Federal Bureau of Investigation（FBI）；公有領域，Commons `PD-USGov-FBI` |
 | 日期 | 物件關聯事件為 1971-11-24；Commons 的照片日期欄記 2016-06-23 12:06。不得把此照片說成案發當天拍攝 |
 | 尺寸／大小 | 2400 × 1369；1,395,429 bytes |
-| 外部檔案 | `C:/Users/x8120/mokaair-work/videos/curio-h05/_audit/source-assets/ticket-original.jpg` |
+| 外部檔案 | `<home>/mokaair-work/videos/curio-h05/_audit/source-assets/ticket-original.jpg` |
 | SHA-256 | `d0d8c89a2e3d584d3f0956e85079d1d65b902653d2b96d59fff1b932bdd4a7aa` |
 | 像素審看 | 已看完整圖；工具顯示縮至 2048 × 1168，檔案本身未改。泛黃票券四周完整，姓名欄的 Dan Cooper、航空公司名、Seattle 與日期戳可辨識，無人臉 |
 
@@ -40,7 +40,7 @@
 | 作者／授權 | FBI；公有領域，Commons `PD-USGov-FBI` |
 | 日期 | 照片拍攝日期未記錄；1980 是尋回事件年份，不是已知的拍攝日期 |
 | 尺寸／大小 | 1400 × 921；210,549 bytes |
-| 外部檔案 | `C:/Users/x8120/mokaair-work/videos/curio-h05/_audit/source-assets/money-original.jpg` |
+| 外部檔案 | `<home>/mokaair-work/videos/curio-h05/_audit/source-assets/money-original.jpg` |
 | SHA-256 | `f3e989c1f24e4204a3e8163e80b163c000e8af41ec98a78dbb15901ee8beab92` |
 | 像素審看 | 已看 1400 × 921 全圖。淺色背景上排列破損鈔票、暗色成疊殘片與細碎紙片；可見部分面額、印刷肖像與序號片段，無現場人物 |
 
@@ -55,7 +55,7 @@
 | 作者／授權 | FBI 提供，個別攝影者未署名；依官方頁未列第三方署名及 [DOJ 公有領域政策](https://www.justice.gov/legalpolicies) 採用，不填不存在的 CC 授權 |
 | 日期 | 物件與 1971 年事件相關；本圖拍攝日期未記錄 |
 | 尺寸／大小 | 768 × 616；106,481 bytes |
-| 外部檔案 | `C:/Users/x8120/mokaair-work/videos/curio-h05/_audit/source-assets/fbi-black-tie.jpg` |
+| 外部檔案 | `<home>/mokaair-work/videos/curio-h05/_audit/source-assets/fbi-black-tie.jpg` |
 | SHA-256 | `52f8ad581b3932f1060809875c43cfb05df710d0b19006db0e39083ed8604449` |
 | 像素審看 | 已看 768 × 616 全圖。黑色領帶斜放在淺色布面，頂部結形、整條領帶與金屬飾件均在框內，沒有手、人物、臉或現場背景 |
 

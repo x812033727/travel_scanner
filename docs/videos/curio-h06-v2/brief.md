@@ -58,7 +58,7 @@
 ## 畫面、聲音與來源
 
 - 路線：`format: slides`、`look.preset: cute-mystery`、單一繁中旁白。`shot` 是帶表情的可愛懸案插圖；原生資料卡承接比較和數字，五張真實史料照片用 `photo` 卡及年代、館藏、非本案現場等必要說明。不得生成安娜・安德森的正面可辨人像、遺骸或假判決截圖。
-- 照片：五張已逐件標示作者、來源及授權；原始位元組存於 `C:\Users\x8120\mokaair-work\videos\curio-h06-v2\stock\`，`assets[]` 和 [assets-provenance.md](assets-provenance.md) 保留路徑、來源與 SHA。這是新 slug 的獨立素材，不使用舊版產生的插圖、語音或成片。
+- 照片：五張已逐件標示作者、來源及授權；原始位元組存於 `<home>/mokaair-work/videos/curio-h06-v2/stock/`，`assets[]` 和 [assets-provenance.md](assets-provenance.md) 保留路徑、來源與 SHA。這是新 slug 的獨立素材，不使用舊版產生的插圖、語音或成片。
 - 公開揭露：說明欄明示 AI 卡通插圖只是情境示意，五張照片是史料而非當年救起、庭審或檢體照片。此稿預設為風格化插圖；若實際媒體改為足以誤認真實事件的寫實重現，成片前重新判斷平台的合成內容標示。
 - 證據：見 [claims.md](claims.md) 與 [verification-notes.md](verification-notes.md)。一九九五年 Nature Genetics 正文付費；皇后母系不符取自研究者 Stoneking 第一手訪談，毛赫爾匹配取自 Cold Spring Harbor 的 DNA Learning Center 教學原件，不能寫作已直接讀過論文全文。德國判決用第三方保存掃描並註明頁碼，不把 OCR 當法院原文。兩篇二〇〇九年研究的家族歸屬與個別姊妹名字分開敘述。
 

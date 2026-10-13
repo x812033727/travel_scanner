@@ -1,13 +1,13 @@
-# H04 v2 | Independent fact check, round 1
+# H04 v2 | Independent fact check, round 1 + incremental recheck
 
-Checked on 2026-10-14 against the corrected video.json. The checker did not write the H04 script. This is a text and source gate, not media playback or owner acceptance.
+Checked on 2026-10-14 against the corrected video.json, then incrementally rechecked after eight narration clarity edits and a final wording adjustment to h4v080. The checker did not write the H04 script. This is a text and source gate, not media playback or owner acceptance.
 
 ## Bound files and coverage
 
-- video.json SHA-256: 10d9e38ea339e2110f3492186f2f7c0119be951106e55be527846eb12971c28b
-- script.md SHA-256: 66e463cba367be9e5f2c957a80dbd94ea720c5a81e29aa3e0326603e878ff423
-- Narrative hash: 7b9e0ce81bffe363; bound panel 11/11, no failed/advisory checks.
-- 101 spoken text lines, all non-shot scene.data, thumbnail, YouTube title/description/tags and 12 source entries inventoried. No say overrides. Every scene has a claim ID. The raw 418-string path inventory is external at C:/Users/x8120/mokaair-work/videos/curio-h04-v2/_tools/claim-inventory.json. Synthetic shot prompts and pure design labels are visual directions, not asserted historic observations.
+- video.json SHA-256: 3c2d69d7ac4b8648de3b82d3d2219211b543bfeca5c41d71a2fd6e54ab3e8e6a
+- script.md SHA-256: c301f67c3bab8cd2f80ca51b29c710df897786ef69f8129f458c7c3cb8b7a15b
+- Narrative hash: 08d742bb00e24507; bound panel round 8 PASS 11/11, no failed/advisory checks.
+- 101 spoken text lines, all non-shot scene.data, thumbnail, YouTube title/description/tags and 12 source entries inventoried. No say overrides. Every scene has a claim ID. The raw 418-string path inventory is external at `<home>/mokaair-work/videos/curio-h04-v2/_tools/claim-inventory.json`. Synthetic shot prompts and pure design labels are visual directions, not asserted historic observations.
 
 ## Direct source readback
 
@@ -93,8 +93,25 @@ Each c row covers all mapped spoken IDs plus the listed card scene.data paths; M
 - Listener pass: zero spoken lines over 40 characters; zero verification formula phrases, Latin words, parentheses or URLs in narration; no source-fact reveal inversion seen. Conceptual SVGs and anonymous searcher imagery must not be presented as incident-time footage or measured 1959 snow profiles.
 - No unresolved checkable number, date, identity or model/result claim remains in the final text. Source-custody and prosecutor-report limits are stated above.
 
+## Incremental source check: narration clarity edits
+
+Eight spoken lines changed after round 1; the source register, visual claims, title and description did not. The original claim table above records round-1 findings; these rows recheck the current wording. On 2026-10-14, the 1959 closure transcript was reopened, the authors' 2021 and 2022 articles were read back from the publisher's full HTML, and the ETH/EPFL accounts were reopened. The 2022 field observations support conditions and local avalanche occurrence, not a reconstruction of the 1959 event.
+
+| Line | Current wording / factual boundary | Source | Incremental verdict |
+|---|---|---|---|
+| h4v028 | 「還沒找到的四人」在五月於溪溝附近發現；沒有宣稱四人那時才失蹤。 | [S01](https://dyatlovpass.com/case-files-384-387-ru), sheet 386 (4 May, four named bodies) | CONFIRMED; c16 unchanged |
+| h4v068 | 模型產生可行情境，但不能求得事故發生的實際時刻。論文的延遲範圍依賴假設的風搬雪量，且以法醫推定時距回算條件。 | [S05](https://www.nature.com/articles/s43247-020-00081-8), Results / Discussion | CONFIRMED; c32 limitation clearer |
+| h4v070 | 模型裡的時間不等於九人遇險的實際時間；沒有把條件情境當成獨立現場計時。 | [S05](https://www.nature.com/articles/s43247-020-00081-8), wind deposition flux / forensic-delay discussion | CONFIRMED; c32 unchanged |
+| h4v072 | 「小規模雪板滑動」準確傳達模型的 relatively small slab，且沒有稱整座山崩落。 | [S05](https://www.nature.com/articles/s43247-020-00081-8), Abstract / Results | CONFIRMED; c34 unchanged |
+| h4v078 | 無人機地形測量讓局部陡坡這項模型前提有更多依據；未說事故雪板已獲證實。 | [S06](https://www.nature.com/articles/s43247-022-00393-x), summer 2021 drone survey / Fig. 2 | CONFIRMED; c36 unchanged |
+| h4v080 | 現行「山坡的形狀」只是前版「坡面形狀」的同義改寫；坡形不能單獨推算 1959 年埋藏弱層厚度或強度，仍是測量範圍與模型參數的界線。 | [S05](https://www.nature.com/articles/s43247-020-00081-8), assumed snow properties; [S06](https://www.nature.com/articles/s43247-022-00393-x), terrain survey | CONFIRMED as a limited inference; c37 unchanged |
+| h4v092 | 作者發表後續研究文章，ETH、EPFL 校方也發表介紹考察的文章；沒有把校方報導算成獨立科學重演。 | [S06](https://www.nature.com/articles/s43247-022-00393-x), [S09](https://ethz.ch/en/news-and-events/eth-news/news/2022/03/the-dyatlov-pass-mystery-and-what-a-research-article-can-trigger.html), [S10](https://actu.epfl.ch/news/intense-press-coverage-prompts-new-expeditions-to-/) | CONFIRMED; c43 unchanged |
+| h4v102 | 「雪板滑動可行，仍未證實」保留作者提出 plausible explanation 與無法重建當夜完整事件的界線。 | [S05](https://www.nature.com/articles/s43247-020-00081-8), [S06](https://www.nature.com/articles/s43247-022-00393-x), [S10](https://actu.epfl.ch/news/intense-press-coverage-prompts-new-expeditions-to-/) | CONFIRMED; c44 unchanged |
+
+No new checkable claim or new unsupported certainty was introduced by these eight edits. This was an incremental source check, not a second exhaustive 418-string inventory.
+
 ## Recheck
 
-- Narrative panel PASS 11/11 at 7b9e0ce81bffe363.
-- Lint: 0 errors, 0 warnings; estimated 8.7 min and 101 lines (2026-10-14 final metadata/prompt revision).
+- Narrative panel round 8 PASS 11/11 at 08d742bb00e24507. The h4v080 synonym change leaves the opening hooks, question payoffs and final evidence limit unchanged.
+- Lint: 0 errors, 0 warnings; estimated 8.8 min and 101 lines (2026-10-14 current narration).
 - Static renderProblems(doc, root, workdir): [] (separate preflight); no rendered media or audio playback is implied.

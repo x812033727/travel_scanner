@@ -2,7 +2,7 @@
 
 2026-10-14。供新稿 `curio-h05-v2` 的 `assets[]` 與照片卡使用。原始下載、權利查核及像素檢視記錄在 2026-10-12 的舊稿底稿 [research-assets.md](research-assets.md)；本次從舊工作目錄逐檔複製原 JPEG，沒有重編碼或修改像素。三個舊檔及新檔均以 `Get-FileHash -Algorithm SHA256` 分別驗證，結果與下表 SHA、檔案大小逐項相符。
 
-**v2 外部工作根目錄**：`C:/Users/x8120/mokaair-work/videos/curio-h05-v2/`。下列 `path` 均相對此目錄，三張新檔目前均可找到。複製來源是舊目錄 `C:/Users/x8120/mokaair-work/videos/curio-h05/stock/`，舊檔保持原樣；圖片不進 Git。每張以完整原件框入 `photo`，caption／credit 由版型另加，不能燒進、修補或 AI 重畫原圖。使用照片卡的版面縮放不等於改動來源檔；正式渲染仍需核對全圖與署名沒有裁掉。
+**v2 外部工作根目錄**：`<home>/mokaair-work/videos/curio-h05-v2/`。下列 `path` 均相對此目錄，三張新檔目前均可找到。複製來源是舊目錄 `<home>/mokaair-work/videos/curio-h05/stock/`，舊檔保持原樣；圖片不進 Git。每張以完整原件框入 `photo`，caption／credit 由版型另加，不能燒進、修補或 AI 重畫原圖。使用照片卡的版面縮放不等於改動來源檔；正式渲染仍需核對全圖與署名沒有裁掉。
 
 ## A01 機票
 
