@@ -1,6 +1,6 @@
 # H05 v2｜主張及來源對照
 
-狀態：重新撰稿的離線候選包；下列主張已逐項掛到新場景。獨立事實覆核 `verify-1.md` 已綁現行稿；獨立敘事盲評已對旁白 hash `3be74c4b985cd1a7` 通過 11 題。站主審閱尚待；這不是舊案的大綱或音訊核准延伸。
+狀態：重新撰稿的離線候選包；下列主張已逐項掛到新場景。原獨立逐欄事實覆核對應較早版本；現行敘事 hash `299218902636bb97` 已由新盲評者獨立通過 11/11，並對 FBI 案件史及 Kaye–Meltzer 論文作增量來源抽查，不能把舊清單冒稱為現稿全量逐欄重審。H05 v2 選項 A 的大綱關卡已核准；音訊 `check-audio` 因結果不明的轉錄請求而持有，尚未核准。站主審閱及成片驗收仍待完成；舊案的核准不延續到新稿。
 
 採用來源：FBI 案件與原件頁、FBI 2007／2009 回顧、FBI 2016 聲明、Kaye 與 Meltzer（2020）。研究結論均以作者推論表述。個別出處沿用 2026-10-12 查核底稿；2026-10-14 重開核對及讀取限制見 NOTES.md。
 
@@ -44,7 +44,7 @@
 
 舊稿查核日：2026-10-12
 
-新稿場景：open-note、open-threat、briefcase-latches、threat-record、cabin-back
+新稿場景：open-note、open-threat、open-question、briefcase-latches、threat-record、cabin-back
 
 ### c05
 
@@ -68,7 +68,7 @@
 
 ### c07
 
-晚上八點多，劫機者帶著贖金從飛機離開；FAA 記機尾階梯。往雷諾途中是航程位置，未報精確分鐘或落地點；出口只在地面空機示意。
+晚上八點多，劫機者帶著贖金從飛機離開；FAA 記機尾階梯。往雷諾途中是航程位置，未報精確分鐘或落地點。空中示意圖只畫飛機遠景，不畫展開的階梯、人或落點；正文用原生步驟卡提問，下一句才交代位置未明。
 
 來源：https://www.fbi.gov/history/cases-and-criminals/db-cooper-hijacking；https://www.fbi.gov/history/artifacts/d-b-cooper-plane-ticket；https://www.faa.gov/sites/faa.gov/files/about/history/chronolog_history/b-chron.pdf
 
@@ -118,13 +118,13 @@
 
 ### c12
 
-1980-02-10，八歲 Brian Ingram 在 Tena Bar 哥倫比亞河岸發現部分贖金；FBI 金額為 5,800 美元，序號與贖金相符。距案發八年多；論文約 6,000 是約數。
+1980-02-10，八歲 Brian Ingram 在 Tena Bar 哥倫比亞河岸發現三捆腐朽的二十美元鈔票；FBI 金額為 5,800 美元，序號與贖金相符。三捆由 FBI 訪問 Ingram 的影片逐字稿及 Kaye 現場說明核對；距案發八年多，論文約 6,000 是約數。
 
-來源：https://archives.fbi.gov/archives/news/stories/2009/march/in-search-of-d.b.-cooper；https://www.fbi.gov/history/cases-and-criminals/db-cooper-hijacking；https://www.nature.com/articles/s41598-020-70015-z
+來源：https://archives.fbi.gov/archives/news/stories/2009/march/in-search-of-d.b.-cooper；https://www.fbi.gov/history/cases-and-criminals/db-cooper-hijacking；https://www.fbi.gov/video-repository/newss-scientists-hunt-for-d.b.-cooper/view；https://www.nature.com/articles/s41598-020-70015-z
 
 舊稿查核日：2026-10-12
 
-新稿場景：open-boy、open-question、sealed-ransom-bag、river-chapter-bridge、discovery-date、boy-bank、sand-find、money-serial-match、recovered-amount
+新稿場景：open-boy、sealed-ransom-bag、discovery-date、boy-bank、sand-find、money-serial-match、recovered-amount
 
 ### c13
 
@@ -144,7 +144,7 @@
 
 舊稿查核日：2026-10-12
 
-新稿場景：open-question、night-clouds、forest-unknown、other-money-unknown、place-not-route、zone-and-bank、distance-not-drift、route-still-missing
+新稿場景：night-clouds、forest-unknown、other-money-unknown、place-not-route、zone-and-bank、distance-not-drift
 
 ### c15
 
@@ -154,7 +154,7 @@
 
 舊稿查核日：2026-10-12
 
-新稿場景：ransom-proportion、outro
+新稿場景：ransom-proportion
 
 ### c16
 
@@ -204,7 +204,7 @@ Kaye、Meltzer 2020 年研究只分析一張原始贖鈔；同張的數個切片
 
 舊稿查核日：2026-10-12
 
-新稿場景：element-analysis-limit、prototype-method、simple-story-changed、route-still-missing
+新稿場景：element-analysis-limit、prototype-method、simple-story-changed、outro
 
 ### c21
 
@@ -214,7 +214,7 @@ FBI 於 2016-07-08 轉移調查資源，07-12 公布不再主動調查；資源�
 
 舊稿查核日：2026-10-12
 
-新稿場景：resources-date、status-and-answer、research-after-statement
+新稿場景：resources-date、status-and-answer
 
 ### c22
 
@@ -234,11 +234,11 @@ FBI 於 2016-07-08 轉移調查資源，07-12 公布不再主動調查；資源�
 
 舊稿查核日：2026-10-12
 
-新稿場景：research-after-statement
+新稿場景：carr-view、resources-date、study-year；這是三種資料的證據界線，不另作獨立敘事景。
 
 ### c24
 
-收束：票據留下購票用名，部分贖金序號相符，但身分、最終下落與完整路線仍缺足夠證據；2.9% 只回答尋回比例。
+收束：票據留下購票用名，部分贖金序號相符，但身分、最終下落與完整路線仍缺足夠證據；2.9% 只回答尋回比例。`[h5v107]` 先指出到岸日期定不下來，轉問標題的 5,800 美元到底證明什麼；片尾 `[h5v109]`「證明贖金，不證明人」首次把序號證據與身分界線合成直接答案。Kaye、Meltzer 的單鈔研究僅推測浸水季節與先水後沙，未測出錢抵岸的確切日期或搬運者。提問與訂閱句無額外事實主張。
 
 來源：https://www.fbi.gov/history/cases-and-criminals/db-cooper-hijacking；https://www.fbi.gov/history/artifacts/d-b-cooper-plane-ticket；https://www.fbi.gov/contact-us/field-offices/seattle/news/press-releases/update-on-investigation-of-1971-hijacking-by-d.b.-cooper；https://www.nature.com/articles/s41598-020-70015-z
 

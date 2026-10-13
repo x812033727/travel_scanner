@@ -42,7 +42,7 @@
 
 #### 10. open-scope
 
-旁白（數字稍慢，語尾落穩）：二〇二〇年，一片原鈔樣本進了顯微鏡。
+旁白（數字稍慢，語尾落穩）：多年後，一張原鈔上的小切片被拿去做顯微分析。
 
 #### 11. open-question
 
@@ -81,7 +81,7 @@
 
 #### 19. sealed-ransom-bag
 
-旁白：地面交付的那批鈔票，序號都被記錄下來。
+旁白：地面準備交付的那批鈔票，序號先被記下。
 
 #### 20. agency-alert
 
@@ -122,9 +122,9 @@
 
 ### 尾端階梯打開，人卻沒有落點
 
-#### 29. tail-stairs-ground
+#### 29. tail-stairs-ground（steps）
 
-旁白（問句尾音微抬，留一拍）：還記得開頭那道尾端階梯嗎？他從那裡跳離飛機。
+旁白（問句尾音微抬，留一拍）：還記得開頭那道尾端階梯嗎？他從飛機後方跳了出去。
 
 #### 30. night-clouds
 
@@ -142,7 +142,7 @@
 
 旁白：探員搜查整架飛機，尋找他碰過或留下的東西。
 
-#### 34. chutes-carried
+#### 34. chutes-carried（stats）
 
 旁白：清點降落傘，他只帶走其中兩具。
 
@@ -152,7 +152,7 @@
 
 #### 36. ticket-original（photo）
 
-旁白：還記得開頭的丹庫柏嗎？那只是購票時留下的名字。
+旁白：丹庫柏只是購票時留下的名字。
 
 #### 37. two-names（compare）
 
@@ -197,223 +197,209 @@
 
 #### 47. survival-question
 
-旁白：飛機飛過黑暗，地面搜尋沒有帶回他。
-
-#### 48. river-chapter-bridge
-
-旁白：直到一九八〇年，河岸沙地冒出另一件東西。
+旁白：地面搜尋沒有帶回人。那筆贖金呢？
 
 ### 河岸鈔票對上當年的序號
 
-#### 49. discovery-date（stats）
+#### 48. discovery-date（stats）
 
-旁白（數字稍慢，語尾落穩）：二月十日，一個八歲男孩在河岸挖沙。
-旁白：沙裡露出的，是三捆已經腐朽的紙鈔。
+旁白（數字稍慢，語尾落穩）：直到一九八〇年二月十日，開頭那個河岸男孩，才從沙裡挖到破鈔。
+旁白：不是零散一張，而是三捆腐朽的二十美元鈔票。
 
-#### 50. boy-bank
+#### 49. boy-bank
 
-旁白：還記得開頭那個男孩嗎？他叫布萊恩英格拉姆。
+旁白：他叫布萊恩英格拉姆，當時只有八歲。
 
-#### 51. sand-find
+#### 50. sand-find
 
 旁白（像把眼前剛發生的事講給朋友聽）：發現地是哥倫比亞河的天納沙洲。
 
-#### 52. money-serial-match（photo）
+#### 51. money-serial-match（photo）
 
 旁白：鈔票序號和當年交付的贖金相符。
 
-#### 53. recovered-amount（stats）
+#### 52. recovered-amount（stats）
 
 旁白：確認找到的金額，是五千八百美元。
 
-#### 54. ransom-proportion（steps）
+#### 53. ransom-proportion（steps）
 
-旁白（問句尾音微抬，留一拍）：還記得西雅圖交出的二十萬嗎？拿找到的錢去除。
+旁白（問句尾音微抬，留一拍）：還記得西雅圖交出的二十萬嗎？拿找到的錢，除以那筆贖金。
 旁白：得到零點零二九，再換成百分比。
 旁白：結果是百分之二點九。
 
-#### 55. other-money-unknown
+#### 54. other-money-unknown
 
 旁白（像把眼前剛發生的事講給朋友聽）：其餘贖金沒有跟著現身。
 
-#### 56. place-not-route
+#### 55. place-not-route
 
 旁白：序號能說明來源，沙洲卻不會自動說出路線。
 
-#### 57. zone-and-bank（compare）
+#### 56. zone-and-bank（compare）
 
 旁白：論文把沙洲和當年報稱的跳傘區相比。
 旁白（數字稍慢，語尾落穩）：兩地相隔約三十公里。
 
-#### 58. distance-not-drift
+#### 57. distance-not-drift
 
 旁白：這段距離，不是鈔票已被證明漂流的里程。
 
-#### 59. transport-question
+#### 58. transport-question
 
-旁白：那條留在機上的領帶，會不會留下人的痕跡？
+旁白：河岸鈔票之外，機上那條領帶能找到姓名嗎？
 
 ### 領帶有樣本，調查卻停了
 
-#### 60. tie-original（photo）
+#### 59. tie-original（photo）
 
 旁白（數字稍慢，語尾落穩）：二〇〇一年，探員重新檢視飛機上那條領帶。
 
-#### 61. tie-brand
+#### 60. tie-brand
 
 旁白：它是劫機者跳離飛機前摘下的黑色領帶。
 
-#### 62. tie-storage-box
+#### 61. tie-storage-box
 
 旁白：還記得開頭那條領帶嗎？探員真的取到基因樣本。
 
-#### 63. sample-room
+#### 62. sample-room
 
 旁白（像把眼前剛發生的事講給朋友聽）：領帶屬於案中物件，樣本來源卻還得查清楚。
 
-#### 64. sample-and-identity（compare）
+#### 63. sample-and-identity（compare）
 
 旁白：要確認是誰，還得有可靠的比對對象。
-旁白：當時的公開檔案，沒有因此寫下一個真名。
+旁白：領帶那份樣本，仍沒在公開檔案裡帶出真名。
 
-#### 65. carr-view（quote）
+#### 64. carr-view（quote）
 
 旁白（像把眼前剛發生的事講給朋友聽）：後來，探員卡爾認為那次跳傘的生還機會很低。
 
-#### 66. opinion-evidence-gap
+#### 65. opinion-evidence-gap
 
 旁白：這是他的判斷，不是找到遺體後的結論。
 
-#### 67. resources-date（stats）
+#### 66. resources-date（stats）
 
 旁白：二〇一六年七月八日，本案調查人力轉向其他優先事項。
 旁白（數字稍慢，語尾落穩）：四天後的聲明，仍請持有新物證的人聯繫。
 
-#### 68. status-and-answer（compare）
+#### 67. status-and-answer（compare）
 
 旁白：這份公告沒有宣布破案。
 
-#### 69. tip-wealth
+#### 68. tip-wealth
 
 旁白：有些線索只說，某個人後來突然有錢。
 
-#### 70. tip-standard
+#### 69. tip-standard
 
 旁白（像把眼前剛發生的事講給朋友聽）：聯邦調查局說，這些線索仍達不到證明身分的門檻。
 
-#### 71. retained-evidence
+#### 70. retained-evidence
 
 旁白：機關仍保存當年收集到的實物證據。
 
-#### 72. physical-leads（steps）
+#### 71. physical-leads（steps）
 
 旁白：聲明特別點名可能來自贖金的現金。
-旁白（像把眼前剛發生的事講給朋友聽）：也請掌握相關降落傘實物的人提供線索。
-
-#### 73. research-after-statement（compare）
-
-旁白：但幾年後，那批已找到的錢又被拿去問新問題。
+旁白（像把眼前剛發生的事講給朋友聽）：聲明也徵求降落傘實物；已找回的原鈔還能說什麼？
 
 ### 一張鈔票把浸水季節推向夏天
 
-#### 74. study-year
+#### 72. study-year
 
-旁白：二〇二〇年，凱伊和梅爾策發表一篇研究。
+旁白：二〇二〇年，凱伊與梅爾策發表河岸一張原鈔的研究。
 
-#### 75. single-bill-sample
+#### 73. single-bill-sample
 
-旁白（問句尾音微抬，留一拍）：還記得河岸男孩嗎？這張原鈔後來由他持有。
+旁白（問句尾音微抬，留一拍）：河岸男孩後來持有這張原鈔。
 
-#### 76. study-sample-scale（compare）
+#### 74. study-sample-scale（compare）
 
 旁白：研究者從這張原鈔邊緣取下幾個小片。
 旁白：切片雖然多，來源仍只有一張鈔票。
 
-#### 77. diatom-observation
+#### 75. diatom-observation（big）
 
 旁白（問句尾音微抬，留一拍）：還記得開頭的顯微鏡嗎？他們在鈔票上看見矽藻。
 
-#### 78. diatom-explained
+#### 76. diatom-explained
 
 旁白：矽藻是水中的微小藻類，不同種類各有旺盛季節。
 
-#### 79. modern-controls
+#### 77. modern-controls（big）
 
 旁白：十一月的對照鈔票，直接在哥倫比亞河短暫浸泡。
 
-#### 80. modern-control-context
+#### 78. modern-control-context
 
 旁白（像把眼前剛發生的事講給朋友聽）：春季那組，則用天納沙洲採回的河水。
 
-#### 81. control-limit
+#### 79. control-limit
 
 旁白：兩次都是後來的實驗，不是案發當晚的水樣。
 
-#### 82. seasonal-comparison
+#### 80. seasonal-comparison
 
 旁白：原鈔上的矽藻組合，和那張對照鈔票不一樣。
 
-#### 83. star-fragments
+#### 81. star-fragments
 
 旁白（數字稍慢，語尾落穩）：顯微鏡下，一類矽藻雖然破碎，碎片仍聚在一起。
 
-#### 84. bloom-season
+#### 82. bloom-season
 
 旁白：引用的河川資料說，這一類在春末會大量出現。
 
-#### 85. season-inference（compare）
+#### 83. season-inference（compare）
 
 旁白：還記得開頭那個十一月嗎？原鈔卻偏向另一季節。
 旁白（數字稍慢，語尾落穩）：作者推測較符合五月到六月的浸水。
 
-#### 86. season-not-arrival
+#### 84. season-not-arrival
 
 旁白：紙鈔先碰到河水，還是先被沙埋住？
 
-#### 87. layers-sample
+#### 85. layers-sample
 
 旁白：較大的矽藻還卡進紙鈔之間的夾層。
 
-#### 88. burial-experiment
+#### 86. burial-experiment（steps）
 
 旁白（像把眼前剛發生的事講給朋友聽）：研究者把乾鈔先埋進沙裡，再灌入含藻的水。
 
-#### 89. burial-edge
+#### 87. burial-edge
 
 旁白：在埋沙後再灌水的對照裡，小藻只鑽進紙邊幾毫米。
 
-#### 90. burial-inner
+#### 88. burial-inner
 
 旁白：更裡面的區域，幾乎沒有矽藻。
 
-#### 91. immersion-before-burial（steps）
+#### 89. immersion-before-burial（steps）
 
 旁白（像把眼前剛發生的事講給朋友聽）：這組對照支持先碰水、後被沙覆蓋的解釋。
 
-#### 92. element-analysis-limit（compare）
+#### 90. element-analysis-limit（compare）
 
 旁白：元素訊號也被拿來比較，但只供定性輔助。
 旁白：有些訊號接近測量極限，不能說得更滿。
 
-#### 93. prototype-method
+#### 91. prototype-method
 
 旁白（像把眼前剛發生的事講給朋友聽）：作者也說，這個推定季節的方法仍待更多驗證。
 
-#### 94. simple-story-changed
+#### 92. simple-story-changed
 
-旁白：有了季節和先後，能把到岸日定到某一天嗎？
+旁白：還記得沙洲找到的五千八百美元嗎？日期定不下來，它到底證明什麼？
 
-### 研究者比完矽藻，留下到岸日期空白
+#### 93. outro（outro）
 
-#### 95. route-still-missing
+旁白（像把眼前剛發生的事講給朋友聽）：證明贖金，不證明人。
+旁白：哪件物證最意外？
+旁白：訂閱，繼續查證。
 
-旁白：論文最後沒定出那一天，也沒找出是誰把錢帶到河岸。
-
-#### 96. outro（outro）
-
-旁白（像把眼前剛發生的事講給朋友聽）：他的最後去處，這些物證至今仍無法確定。
-旁白：你覺得哪件物證最讓人意外？
-旁白：訂閱，繼續追查物件背後的奇聞。
-
-narrative 3be74c4b985cd1a7
-speech 7bcb8cd8a4c2857d
+narrative 299218902636bb97
+speech 9264cb545d070dd8

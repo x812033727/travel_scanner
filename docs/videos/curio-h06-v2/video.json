@@ -5,7 +5,7 @@
   "category": "explainer",
   "narration_locale": "zh-TW",
   "target_minutes": [
-    9,
+    8,
     11
   ],
   "voice": {
@@ -18,7 +18,8 @@
     "burn_in": false
   },
   "look": {
-    "preset": "cute-mystery"
+    "preset": "cute-mystery",
+    "style": "Cute Taiwanese YouTube mystery explainer cartoon on matte paper, thick clean dark outlines, flat colours and soft cel shading; deep navy, parchment yellow, muted teal and one small warning-red accent, clear backgrounds, one subject in the centre third, 16:9. Follow each scene's stated subject literally: object, architecture and landscape scenes consist entirely of the named inanimate forms, surfaces, shadows and space. Only scenes explicitly depicting people use chibi human proportions and large expressive eyes; rear views and cropped hands remain rear views and cropped hands."
   },
   "youtube": {
     "category_id": 27,
@@ -26,7 +27,7 @@
     "default_language": "zh-TW",
     "title": "柏林運河救起的女人，真是安娜塔西亞嗎？｜奇聞檔案局",
     "video_id": null,
-    "description": "一九二〇年，柏林運河邊救起一名不肯說出名字的女子。她後來與安娜塔西亞公主的名字連在一起；一場官司、兩份保存的檢體和俄國林地的兩座墓，分別把這個身分問題帶往不同的答案。\n\n本集按事件與證據被查出的順序，分清德國法院實際裁定的範圍、安德森檢體與皇后、毛赫爾母系的比對，以及兩篇二〇〇九年研究對五名子女和第二墓女孩個別名字的結論。\n\n歷史場景的可愛卡通插圖是 AI 生成的情境示意，並非當時照片、原始判決或實際檢體；五張真實歷史照片會在畫面上標示可確認的年代及館藏。安娜・安德森只用背影或剪影，不重建其臉部。一九七〇年判決內容據第三方保存的法院文件掃描核對；一九九五年 Nature Genetics 正文需付費，本片只依可讀書目、研究者訪談和機構說明敘述檢體結果。僅提供繁體中文旁白與可關閉的繁體中文字幕。資料截至 2026-10-14。",
+    "description": "一九二〇年，柏林運河邊救起一名不肯說出名字的女子。她後來與安娜塔西亞公主的名字連在一起；一場官司、兩份保存的檢體和俄國林地的兩座墓，分別把這個身分問題帶往不同的答案。\n\n本集按事件與證據被查出的順序，分清德國法院實際裁定的範圍、安德森檢體與皇后、毛赫爾母系的比對，以及兩篇二〇〇九年研究對五名子女和第二墓女孩個別名字的結論。\n\n歷史場景的可愛卡通插圖是 AI 生成的情境示意，並非當時照片、原始判決或實際檢體；片中的三張真實歷史照片會在畫面上標示可確認的年代及館藏。安娜・安德森只用背影或剪影，不重建其臉部。一九七〇年判決內容據第三方保存的法院文件掃描核對；一九九五年 Nature Genetics 正文需付費，本片只依可讀書目、研究者訪談和機構說明敘述檢體結果。僅提供繁體中文旁白與可關閉的繁體中文字幕。資料截至 2026-10-14。",
     "tags": [
       "安娜塔西亞",
       "安娜安德森",
@@ -116,20 +117,6 @@
       "license": "Public domain (PD-Bain)",
       "author": "Boissonnas et Eggler",
       "url": "https://commons.wikimedia.org/wiki/File:Grand_Duchess_Anastasia_Nikolaevna_Crisco_edit_letters_removed.jpg"
-    },
-    {
-      "path": "stock/f01720128c786c408cf96a3b8f0c8569b0a240e7637dc11000ddbc453bf3d5a7.jpg",
-      "source": "Library of Congress, Prints & Photographs Division, LC-DIG-ggbain-14685",
-      "license": "Public domain (PD-Bain)",
-      "author": "Bain News Service",
-      "url": "https://commons.wikimedia.org/wiki/File:Russian_Royal_Family_LCCN2014694658.jpg"
-    },
-    {
-      "path": "stock/b6a0dabf09a59a989876486dc56a88eb2fae1f4883e2e191b072288b486deb22.jpg",
-      "source": "Romanov Collection, General Collection, Beinecke Rare Book and Manuscript Library, Yale University",
-      "license": "Public domain (PD-old-100)",
-      "author": "Grand Duchess Maria Nikolaevna",
-      "url": "https://commons.wikimedia.org/wiki/File:RomanovsatTobolsk.jpg"
     }
   ],
   "scenes": [
@@ -137,7 +124,7 @@
       "id": "hook-canal-rail",
       "template": "shot",
       "data": {
-        "prompt": "Close low-angle view of a plain iron canal railing dusted with winter snow and dark still water below in 1920 Berlin, cold pale dawn light, the camera points down at rail and water so all buildings, skyline, trees and people are outside the frame",
+        "prompt": "Wide rear view on a February 1920 Berlin canal bank. One anonymous adult woman in a soaked plain dark wool coat steadies herself against a simple wrought-iron railing. Her adult silhouette and face turned toward the canal define the frame; dark water, stone embankment and cold overcast sky surround her. An illustrated historical reconstruction.",
         "camera": "push in",
         "visual": "still"
       },
@@ -157,7 +144,7 @@
       "id": "hook-canal-rail-beat-2",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a wet folded coat at the edge of a Berlin canal, only rail and water visible, no face or rescue reenactment",
+        "prompt": "Close-up of the same anonymous adult woman's single bare hand gripping the simple wrought-iron canal rail. Her soaked dark wool sleeve, adult hand, iron rail and blurred winter water fill the entire frame; an early 1920 Berlin canal reconstruction.",
         "camera": "push in",
         "visual": "still"
       },
@@ -175,7 +162,7 @@
       "id": "hook-hospital-door",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of an empty plain 1920 Berlin hospital intake doorway at the end of a short wood-and-plaster corridor, a small completely blank admission card on a wooden counter, no people, portraits, lettering or modern fixtures, cold winter daylight through a high window",
+        "prompt": "Wide view through a plain Berlin hospital doorway in 1922. The same anonymous adult woman from the canal sits on a wooden bench inside in simple dark wool clothing, her face turned toward the far window in rear view. Quiet plaster corridor and tall period windows in pale winter light. An illustrated reconstruction of the hospital setting.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -185,7 +172,7 @@
       "lines": [
         {
           "id": "dszz",
-          "text": "兩年後，病院的訪客帶進一位公主的名字。",
+          "text": "兩年後，病院裡有人把她和安娜塔西亞連在一起。",
           "emotion": "放慢，關鍵名詞壓重，句尾留白"
         }
       ]
@@ -194,7 +181,7 @@
       "id": "hook-hospital-door-beat-2",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of two conflicting blank witness note cards on a 1920s hospital desk, no readable text or names",
+        "prompt": "Close-up of a plain wooden hospital door in a 1922 Berlin plaster corridor. Two soft adult shadows fall toward the door from opposite directions; the bright empty space between them is the focus. A restrained visual metaphor for two later accounts.",
         "camera": "push in",
         "visual": "still"
       },
@@ -212,7 +199,7 @@
       "id": "hook-three-answers",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of an empty generic 1970 German stone courthouse entrance in clear daylight, closed heavy wooden door and plain steps, no people, signs, seals, insignia or text",
+        "prompt": "Wide shot of a generic 1970 German stone courthouse entrance in clear daylight. A closed heavy wooden door and broad plain steps fill a bare undecorated stone facade.",
         "camera": "drift",
         "visual": "still"
       },
@@ -224,7 +211,7 @@
       "lines": [
         {
           "id": "ykiq",
-          "text": "一九七〇年，法官要處理她的公主身分。",
+          "text": "一九七〇年，最高法院要審查前審判決。",
           "emotion": "放慢，關鍵名詞壓重，句尾留白"
         }
       ]
@@ -233,7 +220,7 @@
       "id": "hook-three-answers-beat-2",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a second unmarked case folder beside the 1970 court record, no readable text",
+        "prompt": "Close-up of a second closed plain manila case folder beside a first closed folder on an oak table. Both smooth covers are unprinted; soft daylight falls across their edges.",
         "camera": "push in",
         "visual": "still"
       },
@@ -254,7 +241,7 @@
       "id": "hook-sample-box",
       "template": "shot",
       "data": {
-        "prompt": "Close-up conceptual illustration of a small opaque sealed archival medical tissue specimen envelope placed on a plain laboratory table decades later, only one adult gloved hand visible, contents concealed, no people, plants, glass containers or labels, cool window light",
+        "prompt": "Close-up reconstruction of one plain sealed pathology slide case on a laboratory table decades later. A single adult gloved hand rests beside its smooth opaque lid; the case and hand fill the frame in cool window light.",
         "camera": "drift",
         "visual": "still"
       },
@@ -274,7 +261,7 @@
       "id": "hook-sample-box-beat-2",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of plain family tree tokens branching from a mother figure, archival scientific illustration, no text",
+        "prompt": "Close-up of one plain mother figure token at the base of two branching cords leading to round wooden family tokens on an oak desk. The tokens and cords form a simple maternal-line teaching diagram in daylight.",
         "camera": "push in",
         "visual": "still"
       },
@@ -285,7 +272,7 @@
       "lines": [
         {
           "id": "v203",
-          "text": "研究者要把它們接上皇后的母系。"
+          "text": "那兩份檢體，能幫她說出身分嗎？"
         }
       ]
     },
@@ -293,7 +280,7 @@
       "id": "hook-forest-path",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, a forest path near two unmarked excavation areas in daylight, two distant surveyors carrying plain measuring rods, sun filtering through trees",
+        "prompt": "Wide view of a summer forest path near Yekaterinburg in 2007. One anonymous amateur searcher seen from behind crouches to inspect a small intact patch of leaf-covered soil, holding a plain pocket notebook. Sunlight passes through birch trees; the ground patch is the visual focus of this search reconstruction.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -304,7 +291,7 @@
       "lines": [
         {
           "id": "pxbi",
-          "text": "二〇〇七年，俄國林地找到第二處埋藏地點。",
+          "text": "二〇〇七年，俄國林地有人注意到地上的碎片。",
           "emotion": "放慢，關鍵名詞壓重，句尾留白"
         }
       ]
@@ -313,7 +300,7 @@
       "id": "hook-forest-path-beat-2",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of two small unmarked stones in dry earth under trees, no human remains",
+        "prompt": "Close-up of one small patch of leaf litter and dry earth beneath birch trees in a summer forest. One anonymous searcher's gloved fingertips enter at the frame edge and point toward the ground; dappled sunlight defines the patch.",
         "camera": "push in",
         "visual": "still"
       },
@@ -355,7 +342,7 @@
       "data": {
         "kicker": "柏林，1920 年",
         "text": "姓名：空白",
-        "sub": "後來被稱作「無名小姐」"
+        "sub": "開場插圖為 AI 情境示意，非現場照片"
       },
       "claims": [
         "c02",
@@ -502,7 +489,7 @@
       "id": "berlin-two-visitors",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of two adult visitors' hands quietly closing a small portrait album on a plain bench in a 1920s hospital hallway, only hands and sleeves inside the frame, no portraits or faces visible, daylight through a skylight",
+        "prompt": "Tight close-up of two adult visitors' hands and coat sleeves quietly closing a small plain leather portrait album on a hospital bench in the 1920s. The album's leather back cover faces camera; daylight enters through a skylight.",
         "camera": "push in",
         "visual": "still"
       },
@@ -521,7 +508,7 @@
       "id": "hospital-visitors-enter",
       "template": "shot",
       "data": {
-        "prompt": "Close-up at a plain 1920s hospital entrance: two adult hands rest a palm-sized closed leather photograph case on an old wooden reception counter, heavy wood door and plaster wall behind, no people or faces visible, no lettering or modern signs, midday window light",
+        "prompt": "Close-up at a plain 1920s hospital entrance: two adult hands rest a palm-sized closed leather photograph case on an old wooden reception counter. The case's unembossed leather exterior, heavy wood door and plaster wall fill the frame in midday window light.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -558,7 +545,7 @@
       "id": "hospital-story-spreads",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of two pairs of adult hands passing a palm-sized closed leather portrait case across a worn wooden bench in a 1920s hospital waiting area, small case clearly fits in one hand, no heads or faces in frame, plaster wall and tall old window in soft afternoon light",
+        "prompt": "Close-up of two pairs of adult hands passing one palm-sized closed leather portrait case across a worn wooden bench in a 1920s hospital waiting area. The small case fits in one hand; cropped sleeves, plaster wall and a tall old window frame the exchange in soft afternoon light.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -613,7 +600,7 @@
       "id": "hospital-two-folders",
       "template": "shot",
       "data": {
-        "prompt": "Top-down close-up of exactly two CLOSED plain archival folders side by side on a worn wooden desk, blank unmarked covers, no books, pages, hands, people, badges, labels or writing, warm desk light",
+        "prompt": "Top-down close-up of exactly two closed plain archival folders side by side on a bare worn wooden desk. Their smooth blank covers and the warm desk light fill the entire frame.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -632,7 +619,7 @@
       "id": "hospital-doorway",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of one empty old wooden chair beside a plain wood-framed hospital window against a bare plaster wall, camera shows only chair, window, wall and daylight, no door, corridor, signboard, light fixture, person, letter or symbol",
+        "prompt": "Close-up of one empty old wooden chair beside a plain wood-framed hospital window. The chair, window, bare plaster wall and daylight fill the entire frame.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -645,24 +632,6 @@
           "id": "x2py",
           "text": "起點都說不定，還能靠什麼辨認她？",
           "emotion": "問句上揚，句尾停半拍"
-        }
-      ]
-    },
-    {
-      "id": "hospital-room-two-voices",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of an old wooden tea tray with exactly two plain porcelain cups on opposite sides and one palm-sized CLOSED leather photo case between them, empty 1920s hospital alcove, no hands, people, portraits or writing, soft window light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "claims": [
-        "c04"
-      ],
-      "lines": [
-        {
-          "id": "3y3m",
-          "text": "下一位站出來的，是住在美國的皇室遠親。"
         }
       ]
     },
@@ -680,15 +649,15 @@
       "lines": [
         {
           "id": "egvx",
-          "text": "一九二八年，她應邀赴美。"
+          "text": "一九二八年，皇室遠親邀她赴美相見。"
         },
         {
           "id": "v208",
-          "text": "邀她的克謝妮亞・利茲，是皇室遠親。",
+          "text": "這位遠親，是克謝妮亞・利茲。",
           "emotion": "像說給身旁的人聽，先輕後重"
         }
       ],
-      "chapter": "有人接待她，有人說不是她"
+      "chapter": "親友證詞走進繼承官司"
     },
     {
       "id": "relatives-tea-tray",
@@ -712,7 +681,7 @@
       "id": "relatives-letter",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, a generic 1920s visitor in side silhouette gently raises an open palm in disagreement in a sunlit drawing room, another adult seen from behind, no identifiable faces, letters or readable documents",
+        "prompt": "Medium shot in a sunlit 1920s drawing room. One anonymous adult visitor in side silhouette gently raises an open palm in disagreement toward a second adult shown in rear view. Their hidden features, plain wooden tea table and side window light define the scene.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -727,30 +696,10 @@
       ]
     },
     {
-      "id": "relatives-album-close",
-      "template": "photo",
-      "data": {
-        "image": "stock/f01720128c786c408cf96a3b8f0c8569b0a240e7637dc11000ddbc453bf3d5a7.jpg",
-        "caption": "羅曼諾夫一家，1914 年；非本案證物",
-        "credit": "美國國會圖書館 Bain 收藏｜ggbain-14685"
-      },
-      "claims": [
-        "c04",
-        "c16"
-      ],
-      "lines": [
-        {
-          "id": "5htn",
-          "text": "病院裡問怎麼辨認；親友證詞，卻給出不同答案。",
-          "emotion": "像說給身旁的人聽，先輕後重"
-        }
-      ]
-    },
-    {
       "id": "relatives-distant-woman",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of two plain witness folders on a sunlit 1920s drawing-room table, two readers' hands place the folders apart to suggest conflicting testimony, garden gate visible through the window, no identifiable people or readable pages",
+        "prompt": "Close-up of two closed plain witness folders on a sunlit 1920s drawing-room table. Two readers' cropped hands place the smooth-covered folders apart to suggest conflicting testimony; a garden gate is visible through the window.",
         "camera": "push in",
         "visual": "still"
       },
@@ -787,7 +736,7 @@
       "id": "relatives-legal-question",
       "template": "shot",
       "data": {
-        "prompt": "Extreme close-up of one unopened unmarked brown case folder lying on the center of a plain oak table in a late-1960s German courthouse, pale daylight across the tabletop, camera points down so walls and all other room furnishings are outside the frame, no people, writing or insignia",
+        "prompt": "Extreme top-down close-up of one closed plain brown case folder at the center of a bare oak table in a generic late-1960s German courthouse. Its smooth blank cover and pale daylight across the tabletop fill the frame.",
         "camera": "push in",
         "visual": "still"
       },
@@ -807,7 +756,7 @@
       "id": "court-day-exterior",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of an empty generic 1970 German stone courthouse entrance in clear daylight, closed heavy wooden door and plain steps, no people, signs, seals, insignia or text",
+        "prompt": "Wide shot of a generic mid-twentieth-century German stone courthouse entrance in clear daylight. A shut heavy wooden door and broad plain steps fill an undecorated stone facade.",
         "camera": "drift",
         "visual": "still"
       },
@@ -817,16 +766,15 @@
       "lines": [
         {
           "id": "26m8",
-          "text": "她得拿出可核對的身分證據；一九七〇年，案件來到最高法院。"
+          "text": "法庭要她拿出可核對的身分證據，才能支持請求。"
         }
-      ],
-      "chapter": "一九七〇年，法院沒有填上本名"
+      ]
     },
     {
       "id": "court-closed-case",
       "template": "shot",
       "data": {
-        "prompt": "Close-up, a plain 1970s German civil-court table with two entirely blank claim sheets laid side by side, no seals, signatures, insignia or legible writing, daylight from a high window",
+        "prompt": "Close-up of two unprinted white claim sheets laid side by side on a plain 1970s German civil-court table. The bare tabletop and daylight from a high window frame the paper pair.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -846,7 +794,7 @@
       "data": {
         "kicker": "繼承權官司",
         "text": "她要確認繼承權",
-        "sub": "請求給付／繼承身分／舊證書有誤"
+        "sub": "安德森的請求｜給付與繼承身分"
       },
       "claims": [
         "c05",
@@ -865,7 +813,7 @@
       "template": "big",
       "data": {
         "kicker": "繼承權官司",
-        "text": "舊證書有誤",
+        "text": "她主張舊證書有誤",
         "sub": "德國聯邦最高法院｜1970 年"
       },
       "claims": [
@@ -875,7 +823,7 @@
       "lines": [
         {
           "id": "v209",
-          "text": "她還要求法院確認，先前的繼承證書有誤。"
+        "text": "她還主張，先前的繼承證書有誤，請法院確認。"
         }
       ]
     },
@@ -902,7 +850,7 @@
       "id": "court-two-parties",
       "template": "shot",
       "data": {
-        "prompt": "Top-down close-up of exactly two separate CLOSED blank case folders on opposite plain wooden tables with a narrow bare divider between them in a generic mid-century records room, all walls outside frame, no courtroom, judge bench, flags, papers, labels, writing or people",
+        "prompt": "Top-down close-up of exactly two closed plain case folders on opposite wooden tables in a generic mid-century records room. A narrow wooden divider separates them; the folders and tables fill the frame.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -919,21 +867,20 @@
       ]
     },
     {
-      "id": "court-two-parties-beat-2",
+      "id": "court-schanzkowska-name",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: Two uneven piles of archival witness letters on opposite sides of a courtroom table, no legible text",
+        "prompt": "Close-up of a plain closed case folder beside a single name slip placed face down on a bare wooden desk. The smooth blank reverse of the slip faces camera, representing the opposing party's other identity claim in a generic 1960s records room.",
         "camera": "push in",
         "visual": "still"
       },
       "claims": [
-        "c05",
         "c07"
       ],
       "lines": [
         {
-          "id": "v211",
-          "text": "被告的材料，試圖把安德森和失蹤女工連起來。"
+          "id": "sywj",
+        "text": "還記得卷宗裡的名字嗎？失蹤女工法蘭齊絲卡・尚茨科夫斯卡。"
         }
       ]
     },
@@ -941,7 +888,7 @@
       "id": "court-family-album",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an empty 1960s courthouse waiting bench with one CLOSED plain photo album and two separate blank witness folders on opposite ends, no people, portraits, document text or signage, high-window daylight",
+        "prompt": "Medium shot of an empty 1960s courthouse waiting bench. One closed plain photo album rests at the center and two separate closed plain witness folders sit at opposite ends; high-window daylight falls across the plaster wall behind.",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -993,7 +940,7 @@
       "id": "court-hamburg-corridor",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a generic late-1960s Hamburg courthouse corridor with plain plaster walls, wooden doors and a long empty bench, two anonymous lawyers seen from behind carrying leather briefcases, no signs, seals, screens or readable text, afternoon sun from a courtyard",
+        "prompt": "Wide shot of a generic late-1960s Hamburg courthouse corridor with plain plaster walls, wooden doors and a long empty bench. Two anonymous adult lawyers seen from behind carry leather briefcases toward the far door; afternoon sun enters from a courtyard.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1005,13 +952,14 @@
           "id": "sexv",
           "text": "一九六七年，前審衡量了彼此衝突的材料。"
         }
-      ]
+      ],
+      "chapter": "一九六七年，前審衡量證詞"
     },
     {
       "id": "court-hamburg-corridor-beat-2",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a witness letter under a judge's hand in a 1967 German civil courtroom, no readable text",
+        "prompt": "Medium close-up in a generic late-1960s German court records room: one anonymous adult clerk seen from behind places two closed plain witness folders side by side on a wooden shelf for comparison. Their smooth blank covers, soft window light and bare plaster wall fill the frame.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1040,27 +988,18 @@
       "lines": [
         {
           "id": "95fq",
-          "text": "安德森提起法律審，想推翻前審的證據判斷。會成功嗎？",
+          "text": "法院會接受她的公主主張嗎？",
           "emotion": "問句上揚，句尾停半拍"
         }
       ]
     },
     {
       "id": "court-two-years",
-      "template": "stats",
+      "template": "big",
       "data": {
-        "title": "從前審到最終判決",
-        "stats": [
-          {
-            "value": "1967",
-            "label": "前審的證據判斷"
-          },
-          {
-            "value": "1970",
-            "label": "聯邦最高法院駁回法律審"
-          }
-        ],
-        "source": "BGH 判決掃描｜1970 年"
+        "kicker": "1967 年前審",
+        "text": "公主身分未獲證明",
+        "sub": "法院評價衝突的證詞與資料"
       },
       "claims": [
         "c06"
@@ -1068,14 +1007,7 @@
       "lines": [
         {
           "id": "wmiq",
-          "text": "前審認為，她沒有證明自己是公主。",
-          "reveal": 1
-        },
-        {
-          "id": "i2rk",
-          "text": "三年後，最高法院駁回法律審。",
-          "reveal": 1,
-          "emotion": "像說給身旁的人聽，先輕後重"
+          "text": "前審認為，她沒有證明自己是公主。"
         }
       ]
     },
@@ -1083,7 +1015,7 @@
       "id": "court-two-levels",
       "template": "compare",
       "data": {
-        "title": "前審與法律審，各查什麼",
+        "title": "前審判決進入法律審",
         "left": {
           "heading": "一九六七年前審",
           "points": [
@@ -1103,33 +1035,29 @@
       ],
       "lines": [
         {
-          "id": "mrsj",
-          "text": "這兩道審理，處理的是不同問題。",
-          "reveal": 1
-        },
-        {
           "id": "qyt5",
-          "text": "最高法院檢查這個判法有沒有違法。",
+          "text": "安德森提起法律審，最高法院檢查前審判法有無違法。",
           "reveal": 1,
           "emotion": "像說給身旁的人聽，先輕後重"
         }
       ]
     },
     {
-      "id": "court-folder-return",
-      "template": "shot",
+      "id": "court-high-result",
+      "template": "big",
       "data": {
-        "prompt": "Overhead view, two abstract blank paper columns on a court reading table, a reader's hand points to the later section, no printed facsimile, names, seals or legible words, warm side light",
-        "camera": "drift",
-        "visual": "still"
+        "kicker": "1970 年法律審",
+        "text": "最高法院駁回",
+        "sub": "維持公主身分未獲證明"
       },
       "claims": [
-        "c07"
+        "c06"
       ],
       "lines": [
         {
-          "id": "sywj",
-          "text": "被告提出失蹤女工法蘭齊絲卡・尚茨科夫斯卡的名字。"
+          "id": "i2rk",
+          "text": "一九七〇年，最高法院駁回她的法律審。",
+          "emotion": "像說給身旁的人聽，先輕後重"
         }
       ]
     },
@@ -1178,8 +1106,8 @@
       "id": "court-two-names-logic",
       "template": "shot",
       "data": {
-        "prompt": "Overhead close-up of two separate blank identity cards on an old judicial table with a small empty space between them, no names, numbers, readable writing, flags, seals or human faces, quiet daylight",
-        "camera": "push in",
+        "prompt": "Overhead close-up of two separate blank identity cards on an old judicial table with a small empty space between them. Their smooth unprinted faces and quiet daylight fill the frame.",
+        "camera": "drift",
         "visual": "still"
       },
       "claims": [
@@ -1196,39 +1124,20 @@
       "id": "court-exit-day",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of an empty 1970 German courthouse staircase in quiet afternoon sun, a plain closed case folder resting on an interior windowsill, no people, no portrait and no readable court papers",
+        "prompt": "Wide shot of an empty generic 1970 German courthouse staircase in quiet afternoon sun. A plain closed case folder with a blank cover rests on an interior windowsill beside the broad stone steps.",
         "camera": "tilt up",
         "visual": "still"
       },
       "claims": [
         "c07",
+        "c11",
         "c17"
       ],
       "lines": [
         {
           "id": "bnbr",
-          "text": "她當年是否存心冒認，也不是判決處理的問題。",
+        "text": "法院沒有裁定她的動機；另一個缺口，是皇室家人的墓仍未找到。",
           "emotion": "像說給身旁的人聽，先輕後重"
-        }
-      ]
-    },
-    {
-      "id": "court-sealed-box",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up, a sealed archival box carried in gloved hands down a bright records corridor, the eye lands on the plain box lid, high window light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "claims": [
-        "c11",
-        "c18"
-      ],
-      "lines": [
-        {
-          "id": "as2s",
-          "text": "法庭散場後，俄國林地才出現另一份證據。",
-          "emotion": "問句上揚，句尾停半拍"
         }
       ]
     },
@@ -1236,7 +1145,7 @@
       "id": "grave-forest-1991",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of an unmarked late-1970s Russian forest clearing: a geologist in a plain coat studies a patch of ground from several steps away, no excavation, remains, grave marker, readable map, lettering or identifiable face, cold daylight",
+        "prompt": "Wide shot of a generic late-1970s Russian forest clearing. One anonymous adult geologist in a plain coat studies an intact patch of leaf-covered ground from several steps away, seen from behind. Birch trunks and cold daylight frame the ground patch.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1246,7 +1155,7 @@
       "lines": [
         {
           "id": "4uuj",
-          "text": "七〇年代末，地質學家阿夫多寧找到第一座墓。"
+        "text": "這個缺口到七〇年代末才有線索：地質學家阿夫多寧找到第一座墓。"
         }
       ],
       "chapter": "第一座墓少了兩名孩子"
@@ -1255,7 +1164,7 @@
       "id": "grave-map-table",
       "template": "shot",
       "data": {
-        "prompt": "Overhead close-up of an unmarked folded paper map on an old wooden table, one small plain wooden marker sits near its middle, no drawn contours, place labels, writing, numbers, compass, hands or tools",
+        "prompt": "Overhead close-up of one folded plain paper map on a bare old wooden table. Its smooth unprinted surface faces camera and one small plain wooden marker rests near the middle; the paper and wood fill the frame.",
         "camera": "drift",
         "visual": "still"
       },
@@ -1321,7 +1230,7 @@
       "id": "grave-empty-places",
       "template": "shot",
       "data": {
-        "prompt": "Close-up symbolic view on a uniform pale background: exactly TWO large empty circular outlines side by side in the center of the frame, nothing else; no tabletop, cards, counters, symbols, writing, people or decorative shapes",
+        "prompt": "Close-up symbolic view on a uniform pale background. Exactly two large empty circular outlines sit side by side at the center, and their unfilled interior spaces dominate the entire frame.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -1332,7 +1241,7 @@
       "lines": [
         {
           "id": "73wj",
-          "text": "這兩個空位，讓倖存傳聞還有地方停留。"
+          "text": "這個缺口，還不能替安德森的身分下定論。"
         }
       ]
     },
@@ -1340,7 +1249,7 @@
       "id": "dna-hospital-archive",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of one fully sealed OPAQUE brown archival envelope lying in front of a SHUT plain metal filing cabinet door, envelope front entirely blank, camera crops to envelope and cabinet, no box, transparent container, contents, labels, writing, people or hands",
+        "prompt": "Close-up of one plain closed opaque pathology slide case lying in front of a shut metal filing cabinet door. The case's smooth blank lid and the plain cabinet surface fill the cropped frame in cool archive light.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1350,16 +1259,15 @@
       "lines": [
         {
           "id": "bxmt",
-          "text": "一九九五年，安德森留下的檢體進入研究報告。"
+          "text": "一九九五年，她留下的檢體進入研究報告。"
         }
-      ],
-      "chapter": "一九九五年，檢體進了實驗室"
+      ]
     },
     {
       "id": "dna-sealed-sample-beat-2",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archived glass pathology slide in a protective box, blank label, no patient information",
+        "prompt": "Close-up of one archived glass pathology slide resting inside a plain protective box. Its small frosted label area is blank, and soft laboratory window light falls on the slide and box.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1438,7 +1346,7 @@
       "lines": [
         {
           "id": "bp4e",
-          "text": "要檢查的是，她能否接上皇后的母系。",
+          "text": "還記得開頭那兩份檢體嗎？研究者拿母系序列互相核對。",
           "emotion": "像說給身旁的人聽，先輕後重"
         }
       ]
@@ -1463,11 +1371,11 @@
     },
     {
       "id": "dna-two-results",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Top-down close-up of exactly two blank paper cards side by side on a plain table; exactly one small solid circular dot near the upper-left corner of each card, no diagrams, figurines, toys, faces, labels, text, vials or other objects, tight crop",
-        "camera": "tilt down",
-        "visual": "still"
+        "kicker": "兩份安德森檢體",
+        "text": "兩份母系序列相符",
+        "sub": "頭髮與保存組織｜研究者訪談"
       },
       "claims": [
         "c09"
@@ -1477,13 +1385,14 @@
           "id": "4yw7",
           "text": "兩份屬於安德森的檢體，先對上彼此。"
         }
-      ]
+      ],
+      "chapter": "兩份檢體先對上彼此"
     },
     {
       "id": "dna-lab-two-researchers-beat-2",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an old telephone receiver between two stacks of lab notes, no readable results",
+        "prompt": "Close-up of an old telephone receiver between two stacks of closed plain laboratory notebooks. Their smooth blank covers and the telephone fill the frame in daylight.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1501,7 +1410,7 @@
       "id": "dna-two-glass-vials",
       "template": "shot",
       "data": {
-        "prompt": "Overhead view, two thin cords running parallel on a bright research table to symbolize two maternal lines, a researcher's hand aligns plain markers at their ends, no specimen containers, skylight",
+        "prompt": "Overhead view of two thin cords running parallel on a bare bright research table to symbolize two maternal lines. One anonymous adult researcher's cropped hand aligns plain wooden markers at their ends; skylight falls across the cords.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1554,28 +1463,10 @@
       ]
     },
     {
-      "id": "dna-closed-album",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up, a closed portrait album pushed gently aside by a researcher’s hand in a bright laboratory office, sunlight on the cover",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "claims": [
-        "c09"
-      ],
-      "lines": [
-        {
-          "id": "xdsv",
-          "text": "這項比對，排除了她是安娜塔西亞。"
-        }
-      ]
-    },
-    {
       "id": "dna-method-limit",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a researcher placing a second small sealed sample case beside the first on a bright archival table, blank labels, no readable writing or human remains, natural afternoon light",
+        "prompt": "Close-up of one anonymous adult researcher's cropped hand placing a second small sealed plain sample case beside the first on a bright archival table. Both cases have smooth unprinted lids; natural afternoon light outlines their edges.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -1594,7 +1485,7 @@
       "id": "dna-blank-id",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, a researcher places an unlabeled family-tree diagram beside two closed sample cases in a bright archive room; simple branching lines have no names or writing, daylight from the left",
+        "prompt": "Medium close-up of one anonymous adult researcher's hand placing a plain family-tree teaching diagram beside two closed sample cases on a bright archive table. Simple branching lines end in blank circles; daylight enters from the left.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1631,7 +1522,7 @@
       "id": "dna-maucher-support",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of two plain color-coded maternal family branches ending at separate blank portrait frames on a clean research table, a thin matching thread connects the branches; no faces, readable labels, text or fake documents, warm daylight",
+        "prompt": "Medium close-up of an anonymous researcher's cropped hand arranging two groups of plain wooden family teaching tokens on a desk. A single cord joins both groups to one shared maternal-ancestor token; several other cords branch onward to show that more than one relative can share the line. Warm window light falls on the tokens' smooth blank faces.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1685,7 +1576,7 @@
       "id": "dna-forest-transition",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of one closed unmarked research journal beside a single small sealed unprinted archival envelope on a bare wooden table, both entirely opaque and with no contents visible, no people, maps, photographs, labels, letters or symbols",
+        "prompt": "Medium shot of one closed plain research journal beside an unprinted card bearing two empty circular outlines on a wooden table. The journal's smooth cover and the unfilled spaces on the card form a simple metaphor for two missing identities in afternoon window light.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1704,7 +1595,7 @@
       "id": "grave-2007-path",
       "template": "shot",
       "data": {
-        "prompt": "Medium ground-level view of a generic unmarked forest footpath among green birch trees near Yekaterinburg in 2007, filtered daylight through leaves, no excavation pits, signs, markers, maps, buildings, people or remains",
+        "prompt": "Wide view of a summer forest near Yekaterinburg in 2007. One anonymous adult amateur searcher seen from behind crouches beside a small intact patch of leaf-covered ground, holding a plain pocket notebook; a second adult searcher stands far back on the path. Birch trunks and summer light frame this generic search reconstruction.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1714,7 +1605,7 @@
       "lines": [
         {
           "id": "v2jq",
-          "text": "二〇〇七年，研究者在第一墓附近找到第二墓。",
+          "text": "還記得開頭林地的碎片嗎？它們來自第二座墓。",
           "emotion": "像說給身旁的人聽，先輕後重"
         }
       ],
@@ -1724,7 +1615,7 @@
       "id": "grave-2007-path-beat-2",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot: Gloved archaeologist's hands carefully marking a small soil square in a Russian forest, no remains visible",
+        "prompt": "Medium view of later formal fieldwork in a Russian summer forest. One anonymous adult gloved investigator seen from behind places a measuring rod beside a simple string grid over intact leaf-covered ground; another adult worker takes notes in the distant background. The ground and modest survey tools define a generic reconstruction of the search.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1824,7 +1715,7 @@
       "id": "grave-lab-two-researchers",
       "template": "shot",
       "data": {
-        "prompt": "Direct overhead medium shot of exactly THREE blank rectangular paper sheets laid side by side on a bare wooden tabletop, each sheet completely empty, no laboratory setting, instruments, dishes, liquids, markers, labels, letters or people",
+        "prompt": "Direct overhead medium shot of exactly three unprinted off-white rectangular paper sheets laid side by side on a wooden tabletop. The paper and wood fill the entire frame in even daylight.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1903,7 +1794,7 @@
       "id": "grave-family-board",
       "template": "shot",
       "data": {
-        "prompt": "Close overhead view of a simple plain board on a daylight desk, exactly two circular recesses filled by exactly two plain wooden discs, no other tokens, lines, family tree, names, labels, pictures, numbers, writing or people",
+        "prompt": "Close overhead view of a simple plain board on a daylight desk. Exactly two circular recesses hold exactly two plain wooden discs; the tight crop shows the board and its two discs filling the frame.",
         "camera": "drift",
         "visual": "still"
       },
@@ -2066,8 +1957,7 @@
           "reveal": 1,
           "emotion": "問句上揚，句尾停半拍"
         }
-      ],
-      "chapter": "二〇〇九年，五名孩子找齊了"
+      ]
     },
     {
       "id": "grave-five-children",
@@ -2089,24 +1979,6 @@
       ]
     },
     {
-      "id": "grave-family-empty-room",
-      "template": "photo",
-      "data": {
-        "image": "stock/b6a0dabf09a59a989876486dc56a88eb2fae1f4883e2e191b072288b486deb22.jpg",
-        "caption": "1917–18 年尼古拉二世與三名女兒；非墓地影像",
-        "credit": "耶魯 Beinecke 圖書館｜Romanov Collection"
-      },
-      "claims": [
-        "c15"
-      ],
-      "lines": [
-        {
-          "id": "yuvi",
-          "text": "這張照片裡的人，都在兩座墓的家族名單裡。"
-        }
-      ]
-    },
-    {
       "id": "end-blank-motive",
       "template": "shot",
       "data": {
@@ -2120,28 +1992,8 @@
       "lines": [
         {
           "id": "4s6y",
-          "text": "法院當年沒回答的事——她是誤信還是有意冒認——檢體也答不出。",
+          "text": "檢體能比對母系，卻讀不出她當年相信了什麼。",
           "emotion": "像說給身旁的人聽，先輕後重"
-        }
-      ]
-    },
-    {
-      "id": "end-canal-return",
-      "template": "shot",
-      "data": {
-        "prompt": "Extreme close-up of plain dark iron canal railing dusted with snow against softly blurred still water in 1920 Berlin winter afternoon light; tight camera crop contains only iron railing, snow and water, no bridge, street, people, trees, buildings or skyline",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "claims": [
-        "c09",
-        "c15",
-        "c16"
-      ],
-      "lines": [
-        {
-          "id": "56m3",
-          "text": "當年運河邊那個問題，現在可以清楚回答。"
         }
       ]
     },
@@ -2164,17 +2016,17 @@
       "lines": [
         {
           "id": "d7um",
-          "text": "運河邊的女子，並不是安娜塔西亞。",
+          "text": "她不是安娜塔西亞。",
           "emotion": "放慢，關鍵名詞壓重，句尾留白"
         },
         {
           "id": "934q",
-          "text": "你會怎麼分辨一份證據能回答到哪一步？",
+          "text": "哪份證據最有力？",
           "emotion": "問句上揚，句尾停半拍"
         },
         {
           "id": "tstk",
-          "text": "訂閱奇聞檔案局，我們繼續讀歷史。"
+          "text": "訂閱，一起查證。"
         }
       ]
     }
@@ -2207,7 +2059,7 @@
     {
       "setup": "pxbi",
       "payoff": "jptu",
-      "what": "第二座墓裡的兩名孩子是誰"
+      "what": "林地新碎片屬於哪兩名孩子"
     },
     {
       "setup": "73wj",

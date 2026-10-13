@@ -18,11 +18,9 @@
     "burn_in": false
   },
   "look": {
-    "preset": "custom",
-    "style": "2D Taiwanese YouTube explainer cartoon: thick clean dark outlines, flat colours with soft cel shading, simple clear backgrounds, subtle paper grain, deep navy blue, parchment yellow, muted teal and one warning-red accent. Backgrounds use broad colour shapes and soft cel shadows. Human characters specified in the scene have chibi proportions, big round heads, expressive eyes and comic expressions. Empty settings contain only the listed objects and natural forms. One main subject in the centre third, playful and friendly, 16:9.",
-    "negative": "",
-    "motion": "slow push in or gentle drift, no morphing, no cuts",
-    "candidates": 3
+    "preset": "cute-mystery",
+    "candidates": 3,
+    "style": "cute Taiwanese YouTube explainer cartoon: thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Human subjects explicitly named in a shot use chibi proportions with big round heads and expressive eyes; named adults keep adult clothing and posture. Object and landscape shots show the named inanimate props or natural forms as sole subjects, with plain blank surfaces."
   },
   "youtube": {
     "category_id": 27,
@@ -74,6 +72,11 @@
       "title": "FBI In Search of D.B. Cooper（2009）",
       "url": "https://archives.fbi.gov/archives/news/stories/2009/march/in-search-of-d.b.-cooper",
       "checked_on": "2026-10-12"
+    },
+    {
+      "title": "FBI Scientists Hunt for D.B. Cooper｜Ingram 訪談逐字稿",
+      "url": "https://www.fbi.gov/video-repository/newss-scientists-hunt-for-d.b.-cooper/view",
+      "checked_on": "2026-10-14"
     },
     {
       "title": "Kaye、Meltzer（2020）鈔票矽藻研究",
@@ -135,7 +138,7 @@
       "id": "open-counter",
       "template": "shot",
       "data": {
-        "prompt": "Medium rear view of one anonymous adult man standing at an airport counter in afternoon soft airport light, early nineteen seventies America. He wears an ordinary plain jacket and holds a shut wallet beside the counter. Only his back is visible. Window light fills the room.",
+        "prompt": "Medium rear view of one clearly adult anonymous man at a Portland airport ticket counter in November 1971 afternoon light. His dark business jacket and black tie frame a plain wallet in his hand; his face is turned away. One counter clerk is a soft background shape, and window light fills the terminal.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -155,7 +158,7 @@
       "id": "open-ticket",
       "template": "shot",
       "data": {
-        "prompt": "Overhead view of a single closed plain paper ticket envelope on a wooden airport desk in afternoon soft airport light. The envelope is a smooth narrow rectangle with its flap folded shut. A soft window shadow crosses the otherwise vacant desk.",
+        "prompt": "Close-up view of a 1971 airport ticket counter during one cash purchase. An anonymous adult man's hand in a dark business jacket sleeve sets a few generic paper banknotes on the counter while a clerk slides one narrow paper ticket toward him. The ticket faces down with its printed side outside the frame; the adult's face is outside the frame. Afternoon window light falls across the transaction.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -173,7 +176,7 @@
       "id": "open-aisle",
       "template": "shot",
       "data": {
-        "prompt": "Wide view along an unoccupied passenger cabin aisle in an early nineteen seventies airliner, afternoon. Simple cloth seats and rounded overhead racks recede into the distance. The central aisle is clear and softly lit by side windows.",
+        "prompt": "Medium rear three-quarter view inside an early 1970s passenger airliner in afternoon light. One clearly adult anonymous man in a dark business jacket and black tie moves into his cloth aisle seat, holding a narrow paper ticket face down. His head turns toward the window, leaving only the back of his head visible; rounded overhead racks frame the aisle.",
         "camera": "push in",
         "visual": "still"
       },
@@ -192,7 +195,7 @@
       "id": "open-drink",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in an anonymous early nineteen seventies airliner cabin. One plain drinking glass with a mixed drink sits beside a seated passenger whose face is outside frame. No airline logo or legible text.",
+        "prompt": "Close-up inside a generic early nineteen seventies airliner cabin. One plain low tumbler containing bourbon and soda sits on a small seat-side tray beside an adult passenger cropped to one dark suit sleeve. Smooth unmarked cabin furnishings and afternoon light frame the glass.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -211,7 +214,7 @@
       "id": "open-note",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of one folded plain paper note resting on an aircraft tray table in a passenger cabin of the early nineteen seventies. The folded outer surface is blank and the fold is clearly visible. Gentle soft side light illuminates the paper.",
+        "prompt": "Close-up view inside an early 1970s passenger cabin after takeoff: one anonymous seated adult man's hand extends a small folded plain paper note toward a flight attendant's waiting hand across the narrow aisle. The outward-facing paper is blank; the man's face stays outside the frame. Afternoon cabin light falls across the single handoff.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -229,7 +232,7 @@
       "id": "open-threat",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a closed rectangular hard-sided briefcase on a plain aircraft seat in an early nineteen seventies cabin, afternoon. Its lid is fully shut, with a simple handle and two latches visible. Side-soft side light defines its solid shape.",
+        "prompt": "Close-up of a closed rectangular hard-sided briefcase on a plain aircraft seat in an early nineteen seventies cabin, afternoon. Its lid is fully shut, with a simple handle and two latches visible. Soft side light defines its solid shape.",
         "camera": "drift",
         "visual": "still"
       },
@@ -247,7 +250,7 @@
       "id": "open-tail",
       "template": "shot",
       "data": {
-        "prompt": "Wide illustrative rear view of an unmarked early nineteen seventies passenger jet far above night clouds. The T-tail and three rear engine positions define its silhouette; a dark lowered stair shape is visible beneath the tail, with no person or mechanism detail.",
+        "prompt": "Wide rear three-quarter illustration of one unmarked early 1970s passenger tri-jet flying at night above dim clouds. Its T-tail, three rear engine positions and one lowered aft airstair extending diagonally beneath the rear fuselage form a clear distant silhouette. Cloud cover fills the sky with dark land far below.",
         "camera": "push in",
         "visual": "still"
       },
@@ -266,7 +269,7 @@
       "id": "open-boy",
       "template": "shot",
       "data": {
-        "prompt": "Wide rear view of one anonymous eight-year-old child crouching on broad Columbia River sand in 1980, overcast light, face hidden. The sand fills the foreground; no bills are visible yet.",
+        "prompt": "Wide rear view of one anonymous eight-year-old child crouching on broad Columbia River sand in February 1980 under overcast daylight. The child's back and an uninterrupted sandy patch fill the foreground, with a distant strip of river water beyond.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -284,7 +287,7 @@
       "id": "open-tie",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an open shallow archival box on a bright storage table. A single folded sheet of unmarked tissue lies inside the unoccupied box. The box is centred under soft morning soft side light.",
+        "prompt": "Illustrated conceptual close-up of the plain black necktie left on the aircraft, unfolded in an evidence tray. An anonymous gloved hand reaches toward the fabric and a plain sealed sample envelope rests beside it. The tray and envelope have blank surfaces, and flat cartoon rendering marks this as a reconstruction.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -307,12 +310,13 @@
         "visual": "still"
       },
       "claims": [
+        "c16",
         "c17"
       ],
       "lines": [
         {
           "id": "h5v010",
-          "text": "二〇二〇年，一片原鈔樣本進了顯微鏡。",
+          "text": "多年後，一張原鈔上的小切片被拿去做顯微分析。",
           "emotion": "數字稍慢，語尾落穩"
         }
       ]
@@ -321,13 +325,12 @@
       "id": "open-question",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of an unoccupied Columbia River sandbank in clear afternoon soft airport light. A low strip of smooth sand meets broad calm water and a distant wooded shore. The centre contains only the gently curving shoreline, lit from the left.",
+        "prompt": "Medium view inside a generic 1971 passenger cabin: a flight attendant holds an unfolded small paper note at an angle, its plain blank reverse side facing the viewer. One anonymous seated adult man is seen from behind; soft passenger silhouettes fill distant seats. The attendant's attention rests on the paper.",
         "camera": "push in",
         "visual": "still"
       },
       "claims": [
-        "c12",
-        "c14"
+        "c04"
       ],
       "lines": [
         {
@@ -415,7 +418,7 @@
       "id": "captain-note",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of one folded plain paper note resting on an aircraft tray table in a passenger cabin of the early nineteen seventies. The folded outer surface is blank and the fold is clearly visible. Gentle soft side light illuminates the paper.",
+        "prompt": "Medium view at the cockpit doorway of an early 1970s passenger aircraft. One flight attendant, seen from behind, extends a second plain folded note to a pilot's hand beyond the doorway. The exposed paper surface is blank; only the handoff and the narrow cabin doorway are clear in soft afternoon light.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -434,7 +437,7 @@
       "id": "demand-question",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a closed plain parcel on a simple airport service table in the early nineteen seventies, late afternoon. The parcel is wrapped in unprinted paper and secured with one plain cord. Soft airport ceiling light comes from a tall side window.",
+        "prompt": "Close-up of a closed plain parcel on a simple airport service table in the early nineteen seventies, late afternoon. The parcel is wrapped in unprinted paper and secured with one plain cord. Soft late-afternoon sunlight enters through a tall side window.",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -457,7 +460,7 @@
         "stats": [
           {
             "value": "200,000 美元",
-            "label": "交付的贖金"
+            "label": "要求的贖金"
           },
           {
             "value": "4 具",
@@ -487,7 +490,7 @@
       "id": "sealed-ransom-bag",
       "template": "shot",
       "data": {
-        "prompt": "Medium view of one closed plain canvas carry bag on an airport service bench at dusk, early nineteen seventies. Its fabric opening is tied shut and its simple handles lie to either side. Remaining airport ceiling light illuminates the seams.",
+        "prompt": "Medium view of one closed plain canvas carry bag on an indoor airport service bench at dusk, early nineteen seventies. Its fabric opening is tied shut and its simple handles lie to either side. Warm terminal overhead light illuminates the seams.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -498,7 +501,7 @@
       "lines": [
         {
           "id": "h5v020",
-          "text": "地面交付的那批鈔票，序號都被記錄下來。"
+          "text": "地面準備交付的那批鈔票，序號先被記下。"
         }
       ]
     },
@@ -506,7 +509,7 @@
       "id": "agency-alert",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of one closed clothbound notebook on an interview-room desk in daytime. The plain cover and stitched spine are clearly visible. A narrow band of soft side light crosses the closed book.",
+        "prompt": "Conceptual medium view in a plain 1971 federal office during daylight: one anonymous clerk places an unmarked alert sheet on an investigator's desk while an idle rotary telephone rests beside it. The alert sheet is turned face down and its contents are outside the frame; office shelves recede softly behind the desk.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -544,7 +547,7 @@
       "id": "seattle-ground",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of a quiet airport apron at late afternoon in the early nineteen seventies. A generic unmarked passenger jet is parked beyond a low service cart. The aircraft and flat tarmac are lit by the last airport ceiling light.",
+        "prompt": "Wide view of a quiet airport apron at late afternoon in the early nineteen seventies. A generic unmarked passenger jet is parked beyond a low service cart. Fading afternoon daylight illuminates the aircraft and flat tarmac.",
         "camera": "push in",
         "visual": "still"
       },
@@ -563,7 +566,7 @@
       "id": "delivery-table",
       "template": "shot",
       "data": {
-        "prompt": "Wide conceptual view from inside an early nineteen seventies passenger aircraft cabin at dusk. A closed canvas bag remains in the empty cabin foreground while the main passenger doorway stands open at the far end of the aisle. Empty seat rows frame the path to the doorway; no people, airline marks or readable text.",
+        "prompt": "Wide conceptual view from inside an early nineteen seventies passenger aircraft cabin at dusk. A closed canvas bag sits in the vacant cabin foreground while the main passenger doorway stands open at the far end of the aisle. Vacant cloth seat rows frame the path, and all visible surfaces are plain and unmarked.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -642,7 +645,7 @@
       "id": "vacant-cabin",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of vacant rows of cloth passenger seats in an early nineteen seventies aircraft at dusk. The wide central aisle remains clear. Fading airport ceiling light enters through oval windows and reveals the vacant seating.",
+        "prompt": "Wide view of vacant rows of cloth passenger seats in an early nineteen seventies aircraft at dusk. The wide central aisle remains clear. Fading dusk daylight enters through oval windows and reveals the vacant seating.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -696,11 +699,20 @@
     },
     {
       "id": "tail-stairs-ground",
-      "template": "shot",
+      "template": "steps",
       "data": {
-        "prompt": "Wide illustrative rear view of an unmarked early nineteen seventies passenger jet far above night clouds. The T-tail and three rear engine positions define its silhouette; a dark lowered stair shape is visible beneath the tail, with no person or mechanism detail.",
-        "camera": "push in",
-        "visual": "still"
+        "title": "從機尾跳離",
+        "steps": [
+          {
+            "title": "飛機後方",
+            "detail": "FBI 記載從機尾跳出"
+          },
+          {
+            "title": "落點",
+            "detail": "接著要查的問題"
+          }
+        ],
+        "source": "FBI 案件史｜1971 年 11 月"
       },
       "claims": [
         "c07"
@@ -708,7 +720,7 @@
       "lines": [
         {
           "id": "h5v031",
-          "text": "還記得開頭那道尾端階梯嗎？他從那裡跳離飛機。",
+          "text": "還記得開頭那道尾端階梯嗎？他從飛機後方跳了出去。",
           "emotion": "問句尾音微抬，留一拍"
         }
       ],
@@ -737,7 +749,7 @@
       "id": "forest-unknown",
       "template": "shot",
       "data": {
-        "prompt": "Wide view across an unoccupied wooded valley in overcast low cabin light. Low rounded hills and continuous forest surround a broad open centre. The landscape contains natural ground and trees with a distant pale horizon.",
+        "prompt": "Wide view across an unoccupied wooded valley under a low overcast sky in cool daylight. Low rounded hills and continuous forest surround a broad open centre. Natural ground and trees lead toward a distant pale horizon.",
         "camera": "drift",
         "visual": "still"
       },
@@ -775,7 +787,7 @@
       "id": "aircraft-search",
       "template": "shot",
       "data": {
-        "prompt": "Overhead view of two closed plain case folders placed separately on an office table in afternoon low cabin light. The folders have matching simple shapes with a clear gap between them. Window light spreads across the table.",
+        "prompt": "Wide interior view along an empty early 1970s passenger jet cabin after landing. One anonymous investigator walks down the aisle and closely examines the rows of cloth seats for objects left behind. The focus is the single search action, with oval windows and overhead racks receding toward the far end of the plane.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -791,11 +803,20 @@
     },
     {
       "id": "chutes-carried",
-      "template": "shot",
+      "template": "stats",
       "data": {
-        "prompt": "Diagram-like archival illustration of four generic closed canvas parachute packs on a neutral surface. Two packs are grouped near a simple silhouette of an aircraft rear stair, separated from the other two packs. No people, labels, numbers, brands or claim of the original equipment's exact appearance.",
-        "camera": "drift",
-        "visual": "still"
+        "title": "降落傘清點",
+        "stats": [
+          {
+            "value": "4 具",
+            "label": "地面交付"
+          },
+          {
+            "value": "2 具",
+            "label": "劫機者帶走"
+          }
+        ],
+        "source": "FBI 案件回顧"
       },
       "claims": [
         "c29"
@@ -811,7 +832,7 @@
       "id": "chute-cord",
       "template": "shot",
       "data": {
-        "prompt": "Tight illustrative close-up of a short loose cord beside a plain cloth money bag and one closed canvas parachute pack on an evidence table. No readable labels, knots or step-by-step details.",
+        "prompt": "Tight illustrated explanatory close-up of a short loose cord beside a plain cloth money bag and one closed canvas parachute pack, arranged separately on a simple display table. Smooth blank fabric and the closed pack are the central details.",
         "camera": "drift",
         "visual": "still"
       },
@@ -842,7 +863,7 @@
       "lines": [
         {
           "id": "h5v038",
-          "text": "還記得開頭的丹庫柏嗎？那只是購票時留下的名字。"
+          "text": "丹庫柏只是購票時留下的名字。"
         }
       ]
     },
@@ -886,7 +907,7 @@
       "id": "witness-interview-room",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of an unoccupied interview room in the early nineteen seventies, daytime. Two ordinary chairs face each other across a small wooden table. Broad low cabin light enters through a high window, illuminating the unoccupied seats.",
+        "prompt": "Wide view of an unoccupied interview room in the early nineteen seventies, daytime. Two ordinary chairs face each other across a small wooden table. Broad diffuse daylight enters through a high window, illuminating the vacant seats.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -942,7 +963,7 @@
       "id": "interview-notebook",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of one closed clothbound notebook on an interview-room desk in daytime. The plain cover and stitched spine are clearly visible. A narrow band of soft side light crosses the closed book.",
+        "prompt": "Close-up view of an anonymous investigator's hand writing on an open blank-paged notebook in a bright 1970s interview room. Two plain empty chairs are softly visible beyond the desk. The pen tip and page are the focal point; sparse marks are short abstract strokes on otherwise blank paper.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -960,7 +981,7 @@
       "id": "nationwide-leads",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of a short row of closed plain document folders standing in a bright archive shelf. One unoccupied gap appears between the folders at the centre. The broad wooden shelf and simple folders are lit by low cabin light.",
+        "prompt": "Medium view in a 1970s office: one anonymous investigator traces a finger across a plain wall map of the continental United States while unmarked case folders rest on the desk. The map carries only a broad land outline, leaving specific lead locations unspecified. Clear daylight illuminates the single comparison action.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1004,7 +1025,7 @@
       "id": "archive-many-folders",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of a short row of closed plain document folders standing in a bright archive shelf. One unoccupied gap appears between the folders at the centre. The broad wooden shelf and simple folders are lit by low cabin light.",
+        "prompt": "Wide view inside a bright archive room: a long receding shelf of plain closed case folders, with one small cluster set apart on the central table. Folder spines face away from camera and have blank exteriors; the composition conveys many reviewed candidates while exact counts remain on the adjacent fact card. Daylight fills the room.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1022,7 +1043,7 @@
       "id": "comparison-desk",
       "template": "shot",
       "data": {
-        "prompt": "Overhead view of two closed plain case folders placed separately on an office table in afternoon low cabin light. The folders have matching simple shapes with a clear gap between them. Window light spreads across the table.",
+        "prompt": "Overhead view of an investigator aligning two plain witness-recollection sheets side by side beside one sealed evidence pouch on a 1970s office desk. The sheets are face down with blank backs and the pouch is opaque, leaving identities and contents unshown. One hand moves a sheet into place under clear afternoon window light.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1041,7 +1062,7 @@
       "id": "search-empty-land",
       "template": "shot",
       "data": {
-        "prompt": "Wide view across an unoccupied wooded clearing in overcast low cabin light. Low brush borders the flat open ground with a distant line of trees. The centre is a quiet stretch of natural terrain.",
+        "prompt": "Wide view across an unoccupied wooded clearing under cool overcast daylight. Low brush borders the flat open ground with a distant line of trees. The centre is a quiet stretch of natural terrain.",
         "camera": "drift",
         "visual": "still"
       },
@@ -1060,35 +1081,18 @@
       "id": "survival-question",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of an vacant forested hillside under a low overcast sky. Closely spaced trees cover a rounded slope, with a narrow open foreground. Diffuse low cabin light makes the ground and tree line visible.",
+        "prompt": "Wide view of a vacant forested hillside under a low overcast sky. Closely spaced trees cover a rounded slope, with a narrow open foreground. Diffuse daylight makes the ground and tree line visible.",
         "camera": "pull out",
         "visual": "still"
       },
       "claims": [
+        "c01",
         "c13"
       ],
       "lines": [
         {
           "id": "h5v050",
-          "text": "飛機飛過黑暗，地面搜尋沒有帶回他。"
-        }
-      ]
-    },
-    {
-      "id": "river-chapter-bridge",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide view of a Columbia River sandbank on a bright winter day in nineteen eighty. Smooth pale sand slopes gently toward calm broad water. Low brush and a wooded opposite shore remain in the distance.",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "claims": [
-        "c12"
-      ],
-      "lines": [
-        {
-          "id": "h5v051",
-          "text": "直到一九八〇年，河岸沙地冒出另一件東西。"
+          "text": "地面搜尋沒有帶回人。那筆贖金呢？"
         }
       ]
     },
@@ -1096,15 +1100,15 @@
       "id": "discovery-date",
       "template": "stats",
       "data": {
-        "title": "河岸找到贖金",
+        "title": "河岸發現｜插畫重建",
         "stats": [
           {
             "value": "1980-02-10",
             "label": "Tena Bar 河岸"
           },
           {
-            "value": "8 歲",
-            "label": "發現者 Brian Ingram"
+            "value": "3 捆",
+            "label": "腐朽的 20 美元紙鈔"
           }
         ],
         "source": "FBI 2009／Kaye、Meltzer（2020）"
@@ -1115,13 +1119,13 @@
       "lines": [
         {
           "id": "h5v052",
-          "text": "二月十日，一個八歲男孩在河岸挖沙。",
+          "text": "直到一九八〇年二月十日，開頭那個河岸男孩，才從沙裡挖到破鈔。",
           "reveal": 1,
           "emotion": "數字稍慢，語尾落穩"
         },
         {
           "id": "h5v053",
-          "text": "沙裡露出的，是三捆已經腐朽的紙鈔。",
+          "text": "不是零散一張，而是三捆腐朽的二十美元鈔票。",
           "reveal": 1
         }
       ],
@@ -1131,7 +1135,7 @@
       "id": "boy-bank",
       "template": "shot",
       "data": {
-        "prompt": "Wide rear view of one anonymous eight-year-old child crouching on broad Columbia River sand in 1980, overcast light, face hidden. The sand fills the foreground; no bills are visible yet.",
+        "prompt": "Medium rear view, illustrative reconstruction on a broad Columbia River sandbank in February 1980, of one clearly eight-year-old anonymous child crouching beside three partly uncovered small weathered bundles of paper money. The child's face and the banknotes' printed surfaces face away from camera; overcast daylight and open riverbank sand fill the frame.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -1141,7 +1145,7 @@
       "lines": [
         {
           "id": "h5v054",
-          "text": "還記得開頭那個男孩嗎？他叫布萊恩英格拉姆。"
+          "text": "他叫布萊恩英格拉姆，當時只有八歲。"
         }
       ]
     },
@@ -1149,7 +1153,7 @@
       "id": "sand-find",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a simple unmarked paper evidence packet resting on a clean board beside a open river light riverbank. The packet is fully shut, with smooth outer folds. Sand and a strip of water remain softly visible in the background.",
+        "prompt": "Close-up of a simple unmarked paper evidence packet resting on a clean board beside an open riverbank under overcast daylight. The packet is fully shut, with smooth outer folds. Sand and a strip of water remain softly visible in the background.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1235,7 +1239,7 @@
       "lines": [
         {
           "id": "h5v058",
-          "text": "還記得西雅圖交出的二十萬嗎？拿找到的錢去除。",
+          "text": "還記得西雅圖交出的二十萬嗎？拿找到的錢，除以那筆贖金。",
           "reveal": 1,
           "emotion": "問句尾音微抬，留一拍"
         },
@@ -1347,7 +1351,7 @@
       "id": "transport-question",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an open shallow archival box on a bright storage table. A single folded sheet of unmarked tissue lies inside the vacant box. The box is centred under soft morning soft side light.",
+        "prompt": "Illustrated close-up of a plain black necktie left on an aircraft seat beside a small blank evidence tag. An anonymous gloved hand reaches toward the tie under even cabin light; the picture focuses on the tie as a case object.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1358,7 +1362,7 @@
       "lines": [
         {
           "id": "h5v066",
-          "text": "那條留在機上的領帶，會不會留下人的痕跡？"
+          "text": "河岸鈔票之外，機上那條領帶能找到姓名嗎？"
         }
       ]
     },
@@ -1387,7 +1391,7 @@
       "id": "tie-brand",
       "template": "shot",
       "data": {
-        "prompt": "Top-down view of one black necktie resting in a clear archival evidence sleeve on a plain intake table. The cloth is visible through the sleeve; no readable writing, face, or person appears. Warm archive light.",
+        "prompt": "Overhead view of one black necktie inside a clear archival evidence sleeve on a plain intake table. The cloth shows through the sleeve; the frame is tightly cropped to fabric, sleeve and blank tabletop under warm archive light.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1405,7 +1409,7 @@
       "id": "tie-storage-box",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an open shallow archival box on a bright storage table. A single folded sheet of unmarked tissue lies inside the unoccupied box. The box is centred under soft morning soft side light.",
+        "prompt": "Close-up illustrated reconstruction of a plain black necktie on a neutral evidence table. One anonymous gloved hand holds a small sample swab near the fabric; the frame is cropped to the hand, swab and tie under warm light. Table and swab packaging have blank surfaces.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1423,7 +1427,7 @@
       "id": "sample-room",
       "template": "shot",
       "data": {
-        "prompt": "Medium view of a laboratory sample tube standing upright in a small rack on a clean examination bench in daytime. The single clear capped tube occupies the centre. Broad soft side light reveals the transparent material.",
+        "prompt": "Medium view of a plain black necktie resting in an open evidence tray on a clean examination bench. A small capped generic sample tube stands beside the tie with a visible gap. An anonymous gloved hand steadies the tray in daylight; tube and tray have plain unmarked surfaces.",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -1470,7 +1474,7 @@
         },
         {
           "id": "h5v072",
-          "text": "當時的公開檔案，沒有因此寫下一個真名。",
+          "text": "領帶那份樣本，仍沒在公開檔案裡帶出真名。",
           "reveal": 1
         }
       ]
@@ -1581,7 +1585,7 @@
       "id": "tip-wealth",
       "template": "shot",
       "data": {
-        "prompt": "Close-up archival style illustration of one anonymous handwritten tip sheet on a plain desk; all writing is illegible, and no person is visible.",
+        "prompt": "Close-up archival style illustration of one anonymous tip sheet lying face down on a plain desk. Its blank reverse side faces the viewer, and the frame is cropped to paper and tabletop.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1599,7 +1603,7 @@
       "id": "tip-standard",
       "template": "shot",
       "data": {
-        "prompt": "Close-up archival style illustration of an evidence ledger with a blank identity field, viewed at a shallow angle; no names or writing are legible.",
+        "prompt": "Close-up archival style illustration of an open evidence ledger page with one empty outlined identity field, viewed at a shallow angle. The page surface is otherwise plain and blank.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1650,6 +1654,7 @@
         "source": "FBI 2016-07-12 聲明｜繁中轉述"
       },
       "claims": [
+        "c12",
         "c22"
       ],
       "lines": [
@@ -1660,40 +1665,9 @@
         },
         {
           "id": "h5v082",
-          "text": "也請掌握相關降落傘實物的人提供線索。",
+          "text": "聲明也徵求降落傘實物；已找回的原鈔還能說什麼？",
           "reveal": 1,
           "emotion": "像把眼前剛發生的事講給朋友聽"
-        }
-      ]
-    },
-    {
-      "id": "research-after-statement",
-      "template": "compare",
-      "data": {
-        "title": "不同年份，不同工作",
-        "left": {
-          "heading": "2020 年",
-          "points": [
-            "研究者發表鈔票分析"
-          ]
-        },
-        "right": {
-          "heading": "2016 年",
-          "points": [
-            "調查機關調整資源"
-          ]
-        },
-        "source": "FBI 2016／Kaye、Meltzer（2020）"
-      },
-      "claims": [
-        "c21",
-        "c23"
-      ],
-      "lines": [
-        {
-          "id": "h5v083",
-          "text": "但幾年後，那批已找到的錢又被拿去問新問題。",
-          "reveal": 1
         }
       ]
     },
@@ -1711,7 +1685,7 @@
       "lines": [
         {
           "id": "h5v084",
-          "text": "二〇二〇年，凱伊和梅爾策發表一篇研究。"
+          "text": "二〇二〇年，凱伊與梅爾策發表河岸一張原鈔的研究。"
         }
       ],
       "chapter": "一張鈔票把浸水季節推向夏天"
@@ -1720,7 +1694,7 @@
       "id": "single-bill-sample",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of one shut flat specimen case on a bright laboratory table. The small square case has a smooth plain lid and a simple edge seam. It sits alone at the centre under diffuse cool laboratory light.",
+        "prompt": "Close-up 2D explanatory reconstruction of one narrow blank frayed greenish paper edge from a weathered banknote on a clean lab table. One anonymous gloved hand steadies its corner under clear side light. The frame is tightly cropped to aged paper fibers and the single narrow strip.",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -1730,7 +1704,7 @@
       "lines": [
         {
           "id": "h5v085",
-          "text": "還記得河岸男孩嗎？這張原鈔後來由他持有。",
+          "text": "河岸男孩後來持有這張原鈔。",
           "emotion": "問句尾音微抬，留一拍"
         }
       ]
@@ -1774,11 +1748,11 @@
     },
     {
       "id": "diatom-observation",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Close-up of a sealed specimen port in a metal examination chamber at an electron microscopy laboratory in cool laboratory light. The small smooth rectangular port sits flush with the wide metal surface. Soft laboratory light defines its narrow seam.",
-        "camera": "push in",
-        "visual": "still"
+        "kicker": "Kaye、Meltzer（2020）",
+        "text": "原鈔切片上發現矽藻",
+        "sub": "一張鈔票的顯微觀察"
       },
       "claims": [
         "c17"
@@ -1811,11 +1785,11 @@
     },
     {
       "id": "modern-controls",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Close-up of a closed plain sample container beside a river-water bottle on a clean bright bench. Both objects have smooth unmarked surfaces. Window light falls evenly across the separate container and bottle.",
-        "camera": "pull out",
-        "visual": "still"
+        "kicker": "研究者的現代對照｜非原鈔",
+        "text": "11 月：河水短暫浸泡",
+        "sub": "對照鈔票直接放入哥倫比亞河"
       },
       "claims": [
         "c17"
@@ -1831,7 +1805,7 @@
       "id": "modern-control-context",
       "template": "shot",
       "data": {
-        "prompt": "Medium view of a laboratory sample tube standing upright in a small rack on a clean examination bench in daytime. The single clear capped tube occupies the centre. Broad soft side light reveals the transparent material.",
+        "prompt": "Close-up conceptual present-day view at a sandy Columbia River bend in daylight: one anonymous researcher's hand dips a plain clear sample bottle into shallow water near the bank. River water, sand, a modern sample bottle and the hand fill the frame as a contemporary comparison sample.",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -1850,7 +1824,7 @@
       "id": "control-limit",
       "template": "shot",
       "data": {
-        "prompt": "Overhead view of two unmarked paper currency sample envelopes beside separate sealed river-water vials on a clean research table. No legible text, logos, dates, or banknote details. Cool laboratory light.",
+        "prompt": "Overhead view of two plain blank paper currency sample envelopes beside separate sealed clear river-water vials on a clean research table. The four simple unmarked objects are spaced apart under cool laboratory light.",
         "camera": "drift",
         "visual": "still"
       },
@@ -1868,7 +1842,7 @@
       "id": "seasonal-comparison",
       "template": "shot",
       "data": {
-        "prompt": "Overhead view of two plain round sample dishes placed apart on a cool laboratory light laboratory table. Both dishes contain clear liquid and have identical simple rims. A broad unoccupied gap separates them at the centre.",
+        "prompt": "Overhead schematic view of two separate plain banknote-edge specimen holders on a clean laboratory table, one holding a worn aged paper strip and the other a newer crisp paper strip. Both strips show blank unprinted edges, with a broad gap between their holders under cool window light.",
         "camera": "drift",
         "visual": "still"
       },
@@ -1887,7 +1861,7 @@
       "id": "star-fragments",
       "template": "shot",
       "data": {
-        "prompt": "Extreme close-up schematic illustration of broken star-shaped microscopic diatom fragments lying close together on pale paper fibers. Clearly an explanatory drawing rather than a real microscope image; no labels or readable text.",
+        "prompt": "Extreme close-up schematic 2D explanatory drawing of several broken star-shaped microscopic diatom fragments clustered on pale paper fibers. Enlarged flat shapes, textured fibers and a clear background carry the explanation.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1907,7 +1881,7 @@
       "id": "bloom-season",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of an unoccupied river surface in late-spring cool laboratory light. Broad calm water reflects a bright sky, with a low wooded shore in the distance. The image consists only of water, shore, and soft reflections.",
+        "prompt": "Wide view of an unoccupied river surface in late-spring daylight. Broad calm water reflects a bright sky, with a low wooded shore in the distance. Water, shore and soft reflections fill the picture.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1962,7 +1936,7 @@
       "id": "season-not-arrival",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of a low riverbank where a smooth sandy shelf meets still water in bright cool laboratory light. The shoreline crosses the middle of the frame, with water on one side and dry sand on the other.",
+        "prompt": "Wide view of a low riverbank where a smooth sandy shelf meets still water in bright overcast daylight. The shoreline crosses the middle of the frame, with water on one side and dry sand on the other.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1997,11 +1971,20 @@
     },
     {
       "id": "burial-experiment",
-      "template": "shot",
+      "template": "steps",
       "data": {
-        "prompt": "Medium view of a small clear rectangular laboratory tray containing a flat layer of clean sand in a bright research room. The tray stands alone on a plain bench. Window light illuminates its transparent walls.",
-        "camera": "push in",
-        "visual": "still"
+        "title": "埋沙後灌水的對照｜非原鈔",
+        "steps": [
+          {
+            "title": "乾鈔先入沙",
+            "detail": "實驗條件"
+          },
+          {
+            "title": "再灌含藻水",
+            "detail": "觀察紙邊滲入"
+          }
+        ],
+        "source": "Kaye、Meltzer（2020）｜實驗方法"
       },
       "claims": [
         "c19"
@@ -2018,7 +2001,7 @@
       "id": "burial-edge",
       "template": "shot",
       "data": {
-        "prompt": "Close-up explanatory cross-section drawing of a buried stack of blank paper with a few tiny specks at the outer edges only. No text or currency print.",
+        "prompt": "Close-up schematic cross-section drawing of a buried stack of blank paper with a few tiny specks concentrated at its outer edges. Plain paper surfaces and tan sand layers are simplified 2D shapes.",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -2036,8 +2019,8 @@
       "id": "burial-inner",
       "template": "shot",
       "data": {
-        "prompt": "Close-up explanatory top-down drawing of the middle of the same blank paper stack, almost clear of tiny specks. No text or currency print.",
-        "camera": "tilt up",
+        "prompt": "Close-up schematic top-down drawing of the clean middle of the same blank paper stack, with sparse tiny specks toward its outer perimeter. Plain paper sheets remain visually clear at the centre.",
+        "camera": "pan left",
         "visual": "still"
       },
       "claims": [
@@ -2118,7 +2101,7 @@
       "id": "prototype-method",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of a quiet electron microscopy laboratory in bright cool laboratory light. One shut specimen case rests on a clear bench beside an enshut metal examination chamber. The chamber has a plain smooth exterior and a shut port.",
+        "prompt": "Wide view of a quiet electron microscopy laboratory under cool window light. One shut specimen case rests on a clear bench beside a closed metal examination chamber. The chamber has a plain smooth exterior and a shut port.",
         "camera": "drift",
         "visual": "still"
       },
@@ -2137,7 +2120,7 @@
       "id": "simple-story-changed",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of an unoccupied river shore under an overcast winter sky. Broad still water meets a gently sloping sandbank, with dark leafless brush along the distant bank. Diffuse cool laboratory light keeps the ground clearly visible.",
+        "prompt": "Wide view of an unoccupied river shore under an overcast winter sky. Broad still water meets a gently sloping sandbank, with dark leafless brush along the distant bank. Diffuse winter daylight keeps the ground clearly visible.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -2148,29 +2131,9 @@
       "lines": [
         {
           "id": "h5v107",
-          "text": "有了季節和先後，能把到岸日定到某一天嗎？"
+          "text": "還記得沙洲找到的五千八百美元嗎？日期定不下來，它到底證明什麼？"
         }
       ]
-    },
-    {
-      "id": "route-still-missing",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide view of an vacant grassy river terrace above a low sandbank in afternoon light. The open ground and the water below form two clear horizontal areas. Distant trees line the horizon.",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "claims": [
-        "c14",
-        "c20"
-      ],
-      "lines": [
-        {
-          "id": "h5v108",
-          "text": "論文最後沒定出那一天，也沒找出是誰把錢帶到河岸。"
-        }
-      ],
-      "chapter": "研究者比完矽藻，留下到岸日期空白"
     },
     {
       "id": "outro",
@@ -2183,22 +2146,22 @@
         "cta": "訂閱，繼續追查物件背後的奇聞"
       },
       "claims": [
-        "c15",
+        "c20",
         "c24"
       ],
       "lines": [
         {
           "id": "h5v109",
-          "text": "他的最後去處，這些物證至今仍無法確定。",
+          "text": "證明贖金，不證明人。",
           "emotion": "像把眼前剛發生的事講給朋友聽"
         },
         {
           "id": "h5v110",
-          "text": "你覺得哪件物證最讓人意外？"
+          "text": "哪件物證最意外？"
         },
         {
           "id": "h5v111",
-          "text": "訂閱，繼續追查物件背後的奇聞。"
+          "text": "訂閱，繼續查證。"
         }
       ]
     }
@@ -2216,7 +2179,7 @@
     },
     {
       "setup": "h5v009",
-      "payoff": "h5v070",
+      "payoff": "h5v072",
       "what": "領帶樣本能否指出姓名"
     },
     {
@@ -2231,7 +2194,7 @@
     },
     {
       "setup": "h5v066",
-      "payoff": "h5v069",
+      "payoff": "h5v072",
       "what": "領帶上是否有能追人的樣本"
     },
     {
@@ -2246,8 +2209,13 @@
     },
     {
       "setup": "h5v107",
-      "payoff": "h5v108",
-      "what": "季節和順序能否定出到岸日期"
+      "payoff": "h5v109",
+      "what": "五千八百美元究竟證明了什麼"
+    },
+    {
+      "setup": "h5v082",
+      "payoff": "h5v097",
+      "what": "已找回的原鈔還能說出什麼"
     }
   ]
 }

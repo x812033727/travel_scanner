@@ -1,13 +1,15 @@
 # H04 v2 | Independent fact check, round 1 + incremental recheck
 
-Checked on 2026-10-14 against the corrected video.json, then incrementally rechecked after eight narration clarity edits and a final wording adjustment to h4v080. The checker did not write the H04 script. This is a text and source gate, not media playback or owner acceptance.
+**Current status (2026-10-14):** `script.md` SHA-256 `3bfdfb11bccfb8e1f017cdd6edcfdc9c4b1b5bee491e049f8e081dfd56ad8fae` and `video.json` SHA-256 `77d4bff38b04972bd51c206a517691061faddcd28332cf4d98b037284b81f615`. The independent round-17 blind read passed all 11 questions at narrative hash `e9062e4ca246f5d0`. Current narration is 8:40 for 100 lines; `check-audio` has zero flags and the audio review was approved and pulled back. The visual gate is unfinished: the monthly judge quota is 10,000/10,000, old keyframes do not match current look/picture hashes, and storyboard, rendered frames, MP4, captions, upload package, owner playback and upload are absent. Earlier hashes and passes below are historical snapshots.
 
-## Bound files and coverage
+Round 1 was checked on 2026-10-14 against its then-corrected video.json, then incrementally rechecked after narration clarity edits. The checker did not write the H04 script. The round-1 hash binding below is historical; the final current-file binding and media status are at the end of this record. This is a text and source gate, not media playback or owner acceptance.
+
+## Round-1 bound files and coverage (historical)
 
 - video.json SHA-256: 3c2d69d7ac4b8648de3b82d3d2219211b543bfeca5c41d71a2fd6e54ab3e8e6a
 - script.md SHA-256: c301f67c3bab8cd2f80ca51b29c710df897786ef69f8129f458c7c3cb8b7a15b
-- Narrative hash: 08d742bb00e24507; bound panel round 8 PASS 11/11, no failed/advisory checks.
-- 101 spoken text lines, all non-shot scene.data, thumbnail, YouTube title/description/tags and 12 source entries inventoried. No say overrides. Every scene has a claim ID. The raw 418-string path inventory is external at `<home>/mokaair-work/videos/curio-h04-v2/_tools/claim-inventory.json`. Synthetic shot prompts and pure design labels are visual directions, not asserted historic observations.
+- Earlier narrative hash: 08d742bb00e24507; its round 8 panel passed 11/11. A later independent blind read found new narrative failures, so this verdict does not apply to the current file.
+- At round 1: 101 spoken text lines, all non-shot scene.data, thumbnail, YouTube title/description/tags and 12 source entries inventoried. No say overrides. Every scene had a claim ID. The raw 418-string path inventory is external at `<home>/mokaair-work/videos/curio-h04-v2/_tools/claim-inventory.json`. Synthetic shot prompts and pure design labels are visual directions, not asserted historic observations.
 
 ## Direct source readback
 
@@ -47,7 +49,7 @@ Each c row covers all mapped spoken IDs plus the listed card scene.data paths; M
 | c12 | 內側切口不能獨立證明誰先動刀或每人離帳方式。 | cut-inference（h4v034,h4v035）; scenes[cut-inference].data | [S2](https://dyatlovpass.com/case-files-303-304-ru) | S02: 200 | CONFIRMED | unchanged |
 | c13 | 留下用品令調查人員推斷突然離營；急迫是線索引出的判讀。 | remaining-boots（h4v013）；tent-opening-empty（h4v014）；document-shoes-slot（h4v036）; scenes[document-shoes-slot].data | [S1](https://dyatlovpass.com/case-files-384-387-ru) | S01: 200 | CONFIRMED | unchanged |
 | c14 | 結案書記八到九組，Tempalov 記八組且未確認第九組。 | footprint-count（h4v019,h4v020）；broken-trail（h4v021）; scenes[footprint-count].data, scenes[broken-trail].data | [S1](https://dyatlovpass.com/case-files-384-387-ru)、[S3](https://dyatlovpass.com/case-files-309-312-ru) | S01: 200, S03: 200 | CONFIRMED | unchanged |
-| c15 | 一位勘驗者認為所見足跡顯示普通步行；無法保證全程步態或情緒。 | stride-evidence（h4v023）；stride-inference（h4v024,h4v025）; scenes[stride-evidence].data, scenes[stride-inference].data | [S3](https://dyatlovpass.com/case-files-309-312-ru) | S03: 200 | CHANGED | h4v023/card/SVG: stride length -> tracks; S03 p312 says normal walking but does not state a stride-length measurement |
+| c15 | 一位勘驗者認為所見足跡顯示普通步行；無法保證全程步態或情緒。 | stride-evidence（h4v023）；stride-inference（h4v024,h4v025）; scenes[stride-evidence].data, scenes[stride-inference].data | [S3](https://dyatlovpass.com/case-files-309-312-ru) | S03: 200 | CHANGED | h4v023/card: stride length -> tracks; S03 p312 says normal walking but does not state a stride-length measurement |
 | c16 | 足跡靠近林緣後被雪覆蓋；火堆附近找到兩人，另三人在火堆朝帳篷的直線上，其中兩人的姿勢被卷宗解讀為可能向帳篷爬；五月最後四人在溪溝附近約四至四點五公尺積雪下被發現，九人無人生還。 | forest-edge-absence（h4v026）；fire-site-two（h4v108）；three-toward-tent（h4v109,h4v110）；discovery-sequence（h4v027,h4v028）；ravine-depth（h4v111）；spring-empty-ravine（h4v029）; scenes[three-toward-tent].data, scenes[discovery-sequence].data, scenes[ravine-depth].data | [S1](https://dyatlovpass.com/case-files-384-387-ru)、[S3](https://dyatlovpass.com/case-files-309-312-ru) | S01: 200, S03: 200 | CHANGED | h4v110: implied all three crawled -> only two postures suggested crawling; Dyatlov lay on his back (S01 p386) |
 | c17 | 1959 年 5 月結案決定以無力克服的自然力量概括致因。 | tease-file（h4v005）；archive-closed-folder（h4v037）；natural-force-slot（h4v039）; scenes[natural-force-slot].data | [S1](https://dyatlovpass.com/case-files-384-387-ru) | S01: 200 | CONFIRMED | unchanged |
 | c18 | 原文關鍵詞自然力量不等於神祕超自然力量，也沒指定雪板機制。 | natural-not-supernatural（h4v040,h4v041）；archive-ribbon（h4v042）; scenes[natural-not-supernatural].data | [S1](https://dyatlovpass.com/case-files-384-387-ru) | S01: 200 | CONFIRMED | unchanged |
@@ -63,7 +65,7 @@ Each c row covers all mapped spoken IDs plus the listed card scene.data paths; M
 | c28 | 切坡後不必立刻滑動；特定模型條件容許延遲釋放。 | quiet-platform（h4v060）；slab-edge-displaced（h4v067）; scenes[slab-edge-displaced].data | [S5](https://www.nature.com/articles/s43247-020-00081-8)、[S8](https://longread.epfl.ch/en/dossier/quand-la-science-permet-dexplorer-un-mystere-russe-vieux-de-60-ans/) | S05: 200, S08: 200 | CONFIRMED | unchanged |
 | c29 | 風能搬運既有雪並增加上方載重，不必是新降雪。 | wind-moves-snow（h4v062）；wind-ridge（h4v063）；drift-deposition（h4v064）; scenes[wind-moves-snow].data | [S5](https://www.nature.com/articles/s43247-020-00081-8)、[S8](https://longread.epfl.ch/en/dossier/quand-la-science-permet-dexplorer-un-mystere-russe-vieux-de-60-ans/) | S05: 200, S08: 200 | CONFIRMED | unchanged |
 | c31 | 新增載重可使弱層破裂擴展並促成雪板滑動。 | model-later-two（h4v065,h4v066）；slab-edge-displaced（h4v067）; scenes[model-later-two].data, scenes[slab-edge-displaced].data | [S5](https://www.nature.com/articles/s43247-020-00081-8)、[S8](https://longread.epfl.ch/en/dossier/quand-la-science-permet-dexplorer-un-mystere-russe-vieux-de-60-ans/) | S05: 200, S08: 200 | CONFIRMED | unchanged |
-| c32 | 數小時是模型情境；研究由推定時距回算積雪通量，並非獨立預測事發時刻。 | model-hours（h4v068）；model-not-timer（h4v069,h4v070）; scenes[model-hours].data, scenes[model-not-timer].data | [S5](https://www.nature.com/articles/s43247-020-00081-8) | S05: 200 | CONFIRMED | unchanged |
+| c32 | 數小時是模型情境；研究由推定時距回算積雪通量，並非獨立預測事發時刻。 | model-hours（h4v068）；model-not-timer（h4v069）; scenes[model-hours].data, scenes[model-not-timer].data | [S5](https://www.nature.com/articles/s43247-020-00081-8) | S05: 200 | CONFIRMED | current script removes repeated h4v070 |
 | c33 | 模型結果依賴雪厚、強度及載重等參數，當年完整現場參數未知。 | model-snow-sample（h4v061）；measurement-tools（h4v071） | [S5](https://www.nature.com/articles/s43247-020-00081-8)、[S8](https://longread.epfl.ch/en/dossier/quand-la-science-permet-dexplorer-un-mystere-russe-vieux-de-60-ans/) | S05: 200, S08: 200 | CONFIRMED | unchanged |
 | c34 | 局部小雪板與大範圍雪崩不同，風吹雪可能改變表面痕跡。 | small-slab-remains（h4v072）；wind-softens-edge（h4v073）；unmeasured-snow（h4v074） | [S5](https://www.nature.com/articles/s43247-020-00081-8)、[S6](https://www.nature.com/articles/s43247-022-00393-x) | S05: 200, S06: 200 | CONFIRMED | unchanged |
 | c35 | 後續考察在 2021 年 9 月以無人機測量可能帳篷位置附近地形。 | science-next-evidence（h4v075）；survey-date（h4v076）; scenes[survey-date].data | [S6](https://www.nature.com/articles/s43247-022-00393-x) | S06: 200 | CONFIRMED | unchanged |
@@ -85,33 +87,58 @@ Each c row covers all mapped spoken IDs plus the listed card scene.data paths; M
 ## Verdict and limits
 
 - 47 grouped checkable-claim/metadata rows: 42 CONFIRMED, 3 CHANGED (two historical wording fixes plus one date metadata correction), 0 NOT FOUND, 2 OUT OF SCOPE. Two factual changes in this round; the greater-than-three rule does not require verify-2.
-- c15: S03 p312 says tracks suggested normal walking. It does not describe a stride-length measurement. h4v023, card, SVG, claims and notes now say tracks.
+- c15: S03 p312 says tracks suggested normal walking. It does not describe a stride-length measurement. h4v023, card, claims and notes now say tracks.
 - c16: S01 p386 places three bodies on the fire-to-tent line, but only Slobodin and Kolmogorova were described as face down with postures suggesting crawling. Dyatlov lay on his back, head toward the tent. h4v110 and claims now restrict that inference to two.
 - The 1959 file says a force of nature, not a named slab mechanism. Later slab work models physical possibility. The 2022 guides saw traces nearby under different slab/slope/cut conditions, not the 1959 event and not a full reproduction.
 - Historic dates do not expire soon. URL availability, image licenses and media receipts can change. All 12 source entries now say checked_on 2026-10-14, and the description accurately describes the fresh text readback. Image attribution and license remain for production-stage asset check.
 - c45 is an editorial evidence-weight judgment, marked in claims.md and aligned with the brief.md owner viewpoint: remaining uncertainty does not give unsupported legends equal weight.
-- Listener pass: zero spoken lines over 40 characters; zero verification formula phrases, Latin words, parentheses or URLs in narration; no source-fact reveal inversion seen. Conceptual SVGs and anonymous searcher imagery must not be presented as incident-time footage or measured 1959 snow profiles.
-- No unresolved checkable number, date, identity or model/result claim remains in the final text. Source-custody and prosecutor-report limits are stated above.
+- Earlier listener pass: zero spoken lines over 40 characters; zero verification formula phrases, Latin words, parentheses or URLs in narration. Card reveal order still requires inspection in a rendered cut. MiniMax concept illustrations and anonymous searcher imagery must not be presented as incident-time footage or measured 1959 snow profiles.
+- At this source-check round, no unresolved checkable number, date, identity or model/result claim remained. Later narration edits and their current-file check are recorded below. Source-custody and prosecutor-report limits are stated above.
 
 ## Incremental source check: narration clarity edits
 
-Eight spoken lines changed after round 1; the source register, visual claims, title and description did not. The original claim table above records round-1 findings; these rows recheck the current wording. On 2026-10-14, the 1959 closure transcript was reopened, the authors' 2021 and 2022 articles were read back from the publisher's full HTML, and the ETH/EPFL accounts were reopened. The 2022 field observations support conditions and local avalanche occurrence, not a reconstruction of the 1959 event.
+Eight spoken lines changed after round 1; the source register, visual claims, title and description did not. The original claim table above records round-1 findings; these rows checked wording at that incremental stage. On 2026-10-14, the 1959 closure transcript was reopened, the authors' 2021 and 2022 articles were read back from the publisher's full HTML, and the ETH/EPFL accounts were reopened. The 2022 field observations support conditions and local avalanche occurrence, not a reconstruction of the 1959 event.
 
-| Line | Current wording / factual boundary | Source | Incremental verdict |
+| Line | Wording at that round / factual boundary | Source | Incremental verdict |
 |---|---|---|---|
 | h4v028 | 「還沒找到的四人」在五月於溪溝附近發現；沒有宣稱四人那時才失蹤。 | [S01](https://dyatlovpass.com/case-files-384-387-ru), sheet 386 (4 May, four named bodies) | CONFIRMED; c16 unchanged |
 | h4v068 | 模型產生可行情境，但不能求得事故發生的實際時刻。論文的延遲範圍依賴假設的風搬雪量，且以法醫推定時距回算條件。 | [S05](https://www.nature.com/articles/s43247-020-00081-8), Results / Discussion | CONFIRMED; c32 limitation clearer |
-| h4v070 | 模型裡的時間不等於九人遇險的實際時間；沒有把條件情境當成獨立現場計時。 | [S05](https://www.nature.com/articles/s43247-020-00081-8), wind deposition flux / forensic-delay discussion | CONFIRMED; c32 unchanged |
+| h4v070 (removed after this round) | Earlier line repeated h4v068's model-time limit. Its removal does not weaken the retained h4v068 boundary. | [S05](https://www.nature.com/articles/s43247-020-00081-8), wind deposition flux / forensic-delay discussion | historical only; c32 retained |
 | h4v072 | 「小規模雪板滑動」準確傳達模型的 relatively small slab，且沒有稱整座山崩落。 | [S05](https://www.nature.com/articles/s43247-020-00081-8), Abstract / Results | CONFIRMED; c34 unchanged |
 | h4v078 | 無人機地形測量讓局部陡坡這項模型前提有更多依據；未說事故雪板已獲證實。 | [S06](https://www.nature.com/articles/s43247-022-00393-x), summer 2021 drone survey / Fig. 2 | CONFIRMED; c36 unchanged |
 | h4v080 | 現行「山坡的形狀」只是前版「坡面形狀」的同義改寫；坡形不能單獨推算 1959 年埋藏弱層厚度或強度，仍是測量範圍與模型參數的界線。 | [S05](https://www.nature.com/articles/s43247-020-00081-8), assumed snow properties; [S06](https://www.nature.com/articles/s43247-022-00393-x), terrain survey | CONFIRMED as a limited inference; c37 unchanged |
 | h4v092 | 作者發表後續研究文章，ETH、EPFL 校方也發表介紹考察的文章；沒有把校方報導算成獨立科學重演。 | [S06](https://www.nature.com/articles/s43247-022-00393-x), [S09](https://ethz.ch/en/news-and-events/eth-news/news/2022/03/the-dyatlov-pass-mystery-and-what-a-research-article-can-trigger.html), [S10](https://actu.epfl.ch/news/intense-press-coverage-prompts-new-expeditions-to-/) | CONFIRMED; c43 unchanged |
-| h4v102 | 「雪板滑動可行，仍未證實」保留作者提出 plausible explanation 與無法重建當夜完整事件的界線。 | [S05](https://www.nature.com/articles/s43247-020-00081-8), [S06](https://www.nature.com/articles/s43247-022-00393-x), [S10](https://actu.epfl.ch/news/intense-press-coverage-prompts-new-expeditions-to-/) | CONFIRMED; c44 unchanged |
+| h4v102 | 當輪的「雪板滑動可行，仍未證實」保留作者提出 plausible explanation 與無法重建當夜完整事件的界線；現行台詞另在下節核對。 | [S05](https://www.nature.com/articles/s43247-020-00081-8), [S06](https://www.nature.com/articles/s43247-022-00393-x), [S10](https://actu.epfl.ch/news/intense-press-coverage-prompts-new-expeditions-to-/) | CONFIRMED for earlier wording only |
 
-No new checkable claim or new unsupported certainty was introduced by these eight edits. This was an incremental source check, not a second exhaustive 418-string inventory.
+No new checkable claim or new unsupported certainty was introduced by those eight edits. This was an incremental source check, not a second exhaustive 418-string inventory.
 
 ## Recheck
 
-- Narrative panel round 8 PASS 11/11 at 08d742bb00e24507. The h4v080 synonym change leaves the opening hooks, question payoffs and final evidence limit unchanged.
-- Lint: 0 errors, 0 warnings; estimated 8.8 min and 101 lines (2026-10-14 current narration).
+- The earlier narrative panel passed 11/11 at 08d742bb00e24507. Later wording and scene-order revisions invalidated that panel; the current-hash result is below.
+- Earlier lint and duration are historical; see current-hash result below.
 - Static renderProblems(doc, root, workdir): [] (separate preflight); no rendered media or audio playback is implied.
+
+## Earlier narrative and source-bound incremental recheck (historical)
+
+2026-10-14 earlier independent blind read: `script.md` SHA-256 `bfc8957d9f8d9b813e365995ff801a7f3f981c6cb38cf6e8deeb9810eb87e661`, narrative hash `45fbdc690376028d`; all 11 questions passed, including the nine mandatory questions. Its exact yes/no evidence was recorded at that stage; `review/narrative.json` now holds the later round-17 result. The corresponding `video.json` at that earlier review was `621b0f4fef51ce0d151e143eb6852898fa34e003098cef02239ee90ad2f6558b`. This earlier pass is not the current narration or visual gate.
+
+| Line or card | Claim and limit at that round | Direct source | Verdict |
+|---|---|---|---|
+| h4v027–029 | The last four were still missing when the April tent finding was released; they were found near the ravine in May, and their discovery appears in the May closure. This tells the investigation sequence, not each person's movements. | [S01](https://dyatlovpass.com/case-files-384-387-ru), pp. 385–387; [S02](https://dyatlovpass.com/case-files-303-304-ru), pp. 303–304 | CONFIRMED; c16, scene order changed |
+| h4v034–035 | The cloth examination concluded inside-out cuts, but did not identify who cut or each person's exit. | [S02](https://dyatlovpass.com/case-files-303-304-ru), p. 304 | CONFIRMED; c11/c12, clearer question/limit |
+| h4v036–038 (earlier wording) | The May 28 closure records belongings and inside cuts; Ivanov signed it. The question about the cause he wrote is paid off at h4v039. A later edit replaced h4v036's repeated inventory with the document's four-page structure. | [S01](https://dyatlovpass.com/case-files-384-387-ru), pp. 384–387 | CONFIRMED for earlier wording; c13/c17/c19 |
+| h4v066–067 | The paper models failure of a weak layer and a possible delayed slab release under its assumed conditions. The time range is fitted against forensic estimates, not a clock independently measuring the 1959 event. | [S05](https://www.nature.com/articles/s43247-020-00081-8), model/results | CONFIRMED; c28/c31 |
+| h4v099, h4v102 and ending cards | The model does not explain the group after leaving the tent or body locations. A small slab is a possible reason for leaving, not proof of the full night. The answer card keeps the missing contemporary evidence visible. | [S05](https://www.nature.com/articles/s43247-020-00081-8), conclusion; [S06](https://www.nature.com/articles/s43247-022-00393-x), later-field limits | CONFIRMED; c44, narrowed ending |
+
+That round's lint had zero errors and three topic-frequency warnings; its body estimate was about 8.70 minutes for 101 spoken lines. The final 100-line script and measured narration are recorded below; card timing and source labeling still need inspection in a rendered cut.
+
+## Intervening narrative repair (historical, 2026-10-14)
+
+An independent recheck of the intervening `b02402c546239d71` script found two repeats: h4v036 repeated the inside-cut and gear evidence, while h4v070 repeated h4v068's model-time limitation. The repair changed h4v036 to the closure's four-page structure and removed h4v070. That intermediate 100-line TTS measured 8:41; its one-line redo, hashes and pending-review status are historical. The final text and media evidence follow.
+
+## Current-file recheck and remaining media gates (2026-10-14)
+
+- `script.md` SHA-256 `3bfdfb11bccfb8e1f017cdd6edcfdc9c4b1b5bee491e049f8e081dfd56ad8fae`; `video.json` SHA-256 `77d4bff38b04972bd51c206a517691061faddcd28332cf4d98b037284b81f615`. The independent round-17 blind read bound to narrative hash `e9062e4ca246f5d0` passed 11/11. Its yes/no evidence is in the v2 work directory's `review/narrative.json`. The line changes at h4v013, h4v036, h4v067 and h4v102 preserve the checked boundaries: the shoes prompt is an explicit callback to the opening; four pages and the last-page cause are supported by [S01](https://dyatlovpass.com/case-files-384-387-ru); delayed release remains conditional under [S05](https://www.nature.com/articles/s43247-020-00081-8); and a slab remains only a possible reason to leave the tent. h4v070 stays removed.
+- Current 100-line narration measures 8:40 (15,604 frames at 30 fps). `timeline.json` binds speech hash `ed9b3d4509f1a7b9`; `review/check-flags.json` lists zero flags. The audio review was pushed, autoapproved and pulled back; `node tools/video/cli.mjs status --slug curio-h04-v2` reports `narration approved`. This is a machine audio gate, not a record of owner listening.
+- The current picture plan has 52 MiniMax image-01 shots. Estimated illustration share is 54.07%; its boots shot is 5.9 seconds and outro shot is 7.3 seconds. Static cadence/render preflight reported no problems. These are plan measurements, not proof of rendered duration or visual correctness.
+- The judge monthly allowance is 10,000/10,000. The old keyframe manifest was drawn under earlier look/picture hashes and includes missing frames and human-identified false scenes; it is audit history, not approved current visual material. New paid keyframes and human image inspection remain before storyboard, render, assemble, captions, MP4, package, owner playback or YouTube upload. No v2 upload has occurred.

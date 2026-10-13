@@ -1,6 +1,6 @@
 # H06 v2｜historical-photo provenance
 
-The original five public-domain photographs were checked on 2026-10-12 for H06. On 2026-10-14, the **same bytes** were copied into the new slug's external `<home>/mokaair-work/videos/curio-h06-v2/stock/` directory. Each target file was SHA-256 checked before its temporary repo copy was removed. `video.json` uses `stock/<sha256>.jpg` in both `assets[]` and the five `photo` cards, so the new workdir owns the source images separately from old H06. The sixth Berlin context candidate remained excluded because its library record gives an advisory rather than affirmative public-domain status. Captions distinguish historical context photographs from the actual 1920 rescue, visit, court evidence, or samples.
+The original five public-domain photographs were checked on 2026-10-12 for H06. On 2026-10-14, the **same bytes** were copied into the new slug's external `<home>/mokaair-work/videos/curio-h06-v2/stock/` directory. Each target file was SHA-256 checked before its temporary repo copy was removed. `video.json` registers only the three photographs used by `photo` cards: `berlin-hospital-window`, `hospital-album-hands`, and `berlin-family-places`. The other two checked files remain external candidates in this provenance register, outside `assets[]`, so the eventual package credits only images actually shown. The new workdir owns the source images separately from old H06. The sixth Berlin context candidate remained excluded because its library record gives an advisory rather than affirmative public-domain status. In-use captions distinguish historical context photographs from the actual 1920 rescue, visit, court evidence, or samples.
 
 ## 1. Berlin city context
 
@@ -36,7 +36,7 @@ The original five public-domain photographs were checked on 2026-10-12 for H06. 
 - Author/date: Photographer not identified; Bain News Service publisher, 1914. LOC identifies Nicholas II, Alexandra, Alexei and the four daughters.
 - Rights: Commons `PD-Bain` plus `PD-old-70-expired` and U.S. pre-1931; LOC Bain [no known copyright restrictions](https://wwws.loc.gov/rr/print/res/274_bain.html). This sidesteps the conflicting photographer labels on the separate `Russian Imperial Family 1913.jpg` candidate.
 - Full credit: `Library of Congress, Prints & Photographs Division, LC-DIG-ggbain-14685`. Proposed card credit: `美國國會圖書館 Bain 收藏｜ggbain-14685`.
-- Actual placement: `relatives-album-close`; caption identifies 1914 and says it is not a court exhibit.
+- Current status: checked external candidate, not registered in `video.json` and not in the v2 scene list. If used later, register it in `assets[]`; its caption must identify 1914 and say it is not a court exhibit.
 
 ## 5. Nicholas II and three daughters at Tobolsk
 
@@ -45,7 +45,7 @@ The original five public-domain photographs were checked on 2026-10-12 for H06. 
 - Author/date: Grand Duchess Maria Nikolaevna, winter 1917–1918. Commons identifies Nicholas II and daughters Olga, Anastasia and Tatiana; Maria is credited as photographer, not a depicted person.
 - Rights: Commons `PD-old-100` and public-domain mark. The file page explicitly says reuse with attribution and gives the complete credit line below; [Yale's reuse policy](https://www.library.yale.edu/policies/reuse) leaves use of protected items to the user and supports open access to public-domain representations.
 - **Exact required full credit:** `Romanov Collection, General Collection, Beinecke Rare Book and Manuscript Library, Yale University`. Use this unabridged in the YouTube image-source list even if the card's ≤60-character credit is shortened to `耶魯 Beinecke 圖書館｜Romanov Collection`.
-- Actual placement: `grave-family-empty-room`; caption identifies 1917–18 and says it is not a grave-site image.
+- Current status: checked external candidate, not registered in `video.json` and not in the v2 scene list. If used later, register it in `assets[]`; its caption must identify 1917–18 and say it is not a grave-site image.
 
 ## 6. Nicholas II with Alexei
 
@@ -56,6 +56,6 @@ The original five public-domain photographs were checked on 2026-10-12 for H06. 
 - Full credit: `Library of Congress, Prints & Photographs Division, LC-DIG-ggbain-20441`. Proposed card credit: `美國國會圖書館 Bain 收藏｜ggbain-20441`.
 - Actual placement: `berlin-family-places`; caption identifies Nicholas II and Alexei, with an approximate date. The native `grave-two-children` comparison remains separate.
 
-No Anna Anderson face photo, supposed mugshot, execution/remains image, or contested 1913 photographer-label image was accepted. In the original H06 review the five photographs' file sizes were cross-checked with Wikimedia imageinfo, decoded locally, viewed and SHA-256 hashed. The new v2 workdir copies matched those hashes byte for byte. Their full credits remain in `video.json` and can flow into the eventual YouTube description.
+No Anna Anderson face photo, supposed mugshot, execution/remains image, or contested 1913 photographer-label image was accepted. In the original H06 review the five photographs' file sizes were cross-checked with Wikimedia imageinfo, decoded locally, viewed and SHA-256 hashed. The new v2 workdir copies matched those hashes byte for byte. Credits for the three used photos are in `video.json`; the two unused candidates and their full credits remain in this register.
 
 The two LOC item pages returned HTTP 403 to the final-package link checker on 2026-10-13. The public YouTube source links therefore use the matching Commons file pages above; the `assets[].source` credit still names the Library of Congress and its exact Bain catalog number. The image bytes and SHA-256 did not change.
