@@ -4572,6 +4572,50 @@ Non-claims: this is a duration-only review of the nine bound revisions, not owne
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Dubbing narrated dramas (a drama the narrator tells alone may be dubbed) increment: 3 files (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013h`. Author: `claude-opus-5.5-dub-narrated-drama`. Scope: DURATION_ONLY for the three changed bindings below, reviewed at `54169cebd3a8ffba8738d4a5eec655ea9b9bc210` ("tasks: explainer dub in review (#1482)") on claude/dub-narrated-drama, pull request #1482. The bound files change in the author's commits `71470dad3` (the dub tool) and `c2e22bd6f` (server, admin page and docs). The reviewer wrote none of it and edits only this report and review.json.
+
+Baseline: merge base with origin/main `038f9152c5299459a2e92a5d922d657c49686db7` (#1477). For each of the three paths, SHA-256 of `git show <merge-base>:<path>` equals the existing review.json binding (the "PR #1475 private Studio link" increment above for the two site files, an earlier increment for dubs.test.mjs). Neither side changed a receipt file. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these three bindings; they are the only bound files among the eleven that differ between the merge base and the head, and the other bindings remain current. The registry remains 108 files.
+
+- `apps/api/app/video_reviews/admin_service.py`: `61a0095ccb186e45fc89f08bd20085a20aea68f13c9192478b9cbec4e5aa169d` -> `ef9fad5370f8929008ab0253456e6df479eeceb18aad16a2fe355eb79955c5a3`.
+- `apps/web/components/admin-video-reviews.test.tsx`: `2fbef750199daaf8fd1efeea37196526e67f00b2641adf3b23c9159ddf1a00b2` -> `b58c685c61cfa502157bd43cb33010dd5e3ff17263b99a7d535e591896dfe89c`.
+- `tools/video/dubs/dubs.test.mjs`: `4fb9b00853147186776b1b18f483585091fd1c35e5aaaa77db742609b898d2e1` -> `5bac54a14b8a4f080e7f65137f9b799fbf956349961a1762fe7eca8ae6a29643`.
+
+What the change is: a drama told by the narrator alone may now be dubbed; a drama whose characters speak still may not. It decides whether a dub is made, not how long a video or a dub is.
+
+Findings:
+
+- `admin_service.py` (+22/−5): a new `DUBBABLE_DRAMA_CATEGORIES = frozenset({"explainer"})` with a comment; `_apply_locales` refuses a drama's dub only when the project's `category` is not in that set (before: every drama), with the 422 code `video_locales_dub_not_for_drama` unchanged and its zh-TW message reworded; the `_apply_locales` and `set_locales` docstrings say the same. No changed line names minutes, seconds, frames, `target_minutes`, a floor or a runtime field.
+- `admin-video-reviews.test.tsx` (+28/−3): the language-panel test now also pins the greyed-out box's reason for a drama with no category and for the categories story, drama, anime and long-drama, and checks that an explainer drama's dub box is enabled and ticks the CC box with it. No assertion about length.
+- `dubs.test.mjs` (+38/−0): one new test. The drama fixture is refused with exit 3 (`EXIT.owner`), naming its first character line, and asks nothing of the speech server; the same drama with every speaker removed, and the explainer fixture, each pass a `--dry-run` dub whose output is pinned only as `\d+ requests, \d+ to synthesize`. No existing test, timing tolerance or expected length moves.
+
+Duration identifiers (`target_minutes`, `MIN_EPISODE`, `minEpisodeMinutes`, `VIDEO_MIN_EPISODE_MINUTES`, `duration`, `seconds`, `_minutes`, `total_frames`, `windowLimit`, `atempo`, `tempo`/`TEMPO`, `stretch`, `keep-fitting`, `layoutDub`, `absorbOverruns`, `overrun`; case-insensitive occurrences) counted in both revisions: admin_service.py 27 -> 27, admin-video-reviews.test.tsx 76 -> 76, dubs.test.mjs 87 -> 87. None of the added or removed lines in the three files contains one.
+
+Context, unbound: tools/video/dubs/cli.mjs (+33/−3) replaces the blanket drama refusal (a usage error) with `spokenByCharacter(doc)`, which refuses with a `SpeechError` for the owner (exit 3) when any line's speaker is not the narrator; a narrator-only drama then takes the same `dub` path as a slides video. The hunks touch no timing: `TEMPO_RETRY_STEP`, `windowLimit`, `layoutDub`, `layoutDubTolerant`, `absorbOverruns`, `shrinkBudgets`, `--keep-fitting` and the presentation timeline are outside them, and tools/video/dubs/plan.mjs, tools/video/core, tools/video/qa, tools/video/long-form and apps/api/app/video_automation do not differ between the merge base and the head. The admin page (admin-video-reviews.tsx) and the API test add the same category gate; DUBS.md and LANGUAGES.md describe it.
+
+Recorded observation, not a rule change: a narrator-only drama's dub is fitted to its picture by the unchanged slides fit/stretch rules, so a dub never changes the drama's length; how well those windows fit a drama's scene timing was not measured.
+
+Ran (in the worktree at the head, Node on Windows):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the three stale bindings and exited 1;
+- `git diff 038f9152c HEAD` over the three files read whole, and over tools/video/dubs/cli.mjs as context, with `git diff --stat`;
+- `git ls-files --eol` for the three files (LF in index and worktree) and the SHA-256 of each merge-base blob and current file against review.json;
+- the identifier count above with `grep -Eio` over both revisions and over the changed lines.
+
+The CLI check, review.test.mjs and dubs.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge whether an explainer drama should be dubbed, the brand-story question (task 2026-10-13-should-brand-stories-be-dubbed-over), the wording of the refusals, or the admin page and API test (unbound).
+- No dub was synthesized, mixed or measured; the drama tests are dry runs against a fake speech server and a fake ffmpeg.
+- No API test, ruff, mypy, Vitest, lint or typecheck was run.
+- This increment binds the tree at the head only: a later commit or merge with main that changes any of the three files, or either receipt file, needs its own follow-up.
+
+PASS is DURATION_ONLY for the three rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -4588,7 +4632,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/app/video_automation/schemas.py` | `4247c4bbbb118d14bc4cd90358d129843936f17fbc3e1cff0217d461ce02d70d` |
 | `apps/api/app/video_automation/series.py` | `cb9d3e01465a6f072d44fdcedae659f538686a634a03351171f8f67d8bfaa155` |
 | `apps/api/app/video_automation/settings.py` | `9941b3244e15cf6b1d8aaec32c68ab2424f84adb32804a179652d93fb3977ca3` |
-| `apps/api/app/video_reviews/admin_service.py` | `61a0095ccb186e45fc89f08bd20085a20aea68f13c9192478b9cbec4e5aa169d` |
+| `apps/api/app/video_reviews/admin_service.py` | `ef9fad5370f8929008ab0253456e6df479eeceb18aad16a2fe355eb79955c5a3` |
 | `apps/api/app/video_reviews/schemas.py` | `57cdfedd70afb65aa96e42699c7e52dd3d45faccf7919b58ee1a54779f0962a0` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
 | `apps/api/migrations/versions/0122_video_anime_production_policy.py` | `91f97905e9a689cc47aef8eac60735175a4048bfb5788fa1d204acb43ee11ea7` |
@@ -4603,7 +4647,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `cb28b0a7173ad4712a70c5e378b3b0d6e4d760731620f38d9400a221b305a6ac` |
 | `apps/web/components/admin-video-review-card.tsx` | `62e4b249e15e2bfde32e0752977a9a54d0fc6d5a2a8e47a05ea04dbb7b63b9cf` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `2fbef750199daaf8fd1efeea37196526e67f00b2641adf3b23c9159ddf1a00b2` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `b58c685c61cfa502157bd43cb33010dd5e3ff17263b99a7d535e591896dfe89c` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `c64bfba40979fef3f8291ae2582a8cc2bb55644d4be0655ba75b39f767677d8a` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
@@ -4658,7 +4702,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/timeline.mjs` | `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a` |
 | `tools/video/core/timeline.test.mjs` | `8eedaa0b04f56d22b65becbf23e39e23e051f2d6850f63a5bf7c496583b9b00a` |
 | `tools/video/dubs/captions-package.test.mjs` | `a7d9462b61f182bca1b7e87149a5c461659dafeb9c54449769bc35189f352685` |
-| `tools/video/dubs/dubs.test.mjs` | `4fb9b00853147186776b1b18f483585091fd1c35e5aaaa77db742609b898d2e1` |
+| `tools/video/dubs/dubs.test.mjs` | `5bac54a14b8a4f080e7f65137f9b799fbf956349961a1762fe7eca8ae6a29643` |
 | `tools/video/dubs/freshness.test.mjs` | `c882af3d55bff72c410e930b0e0f187770782a937952bb9efba3ab40e44a5b30` |
 | `tools/video/dubs/plan.test.mjs` | `f06d073795553024d19098c9957ab060a9feb41569546d67f366d931244b8ab3` |
 | `tools/video/long-form/cli.mjs` | `3a0b26f900daaf1a08f7ed210ad1239d7f172035fa1e14c6dafc28bf55dedfa4` |
