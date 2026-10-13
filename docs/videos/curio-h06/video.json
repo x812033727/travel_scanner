@@ -1,0 +1,2606 @@
+{
+  "schema_version": 1,
+  "slug": "curio-h06",
+  "format": "slides",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    10,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人像翻開歷史檔案：有起伏而不誇張，日期與證據放慢，問句自然上揚，不確定的事不說成定論。",
+    "performance": "開場低聲提出名字，柏林段保留好奇；法庭段冷靜分開舉證與裁定，DNA 段清楚說樣本和限制；兩座墓的揭曉稍慢，最後不替當事人猜動機。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "custom",
+    "style": "cute Taiwanese YouTube explainer cartoon: chibi figures, thick clean dark outlines, flat colours with soft cel shading, deep navy, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, 16:9",
+    "negative": "",
+    "motion": "slow push in or gentle drift, no morphing, no cuts",
+    "candidates": 3
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "真假公主安娜塔西亞：被認作倖存者的女人是誰？｜奇聞檔案局",
+    "video_id": null,
+    "description": "一名在柏林獲救的女子，後來被認作失蹤的安娜塔西亞公主。法院判決與基因研究，各自回答了什麼？\n給聽過安娜・安德森故事、想分清法律結論和血緣證據的觀眾。\n\n從一九二〇年的柏林，走到一九七〇年的德國聯邦最高法院，再看安德森留下的檢體與俄國皇室兩座墓。她請求給付款項、確認德國境內遺產的繼承權，也主張原繼承證書有誤；判決維持不利於她的證據判斷並駁回法律審，卻沒有司法認定她就是另一位失蹤女工。後來的基因研究排除她是皇室女兒；二〇〇九年原始論文支持五名子女都在兩座墓中，也保留了第二墓是哪位姊妹的辨識限制。\n\n資料查閱於 2026-10-12。判決資料來自第三方保存的原判決掃描，並非德國法院官網；1995 年 Nature Genetics 正文受付費牆限制，本集未讀到全文，只採可核查的研究者訪談、機構解說與論文書目。歷史場景為情境插圖，安娜・安德森只以背影或剪影示意，並非本人肖像。僅提供繁體中文旁白與可關閉的繁體中文字幕。",
+    "tags": [
+      "安娜塔西亞",
+      "安娜安德森",
+      "羅曼諾夫王朝",
+      "真假公主",
+      "Anna Anderson",
+      "歷史懸案",
+      "奇聞檔案局",
+      "DNA 鑑定"
+    ]
+  },
+  "sources": [
+    {
+      "title": "BGH III ZR 139/67 判決掃描｜prinz.law 保存",
+      "url": "https://www.prinz.law/static/urteile/pdf/bgh/III_ZR_139-67.pdf",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "dejure：1970-02-17 判決索引",
+      "url": "https://dejure.org/1970,2",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "PubMed：Anna Anderson 研究書目",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/7704032/",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "DNA Learning Center：Stoneking 研究者訪談",
+      "url": "https://dnalc.cshl.edu/view/15163-Solving-one-of-history-s-mysteries-Mark-Stoneking.html",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "加州州大東灣分校博物館：Anna Anderson DNA 解說",
+      "url": "https://www.csueastbay.edu/museum/pre-exhibit/dna/history-fraulein.html",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "TIME：1928 年 Xenia Leeds 招待安德森的同期報導",
+      "url": "https://time.com/archive/6662258/russia-whose-body/",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Coble 等：兩名羅曼諾夫子女 DNA 研究",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0004838",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Rogaev 等：尼古拉二世家族基因研究",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2664067/",
+      "checked_on": "2026-10-12"
+    }
+  ],
+  "assets": [
+    {
+      "path": "docs/videos/curio-h06/assets/dalldorf-hospital-1885.jpg",
+      "source": "Friedrich Albert Schwartz / Archiv des Heimatmuseums Reinickendorf",
+      "license": "Public domain (PD-old)",
+      "author": "Friedrich Albert Schwartz",
+      "url": "https://commons.wikimedia.org/wiki/File:Blick_auf_Irrenanstalt_Dalldorf_1885.jpg"
+    },
+    {
+      "path": "docs/videos/curio-h06/assets/nicholas-alexei-1917.jpg",
+      "source": "Library of Congress, Prints & Photographs Division, LC-DIG-ggbain-20441",
+      "license": "Public domain (PD-Bain)",
+      "author": "Bain News Service",
+      "url": "https://commons.wikimedia.org/wiki/File:Czar_%26_Czarewitch,_3-16-17_LCCN2014700375.jpg"
+    },
+    {
+      "path": "docs/videos/curio-h06/assets/anastasia-bain-restored.jpg",
+      "source": "Boissonnas et Eggler / Bain News Service, Library of Congress, LC-DIG-ggbain-38336; restoration by Crisco 1492",
+      "license": "Public domain (PD-Bain)",
+      "author": "Boissonnas et Eggler",
+      "url": "https://commons.wikimedia.org/wiki/File:Grand_Duchess_Anastasia_Nikolaevna_Crisco_edit_letters_removed.jpg"
+    },
+    {
+      "path": "docs/videos/curio-h06/assets/romanov-family-1914.jpg",
+      "source": "Library of Congress, Prints & Photographs Division, LC-DIG-ggbain-14685",
+      "license": "Public domain (PD-Bain)",
+      "author": "Bain News Service",
+      "url": "https://commons.wikimedia.org/wiki/File:Russian_Royal_Family_LCCN2014694658.jpg"
+    },
+    {
+      "path": "docs/videos/curio-h06/assets/romanovs-tobolsk-1917.jpg",
+      "source": "Romanov Collection, General Collection, Beinecke Rare Book and Manuscript Library, Yale University",
+      "license": "Public domain (PD-old-100)",
+      "author": "Grand Duchess Maria Nikolaevna",
+      "url": "https://commons.wikimedia.org/wiki/File:RomanovsatTobolsk.jpg"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook-canal-rail",
+      "template": "shot",
+      "data": {
+        "prompt": "Close low-angle view of a plain iron canal railing dusted with winter snow and dark still water below in 1920 Berlin, cold pale dawn light, the camera points down at rail and water so all buildings, skyline, trees and people are outside the frame",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c02",
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "j6u5",
+          "text": "一個被認作安娜塔西亞的女人，法院究竟判了什麼？",
+          "emotion": "問句輕輕上揚"
+        }
+      ],
+      "chapter": "安娜塔西亞真的倖存嗎"
+    },
+    {
+      "id": "hook-hospital-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty plain 1920 Berlin hospital intake doorway at the end of a short wood-and-plaster corridor, a small completely blank admission card on a wooden counter, no people, portraits, lettering or modern fixtures, cold winter daylight through a high window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c02"
+      ],
+      "lines": [
+        {
+          "id": "dszz",
+          "text": "一九二〇年，她從柏林的運河邊被救起。"
+        }
+      ]
+    },
+    {
+      "id": "hook-sample-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up conceptual illustration of a small opaque sealed archival medical tissue specimen envelope placed on a plain laboratory table decades later, only one adult gloved hand visible, contents concealed, no people, plants, glass containers or labels, cool window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c08",
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "dw29",
+          "text": "多年後，一份保存下來的組織樣本，讓這個名字進了實驗室。"
+        }
+      ]
+    },
+    {
+      "id": "hook-forest-path",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, a forest path near two unmarked excavation areas in daylight, two distant surveyors carrying plain measuring rods, sun filtering through trees",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c12",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "pxbi",
+          "text": "另一座墓，又補上了皇室最後兩個孩子。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "hook-three-answers",
+      "template": "compare",
+      "data": {
+        "title": "同一個名字，兩種問題",
+        "left": {
+          "heading": "一九七〇年",
+          "points": [
+            "身分主張如何舉證"
+          ]
+        },
+        "right": {
+          "heading": "後來的研究",
+          "points": [
+            "檢體與家族如何比對"
+          ]
+        },
+        "source": "情境插圖示意｜資料：BGH；Stoneking 訪談；PLOS／PNAS"
+      },
+      "claims": [
+        "c06",
+        "c09",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "ykiq",
+          "text": "你以為，法院與科學只要排在一起，就有同一個答案。",
+          "reveal": 1
+        },
+        {
+          "id": "pfpa",
+          "text": "其實，每份證據，都只回答它能處理的問題。",
+          "reveal": 1,
+          "emotion": "稍放慢，轉亮後收住"
+        }
+      ]
+    },
+    {
+      "id": "hook-empty-file",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a historian opens an empty wooden drawer in a bright archive hall, one blank index card between the fingers, morning sun through a ceiling skylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c06",
+        "c07"
+      ],
+      "lines": [
+        {
+          "id": "cr5q",
+          "text": "三份證據，要從哪裡開始讀？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "berlin-canal-morning",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, street-level view looking down at an empty 1920 Berlin canal bank, a plain iron railing beside cold winter water and a bare patch of snow-dusted pavement, the camera crops above railing height so all people and skyline are outside the frame, pale morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c02"
+      ],
+      "lines": [
+        {
+          "id": "9zxi",
+          "text": "故事先回到一九二〇年的柏林。"
+        }
+      ],
+      "chapter": "柏林無名女子怎麼出現"
+    },
+    {
+      "id": "berlin-wet-coat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a 1920 Berlin hospital intake counter, one entirely blank name card under a nurse's hovering hand, no legible marks, morning light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c02"
+      ],
+      "lines": [
+        {
+          "id": "7ftn",
+          "text": "獲救的女子，當時沒有說出自己的名字。"
+        }
+      ]
+    },
+    {
+      "id": "berlin-identity-search",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, two anonymous 1920 Berlin record clerks seen from behind checking empty index slots in a municipal office, simple cabinets at centre, no personal belongings or portraits, courtyard daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c02"
+      ],
+      "lines": [
+        {
+          "id": "izyj",
+          "text": "當時的身分查找，也沒能把那個空格補上。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "berlin-name-blank",
+      "template": "big",
+      "data": {
+        "kicker": "柏林，1920 年",
+        "text": "姓名：空白",
+        "sub": "後來被稱作「無名小姐」"
+      },
+      "claims": [
+        "c02",
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "rbd5",
+          "text": "後來，她以安娜・安德森這個名字聞名。"
+        }
+      ]
+    },
+    {
+      "id": "berlin-hospital-window",
+      "template": "photo",
+      "data": {
+        "image": "docs/videos/curio-h06/assets/dalldorf-hospital-1885.jpg",
+        "caption": "Dalldorf 病院舊照，1885 年；非當年現場",
+        "credit": "F. A. Schwartz／Heimatmuseum Reinickendorf"
+      },
+      "claims": [
+        "c02"
+      ],
+      "lines": [
+        {
+          "id": "c63r",
+          "text": "進了病院，她仍不願交代自己從哪裡來。"
+        }
+      ]
+    },
+    {
+      "id": "berlin-staff-corridor",
+      "template": "big",
+      "data": {
+        "kicker": "柏林病院",
+        "text": "來歷仍只能猜",
+        "sub": "她的說法與模樣，還不是身分證明"
+      },
+      "claims": [
+        "c02",
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "uq5m",
+          "text": "旁人只能從她的話和模樣，猜她的來歷。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "berlin-closed-album",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a visitor turns a small leather portrait case face down in a Berlin parlour, fingers around its brass hinge, side sun through an open doorway",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "cap5",
+          "text": "可猜測一旦碰上皇室，就不再只是病歷上的空格。"
+        }
+      ]
+    },
+    {
+      "id": "berlin-timeline",
+      "template": "stats",
+      "data": {
+        "title": "兩個年份",
+        "stats": [
+          {
+            "value": "1918",
+            "label": "皇室一家遭處決"
+          },
+          {
+            "value": "1920",
+            "label": "柏林女子獲救"
+          }
+        ],
+        "source": "BGH 判決掃描；PLOS ONE｜2009 年原始論文"
+      },
+      "claims": [
+        "c01",
+        "c02"
+      ],
+      "lines": [
+        {
+          "id": "qwh4",
+          "text": "兩年前，俄國皇室一家已經遇害。",
+          "reveal": 1
+        },
+        {
+          "id": "4jhc",
+          "text": "現在，柏林又出現一位身分不明的女人。",
+          "reveal": 1,
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "berlin-family-places",
+      "template": "photo",
+      "data": {
+        "image": "docs/videos/curio-h06/assets/nicholas-alexei-1917.jpg",
+        "caption": "尼古拉二世與兒子阿列克謝，約 1917 年",
+        "credit": "美國國會圖書館 Bain 收藏｜ggbain-20441"
+      },
+      "claims": [
+        "c01",
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "n3d8",
+          "text": "如果這位女子真是倖存的公主，就得解釋這兩段歷史如何相接。"
+        }
+      ]
+    },
+    {
+      "id": "berlin-two-timelines",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view, two wooden rulers and a short length of cord on an old drafting table, a researcher moves one plain marker between them, sun through an overhead skylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c01",
+        "c02",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "n7m6",
+          "text": "當年的問題有兩頭：她的過去，和公主的去向。"
+        }
+      ]
+    },
+    {
+      "id": "berlin-name-card",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a visitor holds a blank card above a plain hospital reception counter, fingers cast a small shadow across the card in morning sun",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "e773",
+          "text": "最先要弄清的，甚至不是她像不像公主。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "berlin-two-visitors",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two adult visitors' hands quietly closing a small portrait album on a plain bench in a 1920s hospital hallway, only hands and sleeves inside the frame, no portraits or faces visible, daylight through a skylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "9tfu",
+          "text": "是誰先把安娜塔西亞的名字放到她身上？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "hospital-visitors-enter",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain 1920s hospital entrance: two adult hands rest a palm-sized closed leather photograph case on an old wooden reception counter, heavy wood door and plaster wall behind, no people or faces visible, no lettering or modern signs, midday window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "uqyb",
+          "text": "病院裡，來訪者開始用舊故事辨認她。"
+        }
+      ],
+      "chapter": "公主的名字是誰說的"
+    },
+    {
+      "id": "hospital-album-hands",
+      "template": "photo",
+      "data": {
+        "image": "docs/videos/curio-h06/assets/anastasia-bain-restored.jpg",
+        "caption": "安娜塔西亞公主舊照；非訪客當年持有的原件",
+        "credit": "美國國會圖書館 Bain 收藏；Crisco 修復"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "u6iw",
+          "text": "有人從相貌和記憶，想到失蹤的公主。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "hospital-story-spreads",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two pairs of adult hands passing a palm-sized closed leather portrait case across a worn wooden bench in a 1920s hospital waiting area, small case clearly fits in one hand, no heads or faces in frame, plaster wall and tall old window in soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "hcra",
+          "text": "一九二二年，這個名字開始和病院女子連在一起。"
+        }
+      ]
+    },
+    {
+      "id": "hospital-two-starts",
+      "template": "compare",
+      "data": {
+        "title": "最初一句話，記述不同",
+        "left": {
+          "heading": "一種版本",
+          "points": [
+            "她先表明身分"
+          ]
+        },
+        "right": {
+          "heading": "另一種版本",
+          "points": [
+            "旁人先把名字帶來"
+          ]
+        },
+        "source": "BGH 判決掃描｜1970 年"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "kvce",
+          "text": "一種說法，是她先說出自己是誰。",
+          "reveal": 1
+        },
+        {
+          "id": "jnga",
+          "text": "另一種，說公主的名字先來自旁人。",
+          "reveal": 1,
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "hospital-two-folders",
+      "template": "shot",
+      "data": {
+        "prompt": "Top-down close-up of exactly two CLOSED plain archival folders side by side on a worn wooden desk, blank unmarked covers, no books, pages, hands, people, badges, labels or writing, warm desk light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "smmb",
+          "text": "後來的判決記下兩種說法，誰先提名字仍有爭議。"
+        }
+      ]
+    },
+    {
+      "id": "hospital-what-changes",
+      "template": "compare",
+      "data": {
+        "title": "起點不同，推論也不同",
+        "left": {
+          "heading": "她先自稱",
+          "points": [
+            "會影響動機推測"
+          ]
+        },
+        "right": {
+          "heading": "旁人先指認",
+          "points": [
+            "不能替她補上台詞"
+          ]
+        },
+        "source": "BGH 判決掃描｜1970 年"
+      },
+      "claims": [
+        "c03",
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "4a5b",
+          "text": "若是她先自稱，人們會追問她為何這樣說。",
+          "reveal": 1
+        },
+        {
+          "id": "v8ry",
+          "text": "若是旁人先認出，故事的開頭就完全不同。",
+          "reveal": 1,
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "hospital-back-view",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a worn wooden 1920s hospital waiting bench beside a tall old window, a palm-sized closed photograph case rests on the bench, empty frame without patients, people, lettering or modern signs, cool morning light across plaster wall",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c03",
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "cgdb",
+          "text": "誰先說出口，會改變人們怎麼想她的意圖。"
+        }
+      ]
+    },
+    {
+      "id": "hospital-doorway",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one empty old wooden chair beside a plain wood-framed hospital window against a bare plaster wall, camera shows only chair, window, wall and daylight, no door, corridor, signboard, light fixture, person, letter or symbol",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c03",
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "x2py",
+          "text": "但意圖不是一張臉，也不是一句傳聞能量出的。"
+        }
+      ]
+    },
+    {
+      "id": "hospital-story-evidence",
+      "template": "steps",
+      "data": {
+        "title": "名字怎麼變成身分",
+        "steps": [
+          {
+            "title": "有人提出名字",
+            "detail": "起點記述有爭議"
+          },
+          {
+            "title": "親友拿她辨認",
+            "detail": "贊成與反對並存"
+          },
+          {
+            "title": "法院檢驗主張",
+            "detail": "看證據能否成立"
+          }
+        ],
+        "source": "BGH 判決掃描｜1970 年"
+      },
+      "claims": [
+        "c03",
+        "c04",
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "fb4v",
+          "text": "先有人把名字提出來。",
+          "reveal": 1,
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        },
+        {
+          "id": "5xk3",
+          "text": "接著，認得皇室的人各自作出判斷。",
+          "reveal": 1
+        },
+        {
+          "id": "gvrp",
+          "text": "最後，這些判斷還得走進法院。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hospital-visitor-exit",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a visitor carrying a closed album out of a hospital room in late afternoon, sunlight on the leather spine, only hands visible",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c03",
+        "c04"
+      ],
+      "lines": [
+        {
+          "id": "6i45",
+          "text": "一張相簿能引起問題，卻不能自己給出答案。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "hospital-room-two-voices",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old wooden tea tray with exactly two plain porcelain cups on opposite sides and one palm-sized CLOSED leather photo case between them, empty 1920s hospital alcove, no hands, people, portraits or writing, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c04"
+      ],
+      "lines": [
+        {
+          "id": "3y3m",
+          "text": "熟悉皇室的人，真的都認她嗎？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "relatives-day-room",
+      "template": "big",
+      "data": {
+        "kicker": "皇室遠親的反應",
+        "text": "有人願意接待她",
+        "sub": "接待與確認身分，是兩件事"
+      },
+      "claims": [
+        "c04"
+      ],
+      "lines": [
+        {
+          "id": "egvx",
+          "text": "有皇室遠親願意接待她。"
+        }
+      ],
+      "chapter": "皇室親友如何辨認她"
+    },
+    {
+      "id": "relatives-tea-tray",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a host’s hands set two cups on a small tea tray in a daylight drawing room, porcelain cups catch side light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c04"
+      ],
+      "lines": [
+        {
+          "id": "28mj",
+          "text": "願意接待她，不等於認定她就是公主。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "relatives-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, a generic 1920s visitor in side silhouette gently raises an open palm in disagreement in a sunlit drawing room, another adult seen from behind, no identifiable faces, letters or readable documents",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c04"
+      ],
+      "lines": [
+        {
+          "id": "2scy",
+          "text": "也有親近皇室的證人，明確否認她是公主。"
+        }
+      ]
+    },
+    {
+      "id": "relatives-disagreement",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide symbolic view of two empty 1920s drawing-room armchairs turned away from one another on opposite sides of a small closed photo album on a table, daylight from a tall window, no people, portraits, emblems, heraldry, writing or readable pages",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c04"
+      ],
+      "lines": [
+        {
+          "id": "vw34",
+          "text": "有人相信這套說法。"
+        },
+        {
+          "id": "6we2",
+          "text": "也有人看過之後，仍然搖頭。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "relatives-album-close",
+      "template": "photo",
+      "data": {
+        "image": "docs/videos/curio-h06/assets/romanov-family-1914.jpg",
+        "caption": "羅曼諾夫一家，1914 年；非本案證物",
+        "credit": "美國國會圖書館 Bain 收藏｜ggbain-14685"
+      },
+      "claims": [
+        "c04",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "5htn",
+          "text": "靠回憶辨人，常會留下彼此衝突的證詞。"
+        }
+      ]
+    },
+    {
+      "id": "relatives-two-people",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, two adults discussing a small closed photograph case across a sunlit table, simple gestures rather than readable papers, light from the side",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c04",
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "8vb5",
+          "text": "法院不能把某一個人的相信，直接當成最後答案。"
+        }
+      ]
+    },
+    {
+      "id": "relatives-distant-woman",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two plain witness folders on a sunlit 1920s drawing-room table, two readers' hands place the folders apart to suggest conflicting testimony, garden gate visible through the window, no identifiable people or readable pages",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c03",
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "8nrj",
+          "text": "這些彼此衝突的證詞，後來都成了法院要衡量的資料。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "relatives-court-corridor",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, a German courthouse corridor with an oak courtroom doorway at its far end, two groups wait at opposite ends under a long ceiling skylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "kv2b",
+          "text": "等爭議進入法庭，問題會變得很具體。"
+        }
+      ]
+    },
+    {
+      "id": "relatives-legal-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of one unopened unmarked brown case folder lying on the center of a plain oak table in a late-1960s German courthouse, pale daylight across the tabletop, camera points down so walls and all other room furnishings are outside the frame, no people, writing or insignia",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c05",
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "kyrc",
+          "text": "她能拿什麼，證明自己就是那位公主？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "court-day-exterior",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty generic 1970 German stone courthouse entrance in clear daylight, closed heavy wooden door and plain steps, no people, signs, seals, insignia or text",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "26m8",
+          "text": "一九七〇年，這場身分官司走到德國聯邦最高法院。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ],
+      "chapter": "一九七〇年法院判了什麼"
+    },
+    {
+      "id": "court-closed-case",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a plain 1970s German civil-court table with two entirely blank claim sheets laid side by side, no seals, signatures, insignia or legible writing, daylight from a high window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "2ap4",
+          "text": "這是民事訴訟，不是審她有沒有欺騙群眾。"
+        }
+      ]
+    },
+    {
+      "id": "court-question-card",
+      "template": "big",
+      "data": {
+        "kicker": "身分訴訟",
+        "text": "她要確認繼承權",
+        "sub": "請求給付／繼承身分／舊證書有誤"
+      },
+      "claims": [
+        "c05",
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "fba5",
+          "text": "她要法院判給付款，還要確認自己有德國境內的繼承權。"
+        }
+      ]
+    },
+    {
+      "id": "court-two-parties",
+      "template": "shot",
+      "data": {
+        "prompt": "Top-down close-up of exactly two separate CLOSED blank case folders on opposite plain wooden tables with a narrow bare divider between them in a generic mid-century records room, all walls outside frame, no courtroom, judge bench, flags, papers, labels, writing or people",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c04",
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "xhf4",
+          "text": "雙方帶來不同的證詞，也提出不同的身分說法。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "court-family-album",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an empty 1960s courthouse waiting bench with one CLOSED plain photo album and two separate blank witness folders on opposite ends, no people, portraits, document text or signage, high-window daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c04",
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "euyy",
+          "text": "親友的辨認，是當時法院評估的證據之一。"
+        }
+      ]
+    },
+    {
+      "id": "court-read-three-places",
+      "template": "steps",
+      "data": {
+        "title": "讀判決，先抓三處",
+        "steps": [
+          {
+            "title": "訴請",
+            "detail": "給付、繼承權、舊證書"
+          },
+          {
+            "title": "證據評價",
+            "detail": "前審如何看身分證據"
+          },
+          {
+            "title": "主文",
+            "detail": "最高法院有無推翻前審"
+          }
+        ],
+        "source": "BGH III ZR 139/67｜第三方掃描"
+      },
+      "claims": [
+        "c05",
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "kvx5",
+          "text": "她還主張，原來的繼承證書有誤。",
+          "reveal": 1
+        },
+        {
+          "id": "7m6v",
+          "text": "再看前審，怎麼衡量彼此衝突的證詞。",
+          "reveal": 1,
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        },
+        {
+          "id": "z5pb",
+          "text": "最後看主文，最高法院有沒有推翻前審。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "court-proof-steps",
+      "template": "steps",
+      "data": {
+        "title": "身分為何是訴訟關鍵",
+        "steps": [
+          {
+            "title": "財產請求",
+            "detail": "須證明有繼承資格"
+          },
+          {
+            "title": "公主身分",
+            "detail": "她主張自己是幼女"
+          },
+          {
+            "title": "民事舉證",
+            "detail": "由主張者提出證據"
+          }
+        ],
+        "source": "BGH 判決掃描｜1970 年"
+      },
+      "claims": [
+        "c05",
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "8d33",
+          "text": "因為她主張繼承，公主身分就成了這案的前提。",
+          "reveal": 1
+        },
+        {
+          "id": "ftkk",
+          "text": "民事官司裡，主張這件事的人，要拿出足夠證據。",
+          "reveal": 1,
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        },
+        {
+          "id": "qcgw",
+          "text": "有人認出她，也不能直接代替身分的證明。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "court-hamburg-corridor",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a generic late-1960s Hamburg courthouse corridor with plain plaster walls, wooden doors and a long empty bench, two anonymous lawyers seen from behind carrying leather briefcases, no signs, seals, screens or readable text, afternoon sun from a courtyard",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "sexv",
+          "text": "一九六七年，前審已經衡量過兩邊的材料。"
+        }
+      ]
+    },
+    {
+      "id": "court-appeal-paper",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a court clerk lifts a tied legal folio from a wooden records chest, fraying cloth tape at centre, morning sun through a skylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "95fq",
+          "text": "它作出不利於安德森的證據判斷。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "court-two-years",
+      "template": "stats",
+      "data": {
+        "title": "從前審到最終判決",
+        "stats": [
+          {
+            "value": "1967",
+            "label": "前審的證據判斷"
+          },
+          {
+            "value": "1970",
+            "label": "聯邦最高法院駁回法律審"
+          }
+        ],
+        "source": "BGH 判決掃描｜1970 年"
+      },
+      "claims": [
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "wmiq",
+          "text": "前審認為，她無法證明自己是公主。",
+          "reveal": 1
+        },
+        {
+          "id": "i2rk",
+          "text": "一九七〇年，最高法院駁回上訴；只查前審的法律或程序錯誤。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "court-judges-bench",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a reader opens a bound legal case volume on a courthouse desk, one short summary section faces a longer reasoning section, all print indistinct and no legible words, soft high-window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c06",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "9vfb",
+          "text": "主文先告訴你結果，理由再說清楚為什麼。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "court-two-levels",
+      "template": "compare",
+      "data": {
+        "title": "前審與法律審，各查什麼",
+        "left": {
+          "heading": "一九六七年前審",
+          "points": [
+            "衡量證人與身分資料"
+          ]
+        },
+        "right": {
+          "heading": "一九七〇年法律審",
+          "points": [
+            "檢查法律與程序錯誤"
+          ]
+        },
+        "source": "BGH 判決掃描｜1970 年"
+      },
+      "claims": [
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "mrsj",
+          "text": "前審負責衡量證人與身分資料。",
+          "reveal": 1
+        },
+        {
+          "id": "qyt5",
+          "text": "法律審檢查判法與程序，不會從頭重問每一位證人。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "court-folder-return",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view, two abstract blank paper columns on a court reading table, a reader's hand points to the later section, no printed facsimile, names, seals or legible words, warm side light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c07"
+      ],
+      "lines": [
+        {
+          "id": "sywj",
+          "text": "再翻到判決後段，另一位女工的名字在這裡出現。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "court-ruling-scope",
+      "template": "compare",
+      "data": {
+        "title": "判了什麼，沒判什麼",
+        "left": {
+          "heading": "已判",
+          "points": [
+            "公主身分未獲證明",
+            "法律審遭駁回"
+          ]
+        },
+        "right": {
+          "heading": "未裁定",
+          "points": [
+            "她就是另一位女工",
+            "她當年存心冒認"
+          ]
+        },
+        "source": "BGH 判決掃描｜1970 年"
+      },
+      "claims": [
+        "c06",
+        "c07",
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "y57g",
+          "text": "她在這場訴訟裡，沒有證明公主身分。",
+          "reveal": 1
+        },
+        {
+          "id": "8erd",
+          "text": "但判決沒有替她填上另一個本名。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "court-other-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a blank name card in a wooden label holder beside a tied folio on a courthouse desk, one clerk’s hand hesitates over the card, side skylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c07"
+      ],
+      "lines": [
+        {
+          "id": "a3yv",
+          "text": "被告提出過另一位失蹤女工的名字。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "court-name-stays-blank",
+      "template": "shot",
+      "data": {
+        "prompt": "Top-down close-up of EXACTLY TWO blank paper name cards lying far apart on a bare 1970 archive desk, wide uninterrupted bare tabletop between them, no third card, name-card holders, people, hands, labels, symbols or text",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c07",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "6793",
+          "text": "可提出另一個候選人，並不等於已經證成她的身分。"
+        }
+      ]
+    },
+    {
+      "id": "court-not-a-proof",
+      "template": "compare",
+      "data": {
+        "title": "排除一個，不會證成另一個",
+        "left": {
+          "heading": "即使不是女工",
+          "points": [
+            "仍有其他身分可能"
+          ]
+        },
+        "right": {
+          "heading": "要說是公主",
+          "points": [
+            "仍得另有支持證據"
+          ]
+        },
+        "source": "BGH 判決掃描｜1970 年"
+      },
+      "claims": [
+        "c07",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "5tqj",
+          "text": "即使她不是那名女工，也不能反推她是公主。",
+          "reveal": 1
+        },
+        {
+          "id": "yncm",
+          "text": "要證明公主身分，還得另外拿出證據。",
+          "reveal": 1,
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "court-not-worker",
+      "template": "big",
+      "data": {
+        "kicker": "判決保留的界線",
+        "text": "沒有裁定另一個本名",
+        "sub": "敗訴不等於刑事詐欺定罪"
+      },
+      "claims": [
+        "c07"
+      ],
+      "lines": [
+        {
+          "id": "zwwh",
+          "text": "她是不是那位女工，法院認為不必裁定。"
+        }
+      ]
+    },
+    {
+      "id": "court-exit-day",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty 1970 German courthouse staircase in quiet afternoon sun, a plain closed case folder resting on an interior windowsill, no people, no portrait and no readable court papers",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c07",
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "bnbr",
+          "text": "法院也沒裁定，她當年抱著什麼目的。"
+        }
+      ]
+    },
+    {
+      "id": "court-sealed-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a sealed archival box carried in gloved hands down a bright records corridor, the eye lands on the plain box lid, high window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "as2s",
+          "text": "那麼，後來留下了什麼可以比對的東西？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "dna-hospital-archive",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one fully sealed OPAQUE brown archival envelope lying in front of a SHUT plain metal filing cabinet door, envelope front entirely blank, camera crops to envelope and cabinet, no box, transparent container, contents, labels, writing, people or hands",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "bxmt",
+          "text": "法庭之後，有一份保存下來的樣本。"
+        }
+      ],
+      "chapter": "她留下的檢體說了什麼"
+    },
+    {
+      "id": "dna-sealed-sample",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a generic unlabeled opaque sample envelope on a laboratory tray with gloved hands nearby, contents hidden, no anatomical material or historic markings, clear daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "gibi",
+          "text": "那是安娜・安德森生前留下的組織檢體。"
+        }
+      ]
+    },
+    {
+      "id": "dna-publication",
+      "template": "stats",
+      "data": {
+        "title": "另一種身分測試",
+        "stats": [
+          {
+            "value": "1984",
+            "label": "安德森過世"
+          },
+          {
+            "value": "1995",
+            "label": "身分研究發表"
+          }
+        ],
+        "source": "CSUEB 博物館；Nature Genetics 書目"
+      },
+      "claims": [
+        "c08",
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "tgm6",
+          "text": "她在一九八四年過世。",
+          "reveal": 1,
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        },
+        {
+          "id": "uxia",
+          "text": "一九九五年，安德森的身分研究正式刊出。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "dna-book-page",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim scholarly journal entirely wrapped in plain opaque unprinted kraft paper, cover facing up, next to one totally blank index card on a 1990s library desk, no pages or spine visible, titles, letters, numbers, readers or hands",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c08",
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "fmii",
+          "text": "一九九五年論文全文要付費，我們沒有讀到。"
+        }
+      ]
+    },
+    {
+      "id": "dna-source-levels",
+      "template": "compare",
+      "data": {
+        "title": "書目與研究者說明",
+        "left": {
+          "heading": "期刊書目",
+          "points": [
+            "只核發表時間與作者"
+          ]
+        },
+        "right": {
+          "heading": "研究者訪談",
+          "points": [
+            "核樣本與比對結果"
+          ]
+        },
+        "source": "Nature Genetics 書目；Stoneking 訪談"
+      },
+      "claims": [
+        "c08",
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "rap7",
+          "text": "出版日期看期刊頁面；樣本和比對結果，則參考共同作者的訪談。",
+          "reveal": 1,
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        },
+        {
+          "id": "k8xz",
+          "text": "訪談談到兩組研究者各自處理的檢體。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "dna-hair-and-box",
+      "template": "big",
+      "data": {
+        "kicker": "安德森的檢體",
+        "text": "組織與頭髮",
+        "sub": "分別交給研究團隊分析"
+      },
+      "claims": [
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "kckw",
+          "text": "除了組織，還有頭髮，分別交給研究團隊分析。"
+        }
+      ]
+    },
+    {
+      "id": "dna-mother-child",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, a mother and child shown as generic figures at a bright family table, the eye lands on their joined hands, morning light from a window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "bp4e",
+          "text": "要檢查的，是她能否接上皇后的母系。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "dna-family-tree-pieces",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a researcher places plain wooden tokens in a single line on a daylight desk, each token connected by a thin cord, window light across the cord",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "xx8w",
+          "text": "有一種遺傳特徵，會沿母親這一方傳下去。"
+        }
+      ]
+    },
+    {
+      "id": "dna-two-results",
+      "template": "shot",
+      "data": {
+        "prompt": "Top-down close-up of exactly two blank paper cards side by side on a plain table; exactly one small solid circular dot near the upper-left corner of each card, no diagrams, figurines, toys, faces, labels, text, vials or other objects, tight crop",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "4yw7",
+          "text": "兩份安德森樣本，先指向同一條母系。"
+        }
+      ]
+    },
+    {
+      "id": "dna-two-samples",
+      "template": "compare",
+      "data": {
+        "title": "這次比對哪兩邊",
+        "left": {
+          "heading": "安德森",
+          "points": [
+            "保存的組織樣本"
+          ]
+        },
+        "right": {
+          "heading": "皇后母系",
+          "points": [
+            "家族參照資料"
+          ]
+        },
+        "source": "加州州大東灣分校博物館｜DNA 解說"
+      },
+      "claims": [
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "unzd",
+          "text": "一邊是安德森留下的樣本。",
+          "reveal": 1,
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        },
+        {
+          "id": "whpq",
+          "text": "另一邊，是皇后母系的參照資料。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "dna-lab-two-researchers",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, two researchers examine sealed sample cases on a laboratory workbench, one points to a plain measuring scale, broad natural light from the courtyard",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c04",
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "bu8r",
+          "text": "這不再是拿一張臉，和一幅舊肖像比像不像。"
+        }
+      ]
+    },
+    {
+      "id": "dna-two-glass-vials",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view, two thin cords running parallel on a bright research table to symbolize two maternal lines, a researcher's hand aligns plain markers at their ends, no specimen containers, skylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "8hyx",
+          "text": "問題變成：兩條母系特徵，能不能對上？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "dna-mismatch",
+      "template": "compare",
+      "data": {
+        "title": "比對結果",
+        "left": {
+          "heading": "如果是皇后女兒",
+          "points": [
+            "母系特徵應相符"
+          ]
+        },
+        "right": {
+          "heading": "實際結果",
+          "points": [
+            "兩邊沒有相符"
+          ]
+        },
+        "source": "加州州大東灣分校博物館｜DNA 解說"
+      },
+      "claims": [
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "ix4m",
+          "text": "若真是皇后的女兒，媽媽傳下的特徵就該對得上。",
+          "reveal": 1
+        },
+        {
+          "id": "fa8j",
+          "text": "但比對結果，沒有相符。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "dna-closed-album",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a closed portrait album pushed gently aside by a researcher’s hand in a bright laboratory office, sunlight on the cover",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "xdsv",
+          "text": "這足以排除她是安娜塔西亞。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "dna-method-limit",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, a researcher places two wooden markers at opposite ends of a bright research table beside a specimen case, clear afternoon sun from an open doorway",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c09",
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "jmhr",
+          "text": "這裡比的是母系，沒有把所有可能身分逐個驗過。"
+        }
+      ]
+    },
+    {
+      "id": "dna-blank-id",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot, a researcher places one blank identity card beside a closed specimen box in a bright archive room, daylight from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c09",
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "pgcg",
+          "text": "但這次檢驗，沒有直接說出她的本名。"
+        }
+      ]
+    },
+    {
+      "id": "dna-one-no-two",
+      "template": "big",
+      "data": {
+        "kicker": "排除，不等於指認",
+        "text": "她不是皇室女兒",
+        "sub": "另一個本名仍需另外證明"
+      },
+      "claims": [
+        "c09",
+        "c10",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "5yq4",
+          "text": "排除公主身分，和確認另一個本名，是兩道題。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "dna-file-two-paths",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot, a divided archive table with a plain court case folder on the left and two sealed laboratory sample envelopes on the right, a reader's hands point to each side, no legible labels, soft morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c06",
+        "c09",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "rf3q",
+          "text": "法庭問的是舉證，基因比的是血緣。"
+        }
+      ]
+    },
+    {
+      "id": "dna-woman-shadow",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an empty archive corridor many years later, one plain closed folder on a wall shelf and a long window shadow across the floor, no person, portrait or readable text, daylight from a high window",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "hibg",
+          "text": "兩種答案，都無法回頭讀出她當年的心思。"
+        }
+      ]
+    },
+    {
+      "id": "dna-forest-transition",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one closed unmarked research journal beside a single small sealed unprinted archival envelope on a bare wooden table, both entirely opaque and with no contents visible, no people, maps, photographs, labels, letters or symbols",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c09",
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "xz9y",
+          "text": "既然柏林的女人不是公主，真正的公主去哪了？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "grave-forest-1991",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of pine needles and birch leaves catching morning sunlight against a blurred forest, frame contains foliage only, no ground, path, markers, signs, people or text",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "4uuj",
+          "text": "安德森的樣本之外，還有另一條線索。"
+        }
+      ],
+      "chapter": "兩座墓找到了誰"
+    },
+    {
+      "id": "grave-map-table",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a large plain unmarked folded sheet of parchment on an old wooden research table, exactly two small smooth wooden discs resting far apart on it, no drawn contours, boundaries, place labels, writing, numbers, compass, hands or tools",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c11",
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "et4h",
+          "text": "研究者要問的，是皇室家人去了哪裡。"
+        }
+      ]
+    },
+    {
+      "id": "grave-first-count",
+      "template": "stats",
+      "data": {
+        "title": "第一座墓",
+        "stats": [
+          {
+            "value": "1991",
+            "label": "正式發掘"
+          },
+          {
+            "value": "3",
+            "label": "與父母同墓的女兒"
+          },
+          {
+            "value": "2",
+            "label": "當時未找到的孩子"
+          }
+        ],
+        "source": "PLOS ONE｜2009 年原始論文"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "yqep",
+          "text": "一九九一年，第一座墓正式發掘。",
+          "reveal": 1,
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        },
+        {
+          "id": "2pva",
+          "text": "後續研究認出父母和三名女兒。",
+          "reveal": 1
+        },
+        {
+          "id": "s4mq",
+          "text": "仍然少一名男孩，還有一名女孩。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "grave-empty-places",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up symbolic view on a uniform pale background: exactly TWO large empty circular outlines side by side in the center of the frame, nothing else; no tabletop, cards, counters, symbols, writing, people or decorative shapes",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c11",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "73wj",
+          "text": "這兩個空位，曾讓倖存的故事繼續流傳。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "grave-2007-path",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium ground-level view of a generic unmarked forest footpath among green birch trees near Yekaterinburg in 2007, filtered daylight through leaves, no excavation pits, signs, markers, maps, buildings, people or remains",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "v2jq",
+          "text": "二〇〇七年，附近又發現第二座墓。"
+        }
+      ]
+    },
+    {
+      "id": "grave-distance",
+      "template": "stats",
+      "data": {
+        "title": "兩座墓的距離",
+        "stats": [
+          {
+            "value": "約 70 公尺",
+            "label": "第二墓與第一墓相距"
+          },
+          {
+            "value": "44 件",
+            "label": "碎骨與牙齒的整理量"
+          }
+        ],
+        "source": "PLOS ONE｜2009 年原始論文"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "j43h",
+          "text": "兩座墓，大約只隔七十公尺。",
+          "reveal": 1
+        },
+        {
+          "id": "iqh6",
+          "text": "第二處整理出四十四件碎骨與牙齒。",
+          "reveal": 1,
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "grave-fragments-limit",
+      "template": "big",
+      "data": {
+        "kicker": "第二座墓的碎片",
+        "text": "它們屬於哪個家庭？",
+        "sub": "發現位置不足以回答"
+      },
+      "claims": [
+        "c12",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "yv8b",
+          "text": "碎片雖小，問題仍是它們屬於哪個家庭。"
+        }
+      ]
+    },
+    {
+      "id": "grave-lab-sealed-tray",
+      "template": "compare",
+      "data": {
+        "title": "地點與身分不能混為一談",
+        "left": {
+          "heading": "發現位置",
+          "points": ["只能說明在哪裡找到"]
+        },
+        "right": {
+          "heading": "家族關係",
+          "points": ["要用 DNA 對照親族"]
+        },
+        "source": "PLOS ONE｜2009 年原始論文"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "znfv",
+          "text": "研究者不是靠位置，就把孩子的名字填上去。"
+        }
+      ]
+    },
+    {
+      "id": "grave-lab-two-researchers",
+      "template": "shot",
+      "data": {
+        "prompt": "Direct overhead medium shot of exactly THREE blank rectangular paper sheets laid side by side on a bare wooden tabletop, each sheet completely empty, no laboratory setting, instruments, dishes, liquids, markers, labels, letters or people",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "g6ne",
+          "text": "他們比對的是兩座墓與親族之間的關係。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "grave-three-tests",
+      "template": "steps",
+      "data": {
+        "title": "樣本如何接回家族",
+        "steps": [
+          {
+            "title": "母系 DNA",
+            "detail": "比較母親傳下的線"
+          },
+          {
+            "title": "常染色體",
+            "detail": "比較親子與手足"
+          },
+          {
+            "title": "父系 DNA",
+            "detail": "比對男孩的父系線"
+          }
+        ],
+        "source": "PLOS ONE｜2009 年原始論文"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "7sxb",
+          "text": "母系比對，先找家族線索。",
+          "reveal": 1
+        },
+        {
+          "id": "9jd8",
+          "text": "常染色體資料，檢查親子關係。",
+          "reveal": 1
+        },
+        {
+          "id": "h9hy",
+          "text": "男孩從父親繼承的遺傳特徵，再補上一道檢查。",
+          "reveal": 1,
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "grave-data-overlap",
+      "template": "big",
+      "data": {
+        "kicker": "三種資料",
+        "text": "彼此相扣",
+        "sub": "比單看一條線更有力"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "b5hx",
+          "text": "三種資料彼此相扣，比單看一條線更有力。"
+        }
+      ]
+    },
+    {
+      "id": "grave-family-board",
+      "template": "shot",
+      "data": {
+        "prompt": "Close overhead view of a simple plain board on a daylight desk, exactly two circular recesses filled by exactly two plain wooden discs, no other tokens, lines, family tree, names, labels, pictures, numbers, writing or people",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c13",
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "cfvr",
+          "text": "把多條線索放在一起，才補上那兩個位置。"
+        }
+      ]
+    },
+    {
+      "id": "grave-two-children",
+      "template": "compare",
+      "data": {
+        "title": "第二座墓的兩個孩子",
+        "left": {
+          "heading": "男孩",
+          "points": [
+            "阿列克謝"
+          ]
+        },
+        "right": {
+          "heading": "女孩",
+          "points": [
+            "皇室的一位姊妹"
+          ]
+        },
+        "source": "PLOS ONE｜2009 年原始論文"
+      },
+      "claims": [
+        "c13",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "jptu",
+          "text": "男孩，可以指向阿列克謝。",
+          "reveal": 1,
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        },
+        {
+          "id": "92k7",
+          "text": "女孩，能指向皇室的一位女兒。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "grave-sisters-frames",
+      "template": "compare",
+      "data": {
+        "title": "女孩如何與家族接上",
+        "left": {
+          "heading": "第二座墓",
+          "points": ["一名女孩的遺骸"]
+        },
+        "right": {
+          "heading": "家族比對",
+          "points": ["能與這對父母對上"]
+        },
+        "source": "PLOS ONE｜2009 年原始論文"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "8e4x",
+          "text": "先看家族關係。第二座墓裡的女孩，能和這對父母對上。"
+        }
+      ]
+    },
+    {
+      "id": "grave-no-reference",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a CLOSED plain scholarly journal and a completely BLANK paper bookmark on a library desk, no open pages, printed paragraph, people, labels or text",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "vrpx",
+          "text": "再翻到研究的討論段落，找作者留下的限制。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "grave-which-sister",
+      "template": "compare",
+      "data": {
+        "title": "PLOS ONE｜第二墓女兒",
+        "left": {
+          "heading": "能確認",
+          "points": [
+            "第二墓有一位皇室女兒"
+          ]
+        },
+        "right": {
+          "heading": "單靠該 DNA 難分",
+          "points": [
+            "瑪麗亞，還是安娜塔西亞"
+          ]
+        },
+        "source": "PLOS ONE｜2009 年原始論文"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "ce8r",
+          "text": "二〇〇九年的研究，先確認她屬於這個家族。",
+          "reveal": 1
+        },
+        {
+          "id": "zwkk",
+          "text": "但這份基因資料，分不出她是瑪麗亞還是安娜塔西亞。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "grave-paper-compare",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two closed solid-color blank scholarly journal books lying side by side on an empty wooden library table, no map, hands, people, open pages, titles, labels, letters or numbers",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "953n",
+          "text": "把這個保留放好，再拿起同年的另一篇論文。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "grave-two-papers",
+      "template": "compare",
+      "data": {
+        "title": "同一第二墓，不同問題",
+        "left": {
+          "heading": "PLOS ONE",
+          "points": [
+            "第二墓的家族關係",
+            "一男一女的樣本"
+          ]
+        },
+        "right": {
+          "heading": "PNAS",
+          "points": [
+            "兩墓合併判讀",
+            "五名子女都在"
+          ]
+        },
+        "source": "PLOS ONE／PNAS｜2009 年原文"
+      },
+      "claims": [
+        "c13",
+        "c14",
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "dkkf",
+          "text": "右邊的研究，也在二〇〇九年發表。",
+          "reveal": 1
+        },
+        {
+          "id": "jqxi",
+          "text": "兩篇研究都檢驗後來發現的那座墓；我們看到的結論卻不同。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "grave-two-reader-hands",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two CLOSED plain scholarly journals lying separately on opposite sides of a folded blank outline map on a library table, no readers, hands, titles, labels or text",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c14",
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "iuy6",
+          "text": "接著看右邊的研究：五名子女，是否都能在兩座墓裡找到？",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "grave-five-children",
+      "template": "big",
+      "data": {
+        "kicker": "2009 年研究結論",
+        "text": "五名子女都已找到",
+        "sub": "不是兩個孩子逃了出去"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "ufh6",
+          "text": "兩座墓合在一起，尼古拉二世夫婦的五名子女都找到了。"
+        }
+      ]
+    },
+    {
+      "id": "grave-label-vs-proof",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain magnifying glass resting beside one CLOSED scholarly journal and an unfilled wooden label holder on a research desk, no diagram, printed page, names, people or text",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c14",
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "kgvp",
+          "text": "讀圖時，別只看標籤，還要讀作者寫出的結論。"
+        }
+      ]
+    },
+    {
+      "id": "grave-family-empty-room",
+      "template": "photo",
+      "data": {
+        "image": "docs/videos/curio-h06/assets/romanovs-tobolsk-1917.jpg",
+        "caption": "1917–18 年家族舊照；非墓地影像",
+        "credit": "耶魯 Beinecke 圖書館｜Romanov Collection"
+      },
+      "claims": [
+        "c15",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "yuvi",
+          "text": "這也讓公主倖存的版本，失去了家族遺骸上的空位。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "grave-forest-last",
+      "template": "shot",
+      "data": {
+        "prompt": "Low-angle close-up looking up at green forest tree canopy against pale sky in daylight, frame contains only branching leaves and sky, no path, graves, markers, signs, cemetery, buildings, people or writing",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c09",
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "sh77",
+          "text": "那位柏林女子，還能是安娜塔西亞嗎？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "end-archive-desk",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide symbolic summary still life: three separate CLOSED blank folders spaced evenly along a bright archive table, no specimen case, map, court exhibit, researcher, labels, portraits or text",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c06",
+        "c07",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "tqpn",
+          "text": "最後把三項結論並排，先看一九七〇年的判決。"
+        }
+      ],
+      "chapter": "安娜安德森到底是誰"
+    },
+    {
+      "id": "end-three-results",
+      "template": "steps",
+      "data": {
+        "title": "三份證據，各答一題",
+        "steps": [
+          {
+            "title": "法院",
+            "detail": "她的主張未獲支持"
+          },
+          {
+            "title": "她的檢體",
+            "detail": "與皇后母系不符"
+          },
+          {
+            "title": "兩座墓",
+            "detail": "五名子女都被找到"
+          }
+        ],
+        "source": "BGH 判決掃描；Stoneking 訪談；PLOS／PNAS"
+      },
+      "claims": [
+        "c06",
+        "c07",
+        "c09",
+        "c15",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "vgu2",
+          "text": "法院駁回上訴，卻沒有判定這名女子就是另一位女工。",
+          "reveal": 1,
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        },
+        {
+          "id": "azdq",
+          "text": "她的檢體，不符皇后那條母系。",
+          "reveal": 1
+        },
+        {
+          "id": "u2gp",
+          "text": "兩座墓，則補上皇室全部五名子女。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "end-blank-motive",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up, a historian’s hands hold an empty wooden label frame above a tidy archive table, the blank insert illuminated from a side skylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "4s6y",
+          "text": "她當年心裡怎麼想，這些證據沒有留下錄影。",
+          "emotion": "清楚而沉著，關鍵字稍慢"
+        }
+      ]
+    },
+    {
+      "id": "end-canal-return",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of plain dark iron canal railing dusted with snow against softly blurred still water in 1920 Berlin winter afternoon light; tight camera crop contains only iron railing, snow and water, no bridge, street, people, trees, buildings or skyline",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c09",
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "56m3",
+          "text": "但公主的身分，已不能再放回那個空格。"
+        }
+      ]
+    },
+    {
+      "id": "end-outro",
+      "template": "outro",
+      "data": {
+        "title": "檔案暫告一段落",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "法院與基因，各回答自己的問題"
+        ]
+      },
+      "claims": [
+        "c09",
+        "c15",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "d7um",
+          "text": "五人找齊了。"
+        },
+        {
+          "id": "934q",
+          "text": "法院判她是女工？",
+          "emotion": "問句輕輕上揚"
+        },
+        {
+          "id": "tstk",
+          "text": "訂閱，繼續查。"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**不是她？**",
+      "tag": "歷史懸案",
+      "sub": "法院與基因怎麼說",
+      "shot": "hook-hospital-door"
+    }
+  }
+}
