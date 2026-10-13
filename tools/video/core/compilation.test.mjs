@@ -216,6 +216,13 @@ test("cues shift by the episode's offset and merge in play order", () => {
     { start_ms: 2100, end_ms: 2900, text: "branded body" },
     { start_ms: 122_000, end_ms: 123_000, text: "第二集" },
   ], "a source intro is removed before the body receives its compilation position");
+  // An episode whose intro played after its 40 s condensation: only the cues after it lose the intro.
+  assert.deepEqual(mergeCaptions([
+    { srt: toSrt([{ start_ms: 1000, end_ms: 39000, text: "condensation" }, { start_ms: 51900, end_ms: 53000, text: "chapter two" }]), introMs: 11900, introAtMs: 40000, offsetMs: 2000 },
+  ]), [
+    { start_ms: 3000, end_ms: 41000, text: "condensation" },
+    { start_ms: 42000, end_ms: 43100, text: "chapter two" },
+  ], "the intro is removed where it played, not from 0:00");
 });
 
 test("eighty titled chapters fall back to 「第 N 集」 so the description stays within 5,000 bytes", () => {

@@ -18,7 +18,7 @@ import { verifyBrandingAssets, wrapAudio } from "../assemble/branding.mjs";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { musicInputs, sfxInputs } from "../assemble/sound.mjs";
 import { isDrama, mixHash, resolveMusic, resolveSfx, sfxHash } from "../core/drama.mjs";
-import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
+import { appliedBranding, brandingCurrent, introAtFrame, linesAcrossIntro, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { verifiedManualPresentation } from "../review/renewal-handoff.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { requireProjectLease } from "../core/project-lease.mjs";
@@ -345,8 +345,13 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     await ffmpeg.run(ffmpeg.tools.ffmpeg, encodeArgs(files.narration, loudness, bodyTrack, values.format));
   }
   if (branding) {
+    // An intro after the condensation sits at the cut's own body frame; a dubbed line running
+    // across it would be split by the bumper, so it is refused rather than cut.
+    const introAt = introAtFrame(branding);
+    const crossing = linesAcrossIntro(lines, introAt);
+    if (crossing.length) throw new UsageError(`dubbed ${crossing.join(", ")} would run into the intro at body frame ${introAt}; shorten the translation or run dub with a faster tempo`);
     const partial = path.join(files.dir, `branded.partial.${values.format}`);
-    await wrapAudio({ tools: ffmpeg.tools, exec: ffmpeg.run, bodyFile: bodyTrack, bodyFrames: timeline.total_frames, branding: selection, outFile: partial, outputCodec: CODECS[values.format] });
+    await wrapAudio({ tools: ffmpeg.tools, exec: ffmpeg.run, bodyFile: bodyTrack, bodyFrames: timeline.total_frames, branding: selection, outFile: partial, outputCodec: CODECS[values.format], introAtFrame: introAt });
     renameSync(partial, track);
   }
   const record = {
