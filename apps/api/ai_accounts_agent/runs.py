@@ -77,9 +77,10 @@ LIMIT_MESSAGE = re.compile(
 # does not have."). Nothing ran, and the same account cannot answer until a person signs it in
 # again, so the run rests the account and moves on; before this the run failed as
 # subscription_run_failed and a video stage job turned "uncertain" although no model ran.
+# A failed OAuth refresh reports "Failed to refresh OAuth token" rather than "token expired".
 AUTH_MESSAGE = re.compile(
     r"failed to authenticate|API Error: 40[13]\b|requires an access grant|not logged in"
-    r"|oauth token (?:has )?expired|invalid api key",
+    r"|oauth token (?:has )?expired|failed to refresh oauth token|invalid api key",
     re.I,
 )
 CLAUDE_OUTDATED_MESSAGE = re.compile(

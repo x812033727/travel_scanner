@@ -333,18 +333,21 @@ def test_an_unrecognized_cli_failure_keeps_the_generic_error(
     ("channel", "exit_code"),
     [("json", 0), ("json", 1), ("stderr", 1), ("stdout", 1)],
 )
+@pytest.mark.parametrize(
+    "message", [AUTH_FAILED_CLAUDE, "Failed to refresh OAuth token"]
+)
 def test_a_failed_run_that_cannot_authenticate_rests_the_account_for_every_model(
-    tmp_path: Path, channel: str, exit_code: int
+    tmp_path: Path, channel: str, exit_code: int, message: str
 ) -> None:
     stdout = (
-        json.dumps({"type": "result", "is_error": True, "result": AUTH_FAILED_CLAUDE})
+        json.dumps({"type": "result", "is_error": True, "result": message})
         if channel == "json"
-        else AUTH_FAILED_CLAUDE if channel == "stdout" else ""
+        else message if channel == "stdout" else ""
     )
     config = _cli_output(
         tmp_path,
         stdout=stdout,
-        stderr=AUTH_FAILED_CLAUDE if channel == "stderr" else "",
+        stderr=message if channel == "stderr" else "",
         exit_code=exit_code,
     )
     with pytest.raises(RunRefused) as refused:
@@ -363,6 +366,7 @@ def test_a_failed_run_that_cannot_authenticate_rests_the_account_for_every_model
         "API Error: 401 Unauthorized",
         "Error: not logged in. Run claude login",
         "OAuth token has expired",
+        "Failed to refresh OAuth token",
         "Invalid API key · Please run /login",
     ],
 )
@@ -389,6 +393,13 @@ def test_a_long_successful_answer_that_mentions_a_403_is_still_an_answer(tmp_pat
         exit_code=0,
     )
     assert run_claude(config, "a", _request())["text"] == short, "only a failed run is read"
+    refreshed = "Prior notice: Failed to refresh OAuth token"
+    config = _cli_output(
+        tmp_path,
+        stdout=json.dumps({"type": "result", "is_error": False, "result": refreshed}),
+        exit_code=0,
+    )
+    assert run_claude(config, "a", _request())["text"] == refreshed
 
 
 def test_codex_runs_with_all_tools_disabled_and_rejects_any_tool_event(tmp_path: Path) -> None:
