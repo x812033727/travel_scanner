@@ -80,6 +80,12 @@ Hooks (open loops):
   them in "loops": [{"setup": <line id>, "payoff": <line id>, "what": <what it holds back, ≤ 40
   characters>}], at least three for ten minutes, one of them planted in the condensation; the
   schema refuses a payoff before its setup. A loop with no payoff is cut or paid.
+- At most one forward hook in the whole video says so out loud. 「先記住這個數字，等一下它會回來」
+  is the one hook that steps outside the story, so once is emphasis and three times is the narrator
+  organising the video for the listener. Every other forward hook is carried by the withheld fact
+  alone: 「兩百七十二頁，只要講到這裡的句子就塗掉」 needs nothing added, because a listener remembers
+  it without being asked to. A line that only announces that another item follows (「這個地方的名字
+  越來越多」) is not a hook at all, it is a table of contents; cut it and let the item land.
 - Naming a loop is not paying it. The sentence after 「還記得那…嗎？」 carries something the
   listener does not have yet: a new fact, a new number, something that happened later. Re-reading
   the line that planted it replays the hook instead of paying it, and a blind reader fails that as
