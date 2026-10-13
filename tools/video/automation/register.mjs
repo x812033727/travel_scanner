@@ -92,6 +92,13 @@ Hooks (open loops):
   while the four sister episodes used four or five each. Keep the phrase for hooks that reach back
   minutes. Inside a chapter, carry the thing forward instead (「那根量水深的桿子，現在有用了」): a
   hard link is not a retelling, because it moves the object on rather than reporting it again.
+- The close may not claim more than the record does. "Save the answer for the close" is a rule
+  about telling, not a licence to settle what the sources leave open: where the record holds two
+  accounts the close says so and attributes each one aloud, and where it has only ruled things out
+  the close says nothing is settled. Attribution on a card does not count, because a listener hears
+  none of the cards and a dubbed track reads none of them. Two of the first five scripts written to
+  these rules overstated their closing answer, both while fixing a close that had re-told the body,
+  and both were caught by a fact-checker rather than by the panel.
 - Naming a loop is not paying it. The sentence after 「還記得那…嗎？」 carries something the
   listener does not have yet: a new fact, a new number, something that happened later. Re-reading
   the line that planted it replays the hook instead of paying it, and a blind reader fails that as

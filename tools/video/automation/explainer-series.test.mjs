@@ -34,11 +34,11 @@ test("the composed instructions of the existing explainer and discussion variant
     // With a one-off's row, as the bible's planner and its discussion are called.
     [["planner", "drama", "", "bible-explainer", "", ROW], "c3a5b9c2c9d0635dda5b9db8d34859a09f1ccade81f0cb4f7f1ba4f341bf974f"],
     [["planner", "drama", "", "discuss", "", ROW], "29078b6d8256814a28b6e822caf71e1bcb111ba8997a95fedd7820bb5e5242f4"],
-    [["writer", "drama", "", "explainer", "", ROW], "8eb0a9c4f181f23073b1989d2c91807b746f43c00aa8a2a018a9e0e45cd21063"],
+    [["writer", "drama", "", "explainer", "", ROW], "fe9dba3605522bd1f03cde3a29d89a0fd9d7a7ac5b81a61e37ddc66b67add911"],
     [["verifier", "drama", "", "explainer", "", ROW], "767589242dd2d5af85305cdcee2caf1b974e30e56990d18f4a275f8eda468b78"],
     [["writer", "drama", "", "discuss", "", ROW], "1f9670db394d4ce6d41c910803be70f921e821f64ebfdf12866f2f1db92d91c2"],
     // With the owner's standing instructions and the channel's stance.
-    [["writer", "drama", "旁白慢一點", "explainer", "1. 先講事實", null], "2ed36d60c99a37670579b4e67d6f92fbbffc290cd6480a3ab8fb453eeb665d1f"],
+    [["writer", "drama", "旁白慢一點", "explainer", "1. 先講事實", null], "36033d353b218a4d3e62bbb596b27fb3d41070d9720f10375d737a13bf525ac6"],
     // The story drama's planner, which a variant with no text of its own falls back to.
     [["planner", "drama"], "675c9213407aa771820dc4ae1eb837e33049f5659636135e06d84a624e7f9de9"],
   ];
@@ -112,15 +112,15 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // one-off in a cute preset on the host (docs/videos/explainer-route/DESIGN.md 5.7 item 1).
 const SERIES_TEXT_PINS = {
   "planner:bible-explainer-cartoon": [6253, "44fd5780b5d9c2a9166dab371c65e24a9b15e77e5c0bd746613b5715890c9cb5"],
-  "writer:explainer-cartoon": [21746, "6359e1a7e39d25dae182b6d0accfeb32b704821d525fda66449c677b07429ec7"],
+  "writer:explainer-cartoon": [22404, "76474e8c645cbf45039f2acf0b4a2c45016994080327904e2b564dae8282aeaa"],
   "verifier:explainer-cartoon": [4305, "6f41570e5090987327a200b7790a6ecdec88c8a0350de2ca49b74cb4e7ca95db"],
   "planner:discuss-cartoon": [6980, "7085bd24b8f33ad15d6516c87f40dbd9467b9afdf530298845bad4b2d3f7e796"],
-  "writer:discuss-cartoon": [20211, "4685245ba52fcc891e9c96d125c01180d7ee8f387b8460e42d79e53ed683ea31"],
+  "writer:discuss-cartoon": [20869, "c8d18012841c94af4c2e3e1e456e202b0ec64daf556f2d2a0b6091bab90409c4"],
   "planner:bible-explainer-mystery": [8957, "5c1153dbb0641d08cde6e3ab7ebbb07f3aee618053e09b9836042c545b2cfd7c"],
-  "writer:explainer-mystery": [23975, "e04c935b790d192e4e05462420ed14debabc2d93c8fcf91d780a9ba17c846590"],
+  "writer:explainer-mystery": [24633, "5e0101221a17ce4a1048af6997057bec699ddbf2e8008199e342fe04110512da"],
   "verifier:explainer-mystery": [6194, "ab0adfcec0f59fc6c377523ba8272aa33cdb76f736af84e7de256f31b2784722"],
   "planner:discuss-mystery": [9586, "4e5ea26d682ab62c1de8092292593264c538fe33978cf62590161b03ee7d1b2d"],
-  "writer:discuss-mystery": [22521, "040f3d83b13ddd6fed210571058b2b7be7f529ae6fed40d5bb1bd19486c91159"],
+  "writer:discuss-mystery": [23179, "eec7b606efe4e31ae6d96986b5739a8e0a9d11573e2dd9458a969635b3f871ca"],
 };
 
 test("the ten texts of the two profiled series are the pinned ones, composed with no genre section", () => {
