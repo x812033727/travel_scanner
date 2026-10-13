@@ -646,7 +646,7 @@ test("the four explainer instruction texts are byte for byte what they were", ()
   const pinned = {
     "planner:bible-explainer": "29fd9e2e353ef5a86114699fb0e64d9bd15225892ec76cceecfc599b7c97989a",
     "planner:explainer": "79bacf5ece9317854e933cdd15d10b89def9ec7f125046493456aec92bf96da6",
-    "writer:explainer": "b8acaf22f310bdf338fad9b9507f0e133efd1d477f2fc18b99c8a1b4d8d36382",
+    "writer:explainer": "d5c91bcede35434cdc64b67df1fef100c90bff5e9605bf204f6c3aab522b2225",
     "verifier:explainer": "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842",
   };
   for (const [key, digest] of Object.entries(pinned)) {

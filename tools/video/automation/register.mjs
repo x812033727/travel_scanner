@@ -82,6 +82,12 @@ Hooks (open loops):
   schema refuses a payoff before its setup. A loop with no payoff is cut or paid.
 - A fact is told once. The opening's facts come back in the body only as a callback; a number
   said in three sentences is a warning.
+- Nothing announces what is coming, anywhere in the video, not only in the opening. A sentence
+  whose only job is to say that the explanation follows (「所以目前最站得住的解釋，是這樣的。」) is
+  cut, and the next sentence starts. Counting scaffolding is the same offence wearing other clothes
+  (「排成一張表，前四個…」「剩下的兩個…」「其中一個是…另一個說法是…」): when seven accounts fall one
+  by one, each one is an event, somebody proposing it in a year and a record knocking it down, not
+  item n of a list. Lint only reads the first 60 s for this; the panel reads the rest.
 - A summary is a retelling, and it hides in two places. The close carries only what is new (the
   answer and its number, what is still unexplained, the question to the viewer) and never re-tells
   the body's turns. A bridge line between chapters moves forward instead of recapping the chapter
