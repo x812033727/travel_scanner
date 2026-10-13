@@ -1,0 +1,2140 @@
+{
+  "schema_version": 1,
+  "slug": "curio-h04-v2",
+  "format": "slides",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "從搜救者找到空帳篷的那一刻一路往前說。開場見到鞋子時收住；四月布料鑑定與五月結案書的回收句放慢；雪板模型說條件時清楚、不演成事故重現；尾聲把有證據和仍無目擊的部分分開。只做單人旁白，不模仿九位死者。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "loops": [
+    {
+      "setup": "h4v004",
+      "payoff": "h4v033",
+      "what": "四月帳篷布鑑定會指出切口方向"
+    },
+    {
+      "setup": "h4v005",
+      "payoff": "h4v039",
+      "what": "五月結案書會寫下何種原因"
+    },
+    {
+      "setup": "h4v006",
+      "payoff": "h4v067",
+      "what": "研究模型能否解釋延遲滑落"
+    },
+    {
+      "setup": "h4v007",
+      "payoff": "h4v082",
+      "what": "後續考察在附近山坡看到什麼"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "佳特洛夫事件：九個人為何離開山坡上的帳篷？｜奇聞檔案局",
+    "description": "一九五九年二月，搜救者在北烏拉山找到空帳篷。鞋子還在，足跡卻往山下延伸。四月的布料鑑定、五月的結案書與後來的雪板研究，各能回答到哪一步？\n\n這集沿著調查被查出的順序，分開帳篷與足跡的記錄、檢方的解釋、研究模型的條件，以及二〇二一至二〇二二年後續考察觀察到的地形和痕跡。模型提供可能的離營機制，沒有還原事故當夜的完整經過。\n\n歷史文件局部為有來源的裁切；情境插圖和科學示意不是當晚攝影或實測剖面。只有繁體中文旁白與可關閉的繁中 CC。文字來源於 2026-10-14 重讀核對；文件裁切的來源與授權記錄仍須在正式製作時對照。\n\n參考來源與逐項限制見本片 claims.md。",
+    "tags": [
+      "佳特洛夫事件",
+      "戴洛夫山口",
+      "奇聞檔案局",
+      "雪板雪崩",
+      "歷史懸案"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**鞋在帳內**",
+      "tag": "歷史懸案",
+      "sub": "一九五九年的空帳篷",
+      "shot": "opening-question"
+    }
+  },
+  "sources": [
+    {
+      "title": "1959年5月28日結案決定書384–387頁：俄文轉錄與掃描索引",
+      "url": "https://dyatlovpass.com/case-files-384-387-ru",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "1959年4月16日帳篷鑑定303–304頁：俄文轉錄與掃描索引",
+      "url": "https://dyatlovpass.com/case-files-303-304-ru",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "1959年4月18日Tempalov訊問309–312頁：俄文轉錄與掃描索引",
+      "url": "https://dyatlovpass.com/case-files-309-312-ru",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "1959年4月15日Slobtsov訊問298–300頁：英譯及掃描索引",
+      "url": "https://dyatlovpass.com/case-files-298-300",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "Gaume與Puzrin（2021）：雪板釋放與撞擊模型",
+      "url": "https://www.nature.com/articles/s43247-020-00081-8",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "Puzrin與Gaume（2022）：後續考察Comment",
+      "url": "https://www.nature.com/articles/s43247-022-00393-x",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "2022年Comment作者更正：reference 1 DOI",
+      "url": "https://www.nature.com/articles/s43247-022-00425-6",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "EPFL（2021）：模型機制與作者訪談",
+      "url": "https://longread.epfl.ch/en/dossier/quand-la-science-permet-dexplorer-un-mystere-russe-vieux-de-60-ans/",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "ETH（2022）：同一研究的後續考察解說",
+      "url": "https://ethz.ch/en/news-and-events/eth-news/news/2022/03/the-dyatlov-pass-mystery-and-what-a-research-article-can-trigger.html",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "EPFL（2022）：後續考察與證據限制訪談",
+      "url": "https://actu.epfl.ch/news/intense-press-coverage-prompts-new-expeditions-to-/",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "Interfax（2019）：檢方對外說明一般監督性複查",
+      "url": "https://www.interfax.ru/russia/649229",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "Interfax（2020）：記者會提出雪崩解釋",
+      "url": "https://www.interfax.ru/russia/716956",
+      "checked_on": "2026-10-14"
+    }
+  ],
+  "assets": [
+    {
+      "path": "stock/bf338fb136401d2bb9358a7bceeb46abe20a9ee55b7bdcf263d483eb67d1963f.png",
+      "source": "1959 年結案決定書第 385 頁局部／Л. Н. Иванов（1959-05-28；Wikimedia Commons 掃描；裁切、透明留邊）",
+      "license": "PD-RU-exempt",
+      "author": "Лев Никитич Иванов (Lev Nikitich Ivanov)",
+      "url": "https://commons.wikimedia.org/wiki/File:Dyatlov.Volume_1.Page_385.jpg"
+    },
+    {
+      "path": "stock/1c31a7da3de0851b0645f7636df4a6bc07a8252447a8ad74f98e2f9dca709b40.png",
+      "source": "1959 年結案決定書第 386 頁局部／Л. Н. Иванов（1959-05-28；Wikimedia Commons 掃描；裁切、透明留邊）",
+      "license": "PD-RU-exempt",
+      "author": "Лев Никитич Иванов (Lev Nikitich Ivanov)",
+      "url": "https://commons.wikimedia.org/wiki/File:Dyatlov.Volume_1.Page_386.jpg"
+    },
+    {
+      "path": "stock/f90b4c557783827cfde143fb4ddfd59ae08e93b9b97a05026a9cb3e288ddf25d.png",
+      "source": "1959 年結案決定書第 387 頁局部／Л. Н. Иванов（1959-05-28；Wikimedia Commons 掃描；裁切、透明留邊）",
+      "license": "PD-RU-exempt",
+      "author": "Лев Никитич Иванов (Lev Nikitich Ivanov)",
+      "url": "https://commons.wikimedia.org/wiki/File:Dyatlov.Volume_1.Page_387.jpg"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/vector-art/trail-varied.svg",
+      "source": "奇聞檔案局 H04 原創足跡形態示意；非現場照片、未按比例",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/vector-art/boot-print-evidence.svg",
+      "source": "奇聞檔案局 H04 原創足跡形態示意；非現場照片、未按比例",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/vector-art/broken-trail.svg",
+      "source": "奇聞檔案局 H04 原創足跡形態示意；非現場照片、未按比例",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/vector-art/trail-downhill.svg",
+      "source": "奇聞檔案局 H04 原創足跡形態示意；非現場照片、未按比例",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/vector-art/stride-evidence.svg",
+      "source": "奇聞檔案局 H04 原創足跡形態示意；非現場照片、未按比例",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/vector-art/snow-over-step.svg",
+      "source": "奇聞檔案局 H04 原創雪下剖面示意；弱層隨地形傾斜為模型假設、未按比例",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/vector-art/platform-front-face.svg",
+      "source": "奇聞檔案局 H04 原創平台切口側面剖面；模型條件、未按比例",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/vector-art/wind-moves-snow.svg",
+      "source": "奇聞檔案局 H04 原創風搬運積雪示意；非現場影像、未按比例",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/vector-art/slab-edge-displaced.svg",
+      "source": "奇聞檔案局 H04 原創雪板滑移剖面；物理可能、非事故重演",
+      "license": "Mokaair original"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "opening-search",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view across the open upper slope of a broad, rounded, treeless Ural hillside in full winter daylight. A small vacant ridge tent is centred uphill beneath a smooth curved skyline. Two distant anonymous searchers stand well downhill, seen from behind in hooded winter clothing. One gestures toward the shelter while the other stands nearby. Continuous open snow separates them from the tent.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c08"
+      ],
+      "lines": [
+        {
+          "id": "h4v001",
+          "text": "一九五九年二月二十六日，搜救者在北烏拉山找到一頂帳篷。",
+          "emotion": "日期咬字清楚，語速稍慢"
+        }
+      ],
+      "chapter": "搜救者找到一頂空帳篷"
+    },
+    {
+      "id": "opening-inside",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view from inside an empty canvas ridge tent toward its open entrance on a winter day. Packed fabric bundles rest along both sides of the canvas-covered floor, leaving the space between them vacant. Through the doorway, a continuous snow-covered slope fills the view beneath pale cold sky light. Snow banks border the entrance and reflect cool light onto the canvas and belongings.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "h4v002",
+          "text": "他們清掉積雪，往裡面看。九個人，一個也不在。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "opening-gear",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up inside an unoccupied canvas tent in light diffused through canvas. Plain winter boots, a folded wool coat and a closed canvas pouch rest together on the fabric-covered floor near the lower-right corner. The canvas interior surrounds the belongings, with soft light entering through the open flap at the edge of the frame.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c01"
+      ],
+      "lines": [
+        {
+          "id": "h4v003",
+          "text": "多數鞋子和外衣還留著。外面可辨的足跡往山下延伸。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "tease-fabric",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of plain woven canvas lying flat on a wooden workbench under angled window light. A short straight slit crosses the foreground fabric, with two nearly parallel woven edges separated by a narrow dark line. Fine loose threads remain visible along these cut edges. The canvas fills nearly the entire frame, with a thin strip of wooden tabletop around it.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "h4v004",
+          "text": "四月，鑑定人把那塊帳篷布攤在桌上。",
+          "emotion": "壓低，留半拍，不揭曉"
+        }
+      ]
+    },
+    {
+      "id": "tease-file",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small stack of closed case folders on an archive shelf under soft archive window light. One thick unmarked folder projects slightly at the centre; cotton ties hold it closed. Side light from a window reveals the paper edges and simple shelving.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "h4v005",
+          "text": "五月，一份結案書終於要替這一夜寫下原因。",
+          "emotion": "壓低，留半拍，不揭曉"
+        }
+      ]
+    },
+    {
+      "id": "tease-paper",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rectangular block of tightly packed white snow with icy faces, resting directly on a plain grey outdoor bench. One solid white upper mass meets a thin grainy base of loose white snow crystals. Cool side light reveals the frosty texture and a few white grains touching the base. The block fills the centre.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "h4v006",
+          "text": "六十多年後，兩位研究者用雪板模型重問同一個問題。",
+          "emotion": "壓低，留半拍，不揭曉"
+        }
+      ]
+    },
+    {
+      "id": "tease-expedition",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up from behind of two pairs of mittened hands preparing a small unbranded field camera and a closed notebook on a rough wooden rest. A pale rounded ridge is softly blurred far behind them. The screen is outside the view; no writing or person is identifiable. Generic field illustration.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c38",
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "h4v007",
+          "text": "再過一年，兩位當地嚮導走進附近的雪坡。",
+          "emotion": "壓低，留半拍，不揭曉"
+        }
+      ]
+    },
+    {
+      "id": "opening-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view across the open upper slope of a broad, rounded, treeless Ural hillside at winter twilight. Continuous snow-covered ground fills the foreground and middle distance beneath a smooth curved skyline. A low elongated canvas ridge tent occupies the centre, seen from a slight three-quarter front angle with its long roof ridge visible. Its entrance flap is folded aside, revealing a vacant shaded interior. Snow surrounds the fabric base and guy ropes. Remaining sky glow illuminates the canvas.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c01"
+      ],
+      "lines": [
+        {
+          "id": "h4v008",
+          "text": "九個人為什麼會離開那頂還能遮風的帳篷？",
+          "emotion": "問句上揚，停半拍"
+        }
+      ]
+    },
+    {
+      "id": "trail-search-start",
+      "template": "shot",
+      "data": {
+        "prompt": "Over-the-shoulder view from behind two anonymous winter searchers at the edge of a broad open Ural mountainside. Several short, distinct pressed tracks cross the wind-packed white surface in front of them and lead toward a distant dark tree line. The searchers keep their distance from the marks; no complete route is drawn. Flat overcast light, no recognizable faces.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c04",
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "h4v107",
+          "text": "搜救者循著殘留的足跡，往山下找。",
+          "emotion": "跟著視線往前，語速提起"
+        }
+      ],
+      "chapter": "搜救者沿著足跡走向森林"
+    },
+    {
+      "id": "journey-numbers",
+      "template": "stats",
+      "data": {
+        "title": "出發的人數",
+        "stats": [
+          {
+            "value": "10 人",
+            "label": "原先隊伍"
+          },
+          {
+            "value": "9 人",
+            "label": "一人折返後繼續"
+          }
+        ],
+        "source": "1959 年結案決定書｜卷一 384–387"
+      },
+      "claims": [
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "h4v009",
+          "text": "名單原有十人，一人因病折返，剩下的人繼續上山。",
+          "reveal": 1,
+          "emotion": "轉入新場景，語氣提起"
+        }
+      ]
+    },
+    {
+      "id": "journey-pack",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of a single closed rectangular metal buckle on a plain canvas rucksack flap. One leather strap passes through the buckle and rests flat against the woven fabric. The buckle occupies the centre, with canvas folds filling the frame around it. A narrow edge of the wooden bench is visible along the bottom. Soft morning window light reveals the metal, leather and cloth.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "h4v010",
+          "text": "他們不全是學生，隊伍裡也有已經工作的成員。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "camp-platform-context",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium side view of a level snow platform cut into the open upper slope of a broad, rounded, treeless Ural hillside under an overcast sky. A low canvas ridge tent occupies the platform at centre, with a small exposed snow bank behind it. Continuous open snow extends around the campsite toward a gently curved ridge. The platform, shelter and bank form the central group.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c07"
+      ],
+      "lines": [
+        {
+          "id": "h4v011",
+          "text": "最後留下的營地，在山坡上的帳篷旁。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "search-later-weather",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the edge of an old snowdrift under low winter sunlight, where loose grains have softened the outline of a shallow depression. Low sunlight reveals overlapping wind ripples. The whole frame is natural snow texture with a single feature toward the right edge.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "h4v012",
+          "text": "搜救者見到的，是隔了一段時間的現場。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "remaining-boots",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up inside a fully enclosed canvas ridge tent under light diffused through the fabric. Two plain wool-felt boots with visibly coarse matte fibres rest beside a folded wool blanket on a continuous canvas groundsheet. The rounded boot shafts and thick felt surfaces occupy the centre. A seamless curved canvas back wall fills the entire background edge to edge. Soft cool light is diffused through the fabric walls. The frame contains only boots, folded blanket, groundsheet and continuous canvas walls.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "h4v013",
+          "text": "留下的鞋和用品，使調查員認為離營很突然。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "tent-opening-empty",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up from inside an empty canvas ridge tent, looking outward through a broad triangular entrance under cold light diffused through the opening. Continuous white snow fills the centre and lower middle of the opening, rising into an open snow-covered slope beyond. Plain canvas flaps frame only the left and right edges. A narrow strip of flat canvas groundsheet runs along the bottom edge. The white ground and vacant threshold are the dominant shapes.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "h4v014",
+          "text": "但這是從物品作出的判斷，當晚沒有人逐個看見他們出帳。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "tent-opening-question",
+      "template": "big",
+      "data": {
+        "text": "**裂口方向？**",
+        "sub": "四月鑑定會回答"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "h4v105",
+          "text": "那道帳篷裂口，到底是從哪一面劃開？",
+          "emotion": "問句上揚，停半拍"
+        }
+      ]
+    },
+    {
+      "id": "trail-varied",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/curio-h04-v2/vector-art/trail-varied.svg",
+        "caption": "足跡形態示意／非現場照片・未按比例"
+      },
+      "claims": [
+        "c03",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "h4v015",
+          "text": "近看才發現，鞋襪留下的印子並不一樣。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "document-footprints-slot",
+      "template": "screenshot",
+      "data": {
+        "image": "stock/1c31a7da3de0851b0645f7636df4a6bc07a8252447a8ad74f98e2f9dca709b40.png",
+        "caption": "第 386 頁局部：八至九組足跡，鞋襪痕跡不同",
+        "credit": "1959 結案書 · PD-RU-exempt · 裁切"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "h4v016",
+          "text": "結案書記下有人只隔著薄襪，近乎赤腳。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "boot-print-evidence",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/curio-h04-v2/vector-art/boot-print-evidence.svg",
+        "caption": "足跡形態示意／非現場照片・未按比例"
+      },
+      "claims": [
+        "c03",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "h4v017",
+          "text": "另一邊，也留有氈靴印。全員赤腳的說法站不住。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "felt-versus-knit",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of one plain felt boot beside a wool sock on a wooden evidence bench under soft bench lighting. The two different materials are centred with a clear gap between them. Only these objects and the bench are visible; this is a generic illustration of footwear types.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "h4v018",
+          "text": "薄襪和氈靴，是兩種不同的離營狀態。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "footprint-count",
+      "template": "compare",
+      "data": {
+        "title": "足跡數量有不同記載",
+        "left": {
+          "heading": "結案書",
+          "points": [
+            "8–9 組"
+          ]
+        },
+        "right": {
+          "heading": "Tempalov 證詞",
+          "points": [
+            "觀察到 8 組",
+            "未確認第 9 組"
+          ]
+        },
+        "source": "1959 年結案書／Tempalov 訊問"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "h4v019",
+          "text": "結案書寫八到九組足跡。",
+          "reveal": 1,
+          "emotion": "平穩敘事，句尾微收"
+        },
+        {
+          "id": "h4v020",
+          "text": "另一份證詞確認八組，第九組沒有被確認。",
+          "reveal": 1,
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "broken-trail",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/curio-h04-v2/vector-art/broken-trail.svg",
+        "caption": "足跡形態示意／非現場照片・未按比例"
+      },
+      "claims": [
+        "c14",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "h4v021",
+          "text": "所以你不能把殘留的印子，接成九條完整路線。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "trail-downhill",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/curio-h04-v2/vector-art/trail-downhill.svg",
+        "caption": "足跡形態示意／非現場照片・未按比例"
+      },
+      "claims": [
+        "c04",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "h4v022",
+          "text": "它們能指向的，是山下的谷地和森林。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "stride-evidence",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/curio-h04-v2/vector-art/stride-evidence.svg",
+        "caption": "足跡形態示意／非現場照片・未按比例"
+      },
+      "claims": [
+        "c15",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "h4v023",
+          "text": "其中一位勘驗者看了足跡，判斷所見一段像普通步行。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "stride-inference",
+      "template": "compare",
+      "data": {
+        "title": "足跡不能讀出心情",
+        "left": {
+          "heading": "觀察與判讀",
+          "points": [
+            "所見足跡像普通步行"
+          ]
+        },
+        "right": {
+          "heading": "不能直接推論",
+          "points": [
+            "全程沒有奔跑",
+            "所有人都不害怕"
+          ]
+        },
+        "source": "1959 年 Tempalov 訊問｜卷一 312 頁"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "h4v024",
+          "text": "至少那一段，不像全員一路狂奔。",
+          "reveal": 1,
+          "emotion": "平穩敘事，句尾微收"
+        },
+        {
+          "id": "h4v025",
+          "text": "但更遠的路段，沒有同樣完整的腳印可量。",
+          "reveal": 1,
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "forest-edge-absence",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty forest edge on a winter afternoon. A small break between dark tree trunks opens onto the snowy slope in the centre. The landscape is calm and entirely unoccupied, lit by flat winter sky light.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "h4v026",
+          "text": "靠近林緣，足跡被雪蓋住；搜救者在那裡找到火堆殘跡。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "fire-site-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up view of a small extinguished campfire ring at the edge of a quiet winter forest. Charred twigs and ash sit on packed snow, with dark tree trunks in the background. No people, bodies or rescue equipment are visible. Documentary illustration, not a reconstruction of the historical scene.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "h4v108",
+          "text": "兩人在火堆附近被找到。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "three-toward-tent",
+      "template": "steps",
+      "data": {
+        "title": "搜救位置：林邊到帳篷",
+        "steps": [
+          {
+            "title": "林邊火堆",
+            "detail": "附近找到兩人"
+          },
+          {
+            "title": "往帳篷方向",
+            "detail": "另外三人在一條線上"
+          }
+        ],
+        "source": "1959 年結案決定書｜卷一 386 頁"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "h4v109",
+          "text": "另外三人，在火堆通往帳篷的直線上。",
+          "reveal": 1,
+          "emotion": "平穩敘事，句尾微收"
+        },
+        {
+          "id": "h4v110",
+          "text": "其中兩人的姿勢，讓卷宗判斷他們像是在往帳篷爬。",
+          "reveal": 1,
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "discovery-sequence",
+      "template": "steps",
+      "data": {
+        "title": "發現的時間順序",
+        "steps": [
+          {
+            "title": "二月底",
+            "detail": "找到帳篷"
+          },
+          {
+            "title": "隨後陸續",
+            "detail": "找到五人"
+          },
+          {
+            "title": "五月",
+            "detail": "找到最後四人"
+          }
+        ],
+        "source": "1959 年結案決定書｜卷一 384–387"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "h4v027",
+          "text": "另外四人還沒找到，會被雪藏在哪裡？",
+          "reveal": 1,
+          "emotion": "放慢，清楚標出證據界線"
+        },
+        {
+          "id": "h4v028",
+          "text": "到了五月，剛剛問的四人在溪溝附近被找到。",
+          "reveal": 1,
+          "emotion": "日期咬字清楚，語速稍慢"
+        }
+      ]
+    },
+    {
+      "id": "ravine-depth",
+      "template": "stats",
+      "data": {
+        "title": "最後四人的發現位置",
+        "stats": [
+          {
+            "value": "約 4–4.5 公尺",
+            "label": "覆蓋積雪",
+            "note": "溪溝附近；不是帳篷位置"
+          }
+        ],
+        "source": "1959 年結案決定書｜卷一 386 頁"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "h4v111",
+          "text": "他們埋於四公尺多深的雪下。",
+          "reveal": 1,
+          "emotion": "數字咬字清楚，語速稍慢"
+        }
+      ]
+    },
+    {
+      "id": "spring-empty-ravine",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close view across the bottom of a shallow natural gully in soft spring light. A narrow meltwater stream curves through wet rounded stones at the centre. Small patches of old snow rest between the stones and sparse grass. A low grassy bank fills the upper edge, while the damp streambed fills the foreground and middle distance.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "h4v029",
+          "text": "九個人都沒能說出，帳篷外的那段路究竟發生什麼。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "search-two-times",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro view of an old-looking plain canvas panel lying flat on a wooden examination table. A narrow slit crosses the woven cloth; a closed unmarked folder is blurred beyond the panel. The camera looks across the fabric edge, anticipating the later examination without showing its result.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "h4v030",
+          "text": "而帳篷上的裂口，這時還在等另一份報告。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "tent-examination",
+      "template": "stats",
+      "data": {
+        "title": "切口的方向",
+        "stats": [
+          {
+            "value": "1959.04.16",
+            "label": "帳篷鑑定日期",
+            "note": "卷一 303–304 頁"
+          }
+        ],
+        "source": "1959 年帳篷鑑定｜卷一 303–304"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "h4v031",
+          "text": "四月十六日，鑑定人仔細檢查了留下的帳篷布。",
+          "reveal": 1,
+          "emotion": "日期咬字清楚，語速稍慢"
+        }
+      ],
+      "chapter": "四月鑑定指向帳篷內側"
+    },
+    {
+      "id": "fabric-workbench",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a generic gloved hand lifting the edge of a woven fabric sample on a workbench by a tall window. The cloth exposes its inner surface at the centre. Only the hand, plain cloth and table are present, with light from a nearby window.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "h4v032",
+          "text": "他們查看切口，也查看布料內側的細微損傷。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "inside-fabric",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro side view of an unmarked canvas flap folded over itself under angled window light. Both woven surfaces and a small rough edge are visible in the central area. A shallow background keeps attention on the fabric fibres.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "h4v033",
+          "text": "開頭攤在桌上的那塊布，答案是：切口從內側割出。",
+          "emotion": "揭曉時放慢，關鍵詞壓重"
+        }
+      ]
+    },
+    {
+      "id": "cut-inference",
+      "template": "compare",
+      "data": {
+        "title": "切口方向不是離帳順序",
+        "left": {
+          "heading": "鑑定支持",
+          "points": [
+            "切口由內側割出"
+          ]
+        },
+        "right": {
+          "heading": "沒有還原",
+          "points": [
+            "誰先動手",
+            "每人從哪裡出去"
+          ]
+        },
+        "source": "1959 年帳篷鑑定｜卷一 303–304"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "h4v034",
+          "text": "這指出了刀切方向。",
+          "reveal": 1,
+          "emotion": "平穩敘事，句尾微收"
+        },
+        {
+          "id": "h4v035",
+          "text": "它沒有寫下誰動刀，也沒有寫九人各自從哪裡出去。",
+          "reveal": 1,
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "document-shoes-slot",
+      "template": "screenshot",
+      "data": {
+        "image": "stock/bf338fb136401d2bb9358a7bceeb46abe20a9ee55b7bdcf263d483eb67d1963f.png",
+        "caption": "第 385 頁局部：鞋子留在帳內，並記有內側切口",
+        "credit": "1959 結案書 · PD-RU-exempt · 裁切"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "h4v036",
+          "text": "五月的卷宗把內側切口和留下的用品放在一起。",
+          "emotion": "日期咬字清楚，語速稍慢"
+        }
+      ]
+    },
+    {
+      "id": "archive-closed-folder",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed plain paper case folder on a wooden archive table in afternoon window light. Its thick bound edge and tied cotton ribbon fill the central area. The cover is blank and the surrounding desk is empty.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "h4v037",
+          "text": "調查員據此認為，離開營地的決定很急。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "archive-many-pages",
+      "template": "shot",
+      "data": {
+        "prompt": "Side close-up of a bound document bundle opened edge-on on a plain desk beside a window. Several page edges form a small fan at centre, while their written faces remain outside the view. Soft window light illuminates the thickness of the bundle.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "h4v038",
+          "text": "那份結案書還整理了足跡和物品，並不只是一句結論。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "natural-force-slot",
+      "template": "screenshot",
+      "data": {
+        "image": "stock/f90b4c557783827cfde143fb4ddfd59ae08e93b9b97a05026a9cb3e288ddf25d.png",
+        "caption": "第 387 頁原文關鍵詞：自然力量",
+        "credit": "1959 結案書 · PD-RU-exempt · 裁切"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "h4v039",
+          "text": "開頭提到的五月結案書，最後寫的是「無力克服的自然力量」。",
+          "emotion": "揭曉時放慢，關鍵詞壓重"
+        }
+      ]
+    },
+    {
+      "id": "natural-not-supernatural",
+      "template": "compare",
+      "data": {
+        "title": "少加一個詞，意思不同",
+        "left": {
+          "heading": "原文核心",
+          "points": [
+            "自然力量"
+          ]
+        },
+        "right": {
+          "heading": "不屬原句",
+          "points": [
+            "神祕的超自然力量"
+          ]
+        },
+        "source": "1959 年結案書｜стихийная сила"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "h4v040",
+          "text": "原文說的是自然，不是超自然。",
+          "reveal": 1,
+          "emotion": "放慢，清楚標出證據界線"
+        },
+        {
+          "id": "h4v041",
+          "text": "它也沒有指名是哪一塊雪，在何時滑下。",
+          "reveal": 1,
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "archive-ribbon",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of a cotton ribbon tied around a thick plain document bundle on a sunlit archive desk. The knot at the left third and uneven page edges carry the composition. The paper surfaces face down, with no writing visible.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "h4v042",
+          "text": "案卷到這裡停了。雪崩仍只是一種待解釋的可能。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "review-timeline",
+      "template": "steps",
+      "data": {
+        "title": "後來的複查與解釋",
+        "steps": [
+          {
+            "title": "2019 年",
+            "detail": "對外說明複查"
+          },
+          {
+            "title": "2020 年",
+            "detail": "記者會提出雪崩解釋"
+          }
+        ],
+        "source": "Interfax｜2019-02-05、2020-07-11"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "h4v043",
+          "text": "二〇一九年，檢方對外說明複查。",
+          "reveal": 1,
+          "emotion": "日期咬字清楚，語速稍慢"
+        },
+        {
+          "id": "h4v044",
+          "text": "隔年記者會把雪崩放到聚光燈下。",
+          "reveal": 1,
+          "emotion": "接上前句，短停後落地"
+        }
+      ]
+    },
+    {
+      "id": "empty-speaking-room",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty public briefing room during daytime. A plain wooden lectern stands near the centre with one small unbranded microphone; empty chairs recede into the background. Natural window light fills the room. The setting is generic and unoccupied.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "h4v045",
+          "text": "記者會提出說法，卻還欠一件事：雪怎樣在那個坡上動起來？",
+          "emotion": "問句上揚，停半拍"
+        }
+      ]
+    },
+    {
+      "id": "slope-small-feature",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view across a broad, gently rounded bare mountain shoulder beneath a pale overcast sky. The continuous horizon makes the overall grade appear mild; no local ledge is shown yet. Sparse stones and low grass provide scale in this explanatory landscape.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "h4v046",
+          "text": "那片坡平均看來不算很陡。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "camp-open-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium interior view of a vacant canvas ridge tent at twilight. A taut roof ridge, one plain support pole and quiet fabric folds fill the frame; a pale bank is visible beyond the open entrance. Nothing outside is moving. Conceptual campsite view, not an archival photograph.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "h4v047",
+          "text": "就算能滑，搭好帳篷後，為什麼不是立刻滑？",
+          "emotion": "問句上揚，停半拍"
+        }
+      ]
+    },
+    {
+      "id": "model-paper-card",
+      "template": "big",
+      "data": {
+        "text": "**小型雪板**",
+        "kicker": "2021 年可行性模型",
+        "sub": "Gaume、Puzrin｜概念示意，非當晚實測"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "h4v048",
+          "text": "二〇二一年，兩位研究者提出的是小型雪板模型。",
+          "emotion": "日期咬字清楚，語速稍慢"
+        }
+      ],
+      "chapter": "研究者找到雪下的局部陡坡"
+    },
+    {
+      "id": "cohesive-snow",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro view of a cohesive snow block lying on a snow-covered outdoor bench in morning light. The upper crust remains connected as one piece, while loose grains gather along its lower edge. The compact block is central with a plain background.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "h4v049",
+          "text": "雪板，是一層互相連著的雪失去穩定，整塊移動。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "buried-layer-close",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro explanatory material cross-section on a neutral research tray: one pale compact upper crust rests on a visibly looser granular band beneath it. The junction between the two textures fills the frame. No labels, ruler or original specimen is claimed.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "h4v050",
+          "text": "它下面如果有較脆弱的一層，破壞可能從那裡開始。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "smooth-surface",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a broad wind-smoothed white upper shoulder beneath an overcast sky. Its gentle continuous surface hides any irregularity of the darker ground below; the curved horizon and surface texture are the only features.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "h4v051",
+          "text": "但站在雪面上，未必看得見底下的地形。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "surface-and-ground",
+      "template": "compare",
+      "data": {
+        "title": "平均坡度與局部坡度",
+        "left": {
+          "heading": "外表／平均",
+          "points": [
+            "看起來較平緩"
+          ]
+        },
+        "right": {
+          "heading": "模型裡的局部",
+          "points": [
+            "底下可有較陡階梯"
+          ]
+        },
+        "source": "Gaume、Puzrin 2021｜概念示意"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "h4v052",
+          "text": "整段坡面的平均傾斜，和帳篷上方一小段並不是同一回事。",
+          "reveal": 1,
+          "emotion": "放慢，清楚標出證據界線"
+        },
+        {
+          "id": "h4v053",
+          "text": "模型放進了局部較陡的階梯。",
+          "reveal": 1,
+          "emotion": "接上前句，短停後落地"
+        }
+      ]
+    },
+    {
+      "id": "ground-step-context",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium side view of an exposed mountain ground step in clear summer daylight. A short steeper rise interrupts an otherwise gentler grassy slope at the centre. Rough soil and sparse stones define the profile; there are no structures or people.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "h4v054",
+          "text": "那道階梯藏在雪下，不能從一張遠景照片直接量出來。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "snow-over-step",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/curio-h04-v2/vector-art/snow-over-step.svg",
+        "caption": "模型條件示意／弱層隨地形傾斜為假設・未按比例"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "h4v055",
+          "text": "模型還假設弱層跟著局部地形傾斜；這是條件，不是當年的實測剖面。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "snow-platform-cut",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up side view of a hand-cut camping platform: a level ledge meets a short vertical bank of layered pale packed material. A plain shovel rests on the lower ledge. The cut face and tool fill the frame; no person or historical tool identity is implied.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "h4v056",
+          "text": "另一個條件，是搭帳時在坡面切出平台。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "platform-front-face",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/curio-h04-v2/vector-art/platform-front-face.svg",
+        "caption": "平台切口示意／模型條件・未按比例"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "h4v057",
+          "text": "切口改變上方雪層原有的支撐。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "model-first-two",
+      "template": "steps",
+      "data": {
+        "title": "模型條件，先放兩件",
+        "steps": [
+          {
+            "title": "局部地形與弱層",
+            "detail": "底下可能藏著較陡的一段"
+          },
+          {
+            "title": "切出搭帳平台",
+            "detail": "改變雪層支撐"
+          }
+        ],
+        "source": "Gaume、Puzrin 2021｜概念示意"
+      },
+      "claims": [
+        "c26",
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "h4v058",
+          "text": "弱層與局部地形先給出可能失穩的位置。",
+          "reveal": 2,
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "quiet-platform",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide interior view from a vacant canvas ridge tent at calm twilight. A still roof ridge and taut guy rope frame a pale bank beyond the entrance. The cloth hangs motionless; there is no moving material or person. Conceptual illustration of the model interval.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "h4v060",
+          "text": "可是在這個模型裡，切完坡之後，雪板還不一定立刻滑動。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "model-snow-sample",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium side view of a vacant camping platform below a pale upper bank. An open, unfilled shallow area above the bank has room for wind-borne grains to accumulate; no debris is moving yet. The simple level cut and bank form the two main shapes.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "h4v061",
+          "text": "它還要等一個會慢慢增加的重量。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "wind-moves-snow",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/curio-h04-v2/vector-art/wind-moves-snow.svg",
+        "caption": "風搬運積雪示意／非現場影像・未按比例"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "h4v062",
+          "text": "那個重量，研究者交給了風。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "wind-ridge",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a broad, rounded, treeless Ural upper ridge beneath a pale winter sky. A low veil of surface snow drifts across the smooth crest and gathers just below it at centre. Open snow-covered slopes extend around the shallow deposit beneath a plain clear sky.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "h4v063",
+          "text": "風把地面的舊雪捲起來，搬向坡上的另一處。",
+          "emotion": "轉入新場景，語氣提起"
+        }
+      ],
+      "chapter": "風把舊雪搬到帳篷上方"
+    },
+    {
+      "id": "drift-deposition",
+      "template": "shot",
+      "data": {
+        "prompt": "Low oblique close-up of a broad white snow crest rising gently from continuous snow-covered ground in low side light. The crest merges smoothly into the surrounding snow. A thin stream of fine white grains skims sideways along the ground and collects on the rounded crest. Cool side light reveals the growing deposit at the centre.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "h4v064",
+          "text": "雪在上方堆積，雪板受到的負載就逐漸增加。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "model-later-two",
+      "template": "steps",
+      "data": {
+        "title": "變化可以慢慢累積",
+        "steps": [
+          {
+            "title": "風搬運積雪",
+            "detail": "上方載重增加"
+          },
+          {
+            "title": "弱層破裂擴展",
+            "detail": "雪板可能滑動"
+          }
+        ],
+        "source": "Gaume、Puzrin 2021｜概念示意"
+      },
+      "claims": [
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "h4v065",
+          "text": "增加的重量壓向較弱的一層。",
+          "reveal": 1,
+          "emotion": "平穩敘事，句尾微收"
+        },
+        {
+          "id": "h4v066",
+          "text": "破裂一旦擴展，連成片的雪才可能往下移動。",
+          "reveal": 1,
+          "emotion": "接上前句，短停後落地"
+        }
+      ]
+    },
+    {
+      "id": "slab-edge-displaced",
+      "template": "diagram",
+      "data": {
+        "svg": "docs/videos/curio-h04-v2/vector-art/slab-edge-displaced.svg",
+        "caption": "滑移機制示意／物理可能・非事故重演"
+      },
+      "claims": [
+        "c28",
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "h4v067",
+          "text": "開場那篇雪板模型，讓「過了數小時才滑落」成了物理上可行的情境。",
+          "emotion": "揭曉時放慢，關鍵詞壓重"
+        }
+      ]
+    },
+    {
+      "id": "model-hours",
+      "template": "stats",
+      "data": {
+        "title": "模型裡的延遲",
+        "stats": [
+          {
+            "value": "數小時",
+            "label": "特定條件下的情境",
+            "note": "不是當晚的計時紀錄"
+          }
+        ],
+        "source": "Gaume、Puzrin 2021｜模型情境"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "h4v068",
+          "text": "可行，沒有等於算出事故當夜的時刻。",
+          "reveal": 1,
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "model-not-timer",
+      "template": "compare",
+      "data": {
+        "title": "條件檢驗與當夜計時",
+        "left": {
+          "heading": "模型做的事",
+          "points": [
+            "用推定時距檢驗參數"
+          ]
+        },
+        "right": {
+          "heading": "沒有做到",
+          "points": [
+            "獨立預測確切時刻"
+          ]
+        },
+        "source": "Gaume、Puzrin 2021｜模型情境"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "h4v069",
+          "text": "研究還用推定的時距，回頭檢查積雪條件。",
+          "reveal": 1,
+          "emotion": "平穩敘事，句尾微收"
+        },
+        {
+          "id": "h4v070",
+          "text": "所以模型裡的時間，不能反過來當九人遇險的鐘錶。",
+          "reveal": 1,
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "measurement-tools",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed unmarked field notebook beside a plain sampling tube on an outdoor research bench. The page is blank and no measurement value is displayed. Low side light separates the two generic tools.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "h4v071",
+          "text": "那一夜的雪厚、強度和風搬雪量，沒有被完整量下來。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "small-slab-remains",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view across an open, rounded Ural hillside. At the centre is a small patch of three irregular angular pieces of compact white snow. Their broad flat tops and pale blue broken sides rest on the snow surface immediately below a short jagged edge. The patch occupies a small part of the frame. A continuous smooth snow slope surrounds it and rises to a low curved skyline.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "h4v072",
+          "text": "這裡說的小雪板，也不是整座山崩下來的影像。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "wind-softens-edge",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of windblown grains softening the edge of a small snow block in afternoon light. The block remains visible in the centre while its sharp boundary becomes partially covered. The frame contains only natural snow forms.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "h4v073",
+          "text": "風和時間可能改變雪面上的邊界。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "unmeasured-snow",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of an untouched blank field grid on paper beside an empty sample tube. There are no dates, numbers or marks; the missing measurements are conveyed by the empty page rather than a fabricated 1959 record. Plain desk background.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "h4v074",
+          "text": "但不能因此說，當年的雪痕一定就是這樣消失。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "science-next-evidence",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide late-summer view of a late-summer Ural hillside. A short irregular earthen step crosses the grassy slope at frame left, with shallow exposed soil below its edge and grass continuing above it. A plain pale measuring pole lies diagonally along the foreground soil at one side. The soil step and surrounding landscape dominate the composition.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "h4v075",
+          "text": "論文之後，研究者決定回到那片山地。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "survey-date",
+      "template": "stats",
+      "data": {
+        "title": "先看沒有雪的地形",
+        "stats": [
+          {
+            "value": "2021.09",
+            "label": "無人機地形測量",
+            "note": "可能帳篷位置附近"
+          }
+        ],
+        "source": "Puzrin、Gaume 2022｜作者後續報告"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "h4v076",
+          "text": "二〇二一年九月，後續考察用無人機測量可能營地附近的地形。",
+          "reveal": 1,
+          "emotion": "日期咬字清楚，語速稍慢"
+        }
+      ],
+      "chapter": "後來的考察量到一段較陡地形"
+    },
+    {
+      "id": "survey-drone",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle close-up of a small unbranded survey drone resting on an empty summer hillside in clear outdoor light. Its compact body and propellers sit at centre on sparse grass. A simple distant ridge frames it; no pilot or screen is visible.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "h4v077",
+          "text": "測量顯示，局部確實有比較陡的階梯。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "survey-step-close",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a short exposed soil step on a grassy mountain slope in soft afternoon light. A steeper exposed face at frame right interrupts the gentle ground above and below. Stones and roots reveal the natural shape without markings or equipment.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "h4v078",
+          "text": "這給模型的地形前提增加了支持。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "survey-two-researchers",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot. Rear wide view of two anonymous survey workers beside a natural ground step under a bright summer sky. One steadies a plain pole while the other crouches to inspect the soil profile. Their distant turned backs conceal faces, and the step remains central.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "h4v079",
+          "text": "但無人機量的是地面，不是那一年留在雪下的弱層。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "snow-return-season",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium side view of a generic layered material sample on a neutral tray. A visible upper crust meets a lower band that fades into shadow, without a ruler or numerical scale. This conceptual section keeps the unmeasured weak layer uncertain.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "h4v080",
+          "text": "弱層究竟多厚、多強，仍無法由坡形直接推回去。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "snow-return-question",
+      "template": "big",
+      "data": {
+        "text": "**後來能驗證什麼？**",
+        "sub": "坡形之外，雪層仍是空白"
+      },
+      "claims": [
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "h4v106",
+          "text": "下一次看到的雪板痕跡，能和模型對上嗎？",
+          "emotion": "問句上揚，停半拍"
+        }
+      ]
+    },
+    {
+      "id": "avalanche-date",
+      "template": "stats",
+      "data": {
+        "title": "另一趟考察",
+        "stats": [
+          {
+            "value": "2022.01.29",
+            "label": "觀察到近期雪板雪崩痕跡",
+            "note": "鄰近山坡，並非 1959 年事故影像"
+          }
+        ],
+        "source": "Puzrin、Gaume 2022｜作者後續報告"
+      },
+      "claims": [
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "h4v081",
+          "text": "二〇二二年一月，兩位當地嚮導到附近山坡考察。",
+          "reveal": 1,
+          "emotion": "日期咬字清楚，語速稍慢"
+        }
+      ]
+    },
+    {
+      "id": "nearby-avalanche-context",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide oblique winter view of a broad rounded snowy hillside. A short irregular fracture in the central snow surface exposes a thin pale-blue vertical edge. Directly downslope is a compact patch of several angular white snow fragments with flat faces. Smooth continuous snow surrounds the small disturbed patch, and low curved snowy ridges cross the horizon.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "h4v082",
+          "text": "開場那次重返，帶回兩處較新的雪板雪崩痕跡。",
+          "emotion": "揭曉時放慢，關鍵詞壓重"
+        }
+      ]
+    },
+    {
+      "id": "separate-ridge",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide oblique view across a broad shallow basin between two distinct rounded mountain shoulders in winter. The empty basin runs through the centre and visibly separates the distant ridge from the foreground ridge. Pale terrain and sky only; no site marker.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "h4v083",
+          "text": "它們在鄰近山坡，不是事故當夜帳篷上方的同一片雪。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "field-camera-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up from behind of generic mittened hands holding an unbranded camera toward a distant snowy slope under flat field light. The camera back is plain with its display outside the view. The lens direction and distant terrain share the central composition.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "h4v084",
+          "text": "相機留下的是事後痕跡，沒有拍到雪板滑動的過程。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "softer-snow-block",
+      "template": "shot",
+      "data": {
+        "prompt": "Macro view of a soft cohesive snow block crumbling slightly at one corner on an outdoor research surface under soft side light. The central edge exposes loose grains beneath a connected top. The background is plain snow, with no labels or tools.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "h4v087",
+          "text": "剛剛問的對照，答案是不完全一樣：新雪板更軟，坡也更陡。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "natural-slope-no-cut",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide side view of an unmodified rounded mountain shoulder under diffuse winter light. A continuous curved white crust runs from crest to foot without any level camping shelf or cut bank. Explanatory landscape, not the 1959 camp site.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "h4v088",
+          "text": "那裡下方也沒有被切出的搭帳平台。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "field-weather",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an unoccupied winter mountainside under windblown snow in daytime. Visibility fades beyond a central low ridge, while surface grains sweep sideways. There are no people or equipment; the scene suggests difficult field conditions without dramatized danger.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c42"
+      ],
+      "lines": [
+        {
+          "id": "h4v091",
+          "text": "原本要做的雪層與穩定度試驗，還被當時天氣擋住。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "same-evidence-folders",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of one plain closed research folder resting between two smaller blank paper folders on a desk beside a broad window. A single photograph lies face down on the largest folder. The grouped papers are the only objects and show no writing.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "h4v092",
+          "text": "消息傳開後，校方與研究團隊都寫了這趟考察。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "shared-source",
+      "template": "compare",
+      "data": {
+        "title": "同一團隊的跟進",
+        "left": {
+          "heading": "研究與後續報告",
+          "points": [
+            "同一作者團隊"
+          ]
+        },
+        "right": {
+          "heading": "校方新聞",
+          "points": [
+            "解說同一研究與考察"
+          ]
+        },
+        "source": "2021 論文、2022 Comment、EPFL／ETH"
+      },
+      "claims": [
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "h4v093",
+          "text": "不過作者與校方說的，仍是同一批觀察。",
+          "reveal": 1,
+          "emotion": "平穩敘事，句尾微收"
+        },
+        {
+          "id": "h4v094",
+          "text": "多出幾篇文章，沒有多出幾次獨立重演。",
+          "reveal": 1,
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "case-status",
+      "template": "big",
+      "data": {
+        "text": "**當晚順序，仍是空白**",
+        "sub": "卷宗未能逐人還原"
+      },
+      "claims": [
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "h4v099",
+          "text": "還記得開頭九人為何離帳嗎？卷宗連離開後的完整順序都無法還原。",
+          "emotion": "接上前句，短停後落地"
+        }
+      ]
+    },
+    {
+      "id": "closing-folder",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a generic hand tying the cotton ribbon of a closed blank case folder on a desk beside a broad window. The simple knot and folder edge occupy the centre, with the hand entering from the side. Window light falls softly across the paper.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c45"
+      ],
+      "lines": [
+        {
+          "id": "h4v100",
+          "text": "未知還在，並不等於神祕傳說得到了相同分量的證據。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "奇聞檔案局",
+        "lines": [
+          "離帳原因：有模型，仍缺當夜證據"
+        ],
+        "cta": "訂閱，一起讀懂留下的線索"
+      },
+      "claims": [
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "h4v102",
+          "text": "雪板說得通，仍未證實。",
+          "emotion": "放慢，清楚標出證據界線"
+        },
+        {
+          "id": "h4v103",
+          "text": "哪條線索最關鍵？",
+          "emotion": "問句上揚，停半拍"
+        },
+        {
+          "id": "h4v104",
+          "text": "訂閱，繼續查證。",
+          "emotion": "接上前句，短停後落地"
+        }
+      ]
+    }
+  ]
+}
