@@ -130,6 +130,26 @@ test("published, approved, packaged and Short videos refuse adoption; completed 
   }
 });
 
+test("an approved cut whose script, narration or storyboard was approved again is being remade and may take the current bookends", async (t) => {
+  const b = box(t);
+  b.current(preset());
+  const approvals = (entries) => writeFileSync(path.join(b.workdir, "approvals.json"), JSON.stringify({ approvals: entries }));
+  mkdirSync(path.join(b.workdir, "upload"));
+  writeFileSync(path.join(b.workdir, "upload", "metadata.json"), "{}");
+  const final = { gate: "final", sha256: "old", approved_at: "2026-10-13T09:00:00Z" };
+  approvals([{ gate: "storyboard", sha256: "a", approved_at: "2026-10-12T09:00:00Z" }, final]);
+  assert.match(adoptionRefusal({ doc, workdir: b.workdir }), /final or publish approval/, "content approved before the cut: the cut stands");
+  approvals([final, { gate: "script", sha256: "b", approved_at: "2026-10-13T12:00:00Z" }]);
+  assert.equal(adoptionRefusal({ doc, workdir: b.workdir }), null, "a script approved after the cut: the cut is being remade, package and all");
+  approvals([final, { gate: "publish", sha256: "c", approved_at: "2026-10-13T13:00:00Z" }, { gate: "audio", sha256: "d", approved_at: "2026-10-13T12:00:00Z" }]);
+  assert.match(adoptionRefusal({ doc, workdir: b.workdir }), /final or publish approval/, "a publish approval newer than the content: the cut stands");
+  approvals([{ gate: "script", sha256: "e", approved_at: "2026-10-13T12:00:00Z" }, { gate: "final", sha256: "f" }]);
+  assert.match(adoptionRefusal({ doc, workdir: b.workdir }), /final or publish approval/, "a final with no time is never taken for an older one");
+  approvals([final, { gate: "storyboard", sha256: "g", approved_at: "2026-10-13T14:00:00Z" }]);
+  writeFileSync(path.join(b.workdir, "auto.json"), JSON.stringify({ status: "done" }));
+  assert.match(adoptionRefusal({ doc, workdir: b.workdir }), /uploaded or finished/, "a finished video stays as it is, remade or not");
+});
+
 test("a local pin wins over every later channel default, even an invalid one; legacy artifacts remain current", async (t) => {
   const b = box(t);
   b.current(preset());

@@ -130,12 +130,30 @@ export function brandingCurrent(checks, selection) {
 
 export const appliedBranding = (checks) => checks?.branding ?? null;
 
+/** The gates whose approval means the body itself was approved again (a new script, voice or pictures). */
+const CONTENT_GATES = new Set(["script", "audio", "storyboard"]);
+
+/**
+ * Whether an approved cut is being remade: the owner approved a script, narration or storyboard
+ * after the newest final or publish approval, so the cut that approval names is no longer the one
+ * this build makes (2026-10-13: five recuts got a new opening after their finals were approved,
+ * and the old 3-second outro without music would otherwise have stayed on them). The approvals
+ * stay where they are; they just stop pinning the old bookends.
+ */
+export function remakingApprovedCut(workdir) {
+  const approvals = readApprovals(workdir).approvals;
+  const newest = (gates) => Math.max(0, ...approvals.filter((entry) => gates(entry.gate)).map((entry) => Date.parse(entry.approved_at) || 0));
+  const cut = newest((gate) => gate === "final" || gate === "publish");
+  return cut > 0 && newest((gate) => CONTENT_GATES.has(gate)) > cut;
+}
+
 export function adoptionRefusal({ doc, workdir }) {
   if (!LONG_FORMATS.has(doc?.format)) return "channel bookends apply to long videos only; Shorts stay unchanged";
   const state = readJson(path.join(workdir, "auto.json"), null);
   if (doc.youtube?.video_id || state?.youtube_video_id || ["done", "dropped"].includes(state?.status)) return "this video is already uploaded or finished; its branding stays unchanged";
-  if (readApprovals(workdir).approvals.some((entry) => ["final", "publish"].includes(entry.gate))) return "this video already has a final or publish approval; its branding stays unchanged";
-  if (existsSync(path.join(workdir, "upload", "metadata.json"))) return "this video already has an upload package; its branding stays unchanged";
+  const remaking = remakingApprovedCut(workdir);
+  if (!remaking && readApprovals(workdir).approvals.some((entry) => ["final", "publish"].includes(entry.gate))) return "this video already has a final or publish approval; its branding stays unchanged";
+  if (!remaking && existsSync(path.join(workdir, "upload", "metadata.json"))) return "this video already has an upload package; its branding stays unchanged";
   return null;
 }
 
