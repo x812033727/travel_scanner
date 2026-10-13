@@ -3185,8 +3185,10 @@ test("an English-narrated video the owner gives no other language gets zh-TW onc
 // shortening and rewording passes kept their bytes.
 // 2026-10-09: zh-CN left the video languages (the owner: four languages are enough), so every
 // text says "four languages" and the zh-CN register and length lines are gone; all four changed.
+// 2026-10-13: the translator was told a translated title and its tags carry no channel or series
+// name (the owner); the other three kept their bytes.
 const ZH_TW_PROMPT_SHA256 = {
-  translator: "ef34287d2ac2449dac34a105d26ab9d8e255a2e6fa41ceda7304c78b269bba64",
+  translator: "d01b37f5c6c8278a71f207d89a138365ddf1f08a61e174d72499a1e2bffcb9a7",
   caption_reviewer: "52456f5b30e7c539cb0c84e105fc821ece01c4fb323a573f4d49cfa7e8c62647",
   "translator:shorten": "4253eeb617b7998df7ec725e74d9bebaa64e83018371b2d695748a9758f9d5be",
   "translator:reword": "d87f8a43b9c5ecd33c9da5e6f9cb19f6331f0261752c3140a824a1994ff53481",
