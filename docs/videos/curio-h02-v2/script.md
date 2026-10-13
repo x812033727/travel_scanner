@@ -8,513 +8,507 @@
 
 旁白（沉穩開場，語速放慢，最後三個字壓低）：一五九〇年八月十八日，天剛亮。
 
-#### 2. boat-lowered
+#### 2. the-mapmaker
 
-旁白：一艘英格蘭船在羅阿諾克島外放下小船。
+旁白：一個畫地圖的人，回到羅阿諾克島。
+旁白（語氣轉為敘述，稍快）：三年前，他把人留在這裡。
 
-#### 3. the-mapmaker
+#### 3. trumpet-ashore
 
-旁白（語氣轉為敘述，稍快）：三年前，船上那個畫地圖的人把人留在這裡。
+旁白（前半敘述，「沒有人回應」停一拍、壓低聲音）：靠岸之前，他們吹了號，沒有人回應。
 
-#### 4. trumpet-ashore
+#### 4. five-feet
 
-旁白：靠岸之前，他們吹號，唱英格蘭的歌。
+旁白：柵欄的木樁上，刻著一個字。
 
-#### 5. no-answer
-
-旁白（停一拍，壓低聲音）：沒有人回應。
-
-#### 6. remnants
-
-旁白：聚落裡只剩下他們留下的東西。
-
-#### 7. three-notches
-
-旁白（放慢，像正看著它）：一棵樹上，刻著三個大寫字母。
-
-#### 8. stripped-post
-
-旁白：再往前，柵欄入口有一根木樁被剝了皮。
-
-#### 9. five-feet
-
-旁白：離地五英尺，刻著一整個字。
-
-#### 10. the-word（big）
+#### 5. the-word（big）
 
 旁白（一字一字唸清楚，放慢）：那個字是克羅托安。
 
-#### 11. no-cross
+#### 6. greatly-joyed
 
-旁白（短句，壓重）：字的上面，沒有十字。
+旁白（語氣上揚，帶一點不可思議）：他後來寫，看到這個字反而很高興。
+旁白（收住，再往前推）：但這還不是最怪的。
 
-#### 12. greatly-joyed
+#### 7. tease-ancestors
 
-旁白（語氣上揚，帶一點不可思議）：他後來寫下，看到這個字，他反而很高興。
+旁白：一七〇九年，一個旅行的人寫下了哈特拉斯人說起的祖先。
 
-#### 13. the-question
+#### 8. tease-map-patch
 
-旁白（問句上揚，停一拍）：這個字是什麼意思，為什麼讓他高興？
+旁白（問句，壓低）：二〇一二年，畫地圖的人那張地圖上，補丁底下有什麼？
+
+#### 9. tease-ring-test
+
+旁白：二〇一七年，哈特拉斯島挖到的一只戒指，被送去化驗。
+
+#### 10. tease-announcement
+
+旁白（停在這裡，不揭曉）：二〇二六年六月，一個基金會宣布了一件事。
+
+#### 11. the-question
+
+旁白（問句上揚，停一拍）：那個字，到底把他留下的人帶去了哪裡？
 
 ### 他們簽了一張紙，請總督回英格蘭
 
-#### 14. his-own-sign
+#### 12. his-own-sign
 
 旁白（揭曉，放慢）：他高興，是因為那個字是他自己留下的約定。
 
-#### 15. governor-1587
+#### 13. governor-1587
 
 旁白：這個人叫約翰．懷特，他是這批人的總督。
 
-#### 16. arrive-hatorask
+#### 14. arrive-hatorask
 
 旁白：一五八七年七月二十二日，他們在外灘靠岸。
 
-#### 17. chesapeake-plan
+#### 15. chesapeake-plan
 
 旁白：本來要去的，是北邊的乞沙比克灣。
 旁白：他們要在那裡蓋房子和堡壘。
 
-#### 18. pilot-refuses
+#### 16. pilot-refuses
 
 旁白（轉折，語氣沉下來）：可是領航員不肯再往北走。
 
-#### 19. left-on-roanoke
+#### 17. left-on-roanoke
 
 旁白（放慢）：一百多個英格蘭人就留在了羅阿諾克。
 
-#### 20. count-stats（stats）
+#### 18. count-stats（stats）
 
 旁白（數字放慢）：名單上的名字，一共一百一十九個。
 旁白：各家來源寫的，從大約一百到一百五十。
 
-#### 21. melons-and-deer
+#### 19. melons-and-deer
 
 旁白（帶一點荒涼）：舊堡壘被夷平，空屋長滿瓜，鹿在裡面吃。
 
-#### 22. child-born
+#### 20. child-born
 
 旁白：八月十八日，總督的外孫女在島上出生。
 
-#### 23. remember-the-date
+#### 21. remember-the-date
 
 旁白（回呼，親近略上揚）：還記得他上岸那天是八月十八日嗎？
 
-#### 24. third-birthday
+#### 22. third-birthday
 
 旁白（放慢，壓重）：他踏上空島的那一天，剛好是她三歲生日。
 
-#### 25. all-ask-him
+#### 23. all-ask-him
 
-旁白：四天後，全體殖民者找上他。
+旁白：沒想到四天後，全體殖民者找上他。
 
-#### 26. bring-supplies
+#### 24. bring-supplies
 
 旁白：他們要他回英格蘭，親自把補給帶回來。
 
-#### 27. he-refuses
+#### 25. he-refuses
 
 旁白（短句，加重）：他先拒絕了。
 
-#### 28. signed-paper
+#### 26. signed-paper
 
 旁白：八月二十五日，他們立下一張聯名的證明。
 
-#### 29. he-sails
+#### 27. he-sails
 
 旁白：兩天後的早上，他上了船。
 
-#### 30. nine-days-old
+#### 28. nine-days-old
 
 旁白（輕聲）：那時候外孫女出生才九天。
 
-#### 31. the-agreement
+#### 29. the-agreement
 
 旁白：臨走前，他跟他們約好一個記號。
 
-#### 32. carve-the-place
+#### 30. carve-the-place
 
 旁白：搬去哪裡，就把那個地名刻下來。
 
-#### 33. a-cross-if-trouble
+#### 31. a-cross-if-trouble
 
 旁白（一字一字說清楚）：有危險，就在字的上面加一個十字。
 
-#### 34. remember-no-cross
+#### 32. remember-no-cross
 
-旁白（回呼，親近）：還記得木樁上那個字沒有十字嗎？
+旁白（回呼，親近）：木樁上那個字的上面，沒有十字。
 
-#### 35. means-safe
+#### 33. means-safe
 
 旁白（揭曉，短句壓重）：照他們的約定，沒有十字就是平安。
 
-#### 36. he-expected-to-return
+#### 34. he-expected-to-return
 
 旁白（收著，停一拍）：他以為自己很快就會回來。
 
 ### 無敵艦隊那一年，他的補給送不到島上
 
-#### 37. war-at-home
+#### 35. war-at-home
 
 旁白：可是那幾年，英格蘭正在打仗。
 
-#### 38. armada-sails
+#### 36. armada-sails
 
 旁白（轉折，語氣加重）：一五八八年，西班牙的無敵艦隊來了。
 
-#### 39. queens-order
+#### 37. queens-order
 
 旁白：女王下令，所有英格蘭船留在本土待命。
 
-#### 40. supply-ships
+#### 38. supply-ships
 
 旁白：那年四月出發的補給船，跟法國人交戰後折返。
 
-#### 41. delay-stats（stats）
+#### 39. delay-stats（stats）
 
 旁白（放慢，壓重）：補給就這樣一直沒有送到島上。
 
-#### 42. wants-to-cross
+#### 40. wants-to-cross
 
 旁白：再上岸那天，他想往南邊走。
 
-#### 43. south-along-banks
+#### 41. south-along-banks
 
 旁白：刻的那個地名，是南邊外灘上的一座島。
 
-#### 44. which-island
+#### 42. which-island
 
 旁白：那座島，就是今天的哈特拉斯島一帶。
 
-#### 45. croatoan-people
+#### 43. croatoan-people
 
 旁白：島上住的是克羅托安人。
 
-#### 46. our-friends
+#### 44. our-friends
 
 旁白：懷特自己寫，那是他們的朋友。
 
-#### 47. mistaken-attack
+#### 45. mistaken-attack
 
 旁白（轉折，誠實）：不過他們上岸那年的八月，英格蘭人才誤襲過他們一次。
 
-#### 48. why-not-cross
+#### 46. why-not-cross
 
 旁白（問句，停一拍）：他為什麼沒有過去？
 
-#### 49. one-anchor
+#### 47. one-anchor
 
 旁白：船上四個錨，只剩下一個。
 
-#### 50. weather-worse
+#### 48. weather-worse
 
 旁白（放慢）：他自己寫，天氣一天比一天壞。
 
-#### 51. casks-ashore
+#### 49. casks-ashore
 
 旁白：淡水桶還丟在岸上，沒搬回船。
 
-#### 52. plan-to-winter
+#### 50. plan-to-winter
 
 旁白：他們決定先南下補水、過冬，明年再回來。
 
-#### 53. storm-azores
+#### 51. storm-azores
 
 旁白（轉折，加快）：八月二十八日，一場風暴把船吹向亞速群島。
 
-#### 54. home-to-england
+#### 52. home-to-england
 
 旁白（停一拍，沉下來）：然後他們就回了英格蘭。
 
-#### 55. never-reached
+#### 53. never-reached
 
 旁白（短句，壓重）：那座島，沒有人走到。
 
-#### 56. last-contact
+#### 54. last-contact
 
 旁白：那次道別之後，沒有紀錄說英格蘭人再見過他們。
 
-#### 57. one-thing-wrong
+#### 55. one-thing-wrong
 
 旁白（升級）：不過懷特自己的記述裡，還有一件事說不通。
 
-#### 58. fifty-inland
+#### 56. fifty-inland
 
 旁白：他寫過，他們準備搬到內陸五十英里。
 
-#### 59. remember-number
+#### 57. remember-number
 
 旁白（前向鉤子，語氣輕）：先記住這個數字，等一下它會回來。
 
-#### 60. post-says-south
+#### 58. post-says-south
 
 旁白（反轉，壓重）：可是木樁上刻的，不是內陸的方向。
 
 ### 一七〇九年，有人說祖先是白人
 
-#### 61. island-people-say
+#### 59. island-people-say
 
 旁白：南邊那座島上的人，後來講過一件事。
 
-#### 62. traveller-writes
+#### 60. traveller-writes
 
-旁白：一七〇九年，一個旅行的人把它寫下來。
+旁白：一七〇九年，開頭那個旅行的人把它寫了下來。
 
-#### 63. ancestors-white
+#### 61. ancestors-white
 
 旁白（放慢，像在複述）：哈特拉斯人跟他說，祖先裡有幾個是白人。
 
-#### 64. talk-in-a-book
+#### 62. talk-in-a-book
 
 旁白（停一拍）：還會像英格蘭人一樣，對著一本書說話。
 
-#### 65. only-one-source
+#### 63. only-one-source
 
 旁白：這是很久以後的轉述，而且只有這一份。
 
-#### 66. ordered-killed
+#### 64. ordered-killed
 
 旁白（語氣沉）：另一個說法更可怕：他們被內陸的大酋長下令殺了。
 
-#### 67. second-hand
+#### 65. second-hand
 
 旁白（誠實）：寫下這個說法的人，是聽別人說的。
 
-#### 68. what-we-remember
+#### 66. what-we-remember
 
 旁白：而我們今天記得的，是另外一句話。
 
-#### 69. remember-three-letters
+#### 67. remember-three-letters
 
-旁白（回呼，親近）：還記得樹上那三個大寫字母嗎？
+旁白（回呼，親近）：懷特那天還看到，一棵樹上刻著三個大寫字母。
 
-#### 70. legend-moves-to-tree
+#### 68. legend-moves-to-tree
 
 旁白（轉折）：可是傳到後來，變成樹上刻著一個字。
 
-#### 71. who-first
+#### 69. who-first
 
 旁白（誠實）：誰最先這樣講，今天查不到。
 
-#### 72. even-the-name
+#### 70. even-the-name
 
 旁白（升級）：更怪的是，連這個案子的名字也是後來才有的。
 
-#### 73. 1830s-history
+#### 71. 1830s-history
 
 旁白：一八三〇年代，一本書和一篇雜誌文章這樣寫它。
 
-#### 74. 1837-novel
+#### 72. 1837-novel
 
 旁白：一八三七年一本小說，看起來是最早用這個名字的。
 
-#### 75. lost-colony-name（big）
+#### 73. lost-colony-name（big）
 
 旁白（短句，一字一字）：失落的殖民地。
 
-#### 76. added-later（table）
+#### 74. added-later（table）
 
 旁白（稍快）：一九三七年，一齣戶外劇開始上演。
 旁白（轉折）：同一年，第一塊刻字石出現了。
 
-#### 77. forty-odd-stones
+#### 75. forty-odd-stones
 
 旁白：到一九四〇年，一共出現四十幾塊。
 
-#### 78. mostly-hoax
+#### 76. mostly-hoax
 
 旁白（壓重）：大部分後來被判定是偽造的。
 
-#### 79. first-stone-open
+#### 77. first-stone-open
 
 旁白（誠實）：第一塊是真是假，沒有人能說。
 
-#### 80. soil-has-things
+#### 78. soil-has-things
 
 旁白（升級，語氣上揚）：可是那座島上的土裡，有別的東西。
 
-### 哈特拉斯島的土裡，挖出一只戒指
+### 一只戒指出土，地圖補丁底下有一個堡壘
 
-#### 81. dig-1998
+#### 79. dig-1998
 
 旁白：一九九八年，一所大學在那座島上挖開一塊沙地。
 
-#### 82. the-ring
+#### 80. the-ring
 
 旁白（語氣上揚）：他們挖到一只戒指，當時說是金的。
 
-#### 83. tree-rings
+#### 81. tree-rings
 
 旁白：同一年，另一邊有人在數樹的年輪。
 
-#### 84. how-rings-work
+#### 82. how-rings-work
 
 旁白：那份研究從年輪，看出雨水多少。
 
-#### 85. drought-stats（stats）
+#### 83. drought-stats（stats）
 
 旁白（數字放慢）：那份研究說，一五八七到一五八九年特別旱。
 旁白（短句，壓重）：是八百年裡最嚴重的一次。
 
-#### 86. regional-not-local
+#### 84. regional-not-local
 
 旁白（誠實補充）：不過那份研究量的是這個區域的樹，不是外灘當地。
 
-#### 87. only-implicated
+#### 85. only-implicated
 
 旁白（放慢）：論文自己也只說，乾旱可能跟這件事有關。
 
-#### 88. drought-not-answer
+#### 86. drought-not-answer
 
 旁白（升級）：可是問題來了：旱不旱，解釋不了那個字。
 
-#### 89. back-to-digging
+#### 87. back-to-digging
 
 旁白：真正讓人回到島上挖的，是那只戒指。
 
-#### 90. society-2009
+#### 88. society-2009
 
 旁白：二〇〇九年，當地人成立了一個考古團體。
 
-#### 91. british-university
+#### 89. british-university
 
 旁白：後來一所英國的大學也加進來。
 
-#### 92. rapier-handle
-
-旁白（稍快，像發現）：二〇一五年春天，他們挖到一截鐵劍柄。
-
-#### 93. hammer-scale
-
-旁白：二〇二五年初，又挖到成桶的鍛鐵碎屑。
-
-#### 94. no-report-yet
-
-旁白（誠實）：這一條目前只有發掘方受訪的說法。
-
-#### 95. tested-2017
-
-旁白：二〇一七年，那只戒指送去化驗。
-
-#### 96. brass（big）
-
-旁白（短句，壓重）：驗出來全部都是黃銅。
-
-#### 97. 1670-1720
-
-旁白（數字放慢）：跟它一起出土的東西，年代落在一六七〇到一七二〇年。
-
-#### 98. much-later
-
-旁白：比那批人晚了很久。
-
-#### 99. mixed-in
-
-旁白：那個遺址的歐洲器物，多數混在十七世紀中期的東西裡。
-
-#### 100. hard-to-date
-
-旁白（誠實）：同行說，年代很難定準。
-
-#### 101. could-be-trade
-
-旁白（收著）：也可能是後來交易帶過去的。
-
-#### 102. south-unsettled
-
-旁白（壓重）：南邊這一路，到今天還沒有定論。
-
-#### 103. other-direction
+#### 90. other-direction
 
 旁白（轉折，升級）：而另一支團隊，是從一張地圖開始的。
 
-### 地圖的補丁底下，有一個堡壘的記號
-
-#### 104. british-museum-map
+#### 91. british-museum-map
 
 旁白：二〇一二年，有人在大英博物館攤開懷特那張地圖。
-旁白（短句）：地圖上貼著一塊補丁。
+旁白（短句）：地圖上貼著的，就是開頭那塊補丁。
 
-#### 105. fort-symbol
+#### 92. fort-symbol
 
 旁白（揭曉，放慢）：補丁底下，是一個堡壘形狀的記號。
 
-#### 106. remember-fifty-inland
+#### 93. remember-fifty-inland
 
 旁白（回呼，親近）：還記得他們說要往內陸搬五十英里嗎？
 旁白（壓重）：補丁底下那個記號，就在那個距離上。
 
-#### 107. bertie-county
+#### 94. bertie-county
 
 旁白：位置是今天的伯蒂郡。
 
-#### 108. two-sites
+#### 95. two-sites
 
 旁白：這裡開了兩個工地，挖到歐洲人用的器物。
 
-#### 109. their-own-words
+### 戒指驗出是黃銅，基金會卻宣布找到了
 
-旁白：二〇二〇年，發掘團隊自己的考古學家說過一句話。
+#### 96. rapier-handle
 
-#### 110. not-the-main-site
+旁白（稍快，像發現）：二〇一五年春天，哈特拉斯島那邊挖到一截鐵劍柄。
+
+#### 97. tested-2017
+
+旁白：二〇一七年，開頭那只戒指送去化驗。
+
+#### 98. brass（big）
+
+旁白（短句，壓重）：驗出來全部都是黃銅。
+
+#### 99. 1670-1720
+
+旁白（數字放慢）：跟它一起出土的東西，年代落在一六七〇到一七二〇年。
+
+#### 100. much-later
+
+旁白：比那批人晚了很久。
+
+#### 101. mixed-in
+
+旁白：那個遺址的歐洲器物，多數混在十七世紀中期的東西裡。
+
+#### 102. hard-to-date
+
+旁白（誠實）：同行說，年代很難定準。
+
+#### 103. could-be-trade
+
+旁白（收著）：也可能是後來交易帶過去的。
+
+#### 104. their-own-words
+
+旁白：二〇二〇年，內陸那支團隊自己的考古學家說過一句話。
+
+#### 105. not-the-main-site
 
 旁白（放慢）：其中一個工地，不是這批人搬去的主要地點。
 
-#### 111. skeptical
+#### 106. skeptical
 
 旁白（誠實）：同一年，一所大學的考古學家說，他存疑。
 
-#### 112. changed-tune
+#### 107. hammer-scale
 
-旁白（轉折，加重）：可是二〇二六年六月，同一個基金會改口了。
+旁白：二〇二五年初，哈特拉斯島又挖到成桶的鍛鐵碎屑。
 
-#### 113. found-it（big）
+#### 108. no-report-yet
+
+旁白（誠實）：這一條目前只有發掘方受訪的說法。
+
+#### 109. south-unsettled
+
+旁白（壓重）：南邊這一路，到今天還沒有定論。
+
+#### 110. changed-tune
+
+旁白（轉折，加重）：沒想到二〇二六年六月，內陸那支團隊的基金會改口了。
+
+#### 111. found-it（big）
 
 旁白（一字一字唸）：他們在自己的網頁上宣布，失落的殖民地找到了。
 
-#### 114. no-new-report
+#### 112. no-new-report
 
-旁白（停一拍）：那則宣布沒有附新的發掘報告。
+旁白（停一拍）：開頭那則宣布，沒有附新的發掘報告。
 旁白（誠實）：到今天也沒看到第三方的評估。
 
-#### 115. artifacts-not-linked
+#### 113. artifacts-not-linked
 
 旁白（壓重）：那兩個工地的器物，沒有一件能確定屬於他們。
 
-#### 116. anything-certain
+#### 114. anything-certain
 
 旁白（問句上揚）：那麼，到底有沒有任何東西能確定是他們的？
 
 ### 遺骸和房子，沒有一樣能確定是他們的
 
-#### 117. no-such-thing
+#### 115. no-such-thing
 
 旁白（短句，壓重）：沒有。
 
-#### 118. nps-page
+#### 116. nps-page
 
 旁白（放慢）：美國國家公園管理局二〇二五年更新了說明。
 
-#### 119. nothing-linked
+#### 117. nothing-linked
 
 旁白（一字一字，壓重）：沒有遺骸、沒有墳、沒有房子能確定屬於他們。
 
-#### 120. one-popular-story
+#### 118. one-popular-story
 
 旁白（誠實）：搬去跟克羅托安人一起住，只是最受歡迎的說法之一。
 
-#### 121. we-dont-know
+#### 119. we-dont-know
 
 旁白（停一拍）：寫過一整本書的兩位學者說，他們的答案是不知道。
 
-#### 122. my-reading
+#### 120. my-reading
 
 旁白（標成意見，誠懇）：我的看法是，難的不是那個字，是那個字之後。
 
-#### 123. outro（outro）
+#### 121. outro（outro）
 
 旁白（問句上揚，像在聊天）：你最早聽到的，是哪一個版本？
 旁白（收尾，誠懇）：這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。
 
-narrative 8e5781ee7cc70079
-speech 52e3bd7a8d4d8a63
+narrative e9325f4a8fb1b271
+speech c63d198990177b89

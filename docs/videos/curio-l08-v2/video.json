@@ -24,13 +24,28 @@
   "loops": [
     {
       "setup": "cl1e",
-      "payoff": "cl2i",
+      "payoff": "cl2j",
       "what": "那根鐵棒後來換成了什麼"
     },
     {
       "setup": "cl1g",
-      "payoff": "cl2b",
+      "payoff": "cl3a2",
       "what": "為什麼要做成飛碟降落的樣子"
+    },
+    {
+      "setup": "cl1n",
+      "payoff": "cl4k",
+      "what": "那位研究者看了兩人壓的圈，會說什麼"
+    },
+    {
+      "setup": "cl1o",
+      "payoff": "cl5n",
+      "what": "醫生第二次飛過巨石陣旁時，田裡有什麼"
+    },
+    {
+      "setup": "cl1p",
+      "payoff": "cl7t",
+      "what": "道格晚年後悔的是哪一件事"
     },
     {
       "setup": "cl2q",
@@ -48,7 +63,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "為什麼 1991 年兩個英國老先生，承認麥田圈是他們做的？｜奇聞檔案局",
-    "description": "一九七〇年代後半，英格蘭南部的一個星期五晚上，兩個風景畫家喝完最後一杯，提著一根鐵棒走進麥田（圈內人的記述），壓出一個直徑大約九公尺的圓。之後整整三年，沒有人注意到。\n\n這一集照事情發生與被查出來的順序講完這份檔案：澳洲報紙上那個飛碟巢、鐵棒換成木板與棒球帽上的鐵絲圈、一九八〇年前後第一篇報導、氣象學者的電漿渦旋假說與那本賣了五萬多本的專書、兩個人為了反駁天氣而加上的直線、一九九一年九月肯特郡那個被鑑定為「人類做不出來」的圈、公開之後第二波創作者與商業委託、巨石陣旁那個四十五分鐘之說的兩面說法，最後是農夫的損失、觀光的生意與法律上的刑事毀損。\n\n流傳的版本一律標明是誰在哪一年說的；來源互相矛盾就說它們矛盾，沒有定論就說沒有定論。做麥田圈是毀損別人的作物，片中的做法是紀錄，不是邀請。每個數字、年份與引言的出處列在下方參考資料。\n\n本集插圖由 AI 生成；兩位當事人與片中其他近代人物都不畫臉、不寫名字，只以背影、手部或遠景的身影出現。\n\n資料截至 2026-10-10",
+    "description": "一九七〇年代後半，英格蘭南部的一個星期五晚上，兩個風景畫家喝完最後一杯，提著一根鐵棒走進麥田（圈內人的記述），壓出一個直徑大約九公尺的圓。之後整整三年，沒有人注意到。\n\n這一集照事情發生與被查出來的順序講完這份檔案：鐵棒換成木板與棒球帽上的鐵絲圈、一九八〇年前後第一篇報導、氣象學者的電漿渦旋假說與那本賣了五萬多本的專書、兩個人為了證明跟天氣無關而越做越多的圓與後來出現的直線、一九九一年九月肯特郡那個被鑑定為「人類做不出來」的圈、公開之後第二波創作者與商業委託、巨石陣旁那個四十五分鐘之說的兩面說法，最後是農夫的損失、觀光的生意與法律上的刑事毀損。\n\n流傳的版本一律標明是誰在哪一年說的；來源互相矛盾就說它們矛盾，沒有定論就說沒有定論。做麥田圈是毀損別人的作物，片中的做法是紀錄，不是邀請。每個數字、年份與引言的出處列在下方參考資料。\n\n本集插圖由 AI 生成；兩位當事人與片中其他近代人物都不畫臉、不寫名字，只以背影、手部或遠景的身影出現。\n\n資料截至 2026-10-10",
     "tags": [
       "麥田圈",
       "麥田圈真相",
@@ -194,21 +209,6 @@
       ]
     },
     {
-      "id": "last-round",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a small country pub room in the evening, one elderly man in a flat cap seen from behind at the bar, another man's shoulder beside him, an empty pint glass on the counter, light from a window behind the bar",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cl1b",
-          "text": "兩個朋友在小酒館喝完最後一杯。"
-        }
-      ]
-    },
-    {
       "id": "two-painters",
       "template": "shot",
       "data": {
@@ -219,7 +219,7 @@
       "lines": [
         {
           "id": "cl1c",
-          "text": "一個叫道格，一個叫戴夫，都是風景畫家。",
+          "text": "風景畫家道格和戴夫，喝完最後一杯。",
           "emotion": "介紹語氣，兩個名字放慢"
         }
       ]
@@ -234,55 +234,9 @@
       },
       "lines": [
         {
-          "id": "cl1d",
-          "text": "他們要在這裡壓出一個麥田圈。"
-        }
-      ]
-    },
-    {
-      "id": "iron-bar",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a man's hands in rolled shirtsleeves carrying a heavy iron bar at his side as he walks through tall barley, the bar's pitted surface catching the last of the daylight, light from behind him",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
           "id": "cl1e",
-          "text": "道格手上提著一根鐵棒。",
-          "emotion": "短句，落在最後三個字"
-        }
-      ]
-    },
-    {
-      "id": "shop-back-door",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of the back door of a small picture-framing shop in a side street at midday, one shopkeeper's hand sliding an iron bar across the door, stacked plain frames behind him, light from the street",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cl1f",
-          "text": "照圈內人的記述，那是拴畫框店後門的鐵棒。"
-        }
-      ]
-    },
-    {
-      "id": "tin-plate-saucer",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a kitchen table in the evening, one small boy grinning as he tilts a tin plate above a folded blank newspaper, a mug beside his elbow, light from the doorway behind him",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cl1g",
-          "text": "他們想做出飛碟降落過的樣子。",
-          "emotion": "放慢，像在說一個主意"
+          "text": "照圈內人的記述，道格提著鐵棒走進麥田。",
+          "emotion": "短句，落在「鐵棒」"
         }
       ]
     },
@@ -296,40 +250,9 @@
       },
       "lines": [
         {
-          "id": "cl1h",
-          "text": "他們把麥子一圈一圈壓倒。"
-        }
-      ]
-    },
-    {
-      "id": "nine-metres",
-      "template": "big",
-      "data": {
-        "text": "大約 9 公尺",
-        "kicker": "第一個圓",
-        "sub": "圈內人的記述：一根鐵棒，一個晚上"
-      },
-      "lines": [
-        {
-          "id": "cl1i",
-          "text": "壓出來的，是一個直徑大約九公尺的圓。",
-          "emotion": "數字放慢，咬字清楚"
-        }
-      ]
-    },
-    {
-      "id": "walk-home",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a hedged country lane after dark, two small figures walking away side by side far down the lane, one of them carrying a long bar, light from a thin moon above the hedge",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cl1j",
-          "text": "然後兩個人回家睡覺。",
-          "emotion": "輕，像沒事發生過"
+          "id": "cl1g",
+          "text": "他們壓出一個大約九公尺的圓，要像飛碟降落過。",
+          "emotion": "數字放慢，後半像在說一個主意"
         }
       ]
     },
@@ -346,6 +269,64 @@
           "id": "cl1k",
           "text": "之後頭三年，沒有人注意到那些圓。",
           "emotion": "停一拍，壓低"
+        },
+        {
+          "id": "cl1m",
+          "text": "但後來的事，更怪。",
+          "emotion": "壓低，像要說祕密"
+        }
+      ]
+    },
+    {
+      "id": "tease-the-researcher",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot filling the whole frame edge to edge of an elderly man in a cap crouching at the edge of a patch of flattened wheat in bright morning light, looking down at the bent stalks",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cl1n",
+          "text": "十幾年後的肯特郡，一位研究者盯著兩人壓出來的圈。",
+          "emotion": "放慢，停在最後一個字"
+        }
+      ]
+    },
+    {
+      "id": "tease-the-doctor",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a patchwork of fields from a light aircraft in the early evening, one pilot's hand on the control column in the corner of the frame, the crop below unmarked, light from a low sun",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cl1o",
+          "text": "再後來，傳說有一位醫生開著小飛機，",
+          "emotion": "數字放慢，句尾懸著"
+        },
+        {
+          "id": "cl1o2",
+          "text": "約四十五分鐘內，兩次飛過巨石陣旁的田。",
+          "emotion": "數字放慢，句尾懸著"
+        }
+      ]
+    },
+    {
+      "id": "tease-the-regret",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot filling the whole frame edge to edge of an old man in a cardigan sitting in a garden chair in afternoon light, both hands resting on a walking stick across his knees, looking down",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cl1p",
+          "text": "而那晚走進麥田的道格，晚年說他後悔一件事。",
+          "emotion": "輕，停住"
         }
       ]
     },
@@ -382,145 +363,6 @@
       ]
     },
     {
-      "id": "which-year",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of two plain desk calendars standing side by side on a shelf in daylight, an archivist's finger moving from one to the other, a box file behind them, light from the right",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cl2a2",
-          "text": "第一個圓是哪一年，報導有的寫一九七六，有的寫七八。"
-        }
-      ]
-    },
-    {
-      "id": "remember-the-saucer",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a boy lying on a rug in a front room at midday, holding a tin plate above his face and tilting it, a plain cushion beside him, light falling from above",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cl2b",
-          "text": "還記得他們想做出飛碟降落的樣子嗎？",
-          "emotion": "回呼，語氣親近，上揚"
-        }
-      ]
-    },
-    {
-      "id": "a-foreign-paper",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a man's hands holding open a blank broadsheet newspaper at a breakfast table in bright morning light, a plain enamel mug steaming beside it, light from the right",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cl2c",
-          "text": "那個念頭，是道格從一份報紙上帶回來的。"
-        }
-      ]
-    },
-    {
-      "id": "emigrated",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a sunlit passenger quay, one traveller in a hat seen from behind at the rail with a suitcase at his feet, gulls over the water beyond, light from a high sun",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cl2d",
-          "text": "他曾經移民澳洲，住了好幾年才回英國。"
-        }
-      ]
-    },
-    {
-      "id": "banana-farmer",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a tropical banana plantation in bright morning light, one farmer in a wide hat seen from behind at the edge of a reedy lagoon, his machete lowered, light from a high sun",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cl2e",
-          "text": "一九六六年，昆士蘭一個香蕉農說看到飛碟升空。",
-          "emotion": "語速稍快，像在轉述"
-        }
-      ]
-    },
-    {
-      "id": "reed-ring",
-      "template": "shot",
-      "data": {
-        "prompt": "Overhead view of a shallow reedy lagoon at noon, a ring of reeds woven flat into a circle, one farmer wading at its rim in a wide hat, light from directly above",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cl2f",
-          "text": "潟湖的蘆葦，被壓成一個三十呎的圓。"
-        }
-      ]
-    },
-    {
-      "id": "saucer-nest",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a country store veranda in the afternoon, one woman in a floral dress leaning on the rail with her eyes wide as she talks, a crate of bananas at her feet, light from the open sky",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cl2g",
-          "text": "報紙把它叫做飛碟巢。",
-          "emotion": "放慢，像在說一個名字"
-        }
-      ]
-    },
-    {
-      "id": "told-his-friend",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a pub bench in the afternoon, one man in a cardigan seen from behind leaning towards another man's shoulder, a folded blank newspaper on the table between them, light from the open door",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cl2h",
-          "text": "道格把這件事講給戴夫聽。"
-        }
-      ]
-    },
-    {
-      "id": "remember-the-bar",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot filling the whole frame edge to edge of a cluttered workshop corner in daylight, one long iron bar leaning upright against the wall beside a workbench covered in sawdust, a high window above",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cl2i",
-          "text": "還記得道格手上那根鐵棒嗎？",
-          "emotion": "回呼，上揚"
-        }
-      ]
-    },
-    {
       "id": "the-plank",
       "template": "shot",
       "data": {
@@ -531,7 +373,7 @@
       "lines": [
         {
           "id": "cl2j",
-          "text": "鐵棒換成一塊木板，一公尺多長。"
+          "text": "道格手上那根鐵棒，換成了一塊木板，一公尺多長。"
         }
       ]
     },
@@ -642,7 +484,11 @@
       "lines": [
         {
           "id": "cl2r",
-          "text": "照道格自己的說法，太太先發現車子的里程不對。"
+          "text": "結果，先發現不對的是他太太，"
+        },
+        {
+          "id": "cl2r2",
+          "text": "照道格自己的說法，是車子的里程露了餡。"
         }
       ]
     },
@@ -728,7 +574,7 @@
       "lines": [
         {
           "id": "cl3a2",
-          "text": "飛碟迷說，那是飛碟降落留下的痕跡。"
+          "text": "飛碟迷說是飛碟降落的痕跡，正合開頭他們的意。"
         }
       ]
     },
@@ -1160,7 +1006,7 @@
       "lines": [
         {
           "id": "cl4k",
-          "text": "他站在田裡說，沒有人類做得出這個。",
+          "text": "開頭那位研究者站在田裡說，沒有人類做得出這個。",
           "emotion": "一字一頓，壓重"
         }
       ]
@@ -1346,7 +1192,7 @@
       "lines": [
         {
           "id": "cl4x",
-          "text": "他們把那塊木板帶去加拿大了嗎？",
+          "text": "那做麥田圈的，真的只有他們兩個嗎？",
           "emotion": "問句上揚，問完停住"
         }
       ]
@@ -1362,7 +1208,7 @@
       "lines": [
         {
           "id": "cl5b",
-          "text": "那時候，田裡已經不只他們兩個。",
+          "text": "做圈的不只他們兩個，那時候田裡已經有別人。",
           "emotion": "揭曉，短"
         }
       ],
@@ -1493,22 +1339,6 @@
       ]
     },
     {
-      "id": "the-story-goes",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a small airfield in the late afternoon, one pilot in a light jacket seen from behind pulling the chocks from a single-engine aeroplane, a windsock above, light from a low sun",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cl5k",
-          "text": "流傳的版本裡，有一架小飛機。",
-          "emotion": "收著"
-        }
-      ]
-    },
-    {
       "id": "half-past-five",
       "template": "shot",
       "data": {
@@ -1519,11 +1349,7 @@
       "lines": [
         {
           "id": "cl5l",
-          "text": "傍晚五點半，一位醫生開著小飛機飛過那片田。"
-        },
-        {
-          "id": "cl5m",
-          "text": "他說那時候什麼都沒有。"
+          "text": "流傳的版本裡，傍晚五點半，那片田還什麼都沒有。"
         }
       ]
     },
@@ -1538,7 +1364,7 @@
       "lines": [
         {
           "id": "cl5n",
-          "text": "四十五分鐘後再飛過，圖形就在那裡了。",
+          "text": "開頭那位醫生四十五分鐘後再飛過，圖形就在那裡了。",
           "emotion": "揭曉，短"
         }
       ]
@@ -1931,11 +1757,11 @@
       "lines": [
         {
           "id": "cl7o",
-          "text": "二〇〇〇年，有一個人為那些圓上了法庭。"
+          "text": "那件沒人算的事，二〇〇〇年先上了一次法庭。"
         },
         {
           "id": "cl7o2",
-          "text": "他認罪，被罰一百英鎊。",
+          "text": "一個做麥田圈的人認罪，被罰一百英鎊。",
           "emotion": "短，落地"
         }
       ]
@@ -2152,7 +1978,7 @@
       "lines": [
         {
           "id": "cl7t",
-          "text": "他晚年說，後悔的是告訴了大家。",
+          "text": "開頭說他晚年後悔的那件事，是告訴了大家。",
           "emotion": "沉下來"
         }
       ]

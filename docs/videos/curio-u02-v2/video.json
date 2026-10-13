@@ -28,6 +28,26 @@
       "what": "他們要藏的那架飛機，為什麼藏不住"
     },
     {
+      "setup": "u115",
+      "payoff": "u312",
+      "what": "客機飛行員看到的那團火是什麼"
+    },
+    {
+      "setup": "u116",
+      "payoff": "u414",
+      "what": "太空站任務唯一不准拍的地方"
+    },
+    {
+      "setup": "u117",
+      "payoff": "u505",
+      "what": "遮臉的人說機棚裡停著什麼"
+    },
+    {
+      "setup": "u118",
+      "payoff": "u612",
+      "what": "工人和遺孀告空軍，法院怎麼判"
+    },
+    {
       "setup": "u508",
       "payoff": "u715",
       "what": "電視上說的那九艘飛碟"
@@ -169,21 +189,6 @@
       "chapter": "他們差一點降落在那條舊跑道上"
     },
     {
-      "id": "four-in-the-plane",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot inside a cramped propeller plane in strong sun, a man in a plain suit on the bench seat with his hat on one knee, two more passengers small behind him, light through the window at his shoulder",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "u102",
-          "text": "小飛機上坐著四個人。"
-        }
-      ]
-    },
-    {
       "id": "chart-on-a-knee",
       "template": "shot",
       "data": {
@@ -194,24 +199,8 @@
       "lines": [
         {
           "id": "u103",
-          "text": "他們在找一個地方，試飛一架飛機。",
+          "text": "小飛機上的四個人，在找一個地方試飛一架飛機。",
           "emotion": "語速稍快，像在趕時間"
-        }
-      ]
-    },
-    {
-      "id": "white-salt-flat",
-      "template": "shot",
-      "data": {
-        "prompt": "Overhead view of a white dry salt flat ringed by grey scrub in hard noon sun, the plane's wing and a man's shoulder in the near corner as he looks straight down",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "u104",
-          "text": "底下是一片白色的乾鹽湖。",
-          "emotion": "放慢，像剛看見什麼"
         }
       ]
     },
@@ -242,7 +231,7 @@
       "lines": [
         {
           "id": "u106",
-          "text": "旁邊有一條直線，像一條跑道。"
+          "text": "地上有一條直線，像一條跑道。"
         }
       ]
     },
@@ -276,43 +265,68 @@
           "text": "要是降落在那條線上，飛機會往前翻。"
         },
         {
-          "id": "u109",
-          "text": "機上的人幾乎是整個計畫的核心。",
-          "emotion": "壓低，像講一件險事"
+          "id": "u114",
+          "text": "但這還不是這塊地最怪的事。"
         }
       ]
     },
     {
-      "id": "washington-corridor",
+      "id": "tease-ball-of-fire",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a government office corridor on a grey afternoon, one man in a plain suit walking away from the camera with a flat case under his arm, tall windows down one side letting in soft grey sun",
+        "prompt": "Medium shot filling the whole frame edge to edge of an airline pilot in his seat leaning over the control column, one arm raised to point up through the windscreen at a single bright point high in the dark sky, his face lit from the glass",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "u115",
+          "text": "天黑以後，客機飛行員看到高空有一團火。"
+        }
+      ]
+    },
+    {
+      "id": "tease-skylab",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an astronaut in a flight suit floating at a round window inside a space station, a hand camera raised to the glass, sun coming in through the window",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "u110",
-          "text": "回到華盛頓才發現，它不屬於試驗場。"
+          "id": "u116",
+          "text": "後來，太空站的一趟任務，只有一個地方不准拍。"
         }
       ]
     },
     {
-      "id": "a-hand-signs",
+      "id": "tease-face-hidden",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a hand signing the last sheet of a thin plain document on a polished desk in a bright room, a fountain pen cap and a closed folder beside it, morning sun from the right",
+        "prompt": "Medium shot of a man in a plain jacket sitting in an interview chair with his face in deep shadow, a clip microphone on his collar, light coming from one side only",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "u111",
-          "text": "他們請原子能委員會把它劃進來。"
-        },
+          "id": "u117",
+          "text": "一九八九年，一個遮臉的人上電視，說機棚裡停著什麼？"
+        }
+      ]
+    },
+    {
+      "id": "tease-workers-and-widows",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly man in a flat cap standing at a kitchen table in morning sun, one hand resting on a thick plain file, a mug of tea beside it, sun from the window behind him",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
         {
-          "id": "u112",
-          "text": "艾森豪總統批准了。"
+          "id": "u118",
+          "text": "更怪的是，五個基地工人和兩位遺孀告了空軍。"
         }
       ]
     },
@@ -748,7 +762,7 @@
       "lines": [
         {
           "id": "u309",
-          "text": "一架往西飛的客機，天已經黑了。",
+          "text": "開頭那架客機正往西飛，天已經黑了。",
           "emotion": "壓低，像講故事"
         }
       ]
@@ -1157,7 +1171,7 @@
         },
         {
           "id": "u411b",
-          "text": "一九五九年那一張，也在同一個地方。"
+          "text": "還有一張一九五九年的，也在同一個地方。"
         }
       ]
     },
@@ -1202,7 +1216,7 @@
       "lines": [
         {
           "id": "u414",
-          "text": "那趟任務只有這一個地方被交代不准拍。"
+          "text": "開頭那個不准拍的地方，就是這裡。"
         }
       ]
     },
@@ -1333,7 +1347,7 @@
       "lines": [
         {
           "id": "u503",
-          "text": "受訪的人遮著臉，用的是化名。",
+          "text": "開頭那個遮著臉的人，用的是化名。",
           "emotion": "壓低，像轉述"
         }
       ]
@@ -1703,7 +1717,7 @@
       "lines": [
         {
           "id": "u609",
-          "text": "五個基地工人和兩位遺孀，告了空軍和環保署。"
+          "text": "開頭那五個工人和兩位遺孀，告的是空軍和環保署。"
         }
       ]
     },
@@ -2034,7 +2048,7 @@
         },
         {
           "id": "u706",
-          "text": "新版四百多頁，名字就印在裡面。",
+          "text": "開頭那個等了五十八年的編號，就印在新版裡。",
           "reveal": 1
         }
       ]

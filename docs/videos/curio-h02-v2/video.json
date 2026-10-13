@@ -12,7 +12,7 @@
     "provider": "gemini",
     "name": "Sulafat",
     "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
-    "performance": "從頭到尾只講一個故事：開場壓低放慢，像跟著小船靠上那座島；每個年份和數字前停半拍；「還記得」開頭的句子語氣親近、略上揚；一五八七年島上那幾段帶一點溫度，法庭式的爭論沒有，取而代之的是考古那幾段要沉、要慢；每次掛著一個問題就停住，不急著解釋；結尾不下定論，誠實但不失望。"
+    "performance": "從頭到尾只講一個故事：開場壓低放慢，像跟著那個畫地圖的人回到那座島；開場四個預告句一句一停，停在結果之前，不急著揭曉；每個年份和數字前停半拍；點名開頭的句子（「開頭那…」「還記得…」）語氣親近、略上揚；一五八七年島上那幾段帶一點溫度，法庭式的爭論沒有，取而代之的是考古那幾段要沉、要慢；每次掛著一個問題就停住，不急著解釋；結尾不下定論，誠實但不失望。"
   },
   "subtitles": {
     "burn_in": false
@@ -23,19 +23,29 @@
   "characters": [],
   "loops": [
     {
-      "setup": "ro111",
-      "payoff": "ro223",
-      "what": "字的上面為什麼沒有十字"
-    },
-    {
-      "setup": "ro107",
-      "payoff": "ro409",
-      "what": "樹上那三個字母後來變成什麼"
-    },
-    {
       "setup": "ro101",
       "payoff": "ro212",
       "what": "八月十八日這個日期為什麼特別"
+    },
+    {
+      "setup": "ro115",
+      "payoff": "ro403",
+      "what": "哈特拉斯人說起的祖先是誰"
+    },
+    {
+      "setup": "ro116",
+      "payoff": "ro517",
+      "what": "哈特拉斯島那只戒指驗出什麼"
+    },
+    {
+      "setup": "ro117",
+      "payoff": "ro603",
+      "what": "地圖補丁底下藏著什麼"
+    },
+    {
+      "setup": "ro118",
+      "payoff": "ro612",
+      "what": "二〇二六年那個基金會宣布了什麼"
     },
     {
       "setup": "ro323",
@@ -194,21 +204,6 @@
       ]
     },
     {
-      "id": "boat-lowered",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a ship's rail in early morning, one crewman in a knitted cap leaning out to pay out a rope, a small boat hanging below him against the hull, light from the open water",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ro102",
-          "text": "一艘英格蘭船在羅阿諾克島外放下小船。"
-        }
-      ]
-    },
-    {
       "id": "the-mapmaker",
       "template": "shot",
       "data": {
@@ -218,8 +213,12 @@
       },
       "lines": [
         {
+          "id": "ro102",
+          "text": "一個畫地圖的人，回到羅阿諾克島。"
+        },
+        {
           "id": "ro103",
-          "text": "三年前，船上那個畫地圖的人把人留在這裡。",
+          "text": "三年前，他把人留在這裡。",
           "emotion": "語氣轉為敘述，稍快"
         }
       ]
@@ -235,69 +234,8 @@
       "lines": [
         {
           "id": "ro104",
-          "text": "靠岸之前，他們吹號，唱英格蘭的歌。"
-        }
-      ]
-    },
-    {
-      "id": "no-answer",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a man in a doublet standing still in a sandy clearing, his head turned to listen and his mouth half open, an empty gatepost of split timber behind him, light from the side",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ro105",
-          "text": "沒有人回應。",
-          "emotion": "停一拍，壓低聲音"
-        }
-      ]
-    },
-    {
-      "id": "remnants",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot filling the whole frame edge to edge of a man in a wide-brimmed hat crouching in an overgrown clearing under a soft overcast sky, holding a broken clay pot in both hands, tall grass around him",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ro106",
-          "text": "聚落裡只剩下他們留下的東西。"
-        }
-      ]
-    },
-    {
-      "id": "three-notches",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of rough pine bark in morning light, a man's fingers resting in three fresh pale notches where the bark has been cut away, the trunk filling the frame, light falling from the left",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ro107",
-          "text": "一棵樹上，刻著三個大寫字母。",
-          "emotion": "放慢，像正看著它"
-        }
-      ]
-    },
-    {
-      "id": "stripped-post",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a palisade of upright tree trunks at mid-morning, one man in a doublet at the open entrance with his hand on a single trunk stripped bare of bark, light from the clearing beyond",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ro108",
-          "text": "再往前，柵欄入口有一根木樁被剝了皮。"
+          "text": "靠岸之前，他們吹了號，沒有人回應。",
+          "emotion": "前半敘述，「沒有人回應」停一拍、壓低聲音"
         }
       ]
     },
@@ -312,7 +250,7 @@
       "lines": [
         {
           "id": "ro109",
-          "text": "離地五英尺，刻著一整個字。"
+          "text": "柵欄的木樁上，刻著一個字。"
         }
       ]
     },
@@ -333,22 +271,6 @@
       ]
     },
     {
-      "id": "no-cross",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of the top end of a bark-stripped trunk in morning light, a man's thumb brushing the blank pale wood above a shallow cut band, nothing else on the surface, light from above",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ro111",
-          "text": "字的上面，沒有十字。",
-          "emotion": "短句，壓重"
-        }
-      ]
-    },
-    {
       "id": "greatly-joyed",
       "template": "shot",
       "data": {
@@ -359,8 +281,75 @@
       "lines": [
         {
           "id": "ro112",
-          "text": "他後來寫下，看到這個字，他反而很高興。",
+          "text": "他後來寫，看到這個字反而很高興。",
           "emotion": "語氣上揚，帶一點不可思議"
+        },
+        {
+          "id": "ro114",
+          "text": "但這還不是最怪的。",
+          "emotion": "收住，再往前推"
+        }
+      ]
+    },
+    {
+      "id": "tease-ancestors",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot filling the whole frame edge to edge of a coastal Algonquian woman in a deerskin wrap standing outside a bark-covered house in the morning, speaking, a woven basket at her feet",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ro115",
+          "text": "一七〇九年，一個旅行的人寫下了哈特拉斯人說起的祖先。"
+        }
+      ]
+    },
+    {
+      "id": "tease-map-patch",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small square paper patch lying loose on a blank parchment sheet, a gloved fingertip lifting one of its corners, light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ro117",
+          "text": "二〇一二年，畫地圖的人那張地圖上，補丁底下有什麼？",
+          "emotion": "問句，壓低"
+        }
+      ]
+    },
+    {
+      "id": "tease-ring-test",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small metal ring held in fine tweezers above a white dish on a bench, light from a window on the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ro116",
+          "text": "二〇一七年，哈特拉斯島挖到的一只戒指，被送去化驗。"
+        }
+      ]
+    },
+    {
+      "id": "tease-announcement",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a person in a plain shirt seen from behind at a sunlit desk, both hands flat on a bare desktop, an empty chair beside them, light from a window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ro118",
+          "text": "二〇二六年六月，一個基金會宣布了一件事。",
+          "emotion": "停在這裡，不揭曉"
         }
       ]
     },
@@ -369,13 +358,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a man in a doublet alone in a sandy clearing at noon, looking back over his shoulder towards the palisade, a rolled chart under one arm, light from a high sun",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "ro113",
-          "text": "這個字是什麼意思，為什麼讓他高興？",
+          "text": "那個字，到底把他留下的人帶去了哪裡？",
           "emotion": "問句上揚，停一拍"
         }
       ]
@@ -584,7 +573,7 @@
       "lines": [
         {
           "id": "ro214",
-          "text": "四天後，全體殖民者找上他。"
+          "text": "沒想到四天後，全體殖民者找上他。"
         }
       ]
     },
@@ -722,7 +711,7 @@
       "lines": [
         {
           "id": "ro223",
-          "text": "還記得木樁上那個字沒有十字嗎？",
+          "text": "木樁上那個字的上面，沒有十字。",
           "emotion": "回呼，親近"
         }
       ]
@@ -1168,7 +1157,7 @@
       "lines": [
         {
           "id": "ro402",
-          "text": "一七〇九年，一個旅行的人把它寫下來。"
+          "text": "一七〇九年，開頭那個旅行的人把它寫了下來。"
         }
       ]
     },
@@ -1277,7 +1266,7 @@
       "lines": [
         {
           "id": "ro409",
-          "text": "還記得樹上那三個大寫字母嗎？",
+          "text": "懷特那天還看到，一棵樹上刻著三個大寫字母。",
           "emotion": "回呼，親近"
         }
       ]
@@ -1495,7 +1484,7 @@
     },
     {
       "id": "dig-1998",
-      "chapter": "哈特拉斯島的土裡，挖出一只戒指",
+      "chapter": "一只戒指出土，地圖補丁底下有一個堡壘",
       "template": "shot",
       "data": {
         "prompt": "Wide shot of an open sandy excavation in summer, one person in a sun hat seen from behind shovelling sand onto a heap, low scrub around the pit, light from a high sun",
@@ -1681,7 +1670,111 @@
       ]
     },
     {
+      "id": "other-direction",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plowed inland field in the morning, one person in a plain coat seen from behind walking away between the furrows with a surveyor's pole, a treeline beyond, light from a low sun",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ro524",
+          "text": "而另一支團隊，是從一張地圖開始的。",
+          "emotion": "轉折，升級"
+        }
+      ]
+    },
+    {
+      "id": "british-museum-map",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a quiet reading room by day, one person in a plain jacket seen from behind leaning over a large blank parchment sheet on a wide table, a padded book cradle beside it, light from a tall window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ro601",
+          "text": "二〇一二年，有人在大英博物館攤開懷特那張地圖。"
+        },
+        {
+          "id": "ro602",
+          "text": "地圖上貼著的，就是開頭那塊補丁。",
+          "emotion": "短句"
+        }
+      ]
+    },
+    {
+      "id": "fort-symbol",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small square paper patch lying loose on a blank parchment sheet, a gloved fingertip lifting one of its corners, light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ro603",
+          "text": "補丁底下，是一個堡壘形狀的記號。",
+          "emotion": "揭曉，放慢"
+        }
+      ]
+    },
+    {
+      "id": "remember-fifty-inland",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a person in a plain coat seen from behind at the edge of a wood in the afternoon, looking inland down a straight farm track, a surveyor's pole at their side, light from a bright sky",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ro604",
+          "text": "還記得他們說要往內陸搬五十英里嗎？",
+          "emotion": "回呼，親近"
+        },
+        {
+          "id": "ro605",
+          "text": "補丁底下那個記號，就在那個距離上。",
+          "emotion": "壓重"
+        }
+      ]
+    },
+    {
+      "id": "bertie-county",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of open farmland under a bright sky, one person in a sun hat seen from behind walking a hedge line with a clipboard, a barn roof far off, light from a high sun",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ro606",
+          "text": "位置是今天的伯蒂郡。"
+        }
+      ]
+    },
+    {
+      "id": "two-sites",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of two shallow pits in a grass field in the morning, one person in a plain jacket seen from behind standing between them with a pail, a treeline beyond, light from a low sun",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ro607",
+          "text": "這裡開了兩個工地，挖到歐洲人用的器物。"
+        }
+      ]
+    },
+    {
       "id": "rapier-handle",
+      "chapter": "戒指驗出是黃銅，基金會卻宣布找到了",
       "template": "shot",
       "data": {
         "prompt": "Close-up of a corroded iron sword grip lying in a shallow sand pit, a gloved hand easing it free, light from above",
@@ -1691,39 +1784,8 @@
       "lines": [
         {
           "id": "ro513",
-          "text": "二〇一五年春天，他們挖到一截鐵劍柄。",
+          "text": "二〇一五年春天，哈特拉斯島那邊挖到一截鐵劍柄。",
           "emotion": "稍快，像發現"
-        }
-      ]
-    },
-    {
-      "id": "hammer-scale",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a pail half full of dark flaky metal grit, a gloved hand lifting a scoop of it, light from the right",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ro514",
-          "text": "二〇二五年初，又挖到成桶的鍛鐵碎屑。"
-        }
-      ]
-    },
-    {
-      "id": "no-report-yet",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a person in a plain jacket seen from behind in a sunlit office beside an open empty filing drawer, a bare desk behind them, light from a window",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ro515",
-          "text": "這一條目前只有發掘方受訪的說法。",
-          "emotion": "誠實"
         }
       ]
     },
@@ -1738,7 +1800,7 @@
       "lines": [
         {
           "id": "ro516",
-          "text": "二〇一七年，那只戒指送去化驗。"
+          "text": "二〇一七年，開頭那只戒指送去化驗。"
         }
       ]
     },
@@ -1837,126 +1899,6 @@
       ]
     },
     {
-      "id": "south-unsettled",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a sandy clearing beside a creek late in the afternoon, one person in a plain jacket seen from behind rolling up a string line, backfilled trenches around them, light from a low sun",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ro523",
-          "text": "南邊這一路，到今天還沒有定論。",
-          "emotion": "壓重"
-        }
-      ]
-    },
-    {
-      "id": "other-direction",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a plowed inland field in the morning, one person in a plain coat seen from behind walking away between the furrows with a surveyor's pole, a treeline beyond, light from a low sun",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ro524",
-          "text": "而另一支團隊，是從一張地圖開始的。",
-          "emotion": "轉折，升級"
-        }
-      ]
-    },
-    {
-      "id": "british-museum-map",
-      "chapter": "地圖的補丁底下，有一個堡壘的記號",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a quiet reading room by day, one person in a plain jacket seen from behind leaning over a large blank parchment sheet on a wide table, a padded book cradle beside it, light from a tall window",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ro601",
-          "text": "二〇一二年，有人在大英博物館攤開懷特那張地圖。"
-        },
-        {
-          "id": "ro602",
-          "text": "地圖上貼著一塊補丁。",
-          "emotion": "短句"
-        }
-      ]
-    },
-    {
-      "id": "fort-symbol",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a small square paper patch lying loose on a blank parchment sheet, a gloved fingertip lifting one of its corners, light from the left",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ro603",
-          "text": "補丁底下，是一個堡壘形狀的記號。",
-          "emotion": "揭曉，放慢"
-        }
-      ]
-    },
-    {
-      "id": "remember-fifty-inland",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a person in a plain coat seen from behind at the edge of a wood in the afternoon, looking inland down a straight farm track, a surveyor's pole at their side, light from a bright sky",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ro604",
-          "text": "還記得他們說要往內陸搬五十英里嗎？",
-          "emotion": "回呼，親近"
-        },
-        {
-          "id": "ro605",
-          "text": "補丁底下那個記號，就在那個距離上。",
-          "emotion": "壓重"
-        }
-      ]
-    },
-    {
-      "id": "bertie-county",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of open farmland under a bright sky, one person in a sun hat seen from behind walking a hedge line with a clipboard, a barn roof far off, light from a high sun",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ro606",
-          "text": "位置是今天的伯蒂郡。"
-        }
-      ]
-    },
-    {
-      "id": "two-sites",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of two shallow pits in a grass field in the morning, one person in a plain jacket seen from behind standing between them with a pail, a treeline beyond, light from a low sun",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ro607",
-          "text": "這裡開了兩個工地，挖到歐洲人用的器物。"
-        }
-      ]
-    },
-    {
       "id": "their-own-words",
       "template": "shot",
       "data": {
@@ -1967,7 +1909,7 @@
       "lines": [
         {
           "id": "ro608",
-          "text": "二〇二〇年，發掘團隊自己的考古學家說過一句話。"
+          "text": "二〇二〇年，內陸那支團隊自己的考古學家說過一句話。"
         }
       ]
     },
@@ -2004,6 +1946,53 @@
       ]
     },
     {
+      "id": "hammer-scale",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pail half full of dark flaky metal grit, a gloved hand lifting a scoop of it, light from the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ro514",
+          "text": "二〇二五年初，哈特拉斯島又挖到成桶的鍛鐵碎屑。"
+        }
+      ]
+    },
+    {
+      "id": "no-report-yet",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a person in a plain jacket seen from behind in a sunlit office beside an open empty filing drawer, a bare desk behind them, light from a window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ro515",
+          "text": "這一條目前只有發掘方受訪的說法。",
+          "emotion": "誠實"
+        }
+      ]
+    },
+    {
+      "id": "south-unsettled",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sandy clearing beside a creek late in the afternoon, one person in a plain jacket seen from behind rolling up a string line, backfilled trenches around them, light from a low sun",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ro523",
+          "text": "南邊這一路，到今天還沒有定論。",
+          "emotion": "壓重"
+        }
+      ]
+    },
+    {
       "id": "changed-tune",
       "template": "shot",
       "data": {
@@ -2014,7 +2003,7 @@
       "lines": [
         {
           "id": "ro611",
-          "text": "可是二〇二六年六月，同一個基金會改口了。",
+          "text": "沒想到二〇二六年六月，內陸那支團隊的基金會改口了。",
           "emotion": "轉折，加重"
         }
       ]
@@ -2046,7 +2035,7 @@
       "lines": [
         {
           "id": "ro613",
-          "text": "那則宣布沒有附新的發掘報告。",
+          "text": "開頭那則宣布，沒有附新的發掘報告。",
           "emotion": "停一拍"
         },
         {
