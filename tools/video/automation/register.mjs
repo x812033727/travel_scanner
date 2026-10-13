@@ -80,6 +80,11 @@ Hooks (open loops):
   them in "loops": [{"setup": <line id>, "payoff": <line id>, "what": <what it holds back, ≤ 40
   characters>}], at least three for ten minutes, one of them planted in the condensation; the
   schema refuses a payoff before its setup. A loop with no payoff is cut or paid.
+- Naming a loop is not paying it. The sentence after 「還記得那…嗎？」 carries something the
+  listener does not have yet: a new fact, a new number, something that happened later. Re-reading
+  the line that planted it replays the hook instead of paying it, and a blind reader fails that as
+  a retelling. With nothing new to give, cut the forward hook and its callback together: nobody
+  misses a question that was never asked, and everybody feels a promise that was not kept.
 - A fact is told once. The opening's facts come back in the body only as a callback; a number
   said in three sentences is a warning.
 - Nothing announces what is coming, anywhere in the video, not only in the opening. A sentence
