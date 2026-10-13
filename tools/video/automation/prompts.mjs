@@ -428,7 +428,10 @@ Viewers read the captions while the narration plays: natural in the locale, fait
 short enough to read at speaking pace (en at most about 80 characters a line, ja and ko about
 40). Keep every number, price, date, version and product name; en plain, ja です／ます, ko
 합니다체. Opinions stay first person. Do not add or drop anything the narration says. Title at
-most 100 characters, no angle brackets; tags at most 500 characters in total. "video" shows the slides for context.
+most 100 characters, no angle brackets; tags at most 500 characters in total. No channel or
+series name in the title or the tags: where the zh-TW title ends on one (「｜奇聞檔案局」), leave it
+out, since YouTube shows the channel under the title and no name for it in the locale is decided.
+"video" shows the slides for context.
 The worksheet's "parts" says what the owner chose for this locale: "captions" the lines,
 "metadata" the title, description, tags, chapter names and the thumbnail's words; a worksheet without
 a part has no entries for it, so fill only what it holds. When a line carries "max_chars", the
