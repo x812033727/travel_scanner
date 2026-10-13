@@ -53,7 +53,8 @@ Rules that never bend:
 
 const CHAPTER_GUIDE = `
 The six chapters, in order ("chapter.key"): hook (the condensation, 30 to 60 seconds: ONE scene
-of the story, told in order up to the first fact that makes no sense, ending on the question
+of the story, told in order up to the first fact that makes no sense, then three or four later
+moments cut off before their results, ending on the question
 "plan.question" asks), origin (where it started and who), idea (the key idea), engine (how the
 business works: who pays whom and why), turn (the cost, the setback or the reversal), now (where
 it stands today, then the one observation "plan.takeaway" leaves the viewer with). They are six

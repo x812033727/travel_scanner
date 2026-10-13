@@ -15,6 +15,9 @@ export const NARRATIVE_REVIEW = ["review", "narrative.json"];
 
 /** The body carries an open loop at least this often: a question left hanging, a forward hook, an escalation or a chapter turn. */
 export const HOOK_GAP_SECONDS = 90;
+// After its one scene the condensation teases this many later moments, each a loop it plants
+// (owner, 2026-10-13: the opening needs many hooks that make the viewer want the whole video).
+export const OPENING_TEASERS = 3;
 /** How many loops a ten-minute narrated video plants (its "loops" table), at least two whatever its length. */
 export const LOOPS_PER_10_MINUTES = 3;
 
@@ -159,7 +162,9 @@ export function loopProblems(doc, timeline, minutes) {
     const frame = starts.get(loop.setup);
     return frame !== undefined && frameToSeconds(frame) < bodyStart;
   };
-  if (chapters.length > 1 && !loops.some(planted)) problems.push({ path: "loops", message: "the condensation plants no loop: at least one setup line sits in the first chapter, paid off in a later one" });
+  const teasers = loops.filter(planted).length;
+  if (chapters.length > 1 && !teasers) problems.push({ path: "loops", message: "the condensation plants no loop: at least one setup line sits in the first chapter, paid off in a later one" });
+  else if (chapters.length > 1 && teasers < OPENING_TEASERS) problems.push({ path: "loops", message: `the condensation plants ${teasers} loop${teasers === 1 ? "" : "s"}; after its one scene it teases at least ${OPENING_TEASERS} later moments, each cut off before its result and paid off where the body reaches it (script-writing.md §開場濃縮)` });
   const outro = (doc.scenes ?? []).find((scene) => scene.template === "outro");
   const closing = new Set((outro?.lines ?? []).map((line) => line.id));
   loops.forEach((loop, index) => {
@@ -241,18 +246,19 @@ export function narrativeProblems(doc, timeline, { minutes } = {}) {
 // tutorial judges taught that only yes-or-no questions tell a good script from a bad one; a
 // scale pins at the same number for both).
 
-/** The ten questions, in zh-TW; a "required" one that is not met sends the script back to the writer. */
+/** The eleven questions, in zh-TW; a "required" one that is not met sends the script back to the writer. */
 export const NARRATIVE_PANEL = Object.freeze([
   { id: "scene_first", required: true, question: "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？" },
-  { id: "no_spoiler", required: true, question: "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？" },
+  { id: "no_spoiler", required: true, question: "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）" },
   { id: "one_line", required: true, question: "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？" },
   { id: "no_toc", required: true, question: "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）" },
   { id: "chapters_link", required: true, question: "每一章的第一句是不是上一章的後果或答案（事情接著發生），而不是一句標籤、一句總結，或把上一章最後一句再講一次？（上一章最後幾秒才埋下的事，下一章開頭用「還記得…嗎」接回來，是複述不是銜接；點名的回呼要留給隔了幾分鐘的掛鉤。）" },
   { id: "open_loops", required: true, question: "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？" },
   { id: "payoffs", required: true, question: "每一個掛著的問題後來是否都有回答，而且回答時點名了它（還記得那…）？" },
-  { id: "no_recap", required: true, question: "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外）？" },
+  { id: "no_recap", required: true, question: "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？" },
   { id: "chapters_are_events", required: false, question: "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？" },
   { id: "outro_no_next", required: true, question: "片尾是否沒有提到下一支影片、下一集或下一份檔案？" },
+  { id: "opening_hooks", required: true, question: "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）" },
 ]);
 
 /** What the panel's reader is told, and nothing else: no brief, no sources, no standing instructions (the stage sends it bare). */

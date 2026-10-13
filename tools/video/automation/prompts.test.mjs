@@ -599,9 +599,12 @@ test("the writer says the numbers, closes on three sentences, unlocks screencast
   assert.match(writer, /The narrator may have a name, a catchphrase and a fixed closing line/);
   assert.match(writer, /The first sentence is still the hook; the name comes after it/);
   // The opening (D07): concrete within 20 seconds, no table of contents, one 「你以為…其實」; the
-  // first chapter is the 30 to 60 second condensation, one scene of the story (owner, 2026-10-12 and 2026-10-13).
+  // first chapter is the 30 to 60 second condensation, one scene of the story and then three or
+  // four later moments cut off before their results (owner, 2026-10-12 and twice on 2026-10-13).
   assert.match(writer, /The first chapter is the\s+condensation the register below describes, the brief's 開場濃縮/);
-  assert.match(writer, /one scene of the story told\s+in order, the title.s\s+number, date or proper noun within 20 seconds, stopping at the first\s+fact that makes no sense/);
+  assert.match(writer, /one scene of the story told\s+in order, the title.s\s+number, date or proper noun within 20 seconds, up to the first fact\s+that makes no sense; then three or four later moments, each cut off before its result/);
+  assert.match(writer, /Then it turns \(「但這還不是最怪的。」\) and throws three or four of the later chapters' moments/);
+  assert.match(writer, /The channel intro\s+bumper plays after this chapter, not before it/);
   assert.match(writer, /The first chapter is the condensation: 30 to 60 seconds\s+before the first real chapter/);
   assert.match(writer, /No\s+table of contents/);
   assert.match(writer, /「你以為…其實」 once in\s+the video, in the first chapter/);
@@ -644,9 +647,9 @@ test("the writer says the numbers, closes on three sentences, unlocks screencast
 test("the four explainer instruction texts are byte for byte what they were", () => {
   const sha256 = (text) => createHash("sha256").update(text, "utf8").digest("hex");
   const pinned = {
-    "planner:bible-explainer": "29fd9e2e353ef5a86114699fb0e64d9bd15225892ec76cceecfc599b7c97989a",
-    "planner:explainer": "79bacf5ece9317854e933cdd15d10b89def9ec7f125046493456aec92bf96da6",
-    "writer:explainer": "a95dc2958cee5039b85b41ad53005071c750b2083b1aead768015c1cc6747386",
+    "planner:bible-explainer": "92d58c327776f8f1f8084907e2aaf0a7d8f326c2c614d1ab593dc4074ff017a2",
+    "planner:explainer": "e5b50a3fedd95008c096a63153a48e54268821be2e62254913dbc22460ac708f",
+    "writer:explainer": "11ec620a6084cd27a3916971e8d9bf68cda593229218d39ff3e00106534ff0e0",
     "verifier:explainer": "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842",
   };
   for (const [key, digest] of Object.entries(pinned)) {

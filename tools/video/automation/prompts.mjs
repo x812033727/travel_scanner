@@ -264,8 +264,8 @@ without a channel stance, propose one and mark it as a proposal the owner confir
 主線：<the spine in one sentence: who or what, from which moment, to which answer>
 轉折：<3 to 5 events in the order they happened, each with the chapter that reveals it, each more surprising than the one before>
 開場鉤子：「<the opening line as spoken; a year or a place and somebody doing one concrete thing, or the viewer's own question>」
-開場濃縮：<the ONE scene the 30 to 60 second condensation tells, in order, up to the first fact that makes no sense; it reveals no later chapter's result and ends on the question the whole video answers>
-鉤子：<the open loops this outline plants: each as 「<what is held back> → 第 N 章回收」, at least three for ten minutes, one of them planted in the condensation>
+開場濃縮：<the ONE scene the 30 to 60 second condensation tells, in order, up to the first fact that makes no sense; then the three or four later moments it teases, each cut off before its result; it reveals no later chapter's result and ends on the question the whole video answers>
+鉤子：<the open loops this outline plants: each as 「<what is held back> → 第 N 章回收」, at least three for ten minutes, the condensation's teasers among them>
 For illustrated storytelling: 你以為／其實：「<what the viewer believes> → <what is so, with the fact that shows it>」
 For teaching cards: 案例與結果：「<the recurring example, useful outcome and evidence status>」
 then at least 3 chapters as teaching steps or story beats, with estimated seconds (each ≥ 10 s; 250 spoken characters
@@ -315,8 +315,9 @@ never create an illustration just to fill the thumbnail field.
 - Line ids: take them from "line_ids" in order; never invent one.
 - One line is one spoken sentence, about 25 characters, at most 40. The first chapter is the
   condensation the register below describes, the brief's 開場濃縮: one scene of the story told
-  in order, the title's number, date or proper noun within 20 seconds, stopping at the first
-  fact that makes no sense and never telling a later chapter's result. No
+  in order, the title's number, date or proper noun within 20 seconds, up to the first fact
+  that makes no sense; then three or four later moments, each cut off before its result and
+  each the setup of a loop; never a later chapter's result. No
   table of contents (「接下來分三段」「接下來我會告訴你」「第一…第二…最後」「先…再…最後」「看完你會知道
   A、B、C」「這集講 A、B，還有 C」; lint warns): the chapters announce themselves. For
   illustrated storytelling, 「你以為…其實」 once in the video, in the first chapter; a later reversal is told without the formula. Teaching cards
@@ -1566,9 +1567,10 @@ body_md sections, in this order:
 ## 大綱 ONE outline: the spine in one sentence (「主線：…」: who or what, from which moment, to
 which answer); 3 to 5 turns in the order they happened (「轉折：…」, each with the chapter that
 reveals it); the opening hook as the first spoken line; the ONE scene the condensation tells, in
-order, up to the first fact that makes no sense (「開場濃縮：…」, no later chapter's result given
-away); the open loops it plants (「鉤子：<what is held back> → 第 N 章回收」, at least three, one
-in the condensation); the chapters (one reason each)
+order, up to the first fact that makes no sense, then the three or four later moments it teases,
+each cut off before its result (「開場濃縮：…」, no later chapter's result given away); the open
+loops it plants (「鉤子：<what is held back> → 第 N 章回收」, at least three, the condensation's
+teasers among them); the chapters (one reason each)
 with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the whole aimed at
 "series.target_minutes", never under 8 minutes; over it is fine), each chapter's key pictures as "picture: what the illustration shows /
 camera", where a number card sits, and the closing (the answer, the comment question and the
@@ -1611,8 +1613,8 @@ question; without a channel stance, propose one and mark it as a proposal the ow
 主線：<the spine in one sentence: who or what, from which moment, to which answer>
 轉折：<3 to 5 events in the order they happened, each with the chapter that reveals it>
 開場鉤子：「<the first spoken line: a year or a place and somebody doing one concrete thing, or the counter-intuitive question; no greeting>」
-開場濃縮：<the ONE scene the 30 to 60 second condensation tells, in order, up to the first fact that makes no sense; no later chapter's result is given away, and its last sentence is the question the whole episode answers>
-鉤子：<the open loops it plants: each as 「<what is held back> → 第 N 章回收」, at least three, one of them in the condensation>
+開場濃縮：<the ONE scene the 30 to 60 second condensation tells, in order, up to the first fact that makes no sense, then the three or four later moments it teases, each cut off before its result; no later chapter's result is given away, and its last sentence is the question the whole episode answers>
+鉤子：<the open loops it plants: each as 「<what is held back> → 第 N 章回收」, at least three, the condensation's teasers among them>
 then the chapters with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the whole
 aimed at "target_minutes", never under 8 minutes; over it is fine), each chapter's key pictures as "picture: what the illustration shows /
 camera" and where a number card sits, and the closing (the answer with its number, the

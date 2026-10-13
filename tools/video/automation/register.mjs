@@ -40,12 +40,20 @@ export const CONDENSATION_RULE = `The first chapter is the condensation: ${OPENI
   document, a machine) doing one concrete thing; no greeting, no 「今天要來跟大家分享」, no
   introduction of the topic. The number, date or name the title promises is said
   within ${HOOK_SECONDS} seconds. Then that one scene goes on, in the order it happened, up to the
-  first fact that makes no sense, and stops there: it never tells why, never tells what a later
-  chapter reveals (a test's result, the answer, the ending), and never teases moments from later
-  chapters. Its last sentence is the question the whole video answers, and the second chapter
-  opens on what happened next. No table of contents (「接下來分三段」「看完你會知道」「這集講 A、B，
-  還有 C」; lint reads the whole condensation for one). At least one loop of the "loops" table
-  is planted here.`;
+  first fact that makes no sense, about 15 to 25 seconds, and stops there without telling why.
+  Then it turns (「但這還不是最怪的。」) and throws three or four of the later chapters' moments,
+  in the order the video reaches them, each stranger than the one before, so the viewer wants to
+  see the whole video (owner, 2026-10-13: the opening needs many hooks). Each one is an event
+  (who did what, where, in which year) cut off just before its result, as a sentence that stops
+  or as a question; never the result, the answer or the ending (「法庭把甲板上的污跡送去化驗。」
+  is a teaser; 「化驗說那不是血。」 gives it away). Each teaser line is the setup of a loop in the
+  "loops" table, paid off in the chapter that reveals it, where the narration names it
+  (「還記得開頭那道刀痕嗎？」): that callback is not a retelling. Its picture is the shot of the
+  chapter that pays it off. The condensation's last sentence is the question the whole video
+  answers, and the second chapter opens on what happened next in the scene. The channel intro
+  bumper plays after this chapter, not before it, so the first spoken line is at 0:00. No table
+  of contents: a teaser is a moment, never a topic (「接下來我們會看到」「看完你會知道」「這集講
+  A、B，還有 C」 are not hooks; lint reads the whole condensation for them).`;
 
 /**
  * How a narrated video is told as one story (script-writing.md §故事主線與鉤子; owner, 2026-10-13:
@@ -78,7 +86,7 @@ Hooks (open loops):
   chapter's), or a turn (events go the other way). Lint warns on a stretch over 90 s without one.
 - Every loop is paid off later, and the payoff names it (「還記得那九桶嗎？」). The script lists
   them in "loops": [{"setup": <line id>, "payoff": <line id>, "what": <what it holds back, ≤ 40
-  characters>}], at least three for ten minutes, one of them planted in the condensation; the
+  characters>}], at least three for ten minutes, three of them planted in the condensation; the
   schema refuses a payoff before its setup. A loop with no payoff is cut or paid.
 - At most one forward hook in the whole video says so out loud. 「先記住這個數字，等一下它會回來」
   is the one hook that steps outside the story, so once is emphasis and three times is the narrator

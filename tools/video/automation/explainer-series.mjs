@@ -64,9 +64,9 @@ curious viewer would ask, answered`,
   theirs and the three middle parts scale in the same proportion. The parts together reach
   the target and never fall under 8 minutes.
   1. The condensation, ${OPENING_CHAPTER_SECONDS[0]} to ${OPENING_CHAPTER_SECONDS[1]} seconds: the question put the counter-intuitive way
-     over the most striking picture, then two or three of the reasons' most surprising facts,
-     each over its own picture and left without its why, then the promise that the viewer will
-     know why. No greeting.
+     over the most striking picture, then three or four of the reasons' most surprising facts,
+     each over the picture of the chapter that pays it off and left without its why, then the
+     promise that the viewer will know why. No greeting. The channel intro plays after it.
   2. The story goes on from where the condensation stopped, about 2 minutes: what people assumed,
      and what was found instead.
   3. Three or four chapters, 6 to 7 minutes together, one reason of the brief's 原因 each, in the
@@ -101,9 +101,10 @@ type it, and what most people wrongly assume.
 ## 大綱 ONE outline: the spine in one sentence (「主線：…」: who or what, from which moment,
 to which answer); 3 to 5 turns in the order they happened (「轉折：…」, each with the chapter
 that reveals it); the opening hook as the first spoken line; the ONE scene the condensation
-tells, in order, up to the first fact that makes no sense (「開場濃縮：…」, no later
-chapter's result given away); the open loops it plants (「鉤子：<what is held back> → 第 N
-章回收」, at least three, one in the condensation); the chapters (one reason each, in
+tells, in order, up to the first fact that makes no sense, then the three or four later moments
+it teases, each cut off before its result (「開場濃縮：…」, no later chapter's result given
+away); the open loops it plants (「鉤子：<what is held back> → 第 N 章回收」, at least three,
+the condensation's teasers among them); the chapters (one reason each, in
 the order of 原因) with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the whole
 aimed at "series.target_minutes", never under 8 minutes; over it is fine); each chapter's key
 pictures as "picture: one person doing one thing, and where / camera"; where a number, a timeline
@@ -176,10 +177,11 @@ today,`,
   are for the 10-minute target; with another "target_minutes" the condensation and the close keep
   theirs and the three middle parts scale in the same proportion. The parts together reach
   the target and never fall under 8 minutes.
-  1. The condensation, ${OPENING_CHAPTER_SECONDS[0]} to ${OPENING_CHAPTER_SECONDS[1]} seconds: the file's most counter-intuitive
-     sentence, with its year, number or name, over the most striking picture, then a "big" card,
-     then two or three of the records' strangest details, each over its own picture and left
-     without what explains it, then the promise that this episode opens the file. No greeting.
+  1. The condensation, ${OPENING_CHAPTER_SECONDS[0]} to ${OPENING_CHAPTER_SECONDS[1]} seconds: ONE scene of the file, with its
+     year, number or name, told in order up to the first fact that makes no sense, then three
+     or four of the records' strangest moments, each over the picture of the chapter that pays
+     it off and cut off before what explains it, then the question the episode answers. No
+     greeting. The channel intro plays after it.
   2. The story goes on from where the condensation stopped, about 1.5 minutes: the version people
      have heard, told as a story and named as the version that circulates.
   3. The records, 6 to 7 minutes: one chapter for each 「紀錄：」 line of the brief's 原因 (two to
@@ -236,9 +238,10 @@ with its label and names the source page that supports it:
 to which answer); 3 to 5 turns in the order they happened (「轉折：…」, each with the chapter
 that reveals it); the opening hook as the first spoken line (a year or a place and somebody
 doing one concrete thing); the ONE scene the condensation tells, in order, up to the first fact
-that makes no sense (「開場濃縮：…」, no later chapter's result given away); the open loops
-it plants (「鉤子：<what is held back> → 第 N 章回收」, at least three, one in the
-condensation); then one chapter for each line of
+that makes no sense, then the three or four later moments it teases, each cut off before its
+result (「開場濃縮：…」, no later chapter's result given away); the open loops it plants
+(「鉤子：<what is held back> → 第 N 章回收」, at least three, the condensation's teasers among
+them); then one chapter for each line of
 原因, in the same order, with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the
 whole aimed at "series.target_minutes", never under 8 minutes; over it is fine); each chapter's
 key pictures as "picture: one person doing one thing, and where / camera"; where a number, a

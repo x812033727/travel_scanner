@@ -115,7 +115,7 @@ test("the body carries an open loop at least every 90 seconds: a question, a for
   }
 });
 
-test("the loops table: enough for the length, one planted in the condensation, none in the outro", () => {
+test("the loops table: enough for the length, three planted in the condensation, none in the outro", () => {
   assert.deepEqual([requiredLoops(8), requiredLoops(10), requiredLoops(13), requiredLoops(3)], [2, 3, 4, 2]);
   const doc = stretched();
   const timeline = estimateTimeline(doc);
@@ -127,7 +127,14 @@ test("the loops table: enough for the length, one planted in the condensation, n
     { setup: pads[0].lines[1].id, payoff: pads[4].lines[2].id, what: "那九個桶" },
     { setup: pads[1].lines[0].id, payoff: pads[5].lines[0].id, what: "劍上的痕跡" },
   ];
+  // One teaser in the condensation is not enough: after its one scene it teases three later
+  // moments (owner, 2026-10-13: the opening needs many hooks).
+  assert.match(messages(loopProblems(doc, timeline, minutes)), /the condensation plants 1 loop; after its one scene it teases at least 3 later moments/);
+  doc.loops[1].setup = "cd04";
+  doc.loops[2].setup = "cd05";
   assert.deepEqual(loopProblems(doc, timeline, minutes), []);
+  doc.loops[1].setup = pads[0].lines[1].id;
+  doc.loops[2].setup = pads[1].lines[0].id;
   doc.loops[0].setup = pads[2].lines[0].id;
   assert.match(messages(loopProblems(doc, timeline, minutes)), /the condensation plants no loop/);
   doc.loops[0].setup = "h2cz";
@@ -176,7 +183,7 @@ test("the close never names the next video: the outro card's words, its lines an
 });
 
 test("the panel passes only when every required question is yes; a missing or malformed answer is a no", () => {
-  assert.equal(NARRATIVE_PANEL.length, 10);
+  assert.equal(NARRATIVE_PANEL.length, 11);
   assert.deepEqual(NARRATIVE_PANEL.filter((question) => !question.required).map((question) => question.id), ["chapters_are_events"]);
   const all = (yes) => ({ answers: NARRATIVE_PANEL.map((question) => ({ id: question.id, yes, evidence: "[k7p2] 每次有新模型出來" })) });
   const passed = panelVerdict(all(true));
@@ -185,7 +192,7 @@ test("the panel passes only when every required question is yes; a missing or ma
   assert.deepEqual(passed.problems, []);
   const failed = panelVerdict(all(false));
   assert.equal(failed.passed, false);
-  assert.equal(failed.failed.length, 9);
+  assert.equal(failed.failed.length, 10);
   assert.deepEqual(failed.advisory.map((each) => each.id), ["chapters_are_events"]);
   assert.match(failed.problems[0], /^scene_first：/);
   const advisory = all(true);
@@ -199,7 +206,7 @@ test("the panel passes only when every required question is yes; a missing or ma
   loose.answers.find((answer) => answer.id === "no_recap").yes = "true";
   assert.deepEqual(panelVerdict(loose).failed.map((each) => each.id), ["no_recap"]);
   assert.equal(panelVerdict({}).passed, false);
-  assert.equal(panelVerdict(null).failed.length, 9);
+  assert.equal(panelVerdict(null).failed.length, 10);
 });
 
 test("a yes the reader quotes no line for is not a yes", () => {
@@ -217,7 +224,7 @@ test("a yes the reader quotes no line for is not a yes", () => {
   ]) {
     const verdict = panelVerdict(ten(entry));
     assert.equal(verdict.passed, false, what);
-    assert.equal(verdict.failed.length, 9, what);
+    assert.equal(verdict.failed.length, 10, what);
     assert.equal(verdict.failed[0].evidence, "no evidence quoted", what);
   }
   // Something was written, but it quotes no line, so the answer still cannot be audited. The
