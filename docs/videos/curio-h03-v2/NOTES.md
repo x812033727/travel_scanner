@@ -360,3 +360,23 @@ loops 現在八個：`tg1j→tg2g`、`tg1p→tg3o`、`tg1q→tg4i`、`tg1r→tg5
 | `tg7q` | 湖底的事，到現在沒有結論。 | 湖底的事沒有結論，那天早上有沒有人喪生？ | 最後一章補一個掛著的問題（09:28），十幾秒後 `tg7s`–`tg7r` 回答並點名（「有沒有人喪生，也沒有結論」）；問句本身不帶事實 |
 
 「還記得」現在只剩 `tg7m` 一句。
+
+## 第四到六輪修改查核的修正 2026-10-13（verify-3.md）
+
+- tg7q：「湖底的事沒有結論，那天早上有沒有人喪生？」→「湖底的事沒有結論，有沒有人因為那一聲喪生？」J19 的死亡數包含事後過世的人，「那天早上」會讓人以為是當場死亡。
+
+## 畫面提示修正 2026-10-13
+
+關鍵影格 judge 退回的 26 個 shot（`mokaair-work/videos/curio-h03-v2/keyframes/manifest.json`）全部改寫 `data.prompt`；旁白一字未動（說故事關卡已在最終稿上通過），
+`camera` 都沒改（沒有一條退回理由是運鏡），`tease-*` 抄的四張圖不在名單裡，照舊逐字相同。照本週 MiniMax image-01 學到的寫法：
+
+- 每條都以景別開頭並加「filling the whole frame edge to edge」，只寫畫面裡有的東西；拿掉所有否定句（「no branches」「nobody」「empty」）。
+- 空景長出小頭（16 條的主要退回理由）：能放人的都放一個站著不動、看著那個地方的人（河邊的男人、林中空地的埃文基人、看沼澤／枯樹／湖的地質學家）。
+- 白天綠色跑調：戶外改成黃昏、深藍夜空。
+- 安靜的室內與靜物特寫（報紙、期刊、頁腳、檔案夾、紙條、清單）：改成一個人中景坐在桌前看著它，紙面寫成「small and blank」，拿掉多餘的手（拇指、整理檔案的雙手、拿鉛筆的手、拍照的手機）。
+- 動作改靜態姿勢：`trunks-go-over-together` 從「正在倒下」改成「同一角度斜倒」；`carved-pole-in-the-clearing` 拿掉布條飄動；`pointing-at-the-ground` 只留一隻手往下指，拿掉靴子（judge 兩次都畫出第三隻靴子）。
+- `hand-on-a-root-plate`、`stripped-bark-close` 從特寫改成人站在樹根盤／枯幹旁的中景（特寫的手被畫成小孩、枯幹被畫成活樹）。
+- `wings-on-the-moss` 改成與 `butterfly-of-ruin` 逐字相同的 prompt：`tg6x`「剛剛那隻蝴蝶的形狀」本來就是回指那張圖，同一張圖少算一次錢。
+- `contrail-over-a-city-street` 拿掉舉手機（那是下一個 shot `tg7aa` 的事），雲跡寫成斜過天空的粗白煙跡。
+
+仍有風險、沒辦法放人的空景：`butterfly-of-ruin`／`wings-on-the-moss`、`ridge-far-below`（高空俯瞰）、`trunks-go-over-together`（爆心沒有目擊者）。
