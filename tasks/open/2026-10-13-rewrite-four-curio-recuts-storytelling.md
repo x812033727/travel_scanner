@@ -38,22 +38,22 @@ claims and research here, and are re-told from them with no new facts.
 
 ## Definition of done
 
-- [ ] `docs/videos/curio-u02-v2`, `curio-l08-v2`, `curio-h02-v2`, `curio-h03-v2` each hold
+- [x] `docs/videos/curio-u02-v2`, `curio-l08-v2`, `curio-h02-v2`, `curio-h03-v2` each hold
       `brief.md`, `video.json`, `claims.md` and `NOTES.md`, written to the new rules: one story in
       the order it happened, chapters as beats named by what happens in them, a condensation that
       is one scene told up to the first fact that makes no sense, a `loops` table with every hook
       paid off and named, and a close that says nothing about the next file.
-- [ ] Each one: `cli.mjs lint --slug <slug>` with 0 errors and no unexplained narrative warning,
+- [x] Each one: `cli.mjs lint --slug <slug>` with 0 errors and no unexplained narrative warning,
       and `cli.mjs narrative --slug <slug> --answers <file>` passing the ten blind questions.
-- [ ] Every fact traces to the episode's own checked sources (the old `claims.md` for U02 and L08,
+- [x] Every fact traces to the episode's own checked sources (the old `claims.md` for U02 and L08,
       the topic check for H02 and H03). Nothing new is researched or invented.
-- [ ] `NOTES.md` gives the owner the old chapter names against the new, the shipped opening against
+- [x] `NOTES.md` gives the owner the old chapter names against the new, the shipped opening against
       the new one, where each loop lands, and what was deliberately dropped.
 - [ ] The owner has read the four and said whether they go on to pictures and narration.
 
 ## Steps
 
-- [ ] Four scripts, one agent each (done in parallel on 2026-10-13).
+- [x] Four scripts, one agent each (done in parallel on 2026-10-13).
 - [ ] Owner reads them beside the shipped films.
 - [ ] If the owner says go: produce each under its NEW slug, and stop the old project on
       /admin/videos first (the owner's rule of 2026-10-11: an approved slug never has its content

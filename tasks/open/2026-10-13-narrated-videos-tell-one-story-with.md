@@ -77,7 +77,7 @@ Read against the five delivered 奇聞檔案局 recuts, the rules themselves wer
       owner-driven route runs `cli.mjs narrative --slug`.
 - [x] Nothing in the prompts, the skill or the series docs tells a close to name the next video or
       the next file, and no fixture does either.
-- [ ] The owner has seen the proof: H01 (瑪麗賽勒斯特號) rewritten under the new rules, against the
+- [x] The owner has seen the proof: H01 (瑪麗賽勒斯特號) rewritten under the new rules, against the
       old script, script only (docs/videos/curio-h01-v2).
 
 ## Steps
