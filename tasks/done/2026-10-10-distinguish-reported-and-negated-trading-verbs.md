@@ -1,14 +1,14 @@
 ---
 id: 2026-10-10-distinguish-reported-and-negated-trading-verbs
 title: Distinguish reported and negated trading verbs from crypto recommendations
-status: open
+status: done
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: codex-news-crypto-policy
+claimed_at: 2026-10-13T03:39:06Z
 created_at: 2026-10-10T01:09:25Z
-completed_at:
-branch:
+completed_at: 2026-10-13T03:55:44Z
+branch: codex/news-crypto-policy-20261013
 depends_on:
   - 2026-10-10-news-disclaimer-correction-loop
 scope:
@@ -30,14 +30,15 @@ can hold future factually valid reporting.
 
 ## Definition of done
 
-- [ ] Supported reporting, regulation and explicit negation are distinguished
+- [x] Supported reporting, regulation and explicit negation are distinguished
       from a recommendation to trade, without weakening actual advice checks.
-- [ ] Existing held-candidate decisions and drafts are not automatically approved.
+- [x] Existing held-candidate decisions and drafts are not automatically approved.
 
 ## Steps
 
-- [ ] Reproduce the three stored examples and contrasting actionable advice.
-- [ ] Define a narrow context rule or replace the unconditional match with an
+- [x] Reproduce the three stored examples' false-positive contexts and contrasting
+      actionable advice with representative wording (see Notes).
+- [x] Define a narrow context rule or replace the unconditional match with an
       existing review gate; check multilingual behavior before implementation.
 
 ## How to verify
@@ -52,3 +53,16 @@ do not merely test rewritten synonyms that avoid the original false positive.
   editorial-holds-patches.json. Exact stored strings are retained as JSON
   pointer before/after preconditions. No policy change is attempted in the
   disclaimer-loop repair; keep this follow-up separate.
+- Regression fixtures cover the Bitfinex denied sale, ESMA regulated buying/selling
+  service, MoonPay not-advice FAQ, and Evernorth shareholder lockup contexts. The
+  source JSON was unavailable in this worktree, so these are reconstructed phrases
+  rather than byte-for-byte copies of the saved drafts. Contrasting direct advice
+  is checked in zh-TW, zh-CN, en, ja and ko, including advice against selling.
+- The hard gate now reads localized prose and treats transaction verbs and price
+  movement alone as reporting. It still blocks explicit reader instructions and
+  buy/sell signals. The change does not touch stored candidates, reviews or drafts;
+  the existing editorial judge must still decide market-led stories such as Bitmine.
+- Verification in the isolated worktree: 62 policy tests passed; 802 news tests
+  passed with 6 existing skips; Ruff, mypy app/tests, and check:tasks passed.
+  Full API pytest was started and interrupted at about 15% because the 7,680-test
+  run was much longer than the affected news suite; no failure had appeared.
