@@ -40,7 +40,12 @@ from app.guides.models import GuideArticle, GuideArticleLocale
 from app.guides.schemas import GuideDocument
 from app.models import AdminAuditLog, User
 from app.news_automation import ai, jobs, judge, pipeline, service, worker
-from app.news_automation.duplicates import DUPLICATE_UNCERTAIN, cleared_by_editor
+from app.news_automation.duplicates import (
+    DUPLICATE_UNCERTAIN,
+    cleared_by_editor,
+    closest_titles,
+    known_titles,
+)
 from app.news_automation.evidence import NewsInputTooLarge
 from app.news_automation.models import (
     LOCALES,
@@ -2576,6 +2581,55 @@ async def test_the_judge_is_shown_the_ten_closest_known_stories_for_a_duplicate(
     assert len(payload["known_stories"]) == 10
     assert payload["known_stories"][0] == "Model released"
     assert payload["sources"] == {"websites": 1, "first_party": False, "trusted_alone": False}
+
+
+@pytest.mark.asyncio
+async def test_cross_category_match_keeps_its_identity_in_the_judge_context(
+    factory: Factory, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    slug = f"crypto-news-meta-muse-wonder-models-{EVENT_DAY:%Y%m%d}"
+    matched_title = "Meta launches Muse Wonder and Muse Wonder Full AI models"
+    source_title = "Meta releases Muse Wonder and Wonder Full AI models"
+    async with factory() as session:
+        candidate = await seed_single_source_candidate(session)
+        candidate.source_title = source_title
+        await judge_on(session)
+        await not_first_party(session)
+        for number in range(12):
+            await seed_published_news(
+                session,
+                f"ai-news-muse-wonder-near-{number}-{EVENT_DAY:%Y%m%d}",
+                EVENT_DAY,
+                {"en": f"{source_title} update {number}"},
+            )
+        await seed_published_news(session, slug, EVENT_DAY, {"en": matched_title})
+        matched_id = await session.scalar(select(GuideArticle.id).where(GuideArticle.slug == slug))
+        await session.commit()
+        candidate_id = candidate.id
+        assert matched_title not in closest_titles(
+            source_title, await known_titles(session, candidate), limit=10
+        )
+
+    stage_one_mocks(monkeypatch)
+    monkeypatch.setattr(
+        ai, "jev_duplicate_check",
+        AsyncMock(return_value=("manual", 0.5, ["semantic_duplicate_uncertain"])),
+    )
+    async with factory() as session:
+        assert await pipeline.process_candidate(
+            session, Mock(), get_settings(), candidate_id
+        ) == "manual_review"
+    asked = judge_answers(monkeypatch, "duplicate", "manual")
+
+    await judged(factory, candidate_id)
+
+    payload = payload_of(asked)
+    assert len(payload["known_stories"]) == 10
+    assert any(
+        matched_title in title and slug in title and str(matched_id) in title
+        for title in payload["known_stories"]
+    )
+    assert payload["hold"]["code"] == DUPLICATE_UNCERTAIN
 
 
 REDRAFT_KEYS = COMMON_KEYS | {

@@ -1,13 +1,13 @@
 ---
 id: 2026-10-13-resolve-new-hourly-ai-news-review
 title: Resolve new hourly AI news review and redraft holds from October 11 onward
-status: review
+status: done
 priority: P1
 area: ops
 owner: codex-news-hourly-a8cd
 claimed_at: 2026-10-13T03:32:56Z
 created_at: 2026-10-13T03:32:51Z
-completed_at:
+completed_at: 2026-10-13T05:00:53Z
 branch: codex/news-hourly-review-20261013
 depends_on: []
 scope:

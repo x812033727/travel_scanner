@@ -218,6 +218,41 @@ describe("AdminNewsWorkspace", () => {
     expect(await screen.findByText(/已記下「不是重複」/)).toBeTruthy();
   });
 
+  it("keeps a cross-category duplicate visible when five closer titles fill the shortlist", async () => {
+    const sourceTitle = "Meta releases Muse Wonder and Wonder Full AI models";
+    const matchedTitle = "Meta launches Muse Wonder and Muse Wonder Full AI models";
+    const articleId = "00000000-0000-4000-8000-000000000081";
+    const slug = "ai-news-meta-muse-wonder-models-20261012";
+    const waiting = {
+      ...summary, id: "00000000-0000-4000-8000-000000000082", vertical: "crypto",
+      source_title: sourceTitle, error_code: "news_duplicate_uncertain", guide_article_id: null,
+    };
+    serveRows(waiting);
+    details[waiting.id] = {
+      ...detailOf(waiting),
+      // These are the five titles returned by the old closest-title shortlist.
+      similar_titles: Array.from({ length: 5 }, (_, index) => `${sourceTitle} update ${index}`),
+      assessments: [{
+        id: "duplicate-1", assessment_type: "duplicate", locale: null,
+        verdict: "manual", confidence: 0.96, provider: "jev", model: "jev", reasons: [],
+        details: { cross_category_matches: [{
+          kind: "published_article", id: articleId, vertical: "ai", title: matchedTitle,
+          slug, rationale: "Titles share meta, muse, wonder; event identity needs semantic review",
+        }] }, created_at: "2026-10-13T01:00:00Z",
+      }] as unknown as ReturnType<typeof detailOf>["assessments"],
+    };
+
+    render(<AdminNewsWorkspace />);
+    fireEvent.click(await screen.findByRole("button", { name: /Meta releases Muse Wonder/ }));
+    const match = await screen.findByText(matchedTitle);
+    const matchRow = match.closest("li");
+    expect(matchRow).toBe(match.closest("ol")?.firstElementChild);
+    expect(within(matchRow!).getByText(`${slug} · ${articleId}`)).toBeTruthy();
+    expect(within(matchRow!).getByText(/event identity needs semantic review/)).toBeTruthy();
+    expect(screen.getAllByText(/Meta releases Muse Wonder and Wonder Full AI models update/)).toHaveLength(5);
+    expect(actionButtons()).toEqual(["不是重複，繼續寫", "退件"]);
+  });
+
   it("re-checks a story whose sources changed against the current pages", async () => {
     const changed = { ...summary, id: "00000000-0000-4000-8000-000000000031", source_title: "A changed page", error_code: "news_evidence_changed" };
     serveRows(changed);
@@ -250,6 +285,42 @@ describe("AdminNewsWorkspace", () => {
       expect(link.getAttribute("target")).toBe("_blank");
       expect(link.getAttribute("rel")).toContain("noopener");
     }
+  });
+
+  it.each([
+    ["published", "news_ready_to_publish", "The checked five-locale article is waiting for the publish button.", "已發布", ["回報發布後重大錯誤"]],
+    ["rejected", "news_hard_checks_failed", "Format checks failed before the final rejection.", "已退件", []],
+    ["rejected", "news_locale_review_failed", "The translation review failed before the final rejection.", "已退件", []],
+  ])("keeps the former %s / %s hold as collapsed history after a final decision", async (status, errorCode, errorDetail, finalLabel, expectedActions) => {
+    const row = { ...summary, status, error_code: errorCode, error_detail: errorDetail, human_decision: status === "rejected" ? "reject" : "publish" };
+    serveRows(row);
+    render(<AdminNewsWorkspace />);
+    const candidate = await screen.findByRole("button", { name: /Official AI API update/ });
+    expect(within(candidate).getByText(finalLabel)).toBeTruthy();
+    expect(screen.queryByText(adminNewsCopy("zh-TW").holds[errorCode as keyof ReturnType<typeof adminNewsCopy>["holds"]])).toBeNull();
+
+    fireEvent.click(candidate);
+    await screen.findByText(/Official release/);
+    expect(screen.getByText(adminNewsCopy("zh-TW").next[status === "published" ? "published" : "closed"])).toBeTruthy();
+    const oldHold = screen.getByText(adminNewsCopy("zh-TW").holds[errorCode as keyof ReturnType<typeof adminNewsCopy>["holds"]]);
+    const history = oldHold.closest("details");
+    expect(history).not.toBeNull();
+    expect(history?.open).toBe(false);
+    expect(within(history!).getByText(errorDetail)).toBeTruthy();
+    expect(actionButtons()).toEqual(expectedActions);
+  });
+
+  it("keeps the hold and repair instructions prominent while a candidate still needs review", async () => {
+    const row = { ...summary, error_code: "news_hard_checks_failed", error_detail: "Format checks failed." };
+    serveRows(row);
+    render(<AdminNewsWorkspace />);
+    const candidate = await screen.findByRole("button", { name: /Official AI API update/ });
+    expect(within(candidate).getByText("格式檢查沒通過")).toBeTruthy();
+    fireEvent.click(candidate);
+    await screen.findByText(/Official release/);
+    const hold = screen.getAllByText("格式檢查沒通過").at(-1);
+    expect(hold?.closest("details")).toBeNull();
+    expect(screen.getByText(/請到文章編輯器修正，再按「重新查核」/)).toBeTruthy();
   });
 
   it.each([

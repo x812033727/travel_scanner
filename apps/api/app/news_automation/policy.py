@@ -44,17 +44,33 @@ _CRYPTO_ZH_READER_ADVICE = re.compile(
     rf"(?:要|應該|应该|最好|請|请|不要)[^。！？.!?；;\n]{{0,8}}{_CRYPTO_TRADE_VERB}"
 )
 _CRYPTO_ZH_IMPERATIVE = re.compile(
-    rf"(?:^|[。！？；;]\s*)(?:(?:現在|现在)\s*就|立即|馬上|马上|請|请)"
+    rf"(?:^|[。！？；;]\s*)(?:(?:現在|现在)(?:\s*就)?|立即|馬上|马上|請|请)"
     rf"\s*{_CRYPTO_TRADE_VERB}"
+)
+_CRYPTO_ZH_BARE_IMPERATIVE = re.compile(
+    rf"(?:^|[。！？；;]\s*){_CRYPTO_TRADE_VERB}"
+    r"[^。！？.!?；;，,\n]{1,20}[，,]\s*"
+    r"(?:等待|等候)[^。！？.!?；;\n]{0,12}(?:上漲|上涨|獲利|获利|反彈|反弹)"
+)
+_CRYPTO_ZH_STANDALONE_IMPERATIVE = re.compile(
+    rf"(?:^|[。！？；;]\s*){_CRYPTO_TRADE_VERB}\s*"
+    r"(?:[^的，,。！？.!?；;\n]{0,10}(?:幣|币)|股票|股份|持股|[a-z0-9]{2,12})"
+    r"[。！？.!?]"
 )
 _CRYPTO_EN_ADVICE = re.compile(
     r"\b(?:you|readers?|investors?)\s+(?:should|must|need to|ought to)\s+"
     r"(?:not\s+)?(?:buy|sell)\b|^(?:buy|sell)(?:\s+\w+){0,4}\s+now\b|"
     r"^(?:buy|sell)\s+(?:this|these|your)\b|"
+    r"^(?:buy|sell)(?:\s+\w+){1,4}\s+before\b|"
     r"\b(?:recommend|advise|suggest)\s+(?:buying|selling|to buy|to sell)\b"
 )
 _CRYPTO_EN_NEGATED_CUE = re.compile(r"\b(?:not|never|no|without|doesn't|don't)\s*$")
 _CRYPTO_EN_NEGATED_SIGNAL = re.compile(r"\b(?:not|no|without)\s+(?:an?\s+)?$")
+_CRYPTO_EN_STANDALONE_IMPERATIVE = re.compile(
+    r"(?:^|[.!?]\s+)(?:buy|sell)\s+"
+    r"(?!(?:orders?|signals?|sides?|walls?|pressure|volume|interest)\b)"
+    r"(?:[a-z0-9-]+\s+){0,3}[a-z0-9-]+[.!?](?:\s|$)"
+)
 _CRYPTO_JA_ADVICE = re.compile(
     r"(?:今すぐ(?:買う|売る|購入|売却)|(?:買う|売る|購入|売却)す?べき|"
     r"(?:買う|売る|購入|売却)ことを(?:勧め|推奨))"
@@ -75,7 +91,12 @@ def _crypto_recommendation(document: GuideDocument) -> bool:
                     prose[max(0, match.start() - 16):match.start()]
                 ):
                     return True
-        if _CRYPTO_ZH_READER_ADVICE.search(prose) or _CRYPTO_ZH_IMPERATIVE.search(prose):
+        if any(pattern.search(prose) for pattern in (
+            _CRYPTO_ZH_READER_ADVICE, _CRYPTO_ZH_IMPERATIVE, _CRYPTO_ZH_BARE_IMPERATIVE,
+            _CRYPTO_ZH_STANDALONE_IMPERATIVE,
+        )):
+            return True
+        if _CRYPTO_EN_STANDALONE_IMPERATIVE.search(prose):
             return True
         if any(pattern.search(prose) for pattern in (_CRYPTO_JA_ADVICE, _CRYPTO_KO_ADVICE)):
             return True

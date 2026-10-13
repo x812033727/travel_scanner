@@ -1,13 +1,13 @@
 ---
 id: 2026-10-13-hide-stale-news-hold-instructions-after
 title: Hide stale news hold instructions after final decision
-status: open
+status: done
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: codex-stale-ui-a8cd
+claimed_at: 2026-10-13T04:29:24Z
 created_at: 2026-10-13T04:12:27Z
-completed_at:
+completed_at: 2026-10-13T04:48:06Z
 branch: codex/news-hourly-review-20261013
 depends_on: []
 scope:
@@ -32,17 +32,17 @@ presented as history rather than a current instruction.
 
 ## Definition of done
 
-- [ ] Published and rejected news detail cards make the final state primary and
+- [x] Published and rejected news detail cards make the final state primary and
       do not instruct the editor to publish, rewrite or retry a resolved item.
-- [ ] Prior hold reasons remain discoverable as historical diagnostics when
+- [x] Prior hold reasons remain discoverable as historical diagnostics when
       useful, without looking like the current next action.
 
 ## Steps
 
-- [ ] Trace where the candidate detail renders the status, hold label and
+- [x] Trace where the candidate detail renders the status, hold label and
       explanatory text; make the final-state branch explicit.
-- [ ] Add regression tests for a published candidate retaining an old
-      `five_locale_ready` hold reason and a rejected candidate retaining a
+- [x] Add regression tests for a published candidate retaining an old
+      `news_ready_to_publish` hold reason and a rejected candidate retaining a
       hard-check/locale hold reason. Preserve actionable text for real holds.
 
 ## How to verify
@@ -57,3 +57,8 @@ state, former reason and next-action copy must not contradict one another.
   `docs/news-hourly-review-2026-10-13.md`; no public article fix is needed.
 - Keep this distinct from news pipeline state changes and the cross-category
   duplicate follow-up; only admin display wording is in scope.
+- Published, rejected and duplicate list rows now omit stale hold labels. The
+  detail keeps their old error code and explanation behind a neutral, collapsed
+  Reasons disclosure; unresolved holds keep their existing prominent guidance.
+- Focused `admin-news-workspace.test.tsx`: 64 passed on 2026-10-13.
+- `npm run lint:web` and `npm run typecheck:web`: passed on 2026-10-13.

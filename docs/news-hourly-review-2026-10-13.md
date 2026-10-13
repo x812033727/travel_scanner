@@ -60,15 +60,18 @@ not an approval of either draft.
   the live *all-cohort* snapshot was 46 review, 24 redraft, 3 failures, 595
   published and 935 rejected.
 - The fixed Decrypt feed's wrong CRYPTO classification can hide duplicates of
-  published AI articles: `duplicates.py` screens within the candidate's
-  vertical. This same-event miss is filed as
-  `tasks/open/2026-10-13-detect-duplicate-hourly-news-events-across.md`.
+  published AI articles. The cross-category review guard is included in
+  [draft PR #1480](https://github.com/x812033727/travel_scanner/pull/1480),
+  tracked by
+  `tasks/done/2026-10-13-detect-duplicate-hourly-news-events-across.md`.
+  Its bounded newest-row screen has a documented recall limit, tracked in
+  `tasks/open/2026-10-13-improve-30-day-cross-category-news.md`.
   Candidate-category correction remains separately tracked in
   `tasks/open/2026-10-10-add-audited-held-news-category-correction.md`.
 - Published candidate cards still showed the old `五語已就緒，待發布` instruction
-  alongside `已發布`; rejected cards similarly retained an old hold label.
-  The display-only follow-up is
-  `tasks/open/2026-10-13-hide-stale-news-hold-instructions-after.md`.
-- A separate [draft PR #1479](https://github.com/x812033727/travel_scanner/pull/1479)
-  fixes false positives for reported or negated crypto trading words. It is
-  not merged or deployed and did not change these candidate outcomes.
+  alongside `已發布`; rejected cards similarly retained an old hold label. The
+  display fix is also in draft PR #1480 and tracked by
+  `tasks/done/2026-10-13-hide-stale-news-hold-instructions-after.md`.
+- Draft PR #1480 includes the crypto recommendation policy correction and
+  regression tests for direct trade instructions. These code changes have not
+  been merged or deployed and did not change the recorded candidate outcomes.

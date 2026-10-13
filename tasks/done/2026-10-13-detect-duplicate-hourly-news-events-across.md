@@ -1,18 +1,24 @@
 ---
 id: 2026-10-13-detect-duplicate-hourly-news-events-across
 title: Detect duplicate hourly news events across feed categories
-status: open
+status: done
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: codex-dedup
+claimed_at: 2026-10-13T04:29:16Z
 created_at: 2026-10-13T04:01:10Z
-completed_at:
+completed_at: 2026-10-13T05:00:20Z
 branch: codex/news-hourly-review-20261013
 depends_on: []
 scope:
   - apps/api/app/news_automation/duplicates.py
+  - apps/api/app/news_automation/judge.py
+  - apps/api/app/news_automation/pipeline.py
   - apps/api/tests/test_news_automation.py
+  - apps/api/tests/test_news_judge.py
+  - apps/api/tests/test_news_pipeline.py
+  - apps/web/components/admin-news-workspace.tsx
+  - apps/web/components/admin-news-workspace.test.tsx
   - docs/news-automation.md
 ---
 
@@ -38,22 +44,22 @@ cross-category duplicate check.
 
 ## Definition of done
 
-- [ ] A candidate about the same event as an existing published article is
+- [x] A candidate about the same event as an existing published article is
       identified for duplicate review even if their verticals differ, without
       auto-rejecting unrelated stories that share company or product names.
-- [ ] The duplicate evidence includes the matched article identity, event
+- [x] The duplicate evidence includes the matched article identity, event
       rationale and an auditable decision; no existing article is altered.
-- [ ] The query/model-call budget is bounded for the hourly scanner, including
+- [x] The query/model-call budget is bounded for the hourly scanner, including
       large backlogs and ambiguous CJK text. Automatic publication must not
       proceed on an unresolved credible duplicate.
 
 ## Steps
 
-- [ ] Inspect current title/event matching and the scanner's category
+- [x] Inspect current title/event matching and the scanner's category
       inheritance. Decide whether a cheap cross-category candidate pool can be
       screened before any paid comparison; keep the existing source/evidence
       ownership gates.
-- [ ] Add focused regression cases for the Meta Muse cross-category miss and
+- [x] Add focused regression cases for the Meta Muse cross-category miss and
       a same-brand different-event non-match. Document the review behavior and
       costs in `docs/news-automation.md`.
 
@@ -74,3 +80,29 @@ any model usage must be visible in the test assertions.
   attaching a second source to an open candidate and requires a cost decision;
   `2026-10-10-add-audited-held-news-category-correction` concerns correcting
   the category of one held candidate. Coordinate the designs before coding.
+- 2026-10-13 implementation: `known_stories` screens at most 160 recent
+  published search rows and 60 active candidate rows across other categories,
+  retaining at most eight matches inside the existing 60-title, one-Jev-call
+  budget. The duplicate assessment retains each matching article/candidate ID,
+  published slug, title/event-cue rationale, Jev verdict and the resulting review
+  hold. The judge sees those identities even when closer same-category titles fill
+  the ordinary top-ten context. The human duplicate hold likewise shows the
+  persisted match identity and rationale ahead of the five closest titles.
+  A Jev `duplicate` cross-category answer stays
+  in manual review; so does a CJK cross-category match even when Jev says
+  `distinct`. Different
+  event cues, such as launch versus later price changes, do not enter that
+  cross-category match list. No published article or candidate evidence is
+  modified by the screen.
+- Verification: four cross-category pipeline tests, one CJK title-screen test
+  and the judge-context identity regression passed. The affected pipeline,
+  automation and policy suites passed with 394 passed, 6 skipped; the complete
+  judge suite passed with 213 tests. Ruff and targeted mypy passed for the
+  changed Python files. The human-admin regression with five closer titles
+  passed in the 65-test focused Vitest suite; web lint and typecheck passed.
+  PR review and deployment remain separate.
+- The bounded top-160 published-search-row pool can miss an older matching
+  article still inside the 30-day window when newer articles fill the cap.
+  This recall limit is explicit in `docs/news-automation.md`; improving the
+  indexed retrieval strategy is tracked in
+  `2026-10-13-improve-30-day-cross-category-news`.

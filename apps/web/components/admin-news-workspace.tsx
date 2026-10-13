@@ -147,6 +147,31 @@ function named(names: Record<string, string>, key: string) {
   return names[key] ?? key;
 }
 
+function isResolved(candidate: NewsCandidateSummary): boolean {
+  return candidate.status === "published" || candidate.status === "rejected" || candidate.status === "duplicate";
+}
+
+type CrossCategoryMatch = { id: string; title: string; slug?: string; rationale?: string };
+
+function crossCategoryMatches(candidate: NewsCandidate | null | undefined): CrossCategoryMatch[] {
+  // The API sends assessments oldest first. Use only the latest duplicate check so an
+  // earlier evidence version cannot appear as the reason for the current hold.
+  const latest = candidate?.assessments.filter((item) => item.assessment_type === "duplicate").at(-1);
+  const stored = latest?.details.cross_category_matches;
+  if (!Array.isArray(stored)) return [];
+  return stored.flatMap((item: unknown) => {
+    if (item === null || typeof item !== "object") return [];
+    const match = item as Record<string, unknown>;
+    if (typeof match.id !== "string" || typeof match.title !== "string") return [];
+    return [{
+      id: match.id,
+      title: match.title,
+      slug: typeof match.slug === "string" ? match.slug : undefined,
+      rationale: typeof match.rationale === "string" ? match.rationale : undefined,
+    }];
+  });
+}
+
 export function AdminNewsWorkspace() {
   const locale = useLocale();
   const copy = adminNewsCopy(locale);
@@ -275,6 +300,7 @@ export function AdminNewsWorkspace() {
   // judge row is history for the table below, not the answer to this hold.
   const newestJudge = detail?.assessments.filter((item) => item.assessment_type === "judge").at(-1);
   const judgement = detail?.judge_decision && (newestJudge?.details.hold === detail.error_code || newestJudge?.details.failure === detail.error_code) ? newestJudge : undefined;
+  const duplicateMatches = crossCategoryMatches(detail);
 
   const act = (name: Action) => run(async () => {
     if (!detail || !reason.trim()) { setError(copy.reasonFirst); return; }
@@ -408,7 +434,7 @@ export function AdminNewsWorkspace() {
                 <span className={`rounded-full px-2 py-1 text-xs font-bold ${statusTone[item.status] ?? "bg-[var(--paper)]"}`}>{statusName(item.status)}</span>
                 {badgeName(item) && <span className="rounded-full border border-[var(--line)] px-2 py-1 text-xs font-bold">{badgeName(item)}</span>}
               </span>
-              {holdName(item) && <span className="mt-2 block text-sm font-semibold">{holdName(item)}</span>}
+              {!isResolved(item) && holdName(item) && <span className="mt-2 block text-sm font-semibold">{holdName(item)}</span>}
               <strong className="mt-1 block">{item.source_title}</strong>
               <span className="mt-1 block text-xs text-[var(--muted)]">{item.vertical.toUpperCase()} · {item.event_date ?? item.created_at.slice(0, 10)}</span>
             </button>
@@ -422,8 +448,14 @@ export function AdminNewsWorkspace() {
         {!detail ? <Empty>{copy.pickOne}</Empty> : <section className="space-y-5">
           <div className={panelClass}><div className="flex flex-wrap items-center gap-2"><span className={`rounded-full px-2 py-1 text-xs font-bold ${statusTone[detail.status] ?? "bg-[var(--paper)]"}`}>{statusName(detail.status)}</span><strong>{detail.source_title}</strong></div>
             <a href={detail.canonical_url} target="_blank" rel="noopener noreferrer" className="mt-2 block break-all text-sm text-[var(--teal)] underline">{detail.canonical_url}</a>
-            {detail.error_code && <p className="mt-3 text-sm font-semibold text-red-700">{holdName(detail)}</p>}
-            {detail.error_detail && <p className="mt-1 break-words text-xs text-[var(--muted)]">{detail.error_detail}</p>}
+            {isResolved(detail) ? (detail.error_code || detail.error_detail) && <details className="mt-3 text-sm text-[var(--muted)]">
+              <summary className="cursor-pointer">{copy.reasons}</summary>
+              {detail.error_code && <p className="mt-2 font-semibold">{holdName(detail)}</p>}
+              {detail.error_detail && <p className="mt-1 break-words text-xs">{detail.error_detail}</p>}
+            </details> : <>
+              {detail.error_code && <p className="mt-3 text-sm font-semibold text-red-700">{holdName(detail)}</p>}
+              {detail.error_detail && <p className="mt-1 break-words text-xs text-[var(--muted)]">{detail.error_detail}</p>}
+            </>}
           </div>
           <div className={`${panelClass} space-y-3`}>
             <h2 className="text-xl font-bold">{copy.nextStep}</h2>
@@ -441,8 +473,16 @@ export function AdminNewsWorkspace() {
             </p>}
             {situation === "duplicate" && <div>
               <h3 className="font-semibold">{copy.similarTitles}</h3>
-              {detail.similar_titles?.length
-                ? <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm">{detail.similar_titles.map((title) => <li key={title}>{title}</li>)}</ol>
+              {duplicateMatches.length || detail.similar_titles?.length
+                ? <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm">
+                  {duplicateMatches.map((match) => <li key={match.id}>
+                    <strong>{match.title}</strong>
+                    <span className="block break-all text-xs text-[var(--muted)]">{match.slug ? `${match.slug} · ` : ""}{match.id}</span>
+                    {match.rationale && <span className="block text-xs text-[var(--muted)]">{match.rationale}</span>}
+                  </li>)}
+                  {detail.similar_titles?.filter((title) => !duplicateMatches.some((match) => match.title === title))
+                    .map((title) => <li key={title}>{title}</li>)}
+                </ol>
                 : <p className="mt-2 text-sm text-[var(--muted)]">{copy.noSimilarTitles}</p>}
             </div>}
             {actions.length > 0 && <div className="space-y-3 border-t border-[var(--line)] pt-3">
