@@ -4880,6 +4880,35 @@ PASS is DURATION_ONLY for the one rebound hash below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Panel count test increment: 1 file (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013i`. Author: `claude-opus-5-5-narrative`. Scope: DURATION_ONLY for the one changed binding below, reviewed in the worktree `claude/youtube-narrative-flow-1cadbc` whose HEAD is `0db4f70565515ae090ea4a0528236a43b9c87319` ("fix(video): the worker's panel test counts the questions instead of pinning ten"), the commit that made the change. When the review began no tracked file was modified in the working tree. `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/automation.test.mjs` and named nothing else. This reviewer wrote none of the change, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edited only this report and review.json.
+
+- `tools/video/automation/automation.test.mjs`: `58039686cde482ae0bf834a938ffbfb602c472678bbca72db7e915c32c4b909b` -> `d21283b9e19c9442c42b90e5700b2fb2c6ed0a1992fde489480e6856df63c8fe`.
+
+Baseline: SHA-256 over `git show 0db4f7056^:tools/video/automation/automation.test.mjs` is `58039686cde482ae0bf834a938ffbfb602c472678bbca72db7e915c32c4b909b`, exactly the value this receipt carried before this increment, which proves the binding was current when the change started. The parent `4aad5b40f` is the receipt commit of the section above, so the increments join without a gap, and `git log 548cb13fc..HEAD -- tools/video/automation/automation.test.mjs` lists only `0db4f7056`. SHA-256 over `git show HEAD:<file>` and over the working-tree file are both the new value; `git ls-files --eol` reports LF in index and worktree. By `git show --numstat` the commit touches this one file only, one insertion and one deletion; it stays at 7,585 lines and grows from 539,362 to 539,432 bytes. The other 107 bindings are untouched by this change and are not covered afresh. Every prior increment is preserved and the registry remains 108 files.
+
+What the change is: `git show 0db4f7056` was read whole. It is one line in the test "the storytelling panel reads the script blind between the listener and the …": `assert.equal(call.payload.questions.length, 10)` becomes `assert.equal(call.payload.questions.length, NARRATIVE_PANEL.length, "every question, the opening_hooks one included")`. The `10` there was a count of panel questions, not minutes or seconds. `NARRATIVE_PANEL` was already imported from `../core/narrative.mjs` (line 16) and used by `panelAnswers` (line 1921); importing that module in the working tree gives 11 questions, the last `opening_hooks`, which the section "Hooked opening increment" above recorded as the panel's eleventh question added in `548cb13fc`. The surrounding assertions of that test (payload keys, `PANEL_INSTRUCTIONS`, the narration heading, the verdict and the second `narrativeGate` call) are unchanged context.
+
+Findings, duration rules: none moved. Counted in both revisions, every duration identifier appears exactly as often: `target_minutes` 37, `MIN_EPISODE_MINUTES` once, `VIDEO_MIN_EPISODE_MINUTES` once, `draftBudget` four times, `estimateTimeline` twice, `total_frames` three times, "minute" 51, "seconds" 12, 秒 18; `minEpisodeMinutes`, `effectiveEpisodeMinutes`, `DEFAULT_TARGET_MINUTES`, `duration_s`, `480`, `14,400`, `14400` and 分鐘 in neither. The five `target_minutes, 10` assertions nearby (lines 1836, 1874, 1997, 2002 and 2007 at HEAD: the explainer's ten-minute aim kept in `auto.json` and in the state) are present five times in both revisions and lie outside the one-line hunk; the only literal `length, 10` in the file, once before and zero times after, is the panel-count assertion this commit replaced. No file under `apps/api`, `tools/video/core`, `tools/video/qa` or `docs/videos/long-form` is changed by this commit: the 8-minute non-drama floor, the explainer's 10-minute default and 8–20 range, drama's 1–8, the brand story's 13 minutes, the QA `assemble` item's 480 s / 14,400 frames at 30 fps and the chapter minimum of 10 s stand exactly as the increments above bound them.
+
+Ran (in the worktree, Node 24 on Windows, `VIDEO_MIN_EPISODE_MINUTES` unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which named exactly this one stale binding and no other;
+- `git show 0db4f7056` read whole, with `--stat` and `--numstat`; `git rev-parse HEAD 0db4f7056^`; `git log 548cb13fc..HEAD -- <file>`; `git status --short`; `git ls-files --eol`;
+- SHA-256 over the parent blob, the HEAD blob and the working-tree file, compared against the old receipt;
+- a count of every duration identifier above, and of `target_minutes, 10`, `length, 10` and `NARRATIVE_PANEL`, in the parent blob against the HEAD blob;
+- an import of `tools/video/core/narrative.mjs` to read `NARRATIVE_PANEL.length` and its ids;
+- `node --test --test-skip-pattern="a project another process holds" tools/video/automation/automation.test.mjs`: 235 passed, 0 failed, 0 skipped (the skipped-by-pattern test hangs on Windows for an unrelated ESM path reason and was not run).
+
+The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims: this review does not judge the eleventh panel question or the panel's wording as product choices, and it does not run the test excluded by the skip pattern. No writer, planner or panel was run against a real model, no narration was synthesized, no cut was measured and no host was contacted. The full `test:tools` suite, API tests, ruff, mypy, Vitest, web lint and typecheck were not run, and no CI result is claimed. This increment binds the file as committed at `0db4f7056`; a later commit, rebase or merge that changes it, or either receipt file, needs its own follow-up increment.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -4936,7 +4965,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `58039686cde482ae0bf834a938ffbfb602c472678bbca72db7e915c32c4b909b` |
+| `tools/video/automation/automation.test.mjs` | `d21283b9e19c9442c42b90e5700b2fb2c6ed0a1992fde489480e6856df63c8fe` |
 | `tools/video/automation/discuss.mjs` | `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21` |
 | `tools/video/automation/flow.mjs` | `0690b19c0ae2d5ba7a52817eb4b0a4f0d14b1ea89e6c5617bbf087d66306bb49` |
 | `tools/video/automation/prompts.mjs` | `11b023d69f7616e04d71b18bb775cb06964b7729b9ee1a1ea1636d93aca53abf` |
