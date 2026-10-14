@@ -12,6 +12,7 @@ branch: codex/deepmind-news-redirects-20261014
 depends_on: []
 scope:
   - apps/api/app/news_automation/fetch.py
+  - apps/api/app/news_automation/service.py
   - apps/api/app/news_automation/sources.json
   - apps/api/app/news_automation/sources_cli.py
   - apps/api/tests/test_news_automation.py
@@ -85,3 +86,8 @@ cd apps/api && uv run pytest tests/test_news_automation.py -q
   deployed. Preserve the existing row if validation fails during that run. A successful
   source validation reads only the first feed article; verify the cited robotics URL
   through the next full scan before calling the live source recovered.
+- A source definition update clears its saved feed ETag and Last-Modified after
+  validation and makes an enabled source due for a new scan. Otherwise a 304 can hide
+  entries from the newly allowed redirect hosts. Failed validation rolls the update
+  back, including the validators and scan schedule. An article already outside the
+  source's age window still requires a separate targeted fetch for verification.

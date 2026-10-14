@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import sys
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, cast
 from urllib.parse import urlsplit
@@ -245,6 +246,82 @@ async def test_run_selects_one_exact_url_for_dry_run_and_apply_without_other_wri
 
 
 @pytest.mark.asyncio
+async def test_targeted_definition_update_reloads_feed_without_cached_validators(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    engine = create_async_engine(f"sqlite+aiosqlite:///{tmp_path / 'sources.db'}")
+    tables = cast(list[Table], [User.__table__, NewsSource.__table__, AdminAuditLog.__table__])
+    async with engine.begin() as connection:
+        await connection.run_sync(lambda sync: Base.metadata.create_all(sync, tables=tables))
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    future = datetime(2099, 1, 1, tzinfo=UTC)
+    async with factory() as session:
+        session.add(User(email="owner@example.com", password_hash="unused", is_admin=True))
+        session.add_all(
+            [
+                NewsSource(
+                    name=row.name,
+                    url=row.url,
+                    format=row.format,
+                    role=row.role,
+                    vertical=row.vertical,
+                    is_first_party=row.is_first_party,
+                    enabled=True,
+                    allowed_redirect_hosts_json=[],
+                    config_json=row.config,
+                    etag='"cached"',
+                    last_modified="Wed, 01 Jan 2025 00:00:00 GMT",
+                    next_scan_at=future,
+                )
+                for row in rows()
+            ]
+        )
+        await session.commit()
+    desired = rows()
+    desired[0] = desired[0].model_copy(
+        update={"allowed_redirect_hosts": ["new.example"], "config": {"article_classes": ["story"]}}
+    )
+    desired[1] = desired[1].model_copy(update={"scan_interval_minutes": 120})
+    source_file = tmp_path / "reviewed.json"
+    source_file.write_text(
+        json.dumps({"sources": [row.model_dump(mode="json") for row in desired]}),
+        encoding="utf-8",
+    )
+
+    async def validate_selected(source: NewsSource, **_kwargs: Any) -> None:
+        assert source.url == GOOD
+
+    monkeypatch.setattr(sources_cli, "SessionFactory", factory)
+    monkeypatch.setattr(sources_cli, "engine", engine)
+    monkeypatch.setattr(service, "validate_source_configuration", validate_selected)
+    started = datetime.now(UTC)
+    report = await sources_cli.run(
+        source_file,
+        apply=True,
+        actor_email="owner@example.com",
+        source_url=GOOD,
+        preserve_on_validation_failure=True,
+    )
+    finished = datetime.now(UTC)
+    async with factory() as session:
+        stored = {row.url: row for row in await session.scalars(select(NewsSource))}
+        audits = list(await session.scalars(select(AdminAuditLog.action)))
+        assert stored[GOOD].allowed_redirect_hosts_json == ["new.example"]
+        assert stored[GOOD].config_json == {"article_classes": ["story"]}
+        assert stored[GOOD].etag is None
+        assert stored[GOOD].last_modified is None
+        assert started <= stored[GOOD].next_scan_at.replace(tzinfo=UTC) <= finished
+        assert stored[BAD].scan_interval_minutes == 60
+        assert stored[BAD].etag == '"cached"'
+        assert stored[BAD].last_modified == "Wed, 01 Jan 2025 00:00:00 GMT"
+        assert stored[BAD].next_scan_at.replace(tzinfo=UTC) == future
+    await engine.dispose()
+    assert report["summary"]["failed_validation"] == 0
+    assert [item["url"] for item in report["sources"]] == [GOOD]
+    assert audits == ["news_source_updated"]
+
+
+@pytest.mark.asyncio
 async def test_run_rejects_an_exact_url_missing_from_the_file_before_opening_a_session(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:
@@ -273,6 +350,7 @@ async def test_strict_targeted_validation_failure_preserves_existing_source_and_
     async with engine.begin() as connection:
         await connection.run_sync(lambda sync: Base.metadata.create_all(sync, tables=tables))
     factory = async_sessionmaker(engine, expire_on_commit=False)
+    future = datetime(2099, 1, 1, tzinfo=UTC)
     async with factory() as session:
         session.add(User(email="owner@example.com", password_hash="unused", is_admin=True))
         session.add_all(
@@ -289,6 +367,8 @@ async def test_strict_targeted_validation_failure_preserves_existing_source_and_
                     config_json=row.config,
                     last_status="succeeded",
                     etag='"old"',
+                    last_modified="Wed, 01 Jan 2025 00:00:00 GMT",
+                    next_scan_at=future,
                 )
                 for row in rows()
             ]
@@ -326,6 +406,8 @@ async def test_strict_targeted_validation_failure_preserves_existing_source_and_
         assert stored[GOOD].allowed_redirect_hosts_json == ["old.example"]
         assert stored[GOOD].last_status == "succeeded"
         assert stored[GOOD].etag == '"old"'
+        assert stored[GOOD].last_modified == "Wed, 01 Jan 2025 00:00:00 GMT"
+        assert stored[GOOD].next_scan_at.replace(tzinfo=UTC) == future
         assert stored[BAD].scan_interval_minutes == 60
     await engine.dispose()
     assert report["sources"] == [
