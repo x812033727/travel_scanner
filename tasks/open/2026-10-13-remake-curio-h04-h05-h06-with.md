@@ -289,3 +289,35 @@ windows and another narrative/timeline/audio binding. No episode has an
 approved complete storyboard, thumbnail, full render, final CC/MP4, QA,
 upload package, playback acceptance or Studio upload. Keep this ticket claimed
 and PR #1484 draft; the next visual production route needs an owner decision.
+
+2026-10-14 no-cost rough-cut checkpoint: the owner chose original source cards
+and isolated audio rough cuts before any further paid images. H04 now has two
+original source-bound SVG candidates and a 20.700-second, three-scene opening
+preview; H06 has two SVG candidates and a 15.433-second, three-scene static and
+reveal preview with a two-line CC stress test. H05 has two isolated approved-WAV
+previews: three opening source cards (14.567 seconds) and the tail-stairs to
+night-clouds transition (18.033 seconds). A source-safe `forest-unknown` SVG
+was also substituted for the latter preview's gray placeholder in an isolated
+second 18.033-second cut, but the night-cloud-to-card jump is conspicuous and
+the whole preview has not been accepted. H05's tail-stairs source footer
+touches double-line CC in the formal template; an isolated 80px raise clears
+720p/1080p samples but has not been formally adopted. Sampled frames and cue
+timings were checked; complete normal-speed audible playback and owner visual
+acceptance remain pending. No paid request or formal script, timeline, WAV,
+approval, manifest, or ledger mutation occurred. See the dated rough-cut
+records in each v2 docs directory.
+
+The 50% illustration-time calculations remain **conditional allocations**, not
+completed usable frames: H04's two opening diagram substitutions would reduce
+planned shot time to 7,561/15,827 (47.7728%); two proposed source-safe shots
+of 143+231 frames would yield 7,935/15,827 (50.1358%) if both pass. H06's
+two diagram substitutions would reduce it to 7,249/15,028 (48.2366%);
+two proposed shots of 214+154 frames would yield 7,617/15,028 (50.6854%)
+only if both pass. H05 presently allocates 9,053/16,204 (55.8689%) to 58
+shot slots, but only night-clouds is a single-image candidate; substituting a
+source card for forest-unknown would leave 8,888/16,204 (54.8507%) before
+further art. A proposed next paid pilot is two named shots per episode,
+one MiniMax image and one normal judge per shot, no retries or bulk generation:
+six image/judge pairs, roughly US$0.081 at the last actual unit price. This is
+not yet authorized or run. The rough cuts must be watched, the H05 footer
+fixed, and all new formal hashes and gates reopened if any diagrams are adopted.

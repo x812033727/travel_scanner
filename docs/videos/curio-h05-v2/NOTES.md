@@ -75,3 +75,7 @@
 以 `tts --refresh-evidence` 僅用已核對快取重建，**0 次合成、0 計費字元**；108 句 WAV、旁白總檔 SHA 與逐句時長皆未變。新的 `timeline.json` SHA-256 `e1cceb2c0cd511f5c67b4e4c34de201036745ed20cf6e48ad7f85f9a000666e9`。舊轉錄 108／108 句仍能按音檔 SHA 沿用，12 句標記未改，未重跑外部 check-audio。`review-push --gate audio` 已送新時間軸音訊卡；站主聽審後，主製作代理執行 `review-pull --gate audio` exit 0，正式 `approvals.json` 記錄本時間軸 SHA 已核准（2026-10-14T04:07:53.585Z）。詳細快照、驗證與送審／讀回收據見 [音訊關卡紀錄](mixed-three-card-audio-gate-20261014.md)。
 
 已依單張授權完成 [`night-clouds` 氣氛圖小樣](night-clouds-one-shot-pilot-20261014.md)：`video.json` 新 SHA-256 `05abe8cf0cd4680a12e911feb118e6d3dec88c20dbba0f8b8e7ac65b51d0d870`，敘事／口播 hash 仍相同，音訊時間軸及核准仍有效。1 次 MiniMax 圖與 1 次 judge 新增 US$0.0135；模型 10/10 PASS，人工只接受為單鏡候選，前後鏡實速銜接及明亮雲緣的風格仍待驗，未送 storyboard。
+
+核准旁白的兩段隔離有聲草剪、三卡和夜雲前後銜接抽格、尾梯來源欄 720p／1080p CC 安全區候選、剩餘 57 shot 的最小下一批，見 [離線草剪與安全區收據](offline-approved-roughcut-20261014.md)。尚未全段實速看聽、未採用來源欄候選，正式時間軸與核准未改。
+
+另完成 [forest-unknown 來源卡隔離草剪](forest-unknown-sourcecard-offline-20261014.md)：候選 SVG 已留在 diagrams，但正式 `video.json` 仍為 shot；新舊兩版有聲 MP4 與逐檔收據並存。夜雲到米白字卡仍有明顯風格跳動，未宣稱整段通過。
