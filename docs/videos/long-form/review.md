@@ -5207,16 +5207,55 @@ PASS is DURATION_ONLY for the three rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Shared-skill lessons increment: 3 files (2026-10-14)
+
+Reviewer: `claude-opus-duration-review-20261014d`. Author: `claude-opus-5-5-share-lessons`. Scope: DURATION_ONLY for the three changed bindings below, reviewed at `f131fda40d467e04d88253c0162009c95928fb19` ("docs(skills): share lessons that lived only in one agent's notes") on claude/share-memory-lessons, whose parent `bda1755ff049dbb7c89db858a080bcb788767427` (#1500) is origin/main and the merge base. The reviewer wrote none of the commit, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edits only this report and review.json.
+
+Baseline: for each of the three paths, SHA-256 of `git show f131fda40^:<path>` equals the existing review.json binding and the table row. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these three bindings; the other 105 remain current. The registry remains 108 files. The three files and both receipt files are LF in index and worktree.
+
+- `.agents/skills/youtube-video/SKILL.md`: `f01125027ad63fce027f7cc649c01ac0406c29b1a5d7377706b11988015c1384` -> `f852e9fa4b283a73152003793daba1d42a2cab14d2b7f9fb16ee68e48edbb726`.
+- `.agents/skills/youtube-video/references/automated.md`: `135bd217d344df2a5a033cef30cbc3181c4b268d3f96c689d4b4560390de40db` -> `b61781312530de1895f381ea57ec26cc7f1cf31c89f9d5969c9aeb8221759cc1`.
+- `.claude/skills/youtube-video/SKILL.md`: `f01125027ad63fce027f7cc649c01ac0406c29b1a5d7377706b11988015c1384` -> `f852e9fa4b283a73152003793daba1d42a2cab14d2b7f9fb16ee68e48edbb726`.
+
+What the change is: lessons that lived only in one agent's notes are written into the shared skills. The commit touches twenty files (+40/−12), all under `.agents/skills/` and `.claude/skills/`; besides the three bound ones they are notes in the animation-production, content-pipeline, deploy, dev-and-ci, prod-host-ops and task-board skills and youtube-video/references/publish.md, all unbound. No file under tools, apps or docs/videos differs between `f131fda40^` and `f131fda40`.
+
+Findings, skill mirrors (`.agents/skills/youtube-video/SKILL.md` and `.claude/skills/youtube-video/SKILL.md`, +1/−1 each, byte-identical before and after): the paragraph after the automated-route stage table gains one sentence: a video an agent pushes by hand from its own machine (not made by the host worker) always goes to the final gate with `review-push --gate final --manual-review` so the owner looks at it, because one such film passed three gates automatically in 43 minutes and the owner judged it worthless, and the server cannot yet tell the two apart (ticket `tasks/open/2026-10-11-hand-driven-film-approved-on-its.md`). The "43 minutes" is the elapsed time of that approval, not a video length. Rule 10 (the 8-minute floor for everything but drama and Shorts, no upper limit, `target_minutes` as the aim), the formats row, the script-writing row (opening condensation 30–60 seconds) and the curio row are unchanged.
+
+Findings, `.agents/skills/youtube-video/references/automated.md` (+3/−1): the 413 `video_review_file_too_large` bullet keeps every number and gains a reason after "do not re-run an approved `assemble` to shrink the file": it re-encodes, the hash changes and the final approval is lost. Two new bullets follow the language-panel bullet: run `review-pull` before taking stock of or writing for an existing video, since the owner's choices (which outline, what was approved) live only on the site; and an approved video that needs rewriting gets a new slug while the old project is stopped in the admin (owner decision 2026-10-11). Neither bullet names a length, floor, target, pace or padding. The file-size figures, the 8 Mbit/s cap, the 1.5 GB and 20 GB limits and the 7-day retention are byte-identical to the previous revision.
+
+Duration identifiers (case-insensitive occurrences of `target_minutes`, `MIN_EPISODE`, `minEpisodeMinutes`, `VIDEO_MIN_EPISODE_MINUTES`, `duration`, `seconds`, `minutes`, `total_frames`, `frames`, `runtime`, `windowLimit`, `atempo`, `tempo`, `stretch`, `overrun`, `pace`, `padding`), `f131fda40^` -> `f131fda40`: youtube-video/SKILL.md 1 -> 1 (each mirror); automated.md 12 -> 12. The added lines of the three bound files contain none.
+
+Duration questions: the eight-minute body floor, `target_minutes`, pace, padding, what counts toward the body and whether the bookends count toward it are all untouched. The new text is about which gate a hand-driven film takes, why an approved `assemble` is not re-run, pulling the owner's choices first and opening a new slug for a rewrite. No duration rule, check or reachability changes.
+
+Ran (in the worktree at `f131fda40`, Node on Windows):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the three stale bindings and exited 1;
+- `git show f131fda40` for the three bound files and the stat of the whole commit, plus the dev-and-ci duration-receipt.md diff; `git diff --stat f131fda40^ f131fda40 -- tools apps docs/videos` (empty);
+- SHA-256 of the three `f131fda40^` blobs and the working-tree files against review.json and the table; `git ls-files --eol`;
+- the identifier counts with `grep -Eio` over both revisions and the added lines, and the numbers in the added lines.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge the lessons themselves, the `--manual-review` rule, the new-slug rule or the unbound skill notes beyond confirming the three bound files set no length; no video was built, pushed or measured.
+- No web test, API test, ruff, mypy, i18n check or typecheck was run, and `npm run test:tools` was not run.
+- This increment binds the tree at `f131fda40` only: a later commit or merge that changes any of the three files, or either receipt file, needs its own follow-up. The 105 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the three rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
-| `.agents/skills/youtube-video/SKILL.md` | `f01125027ad63fce027f7cc649c01ac0406c29b1a5d7377706b11988015c1384` |
-| `.agents/skills/youtube-video/references/automated.md` | `135bd217d344df2a5a033cef30cbc3181c4b268d3f96c689d4b4560390de40db` |
+| `.agents/skills/youtube-video/SKILL.md` | `f852e9fa4b283a73152003793daba1d42a2cab14d2b7f9fb16ee68e48edbb726` |
+| `.agents/skills/youtube-video/references/automated.md` | `b61781312530de1895f381ea57ec26cc7f1cf31c89f9d5969c9aeb8221759cc1` |
 | `.agents/skills/youtube-video/references/formats.md` | `b27b230728c1c6513fd4567cdba04797f552fd920bed33833ae9f97b70d74087` |
-| `.claude/skills/youtube-video/SKILL.md` | `f01125027ad63fce027f7cc649c01ac0406c29b1a5d7377706b11988015c1384` |
+| `.claude/skills/youtube-video/SKILL.md` | `f852e9fa4b283a73152003793daba1d42a2cab14d2b7f9fb16ee68e48edbb726` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7` |
 | `apps/api/app/video_automation/models.py` | `e8351836b3d09a939c31f18501ba3e160e98706e327a1172cc35170fc76b9ccc` |
