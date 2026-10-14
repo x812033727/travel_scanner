@@ -4,7 +4,7 @@
 
 ## 1. 本機輸入與空白工作區
 
-依 [影片工具的路徑實作](../../../tools/video/core/paths.mjs)，逐集文字檔位置為 `docs/videos/<slug>/video.json`，媒體位於 `<VIDEO_WORKDIR>/<slug>/`；本機沒有設定 `VIDEO_WORKDIR`，故使用 `C:\Users\x8120\mokaair-work\videos`。五個 slug 從[原 100 題已編譯清單](../story-plans/brand-stories-100/stories.json)回讀；該檔目前 1,414,653 bytes，SHA-256 為 `6f1e4619c7bf5847b1b67a21b5e97dd015ccef939fbf19c098c33178840dce26`。下表的兩項 `否` 是 `Test-Path -LiteralPath` 的本機結果。
+依 [影片工具的路徑實作](../../../tools/video/core/paths.mjs)，逐集文字檔位置為 `docs/videos/<slug>/video.json`，媒體位於 `<VIDEO_WORKDIR>/<slug>/`；本機沒有設定 `VIDEO_WORKDIR`，故使用 `<home>\mokaair-work\videos`。五個 slug 從[原 100 題已編譯清單](../story-plans/brand-stories-100/stories.json)回讀；A21 更正後重新編譯，該檔 1,415,413 bytes，SHA-256 為 `c8fb18102634459c62f556022139e0bdc733ef432321c412ff810faed0ac0194`。下表的兩項 `否` 是 `Test-Path -LiteralPath` 的本機結果。
 
 | 題號 | slug | 原 100 題序號 | `video.json` | 工作目錄 |
 | --- | --- | ---: | --- | --- |
@@ -18,7 +18,7 @@
 
 ## 2. v4 品牌素材與本機工具
 
-從 `C:\Users\x8120\mokaair-work\videos\_branding\current.json` 讀到的 index 與實檔：
+從 `<home>\mokaair-work\videos\_branding\current.json` 讀到的 index 與實檔：
 
 | 項目 | 本機回讀值 |
 | --- | --- |

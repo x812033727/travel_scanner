@@ -1,6 +1,6 @@
 # A21｜品客為什麼打官司說自己不是洋芋片？三回合後誰贏了
 
-狀態：製作提案，尚未撰成完整逐字稿、合成旁白或媒體，也未送審或上傳。依據是既有的 [A21 企劃](../story-plans/brand-stories-100/stories/A21.json)與[獨立查核](../story-plans/brand-stories-100/reviews/A21.json)；本文沒有改動它們。點閱潛力是編輯假設，不是觀看數預測。
+狀態：製作提案，尚未撰成完整逐字稿、合成旁白或媒體，也未送審或上傳。依據是已更正專利與涉案產品範圍的 [A21 企劃](../story-plans/brand-stories-100/stories/A21.json)與 2026-10-14 [獨立重審](../story-plans/brand-stories-100/reviews/A21.json)。點閱潛力是編輯假設，不是觀看數預測。
 
 ## 觀眾與包裝
 
@@ -88,4 +88,4 @@
 - 稅額是 [2009 年判決](https://caselaw.nationalarchives.gov.uk/ewca/civ/2009/407)記錄的 HMRC 律師**估計**；[NBC News 當年報導](https://www.nbcnews.com/id/wbna30850499)載寶僑發言人稱已保護性繳稅。兩件事要分開講，不稱「上億英鎊欠稅」。
 - [2012 年家樂氏收購新聞稿](https://www.sec.gov/Archives/edgar/data/55067/000119312512255118/d361492dex991.htm)、[Mars 2026 年新聞稿](https://www.mars.com/news-and-stories/press-releases-statements/mars-opens-thb-7-billion-pringles-plant-thailand)、[2025 年英國後案](https://caselaw.nationalarchives.gov.uk/ukut/tcc/2025/155)可作尾章延伸。Mars 是目前品牌歸屬的公司來源；本片不講沒有足夠獨立來源支撐的公司更名與收購**精確日期**。發佈前仍須核對當時品牌歸屬、法院連結與說明欄來源。
 
-查核先使用既有 A21 的主張與 caveats；若要改企劃 JSON，原 `review.story_sha256` 便失效，需重做獨立查核。本文是編輯提案，不宣稱 `lint`、TTS、畫面、QA、站主收看或發布已完成。
+查核先使用已更正的 A21 主張與 caveats；若再改企劃 JSON，目前 `review.story_sha256` 便失效，需重做獨立查核。本文是編輯提案，不宣稱 `lint`、TTS、畫面、QA、站主收看或發布已完成。
