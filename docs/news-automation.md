@@ -27,12 +27,15 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    replay of every missed hour). Entries whose URL was already seen are not fetched again.
    Each new entry's page is fetched through `SafeNewsFetcher` (HTTPS only, allow-listed
    hosts, public IPs pinned against DNS rebinding, robots.txt honoured and read once per
-   host per scan, 2 MB limit). Links from the article to articles on *other websites* that
-   are enabled evidence sources are fetched as additional evidence; links to the page's
-   own site and to images, video, audio, PDFs or archives are not fetched. A page that
-   fails is skipped and listed on the source (`partial`), and the listing's ETag is kept
-   back so the next scan tries it again. Exact URL, title or content matches are closed as
-   duplicates at once.
+   host per scan, 2 MB limit). A robots.txt redirect is followed only over HTTPS on the
+   same host, with each hop rechecked and the normal redirect limit. A redirected robots
+   response must be text/plain with a User-agent rule; a cross-host redirect or non-2xx
+   final response still refuses the page. Links from the article to articles on *other
+   websites* that are enabled evidence sources are fetched as additional evidence;
+   links to the page's own site and to images, video, audio, PDFs or archives are not
+   fetched. A page that fails is skipped and listed on the source (`partial`), and the
+   listing's ETag is kept back so the next scan tries it again. Exact URL, title or
+   content matches are closed as duplicates at once.
    A first-party page that *refuses* the scanner (HTTP 401 or 403: `openai.com/index/*`
    answers every request with a Cloudflare challenge) is not skipped forever when its entry is
    dated within
@@ -257,7 +260,7 @@ reply, and the dropped bounds are written into the field descriptions.
    database but not in the file are listed and left alone, and `/admin/news` can still
    disable or edit any of them. A source is `evidence` or `lead_only` (discovery only,
    never counted as evidence), optionally first-party, and may list redirect hosts and
-   parser settings (`items_path`, `article_ids`, `include_path_prefixes`,
+   parser settings (`items_path`, `article_ids`, `article_classes`, `include_path_prefixes`,
    `max_entries_per_scan`, `max_entry_age_hours`, …). Every source in the file keeps the
    72-hour window; raise it only for a feed that adds posts days after their own date.
    `max_entries_per_scan` is the top of the listing, not a number of new entries: the
