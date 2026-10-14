@@ -104,6 +104,22 @@ One protagonist, one story shape (written for AI and tech topics, held by every 
 - A section that does not move the protagonist's question is cut, or goes to the description. A
   third of one video explained text watermarks while its story was one mother's image; the
   stretches that followed her image were the ones the reader could follow.
+- A term is explained at the moment the protagonist meets it, in one line, as part of what
+  happens to it (「它要用的工具在網路上，而評估，就是讓模型做同一批固定的題目」), never as a
+  paragraph that stops the story. Two definitions in a row are a lecture: the second waits until
+  the story needs it, or is cut; a definition the story never uses is cut. A proof rewrite that
+  passed every panel question still lost its blind reader at one run of definitions (what an
+  evaluation is, what a public benchmark is, 對齊 dropped in abruptly): "lecture, not story", the
+  place they would have stopped watching.
+- A qualification the facts need is said once, attached to the claim it limits, in the same
+  sentence where possible; never a run of caveats before the answer the viewer is waiting for
+  (more than two hedge lines in a row is a lecture). A line that only says the line before again
+  in other words is cut. The next round of the same proof lost a fresh reader at four caveats
+  stacked before the answer (unnamed organisations, the report not marking each case, nothing
+  about external products, the cut meaning no live connection) and one line that re-said the last.
+- The condensation's closing question asks what the video answers; it never states an outcome a
+  later chapter presents as a reveal. That proof's opening question said every internal
+  evaluation went offline, and the reader failed no_spoiler when chapter 4 revealed it.
 - A thing is introduced before it is compared: the viewer meets A and B through the protagonist
   before hearing which one wins. Nothing is read out as a list (a roll call of products, four
   scores in four seconds, a table of who said what): each item that matters becomes an event for

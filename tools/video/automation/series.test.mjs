@@ -2101,7 +2101,7 @@ test("an explainer one-off plans a question's bible with no cast, and its brief 
 // the checker's payload moved with the example script it reads.
 const EXPLAINER_STAGE_PINS = [
   ["planner", "bible-explainer", "92d58c327776f8f1f8084907e2aaf0a7d8f326c2c614d1ab593dc4074ff017a2", "bfa88ed9b8beaef5377880ae79efb081f5e5283c1e4ab4279df4bd0239d13078"],
-  ["writer", "explainer", "cef7d99e49e0d0c879ed3b5e974be6e577449b7eb1f902366865bed93a22ed40", "b0a4a2982e77bf9ea76eb9047260bbe568eb36ac2577dc206791ca8912401e81"],
+  ["writer", "explainer", "f6abf3ec8799bcfa94f03b15681bc64714ac8f8b356bedddc36c1db594f649f6", "b0a4a2982e77bf9ea76eb9047260bbe568eb36ac2577dc206791ca8912401e81"],
   ["verifier", "explainer", "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842", "5b58613d9b424f530b2b84cee45ed55a291805a5d9343dcb1edbe81b3cb07d84"],
 ];
 const digestOf = (text) => createHash("sha256").update(text, "utf8").digest("hex");

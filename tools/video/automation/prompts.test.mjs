@@ -68,6 +68,10 @@ test("the planner outlines story beats and the listener keeps the register; the 
   assert.match(planner, /One protagonist, one story shape/);
   assert.match(planner, /At most one metaphor in the whole video/);
   assert.match(planner, /never 「以官網為準」/);
+  assert.match(planner, /A term is explained at the moment the protagonist meets it, in one line/);
+  assert.match(planner, /Two definitions in a row are a lecture/);
+  assert.match(planner, /A qualification the facts need is said once, attached to the claim it limits/);
+  assert.match(planner, /The condensation's closing question asks what the video answers; it never states an outcome/);
   assert.match(planner, /轉折：<3 to 5 events in the order they happened/);
   assert.match(planner, /鉤子：<the open loops this outline plants/);
   assert.match(planner, /"shot: <the picture in a few words>"/);
@@ -656,7 +660,7 @@ test("the four explainer instruction texts are byte for byte what they were", ()
   const pinned = {
     "planner:bible-explainer": "92d58c327776f8f1f8084907e2aaf0a7d8f326c2c614d1ab593dc4074ff017a2",
     "planner:explainer": "e5b50a3fedd95008c096a63153a48e54268821be2e62254913dbc22460ac708f",
-    "writer:explainer": "cef7d99e49e0d0c879ed3b5e974be6e577449b7eb1f902366865bed93a22ed40",
+    "writer:explainer": "f6abf3ec8799bcfa94f03b15681bc64714ac8f8b356bedddc36c1db594f649f6",
     "verifier:explainer": "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842",
   };
   for (const [key, digest] of Object.entries(pinned)) {

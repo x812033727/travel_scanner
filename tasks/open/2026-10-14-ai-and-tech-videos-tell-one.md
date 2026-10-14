@@ -57,9 +57,15 @@ who-said-what tables); 「以官網為準」 instead of numbers. The one stretch
 ## Steps
 
 - [x] Rules, outline lines, panel questions, docs, tests (branch `claude/ai-video-storytelling`).
-- [ ] Proof rewrite of the Anthropic network-cut script under the new rules, blind panel run on
-      it (13 questions), shown to the owner.
-- [ ] Duration receipt: `tools/video/automation/prompts.mjs` is bound by
+- [x] Proof rewrite of the Anthropic network-cut script under the new rules: 55 → 78 with 13/13
+      on the blind panel; a fresh reader in round 3 gave 78 and 11/13. What those readers still
+      failed became three more rules (2026-10-15, owner approved before merge): a term explained
+      when the protagonist meets it (no run of definitions); a qualification said once, attached
+      to its claim (no run of caveats, no restated line); the condensation's closing question
+      never states a later reveal.
+- [ ] The owner accepts the proof before merge or deploy.
+- [ ] Duration receipt: `tools/video/automation/prompts.mjs` and
+      `tools/video/automation/series.test.mjs` are bound by
       `docs/videos/long-form/review.json`, so `node tools/video/long-form/cli.mjs check` fails
       with "stale duration review binding" until an independent agent records a DURATION_ONLY
       increment. Do not edit review.json/review.md by hand.
