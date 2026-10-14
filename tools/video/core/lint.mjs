@@ -5,6 +5,7 @@
 // passes one route's check does not fail the other's.
 import { cadenceProblems } from "./cadence.mjs";
 import { craftProblems } from "./craft.mjs";
+import { curioProblems } from "./curio.mjs";
 import { cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { isNarrated, narrativeProblems } from "./narrative.mjs";
@@ -502,6 +503,9 @@ export function lintVideo(doc, context = {}) {
     for (const problem of story.errors) error(problem.path, problem.message, problem.kind);
     for (const problem of story.warnings) warn(problem.path, problem.message, problem.kind);
   }
+  // A 奇聞檔案局 episode (a "curio-" slug) keeps the series look: the cute-mystery preset word for
+  // word, illustrations for most of the body, no long run of cards (core/curio.mjs).
+  for (const problem of curioProblems(doc)) error(problem.path, problem.message);
   if (isLongAnime(doc)) {
     const target = doc.runtime_spec.body_target_seconds;
     const seconds = frameToSeconds(timeline.total_frames);
