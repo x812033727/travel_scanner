@@ -724,6 +724,12 @@ class StoryLook(StrictModel):
         return value
 
 
+class StoryPresetLook(StrictModel):
+    """The MiniMax cute-mystery picture preset, stored without custom prompt fields."""
+
+    preset: Literal["cute-mystery"]
+
+
 def image_model_problem(model_id: str) -> str | None:
     """Why a series cannot name this image model, or None: it must be an image model of the
     media catalog that is not retired (app.video_media.catalog)."""
@@ -788,7 +794,7 @@ class SeriesIn(StrictModel):
     total_minutes: int | None = Field(default=None, ge=30, le=480)
     episodes_per_day: int | None = Field(default=None, ge=1, le=STORY_MAX_PER_DAY)
     image_model: str | None = Field(default=None, min_length=1, max_length=128)
-    look: StoryLook | None = None
+    look: StoryLook | StoryPresetLook | None = None
 
     @field_validator("title", "premise", "note")
     @classmethod
@@ -860,6 +866,15 @@ class SeriesIn(StrictModel):
                 raise ValueError("a story series needs a title and a premise")
             if self.look is None:
                 raise ValueError("a story series needs the look every story shares")
+            if isinstance(self.look, StoryPresetLook) and (
+                self.target_minutes != 10
+                or self.image_model != "image-01"
+                or self.style_preset != "custom"
+            ):
+                raise ValueError(
+                    'a cute-mystery story needs target_minutes=10, image_model="image-01" '
+                    'and style_preset="custom"'
+                )
         else:
             if (
                 not long_anime and not is_explainer_preset(self.style_preset)
@@ -919,7 +934,7 @@ class SeriesPatch(StrictModel):
     # A story series (docs/videos/STORY.md).
     episodes_per_day: int | None = Field(default=None, ge=1, le=STORY_MAX_PER_DAY)
     image_model: str | None = Field(default=None, min_length=1, max_length=128)
-    look: StoryLook | None = None
+    look: StoryLook | StoryPresetLook | None = None
 
     @field_validator("image_model")
     @classmethod

@@ -67,13 +67,14 @@ const CHAPTER_OF = new Map(STORY_CHAPTERS.map((chapter, index) => [chapter.key, 
 // How a story's length is shared (docs/videos/STORY.md §一支故事影片的規格): the narration is read
 // at 250 characters a minute (the tool's estimate), the hook is the condensation of 30 to 60
 // seconds (core/lint.mjs OPENING_CHAPTER_SECONDS) and is given the middle of it, and the
-// other five chapters share the rest in these weights, engine the longest. A shot holds 6 to 12
-// seconds; the budgets are cut to SHOT_SECONDS a shot, so a 13-minute story is 3,250 characters
-// over about 90 shots. chapterBudgets() is the one place these become a chapter's share.
+// other five chapters share the rest in these weights, engine the longest. A custom story uses
+// SHOT_SECONDS (13 minutes: about 90 shots); the cute-mystery story uses 7.5 seconds (10 minutes:
+// about 80 illustrations). chapterBudgets() is the one place these become a chapter's share.
 export const STORY_CPM = DEFAULT_CPM;
 export const HOOK_SECONDS = 45;
 export const CHAPTER_WEIGHTS = { origin: 5, idea: 4.5, engine: 7, turn: 5, now: 3.5 };
 export const SHOT_SECONDS = 8.7;
+export const CUTE_STORY_SHOT_SECONDS = 7.5;
 // video.json's target_minutes around the series' target: lint warns outside it (12 to 15 for 13).
 export const TARGET_SPREAD = { below: 1, above: 2 };
 // The measured narration after tts: within this far of the target (11:30 to 15:30 for 13
@@ -124,18 +125,20 @@ const PLAN_UNREAD = (source, why) => `工人這次讀不到這一頁（${why}）
 
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
+const isCuteStoryLook = (look) => isObject(look) && Object.keys(look).length === 1 && look.preset === "cute-mystery";
 const clip = (text, max) => String(text).trim().slice(0, max);
 const hash16 = (text) => createHash("sha256").update(String(text)).digest("hex").slice(0, 16);
 const chars = (text) => [...String(text)].length;
 
 /** Each chapter's share of a story of `targetMinutes`: { key, seconds, chars, shots }, summing to the target. */
-export function chapterBudgets(targetMinutes) {
+export function chapterBudgets(targetMinutes, look = null) {
   const total = Math.round(targetMinutes * 60);
   const rest = Math.max(0, total - HOOK_SECONDS);
   const weight = Object.values(CHAPTER_WEIGHTS).reduce((sum, each) => sum + each, 0);
+  const shotSeconds = targetMinutes === 10 && isCuteStoryLook(look) ? CUTE_STORY_SHOT_SECONDS : SHOT_SECONDS;
   const budgets = CHAPTER_KEYS.map((key) => {
     const seconds = key === "hook" ? Math.min(HOOK_SECONDS, total) : (rest * CHAPTER_WEIGHTS[key]) / weight;
-    return { key, seconds: Math.round(seconds), chars: Math.round((seconds * STORY_CPM) / 60), shots: Math.max(2, Math.round(seconds / SHOT_SECONDS)) };
+    return { key, seconds: Math.round(seconds), chars: Math.round((seconds * STORY_CPM) / 60), shots: Math.max(2, Math.round(seconds / shotSeconds)) };
   });
   // Rounding lands on the longest chapter, so the shares add up to the target exactly.
   const engine = budgets.find((budget) => budget.key === "engine");
@@ -145,7 +148,9 @@ export function chapterBudgets(targetMinutes) {
 }
 
 /** The measured narration a story of `targetMinutes` may run, in seconds: [low, high]. */
-export const lengthBand = (targetMinutes) => [targetMinutes * 60 - LENGTH_BAND_SECONDS.below, targetMinutes * 60 + LENGTH_BAND_SECONDS.above];
+export const lengthBand = (targetMinutes, look = null) => targetMinutes === 10 && isCuteStoryLook(look)
+  ? [9 * 60, 11 * 60]
+  : [targetMinutes * 60 - LENGTH_BAND_SECONDS.below, targetMinutes * 60 + LENGTH_BAND_SECONDS.above];
 
 // --- the plan ----------------------------------------------------------------------------------
 
@@ -195,14 +200,14 @@ export function storySeriesFile({ series, episode, plan, cast }) {
     compilation: false,
     target_minutes: Number(series.target_minutes) || 13,
     image_model: series.image_model ?? null,
-    look: isObject(series.look) ? { style: series.look.style ?? "", negative: series.look.negative ?? "", ...(isText(series.look.motion) ? { motion: series.look.motion } : {}) } : null,
+    look: isCuteStoryLook(series.look) ? { preset: "cute-mystery" } : isObject(series.look) ? { style: series.look.style ?? "", negative: series.look.negative ?? "", ...(isText(series.look.motion) ? { motion: series.look.motion } : {}) } : null,
     plan,
     series: { title: series.title, premise: series.premise ?? "", note: series.note ?? null, hands_off: Boolean(series.hands_off), episodes_per_day: series.episodes_per_day ?? null },
   };
 }
 
 /** brief.md for a story: the sections lint wants, the plan's six points, one outline (approved here). */
-export function storyBrief({ episode, plan, cast }) {
+export function storyBrief({ episode, plan, cast, look = null }) {
   const lines = [
     `# ${episode.title}`,
     "",
@@ -213,6 +218,7 @@ export function storyBrief({ episode, plan, cast }) {
     "",
     `留給觀眾的觀察：${plan.takeaway ?? ""}`,
     "",
+    ...(isCuteStoryLook(look) ? ["## 問題", plan.question, "", "## 一句答案", plan.takeaway || episode.logline || plan.subject, ""] : []),
     "## 角色",
     ...(cast.length
       ? cast.map((figure) => `- ${figure.id}：${(plan.cast ?? []).find((each) => each.id === figure.id)?.role ?? figure.name}（一般化的卡通人物，不對應任何真人）`)
@@ -725,9 +731,9 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
     // A brand story's place among the site's videos (/admin/videos filters by it).
     category: "story",
     ...(guide ? { source_guide: guide } : {}),
-    target_minutes: [Math.max(1, target - TARGET_SPREAD.below), target + TARGET_SPREAD.above],
+    target_minutes: target === 10 && isCuteStoryLook(look) ? [9, 11] : [Math.max(1, target - TARGET_SPREAD.below), target + TARGET_SPREAD.above],
     voice,
-    look: { preset: "custom", style: clip(look.style ?? "", 600), negative: clip(look.negative ?? "", 400), ...(isText(look.motion) ? { motion: clip(look.motion, 300) } : {}) },
+    look: isCuteStoryLook(look) ? { preset: "cute-mystery" } : { preset: "custom", style: clip(look.style ?? "", 600), negative: clip(look.negative ?? "", 400), ...(isText(look.motion) ? { motion: clip(look.motion, 300) } : {}) },
     characters: info.characters ?? [],
     series: { slug: info.slug, episode: info.episode, chapter: 1 },
     ...(drama.music_enabled === false ? {} : { music: { prompt: STORY_MUSIC, gain_db: -20, duck_db: -10 } }),
@@ -891,7 +897,9 @@ export async function draftStory(automation, started, job = {}) {
     chosen: "A",
     notes: [],
   };
-  const problem = planShapeProblem(plan) ?? (isText(series.look?.style) ? null : "the story series has no shared look (look.style); set it on /admin/videos");
+  const problem = planShapeProblem(plan) ?? (isCuteStoryLook(series.look)
+    ? (Number(series.target_minutes) === 10 && series.image_model === "image-01" && series.style_preset === "custom" ? null : "a cute-mystery story needs target_minutes=10, image_model=image-01 and style_preset=custom")
+    : (isText(series.look?.style) ? null : "the story series has no shared look (look.style); set it on /admin/videos"));
   if (problem) {
     automation.persist(state);
     return automation.block(state, `the story cannot be written: ${problem}`);
@@ -900,7 +908,7 @@ export async function draftStory(automation, started, job = {}) {
   mkdirSync(dir, { recursive: true });
   const cast = storyCast(plan, automation.voice("drama"));
   writeFileSync(path.join(dir, "series.json"), `${JSON.stringify(storySeriesFile({ series, episode, plan, cast }), null, 2)}\n`);
-  writeFileSync(path.join(dir, "brief.md"), storyBrief({ episode, plan, cast }));
+  writeFileSync(path.join(dir, "brief.md"), storyBrief({ episode, plan, cast, look: series.look }));
   const workdir = automation.workdir(slug);
   automation.persist(state);
   await approve({ gate: "outline", docDir: dir, workdir, now: automation.ctx.now(), note: OUTLINE_NOTE });
@@ -962,7 +970,7 @@ async function writerPayload(automation, state, key, extra = {}) {
   const plan = info.plan;
   const index = CHAPTER_OF.get(key).index;
   const belongs = factChapters(plan);
-  const budget = chapterBudgets(info.target_minutes)[index];
+  const budget = chapterBudgets(info.target_minutes, info.look)[index];
   const previous = index > 0 ? readChapter(automation, state, CHAPTER_KEYS[index - 1]) : null;
   const names = plan.names ?? [];
   const anchors = anchorsFor([plan.chapters[index].point, ...(plan.must_verify ?? []).filter((_, each) => belongs[each].includes(key)).map((fact) => fact.claim), ...(extra.current ? chapterNarration(extra.current) : [])], names);
@@ -1034,7 +1042,7 @@ const describeChapter = (chapter) => `${chapter.scenes.filter((scene) => scene.t
 async function writeChapter(automation, state, key) {
   const info = seriesInfo(automation, state);
   const index = CHAPTER_OF.get(key).index;
-  const budget = chapterBudgets(info.target_minutes)[index];
+  const budget = chapterBudgets(info.target_minutes, info.look)[index];
   const ids = lineIds(automation, state, idsFor(budget.chars));
   const payload = await writerPayload(automation, state, key, { line_ids: ids });
   const answer = await automation.stage("writer", state.slug, payload, WRITER_TOKENS, "drama", STORY_VARIANT);
@@ -1306,7 +1314,7 @@ async function checkLength(automation, state) {
   if (!timeline?.total_frames) return undefined;
   const info = seriesInfo(automation, state);
   const target = Number(info.target_minutes) || 13;
-  const [low, high] = lengthBand(target);
+  const [low, high] = lengthBand(target, info.look);
   const seconds = timeline.total_frames / FPS;
   state.story.length = { seconds: Math.round(seconds), at: automation.ctx.now().toISOString() };
   if (seconds >= low && seconds <= high) {
@@ -1317,7 +1325,7 @@ async function checkLength(automation, state) {
   const measured = `the narration measures ${formatClock(seconds)}, ${long ? "over" : "under"} ${formatClock(long ? high : low)}`;
   if ((state.story.resizes ?? 0) >= LENGTH_FIX_ROUNDS) return automation.block(state, `${measured} after ${state.story.resizes} length fixes; a story runs ${formatClock(low)} to ${formatClock(high)}: the owner decides`);
   const measuredBy = chapterSeconds(timeline);
-  const budgets = Object.fromEntries(chapterBudgets(target).map((budget) => [budget.key, budget.seconds]));
+  const budgets = Object.fromEntries(chapterBudgets(target, info.look).map((budget) => [budget.key, budget.seconds]));
   // The hook keeps its condensation's seconds whatever the total does.
   const resizable = CHAPTER_KEYS.filter((each) => each !== "hook");
   const key = long

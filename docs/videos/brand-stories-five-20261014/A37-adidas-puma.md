@@ -22,28 +22,31 @@
 
 前四句落在有日期與實物的商業登記；洗衣間是登記前的回想，依市政府與 PUMA 的記述製作插畫，不冒充 1924 年 7 月 1 日才縫第一批鞋或拍到當天現場。後三個未解時刻依 1948、1949、2009 排列，最後一句收成唯一問題。口播秒數僅為草案，配音後以音檔與 30 fps 成片實測。
 
-## 六章節拍與 13 分鐘時間預算
+這段濃縮片頭是第一章；第一章最後一問落下後，插入全頻道 **5 秒無標語動畫片頭**，第二章直接從兄弟鞋進入賽場接續，不重講登記畫面或登記前的工作坊。
 
-**旁白正文目標 13:00**：濃縮片頭暫估 0:45，六章合計 12:15；**另加**既有頻道 5 秒無標語片頭動畫與 21 秒配樂片尾動畫，規劃成片約 13:26。這只是企劃預算，實際時長以聲畫完成後量測並重排。每鏡以 6–12 秒卡通靜態圖、推拉與景別切換說故事，不把六章變成六張投影片。
+## 六章節拍與約 10 分鐘時間預算
+
+**旁白正文目標 10:00**：濃縮片頭暫估 0:45，後五章合計 9:15；**另加**既有頻道 5 秒無標語片頭動畫與 21 秒配樂片尾動畫，規劃成片約 10:26。這只是企劃預算，實際時長以聲畫完成後量測並重排；正文不得靠重述或放慢語速湊滿，也須獨立達到 8 分鐘。每鏡以約 5–8 秒插畫、推拉與景別切換說故事，不把六章變成六張投影片。
 
 | 旁白預算 | 事件章名與要回答的事 | 章末因果鉤子／下一章接口 | 主要來源 |
 | --- | --- | --- | --- |
-| 1:55 | **1924 年，兄弟把家中製鞋工作登記成廠**：家中製鞋早於登記；PUMA 官方年表寫 1919 年在父母家起步，Adidas 官方記述則說阿迪在 1920 年代初於母親洗衣間試作。7 月 1 日才是共同鞋廠正式登記日期。說明哥哥 Rudolf、弟弟 Adolf／Adi 與「替不同運動做不同鞋」的共同點子，不把兩家說法硬併成同一天的現場。 | 小廠的鞋，如何跑到世界看得到的賽場？ | [黑措根奧拉赫市政府：老宅](https://www.herzogenaurach.de/entdecken/sehenswuerdigkeiten/aeusserer-stadtrundgang/22-stammhaus-dassler)、[PUMA 官方年表](https://www.about.puma.com/en/puma/puma-timeline)、[Adidas 75 週年資料](https://www.adidas-group.com/en/factsheet-75-years-of-adidas-from-a-franconian-crafts-business-to-a-global-player-in-the-world-of-sport) |
-| 2:00 | **1928 年，兄弟的鞋踏上奧運跑道**：Adidas 官方資料說 Lina Radke 在阿姆斯特丹奧運穿兄弟鞋贏得八百公尺金牌；這是可核的賽場轉折，不說鞋子單獨造成勝利。1936 年 Jesse Owens 穿 Dassler 鞋的故事雖有報導，Adidas 另一篇官方文章明說證據未定、屬傳說，旁白若提只能註明來源分歧，不拍成已證實的他本人穿鞋特寫。 | 一起做到了國際舞台，為何十多年後卻要分開？ | [Adidas 75 週年資料](https://www.adidas-group.com/en/factsheet-75-years-of-adidas-from-a-franconian-crafts-business-to-a-global-player-in-the-world-of-sport)、[Adidas 官方文章](https://www.adidas-group.com/en/magazine/innovation/the-history-of-adidas-a-background-of-collaboration-and-innovation) |
-| 2:20 | **1948 年 1 月，魯道夫的 RUDA 先完成登記**：先給 PUMA 官方年表中有確切月份的 RUDA 登記，再用市政府與兩家公司資料交代兄弟在 1948 年分開經營；官方資料沒有給出能判定私人爭執起因的日期或紀錄。兩家人同住不合、戰時徵召與戰後猜疑只作後來報導提出的競爭說法，不能把 RUDA 登記說成爭執的起因。本章停在哥哥的公司已有正式名字，弟弟的新公司尚待登記。 | RUDA 已登記，它會一直用這個名字嗎？阿迪又會登記哪一個？ | [PUMA 官方年表](https://about.puma.com/en/puma/history)、[市立博物館](https://www.herzogenaurach.de/leben/stadtmuseum/100-jahre-gebrueder-dassler-sportschuhe-1924-1948)、[Adidas 75 週年官方紀錄](https://www.adidas-group.com/en/media/press-releases/adidas-celebrates-75-years-of-innovation-and-sports-history)；動機說法僅見 [History 報導](https://www.history.com/articles/adidas-puma-rivalry-dassler) |
-| 2:15 | **RUDA 開工後，PUMA 與 Adidas 先後登記**：依序交代 RUDA 1948 年 6 月開始營運、10 月登記 PUMA 商標、12 月宣布新公司名稱，1949 年 1 月將新公司資料列入商業登記；弟弟 1949 年 8 月 18 日才登記 Adidas。用兩個招牌和各自工廠的鏡頭交叉剪輯，不把 PUMA 說成 1949 年才首次出現，也不把 Adidas 公司登記寫成 1948 年。 | 兩個名字先後掛上招牌，競爭怎麼走進同一座鎮的生活？ | [PUMA 官方年表](https://about.puma.com/en/puma/history)、[Adidas 75 週年官方紀錄](https://www.adidas-group.com/en/media/press-releases/adidas-celebrates-75-years-of-innovation-and-sports-history) |
-| 2:10 | **1954 年世界盃讓一個名字遠播，鎮上人也開始認鞋**：西德隊穿 Adidas 可換旋入式鞋釘球鞋奪冠，是 Adidas 官方可證的品牌轉折；不可說它獨自造成勝利，更不宣稱 Adidas 唯一發明旋入鞋釘。媒體所稱「彎脖子小鎮」、店家與球隊選邊，要口頭標成報導／作者描述。Rudolf 1974、Adi 1978 相繼過世及「墓園兩端」也只按報導呈現。 | 兄弟沒有留下可證的和解；公司後來能不能先跨出一步？ | [Adidas 官方歷史](https://www.adidas-group.com/en/about/history)、[市政府經濟史](https://www.herzogenaurach.de/stadtraum/wirtschaft/wirtschaftsgeschichte)；鎮民與墓園細節據 [History](https://www.history.com/articles/adidas-puma-rivalry-dassler) 與 [Storyboard18](https://www.storyboard18.com/brand-marketing/one-family-two-giants-how-a-brothers-feud-gave-the-world-adidas-and-puma-96167.htm) 報導 |
-| 1:35 | **2009 年，兩家公司員工在同一場球賽合作**：PUMA 2009 年原始新聞稿載兩家公司員工與 CEO 在全球和平日踢友誼賽，稱為象徵性的握手；隊伍組成與比分留給最後一句揭曉。市政府資料確認兩家公司總部仍在同鎮。只說企業間的公開合作，不能倒推已故兄弟本人和好。 | 其他影片由 YouTube 結束畫面提供選擇，旁白不口播預告。 | [PUMA 2009 年官方新聞稿](https://www.about.puma.com/en/newsroom/news/adidas-and-puma-together-peace-employees-play-football-global-peace-day-2009)、[市政府經濟史](https://www.herzogenaurach.de/stadtraum/wirtschaft/wirtschaftsgeschichte) |
+| 1:50 | **兄弟鞋走上 1928 年奧運跑道**：片頭的登記之後，直接跟著成品鞋來到運動場，看兄弟為不同運動改良鞋款；不重演登記或回頭再講家中起步。Adidas 官方資料記載 Lina Radke 在 1928 年奧運穿兄弟鞋贏得八百公尺金牌，不說鞋子單獨造成勝利。1936 年 Jesse Owens 穿鞋的故事證據有爭議，若提只能歸屬、不能畫成已證實的本人特寫。 | 兄弟把鞋送上國際賽場，為何後來不再同廠？ | [PUMA 官方年表](https://www.about.puma.com/en/puma/puma-timeline)、[Adidas 75 週年資料](https://www.adidas-group.com/en/factsheet-75-years-of-adidas-from-a-franconian-crafts-business-to-a-global-player-in-the-world-of-sport)、[Adidas 官方文章](https://www.adidas-group.com/en/magazine/innovation/the-history-of-adidas-a-background-of-collaboration-and-innovation) |
+| 1:40 | **1948 年 1 月，魯道夫的 RUDA 先完成登記**：先給 PUMA 年表中有確切月份的登記，再交代兄弟在 1948 年分開經營；官方資料沒有能判定私人爭執唯一起因的紀錄。家人不合、戰時徵召與戰後猜疑只作後來報導提出的競爭說法，不能倒推 RUDA 登記就是爭執起因。本章停在哥哥的公司已有名字，弟弟的登記還沒出現。 | RUDA 會一直叫 RUDA 嗎？阿迪會登記哪個名字？ | [PUMA 官方年表](https://about.puma.com/en/puma/history)、[市立博物館](https://www.herzogenaurach.de/leben/stadtmuseum/100-jahre-gebrueder-dassler-sportschuhe-1924-1948)、[Adidas 75 週年官方紀錄](https://www.adidas-group.com/en/media/press-releases/adidas-celebrates-75-years-of-innovation-and-sports-history)；動機說法僅見 [History 報導](https://www.history.com/articles/adidas-puma-rivalry-dassler) |
+| 2:30 | **RUDA 開工後，PUMA 與 Adidas 先後登記**：依序交代 RUDA 1948 年 6 月開始營運、10 月登記 PUMA 商標、12 月宣布新公司名稱、1949 年 1 月列入商業登記；阿迪 1949 年 8 月 18 日才登記 Adidas。鏡頭交替畫各自工廠與素面招牌；PUMA 商標、公司名稱與登記是不同事件，Adidas 登記也不能提前到 1948 年。 | 兩家公司都站穩同一座鎮，競爭怎麼滲進鎮民生活？ | [PUMA 官方年表](https://about.puma.com/en/puma/history)、[Adidas 75 週年官方紀錄](https://www.adidas-group.com/en/media/press-releases/adidas-celebrates-75-years-of-innovation-and-sports-history) |
+| 1:55 | **1954 年世界盃讓 Adidas 遠播，鎮上人開始認鞋**：西德隊穿 Adidas 可換旋入式鞋釘球鞋奪冠，是品牌轉折，但鞋不是勝利的唯一原因，也不宣稱 Adidas 唯一發明鞋釘。媒體所稱「彎脖子小鎮」、店家與球隊選邊，口播須歸屬報導。Rudolf 1974、Adi 1978 相繼過世與「墓園兩端」也只按報導呈現。 | 兄弟沒有留下可證的和解；兩家公司能不能先跨出一步？ | [Adidas 官方歷史](https://www.adidas-group.com/en/about/history)、[市政府經濟史](https://www.herzogenaurach.de/stadtraum/wirtschaft/wirtschaftsgeschichte)；鎮民與墓園細節據 [History](https://www.history.com/articles/adidas-puma-rivalry-dassler) 與 [Storyboard18](https://www.storyboard18.com/brand-marketing/one-family-two-giants-how-a-brothers-feud-gave-the-world-adidas-and-puma-96167.htm) |
+| 1:20 | **2009 年，兩家公司員工在同一場球賽合作**：PUMA 原始新聞稿記載兩家公司員工與 CEO 在全球和平日踢友誼賽，稱為象徵性的握手；隊伍組成與比分留給最後一句揭曉。市政府資料確認兩家公司總部仍在同鎮。只說企業間的公開合作，不能倒推已故兄弟本人和好。 | 最後三句第一次揭曉比分；其他影片由 YouTube 結束畫面提供選擇。 | [PUMA 2009 年官方新聞稿](https://www.about.puma.com/en/newsroom/news/adidas-and-puma-together-peace-employees-play-football-global-peace-day-2009)、[市政府經濟史](https://www.herzogenaurach.de/stadtraum/wirtschaft/wirtschaftsgeschichte) |
+
+**插畫執行**：以 MiniMax `image-01` 的 1K 插畫製作，整集共用 `cute-mystery` 預設的原句畫風且不設 `look.negative` 欄位；年代、材質和小鎮場景只放各鏡 prompt，不改系列畫風。依本批共同規格規劃 **75–120 張**有敘事作用的 `shot` 插畫，實際張數以音檔與鏡頭節奏鎖定；數字、日期與來源才用少量字卡，正文至少 70% 為插畫，連續字卡最多三張。每張畫一個主體的一個動作，章內交替遠景、人物表情中景與物件特寫，日光、室內與夜景輪替；每章至少一張可讀出情緒的人物近景。1924 年登記與 1948–49 年招牌只畫空白紙張及素面招牌，品牌名稱、日期在後製文字層疊上；不請模型畫真實兩兄弟、運動員或公司商標。插畫是故事示意，不冒稱史料照片；判斷是否重畫，以事實矛盾或畫風漂移為準，先看連續鏡頭的小樣，再依全片張數與費用上限一次產圖。
 
 ## 懸念設置與回收
 
 | 設置 | 回收 | 不能越過的界線 |
 | --- | --- | --- |
-| 片頭：共同工廠為何拆成兩家？ | 第三章先給 1948 年 1 月 RUDA 登記，再交代同年分開經營與確切引爆事件仍無定論；第四章才按月給出 PUMA、Adidas 的正式名字。 | 不把 RUDA 登記說成爭執起因，也不把妻子不合、戰時徵召或防空洞傳聞說成定論。 |
-| 第二章：一起把鞋送上奧運，接下來為何分家？ | 第三章用有日期的 RUDA 登記與 1948 年拆夥史實回答「何時與結果」，並坦白「為何」的來源缺口。 | 不能把 1928 年金牌說成只靠鞋子；1936 年 Owens 穿鞋說法有官方文章標示證據未定。 |
-| 第三章：RUDA 已登記，哥哥與弟弟的新招牌何時出現？ | 第四章依 1948 年 10 月 PUMA 商標、1949 年 1 月新公司登記及同年 8 月 Adidas 登記回收。 | PUMA 商標與公司登記是不同事件。 |
-| 第四章：新招牌都在同鎮，競爭怎麼擴及鎮民？ | 第五章先看 1954 年體育曝光，再把「認鞋選邊」作媒體記述呈現。 | 「河流把小鎮正式劃成兩國」只是視覺隱喻，不是地理或行政事實。 |
-| 第五章：兩人未和好，公司是否永遠不能同場？ | 第六章以 2009 年官方記錄的和平日球賽回收。 | 比賽是企業員工的象徵性合作，不能稱兄弟本人和解。 |
+| 片頭：共同工廠為何拆成兩家？ | RUDA 登記與 1948 年分開經營回答「何時、結果」，確切引爆事件仍無定論；再按月給出 PUMA、Adidas 的正式名字。 | 不把 RUDA 登記說成爭執起因，也不把妻子不合、戰時徵召或防空洞傳聞說成定論。 |
+| 奧運跑道：一起把鞋送上世界舞台，為何後來分家？ | RUDA 登記與 1948 年拆夥史實回答「何時與結果」，並坦白「為何」的來源缺口。 | 不能把 1928 年金牌說成只靠鞋子；1936 年 Owens 穿鞋說法有官方文章標示證據未定。 |
+| RUDA 已登記：哥哥與弟弟的新招牌何時出現？ | 依 1948 年 10 月 PUMA 商標、1949 年 1 月新公司登記及同年 8 月 Adidas 登記回收。 | PUMA 商標與公司登記是不同事件。 |
+| 新招牌都在同鎮：競爭怎麼擴及鎮民？ | 先看 1954 年體育曝光，再把「認鞋選邊」作媒體記述呈現。 | 「河流把小鎮正式劃成兩國」只是視覺隱喻，不是地理或行政事實。 |
+| 兩人未和好：公司是否永遠不能同場？ | 以 2009 年官方記錄的和平日球賽回收。 | 比賽是企業員工的象徵性合作，不能稱兄弟本人和解。 |
 
 ## 三句口播結尾與片尾連結
 

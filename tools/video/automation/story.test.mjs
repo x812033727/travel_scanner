@@ -32,6 +32,7 @@ import {
   applyPatch,
   CHAPTER_KEYS,
   chapterBudgets,
+  composeStory,
   factChapters,
   figuresIn,
   lengthBand,
@@ -42,7 +43,9 @@ import {
   readChapterAnswer,
   SCRIPT_NOTE,
   storyCast,
+  storyBrief,
   storyLineIds,
+  storySeriesFile,
   yearForms,
 } from "./story.mjs";
 
@@ -188,7 +191,7 @@ function storySite({ answers = {}, jobs = null, settings = {}, raw = {}, paused 
   const calls = { run: [], episodes: [], reports: [], pages: [], answers: [] };
   const projects = new Map();
   const reviewsOf = (slug) => projects.get(slug) ?? projects.set(slug, []).get(slug);
-  const queue = jobs ?? [{ kind: "episode", series: SERIES, chapter_number: null, episode: EPISODE, previous: null, rewrites_left: 0, context: { series: SERIES, setting: null, outline: null, chapter: null, chapter_number: null, chapter_range: null, episode: EPISODE, episodes: [{ ...EPISODE, beats: {} }], recaps: [], mysteries: [] } }];
+  const queue = jobs ?? [{ kind: "episode", series, chapter_number: null, episode: EPISODE, previous: null, rewrites_left: 0, context: { series, setting: null, outline: null, chapter: null, chapter_number: null, episode: EPISODE, episodes: [{ ...EPISODE, beats: {} }], recaps: [], mysteries: [] } }];
   const current = {
     enabled: true, draft_interval_hours: 72, topics_per_run: 1, max_waiting_drafts: 3, topic_scope: ["AI"], topic_avoid: [], topic_from_site: true, topic_from_search: false,
     stage_models: {}, voice: { provider: "gemini", name: "Sulafat", style: "溫和的說書人語氣", model: null, rate: "+0%" }, target_minutes_min: 8, target_minutes_max: 12, caption_locales: [],
@@ -225,7 +228,7 @@ function storySite({ answers = {}, jobs = null, settings = {}, raw = {}, paused 
       // A limit that took hold after next advertised the story (#918): the start is refused.
       if (held) return json({ code: "video_series_story_held", detail: held }, 409);
       const started = { ...EPISODE, status: "started" };
-      return json({ request: { id: "b0c1d2e3-0000-4000-8000-000000000001", premise: `品牌故事 第 1 集：${EPISODE.title}\n${EPISODE.logline}\nquestion: ${PLAN.question}`, title: `品牌故事 第 1 集 ${EPISODE.title}`, source_guide: null, style_preset: "custom", target_minutes: 13, note: series.note, status: "started", slug: body.slug, series_slug: series.slug, episode_number: 1 }, episode: started, context: { series, setting: null, outline: null, chapter: null, chapter_number: null, chapter_range: null, episode: started, episodes: [{ ...started, beats: {} }], recaps: [], mysteries: [] } });
+      return json({ request: { id: "b0c1d2e3-0000-4000-8000-000000000001", premise: `品牌故事 第 1 集：${EPISODE.title}\n${EPISODE.logline}\nquestion: ${PLAN.question}`, title: `品牌故事 第 1 集 ${EPISODE.title}`, source_guide: null, style_preset: "custom", target_minutes: series.target_minutes, note: series.note, status: "started", slug: body.slug, series_slug: series.slug, episode_number: 1 }, episode: started, context: { series, setting: null, outline: null, chapter: null, chapter_number: null, chapter_range: null, episode: started, episodes: [{ ...started, beats: {} }], recaps: [], mysteries: [] } });
     }
     if (pathname === "/api/video/automation/run") {
       calls.run.push(body);
@@ -501,6 +504,50 @@ test("a writer's chapter is made the worker's: stills only, narrator lines, hand
 });
 
 // --- the flow -------------------------------------------------------------------------------------------
+
+test("the ten-minute preset is preserved by the story file and video composer", () => {
+  const cute = { ...SERIES, target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const info = storySeriesFile({ series: cute, episode: EPISODE, plan: PLAN, cast: [] });
+  assert.deepEqual(info.look, { preset: "cute-mystery" });
+  assert.equal(info.image_model, "image-01");
+  assert.match(storyBrief({ episode: EPISODE, plan: PLAN, cast: [], look: info.look }), /## 問題\n[^\n]+\n\n## 一句答案\n[^\n]+/);
+  assert.doesNotMatch(storyBrief({ episode: EPISODE, plan: PLAN, cast: [], look: LOOK }), /## 問題\n|## 一句答案\n/, "the original custom brief keeps its drama sections");
+  const cuteBudgets = chapterBudgets(10, info.look);
+  assert.equal(cuteBudgets.reduce((seconds, chapter) => seconds + chapter.seconds, 0), 600);
+  assert.equal(cuteBudgets.reduce((shots, chapter) => shots + chapter.shots, 0), 80, "7.5 seconds per picture gives 75–120 illustrations");
+  assert.equal(chapterBudgets(13).reduce((shots, chapter) => shots + chapter.shots, 0), 90, "the original 13-minute route keeps its pace");
+  assert.deepEqual(lengthBand(10, info.look), [540, 660]);
+  assert.deepEqual(lengthBand(13), [690, 930]);
+  const video = composeStory({ slug: SLUG, info, chapters: {}, voice: SERIES.voice, root: "." });
+  assert.deepEqual(video.look, { preset: "cute-mystery" });
+  assert.deepEqual(video.target_minutes, [9, 11]);
+});
+
+test("a ten-minute story carries the exact MiniMax cute look from series to video", async () => {
+  const cute = { ...SERIES, target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const answers = standardAnswers({ "writer:story": (body) => {
+    const chapter = chapterAnswer(body.payload.chapter.key, body.payload);
+    chapter.scenes.forEach((scene, index) => { if (scene.template === "shot") scene.data.camera = index % 2 ? "slow pan left" : "slow push in"; });
+    return chapter;
+  } });
+  const world = storyWorld({ series: cute, answers });
+  assert.match(await world.automation.step(), /^story brand-stories:/);
+  const info = readJson(path.join(world.dir, "series.json"));
+  assert.equal(info.target_minutes, 10);
+  assert.equal(info.image_model, "image-01");
+  assert.deepEqual(info.look, { preset: "cute-mystery" });
+  const brief = readFileSync(path.join(world.dir, "brief.md"), "utf8");
+  assert.match(brief, /## 問題\n[^\n]+\n\n## 一句答案\n[^\n]+/);
+  assert.equal(world.state().style_preset, "custom", "the six-chapter story writer stays in use");
+  assert.equal(world.state().target_minutes, 10);
+  const written = await steps(world.automation, 6);
+  assert.match(written.at(-1), /six are merged into video\.json/, written.join("\n"));
+  const video = world.video();
+  assert.deepEqual(video.look, { preset: "cute-mystery" });
+  assert.deepEqual(video.target_minutes, [9, 11]);
+  assert.equal(video.category, "story");
+  assert.equal(world.site.calls.run.filter((call) => call.stage === "writer").length, 6);
+});
 
 test("a story goes from the site's job to its first media step: started from its plan, written, checked and heard a chapter a call, the script gate approved here, then tts", async () => {
   const world = storyWorld();

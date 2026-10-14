@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-story-pilot
 title: 試作兩支品牌故事並記錄數字
-status: open
+status: blocked
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: codex-8a78-pilot
+claimed_at: 2026-10-14T16:31:34Z
 created_at: 2026-09-28T03:31:15Z
 completed_at:
-branch:
+branch: codex/brand-stories-five-20261014
 depends_on:
   - 2026-09-28-video-story-worker
   - 2026-09-28-video-story-backlog
@@ -80,3 +80,13 @@ Concrete pre-generation gates discovered during plan preparation:
 - Use `drama.drama_auto_approve_final=false` for owner viewing. Caption locales
   are en/ja/ko/zh-CN, with zh-TW automatically included; a replay can legitimately
   report started/leave_alone without creating another A01.
+
+### 2026-10-15 owner order and read-only preflight
+
+The owner explicitly chose A01/B18 first, then the five new MiniMax/10-minute brand stories. This pilot retains its original Gemini/13-minute format and US$25 **all-in** actual cost cap per film. Local A01/B18 source rows and reviews still hash-match and validate. In this checkout, neither `docs/videos/story-rolling-suitcase/video.json` nor `docs/videos/story-conveyor-belt-sushi/video.json`, nor their default local media workdirs, exists; that says nothing about the host. The current 100-story compiled file is 1,415,413 bytes, SHA-256 `c8fb18102634459c62f556022139e0bdc733ef432321c412ff810faed0ac0194`, so the 2026-09-29 import-file SHA in the old plan is stale even though the original A01/B18 source files are unchanged.
+
+Production **UI observation only** on 2026-10-15 (`/zh-TW/admin/videos?tab=drama`): AI drama is shown enabled and the `kind=story` list showed no cards, but this is not a full database/media/slug reconciliation. The settings UI showed `drama_auto_approve_final=true`, generic `max_usd_per_video=US$200`, concurrent episodes=1, monthly starts=30, image and judge monthly maxima=20,000 each, music=60, clip seconds=3,000, channel voice enabled, and en/ja/ko language pre-checks false. Generic image model was MiniMax `image-01`; the original A01/B18 series specifies Gemini, so actual per-series routing remains unverified. Provider balances and account availability remain unknown.
+
+The deployments UI showed no live release SHA/CI history. A single read-only host preflight through the saved PuTTY `hostinger2` session returned exit 1, `Cannot answer interactive prompts in batch mode`; no retry or alternate connection was attempted. Therefore live Git/image SHA, hold/locks, exact A01/B18 database or media state, balances and ongoing paid jobs are **unknown**. No deploy, settings change, import, paid generation, upload or owner playback occurred. Before any apply/spend, obtain the approved host readback, disable automatic final approval for human viewing, reconcile media and non-media cost reserves to the US$25 all-in cap, then run `video-story-import --series brand-stories --limit 2 --episodes-per-day 1` without `--apply` against the current SHA and inspect its create/update/leave-along/refused/problems output. A01 owner playback and ledger precede B18 production.
+
+The owner chose the authorized admin UI for further readback. On retry, the formerly logged-in Chrome browser reported `Browser is not available: chrome`; opening the in-app browser to the same admin page timed out before its webview attached. These are browser-tool availability failures, not proof of an empty live database. No SSH fallback, cookie/API workaround, settings edit or paid call followed. The next agent can resume at `/zh-TW/admin/videos?tab=drama&series=brand-stories` when the authorized browser is available, open the exact A01/B18 episodes, and reconcile their persisted states. The UI has not shown provider cash balance or a release SHA, so those remain separate preflight needs.

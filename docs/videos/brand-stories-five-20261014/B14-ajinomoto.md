@@ -1,6 +1,6 @@
 # B14｜味之素：一碗昆布湯，怎麼走進高階晶片？
 
-狀態：**製作企劃與旁白示範，尚未產生媒體**。母企劃是 [`B14.json`](../story-plans/brand-stories-100/stories/B14.json)，獨立查核是 [`reviews/B14.json`](../story-plans/brand-stories-100/reviews/B14.json)（2026-09-28，`story_sha256=a1b9369a312f6b00367680586bc4d34f383a827e967123939091e023c4351133`）。本稿按事件發生的順序重排敘事；進入工人前須把定稿章節寫回可匯入的企劃並重新獨立查核，不能把本檔當成已審過的製作輸入。
+狀態：**製作企劃與旁白示範，尚未產生媒體**。母企劃是 [`B14.json`](../story-plans/brand-stories-100/stories/B14.json)，獨立查核是 [`reviews/B14.json`](../story-plans/brand-stories-100/reviews/B14.json)（2026-09-28，`story_sha256=a1b9369a312f6b00367680586bc4d34f383a827e967123939091e023c4351133`）。本稿按事件發生的順序重排敘事；六章重排已另編為 [B14 工人輸入](episodes/B14.json)，並有 [新獨立審稿](episodes/reviews/B14.json)；本檔仍只是編輯解說，不能當逐字稿或成片。
 
 ## 觀眾承諾與主線
 
@@ -12,40 +12,39 @@
 
 ## 0:00 開場濃縮旁白（約 45 秒，配音後才確認實長）
 
-> 封裝基板的剖面裡，一層線路完成，下一層正要疊上來。
-> 中間貼一張薄膜，隔開兩層電路。
-> 少了絕緣，電流可能走錯路，造成短路。
-> 一九九九年，味之素推出這張叫 ABF 的膜。等等，它不是賣調味料的嗎？
-> 據鮮味資訊中心記述，起點是一九〇七年的昆布高湯。
-> 一九六九年，它的調味料又在美國遭到安全質疑。
-> 舊製程的副產物，則帶出另一條樹脂材料研究路線。
-> 二〇二六年，公司主管報出這張膜在特定封裝市場的占有率。
+> 一九〇七年春天，池田菊苗的妻子買回一束昆布。
+> 一鍋高湯裡，池田嚐出一股不屬於酸甜苦鹹的味道。
+> 他帶著這個疑問，在東京帝國大學開始研究昆布。
+> 照鮮味資訊中心的記述，這條線從餐桌走向實驗室。
+> 一九六九年，味之素的招牌調味料在美國遭到安全質疑。
+> 一九九九年，這家公司拿出一張供晶片封裝使用的膜；工廠為什麼需要它？
+> 二〇二六年，主管談起這張膜在特定封裝市場的占有率，卻還沒報出數字。
 > 一碗湯和一張膜，中間到底接上了什麼？
 
-開場前四句的基板剖面是依官方技術說明製作的動畫示意，**不是 1999 年產線影像，也不冒稱有人親眼見證這一幕**；絕緣膜隔開層間線路及短路風險見[味之素 ABF 專訪](https://www.ajinomoto.com/stories/the-ajinomoto-groups-unexpected-role-in-semiconductor-manufacturing-the-insulating-film-abf-born-from-aminoscience)。高湯軼事明說是[鮮味資訊中心的記述](https://www.umamiinfo.jp/ikedakikunae/)，1969 年質疑見[味之素社史](https://www.ajinomoto.co.jp/company/jp/aboutus/history/story/09/)。開場只預告事件，不把「副產物直接變成 ABF」、安全爭議的審查結果或占有率數字提前說完。畫面從基板示意切向無商標的廚房、材料實驗、封裝工廠；預告圖在正文回收時再次出現。第一章一結束，插入全頻道 **5 秒動畫片頭**，第二章直接進入 1907 年，不再重講 1999 年開場。
+前四句先落在有來源的 1907 年昆布研究場景，**畫的是歷史示意，不冒稱當年的照片或有人親眼見證每一個動作**；妻子買昆布、池田從高湯辨出另一種味道與進實驗室研究，均按[鮮味資訊中心記述](https://www.umamiinfo.jp/ikedakikunae/)並在口播中交代歸屬。後三個未解時刻照 1969、1999、2026 年順序出現，分別在第三、第五章回收；1969 年質疑見[味之素社史](https://www.ajinomoto.co.jp/company/jp/aboutus/history/story/09/)，薄膜用途與 2026 年受訪說法見[味之素 ABF 專訪](https://www.ajinomoto.com/stories/the-ajinomoto-groups-unexpected-role-in-semiconductor-manufacturing-the-insulating-film-abf-born-from-aminoscience)。開場不把安全爭議的審查結果、材料支線的作用或占有率數字提前說完。畫面從無商標廚房切到抽象的食品、材料與封裝工序；預告圖在正文回收時再次出現。第一章一結束，插入全頻道 **5 秒動畫片頭**，第二章從這碗湯之後的實驗結果往前走，不再重講開場。
 
 ## 正文節拍與敘事接點
 
-正文目標 **13 分鐘**，以下是分配給撰稿的時間，不是音訊或成片的實測值。每章都要讓前一件事造成下一個問題；所有數字只講一次。若來源不足以撐滿某章，縮短該章並重新量實際旁白，不靠慢播或重述補時。
+旁白正文（含開場濃縮與最後三句）目標 **10:00**；另加開場後 5 秒片頭動畫與正文後 21 秒片尾動畫，規劃成片約 10:26。以下是撰稿預算，不是音訊或成片的實測值；正文仍須獨立達到 8 分鐘。每章都要讓前一件事造成下一個問題；所有數字只講一次。若來源不足以撐滿某章，縮短該章並重新量實際旁白，不靠慢播或重述補時。
 
 | 章 / 預算 | 事件與因果 | 章末留下的問題 / 下一章第一句方向 | 證據 |
 | --- | --- | --- | --- |
-| 1. 一張食品公司推出的薄膜（0:45） | 上述開場場景與四個未揭答案。 | 片頭後從池田喝到的味道往前走。 | [Ajinomoto ABF 專訪](https://www.ajinomoto.com/stories/the-ajinomoto-groups-unexpected-role-in-semiconductor-manufacturing-the-insulating-film-abf-born-from-aminoscience) |
-| 2. 池田把高湯的味道送進專利（2:35） | 1907 年春的高湯軼事需註明是鮮味資訊中心記述；1908 年發現麩胺酸並取得專利，1909 年鈴木三郎助把調味料推上市。觀眾跟著一個味道變成可生產的商品，不先跳到今日市場。 | 商品賣得出去之後，招牌商品遇上什麼疑問？ | [味之素年表](https://www.ajinomoto.co.jp/company/jp/aboutus/history/chronology/index.html)、[鮮味資訊中心](https://www.umamiinfo.jp/ikedakikunae/) |
-| 3. 調味料受質疑，材料研究另有起點（2:00） | 沿食品主線依序說明：味之素社史記載 1969 年美國對味精安全提出疑問，並稱 1980 年 FDA 等機構認可安全；**1980 年是公司社史的說法**，不能冒充 FDA 頁面所載日期。FDA 自己的頁面記載 1990 年代委託 FASEB 審查、現將添加味精列為 GRAS，也保留少數敏感者空腹大量攝取時可能短暫不適的界線。用一個短節拍回收開場疑問，再切到**與安全爭議沒有已證因果關係**的材料支線：舊味精製程副產物氯化石蠟，帶出樹脂功能材料、阻燃劑與硬化劑。來源沒有給這條支線的確切起始年，不寫成 1969 年之後才開始；現今味精也已改用植物原料發酵，不畫成舊製程。 | 這些樹脂與配方經驗，後來碰到封裝工廠的哪個難題？ | [味之素社史](https://www.ajinomoto.co.jp/company/jp/aboutus/history/story/09/)、[FDA 味精問答](https://www.fda.gov/food/food-additives-petitions/questions-and-answers-monosodium-glutamate-msg)、[Ajinomoto ABF 專訪](https://www.ajinomoto.com/stories/the-ajinomoto-groups-unexpected-role-in-semiconductor-manufacturing-the-insulating-film-abf-born-from-aminoscience) |
-| 4. 液態材料讓工廠等乾（3:10） | 回到材料支線：先畫封裝基板層間線路，沒有絕緣會短路。官方訪談說過去液態塗料有不均、氣泡與乾燥工序；累積的樹脂材料與調配經驗，才讓薄膜成為可能。把工序翻成觀眾能看到的「塗一面、等乾、翻面再塗、再等乾」與「貼膜」動作，不把 ABF 畫成晶片本身，也不替舊製程補上來源沒有的年份。 | 那張薄膜終於上市時，製造商為何願意換？ | [Ajinomoto ABF 專訪](https://www.ajinomoto.com/stories/the-ajinomoto-groups-unexpected-role-in-semiconductor-manufacturing-the-insulating-film-abf-born-from-aminoscience) |
-| 5. ABF 走進高效能封裝（3:50） | 回到可確認的時間點：1999 年 ABF 上市，薄膜改善工序，後來依客戶要求演進。2026 年 3 月受訪主管 Akito Kitano 說其在高效能電腦、資料中心伺服器所用封裝的市場約 95%；這是**公司說法，限於該市場**。FDA 結論已在第 3 章回收，這裡順著 1999 → 2026 的材料主線前進，不再倒回味精安全史。 | 公司既賣調味料又做封裝材料，兩者真正共用的是什麼？ | [Ajinomoto ABF 專訪](https://www.ajinomoto.com/stories/the-ajinomoto-groups-unexpected-role-in-semiconductor-manufacturing-the-insulating-film-abf-born-from-aminoscience) |
-| 6. 一張膜回到那碗湯（0:40） | 回到開場畫面，讓廚房與封裝基板在同一個構圖裡；交代公司如今同時經營食品和材料，不再複述年份、比例或 FDA 結論。把兩條路真正共用的能力留給三句片尾第一次說清。 | 進三句正文收尾，片尾動畫只留音樂與可點擊卡位。 | 上述已核對來源 |
+| 1. 1907 年，池田把昆布高湯的疑問帶進實驗室（0:45） | 上述開場場景與三個按年代排列的未揭時刻；只留味道從餐桌走到實驗室這一步，不提前講專利、材料配方或市場數字。 | 片頭後從實驗室的發現往前走。 | [鮮味資訊中心](https://www.umamiinfo.jp/ikedakikunae/)、[Ajinomoto ABF 專訪](https://www.ajinomoto.com/stories/the-ajinomoto-groups-unexpected-role-in-semiconductor-manufacturing-the-insulating-film-abf-born-from-aminoscience) |
+| 2. 池田把高湯的味道送進專利（1:50） | 1907 年春的高湯軼事需註明是鮮味資訊中心記述；1908 年發現麩胺酸並取得專利，1909 年鈴木三郎助把調味料推上市。觀眾跟著一個味道變成可生產的商品，不先跳到今日市場。 | 商品賣得出去之後，招牌商品遇上什麼疑問？ | [味之素年表](https://www.ajinomoto.co.jp/company/jp/aboutus/history/chronology/index.html)、[鮮味資訊中心](https://www.umamiinfo.jp/ikedakikunae/) |
+| 3. 調味料受質疑，材料研究另有起點（1:30） | 沿食品主線依序說明：味之素社史記載 1969 年美國對味精安全提出疑問，並稱 1980 年 FDA 等機構認可安全；**1980 年是公司社史的說法**，不能冒充 FDA 頁面所載日期。FDA 現將添加味精視為 GRAS；其頁面另記載 1990 年代委託 FASEB 審查，並保留少數敏感者空腹大量攝取時可能短暫不適的界線，**沒有為 GRAS 指定年份**。用一個短節拍回收開場疑問，再切到**與安全爭議沒有已證因果關係**的材料支線：舊味精製程副產物氯化石蠟，帶出樹脂功能材料、阻燃劑與硬化劑。來源沒有給這條支線的確切起始年，不寫成 1969 年之後才開始；現今味精也已改用植物原料發酵，不畫成舊製程。 | 這些樹脂與配方經驗，後來碰到封裝工廠的哪個難題？ | [味之素社史](https://www.ajinomoto.co.jp/company/jp/aboutus/history/story/09/)、[FDA 味精問答](https://www.fda.gov/food/food-additives-petitions/questions-and-answers-monosodium-glutamate-msg)、[Ajinomoto ABF 專訪](https://www.ajinomoto.com/stories/the-ajinomoto-groups-unexpected-role-in-semiconductor-manufacturing-the-insulating-film-abf-born-from-aminoscience) |
+| 4. 液態材料讓工廠等乾（2:15） | 回到材料支線：先畫封裝基板層間線路，沒有絕緣會短路。官方訪談說過去液態塗料有不均、氣泡與乾燥工序；累積的樹脂材料與調配經驗，才讓薄膜成為可能。把工序翻成觀眾能看到的「塗一面、等乾、翻面再塗、再等乾」與「貼膜」動作，不把 ABF 畫成晶片本身，也不替舊製程補上來源沒有的年份。 | 那張薄膜終於上市時，製造商為何願意換？ | [Ajinomoto ABF 專訪](https://www.ajinomoto.com/stories/the-ajinomoto-groups-unexpected-role-in-semiconductor-manufacturing-the-insulating-film-abf-born-from-aminoscience) |
+| 5. ABF 走進高效能封裝（2:35） | 回到可確認的時間點：1999 年 ABF 上市，薄膜改善工序，後來依客戶要求演進。2026 年 3 月受訪主管 Akito Kitano 說其在高效能電腦、資料中心伺服器所用封裝的市場約 95%；這是**公司說法，限於該市場**。FDA 結論已在第 3 章回收，這裡順著 1999 → 2026 的材料主線前進，不再倒回味精安全史。 | 公司既賣調味料又做封裝材料，兩者真正共用的是什麼？ | [Ajinomoto ABF 專訪](https://www.ajinomoto.com/stories/the-ajinomoto-groups-unexpected-role-in-semiconductor-manufacturing-the-insulating-film-abf-born-from-aminoscience) |
+| 6. 一張膜回到那碗湯（1:05） | 回到開場畫面，讓廚房與封裝基板在同一個構圖裡；交代公司如今同時經營食品和材料，不再複述年份、比例或 FDA 結論。把兩條路真正共用的能力留給三句片尾第一次說清。 | 進三句正文收尾，片尾動畫只留音樂與可點擊卡位。 | 上述已核對來源 |
 
-**鏡頭路線**：系列共用的暖色、青橘點綴平面卡通插畫；這集以高湯表面渦流、製程管線、透明樹脂層、電路層線條四個視覺形狀串接章節。約 85–100 張有明確新資訊的靜圖，緩慢運鏡，5–8 秒換一次畫面狀態；需要的字與數字在後製疊上，不請圖片模型畫字。兩個人物設定延用母企劃的 `chemist` 與 `materials-engineer`，後者只代表職業，不冒充當年某個真實工程師。旁白台灣口音、主片 zh-TW 燒錄字幕；其他字幕／音軌依該集已選設定另做，不推定品牌故事可自動加配音。
+**鏡頭路線**：MiniMax `image-01` 以 1K 畫 `cute-mystery` 原句畫風的可愛插畫，不設 `look.negative` 欄位；廚房或實驗室的特徵只放進各鏡 prompt，不改共用 `look`。以高湯表面渦流、素面製程管線、樹脂層、電路層四個可辨的形狀串接章節；約 75–120 張有明確敘事作用的 `shot` 插畫，搭配少量標示年份、比例與來源的字卡，正文至少 70% 是插畫，連續字卡不超過三張。畫面每約 5–8 秒換一個有動作或資訊的景別，每張只畫一個主體做一件事；技術示意圖也以一個部件或一道工序為視覺中心，文字與數字在後製疊上。每章安排人物表情近景、工序中景、物件特寫，白天與室內光源輪替；避免整片都是空景或相似線路圖。兩個人物設定延用母企劃的 `chemist` 與 `materials-engineer`，後者只代表職業，不冒充當年某個真實工程師，也不畫池田本人的擬真肖像。插畫若與已核事實矛盾或漂成照片／3D 才重畫，先看連續鏡頭小樣，再依整集張數與費用上限一次產圖。旁白台灣口音、主片 zh-TW 燒錄字幕；其他字幕／音軌依該集已選設定另做，不推定品牌故事可自動加配音。
 
 ## 懸念回收表
 
 | 開場埋設 | 正文回收（必須帶新資訊） |
 | --- | --- |
 | 「一碗昆布高湯」 | 第 2 章交代池田辨認麩胺酸、1908 年專利及 1909 年商品化。 |
-| 「美國遇上安全質疑」 | 第 3 章按 1969 年質疑 → 公司社史所稱 1980 年 FDA 等機構認可 → FDA 頁面記載的 1990 年代 FASEB 審查順序回收；說明 GRAS 與少數敏感者的界線，不移到 1999 年 ABF 上市之後才交代。 |
-| 「製程副產物」 | 第 3–4 章說明氯化石蠟開啟樹脂材料路線，**不是**把副產物直接壓成 ABF。 |
+| 「美國遇上安全質疑」 | 第 3 章按 1969 年質疑 → 公司社史所稱 1980 年 FDA 等機構認可 → FDA 頁面記載的 1990 年代 FASEB 審查順序回收；另說明 FDA 現行 GRAS 判斷與少數敏感者界線，不替 GRAS 加上年份，也不移到 1999 年 ABF 上市之後才交代。 |
+| 「1999 年，調味料公司拿出晶片封裝用薄膜」 | 第 3 章先引出未標確切起始年的舊製程副產物與樹脂研究，第 4 章才揭曉液態塗料不均、氣泡、等乾的工序難題；第 5 章用 1999 年上市回收薄膜如何成為解法。**不是**把副產物直接壓成 ABF，也不把食品安全爭議寫成研發原因。 |
 | 「主管報出占有率」 | 第 5 章才說約 95%、受訪者與高效能電腦／伺服器封裝的範圍。 |
 
 ## 正文最後三句與動畫片尾
@@ -54,7 +53,7 @@
 > 如果你經營這家公司，會在看不到晶片生意的那些年，繼續留著這條材料研究線嗎？歡迎留言說說你的選擇。
 > 想繼續聽這些每天碰得到、卻藏著另一段歷史的品牌故事，歡迎訂閱。
 
-最後一句後保留正文原有的收氣，再接全頻道 **21 秒片尾動畫**（1 秒停頓、3 秒動畫、17 秒結束畫面底與配樂）。最後 16 秒在 YouTube Studio 放「最符合觀眾喜好」影片、訂閱、最新上傳三個真實可點擊元素；畫在 MP4 裡的框只是位置提示，不能當成連結。影片旁白不點名下一支片。縮圖與說明欄把本片的事實來源列出；若日後有對應 Mokaair 文章，再依上架包規格放單一連結。實際卡位與素材版本在合成前讀 `_branding/current.json` 後鎖定，不能假設本機已裝好所述版本。
+最後一句後保留正文原有的收氣，再接全頻道 **21 秒片尾動畫**（前 5 秒轉場與配樂淡入，最後 16 秒保留結束畫面底）。最後 16 秒在 YouTube Studio 放「最符合觀眾喜好」影片、訂閱、最新上傳三個真實可點擊元素；畫在 MP4 裡的框只是位置提示，不能當成連結。影片旁白不點名下一支片。縮圖與說明欄把本片的事實來源列出；若日後有對應 Mokaair 文章，再依上架包規格放單一連結。實際卡位與素材版本在合成前讀 `_branding/current.json` 後鎖定，不能假設本機已裝好所述版本。
 
 ## 本集不能越過的事實界線
 
