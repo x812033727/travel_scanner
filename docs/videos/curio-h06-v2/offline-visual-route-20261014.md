@@ -1,5 +1,7 @@
 # H06 v2｜保留 MiniMax 的離線提示修訂與視覺路線
 
+**後續實作（同日）：**前兩個已退件／未驗證的運河 `shot` 已依此頁方案改為原創 SVG `diagram`，現行 `video.json` 不再是下段的 51-shots SHA。兩卡的版面、雜湊、逐句時窗與只餘 46 幀的插圖比例證據見 [運河圖卡交接](native-canal-cards-20261014.md)。以下提示詞與設計試算保留作歷史決策紀錄。
+
 日期：2026-10-14。站主指定維持 MiniMax `image-01`、只做離線規劃。本輪已在 `video.json` **套用提示詞與 look 修訂**：保留 51 個 shot 的 ID、順序、`template`、鏡頭時間與 104 句旁白，沒有改站上模型設定、沒有送付費生圖或 judge、沒有重錄聲音，也沒有動核准檔或現有媒體收據。現行 `video.json` SHA-256 `52e29bceaa443ce740ba0db5ff9eb64cca27613340828f813c56dcee00d2607a`，正式 `timeline.json` SHA-256 仍為 `a885d5871108adaeacf346ccefa8d30a15556dda9623b5fa9fc5d9cf792f8e84`。事實邊界沿用 [claims.md](claims.md)，三張已入片史照的權利與年代沿用 [assets-provenance.md](assets-provenance.md)。**提示詞通過離線檢查不代表模型能畫對，更不代表任何圖片獲人工接受。**
 
 **後續實圖更新：**站主另准的一張 `hook-canal-rail` 小樣已生成且被退回：MiniMax 把平面運河提示畫成山灣，底部還有虛構小字；judge `subject=0`、`passed=false`。第四輪證據在 [visual-pilot-01.md](visual-pilot-01.md)，下方〈退件後的離線替代方案〉取代原先「下一次先重買運河」的建議。以下各表仍是**付費前的歷史規劃快照**，不是實圖驗收。

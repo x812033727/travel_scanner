@@ -1,5 +1,7 @@
 # H05 v2｜`open-note` 單張小樣人工退件
 
+**後續處置：** 已以 c04 原生示意卡取代這張退件 shot 的候選主稿；新雜湊與離線檢查見 [open-note-diagram-revision-20261014.md](open-note-diagram-revision-20261014.md)。本頁及付費檔案仍保留原始退件收據，沒有把舊圖改成通過。
+
 日期：2026-10-14。站主只授權 H05 一張 MiniMax 代表小樣；本輪僅對 `open-note` 執行一張生成與一次正常判圖，**不擴批、不重抽**。`video.json` SHA-256 `74102087ca465c7c73044e1182671641965cc19cbd6f4d0470d11fcb9c16e6e3`，主稿的旁白、場景、look 與該鏡 prompt 未改；manifest 記 `look_hash=38b9efa0cb47553f`、`pictures_hash=6b3167e632a73379`。
 
 | 項目 | 收據 |

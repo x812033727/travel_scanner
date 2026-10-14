@@ -4,11 +4,11 @@
 
 ### 一九二〇年，運河邊沒有名字
 
-#### 1. hook-canal-rail
+#### 1. hook-canal-rail（diagram）
 
 旁白（放慢，關鍵名詞壓重，句尾留白）：一九二〇年二月，柏林的運河邊救起一名女子。
 
-#### 2. hook-canal-rail-beat-2
+#### 2. hook-canal-rail-beat-2（diagram）
 
 旁白：她沒有說出名字，警方也查不到她的身分。
 
@@ -375,5 +375,5 @@
 旁白（像說給身旁的人聽，先輕後重）：留言選：判決或檢體。
 旁白：訂閱，一起查證。
 
-narrative 02a39e4e1fb460a7
+narrative a8b72a5524beace9
 speech 9ae95e3507d3809f

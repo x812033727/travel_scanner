@@ -20,7 +20,7 @@
 
 旁白（數字稍慢，語尾落穩）：起飛前，他還點了一杯波本加蘇打。
 
-#### 5. open-note
+#### 5. open-note（diagram）
 
 旁白：起飛後，他把一張紙條遞給空服員。
 
@@ -114,7 +114,7 @@
 
 #### 27. cabin-front-curtain
 
-旁白：劫機者命令機組員繼續飛，航向墨西哥城。
+旁白：再起飛，是因為劫機者命令機組員繼續飛，航向墨西哥城。
 
 #### 28. second-flight-night
 
@@ -380,7 +380,7 @@
 
 #### 89. immersion-before-burial（steps）
 
-旁白（像把眼前剛發生的事講給朋友聽）：這組對照支持先碰水、後被沙覆蓋的解釋。
+旁白（像把眼前剛發生的事講給朋友聽）：剛才問的先後順序，這組對照支持鈔票先碰水、後被沙覆蓋。
 
 #### 90. element-analysis-limit（compare）
 
@@ -401,5 +401,5 @@
 旁白：哪件物證最意外？
 旁白：訂閱，繼續查證。
 
-narrative 65c64491d8a53b77
-speech 7d8cb6cb30ba87d9
+narrative 31f279e4aaa020c5
+speech 0b7b642f114d257f

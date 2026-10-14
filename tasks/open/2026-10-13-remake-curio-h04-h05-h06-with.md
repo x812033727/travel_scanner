@@ -198,3 +198,34 @@ H06's prompt-only MiniMax repair has current `video.json` SHA-256
 all 51 shot prompts passed dry-run, lint is 0/0, and its narrative/audio hashes
 and approval remained current. The rejected canal image still sits at the
 thumbnail reference and must not be used. Paid images remain on owner hold.
+
+2026-10-14 subsequent checkpoint: the owner lifted the offline-only image
+restriction **for one MiniMax pilot image per episode**. Exactly one image and
+one judge call were made for each H04/H05/H06 (US$0.0135 each, US$0.0405
+incremental total), with preflight and retained receipts. H04's empty briefing
+room scored 10/10 and was visually accepted only as a generic transition
+candidate; 48 planned shots still lack images. H05 `open-note` scored 9.29 but
+was manually rejected for invented passengers and an oversized paper. H06
+`hook-canal-rail` scored 9/10 but failed both judge and human inspection for a
+mountain lake and fake small text. Those two rejected scenes now use original,
+source-labelled SVG diagrams with inspected static renders; rejected images
+remain evidence, not production frames. H05 has 61 remaining shots, H06 has 49.
+
+The scene-template edits invalidated the H05/H06 narrative and audio-timeline
+bindings. H06's new `a8b72a5524beace9` narrative passed 11/11 blind review;
+`tts --refresh-evidence` rebuilt `timeline.json` SHA-256
+`829335243ac71490e3ba552ea18a2c1f949c47a06362aee3979cbf6005d170d2`
+with 0 syntheses and identical 104 line timings/WAV hashes. H05's first new
+blind review found two missing explicit payoffs; only `h5v029` and `h5v103`
+were rewritten, then a fresh reader passed `31f279e4aaa020c5` 11/11. TTS
+synthesized only those two clips (53 billable characters, 100 requests reused),
+and check-audio checked 108/108; both new lines match, while the previous 12
+owner flags remain. New H05 timeline SHA-256 is
+`db2aeb68147ebda3ece14222198f71338dc6101fc27cce06099b66e147457aee`.
+On actual audio H05's 61 shots cover 58.5658% with maximum state 7.833s;
+H06's 49 shots cover 50.3061%, just 46 frames above 50%, with maximum state
+7.967s. Both have zero cadence problems. New audio cards were sent to
+`/admin/videos` and read back **pending** for owner approval; previous approvals
+bind older timeline hashes. Body-only zh-TW CC previews have full cue coverage
+but no full render, approved storyboard, completed thumbnail, branded final CC,
+MP4, package, owner playback, or Studio upload. Keep this ticket open.

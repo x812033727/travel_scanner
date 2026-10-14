@@ -1,5 +1,7 @@
 # H06 v2｜主張、來源與不可越過的界線
 
+**2026-10-14 圖卡更新：**下段的 `video.json` 與敘事核准狀態是付費小樣前的歷史快照。最新只將開場兩鏡轉為 c02 約束的原生圖卡；c02 的來源與台詞未變。現行敘事已重新盲評通過、時間軸已從原音檔重建，音訊待站主核准；精確雜湊及影格見 [運河圖卡交接](native-canal-cards-20261014.md)。
+
 本表對應 `video.json` 的 `claims` 代號。v2 改寫了敘事順序與旁白，**不能沿用舊版 H06 的逐句查核或站主核准**。舊版的 [第一輪](../curio-h06/verify-1.md)與[第二輪](../curio-h06/verify-2.md)查核可作前案線索；v2 原有獨立覆核見本集 [verify-1.md](verify-1.md)。現行 `video.json` SHA-256 `52e29bceaa443ce740ba0db5ff9eb64cca27613340828f813c56dcee00d2607a`、敘事 hash `02a39e4e1fb460a7`；新一輪獨立盲評已記錄 11/11 PASS，`status` 讀回 `storytelling panel: passed`。站主已選大綱 A；104 句配音及 **500.933 秒（8:20.93）** 時間軸已重建，正式 `check-audio` 經本地 Whisper medium 第二意見後留 8 句旗標，站主已在後台聽審核准**新版** `timeline.json` SHA-256 `a885d5871108adaeacf346ccefa8d30a15556dda9623b5fa9fc5d9cf792f8e84`，`approvals.json` 與 `status` 均讀回 `[x] narration approved`。最新只改 MiniMax look／提示詞，51 個 shot 的類型、時窗與 104 句 WAV 未變；八句旗標仍保留，不等同自動轉錄全句精確一致。先前 `349cf912c147f530` 的敘事通過及舊時間軸音訊核准只屬歷史紀錄。本輪 BGH、PLOS ONE、Stoneking 增量來源抽查不代替成圖與成片稽核。MiniMax 運河圖片因攝影質感或虛構人物退回，舊 look 的病院圖僅是歷史候選；現行運河兩鏡和其餘提示只通過 dry-run，改原生來源卡的備案見 [離線視覺規劃](offline-visual-route-20261014.md)，尚未套用。正式時間軸 `cadenceProblems=[]`、插畫占 52.256%；完整插圖、分鏡、成片及上架仍未完成。逐檔收據與節奏檢查見 [visual-pilot-01.md](visual-pilot-01.md)及 [verification-notes.md](verification-notes.md)。
 
 | ID | 影片使用的主張 | 可核來源與界線 |

@@ -1,5 +1,7 @@
 # H05 v2｜免費媒體預檢收據
 
+**版本註記：** 本文件的主稿 SHA-256 74102087...、正式時間軸與字幕收據是 open-note 改成原生 diagram **之前的歷史快照**。修訂後主稿 SHA-256 c14695ef580539006621e24e1f3f25e0d9ffcb2ba399eea9fdd7d69aa2edbd1f；用原 WAV 樣本重算的 108 cues 和 SRT／VTT 位元內容雖相同，新版輸入 SHA 收據在 [open-note-diagram-revision-20261014.md](open-note-diagram-revision-20261014.md)。正式時間軸和後台核准仍須重綁。
+
 日期：2026-10-14。以下是**單張付費小樣之前完成的離線預檢**；預檢未修改主稿、語音、核准紀錄、正式 `keyframes/`、`frames/` 或 `captions/`，也未取得付費圖片。其後唯一一張 MiniMax 小樣及人工退件另見 [visual-pilot-04.md](visual-pilot-04.md)。主稿 `video.json` SHA-256 `74102087ca465c7c73044e1182671641965cc19cbd6f4d0470d11fcb9c16e6e3`；現行核准時間軸 SHA-256 `8128f74e74f2dad44ea0c6a1465f2a333c4cb30d0b7f9cfb14829f414becd984`，`narration.wav` SHA-256 `8b519d908e7b85d7d214288d3bf8c7ebb5bc897456a4b32c74143cff50253ba3`。本輪 `lint --slug curio-h05-v2 --json` 為 0 errors、0 warnings。
 
 ## 繁中字幕正文時間預檢

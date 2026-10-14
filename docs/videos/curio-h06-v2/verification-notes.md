@@ -1,5 +1,7 @@
 # H06 v2｜來源重開與查核筆記
 
+**2026-10-14 圖卡更新：**下段的「現行」敘事 hash、影片 SHA 與 51 鏡描述是原生圖卡修訂前的歷史快照。c02 來源界線與 104 句口播未變；開場兩鏡已改 `diagram`，新的 `narrative_hash=a8b72a5524beace9` 已獨立盲評 11/11 通過，正式時間軸重建為 `829335243ac71490e3ba552ea18a2c1f949c47a06362aee3979cbf6005d170d2`，後台音訊審核待站主核准。精確收據見 [運河圖卡交接](native-canal-cards-20261014.md)。
+
 狀態：2026-10-14 離線重製稿的來源查核筆記。這份筆記記錄實際重開的材料、可支持的敘述與無法直接檢視的部分；BGH 原判決掃描、PLOS ONE 原文及 Stoneking 第一手訪談另作增量來源抽查。**現行**敘事 hash `02a39e4e1fb460a7` 已獨立盲評 **11/11 PASS**；104 句配音的新版時間軸 SHA-256 `a885d5871108adaeacf346ccefa8d30a15556dda9623b5fa9fc5d9cf792f8e84` 已由站主在 `/admin/videos` 核准，`review-pull` 與 `status` 讀回 `[x] narration approved`。音訊檢查保留 8 句轉錄旗標，由站主聽審接受；這不是全部畫面欄位的逐項雙人查核、站主審片或成片核准。下文保留先前 hash 與舊版待審紀錄作歷史快照。三鏡付費小樣有兩張運河鏡頭退回、一張病院插畫通過，尚無全片分鏡或成片。圖像收據見 [visual-pilot-01.md](visual-pilot-01.md)；`video.json` 的 `claims` 代號對照 [claims.md](claims.md)。
 
 ## 本次直接重開的原件
