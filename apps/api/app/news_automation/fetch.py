@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import http.client
 import ipaddress
 import socket
 import ssl
@@ -110,6 +111,105 @@ def _pinned_url(original: str, ip: str) -> str:
     return urlunsplit((parsed.scheme, host, parsed.path or "/", parsed.query, ""))
 
 
+class _PinnedHTTPSConnection(http.client.HTTPSConnection):
+    """Connect to a checked IP while authenticating the source's original hostname."""
+
+    def __init__(self, ip: str, hostname: str, *, timeout: float) -> None:
+        context = tls_context()
+        address = f"[{ip}]" if ":" in ip else ip
+        super().__init__(address, timeout=timeout, context=context)
+        self._tls_context = context
+        self._source_hostname = hostname
+
+    def connect(self) -> None:
+        plain = socket.create_connection((self.host, self.port), self.timeout)
+        try:
+            self.sock = self._tls_context.wrap_socket(
+                plain, server_hostname=self._source_hostname
+            )
+        except BaseException:
+            plain.close()
+            raise
+
+
+def _pinned_stdlib_request(
+    url: str, ip: str, hostname: str, headers: dict[str, str], timeout: float
+) -> httpx.Response:
+    """Retry a challenged request without httpcore's TLS handshake shape.
+
+    The connection still uses the address checked by resolve_public_ips. The TLS
+    certificate is checked against hostname, redirects stay visible to fetch(), and
+    the response is capped and must use the requested identity encoding.
+    """
+    request = httpx.Request(
+        "GET",
+        _pinned_url(url, ip),
+        headers={
+            **headers,
+            "Host": hostname,
+            "User-Agent": USER_AGENT,
+            "Accept-Encoding": "identity",
+        },
+    )
+    connection = _PinnedHTTPSConnection(ip, hostname, timeout=timeout)
+    received: http.client.HTTPResponse | None = None
+    try:
+        connection.request(
+            "GET", request.url.raw_path.decode("ascii"), headers=dict(request.headers)
+        )
+        received = connection.getresponse()
+        response_headers = received.getheaders()
+        if received.status >= 300:
+            # The caller only needs the status and Location for errors/redirects.
+            # A second challenge can be arbitrarily large or compressed.
+            return httpx.Response(
+                received.status,
+                headers=[
+                    (name, value)
+                    for name, value in response_headers
+                    if name.lower() not in {"content-encoding", "content-length"}
+                ],
+                content=b"",
+                request=request,
+            )
+        encoding = (received.getheader("content-encoding") or "").casefold()
+        if encoding not in {"", "identity"}:
+            raise UnsafeNewsUrl("news source ignored identity content encoding")
+        declared = received.getheader("content-length")
+        declared_size: int | None = None
+        if declared:
+            try:
+                declared_size = int(declared)
+            except ValueError as error:
+                raise UnsafeNewsUrl("news source returned an invalid content length") from error
+            if declared_size < 0:
+                raise UnsafeNewsUrl("news source returned an invalid content length")
+            if declared_size > MAX_RESPONSE_BYTES:
+                raise UnsafeNewsUrl("news source response is too large")
+        wire_body = received.read(MAX_RESPONSE_BYTES + 1)
+        if len(wire_body) > MAX_RESPONSE_BYTES:
+            raise UnsafeNewsUrl("news source response is too large")
+        if declared_size is not None and len(wire_body) != declared_size:
+            raise httpx.TransportError("news source response ended early", request=request)
+    except (OSError, http.client.HTTPException) as error:
+        raise httpx.TransportError(str(error), request=request) from error
+    finally:
+        if received is not None:
+            received.close()
+        connection.close()
+
+    return httpx.Response(
+        received.status,
+        headers=[
+            (name, value)
+            for name, value in response_headers
+            if name.lower() not in {"content-encoding", "content-length"}
+        ],
+        content=wire_body,
+        request=request,
+    )
+
+
 @dataclass
 class _HostRate:
     lock: asyncio.Lock
@@ -126,6 +226,7 @@ class SafeNewsFetcher:
         rate_limiter: RateLimiter | None = None,
     ) -> None:
         self._external_client = client
+        self._timeout_seconds = timeout_seconds
         self._client = client or httpx.AsyncClient(
             timeout=timeout_seconds, follow_redirects=False, verify=tls_context()
         )
@@ -171,6 +272,32 @@ class SafeNewsFetcher:
                         if attempt < 2:
                             await asyncio.sleep(2**attempt)
                             continue
+                    if streamed.status_code in {401, 403} and self._external_client is None:
+                        # Try the same checked IP before reading a possibly oversized
+                        # challenge body. The alternate transport has its own size cap.
+                        await self._rate_limit(host)
+                        try:
+                            alternate = await asyncio.to_thread(
+                                _pinned_stdlib_request,
+                                url,
+                                ips[0],
+                                host,
+                                headers,
+                                self._timeout_seconds,
+                            )
+                        except httpx.TransportError:
+                            return httpx.Response(
+                                streamed.status_code,
+                                content=b"",
+                                request=streamed.request,
+                            )
+                        else:
+                            if (
+                                alternate.status_code == 429 or alternate.status_code >= 500
+                            ) and attempt < 2:
+                                await asyncio.sleep(2**attempt)
+                                continue
+                            return alternate
                     declared = streamed.headers.get("content-length")
                     if declared:
                         try:

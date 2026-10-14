@@ -33,8 +33,12 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    fails is skipped and listed on the source (`partial`), and the listing's ETag is kept
    back so the next scan tries it again. Exact URL, title or content matches are closed as
    duplicates at once.
-   A first-party page that *refuses* the scanner (HTTP 401 or 403: `openai.com/index/*`
-   answers every request with a Cloudflare challenge) is not skipped forever when its entry is
+   If the HTTP client receives 401 or 403, the fetcher tries the same checked IP once
+   through a standard-library HTTPS connection. That retry retains the original Host,
+   SNI and certificate check, robots policy, redirect allow-list and 2 MB body limit; it
+   requests identity encoding so compressed responses cannot exceed the limit while
+   decoding. A first-party page that *still refuses* the scanner is not skipped forever
+   when its entry is
    dated within
    the last 72 hours and the feed carries a summary: it becomes a candidate in
    `needs_evidence` (`news_page_refused`) holding that summary as its only `lead_only`

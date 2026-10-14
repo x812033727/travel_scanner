@@ -3,9 +3,12 @@ from __future__ import annotations
 import gzip
 import json
 import os
+import socket
+import ssl
 from collections.abc import AsyncIterator
 from copy import deepcopy
 from datetime import UTC, datetime, timedelta
+from io import BytesIO
 from pathlib import Path
 from types import SimpleNamespace
 from typing import Any, cast
@@ -27,6 +30,7 @@ from sqlalchemy.ext.asyncio import (
 from sqlalchemy.pool import NullPool
 
 import app.news_automation as news_automation_package
+import app.news_automation.fetch as news_fetch
 from app.config import get_settings
 from app.db import Base
 from app.guides.schemas import GuideDocument
@@ -221,6 +225,241 @@ async def test_safe_fetcher_checks_redirect_robots_and_stream_size() -> None:
     with pytest.raises(UnsafeNewsUrl, match="too large"):
         await oversized_fetcher.fetch("https://example.com/feed", allowed_hosts={"example.com"})
     await client.aclose()
+
+
+@pytest.mark.parametrize("ip", ["93.184.216.34", "2606:4700:4700::1111"])
+def test_challenge_transport_pins_ip_and_authenticates_original_host(
+    monkeypatch: pytest.MonkeyPatch, ip: str,
+) -> None:
+    verifying = news_fetch.tls_context()
+    assert verifying.check_hostname
+    assert verifying.verify_mode == ssl.CERT_REQUIRED
+    written: list[bytes] = []
+    wrapped_hosts: list[str] = []
+    connected: list[tuple[str, int]] = []
+
+    class Socket:
+        def sendall(self, data: bytes) -> None:
+            written.append(data)
+
+        def makefile(self, *_args: object) -> BytesIO:
+            return BytesIO(
+                b"HTTP/1.1 200 OK\r\nContent-Type: text/xml\r\n"
+                b"Content-Length: 4\r\n\r\nnews"
+            )
+
+        def close(self) -> None:
+            return None
+
+    class Context:
+        def wrap_socket(self, plain: Socket, *, server_hostname: str) -> Socket:
+            wrapped_hosts.append(server_hostname)
+            return plain
+
+    def connect(address: tuple[str, int], _timeout: float) -> Socket:
+        connected.append(address)
+        return Socket()
+
+    monkeypatch.setattr(socket, "create_connection", connect)
+    monkeypatch.setattr(news_fetch, "tls_context", Context)
+    result = news_fetch._pinned_stdlib_request(
+        "https://official.example/news/rss.xml",
+        ip,
+        "official.example",
+        {"Accept": "text/xml"},
+        5,
+    )
+    assert connected == [(ip, 443)]
+    assert wrapped_hosts == ["official.example"]
+    assert result.status_code == 200
+    assert result.content == b"news"
+    assert b"GET /news/rss.xml HTTP/1.1\r\n" in written[0]
+    assert b"host: official.example\r\n" in written[0].lower()
+    assert b"accept-encoding: identity\r\n" in written[0].lower()
+
+
+@pytest.mark.parametrize(
+    ("header", "value", "message"),
+    [
+        ("content-length", str(MAX_RESPONSE_BYTES + 1), "too large"),
+        ("content-encoding", "gzip", "identity content encoding"),
+    ],
+)
+def test_challenge_transport_rejects_oversized_or_encoded_responses(
+    monkeypatch: pytest.MonkeyPatch, header: str, value: str, message: str
+) -> None:
+    class Response:
+        status = 200
+
+        def getheaders(self) -> list[tuple[str, str]]:
+            return [(header, value)]
+
+        def getheader(self, name: str) -> str | None:
+            return value if name == header else None
+
+        def read(self, _amount: int) -> bytes:
+            pytest.fail("Refused response must not be read")
+
+        def close(self) -> None:
+            return None
+
+    class Connection:
+        def request(self, *_args: object, **_kwargs: object) -> None:
+            return None
+
+        def getresponse(self) -> Response:
+            return Response()
+
+        def close(self) -> None:
+            return None
+
+    monkeypatch.setattr(news_fetch, "_PinnedHTTPSConnection", lambda *_a, **_kw: Connection())
+    with pytest.raises(UnsafeNewsUrl, match=message):
+        news_fetch._pinned_stdlib_request(
+            "https://official.example/release",
+            "93.184.216.34",
+            "official.example",
+            {},
+            5,
+        )
+
+
+def test_challenge_transport_preserves_refusal_and_rejects_truncated_success(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    status_code = 403
+    response_headers = {"content-length": str(MAX_RESPONSE_BYTES + 1)}
+    response_body = b""
+
+    class Response:
+        @property
+        def status(self) -> int:
+            return status_code
+
+        def getheaders(self) -> list[tuple[str, str]]:
+            return list(response_headers.items())
+
+        def getheader(self, name: str) -> str | None:
+            return response_headers.get(name)
+
+        def read(self, _amount: int) -> bytes:
+            if self.status == 403:
+                pytest.fail("A refused response body must not be read")
+            return response_body
+
+        def close(self) -> None:
+            return None
+
+    class Connection:
+        def request(self, *_args: object, **_kwargs: object) -> None:
+            return None
+
+        def getresponse(self) -> Response:
+            return Response()
+
+        def close(self) -> None:
+            return None
+
+    monkeypatch.setattr(news_fetch, "_PinnedHTTPSConnection", lambda *_a, **_kw: Connection())
+    request_args = (
+        "https://official.example/release",
+        "93.184.216.34",
+        "official.example",
+        {},
+        5,
+    )
+    refused = news_fetch._pinned_stdlib_request(*request_args)
+    assert refused.status_code == 403
+    assert refused.content == b""
+
+    status_code = 200
+    response_headers = {"content-length": "10"}
+    response_body = b"four"
+    with pytest.raises(httpx.TransportError, match="ended early"):
+        news_fetch._pinned_stdlib_request(*request_args)
+
+
+@pytest.mark.asyncio
+async def test_refused_httpx_page_retries_through_pinned_transport(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    requests: list[httpx.Request] = []
+    fallbacks: list[tuple[str, str, str]] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        requests.append(request)
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /", request=request)
+        return httpx.Response(
+            403,
+            headers={"Content-Length": str(MAX_RESPONSE_BYTES + 1)},
+            request=request,
+        )
+
+    def fallback(
+        url: str, ip: str, hostname: str, _headers: dict[str, str], _timeout: float
+    ) -> httpx.Response:
+        fallbacks.append((url, ip, hostname))
+        return httpx.Response(
+            200,
+            headers={"Content-Type": "text/html"},
+            content=b"<main>Complete official announcement.</main>",
+            request=httpx.Request("GET", f"https://{ip}/release"),
+        )
+
+    monkeypatch.setattr(news_fetch, "_pinned_stdlib_request", fallback)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(
+        client=client, resolver=lambda _host: _resolved("93.184.216.34")
+    )
+    fetcher._external_client = None
+    fetcher._rate_limit = AsyncMock()
+    try:
+        result = await fetcher.fetch(
+            "https://official.example/release", allowed_hosts={"official.example"}
+        )
+    finally:
+        await fetcher.close()
+    assert [request.url.host for request in requests] == ["93.184.216.34"] * 2
+    assert fallbacks == [
+        ("https://official.example/release", "93.184.216.34", "official.example")
+    ]
+    assert result.status_code == 200
+    assert result.body == b"<main>Complete official announcement.</main>"
+    assert fetcher._rate_limit.await_count == 3
+
+
+@pytest.mark.asyncio
+async def test_failed_alternate_keeps_original_refusal_status(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            403,
+            headers={"Content-Length": str(MAX_RESPONSE_BYTES + 1)},
+            request=request,
+        )
+
+    def fallback(*_args: object) -> httpx.Response:
+        raise httpx.TransportError("alternate unavailable")
+
+    monkeypatch.setattr(news_fetch, "_pinned_stdlib_request", fallback)
+    fetcher = SafeNewsFetcher(
+        client=httpx.AsyncClient(transport=httpx.MockTransport(handler)),
+        resolver=lambda _host: _resolved("93.184.216.34"),
+    )
+    fetcher._external_client = None
+    fetcher._rate_limit = AsyncMock()
+    try:
+        with pytest.raises(httpx.HTTPStatusError) as error:
+            await fetcher.fetch(
+                "https://official.example/release",
+                allowed_hosts={"official.example"},
+                check_robots=False,
+            )
+    finally:
+        await fetcher.close()
+    assert error.value.response.status_code == 403
 
 
 @pytest.mark.asyncio
