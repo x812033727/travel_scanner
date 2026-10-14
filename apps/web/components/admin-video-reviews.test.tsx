@@ -182,6 +182,27 @@ describe("AdminVideoReviews", () => {
     expect(screen.queryByRole("button", { name: "重試這支影片" })).toBeNull();
   });
 
+  it("offers to drop a video linked to YouTube too, saying YouTube itself is left alone", async () => {
+    const linked = { ...summary, youtube_video_id: "efSy-Jxq-s8" };
+    const posts: string[] = [];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (init?.method === "POST") posts.push(url);
+      if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json([linked]));
+      return Promise.resolve(Response.json({ ...linked, reviews: [] }));
+    }));
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(true);
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    fireEvent.click(await screen.findByText("放棄這支影片", { selector: "summary" }));
+    expect(screen.getByText(/在這裡放棄不會動到 YouTube/)).toBeTruthy();
+    fireEvent.change(screen.getByRole("textbox", { name: "放棄的原因（必填）" }), { target: { value: "重製版已取代，YouTube 上的舊片已刪" } });
+    fireEvent.click(screen.getByRole("button", { name: "放棄這支影片" }));
+    await waitFor(() => expect(posts).toHaveLength(1));
+    expect(posts[0]).toContain("/admin/videos/ai-model-choice/drop");
+    confirm.mockRestore();
+  });
+
   it("drops a video with a reason once confirmed, then shows it as dropped", async () => {
     let dropped = false;
     const posts: Array<{ url: string; body: unknown }> = [];
