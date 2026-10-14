@@ -56,8 +56,12 @@ function RetryVideo({ project, canManage, onRequested }: { project: Project; can
   </section>;
 }
 
-/** Stop a video for good, with a reason; the pipeline leaves it and its topic stays taken. */
-function DropVideo({ slug, onDropped }: { slug: string; onDropped: () => void }) {
+/**
+ * Stop a video for good, with a reason; the pipeline leaves it and its topic stays taken. A video
+ * linked to a YouTube upload can be dropped too (a duplicate the owner deleted in Studio); the
+ * panel says that YouTube itself is left as it is.
+ */
+function DropVideo({ slug, onYoutube, onDropped }: { slug: string; onYoutube: boolean; onDropped: () => void }) {
   const t = useTranslations("admin.videoReviews");
   const [note, setNote] = useState("");
   const [busy, setBusy] = useState(false);
@@ -79,6 +83,7 @@ function DropVideo({ slug, onDropped }: { slug: string; onDropped: () => void })
     <summary className="cursor-pointer font-bold">{t("dropTitle")}</summary>
     <div className="mt-3 grid gap-3">
       <p className="text-sm leading-6 text-[var(--muted)]">{t("dropDetail")}</p>
+      {onYoutube && <p className="text-sm leading-6 text-[var(--muted)]">{t("dropYoutubeNote")}</p>}
       <label className="grid gap-2 text-sm font-semibold">{t("dropReason")}
         <textarea className={control} rows={2} value={note} disabled={busy} placeholder={t("dropPlaceholder")} onChange={(event) => setNote(event.target.value)} />
       </label>
@@ -459,7 +464,7 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
       {past.length > 0 && <details className="grid gap-4" open={readyToUpload(project)}><summary className="cursor-pointer font-bold">{t("history")}</summary>
         <div className="mt-4 grid gap-4">{past.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={false} onDecided={load} mp4Gone={retired} discussion={discussion(review)} vertical={short} />)}</div>
       </details>}
-      {manage.allowed && !dropped && !project.youtube_video_id && <DropVideo slug={slug} onDropped={load} />}
+      {manage.allowed && !dropped && <DropVideo slug={slug} onYoutube={Boolean(project.youtube_video_id)} onDropped={load} />}
     </>}
   </section>;
 }
