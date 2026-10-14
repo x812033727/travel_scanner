@@ -61,6 +61,9 @@ export const CONDENSATION_RULE = `The first chapter is the condensation: ${OPENI
  * hooks placed now and then, 50 of 100 to reach 85). Sent with CONDENSATION_RULE to every
  * narrated writer and listener: slides storytelling, the explainer routes, the brand story.
  * core/narrative.mjs reads what it can off the script; the blind panel reads the rest.
+ * Its story shapes and single protagonist came on 2026-10-15 (owner: the AI and tech videos jump
+ * around): a blind read of three AI videos found no thread carried end to end, eight metaphors in
+ * one, a third of another on a detour and lists read out; the one thread they had read best.
  */
 export const NARRATIVE_RULES = `
 One story, not sections (the spine):
@@ -79,6 +82,35 @@ One story, not sections (the spine):
   before left hanging; never a label (「先講…」「回到…」「打開第一頁」「這一章回答…」「接下來」
   「第 N 頁」; lint warns). Chapters end in turns: a question, a stop before the event (「三天
   後，電報來了。」), a number, a reversal, never the same way every time.
+One protagonist, one story shape (written for AI and tech topics, held by every narrated video):
+- Before writing, pick ONE shape and ONE protagonist (a slides brief names them on its 故事線 and
+  主角 lines; otherwise the 主線 does). 事件型, news: open at the moment it happened to one person,
+  system or team, follow how it was found out and answered, end on what it means for the viewer.
+  實測型, a tutorial or a review: open on one concrete task the viewer will meet; each chapter is
+  one attempt and its actual result, and the result nobody expected is the turn (on the teaching
+  route the main example is this protagonist). 疑問型, a term or a myth: open on one everyday
+  confusion (問 AI 今天幾號，它很有把握地答錯), and each answer opens the next why. 抉擇型, A or B,
+  does it save money: one person with stated conditions (每月預算、拿來做什麼、手上哪台電腦) tries
+  both; end on what they chose and how the viewer chooses for their own conditions.
+- The protagonist (a person, a team, one image, one bill, one project) is in the opening and in
+  the close, and every chapter moves it on: a new attempt, a new result, a new question it now
+  faces. A new scene, product or fact enters only through it (媽媽那張圖被丟進偵測器；這張帳單多了
+  一行), never as a fresh example. The concrete scene a chapter owes is the protagonist's own (its
+  screen, its bill, its inbox), not a new comparison.
+- At most one metaphor in the whole video, brought in where the mechanism is hard and kept to the
+  end; a second metaphor is cut, not added. One reviewed video used eight (a chef, coins, a scale,
+  a post office, a motorbike, a shoebox, a bridge, a tasting), and a blind reader lost the thread
+  at every switch.
+- A section that does not move the protagonist's question is cut, or goes to the description. A
+  third of one video explained text watermarks while its story was one mother's image; the
+  stretches that followed her image were the ones the reader could follow.
+- A thing is introduced before it is compared: the viewer meets A and B through the protagonist
+  before hearing which one wins. Nothing is read out as a list (a roll call of products, four
+  scores in four seconds, a table of who said what): each item that matters becomes an event for
+  the protagonist (it tries the tool, it gets the score, somebody's answer changes what it does
+  next), and the rest is cut or goes on a card (an update's numbered points, each told in its own
+  moves, are not such a list). A price or a limit is said as its number with the date it was read,
+  never 「以官網為準」.
 Hooks (open loops):
 - Every 60 to 90 seconds of the body, one question is left hanging, in one of four ways in
   turn: forward (「先記住這個數字，等一下它會回來」「這件事晚一點講」), escalation (「但這還不是

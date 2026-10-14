@@ -63,6 +63,11 @@ test("the planner outlines story beats and the listener keeps the register; the 
   assert.match(planner, /你以為／其實：「<what the viewer believes>/);
   assert.match(planner, /收尾：「…」, a question, a\s+stop before the event, a number or a reversal/);
   assert.match(planner, /主線：<the spine in one sentence/);
+  // 2026-10-15: one story shape and one protagonist, chosen before the spine (register.mjs NARRATIVE_RULES).
+  assert.match(planner, /故事線：<事件／實測／疑問／抉擇（選一）>\n主角：<the one person, team, image, bill or project carried from the opening to the close>\n主線：/);
+  assert.match(planner, /One protagonist, one story shape/);
+  assert.match(planner, /At most one metaphor in the whole video/);
+  assert.match(planner, /never 「以官網為準」/);
   assert.match(planner, /轉折：<3 to 5 events in the order they happened/);
   assert.match(planner, /鉤子：<the open loops this outline plants/);
   assert.match(planner, /"shot: <the picture in a few words>"/);
@@ -642,14 +647,16 @@ test("the writer says the numbers, closes on three sentences, unlocks screencast
 // A change here moves the durable key of every unfinished explainer journal (the instructions
 // are part of a stage's inputs), so each such stage is asked, and paid for, again: deploy with
 // none unfinished, then update the digest. Three of the four moved on 2026-10-13, when the
-// condensation became one scene of the story and the close stopped naming the next episode. The cute explainer presets get variants of their own
+// condensation became one scene of the story and the close stopped naming the next episode; the
+// writer moved again on 2026-10-15, when NARRATIVE_RULES gained the story shapes and the one
+// protagonist. The cute explainer presets get variants of their own
 // so that these four never have to move for them.
 test("the four explainer instruction texts are byte for byte what they were", () => {
   const sha256 = (text) => createHash("sha256").update(text, "utf8").digest("hex");
   const pinned = {
     "planner:bible-explainer": "92d58c327776f8f1f8084907e2aaf0a7d8f326c2c614d1ab593dc4074ff017a2",
     "planner:explainer": "e5b50a3fedd95008c096a63153a48e54268821be2e62254913dbc22460ac708f",
-    "writer:explainer": "11ec620a6084cd27a3916971e8d9bf68cda593229218d39ff3e00106534ff0e0",
+    "writer:explainer": "cef7d99e49e0d0c879ed3b5e974be6e577449b7eb1f902366865bed93a22ed40",
     "verifier:explainer": "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842",
   };
   for (const [key, digest] of Object.entries(pinned)) {
