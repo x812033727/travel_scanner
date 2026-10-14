@@ -58,6 +58,8 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli video-st
 
 [A01／B18 試作票](../../../tasks/open/2026-09-28-video-story-pilot.md)目前為 `blocked`，其勾選項要求：先在正式主機讓 A01、B18 到「可以上架」，站主看過；回填時長、張數、重做率、階段秒數、實際帳本、1K 清晰度與 token 用量。站主於 2026-10-15 明確決定這兩支先完成，五支新版接著做。原試作維持原規格，票明載正式站操作須站主同意，部署、上限、頻道立場、字幕語系、權限與主機狀態均須逐項核對。此前的[試作執行方案](../../work-status-2026-09-29-story-pilot-plan.md)也只是一份未執行的方案，不能當作 live 收據。五支尚無正式站逐集狀態回讀；A01／B18 只有試作票記錄的部分後台 UI 觀察，未核實 live 版本、餘額或帳本。沒有改正式設定或驗帳；不自動觸發五支或每日兩支 rollout。
 
+舊試作方案仍稱 `video-story-image-model-pricing` 票未完成；[該票](../../../tasks/done/2026-09-28-video-story-image-model-pricing.md)現已結案，作品模型估價與快取修正已落地。這項修正沒有把文字、TTS、judge 與未結算重試納入每支 US$25 的整片硬上限。2026-10-15 在本機以來源讀取器重查 A01／B18 共 16 個 URL，全部因本環境連線失敗而未取得正文；不能據此判為來源失效，正式寫稿前須在可連網的核准環境重跑並保存報告。
+
 在接線完成且取得該階段的站主決定後，五題每支按同一張收據走：
 
 1. **主機前檢**：核 live SHA、API／worker 版本與映像、release hold、資料庫備份／migration、既有 `brand-stories` 與五個 ID／slug／狀態；查帳號、`content.manage`、AI 漫劇開關、頻道立場、常設指示、繁中聲音、字幕語系、模型路由、TTS／judge／圖片額度、每日與同時進行上限。保留去識別讀取證據，不把本機結果當主機結果。
