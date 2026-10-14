@@ -491,3 +491,54 @@ documented native child-process crash in a different test. `check:tasks` is
 blocked by the duplicate completed CC-safe ticket under untracked
 `tasks/open/`, whose exact deletion was previously rejected by automatic
 approval review. Neither test issue changes the upload package checks.
+
+2026-10-14 foreign-dub continuation: the owner enabled English, Japanese and
+Korean dubs for all three v2 projects in `/admin/videos`. Live backend readback
+showed all nine dub components `working` while metadata and captions remained
+`ready`; `ready_to_upload` is now false until a new language batch is complete.
+The three external `languages.json` mirrors were updated to match. A free
+dry-run estimated 35,398 billable characters for nine tracks, with the speech
+service reporting more than nine million characters of monthly headroom.
+Production started line by line, preserving paid clips in cache.
+
+During concurrent synthesis, Windows returned `EPERM` while promoting complete
+speech-journal confirmations after the provider answered. H06 Japanese request
+`0ec434e13061bcf819c9d80e95c329a170e79aef9a74f35fc0182464db7d0589`
+had an intact 483,884-byte WAV (SHA-256
+`1958800b90a296696bf2545a9ff7965f0024e6c25e224805595257297553f2a8`)
+and matching `confirmed` temporary receipt; its original `sent` receipt was
+atomically backed up and replaced with the validated confirmation, without a
+second provider request. H05 English request
+`7ff7dc416ad6156829a0c816ae689456ca26ef9a9ebd4abffd50f0bb1f9e8720`
+likewise retained a 422,444-byte WAV (SHA-256
+`655d847ff6cfa68e9bb1b9d9017b71cc90d63818a089b29e838e932af9805240`);
+its original `sent` receipt was backed up and atomically replaced with the
+matching confirmation, again without a second provider request. Project `STOP` files now protect all
+three external workdirs while the existing unclaimed Windows journal task is
+investigated. Cached recordings are retained, no complete foreign audio track
+or new language review has been claimed yet, and the original approved MP4s
+are unchanged.
+
+Offline dubbing preparation after that hold: H04 ko was tightened in 40
+source-checked lines and independently reviewed, H04 ja corrected two source
+nuances; H05 en/ja/ko was tightened and independently reviewed, including the
+2020 bill-stack diatom wording in all three locales; H06 en/ko was tightened
+and independently reviewed. All three slugs lint at 0/0 and translations are
+source-current. H04 ja/ko and all H05 locales have zero estimated unfit
+windows. H04 en has 11 estimated over windows but 92 cached paid WAVs, so use
+actual `fit.json` before changing that text. H06 ja has one estimated over
+window with 44 cached WAVs; H06 ko has one estimated over window (`v228`,
+Russian anthropologists' qualified first-grave view) retained for source
+accuracy until actual timing is measured. H06 en has zero estimated over
+windows. No new paid speech was requested during this offline preparation.
+
+The H04 project STOP removal attempted from this task was automatically
+rejected by policy. The owner has been asked to remove that exact new STOP on
+the production workstation; local readback still showed it present. H05 and
+H06 STOPs also remain, so no locale track is ready yet. `test:docs-videos`
+passed 214/215 under system Node 24.13.0; the one unrelated portable-runtime
+freeze test crashed its child process (`3221226505`) and passed when run alone
+under bundled Node 24.19.0. `check:tasks` remains blocked by the unrelated
+untracked duplicate `tasks/open/2026-10-14-keep-curio-source-card-footers-clear.md`;
+its prior removal was automatically rejected. Do not stage or silently delete
+that duplicate.
