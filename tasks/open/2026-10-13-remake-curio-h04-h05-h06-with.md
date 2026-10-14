@@ -260,3 +260,32 @@ rendered. Keep the ticket open and decide a revised visual route before more
 paid images; the 50% shot-time floor has only about 50 frames of slack for
 H04 and 46 frames for H06, so a diagram substitution needs new cadence and
 audio-timeline binding checks.
+
+2026-10-14 mixed-pilot checkpoint: the owner authorized exactly six further
+MiniMax pilot images with one normal judge per image: H04 three adjacent
+opening shots, H06 two revised shots around its retained middle candidate,
+and H05 one night-cloud atmosphere shot after adopting three original,
+source-labelled opening diagrams. The six requests and six judge calls are
+complete with no same-shot retry or outstanding reservation. Actual incremental
+cost was US$0.0810: H04 US$0.0405, H05 US$0.0135, H06 US$0.0270. Raw images,
+judge results, requests, ledgers, SHA snapshots and separate human decisions
+are retained outside the repo and summarized in each v2 pilot document.
+
+H05's three diagram substitutions changed the narrative and timeline hashes.
+A new independent reader passed all 11 narrative questions. TTS rebuilt the
+timeline using unchanged WAVs, with zero synthesis or billable characters;
+the 108 existing audio checks and 12 owner-accepted flags remain applicable.
+The owner approved the new audio card, and `review-pull` records exact current
+timeline SHA-256 `e1cceb2c0cd511f5c67b4e4c34de201036745ed20cf6e48ad7f85f9a000666e9`.
+H04/H06 current audio approvals remain valid. The new H05 night-clouds image
+is a single atmospheric candidate, not an accepted sequence.
+
+Human visual review still holds the H04/H06 continuous openings: H04 has one
+conditional search image and two rejected tent/gear images; H06's two new
+images have prompt/source and continuity defects despite model PASS results.
+H04/H06 generated-shot durations exceed the 50% minimum by only 49/46 frames,
+so source-diagram substitutions require revised trustworthy illustration
+windows and another narrative/timeline/audio binding. No episode has an
+approved complete storyboard, thumbnail, full render, final CC/MP4, QA,
+upload package, playback acceptance or Studio upload. Keep this ticket claimed
+and PR #1484 draft; the next visual production route needs an owner decision.

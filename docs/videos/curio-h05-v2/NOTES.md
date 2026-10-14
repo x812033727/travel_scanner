@@ -67,3 +67,11 @@
 ## 62 個插圖鏡頭的來源路線稽核（2026-10-14）
 
 完整 62 鏡分類、13 個提示詞窄修、原始來源與下一輪代表小樣，記在 [visual-route-audit-20261014.md](visual-route-audit-20261014.md)。此輪 `video.json` SHA-256 從 `f90cc5e16c1da87b46d9a59ffc4be8af4d313778ad3c88750350d36ae2b8ab7e` 變為 `74102087ca465c7c73044e1182671641965cc19cbd6f4d0470d11fcb9c16e6e3`；只改 `open-note`, `open-tail`, `captain-note`, `demand-question`, `agency-alert`, `second-flight-night`, `sand-find`, `tie-brand`, `tie-storage-box`, `tip-standard`, `control-limit`, `layers-sample`, `simple-story-changed` 的 `data.prompt`。敘事與 speech hash、已核准的 `timeline.json` 與 WAV 均未改。實際 108 狀態平均 5.0 秒、最長 7.3 秒、插圖時間 59.45%，`cadenceProblems=[]`；`lint` 0/0，62 鏡 dry-run 無提示詞超額。MiniMax 不接受本稿 style reference，先前 9 張開場樣張均未通過人工採用；本次提示詞預檢不能代替新圖及實速小樣驗收，仍先停在 `needs_revision`，不擴批。
+
+## 最新狀態：三張原生卡接入與音訊核准讀回（2026-10-14）
+
+`open-threat`、`open-tail`、`open-boy` 三張人工退件的付費插圖已在主稿改為[原創 SVG 來源卡](visual-recovery-three-native-cards-20261014.md)，原圖與帳本仍保留。改後獨立盲審 11／11 PASS，現行 `narrative_hash=25c823ca2e556693`；script lint 零錯誤、零警告。三卡接入時 `video.json` SHA-256 `d9f63fe9b019228f21ec02cb0b8029956ae8beed314342a9e841c77c5b2e9bba`；`speech_hash=0b7b642f114d257f` 未變。
+
+以 `tts --refresh-evidence` 僅用已核對快取重建，**0 次合成、0 計費字元**；108 句 WAV、旁白總檔 SHA 與逐句時長皆未變。新的 `timeline.json` SHA-256 `e1cceb2c0cd511f5c67b4e4c34de201036745ed20cf6e48ad7f85f9a000666e9`。舊轉錄 108／108 句仍能按音檔 SHA 沿用，12 句標記未改，未重跑外部 check-audio。`review-push --gate audio` 已送新時間軸音訊卡；站主聽審後，主製作代理執行 `review-pull --gate audio` exit 0，正式 `approvals.json` 記錄本時間軸 SHA 已核准（2026-10-14T04:07:53.585Z）。詳細快照、驗證與送審／讀回收據見 [音訊關卡紀錄](mixed-three-card-audio-gate-20261014.md)。
+
+已依單張授權完成 [`night-clouds` 氣氛圖小樣](night-clouds-one-shot-pilot-20261014.md)：`video.json` 新 SHA-256 `05abe8cf0cd4680a12e911feb118e6d3dec88c20dbba0f8b8e7ac65b51d0d870`，敘事／口播 hash 仍相同，音訊時間軸及核准仍有效。1 次 MiniMax 圖與 1 次 judge 新增 US$0.0135；模型 10/10 PASS，人工只接受為單鏡候選，前後鏡實速銜接及明亮雲緣的風格仍待驗，未送 storyboard。

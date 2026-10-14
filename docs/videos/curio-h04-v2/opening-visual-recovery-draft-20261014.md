@@ -1,6 +1,8 @@
 # H04 v2｜開場畫面離線修正草案（2026-10-14）
 
-這是 [三鏡小樣](./visual-pilot-three-opening-20261014.md) 0／3 通過人工連續畫面審查後的**製片草案**，未修改 `video.json`、已核准的旁白與時間軸，也未生成或採用新圖。正常判圖的兩張 `passed=true` 仍以人工退件記錄為準；它們不能證明連戲、史料界線或全片畫質達標。
+這是 [三鏡小樣](./visual-pilot-three-opening-20261014.md) 0／3 通過人工連續畫面審查後的**製片草案**；寫作當時未修改 `video.json`、已核准的旁白與時間軸，也未生成或採用新圖。正常判圖的兩張 `passed=true` 仍以人工退件記錄為準；它們不能證明連戲、史料界線或全片畫質達標。
+
+**後續實作紀錄：**站主已選本稿的保留三個 `shot` 路線，僅改三個提示詞並各試一張；實際圖、費用與退件原因見 [修訂小樣](./visual-pilot-three-opening-revision-20261014.md)。本稿以下保留畫面取捨與 50% 算式作設計依據，並非目前尚未執行的狀態清單。
 
 ## 三鏡各自要回答的畫面問題
 
@@ -32,4 +34,4 @@
 
 若選這條路，`opening-gear` 的候選提示僅為：「Medium close interior view of the same generic long, low canvas ridge tent. A few plain unbranded footwear shapes and folded outerwear lie on the canvas floor in one quiet foreground area, without an implied inventory or exact placement. A simple low roof ridge and a glimpse of the triangular doorway at the left end carry the same geometry and daylight as the previous view. The rest of the tent floor is visibly vacant. No people, tracks, labels or writing.」物件只能提示觀眾往卷宗卡看，不能當成第 385 頁物品清單的圖像證據。
 
-這兩條路是待比較的草案，未取得可以批量沿用的畫風基準。若站主之後另行授權新的付費小樣，限定**至多三個相鄰鏡頭各一 take**（圖解路線至多兩張 MiniMax；第三個名額只在已選出補足時長的實際 `shot` 後使用），送出前做 dry-run、額度與 STOP／租約檢查，保留請求、判圖、雜湊與人工結論；未知計費或正常品質退件不重試同一鏡。0／3 的本輪結果不支持全片 MiniMax 擴批。
+這兩條路在寫作時是待比較的草案。其後站主限定**三個相鄰鏡頭各一 take**；實際執行結果在上述修訂小樣。新三鏡仍沒有可批量沿用的連戲基準；不因再次判圖通過而擴批。

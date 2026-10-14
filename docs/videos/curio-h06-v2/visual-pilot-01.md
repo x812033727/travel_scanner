@@ -69,3 +69,19 @@ MiniMax `image-01` 不使用風格參考板。把平面編輯插畫放在提示�
 帳本由 **6 張圖／6 次 judge／US$0.0810** 精確增加為 **9 張／9 次／US$0.1215**，本輪 **3 張＋3 判，US$0.0405**，0 保留額。先前 manifest SHA-256 `a9b9a08abb9153b0487c3db1f67a8131cc08f957f94fe78f8195459060c614c0` 與 ledger `8bf039025dddd54081f12b23410318b8bb70112d02bb765a60c5a373612efd6e` 已封存；現行 manifest `fe4283e00e94973108923da4e2c670260a1ff8ac23be543ee018e3874e5cb066`、ledger `737fd1d6e30160f08d755a863f16c41a5f6d8c008275dc7e727600271e7c61d2`。現行 49 個 shot 中只有這三鏡有新圖，且兩鏡 judge FAIL；其餘 46 鏡仍缺圖。`thumbnail_source=null`，原先退件運河圖不能因此恢復為縮圖。
 
 **本次三鏡連續小樣未過。** 目前 `shot` 剛好占 7,560／15,028 幀，只高於 50% 下限 46 幀；若把這批任一個較長 shot 再改原生圖卡，必須先重新設計可信插圖時窗並重新量正式節奏，不能直接靠換模板掩蓋退件。三張授權已用完，本輪不再付費重抽、擴批或送後台分鏡。
+
+## 第六輪：混合修訂後兩鏡各一張一判（2026-10-14）
+
+站主核准 [混合修訂設計](visual-recovery-design-20261014.md)：保留 `hook-hospital-door-beat-2` 原圖，只改 `hook-hospital-door` 與 `hook-three-answers` 的提示及第三鏡 camera。舊版、舊 manifest、舊帳本、退件圖及核准資料均先複製到外部 `review/pilot-revision-two-20261014T040020Z/`。現行 `video.json` SHA-256 `a41d5d784a4e7bfe189b8b2683a172656d84174bc1c2e247ff91f335c5f6f7d1`；`narrative_hash=a8b72a5524beace9`、`speech_hash=9ae95e3507d3809f` 未變。104 句、每個場景影格與總長 15,028 幀重新比對都相同；`timeline.json` SHA-256 `829335243ac71490e3ba552ea18a2c1f949c47a06362aee3979cbf6005d170d2` 仍是音訊核准所綁雜湊。`pictures_hash=1fa2c8f61603eff9`、`visual_hash=529d6a4176e2c008` 是新版畫面綁定。
+
+前檢讀回專案／上層均無 `STOP`、專案無 `LEASE`，帳本 0 保留額及 0 待結算工作；`lint` 0 error，正式時間軸 `cadenceProblems=[]`；兩次單鏡 dry-run 均為 MiniMax `image-01` 1K、提示在字數預算內、單片 US$80 上限。正式請求**順序**執行，每鏡一張＋一次正常 judge，無重抽：
+
+| shot／來源 | 新圖與 request key | 正常 judge | 人工目視／連續畫面 |
+| --- | --- | --- | --- |
+| `hook-hospital-door`／c03 | 原圖 SHA-256 `59a13f20743f94b2b9e2078f151d5131bd48a89cc91bd4db5e29f4bbce6d97fe`；選用裁切 `1961e0e4d6ca6ba7f3b5f438ad1422ba6b26db504e2997405d5d84f3900e686c`；`ceafb4245c4cf184` | **9.29/10，PASS**；details 7：右側有明令排除的長椅。 | **HOLD**。背影不可辨、畫面為平面示意，與下一張中央空門構圖有別；長椅具體細節違反已核提示，不能據此暗示真病院內景。需獨立複核，不因 judge PASS 自動收圖。 |
+| `hook-hospital-door-beat-2`／c03 | **沒有新請求**；原圖／選用圖 SHA-256 `24190e085237d6ac080804141649840d3e0074b9f23dfd1df7cae2d9be58e613`；舊鍵 `3bfa7ccc69b93919` 原封未變。 | 第五輪既有 **10/10，PASS**。 | 仍只是一張可讀的空門候選；前後鏡與整段分鏡仍待獨立審查。 |
+| `hook-three-answers`／c05–c07 | 原圖／選用圖 SHA-256 `03e528ed76253331102cd0748e970ea0324938d5a7269e1577fab0c17532d77b`；`b91b967731b2656f` | **9.29/10，PASS**；details 7：色塊顏色及位置與指定左上青綠、右下深色不符。 | **HOLD／待複核候選**。無人、假字、真法院或卷宗外觀；紅色只成左上局部弧線，與第二鏡紅色方塊不連貫，右側大色塊過於抽象且方位未按原設計。不能誤指法院確認她的另一身分，也不能以 judge PASS 代替整段人審。 |
+
+聯絡表 `review/pilot-revision-two-20261014T040020Z/contact-sheet-final.png` SHA-256 `35745ae585878df42b0c47a42ef36fb97786ae1632adb3bd2ce857572b90c764`：斜向背影 → 中央空門 → 俯看色塊，三張造型可區分；第一張的長椅、第二與第三鏡紅色點綴斷裂，以及第三鏡右側過於抽象的大色塊仍在。外部 `postflight-summary.json` SHA-256 `956b669a063cf3c61d58f441094c176c483669f5512cc7ce6595de92ef2ecaa1` 保留每個快照的 SHA、正常 judge／第一輪人審分欄及逐筆付費紀錄；`independent-visual-review.md` SHA-256 `a679635f597b8c706e8c32bea4308828deb36e78e58347ad60a4850b74536362` 另存獨立目視，不覆寫原評分。新 manifest SHA-256 `d0620e0b9486628fd5f14002bb1b89391adcb2b844c64699843373503041e75d`、ledger SHA-256 `989e26821a8690d6965676b74933534aa9f8177664f011c0a00d8966f74efd8b`；帳本從 **9 張／9 判／US$0.1215** 到 **11 張／11 判／US$0.1485**，精確增量 **2 張＋2 判／US$0.0270**，保留額及未完成工作均為 0。
+
+`status` 仍顯示旁白已核、storytelling panel 通過；全片 49 個 shot 只畫了這三張，**其餘 46 張缺圖**，storyboard 未核、影格未渲染、影片未組裝。`thumbnail_source=null`，退件運河圖不能再作縮圖。理論 `shot` 時間 7,560／15,028 幀，50.3061% 且只多 46 幀；成片未測。這兩張付費授權已用完，不在此輪擴批、手改接受狀態或送 `storyboard-push`。

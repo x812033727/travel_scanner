@@ -24,15 +24,15 @@
 
 旁白：起飛後，他把一張紙條遞給空服員。
 
-#### 6. open-threat
+#### 6. open-threat（diagram）
 
 旁白：他接著聲稱，公事包裡有炸彈。
 
-#### 7. open-tail
+#### 7. open-tail（diagram）
 
 旁白（像把眼前剛發生的事講給朋友聽）：那天晚上，飛機尾端的階梯在空中放下。
 
-#### 8. open-boy
+#### 8. open-boy（diagram）
 
 旁白：八年多後，一個男孩在河岸沙地蹲下。
 
@@ -401,5 +401,5 @@
 旁白：哪件物證最意外？
 旁白：訂閱，繼續查證。
 
-narrative 31f279e4aaa020c5
+narrative 25c823ca2e556693
 speech 0b7b642f114d257f

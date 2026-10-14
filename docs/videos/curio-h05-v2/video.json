@@ -131,6 +131,21 @@
       "sha256": "52f8ad581b3932f1060809875c43cfb05df710d0b19006db0e39083ed8604449",
       "width": 768,
       "height": 616
+    },
+    {
+      "path": "docs/videos/curio-h05-v2/diagrams/claim-briefcase.svg",
+      "source": "Mokaair 原創示意圖；事實依據：FBI D.B. Cooper Hijacking",
+      "license": "© Mokaair"
+    },
+    {
+      "path": "docs/videos/curio-h05-v2/diagrams/tail-stairs-record.svg",
+      "source": "Mokaair 原創示意圖；事實依據：FAA Historical Chronology、FBI D.B. Cooper Hijacking",
+      "license": "© Mokaair"
+    },
+    {
+      "path": "docs/videos/curio-h05-v2/diagrams/river-bank-boy.svg",
+      "source": "Mokaair 原創示意圖；事實依據：FBI In Search of D.B. Cooper（2009）",
+      "license": "© Mokaair"
     }
   ],
   "scenes": [
@@ -229,11 +244,9 @@
     },
     {
       "id": "open-threat",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Close-up of a closed rectangular hard-sided briefcase on a plain aircraft seat in an early nineteen seventies cabin, afternoon. Its lid is fully shut, with a simple handle and two latches visible. Soft side light defines its solid shape.",
-        "camera": "drift",
-        "visual": "still"
+        "svg": "docs/videos/curio-h05-v2/diagrams/claim-briefcase.svg"
       },
       "claims": [
         "c04"
@@ -247,11 +260,9 @@
     },
     {
       "id": "open-tail",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Wide rear three-quarter view of one distant unmarked early 1970s passenger tri-jet flying at night above dim clouds. Its T-tail and three rear engine positions form a small readable silhouette against the open sky; the aircraft stays far enough away that no door, stair, person or landing point is depicted. Cloud cover obscures the dark land below.",
-        "camera": "push in",
-        "visual": "still"
+        "svg": "docs/videos/curio-h05-v2/diagrams/tail-stairs-record.svg"
       },
       "claims": [
         "c07"
@@ -266,11 +277,9 @@
     },
     {
       "id": "open-boy",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Wide rear view of one anonymous eight-year-old child crouching on broad Columbia River sand in February 1980 under overcast daylight. The child's back and an uninterrupted sandy patch fill the foreground, with a distant strip of river water beyond.",
-        "camera": "pull out",
-        "visual": "still"
+        "svg": "docs/videos/curio-h05-v2/diagrams/river-bank-boy.svg"
       },
       "claims": [
         "c12"
@@ -729,7 +738,7 @@
       "id": "night-clouds",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of a broad dark cloud layer above a distant wooded landscape at night. A narrow strip of land is visible below the clouds. The centre contains only soft cloud forms and the distant horizon.",
+        "prompt": "Wide view looking upward into a night sky filled edge to edge with layered, soft-edged clouds. A broad opaque cloud bank fills the lower third; broken higher clouds leave a quiet patch of open dark sky in the centre. The composition contains only sky and cloud forms.",
         "camera": "pan right",
         "visual": "still"
       },
