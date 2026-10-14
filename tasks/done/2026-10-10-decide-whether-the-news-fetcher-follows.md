@@ -1,13 +1,13 @@
 ---
 id: 2026-10-10-decide-whether-the-news-fetcher-follows
 title: Decide whether the news fetcher follows a robots.txt redirect on the same host
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: codex-deepmind-20261014
 claimed_at: 2026-10-14T13:38:53Z
 created_at: 2026-10-10T08:30:56Z
-completed_at:
+completed_at: 2026-10-14T16:44:47Z
 branch: codex/deepmind-news-redirects-20261014
 depends_on: []
 scope:
