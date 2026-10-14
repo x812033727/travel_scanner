@@ -42,6 +42,7 @@ metadata:
 | 你要做的 | 讀 |
 | --- | --- |
 | 決定是哪一種影片、每段多長 | `.agents/skills/youtube-video/references/formats.md` |
+| 奇聞檔案局（`curio-` 開頭的任何一集）：系列畫風、路線、插圖提示詞與驗收、卡片上限 | 先讀 `curio-episode` skill（`.agents/skills/curio-episode/SKILL.md`） |
 | 寫口播稿（一條故事線與鉤子、口語、節奏、開場濃縮 30–60 秒；給 TTS 唸的寫法在最後一節） | `.agents/skills/youtube-video/references/script-writing.md` |
 | 換口音或口吻的寫法之前怎麼試聽、改哪些檔 | `.agents/skills/youtube-video/references/voice-audition.md` |
 | 字卡、截圖、螢幕錄影、縮圖 | `.agents/skills/youtube-video/references/visuals.md` |
