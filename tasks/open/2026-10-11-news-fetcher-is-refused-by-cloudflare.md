@@ -1,14 +1,14 @@
 ---
 id: 2026-10-11-news-fetcher-is-refused-by-cloudflare
 title: News fetcher is refused by Cloudflare where plain curl from the host is not
-status: in-progress
+status: open
 priority: P2
 area: api
-owner: codex-openai-news-20261014
-claimed_at: 2026-10-14T11:31:28Z
+owner:
+claimed_at:
 created_at: 2026-10-11T05:23:46Z
 completed_at:
-branch: codex/openai-news-source-validation-20261014
+branch:
 depends_on: []
 scope:
   - apps/api/app/news_automation/fetch.py
@@ -60,7 +60,7 @@ robots.txt is read as "not permitted" and raises that same error.
 - [ ] If the pinned request is what is refused: keep the validation of the resolved
       addresses but connect by name through a transport that pins the address (a custom
       resolver or connection pool), so the request line and TLS look ordinary.
-- [x] A test with a fake transport for the chosen shape; the existing SSRF tests keep
+- [ ] A test with a fake transport for the chosen shape; the existing SSRF tests keep
       passing.
 - [ ] Rerun `sources_cli` on the host (dry run, then apply, with the owner's go-ahead).
 
@@ -74,18 +74,6 @@ On the host, `/admin/news?tab=sources` shows CFTC press releases with a recent s
 scan and `consecutive_failures` back at 0.
 
 ## Notes
-
-- 2026-10-14, OpenAI News reproduction before this fix: its official RSS and robots.txt
-  returned 200, and the RSS parsed; the first linked announcement returned 403 through
-  `SafeNewsFetcher`, so source validation failed and the production admin row stayed
-  disabled. The same announcement returned 200 through a standard-library HTTPS
-  connection pinned to the checked IP, with the original Host and certificate hostname.
-  The new guarded 401/403 fallback kept those checks, the response size limit and
-  redirect handling. Local `validate_source_configuration` then passed and read 3,514
-  characters of the first article. After review fixes for IPv6, challenge size, refusal
-  status and truncated responses, the full news test file passed (219 passed, 6 skipped),
-  along with API Ruff, mypy app and mypy tests. Production deployment, revalidation,
-  re-enabling, and the separate CFTC scan remain to be verified.
 
 - 2026-10-11 09:17Z: **HTTP/2 does not fix it.** Tried from the host in a one-off
   container of the api image (`docker run --rm`, `h2` installed into the container's own
