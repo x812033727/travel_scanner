@@ -1,0 +1,2094 @@
+{
+  "schema_version": 1,
+  "slug": "curio-h09",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，台灣日常口語，咬字清楚。像對朋友說一樁真實懸案；問句留白，年份和數字放慢，不模仿歷史人物。",
+    "performance": "從八點四十三分的電訊壓低開始；疑似訊號、搜索報告和醫學判定逐步推進。所有假說保留歸屬，2026 年現場只說待辨；結尾沉著，誠實留在未結。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "loops": [
+    {
+      "setup": "h0ac4220",
+      "payoff": "h0idnq0q",
+      "what": "疑似無線電訊號是否可信"
+    },
+    {
+      "setup": "h07qifh3",
+      "payoff": "h1atvqwr",
+      "what": "搜索機飛過島時看見什麼"
+    },
+    {
+      "setup": "h1xsq9te",
+      "payoff": "h1rhn7sa",
+      "what": "1940 年電報中的骨骸如何判定"
+    },
+    {
+      "setup": "h039rbjd",
+      "payoff": "h15ef5db",
+      "what": "157／337 位置線能否指到島"
+    },
+    {
+      "setup": "h0ouw4gu",
+      "payoff": "h1rhn7sa",
+      "what": "醫師報告給出什麼答案"
+    },
+    {
+      "setup": "h00s999r",
+      "payoff": "h1lrep92",
+      "what": "潟湖影像如何用現場方法辨認"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "艾爾哈特最後飛向哪裡？電訊與小島的兩條線｜奇聞檔案局",
+    "description": "1937 年 7 月 2 日，Itasca 收到艾爾哈特最後可確認的電訊：「我們在 157／337 這條線上。」這是一條位置線，並不是飛機的最後座標。\n\n本集依 1937 年海軍搜索報告、1940 年島上電報、1941 年醫學報告與後來研究，追查豪蘭附近落海及尼庫馬羅羅島兩種解釋。2024 年豪蘭附近的深海聲納目標後被判為岩石；尼庫馬羅羅潟湖的 Taraia 異常是另一個目標，仍待現場辨認。\n\n資料查核至 2026-10-15。可查得的普渡大學最新現場公告為 2026-10-13，僅確認隊伍已登島、踏查及架設設備，尚未公布物件的辨認結果。若後續考察有新發現，會在正式成片與上架前重查並更新。\n\n本片 AI 插畫為敘事示意，並非檔案照片、考古實物或已證實的失事現場。歷史人物為非肖像式卡通形象。",
+    "tags": [
+      "艾爾哈特",
+      "Amelia Earhart",
+      "尼庫馬羅羅",
+      "豪蘭島",
+      "歷史懸案",
+      "1937",
+      "Taraia Object",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "最後訊號\n**未結**",
+      "tag": "歷史懸案",
+      "sub": "1937 年的未結檔案",
+      "shot": "radio-0843"
+    }
+  },
+  "sources": [
+    {
+      "title": "NARA: Itasca 最後無線電紀錄",
+      "url": "https://www.archives.gov/college-park/highlights/earhart-log",
+      "checked_on": "2026-10-15"
+    },
+    {
+      "title": "NARA: 1937 年海軍與海岸防衛隊搜索報告",
+      "url": "https://www.archives.gov/files3/research/ameliaearhart/releases/2025/1217/080_PC31-22_146_08_Report_of_Earhart_Search_by_U.S._Navy_and_U.S._Coast_Guard_July_2_18_1937.pdf",
+      "checked_on": "2026-10-15"
+    },
+    {
+      "title": "NASM: Earhart 起飛與失聯",
+      "url": "https://airandspace.si.edu/stories/editorial/amelia-earhart-missing-80-years-not-forgotten",
+      "checked_on": "2026-10-15"
+    },
+    {
+      "title": "NASM: 搜索與深海聲納回顧",
+      "url": "https://airandspace.si.edu/stories/editorial/legend-amelia-earharts-disappearance",
+      "checked_on": "2026-10-15"
+    },
+    {
+      "title": "TIGHAR: Colorado 搜索文件",
+      "url": "https://tighar.org/Projects/Earhart/Archives/Research/ResearchPapers/Coloradosearch.html",
+      "checked_on": "2026-10-15"
+    },
+    {
+      "title": "TIGHAR: 1940 年殖民地電報",
+      "url": "https://tighar.org/Projects/Earhart/Archives/Documents/Bones_Chronology.html",
+      "checked_on": "2026-10-15"
+    },
+    {
+      "title": "TIGHAR: 1941 年 Hoodless 報告",
+      "url": "https://tighar.org/Projects/Earhart/Archives/Documents/Bones_Chronology5.html",
+      "checked_on": "2026-10-15"
+    },
+    {
+      "title": "TIGHAR: 後續尋骨報告",
+      "url": "https://tighar.org/Projects/Earhart/Archives/Research/Bulletins/42_FijiBoneSearch.html",
+      "checked_on": "2026-10-15"
+    },
+    {
+      "title": "UF Press: Jantz 2018 論文摘要",
+      "url": "https://journals.upress.ufl.edu/fa/article/view/525",
+      "checked_on": "2026-10-15"
+    },
+    {
+      "title": "TIGHAR: 2021 年 Taraia 判讀",
+      "url": "https://tighar.org/Publications/TTracks/2021Vol_37/TIGHARTracks37_02_June_2021.pdf",
+      "checked_on": "2026-10-15"
+    },
+    {
+      "title": "ALI: Taraia 研究與 2026 現場計畫",
+      "url": "https://www.archaeologychannel.org/taraia/",
+      "checked_on": "2026-10-15"
+    },
+    {
+      "title": "Purdue: 2026-10-12 抵達公告",
+      "url": "https://www.purdue.edu/newsroom/2026/Q4/earhart-expedition-update-crew-arrives-at-nikumaroro-launches-critical-phase-of-amelia-earhart-plane-search/",
+      "checked_on": "2026-10-15"
+    },
+    {
+      "title": "Purdue: 2026-10-13 登島公告",
+      "url": "https://www.purdue.edu/newsroom/2026/Q4/earhart-expedition-update-crew-arrives-onshore-sets-up-operations-on-nikumaroro/",
+      "checked_on": "2026-10-15"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "itasca-waits",
+      "chapter": "八點四十三分的電訊",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the patrol vessel Itasca off a tiny Pacific island at dawn, one sailor scanning the empty horizon from the deck.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C01"
+      ],
+      "lines": [
+        {
+          "id": "h035intd",
+          "text": "一九三七年七月二日，豪蘭島外的巡邏艇 Itasca，還在等一架飛機。",
+          "say": "一九三七年七月二日，豪蘭島外的巡邏艇 伊塔斯卡，還在等一架飛機。",
+          "say_for": "a87ff0b07aaf",
+          "emotion": "壓低，進入現場"
+        }
+      ]
+    },
+    {
+      "id": "low-fuel-warning",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up from behind a historical woman aviator inside the cockpit, one gloved hand near a low fuel gauge and open ocean beyond the window.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C03"
+      ],
+      "lines": [
+        {
+          "id": "h1swy0kc",
+          "text": "七點四十二分，艾爾哈特傳來消息：她看不見陸地，燃油也不多了。",
+          "emotion": "收緊注意"
+        }
+      ]
+    },
+    {
+      "id": "hour-later-call",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the Itasca radio operator bending toward his receiver after a long silence, blank logbook ready.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C02"
+      ],
+      "lines": [
+        {
+          "id": "h0qr8dzv",
+          "text": "一個小時後，她又傳來最後一則可確認的電訊。",
+          "emotion": "慢慢轉折"
+        }
+      ]
+    },
+    {
+      "id": "radio-0843",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of the Itasca operator's pencil paused over an unreadable ruled radio log as the final confirmed call comes through.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C02"
+      ],
+      "lines": [
+        {
+          "id": "h1h02lye",
+          "text": "八點四十三分，她說：「我們在一五七、三三七這條線上。」",
+          "emotion": "慢念數字"
+        }
+      ]
+    },
+    {
+      "id": "radio-silence",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the same radio operator lifting one earcup and waiting beside an idle receiver, empty chair behind him.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C02"
+      ],
+      "lines": [
+        {
+          "id": "h1j5wr9p",
+          "text": "之後，Itasca 再也沒收到可確認是她的通訊。",
+          "say": "之後，伊塔斯卡 再也沒收到可確認是她的通訊。",
+          "say_for": "c82994c3ae46",
+          "emotion": "壓低留白"
+        }
+      ]
+    },
+    {
+      "id": "uncertain-broadcasts",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an anonymous hand turning a second radio dial at a distant coastal station, with no legible signal transcript.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C17"
+      ],
+      "lines": [
+        {
+          "id": "h0ac4220",
+          "text": "但幾天後，其他電台聲稱收到疑似訊號。那些訊號算數嗎？",
+          "emotion": "帶著疑問"
+        }
+      ]
+    },
+    {
+      "id": "search-plane-island",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide aerial view of a 1930s search aircraft passing high over a small Pacific atoll, lagoon visible below and no person in sight.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C07"
+      ],
+      "lines": [
+        {
+          "id": "h07qifh3",
+          "text": "搜索機飛過東南方一座小島，機上到底看見了什麼？",
+          "emotion": "上揚留疑問"
+        }
+      ]
+    },
+    {
+      "id": "island-telegram-tease",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an unopened telegram envelope arriving at a tropical colonial office three years later, its writing too small to read.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C08",
+        "H09-C09"
+      ],
+      "lines": [
+        {
+          "id": "h1xsq9te",
+          "text": "三年後，那座島又寄出一封談到骨頭的電報。醫師會怎麼判？",
+          "emotion": "上揚留疑問"
+        }
+      ]
+    },
+    {
+      "id": "captain-chart-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 1937 patrol-ship captain seen from behind studying one diagonal line on an unlabelled chart, undecided where to search.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C02",
+        "H09-C04"
+      ],
+      "lines": [
+        {
+          "id": "h1qqjkjd",
+          "text": "她最後往哪裡飛？答案得先從艇長手中那條線找起。",
+          "emotion": "低聲提問"
+        }
+      ]
+    },
+    {
+      "id": "captain-after-silence",
+      "chapter": "艇長攤開最後一條線",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the ship captain lifting his hand above a chart after the radio falls silent, waiting crew in background.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C02",
+        "H09-C04"
+      ],
+      "lines": [
+        {
+          "id": "h07ur373",
+          "text": "耳機裡的聲音停了，艇長還要決定如何用這條線找人。",
+          "emotion": "承接現場"
+        }
+      ]
+    },
+    {
+      "id": "strong-reception",
+      "template": "big",
+      "data": {
+        "text": "收訊極佳",
+        "kicker": "8:43 最後可確認通訊",
+        "sub": "聽清聲音，仍不知確切位置"
+      },
+      "claims": [
+        "H09-C02",
+        "H09-C04"
+      ],
+      "lines": [
+        {
+          "id": "h1qcc49q",
+          "text": "他後來寫下，最後那則訊號收得極好；聽清她的話，卻不等於知道飛機在哪裡。",
+          "emotion": "放慢對比"
+        }
+      ]
+    },
+    {
+      "id": "flight-background",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the twin-engine Electra seen far above Pacific water on its Lae-to-Howland journey, no actual route traced.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C01"
+      ],
+      "lines": [
+        {
+          "id": "h1ja5ezp",
+          "text": "她和領航員努南駕駛 Electra 從新幾內亞賴城飛來，豪蘭島是這段航程的目的地。",
+          "say": "她和領航員努南駕駛 伊萊克特拉 從新幾內亞賴城飛來，豪蘭島是這段航程的目的地。",
+          "say_for": "ccf9e28ed7e2"
+        }
+      ]
+    },
+    {
+      "id": "half-hour-claim",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead close-up of a later annotation slip set apart from a radio log copy, no readable claim or fabricated original.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C03"
+      ],
+      "lines": [
+        {
+          "id": "h12e8tp0",
+          "text": "開場那句「燃油不多」，後來被講成「只剩半小時油」；原始通訊沒有這個數字。",
+          "emotion": "審慎"
+        }
+      ]
+    },
+    {
+      "id": "one-way-radio",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an unanswered ship radio microphone beside a receiving speaker, one-way contact conveyed without words.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C02"
+      ],
+      "lines": [
+        {
+          "id": "h0qvh1pv",
+          "text": "船能收到她的聲音，卻沒能與她建立完整的雙向通聯。"
+        }
+      ]
+    },
+    {
+      "id": "captain-reads-line",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of the captain's compass ruler and unlabelled chart, a northwest–southeast position line with no point marking.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C04"
+      ],
+      "lines": [
+        {
+          "id": "h09zkgf6",
+          "text": "艇長把她剛報出的兩個方位，理解成依太陽觀測得出的位置線。",
+          "emotion": "清楚交代"
+        }
+      ]
+    },
+    {
+      "id": "line-two-directions",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide overhead view of the same diagonal navigation line extending to two empty chart edges, no aircraft route or location pin.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C04"
+      ],
+      "lines": [
+        {
+          "id": "h039rbjd",
+          "text": "兩個相反方位，把線拉向西北和東南；它沒告訴船員她在線上的哪一處。",
+          "emotion": "慢說界線"
+        }
+      ]
+    },
+    {
+      "id": "missing-reference",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a navigator's pencil hovering above an unlabelled chart with the diagonal line incomplete and no fixed reference mark.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C02",
+        "H09-C04"
+      ],
+      "lines": [
+        {
+          "id": "h1leys7s",
+          "text": "她說自己沿線南北搜尋，卻沒有說出能把它固定在地圖上的參考點。"
+        }
+      ]
+    },
+    {
+      "id": "direction-not-track",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of open sea beneath two faint compass bearings, both fading into blank water.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C04"
+      ],
+      "lines": [
+        {
+          "id": "h0jau8g7",
+          "text": "這給搜索者兩個方向，卻不能把任何一端直接寫成她真正飛過的航路。",
+          "emotion": "審慎"
+        }
+      ]
+    },
+    {
+      "id": "captain-choice",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of a patrol-ship captain pausing over two unmarked search sectors on a chart while crew wait.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C04",
+        "H09-C05"
+      ],
+      "lines": [
+        {
+          "id": "h1gc9lwh",
+          "text": "對艇長來說，該往線的哪一端找，必須當下決定，等不了後人拿文件慢慢爭論。",
+          "emotion": "緊迫"
+        }
+      ]
+    },
+    {
+      "id": "search-dispatch",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of sailors readying a ship's search launch beside the Itasca in morning light.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C05"
+      ],
+      "lines": [
+        {
+          "id": "h1negb6i",
+          "text": "他得趕快派出人手。",
+          "emotion": "推進"
+        }
+      ]
+    },
+    {
+      "id": "search-from-howland",
+      "chapter": "十六天，找不到飛機",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the Itasca searching sunlit water near Howland while another vessel moves toward a distant sector.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C05"
+      ],
+      "lines": [
+        {
+          "id": "h1piej9y",
+          "text": "Itasca 先在豪蘭島附近搜尋，海軍接著把搜索擴到遠方。",
+          "say": "伊塔斯卡 先在豪蘭島附近搜尋，海軍接著把搜索擴到遠方。",
+          "say_for": "20d88d133181"
+        }
+      ]
+    },
+    {
+      "id": "ship-and-air-search",
+      "template": "shot",
+      "data": {
+        "prompt": "Aerial wide view of one search vessel tracing a wake across the sea and a separate aircraft flying a different sector above empty water.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C05"
+      ],
+      "lines": [
+        {
+          "id": "h0g8ucsn",
+          "text": "船在海上畫出航跡，飛機則往不同方向查，尋找那架 Electra。",
+          "say": "船在海上畫出航跡，飛機則往不同方向查，尋找那架 伊萊克特拉。",
+          "say_for": "bc9b57503897"
+        }
+      ]
+    },
+    {
+      "id": "search-sixteen-days",
+      "template": "big",
+      "data": {
+        "text": "16 天",
+        "kicker": "1937 年海上搜索",
+        "sub": "船與飛機逾 25 萬平方英里"
+      },
+      "claims": [
+        "H09-C05"
+      ],
+      "lines": [
+        {
+          "id": "h1icywk8",
+          "text": "接下來十六天，船和飛機合計搜索超過二十五萬平方英里。",
+          "emotion": "放慢數字"
+        }
+      ]
+    },
+    {
+      "id": "rumoured-signals",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of a shipboard radio operator passing an uncertain signal note to a captain, note blank and no verified voice shown.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C17"
+      ],
+      "lines": [
+        {
+          "id": "h0bbh0qp",
+          "text": "開場那些疑似訊號，也曾讓船隻改變搜索方向。"
+        }
+      ]
+    },
+    {
+      "id": "signals-doubted",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a stack of signal reports with faint, broken waveform shapes fading out; no readable words or confirmed source.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C17"
+      ],
+      "lines": [
+        {
+          "id": "h0idnq0q",
+          "text": "但海軍後來重看這批疑似訊號，認為不能把它們當成可信的求救。",
+          "emotion": "明確回收"
+        }
+      ]
+    },
+    {
+      "id": "colorado-seaplane",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a Navy cruiser launching a seaplane toward southeast islands in clear daylight, no destination labels.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C05",
+        "H09-C07"
+      ],
+      "lines": [
+        {
+          "id": "h0z9kbbf",
+          "text": "巡洋艦 Colorado 派水上飛機往東南的島群尋找。",
+          "say": "巡洋艦 科羅拉多號 派水上飛機往東南的島群尋找。",
+          "say_for": "5b06549cfd33"
+        }
+      ]
+    },
+    {
+      "id": "lexington-northwest",
+      "template": "shot",
+      "data": {
+        "prompt": "High-angle view of a separate aircraft carrier search group over open water northwest of Howland, far from any island.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C05"
+      ],
+      "lines": [
+        {
+          "id": "h11wot3g",
+          "text": "另一支 Lexington 機隊，則在豪蘭島西北方的大海上搜索。",
+          "say": "另一支 列星頓號 機隊，則在豪蘭島西北方的大海上搜索。",
+          "say_for": "a38d91b130c1"
+        }
+      ]
+    },
+    {
+      "id": "colorado-over-gardner",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide aerial view of a Navy seaplane passing above Gardner Island's reef and lagoon in daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C07"
+      ],
+      "lines": [
+        {
+          "id": "h1g85jc5",
+          "text": "七月九日，Colorado 的搜索機飛過加德納島。",
+          "say": "七月九日，科羅拉多號 的搜索機飛過加德納島。",
+          "say_for": "f18f379ddbf1"
+        }
+      ]
+    },
+    {
+      "id": "gardner-modern-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Aerial wide view of the same uninhabited atoll and pale lagoon beneath clouds, no words printed into the image.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C07"
+      ],
+      "lines": [
+        {
+          "id": "h1nac8m6",
+          "text": "這座島，就是今天稱作尼庫馬羅羅的地方。"
+        }
+      ]
+    },
+    {
+      "id": "pilot-sees-empty",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind a 1937 search pilot peering toward an apparently empty island beach from above.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C07"
+      ],
+      "lines": [
+        {
+          "id": "h1d4moak",
+          "text": "開場那架飛過小島的飛機，當時沒有發現兩名失蹤者。",
+          "emotion": "點名開場"
+        }
+      ]
+    },
+    {
+      "id": "captain-report",
+      "template": "big",
+      "data": {
+        "text": "未見居住跡象",
+        "kicker": "海軍艦長正式報告",
+        "sub": "加德納島，1937 年 7 月 9 日"
+      },
+      "claims": [
+        "H09-C07"
+      ],
+      "lines": [
+        {
+          "id": "h1atvqwr",
+          "text": "海軍艦長的正式報告寫，島上看不見住房或居住跡象。",
+          "emotion": "沉著"
+        }
+      ]
+    },
+    {
+      "id": "pilot-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an anonymous archivist's hand unfolding a later pilot letter beside a separate official folder, all text illegible.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C07"
+      ],
+      "lines": [
+        {
+          "id": "h0txz5m2",
+          "text": "但是 TIGHAR 後來抄錄一封飛行員的信，裡面說看見像是近期有人待過的痕跡。",
+          "say": "但是 提加研究團體 後來抄錄一封飛行員的信，裡面說看見像是近期有人待過的痕跡。",
+          "say_for": "23ccb6741aac",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "sydney-distinction",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide aerial view of a different small Pacific island beyond Gardner, the scene clearly changing location with no text labels.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C07"
+      ],
+      "lines": [
+        {
+          "id": "h0mvsgc1",
+          "text": "正式報告裡那句「近期有人居住」，講的是另一座雪梨島。"
+        }
+      ]
+    },
+    {
+      "id": "documents-not-location",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of two separate account folders on an empty chart, with no pin marking a person's position.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C07"
+      ],
+      "lines": [
+        {
+          "id": "h1txac5k",
+          "text": "兩份文字留下不同印象，卻都沒有指出艾爾哈特的位置。"
+        }
+      ]
+    },
+    {
+      "id": "search-ends-without-find",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of 1937 search vessels leaving a calm and empty sea under a bright horizon.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C05"
+      ],
+      "lines": [
+        {
+          "id": "h1rbopkn",
+          "text": "七月十八日，搜索收隊；當時仍沒有找到兩人或那架飛機。"
+        }
+      ]
+    },
+    {
+      "id": "navy-inference",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of the open ocean around Howland from a Navy ship's rail, a distant undecided stretch of water.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C06"
+      ],
+      "lines": [
+        {
+          "id": "h021lww6",
+          "text": "海軍推斷飛機很可能在豪蘭島約兩百英里內落水。",
+          "emotion": "審慎判斷"
+        }
+      ]
+    },
+    {
+      "id": "no-body-to-check",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind a 1937 investigator looking at an empty recovery deck and an unfinished report.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C05",
+        "H09-C06"
+      ],
+      "lines": [
+        {
+          "id": "h03v2ht9",
+          "text": "這是根據搜索作出的判斷，沒有機身可以讓他們當場核對。"
+        }
+      ]
+    },
+    {
+      "id": "search-scale-limits-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Aerial wide view of a patrol plane above an immense patch of ocean, thin search strips separated by unobserved water.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C05",
+        "H09-C06"
+      ],
+      "lines": [
+        {
+          "id": "h1awkdms",
+          "text": "搜索範圍說明行動的規模，卻不等於每片海面都被看清；",
+          "emotion": "提醒限制"
+        }
+      ]
+    },
+    {
+      "id": "search-scale-limits-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Underwater wide view fading into empty deep blue beyond the reach of the surface search.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C05",
+        "H09-C06"
+      ],
+      "lines": [
+        {
+          "id": "h1b6jzbr",
+          "text": "這個數字不能確定海底的失事位置。",
+          "emotion": "提醒限制"
+        }
+      ]
+    },
+    {
+      "id": "island-work-party",
+      "chapter": "加德納島寄出一封電報",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a 1940 island work party seen from far behind walking along a sandy path toward a small camp.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C07",
+        "H09-C08"
+      ],
+      "lines": [
+        {
+          "id": "h0td0us5",
+          "text": "三年後，搜索機曾飛過的加德納島，工作隊找到一組不完整的人骨。",
+          "emotion": "降速"
+        }
+      ]
+    },
+    {
+      "id": "cable-announces",
+      "template": "big",
+      "data": {
+        "text": "1940 年電報",
+        "kicker": "加德納島",
+        "sub": "殖民地官員通報島上發現"
+      },
+      "claims": [
+        "H09-C08"
+      ],
+      "lines": [
+        {
+          "id": "h0k1r2r4",
+          "text": "那年九月，殖民地官員蓋拉格把發現寫進電報。",
+          "emotion": "輕微懸念"
+        }
+      ]
+    },
+    {
+      "id": "cable-lists-objects",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed archival inventory packet beside generic silhouettes of a shoe sole, bottle and sextant box, all unlabelled.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C08"
+      ],
+      "lines": [
+        {
+          "id": "h0hg5g67",
+          "text": "電報還提到鞋的部分、瓶子，以及一個六分儀盒。"
+        }
+      ]
+    },
+    {
+      "id": "colonial-files",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of later archival copies laid out beside a scanner and labelled storage sleeves, their original text unreadable.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C08"
+      ],
+      "lines": [
+        {
+          "id": "h1j3jy6q",
+          "text": "這些殖民地文件的抄本和掃描，是後來由研究團體 TIGHAR 公布的。",
+          "say": "這些殖民地文件的抄本和掃描，是後來由研究團體 提加研究團體 公布的。",
+          "say_for": "00c5a94e09d3"
+        }
+      ]
+    },
+    {
+      "id": "official-possibility",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a colonial official's hand hovering over an unfinished telegram draft, a questioning posture and no legible text.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C08"
+      ],
+      "lines": [
+        {
+          "id": "h1c1d8wp",
+          "text": "蓋拉格在電報裡寫，骨頭「或許」和艾爾哈特有關。",
+          "emotion": "讀出不確定"
+        }
+      ]
+    },
+    {
+      "id": "incomplete-finding",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a file clerk closing an incomplete inventory folder on a 1940 desk, no specimens.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C08"
+      ],
+      "lines": [
+        {
+          "id": "h0ch49hg",
+          "text": "下一封電報又寫清楚：他們找到的並不是完整骨架。"
+        }
+      ]
+    },
+    {
+      "id": "shoe-sole-caution",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an ordinary worn shoe sole fragment as an illustrated object isolated against a plain background.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C08"
+      ],
+      "lines": [
+        {
+          "id": "h00ychib",
+          "text": "鞋也只留下鞋底的一部分；當年的官員猜它可能屬於一名女子。"
+        }
+      ]
+    },
+    {
+      "id": "objects-not-identities",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of three empty ownership labels beside generic silhouettes of a sole, bottle and box, no confirmed name.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C08"
+      ],
+      "lines": [
+        {
+          "id": "h12n9upy",
+          "text": "但鞋底、瓶子和盒子，沒有一件能單獨指出主人的名字。"
+        }
+      ]
+    },
+    {
+      "id": "island-distance",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of two separate island chart insets placed on a desk with space between them, no flight track or implied nearby shared coastline.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C12"
+      ],
+      "lines": [
+        {
+          "id": "h14gqfn1",
+          "text": "加德納島在豪蘭東南約六百五十公里，已是另一片海域。",
+          "emotion": "放慢距離"
+        }
+      ]
+    },
+    {
+      "id": "line-toward-island",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a chart with a researcher pencilling a faint dashed hypothetical extension from the last position line toward a distant island marker; no solid flight path.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C04",
+        "H09-C12"
+      ],
+      "lines": [
+        {
+          "id": "h15ef5db",
+          "text": "支持島上說的人，後來也把最後那條位置線往這裡延伸。"
+        }
+      ]
+    },
+    {
+      "id": "packet-to-fiji",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sealed examination packet being carried onto a Fiji-bound ship, its contents not visible.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C08",
+        "H09-C09"
+      ],
+      "lines": [
+        {
+          "id": "h08hfn5s",
+          "text": "接著，那組骨頭被送去斐濟，等待醫師檢查。"
+        }
+      ]
+    },
+    {
+      "id": "uncertain-telegram-awaits",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an earlier telegram envelope set beside an unopened medical report folder, no readable conclusion.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C08",
+        "H09-C09"
+      ],
+      "lines": [
+        {
+          "id": "h0hspf6t",
+          "text": "電報裡的「或許」，第一次要交給一份正式檢驗報告回答。",
+          "emotion": "期待答案"
+        }
+      ]
+    },
+    {
+      "id": "report-next-year",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 1941 office desk where a physician reaches for an unopened report envelope, no contents shown.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C09"
+      ],
+      "lines": [
+        {
+          "id": "h0ouw4gu",
+          "text": "報告在下一年寫成；第一個答案卻讓島上說更加難辦。",
+          "emotion": "懸住"
+        }
+      ]
+    },
+    {
+      "id": "hoodless-receives-file",
+      "chapter": "醫師寫下男性",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 1941 Fiji physician at a desk receiving a sealed examination packet from an anonymous clerk.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C08",
+        "H09-C09"
+      ],
+      "lines": [
+        {
+          "id": "h0bn6oho",
+          "text": "開場那封電報提到的骨頭，到了一九四一年四月，交到斐濟醫師胡德勒斯面前。",
+          "emotion": "回收開場"
+        }
+      ]
+    },
+    {
+      "id": "partial-record",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a short archival checklist beside a large blank examination sheet, no anatomical material or readable entries.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C08",
+        "H09-C09"
+      ],
+      "lines": [
+        {
+          "id": "h1kfgii9",
+          "text": "他列出十三項骨骼部位，但手上的材料不到完整骨架的一半。"
+        }
+      ]
+    },
+    {
+      "id": "male-opinion",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the physician's hand closing a medical folder after a period assessment, the conclusion hidden from the image.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C09"
+      ],
+      "lines": [
+        {
+          "id": "h1rhn7sa",
+          "text": "他的判定是男性，死亡年齡約四十五到五十五歲。",
+          "emotion": "直接落下"
+        }
+      ]
+    },
+    {
+      "id": "half-inch-discrepancy",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of a ruler beside a handwritten height calculation on an archival scan, figures intentionally unreadable.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C09"
+      ],
+      "lines": [
+        {
+          "id": "h0pu8prr",
+          "text": "身高估成五呎五吋半，約一百六十六公分。"
+        }
+      ]
+    },
+    {
+      "id": "uncertain-identity",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide desk view of a hopeful earlier cable beside a later medical folder, with an empty identification tray between them.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C08",
+        "H09-C09"
+      ],
+      "lines": [
+        {
+          "id": "h0sfucco",
+          "text": "他沒有把這組骨頭鑑定成艾爾哈特；電報裡的「或許」仍只是猜測。",
+          "emotion": "審慎"
+        }
+      ]
+    },
+    {
+      "id": "recheck-old-method",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view from behind an anonymous present-day researcher examining old measurement tables at a desk, no recognizable face.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C11"
+      ],
+      "lines": [
+        {
+          "id": "h11eqjzh",
+          "text": "可問題沒有就此結束：醫師當年用的量測方法，後人還能重新檢查。"
+        }
+      ]
+    },
+    {
+      "id": "paper-2015",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of an anonymous modern researcher's hands opening a 2015 journal abstract beside earlier measurements, all writing illegible.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C11"
+      ],
+      "lines": [
+        {
+          "id": "h0zl9z2e",
+          "text": "據後來的論文摘要轉述，二〇一五年克羅斯與萊特仍支持原來的男性判定。",
+          "emotion": "據摘要轉述"
+        }
+      ]
+    },
+    {
+      "id": "jantz-recalculates",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of a modern researcher recalculating old measurement figures on a computer, no recognizable face or results on screen.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C11"
+      ],
+      "lines": [
+        {
+          "id": "h1wxgntv",
+          "text": "二〇一八年，研究者詹茲拿留下的量測數字重算。",
+          "emotion": "重新提速"
+        }
+      ]
+    },
+    {
+      "id": "comparison-values",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two measuring rulers aligned beside a generic reference chart, a statistical comparison without a specimen.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C11"
+      ],
+      "lines": [
+        {
+          "id": "h09f4dtw",
+          "text": "他認為，艾爾哈特和這組骨頭的數值，比參考樣本裡百分之九十九的人更接近。",
+          "emotion": "準確放慢"
+        }
+      ]
+    },
+    {
+      "id": "not-ninety-nine-proof",
+      "template": "big",
+      "data": {
+        "text": "不是 99% 定案",
+        "kicker": "2018 年數值重算",
+        "sub": "比較估算骨長與參考樣本"
+      },
+      "claims": [
+        "H09-C11"
+      ],
+      "lines": [
+        {
+          "id": "h171rf4q",
+          "text": "這不是「百分之九十九確定是她」；它比較的是一組數字與參考樣本。",
+          "emotion": "重讀不是"
+        }
+      ]
+    },
+    {
+      "id": "where-are-remains",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archival shelf with one empty file space and an unanswered inventory card.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C10"
+      ],
+      "lines": [
+        {
+          "id": "h0zzkpup",
+          "text": "骨頭後來去了哪裡，現存檔案沒有給出確切去向。"
+        }
+      ]
+    },
+    {
+      "id": "no-dna-sample",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty modern laboratory sample holder beside an unused DNA testing machine, no specimen.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C10"
+      ],
+      "lines": [
+        {
+          "id": "h1q8ext8",
+          "text": "TIGHAR 尋找未果，所以眼下沒有實物讓人直接驗 DNA。",
+          "say": "提加研究團體 尋找未果，所以眼下沒有實物讓人直接驗 基因。",
+          "say_for": "8442e539c003",
+          "emotion": "沉一點"
+        }
+      ]
+    },
+    {
+      "id": "need-aircraft-material",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of an empty aviation evidence shelf and a distant research vessel through the window.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C10",
+        "H09-C11"
+      ],
+      "lines": [
+        {
+          "id": "h0o2pb8r",
+          "text": "沒有骨頭能重驗，最後還得找到能辨認的飛機部件。",
+          "emotion": "往前推"
+        }
+      ]
+    },
+    {
+      "id": "lagoon-anomaly",
+      "chapter": "潟湖影像引來新考察",
+      "template": "shot",
+      "data": {
+        "prompt": "Aerial wide view of the Nikumaroro lagoon with a small ambiguous patch under shallow water.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h0jsz7sj",
+          "text": "二〇二〇年，有人注意到尼庫馬羅羅潟湖裡一處形狀特別的影像。",
+          "emotion": "引入新線索"
+        }
+      ]
+    },
+    {
+      "id": "ali-hypothesis",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of an anonymous investigator's hand pointing to a blurry lagoon image on a screen, no identifiable person or legible annotation.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14",
+        "H09-C15"
+      ],
+      "lines": [
+        {
+          "id": "h02x2mhu",
+          "text": "發起新考察的考古遺產研究所 ALI，認為它可能是 Electra 的殘骸。",
+          "say": "發起新考察的考古遺產研究所，認為它可能是 伊萊克特拉 的殘骸。",
+          "say_for": "52cc9a94e741"
+        }
+      ]
+    },
+    {
+      "id": "lagoon-not-deep-sea",
+      "template": "shot",
+      "data": {
+        "prompt": "High-angle view looking only down into Nikumaroro's inner lagoon, with sandy shore and reef along the frame edge; no open ocean or aircraft-like shape.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h1v8djl5",
+          "text": "這個目標叫 Taraia Object；它在島內潟湖，不在豪蘭島附近的深海。",
+          "say": "這個目標叫 塔拉亞物件；它在島內潟湖，不在豪蘭島附近的深海。",
+          "say_for": "bf635f0ebd93"
+        }
+      ]
+    },
+    {
+      "id": "images-through-years",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of several unlabelled aerial image prints of the same lagoon stacked on a research table, no fabricated dates.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h12wdt1c",
+          "text": "ALI 後來又找出不同年代的影像，主張同一位置可能早就有那個輪廓。",
+          "say": "考古遺產研究所 後來又找出不同年代的影像，主張同一位置可能早就有那個輪廓。",
+          "say_for": "da551fdcbab9"
+        }
+      ]
+    },
+    {
+      "id": "how-to-test",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an ambiguous lagoon image beside an unused field instrument case, a question about how to test rather than an answer.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h00s999r",
+          "text": "但怎樣才能從像飛機的影像，找到可辨認的實物證據？",
+          "emotion": "帶著方法問題"
+        }
+      ]
+    },
+    {
+      "id": "tighar-differs",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a different research bulletin and the lagoon photograph on separate sides of a desk, no readable text.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C15"
+      ],
+      "lines": [
+        {
+          "id": "h1j9uace",
+          "text": "長期支持尼庫馬羅羅假說的 TIGHAR，在二〇二一年反而提出不同判讀。",
+          "say": "長期支持尼庫馬羅羅假說的 提加研究團體，在二〇二一年反而提出不同判讀。",
+          "say_for": "2365ed2832a8"
+        }
+      ]
+    },
+    {
+      "id": "driftwood-alternative",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide view of a coconut palm and weathered driftwood at a lagoon edge, presented as possible natural shapes.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C15"
+      ],
+      "lines": [
+        {
+          "id": "h1c7nl2d",
+          "text": "它的刊物記載，討論者當時認為那像椰子樹；機構自己也說像漂木。",
+          "emotion": "帶出反差"
+        }
+      ]
+    },
+    {
+      "id": "belief-versus-object",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium view of an anonymous researcher setting one island map apart from one uncertain lagoon image, no verdict marked.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C15"
+      ],
+      "lines": [
+        {
+          "id": "h0xw6uto",
+          "text": "支持「艾爾哈特可能上過島」，不代表認定潟湖裡這個物件是她的飛機。"
+        }
+      ]
+    },
+    {
+      "id": "deep-sea-sonar-2024",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a deep-sea survey vessel near Howland Island with a torpedo-shaped autonomous underwater vehicle resting on its aft deck before deployment.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C13"
+      ],
+      "lines": [
+        {
+          "id": "h0v92d1n",
+          "text": "二〇二四年，另一家團隊公布豪蘭島附近像飛機的深海聲納影像。",
+          "emotion": "轉到另一處"
+        }
+      ]
+    },
+    {
+      "id": "sonar-rock",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a jagged natural seafloor rock on a survey monitor, isolated from the earlier lagoon imagery.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C13"
+      ],
+      "lines": [
+        {
+          "id": "h10nc5h1",
+          "text": "同年稍後，那個團隊說，自己追的目標只是一塊天然岩石。",
+          "emotion": "落空"
+        }
+      ]
+    },
+    {
+      "id": "two-distinct-targets",
+      "template": "big",
+      "data": {
+        "text": "兩處不同目標",
+        "kicker": "2024 深海／2026 潟湖",
+        "sub": "岩石結論不能套到潟湖"
+      },
+      "claims": [
+        "H09-C13",
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h17piur2",
+          "text": "這是一處不同地點、不同方法找到的目標，不能拿岩石結論套到 Taraia。",
+          "say": "這是一處不同地點、不同方法找到的目標，不能拿岩石結論套到 塔拉亞物件。",
+          "say_for": "ac61a891c225",
+          "emotion": "清楚區分"
+        }
+      ]
+    },
+    {
+      "id": "outline-needs-test",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a blurry survey print beside an empty examination tray, with many details still untested.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C13",
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h1olfg1r",
+          "text": "但這次落空提醒所有人：遠遠看見輪廓，離辨認機身還差一步。"
+        }
+      ]
+    },
+    {
+      "id": "voyage-to-lagoon",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a modern expedition ship underway in open Pacific water, no land visible and no time-of-day cues, crew only as distant back-facing silhouettes.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C16"
+      ],
+      "lines": [
+        {
+          "id": "h1quni8g",
+          "text": "二〇二六年，一組人終於坐上船，準備到潟湖裡親手碰到它。",
+          "emotion": "向前推"
+        }
+      ]
+    },
+    {
+      "id": "team-lands",
+      "chapter": "考察團抵達潟湖",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from behind unidentifiable 2026 expedition crew already ashore at Nikumaroro, setting up a temporary camp beside unopened equipment crates.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C16"
+      ],
+      "lines": [
+        {
+          "id": "h0566j3u",
+          "text": "十月十二日，隊伍抵達尼庫馬羅羅；隔天上岸，初步踏查並架設設備。",
+          "emotion": "抵達現場"
+        }
+      ]
+    },
+    {
+      "id": "expedition-partners",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of unidentified crew setting equipment crates at an island field station, no legible institution marks or faces.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14",
+        "H09-C16"
+      ],
+      "lines": [
+        {
+          "id": "h0m234ej",
+          "text": "這次考察由 ALI 主導，普渡大學與普渡研究基金會參與。",
+          "say": "這次考察由 考古遺產研究所 主導，普渡大學與普渡研究基金會參與。",
+          "say_for": "b41ec391dd3b"
+        }
+      ]
+    },
+    {
+      "id": "purdue-historical-link",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 1930s hangar desk with a small twin-engine aircraft model beside a plain university pennant, no words or archival facsimile.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C16"
+      ],
+      "lines": [
+        {
+          "id": "h0op7m6k",
+          "text": "普渡當年資助了艾爾哈特的 Electra，如今又參與檢驗這個新目標。",
+          "say": "普渡當年資助了艾爾哈特的 伊萊克特拉，如今又參與檢驗這個新目標。",
+          "say_for": "add3c77662b2"
+        }
+      ]
+    },
+    {
+      "id": "latest-official-date",
+      "template": "big",
+      "data": {
+        "text": "仍待辨認",
+        "kicker": "截至 2026 年 10 月 13 日",
+        "sub": "官方公告尚無物件結果"
+      },
+      "claims": [
+        "H09-C16"
+      ],
+      "lines": [
+        {
+          "id": "h1e4dxa5",
+          "text": "截至二〇二六年十月十三日的官方最新公告，還沒有物件的辨認結果。",
+          "emotion": "放慢時效"
+        }
+      ]
+    },
+    {
+      "id": "sand-surface-search-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the Taraia sandspit beside the 2026 temporary shore camp, anonymous crew already ashore.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14",
+        "H09-C16"
+      ],
+      "lines": [
+        {
+          "id": "h1caxcd2",
+          "text": "為了回答潟湖影像究竟拍到什麼，十月十三日，",
+          "emotion": "已發生的踏查"
+        }
+      ]
+    },
+    {
+      "id": "sand-surface-search-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind anonymous field crew inspecting the sandspit ground in daylight.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14",
+        "H09-C16"
+      ],
+      "lines": [
+        {
+          "id": "h1ckwy21",
+          "text": "隊伍已到 Taraia 半島沙洲查看地表可能散落的物件。",
+          "emotion": "已發生的踏查",
+          "say": "隊伍已到塔拉亞半島沙洲查看地表可能散落的物件。",
+          "say_for": "82bc7f9adc76"
+        }
+      ]
+    },
+    {
+      "id": "drone-image-plan-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded survey drone inside its travel case beside a plain planning sheet, no flight underway.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h031d5vr",
+          "text": "接下來按 ALI 的計畫，團隊會用無人機拍攝沙洲與潟湖，",
+          "emotion": "說明未來步驟",
+          "say": "接下來按 考古遺產研究所 的計畫，團隊會用無人機拍攝沙洲與潟湖，",
+          "say_for": "09a353888cf7"
+        }
+      ]
+    },
+    {
+      "id": "drone-image-plan-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a blank aerial survey plan of sandspit and lagoon with empty position markers, before imaging.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h02rdk6s",
+          "text": "讓調查點在新影像裡有可核對的位置。",
+          "emotion": "說明未來步驟"
+        }
+      ]
+    },
+    {
+      "id": "instruments-plan-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an unopened magnetometer case and coiled cable beside lagoon water, field team hands only.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h155hpnc",
+          "text": "潟湖接著預計用磁力儀、側掃聲納與海床地層剖面聲納，",
+          "emotion": "清楚列計畫儀器"
+        }
+      ]
+    },
+    {
+      "id": "instruments-plan-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of two distinct sonar instrument cases prepared at the lagoon shore before deployment.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h15fhbcb",
+          "text": "確認異常的範圍和位置。",
+          "emotion": "清楚列計畫儀器"
+        }
+      ]
+    },
+    {
+      "id": "hydraulic-probe-plan-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of unpowered sonar consoles beside a closed hydraulic probe case on a planning desk, with no survey result.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h1m1eay1",
+          "text": "光有儀器回波仍不夠；",
+          "emotion": "轉到接觸計畫"
+        }
+      ]
+    },
+    {
+      "id": "hydraulic-probe-plan-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hydraulic probe tip touching a small practice sand tray in a planning-room demonstration, no lagoon target or field result.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h1lrep92",
+          "text": "水力探針要直接接觸目標，檢查材質、邊界與輪廓。",
+          "emotion": "轉到接觸計畫"
+        }
+      ]
+    },
+    {
+      "id": "measurements-compare",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of blank comparison worksheets and separate instrument symbols on a desk, no survey grid or collected readings.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h1sr7ftu",
+          "text": "這些測量讓團隊能把不同儀器所見，和真正摸到的物件放在一起比對。"
+        }
+      ]
+    },
+    {
+      "id": "clear-silt-later",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of anonymous expedition hands preparing gentle cleaning tools beside lagoon water, no object exposed.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h1umhdsw",
+          "text": "完成這些記錄後，團隊才會小心清掉泥沙，直接看見它。"
+        }
+      ]
+    },
+    {
+      "id": "rivet-check-plan",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of an empty measuring tray next to a simplified twin-engine wing diagram and rivet pattern guide.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h1s0vr7z",
+          "text": "ALI 想對的是機身金屬、形狀，以及那款 Electra 的鉚釘排列。",
+          "say": "考古遺產研究所 想對的是機身金屬、形狀，以及那款 伊萊克特拉 的鉚釘排列。",
+          "say_for": "67a95ff8eb19"
+        }
+      ]
+    },
+    {
+      "id": "wood-would-exclude",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of ordinary driftwood on the lagoon shore as an example of a natural alternative, not the tested target.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14",
+        "H09-C15"
+      ],
+      "lines": [
+        {
+          "id": "h1b4z5xa",
+          "text": "如果露出來的是木頭，這一處被懷疑的目標就能排除。",
+          "emotion": "假設語氣"
+        }
+      ]
+    },
+    {
+      "id": "structure-must-match",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of an empty evidence table and a generic aircraft structure diagram awaiting comparison, no component present.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h142sgn9",
+          "text": "如果露出飛機部件，還得查它是否真屬於艾爾哈特那一架。"
+        }
+      ]
+    },
+    {
+      "id": "negative-result-valid",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher seen from behind arranging empty observation folders, leaving room for a negative identification.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h1mph050",
+          "text": "ALI 的計畫也說，證明它不是飛機，仍算完成這次辨認。",
+          "say": "考古遺產研究所 的計畫也說，證明它不是飛機，仍算完成這次辨認。",
+          "say_for": "bada6fb6ff7b",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "not-other-crash-site",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of two separate empty evidence boxes on a desk, one marked by a lagoon ripple icon and the other by an open-ocean wave icon, neither proving the other.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C06",
+        "H09-C14"
+      ],
+      "lines": [
+        {
+          "id": "h0c0hnrn",
+          "text": "排除島上一處物件，也不會自動證明海軍推測的墜點。",
+          "emotion": "保留界線"
+        }
+      ]
+    },
+    {
+      "id": "unresolved-verdict",
+      "chapter": "未結",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide split-screen shot with a clear vertical gutter: left panel empty open water near Howland, right panel distant Nikumaroro lagoon, each a separate place.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C04",
+        "H09-C06",
+        "H09-C16"
+      ],
+      "lines": [
+        {
+          "id": "h0ctdw9q",
+          "text": "回到最初那條線：它既不能證明她上島，也不能證明她落海。艾爾哈特的去向，現在仍是未結。",
+          "emotion": "誠實回答"
+        }
+      ]
+    },
+    {
+      "id": "viewer-choice",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of two anonymous hands holding separate cards with a radio waveform icon and a lagoon ripple icon, no words.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "h0tcwx67",
+          "text": "如果你只能選一條線索繼續查，你會先追電訊，還是先查潟湖物件？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "subscribe-outro",
+      "template": "outro",
+      "data": {
+        "title": "未結",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "一條電訊",
+          "一座島",
+          "等待能辨認的證據"
+        ]
+      },
+      "lines": [
+        {
+          "id": "h1vh1gxs",
+          "text": "訂閱奇聞檔案局，陪我們沿著能核對的紀錄，把懸案看到最清楚的一頁。",
+          "emotion": "溫和邀請"
+        }
+      ]
+    }
+  ]
+}
