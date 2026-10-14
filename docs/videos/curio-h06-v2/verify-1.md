@@ -1,10 +1,10 @@
 # H06 v2｜獨立事實覆核（第 1 輪）
 
-日期：2026-10-14。原覆核者未撰寫 H06 v2 旁白；先只讀 CLI 旁白及 11 題，對舊敘事 hash `3dfdec113ca9958c` 得到 **11/11 PASS**（答案與 gate 存外部工作目錄 `review/narrative-answers-round3.json`、`review/narrative.json`），再閱讀 `video.json`、寫手資料與原始來源。其後的片尾縮短、刪景、章節順序與回呼及去重、法院重排修訂由改句者作增量來源自查；視覺修改前 `cd0c02e7514e16e0` 再獲獨立盲評 **11/11 PASS**。**目前畫面版 `5616d43e89294144` 已重新由獨立盲評通過 11/11**，並對 BGH 原判決掃描、PLOS ONE 原文與 Stoneking 第一手訪談作增量來源抽查；這不冒稱全部畫面欄位重新逐項簽核。本文不代替大綱選項、站主審稿、配音、渲染、成片播放或發布核准。
+日期：2026-10-14。原覆核者未撰寫 H06 v2 旁白；先只讀 CLI 旁白及 11 題，對舊敘事 hash `3dfdec113ca9958c` 得到 **11/11 PASS**（答案與 gate 存外部工作目錄 `review/narrative-answers-round3.json`、`review/narrative.json`），再閱讀 `video.json`、寫手資料與原始來源。其後的片尾縮短、刪景、章節順序與回呼及去重、法院重排修訂由改句者作增量來源自查；視覺修改前 `cd0c02e7514e16e0` 再獲獨立盲評 **11/11 PASS**。**音訊修訂前的畫面版 `5616d43e89294144` 也曾由獨立盲評通過 11/11**，並對 BGH 原判決掃描、PLOS ONE 原文與 Stoneking 第一手訪談作增量來源抽查；這不冒稱全部畫面欄位重新逐項簽核。站主已選大綱 A；現行音訊修訂後敘事 hash `349cf912c147f530` 另獲獨立盲評 **11/11 PASS** 並綁定外部 `review/narrative.json`。本文不代替現行音訊、圖像、渲染、成片播放或發布核准。
 
 ## 範圍、版本與來源
 
-- 本次讀回的 `video.json` SHA-256：`19f0fa0534933043307815c9bb18145a8ed0ac6891742f4206a50eba78384e74`；`script.md`：`fd2189d186df57c01ba261817aad4fb6873ac1d53ab1b36c1d4438330662b328`；`claims.md`：`fb56896a8f7ccfadd6a11ebbf53b395f8031e3864fb3ea956c2997e03a7f8cd4`；`brief.md`：`df25a00988d06e30f2e6a08e84df0eaecacb12ba4c929bb1e4670acea6756b1d`。上述為檔案 SHA，現行敘事 hash 為 `5616d43e89294144`，85 景、104 句、七章；外部 `review/narrative.json` 已綁此 hash 並記錄 11/11 PASS。
+- 音訊修訂前讀回的 `video.json` SHA-256：`19f0fa0534933043307815c9bb18145a8ed0ac6891742f4206a50eba78384e74`；`script.md`：`fd2189d186df57c01ba261817aad4fb6873ac1d53ab1b36c1d4438330662b328`；`claims.md`：`fb56896a8f7ccfadd6a11ebbf53b395f8031e3864fb3ea956c2997e03a7f8cd4`；`brief.md`：`df25a00988d06e30f2e6a08e84df0eaecacb12ba4c929bb1e4670acea6756b1d`。上述為當輪檔案 SHA，當輪敘事 hash 為 `5616d43e89294144`，85 景、104 句、七章；外部舊 `review/narrative.json` 綁此 hash 並記錄 11/11 PASS。
 - 原獨立覆核從 91 景抽出 112 句旁白，連同每張資料卡的 `data`、縮圖、YouTube 標題／說明／標籤，共 **470 個原始字串／數值欄位**，逐項清單在外部 v2 工作目錄 `_tools/claim-inventory.md`。現行 85 景、104 句、七章；舊清單不冒稱為新稿逐欄重抽。下表將重複的可查事實整併為 26 組；原核對清單的其他未改項保持歷史紀錄，新改句和畫面另在文末逐項增量核對。`say` 欄位原逐句抽取，本稿沒有覆寫。
 - 2026-10-14 取得 [1970 年德國聯邦最高法院判決掃描](https://www.prinz.law/static/urteile/pdf/bgh/III_ZR_139-67.pdf)全 144 頁，逐項親讀與本稿有關的 PDF 第 3、5–8、13–15、138–139、143–144 頁。此為第三方保存的原判決掃描，**非官方法院網站逐字稿**；掃描中的部分人名及日子遮蔽。另重開 [PLOS ONE 2009 原文](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0004838)、[研究者 Stoneking 第一手訪談](https://dnalc.cshl.edu/view/15163-Solving-one-of-history-s-mysteries-Mark-Stoneking.html)、[冷泉港教師指南](https://www.dnai.org/romanovs/romanov_guide.pdf)與[工作簿](https://dnalc.cshl.edu/assets/files/dnalc-live/17207.the_mystery_of_anastsia_workbook.pdf)、[NIJ 母系 DNA 教材](https://nij.ojp.gov/nij-hosted-online-training-courses/principles-forensic-dna-officers-court/08-mitochondrial-dna-y-str-analysis/introduction-mtdna/maternal-inheritance-0)，均 HTTP 200。
 - [Nature Genetics 1995 書目頁](https://www.nature.com/articles/ng0195-9)為 HTTP 200，但論文正文需訂閱；本文的樣本結論據研究者第一手訪談及教學原件，不冒稱逐字讀過論文。[PNAS 2009 出版頁](https://www.pnas.org/doi/10.1073/pnas.0811190106)直接讀取為 HTTP 403；[NIH E-utilities 所載原作者摘要](https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=19251637&retmode=xml)為 HTTP 200，明載兩墓研究辨認全家包括五名子女。影片不以它替 PLOS ONE 的第二墓姊妹指定個別姓名。
@@ -50,7 +50,7 @@
 - **時間與權限：** 片中的 1920、1922、1928、1967、1970、1984、1995、2007、2009 年都指歷史事件或出版日期，沒有宣稱現行法律或存活者。來源在 2026-10-14 重開的讀取狀態如上；第三方掃描、訂閱限制與 PNAS 出版頁 403 應隨製作包保留說明。`sources[].checked_on` 的 2026-10-12 是寫手先前讀取日，本報另記本輪讀回，不冒充各筆都在今日更新欄位。
 - **觀點：** `brief.md` 的站主觀點要求法院、安德森檢體及墓地研究各守證據邊界。旁白把「法院未證明她是公主」「安德森兩份檢體不符皇后母系、與毛赫爾母系相符」「兩墓找齊五名子女」分開；未把母系相符寫成唯一姓名識別，也未推測其主觀動機。無觀點衝突。
 - **聽稿與揭露：** 現行 104 句沒有超過 40 字、未列入發音表的 Latin 字、括號、URL、`say`，也沒有「經查證／本影片」等查核口吻。`grave-distance` 的 70 公尺與 44 件現依 `j43h`／`v220` 分句揭露；`grave-two-papers` 的 PNAS 字卡先問是否齊全，`ufh6` 下一卡才回答五名子女均找到。公主身分的否定句如今第一次在片尾 `d7um` 說出。
-- **機械檢查：** `node tools/video/cli.mjs lint --slug curio-h06-v2 --json` 為 0 errors、0 warnings，正文靜態估 502.533 秒（8.376 分）、104 句、1,687 spoken units、七章；同張 `end-outro` 靜態估 7.5 秒。`renderProblems(video.json, root, {workdir})` 與 `cadenceProblems` 為 `[]`；最長畫面 7.8 秒、51 張插圖覆蓋約 52.83%。估時不是合成音檔長度，正式語音仍須驗正文至少 8 分鐘及片尾實際畫面停留。
+- **音訊修訂前的機械檢查：** `node tools/video/cli.mjs lint --slug curio-h06-v2 --json` 為 0 errors、0 warnings，正文靜態估 502.533 秒（8.376 分）、104 句、1,687 spoken units、七章；同張 `end-outro` 靜態估 7.5 秒。`renderProblems(video.json, root, {workdir})` 與 `cadenceProblems` 為 `[]`；最長畫面 7.8 秒、51 張插圖覆蓋約 52.83%。估時不是合成音檔長度，現行口播與正式語音仍須驗正文至少 8 分鐘及片尾實際畫面停留。
 - **曾懷疑而未改：** 判決掃描遮蔽 1920 年救起的確切日子，影片只說月份；[CSUEB 博物館解說](https://www.csueastbay.edu/museum/pre-exhibit/dna/history-fraulein.html)雖記 2 月 17 日，本稿未用日數。PLOS ONE 表格的女兒暫定姓名與俄美形態學意見不同，正文已明說基因結果無法單獨指定第二墓女孩；沒有擅取表格標籤。1995 論文全文及 PNAS 出版頁直接存取受限，已以上述可讀的第一手研究者敘述及原作者摘要作有限查核，不添加未核機率。
 
 ## 上一輪三句片尾縮短的增量核對（2026-10-14，歷史紀錄）
@@ -67,7 +67,7 @@
 
 ## 七章順序與預告回收的增量核對（2026-10-14，歷史稿）
 
-改稿者依原獨立覆核記錄的[德國法院判決掃描](https://www.prinz.law/static/urteile/pdf/bgh/III_ZR_139-67.pdf)，把 `[dszz]` 改為病院裡「有人」把女子與安娜塔西亞連上，不替兩種姓名起點選邊；`[26m8]` 只交代身分舉證，`[sexv]`／`[wmiq]` 先報一九六七年前審，`[i2rk]` 再報三年後的法律審結果。抽象的 `[mrsj]` 報題句刪去，`court-two-levels` 留下 `[qyt5]` 具體說最高法院檢查判法有沒有違法。法院掃描是第三方保存的原判決，這一輪未冒充另一次獨立逐頁讀回。
+改稿者依原獨立覆核記錄的[德國法院判決掃描](https://www.prinz.law/static/urteile/pdf/bgh/III_ZR_139-67.pdf)，把 `[dszz]` 改為病院裡「有人」把女子與安娜塔西亞連上，不替兩種姓名起點選邊；`[26m8]` 只交代身分舉證，`[sexv]`／`[wmiq]` 先報一九六七年前審，`[i2rk]` 再報三年後的法律審結果。抽象的 `[mrsj]` 報題句刪去；當輪 `court-two-levels` 的 `[qyt5]` 說最高法院檢查判法有沒有違法，後續因唸讀不順改寫，見下節。法院掃描是第三方保存的原判決，這一輪未冒充另一次獨立逐頁讀回。
 
 按 [Stoneking 第一手訪談](https://dnalc.cshl.edu/view/15163-Solving-one-of-history-s-mysteries-Mark-Stoneking.html)，`[v203]` 只問檢體能否回答身分，正文 `[bp4e]` 點名開頭兩份檢體並新增母系序列相互核對的方法，`[4yw7]` 才報結果。按 [PLOS ONE 2009 原文](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0004838)，`[pxbi]` 僅讓人注意林地碎片，正文 `[v2jq]` 點名開場碎片來自第二墓，`[v219]` 才分清業餘發現與正式進場。`[73wj]` 把第一墓缺口界定為不能替安德森身分下定論，接上 `[bxmt]` 的檢體研究，未聲稱墓地發現必然促成該研究。
 
@@ -103,4 +103,14 @@
 
 `court-question-card` 不提前暗示舊證書已有錯誤；下一張 `court-question-certificate` 明確歸為安德森主張。`court-hamburg-corridor-beat-2` 改畫匿名書記整理普通資料，不再呈現法官手中虛構的證人原信。`dna-two-results` 改用原生 `big` 字卡直寫兩份安德森檢體母系序列相符，依 [Stoneking 第一手訪談](https://dnalc.cshl.edu/view/15163-Solving-one-of-history-s-mysteries-Mark-Stoneking.html) 的可見敘述，避免虛構實際基因圖；`dna-maucher-support` 的支系隱喻保留其他母系親屬，界線由鄰近原生 `compare` 字卡說明。`hook-forest-path` 與 `grave-2007-path` 只畫業餘尋找者觀察地面，`grave-2007-path-beat-2` 才畫後續量測；不重現或生成可辨遺骸。三張入片照片仍有 `assets[]` 與原件信用資料，兩張未用候選只留在 [assets-provenance.md](assets-provenance.md) 和外部工作目錄，不進上架圖片來源清單。
 
-改版後 `node tools/video/cli.mjs script --slug curio-h06-v2` 產生敘事 hash `5616d43e89294144`；外部 `review/narrative.json` 現已綁定並通過獨立 11/11。格式預檢為 85 景、104 句、51 個 MiniMax `image-01` 鏡頭，估 **502.533 秒**、插圖占比 **52.83%**，`lint` 0 errors／0 warnings，`cadenceProblems=[]`，最長畫面 **7.8 秒**，`renderProblems=[]`；`keyframes --dry-run` 顯示 1K、每鏡最多三輪，目前付費生成 **US$0.00**。這是成圖前檢查，不是畫面審片；大綱選項尚待站主決定，尚未進行本版 TTS 或付費圖像生成。
+當輪 `node tools/video/cli.mjs script --slug curio-h06-v2` 產生敘事 hash `5616d43e89294144`；外部舊 `review/narrative.json` 曾綁定並通過獨立 11/11。當輪格式預檢為 85 景、104 句、51 個 MiniMax `image-01` 鏡頭，估 **502.533 秒**、插圖占比 **52.83%**，`lint` 0 errors／0 warnings，`cadenceProblems=[]`，最長畫面 **7.8 秒**，`renderProblems=[]`；`keyframes --dry-run` 顯示 1K、每鏡最多三輪，當時付費生成 **US$0.00**。這是當時成圖前檢查，不是畫面審片；後續核准與音訊修訂狀態見下節。
+
+## H06 音訊旗標後的編稿增量（2026-10-14）
+
+站主已在後台選大綱 A，`review-pull` 讀回綁 `brief.md` SHA-256 `df25a00988d06e30f2e6a08e84df0eaecacb12ba4c929bb1e4670acea6756b1d` 的核准。初輪 TTS 合成 104 句，舊時間軸量到 8:19；`check-audio` 標記 16 句。重錄其中 8 句後由 H06 專屬 `STOP` 停下，新音檔與舊 `timeline.json` 不符，**現行旁白不算合成完成或核准**。這些外部工作目錄的收據與舊音檔檢查仍保留。
+
+最初修 `[qyt5]`，把不易唸讀的「最高法院檢查前審判法有無違法」改為「安德森提起法律審；最高法院檢查前審判決有沒有法律或程序上的錯。」此句對應 c06 與同場原生比較卡的法律／程序範圍；依[德國法院判決掃描](https://www.prinz.law/static/urteile/pdf/bgh/III_ZR_139-67.pdf)作編稿者的來源增量核對，不將法律審說成重新逐一衡量證人，也不冒稱原獨立覆核者已重新簽核。其後 `[934q]` 把未回答的「哪份證據最有力」改為觀眾留言選項；`[28mj]` 明確回收辨認問題，對應 c04 的接待與身分證明界線；`[sexv]` 換成 1967 年作出判決，避免和前章重複衡量證詞；`[v217]` 只說信封頭髮是第二份檢體，不重述醫院保存切片。後一輪再把 `[rbd5]` 的病院身分難題接上開場、`[v227]` 指向女工線索日後的檢體證據、`[cfvr]` 收窄為已能辨認的男孩，林地碎片的 loop 改為 `v204 → ufh6`；這些增量用 c02–c04、c06、c09–c10、c14–c15 的來源界線檢查，不把女兒的個別姓名說成 DNA 已能分清。
+
+新稿經數輪獨立盲評指出並修正片尾新問句、親友辨認未回收、法院章重述、檢體保存重述與墓中女兒未定名等敘事問題。現行 `349cf912c147f530` 的另一位獨立盲評者只讀 CLI 旁白與 11 題，回覆 11/11 yes；其證據原格式為 `[line_id mm:ss]`，協調者只刪括號內時間以符合 CLI 的 `[line_id]` 驗證語法，未改 yes/no、行 ID 或引文。轉換註記及答案在外部 `review/narrative-answers-20261014-h06-lineids.*`；`review/narrative.json` 記錄 round 10、`passed=true`、`narrative_hash=349cf912c147f530`、`script_hash=d5ca610b92e9c97286ff61153f5f7559dfc86d5375fefe039cf1f9b1f257afec`。前一次沒有行 ID 的答案被 CLI 判為格式失敗，並非當輪內容盲審判否；後續有效收據已覆蓋。
+
+現行 `video.json` SHA-256：`a6a8c3be0cccaf7856c0c1640a2dd8fed8191254166dfe4684c7a20c1c9d98df`；`script.md` SHA-256：`87f3d96bd0022b57f98ba53f8a8b546c5a63ea1a794a3809e910308a193014b6`；`claims.md` SHA-256：`23ae37ee83b57c21b85ced05fe964b12ea7a3d2f150ea8fd83500dc04d57d4a0`；核准大綱 `brief.md` SHA-256 仍為 `df25a00988d06e30f2e6a08e84df0eaecacb12ba4c929bb1e4670acea6756b1d`。現行 85 景、104 句、七章，`lint` 0 errors／0 warnings，靜態估約 8.4 分；實際旁白時間軸尚未重建，8 分鐘門檻須再依正式音檔核對。首輪 TTS 104 句合成後有 16 個檢查旗標，重錄前 8 句後 H06 專屬 `STOP` 生效；`timeline.json` 與現行稿及部分 take 不符，無旁白核准，亦無 H06 付費圖片或成片。

@@ -22,7 +22,14 @@
 
 - 三張文件裁切分別對應 [Commons 385](https://commons.wikimedia.org/wiki/File:Dyatlov.Volume_1.Page_385.jpg)、[386](https://commons.wikimedia.org/wiki/File:Dyatlov.Volume_1.Page_386.jpg)、[387](https://commons.wikimedia.org/wiki/File:Dyatlov.Volume_1.Page_387.jpg)。頁面列 Lev Nikitich Ivanov、1959-05-28、`PD-RU-exempt`；Commons 的原始來源欄是民間論壇，不是官方檔案館直供。裁切僅保留公文文字，沿用第一版 `asset-register.md` 記錄的區域與像素核對。新 `stock/` 檔在 repo 外 H04-v2 工作目錄，三檔的 SHA-256 均與檔名相同。
 - 舊草稿的九張 SVG 已依奇聞系列畫風規格改為三個 MiniMax `image-01` 鏡頭與六張文字卡，九筆 SVG 資產及檔案不再使用。`video.json.assets[]` 只列三張公有領域文件裁切；換圖後 `renderProblems(doc, root, {workdir})` 的檔案與來源靜態預檢回傳空清單。新增鏡頭仍須實際生成和人工看圖；靜態預檢不是成片播放驗收。
-- 本版 `youtube.video_id` 為 `null`。舊 H04 的私人上傳 ID 與媒體收據不移植。現行 100 句語音的時間軸長 8:40、語音雜湊 `ed9b3d4509f1a7b9`，`review/check-flags.json` 為零標記；音訊審查推送自動核准，拉回後 `status` 顯示 `narration approved`。先前 101 句、8:41 的檢查與核准只屬歷史版本。兩輪共生成 186 張 MiniMax 圖、185 次判圖（帳本約 US$2.50）；第二輪因全站月判圖上限 10,000／10,000 次停在舊版 50／54 張，數張即使 judge 通過仍被人工查出錯誤。現行畫風與 52 張鏡頭提示詞尚須重新生成、逐張看圖；舊 manifest 因雜湊不符只留作稽核，不能當新版分鏡。分鏡、渲染、字幕、MP4、上傳包、站主播放驗收及 YouTube 上傳均未完成。
+- 本版 `youtube.video_id` 為 `null`。舊 H04 的私人上傳 ID 與媒體收據不移植。現行 100 句語音的時間軸長 8:40、語音雜湊 `ed9b3d4509f1a7b9`，`review/check-flags.json` 為零標記；音訊審查推送自動核准，拉回後 `status` 顯示 `narration approved`。先前 101 句、8:41 的檢查與核准只屬歷史版本。至本次視覺修訂前，H04 累計生成 201 張 MiniMax 圖、199 次判圖，帳本約 US$2.69；本次增加 14 張圖與 14 次判圖，約 US$0.19。最後全站讀回為圖片 9,139／10,000、判圖 10,014／11,000。新 `look.style` 與 52 張鏡頭的提示詞已通過 lint 和一張一 take 的全片 dry-run，尚未以新 look 生成圖片。分鏡、渲染、字幕、MP4、上傳包、站主播放驗收及 YouTube 上傳均未完成。
+
+### 視覺小樣與暫停紀錄
+
+- 舊 look 的三張開場小樣最終通過 judge 與人工構圖檢查；`opening-inside` 僅是帳內示意，不宣稱重建當年帳篷內部。接著的一 take 首輪新增九張圖，有七張遭 judge 退回。`remaining-boots` 的服務請求以終局上游錯誤結束，費用 US$0；當時媒體工作與保留額均為零。依專案 STOP 流程在安全邊界停下，沒有第二 take 批次。
+- 人工逐張檢查 12 張已選圖片：`tease-fabric` 呈現照片感與過大的切口；`tease-file` 頂端有黑邊；`tease-paper` 和 `camp-platform-context` 有角落簽名或浮水印；`tease-expedition` 將步行嚮導畫成坐在長椅上；`opening-question` 有照片／3D 感與不符敘事的樹林；`trail-search-start` 雖經 judge 通過，足跡卻像分離的大雪塊；`journey-pack` 有照片感；`search-later-weather` 未清楚畫出風化的凸起足跡。這些是插畫品質與敘事對位缺陷，不改寫史料主張。
+- 修訂在全片 `look.style` 明示純手繪線條、平面 2D 色塊、每種物件皆遵循同一畫法、滿版 16:9 且角落乾淨，並以正向詞句指定道具是普通無表情的無生命物件。十張鏡頭的場景提示詞縮短或修正，包括無樹坡面、步行嚮導、概念性凸起足跡與風化淺痕；風格只放在 `look.style`。舊 look hash `0f2ff6840b867375` 改為 `c9ddd653e1d021c2`，picture hash `59713eec7b8ed03b` 改為 `1d268431c42f509a`。舊 manifest 與 12 張選圖已保存在工作目錄的 `keyframes/audit-pre-look-revision-20261014/`；全部只是稽核證物，不是現行分鏡。
+- 新 look 擬先以 `opening-question`、`trail-search-start`、`journey-pack` 三個連續鏡頭各一 take 試畫，dry-run 三鏡均在提示詞長度上限內，估計約 US$0.04；完整 52 張一 take 約 US$0.70。專案 `STOP` 仍存在：授權後清除該檔的操作遭自動政策阻擋，沒有改用其他刪除或移動方式，也沒有以新 look 付費試畫。待 STOP 由受支援的方式解除後，須先重讀額度／保留額，再執行已授權的三鏡小樣並逐張人工檢查。
 
 ## 製片時仍須檢查
 

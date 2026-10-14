@@ -1,6 +1,6 @@
 # H06 v2｜主張、來源與不可越過的界線
 
-本表對應 `video.json` 的 `claims` 代號。v2 改寫了敘事順序與旁白，**不能沿用舊版 H06 的逐句查核或站主核准**。舊版的 [第一輪](../curio-h06/verify-1.md)與[第二輪](../curio-h06/verify-2.md)查核可作前案線索；v2 原有獨立覆核見本集 [verify-1.md](verify-1.md)。視覺修改前的敘事 hash `cd0c02e7514e16e0` 與目前畫面版 hash `5616d43e89294144` 都已各自通過獨立盲評 11/11；本輪 BGH、PLOS ONE、Stoneking 增量來源抽查不代替成圖與成片稽核。大綱仍待站主選項，本版未進付費媒體製作。2026-10-14 定點重開的來源與失效邊界見 [verification-notes.md](verification-notes.md)。
+本表對應 `video.json` 的 `claims` 代號。v2 改寫了敘事順序與旁白，**不能沿用舊版 H06 的逐句查核或站主核准**。舊版的 [第一輪](../curio-h06/verify-1.md)與[第二輪](../curio-h06/verify-2.md)查核可作前案線索；v2 原有獨立覆核見本集 [verify-1.md](verify-1.md)。視覺修改前的敘事 hash `cd0c02e7514e16e0` 與音訊修訂前的畫面版 hash `5616d43e89294144` 都曾各自通過獨立盲評 11/11；**現行敘事 hash `349cf912c147f530` 另取得獨立 11/11 PASS，外部 `review/narrative.json` 已綁定此 hash**。本輪 BGH、PLOS ONE、Stoneking 增量來源抽查不代替成圖與成片稽核。站主已選大綱 A；初輪 104 句 TTS 已合成並有 16 個音訊旗標，其中 8 句在 H06 專屬 `STOP` 生效前重錄。改稿後的音訊與舊時間軸不符，旁白尚未重新完成或核准；尚未生成 H06 付費圖片或成片。2026-10-14 定點重開的來源與失效邊界見 [verification-notes.md](verification-notes.md)。
 
 | ID | 影片使用的主張 | 可核來源與界線 |
 | --- | --- | --- |

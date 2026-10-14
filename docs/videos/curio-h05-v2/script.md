@@ -310,7 +310,7 @@
 
 #### 72. study-year
 
-旁白：二〇二〇年，凱伊與梅爾策發表河岸一張原鈔的研究。
+旁白：二〇二〇年，凱伊與梅爾策發表河岸鈔票的研究。
 
 #### 73. single-bill-sample
 
@@ -401,5 +401,5 @@
 旁白：哪件物證最意外？
 旁白：訂閱，繼續查證。
 
-narrative 299218902636bb97
-speech 9264cb545d070dd8
+narrative e0d2eb7016aea429
+speech 7d8cb6cb30ba87d9
