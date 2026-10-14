@@ -41,3 +41,13 @@ MiniMax `image-01` 不使用風格參考板。把平面編輯插畫放在提示�
 自動 judge 給 9.29／10、`passed=true`，但同一份判定的 `details=7` 及問題欄明寫「human figures appear on the bank and in the foreground → completely deserted empty canal scene with zero people」。此分數不推翻人審與來源限制。現行 `keyframes/manifest.json` SHA-256 `23cb0c66d086377196d4151b469e5ccff32469825e807466a41422c3aa4` 的 `thumbnail_source` 仍指這張退回圖，**不得當作可用縮圖或送分鏡核准**；`needs_review=false` 只是 judge 的機械欄位，不代表人工接受。`media/ledger.json` SHA-256 `a37d4021234a639076928943e76725587edea36b8684ab190136159469c1bb7e`：累計 5 張圖、5 次 judge、US$0.0675、0 保留額；本輪增量 US$0.0135。
 
 原圖、裁切圖、聯絡表、來源稿、manifest、ledger、state 的逐檔 SHA 副本已留在外部 `review/visual-pilot-20261014-empty-canal-one-take/README.md`。這輪改的只有小樣媒體與該份紀錄；104 句旁白、逐句時間、分鏡提示與音訊核准檔皆未動。用現行時間軸重新量得 101 畫面狀態、最長 8.0 秒、`cadenceProblems=[]`，插圖占 52.2558%；第一鏡 155 幀、約 5.2 秒。**暫停第二鏡付費生圖與全量生圖，先換一條不會捏造現場人物的片頭視覺路線，再重新做有界小樣。**
+
+## 第四輪：現行 2D 三色帶提示，一張小樣退回
+
+站主後續只授權 H06 **一張** MiniMax 小樣。以現行 `video.json` SHA-256 `52e29bceaa443ce740ba0db5ff9eb64cca27613340828f813c56dcee00d2607a`、`look_hash=d57461da98a0ba9b`、`pictures_hash=09fd4baed7f1480e`，對 `hook-canal-rail` 送一次 `image-01` 1K 及一次 judge；請求鍵 `f2790fe93cdec0da`。正式旁白時間軸 SHA-256 仍是 `a885d5871108adaeacf346ccefa8d30a15556dda9623b5fa9fc5d9cf792f8e84`。
+
+原圖 SHA-256 `57285728a07a103b06ed94da8dfcffa4fbe9e5c98d80b0c1702235d256f4b16a`，裁切圖 SHA-256 `3b50bc6fbcec7253873d02e44c774d96a3ad71814fa6493f6c42d2a5390e4188`。judge 的 overall 是 **9/10，但 `passed=false`、`subject=0`**：它判定畫面為層疊山湖而非三條水平紙帶的運河概念圖，且少了紅色點綴。人工看裁切圖後確認畫面像峽灣／山灣，底邊另有虛構小字。它不具備 Berlin 運河的場景可讀性，又違反「沒有假文字」的來源界線，故**退回，不得進片或作縮圖**；高總分不能覆蓋核心主體失敗。manifest 的該鏡 `needs_review=true`。
+
+本輪現行 `keyframes/manifest.json` SHA-256 `a9b9a08abb9153b0487c3db1f67a8131cc08f957f94fe78f8195459060c614c0`，`thumbnail_source` 仍指上述退件裁切圖。外部 `media/ledger.json` SHA-256 `8bf039025dddd54081f12b23410318b8bb70112d02bb765a60c5a373612efd6e`：累計 6 張圖、6 次 judge、**US$0.0810**、0 保留額；本輪一圖一判增量 **US$0.0135**。新圖原檔、裁切圖、聯絡表、manifest、ledger、state 已連同逐檔 SHA 收據封存於外部 `review/pilot-single-20261014/`；`preflight.json` 記錄送出前的來源與費用估價，`postflight-sha256.json` 記錄送出後六檔的校驗結果。沒有重買第二鏡。
+
+兩個開場運河提示已多輪無法穩定產出來源可接受的畫面；**停止這條路線的付費重試**。下一步只能先離線重設可確定呈現的運河／姓名空白視覺，再決定是否修改場景類型或補足插圖比例；精確的 50% 影格餘裕與關卡代價見 [離線視覺路線](offline-visual-route-20261014.md)。舊圖與新退件均保留追溯，但不能以 `--accept-best`、judge 分數或 manifest 的 `thumbnail_source` 冒充人工接受。

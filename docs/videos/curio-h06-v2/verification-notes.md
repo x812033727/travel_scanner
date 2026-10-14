@@ -98,3 +98,7 @@ TTS 先 dry-run 確認 99 個請求全命中快取、0 字需合成，再正式�
 ## MiniMax 提示詞離線修訂（2026-10-14，現行）
 
 站主選擇維持 MiniMax、暫只做離線規劃。51 個 `shot` 的 ID、類型、時窗與全部 104 句旁白未動；`look.negative` 清空，部分鏡頭改用可見的 2D 色塊、墨線、概念圖和匿名場景描述，避免重複前幾輪照片質感、虛構人物與假文字。現行 `video.json` SHA-256 `52e29bceaa443ce740ba0db5ff9eb64cca27613340828f813c56dcee00d2607a`、`look_hash=d57461da98a0ba9b`、`pictures_hash=09fd4baed7f1480e`；敘事 hash `02a39e4e1fb460a7`、speech hash `9ae95e3507d3809f`、正式時間軸 SHA-256 `a885d5871108adaeacf346ccefa8d30a15556dda9623b5fa9fc5d9cf792f8e84` 均未變。`lint` 0 errors／0 warnings，51 鏡 `keyframes --dry-run` 全過；沒有新生圖、判圖或費用。舊運河圖和現有縮圖來源仍為退件，舊 look 的病院圖只能作歷史候選。逐鏡風險與後續小樣條件見 [離線視覺規劃](offline-visual-route-20261014.md)；這不是已核准全片分鏡或成片。
+
+## 後續一張 MiniMax 小樣（同日增補）
+
+上述「沒有新生圖」只描述離線修訂當輪。站主之後另准一張 `hook-canal-rail` 小樣；現行 look/pictures hash 下，MiniMax 生成圖像卻把運河概念畫成山灣，底部有虛構小字。judge `subject=0`、`passed=false`，人工亦退件；裁切圖 SHA-256 `3b50bc6fbcec7253873d02e44c774d96a3ad71814fa6493f6c42d2a5390e4188`，manifest SHA-256 `a9b9a08abb9153b0487c3db1f67a8131cc08f957f94fe78f8195459060c614c0`。不得進片或作縮圖，不再就同提示付費重試。完整收據與 50% 插圖占比下的替代方案分別見 [visual-pilot-01.md](visual-pilot-01.md) 第四輪、[offline-visual-route-20261014.md](offline-visual-route-20261014.md)〈退件後的離線替代方案〉。旁白與敘事核准綁定仍是上段 hash；分鏡與成片未完成。

@@ -4,6 +4,8 @@
 
 **最新畫面更新：** 三輪各三張 MiniMax 開場圖均不可用；第三輪三張 judge **全 FAIL**（9.00／9.00／9.71），人工實看有假字、額外人物／道具及擬真風格漂移，原 manifest SHA-256 `6b4046143e1cb552d00039c4c1a45f13818ac8ffd9bc2cfdd0108b32963dcedf5`、圖與帳本已封存，停止同一路線盲抽。主稿已採用「原生場域卡 → FBI 機票原件照片 → 305 號航班原生卡」前三景。片尾同一 `outro` 場景現以三項逐句揭示，原 8.2 秒單畫面已消除：實際時間軸 `cadenceProblems=[]`，最長畫面 7.3 秒、插圖占比 59.45%。開場 15.2 秒及片尾 8.17 秒離線預覽、畫面與來源 SHA、音訊綁定、50% 規則限制見 [visual-pilot-03.md](visual-pilot-03.md)；第二輪原始紀錄見 [visual-pilot-02.md](visual-pilot-02.md)。
 
+繁中 CC 的正文時間預檢及現行 46 張原生卡／來源照片狀態的隔離渲染、雜湊與尚待實看的 CC 安全區關卡見 [offline-media-preflight-20261014.md](offline-media-preflight-20261014.md)。預檢字幕尚未納入品牌片段，也不是正式可上傳 CC。其後唯一 `open-note` MiniMax 小樣雖獲自動 PASS，人工實看退件，費用與原件封存見 [visual-pilot-04.md](visual-pilot-04.md)；不擴批。
+
 本資料夾是 `curio-h05-v2` 的新候選腳本，與 `curio-h05` 舊企劃、核准及外部工作目錄分開。2026-10-14 已產出 `brief.md`、`claims.md`、`video.json`、`script.md`。現行 `video.json` SHA-256 為 `74102087ca465c7c73044e1182671641965cc19cbd6f4d0470d11fcb9c16e6e3`；`lint` 為 **0 errors、0 warnings**，93 景、108 句、六章，靜態估算正文 **8.745 分鐘**。現行敘事 hash `65c64491d8a53b77` 的獨立 11 題盲評已記錄 **11/11 PASS**，`status` 讀回 `storytelling panel: passed`；先前 `e0d2eb7016aea429` 的通過紀錄只屬舊版。現行實際旁白時間軸 **535.767 秒（8:55.8）**，語音 hash `7d8cb6cb30ba87d9`，`narration.wav` SHA-256 `8b519d908e7b85d7d214288d3bf8c7ebb5bc897456a4b32c74143cff50253ba3`。三個片尾揭示狀態曾使核准失效；站主其後於後台核准新 `timeline.json` SHA-256 `8128f74e74f2dad44ea0c6a1465f2a333c4cb30d0b7f9cfb14829f414becd984`，`approvals.json` 與目前 `status` 均讀回 `[x] narration approved`。108 句原 WAV 與逐句時間未因揭示狀態改變；12 句標記是站主聽審核准的內容。
 
 第一輪 hash `4f7298fac213e1c5` 的獨立盲評未通過：開場過早透露鈔票、兩處章節銜接重複或跳躍、開場提問未點名回收、兩組數字重複，以及結尾章名像功能標籤。第二輪 hash `ba9dce2d2f788f99` 仍未通過章節銜接及重複事實。後續窄修加入 FBI 案件史與 2020 年原論文可追溯的事件細節，再依獨立盲評消除乘客下機、降落傘數量及落點限制的重述；`3be74c4b985cd1a7` 已通過 11 題。每輪結論只適用其各自雜湊。

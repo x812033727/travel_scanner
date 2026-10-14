@@ -49,7 +49,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "佳特洛夫事件：九個人為何離開山坡上的帳篷？｜奇聞檔案局",
-    "description": "一九五九年二月，搜救者在北烏拉山找到空帳篷。鞋子還在，足跡卻往山下延伸。四月的布料鑑定、五月的結案書與後來的雪板研究，各能回答到哪一步？\n\n這集沿著調查被查出的順序，分開帳篷與足跡的記錄、檢方的解釋、研究模型的條件，以及二〇二一至二〇二二年後續考察觀察到的地形和痕跡。模型提供可能的離營機制，沒有還原事故當夜的完整經過。\n\n歷史文件局部為有來源的裁切；情境插圖和科學示意不是當晚攝影或實測剖面。只有繁體中文旁白與可關閉的繁中 CC。文字來源於 2026-10-14 重讀核對；文件裁切的來源與授權記錄仍須在正式製作時對照。\n\n參考來源與逐項限制見本片 claims.md。",
+    "description": "鞋子留在帳內，九人為何離開山坡上的帳篷？\n想分清卷宗記錄、後來的科學模型與仍未知的部分，這集沿著可查的來源往下看。\n\n一九五九年二月二十六日，搜救者找到空帳篷。鞋與外衣還在，記錄中的足跡朝山下延伸。四月的帳篷布料鑑定、五月的結案書、後來的雪板模型與後續考察，各能回答到哪一步？模型提供可能的離營機制，沒有還原事故當夜的完整經過。\n\n畫面包含有來源的歷史文件裁切、原創概念圖及情境插畫。概念圖不是一九五九年的實測剖面；情境插畫不是當晚攝影，也不代表逐人行動紀錄。本片提供繁體中文旁白與可關閉的繁中 CC。\n\n主要來源：\n一九五九年結案書第 384–387 頁（俄文轉錄及掃描索引）：https://dyatlovpass.com/case-files-384-387-ru\n一九五九年帳篷鑑定第 303–304 頁（俄文轉錄及掃描索引）：https://dyatlovpass.com/case-files-303-304-ru\nGaume 與 Puzrin，二〇二一年小型雪板模型：https://www.nature.com/articles/s43247-020-00081-8\nPuzrin 與 Gaume，二〇二二年後續考察：https://www.nature.com/articles/s43247-022-00393-x\n\n來源核對日：2026-10-14。",
     "tags": [
       "佳特洛夫事件",
       "戴洛夫山口",
@@ -173,7 +173,7 @@
       "id": "opening-search",
       "template": "shot",
       "data": {
-        "prompt": "Wide view across a broad treeless Ural hillside in winter daylight. A long vacant canvas ridge tent sits high on the open slope beneath a rounded skyline. Far below it, two small hooded searchers stand with their backs to the viewer, facing the tent across a broad uninterrupted stretch of snow. One points uphill while the other looks toward the shelter. The shelter and the snow immediately around it stay vacant, with the broad treeless hillside rising gently to a rounded skyline.",
+        "prompt": "Wide view across a broad treeless snowy hillside in winter daylight. A long vacant canvas ridge tent sits high on the open slope beneath a rounded skyline. Far below it, two small anonymous hooded searcher silhouettes stand still with their backs to the viewer, facing the shelter across a broad uninterrupted stretch of snow. The shelter and nearby snow stay vacant; the broad hillside rises gently to a rounded skyline.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -212,7 +212,7 @@
       "id": "opening-gear",
       "template": "shot",
       "data": {
-        "prompt": "Straight-down overhead view into an empty canvas expedition tent. Exactly two tall grey Russian valenki boots lie flat side by side in the centre, round toes pointing to the lower edge, soft shafts extending toward the upper edge. One folded dark wool coat forms a plain rectangle immediately above the boots. The two boot silhouettes occupy half of a wide frame. Bare canvas floor surrounds only these three objects, softly lit through the tent opening.",
+        "prompt": "Straight-down overhead view into a generic empty canvas expedition tent. Several plain grey felt boots and two folded dark outer garments rest apart on a canvas groundsheet. Their broad simple silhouettes read as belongings left inside. Bare canvas floor surrounds the objects, softly lit through the tent opening.",
         "camera": "drift",
         "visual": "still"
       },
@@ -624,7 +624,7 @@
       "id": "trail-downhill",
       "template": "shot",
       "data": {
-        "prompt": "Wide winter view down a broad treeless snow-covered slope toward distant dark forest. Only three tiny raised compacted footprint remnants appear in the foreground, pointing downhill; each is a low white island left after loose surrounding snow blew away. Vast blank wind-smoothed snow separates them from the forest. The three raised remnants remain isolated white islands in a broad smooth field of snow.",
+        "prompt": "Wide winter view down a broad treeless snow-covered slope toward a distant dark forest and lower valley. A gentle descending line of wind-smoothed terrain carries the eye from the foreground toward the forest. Broad uninterrupted snow fills the middle distance beneath a pale sky.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -821,7 +821,7 @@
       "id": "fabric-workbench",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a plain tent-canvas panel spread on a wooden examination bench beside a tall window. One gloved hand enters only from the top edge to lift a small existing fold. At centre is one short straight cut through the otherwise intact cloth, its two separated woven edges exposing the dark tabletop underneath. Angled window light reveals a few fibres. The crop contains just the small cloth cut, the single gloved hand, the wooden bench and soft window light.",
+        "prompt": "Close-up still life of a plain canvas panel laid flat on a simple wooden examination bench beside a tall window. At centre, a short straight opening has two separated woven edges with the dark tabletop visible beneath. Angled window light picks out the fabric texture and a few fibres. The cloth sample, bench and soft window light fill the entire crop.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -962,7 +962,7 @@
       "id": "spring-empty-ravine",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of an entirely empty shallow seasonal gully in late spring Ural daylight. A narrow meltwater trickle runs among rounded wet stones; sparse pale grass and a few isolated old snow patches border it. Low rounded banks rise only slightly above the narrow trickling streambed. The vacant shallow gully remains visible across the whole composition.",
+        "prompt": "Wide conceptual view of an unnamed shallow thawing streambed in late spring daylight. A narrow meltwater trickle runs between rounded wet stones; sparse pale grass and a few isolated old snow patches border it. Low rounded banks frame the generic seasonal gully. The empty streambed fills the composition.",
         "camera": "drift",
         "visual": "still"
       },
@@ -1151,7 +1151,7 @@
       "id": "empty-speaking-room",
       "template": "shot",
       "data": {
-        "prompt": "Wide centered view of a generic vacant briefing room after a public talk. A single plain unbranded lectern stands on a low back platform; several rows of simple empty chairs recede toward the foreground. A broad empty wall and plain ceiling panels make a quiet pause around the lectern. No people, logos, flags, dates, writing or distinctive real-world venue details. The lectern, empty chairs and bare room occupy the complete frame.",
+        "prompt": "Wide centred view of a generic vacant briefing room after a public talk. A single plain unmarked lectern stands on a low back platform; several rows of simple empty chairs recede toward the foreground. A broad blank wall and plain ceiling panels make a quiet pause around the lectern. The lectern, empty chairs and bare room occupy the complete frame.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1322,7 +1322,7 @@
       "id": "ground-step-context",
       "template": "shot",
       "data": {
-        "prompt": "Medium side profile of an undug gently inclined grassy Ural hillside in summer. A short low natural break in the turf creates one local change of incline, with continuous grass immediately above and below it. Only a thin line of brown soil and a few small stones show at the break. The shallow local turf break stays attached to the continuous grassy slope across the full frame.",
+        "prompt": "Medium side profile of an intact grassy hillside in summer. A gentle upper incline meets one short locally steeper stretch before continuing as a mild lower incline. Continuous grass and unbroken turf cover every part of the slope; the grade change reads from the outer contour and simple shading. The hillside extends across the full frame.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1665,7 +1665,7 @@
       "id": "small-slab-remains",
       "template": "shot",
       "data": {
-        "prompt": "Wide view across an otherwise smooth rounded Ural snow slope. Near centre, a short shallow broken snow edge remains attached to the hillside, with three thin angular white slab fragments resting immediately below it. Each fragment is a thin angular piece of compact white snow with a flat white top and fine snowy texture; together they occupy only a small patch. Continuous undisturbed snow surrounds the patch to a low curved skyline.",
+        "prompt": "Wide diagram-like view across a broad generic rounded snow slope. Near the centre, one small shallow surface patch is shifted slightly downslope relative to the continuous surrounding snow. The patch occupies a small fraction of the wide hillside. Simple snow texture extends to a low curved skyline.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -1684,7 +1684,7 @@
       "id": "wind-softens-edge",
       "template": "shot",
       "data": {
-        "prompt": "Close-up side view of a short shallow fracture edge still connected to a continuous snow-covered slope. Fine white grains blowing across the ground gently settle over its formerly sharp rim, making it softer and less distinct. Natural snow fills the entire frame; the edge stays low and attached to the hillside. The attached shallow edge and natural snow grains fill the entire crop.",
+        "prompt": "Close-up conceptual view of a gently wind-smoothed snow surface. Fine white grains travel along the ground and settle over a low shallow uneven boundary, softening its contrast with the surrounding snow. The boundary remains small within a continuous generic slope.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1767,7 +1767,7 @@
       "id": "survey-drone",
       "template": "shot",
       "data": {
-        "prompt": "Low-angle close still life of one ordinary unbranded four-rotor survey drone resting on sparse summer grass. Four separate propeller arms extend symmetrically from a plain box-shaped central body with a smooth uninterrupted front panel. A gently rounded empty hillside recedes behind it in daylight. The drone and sparse summer grass are the sole foreground subjects.",
+        "prompt": "Simple diagram-like wide view of an intact grass-covered hillside in summer. A small generic unbranded four-rotor survey drone silhouette appears high in the sky above the slope as an equipment symbol. The continuous hillside changes from a broad mild grade to one short locally steeper stretch, readable through contour and flat shading.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1887,7 +1887,7 @@
       "id": "nearby-avalanche-context",
       "template": "shot",
       "data": {
-        "prompt": "Wide oblique winter view across a broad rounded snow-covered hillside. Near the centre, a short localized irregular break exposes a thin pale-blue snow edge. A compact patch of a few angular white snow fragments lies directly downslope, with smooth undisturbed snow continuing on every side. Low rounded ridges sit in the distance under diffuse daylight. The short fractured patch occupies a small central area surrounded by broad intact white snow.",
+        "prompt": "Wide diagram-like view of a generic rounded snowy hillside under diffuse winter daylight. Two small separated pale tonal areas sit in the middle distance, each circled by a thin faint outline. Broad wind-smoothed snow continues around them to low rounded ridges beneath a pale sky.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1925,7 +1925,7 @@
       "id": "field-camera-back",
       "template": "shot",
       "data": {
-        "prompt": "Close-up side view of two mittened hands holding a plain unbranded field camera pointed toward a distant gently rounded snowy ridge. The crop isolates the two mittened hands, lens barrel, camera top plate and side body, with the rounded snowy ridge soft in the background. Flat winter daylight falls across the vacant white slope.",
+        "prompt": "Close-up still life of a plain unbranded field camera resting alone on a neutral tabletop. Its lens points toward a softly illustrated distant rounded snowy ridge beyond a window. Flat winter daylight picks out the camera's simple silhouette and the empty ridge.",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -1944,7 +1944,7 @@
       "id": "softer-snow-block",
       "template": "shot",
       "data": {
-        "prompt": "Macro side view of a soft snow slab edge still connected to a continuous snowy hillside. One small corner gently crumbles into fine pale-white snow grains beneath a cohesive but irregular top. Surrounding snow remains uninterrupted and fills the background under diffuse winter side light. The connected snow surface, soft white crust and crumbling pale grains fill the entire crop.",
+        "prompt": "Macro diagram-like view of fine pale snow grains loosely gathered on a continuous generic snowy slope. A light breeze lifts a few grains at the surface; broad simple colour areas separate the loose texture from the intact white ground beneath.",
         "camera": "push in",
         "visual": "still"
       },
