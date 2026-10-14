@@ -562,3 +562,34 @@ original was backed up before exact replacement, read back as confirmed, and
 the subsequent check reused that paid answer without another POST. Do not
 turn this per-request recovery into a general retry; draft PRs #1379 and #1391
 still own the shared journal/atomic-write fix paths.
+
+The owner then removed all three new STOP files and this workstation read
+each path back as absent. H04 ja was synthesized line by line. Its first
+100-line check flagged 20 lines; a local independent Whisper medium transcript
+cleared seven likely Gemini errors. Thirteen source-faithful lines were
+reworded, with `h4v019` shortened again after actual audio exceeded its
+window. Two residual flags were reworded and rerecorded. Current H04 ja fits
+all 100 windows (max 1.19x) and `check-audio` is 100/100: 82 exact, 10
+Jev-cleared, eight independently cleared, zero flags. The local `ja.m4a` is
+22,352,920 bytes, SHA-256
+`5bc87a7039417228e48a8294ef1a69ef0c977016372c139cf1711a3bf7d463b4`.
+The independent checker used an external PyAV-19 compatibility wrapper around
+the repository's script; the repository script itself was not changed.
+
+H05 en now has a local `en.m4a` (18,919,297 bytes, SHA-256
+`f3bb257d97b1f889ccc52a3158eb402eeb7dc4edd870a5f44c3477af0068d89b`)
+from 97 line recordings, reusing earlier paid WAVs where available; its formal
+`check-audio` is still pending. H04 ko `h4v019`, H05 ja/ko `h5v010`, and
+H06 en `v229` were narrowed offline against the original narration before
+their new paid requests. All three slugs currently lint at 0 errors and zero
+warnings. These are local audio and translation artifacts, not a language
+review approval, Studio upload, or published video.
+
+Several Windows journal replacements failed after a provider answer. For H04
+ja (`f3829bd4`, `f8a12c98`, and `4237a45b`) and H05 en (`fc45ea16`), the
+original `sent` and temporary `confirmed` receipts had the same request and
+sent time; each complete WAV or inline answer matched its recorded SHA and
+bytes. Original and temporary evidence copies were saved, then the exact
+canonical receipt was replaced and read back as confirmed. The later CLI run
+reused each paid answer. No generic retry, forgotten receipt, or duplicate
+provider request was used to cross an uncertain outcome.
