@@ -460,3 +460,34 @@ but could not remove its local `tasks/open/` copy; a direct exact-path
 `Remove-Item` was also rejected as `blocked by policy` without further reason.
 The PR contains only the done copy; the open copy remains untracked locally.
 Do not report any of these files as deleted or stage them accidentally.
+
+2026-10-14 multilingual delivery checkpoint (supersedes the undecided-language
+snapshot above): the owner selected English, Japanese and Korean titles,
+descriptions and CC for all three v2 cuts, without additional dubs. The live
+admin choices were read back as `metadata=true`, `captions=true`, `dub=false`
+for each locale and episode. Nine source-bound translations were independently
+reviewed and merged; final `captions` generation has no pace warnings. H04,
+H05 and H06 four-language upload packages each passed 4/4. H06's zh-TW
+description was corrected to describe the newly available translated metadata
+and CC; its publish package was reapproved for the new metadata hash.
+
+The backend `/api/video/reviews/{slug}` readback confirms all six selected
+components per video are `ready`, each latest language review is approved, and
+all three are `ready_to_upload=true`. Language review SHA-256 values are H04
+`ea201bd9b9f94a85c05f81635554ad806b33715b5cd71978411f9310b7e61c13`,
+H05 `f30ba7eeed5b38cd9499880d758684cfe596cc224335a522586da6949a214a74`,
+and H06 `e97e05b41c44b4e2bb60bb892f9a5a0948b3fb6fe77b6260ed5f22b9fc34acf5`.
+Package metadata SHA-256 prefixes are H04 `5bd63e0f02c8`, H05
+`83d5bd2f7e06`, and H06 `b11d7a35f424`. All three local `review-pull
+--gate languages` commands recorded approval. The final MP4 bytes did not
+change. No v2 cut has been uploaded to YouTube or published; the owner handles
+the private Studio upload and later release as separate gates.
+
+Validation: all three packages 4/4 and captions without pace warnings. A full
+215-test docs-videos run using bundled Node 24.19 passed 214 tests; one unrelated
+Windows temp-file rename returned EPERM, then that exact test passed when run
+alone. A full run with system Node 24.13 passed 214 and hit the previously
+documented native child-process crash in a different test. `check:tasks` is
+blocked by the duplicate completed CC-safe ticket under untracked
+`tasks/open/`, whose exact deletion was previously rejected by automatic
+approval review. Neither test issue changes the upload package checks.
