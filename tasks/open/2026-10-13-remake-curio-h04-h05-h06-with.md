@@ -4,11 +4,11 @@ title: Remake Curio H04 H05 H06 with the current narrative video workflow
 status: in-progress
 priority: P1
 area: docs
-owner: codex-gpt6-curio-remake
-claimed_at: 2026-10-13T17:06:56Z
+owner: claude-opus-5-5-curio-pictures
+claimed_at: 2026-10-14T15:08:26Z
 created_at: 2026-10-13T17:06:49Z
 completed_at:
-branch: codex/curio-h04-h06-v2-20261014
+branch:
 depends_on: []
 scope:
   - docs/videos/curio-h04-v2

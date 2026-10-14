@@ -17,6 +17,9 @@
   "subtitles": {
     "burn_in": false
   },
+  "look": {
+    "preset": "cute-mystery"
+  },
   "youtube": {
     "category_id": 27,
     "made_for_kids": false,
@@ -124,11 +127,11 @@
   "scenes": [
     {
       "id": "hook-canal-rail",
-      "template": "diagram",
+      "template": "shot",
       "data": {
-        "svg": "docs/videos/curio-h06-v2/diagrams/canal-concept.svg",
-        "caption": "運河概念圖｜非事發現場重建",
-        "cc_safe": true
+        "prompt": "Wide shot of a narrow city canal with straight stone banks and an iron railing on a February night, a policeman in a long greatcoat and peaked cap leaning over the railing with a lantern held out above the dark water and a worried face, a low arched stone bridge behind him, light from the lantern and one gas street lamp",
+        "camera": "push in",
+        "visual": "still"
       },
       "claims": [
         "c02"
@@ -144,11 +147,11 @@
     },
     {
       "id": "hook-canal-rail-beat-2",
-      "template": "diagram",
+      "template": "shot",
       "data": {
-        "svg": "docs/videos/curio-h06-v2/diagrams/unknown-name.svg",
-        "caption": "姓名空白的編輯圖解｜非警方文件",
-        "cc_safe": true
+        "prompt": "Medium shot of a police clerk at a wooden desk in a station room at night, a moustached officer holding up a blank index card and frowning at it in puzzlement, an open empty ledger in front of him, light from a green desk lamp",
+        "camera": "drift",
+        "visual": "still"
       },
       "claims": [
         "c02"
@@ -162,9 +165,11 @@
     },
     {
       "id": "hook-hospital-door",
-      "template": "diagram",
+      "template": "shot",
       "data": {
-        "svg": "docs/videos/curio-h06-v2/diagrams/hospital-name-link.svg"
+        "prompt": "Medium shot of a long hospital ward in daylight, a nurse in a white cap and apron stopping in the middle of the aisle with her mouth open in surprise, a small oval photograph held in both hands, rows of iron beds behind her, light from tall windows on the left",
+        "camera": "pull out",
+        "visual": "still"
       },
       "claims": [
         "c03"
@@ -179,23 +184,11 @@
     },
     {
       "id": "hook-hospital-door-beat-2",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "誰先說出公主名字？",
-        "left": {
-          "heading": "判決版本一",
-          "points": [
-            "她先自稱"
-          ]
-        },
-        "right": {
-          "heading": "判決版本二",
-          "points": [
-            "旁人先提"
-          ]
-        },
-        "source": "來源：BGH 1970 判決掃描｜編輯整理",
-        "cc_safe": true
+        "prompt": "Medium shot of a court clerk in a waistcoat at a table by day, holding a plain manila folder in each hand and looking from one to the other with a puzzled frown, sunlight falling across the table",
+        "camera": "pan left",
+        "visual": "still"
       },
       "claims": [
         "c03"
@@ -209,9 +202,11 @@
     },
     {
       "id": "hook-three-answers",
-      "template": "diagram",
+      "template": "shot",
       "data": {
-        "svg": "docs/videos/curio-h06-v2/diagrams/appellate-review.svg"
+        "prompt": "Wide shot of a high courtroom in daylight, a judge in a crimson robe sitting at a raised bench and opening a thick plain file, rows of empty wooden benches below him, daylight pouring in from the right",
+        "camera": "tilt up",
+        "visual": "still"
       },
       "claims": [
         "c05",
@@ -228,11 +223,11 @@
     },
     {
       "id": "hook-three-answers-beat-2",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "法院卷宗的另一條線",
-        "text": "另一個女人的名字",
-        "sub": "來源：BGH 1970 判決掃描｜編輯整理"
+        "prompt": "Medium close-up of a judge in a crimson robe at the bench by day, raising his eyebrows in surprise at one loose unmarked sheet he has just pulled from a thick file, daylight from the left",
+        "camera": "push in",
+        "visual": "still"
       },
       "claims": [
         "c05",
@@ -249,23 +244,11 @@
     },
     {
       "id": "hook-sample-box",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "兩類保存檢體",
-        "left": {
-          "heading": "醫院保存",
-          "points": [
-            "病理組織"
-          ]
-        },
-        "right": {
-          "heading": "另一組取得",
-          "points": [
-            "頭髮"
-          ]
-        },
-        "source": "來源：CSHL 研究者訪談；CSUEB 解說",
-        "cc_safe": true
+        "prompt": "Medium shot of a laboratory in bright daylight, a technician in a white coat and safety glasses carrying a small sealed sample box in both hands towards a bench, glass bottles and a microscope behind her, bright ceiling lights above",
+        "camera": "pan right",
+        "visual": "still"
       },
       "claims": [
         "c08",
@@ -281,11 +264,11 @@
     },
     {
       "id": "hook-sample-box-beat-2",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "片頭未解的問題",
-        "text": "兩份檢體能回答什麼？",
-        "sub": "來源：CSHL 研究者訪談；CSUEB 解說"
+        "prompt": "Close-up of two small glass sample tubes standing in a rack on a white lab bench, a scientist leaning in behind them with a curious, hopeful look, light from the ceiling",
+        "camera": "drift",
+        "visual": "still"
       },
       "claims": [
         "c08",
@@ -300,17 +283,11 @@
     },
     {
       "id": "hook-forest-path",
-      "template": "stats",
+      "template": "shot",
       "data": {
-        "title": "俄國林地的新線索",
-        "stats": [
-          {
-            "value": "2007",
-            "label": "林地發現不明碎片"
-          }
-        ],
-        "source": "來源：Coble 等，PLOS ONE 2009",
-        "cc_safe": true
+        "prompt": "Wide shot of a birch forest clearing on a summer afternoon, a hiker in a cap crouching beside a dirt path and pointing at a few small pale fragments on the ground with a surprised look, light from a high sun through the leaves",
+        "camera": "pull out",
+        "visual": "still"
       },
       "claims": [
         "c12",
@@ -326,23 +303,11 @@
     },
     {
       "id": "hook-forest-path-beat-2",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "碎片帶來的問題",
-        "left": {
-          "heading": "已發現",
-          "points": [
-            "小型遺骸碎片"
-          ]
-        },
-        "right": {
-          "heading": "待核對",
-          "points": [
-            "兩名缺席孩子的身分"
-          ]
-        },
-        "source": "來源：Coble 等，PLOS ONE 2009",
-        "cc_safe": true
+        "prompt": "Close-up of an archaeologist kneeling in a shallow pit in daylight, lifting one tiny pale fragment with tweezers and studying it with a serious face, a soft brush and a small tray beside her knee, light from an overcast sky",
+        "camera": "tilt down",
+        "visual": "still"
       },
       "claims": [
         "c12",
@@ -357,11 +322,11 @@
     },
     {
       "id": "hook-empty-file",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "柏林女子的身分",
-        "text": "她真是安娜塔西亞嗎？",
-        "sub": "編輯提問｜證據待查"
+        "prompt": "Medium shot of a detective in a trench coat at an office desk at night, holding up an open manila folder with nothing inside and frowning at it, the name tab on the folder left blank, light from a desk lamp beside him",
+        "camera": "push in",
+        "visual": "still"
       },
       "claims": [
         "c02",
@@ -398,11 +363,11 @@
     },
     {
       "id": "berlin-staff-corridor",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "柏林病院",
-        "text": "來歷仍只能猜",
-        "sub": "來源：BGH 判決掃描｜編輯整理"
+        "prompt": "Medium shot of a hospital corridor in daylight, a nurse in a white cap peeking around a half-open ward door with a curious expression, a clipboard with a plain sheet pressed to her chest, daylight at the far end of the corridor",
+        "camera": "pan left",
+        "visual": "still"
       },
       "claims": [
         "c02",
@@ -417,11 +382,11 @@
     },
     {
       "id": "berlin-closed-album",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "1918 年後的傳聞",
-        "text": "皇室留下的空位",
-        "sub": "來源：PLOS ONE 2009｜歷史脈絡"
+        "prompt": "Close-up of an old leather photo album lying open on a parlour table in the evening, one empty space with four photo corners and no picture among rows of plain photographs, a visitor's finger touching the gap, light from a lamp on the left",
+        "camera": "tilt down",
+        "visual": "still"
       },
       "claims": [
         "c03"
@@ -436,21 +401,11 @@
     },
     {
       "id": "berlin-timeline",
-      "template": "stats",
+      "template": "shot",
       "data": {
-        "title": "兩個年份",
-        "stats": [
-          {
-            "value": "1918",
-            "label": "皇室一家遭處決"
-          },
-          {
-            "value": "1920",
-            "label": "柏林女子獲救"
-          }
-        ],
-        "source": "BGH 判決掃描；PLOS ONE｜2009 年原始論文",
-        "cc_safe": true
+        "prompt": "Medium shot of a woman in a wool shawl at a snowy market stall on a grey winter day, lowering a plain newspaper with a shocked, sorrowful face, wooden houses behind her, light from an overcast sky",
+        "camera": "pan left",
+        "visual": "still"
       },
       "claims": [
         "c01",
@@ -459,13 +414,26 @@
       "lines": [
         {
           "id": "qwh4",
-          "text": "兩年前，尼古拉二世一家已在俄國遇害。",
-          "reveal": 1
-        },
+          "text": "兩年前，尼古拉二世一家已在俄國遇害。"
+        }
+      ]
+    },
+    {
+      "id": "berlin-timeline-beat-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a newspaper seller in a fur hat on a snowy street, whispering behind his hand with wide, secretive eyes, a bundle of plain newspapers under his arm, light from an overcast sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c01",
+        "c02"
+      ],
+      "lines": [
         {
           "id": "4jhc",
-          "text": "可是那幾個孩子的去向，仍被傳聞包圍。",
-          "reveal": 1
+          "text": "可是那幾個孩子的去向，仍被傳聞包圍。"
         }
       ]
     },
@@ -492,11 +460,11 @@
     },
     {
       "id": "berlin-two-visitors",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "病院裡的起點",
-        "text": "誰先提起安娜塔西亞？",
-        "sub": "來源：BGH 1970 判決掃描｜編輯整理"
+        "prompt": "Medium shot of a hospital ward doorway in daylight, a visitor in a long coat and hat standing on the threshold and looking in with a hesitant, curious look, a wrapped bouquet in one hand, light from the ward windows",
+        "camera": "drift",
+        "visual": "still"
       },
       "claims": [
         "c03"
@@ -511,17 +479,11 @@
     },
     {
       "id": "hospital-visitors-enter",
-      "template": "stats",
+      "template": "shot",
       "data": {
-        "title": "名字被帶進病院",
-        "stats": [
-          {
-            "value": "1922",
-            "label": "病院出現公主身分說法"
-          }
-        ],
-        "source": "來源：BGH 1970 判決掃描｜編輯整理",
-        "cc_safe": true
+        "prompt": "Medium shot of a visitor in a fur-collared coat seated on a wooden chair in a bright hospital day room, leaning forward with narrowed eyes as if studying someone just out of frame, a closed photo album on her lap, sunlight from the right",
+        "camera": "push in",
+        "visual": "still"
       },
       "claims": [
         "c03"
@@ -555,11 +517,11 @@
     },
     {
       "id": "hospital-story-spreads",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "從病院到公眾",
-        "text": "猜測向外流傳",
-        "sub": "來源：BGH 1970 判決掃描｜編輯整理"
+        "prompt": "Wide shot of a cobbled city street outside a brick hospital gate on a grey morning, a newspaper boy in a flat cap waving a blank newspaper over his head and calling out, the gate and iron lamp posts behind him, light from an overcast sky",
+        "camera": "pull out",
+        "visual": "still"
       },
       "claims": [
         "c03"
@@ -574,23 +536,11 @@
     },
     {
       "id": "hospital-two-starts",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "最初一句話，記述不同",
-        "left": {
-          "heading": "一種版本",
-          "points": [
-            "她先表明身分"
-          ]
-        },
-        "right": {
-          "heading": "另一種版本",
-          "points": [
-            "旁人先把名字帶來"
-          ]
-        },
-        "source": "BGH 判決掃描｜1970 年",
-        "cc_safe": true
+        "prompt": "Medium shot of a court stenographer at a small table in a courtroom by day, pausing with her pencil raised over a plain notebook and a doubtful look, as if hearing two different stories, light from a high window",
+        "camera": "pan right",
+        "visual": "still"
       },
       "claims": [
         "c03"
@@ -598,36 +548,22 @@
       "lines": [
         {
           "id": "kvce",
-          "text": "一種說法是，她先自稱那位公主。",
-          "reveal": 1
+          "text": "一種說法是，她先自稱那位公主。"
         },
         {
           "id": "jnga",
           "text": "另一種說法，名字是旁人先說的。",
-          "reveal": 1,
           "emotion": "像說給身旁的人聽，先輕後重"
         }
       ]
     },
     {
       "id": "hospital-two-folders",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "判決留下兩種記述",
-        "left": {
-          "heading": "一種說法",
-          "points": [
-            "她先表明身分"
-          ]
-        },
-        "right": {
-          "heading": "另一種說法",
-          "points": [
-            "旁人先提出名字"
-          ]
-        },
-        "source": "來源：BGH 1970 判決掃描｜編輯整理",
-        "cc_safe": true
+        "prompt": "Close-up of a brass balance scale on a judge's bench by day, two plain folders resting on its pans, perfectly level, a judge's hand lifting away from it, daylight from the side",
+        "camera": "tilt up",
+        "visual": "still"
       },
       "claims": [
         "c03"
@@ -642,11 +578,11 @@
     },
     {
       "id": "hospital-doorway",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "起點無法判定",
-        "text": "還能靠什麼辨認？",
-        "sub": "編輯提問｜依 BGH 判決範圍"
+        "prompt": "Medium shot of a doctor in a white coat standing at a ward doorway at dusk, rubbing his chin with a thoughtful, puzzled expression, a magnifying glass in his other hand, light from the corridor behind him",
+        "camera": "push in",
+        "visual": "still"
       },
       "claims": [
         "c03",
@@ -662,11 +598,11 @@
     },
     {
       "id": "relatives-day-room",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "皇室遠親的反應",
-        "text": "有人願意接待她",
-        "sub": "接待與確認身分，是兩件事"
+        "prompt": "Wide shot of a large ocean liner moored at a busy harbour pier on a bright morning, a steward in a white jacket standing at the foot of the gangway holding up a blank invitation card with a welcoming smile, light from the low sun on the left",
+        "camera": "pull out",
+        "visual": "still"
       },
       "claims": [
         "c04"
@@ -686,23 +622,11 @@
     },
     {
       "id": "relatives-tea-tray",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "親友態度與證明",
-        "left": {
-          "heading": "可以確認",
-          "points": [
-            "一九二八年有人接待"
-          ]
-        },
-        "right": {
-          "heading": "仍需證據",
-          "points": [
-            "接待不等於身分鑑定"
-          ]
-        },
-        "source": "來源：TIME 1928；BGH 判決掃描",
-        "cc_safe": true
+        "prompt": "Medium shot of a sunny drawing room in a large country house, a housemaid in a black dress and white apron carrying a silver tea tray with two cups towards a sofa, glancing back with a doubtful look, light from a tall bay window",
+        "camera": "drift",
+        "visual": "still"
       },
       "claims": [
         "c04"
@@ -716,23 +640,11 @@
     },
     {
       "id": "relatives-letter",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "親友證詞並不一致",
-        "left": {
-          "heading": "願意接待",
-          "points": [
-            "皇室遠親的反應"
-          ]
-        },
-        "right": {
-          "heading": "明確否認",
-          "points": [
-            "另一名親近皇室者的看法"
-          ]
-        },
-        "source": "來源：TIME 1928；BGH 判決掃描",
-        "cc_safe": true
+        "prompt": "Medium shot of an elderly gentleman in a high collar standing in a wood-panelled study by day, shaking his head firmly with one hand raised flat, a plain letter in his other hand, morning sun from the right",
+        "camera": "pan left",
+        "visual": "still"
       },
       "claims": [
         "c04"
@@ -746,15 +658,11 @@
     },
     {
       "id": "relatives-distant-woman",
-      "template": "bullets",
+      "template": "shot",
       "data": {
-        "title": "證詞進入法庭",
-        "items": [
-          "親友的接待與辨認",
-          "否認公主身分的證言"
-        ],
-        "source": "來源：BGH 1970 判決掃描｜編輯整理",
-        "cc_safe": true
+        "prompt": "Wide shot of a courthouse entrance with broad stone steps in morning light, a court usher in a dark uniform carrying a tall stack of plain folders up the steps with a strained look, columns behind him, light from the sun on the right",
+        "camera": "tilt up",
+        "visual": "still"
       },
       "claims": [
         "c03",
@@ -769,11 +677,11 @@
     },
     {
       "id": "relatives-court-corridor",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "民事官司",
-        "text": "繼承權請求進入舉證",
-        "sub": "來源：BGH 1970 判決掃描｜編輯整理"
+        "prompt": "Medium shot of a lawyer in a black robe walking down a long courthouse corridor by day, a thick file tied with ribbon under his arm and a determined stride, a row of closed doors behind him, light from tall arched windows",
+        "camera": "push in",
+        "visual": "still"
       },
       "claims": [
         "c05"
@@ -787,11 +695,11 @@
     },
     {
       "id": "relatives-legal-question",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "官司的前提",
-        "text": "她要如何證明公主身分？",
-        "sub": "來源：BGH 1970 判決掃描｜編輯整理"
+        "prompt": "Close-up of a judge in a black robe leaning over the bench, peering down over his spectacles with a questioning look, a pen held above an empty page, daylight from above",
+        "camera": "drift",
+        "visual": "still"
       },
       "claims": [
         "c05",
@@ -807,11 +715,11 @@
     },
     {
       "id": "court-day-exterior",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "身分主張必須舉證",
-        "text": "資料能支持請求嗎？",
-        "sub": "來源：BGH 1970 判決掃描｜編輯整理"
+        "prompt": "Medium shot of a court clerk at a long table by day, laying out plain documents in a neat row and checking each one through a magnifying glass with a careful frown, light from tall windows behind him",
+        "camera": "pan right",
+        "visual": "still"
       },
       "claims": [
         "c06"
@@ -825,23 +733,11 @@
     },
     {
       "id": "court-closed-case",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "案件類型",
-        "left": {
-          "heading": "本案在審",
-          "points": [
-            "民事繼承請求"
-          ]
-        },
-        "right": {
-          "heading": "本案未審",
-          "points": [
-            "刑事詐欺罪"
-          ]
-        },
-        "source": "來源：BGH 1970 判決掃描｜編輯整理",
-        "cc_safe": true
+        "prompt": "Medium shot of a quiet civil courtroom in daylight, a judge at the bench holding up a single plain document and pointing to it with a calm expression, the only things in the room are the bench, a clerk's desk and wooden panelling, daylight from the right",
+        "camera": "pull out",
+        "visual": "still"
       },
       "claims": [
         "c05"
@@ -855,11 +751,11 @@
     },
     {
       "id": "court-question-card",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "繼承權官司",
-        "text": "她要確認繼承權",
-        "sub": "安德森的請求｜給付與繼承身分"
+        "prompt": "Medium shot of a lawyer in a black robe standing at a courtroom table by day, one hand resting on a small wooden money chest and the other on a blank sealed deed, speaking with an earnest expression, sun from the left",
+        "camera": "tilt down",
+        "visual": "still"
       },
       "claims": [
         "c05",
@@ -875,11 +771,11 @@
     },
     {
       "id": "court-question-certificate",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "繼承權官司",
-        "text": "她主張舊證書有誤",
-        "sub": "德國聯邦最高法院｜1970 年"
+        "prompt": "Close-up of a blank certificate with a red wax seal on a courtroom table in daylight, a lawyer's finger tapping firmly on one corner of it, his frowning brow leaning in above it, daylight from above",
+        "camera": "push in",
+        "visual": "still"
       },
       "claims": [
         "c05",
@@ -894,11 +790,11 @@
     },
     {
       "id": "court-question-premise",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "繼承權官司",
-        "text": "先證明公主身分",
-        "sub": "德國聯邦最高法院｜1970 年"
+        "prompt": "Medium shot of a court clerk by day steadying a tall wobbling stack of plain folders on a desk with both hands and a worried look, the bottom folder sliding out, light from a window on the right",
+        "camera": "pan left",
+        "visual": "still"
       },
       "claims": [
         "c05",
@@ -913,23 +809,11 @@
     },
     {
       "id": "court-two-parties",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "法庭上的兩條說法",
-        "left": {
-          "heading": "安德森",
-          "points": [
-            "主張公主與繼承權"
-          ]
-        },
-        "right": {
-          "heading": "對方",
-          "points": [
-            "提出另一個身分說法"
-          ]
-        },
-        "source": "來源：BGH 1970 判決掃描｜編輯整理",
-        "cc_safe": true
+        "prompt": "Medium shot of an opposing lawyer in a black robe rising from a courtroom table by day, holding up a thick plain folder with a confident look, a row of empty witness chairs behind him, daylight from the left",
+        "camera": "drift",
+        "visual": "still"
       },
       "claims": [
         "c04",
@@ -963,15 +847,11 @@
     },
     {
       "id": "court-family-album",
-      "template": "bullets",
+      "template": "shot",
       "data": {
-        "title": "前審衡量的材料",
-        "items": [
-          "親友辨認與否認",
-          "其他身分資料與證言"
-        ],
-        "source": "來源：BGH 1970 判決掃描｜編輯整理",
-        "cc_safe": true
+        "prompt": "Medium shot of a judge in his chambers by day, holding a blank photograph in one hand and a blank written statement in the other, weighing them with a careful, serious look, stacked files on the desk beside him, light from the left",
+        "camera": "tilt up",
+        "visual": "still"
       },
       "claims": [
         "c04",
@@ -986,17 +866,11 @@
     },
     {
       "id": "court-hamburg-corridor",
-      "template": "stats",
+      "template": "shot",
       "data": {
-        "title": "前審與法律審",
-        "stats": [
-          {
-            "value": "1967",
-            "label": "前審作不利證據評價"
-          }
-        ],
-        "source": "來源：BGH 1970 判決掃描｜編輯整理",
-        "cc_safe": true
+        "prompt": "Wide shot of a long stone courthouse corridor on a grey winter morning, a judge in a black robe walking towards the camera with a thick file under one arm and a solemn face, tall arched windows along one wall, light from the overcast sky outside",
+        "camera": "pull out",
+        "visual": "still"
       },
       "claims": [
         "c06"
@@ -1011,15 +885,11 @@
     },
     {
       "id": "court-hamburg-corridor-beat-2",
-      "template": "bullets",
+      "template": "shot",
       "data": {
-        "title": "前審比較什麼？",
-        "items": [
-          "證人曾經見過誰",
-          "多年後的記憶與資料"
-        ],
-        "source": "來源：BGH 1970 判決掃描｜編輯整理",
-        "cc_safe": true
+        "prompt": "Close-up of a judge at a desk at night comparing two plain photographs through a magnifying glass, eyebrows knitted in concentration, light from a green desk lamp",
+        "camera": "push in",
+        "visual": "still"
       },
       "claims": [
         "c06"
@@ -1034,11 +904,11 @@
     },
     {
       "id": "court-appeal-paper",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "判決即將落下",
-        "text": "公主主張能成立嗎？",
-        "sub": "來源：BGH 1970 判決掃描｜編輯整理"
+        "prompt": "Medium shot of a newspaper reporter in a hat waiting on a wooden bench in a courthouse corridor by day, leaning forward with a pencil and a plain notepad, biting his lip in suspense, daylight from the far end",
+        "camera": "pan right",
+        "visual": "still"
       },
       "claims": [
         "c06"
@@ -1053,11 +923,11 @@
     },
     {
       "id": "court-two-years",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "1967 年前審",
-        "text": "公主身分未獲證明",
-        "sub": "法院評價衝突的證詞與資料"
+        "prompt": "Medium shot of a judge in a black robe at the bench by day, closing a thick blank file with both hands and a firm, decided look, a single blank ruling sheet on top, daylight from behind him",
+        "camera": "drift",
+        "visual": "still"
       },
       "claims": [
         "c06"
@@ -1071,23 +941,11 @@
     },
     {
       "id": "court-two-levels",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "前審判決進入法律審",
-        "left": {
-          "heading": "一九六七年前審",
-          "points": [
-            "衡量證人與身分資料"
-          ]
-        },
-        "right": {
-          "heading": "一九七〇年法律審",
-          "points": [
-            "檢查法律與程序錯誤"
-          ]
-        },
-        "source": "BGH 判決掃描｜1970 年",
-        "cc_safe": true
+        "prompt": "Medium shot of an appeal judge in a crimson robe at a long desk in a high-ceilinged room by day, running one finger line by line down a thick plain file with reading glasses on and a focused face, light from tall arched windows",
+        "camera": "tilt down",
+        "visual": "still"
       },
       "claims": [
         "c06"
@@ -1096,18 +954,17 @@
         {
           "id": "qyt5",
           "text": "安德森提起法律審；最高法院檢查前審判決有沒有法律或程序上的錯。",
-          "reveal": 1,
           "emotion": "像說給身旁的人聽，先輕後重"
         }
       ]
     },
     {
       "id": "court-high-result",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "1970 年法律審",
-        "text": "最高法院駁回",
-        "sub": "維持公主身分未獲證明"
+        "prompt": "Medium shot of an appeal judge in a crimson robe standing at a high bench by day, lowering a blank ruling sheet and shaking his head with a stern look, light from tall windows behind him",
+        "camera": "pan left",
+        "visual": "still"
       },
       "claims": [
         "c06"
@@ -1122,25 +979,11 @@
     },
     {
       "id": "court-ruling-scope",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "判了什麼，沒判什麼",
-        "left": {
-          "heading": "已判",
-          "points": [
-            "公主身分未獲證明",
-            "法律審遭駁回"
-          ]
-        },
-        "right": {
-          "heading": "未裁定",
-          "points": [
-            "她就是另一位女工",
-            "她當年存心冒認"
-          ]
-        },
-        "source": "BGH 判決掃描｜1970 年",
-        "cc_safe": true
+        "prompt": "Medium shot of a court clerk by day sliding one plain folder into a filing cabinet drawer and pushing it shut with a firm look, light from a tall window",
+        "camera": "push in",
+        "visual": "still"
       },
       "claims": [
         "c06",
@@ -1151,36 +994,38 @@
         {
           "id": "y57g",
           "text": "開頭那份判決，維持了公主身分未獲證明。",
-          "reveal": 1,
           "emotion": "放慢，關鍵名詞壓重，句尾留白"
-        },
+        }
+      ]
+    },
+    {
+      "id": "court-ruling-scope-beat-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a second plain folder left lying alone on top of a filing cabinet by day, the clerk leaning in with a puzzled glance and one hand hesitating above it, light from a tall window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c06",
+        "c07",
+        "c17"
+      ],
+      "lines": [
         {
           "id": "8erd",
           "text": "至於那名女工身分，留在判決範圍之外。",
-          "reveal": 1,
           "emotion": "像說給身旁的人聽，先輕後重"
         }
       ]
     },
     {
       "id": "court-two-names-logic",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "兩種身分主張",
-        "left": {
-          "heading": "法院結論",
-          "points": [
-            "公主身分未獲證明"
-          ]
-        },
-        "right": {
-          "heading": "後續線索",
-          "points": [
-            "女工身分仍要另查"
-          ]
-        },
-        "source": "來源：BGH 1970 判決掃描｜編輯整理",
-        "cc_safe": true
+        "prompt": "Medium shot of a laboratory assistant in a bright lab by day, placing a plain manila folder on a bench next to a rack of small sample tubes and glancing up with a knowing look, bright ceiling lights above",
+        "camera": "pull out",
+        "visual": "still"
       },
       "claims": [
         "c10"
@@ -1194,23 +1039,11 @@
     },
     {
       "id": "court-exit-day",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "判決回答的範圍",
-        "left": {
-          "heading": "沒有裁定",
-          "points": [
-            "安德森的主觀動機"
-          ]
-        },
-        "right": {
-          "heading": "仍待調查",
-          "points": [
-            "皇室家人的墓葬線索"
-          ]
-        },
-        "source": "來源：BGH 判決；PLOS ONE 2009",
-        "cc_safe": true
+        "prompt": "Wide shot of a misty birch forest at dawn, a forester in a cap and boots standing on a narrow path and looking around with a puzzled face, tall pale trunks on every side, light from the low sun through the mist",
+        "camera": "pan left",
+        "visual": "still"
       },
       "claims": [
         "c07",
@@ -1227,17 +1060,11 @@
     },
     {
       "id": "grave-forest-1991",
-      "template": "stats",
+      "template": "shot",
       "data": {
-        "title": "第一座墓被找到",
-        "stats": [
-          {
-            "value": "1970 年代末",
-            "label": "阿夫多寧找到第一座墓"
-          }
-        ],
-        "source": "來源：Coble 等，PLOS ONE 2009",
-        "cc_safe": true
+        "prompt": "Medium shot of a geologist in a canvas jacket kneeling in a forest clearing on an autumn day, pushing a long metal probe rod into the soil with a determined face, a shovel lying beside him, light from a grey sky through birch trees",
+        "camera": "push in",
+        "visual": "still"
       },
       "claims": [
         "c18"
@@ -1252,11 +1079,11 @@
     },
     {
       "id": "grave-map-table",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "第一座墓",
-        "text": "位置保密多年",
-        "sub": "來源：Coble 等，PLOS ONE 2009"
+        "prompt": "Medium shot of a man in a wool sweater at a kitchen table at night, folding a blank hand-drawn map into a small tin box and holding one finger to his lips with a secretive look, light from a single table lamp",
+        "camera": "drift",
+        "visual": "still"
       },
       "claims": [
         "c18"
@@ -1325,11 +1152,11 @@
     },
     {
       "id": "grave-empty-places",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "第一座墓還有缺口",
-        "text": "少一男、一女",
-        "sub": "來源：Coble 等，PLOS ONE 2009"
+        "prompt": "Medium shot of a researcher in a field jacket at a folding table under a canvas awning by day, staring at two empty slots at the end of a row of plain wooden trays with a worried frown, light from the open side of the awning",
+        "camera": "tilt up",
+        "visual": "still"
       },
       "claims": [
         "c11",
@@ -1344,11 +1171,11 @@
     },
     {
       "id": "dna-hospital-archive",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "身分研究的另一種材料",
-        "text": "保存檢體進入研究",
-        "sub": "來源：Nature Genetics／PubMed 書目"
+        "prompt": "Wide shot of a hospital basement archive, an archivist in a grey coat pulling a small drawer out of a tall cabinet of identical drawers with a surprised look, light from a bare ceiling bulb",
+        "camera": "pull out",
+        "visual": "still"
       },
       "claims": [
         "c09"
@@ -1362,11 +1189,11 @@
     },
     {
       "id": "dna-sealed-sample-beat-2",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "檢體來源",
-        "text": "醫院保存的病理組織",
-        "sub": "來源：CSHL 研究者訪談；CSUEB 解說"
+        "prompt": "Close-up of a pathologist in a white coat holding up a thin glass microscope slide with a tiny pink tissue slice towards the light, her eyes widening behind round spectacles, daylight from the right",
+        "camera": "push in",
+        "visual": "still"
       },
       "claims": [
         "c09"
@@ -1380,21 +1207,11 @@
     },
     {
       "id": "dna-publication",
-      "template": "stats",
+      "template": "shot",
       "data": {
-        "title": "另一種身分測試",
-        "stats": [
-          {
-            "value": "1984",
-            "label": "安德森過世"
-          },
-          {
-            "value": "1995",
-            "label": "身分研究發表"
-          }
-        ],
-        "source": "CSUEB 博物館；Nature Genetics 書目",
-        "cc_safe": true
+        "prompt": "Close-up of a single white lily resting on a folded blanket at the foot of a neatly made bed on a calm winter morning, a nurse's hand smoothing the blanket beside it, soft light from the left",
+        "camera": "drift",
+        "visual": "still"
       },
       "claims": [
         "c08",
@@ -1403,30 +1220,17 @@
       "lines": [
         {
           "id": "tgm6",
-          "text": "她已在一九八四年過世。",
-          "reveal": 1
+          "text": "她已在一九八四年過世。"
         }
       ]
     },
     {
       "id": "dna-hair-and-box",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "兩份安德森檢體",
-        "left": {
-          "heading": "保存組織",
-          "points": [
-            "醫院留存的組織"
-          ]
-        },
-        "right": {
-          "heading": "頭髮",
-          "points": [
-            "另一組取得的樣本"
-          ]
-        },
-        "source": "來源：CSHL 研究者訪談；CSUEB 解說",
-        "cc_safe": true
+        "prompt": "Close-up of a scientist in white gloves at a lab bench by day, gently tipping a few strands of hair out of a plain blank envelope onto a white dish with tweezers, a careful expression, light from the ceiling",
+        "camera": "pan right",
+        "visual": "still"
       },
       "claims": [
         "c09"
@@ -1444,23 +1248,11 @@
     },
     {
       "id": "dna-mother-child",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "先比對哪兩份？",
-        "left": {
-          "heading": "第一份",
-          "points": [
-            "保存組織"
-          ]
-        },
-        "right": {
-          "heading": "第二份",
-          "points": [
-            "頭髮"
-          ]
-        },
-        "source": "來源：CSHL 研究者訪談；CSUEB 解說",
-        "cc_safe": true
+        "prompt": "Medium shot of a geneticist at a lab bench at night, loading a tiny tube into a humming grey machine and watching its small indicator lights with an expectant face, light from the machine and a desk lamp",
+        "camera": "drift",
+        "visual": "still"
       },
       "claims": [
         "c09"
@@ -1475,21 +1267,11 @@
     },
     {
       "id": "dna-family-tree-pieces",
-      "template": "steps",
+      "template": "shot",
       "data": {
-        "title": "母系序列怎麼傳？",
-        "steps": [
-          {
-            "title": "母親",
-            "detail": "傳給子女"
-          },
-          {
-            "title": "同一母系",
-            "detail": "親屬可共享序列"
-          }
-        ],
-        "source": "來源：美國 NIJ 母系 DNA 教材",
-        "cc_safe": true
+        "prompt": "Medium shot of a teacher at a blackboard in a bright classroom, drawing a simple chain of three linked circles from top to bottom with chalk and turning to the camera with a cheerful explaining face, light from windows on the left",
+        "camera": "tilt down",
+        "visual": "still"
       },
       "claims": [
         "c09"
@@ -1503,11 +1285,11 @@
     },
     {
       "id": "dna-two-results",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "兩份安德森檢體",
-        "text": "兩份母系序列相符",
-        "sub": "頭髮與保存組織｜研究者訪談"
+        "prompt": "Close-up of a scientist in a lab coat by day holding two strips of plain coloured bands together so their stripes line up exactly, a delighted grin, bright ceiling lights above",
+        "camera": "push in",
+        "visual": "still"
       },
       "claims": [
         "c09"
@@ -1522,23 +1304,11 @@
     },
     {
       "id": "dna-lab-two-researchers-beat-2",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "兩組研究",
-        "left": {
-          "heading": "分析時",
-          "points": [
-            "起初各自調查"
-          ]
-        },
-        "right": {
-          "heading": "完成後",
-          "points": [
-            "互通比對結果"
-          ]
-        },
-        "source": "來源：CSHL 研究者訪談；CSUEB 解說",
-        "cc_safe": true
+        "prompt": "Medium shot of a researcher in a cardigan at an office desk by day, opening a plain letter and raising her eyebrows in surprise, a telephone and a stack of papers beside her, sunlight across the desk",
+        "camera": "pan left",
+        "visual": "still"
       },
       "claims": [
         "c09"
@@ -1552,11 +1322,11 @@
     },
     {
       "id": "dna-two-glass-vials",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "下一個比對",
-        "text": "能對上皇后母系嗎？",
-        "sub": "來源：CSHL 研究者訪談；CSUEB 解說"
+        "prompt": "Close-up of two small glass vials held up side by side by gloved fingers at night, one clear and one with a pale pink liquid, a scientist's hopeful eyes just above them, light from a bench lamp",
+        "camera": "pull out",
+        "visual": "still"
       },
       "claims": [
         "c09"
@@ -1609,11 +1379,11 @@
     },
     {
       "id": "dna-method-limit",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "另一份參照",
-        "text": "還要比對另一條母系",
-        "sub": "來源：DNA Learning Center 教材"
+        "prompt": "Medium shot of a courier in a cap at a laboratory door by day, holding out a small padded parcel with both hands and a curious look, a lab bench visible behind him, daylight down the corridor",
+        "camera": "tilt up",
+        "visual": "still"
       },
       "claims": [
         "c19"
@@ -1628,11 +1398,11 @@
     },
     {
       "id": "dna-blank-id",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "毛赫爾的母系關係",
-        "text": "尚茨科夫斯卡的旁系親屬",
-        "sub": "來源：DNA Learning Center 教材"
+        "prompt": "Medium shot of a nurse in a small clinic by day, sealing a cotton swab tube into a plain envelope with a calm smile, a swab packet on the table, light from the left",
+        "camera": "drift",
+        "visual": "still"
       },
       "claims": [
         "c19"
@@ -1665,23 +1435,11 @@
     },
     {
       "id": "dna-maucher-support",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "毛赫爾比對的意義",
-        "left": {
-          "heading": "能支持",
-          "points": [
-            "可能與女工同一母系"
-          ]
-        },
-        "right": {
-          "heading": "不能獨自證明",
-          "points": [
-            "安德森的唯一姓名"
-          ]
-        },
-        "source": "來源：DNA Learning Center；美國 NIJ",
-        "cc_safe": true
+        "prompt": "Medium shot of a detective in a waistcoat at a cork board in an office by day, stretching a red thread from one blank card to another and nodding slowly, morning sun from the right",
+        "camera": "push in",
+        "visual": "still"
       },
       "claims": [
         "c19"
@@ -1733,11 +1491,11 @@
     },
     {
       "id": "dna-forest-transition",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "還有兩個空位",
-        "text": "第二座墓會回答什麼？",
-        "sub": "來源：Coble 等，PLOS ONE 2009"
+        "prompt": "Wide shot of a quiet birch forest in snow at dusk, two small shallow hollows in the white ground under the trees, the only shapes are the trunks, the snow and the two hollows, light from a pale low sky",
+        "camera": "drift",
+        "visual": "still"
       },
       "claims": [
         "c09",
@@ -1752,11 +1510,11 @@
     },
     {
       "id": "grave-search-attempts",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "第一座墓之後",
-        "text": "幾次尋找，仍未找到",
-        "sub": "第二座墓｜來源：Coble 等，PLOS ONE 2009"
+        "prompt": "Medium shot of a searcher in a padded jacket in a birch forest on a grey autumn day, leaning on a shovel beside a freshly dug empty hole and wiping his brow with a tired, disappointed face, light from an overcast sky",
+        "camera": "tilt down",
+        "visual": "still"
       },
       "claims": [
         "c12"
@@ -1770,17 +1528,11 @@
     },
     {
       "id": "grave-2007-path",
-      "template": "stats",
+      "template": "shot",
       "data": {
-        "title": "第二座墓",
-        "stats": [
-          {
-            "value": "2007",
-            "label": "業餘考古者發現碎片"
-          }
-        ],
-        "source": "來源：Coble 等，PLOS ONE 2009",
-        "cc_safe": true
+        "prompt": "Close-up of a patch of dark earth on a forest floor in summer daylight, a few pale fragments half buried among pine needles, an amateur digger's hand with a trowel pausing above them, sunlight through the leaves",
+        "camera": "push in",
+        "visual": "still"
       },
       "claims": [
         "c12"
@@ -1796,21 +1548,11 @@
     },
     {
       "id": "grave-2007-path-beat-2",
-      "template": "steps",
+      "template": "shot",
       "data": {
-        "title": "第二墓調查順序",
-        "steps": [
-          {
-            "title": "業餘發現",
-            "detail": "先注意到地上碎片"
-          },
-          {
-            "title": "正式調查",
-            "detail": "隊伍隨後進場整理"
-          }
-        ],
-        "source": "來源：Coble 等，PLOS ONE 2009",
-        "cc_safe": true
+        "prompt": "Wide shot of a forest clearing on a summer morning, a field archaeologist in a sun hat stretching a string grid between wooden pegs across the ground with a focused face, light from a high sun",
+        "camera": "pull out",
+        "visual": "still"
       },
       "claims": [
         "c12"
@@ -1824,21 +1566,11 @@
     },
     {
       "id": "grave-distance",
-      "template": "stats",
+      "template": "shot",
       "data": {
-        "title": "兩座墓的距離",
-        "stats": [
-          {
-            "value": "約 70 公尺",
-            "label": "第二墓與第一墓相距"
-          },
-          {
-            "value": "44 件",
-            "label": "碎骨與牙齒的整理量"
-          }
-        ],
-        "source": "PLOS ONE｜2009 年原始論文",
-        "cc_safe": true
+        "prompt": "Overhead view of a field table in a forest clearing on a summer day, rows of tiny pale fragments laid out on a white cloth, an archaeologist in a sun hat counting them with a pencil tip and a focused look, light from a high sun",
+        "camera": "tilt down",
+        "visual": "still"
       },
       "claims": [
         "c12"
@@ -1846,23 +1578,21 @@
       "lines": [
         {
           "id": "j43h",
-          "text": "兩處相距大約七十公尺。",
-          "reveal": 1
+          "text": "兩處相距大約七十公尺。"
         },
         {
           "id": "v220",
-          "text": "現場正式整理出四十四件碎骨與牙齒。",
-          "reveal": 1
+          "text": "現場正式整理出四十四件碎骨與牙齒。"
         }
       ]
     },
     {
       "id": "grave-fragments-limit",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "碎片不能自己署名",
-        "text": "還要比對家族關係",
-        "sub": "來源：Coble 等，PLOS ONE 2009"
+        "prompt": "Close-up of a scientist at a lab bench by day placing a tiny bone fragment into a plain tray and studying it with a thoughtful look, a magnifier on a stand beside it, light from the ceiling",
+        "camera": "pan left",
+        "visual": "still"
       },
       "claims": [
         "c12",
@@ -1877,23 +1607,11 @@
     },
     {
       "id": "grave-lab-sealed-tray",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "地點與身分不能混為一談",
-        "left": {
-          "heading": "發現位置",
-          "points": [
-            "只能說明在哪裡找到"
-          ]
-        },
-        "right": {
-          "heading": "家族關係",
-          "points": [
-            "要用 DNA 對照親族"
-          ]
-        },
-        "source": "PLOS ONE｜2009 年原始論文",
-        "cc_safe": true
+        "prompt": "Medium shot of a researcher in a lab coat at a desk at night, holding a pen above two blank name tags and stopping with a cautious look, a sealed sample tray beside them, light from a desk lamp",
+        "camera": "drift",
+        "visual": "still"
       },
       "claims": [
         "c13"
@@ -1908,23 +1626,11 @@
     },
     {
       "id": "grave-lab-two-researchers",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "兩座墓的樣本",
-        "left": {
-          "heading": "第一墓",
-          "points": [
-            "已核對的家族資料"
-          ]
-        },
-        "right": {
-          "heading": "第二墓",
-          "points": [
-            "新發現的兩人樣本"
-          ]
-        },
-        "source": "來源：Coble 等，PLOS ONE 2009",
-        "cc_safe": true
+        "prompt": "Wide shot of a long laboratory bench in bright daylight, a technician in a white coat sorting small sample tubes into two racks, a chart of plain linked boxes pinned on the wall above her, light from a row of windows",
+        "camera": "pan right",
+        "visual": "still"
       },
       "claims": [
         "c13"
@@ -1982,11 +1688,11 @@
     },
     {
       "id": "grave-data-overlap",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "三種資料",
-        "text": "彼此相扣",
-        "sub": "比單看一條線更有力"
+        "prompt": "Medium shot of a scientist at a lab bench by day braiding three coloured ribbons into one cord with a satisfied smile, bright ceiling lights above",
+        "camera": "push in",
+        "visual": "still"
       },
       "claims": [
         "c13"
@@ -2000,11 +1706,11 @@
     },
     {
       "id": "grave-family-board",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "第二墓的男孩",
-        "text": "他能對上誰？",
-        "sub": "來源：Coble 等，PLOS ONE 2009"
+        "prompt": "Medium shot of a researcher at a cork board in the evening, holding a small plain card up beside a pinned chart of plain linked boxes and searching for the right spot with a puzzled face, light from a desk lamp",
+        "camera": "drift",
+        "visual": "still"
       },
       "claims": [
         "c13",
@@ -2020,23 +1726,11 @@
     },
     {
       "id": "grave-two-children",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "第二座墓的兩個孩子",
-        "left": {
-          "heading": "男孩",
-          "points": [
-            "阿列克謝"
-          ]
-        },
-        "right": {
-          "heading": "女孩",
-          "points": [
-            "皇室的一位姊妹"
-          ]
-        },
-        "source": "PLOS ONE｜2009 年原始論文",
-        "cc_safe": true
+        "prompt": "Medium shot of a researcher in a white coat at a lab bench by day, setting down one small plain box tied with a blue ribbon with a moved, gentle expression, bright ceiling lights above",
+        "camera": "push in",
+        "visual": "still"
       },
       "claims": [
         "c13",
@@ -2046,13 +1740,26 @@
         {
           "id": "jptu",
           "text": "開頭那座新墓，找到了兒子阿列克謝。",
-          "reveal": 1,
           "emotion": "放慢，關鍵名詞壓重，句尾留白"
-        },
+        }
+      ]
+    },
+    {
+      "id": "grave-two-children-beat-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a researcher in white gloves placing a second small plain box tied with a pink ribbon beside a box with a blue ribbon, her gentle smile just above them, bright ceiling lights above",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c13",
+        "c14"
+      ],
+      "lines": [
         {
           "id": "92k7",
-          "text": "另一位，是皇室四名女兒中的一人。",
-          "reveal": 1
+          "text": "另一位，是皇室四名女兒中的一人。"
         }
       ]
     },
@@ -2132,25 +1839,11 @@
     },
     {
       "id": "grave-two-papers",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "同一第二墓，不同問題",
-        "left": {
-          "heading": "PLOS ONE",
-          "points": [
-            "第二墓的家族關係",
-            "一男一女的樣本"
-          ]
-        },
-        "right": {
-          "heading": "PNAS",
-          "points": [
-            "兩墓合併判讀",
-            "核對五名子女是否齊全"
-          ]
-        },
-        "source": "PLOS ONE／PNAS｜2009 年原文",
-        "cc_safe": true
+        "prompt": "Medium shot of a researcher at a big table in a bright office, sliding two thick blank reports together into one pile with both hands and a determined face, light from tall windows on the right",
+        "camera": "pull out",
+        "visual": "still"
       },
       "claims": [
         "c13",
@@ -2160,18 +1853,17 @@
       "lines": [
         {
           "id": "dkkf",
-          "text": "同年，另一組研究者把兩座墓的資料合在一起。",
-          "reveal": 1
+          "text": "同年，另一組研究者把兩座墓的資料合在一起。"
         }
       ]
     },
     {
       "id": "grave-five-children",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "kicker": "2009 年研究結論",
-        "text": "五名子女都已找到",
-        "sub": "不是兩個孩子逃了出去"
+        "prompt": "Medium shot of a researcher in a bright lab by day setting the last of five small plain boxes into a neat row on a bench and stepping back with a relieved smile, light from the right",
+        "camera": "tilt up",
+        "visual": "still"
       },
       "claims": [
         "c15"
