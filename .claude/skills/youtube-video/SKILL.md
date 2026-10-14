@@ -101,7 +101,7 @@ metadata:
 | 9 | `package`（含上傳包檢查）→ `review-push --gate publish` 送完整上傳包 → 站主照 `UPLOAD.md` 在 Studio 上傳成「私人」、在後台貼上網址與上架時間 | 工具、站主 | 4 項全過就自動核准；影片 ID 由工人寫回 `video.json` |
 | 10 | 語言（`docs/videos/LANGUAGES.md`）：站主在影片頁勾每個語言要哪些部件（標題說明、CC、配音）或「只出繁體中文」→ 工人只做勾了的（翻譯、審稿；配音含縮短與重錄）→ `captions` → `package` → `review-push --gate languages` | 站主、工具、翻譯代理 | 都做好影片才進「可以上架」、排程才送出；有配音的卡片要站主在 Studio 上傳後按「我已經在 Studio 傳好這些配音」 |
 
-`status --slug <SLUG>` 隨時印出做到哪一步、下一個指令是什麼。核准綁檔案雜湊：稿子或旁白改了，舊的核准自動失效，後面的指令會以結束碼 3 拒絕，要重新 `review-push`。後台頁用不了時，才用有選項的提問問站主，再 `approve --gate …` 記下。
+`status --slug <SLUG>` 隨時印出做到哪一步、下一個指令是什麼。核准綁檔案雜湊：稿子或旁白改了，舊的核准自動失效，後面的指令會以結束碼 3 拒絕，要重新 `review-push`。後台頁用不了時，才用有選項的提問問站主，再 `approve --gate …` 記下。代理在本機手動推的影片（不是主機工人做的），final 關卡一律 `review-push --gate final --manual-review`，留給站主自己看：一支手動推的片曾在 43 分鐘內自動過三個關卡，站主看了判定沒有價值；伺服器還分不出兩者（票 `tasks/open/2026-10-11-hand-driven-film-approved-on-its.md`）。
 
 ## 人工錄製路線
 
