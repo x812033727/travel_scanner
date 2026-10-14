@@ -47,11 +47,13 @@ verify-1.md 第 23、47、49、51 行所載 first:18、first:56、second:14、se
 
 生成圖容易畫成假原稿、錯誤歷史現場或已確定的線索後，scene 61、74、75、77、82、84、87、88、89、91、96 及留言問題 scene 98 改為程式資料卡。卡片明標：1669 多熱公文不能直接替 1703 死者填姓名；四站及約 34 年只在多熱身分推定下成立；桑尼諾財務與外交說是學者推論；原簿已毀而十九世紀刊本仍可比對；面具無留存實物可檢驗各年份材質。scene 74 統一使用「馬提歐里」，scene 96 同列坎城博物館與 Funck-Brentano 的相應來源。其餘現用 59 張插畫逐張核對分鏡聯絡表，明顯誤導的生成圖已退件或換成資料卡。
 
-現版 SHA-256：
-- narration-first.md：965608B0B831D76D999FD73932F4CBFFADC4FE8589AEB8B374C1EC1BA15945B9
+現版 Git 內容的 SHA-256（LF 換行）：
+- narration-first.md：ED0741A45DB5C0F70B50120917A25F657116EF2FC2EE38714ED51734B77A1278
 - narration-second.md：4F42B7151DA9A7E9D0B9B0BC3399C4559A23BB136F67B996A8E3646DC5C8DA54
 - video.json：50BBFFE0E9D1D4EC4DE7CB8A875D0D01D61E12015E71BD3ACC46EB72CC792874
 - visual-prompts.json：AFCB1329AB1745B09F2BA12300162E904D686440F5B4314495C6A45BEC4C39B9
 - script.md：566FA8CAF23BBE5942F421E2CA16789895A9695A39F3BD0AD514935B2DDF2EC4
+
+第一段旁白在 Windows 製作與覆核時使用 CRLF 換行，其 SHA-256 為 `965608B0B831D76D999FD73932F4CBFFADC4FE8589AEB8B374C1EC1BA15945B9`。Git 提交把換行正規化為 LF；上述 `ED0741…` 是提交後內容的精確雜湊。兩者只差換行位元組，旁白文字相同，不能拿製作時的 CRLF 雜湊來驗證 Git blob。
 
 重建後 `lint` 為 0 errors、6 warnings；警告是鏡頭描述用字重複及 `h07-outro` 單句模板檢查，未新增史實錯誤。已核准的 9 分 26 秒旁白時間軸對應現版分鏡：59 張插畫占 57.5% 畫面時間，最長單畫面 7.93 秒。成片 `qa` 實測節奏及其餘 10 項均通過；交付與核准紀錄見 [`delivery.md`](delivery.md)。
