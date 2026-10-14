@@ -5122,6 +5122,49 @@ PASS is DURATION_ONLY for the 108 bindings below, none of which changed in this 
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Dropping videos linked to YouTube increment: 6 files (2026-10-14)
+
+Reviewer: `claude-opus-duration-review-20261014b`. Author: `claude-opus-5-5-narrative`. Scope: DURATION_ONLY for the six changed bindings below, reviewed at `4698cc878ad5f40f03ba60ce4d98e8baa2097aeb` ("feat(admin): a video linked to a YouTube upload can be dropped too") on claude/drop-youtube-linked, whose parent `e518330f40ac369f21df846fa78a9c1590a56147` (#1485) is origin/main and the merge base. The reviewer wrote none of the commit, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edits only this report and review.json.
+
+Baseline: for each of the six paths, SHA-256 of `git show 4698cc878^:<path>` equals the existing review.json binding and the table row. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these six bindings; the other 102 remain current. The registry remains 108 files. The six files and both receipt files are LF in index and worktree.
+
+- `apps/web/components/admin-video-reviews.test.tsx`: `b58c685c61cfa502157bd43cb33010dd5e3ff17263b99a7d535e591896dfe89c` -> `99dab06254fb537279735bf459a52ff42ebf033aa817e9ed37494d1a27df62ce`.
+- `apps/web/messages/en/admin.json`: `0c70216be4ad74532bcab45690a387bf1985a3182dab8e2a1012af46908940dd` -> `6967d9465bb54700aaf9c9aaab4ee144e982119aeaaf087702fa1d46c3c4cae4`.
+- `apps/web/messages/ja/admin.json`: `ff376aa2443bea8459550d4234f86e2e9ec97c0b3bc6f027e41837801f70ea4d` -> `cb565d623c982bf102dc002a47e1dc14de3e8a2a4b6ecce663fe00861ea8c64a`.
+- `apps/web/messages/ko/admin.json`: `73a3b5206c52f29bc785752326777f98a5034a1677d3170cac4e9b81e6232f2f` -> `32abcf9b5ec6347e70d2ec06bb80f699844eac8a820e66fcd3aef985b92e8f89`.
+- `apps/web/messages/zh-CN/admin.json`: `cadfb6bb968b2b3f825973f6bd4974d6f7e38bda575c4a1772e97121fbc6b38b` -> `33c832873e23fc195797fd59c6e7af4c29f935551aab63284031b0561e269bee`.
+- `apps/web/messages/zh-TW/admin.json`: `e1787c72f2dc5f46141411a3efd0305d10833bcc1101dfe2d6c14aae564e5d25` -> `742a13c2b1005a74f0b991134663828a9fa6122c7b8ab7b1518eb251df3e7036`.
+
+What the change is: on /admin/videos the "drop this video" panel was hidden whenever a project had a `youtube_video_id`; the commit shows it for linked videos too and adds one line saying that dropping here leaves YouTube as it is. The commit touches seven files (+34/−3). The unbound `apps/web/components/admin-video-reviews.tsx` (+8/−3) gives `DropVideo` an `onYoutube` prop, renders `t("dropYoutubeNote")` under `dropDetail` when it is true, widens the doc comment, and replaces the render condition `manage.allowed && !dropped && !project.youtube_video_id` with `manage.allowed && !dropped`, passing `onYoutube={Boolean(project.youtube_video_id)}`. The drop request itself (endpoint, body, confirmation) is unchanged, and no file under tools, apps/api or docs differs between `4698cc878^` and `4698cc878`.
+
+Findings, locale files (`apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json`, +1/−0 each, at line 2259 in every language): flattening both revisions gives 3,192 -> 3,193 keys in each language; the only added key is `admin.videoReviews.dropYoutubeNote`, no key is removed and no existing value changes. The new value contains no digit and no unit of time; it says the video is linked to a YouTube upload and must be deleted or made private in Studio by hand. `targetMinutes`, `minutesEach` and every other length string are byte-identical.
+
+Findings, regression test (`apps/web/components/admin-video-reviews.test.tsx`, +21/−0): one new test, "offers to drop a video linked to YouTube too, saying YouTube itself is left alone", inserted before the existing drop test. It renders a summary with `youtube_video_id` set, opens the drop panel, expects the zh-TW note, fills the reason and checks that exactly one POST goes to `/admin/videos/ai-model-choice/drop`. No existing line is removed or edited (55 -> 56 line-anchored `it(` calls); no existing assertion, fixture length or timing moves.
+
+Duration identifiers (case-insensitive occurrences of `target_minutes`, `MIN_EPISODE`, `minEpisodeMinutes`, `VIDEO_MIN_EPISODE_MINUTES`, `duration`, `seconds`, `minutes`, `_minutes`, `total_frames`, `frames`, `runtime`, `windowLimit`, `atempo`, `tempo`, `stretch`, `overrun`), `4698cc878^` -> `4698cc878`: admin-video-reviews.test.tsx 185 -> 185; en/admin.json 138 -> 138; ja, ko, zh-CN and zh-TW admin.json 76 -> 76 each. The added lines of all seven changed files contain none; the one match in the admin-video-reviews.tsx diff for `length` is an unchanged context line (`past.length`).
+
+Duration questions: the panel decides only whether an admin may mark a project dropped; it reads, writes or displays no length, floor, target, frame count or runtime field, and nothing in this diff builds, measures or re-times a video. No duration rule, check or reachability changes.
+
+Ran (in the worktree at `4698cc878`, Node on Windows):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the six stale bindings and exited 1;
+- `git show 4698cc878` read whole, including the unbound admin-video-reviews.tsx; `git diff --stat 4698cc878^ 4698cc878 -- tools apps/api docs` (empty);
+- SHA-256 of the six `4698cc878^` blobs and the working-tree files against review.json and the table; `git ls-files --eol`;
+- a script kept outside the repository that flattens both revisions of the five locale files and compares key sets and values, as above; the identifier counts with `grep -Eio` over both revisions and the added lines;
+- in apps/web, `npx vitest run components/admin-video-reviews.test.tsx`: 1 file, 79 of 79 tests pass, the new test among them.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge whether a linked video should be droppable, the wording or translation of the note, or the unbound component beyond reading its diff; the page was not opened in a browser and no video was dropped.
+- No API test, ruff, mypy, lint, i18n check or typecheck was run.
+- This increment binds the tree at `4698cc878` only: a later commit or merge that changes any of the six files, or either receipt file, needs its own follow-up. The 102 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the six rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -5153,15 +5196,15 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `cb28b0a7173ad4712a70c5e378b3b0d6e4d760731620f38d9400a221b305a6ac` |
 | `apps/web/components/admin-video-review-card.tsx` | `62e4b249e15e2bfde32e0752977a9a54d0fc6d5a2a8e47a05ea04dbb7b63b9cf` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `b58c685c61cfa502157bd43cb33010dd5e3ff17263b99a7d535e591896dfe89c` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `99dab06254fb537279735bf459a52ff42ebf033aa817e9ed37494d1a27df62ce` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `c64bfba40979fef3f8291ae2582a8cc2bb55644d4be0655ba75b39f767677d8a` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `0c70216be4ad74532bcab45690a387bf1985a3182dab8e2a1012af46908940dd` |
-| `apps/web/messages/ja/admin.json` | `ff376aa2443bea8459550d4234f86e2e9ec97c0b3bc6f027e41837801f70ea4d` |
-| `apps/web/messages/ko/admin.json` | `73a3b5206c52f29bc785752326777f98a5034a1677d3170cac4e9b81e6232f2f` |
-| `apps/web/messages/zh-CN/admin.json` | `cadfb6bb968b2b3f825973f6bd4974d6f7e38bda575c4a1772e97121fbc6b38b` |
-| `apps/web/messages/zh-TW/admin.json` | `e1787c72f2dc5f46141411a3efd0305d10833bcc1101dfe2d6c14aae564e5d25` |
+| `apps/web/messages/en/admin.json` | `6967d9465bb54700aaf9c9aaab4ee144e982119aeaaf087702fa1d46c3c4cae4` |
+| `apps/web/messages/ja/admin.json` | `cb565d623c982bf102dc002a47e1dc14de3e8a2a4b6ecce663fe00861ea8c64a` |
+| `apps/web/messages/ko/admin.json` | `32abcf9b5ec6347e70d2ec06bb80f699844eac8a820e66fcd3aef985b92e8f89` |
+| `apps/web/messages/zh-CN/admin.json` | `33c832873e23fc195797fd59c6e7af4c29f935551aab63284031b0561e269bee` |
+| `apps/web/messages/zh-TW/admin.json` | `742a13c2b1005a74f0b991134663828a9fa6122c7b8ab7b1518eb251df3e7036` |
 | `docs/videos/DESIGN.md` | `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `8bf5a55173e25c07c18b865853ffd37e839408ccf731bdc3c4ebf208e195b5b5` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
