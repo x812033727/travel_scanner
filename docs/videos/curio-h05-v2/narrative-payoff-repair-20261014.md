@@ -7,3 +7,7 @@
 正式 `check-audio` 覆蓋 **108/108**：只新增 2 次轉錄、0 次新 Jev 判斷；`h5v029` 與 `h5v103` 均是 exact match，原有 12 個旗標完全一致。`review/check.json` SHA-256 `096b37442681dd5331121573ffb76470a75edd43e18f966734a844e27362fe3f`。實際正文 **16,204 幀／30 fps＝540.133 秒**，61 個 `shot` 佔 9,490 幀／**58.5658%**；108 個畫面狀態最長 235 幀／7.833 秒，`cadenceProblems=[]`。這些數字是音訊與分鏡檢查，尚非完成畫面或播放器字幕驗收。
 
 舊音訊核准只綁 `8128f74e74f2dad44ea0c6a1465f2a333c4cb30d0b7f9cfb14829f414becd984`。新版已 `review-push --gate audio` 到 `/admin/videos`，回報 **pending**；須由站主聽審並 `review-pull --gate audio` 讀回新版雜湊，不能把舊核准轉用。其餘 61 個插圖鏡頭、縮圖、完整 render、成片 QA、正式繁中 CC、上傳包與播放驗收仍待完成。
+
+## 後續音訊核准讀回
+
+2026-10-14 付費三鏡預檢前再次讀取正式工作目錄：`approvals.json` SHA-256 `d080ed78ee323543c85d826c87d60b5f8f1ee51698e1306707bf8abd81d69683`，其中 audio gate 已記錄 `timeline.json` SHA-256 `db2aeb68147ebda3ece14222198f71338dc6101fc27cce06099b66e147457aee`，`approved_at=2026-10-14T03:01:50.844Z`；`status --slug curio-h05-v2` 讀回 `[x] narration approved`、`storytelling panel: passed`。上段的 `pending` 是送出當時狀態，不再是此雜湊的最新狀態。圖像小樣未改主稿、時間軸、WAV 或核准檔；後續視覺關卡另見 [visual-pilot-05-20261014.md](visual-pilot-05-20261014.md)。

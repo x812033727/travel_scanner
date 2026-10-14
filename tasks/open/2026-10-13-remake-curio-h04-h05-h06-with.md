@@ -229,3 +229,34 @@ H06's 49 shots cover 50.3061%, just 46 frames above 50%, with maximum state
 bind older timeline hashes. Body-only zh-TW CC previews have full cue coverage
 but no full render, approved storyboard, completed thumbnail, branded final CC,
 MP4, package, owner playback, or Studio upload. Keep this ticket open.
+
+2026-10-14 latest checkpoint: the owner listened and approved both H05/H06
+new audio cards. `review-pull --gate audio` read back approvals for exact
+current timeline SHA-256 values: H05
+`db2aeb68147ebda3ece14222198f71338dc6101fc27cce06099b66e147457aee`,
+H06 `829335243ac71490e3ba552ea18a2c1f949c47a06362aee3979cbf6005d170d2`.
+H04 remains approved at its current timeline SHA. Thus all three current
+narration gates are approved; this does not approve pictures or final videos.
+
+The owner then raised the **bounded MiniMax pilot** scope to three different
+adjacent shots per episode, one image and one judge call per shot (nine total),
+after the prior one-per-episode pilots. All nine authorized attempts finished
+with no same-shot retry: each slug incurred 3 MiniMax images, 3 Gemini judges
+and US$0.0405, for **US$0.1215 incremental** across the three. H04
+`opening-search/opening-inside/opening-gear` yielded 2 machine PASS and 1
+FAIL, but 0/3 human-accepted frames as a continuous opening (wrong spatial
+relationship, painterly style, mismatched camera/space). H05
+`open-threat/open-tail/open-boy` yielded 2 machine PASS and 1 FAIL, but 0/3
+human-accepted frames: invented passengers and props, fake lettering, and a
+conspicuous orange-red ground mark. H06
+`hook-hospital-door/hook-hospital-door-beat-2/hook-three-answers` yielded 1
+machine PASS and 2 FAIL; the flat symbolic second frame is only a single-shot
+candidate, while the sequence fails photo-to-flat style and scene continuity.
+The original images, both successful and adverse judge decisions, exact
+ledgers and before/after manifests are retained externally under each v2
+workdir's named pilot receipt folder. See each v2 `visual-pilot-*` record in
+this PR. No storyboard was submitted, full image batch started, or final MP4
+rendered. Keep the ticket open and decide a revised visual route before more
+paid images; the 50% shot-time floor has only about 50 frames of slack for
+H04 and 46 frames for H06, so a diagram substitution needs new cadence and
+audio-timeline binding checks.

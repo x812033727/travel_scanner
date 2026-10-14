@@ -51,3 +51,21 @@ MiniMax `image-01` 不使用風格參考板。把平面編輯插畫放在提示�
 本輪現行 `keyframes/manifest.json` SHA-256 `a9b9a08abb9153b0487c3db1f67a8131cc08f957f94fe78f8195459060c614c0`，`thumbnail_source` 仍指上述退件裁切圖。外部 `media/ledger.json` SHA-256 `8bf039025dddd54081f12b23410318b8bb70112d02bb765a60c5a373612efd6e`：累計 6 張圖、6 次 judge、**US$0.0810**、0 保留額；本輪一圖一判增量 **US$0.0135**。新圖原檔、裁切圖、聯絡表、manifest、ledger、state 已連同逐檔 SHA 收據封存於外部 `review/pilot-single-20261014/`；`preflight.json` 記錄送出前的來源與費用估價，`postflight-sha256.json` 記錄送出後六檔的校驗結果。沒有重買第二鏡。
 
 兩個開場運河提示已多輪無法穩定產出來源可接受的畫面；**停止這條路線的付費重試**。下一步只能先離線重設可確定呈現的運河／姓名空白視覺，再決定是否修改場景類型或補足插圖比例；精確的 50% 影格餘裕與關卡代價見 [離線視覺路線](offline-visual-route-20261014.md)。舊圖與新退件均保留追溯，但不能以 `--accept-best`、judge 分數或 manifest 的 `thumbnail_source` 冒充人工接受。
+
+## 第五輪：圖卡後緊接的三鏡，各一張一判（2026-10-14）
+
+站主另授權三個**不同** shot 各一張 MiniMax 小樣、一次 judge，禁止同鏡重抽或擴批。起跑前 `video.json` SHA-256 `499fcab1f69d8eb9e9e25d65f9f89eb37ccd686142637092b852676b2ba9b68a`、已核 `timeline.json` SHA-256 `829335243ac71490e3ba552ea18a2c1f949c47a06362aee3979cbf6005d170d2`，`status` 讀到旁白核准及敘事關卡通過。專案和上層 `STOP`、專案 `LEASE` 都不存在，帳本無保留額；三個 `--shot ID --takes 1 --dry-run` 均顯示 MiniMax `image-01` 1K、提示長度在預算內、單張費用顯示約 US$0.01，既有 US$0.081／每片 US$80 上限。生圖前的 manifest、ledger、approvals 和三份 dry-run 已封存在外部 `review/pilot-three-20261014T030325Z/`，`preflight.json` SHA-256 `7d5f5687bd19b47d37a1247817aa6b60a06c7806974172886c2c8dd670863ad5`。
+
+三鏡**依序**送出；每鏡只新增一張圖和一次 judge。CLI 每次都回 exit 1，但原因是已知品質退件，而非請求／計費不明；每輪讀回帳本後才進下一個不同鏡頭。人審已開啟原圖；第三鏡另檢視裁切後的實際選用圖。人審與 judge 分別如下：
+
+| shot／來源 | 一張圖與請求鍵 | judge | 人工目視決定 |
+| --- | --- | --- | --- |
+| `hook-hospital-door`／c03 | 原圖 SHA-256 `e06a57b337a41dc9920222b57268dbc3ed1e86001b9cdc8c58001d98ee0b41fe`；`ee80bff6113b4e37` | **9/10，FAIL**：照片感；女子成側身坐單椅，未依提示背向坐長椅。 | **FAIL**。像具體 1922 年病院室內照片，露側臉，超出 c03 對當年場景的可核細節；不可進片。檔名 `hook-hospital-door-1.jpg`，不要混淆舊 look 的 `-1-trim.jpg` 歷史候選。 |
+| `hook-hospital-door-beat-2`／c03 | 原圖／選用圖 SHA-256 `24190e085237d6ac080804141649840d3e0074b9f23dfd1df7cae2d9be58e613`；`3bfa7ccc69b93919` | **10/10，PASS**。 | 單張的平面門口象徵圖可留作候選，沒有虛構人物、官方卷宗或假字；**整段 HOLD**，因前鏡失敗，而且工具標出兩相鄰鏡 dHash 距離 4、構圖近似。judge PASS 不等於連續分鏡核准。 |
+| `hook-three-answers`／c05、c06、c07 | 原圖 SHA-256 `f5e968381d581ded7edf9ddc4205d6f4c61b7376e330bced8c371035bc285b4e`，8% 紙邊裁切選用圖 `57a7ebcab23b013059ed18de9715585a08284087073effdd7c638af47a2617cd`；`3f10a5611a7328f0` | **9.71/10，FAIL**：缺指定的一小處紅色點綴。 | **HOLD**。抽象法院門口可讀，沒有假徽記或文字；不能當 1970 年真法院外觀，且目前未過風格判定，不進分鏡。 |
+
+聯絡表 `review/pilot-three-20261014T030325Z/contact-sheet-final.png` SHA-256 `0cc5636d60687683c174a6d761e3e18e00586448bedb43897b16773ff243a1f8`；一排三鏡可見第一張的照片感與其後兩張平面圖風格斷裂。每鏡原圖／實際選圖、逐輪 manifest／ledger、執行輸出、人審決定與 `postflight-summary.json` 均保留於同目錄，沒有覆寫第四輪退件副本，也沒有人工改 judge、manifest 接受欄或送 `storyboard-push`。
+
+帳本由 **6 張圖／6 次 judge／US$0.0810** 精確增加為 **9 張／9 次／US$0.1215**，本輪 **3 張＋3 判，US$0.0405**，0 保留額。先前 manifest SHA-256 `a9b9a08abb9153b0487c3db1f67a8131cc08f957f94fe78f8195459060c614c0` 與 ledger `8bf039025dddd54081f12b23410318b8bb70112d02bb765a60c5a373612efd6e` 已封存；現行 manifest `fe4283e00e94973108923da4e2c670260a1ff8ac23be543ee018e3874e5cb066`、ledger `737fd1d6e30160f08d755a863f16c41a5f6d8c008275dc7e727600271e7c61d2`。現行 49 個 shot 中只有這三鏡有新圖，且兩鏡 judge FAIL；其餘 46 鏡仍缺圖。`thumbnail_source=null`，原先退件運河圖不能因此恢復為縮圖。
+
+**本次三鏡連續小樣未過。** 目前 `shot` 剛好占 7,560／15,028 幀，只高於 50% 下限 46 幀；若把這批任一個較長 shot 再改原生圖卡，必須先重新設計可信插圖時窗並重新量正式節奏，不能直接靠換模板掩蓋退件。三張授權已用完，本輪不再付費重抽、擴批或送後台分鏡。

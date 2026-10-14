@@ -1,6 +1,8 @@
 # H06 v2｜運河與空白姓名原生圖卡交接
 
-**後續正式關卡：**此文以下的「候選」數字是改卡當下的離線快照。兩張卡的現行 `narrative_hash=a8b72a5524beace9` 已由獨立盲評 **11/11 通過**。先封存舊時間軸、WAV、核准及語音檢查到外部 `review/native-card-audio-refresh-20261014/before/`，再確認 dry-run **0 to synthesize**，執行 `tts --refresh-evidence`：實際 **0 合成、0 計費字元、99 段沿用**。正式 `timeline.json` SHA-256 `829335243ac71490e3ba552ea18a2c1f949c47a06362aee3979cbf6005d170d2` 已等於先前候選；104 個 line ID、音檔 SHA、逐句及場景時窗與舊版逐一相同，整段 WAV SHA-256 仍是 `528671067cbc165ca7d0ac32b487311dc147dc89a98eafe62515072cad57db0a`。正式節奏問題 0，49 個 `shot`／7,560 幀／50.3061%，最長狀態 239 幀／7.967 秒。新版音訊已送 `/admin/videos`，後台讀回 **pending** 且綁定新時間軸 SHA；須等站主核准後再 `review-pull`，目前不能稱音訊已核准。這些關卡仍不代表全片分鏡或縮圖完成。
+**後續三鏡小樣結果：**圖卡後相鄰三個 shot 各生成一張、各判一次；一張 judge PASS、兩張 judge FAIL，連續段因畫風及相似構圖未過。費用與每圖人審見 [視覺小樣第五輪](visual-pilot-01.md)；本頁下文的「49 個 shot 尚缺圖」是該次小樣之前的時間點。
+
+**後續正式關卡：**此文以下的「候選」數字是改卡當下的離線快照。兩張卡的現行 `narrative_hash=a8b72a5524beace9` 已由獨立盲評 **11/11 通過**。先封存舊時間軸、WAV、核准及語音檢查到外部 `review/native-card-audio-refresh-20261014/before/`，再確認 dry-run **0 to synthesize**，執行 `tts --refresh-evidence`：實際 **0 合成、0 計費字元、99 段沿用**。正式 `timeline.json` SHA-256 `829335243ac71490e3ba552ea18a2c1f949c47a06362aee3979cbf6005d170d2` 已等於先前候選；104 個 line ID、音檔 SHA、逐句及場景時窗與舊版逐一相同，整段 WAV SHA-256 仍是 `528671067cbc165ca7d0ac32b487311dc147dc89a98eafe62515072cad57db0a`。正式節奏問題 0，49 個 `shot`／7,560 幀／50.3061%，最長狀態 239 幀／7.967 秒。新版音訊送 `/admin/videos` 時先讀回 pending；站主後續核准，`review-pull` 已將**同一時間軸 SHA** 的核准讀回，現行旁白可稱已核准。這仍不代表全片分鏡或縮圖完成。
 
 日期：2026-10-14。這是前兩鏡付費小樣退件後的**離線畫面修訂**，供獨立敘事盲評、時間軸音訊核准及後續分鏡審查使用；不是已渲染成片，也沒有新增 TTS、MiniMax 或後台審核費用。退件原圖、裁切圖、judge、原始 manifest、ledger 與封存收據均保留於外部 `review/pilot-single-20261014/`。不得把退件圖當作可用 keyframe 或縮圖。
 

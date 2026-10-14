@@ -1,8 +1,10 @@
 # H05 v2｜離線製作交接
+**2026-10-14 三鏡小樣最新：** 正式 `timeline.json` SHA-256 `db2aeb68147ebda3ece14222198f71338dc6101fc27cce06099b66e147457aee` 已在 `approvals.json` 及 `status` 讀回音訊核准；下段「待站主核准」是送出時快照。站主限額授權 `open-threat`、`open-tail`、`open-boy` 各一張 MiniMax 圖與一次判圖，已恰好完成 3 張＋3 次、增加 US$0.0405、帳本總計 US$0.1755。`open-threat` 判圖 PASS 但人工退件，`open-tail` 判圖 FAIL 且人工退件，`open-boy` 判圖 10 分但人工與主製作代理獨立目視均退件（腳下無來源橘紅斑塊）；完整原圖、裁圖、判圖、請求 key、封存與費用見 [visual-pilot-05-20261014.md](visual-pilot-05-20261014.md)。**沒有可核准的連續三鏡，停止付費擴批。**
 
 **2026-10-14 現行關卡：**`open-note` 原生圖卡已保留；敘事盲審先在 `payoffs` 指出 h5v029、h5v103 未點名回扣，兩句窄修後換一名獨立讀者重審，**11/11 通過**（narrative hash `31f279e4aaa020c5`）。正式 `video.json` SHA-256 `472db853bc021374430ce5d80387442544cf72cd195f10e9e06aa86b07c94095`、`timeline.json` SHA-256 `db2aeb68147ebda3ece14222198f71338dc6101fc27cce06099b66e147457aee`；只重錄兩句、53 計費字元，100 段沿用，108/108 句檢查中兩句新錄音逐字對上，原 12 句標記不變。正文 540.133 秒；61 個 `shot` 佔 58.5658%，最長狀態 7.833 秒，節奏問題 0。**新版音訊已送後台待站主核准，尚未讀回核准。**細節與舊版界線見 [敘事回扣與正式語音](narrative-payoff-repair-20261014.md)。下方把舊版稱為「現行」的段落，均是當時快照。
 
 **2026-10-14 最新候選：** 人工退件的 MiniMax `open-note` 已改為有 `c04` 來源依據、標示非當年原件的原生 SVG 示意卡。`video.json` SHA-256 `c14695ef580539006621e24e1f3f25e0d9ffcb2ba399eea9fdd7d69aa2edbd1f`，narrative hash `e900e3c896cee888`，speech hash 仍為 `7d8cb6cb30ba87d9`。用 108 句原 WAV 樣本的隔離 dry-run 證明 16,073 格總長、全部逐句與場景時窗不變；插圖占比 58.74%、節奏 0 問題。隔離圖卡人工實看清楚，但尚待獨立審查；正式時間軸與後台音訊核准仍綁舊版，不能把下文舊版 `[x]` 當作新版通關。新圖、雜湊、字幕重算與餘下關卡見 [open-note-diagram-revision-20261014.md](open-note-diagram-revision-20261014.md)。下方舊 SHA 與已核准狀態依時間保留作**改卡前的歷史快照**。
+
 ## 目前狀態
 
 **改卡前畫面更新：** 三輪各三張 MiniMax 開場圖均不可用；第三輪三張 judge **全 FAIL**（9.00／9.00／9.71），人工實看有假字、額外人物／道具及擬真風格漂移，原 manifest SHA-256 `6b4046143e1cb552d00039c4c1a45f13818ac8ffd9bc2cfdd0108b32963dcedf5`、圖與帳本已封存，停止同一路線盲抽。主稿已採用「原生場域卡 → FBI 機票原件照片 → 305 號航班原生卡」前三景。片尾同一 `outro` 場景現以三項逐句揭示，原 8.2 秒單畫面已消除：實際時間軸 `cadenceProblems=[]`，最長畫面 7.3 秒、插圖占比 59.45%。開場 15.2 秒及片尾 8.17 秒離線預覽、畫面與來源 SHA、音訊綁定、50% 規則限制見 [visual-pilot-03.md](visual-pilot-03.md)；第二輪原始紀錄見 [visual-pilot-02.md](visual-pilot-02.md)。
