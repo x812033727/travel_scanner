@@ -12,368 +12,355 @@
 
 旁白：她沒有說出名字，警方也查不到她的身分。
 
-#### 3. hook-hospital-door
+#### 3. hook-hospital-door（diagram）
 
 旁白（放慢，關鍵名詞壓重，句尾留白）：兩年後，病院裡有人把她和安娜塔西亞連在一起。
 
-#### 4. hook-hospital-door-beat-2
+#### 4. hook-hospital-door-beat-2（compare）
 
 旁白：但究竟是誰先說出口，卷宗留下兩種說法。
 
-#### 5. hook-three-answers
+#### 5. hook-three-answers（diagram）
 
 旁白（放慢，關鍵名詞壓重，句尾留白）：一九七〇年，最高法院要審查前審判決。
 
-#### 6. hook-three-answers-beat-2
+#### 6. hook-three-answers-beat-2（big）
 
 旁白（像說給身旁的人聽，先輕後重）：卷宗裡卻又出現另一個女人的名字。
 
-#### 7. hook-sample-box
+#### 7. hook-sample-box（compare）
 
 旁白（放慢，關鍵名詞壓重，句尾留白）：她過世後，保存的組織與頭髮進了實驗室。
 
-#### 8. hook-sample-box-beat-2
+#### 8. hook-sample-box-beat-2（big）
 
 旁白：那兩份檢體，能幫她說出身分嗎？
 
-#### 9. hook-forest-path
+#### 9. hook-forest-path（stats）
 
 旁白（放慢，關鍵名詞壓重，句尾留白）：二〇〇七年，俄國林地有人注意到地上的碎片。
 
-#### 10. hook-forest-path-beat-2
+#### 10. hook-forest-path-beat-2（compare）
 
 旁白：細小碎片裡，研究者想找出兩個孩子。
 
-#### 11. hook-empty-file
+#### 11. hook-empty-file（big）
 
 旁白（問句上揚，句尾停半拍）：那名沒有名字的柏林女子，真是安娜塔西亞嗎？
 
 ### 病院裡有人叫她公主
 
-#### 12. berlin-name-blank（big）
-
-旁白（像說給身旁的人聽，先輕後重）：要查她是不是公主，病院裡卻連本名都核對不了。
-
-#### 13. berlin-hospital-window（photo）
+#### 12. berlin-hospital-window（photo）
 
 旁白：後來人們叫她安娜・安德森；那時，她仍不肯說家世。
 
-#### 14. berlin-staff-corridor（big）
+#### 13. berlin-staff-corridor（big）
 
 旁白：旁人從她的話和模樣，猜測她的過去。
 
-#### 15. berlin-closed-album
+#### 14. berlin-closed-album（big）
 
 旁白（像說給身旁的人聽，先輕後重）：沒想到，猜測碰上的，是俄國皇室留下的空位。
 
-#### 16. berlin-timeline（stats）
+#### 15. berlin-timeline（stats）
 
 旁白：兩年前，尼古拉二世一家已在俄國遇害。
 旁白：可是那幾個孩子的去向，仍被傳聞包圍。
 
-#### 17. berlin-family-places（photo）
+#### 16. berlin-family-places（photo）
 
 旁白（像說給身旁的人聽，先輕後重）：如果她真是公主，這兩件事就必須接得起來。
 
-#### 18. berlin-name-card
-
-旁白：就在病院的空白姓名欄旁，一個名字開始流傳。
-
-#### 19. berlin-two-visitors
+#### 17. berlin-two-visitors（big）
 
 旁白（問句上揚，句尾停半拍）：最早把安娜塔西亞帶進病房的，是誰？
 
-#### 20. hospital-visitors-enter
+#### 18. hospital-visitors-enter（stats）
 
 旁白（像說給身旁的人聽，先輕後重）：一九二二年，來訪者開始用皇室舊事辨認她。
 
-#### 21. hospital-album-hands（photo）
+#### 19. hospital-album-hands（photo）
 
 旁白：照片裡是皇室的安娜塔西亞，不是病房裡的女子。
 
-#### 22. hospital-story-spreads
+#### 20. hospital-story-spreads（big）
 
 旁白（像說給身旁的人聽，先輕後重）：於是病院裡的猜測，傳出了病院。
 
-#### 23. hospital-two-starts（compare）
+#### 21. hospital-two-starts（compare）
 
 旁白：一種說法是，她先自稱那位公主。
 旁白（像說給身旁的人聽，先輕後重）：另一種說法，名字是旁人先說的。
 
-#### 24. hospital-two-folders
+#### 22. hospital-two-folders（compare）
 
 旁白（放慢，關鍵名詞壓重，句尾留白）：開場問誰先說的那一句，判決沒有替我們選邊。
 
-#### 25. hospital-doorway
+#### 23. hospital-doorway（big）
 
 旁白（問句上揚，句尾停半拍）：起點都說不定，還能靠什麼辨認她？
 
 ### 親友證詞走進繼承官司
 
-#### 26. relatives-day-room（big）
+#### 24. relatives-day-room（big）
 
 旁白：一九二八年，皇室遠親邀她赴美相見。
 旁白（像說給身旁的人聽，先輕後重）：這位遠親，是克謝妮亞・利茲。
 
-#### 27. relatives-tea-tray
+#### 25. relatives-tea-tray（compare）
 
 旁白：怎麼辨認她？親友可以作證，但接待她還不能證明身分。
 
-#### 28. relatives-letter
+#### 26. relatives-letter（compare）
 
 旁白：也有親近皇室的證人，明確說她不是公主。
 
-#### 29. relatives-distant-woman
+#### 27. relatives-distant-woman（bullets）
 
 旁白：這些證詞，最後都進了法庭。
 
-#### 30. relatives-court-corridor
+#### 28. relatives-court-corridor（big）
 
 旁白：一場關於繼承權的官司，把猜測變成舉證。
 
-#### 31. relatives-legal-question
+#### 29. relatives-legal-question（big）
 
 旁白（問句上揚，句尾停半拍）：她得拿出什麼，才能把公主身分寫進判決？
 
-#### 32. court-day-exterior
+#### 30. court-day-exterior（big）
 
 旁白：法庭要她拿出可核對的身分證據，才能支持請求。
 
-#### 33. court-closed-case
+#### 31. court-closed-case（compare）
 
 旁白：它審的是民事請求，不是刑事詐騙。
 
-#### 34. court-question-card（big）
+#### 32. court-question-card（big）
 
 旁白（像說給身旁的人聽，先輕後重）：安德森要求給付款項，也要求確認繼承權。
 
-#### 35. court-question-certificate（big）
+#### 33. court-question-certificate（big）
 
 旁白：她還主張，先前的繼承證書有誤，請法院確認。
 
-#### 36. court-question-premise（big）
+#### 34. court-question-premise（big）
 
 旁白：如果公主身分不能成立，這些財產請求就失去了前提。
 
-#### 37. court-two-parties
+#### 35. court-two-parties（compare）
 
 旁白（像說給身旁的人聽，先輕後重）：對方則拿出另一套身分說法和證詞。
 
-#### 38. court-schanzkowska-name
+#### 36. court-schanzkowska-name（big）
 
 旁白：還記得卷宗裡的名字嗎？失蹤女工法蘭齊絲卡・尚茨科夫斯卡。
 
-#### 39. court-family-album
+#### 37. court-family-album（bullets）
 
 旁白：於是親友的辨認，成了法官必須衡量的材料。
 
-#### 40. court-proof-steps（steps）
-
-旁白：但有人相信她，仍不能替代身分證明。
-
 ### 一九六七年，前審作出判決
 
-#### 41. court-hamburg-corridor
+#### 38. court-hamburg-corridor（stats）
 
 旁白：一九六七年，前審法官終於作出判決。
 
-#### 42. court-hamburg-corridor-beat-2
+#### 39. court-hamburg-corridor-beat-2（bullets）
 
 旁白（像說給身旁的人聽，先輕後重）：證人多年以前見過誰、記得什麼，前審得一項項比較。
 
-#### 43. court-appeal-paper
+#### 40. court-appeal-paper（big）
 
 旁白（問句上揚，句尾停半拍）：法院會接受她的公主主張嗎？
 
-#### 44. court-two-years（big）
+#### 41. court-two-years（big）
 
 旁白：前審認為，她沒有證明自己是公主。
 
-#### 45. court-two-levels（compare）
+#### 42. court-two-levels（compare）
 
 旁白（像說給身旁的人聽，先輕後重）：安德森提起法律審；最高法院檢查前審判決有沒有法律或程序上的錯。
 
-#### 46. court-high-result（big）
+#### 43. court-high-result（big）
 
 旁白（像說給身旁的人聽，先輕後重）：一九七〇年，最高法院駁回她的法律審。
 
-#### 47. court-ruling-scope（compare）
+#### 44. court-ruling-scope（compare）
 
 旁白（放慢，關鍵名詞壓重，句尾留白）：開頭那份判決，維持了公主身分未獲證明。
 旁白（像說給身旁的人聽，先輕後重）：至於那名女工身分，留在判決範圍之外。
 
-#### 48. court-two-names-logic
+#### 45. court-two-names-logic（compare）
 
 旁白：那條女工線索，後來的檢體會提供另一層證據。
 
-#### 49. court-exit-day
+#### 46. court-exit-day（compare）
 
 旁白（像說給身旁的人聽，先輕後重）：法院沒有裁定她的動機；另一個缺口，是皇室家人的墓仍未找到。
 
 ### 第一座墓少了兩名孩子
 
-#### 50. grave-forest-1991
+#### 47. grave-forest-1991（stats）
 
 旁白：這個缺口到七〇年代末才有線索：地質學家阿夫多寧找到第一座墓。
 
-#### 51. grave-map-table
+#### 48. grave-map-table（big）
 
 旁白：他和幾位朋友把位置保密了多年。
 
-#### 52. grave-first-count（stats）
+#### 49. grave-first-count（stats）
 
 旁白（像說給身旁的人聽，先輕後重）：一九九一年，這座墓才正式發掘。
 旁白：墓裡有九具遺骸，其中四名是隨行人員。
 旁白：研究辨出尼古拉二世夫婦和三名女兒。
 旁白（像說給身旁的人聽，先輕後重）：可是五名孩子裡，仍少一男一女。
 
-#### 53. grave-empty-places
+#### 50. grave-empty-places（big）
 
 旁白：這個缺口，還不能替安德森的身分下定論。
 
-#### 54. dna-hospital-archive
+#### 51. dna-hospital-archive（big）
 
 旁白：一九九五年，她留下的檢體進入研究報告。
 
-#### 55. dna-sealed-sample-beat-2
+#### 52. dna-sealed-sample-beat-2（big）
 
 旁白：組織不是後來憑空出現的；醫院把病理切片保存了下來。
 
-#### 56. dna-publication（stats）
+#### 53. dna-publication（stats）
 
 旁白：她已在一九八四年過世。
 
-#### 57. dna-hair-and-box（big）
+#### 54. dna-hair-and-box（compare）
 
 旁白：另一組取得頭髮。
 旁白：信封裡的頭髮，成了第二份待驗檢體。
 
-#### 58. dna-mother-child
+#### 55. dna-mother-child（compare）
 
 旁白（像說給身旁的人聽，先輕後重）：還記得開頭那兩份檢體嗎？研究者拿母系序列互相核對。
 
-#### 59. dna-family-tree-pieces
+#### 56. dna-family-tree-pieces（steps）
 
 旁白：這種遺傳特徵，會沿母親那一邊傳下去。
 
 ### 兩份檢體先對上彼此
 
-#### 60. dna-two-results（big）
+#### 57. dna-two-results（big）
 
 旁白：兩份屬於安德森的檢體，先對上彼此。
 
-#### 61. dna-lab-two-researchers-beat-2
+#### 58. dna-lab-two-researchers-beat-2（compare）
 
 旁白：兩組人起初不知道彼此都在查這件事，完成後才互通結果。
 
-#### 62. dna-two-glass-vials
+#### 59. dna-two-glass-vials（big）
 
 旁白（問句上揚，句尾停半拍）：可她的母系，能對上皇后那條線嗎？
 
-#### 63. dna-mismatch（compare）
+#### 60. dna-mismatch（compare）
 
 旁白（像說給身旁的人聽，先輕後重）：如果她是皇后的女兒，母系特徵應該相符。
-旁白（放慢，關鍵名詞壓重，句尾留白）：開頭那兩份檢體，結果卻沒有對上。
+旁白（放慢，關鍵名詞壓重，句尾留白）：但和皇后已知的母系參照相比，這兩份檢體都沒有對上。
 
-#### 64. dna-method-limit
+#### 61. dna-method-limit（big）
 
 旁白（像說給身旁的人聽，先輕後重）：可研究者還找來另一份母系參照。
 
-#### 65. dna-blank-id
+#### 62. dna-blank-id（big）
 
 旁白：提供者卡爾・毛赫爾，是尚茨科夫斯卡的母系親屬。
 
-#### 66. dna-maucher-match（big）
+#### 63. dna-maucher-match（big）
 
 旁白（放慢，關鍵名詞壓重，句尾留白）：安德森的母系序列，與毛赫爾的樣本相符。
 
-#### 67. dna-maucher-support
+#### 64. dna-maucher-support（compare）
 
 旁白：這支持她可能就是那名失蹤女工。
 
-#### 68. dna-maucher-limit（compare）
+#### 65. dna-maucher-limit（compare）
 
 旁白：同一母系的親屬，也可能共享這種序列。
-旁白：所以比對能支持線索，卻不能獨自鎖定本名。
+旁白：回到開場那兩份檢體：它們提供母系線索，卻不能獨自鎖定另一個本名。
 
-#### 69. dna-forest-transition
+#### 66. dna-forest-transition（big）
 
 旁白：而俄國那兩個空位，還等著另一份證據。
 
+#### 67. grave-search-attempts（big）
+
+旁白：第一座墓之後，幾次尋找附近第二座墓，都沒有結果。
+
 ### 林地裡出現第二座墓
 
-#### 70. grave-2007-path
+#### 68. grave-2007-path（stats）
 
 旁白（像說給身旁的人聽，先輕後重）：還記得開頭林地的碎片嗎？它們來自第二座墓。
 
-#### 71. grave-2007-path-beat-2
+#### 69. grave-2007-path-beat-2（steps）
 
 旁白：業餘考古者先看到碎片，正式隊伍再進場調查。
 
-#### 72. grave-distance（stats）
+#### 70. grave-distance（stats）
 
 旁白：兩處相距大約七十公尺。
 旁白：現場正式整理出四十四件碎骨與牙齒。
 
-#### 73. grave-fragments-limit（big）
+#### 71. grave-fragments-limit（big）
 
 旁白：碎片再小，也得回答它們屬於哪個家庭。
 
-#### 74. grave-lab-sealed-tray（compare）
+#### 72. grave-lab-sealed-tray（compare）
 
 旁白（像說給身旁的人聽，先輕後重）：研究者沒有只靠地點填上孩子的名字。
 
-#### 75. grave-lab-two-researchers
+#### 73. grave-lab-two-researchers（compare）
 
 旁白：他們把兩座墓的樣本，和親族資料放在一起。
 
-#### 76. grave-three-tests（steps）
+#### 74. grave-three-tests（steps）
 
 旁白：母系資料，先接上母親那一邊。
 旁白（像說給身旁的人聽，先輕後重）：常染色體再檢查父母與孩子的關係。
 旁白：男孩的父系資料，補上第三道比對。
 
-#### 77. grave-data-overlap（big）
+#### 75. grave-data-overlap（big）
 
 旁白：三種結果互相扣住，指向同一個家庭。
 
-#### 78. grave-family-board
+#### 76. grave-family-board（big）
 
 旁白（問句上揚，句尾停半拍）：那名男孩，能對上誰？
 
-#### 79. grave-two-children（compare）
+#### 77. grave-two-children（compare）
 
 旁白（放慢，關鍵名詞壓重，句尾留白）：開頭那座新墓，找到了兒子阿列克謝。
 旁白：另一位，是皇室四名女兒中的一人。
 
-#### 80. grave-anthropologists-disagree（compare）
+#### 78. grave-anthropologists-disagree（compare）
 
 旁白：俄方人類學者認為，第一墓少的是瑪麗亞。
 旁白（問句上揚，句尾停半拍）：美方則認為是安娜塔西亞；新檢體能分清嗎？
 
-#### 81. grave-which-sister（compare）
+#### 79. grave-which-sister（compare）
 
 旁白（像說給身旁的人聽，先輕後重）：二〇〇九年，研究者檢視了那位女兒的基因結果。
 旁白：但報告的基因結果分不出瑪麗亞或安娜塔西亞。
 
-#### 82. grave-two-papers（compare）
+#### 80. grave-two-papers（compare）
 
 旁白：同年，另一組研究者把兩座墓的資料合在一起。
-旁白（問句上揚，句尾停半拍）：他們追問：五名孩子，是否全在這裡？
 
-#### 83. grave-five-children（big）
+#### 81. grave-five-children（big）
 
 旁白（放慢，關鍵名詞壓重，句尾留白）：兩墓合看，尼古拉二世夫婦的五名孩子都被找到。
 
-#### 84. end-blank-motive
-
-旁白（像說給身旁的人聽，先輕後重）：檢體能比對母系，卻讀不出她當年相信了什麼。
-
-#### 85. end-outro（compare）
+#### 82. end-outro（compare）
 
 旁白（放慢，關鍵名詞壓重，句尾留白）：她不是安娜塔西亞。
 旁白（像說給身旁的人聽，先輕後重）：留言選：判決或檢體。
 旁白：訂閱，一起查證。
 
-narrative a8b72a5524beace9
-speech 9ae95e3507d3809f
+narrative bc712a3641a21d9b
+speech 2742bbd8e13e41f7

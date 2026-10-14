@@ -1,4 +1,12 @@
 # H05 v2｜離線製作交接
+
+**2026-10-14 目前窄修狀態：** 站主選擇零費用去重後，現行 `video.json` SHA-256 `3f4ed2287400b2a772062b7a1b0ca2843e41c2e36ddd95c0c0de6047b2bb5e80`、`script.md` SHA-256 `c12d764f3dcc2dad2f60b398269b250bd7e7d8589f1c82bfa3c36577f80a68a4`；89 景、102 句、六章，`narrative_hash=59c8fdd94bfabe98`、`speech_hash=ea11af6360013a22`。三句與單句領帶景的刪除、資料卡轉移、`lint` 0/0、`tts --dry-run` 0 句待合成，見[來源圖卡路線收據](source-card-led-route-20261014.md)。尚未重建時間軸或取得新雜湊的敘事／音訊核准；下文各「最新」「現行」都是當時快照。
+
+**2026-10-14 最新路線（來源圖卡主導）：** 站主已選擇調整原先插畫至少 50% 的規格。正式 `video.json` 的 54 個尚無可採用圖片的 `shot` 全改為原生資料卡或已授權 FBI 物證照，現為 **0 個 `shot`**；91 景、106 句的順序與旁白文字未改。`look` 與縮圖舊 `boy-bank` 圖片依賴已移除，縮圖改以深藍文字版型規劃。上一版 15,912 格時間窗直接套新場景計算為 106 狀態、最長 7.8 秒、平均 5.0 秒；`lint` 0 error／0 warning、`renderProblems=[]`。這是離線分鏡，尚未重建正式 `timeline.json`、重跑獨立敘事盲審或取得**新版**音訊雜湊核准；站主剛核准的 `d01d2405…` 只屬改卡前版本。埋沙對照 SVG 加深色下帶後，720p／1080p 雙行模擬 CC 不壓事實字，但模板外層仍有窄奶油色邊，原生卡片底部來源行亦須正式 CC 檢查。具體素材、時間窗、抽看與餘下關卡見[來源圖卡路線收據](source-card-led-route-20261014.md)。以下舊版「現行」、比例與已核准敘述均是各輪歷史快照。
+
+**2026-10-14 兩張來源卡與去重候選：** `arrival-cabin`、`aircraft-search` 的 MiniMax 圖仍保留退件紀錄，正式分鏡已改接兩張 FBI 案件史依據的原創來源示意卡。首版盲審 9/11，原始 FAIL 答案留存；只刪重述購票名的 `h5v038` 與重述對照步驟的 `h5v100`，其餘 106 句錄音未動。新 `narrative_hash=95245c2bcde00773` 待獨立盲審；`speech_hash=64172cdd8198a5ae` 使舊時間軸核准過期。離線樣本投影 15,912 格／8:50.4、55 shot 占 53.5382%、最長狀態 7.8 秒、lint 0／0；兩卡正式 renderer 與 1080p／720p 雙行 CC 靜格檢查過，但未做正式有聲剪接或站主驗收。改前快照、FBI／論文來源、圖卡與新 payload 雜湊、負面盲審及後續關卡見[兩卡去重紀錄](two-sourcecards-norecap-recovery-20261014.md)。以下舊版「現行」字樣按當時快照保留。
+
+**2026-10-14 年代訂正與六圖授權中的 H05 兩鏡後檢：** `h5v063`–`065` 的既有 WAV 已移到 `h5v084` 之後，108 句單句音檔 SHA／樣本數未變；現行 `narrative_hash=d4db5dc99dea1f24` 通過新獨立盲審 11/11，`timeline.json` SHA-256 `f8d106653941b3b90c9d3d6d6adf50f8bbb653bffde941073b43ce721e414468` 已讀回站主音訊核准。付費小樣 `arrival-cabin`（judge 10/10）只可作美術方向參考，座墊黃色形狀有虛構遺留物的讀法；`aircraft-search`（judge FAIL，subject 0）畫出滿艙乘客和走道人物，人工退件。兩鏡各一張、各一次判圖已用完，新增 US$0.027，無同鏡重抽；這兩張現圖均未正式採用，H05 停在小樣，完整分鏡、成片與上傳關卡仍未過。原始憑證、雜湊、時窗與獨立冷看範圍見[後檢](authorized-six-pilot-postflight-20261014.md)。以下各段較舊雜湊和「待核准」文字，依其當時快照保留。
 **2026-10-14 三鏡小樣最新：** 正式 `timeline.json` SHA-256 `db2aeb68147ebda3ece14222198f71338dc6101fc27cce06099b66e147457aee` 已在 `approvals.json` 及 `status` 讀回音訊核准；下段「待站主核准」是送出時快照。站主限額授權 `open-threat`、`open-tail`、`open-boy` 各一張 MiniMax 圖與一次判圖，已恰好完成 3 張＋3 次、增加 US$0.0405、帳本總計 US$0.1755。`open-threat` 判圖 PASS 但人工退件，`open-tail` 判圖 FAIL 且人工退件，`open-boy` 判圖 10 分但人工與主製作代理獨立目視均退件（腳下無來源橘紅斑塊）；完整原圖、裁圖、判圖、請求 key、封存與費用見 [visual-pilot-05-20261014.md](visual-pilot-05-20261014.md)。**沒有可核准的連續三鏡，停止付費擴批。**
 
 **2026-10-14 現行關卡：**`open-note` 原生圖卡已保留；敘事盲審先在 `payoffs` 指出 h5v029、h5v103 未點名回扣，兩句窄修後換一名獨立讀者重審，**11/11 通過**（narrative hash `31f279e4aaa020c5`）。正式 `video.json` SHA-256 `472db853bc021374430ce5d80387442544cf72cd195f10e9e06aa86b07c94095`、`timeline.json` SHA-256 `db2aeb68147ebda3ece14222198f71338dc6101fc27cce06099b66e147457aee`；只重錄兩句、53 計費字元，100 段沿用，108/108 句檢查中兩句新錄音逐字對上，原 12 句標記不變。正文 540.133 秒；61 個 `shot` 佔 58.5658%，最長狀態 7.833 秒，節奏問題 0。**新版音訊已送後台待站主核准，尚未讀回核准。**細節與舊版界線見 [敘事回扣與正式語音](narrative-payoff-repair-20261014.md)。下方把舊版稱為「現行」的段落，均是當時快照。
@@ -79,3 +87,7 @@
 核准旁白的兩段隔離有聲草剪、三卡和夜雲前後銜接抽格、尾梯來源欄 720p／1080p CC 安全區候選、剩餘 57 shot 的最小下一批，見 [離線草剪與安全區收據](offline-approved-roughcut-20261014.md)。尚未全段實速看聽、未採用來源欄候選，正式時間軸與核准未改。
 
 另完成 [forest-unknown 來源卡隔離草剪](forest-unknown-sourcecard-offline-20261014.md)：候選 SVG 已留在 diagrams，但正式 `video.json` 仍為 shot；新舊兩版有聲 MP4 與逐檔收據並存。夜雲到米白字卡仍有明顯風格跳動，未宣稱整段通過。
+
+## 最新狀態：森林卡正式接入與兩鏡免費預檢（2026-10-14）
+
+已將原創 `forest-unknown` 來源 SVG 作為正式 `diagram` 接入，並在 H05 的 `tail-stairs-ground` 單景把來源註記移入第一步文字框；720p／1080p 雙行 CC 隔離抽格可讀、互不遮擋。`aircraft-search` 付費小樣提示改為來源安全的空機艙抽象調查氛圍。`script.md` 的差異**只有** forest 場景標記由 `shot` 改為 `diagram`，及重算的 narrative 尾註；108 句 ID、順序、句文與 speech 尾註均未改。完整改前快照、正式新雜湊、54.8507% 插圖時長、cadence／lint／單鏡 dry-run、雙行字幕抽格與後續 gate 見 [2026-10-14 森林卡與兩鏡免費預檢](forest-tail-siximage-preflight-20261014.md)。目前 `narrative_hash=5bb0168fb306c862`，舊盲審已過期；現有已核准 `timeline.json` 與 `approvals.json` 尚未改，新版畫面需先獨立盲審、重綁時間軸及按新 SHA 讀回音訊核准。**本輪沒有付費請求，也未把兩鏡小樣或全片判為通過。**

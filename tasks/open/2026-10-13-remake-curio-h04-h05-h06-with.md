@@ -31,8 +31,9 @@ cuts, receipts, draft PRs and H05's unfinished work.
 
 - [x] H04-v2, H05-v2 and H06-v2 each have a separately checked complete zh-TW
       script, source records, `loops` and a passing blind narrative review
-      bound to their latest visual/story structure.
-- [ ] Each new slug has checked narration, source-bound artwork, current branding,
+      bound to their latest visual/story structure. (All three prior versions
+      passed; repeat the blind review after the source-card storyboard change.)
+- [x] Each new slug has checked narration, source-bound artwork, current branding,
       8+ minutes of body, synchronized zh-TW CC and a newly QA-checked full MP4.
 - [ ] Each new upload package and backend review binds the new hashes. Keep
       owner playback and Studio upload/publication as separate recorded gates.
@@ -321,3 +322,130 @@ one MiniMax image and one normal judge per shot, no retries or bulk generation:
 six image/judge pairs, roughly US$0.081 at the last actual unit price. This is
 not yet authorized or run. The rough cuts must be watched, the H05 footer
 fixed, and all new formal hashes and gates reopened if any diagrams are adopted.
+
+2026-10-14 H04/H05 postflight checkpoint for the owner-authorized six-image
+pilot: H04 and H05 have each consumed exactly two MiniMax images and two normal
+judges, with no same-shot retries or outstanding ledger reservations. This
+four-image portion cost US$0.054 (US$0.027 per slug). H04 ledger is now
+US$2.906 / 217 images / 215 judges; H05 is US$0.216 / 16 / 16. Both current
+script structures passed fresh 11/11 independent narrative review, and audio
+approvals were read back for exact current timeline SHA values: H04
+`12b18320ed0e246b25ace3ea844f55bbc91f17374e95bc87c85fe1d2bd9b6790`,
+H05 `f8d106653941b3b90c9d3d6d6adf50f8bbb653bffde941073b43ce721e414468`.
+H05 moved unchanged h5v063–065 WAVs after h5v084 to repair a 2020-before-1980
+chronology error; all 108 per-line audio hashes and sample counts match, but
+the composite WAV and playback-order hash changed.
+
+Normal judges passed both H04 images (9.29 each), but human and separate
+static-image cold review retained `tent-opening-question` only as an art
+direction candidate and rejected `model-paper-card` for a fabricated yellow
+tent, trees and overly specific slab. H05 `arrival-cabin` passed 10/10 yet is
+only an art direction candidate because a yellow seat shape reads as an
+unsupported left-behind object. H05 `aircraft-search` failed normal judge
+despite 9.71 overall (`subject=0`) and was human-rejected for seated passengers
+and an aisle person in the intended vacant cabin. None of these four frames
+has formal human adoption; cold review inspected still images only, not a
+normal-speed audible cut. H04 planned 7,935/15,827 shot frames (50.1358%) and
+H05 planned 8,888/16,204 (54.8507%) remain conditional allocations, not
+delivered usable illustration coverage. H04/H05 visual branches stop at pilot;
+no same-shot redraw, storyboard submission or bulk image batch. Exact image
+SHA, judge/human split, receipts and preflight corrections are in each v2
+`authorized-six-pilot-postflight-20261014.md`. H06's two authorized shots are
+outside this checkpoint and require their own narrative/audio gate and review.
+
+2026-10-14 current-audio and H06 pilot checkpoint: H05's two source-card
+substitutions and removal of repeated `h5v038`/`h5v100` are now formal. A fresh
+independent blind review passed 11/11; 106 original line WAVs were reused with
+zero synthesis, yielding 8:50.4 and current timeline SHA-256
+`fd724a0c4318fe76fcb4a1811dadbf09f0aeff47d0849bfc025ceb03fed50fbc`.
+The owner approved this exact hash in the backend and `review-pull` recorded it.
+H06 re-recorded only the two owner-authorized DNA payoff lines once each
+(57 billable characters), passed fresh 11/11 blind review and audio checks,
+yielding 101 lines / 8:09.23; the owner also approved exact timeline SHA-256
+`8c825dd0a0131fdd6ff358f14d90b791ab4a8c7554ff3d89d8bc05a0166c301b`.
+The three current H04/H05/H06 timeline approvals now match their formal files.
+
+With these gates clear, H06 generated only the authorized `dna-hair-and-box`
+single MiniMax take and one normal judge, costing US$0.0135. The judge's 9.29
+PASS did not survive original-image and independent cold review: multiple red
+shapes, thick hair-like strip and photographic paper/shadows violate its one-
+accent, flat 2D brief. It is not accepted or counted toward illustration time.
+H06 ledger is US$0.162 / 12 images / 12 judges / 0 reserved. No paid call was
+made for the second named H06 shot. If the rejected 214-frame slot becomes a
+source card, even a passing second shot leaves only 7,250/14,677 planned shot
+frames (49.40%); the repeated visual defects and sub-50% route therefore stop
+this pilot without redraw or batch. The six-image authorization has used five
+image/judge pairs, US$0.0675 total this round. H04/H06 need an owner decision
+between a source-card-led slide specification and a new source-safe illustration
+production route; see their dated route/postflight docs. H05's latest isolated
+five-scene preview and source-card subtitle clearance are under review; no full
+v2 final MP4, QA, storyboard approval or Studio upload exists.
+
+2026-10-14 H05 research-control source-card follow-up: `burial-edge` is now a
+formal source-labelled diagram based on the Kaye/Meltzer 2020 methods and
+results, rather than an unmade `shot`. A fresh independent 11/11 narrative
+review passed; the first CLI submission had an answer-wrapper format error,
+preserved separately, and the corrected round 25 passed. All 106 line WAVs,
+their order/windows, and the master WAV were unchanged; `tts` synthesized 0
+new lines and `check-audio` checked 106/106 with 11 older owner-reviewed flags.
+New timeline SHA-256 is
+`d01d24050ec6cd6a7d5cd720b677ccb64b7bfdbd5368c02b0b08327206f5d391`,
+15,912 frames / 8:50.4. The owner approved this exact new H05 audio card in
+the backend and `review-pull` recorded the matching SHA. Planned `shot` time
+is now 8,314/15,912 = 52.2499%; 54 planned shots still lack human-accepted
+images. The isolated five-scene H05 preview decoded and kept the same PCM
+samples, but source-card/CC clearance and full-speed visual acceptance are
+still pending. See `burial-edge-formal-adoption-20261014.md`; there is still no
+full v2 final MP4, QA, storyboard approval or Studio upload.
+
+2026-10-14 owner visual-route decision: after five of the six authorized
+MiniMax image/judge pairs, the owner selected source-card-led slides for
+H04-H06 and explicitly relaxed the earlier minimum 50% illustration-time
+specification. The old 50% calculations above are historical comparisons,
+not a current acceptance gate. We are preparing source-bound, varied cards
+and offline audiovisual checks within the three v2 projects; no further
+paid image batch is implied by this decision. Any formal scene/template
+change needs a fresh independent narrative review, timeline rebuild using
+the unchanged accepted WAV takes, exact backend audio approval for the new
+hash, and then scene-by-scene render/CC and continuous playback QA before
+storyboard or final-video approval. Rejected MiniMax frames stay rejected.
+
+2026-10-14 source-card production checkpoint: H04 is now 88 scenes / 100
+lines / 0 shots, 8:47.57; formal blind review passed 11/11 and exact audio
+timeline SHA `967955adb1a861e3facbdd69285654a2a293b7a275b8bfe6745ced283a97e2f5`
+was auto-approved and read back. Its first full frame render passed, but
+actual CC overlay inspection found lower source labels crossing the caption
+reserve, so that render is not final. H05 is 89 scenes / 102 lines / 0 shots,
+8:32.70 after owner-selected no-recap deletions; fresh blind review passed
+11/11, and the owner approved the exact timeline SHA
+`c43d09a858bfd8a39882510b52e3b8cda79563be07c978854387940489f6ac76`,
+read back locally. H06 is 82 scenes / 100 lines / 0 shots, 8:06.07 after
+owner-selected deletions and one owner-authorized new fact line `dm7x`.
+The new line was synthesized exactly once (24 billable characters) and
+transcribed word for word; 100/100 lines were checked with eight previously
+reviewed flags. Fresh blind review passed 11/11, and the owner approved the
+exact timeline SHA
+`8683ca0e61c7e8bf83cd5e390618435467e21da1e3329eed125f216a0c31ac05`,
+read back locally. No full MP4, final QA, package or v2 Studio upload exists.
+The three episode docs have a separate ticket for an opt-in CC-safe renderer
+rule (`2026-10-14-keep-curio-source-card-footers-clear`); after flagging
+affected scenes, verify timelines stay approved, rerender and inspect actual
+1080p/720p CC before assembly.
+
+2026-10-14 full-production checkpoint (supersedes the preceding no-MP4
+snapshot): all three source-card-led versions now have complete 1080p H.264/AAC
+MP4s, original credited thumbnails, approved exact narration timelines,
+8+ minutes of measured body, zh-TW CC, checked source cards, and fresh QA.
+H04: 9:13.600 final, SHA-256 `ae9b62809dae82eaf96059fb4474c485f28d969f5d3ce47fd723303da1d88f0e`,
+11/11 QA. H05: 8:58.700 final, SHA-256
+`32cdc6403dbd321300c3a53ed2d2953696a3aa79da9ede5e977c00423499eb79`,
+10/11 QA: seven FBI/FAA URLs return 403 to the local editorial GET;
+independent browser opening succeeded, but the automated links item remains
+failed. H06: 8:32.100 final, SHA-256
+`f6eb1afd271d774fde36300bf57e63287e9a1013cf85c9ff7b7dc55a532eee3a`,
+11/11 QA. H04 and H06 final gates are backend-approved and read back; their
+zh-TW upload packages pass 4/4 and their publish-package gates are approved
+and read back. H05 final review was submitted with the real 10/11 report and
+is pending owner decision; its upload package has not been built. No new v2
+video has been uploaded to YouTube or published. Language selections are undecided;
+`languages.json` records `decided_at:null`, not a zh-TW-only owner decision.

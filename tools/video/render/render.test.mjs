@@ -9,7 +9,7 @@ import { EXIT, main } from "../cli.mjs";
 import { compilationSandbox } from "../compile/fixture.mjs";
 import { compilationDocument, THUMB_SOURCE } from "../core/compilation.mjs";
 import { dramaFixture, explainerFixture, sandbox, tempDir } from "../core/fixtures/load.mjs";
-import { estimateTimeline, visualHash } from "../core/timeline.mjs";
+import { estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
 import { LAUNCH_ARGS, resolveRequest } from "./browser.mjs";
 import { compareRuns } from "./repeat.mjs";
 import { localizedThumbnailHash, thumbnailSource, thumbnailSourceHash } from "../core/translations.mjs";
@@ -153,6 +153,79 @@ test("a stock photo is read from the work directory: listed in assets[], fetched
   assert.notEqual(two.key, one.key, "a swapped photo redraws the slide that shows it");
   assert.notEqual(state(renderPlan(doc, "t", root)).key, two.key, "without the work directory the bytes are not in the key");
   assert.equal(resolveRequest(`https://video.local/work/${stock}`, { root, workdir, pages: new Map() }).file, path.join(workdir, "stock", `${sha}.png`), "the fake origin serves it from the work directory");
+});
+
+test("an opted-in, credited repository picture fills the thumbnail without changing scenes or speech", () => {
+  const root = fileURLToPath(new URL("../../../", import.meta.url));
+  const plain = structuredClone(showcase);
+  const doc = structuredClone(showcase);
+  const asset = doc.assets[0].path;
+  doc.thumbnail.data.asset = asset;
+  assert.deepEqual(renderProblems(doc, root), []);
+  const before = renderPlan(plain, "t", root);
+  const after = renderPlan(doc, "t", root);
+  const url = `https://video.local/repo/${asset}`;
+  assert.match(after.thumbnail.html, new RegExp(`<img src="${url.replaceAll(".", "\\.")}" alt="">`));
+  assert.ok(after.thumbnail.variants.every((variant) => variant.html.includes(url)), "variants inherit the chosen picture");
+  assert.equal(resolveRequest(url, { root, workdir: null, pages: new Map() }).file, path.join(root, asset));
+  assert.notEqual(after.thumbnail.key, before.thumbnail.key);
+  assert.deepEqual(after.scenes, before.scenes, "a thumbnail picture does not redraw video scenes");
+  assert.deepEqual(estimateTimeline(doc), estimateTimeline(plain));
+  assert.equal(speechHash(doc, { terms: {} }), speechHash(plain, { terms: {} }));
+  assert.notEqual(visualHash(doc), visualHash(plain), "only the visual status needs refresh");
+  assert.equal(renderPlan(plain, "t", root).thumbnail.html, before.thumbnail.html, "unflagged thumbnails are unchanged");
+  const badVariant = structuredClone(doc);
+  badVariant.thumbnail.variants[0].data.asset = "docs/videos/missing-variant.jpg";
+  assert.match(renderProblems(badVariant, root).map((problem) => problem.message).join(" "), /variant b: data.asset .*not in assets\[\]/);
+});
+
+test("thumbnail assets require an allowed local picture and a credited assets[] entry", () => {
+  const root = fileURLToPath(new URL("../../../", import.meta.url));
+  const doc = structuredClone(showcase);
+  delete doc.thumbnail.variants;
+  const asset = doc.assets[0].path;
+  doc.thumbnail.data.asset = asset;
+  const messages = () => renderProblems(doc, root).filter((problem) => problem.path === "thumbnail").map((problem) => problem.message);
+  doc.assets = [];
+  assert.match(messages().join(" "), /not in assets\[\]/);
+  doc.assets = [{ path: asset, source: "", license: "Public domain" }];
+  assert.match(messages().join(" "), /needs source and license/);
+  doc.assets = [{ path: "docs/videos/missing-thumbnail.jpg", source: "Museum", license: "Public domain" }];
+  doc.thumbnail.data.asset = doc.assets[0].path;
+  assert.match(messages().join(" "), /does not exist/);
+  doc.thumbnail.data.asset = "docs/videos/../secret.jpg";
+  assert.match(messages().join(" "), /must be a raster image/);
+  doc.thumbnail.data.asset = "apps/api/.env";
+  assert.match(messages().join(" "), /must be a raster image/);
+  doc.thumbnail.data.asset = asset;
+  doc.assets = showcase.assets;
+  doc.thumbnail.data.shot = "some-shot";
+  assert.match(messages().join(" "), /cannot be combined/);
+});
+
+test("a credited stock thumbnail uses the work route and changes key with the picture bytes", () => {
+  const root = fileURLToPath(new URL("../../../", import.meta.url));
+  const workdir = tempDir("video-thumbnail-asset-");
+  const asset = `stock/${"c".repeat(64)}.jpg`;
+  const file = path.join(workdir, asset);
+  const doc = structuredClone(showcase);
+  delete doc.thumbnail.variants;
+  doc.thumbnail.data.asset = asset;
+  doc.assets.push({ path: asset, source: "Archive photograph", license: "Public domain" });
+  assert.match(renderProblems(doc, root, { workdir })[0].message, /does not exist in the work directory/);
+  mkdirSync(path.dirname(file), { recursive: true });
+  writeFileSync(file, "first photo bytes");
+  assert.deepEqual(renderProblems(doc, root, { workdir }), []);
+  const first = renderPlan(doc, "t", root, { workdir });
+  const url = `https://video.local/work/${asset}`;
+  assert.ok(first.thumbnail.html.includes(url));
+  assert.equal(resolveRequest(url, { root, workdir, pages: new Map() }).file, file);
+  assert.equal(renderPlan(doc, "t", root, { workdir }).thumbnail.key, first.thumbnail.key);
+  writeFileSync(file, "second photo bytes");
+  const second = renderPlan(doc, "t", root, { workdir });
+  assert.equal(second.thumbnail.html, first.thumbnail.html);
+  assert.notEqual(second.thumbnail.key, first.thumbnail.key, "swapped bytes invalidate the thumbnail cache");
+  assert.deepEqual(second.scenes, first.scenes, "no video frame needs a redraw");
 });
 
 test("render draws a stock photo slide from the work directory and redraws it when the photo changes", async () => {

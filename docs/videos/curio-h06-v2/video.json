@@ -17,18 +17,13 @@
   "subtitles": {
     "burn_in": false
   },
-  "look": {
-    "preset": "cute-mystery",
-    "style": "Hand-printed two-dimensional editorial mystery panels on matte paper. Irregular dark ink outlines surround broad opaque navy, muted teal and parchment shapes with one small red accent; visible paper grain, slight screen-print misregistration and shallow cut-paper layers make every surface visibly drawn. Use full-bleed asymmetric 16:9 compositions with one clear focus in the centre third. Objects remain simple graphic forms. When a scene names an adult, draw natural adult proportions and preserve its specified rear view or cropped hands.",
-    "negative": ""
-  },
   "youtube": {
     "category_id": 27,
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "柏林運河救起的女人，真是安娜塔西亞嗎？｜奇聞檔案局",
     "video_id": null,
-    "description": "一九二〇年，柏林運河邊救起一名不肯說出名字的女子。她後來與安娜塔西亞公主的名字連在一起；一場官司、兩份保存的檢體和俄國林地的兩座墓，分別把這個身分問題帶往不同的答案。\n\n本集按事件與證據被查出的順序，分清德國法院實際裁定的範圍、安德森檢體與皇后、毛赫爾母系的比對，以及兩篇二〇〇九年研究對五名子女和第二墓女孩個別名字的結論。\n\n歷史場景的可愛卡通插圖是 AI 生成的情境示意，並非當時照片、原始判決或實際檢體；片中的三張真實歷史照片會在畫面上標示可確認的年代及館藏。安娜・安德森只用背影或剪影，不重建其臉部。一九七〇年判決內容據第三方保存的法院文件掃描核對；一九九五年 Nature Genetics 正文需付費，本片只依可讀書目、研究者訪談和機構說明敘述檢體結果。僅提供繁體中文旁白與可關閉的繁體中文字幕。資料截至 2026-10-14。",
+    "description": "一九二〇年，柏林運河邊救起一名不肯說出名字的女子。她後來與安娜塔西亞公主的名字連在一起；一場官司、兩份保存的檢體和俄國林地的兩座墓，分別把這個身分問題帶往不同的答案。\n\n本集按事件與證據被查出的順序，分清德國法院實際裁定的範圍、安德森檢體與皇后、毛赫爾母系的比對，以及兩篇二〇〇九年研究對五名子女和第二墓女孩個別名字的結論。\n\n本集以附來源的原創圖解、對照與資料卡敘事；三張歷史照片標示可確認的年代及館藏。圖解是現代編輯整理，並非事發現場、原始判決、實際檢體或遺骸影像；不重建安娜・安德森的臉部。一九七〇年判決內容據第三方保存的法院文件掃描核對；一九九五年 Nature Genetics 正文需付費，本片只依可讀書目、研究者訪談和機構說明敘述檢體結果。母系與墓葬圖卡是現代教學示意，並非檢驗紀錄或遺骸照片。僅提供繁體中文旁白與可關閉的繁體中文字幕。資料截至 2026-10-14。",
     "tags": [
       "安娜塔西亞",
       "安娜安德森",
@@ -118,6 +113,12 @@
       "license": "Public domain (PD-Bain)",
       "author": "Boissonnas et Eggler",
       "url": "https://commons.wikimedia.org/wiki/File:Grand_Duchess_Anastasia_Nikolaevna_Crisco_edit_letters_removed.jpg"
+    },
+    {
+      "path": "docs/videos/curio-h06-v2/diagrams/thumbnail-original.png",
+      "source": "Mokaair original editorial vector at docs/videos/curio-h06-v2/diagrams/thumbnail-original.svg, rasterized for this thumbnail on 2026-10-14; the scales, question mark and DNA motif are modern symbols",
+      "license": "Mokaair original",
+      "author": "Mokaair Editorial"
     }
   ],
   "scenes": [
@@ -126,7 +127,8 @@
       "template": "diagram",
       "data": {
         "svg": "docs/videos/curio-h06-v2/diagrams/canal-concept.svg",
-        "caption": "運河概念圖｜非事發現場重建"
+        "caption": "運河概念圖｜非事發現場重建",
+        "cc_safe": true
       },
       "claims": [
         "c02"
@@ -145,7 +147,8 @@
       "template": "diagram",
       "data": {
         "svg": "docs/videos/curio-h06-v2/diagrams/unknown-name.svg",
-        "caption": "姓名空白的編輯圖解｜非警方文件"
+        "caption": "姓名空白的編輯圖解｜非警方文件",
+        "cc_safe": true
       },
       "claims": [
         "c02"
@@ -159,11 +162,9 @@
     },
     {
       "id": "hook-hospital-door",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Wide flat 2D editorial cut-paper diagram of an unspecified Berlin hospital setting in 1922, not an archival scene. At the far left, one small anonymous adult woman appears only as a dark rear-facing silhouette from shoulders to hem; no face, side profile, identifiable clothing or action. Three broad opaque wall and floor planes sweep diagonally across the frame toward a pale abstract light rectangle at right, with one tiny vermilion square as a graphic accent. Keep the right half open; there is no doorway, bench, detailed window, visitor, sign or record. Coarse irregular ink edges, matte paper layers and visibly drawn shadows fill the 16:9 frame without photographic lighting or realistic surfaces.",
-        "camera": "pan right",
-        "visual": "still"
+        "svg": "docs/videos/curio-h06-v2/diagrams/hospital-name-link.svg"
       },
       "claims": [
         "c03"
@@ -178,11 +179,23 @@
     },
     {
       "id": "hook-hospital-door-beat-2",
-      "template": "shot",
+      "template": "compare",
       "data": {
-        "prompt": "Flat 2D medium close-up of a symbolic closed hospital doorway drawn as layered paper rectangles. Two separate, unoccupied pools of shadow approach from left and right, leaving a bright space between them. The empty doorway is the central focus in this visual diagram of competing later accounts.",
-        "camera": "push in",
-        "visual": "still"
+        "title": "誰先說出公主名字？",
+        "left": {
+          "heading": "判決版本一",
+          "points": [
+            "她先自稱"
+          ]
+        },
+        "right": {
+          "heading": "判決版本二",
+          "points": [
+            "旁人先提"
+          ]
+        },
+        "source": "來源：BGH 1970 判決掃描｜編輯整理",
+        "cc_safe": true
       },
       "claims": [
         "c03"
@@ -196,11 +209,9 @@
     },
     {
       "id": "hook-three-answers",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Wide flat 2D top-down editorial diagram of appellate review, made only of four thick unlettered color tiles rather than documents. A lower-right dark tile sits beneath an upper-left muted-teal tile; one short vermilion ink path bends between them and stops at the upper tile. Put the red bend in the centre third as the single focus, with wide open matte-paper ground around it. Use opaque cut-paper fields and irregular ink edges, never realistic stone or glass. No courthouse, doorway, stairs, people, text, seals, heraldry, gavel or purported case files. This modern visual metaphor shows a higher court checking an earlier decision; it does not identify the woman or depict the real court.",
-        "camera": "pan left",
-        "visual": "still"
+        "svg": "docs/videos/curio-h06-v2/diagrams/appellate-review.svg"
       },
       "claims": [
         "c05",
@@ -217,11 +228,11 @@
     },
     {
       "id": "hook-three-answers-beat-2",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Flat 2D close-up of two large closed blank folders separated by a slim strip of dark desk. One folder stands vertically in shadow, the other lies horizontal in light; the different orientation makes two competing claims legible as shapes. Both covers remain uninterrupted matte paper fields.",
-        "camera": "push in",
-        "visual": "still"
+        "kicker": "法院卷宗的另一條線",
+        "text": "另一個女人的名字",
+        "sub": "來源：BGH 1970 判決掃描｜編輯整理"
       },
       "claims": [
         "c05",
@@ -238,11 +249,23 @@
     },
     {
       "id": "hook-sample-box",
-      "template": "shot",
+      "template": "compare",
       "data": {
-        "prompt": "Flat 2D close-up of one conceptual sealed sample case shown as an opaque rectangular box against a shallow laboratory-colour field. Its featureless lid catches a broad angled band of light; a narrow dark gap under the lid is the focus. The case is an instructional prop rather than a pictured historical specimen or laboratory act.",
-        "camera": "drift",
-        "visual": "still"
+        "title": "兩類保存檢體",
+        "left": {
+          "heading": "醫院保存",
+          "points": [
+            "病理組織"
+          ]
+        },
+        "right": {
+          "heading": "另一組取得",
+          "points": [
+            "頭髮"
+          ]
+        },
+        "source": "來源：CSHL 研究者訪談；CSUEB 解說",
+        "cc_safe": true
       },
       "claims": [
         "c08",
@@ -258,11 +281,11 @@
     },
     {
       "id": "hook-sample-box-beat-2",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Flat 2D overhead close-up of three plain wood teaching tokens connected by two taut cords branching from one larger central token. A single red thread highlights the shared maternal route across the otherwise blank tokens. The shapes are a modern lineage diagram, not physical evidence or a genetic test result.",
-        "camera": "push in",
-        "visual": "still"
+        "kicker": "片頭未解的問題",
+        "text": "兩份檢體能回答什麼？",
+        "sub": "來源：CSHL 研究者訪談；CSUEB 解說"
       },
       "claims": [
         "c08",
@@ -277,11 +300,17 @@
     },
     {
       "id": "hook-forest-path",
-      "template": "shot",
+      "template": "stats",
       "data": {
-        "prompt": "Wide flat 2D summer forest path near Yekaterinburg rendered as layered birch silhouettes and a winding unmarked path. One small anonymous adult searcher is visible only from behind at the far bend, walking toward a patch of open ground. The scene is a generic search illustration, not a reconstruction of the find spot, discovered remains or the finder's appearance.",
-        "camera": "pull out",
-        "visual": "still"
+        "title": "俄國林地的新線索",
+        "stats": [
+          {
+            "value": "2007",
+            "label": "林地發現不明碎片"
+          }
+        ],
+        "source": "來源：Coble 等，PLOS ONE 2009",
+        "cc_safe": true
       },
       "claims": [
         "c12",
@@ -297,11 +326,23 @@
     },
     {
       "id": "hook-forest-path-beat-2",
-      "template": "shot",
+      "template": "compare",
       "data": {
-        "prompt": "Flat 2D close-up of layered birch leaves and a small intact patch of earth, with one simple circular gap in the leaf pattern. Broad patches of summer light pick out the ground texture. The image is a conceptual pause on a search, with no hand, object or depicted discovery.",
-        "camera": "push in",
-        "visual": "still"
+        "title": "碎片帶來的問題",
+        "left": {
+          "heading": "已發現",
+          "points": [
+            "小型遺骸碎片"
+          ]
+        },
+        "right": {
+          "heading": "待核對",
+          "points": [
+            "兩名缺席孩子的身分"
+          ]
+        },
+        "source": "來源：Coble 等，PLOS ONE 2009",
+        "cc_safe": true
       },
       "claims": [
         "c12",
@@ -316,11 +357,11 @@
     },
     {
       "id": "hook-empty-file",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Flat 2D close-up of a modern graphic filing grid containing one large empty compartment. The compartment's pale unmarked interior occupies the centre; dark frame lines recede on either side. A spare red marker points to the vacant space as an editorial metaphor for an unanswered identity, not a surviving archival file.",
-        "camera": "pan left",
-        "visual": "still"
+        "kicker": "柏林女子的身分",
+        "text": "她真是安娜塔西亞嗎？",
+        "sub": "編輯提問｜證據待查"
       },
       "claims": [
         "c02",
@@ -336,33 +377,13 @@
       ]
     },
     {
-      "id": "berlin-name-blank",
-      "template": "big",
-      "data": {
-        "kicker": "柏林，1920 年",
-        "text": "姓名：空白",
-        "sub": "開場插圖為 AI 情境示意，非現場照片"
-      },
-      "claims": [
-        "c02",
-        "c03"
-      ],
-      "lines": [
-        {
-          "id": "rbd5",
-          "text": "要查她是不是公主，病院裡卻連本名都核對不了。",
-          "emotion": "像說給身旁的人聽，先輕後重"
-        }
-      ],
-      "chapter": "病院裡有人叫她公主"
-    },
-    {
       "id": "berlin-hospital-window",
       "template": "photo",
       "data": {
         "image": "stock/666a3939101ff4d3e5d5f85c24bd71df5fa63827e7b2aee6bab87a5a75f55e4c.jpg",
         "caption": "Dalldorf 病院舊照，1885 年；非當年現場",
-        "credit": "F. A. Schwartz／Heimatmuseum Reinickendorf"
+        "credit": "F. A. Schwartz／Heimatmuseum Reinickendorf",
+        "cc_safe": true
       },
       "claims": [
         "c02"
@@ -372,7 +393,8 @@
           "id": "c63r",
           "text": "後來人們叫她安娜・安德森；那時，她仍不肯說家世。"
         }
-      ]
+      ],
+      "chapter": "病院裡有人叫她公主"
     },
     {
       "id": "berlin-staff-corridor",
@@ -380,7 +402,7 @@
       "data": {
         "kicker": "柏林病院",
         "text": "來歷仍只能猜",
-        "sub": "她的說法與模樣，還不是身分證明"
+        "sub": "來源：BGH 判決掃描｜編輯整理"
       },
       "claims": [
         "c02",
@@ -395,11 +417,11 @@
     },
     {
       "id": "berlin-closed-album",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Flat 2D close-up of a small closed leather portrait case standing alone on a plain shelf. Its unembossed back and simple brass hinge catch one wedge of window light. The still life bridges to the later photograph accounts; it depicts neither a particular visitor nor an authenticated object.",
-        "camera": "pull out",
-        "visual": "still"
+        "kicker": "1918 年後的傳聞",
+        "text": "皇室留下的空位",
+        "sub": "來源：PLOS ONE 2009｜歷史脈絡"
       },
       "claims": [
         "c03"
@@ -427,7 +449,8 @@
             "label": "柏林女子獲救"
           }
         ],
-        "source": "BGH 判決掃描；PLOS ONE｜2009 年原始論文"
+        "source": "BGH 判決掃描；PLOS ONE｜2009 年原始論文",
+        "cc_safe": true
       },
       "claims": [
         "c01",
@@ -452,7 +475,8 @@
       "data": {
         "image": "stock/39cf832726b47d988e1d6dbf4ea2787b714dd08dc73e601cfba4bed1955d778f.jpg",
         "caption": "尼古拉二世與兒子阿列克謝，約 1917 年",
-        "credit": "美國國會圖書館 Bain 收藏｜ggbain-20441"
+        "credit": "美國國會圖書館 Bain 收藏｜ggbain-20441",
+        "cc_safe": true
       },
       "claims": [
         "c01",
@@ -467,30 +491,12 @@
       ]
     },
     {
-      "id": "berlin-name-card",
-      "template": "shot",
-      "data": {
-        "prompt": "Flat 2D close-up of a large uninterrupted pale field beside the edge of a stylised hospital reception counter. One narrow shadow separates the empty field from the counter. The open space is a present-day graphic placeholder for the unresolved name, not a patient registration card.",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "claims": [
-        "c03"
-      ],
-      "lines": [
-        {
-          "id": "e773",
-          "text": "就在病院的空白姓名欄旁，一個名字開始流傳。"
-        }
-      ]
-    },
-    {
       "id": "berlin-two-visitors",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Overhead flat 2D split composition of two separate unmarked rectangles on opposite sides of a narrow light gap. One rectangle carries the shape of a closed portrait case; the other is a plain folded paper. Their visual separation represents competing later accounts in a modern comparison graphic.",
-        "camera": "push in",
-        "visual": "still"
+        "kicker": "病院裡的起點",
+        "text": "誰先提起安娜塔西亞？",
+        "sub": "來源：BGH 1970 判決掃描｜編輯整理"
       },
       "claims": [
         "c03"
@@ -505,11 +511,17 @@
     },
     {
       "id": "hospital-visitors-enter",
-      "template": "shot",
+      "template": "stats",
       "data": {
-        "prompt": "Flat 2D medium view of a generic empty hospital entrance with one closed plain doorway and a small unmarked rectangular case shape isolated in a separate paper panel. The split layout shows a possible photograph account without depicting an actual visitor, delivery act or historical reception desk.",
-        "camera": "pan right",
-        "visual": "still"
+        "title": "名字被帶進病院",
+        "stats": [
+          {
+            "value": "1922",
+            "label": "病院出現公主身分說法"
+          }
+        ],
+        "source": "來源：BGH 1970 判決掃描｜編輯整理",
+        "cc_safe": true
       },
       "claims": [
         "c03"
@@ -528,7 +540,8 @@
       "data": {
         "image": "stock/ba40562cefefe55b768a99da74b1ab91da785d8a5a6976d41e2a3ae89c22f2be.jpg",
         "caption": "安娜塔西亞公主，1918 年前；非訪客當年持有的原件",
-        "credit": "美國國會圖書館 Bain 收藏；Crisco 修復"
+        "credit": "美國國會圖書館 Bain 收藏；Crisco 修復",
+        "cc_safe": true
       },
       "claims": [
         "c03"
@@ -542,11 +555,11 @@
     },
     {
       "id": "hospital-story-spreads",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Overhead flat 2D arrangement of three unprinted paper tiles spreading outward from a small closed portrait-case silhouette. Each tile is separated by visible table space and linked by a thin drawn line. The present-day diagram represents a story spreading, rather than a documented handoff or hospital event.",
-        "camera": "pull out",
-        "visual": "still"
+        "kicker": "從病院到公眾",
+        "text": "猜測向外流傳",
+        "sub": "來源：BGH 1970 判決掃描｜編輯整理"
       },
       "claims": [
         "c03"
@@ -576,7 +589,8 @@
             "旁人先把名字帶來"
           ]
         },
-        "source": "BGH 判決掃描｜1970 年"
+        "source": "BGH 判決掃描｜1970 年",
+        "cc_safe": true
       },
       "claims": [
         "c03"
@@ -597,11 +611,23 @@
     },
     {
       "id": "hospital-two-folders",
-      "template": "shot",
+      "template": "compare",
       "data": {
-        "prompt": "Top-down close-up of exactly two closed plain archival folders side by side on a bare worn wooden desk. Their smooth blank covers and the warm desk light fill the entire frame.",
-        "camera": "pan left",
-        "visual": "still"
+        "title": "判決留下兩種記述",
+        "left": {
+          "heading": "一種說法",
+          "points": [
+            "她先表明身分"
+          ]
+        },
+        "right": {
+          "heading": "另一種說法",
+          "points": [
+            "旁人先提出名字"
+          ]
+        },
+        "source": "來源：BGH 1970 判決掃描｜編輯整理",
+        "cc_safe": true
       },
       "claims": [
         "c03"
@@ -616,11 +642,11 @@
     },
     {
       "id": "hospital-doorway",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Close-up of one empty old wooden chair beside a plain wood-framed hospital window. The chair, window, bare plaster wall and daylight fill the entire frame.",
-        "camera": "tilt down",
-        "visual": "still"
+        "kicker": "起點無法判定",
+        "text": "還能靠什麼辨認？",
+        "sub": "編輯提問｜依 BGH 判決範圍"
       },
       "claims": [
         "c03",
@@ -660,11 +686,23 @@
     },
     {
       "id": "relatives-tea-tray",
-      "template": "shot",
+      "template": "compare",
       "data": {
-        "prompt": "Flat 2D close-up of two plain porcelain cups with a wide gap between them on a small tray. An unlocated bright interior is reduced to one window rectangle and a soft geometric light patch. The still life signals a later social meeting without reconstructing anyone's home, service gesture or actual tea setting.",
-        "camera": "pull out",
-        "visual": "still"
+        "title": "親友態度與證明",
+        "left": {
+          "heading": "可以確認",
+          "points": [
+            "一九二八年有人接待"
+          ]
+        },
+        "right": {
+          "heading": "仍需證據",
+          "points": [
+            "接待不等於身分鑑定"
+          ]
+        },
+        "source": "來源：TIME 1928；BGH 判決掃描",
+        "cc_safe": true
       },
       "claims": [
         "c04"
@@ -678,11 +716,23 @@
     },
     {
       "id": "relatives-letter",
-      "template": "shot",
+      "template": "compare",
       "data": {
-        "prompt": "Flat 2D medium shot of two separate empty chairs on opposite sides of a generic daylight room. A small untouched table stands between them, one chair in a light field and the other in a dark field. Their opposed positions illustrate conflicting later testimony without inventing a witness gesture or likeness.",
-        "camera": "pan left",
-        "visual": "still"
+        "title": "親友證詞並不一致",
+        "left": {
+          "heading": "願意接待",
+          "points": [
+            "皇室遠親的反應"
+          ]
+        },
+        "right": {
+          "heading": "明確否認",
+          "points": [
+            "另一名親近皇室者的看法"
+          ]
+        },
+        "source": "來源：TIME 1928；BGH 判決掃描",
+        "cc_safe": true
       },
       "claims": [
         "c04"
@@ -696,11 +746,15 @@
     },
     {
       "id": "relatives-distant-woman",
-      "template": "shot",
+      "template": "bullets",
       "data": {
-        "prompt": "Flat 2D close-up of two unmarked witness-card shapes leaning away from a vertical dividing line. One matte parchment shape and one dark colour shape have visibly empty faces; a simple paper shadow gives depth. This is an editorial comparison of accounts, not photographed testimony or signed documents.",
-        "camera": "push in",
-        "visual": "still"
+        "title": "證詞進入法庭",
+        "items": [
+          "親友的接待與辨認",
+          "否認公主身分的證言"
+        ],
+        "source": "來源：BGH 1970 判決掃描｜編輯整理",
+        "cc_safe": true
       },
       "claims": [
         "c03",
@@ -715,11 +769,11 @@
     },
     {
       "id": "relatives-court-corridor",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Wide flat 2D view of an empty generic court corridor. One plain closed door anchors the distant centre, and two long floor shadows approach it from opposite sides. The corridor is an illustrative bridge to legal proceedings, without litigants, an identifiable courthouse or a documented waiting scene.",
-        "camera": "pan right",
-        "visual": "still"
+        "kicker": "民事官司",
+        "text": "繼承權請求進入舉證",
+        "sub": "來源：BGH 1970 判決掃描｜編輯整理"
       },
       "claims": [
         "c05"
@@ -733,11 +787,11 @@
     },
     {
       "id": "relatives-legal-question",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Extreme top-down close-up of one closed plain brown case folder at the center of a bare oak table in a generic late-1960s German courthouse. Its smooth blank cover and pale daylight across the tabletop fill the frame.",
-        "camera": "push in",
-        "visual": "still"
+        "kicker": "官司的前提",
+        "text": "她要如何證明公主身分？",
+        "sub": "來源：BGH 1970 判決掃描｜編輯整理"
       },
       "claims": [
         "c05",
@@ -753,11 +807,11 @@
     },
     {
       "id": "court-day-exterior",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Wide flat 2D side view of a generic courthouse facade as a sequence of broad blank stone planes and shallow steps. A small dark door sits off-centre beneath one bright rectangle of daylight. This graphic architecture marks the court chapter without borrowing a particular German court building.",
-        "camera": "drift",
-        "visual": "still"
+        "kicker": "身分主張必須舉證",
+        "text": "資料能支持請求嗎？",
+        "sub": "來源：BGH 1970 判決掃描｜編輯整理"
       },
       "claims": [
         "c06"
@@ -771,11 +825,23 @@
     },
     {
       "id": "court-closed-case",
-      "template": "shot",
+      "template": "compare",
       "data": {
-        "prompt": "Flat 2D close-up of two unprinted pale paper rectangles laid side by side on a dark tabletop, one slightly recessed behind the other. The gap between them is the focal line. They are modern symbols for separate legal questions, with smooth uninterrupted surfaces rather than recreated pleadings.",
-        "camera": "pull out",
-        "visual": "still"
+        "title": "案件類型",
+        "left": {
+          "heading": "本案在審",
+          "points": [
+            "民事繼承請求"
+          ]
+        },
+        "right": {
+          "heading": "本案未審",
+          "points": [
+            "刑事詐欺罪"
+          ]
+        },
+        "source": "來源：BGH 1970 判決掃描｜編輯整理",
+        "cc_safe": true
       },
       "claims": [
         "c05"
@@ -822,7 +888,7 @@
       "lines": [
         {
           "id": "v209",
-        "text": "她還主張，先前的繼承證書有誤，請法院確認。"
+          "text": "她還主張，先前的繼承證書有誤，請法院確認。"
         }
       ]
     },
@@ -847,11 +913,23 @@
     },
     {
       "id": "court-two-parties",
-      "template": "shot",
+      "template": "compare",
       "data": {
-        "prompt": "Top-down close-up of exactly two closed plain case folders on opposite wooden tables in a generic mid-century records room. A narrow wooden divider separates them; the folders and tables fill the frame.",
-        "camera": "pan left",
-        "visual": "still"
+        "title": "法庭上的兩條說法",
+        "left": {
+          "heading": "安德森",
+          "points": [
+            "主張公主與繼承權"
+          ]
+        },
+        "right": {
+          "heading": "對方",
+          "points": [
+            "提出另一個身分說法"
+          ]
+        },
+        "source": "來源：BGH 1970 判決掃描｜編輯整理",
+        "cc_safe": true
       },
       "claims": [
         "c04",
@@ -867,11 +945,11 @@
     },
     {
       "id": "court-schanzkowska-name",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Flat 2D close-up of a blank rectangular identity tile turned face down beside a closed unmarked folder. A red sliver of paper remains visible below the tile, drawing attention to the unresolved alternative identity. The objects are modern graphic tokens, without simulated court text or an asserted finding.",
-        "camera": "push in",
-        "visual": "still"
+        "kicker": "卷宗裡的另一個名字",
+        "text": "法蘭齊絲卡・尚茨科夫斯卡",
+        "sub": "來源：BGH 1970 判決掃描｜編輯整理"
       },
       "claims": [
         "c07"
@@ -879,17 +957,21 @@
       "lines": [
         {
           "id": "sywj",
-        "text": "還記得卷宗裡的名字嗎？失蹤女工法蘭齊絲卡・尚茨科夫斯卡。"
+          "text": "還記得卷宗裡的名字嗎？失蹤女工法蘭齊絲卡・尚茨科夫斯卡。"
         }
       ]
     },
     {
       "id": "court-family-album",
-      "template": "shot",
+      "template": "bullets",
       "data": {
-        "prompt": "Flat 2D medium view of an empty generic waiting bench divided into three visual zones: a small closed album shape in the centre and one plain blank folder shape at each end. Window light forms a simple angled field behind them. The arrangement compares kinds of evidence rather than showing objects actually displayed in court.",
-        "camera": "tilt up",
-        "visual": "still"
+        "title": "前審衡量的材料",
+        "items": [
+          "親友辨認與否認",
+          "其他身分資料與證言"
+        ],
+        "source": "來源：BGH 1970 判決掃描｜編輯整理",
+        "cc_safe": true
       },
       "claims": [
         "c04",
@@ -903,45 +985,18 @@
       ]
     },
     {
-      "id": "court-proof-steps",
-      "template": "steps",
+      "id": "court-hamburg-corridor",
+      "template": "stats",
       "data": {
-        "title": "身分為何是訴訟關鍵",
-        "steps": [
+        "title": "前審與法律審",
+        "stats": [
           {
-            "title": "財產請求",
-            "detail": "須證明有繼承資格"
-          },
-          {
-            "title": "公主身分",
-            "detail": "她主張自己是幼女"
-          },
-          {
-            "title": "民事舉證",
-            "detail": "由主張者提出證據"
+            "value": "1967",
+            "label": "前審作不利證據評價"
           }
         ],
-        "source": "BGH 判決掃描｜1970 年"
-      },
-      "claims": [
-        "c05",
-        "c06"
-      ],
-      "lines": [
-        {
-          "id": "ftkk",
-          "text": "但有人相信她，仍不能替代身分證明。",
-          "reveal": 1
-        }
-      ]
-    },
-    {
-      "id": "court-hamburg-corridor",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide flat 2D view of an empty generic court corridor made of simple plaster planes, plain doors and a long unoccupied bench. A high band of daylight leads the eye to the far closed door. The scene changes scale from the prior paper close-up without inventing lawyers or a known Hamburg building.",
-        "camera": "tilt down",
-        "visual": "still"
+        "source": "來源：BGH 1970 判決掃描｜編輯整理",
+        "cc_safe": true
       },
       "claims": [
         "c06"
@@ -956,11 +1011,15 @@
     },
     {
       "id": "court-hamburg-corridor-beat-2",
-      "template": "shot",
+      "template": "bullets",
       "data": {
-        "prompt": "Flat 2D medium close-up of two separate rows of smooth blank folders on a generic shelf, divided by a vertical strip of wall. The left row is lit from above and the right row stays in shadow. The contrast is a graphic comparison of case records, without a clerk, label or invented courtroom procedure.",
-        "camera": "push in",
-        "visual": "still"
+        "title": "前審比較什麼？",
+        "items": [
+          "證人曾經見過誰",
+          "多年後的記憶與資料"
+        ],
+        "source": "來源：BGH 1970 判決掃描｜編輯整理",
+        "cc_safe": true
       },
       "claims": [
         "c06"
@@ -975,11 +1034,11 @@
     },
     {
       "id": "court-appeal-paper",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Flat 2D close-up of one closed unmarked legal folio bound by a plain cloth strip on a bare surface. A broad wedge of light crosses the strip while the edges remain in shadow. The folio is a transition symbol for a further appeal, not an actual court record or depicted clerk action.",
-        "camera": "push in",
-        "visual": "still"
+        "kicker": "判決即將落下",
+        "text": "公主主張能成立嗎？",
+        "sub": "來源：BGH 1970 判決掃描｜編輯整理"
       },
       "claims": [
         "c06"
@@ -1027,7 +1086,8 @@
             "檢查法律與程序錯誤"
           ]
         },
-        "source": "BGH 判決掃描｜1970 年"
+        "source": "BGH 判決掃描｜1970 年",
+        "cc_safe": true
       },
       "claims": [
         "c06"
@@ -1079,7 +1139,8 @@
             "她當年存心冒認"
           ]
         },
-        "source": "BGH 判決掃描｜1970 年"
+        "source": "BGH 判決掃描｜1970 年",
+        "cc_safe": true
       },
       "claims": [
         "c06",
@@ -1103,11 +1164,23 @@
     },
     {
       "id": "court-two-names-logic",
-      "template": "shot",
+      "template": "compare",
       "data": {
-        "prompt": "Overhead flat 2D diagram of two large unprinted identity tiles separated by a deliberately wide empty channel. One tile is dark, the other pale; their plain surfaces are the only focal forms. The open channel shows that excluding one claim and proving another are distinct questions.",
-        "camera": "drift",
-        "visual": "still"
+        "title": "兩種身分主張",
+        "left": {
+          "heading": "法院結論",
+          "points": [
+            "公主身分未獲證明"
+          ]
+        },
+        "right": {
+          "heading": "後續線索",
+          "points": [
+            "女工身分仍要另查"
+          ]
+        },
+        "source": "來源：BGH 1970 判決掃描｜編輯整理",
+        "cc_safe": true
       },
       "claims": [
         "c10"
@@ -1121,11 +1194,23 @@
     },
     {
       "id": "court-exit-day",
-      "template": "shot",
+      "template": "compare",
       "data": {
-        "prompt": "Wide flat 2D symbolic view through a generic court doorway opening onto two diverging strips of light. The unoccupied stone floor and doorway fill the frame; the split light is the only visual motif. It marks unresolved questions after the ruling, without a placed case file or implied finding about motive.",
-        "camera": "tilt up",
-        "visual": "still"
+        "title": "判決回答的範圍",
+        "left": {
+          "heading": "沒有裁定",
+          "points": [
+            "安德森的主觀動機"
+          ]
+        },
+        "right": {
+          "heading": "仍待調查",
+          "points": [
+            "皇室家人的墓葬線索"
+          ]
+        },
+        "source": "來源：BGH 判決；PLOS ONE 2009",
+        "cc_safe": true
       },
       "claims": [
         "c07",
@@ -1135,18 +1220,24 @@
       "lines": [
         {
           "id": "bnbr",
-        "text": "法院沒有裁定她的動機；另一個缺口，是皇室家人的墓仍未找到。",
+          "text": "法院沒有裁定她的動機；另一個缺口，是皇室家人的墓仍未找到。",
           "emotion": "像說給身旁的人聽，先輕後重"
         }
       ]
     },
     {
       "id": "grave-forest-1991",
-      "template": "shot",
+      "template": "stats",
       "data": {
-        "prompt": "Wide flat 2D view of a generic birch forest clearing built from overlapping trunks and a broad unbroken patch of leaf-covered ground. One narrow path of cold light reaches the central patch. The landscape is a nonliteral chapter transition between a concealed find and later excavation, without a geologist portrait or exact find spot.",
-        "camera": "pan right",
-        "visual": "still"
+        "title": "第一座墓被找到",
+        "stats": [
+          {
+            "value": "1970 年代末",
+            "label": "阿夫多寧找到第一座墓"
+          }
+        ],
+        "source": "來源：Coble 等，PLOS ONE 2009",
+        "cc_safe": true
       },
       "claims": [
         "c18"
@@ -1154,18 +1245,18 @@
       "lines": [
         {
           "id": "4uuj",
-        "text": "這個缺口到七〇年代末才有線索：地質學家阿夫多寧找到第一座墓。"
+          "text": "這個缺口到七〇年代末才有線索：地質學家阿夫多寧找到第一座墓。"
         }
       ],
       "chapter": "第一座墓少了兩名孩子"
     },
     {
       "id": "grave-map-table",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Flat 2D overhead close-up of a folded completely blank paper sheet beside a single plain wooden marker. The fold hides most of the sheet and casts a long geometric shadow. This is a modern symbol for information kept private, with no drawn route, coordinates or historic map markings.",
-        "camera": "drift",
-        "visual": "still"
+        "kicker": "第一座墓",
+        "text": "位置保密多年",
+        "sub": "來源：Coble 等，PLOS ONE 2009"
       },
       "claims": [
         "c18"
@@ -1201,7 +1292,8 @@
             "label": "當時未找到的孩子"
           }
         ],
-        "source": "PLOS ONE｜2009 年原始論文"
+        "source": "PLOS ONE｜2009 年原始論文",
+        "cc_safe": true
       },
       "claims": [
         "c11"
@@ -1233,11 +1325,11 @@
     },
     {
       "id": "grave-empty-places",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Close-up symbolic view on a uniform pale background. Exactly two large empty circular outlines sit side by side at the center, and their unfilled interior spaces dominate the entire frame.",
-        "camera": "pull out",
-        "visual": "still"
+        "kicker": "第一座墓還有缺口",
+        "text": "少一男、一女",
+        "sub": "來源：Coble 等，PLOS ONE 2009"
       },
       "claims": [
         "c11",
@@ -1252,11 +1344,11 @@
     },
     {
       "id": "dna-hospital-archive",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Flat 2D close-up of one generic sealed pathology-slide case against a simple archive-colour field. Its opaque blank lid occupies the centre; a plain cabinet edge gives scale at the side. The object illustrates a stored sample type, rather than an identifiable case from the historical collection.",
-        "camera": "push in",
-        "visual": "still"
+        "kicker": "身分研究的另一種材料",
+        "text": "保存檢體進入研究",
+        "sub": "來源：Nature Genetics／PubMed 書目"
       },
       "claims": [
         "c09"
@@ -1270,11 +1362,11 @@
     },
     {
       "id": "dna-sealed-sample-beat-2",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Flat 2D close-up of a generic glass teaching slide inside an open plain protective box. The slide shows only transparent material and one fully blank frosted edge, with an angular window-light shape across the box. This is a specimen-type illustration, without a patient label, microscopic image or claimed original object.",
-        "camera": "push in",
-        "visual": "still"
+        "kicker": "檢體來源",
+        "text": "醫院保存的病理組織",
+        "sub": "來源：CSHL 研究者訪談；CSUEB 解說"
       },
       "claims": [
         "c09"
@@ -1301,7 +1393,8 @@
             "label": "身分研究發表"
           }
         ],
-        "source": "CSUEB 博物館；Nature Genetics 書目"
+        "source": "CSUEB 博物館；Nature Genetics 書目",
+        "cc_safe": true
       },
       "claims": [
         "c08",
@@ -1317,11 +1410,23 @@
     },
     {
       "id": "dna-hair-and-box",
-      "template": "big",
+      "template": "compare",
       "data": {
-        "kicker": "安德森的檢體",
-        "text": "組織與頭髮",
-        "sub": "分別交給研究團隊分析"
+        "title": "兩份安德森檢體",
+        "left": {
+          "heading": "保存組織",
+          "points": [
+            "醫院留存的組織"
+          ]
+        },
+        "right": {
+          "heading": "頭髮",
+          "points": [
+            "另一組取得的樣本"
+          ]
+        },
+        "source": "來源：CSHL 研究者訪談；CSUEB 解說",
+        "cc_safe": true
       },
       "claims": [
         "c09"
@@ -1339,11 +1444,23 @@
     },
     {
       "id": "dna-mother-child",
-      "template": "shot",
+      "template": "compare",
       "data": {
-        "prompt": "Flat 2D medium view of one large unmarked maternal-line token connected by a red cord to two smaller blank family tokens on a bright tabletop. The joining line is the clear central focus and broad morning light separates the tokens. This is a teaching diagram of inheritance rather than portraits of research participants.",
-        "camera": "pan left",
-        "visual": "still"
+        "title": "先比對哪兩份？",
+        "left": {
+          "heading": "第一份",
+          "points": [
+            "保存組織"
+          ]
+        },
+        "right": {
+          "heading": "第二份",
+          "points": [
+            "頭髮"
+          ]
+        },
+        "source": "來源：CSHL 研究者訪談；CSUEB 解說",
+        "cc_safe": true
       },
       "claims": [
         "c09"
@@ -1358,11 +1475,21 @@
     },
     {
       "id": "dna-family-tree-pieces",
-      "template": "shot",
+      "template": "steps",
       "data": {
-        "prompt": "Flat 2D close-up of four blank wooden teaching tokens in one simple branching maternal line. A red cord passes continuously through the relevant branch while a spare dark branch recedes. The tokens are large enough to follow visually and bear no genetic letters, family names or test readout.",
-        "camera": "tilt up",
-        "visual": "still"
+        "title": "母系序列怎麼傳？",
+        "steps": [
+          {
+            "title": "母親",
+            "detail": "傳給子女"
+          },
+          {
+            "title": "同一母系",
+            "detail": "親屬可共享序列"
+          }
+        ],
+        "source": "來源：美國 NIJ 母系 DNA 教材",
+        "cc_safe": true
       },
       "claims": [
         "c09"
@@ -1395,11 +1522,23 @@
     },
     {
       "id": "dna-lab-two-researchers-beat-2",
-      "template": "shot",
+      "template": "compare",
       "data": {
-        "prompt": "Flat 2D split-panel close-up of two separate blank result sheets, each in its own quiet paper field. Their near edges approach a central gap but do not touch; one narrow red rule links the comparison above the gap. The layout compares independent findings without suggesting a phone call or shared laboratory scene.",
-        "camera": "push in",
-        "visual": "still"
+        "title": "兩組研究",
+        "left": {
+          "heading": "分析時",
+          "points": [
+            "起初各自調查"
+          ]
+        },
+        "right": {
+          "heading": "完成後",
+          "points": [
+            "互通比對結果"
+          ]
+        },
+        "source": "來源：CSHL 研究者訪談；CSUEB 解說",
+        "cc_safe": true
       },
       "claims": [
         "c09"
@@ -1413,11 +1552,11 @@
     },
     {
       "id": "dna-two-glass-vials",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Overhead flat 2D diagram of two parallel maternal-line cords on a clean light field, each ending at its own plain wooden token. A broad stripe of skylight cuts across both lines. Their separate paths provide a teaching comparison rather than a sample-vial scene or a numeric test readout.",
-        "camera": "pan right",
-        "visual": "still"
+        "kicker": "下一個比對",
+        "text": "能對上皇后母系嗎？",
+        "sub": "來源：CSHL 研究者訪談；CSUEB 解說"
       },
       "claims": [
         "c09"
@@ -1447,7 +1586,8 @@
             "兩邊沒有相符"
           ]
         },
-        "source": "加州州大東灣分校博物館｜DNA 解說"
+        "source": "加州州大東灣分校博物館｜DNA 解說",
+        "cc_safe": true
       },
       "claims": [
         "c09"
@@ -1461,7 +1601,7 @@
         },
         {
           "id": "fa8j",
-          "text": "開頭那兩份檢體，結果卻沒有對上。",
+          "text": "但和皇后已知的母系參照相比，這兩份檢體都沒有對上。",
           "reveal": 1,
           "emotion": "放慢，關鍵名詞壓重，句尾留白"
         }
@@ -1469,11 +1609,11 @@
     },
     {
       "id": "dna-method-limit",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Flat 2D close-up of two generic closed sample-case shapes separated by a narrow empty strip on a bright archival-colour background. Both lids remain completely plain and opaque, one caught in afternoon light. The pair introduces a possible later reference comparison, without showing a real specimen or judicially admitted evidence.",
-        "camera": "pull out",
-        "visual": "still"
+        "kicker": "另一份參照",
+        "text": "還要比對另一條母系",
+        "sub": "來源：DNA Learning Center 教材"
       },
       "claims": [
         "c19"
@@ -1488,11 +1628,11 @@
     },
     {
       "id": "dna-blank-id",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Flat 2D medium close-up of a schematic family branch drawn as dark ink lines ending in several empty circles. A single red path follows one shared maternal branch, while two plain case-shape icons sit separately at the edge. The diagram remains a general explanation of kinship, with no labels or one-to-one identity claim.",
-        "camera": "pan left",
-        "visual": "still"
+        "kicker": "毛赫爾的母系關係",
+        "text": "尚茨科夫斯卡的旁系親屬",
+        "sub": "來源：DNA Learning Center 教材"
       },
       "claims": [
         "c19"
@@ -1525,11 +1665,23 @@
     },
     {
       "id": "dna-maucher-support",
-      "template": "shot",
+      "template": "compare",
       "data": {
-        "prompt": "Medium close-up of an anonymous researcher's cropped hand arranging two groups of plain wooden family teaching tokens on a desk. A single cord joins both groups to one shared maternal-ancestor token; several other cords branch onward to show that more than one relative can share the line. Warm window light falls on the tokens' smooth blank faces.",
-        "camera": "push in",
-        "visual": "still"
+        "title": "毛赫爾比對的意義",
+        "left": {
+          "heading": "能支持",
+          "points": [
+            "可能與女工同一母系"
+          ]
+        },
+        "right": {
+          "heading": "不能獨自證明",
+          "points": [
+            "安德森的唯一姓名"
+          ]
+        },
+        "source": "來源：DNA Learning Center；美國 NIJ",
+        "cc_safe": true
       },
       "claims": [
         "c19"
@@ -1558,7 +1710,8 @@
             "唯一的個人姓名"
           ]
         },
-        "source": "DNA Learning Center／美國 NIJ"
+        "source": "DNA Learning Center／美國 NIJ",
+        "cc_safe": true
       },
       "claims": [
         "c19",
@@ -1572,18 +1725,19 @@
         },
         {
           "id": "v226",
-          "text": "所以比對能支持線索，卻不能獨自鎖定本名。",
-          "reveal": 1
+          "text": "回到開場那兩份檢體：它們提供母系線索，卻不能獨自鎖定另一個本名。",
+          "reveal": 1,
+          "pause_after_ms": 0
         }
       ]
     },
     {
       "id": "dna-forest-transition",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Flat 2D medium view of two large empty circles in a modern graphic field that gradually opens toward a strip of simplified forest silhouettes. A small red line stops short of the circles. The empty forms carry forward unresolved identities without pretending to show a research notebook or an original record.",
-        "camera": "push in",
-        "visual": "still"
+        "kicker": "還有兩個空位",
+        "text": "第二座墓會回答什麼？",
+        "sub": "來源：Coble 等，PLOS ONE 2009"
       },
       "claims": [
         "c09",
@@ -1597,12 +1751,36 @@
       ]
     },
     {
-      "id": "grave-2007-path",
-      "template": "shot",
+      "id": "grave-search-attempts",
+      "template": "big",
       "data": {
-        "prompt": "Wide flat 2D summer forest path near Yekaterinburg, made from layered birch trunks and open ground. One small anonymous adult searcher walks away along the path, seen entirely from behind; the ground remains intact. This is a generic search illustration, without a second invented person, notebook, remains or precise discovery location.",
-        "camera": "pan left",
-        "visual": "still"
+        "kicker": "第一座墓之後",
+        "text": "幾次尋找，仍未找到",
+        "sub": "第二座墓｜來源：Coble 等，PLOS ONE 2009"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "dm7x",
+          "text": "第一座墓之後，幾次尋找附近第二座墓，都沒有結果。"
+        }
+      ]
+    },
+    {
+      "id": "grave-2007-path",
+      "template": "stats",
+      "data": {
+        "title": "第二座墓",
+        "stats": [
+          {
+            "value": "2007",
+            "label": "業餘考古者發現碎片"
+          }
+        ],
+        "source": "來源：Coble 等，PLOS ONE 2009",
+        "cc_safe": true
       },
       "claims": [
         "c12"
@@ -1618,11 +1796,21 @@
     },
     {
       "id": "grave-2007-path-beat-2",
-      "template": "shot",
+      "template": "steps",
       "data": {
-        "prompt": "Flat 2D medium view of the same generic summer forest from a different angle, with a distant anonymous adult investigator visible only from behind at the end of a clear path. Open leaf-covered ground and broad birch silhouettes fill the foreground. The image signals a later formal investigation without staging unverified equipment, survey grids or a discovery act.",
-        "camera": "push in",
-        "visual": "still"
+        "title": "第二墓調查順序",
+        "steps": [
+          {
+            "title": "業餘發現",
+            "detail": "先注意到地上碎片"
+          },
+          {
+            "title": "正式調查",
+            "detail": "隊伍隨後進場整理"
+          }
+        ],
+        "source": "來源：Coble 等，PLOS ONE 2009",
+        "cc_safe": true
       },
       "claims": [
         "c12"
@@ -1649,7 +1837,8 @@
             "label": "碎骨與牙齒的整理量"
           }
         ],
-        "source": "PLOS ONE｜2009 年原始論文"
+        "source": "PLOS ONE｜2009 年原始論文",
+        "cc_safe": true
       },
       "claims": [
         "c12"
@@ -1671,9 +1860,9 @@
       "id": "grave-fragments-limit",
       "template": "big",
       "data": {
-        "kicker": "第二座墓的碎片",
-        "text": "它們屬於哪個家庭？",
-        "sub": "發現位置不足以回答"
+        "kicker": "碎片不能自己署名",
+        "text": "還要比對家族關係",
+        "sub": "來源：Coble 等，PLOS ONE 2009"
       },
       "claims": [
         "c12",
@@ -1703,7 +1892,8 @@
             "要用 DNA 對照親族"
           ]
         },
-        "source": "PLOS ONE｜2009 年原始論文"
+        "source": "PLOS ONE｜2009 年原始論文",
+        "cc_safe": true
       },
       "claims": [
         "c13"
@@ -1718,11 +1908,23 @@
     },
     {
       "id": "grave-lab-two-researchers",
-      "template": "shot",
+      "template": "compare",
       "data": {
-        "prompt": "Flat 2D overhead medium shot of exactly three large blank paper panels arranged in a stepped progression across a dark tabletop. Each panel is a solid unprinted shape; the staggered edges create a visual sequence toward the last panel. They represent three kinds of later test in a modern explanatory layout, not reproduced laboratory reports.",
-        "camera": "push in",
-        "visual": "still"
+        "title": "兩座墓的樣本",
+        "left": {
+          "heading": "第一墓",
+          "points": [
+            "已核對的家族資料"
+          ]
+        },
+        "right": {
+          "heading": "第二墓",
+          "points": [
+            "新發現的兩人樣本"
+          ]
+        },
+        "source": "來源：Coble 等，PLOS ONE 2009",
+        "cc_safe": true
       },
       "claims": [
         "c13"
@@ -1753,7 +1955,8 @@
             "detail": "比對男孩的父系線"
           }
         ],
-        "source": "PLOS ONE｜2009 年原始論文"
+        "source": "PLOS ONE｜2009 年原始論文",
+        "cc_safe": true
       },
       "claims": [
         "c13"
@@ -1797,11 +2000,11 @@
     },
     {
       "id": "grave-family-board",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Close overhead view of a simple plain board on a daylight desk. Exactly two circular recesses hold exactly two plain wooden discs; the tight crop shows the board and its two discs filling the frame.",
-        "camera": "drift",
-        "visual": "still"
+        "kicker": "第二墓的男孩",
+        "text": "他能對上誰？",
+        "sub": "來源：Coble 等，PLOS ONE 2009"
       },
       "claims": [
         "c13",
@@ -1832,7 +2035,8 @@
             "皇室的一位姊妹"
           ]
         },
-        "source": "PLOS ONE｜2009 年原始論文"
+        "source": "PLOS ONE｜2009 年原始論文",
+        "cc_safe": true
       },
       "claims": [
         "c13",
@@ -1869,7 +2073,8 @@
             "安娜塔西亞"
           ]
         },
-        "source": "PLOS ONE｜2009 年導論"
+        "source": "PLOS ONE｜2009 年導論",
+        "cc_safe": true
       },
       "claims": [
         "c14"
@@ -1905,7 +2110,8 @@
             "瑪麗亞，還是安娜塔西亞"
           ]
         },
-        "source": "PLOS ONE｜2009 年原始論文"
+        "source": "PLOS ONE｜2009 年原始論文",
+        "cc_safe": true
       },
       "claims": [
         "c14"
@@ -1943,7 +2149,8 @@
             "核對五名子女是否齊全"
           ]
         },
-        "source": "PLOS ONE／PNAS｜2009 年原文"
+        "source": "PLOS ONE／PNAS｜2009 年原文",
+        "cc_safe": true
       },
       "claims": [
         "c13",
@@ -1955,12 +2162,6 @@
           "id": "dkkf",
           "text": "同年，另一組研究者把兩座墓的資料合在一起。",
           "reveal": 1
-        },
-        {
-          "id": "jqxi",
-          "text": "他們追問：五名孩子，是否全在這裡？",
-          "reveal": 1,
-          "emotion": "問句上揚，句尾停半拍"
         }
       ]
     },
@@ -1980,25 +2181,6 @@
           "id": "ufh6",
           "text": "兩墓合看，尼古拉二世夫婦的五名孩子都被找到。",
           "emotion": "放慢，關鍵名詞壓重，句尾留白"
-        }
-      ]
-    },
-    {
-      "id": "end-blank-motive",
-      "template": "shot",
-      "data": {
-        "prompt": "Flat 2D close-up of one large empty label frame standing by itself within a broad light field. A narrow red line approaches its vacant centre and stops at the edge; a simple shadow falls to one side. The graphic is an editorial metaphor for unknowable personal motive, not a newly discovered document.",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "claims": [
-        "c17"
-      ],
-      "lines": [
-        {
-          "id": "4s6y",
-          "text": "檢體能比對母系，卻讀不出她當年相信了什麼。",
-          "emotion": "像說給身旁的人聽，先輕後重"
         }
       ]
     },
@@ -2052,7 +2234,8 @@
     "data": {
       "headline": "她是\n**公主？**",
       "tag": "歷史懸案",
-      "sub": "法院與基因怎麼說"
+      "sub": "法院與基因怎麼說",
+      "asset": "docs/videos/curio-h06-v2/diagrams/thumbnail-original.png"
     }
   },
   "loops": [

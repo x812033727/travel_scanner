@@ -1,6 +1,6 @@
 # H05 v2｜主張及來源對照
 
-狀態：重新撰稿的離線候選包；下列主張已逐項掛到新場景。原獨立逐欄事實覆核對應較早版本，不能冒稱現稿全量逐欄重審；後續對 FBI 案件史及 Kaye–Meltzer 論文另作增量來源抽查。現行 `video.json` SHA-256 `74102087ca465c7c73044e1182671641965cc19cbd6f4d0470d11fcb9c16e6e3`，敘事 hash `65c64491d8a53b77` 已獨立通過 11/11，`status` 讀回 `storytelling panel: passed`。H05 v2 選項 A 的大綱已核准；`check-audio` 檢查 108/108 句並留 12 句標記，站主已聽審核准現行 `timeline.json` SHA-256 `8128f74e74f2dad44ea0c6a1465f2a333c4cb30d0b7f9cfb14829f414becd984`，`status` 讀回 `[x] narration approved`。原結果不明的轉錄請求依站主授權只重試一次；完整插圖、分鏡、成片與上架驗收仍待完成，舊案的核准不延續到新稿。
+狀態：重新撰稿的離線候選包；下列主張已逐項掛到新場景。原獨立逐欄事實覆核對應較早版本，不能冒稱現稿全量逐欄重審；後續對 FBI 案件史及 Kaye–Meltzer 論文另作增量來源抽查。2026-10-14 窄修後，現行 `video.json` SHA-256 `3f4ed2287400b2a772062b7a1b0ca2843e41c2e36ddd95c0c0de6047b2bb5e80`，`script.md` SHA-256 `c12d764f3dcc2dad2f60b398269b250bd7e7d8589f1c82bfa3c36577f80a68a4`；89 景、102 句、六章，敘事 hash `59c8fdd94bfabe98`、語音 hash `ea11af6360013a22`。`lint --json` 為 0 errors／0 warnings，`tts --dry-run` 顯示 0 句待合成。這些新雜湊尚未取得新的獨立敘事盲評或正式時間軸核准；過往 11/11 與站主音訊核准只屬先前雜湊。完整分鏡、成片與上架驗收仍待完成，舊案的核准不延續到新稿。
 
 採用來源：FBI 案件與原件頁、FBI 2007／2009 回顧、FBI 2016 聲明、Kaye 與 Meltzer（2020）。研究結論均以作者推論表述。個別出處沿用 2026-10-12 查核底稿；2026-10-14 重開核對及讀取限制見 NOTES.md。
 
@@ -24,7 +24,7 @@
 
 舊稿查核日：2026-10-12
 
-新稿場景：open-counter、open-ticket、open-aisle、ticket-original
+新稿場景：open-counter、open-ticket、open-aisle
 
 ### c03
 
@@ -34,7 +34,7 @@
 
 舊稿查核日：2026-10-12
 
-新稿場景：open-aisle、ticket-original、two-names
+新稿場景：open-aisle、two-names
 
 ### c04
 
@@ -104,17 +104,17 @@
 
 舊稿查核日：2026-10-12
 
-新稿場景：portrait-limit、investigation-candidates、archive-many-folders、comparison-desk
+新稿場景：two-empty-chairs、investigation-candidates、archive-many-folders、comparison-desk
 
 ### c11
 
-探員 Larry Carr 回顧兩名空服員分別受訪、外貌描述相近；旁白標明卡爾的回顧，不把描述當身分證明。
+探員 Larry Carr 回顧兩名空服員分別受訪、外貌描述相近；圖卡標明 FBI 回顧來源，不把描述當身分證明。
 
 來源：https://archives.fbi.gov/archives/news/stories/2007/december/dbcooper_123107
 
 舊稿查核日：2026-10-12
 
-新稿場景：witness-interview-room、two-empty-chairs、portrait-limit、interview-notebook
+新稿場景：witness-interview-room、two-empty-chairs、interview-notebook
 
 ### c12
 
@@ -194,7 +194,7 @@ Kaye、Meltzer 2020 年研究只分析一張原始贖鈔；同張的數個切片
 
 舊稿查核日：2026-10-12
 
-新稿場景：season-not-arrival、layers-sample、burial-experiment、burial-edge、burial-inner、immersion-before-burial
+新稿場景：season-not-arrival、layers-sample、burial-edge、burial-inner、immersion-before-burial
 
 ### c20
 
@@ -238,7 +238,7 @@ FBI 於 2016-07-08 轉移調查資源，07-12 公布不再主動調查；資源�
 
 ### c24
 
-收束：票據留下購票用名，部分贖金序號相符，但身分、最終下落與完整路線仍缺足夠證據；2.9% 只回答尋回比例。`[h5v107]` 先指出到岸日期定不下來，轉問標題的 5,800 美元到底證明什麼；片尾 `[h5v109]`「證明贖金，不證明人」首次把序號證據與身分界線合成直接答案。Kaye、Meltzer 的單鈔研究僅推測浸水季節與先水後沙，未測出錢抵岸的確切日期或搬運者。提問與訂閱句無額外事實主張。
+收束：票據留下購票用名，部分贖金序號相符，但身分、最終下落與完整路線仍缺足夠證據；2.9% 只回答尋回比例。`[h5v107]` 先指出到岸日期定不下來，轉問標題的 5,800 美元到底證明什麼；片尾 `[h5v109]`「證明贖金，不證明人」首次把序號證據與身分界線合成直接答案。Kaye、Meltzer 的單鈔研究僅推測浸水季節與先水後沙，未測出錢抵岸的確切日期或搬運者。`[h5v110]` 的觀眾提問已刪；保留的訂閱句無額外事實主張。
 
 來源：https://www.fbi.gov/history/cases-and-criminals/db-cooper-hijacking；https://www.fbi.gov/history/artifacts/d-b-cooper-plane-ticket；https://www.fbi.gov/contact-us/field-offices/seattle/news/press-releases/update-on-investigation-of-1971-hijacking-by-d.b.-cooper；https://www.nature.com/articles/s41598-020-70015-z
 
@@ -268,13 +268,13 @@ FBI 案件史記調查局於飛行中得知劫機並展開調查，代號 NORJAK
 
 ### c27
 
-FBI 案件史照片註明劫機者跳機前摘下黑色 J.C. Penney 領帶，留在機上，後來提供基因樣本。旁白只稱黑色領帶，不以品牌臆測身分。
+FBI 案件史照片註明劫機者跳機前摘下黑色 J.C. Penney 領帶，留在機上，後來提供基因樣本。旁白只稱黑色領帶，不以品牌臆測身分；跳機前摘下的事實保留在 FBI 原照的可見圖說。
 
 來源：https://www.fbi.gov/history/cases-and-criminals/db-cooper-hijacking
 
 舊稿查核日：2026-10-14
 
-新稿場景：suit-and-tie、tie-brand
+新稿場景：suit-and-tie、tie-original（`tie-brand` 已刪）
 
 ### c28
 
