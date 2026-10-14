@@ -13,7 +13,9 @@ depends_on: []
 scope:
   - apps/api/app/news_automation/fetch.py
   - apps/api/app/news_automation/sources.json
+  - apps/api/app/news_automation/sources_cli.py
   - apps/api/tests/test_news_automation.py
+  - apps/api/tests/test_news_sources_cli.py
   - docs/news-automation.md
   - docs/official-ai-accounts.md
 ---
@@ -78,3 +80,8 @@ cd apps/api && uv run pytest tests/test_news_automation.py -q
 - Google Developers Blog was also tried as a standalone HTML source: its home page was
   readable, but the first parsed candidate was an off-host community link, so source
   validation would refuse it. No separate source was added.
+- The live admin page cannot edit redirect hosts or parser config on an existing source.
+  Production application therefore needs a one-source CLI run after the safe fetcher is
+  deployed. Preserve the existing row if validation fails during that run. A successful
+  source validation reads only the first feed article; verify the cited robotics URL
+  through the next full scan before calling the live source recovered.

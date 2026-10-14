@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 from typing import Any, cast
 from urllib.parse import urlsplit
@@ -173,3 +174,188 @@ async def test_run_applies_with_a_persisted_admin_across_a_refused_source(
         (BAD, False),
         (GOOD, True),
     ]
+
+
+@pytest.mark.asyncio
+async def test_run_selects_one_exact_url_for_dry_run_and_apply_without_other_writes(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    engine = create_async_engine(f"sqlite+aiosqlite:///{tmp_path / 'sources.db'}")
+    tables = cast(list[Table], [User.__table__, NewsSource.__table__, AdminAuditLog.__table__])
+    async with engine.begin() as connection:
+        await connection.run_sync(lambda sync: Base.metadata.create_all(sync, tables=tables))
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    async with factory() as session:
+        session.add(User(email="owner@example.com", password_hash="unused", is_admin=True))
+        session.add_all(
+            [
+                NewsSource(
+                    name=row.name,
+                    url=row.url,
+                    format=row.format,
+                    role=row.role,
+                    vertical=row.vertical,
+                    is_first_party=row.is_first_party,
+                    enabled=row.enabled,
+                    scan_interval_minutes=60,
+                    allowed_redirect_hosts_json=[],
+                    config_json=row.config,
+                )
+                for row in rows()
+            ]
+        )
+        await session.commit()
+    desired = [row.model_copy(update={"scan_interval_minutes": 120}) for row in rows()]
+    source_file = tmp_path / "reviewed.json"
+    source_file.write_text(
+        json.dumps({"sources": [row.model_dump(mode="json") for row in desired]}),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(sources_cli, "SessionFactory", factory)
+    monkeypatch.setattr(sources_cli, "engine", engine)
+    monkeypatch.setattr(sources_cli, "validate_source_configuration", refuse_press)
+
+    dry = await sources_cli.run(source_file, apply=False, actor_email=None, source_url=GOOD)
+    async with factory() as session:
+        before = {
+            row.url: row.scan_interval_minutes
+            for row in await session.scalars(select(NewsSource))
+        }
+        before_audits = list(await session.scalars(select(AdminAuditLog.action)))
+    applied = await sources_cli.run(
+        source_file, apply=True, actor_email="owner@example.com", source_url=GOOD
+    )
+    async with factory() as session:
+        after = {
+            row.url: row.scan_interval_minutes
+            for row in await session.scalars(select(NewsSource))
+        }
+        audits = list(await session.scalars(select(AdminAuditLog.action)))
+    await engine.dispose()
+
+    assert [item["url"] for item in dry["sources"]] == [GOOD]
+    assert dry["sources"][0]["valid"] is True
+    assert dry["not_in_file"] == []
+    assert before == {GOOD: 60, BAD: 60}
+    assert before_audits == []
+    assert [item["url"] for item in applied["sources"]] == [GOOD]
+    assert applied["not_in_file"] == []
+    assert after == {GOOD: 120, BAD: 60}
+    assert audits == ["news_source_updated"]
+
+
+@pytest.mark.asyncio
+async def test_run_rejects_an_exact_url_missing_from_the_file_before_opening_a_session(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    source_file = tmp_path / "reviewed.json"
+    source_file.write_text(
+        json.dumps({"sources": [row.model_dump(mode="json") for row in rows()]}),
+        encoding="utf-8",
+    )
+
+    def unexpected_session() -> None:
+        raise AssertionError("A missing source must not open a database session")
+
+    monkeypatch.setattr(sources_cli, "SessionFactory", unexpected_session)
+    with pytest.raises(SystemExit, match="Source URL is not listed"):
+        await sources_cli.run(
+            source_file, apply=True, actor_email="owner@example.com", source_url=GOOD + "/"
+        )
+
+
+@pytest.mark.asyncio
+async def test_strict_targeted_validation_failure_preserves_existing_source_and_other_rows(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    engine = create_async_engine(f"sqlite+aiosqlite:///{tmp_path / 'sources.db'}")
+    tables = cast(list[Table], [User.__table__, NewsSource.__table__, AdminAuditLog.__table__])
+    async with engine.begin() as connection:
+        await connection.run_sync(lambda sync: Base.metadata.create_all(sync, tables=tables))
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    async with factory() as session:
+        session.add(User(email="owner@example.com", password_hash="unused", is_admin=True))
+        session.add_all(
+            [
+                NewsSource(
+                    name=row.name,
+                    url=row.url,
+                    format=row.format,
+                    role=row.role,
+                    vertical=row.vertical,
+                    is_first_party=row.is_first_party,
+                    enabled=True,
+                    allowed_redirect_hosts_json=["old.example"] if row.url == GOOD else [],
+                    config_json=row.config,
+                    last_status="succeeded",
+                    etag='"old"',
+                )
+                for row in rows()
+            ]
+        )
+        await session.commit()
+    desired = rows()
+    desired[0] = desired[0].model_copy(
+        update={"allowed_redirect_hosts": ["new.example"]}
+    )
+    desired[1] = desired[1].model_copy(update={"scan_interval_minutes": 120})
+    source_file = tmp_path / "reviewed.json"
+    source_file.write_text(
+        json.dumps({"sources": [row.model_dump(mode="json") for row in desired]}),
+        encoding="utf-8",
+    )
+
+    async def refuse_selected(source: NewsSource, **_kwargs: Any) -> None:
+        assert source.url == GOOD
+        raise AppError(422, "news_source_validation_failed", "target robots refused")
+
+    monkeypatch.setattr(sources_cli, "SessionFactory", factory)
+    monkeypatch.setattr(sources_cli, "engine", engine)
+    monkeypatch.setattr(service, "validate_source_configuration", refuse_selected)
+    report = await sources_cli.run(
+        source_file,
+        apply=True,
+        actor_email="owner@example.com",
+        source_url=GOOD,
+        preserve_on_validation_failure=True,
+    )
+    async with factory() as session:
+        stored = {row.url: row for row in await session.scalars(select(NewsSource))}
+        audits = list(await session.scalars(select(AdminAuditLog.action)))
+        assert stored[GOOD].enabled is True
+        assert stored[GOOD].allowed_redirect_hosts_json == ["old.example"]
+        assert stored[GOOD].last_status == "succeeded"
+        assert stored[GOOD].etag == '"old"'
+        assert stored[BAD].scan_interval_minutes == 60
+    await engine.dispose()
+    assert report["sources"] == [
+        {
+            "name": "Official",
+            "url": GOOD,
+            "action": "update",
+            "enabled": True,
+            "preserved": True,
+            "error": "target robots refused",
+        }
+    ]
+    assert report["summary"]["failed_validation"] == 1
+    assert report["not_in_file"] == []
+    assert audits == []
+
+
+def test_strict_cli_prints_failure_and_exits_nonzero(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    async def failed_run(*_args: Any, **_kwargs: Any) -> dict[str, Any]:
+        return {"summary": {"failed_validation": 1}, "sources": [{"error": "refused"}]}
+
+    monkeypatch.setattr(sources_cli, "run", failed_run)
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["sources_cli", "--source-url", GOOD, "--preserve-on-validation-failure"],
+    )
+    with pytest.raises(SystemExit) as error:
+        sources_cli.main()
+    assert error.value.code == 1
+    assert '"error": "refused"' in capsys.readouterr().out
