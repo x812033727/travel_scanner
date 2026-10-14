@@ -542,3 +542,23 @@ under bundled Node 24.19.0. `check:tasks` remains blocked by the unrelated
 untracked duplicate `tasks/open/2026-10-14-keep-curio-source-card-footers-clear.md`;
 its prior removal was automatically rejected. Do not stage or silently delete
 that duplicate.
+
+After the owner removed all three STOPs, H04 en resumed from paid cache. Actual
+fit required shortening only `h4v103` to "Which clue?"; two bounded retake
+rounds reduced four Jev flags to one, and `h4v093` was then reworded to "But
+both articles report the same observations." to avoid repeated `described` /
+`describe` confusion. Final en check-audio: 100/100 checked, 96 exact, four
+Jev-cleared, zero flags; 100 windows fit, max tempo 1.12x. The local en.m4a is
+19,956,526 bytes, SHA-256
+`2a396b6ada1a0c203a924c94a913fd6b6f1320e09474ebacbde8a5f6f0d495e7`;
+timeline speech hash `939e267cecc8f2cb`, translation hash `dd0a14dadf3733d0`.
+This is a local output, not yet in a language review or YouTube Studio.
+
+One H04 en transcript response hit the Windows journal rename EPERM. Original
+`sent` and temp `confirmed` receipts for
+`d77427bb0c25afefb23be7d363705205595085d777f9e37feb6899684670e94e`
+had identical request and sent time; the inline answer hash verified. The
+original was backed up before exact replacement, read back as confirmed, and
+the subsequent check reused that paid answer without another POST. Do not
+turn this per-request recovery into a general retry; draft PRs #1379 and #1391
+still own the shared journal/atomic-write fix paths.
