@@ -673,8 +673,8 @@ SERIES_SLUG_PATTERN = r"^[a-z0-9][a-z0-9-]{1,39}$"
 # A long series, a one-off drama (one episode, one story bible; docs/videos/DRAMA-FLOW.md §二), or
 # a brand-story series (no documents; its episodes are a planned backlog; docs/videos/STORY.md).
 SeriesKind = Literal["series", "one-off", "story"]
-# How long one episode may run: a drama's episode, and a story, which is 12 to 15 minutes. The
-# database allows the longer one for every kind (migration 0111); the schemas hold the rest to 8.
+# Episode lengths: drama is capped at 8 minutes; stories may use the original 13-minute
+# route or the separate 10-minute cute-mystery route (both below the 20-minute schema cap).
 SERIES_MAX_MINUTES = 8
 STORY_MAX_MINUTES = 20
 # How many stories may start on one Asia/Taipei calendar day, at most.
