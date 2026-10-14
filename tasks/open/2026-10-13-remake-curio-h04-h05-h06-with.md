@@ -593,3 +593,32 @@ bytes. Original and temporary evidence copies were saved, then the exact
 canonical receipt was replaced and read back as confirmed. The later CLI run
 reused each paid answer. No generic retry, forgotten receipt, or duplicate
 provider request was used to cross an uncertain outcome.
+
+H04 ko's second transcript cleared five of ten initial flags; five
+source-faithful lines were narrowed and rerecorded once each. The new 100-line
+check is 77 exact, 18 Jev-cleared, five independent-transcript-cleared, zero
+flags; every window fits at 1.00x. The local `ko.m4a` is 20,568,518 bytes,
+SHA-256 `0bfbb0c02054504119db280ed5bac8e08b57028aaac187e97e5cb29d16e4dbdc`.
+H04 now has en/ja/ko local tracks passing fit and check-audio. Captions were
+rebuilt in four languages and `package` passed 4/4, listing all three dub
+tracks; upload metadata SHA-256 prefix `5666854ddb15`. `review-push --gate
+languages` submitted the H04 language card, and backend owner approval is
+pending. This is not a Studio upload, player verification, or publication.
+
+H05 ja synthesized 97 requests (2,507 billable characters), with 102 windows
+fitting after timing adjustment; two short overruns were absorbed by following
+pauses. Its local `ja.m4a` is 20,801,740 bytes, SHA-256
+`67db831a0bfb7b65d043d0ac610906a3bffc4f5b55e7568858a6b01392a59638`.
+Formal per-line audio check is pending. H06 ja `v228` was shortened before its
+first paid recording; current dry-run has zero windows forecast to exceed
+1.15x and H06 still lints 0/0. H06 ko `v228` remains source-faithful until
+actual recorded timing resolves its single forecast overrun.
+
+H05 en check-audio hit a further Windows journal rename EPERM after a paid
+transcript returned. For request `a0f4a3703194f0459a40e0b41d4bf3536f75b5af8370e57b79b1c665f670876c`,
+the original `sent` and temporary `confirmed` had identical request and sent
+time; the inline answer hash matched `73b80e57d94bdca654ac776e642de583b82988cdc67cf586c470e7d68943e054`.
+The producer PID was dead. Original and temporary evidence copies were saved,
+then the exact canonical receipt was atomically replaced and read back as
+confirmed with a sent backup. The resumed checker reuses this answer; it must
+not POST that request again.
