@@ -1,6 +1,6 @@
 # 奇聞檔案局 H09｜製作與關卡
 
-狀態：本機企劃、劇本、分鏡提示詞及乾跑報價已完成；大綱 A 已送 `/admin/videos`，讀回「等待站主」。尚未合成旁白或購買插畫。這份檔案不代表站主已核准大綱、劇本或預算。
+狀態：本機企劃、劇本、分鏡提示詞及乾跑報價已完成；更新版大綱 A 已從 `/admin/videos` 讀回核准，正式劇本亦已從 `/admin/videos` 讀回核准。尚未合成旁白或購買插畫；音訊與本集圖片預算尚未核准。
 
 ## 作品規格
 
@@ -26,7 +26,7 @@
 | 未結與結束畫面 | 2 | 1 | 最後一個插畫回呼和片尾 |
 | **定稿草案** | **92** | **8** | **正文插畫占 92／99（outro 不計），約 93%** |
 
-`keyframes --dry-run --takes 3` 對這版 92 張、MiniMax `image-01`、1K 回報：首輪約 US$1.24，每張最多三輪的圖片與評審總額約 US$3.73；目前 H09 媒體帳本 US$0.00。這是送審報價，旁白與其他媒體費用另計；正式執行前須再查當日價格與額度。把**整集**新圖數與美元上限一次報站主；核准前不執行付費生圖。H07 的授權不適用 H09。
+`keyframes --dry-run --takes 3` 對這版 92 張、MiniMax `image-01`、1K 回報：首輪約 US$1.24，每張最多三輪的圖片與評審總額約 US$3.73；目前 H09 媒體帳本 US$0.00。這是送審報價。Gemini Sulafat 旁白 100 句、2,654 字元，依 11.2 分鐘與 Google 2026 年 `gemini-3.8-flash-tts` Standard 費率估首輪約 US$0.16（實際音訊長度及輸入 token 未知）；擬給旁白含必要重錄 US$0.50、整批圖片 US$4.00，兩階段 H09 上限 US$4.50，均待站主明確授權。此額度不含尚未報價的轉寫、Jev 審查、多語或上傳；共用的 US$200 後台設定不能執行 H09 專屬上限，須逐階段核帳。Google 價目：https://ai.google.dev/gemini-api/docs/pricing 。把**整集**新圖數與美元上限一次報站主；核准前不執行付費生圖。H07 的授權不適用 H09。
 
 ## 路線與安全邊界
 
@@ -48,4 +48,5 @@
 - `node tools/video/cli.mjs lint --slug curio-h09`：0 錯誤、3 項敘事啟發式警告、估時 11.2 分鐘。兩段超過 90 秒的提醒須以實際配音時間軸重新核對；片尾「回到最初那條線」是回收主題的回答，仍須聽稿確認是否自然。`script --slug` 已重產正式送審用 `script.md`，SHA-256 `3B1ECF0743F7BD83333ED68E697219333E81BBDCF7392C92D976F62BA6627D4C`。
 - `tts --dry-run`：100 次請求、約 2,654 個計費字元，沒有合成。`keyframes --dry-run --takes 3`：92 景，首輪約 US$1.24、每景最多三輪約 US$3.73，當前媒體帳本 US$0.00；沒有產圖。主機目前共用的每片上限仍是 US$200，**不是**本集授權或本集硬上限。開畫前須就 H09 取得整批美元上限；以本機人工檢查帳本與停止執行來約束，不得把 US$200 當成可花額度。
 - `npm run check:tasks` 通過。`npm run test:docs-videos` 為 214／215 通過；唯一失敗是未修改的 `imported-long-languages/runner.test.mjs` 在 Windows 子行程 `package-runtime.mjs` 以 `3221226505` 崩潰，單獨重跑相同。這項失敗不在 H09 檔案範圍內，沒有被誤報成全綠。
-- 2026-10-15 已將含 Purdue 10／14 進度的 `brief.md`（SHA-256 `D93595C10AB24AD8AE55F5C7BD9A246FA7B4EFA6DE4D8626A318AB1FD511A83A`）重新 `review-push --gate outline`。只有一個 A 案，工具未啟動需 2–3 案的選案 judge；`review-pull --gate outline` 讀回 `waiting for the owner`。劇本尚未送審，必須先取得這版大綱核准。
+- 2026-10-15 `review-pull --gate outline` 將含 Purdue 10／14 進度的 `brief.md`（SHA-256 `D93595C10AB24AD8AE55F5C7BD9A246FA7B4EFA6DE4D8626A318AB1FD511A83A`）讀回為站主核准大綱 A；本機 `approvals.json` 記錄 approved_at=`2026-10-14T23:48:50.461Z`。正式 `script.md`（SHA-256 `3B1ECF0743F7BD83333ED68E697219333E81BBDCF7392C92D976F62BA6627D4C`）已 `review-push --gate script`，隨後 `review-pull --gate script` 讀回站主核准；本機 `approvals.json` 記錄 approved_at=`2026-10-14T23:51:59.021Z`，對應的 `script.md` 雜湊與工作目錄一致。劇本核准尚未涵蓋音訊或圖片費用。
+- 2026-10-15 再查 Purdue／PRF 官方最新仍為 10／14 的 Taraia 水下測勘開始公告，資料尚待分析，未確認機體；目前核准稿不用修訂，成片前仍須再查。旁白合成命令曾提出執行，但自動審核拒絕把完整稿件送到 Gemini，理由是劇本核准並非外部合成的明確授權；命令未執行，沒有產生音檔或費用。
