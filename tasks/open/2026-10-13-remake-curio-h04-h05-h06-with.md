@@ -622,3 +622,18 @@ The producer PID was dead. Original and temporary evidence copies were saved,
 then the exact canonical receipt was atomically replaced and read back as
 confirmed with a sent backup. The resumed checker reuses this answer; it must
 not POST that request again.
+
+The resumed H05 en `check-audio` completed 102/102: 88 exact, five
+Jev-cleared, five independent-transcript-cleared, four flagged (`h5v037`,
+`h5v082`, `h5v084`, `h5v091`). It reused the recovered paid answer and made
+no duplicate request for it. `h5v037` sounded like "shoe" rather than "chute";
+`h5v082` had plural "bills" where the claim needs one recovered bill.
+`h5v084` (Kaye/Kay) and `h5v091` (Tena Bar/Tina Bar) were same-sound spelling
+flags, not evidence of wrong factual pronunciation. Four localized sentences
+were rewritten before any retake: the parachute and single-bill wording is
+clearer; the author names and Tena Bar remain explicit in their same-scene
+source cards while the spoken translation refers to the two researchers and
+the discovery site. H05 en lint is 0/0, dry-run is four new requests and
+zero forecast unfit windows. The old en check does **not** validate the newly
+worded track. H05 ja check-audio is now running under the project lease; no
+other paid H05 tool may start until it ends.
