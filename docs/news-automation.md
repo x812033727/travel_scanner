@@ -27,15 +27,12 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    replay of every missed hour). Entries whose URL was already seen are not fetched again.
    Each new entry's page is fetched through `SafeNewsFetcher` (HTTPS only, allow-listed
    hosts, public IPs pinned against DNS rebinding, robots.txt honoured and read once per
-   host per scan, 2 MB limit). A robots.txt redirect is followed only over HTTPS on the
-   same host, with each hop rechecked and the normal redirect limit. A redirected robots
-   response must be text/plain with a User-agent rule; a cross-host redirect or non-2xx
-   final response still refuses the page. Links from the article to articles on *other
-   websites* that are enabled evidence sources are fetched as additional evidence;
-   links to the page's own site and to images, video, audio, PDFs or archives are not
-   fetched. A page that fails is skipped and listed on the source (`partial`), and the
-   listing's ETag is kept back so the next scan tries it again. Exact URL, title or
-   content matches are closed as duplicates at once.
+   host per scan, 2 MB limit). Links from the article to articles on *other websites* that
+   are enabled evidence sources are fetched as additional evidence; links to the page's
+   own site and to images, video, audio, PDFs or archives are not fetched. A page that
+   fails is skipped and listed on the source (`partial`), and the listing's ETag is kept
+   back so the next scan tries it again. Exact URL, title or content matches are closed as
+   duplicates at once.
    A first-party page that *refuses* the scanner (HTTP 401 or 403: `openai.com/index/*`
    answers every request with a Cloudflare challenge) is not skipped forever when its entry is
    dated within
@@ -103,6 +100,10 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    could be read at all. Listings can be narrowed with `include_query_contains` (sites that
    serve every page from one script, like the FSC's `/ch/home.jsp`) and
    `include_title_keywords` (a publisher mostly outside the three verticals).
+   **Robots redirects.** A robots.txt redirect is followed only over HTTPS on the same
+   host, with each hop rechecked and the normal redirect limit. A redirected response
+   must be text/plain with a User-agent rule; a cross-host redirect or non-2xx final
+   response still refuses the page.
 2. **Evidence gate.** At least one page from an evidence source (owner decision,
    2026-09-25: every enabled source is an official or trusted feed, and a person confirms
    each story before it is translated; since 2026-10-06 the review judge may confirm in
