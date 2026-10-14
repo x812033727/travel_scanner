@@ -9,6 +9,14 @@
 - 最新 `review/qa.json` 綁上述 MP4 SHA，**10／11 項通過**。組片、渲染、旁白核准、節奏、字幕、上架文字、查核、縮圖、頻道立場與揭露項通過；`links` 一項未過：來源清單 10 個連結中，7 個 `www.fbi.gov`、`archives.fbi.gov`、`faa.gov` 官方網址在本機 editorial GET 均回 HTTP 403。同輪已透過獨立瀏覽器開啟這七個官方頁面，證明當時頁面可由瀏覽器讀取；**本機自動連結檢查仍是失敗，不能記成 11／11**。Wikimedia Commons 路徑中的括號已作 URL 編碼，本機 fetch 回 200；連結擷取器曾截斷括號網址的獨立缺陷另開 `tasks/open/2026-10-14-video-qa-truncates-source-urls-with.md`，不影響這七個 403 的誠實計數。
 - `review-push --gate final` 已送出上述成片 SHA、實際 **10／11** 報告與預覽；後台回覆 **pending**。成片尚未核准，上傳包尚未產生，YouTube 尚未上傳。站主須完整看聽並決定是否接受該連結檢查限制；核准後再用 `review-pull` 讀回同一 SHA。這裡沒有把等待送審或瀏覽器可開頁面寫作成片核准。
 
+### 後台成片核准與上傳包（同日，更新上項待審狀態）
+
+站主於 `2026-10-14T08:13:33Z` 在後台核准 H05 最終卡；`review-pull --gate final` 於 `08:17:06Z` 記錄同一 `final.mp4` SHA-256 `32cdc6403dbd321300c3a53ed2d2953696a3aa79da9ede5e977c00423499eb79`。這是接受 **10／11** 報告後的後台核准，七個官方網址的本機 GET 403 紀錄並未改寫。
+
+`package --slug curio-h05-v2` 已建立工作區 `upload/`，含正式 MP4、縮圖、繁中 CC、繁中標題說明與 `metadata.json`；上傳包機械檢查 **4／4 PASS**，metadata SHA-256 `e69574ed62a6…`。其他語言仍未決定；上架包後台提交與讀回、YouTube Studio 上傳及發布均須另記，不能由本段推定完成。
+
+`review-push --gate publish` 回覆 **approved**；`review-pull --gate publish` 回覆 `upload package approved (metadata.json e69574ed62a6)`。此核准只針對上傳包，沒有 YouTube 上傳或發布，也沒有替站主決定其他語言。
+
 ## 字幕安全區逐景標記與新圖卡渲染（2026-10-14）
 
 依現行來源圖卡版逐景檢查，`compare`、`stats`、`steps` 的 `data.source` 與 `photo` 的 `data.caption` 共 49 景使用模板底部來源行；舊模板在 1920×1080 的來源行落於 y=902–948，跨入底部 15% 字幕保留區（y≥918）。本輪只在這 49 景的 `data` 加入 `cc_safe: true`，讓模板將內容底線上移至 y=868；沒有變更旁白、場景 ID、版型種類、揭露順序或來源文字。`open-note` 的 SVG 內頁尾 y=873–900、`burial-edge` 內部最低文字 y=701–730，另列入實際字幕覆蓋抽查。

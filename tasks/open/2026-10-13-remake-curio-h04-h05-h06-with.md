@@ -35,7 +35,7 @@ cuts, receipts, draft PRs and H05's unfinished work.
       passed; repeat the blind review after the source-card storyboard change.)
 - [x] Each new slug has checked narration, source-bound artwork, current branding,
       8+ minutes of body, synchronized zh-TW CC and a newly QA-checked full MP4.
-- [ ] Each new upload package and backend review binds the new hashes. Keep
+- [x] Each new upload package and backend review binds the new hashes. Keep
       owner playback and Studio upload/publication as separate recorded gates.
 
 ## Steps
@@ -48,7 +48,7 @@ cuts, receipts, draft PRs and H05's unfinished work.
 - [x] Inspect old backend projects and resolve their superseded status before
       registering new slugs; keep old approvals and media intact. The v2 slugs
       are independent, so destructive abandonment of old H05/H06 is unnecessary.
-- [ ] Build and review new audio, illustrations, edit, captions, QA and packages
+- [x] Build and review new audio, illustrations, edit, captions, QA and packages
       one episode at a time with persisted receipts and readback.
 
 ## How to verify
@@ -445,7 +445,18 @@ failed. H06: 8:32.100 final, SHA-256
 `f6eb1afd271d774fde36300bf57e63287e9a1013cf85c9ff7b7dc55a532eee3a`,
 11/11 QA. H04 and H06 final gates are backend-approved and read back; their
 zh-TW upload packages pass 4/4 and their publish-package gates are approved
-and read back. H05 final review was submitted with the real 10/11 report and
-is pending owner decision; its upload package has not been built. No new v2
+and read back. H05 final review was approved by the owner in the backend with
+the real 10/11 report and read back at the same MP4 SHA; its zh-TW upload
+package passes 4/4 and its publish-package gate is approved and read back.
+No new v2
 video has been uploaded to YouTube or published. Language selections are undecided;
 `languages.json` records `decided_at:null`, not a zh-TW-only owner decision.
+
+Local-only cleanup remains outside this PR: three obsolete
+`diagrams/thumbnail-subject.png` candidates and nine hidden H05 temporary
+files are untracked and unstaged after automatic approval review rejected
+their removal. `tasks done` wrote the completed CC-safe ticket to `tasks/done/`
+but could not remove its local `tasks/open/` copy; a direct exact-path
+`Remove-Item` was also rejected as `blocked by policy` without further reason.
+The PR contains only the done copy; the open copy remains untracked locally.
+Do not report any of these files as deleted or stage them accidentally.
