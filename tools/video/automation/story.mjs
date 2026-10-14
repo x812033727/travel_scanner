@@ -1,6 +1,7 @@
-// A brand story on the host (docs/videos/STORY.md): a 12 to 15 minute non-fiction documentary told
-// by a narrator alone over about 90 cartoon stills, written, fact-checked and heard one chapter at
-// a time from a plan that was fact-checked before it was imported.
+// A brand story on the host (docs/videos/STORY.md): a narrator-only non-fiction documentary
+// written, fact-checked and heard one chapter at a time from a reviewed plan. The original series
+// aims at 13 minutes and about 90 cartoon stills; the five cute-mystery stories aim at 10 minutes
+// and about 80 illustrations.
 //
 // The site hands a story over as an episode of a series of kind "story" (GET automation/series/next,
 // then episodes/{n}/start under the video slug the plan fixed), with the whole plan as the
@@ -800,6 +801,49 @@ function draftContext(root, slug, doc) {
 
 const SCENE_PATH = /^scenes\[(\d+)\]/;
 
+// The five cute-mystery brand stories borrow Curio's visual mix, but keep their story-* slugs.
+// Check the complete merged script before keyframes are bought. The usual story writer currently
+// writes shots only; this also guards later chapter edits and changes to that writer's contract.
+const STORY_FIVE_FRAMES = new Set(["title", "chapter", "outro"]);
+const STORY_FIVE_MIN_SHOT_PERCENT = 70;
+const STORY_FIVE_MAX_CARD_RUN = 3;
+
+export function storyFiveVisualProblems(doc) {
+  if (!/^story-five-/.test(doc?.slug ?? "")) return [];
+  const problems = [];
+  const look = doc.look;
+  if (!look || typeof look !== "object" || Array.isArray(look) || look.preset !== "cute-mystery" || Object.keys(look).length !== 1) {
+    problems.push({ path: "look", message: 'story-five uses exactly {"preset":"cute-mystery"}; remove style, negative and other look overrides' });
+  }
+  const body = (doc.scenes ?? []).map((scene, index) => ({ scene, index }))
+    .filter(({ scene }) => !STORY_FIVE_FRAMES.has(scene.template));
+  if (!body.length) return [...problems, { path: "scenes[0]", message: "the story-five body has no scenes; add illustrated shots before keyframes" }];
+
+  const shots = body.filter(({ scene }) => scene.template === "shot").length;
+  if (shots * 100 < body.length * STORY_FIVE_MIN_SHOT_PERCENT) {
+    // A concrete card path lets relint send the ratio failure back to its chapter's writer.
+    const card = body.findLast(({ scene }) => scene.template !== "shot");
+    problems.push({
+      path: `scenes[${card.index}]`,
+      message: `${shots} of ${body.length} body scenes are illustrated shots (${Math.floor(shots * 100 / body.length)}%); story-five needs at least ${STORY_FIVE_MIN_SHOT_PERCENT}%`,
+    });
+  }
+
+  let cards = [];
+  for (const item of body) {
+    if (item.scene.template === "shot") { cards = []; continue; }
+    cards.push(item);
+    if (cards.length === STORY_FIVE_MAX_CARD_RUN + 1) {
+      problems.push({
+        path: `scenes[${item.index}]`,
+        message: `${cards.length} cards in a row (${cards.map(({ scene }) => scene.id).join(" → ")}); story-five allows at most ${STORY_FIVE_MAX_CARD_RUN} before an illustrated shot`,
+      });
+      cards = [];
+    }
+  }
+  return problems;
+}
+
 /**
  * Lint the chapters written so far, and when all six are there write video.json and claims.md
  * and lint them as `status` does. Every error inside a chapter's scenes is that chapter's (kept
@@ -823,6 +867,7 @@ async function relint(automation, state) {
     // so a line changed after it (a length fix, the owner's note on the narration) voids it.
     writeScreenplay(dir, doc);
     errors = lintProject(loadProject({ slug: state.slug, root })).errors;
+    errors.push(...storyFiveVisualProblems(doc));
   } else {
     errors = lintVideo(doc, draftContext(root, state.slug, doc)).errors;
   }

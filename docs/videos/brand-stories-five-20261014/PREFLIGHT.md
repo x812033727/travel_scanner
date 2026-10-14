@@ -41,7 +41,7 @@
 
 **已完成的本機接線**：在不動原 100 題與 A01／B18 的前提下，另建[五集系列](series.json)、五份六章 row 與各自的新[獨立審稿](episodes/reviews)，由 [`build.mjs`](build.mjs) 編成 [`stories.json`](stories.json)。五題連號、各用 `story-five-*` slug、分列五天中午；`reviewProblems` 與 Python `check_story_file` 對完整輸入均為零問題。這些是**本機驗證**，正式站仍須唯讀 dry-run、查 live ID／slug／既有製作狀態，不能覆寫已開始的故事。新版 writer 已加入可愛畫風的「回答、故事相關留言、訂閱」三句與一人一動作插畫指示；它仍須在實際逐字稿、片尾 16 秒 Studio 元素及全片 QA 中逐項核對。
 
-原 story 產線要求 12–15 分鐘、非空 `look.style`／`look.negative`，工人把 `video.json` 設為 `preset:custom`。本工作樹的[窄範圍修正](../../../tasks/open/2026-10-14-support-10-minute-minimax-cute-brand.md)已讓**另立的五集系列**採 10 分鐘、MiniMax `image-01` 與精確 `{"preset":"cute-mystery"}`，原 13 分鐘 Gemini 自訂畫風路線仍通過回歸測試。本機含角色的 A29 小樣之 `validateVideo`、`lintVideo` 無錯誤；這是合成小樣，**不是正式 A29 逐字稿或成片**。`curio-*` 專屬 lint 不自動套用 `story-*`，五支實片仍要另驗插畫 ≥70%、連續卡片 ≤3、單鏡提示詞和畫風。
+原 story 產線要求 12–15 分鐘、非空 `look.style`／`look.negative`，工人把 `video.json` 設為 `preset:custom`。本工作樹的[窄範圍修正](../../../tasks/open/2026-10-14-support-10-minute-minimax-cute-brand.md)已讓**另立的五集系列**採 10 分鐘、MiniMax `image-01` 與精確 `{"preset":"cute-mystery"}`，原 13 分鐘 Gemini 自訂畫風路線仍通過回歸測試。本機含角色的 A29 小樣之 `validateVideo`、`lintVideo` 無錯誤；這是合成小樣，**不是正式 A29 逐字稿或成片**。`curio-*` 專屬通用 lint 不套用 `story-*`；新版 story 工人在六章合併後、付費產圖前另擋正文空白、插畫低於 70%、連續卡片超過三張與畫風偏離。正式影片仍須目視驗收插畫品質、單鏡提示詞與實際畫面。
 
 五題本機輸入與 slug 接法已驗；A01／B18 試作及主機狀態仍待驗。在**已核准的主機環境**核對輸入 SHA 與 live 狀態後，才可用下列形式作唯讀匯入試跑；此處未執行，也沒有 `--apply`：
 
@@ -59,6 +59,8 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli video-st
 [A01／B18 試作票](../../../tasks/open/2026-09-28-video-story-pilot.md)目前為 `blocked`，其勾選項要求：先在正式主機讓 A01、B18 到「可以上架」，站主看過；回填時長、張數、重做率、階段秒數、實際帳本、1K 清晰度與 token 用量。站主於 2026-10-15 明確決定這兩支先完成，五支新版接著做。原試作維持原規格，票明載正式站操作須站主同意，部署、上限、頻道立場、字幕語系、權限與主機狀態均須逐項核對。此前的[試作執行方案](../../work-status-2026-09-29-story-pilot-plan.md)也只是一份未執行的方案，不能當作 live 收據。五支尚無正式站逐集狀態回讀；A01／B18 只有試作票記錄的部分後台 UI 觀察，未核實 live 版本、餘額或帳本。沒有改正式設定或驗帳；不自動觸發五支或每日兩支 rollout。
 
 舊試作方案仍稱 `video-story-image-model-pricing` 票未完成；[該票](../../../tasks/done/2026-09-28-video-story-image-model-pricing.md)現已結案，作品模型估價與快取修正已落地。這項修正沒有把文字、TTS、judge 與未結算重試納入每支 US$25 的整片硬上限。2026-10-15 在本機以來源讀取器重查 A01／B18 共 16 個 URL，全部因本環境連線失敗而未取得正文；不能據此判為來源失效，正式寫稿前須在可連網的核准環境重跑並保存報告。
+
+[A01／B18 整片預算關卡](../../../tasks/open/2026-10-14-enforce-usd-25-all-in-cap.md)已獨立建票：正式上限要涵蓋每種付費呼叫與結果不明的預留，不能把全域媒體上限調低後當作完成。A01／B18 依序試作和站主看片仍是這五集付費製作的前置條件。
 
 在接線完成且取得該階段的站主決定後，五題每支按同一張收據走：
 

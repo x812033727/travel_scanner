@@ -36,6 +36,7 @@ The owner selected MiniMax `image-01`, the exact `{"preset":"cute-mystery"}` loo
 - [x] A new story series with 10 minutes, `image-01` and exact `{"preset":"cute-mystery"}` look validates through local compiler and API importer checks.
 - [x] The six-chapter story worker emits a `video.json` with that exact look, while original custom story series still emits its old look unchanged.
 - [x] Focused JS/Python regression tests pass, including rejection of malformed mixed custom/preset looks.
+- [x] The five-story worker rejects a merged script before paid keyframes if its body is empty, under 70% illustrated shots, has more than three consecutive cards, or loses the exact cute-mystery look; A01/B18 retain their original route.
 
 ## Steps
 
@@ -49,7 +50,7 @@ Run `node --test tools/video/story-plans/plan.test.mjs tools/video/automation/st
 
 ## Notes
 
-- The main branch's `curio-*` visual lint is slug-scoped; it does not automatically validate `story-*` episodes. The five-film task records its separate visual acceptance checks.
+- The main branch's `curio-*` visual lint is slug-scoped; it does not automatically validate `story-*` episodes. This task's story worker now checks the five new `story-five-*` slugs when all six chapters are merged, before paid keyframes. Final image quality and actual scene mix still require review of generated media.
 - The importer starts new `kind=story` series as active. The five-series payload stays local/dry-run until the A01/B18 pilot and owner gate; this task only makes the specified format possible.
 - Local receipt (2026-10-15): `seriesProblems` accepts the five-series `series.json`; Python `check_story_file` accepts all five selected episode rows with zero problems/refusals. An in-memory SQLite import of one selected episode persisted 10 minutes, `image-01`, `style_preset=custom` and exact `look={"preset":"cute-mystery"}`. No live import was run.
 - Worker receipt: the new route has a 9:00–11:00 narration band, `video.json.target_minutes=[9,11]`, and 80 budgeted illustrations at about 7.5 seconds each. The original 13-minute route retains its 11:30–15:30 band, `[12,15]` video target and 90 budgeted shots. The cute route's internal `brief.md` adds the two sections required by the preset lint; custom briefs keep their earlier sections.
@@ -58,3 +59,4 @@ Run `node --test tools/video/story-plans/plan.test.mjs tools/video/automation/st
 - `npm run check:tasks` is currently red for an unrelated duplicate A21 correction ticket in both `tasks/open/` and `tasks/done/`; this task's new `review` status is not the failure.
 - API PATCH follow-up (2026-10-15): added `series.py` to this ticket's scope after `who-is-on-it --scope apps/api/app/video_automation/series.py` found no active task or open PR touching it. The service checks the merged story series state before saving a change to look, duration, image model or style preset. A cute look must retain exactly 10 minutes, `image-01` and story `custom`; moving back to the original custom look requires its 12–15 minute story length and `custom` writer preset in one PATCH. Focused service/schema tests cover each partial break and both complete transitions. Checks: `uv run pytest tests/test_video_story_series.py tests/test_video_series.py -q` 58 passed, 3 skipped; Ruff and mypy on the two changed Python files passed. `npm run check:tasks` is still red only for the duplicate A21 open/done ticket noted above.
 - Still gated: this is a local code and fixture check. The five-series live import, generated audio/images, render, upload, publication and owner acceptance remain separate decisions and receipts.
+- Five-film scene gate (2026-10-15): `storyFiveVisualProblems` checks exact `look`, nonempty body, ≥70% `shot` scenes, and ≤3 consecutive body cards. The complete-story `relint` maps ratio and card errors back to the offending chapter via `scenes[index]`, so its writer can revise the script before keyframes. Original custom stories bypass it. Focused tests passed 5/5 and the story suite passed 23/23 before the final exact-look assertion; the suite is rerun on the final edit before commit.

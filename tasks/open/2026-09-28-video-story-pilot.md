@@ -13,6 +13,7 @@ depends_on:
   - 2026-09-28-video-story-worker
   - 2026-09-28-video-story-backlog
   - 2026-09-28-video-story-api-policy-languages
+  - 2026-10-14-enforce-usd-25-all-in-cap
 scope:
   - docs/videos/STORY.md
 ---
@@ -100,3 +101,5 @@ The deployments UI showed `尚無 → 尚無`, `尚未取得最新 main commit �
 The same authenticated browser subsequently read two exact, read-only same-origin admin GET responses: `/api/travel/admin/video-automation/series?kind=story` returned `{"series":[]}`; `/api/travel/admin/deployments/overview` returned `enabled:false`, `agent_connected:false`, `deployed_sha:null`, `target_sha:null`, `ci_status:"unknown"`, and no active or last-success run. The former establishes that the registered story-series list was empty in the reached database at read time; the latter confirms the deployment UI cannot establish a release SHA. Direct admin video-detail GETs for `story-rolling-suitcase` (A01) and `story-conveyor-belt-sushi` (B18) each returned nginx `502 Bad Gateway`, which is not a missing-video verdict. Independent admin browse GETs with `q=` set to each exact slug returned `{"items":[],"total":0}` for both; the current admin index thus has no matching A01/B18 video-project rows. None of these queries inventories host media files or proves no unregistered worker work exists. The admin GETs do not disclose vendor credit balances or worker-code SHA. No mutations were made.
 
 `GET /api/travel/admin/video-automation/settings` returned `enabled:true`, global voice Gemini `Sulafat`, global caption locales `en/ja/ko`, and drama image defaults MiniMax `image-01`. The current drama settings still have `drama_auto_approve_final:true`, `max_usd_per_video:200`, `series_max_in_flight:1`, monthly starts 30, and image/judge monthly ceilings 20,000 each. These are settings values, not an all-in US$25 cost reservation or the original A01/B18 series row's actual model route. Before import, turn off automatic final approval for owner viewing, resolve the caption choice, prove live release/worker version and bounded spend, and then rerun the exact cohort dry-run. No setting was changed.
+
+Read-only cost-path audit on 2026-10-15 confirmed that media estimates, text tokens, speech characters, transcription and Jev calls do not share a durable per-film USD reservation. The [pilot budget gate](2026-10-14-enforce-usd-25-all-in-cap.md) is now an explicit prerequisite; the production setting of USD 200 cannot prove the USD 25 all-in limit. No paid pilot was started.

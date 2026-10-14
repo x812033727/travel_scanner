@@ -42,8 +42,10 @@ import {
   readChapter,
   readChapterAnswer,
   SCRIPT_NOTE,
+  STORY_CHAPTERS_DIR,
   storyCast,
   storyBrief,
+  storyFiveVisualProblems,
   storyLineIds,
   storySeriesFile,
   yearForms,
@@ -187,11 +189,11 @@ function listenAnswer(payload) {
 
 // --- the site ------------------------------------------------------------------------------------
 
-function storySite({ answers = {}, jobs = null, settings = {}, raw = {}, paused = () => false, series = SERIES, held = null } = {}) {
+function storySite({ answers = {}, jobs = null, settings = {}, raw = {}, paused = () => false, series = SERIES, plannedEpisode = EPISODE, held = null } = {}) {
   const calls = { run: [], episodes: [], reports: [], pages: [], answers: [] };
   const projects = new Map();
   const reviewsOf = (slug) => projects.get(slug) ?? projects.set(slug, []).get(slug);
-  const queue = jobs ?? [{ kind: "episode", series, chapter_number: null, episode: EPISODE, previous: null, rewrites_left: 0, context: { series, setting: null, outline: null, chapter: null, chapter_number: null, episode: EPISODE, episodes: [{ ...EPISODE, beats: {} }], recaps: [], mysteries: [] } }];
+  const queue = jobs ?? [{ kind: "episode", series, chapter_number: null, episode: plannedEpisode, previous: null, rewrites_left: 0, context: { series, setting: null, outline: null, chapter: null, chapter_number: null, episode: plannedEpisode, episodes: [{ ...plannedEpisode, beats: {} }], recaps: [], mysteries: [] } }];
   const current = {
     enabled: true, draft_interval_hours: 72, topics_per_run: 1, max_waiting_drafts: 3, topic_scope: ["AI"], topic_avoid: [], topic_from_site: true, topic_from_search: false,
     stage_models: {}, voice: { provider: "gemini", name: "Sulafat", style: "溫和的說書人語氣", model: null, rate: "+0%" }, target_minutes_min: 8, target_minutes_max: 12, caption_locales: [],
@@ -224,11 +226,11 @@ function storySite({ answers = {}, jobs = null, settings = {}, raw = {}, paused 
       calls.episodes.push({ series: episode[1], number: Number(episode[2]), action: episode[3], ...(body ?? {}) });
       if (episode[3] !== "start") return json({ number: Number(episode[2]), status: episode[3] === "done" ? "done" : "started" });
       // The server's contract (apps/api/app/video_automation/series.py start_episode): a story starts under its planned slug.
-      if (body.slug !== EPISODE.slug) return json({ code: "video_series_story_slug", detail: `這個故事的影片代號是 ${EPISODE.slug}，不是 ${body.slug}` }, 409);
+      if (body.slug !== plannedEpisode.slug) return json({ code: "video_series_story_slug", detail: `這個故事的影片代號是 ${plannedEpisode.slug}，不是 ${body.slug}` }, 409);
       // A limit that took hold after next advertised the story (#918): the start is refused.
       if (held) return json({ code: "video_series_story_held", detail: held }, 409);
-      const started = { ...EPISODE, status: "started" };
-      return json({ request: { id: "b0c1d2e3-0000-4000-8000-000000000001", premise: `品牌故事 第 1 集：${EPISODE.title}\n${EPISODE.logline}\nquestion: ${PLAN.question}`, title: `品牌故事 第 1 集 ${EPISODE.title}`, source_guide: null, style_preset: "custom", target_minutes: series.target_minutes, note: series.note, status: "started", slug: body.slug, series_slug: series.slug, episode_number: 1 }, episode: started, context: { series, setting: null, outline: null, chapter: null, chapter_number: null, chapter_range: null, episode: started, episodes: [{ ...started, beats: {} }], recaps: [], mysteries: [] } });
+      const started = { ...plannedEpisode, status: "started" };
+      return json({ request: { id: "b0c1d2e3-0000-4000-8000-000000000001", premise: `品牌故事 第 1 集：${plannedEpisode.title}\n${plannedEpisode.logline}\nquestion: ${PLAN.question}`, title: `品牌故事 第 1 集 ${plannedEpisode.title}`, source_guide: null, style_preset: "custom", target_minutes: series.target_minutes, note: series.note, status: "started", slug: body.slug, series_slug: series.slug, episode_number: 1 }, episode: started, context: { series, setting: null, outline: null, chapter: null, chapter_number: null, chapter_range: null, episode: started, episodes: [{ ...started, beats: {} }], recaps: [], mysteries: [] } });
     }
     if (pathname === "/api/video/automation/run") {
       calls.run.push(body);
@@ -293,12 +295,12 @@ const standardAnswers = (overrides = {}) => ({
 });
 
 /** A story's world: the site, the automation, the media stand-ins (tts writes a timeline of `seconds()` when set). */
-function storyWorld({ answers = standardAnswers(), raw = {}, seconds = null, settings = {}, paused, jobs = null, series, held = null, decide = () => ({ status: "approved" }) } = {}) {
+function storyWorld({ answers = standardAnswers(), raw = {}, seconds = null, settings = {}, paused, jobs = null, series, episode = EPISODE, held = null, decide = () => ({ status: "approved" }) } = {}) {
   const box = sandbox();
-  const site = storySite({ answers, raw, settings, paused, jobs, series, held });
+  const site = storySite({ answers, raw, settings, paused, jobs, series, plannedEpisode: episode, held });
   const { ctx, out } = context(box, site.fetchImpl);
-  const dir = path.join(box.root, "docs", "videos", SLUG);
-  const workdir = path.join(box.work, SLUG);
+  const dir = path.join(box.root, "docs", "videos", episode.slug);
+  const workdir = path.join(box.work, episode.slug);
   const runs = [];
   const lexicon = () => readJson(path.join(box.root, "docs", "videos", "lexicon.json"));
   const video = () => readJson(path.join(dir, "video.json"));
@@ -358,12 +360,12 @@ function storyWorld({ answers = standardAnswers(), raw = {}, seconds = null, set
     }
     if (name === "review-push") {
       const gate = command[command.indexOf("--gate") + 1];
-      if (GATE_FILES[gate]) site.reviewsOf(SLUG).unshift({ id: `${gate}-${site.reviewsOf(SLUG).length}`, gate, choice: null, note: `${gate}：依設定自動核准`, decided_at: "2026-09-28T03:00:00Z", content_sha256: sha(path.join(workdir, GATE_FILES[gate])), payload: {}, ...decide(gate) });
+      if (GATE_FILES[gate]) site.reviewsOf(episode.slug).unshift({ id: `${gate}-${site.reviewsOf(episode.slug).length}`, gate, choice: null, note: `${gate}：依設定自動核准`, decided_at: "2026-09-28T03:00:00Z", content_sha256: sha(path.join(workdir, GATE_FILES[gate])), payload: {}, ...decide(gate) });
       return { code: 0, out: `${gate} submitted` };
     }
     if (name === "review-pull") {
       const { approve } = await import("../core/approvals.mjs");
-      for (const review of site.reviewsOf(SLUG).filter((each) => each.status === "approved" && GATE_FILES[each.gate])) {
+      for (const review of site.reviewsOf(episode.slug).filter((each) => each.status === "approved" && GATE_FILES[each.gate])) {
         const file = path.join(workdir, GATE_FILES[review.gate]);
         if (existsSync(file) && sha(file) === review.content_sha256 && !readApprovals(workdir).approvals.some((entry) => entry.gate === review.gate && entry.sha256 === review.content_sha256)) await approve({ gate: review.gate, docDir: dir, workdir, note: review.note });
       }
@@ -373,7 +375,7 @@ function storyWorld({ answers = standardAnswers(), raw = {}, seconds = null, set
   };
   const automation = new Automation(ctx, automationClient(ctx), site.settings);
   automation.refs = smallRefs;
-  const state = () => automatedVideos(box.work).find((each) => each.slug === SLUG);
+  const state = () => automatedVideos(box.work).find((each) => each.slug === episode.slug);
   return { box, site, ctx, out, automation, runs, dir, workdir, state, video, lexicon };
 }
 
@@ -504,6 +506,58 @@ test("a writer's chapter is made the worker's: stills only, narrator lines, hand
 });
 
 // --- the flow -------------------------------------------------------------------------------------------
+
+test("the five-story visual gate counts body illustrations and cards at exact scene paths", () => {
+  const shot = (id) => ({ id, template: "shot" });
+  const card = (id) => ({ id, template: "stat" });
+  const bookend = (id, template) => ({ id, template });
+  const slug = "story-five-lego-legoland";
+  const look = { preset: "cute-mystery" };
+  const sevenShots = Array.from({ length: 7 }, (_, index) => shot(`s${index}`));
+  const sixShots = sevenShots.slice(0, 6);
+  const boundary = [bookend("title", "title"), ...sevenShots, card("c1"), card("c2"), bookend("chapter", "chapter"), card("c3"), bookend("outro", "outro")];
+  assert.deepEqual(storyFiveVisualProblems({ slug, look, scenes: boundary }), [], "7/10 shots and three cards pass; chapter cards are excluded from the body");
+
+  const failing = [bookend("title", "title"), ...sixShots, card("c1"), card("c2"), card("c3"), bookend("chapter", "chapter"), card("c4"), bookend("outro", "outro")];
+  const problems = storyFiveVisualProblems({ slug, look, scenes: failing });
+  assert.deepEqual(problems.map((problem) => problem.path), ["scenes[11]", "scenes[11]"], "both errors name the offending card's original scene index");
+  assert.match(problems[0].message, /6 of 10 body scenes.*60%.*at least 70%/);
+  assert.match(problems[1].message, /4 cards in a row \(c1 → c2 → c3 → c4\)/, "a chapter card does not break the card run");
+  assert.deepEqual(storyFiveVisualProblems({ slug, look, scenes: [bookend("outro", "outro")] }).map((problem) => problem.path), ["scenes[0]"], "the body cannot be empty");
+  assert.deepEqual(storyFiveVisualProblems({ slug, look: { ...look, negative: "photorealistic" }, scenes: boundary }).map((problem) => problem.path), ["look"], "a look override blocks the five-story route");
+  assert.deepEqual(storyFiveVisualProblems({ slug, look: { preset: "custom", style: "cute" }, scenes: boundary }).map((problem) => problem.path), ["look"]);
+  assert.deepEqual(storyFiveVisualProblems({ slug: SLUG, scenes: failing }), [], "the original custom story route keeps its own rules");
+});
+
+test("a complete story-five script sends visual failures to the chapter before drawing keyframes", async () => {
+  const series = { ...SERIES, slug: "brand-stories-curio-five", target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const episode = { ...EPISODE, slug: "story-five-folding-umbrella" };
+  const answers = standardAnswers({ "writer:story": (body) => {
+    const chapter = chapterAnswer(body.payload.chapter.key, body.payload);
+    chapter.scenes.forEach((scene, index) => { if (scene.template === "shot") scene.data.camera = index % 2 ? "slow pan left" : "slow push in"; });
+    return chapter;
+  } });
+  const world = storyWorld({ series, episode, answers });
+  await world.automation.step();
+  const written = await steps(world.automation, 6);
+  assert.match(written.at(-1), /six are merged into video\.json/, written.join("\n"));
+  assert.equal(world.state().story.chapters.idea.lint, null, "the six unedited chapters pass");
+
+  // Simulate a later saved-chapter edit. The writer currently writes only shots, but the merged
+  // script must still refuse a card-heavy chapter before the paid keyframes stage.
+  for (const key of ["origin", "idea"]) {
+    const file = path.join(world.workdir, STORY_CHAPTERS_DIR, `${key}.json`);
+    const chapter = readJson(file);
+    for (const scene of chapter.scenes) scene.template = "stat";
+    writeFileSync(file, JSON.stringify(chapter));
+  }
+  const result = await advanceStory(world.automation, world.state(), "script passes lint");
+  assert.match(result, /merged story fails lint in/);
+  const errors = world.state().story.chapters.idea.lint.join("\n");
+  assert.match(errors, /scenes\[5\]: 8 of 12 body scenes are illustrated shots \(66%\)/);
+  assert.match(errors, /scenes\[5\]: 4 cards in a row \(origin-01 → origin-02 → idea-01 → idea-02\)/);
+  assert.equal(world.runs.some((command) => command.startsWith("keyframes ")), false);
+});
 
 test("the ten-minute preset is preserved by the story file and video composer", () => {
   const cute = { ...SERIES, target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
