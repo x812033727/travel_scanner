@@ -1,7 +1,7 @@
 ---
 id: 2026-10-14-five-curio-style-brand-story-video
 title: Five Curio-style brand story video production packages
-status: in-progress
+status: blocked
 priority: P1
 area: docs
 owner: codex-8a78
@@ -48,3 +48,4 @@ Run `node tools/video/story-plans/validate.mjs` to confirm the original plan ban
 - 2026-10-14: Seven files in `docs/videos/brand-stories-five-20261014/` give the five treatments, batch index and `PREFLIGHT.md`; the preflight records local hashes, missing workspaces, cost assumption and worker-input gap. The original bank still validates (100 stories, 0 problems, 4 pre-existing thumbnail warnings for these five); `npm run check:tasks` passes with unrelated stale-claim warnings.
 - Independent QA found A21's original approved plan misreads the patent's raw-slice/dough alternatives and might cause the worker to regenerate a false claim. The local treatment corrects it; task `2026-10-14-correct-a21-pringles-patent-fact-and` covers the source-plan/review correction before production. No new five-episode payload or server-side dry-run has been made. The five-film queue position relative to A01/B18 and the original 50-day schedule awaits the owner's choice.
 - Local `npm ci` completed. With the repo-documented bundled Node 24.19.0, `npm run test:docs-videos` passed 215/215; system Node 24.13.0 first hit its documented native `cpSync` crash on the Unicode worktree path. The video CLI now reads v4 branding, but reports `series: null`, `installed: false`: no episode has branding installed. Read-only relative-link check across the seven new Markdown files found zero broken links.
+- Blocked after draft PR #1499: the owner must choose whether these five follow A01/B18 within the existing 100-story schedule, take priority, or form a separate five-episode series. That choice determines the worker input, IDs/slugs and import plan. The separate A21 source-plan correction and a fresh live host/account/spend preflight are also required before starting media or changing production data. Resume from the seven-file editorial package; do not treat draft PR checks as film acceptance.
