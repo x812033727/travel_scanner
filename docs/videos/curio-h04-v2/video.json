@@ -19,7 +19,7 @@
   },
   "look": {
     "preset": "cute-mystery",
-    "style": "Cute Taiwanese cartoon in hand-inked flat 2D cel art. Every person, tent, boot, folder, snow layer and hill has thick clean dark outlines, broad solid colours and simple cel-shadow blocks. Chibi adults have big heads and expressive eyes. Clear central subject, simple background. Props are plain inanimate objects with simple surfaces. Deep navy, parchment yellow, muted teal and one small warning-red accent; light paper grain. Full-bleed 16:9 art reaches all edges with clean unmarked corners. Historical gear has simple period-shaped silhouettes; Ural slopes are broad and rounded.",
+    "style": "Cute hand-inked flat 2D Taiwanese explainer cartoon. Thick clean dark outlines, broad solid colour areas, simple cel shadows and subtle paper grain. Restrained deep navy, parchment yellow and muted teal. One clear focal area in a simple full-bleed 16:9 composition; plain clean image corners.",
     "negative": ""
   },
   "loops": [
@@ -151,6 +151,21 @@
       "license": "PD-RU-exempt",
       "author": "Лев Никитич Иванов (Lev Nikitich Ivanov)",
       "url": "https://commons.wikimedia.org/wiki/File:Dyatlov.Volume_1.Page_387.jpg"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/diagrams/weathered-footprints.svg",
+      "source": "Mokaair original schematic based on the 1959 closure record and Slobtsov testimony; illustrative, not a footprint tracing",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/diagrams/conditional-small-slab.svg",
+      "source": "Mokaair original schematic based on Gaume and Puzrin 2021; conditional model, not a 1959 site cross-section",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/diagrams/felt-and-sock-types.svg",
+      "source": "Mokaair original footwear-type icons based on the 1959 closure record; not original objects, sole tracings or measured footprints",
+      "license": "Mokaair original"
     }
   ],
   "scenes": [
@@ -293,7 +308,7 @@
       "id": "opening-question",
       "template": "shot",
       "data": {
-        "prompt": "Wide view of one long low canvas ridge tent alone on a broad treeless snow slope at dusk. Its straight roof ridge runs across the frame and an open flap reveals a dark empty doorway at one end. Smooth connected snow rises gently behind it to a rounded bare skyline. The single tent and vacant snow field fill the wide frame.",
+        "prompt": "Wide eye-level view of exactly one long low canvas ridge tent centred across the lower half of a broad winter snowfield at dusk. Its taut straight roof ridge runs left to right, with a triangular entrance at the left end filled entirely by even dark interior shadow. The canvas walls, guy lines and packed snow at its base are plain. Broad continuous treeless snow rises gently behind it into a low rounded white horizon. Tent, snow and pale dusk sky occupy the complete frame.",
         "camera": "push in",
         "visual": "still"
       },
@@ -312,7 +327,7 @@
       "id": "trail-search-start",
       "template": "shot",
       "data": {
-        "prompt": "Wide rear view of exactly two small bundled searchers standing together high on a gentle treeless snow slope and looking toward the distant forest. In front of them, three small flattened raised patches of compacted snow form a loose downhill line, each only as high as a boot sole. Wind-smoothed snow separates the patches. Both searchers remain together behind the traces.",
+        "prompt": "Wide rear view down a broad treeless snowy upper slope in winter daylight. Two anonymous adult searchers in simple hooded coats move carefully downhill toward a thin dark forest line far below. One pauses and lowers their gaze to the snow near their boots while the other looks ahead. Their small silhouettes, the broad continuous wind-smoothed slope and the distant forest make the complete frame.",
         "camera": "push in",
         "visual": "still"
       },
@@ -327,13 +342,13 @@
           "emotion": "跟著視線往前，語速提起"
         }
       ],
-      "chapter": "搜救者沿著足跡走向森林"
+      "chapter": "搜救者沿著足跡追查九人"
     },
     {
       "id": "journey-numbers",
       "template": "stats",
       "data": {
-        "title": "出發的人數",
+        "title": "搜救卷宗｜隊伍人數",
         "stats": [
           {
             "value": "10 人",
@@ -352,19 +367,19 @@
       "lines": [
         {
           "id": "h4v009",
-          "text": "名單原有十人，一人因病折返，剩下的人繼續上山。",
+          "text": "卷宗記著：十人出發，一人因病折返；其餘隊員未歸。",
           "reveal": 1,
-          "emotion": "轉入新場景，語氣提起"
+          "emotion": "接著搜救線索，語氣提起"
         }
       ]
     },
     {
       "id": "journey-pack",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Close-up view of one plain closed canvas rucksack lying on a wooden bench. A single rectangular buckle and one broad strap sit at the centre of its flap. The pack and a thin strip of bench form simple large shapes across the wide frame in morning daylight.",
-        "camera": "drift",
-        "visual": "still"
+        "kicker": "1959 年卷宗｜成員身分",
+        "text": "**不全是學生**",
+        "sub": "也有已工作的成員｜結案書卷一 384 頁"
       },
       "claims": [
         "c06"
@@ -372,7 +387,7 @@
       "lines": [
         {
           "id": "h4v010",
-          "text": "他們不全是學生，隊伍裡也有已經工作的成員。",
+          "text": "名單上不全是學生，也有已經工作的成員。",
           "emotion": "平穩敘事，句尾微收"
         }
       ]
@@ -391,7 +406,7 @@
       "lines": [
         {
           "id": "h4v011",
-          "text": "最後留下的營地，在山坡上的帳篷旁。",
+          "text": "他們最後的營地，就是搜救者剛找到的山坡帳篷。",
           "emotion": "平穩敘事，句尾微收"
         }
       ]
@@ -400,7 +415,7 @@
       "id": "search-later-weather",
       "template": "shot",
       "data": {
-        "prompt": "Ground-level close-up of one tiny weathered trace in a continuous old snow surface. It is a low flattened mound of compacted snow just right of centre, barely raised above the surrounding wind-smoothed snow. The whole frame shows snow and pale blue shadows under diffuse daylight, with only a thin distant horizon at the top.",
+        "prompt": "Ground-level wide view across an old wind-smoothed snowfield under flat winter daylight. Thin shallow ripples of wind-carried snow cross the foreground; a pale distant ridge and muted sky make a calm horizon. A soft drift along the near edge suggests that time and weather have altered the surface since anyone first crossed it.",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -473,11 +488,10 @@
     },
     {
       "id": "trail-varied",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Low oblique macro view of exactly two isolated old footprint remnants on a level field of wind-scoured snow. Each remnant is a slightly raised compacted white oval with faint boot-sole contour; loose surrounding snow has eroded down around it. The two ovals differ subtly in width and are separated by a broad blank snow gap. The raised compacted footprints cast tiny side shadows above the lower snow. White wind-scoured snow fills the crop around the two compacted ovals.",
-        "camera": "push in",
-        "visual": "still"
+        "svg": "docs/videos/curio-h04-v2/diagrams/weathered-footprints.svg",
+        "caption": "1959 年卷宗與證詞的概念示意；非鞋底實測重建"
       },
       "claims": [
         "c03",
@@ -532,11 +546,10 @@
     },
     {
       "id": "felt-versus-knit",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Overhead close-up of two footwear objects separated on a bare wooden bench: one plain grey wool-felt valenki on the left and one limp knitted wool sock on the right. The boot has a single seamless shaft and soft felt sole; coarse knit loops remain visible in the sock. Diffuse side light separates the textures. The bare wooden bench remains visible around exactly these two distinct plain-textured objects.",
-        "camera": "push in",
-        "visual": "still"
+        "svg": "docs/videos/curio-h04-v2/diagrams/felt-and-sock-types.svg",
+        "caption": "1959 年卷宗的鞋襪類型示意；非當年實物或足印"
       },
       "claims": [
         "c03"
@@ -1136,10 +1149,11 @@
     },
     {
       "id": "empty-speaking-room",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "text": "**雪，怎麼在坡上動起來？**",
-        "sub": "記者會的說法仍需機制解釋"
+        "prompt": "Wide centered view of a generic vacant briefing room after a public talk. A single plain unbranded lectern stands on a low back platform; several rows of simple empty chairs recede toward the foreground. A broad empty wall and plain ceiling panels make a quiet pause around the lectern. No people, logos, flags, dates, writing or distinctive real-world venue details. The lectern, empty chairs and bare room occupy the complete frame.",
+        "camera": "push in",
+        "visual": "still"
       },
       "claims": [
         "c20"
@@ -1204,7 +1218,7 @@
       "lines": [
         {
           "id": "h4v048",
-          "text": "二〇二一年，兩位研究者提出的是小型雪板模型。",
+          "text": "為了解釋可能的延遲，開場那兩位研究者在二〇二一年提出小型雪板模型。",
           "emotion": "日期咬字清楚，語速稍慢"
         }
       ],
@@ -1554,11 +1568,10 @@
     },
     {
       "id": "slab-edge-displaced",
-      "template": "shot",
+      "template": "diagram",
       "data": {
-        "prompt": "Close-up conceptual side profile of a gentle continuous snow slope in flat winter light. A thin compact upper sheet has slipped just a little downslope over softer white grains, leaving one short narrow irregular break in the surface near centre. The shifted sheet remains small and attached to the surrounding snow; the wider hill is intact. White snow layers and their small shallow movement occupy the entire connected slope. This image depicts a hypothetical physical model.",
-        "camera": "push in",
-        "visual": "still"
+        "svg": "docs/videos/curio-h04-v2/diagrams/conditional-small-slab.svg",
+        "caption": "2021 年有條件模型示意；非事故當夜剖面或時鐘"
       },
       "claims": [
         "c28",
@@ -1708,7 +1721,7 @@
       "id": "science-next-evidence",
       "template": "shot",
       "data": {
-        "prompt": "Wide late-summer view across an undug gently inclined grassy Ural hillside. At frame left a low short natural break changes the turf's incline; grass continues directly above and below a thin exposed soil edge. One plain measuring pole lies flat on the grass nearby. The whole connected grassy hillside remains visible around this shallow local feature.",
+        "prompt": "Wide late-summer aerial view over an empty grassy upper hillside. Unbroken turf covers a gently inclined surface; a subtle change in the angle of light suggests a short steeper section within the same slope. Sparse low grass and a distant low horizon fill the frame. No people, survey tools, excavated soil or cut bank.",
         "camera": "drift",
         "visual": "still"
       },
@@ -1773,7 +1786,7 @@
       "id": "survey-step-close",
       "template": "shot",
       "data": {
-        "prompt": "Close-up side profile of a small low natural change of incline in an undug grass-covered Ural hillside. A thin exposed brown soil edge crosses centre, with connected turf immediately above and below it. A few tiny embedded stones and roots show its texture. The feature is shallow compared with nearby grass height; connected turf and a thin brown soil edge fill the crop.",
+        "prompt": "Close-up oblique aerial view across an unbroken grass-covered hillside in late summer. The intact turf smoothly changes from a gentle grade into a short steeper grade, visible through the surface angle and simple shading. The slope stays joined across the whole frame, with low sparse grass on both sides of the change. No exposed soil, cliff, trench, people, measuring instruments or written markings.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1792,7 +1805,7 @@
       "id": "survey-two-researchers",
       "template": "shot",
       "data": {
-        "prompt": "Wide rear view of exactly two small anonymous survey workers on an undug gently inclined grassy Ural hillside in late summer. Both face away from the viewer toward a short low natural change of incline in otherwise continuous turf. One holds a plain measuring pole upright while the other crouches beside the thin exposed soil edge. Connected grass remains immediately above and below the low feature, which is smaller than the workers' lower legs.",
+        "prompt": "High aerial view of an unbroken grassy hillside in late summer, shown as an unoccupied terrain surface rather than a fieldwork reenactment. A gentle incline and one shorter, slightly steeper stretch remain joined by intact turf. Sparse grass and soft natural shading make the ground shape readable. No people, measuring tools, exposed soil, trenches or labels.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -1811,18 +1824,18 @@
       "id": "snow-return-season",
       "template": "shot",
       "data": {
-        "prompt": "Macro side view of a generic snow cross-section filling the entire frame. A pale compact upper crust rests over a diffuse white granular lower band; their irregular boundary fades into shadow at the cropped edge. Diffuse winter side light reveals conceptual snow textures across the frame from edge to edge.",
+        "prompt": "Wide view across a generic undisturbed winter snowfield before any field tests. Fine wind ripples lie on an unbroken white surface below a low distant horizon. Open foreground snow and pale sky make the complete frame. No snow pit, exposed layers, measurements, tools, people or marks of a completed survey.",
         "camera": "tilt down",
         "visual": "still"
       },
       "claims": [
-        "c37"
+        "c42"
       ],
       "lines": [
         {
           "id": "h4v080",
-          "text": "但弱層有多厚、多強，不能只看山坡的形狀就推算出來。",
-          "emotion": "放慢，清楚標出證據界線"
+          "text": "研究團隊還安排下一趟冬季考察，想直接檢驗雪層。",
+          "emotion": "轉入下一趟考察，語速略提"
         }
       ]
     },
@@ -1831,10 +1844,10 @@
       "template": "big",
       "data": {
         "text": "**後來能驗證什麼？**",
-        "sub": "坡形之外，雪層仍是空白"
+        "sub": "當夜雪層沒有直接剖面"
       },
       "claims": [
-        "c37"
+        "c38"
       ],
       "lines": [
         {
@@ -1864,7 +1877,7 @@
       "lines": [
         {
           "id": "h4v081",
-          "text": "二〇二二年一月，兩位當地嚮導到附近山坡考察。",
+          "text": "開場那兩位當地嚮導，在二〇二二年一月走進附近山坡。",
           "reveal": 1,
           "emotion": "日期咬字清楚，語速稍慢"
         }
@@ -1884,7 +1897,7 @@
       "lines": [
         {
           "id": "h4v082",
-          "text": "開場那次重返，帶回兩處較新的雪板雪崩痕跡。",
+          "text": "他們帶回兩處較新的雪板雪崩痕跡。",
           "emotion": "揭曉時放慢，關鍵詞壓重"
         }
       ]
@@ -2007,23 +2020,24 @@
       "id": "shared-source",
       "template": "compare",
       "data": {
-        "title": "同一團隊的跟進",
+        "title": "同源觀察，接著看模型界線",
         "left": {
-          "heading": "研究與後續報告",
+          "heading": "作者與校方",
           "points": [
-            "同一作者團隊"
+            "介紹同一批後續觀察"
           ]
         },
         "right": {
-          "heading": "校方新聞",
+          "heading": "下一個問題",
           "points": [
-            "解說同一研究與考察"
+            "模型能解釋全部經過嗎？"
           ]
         },
         "source": "2021 論文、2022 Comment、EPFL／ETH"
       },
       "claims": [
-        "c43"
+        "c43",
+        "c44"
       ],
       "lines": [
         {
@@ -2034,9 +2048,9 @@
         },
         {
           "id": "h4v094",
-          "text": "多出幾篇文章，沒有多出幾次獨立重演。",
+          "text": "那這個模型，究竟解釋到哪一步？",
           "reveal": 1,
-          "emotion": "放慢，清楚標出證據界線"
+          "emotion": "問句上揚，停半拍"
         }
       ]
     },
@@ -2079,13 +2093,14 @@
     },
     {
       "id": "outro",
-      "template": "outro",
+      "template": "bullets",
       "data": {
         "title": "奇聞檔案局",
-        "lines": [
-          "小雪板：可能的離帳原因｜仍缺當夜證據"
-        ],
-        "cta": "訂閱，一起讀懂留下的線索"
+        "items": [
+          "雪層滑動：可能的離帳原因｜仍缺當夜證據",
+          "你信哪條線索？",
+          "訂閱，讀懂線索。"
+        ]
       },
       "claims": [
         "c44"
@@ -2093,19 +2108,21 @@
       "lines": [
         {
           "id": "h4v102",
-          "text": "雪層滑動，或許逼他們出帳篷。",
+          "text": "回到開場那頂帳篷：雪層滑動或許迫使他們離開，當夜仍缺直接證據。",
           "emotion": "放慢，清楚標出證據界線",
           "pause_after_ms": 0
         },
         {
           "id": "h4v103",
           "text": "你信哪條線索？",
+          "reveal": 1,
           "emotion": "問句上揚，停半拍",
           "pause_after_ms": 0
         },
         {
           "id": "h4v104",
           "text": "訂閱，讀懂線索。",
+          "reveal": 1,
           "emotion": "接上前句，短停後落地",
           "pause_after_ms": 0
         }

@@ -4,15 +4,15 @@
 
 ### 一張紙條遞到空服員手裡
 
-#### 1. open-counter
+#### 1. open-counter（big）
 
 旁白（數字稍慢，語尾落穩）：一九七一年十一月，波特蘭機場。
 
-#### 2. open-ticket
+#### 2. open-ticket（photo）
 
 旁白：一個男人付現，買了去西雅圖的單程機票。
 
-#### 3. open-aisle
+#### 3. open-aisle（big）
 
 旁白：票上寫丹庫柏，他坐上三〇五號班機。
 
@@ -395,11 +395,11 @@
 
 旁白：還記得沙洲找到的五千八百美元嗎？日期定不下來，它到底證明什麼？
 
-#### 93. outro（outro）
+#### 93. outro（bullets）
 
 旁白（像把眼前剛發生的事講給朋友聽）：證明贖金，不證明人。
 旁白：哪件物證最意外？
 旁白：訂閱，繼續查證。
 
-narrative e0d2eb7016aea429
+narrative 65c64491d8a53b77
 speech 7d8cb6cb30ba87d9

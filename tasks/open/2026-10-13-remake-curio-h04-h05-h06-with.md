@@ -30,7 +30,8 @@ cuts, receipts, draft PRs and H05's unfinished work.
 ## Definition of done
 
 - [x] H04-v2, H05-v2 and H06-v2 each have a separately checked complete zh-TW
-      script, source records, `loops` and a passing blind narrative review.
+      script, source records, `loops` and a passing blind narrative review
+      bound to their latest visual/story structure.
 - [ ] Each new slug has checked narration, source-bound artwork, current branding,
       8+ minutes of body, synchronized zh-TW CC and a newly QA-checked full MP4.
 - [ ] Each new upload package and backend review binds the new hashes. Keep
@@ -42,7 +43,7 @@ cuts, receipts, draft PRs and H05's unfinished work.
       ownership; create isolated v2 scope and claim it.
 - [x] Rewrite and independently check the three scripts, then run lint and the
       blind `narrative` gate before further paid speech. All three have
-      current-hash 11/11 results; H05 and H06 were rebound after edits.
+      historical 11/11 results; later visual edits require renewed checks.
 - [x] Inspect old backend projects and resolve their superseded status before
       registering new slugs; keep old approvals and media intact. The v2 slugs
       are independent, so destructive abandonment of old H05/H06 is unnecessary.
@@ -89,55 +90,86 @@ cadence repairs, the exact current narrative hash `e9062e4ca246f5d0` passed
 11/11 blind questions. TTS measures 8:40; `check-audio` checked 100/100 lines
 with zero flags, and backend audio autoapproval was pulled into the local gate.
 The synthesized timeline has no >8-second picture states and 54.07% shot time.
-H04's earlier image attempts and bounded pilot generated 201 MiniMax images and
-199 judge calls in total (about US$2.69), but a subsequent look/prompt revision
-invalidated their approval. The owner raised the monthly judge limit to 11,000;
-the last readback was 10,014/11,000 judge calls and 9,139/10,000 images. H04's
-new-look three-shot pilot is ready for a one-take run, but the project STOP
-remains after its removal was blocked by automatic policy. No v2 storyboard,
-render, captions, final MP4 or package exists.
+H04's image attempts, including two further three-shot pilots and one failed
+object study, generated 208 MiniMax images and 206 judge calls in total (about
+US$2.78). The third three-shot pilot
+has 0/3 frames that pass both judge and human inspection: a red signature on
+the tent scene, crevasses instead of old boot-track remnants, and a photoreal
+backpack instead of the stated 2D drawing. The subsequent felt-boot study was
+also rejected as photographic and replaced by an original, expressly
+illustrative SVG diagram. The current 49-shot source-first hybrid plan has
+51.2945% shot time and a 7.5-second longest visual state on the actual audio
+timeline. Its narrative hash is `461d52806a07de55`; fresh blind review is
+pending. The owner raised the monthly judge
+limit to 11,000; although the backend later displayed a higher site setting,
+this task retains the owner-approved 11,000-call ceiling. The owner manually
+removed H04's STOP; its exact path was read back absent. Partial diagram/card
+rendering exists, but no approved full storyboard, full render, captions,
+final MP4 or package exists.
 H05/H06 old backend abandon would clear old reviews/previews; their independent
 v2 slugs were registered without abandoning the old projects.
 
-All three have current-hash independent blind passes and source-bound claim
-records. H06's earlier passes are historical; the current `349cf912c147f530`
-script has a persisted 11/11 narrative gate. H05's earlier 11/11 review became
-stale after pronunciation and redundancy edits; the current
-`e0d2eb7016aea429` script passed a fresh independent 11/11. H04 lint has 0 errors
+All three have historical independent blind passes and source-bound claim
+records. H06's `349cf912c147f530` and H05's
+`e0d2eb7016aea429` scripts each passed 11/11 before later visual revisions;
+the new narrative hashes need fresh reviews. H04 lint has 0 errors
 and three topic-frequency warnings; H05/H06 latest lint has 0 errors and 0
 warnings. H05 outline A is approved and 8:55.8 of narration is synthesized.
 Its initial `speech/transcribe` call returned HTTP 504; after provider-usage
 review, the owner authorized one retry. The journal is no longer held and
 `check-audio` checked 108/108 lines. Local Whisper cleared 10 of the 22
 original flags; bounded TTS corrections of three lines left 12 flagged lines
-on the exact current audio. H05's current narrative hash
-`e0d2eb7016aea429` passed an independent 11/11 recheck. The audio review was
-pushed and read back as waiting for owner listening, so it is not approved and
-image production remains gated. H06 outline A was
-chosen by the owner and pulled back from the backend. Initial TTS and audio
-check produced 104 lines, an 8:19 timeline and 16 flags; eight targeted takes
-were then redone before H06's STOP halted the batch. Edits after that point
-make the old timeline stale. H06 audio is not approved and no H06 image has
-been generated. H05/H06 have no new approved images. No v2 final MP4,
-captions or upload package exists yet.
+on the exact current audio. The owner listened and approved that H05 audio
+in `/admin/videos`; `review-pull` and `status` read back narration approved
+before the later visual cadence edit. Three successive three-shot image
+pilots exposed childlike proportions, incorrect counter/ticket relations,
+fake text, extra objects and inconsistent photographic versus 2D style.
+None provides an accepted generated opening. An isolated 15.2-second
+source-card/FBI ticket-photo opening was rendered and inspected, then adopted
+in the main visual plan. The former 8.2-second single-state outro was changed
+to real same-scene reveals; all 108 audio files and line timings remain the
+same, but the rebuilt `timeline.json` changes SHA and makes backend audio
+approval stale. Its latest narrative hash needs renewed independent review.
+H06 outline A was chosen by
+the owner and pulled back from the backend. After bounded rerecording, its
+current 104-line timeline measures 8:20.93. The formal check examined all
+104 lines and retained eight transcription flags; the owner listened and
+approved that exact audio, confirmed by `review-pull` and `status` before the
+later visual cadence edit. H06's
+first three-shot pilot produced two photographic frames that failed the 2D
+storyboard judge and one accepted illustrated hospital frame. A single canal
+retry passed the judge but failed human/source review for an invented
+pre-rescue pose; the next prompt depicts an empty canal and has not been
+purchased. H06 fixed two over-eight-second visual states with true card
+reveals while retaining all 104 audio files and line timings; its rebuilt
+timeline also makes backend audio approval stale, and its new narrative hash
+needs renewed review. H05/H06 still
+have no approved full storyboard. No v2 final MP4, captions or upload
+package exists yet.
 
 Before another paid image call, all three `image-01` prompt sets were audited
 for the series rule that `look.negative` stays empty and visible composition
-is described positively. H04/H05/H06 dry-runs pass for 52/65/51 shots; these
-are plans, not inspected or approved image frames. H04's next pilot under the
-revised look is `opening-question,trail-search-start,journey-pack`; H05's is
-`open-counter,open-ticket,open-aisle`; H06's is
-`hook-canal-rail,hook-canal-rail-beat-2,hook-hospital-door` after outline and
-audio approval. H04 must regenerate its current-hash images and manually
-inspect them; old judge passes cannot be carried forward. H06's separate STOP
-also remains; neither STOP has been bypassed or removed.
+is described positively. The older H04/H05/H06 dry-runs passed for 52/65/51
+shots; the newer hybrid plans have 49/62/51 shots and need current-hash
+preflight before further image work. These are plans, not inspected or approved
+image frames. The inspected three-shot
+pilots were `opening-question,trail-search-start,journey-pack` for H04,
+`open-counter,open-ticket,open-aisle` for H05, and
+`hook-canal-rail,hook-canal-rail-beat-2,hook-hospital-door` for H06.
+H04 has source-card/diagram preflight but must prove the remaining generated
+style in a bounded pilot; old judge passes cannot be carried forward. The
+owner manually removed
+both H04 and H06 STOP files, and both exact paths were independently read
+back absent. Visual production is now limited by pilot quality.
 
-Draft PR #1484 contains the three independently reviewed scripts, source
-records and asset provenance. Its first CI run passed `test:docs-videos` but
+Draft PR #1484 contains the prior independently reviewed scripts, source
+records and asset provenance; the unpushed visual edits need renewed reviews.
+Its first CI run passed `test:docs-videos` but
 failed `test:tools` because new prose leaked absolute local user paths. The
 paths were replaced with `<home>` placeholders and the focused
-`repo-hygiene.test.mjs` passes 3/3 locally. All Linux CI checks on pushed
-`450684784` passed; later edits need another run.
+`repo-hygiene.test.mjs` passes 3/3 locally. All 21 Linux CI checks on pushed
+`556c97e7866ecaa046382b00a5f28f44bcd48f88` passed; later edits need
+another run.
 
 Local checks on 2026-10-14: `npm run check:tasks` passed (existing stale-claim
 warnings elsewhere). `npm run test:docs-videos` ran 215 tests: 214 pass, one
@@ -145,4 +177,24 @@ unrelated Windows child-process crash in
 `imported-long-languages/runner.test.mjs` (`package-runtime.mjs` exits
 3221226505 with no output). The exact single test fails the same way in the
 untouched `a8cd` checkout and this new worktree; it is not a v2 document
-regression. The Linux PR checks passed at `450684784`; new edits need recheck.
+regression. The Linux PR checks passed at `556c97e`; new edits need recheck.
+
+2026-10-14 current checkpoint: all three current scripts now have exact-hash
+11/11 blind passes and approved zh-TW narration. H04's owner-directed search
+case-file/callback revision is narrative hash `bd49404ff2771d33`, timeline
+SHA-256 `65e48861f66a7437ba3218a6601c89a1b52040a03fbcc5252ebdc5278fc2bc71`;
+100/100 audio lines checked with zero flags and backend approval read back.
+H04 actual audio is 8:47.57; 49 planned shots occupy 50.3128% and its longest
+visual state is 7.7 seconds. H05 narrative hash `65c64491d8a53b77` and H06
+`02a39e4e1fb460a7` also have fresh passes with current-timeline audio
+approvals; their visual coverage/cadence checks are recorded in each v2 doc.
+The owner chose to retain MiniMax and do offline visual planning only after
+the pilots repeatedly failed style/source review. H04/H05/H06 visual audits
+cover their planned 49/62/51 shots, with no new paid images in this revision.
+None has an accepted complete storyboard, rendered final video, CC, upload
+package, owner playback approval or Studio upload. This ticket remains open.
+H06's prompt-only MiniMax repair has current `video.json` SHA-256
+`52e29bceaa443ce740ba0db5ff9eb64cca27613340828f813c56dcee00d2607a`;
+all 51 shot prompts passed dry-run, lint is 0/0, and its narrative/audio hashes
+and approval remained current. The rejected canal image still sits at the
+thumbnail reference and must not be used. Paid images remain on owner hold.

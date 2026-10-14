@@ -1,5 +1,9 @@
 # H05 v2｜獨立事實覆核（第 1 輪）
 
+**製作端最新狀態（2026-10-14）：** 下文標作「現行」的舊版 SHA、敘事與音訊待審記錄都是各輪當時的歷史快照。實際現行 `video.json` SHA-256 為 `74102087ca465c7c73044e1182671641965cc19cbd6f4d0470d11fcb9c16e6e3`、`script.md` SHA-256 為 `7ae168c2b44219a7b42632fe89efa4b5b1602f8544ff8e7b5fbae1348dd272e3`；敘事 hash `65c64491d8a53b77` 已由獨立盲評記錄 11/11 PASS，`status` 讀回 `storytelling panel: passed`。站主曾聽審 12 句標記，也已核准**新版** `timeline.json` SHA-256 `8128f74e74f2dad44ea0c6a1465f2a333c4cb30d0b7f9cfb14829f414becd984`；`approvals.json` 與 `status` 均讀回 `[x] narration approved`。語音 hash `7d8cb6cb30ba87d9`、原 WAV 及逐句起迄時間未因版型修訂改變。完整插圖、分鏡、成片與上架仍待完成；此補註不冒稱原事實覆核者重簽。
+
+第二輪開場圖 manifest SHA-256 `fe33667b8c7bf4922908abf2b6e4334062df780dd47f69b78d4a9de8de083676`，三鏡 judge 均為 9.29 PASS，但人工實看後整組 `needs_revision`。`open-counter` 圖 SHA-256 `52ea71b5af72387cf7b33c4784d5a4fca8a7cf30705abed41f6888f713b50e85`：顧客站在櫃檯旁，大片空窗使購票地點關係不清。`open-ticket` 圖 SHA-256 `6ecfb273039d9bb465442ddea1104048bb547388d478d9ebacff6ecee7a4fb50`：黑領帶顧客像孩童、另一位紅領帶成年人身份漂移，紙物位置不說明交易。`open-aisle` 圖 SHA-256 `bbbe5f0b3d84b162ae429fe59e394ab0d2311499f22086a7ba9c47cd0a7ee0a6`：背影仍像孩童，與前鏡造型不一致。第二輪收據和媒體已封存；第三輪在 `look_hash=38b9efa0cb47553f`、`pictures_hash=6ab8bb2bae500724` 下三鏡再生成但全數 judge FAIL，人工實看有假字、人物／道具膨脹及擬真風格漂移。兩輪細節分見 [visual-pilot-02.md](visual-pilot-02.md) 和 [visual-pilot-03.md](visual-pilot-03.md)；本段為製作端視覺補註，不改原事實判定。
+
 日期：2026-10-14。原覆核者沒有撰寫 H05 v2 的旁白；對 `bcd345c709606643` 稿先完成 11 題盲式敘事評讀，再閱讀本稿與來源。寫手隨後修正兩處 11 月對照措辭，並依敘事評語窄修乘客、傘與距離句；`3be74c4b985cd1a7` 曾由另一獨立盲評以 11/11 題通過。其後的片尾縮短、刪景、河岸回呼、去重及圖文對位修訂由改句者作增量來源自查；舊敘事版 `299218902636bb97` 曾獲獨立 11/11 盲評並抽查 FBI 案件史與 Kaye–Meltzer 論文。配音與一句窄修後，現行敘事版 **`e0d2eb7016aea429` 另獲獨立 11/11 盲評**。原 35 組逐項表是第一輪獨立查核，後續抽查不冒稱現行稿的全量逐欄重審。本文件不代替音訊聽審、站主審閱或成片 QA。
 
 ## 範圍、版本及來源
@@ -131,4 +135,24 @@
 
 視覺修訂後的舊敘事 hash `299218902636bb97` 曾由另一名盲評者答完 11 題，11/11 PASS。兩句配音唸法改變腳本綁定後，新盲評指出 h5v084 與 h5v087 重複「一張原鈔」而只得 10/11；把 h5v084 窄修為「河岸鈔票的研究」後，現行敘事 hash **`e0d2eb7016aea429`**、script hash `a059f00521cbf798c4891f2105fc38b00c0cd3e65ea6064ae56e935a97d12e29`，另一名獨立盲評者答完 11 題，外部 `review/narrative.json` 記錄 **11/11 PASS**。FBI 案件史與 Kaye–Meltzer 2020 論文另做來源抽查，未擴大為每一個新畫面欄位的獨立重審。現行 `lint` 為 0 errors／0 warnings、93 景、108 句。
 
-現行 `tts` 時間軸為 **535.767 秒（8:55.8）**，外部 `timeline.json` SHA-256 `66996c424a387b5a73f8132a713056a3371a16fca26c7b617358b767c76b8adc`、語音 hash `7d8cb6cb30ba87d9`。原 speech/transcribe POST 504 的 held 請求 SHA-256 `903424892690e20f777383999651b83f9e49a424281ab7268d29ffbdc51930dc` 已保存收據；供應商逐次計費查不到，經站主授權僅清除這筆 held 並重試一次。首輪 `check-audio` 108/108、22 標記；Whisper medium 第二意見解除 10 句。定向重錄兩句發音及 h5v084 文字窄修後，現行 `check-audio` **108/108、12 句標記**，`review/check.json` SHA-256 `0a6919f89b039d2f3e3b17d206b53d1c17604d00e8d4fccc7a1e9c2c255616b0`。音訊預覽已送至 `/admin/videos` 審查，`review-push` 回報 pending、`review-pull` 讀回 waiting for the owner，**尚無音訊核准**。圖片逐張審查、成片播放與站主驗收各自仍待完成。
+現行 `tts` 時間軸為 **535.767 秒（8:55.8）**，外部 `timeline.json` SHA-256 `66996c424a387b5a73f8132a713056a3371a16fca26c7b617358b767c76b8adc`、語音 hash `7d8cb6cb30ba87d9`。原 speech/transcribe POST 504 的 held 請求 SHA-256 `903424892690e20f777383999651b83f9e49a424281ab7268d29ffbdc51930dc` 已保存收據；供應商逐次計費查不到，經站主授權僅清除這筆 held 並重試一次。首輪 `check-audio` 108/108、22 標記；Whisper medium 第二意見解除 10 句。定向重錄兩句發音及 h5v084 文字窄修後，現行 `check-audio` **108/108、12 句標記**，`review/check.json` SHA-256 `0a6919f89b039d2f3e3b17d206b53d1c17604d00e8d4fccc7a1e9c2c255616b0`。音訊預覽曾送至 `/admin/videos` 審查，`review-push` 當時回報 pending、`review-pull` 當時讀回 waiting for the owner；站主其後聽審並核准，最新 `review-pull` 與 `status` 均讀回音訊通過。圖片逐張審查、成片播放與站主驗收各自仍待完成。
+
+## 開場舊圖失敗與新版畫面綁定（2026-10-14）
+
+外部舊 `keyframes/manifest.json` SHA-256 `df7046c0241fb2222230319a229a5a499516d3d4e1ebe8792da1323f59499b2d`，原 `look_hash=61f7f42d4d9f84fc`、`pictures_hash=4058fe3f0dee7913`。獨立實看三張選取 JPEG：`open-counter-1-trim.jpg` SHA-256 `ed5ce49452e6ab2cc91962085532341da6f1d0621bf7ab0cb9cd4980409caa91`，judge 6.88 FAIL，人物為成人寫實比例、細黑領帶不見且手不自然；`open-ticket-1.jpg` SHA-256 `ed765cdd737f01f47680cfa8eb4343435571ddb48d653a47b5b6caa1fbf7a439`，judge 6.88 FAIL，前景巨手擠掉櫃檯交易，票沒有在交付；`open-aisle-1.jpg` SHA-256 `52582f49b0b4a40d4cba62539a5281987e280240554185c57bc06eff3e229693`，judge 9.29 PASS，但實看人物露臉、比例與前兩張不同，不能作整組視覺驗收。以上均為靜圖觀察，非動態成片結論。
+
+修正 `look.style` 為手繪扁平 2D、匿名小比例 chibi，三鏡仍按 1971 年機場現金購票與機艙入座原順序；`open-ticket` 改以現金和票在櫃檯兩側的位置交代交易，不要求模型畫前景手或正在遞票；`open-aisle` 改為純背面。紙幣與票無可讀字，不畫 FBI 原件或可辨認人物。只改視覺提示，不新增主張或改旁白：`video.json` SHA-256 `a259ccfba2c5bac01f013992d9a5cdac6379c94dee45ff8e04a49e1690158df9`、`script.md` SHA-256 `c3cdaa5b13225e73027538698baf627b1d22203d20e07556b0ea87423f7c9b30`；敘事 hash 仍 `e0d2eb7016aea429`，語音 hash 仍 `7d8cb6cb30ba87d9`。新 `look_hash=b95bff7b9ed305af`、`pictures_hash=0bb81a00d04a8db6`，舊三圖均不得沿用。`lint` 0 errors／0 warnings；三鏡一 take 的 `keyframes --dry-run` 通過，預估約 US$0.04；65 鏡全量 dry-run 與提示詞預算檢查均通過，65/65 不需截字，全量一輪預估 US$0.88。新圖尚未生成，修正有效性與畫面音訊剪接仍待驗。
+
+## 第三輪生成與離線混合開場補註（2026-10-14）
+
+上段「尚未生成」是該輪預檢時點的紀錄。之後第三輪三張成圖 manifest SHA-256 `6b4046143e1cb552d00039c4c1a45f13818ac8ffd9bc2cfdd0108b32963dcedf5`，judge 依序為 `open-counter` 9.00 FAIL（假字、多人）、`open-ticket` 9.00 FAIL（假字與多餘文具）、`open-aisle` 9.71 FAIL（擬真風格漂移）。三張選取圖 SHA-256 依序為 `132337bbbe63472c46f3915750c67629edf0eb9ea6a5f440b77484837734793e`、`5b80a87457df00e88525dff5d6540399da03afb81837e7e0876eb3b7cd9d2cfc`、`15236df280288f64345ddce8faa3f0c8fc859da1e474aa614e95606d648db338`。原件及帳本封存於外部 `_receipts/visual-pilot-03-20261014/`；不再沿此提示路線付費盲抽。
+
+隔離候選只把前三景改為原生場域卡／已登記 FBI 機票原件照片／原生航班卡，不改任何旁白或來源。三景已由本機 renderer 畫出、人工檢視，並用原始前三句 WAV 製作 15.2 秒候選預覽；細節與逐檔 SHA 見 [visual-pilot-03.md](visual-pilot-03.md)。候選實際語音 hash 未變，但版型使敘事 hash 變更，正式採用需重綁敘事盲評。時間軸前三景均短於 8 秒、現行 shot 覆蓋 59.45%；原 `outro` 仍有 8.2 秒單畫面問題，故整片 QA 未通過、也尚無可上傳成片。
+
+## 主稿片尾節奏修正與核准綁定（2026-10-14，當輪快照）
+
+上段 8.2 秒是混合開場**候選當時**的狀態。其後主稿前三景已採用，`outro` 保留同一 scene ID 與原來三句旁白 ID／文字／順序，改為原生 `bullets` 三狀態，對應 h5v109–111；3 張實際渲染畫面逐句增項，沒有把同一畫面只拆成假時間狀態。當輪主 `video.json` SHA-256 `7d317e4ae9607cb7d92a4486a8dad7837356edab7147fca1ccdb4ce6c147812a`、重生 `script.md` SHA-256 `7ae168c2b44219a7b42632fe89efa4b5b1602f8544ff8e7b5fbae1348dd272e3`。當時 `narrativeHash=65c64491d8a53b77` 尚待盲評；其後此 hash 已通過新一輪獨立 11/11，舊版 11/11 不直接沿用。
+
+`tts --dry-run`：102 requests／0 待合成／0 計費字元；正式快取重建：0 synthesized／102 reused。新 `timeline.json` SHA-256 `8128f74e74f2dad44ea0c6a1465f2a333c4cb30d0b7f9cfb14829f414becd984`，仍是 16073 格／535.767 秒，與前版 108 句的每個起迄格完全相同，`speechHash=7d8cb6cb30ba87d9`、`narration.wav` SHA-256 `8b519d908e7b85d7d214288d3bf8c7ebb5bc897456a4b32c74143cff50253ba3` 亦不變。片尾三狀態分別 82／71／92 格，全部低於 8 秒；全片實際 `cadenceProblems=[]`、最長 7.3 秒、插圖覆蓋 59.45%，主稿 lint 0 errors／0 warnings。舊 timeline 已另存外部收據，局部畫面及 8.17 秒離線預覽 SHA 見 [visual-pilot-03.md](visual-pilot-03.md)。
+
+當時原站主音訊核准在 `approvals.json` 綁**舊** timeline 完整 SHA；重建後 `status` 一度明示 `[ ] narration approved: changed since it was approved`。其後站主已在後台核准新時間軸 `8128f74e74f2dad44ea0c6a1465f2a333c4cb30d0b7f9cfb14829f414becd984`，現行 `status` 讀回 `[x] narration approved`；敘事 hash `65c64491d8a53b77` 也已通過獨立 11/11 盲評。這仍不是成片、完整圖片組或最終 QA 通過。
