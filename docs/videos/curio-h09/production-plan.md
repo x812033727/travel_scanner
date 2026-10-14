@@ -22,7 +22,7 @@
 | 1940 年島上電報 | 12 | 1 | 島上調查與文件，絕不畫遺骨成真品 |
 | 1941／2018 年骨骸判讀 | 12 | 1 | 研究者只畫手／資料；把兩次判讀分清 |
 | 2020／2024 年兩處異常 | 12 | 1 | 深海岩石與 Taraia 是兩個目標 |
-| 2026 年 Taraia 現場調查 | 18 | 1 | 已做沙洲踏查與待做潟湖測試分開；不畫出 Electra 結果 |
+| 2026 年 Taraia 現場調查 | 18 | 1 | 10／13 沙洲踏查、10／14 無人機與磁力／側掃聲納已開始；探針／清淤仍待做，沒有 Electra 鑑定結果 |
 | 未結與結束畫面 | 2 | 1 | 最後一個插畫回呼和片尾 |
 | **定稿草案** | **92** | **8** | **正文插畫占 92／99（outro 不計），約 93%** |
 
@@ -44,8 +44,8 @@
 
 ## 2026-10-15 本機預檢收據
 
-- 史料逐句覆核與十一題敘事盲評 PASS，均綁定 `script-draft.md` SHA-256 `F302FE3DC849DF67441B4529AEB54243E36734E4FE2C7A7ED5E75C13489B9B92`。獨立分鏡 QA 對 `video.json` SHA-256 `377C5B98A00FCD7C9A6B61D08992A98B9C4E53337D0F38EDB649EB40063C95AA` 確認 95 個原稿行拆成 100 個配音段仍逐字一致、主張與發音綁定無誤，92 張插圖、7 張字卡、1 張片尾。實際付費圖片仍須逐張驗收。
-- `node tools/video/cli.mjs lint --slug curio-h09`：0 錯誤、3 項敘事啟發式警告、估時 11.3 分鐘。兩段超過 90 秒的提醒須以實際配音時間軸重新核對；本機盲評不代替這項量測。`script --slug` 已產生正式送審用 `script.md`，SHA-256 `B52E01DAD85AE51D65A32DDBE9565A1E6EFE5EC08A61021BE27DE07E32D9EED7`。
-- `tts --dry-run`：100 次請求、約 2,699 個計費字元，Gemini Sulafat ready；沒有合成。`keyframes --dry-run --takes 3`：92 景，首輪約 US$1.24、每景最多三輪約 US$3.73，當前媒體帳本 US$0.00；沒有產圖。主機目前共用的每片上限仍是 US$200，**不是**本集授權或本集硬上限。開畫前須就 H09 取得整批美元上限；以本機人工檢查帳本與停止執行來約束，不得把 US$200 當成可花額度。
+- 獨立史料覆核與十一題敘事盲評重新 PASS，均綁定 `script-draft.md` SHA-256 `361ECEA6E3FFDF8283F7B3C1C325E1C9B83FA122E67AACB3C637A41BDCA11F83`；`verify-1.md`、`narrative-blind.md` 記錄 10／13→10／14 的事實及敘事修訂。獨立 `visual-qa.md` 分鏡文字 QA 綁定 `video.json` SHA-256 `F3159462A1B030FE197E2B35D552D6AE74B3EF40587B6C4ACDAE2842AE2766D2`，確認 95 句拆成 100 個配音段仍逐字一致、92 張待生成插畫、7 張字卡及 1 張片尾。這不等於實際插畫驗收。
+- `node tools/video/cli.mjs lint --slug curio-h09`：0 錯誤、3 項敘事啟發式警告、估時 11.2 分鐘。兩段超過 90 秒的提醒須以實際配音時間軸重新核對；片尾「回到最初那條線」是回收主題的回答，仍須聽稿確認是否自然。`script --slug` 已重產正式送審用 `script.md`，SHA-256 `3B1ECF0743F7BD83333ED68E697219333E81BBDCF7392C92D976F62BA6627D4C`。
+- `tts --dry-run`：100 次請求、約 2,654 個計費字元，沒有合成。`keyframes --dry-run --takes 3`：92 景，首輪約 US$1.24、每景最多三輪約 US$3.73，當前媒體帳本 US$0.00；沒有產圖。主機目前共用的每片上限仍是 US$200，**不是**本集授權或本集硬上限。開畫前須就 H09 取得整批美元上限；以本機人工檢查帳本與停止執行來約束，不得把 US$200 當成可花額度。
 - `npm run check:tasks` 通過。`npm run test:docs-videos` 為 214／215 通過；唯一失敗是未修改的 `imported-long-languages/runner.test.mjs` 在 Windows 子行程 `package-runtime.mjs` 以 `3221226505` 崩潰，單獨重跑相同。這項失敗不在 H09 檔案範圍內，沒有被誤報成全綠。
-- `review-push --gate outline` 已送一個 A 案；工具明確回報沒有啟動需 2–3 案才會用的選案 judge。`review-pull --gate outline` 讀回 `waiting for the owner`。尚未送劇本審核，須先取得大綱核准。
+- 2026-10-15 已將含 Purdue 10／14 進度的 `brief.md`（SHA-256 `D93595C10AB24AD8AE55F5C7BD9A246FA7B4EFA6DE4D8626A318AB1FD511A83A`）重新 `review-push --gate outline`。只有一個 A 案，工具未啟動需 2–3 案的選案 judge；`review-pull --gate outline` 讀回 `waiting for the owner`。劇本尚未送審，必須先取得這版大綱核准。

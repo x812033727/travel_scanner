@@ -58,7 +58,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "艾爾哈特最後飛向哪裡？電訊與小島的兩條線｜奇聞檔案局",
-    "description": "1937 年 7 月 2 日，Itasca 收到艾爾哈特最後可確認的電訊：「我們在 157／337 這條線上。」這是一條位置線，並不是飛機的最後座標。\n\n本集依 1937 年海軍搜索報告、1940 年島上電報、1941 年醫學報告與後來研究，追查豪蘭附近落海及尼庫馬羅羅島兩種解釋。2024 年豪蘭附近的深海聲納目標後被判為岩石；尼庫馬羅羅潟湖的 Taraia 異常是另一個目標，仍待現場辨認。\n\n資料查核至 2026-10-15。可查得的普渡大學最新現場公告為 2026-10-13，僅確認隊伍已登島、踏查及架設設備，尚未公布物件的辨認結果。若後續考察有新發現，會在正式成片與上架前重查並更新。\n\n本片 AI 插畫為敘事示意，並非檔案照片、考古實物或已證實的失事現場。歷史人物為非肖像式卡通形象。",
+    "description": "1937 年 7 月 2 日，Itasca 收到艾爾哈特最後可確認的電訊：「我們在 157／337 這條線上。」這是一條位置線，並不是飛機的最後座標。\n\n本集依 1937 年海軍搜索報告、1940 年島上電報、1941 年醫學報告與後來研究，追查豪蘭附近落海及尼庫馬羅羅島兩種解釋。2024 年豪蘭附近的深海聲納目標後被判為岩石；尼庫馬羅羅潟湖的 Taraia 異常是另一個目標，仍待現場辨認。\n\n資料查核至 2026-10-15。可查得的普渡大學最新現場公告為 2026-10-14：團隊已用無人機查看 Taraia，並以磁力儀和側掃聲納展開潟湖調查；資料仍待分析，尚未公布物件的辨認結果。若後續考察有新發現，會在正式成片與上架前重查並更新。\n\n本片 AI 插畫為敘事示意，並非檔案照片、考古實物或已證實的失事現場。歷史人物為非肖像式卡通形象。",
     "tags": [
       "艾爾哈特",
       "Amelia Earhart",
@@ -144,6 +144,11 @@
     {
       "title": "Purdue: 2026-10-13 登島公告",
       "url": "https://www.purdue.edu/newsroom/2026/Q4/earhart-expedition-update-crew-arrives-onshore-sets-up-operations-on-nikumaroro/",
+      "checked_on": "2026-10-15"
+    },
+    {
+      "title": "Purdue: 2026-10-14 水下調查公告",
+      "url": "https://www.purdue.edu/newsroom/2026/Q4/earhart-expedition-update-underwater-survey-of-taraia-object-begins/",
       "checked_on": "2026-10-15"
     }
   ],
@@ -1674,7 +1679,7 @@
       "lines": [
         {
           "id": "h0566j3u",
-          "text": "十月十二日，隊伍抵達尼庫馬羅羅；隔天上岸，初步踏查並架設設備。",
+          "text": "十月十二日，隊伍抵達尼庫馬羅羅；隔天上岸並架設設備。",
           "emotion": "抵達現場"
         }
       ]
@@ -1721,12 +1726,12 @@
       ]
     },
     {
-      "id": "latest-official-date",
+      "id": "taraia-sandspit-start",
       "template": "big",
       "data": {
-        "text": "仍待辨認",
-        "kicker": "截至 2026 年 10 月 13 日",
-        "sub": "官方公告尚無物件結果"
+        "text": "10 月 13 日",
+        "kicker": "Taraia 半島",
+        "sub": "沙洲踏查先開始"
       },
       "claims": [
         "H09-C16"
@@ -1734,8 +1739,10 @@
       "lines": [
         {
           "id": "h1e4dxa5",
-          "text": "截至二〇二六年十月十三日的官方最新公告，還沒有物件的辨認結果。",
-          "emotion": "放慢時效"
+          "text": "這次搜尋從地面開始：十月十三日，隊伍先在 Taraia 半島踏查沙洲。",
+          "emotion": "現場第一步",
+          "say": "這次搜尋從地面開始：十月十三日，隊伍先在 塔拉亞 半島踏查沙洲。",
+          "say_for": "a2384e1df668"
         }
       ]
     },
@@ -1743,18 +1750,17 @@
       "id": "sand-surface-search-a",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of the Taraia sandspit beside the 2026 temporary shore camp, anonymous crew already ashore.",
+        "prompt": "Medium shot of one anonymous field worker examining the sandspit ground in daylight, hands empty and no recovered object.",
         "camera": "tilt down",
         "visual": "still"
       },
       "claims": [
-        "H09-C14",
         "H09-C16"
       ],
       "lines": [
         {
           "id": "h1caxcd2",
-          "text": "為了回答潟湖影像究竟拍到什麼，十月十三日，",
+          "text": "他們查看地表有沒有散落物件，",
           "emotion": "已發生的踏查"
         }
       ]
@@ -1763,8 +1769,27 @@
       "id": "sand-surface-search-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot from behind anonymous field crew inspecting the sandspit ground in daylight.",
+        "prompt": "Medium shot of one anonymous worker on the Taraia sandspit studying the shallow lagoon water with a plain clipboard in daylight, no discovered object.",
         "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H09-C16"
+      ],
+      "lines": [
+        {
+          "id": "h1ckwy21",
+          "text": "也評估潟湖的調查條件。",
+          "emotion": "已發生的踏查"
+        }
+      ]
+    },
+    {
+      "id": "drone-survey-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one anonymous expedition worker on Nikumaroro shore operating a compact survey drone controller in daylight, the small drone above the lagoon, no identifiable face or discovery visible.",
+        "camera": "tilt up",
         "visual": "still"
       },
       "claims": [
@@ -1773,89 +1798,71 @@
       ],
       "lines": [
         {
-          "id": "h1ckwy21",
-          "text": "隊伍已到 Taraia 半島沙洲查看地表可能散落的物件。",
-          "emotion": "已發生的踏查",
-          "say": "隊伍已到塔拉亞半島沙洲查看地表可能散落的物件。",
-          "say_for": "82bc7f9adc76"
-        }
-      ]
-    },
-    {
-      "id": "drone-image-plan-a",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a folded survey drone inside its travel case beside a plain planning sheet, no flight underway.",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "claims": [
-        "H09-C14"
-      ],
-      "lines": [
-        {
           "id": "h031d5vr",
-          "text": "接下來按 ALI 的計畫，團隊會用無人機拍攝沙洲與潟湖，",
-          "emotion": "說明未來步驟",
-          "say": "接下來按 考古遺產研究所 的計畫，團隊會用無人機拍攝沙洲與潟湖，",
-          "say_for": "09a353888cf7"
+          "text": "十月十四日，團隊用無人機",
+          "emotion": "現場新進展"
         }
       ]
     },
     {
-      "id": "drone-image-plan-b",
+      "id": "drone-survey-b",
       "template": "shot",
       "data": {
-        "prompt": "Overhead view of a blank aerial survey plan of sandspit and lagoon with empty position markers, before imaging.",
+        "prompt": "Wide aerial view over Nikumaroro lagoon and the Taraia sandspit in daylight, clear water and shoreline only, no aircraft shape or excavated object visible.",
         "camera": "push in",
         "visual": "still"
       },
       "claims": [
-        "H09-C14"
+        "H09-C14",
+        "H09-C16"
       ],
       "lines": [
         {
           "id": "h02rdk6s",
-          "text": "讓調查點在新影像裡有可核對的位置。",
-          "emotion": "說明未來步驟"
+          "text": "查看潟湖裡的 Taraia 物件。",
+          "emotion": "現場新進展",
+          "say": "查看潟湖裡的 塔拉亞 物件。",
+          "say_for": "6d62c117dcb9"
         }
       ]
     },
     {
-      "id": "instruments-plan-a",
+      "id": "instruments-survey-a",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an unopened magnetometer case and coiled cable beside lagoon water, field team hands only.",
+        "prompt": "Medium shot of one anonymous maritime surveyor aboard a small support boat in Nikumaroro lagoon, working beside compact survey equipment in daylight, no wreckage visible.",
         "camera": "drift",
         "visual": "still"
       },
       "claims": [
-        "H09-C14"
+        "H09-C14",
+        "H09-C16"
       ],
       "lines": [
         {
           "id": "h155hpnc",
-          "text": "潟湖接著預計用磁力儀、側掃聲納與海床地層剖面聲納，",
-          "emotion": "清楚列計畫儀器"
+          "text": "同一天，水下團隊已用磁力儀和側掃聲納展開調查，",
+          "emotion": "調查已開始"
         }
       ]
     },
     {
-      "id": "instruments-plan-b",
+      "id": "instruments-survey-b",
       "template": "shot",
       "data": {
-        "prompt": "Overhead view of two distinct sonar instrument cases prepared at the lagoon shore before deployment.",
+        "prompt": "Close-up of a plain instrument console and unmarked field notebook on a lagoon survey boat, the screen showing only abstract lines, no interpreted target or discovery.",
         "camera": "push in",
         "visual": "still"
       },
       "claims": [
-        "H09-C14"
+        "H09-C14",
+        "H09-C16"
       ],
       "lines": [
         {
           "id": "h15fhbcb",
-          "text": "確認異常的範圍和位置。",
-          "emotion": "清楚列計畫儀器"
+          "text": "取得的資料仍待分析。",
+          "emotion": "資料仍待分析"
         }
       ]
     },
@@ -1863,7 +1870,7 @@
       "id": "hydraulic-probe-plan-a",
       "template": "shot",
       "data": {
-        "prompt": "Overhead view of unpowered sonar consoles beside a closed hydraulic probe case on a planning desk, with no survey result.",
+        "prompt": "Medium shot of one anonymous specialist at a temporary island worktable looking at an unannotated survey print beside an unused hydroprobe case, no survey result or excavation visible.",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1873,7 +1880,7 @@
       "lines": [
         {
           "id": "h1m1eay1",
-          "text": "光有儀器回波仍不夠；",
+          "text": "光有儀器訊號仍不夠；",
           "emotion": "轉到接觸計畫"
         }
       ]
@@ -1882,7 +1889,7 @@
       "id": "hydraulic-probe-plan-b",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a hydraulic probe tip touching a small practice sand tray in a planning-room demonstration, no lagoon target or field result.",
+        "prompt": "Close-up of an unused water-jet hydroprobe tip resting in a gear case beside lagoon water, ready for a later direct-contact test, no target contact.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -1892,7 +1899,7 @@
       "lines": [
         {
           "id": "h1lrep92",
-          "text": "水力探針要直接接觸目標，檢查材質、邊界與輪廓。",
+          "text": "後續計畫用水力探針直接接觸目標，檢查材質、邊界與輪廓。",
           "emotion": "轉到接觸計畫"
         }
       ]
@@ -1901,7 +1908,7 @@
       "id": "measurements-compare",
       "template": "shot",
       "data": {
-        "prompt": "Overhead view of blank comparison worksheets and separate instrument symbols on a desk, no survey grid or collected readings.",
+        "prompt": "Overhead view of blank comparison worksheets, separate instrument symbols and an unused hydroprobe on a worktable, no measurements or contact findings filled in.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1911,7 +1918,7 @@
       "lines": [
         {
           "id": "h1sr7ftu",
-          "text": "這些測量讓團隊能把不同儀器所見，和真正摸到的物件放在一起比對。"
+          "text": "到那時，團隊才能把不同儀器所見，和真正摸到的物件放在一起比對。"
         }
       ]
     },
