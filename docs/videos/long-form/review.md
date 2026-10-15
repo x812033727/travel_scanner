@@ -5397,6 +5397,20 @@ Non-claims: this receipt reviews source duration behavior only. It does not cert
 
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1512 CI follow-up: 2 files (2026-10-15)
+
+Reviewer: `story-cc-review`. Author: `codex-gpt6`. Scope: DURATION_ONLY for `39e2ddf25..3c7f84711`, covering `apps/api/app/video_reviews/admin_service.py` and `apps/api/tests/test_video_anime_review_policy.py`. This reviewer did not author either change.
+
+Baseline: both touched files at `39e2ddf25` have raw-byte SHA-256 values equal to their existing receipt bindings; the other 106 registered files remain unchanged and match their recorded hashes. The prior brand-story increment is retained in full.
+
+Findings: `project_view` now skips the story-series lookup for a drama Short, which is already ineligible for dubbing under `_dub_allowed`. The native-anime test supplies the existing series kind for the new third scalar lookup; it retains the same manual-approval assertions. The changes do not alter 600/780-second targets, 480-second measured body/final floors, the eight-minute minimum, `target_minutes`, `MIN_EPISODE_MINUTES`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, source hashes or covered status. No duration correction is required.
+
+Ran: Node v24.19.0 `tools/video/long-form/cli.mjs check` (PASS) and `--test tools/video/long-form/review.test.mjs` (2 passed, 0 failed), after rebinding these two files and the report.
+
+Non-claims: this is an incremental source duration review, not a fresh review of the 106 unchanged files or acceptance of actual media, playback, paid production, deployment, upload or publication.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -5413,7 +5427,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/app/video_automation/schemas.py` | `d1af5e4597fd8135245bf95fee4a58779d652069ba69efae2d304b4a2493e050` |
 | `apps/api/app/video_automation/series.py` | `fe30ad598feadbb9329f737fe48218b3f5d1750763304f283111f56d52a45128` |
 | `apps/api/app/video_automation/settings.py` | `9941b3244e15cf6b1d8aaec32c68ab2424f84adb32804a179652d93fb3977ca3` |
-| `apps/api/app/video_reviews/admin_service.py` | `56c23e22729b376237d3206a578711ffc40943df7d43e945bb1ffb3ff98bcdb7` |
+| `apps/api/app/video_reviews/admin_service.py` | `ee87791e7051949cea6a781fe70c71c8acc3339368a02f7ddb16505b10d11a44` |
 | `apps/api/app/video_reviews/schemas.py` | `1e5dea4e5ec298dbfa6ad497fdf1e1bad117e259284b3fab37e65bf97709bdb8` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
 | `apps/api/migrations/versions/0122_video_anime_production_policy.py` | `91f97905e9a689cc47aef8eac60735175a4048bfb5788fa1d204acb43ee11ea7` |
@@ -5421,7 +5435,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/tests/test_migration_0121_video_series_planning.py` | `74d030582ee98a4a05be0b07efb78fcf3a21cae34fca41a7fedaa4eb3a2eb204` |
 | `apps/api/tests/test_migration_0122_video_anime_production_policy.py` | `c0bbfbbb3af79cf98e55569b60c11bc5131811d2915afc51d569605c4ae4a2d8` |
 | `apps/api/tests/test_video_anime_production_policy.py` | `b9fe3f9ff8ffd0b1d36089f2f684d60bb2e2c7712e4549940c472abb4c59efb1` |
-| `apps/api/tests/test_video_anime_review_policy.py` | `eacb78a7e6692e530730b49e3bb89698d1b2a3976ac8f1d836bbc435b16276d8` |
+| `apps/api/tests/test_video_anime_review_policy.py` | `01c7bab94cdb630fa74a9f86e617f67b706818ffaaebe8204301bbe99b73edaf` |
 | `apps/api/tests/test_video_automation_settings.py` | `cd0e6beaa6e3d9976e0dade995fdcad85ea9e246b6d265d6e2b52bb79f466a92` |
 | `apps/api/tests/test_video_drama_requests.py` | `441b11622f444564a22f4ea43e94fad431a777577ce2ba60bd522c8510b25eef` |
 | `apps/api/tests/test_video_explainer_duration.py` | `45bdcbe9ec7c7c47e437b6d65ec967801e8553acbbf1c8285d734f8a7242eddc` |
