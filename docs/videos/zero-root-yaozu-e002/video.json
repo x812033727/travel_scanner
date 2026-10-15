@@ -1,0 +1,740 @@
+{
+  "schema_version": 1,
+  "slug": "zero-root-yaozu-e002",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese fantasy costume drama, film still, natural cinematic light, realistic skin and fabric texture, shallow depth of field, warm lantern orange and mountain green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "lushi",
+      "name": "陸拾",
+      "appearance": "East Asian young man of eighteen, handsome with straight brows, high nose bridge and a dimple when he smiles, lean and wiry from years of carrying water, sun-tanned skin, black hair tied in a short rough ponytail with hemp cord, left iris slightly paler than the right, faded grey-blue coarse cotton short jacket and trousers, straw sandals, a cracked gourd hanging at his waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的鄉下少年，聲音清亮，說話快，一緊張就結巴，心地好、有點傻氣"
+      }
+    },
+    {
+      "id": "azheng",
+      "name": "阿猙",
+      "appearance": "East Asian man of twenty-five, rugged and handsome with an honest, simple expression, over two metres tall and solidly muscled, close-cropped hair, an old scar running down the middle of his forehead, a worn sleeveless brown short jacket, a big bundle of firewood tied on his back",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的憨直壯漢，聲音低沉厚實，說話很慢，一次只說兩三個字"
+      }
+    },
+    {
+      "id": "shanxiao",
+      "name": "山魈",
+      "appearance": "a one-legged mountain spirit with a monkey-like face, grey-brown shaggy fur, long thin arms, yellow eyes and a wide grin of small teeth, its single leg bending backward at the knee, eerie but not gory",
+      "voice": {
+        "provider": "gemini",
+        "name": "Fenrir",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；山野精怪，尖細詭異的嬉笑聲"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "eerie sparse guqin plucks and low breathy xun flute over a slow heartbeat drum, ancient Chinese fantasy horror, a sudden deep taiko hit then a warm hush at the end, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "被仙門趕走的廢物夜路撞上山鬼，村口傻大個一斧砍倒大樹｜長燈村 第2集",
+    "description": "陸拾揣著雲知意給的饅頭走夜路回村，霧裡倒掛的猴臉一變成三張。打中的是假的，真的反著膝蓋從背後撲下來。《長燈村：零靈根的我被一村妖祖養大》第 2 集。",
+    "tags": [
+      "長燈村",
+      "AI漫劇",
+      "修仙",
+      "玄幻",
+      "山魈"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "霧裡三張臉",
+      "tag": "長燈村",
+      "shot": "s12"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "倒掛",
+      "template": "shot",
+      "data": {
+        "camera": "Extreme close-up, locked",
+        "prompt": "Extreme close-up in dusk fog turning to night of Lu Shi's face on screen right looking up, and on screen left a grey-furred monkey-like face hanging upside down from a branch an inch from his nose, yellow eyes, cold blue light",
+        "motion": "The upside-down monkey face stretches its grin wide over small teeth while Lu Shi's eyes go wide",
+        "characters": [
+          "shanxiao",
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a01",
+          "speaker": "shanxiao",
+          "text": "嘻嘻。",
+          "emotion": "尖細詭異的嬉笑"
+        }
+      ]
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the hand on the carrying pole, locked",
+        "prompt": "Insert from behind Lu Shi's right shoulder in dusk fog of a sun-tanned right hand closing on the end of a short bamboo carrying pole slotted through the rope sling of a cracked clay jar on his back, grey-blue coarse sleeve, pine branches beyond",
+        "motion": "The hand yanks the bamboo pole up out of the rope sling in one pull",
+        "characters": []
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Medium shot on the foggy pine path at nightfall, Lu Shi on screen right with a short bamboo carrying pole drawn back in both hands, the upside-down grey monkey face hanging from a pine branch on screen left at his eye level, the cracked jar on his back",
+        "motion": "Lu Shi swings the bamboo pole straight through the monkey face, and the face bursts apart into swirling fog",
+        "characters": [
+          "lushi",
+          "shanxiao"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a02",
+          "speaker": "lushi",
+          "text": "走開！別過來！",
+          "emotion": "嚇到大吼，用力揮"
+        }
+      ]
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the pole and the branch, locked",
+        "prompt": "Insert of the end of a bamboo carrying pole finishing its swing into a thick pine branch beside the path, empty grey fog swirling where a face had been, cold dusk light",
+        "motion": "The pole cracks into the thick branch and the branch snaps clean off and drops out of frame",
+        "characters": []
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Lu Shi's face on screen right in drifting night fog, the bamboo pole in both hands, staring at the empty fog off screen left",
+        "motion": "Lu Shi lowers the bamboo pole slowly to his chest",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a03",
+          "speaker": "lushi",
+          "text": "打、打空了？",
+          "emotion": "發愣，結巴"
+        }
+      ]
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, high angle, locked",
+        "prompt": "Wide shot from high in the pines of the narrow stone path at nightfall, the fog thickening, a pale moon behind it, Lu Shi small at the centre with the bamboo pole raised, the cracked jar on his back, a snapped branch on the stones beside him",
+        "motion": "Lu Shi turns in a slow full circle on the path with the pole raised",
+        "characters": [
+          "lushi"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the hand on the jacket, locked",
+        "prompt": "Insert of a sun-tanned left hand on the front of a grey-blue coarse jacket over the round bulge of a cloth-wrapped bun tucked inside, night fog; Lu Shi speaks off screen",
+        "motion": "The hand pats the bulge twice and presses it flat against the chest",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e2a04",
+          "speaker": "lushi",
+          "text": "饅頭還在……",
+          "emotion": "鬆一口氣，小聲"
+        }
+      ]
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Lu Shi on screen left on the foggy path at night, the bamboo pole over his right shoulder, facing right down the path into the fog",
+        "motion": "Lu Shi tugs the jar strap tight with his left hand and steps off along the path",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a05",
+          "speaker": "lushi",
+          "text": "不怕……奶奶還在等我。",
+          "emotion": "給自己壯膽"
+        }
+      ]
+    },
+    {
+      "id": "s09",
+      "chapter": "三張臉",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, pan right",
+        "prompt": "Wide shot of the narrow stone path winding right through dark pines in night fog, Lu Shi on screen left walking fast with the bamboo pole on his shoulder, thin moonlight through the fog",
+        "motion": "Lu Shi walks fast along the path toward screen right",
+        "characters": [
+          "lushi"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Lu Shi on screen right walking in night fog, the bamboo pole on his shoulder, eyes fixed ahead down the path",
+        "motion": "Lu Shi keeps walking and hunches his shoulders against the cold",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a06",
+          "speaker": "lushi",
+          "text": "奶奶說，夜路別回頭……",
+          "emotion": "小聲唸著，自己給自己打氣"
+        }
+      ]
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lu Shi's face on screen right in night fog, stopped mid-step, the bamboo pole on his shoulder, Shanxiao laughs off screen",
+        "motion": "Lu Shi snaps his head toward screen left",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a07",
+          "speaker": "shanxiao",
+          "text": "嘻嘻嘻……",
+          "emotion": "像嬰兒的笑聲，從霧裡傳來"
+        },
+        {
+          "id": "e2a08",
+          "speaker": "lushi",
+          "text": "誰、誰在笑？",
+          "emotion": "結巴，硬撐"
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "Wide shot of the foggy pine path at night, Lu Shi in the centre with the bamboo pole held out, and three identical upside-down grey monkey faces with yellow eyes emerging from the fog around him, one on screen left, one high in the centre above the path, one on screen right",
+        "motion": "Three upside-down monkey heads slide out of the fog at the same moment and tilt the same way",
+        "characters": [
+          "lushi",
+          "shanxiao"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a09",
+          "speaker": "shanxiao",
+          "text": "嘻嘻嘻嘻……",
+          "emotion": "嬰兒般的笑聲，從四面八方圍上來"
+        }
+      ]
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lu Shi's face in the centre of frame in night fog, sweat on his temple, the pole raised in front of his chest",
+        "motion": "Lu Shi's eyes dart from screen left to screen right and back",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a10",
+          "speaker": "lushi",
+          "text": "三、三個？",
+          "emotion": "倒吸一口氣"
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, high angle, locked",
+        "prompt": "Wide shot from high above the path at night, Lu Shi small in the centre of a ring of fog, three identical upside-down monkey faces at the edge of the ring",
+        "motion": "Three upside-down monkey heads circle slowly around Lu Shi through the fog",
+        "characters": [
+          "lushi",
+          "shanxiao"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of one upside-down grey monkey face on screen left in night fog, yellow eyes on Lu Shi off screen right, small teeth in a wide grin",
+        "motion": "The upside-down Shanxiao swings slowly side to side from its branch like a pendulum",
+        "characters": [
+          "shanxiao"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a11",
+          "speaker": "shanxiao",
+          "text": "猜猜，哪個是我？",
+          "emotion": "尖細，像小孩撒嬌"
+        }
+      ]
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Lu Shi on screen right in night fog, eyes narrowed toward screen left, the bamboo pole drawn back over his right shoulder in both hands",
+        "motion": "Lu Shi shifts his weight onto his back foot and cocks the pole higher",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a12",
+          "speaker": "lushi",
+          "text": "笑最大聲的……就是你！",
+          "emotion": "咬牙，認準了"
+        }
+      ]
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Medium shot in night fog, Lu Shi on screen right stepping in toward screen left with the bamboo pole swung high, the monkey face on screen left hanging in front of a dark pine trunk",
+        "motion": "Lu Shi steps in and smashes the pole into the monkey face on the left",
+        "characters": [
+          "lushi",
+          "shanxiao"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the pole on the trunk, locked",
+        "prompt": "Insert of a bamboo pole slammed against a thick pine trunk in night fog, wisps of a torn monkey face dissolving around it, the bark beginning to split; Lu Shi speaks off screen",
+        "motion": "A long crack splits up the bark from where the pole hit",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e2a13",
+          "speaker": "lushi",
+          "text": "打中了！",
+          "emotion": "興奮大喊"
+        }
+      ]
+    },
+    {
+      "id": "s19",
+      "chapter": "真身",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lu Shi's face on screen left grinning with his dimple, the bamboo pole on his shoulder, and in the dark fog behind his right shoulder on screen right a blurred grey shape lowering upside down from a branch",
+        "motion": "Behind Lu Shi the blurred grey shape lowers silently from the branch while he grins",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a14",
+          "speaker": "lushi",
+          "text": "哈！看你還笑！",
+          "emotion": "得意"
+        }
+      ]
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "data": {
+        "camera": "Medium shot, low angle, locked",
+        "prompt": "Medium shot, low angle of the Shanxiao in night fog behind Lu Shi, a grey-brown shaggy monkey-faced spirit swinging down from a pine branch, its single leg bent backward at the knee, long thin arms reaching toward Lu Shi off screen left",
+        "motion": "The Shanxiao drops off the branch onto its backward-bent knee and stretches its long arms forward",
+        "characters": [
+          "shanxiao"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a15",
+          "speaker": "shanxiao",
+          "text": "好香……",
+          "emotion": "貪婪，尖細"
+        }
+      ]
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the fingers and the jacket, slow push in",
+        "prompt": "Insert in night fog of long grey-furred fingers with dark nails reaching from frame right around the side of a grey-blue coarse jacket toward the round bulge of the cloth-wrapped bun at its front",
+        "motion": "The long grey fingers creep to within an inch of the bulge in the jacket",
+        "characters": []
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lu Shi's face on screen left in night fog, his grin gone, eyes wide, fog curling over his shoulder from behind",
+        "motion": "Lu Shi's grin falls and his eyes go wide",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a16",
+          "speaker": "lushi",
+          "text": "在、在後面……",
+          "emotion": "倒吸一口氣，不敢回頭"
+        }
+      ]
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the pine trunk, slow push in",
+        "prompt": "Insert at the foot of a huge old pine beside the path at night, its trunk wider than a man's arm span, moonlight on the bark",
+        "motion": "A thin bright line of moonlight opens straight across the trunk from one side to the other",
+        "characters": []
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, low angle, tilt up",
+        "prompt": "Wide shot, low angle of the huge old pine at the right edge of the path, its crown above the fog, the moon behind it",
+        "motion": "The huge pine shudders and begins to tip toward the path",
+        "characters": []
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the pine path at night, Lu Shi falling back on screen left, the Shanxiao on screen right, the huge pine coming down from above between them",
+        "motion": "The huge pine slams down across the path between them and a blast of air scatters the fog outward in a wide ring",
+        "characters": [
+          "lushi",
+          "shanxiao"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lu Shi's face on screen left in the blast of air, fog and pine needles streaming past from screen right",
+        "motion": "Lu Shi throws his arm up across his face against the blast",
+        "characters": [
+          "lushi"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Medium shot of the Shanxiao on screen right on the far side of the fallen pine, its fur blown flat, the fog torn away, clear moonlight",
+        "motion": "The Shanxiao springs away on its one backward-bent leg into the dark pines",
+        "characters": [
+          "shanxiao"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a17",
+          "speaker": "shanxiao",
+          "text": "嘰——！",
+          "emotion": "尖叫，逃走"
+        }
+      ]
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Lu Shi sitting on the stone path on screen left in clear moonlight, the bamboo pole across his knees, the cracked jar still on his back, looking right toward the fallen pine beyond the right edge of frame",
+        "motion": "Lu Shi pushes himself up off the stones with one hand",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a18",
+          "speaker": "lushi",
+          "text": "樹……樹自己倒了？",
+          "emotion": "驚魂未定"
+        }
+      ]
+    },
+    {
+      "id": "s29",
+      "chapter": "沒有刃",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, low angle, slow push in",
+        "prompt": "Wide shot, low angle in clear cold moonlight of Azheng walking out from behind the root end of the fallen pine on screen right, a long-handled axe on his right shoulder, a big bundle of firewood on his back, the old scar on his forehead lit by the moon, the hem of his worn brown sleeveless jacket lifting in the wind, the last fog streaming away behind him",
+        "motion": "Azheng steps out from behind the fallen pine and walks toward the camera",
+        "characters": [
+          "azheng"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lu Shi's face on screen left in moonlight, looking up at Azheng off screen right, relief breaking over his face",
+        "motion": "Lu Shi wipes the sweat off his forehead with his sleeve",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a19",
+          "speaker": "lushi",
+          "text": "阿猙哥？你怎麼在這？",
+          "emotion": "又驚又喜"
+        }
+      ]
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, low angle, locked",
+        "prompt": "Medium close-up, low angle of Azheng on screen right in moonlight, the axe on his right shoulder, the old scar on his forehead, looking down toward Lu Shi off screen left, a simple honest face",
+        "motion": "Azheng shrugs the bundle of firewood higher on his back",
+        "characters": [
+          "azheng"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a20",
+          "speaker": "azheng",
+          "text": "砍柴。",
+          "emotion": "憨直，慢"
+        }
+      ]
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot by the fallen pine in moonlight, Lu Shi on screen left a head shorter, Azheng towering on screen right with the axe on his shoulder, the huge pale stump between them at the bottom of frame",
+        "motion": "Lu Shi turns and bends down toward the huge stump",
+        "characters": [
+          "lushi",
+          "azheng"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a21",
+          "speaker": "lushi",
+          "text": "半夜……砍柴？",
+          "emotion": "狐疑"
+        },
+        {
+          "id": "e2a22",
+          "speaker": "azheng",
+          "text": "嗯。",
+          "emotion": "理所當然"
+        }
+      ]
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the stump, slow push in",
+        "prompt": "Insert of the huge pine stump in moonlight, its cut surface perfectly flat and smooth as polished glass with the moon shining in it, a sun-tanned hand entering from frame left; Lu Shi speaks off screen",
+        "motion": "The hand slides across the cut surface without catching once",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e2a23",
+          "speaker": "lushi",
+          "text": "平得……像鏡子。",
+          "emotion": "愣住，小聲"
+        }
+      ]
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Lu Shi's face on screen left in moonlight, bent over the stump, looking up toward Azheng off screen right, toward the axe on his shoulder",
+        "motion": "Lu Shi straightens up slowly from the stump, his hand still on the cut",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a24",
+          "speaker": "lushi",
+          "text": "一斧……就斷了？",
+          "emotion": "不敢相信"
+        }
+      ]
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the axe head, locked",
+        "prompt": "Insert of an old iron axe head resting on a broad shoulder in moonlight, its edge thick, rounded and dull with no sharpened edge at all, a big hand around the haft; Lu Shi speaks off screen",
+        "motion": "The big hand turns the axe head a little so the moonlight glides along the dull rounded edge",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e2a25",
+          "speaker": "lushi",
+          "text": "阿猙哥，你這斧頭……沒有刃？",
+          "emotion": "愣住，越說越小聲"
+        }
+      ]
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, low angle, locked",
+        "prompt": "Medium close-up, low angle of Azheng on screen right in moonlight, the axe on his right shoulder, the old scar on his forehead, his body turned toward Lu Shi off screen left but his eyes sliding away to screen right",
+        "motion": "Azheng swings the axe down off his shoulder and hides it behind his back",
+        "characters": [
+          "azheng"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e2a26",
+          "speaker": "azheng",
+          "text": "剛好。",
+          "emotion": "憨直，眼神飄開"
+        }
+      ]
+    }
+  ]
+}
