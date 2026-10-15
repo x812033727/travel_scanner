@@ -97,13 +97,24 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    Every fetch uses `fetch.tls_context()`: it verifies the chain, the expiry and the host
    name, but not Python 3.13's strict X.509 profile, which the TWCA chain of Taiwan's
    government sites fails ("Missing Subject Key Identifier"). Before this no `gov.tw` page
-   could be read at all. Listings can be narrowed with `include_query_contains` (sites that
+   could be read at all. The context also ignores the ALPN offer httpcore makes at every
+   connect: Cloudflare challenged (403) a Python handshake offering ALPN and let the same
+   pinned request through without it, which kept the CFTC feed out from 2026-10-06 to
+   2026-10-16. Listings can be narrowed with `include_query_contains` (sites that
    serve every page from one script, like the FSC's `/ch/home.jsp`) and
-   `include_title_keywords` (a publisher mostly outside the three verticals).
-   **Robots redirects.** A robots.txt redirect is followed only over HTTPS on the same
-   host, with each hop rechecked and the normal redirect limit. A redirected response
-   must be text/plain with a User-agent rule; a cross-host redirect or non-2xx final
-   response still refuses the page.
+   `include_title_keywords` (a publisher mostly outside the three verticals); a source's
+   listing may read more than 2 MB with `max_response_bytes` (at most 8 MB; GitHub's
+   full-text blog feed is 2.3 MB). A feed served as `text/plain` is read when its body is
+   XML (Mistral). Validation checks the first entry on the source's own site, and a
+   keyword-filtered source with no matching title this week is checked on the titles the
+   filter set aside.
+   **Robots.** Read as RFC 9309 does: a 4xx robots.txt other than 429 (MODA and NSTC 404,
+   Ars Technica 405) restricts nothing; a 429 or 5xx is a transient failure. A robots.txt
+   redirect is followed only over HTTPS on the same host, with each hop rechecked and the
+   normal redirect limit; a cross-host redirect refuses the page. A redirect that lands on
+   something other than a text/plain file with a User-agent rule (the central bank sends
+   /robots.txt to its home page) means the site has no robots.txt, and its text is not read
+   as rules.
 2. **Evidence gate.** At least one page from an evidence source (owner decision,
    2026-09-25: every enabled source is an official or trusted feed, and a person confirms
    each story before it is translated; since 2026-10-06 the review judge may confirm in

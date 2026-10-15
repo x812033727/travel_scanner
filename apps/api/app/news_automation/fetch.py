@@ -5,11 +5,12 @@ import ipaddress
 import socket
 import ssl
 import time
-from collections.abc import Awaitable, Callable
+from collections.abc import Awaitable, Callable, Iterable
 from dataclasses import dataclass
 from urllib.parse import urljoin, urlsplit, urlunsplit
 from urllib.robotparser import RobotFileParser
 
+import certifi
 import httpx
 from redis.asyncio import Redis
 
@@ -17,6 +18,9 @@ from app.news_automation.schemas import FetchResult
 
 USER_AGENT = "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)"
 MAX_RESPONSE_BYTES = 2 * 1024 * 1024
+# A source's listing may be allowed more (config ``max_response_bytes``), never past this:
+# GitHub's blog feed carries every post's full text and is 2.3 MB.
+MAX_LISTING_BYTES = 8 * 1024 * 1024
 ALLOWED_TYPES = (
     "application/atom+xml",
     "application/feed+json",
@@ -30,6 +34,22 @@ MAX_REDIRECTS = 4
 Resolver = Callable[[str], Awaitable[tuple[str, ...]]]
 
 
+class _NoAlpnContext(ssl.SSLContext):
+    """A TLS context on which httpcore's ALPN offer is a no-op.
+
+    httpcore offers ``http/1.1`` through ALPN on every connection it opens, and Cloudflare
+    challenges a Python handshake that offers ALPN (403 with ``cf-mitigated: challenge``) where
+    it lets the same request through without the offer: the CFTC feed and its press releases
+    answered 403 to every scan from 2026-10-06 and 200 once the offer was left out, measured
+    from the host on 2026-10-16. urllib, which offers none, was never refused. Without the
+    offer the server speaks HTTP/1.1, which is all this client speaks anyway; the request,
+    its User-Agent and robots.txt are unchanged.
+    """
+
+    def set_alpn_protocols(self, alpn_protocols: Iterable[str]) -> None:
+        del alpn_protocols
+
+
 def tls_context() -> ssl.SSLContext:
     """The verifying TLS context every news fetch uses, without Python 3.13's strict X.509 mode.
 
@@ -37,11 +57,28 @@ def tls_context() -> ssl.SSLContext:
     government sites are served with (the central bank, FSC, MODA, NSTC) fails it with
     "Missing Subject Key Identifier": every Taiwan source failed before its listing was read.
     The chain, the expiry and the host name are still verified; only the RFC 5280 profile
-    checks that browsers do not enforce are left out.
+    checks that browsers do not enforce are left out. Built the way ``ssl.create_default_context``
+    builds httpx's (certifi's roots, partial chains allowed), as a ``_NoAlpnContext``.
     """
-    context = httpx.create_ssl_context()
+    context = _NoAlpnContext(ssl.PROTOCOL_TLS_CLIENT)
+    context.load_verify_locations(cafile=certifi.where())
+    context.verify_flags |= ssl.VERIFY_X509_PARTIAL_CHAIN
     context.verify_flags &= ~ssl.VERIFY_X509_STRICT
     return context
+
+
+def listing_byte_limit(config: dict[str, object] | None) -> int:
+    """How much of a source's listing may be read: config ``max_response_bytes``, within bounds."""
+    raw = (config or {}).get("max_response_bytes")
+    if isinstance(raw, bool) or not isinstance(raw, int) or raw <= MAX_RESPONSE_BYTES:
+        return MAX_RESPONSE_BYTES
+    return min(raw, MAX_LISTING_BYTES)
+
+
+def _sniff_xml(body: bytes) -> bool:
+    """Whether a body served as text/plain is an XML feed (Mistral serves its RSS that way)."""
+    head = body[:512].lstrip(b"\xef\xbb\xbf \t\r\n").lower()
+    return head.startswith((b"<?xml", b"<rss", b"<feed", b"<rdf:rdf"))
 RateLimiter = Callable[[str], Awaitable[None]]
 
 
@@ -104,6 +141,13 @@ def validate_https_url(url: str, allowed_hosts: set[str]) -> tuple[str, int | No
     return host, port
 
 
+def _robots_without_rules(url: str) -> RobotFileParser:
+    parser = RobotFileParser()
+    parser.set_url(url)
+    parser.parse([])
+    return parser
+
+
 def _pinned_url(original: str, ip: str) -> str:
     parsed = urlsplit(original)
     host = f"[{ip}]" if ":" in ip else ip
@@ -151,7 +195,11 @@ class SafeNewsFetcher:
             row.last_request = time.monotonic()
 
     async def _request(
-        self, url: str, allowed_hosts: set[str], headers: dict[str, str]
+        self,
+        url: str,
+        allowed_hosts: set[str],
+        headers: dict[str, str],
+        max_bytes: int = MAX_RESPONSE_BYTES,
     ) -> httpx.Response:
         host, _ = validate_https_url(url, allowed_hosts)
         ips = await self._resolver(host)
@@ -179,14 +227,14 @@ class SafeNewsFetcher:
                             raise UnsafeNewsUrl(
                                 "news source returned an invalid content length"
                             ) from error
-                        if declared_size > MAX_RESPONSE_BYTES:
+                        if declared_size > max_bytes:
                             raise UnsafeNewsUrl("news source response is too large")
                     body = bytearray()
                     # aiter_bytes() already undoes gzip/br, and the limit applies to the
                     # decoded size, so a small compressed bomb stops at 2 MB too.
                     async for chunk in streamed.aiter_bytes():
                         body.extend(chunk)
-                        if len(body) > MAX_RESPONSE_BYTES:
+                        if len(body) > max_bytes:
                             raise UnsafeNewsUrl("news source response is too large")
                     # The rebuilt response holds decoded bytes. Keeping Content-Encoding
                     # would make httpx decode them a second time (DecodingError on every
@@ -236,18 +284,28 @@ class SafeNewsFetcher:
                 if response.status_code == 429 or response.status_code >= 500:
                     # A transient failure is not a refusal to remember.
                     response.raise_for_status()
-                if 200 <= response.status_code < 300:
+                if 400 <= response.status_code < 500:
+                    # RFC 9309 §2.3.1.3: an unavailable robots.txt (any other 4xx) places no
+                    # restriction. MODA and NSTC answer 404, Ars Technica 405.
+                    parser = _robots_without_rules(current)
+                elif 200 <= response.status_code < 300:
                     body = response.content[:256_000].decode("utf-8", errors="replace")
-                    if redirected:
-                        content_type = response.headers.get("content-type", "").split(";", 1)[0]
-                        if content_type.casefold() != "text/plain" or not any(
+                    content_type = response.headers.get("content-type", "").split(";", 1)[0]
+                    if redirected and (
+                        content_type.casefold() != "text/plain"
+                        or not any(
                             line.strip().casefold().startswith("user-agent:")
                             for line in body.splitlines()
-                        ):
-                            break
-                    parser = RobotFileParser()
-                    parser.set_url(current)
-                    parser.parse(body.splitlines())
+                        )
+                    ):
+                        # The redirect landed on a page that is not a robots file (the central
+                        # bank sends /robots.txt to its home page): the site has none, which
+                        # restricts nothing, as a 404 would. Its text is not read as rules.
+                        parser = _robots_without_rules(current)
+                    else:
+                        parser = RobotFileParser()
+                        parser.set_url(current)
+                        parser.parse(body.splitlines())
                 break
             self._robots[robots_url] = parser
         cached = self._robots[robots_url]
@@ -262,6 +320,7 @@ class SafeNewsFetcher:
         etag: str | None = None,
         last_modified: str | None = None,
         check_robots: bool = True,
+        max_bytes: int = MAX_RESPONSE_BYTES,
     ) -> FetchResult:
         redirects = allowed_redirect_hosts or set()
         permitted = {host.casefold().rstrip(".") for host in allowed_hosts | redirects}
@@ -274,7 +333,7 @@ class SafeNewsFetcher:
         if last_modified:
             headers["If-Modified-Since"] = last_modified
         for _ in range(MAX_REDIRECTS + 1):
-            response = await self._request(current, permitted, headers)
+            response = await self._request(current, permitted, headers, max_bytes)
             if response.status_code in {301, 302, 303, 307, 308}:
                 location = response.headers.get("location")
                 if not location:
@@ -296,6 +355,8 @@ class SafeNewsFetcher:
                 )
             response.raise_for_status()
             content_type = response.headers.get("content-type", "").split(";", 1)[0].casefold()
+            if content_type == "text/plain" and _sniff_xml(response.content):
+                content_type = "application/xml"
             if content_type not in ALLOWED_TYPES:
                 raise UnsafeNewsUrl(f"unsupported content type: {content_type or 'missing'}")
             body = response.content
