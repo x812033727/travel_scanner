@@ -5299,6 +5299,18 @@ Ran: the merge-base and HEAD byte hashes against review.json and the table; `git
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1508 pilot budget judge compatibility increment: 1 file (2026-10-15)
+
+Reviewer: `codex-pr-review-1508-duration`. Author: `codex-story-budget-cap`. Scope: DURATION_ONLY for the judge.py delta from `fd6fab5798e138826fafffa4a4014643f272cb34` to `671e35f44ebaff22e90bc66f4dd3a3da7ab2b61e`. This follows the independent PR #1508 receipt increment immediately above. The reviewer did not write the implementation.
+
+Baseline: SHA-256 of `git show fd6fab5798e138826fafffa4a4014643f272cb34:apps/api/app/video_automation/judge.py` is `b775f630da8156ff293ded7e9574d7b74c66b96dcb8cbe58ec3ef176f0ebb2f8`, exactly the binding in review.json and the table before this follow-up. The committed current file hashes to `6e6cccb6ede540957c1815c2daff10437db37f5d4b46e55e458ac91f21941b54`. Before rebinding, the CLI check reported only this stale binding; the other 107 of 108 remain current. The source and both receipts use LF in the index and working tree.
+
+Findings: the 19 additions and 15 deletions preserve the five-argument `_ask` call for the existing no-callback route and pass the sixth usage callback only when supplied. The story, cut, explainer and other question sets and their verdict readers are selected as before. No prompt, target minutes, eight-minute body floor, measured runtime, frames, pacing, padding or chapter length changes. The added and removed lines contain no duration identifier. Other registered duration files and tests retain their prior bindings. This review covers the effect on duration only; it does not judge the API test repairs, budget amount, vendor accounting or film readiness.
+
+Ran: prior and current committed byte hashes against the previous receipt; `git diff fd6fab5798e138826fafffa4a4014643f272cb34 671e35f44ebaff22e90bc66f4dd3a3da7ab2b61e -- apps/api/app/video_automation/judge.py`; `git ls-files --eol`; and the pre-increment CLI check. The CLI check and `node --test tools/video/long-form/review.test.mjs` are run after rebinding, with results in the hand-off.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -5310,7 +5322,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `.agents/skills/youtube-video/references/formats.md` | `b27b230728c1c6513fd4567cdba04797f552fd920bed33833ae9f97b70d74087` |
 | `.claude/skills/youtube-video/SKILL.md` | `f852e9fa4b283a73152003793daba1d42a2cab14d2b7f9fb16ee68e48edbb726` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
-| `apps/api/app/video_automation/judge.py` | `b775f630da8156ff293ded7e9574d7b74c66b96dcb8cbe58ec3ef176f0ebb2f8` |
+| `apps/api/app/video_automation/judge.py` | `6e6cccb6ede540957c1815c2daff10437db37f5d4b46e55e458ac91f21941b54` |
 | `apps/api/app/video_automation/models.py` | `e8351836b3d09a939c31f18501ba3e160e98706e327a1172cc35170fc76b9ccc` |
 | `apps/api/app/video_automation/schemas.py` | `4247c4bbbb118d14bc4cd90358d129843936f17fbc3e1cff0217d461ce02d70d` |
 | `apps/api/app/video_automation/series.py` | `cb9d3e01465a6f072d44fdcedae659f538686a634a03351171f8f67d8bfaa155` |
