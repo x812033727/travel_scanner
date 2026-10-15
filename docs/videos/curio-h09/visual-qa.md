@@ -27,3 +27,11 @@
 首輪只產出 7／92 鏡、11 次圖片與 11 次評審；媒體帳本記錄 US$0.1485，預留額為零。`low-fuel-warning`、`uncertain-broadcasts` 各三輪均被評審標為 `needs_review`。人工逐張冷看也發現 `itasca-waits` 水手似乎浮在船外、`radio-0843` 手部與人物比例不自然、`radio-silence` 手勢偏離耳機、`search-plane-island` 的飛機有擬人眼睛及可見乘員；這些鏡頭即使評審顯示 pass，也不視為人工驗收通過。舊版小樣保留作診斷證據，本集 `STOP` 暫停檔仍在。
 
 只改六鏡的 `data.prompt` 構圖：`itasca-waits`、`low-fuel-warning`、`radio-0843`、`radio-silence`、`uncertain-broadcasts`、`search-plane-island`。後兩鏡改用另一座 1930 年代電台的木殼接收機與遠距俯視的海軍水上飛機，避開多餘人物和擬人飛機；不在提示詞重複系列畫風或調色。修訂後 `video.json` SHA-256 為 `C8EA0BB8352FFEE86A2B7D113D1256C86321045EE39C18A8D8E94381A70B5075`，已核准 `script.md` SHA-256 仍為 `7294FD9410349DCBA89347631DF46A551C8A6C570A58983BE11E58A073FA41D5`。獨立複核確認六鏡與原旁白及主張相符；其餘 86 鏡提示詞、旁白正文與固定 `cute-mystery` 風格未改。`lint` 為 0 錯誤、原有 3 項敘事啟發式警告。新版須重新付費產圖並逐張冷看，尚無新版插畫 PASS，也尚未送分鏡關卡。
+
+## 2026-10-15 新版系列規則的全片複核
+
+主線分支納入更新後的 `curio-episode` 規則，故上述「僅改六鏡」與人工退圖結論只是舊版檢查記錄，不能作為目前的開畫清單。另一張窄票逐鏡修訂 92 張插畫提示詞，並由未改稿者獨立終審；現行 `video.json` SHA-256 為 `4BA994EE7838E8E324B40DC9364E48E62212D7E9FB83FEE8B3E49C19C8F2A8C9`。與上一提交比對，91 個 `prompt` 改動；非提示詞欄位只有 Z01 的 `text`、`say`、`say_for` 精修，F03 已在先前提交。`script.md` 仍綁 `F2890AA3BE81026F846B9F76F9BA59A1C8B69FEBF7D3D7A7BFB8C0EF6DECC0A1`；劇本審核與音訊須以這版重新核對。
+
+獨立文字分鏡終審 **PASS（未等於圖片 PASS）**：100 場中 92 張插畫、7 張卡片、1 張片尾，`look` 仍只有 `cute-mystery`；提示詞以單一匿名人物、可見動作與表情為主，各章有遠、中、近景。`direction-not-track` 保持同一條位置線兩端，`search-scale-limits-b` 不把 1937 年表面搜索畫成現代聲納搜尋；Taraia 異常仍是待辨認物件，無已找到飛機的畫面。`lint` 0 錯誤、3 項既有節奏警告，`check:tasks` 與 `git diff --check` 通過。
+
+依目前系列驗收規則重新冷看已付費七鏡：`hour-later-call`、`radio-0843`、`radio-silence`、`search-plane-island` 的 judge 通過圖可以接受；四張的完整 image key 均與付費 manifest 精確相符，原提示詞已恢復以吃快取。`itasca-waits` 即使 judge 通過仍須重畫，因船員站在船外水面且把低矮的豪蘭珊瑚島畫成高山，會誤導歷史地貌。`low-fuel-warning`、`uncertain-broadcasts` 各三輪仍為 `needs_review`，改提示詞後須重判或重畫。媒體帳本仍為 US$0.1485，`STOP` 未移除；接下來只處理有證據的三鏡，其他已合格圖不再加做人工退圖門檻。92 張的整集分鏡卡與實際圖片驗收仍待完成。
