@@ -8,7 +8,7 @@ import { EXIT, main } from "../cli.mjs";
 import { approve } from "../core/approvals.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { pinBranding, validateBranding } from "../core/branding.mjs";
-import { writeAudioFixture, fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
+import { writeAudioFixture, fixture, fixtureLexicon, sandbox, storyFixture } from "../core/fixtures/load.mjs";
 import { atomicWrite } from "../core/paths.mjs";
 import { eachLine, LOCALES, textHash } from "../core/schema.mjs";
 import { runCaptions } from "../core/stages.mjs";
@@ -105,6 +105,21 @@ function context(box, fetchImpl) {
 }
 
 const readReport = (workdir) => JSON.parse(readFileSync(path.join(workdir, "review", "qa.json"), "utf8"));
+
+test("brand-story QA records the subtitle mode of its own script, while missing media never passes", async () => {
+  for (const burnedIn of [false, true]) {
+    const box = sandbox("fixture-story", "story");
+    const doc = storyFixture();
+    doc.subtitles.burn_in = burnedIn;
+    writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+    const { ctx } = context(box, site({ policy: () => Response.json({ passed: true }) }).fetchImpl);
+    assert.equal(await main(["qa", "--slug", box.slug], ctx), EXIT.lint);
+    const report = readReport(box.workdir);
+    assert.equal(report.subtitles_burned_in, burnedIn);
+    assert.equal(report.ok, false, "a subtitle-mode field alone cannot authorize a dub");
+    assert.equal(report.final_sha256, null, "a final cut must exist before its hash can bind QA");
+  }
+});
 
 test("direct qa and package refuse an old cut after a same-duration narration retake is approved", async () => {
   const { box, workdir } = finishedVideo();
