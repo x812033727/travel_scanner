@@ -282,6 +282,27 @@ async def test_budgets_and_missing_keys_stop_a_stage_before_any_model_is_called(
     assert len(stage["provider"].calls) == 1, "only the planner re-run above reached the model"
 
 
+@pytest.mark.asyncio
+async def test_pilot_text_calls_require_a_durable_subscription_job_before_any_model_call(
+    stage: dict[str, Any],
+) -> None:
+    pilot = _request("writer", "story-rolling-suitcase")
+    api_row = VideoAutomationSettings(stage_models=API_MODELS, enabled=True)
+    with pytest.raises(ai.StageFailed) as unpriced:
+        await ai.prepare_stage(_session(), KEYS, api_row, pilot)
+    assert unpriced.value.code == "video_budget_price_unknown"
+    assert stage["provider"].calls == []
+
+    plan_row = VideoAutomationSettings(
+        stage_models={"writer": {"provider": "claude_code", "model": "claude-opus-5-5"}},
+        enabled=True,
+    )
+    with pytest.raises(ai.StageFailed) as nondurable:
+        await ai.run_stage(_session(), AGENT, plan_row, pilot, None)
+    assert nondurable.value.code == "video_pilot_durable_required"
+    assert stage["provider"].calls == []
+
+
 @pytest.mark.parametrize(
     ("error", "status", "code", "retry"),
     [
@@ -459,9 +480,14 @@ async def test_the_run_route_needs_a_token_and_passes_refusals_on_with_their_ret
     )
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://t") as client:
         busy = await client.post("/api/v1/video/automation/run", json=body)
+        pilot = await client.post(
+            "/api/v1/video/automation/run",
+            json={**body, "slug": "story-conveyor-belt-sushi"},
+        )
         bad = await client.post("/api/v1/video/automation/run", json={**body, "stage": "boss"})
     assert busy.status_code == 503 and busy.headers["retry-after"] == "12"
     assert busy.json()["code"] == "video_ai_upstream_busy"
+    assert pilot.status_code == 409 and pilot.json()["code"] == "video_pilot_durable_required"
     assert bad.status_code == 422, "only the six stages exist"
     remembered = [
         fake.merge.await_args.args[0] for fake in app.state.sessions if fake.merge.await_count

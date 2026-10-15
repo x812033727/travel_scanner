@@ -92,11 +92,13 @@ Usage: node tools/video/cli.mjs <command> [options]
                                                    --dry-run only measures the script
 
   login [--name N] [--paste | --token-file F]     pair with the site: allow the printed code on the admin card
+  audition --text-file F [--voices V] [--style T] [--slug S] [--workdir D]
+                                                   compare voices; A01/B18 pilot samples require their exact budgeted --slug
   check-audio --slug S [--locale L] [--threshold 0.5] [--force] [--second-opinion "PROGRAM ARGS"]  transcribe every line; Jev judges the ones that differ; a second transcriber rechecks what Jev doubts
   dub --slug S [--locale en,ja,ko] [--format m4a|mp3|wav] [--dry-run] [--redo F [--keep-fitting]] [--line-by-line] [--force] [--style T]
                                                    a YouTube audio track per locale: the translation read by the
                                                    narration voice, laid into the slide windows (docs/videos/DUBS.md)
-  audition, tts, review, render, assemble, package, youtube-sync
+  tts, review, render, assemble, package, youtube-sync
                                                    media stages, each built by its own ticket
   look, keyframes, clips, music, media-status      the drama format's generation stages (docs/videos/DRAMA.md)
   stock search --query Q [--provider pexels|pixabay] [--orientation landscape|portrait|square] [--per-page N] [--page N] [--slug S] [--json]
