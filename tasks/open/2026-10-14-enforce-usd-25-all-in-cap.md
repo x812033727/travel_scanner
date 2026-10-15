@@ -47,6 +47,7 @@ scope:
   - apps/api/tests/test_video_media_stock.py
   - apps/api/tests/test_video_speech_pilot_budget.py
   - apps/api/tests/test_video_speech_gemini.py
+  - apps/api/tests/test_video_story_policy.py
   - apps/api/tests/test_jev.py
   - tools/video/media/client.test.mjs
   - tools/video/tts/client.test.mjs

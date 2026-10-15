@@ -634,8 +634,11 @@ async def judge_outline(
 ) -> OutlinePick:
     """Which outline to make, in one Jev call that spends one call of the daily budget."""
     questions = outline_questions(options)
-    answers = await _ask(
-        settings, redis, outline_state(stance, brief, options), questions, client, on_usage
+    state = outline_state(stance, brief, options)
+    answers = (
+        await _ask(settings, redis, state, questions, client)
+        if on_usage is None
+        else await _ask(settings, redis, state, questions, client, on_usage)
     )
     return read_outline_answers(answers, options)
 
@@ -694,23 +697,24 @@ async def judge_policy(
     looks the video up by ``slug``; the request cannot choose the set."""
     state = policy_state(stance, viewpoint, script)
     kind = await policy_questions_for(session, slug)
+    questions = (
+        story_policy_questions() if kind == "story" else
+        cut_policy_questions() if kind in {"cut", "explainer"} else
+        policy_questions()
+    )
+    answers = (
+        await _ask(settings, redis, state, questions, client)
+        if on_usage is None
+        else await _ask(settings, redis, state, questions, client, on_usage)
+    )
     if kind == "story":
-        return read_story_policy_answers(
-            await _ask(settings, redis, state, story_policy_questions(), client, on_usage)
-        )
+        return read_story_policy_answers(answers)
     if kind == "cut":
-        return read_cut_policy_answers(
-            await _ask(settings, redis, state, cut_policy_questions(), client, on_usage)
-        )
+        return read_cut_policy_answers(answers)
     if kind == "explainer":
         # The same three a cut Short is asked: the tutorial's words, the demonstration left out.
-        return read_policy_answers(
-            await _ask(settings, redis, state, cut_policy_questions(), client, on_usage),
-            "explainer",
-        )
-    return read_policy_answers(
-        await _ask(settings, redis, state, policy_questions(), client, on_usage)
-    )
+        return read_policy_answers(answers, "explainer")
+    return read_policy_answers(answers)
 
 
 # --- the server's approval rules ----------------------------------------------------------------

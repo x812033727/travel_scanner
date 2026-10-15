@@ -8,6 +8,7 @@ import io
 import os
 from collections.abc import AsyncIterator
 from decimal import Decimal
+from functools import partial
 from pathlib import Path
 
 import pytest
@@ -243,16 +244,13 @@ def test_migration_offline_sql_creates_both_tables_and_seeds_all_pilots() -> Non
 
 @pytest.mark.skipif(os.getenv("RUN_INTEGRATION_TESTS") != "1", reason="requires PostgreSQL")
 @pytest.mark.asyncio
-@pytest.mark.parametrize("precreated_without_default", [False, True])
-async def test_migration_creates_and_seeds_accounts_on_existing_database(
-    precreated_without_default: bool,
-) -> None:
+async def test_migration_creates_and_seeds_accounts_on_existing_database() -> None:
     spec = importlib.util.spec_from_file_location("pilot_budget_migration_live", MIGRATION_SOURCE)
     assert spec is not None and spec.loader is not None
     migration = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(migration)
 
-    def exercise(connection: sa.Connection) -> None:
+    def exercise(connection: sa.Connection, precreated_without_default: bool) -> None:
         transaction = connection.begin()
         try:
             connection.execute(sa.text("DROP TABLE IF EXISTS video_pilot_budget_operations"))
@@ -290,8 +288,12 @@ async def test_migration_creates_and_seeds_accounts_on_existing_database(
         finally:
             transaction.rollback()
 
-    async with postgres_engine.connect() as connection:
-        await connection.run_sync(exercise)
+    # Both database shapes must use the same async event loop for the pooled engine.
+    for precreated_without_default in (False, True):
+        async with postgres_engine.connect() as connection:
+            await connection.run_sync(
+                partial(exercise, precreated_without_default=precreated_without_default)
+            )
 
 
 @pytest.mark.skipif(os.getenv("RUN_INTEGRATION_TESTS") != "1", reason="requires PostgreSQL")
