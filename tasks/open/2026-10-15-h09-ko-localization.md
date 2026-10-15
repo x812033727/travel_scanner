@@ -1,7 +1,7 @@
 ---
 id: 2026-10-15-h09-ko-localization
 title: Localize Curio H09 Korean metadata and captions
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-gpt6-curio-h09
@@ -53,3 +53,5 @@ With `VIDEO_WORKDIR` set to the media root containing `curio-h09`:
 - 2026-10-15 coordinator continuation: the owner explicitly replied "同意移交韓語檔案" for this narrow scope; --force claim transferred it from the ended Korean subtask to codex-gpt6-curio-h09. Initial audio QA retained 14 flags. Five evidence-backed rewrites clarify 13 specimens of bones/fragments, later in the same year, bones unavailable for re-examination, the lagoon versus deep sea off Howland, and the distinction between reaching the island and identifying its object. The fresh worksheet was regenerated before merge; dry run confirms only five stale clips / 175 characters, zero unfit windows. Targeted synthesis is running; the other 95 takes are preserved.
 
 - Final targeted-rewrite independent review by h09_retake_text_audit: PASS. Compared 5 changed lines against HEAD, Chinese source and surrounding context; no remaining material issue in facts, uncertainty or naturalness. Current translation SHA-256: BF7132AC422DDB0F8B3D57E96EF1F2E907B8600D6EF8EAF966A77364ACFA2FBE. This is a text review only, not audio acceptance.
+
+- 2026-10-15 five targeted takes completed (175 characters,95 reused). New QA:72 exact/10 Jev/9 second clears/9 flags; all five rewritten lines pass. Current translation independent review remains PASS. Parent production task tracks owner listening for nine residual audio flags; text review is complete.

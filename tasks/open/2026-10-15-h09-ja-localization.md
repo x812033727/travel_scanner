@@ -1,7 +1,7 @@
 ---
 id: 2026-10-15-h09-ja-localization
 title: Localize Curio H09 Japanese metadata and captions
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-gpt6-curio-h09
@@ -97,3 +97,5 @@ coordinator to commit and close with the episode's draft PR.
 - 2026-10-15 coordinator continuation: the owner explicitly authorized transfer of this narrow file scope from the ended Japanese subtask. The coordinator claimed it with --force for that authorized transfer. Fourteen final lines differ from HEAD, followed by one ALI-name retake; paid batches used 466 + 42 characters and retained cached takes. The current 100-line dub fits every window (4 sped up, maximum 1.12x). Incremental QA retains nine flags; the owner reviewed the hash-bound listening page and replied "日語旁白可以". Local review/dub-ja-owner-acceptance.json binds track SHA-256 4f091b943757ba5005d3814a893a3ea25bce08074352272dc16aafdcddc9b695. Original QA flags remain; no Studio upload or language-gate approval is implied.
 
 - Final targeted-rewrite independent review by h09_retake_text_audit: PASS. Compared 14 changed lines against HEAD, Chinese source and surrounding context; no remaining material issue in facts, uncertainty or naturalness. Current translation SHA-256: 9C0CF73530280BAF32074945A53FCE0AD73C89C8A7CE0C7BFC72C04790366338. This is a text review only, not audio acceptance.
+
+- 2026-10-15 owner listened and replied 日語旁白可以. Local review/dub-ja-owner-acceptance.json binds the current track and nine flagged clips; translation independent review remains PASS. All textual definition-of-done items are satisfied; delivery-stage gates remain on the parent production task.

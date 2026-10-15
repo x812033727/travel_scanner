@@ -1,11 +1,11 @@
 ---
 id: 2026-10-14-produce-curio-h09-amelia-earhart-episode
 title: Produce Curio H09 Amelia Earhart episode
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-gpt6-curio-h09
-claimed_at: 2026-10-14T17:13:01Z
+owner:
+claimed_at:
 created_at: 2026-10-14T17:12:45Z
 completed_at:
 branch: codex/curio-h09-earhart-20261015
@@ -73,3 +73,5 @@ Check the current source hashes and `node tools/video/cli.mjs lint --slug curio-
 - 2026-10-15 language authorization checkpoint: en/ja/ko translations each cover 100 narration lines, 8 chapters and selected metadata/captions/dub; reciprocal/independent semantic reviews passed, fresh worksheets show 0 pending items. Final no-cost dubbing preflight after main merge quotes en 7,146, ja 3,236 and ko 3,244 billable characters, 18 slight speedups total, 0 impossible windows; Gemini speech status had 9,100,032 monthly characters left at the last escalated readback. Owner explicitly authorized sending the three translated scripts to Gemini for synthesis/transcription and using TypeSafe Jev for audio-difference QA under an additional US$2.00 estimated stop ceiling, making the H09 planned aggregate US$6.50. No H09 hard USD guard exists for dubbing; run one locale at a time, restore STOP and inspect cache/flags/cost estimate between them. This authorization does not itself approve foreign audio, the language review batch, Studio audio upload, private YouTube upload or publication.
 
 - 2026-10-15 multilingual checkpoint: owner authorized an additional estimated USD2.00 for EN/JA/KO synthesis, transcription and Jev QA (aggregate planned ceiling USD6.50). All three 100-line dubs now exist at683.100s; JA has4 accelerated windows max1.12x, EN/KO none. JA targeted rewrite/audio QA and owner listening acceptance are hash-bound; KO five revised takes pass automatic QA, nine unchanged flags await owner listening. EN100 primary transcripts completed,20 disputed clips are in offline second transcription. A local candidate package has4 locales and3current dubs,4/4 structural checks and independent source/copy hash checks; no backend publish/languages submission or YouTube upload yet. English caption endings30/71/127 were extended100–243ms into same-scene silence, preserving original generation outputs and a separate timing receipt; all4actual SRTs pass checkCues. Follow the live private review/check.en.json, dub-ko-listening.json and production-plan.md for remaining gates. Local docs tests214/215 retain the already documented Windows child-process crash; lint, long-form and task checks pass.
+
+- 2026-10-15 final local multilingual checkpoint: EN incremental QA completed after exactly two same-text retakes (136 characters,98 unchanged WAV hashes); 73 exact/7 Jev/8 second clears/12 flags. Both retaken height/location clips pass current QA. EN track SHA cfcf4ca568f4aed04adcbcbc20d3d973b78fc3dd56aa794e852d06643347b6a6; current trial page review/dub-en.html is awaiting owner listening, alongside nine KO flags. JA acceptance remains current. Captions regenerated and independently timed for the current EN track; all four SRTs pass and candidate package updated. New receipts: dub-en-retake1-receipt-20261015.json and captions-en-retake1-timing-20261015.json. No active lease or pending speech journal; STOP restored. Do not submit final language delivery until EN/KO listening is resolved, and do not infer YouTube upload permission from package preparation.

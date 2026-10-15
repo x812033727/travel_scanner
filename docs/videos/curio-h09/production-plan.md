@@ -1,6 +1,6 @@
 # 奇聞檔案局 H09｜製作與關卡
 
-狀態：更新版大綱 A 已核准。Colorado（BB-45）的艦種已由「巡洋艦」更正為「戰艦」；正式 `script.md` SHA-256 `E9404ADD9954E66AA6C26FC3725D7C0ABD09D91B9E571ED2631C152E4579633C` 經獨立史料與十三題敘事收據通過，後台已讀回站主核准。B06 單句重錄後的時間軸 SHA-256 `69E3FF3DC95E6EF3811044DC765EEEEEE79D02E28F2F829C68B95171A2691BC2` 也已讀回站主核准。插畫 92／92 鏡有 selected image，0 鏡 `needs_review`；四頁分鏡聯絡表已由站主在 `/admin/videos` 核准，`review-pull` 綁定 manifest SHA-256 `4E8D778DEDB8A67816E37E11304A9028A5C021C7F8513AB2153B9F47C0654FFA`。字卡與縮圖已渲染，92 鏡皆是零購買片段的靜圖慢運鏡。繁中成片與 111 條字幕已完成，獨立抽看通過；站主已在後台核准 `final.mp4` SHA-256 `BE7FC71416AFBBF84BD228470FAAE4CBA9AD47D803FD2CEE3C00A7AD04E5F956`。英、日、韓標題說明、字幕及配音均已由站主勾選；三語翻譯與獨立審稿已完成，站主已另授權多語配音與音訊 QA，新增 US$2.00 估算停手上限；日語新版已合成、完成增量 QA 並由站主試聽接受；韓語五句定向重錄與增量 QA 已完成，九句殘餘旗標待站主試聽；英語音軌已合成，完整音訊 QA 尚在執行。H09 專屬 `STOP` 已恢復；圖片帳本 US$2.403、零預留。站主授權繁中旁白、音訊 QA、插畫合計 US$4.50 估算停手上限，不含多語或上傳；圖片與評審的本集執行上限為 US$3.80。
+狀態：更新版大綱 A 已核准。Colorado（BB-45）的艦種已由「巡洋艦」更正為「戰艦」；正式 `script.md` SHA-256 `E9404ADD9954E66AA6C26FC3725D7C0ABD09D91B9E571ED2631C152E4579633C` 經獨立史料與十三題敘事收據通過，後台已讀回站主核准。B06 單句重錄後的時間軸 SHA-256 `69E3FF3DC95E6EF3811044DC765EEEEEE79D02E28F2F829C68B95171A2691BC2` 也已讀回站主核准。插畫 92／92 鏡有 selected image，0 鏡 `needs_review`；四頁分鏡聯絡表已由站主在 `/admin/videos` 核准，`review-pull` 綁定 manifest SHA-256 `4E8D778DEDB8A67816E37E11304A9028A5C021C7F8513AB2153B9F47C0654FFA`。字卡與縮圖已渲染，92 鏡皆是零購買片段的靜圖慢運鏡。繁中成片與 111 條字幕已完成，獨立抽看通過；站主已在後台核准 `final.mp4` SHA-256 `BE7FC71416AFBBF84BD228470FAAE4CBA9AD47D803FD2CEE3C00A7AD04E5F956`。英、日、韓標題說明、字幕及配音均已由站主勾選；三語翻譯與獨立審稿已完成，站主已另授權多語配音與音訊 QA，新增 US$2.00 估算停手上限；日語新版已合成、完成增量 QA 並由站主試聽接受；韓語五句定向重錄與增量 QA 已完成，九句殘餘旗標待站主試聽；英語完整 QA 與兩句定向重錄已完成，十二句殘餘旗標待站主試聽。H09 專屬 `STOP` 已恢復；圖片帳本 US$2.403、零預留。站主授權繁中旁白、音訊 QA、插畫合計 US$4.50 估算停手上限，不含多語或上傳；圖片與評審的本集執行上限為 US$3.80。
 
 ## 作品規格
 
@@ -86,3 +86,12 @@
 - 已產生繁中 111、英文 130、日文 148、韓文 140 條字幕；三個外語均使用各自 dub 時間軸。英語原有三條每秒 20.4–22.1 字的閱讀速度問題，獨立覆核後僅延長末尾至同鏡現有停頓：cue30 +243ms、cue71 +100ms、cue127 +110ms。文字與開始時間未改；四語實際 SRT 重新 parse/checkCues 均零問題。原始 manifest/SRT/VTT 保存在 review/captions-before-en-timing-20261015，調整收據在 review/captions-en-timing-20261015.json；不得把原產生器結果描述成原本通過。再跑 captions 會覆蓋此調時，須重新驗收。
 - package 4／4 PASS：四語字幕及標題說明、三條 current 配音，每條 683.100 秒、AAC 48kHz 雙聲道；metadata.json SHA-256 132a7512ea926c2075f686648caf39625e87777df1a1f0e6e2558782086f8904。獨立核對成片、預設縮圖、四份 SRT 與三條配音的來源及 upload 雜湊全部吻合。此為本機結構驗收；韓語試聽及英語完整 QA 仍待完成，尚未送 publish/languages 審核、尚未上傳 YouTube。
 - 使用已核准的共用縮圖。三語縮圖文字其實完整；frames manifest 早於翻譯，語系縮圖未渲染，故 package 顯示的「沒有縮圖文字」為舊診斷。選定的 metadata/captions/dub 交付範圍允許沿用預設縮圖。字幕 freshness 與縮圖舊診斷分別已開未認領追蹤票，未在本集製作中改共用工具。
+
+
+### 英語定向重錄與目前待審（2026-10-15）
+
+- 完整 EN QA 首輪為 73 逐字／7 Jev 接受／7 第二轉寫清除／13 旗標。獨立核對 100 段 WAV 與 QA hash 相符；兩套轉寫都將 h1e4dxa5 的 Taraia Peninsula 誤辨為 Tarawa，另一次無提示離線轉寫與 Gemini 都在 h0pu8prr 的身高句出現重複數字。保留原音、時間軸、快取與 QA 後，只同文重錄這兩句：2 次／136 計費字元，其餘 98 段 WAV hash 未變；100 時槽零加速、零超時。
+- 新增量 QA 只轉寫 2 句、2 次 Jev 呼叫，總計 73 逐字／7 Jev 接受／8 第二轉寫清除／12 旗標。身高已轉寫為 5 foot 5 and 1/2，Jev 0.62；Taraia 第二轉寫為 Taraya，Jev 0.67。兩句均通過現行閾值。其餘十二句交 review/dub-en.html 供站主試聽，未把自動旗標清空。現行 EN 音軌 SHA-256 cfcf4ca568f4aed04adcbcbc20d3d973b78fc3dd56aa794e852d06643347b6a6；時間軸 SHA-256 59e99210d3d0a258a3ce3f9319d3657f32aba348f8f80ff71e706eccad0e8844。
+- 重產字幕後三處原有閱讀速率問題仍相同；按現行 line ID 與鏡頭界線獨立覆核，再延長同三個末尾，四語實際 SRT 均零問題。新原件保存於 review/captions-before-en-retake1-timing-20261015，新調時收據為 review/captions-en-retake1-timing-20261015.json，EN SRT SHA-256 4672d234c549063708f24bb451b9bd78b7fe9a48a3c622d2e133e4a2c5184b70。已重建候選 package；metadata hash 未變，配音與字幕內容以新雜湊核對。
+- 三語 TTS 累計 322 次／14,445 計費字元，包含日語 15 句、韓語 5 句及英語 2 句定向重錄；這是請求計數，不是供應商美元帳單。維持新增 US$2.00／H09 合計 US$6.50 估算停手上限。H09 STOP 已恢復、無 LEASE、speech-journal 為空。
+- 日語站主接受收據仍綁現行音軌；韓語 9 句、英語 12 句待站主試聽。目前是本機候選包，尚未送 publish/languages 審核或上傳 YouTube。發現 dub --dry-run 忽略 --redo 的估價問題已另開未認領票，H09 本次改用既有計費 helper 精算 136 字元，未改共用工具。
