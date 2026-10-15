@@ -5383,6 +5383,52 @@ This is a binding reconciliation for the rebased source. It does not accept an a
 
 Verdict: PASS - DURATION_ONLY for the actual rebased tree; required duration fixes remaining: none.
 
+## Branch curio-h09-earhart charged-clips test increment: 1 file (2026-10-15)
+
+Reviewer: codex-gpt6-h09-duration-review. Authors: codex-gpt6-curio-h09 (b44dde2c3) and codex-gpt6-h09-ci (8cd022593). Scope: DURATION_ONLY for the one bound test file. This reviewer wrote neither code/test commit and changed only this report and review.json.
+
+Baseline: the SHA-256 of the clips.test.mjs blob at b44dde2c3^ is 626e678fc76d08210aad82a850f393c66009e9c3a7fce815a8097e686602b238, exactly the prior review.json binding and table row. The final committed 8cd022593 file is 48c4cb7de8e837575539aa7222460f904d4d87528a4cfadb2275764132d86d87. Before this increment, the CLI check failed on only tools/video/media/clips.test.mjs; the other 107 bindings remained current. The registry remains 108 files.
+
+Findings: b44dde2c3 makes the refused-provider fixture expect the cost estimated by the server, request seconds multiplied by US$0.15, instead of zero; it also checks that a paid imported clip and its US$0.01 judge call are both reserved during the verdict. The clip import hold still has zero newly generated seconds, and the settled imported clip total remains 16 seconds. The 8cd022593 follow-up makes a rejected, charged seed resume at seed 4 rather than resubmit seed 1 and updates the expected output filename accordingly. Those are ledger, retry and test expectations; no production module, clip-duration selector, measured frame/FPS check, timeline, body/final acceptance proof, or catalog plan changed in these commits.
+
+Duration questions: the general eight-minute floor, the fixed catalog body and final proof, target_minutes, 600/780-second planning targets, clipSeconds behavior, pace, padding, and the treatment of bookends are untouched. The test fixture's VIDEO_MIN_EPISODE_MINUTES assignment is unchanged and remains a test-only setting. Raising --takes to 4 in one synthetic retry test does not change clip duration or production minimums.
+
+Ran before rebinding: inspected the complete b44dde2c3^..8cd022593 diff for the bound file; computed the old Git blob and final working-tree SHA-256; checked the existing receipt and table; ran node tools/video/long-form/cli.mjs check and observed only the named stale binding. A focused Windows Node test attempt exited with a file-level child-process failure and no assertion diagnostics, so it is not claimed as a test pass. The code author reported that Linux smoke, web-checks and video-tests on the exact 8cd022593 revision otherwise passed and each identified only the stale receipt; this reviewer did not fetch those CI logs. The CLI and review regression checks after rebinding are recorded in the handoff.
+
+Non-claims: this review does not approve the media cost policy, judge behavior, provider billing, actual generated clips, H09 images, or a measured finished video. It does not rerun the 107 previously bound files. Any later change to clips.test.mjs or another bound file requires another independent increment.
+
+Verdict: PASS — DURATION_ONLY for the one rebound test-file SHA; required duration fixes remaining: none.
+
+## Merge of main (#1504) and H09 charged-clips receipts: 0 files reviewed afresh (2026-10-15)
+
+Reviewer: codex-gpt6-h09-duration-review. Source reviewers: claude-opus-duration-review-20261015a for the main AI storytelling increment and codex-gpt6-h09-duration-review for the H09 charged-clips increment. Source authors: claude-opus-5-5-ai-storytelling, codex-gpt6-curio-h09 and codex-gpt6-h09-ci. Scope: DURATION_ONLY receipt reconciliation while merging origin/main 7bf6278d6548707606eb55dbe37fba1006f3774d into H09 3fb683b6bf0db248e1e25ba68a78ee2db07d6539, from common ancestor e8d8a8fa18fc2974bab5aa4ada426eadb709fd8d. This reviewer authored none of the three changed bound source files and edited only the two receipt files. No source file is reviewed afresh here.
+
+What was verified:
+
+1. Both parents' report bytes match their own receipt report_sha256. Each parent has exactly 108 bindings. Since the common ancestor, the only paths changed on both branches are review.md and review.json. The complete 153 historical report sections are byte-identical in both parents; main adds its AI storytelling review and H09 adds its charged-clips review. Both increment sections remain byte-identical here.
+2. The merged working tree's 108 bound files have 105 hashes shared by both parents, two main-only reviewed hashes (tools/video/automation/prompts.mjs and tools/video/automation/series.test.mjs), and one H09-only reviewed hash (tools/video/media/clips.test.mjs). None has a hash outside the parents' reviewed values. The final 108-row table and review.json combine those three disjoint changes and agree with the actual file bytes.
+3. Main's two bound changes add story-line/protagonist prompt text and repin the writer instruction digest; the H09 bound change adjusts paid-clip retry and cost expectations in a test. The previous independent increments record their duration-only findings. This merge makes no further change to the eight-minute body floor, measured frame/FPS rules, target_minutes, pace, padding, chapter targets or the treatment of bookends.
+
+Ran before rebinding: read the complete source increments and Git stage-1/2/3 receipts, compared the common report sections and all 108 merged file hashes, and confirmed the parent report hashes and the two-file overlap since the merge base. The CLI check and review regression test after rebinding are recorded in the handoff rather than embedded in this SHA-bound report.
+
+Non-claims: this reconciliation does not approve new storytelling rules, clip costs or generated media; it does not re-run the earlier content or provider tests. A later edit to a bound file or either receipt needs another independent increment.
+
+Verdict: PASS — DURATION_ONLY for the combined 108 bindings; required duration fixes remaining: none.
+
+## PR #1503 merge with current main: 7 differing bindings (2026-10-15)
+
+Reviewer: codex-gpt6-h09-independent-duration-review. Source authors named by the two parent receipts: claude-opus-5-5-ai-storytelling, codex-gpt6-curio-h09, codex-gpt6-h09-ci, codex-8a78-and-codex-story-budget-cap. Scope: DURATION_ONLY receipt reconciliation while merging H09 70347190df22bf0961514a4c4157ef5ededce879 with main a1b6b1149c9086478e2d3954f5d19aab7eb5301a. This reviewer authored none of the seven source changes and edited only this report and review.json.
+
+Baseline: both parent reports match their own report_sha256, and each parent independently binds 108 source files. Their report text through the shared historical prefix is byte-identical. Main adds eight review sections and H09 adds two; all ten sections are retained without changing their text. The source lists have the same 108 paths.
+
+Findings: 101 merged source hashes are shared by both parent receipts. Six merged files use their already-reviewed main bytes: apps/api/app/video_automation/judge.py, schemas.py and series.py; docs/videos/long-form/plans.json; tools/video/automation/flow.mjs; and tools/video/core/drama.mjs. One uses H09-reviewed bytes: tools/video/media/clips.test.mjs. No bound source byte has a hash outside both parent receipts. The main-side changes include the fixed 10-minute cute-mystery story route while preserving the measured 480-second narration-body and final-video floor. The H09-side clip test changes charged-failure and fresh-seed expectations; it does not change a clip-duration implementation. The existing parent increments document their independent duration findings. This merge introduces no novel bound source bytes.
+
+Ran before rebinding: compared both parent report byte hashes and all 108 parent source blob hashes with their own receipts; read the seven source diffs and prior independent increments; computed SHA-256 for all 108 files in the merge worktree; compared every value with both parent maps; checked the report-section split and table values. The post-reconciliation duration CLI and regression test are recorded in the handoff.
+
+Non-claims: this duration receipt does not approve media billing, provider retries, story facts, generated pictures, narration, measured H09 runtime, owner playback, upload or publication. The media stage conflict and its paid-call behavior have separate tests. Future changes to any bound file require another independent increment.
+
+Verdict: PASS - DURATION_ONLY for these 108 reviewed source bytes; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -5478,7 +5524,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/long-form/plans.test.mjs` | `5b7992649fa5384d1758664a2e9b6ccbb104004da499a3d5f73b6665e9f768a6` |
 | `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
-| `tools/video/media/clips.test.mjs` | `626e678fc76d08210aad82a850f393c66009e9c3a7fce815a8097e686602b238` |
+| `tools/video/media/clips.test.mjs` | `48c4cb7de8e837575539aa7222460f904d4d87528a4cfadb2275764132d86d87` |
 | `tools/video/media/look-keyframes.test.mjs` | `a29f3901db7d3c6eac0c01f634cb2d1b4b59688ab6f72788bbfa7bae401f1f13` |
 | `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
 | `tools/video/package/package.test.mjs` | `ec0a56363e66f4410af6d759b2497c39cc1aabd7bd3aacd449628b5b8b7b0047` |

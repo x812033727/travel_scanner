@@ -9,8 +9,8 @@ import { LEASE_FILE, PROJECT_LEASED } from "../core/project-lease.mjs";
 import { readCache, readJobs } from "./cache.mjs";
 import { statusText } from "./cli.mjs";
 import { MediaError } from "./client.mjs";
-import { capProblem, ledgerTotals, readLedger, reserve, reservedEntries } from "./ledger.mjs";
-import { choiceFor, IMAGE_SIZES, imagePrice, imageSizeFor, imageStatus, JUDGE_USD_PER_CALL, Stage, statusProblem, takesStyleReference } from "./stages.mjs";
+import { capProblem, ledgerTotals, readLedger, release, reserve, reservedEntries } from "./ledger.mjs";
+import { capFor, choiceFor, IMAGE_SIZES, imagePrice, imageSizeFor, imageStatus, JUDGE_USD_PER_CALL, Stage, statusProblem, takesStyleReference } from "./stages.mjs";
 
 const PRO = "gemini-3-pro-image";
 const FLASH = "gemini-3.1-flash-image";
@@ -45,6 +45,24 @@ test("no series image override leaves the status object and legacy model unchang
     assert.strictEqual(imageStatus(original, series), original);
     assert.equal(imagePrice(imageStatus(original, series)), 0.134);
   }
+});
+
+test("a series-local cap applies with or without an image override and refuses an image before POST", async () => {
+  const original = status();
+  const localOnly = imageStatus(original, { media_cap_usd: 0.06 });
+  assert.notStrictEqual(localOnly, original);
+  assert.equal(capFor(localOnly), 0.06);
+  assert.equal(original.series_media_cap_usd, undefined);
+  assert.equal(capFor(imageStatus({ ...original, max_usd_per_video: 0 }, { media_cap_usd: 0.06 })), 0.06, "the local cap still applies when the shared cap is off");
+  assert.equal(capFor(imageStatus({ ...original, max_usd_per_video: 0.04 }, { media_cap_usd: 0.06 })), 0.04, "the lower shared cap wins");
+  assert.equal(capFor(imageStatus({ ...original, slides_max_usd_per_video: 0.05 }, { media_cap_usd: 0.06 }), "slides"), 0.05);
+  for (const bad of [0, -1, null, "0.06", Number.NaN, Number.POSITIVE_INFINITY]) {
+    assert.throws(() => imageStatus(original, { media_cap_usd: bad }), errorCode("video_media_cap_invalid"));
+  }
+  const fake = fakeStage(imageStatus(original, { image_model: FLASH, media_cap_usd: 0.06 }));
+  await assert.rejects(fake.generate(), errorCode("video_media_cap"));
+  assert.deepEqual(fake.calls, [], "the local cap refuses the paid image before any media request");
+  assert.deepEqual(readLedger(fake.workdir).entries, []);
 });
 
 test("a story uses the catalog's Flash price without changing other media or the shared status", () => {
@@ -328,8 +346,8 @@ test("a failed server job retried under the same id updates its zero charge when
   assert.equal(readLedger(fake.workdir).totals.usd, 0.067);
 });
 
-test("an uncertain pilot job keeps its reservation and pending id across reruns", async () => {
-  const fake = fakeStage(imageStatus(status(), story()));
+test("an uncertain pilot job keeps its reservation and pending id across reruns, even if its model differs", async () => {
+  const fake = fakeStage(imageStatus(status(), story()), { actualModel: PRO });
   Object.assign(fake.ready, {
     status: "failed", file: null, usd_estimate: 0,
     error: { code: "video_media_outcome_uncertain", detail: "vendor result unknown" },
@@ -341,6 +359,18 @@ test("an uncertain pilot job keeps its reservation and pending id across reruns"
   await assert.rejects(fake.generate(), errorCode("video_media_outcome_uncertain"));
   assert.deepEqual(fake.calls, ["POST images", "GET jobs/image-job-1"], "a rerun must inspect the original job without buying another image");
   assert.equal(readLedger(fake.workdir).totals.reserved, 0.067);
+});
+
+test("an HTTP 409 uncertain submission keeps its hold instead of sending a second paid POST", async () => {
+  const fake = fakeStage(imageStatus(status(), story()), {
+    overrides: {
+      "POST images": () => Response.json({ code: "video_media_outcome_uncertain", detail: "vendor answer is unknown" }, { status: 409 }),
+    },
+  });
+  await assert.rejects(fake.generate(), (error) => error instanceof MediaError && error.code === "video_media_outcome_uncertain" && error.who === "owner");
+  assert.equal(readLedger(fake.workdir).totals.reserved, 0.067);
+  await assert.rejects(fake.generate(), errorCode("video_media_generation_uncertain"));
+  assert.deepEqual(fake.calls, ["POST images"], "the retained hold blocks another paid submission");
 });
 
 test("a generation holds its list price in the ledger before it is submitted, and the server's charge replaces the hold", async () => {
@@ -367,7 +397,7 @@ test("a generation holds its list price in the ledger before it is submitted, an
   assert.equal(readLedger(fake.workdir).entries.length, 1, "a cache hit holds nothing");
 });
 
-test("a refusal from the server releases the hold; a lost connection keeps it until a rerun books the job it may have left", async () => {
+test("a proven refusal releases the hold; a lost image response blocks another paid POST until reconciliation", async () => {
   const effective = imageStatus(status(), story());
   const overrides = { "POST images": () => Response.json({ code: "video_media_budget_exhausted", detail: "the month's images are spent" }, { status: 429 }) };
   const fake = fakeStage(effective, { overrides });
@@ -382,12 +412,47 @@ test("a refusal from the server releases the hold; a lost connection keeps it un
   assert.equal(held.length, 1, "the server may have taken the request: the hold stays");
   assert.equal(held[0].cost_usd, 0.067);
   assert.deepEqual(readJobs(fake.workdir).jobs, {}, "no job id came back");
+  assert.equal(fake.calls.filter((call) => call === "POST images").length, 2, "the lost-response submission was tried only once");
   delete overrides["POST images"];
+  await assert.rejects(fake.generate(), errorCode("video_media_generation_uncertain"));
+  assert.equal(fake.calls.filter((call) => call === "POST images").length, 2, "a rerun must not replace the one hold and pay again");
+  release(fake.workdir, held[0].key); // The owner independently established that no job was submitted.
   const picture = await fake.generate();
   assert.equal(picture.reused, false);
   const ledger = readLedger(fake.workdir);
   assert.deepEqual(ledger.entries.map((entry) => [entry.status, entry.job_id, entry.cost_usd]), [["ready", "image-job-1", 0.067]], "the rerun held the same key once and the job's row replaced it");
   assert.equal(ledger.totals.reserved, 0);
+});
+
+test("a 5xx image response is uncertain, keeps its hold and sends only one POST", async () => {
+  const overrides = { "POST images": () => Response.json({ code: "upstream_unavailable", detail: "gateway lost the answer" }, { status: 502 }) };
+  const fake = fakeStage(imageStatus(status(), story()), { overrides });
+  await assert.rejects(fake.generate(), (error) => error instanceof MediaError && error.status === 502);
+  assert.equal(fake.calls.filter((call) => call === "POST images").length, 1);
+  assert.deepEqual(reservedEntries(readLedger(fake.workdir).entries).map((entry) => entry.cost_usd), [0.067]);
+  await assert.rejects(fake.generate(), errorCode("video_media_generation_uncertain"));
+  assert.equal(fake.calls.filter((call) => call === "POST images").length, 1);
+});
+
+test("a failed image that the server says was billed keeps its positive charge in the local cap", async () => {
+  const effective = imageStatus(status(), { image_model: FLASH, media_cap_usd: 0.1 });
+  const fake = fakeStage(effective);
+  const billedFailure = { ...fake.ready, status: "failed", file: null, error: { code: "video_media_upstream_invalid", detail: "download failed after generation" } };
+  let posts = 0;
+  fake.stage.options.fetchImpl = async (url, init) => {
+    if (new URL(url).pathname.endsWith("/images")) {
+      posts += 1;
+      return Response.json(billedFailure);
+    }
+    assert.fail(`unexpected media request: ${init?.method ?? "GET"} ${url}`);
+  };
+  await assert.rejects(fake.generate(), (error) => error instanceof MediaError && error.code === "video_media_upstream_invalid");
+  const ledger = readLedger(fake.workdir);
+  assert.deepEqual(ledger.entries.map((entry) => [entry.status, entry.cost_usd]), [["failed", 0.067]]);
+  assert.equal(ledger.totals.usd, 0.067);
+  await assert.rejects(fake.generate(), (error) => error instanceof MediaError && error.code === "video_media_upstream_invalid" && /already failed after a charge/.test(error.message));
+  assert.equal(posts, 1, "the server reuses the failed job id, so a billed request cannot be paid for twice");
+  await assert.rejects(fake.generate({ seed: 2, target: "keyframes/opening-2" }), errorCode("video_media_cap"));
 });
 
 test("a run that stops between submit and reconcile leaves a visible reserved row, counted by the cap and media-status, that the next run books", async () => {
@@ -441,6 +506,120 @@ test("a judge call is money: it is refused past the per-video cap before the ser
   assert.deepEqual([ledger.totals.judge_calls, ledger.totals.usd, ledger.totals.reserved], [1, 0.077, 0]);
   assert.equal(ledger.entries.at(-1).cost_usd, JUDGE_USD_PER_CALL);
   assert.equal(JUDGE_USD_PER_CALL, 0.01, "mirrors JUDGE_USD_PER_CALL in apps/api/app/video_media/catalog.py");
+});
+
+test("a series-local cap holds each judge call, including an intentional repeat under a new ledger key", async () => {
+  const fake = fakeStage(imageStatus(status(), { image_model: FLASH, media_cap_usd: 0.07 }));
+  const picture = await fake.generate();
+  const request = { id: "opening", kind: "keyframe", files: [{ sha256: picture.sha256, label: "keyframe" }], rubric: [{ key: "clean", question: "Is it clean?", weight: 1 }] };
+  await assert.rejects(fake.stage.judge(request), errorCode("video_media_cap"));
+  assert.equal(fake.calls.filter((call) => call === "POST judge").length, 0);
+  assert.equal(readLedger(fake.workdir).totals.usd, 0.067);
+
+  let heldAtPost;
+  fake.stage.status = imageStatus(status(), { image_model: FLASH, media_cap_usd: 0.08 });
+  const originalFetch = fake.stage.options.fetchImpl;
+  fake.stage.options.fetchImpl = (url, init) => {
+    if (new URL(url).pathname.endsWith("/judge")) heldAtPost = readLedger(fake.workdir);
+    return originalFetch(url, init);
+  };
+  const verdict = await fake.stage.judge(request);
+  assert.equal(verdict.passed, true);
+  assert.equal(heldAtPost.entries.at(-1).status, "reserved", "the judge price was held before POST");
+  assert.equal(heldAtPost.entries.at(-1).cost_usd, JUDGE_USD_PER_CALL);
+  assert.equal(heldAtPost.totals.usd, 0.077);
+  const ledger = readLedger(fake.workdir);
+  assert.equal(ledger.entries.at(-1).status, "judged");
+  assert.equal(ledger.entries.at(-1).key, heldAtPost.entries.at(-1).key);
+  assert.deepEqual([ledger.totals.usd, ledger.totals.reserved, ledger.totals.judge_calls], [0.077, 0, 1]);
+  await assert.rejects(fake.stage.judge(request), errorCode("video_media_cap"));
+  assert.equal(fake.calls.filter((call) => call === "POST judge").length, 1, "a repeat still needs a fresh cap reservation");
+  fake.stage.status = imageStatus(status(), { image_model: FLASH, media_cap_usd: 0.09 });
+  assert.equal((await fake.stage.judge(request)).passed, true);
+  const repeated = readLedger(fake.workdir);
+  assert.deepEqual([repeated.totals.usd, repeated.totals.judge_calls], [0.087, 2]);
+  assert.notEqual(repeated.entries.at(-1).key, ledger.entries.at(-1).key, "the second paid call gets its own ledger key");
+  assert.equal(repeated.entries.at(-1).request_key, ledger.entries.at(-1).key);
+  assert.equal(fake.calls.filter((call) => call === "POST judge").length, 2);
+});
+
+test("an uncertain repeat judge call holds its own charge and blocks a third identical POST", async () => {
+  const overrides = {};
+  const fake = fakeStage(imageStatus(status(), { image_model: FLASH, media_cap_usd: 0.1 }), { overrides });
+  const picture = await fake.generate();
+  const request = { id: "opening", kind: "keyframe", files: [{ sha256: picture.sha256, label: "keyframe" }], rubric: [{ key: "clean", question: "Is it clean?", weight: 1 }] };
+  await fake.stage.judge(request);
+  overrides["POST judge"] = () => { throw new TypeError("lost repeat answer"); };
+  await assert.rejects(fake.stage.judge(request), (error) => error instanceof MediaError && error.code === "network");
+  const held = reservedEntries(readLedger(fake.workdir).entries);
+  assert.deepEqual(held.map((entry) => [entry.kind, entry.cost_usd, entry.repeat]), [["judge", JUDGE_USD_PER_CALL, 1]]);
+  assert.equal(readLedger(fake.workdir).totals.usd, 0.087);
+  await assert.rejects(fake.stage.judge(request), errorCode("video_media_judge_uncertain"));
+  assert.equal(fake.calls.filter((call) => call === "POST judge").length, 2);
+});
+
+test("a clear pre-provider judge refusal releases its hold so the request can be retried", async () => {
+  const overrides = {};
+  const fake = fakeStage(imageStatus(status(), { image_model: FLASH, media_cap_usd: 0.08 }), { overrides });
+  const picture = await fake.generate();
+  const request = { id: "opening", kind: "keyframe", files: [{ sha256: picture.sha256, label: "keyframe" }], rubric: [{ key: "clean", question: "Is it clean?", weight: 1 }] };
+  overrides["POST judge"] = () => Response.json({ code: "video_media_budget_exhausted", detail: "monthly judge budget spent" }, { status: 429 });
+  await assert.rejects(fake.stage.judge(request), errorCode("video_media_budget_exhausted"));
+  assert.equal(readLedger(fake.workdir).totals.usd, 0.067);
+  assert.deepEqual(reservedEntries(readLedger(fake.workdir).entries), []);
+  delete overrides["POST judge"];
+  assert.equal((await fake.stage.judge(request)).passed, true);
+  assert.equal(fake.calls.filter((call) => call === "POST judge").length, 2);
+  assert.equal(readLedger(fake.workdir).totals.usd, 0.077);
+});
+
+test("an oversized judge upload is a clear pre-provider refusal and frees its reservation", async () => {
+  const overrides = {};
+  const fake = fakeStage(imageStatus(status(), { image_model: FLASH, media_cap_usd: 0.08 }), { overrides });
+  const picture = await fake.generate();
+  const request = { id: "opening", kind: "keyframe", files: [{ sha256: picture.sha256, label: "keyframe" }], rubric: [{ key: "clean", question: "Is it clean?", weight: 1 }] };
+  overrides["POST judge"] = () => Response.json({ code: "video_media_judge_too_large", detail: "inline media too large" }, { status: 413 });
+  await assert.rejects(fake.stage.judge(request), (error) => error instanceof MediaError && error.status === 413);
+  assert.deepEqual(reservedEntries(readLedger(fake.workdir).entries), []);
+  assert.equal(readLedger(fake.workdir).totals.usd, 0.067);
+  delete overrides["POST judge"];
+  assert.equal((await fake.stage.judge(request)).passed, true);
+  assert.equal(readLedger(fake.workdir).totals.judge_calls, 1);
+});
+
+test("judge request keys distinguish rubric and context even for the same image", async () => {
+  const overrides = {};
+  const fake = fakeStage(imageStatus(status(), { image_model: FLASH, media_cap_usd: 0.09 }), { overrides });
+  const picture = await fake.generate();
+  const base = { id: "opening", kind: "keyframe", files: [{ sha256: picture.sha256, label: "keyframe" }], rubric: [{ key: "clean", question: "Is it clean?", weight: 1 }] };
+  overrides["POST judge"] = () => { throw new TypeError("lost response"); };
+  await assert.rejects(fake.stage.judge(base), (error) => error instanceof MediaError && error.code === "network");
+  const uncertainKey = reservedEntries(readLedger(fake.workdir).entries)[0].key;
+  delete overrides["POST judge"];
+  const changed = { ...base, rubric: [{ key: "sharp", question: "Is it sharp?", weight: 1 }], context: { shot: { id: "opening", lighting: "night" } } };
+  assert.equal((await fake.stage.judge(changed)).passed, true);
+  const rows = readLedger(fake.workdir).entries.filter((entry) => entry.kind === "judge");
+  assert.deepEqual(rows.map((entry) => entry.status), ["reserved", "judged"]);
+  assert.notEqual(rows[1].key, uncertainKey);
+  assert.equal(fake.calls.filter((call) => call === "POST judge").length, 2);
+  await assert.rejects(fake.stage.judge(base), errorCode("video_media_judge_uncertain"));
+});
+
+test("a lost judge response uses one POST, keeps the price held, and blocks that request on rerun", async () => {
+  const overrides = {};
+  const fake = fakeStage(imageStatus(status(), { image_model: FLASH, media_cap_usd: 0.08 }), { overrides });
+  const picture = await fake.generate();
+  const request = { id: "opening", kind: "keyframe", files: [{ sha256: picture.sha256, label: "keyframe" }], rubric: [{ key: "clean", question: "Is it clean?", weight: 1 }] };
+  overrides["POST judge"] = () => { throw new TypeError("response lost after submit"); };
+  await assert.rejects(fake.stage.judge(request), (error) => error instanceof MediaError && error.code === "network");
+  assert.equal(fake.calls.filter((call) => call === "POST judge").length, 1, "a potentially paid POST is never retried by the client");
+  const held = reservedEntries(readLedger(fake.workdir).entries);
+  assert.deepEqual(held.map((entry) => [entry.kind, entry.cost_usd]), [["judge", JUDGE_USD_PER_CALL]]);
+  assert.equal(readLedger(fake.workdir).totals.usd, 0.077, "the uncertain call still consumes the local cap");
+  await assert.rejects(fake.stage.judge(request), errorCode("video_media_judge_uncertain"));
+  assert.equal(fake.calls.filter((call) => call === "POST judge").length, 1, "a rerun may not spend the same uncertain request again");
+  await assert.rejects(fake.generate({ seed: 2, target: "keyframes/opening-2" }), errorCode("video_media_cap"));
+  assert.equal(fake.calls.filter((call) => call === "POST images").length, 1, "the held judge price remains in the image cap calculation");
 });
 
 test("an image model takes a style reference when the catalog says so; a server from before the field forwards one through Gemini alone", () => {

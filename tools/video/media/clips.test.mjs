@@ -596,7 +596,7 @@ test("a shot that fails every take is left for a prompt fix with the judge's fix
 const TOO_LONG = { code: "video_media_upstream_invalid", detail: "prompt length must be less than 1500" };
 const BLOCKED = { code: "video_media_rejected", detail: "output blocked by the content filter" };
 
-test("a shot every seed is refused for waits for a prompt fix with the provider's refusal, and a rerun once it is taken buys that shot alone", async () => {
+test("a shot whose three paid seeds failed waits for a new seed without rebuying them, then buys that shot alone", async () => {
   const { box, doc, timeline } = prepared();
   await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
   await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
@@ -625,7 +625,7 @@ test("a shot every seed is refused for waits for a prompt fix with the provider'
   assert.match(run.out.stdout, /sea-storm seed 3: sea-storm: output blocked by the content filter; trying another seed\n/);
   assert.match(run.out.stdout, /ERROR sea-storm: no take could be generated: prompt length must be less than 1500; no take could be generated: output blocked by the content filter\n/);
   assert.match(run.out.stdout, /fix the prompts of sea-storm and run clips again/);
-  // Each refusal is booked as a failed job at no cost, and none is left waiting to be picked up.
+  // The provider returned a charge estimate for each refused job, and none is left waiting to be picked up.
   const clips = readLedger(box.workdir).entries.filter((entry) => entry.kind === "clip");
   assert.deepEqual(clips.map((entry) => [entry.id, entry.status, entry.error ?? null]), [
     ["opening", "failed", TOO_LONG.code],
@@ -634,17 +634,22 @@ test("a shot every seed is refused for waits for a prompt fix with the provider'
     ["sea-storm", "failed", TOO_LONG.code],
     ["sea-storm", "failed", BLOCKED.code],
   ]);
-  assert.ok(clips.filter((entry) => entry.status === "failed").every((entry) => entry.cost_usd === 0));
+  assert.deepEqual(
+    clips.filter((entry) => entry.status === "failed").map((entry) => entry.cost_usd),
+    [0, 2, 3, 4].map((index) => site.state.clips[index].seconds * 0.15),
+    "a refused provider job retains its reported charge estimate",
+  );
   assert.deepEqual(readJobs(box.workdir).jobs, {});
 
-  // Once the provider takes the prompt, the rerun buys that shot alone and keeps the other.
+  // A failed paid key cannot be bought again. Once the provider accepts a new seed, the rerun
+  // buys only that shot and keeps the other; seeds 1–3 must never produce another POST.
   refusing = false;
   const fixed = context(box, site.fetchImpl);
-  assert.equal(await main(["clips", "--slug", box.slug, ...shots], fixed.ctx), EXIT.ok, fixed.out.stderr);
+  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "opening,sea-storm", "--takes", "4"], fixed.ctx), EXIT.ok, fixed.out.stderr);
   assert.match(fixed.out.stdout, /opening: kept \(/);
-  assert.deepEqual(site.state.clips.slice(5).map((request) => [request.shot_id, request.seed]), [["sea-storm", 1]]);
+  assert.deepEqual(site.state.clips.slice(5).map((request) => [request.shot_id, request.seed]), [["sea-storm", 4]], "charged failed keys are not submitted twice");
   const after = manifestOf(box, "clips");
-  assert.equal(after.shots["sea-storm"].file, "clips/sea-storm-1.mp4");
+  assert.equal(after.shots["sea-storm"].file, "clips/sea-storm-4.mp4");
   assert.equal(after.shots["sea-storm"].needs_review, false);
   assert.equal(after.shots["sea-storm"].problems, undefined);
   assert.equal(after.shots.opening.sha256, manifest.shots.opening.sha256);
@@ -1079,7 +1084,12 @@ test("clips import --usd is money: refused past the per-video cap before anythin
   const judged = context(box, fetchImpl, outsideQc());
   assert.equal(await main(bring("farewell", farewell, "--usd", "0.25", "--judge"), judged.ctx), EXIT.ok, judged.out.stderr || judged.out.stdout);
   assert.equal(statusReads, 3, "one status read serves the cap check and the judge");
-  assert.deepEqual(heldAtJudge.map((entry) => [entry.id, entry.cost_usd, entry.key, entry.provider, entry.plan, entry.credits, entry.seconds]), [["farewell", 0.25, `import:farewell:${SHA(MP4("paid farewell"))}`, "hailuo-web", "pro", 60, 0]]);
+  const importHold = heldAtJudge.find((entry) => entry.kind === "clip");
+  const judgeHold = heldAtJudge.find((entry) => entry.kind === "judge");
+  assert.equal(heldAtJudge.length, 2, "the import and its judge are both reserved during the paid verdict");
+  assert.deepEqual([importHold.id, importHold.cost_usd, importHold.key, importHold.provider, importHold.plan, importHold.credits, importHold.seconds], ["farewell", 0.25, `import:farewell:${SHA(MP4("paid farewell"))}`, "hailuo-web", "pro", 60, 0]);
+  assert.deepEqual([judgeHold.id, judgeHold.cost_usd, judgeHold.provider], ["farewell", 0.01, "gemini"]);
+  assert.match(judgeHold.key, /^[0-9a-f]{16}$/);
   ledger = readLedger(box.workdir);
   assert.deepEqual([ledger.totals.usd, ledger.totals.judge_calls, ledger.totals.reservations], [0.76, 1, 0]);
   assert.deepEqual(importedTotals(ledger.entries), { clips: 2, clip_seconds: 16, credits: 120, usd: 0.75 });
