@@ -5287,6 +5287,18 @@ PASS is DURATION_ONLY for the two rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1508 pilot budget call accounting increment: 1 file (2026-10-15)
+
+Reviewer: `codex-pr-review-1508-duration`. Author: `codex-story-budget-cap`. Scope: DURATION_ONLY for `apps/api/app/video_automation/judge.py` at branch head `152c5d286949860c97840dcd8d33da14f5401de5`. The reviewer did not write the implementation. The merge base with current origin/main is `7bf6278d6548707606eb55dbe37fba1006f3774d`; main later advanced to `9306ac4c114f960ead4c3d89464c7944a1aa82c2` (#1506), which changed no registered duration-review file or receipt.
+
+Baseline: the SHA-256 of `git show 7bf6278d6548707606eb55dbe37fba1006f3774d:apps/api/app/video_automation/judge.py` is `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7`, exactly the existing review.json binding and table row. The working-tree file equals HEAD and hashes to `b775f630da8156ff293ded7e9574d7b74c66b96dcb8cbe58ec3ef176f0ebb2f8`. Before this increment, `node tools/video/long-form/cli.mjs check` reported only this stale binding. The other 107 bindings remain current; the registry still has 108 paths. All three relevant files use LF in the index and working tree.
+
+Findings: the 21 additions and seven deletions in judge.py pass a usage callback through the Jev outline and policy judges, and disable an automatic 429/529 retry when a pilot reservation covers the call. They do not change a prompt, outline option, policy question, video stage, target, chapter, measured runtime, frame count, pace, padding or body floor. No added or removed line contains a duration identifier (`target_minutes`, `MIN_EPISODE`, `VIDEO_MIN_EPISODE_MINUTES`, `duration`, `seconds`, `minutes`, `frames`, `runtime`, `pace` or `padding`). The unchanged duration implementation and its existing tests retain their prior bindings. The review covers the duration effect of this delta only; it does not assess the budget amount, vendor receipts, paid-call safety, film quality or production readiness.
+
+Ran: the merge-base and HEAD byte hashes against review.json and the table; `git diff 7bf6278d6548707606eb55dbe37fba1006f3774d HEAD -- apps/api/app/video_automation/judge.py`; the registered-file intersection; `git ls-files --eol`; and the pre-increment CLI check. The CLI check and `node --test tools/video/long-form/review.test.mjs` are run again after rebinding, with their results reported in the hand-off. No video was generated or measured for this review.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -5298,7 +5310,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `.agents/skills/youtube-video/references/formats.md` | `b27b230728c1c6513fd4567cdba04797f552fd920bed33833ae9f97b70d74087` |
 | `.claude/skills/youtube-video/SKILL.md` | `f852e9fa4b283a73152003793daba1d42a2cab14d2b7f9fb16ee68e48edbb726` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
-| `apps/api/app/video_automation/judge.py` | `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7` |
+| `apps/api/app/video_automation/judge.py` | `b775f630da8156ff293ded7e9574d7b74c66b96dcb8cbe58ec3ef176f0ebb2f8` |
 | `apps/api/app/video_automation/models.py` | `e8351836b3d09a939c31f18501ba3e160e98706e327a1172cc35170fc76b9ccc` |
 | `apps/api/app/video_automation/schemas.py` | `4247c4bbbb118d14bc4cd90358d129843936f17fbc3e1cff0217d461ce02d70d` |
 | `apps/api/app/video_automation/series.py` | `cb9d3e01465a6f072d44fdcedae659f538686a634a03351171f8f67d8bfaa155` |
