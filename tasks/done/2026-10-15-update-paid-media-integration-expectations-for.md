@@ -1,13 +1,13 @@
 ---
 id: 2026-10-15-update-paid-media-integration-expectations-for
 title: Update paid media integration expectations for reserved judge cost
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: codex-gpt6-h09-ci
 claimed_at: 2026-10-15T01:34:17Z
 created_at: 2026-10-15T01:33:36Z
-completed_at:
+completed_at: 2026-10-15T02:19:27Z
 branch: codex/curio-h09-earhart-20261015
 depends_on: []
 scope:
@@ -23,13 +23,13 @@ H09 PR #1503 added a reservation for each paid media judge call. Linux CI on com
 
 ## Definition of done
 
-- [ ] The existing look/keyframes rerun tests pass without relaxing their rejudge counts, and the clip tests prove failed provider jobs and concurrent import/judge reservations are accounted for.
+- [x] The existing look/keyframes rerun tests pass without relaxing their rejudge counts, and the clip tests prove failed provider jobs and concurrent import/judge reservations are accounted for.
 
 ## Steps
 
 - [x] Check that no active task or PR owns either integration test file, then claim this narrow task.
 - [x] Update only stale clip ledger expectations; preserve the look/keyframes behavior assertions.
-- [ ] Rerun the affected tests on Linux CI after the production fix, and resolve any remaining real regression.
+- [x] Rerun the affected tests on Linux CI after the production fix, and resolve any remaining real regression.
 
 ## How to verify
 
@@ -40,3 +40,5 @@ H09 PR #1503 added a reservation for each paid media judge call. Linux CI on com
 The initial 5800dd6c2 Linux `web-checks`, `smoke`, and `video-tests` failures reproduced the same six assertions. `clips.test.mjs:637` assumed a provider job that later failed had zero cost, although its status response supplied a positive `usd_estimate`. `clips.test.mjs:1082` assumed only the imported clip was reserved while judging, but the new judge reservation is also live during that call. The original look/keyframes assertions were retained; the paired stage fix allows a fresh paid rejudge with a distinct repeat key and keeps uncertain reservations blocked. The local Windows Node test runner exits at the file level without assertion diagnostics, so Linux CI is the decisive check.
 
 The next Linux smoke run at b44dde2c3 reached the rerun section of the paid refusal test: the first three seeds had booked positive failed-job estimates, so the new guard correctly refused to submit those same keys again. The test now asks for seed 4 and asserts that it is the only new provider POST. The same run also reported the independent long-form duration review binding as stale because `clips.test.mjs` changed; that review artifact is owned outside this task and needs its own scoped renewal.
+
+Linux `video-tests` on exact PR head 8cd022593 showed green checkmarks for the paid failed-seed rerun, clip import cap/hold, clip proxy judge, and both Pro-to-Flash-to-Pro look/keyframes rejudge cases. Its only failing test was the separate long-form duration receipt binding, which was subsequently renewed under another scoped task. The integration expectations in this ticket are complete.
