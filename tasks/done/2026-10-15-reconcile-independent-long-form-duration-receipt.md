@@ -1,13 +1,13 @@
 ---
 id: 2026-10-15-reconcile-independent-long-form-duration-receipt
 title: Reconcile independent long-form duration receipt after H09 main sync
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-gpt6-h09-independent-duration-review
 claimed_at: 2026-10-15T08:36:29Z
 created_at: 2026-10-15T08:35:46Z
-completed_at:
+completed_at: 2026-10-15T09:46:55Z
 branch: codex/curio-h09-earhart-20261015
 depends_on: []
 scope:
@@ -23,7 +23,7 @@ Draft PR #1503 for Curio H09 and the newer main branch both changed the SHA-256-
 
 ## Definition of done
 
-- [ ] The merged report retains both branches' review history, its 108 table rows match the merged source bytes, and `review.json` binds that exact report with an independent reviewer identity. The duration CLI and review regression test pass.
+- [x] The merged report retains both branches' review history, its 108 table rows match the merged source bytes, and `review.json` binds that exact report with an independent reviewer identity. The duration CLI and review regression test pass.
 
 ## Steps
 
@@ -43,4 +43,4 @@ The H09 and main receipts each list the same 108 paths. Seven hashes differ: mai
 
 After the H09 author stabilized the media conflict, the merged source tree contained 101 bindings shared by both parents, six main-only reviewed hashes and one H09-only reviewed hash; no bound file had novel bytes. The main preset sets a 10-minute story target while its earlier duration review retains the measured 480-second narration and final-video floors. The H09-only clips test changes paid-failure and fresh-seed expectations, not clip-duration implementation. The new report preserves all ten side-specific sections, adds a DURATION_ONLY merge follow-up and has SHA-256 `72553bd4a18ef5f0d3991f99da91670d9e3f9afeb3dee1d99eadaaacbc99a950`; `review.json` has SHA-256 `dcd26fd9440106ce68aa8f96d49cf6431f002d4929578e5b944cac952a6c094b`. Both files have LF with no CR.
 
-Verification in the unresolved merge tree: `node tools/video/long-form/cli.mjs check` passed all 473 plans; `node --test tools/video/long-form/review.test.mjs` passed 2/2; `git diff --check -- docs/videos/long-form/review.md docs/videos/long-form/review.json` passed; `npm run check:tasks` exited 0 with warnings about unrelated and inherited main-branch active scope overlaps. The H09 author has the file hashes and will stage these two files in the single merge commit. This ticket remains in progress until that commit is recorded.
+Verification in the unresolved merge tree: `node tools/video/long-form/cli.mjs check` passed all 473 plans; `node --test tools/video/long-form/review.test.mjs` passed 2/2; `git diff --check -- docs/videos/long-form/review.md docs/videos/long-form/review.json` passed; `npm run check:tasks` exited 0 with warnings about unrelated and inherited main-branch active scope overlaps. The H09 author staged the reviewed files in merge commit `9a48a8c0f` and subsequently pushed CI fix `ce0ed5c83`; the author reported 23/23 checks green at the exact head. The independent receipt hashes remained unchanged.

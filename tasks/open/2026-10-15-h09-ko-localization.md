@@ -4,8 +4,8 @@ title: Localize Curio H09 Korean metadata and captions
 status: in-progress
 priority: P2
 area: docs
-owner: codex-gpt6-curio-h09-ko
-claimed_at: 2026-10-15T08:20:25Z
+owner: codex-gpt6-curio-h09
+claimed_at: 2026-10-15T10:45:58Z
 created_at: 2026-10-15T08:17:21Z
 completed_at:
 branch: codex/curio-h09-earhart-20261015
@@ -49,3 +49,7 @@ With `VIDEO_WORKDIR` set to the media root containing `curio-h09`:
 - The corrected metadata uses the current Chinese description source. Fresh `i18n-sheet` reports zero pending entries; `i18n-merge` wrote all 100 lines without problems. Video lint returned 0 errors and the same three warnings about unchanged Chinese pacing/hooks; `npm run check:tasks` passed with unrelated existing board warnings.
 - No paid model, TTS, external QA, caption render, or Korean dub was run for this localization step.
 - Final independent Korean re-review: READY. The reviewer confirmed 100/100 unique IDs, zero lines above max_chars, and resolution of all factual, register, proper-name, and metadata findings. The task remains in progress for the coordinator's final language-package dry run and commit.
+
+- 2026-10-15 coordinator continuation: the owner explicitly replied "同意移交韓語檔案" for this narrow scope; --force claim transferred it from the ended Korean subtask to codex-gpt6-curio-h09. Initial audio QA retained 14 flags. Five evidence-backed rewrites clarify 13 specimens of bones/fragments, later in the same year, bones unavailable for re-examination, the lagoon versus deep sea off Howland, and the distinction between reaching the island and identifying its object. The fresh worksheet was regenerated before merge; dry run confirms only five stale clips / 175 characters, zero unfit windows. Targeted synthesis is running; the other 95 takes are preserved.
+
+- Final targeted-rewrite independent review by h09_retake_text_audit: PASS. Compared 5 changed lines against HEAD, Chinese source and surrounding context; no remaining material issue in facts, uncertainty or naturalness. Current translation SHA-256: BF7132AC422DDB0F8B3D57E96EF1F2E907B8600D6EF8EAF966A77364ACFA2FBE. This is a text review only, not audio acceptance.

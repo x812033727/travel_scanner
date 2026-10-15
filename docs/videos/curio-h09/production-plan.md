@@ -1,6 +1,6 @@
 # 奇聞檔案局 H09｜製作與關卡
 
-狀態：更新版大綱 A 已核准。Colorado（BB-45）的艦種已由「巡洋艦」更正為「戰艦」；正式 `script.md` SHA-256 `E9404ADD9954E66AA6C26FC3725D7C0ABD09D91B9E571ED2631C152E4579633C` 經獨立史料與十三題敘事收據通過，後台已讀回站主核准。B06 單句重錄後的時間軸 SHA-256 `69E3FF3DC95E6EF3811044DC765EEEEEE79D02E28F2F829C68B95171A2691BC2` 也已讀回站主核准。插畫 92／92 鏡有 selected image，0 鏡 `needs_review`；四頁分鏡聯絡表已由站主在 `/admin/videos` 核准，`review-pull` 綁定 manifest SHA-256 `4E8D778DEDB8A67816E37E11304A9028A5C021C7F8513AB2153B9F47C0654FFA`。字卡與縮圖已渲染，92 鏡皆是零購買片段的靜圖慢運鏡。繁中成片與 111 條字幕已完成，獨立抽看通過；站主已在後台核准 `final.mp4` SHA-256 `BE7FC71416AFBBF84BD228470FAAE4CBA9AD47D803FD2CEE3C00A7AD04E5F956`。英、日、韓標題說明、字幕及配音均已由站主勾選；三語翻譯與獨立審稿已完成，站主已另授權多語配音與音訊 QA，新增 US$2.00 估算停手上限；付費製作尚未開始。H09 專屬 `STOP` 已恢復；圖片帳本 US$2.403、零預留。站主授權繁中旁白、音訊 QA、插畫合計 US$4.50 估算停手上限，不含多語或上傳；圖片與評審的本集執行上限為 US$3.80。
+狀態：更新版大綱 A 已核准。Colorado（BB-45）的艦種已由「巡洋艦」更正為「戰艦」；正式 `script.md` SHA-256 `E9404ADD9954E66AA6C26FC3725D7C0ABD09D91B9E571ED2631C152E4579633C` 經獨立史料與十三題敘事收據通過，後台已讀回站主核准。B06 單句重錄後的時間軸 SHA-256 `69E3FF3DC95E6EF3811044DC765EEEEEE79D02E28F2F829C68B95171A2691BC2` 也已讀回站主核准。插畫 92／92 鏡有 selected image，0 鏡 `needs_review`；四頁分鏡聯絡表已由站主在 `/admin/videos` 核准，`review-pull` 綁定 manifest SHA-256 `4E8D778DEDB8A67816E37E11304A9028A5C021C7F8513AB2153B9F47C0654FFA`。字卡與縮圖已渲染，92 鏡皆是零購買片段的靜圖慢運鏡。繁中成片與 111 條字幕已完成，獨立抽看通過；站主已在後台核准 `final.mp4` SHA-256 `BE7FC71416AFBBF84BD228470FAAE4CBA9AD47D803FD2CEE3C00A7AD04E5F956`。英、日、韓標題說明、字幕及配音均已由站主勾選；三語翻譯與獨立審稿已完成，站主已另授權多語配音與音訊 QA，新增 US$2.00 估算停手上限；日語新版已合成、完成增量 QA 並由站主試聽接受；韓語五句定向重錄與增量 QA 已完成，九句殘餘旗標待站主試聽；英語音軌已合成，完整音訊 QA 尚在執行。H09 專屬 `STOP` 已恢復；圖片帳本 US$2.403、零預留。站主授權繁中旁白、音訊 QA、插畫合計 US$4.50 估算停手上限，不含多語或上傳；圖片與評審的本集執行上限為 US$3.80。
 
 ## 作品規格
 
@@ -33,6 +33,8 @@
 站主於 2026-10-15 另行授權將 H09 的英、日、韓文稿送 Gemini 配音與轉寫，並用 TypeSafe Jev 判讀音訊差異；多語新增 US$2.00 為**估算停手上限**，與原繁中旁白／QA／插畫 US$4.50 合計規劃上限 US$6.50，不含上傳。三語文稿已獨立審稿、來源雜湊有效；合併 main 後的乾跑分別為 7,146、3,236、3,244 計費字元，合計 13,626，18／300 句估需不超過 1.15 倍加速，0 句無法塞入時槽。這些不是實際供應商發票或最高計費量。
 
 多語 `dub` 與 `check-audio` 沒有 H09 專屬美元硬上限。每次只執行一個語言，先確認本集 `STOP` 與配音服務狀態，再暫時移開 `STOP`；每語完成後恢復 `STOP`，核對快取、時槽、轉寫旗標與累計費用估算。若估計會超過新增 US$2.00、帳單／回應不明、或出現不確定的付費工作，立即停手並留下原有快取與 hold。舊的繁中成片核准不代替外語音軌試聽及後台語言關卡。
+
+2026-10-15 多語執行中收據：日語首輪 100 句／3,236 計費字元，第一次定向重錄 14 句／466 字元，再修正 ALI 正式名稱 1 句／42 字元；新版實測 4／100 時槽需加速，最高 1.12 倍，零超時。新版 check-audio 為 63 句逐字、19 句 Jev 接受、9 句由第二轉寫清除、9 句殘餘旗標。站主已在本對話回覆「日語旁白可以」，本機 review/dub-ja-owner-acceptance.json 綁定音軌 SHA-256 4f091b943757ba5005d3814a893a3ea25bce08074352272dc16aafdcddc9b695 與九句逐句錄音；原 QA flags 保留，人工接受不冒記為 Jev 全過、主旁白關卡或 Studio 已上傳。韓語首輪 100 句／3,244 字元，QA 為 68 句逐字、9 句 Jev 接受、9 句由第二轉寫清除、14 句旗標；取得站主韓語檔案移交授權後，只修有據的五句，乾跑 5 次／175 字元、零超時，定向合成已完成且 100／100 時槽無加速、無超時。新版韓語 QA 為 72 句逐字、10 句 Jev 接受、9 句由第二轉寫清除、9 句殘餘旗標；五句新錄音全部獲自動接受。review/dub-ko.html 已交站主試聽，綁定音軌 SHA-256 5b0f7422a759a820c10acfcf06893fbfe2a32e656d6d3a66a21fa9137f7748f3。英語 100 次／7,146 字元已合成，100 時槽無加速、無超時；第一套轉寫 73 句逐字、27 句經 Jev 判讀，其中 20 句正做離線第二轉寫。每一付費階段結束都恢復 H09 STOP，本機候選交付包已建立；英語音訊 QA 與韓語站主試聽完成前，仍不視為全部音訊已驗收。
 
 ## 路線與安全邊界
 
@@ -72,3 +74,15 @@
 - 2026-10-15 站主核准新版音訊，`review-pull --gate audio` 於 `2026-10-15T04:00:39.431Z` 記錄 `timeline.json` SHA-256 `69E3FF3DC95E6EF3811044DC765EEEEEE79D02E28F2F829C68B95171A2691BC2`，與本機檔案一致。定向重畫兩處山地、第一張未完成的搜索機鏡頭及水上飛機鏡頭，再把兩張因圖中字樣未過自動評審的鏡頭改成無帽無線電員與簡化位置線，現行 `video.json` SHA-256 `2B84A62E17B47FA7B5BC8905CD9E01D148A619FF348610318E15E2AD87F39389`；28 鏡均有 selected image、0 鏡 `needs_review`。已選水上飛機圖仍是概念性示意，浮筒及一個極小輪點不完全符合 O3U 史照，待完整分鏡一併讓站主檢視；未宣稱它是精確機型復原。媒體帳本 59 張圖與 59 次評審 US$0.7965、零預留；剩餘 64 鏡未製作，分鏡與成片未送審。
 - 2026-10-15 全片插畫、分鏡與本機剪輯起點：`video.json` 最終畫面提示詞 SHA-256 `72E29DCF4C62A2C58B7F1AE6B701FBD7DDD7FBD2467687A370A3C436B822C1A7`，正式劇本 E940 與音訊時間軸 69E3 均未改。全 92 鏡 selected image、0 `needs_review`，四頁聯絡表經獨立逐頁檢查及站主檢視，後台 `review-pull --gate storyboard` 在 `2026-10-15T05:43:44.681Z` 讀回 manifest SHA-256 `4E8D778DEDB8A67816E37E11304A9028A5C021C7F8513AB2153B9F47C0654FFA` 的核准。帳本 178 圖／178 評審、US$2.403、零預留；一次逾時請求經兩次正式站唯讀查無工作後才釋放單筆預留並定向重送，詳見 `visual-qa.md`。Purdue／PRF 於 05:15 UTC 再查，最新可見仍是 10／14 調查開始公告，尚無確證殘骸，劇本「截至十月十四日」不需變動。`render` 已產 8 張字卡／縮圖狀態；`clips --dry-run` 確認 92 張皆為 still、0 段需買，實跑產生 92 筆靜圖 clip manifest、0 付費片段。`music --dry-run` 顯示此集沒有設定音樂，未啟動配樂服務。此檢查點本機 `assemble` 尚在進行；完成結果另記於下一條。
 - 2026-10-15 繁中成片與字幕：`assemble` exit 0，100／100 片段、20,493 影格、`checks.json` 的 `ok=true` 且 `problems=[]`；1920×1080、30 fps H.264 與 48 kHz 雙聲道 AAC，片長 683.100 秒（11:23.1），音量 −14 LUFS、true peak −0.9 dBFS，片頭在 58.80 秒。`final.mp4` SHA-256 `BE7FC71416AFBBF84BD228470FAAE4CBA9AD47D803FD2CEE3C00A7AD04E5F956`；`STOP` 已恢復。`captions` 本機產出繁中 111 條 SRT，開頭 00:00、最後一條結束於 11:00.687，核准的 `timeline.json` SHA-256 仍為 `69E3FF3DC95E6EF3811044DC765EEEEEE79D02E28F2F829C68B95171A2691BC2`。本機 lint 0 錯誤、原有 3 項啟發式提醒；`npm run check:tasks` 通過；`npm run test:docs-videos` 214／215 通過，唯一失敗是先前已見的 Windows `imported-long-languages` 子程序 exit `3221226505`、沒有診斷輸出。獨立抽看對整部聲畫完整解碼，核對片頭／旁白對齊、2024 深海聲納與 2026 Taraia、未來探測的條件語氣及片尾，未見空白、裁切或錯誤發現宣稱；最終 QA／站主成片核准尚未完成。
+
+## 多語交付前再查與檢查（2026-10-15）
+
+- 再查 Purdue 官方 Earhart 專題最新仍為 2026-10-14 的水下測勘開始公告，未查到已確認 Electra 殘骸的官方結果；現行稿保留「截至十月十四日」及尚未定案的結尾。來源：https://www.purdue.edu/newsroom/2026/Q4/earhart-expedition-update-underwater-survey-of-taraia-object-begins/ 。
+- 本輪 lint：0 errors、3 個未改繁中鏡頭／敘事啟發式 warnings；long-form check：473 plans PASS。check:tasks：1911 files PASS，只有既有其他票的認領／範圍警告。
+- 本輪 test:docs-videos：214／215 PASS；唯一失敗仍是 imported-long-languages/runner.test.mjs 的 package-runtime.mjs Windows 子行程以 3221226505 結束，無 stdout/stderr。沒有將此環境問題記為全綠，也沒有為本次文案變更修改共用工具。完整紀錄留於本機 review/docs-videos-multilingual-20261015.log。
+
+### 本機多語候選交付包
+
+- 已產生繁中 111、英文 130、日文 148、韓文 140 條字幕；三個外語均使用各自 dub 時間軸。英語原有三條每秒 20.4–22.1 字的閱讀速度問題，獨立覆核後僅延長末尾至同鏡現有停頓：cue30 +243ms、cue71 +100ms、cue127 +110ms。文字與開始時間未改；四語實際 SRT 重新 parse/checkCues 均零問題。原始 manifest/SRT/VTT 保存在 review/captions-before-en-timing-20261015，調整收據在 review/captions-en-timing-20261015.json；不得把原產生器結果描述成原本通過。再跑 captions 會覆蓋此調時，須重新驗收。
+- package 4／4 PASS：四語字幕及標題說明、三條 current 配音，每條 683.100 秒、AAC 48kHz 雙聲道；metadata.json SHA-256 132a7512ea926c2075f686648caf39625e87777df1a1f0e6e2558782086f8904。獨立核對成片、預設縮圖、四份 SRT 與三條配音的來源及 upload 雜湊全部吻合。此為本機結構驗收；韓語試聽及英語完整 QA 仍待完成，尚未送 publish/languages 審核、尚未上傳 YouTube。
+- 使用已核准的共用縮圖。三語縮圖文字其實完整；frames manifest 早於翻譯，語系縮圖未渲染，故 package 顯示的「沒有縮圖文字」為舊診斷。選定的 metadata/captions/dub 交付範圍允許沿用預設縮圖。字幕 freshness 與縮圖舊診斷分別已開未認領追蹤票，未在本集製作中改共用工具。
