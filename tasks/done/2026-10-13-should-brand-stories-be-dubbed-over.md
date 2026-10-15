@@ -1,13 +1,13 @@
 ---
 id: 2026-10-13-should-brand-stories-be-dubbed-over
 title: Owner decision: may a brand story be dubbed over its burned-in zh-TW subtitles
-status: in-progress
+status: done
 priority: P2
 area: meta
 owner: codex-gpt6
 claimed_at: 2026-10-15T13:19:17Z
 created_at: 2026-10-13T13:07:39Z
-completed_at:
+completed_at: 2026-10-15T13:24:01Z
 branch: codex/brand-story-switchable-cc-dubs-20261015
 depends_on:
   - 2026-10-13-dub-narrator-only-explainer-dramas-tool
@@ -136,6 +136,8 @@ smoke; two API shards failed. The native-anime test's scalar mock needed the new
 answer, and a drama Short detail should skip the irrelevant long-series lookup because Shorts
 are ineligible for dubbing. Those fixes pass 198 review/anime/Shorts tests, scoped Ruff/mypy.
 The task was reopened under its existing owner; the added anime test path has no active claim.
+Independent follow-up review found no actionable issue and rebound both changed duration files
+in 8c802be66; all 473 plans and the two receipt tests pass.
 
 The fresh authorized host preflight could not connect: hostinger2 timed out before any remote
 output. Public website returned HTTP 200. Authenticated admin UI shows the deployment feature
