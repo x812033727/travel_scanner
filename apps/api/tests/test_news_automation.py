@@ -27,6 +27,7 @@ from sqlalchemy.ext.asyncio import (
 from sqlalchemy.pool import NullPool
 
 import app.news_automation as news_automation_package
+import app.news_automation.fetch as fetch_module
 from app.config import get_settings
 from app.db import Base
 from app.guides.schemas import GuideDocument
@@ -75,6 +76,19 @@ from app.problems import AppError
 # Sources in these tests have been scanned before: a first scan only records its listing
 # as seen (scanner.BASELINE), which test_a_new_source_s_first_scan_files_only_fresh_entries covers.
 SCANNED_BEFORE = datetime(2026, 1, 1, tzinfo=UTC)
+
+
+def test_cross_category_title_screen_uses_event_cues_for_ambiguous_cjk() -> None:
+    from app.news_automation.duplicates import _cross_title_match
+
+    assert _cross_title_match(
+        "Meta 推出 Muse Wonder 與 Wonder Full 模型",
+        "Meta 發布 Muse Wonder 和 Wonder Full AI 模型",
+    ) is not None
+    assert _cross_title_match(
+        "Meta 調降 Muse Wonder API 價格",
+        "Meta 發布 Muse Wonder 和 Wonder Full AI 模型",
+    ) is None
 
 
 def test_feed_json_and_configured_html_parsers_are_bounded() -> None:
@@ -221,6 +235,221 @@ async def test_safe_fetcher_checks_redirect_robots_and_stream_size() -> None:
     with pytest.raises(UnsafeNewsUrl, match="too large"):
         await oversized_fetcher.fetch("https://example.com/feed", allowed_hosts={"example.com"})
     await client.aclose()
+
+
+@pytest.mark.asyncio
+async def test_safe_fetcher_retries_cloudflare_challenge_with_pinned_standard_tls(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    fallback_requests: list[tuple[str, str, dict[str, str], float]] = []
+
+    def challenged(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            403, headers={"cf-mitigated": "challenge"}, request=request
+        )
+
+    def fallback(
+        url: str, ip: str, headers: dict[str, str], timeout: float
+    ) -> httpx.Response:
+        fallback_requests.append((url, ip, headers, timeout))
+        body = b"User-agent: *\nAllow: /" if url.endswith("/robots.txt") else b"<rss></rss>"
+        content_type = "text/plain" if url.endswith("/robots.txt") else "application/rss+xml"
+        return httpx.Response(
+            200,
+            content=body,
+            headers={"content-type": content_type},
+            request=httpx.Request("GET", url),
+        )
+
+    monkeypatch.setattr(fetch_module, "_request_without_alpn", fallback)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(challenged))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    # Keep the mock HTTP request seam while exercising the production-only fallback.
+    fetcher._external_client = None
+    result = await fetcher.fetch("https://example.com/feed", allowed_hosts={"example.com"})
+    assert result.body == b"<rss></rss>"
+    assert [row[0] for row in fallback_requests] == [
+        "https://example.com/robots.txt",
+        "https://example.com/feed",
+    ]
+    assert all(row[1] == "93.184.216.34" for row in fallback_requests)
+    assert all(row[3] == 20.0 for row in fallback_requests)
+    await client.aclose()
+
+
+@pytest.mark.asyncio
+async def test_cloudflare_fallback_retries_rate_limit_but_not_plain_refusal(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    statuses = [429, 200, 200]
+
+    def challenged(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(403, headers={"cf-mitigated": "challenge"}, request=request)
+
+    def fallback(
+        url: str, ip: str, headers: dict[str, str], timeout: float
+    ) -> httpx.Response:
+        status = statuses.pop(0)
+        return httpx.Response(
+            status,
+            content=b"User-agent: *\nAllow: /" if url.endswith("/robots.txt") else b"<rss/>",
+            headers={"content-type": "application/rss+xml"},
+            request=httpx.Request("GET", url),
+        )
+
+    monkeypatch.setattr(fetch_module, "_request_without_alpn", fallback)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(challenged))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    fetcher._external_client = None
+    fetcher._rate_limit = AsyncMock()
+    result = await fetcher.fetch("https://example.com/feed", allowed_hosts={"example.com"})
+    assert result.body == b"<rss/>" and statuses == []
+    await client.aclose()
+
+    calls = 0
+
+    def plain_refusal(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(403, request=request)
+
+    def forbidden_fallback(*args: object) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        raise AssertionError("plain 403 must not use the alternate transport")
+
+    monkeypatch.setattr(fetch_module, "_request_without_alpn", forbidden_fallback)
+    plain_client = httpx.AsyncClient(transport=httpx.MockTransport(plain_refusal))
+    plain_fetcher = SafeNewsFetcher(
+        client=plain_client, resolver=lambda _host: _resolved("93.184.216.34")
+    )
+    plain_fetcher._external_client = None
+    with pytest.raises(UnsafeNewsUrl, match="robots.txt"):
+        await plain_fetcher.fetch("https://example.com/feed", allowed_hosts={"example.com"})
+    assert calls == 0
+    await plain_client.aclose()
+
+
+def test_pinned_standard_tls_uses_checked_ip_and_original_hostname(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    plain = Mock()
+    context = Mock()
+    wrapped = Mock()
+    context.wrap_socket.return_value = wrapped
+    create_connection = Mock(return_value=plain)
+    monkeypatch.setattr(fetch_module, "tls_context", lambda: context)
+    monkeypatch.setattr("app.news_automation.fetch.socket.create_connection", create_connection)
+    connection = fetch_module._PinnedHTTPSConnection(
+        "example.com", "93.184.216.34", timeout=7.0
+    )
+    connection.connect()
+    create_connection.assert_called_once_with(("93.184.216.34", 443), timeout=7.0)
+    context.wrap_socket.assert_called_once_with(plain, server_hostname="example.com")
+    assert connection.sock is wrapped
+
+
+def test_pinned_standard_tls_response_is_bounded_and_does_not_follow_redirects(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    class FakeReply:
+        status = 302
+
+        def __init__(self, body: bytes) -> None:
+            self._body = body
+            self.closed = False
+
+        def getheaders(self) -> list[tuple[str, str]]:
+            return [("Location", "https://evil.example/private"), ("Content-Type", "text/html")]
+
+        def getheader(self, name: str) -> str | None:
+            return None
+
+        def read(self, _: int) -> bytes:
+            body, self._body = self._body, b""
+            return body
+
+        def close(self) -> None:
+            self.closed = True
+
+    reply = FakeReply(b"redirect")
+    connection = Mock()
+    connection.getresponse.return_value = reply
+    monkeypatch.setattr(fetch_module, "_PinnedHTTPSConnection", lambda *args, **kwargs: connection)
+    response = fetch_module._request_without_alpn(
+        "https://example.com/feed", "93.184.216.34", {}, 5.0
+    )
+    assert response.status_code == 302
+    assert reply.closed
+    assert response.headers["location"] == "https://evil.example/private"
+    connection.request.assert_called_once()
+    assert connection.request.call_args.args[:2] == ("GET", "/feed")
+    assert connection.request.call_args.kwargs["headers"]["Accept-Encoding"] == "identity"
+
+    fetch_module._request_without_alpn("https://example.com/新聞?q=數學", "93.184.216.34", {}, 5.0)
+    assert connection.request.call_args.args[:2] == (
+        "GET", "/%E6%96%B0%E8%81%9E?q=%E6%95%B8%E5%AD%B8"
+    )
+
+    oversized_reply = FakeReply(b"x" * (MAX_RESPONSE_BYTES + 1))
+    connection.getresponse.return_value = oversized_reply
+    with pytest.raises(UnsafeNewsUrl, match="too large"):
+        fetch_module._request_without_alpn(
+            "https://example.com/feed", "93.184.216.34", {}, 5.0
+        )
+    assert oversized_reply.closed
+
+    class DeclaredOversizedReply(FakeReply):
+        def getheader(self, name: str) -> str | None:
+            if name.casefold() == "content-length":
+                return str(MAX_RESPONSE_BYTES + 1)
+            if name.casefold() == "connection":
+                return "close"
+            return None
+
+        def read(self, _: int) -> bytes:
+            raise AssertionError("oversized response should not be read")
+
+    early_rejected_reply = DeclaredOversizedReply(b"")
+    connection.getresponse.return_value = early_rejected_reply
+    with pytest.raises(UnsafeNewsUrl, match="too large"):
+        fetch_module._request_without_alpn(
+            "https://example.com/feed", "93.184.216.34", {}, 5.0
+        )
+    assert early_rejected_reply.closed
+
+
+def test_pinned_standard_tls_request_has_a_total_deadline(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from threading import Event
+
+    stopped = Event()
+
+    class StalledReply:
+        status = 200
+
+        def getheaders(self) -> list[tuple[str, str]]:
+            return []
+
+        def getheader(self, name: str) -> str | None:
+            return None
+
+        def read(self, _: int) -> bytes:
+            if not stopped.wait(1.0):
+                raise AssertionError("the total deadline did not interrupt the read")
+            raise TimeoutError("interrupted by deadline")
+
+        def close(self) -> None:
+            pass
+
+    connection = Mock()
+    connection.getresponse.return_value = StalledReply()
+    connection.abort.side_effect = stopped.set
+    monkeypatch.setattr(fetch_module, "_PinnedHTTPSConnection", lambda *args, **kwargs: connection)
+    with pytest.raises(httpx.TransportError, match="publisher HTTPS request failed"):
+        fetch_module._request_without_alpn(
+            "https://example.com/feed", "93.184.216.34", {}, 0.05
+        )
+    assert stopped.is_set()
 
 
 @pytest.mark.asyncio
