@@ -1,6 +1,6 @@
 # 奇聞檔案局 H09｜製作與關卡
 
-狀態：更新版大綱 A 已核准。Colorado（BB-45）的艦種已由「巡洋艦」更正為「戰艦」；正式 `script.md` SHA-256 `E9404ADD9954E66AA6C26FC3725D7C0ABD09D91B9E571ED2631C152E4579633C` 經獨立史料與十三題敘事收據通過，後台已讀回站主核准。B06 單句重錄後的時間軸 SHA-256 `69E3FF3DC95E6EF3811044DC765EEEEEE79D02E28F2F829C68B95171A2691BC2` 也已讀回站主核准。插畫 92／92 鏡有 selected image，0 鏡 `needs_review`；四頁分鏡聯絡表已由站主在 `/admin/videos` 核准，`review-pull` 綁定 manifest SHA-256 `4E8D778DEDB8A67816E37E11304A9028A5C021C7F8513AB2153B9F47C0654FFA`。字卡與縮圖已渲染，92 鏡皆是零購買片段的靜圖慢運鏡。繁中成片與 111 條字幕已完成，獨立抽看通過；站主已在後台核准 `final.mp4` SHA-256 `BE7FC71416AFBBF84BD228470FAAE4CBA9AD47D803FD2CEE3C00A7AD04E5F956`。英、日、韓標題說明、字幕及配音均已由站主勾選；三語翻譯與獨立審稿已完成，站主已另授權多語配音與音訊 QA，新增 US$2.00 估算停手上限；日語新版已合成、完成增量 QA 並由站主試聽接受；韓語五句定向重錄與增量 QA 已完成，九句殘餘旗標待站主試聽；英語完整 QA 與兩句定向重錄已完成，十二句殘餘旗標待站主試聽。上傳包及英日韓語言批次已送至後台，兩張卡均待站主；22 筆附件的後台雜湊與大小已核對。H09 專屬 `STOP` 已恢復；圖片帳本 US$2.403、零預留。站主授權繁中旁白、音訊 QA、插畫合計 US$4.50 估算停手上限，不含多語或上傳；圖片與評審的本集執行上限為 US$3.80。
+狀態：更新版大綱 A 已核准。Colorado（BB-45）的艦種已由「巡洋艦」更正為「戰艦」；正式 `script.md` SHA-256 `E9404ADD9954E66AA6C26FC3725D7C0ABD09D91B9E571ED2631C152E4579633C` 經獨立史料與十三題敘事收據通過，後台已讀回站主核准。B06 單句重錄後的時間軸 SHA-256 `69E3FF3DC95E6EF3811044DC765EEEEEE79D02E28F2F829C68B95171A2691BC2` 也已讀回站主核准。插畫 92／92 鏡有 selected image，0 鏡 `needs_review`；四頁分鏡聯絡表已由站主在 `/admin/videos` 核准，`review-pull` 綁定 manifest SHA-256 `4E8D778DEDB8A67816E37E11304A9028A5C021C7F8513AB2153B9F47C0654FFA`。字卡與縮圖已渲染，92 鏡皆是零購買片段的靜圖慢運鏡。繁中成片與 111 條字幕已完成，獨立抽看通過；站主已在後台核准 `final.mp4` SHA-256 `BE7FC71416AFBBF84BD228470FAAE4CBA9AD47D803FD2CEE3C00A7AD04E5F956`。英、日、韓標題說明、字幕及配音均已由站主勾選；三語翻譯與獨立審稿已完成，站主已另授權多語配音與音訊 QA，新增 US$2.00 估算停手上限；日語新版已合成、完成增量 QA 並由站主試聽接受；韓語五句與英語兩句定向重錄及 QA 均已完成，站主現已試聽接受英語十二句與韓語九句殘餘旗標；三語音訊皆已人工驗收。上傳包及英日韓語言批次已送至後台，兩張卡均待站主；22 筆附件的後台雜湊與大小已核對。H09 專屬 `STOP` 已恢復；圖片帳本 US$2.403、零預留。站主授權繁中旁白、音訊 QA、插畫合計 US$4.50 估算停手上限，不含多語或上傳；圖片與評審的本集執行上限為 US$3.80。
 
 ## 作品規格
 
@@ -104,3 +104,11 @@
 - languages 審核 e8f86dd8-5f83-4602-ba6f-eaa48d27fbe2，manifest SHA-256 f8c24ccb37cdf7837c9e0846a7f4f828ed5353ee0fff17f0e977c71a8f0d0880，讀回 pending。批次綁定上述 publish 與已核准 final fbe2cbf3-21c0-477c-9438-4075f4cc5f01；英日韓 metadata/captions/dub 均表示檔案 ready，不表示人工音質接受或 Studio 已上傳。
 - 逐一讀回 22 筆 review file entries，SHA-256 及大小均與本機現行 upload 或 dub 檔相符。完整收據：本機 review/backend-delivery-20261015.json。後台 ready_to_upload=false，youtube_video_id=null，youtube_publish_at=null；STOP 存在、無 LEASE、speech-journal 空。尚未做後台瀏覽器播放器實測，不把附件雜湊核對描述成實際播放驗證。
 - JA 的人工接受收據仍有效；EN 12 句與 KO 9 句仍待站主試聽。這次「繼續」只作為續作指示，沒有自行記成兩語已聽過。站主接著看上傳包卡，並回覆兩語音質；languages 的「已在 Studio 傳好這些配音」只在真的上傳完成後才可按，不能拿它代替試聽核准。
+
+
+### 製作結案與站主上架交接（2026-10-15）
+
+- 站主對 call_e58f1ad55f994e8094a24bc8653621fe 明確回覆「已試聽，英語與韓語都可以」。已逐項核對目前音軌、時間軸、QA、flags、翻譯及旗標 WAV 後，新增 review/dub-en-owner-acceptance.json 與 review/dub-ko-owner-acceptance.json；原日語接受收據仍有效。EN 12／JA 9／KO 9 自動旗標保留，沒有改成機器全過。
+- h09_delivery_audit 獨立驗證三語接受收據、逐句時間與轉寫、22 筆交付檔 hash/size、language manifest 來源綁定皆 PASS。後台三條音軌與接受版本一致；未重錄、未重送包、沒有新增付費呼叫。完整本機結案收據為 review/production-completion-20261015.json。
+- 本集製作票的「已檢查上傳包交給站主」已完成，可以結案；publish 與 languages 卡仍是 pending，YouTube ID／排程仍為 null。音訊接受沒有代替後台上傳包核准，更沒有代替實際 Studio 上傳或公開播放驗證。
+- 尚待站主的上傳包確認、實際 Studio 操作與播放核對另記 tasks/open/2026-10-15-complete-owner-release-and-playback-checks.md。這張票不授權代理自行上傳、發布、排程或合併 PR；上架前仍須重查 Purdue／ALI 最新探測結果。

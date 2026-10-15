@@ -1,13 +1,13 @@
 ---
 id: 2026-10-15-h09-ko-localization
 title: Localize Curio H09 Korean metadata and captions
-status: review
+status: done
 priority: P2
 area: docs
 owner: codex-gpt6-curio-h09
 claimed_at: 2026-10-15T10:45:58Z
 created_at: 2026-10-15T08:17:21Z
-completed_at:
+completed_at: 2026-10-15T13:20:49Z
 branch: codex/curio-h09-earhart-20261015
 depends_on: []
 scope:
@@ -55,3 +55,5 @@ With `VIDEO_WORKDIR` set to the media root containing `curio-h09`:
 - Final targeted-rewrite independent review by h09_retake_text_audit: PASS. Compared 5 changed lines against HEAD, Chinese source and surrounding context; no remaining material issue in facts, uncertainty or naturalness. Current translation SHA-256: BF7132AC422DDB0F8B3D57E96EF1F2E907B8600D6EF8EAF966A77364ACFA2FBE. This is a text review only, not audio acceptance.
 
 - 2026-10-15 five targeted takes completed (175 characters,95 reused). New QA:72 exact/10 Jev/9 second clears/9 flags; all five rewritten lines pass. Current translation independent review remains PASS. Parent production task tracks owner listening for nine residual audio flags; text review is complete.
+
+- Production closure 2026-10-15: current translation and audio version independently verified; owner listening acceptance is stored and hash-bound. Locale metadata/captions/dub delivered through the pending backend language batch. This localization DoD is complete; actual Studio upload and backend release confirmation are tracked by the dedicated owner-release handoff ticket.

@@ -1,13 +1,13 @@
 ---
 id: 2026-10-14-produce-curio-h09-amelia-earhart-episode
 title: Produce Curio H09 Amelia Earhart episode
-status: open
+status: done
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-gpt6-curio-h09
+claimed_at: 2026-10-15T13:17:42Z
 created_at: 2026-10-14T17:12:45Z
-completed_at:
+completed_at: 2026-10-15T13:20:54Z
 branch: codex/curio-h09-earhart-20261015
 depends_on: []
 scope:
@@ -30,7 +30,7 @@ The owner asked for another 奇聞檔案局 episode after H07. H08 is still an u
 
 - [x] A source-checked, narratively coherent H09 Chinese episode uses the fixed series look, at least 70% illustrated body shots and no more than three consecutive cards.
 - [x] The outline/script, audio, storyboard and final film have current source-bound evidence and their applicable owner/backend approvals; new art stays within one approved whole-episode cost ceiling.
-- [ ] A checked upload package is handed to the owner. Private upload, publication and owner playback remain separately recorded, never inferred from local QA.
+- [x] A checked upload package is handed to the owner. Private upload, publication and owner playback remain separately recorded, never inferred from local QA.
 
 ## Steps
 
@@ -38,7 +38,7 @@ The owner asked for another 奇聞檔案局 episode after H07. H08 is still an u
 - [x] Pin and independently refresh the H09 fact-check, including the October 2026 Purdue/Nikumaroro field expedition; record exactly which claims are archival fact and which are competing hypotheses.
 - [x] Prepare the H09 brief, one-story outline, claim/source register, narration script, loops and visual plan under `docs/videos/curio-h09`; run lint and independent narrative/source reviews before paying for production.
 - [x] Submit and read back the applicable backend document/script approvals; quote all new images and an episode cost ceiling once to the owner before paid generation.
-- [ ] Produce, inspect and review the narration, illustrations, final cut, captions and package; check the expedition's latest primary update before finalizing a time-sensitive ending.
+- [x] Produce, inspect and review the narration, illustrations, final cut, captions and package; check the expedition's latest primary update before finalizing a time-sensitive ending.
 
 ## How to verify
 
@@ -77,3 +77,5 @@ Check the current source hashes and `node tools/video/cli.mjs lint --slug curio-
 - 2026-10-15 final local multilingual checkpoint: EN incremental QA completed after exactly two same-text retakes (136 characters,98 unchanged WAV hashes); 73 exact/7 Jev/8 second clears/12 flags. Both retaken height/location clips pass current QA. EN track SHA cfcf4ca568f4aed04adcbcbc20d3d973b78fc3dd56aa794e852d06643347b6a6; current trial page review/dub-en.html is awaiting owner listening, alongside nine KO flags. JA acceptance remains current. Captions regenerated and independently timed for the current EN track; all four SRTs pass and candidate package updated. New receipts: dub-en-retake1-receipt-20261015.json and captions-en-retake1-timing-20261015.json. No active lease or pending speech journal; STOP restored. Do not mark EN/KO as owner-accepted until listening is resolved, and do not infer YouTube upload permission from package preparation. The later backend-delivery checkpoint clarifies that pending review delivery itself is allowed.
 
 - 2026-10-15 12:31 UTC backend delivery: after the owner requested continuation, current workflow audit confirmed pending audio listening need not block candidate file submission. publish review0e344aeb-ccb2-46d3-b695-83063b89c67a and languages reviewe8f86dd8-5f83-4602-ba6f-eaa48d27fbe2 are both pending. The language manifest binds current approved final and the new publish review;22 remote file entries match current local hashes/sizes. Receipt: review/backend-delivery-20261015.json. EN12/KO9 listening remains pending; JA accepted. ready_to_upload=false, YouTube ID/schedule null, STOP present, no lease/journal. No paid synthesis/QA occurred in this continuation. Next owner actions are audio listening and the publish card; do not mark languages uploaded before actual Studio upload.
+
+- Production completion 2026-10-15: the owner explicitly accepted current EN and KO after listening (call_e58f1ad55f994e8094a24bc8653621fe); all three foreign acceptance receipts are source/hash-bound and independently verified. Original machine flags remain EN12/JA9/KO9. The checked upload package has been delivered to the backend and its22 file entries verified. Production DoD is complete; owner release/Studio upload/playback remain separately outstanding in 2026-10-15-complete-owner-release-and-playback-checks. Backend publish/languages are still pending and YouTube ID/schedule null. No new paid calls, no approval fabrication and no YouTube upload.

@@ -1,13 +1,13 @@
 ---
 id: 2026-10-15-h09-ja-localization
 title: Localize Curio H09 Japanese metadata and captions
-status: review
+status: done
 priority: P2
 area: docs
 owner: codex-gpt6-curio-h09
 claimed_at: 2026-10-15T10:08:01Z
 created_at: 2026-10-15T08:17:17Z
-completed_at:
+completed_at: 2026-10-15T13:20:44Z
 branch: codex/curio-h09-earhart-20261015
 depends_on: []
 scope:
@@ -99,3 +99,5 @@ coordinator to commit and close with the episode's draft PR.
 - Final targeted-rewrite independent review by h09_retake_text_audit: PASS. Compared 14 changed lines against HEAD, Chinese source and surrounding context; no remaining material issue in facts, uncertainty or naturalness. Current translation SHA-256: 9C0CF73530280BAF32074945A53FCE0AD73C89C8A7CE0C7BFC72C04790366338. This is a text review only, not audio acceptance.
 
 - 2026-10-15 owner listened and replied 日語旁白可以. Local review/dub-ja-owner-acceptance.json binds the current track and nine flagged clips; translation independent review remains PASS. All textual definition-of-done items are satisfied; delivery-stage gates remain on the parent production task.
+
+- Production closure 2026-10-15: current translation and audio version independently verified; owner listening acceptance is stored and hash-bound. Locale metadata/captions/dub delivered through the pending backend language batch. This localization DoD is complete; actual Studio upload and backend release confirmation are tracked by the dedicated owner-release handoff ticket.
