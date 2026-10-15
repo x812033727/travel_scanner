@@ -818,7 +818,10 @@ def _confirmations() -> Any:
 async def project_view(session: AsyncSession, slug: str, work_dir: str | None = None) -> ProjectOut:
     project = await _project(session, slug)
     reviews = await _reviews(session, project)
-    series_kind = await video_series_kind(session, slug) if project.format == "drama" else None
+    series_kind = (
+        await video_series_kind(session, slug)
+        if project.format == "drama" and project.shorts_line is None else None
+    )
     pending = sum(1 for review in reviews if review.status == "pending")
     spend = await spend_by_slug(session, [project.slug])
     languages = language_states(locale_choices(project), reviews, project.dub_retries or {})

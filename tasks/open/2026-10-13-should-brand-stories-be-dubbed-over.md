@@ -1,13 +1,13 @@
 ---
 id: 2026-10-13-should-brand-stories-be-dubbed-over
 title: Owner decision: may a brand story be dubbed over its burned-in zh-TW subtitles
-status: done
+status: in-progress
 priority: P2
 area: meta
 owner: codex-gpt6
-claimed_at: 2026-10-15T10:49:16Z
+claimed_at: 2026-10-15T13:19:17Z
 created_at: 2026-10-13T13:07:39Z
-completed_at: 2026-10-15T11:23:20Z
+completed_at:
 branch: codex/brand-story-switchable-cc-dubs-20261015
 depends_on:
   - 2026-10-13-dub-narrator-only-explainer-dramas-tool
@@ -15,6 +15,7 @@ scope:
   - apps/api/app/video_reviews/admin_service.py
   - apps/api/app/video_reviews/schemas.py
   - apps/api/tests/test_video_reviews.py
+  - apps/api/tests/test_video_anime_review_policy.py
   - apps/api/tests/test_video_long_review_renewal.py
   - apps/web/components/admin-video-review-card.tsx
   - apps/web/components/admin-video-reviews.tsx
@@ -125,3 +126,20 @@ ledger first. If merged video.json already exists with burn_in=true, deploying t
 alone will not rewrite it; recompose from chapters and independently re-review its changed
 hash before the existing paid pilot resumes. Retain any paid assets. No dub, upload or
 production mutation was performed by this implementation.
+
+### Authorized CI follow-up, 2026-10-15
+
+The owner approved merging PR #1512 after green CI, deployment after host preflight, and A01
+application within the existing pilot authorization. No additional merge approval is needed
+for these narrow CI fixes. The first CI run passed web, video tools, containers and full-stack
+smoke; two API shards failed. The native-anime test's scalar mock needed the new series-kind
+answer, and a drama Short detail should skip the irrelevant long-series lookup because Shorts
+are ineligible for dubbing. Those fixes pass 198 review/anime/Shorts tests, scoped Ruff/mypy.
+The task was reopened under its existing owner; the added anime test path has no active claim.
+
+The fresh authorized host preflight could not connect: hostinger2 timed out before any remote
+output. Public website returned HTTP 200. Authenticated admin UI shows the deployment feature
+disabled, and A01 blocked at the storytelling panel's no_spoiler check after two passes. This
+is a current script-stage blocker, not final-cut approval. The owner has been asked to restore
+the existing connection or open the Hostinger console; no retry, review override, or production
+write followed the unavailable host entrance.
