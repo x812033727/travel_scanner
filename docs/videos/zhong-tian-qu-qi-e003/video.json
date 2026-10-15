@@ -1,0 +1,959 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e003",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Kore",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的冷豔女子，話少、句子短、語氣冷，偶爾一句很輕"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Pulcherrima",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的颯爽女子，說話直、爽快、嗓門不小，帶一點不屑"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "qianyuanwai",
+      "name": "錢員外",
+      "appearance": "East Asian man of fifty, short and portly, round face, a thin eight-shaped moustache, small shrewd eyes, a dark gold silk robe with roundel patterns, three gold rings on his fingers, two servants behind him",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的鄉下財主，油滑、愛冷笑、拖長音"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Despina",
+        "style": "標準國語，咬字清楚；平板、沒有情緒的電子女聲，像手機語音提示，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "playful plucked guzheng and pipa over light wood block and small drum for a comic village standoff, a bright glassy chime motif, then a hush into a soft solo xiao flute and low strings by firelight at the end, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "要拿新娘抵債？窮秀才改字據：人不押，三天還錢｜種田娶妻打天下 第3集",
+    "description": "柴刀釘進門框，秦霜一句「放手」；錢員外要把三個新娘寫進字據，許硯翻出大衡律，改押房、地和他自己：三天還二十兩。系統送來的新手禮包是一張模糊的肥皂配方，他對阿令說了句漂亮話，好感度當場掉到負五。半夜灶邊，從沒開過口的阿令問了他一句話。《種田娶妻打天下》第 3 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統流"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "人不能押",
+      "tag": "種田娶妻打天下",
+      "shot": "s33"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "柴刀",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the hand on the wrist, locked",
+        "prompt": "Insert at the weathered wooden door frame of a thatched farmhouse in warm afternoon sun: a servant's coarse grey-brown sleeved hand on screen right gripping a slender wrist in a peach-pink silk sleeve on screen left, an old chopping knife just buried in the door frame an inch above the gripping hand, its wooden handle still quivering; Qin Shuang speaks off screen",
+        "motion": "The knife handle quivers in the door frame and the servant's hand springs open and lets go of the wrist",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e3a01",
+          "speaker": "qinshuang",
+          "text": "放手。",
+          "emotion": "冷冷的，不大聲但很硬"
+        }
+      ]
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "data": {
+        "camera": "Medium shot, low angle, slow push in",
+        "prompt": "Medium shot, low angle of Qin Shuang standing in the middle of the dirt yard in warm afternoon sun, her right arm still stretched out toward screen left from the throw, sleek high ponytail, a woodpile and a persimmon tree behind her",
+        "motion": "Qin Shuang lowers her throwing arm and snaps her head round toward screen right, her high ponytail whipping across her shoulder",
+        "characters": [
+          "qinshuang"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a02",
+          "speaker": "qinshuang",
+          "text": "下一刀，不偏。",
+          "emotion": "颯爽，帶不屑"
+        }
+      ]
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Tang Xiaotang in the farmhouse doorway on screen left in afternoon sun, her right wrist just freed and held up near her chest, glaring toward screen right, a chopping knife stuck in the door frame beside her head",
+        "motion": "Tang Xiaotang yanks her wrist back to her chest and steps back into the doorway, rubbing it",
+        "characters": [
+          "tangxiaotang"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a03",
+          "speaker": "tangxiaotang",
+          "text": "髒手拿開！",
+          "emotion": "又氣又嫌，甜嗓子拔高"
+        }
+      ]
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Qian Yuanwai at the broken wooden gate on screen right in afternoon sun, facing left toward the farmhouse, a folded paper contract half pulled out of his gold silk sleeve, a sneer under his thin moustache",
+        "motion": "Qian Yuanwai pulls the folded paper contract out of his sleeve and shakes it open toward screen left",
+        "characters": [
+          "qianyuanwai"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a04",
+          "speaker": "qianyuanwai",
+          "text": "好個潑辣貨。",
+          "emotion": "冷笑，拖長音"
+        }
+      ]
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the small dirt yard of a poor thatched farmhouse in warm afternoon sun: the farmhouse doorway on screen left with a chopping knife stuck in its frame, Qian Yuanwai with two servants at the broken wooden gate on screen right, Qin Shuang in the middle of the yard by the woodpile and chopping block, Xu Yan stepping out of the doorway, a persimmon tree and golden fields beyond the low mud wall",
+        "motion": "Xu Yan hurries out of the doorway into the middle of the yard and raises both palms between Qin Shuang and Qian Yuanwai",
+        "characters": [
+          "xuyan",
+          "qinshuang",
+          "qianyuanwai"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a05",
+          "speaker": "xuyan",
+          "text": "有話好說！",
+          "emotion": "陪笑打圓場"
+        }
+      ]
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Qian Yuanwai at the broken wooden gate on screen right in afternoon sun, the paper contract open in his ringed hand, held out toward screen left",
+        "motion": "Qian Yuanwai shakes the open contract toward Xu Yan off screen left",
+        "characters": [
+          "qianyuanwai"
+        ],
+        "source": {
+          "shot": "s04",
+          "from_s": 2.1
+        }
+      },
+      "lines": [
+        {
+          "id": "e3a06",
+          "speaker": "qianyuanwai",
+          "text": "二十兩拿來。",
+          "emotion": "油滑，伸手要錢"
+        }
+      ]
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Xu Xiaohe peeking out from behind a cracked water vat beside the farmhouse doorway on screen left in afternoon sun, hugging her small straw rabbit tight, big worried eyes looking up toward screen right",
+        "motion": "Xiaohe hugs the straw rabbit tighter against her chest",
+        "characters": [
+          "xiaohe"
+        ],
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e3a07",
+          "speaker": "xiaohe",
+          "text": "哥，家裡沒錢……",
+          "emotion": "小聲，怕"
+        },
+        {
+          "id": "e3a08",
+          "speaker": "xiaohe",
+          "text": "只剩一碗米。",
+          "emotion": "快哭了，抱緊草兔子"
+        }
+      ]
+    },
+    {
+      "id": "s08",
+      "chapter": "字據",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the brush over the contract, slow push in",
+        "prompt": "Insert of a blank paper contract flattened on the wooden chopping block in the yard in afternoon sun, a servant's coarse grey-brown sleeved hand holding an ink-loaded writing brush just above the paper, an ink stone beside it, the paper still blank; Qian Yuanwai speaks off screen",
+        "motion": "The servant's hand lowers the ink-loaded brush toward the blank paper",
+        "characters": [],
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e3a09",
+          "speaker": "qianyuanwai",
+          "text": "沒錢，就拿人抵！",
+          "emotion": "拖長音，冷笑"
+        }
+      ]
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the small dirt yard of a poor thatched farmhouse in warm afternoon sun: Xu Yan in the middle of the yard with both palms raised, Qin Shuang by the woodpile, Qian Yuanwai with two servants at the broken wooden gate on screen right",
+        "motion": "Qian Yuanwai jabs his ringed finger past Xu Yan toward the farmhouse doorway",
+        "characters": [
+          "xuyan",
+          "qinshuang",
+          "qianyuanwai"
+        ],
+        "source": {
+          "shot": "s05",
+          "from_s": 2
+        }
+      },
+      "lines": [
+        {
+          "id": "e3a10",
+          "speaker": "qianyuanwai",
+          "text": "三個，都寫上！",
+          "emotion": "得意，一字一頓"
+        }
+      ]
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "data": {
+        "camera": "Medium shot, low angle, slow push in",
+        "prompt": "Medium shot, low angle of Qin Shuang standing in the middle of the dirt yard in warm afternoon sun, facing screen right toward Qian Yuanwai off screen right, her ponytail settling on her shoulder",
+        "motion": "Qin Shuang drops her right hand to the leather belt at her waist",
+        "characters": [
+          "qinshuang"
+        ],
+        "source": {
+          "shot": "s02",
+          "from_s": 2.2
+        }
+      },
+      "lines": [
+        {
+          "id": "e3a11",
+          "speaker": "qinshuang",
+          "text": "你敢寫？",
+          "emotion": "眯眼，壓低聲音"
+        }
+      ]
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Xu Yan in the middle of the yard on screen left in afternoon sun, facing right toward Qian Yuanwai off screen right, his right hand reaching into the front fold of his patched scholar's robe",
+        "motion": "Xu Yan pulls a thin thread-bound book out of his robe and flips it open with his thumb",
+        "characters": [
+          "xuyan"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a12",
+          "speaker": "xuyan",
+          "text": "慢著。",
+          "emotion": "收起笑，聲音一沉"
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Xu Yan in the middle of the yard on screen left in afternoon sun, the thin book open in his hand, eyes up toward Qian Yuanwai off screen right",
+        "motion": "Xu Yan taps the open page twice with one finger",
+        "characters": [
+          "xuyan"
+        ],
+        "source": {
+          "shot": "s11",
+          "from_s": 1.6
+        }
+      },
+      "lines": [
+        {
+          "id": "e3a13",
+          "speaker": "xuyan",
+          "text": "大衡律，配婚篇。",
+          "emotion": "慢條斯理，胸有成竹"
+        }
+      ]
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Aling standing by the woodpile on screen right in warm afternoon sun, loose strands of black hair across her cheek, her cold phoenix eyes turned toward Xu Yan off screen left; Xu Yan speaks off screen",
+        "motion": "Aling's eyes narrow a fraction toward Xu Yan off screen left",
+        "characters": [
+          "aling"
+        ],
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e3a14",
+          "speaker": "xuyan",
+          "text": "她們的名字，",
+          "emotion": "一字一句，講給所有人聽"
+        },
+        {
+          "id": "e3a15",
+          "speaker": "xuyan",
+          "text": "在官府名冊上。",
+          "emotion": "慢條斯理，壓住全場"
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Qian Yuanwai at the broken gate on screen right in afternoon sun, his smug grin starting to slip, the open paper contract held at his chest in his ringed hands; Xu Yan speaks off screen",
+        "motion": "Qian Yuanwai's grin falls and he crumples the contract against his chest with both hands",
+        "characters": [
+          "qianyuanwai"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a16",
+          "speaker": "xuyan",
+          "text": "私押，是搶官府的人。",
+          "emotion": "笑著補刀"
+        }
+      ]
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Tang Xiaotang in the farmhouse doorway on screen left in afternoon sun, rubbing her freed wrist, chin lifted toward Qian Yuanwai off screen right",
+        "motion": "Tang Xiaotang rubs her wrist and lifts her chin toward Qian Yuanwai off screen right",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "source": {
+          "shot": "s03",
+          "from_s": 2.1
+        }
+      },
+      "lines": [
+        {
+          "id": "e3a17",
+          "speaker": "tangxiaotang",
+          "text": "沒錯，律上有。",
+          "emotion": "精明，幸災樂禍"
+        }
+      ]
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot across the wooden chopping block in the yard in afternoon sun, Xu Yan on screen left with the thin book under his arm, Qian Yuanwai on screen right leaning over the block with the creased paper contract in his ringed hand",
+        "motion": "Qian Yuanwai slaps the creased contract down on the chopping block and shoves it toward Xu Yan",
+        "characters": [
+          "xuyan",
+          "qianyuanwai"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a18",
+          "speaker": "qianyuanwai",
+          "text": "行，不押人。",
+          "emotion": "咬牙，硬擠出笑"
+        }
+      ]
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot across the wooden chopping block in the yard in afternoon sun, Xu Yan on screen left, Qian Yuanwai on screen right leaning in, the contract flat on the block between them",
+        "motion": "Qian Yuanwai jabs a ringed finger at Xu Yan's chest",
+        "characters": [
+          "xuyan",
+          "qianyuanwai"
+        ],
+        "source": {
+          "shot": "s16",
+          "from_s": 2
+        }
+      },
+      "lines": [
+        {
+          "id": "e3a19",
+          "speaker": "qianyuanwai",
+          "text": "房、地，加上你！",
+          "emotion": "陰笑，翻盤的口氣"
+        }
+      ]
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the thumb on the contract, locked",
+        "prompt": "Insert of a right thumb red with seal ink held just above the paper contract on the wooden chopping block in afternoon sun, a patched blue-grey cotton sleeve at frame left, a small open box of red seal ink beside the paper; Xu Yan speaks off screen",
+        "motion": "The thumb presses down firmly on the paper and lifts away, leaving one red print",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e3a20",
+          "speaker": "xuyan",
+          "text": "三天，還你二十兩。",
+          "emotion": "穩，一錘定音"
+        }
+      ]
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Medium shot of Qian Yuanwai at the broken wooden gate on screen right in afternoon sun, the folded contract in his ringed hand, two servants behind him outside the gate, golden fields beyond",
+        "motion": "Qian Yuanwai tucks the contract into his sleeve, turns and stalks out through the gate",
+        "characters": [
+          "qianyuanwai"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a21",
+          "speaker": "qianyuanwai",
+          "text": "三天後，收房！",
+          "emotion": "回頭撂話，拖長音"
+        }
+      ]
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Medium shot of Qian Yuanwai at the broken wooden gate on screen right in afternoon sun, turning away through the gate with two servants behind him, golden fields beyond; Tang Xiaotang speaks off screen",
+        "motion": "Qian Yuanwai stalks away through the gate with his two servants trailing him",
+        "characters": [
+          "qianyuanwai"
+        ],
+        "source": {
+          "shot": "s19",
+          "from_s": 2.1
+        }
+      },
+      "lines": [
+        {
+          "id": "e3a22",
+          "speaker": "tangxiaotang",
+          "text": "三天？二十兩？",
+          "emotion": "倒抽一口氣，算盤一撥"
+        }
+      ]
+    },
+    {
+      "id": "s21",
+      "chapter": "禮包",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Xu Yan in the yard on screen left in late afternoon sun, the thin book under his arm, a small relieved grin, looking toward the gate off screen right; Xitong speaks off screen",
+        "motion": "Xu Yan flinches and jerks his head back, staring wide-eyed at the empty air in front of him",
+        "characters": [
+          "xuyan"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a23",
+          "speaker": "xitong",
+          "text": "叮。",
+          "emotion": "電子提示音"
+        },
+        {
+          "id": "e3a24",
+          "speaker": "xitong",
+          "text": "新手禮包。",
+          "emotion": "平板，沒有情緒"
+        }
+      ]
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the open hands, slow push in",
+        "prompt": "Insert from Xu Yan's eye line of his own two open palms held up in front of him in the yard in late afternoon sun, patched blue-grey sleeves at the frame edges, the dirt yard and woodpile soft behind; Xitong speaks off screen",
+        "motion": "Xu Yan's open hands tilt as if weighing something weightless",
+        "characters": [],
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e3a25",
+          "speaker": "xitong",
+          "text": "肥皂配方一份。",
+          "emotion": "平板"
+        },
+        {
+          "id": "e3a26",
+          "speaker": "xitong",
+          "text": "材料自備，工具自備。",
+          "emotion": "平板，像在唸說明書"
+        }
+      ]
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Xu Yan in the yard on screen left in late afternoon sun, staring wide-eyed at the empty air in front of him",
+        "motion": "Xu Yan's jaw drops as he stares at the empty air",
+        "characters": [
+          "xuyan"
+        ],
+        "source": {
+          "shot": "s21",
+          "from_s": 2.5
+        }
+      },
+      "lines": [
+        {
+          "id": "e3a27",
+          "speaker": "xuyan",
+          "text": "就這樣？",
+          "emotion": "傻眼吐槽"
+        }
+      ]
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "data": {
+        "camera": "Group shot, slow push in",
+        "prompt": "Group shot from Xu Yan's eye line across the yard in late afternoon sun: Qin Shuang by the chopping block on screen left, Tang Xiaotang in the farmhouse doorway in the centre, Aling by the woodpile on screen right, all three looking away in different directions; Xitong speaks off screen",
+        "motion": "Qin Shuang, Tang Xiaotang and Aling turn their heads toward the camera one after another",
+        "characters": [
+          "qinshuang",
+          "tangxiaotang",
+          "aling"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a28",
+          "speaker": "xitong",
+          "text": "好感度，開啟。",
+          "emotion": "平板"
+        }
+      ]
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot by the woodpile in late afternoon sun, Aling on screen right with her arms folded, Xu Yan on screen left with one hand on the stacked logs, leaning toward her with a charming grin",
+        "motion": "Xu Yan leans in closer with a wink and Aling turns her face away from him",
+        "characters": [
+          "xuyan",
+          "aling"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a29",
+          "speaker": "xuyan",
+          "text": "有我在，",
+          "emotion": "耍帥，油嘴"
+        }
+      ]
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot by the woodpile in late afternoon sun, Aling on screen right with her face turned away, Xu Yan on screen left leaning on the stacked logs",
+        "motion": "Aling keeps her face turned away while Xu Yan leans closer",
+        "characters": [
+          "xuyan",
+          "aling"
+        ],
+        "source": {
+          "shot": "s25",
+          "from_s": 1.8
+        }
+      },
+      "lines": [
+        {
+          "id": "e3a30",
+          "speaker": "xuyan",
+          "text": "誰都帶不走妳。",
+          "emotion": "自以為深情"
+        }
+      ]
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Xu Yan by the woodpile on screen left in late afternoon sun, still wearing his charming grin, one hand on the stacked logs; Xitong speaks off screen",
+        "motion": "Xu Yan jolts rigid as a faint blue crackle runs through his hair, then staggers back a step with his hair frizzed up",
+        "characters": [
+          "xuyan"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e3a31",
+          "speaker": "xitong",
+          "text": "判定：空話。",
+          "emotion": "平板，冷冷的"
+        }
+      ]
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "data": {
+        "camera": "Group shot, slow push in",
+        "prompt": "Group shot from Xu Yan's eye line across the yard in late afternoon sun: Qin Shuang by the chopping block on screen left, Tang Xiaotang in the farmhouse doorway in the centre, Aling by the woodpile on screen right, all three looking straight at the camera; Xitong speaks off screen",
+        "motion": "Qin Shuang, Tang Xiaotang and Aling look straight at the camera",
+        "characters": [
+          "qinshuang",
+          "tangxiaotang",
+          "aling"
+        ],
+        "source": {
+          "shot": "s24",
+          "from_s": 2.2
+        }
+      },
+      "lines": [
+        {
+          "id": "e3a32",
+          "speaker": "xitong",
+          "text": "阿令，負五。",
+          "emotion": "平板，像在報數"
+        }
+      ]
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Tang Xiaotang in the farmhouse doorway on screen left in late afternoon sun, one hand over her mouth hiding a giggle, dimples showing, her eyes toward Xu Yan off screen right; Qinshuang speaks off screen",
+        "motion": "Tang Xiaotang presses her hand over her mouth to hold back a laugh",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e3a33",
+          "speaker": "tangxiaotang",
+          "text": "他被雷劈啦？",
+          "emotion": "憋笑，甜嗓子"
+        },
+        {
+          "id": "e3a34",
+          "speaker": "qinshuang",
+          "text": "活該。",
+          "emotion": "不屑，冷冷一句"
+        }
+      ]
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Xu Yan by the woodpile on screen left in late afternoon sun, his hair frizzed up, a step back from the logs",
+        "motion": "Xu Yan pats his frizzed hair down with one hand",
+        "characters": [
+          "xuyan"
+        ],
+        "source": {
+          "shot": "s27",
+          "from_s": 2.2
+        }
+      },
+      "lines": [
+        {
+          "id": "e3a35",
+          "speaker": "xuyan",
+          "text": "騙不來啊……",
+          "emotion": "又痛又服氣，小聲"
+        }
+      ]
+    },
+    {
+      "id": "s31",
+      "chapter": "灶火",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the small earthen kitchen of the thatched farmhouse at night, lit only by the orange fire in the mouth of a mud-brick stove: Aling sitting on a low stool by the stove on screen right with a whetstone on her knee, the doorway on screen left, Xu Yan in the doorway holding a small oil lamp, a woodpile and a water vat along the back wall",
+        "motion": "Xu Yan steps in through the doorway with the oil lamp and lowers it",
+        "characters": [
+          "xuyan",
+          "aling"
+        ],
+        "transition": "dissolve"
+      },
+      "lines": [
+        {
+          "id": "e3a36",
+          "speaker": "xuyan",
+          "text": "還沒睡？",
+          "emotion": "放輕聲音，有點心虛"
+        }
+      ]
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the blade on the whetstone, locked",
+        "prompt": "Insert of a short dagger blade held flat on a dark wet whetstone resting on a knee in grey-white cotton, a slender hand on the hilt, orange stove firelight glinting on the steel at night",
+        "motion": "The slender hand draws the dagger blade slowly along the whetstone and back",
+        "characters": []
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Aling's face in profile on screen right by the stove at night, warm orange firelight on her cheek, black hair pinned up with a single plain wooden hairpin, eyes lowered to the short dagger in her fingers catching a cold glint, Xu Yan off screen left",
+        "motion": "Aling draws the dagger once along the whetstone, then stops and lifts her eyes toward Xu Yan off screen left",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the small earthen kitchen of the thatched farmhouse at night, lit only by the orange fire in the mouth of a mud-brick stove: Aling on a low stool by the stove on screen right with a whetstone on her knee, Xu Yan just inside the doorway on screen left with the small oil lamp",
+        "motion": "Xu Yan sets the oil lamp down on the edge of the stove",
+        "characters": [
+          "xuyan",
+          "aling"
+        ],
+        "source": {
+          "shot": "s31",
+          "from_s": 1.8
+        }
+      },
+      "lines": [
+        {
+          "id": "e3a37",
+          "speaker": "xuyan",
+          "text": "刀磨這麼利……",
+          "emotion": "沒話找話，乾笑"
+        }
+      ]
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Xu Yan just inside the kitchen doorway on screen left at night, the small oil lamp in his hand lighting his face from below, a sheepish smile, Aling off screen right at his eyeline",
+        "motion": "Xu Yan rubs the back of his neck with his free hand",
+        "characters": [
+          "xuyan"
+        ],
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e3a38",
+          "speaker": "xuyan",
+          "text": "白天那句，是空話。",
+          "emotion": "老實認錯，有點尷尬"
+        },
+        {
+          "id": "e3a39",
+          "speaker": "xuyan",
+          "text": "我不該那樣說。",
+          "emotion": "放低聲音，認真"
+        }
+      ]
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Aling's face in profile on screen right by the stove at night, warm orange firelight on her cheek, the dagger still on the whetstone, her eyes lifted toward Xu Yan off screen left",
+        "motion": "Aling stops the dagger on the whetstone and holds Xu Yan's gaze off screen left",
+        "characters": [
+          "aling"
+        ],
+        "source": {
+          "shot": "s33",
+          "from_s": 1.6
+        }
+      },
+      "lines": [
+        {
+          "id": "e3a40",
+          "speaker": "aling",
+          "text": "你為何不押我們？",
+          "emotion": "很輕、很冷，第一次開口"
+        }
+      ]
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Xu Yan's face on screen left at night, warm lamp light from below, lips parted on the edge of an answer, Aling off screen right at his eyeline",
+        "motion": "Xu Yan draws a breath to answer",
+        "characters": [
+          "xuyan"
+        ],
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e3a41",
+          "speaker": "xuyan",
+          "text": "我……",
+          "emotion": "話到嘴邊，停住"
+        }
+      ]
+    }
+  ]
+}

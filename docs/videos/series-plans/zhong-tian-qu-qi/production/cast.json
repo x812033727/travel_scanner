@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "series": "zhong-tian-qu-qi",
+  "purpose": "第一季第 1–5 集共用的 look、角色外貌（英文，給圖與影片模型）與聲音。每集 video.json 從這裡照抄用到的角色，不要各自改寫，避免換臉。",
+  "owner_notes": [
+    "站主 2026-10-16：女生要火辣漂亮。做法：濃顏系的五官與妝（紅唇、眼線）、合身剪裁凸顯腰線與身形；不露胸、不露背、不濕身、鏡頭不停在身體部位（setting.json advertiser_safety 與 glamour 照舊）。",
+    "站主 2026-10-16：有問題以代理推薦的為準，不用問。聲音由代理選定。",
+    "阿令的鐵鐐不寫在固定外貌裡：第 1–2 集卸鍊之前的鏡頭，在該鏡 prompt 裡寫 a thin iron shackle on her left wrist；卸鍊之後不寫。"
+  ],
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "system_panel": "系統面板不由海螺生成：拍許硯的主觀鏡頭或臉部近景，面板文字在剪接時疊上（淡藍色半透明框，見 overlays.json）。prompt 裡不要寫面板、文字或 UI。",
+  "characters": [
+    {
+      "id": "xuyan",
+      "setting_id": "xu-yan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "modern_appearance": "the same young man in the present day: short black hair, a cheap navy suit and white shirt with a loosened tie, holding a printed resume",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "aling",
+      "setting_id": "a-ling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Kore",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的冷豔女子，話少、句子短、語氣冷，偶爾一句很輕"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "setting_id": "qin-shuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Pulcherrima",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的颯爽女子，說話直、爽快、嗓門不小，帶一點不屑"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "setting_id": "tang-xiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "setting_id": "xu-xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "erniu",
+      "setting_id": "wang-erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, a wide white-toothed grin, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a hoe or carrying pole on his shoulder",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      }
+    },
+    {
+      "id": "qianyuanwai",
+      "setting_id": "qian-yuanwai",
+      "name": "錢員外",
+      "appearance": "East Asian man of fifty, short and portly, round face, a thin eight-shaped moustache, small shrewd eyes, a dark gold silk robe with roundel patterns, three gold rings on his fingers, two servants behind him",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的鄉下財主，油滑、愛冷笑、拖長音"
+      }
+    },
+    {
+      "id": "zhaobutou",
+      "setting_id": "s01-zhao-butou",
+      "name": "趙捕頭",
+      "appearance": "East Asian man of forty, wiry and dark-skinned, narrow eyes, a thin two-stroke moustache, a black constable's hat and plain black official uniform with an iron ruler at his belt, always eyeing people sideways",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十歲的捕頭，公事公辦、不耐煩、斜眼看人"
+      }
+    },
+    {
+      "id": "mianshiguan",
+      "setting_id": "s01-mianshiguan",
+      "name": "面試官",
+      "appearance": "East Asian woman in her early thirties, sharp glamorous city beauty with thin-framed glasses, a sleek short bob and red lips, a tailored charcoal suit jacket, seated behind a long table in a glass meeting room, scrolling on her phone",
+      "voice": {
+        "provider": "gemini",
+        "name": "Erinome",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十歲的人資主管，冷淡、不耐煩、頭也不抬"
+      }
+    },
+    {
+      "id": "laisan",
+      "setting_id": "s01-lai-san",
+      "name": "賴三",
+      "appearance": "East Asian young man of twenty-eight, small and thin, pointed chin, shifty eyes, a slight limp, a grey-brown short jacket and an old cloth head wrap",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十八歲的家丁，油嘴滑舌、心虛"
+      }
+    },
+    {
+      "id": "xitong",
+      "setting_id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Despina",
+        "style": "標準國語，咬字清楚；平板、沒有情緒的電子女聲，像手機語音提示，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "sets": [
+    {
+      "id": "xujia-wu",
+      "name": "許家破屋（屋內）",
+      "prompt": "the inside of a poor thatched farmhouse in an ancient Chinese village: mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper letting in warm morning light, straw on the packed earth floor"
+    },
+    {
+      "id": "xujia-yuan",
+      "name": "許家院子",
+      "prompt": "the small dirt yard of a poor thatched farmhouse in an ancient Chinese village: a low mud wall, a broken wooden gate, a woodpile and chopping block, a well with a wooden bucket, a persimmon tree, a stream and golden fields beyond the wall"
+    },
+    {
+      "id": "liuxi-he",
+      "name": "柳溪河邊",
+      "prompt": "a willow-lined stream at the edge of an ancient Chinese village at dawn after rain: muddy banks, reeds, a wooden plank bridge, mist on the water, golden fields on the far side"
+    }
+  ]
+}
