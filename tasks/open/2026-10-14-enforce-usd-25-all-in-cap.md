@@ -50,6 +50,8 @@ scope:
   - apps/api/tests/test_jev.py
   - tools/video/media/client.test.mjs
   - tools/video/tts/client.test.mjs
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # Enforce USD 25 all-in cap for A01 and B18 pilot

@@ -19,6 +19,7 @@ from sqlalchemy import (
     Numeric,
     String,
     UniqueConstraint,
+    func,
 )
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -48,7 +49,9 @@ class VideoPilotBudget(Base):
 
     slug: Mapped[str] = mapped_column(String(80), primary_key=True)
     limit_usd: Mapped[Decimal] = mapped_column(Numeric(12, 6), default=PILOT_LIMIT_USD)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=utcnow, server_default=func.now()
+    )
 
 
 class VideoPilotBudgetOperation(Base):
@@ -80,7 +83,9 @@ class VideoPilotBudgetOperation(Base):
     attempts: Mapped[int] = mapped_column(Integer, default=1)
     receipt_ref: Mapped[str | None] = mapped_column(String(255), nullable=True)
     release_reason: Mapped[str | None] = mapped_column(String(255), nullable=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=utcnow, server_default=func.now()
+    )
     updated_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True), default=utcnow, onupdate=utcnow
+        DateTime(timezone=True), default=utcnow, onupdate=utcnow, server_default=func.now()
     )

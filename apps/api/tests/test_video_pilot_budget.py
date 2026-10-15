@@ -243,7 +243,10 @@ def test_migration_offline_sql_creates_both_tables_and_seeds_all_pilots() -> Non
 
 @pytest.mark.skipif(os.getenv("RUN_INTEGRATION_TESTS") != "1", reason="requires PostgreSQL")
 @pytest.mark.asyncio
-async def test_migration_creates_and_seeds_accounts_on_existing_database() -> None:
+@pytest.mark.parametrize("precreated_without_default", [False, True])
+async def test_migration_creates_and_seeds_accounts_on_existing_database(
+    precreated_without_default: bool,
+) -> None:
     spec = importlib.util.spec_from_file_location("pilot_budget_migration_live", MIGRATION_SOURCE)
     assert spec is not None and spec.loader is not None
     migration = importlib.util.module_from_spec(spec)
@@ -254,18 +257,34 @@ async def test_migration_creates_and_seeds_accounts_on_existing_database() -> No
         try:
             connection.execute(sa.text("DROP TABLE IF EXISTS video_pilot_budget_operations"))
             connection.execute(sa.text("DROP TABLE IF EXISTS video_pilot_budgets"))
+            if precreated_without_default:
+                # 0001_initial creates tables from today's ORM metadata before later
+                # migrations run. Verify the seed also works with a NOT NULL column
+                # whose older table definition has no database default.
+                connection.execute(
+                    sa.text(
+                        "CREATE TABLE video_pilot_budgets ("
+                        "slug VARCHAR(80) PRIMARY KEY, "
+                        "limit_usd NUMERIC(12, 6) NOT NULL, "
+                        "created_at TIMESTAMPTZ NOT NULL)"
+                    )
+                )
             with Operations.context(MigrationContext.configure(connection)):
                 migration.upgrade()
                 migration.upgrade()
                 rows = connection.execute(
-                    sa.text("SELECT slug, limit_usd FROM video_pilot_budgets ORDER BY slug")
+                    sa.text(
+                        "SELECT slug, limit_usd, created_at "
+                        "FROM video_pilot_budgets ORDER BY slug"
+                    )
                 ).all()
-                assert rows == [
+                assert [(row.slug, row.limit_usd) for row in rows] == [
                     ("story-conveyor-belt-sushi", Decimal("25.000000")),
                     ("story-conveyor-belt-sushi-v2", Decimal("25.000000")),
                     ("story-rolling-suitcase", Decimal("25.000000")),
                     ("story-rolling-suitcase-v2", Decimal("25.000000")),
                 ]
+                assert all(row.created_at is not None for row in rows)
                 migration.downgrade()
             assert "video_pilot_budgets" not in sa.inspect(connection).get_table_names()
         finally:

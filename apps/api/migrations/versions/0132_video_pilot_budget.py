@@ -97,11 +97,12 @@ def upgrade() -> None:
         ACCOUNT,
         sa.column("slug", sa.String(length=80)),
         sa.column("limit_usd", sa.Numeric(12, 6)),
+        sa.column("created_at", sa.DateTime(timezone=True)),
     )
     for slug in PILOTS:
         op.execute(
             insert(account)
-            .values(slug=slug, limit_usd=sa.literal(25))
+            .values(slug=slug, limit_usd=sa.literal(25), created_at=sa.func.now())
             .on_conflict_do_nothing(index_elements=["slug"])
         )
 
