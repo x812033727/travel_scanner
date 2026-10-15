@@ -33,7 +33,7 @@ H09's first full 92-shot MiniMax batch stopped cleanly after 28 manifest shots. 
 
 ## How to verify
 
-Run `node tools/video/cli.mjs lint --slug curio-h09`, targeted `keyframes --shot <ids> --takes 3 --dry-run` and then the paid rerun within the already authorized cap. Compare selected image hashes and judge verdicts in `C:\Users\x8120\mokaair-work\videos\curio-h09\keyframes\manifest.json`, inspect images, run `npm run check:tasks` and `git diff --check`.
+Run `node tools/video/cli.mjs lint --slug curio-h09`, targeted `keyframes --shot <ids> --takes 3 --dry-run` and then the paid rerun within the already authorized cap. Compare selected image hashes and judge verdicts in `<home>/mokaair-work/videos/curio-h09/keyframes/manifest.json`, inspect images, run `npm run check:tasks` and `git diff --check`.
 
 ## Notes
 

@@ -32,7 +32,7 @@ The formal H09 script changed one spoken word in B06, from `巡洋艦` to `戰�
 
 ## How to verify
 
-`Get-FileHash docs/videos/curio-h09/script.md -Algorithm SHA256`; read-only Node comparison of `script.md` with `screenplay(video.json)`, `scriptCheckMatches(review/narrative.json, video.json)`, the thirteen `NARRATIVE_PANEL` IDs and every quoted line ID/text; `node tools/video/cli.mjs narrative --slug curio-h09 --answers C:/Users/x8120/mokaair-work/videos/curio-h09/review/narrative-answers-e9404add.json`; `node tools/video/cli.mjs lint --slug curio-h09`; `npm run check:tasks`; `git diff --check -- docs/videos/curio-h09/narrative-blind.md`.
+`Get-FileHash docs/videos/curio-h09/script.md -Algorithm SHA256`; read-only Node comparison of `script.md` with `screenplay(video.json)`, `scriptCheckMatches(review/narrative.json, video.json)`, the thirteen `NARRATIVE_PANEL` IDs and every quoted line ID/text; `node tools/video/cli.mjs narrative --slug curio-h09 --answers <home>/mokaair-work/videos/curio-h09/review/narrative-answers-e9404add.json`; `node tools/video/cli.mjs lint --slug curio-h09`; `npm run check:tasks`; `git diff --check -- docs/videos/curio-h09/narrative-blind.md`.
 
 ## Notes
 
