@@ -289,11 +289,16 @@ async def test_migration_creates_and_seeds_accounts_on_existing_database() -> No
             transaction.rollback()
 
     # Both database shapes must use the same async event loop for the pooled engine.
-    for precreated_without_default in (False, True):
-        async with postgres_engine.connect() as connection:
-            await connection.run_sync(
-                partial(exercise, precreated_without_default=precreated_without_default)
-            )
+    try:
+        for precreated_without_default in (False, True):
+            async with postgres_engine.connect() as connection:
+                await connection.run_sync(
+                    partial(exercise, precreated_without_default=precreated_without_default)
+                )
+    finally:
+        # pytest gives the next integration test another loop; pooled asyncpg
+        # connections must not cross that loop boundary.
+        await postgres_engine.dispose()
 
 
 @pytest.mark.skipif(os.getenv("RUN_INTEGRATION_TESTS") != "1", reason="requires PostgreSQL")
@@ -337,7 +342,12 @@ async def test_postgres_row_lock_prevents_concurrent_over_reservation() -> None:
             view = await service.summary(session, slug)
         assert view is not None and view.reserved_usd == Decimal("15")
     finally:
-        async with postgres_engine.begin() as connection:
-            await connection.execute(
-                sa.delete(VideoPilotBudgetOperation).where(VideoPilotBudgetOperation.slug == slug)
-            )
+        try:
+            async with postgres_engine.begin() as connection:
+                await connection.execute(
+                    sa.delete(VideoPilotBudgetOperation).where(
+                        VideoPilotBudgetOperation.slug == slug
+                    )
+                )
+        finally:
+            await postgres_engine.dispose()
