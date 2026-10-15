@@ -27,6 +27,7 @@ from app.video_media.catalog import find_model
 from app.video_media.jobs import MediaContext, MediaJobFailed, advance_job, job_view, submit_job
 from app.video_media.models import VideoMediaJob
 from app.video_media.providers import Download, MediaRequest, MediaUpstreamError, Polled, Submitted
+from app.video_media.providers.minimax import MiniMaxImages, MiniMaxMusic
 from app.video_media.schemas import ClipJobIn, ImageJobIn, MusicJobIn
 from app.video_media.settings import MediaSettings
 from app.video_media.storage import MediaStore
@@ -415,6 +416,68 @@ async def test_a_minimax_picture_is_stored_from_the_answer_like_a_gemini_one(
         assert float(linked.usd_estimate) == 0.0035
         assert await meter.used(ctx.redis, meter.IMAGES) == 2, "the vendor made it: no refund"
     assert len(asked) == 3
+
+
+MP3 = b"ID3\x04\x00\x00\x00\x00\x00\x00" + b"\xff\xfb\x90\x00" * 16
+
+
+@pytest.mark.asyncio
+async def test_a_minimax_track_is_stored_from_its_hex_answer_and_a_shut_account_says_why(
+    tmp_path: Path,
+) -> None:
+    """MiniMax music through the real adapter, on image-01's key: the hex in the answer is
+    stored as an MP3 at the catalog's price, one track on the meter. An account the
+    2026-08-20 rule shuts out fails as a key error naming the rule, and the track is given back
+    to the month's budget."""
+    answers: list[dict[str, Any]] = [
+        {
+            "data": {"audio": MP3.hex(), "status": 2},
+            "extra_info": {"music_duration": 61000, "music_sample_rate": 44100},
+            "base_resp": {"status_code": 0, "status_msg": "success"},
+        },
+        {
+            "data": None,
+            "base_resp": {
+                "status_code": 2061,
+                "status_msg": "Music generation is no longer available to new users",
+            },
+        },
+    ]
+    asked: list[httpx.Request] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        assert str(request.url) == "https://api.minimaxi.com/v1/music_generation"
+        asked.append(request)
+        return httpx.Response(200, json=answers[len(asked) - 1])
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
+        ctx = _context(
+            tmp_path,
+            FakeProvider(),
+            row=_row(music_provider="minimax", music_model="music-3.0"),
+            http=http,
+        )
+        music = MusicJobIn.model_validate({"slug": "v", "prompt": "solo guqin", "seconds": 60})
+        stored, created = await submit_job(ctx, "music", music)
+        assert created and stored.status == "ready"
+        assert (stored.provider, stored.model) == ("minimax", "music-3.0")
+        assert stored.content_type == "audio/mpeg" and stored.file_bytes == len(MP3)
+        assert stored.file_sha256 == hashlib.sha256(MP3).hexdigest()
+        assert float(stored.usd_estimate) == 0.15
+        assert await meter.used(ctx.redis, meter.MUSIC) == 1
+        assert asked[0].headers["authorization"] == "Bearer m"
+        sent = json.loads(asked[0].content)
+        assert sent["model"] == "music-3.0" and sent["is_instrumental"] is True
+        assert "About 60 seconds long" in sent["prompt"]
+
+        other = MusicJobIn.model_validate({"slug": "v", "prompt": "taiko", "seconds": 60})
+        shut, _created = await submit_job(ctx, "music", other)
+        assert shut.status == "failed" and shut.error_code == "video_media_upstream_rejected_key"
+        assert "new users" in (shut.error_detail or "")
+        assert "since 2026-08-20" in (shut.error_detail or "")
+        assert float(shut.usd_estimate) == 0
+        assert await meter.used(ctx.redis, meter.MUSIC) == 1, "a refused track is given back"
+    assert len(asked) == 2
 
 
 @pytest.mark.asyncio
@@ -834,10 +897,17 @@ def test_providers_are_built_from_the_site_keys(monkeypatch: pytest.MonkeyPatch)
     assert service.provider_for(runtime, "gemini", "image").name == "gemini"
     assert type(service.provider_for(runtime, "gemini", "clip")).__name__ == "GeminiVideo"
     assert type(service.provider_for(runtime, "minimax", "clip")).__name__ == "MiniMaxVideo"
-    with pytest.raises(MediaJobFailed) as no_music:
-        service.provider_for(runtime, "minimax", "music")
-    assert no_music.value.code == "video_media_model_not_allowed"
+    assert type(service.provider_for(runtime, "gemini", "music")).__name__ == "GeminiMusic"
+    # MiniMax music rides on image-01's key and base URL.
+    music = service.provider_for(runtime, "minimax", "music")
+    image = service.provider_for(runtime, "minimax", "image")
+    assert isinstance(music, MiniMaxMusic) and isinstance(image, MiniMaxImages)
+    assert music.name == "minimax" and (music.base_url, music.key) == (image.base_url, image.key)
+    assert (music.base_url, music.key) == (runtime.minimax_api_base_url, "m")
     with pytest.raises(MediaJobFailed) as no_key:
         service.provider_for(Settings(), "gemini", "image")
     assert no_key.value.code == "video_media_not_configured"
+    with pytest.raises(MediaJobFailed) as no_music_key:
+        service.provider_for(Settings(minimax_api_key=None), "minimax", "music")
+    assert no_music_key.value.code == "video_media_not_configured"
     _ = (AsyncMock, MagicMock)
