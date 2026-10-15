@@ -11,6 +11,7 @@
   `tools/video/core/{drama,lint,schema}.mjs`、`automation.test.mjs`、`tts.test.mjs`、`admin-video-reviews.test.tsx`、
   `docs/videos/README.md`、`DESIGN.md`、`.agents/skills/youtube-video/SKILL.md`（連 `.claude` 複本）……完整清單只看 `REVIEW_FILES`。
   改之前先 `grep -n "<路徑>" tools/video/long-form/review.mjs`，知道自己會不會踩到。
+- **五個語系的 `admin.json` 也綁在收據上**：不是影片的功能，新的後台字串放進功能自己的訊息檔（例如 `apps/web/lib/admin-news-messages/` 底下的 `en.json` 等），不要加進 `apps/web/messages/<語系>/admin.json`。
 - **把 main 併進分支**：main 和分支都動過 `review.md`／`review.json`（每個碰到綁住檔的 PR 都會），兩個檔一定衝突；
   就算沒衝突（main 只改了綁住的檔、沒補收據），合併後的樹也會有一條 stale 綁定。
 - **PR 的 CI 跑的是「head 併 main」的結果**：main 上有人改了綁住的檔卻沒補收據（2026-10-03 的 #1169），
@@ -44,7 +45,7 @@ Workflow 版（提案／反駁）也行，但收據增量是循序的一件事�
 - 推之前本機 `node tools/video/long-form/cli.mjs check`；紅就照上面補，不要推一個會在 CI 才紅的分支。
 - 開收據 follow-up 之前先看開著的 PR：別人可能已經在他的分支綁了同一個檔（10-03 #1169 的綁定是 #1168 順帶補的、#1170 也補了），
   兩個都合就是下一個衝突。
-- 收據衝突不是程式衝突：`git merge` 把兩邊段落都留、雜湊取合併後的檔、重算 `report_sha256`。永遠由審查代理做，作者只負責把樹準備好。
+- 收據衝突不是程式衝突：`git merge` 把兩邊段落都留、雜湊取合併後的檔、重算 `report_sha256`。永遠由審查代理做，作者只負責把樹準備好。兩邊共用的 Verdict 行或空行可能落在衝突標記外面，看起來像已經合好：從三個 blob（base、ours、theirs）重建兩邊段落的聯集，不要只修標記裡的部分。
 
 ## 來源
 
