@@ -75,6 +75,12 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli video-st
 
 在同一主機對 `video_drama_series` 的全部 `kind=story`、A01／B18 與五個 `story-five-*` 精確 slug 的 `video_drama_episodes`、`video_drama_requests`、`video_projects`、`video_media_jobs` 做唯讀查詢，結果均無資料列；video-worker 工作 volume 的七個精確 slug 目錄也均不存在。這比前述本機／後台觀察更直接，但只涵蓋**這七個 slug 與目前資料庫／volume**，不能排除別名或外部作品。尚未執行匯入 dry-run、`--apply`、設定變更、模型付費或上傳。A01／B18 的 US$25 整支預算關卡仍待實作，且站主看片前須關閉目前的自動成片核准；五支仍須等兩支試作完成。
 
+### 2026-10-15 容器版本與站內額度唯讀補查
+
+同一個 `hostinger2` PuTTY 入口再核對執行中的容器：API 與 `video-ai-worker` 共用映像 ID `sha256:6f80dfb28df9916b57db62dfe7ad01c3653992a7b66a1c5f0a3d730407c5a02a`，`video-worker` 映像 ID 為 `sha256:19b55fff62da360cd8bc08ab9326477c4af50c31a054b9b6d9b0cecc772eed0c`；三者啟動時間均為 2026-10-14 23:58 UTC。API 與 AI worker 容器內 `series.py` 的 SHA-256 均為 `cb9d3e01465a6f072d44fdcedae659f538686a634a03351171f8f67d8bfaa155`，API 的 `stories.py` 為 `a79e09e37fa42143d345bfd64fc07a7b601a424def9d1fb8f30a8dd5207fa610`，video-worker 的 `story.mjs` 為 `5fec3daefd27e1dd0d54a3fe0d2935bf8ef1ea1b8c14e2776110aabf653e37e8`；各值都與主機 `c4911a059` 工作樹中的對應檔案相同。這核對了三個實際運行中的故事程式檔，不是整個映像的逐檔證明，也不是本草稿 PR 已部署。
+
+同次只用 PostgreSQL `SELECT` 與 Redis `HGET` 讀站內數值，沒有呼叫付費供應商：設定顯示 `drama_enabled=true`、全域圖片 `minimax/image-01`、每月圖片與 judge 各 20,000、媒體估算上限每支 US$200。2026-10 的 Redis 原始 `total` 為 `video-media-images=9767`、`video-media-judge-calls=10642`、`azure_speech=40`、`gemini_speech=883936`。這些是站內計數，不能證明外部帳戶餘額、整支 US$25 預留或 A01／B18 的系列模型路由；現有程式也沒有 MiniMax 錢包餘額的零付費讀取介面。供應商實際可用額度仍待帳戶端核對，不用付費產圖作探針。
+
 ## 5. 新畫面路線的基本成本假設
 
 [原故事規格](../STORY.md)選 Gemini 3.1 Flash Image，但那是 A01／B18 和原 100 題規格，**不再用來估這五支**。[奇聞檔案局 skill](../../../.agents/skills/curio-episode/SKILL.md)依 H01、L08 收據記載 MiniMax 插畫連 judge 約 US$0.0135／張，整集約 75–120 張、畫面約 US$1.5–3。照相同路線粗估，五支畫面約 **US$7.5–15**；品牌故事實際張數與重畫率未測，故這只是過往集數的預算參考，並非站主授權、供應商當前報價或已支出。
