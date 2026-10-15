@@ -112,3 +112,15 @@
 - h09_delivery_audit 獨立驗證三語接受收據、逐句時間與轉寫、22 筆交付檔 hash/size、language manifest 來源綁定皆 PASS。後台三條音軌與接受版本一致；未重錄、未重送包、沒有新增付費呼叫。完整本機結案收據為 review/production-completion-20261015.json。
 - 本集製作票的「已檢查上傳包交給站主」已完成，可以結案；publish 與 languages 卡仍是 pending，YouTube ID／排程仍為 null。音訊接受沒有代替後台上傳包核准，更沒有代替實際 Studio 上傳或公開播放驗證。
 - 尚待站主的上傳包確認、實際 Studio 操作與播放核對另記 tasks/open/2026-10-15-complete-owner-release-and-playback-checks.md。這張票不授權代理自行上傳、發布、排程或合併 PR；上架前仍須重查 Purdue／ALI 最新探測結果。
+
+### 上傳包核准與私人 API 上傳讀回（2026-10-15）
+
+- publish 0e344aeb-ccb2-46d3-b695-83063b89c67a 於 13:27:46Z 核准，metadata SHA-256 132a7512ea926c2075f686648caf39625e87777df1a1f0e6e2558782086f8904；languages e8f86dd8-5f83-4602-ba6f-eaa48d27fbe2 於 13:27:56Z 核准，manifest SHA-256 f8c24ccb37cdf7837c9e0846a7f4f828ed5353ee0fff17f0e977c71a8f0d0880。22 筆附件的現行本機 SHA-256 與大小仍完全相符。此核准不等於 Studio 配音已實際存在。
+- 後台原有站主送出的 mode=upload、visibility=private、accept_private_lock=true 請求，14:31:36Z 因 YouTube 500 INTERNAL_ERROR 失敗。代理唯讀調查期間，14:42:07Z 另一次續作排入，14:42:33Z 讀回 done；代理沒有按重試、送新 upload、改權限或排程。現有影片 ID 為 -P820NUSWlc（https://www.youtube.com/watch?v=-P820NUSWlc），上傳 198,327,680 bytes、四語標題說明、四語 CC 與縮圖步驟均 done，publish_at=null。後台明確註記未稽核 API 上傳會被鎖成私人；需正式公開時仍須由站主決定 Studio 上傳版本。
+- 14:43–14:44Z 實際開啟 watch 頁與 Studio，確認標題、私人標示、縮圖與說明欄已存在，但播放器顯示「系統正在處理這部影片」，Studio 顯示「即將開始處理」，因此尚未通過播放驗收。後台 dub=uploaded 是站主按語言卡的聲明；API 同步程式只傳 mp4、資料、字幕與縮圖，不會傳三條替代音軌。
+- 當日再查出 [Purdue 10 月 15 日公告](https://www.purdue.edu/newsroom/2026/Q4/earhart-expedition-update-weather-prevents-shore-work-thursday-id-update-expected-in-next-48-hours/)：風浪使團隊暫停登島；當時預計兩天內更新辨認進度，尚未公布物件身分。這不推翻影片明示「截至十月十四日」的結論，無須據此重錄。公開前須把四語說明欄的「最新公告是十月十四日」更新，再查是否已有後續辨認結果。
+- 建議的繁中說明欄更新段落（候選，尚未寫回核准包或 YouTube）：「資料查核至 2026-10-15。普渡大學 10 月 15 日公告指出，風浪使團隊暫停登島；10 月 14 日取得的磁力儀與側掃聲納資料仍須分析，當時預計未來 48 小時內更新 Taraia 物件的辨認進度。該公告尚未公布物件身分。本片旁白以 10 月 14 日的資訊為截點；正式發布前會再查最新結果並更新說明欄。」
+- PR 2e4456416 的 web-checks／video-tests 同因本集交接票帶入個人主機絕對路徑而被 repo-hygiene 擋下；影片測試本身 215／215 通過。本次只把交接票路徑改成可攜佔位符，保留已核准媒體、字幕和音訊收據。
+- 14:45Z Studio 語言頁實測：EN／JA／KO 三列的字幕均「已發布 1 種版本」、標題說明均「已發布」，三列音訊欄均為「－」，沒有三語 dub 交付證據；截圖與紀錄保存在 review/studio-languages-20261015.png 及 review/youtube-private-upload-readback-20261015.json。核准與 22 檔比對收據為 review/backend-approval-upload-running-20261015.json。站主對 call_41f9ad1cd9d04797b4a09e8585f0b640 回覆「我自行操作 Studio 上傳」；因此由站主建立新的私人 Studio 影片，暫不排程並保留 API 測試片，代理沒有代傳或改遠端設定。
+- 已備好本機 review/studio-handoff-20261015/STUDIO-HANDOFF.md，包含已核准成片、縮圖、四語 SRT 與三語 M4A 的確切路徑，以及四語可直接貼上的說明欄副本。副本只換進度段落並加 10／15 官方來源，保留標題、章節及原核准包；四語說明皆低於 5000 UTF-8 bytes。manifest.json 保存九個媒體檔與說明欄雜湊。獨立文字覆核保留「當時預計更新」與「尚未公布身分」的區別；來源本回合先前成功讀取，但稍後重取失敗，正式公開前仍須再查。下一步等站主貼新 Studio 網址，再核對音軌、字幕及實際播放；交接票保留未完成並釋出。
+- 本次聚焦驗證：repo-hygiene 3／3 PASS、check:tasks 1913 PASS、git diff --check 無錯誤。此為本機修正驗證，新提交的遠端 CI 需另讀結果；不沿用前一版的綠燈。
