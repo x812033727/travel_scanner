@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { fixture } from "./fixtures/load.mjs";
-import { articlePath, articleUrl, ASSET_FIELDS, bodyLayout, checkYoutubeFields, composeDescription, creditBytes, creditedAssets, creditLine, dedupeLinks, descriptionHashtags, hashtagsFrom, pictureCredits, seriesHashtag, SERIES_HASHTAGS, splitFirstSentence, tagMokaairLinks, tagsLength, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH, titleWidth, unlinkedSources, uploadTags, urlKey, withUtm, youtubeWarnings } from "./metadata.mjs";
+import { articlePath, articleUrl, ASSET_FIELDS, bodyLayout, CAPTION_TAGS, checkYoutubeFields, composeDescription, creditBytes, creditedAssets, creditLine, dedupeLinks, descriptionHashtags, hashtagsFrom, pictureCredits, seriesHashtag, SERIES_HASHTAGS, splitFirstSentence, tagMokaairLinks, tagsLength, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH, titleWidth, unlinkedSources, uploadTags, urlKey, withCaptionTag, withUtm, youtubeWarnings } from "./metadata.mjs";
 import { estimateTimeline } from "./timeline.mjs";
 
 test("tag length is counted YouTube's way: commas between tags, quotes around tags with spaces", () => {
@@ -159,7 +159,6 @@ test("the description credits the stock photos after the sources, in the vendors
   assert.match(composeDescription({ body: "Body", assets, locale: "en" }), /^Body\n\n📷 Image credits\nPhoto by Lukas Rodriguez on Pexels \(Pexels License\): https:\/\/www\.pexels\.com[^\n]*\nImage by Josch13 from Pixabay \(Pixabay Content License\): https/);
   assert.match(composeDescription({ body: "Body", assets, locale: "ko" }), /\n\n📷 이미지 출처\nPhoto by Lukas Rodriguez on Pexels \(Pexels License\): https/);
   assert.match(composeDescription({ body: "Body", assets, locale: "ja" }), /\n\n📷 画像の出典\nPhoto by Lukas Rodriguez on Pexels（Pexels License）：https/);
-  assert.match(composeDescription({ body: "Body", assets, locale: "zh-CN" }), /\n\n📷 图片来源\n/);
   assert.equal(composeDescription({ body: "Body", assets: [own], locale: "en" }), "Body", "own diagrams: no block, so the descriptions of the videos that list them do not move");
   assert.equal(composeDescription({ body: "Body", locale: "en" }), "Body");
   assert.equal(creditLine({ path: "p", source: " Photo by A on Pexels ", license: " ", author: "A" }, "ko"), "Photo by A on Pexels", "no licence, no page: the credit alone");
@@ -173,4 +172,22 @@ test("the description credits the stock photos after the sources, in the vendors
 test("hashtags drop spaces and punctuation, skip repeats in any case and stop at three", () => {
   assert.deepEqual(hashtagsFrom(["ChatGPT Go", "AI·廣告", "chatgpt-go", "ChatGPTGo", "Plus", "Pro"]), ["#ChatGPTGo", "#AI廣告", "#Plus"]);
   assert.deepEqual(hashtagsFrom(["!!!", ""]), []);
+});
+
+test("every title ends with its language's captions tag, added once", () => {
+  assert.equal(withCaptionTag("AI 模型怎麼挑｜原來如此事務所", "zh-TW"), "AI 模型怎麼挑｜原來如此事務所｜CC字幕");
+  assert.equal(withCaptionTag("Picking a model", "en"), "Picking a model｜CC Subtitles");
+  assert.equal(withCaptionTag("AIモデルの選び方", "ja"), "AIモデルの選び方｜字幕付き");
+  assert.equal(withCaptionTag("AI 모델 고르기", "ko"), "AI 모델 고르기｜CC 자막");
+  assert.equal(withCaptionTag("AI 模型怎麼挑｜CC字幕 ", "zh-TW"), "AI 模型怎麼挑｜CC字幕", "not twice");
+  assert.equal(withCaptionTag("t", "fr"), "t｜CC Subtitles", "an untabled locale reads the English tag");
+  assert.deepEqual(Object.keys(CAPTION_TAGS).sort(), ["en", "ja", "ko", "zh-TW"]);
+  // A tag added by hand, or in another language, is replaced rather than added to.
+  assert.equal(withCaptionTag("Area 51｜ CC字幕", "en"), "Area 51｜CC Subtitles");
+  assert.equal(withCaptionTag("51 區｜ CC字幕｜CC字幕", "zh-TW"), "51 區｜CC字幕");
+  assert.equal(withCaptionTag("t | CC Subtitles", "ja"), "t｜字幕付き");
+  // The short tag when the full one does not fit; the full one when neither does.
+  assert.equal(withCaptionTag("a".repeat(90), "en"), `${"a".repeat(90)}｜CC`);
+  assert.equal(withCaptionTag(`${"a".repeat(90)}｜CC`, "en"), `${"a".repeat(90)}｜CC`);
+  assert.equal(withCaptionTag("a".repeat(98), "en"), `${"a".repeat(98)}｜CC Subtitles`);
 });

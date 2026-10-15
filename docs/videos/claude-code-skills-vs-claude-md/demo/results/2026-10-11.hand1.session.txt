@@ -1,0 +1,88 @@
+# hand1 | start 2026-10-11T11:54:06Z | CLAUDE_EFFORT=high
+## the project (built by: DRY=<work>/hand/unit-kit bash <seed>/session-2.sh hand1 skill ship --dry)
+$ cd <work>/hand/unit-kit && find . -type f | sort
+./.claude/hooks/seen.mjs
+./.claude/settings.json
+./.claude/skills/release-prep/SKILL.md
+./.claude/skills/release-prep/template.md
+./CHANGELOG.md
+./README.md
+./package.json
+./src/units.mjs
+$ cat ../ship.txt
+0.3.1 要出了，幫我把該改的地方都改好。
+## the nine lines, as typed (demo/typed-cmd.sh, sha256[0:16] 32be8b077c240367)
+$ env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 timeout 300 \
+    claude -p --model sonnet \
+    --setting-sources project,local --strict-mcp-config \
+    --tools "Read,Glob,Grep,Edit,Write,Skill" \
+    --allowedTools "Read,Glob,Grep,Edit,Write,Skill" \
+    --no-session-persistence \
+    --output-format stream-json --verbose \
+    --debug-file ../debug.log \
+    < ../ship.txt > ../stream.jsonl 2> ../stderr.txt
+[exit 0] (22 s, ended 2026-10-11T11:54:29Z)
+$ wc -c < ../stderr.txt
+0
+$ grep -c '"name":"Skill"' ../stream.jsonl
+1
+$ grep -o '"id":"msg_[^"]*"' ../stream.jsonl | sort -u | wc -l
+5
+$ cat .claude/seen.log
+PreToolUse Skill release-prep keys=skill,args
+$ find . -type f -not -path './.claude/*' | sort
+./CHANGELOG.md
+./README.md
+./package.json
+./releases/v0.3.1.md
+./src/units.mjs
+$ grep -h '^#' releases/*.md
+# v0.3.1
+## 這一版改了什麼
+## 升級要注意
+## 怎麼確認
+## scored like the others (the project copied to <work>/hand/hand1.lab, the stream to hand1.stream.jsonl)
+$ node <seed>/tally.mjs <work>/hand/hand1.stream.jsonl
+== hand1 | model claude-sonnet-5-5 | Claude Code 2.1.295 | permission mode default
+   result success, 13 turns, 0 permission denials, cost USD 0.053211600000000005, output tokens 1848
+   built-in tools offered (6): Edit Glob Grep Read Skill Write
+   MCP servers 0, MCP tools 0 | plugins shipped with Claude Code: 3, other plugins: 0
+   skills the session started with: 22 = the project's 1 (release-prep) + shipped with Claude Code 21 + anything else 0
+   the project's skills among the slash commands: release-prep
+   call  1 Skill release-prep args="0.3.1" [input keys: skill,args]
+   call  2 Read package.json
+   call  3 Read CHANGELOG.md
+   call  4 Read README.md
+   call  5 Read .claude/skills/release-prep/template.md
+   call  6 Glob releases/*
+   call  7 Edit package.json
+   call  8 Edit CHANGELOG.md
+   call  9 Edit README.md
+   call 10 Write releases/v0.3.1.md
+   call 11 Edit releases/v0.3.1.md
+   Skill tool called for release-prep: yes (call 1) | other Skill calls: none
+   skill or instruction files opened with a tool: Read .claude/skills/release-prep/template.md
+   the procedure's text appears in: a user message (added by Claude Code)
+   the template's text appears in: the result of Read (call 5)
+   first request: input 2 + cache write 3452 + cache read 5366 = 8820 tokens | whole session: 51493
+   files written: package.json, CHANGELOG.md, README.md, releases/v0.3.1.md
+   last line of the reply: 下一步：git tag v0.3.1
+   files in the project afterwards: CHANGELOG.md README.md package.json releases/v0.3.1.md src/units.mjs
+   F1 package.json version is 0.3.1: yes (it is 0.3.1)
+   F2 CHANGELOG.md: dated heading yes (## v0.3.1 (2026-10-11)), Unreleased kept above it yes, items moved under it yes -> yes
+   F3 README.md says Latest release: v0.3.1: yes (Latest release: v0.3.1)
+   F4 releases/v0.3.1.md: file yes, template headings 3 of 3 -> yes
+   F5 last line starts with 下一步： and has git tag v0.3.1: yes
+   not scored: src/units.mjs sha256[0:16] a3e0a9bd16d2da03
+$ node <seed>/drift.mjs <work>/hand/hand1.stream.jsonl
+== hand1 | against the seed (package.json, CHANGELOG.md, README.md, src/units.mjs)
+   package.json: changed | CHANGELOG.md: changed | README.md: changed | src/units.mjs: same
+   new files outside .claude: releases/v0.3.1.md
+   package.json version: 0.3.1 | CHANGELOG.md has a 0.3.1 heading: yes
+   the release was carried out (version no longer 0.3.0, or a file under releases/): yes
+   marks of another procedure: CHANGELOG lines starting "- [": 0 | README "## Usage": no | another procedure's last line: no
+   Skill calls, in order: release-prep
+   last line of the reply starts with 下一步: yes
+   requests to the model: 5 (input tokens of each: 8820, 9305, 10176, 11399, 11793) | sum 51493
+   turns 13 | output tokens 1848 | reported cost USD 0.053211600000000005 | 16 s
+# hand1 | end 2026-10-11T11:54:31Z

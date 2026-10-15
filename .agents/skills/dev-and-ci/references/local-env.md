@@ -20,6 +20,7 @@
 - Playwright：`playwright.config.ts` 的 webServer 會起 `tools/e2e-runtime-api.mjs`（:8000 的假 API）與 `next dev`（:3000）；專案名是 `desktop-chromium`、`mobile-chromium`（Pixel 7）。`PLAYWRIGHT_SERVE_BUILD=true` 在 `npm run build:web` 之後改用 `next start`，跟 CI 一樣。本機裝的 chromium build 可能比 `@playwright/test` 要的舊，那時 e2e 只能靠 CI。
 - scratchpad 裡臨時的 Playwright 量測腳本要用 `createRequire("<worktree>/apps/web/package.json")("playwright")` 解析套件。
 - 完整版 Playwright Chromium 在 Windows ARM64 可能起不來（WinError 14001 side-by-side），同一個 build 的 headless shell 可以。要 Chromium 的後端程式（例如 `app.guides.pack_ingest.render_svg` 讀 `CHROMIUM_BIN`）指向 `$LOCALAPPDATA/ms-playwright/chromium_headless_shell-<rev>/chrome-headless-shell-win64/chrome-headless-shell.exe`。
+- **`test:tools` 紅了先跑基準**：Claude Code 用的這台 Windows 機器上，origin/main 本來就有約 12 個 `test:tools` 失敗（assemble 測試的假 ffprobe shebang、automation 的 fontsource 測試、`ERR_UNSUPPORTED_ESM_URL_SCHEME`／project-lease 的子程序測試）。追之前先開一個乾淨的 origin/main worktree 跑一次，只追基準上沒有的。
 
 ### 影片測試還沒進 assertion 就原生崩潰
 
@@ -90,6 +91,7 @@ try {
 - **背景指令的 `> log` 指向還不存在的目錄時，命令根本不會跑**，而「完成」通知回報的是後面那個 `echo` 的 exit code。先 `mkdir -p`，並讀 log 再相信通知。
 - `cd "$D" && (A > a.log) & (B > b.log) & wait` 裡的 `cd` 只屬於第一個背景工作，B 會在原目錄跑、log 落在 worktree 根目錄（被 `*.log` 忽略，`git status` 看不到）。背景指令一律用絕對路徑。
 - 這台機器的 Bash 沒有 `jq`，而且在管線裡靜默失敗：`n=$(... | jq length)` 變空字串，`[ "$n" != "0" ]` 反而成立，曾讓輪詢 CI 的腳本回報「全部完成、失敗 0」。用 `gh ... -q` 或 Python。
+- **輪詢與監看腳本每次檢查都要拿到一行只有對方產生得出來的輸出**（例如主機印的 `NOW <UTC>`），拿不到就印 `CHECK FAILED`：曾有監看腳本根本沒連上，卻連續 27 小時回報「0 筆新的」。`plink -m` 的腳本路徑要寫 Windows 路徑。
 - `gh run list --commit <sha>` 會漏掉剛建立的 run，`gh pr checks` 在 check-run 掛上前回「no checks reported」；要確認 CI 有沒有被觸發，用 `gh api "repos/{owner}/{repo}/actions/runs?head_sha=<完整 sha>"`。
 - 中文的 commit 訊息、PR 內文用檔案傳（`-F`、`--body-file`），不要當命令列參數。
 

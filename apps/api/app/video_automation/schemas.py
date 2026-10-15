@@ -27,8 +27,11 @@ from app.video_media.catalog import MEDIA_VENDORS, find_model
 ProviderName = Literal["claude_code", "codex", "openai", "anthropic", "minimax", "gemini"]
 ApiProviderName = Literal["openai", "anthropic", "minimax", "gemini"]
 Stage = Literal["planner", "writer", "verifier", "listener", "translator", "caption_reviewer"]
-CaptionLocale = Literal["en", "ja", "ko", "zh-CN"]
-TopicWord = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=40)]
+# The languages the language panel pre-ticks for a new video, besides zh-TW: the owner decided
+# on 2026-10-09 that a video's languages are four (zh-TW narration plus en, ja, ko).
+CaptionLocale = Literal["en", "ja", "ko"]
+CAPTION_LOCALES: tuple[CaptionLocale, ...] = get_args(CaptionLocale)
+TopicWord =Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=40)]
 # The owner's standing instructions for one stage: the settings tab's text, which the worker
 # appends to that stage's prompt. Which prompt a stage gets depends on the video's format.
 StandingText = Annotated[str, StringConstraints(strip_whitespace=True, max_length=4000)]
@@ -43,10 +46,33 @@ SUBJECT_VARIANTS = ("a", "b")
 # The drama format's media settings (docs/videos/DRAMA.md); the vendors are the site's keys.
 MediaProvider = Literal["gemini", "minimax"]
 ClipResolution = Literal["720p", "768p", "1080p", "2k", "4k"]
-StylePreset = Literal["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom"]
-# The illustrated explainer (docs/videos/so-thats-why/): narrator only, no cast. Only a one-off
-# may use it; a long series and a story series are written from prompts that need a cast.
-EXPLAINER_PRESET: StylePreset = "flat-explainer"
+StylePreset = Literal[
+    "cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "cute-cartoon", "cute-mystery",
+    "custom",
+]
+# The illustrated explainer family: narrator only, no cast, 8 to 20 minutes. flat-explainer is
+# So That's Why (docs/videos/so-thats-why/), cute-cartoon the same series redrawn as a cute
+# cartoon, cute-mystery the history-and-curiosity series (docs/videos/history-curiosity/). Only
+# a one-off may use one; a long series and a story series are written from prompts that need a
+# cast. The tools (tools/video/core/drama.mjs) and the web (apps/web/lib/video-presets.ts) keep
+# the same list, and tools/video/core/explainer-family.test.mjs reads this line to compare them.
+EXPLAINER_PRESETS: tuple[StylePreset, ...] = ("flat-explainer", "cute-cartoon", "cute-mystery")
+
+
+def is_explainer_preset(preset: str | None) -> bool:
+    """Whether a style preset is one of the explainer family's."""
+    return preset in EXPLAINER_PRESETS
+
+
+# The image model a one-off of this preset is drawn with when its request names none. The cute
+# looks are positive-only text written for MiniMax image-01 (US$0.0035 a picture at 1K), so the
+# server stores that id on the one-off's series row instead of following the drama settings'
+# model. flat-explainer is deliberately absent: with no model named it follows the settings, as
+# it always has. The request form preselects the same id (apps/web/lib/video-presets.ts
+# PRESET_IMAGE_MODEL), and tools/video/core/explainer-family.test.mjs compares the two tables.
+PRESET_IMAGE_MODELS: dict[str, str] = {"cute-cartoon": "image-01", "cute-mystery": "image-01"}
+
+
 # The slides route and other long-form videos have an eight-minute minimum (migration 0117).
 EPISODE_MIN_MINUTES = 8
 EXPLAINER_MIN_MINUTES = 8
@@ -142,7 +168,7 @@ class DramaSettings(StrictModel):
     drama_stage_models: dict[Stage, StageModel] | None = None
     drama_stage_instructions: dict[Stage, StandingText] = Field(default_factory=dict)
     drama_voice: VoiceSettings | None = None
-    drama_caption_locales: list[CaptionLocale] = Field(default_factory=list, max_length=4)
+    drama_caption_locales: list[CaptionLocale] = Field(default_factory=list, max_length=3)
     drama_auto_approve_audio: bool = True
     drama_auto_approve_final: bool = True
     drama_max_verify_rounds: int = Field(default=3, ge=1, le=5)
@@ -180,7 +206,7 @@ class _SettingsFields(StrictModel):
     voice: VoiceSettings
     target_minutes_min: int = Field(ge=EPISODE_MIN_MINUTES, le=30)
     target_minutes_max: int = Field(ge=EPISODE_MIN_MINUTES, le=30)
-    caption_locales: list[CaptionLocale] = Field(max_length=4)
+    caption_locales: list[CaptionLocale] = Field(max_length=3)
     max_drafts_per_month: int = Field(ge=0, le=60)
     monthly_token_budget_millions: int = Field(ge=1, le=500)
     max_verify_rounds: int = Field(ge=1, le=5)
@@ -410,6 +436,10 @@ class DramaRequestIn(StrictModel):
 
     ``premise`` is the story in the owner's words; with ``source_guide`` it says what to make of
     that article. The worker takes the oldest request before any scheduled draft.
+
+    An explainer may name the ``image_model`` its pictures are drawn with; a cute preset that
+    names none is given ``image-01`` here, so the value on the payload is the one that is stored,
+    audited and checked for a key. Every other preset is refused one.
     """
 
     premise: str = Field(min_length=1, max_length=4000)
@@ -418,16 +448,34 @@ class DramaRequestIn(StrictModel):
     style_preset: StylePreset = "cinematic-3d"
     target_minutes: int = Field(default=3, ge=1, le=EXPLAINER_MAX_MINUTES, strict=True)
     note: str | None = Field(default=None, min_length=1, max_length=2000)
+    image_model: str | None = Field(default=None, min_length=1, max_length=128)
+
+    @field_validator("image_model")
+    @classmethod
+    def _image_model(cls, value: str | None) -> str | None:
+        return _known_image_model(value)
 
     @model_validator(mode="after")
     def _episode_length(self) -> Self:
-        if self.style_preset == EXPLAINER_PRESET:
+        if is_explainer_preset(self.style_preset):
             if "target_minutes" not in self.model_fields_set:
                 self.target_minutes = EXPLAINER_DEFAULT_MINUTES
             if self.target_minutes < EXPLAINER_MIN_MINUTES:
                 raise ValueError(f"an explainer is at least {EXPLAINER_MIN_MINUTES} minutes")
         elif self.target_minutes > SERIES_MAX_MINUTES:
             raise ValueError(f"a drama episode is at most {SERIES_MAX_MINUTES} minutes")
+        return self
+
+    @model_validator(mode="after")
+    def _image_model_for_preset(self) -> Self:
+        if self.image_model is not None and not is_explainer_preset(self.style_preset):
+            raise ValueError(
+                "image_model is for an explainer preset only: a cast drama is drawn with the "
+                "settings' image model, whose reference sheets hold a face across shots"
+            )
+        if self.image_model is None and (default := PRESET_IMAGE_MODELS.get(self.style_preset)):
+            # Checked like a named one, so a retired default is refused by name, never stored.
+            self.image_model = _known_image_model(default)
         return self
 
     @field_validator("premise", "title", "note")
@@ -602,11 +650,12 @@ class StagePromptsOut(StrictModel):
 
 
 class TopicView(StrictModel):
-    source: Literal["site", "search"]
+    # "official": a company's own page the news writer declined (topics.official_topics).
+    source: Literal["site", "search", "official"]
     title: str
     summary: str
     url: str
-    # The site article's slug, so a video can point back to it; None for a search result.
+    # The site article's slug, so a video can point back to it; None for the other two.
     slug: str | None = None
     date: str | None = None
 
@@ -624,8 +673,8 @@ SERIES_SLUG_PATTERN = r"^[a-z0-9][a-z0-9-]{1,39}$"
 # A long series, a one-off drama (one episode, one story bible; docs/videos/DRAMA-FLOW.md §二), or
 # a brand-story series (no documents; its episodes are a planned backlog; docs/videos/STORY.md).
 SeriesKind = Literal["series", "one-off", "story"]
-# How long one episode may run: a drama's episode, and a story, which is 12 to 15 minutes. The
-# database allows the longer one for every kind (migration 0111); the schemas hold the rest to 8.
+# Episode lengths: drama is capped at 8 minutes; stories may use the original 13-minute
+# route or the separate 10-minute cute-mystery route (both below the 20-minute schema cap).
 SERIES_MAX_MINUTES = 8
 STORY_MAX_MINUTES = 20
 # How many stories may start on one Asia/Taipei calendar day, at most.
@@ -675,6 +724,12 @@ class StoryLook(StrictModel):
         return value
 
 
+class StoryPresetLook(StrictModel):
+    """The MiniMax cute-mystery picture preset, stored without custom prompt fields."""
+
+    preset: Literal["cute-mystery"]
+
+
 def image_model_problem(model_id: str) -> str | None:
     """Why a series cannot name this image model, or None: it must be an image model of the
     media catalog that is not retired (app.video_media.catalog)."""
@@ -706,7 +761,7 @@ class SeriesIn(StrictModel):
 
     A ``one-off`` is one episode with one story bible: its numbers are fixed at one whatever
     was sent, and aspects and tone may be left out (docs/videos/DRAMA-FLOW.md §二). Only a
-    one-off may take EXPLAINER_PRESET: the explainer has no cast, and the other kinds' prompts
+    one-off may take an explainer preset: the explainer has no cast, and the other kinds' prompts
     write one that the drama lint then refuses on every episode.
 
     A ``story`` series (docs/videos/STORY.md) is always hands-off, stills only and never
@@ -739,7 +794,7 @@ class SeriesIn(StrictModel):
     total_minutes: int | None = Field(default=None, ge=30, le=480)
     episodes_per_day: int | None = Field(default=None, ge=1, le=STORY_MAX_PER_DAY)
     image_model: str | None = Field(default=None, min_length=1, max_length=128)
-    look: StoryLook | None = None
+    look: StoryLook | StoryPresetLook | None = None
 
     @field_validator("title", "premise", "note")
     @classmethod
@@ -783,12 +838,12 @@ class SeriesIn(StrictModel):
                 raise ValueError(problem)
         elif self.runtime_spec is not None or self.category is not None or self.lead == "ensemble":
             raise ValueError("anime category, runtime_spec and ensemble require long-anime-v1")
-        if self.style_preset == EXPLAINER_PRESET and self.kind != "one-off":
+        if is_explainer_preset(self.style_preset) and self.kind != "one-off":
             raise ValueError(
-                f'style_preset "{EXPLAINER_PRESET}" is for a one-off explainer only: '
+                f'style_preset "{self.style_preset}" is for a one-off explainer only: '
                 "a long series and a story series have a cast"
             )
-        if self.style_preset == EXPLAINER_PRESET:
+        if is_explainer_preset(self.style_preset):
             if "target_minutes" not in self.model_fields_set:
                 self.target_minutes = EXPLAINER_DEFAULT_MINUTES
             if self.target_minutes < EXPLAINER_MIN_MINUTES:
@@ -811,9 +866,18 @@ class SeriesIn(StrictModel):
                 raise ValueError("a story series needs a title and a premise")
             if self.look is None:
                 raise ValueError("a story series needs the look every story shares")
+            if isinstance(self.look, StoryPresetLook) and (
+                self.target_minutes != 10
+                or self.image_model != "image-01"
+                or self.style_preset != "custom"
+            ):
+                raise ValueError(
+                    'a cute-mystery story needs target_minutes=10, image_model="image-01" '
+                    'and style_preset="custom"'
+                )
         else:
             if (
-                not long_anime and self.style_preset != EXPLAINER_PRESET
+                not long_anime and not is_explainer_preset(self.style_preset)
                 and self.target_minutes > SERIES_MAX_MINUTES
             ):
                 raise ValueError(
@@ -821,7 +885,7 @@ class SeriesIn(StrictModel):
                     "a story or a one-off explainer may run longer"
                 )
             if (
-                self.style_preset == EXPLAINER_PRESET
+                is_explainer_preset(self.style_preset)
                 and self.target_minutes > EXPLAINER_MAX_MINUTES
             ):
                 raise ValueError(f"an explainer is at most {EXPLAINER_MAX_MINUTES} minutes")
@@ -845,8 +909,8 @@ class SeriesPatch(StrictModel):
     The length may reach STORY_MAX_MINUTES and the daily count and the look may be set only on
     a story series; the service refuses them on the other kinds, which keep their limits.
     ``episodes_per_day`` or ``image_model`` sent as null lifts the daily limit or follows the
-    settings tab again. EXPLAINER_PRESET stays a one-off's, and a one-off's bible fixes which
-    side of it the one-off is on (series.patch_problem).
+    settings tab again. An explainer preset stays a one-off's, and a one-off's bible fixes
+    whether it is an explainer and which one (series.patch_problem).
     """
 
     title: str | None = Field(default=None, min_length=1, max_length=200)
@@ -870,7 +934,7 @@ class SeriesPatch(StrictModel):
     # A story series (docs/videos/STORY.md).
     episodes_per_day: int | None = Field(default=None, ge=1, le=STORY_MAX_PER_DAY)
     image_model: str | None = Field(default=None, min_length=1, max_length=128)
-    look: StoryLook | None = None
+    look: StoryLook | StoryPresetLook | None = None
 
     @field_validator("image_model")
     @classmethod

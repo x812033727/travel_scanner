@@ -3,12 +3,15 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
-    "software"
+    "software",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "Canva 製作圖文：範本、版面與輸出品質檢查",
@@ -116,10 +119,8 @@
               "text": "需要文件閱讀時可評估 PDF Standard，需要印刷時再依印刷廠要求評估 PDF Print、色彩描述方式、出血與裁切"
             },
             {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
+              "type": "text",
+              "text": "標記"
             },
             {
               "type": "text",
@@ -182,6 +183,7 @@
           "width": 1600,
           "height": 900,
           "caption": "畫布看起來完成，還要確認輸出正確、素材可用，以及接手的人能找到來源。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -307,6 +309,1210 @@
         },
         {
           "title": "Canva：現行內容授權條款",
+          "url": "https://www.canva.com/policies/content-license-agreement/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Designing with Canva: Templates, Layout, and Export Quality Checks",
+      "description": "Canva templates help start a design, but size, text, brand assets, and export settings still need checking. Using an original community used-book swap notice, this guide covers template edits, brand rules, and PNG, JPG, and PDF delivery, plus limits on transparent backgrounds, paid assets, and print bleed. A comparison table, steps, and original diagrams help organize editable designs and shareable files, without judging export accuracy from the editor alone.",
+      "hero": {
+        "src": "/guides/canva-design-workflow/hero-en.jpg",
+        "alt": "An original Mokaair illustration of a graphic, exported files, and an asset folder, representing Canva design checks from layout to file delivery.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The same event announcement may need to appear on social media, be emailed to participants, and be printed for display at a shop entrance. Simply resizing the same image can make text too small, distort proportions, or leave edges cropped in print. Before using Canva, list where each finished item will appear."
+        },
+        {
+          "type": "paragraph",
+          "text": "The following uses an original community used-book swap announcement as an example, based on Canva's official guidance consulted on 2026-9-14. No account was logged into, plan purchased, or print order placed for this article. The event, text layout, and illustrations were all created from scratch; no ready-made template was used as a deliverable image."
+        },
+        {
+          "type": "heading",
+          "text": "Define the purpose and content before choosing a template",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Write the event name, date, venue, participation instructions, and contact information as plain text, and confirm them before arranging the layout. This example can have a social media announcement and a printed notice: both use the same information, but reading distances and layout proportions differ. Confirm dimensions against the actual publishing platform and printing requirements; no template name represents a universal specification for every use."
+        },
+        {
+          "type": "paragraph",
+          "text": "Search for templates on Canva's homepage, preview one, then choose to customize it to enter the editor. You can also search in the editor's Templates panel. When choosing, consider information density, the arrangement of text and images, and room for changes, rather than color alone. If the event has many rules, a layout with space for explanations is more practical than squeezing text into an image-focused template."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "After applying a template, replace the sample content item by item. Pay particular attention to dates in corners, names in footers, and outdated information left on duplicated pages. People, images, and copy in a template are only a starting point for the design; they do not automatically reflect the actual event. If you use "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " to help rewrite the text, you must still verify the facts and terminology used in Taiwan yourself."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Keep designs consistent with simple brand rules",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First choose primary and secondary text styles and a small set of colors, then create a one-page reference example. In this example, the event name is most prominent, followed by the date and venue, with book-swap rules organized into paragraphs. Align the edges of text and images, leave whitespace, and avoid giving every section both a heavy font weight and a strong background color."
+        },
+        {
+          "type": "paragraph",
+          "text": "Canva's Brand Kit can organize logos, colors, fonts, and other brand resources. How kits are created and shared depends on the plan and role. If a team needs shared access, confirm which Brand Kit is actually being used, who can edit it, and the access permissions for linked folders. A brand asset appearing in the list does not mean every collaborator has the same permissions."
+        },
+        {
+          "type": "paragraph",
+          "text": "If your current account lacks the brand management features you need, you can keep a design rules page recording color codes, font names, frequently used paragraphs, and the locations of your own image files. Confirm usage rights before uploading fonts or logos. Manually compare duplicated designs against this reference, so changing templates does not also replace the visual identity and event name."
+        },
+        {
+          "type": "heading",
+          "text": "Check paid features and asset licensing separately",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "You can start designing in Canva for free, but some assets and export options are restricted by plan. The official transparent-background guidance lists supported plans including Pro, Teams, Business, Education, and Nonprofits. The fact that PNG files can support transparency does not mean every account can use Canva's transparent-background download feature, nor does it mean a background image has been removed."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a payment prompt appears when downloading, first identify the asset or option causing it. Free users can follow the interface to purchase a Pro Content license, change the assets, or consider a plan. Being able to preview something on the canvas does not mean you have secured the rights to use it. Prices and subscription terms depend on the actual account and checkout page; this article does not provide promotional codes or guarantee fixed prices."
+        },
+        {
+          "type": "paragraph",
+          "text": "The current content terms regulate Free, Pro, Branded, and Education content separately, and stricter restrictions may apply when they are combined. Branded Content is generally limited to personal use, while Education Content is limited to educational and noncommercial use. An asset appearing in the free section does not make it available for commercial promotion. Check each asset's source information before deciding."
+        },
+        {
+          "type": "heading",
+          "text": "Choose an image format or PDF for the intended delivery",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For purely static social media graphics, JPG can suit photo-focused images that do not require transparency. PNG suits situations requiring crisp graphics or transparency, though actual file sizes still need comparing. After downloading, check pixel dimensions and text edges. Do not assume a file suits every platform just because of its extension or the highest-quality setting."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Consider PDF Standard for document reading. For printing, assess PDF Print, color representation, bleed, and crop "
+            },
+            {
+              "type": "text",
+              "text": "marks"
+            },
+            {
+              "type": "text",
+              "text": " according to the print provider's requirements. PDF Print cannot restore real detail missing from low-resolution originals, and SVG export cannot automatically turn embedded raster images into vectors that stay sharp at any scale."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Canva specifically warns that PDFs may retain the full original content of cropped images. If part of an original image should not be public, cropping it in Canva does not mean it has been deleted. Prepare an image file without that content before inserting it. Flatten PDF merges design content and may increase file size; it is not a comprehensive guarantee against editing or disclosure."
+        },
+        {
+          "type": "heading",
+          "text": "Check print and digital versions separately",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For print, keep important text in a safe position and extend edge-to-edge backgrounds into the bleed area. Canva's margin guides, bleed, and crop marks serve different purposes. The marks appear in the exported PDF; simply seeing a line in the editor does not complete the process. External print providers may have their own size and bleed specifications, so obtain their requirements first."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a social media version, check text size and cropping on the target device, keeping important text where it is easy to read. Switching to another aspect ratio requires rearranging the title, time, and rules, rather than merely resizing the entire image. Even with automatic resizing, check every page for line breaks, overlaps, and cropped information."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the design includes a QR code, scan the actual exported file to confirm that it links to the correct page, and provide a readable alternative URL or contact method. Do not hide all participation instructions inside an image. When publishing on social media, include event information in the post text so people who cannot clearly see the image still know how to take part."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Confirm the finished item's purpose, dimensions, and event information, then choose a template with room for the content.",
+            "Replace all sample text, standardize fonts and colors, and check asset sources.",
+            "Go from Share to Download, then select the format, pages, and available export options.",
+            "Open the actual downloaded file to check text, images, and links, then organize the finished files and editable sources."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Begin the final proofread after downloading",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For a multipage design, first confirm whether to export all pages, the current page, or selected pages, so backup drafts are not delivered by mistake. After downloading, check each page's dates, phone numbers, page numbers, accent marks or Traditional Chinese character forms, and whether images have shifted. Filenames can include the event, purpose, and version to distinguish social media files, print files, and drafts awaiting revision."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep the editable Canva source along with the actual delivered files and asset records. When handing a design to collaborators, confirm link permissions and make clear whether they can view, comment, or edit. If a design contains platform assets and will be transferred to a client, also check the content terms for conditions such as transfer to a single client and a written agreement. Do not bundle standalone assets as a stock library that can be freely resold."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, test the design as a reading task: can the recipient quickly find the time, venue, participation requirements, and next step? Canva makes layout work easier, but accurate information, permitted asset use, and export quality still require human checks. Keep these records with the original files so the next event update does not require rebuilding from a compressed image."
+        },
+        {
+          "type": "image",
+          "src": "/guides/canva-design-workflow/diagram-1-en.svg",
+          "alt": "Four cards explain checks for purpose, layout, export, and delivery, distinguishing the editor view from the actual downloaded file.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Even when the canvas looks finished, confirm that the export is correct, assets can be used, and the next person can find the source.",
+          "description": "Four cards explain checks for purpose, layout, export, and delivery, distinguishing the editor view from the actual downloaded file.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Output or feature",
+            "Suitable uses",
+            "What to check after downloading"
+          ],
+          "rows": [
+            [
+              "JPG",
+              "Photo-focused static images",
+              "Detail after compression and text clarity"
+            ],
+            [
+              "PNG",
+              "Text and graphics; transparent export where available",
+              "Actual transparency and account features"
+            ],
+            [
+              "PDF Standard",
+              "Document reading and sharing",
+              "Pages, links, and content not intended for disclosure"
+            ],
+            [
+              "PDF Print",
+              "Files prepared to printing requirements",
+              "Dimensions, color, bleed, and proofs"
+            ],
+            [
+              "SVG",
+              "Delivery of graphics suited to vectors",
+              "Embedded images and support in the receiving tool"
+            ],
+            [
+              "Editable design",
+              "Later revisions and collaboration",
+              "Permissions, versions, and asset terms"
+            ]
+          ],
+          "caption": "Format support and advanced options vary by design type and plan. Even after choosing the right format, inspect the actual finished file."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Cropping does not necessarily delete the original image content",
+          "text": "Before sharing a PDF, remove any original image content that should not be public, then insert the safe version. Do not rely solely on covering, cropping, or flattening options to guarantee confidentiality."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "First distinguish RGB and CMYK delivery requirements",
+              "kind": "life",
+              "slug": "rgb-cmyk-export"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Compare image formats and compression methods",
+              "kind": "life",
+              "slug": "image-formats-compression"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Organize licensing records for assets cleared for commercial use",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Canva: Creating designs using templates",
+          "url": "https://www.canva.com/help/use-templates-variantb/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva: Setting up Brand Kit",
+          "url": "https://www.canva.com/help/brand-kit/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva: Downloading and purchasing content",
+          "url": "https://www.canva.com/help/download-or-purchase/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva: Downloading with transparent backgrounds",
+          "url": "https://www.canva.com/help/transparent-background/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva: Export file types",
+          "url": "https://www.canva.com/help/download-file-types/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva: Margins, bleed, and crop marks",
+          "url": "https://www.canva.com/help/margins-bleed-crop-marks/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva: Flattening PDFs",
+          "url": "https://www.canva.com/help/download-flattened-pdf-variantb/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva: Current content licensing terms",
+          "url": "https://www.canva.com/policies/content-license-agreement/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Canvaで画像と文字のデザインを作る：テンプレート、レイアウト、出力品質の確認",
+      "description": "Canvaのテンプレートは画像と文字のデザインを始める助けになりますが、完成させるにはサイズ、文章、ブランド素材、出力条件の確認が必要です。本記事では、地域の古本交換会のオリジナル告知を例に、テンプレートの調整、ブランドルール、PNG・JPG・PDFでの納品までの流れを整理し、透明背景、有料素材、印刷の塗り足しに関する制約を説明します。比較表、操作手順、独自の図解を添え、編集可能なデザインと共有用の完成品の両方を整理し、編集画面だけで出力が正しいと判断しないための確認方法を紹介します。",
+      "hero": {
+        "src": "/guides/canva-design-workflow/hero-ja.jpg",
+        "alt": "Mokaairオリジナルの画像と文字を組み合わせた画面、出力ファイル、素材フォルダーのイラスト。Canvaでのレイアウトから各形式での納品までの確認を表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "同じイベント告知をSNSに掲載し、参加者に送り、印刷して店頭に掲示することもあります。同じ画像をそのまま拡大・縮小すると、文字が小さすぎたり、縦横比が合わなかったり、印刷時に端が切れたりしがちです。Canvaを使い始める前に、それぞれの完成品をどこで使うかを書き出しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下では、地域の古本交換会のオリジナル告知を例に、2026 年 9 月 14 日に確認したCanvaの公式説明を基に整理します。本記事の作成にあたり、アカウントへのログイン、プランの購入、印刷の注文は行っていません。イベント内容、文章構成、挿絵はすべて独自に作成し、既存のテンプレートを納品用画像として使用していません。"
+        },
+        {
+          "type": "heading",
+          "text": "用途と内容を決めてから、合うテンプレートを探す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "イベント名、日付、場所、参加方法、連絡先を先にプレーンテキストで書き、確認してからレイアウトします。本例はSNS告知用と印刷通知用に分けられます。情報は同じでも、読む距離や紙面の縦横比は異なります。サイズは実際の掲載先や印刷要件に合わせて確認し、テンプレート名をあらゆる用途に共通する規格とは考えないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Canvaのホーム画面でテンプレートを検索し、プレビューを見てからカスタマイズを選ぶと、エディターに進めます。エディターの「Templates」パネルでも探せます。選ぶ際は色だけでなく、情報量、画像と文字の配置、調整できる余地を先に見ます。イベントのルールが多い場合は、画像中心のテンプレートに文字を無理に詰め込むより、説明を収められるレイアウトを選ぶほうが実用的です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "テンプレートを適用したら、サンプル内容を一つずつ置き換えます。特に隅の日付、フッターの名称、複製したページに残った古い情報を確認しましょう。テンプレート内の人物、画像、文章はデザインの出発点にすぎず、今回のイベントの実情を自動的に表すものではありません。書き直しに "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " を使う場合も、事実や台湾で使われる用語を自分で確認する必要があります。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "簡単なブランドルールで統一感を保つ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "主な文字スタイル、補助的なスタイル、少数の色を先に決め、見比べられる見本を一ページ作ります。本例ではイベント名を最も目立たせ、次に日付と場所、そして本の交換ルールを段落にまとめます。文字と画像の端をそろえ、余白を残し、すべてのブロックを同時に太い文字や強い背景色で目立たせないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CanvaのBrand Kitでは、ロゴ、色、フォント、そのほかのブランド資源を整理できます。作成や共有の方法はプランや役割によって異なります。チームで共有する場合は、実際にどのブランドキットを使うのか、誰が変更できるのか、リンクされたフォルダーへのアクセス範囲を確認しましょう。ブランド素材が一覧に表示されていても、すべての共同作業者が同じ権限を持つとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "現在のアカウントに必要なブランド管理機能がない場合も、デザインルールのページを残し、カラーコード、フォント名、よく使う段落、自分が所有する画像ファイルの保存場所を記録できます。フォントやロゴをアップロードする前に、利用権を確認しましょう。デザインを複製するときも手作業で照合し、テンプレートを替えるたびにビジュアルアイデンティティやイベント名まで変えてしまわないようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "有料機能と素材ライセンスは分けて確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Canvaでは無料でデザインを始められますが、一部の素材や書き出しオプションにはプランによる制限があります。透明背景に関する公式説明では、対応プランとしてPro、Teams、Business、Education、Nonprofitsなどが挙げられています。一般的なPNGファイルが透明度に対応していても、すべてのアカウントでCanvaの透明背景ダウンロード機能が使えるわけではなく、背景画像が削除されていることも意味しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ダウンロード時に支払いを求められたら、まずどの素材やオプションが原因かを確認します。無料ユーザーは、画面の案内に従ってPro Contentのライセンスを購入する、素材を変更する、プランを検討するといった対応ができます。キャンバス上でプレビューできることを、正式な利用権を得たことと同一視しないでください。価格や契約条件は実際のアカウントと決済画面で確認します。本記事ではクーポンコードを紹介せず、固定価格も保証しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "現行のコンテンツ規約では、Free、Pro、Branded、Educationなどのコンテンツがそれぞれ別に規定されており、組み合わせて使うと、より厳しい制限が適用される場合があります。Branded Contentは通常、個人利用に限られ、Education Contentは教育目的および非商用の利用に限られます。無料の素材一覧に表示されているという理由だけで、商業宣伝に使うことはできません。各素材の提供元情報を確認してから判断しましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "納品物の用途に合わせて画像かPDFを選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "画像と文字を組み合わせた静止画のSNS投稿を作る場合、JPGは写真が中心で透明度を必要としないデザインに使えます。PNGは図形の鮮明さや透明度が必要な場合に適していますが、実際のファイルサイズは比較する必要があります。ダウンロード後にピクセル寸法や文字の輪郭を確認し、拡張子や最高品質の設定だけで、すべてのプラットフォームに適していると判断しないようにします。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "文書として読む用途ならPDF Standardを検討し、印刷する場合は印刷会社の指定に応じてPDF Print、色の指定方法、塗り足し、トリム"
+            },
+            {
+              "type": "text",
+              "text": "マーク"
+            },
+            {
+              "type": "text",
+              "text": "を検討します。PDF Printでも、低解像度の元画像に実際の細部を復元することはできません。SVGで書き出しても、含まれるラスター画像が自動的に、どこまでも鮮明に拡大できるベクターに変わるわけではありません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "公式では、トリミングした画像の元の内容全体がPDFに残る場合があると、特に注意を促しています。元画像に公開すべきでない部分がある場合、Canvaの画面上で切り取るだけでは削除済みとは考えられません。その内容を含まない画像ファイルを先に用意してから配置しましょう。Flatten PDFはデザインの内容を統合する機能で、ファイルサイズが大きくなる場合があります。あらゆる編集を防いだり、機密性を保証したりするものとしても扱えません。"
+        },
+        {
+          "type": "heading",
+          "text": "印刷版とデジタル版をそれぞれ確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "印刷版では、まず重要な文字を安全な位置に収め、全面に敷く背景は塗り足し領域まで伸ばします。Canvaの余白ガイド、塗り足し、トリムマークはそれぞれ用途が異なります。トリムマークは書き出したPDFに表示されるもので、エディター内で線が見えれば完了というわけではありません。外部の印刷会社には独自のサイズや塗り足しの規格がある場合があるため、先に要件を確認しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "SNS版を作るときは、対象の端末で文字の大きさや切り取られる範囲を確認し、重要な文字を読みやすい位置に置きます。別の縦横比に変える場合は、画像全体を拡大・縮小するだけでなく、タイトル、時間、ルールを配置し直す必要があります。自動サイズ調整機能を使った場合も、改行、重なり、切れた情報がないかをページごとに確認しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "デザインにQRコードがある場合は、出力ファイルから実際に読み取り、正しいページに移動するかを確認します。文字で読める代替URLや連絡先も残しましょう。参加の手順をすべて画像の中だけに置かないでください。SNSに公開するときは投稿本文にもイベント情報を補うと、画像をはっきり見られなかった人にも参加方法が伝わります。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "完成品の用途、サイズ、イベント情報を確認し、内容を収められるテンプレートを選びます。",
+            "すべてのサンプル文章を置き換え、フォントと色を統一し、素材の提供元を確認します。",
+            "「Share」から「Download」に進み、形式、ページ、利用可能な出力オプションを選びます。",
+            "実際にダウンロードしたファイルを開いて文字・画像・リンクを確認し、完成品と編集可能な元データを整理します。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "最後の校正はダウンロード完了後に行う",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "複数ページのデザインでは、すべてのページ、現在のページ、指定したページのどれを出力するかを先に確認し、予備の原稿まで納品しないようにします。ダウンロード後は、日付、電話番号、ページ番号、アクセント記号や繁体字の字形、画像の位置ずれをページごとに確認します。ファイル名にイベント名、用途、バージョンを含めると、SNS用、印刷用、修正待ちの原稿を見分けやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Canvaで編集可能な元データを残し、実際の納品ファイルと素材の記録も保存します。共同作業者に渡すときはリンクの権限を確認し、閲覧、コメント、編集のどれができるかを相手に伝えましょう。プラットフォームの素材を含むデザインをクライアントに引き渡す場合は、コンテンツ規約にある単一のクライアントへの譲渡や書面での合意などの条件も別途確認します。素材単体をまとめて、自由に転売できる素材集のように扱わないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後は、読む人が必要な情報を得られるかという観点で確認します。時間、場所、参加条件、次にすることを、相手がすぐに見つけられるでしょうか。Canvaはレイアウト操作を容易にしますが、情報の正確さ、素材の利用可否、出力品質は引き続き人が確認する必要があります。これらの記録を元ファイルと一緒に残せば、次にイベント情報を更新するとき、圧縮画像一枚から作り直さずに済みます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/canva-design-workflow/diagram-1-ja.svg",
+          "alt": "四枚のカードで用途、レイアウト、出力、納品の確認ポイントを説明し、エディターの画面と実際のダウンロードファイルを区別しています。",
+          "width": 1600,
+          "height": 900,
+          "caption": "キャンバス上では完成して見えても、出力が正しいか、素材を利用できるか、引き継ぐ人が元データを見つけられるかを確認する必要があります。",
+          "description": "四枚のカードで用途、レイアウト、出力、納品の確認ポイントを説明し、エディターの画面と実際のダウンロードファイルを区別しています。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "完成品・機能",
+            "適した用途",
+            "ダウンロード後の確認事項"
+          ],
+          "rows": [
+            [
+              "JPG",
+              "写真が中心の静止画",
+              "圧縮後の細部と文字の鮮明さ"
+            ],
+            [
+              "PNG",
+              "画像と文字のデザイン、利用可能な場合の透明出力",
+              "実際の透明度とアカウントの機能"
+            ],
+            [
+              "PDF Standard",
+              "文書の閲覧と共有",
+              "ページ、リンク、非公開の内容"
+            ],
+            [
+              "PDF Print",
+              "印刷要件に沿った納品ファイルの作成",
+              "サイズ、色、塗り足し、校正刷り"
+            ],
+            [
+              "SVG",
+              "ベクターに適した図形の納品",
+              "埋め込み画像と受け取り側ツールの対応状況"
+            ],
+            [
+              "編集可能なデザイン",
+              "後日の修正と共同作業",
+              "権限、バージョン、素材の利用条件"
+            ]
+          ],
+          "caption": "対応形式や詳細オプションは、デザインの種類とプランによって異なります。適切な形式を選んでも、実際の完成品を確認する必要があります。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "トリミングしても元画像の内容が削除されるとは限らない",
+          "text": "PDFを共有する場合は、公開すべきでない内容を元画像から先に削除し、安全な画像にしてから配置します。覆い隠す操作、トリミング、フラット化のオプションだけで機密性を保証しようとしないでください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "まずRGBとCMYKの納品要件を区別する",
+              "kind": "life",
+              "slug": "rgb-cmyk-export"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "画像形式と圧縮方法を比較する",
+              "kind": "life",
+              "slug": "image-formats-compression"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "商用利用できる素材のライセンス記録を整理する",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Canva：テンプレートを使ったデザインの作成",
+          "url": "https://www.canva.com/help/use-templates-variantb/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva：Brand Kitの設定",
+          "url": "https://www.canva.com/help/brand-kit/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva：素材のダウンロードと購入",
+          "url": "https://www.canva.com/help/download-or-purchase/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva：透明背景でのダウンロード",
+          "url": "https://www.canva.com/help/transparent-background/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva：書き出しファイルの種類",
+          "url": "https://www.canva.com/help/download-file-types/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva：余白、塗り足し、トリムマーク",
+          "url": "https://www.canva.com/help/margins-bleed-crop-marks/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva：PDFのフラット化",
+          "url": "https://www.canva.com/help/download-flattened-pdf-variantb/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva：現行のコンテンツライセンス規約",
+          "url": "https://www.canva.com/policies/content-license-agreement/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Canva 그래픽 제작: 템플릿, 레이아웃과 내보내기 품질 점검",
+      "description": "Canva 템플릿은 그래픽 제작을 시작하는 데 도움이 되지만, 디자인을 완성하려면 크기, 문구, 브랜드 소재와 내보내기 조건을 확인해야 합니다. 이 글은 직접 만든 지역사회 중고책 교환 공지를 예로 들어 템플릿 수정부터 브랜드 규칙, PNG·JPG·PDF 납품까지의 과정을 정리하고, 투명 배경, 유료 소재와 인쇄 도련의 제한 사항을 설명합니다. 비교표, 작업 단계와 직접 그린 도해를 통해 편집 가능한 디자인과 공유용 완성본을 모두 정리하고, 편집기 화면만 보고 내보내기가 제대로 됐다고 판단하지 않도록 돕습니다.",
+      "hero": {
+        "src": "/guides/canva-design-workflow/hero-ko.jpg",
+        "alt": "Mokaair가 직접 만든 그래픽 화면, 출력 문서와 소재 폴더 삽화. Canva 디자인의 레이아웃부터 파일 형식별 납품까지의 점검을 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "하나의 행사 공지를 SNS에 올리고 참가자에게 보내는 동시에 인쇄해 매장 입구에 붙여야 할 수 있습니다. 같은 이미지를 그대로 확대하거나 축소하면 글자가 너무 작아지거나 비율이 맞지 않고, 인쇄물 가장자리가 잘리기 쉽습니다. Canva를 사용하기 전에 각 완성본을 어디에 사용할지 먼저 적어 보세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "아래 내용은 직접 만든 지역사회 중고책 교환 공지를 예로 들어, 2026년 9월 14일에 확인한 Canva 공식 안내를 바탕으로 정리했습니다. 이 글을 위해 계정에 로그인하거나 요금제를 구매하거나 인쇄 주문을 하지는 않았습니다. 행사 내용, 문구 배치와 삽화는 모두 직접 만들었으며, 기존 템플릿을 납품용 이미지로 사용하지 않았습니다."
+        },
+        {
+          "type": "heading",
+          "text": "용도와 내용을 먼저 정하고 알맞은 템플릿 찾기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "행사명, 날짜, 장소, 참여 방법과 연락처를 먼저 일반 텍스트로 작성하고, 내용을 확인한 뒤 배치하세요. 이 예시는 SNS 공지와 인쇄용 안내문으로 나눌 수 있습니다. 두 버전에 같은 정보를 사용하지만 읽는 거리와 레이아웃 비율은 다릅니다. 크기는 실제 게시 플랫폼과 인쇄 요구 사항에 맞춰 확인하고, 어떤 템플릿의 이름도 모든 용도에 통용되는 규격으로 여기지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "Canva 홈에서 템플릿을 검색하고 미리 본 뒤, 템플릿 맞춤 설정을 선택해 편집기로 들어가세요. 편집기의 Templates 패널에서도 찾을 수 있습니다. 고를 때는 색상뿐 아니라 정보량, 이미지와 글의 배치, 수정할 여유가 있는지 먼저 살펴보세요. 행사 규칙이 많다면 이미지 중심 템플릿에 글을 억지로 넣기보다 설명을 담을 수 있는 레이아웃을 선택하는 편이 더 실용적입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "템플릿을 적용한 뒤 예시 내용을 하나씩 바꾸고, 특히 구석의 날짜, 바닥글의 이름과 복사한 페이지에 남은 이전 정보를 확인하세요. 템플릿 속 인물, 이미지와 문구는 디자인의 출발점일 뿐, 이번 행사의 실제 상황을 그대로 나타내는 것은 아닙니다. "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "로 문구 수정을 도와받더라도 사실관계와 대만에서 쓰는 표현은 직접 확인해야 합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "간단한 브랜드 규칙으로 일관성 유지하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 주요 텍스트 스타일, 보조 스타일과 소수의 색상을 정하고, 대조해 볼 수 있는 예시 페이지를 만드세요. 이 예시에서는 행사명을 가장 눈에 띄게, 날짜와 장소를 그다음으로 배치하고, 책 교환 규칙은 문단으로 정리합니다. 텍스트와 이미지의 가장자리를 정렬하고 여백을 남기며, 모든 영역에 굵은 글씨와 강한 배경색을 동시에 쓰지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "Canva의 Brand Kit에서는 로고, 색상, 글꼴과 기타 브랜드 자료를 정리할 수 있으며, 생성 및 공유 방법은 요금제와 역할에 따라 다릅니다. 팀이 함께 사용해야 한다면 실제로 어떤 브랜드 키트를 쓰는지, 누가 수정할 수 있는지, 연결된 폴더의 접근 범위는 어디까지인지 확인하세요. 브랜드 자산이 목록에 보인다고 해서 모든 협업자에게 같은 권한이 있는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "현재 계정에 필요한 브랜드 관리 기능이 없다면 디자인 규칙 페이지를 따로 두고 색상 코드, 글꼴 이름, 자주 쓰는 문단과 자체 이미지 파일의 위치를 기록해도 됩니다. 글꼴이나 로고를 업로드하기 전에 사용 권한을 확인하세요. 디자인을 복사할 때도 직접 대조해 템플릿을 바꿀 때마다 시각적 정체성과 행사명까지 함께 바뀌는 일을 방지하세요."
+        },
+        {
+          "type": "heading",
+          "text": "유료 기능과 소재 라이선스를 나누어 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Canva에서는 무료로 디자인을 시작할 수 있지만, 일부 소재와 내보내기 옵션은 요금제에 따라 제한됩니다. 공식 투명 배경 안내에는 Pro, Teams, Business, Education, Nonprofits 등이 지원 요금제로 나와 있습니다. 일반 PNG 파일이 투명도를 지원한다고 해서 모든 계정에서 Canva의 투명 배경 다운로드 기능을 사용할 수 있는 것은 아니며, 배경 이미지가 이미 제거됐다는 뜻도 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "다운로드할 때 결제 안내가 나오면 어떤 소재나 옵션 때문인지 먼저 확인하세요. 무료 사용자는 화면 안내에 따라 Pro Content 라이선스를 구매하거나, 소재를 바꾸거나, 요금제를 검토할 수 있습니다. 캔버스에서 미리 볼 수 있다고 해서 정식 사용 권한을 얻었다고 여기지 마세요. 가격과 구독 조건은 실제 계정과 결제 페이지를 기준으로 하며, 이 글에서는 할인 코드를 제시하거나 고정 가격을 보장하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "현행 콘텐츠 약관은 Free, Pro, Branded, Education 등의 콘텐츠를 각각 별도로 규정하며, 함께 사용할 때 더 엄격한 제한이 적용될 수 있습니다. Branded Content는 일반적으로 개인 용도로, Education Content는 교육 및 비상업적 용도로 제한됩니다. 소재가 무료 영역에 보인다는 이유로 상업 홍보에 사용해서는 안 됩니다. 각 소재의 출처 정보를 확인한 뒤 결정하세요."
+        },
+        {
+          "type": "heading",
+          "text": "납품 용도에 맞춰 이미지 또는 PDF 선택하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "정적인 SNS 그래픽을 만들 때 JPG는 사진 중심이면서 투명도가 필요 없는 화면에 사용할 수 있습니다. PNG는 선명한 그래픽이나 투명도가 필요한 경우에 적합하지만, 실제 파일 크기는 비교해야 합니다. 다운로드한 뒤 픽셀 크기와 글자 가장자리를 확인하고, 확장자나 최고 품질 옵션만으로 모든 플랫폼에 적합하다고 단정하지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "문서 열람용이라면 PDF Standard를 검토하고, 인쇄가 필요하다면 인쇄소의 요구에 따라 PDF Print, 색상 표현 방식, 도련과 재단 "
+            },
+            {
+              "type": "text",
+              "text": "표시"
+            },
+            {
+              "type": "text",
+              "text": "를 검토하세요. PDF Print는 저해상도 원본 이미지의 실제 디테일을 복원해 주지 않으며, SVG로 내보내도 그 안의 래스터 이미지가 자동으로 아무리 확대해도 선명한 벡터로 바뀌지는 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 안내에서는 PDF에 잘린 이미지의 원본 전체 내용이 남을 수 있다는 점을 특히 강조합니다. 원본에 공개하면 안 되는 부분이 있다면 Canva 화면에서 잘라내기만 하고 삭제됐다고 여겨서는 안 됩니다. 해당 내용이 없는 이미지 파일을 먼저 준비한 뒤 삽입해야 합니다. Flatten PDF는 디자인 내용을 병합하며 파일 크기가 커질 수 있고, 모든 편집을 막거나 기밀을 보장하는 기능으로 여겨서도 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "인쇄용과 디지털 버전을 각각 점검하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "인쇄용 버전에서는 중요한 글을 안전한 위치에 두고, 가장자리까지 채우는 배경은 도련 영역까지 확장하세요. Canva의 여백 안내선, 도련과 재단 표시는 용도가 서로 다릅니다. 재단 표시는 내보낸 PDF에 나타나며, 편집기에서 선 하나가 보이는 것만으로 작업이 끝나는 것은 아닙니다. 외부 인쇄소는 자체 크기와 도련 규격이 있을 수 있으므로 요구 사항을 먼저 받아 두세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "SNS용 버전을 만들 때는 게시물을 볼 기기에서 글자 크기와 잘리는 범위를 확인하고, 중요한 글을 읽기 쉬운 위치에 두세요. 다른 비율로 바꿀 때는 이미지 전체의 크기만 조절할 것이 아니라 제목, 시간과 규칙을 다시 배치해야 합니다. 자동 크기 조정 기능을 사용하더라도 페이지마다 줄바꿈, 겹침과 잘린 정보를 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "그래픽에 QR 코드가 있다면 실제로 내보낸 파일을 스캔해 올바른 페이지로 연결되는지 확인하고, 읽을 수 있는 대체 URL이나 연락처도 남기세요. 참여 절차를 전부 이미지 안에만 넣지 마세요. SNS에 게시할 때 본문에도 행사 정보를 적으면 이미지를 제대로 보지 못한 사람도 참여 방법을 알 수 있습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "완성본의 용도, 크기와 행사 정보를 확인하고, 내용을 충분히 담을 수 있는 템플릿을 선택하세요.",
+            "모든 예시 문구를 바꾸고, 글꼴과 색상을 통일하며 소재의 출처를 확인하세요.",
+            "Share에서 Download로 들어가 형식, 페이지와 사용 가능한 내보내기 옵션을 선택하세요.",
+            "실제 다운로드한 파일을 열어 글, 이미지와 링크를 확인한 뒤 완성본과 편집 가능한 원본을 정리하세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "다운로드가 끝난 뒤 마지막 교정 시작하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "여러 페이지로 된 디자인은 전체, 현재 페이지, 지정한 페이지 중 무엇을 내보낼지 먼저 확인해 예비 시안까지 함께 전달하지 않도록 하세요. 다운로드한 뒤 페이지마다 날짜, 전화번호, 페이지 번호, 악센트 기호나 번체자 형태와 이미지 위치가 틀어졌는지 확인하세요. 파일명에 행사, 용도와 버전을 넣으면 SNS용, 인쇄용과 수정 대기 중인 파일을 쉽게 구분할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Canva의 편집 가능한 원본을 보관하고, 실제 납품 파일과 소재 기록도 저장하세요. 협업자에게 전달할 때는 링크 권한을 확인하고 열람, 댓글 작성, 편집 중 무엇이 가능한지 알려 주세요. 플랫폼 소재가 포함된 디자인을 고객에게 넘긴다면 콘텐츠 약관의 단일 고객 및 서면 합의 등의 조건도 별도로 확인하세요. 개별 소재를 묶어 자유롭게 재판매할 수 있는 이미지 라이브러리처럼 취급하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 읽는 사람이 필요한 정보를 찾을 수 있는지 점검하세요. 시간, 장소, 참여 조건과 다음 단계를 빠르게 파악할 수 있나요? Canva는 레이아웃 작업을 쉽게 해 주지만, 정보의 정확성, 소재의 사용 가능 여부와 내보내기 품질은 여전히 사람이 확인해야 합니다. 이러한 기록을 원본 파일과 함께 남겨 두면 다음에 행사를 업데이트할 때 압축된 이미지 한 장을 바탕으로 다시 만들 필요가 없습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/canva-design-workflow/diagram-1-ko.svg",
+          "alt": "네 장의 카드로 용도, 레이아웃, 내보내기와 납품의 점검 사항을 설명하고, 편집기 화면과 실제 다운로드 파일을 구분합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "캔버스가 완성돼 보여도 내보내기 결과가 올바른지, 소재를 사용할 수 있는지, 인계받는 사람이 원본을 찾을 수 있는지 확인해야 합니다.",
+          "description": "네 장의 카드로 용도, 레이아웃, 내보내기와 납품의 점검 사항을 설명하고, 편집기 화면과 실제 다운로드 파일을 구분합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "완성본 또는 기능",
+            "적합한 용도",
+            "다운로드 후 확인 사항"
+          ],
+          "rows": [
+            [
+              "JPG",
+              "사진 중심의 정적인 화면",
+              "압축에 따른 디테일과 글자의 선명도"
+            ],
+            [
+              "PNG",
+              "그래픽 및 지원되는 투명 배경 내보내기",
+              "실제 투명도와 계정 기능"
+            ],
+            [
+              "PDF Standard",
+              "문서 열람과 공유",
+              "페이지, 링크와 비공개 내용"
+            ],
+            [
+              "PDF Print",
+              "인쇄 요구에 맞춘 납품 파일 제작",
+              "크기, 색상, 도련과 교정쇄"
+            ],
+            [
+              "SVG",
+              "벡터에 적합한 그래픽 납품",
+              "삽입된 이미지와 수신 측 도구의 지원 여부"
+            ],
+            [
+              "편집 가능한 디자인",
+              "추후 수정과 협업",
+              "권한, 버전과 소재 이용 조건"
+            ]
+          ],
+          "caption": "지원 형식과 고급 옵션은 디자인 종류와 요금제에 따라 다릅니다. 알맞은 형식을 선택한 뒤에도 실제 완성본을 확인해야 합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "잘라내도 원본 이미지 내용이 삭제되지 않을 수 있습니다",
+          "text": "PDF를 공유해야 한다면 공개하면 안 되는 원본 이미지 내용을 먼저 제거한 뒤 안전한 버전을 삽입하세요. 가리기, 자르기나 병합 옵션만으로 기밀이 보장된다고 생각하지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "RGB와 CMYK의 납품 요구 사항부터 구분하기",
+              "kind": "life",
+              "slug": "rgb-cmyk-export"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "이미지 형식과 압축 방식 비교하기",
+              "kind": "life",
+              "slug": "image-formats-compression"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "상업적으로 사용 가능한 소재의 라이선스 기록 정리하기",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Canva: 템플릿으로 디자인 만들기",
+          "url": "https://www.canva.com/help/use-templates-variantb/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva: Brand Kit 설정하기",
+          "url": "https://www.canva.com/help/brand-kit/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva: 소재 다운로드와 구매",
+          "url": "https://www.canva.com/help/download-or-purchase/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva: 투명 배경으로 다운로드하기",
+          "url": "https://www.canva.com/help/transparent-background/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva: 내보내기 파일 형식",
+          "url": "https://www.canva.com/help/download-file-types/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva: 여백, 도련과 재단 표시",
+          "url": "https://www.canva.com/help/margins-bleed-crop-marks/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva: PDF 병합하기",
+          "url": "https://www.canva.com/help/download-flattened-pdf-variantb/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva: 현행 콘텐츠 라이선스 약관",
+          "url": "https://www.canva.com/policies/content-license-agreement/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Canva 制作图文：模板、版面与输出质量检查",
+      "description": "Canva 模板能帮助开始制作图文，但完成设计仍需要核对尺寸、文字、品牌素材和输出条件。本文以原创社区二手书交换公告为例，整理从模板调整、品牌规则到 PNG、JPG 与 PDF 的交付流程，并说明透明背景、付费素材及印刷出血的界限。附比较表、操作步骤与自绘图解，帮助整理好可编辑设计与可分享成品，避免只看编辑器就认定输出正确。",
+      "hero": {
+        "src": "/guides/canva-design-workflow/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创图文画面、输出文件与素材文件夹插图，代表 Canva 设计从排版到格式交付的检查。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "同一份活动公告可能要放到社交平台、寄给参加者，也要打印出来贴在店门口。直接把同一张图放大缩小，容易让文字太小、比例不合或印刷边缘被裁切。开始使用 Canva 前，先列出每个成品要出现在哪里。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以原创社区二手书交换公告为例，依 2026 年 9 月 14 日查阅的 Canva 官方说明整理。本篇没有登录账号、购买套餐或下印刷订单；活动、文字安排及配图均自行创作，不使用现成模板作为交付图片。"
+        },
+        {
+          "type": "heading",
+          "text": "先定用途与内容，再找合适模板",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把活动名称、日期、地点、参加方式及联系信息先写成纯文字，确认后再排版。本例可分成社交平台公告与打印通知，两者使用相同信息，但阅读距离与版面比例不同。尺寸依实际发布平台和印刷需求确认，不把任何模板名称当成所有用途的通用规格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Canva 首页搜索模板，预览后选择自定义模板进入编辑器，也可在编辑器的“模板”面板寻找。挑选时先看信息量、图文布局和可修改空间，而不只是颜色。活动规则较多时，选择能容纳说明的版面，比把文字硬塞进图片型模板更实用。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "应用模板后逐一替换示例内容，特别检查角落日期、页脚名称及复制页面留下的旧信息。模板中的人物、图片和文案只是设计起点，不能自动代表这次活动的真实情况；若使用 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 协助改写，也要自行确认事实与台湾用语。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "用简单品牌规则保持一致",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先选定主要文字样式、辅助样式和少量色彩，建立一页可对照的示例。本例的活动名称最醒目，日期与地点次之，换书规则再以段落整理。对齐文字与图片边缘，保留留白，不让每个区块都同时使用醒目的字重和底色。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Canva 的 Brand Kit 可整理标志、色彩、字体与其他品牌资源，创建和分享方式依套餐与角色不同。需要团队共用时，确认实际使用的是哪个品牌工具包、谁可以修改，以及关联文件夹的访问范围；品牌资产出现在列表中，不等于所有协作者都有相同权限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若目前账号没有需要的品牌管理功能，也可保留一份设计规则页，记录色值、字体名称、常用段落和自有图片文件位置。上传字体或标志前先确认使用权。复制设计时再人工对照，避免每次更换模板就把视觉识别和活动名称一起换掉。"
+        },
+        {
+          "type": "heading",
+          "text": "把付费功能与素材授权分开确认",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Canva 可免费开始设计，但部分素材与导出选项受套餐限制。官方透明背景说明列出 Pro、Teams、Business、Education 和 Nonprofits 等支持套餐；普通 PNG 文件可以有透明度，不代表所有账号都能使用 Canva 的透明背景下载功能，也不代表背景图片已被去除。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下载时若遇到付费提示，先看是哪个素材或选项造成。免费用户可依界面购买 Pro Content 授权、调整素材或评估套餐；不要把能在画布上预览当成已取得正式使用权。价格及订阅条件以实际账号与结账页为准，本篇不引用优惠码或保证固定价格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "现行内容条款对 Free、Pro、Branded 及 Education 等内容分别作出规定，混合使用时可能采用较严格的限制。Branded Content 通常限个人用途，Education Content 限教育与非商业用途，不能因素材出现在免费区就用于商业宣传。查看每个素材的来源信息再决定。"
+        },
+        {
+          "type": "heading",
+          "text": "依交付用途选择图片或 PDF",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "制作纯静态社交平台图文时，JPG 可用于以照片为主且不需透明度的画面；PNG 适合需要清晰图形或透明度的场景，实际文件大小仍要比较。下载后检查像素尺寸与文字边缘，不凭扩展名或最高质量选项就推定适合所有平台。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "需要阅读文档时可评估 PDF Standard，需要印刷时再依印刷厂要求评估 PDF Print、色彩描述方式、出血与裁切"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "。PDF Print 不会替低分辨率原图补回真实细节，SVG 输出也不能让其中的位图自动变成无限清晰的矢量图。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "官方特别提醒，PDF 可能保留被裁切图片的完整原始内容。若原图有不应公开的部分，不能只在 Canva 画面裁掉就当作已删除；应先准备不含该内容的图片文件再插入。“扁平化 PDF”会合并设计内容，可能增加文件大小，也不能当成全面的防编辑或保密保证。"
+        },
+        {
+          "type": "heading",
+          "text": "印刷与数字版本各自检查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "印刷版先让重要文字留在安全位置，满版背景则延伸到出血范围。Canva 的边界参考线、出血和裁切标记用途不同；标记会出现在导出的 PDF 中，并不是在编辑器内看到一条线就完成了。外部印刷厂可能有自己的尺寸与出血规格，应先取得要求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "制作社交平台版本时，查看目标设备上的字体大小与裁切范围，将重要文字留在容易阅读的位置。若改成另一种比例，不只是缩放整张图，而要重新安排标题、时间与规则。即使使用自动调整尺寸功能，也应逐页检查换行、重叠及被切掉的信息。"
+        },
+        {
+          "type": "paragraph",
+          "text": "图文中若有二维码，实际扫描输出文件确认连到正确页面，也保留可阅读的替代网址或联系方式。不要把参加流程全部藏在图像里；发布到社交平台时可在帖子文字中补上活动信息，让没有看清图片的人仍能知道如何参与。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "确认成品用途、尺寸与活动信息，选择容得下内容的模板。",
+            "替换所有示例文字，统一字体色彩并检查素材来源。",
+            "从“分享”进入“下载”，选择格式、页面及可用输出选项。",
+            "打开实际下载文件检查文字、图片与链接，再整理成品及可编辑源文件。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "下载完成后才开始最后一次校稿",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "多页设计先确认要输出全部、当前页或指定页面，避免把备用稿一起交付。下载后逐页检查日期、电话、页码、重音符号或繁体字形，以及图片是否移位。文件名可以包含活动、用途及版本，让社交平台稿、印刷稿和待修改稿容易辨认。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留 Canva 可编辑源文件，也保存实际交付文件与素材记录。交给协作者时确认链接权限，让对方知道是查看、评论还是编辑。若设计含平台素材并要转交客户，另行核对内容条款中的单一客户与书面约定等条件，不把独立素材打包当成可任意转售的图库。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后以阅读任务检查：对方能否快速找出时间、地点、参加条件和下一步。Canva 让排版操作较容易，但信息正确、素材可用及输出质量仍需要人工确认。把这些记录与原始文件一起留下，下次更新活动才不必从一张压缩图片重做。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/canva-design-workflow/diagram-1-zh-cn.svg",
+          "alt": "四张卡片说明用途、版面、输出与交付的检查重点，区分编辑器画面和实际下载文件。",
+          "width": 1600,
+          "height": 900,
+          "caption": "画布看起来完成了，还要确认输出正确、素材可用，以及接手的人能找到源文件。",
+          "description": "四张卡片说明用途、版面、输出与交付的检查重点，区分编辑器画面和实际下载文件。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "成品或功能",
+            "适用方向",
+            "下载后要确认"
+          ],
+          "rows": [
+            [
+              "JPG",
+              "照片为主的静态画面",
+              "压缩细节及文字清晰度"
+            ],
+            [
+              "PNG",
+              "图文与可用的透明输出",
+              "实际透明度与账号功能"
+            ],
+            [
+              "PDF Standard",
+              "文档阅读与分享",
+              "页面、链接及未公开内容"
+            ],
+            [
+              "PDF Print",
+              "按印刷要求制作交付文件",
+              "尺寸、色彩、出血及校样"
+            ],
+            [
+              "SVG",
+              "适合矢量格式的图形交付",
+              "嵌入图片及接收工具支持"
+            ],
+            [
+              "可编辑设计",
+              "日后修改与协作",
+              "权限、版本及素材条件"
+            ]
+          ],
+          "caption": "格式支持与高级选项依设计类型和套餐不同；选对格式后仍需查看实际成品。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "裁切不一定代表原图内容已删除",
+          "text": "需要分享 PDF 时，先移除不应公开的原始图像内容，再插入安全版本。不要只靠遮盖、裁切或扁平化选项来保证保密。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先分清 RGB 与 CMYK 的交付需求",
+              "kind": "life",
+              "slug": "rgb-cmyk-export"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "比较图片格式和压缩方式",
+              "kind": "life",
+              "slug": "image-formats-compression"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理可商用素材的授权记录",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Canva：使用模板创建设计",
+          "url": "https://www.canva.com/help/use-templates-variantb/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva：设置 Brand Kit",
+          "url": "https://www.canva.com/help/brand-kit/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva：下载与购买素材",
+          "url": "https://www.canva.com/help/download-or-purchase/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva：透明背景下载",
+          "url": "https://www.canva.com/help/transparent-background/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva：导出文件类型",
+          "url": "https://www.canva.com/help/download-file-types/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva：边界、出血与裁切标记",
+          "url": "https://www.canva.com/help/margins-bleed-crop-marks/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva：扁平化 PDF",
+          "url": "https://www.canva.com/help/download-flattened-pdf-variantb/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Canva：现行内容授权条款",
           "url": "https://www.canva.com/policies/content-license-agreement/",
           "checked_on": "2026-09-14"
         }

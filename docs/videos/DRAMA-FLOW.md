@@ -95,6 +95,25 @@
 - 劇本關卡對**每一支**漫劇都開（`stepsFor` 拿掉 `|| doc.series` 的條件；`series_script_gate` 顯示為「劇本先給我看」，關掉就自動核准）。劇本關卡在任何圖片或片段花錢之前。
 - 之後的製作照 HANDS-OFF：`auto_pick_look`、`auto_approve_storyboard` 由站主看過第一支之後打開；旁白 Jev 全過自動核准；成片自動品管。站主被找的只有出錯的項目。
 - 遷移把還在 `queued` 的單集請求各建成一部 `one-off` 作品（bible 待寫）；已 `started` 的走完舊路。
+- **解說片可以指定自己的圖片模型**（2026-10-11；設計在 [`explainer-route/DESIGN.md`](explainer-route/DESIGN.md) 第 4 節）。「新的漫劇」表單選了解說類風格（`flat-explainer`、`cute-cartoon`、`cute-mystery`）才會出現「這一支的圖片模型」；有角色的漫劇不能指定（設定圖要靠設定分頁那個模型撐住臉），API 對這種請求回 422。
+  - `flat-explainer` 不選就是「跟漫劇設定一樣」：請求不帶 `image_model`，作品列是 NULL，跟以前完全一樣。
+  - 兩個可愛風格的畫風文字是為 MiniMax `image-01` 寫的（只有正向描述）。請求沒指定時，伺服器在 `DramaRequestIn` 就補成 `image-01`（`schemas.py` 的 `PRESET_IMAGE_MODELS`；表單預選同一個，`apps/web/lib/video-presets.ts` 的 `PRESET_IMAGE_MODEL`），所以存進作品列、寫進稽核紀錄、拿去查金鑰的是同一個值。
+  - 這個值存在單集作品列的 `video_drama_series.image_model`（0111 就有的欄位，沒有新 migration），圖片工作本來就照它選模型（`video_media/jobs.py` 的 `series_image_model`）。
+  - **送出時就擋沒有金鑰的模型**：請求指定了模型（或可愛風格補上的 `image-01`），而那個模型的供應商在網站上沒有金鑰，`POST /admin/video-automation/drama-requests` 回 409 `video_drama_image_model_not_configured`，什麼都不建立，企劃跟劇本的錢不會先花掉。供應商用 `series_image_vendor` 判斷，跟第一張圖送出時是同一段程式。沒指定模型的請求不查（跟著設定走，跟以前一樣）。
+  - 工人開始這一集時，把作品列的模型寫進 `docs/videos/<slug>/series.json` 最上層的 `image_model`（只有單集、而且作品列有指定時才寫；長篇作品不寫）。圖片階段讀的就是這個鍵：`image-01` 畫 1K、照目錄價 US$0.0035 計、提示詞上限算 MiniMax 的 1,500 字元；撰稿模型也會收到 `prompt_budget_chars`。這個鍵光是存在就會換掉每張圖的快取鍵，所以**不要補寫進已經開始的影片**。
+  - 已知的限制：指定 Gemini 模型的解說片畫 1K（跟著設定走的是 2K）；`POST /series` 與 `PATCH /series/{slug}` 不走這裡的預設與金鑰檢查；送出時的金鑰檢查只代表當下。
+  - 選了有自己模型的風格（兩個可愛風格），表單**沒有**「跟漫劇設定一樣」這個選項：伺服器不管設定是什麼都會存 `image-01`，放那個選項等於答應一件不會發生的事。目錄裡沒有 `image-01` 時，表單直接用模型代號列出它。
+- **每個解說系列用自己的提示詞**（2026-10-11；設計在 [`explainer-route/DESIGN.md`](explainer-route/DESIGN.md) 第 5 節）。風格對到哪一組提示詞只有一張表：`tools/video/automation/explainer-series.mjs` 的 `EXPLAINER_VARIANTS`。
+  - `flat-explainer` 照舊是 `bible-explainer`／`explainer`／`discuss`，文字留在 `prompts.mjs`，一個位元組都沒動（測試釘住雜湊）。`cute-cartoon`（原來如此事務所）是 `bible-explainer-cartoon`／`explainer-cartoon`／`discuss-cartoon`；`cute-mystery`（奇聞檔案局）是 `bible-explainer-mystery`／`explainer-mystery`／`discuss-mystery`。設定頁「送出的提示詞」會多出 `planner · bible-explainer-mystery` 這類列。
+  - 兩個可愛系列各有一份系列檔案（`EXPLAINER_SERIES_PROFILES`）：系列名、主軸、一集的結構、內容守則、畫面可以畫什麼、縮圖怎麼寫。系列的東西只進提示詞、不進 payload，所以既有影片的 payload 與鍵都不變。奇聞檔案局的聖經維持「問題／一句答案／原因」的形狀，原因固定寫成「流傳的版本 → 紀錄（二到四條）→ 目前最站得住的解釋」；在世或過世未滿 70 年的人不畫成本人。
+  - 討論也分系列：站主在可愛解說的聖經或劇本上留言，回答用的是那個系列自己的 `discuss-*`，改稿不會改回別的系列的規則。
+  - 可愛解說的聖經 payload 裡 `genre_spec` 是 `null`（單集作品列帶著長篇表單的預設題材，跟解說無關），提示詞也不加題材段落。
+  - `settle()` 對可愛風格只留 `look: { preset }`：撰稿模型自己加的 `style`、`negative` 會被丟掉（畫風是系列固定的，而且 MiniMax 會把 negative 當成正向描述讀）。`flat-explainer` 照舊保留撰稿模型加的欄位。
+  - 可愛解說可以用 `steps` 與 `table` 兩種卡片（連同原本六種共八種）；`flat-explainer` 維持六種。
+  - 可愛解說的圖用九題是非題評審（text、anatomy、detached、subject、frame、style、details、awkward、generated；伺服器有 `limits.judge_checks` 時），也受畫面多樣性 lint 管（同一種運鏡連三張是錯誤；提示詞裡重複畫風用字、沒寫景別、夜景過半是警告）。`flat-explainer` 照舊用評分表，不受這條 lint 管。
+  - **圖一直不過會卡住**：一張圖三次重畫、再加兩輪改提示詞都沒過，這支影片會停在 `prompt_fixes:keyframes`，等站主按重試；不會像插圖投影片那樣留下評審分數最高的一張繼續走（`acceptBestPictures` 只給插圖投影片，`--accept-best` 也一樣）。不會上架、已付的工作不會丟。每個系列的頭幾集預期會遇到；要不要比照插圖投影片是另一張票（`2026-10-11-cute-explainer-keeps-best-take`）。
+  - 第一稿拿到的台詞代號（`line_ids`，撰稿模型不能自己發明）：可愛解說每分鐘 12 個、最少 140 個（20 分鐘是 240 個），因為可愛解說一句最多 24 個字，140 句只撐得到 14 到 16 分鐘，而表單允許 20 分鐘。`flat-explainer` 與其他格式一律還是 140 個（個數是產生代號的種子的一部分，改了就是不同的 payload）。
+  - 「新的漫劇」表單現在列出兩個可愛風格。**設定分頁的預設風格選單仍然不列它們**（`apps/web/lib/video-presets.ts` 的 `DEFAULT_STYLE_HELD_PRESETS`；已經存成預設的值照樣顯示）。原因：沒有自己風格的漫劇拿到解說類的預設風格，並**不會**變成解說片。它的企劃與劇本照舊用故事的提示詞寫（有角色、有對白），`settle()` 接著把畫風強制成那個解說風格、把角色清空，lint 於是不過；影片在一次企劃呼叫、最多四次撰稿呼叫之後卡住，錢花了、片子出不來。要不要讓這個選單列出解說類風格，由票 `2026-10-11-settings-default-style-offers-explainer-presets` 決定（站主 2026-10-11 的裁定：先不列）。
 
 站主真正要碰的：單集是「前提 → 故事聖經 → 劇本 → 語言 → 上架時間」，作品是「前提 → 設定集 → 總綱 → 每篇細綱 → 每集劇本 → 語言 → 上架時間」。
 

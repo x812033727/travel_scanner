@@ -1,0 +1,12 @@
+InstructionsLoaded by=main session_start Project CLAUDE.md
+PreToolUse by=main Agent type=log-scout keys=description,prompt,subagent_type,run_in_background model=- background=false prompt_chars=248 mark_in_prompt=no
+SubagentStart agent=log-scout
+PreToolUse by=log-scout Glob .
+PreToolUse by=log-scout Read logs/queue-2026-10-01.log
+PreToolUse by=log-scout Read logs/queue-2026-10-02.log
+PreToolUse by=log-scout Read logs/queue-2026-10-03.log
+PreToolUse by=log-scout Read logs/queue-2026-10-04.log
+PreToolUse by=log-scout Read logs/queue-2026-10-05.log
+PreToolUse by=log-scout Read logs/queue-2026-10-06.log
+SubagentStop agent=log-scout last_chars=552 mark_in_last=yes
+PostToolUse by=main Agent status=completed model=claude-sonnet-5-5 last_request_tokens=31707 tool_calls=7 keys=status,prompt,agentId,agentType,harnessNoteCount,harnessTailCount,harnessSectionHash,content,resolvedModel,totalDurationMs,totalTokens,totalToolUseCount,usage,toolStats,canContinueAgent

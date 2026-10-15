@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { dramaBrief, dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, fixtureBrief, fixtureLexicon, storyBrief, storyFixture, storySeries } from "./fixtures/load.mjs";
-import { announcesList, billableEstimate, briefSections, checkBrief, episodeScriptProblems, HEDGE_AFTER_UNWRITTEN, HEDGE_FAMILY, lintVideo, OPENING_SECONDS, OUTRO_SENTENCES, productionShotProblems, stancePoints, stanceProblems, templateSimilarity, thumbnailHeadlineProblems } from "./lint.mjs";
+import { announcesList, billableEstimate, briefSections, checkBrief, episodeScriptProblems, HEDGE_AFTER_UNWRITTEN, HEDGE_FAMILY, lintVideo, OPENING_CHAPTER_SECONDS, OPENING_SECONDS, OUTRO_SENTENCES, productionShotProblems, SOURCING_FAMILY, SOURCING_MAX, stancePoints, stanceProblems, templateSimilarity, thumbnailHeadlineProblems } from "./lint.mjs";
 import { captionsItem } from "../qa/checks.mjs";
 import { estimateTimeline, FPS } from "./timeline.mjs";
 import { eachLine, MIN_EPISODE_MINUTES, minEpisodeMinutes, textHash } from "./schema.mjs";
@@ -608,13 +608,29 @@ test("a shot cut from another shot's clip must end inside that clip, and the pro
 // The minimal example stretched to episode length, its outro still last. The script's shape
 // (episodeScriptProblems) is read only on a narrated video of MIN_EPISODE_MINUTES or more, so
 // the examples that run seconds stay the templates' shape and never a script's.
+// What the example's opening chapter needs to be an episode's condensation (OPENING_CHAPTER_SECONDS):
+// moments told up to what happened, left without their answer.
+const CONDENSATION = [
+  { id: "cd01", text: "同一個問題，有人多付了十倍的錢。" },
+  { id: "cd02", text: "有一家回答得快到讓人起疑。" },
+  { id: "cd03", text: "還有一個設定，關掉之後反而更準。" },
+  { id: "cd04", text: "最貴的那一個，也不是最好用的。" },
+  { id: "cd05", text: "三個答案，都跟你想的不一樣。" },
+  { id: "cd06", text: "那到底差在哪裡？" },
+];
 function stretched(doc = fixture()) {
   doc.target_minutes = [MIN_EPISODE_MINUTES, MIN_EPISODE_MINUTES + 4];
+  doc.scenes[0].lines.push(...structuredClone(CONDENSATION));
   let n = 0;
+  const payoffs = [];
   while (estimateTimeline(doc).total_frames / FPS / 60 < MIN_EPISODE_MINUTES + 0.5) {
-    const lines = Array.from({ length: 6 }, () => ({ id: `pad${(n++).toString(36).padStart(4, "0")}`, text: "這一句只是把範例拉長到一集的長度，數字留在正文裡。" }));
+    // An episode keeps an open loop inside every HOOK_GAP_SECONDS (core/narrative.mjs): each padded
+    // scene opens on an escalation, and its last line is where one of the condensation's loops lands.
+    const lines = Array.from({ length: 6 }, (_, index) => ({ id: `pad${(n++).toString(36).padStart(4, "0")}`, text: index === 0 ? "但這還不是最怪的，這一句只是把範例拉長。" : "這一句只是把範例拉長到一集的長度，數字留在正文裡。" }));
+    payoffs.push(lines.at(-1).id);
     doc.scenes.splice(doc.scenes.length - 1, 0, { id: `pad-${n}`, template: "bullets", data: { title: "拉長", items: ["一"] }, lines });
   }
+  doc.loops = ["cd01", "cd02", "cd03"].map((setup, index) => ({ setup, payoff: payoffs[index], what: "範例拉長用的鉤子" }));
   return doc;
 }
 // The close as script-writing.md §結尾 has it: the answer with its number, a comment question,
@@ -622,26 +638,49 @@ function stretched(doc = fixture()) {
 const THREE_SENTENCES = [
   { id: "cl01", text: "所以答案是，三個問題問完，五分鐘就能選好。" },
   { id: "cl02", text: "你每天最常叫模型做的是哪一種工作？留言告訴我。" },
-  { id: "cl03", text: "下一支拆它的價格表，訂閱頻道就不會錯過。" },
+  { id: "cl03", text: "這個頻道每週拆一個這種數字，訂閱就不會錯過。" },
 ];
 const closed = (doc) => {
   doc.scenes.at(-1).lines = structuredClone(THREE_SENTENCES);
   return doc;
 };
 
-test("the script's shape is read on an episode, not on a fixture-length example: the minimal close asks for nothing and has two sentences", () => {
+test("the script's shape is read on an episode, not on a fixture-length example: the minimal close has two sentences", () => {
   assert.deepEqual(lintVideo(fixture(), context()).warnings, [], "the example runs seconds");
   const long = stretched();
   const result = lintVideo(long, context());
   assert.deepEqual(result.errors, []);
   const where = `scenes[${long.scenes.length - 1}] (wrap)`;
-  assert.deepEqual(result.warnings.map((warning) => warning.path), [where, where]);
-  assert.match(messages(result.warnings), /the outro asks for no subscription/);
+  assert.deepEqual(result.warnings.map((warning) => warning.path), [where]);
   assert.match(messages(result.warnings), new RegExp(`the outro has 2 sentences; the close is ${OUTRO_SENTENCES}`));
+  const silent = stretched();
+  silent.scenes.at(-1).lines.at(-1).text = "完整的比較表放在說明欄的文章裡。";
+  delete silent.scenes.at(-1).lines.at(-1).say;
+  delete silent.scenes.at(-1).lines.at(-1).say_for;
+  assert.match(messages(lintVideo(silent, context()).warnings), /the outro asks for no subscription/);
   assert.deepEqual(lintVideo(closed(long), context()).warnings, []);
   // The function itself has no length gate: the gate is lintVideo's.
-  assert.equal(episodeScriptProblems(fixture(), estimateTimeline(fixture())).length, 2);
+  assert.equal(episodeScriptProblems(fixture(), estimateTimeline(fixture())).length, 1);
   assert.deepEqual(episodeScriptProblems(closed(fixture()), estimateTimeline(fixture())), []);
+  // An explainer's outro card carries the subscribe line alone; its comment question sits on the shot before it.
+  assert.deepEqual(episodeScriptProblems(fixture(), estimateTimeline(fixture()), { outroCount: false }), []);
+});
+
+test("an episode's opening chapter is the condensation: 30 to 60 seconds, a warning on either side; the examples are not read", () => {
+  assert.deepEqual(OPENING_CHAPTER_SECONDS, [30, 60]);
+  const opening = (doc) => lintVideo(doc, context()).warnings.filter((warning) => /the opening chapter runs/.test(warning.message));
+  assert.deepEqual(opening(closed(stretched())), [], "the stretched example's condensation is within the window");
+  const short = closed(stretched());
+  short.scenes[0].lines = short.scenes[0].lines.slice(0, 2);
+  // The loops this example plants sit in the lines just cut; a loop with no line is a schema error.
+  delete short.loops;
+  const [warning] = opening(short);
+  assert.equal(warning.path, "scenes[0]");
+  assert.match(warning.message, /^the opening chapter runs about 1\d s; it is the condensation, 30 to 60 s before the first real chapter/);
+  const long = closed(stretched());
+  long.scenes[0].lines.push(...Array.from({ length: 12 }, (_, index) => ({ id: `cx${index.toString(36).padStart(2, "0")}`, text: "這一句把濃縮拉得比一分鐘還長，觀眾等不到正片。" })));
+  assert.match(messages(opening(long)), /the opening chapter runs about \d+ s; it is the condensation/);
+  assert.deepEqual(opening(fixture()), [], "the example runs seconds");
 });
 
 test("the hedge family is counted across the whole narration: twice is a warning that names each phrase, once is the description's sentence", () => {
@@ -656,6 +695,22 @@ test("the hedge family is counted across the whole narration: twice is a warning
   assert.deepEqual(result.warnings.map((warning) => warning.path), ["scenes"]);
   assert.match(result.warnings[0].message, /hedges 3 times \(「以官網為準」×1, 「公告沒寫」×1, 「不代表」×1\)/);
   assert.match(result.warnings[0].message, /leave the disclaimer to the description/);
+});
+
+test("sourcing talk is counted across the whole narration: a third 「文件寫」 or 「官方說」 is a warning that names each phrase, a company's own claim is not counted", () => {
+  for (const phrase of ["文件寫", "文件說", "部落格說", "官方說", "根據官方"]) assert.ok(SOURCING_FAMILY.includes(phrase), phrase);
+  assert.equal(SOURCING_MAX, 2);
+  const long = closed(stretched());
+  long.scenes[1].lines[0].text = "文件寫，它用你的權限執行。";
+  long.scenes[1].lines[1].text = "谷歌說它比較快。";
+  long.scenes[2].lines[0].text = "官方說預設就是開的。";
+  assert.deepEqual(lintVideo(long, context()).warnings, [], "twice is allowed, and a named company is not sourcing talk");
+  long.scenes[2].lines[1].text = "部落格說只裝信得過的來源。";
+  const result = lintVideo(long, context());
+  assert.deepEqual(result.errors, []);
+  assert.deepEqual(result.warnings.map((warning) => warning.path), ["scenes"]);
+  assert.match(result.warnings[0].message, /names its source 3 times \(「文件寫」×1, 「官方說」×1, 「部落格說」×1\)/);
+  assert.match(result.warnings[0].message, /state the fact, and leave where it is from to the card's source field and the description/);
 });
 
 test("the bare 「不代表」 is the channel's rhetoric, not a hedge: two plain 「X 不代表 Y」 sentences do not warn, 「沒列，不代表沒有」 does", () => {
@@ -674,13 +729,14 @@ test("the bare 「不代表」 is the channel's rhetoric, not a hedge: two plain
   assert.match(messages(result.warnings), /and 不代表／不等於 in a sentence that says something was not written/);
 });
 
-test("a table of contents in the opening is a warning: the announced parts, 「看完你會知道」, or 第一，…第二，…最後 within the first 40 seconds", () => {
-  assert.equal(OPENING_SECONDS, 40);
+test("a table of contents in the opening is a warning: the announced parts, 「看完你會知道」, or 第一，…第二，…最後 within the first 60 seconds, the longest condensation", () => {
+  assert.equal(OPENING_SECONDS, 60);
+  assert.equal(OPENING_SECONDS, OPENING_CHAPTER_SECONDS[1]);
   const long = closed(stretched());
   long.scenes[0].lines[1].text = "接下來分三段，先講價格，再講額度，最後講怎麼選。";
   const announced = lintVideo(long, context());
   assert.deepEqual(announced.warnings.map((warning) => warning.path), ["scenes[0]"]);
-  assert.match(announced.warnings[0].message, /the first 40 s read a table of contents/);
+  assert.match(announced.warnings[0].message, /the first 60 s read a table of contents/);
   long.scenes[0].lines[1].text = "看完你會知道價格、額度和怎麼選。";
   assert.match(messages(lintVideo(long, context()).warnings), /table of contents/);
   // The ordinal run needs all three; two ordinals are a list.

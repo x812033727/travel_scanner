@@ -11,8 +11,18 @@
 FROM mcr.microsoft.com/playwright:v1.63.0-noble@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27 AS worker
 
 RUN apt-get update \
- && apt-get install -y --no-install-recommends ffmpeg \
+ && apt-get install -y --no-install-recommends ffmpeg python3-venv \
  && rm -rf /var/lib/apt/lists/*
+
+# The second-opinion transcriber for `check-audio` (docs/videos/DUBS.md §聲音會唸錯的地方):
+# faster-whisper on the CPU, in its own venv so it never touches the image's Python. Without it
+# every line Gemini doubts counts as misheard, and on 2026-10-09 that was the reason behind 31 of
+# the 49 dub tracks the worker had given up on. The model itself (WHISPER_MODEL, compose sets
+# medium) is fetched on first use into HF_HOME, which compose keeps on the video_home volume so
+# a rebuilt container does not fetch it again.
+RUN python3 -m venv /opt/whisper \
+ && /opt/whisper/bin/pip install --no-cache-dir "faster-whisper==1.2.1" \
+ && /opt/whisper/bin/python -c "import faster_whisper"
 
 WORKDIR /opt/mokaair
 COPY ops/video/package.json ./package.json
@@ -54,6 +64,8 @@ RUN --mount=type=tmpfs,target=/dev/shm \
     node --test ops/video/sync-docs.test.mjs; \
     node ops/video/sync-docs.mjs; \
     ffmpeg -hide_banner -encoders | grep -q libx264; \
+    /opt/whisper/bin/python -c 'import faster_whisper'; \
+    /opt/whisper/bin/python tools/video/tts/whisper_second_opinion.py 2>&1 | grep -q usage; \
     test -f .agents/skills/youtube-video/references/script-writing.md; \
     test -f docs/videos/README.md; \
     test ! -e "$HOME/.mokaair/video-tool.json"; \

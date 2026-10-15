@@ -32,7 +32,9 @@ export type ChecklistItem = { key: string; label: string; done: boolean };
 // The languages a video can get on top of Traditional Chinese, in the page's order, and the three
 // parts each one is made of (docs/videos/LANGUAGES.md): titles and descriptions, closed captions,
 // a dub track. A dub track is timed with its captions, so choosing it means choosing them too.
-export const LOCALES = ["en", "ja", "ko", "zh-CN"] as const;
+// zh-CN left the video pipeline on 2026-10-09 (a video's languages are four); an older review
+// that names it still renders, after these, with its own label.
+export const LOCALES = ["en", "ja", "ko"] as const;
 export type Locale = (typeof LOCALES)[number];
 export const LOCALE_PARTS = ["metadata", "captions", "dub"] as const;
 export type LocalePart = (typeof LOCALE_PARTS)[number];
@@ -40,6 +42,14 @@ export type LocaleChoice = Partial<Record<LocalePart, boolean>>;
 // Where a chosen part stands, from the server: not reported yet, made, given up on (with the
 // worker's reason), or, for a dub track, uploaded by the owner in Studio.
 export type LanguagePart = { state: "working" | "ready" | "skipped" | "uploaded" | string; reason?: string | null };
+// The owner's latest request to make a skipped dub track again, as the server reads it now
+// (docs/videos/DUBS.md; DubRetryOut in apps/api/app/video_reviews/schemas.py): open while it waits
+// for the worker or the worker is making the track, stalled when that takes longer than it should,
+// and how it ended. "expired" is worked out at read time; reason is the new skip reason or the
+// refusal, replaced_reason the skip reason at the click.
+export type DubRetry = { id: string; status: "requested" | "taken" | "made" | "skipped" | "refused" | "expired" | string;
+  open?: boolean; stalled?: boolean; requested_at?: string | null; taken_at?: string | null; finished_at?: string | null;
+  reason?: string | null; replaced_reason?: string | null };
 // What kind of video a tutorial is (apps/api/app/models.py VIDEO_CATEGORIES; migrations 0116, 0118), the
 // list's first filter; a video nobody filed yet has null. The pipeline reports it from video.json
 // once, the owner changes it on the video's page.
@@ -60,6 +70,9 @@ export type ProjectSummary = {
   dropped_at?: string | null; dropped_note?: string | null;
   retry_request_id?: string | null; retry_acknowledged_id?: string | null;
   format?: "slides" | "drama" | "shorts"; media_usd?: number; clip_seconds?: number;
+  // Detail response: the server has verified this cut can take a dub. An older API omits it;
+  // a story without an explicit true must stay locked because its subtitles may be burned in.
+  dub_allowed?: boolean;
   // A Short (docs/videos/SHORTS.md) is a video whose content line is set: its series, the video it
   // was cut from, where it stands as the Shorts tab groups them, the slot it holds, and when the
   // site found it gone from YouTube. All absent from an API older than the Shorts tab.
@@ -74,6 +87,11 @@ export type ProjectSummary = {
   locales_decided_at?: string | null;
   languages?: Partial<Record<string, Partial<Record<string, LanguagePart>>>>;
   ready_to_upload?: boolean;
+  // Per language whose dub is chosen: the owner's request to make the skipped track again, and,
+  // for a skipped dub with no open request, the server's code for why none can be asked for now
+  // (a key of the catalog's dubRetryBlocked group). Both absent from an API older than the retry.
+  dub_retries?: Partial<Record<string, DubRetry>>;
+  dub_retry_blocked?: Partial<Record<string, string>>;
   // Canonical worker registration, separate from output readiness and YouTube state.
   worker_state?: VideoWorkerState | null;
   dub_locales?: string[];
@@ -153,13 +171,18 @@ const knowsLanguages = (project: ProjectSummary) => typeof project.ready_to_uplo
  */
 export const readyToUpload = (project: ProjectSummary) => !project.dropped_at && !project.youtube_video_id
   && (knowsLanguages(project) ? Boolean(project.ready_to_upload) : Boolean(project.publish_approved_at));
-/** The final cut is approved: the checklist says so, or something that comes after it already happened. */
-export const finalApproved = (project: ProjectSummary & { reviews?: Review[] }) =>
-  project.checklist.some((item) => item.key === "final_video_approved" && item.done)
-  || Boolean(project.publish_approved_at || project.locales_decided_at || project.youtube_video_id)
-  || (project.reviews ?? []).some((review) => review.gate === "final" && review.status === "approved");
+/** An imported cut with no approved final stays pending when its private Studio link is recorded. */
+export const finalApproved = (project: ProjectSummary & { reviews?: Review[] }) => {
+  const reviews = project.reviews ?? [];
+  // The API orders reviews newest first; an older approval cannot approve a newer imported cut.
+  const currentFinal = reviews.find((review) => review.gate === "final" && !review.subject);
+  if (currentFinal?.status === "pending" && currentFinal.payload.imported) return false;
+  return project.checklist.some((item) => item.key === "final_video_approved" && item.done)
+    || Boolean(project.publish_approved_at || project.locales_decided_at || project.youtube_video_id)
+    || reviews.some((review) => review.gate === "final" && review.status === "approved");
+};
 
-export type PublishState = "deciding" | "making" | "packaging" | "ready" | "scheduled" | "published";
+export type PublishState = "deciding" | "making" | "packaging" | "ready" | "linked" | "scheduled" | "published";
 
 /** Reports describe completed outputs, not whether a producer is currently running. */
 export function chosenLanguagesComplete(project: ProjectSummary): boolean {
@@ -173,14 +196,14 @@ export function chosenLanguagesComplete(project: ProjectSummary): boolean {
  * Where the video is on its way to YouTube (docs/videos/LANGUAGES.md),
  * states), or null before the final cut is approved and once the video is dropped: the owner has
  * still to choose its languages, language results are incomplete (so the upload can wait to be
- * scheduled), it may be uploaded, it is scheduled, or it is public. An older API knows only
- * "ready" and the two YouTube states. A Short has none of the five: it chooses no languages of
+ * scheduled), its Studio link may be recorded, it is scheduled, or it is public. An older API knows only
+ * "ready" and the YouTube states. A Short has none of these: it chooses no languages of
  * its own, and where it stands is its shorts_state, which the server works out
  * (docs/videos/SHORTS.md) and the page shows in the same place.
  */
 export function publishState(project: ProjectSummary, now = Date.now()): PublishState | null {
   if (project.dropped_at || project.shorts_line) return null;
-  if (project.youtube_video_id) return project.youtube_publish_at && Date.parse(project.youtube_publish_at) > now ? "scheduled" : "published";
+  if (project.youtube_video_id) return !project.youtube_publish_at ? "linked" : Date.parse(project.youtube_publish_at) > now ? "scheduled" : "published";
   if (!knowsLanguages(project)) return readyToUpload(project) ? "ready" : null;
   if (!finalApproved(project)) return null;
   if (!project.locales_decided_at) return "deciding";
@@ -189,7 +212,7 @@ export function publishState(project: ProjectSummary, now = Date.now()): Publish
 }
 
 // The pill separates incomplete language results from an unavailable upload package.
-const PUBLISH_TONES: Record<PublishState, string> = { deciding: "warning", making: "pending", packaging: "pending", ready: "active", scheduled: "queued", published: "ok" };
+const PUBLISH_TONES: Record<PublishState, string> = { deciding: "warning", making: "pending", packaging: "pending", ready: "active", linked: "inactive", scheduled: "queued", published: "ok" };
 
 /** Production evidence stays separate from completed outputs, including after a YouTube upload. */
 export function ProductionPill({ project, compact = false }: { project: ProjectSummary; compact?: boolean }) {
@@ -655,7 +678,7 @@ function CopyField({ label, value, rows }: { label: string; value: string; rows:
  *   payload.package    { ok, final_sha256, items: [{ id: files | descriptions | captions | disclosure, ok, detail, warnings? }] }
  *   payload.minutes    number     the video's length in minutes
  *   payload.chapters   number     how many chapters
- *   payload.locales    string[]   the locales that have captions and a description, e.g. ["zh-TW", "zh-CN", "en", "ja", "ko"]
+ *   payload.locales    string[]   the locales that have captions and a description, e.g. ["zh-TW", "en", "ja", "ko"] (an older package may also list "zh-CN")
  *   payload.zh         { title, description, tags: string[] }   the zh-TW metadata the owner pastes
  *   payload.disclosure { synthetic: boolean, reason: string }   whether to tick Studio's "altered or synthetic content"
  *   files[]            { role, sha256, size, content_type } with the roles
@@ -741,7 +764,7 @@ export function UploadPackage({ slug, review, mp4Gone = false }: { slug: string;
  * when it goes public (docs/videos/HANDS-OFF.md, the YouTube API section, step one). ``publishAt``
  * fills the time in (a datetime-local value): a brand story's next free slot (admin-video-stories.tsx).
  */
-export function UploadedForm({ slug, onLinked, publishAt: suggested = "" }: { slug: string; onLinked: () => void; publishAt?: string }) {
+export function UploadedForm({ slug, onLinked, publishAt: suggested = "", privateOnly = false }: { slug: string; onLinked: () => void; publishAt?: string; privateOnly?: boolean }) {
   const t = useTranslations("admin.videoReviews");
   const [url, setUrl] = useState("");
   const [publishAt, setPublishAt] = useState(suggested);
@@ -755,7 +778,11 @@ export function UploadedForm({ slug, onLinked, publishAt: suggested = "" }: { sl
     setError("");
     try {
       // A datetime-local value is the owner's wall clock; the API wants a zoned instant.
-      await api(`/admin/videos/${slug}/youtube`, { method: "POST", body: JSON.stringify({ url: url.trim(), publish_at: publishAt ? new Date(publishAt).toISOString() : null }) });
+      await api(`/admin/videos/${slug}/youtube`, { method: "POST", body: JSON.stringify({
+        url: url.trim(),
+        publish_at: privateOnly ? null : publishAt ? new Date(publishAt).toISOString() : null,
+        ...(privateOnly ? { private_only: true } : {}),
+      }) });
       onLinked();
     } catch (problem) {
       setError(t("uploadedError", { message: problem instanceof Error ? problem.message : "" }));
@@ -763,18 +790,18 @@ export function UploadedForm({ slug, onLinked, publishAt: suggested = "" }: { sl
       setBusy(false);
     }
   };
-  return <form onSubmit={(event) => void submit(event)} className="grid gap-3 rounded-2xl border border-[var(--line)] p-4" aria-label={t("uploadedTitle")}>
-    <p className="font-bold">{t("uploadedTitle")}</p>
-    <p className="text-sm leading-6 text-[var(--muted)]">{t("uploadedHelp")}</p>
+  return <form onSubmit={(event) => void submit(event)} className="grid gap-3 rounded-2xl border border-[var(--line)] p-4" aria-label={t(privateOnly ? "privateLinkTitle" : "uploadedTitle")}>
+    <p className="font-bold">{t(privateOnly ? "privateLinkTitle" : "uploadedTitle")}</p>
+    <p className="text-sm leading-6 text-[var(--muted)]">{t(privateOnly ? "privateLinkHelp" : "uploadedHelp")}</p>
     <label className="grid gap-2 text-sm font-semibold">{t("youtubeUrl")}
       <input className={control} value={url} disabled={busy} placeholder={t("youtubeUrlPlaceholder")} onChange={(event) => setUrl(event.target.value)} />
     </label>
     {url.trim() && <p className={`text-sm ${id ? "text-[var(--muted)]" : "text-amber-800"}`}>{id ? t("youtubeId", { id }) : t("youtubeUrlInvalid")}</p>}
-    <label className="grid gap-2 text-sm font-semibold">{t("publishAt")}
+    {!privateOnly && <label className="grid gap-2 text-sm font-semibold">{t("publishAt")}
       <input type="datetime-local" className={control} value={publishAt} disabled={busy} onChange={(event) => setPublishAt(event.target.value)} />
-    </label>
+    </label>}
     {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
-    <div><Button type="submit" disabled={busy || !id}>{busy ? t("saving") : t("uploadedButton")}</Button></div>
+    <div><Button type="submit" disabled={busy || !id}>{busy ? t("saving") : t(privateOnly ? "privateLinkButton" : "uploadedButton")}</Button></div>
   </form>;
 }
 
@@ -884,7 +911,10 @@ function LanguagesBody({ slug, review }: { slug: string; review: Review }) {
       const reason = state === "skipped" ? text(record(value).reason) || fallback : "";
       const file = fileFor(review, `${PART_ROLES[part]}${locale}`) ?? (part === "dub" ? fileFor(review, text(entry.file_role)) : undefined);
       const name = part === "dub" ? text(entry.file) || `${locale}.${text(entry.format) || "m4a"}` : part === "captions" ? `${locale}.srt` : `description.${locale}.txt`;
-      return [{ part, state, reason, file, name }];
+      // The lines of a finished track that kept the take Jev heard differently, because the retake
+      // did not fit (the worker sends their ids only, so the card can name them but not quote them).
+      const kept = part === "dub" && state === "ready" ? list(entry.kept_lines).map(text).filter(Boolean) : [];
+      return [{ part, state, reason, file, name, kept }];
     });
     return { locale, cells };
   });
@@ -892,10 +922,11 @@ function LanguagesBody({ slug, review }: { slug: string; review: Review }) {
   return <div className="grid gap-4 text-sm leading-6">
     <ul className="grid gap-2">{rows.map(({ locale, cells }) => <li key={locale} className="grid gap-1 sm:grid-cols-[7rem_1fr]">
       <span className="font-semibold">{t.has(`locales.${locale}`) ? t(`locales.${locale}`) : locale}</span>
-      <span className="flex flex-wrap gap-x-5 gap-y-1">{cells.map(({ part, state, reason, file, name }) => <span key={part} className="inline-flex flex-wrap items-center gap-2">
+      <span className="flex flex-wrap gap-x-5 gap-y-1">{cells.map(({ part, state, reason, file, name, kept }) => <span key={part} className="inline-flex flex-wrap items-center gap-2">
         <span>{t(`parts.${part}`)}</span>
         <span className="text-[var(--muted)]">{partStateLabel(t, state, reason)}</span>
         {file && <a className="font-semibold text-[var(--teal)] underline" href={fileUrl(slug, file)} download={name}>{t("downloadTrack", { file: name })}</a>}
+        {kept.length > 0 && <span className="basis-full text-amber-800">{t("dubKeptLines", { count: kept.length, lines: kept.join("、") })}</span>}
       </span>)}</span>
     </li>)}</ul>
     {dubReady && <div className="rounded-2xl border border-[var(--line)] p-4">

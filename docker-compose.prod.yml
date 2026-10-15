@@ -299,6 +299,15 @@ services:
       VIDEO_WORKER_INTERVAL_SECONDS: "300"
       # Two videos move at once (tools/video/automation/cli.mjs laneCount); 1 goes back to one.
       VIDEO_WORKER_LANES: "2"
+      # A second transcriber for the dub check (docs/videos/DUBS.md): Jev's doubts go to
+      # faster-whisper, which never sees the script, and only a line both hear wrong stays flagged.
+      # Without it 31 of 49 dub tracks were given up on by 2026-10-09. The model is fetched into
+      # HF_HOME on first use (medium, about 1.5 GB) and kept on the video_home volume; large-v3
+      # hears better but needs about 3 GB of RAM beside the lanes' Chromium.
+      VIDEO_SECOND_OPINION: /opt/whisper/bin/python /opt/mokaair/tools/video/tts/whisper_second_opinion.py
+      WHISPER_MODEL: medium
+      HF_HOME: /var/lib/mokaair/video-home/whisper
+      # The first run also downloads the model; the default (10 min plus 2 a clip) covers it.
     volumes:
       - video_work:/var/lib/mokaair/video-work
       - video_home:/var/lib/mokaair/video-home

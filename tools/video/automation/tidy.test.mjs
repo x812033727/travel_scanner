@@ -391,6 +391,70 @@ test("rejecting a language batch still keeps its media while the parts return to
   assertUntouched(dir);
 });
 
+// The owner's request to make a given-up dub again (docs/videos/DUBS.md §再做一次): the site's row
+// carries it as dub_retries[locale] = {id, status, open}, the worker's auto.json as {id, status, at}.
+const DUB_REQUEST = "0d3b7c1e-6f0a-4c59-9d57-0d6a3f1c2b11";
+const JA_DUB = { ja: { metadata: false, captions: true, dub: true } };
+const JA_SKIPPED = { ja: { captions: { state: "ready" }, dub: { state: "skipped", reason: "k7p2 does not fit its window even at 1.15x after 2 shortening rounds" } } };
+
+test("a video with an open dub request on the site keeps its files", () => {
+  const where = place();
+  const slug = "dub-asked-again";
+  const dir = finishedVideo(where.work, slug);
+  // Asked and not taken yet: the dub still reads skipped and no review waits, so only the request holds the files.
+  const asked = listing(slug, { locales: JA_DUB, languages: JA_SKIPPED, pending: 0, dub_retries: { ja: { id: DUB_REQUEST, status: "requested", open: true } } });
+  const result = round(where, { site: [asked] });
+  assert.equal(result.cleared, null);
+  assert.deepEqual(result.held.map((entry) => [entry.slug, entry.why]), [[slug, "the owner asked for the ja dub again"]]);
+  assert.ok(roundLines(result, { verbose: true }).some((line) => line.includes(`${slug} (the owner asked for the ja dub again)`)), "tidy --dry-run says why it stays");
+  assertUntouched(dir);
+});
+
+test("a video whose retried dub this worker still holds keeps its files while the dub is ticked", () => {
+  const where = place();
+  const taking = finishedVideo(where.work, "dub-taking", { state: { dub_retries: { ja: { id: DUB_REQUEST, status: "taking", at: daysAgo(0) } } } });
+  const taken = finishedVideo(where.work, "dub-taken", { state: { dub_retries: { ja: { id: DUB_REQUEST, status: "taken", at: daysAgo(0) }, ko: { id: DUB_REQUEST, status: "taken", at: daysAgo(0) } } } });
+  // The list in hand was read before the site heard of the take: no request on the row, the dub still skipped.
+  const older = (slug, locales = JA_DUB) => listing(slug, { locales, languages: JA_SKIPPED, pending: 0 });
+  const result = round(where, { site: [older("dub-taking"), older("dub-taken")] });
+  assert.equal(result.cleared, null);
+  assert.deepEqual(Object.fromEntries(result.held.map((entry) => [entry.slug, entry.why])), {
+    "dub-taking": "the owner asked for the ja dub again",
+    "dub-taken": "the owner asked for the ja dub again",
+  }, "ko is not ticked on the row, so the record of it holds nothing");
+  assertUntouched(taking);
+  assertUntouched(taken);
+
+  // Un-ticked, the take is paused and its record holds nothing; the video goes like any other.
+  const unticked = round(where, { site: [older("dub-taking", {}), older("dub-taken")] });
+  assert.equal(unticked.cleared.slug, "dub-taking");
+  assert.ok(!exists(taking, "final.mp4"));
+  assertUntouched(taken);
+});
+
+test("a closed dub request holds nothing", () => {
+  const where = place();
+  const endings = {
+    "dub-made": [{ status: "made", open: false }, { status: "sent" }],
+    "dub-skipped-again": [{ status: "skipped", open: false }, { status: "sent" }],
+    "dub-refused": [{ status: "refused", open: false, reason: "配音工具說現在做不了" }, { status: "refused", reason: "配音工具說現在做不了" }],
+    "dub-expired": [{ status: "expired", open: false }, null],
+  };
+  const site = [];
+  for (const [slug, [theirs, mine]] of Object.entries(endings)) {
+    finishedVideo(where.work, slug, { state: mine ? { dub_retries: { ja: { id: DUB_REQUEST, at: daysAgo(1), ...mine } } } : {} });
+    site.push(listing(slug, { locales: JA_DUB, languages: JA_SKIPPED, pending: 0, dub_retries: { ja: { id: DUB_REQUEST, ...theirs } } }));
+  }
+  // One video a round: each of the four goes in its turn, none is held.
+  const cleared = [];
+  for (let turn = 0; turn < 4; turn++) {
+    const result = round(where, { site });
+    assert.deepEqual(result.held, []);
+    cleared.push(result.cleared?.slug);
+  }
+  assert.deepEqual(cleared.sort(), Object.keys(endings).sort());
+});
+
 test("a compilation's hard-linked cut frees its bytes once", () => {
   const where = place();
   const dir = finishedVideo(where.work, "saga-full", { media: { "final.mp4": 5000 }, state: { compilation: { series: "saga", episodes: [] } } });

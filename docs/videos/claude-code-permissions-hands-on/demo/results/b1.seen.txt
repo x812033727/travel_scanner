@@ -1,0 +1,14 @@
+PreToolUse Bash id=c1 npm test
+PostToolUse Bash id=c1 npm test | response_chars=252
+PreToolUse Bash id=c2 timeout 60 npm test
+PostToolUse Bash id=c2 timeout 60 npm test | response_chars=252
+PreToolUse Bash id=c3 npm test && node tools/append.mjs
+PermissionRequest Bash id=---- npm test && node tools/append.mjs | mode=default | suggestions=1 first=Bash(node tools/append.mjs)
+PreToolUse Bash id=c4 bash scripts/report.sh
+PostToolUse Bash id=c4 bash scripts/report.sh | response_chars=100
+PreToolUse Bash id=c5 bash scripts/deploy.sh
+PreToolUse Bash id=c6 npm test && bash scripts/deploy.sh
+PreToolUse Bash id=c7 bash scripts/../scripts/deploy.sh
+PostToolUse Bash id=c7 bash scripts/../scripts/deploy.sh | response_chars=138
+PreToolUse Bash id=c8 sh scripts/deploy.sh
+PermissionRequest Bash id=---- sh scripts/deploy.sh | mode=default | suggestions=1 first=Bash(sh scripts/deploy.sh)

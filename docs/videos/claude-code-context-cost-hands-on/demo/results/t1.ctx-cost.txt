@@ -1,0 +1,12 @@
+$ node ctx-cost.mjs t1.stream.jsonl
+== t1 | Claude Code 2.1.295 | claude-sonnet-5-5 | mode default
+   init: built-in tools 8 | MCP servers 1 (connected), tools 2
+         skills 22 | agents 7 | slash commands 58 | plugins 3
+   each request: input + cache write + cache read = input side
+   request 1: 2 + 12,317 + 0 = 12,319
+   first 12,319 | last 12,319 | grew +0 over 1 request
+   -- after the last request:
+      other system lines: 1
+   result 1: success | turns 1 | cost USD 0.049451999999999996
+      usage 2 + 12,317 + 0, output 18 | models in modelUsage: 1
+[exit 0]

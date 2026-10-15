@@ -54,7 +54,7 @@ export const STEP_LABELS = {
   "metadata planned": "合集標題與說明",
   "cards rendered": "章節卡與縮圖",
   "video compiled": "合集串接",
-  "metadata translated": "五語標題與說明",
+  "metadata translated": "四語標題與說明",
   brief: "企劃書",
   "outline approved": "站主選好大綱",
   "script passes lint": "稿子通過檢查",
@@ -823,7 +823,8 @@ function languagesSummary(locales) {
   const summarize = (reasons) => {
     const said = Object.entries(locales).map(([locale, entry]) => {
       const made = Object.entries(PART_NAMES).flatMap(([part, name]) => {
-        if (entry[part] === "ready") return [name];
+        // A dub whose retake did not fit keeps the earlier take of those lines (kept_lines).
+        if (entry[part] === "ready") return [part === "dub" && reasons && entry.kept_lines?.length ? `${name}（${entry.kept_lines.join("、")} 保留原本的錄音：重錄塞不進視窗）` : name];
         if (part === "dub" && entry.dub?.status === "skipped") return [`${name}跳過${reasons ? `（${entry.dub.reason || "沒有寫原因"}）` : ""}`];
         return [];
       });
@@ -877,7 +878,9 @@ async function languagesSubmission({ request, project, workdir, slug }) {
       if (dub) {
         const role = DUB_TYPES[dub.format] ? dubRole(locale) : null;
         if (role) files.push(await upload(request, slug, dub.file, role, DUB_TYPES[dub.format]));
-        Object.assign(entry, { dub: "ready", file: path.basename(dub.file), format: dub.format, tempo_max: dub.tempo_max, file_role: role, sha256: await sha256File(dub.file) });
+        // `kept_lines`: the lines whose retake did not fit its window, so the track carries the
+        // take Jev heard wrong in them (automation/flow.mjs makeDub); the summary names them.
+        Object.assign(entry, { dub: "ready", file: path.basename(dub.file), format: dub.format, tempo_max: dub.tempo_max, file_role: role, sha256: await sha256File(dub.file), ...(dub.kept ? { kept_lines: dub.kept } : {}) });
       } else if (skipped[locale] !== undefined) {
         entry.dub = { status: "skipped", reason: skipped[locale] };
       }

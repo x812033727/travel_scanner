@@ -5,15 +5,15 @@ import test from "node:test";
 
 import { EXIT, main } from "../cli.mjs";
 import { GATES, readApprovals } from "../core/approvals.mjs";
-import { parseSrt } from "../core/captions.mjs";
+import { checkCues, parseSrt } from "../core/captions.mjs";
 import { fixture, sandbox } from "../core/fixtures/load.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
 import { captionTimelineOf, currentDub, dubRole, dubsForUpload, runCaptions } from "../core/stages.mjs";
 import { dubArtifacts, loadProject } from "../core/state.mjs";
-import { estimateTimeline, frameToMs, speechHash } from "../core/timeline.mjs";
+import { estimateTimeline, frameToMs, framesFor, msToSamples, SAMPLES_PER_FRAME, speechHash } from "../core/timeline.mjs";
 import { composeMetadata, dubSteps, uploadChecklist } from "../package/metadata.mjs";
 import { finalReviewHtml } from "../review/pages.mjs";
-import { dubFingerprint, dubScript, translationHash } from "./plan.mjs";
+import { GAP_MS, dubFingerprint, dubScript, translationHash } from "./plan.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
 process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
@@ -95,7 +95,8 @@ test("captions of a locale with a current dub follow the dub's timing; the other
   const en = currentDub(project, box.workdir, "en", speech);
   assert.equal(en.locale, "en");
   assert.ok(en.file.endsWith(path.join("dubs", "en.m4a")));
-  assert.equal(dubRole("zh-CN"), "dub_zh_cn");
+  assert.equal(dubRole("ko"), "dub_ko");
+  assert.equal(dubRole("zh-CN"), "dub_zh_cn", "an older package's track, from before zh-CN left the video languages");
 
   const captionLines = captionTimelineOf(en).lines;
   assert.equal(captionLines[0].end_frame, captionLines[1].start_frame, "a dubbed line's cues run to the next dubbed line");
@@ -126,6 +127,49 @@ test("captions of a locale with a current dub follow the dub's timing; the other
   const after = dubsForUpload(project, box.workdir, speech);
   assert.deepEqual(after.dubs, []);
   assert.deepEqual(after.skipped, { ko: "two shortening rounds were not enough" });
+});
+
+test("a dubbed line let through past its slide keeps its captions in step and never overlapping the next line's", () => {
+  const box = sandbox();
+  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+  const doc = fixture();
+  writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify(translationFor(doc, "EN")));
+  const project = loadProject({ slug: box.slug, root: box.root });
+  const speech = speechHash(project.doc, project.lexicon);
+  const timeline = { ...estimateTimeline(doc), speech_hash: speech };
+  mkdirSync(box.workdir, { recursive: true });
+  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+  const dub = writeDub(box, project, "en", timeline);
+  // As `dub` lays an absorbed overrun (plan.mjs absorbOverruns): x9fe runs five frames past its
+  // window's end, and b3tn, the next window's first line, waits a gap after it.
+  const gap = framesFor(msToSamples(GAP_MS));
+  const x9fe = dub.lines.find((line) => line.id === "x9fe");
+  const b3tn = dub.lines.find((line) => line.id === "b3tn");
+  const window = timeline.scenes.find((scene) => scene.id === "questions").states[0];
+  assert.equal(window.end_frame, b3tn.start_frame - 5);
+  x9fe.end_frame = window.end_frame + 5;
+  x9fe.audio_samples = (x9fe.end_frame - x9fe.start_frame) * SAMPLES_PER_FRAME;
+  b3tn.start_frame = x9fe.end_frame + gap;
+  b3tn.end_frame = b3tn.start_frame + Math.ceil(b3tn.audio_samples / SAMPLES_PER_FRAME);
+  dub.windows = [{ scene: "questions", state: 0, lines: ["x9fe"], tempo: 1.15, slack_frames: -8, over: false, absorbed: "next-slack", overrun_seconds: 0.27 }];
+  writeFileSync(dubArtifacts(box.workdir, "en").timeline, JSON.stringify(dub));
+
+  const captionLines = captionTimelineOf(currentDub(project, box.workdir, "en", speech)).lines;
+  const spoke = captionLines.find((line) => line.id === "x9fe");
+  const waited = captionLines.find((line) => line.id === "b3tn");
+  assert.equal(spoke.end_frame, b3tn.start_frame, "x9fe's cues run to where b3tn's voice starts, past the slide change");
+  assert.equal(waited.start_frame, x9fe.end_frame + gap);
+  for (let index = 1; index < captionLines.length; index += 1) assert.ok(captionLines[index].start_frame >= captionLines[index - 1].end_frame, `${captionLines[index].id} starts after ${captionLines[index - 1].id} ends`);
+
+  const manifest = runCaptions({ slug: box.slug, root: box.root, workdir: box.workdir });
+  assert.equal(manifest.locales.en.timing, "dub");
+  assert.deepEqual((manifest.locales.en.problems ?? []).filter((problem) => problem.includes("overlaps")), []);
+  const cues = parseSrt(readFileSync(path.join(box.workdir, "captions", "en.srt"), "utf8"));
+  assert.deepEqual(checkCues(cues, "en").filter((problem) => problem.includes("overlaps")), []);
+  const last = cues.filter((cue) => cue.start_ms < frameToMs(b3tn.start_frame)).at(-1);
+  const first = cues.find((cue) => cue.start_ms >= frameToMs(b3tn.start_frame));
+  assert.ok(last.end_ms <= first.start_ms, "the overrunning line's last cue ends before the waiting line's first");
+  assert.ok(last.end_ms > frameToMs(window.end_frame), "and it stays up while the voice is still speaking past the slide change");
 });
 
 test("the upload checklist tells the owner where each track goes in Studio, and names the locales given up on", () => {
@@ -188,10 +232,10 @@ test("review-push --gate dubs sends the tracks bound to a manifest, and the owne
 test("the final review page plays each dub track beside the video", () => {
   const doc = fixture();
   const timeline = { ...estimateTimeline(doc), speech_hash: "abc123" };
-  const html = finalReviewHtml(doc, timeline, { problems: [] }, [{ locale: "en", format: "m4a", tempo_max: 1 }, { locale: "zh-CN", format: "mp3", tempo_max: 1.1 }]);
+  const html = finalReviewHtml(doc, timeline, { problems: [] }, [{ locale: "en", format: "m4a", tempo_max: 1 }, { locale: "ko", format: "mp3", tempo_max: 1.1 }]);
   assert.match(html, /<h2>配音音軌<\/h2>/);
   assert.match(html, /<audio controls preload="none" src="\.\.\/dubs\/en\.m4a">/);
-  assert.match(html, /<audio controls preload="none" src="\.\.\/dubs\/zh-CN\.mp3">/);
+  assert.match(html, /<audio controls preload="none" src="\.\.\/dubs\/ko\.mp3">/);
   assert.match(html, /最快處 1\.1 倍速/);
   assert.doesNotMatch(finalReviewHtml(doc, timeline, { problems: [] }), /配音音軌/);
 });

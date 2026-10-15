@@ -1,0 +1,31 @@
+$ node <seed>/ctx-cost.mjs --quiet --base z2 --floor 11 z2.stream.jsonl z1.stream.jsonl m1.stream.jsonl s1.stream.jsonl a1.stream.jsonl c1.stream.jsonl u1.stream.jsonl h1.stream.jsonl p1.stream.jsonl t1.stream.jsonl      (run from <logs>)
+base: z2 | first request 11,190 | one run, no spread
+bar: 11 (the larger of the spread and --floor 11)
+name | requests | first = input + write + read | minus base | last | grew
+z2 | 1 | 11,190 = 2 + 4,386 + 6,802 | (base) | 11,190 | +0
+z1 | 1 | 11,270 = 2 + 11,268 + 0 | +80 | 11,270 | +0
+m1 | 1 | 11,493 = 2 + 5,842 + 5,649 | +303 | 11,493 | +0
+s1 | 1 | 11,251 = 2 + 4,713 + 6,536 | +61 | 11,251 | +0
+a1 | 1 | 11,242 = 2 + 4,438 + 6,802 | +52 | 11,242 | +0
+c1 | 1 | 11,901 = 2 + 4,828 + 7,071 | +711 | 11,901 | +0
+u1 | 1 | 11,438 = 2 + 11,436 + 0 | +248 | 11,438 | +0
+h1 | 1 | 11,186 = 2 + 4,382 + 6,802 | -4 (inside the bar) | 11,186 | +0
+p1 | 1 | 11,315 = 2 + 4,511 + 6,802 | +125 | 11,315 | +0
+t1 | 1 | 12,319 = 2 + 12,317 + 0 | +1,129 | 12,319 | +0
+[exit 0]
+
+$ node <seed>/ctx-cost.mjs --quiet --base z2,h1 --floor 11 z2.stream.jsonl h1.stream.jsonl z1.stream.jsonl m1.stream.jsonl s1.stream.jsonl a1.stream.jsonl c1.stream.jsonl u1.stream.jsonl p1.stream.jsonl t1.stream.jsonl      (run from <logs>)
+base: z2, h1 | first request 11,190, 11,186 | mean 11,188 | spread 4
+bar: 11 (the larger of the spread and --floor 11)
+name | requests | first = input + write + read | minus base | last | grew
+z2 | 1 | 11,190 = 2 + 4,386 + 6,802 | (base) | 11,190 | +0
+h1 | 1 | 11,186 = 2 + 4,382 + 6,802 | (base) | 11,186 | +0
+z1 | 1 | 11,270 = 2 + 11,268 + 0 | +82 | 11,270 | +0
+m1 | 1 | 11,493 = 2 + 5,842 + 5,649 | +305 | 11,493 | +0
+s1 | 1 | 11,251 = 2 + 4,713 + 6,536 | +63 | 11,251 | +0
+a1 | 1 | 11,242 = 2 + 4,438 + 6,802 | +54 | 11,242 | +0
+c1 | 1 | 11,901 = 2 + 4,828 + 7,071 | +713 | 11,901 | +0
+u1 | 1 | 11,438 = 2 + 11,436 + 0 | +250 | 11,438 | +0
+p1 | 1 | 11,315 = 2 + 4,511 + 6,802 | +127 | 11,315 | +0
+t1 | 1 | 12,319 = 2 + 12,317 + 0 | +1,131 | 12,319 | +0
+[exit 0]

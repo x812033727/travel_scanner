@@ -48,13 +48,13 @@ CostCategory = Literal[
     "tool",
     "other",
 ]
-ShortsLocale = Literal["en", "ja", "ko", "zh-CN"]
+ShortsLocale = Literal["en", "ja", "ko"]
 ConsentState = Literal["none", "valid", "expiring", "expired", "invalid"]
 AutopublishState = Literal["off", "on", "paused", "expiring", "expired", "invalid"]
 SlotAction = Literal["move", "assign", "clear", "skip", "reopen", "note"]
 
 LINES: tuple[ShortsLine, ...] = ("lab", "cut", "drama")
-SHORTS_LOCALES: tuple[ShortsLocale, ...] = ("en", "ja", "ko", "zh-CN")
+SHORTS_LOCALES: tuple[ShortsLocale, ...] = ("en", "ja", "ko")
 SLUG_PATTERN = r"^[a-z0-9](?:[a-z0-9-]{0,78}[a-z0-9])?$"
 # A series of the experiments line (daily, blind, prompts), or the slug of the tutorial or the
 # drama a highlight or a vertical short was cut from.
@@ -94,7 +94,7 @@ class SettingsWrite(StrictModel):
     seconds_min: int = Field(ge=10, le=180)
     seconds_max: int = Field(ge=10, le=180)
     voice: VoiceSettings
-    locales: list[ShortsLocale] = Field(default_factory=list, max_length=4)
+    locales: list[ShortsLocale] = Field(default_factory=list, max_length=3)
     made_for_kids: bool = False
     auto_approve: bool = True
     budget_ntd_30d: int = Field(ge=0, le=1_000_000)

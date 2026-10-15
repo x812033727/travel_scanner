@@ -11,7 +11,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { approvalState } from "../core/approvals.mjs";
-import { burnIn, drawnShotScenes, hasCast, hasPictures, illustrated, isExplainer, lookHash, picturesHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes } from "../core/drama.mjs";
+import { burnIn, drawnShotScenes, hasCast, hasPictures, illustrated, isCuteExplainer, isExplainer, lookHash, picturesHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, keyframeProblems, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
 import { visualHash } from "../core/timeline.mjs";
@@ -516,7 +516,7 @@ export async function run(command, args, ctx) {
   const stage = new Stage({ slug: doc.slug, workdir, options, status, stage: "keyframes", imageVersion, format, now: ctx.now });
   // Illustrated slides are judged by yes/no fault checks once the server takes them; a drama's
   // pictures, and any picture on an older server, are scored on the rubric as before.
-  const checks = slides && Boolean(status.limits?.judge_checks);
+  const checks = (slides || isCuteExplainer(doc)) && Boolean(status.limits?.judge_checks);
   const size = sizeFor(status);
   mkdirSync(path.join(workdir, "keyframes"), { recursive: true });
   // The chosen sheets and the style frames go to the media store (the server may have pruned

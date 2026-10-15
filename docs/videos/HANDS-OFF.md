@@ -88,8 +88,10 @@ Jev 或網站暫時不行時大綱等一下，之後再問：API 說 Jev 這次�
 | `facts` | 最後一輪查核標成 NOT FOUND 的說法，已經不在稿子裡 | `verify-*.md` 對 `video.json` |
 | `links` | 說明欄的每個網址都回 200，文章連結是已發布的文章 | 工人用固定的 User-Agent 抓，每個網域間隔 1 秒 |
 | `thumbnail` | 1280×720、< 2 MB、縮到手機寬度時標題字高仍然夠大 | render 的縮圖檢查 |
-| `policy` | Jev：旁白照頻道立場寫、有示範或實算、沒有投資醫療法律政治建議、沒有業配 | 新端點 `POST /video/automation/judge/policy`，門檻同上 |
+| `policy` | Jev：旁白照頻道立場寫、有示範或實算（只問教學類的影片，見下面）、沒有投資醫療法律政治建議、沒有業配 | 新端點 `POST /video/automation/judge/policy`，門檻同上 |
 | `disclosure` | 依規則決定要不要勾「變造或合成內容」：投影片加一般 TTS 不需要；漫劇一律要勾 | 寫進上傳包的 `metadata.json`，不會讓品管失敗 |
+
+**誰會被問「有示範」**：這一題是教學影片的規矩，伺服器依自己資料庫裡這支影片的那一列決定（`judge.policy_questions_for`），工人的請求不能指定。分類（`category`，見 §影片分類）是 `explainer` 觀念解說或 `story` 品牌故事的影片不問這一題：回應的 `demo` 是 `null`、`questions` 是 `explainer`，備註寫「有示範：不適用（解說）」，`passed` 只看其餘三題。其他分類（`tutorial`、`ai-terms`、`ai-news`、`comparison`、`travel`、`other`……）照舊四題都問；伺服器查不到這支影片、或影片還沒分類時，也照舊問。只看分類、不看格式：漫劇（`format` 是 `drama`）照舊四題都問，漫劇要問哪些題由站主決定（票 `2026-09-28-video-drama-policy-questions`）。品牌故事作品的集另有自己的五題（`STORY.md`），長片精華 Shorts 也不問示範（`SHORTS.md`）。奇聞檔案局、原來如此這類用史料或道理講一件事的影片，分類填 `explainer` 就不會卡在這一題。
 
 **過關規則**（伺服器端，`final_qa_passed`）：`qa.ok` 為真、`qa.final_sha256` 等於這份審核的雜湊，而且伺服器自己列的必要項目每一項都在、都過。最後這一條是為了避免少跑了某一項的舊版工具被當成全部通過。設定「自動品管全過就核准成片」開著時，審核在送達的當下就核准，備註寫「自動品管 11 項全過，依設定自動核准」。
 
@@ -101,8 +103,8 @@ Jev 或網站暫時不行時大綱等一下，之後再問：API 說 Jev 這次�
 
 ## 上傳包與「可以上架」
 
-- 成片核准之後，工人照舊跑 `package`，再多跑一次品管的上傳包部分：檔案齊全、五個語系的說明欄與字幕都在、揭露的答案已經寫好。通過就送審「確認上架」，而且自動核准。
-- 「確認上架」這筆審核會附上完整的上傳包：1080p 的 `final.mp4`、`thumbnail.jpg`、五條字幕、五個語系的說明欄。站主不用碰主機，直接從後台下載。成片照既有的分段上傳送進審核檔案區；影片標成已上架滿 7 天後，mp4 就從檔案區刪除，以節省主機磁碟。
+- 成片核准之後，工人照舊跑 `package`，再多跑一次品管的上傳包部分：檔案齊全、四個語系的說明欄與字幕都在、揭露的答案已經寫好。通過就送審「確認上架」，而且自動核准。
+- 「確認上架」這筆審核會附上完整的上傳包：1080p 的 `final.mp4`、`thumbnail.jpg`、四條字幕、四個語系的說明欄。站主不用碰主機，直接從後台下載。成片照既有的分段上傳送進審核檔案區；影片標成已上架滿 7 天後，mp4 就從檔案區刪除，以節省主機磁碟。
   - **成片多大**（2026-10-04 實測，細節在 `ILLUSTRATED.md` §成片大小）：純投影片約 10 MB／分鐘（十分鐘約 90–100 MB）；插圖投影片約 40 MB／分鐘（13:22 的一支 535 MB），最壞情況約 70 MB／分鐘（運鏡段的位元率上限是 8 Mbit/s）。成片關卡送的 720p 預覽另外約 7 MB／分鐘。
   - **單檔上限**：`VIDEO_REVIEW_MAX_FILE_BYTES`，預設 1.5 GB（原本 400 MB 是照純投影片訂的，2026-10-04 一支 895 MB 的插圖投影片在這一關被 413 `video_review_file_too_large` 擋下）。合集的 720p 預覽要 2.5 GB，見 `BINGE.md`。
   - **磁碟成本**：檔案區總量上限 `VIDEO_REVIEW_MAX_TOTAL_BYTES` 預設 20 GB，滿了回 507 `video_review_store_full`。一支 13 分鐘的插圖投影片從送出上架確認到上架後 7 天，佔預覽加成片約 0.63 GB；20 GB 大約同時放得下 30 支：每天兩支、上架後留 7 天是 14 支約 9 GB，另外還有其他影片的預覽（2026-10-04 時檔案區已用 6.5 GB）。成片在「可以上架」放著沒上架就一直佔著，檔案區會滿多半是這個原因，不是單檔上限。
@@ -122,7 +124,7 @@ Jev 或網站暫時不行時大綱等一下，之後再問：API 說 Jev 這次�
 1. 站主在 Studio 只上傳 `final.mp4`，瀏覽權限選私人，其他欄位都不用填。
 2. 在後台「可以上架」的卡片貼上網址、選上架時間。
 3. API 容器用站主授權過的 OAuth 權杖送出以下請求，約 2,100 配額單位，每日預設額度是 10,000：
-   - `videos.update`：五語系的 `localizations`、標籤、分類、`containsSyntheticMedia`、`publishAt`。先讀現值、合併後整段送出，並帶上 `snippet.defaultLanguage`。
+   - `videos.update`：四語系的 `localizations`、標籤、分類、`containsSyntheticMedia`、`publishAt`。先讀現值、合併後整段送出，並帶上 `snippet.defaultLanguage`。
    - `captions.insert` 五次。
    - `thumbnails.set`。
 4. 送出結果記在審核頁。到了排定的時間，YouTube 自己公開影片。
@@ -136,7 +138,7 @@ OAuth 的做法：
 有兩件事要實測後才寫進 skill 的 `publish.md`：
 
 - 沒有稽核的專案，能不能對 Studio 上傳的影片呼叫 `captions.insert` 與 `publishAt`；
-- 中文字幕的語言碼要用 `zh-TW`／`zh-CN`，還是 `zh-Hant`／`zh-Hans`。
+- 中文字幕的語言碼要用 `zh-TW`，還是 `zh-Hant`。
 
 這一步取代原本 T8（`2026-09-24-video-youtube-sync`）「在站主電腦上用桌面 OAuth」的做法，因為工人已經搬到主機，金鑰只能放在 API 容器。
 

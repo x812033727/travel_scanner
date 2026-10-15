@@ -8,7 +8,7 @@ import { EXIT, main } from "../cli.mjs";
 import { approve } from "../core/approvals.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { pinBranding, validateBranding } from "../core/branding.mjs";
-import { writeAudioFixture, fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
+import { writeAudioFixture, fixture, fixtureLexicon, sandbox, storyFixture } from "../core/fixtures/load.mjs";
 import { atomicWrite } from "../core/paths.mjs";
 import { eachLine, LOCALES, textHash } from "../core/schema.mjs";
 import { runCaptions } from "../core/stages.mjs";
@@ -106,6 +106,21 @@ function context(box, fetchImpl) {
 
 const readReport = (workdir) => JSON.parse(readFileSync(path.join(workdir, "review", "qa.json"), "utf8"));
 
+test("brand-story QA records the subtitle mode of its own script, while missing media never passes", async () => {
+  for (const burnedIn of [false, true]) {
+    const box = sandbox("fixture-story", "story");
+    const doc = storyFixture();
+    doc.subtitles.burn_in = burnedIn;
+    writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+    const { ctx } = context(box, site({ policy: () => Response.json({ passed: true }) }).fetchImpl);
+    assert.equal(await main(["qa", "--slug", box.slug], ctx), EXIT.lint);
+    const report = readReport(box.workdir);
+    assert.equal(report.subtitles_burned_in, burnedIn);
+    assert.equal(report.ok, false, "a subtitle-mode field alone cannot authorize a dub");
+    assert.equal(report.final_sha256, null, "a final cut must exist before its hash can bind QA");
+  }
+});
+
 test("direct qa and package refuse an old cut after a same-duration narration retake is approved", async () => {
   const { box, workdir } = finishedVideo();
   const timelineFile = path.join(workdir, "timeline.json");
@@ -139,8 +154,8 @@ test("a finished video passes every check but the judge that is not built yet, a
   assert.deepEqual(failed.map((item) => [item.id, item.detail]), [["policy", "judge endpoint not available"]]);
   const byId = Object.fromEntries(report.items.map((item) => [item.id, item]));
   assert.match(byId.pace.detail, /^5 slide states, the longest [\d.]+ s; none over 15 s$/);
-  assert.match(byId.captions.detail, /caption files for zh-TW, en, ja, ko, zh-CN, every translation current/);
-  assert.match(byId.metadata.detail, /for zh-TW, en, ja, ko, zh-CN; 3 chapters$/);
+  assert.match(byId.captions.detail, /caption files for zh-TW, en, ja, ko, every translation current/);
+  assert.match(byId.metadata.detail, /for zh-TW, en, ja, ko; 3 chapters$/);
   assert.equal(byId.facts.detail, "verify-1.md marks 1 claims NOT FOUND (9); no scene cites them");
   assert.equal(byId.links.detail, "1 links open");
   assert.match(byId.thumbnail.detail, /^1280x720 JPEG, 4 KB; the headline is about 34 px tall at 320 px wide$/);
@@ -477,8 +492,8 @@ test("a compiled series passes its six checks without a judge, and a re-cut epis
   assert.deepEqual(report.items.map((item) => item.id), COMPILATION_ITEM_IDS);
   const byId = Object.fromEntries(report.items.map((item) => [item.id, item]));
   assert.match(byId.assemble.detail, new RegExp(`^${COMPILATION_FRAMES} frames, -14.4 LUFS; every check passed$`));
-  assert.equal(byId.captions.detail, "caption files for zh-TW, en, ja, ko, zh-CN, merged from every episode");
-  assert.match(byId.metadata.detail, /for zh-TW, en, ja, ko, zh-CN; 3 chapters$/);
+  assert.equal(byId.captions.detail, "caption files for zh-TW, en, ja, ko, merged from every episode");
+  assert.match(byId.metadata.detail, /for zh-TW, en, ja, ko; 3 chapters$/);
   assert.equal(byId.links.detail, "the description has no links");
   assert.match(byId.disclosure.detail, /^tick altered or synthetic content: a drama/);
   assert.equal(server.calls.some((call) => call.url.endsWith("/judge/policy")), false, "no judge for a compilation");

@@ -377,11 +377,16 @@ export function seriesProblems(series) {
   if (series.kind !== "story") problems.push('series.kind must be "story"');
   if (series.visual_tier !== "stills") problems.push('series.visual_tier must be "stills"');
   if (series.hands_off !== true) problems.push("series.hands_off must be true");
-  if (!(Number.isInteger(series.target_minutes) && series.target_minutes >= 12 && series.target_minutes <= 15)) problems.push("series.target_minutes must be 12 to 15");
+  const cute = isObject(series.look) && Object.keys(series.look).length === 1 && series.look.preset === "cute-mystery";
+  if (cute) {
+    if (series.target_minutes !== 10) problems.push("series.target_minutes must be 10 for the cute-mystery look");
+    if (series.image_model !== "image-01") problems.push('series.image_model must be "image-01" for the cute-mystery look');
+    if (series.style_preset !== "custom") problems.push('series.style_preset must be "custom" for a story with the cute-mystery look');
+  } else if (!(Number.isInteger(series.target_minutes) && series.target_minutes >= 12 && series.target_minutes <= 15)) problems.push("series.target_minutes must be 12 to 15");
   if (!(Number.isInteger(series.episodes_per_day) && series.episodes_per_day >= 1 && series.episodes_per_day <= 12)) problems.push("series.episodes_per_day must be 1 to 12");
   if (!isText(series.image_model)) problems.push("series.image_model is missing");
-  if (!isObject(series.look) || !isText(series.look.style) || !isText(series.look.negative)) problems.push("series.look needs a style and a negative prompt");
-  else {
+  if (!cute && (!isObject(series.look) || Object.hasOwn(series.look, "preset") || !isText(series.look.style) || !isText(series.look.negative))) problems.push("series.look needs a style and a negative prompt, or exactly {preset: \"cute-mystery\"}");
+  else if (!cute) {
     if (series.look.style.length > 600) problems.push("series.look.style is over 600 characters");
     if (series.look.negative.length > 400) problems.push("series.look.negative is over 400 characters");
   }
