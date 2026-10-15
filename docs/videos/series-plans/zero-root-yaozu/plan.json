@@ -8,12 +8,16 @@
   "episodes_per_season": 60,
   "episodes_per_chapter": 10,
   "planned_episodes": 600,
-  "episode_seconds": { "min": 50, "max": 180, "chapter_finale_min": 120 },
+  "episode_seconds": {
+    "min": 50,
+    "max": 180,
+    "chapter_finale_min": 120
+  },
   "closed_ending": true,
   "aspect": {
-    "recommended": "9:16",
-    "why": "50–180 秒的單集剛好落在 YouTube Shorts 的 3 分鐘上限內，每一集都能進 Shorts 推薦；每篇章 10 集另剪一支 16:9 合輯長片（約 15–25 分鐘）吃長片觀看時間。直式與橫式要在第 1 集前選定，海螺的首格與影片比例不能事後換。",
-    "owner_decision": true
+    "decided": "16:9",
+    "decided_at": "2026-10-15",
+    "why": "站主選橫式。每集 50–180 秒照常上架成一般影片，每篇章 10 集另剪一支合輯長片；要進 Shorts 時從橫式畫面中央裁 9:16 的預告片段，所以構圖要把主角與奇觀放在畫面中央三分之一。"
   },
   "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom，需要鉤子類型、主角走向與每集兩個爽點的留存規則）；每季的 season-NN.json 就是六份篇章細綱的來源。target_minutes 只能填整數分鐘，填 2；每集實際秒數照 duration_s。",
   "production": {
@@ -28,9 +32,12 @@
     "per_episode": "平均 100 秒一集、約 45 個鏡頭；約 28 支 6 秒片段（約 170 秒）＋三成重拍、約 30 張首格 → 約 2,600 點影片＋700 點首格 ≈ 3,300 點。",
     "per_season": "60 集 ≈ 200,000 點；十季 ≈ 2,000,000 點。",
     "levers": "文戲改用一張首格＋緩推（stills）可省四到六成；重用空景；先拍第一季第一篇章 10 集（≈ 33,000 點）量完留存再決定後面的量。",
-    "owner_decision": true
+    "owner_decision": false,
+    "decided": "2026-10-15 站主同意先拍第一季第一篇章 10 集（第 1–10 集，約 33,000 點），看留存再決定。"
   },
   "advertiser_safety": "見 setting.json advertiser_safety 與 glamour；每集的 spectacle 與 glamour_shot 都要照它寫。",
   "ready_for_import": false,
-  "why_not_ready": "這是企劃包（設定集、總綱、逐集細綱），還不是逐集劇本；直式／橫式、聲音、預算都要站主先決定。"
+  "why_not_ready": "這是企劃包（設定集、總綱、逐集細綱），還不是逐集劇本；比例、預算、作品名已定，聲音等站主從試聽裡挑。",
+  "voice_decision": "2026-10-15 站主說「給我選」：九個主要角色各三個 Gemini 聲音、各錄兩次的試聽頁已交給站主，等站主挑。",
+  "title_decision": "2026-10-15 站主：作品名先維持《長燈村：零靈根的我被一村妖祖養大》。"
 }
