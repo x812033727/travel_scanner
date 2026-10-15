@@ -5246,6 +5246,47 @@ PASS is DURATION_ONLY for the three rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## AI storytelling rules increment: 2 files (2026-10-15)
+
+Reviewer: `claude-opus-duration-review-20261015a`. Author: `claude-opus-5-5-ai-storytelling`. Scope: DURATION_ONLY for the two changed bindings below, reviewed at `cd37d0cf8bc6c1ae65d2f63d7029fe05be69dcb5` ("Merge remote-tracking branch 'origin/main' into claude/ai-video-storytelling") on claude/ai-video-storytelling, whose merge base with origin/main is origin/main itself, `e8d8a8fa18fc2974bab5aa4ada426eadb709fd8d` (#1498). The two bound files changed in `6980582caea4346d9c679b8093122c935348700b` ("feat(video): AI and tech videos tell one story with one protagonist") and `93a7b81eebedc6b416da15af288bb791555885cd` ("feat(video): a term is explained when the protagonist meets it"). The reviewer wrote none of the change, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edits only this report and review.json.
+
+Baseline: for each of the two paths, SHA-256 of `git show origin/main:<path>` equals the existing review.json binding and the table row. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these two bindings; the other 106 remain current. The registry remains 108 files. The two files and both receipt files are LF in index and worktree.
+
+- `tools/video/automation/prompts.mjs`: `11b023d69f7616e04d71b18bb775cb06964b7729b9ee1a1ea1636d93aca53abf` -> `7dc54920e590ffa674fc6436dacf96df5da477cd749f1be52877d89a8b500dbc`.
+- `tools/video/automation/series.test.mjs`: `cb89232721039ce13a8a371ff03ecddeb8d647f02edcb9d4f80de0e7c0a43261` -> `d133c2caf95e9919aa1df2f0c23dee80d2d20a47a5d8c1ae85e7506698399425`.
+
+What the change is: AI and tech videos tell one story with one protagonist. The branch touches twelve files (+2461/−24) against origin/main; besides the two bound ones they are `NARRATIVE_RULES` in `tools/video/automation/register.mjs` (+48), two new questions (`one_thread`, `no_detour`) in `NARRATIVE_PANEL` in `tools/video/core/narrative.mjs`, their tests and prompt pins, the youtube-video script-writing reference, a proof video's notes, brief and video.json, and a task file, all unbound. No file under tools/video/qa or tools/video/long-form, nor core/duration.mjs, core/schema.mjs, core/timeline.mjs or core/lint.mjs, nor anything under apps/api, differs between origin/main and HEAD.
+
+Findings, `tools/video/automation/prompts.mjs` (+2/−0): the slides planner's outline template gains two lines after each option's 一行說明: `故事線：<事件／實測／疑問／抉擇（選一）>` and `主角：<the one person, team, image, bill or project carried from the opening to the close>`. Neither line names a length, a minute, a chapter count, pace or padding. `NARRATIVE_RULES` is still interpolated from register.mjs in the same places; every other line of the file is byte-identical to the previous revision, so whatever it says about `target_minutes`, the body floor, the opening-condensation window and chapter or scene counts is unchanged.
+
+Findings, `tools/video/automation/series.test.mjs` (+3/−2): the comment above `EXPLAINER_STAGE_PINS` gains the 2026-10-15 date for the writer's instructions (NARRATIVE_RULES: one story shape, one protagonist), and the explainer writer's instructions digest is re-pinned from `11ec620a…` to `f6abf3ec…`; its payload digest, and the planner and verifier rows, are unchanged. The digest moves only because the interpolated `NARRATIVE_RULES` text grew. No assertion about minutes, frames, pace or padding is added, removed or edited.
+
+Unbound context read for reachability: the new `NARRATIVE_RULES` lines (register.mjs) ask for one story shape and one protagonist, at most one metaphor, cutting sections that do not move the protagonist's question, one-line definitions, caveats attached to their claim, and no lists read out. Their only digits are the 2026-10-15 date and a chapter number in an example. "Cut" here is about what a scene says, not how long the video runs: the body floor and the target are still enforced by lint and the long-form gates, which this branch does not touch. The two new panel questions are yes/no reads of the thread and detours and set no length.
+
+Duration identifiers (case-insensitive occurrences of `target_minutes`, `MIN_EPISODE`, `minEpisodeMinutes`, `VIDEO_MIN_EPISODE_MINUTES`, `duration`, `seconds`, `minutes`, `total_frames`, `frames`, `runtime`, `windowLimit`, `atempo`, `tempo`, `stretch`, `overrun`, `pace`, `padding`), origin/main -> HEAD: prompts.mjs 94 -> 94; series.test.mjs 85 -> 85. The added lines of the two bound files contain none.
+
+Duration questions: the eight-minute body floor, `target_minutes`, pace and characters per minute, padding, what counts toward the body, whether the bookends count toward it and the chapter-length rules are all untouched. The new text decides the story's shape, its protagonist and what it leaves out, and re-pins a prompt digest. No duration rule, check or reachability changes.
+
+Ran (in the worktree at `cd37d0cf8`, Node on Windows):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the two stale bindings and exited 1;
+- `git diff origin/main...HEAD` for the two bound files, for register.mjs and for narrative.mjs; `git diff --stat origin/main...HEAD -- tools/video/qa tools/video/long-form tools/video/core/duration.mjs tools/video/core/schema.mjs tools/video/core/timeline.mjs tools/video/core/lint.mjs apps/api` (empty); `git ls-remote origin refs/heads/main` to confirm origin/main is current;
+- SHA-256 of the two origin/main blobs and the working-tree files against review.json and the table; `git ls-files --eol`;
+- the identifier counts with `grep -Eio` over both revisions and the added lines, and the digits in the added register.mjs lines;
+- `node --test tools/video/automation/prompts.test.mjs tools/video/automation/explainer-series.test.mjs tools/video/automation/series.test.mjs tools/video/core/narrative.test.mjs`: 129 passed, 0 failed, 0 skipped.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge the story shapes, the one-protagonist and one-metaphor rules, the two panel questions or the proof video beyond confirming the two bound files set no length; no video was built, linted, rendered or measured.
+- No web test, API test, ruff, mypy, i18n check or typecheck was run, and `npm run test:tools` was not run.
+- This increment binds the tree at `cd37d0cf8` only: a later commit or merge that changes either of the two files, or either receipt file, needs its own follow-up. The 106 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Branch curio-h09-earhart charged-clips test increment: 1 file (2026-10-15)
 
 Reviewer: codex-gpt6-h09-duration-review. Authors: codex-gpt6-curio-h09 (b44dde2c3) and codex-gpt6-h09-ci (8cd022593). Scope: DURATION_ONLY for the one bound test file. This reviewer wrote neither code/test commit and changed only this report and review.json.
@@ -5261,6 +5302,22 @@ Ran before rebinding: inspected the complete b44dde2c3^..8cd022593 diff for the 
 Non-claims: this review does not approve the media cost policy, judge behavior, provider billing, actual generated clips, H09 images, or a measured finished video. It does not rerun the 107 previously bound files. Any later change to clips.test.mjs or another bound file requires another independent increment.
 
 Verdict: PASS — DURATION_ONLY for the one rebound test-file SHA; required duration fixes remaining: none.
+
+## Merge of main (#1504) and H09 charged-clips receipts: 0 files reviewed afresh (2026-10-15)
+
+Reviewer: codex-gpt6-h09-duration-review. Source reviewers: claude-opus-duration-review-20261015a for the main AI storytelling increment and codex-gpt6-h09-duration-review for the H09 charged-clips increment. Source authors: claude-opus-5-5-ai-storytelling, codex-gpt6-curio-h09 and codex-gpt6-h09-ci. Scope: DURATION_ONLY receipt reconciliation while merging origin/main 7bf6278d6548707606eb55dbe37fba1006f3774d into H09 3fb683b6bf0db248e1e25ba68a78ee2db07d6539, from common ancestor e8d8a8fa18fc2974bab5aa4ada426eadb709fd8d. This reviewer authored none of the three changed bound source files and edited only the two receipt files. No source file is reviewed afresh here.
+
+What was verified:
+
+1. Both parents' report bytes match their own receipt report_sha256. Each parent has exactly 108 bindings. Since the common ancestor, the only paths changed on both branches are review.md and review.json. The complete 153 historical report sections are byte-identical in both parents; main adds its AI storytelling review and H09 adds its charged-clips review. Both increment sections remain byte-identical here.
+2. The merged working tree's 108 bound files have 105 hashes shared by both parents, two main-only reviewed hashes (tools/video/automation/prompts.mjs and tools/video/automation/series.test.mjs), and one H09-only reviewed hash (tools/video/media/clips.test.mjs). None has a hash outside the parents' reviewed values. The final 108-row table and review.json combine those three disjoint changes and agree with the actual file bytes.
+3. Main's two bound changes add story-line/protagonist prompt text and repin the writer instruction digest; the H09 bound change adjusts paid-clip retry and cost expectations in a test. The previous independent increments record their duration-only findings. This merge makes no further change to the eight-minute body floor, measured frame/FPS rules, target_minutes, pace, padding, chapter targets or the treatment of bookends.
+
+Ran before rebinding: read the complete source increments and Git stage-1/2/3 receipts, compared the common report sections and all 108 merged file hashes, and confirmed the parent report hashes and the two-file overlap since the merge base. The CLI check and review regression test after rebinding are recorded in the handoff rather than embedded in this SHA-bound report.
+
+Non-claims: this reconciliation does not approve new storytelling rules, clip costs or generated media; it does not re-run the earlier content or provider tests. A later edit to a bound file or either receipt needs another independent increment.
+
+Verdict: PASS — DURATION_ONLY for the combined 108 bindings; required duration fixes remaining: none.
 
 ## Reviewed SHA256 bindings
 
@@ -5321,9 +5378,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/automation/automation.test.mjs` | `d21283b9e19c9442c42b90e5700b2fb2c6ed0a1992fde489480e6856df63c8fe` |
 | `tools/video/automation/discuss.mjs` | `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21` |
 | `tools/video/automation/flow.mjs` | `0690b19c0ae2d5ba7a52817eb4b0a4f0d14b1ea89e6c5617bbf087d66306bb49` |
-| `tools/video/automation/prompts.mjs` | `11b023d69f7616e04d71b18bb775cb06964b7729b9ee1a1ea1636d93aca53abf` |
+| `tools/video/automation/prompts.mjs` | `7dc54920e590ffa674fc6436dacf96df5da477cd749f1be52877d89a8b500dbc` |
 | `tools/video/automation/series.mjs` | `d512034bbc99c0bc9ec7bbdbcfafa9ea6b548eedd877aa6754bbb81b04cd4c37` |
-| `tools/video/automation/series.test.mjs` | `cb89232721039ce13a8a371ff03ecddeb8d647f02edcb9d4f80de0e7c0a43261` |
+| `tools/video/automation/series.test.mjs` | `d133c2caf95e9919aa1df2f0c23dee80d2d20a47a5d8c1ae85e7506698399425` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
 | `tools/video/core/anime-policy.mjs` | `2c53db1a18e27780b032a019b37912197c13bb4aadc6a130cecdc60371482ecd` |
 | `tools/video/core/anime-policy.test.mjs` | `74b9f1360829efed4c2f1e529b403024877e255d51430a5a2636ac7c5a24b3c6` |
