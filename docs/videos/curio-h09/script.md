@@ -110,7 +110,7 @@
 
 #### 26. colorado-seaplane
 
-旁白：巡洋艦 Colorado 派水上飛機往東南的島群尋找。
+旁白：戰艦 Colorado 派水上飛機往東南的島群尋找。
 
 #### 27. lexington-northwest
 
@@ -418,5 +418,5 @@
 
 旁白（溫和邀請）：訂閱奇聞檔案局，陪我們沿著能核對的紀錄，把懸案看到最清楚的一頁。
 
-narrative 1617913c723b78bd
-speech f126475d033c526e
+narrative e35c29ff860aad3d
+speech 10622d25bb00eca4

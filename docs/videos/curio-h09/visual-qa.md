@@ -35,3 +35,19 @@
 獨立文字分鏡終審 **PASS（未等於圖片 PASS）**：100 場中 92 張插畫、7 張卡片、1 張片尾，`look` 仍只有 `cute-mystery`；提示詞以單一匿名人物、可見動作與表情為主，各章有遠、中、近景。`direction-not-track` 保持同一條位置線兩端，`search-scale-limits-b` 不把 1937 年表面搜索畫成現代聲納搜尋；Taraia 異常仍是待辨認物件，無已找到飛機的畫面。`lint` 0 錯誤、3 項既有節奏警告，`check:tasks` 與 `git diff --check` 通過。
 
 依目前系列驗收規則重新冷看已付費七鏡：`hour-later-call`、`radio-0843`、`radio-silence`、`search-plane-island` 的 judge 通過圖可以接受；四張的完整 image key 均與付費 manifest 精確相符，原提示詞已恢復以吃快取。`itasca-waits` 即使 judge 通過仍須重畫，因船員站在船外水面且把低矮的豪蘭珊瑚島畫成高山，會誤導歷史地貌。`low-fuel-warning`、`uncertain-broadcasts` 各三輪仍為 `needs_review`，改提示詞後須重判或重畫。媒體帳本仍為 US$0.1485，`STOP` 未移除；接下來只處理有證據的三鏡，其他已合格圖不再加做人工退圖門檻。92 張的整集分鏡卡與實際圖片驗收仍待完成。
+
+## 2026-10-15 首批 28 鏡圖片稽核與暫停
+
+正式劇本更正為 `E9404ADD9954E66AA6C26FC3725D7C0ABD09D91B9E571ED2631C152E4579633C`，音訊時間軸已更新並送審，尚未取得新版音訊核准。現行 `video.json` SHA-256 為 `708349B5F1DF8DA03B0BAF1820B008E9BB0CC9E7BC385F27771D74C019BECC4E`；固定畫風仍為 `cute-mystery`。92 張中的前 28 鏡有 manifest 記錄，其中 27 鏡有 selected image，`pilot-sees-empty` 未完成。媒體帳本為 48 次圖片和 48 次評審，累計 US$0.648、零預留；H09 專屬 `STOP` 已恢復。此段只記錄目前可見的圖片，不把前 28 鏡或全片標為 PASS。
+
+獨立逐圖檢查指出三張已選圖的實質問題：`search-from-howland`、`colorado-over-gardner` 把低矮珊瑚環礁畫成高山；`colorado-seaplane` 的 7.18 分 judge 通過圖讓飛機與甲板人物融合，並出現輪子卻沒有可辨認的浮筒，無法對上「水上飛機」的旁白。`pilot-sees-empty` 首張失敗圖也有山崖，尚無 selected image。這四鏡需在新提示詞下定向重畫與複看。`one-way-radio` 三輪未通過自動評審，末張只有約 2 px 黑邊、內容可讀；`captain-reads-line` 三輪未通過是通用示意地圖的偽字問題，沒有宣稱已知航路。依現行系列規則，這兩鏡先保留候選圖並在完成全片後判斷是否以附註 `accept-best`，不因偽字獨自加購重畫。
+
+提示詞僅對上述有證據的鏡頭及尚未生成、易誤畫高地的低環礁鏡頭補地貌限制：`search-from-howland` 改為海面搜索；`colorado-seaplane` 要求人物與具浮筒的完整飛機分離；`colorado-over-gardner`、`pilot-sees-empty` 要求低平沙環與潟湖；後段相關鏡頭沿用相同地貌約束。新提示詞尚未重新產圖或驗收；通過檢查、提示詞不變的圖保留原付費快取。下一步須先讀回新版音訊的站主核准，再定向重畫、繼續 92 鏡並逐張核對成品與來源。
+
+## 2026-10-15 音訊核准後的定向重畫
+
+站主新版音訊核准已讀回，`timeline.json` SHA-256 `69E3FF3DC95E6EF3811044DC765EEEEEE79D02E28F2F829C68B95171A2691BC2`。定向重畫及獨立冷看後，現行 `video.json` SHA-256 `2B84A62E17B47FA7B5BC8905CD9E01D148A619FF348610318E15E2AD87F39389`；前 28 鏡有 28 張 selected image，0 張 `needs_review`，媒體帳本共 59 圖／59 評審、US$0.7965、零預留。仍只完成 28／92 鏡，未形成全片分鏡 PASS。
+
+`search-from-howland` 換成海上搜索近景，沒有高山；望遠鏡像眼鏡且景別比提示近，但不改變史實。`colorado-over-gardner` 顯示海上低平淺色島，沒有山、人或殘骸。`pilot-sees-empty` 兩次帶島沙景仍在遠景畫山，故改為機艙內飛行員向下搜索的近景；新圖左側有少量低平海岸，沒有山地或失蹤者。`one-way-radio` 改為無帽無線電員，`captain-reads-line` 改為單線空白紙，兩張新圖均無先前的徽章與地圖偽字，judge 通過；耳機雙側、直尺彎曲只是示意細節。
+
+`colorado-seaplane` 舊圖把人物和輪式飛機融合，已淘汰。第一輪新圖的第 2 張有單浮筒、人物分離，但尾翼「NA.」使 judge 未過。此片 `format: drama`，程式的 `keyframes --accept-best` 只允許 illustrated 路線，不能把那張以例外方式標成已通過，因此沒有繞過評審；再次簡化成海上戰艦與離艦水上飛機的遠景，新 selected image judge 9.29／10 通過。畫面可辨雙翼與浮筒，沒有偽字或人物融合；浮筒呈雙條、下方有一個小輪點，屬示意機型誤差，與[美國海軍記載的 O3U Corsair](https://www.history.navy.mil/content/history/museums/nnam/education/articles/from-the-cockpit--stories-of-naval-aviation/naval-aviation-and-the-search-for-amelia-earhart.html)不完全相同，後續分鏡應讓站主看到此畫面。28 鏡目前可續跑生成，完整 92 鏡仍須逐張查核。
