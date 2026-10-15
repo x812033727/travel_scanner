@@ -1,0 +1,42 @@
+---
+id: 2026-10-15-reconcile-independent-long-form-duration-receipt
+title: Reconcile independent long-form duration receipt after H09 main sync
+status: in-progress
+priority: P2
+area: docs
+owner: codex-gpt6-h09-independent-duration-review
+claimed_at: 2026-10-15T08:36:29Z
+created_at: 2026-10-15T08:35:46Z
+completed_at:
+branch: codex/curio-h09-earhart-20261015
+depends_on: []
+scope:
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
+---
+
+# Reconcile independent long-form duration receipt after H09 main sync
+
+## Why
+
+Draft PR #1503 for Curio H09 and the newer main branch both changed the SHA-256-bound long-form duration receipt. Their `review.md` and `review.json` conflict even though the reviewed source changes are disjoint. A receipt that chooses one side or changes a hash without independent review would discard review evidence or fail the duration gate.
+
+## Definition of done
+
+- [ ] The merged report retains both branches' review history, its 108 table rows match the merged source bytes, and `review.json` binds that exact report with an independent reviewer identity. The duration CLI and review regression test pass.
+
+## Steps
+
+- [x] Claim only `review.md` and `review.json`; inspect both parents' sections, receipt maps, and review rules without editing the receipts.
+- [ ] Wait for the H09 code author to finish the main sync and signal that the implementation tree is stable.
+- [ ] Independently verify both parents' report hashes and all 108 source bindings against the merged tree; inspect the code delta for duration-rule changes.
+- [ ] Preserve both parents' review sections, add a merge follow-up with provenance and non-claims, and update the 108-row table and JSON hashes from actual bytes; hand only the two receipt files to the H09 author for the single merge commit.
+- [ ] Run the duration CLI, its regression test, and the relevant repository checks; hand the result and exact file hashes to the H09 author.
+
+## How to verify
+
+`node tools/video/long-form/cli.mjs check`; `node --test tools/video/long-form/review.test.mjs`; `npm run check:tasks`; `git diff --check`; compare all 108 working-tree SHA-256 values with `review.json` and check the report bytes against `report_sha256`.
+
+## Notes
+
+The H09 and main receipts each list the same 108 paths. Seven hashes differ: main owns reviewed changes in `apps/api/app/video_automation/judge.py`, `schemas.py`, `series.py`, `docs/videos/long-form/plans.json`, `tools/video/automation/flow.mjs`, and `tools/video/core/drama.mjs`; H09 owns the reviewed `tools/video/media/clips.test.mjs` change. Main adds eight review sections; H09 adds two. On 2026-10-15, an independent `git show` blob SHA-256 pass confirmed both parents' own report hashes and all 108 bindings (`bad=[]` for both). Keep those sections byte-identical and reconcile the table only after the code merge. The reviewer did not write the media implementation and must not update the receipt until the final source tree is ready. Git cannot make a partial receipt commit during the unresolved merge, so the H09 author will stage the two independently edited receipt files in the single merge commit.
