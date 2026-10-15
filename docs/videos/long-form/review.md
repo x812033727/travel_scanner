@@ -5246,6 +5246,22 @@ PASS is DURATION_ONLY for the three rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Branch curio-h09-earhart charged-clips test increment: 1 file (2026-10-15)
+
+Reviewer: codex-gpt6-h09-duration-review. Authors: codex-gpt6-curio-h09 (b44dde2c3) and codex-gpt6-h09-ci (8cd022593). Scope: DURATION_ONLY for the one bound test file. This reviewer wrote neither code/test commit and changed only this report and review.json.
+
+Baseline: the SHA-256 of the clips.test.mjs blob at b44dde2c3^ is 626e678fc76d08210aad82a850f393c66009e9c3a7fce815a8097e686602b238, exactly the prior review.json binding and table row. The final committed 8cd022593 file is 48c4cb7de8e837575539aa7222460f904d4d87528a4cfadb2275764132d86d87. Before this increment, the CLI check failed on only tools/video/media/clips.test.mjs; the other 107 bindings remained current. The registry remains 108 files.
+
+Findings: b44dde2c3 makes the refused-provider fixture expect the cost estimated by the server, request seconds multiplied by US$0.15, instead of zero; it also checks that a paid imported clip and its US$0.01 judge call are both reserved during the verdict. The clip import hold still has zero newly generated seconds, and the settled imported clip total remains 16 seconds. The 8cd022593 follow-up makes a rejected, charged seed resume at seed 4 rather than resubmit seed 1 and updates the expected output filename accordingly. Those are ledger, retry and test expectations; no production module, clip-duration selector, measured frame/FPS check, timeline, body/final acceptance proof, or catalog plan changed in these commits.
+
+Duration questions: the general eight-minute floor, the fixed catalog body and final proof, target_minutes, 600/780-second planning targets, clipSeconds behavior, pace, padding, and the treatment of bookends are untouched. The test fixture's VIDEO_MIN_EPISODE_MINUTES assignment is unchanged and remains a test-only setting. Raising --takes to 4 in one synthetic retry test does not change clip duration or production minimums.
+
+Ran before rebinding: inspected the complete b44dde2c3^..8cd022593 diff for the bound file; computed the old Git blob and final working-tree SHA-256; checked the existing receipt and table; ran node tools/video/long-form/cli.mjs check and observed only the named stale binding. A focused Windows Node test attempt exited with a file-level child-process failure and no assertion diagnostics, so it is not claimed as a test pass. The code author reported that Linux smoke, web-checks and video-tests on the exact 8cd022593 revision otherwise passed and each identified only the stale receipt; this reviewer did not fetch those CI logs. The CLI and review regression checks after rebinding are recorded in the handoff.
+
+Non-claims: this review does not approve the media cost policy, judge behavior, provider billing, actual generated clips, H09 images, or a measured finished video. It does not rerun the 107 previously bound files. Any later change to clips.test.mjs or another bound file requires another independent increment.
+
+Verdict: PASS — DURATION_ONLY for the one rebound test-file SHA; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -5341,7 +5357,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/long-form/plans.test.mjs` | `5b7992649fa5384d1758664a2e9b6ccbb104004da499a3d5f73b6665e9f768a6` |
 | `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
-| `tools/video/media/clips.test.mjs` | `626e678fc76d08210aad82a850f393c66009e9c3a7fce815a8097e686602b238` |
+| `tools/video/media/clips.test.mjs` | `48c4cb7de8e837575539aa7222460f904d4d87528a4cfadb2275764132d86d87` |
 | `tools/video/media/look-keyframes.test.mjs` | `a29f3901db7d3c6eac0c01f634cb2d1b4b59688ab6f72788bbfa7bae401f1f13` |
 | `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
 | `tools/video/package/package.test.mjs` | `ec0a56363e66f4410af6d759b2497c39cc1aabd7bd3aacd449628b5b8b7b0047` |
