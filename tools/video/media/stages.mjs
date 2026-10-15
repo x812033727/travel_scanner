@@ -262,9 +262,9 @@ export class Stage {
         // Never retry a paid POST automatically. A 5xx or lost answer can follow a submission.
         submitted = await submit({ request, ...this.options, attempts: 1 });
       } catch (error) {
-        // Known pre-provider refusals cost nothing. A 5xx or lost response is uncertain and
-        // keeps its reservation until the owner reconciles it with the server.
-        if (error instanceof MediaError && (
+        // Known pre-provider refusals cost nothing. An uncertain vendor outcome can
+        // arrive as HTTP 409, so it keeps its reservation for owner reconciliation.
+        if (error instanceof MediaError && error.code !== "video_media_outcome_uncertain" && (
           [400, 401, 403, 404, 409, 413, 422].includes(error.status)
           || ["video_media_budget_exhausted", "rate_limit_exceeded", "video_media_not_configured", "video_media_disabled", "video_media_model_not_allowed"].includes(error.code)
         )) release(this.workdir, key);
@@ -278,6 +278,12 @@ export class Stage {
     }
     const provider = job.provider ?? expected.provider;
     const model = job.model ?? expected.model;
+    if ((job.status !== "ready" || !job.file?.sha256) && job.error?.code === "video_media_outcome_uncertain") {
+      // Preserve the original job and hold even if the vendor's model differs from the
+      // expected one; booking a model mismatch here would erase the uncertain charge.
+      rememberJob(this.workdir, key, { job_id: job.id, kind, target }, this.now());
+      throw new MediaError(`${id}: ${job.error?.detail || job.error.code}; reconcile job ${job.id} before retrying`, { code: job.error.code, who: "owner", job });
+    }
     if (kind === "image" && !sameImage({ provider, model }, expected)) {
       // The series may have changed on the site since series.json was written. Preserve
       // the actual charge and job id, but never label/cache its result as the old model.
