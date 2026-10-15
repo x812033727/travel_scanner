@@ -1,6 +1,6 @@
 # 奇聞檔案局 H09｜製作與關卡
 
-狀態：更新版大綱 A 已核准。Colorado（BB-45）的艦種已由「巡洋艦」更正為「戰艦」；正式 `script.md` SHA-256 `E9404ADD9954E66AA6C26FC3725D7C0ABD09D91B9E571ED2631C152E4579633C` 經獨立史料與十三題敘事收據通過，後台已讀回站主核准。B06 單句重錄後的時間軸 SHA-256 `69E3FF3DC95E6EF3811044DC765EEEEEE79D02E28F2F829C68B95171A2691BC2` 也已讀回站主核准。插畫目前 28／92 鏡有 selected image，0 鏡 `needs_review`，但全片圖片尚未完成或送分鏡關卡；H09 專屬 `STOP` 暫停於已檢查鏡頭之後，圖片帳本 US$0.7965、零預留。站主授權旁白、音訊 QA、插畫合計 US$4.50 估算停手上限；圖片與評審的本集執行上限為 US$3.80。
+狀態：更新版大綱 A 已核准。Colorado（BB-45）的艦種已由「巡洋艦」更正為「戰艦」；正式 `script.md` SHA-256 `E9404ADD9954E66AA6C26FC3725D7C0ABD09D91B9E571ED2631C152E4579633C` 經獨立史料與十三題敘事收據通過，後台已讀回站主核准。B06 單句重錄後的時間軸 SHA-256 `69E3FF3DC95E6EF3811044DC765EEEEEE79D02E28F2F829C68B95171A2691BC2` 也已讀回站主核准。插畫 92／92 鏡有 selected image，0 鏡 `needs_review`；四頁分鏡聯絡表已由站主在 `/admin/videos` 核准，`review-pull` 綁定 manifest SHA-256 `4E8D778DEDB8A67816E37E11304A9028A5C021C7F8513AB2153B9F47C0654FFA`。字卡與縮圖已渲染，92 鏡皆是零購買片段的靜圖慢運鏡。繁中成片已合成並通過本機 `assemble` 檢查；繁中字幕與獨立成片抽看已通過，等待最終審核。H09 專屬 `STOP` 已恢復；圖片帳本 US$2.403、零預留。站主授權旁白、音訊 QA、插畫合計 US$4.50 估算停手上限；圖片與評審的本集執行上限為 US$3.80。
 
 ## 作品規格
 
@@ -12,7 +12,7 @@
 
 ## 畫面預算與停手上限
 
-下表依 2026-10-15 的 `video.json` 逐景計數；劇本修改或 TTS 時間軸若要求重新切景，須重新計數與報價。這是已核價並獲整集製作授權的購圖清單，不代表圖片已生成或通過審核。
+下表依 2026-10-15 的 `video.json` 逐景計數；92 張插畫已生成、逐圖驗收，四頁分鏡聯絡表也已獲站主核准。劇本修改或 TTS 時間軸若要求重新切景，須重新計數與報價。
 
 | 段落 | 插畫景 | 來源／數字卡 | 鏡頭任務 |
 | --- | ---: | ---: | --- |
@@ -24,9 +24,9 @@
 | 2020／2024 年兩處異常 | 12 | 1 | 深海岩石與 Taraia 是兩個目標 |
 | 2026 年 Taraia 現場調查 | 18 | 1 | 10／13 沙洲踏查、10／14 無人機與磁力／側掃聲納已開始；探針／清淤仍待做，沒有 Electra 鑑定結果 |
 | 未結與結束畫面 | 2 | 1 | 最後一個插畫回呼和片尾 |
-| **定稿草案** | **92** | **8** | **正文插畫占 92／99（outro 不計），約 93%** |
+| **已核准分鏡** | **92** | **8** | **正文插畫占 92／99（outro 不計），約 93%** |
 
-開畫前 `keyframes --dry-run --takes 3` 對 92 張、MiniMax `image-01`、1K 的報價為首輪約 US$1.242、每張最多三輪的圖片與評審總額約 US$3.726；這是開畫前估價，新增有據重畫後不能當作目前預算。現行 manifest 為 28／92 鏡，媒體帳本有 59 次圖片與 59 次評審，US$0.7965、零預留；已付費音訊不在這份媒體帳本。站主已授權 Gemini Sulafat 旁白、Gemini 轉寫／TypeSafe Jev QA 與整集 MiniMax 插畫，三項合計 US$4.50 為估算停手上限，未含多語或上傳。為原始旁白、F03／Z01／B06 重錄及反覆音訊 QA 留額度，本集圖片與評審的執行上限收緊至 US$3.80，`series.json` 的 `media_cap_usd` 執行這個上限；圖片帳本目前剩 US$3.0035，總上限另留 US$0.70 給音訊與 QA 的歷次估計成本。剩餘 64 鏡若每鏡最多三輪，依當前單次圖片與評審價目估計最多增加 US$2.592；每次新增定向重畫及剩餘鏡頭都須受上限攔截。共用的 US$200 後台設定不能代表 H09 上限；供應商帳單與音訊 QA 的實際 token 費用尚未取得，所有數字只是模型價目與本機帳本估算，不能說成發票級保證。每次新增付費工作前都應重核總估算，不足就停。Google 價目：https://ai.google.dev/gemini-api/docs/pricing 。
+開畫前 `keyframes --dry-run --takes 3` 對 92 張、MiniMax `image-01`、1K 的報價為首輪約 US$1.242、每張最多三輪的圖片與評審總額約 US$3.726；這是開畫前估價，新增有據重畫後不能當作目前預算。現行 manifest 為 92／92 鏡，媒體帳本有 178 次圖片與 178 次評審，US$2.403、零預留；已付費音訊不在這份媒體帳本。站主已授權 Gemini Sulafat 旁白、Gemini 轉寫／TypeSafe Jev QA 與整集 MiniMax 插畫，三項合計 US$4.50 為估算停手上限，未含多語或上傳。為原始旁白、F03／Z01／B06 重錄及反覆音訊 QA 留額度，本集圖片與評審的執行上限收緊至 US$3.80，`series.json` 的 `media_cap_usd` 執行這個上限；圖片帳本目前距此上限尚有 US$1.397，總上限另留 US$0.70 給音訊與 QA 的歷次估計成本。92 鏡已畫完，不因剩餘額度增加無證據的重畫。共用的 US$200 後台設定不能代表 H09 上限；供應商帳單與音訊 QA 的實際 token 費用尚未取得，所有數字只是模型價目與本機帳本估算，不能說成發票級保證。任何新增付費工作前都應重核總估算，不足就停。Google 價目：https://ai.google.dev/gemini-api/docs/pricing 。
 
 ## 路線與安全邊界
 
@@ -64,3 +64,5 @@
 - 2026-10-15 首次整批在 28 鏡、US$0.648、零預留時受 H09 `STOP` 暫停：獨立看圖指出 `search-from-howland`、`colorado-over-gardner` 把低平環礁畫成高山，`pilot-sees-empty` 尚未完成且首張也畫成山崖；`colorado-seaplane` 雖得 7.18 分通過，人物與飛機融合、輪式飛機無浮筒，無法表達旁白的「水上飛機」。`video.json` 只改這些有證據的鏡頭及未產出的高風險環礁畫面提示詞，已通過的其他圖依 key 保留。修水上飛機提示詞時以[美國海軍搜尋史](https://www.history.navy.mil/content/history/museums/nnam/education/articles/from-the-cockpit--stories-of-naval-aviation/naval-aviation-and-the-search-for-amelia-earhart.html)確認 Colorado 為 battleship BB-45 且派 O3U Corsair 水上飛機；因此 `claims.md`、草稿 B06、`video.json` 一句及朗讀覆寫由「巡洋艦」改「戰艦」，正式 `script.md` 重產為 SHA-256 `E9404ADD9954E66AA6C26FC3725D7C0ABD09D91B9E571ED2631C152E4579633C`。lint 0 錯誤、原有 3 項警告；此稿與後續音訊須重新走核准，完成前不再付費產圖。
 - 2026-10-15 獨立史料收據與十三題敘事收據均重新綁定 `E9404ADD…`，100 句逐句核對；敘事 13 題皆通過，沒有失敗或提醒。站主於 `/admin/videos` 核准，`review-pull --gate script` 於 `2026-10-15T03:51:16.998Z` 讀回與本機 `script.md` 完全相同的 SHA-256。`tts --dry-run` 僅有 B06 `h0z9kbbf` 一句／23 字元待合成；在確認無 H09 媒體程序、圖片帳本 US$0.648 且零預留後，暫時移開 H09 專屬 `STOP`，一般 `tts` 僅合成這一句，重用其餘 99 句，音訊 10:57 且 ffmpeg 完整解碼，乾跑歸零。新 `timeline.json` SHA-256 `69E3FF3DC95E6EF3811044DC765EEEEEE79D02E28F2F829C68B95171A2691BC2`；`check-audio` 僅新轉寫該句，逐字吻合、零新 Jev 呼叫，餘 19 旗標皆為先前站主已試聽的舊音。新版試聽頁已更新，音訊已 `review-push` 到後台、目前等待站主；`STOP` 已恢復，在音訊核准前不繼續付費插畫。
 - 2026-10-15 站主核准新版音訊，`review-pull --gate audio` 於 `2026-10-15T04:00:39.431Z` 記錄 `timeline.json` SHA-256 `69E3FF3DC95E6EF3811044DC765EEEEEE79D02E28F2F829C68B95171A2691BC2`，與本機檔案一致。定向重畫兩處山地、第一張未完成的搜索機鏡頭及水上飛機鏡頭，再把兩張因圖中字樣未過自動評審的鏡頭改成無帽無線電員與簡化位置線，現行 `video.json` SHA-256 `2B84A62E17B47FA7B5BC8905CD9E01D148A619FF348610318E15E2AD87F39389`；28 鏡均有 selected image、0 鏡 `needs_review`。已選水上飛機圖仍是概念性示意，浮筒及一個極小輪點不完全符合 O3U 史照，待完整分鏡一併讓站主檢視；未宣稱它是精確機型復原。媒體帳本 59 張圖與 59 次評審 US$0.7965、零預留；剩餘 64 鏡未製作，分鏡與成片未送審。
+- 2026-10-15 全片插畫、分鏡與本機剪輯起點：`video.json` 最終畫面提示詞 SHA-256 `72E29DCF4C62A2C58B7F1AE6B701FBD7DDD7FBD2467687A370A3C436B822C1A7`，正式劇本 E940 與音訊時間軸 69E3 均未改。全 92 鏡 selected image、0 `needs_review`，四頁聯絡表經獨立逐頁檢查及站主檢視，後台 `review-pull --gate storyboard` 在 `2026-10-15T05:43:44.681Z` 讀回 manifest SHA-256 `4E8D778DEDB8A67816E37E11304A9028A5C021C7F8513AB2153B9F47C0654FFA` 的核准。帳本 178 圖／178 評審、US$2.403、零預留；一次逾時請求經兩次正式站唯讀查無工作後才釋放單筆預留並定向重送，詳見 `visual-qa.md`。Purdue／PRF 於 05:15 UTC 再查，最新可見仍是 10／14 調查開始公告，尚無確證殘骸，劇本「截至十月十四日」不需變動。`render` 已產 8 張字卡／縮圖狀態；`clips --dry-run` 確認 92 張皆為 still、0 段需買，實跑產生 92 筆靜圖 clip manifest、0 付費片段。`music --dry-run` 顯示此集沒有設定音樂，未啟動配樂服務。此檢查點本機 `assemble` 尚在進行；完成結果另記於下一條。
+- 2026-10-15 繁中成片與字幕：`assemble` exit 0，100／100 片段、20,493 影格、`checks.json` 的 `ok=true` 且 `problems=[]`；1920×1080、30 fps H.264 與 48 kHz 雙聲道 AAC，片長 683.100 秒（11:23.1），音量 −14 LUFS、true peak −0.9 dBFS，片頭在 58.80 秒。`final.mp4` SHA-256 `BE7FC71416AFBBF84BD228470FAAE4CBA9AD47D803FD2CEE3C00A7AD04E5F956`；`STOP` 已恢復。`captions` 本機產出繁中 111 條 SRT，開頭 00:00、最後一條結束於 11:00.687，核准的 `timeline.json` SHA-256 仍為 `69E3FF3DC95E6EF3811044DC765EEEEEE79D02E28F2F829C68B95171A2691BC2`。本機 lint 0 錯誤、原有 3 項啟發式提醒；`npm run check:tasks` 通過；`npm run test:docs-videos` 214／215 通過，唯一失敗是先前已見的 Windows `imported-long-languages` 子程序 exit `3221226505`、沒有診斷輸出。獨立抽看對整部聲畫完整解碼，核對片頭／旁白對齊、2024 深海聲納與 2026 Taraia、未來探測的條件語氣及片尾，未見空白、裁切或錯誤發現宣稱；最終 QA／站主成片核准尚未完成。

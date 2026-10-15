@@ -51,3 +51,13 @@
 `search-from-howland` 換成海上搜索近景，沒有高山；望遠鏡像眼鏡且景別比提示近，但不改變史實。`colorado-over-gardner` 顯示海上低平淺色島，沒有山、人或殘骸。`pilot-sees-empty` 兩次帶島沙景仍在遠景畫山，故改為機艙內飛行員向下搜索的近景；新圖左側有少量低平海岸，沒有山地或失蹤者。`one-way-radio` 改為無帽無線電員，`captain-reads-line` 改為單線空白紙，兩張新圖均無先前的徽章與地圖偽字，judge 通過；耳機雙側、直尺彎曲只是示意細節。
 
 `colorado-seaplane` 舊圖把人物和輪式飛機融合，已淘汰。第一輪新圖的第 2 張有單浮筒、人物分離，但尾翼「NA.」使 judge 未過。此片 `format: drama`，程式的 `keyframes --accept-best` 只允許 illustrated 路線，不能把那張以例外方式標成已通過，因此沒有繞過評審；再次簡化成海上戰艦與離艦水上飛機的遠景，新 selected image judge 9.29／10 通過。畫面可辨雙翼與浮筒，沒有偽字或人物融合；浮筒呈雙條、下方有一個小輪點，屬示意機型誤差，與[美國海軍記載的 O3U Corsair](https://www.history.navy.mil/content/history/museums/nnam/education/articles/from-the-cockpit--stories-of-naval-aviation/naval-aviation-and-the-search-for-amelia-earhart.html)不完全相同，後續分鏡應讓站主看到此畫面。28 鏡目前可續跑生成，完整 92 鏡仍須逐張查核。
+
+## 2026-10-15 全部 92 鏡插畫與分鏡關卡
+
+現行 `video.json` SHA-256 `72E29DCF4C62A2C58B7F1AE6B701FBD7DDD7FBD2467687A370A3C436B822C1A7`，只在已核准正文之外改有據鏡頭的 `data.prompt`；正式劇本 SHA-256 仍為 `E9404ADD9954E66AA6C26FC3725D7C0ABD09D91B9E571ED2631C152E4579633C`，已核准音訊時間軸仍為 `69E3FF3DC95E6EF3811044DC765EEEEEE79D02E28F2F829C68B95171A2691BC2`。`lint` 0 錯誤、原有 3 項節奏警告。最後 `keyframes/manifest.json` SHA-256 `4E8D778DEDB8A67816E37E11304A9028A5C021C7F8513AB2153B9F47C0654FFA`：92／92 鏡有 selected image、0 鏡 `needs_review`，178 次圖片與 178 次評審入帳 US$2.403、零預留；H09 專屬 `STOP` 已恢復。這是本機模型價目與媒體帳本，不是供應商發票。
+
+逐張冷看覆蓋全部 92 鏡，另由獨立檢查者核對四頁聯絡表（24／24／24／20 鏡）：鏡頭順序、圖檔存在與 SHA-256 皆吻合，無空白黑格、新的史實矛盾或重大畫風漂移。已選圖中 `colorado-seaplane` 仍只是可愛插畫中的通用水上飛機，並未標示為 O3U 精確機型；此限制已隨聯絡表讓站主看見。退圖範圍限於會誤導旁白或來源的高地、虛構實物、錯置的聲納圖與顯著畫風問題；單純偽字或卡通細節不另重畫。
+
+整批在 `instruments-survey-a` 提交逾時時留下 US$0.0035 本機預留且無 job ID。正式站資料庫在 05:16 及 05:17–05:18 UTC 兩次唯讀查詢 `slug=curio-h09, kind=image, shot_id=instruments-survey-a` 均為零筆；後端先提交工作紀錄，再呼叫供應商。保留逾時證據後，只釋放這一筆預留，再定向送出該鏡，首張評審通過；未清除其他成本或改種子繞過不明請求。
+
+最終 `deep-sea-sonar-2024` 換為研究員手持**獨立的模糊聲納紙圖**，不把人物畫進螢幕，也不把訊號畫成已確認飛機；`drone-survey-a` 換為帳篷內操作員，不再把尼庫馬羅羅畫成高島。規劃中的水力探針與清淤畫面只見準備器材，沒有已出土物件。四頁聯絡表已送 `/admin/videos`；站主核准後，`review-pull --gate storyboard` 於 `2026-10-15T05:43:44.681Z` 讀回上述 manifest 精確雜湊。分鏡關卡已過，成片、字幕與最終 QA 尚未驗收。
