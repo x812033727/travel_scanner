@@ -12,7 +12,7 @@ import { NARRATION_LOCALE } from "../core/schema.mjs";
 import { toNarrationRate } from "./wav.mjs";
 
 export const USER_AGENT = "Mokaair-video-cli/1.0 (https://mokaair.com; support@mokaair.com)";
-const PILOT_SLUGS = new Set([
+export const PILOT_SLUGS = new Set([
   "story-rolling-suitcase", "story-conveyor-belt-sushi",
   "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2",
 ]);

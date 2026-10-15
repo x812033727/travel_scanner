@@ -1,9 +1,11 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
+import { mkdirSync, writeFileSync } from "node:fs";
 import test from "node:test";
 import path from "node:path";
+import { EXIT, main } from "../cli.mjs";
 import { everyones } from "../automation/flow.mjs";
-import { tempDir } from "../core/fixtures/load.mjs";
+import { sandbox, tempDir } from "../core/fixtures/load.mjs";
 import { alignClip, judgeLines, MAX_RETRY_WAIT_MS, RATE_WINDOW_MS, SPEECH_UNCERTAIN, SpeechError, speechStatus, synthesize, synthesizeAligned, transcribeClip, withPaidWaits } from "./client.mjs";
 import { listSpeechJournal, openSpeechJournal, requestSha256 } from "./speech-journal.mjs";
 import { encodeWav, parseWav } from "./wav.mjs";
@@ -92,6 +94,54 @@ test("pilot paid routes carry a UUID that remains stable across a safe HTTP retr
   const ordinary = server([PAID[0].ok]);
   PAID[0].check(await PAID[0].send({ ...ordinary.options, videoSlug: "curio-h05" }));
   assert.equal(JSON.parse(ordinary.calls[0].body).operation_id, undefined);
+});
+
+test("pilot auditions require their matching slug and charge that film; generic auditions stay unattributed", async () => {
+  const box = sandbox();
+  const pilotDir = path.join(box.base, "brand-stories-pilot-v2-20261015", "scripts");
+  mkdirSync(pilotDir, { recursive: true });
+  const a01 = path.join(pilotDir, "A01-rolling-suitcase.txt");
+  const b18 = path.join(pilotDir, "B18-conveyor-belt-sushi.txt");
+  const generic = path.join(box.base, "sample.txt");
+  writeFileSync(a01, "第一支試作影片的試音。");
+  writeFileSync(b18, "第二支試作影片的試音。");
+  writeFileSync(generic, "一般頻道聲音試聽。");
+  const calls = [];
+  const fetchImpl = async (url, init) => {
+    calls.push({ url, init });
+    if (url.endsWith("/api/video/speech/status")) {
+      return Response.json({ configured: false, voices: [], gemini_configured: true, monthly_limit: 0, gemini_monthly_limit: 0 });
+    }
+    return new Response(audio(), { status: 200, headers: { "Content-Type": "audio/wav", "X-Billable-Characters": "11" } });
+  };
+  const out = { stderr: "" };
+  const ctx = {
+    root: box.root, home: box.base, env: { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN },
+    fetch: fetchImpl, now: () => new Date("2026-10-15T04:00:00Z"),
+    stdout: { write: () => {} }, stderr: { write: (value) => { out.stderr += value; } },
+  };
+  const audition = (file, slug) => main(["audition", "--text-file", file, "--voices", "gemini:Sulafat", ...(slug ? ["--slug", slug] : [])], ctx);
+  assert.equal(await audition(a01), EXIT.usage);
+  assert.equal(await audition(a01, "story-conveyor-belt-sushi-v2"), EXIT.usage);
+  assert.equal(await audition(a01, "story-rolling-suitcase"), EXIT.usage);
+  assert.equal(await audition(generic, "story-rolling-suitcase-v2-typo"), EXIT.usage);
+  const pilotWork = { ...ctx, env: { ...ctx.env, VIDEO_WORKDIR: path.join(box.base, "story-conveyor-belt-sushi-v2") } };
+  assert.equal(await main(["audition", "--text-file", generic, "--voices", "gemini:Sulafat"], pilotWork), EXIT.usage);
+  assert.equal(await main(["audition", "--text-file", a01, "--voices", "gemini:Sulafat", "--slug", "story-rolling-suitcase-v2"], pilotWork), EXIT.usage);
+  assert.match(out.stderr, /pilot audition needs its matching --slug/);
+  assert.equal(calls.length, 0, "invalid pilot attribution must not reach the server");
+
+  for (const [file, slug] of [[a01, "story-rolling-suitcase-v2"], [b18, "story-conveyor-belt-sushi-v2"]]) {
+    assert.equal(await audition(file, slug), EXIT.ok);
+    const request = JSON.parse(calls.at(-1).init.body);
+    assert.equal(request.video_slug, slug);
+    assert.match(request.operation_id, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+  }
+
+  assert.equal(await audition(generic), EXIT.ok);
+  const ordinary = JSON.parse(calls.at(-1).init.body);
+  assert.equal(ordinary.video_slug, undefined);
+  assert.equal(ordinary.operation_id, undefined);
 });
 
 test("a paid request sent and left without its answer is sent once and names the request it lost", async () => {
