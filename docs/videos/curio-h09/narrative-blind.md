@@ -1,6 +1,8 @@
 # H09《艾爾哈特最後飛向哪裡？》十三題敘事獨立審讀｜2026-10-15
 
-受審正式稿：script.md SHA-256 F2890AA3BE81026F846B9F76F9BA59A1C8B69FEBF7D3D7A7BFB8C0EF6DECC0A1；本機 narrative 判定綁定 narrative_hash 1617913c723b78bd、script_hash a29a9e618b6485c254ab2e2a6446e69b30bcfc8955bb0450e7d542accd83858e；編輯底稿 script-draft.md SHA-256 CF579A778769BCE9905B2C5C477C075FF3D140D9EE7433F48373732644D4D881。下表用底稿 O01–Z03 及正式稿的場景／句 ID 定位。舊版十一題收據綁定底稿 SHA 361ECEA6E3FFDF8283F7B3C1C325E1C9B83FA122E67AACB3C637A41BDCA11F83，不能代替本次十三題判定。
+受審正式稿：script.md SHA-256 D63D46A3E93F7469B9A610CDBD83FB599A1A313D9AAA0A0233EF02C1951C9F82；本機 narrative 判定綁定 narrative_hash 1617913c723b78bd、script_hash a29a9e618b6485c254ab2e2a6446e69b30bcfc8955bb0450e7d542accd83858e；編輯底稿 script-draft.md SHA-256 CF579A778769BCE9905B2C5C477C075FF3D140D9EE7433F48373732644D4D881。下表用底稿 O01–Z03 及正式稿的場景／句 ID 定位。舊版十一題收據綁定底稿 SHA 361ECEA6E3FFDF8283F7B3C1C325E1C9B83FA122E67AACB3C637A41BDCA11F83，不能代替本次十三題判定。
+
+2026-10-15 正式劇本送審後重算：前次記錄的 F2890AA3… 已非現行檔案 SHA。現行 `script.md` 與從 `video.json` 以 `screenplay()` 重產的內容逐位元組相同，均為 D63D46A3…；100 個場景與 100 句的 narrative_hash、speech_hash f126475d033c526e 及 script_hash 仍與先前十三題判定綁定一致。`review/narrative.json` 的十三個問題 ID 及各題所引句 ID／全文也全部對上現行 `video.json`，重新執行本機 `panelVerdict` 是 13 是、0 failed、0 advisory。本段只是把獨立審讀收據重新綁定至現行檔案位元組；不宣稱新版音訊或時間軸已通過。
 
 方法：未參與 H09 撰稿的審讀員重新讀完整正式旁白，依 tools/video/core/narrative.mjs 現行 NARRATIVE_PANEL 的十三題逐題判斷。這只審敘事，不代替史料查核、站主劇本核准、旁白試聽、插畫或成片 QA。
 

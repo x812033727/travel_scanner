@@ -1,9 +1,15 @@
 # H09 獨立逐句史料查核與正式劇本回讀
 
 - 查核日期：2026-10-15（台灣時間）；查核者與 F03／Z01 改稿者分開。
-- **有效稿件**：正式旁白 docs/videos/curio-h09/script.md SHA-256 F2890AA3BE81026F846B9F76F9BA59A1C8B69FEBF7D3D7A7BFB8C0EF6DECC0A1；編輯底稿 script-draft.md SHA-256 CF579A778769BCE9905B2C5C477C075FF3D140D9EE7433F48373732644D4D881；主張表 claims.md SHA-256 16C3E21AF7F7C3564C5672FEF07FF0911B55B82FD85372D197ED9C7BACB191B7。
+- **有效稿件**：正式旁白 docs/videos/curio-h09/script.md SHA-256 D63D46A3E93F7469B9A610CDBD83FB599A1A313D9AAA0A0233EF02C1951C9F82；編輯底稿 script-draft.md SHA-256 CF579A778769BCE9905B2C5C477C075FF3D140D9EE7433F48373732644D4D881；主張表 claims.md SHA-256 16C3E21AF7F7C3564C5672FEF07FF0911B55B82FD85372D197ED9C7BACB191B7。
 - **結果：史料與主張界線 PASS，僅限上述文字及查得的 2026-10-14 官方考察進度。** 此收據不證明新旁白音訊、插畫、成片、後台核准或上架狀態；考察仍在進行，錄音與發布前須再查新公告。
 - 方法：逐句回讀 95 行編輯底稿、100 段正式旁白與 H09-C01–C17。舊查核所綁 95 行底稿 SHA-256 361ECEA6E3FFDF8283F7B3C1C325E1C9B83FA122E67AACB3C637A41BDCA11F83；與現稿逐 ID 比對，只有 F03、Z01 的朗讀正文變動。其餘 93 行正文不變，對應正式稿其餘 98 段；現稿 95 行去掉編輯標記後依序連接，與 video.json 的 100 段台詞及正式 script.md 的 100 段旁白依序連接，文字完全相同。段落切分本身不增加事實主張。
+
+## 送審後正式稿雜湊回綁
+
+送審前本收據記錄的正式稿 SHA-256 是 F2890AA3BE81026F846B9F76F9BA59A1C8B69FEBF7D3D7A7BFB8C0EF6DECC0A1；送審指令重產 `script.md` 後，實際送審檔案的 SHA-256 為檔頭所列 D63D46A3E93F7469B9A610CDBD83FB599A1A313D9AAA0A0233EF02C1951C9F82。舊 F2890… 檔案未保存成可比對的快照，因此無法把位元組差異精確歸因；不能僅因兩份雜湊不同，就推稱旁白文字有改動。
+
+本次重新抽取現行正式稿的 100 句旁白，與現行 `video.json` 的 100 句 `text` 逐句相等（0 處差異）；把底稿 95 行移除 ID 和來源標記後依序連接，與正式稿的旁白正文也相等。現行 `script.md` 位元組與 `tools/video/core/screenplay.mjs` 對現行 `video.json` 的確定性輸出相等，尾碼為 `narrative 1617913c723b78bd`、`speech f126475d033c526e`；底稿與主張表雜湊均未變。本輪再查普渡大學公告，至 2026-10-15 查得最新仍為 10 月 14 日水下調查開始、資料待分析，無 Taraia 物件鑑定結果。本次 PASS 僅回綁上述正式稿的史料文字，不替代新音訊及後續考察的重查。
 
 ## 本版兩句新文字
 
