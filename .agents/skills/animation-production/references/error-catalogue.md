@@ -103,6 +103,7 @@
 | 58 | C 級鏡頭（手指拿小道具、兩人接觸、吃喝、變身、要讀的字）照原樣排進批次 | `shot_plan.mjs` 的風險級；`--strict` 報不在小樣裡的 C | **試拍**：生成出來的 4 個 take 有 3 個在手與道具上出錯，S03 兩次上限用完；到 take 上限就停 | 前期重設計（`shot-risk.md` 的招式），非做不可就放進小樣 |
 | 59 | Hailuo 的 AI Polish、Kling 的 AI Prompter 開著卻沒記 | 無 | 實際送出的不是鎖定的字，下一次重現不了 | 鎖定包寫明開或關；收據記 |
 | 60 | 用有 production profile 的集規劃網頁路線 | `shot_plan.mjs`（refuse）；`clips import` → 3 | 做出來進不了產線 | P0 條件卡先查 profile |
+| 66 | 鎖定包的 `buy_s` 沒量這一鏡的台詞；或寫「買 N 秒」前沒看這一鏡的 `visual_kind` | 無：要人量 | 片子收不下台詞就重買；`visual_kind` 是 cut 或 still 的鏡頭根本不用買（偶的江湖：站主差點為兩個這種鏡頭付點數） | 建包前量每鏡的台詞需求（錄好的 WAV ＋ 每段間隔 300 ms ＋ 尾巴 1 秒），`buy_s` 往上取整；寫「買 N 秒」前先查 `lock.json` 的 `visual_kind`（clip、still 或 cut） |
 
 ## 提示詞的字、長度、審核與風格（2026-10-05 補）
 

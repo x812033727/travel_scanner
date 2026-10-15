@@ -1,0 +1,2187 @@
+{
+  "schema_version": 1,
+  "slug": "curio-h04-v2",
+  "format": "slides",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "從搜救者找到空帳篷的那一刻一路往前說。開場見到鞋子時收住；四月布料鑑定與五月結案書的回收句放慢；雪板模型說條件時清楚、不演成事故重現；尾聲把有證據和仍無目擊的部分分開。只做單人旁白，不模仿九位死者。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "loops": [
+    {
+      "setup": "h4v004",
+      "payoff": "h4v033",
+      "what": "四月帳篷布鑑定會指出切口方向"
+    },
+    {
+      "setup": "h4v005",
+      "payoff": "h4v039",
+      "what": "五月結案書會寫下何種原因"
+    },
+    {
+      "setup": "h4v006",
+      "payoff": "h4v067",
+      "what": "研究模型能否解釋延遲滑落"
+    },
+    {
+      "setup": "h4v007",
+      "payoff": "h4v082",
+      "what": "後續考察在附近山坡看到什麼"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "佳特洛夫事件：九個人為何離開山坡上的帳篷？｜奇聞檔案局",
+    "description": "鞋子留在帳內，九人為何離開山坡上的帳篷？\n想分清卷宗記錄、後來的科學模型與仍未知的部分，這集沿著可查的來源往下看。\n\n一九五九年二月二十六日，搜救者找到空帳篷。鞋與外衣還在，記錄中的足跡朝山下延伸。四月的帳篷布料鑑定、五月的結案書、後來的雪板模型與後續考察，各能回答到哪一步？模型提供可能的離營機制，沒有還原事故當夜的完整經過。\n\n畫面以有來源的歷史文件裁切與原創資料圖卡說明。圖卡不是一九五九年的現場攝影、實測剖面或逐人行動復原。本片提供繁體中文旁白與可關閉的繁中 CC。\n\n主要來源：\n一九五九年結案書第 384–387 頁（俄文轉錄及掃描索引）：https://dyatlovpass.com/case-files-384-387-ru\n一九五九年帳篷鑑定第 303–304 頁（俄文轉錄及掃描索引）：https://dyatlovpass.com/case-files-303-304-ru\nGaume 與 Puzrin，二〇二一年小型雪板模型：https://www.nature.com/articles/s43247-020-00081-8\nPuzrin 與 Gaume，二〇二二年後續考察：https://www.nature.com/articles/s43247-022-00393-x\n\n來源核對日：2026-10-14。",
+    "tags": [
+      "佳特洛夫事件",
+      "戴洛夫山口",
+      "奇聞檔案局",
+      "雪板雪崩",
+      "歷史懸案"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**鞋在帳內**",
+      "tag": "歷史懸案",
+      "sub": "一九五九年的空帳篷",
+      "asset": "docs/videos/curio-h04-v2/diagrams/thumbnail-original.png"
+    }
+  },
+  "sources": [
+    {
+      "title": "1959年5月28日結案決定書384–387頁：俄文轉錄與掃描索引",
+      "url": "https://dyatlovpass.com/case-files-384-387-ru",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "1959年4月16日帳篷鑑定303–304頁：俄文轉錄與掃描索引",
+      "url": "https://dyatlovpass.com/case-files-303-304-ru",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "1959年4月18日Tempalov訊問309–312頁：俄文轉錄與掃描索引",
+      "url": "https://dyatlovpass.com/case-files-309-312-ru",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "1959年4月15日Slobtsov訊問298–300頁：英譯及掃描索引",
+      "url": "https://dyatlovpass.com/case-files-298-300",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "Gaume與Puzrin（2021）：雪板釋放與撞擊模型",
+      "url": "https://www.nature.com/articles/s43247-020-00081-8",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "Puzrin與Gaume（2022）：後續考察Comment",
+      "url": "https://www.nature.com/articles/s43247-022-00393-x",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "2022年Comment作者更正：reference 1 DOI",
+      "url": "https://www.nature.com/articles/s43247-022-00425-6",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "EPFL（2021）：模型機制與作者訪談",
+      "url": "https://longread.epfl.ch/en/dossier/quand-la-science-permet-dexplorer-un-mystere-russe-vieux-de-60-ans/",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "ETH（2022）：同一研究的後續考察解說",
+      "url": "https://ethz.ch/en/news-and-events/eth-news/news/2022/03/the-dyatlov-pass-mystery-and-what-a-research-article-can-trigger.html",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "EPFL（2022）：後續考察與證據限制訪談",
+      "url": "https://actu.epfl.ch/news/intense-press-coverage-prompts-new-expeditions-to-/",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "Interfax（2019）：檢方對外說明一般監督性複查",
+      "url": "https://www.interfax.ru/russia/649229",
+      "checked_on": "2026-10-14"
+    },
+    {
+      "title": "Interfax（2020）：記者會提出雪崩解釋",
+      "url": "https://www.interfax.ru/russia/716956",
+      "checked_on": "2026-10-14"
+    }
+  ],
+  "assets": [
+    {
+      "path": "stock/bf338fb136401d2bb9358a7bceeb46abe20a9ee55b7bdcf263d483eb67d1963f.png",
+      "source": "1959 年結案決定書第 385 頁局部／Л. Н. Иванов（1959-05-28；Wikimedia Commons 掃描；裁切、透明留邊）",
+      "license": "PD-RU-exempt",
+      "author": "Лев Никитич Иванов (Lev Nikitich Ivanov)",
+      "url": "https://commons.wikimedia.org/wiki/File:Dyatlov.Volume_1.Page_385.jpg"
+    },
+    {
+      "path": "stock/1c31a7da3de0851b0645f7636df4a6bc07a8252447a8ad74f98e2f9dca709b40.png",
+      "source": "1959 年結案決定書第 386 頁局部／Л. Н. Иванов（1959-05-28；Wikimedia Commons 掃描；裁切、透明留邊）",
+      "license": "PD-RU-exempt",
+      "author": "Лев Никитич Иванов (Lev Nikitich Ivanov)",
+      "url": "https://commons.wikimedia.org/wiki/File:Dyatlov.Volume_1.Page_386.jpg"
+    },
+    {
+      "path": "stock/f90b4c557783827cfde143fb4ddfd59ae08e93b9b97a05026a9cb3e288ddf25d.png",
+      "source": "1959 年結案決定書第 387 頁局部／Л. Н. Иванов（1959-05-28；Wikimedia Commons 掃描；裁切、透明留邊）",
+      "license": "PD-RU-exempt",
+      "author": "Лев Никитич Иванов (Lev Nikitich Ivanov)",
+      "url": "https://commons.wikimedia.org/wiki/File:Dyatlov.Volume_1.Page_387.jpg"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/diagrams/weathered-footprints.svg",
+      "source": "Mokaair original schematic based on the 1959 closure record and Slobtsov testimony; illustrative, not a footprint tracing",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/diagrams/conditional-small-slab.svg",
+      "source": "Mokaair original schematic based on Gaume and Puzrin 2021; conditional model, not a 1959 site cross-section",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/diagrams/felt-and-sock-types.svg",
+      "source": "Mokaair original footwear-type icons based on the 1959 closure record; not original objects, sole tracings or measured footprints",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/diagrams/opening-inside-source-card.svg",
+      "source": "Mokaair original schematic based on Slobtsov's 1959 search testimony pp. 298-300; not a reconstruction of the tent interior or search actions",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/diagrams/opening-gear-source-card.svg",
+      "source": "Mokaair original pictogram based on the 1959 closure record pp. 385-386; not actual gear counts, styles, placement, or individual footprint routes",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/diagrams/thumbnail-original.png",
+      "source": "Mokaair original schematic of a tent and retained boot based on the 1959 closure record pp. 385-386; illustrative, not an event photograph or site reconstruction",
+      "license": "Mokaair original"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/diagrams/search-record-card.svg",
+      "source": "Mokaair original schematic based on 1959 closure record pp. 384-387; abstract date/place card, no site reconstruction",
+      "license": "Mokaair original",
+      "url": "https://dyatlovpass.com/case-files-384-387-ru"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/diagrams/fabric-question-card.svg",
+      "source": "Mokaair original schematic based on 1959 tent examination pp. 303-304; abstract unanswered question, not a trace of the canvas",
+      "license": "Mokaair original",
+      "url": "https://dyatlovpass.com/case-files-303-304-ru"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/diagrams/closure-index-card.svg",
+      "source": "Mokaair original schematic based on 1959 closure record pp. 384-387; page-index schematic, not document facsimile",
+      "license": "Mokaair original",
+      "url": "https://dyatlovpass.com/case-files-384-387-ru"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/diagrams/search-evidence-limit.svg",
+      "source": "Mokaair original schematic based on 1959 closure record pp. 385-386; observation/inference/unknown schematic",
+      "license": "Mokaair original",
+      "url": "https://dyatlovpass.com/case-files-384-387-ru"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/diagrams/ground-and-snow.svg",
+      "source": "Mokaair original schematic based on Gaume and Puzrin 2021 model and Puzrin and Gaume 2022 terrain observations; not a site profile",
+      "license": "Mokaair original",
+      "url": "https://www.nature.com/articles/s43247-020-00081-8"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/diagrams/wind-load-conditions.svg",
+      "source": "Mokaair original schematic based on Gaume and Puzrin 2021 conditional wind-loading model; no incident-night measurements",
+      "license": "Mokaair original",
+      "url": "https://www.nature.com/articles/s43247-020-00081-8"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/diagrams/field-measurement-boundary.svg",
+      "source": "Mokaair original schematic based on Puzrin and Gaume 2022 follow-up; terrain measurement does not measure 1959 snow layers",
+      "license": "Mokaair original",
+      "url": "https://www.nature.com/articles/s43247-022-00393-x"
+    },
+    {
+      "path": "docs/videos/curio-h04-v2/diagrams/nearby-slab-boundary.svg",
+      "source": "Mokaair original schematic based on Puzrin and Gaume 2022 follow-up; nearby newer traces are not 1959 event footage",
+      "license": "Mokaair original",
+      "url": "https://www.nature.com/articles/s43247-022-00393-x"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "opening-search",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bare snowy mountain slope on a grey February afternoon, one searcher in a fur hat and padded jacket stopping short with wide surprised eyes, a low canvas tent half buried in snow in front of him, light from an overcast sky on the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c08"
+      ],
+      "lines": [
+        {
+          "id": "h4v001",
+          "text": "一九五九年二月二十六日，搜救者在北烏拉山找到一頂帳篷。",
+          "emotion": "日期咬字清楚，語速稍慢"
+        }
+      ],
+      "chapter": "搜救者找到一頂空帳篷"
+    },
+    {
+      "id": "opening-inside",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a searcher kneeling at a snow-heaped canvas tent on an open mountainside in afternoon light, brushing snow off the sagging roof with one mitten and peering in through the flap looking shocked, light from a pale sky behind him",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c09"
+      ],
+      "lines": [
+        {
+          "id": "h4v002",
+          "text": "他們清掉積雪，往裡面看。九個人，一個也不在。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "opening-gear",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a row of felt boots and folded padded coats left on blankets inside a low canvas tent by day, one searcher crouching in the open flap and holding up a single boot with a puzzled frown, grey light coming through the flap",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c01"
+      ],
+      "lines": [
+        {
+          "id": "h4v003",
+          "text": "多數鞋子和外衣還留著。外面可辨的足跡往山下延伸。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "tease-fabric",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an examiner in a white coat at a long table in a bright office in spring, spreading a large piece of torn canvas flat with both hands, eyebrows raised, a magnifying glass beside it, light from a tall window on the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "h4v004",
+          "text": "四月，鑑定人把那塊帳篷布攤在桌上。",
+          "emotion": "壓低，留半拍，不揭曉"
+        }
+      ]
+    },
+    {
+      "id": "tease-file",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an investigator in a dark suit at a desk in a plain office on a May morning, pen poised over a blank report page with a determined look, a closed blank folder at his elbow, sunlight from a window behind him",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "h4v005",
+          "text": "五月，一份結案書終於要替這一夜寫下原因。",
+          "emotion": "壓低，留半拍，不揭曉"
+        }
+      ]
+    },
+    {
+      "id": "tease-paper",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher in a sweater at a modern desk in a bright lab, holding up a small white foam slope model with a puzzled tilt of the head, a second researcher small at a far bench, daylight from a wide window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "h4v006",
+          "text": "六十多年後，兩位研究者用雪板模型重問同一個問題。",
+          "emotion": "壓低，留半拍，不揭曉"
+        }
+      ]
+    },
+    {
+      "id": "tease-expedition",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a snowy hillside on a clear winter morning, a mountain guide in a red parka with goggles pushed up climbing on snowshoes and gazing up the hillside, curious, a second small figure following far below, light from a low sun on the right",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c38",
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "h4v007",
+          "text": "再過一年，兩位當地嚮導走進附近的雪坡。",
+          "emotion": "壓低，留半拍，不揭曉"
+        }
+      ]
+    },
+    {
+      "id": "opening-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a searcher standing beside a snow-covered canvas tent on an open slope on a windy grey afternoon, his fur hat held in both hands, turning to look downhill looking worried, taut guy lines behind him, light from a low cloud ceiling",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c01"
+      ],
+      "lines": [
+        {
+          "id": "h4v008",
+          "text": "九個人為什麼會離開那頂還能遮風的帳篷？",
+          "emotion": "問句上揚，停半拍"
+        }
+      ]
+    },
+    {
+      "id": "trail-search-start",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an open white slope in the afternoon, one searcher with a long wooden pole walking downhill beside a line of small raised footprints, two tiny figures following far behind, the dark edge of a forest in the distance, light from an overcast sky",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c04",
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "h4v107",
+          "text": "搜救者循著殘留的足跡，往山下找。",
+          "emotion": "跟著視線往前，語速提起"
+        }
+      ],
+      "chapter": "搜救者沿著足跡追查九人"
+    },
+    {
+      "id": "journey-numbers",
+      "template": "stats",
+      "data": {
+        "title": "搜救卷宗｜隊伍人數",
+        "stats": [
+          {
+            "value": "10 人",
+            "label": "原先隊伍"
+          },
+          {
+            "value": "9 人",
+            "label": "一人折返後繼續"
+          }
+        ],
+        "source": "1959 年結案決定書｜卷一 384–387",
+        "cc_safe": true
+      },
+      "claims": [
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "h4v009",
+          "text": "卷宗記著：十人出發，一人因病折返；其餘隊員未歸。",
+          "reveal": 1,
+          "emotion": "接著搜救線索，語氣提起"
+        }
+      ]
+    },
+    {
+      "id": "journey-pack",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an investigator at a desk in a bright office by day, running one finger down a blank list on a clipboard with raised eyebrows, a row of plain coat hooks on the wall behind him, light from a tall window on the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c06"
+      ],
+      "lines": [
+        {
+          "id": "h4v010",
+          "text": "名單上不全是學生，也有已經工作的成員。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "camp-platform-context",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long bare mountainside under a pale afternoon sky, a small canvas tent pitched on a flat cut halfway up, one searcher at the bottom of the frame pointing up at it with an outstretched arm, light from the west",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c07"
+      ],
+      "lines": [
+        {
+          "id": "h4v011",
+          "text": "他們最後的營地，就是搜救者剛找到的山坡帳篷。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "search-later-weather",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a searcher crouching beside a tent half buried under drifted snow on a windy grey day, scraping a crust of old snow off the canvas with a mitten, his eyebrows knitted, light from a flat overcast sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "h4v012",
+          "text": "搜救者見到的，是隔了一段時間的現場。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "remaining-boots",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of felt boots standing side by side on a blanket inside a tent, an investigator in a fur hat crouching behind them and rubbing his chin with a thinking frown, grey daylight through the open flap",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "h4v013",
+          "text": "還記得帳裡的鞋嗎？調查員因此推論，他們突然離開。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "tent-opening-empty",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an investigator standing beside a tent on a bright cold afternoon, shrugging with both palms up and a puzzled face, a blank notebook tucked under one arm, light from the low sun on the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "h4v014",
+          "text": "但這是從物品作出的判斷，當晚沒有人逐個看見他們出帳。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "tent-opening-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a long slit in the side of a canvas tent, a searcher bending close to the torn edges with wide curious eyes, a few flakes caught on the cloth, grey daylight from above",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "h4v105",
+          "text": "那道帳篷裂口，到底是從哪一面劃開？",
+          "emotion": "問句上揚，停半拍"
+        }
+      ]
+    },
+    {
+      "id": "trail-varied",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a line of small raised footprints on crusted snow, some round and soft, some with a sharp boot edge, one searcher lying low beside them with narrowed eyes, light from a low afternoon sun raking across the crust",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c03",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "h4v015",
+          "text": "近看才發現，鞋襪留下的印子並不一樣。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "document-footprints-slot",
+      "template": "screenshot",
+      "data": {
+        "image": "stock/1c31a7da3de0851b0645f7636df4a6bc07a8252447a8ad74f98e2f9dca709b40.png",
+        "caption": "第 386 頁局部：現場足跡記載",
+        "credit": "1959 結案書 · PD-RU-exempt · 裁切",
+        "cc_safe": true
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "h4v016",
+          "text": "結案書記下有人只隔著薄襪，近乎赤腳。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "boot-print-evidence",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a searcher kneeling on a white slope by day, holding a felt boot next to a deep oval print to compare them, his face lighting up with surprise, light from a bright overcast sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c03",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "h4v017",
+          "text": "另一邊，也留有氈靴印。全員赤腳的說法站不住。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "felt-versus-knit",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view of a white hillside criss-crossed by several short trails of footprints, one searcher at the lower corner counting on his mitten fingers looking puzzled, light from a high pale sun",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "h4v018",
+          "text": "那麼，現場究竟能分出幾組足跡？",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "footprint-count",
+      "template": "compare",
+      "data": {
+        "title": "足跡數量有不同記載",
+        "left": {
+          "heading": "結案書",
+          "points": [
+            "8–9 組"
+          ]
+        },
+        "right": {
+          "heading": "Tempalov 證詞",
+          "points": [
+            "觀察到 8 組",
+            "未確認第 9 組"
+          ]
+        },
+        "source": "1959 年結案書／Tempalov 訊問",
+        "cc_safe": true
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "h4v019",
+          "text": "結案書寫八到九組足跡。",
+          "reveal": 1,
+          "emotion": "平穩敘事，句尾微收"
+        },
+        {
+          "id": "h4v020",
+          "text": "另一份證詞確認八組，第九組沒有被確認。",
+          "reveal": 1,
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "broken-trail",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a white snowfield in afternoon light, a searcher stopping where a short trail of prints vanishes into smooth snow, scratching his head under his fur hat looking baffled, light from a low sun on the right",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c14",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "h4v021",
+          "text": "所以你不能把殘留的印子，接成九條完整路線。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "trail-downhill",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot down a long white hillside toward a valley and a dark band of forest under a grey afternoon sky, one searcher in the foreground pointing downhill, determined, light from behind thin clouds",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c04",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "h4v022",
+          "text": "它們能指向的，是山下的谷地和森林。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "stride-evidence",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an inspector in a sheepskin coat crouching on a white hillside by day, looking closely at a short row of evenly spaced footprints and nodding calmly, one mitten held out flat, light from a clear sky on the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c15",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "h4v023",
+          "text": "其中一位勘驗者看了足跡，判斷所見一段像普通步行。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "stride-inference",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a white slope in afternoon light, an inspector standing where a neat row of prints fades into wind-smoothed snow ahead, shading his eyes and frowning, light from the low sun",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "h4v024",
+          "text": "至少那一段，不像全員一路狂奔。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "stride-inference-beat-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an inspector kneeling at the end of a row of prints where the crust turns smooth and unmarked, holding an empty mitten out over the bare surface and looking disappointed, light from a low afternoon sun",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "h4v025",
+          "text": "但更遠的路段，沒有同樣完整的腳印可量。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "forest-edge-absence",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at the edge of a pine forest on a winter day, a searcher crouching over a small ring of charred branches in the snow looking startled, tall dark trunks behind him, light filtering through the branches",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "h4v026",
+          "text": "靠近林緣，足跡被雪蓋住；搜救者在那裡找到火堆殘跡。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "fire-site-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot under a tall cedar at the forest edge on a grey winter afternoon, one searcher taking off his fur hat beside a burnt-out ring of branches on the white ground, head bowed looking sad, light from a pale sky through the branches",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "h4v108",
+          "text": "兩人在火堆附近被找到。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "three-toward-tent",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long open slope between the forest edge and a tiny tent far uphill, one searcher holding a probe pole and looking uphill along the line looking grave and worried, small marker flags standing in the snow along the way, light from a grey afternoon sky",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "h4v109",
+          "text": "另外三人，在火堆通往帳篷的直線上。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "three-toward-tent-beat-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an investigator in a fur hat writing in a blank notebook on the open hillside, glancing up toward a tiny tent far uphill and looking grave, light from a grey afternoon sky",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "h4v110",
+          "text": "其中兩人的姿勢，讓卷宗判斷他們像是在往帳篷爬。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "search-two-times",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a searcher folding a long piece of slit canvas into a bundle on a slope at midday, glancing at the cut with a curious frown, a plain wooden crate beside him, light from a high pale sun",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "h4v030",
+          "text": "而帳篷上的裂口，這時還在等另一份報告。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "tent-examination",
+      "template": "stats",
+      "data": {
+        "title": "切口的方向",
+        "stats": [
+          {
+            "value": "1959.04.16",
+            "label": "帳篷鑑定日期",
+            "note": "卷一 303–304 頁"
+          }
+        ],
+        "source": "1959 年帳篷鑑定｜卷一 303–304",
+        "cc_safe": true
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "h4v031",
+          "text": "四月十六日，鑑定人仔細檢查了留下的帳篷布。",
+          "reveal": 1,
+          "emotion": "日期咬字清楚，語速稍慢"
+        }
+      ],
+      "chapter": "四月鑑定指向帳篷內側"
+    },
+    {
+      "id": "fabric-workbench",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an examiner bent over a piece of canvas under a big magnifying glass on a bright workbench, one eye huge through the lens, the frayed edge of a cut in the cloth, light from a tall window on the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "h4v032",
+          "text": "他們查看切口，也查看布料內側的細微損傷。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "inside-fabric",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an examiner in a white coat holding up a piece of canvas in a bright office, pointing at the inner face of a long cut with one finger and an excited wide-eyed face, light from a tall window on the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "h4v033",
+          "text": "開頭攤在桌上的那塊布，答案是：切口從內側割出。",
+          "emotion": "揭曉時放慢，關鍵詞壓重"
+        }
+      ]
+    },
+    {
+      "id": "cut-inference",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an examiner in a white coat in a bright office, holding up a blank report page in one hand and scratching his head with the other, a folded piece of canvas on the table, light from a window on the right",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "h4v034",
+          "text": "方向確定了，可究竟是誰割開布？",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "cut-inference-beat-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a blank report page beside a folded piece of slit canvas on a bright desk, an examiner's finger tapping the empty space at the bottom of the page, his puzzled eyes at the top of the frame, light from a window on the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "h4v035",
+          "text": "它沒有寫下誰動刀，也沒有寫九人各自從哪裡出去。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "discovery-sequence",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a ravine with a thawing stream on a May afternoon, deep old snow banked on both sides, one searcher with a long probe pole standing at the edge and looking down looking determined, small figures digging far behind him, light from a spring sun",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "h4v027",
+          "text": "切口鑑定出爐時，另外四人仍沒找到。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "discovery-sequence-beat-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a searcher in a spring jacket pausing on the bank of a thawing stream deep in a ravine, taking off his cap and looking solemn, melting banks of old snow behind him, light from a May sun",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "h4v028",
+          "text": "到了五月，他們在溪溝附近被發現。",
+          "emotion": "日期咬字清楚，語速稍慢"
+        }
+      ]
+    },
+    {
+      "id": "ravine-depth",
+      "template": "stats",
+      "data": {
+        "title": "最後四人的發現位置",
+        "stats": [
+          {
+            "value": "約 4–4.5 公尺",
+            "label": "覆蓋積雪",
+            "note": "溪溝附近；不是帳篷位置"
+          }
+        ],
+        "source": "1959 年結案決定書｜卷一 386 頁",
+        "cc_safe": true
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "h4v111",
+          "text": "他們埋於四公尺多深的雪下。",
+          "reveal": 1,
+          "emotion": "數字咬字清楚，語速稍慢"
+        }
+      ]
+    },
+    {
+      "id": "spring-empty-ravine",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clerk at a typewriter in a sunny office, typing onto a blank page looking serious, a stack of plain folders beside the machine, light from a window on the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "h4v029",
+          "text": "最後四人的發現，也被寫進後來的結案書。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "document-shoes-slot",
+      "template": "screenshot",
+      "data": {
+        "image": "stock/bf338fb136401d2bb9358a7bceeb46abe20a9ee55b7bdcf263d483eb67d1963f.png",
+        "caption": "第 385 頁局部：鞋子留在帳內，並記有內側切口",
+        "credit": "1959 結案書 · PD-RU-exempt · 裁切",
+        "cc_safe": true
+      },
+      "claims": [
+        "c11",
+        "c13",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "h4v036",
+          "text": "這份結案書有四頁，原因要翻到最後才看見。",
+          "emotion": "日期咬字清楚，語速稍慢"
+        }
+      ]
+    },
+    {
+      "id": "archive-closed-folder",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an investigator in a dark suit at a desk in a sunny office in late May, signing the bottom of a blank page with a fountain pen and a solemn face, a closed blank folder beside it, light from a window behind him",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "h4v037",
+          "text": "五月二十八日，調查員伊凡諾夫簽下結案決定。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "archive-many-pages",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an investigator turning the last of four blank sheets on a desk, his face leaning in above them with curious eyes, a fountain pen beside the stack, morning light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c17",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "h4v038",
+          "text": "他最後替這一夜寫下什麼原因？",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "natural-force-slot",
+      "template": "screenshot",
+      "data": {
+        "image": "stock/f90b4c557783827cfde143fb4ddfd59ae08e93b9b97a05026a9cb3e288ddf25d.png",
+        "caption": "第 387 頁原文關鍵詞：自然力量",
+        "credit": "1959 結案書 · PD-RU-exempt · 裁切",
+        "cc_safe": true
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "h4v039",
+          "text": "開頭提到的五月結案書，最後寫的是「無力克服的自然力量」。",
+          "emotion": "揭曉時放慢，關鍵詞壓重"
+        }
+      ]
+    },
+    {
+      "id": "natural-not-supernatural",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet snowy mountain ridge under a pale winter sky, one researcher in a parka standing at the foot of the slope holding a blank folder and looking up looking thoughtful, light from a low sun on the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "h4v040",
+          "text": "原文說的是自然，不是超自然。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "natural-not-supernatural-beat-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a researcher holding up a blank folder in front of a wide snowy ridge, shrugging with a puzzled frown, light from a low winter sun on the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "h4v041",
+          "text": "它也沒有指名是哪一塊雪，在何時滑下。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "archive-ribbon",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archive clerk tying a string around a thick blank folder at a wooden shelf in a quiet archive by day, glancing up, wistful, rows of plain boxes behind her, light from a high window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "h4v042",
+          "text": "案卷到這裡停了。雪崩仍只是一種待解釋的可能。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "review-timeline",
+      "template": "steps",
+      "data": {
+        "title": "後來的複查與解釋",
+        "steps": [
+          {
+            "title": "2019 年",
+            "detail": "對外說明複查"
+          },
+          {
+            "title": "2020 年",
+            "detail": "記者會提出雪崩解釋"
+          }
+        ],
+        "source": "Interfax｜2019-02-05、2020-07-11",
+        "cc_safe": true
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "h4v043",
+          "text": "二〇一九年，檢方對外說明複查。",
+          "reveal": 1,
+          "emotion": "日期咬字清楚，語速稍慢"
+        },
+        {
+          "id": "h4v044",
+          "text": "隔年記者會把雪崩放到聚光燈下。",
+          "reveal": 1,
+          "emotion": "接上前句，短停後落地"
+        }
+      ]
+    },
+    {
+      "id": "empty-speaking-room",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a spokesman in a dark suit at a podium in a bright modern press room, pausing mid-sentence looking puzzled, a row of microphones in front of him, light from ceiling panels",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "h4v045",
+          "text": "記者會提出說法，卻還欠一件事：雪怎樣在那個坡上動起來？",
+          "emotion": "問句上揚，停半拍"
+        }
+      ]
+    },
+    {
+      "id": "slope-small-feature",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a broad gentle snowy slope under a clear midday sky, one hiker in a parka holding a long ski pole out at arm's length to judge the angle looking mildly surprised, light from a high sun",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "h4v046",
+          "text": "那片坡平均看來不算很陡。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "camp-open-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher at a desk in a bright study, holding a toy tent on a white foam slope model and frowning at it, light from a window on the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "h4v047",
+          "text": "就算能滑，搭好帳篷後，為什麼不是立刻滑？",
+          "emotion": "問句上揚，停半拍"
+        }
+      ]
+    },
+    {
+      "id": "model-paper-card",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher in a bright university office pinning a blank sketch of a small snowy slope onto a corkboard, turning back looking proud and determined, a foam slope model on the desk below, daylight from a tall window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "h4v048",
+          "text": "為了解釋可能的延遲，開場那兩位研究者在二〇二一年提出小型雪板模型。",
+          "emotion": "日期咬字清楚，語速稍慢"
+        }
+      ],
+      "chapter": "研究者把局部陡坡放進模型"
+    },
+    {
+      "id": "cohesive-snow",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a snow scientist in a padded jacket kneeling on a snowy slope, lifting a thick square block of packed snow with both arms and looking at us in surprise that it stays in one piece, light from a pale winter sky",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "h4v049",
+          "text": "雪板，是一層互相連著的雪失去穩定，整塊移動。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "buried-layer-close",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a snow pit wall on a clear day, layers stacked like a cake with one thin crumbly band low down, a snow scientist crouching beside it and poking the weak band with a blank plastic card, a worried look, light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "h4v050",
+          "text": "它下面如果有較脆弱的一層，破壞可能從那裡開始。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "smooth-surface",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a smooth white snowfield on an overcast morning, one hiker in a parka standing on top and staring down at his boots, puzzled, the only shapes are the snowfield, the hiker and a few low trees far behind",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "h4v051",
+          "text": "但站在雪面上，未必看得見底下的地形。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "surface-and-ground",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher in a bright lab standing beside a long gentle table-top slope model made of wooden blocks, checking its overall tilt with a protractor and frowning thoughtfully, light from a wide window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "h4v052",
+          "text": "整段坡面的平均傾斜，和帳篷上方一小段並不是同一回事。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "surface-and-ground-beat-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a researcher's hand setting one small steep wooden block into the table-top slope model, her pleased eyes just above it, light from a wide window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "h4v053",
+          "text": "模型放進了局部較陡的階梯。",
+          "emotion": "接上前句，短停後落地"
+        }
+      ]
+    },
+    {
+      "id": "ground-step-context",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher at a desk holding up a blank photograph of a distant mountain and squinting at it looking frustrated, a ruler in her other hand, daylight from a window on the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "h4v054",
+          "text": "那道階梯藏在雪下，不能從一張遠景照片直接量出來。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "snow-over-step",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a researcher's hand tilting a thin strip of pale card along the steep step of a small wooden slope model, her thoughtful face just above it, light from a window beside the desk",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "h4v055",
+          "text": "模型還假設弱層跟著局部地形傾斜；這是條件，不是當年的實測剖面。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "snow-platform-cut",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a hiker in a knitted hat digging a flat shelf into a snowy slope with a short shovel on a grey afternoon, a rolled-up canvas tent lying beside him, a focused face, light from an overcast sky",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "h4v056",
+          "text": "另一個條件，是搭帳時在坡面切出平台。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "platform-front-face",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the fresh vertical wall of a dug-out shelf, a few chunks crumbling from its top edge, one hiker gazing up at it from below, surprised, grey daylight from above",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "h4v057",
+          "text": "切口改變上方雪層原有的支撐。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "model-first-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a snow scientist in a bright lab placing a small red marker pin on a white slope model, nodding looking satisfied, daylight from a tall window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c26",
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "h4v058",
+          "text": "弱層與局部地形先給出可能失穩的位置。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "quiet-platform",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small canvas tent on a flat shelf cut into a snowy slope at night, the snow above it lying smooth and still, the only shapes are the tent, the snow and a few low trees, moonlight from the upper left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "h4v060",
+          "text": "可是在這個模型裡，切完坡之後，雪板還不一定立刻滑動。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "model-snow-sample",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a snow scientist holding a small hand scale with a cup of snow in a bright cold field, watching the needle creep with wide eyes, light from a clear sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "h4v061",
+          "text": "它還要等一個會慢慢增加的重量。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "wind-moves-snow",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher in a parka on a windswept ridge in daylight, holding her hood with one hand as streams of snow blow past her, squinting looking surprised, light from a pale sky",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "h4v062",
+          "text": "那個重量，研究者交給了風。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "wind-ridge",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bare mountain ridge at night, ribbons of loose snow lifting off the ground and streaming over the crest, the only shapes are the ridge, the blowing snow and a small tent far below, light from a half moon",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "h4v063",
+          "text": "風把地面的舊雪捲起來，搬向坡上的另一處。",
+          "emotion": "轉入新場景，語氣提起"
+        }
+      ],
+      "chapter": "風把舊雪搬到帳篷上方"
+    },
+    {
+      "id": "drift-deposition",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a mountain guide in a fur hat standing beside a small canvas tent at night, pointing worriedly at a thick drift of snow piling up on the slope just above the tent roof, light from a lantern in his other hand",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "h4v064",
+          "text": "雪在上方堆積，雪板受到的負載就逐漸增加。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "model-later-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a snow scientist kneeling at a snow pit wall in grey daylight, pressing down on the top of the block with both palms and watching a thin weak layer below, looking worried, light from an overcast sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "h4v065",
+          "text": "增加的重量壓向較弱的一層。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "model-later-two-beat-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a snow pit wall as a crack runs along a thin weak band and the block above slips, a snow scientist's startled eyes at the edge of the frame, light from an overcast sky",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "h4v066",
+          "text": "剛剛問雪怎麼動？弱層破裂，雪板才可能滑下。",
+          "emotion": "接上前句，短停後落地"
+        }
+      ]
+    },
+    {
+      "id": "slab-edge-displaced",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher at a desk in a bright office looking up at a large wall clock with raised eyebrows, a small foam slope model in front of her, daylight from a window on the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c28",
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "h4v067",
+          "text": "為什麼沒立刻滑？開場那個模型說，數小時後才滑也可能。",
+          "emotion": "揭曉時放慢，關鍵詞壓重"
+        }
+      ]
+    },
+    {
+      "id": "model-hours",
+      "template": "stats",
+      "data": {
+        "title": "模型裡的延遲",
+        "stats": [
+          {
+            "value": "數小時",
+            "label": "特定條件下的情境",
+            "note": "不是當晚的計時紀錄"
+          }
+        ],
+        "source": "Gaume、Puzrin 2021｜模型情境",
+        "cc_safe": true
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "h4v068",
+          "text": "模型能產生可行的結果，卻不能算出事故發生的時刻。",
+          "reveal": 1,
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "model-not-timer",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a researcher ticking boxes on a blank checklist with a pencil, her focused face above the page, a cup of tea beside it, morning light from the right",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "h4v069",
+          "text": "研究還用推定的時距，回頭檢查積雪條件。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "measurement-tools",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a snow scientist in a bright equipment room holding up an unused snow probe and a small wind gauge looking regretful, empty pegs on the wall behind him, daylight from a window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "h4v071",
+          "text": "那一夜的雪厚、強度和風搬雪量，沒有被完整量下來。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "small-slab-remains",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a large calm mountain under a midday sky, a small block of snow slid a few metres down one short step near the bottom, one researcher beside it holding her hands a short distance apart looking reassuring, light from a high sun",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "h4v072",
+          "text": "這裡說的是小規模雪板滑動，不是整座山崩下來。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "wind-softens-edge",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the low edge of a snow slab being smoothed by blowing snow in the late afternoon, a researcher's gloved hand tracing the fading edge, her curious face at the top of the frame, light from a low sun",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "h4v073",
+          "text": "風和時間可能改變雪面上的邊界。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "unmeasured-snow",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher on a smooth snowfield on a grey day, holding up a blank notebook and shaking her head looking cautious, light from an overcast sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "h4v074",
+          "text": "但不能因此說，當年的雪痕一定就是這樣消失。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "science-next-evidence",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher in a bright office zipping up a red backpack with a determined grin, a pair of snowshoes leaning on the desk, daylight from a wide window",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "h4v075",
+          "text": "論文之後，研究者決定回到那片山地。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "survey-date",
+      "template": "stats",
+      "data": {
+        "title": "先看沒有雪的地形",
+        "stats": [
+          {
+            "value": "2021.09",
+            "label": "無人機地形測量",
+            "note": "可能帳篷位置附近"
+          }
+        ],
+        "source": "Puzrin、Gaume 2022｜作者後續報告",
+        "cc_safe": true
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "h4v076",
+          "text": "二〇二一年九月，後續考察用無人機測量可能營地附近的地形。",
+          "reveal": 1,
+          "emotion": "日期咬字清楚，語速稍慢"
+        }
+      ],
+      "chapter": "後來的考察量到一段較陡地形"
+    },
+    {
+      "id": "survey-drone",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bare brown grassy mountainside on a clear September day, a small drone hovering over a short steep step in the ground, one surveyor holding the controller and gazing up, excited, light from the afternoon sun",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "h4v077",
+          "text": "測量顯示，局部確實有比較陡的階梯。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "survey-step-close",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a surveyor kneeling on rocky ground on a cool overcast autumn day, looking up from a tablet with a blank screen with a satisfied smile, a short steep step in the slope behind him, light from a pale sky",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "h4v078",
+          "text": "這讓模型的地形前提有了更多依據。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "survey-two-researchers",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a surveyor standing on a bare autumn hillside holding a small drone in both hands, glancing down at the grass at his feet with a thoughtful frown, light from a clear sky on the right",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "h4v079",
+          "text": "但無人機量的是地面，不是那一年留在雪下的弱層。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "snow-return-season",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher in a quiet office packing a coil of rope into a big backpack on a chair, glancing out at falling snow through the window with an eager face, light from a desk lamp",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c42"
+      ],
+      "lines": [
+        {
+          "id": "h4v080",
+          "text": "研究團隊還安排下一趟冬季考察，想直接檢驗雪層。",
+          "emotion": "轉入下一趟考察，語速略提"
+        }
+      ]
+    },
+    {
+      "id": "snow-return-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher holding a small white slope model up beside a window that frames a snowy mountain, comparing the two with one eye closed and a hopeful face, light from the bright window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "h4v106",
+          "text": "下一次看到的雪板痕跡，能和模型對上嗎？",
+          "emotion": "問句上揚，停半拍"
+        }
+      ]
+    },
+    {
+      "id": "avalanche-date",
+      "template": "stats",
+      "data": {
+        "title": "另一趟考察",
+        "stats": [
+          {
+            "value": "2022.01.29",
+            "label": "鄰近山坡考察",
+            "note": "並非 1959 年事故影像"
+          }
+        ],
+        "source": "Puzrin、Gaume 2022｜作者後續報告",
+        "cc_safe": true
+      },
+      "claims": [
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "h4v081",
+          "text": "開場那兩位當地嚮導，在二〇二二年一月走進附近山坡。",
+          "reveal": 1,
+          "emotion": "日期咬字清楚，語速稍慢"
+        }
+      ]
+    },
+    {
+      "id": "nearby-avalanche-context",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a steep snowy hillside on a clear January morning, a mountain guide in a red parka pointing at the sharp broken crown line of a fresh slab release looking amazed, light from a low sun on the left",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "h4v082",
+          "text": "他們帶回兩處較新的雪板雪崩痕跡。",
+          "emotion": "揭曉時放慢，關鍵詞壓重"
+        }
+      ]
+    },
+    {
+      "id": "separate-ridge",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of two separate snowy ridges side by side under a pale winter sky, a guide standing on the near one and pointing across the valley to the other looking careful, light from the south",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "h4v083",
+          "text": "它們在鄰近山坡，不是事故當夜帳篷上方的同一片雪。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "field-camera-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a guide on a snowy slope in daylight holding up a small digital camera and checking its blank screen looking slightly disappointed, light from an overcast sky",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "h4v084",
+          "text": "相機留下的是事後痕跡，沒有拍到雪板滑動的過程。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "softer-snow-block",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a mountain guide on a steep snowy hillside on a clear winter morning, pressing a mitten into a soft broken block of fresh snow that crumbles under it, a surprised face, light from a low sun on the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "h4v087",
+          "text": "剛剛問的對照，答案是不完全一樣：新雪板更軟，坡也更陡。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "natural-slope-no-cut",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a guide on snowshoes standing below a fresh slab scar on an untouched natural slope in winter daylight, shrugging toward the smooth unbroken snow at his feet, light from a low sun",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "h4v088",
+          "text": "那裡下方也沒有被切出的搭帳平台。",
+          "emotion": "放慢，清楚標出證據界線"
+        }
+      ]
+    },
+    {
+      "id": "field-weather",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a guide in a red parka bracing against a snowstorm on a white ridge in the daytime, holding a folded shovel and wincing into the wind, flakes flying everywhere, light from a flat grey sky",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c42"
+      ],
+      "lines": [
+        {
+          "id": "h4v091",
+          "text": "原本要做的雪層與穩定度試驗，還被當時天氣擋住。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "same-evidence-folders",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a university press officer at a desk in a sunny office, holding up a blank magazine page with a proud smile, a cup of coffee beside her, light from a large window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "h4v092",
+          "text": "消息傳開後，校方與研究團隊都發表文章，介紹這趟考察。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "shared-source",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a reader at a cafe table by day holding two blank articles side by side and comparing them with one raised eyebrow, light from the street window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c43",
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "h4v093",
+          "text": "不過作者與校方說的，仍是同一批觀察。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "shared-source-beat-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a reader at a cafe table by day setting two blank articles down and resting her chin on one hand, gazing at a small white slope model on the table with a questioning look, light from the street window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c43",
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "h4v094",
+          "text": "那這個模型，究竟解釋到哪一步？",
+          "emotion": "問句上揚，停半拍"
+        }
+      ]
+    },
+    {
+      "id": "case-status",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher at a desk in a bright office closing a thick blank journal and spreading her empty hands with an honest shrug, a white slope model beside it, daylight from a window on the right",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "h4v099",
+          "text": "論文也說：離帳後的行動與遺體位置，不在模型解釋範圍。",
+          "emotion": "接上前句，短停後落地"
+        }
+      ]
+    },
+    {
+      "id": "closing-folder",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a snowy hillside at sunset, one investigator closing a blank folder and turning toward the viewer, calm and thoughtful, a small canvas tent far uphill behind him, light from the low sun on the right",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c45"
+      ],
+      "lines": [
+        {
+          "id": "h4v100",
+          "text": "未知還在，並不等於神祕傳說得到了相同分量的證據。",
+          "emotion": "平穩敘事，句尾微收"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "bullets",
+      "data": {
+        "title": "奇聞檔案局",
+        "items": [
+          "雪層滑動：可能的離帳原因｜仍缺當夜證據",
+          "你信哪條線索？",
+          "訂閱，讀懂線索。"
+        ]
+      },
+      "claims": [
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "h4v102",
+          "text": "回到開場那頂帳篷：雪層滑動或許迫使他們離開，當夜仍缺直接證據。",
+          "emotion": "放慢，清楚標出證據界線",
+          "pause_after_ms": 0
+        },
+        {
+          "id": "h4v103",
+          "text": "你信哪條線索？",
+          "reveal": 1,
+          "emotion": "問句上揚，停半拍",
+          "pause_after_ms": 0
+        },
+        {
+          "id": "h4v104",
+          "text": "訂閱，讀懂線索。",
+          "reveal": 1,
+          "emotion": "接上前句，短停後落地",
+          "pause_after_ms": 0
+        }
+      ]
+    }
+  ]
+}
