@@ -740,7 +740,8 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
     characters: info.characters ?? [],
     series: { slug: info.slug, episode: info.episode, chapter: 1 },
     ...(drama.music_enabled === false ? {} : { music: { prompt: STORY_MUSIC, gain_db: -20, duck_db: -10 } }),
-    subtitles: { burn_in: true, style: "drama" },
+    // Keep the picture clean so zh-TW CC can be switched off when another voice is selected.
+    subtitles: { burn_in: false, style: "drama" },
     youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: clip(info.title ?? plan.subject, 100), description: `${info.logline || plan.subject}\n\n${plan.question}`, tags: storyTags(plan), video_id: videoId },
     ...(thumbnail ? { thumbnail: { template: "thumb", data: { headline: clipHeadline(plan.thumbnail?.headline ?? plan.subject), tag: "品牌故事", shot: thumbnail } } } : {}),
     sources: plan.sources.map((source) => ({ title: clip(source.publisher || source.url, 200), url: source.url, checked_on: source.checked })),

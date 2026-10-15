@@ -24,6 +24,7 @@ import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } fr
 import { LOCALES, minEpisodeMinutes, narrationLocale } from "../core/schema.mjs";
 import { captionLocalesOf, chosenLocales, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { approvedEpisodes, ARTIFACTS, dubArtifacts, lintProject, loadProject } from "../core/state.mjs";
+import { isStory } from "../core/story.mjs";
 import { chapterList, checkChapters, estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
 import { checksCurrent } from "../package/cli.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
@@ -314,7 +315,11 @@ export async function run(command, args, ctx) {
   const decision = disclosureDecision(doc, { musicSource: music?.source ?? (doc.music?.track ? "track" : doc.music ? "generated" : null) });
   items.push(disclosureItem(decision, recordDisclosure(inWork(ARTIFACTS.upload), decision)));
 
-  const report = { ...qaReport(items, finalSha256), ...(hasAnimePolicy(doc) ? { policy_hash: runtimePolicyHash(doc), runtime_spec: { ...doc.runtime_spec }, runtime_context: animeRuntimeContext(doc) } : {}), ...(policy.lost ? { policy_lost: policy.lost } : {}) };
+  // The site's brand-story dub decision reads this only from a passing final QA attached to
+  // the same final.mp4 hash. The assemble item binds subtitlesHash(doc) to checks.json, and the
+  // captions item checks the current zh-TW CC; old reviews have no such evidence and stay locked.
+  const storySubtitles = drama && isStory(project.series) ? { subtitles_burned_in: burnIn(doc) } : {};
+  const report = { ...qaReport(items, finalSha256), ...storySubtitles, ...(hasAnimePolicy(doc) ? { policy_hash: runtimePolicyHash(doc), runtime_spec: { ...doc.runtime_spec }, runtime_context: animeRuntimeContext(doc) } : {}), ...(policy.lost ? { policy_lost: policy.lost } : {}) };
   writeReport(ctx, doc, workdir, report, finalSha256);
   // A lost judgement is the owner's, whatever the other items say: exit 3 keeps review-push from
   // posting the cut, and the code on the last line tells it from a token the owner has to replace.
