@@ -3,7 +3,8 @@
 ``reserve`` commits its hold before the caller talks to a vendor. All mutations lock the
 pilot's account row, so concurrent stages cannot each spend the same remaining dollars.
 Callers must check ``dispatch_allowed``: a repeated reserved, uncertain, or settled operation
-is never sent again. Only an explicitly released, proven-unbilled operation can be retried.
+is never sent again. An automatically released, proven-unbilled operation may be retried;
+operator-released operation IDs remain closed with their evidence.
 
 The passed AsyncSession is committed by mutations. Call from a dedicated or otherwise clean
 session; do not mix unrelated uncommitted changes into the reservation transaction.
@@ -29,6 +30,7 @@ from app.video_budget.prices import price_window_current
 
 MICRO_USD = Decimal("0.000001")
 ACTIVE_STATUSES = frozenset(("reserved", "uncertain"))
+OPERATOR_NO_CHARGE_PREFIX = "operator-no-charge evidence="
 
 
 class BudgetError(AppError):
@@ -138,8 +140,9 @@ async def reserve(
     """Persist a conservative hold and return permission for exactly one vendor dispatch.
 
     An unknown or expired published price blocks the pilot. Another video gets ``None`` and
-    follows its existing budgets unchanged. The same ID may dispatch again only if an earlier
-    attempt was released with positive evidence that the vendor charged nothing.
+    follows its existing budgets unchanged. The same ID may dispatch again only after an
+    automatic, proven-unbilled release. An operator no-charge release is terminal so its
+    evidence remains durable; a later attempt needs a new operation ID.
     """
     if not is_pilot(slug):
         return None
@@ -185,6 +188,12 @@ async def reserve(
                 )
                 await session.commit()
                 return result
+            if (existing.release_reason or "").startswith(OPERATOR_NO_CHARGE_PREFIX):
+                raise BudgetError(
+                    409,
+                    "video_budget_operator_reconciled",
+                    "人工核對未收費的操作 ID 已封存；新的付費嘗試須使用新的操作 ID",
+                )
 
         reserved, settled, _, _, _, overruns = await _totals(session, slug)
         if overruns:
@@ -253,7 +262,10 @@ async def settle(
                 raise BudgetError(
                     409, "video_budget_operation_conflict", "同一操作 ID 的實際費用不一致"
                 )
-        elif operation.status == "released":
+        elif operation.status == "released" and not (
+            (operation.release_reason or "").startswith(OPERATOR_NO_CHARGE_PREFIX)
+            and receipt_ref is not None
+        ):
             raise BudgetError(409, "video_budget_operation_conflict", "已證實未收費的操作不能結算")
         else:
             operation.actual_usd = actual

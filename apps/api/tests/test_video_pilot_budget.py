@@ -10,6 +10,8 @@ from collections.abc import AsyncIterator
 from decimal import Decimal
 from functools import partial
 from pathlib import Path
+from typing import Any
+from uuid import UUID, uuid4
 
 import pytest
 import pytest_asyncio
@@ -19,14 +21,16 @@ from alembic.operations import Operations
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.db import engine as postgres_engine
+from app.models import User, VideoToolToken
 from app.problems import AppError
-from app.video_budget import service
+from app.video_budget import recovery, service
 from app.video_budget.models import (
     PILOT_LIMIT_USD,
     PILOT_SLUGS,
     VideoPilotBudget,
     VideoPilotBudgetOperation,
 )
+from app.video_media.models import VideoMediaJob
 
 SLUG = "story-rolling-suitcase"
 OTHER_SLUG = "story-conveyor-belt-sushi"
@@ -43,7 +47,14 @@ async def sessions(tmp_path: Path) -> AsyncIterator[async_sessionmaker[AsyncSess
     async with database.begin() as connection:
         await connection.run_sync(
             lambda sync: VideoPilotBudget.metadata.create_all(
-                sync, tables=[VideoPilotBudget.__table__, VideoPilotBudgetOperation.__table__]
+                sync,
+                tables=[
+                    User.__table__,
+                    VideoToolToken.__table__,
+                    VideoPilotBudget.__table__,
+                    VideoPilotBudgetOperation.__table__,
+                    VideoMediaJob.__table__,
+                ],
             )
         )
         await connection.execute(
@@ -79,6 +90,33 @@ async def _summary(
 ) -> service.BudgetSummary | None:
     async with sessions() as session:
         return await service.summary(session, slug)
+
+
+async def _media_job(
+    sessions: async_sessionmaker[AsyncSession], operation_id: str, *, status: str
+) -> str:
+    job = VideoMediaJob(
+        id=uuid4(),
+        slug=SLUG,
+        kind="image",
+        purpose="shot",
+        provider="minimax",
+        model="image-01",
+        request={"pilot_budget_operation_id": operation_id, "prompt": "sample"},
+        request_hash=uuid4().hex.ljust(64, "0"),
+        status=status,
+        vendor_ref="v2:task-123" if status == "submitted" else None,
+        error_code="video_media_outcome_uncertain" if status == "failed" else None,
+        usd_estimate=Decimal("2"),
+    )
+    async with sessions() as session:
+        session.add(job)
+        await session.commit()
+    return str(job.id)
+
+
+async def _unlocked(_: object) -> bool:
+    return False
 
 
 @pytest.mark.asyncio
@@ -220,6 +258,176 @@ async def test_actual_over_reservation_is_recorded_and_stops_further_spending(
     with pytest.raises(AppError) as held:
         await _reserve(sessions, "after-overrun", "0.01")
     assert held.value.code == "video_budget_overrun_hold"
+
+
+@pytest.mark.asyncio
+async def test_recovery_inspection_is_read_only_and_links_media_job(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    await _reserve(sessions, "media-pending", "2")
+    job_id = await _media_job(sessions, "media-pending", status="failed")
+    async with sessions() as session:
+        report = await recovery.inspect(session, slug=SLUG, operation_id="media-pending")
+    assert report["reserved_usd"] == "2.000000"
+    assert report["remaining_usd"] == "23.000000"
+    operation = report["operations"][0]
+    assert operation["status"] == "reserved"
+    assert operation["media_jobs"][0]["id"] == job_id
+    assert operation["media_jobs"][0]["error_code"] == "video_media_outcome_uncertain"
+    assert (await _summary(sessions)).reserved_usd == Decimal("2")  # type: ignore[union-attr]
+
+
+@pytest.mark.asyncio
+async def test_operator_release_preserves_evidence_and_media_retry_uses_new_id(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    await _reserve(sessions, "media-old", "2")
+    job_id = await _media_job(sessions, "media-old", status="failed")
+    kwargs: dict[str, Any] = {
+        "slug": SLUG,
+        "operation_id": "media-old",
+        "action": "release",
+        "expected_status": "reserved",
+        "evidence_ref": "minimax-invoice-20261015-row-7",
+        "no_charge_reason": "vendor confirms no charge",
+        "lock_probe": _unlocked,
+    }
+    async with sessions() as session:
+        dry = await recovery.reconcile(session, **kwargs)
+    assert dry["apply"] is False and dry["operation"]["status"] == "reserved"
+    async with sessions() as session:
+        applied = await recovery.reconcile(session, **kwargs, apply=True)
+    assert applied["operation"]["status"] == "released"
+    assert "minimax-invoice-20261015-row-7" in applied["operation"]["release_reason"]
+    assert applied["operation"]["media_jobs"][0]["error_code"] == (
+        recovery.MEDIA_NO_CHARGE_CODE
+    )
+    with pytest.raises(AppError) as reused:
+        await _reserve(sessions, "media-old", "2")
+    assert reused.value.code == "video_budget_operator_reconciled"
+    async with sessions() as session:
+        job = await session.get(VideoMediaJob, UUID(job_id))
+        assert job is not None and job.status == "failed"
+        # The existing media retry path clears this key before reserving again. It no longer
+        # blocks the request-hash retry because the uncertain error code was reconciled.
+        assert job.error_code != "video_media_outcome_uncertain"
+        job.request = {k: v for k, v in job.request.items() if k != "pilot_budget_operation_id"}
+        await session.commit()
+    fresh = await _reserve(sessions, "media-new", "2")
+    assert fresh is not None and fresh.dispatch_allowed
+    async with sessions() as session:
+        old = await session.scalar(
+            sa.select(VideoPilotBudgetOperation).where(
+                VideoPilotBudgetOperation.operation_id == "media-old"
+            )
+        )
+        assert old is not None and old.status == "released"
+        assert "minimax-invoice-20261015-row-7" in (old.release_reason or "")
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("media_status", ["queued", "submitted"])
+async def test_live_media_release_requires_stopped_worker_and_absent_lock(
+    sessions: async_sessionmaker[AsyncSession], media_status: str,
+) -> None:
+    await _reserve(sessions, "live-old", "2")
+    await _media_job(sessions, "live-old", status=media_status)
+    kwargs: dict[str, Any] = {
+        "slug": SLUG,
+        "operation_id": "live-old",
+        "action": "release",
+        "expected_status": "reserved",
+        "evidence_ref": "vendor-no-task-case-23",
+        "no_charge_reason": "vendor confirms no task and no charge",
+        "apply": True,
+    }
+    async with sessions() as session:
+        with pytest.raises(AppError) as active:
+            await recovery.reconcile(session, **kwargs, lock_probe=_unlocked)
+    assert active.value.code == "video_budget_worker_active"
+
+    async def locked(_: object) -> bool:
+        return True
+
+    async with sessions() as session:
+        with pytest.raises(AppError) as held:
+            await recovery.reconcile(session, **kwargs, worker_stopped=True, lock_probe=locked)
+    assert held.value.code == "video_budget_media_locked"
+    async with sessions() as session:
+        result = await recovery.reconcile(
+            session, **kwargs, worker_stopped=True, lock_probe=_unlocked
+        )
+    assert result["operation"]["status"] == "released"
+    assert result["operation"]["media_jobs"][0]["status"] == "failed"
+
+
+@pytest.mark.asyncio
+async def test_recovery_rejects_ready_media_and_stale_expected_status(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    await _reserve(sessions, "ready-job", "2")
+    await _media_job(sessions, "ready-job", status="ready")
+    async with sessions() as session:
+        with pytest.raises(AppError) as ready:
+            await recovery.reconcile(
+                session,
+                slug=SLUG,
+                operation_id="ready-job",
+                action="release",
+                evidence_ref="vendor-case-1",
+                expected_status="reserved",
+                no_charge_reason="no charge",
+                apply=True,
+                lock_probe=_unlocked,
+            )
+    assert ready.value.code == "video_budget_media_ready"
+    async with sessions() as session:
+        with pytest.raises(AppError) as stale:
+            await recovery.reconcile(
+                session,
+                slug=SLUG,
+                operation_id="ready-job",
+                action="settle",
+                evidence_ref="vendor-invoice-1",
+                expected_status="uncertain",
+                actual_usd=Decimal("2"),
+                apply=True,
+            )
+    assert stale.value.code == "video_budget_status_changed"
+    assert (await _summary(sessions)).reserved_usd == Decimal("2")  # type: ignore[union-attr]
+
+
+@pytest.mark.asyncio
+async def test_late_invoice_corrects_operator_no_charge_release(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    await _reserve(sessions, "late-invoice", "2")
+    async with sessions() as session:
+        await recovery.reconcile(
+            session,
+            slug=SLUG,
+            operation_id="late-invoice",
+            action="release",
+            evidence_ref="case-original-no-charge",
+            expected_status="reserved",
+            no_charge_reason="invoice page had no charge",
+            apply=True,
+        )
+    async with sessions() as session:
+        corrected = await recovery.reconcile(
+            session,
+            slug=SLUG,
+            operation_id="late-invoice",
+            action="settle",
+            evidence_ref="invoice-later-row-2",
+            expected_status="released",
+            actual_usd=Decimal("1.5"),
+            apply=True,
+        )
+    assert corrected["operation"]["status"] == "settled"
+    assert corrected["operation"]["receipt_ref"] == "invoice-later-row-2"
+    assert "case-original-no-charge" in corrected["operation"]["release_reason"]
+    assert (await _summary(sessions)).settled_usd == Decimal("1.5")  # type: ignore[union-attr]
 
 
 def test_migration_offline_sql_creates_both_tables_and_seeds_all_pilots() -> None:
