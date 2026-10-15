@@ -5330,6 +5330,14 @@ Non-claims: this duration review does not approve a complete script, visual qual
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1499 pilot flagged-audio hold: 1 binding (2026-10-15)
+
+Reviewer: `codex-pilot-script-gate-audit-20261015`. Author: `codex-8a78`. Scope: DURATION_ONLY for `tools/video/automation/flow.mjs`. I independently read the exact `HEAD^` to `HEAD` diff and the narration control flow, and did not author the flow change. Before this increment, the CLI reported only this stale binding; the other 107 reviewed file hashes and the prior report hash matched actual bytes.
+
+The flow change imports the two pilot script references and skips the generic audio listener's direct `video.json` rewrite when either pilot still has flagged narration after same-script retakes. It sends that audio to review with an explanatory message. Other slugs retain the existing bounded rewrite path. The patch does not alter the target minutes, duration bands, timeline calculation, measured body or final-cut acceptance, or the retake limit. A rejected pilot recording resumes the separately reviewed chapter and script process; this duration-only increment does not approve the resulting words or media. The new `flow.mjs` SHA-256 is `f8cc508413255ac262b2009a5d6c8b2df00abe60658f8c1b11beecf66ecdf892`.
+
+Verdict: PASS — DURATION_ONLY for this one flow binding; required duration fixes remaining: none. The other 107 bindings are not reviewed afresh.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -5388,7 +5396,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
 | `tools/video/automation/automation.test.mjs` | `d21283b9e19c9442c42b90e5700b2fb2c6ed0a1992fde489480e6856df63c8fe` |
 | `tools/video/automation/discuss.mjs` | `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21` |
-| `tools/video/automation/flow.mjs` | `0690b19c0ae2d5ba7a52817eb4b0a4f0d14b1ea89e6c5617bbf087d66306bb49` |
+| `tools/video/automation/flow.mjs` | `f8cc508413255ac262b2009a5d6c8b2df00abe60658f8c1b11beecf66ecdf892` |
 | `tools/video/automation/prompts.mjs` | `7dc54920e590ffa674fc6436dacf96df5da477cd749f1be52877d89a8b500dbc` |
 | `tools/video/automation/series.mjs` | `d512034bbc99c0bc9ec7bbdbcfafa9ea6b548eedd877aa6754bbb81b04cd4c37` |
 | `tools/video/automation/series.test.mjs` | `d133c2caf95e9919aa1df2f0c23dee80d2d20a47a5d8c1ae85e7506698399425` |
