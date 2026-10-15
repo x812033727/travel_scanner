@@ -33,6 +33,7 @@
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { isDeepStrictEqual } from "node:util";
 
 import { approve } from "../core/approvals.mjs";
 import { emptyLexicon, isProposableTerm } from "../core/lexicon.mjs";
@@ -852,12 +853,25 @@ export function pilotScriptReviewProblem({ slug, root, workdir }) {
   if (typeof receipt.reviewed_at !== "string" || !Number.isFinite(Date.parse(receipt.reviewed_at))) return "the pilot script review has no valid reviewed_at";
   if (PILOT_REVIEW_CHECKS.some((key) => receipt.checks?.[key] !== "PASS")) return "the pilot script review has not passed reference alignment, facts and narrative";
   if (receipt.reference_script_sha256 !== expected.reference_script_sha256) return "the pilot script review does not name the frozen independently reviewed Markdown reference";
+  let video;
   try {
     const dir = docDir(slug, root);
-    if (readFileSync(path.join(dir, "script.md"), "utf8") !== screenplay(JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8")))) {
+    video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    if (readFileSync(path.join(dir, "script.md"), "utf8") !== screenplay(video)) {
       return "script.md no longer matches the narration in video.json";
     }
   } catch { return "script.md or video.json cannot be read for the pilot script review"; }
+  try {
+    const dir = docDir(slug, root);
+    const info = JSON.parse(readFileSync(path.join(dir, "series.json"), "utf8"));
+    const chapters = Object.fromEntries(CHAPTER_KEYS.map((key) => {
+      const chapter = JSON.parse(readFileSync(path.join(workdir, STORY_CHAPTERS_DIR, `${key}.json`), "utf8"));
+      if (chapter?.key !== key || !Array.isArray(chapter.scenes)) throw new Error(`invalid ${key} chapter`);
+      return [key, chapter];
+    }));
+    const merged = composeStory({ slug, info, chapters, voice: video.voice, root });
+    if (!isDeepStrictEqual(video.scenes, merged.scenes)) return "video.json scenes no longer match the six reviewed chapter files";
+  } catch { return "the six chapter files or series.json cannot be merged for the pilot script review"; }
   for (const name of PILOT_REVIEW_FILES) {
     if (!expected.files[name] || receipt.files?.[name] !== expected.files[name]) return `${name} is missing or changed since the pilot script review`;
   }

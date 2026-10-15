@@ -648,6 +648,40 @@ test("a v2 pilot holds before TTS until an independent review binds the actual s
   saveReceipt();
   assert.equal(pilotScriptReviewProblem(places), null);
 
+  // A second reader's new hashes cannot bless a detached chapter: the spoken text in the
+  // chapter files must be the text that was actually merged into the video and screenplay.
+  const hookFile = path.join(workdir, STORY_CHAPTERS_DIR, "hook.json");
+  const originalHook = readFileSync(hookFile, "utf8");
+  const changedHook = JSON.parse(originalHook);
+  changedHook.scenes[0].lines[0].text = "審過章稿後才改掉的旁白。";
+  writeFileSync(hookFile, JSON.stringify(changedHook));
+  receipt.chapters.hook = sha(hookFile);
+  saveReceipt();
+  assert.match(pilotScriptReviewProblem(places), /video\.json scenes no longer match the six reviewed chapter files/);
+  changedHook.scenes[0].lines[0].text = JSON.parse(originalHook).scenes[0].lines[0].text;
+  changedHook.scenes[0].data.prompt = "a different image prompt after the merged scene was reviewed";
+  writeFileSync(hookFile, JSON.stringify(changedHook));
+  receipt.chapters.hook = sha(hookFile);
+  saveReceipt();
+  assert.match(pilotScriptReviewProblem(places), /video\.json scenes no longer match the six reviewed chapter files/);
+  writeFileSync(hookFile, originalHook);
+  receipt.chapters.hook = sha(hookFile);
+  saveReceipt();
+  assert.equal(pilotScriptReviewProblem(places), null);
+
+  // Normal non-scene metadata may be updated without changing the reviewed narration or shots.
+  const videoFile = path.join(world.dir, "video.json");
+  const originalVideo = readFileSync(videoFile, "utf8");
+  const videoWithId = JSON.parse(originalVideo);
+  videoWithId.youtube.video_id = "test-video-id";
+  writeFileSync(videoFile, JSON.stringify(videoWithId));
+  receipt.files["video.json"] = sha(videoFile);
+  saveReceipt();
+  assert.equal(pilotScriptReviewProblem(places), null);
+  writeFileSync(videoFile, originalVideo);
+  receipt.files["video.json"] = sha(videoFile);
+  saveReceipt();
+
   // The owner retries only after the second reader has signed the current worker artifact.
   const state = world.state();
   state.status = "active";
@@ -692,6 +726,89 @@ test("a v2 pilot rechecks its review before downstream stages and holds when a c
   writeFileSync(chapterFile, `${readFileSync(chapterFile, "utf8")} `);
   assert.match(await world.automation.step(), /STOPPED_HOLD: chapter origin is missing or changed/);
   assert.equal(world.runs.some((command) => command.startsWith("tts ")), false);
+});
+
+test("a flagged v2 pilot audio take waits for owner review instead of rewriting and paying TTS for unreviewed words", async () => {
+  const slug = "story-rolling-suitcase-v2";
+  const series = { ...SERIES, slug: "brand-stories-curio-pilot-v2", target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const world = storyWorld({
+    series,
+    episode: { ...EPISODE, slug },
+    answers: pilotAnswers(),
+    seconds: () => 600,
+    settings: { max_retake_rounds: 1 },
+    decide: (gate) => ({ status: gate === "audio" ? "pending" : "approved" }),
+  });
+  await steps(world.automation, 1 + 6 + 6 + 6);
+  assert.match(await world.automation.step(), /STOPPED_HOLD/);
+  const receipt = {
+    schema_version: 1,
+    ...pilotScriptReviewEvidence({ slug, root: world.box.root, workdir: world.workdir }),
+    status: "PASS",
+    reviewer_id: "independent-reader-a01",
+    independent: true,
+    reviewed_at: "2026-10-15T00:00:00.000Z",
+    checks: { reference_alignment: "PASS", factual_claims: "PASS", narrative: "PASS" },
+  };
+  const receiptFile = path.join(world.workdir, PILOT_SCRIPT_REVIEW_FILE);
+  mkdirSync(path.dirname(receiptFile), { recursive: true });
+  writeFileSync(receiptFile, JSON.stringify(receipt));
+  const state = world.state();
+  state.status = "active";
+  delete state.blocked;
+  delete state.blocked_kind;
+  world.automation.persist(state);
+  assert.match(await world.automation.step(), /screenplay is approved here/);
+  assert.match(await world.automation.step(), /narration synthesized/);
+
+  const originalRun = world.ctx.runCommand;
+  const flaggedId = world.video().scenes[0].lines[0].id;
+  world.ctx.runCommand = async (command) => {
+    const result = await originalRun(command);
+    if (command[0] !== "check-audio") return result;
+    const timeline = readJson(path.join(world.workdir, "timeline.json"));
+    const entries = Object.fromEntries(timeline.lines.map((line) => [line.id, {
+      match: line.id !== flaggedId,
+      match_kind: line.id === flaggedId ? null : "exact",
+      intended: "已審旁白",
+      heard: line.id === flaggedId ? "Jev 聽成另一句" : "已審旁白",
+      noul: line.id === flaggedId ? 0.2 : null,
+      clip: line.audio_sha256.slice(0, 16),
+    }]));
+    mkdirSync(path.join(world.workdir, "review"), { recursive: true });
+    writeFileSync(path.join(world.workdir, "review", "check.json"), JSON.stringify({ lines: entries }));
+    writeFileSync(path.join(world.workdir, "review", "check-flags.json"), JSON.stringify({ slug, speech_hash: timeline.speech_hash, flags: [flaggedId], notes: { [flaggedId]: "Jev 仍標記" } }));
+    return { code: 1, out: "one line still flagged" };
+  };
+
+  const checked = await world.automation.step();
+  assert.match(checked, /narration checked \(some lines flagged\) and sent for review; pilot audio waits for owner review/);
+  assert.equal(world.runs.filter((run) => run.startsWith("tts ") && run.includes("--redo")).length, 1, "only the same-script retake is paid");
+  assert.equal(world.site.calls.run.filter((call) => call.stage === "listener" && call.variant === "rewrite").length, 0);
+  assert.equal(world.site.reviewsOf(slug).find((review) => review.gate === "audio")?.status, "pending");
+  assert.equal(pilotScriptReviewProblem({ slug, root: world.box.root, workdir: world.workdir }), null, "the approved script remains the spoken script");
+  assert.equal(await world.automation.advance(world.state()), null, "the worker waits for the owner to judge the flagged take");
+
+  const audioReview = world.site.reviewsOf(slug).find((review) => review.gate === "audio");
+  audioReview.status = "rejected";
+  audioReview.note = "這句改自然一點";
+  assert.match(await world.automation.advance(world.state()), /the owner sent the narration back .*listener goes over the six chapters/);
+  for (let index = 0; index < 6; index++) await world.automation.advance(world.state());
+  assert.match(await world.automation.advance(world.state()), /STOPPED_HOLD: .*changed since the pilot script review/, "a chapter listener edit needs a new independent script receipt before TTS");
+  assert.equal(world.runs.filter((run) => run.startsWith("tts ") && !run.includes("--redo")).length, 1);
+
+  // The hold has a finite recovery: independently review the newly merged script, write its
+  // current hashes, and explicitly retry. Only then may the new words reach TTS.
+  Object.assign(receipt, pilotScriptReviewEvidence({ slug, root: world.box.root, workdir: world.workdir }));
+  writeFileSync(receiptFile, JSON.stringify(receipt));
+  const retry = world.state();
+  retry.status = "active";
+  delete retry.blocked;
+  delete retry.blocked_kind;
+  world.automation.persist(retry);
+  assert.match(await world.automation.advance(world.state()), /screenplay is approved here/);
+  assert.match(await world.automation.advance(world.state()), /narration synthesized/);
+  assert.equal(world.runs.filter((run) => run.startsWith("tts ") && !run.includes("--redo")).length, 2);
 });
 
 test("the ten-minute preset is preserved by the story file and video composer", () => {

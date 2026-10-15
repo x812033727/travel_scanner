@@ -13,6 +13,7 @@ depends_on: []
 scope:
   - tools/video/automation/story.mjs
   - tools/video/automation/story.test.mjs
+  - tools/video/automation/flow.mjs
   - tools/video/story-plans/plan.mjs
   - tools/video/story-plans/plan.test.mjs
   - apps/api/app/video_automation/stories.py
@@ -69,3 +70,7 @@ Run `node --test tools/video/story-plans/plan.test.mjs tools/video/automation/st
   ```bash
   node --input-type=module -e 'import {ROOT,resolveWorkdir} from "./tools/video/core/paths.mjs"; import {pilotScriptReviewEvidence} from "./tools/video/automation/story.mjs"; const slug=process.argv[1]; console.log(JSON.stringify(pilotScriptReviewEvidence({slug,root:ROOT,workdir:resolveWorkdir({slug,root:ROOT})}),null,2))' "$SLUG"
   ```
+
+- Pilot script integrity follow-up (2026-10-15): besides exact file hashes and `script.md` from `video.json`, the worker now recomposes all scenes from the six current chapter JSON files and current `series.json`, then compares them structurally with `video.json.scenes`. A newly signed chapter hash cannot certify a stale merged `video.json`/`script.md`; chapter narration, scene prompts, chapter labels and claim references must be the actual merged scenes. A metadata-only YouTube ID update does not fail this scene check, although its existing full-file receipt hash must still be renewed.
+- Pilot flagged-audio follow-up (2026-10-15): A01/B18 v2 may retake the **same reviewed words** up to the configured retake count. If Jev still flags a line, the generic listener rewrite of `video.json` and immediate paid `tts --redo` are skipped for these two slugs. `review-push --gate audio` sends the flagged take to the owner; the worker waits. `drama_auto_approve_final` only applies to final/publish gates, and audio auto-approval requires all lines checked, zero flags and no `flagged_lines` (`apps/api/app/video_automation/settings.py` and `video_reviews/admin_service.py`), so this flagged card stays pending even if final-cut auto-approval is enabled. The owner can approve an audible false positive, or reject with a precise note. Rejection uses the existing six-chapter `listener:story` pass; after merge and narrative checks, changed words invalidate the old pilot script receipt and stop again before new TTS. An independent reader reviews the new chapter/merged files, records a fresh PASS receipt with current hashes, and the owner explicitly retries to record the revised lines. A note that changes nothing stops for a person instead of looping. The focused pilot test covers flag, pending review, rejection, stale-receipt hold, fresh receipt, and retry to TTS; original non-pilot narration rewrite route is unchanged.
+- Verification of these two follow-ups: full `story.test.mjs` 27/27 and the three original non-pilot narration rewrite tests 3/3 pass with the bundled Node runtime. `npm run check:tasks` is still red only for the unrelated duplicate A21 open/done task file in this worktree; do not resolve it as part of this scoped task.
