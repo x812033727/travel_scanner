@@ -1,4 +1,4 @@
-"""MiniMax image-01 and the Hailuo video models.
+"""MiniMax image-01, the Hailuo video models and MiniMax music.
 
 Images are synchronous and come back in the answer itself: the adapter asks for
 ``response_format: base64`` and ``submit`` returns the bytes, as the Gemini image adapter
@@ -29,6 +29,24 @@ nine ``reference_image`` items (reference videos and audio exist too, three each
 sends them). The two are mutually exclusive, so a request with a frame and a reference image
 is refused before the paid call rather than having either dropped. Which shape a request takes
 follows from what it carries: frames, or reference images and no frame.
+
+Music follows the music-generation pages as read on 2026-10-15
+(https://platform.minimax.io/docs/api-reference/music-generation and the China page
+https://platform.minimax.cn/docs/api-reference/music-generation, where platform.minimaxi.com
+now redirects): ``POST {base}/music_generation`` with the model, a prompt of at most 2000
+characters (required for an instrumental), ``is_instrumental``, ``output_format``,
+``audio_setting`` and ``aigc_watermark`` (the China page's field, default false). It is
+synchronous like Lyria: ``MiniMaxMusic`` always asks for an instrumental, since the drama route
+wants a score and not a song, and for ``hex``, so the track comes back in the answer as
+hex-encoded MP3 bytes. The API has no length parameter, so the wanted length is only asked for
+in the prompt, as Lyria's is, and the mix stage loops or trims the track. An answer carrying a
+URL instead (the other output format; its links expire after 24 hours) goes down the download
+path through the same check the video downloads get. Both pages say that since 2026-08-20 the
+paid music API is no longer offered to new users (accounts that paid for it before keep it) and
+that the ``-free`` models are discontinued. No error code is documented for that refusal, so
+every music refusal the account could be behind names the rule, and one whose message speaks
+of access is a ``key`` error: the owner can fix it, a retake cannot. The whole track is made
+inside the submit call, which ``VIDEO_MEDIA_SUBMIT_TIMEOUT_SECONDS`` bounds (60 s by default).
 """
 
 from __future__ import annotations
@@ -75,6 +93,22 @@ V2_MAX_REFERENCE_IMAGES = 9
 V2_RATIOS = frozenset({"adaptive", "21:9", "16:9", "4:3", "1:1", "3:4", "9:16"})
 # The code MiniMax puts at the end of a v2 error message: "invalid params, … (2013)".
 _V2_ERROR_CODE = re.compile(r"\((\d{1,6})\)\s*$")
+# Music (the music-generation pages, read 2026-10-15). The prompt limit is the API's; the price
+# page sells a track of "up to 5 minutes", so a longer wish is asked for as five minutes.
+MUSIC_PROMPT_LIMIT = 2000
+MUSIC_MAX_SECONDS = 300
+MUSIC_AUDIO_SETTING = {"sample_rate": 44100, "bitrate": 256000, "format": "mp3"}
+MUSIC_ACCESS_RULE = (
+    "since 2026-08-20 MiniMax sells music generation only to accounts that paid for it "
+    "before then; if this account never did, switch the music provider back to Lyria"
+)
+# Words of a status message that refuse the account rather than the request. No code is
+# documented for the 2026-08-20 rule, so its message is all there is to go on.
+_NO_MUSIC_ACCESS = re.compile(
+    r"new users?|no access|permission|not (?:open|enabled|activated)|discontinu"
+    r"|新用户|新用戶|无权|無權|权限|權限|未开通|未開通|已下线|已下線|停止服务|停止服務",
+    re.IGNORECASE,
+)
 
 
 def decode_image(encoded: object) -> bytes:
@@ -112,6 +146,52 @@ def check_base_resp(payload: dict[str, Any]) -> None:
     if code in BLOCKED:
         raise MediaUpstreamError(422, f"MiniMax refused the content ({message})", "blocked")
     raise MediaUpstreamError(502, f"MiniMax answered {code}: {message}", "failed")
+
+
+def with_music_rule(error: MediaUpstreamError) -> MediaUpstreamError:
+    """The same refusal, saying that the 2026-08-20 music rule may be behind it."""
+    return MediaUpstreamError(
+        error.status, f"{error.message}; {MUSIC_ACCESS_RULE}", error.kind, error.retry_after
+    )
+
+
+def check_music_resp(payload: dict[str, Any]) -> None:
+    """``base_resp`` of a music answer: the shared code table, plus the music access rule.
+
+    A busy vendor or refused content reads as everywhere else. A refused key or balance, or a
+    message that speaks of access, is the account's: a ``key`` error naming the rule. Bad
+    parameters or an unknown code keep their kind (a retake may help) and name the rule too,
+    since no code is documented for an account the rule shuts out.
+    """
+    base = payload.get("base_resp")
+    if not isinstance(base, dict):
+        return
+    code = base.get("status_code")
+    if code in (None, 0):
+        return
+    message = str(base.get("status_msg") or code)[:200]
+    if code not in BUSY | BLOCKED and (code in KEY or _NO_MUSIC_ACCESS.search(message)):
+        raise MediaUpstreamError(
+            502,
+            f"MiniMax refused music generation for this account ({code}: {message}); "
+            f"{MUSIC_ACCESS_RULE}",
+            "key",
+        )
+    try:
+        check_base_resp(payload)
+    except MediaUpstreamError as error:
+        if error.kind in ("busy", "blocked"):
+            raise
+        raise with_music_rule(error) from None
+
+
+def decode_audio(encoded: str) -> bytes:
+    """``data.audio`` in hex as the track's bytes; like ``decode_image``, the message is fixed.
+    Line breaks carry nothing and are dropped; any other character outside hex is refused."""
+    try:
+        return bytes.fromhex("".join(encoded.split()))
+    except ValueError as error:
+        raise MediaUpstreamError(502, "MiniMax's music is not valid hex", "failed") from error
 
 
 def api_root(base_url: str) -> str:
@@ -440,6 +520,83 @@ class MiniMaxVideo:
         if not isinstance(url, str) or not url:
             return Polled("failed", reason="MiniMax gave no download URL for the file")
         return Polled("done", download=Download(url=url, content_type_hint="video/mp4"))
+
+    def fetch(self, download: Download) -> tuple[str, dict[str, str]]:
+        return check_download(download), {}
+
+
+@dataclass(frozen=True)
+class MiniMaxMusic:
+    base_url: str
+    key: str
+    name: str = "minimax"
+
+    def _headers(self) -> dict[str, str]:
+        return {"Authorization": f"Bearer {self.key}"}
+
+    def request_body(self, request: MediaRequest) -> dict[str, Any]:
+        """An instrumental of the wanted length, asked for in words, back inline as MP3 bytes."""
+        prompt = (
+            request.prompt
+            if not request.negative_prompt
+            else f"{request.prompt}. Avoid: {request.negative_prompt}"
+        )
+        if request.seconds > 0:
+            seconds = min(request.seconds, MUSIC_MAX_SECONDS)
+            prompt += f"\n\nAbout {seconds} seconds long, with a clear beginning and a soft ending."
+        # The whole text the vendor reads is measured; nothing the tool wrote is cut off.
+        if len(prompt) > MUSIC_PROMPT_LIMIT:
+            raise MediaUpstreamError(
+                422,
+                "MiniMax music prompt, with its length and avoidance text, "
+                f"must be at most {MUSIC_PROMPT_LIMIT} characters",
+                "invalid",
+            )
+        return {
+            "model": request.model,
+            "prompt": prompt,
+            "is_instrumental": True,
+            "stream": False,
+            "output_format": "hex",
+            "audio_setting": dict(MUSIC_AUDIO_SETTING),
+            "aigc_watermark": False,
+        }
+
+    async def submit(self, request: MediaRequest, client: httpx.AsyncClient) -> Submitted:
+        url = f"{self.base_url.rstrip('/')}/music_generation"
+        body = self.request_body(request)
+        try:
+            payload = await post_json(client, url, body, self._headers(), "MiniMax")
+        except MediaUpstreamError as error:
+            # ``raise_for_status`` says "key" for HTTP 401/403 and "invalid" for 404 (the model
+            # or the path): the account may be why, so the rule is named.
+            if error.kind in ("key", "invalid"):
+                raise with_music_rule(error) from error
+            raise
+        except ValueError as error:  # an answer that is not JSON
+            raise MediaUpstreamError(502, "MiniMax answered without JSON", "failed") from error
+        check_music_resp(payload)
+        data = payload.get("data")
+        data = data if isinstance(data, dict) else {}
+        audio = data.get("audio")
+        if isinstance(audio, str) and audio.strip().lower().startswith(("https://", "http://")):
+            # The vendor sent a link (hex has no "h", "t" or "p"): fetched like a video, and
+            # ``fetch`` still refuses one that is not https on a public host.
+            return Submitted(download=Download(url=audio.strip(), content_type_hint="audio/mpeg"))
+        if not isinstance(audio, str) or not audio.strip():
+            status = _digits(data.get("status"))
+            detail = f" (status {status})" if status is not None else ""
+            raise MediaUpstreamError(502, f"MiniMax returned no music{detail}", "failed")
+        track = decode_audio(audio)
+        found = sniff_type(track[:16])
+        if found is not None and not found.startswith("audio/"):
+            raise MediaUpstreamError(502, "MiniMax's music is not an audio file", "failed")
+        # Asked for MP3; the store reads the type from the bytes again and refuses what is none
+        # of its types.
+        return Submitted(inline=track, content_type=found or "audio/mpeg")
+
+    async def poll(self, vendor_ref: str, client: httpx.AsyncClient) -> Polled:
+        raise MediaUpstreamError(502, "MiniMax music is synchronous; nothing to poll", "invalid")
 
     def fetch(self, download: Download) -> tuple[str, dict[str, str]]:
         return check_download(download), {}

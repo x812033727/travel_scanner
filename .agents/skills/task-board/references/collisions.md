@@ -50,6 +50,7 @@ repo 用 **squash merge**，所以合併過的分支的 commit 永遠不在 main
 
 - 你縮減了別的 session 的票的範圍：盡快把縮減開成 PR 落地。只在你分支上的縮減別人看不到，對方照原本的範圍做完了。
 - 別的 session 擁有的 PR 分支，即使是一般 push（非 force）也被擋成 Modify Shared Resources，站主說「CI 紅」也不夠；用有選項的提問拿到「直接推到 PR 分支」才過。推之前先問。
+- 反過來，別的代理也會推到你的 PR 分支：push 前先 `git pull --ff-only`，重建分支或合併前先讀 PR 的時間線，看有沒有不是你推的 commit。
 - 對方先合併：取 main 的版本（`git checkout origin/main -- <paths>`），拿掉你多加而沒人用的 message key；讀對方的做法，它可能比你的好。
 - 只有一部分重疊：留下不重疊的那部分，開成一張疊在對方分支上的票。
 - 兩份實作都完整：用多視角的代理比較（loader、route、單元測試、e2e、文件，加一個專門找合併版缺陷的），每個發現交給獨立代理反駁；存活的才值得帶進小的後續 PR。關掉被取代的 PR 時留言說明原因、分支保留。

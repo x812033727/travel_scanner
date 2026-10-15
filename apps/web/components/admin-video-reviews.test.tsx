@@ -512,7 +512,8 @@ describe("AdminVideoReviews", () => {
     first.unmount();
 
     const approvedFinal = { ...final, status: "approved", decided_at: "2026-09-27T04:00:00Z" };
-    const dramaLater = "漫劇的配音是第二期，先只能選標題說明與 CC。";
+    const dramaLater = "這支漫劇目前不能選配音；只有符合條件的純旁白影片能製作配音音軌。";
+    const storyNeedsCC = "這支品牌故事尚未確認使用可關閉的繁中 CC；完成無燒錄字幕的成片並通過審核後，才能選配音。";
     vi.stubGlobal("fetch", detail({ format: "drama", pending: 0, locales_decided_at: null, reviews: [approvedFinal] }));
     const second = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
     const drama = await screen.findByRole("region", { name: "這支影片的語言" });
@@ -525,10 +526,8 @@ describe("AdminVideoReviews", () => {
     expect(within(drama).getByRole("button", { name: "儲存" })).toHaveProperty("disabled", false);
     second.unmount();
 
-    // Only a drama filed under explainer, which the narrator tells alone, may be dubbed: every other
-    // drama category keeps the box greyed out with the reason, a brand story included (its zh-TW
-    // subtitles are burned in). The server refuses the same (admin_service DUBBABLE_DRAMA_CATEGORIES).
-    for (const category of ["story", "drama", "anime", "long-drama"]) {
+    // Other drama categories remain locked regardless of the owner's language choices.
+    for (const category of ["drama", "anime", "long-drama"]) {
       vi.stubGlobal("fetch", detail({ format: "drama", category, pending: 0, reviews: [approvedFinal] }));
       const view = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
       const box = within(await screen.findByRole("region", { name: "這支影片的語言" })).getByRole("checkbox", { name: "英文 配音" });
@@ -536,6 +535,36 @@ describe("AdminVideoReviews", () => {
       expect(box.closest("label")?.getAttribute("title"), category).toBe(dramaLater);
       view.unmount();
     }
+    // An old API omits eligibility, and a legacy story has no verified switchable-CC cut.
+    for (const dub_allowed of [undefined, false]) {
+      vi.stubGlobal("fetch", detail({ format: "drama", category: "story", dub_allowed, pending: 0, reviews: [approvedFinal] }));
+      const view = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+      const panel = await screen.findByRole("region", { name: "這支影片的語言" });
+      const box = within(panel).getByRole("checkbox", { name: "英文 配音" });
+      expect(box).toHaveProperty("disabled", true);
+      expect(box.closest("label")?.getAttribute("title")).toBe(storyNeedsCC);
+      expect(within(panel).getByText(storyNeedsCC)).toBeTruthy();
+      view.unmount();
+    }
+    // A reviewed story with switchable CC is allowed; picking its dub also picks its CC.
+    vi.stubGlobal("fetch", detail({ format: "drama", category: "story", dub_allowed: true, pending: 0, reviews: [approvedFinal] }));
+    const eligibleStory = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const storyPanel = await screen.findByRole("region", { name: "這支影片的語言" });
+    const storyDub = within(storyPanel).getByRole("checkbox", { name: "英文 配音" });
+    expect(storyDub).toHaveProperty("disabled", false);
+    expect(within(storyPanel).queryByText(storyNeedsCC)).toBeNull();
+    fireEvent.click(storyDub);
+    expect(within(storyPanel).getByRole("checkbox", { name: "英文 CC 字幕" })).toHaveProperty("checked", true);
+    eligibleStory.unmount();
+
+    // Server refusal wins even if the category historically allowed dubs (e.g. a relabeled story).
+    vi.stubGlobal("fetch", detail({ format: "drama", category: "explainer", dub_allowed: false, pending: 0, reviews: [approvedFinal] }));
+    const refused = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const refusedPanel = await screen.findByRole("region", { name: "這支影片的語言" });
+    expect(within(refusedPanel).getByRole("checkbox", { name: "英文 配音" })).toHaveProperty("disabled", true);
+    refused.unmount();
+
+    // A prior API did allow narrator-only explainers by category; keep that transition safe.
     vi.stubGlobal("fetch", detail({ format: "drama", category: "explainer", pending: 0, reviews: [approvedFinal] }));
     const explainer = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
     const told = await screen.findByRole("region", { name: "這支影片的語言" });

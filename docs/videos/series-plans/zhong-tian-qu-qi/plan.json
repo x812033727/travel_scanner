@@ -1,0 +1,51 @@
+{
+  "slug": "zhong-tian-qu-qi",
+  "title": "種田娶妻打天下",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": {
+    "min": 50,
+    "max": 180,
+    "chapter_finale_min": 120
+  },
+  "hooks_per_episode": {
+    "min": 3,
+    "why": "站主 2026-10-16：一集一定要有兩三個以上的鉤子，換集前一定停在刺激點。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），validate.mjs 擋掉三段寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線（國師被門帶回現代、許硯留下稱帝、廢除強制配婚、七位妻子同桌），第 300 集最後一格系統跳出新任務「海外」留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": {
+    "decided": null,
+    "suggested": "16:9",
+    "why": "建議照《長燈村》用 16:9 橫式：每集照常上架、每篇章另剪合輯長片，Shorts 從中央裁 9:16。構圖把主角與系統面板放在畫面中央三分之一。"
+  },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom，需要鉤子類型、主角走向與每集兩個爽點的留存規則）；每季的 season-NN.json 就是六份篇章細綱的來源。target_minutes 只能填整數分鐘，填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）：網頁點數路線照《偶的江湖》與《長燈村》第 1 集的作法，或走管線裡的 MiniMax 影片 adapter。",
+    "look": "真人電影感古裝輕喜劇，依 setting.json visual_bible；每個主要角色先做一組參考圖（正臉、側臉、全身、換裝），所有首格都帶參考圖，避免 300 集換臉。系統面板是後製疊上去的淡藍色 UI，不靠海螺生成文字。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md：前 3 秒就要出現鉤子畫面與第一句台詞，前 10 秒 4–8 個鏡頭，鏡長中位數約 2 秒，台詞一句 1–10 字，幾乎不用旁白，燒錄繁中字幕，每 6–8 鏡回一次全景。",
+    "reuse": "固定場景每季先拍一組可重用的空景與全景：柳溪村破屋與飯桌、許家院子、縣城商街、黑鳳山寨、狼牙關、金鑾殿、長江樓船；系統面板做成一套可重用的動態圖層。",
+    "voice": "國語；每個主要角色固定一個聲音，系統是平板的電子女聲；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "《偶的江湖》與《長燈村》第 1 集海螺帳本的實際單價：影片約 12 點／秒，2K 首格約 23 點／張；《長燈村》第 1 集 107 秒實花約 2,600 點。",
+    "per_episode": "平均約 100 秒一集 ≈ 2,600–3,300 點。",
+    "per_season": "60 集 ≈ 16–20 萬點；五季 ≈ 80–100 萬點。",
+    "levers": "家裡的文戲（飯桌、修羅場）用一張首格＋緩推可省四到六成；系統面板後製不花點數；戰爭全景跨集重用；先拍第一季第一篇章 10 集（≈ 3 萬點）量完留存再決定後面的量。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour；每集的 spectacle 與 glamour_shot 都要照它寫。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包（設定集、五季總綱、逐集細綱），還不是逐集分鏡劇本；比例、預算、聲音等站主決定。",
+  "reference": {
+    "work": "《萬里江山入我懷》（站主指定的參考劇）",
+    "how": "只學套路：現代人穿越成窮秀才、官府強制配婚、系統綁定靠妻子好感換獎勵、多位隱藏身分的妻子、種田發家、收服山賊、亂世稱王。人名、朝代、劇情、台詞全部原創，不搬原劇情節。"
+  },
+  "title_decision": "2026-10-16 站主從候選名裡選《種田娶妻打天下》。",
+  "wives_decision": "2026-10-16 站主：妻子一季加一位，第一季三位，五季共七位。"
+}

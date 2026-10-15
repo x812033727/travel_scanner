@@ -4,8 +4,9 @@
 
 - 必要檢查 `api`、`web`、`containers`、`full-stack-smoke`，即 `.github/workflows/ci.yml` 的四個 job。其他 workflow（lighthouse、瀏覽器測試）會跑，但不是合併條件。
 - `strict`：分支必須跟上 main。別人一合併，你的綠燈 PR 就變 `BEHIND`（或 `DIRTY` 有衝突），要 rebase 再跑一輪 CI。2026-09-06 一個晚上五個 PR 互相追，浪費三輪 CI。
+- 站主要快速合併時，**不要提議關掉 `strict`**：關掉 30 分鐘內 main 就出現兩個 alembic head，每個 PR 都紅。提議合併火車：一個貼 `no-auto-merge` 標籤的草稿 PR 收整批、跑一輪 CI，綠了再短暫關 strict、用 `--match-head-commit` 逐一合併。
 - `enforce_admins`：`gh pr merge --admin` 不是後門。
-- 自動合併：`.github/workflows/auto-update-branches.yml` 設好 `AUTO_MERGE_TOKEN` 之後，會替從這個 repo 分支開、目標 main、非草稿、沒有 `no-auto-merge` 標籤、作者是站主的 PR 打開 auto-merge，並限流地 update-branch，綠了就合（全文 `.github/BRANCH_PROTECTION.md`「Automatic updates and merges」）。站主還沒同意的 PR 開成 draft 或貼標籤；已經打開的 auto-merge 要 `gh pr merge <n> --disable-auto`。這時不要對同一個 PR 跑 `merge-when-green.sh`，兩邊會同時改那個分支。
+- 自動合併：`.github/workflows/auto-update-branches.yml` 設好 `AUTO_MERGE_TOKEN` 之後，會替從這個 repo 分支開、目標 main、非草稿、沒有 `no-auto-merge` 標籤、作者是站主的 PR 打開 auto-merge，並限流地 update-branch，綠了就合（全文 `.github/BRANCH_PROTECTION.md`「Automatic updates and merges」）。站主還沒同意的 PR 貼 `no-auto-merge` 標籤（草稿不夠：站主的自動化會把草稿轉成待審再合併）；已經打開的 auto-merge 要 `gh pr merge <n> --disable-auto`。這時不要對同一個 PR 跑 `merge-when-green.sh`，兩邊會同時改那個分支。
 - 誰能按合併：前景的 `gh pr merge <n> --squash`（或 `gh pr checks --watch --fail-fast && gh pr merge`）只在站主對**那一個** PR 說了「合併」之後會過，同意不會延續到下一個 PR。背景迴圈（`gh pr update-branch` → 輪詢四個 check-run → `gh pr merge --squash --match-head-commit`）只有在站主下過點名條件的常設指令（例如「訂閱所有 CI，如果綠就合併」）時可以跑，這時同一個 session 之後開的 PR 也算在內；沒有這種指令、也沒有上面那個 workflow 時，就每個 PR 各問一次。問的同時在背景把分支同步、CI 跑綠，字一到就能合。
 - `npm audit`／`pip-audit` 在 ci.yml 裡是 `continue-on-error`，另有每日的強制 workflow；main 自己紅了會由 `ci-red-main.yml` 開 issue。
 
@@ -38,6 +39,7 @@ gh pr view <n> --json state -q .state                         # MERGED
 - **有東西把 base 合進了你的 PR 分支**（`Merge branch 'main' into …` 不是你做的；2026-09-22 在 #665 上又發生一次，`--force-with-lease` 回 `stale info`）：push 會被拒。分支上只有自己的 commit 時 `git pull --rebase`；已經被自動 merge 過的用 `git reset --hard origin/<branch>` 再 `cherry-pick` 自己的新 commit。**不要 force-push** 蓋掉別人剛推的東西。
 - **疊在別的 PR 上的分支，在 base 被 squash 進 main 之後會變 `DIRTY`**：main 只有一個壓扁的 commit，你的分支帶著原本那幾個。**不要 `git merge origin/main`**：下層 PR 搬到 `tasks/done/` 的票會從你帶著的舊 commit 回到 `tasks/open/`，`check:tasks` 報重複 id、web job 變紅。也不要 rebase（會重播被壓扁的 commit）。做法：`git checkout -B <branch> origin/main`、只 cherry-pick 自己的 commit、`git push --force-with-lease`。
 - **migration 編號會跟同時合併的 PR 撞號**（0085 撞過）：開 PR 前與合併前各看一次 `origin/main` 的 `apps/api/migrations/versions` 最大號。alembic revision id 不能超過 32 字元（`apps/api/tests/test_schema.py`；超過時 CI 的 `api` 與 `full-stack-smoke` 都紅）。
+- **`git merge` 不要接 `| tail`**：衝突訊息會被切掉，曾把 13 個帶衝突標記的檔 commit 進去。commit 前用 `git diff --name-only --diff-filter=U` 列衝突，再 `git grep -n '^<<<<<<<'` 確認沒有殘留的標記。
 - 開始 chain 之前 PR 分支不能在主 checkout 被 checkout；每個 PR 一個 worktree 就沒這個問題。
 - `git stash` 是所有 worktree 共用的堆疊：要暫存就 `git stash push -u -m <tag>`、記下 SHA、`apply`、依 SHA 找回 `stash@{n}` 再 drop；不要裸的 `stash`／`pop`。
 

@@ -16,8 +16,10 @@ export const STORY_FIX_VARIANT = "story-fix";
 
 const STORY_COMMON = `
 You work on ONE zh-TW (Traditional Chinese, Taiwan) brand story for the Mokaair YouTube channel
-(docs/videos/STORY.md): a 12 to 15 minute non-fiction documentary told by a narrator alone over
-about 90 flat cartoon stills under slow camera moves, with burned-in subtitles. It tells how a
+(docs/videos/STORY.md): a non-fiction documentary told by a narrator alone over illustrated stills
+under slow camera moves, with switchable zh-TW captions rather than burned-in subtitles. Use the series target_minutes and look in the
+payload: an original custom story is 12 to 15 minutes with about 90 shots; a cute-mystery story is
+about 10 minutes with about 80 MiniMax illustrations. It tells how a
 brand, an everyday object or an invisible standard came about and how its business works. The
 story was planned and fact-checked before you: "plan" is that plan, and every entry of "facts"
 (the plan's must_verify) was confirmed against its sources by a second reader. Everything you may
@@ -48,6 +50,8 @@ Rules that never bend:
   in any prompt, camera or appearance, and no logo, brand mark, lettering, written word, number,
   trademark, copyrighted character or real person's likeness in any picture. A founder, an
   engineer or a shopkeeper is a generic cartoon figure of the right era, dress and trade.
+- For a cute-mystery look, the preset alone supplies the visual style. Never repeat or alter that
+  style in a shot prompt, add a negative prompt, or ask the image model to draw readable text.
 - Nobody's personal data anywhere.
 `.trim();
 
@@ -90,16 +94,29 @@ only)}.
 
 - Scenes, in order, ids "<chapter.key>-01", "<chapter.key>-02", …: every scene is a shot
   {"id", "template": "shot", "data": {"prompt": English, at most 1000 characters, ONE frame: the
-  shot size, the subjects, the setting and its era, the light, the mood, in "look"'s style,
+  shot size, the subjects, the setting and its era, the light, the mood; the "look" sets style,
   never a name, never text; "camera": one slow move, one of push in, pull out, pan left, pan
   right, tilt up, tilt down, drift; "visual": "still"; "characters": the ids of "cast" in the
   frame, only when a recurring figure is in it}, "lines": [{"id", "text"}]}. A shot holds 1 to
-  3 sentences, 25 to 42 characters, 6 to 12 seconds of narration: longer narration is more
-  shots, never a longer shot. Vary the shot sizes; two shots in a row never show the same frame.
+  3 sentences, 25 to 42 characters. For cute-mystery aim for a new visual state every 5 to 8
+  seconds; for an original custom story a shot may hold 6 to 12 seconds. Longer narration is
+  more shots, never a longer shot. Vary the shot sizes; two shots in a row never show the same frame.
+- For a cute-mystery picture prompt, write shot size → place and era → ONE generic person doing
+  ONE visible action → the focal object → the direction of light. Every illustrated shot needs
+  that one person's action, including object and landscape shots; show a readable expression when
+  the person is the subject. Avoid multi-person interactions. Use neutral light descriptions such
+  as mild, overcast, soft grey sky or lamp. Do not ask for sunny or bright midday sun, green or
+  leafy scenery, or summer colors; those produce saturated colors outside this series palette.
+  The frame is an illustration related to the narration, not a purported reconstruction of a
+  source document.
 - The last chapter ("now") ends with one outro card, {"id": "now-outro", "template": "outro",
   "data": {"title": "<the opening question answered in a short line>", "cta": "參考資料在說明欄"},
-  "lines": [...]}: its lines give the one-sentence answer to "plan.question" and one next step
-  (the site article linked in the description when "plan.related_guide" names one).
+  "lines": [...]}. When look.preset is cute-mystery, its last THREE spoken sentences answer
+  "plan.question", ask one specific question about this story for comments, then invite a
+  subscription with a reason tied to this channel's sourced stories. Do not name or announce the
+  next video: the clickable end screen handles that after the narration. For an original custom
+  story, keep the one-sentence answer and one next step (the site article linked in the description
+  when "plan.related_guide" names one).
 - The hook: ${CONDENSATION_RULE} One of its shots draws
   "plan.thumbnail.idea" with room on the left for a headline: name it in "thumbnail_shot".
 - "loops": what this chapter leaves hanging and what it pays off, [{"setup": "<a line id of this
@@ -196,7 +213,7 @@ or the checks said, and "fix.owner_note" is the owner's own words when they sent
 named and the owner's note is all there is, "shots" is every shot and you patch only those the
 note is about. Rewrite only what draws them, so an image model draws them cleanly in "look":
 fewer subjects in a crowded frame, simpler hands, a plainer camera move, no text, no logo, no
-name of "names", the subject clear of the bottom fifth of the frame where the subtitles sit. When
+name of "names", the subject clear of the bottom fifth of the frame where optional captions sit. When
 a target in "fix.targets" carries "prompt_budget_chars", that shot's prompt must be at most that
 many characters (the look and the image model take the rest of the model's limit): a shorter
 prompt beats a fuller one. Do not touch any line.

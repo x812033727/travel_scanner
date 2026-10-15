@@ -97,9 +97,24 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    Every fetch uses `fetch.tls_context()`: it verifies the chain, the expiry and the host
    name, but not Python 3.13's strict X.509 profile, which the TWCA chain of Taiwan's
    government sites fails ("Missing Subject Key Identifier"). Before this no `gov.tw` page
-   could be read at all. Listings can be narrowed with `include_query_contains` (sites that
+   could be read at all. The context also ignores the ALPN offer httpcore makes at every
+   connect: Cloudflare challenged (403) a Python handshake offering ALPN and let the same
+   pinned request through without it, which kept the CFTC feed out from 2026-10-06 to
+   2026-10-16. Listings can be narrowed with `include_query_contains` (sites that
    serve every page from one script, like the FSC's `/ch/home.jsp`) and
-   `include_title_keywords` (a publisher mostly outside the three verticals).
+   `include_title_keywords` (a publisher mostly outside the three verticals); a source's
+   listing may read more than 2 MB with `max_response_bytes` (at most 8 MB; GitHub's
+   full-text blog feed is 2.3 MB). A feed served as `text/plain` is read when its body is
+   XML (Mistral). Validation checks the first entry on the source's own site, and a
+   keyword-filtered source with no matching title this week is checked on the titles the
+   filter set aside.
+   **Robots.** Read as RFC 9309 does: a 4xx robots.txt other than 429 (MODA and NSTC 404,
+   Ars Technica 405) restricts nothing; a 429 or 5xx is a transient failure. A robots.txt
+   redirect is followed only over HTTPS on the same host, with each hop rechecked and the
+   normal redirect limit; a cross-host redirect refuses the page. A redirect that lands on
+   something other than a text/plain file with a User-agent rule (the central bank sends
+   /robots.txt to its home page) means the site has no robots.txt, and its text is not read
+   as rules.
 2. **Evidence gate.** At least one page from an evidence source (owner decision,
    2026-09-25: every enabled source is an official or trusted feed, and a person confirms
    each story before it is translated; since 2026-10-06 the review judge may confirm in
@@ -257,9 +272,21 @@ reply, and the dropped bounds are written into the field descriptions.
    database but not in the file are listed and left alone, and `/admin/news` can still
    disable or edit any of them. A source is `evidence` or `lead_only` (discovery only,
    never counted as evidence), optionally first-party, and may list redirect hosts and
-   parser settings (`items_path`, `article_ids`, `include_path_prefixes`,
+   parser settings (`items_path`, `article_ids`, `article_classes`, `include_path_prefixes`,
    `max_entries_per_scan`, `max_entry_age_hours`, …). Every source in the file keeps the
    72-hour window; raise it only for a feed that adds posts days after their own date.
+
+   To apply one reviewed source without touching other rows, use `--source-url` with its
+   exact URL. Pair it with `--preserve-on-validation-failure` for a production update:
+   a failed validation leaves the existing row and scan state unchanged and exits 1.
+   Dry-run the same selection first, then apply and read back the source and its next
+   scan. For example, after deploying the reviewed DeepMind source definition:
+
+   ```bash
+   docker compose -f docker-compose.prod.yml exec -T api python -m app.news_automation.sources_cli --source-url https://deepmind.google/blog/rss.xml --preserve-on-validation-failure
+   docker compose -f docker-compose.prod.yml exec -T api sh -c 'python -m app.news_automation.sources_cli --source-url https://deepmind.google/blog/rss.xml --preserve-on-validation-failure --apply --actor-email "${ADMIN_EMAILS%%,*}"'
+   ```
+
    `max_entries_per_scan` is the top of the listing, not a number of new entries: the
    first N entries are looked at on every scan (20 unless set, 50 at most), so an entry
    that has dropped below N before a scan is never read. A feed item's summary is its
