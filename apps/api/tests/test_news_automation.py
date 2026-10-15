@@ -1703,6 +1703,143 @@ async def test_robots_txt_is_read_once_per_host_for_the_life_of_a_fetcher() -> N
     await client.aclose()
 
 
+@pytest.mark.asyncio
+async def test_deepmind_article_redirects_use_configured_hosts_and_robots_rules() -> None:
+    requests: list[tuple[str, str]] = []
+    source_rows = json.loads(
+        (Path(news_automation_package.__file__).parent / "sources.json").read_text(
+            encoding="utf-8"
+        )
+    )["sources"]
+    source = next(row for row in source_rows if row["name"] == "Google DeepMind blog")
+    redirect_hosts = set(source["allowed_redirect_hosts"])
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        host, path = request.headers["host"], request.url.path
+        requests.append((host, path))
+        if host == "deepmind.google":
+            if path == "/robots.txt":
+                return httpx.Response(200, text="User-agent: *\nAllow: /", request=request)
+            if path == "/blog/developing-gemini-4-argon-responsibly-and-safely/":
+                return httpx.Response(
+                    302,
+                    headers={
+                        "Location": "https://blog.google/innovation-and-ai/technology/safety-security/gemini-4-model-safety-security/"
+                    },
+                    request=request,
+                )
+            assert path == "/blog/gemini-4-argon-for-robotics/"
+            return httpx.Response(
+                302,
+                headers={
+                    "Location": "https://developers.googleblog.com/gemini-4-argon-for-robotics"
+                },
+                request=request,
+            )
+        if host == "blog.google":
+            if path == "/robots.txt":
+                return httpx.Response(200, text="User-agent: *\nAllow: /", request=request)
+            assert path == (
+                "/innovation-and-ai/technology/safety-security/gemini-4-model-safety-security/"
+            )
+            return httpx.Response(
+                200,
+                content=b"<html><main>Official safety story.</main></html>",
+                headers={"Content-Type": "text/html"},
+                request=request,
+            )
+        if path == "/robots.txt":
+            return httpx.Response(301, headers={"Location": "/robots.txt/"}, request=request)
+        if path == "/robots.txt/":
+            return httpx.Response(200, text="User-agent: *\nDisallow: /private", request=request)
+        if path == "/gemini-4-argon-for-robotics":
+            return httpx.Response(
+                301, headers={"Location": "/gemini-4-argon-for-robotics/"}, request=request
+            )
+        assert path == "/gemini-4-argon-for-robotics/"
+        return httpx.Response(
+            200,
+            content=(
+                b'<html><section class="blocks-container"><p>Official article.</p>'
+                b"</section></html>"
+            ),
+            headers={"Content-Type": "text/html"},
+            request=request,
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    result = await fetcher.fetch(
+        "https://deepmind.google/blog/gemini-4-argon-for-robotics/",
+        allowed_hosts={"deepmind.google"},
+        allowed_redirect_hosts=redirect_hosts,
+    )
+    assert result.url == "https://developers.googleblog.com/gemini-4-argon-for-robotics/"
+    assert read_article(result.body, result.url, source["config"]).text == "Official article."
+    safety = await fetcher.fetch(
+        "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/",
+        allowed_hosts={"deepmind.google"},
+        allowed_redirect_hosts=redirect_hosts,
+    )
+    assert safety.url.startswith("https://blog.google/innovation-and-ai/")
+    assert read_article(safety.body, safety.url, source["config"]).text == (
+        "Official safety story."
+    )
+    with pytest.raises(UnsafeNewsUrl, match="robots"):
+        await fetcher.fetch(
+            "https://developers.googleblog.com/private",
+            allowed_hosts={"developers.googleblog.com"},
+        )
+    assert requests.count(("developers.googleblog.com", "/robots.txt")) == 1
+    assert requests.count(("developers.googleblog.com", "/robots.txt/")) == 1
+    assert requests.count(("blog.google", "/robots.txt")) == 1
+    assert ("developers.googleblog.com", "/private") not in requests
+    await client.aclose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "mode", ["other-host", "http", "other-port", "loop", "missing", "html", "no-agent"]
+)
+async def test_robots_redirects_outside_same_https_host_or_without_rules_are_refused(
+    mode: str,
+) -> None:
+    requested: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        requested.append(f"{request.headers['host']}{request.url.path}")
+        assert request.headers["host"] == "developers.googleblog.com"
+        assert request.url.path in {"/robots.txt", "/robots.txt/"}
+        if request.url.path == "/robots.txt/" and mode == "html":
+            return httpx.Response(
+                200, text="<html>User-agent: *</html>",
+                headers={"Content-Type": "text/html"}, request=request,
+            )
+        if request.url.path == "/robots.txt/" and mode == "no-agent":
+            return httpx.Response(200, text="Sitemap: /sitemap.xml", request=request)
+        if mode == "missing":
+            return httpx.Response(404, request=request)
+        location = {
+            "other-host": "https://other.example/robots.txt",
+            "http": "http://developers.googleblog.com/robots.txt/",
+            "other-port": "https://developers.googleblog.com:444/robots.txt/",
+            "loop": "/robots.txt/" if request.url.path == "/robots.txt" else "/robots.txt",
+            "html": "/robots.txt/",
+            "no-agent": "/robots.txt/",
+        }[mode]
+        return httpx.Response(301, headers={"Location": location}, request=request)
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    with pytest.raises(UnsafeNewsUrl, match="robots"):
+        await fetcher.fetch(
+            "https://developers.googleblog.com/article",
+            allowed_hosts={"developers.googleblog.com", "other.example"},
+        )
+    assert len(requested) == (5 if mode == "loop" else 2 if mode in {"html", "no-agent"} else 1)
+    await client.aclose()
+
+
 def test_a_malformed_href_is_dropped_instead_of_failing_the_page() -> None:
     _, _, links = extract_article(
         b'<main>Body <a href="https://[broken/path">bad</a>'
