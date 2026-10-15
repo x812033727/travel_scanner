@@ -1,6 +1,6 @@
 # 五支品牌故事｜製作前檢查收據
 
-本機核對日期：2026-10-14；規格複核：2026-10-15（Asia/Taipei）。五支的範圍是本機 repo 與預設影片工作目錄；**未核對它們在正式站的資料庫狀態、未匯入、未執行付費模型，也沒有成片**。A01／B18 另有部分後台 UI 觀察，詳見[原試作票](../../../tasks/open/2026-09-28-video-story-pilot.md)，不可推論五支或試作的精確 live 狀態。站主已指定五支採 MiniMax `image-01`、`cute-mystery`、約 10 分鐘，並在 A01／B18 原規格試作完成後才做。本文件供安排五集製作時回讀，不能把表格的「本機不存在」推論成主機不存在。
+本機核對日期：2026-10-14；規格複核與正式主機精確 slug 唯讀回讀：2026-10-15（Asia/Taipei）。五支**未匯入、未執行付費模型，也沒有成片**。本文件先記本機 repo／預設影片工作目錄，再於第 4 節記正式主機資料庫與 video-worker volume 對七個精確 slug 的查詢結果；兩者證據邊界不同。A01／B18 的詳細狀態見[原試作票](../../../tasks/open/2026-09-28-video-story-pilot.md)。站主已指定五支採 MiniMax `image-01`、`cute-mystery`、約 10 分鐘，並在 A01／B18 原規格試作完成後才做。
 
 ## 1. 本機輸入與空白工作區
 
@@ -43,7 +43,7 @@
 
 原 story 產線要求 12–15 分鐘、非空 `look.style`／`look.negative`，工人把 `video.json` 設為 `preset:custom`。本工作樹的[窄範圍修正](../../../tasks/open/2026-10-14-support-10-minute-minimax-cute-brand.md)已讓**另立的五集系列**採 10 分鐘、MiniMax `image-01` 與精確 `{"preset":"cute-mystery"}`，原 13 分鐘 Gemini 自訂畫風路線仍通過回歸測試。本機含角色的 A29 小樣之 `validateVideo`、`lintVideo` 無錯誤；這是合成小樣，**不是正式 A29 逐字稿或成片**。`curio-*` 專屬通用 lint 不套用 `story-*`；新版 story 工人在六章合併後、付費產圖前另擋正文空白、插畫低於 70%、連續卡片超過三張與畫風偏離。正式影片仍須目視驗收插畫品質、單鏡提示詞與實際畫面。
 
-五題本機輸入與 slug 接法已驗；A01／B18 試作及主機狀態仍待驗。在**已核准的主機環境**核對輸入 SHA 與 live 狀態後，才可用下列形式作唯讀匯入試跑；此處未執行，也沒有 `--apply`：
+五題本機輸入與 slug 接法已驗；A01／B18 試作未完成。主機對七個精確 slug 的資料列與工作目錄回讀見下方；完整輸入 SHA、供應商額度及付費工作歸屬仍須在**已核准的主機環境**核對後，才可用下列形式作唯讀匯入試跑。此處未執行，也沒有 `--apply`：
 
 ```bash
 # <approved-five.json> 指本資料夾 stories.json 經主機端 SHA 回讀的完整編譯輸入，不是 README 或 treatment。
@@ -56,7 +56,7 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli video-st
 
 ## 4. 主機、站主與實際生產關卡
 
-[A01／B18 試作票](../../../tasks/open/2026-09-28-video-story-pilot.md)目前為 `blocked`，其勾選項要求：先在正式主機讓 A01、B18 到「可以上架」，站主看過；回填時長、張數、重做率、階段秒數、實際帳本、1K 清晰度與 token 用量。站主於 2026-10-15 明確決定這兩支先完成，五支新版接著做。原試作維持原規格，票明載正式站操作須站主同意，部署、上限、頻道立場、字幕語系、權限與主機狀態均須逐項核對。此前的[試作執行方案](../../work-status-2026-09-29-story-pilot-plan.md)也只是一份未執行的方案，不能當作 live 收據。五支尚無正式站逐集狀態回讀；A01／B18 只有試作票記錄的部分後台 UI 觀察，未核實 live 版本、餘額或帳本。沒有改正式設定或驗帳；不自動觸發五支或每日兩支 rollout。
+[A01／B18 試作票](../../../tasks/open/2026-09-28-video-story-pilot.md)目前為 `blocked`，其勾選項要求：先在正式主機讓 A01、B18 到「可以上架」，站主看過；回填時長、張數、重做率、階段秒數、實際帳本、1K 清晰度與 token 用量。站主於 2026-10-15 明確決定這兩支先完成，五支新版接著做。原試作維持原規格，票明載正式站操作須站主同意，部署、上限、頻道立場、字幕語系、權限與主機狀態均須逐項核對。此前的[試作執行方案](../../work-status-2026-09-29-story-pilot-plan.md)也只是一份未執行的方案，不能當作 live 收據。下方新增的主機唯讀回讀已核實 live SHA 與七個精確 slug 的資料列／volume 目錄狀態；額度、原有其他作品與帳本仍須另核。沒有改正式設定或驗帳；不自動觸發五支或每日兩支 rollout。
 
 舊試作方案仍稱 `video-story-image-model-pricing` 票未完成；[該票](../../../tasks/done/2026-09-28-video-story-image-model-pricing.md)現已結案，作品模型估價與快取修正已落地。這項修正沒有把文字、TTS、judge 與未結算重試納入每支 US$25 的整片硬上限。2026-10-15 在本機以來源讀取器重查 A01／B18 共 16 個 URL，全部因本環境連線失敗而未取得正文；不能據此判為來源失效，正式寫稿前須在可連網的核准環境重跑並保存報告。
 
@@ -68,6 +68,12 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli video-st
 2. **鎖稿與成本**：將五份 treatment 轉成 worker 可讀、獨立查核的六章企劃；逐章核來源、畫面句、片頭 40–50 秒懸念、約 10 分鐘正文、5 秒品牌片頭、21 秒品牌片尾。核 MiniMax `image-01` 實際單價、餘額、重試與整支成本上限，按整集一次核定；已定畫風不為選風格再買樣張。需要驗分鏡連貫性時用連續鏡頭試看，再批量產圖。
 3. **只在無衝突且獲批時啟動**：先做上述 import dry-run、留 JSON／狀態回讀，然後才決定 apply 的明確批次。工人依序 `brief/series` → 六章 writer、verifier、listener → `video.json`／claims／lint → TTS／長度／check-audio → keyframes／分鏡 → render／靜圖運鏡／music／assemble／captions → QA／package。遇來源不足、額度不足、事實改動或品質退回，保留同 slug 的章稿、`auto.json`、費用與失敗收據，不換號重買。
 4. **真人驗收與上架**：量旁白與成片各自時長、FFprobe 格式、字幕同步、畫風一致、v4 pin、來源主張、全片播放；留下 `qa.json`、成片 SHA、實際花費與重做率。站主看完成片之後，私密上傳、Studio 可點結束畫面、公開／排程與站主接受都各留獨立證據。
+
+### 2026-10-15 正式主機精確唯讀回讀
+
+站主指示查看 PuTTY 後，`hostinger2` 儲存連線以明確 root 帳號完成唯讀登入；另一個 `hostinger` 連線上的 `/root/travel_scanner` 不存在，未用它推論正式站狀態。2026-10-15 00:01–00:03 UTC，在 `hostinger2` 回讀 `/root/travel_scanner`：乾淨的 live HEAD 與 `origin/main` 同為 `c4911a0598944b9a4409584b3fa6a069f4d8a70a`，最近部署日誌記載此 SHA；部署 hold 不存在、鎖空閒，Alembic 在 `0131_video_dub_retries (head)`，API、video-ai-worker、video-worker 運行中。主機另有**全域**六筆 `uncertain` stage job 與一筆 `queued` media job，未證明屬於本批。這是已部署的 main，**不是**本草稿 PR 的新畫風程式。供應商額度與容器內源碼 SHA 尚未獨立核實。
+
+在同一主機對 `video_drama_series` 的全部 `kind=story`、A01／B18 與五個 `story-five-*` 精確 slug 的 `video_drama_episodes`、`video_drama_requests`、`video_projects`、`video_media_jobs` 做唯讀查詢，結果均無資料列；video-worker 工作 volume 的七個精確 slug 目錄也均不存在。這比前述本機／後台觀察更直接，但只涵蓋**這七個 slug 與目前資料庫／volume**，不能排除別名或外部作品。尚未執行匯入 dry-run、`--apply`、設定變更、模型付費或上傳。A01／B18 的 US$25 整支預算關卡仍待實作，且站主看片前須關閉目前的自動成片核准；五支仍須等兩支試作完成。
 
 ## 5. 新畫面路線的基本成本假設
 
