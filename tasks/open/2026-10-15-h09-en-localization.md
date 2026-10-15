@@ -34,7 +34,7 @@ The owner selected English metadata, captions, and dubbing for the approved H09 
 
 ## How to verify
 
-With `VIDEO_WORKDIR=C:\Users\x8120\mokaair-work\videos`:
+With `VIDEO_WORKDIR` set to the media root containing `curio-h09`:
 
 - `node tools/video/cli.mjs i18n-sheet --slug curio-h09 --locale en --parts metadata,captions` should report 0 of 100 lines, 0 of 8 chapters, and no stale metadata field.
 - `node tools/video/cli.mjs i18n-merge --slug curio-h09 --locale en` should exit 0 with 100 lines written and no problem rows.

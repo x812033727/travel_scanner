@@ -41,7 +41,7 @@ independent reviewer and audio stages can proceed.
 
 ## How to verify
 
-With `VIDEO_WORKDIR=C:/Users/x8120/mokaair-work/videos`:
+With `VIDEO_WORKDIR` set to the media root containing `curio-h09`:
 
 ```text
 node tools/video/cli.mjs i18n-merge --slug curio-h09 --locale ja

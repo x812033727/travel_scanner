@@ -34,8 +34,10 @@ H09's approved Traditional Chinese film needs source-bound Korean lines and uplo
 
 ## How to verify
 
-- `$env:VIDEO_WORKDIR='C:\Users\x8120\mokaair-work\videos'; node tools/video/cli.mjs i18n-sheet --slug curio-h09 --locale ko --parts metadata,captions` reported 0 of 100 lines, 0 of 8 chapters, no metadata todo.
-- `$env:VIDEO_WORKDIR='C:\Users\x8120\mokaair-work\videos'; node tools/video/cli.mjs lint --slug curio-h09` returned 0 errors; its three remaining warnings concern the unchanged Chinese shot duration and narrative hooks.
+With `VIDEO_WORKDIR` set to the media root containing `curio-h09`:
+
+- `node tools/video/cli.mjs i18n-sheet --slug curio-h09 --locale ko --parts metadata,captions` reported 0 of 100 lines, 0 of 8 chapters, no metadata todo.
+- `node tools/video/cli.mjs lint --slug curio-h09` returned 0 errors; its three remaining warnings concern the unchanged Chinese shot duration and narrative hooks.
 - `npm run check:tasks` passed (the board emitted only existing old-claim/scope warnings).
 
 ## Notes
