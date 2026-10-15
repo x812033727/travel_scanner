@@ -344,16 +344,18 @@ export class Stage {
     if (this.stop()) throw stoppedError();
     this.hold();
     const request = { slug: this.slug, kind, files, rubric, context };
-    const key = mediaKey("judge", { stage: this.stage, id, request });
-    const previous = readLedger(this.workdir).entries.find((entry) => entry.kind === "judge" && entry.key === key && (entry.status === "reserved" || entry.status === "judged"));
-    if (previous?.status === "reserved") {
+    const requestKey = mediaKey("judge", { stage: this.stage, id, request });
+    const previous = readLedger(this.workdir).entries.filter((entry) => entry.kind === "judge" && (entry.request_key ?? entry.key) === requestKey);
+    if (previous.some((entry) => entry.status === "reserved")) {
       throw new MediaError(id + ": a previous judge request may have been charged; reconcile its reserved ledger entry before trying again", { code: "video_media_judge_uncertain", who: "owner" });
     }
-    if (previous?.status === "judged") {
-      throw new MediaError(id + ": this judge request was already paid for; recover its verdict from the saved stage or reconcile the ledger before trying again", { code: "video_media_judge_recorded", who: "owner" });
-    }
+    // A stage may deliberately rejudge an unchanged image after its model or manifest was
+    // replaced. Give every completed repeat a distinct ledger key so its charge is counted.
+    const repeat = previous.filter((entry) => entry.status === "judged").length;
+    const key = repeat ? mediaKey("judge-repeat", { requestKey, repeat }) : requestKey;
+    const repeatFields = repeat ? { request_key: requestKey, repeat } : {};
     this.spend(JUDGE_USD_PER_CALL, "judge call");
-    reserve(this.workdir, { stage: this.stage, kind: "judge", id, provider: "gemini", model: "", key, cost_usd: JUDGE_USD_PER_CALL }, this.now());
+    reserve(this.workdir, { stage: this.stage, kind: "judge", id, provider: "gemini", model: "", key, cost_usd: JUDGE_USD_PER_CALL, ...repeatFields }, this.now());
     // A retry can pay twice even when the first response vanished at the network boundary.
     let verdict;
     try {
@@ -361,13 +363,13 @@ export class Stage {
     } catch (error) {
       // Authentication, validation and local budget/rate refusals happen before Gemini.
       // A provider 429/5xx or a lost response could still have cost money, so retain its hold.
-      if (error instanceof MediaError && ([400, 401, 403, 404, 422].includes(error.status)
+      if (error instanceof MediaError && ([400, 401, 403, 404, 413, 422].includes(error.status)
         || ["video_media_budget_exhausted", "rate_limit_exceeded", "video_media_judge_unavailable"].includes(error.code))) {
         release(this.workdir, key);
       }
       throw error;
     }
-    bookJob(this.workdir, { stage: this.stage, kind: "judge", id, provider: "gemini", model: verdict.model ?? "", key, cost_usd: JUDGE_USD_PER_CALL, status: "judged" }, this.now());
+    bookJob(this.workdir, { stage: this.stage, kind: "judge", id, provider: "gemini", model: verdict.model ?? "", key, cost_usd: JUDGE_USD_PER_CALL, status: "judged", ...repeatFields }, this.now());
     return { overall: verdict.overall, passed: Boolean(verdict.passed), scores: verdict.scores ?? {}, problems: verdict.problems ?? [], notes: verdict.notes ?? "" };
   }
 

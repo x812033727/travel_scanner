@@ -481,7 +481,7 @@ test("a judge call is money: it is refused past the per-video cap before the ser
   assert.equal(JUDGE_USD_PER_CALL, 0.01, "mirrors JUDGE_USD_PER_CALL in apps/api/app/video_media/catalog.py");
 });
 
-test("a series-local cap refuses a judge call before POST and a successful call replaces its reservation", async () => {
+test("a series-local cap holds each judge call, including an intentional repeat under a new ledger key", async () => {
   const fake = fakeStage(imageStatus(status(), { image_model: FLASH, media_cap_usd: 0.07 }));
   const picture = await fake.generate();
   const request = { id: "opening", kind: "keyframe", files: [{ sha256: picture.sha256, label: "keyframe" }], rubric: [{ key: "clean", question: "Is it clean?", weight: 1 }] };
@@ -505,8 +505,30 @@ test("a series-local cap refuses a judge call before POST and a successful call 
   assert.equal(ledger.entries.at(-1).status, "judged");
   assert.equal(ledger.entries.at(-1).key, heldAtPost.entries.at(-1).key);
   assert.deepEqual([ledger.totals.usd, ledger.totals.reserved, ledger.totals.judge_calls], [0.077, 0, 1]);
-  await assert.rejects(fake.stage.judge(request), errorCode("video_media_judge_recorded"));
-  assert.equal(fake.calls.filter((call) => call === "POST judge").length, 1, "a paid verdict is not requested twice after a stage rerun");
+  await assert.rejects(fake.stage.judge(request), errorCode("video_media_cap"));
+  assert.equal(fake.calls.filter((call) => call === "POST judge").length, 1, "a repeat still needs a fresh cap reservation");
+  fake.stage.status = imageStatus(status(), { image_model: FLASH, media_cap_usd: 0.09 });
+  assert.equal((await fake.stage.judge(request)).passed, true);
+  const repeated = readLedger(fake.workdir);
+  assert.deepEqual([repeated.totals.usd, repeated.totals.judge_calls], [0.087, 2]);
+  assert.notEqual(repeated.entries.at(-1).key, ledger.entries.at(-1).key, "the second paid call gets its own ledger key");
+  assert.equal(repeated.entries.at(-1).request_key, ledger.entries.at(-1).key);
+  assert.equal(fake.calls.filter((call) => call === "POST judge").length, 2);
+});
+
+test("an uncertain repeat judge call holds its own charge and blocks a third identical POST", async () => {
+  const overrides = {};
+  const fake = fakeStage(imageStatus(status(), { image_model: FLASH, media_cap_usd: 0.1 }), { overrides });
+  const picture = await fake.generate();
+  const request = { id: "opening", kind: "keyframe", files: [{ sha256: picture.sha256, label: "keyframe" }], rubric: [{ key: "clean", question: "Is it clean?", weight: 1 }] };
+  await fake.stage.judge(request);
+  overrides["POST judge"] = () => { throw new TypeError("lost repeat answer"); };
+  await assert.rejects(fake.stage.judge(request), (error) => error instanceof MediaError && error.code === "network");
+  const held = reservedEntries(readLedger(fake.workdir).entries);
+  assert.deepEqual(held.map((entry) => [entry.kind, entry.cost_usd, entry.repeat]), [["judge", JUDGE_USD_PER_CALL, 1]]);
+  assert.equal(readLedger(fake.workdir).totals.usd, 0.087);
+  await assert.rejects(fake.stage.judge(request), errorCode("video_media_judge_uncertain"));
+  assert.equal(fake.calls.filter((call) => call === "POST judge").length, 2);
 });
 
 test("a clear pre-provider judge refusal releases its hold so the request can be retried", async () => {
@@ -522,6 +544,20 @@ test("a clear pre-provider judge refusal releases its hold so the request can be
   assert.equal((await fake.stage.judge(request)).passed, true);
   assert.equal(fake.calls.filter((call) => call === "POST judge").length, 2);
   assert.equal(readLedger(fake.workdir).totals.usd, 0.077);
+});
+
+test("an oversized judge upload is a clear pre-provider refusal and frees its reservation", async () => {
+  const overrides = {};
+  const fake = fakeStage(imageStatus(status(), { image_model: FLASH, media_cap_usd: 0.08 }), { overrides });
+  const picture = await fake.generate();
+  const request = { id: "opening", kind: "keyframe", files: [{ sha256: picture.sha256, label: "keyframe" }], rubric: [{ key: "clean", question: "Is it clean?", weight: 1 }] };
+  overrides["POST judge"] = () => Response.json({ code: "video_media_judge_too_large", detail: "inline media too large" }, { status: 413 });
+  await assert.rejects(fake.stage.judge(request), (error) => error instanceof MediaError && error.status === 413);
+  assert.deepEqual(reservedEntries(readLedger(fake.workdir).entries), []);
+  assert.equal(readLedger(fake.workdir).totals.usd, 0.067);
+  delete overrides["POST judge"];
+  assert.equal((await fake.stage.judge(request)).passed, true);
+  assert.equal(readLedger(fake.workdir).totals.judge_calls, 1);
 });
 
 test("judge request keys distinguish rubric and context even for the same image", async () => {
