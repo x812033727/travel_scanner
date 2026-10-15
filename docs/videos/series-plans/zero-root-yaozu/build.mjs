@@ -27,8 +27,8 @@ function settingMd() {
   for (const rule of setting.world.rules) lines.push(`| ${rule.name} | ${rule.rule} | ${rule.cost} |`);
   lines.push("", "## 勢力", "");
   for (const faction of setting.world.factions) lines.push(`- **${faction.name}**：${faction.what}`);
-  lines.push("", "## 人物", "", "| id | 名字 | 身分 | 外貌（真人提示詞） | 走向 |", "| --- | --- | --- | --- | --- |");
-  for (const row of setting.characters) lines.push(`| \`${row.id}\` | ${row.name} | ${row.role} | ${row.appearance} | ${row.arc} |`);
+  lines.push("", "## 人物", "", "| id | 名字 | 身分 | 外貌（真人提示詞） | 聲音 | 走向 |", "| --- | --- | --- | --- | --- | --- |");
+  for (const row of setting.characters) lines.push(`| \`${row.id}\` | ${row.name} | ${row.role} | ${row.appearance} | ${row.tts ? row.tts.voice.replace("gemini:", "") : "未定"} | ${row.arc} |`);
   lines.push("", "## 神獸", "");
   for (const beast of setting.beasts) lines.push(`- **${beast.name}**（${beast.source}，第 ${beast.season} 季）：${beast.appearance}`);
   lines.push("", "## 長線謎團", "", "| id | 問題 | 埋 | 揭 | 答案 |", "| --- | --- | --- | --- | --- |");
