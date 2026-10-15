@@ -7,6 +7,7 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { readApprovals } from "../core/approvals.mjs";
@@ -39,6 +40,10 @@ import {
   LENGTH_FIX_ROUNDS,
   OUTLINE_NOTE,
   passagesOf,
+  PILOT_SCRIPT_REFERENCES,
+  PILOT_SCRIPT_REVIEW_FILE,
+  pilotScriptReviewEvidence,
+  pilotScriptReviewProblem,
   readChapter,
   readChapterAnswer,
   SCRIPT_NOTE,
@@ -564,6 +569,129 @@ test("a complete cute pilot script sends visual failures to the chapter before d
   assert.match(errors, /scenes\[5\]: 8 of 12 body scenes are illustrated shots \(66%\)/);
   assert.match(errors, /scenes\[5\]: 4 cards in a row \(origin-01 → origin-02 → idea-01 → idea-02\)/);
   assert.equal(world.runs.some((command) => command.startsWith("keyframes ")), false);
+});
+
+test("the two pilot editorial reference hashes still match their independently PASS-reviewed Markdown", () => {
+  for (const [slug, id] of [["story-rolling-suitcase-v2", "A01"], ["story-conveyor-belt-sushi-v2", "B18"]]) {
+    const script = fileURLToPath(new URL(`../../../docs/videos/brand-stories-pilot-v2-20261015/scripts/${id}.md`, import.meta.url));
+    const review = fileURLToPath(new URL(`../../../docs/videos/brand-stories-pilot-v2-20261015/scripts/reviews/${id}.md`, import.meta.url));
+    const hash = sha(script);
+    assert.equal(hash, PILOT_SCRIPT_REFERENCES[slug]);
+    assert.match(readFileSync(review, "utf8"), new RegExp(`SHA-256 .${hash}.`));
+    assert.match(readFileSync(review, "utf8"), /文字事實與敘事 PASS|逐字稿文字事實與敘事 PASS/);
+  }
+});
+
+const pilotAnswers = () => standardAnswers({ "writer:story": (body) => {
+  const chapter = chapterAnswer(body.payload.chapter.key, body.payload);
+  chapter.scenes.forEach((scene, index) => { if (scene.template === "shot") scene.data.camera = index % 2 ? "slow pan left" : "slow push in"; });
+  return chapter;
+} });
+
+test("a v2 pilot holds before TTS until an independent review binds the actual six chapters and reference", async () => {
+  const slug = "story-rolling-suitcase-v2";
+  const series = { ...SERIES, slug: "brand-stories-curio-pilot-v2", target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const episode = { ...EPISODE, slug };
+  const world = storyWorld({ series, episode, answers: pilotAnswers() });
+  const { automation, workdir } = world;
+  const progress = [];
+  for (let index = 0; index < 1 + 6 + 6 + 6; index++) {
+    try { progress.push(await automation.step()); }
+    catch (error) { throw new Error(`pilot step ${index + 1}: ${progress.join(" | ")}`, { cause: error }); }
+  }
+  assert.match(await automation.step(), /STOPPED_HOLD: .*script-review\.json is missing/);
+  assert.equal(world.state().status, "blocked");
+  assert.equal(world.state().blocked_kind, "pilot_script_review");
+  assert.equal(readApprovals(workdir).approvals.some((entry) => entry.gate === "script"), false);
+  assert.equal(world.runs.some((command) => command.startsWith("tts ")), false);
+
+  const places = { slug, root: world.box.root, workdir };
+  const receipt = {
+    schema_version: 1,
+    ...pilotScriptReviewEvidence(places),
+    status: "PASS",
+    reviewer_id: "editorial-reader-a01",
+    independent: true,
+    reviewed_at: "2026-10-15T00:00:00.000Z",
+    checks: { reference_alignment: "PASS", factual_claims: "PASS", narrative: "PASS" },
+  };
+  const receiptFile = path.join(workdir, PILOT_SCRIPT_REVIEW_FILE);
+  mkdirSync(path.dirname(receiptFile), { recursive: true });
+  const saveReceipt = () => writeFileSync(receiptFile, JSON.stringify(receipt));
+  assert.match(pilotScriptReviewProblem(places), /missing/);
+  receipt.slug = "story-conveyor-belt-sushi-v2";
+  saveReceipt();
+  assert.match(pilotScriptReviewProblem(places), /matching slug/);
+  receipt.slug = slug;
+  receipt.reviewer_id = "worker:story";
+  saveReceipt();
+  assert.match(pilotScriptReviewProblem(places), /independent reviewer/);
+  receipt.reviewer_id = "editorial-reader-a01";
+  receipt.reference_script_sha256 = "0".repeat(64);
+  saveReceipt();
+  assert.match(pilotScriptReviewProblem(places), /frozen independently reviewed Markdown/);
+  receipt.reference_script_sha256 = PILOT_SCRIPT_REFERENCES[slug];
+  receipt.files["script.md"] = "0".repeat(64);
+  saveReceipt();
+  assert.match(pilotScriptReviewProblem(places), /script\.md is missing or changed/);
+  receipt.files["script.md"] = sha(path.join(world.dir, "script.md"));
+  saveReceipt();
+  assert.equal(pilotScriptReviewProblem(places), null);
+  const scriptFile = path.join(world.dir, "script.md");
+  const originalScript = readFileSync(scriptFile, "utf8");
+  writeFileSync(scriptFile, `${originalScript}\n手動加上的旁白。`);
+  receipt.files["script.md"] = sha(scriptFile);
+  saveReceipt();
+  assert.match(pilotScriptReviewProblem(places), /script\.md no longer matches the narration in video\.json/, "a reviewer cannot attest a detached text file as the worker's script");
+  writeFileSync(scriptFile, originalScript);
+  receipt.files["script.md"] = sha(scriptFile);
+  saveReceipt();
+  assert.equal(pilotScriptReviewProblem(places), null);
+
+  // The owner retries only after the second reader has signed the current worker artifact.
+  const state = world.state();
+  state.status = "active";
+  delete state.blocked;
+  delete state.blocked_kind;
+  automation.persist(state);
+  assert.match(await automation.step(), /screenplay is approved here/);
+  assert.equal(world.runs.some((command) => command.startsWith("tts ")), false);
+  assert.match(await automation.step(), /narration synthesized/);
+  assert.equal(world.runs.filter((command) => command.startsWith("tts ")).length, 1);
+});
+
+test("a v2 pilot rechecks its review before downstream stages and holds when a chapter changes", async () => {
+  const slug = "story-conveyor-belt-sushi-v2";
+  const series = { ...SERIES, slug: "brand-stories-curio-pilot-v2", target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const world = storyWorld({ series, episode: { ...EPISODE, slug }, answers: pilotAnswers() });
+  const progress = [];
+  for (let index = 0; index < 1 + 6 + 6 + 6; index++) {
+    try { progress.push(await world.automation.step()); }
+    catch (error) { throw new Error(`pilot step ${index + 1}: ${progress.join(" | ")}`, { cause: error }); }
+  }
+  assert.match(await world.automation.step(), /STOPPED_HOLD/);
+  const receipt = {
+    schema_version: 1,
+    ...pilotScriptReviewEvidence({ slug, root: world.box.root, workdir: world.workdir }),
+    status: "PASS",
+    reviewer_id: "independent-reader-b18",
+    independent: true,
+    reviewed_at: "2026-10-15T00:00:00.000Z",
+    checks: { reference_alignment: "PASS", factual_claims: "PASS", narrative: "PASS" },
+  };
+  const file = path.join(world.workdir, PILOT_SCRIPT_REVIEW_FILE);
+  mkdirSync(path.dirname(file), { recursive: true });
+  writeFileSync(file, JSON.stringify(receipt));
+  const state = world.state();
+  state.status = "active";
+  delete state.blocked;
+  delete state.blocked_kind;
+  world.automation.persist(state);
+  assert.match(await world.automation.step(), /screenplay is approved here/);
+  const chapterFile = path.join(world.workdir, STORY_CHAPTERS_DIR, "origin.json");
+  writeFileSync(chapterFile, `${readFileSync(chapterFile, "utf8")} `);
+  assert.match(await world.automation.step(), /STOPPED_HOLD: chapter origin is missing or changed/);
+  assert.equal(world.runs.some((command) => command.startsWith("tts ")), false);
 });
 
 test("the ten-minute preset is preserved by the story file and video composer", () => {

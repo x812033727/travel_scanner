@@ -12,8 +12,9 @@
 // <workdir>/story/chapters/, merges them into video.json and claims.md and lints; a lint error is
 // sent back for the chapter it is in. A fresh checker takes a chapter a call (verifier:story) and
 // answers a patch and the chapter's rows of the claims table; the listener takes a chapter a call
-// (listener:story) and answers a patch. A story has no script gate: the step every drama has is
-// approved here, with a note that says why. After tts the measured narration must be within a
+// (listener:story) and answers a patch. Ordinary stories have no script gate: the step every drama
+// has is approved here, with a note that says why. The two v2 pilots first need an independent,
+// hash-bound review of the worker's actual merged script. After tts the measured narration must be within a
 // band around the target; else the writer adds to or cuts from one chapter, twice at most, and a
 // story whose passages hold no more is left for the owner, never padded. A keyframe that failed
 // its check goes back to the writer (writer:story-fix) for the named shots alone.
@@ -37,7 +38,7 @@ import { approve } from "../core/approvals.mjs";
 import { emptyLexicon, isProposableTerm } from "../core/lexicon.mjs";
 import { lintVideo } from "../core/lint.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, readText } from "../core/paths.mjs";
-import { writeScreenplay } from "../core/screenplay.mjs";
+import { screenplay, writeScreenplay } from "../core/screenplay.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
 import { NARRATIVE_REVIEW, narrativeRecord, PANEL_INSTRUCTIONS, panelPayload, panelVerdict } from "../core/narrative.mjs";
 import { scriptCheckMatches } from "../core/script-check.mjs";
@@ -808,6 +809,64 @@ const STORY_FIVE_FRAMES = new Set(["title", "chapter", "outro"]);
 const STORY_FIVE_MIN_SHOT_PERCENT = 70;
 const STORY_FIVE_MAX_CARD_RUN = 3;
 const CUTE_PILOT_SLUGS = new Set(["story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2"]);
+// These hashes are the independently PASS-reviewed editorial Markdown scripts in the v2 pilot
+// package. The worker imports six plan beats, not those scripts; a new review must compare its
+// actual merged output with the matching frozen reference before a paid TTS or image stage.
+export const PILOT_SCRIPT_REFERENCES = Object.freeze({
+  "story-rolling-suitcase-v2": "f91816021ebea28e1957199a5c73ccc588748e988730efc92e0486d09d5215c6",
+  "story-conveyor-belt-sushi-v2": "5326bd6633ad69931fe542badd6cddd2378324ff0bcc4b0f05652941642dc724",
+});
+export const PILOT_SCRIPT_REVIEW_FILE = path.join(STORY_DIR, "reviews", "script-review.json");
+const PILOT_REVIEW_CHECKS = ["reference_alignment", "factual_claims", "narrative"];
+const PILOT_REVIEW_FILES = ["script.md", "video.json", "series.json", "claims.md", "verify-1.md"];
+const sha256OnDisk = (file) => existsSync(file) ? createHash("sha256").update(readFileSync(file)).digest("hex") : null;
+
+/** Exact current worker output that a second reader must compare and sign off before pilot TTS. */
+export function pilotScriptReviewEvidence({ slug, root, workdir }) {
+  const referenceScriptSha256 = PILOT_SCRIPT_REFERENCES[slug];
+  if (!referenceScriptSha256) return null;
+  const dir = docDir(slug, root);
+  return {
+    slug,
+    reference_script_sha256: referenceScriptSha256,
+    files: Object.fromEntries(PILOT_REVIEW_FILES.map((name) => [name, sha256OnDisk(path.join(dir, name))])),
+    narrative_review_sha256: sha256OnDisk(path.join(workdir, ...NARRATIVE_REVIEW)),
+    chapters: Object.fromEntries(CHAPTER_KEYS.map((key) => [key, sha256OnDisk(path.join(workdir, STORY_CHAPTERS_DIR, `${key}.json`))])),
+  };
+}
+
+/** A missing, weak, or stale attestation leaves only these two pilots in STOPPED_HOLD. */
+export function pilotScriptReviewProblem({ slug, root, workdir }) {
+  const expected = pilotScriptReviewEvidence({ slug, root, workdir });
+  if (!expected) return null;
+  const file = path.join(workdir, PILOT_SCRIPT_REVIEW_FILE);
+  let receipt;
+  try { receipt = readJson(file, null); }
+  catch { return `${PILOT_SCRIPT_REVIEW_FILE} is not valid JSON`; }
+  if (!receipt || typeof receipt !== "object" || Array.isArray(receipt)) return `${PILOT_SCRIPT_REVIEW_FILE} is missing`;
+  if (receipt.schema_version !== 1 || receipt.slug !== slug || receipt.status !== "PASS") return "the pilot script review has no matching slug and PASS decision";
+  const reviewer = receipt.reviewer_id;
+  if (typeof reviewer !== "string" || !/^[a-z0-9][a-z0-9._:@/-]{2,99}$/i.test(reviewer)
+    || /(?:^|[._:@/-])(?:worker|writer|listener|verifier|automation|self)(?:$|[._:@/-])/i.test(reviewer)
+    || receipt.independent !== true) return "the pilot script review needs an independent reviewer identity, not a worker stage";
+  if (typeof receipt.reviewed_at !== "string" || !Number.isFinite(Date.parse(receipt.reviewed_at))) return "the pilot script review has no valid reviewed_at";
+  if (PILOT_REVIEW_CHECKS.some((key) => receipt.checks?.[key] !== "PASS")) return "the pilot script review has not passed reference alignment, facts and narrative";
+  if (receipt.reference_script_sha256 !== expected.reference_script_sha256) return "the pilot script review does not name the frozen independently reviewed Markdown reference";
+  try {
+    const dir = docDir(slug, root);
+    if (readFileSync(path.join(dir, "script.md"), "utf8") !== screenplay(JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8")))) {
+      return "script.md no longer matches the narration in video.json";
+    }
+  } catch { return "script.md or video.json cannot be read for the pilot script review"; }
+  for (const name of PILOT_REVIEW_FILES) {
+    if (!expected.files[name] || receipt.files?.[name] !== expected.files[name]) return `${name} is missing or changed since the pilot script review`;
+  }
+  if (!expected.narrative_review_sha256 || receipt.narrative_review_sha256 !== expected.narrative_review_sha256) return "the narrative panel receipt is missing or changed since the pilot script review";
+  for (const key of CHAPTER_KEYS) {
+    if (!expected.chapters[key] || receipt.chapters?.[key] !== expected.chapters[key]) return `chapter ${key} is missing or changed since the pilot script review`;
+  }
+  return null;
+}
 
 export function cuteStoryVisualProblems(doc) {
   if (!/^story-five-/.test(doc?.slug ?? "") && !CUTE_PILOT_SLUGS.has(doc?.slug)) return [];
@@ -1001,6 +1060,8 @@ export async function advanceStory(automation, state, next) {
   // narration is recorded, and a required "no" sends the listener over them with its note.
   const panelled = await narrativeGate(automation, state);
   if (panelled) return panelled;
+  const reviewProblem = pilotScriptReviewProblem({ slug: state.slug, root: automation.ctx.root, workdir: automation.workdir(state.slug) });
+  if (reviewProblem) return automation.block(state, `STOPPED_HOLD: ${reviewProblem}; an independent reader must review the current six-chapter worker script against the frozen v2 editorial script, then the owner retries this pilot`, "pilot_script_review");
   if (next === "script approved") return approveScript(automation, state);
   if (next === "narration approved") {
     const length = await checkLength(automation, state);
