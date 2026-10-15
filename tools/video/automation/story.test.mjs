@@ -839,6 +839,7 @@ test("the ten-minute preset is preserved by the story file and video composer", 
   const video = composeStory({ slug: SLUG, info, chapters: {}, voice: SERIES.voice, root: "." });
   assert.deepEqual(video.look, { preset: "cute-mystery" });
   assert.deepEqual(video.target_minutes, [9, 11]);
+  assert.deepEqual(video.subtitles, { burn_in: false, style: "drama" }, "new brand stories use switchable zh-TW CC");
 });
 
 test("a ten-minute story carries the exact MiniMax cute look from series to video", async () => {
@@ -864,6 +865,7 @@ test("a ten-minute story carries the exact MiniMax cute look from series to vide
   assert.deepEqual(video.look, { preset: "cute-mystery" });
   assert.deepEqual(video.target_minutes, [9, 11]);
   assert.equal(video.category, "story");
+  assert.equal(video.subtitles.burn_in, false, "the merged script keeps zh-TW captions switchable");
   assert.equal(world.site.calls.run.filter((call) => call.stage === "writer").length, 6);
 });
 
