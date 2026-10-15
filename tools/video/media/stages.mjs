@@ -14,7 +14,7 @@ import { PROJECT_LEASED, ProjectLeaseError, requireProjectLease } from "../core/
 import { contactSheetHtml, SHEET_WIDTH } from "../render/contact.mjs";
 import { cached, forgetJob, mediaKey, pendingJob, remember, rememberJob } from "./cache.mjs";
 import { MediaError, RETAKE_CODES, TERMINAL, downloadFile, judge as askJudge, putFile, submitClip, submitImage, submitMusic, waitForJob } from "./client.mjs";
-import { appendLedger, bookJob, capProblem, release, reserve } from "./ledger.mjs";
+import { bookJob, capProblem, readLedger, release, reserve } from "./ledger.mjs";
 import { dHash, dhashArgs } from "./qc.mjs";
 
 const exec = promisify(execFile);
@@ -55,8 +55,15 @@ export function chosenModel(status, kind, format = null) {
   return (status.models?.[group]?.[choice?.provider] ?? []).find((each) => each.value === choice?.model) ?? null;
 }
 
-/** Match the server's per-series image selection without changing clip/music choices. */
+/** Apply a series image choice and local media cap without changing the server's clip/music choices. */
 export function imageStatus(status, series) {
+  const localCap = series?.media_cap_usd;
+  if (localCap !== undefined) {
+    if (typeof localCap !== "number" || !Number.isFinite(localCap) || localCap <= 0) {
+      throw new MediaError("the series media_cap_usd must be a positive dollar amount", { code: "video_media_cap_invalid", who: "owner" });
+    }
+    status = { ...status, series_media_cap_usd: localCap };
+  }
   const model = series?.image_model;
   if (!model) return status;
   const images = status.models?.images ?? {};
@@ -112,9 +119,11 @@ export function imageSizeFor(status, format = null) {
   return typeof price === "number" && Number.isFinite(price) && price > 0 ? "2K" : null;
 }
 
-/** The owner's per-video cap for a video of `format`: slides may have their own. */
+/** The lower of the site's per-video cap and this series' local cap, when either is set. */
 export function capFor(status, format = null) {
-  return format === SLIDES_FORMAT && status.slides_max_usd_per_video !== undefined && status.slides_max_usd_per_video !== null ? status.slides_max_usd_per_video : status.max_usd_per_video;
+  const shared = format === SLIDES_FORMAT && status.slides_max_usd_per_video !== undefined && status.slides_max_usd_per_video !== null ? status.slides_max_usd_per_video : status.max_usd_per_video;
+  const local = status.series_media_cap_usd;
+  return local > 0 ? (shared > 0 ? Math.min(shared, local) : local) : shared;
 }
 
 /** The list price of one second of clip with the server's chosen clip model. */
@@ -220,7 +229,7 @@ export class Stage {
    * under the request key before the submission, and `bookJob` replaces that row with the
    * server's charge once the job is seen. A refusal from the server releases the hold, since no
    * job exists; a run that dies or stops after submitting leaves it, beside the pending job id,
-   * for the next run to reconcile.
+    * for the next run to reconcile when it has a job id, or for the owner when it does not.
    */
   async generate({ kind, key, submit, request, id, target, usd, seconds = 0 }) {
     const expected = choiceFor(this.status, kind, this.format);
@@ -233,16 +242,32 @@ export class Stage {
       job = await waitForJob({ jobId: pending.job_id, stop: () => this.stop(), timeoutMs: WAIT_MS[kind], ...this.options });
     } else {
       if (this.stop()) throw stoppedError();
+      // A POST may have reached the server even when its response (and job id) was lost.
+      // Reserving this key again would replace the hold and could pay for a second attempt.
+      const previous = readLedger(this.workdir).entries.find((entry) => entry.key === key && (entry.status === "reserved" || (entry.status === "failed" && entry.cost_usd > 0)));
+      if (previous?.status === "reserved") {
+        throw new MediaError(`${id}: a previous ${kind} submission may have been charged without returning a job id; reconcile its reserved ledger entry before trying again`, { code: "video_media_generation_uncertain", who: "owner" });
+      }
+      if (previous?.status === "failed") {
+        // The server can retry a failed request under the same job id. If the previous
+        // attempt was billed, booking that id again would replace rather than add its cost.
+        // Preserve a retakeable failure code so the stage can move to a different seed.
+        const retake = RETAKE_CODES.has(previous.error);
+        throw new MediaError(`${id}: this ${kind} request already failed after a charge; use a new seed or prompt, or reconcile its ledger entry before trying again`, { code: retake ? previous.error : "video_media_generation_paid_failure", who: retake ? "service" : "owner" });
+      }
       this.spend(usd);
       reserve(this.workdir, { stage: this.stage, kind, id, provider: expected.provider, model: expected.model, key, seconds, cost_usd: usd }, this.now());
       let submitted;
       try {
-        submitted = await submit({ request, ...this.options });
+        // Never retry a paid POST automatically. A 5xx or lost answer can follow a submission.
+        submitted = await submit({ request, ...this.options, attempts: 1 });
       } catch (error) {
-        // The server answered and took nothing (a spent budget, an exhausted request, a bad
-        // reference): nothing is held. A lost connection may have left a job behind, so its
-        // hold stays until a rerun submits the same key again and books what it finds.
-        if (error instanceof MediaError && error.status > 0) release(this.workdir, key);
+        // Known pre-provider refusals cost nothing. A 5xx or lost response is uncertain and
+        // keeps its reservation until the owner reconciles it with the server.
+        if (error instanceof MediaError && (
+          [400, 401, 403, 404, 409, 413, 422].includes(error.status)
+          || ["video_media_budget_exhausted", "rate_limit_exceeded", "video_media_not_configured", "video_media_disabled", "video_media_model_not_allowed"].includes(error.code)
+        )) release(this.workdir, key);
         throw error;
       }
       if (TERMINAL.has(submitted.status)) job = submitted;
@@ -257,13 +282,13 @@ export class Stage {
       // The series may have changed on the site since series.json was written. Preserve
       // the actual charge and job id, but never label/cache its result as the old model.
       rememberJob(this.workdir, key, { job_id: job.id, kind, target }, this.now());
-      bookJob(this.workdir, { stage: this.stage, kind, id, provider, model, key, job_id: job.id, seconds, cost_usd: job.status === "failed" ? 0 : Number(job.usd_estimate || 0), status: "failed", error: "video_media_model_changed" }, this.now());
+      bookJob(this.workdir, { stage: this.stage, kind, id, provider, model, key, job_id: job.id, seconds, cost_usd: Number(job.usd_estimate || 0), status: "failed", error: "video_media_model_changed" }, this.now());
       throw new MediaError(`${id}: the server used ${provider}/${model}, expected ${expected.provider}/${expected.model}; reconcile the series model and saved job before continuing`, { code: "video_media_model_changed", who: "owner", job });
     }
     rememberJob(this.workdir, key, { job_id: job.id, kind, target }, this.now());
     if (job.status !== "ready" || !job.file?.sha256) {
       const code = job.error?.code || `video_media_job_${job.status}`;
-      bookJob(this.workdir, { stage: this.stage, kind, id, provider, model, key, job_id: job.id, seconds, cost_usd: job.status === "failed" ? 0 : Number(job.usd_estimate || 0), status: "failed", error: code }, this.now());
+      bookJob(this.workdir, { stage: this.stage, kind, id, provider, model, key, job_id: job.id, seconds, cost_usd: Number(job.usd_estimate || 0), status: "failed", error: code }, this.now());
       forgetJob(this.workdir, key, job.id);
       throw new MediaError(`${id}: ${job.error?.detail || code}`, { code, job });
     }
@@ -311,16 +336,38 @@ export class Stage {
   }
 
   /**
-   * Ask the judge about some files and book the call; returns `{ overall, passed, scores, problems, notes }`.
-   * A call is money too (JUDGE_USD_PER_CALL): it passes the per-video cap first, and is booked
-   * once it has answered.
+   * Ask the judge about some files and book the call; returns the scored verdict.
+   * Reserve the price before one POST. If its answer is lost, keep the hold and refuse another
+   * POST of that exact request until the owner reconciles the uncertain charge.
    */
   async judge({ id, kind, files, rubric, context = {} }) {
     if (this.stop()) throw stoppedError();
     this.hold();
+    const request = { slug: this.slug, kind, files, rubric, context };
+    const key = mediaKey("judge", { stage: this.stage, id, request });
+    const previous = readLedger(this.workdir).entries.find((entry) => entry.kind === "judge" && entry.key === key && (entry.status === "reserved" || entry.status === "judged"));
+    if (previous?.status === "reserved") {
+      throw new MediaError(id + ": a previous judge request may have been charged; reconcile its reserved ledger entry before trying again", { code: "video_media_judge_uncertain", who: "owner" });
+    }
+    if (previous?.status === "judged") {
+      throw new MediaError(id + ": this judge request was already paid for; recover its verdict from the saved stage or reconcile the ledger before trying again", { code: "video_media_judge_recorded", who: "owner" });
+    }
     this.spend(JUDGE_USD_PER_CALL, "judge call");
-    const verdict = await askJudge({ request: { slug: this.slug, kind, files, rubric, context }, ...this.options });
-    appendLedger(this.workdir, { stage: this.stage, kind: "judge", id, provider: "gemini", model: verdict.model ?? "", key: null, cost_usd: JUDGE_USD_PER_CALL, status: "judged" }, this.now());
+    reserve(this.workdir, { stage: this.stage, kind: "judge", id, provider: "gemini", model: "", key, cost_usd: JUDGE_USD_PER_CALL }, this.now());
+    // A retry can pay twice even when the first response vanished at the network boundary.
+    let verdict;
+    try {
+      verdict = await askJudge({ request, ...this.options, attempts: 1 });
+    } catch (error) {
+      // Authentication, validation and local budget/rate refusals happen before Gemini.
+      // A provider 429/5xx or a lost response could still have cost money, so retain its hold.
+      if (error instanceof MediaError && ([400, 401, 403, 404, 422].includes(error.status)
+        || ["video_media_budget_exhausted", "rate_limit_exceeded", "video_media_judge_unavailable"].includes(error.code))) {
+        release(this.workdir, key);
+      }
+      throw error;
+    }
+    bookJob(this.workdir, { stage: this.stage, kind: "judge", id, provider: "gemini", model: verdict.model ?? "", key, cost_usd: JUDGE_USD_PER_CALL, status: "judged" }, this.now());
     return { overall: verdict.overall, passed: Boolean(verdict.passed), scores: verdict.scores ?? {}, problems: verdict.problems ?? [], notes: verdict.notes ?? "" };
   }
 

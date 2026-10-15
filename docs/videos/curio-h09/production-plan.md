@@ -1,6 +1,6 @@
 # 奇聞檔案局 H09｜製作與關卡
 
-狀態：本機企劃、劇本、分鏡提示詞及乾跑報價已完成；更新版大綱 A 已從 `/admin/videos` 讀回核准，正式劇本亦已從 `/admin/videos` 讀回核准。尚未合成旁白或購買插畫；音訊與本集圖片預算尚未核准。
+狀態：更新版大綱 A、修正版正式劇本與 100 句繁中旁白均已從 `/admin/videos` 讀回核准。音訊 QA 與站主試聽完成；92 張插畫尚未生成。站主授權三項合計 US$4.50 停手上限；圖片與評審的本集估算上限已設為 US$3.84，待整批付費命令通過執行審核。
 
 ## 作品規格
 
@@ -10,9 +10,9 @@
 - 插畫呈現故事，不假扮成照片、考古證據或飛機殘骸的重建。日期、數字、機構立場與來源用少量卡片；正文至少 70% 是插畫，連續卡片最多三張。
 - 公有領域檔案照片和文件的授權要逐件核對，若使用則當貼圖式來源卡。2026 年探勘現場影像未取得授權前不放進成片。
 
-## 待核准的畫面預算
+## 畫面預算與停手上限
 
-下表依 2026-10-15 的 `video.json` 逐景計數；劇本修改或 TTS 時間軸若要求重新切景，須重新計數與報價。這是待審的購圖清單，不代表已獲准執行。
+下表依 2026-10-15 的 `video.json` 逐景計數；劇本修改或 TTS 時間軸若要求重新切景，須重新計數與報價。這是已核價並獲整集製作授權的購圖清單，不代表圖片已生成或通過審核。
 
 | 段落 | 插畫景 | 來源／數字卡 | 鏡頭任務 |
 | --- | ---: | ---: | --- |
@@ -26,7 +26,7 @@
 | 未結與結束畫面 | 2 | 1 | 最後一個插畫回呼和片尾 |
 | **定稿草案** | **92** | **8** | **正文插畫占 92／99（outro 不計），約 93%** |
 
-`keyframes --dry-run --takes 3` 對這版 92 張、MiniMax `image-01`、1K 回報：首輪約 US$1.24，每張最多三輪的圖片與評審總額約 US$3.73；目前 H09 媒體帳本 US$0.00。這是送審報價。Gemini Sulafat 旁白 100 句、2,654 字元，依 11.2 分鐘與 Google 2026 年 `gemini-3.8-flash-tts` Standard 費率估首輪約 US$0.16（實際音訊長度及輸入 token 未知）；擬給旁白含必要重錄 US$0.50、整批圖片 US$4.00，兩階段 H09 上限 US$4.50，均待站主明確授權。此額度不含尚未報價的轉寫、Jev 審查、多語或上傳；共用的 US$200 後台設定不能執行 H09 專屬上限，須逐階段核帳。Google 價目：https://ai.google.dev/gemini-api/docs/pricing 。把**整集**新圖數與美元上限一次報站主；核准前不執行付費生圖。H07 的授權不適用 H09。
+`keyframes --dry-run --takes 3` 對這版 92 張、MiniMax `image-01`、1K 回報：首輪約 US$1.24，每張最多三輪的圖片與評審總額約 US$3.73；目前 H09 圖片帳本 US$0.00；Gemini 旁白不在這份帳本中。Gemini Sulafat 旁白 100 句、2,654 字元，依 11.2 分鐘與 Google 2026 年 `gemini-3.8-flash-tts` Standard 費率估首輪約 US$0.16（實際音訊長度及輸入 token 未知）；擬給旁白含必要重錄 US$0.50、整批圖片 US$4.00，H09 總停手上限 US$4.50。站主已明確授權劇本送 Gemini 合成、92 張 MiniMax 插畫及另行的 Gemini 轉寫／TypeSafe Jev 音訊 QA，三項共用此上限；若扣除實際音訊與 QA 估費後不足以執行整批插畫，先停下。此額度不含多語或上傳。保守預留已完成的 Gemini 旁白約 US$0.16 與 Gemini／Jev 音訊 QA 至多 US$0.50，留給本集圖片與評審的執行時上限為 US$3.84；92 張每張最多三輪的目錄估價為 US$3.726，另有 US$0.114 緩衝。`series.json` 記錄本集 `media_cap_usd: 3.84`，共用的 US$200 後台設定不能執行 H09 專屬上限。上述均為模型價目估算，供應商最終帳單及先前 QA 的實際 token 費用尚未取得；不得把估算帳本說成發票級保證。Google 價目：https://ai.google.dev/gemini-api/docs/pricing 。把**整集**新圖數與美元上限一次報站主；核准前不執行付費生圖。H07 的授權不適用 H09。
 
 ## 路線與安全邊界
 
@@ -50,3 +50,8 @@
 - `npm run check:tasks` 通過。`npm run test:docs-videos` 為 214／215 通過；唯一失敗是未修改的 `imported-long-languages/runner.test.mjs` 在 Windows 子行程 `package-runtime.mjs` 以 `3221226505` 崩潰，單獨重跑相同。這項失敗不在 H09 檔案範圍內，沒有被誤報成全綠。
 - 2026-10-15 `review-pull --gate outline` 將含 Purdue 10／14 進度的 `brief.md`（SHA-256 `D93595C10AB24AD8AE55F5C7BD9A246FA7B4EFA6DE4D8626A318AB1FD511A83A`）讀回為站主核准大綱 A；本機 `approvals.json` 記錄 approved_at=`2026-10-14T23:48:50.461Z`。正式 `script.md`（SHA-256 `3B1ECF0743F7BD83333ED68E697219333E81BBDCF7392C92D976F62BA6627D4C`）已 `review-push --gate script`，隨後 `review-pull --gate script` 讀回站主核准；本機 `approvals.json` 記錄 approved_at=`2026-10-14T23:51:59.021Z`，對應的 `script.md` 雜湊與工作目錄一致。劇本核准尚未涵蓋音訊或圖片費用。
 - 2026-10-15 再查 Purdue／PRF 官方最新仍為 10／14 的 Taraia 水下測勘開始公告，資料尚待分析，未確認機體；目前核准稿不用修訂，成片前仍須再查。旁白合成命令曾提出執行，但自動審核拒絕把完整稿件送到 Gemini，理由是劇本核准並非外部合成的明確授權；命令未執行，沒有產生音檔或費用。
+- 2026-10-15 站主明確授權把 H09 的 100 句稿件送 Gemini Sulafat 製作繁中旁白，並以 MiniMax image-01 產整集 92 張插畫；另同意 Gemini 轉寫／TypeSafe Jev 音訊 QA，三項合計 US$4.50 為停手上限。首輪 TTS exit 0：100 句、2,654 計費字元、0 句重用，實際 narration.wav 657.933 秒（10:57），ffmpeg 完整解碼；依 Google 2026 Standard 音訊輸出率估約 US$0.1480，文字輸入及最終帳單未量得。圖片 ledger 仍 US$0.00。逐句檢查發現 h1j3jy6q.say 重複「研究團體」，只修該覆寫；正文與 narrative hash 不變，script.md 新 SHA-256 7294FD9410349DCBA89347631DF46A551C8A6C570A58983BE11E58A073FA41D5，已重新 review-push 並從後台讀回新版 script.md 核准，approvals.json 記錄 approved_at=`2026-10-15T00:10:29.529Z`。第二次 TTS exit 0：只重錄 1 句（28 字元），99 句快取重用，新 narration.wav 657.233 秒（10:57），完整解碼；乾跑 0 句待合成。Gemini 轉寫與 Jev 音訊 QA 已完成：100 句均已轉寫，20 句為自動差異旗標，不等同證實念錯。站主已逐句試聽並回覆「旁白可以」；音訊卡在 `/admin/videos` 核准，`review-pull --gate audio` 讀回 `timeline.json` SHA-256 `DD46E9CC89C4BBC03C0500BA98AEB973B1D6328C6C3792CB0C56349D21BD8CF7`，approved_at=`2026-10-15T00:46:46.700Z`。插畫未啟動。
+
+- 2026-10-15 付費產圖前，自動審核拒絕 `keyframes --takes 3`：離線 `drama_preflight.mjs` 固定用 Gemini 圖價誤報三輪約 US$39.74，而真實 `image-01` 乾跑報約 US$3.73；當時 CLI 只有共用 US$200 上限，評審失聯也可能少記帳。該命令未執行，H09 圖片帳本 US$0.00。已另認領窄票修正預檢與單集媒體上限；修好、測試及重新送審前不呼叫付費圖片 API。
+- 2026-10-15 再預檢：本機目錄與正式站均選 `image-01` 1K；92 張首輪 US$1.242，最多三輪圖片加評審 US$3.726，本集圖片／評審估算上限 US$3.84，正式站 H09 帳本仍 US$0.00。`Stage.generate` 與 `Stage.judge` 都在付費 POST 前預留並查本集上限；圖片失聯／5xx 不自動重送，已計費的失敗工作按回報正價記錄。`stages.test.mjs` 聚焦測試 30／30 通過；`npm run check:tasks` 通過。全套 `test:tools` 在 Windows 出現多個無診斷的子程序失敗，未宣稱通過。舊旁白與 QA 的供應商實際帳單不可得，US$4.50 是依價目估算的停手控制，不是發票級保證。
+- 2026-10-15 臺灣時間 09:20 再看 PRF／ALI 官網與普渡 10／14 正式公告，未發現更新的機體鑑定；磁力儀與側掃聲納資料仍待分析，核准稿維持「未結」。來源：https://amelia.prf.org/ 、https://www.purdue.edu/newsroom/2026/Q4/earhart-expedition-update-underwater-survey-of-taraia-object-begins/ 。發布前仍須再查一次。

@@ -22,7 +22,7 @@ import { fileURLToPath } from "node:url";
 import { writeSyntheticNarration } from "./video/assemble/synthetic.mjs";
 import { approve } from "./video/core/approvals.mjs";
 import { lookHash, resolveLook } from "./video/core/drama.mjs";
-import { DRAMA_FIXTURE_FILE, dramaFixture, fixtureLexicon, sandbox } from "./video/core/fixtures/load.mjs";
+import { DRAMA_FIXTURE_FILE, dramaFixture, fixtureLexicon, sandbox, tempDir } from "./video/core/fixtures/load.mjs";
 import { estimateTimeline, FPS, visualHash } from "./video/core/timeline.mjs";
 import {
   estimateEpisode,
@@ -40,7 +40,7 @@ import {
   renderEstimate,
   secondsBought,
 } from "../.agents/skills/animation-production/scripts/episode_estimate.mjs";
-import { EXIT, JUDGE_CALLS_PER_HOUR, JUDGE_MONTHLY_BUDGET, KEYFRAME_MIN_PSNR, MAX_RUBRIC_QUESTION, preflight } from "../.agents/skills/animation-production/scripts/drama_preflight.mjs";
+import { catalogImagePrice, EXIT, JUDGE_CALLS_PER_HOUR, JUDGE_MONTHLY_BUDGET, KEYFRAME_MIN_PSNR, MAX_RUBRIC_QUESTION, preflight, renderPreflight } from "../.agents/skills/animation-production/scripts/drama_preflight.mjs";
 import { renderMarkdown, renderReport, runReport } from "../.agents/skills/animation-production/scripts/run_report.mjs";
 import { lockOf } from "../.agents/skills/animation-preproduction/scripts/plan_lock.mjs";
 import { planEpisode } from "../.agents/skills/animation-preproduction/scripts/shot_plan.mjs";
@@ -513,6 +513,61 @@ test("the estimate takes the ledger's spent and reserved money off the cap: --wo
   const unpaid = run("episode_estimate.mjs", script, "--workdir", path.join(box.work, "other"), "--json");
   assert.equal(unpaid.status, 0, unpaid.stderr);
   assert.deepEqual([JSON.parse(unpaid.stdout).ledger.entries, JSON.parse(unpaid.stdout).ledger.spent_usd], [0, 0]);
+});
+
+test("preflight quotes a 92-shot image-01 series from the local catalog and its media cap", async () => {
+  const base = tempDir("video-preflight-");
+  const box = { slug: "fixture-drama", root: path.join(base, "repo"), work: path.join(base, "work") };
+  box.dir = path.join(box.root, "docs", "videos", box.slug);
+  mkdirSync(box.dir, { recursive: true });
+  mkdirSync(box.work, { recursive: true });
+  writeFileSync(path.join(box.root, "docs", "videos", "lexicon.json"), JSON.stringify(fixtureLexicon()));
+  const doc = dramaFixture();
+  const shot = doc.scenes.find((scene) => scene.template === "shot");
+  doc.characters = [];
+  doc.scenes = Array.from({ length: 92 }, (_, index) => ({
+    ...structuredClone(shot),
+    id: "draw-" + String(index + 1).padStart(3, "0"),
+    data: { ...shot.data, characters: [] },
+    lines: [{ id: "line" + String(index + 1).padStart(3, "0"), text: "她望著海。" }],
+  }));
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  const seriesFile = path.join(box.dir, "series.json");
+  writeFileSync(seriesFile, JSON.stringify({ image_model: "image-01", media_cap_usd: 3.84 }));
+
+  const report = await preflight({ slug: box.slug, root: box.root, workdir: box.work, stage: "keyframes" });
+  const quote = report.findings.find((finding) => finding.usd_cap !== undefined);
+  assert.equal(report.new.keyframes.length, 92);
+  assert.equal(report.image_model, "image-01");
+  assert.equal(report.image_price_usd, 0.0035);
+  assert.equal(report.media_cap_usd, 3.84);
+  assert.equal(report.media_committed_usd, 0);
+  near(quote.usd, 92 * (0.0035 + 0.01));
+  near(quote.usd_cap, 92 * 3 * (0.0035 + 0.01));
+  near(quote.usd_cap, 3.726);
+  assert.ok(quote.usd_cap < report.media_remaining_usd);
+  assert.match(renderPreflight(report), /本集媒體上限 US\$3\.84/);
+  assert.match(quote.fix, /live media-status/);
+
+  writeFileSync(seriesFile, JSON.stringify({ image_model: "image-01", media_cap_usd: 0.5 }));
+  const capped = await preflight({ slug: box.slug, root: box.root, workdir: box.work, stage: "keyframes" });
+  assert.equal(capped.exit_code, 1);
+  assert.ok(capped.findings.some((finding) => finding.level === "refuse" && /帳本餘額/.test(finding.what)));
+
+  writeFileSync(seriesFile, JSON.stringify({}));
+  const generic = await preflight({ slug: box.slug, root: box.root, workdir: box.work, stage: "keyframes" });
+  assert.equal(generic.image_model, "gemini-3-pro-image");
+  assert.equal(generic.image_price_usd, 0.134);
+  assert.equal(generic.media_cap_usd, null);
+});
+
+test("preflight refuses an unknown, duplicate or unpriced local image model", () => {
+  assert.equal(catalogImagePrice("image-01"), 0.0035);
+  assert.throws(() => catalogImagePrice("missing-model"), /cannot quote its price/);
+  const row = 'MediaModel(\n    "image-01",\n    usd_per_image=0.0035,\n),\n';
+  assert.throws(() => catalogImagePrice("image-01", row + row), /2 entries/);
+  assert.throws(() => catalogImagePrice("image-01", row.replace("0.0035", "0")), /no positive 1K/);
+  assert.throws(() => catalogImagePrice("image-01", row.replace("usd_per_image=0.0035,", "usd_per_image=price,")), /no positive 1K/);
 });
 
 test("preflight names the gate the next stage will refuse on, with the stage's exit code, and exits 1", async () => {

@@ -419,4 +419,4 @@
 旁白（溫和邀請）：訂閱奇聞檔案局，陪我們沿著能核對的紀錄，把懸案看到最清楚的一頁。
 
 narrative c86a4a4f74475bcd
-speech bcd031d4d477c8f2
+speech 31ed2734d0317ba9

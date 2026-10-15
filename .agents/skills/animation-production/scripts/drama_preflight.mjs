@@ -14,9 +14,9 @@
 //
 // 和各階段一樣，--workdir 是放所有影片的工作目錄（VIDEO_WORKDIR），影片自己的目錄是 <workdir>/<slug>/。
 // 結束碼：0 沒有會被拒絕或白花的事；1 有（--json 時一樣）；2 讀不到專案或參數錯。
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 
 import { approvalState } from "../../../../tools/video/core/approvals.mjs";
@@ -26,7 +26,7 @@ import { productionClipProblems, productionShotProblems } from "../../../../tool
 import { readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../../../../tools/video/core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, lookChosen, pipelineStatus } from "../../../../tools/video/core/state.mjs";
 import { FPS, speechHash, visualHash } from "../../../../tools/video/core/timeline.mjs";
-import { readLedger } from "../../../../tools/video/media/ledger.mjs";
+import { readLedger, totalsOf } from "../../../../tools/video/media/ledger.mjs";
 import { continuityBreaks, coveringOrder, LOCK_FILE, lockProblem, promiseBreaks, readChangeOrders } from "../../animation-preproduction/scripts/plan_lock.mjs";
 import { CONTINUITY_LABELS } from "../../animation-preproduction/scripts/shot_plan.mjs";
 import { DEFAULT_IMAGE_MODEL, MAX_CLIP_TAKES, MAX_KEYFRAME_TAKES, MAX_LOOK_ROUNDS, PRICES, secondsBought } from "./episode_estimate.mjs";
@@ -47,6 +47,17 @@ export const KEYFRAME_MIN_PSNR = 22;
 const describe = { approved: "已核准", stale: "核准後檔案又變了（stale）", missing: "還沒核准", absent: "檔案還不存在" };
 const usd = (value) => `US$${value.toFixed(2)}`;
 const ids = (scenes) => scenes.map((scene) => scene.id).join(", ");
+const CATALOG_FILE = fileURLToPath(new URL("../../../../apps/api/app/video_media/catalog.py", import.meta.url));
+
+/** Offline image quote from the same local catalog that the media server uses. */
+export function catalogImagePrice(model, catalog = readFileSync(CATALOG_FILE, "utf8")) {
+  const blocks = catalog.split(/\bMediaModel\(\s*\n/).slice(1).filter((block) => /^\s*"([^"]+)"/.exec(block)?.[1] === model);
+  if (blocks.length !== 1) throw new UsageError(`image model ${model} has ${blocks.length} entries in local ${CATALOG_FILE}; cannot quote its price`);
+  const stated = /^\s*usd_per_image=([0-9]+(?:\.[0-9]+)?),\s*$/m.exec(blocks[0])?.[1];
+  const price = Number(stated);
+  if (!stated || !Number.isFinite(price) || price <= 0) throw new UsageError(`image model ${model} has no positive 1K usd_per_image in local ${CATALOG_FILE}; cannot quote its price`);
+  return price;
+}
 
 async function rubricBuilders() {
   try {
@@ -126,7 +137,14 @@ export async function preflight({ slug, root, workdir: workdirFlag, env = proces
   const imported = outside.filter(([, shot]) => shot.imported_at).map(([id]) => id);
   const handPlaced = external.filter((id) => !imported.includes(id));
   const stop = stopRequested(workdir);
-  const imagePrice = PRICES[DEFAULT_IMAGE_MODEL].usd_per_image;
+  const imageModel = series?.image_model || DEFAULT_IMAGE_MODEL;
+  const imagePrice = catalogImagePrice(imageModel);
+  const mediaCap = series?.media_cap_usd ?? null;
+  if (mediaCap !== null && (typeof mediaCap !== "number" || !Number.isFinite(mediaCap) || mediaCap <= 0)) {
+    throw new UsageError(`series.media_cap_usd must be a positive dollar amount; got ${JSON.stringify(mediaCap)}`);
+  }
+  const mediaCommitted = totalsOf(ledger.entries).usd;
+  const mediaRemaining = mediaCap === null ? null : Math.max(0, mediaCap - mediaCommitted);
   const judgePrice = PRICES.judge.usd_per_call;
   const clipPrice = PRICES[clipModel]?.usd_per_second ?? null;
   const framesOf = new Map((timeline?.scenes ?? []).map((scene) => [scene.id, scene.end_frame - scene.start_frame]));
@@ -190,11 +208,14 @@ export async function preflight({ slug, root, workdir: workdirFlag, env = proces
     judge.calls_cap = newKeyframes.length * MAX_KEYFRAME_TAKES;
     const endFrames = newKeyframes.filter((scene) => scene.data.end_frame?.prompt).length;
     const oneTake = newKeyframes.length * (imagePrice + judgePrice) + endFrames * imagePrice;
+    const maxTakeCost = newKeyframes.length * MAX_KEYFRAME_TAKES * (imagePrice + judgePrice) + endFrames * imagePrice;
     if (bindings.keyframes.bound && !newKeyframes.length) {
       if (gates.storyboard.status === "approved") add("waste", null, `keyframes/manifest.json 已綁到現在的 look_hash + visual_hash，${drawn.length} 鏡都留用，storyboard 關卡已核准`, "再跑 keyframes 從快取取圖、不花錢，但會重寫 manifest，storyboard 核准作廢：沒有要改分鏡就不要跑");
       else add("note", null, `keyframes/manifest.json 已綁到現在的 hash，${drawn.length} 鏡都留用；storyboard 關卡${describe[gates.storyboard.status]}`, "下一步是 review-push --gate storyboard");
     } else {
-      add("note", null, `要畫：${ids(newKeyframes) || "無"}（${newKeyframes.length} 鏡，end_frame ${endFrames} 張）；留用：${ids(keptKeyframes) || "無"}`, `約 ${usd(oneTake)} 一 take，最壞 ${usd(newKeyframes.length * MAX_KEYFRAME_TAKES * (imagePrice + judgePrice) + endFrames * imagePrice)}（keyframe ${MAX_KEYFRAME_TAKES} take）`, { usd: oneTake, judge_calls: judge.calls_one });
+      add("note", null, `要畫：${ids(newKeyframes) || "無"}（${newKeyframes.length} 鏡，end_frame ${endFrames} 張）；留用：${ids(keptKeyframes) || "無"}`, `本機 catalog.py 的 ${imageModel} 1K 單價 US$${imagePrice}：約 ${usd(oneTake)} 一 take，最壞 ${usd(maxTakeCost)}（keyframe ${MAX_KEYFRAME_TAKES} take）；實際執行仍以 live media-status 比對`, { usd: oneTake, usd_cap: maxTakeCost, judge_calls: judge.calls_one });
+      if (mediaRemaining !== null && oneTake > mediaRemaining + 1e-9) add("refuse", EXIT.owner, `本集媒體帳本餘額 ${usd(mediaRemaining)} 低於本階段一 take 估價 ${usd(oneTake)}`, "先核對 media/ledger.json、series.media_cap_usd 與 live media-status；不得超過本集上限");
+      else if (mediaRemaining !== null && maxTakeCost > mediaRemaining + 1e-9) add("note", null, `本集媒體帳本餘額 ${usd(mediaRemaining)} 低於 ${MAX_KEYFRAME_TAKES} take 最壞估價 ${usd(maxTakeCost)}`, "部分重做會被本集媒體上限攔下；先檢查預算或縮小重做範圍");
       if (bindings.keyframes.present && !bindings.keyframes.bound) add("note", null, `keyframes/manifest.json 是舊劇本或舊 look 畫的（要 look_hash ${hashes.look} + visual_hash ${hashes.visual}）：上一次的修改把 ${drawn.length} 鏡全部重買`, "visual_hash 連 scenes 的 id、chapter、data、lines 的 id 都算：改一個鏡頭的 prompt 就是整本重畫（快取只省下提示沒變的那些）；改之前先 keyframes --dry-run 看會畫幾張");
       if (bindings.keyframes.bound && gates.storyboard.status === "approved") add("note", null, "storyboard 已核准，但這次要補畫鏡頭：跑完 manifest 會變、核准作廢", "補畫完要再 review-push --gate storyboard");
     }
@@ -320,6 +341,11 @@ export async function preflight({ slug, root, workdir: workdirFlag, env = proces
     steps: status.steps.map((step) => ({ id: step.id, done: step.done, note: step.note ?? null })),
     gates: Object.fromEntries(Object.entries(gates).map(([gate, state]) => [gate, state.status])),
     hashes,
+    image_model: imageModel,
+    image_price_usd: imagePrice,
+    media_cap_usd: mediaCap,
+    media_committed_usd: mediaCommitted,
+    media_remaining_usd: mediaRemaining,
     clip_model: clipModel,
     clip_resolution: clipResolution,
     bindings,
@@ -344,6 +370,8 @@ export function renderPreflight(result) {
   out.push(`現在的 hash：look ${result.hashes.look}、visual ${result.hashes.visual}、speech ${result.hashes.speech}、mix ${result.hashes.mix}`);
   for (const [name, binding] of Object.entries(result.bindings)) out.push(`  ${name.padEnd(10)} ${binding.present ? (binding.bound ? "綁到現在的 " + binding.binds : "有，但是舊的（" + binding.binds + " 不同）") : "沒有"}${binding.model_current === false ? "；模型和 production profile 不合" : ""}`);
   out.push(`留用／要買：角色 ${result.kept.characters.length}／${result.new.characters.length}，keyframe ${result.kept.keyframes.length}／${result.new.keyframes.length}，clip ${result.kept.clips.length}／${result.new.clips.length}`);
+  out.push(`圖片模型（本機 catalog.py 估價）：${result.image_model} 1K US$${result.image_price_usd}；執行前仍須以 live media-status 比對`);
+  if (result.media_cap_usd !== null) out.push(`本集媒體上限 ${usd(result.media_cap_usd)}；帳本已承諾 ${usd(result.media_committed_usd)}；餘額 ${usd(result.media_remaining_usd)}（估價，不是發票）`);
   if (result.clip_model) out.push(`片段模型（離線推斷）：${result.clip_model} ${result.clip_resolution ?? ""}`);
   if (result.lock) out.push(`開拍鎖定 ${result.lock.created_at ?? "?"}：${result.lock.problem ? result.lock.problem : `承諾改小 沒變更單 ${result.lock.broken.promise.length}／有 ${result.lock.signed.promise.length}；連戲字少了 沒變更單 ${result.lock.broken.continuity.length}／有 ${result.lock.signed.continuity.length}`}`);
   if (result.stop) out.push("STOP 檔在");
