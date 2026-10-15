@@ -1,0 +1,514 @@
+{
+  "schema_version": 1,
+  "series": "zero-root-yaozu",
+  "purpose": "第一季第 1–10 集的角色定妝照、三視圖與場景參考圖；之後每個首格都帶對應的參考圖，避免換臉。",
+  "provider": {
+    "site": "hailuoai.video",
+    "page": "create/image-generation",
+    "model": "GPT Image 2.5 Sunburst",
+    "quality": "High",
+    "resolution": "2K",
+    "count": 1,
+    "quote_points": 20
+  },
+  "workdir": "<VIDEO_WORKDIR>/_series/zero-root-yaozu/refs/",
+  "order": "先出全部定妝照；三視圖以同一角色的定妝照無水印檔為參考圖上傳後再出。",
+  "later": [
+    "胡奶奶本相（約第 41 集）",
+    "五位妖祖巨獸真身（約第 51 集）",
+    "第 11 集以後的新角色與場景"
+  ],
+  "items": [
+    {
+      "id": "lu-shi-portrait",
+      "kind": "portrait",
+      "character": "lu-shi",
+      "aspect": "3:4",
+      "prompt": "定妝照。東亞年輕男性，十八歲，五官端正好看（劍眉、高鼻樑、笑起來有酒窩），身材精瘦結實、肩背線條清楚（長年砍柴挑水練出來的），皮膚曬成小麥色，黑髮用麻繩隨手綁成短馬尾，左眼瞳色比右眼淺一點，穿洗到發白的灰藍粗布短打、草鞋，腰上掛一個破葫蘆。正面半身（頭頂到胸口完整入鏡、頭頂上方留空間），直視鏡頭，眼神乾淨、帶一點憨笑，嘴角有酒窩。背景是乾淨的淺灰色攝影棚布景，均勻柔和的正面光，看得清五官。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "note": "第一張誤送成 21:9（比例晶片沒切到），臉居中、可當參考，沒有重做。",
+      "results": [
+        {
+          "take": 1,
+          "file": "lu-shi-portrait-t1.png",
+          "sha256": "4fa16daf80405d7eca6ac054fe49faaa817176978a23bc1199e9845ba6b60fd6",
+          "card_id": "567012993448648712",
+          "points": 20,
+          "aspect": "21:9"
+        }
+      ],
+      "accepted": "lu-shi-portrait-t1.png"
+    },
+    {
+      "id": "lu-shi-turnaround",
+      "kind": "turnaround",
+      "character": "lu-shi",
+      "aspect": "16:9",
+      "reference": "lu-shi-portrait",
+      "prompt": "角色設定三視圖。參考圖中的同一個人（臉、髮型、服裝、配件完全一致），在乾淨的淺灰色背景上並排三個全身站姿，從頭到腳完整入鏡：左邊正面、中間四分之三側面、右邊背面，三個人物大小一致、互不重疊。東亞年輕男性，十八歲，五官端正好看（劍眉、高鼻樑、笑起來有酒窩），身材精瘦結實、肩背線條清楚（長年砍柴挑水練出來的），皮膚曬成小麥色，黑髮用麻繩隨手綁成短馬尾，左眼瞳色比右眼淺一點，穿洗到發白的灰藍粗布短打、草鞋，腰上掛一個破葫蘆。均勻柔和的攝影棚光。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "lu-shi-turnaround-t1.png",
+          "sha256": "8fe97be31779248867492e7242e8f0b2d48c3e8468f0ccccaa0a04c1215071b3",
+          "card_id": "567018744930004996",
+          "points": 21,
+          "aspect": "16:9"
+        }
+      ],
+      "accepted": "lu-shi-turnaround-t1.png"
+    },
+    {
+      "id": "hu-nainai-portrait",
+      "kind": "portrait",
+      "character": "hu-nainai",
+      "aspect": "3:4",
+      "prompt": "定妝照。東亞老婦人，七十歲上下，銀白頭髮挽成圓髻插一根木簪，瘦小但背挺得很直，眼角細長，穿深青色粗布大襟衫、繫圍裙，手上總拿一把磨得發亮的豆腐刀。正面半身（頭頂到胸口完整入鏡、頭頂上方留空間），直視鏡頭，眼神犀利、嘴角緊抿、不怒自威。背景是乾淨的淺灰色攝影棚布景，均勻柔和的正面光，看得清五官。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "hu-nainai-portrait-t1.png",
+          "sha256": "56436ecf6b5ea4824d81bb9525ea6205a6fe7fd95630813d9fb30ff31cac79e7",
+          "card_id": "567013606186196999",
+          "points": 20,
+          "aspect": "3:4"
+        },
+        {
+          "take": 2,
+          "file": "hu-nainai-portrait-t2.png",
+          "sha256": "4dbe4de10626fc4450f8eace93164e8f8b29ed653461a0b0dca3550bb36aa8d3",
+          "card_id": "567013656694022146",
+          "points": 20,
+          "aspect": "3:4"
+        }
+      ],
+      "accepted": "hu-nainai-portrait-t1.png",
+      "note": "兩個版本都可用，三視圖用 t1；t2 是送出時序錯位多出來的一張（20 點）。"
+    },
+    {
+      "id": "hu-nainai-turnaround",
+      "kind": "turnaround",
+      "character": "hu-nainai",
+      "aspect": "16:9",
+      "reference": "hu-nainai-portrait",
+      "prompt": "角色設定三視圖。參考圖中的同一個人（臉、髮型、服裝、配件完全一致），在乾淨的淺灰色背景上並排三個全身站姿，從頭到腳完整入鏡：左邊正面、中間四分之三側面、右邊背面，三個人物大小一致、互不重疊。東亞老婦人，七十歲上下，銀白頭髮挽成圓髻插一根木簪，瘦小但背挺得很直，眼角細長，穿深青色粗布大襟衫、繫圍裙，手上總拿一把磨得發亮的豆腐刀。均勻柔和的攝影棚光。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "hu-nainai-turnaround-t1.png",
+          "sha256": "d1c43422797c6997687e7e73b5f119dae2bdd37bf14145a2b1a6f32262401572",
+          "card_id": "567020907039162368",
+          "points": 21,
+          "aspect": "16:9"
+        }
+      ],
+      "accepted": "hu-nainai-turnaround-t1.png"
+    },
+    {
+      "id": "yun-zhiyi-portrait",
+      "kind": "portrait",
+      "character": "yun-zhiyi",
+      "aspect": "3:4",
+      "prompt": "定妝照。東亞年輕女性，十八歲，清冷系美人：鵝蛋臉、柳葉眉、杏眼、皮膚白皙，身材高挑修長，黑長髮半挽插白玉簪，穿合身的月白色繡雲紋玄穹宗弟子長袍、腰束銀帶，腰佩一柄細長銀劍。正面半身（頭頂到胸口完整入鏡、頭頂上方留空間），直視鏡頭，眼神溫和而清冷，微微抿嘴。背景是乾淨的淺灰色攝影棚布景，均勻柔和的正面光，看得清五官。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "yun-zhiyi-portrait-t1.png",
+          "sha256": "c590b1d085eb60785cb0983b67d434799a9df76b55869b9d632030be35ea52f8",
+          "card_id": "567013700260233221",
+          "points": 20,
+          "aspect": "3:4"
+        }
+      ],
+      "accepted": "yun-zhiyi-portrait-t1.png"
+    },
+    {
+      "id": "yun-zhiyi-turnaround",
+      "kind": "turnaround",
+      "character": "yun-zhiyi",
+      "aspect": "16:9",
+      "reference": "yun-zhiyi-portrait",
+      "prompt": "角色設定三視圖。參考圖中的同一個人（臉、髮型、服裝、配件完全一致），在乾淨的淺灰色背景上並排三個全身站姿，從頭到腳完整入鏡：左邊正面、中間四分之三側面、右邊背面，三個人物大小一致、互不重疊。東亞年輕女性，十八歲，清冷系美人：鵝蛋臉、柳葉眉、杏眼、皮膚白皙，身材高挑修長，黑長髮半挽插白玉簪，穿合身的月白色繡雲紋玄穹宗弟子長袍、腰束銀帶，腰佩一柄細長銀劍。均勻柔和的攝影棚光。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "yun-zhiyi-turnaround-t1.png",
+          "sha256": "5e574e7bf5429d2d947f73c0935c7d27f49e423c98890a3827e59717e9df9c83",
+          "card_id": "567021335416029191",
+          "points": 21,
+          "aspect": "16:9"
+        }
+      ],
+      "accepted": "yun-zhiyi-turnaround-t1.png"
+    },
+    {
+      "id": "yan-shaoyuan-portrait",
+      "kind": "portrait",
+      "character": "yan-shaoyuan",
+      "aspect": "3:4",
+      "prompt": "定妝照。東亞年輕男性，十九歲，俊美銳利的反派型帥哥：劍眉、丹鳳眼、薄唇、下顎線分明，身材高挑寬肩，黑髮高束玉冠，穿深紫色鑲金邊的合身內門長袍，腰掛黑鞘長劍，神情倨傲。正面半身（頭頂到胸口完整入鏡、頭頂上方留空間），直視鏡頭，下巴微抬、嘴角帶著冷笑。背景是乾淨的淺灰色攝影棚布景，均勻柔和的正面光，看得清五官。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "yan-shaoyuan-portrait-t1.png",
+          "sha256": "7d6f4c70478d3d4c38aeb0f1aa3efc42f9e9522a38ab19b2b83c9d3ec17397bc",
+          "card_id": "567013717268078599",
+          "points": 20,
+          "aspect": "3:4"
+        }
+      ],
+      "accepted": "yan-shaoyuan-portrait-t1.png"
+    },
+    {
+      "id": "yan-shaoyuan-turnaround",
+      "kind": "turnaround",
+      "character": "yan-shaoyuan",
+      "aspect": "16:9",
+      "reference": "yan-shaoyuan-portrait",
+      "prompt": "角色設定三視圖。參考圖中的同一個人（臉、髮型、服裝、配件完全一致），在乾淨的淺灰色背景上並排三個全身站姿，從頭到腳完整入鏡：左邊正面、中間四分之三側面、右邊背面，三個人物大小一致、互不重疊。東亞年輕男性，十九歲，俊美銳利的反派型帥哥：劍眉、丹鳳眼、薄唇、下顎線分明，身材高挑寬肩，黑髮高束玉冠，穿深紫色鑲金邊的合身內門長袍，腰掛黑鞘長劍，神情倨傲。均勻柔和的攝影棚光。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "yan-shaoyuan-turnaround-t1.png",
+          "sha256": "8c0291abdc2ef4ab49b5850da879305b74145d775d94c316e672f320f1614340",
+          "card_id": "567021947700490241",
+          "points": 21,
+          "aspect": "16:9"
+        }
+      ],
+      "accepted": "yan-shaoyuan-turnaround-t1.png"
+    },
+    {
+      "id": "yan-chong-portrait",
+      "kind": "portrait",
+      "character": "yan-chong",
+      "aspect": "3:4",
+      "prompt": "定妝照。東亞中年男性，五十歲，方臉、鷹鉤鼻、八字鬍，身材發福，穿褐色長老袍、手握一串黑玉念珠，笑起來眼睛不笑。正面半身（頭頂到胸口完整入鏡、頭頂上方留空間），直視鏡頭，皮笑肉不笑，眼睛裡沒有笑意。背景是乾淨的淺灰色攝影棚布景，均勻柔和的正面光，看得清五官。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "yan-chong-portrait-t1.png",
+          "sha256": "299a6a4605fcb304b66bfdb9bfd949292fa3bc50d543267dbc0a55ec9a05863b",
+          "card_id": "567013767327170564",
+          "points": 20,
+          "aspect": "3:4"
+        }
+      ],
+      "accepted": "yan-chong-portrait-t1.png"
+    },
+    {
+      "id": "yan-chong-turnaround",
+      "kind": "turnaround",
+      "character": "yan-chong",
+      "aspect": "16:9",
+      "reference": "yan-chong-portrait",
+      "prompt": "角色設定三視圖。參考圖中的同一個人（臉、髮型、服裝、配件完全一致），在乾淨的淺灰色背景上並排三個全身站姿，從頭到腳完整入鏡：左邊正面、中間四分之三側面、右邊背面，三個人物大小一致、互不重疊。東亞中年男性，五十歲，方臉、鷹鉤鼻、八字鬍，身材發福，穿褐色長老袍、手握一串黑玉念珠，笑起來眼睛不笑。均勻柔和的攝影棚光。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "yan-chong-turnaround-t1.png",
+          "sha256": "487cfa3778505d004a925b2bc29800c9af660d401d16b6a2fb6dc84930692094",
+          "card_id": "567022124809216005",
+          "points": 21,
+          "aspect": "16:9"
+        }
+      ],
+      "accepted": "yan-chong-turnaround-t1.png"
+    },
+    {
+      "id": "tuan-tuan-portrait",
+      "kind": "portrait",
+      "character": "tuan-tuan",
+      "aspect": "3:4",
+      "prompt": "定妝照。東亞小女孩，七歲，圓臉、大眼睛、臉頰肉肉的，黑髮紮成兩個小包子頭綁紅繩，穿桃紅色小襖、手裡常拿著糖葫蘆。正面半身（頭頂到胸口完整入鏡、頭頂上方留空間），直視鏡頭，笑得眼睛彎成月牙，手裡拿一串糖葫蘆。背景是乾淨的淺灰色攝影棚布景，均勻柔和的正面光，看得清五官。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "tuan-tuan-portrait-t1.png",
+          "sha256": "b66b9e27c244bbb33814a0a254b5253135acf05cbae98cd778747de33f3e312c",
+          "card_id": "567013784876113926",
+          "points": 20,
+          "aspect": "3:4"
+        }
+      ],
+      "accepted": "tuan-tuan-portrait-t1.png"
+    },
+    {
+      "id": "tuan-tuan-turnaround",
+      "kind": "turnaround",
+      "character": "tuan-tuan",
+      "aspect": "16:9",
+      "reference": "tuan-tuan-portrait",
+      "prompt": "角色設定三視圖。參考圖中的同一個人（臉、髮型、服裝、配件完全一致），在乾淨的淺灰色背景上並排三個全身站姿，從頭到腳完整入鏡：左邊正面、中間四分之三側面、右邊背面，三個人物大小一致、互不重疊。東亞小女孩，七歲，圓臉、大眼睛、臉頰肉肉的，黑髮紮成兩個小包子頭綁紅繩，穿桃紅色小襖、手裡常拿著糖葫蘆。均勻柔和的攝影棚光。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "tuan-tuan-turnaround-t1.png",
+          "sha256": "b3d7357ea626289ce75180d0d2ca2b3f17d06c1b24cd081818cfbf4c08707e74",
+          "card_id": "567022464531058694",
+          "points": 21,
+          "aspect": "16:9"
+        }
+      ],
+      "accepted": "tuan-tuan-turnaround-t1.png"
+    },
+    {
+      "id": "a-zheng-portrait",
+      "kind": "portrait",
+      "character": "a-zheng",
+      "aspect": "3:4",
+      "prompt": "定妝照。東亞壯漢，二十五歲，五官粗獷英俊、表情憨直，身高超過兩米、肌肉結實，剃短髮，額頭正中有一道舊疤，穿無袖的破舊棕色短褂背一大捆柴。正面半身（頭頂到胸口完整入鏡、頭頂上方留空間），直視鏡頭，表情憨直、眼神單純。背景是乾淨的淺灰色攝影棚布景，均勻柔和的正面光，看得清五官。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "a-zheng-portrait-t1.png",
+          "sha256": "1d7b308113ad6afe187f4b659c3b9315b32c874f4b517d0d5243f327cf07eff9",
+          "card_id": "567013800986415106",
+          "points": 20,
+          "aspect": "3:4"
+        }
+      ],
+      "accepted": "a-zheng-portrait-t1.png"
+    },
+    {
+      "id": "a-zheng-turnaround",
+      "kind": "turnaround",
+      "character": "a-zheng",
+      "aspect": "16:9",
+      "reference": "a-zheng-portrait",
+      "prompt": "角色設定三視圖。參考圖中的同一個人（臉、髮型、服裝、配件完全一致），在乾淨的淺灰色背景上並排三個全身站姿，從頭到腳完整入鏡：左邊正面、中間四分之三側面、右邊背面，三個人物大小一致、互不重疊。東亞壯漢，二十五歲，五官粗獷英俊、表情憨直，身高超過兩米、肌肉結實，剃短髮，額頭正中有一道舊疤，穿無袖的破舊棕色短褂背一大捆柴。均勻柔和的攝影棚光。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "a-zheng-turnaround-t1.png",
+          "sha256": "8a97f6b12a5b5d75ec7e18b113451b572d8cda5d5c737fd20af49734b08bfb59",
+          "card_id": "567022627773358086",
+          "points": 21,
+          "aspect": "16:9"
+        }
+      ],
+      "accepted": "a-zheng-turnaround-t1.png"
+    },
+    {
+      "id": "bi-sanniang-portrait",
+      "kind": "portrait",
+      "character": "bi-sanniang",
+      "aspect": "3:4",
+      "prompt": "定妝照。東亞中年婦女，四十歲，高瘦，紅潤臉頰、濃眉，頭髮用紅布包起，穿黑色鐵匠圍裙、袖子捲到手肘，手臂上有燙疤。正面半身（頭頂到胸口完整入鏡、頭頂上方留空間），直視鏡頭，豪爽地笑，眉毛上挑。背景是乾淨的淺灰色攝影棚布景，均勻柔和的正面光，看得清五官。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "bi-sanniang-portrait-t1.png",
+          "sha256": "f08655f948e23cc6eceb26f87d1d4753027914f505c9b54ae86ade8acc946a48",
+          "card_id": "567013864349741063",
+          "points": 20,
+          "aspect": "3:4"
+        }
+      ],
+      "accepted": "bi-sanniang-portrait-t1.png"
+    },
+    {
+      "id": "bi-sanniang-turnaround",
+      "kind": "turnaround",
+      "character": "bi-sanniang",
+      "aspect": "16:9",
+      "reference": "bi-sanniang-portrait",
+      "prompt": "角色設定三視圖。參考圖中的同一個人（臉、髮型、服裝、配件完全一致），在乾淨的淺灰色背景上並排三個全身站姿，從頭到腳完整入鏡：左邊正面、中間四分之三側面、右邊背面，三個人物大小一致、互不重疊。東亞中年婦女，四十歲，高瘦，紅潤臉頰、濃眉，頭髮用紅布包起，站姿重心偏右（左腿微跛），穿黑色鐵匠圍裙、袖子捲到手肘，手臂上有燙疤。均勻柔和的攝影棚光。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "bi-sanniang-turnaround-t1.png",
+          "sha256": "5eadedaed9fee06e8e8c1f50c131e4f25d1c8ac59826a8a6402855d736565402",
+          "card_id": "567022784921321476",
+          "points": 21,
+          "aspect": "16:9"
+        }
+      ],
+      "accepted": "bi-sanniang-turnaround-t1.png"
+    },
+    {
+      "id": "gui-bo-portrait",
+      "kind": "portrait",
+      "character": "gui-bo",
+      "aspect": "3:4",
+      "prompt": "定妝照。東亞老漢，六十多歲，矮壯、背微駝，滿臉深皺紋，留花白短鬍，戴斗笠、披蓑衣，手裡握一根竹釣竿。正面半身（頭頂到胸口完整入鏡、頭頂上方留空間），直視鏡頭，神情平靜，眼角皺紋深。背景是乾淨的淺灰色攝影棚布景，均勻柔和的正面光，看得清五官。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "gui-bo-portrait-t1.png",
+          "sha256": "d227ae8be1196bdc5e51a6ea589a958e66b38949a864bd7f570375c3ae7e295c",
+          "card_id": "567013880279744516",
+          "points": 20,
+          "aspect": "3:4"
+        }
+      ],
+      "accepted": "gui-bo-portrait-t1.png"
+    },
+    {
+      "id": "gui-bo-turnaround",
+      "kind": "turnaround",
+      "character": "gui-bo",
+      "aspect": "16:9",
+      "reference": "gui-bo-portrait",
+      "prompt": "角色設定三視圖。參考圖中的同一個人（臉、髮型、服裝、配件完全一致），在乾淨的淺灰色背景上並排三個全身站姿，從頭到腳完整入鏡：左邊正面、中間四分之三側面、右邊背面，三個人物大小一致、互不重疊。東亞老漢，六十多歲，矮壯、背微駝，滿臉深皺紋，留花白短鬍，戴斗笠、披蓑衣，手裡握一根竹釣竿。均勻柔和的攝影棚光。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "gui-bo-turnaround-t1.png",
+          "sha256": "eb2a8fed3f4b58d2dd3ae82eb82c6443b0cbc90260535ef679cf17e703d887a1",
+          "card_id": "567023245262979075",
+          "points": 21,
+          "aspect": "16:9"
+        }
+      ],
+      "accepted": "gui-bo-turnaround-t1.png"
+    },
+    {
+      "id": "s01-qian-tong-portrait",
+      "kind": "portrait",
+      "character": "s01-qian-tong",
+      "aspect": "3:4",
+      "prompt": "定妝照。東亞年輕男性，三十歲上下，瘦高、眉眼精明俊秀，嘴角習慣歪一邊笑，穿合身的褐色外門執事袍、腰掛一枚算盤形青玉佩，手裡捏著一塊玄穹宗令牌。正面半身（頭頂到胸口完整入鏡、頭頂上方留空間），直視鏡頭，嘴角歪一邊笑，眼神精明。背景是乾淨的淺灰色攝影棚布景，均勻柔和的正面光，看得清五官。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "s01-qian-tong-portrait-t1.png",
+          "sha256": "bd09e6d81eadee3d9717ec89d74d537b34a18e050fc248c9d764007ed176fb0e",
+          "card_id": "567013896692088837",
+          "points": 20,
+          "aspect": "3:4"
+        }
+      ],
+      "accepted": "s01-qian-tong-portrait-t1.png"
+    },
+    {
+      "id": "s01-qian-tong-turnaround",
+      "kind": "turnaround",
+      "character": "s01-qian-tong",
+      "aspect": "16:9",
+      "reference": "s01-qian-tong-portrait",
+      "prompt": "角色設定三視圖。參考圖中的同一個人（臉、髮型、服裝、配件完全一致），在乾淨的淺灰色背景上並排三個全身站姿，從頭到腳完整入鏡：左邊正面、中間四分之三側面、右邊背面，三個人物大小一致、互不重疊。東亞年輕男性，三十歲上下，瘦高、眉眼精明俊秀，嘴角習慣歪一邊笑，穿合身的褐色外門執事袍、腰掛一枚算盤形青玉佩，手裡捏著一塊玄穹宗令牌。均勻柔和的攝影棚光。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "s01-qian-tong-turnaround-t1.png",
+          "sha256": "1a73413085b6d25a81d88363c2ca11b12589706f84dd6c941afac302ae495c57",
+          "card_id": "567023471319228416",
+          "points": 21,
+          "aspect": "16:9"
+        }
+      ],
+      "accepted": "s01-qian-tong-turnaround-t1.png"
+    },
+    {
+      "id": "s01-sun-er-portrait",
+      "kind": "portrait",
+      "character": "s01-sun-er",
+      "aspect": "3:4",
+      "prompt": "定妝照。東亞中年男性，四十歲，精瘦、笑眼、一口白牙，頭戴舊氈帽，挑一副掛滿針線糖果的貨擔，手搖撥浪鼓。正面半身，直視鏡頭，咧嘴笑露出一口白牙。背景是乾淨的淺灰色攝影棚布景，均勻柔光。真人電影劇照質感的古裝奇幻劇，寫實的皮膚紋理與布料質感，自然柔光，85mm 鏡頭淺景深，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "s01-sun-er-portrait-t1.png",
+          "sha256": "2d35df10080ac16c9056e3dcb7aed91505022d192a7e22ba0f748fe0c1d4bb87",
+          "card_id": "567014085540601864",
+          "points": 20,
+          "aspect": "16:9"
+        }
+      ],
+      "accepted": "s01-sun-er-portrait-t1.png",
+      "note": "送出時序錯位，出成 16:9；人像居中，可用。"
+    },
+    {
+      "id": "shanxiao-design",
+      "kind": "creature",
+      "character": "shanxiao",
+      "aspect": "16:9",
+      "prompt": "山野精怪設定圖「山魈」：一隻獨腳、膝蓋反折、面孔像猴子的山鬼，灰褐色長毛，細長的手臂，黃色眼睛，咧嘴露出細牙，倒掛在霧中松樹枝上，看起來詭異但不血腥。夜晚山林濃霧，冷藍月光。真人電影劇照質感的古裝奇幻劇，寫實的毛髮與皮膚質感，霧中逆光，色調冷。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "shanxiao-design-t1.png",
+          "sha256": "ada536be4a19073bd0edc6573dc2f4e4f57d01eadb8e9a484057486c29e2d782",
+          "card_id": "567014285726339072",
+          "points": 20,
+          "aspect": "16:9"
+        }
+      ],
+      "accepted": "shanxiao-design-t1.png",
+      "note": "氣氛對，但獨腳與反膝看不清楚；第 2 集只在霧裡倒掛，先用；之後若要正面打鬥再重畫。"
+    },
+    {
+      "id": "set-changdeng-village",
+      "kind": "set",
+      "aspect": "16:9",
+      "prompt": "場景設定圖。長燈村全景：仙洲西北邊緣、古老山脈腳下的小山村，黃昏，三百盞暖橘色燈籠從村口一路掛到山腳，家家戶戶門口都掛燈，石板路、木造瓦房、炊煙、遠處雲霧中隱約有巨大古老廢墟的輪廓。廣角大遠景，沒有人物。真人電影劇照質感的古裝奇幻劇，寫實的建築與自然材質，自然光，廣角鏡頭、前後景都清楚，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "set-changdeng-village-t1.png",
+          "sha256": "f5bc819884d64259aec1bf43eb739df8fe84a3bc06fdee02ab39397909fc3f1e",
+          "card_id": "567014328462057472",
+          "points": 20,
+          "aspect": "16:9"
+        }
+      ],
+      "accepted": "set-changdeng-village-t1.png"
+    },
+    {
+      "id": "set-changdeng-gate",
+      "kind": "set",
+      "aspect": "16:9",
+      "prompt": "場景設定圖。長燈村村口：一棵巨大的老槐樹，樹下一座刻著古老紋路的石牌坊，牌坊與兩旁木柱上掛滿暖橘色燈籠，石板路通進村裡，路旁有豆腐攤與水井，傍晚。中景，沒有人物。真人電影劇照質感的古裝奇幻劇，寫實的建築與自然材質，自然光，廣角鏡頭、前後景都清楚，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "set-changdeng-gate-t1.png",
+          "sha256": "f1ff8d7a602c28744c4904b230cea98bbbce3f1b02a7f77fa17340b9e0da3178",
+          "card_id": "567014354110267397",
+          "points": 20,
+          "aspect": "16:9"
+        }
+      ],
+      "accepted": "set-changdeng-gate-t1.png"
+    },
+    {
+      "id": "set-hu-courtyard",
+      "kind": "set",
+      "aspect": "16:9",
+      "prompt": "場景設定圖。胡家院子與飯桌：鄉下老木屋的院子，屋簷下掛著燈籠，院中一張舊木方桌與四條長凳，桌上擺著幾碗家常菜與一罈醃菜，角落有竹編雞舍，雞舍前地上放著一個有裂紋的舊陶盆，傍晚暖光。中景，沒有人物。真人電影劇照質感的古裝奇幻劇，寫實的建築與自然材質，自然光，廣角鏡頭、前後景都清楚，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "set-hu-courtyard-t1.png",
+          "sha256": "39937c9dd9ca7210094981d9539e98187906e7736603d17fbb8ba7f031eb4736",
+          "card_id": "567014402650955784",
+          "points": 20,
+          "aspect": "16:9"
+        }
+      ],
+      "accepted": "set-hu-courtyard-t1.png"
+    },
+    {
+      "id": "set-wentian-terrace",
+      "kind": "set",
+      "aspect": "16:9",
+      "prompt": "場景設定圖。玄穹宗問天台：雲海之上的仙山之巔，白玉鋪成的圓形大廣場，正中央立著一塊一人高的黑色巨石（問天石），四周是白金色的宮殿飛簷與石階，晨光。廣角，沒有人物。真人電影劇照質感的古裝奇幻劇，寫實的建築與自然材質，自然光，廣角鏡頭、前後景都清楚，色調溫暖。畫面中不能有任何文字、字幕、浮水印或標誌。",
+      "results": [
+        {
+          "take": 1,
+          "file": "set-wentian-terrace-t1.png",
+          "sha256": "4793c3eefe47d493202555fede946c73a9a4fc1d5b56b5b9c53feaf587d565da",
+          "card_id": "567014423907680264",
+          "points": 20,
+          "aspect": "16:9"
+        }
+      ],
+      "accepted": "set-wentian-terrace-t1.png"
+    }
+  ],
+  "spent": {
+    "points": 550,
+    "images": 27,
+    "balance_after": 24254
+  }
+}
