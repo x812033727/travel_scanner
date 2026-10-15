@@ -56,7 +56,7 @@ from app.video_media.providers import (
 from app.video_media.providers.gemini_images import GeminiImages
 from app.video_media.providers.gemini_music import GeminiMusic
 from app.video_media.providers.gemini_video import GeminiVideo
-from app.video_media.providers.minimax import MiniMaxImages, MiniMaxVideo
+from app.video_media.providers.minimax import MiniMaxImages, MiniMaxMusic, MiniMaxVideo
 from app.video_media.schemas import (
     ClipJobIn,
     ImageJobIn,
@@ -149,7 +149,7 @@ def provider_for(runtime: Settings, vendor: str, kind: str) -> MediaProvider:
         return MiniMaxImages(base, key)
     if kind == "clip":
         return MiniMaxVideo(base, key)
-    raise MediaJobFailed(422, "video_media_model_not_allowed", "MiniMax 沒有音樂模型")
+    return MiniMaxMusic(base, key)
 
 
 async def series_image_model(session: AsyncSession, slug: str) -> str | None:
