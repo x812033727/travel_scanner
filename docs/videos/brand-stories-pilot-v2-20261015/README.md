@@ -11,6 +11,12 @@
 
 本包的 [`series.json`](series.json) 是**兩集獨立新系列** `brand-stories-curio-pilot-v2`，第 1、2 集依序安排中午時段。工人真正讀的是資料庫中的六章 `beats`；[`episodes/A01.json`](episodes/A01.json) 與 [`episodes/B18.json`](episodes/B18.json) 才是供新版審稿與將來編譯的輸入。每支保留母企劃的十項必查事實與來源索引，重寫了標題、問題、六章因果與開場伏筆；母企劃原檔與審稿在 [`brand-stories-100`](../story-plans/brand-stories-100/README.md)。新版 slug 與系列隔開舊排程，也避免把舊版媒體或批准誤當新版結果。**本包的完整 `scripts/*.md` 不會隨 `stories.json` 匯入；工人會依六章 `beats` 另寫 `story/chapters/*.json`，再合併成 `video.json`／`script.md`。**
 
+## 試作匯入的精確批次
+
+`kind: story` 會挑最早的 `ready` 集數啟動，**不受 `series_auto_continue=false` 阻止**。A01 開拍時只匯入本包兩列中的第一列：以同一份已審 `stories.json` 先執行 `video-story-import --series brand-stories-curio-pilot-v2 --limit 1` 唯讀試跑。報告必須是 `stories_in_file=2`、`stories_imported=1`，`rows.create` 只含 `A01`，所有 `rows` 都沒有 `B18`，且沒有 `problems` 或 slug 衝突；核對輸入 SHA 後才可在核准範圍內以**完全相同的參數與檔案**加 `--apply`。匯入後立即讀回資料庫：新系列只應有 `story-rolling-suitcase-v2` 一列，`story-conveyor-belt-sushi-v2` 不得存在。若任一結果不同，停止工人與匯入，先查原因。關掉 `drama_auto_approve_final` 是留給站主看成片的另一道關卡，不能代替精確匯入。
+
+待 A01 的實際帳本、旁白、成片與站主看片都通過，再對同一份兩列輸入以 `--limit 2` 重新唯讀試跑；確認 A01 維持已開始／不變，只有 B18 待新增，才可在新的核准批次中匯入 B18。每日集數或關閉自動接續都不能當成 B18 尚未入列的證據。
+
 ## 每支影片的觀看順序
 
 1. 第 1 秒進入具體場景。旁白開場 30–60 秒，只預告後續三個有年份的轉折，在結果前停住；預告要按事件順序，正文逐一回收。
