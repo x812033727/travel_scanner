@@ -356,8 +356,9 @@ async def test_pilot_judge_requires_a_durable_operation_and_settles_reported_usa
 ) -> None:
     called = 0
     operation = uuid4()
+    pilot_slug = "story-rolling-suitcase"
     body = {
-        "slug": "story-rolling-suitcase",
+        "slug": pilot_slug,
         "kind": "keyframe",
         "files": [{"sha256": "a" * 64, "label": "kf"}],
         "rubric": [{"key": "identity", "question": "same subject?"}],
@@ -379,7 +380,7 @@ async def test_pilot_judge_requires_a_durable_operation_and_settles_reported_usa
 
     reserve_mock = AsyncMock(
         return_value=Reservation(
-            body["slug"],
+            pilot_slug,
             f"media-judge:{operation}",
             Decimal("1.032192"),
             "reserved",
@@ -400,7 +401,7 @@ async def test_pilot_judge_requires_a_durable_operation_and_settles_reported_usa
             "/api/v1/video/media/judge", json={**body, "operation_id": str(operation)}
         )
         reserve_mock.return_value = Reservation(
-            body["slug"],
+            pilot_slug,
             f"media-judge:{operation}",
             Decimal("1.032192"),
             "reserved",
