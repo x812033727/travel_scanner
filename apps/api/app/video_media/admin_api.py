@@ -218,6 +218,8 @@ async def media_status(tool: VideoTool, session: Session) -> MediaStatus:
             settled_operations=account.settled_operations,
             released_operations=account.released_operations,
             overrun_operations=account.overrun_operations,
+            total_over_limit=account.total_over_limit,
+            over_limit_usd=str(account.over_limit_usd),
         )
     return MediaStatus(
         enabled=row.drama_enabled,

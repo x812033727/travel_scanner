@@ -683,6 +683,8 @@ def media(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> dict[str, Any]:
             0,
             0,
             0,
+            False,
+            Decimal("0"),
         )
 
     monkeypatch.setattr(admin_api, "summary", pilot_summary)

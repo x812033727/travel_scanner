@@ -308,6 +308,8 @@ class BudgetView(StrictModel):
 
 class PilotBudgetView(StrictModel):
     # Decimal amounts travel as strings so the operator sees the exact six-decimal ledger.
+    # Total includes both settled charges and outstanding reservations; per-operation
+    # overruns alone do not identify a late invoice that pushes the film over USD 25.
     limit_usd: str
     reserved_usd: str
     settled_usd: str
@@ -316,6 +318,8 @@ class PilotBudgetView(StrictModel):
     settled_operations: int
     released_operations: int
     overrun_operations: int
+    total_over_limit: bool
+    over_limit_usd: str
 
 
 class StoreView(StrictModel):

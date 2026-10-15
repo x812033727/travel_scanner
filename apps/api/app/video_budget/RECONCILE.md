@@ -55,7 +55,19 @@ no-charge reconciliation. This is conservative: a later retry may hit the monthl
 even when the USD ledger has room. Do not reset or decrement that Redis counter by hand; its
 repair needs a separate idempotent receipt so a repeated operator command cannot undercount it.
 
-After any `--apply`, rerun inspection and compare the account totals and media state. A
-settlement above the reservation is recorded as an overrun and stops new spending; the CLI
-exits nonzero and inspection confirms the persisted charge. Any unresolved or unavailable
-provider evidence keeps the full hold. No reconciliation action calls a media provider.
+After any `--apply`, rerun inspection and compare the account totals and media state.
+`overrun_operations` counts individual charges above their reservation; it can remain zero
+when a late invoice makes settled charges plus outstanding holds exceed USD 25. Check
+`total_over_limit`, `over_limit_usd`, and `remaining_usd` as well. A settlement above its
+reservation is recorded as an overrun and stops new spending; the CLI exits nonzero and
+inspection confirms the persisted charge. Any unresolved or unavailable provider evidence
+keeps the full hold. No reconciliation action calls a media provider.
+
+Finished-film acceptance requires no unresolved reservations or uncertain operations,
+settled total at or below USD 25, `total_over_limit=false`, and a match to the provider's
+billing statement for every paid operation. A zero `overrun_operations` count alone is not
+evidence that the film stayed within budget.
+
+If a provider invoice contradicts an automatically released operation, this CLI cannot
+correct that release. Stop pilot spending and acceptance, retain the invoice, and open a
+separate controlled correction. Never ignore a charge because the local row says `released`.

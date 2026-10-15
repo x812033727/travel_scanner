@@ -59,6 +59,8 @@ class BudgetSummary:
     settled_operations: int
     released_operations: int
     overrun_operations: int
+    total_over_limit: bool
+    over_limit_usd: Decimal
 
 
 def is_pilot(slug: str | None) -> bool:
@@ -331,14 +333,17 @@ async def summary(session: AsyncSession, slug: str) -> BudgetSummary | None:
     if account is None or account.limit_usd != PILOT_LIMIT_USD:
         raise BudgetError(503, "video_budget_missing_account", "試作影片的 25 美元帳戶尚未就緒")
     reserved, settled, uncertain, settled_count, released, overruns = await _totals(session, slug)
+    remaining = account.limit_usd - reserved - settled
     return BudgetSummary(
         slug=slug,
         limit_usd=account.limit_usd,
         reserved_usd=reserved,
         settled_usd=settled,
-        remaining_usd=account.limit_usd - reserved - settled,
+        remaining_usd=remaining,
         uncertain_operations=uncertain,
         settled_operations=settled_count,
         released_operations=released,
         overrun_operations=overruns,
+        total_over_limit=remaining < 0,
+        over_limit_usd=max(-remaining, Decimal("0.000000")),
     )

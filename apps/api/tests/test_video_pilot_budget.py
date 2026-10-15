@@ -270,6 +270,8 @@ async def test_recovery_inspection_is_read_only_and_links_media_job(
         report = await recovery.inspect(session, slug=SLUG, operation_id="media-pending")
     assert report["reserved_usd"] == "2.000000"
     assert report["remaining_usd"] == "23.000000"
+    assert report["total_over_limit"] is False
+    assert report["over_limit_usd"] == "0.000000"
     operation = report["operations"][0]
     assert operation["status"] == "reserved"
     assert operation["media_jobs"][0]["id"] == job_id
@@ -428,6 +430,55 @@ async def test_late_invoice_corrects_operator_no_charge_release(
     assert corrected["operation"]["receipt_ref"] == "invoice-later-row-2"
     assert "case-original-no-charge" in corrected["operation"]["release_reason"]
     assert (await _summary(sessions)).settled_usd == Decimal("1.5")  # type: ignore[union-attr]
+
+
+@pytest.mark.asyncio
+async def test_late_invoice_surfaces_aggregate_limit_even_without_operation_overrun(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    await _reserve(sessions, "late-invoice-over-limit", "20")
+    async with sessions() as session:
+        await recovery.reconcile(
+            session,
+            slug=SLUG,
+            operation_id="late-invoice-over-limit",
+            action="release",
+            evidence_ref="case-original-no-charge",
+            expected_status="reserved",
+            no_charge_reason="invoice page had no charge",
+            apply=True,
+        )
+    await _reserve(sessions, "replacement", "24")
+    async with sessions() as session:
+        await service.settle(
+            session, slug=SLUG, operation_id="replacement", actual_usd=Decimal("24")
+        )
+    async with sessions() as session:
+        await recovery.reconcile(
+            session,
+            slug=SLUG,
+            operation_id="late-invoice-over-limit",
+            action="settle",
+            evidence_ref="invoice-later-row-2",
+            expected_status="released",
+            actual_usd=Decimal("2"),
+            apply=True,
+        )
+    account = await _summary(sessions)
+    assert account is not None
+    assert account.settled_usd == Decimal("26")
+    assert account.remaining_usd == Decimal("-1")
+    assert account.overrun_operations == 0
+    assert account.total_over_limit is True
+    assert account.over_limit_usd == Decimal("1")
+    async with sessions() as session:
+        report = await recovery.inspect(session, slug=SLUG)
+    assert report["total_over_limit"] is True
+    assert report["over_limit_usd"] == "1.000000"
+    assert report["remaining_usd"] == "-1.000000"
+    with pytest.raises(AppError) as blocked:
+        await _reserve(sessions, "another-paid-call", "0.01")
+    assert blocked.value.code == "video_budget_exhausted"
 
 
 def test_migration_offline_sql_creates_both_tables_and_seeds_all_pilots() -> None:

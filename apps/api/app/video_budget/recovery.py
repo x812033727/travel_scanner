@@ -111,6 +111,8 @@ async def inspect(
         "reserved_usd": str(account.reserved_usd),
         "settled_usd": str(account.settled_usd),
         "remaining_usd": str(account.remaining_usd),
+        "total_over_limit": account.total_over_limit,
+        "over_limit_usd": str(account.over_limit_usd),
         "uncertain_operations": account.uncertain_operations,
         "overrun_operations": account.overrun_operations,
         "operations": [_record(row, jobs) for row, jobs in rows],

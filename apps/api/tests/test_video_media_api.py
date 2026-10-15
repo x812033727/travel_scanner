@@ -113,6 +113,8 @@ def media(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> dict[str, Any]:
             settled_operations=2,
             released_operations=0,
             overrun_operations=0,
+            total_over_limit=False,
+            over_limit_usd=Decimal("0.000000"),
         )
 
     monkeypatch.setattr(admin_api, "summary", pilot_summary)
@@ -187,6 +189,8 @@ async def test_status_reports_the_choices_budgets_store_and_limits(media: dict[s
         "settled_operations": 2,
         "released_operations": 0,
         "overrun_operations": 0,
+        "total_over_limit": False,
+        "over_limit_usd": "0.000000",
     }
     # Illustrated slides (docs/videos/ILLUSTRATED.md): their own switch, Flash and cap, which the
     # tool's media/stages.mjs reads; a row from before migration 0114 reads the defaults.
