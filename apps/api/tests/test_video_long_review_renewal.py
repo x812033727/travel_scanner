@@ -14,6 +14,7 @@ from sqlalchemy import select
 
 from app.models import VideoProject, VideoReview
 from app.problems import AppError
+from app.video_automation.judge import video_series_kind
 from app.video_reviews import admin_api
 from app.video_reviews import admin_service as service
 from app.video_reviews.schemas import FinalRenewalIn, ProjectIn, ReviewIn, ReviewOut
@@ -122,6 +123,33 @@ async def test_renewal_preserves_decisions_and_requires_fresh_owner_review(
     assert [row.action for row in await _audits(site)].count("video_review_superseded") == 4
     with pytest.raises(AppError, match="影片或審核已變更"):
         await _renew(site, request)
+
+
+@pytest.mark.asyncio
+async def test_standalone_story_renewal_withdraws_dubs_before_replacement_approval(
+    site: Site,
+) -> None:
+    await _initial(site)
+    async with site.factory() as session:
+        project = await session.scalar(select(VideoProject).where(VideoProject.slug == SLUG))
+        assert project is not None
+        project.format, project.category = "drama", "story"
+        project.locales = {"en": {"metadata": True, "captions": True, "dub": True}}
+        assert await video_series_kind(session, SLUG) is None
+        await session.commit()
+    request = await _request(site)
+    request.review.payload["qa"]["subtitles_burned_in"] = True
+    renewed = await _renew(site, request)
+    assert renewed.status == "pending"
+    async with site.factory() as session:
+        project = await session.scalar(select(VideoProject).where(VideoProject.slug == SLUG))
+        assert project is not None
+        assert project.locales == {"en": {"metadata": True, "captions": True, "dub": False}}
+    assert any(
+        row.action == "video_locales_set"
+        and row.metadata_json.get("reason") == "story_final_cut_changed"
+        for row in await _audits(site)
+    )
 
 
 @pytest.mark.asyncio

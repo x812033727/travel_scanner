@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { test } from "node:test";
@@ -53,6 +53,7 @@ const series = (overrides = {}) => ({
   episodes_per_day: 2,
   hands_off: true,
   visual_tier: "stills",
+  style_preset: "custom",
   image_model: "gemini-3.1-flash-image",
   look: { style: "flat cartoon", negative: "text, logo" },
   ...overrides,
@@ -191,6 +192,27 @@ test("the series row is a hands-off stills story series", () => {
   assert.deepEqual(seriesProblems(series()), []);
   const problems = seriesProblems(series({ kind: "series", visual_tier: "clips", hands_off: false, target_minutes: 3, episodes_per_day: 0 })).join("\n");
   for (const expected of [/kind must be "story"/, /visual_tier must be "stills"/, /hands_off must be true/, /target_minutes must be 12 to 15/, /episodes_per_day must be 1 to 12/]) assert.match(problems, expected);
+});
+
+test("a ten-minute MiniMax brand story accepts only the exact cute-mystery look", () => {
+  const cute = series({ target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } });
+  assert.deepEqual(seriesProblems(cute), []);
+  assert.match(seriesProblems({ ...cute, target_minutes: 13 }).join("\n"), /must be 10 for the cute-mystery look/);
+  assert.match(seriesProblems({ ...cute, image_model: "gemini-3.1-flash-image" }).join("\n"), /must be "image-01"/);
+  assert.match(seriesProblems({ ...cute, style_preset: "cinematic-3d" }).join("\n"), /style_preset must be "custom"/);
+  assert.match(seriesProblems({ ...cute, look: { preset: "cute-mystery", style: "extra" } }).join("\n"), /look needs a style and a negative prompt/);
+  assert.match(seriesProblems(series({ look: { preset: "cute-mystery", style: "flat cartoon", negative: "logos" } })).join("\n"), /look needs a style and a negative prompt/);
+  assert.match(seriesProblems(series({ target_minutes: 10 })).join("\n"), /target_minutes must be 12 to 15/);
+  assert.deepEqual(seriesProblems(series()), [], "the original 13-minute custom series remains valid");
+});
+
+test("the five selected brand stories' series file uses the supported cute route", () => {
+  const dir = path.resolve(DEFAULT_PLAN, "..", "..", "brand-stories-five-20261014");
+  const actual = JSON.parse(readFileSync(path.join(dir, "series.json"), "utf8"));
+  const episodes = readdirSync(path.join(dir, "episodes")).filter((name) => name.endsWith(".json")).map((name) => JSON.parse(readFileSync(path.join(dir, "episodes", name), "utf8")));
+  assert.deepEqual(seriesProblems(actual), []);
+  assert.deepEqual([actual.target_minutes, actual.image_model, actual.style_preset, actual.look], [10, "image-01", "custom", { preset: "cute-mystery" }]);
+  assert.deepEqual(episodes.map((episode) => episode.number).sort((a, b) => a - b), [1, 2, 3, 4, 5]);
 });
 
 test("compile lists the stories in production order with their slots", () => {

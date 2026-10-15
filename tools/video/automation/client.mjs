@@ -31,6 +31,12 @@ export const POLICY_HOLD = POLICY_HOLD_CODE;
 // own request key before the first POST, so a lost submit, a lost body or a restart reconnects
 // to the same job instead of buying the unit again.
 export const DURABLE_STAGES = new Set(["writer", "translator", "caption_reviewer"]);
+// These first-run story films have an all-in budget reservation on the API. Every model
+// stage needs the durable request key, including their chapter verifier and listener.
+const PILOT_STORY_SLUGS = new Set([
+  "story-rolling-suitcase", "story-conveyor-belt-sushi",
+  "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2",
+]);
 
 export class AutomationError extends Error {
   constructor(message, { status = 0, code = "", who = "service" } = {}) {
@@ -47,6 +53,12 @@ const OWNER_CODES = new Set([
   "video_tool_token_invalid",
   "video_ai_provider_not_configured",
   "video_ai_budget_exhausted",
+  "video_budget_price_unknown",
+  "video_budget_exhausted",
+  "video_budget_operation_conflict",
+  "video_budget_operation_reused",
+  "video_budget_missing_account",
+  "video_pilot_durable_required",
   "video_ai_subscription_cli_outdated",
   "video_automation_settings_invalid",
   // The Shorts settings name no tested model yet (docs/videos/SHORTS.md §端點): nothing ran.
@@ -322,14 +334,16 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
   }
   async function run(stage, slug, instructions, payload, maxOutputTokens = 16_000, format = "slides", variant = null) {
     const body = { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens, format, ...(variant ? { variant } : {}) };
-    // Anime acts and brand-story chapters already have their own bounded checkpoints.
-    if (!DURABLE_STAGES.has(stage) || ["anime-act", "story"].includes(variant)) return request("POST", "automation/run", body, { paid: true });
+    const pilotStory = PILOT_STORY_SLUGS.has(slug);
+    // Pilots use the durable receipt for every stage, even bounded story chapters.
+    // Other anime acts and story chapters keep their existing transport.
+    if (!pilotStory && (!DURABLE_STAGES.has(stage) || ["anime-act", "story"].includes(variant))) return request("POST", "automation/run", body, { paid: true });
     try {
       const normalized = normalizeRun(body);
       let previous = receipts.find(normalized);
       // Each stale journal is archived or removed before the next look, or the look throws.
       while (previous?.stale) { await reconcileStale(previous, body); previous = receipts.find(normalized); }
-      if (durable || previous) return await durableRun(normalized, previous);
+      if (pilotStory || durable || previous) return await durableRun(normalized, previous);
       return await request("POST", "automation/run", body, { paid: true });
     } catch (error) {
       if (error instanceof RunReceiptError) throw tagged(Object.assign(new AutomationError(error.message, { code: RUN_UNCERTAIN, who: "owner" }), { why: error.message, receipt_code: error.code ?? "" }), body);
