@@ -596,7 +596,7 @@ test("a shot that fails every take is left for a prompt fix with the judge's fix
 const TOO_LONG = { code: "video_media_upstream_invalid", detail: "prompt length must be less than 1500" };
 const BLOCKED = { code: "video_media_rejected", detail: "output blocked by the content filter" };
 
-test("a shot every seed is refused for waits for a prompt fix with the provider's refusal, and a rerun once it is taken buys that shot alone", async () => {
+test("a shot whose three paid seeds failed waits for a new seed without rebuying them, then buys that shot alone", async () => {
   const { box, doc, timeline } = prepared();
   await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
   await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
@@ -641,14 +641,15 @@ test("a shot every seed is refused for waits for a prompt fix with the provider'
   );
   assert.deepEqual(readJobs(box.workdir).jobs, {});
 
-  // Once the provider takes the prompt, the rerun buys that shot alone and keeps the other.
+  // A failed paid key cannot be bought again. Once the provider accepts a new seed, the rerun
+  // buys only that shot and keeps the other; seeds 1–3 must never produce another POST.
   refusing = false;
   const fixed = context(box, site.fetchImpl);
-  assert.equal(await main(["clips", "--slug", box.slug, ...shots], fixed.ctx), EXIT.ok, fixed.out.stderr);
+  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "opening,sea-storm", "--takes", "4"], fixed.ctx), EXIT.ok, fixed.out.stderr);
   assert.match(fixed.out.stdout, /opening: kept \(/);
-  assert.deepEqual(site.state.clips.slice(5).map((request) => [request.shot_id, request.seed]), [["sea-storm", 1]]);
+  assert.deepEqual(site.state.clips.slice(5).map((request) => [request.shot_id, request.seed]), [["sea-storm", 4]], "charged failed keys are not submitted twice");
   const after = manifestOf(box, "clips");
-  assert.equal(after.shots["sea-storm"].file, "clips/sea-storm-1.mp4");
+  assert.equal(after.shots["sea-storm"].file, "clips/sea-storm-4.mp4");
   assert.equal(after.shots["sea-storm"].needs_review, false);
   assert.equal(after.shots["sea-storm"].problems, undefined);
   assert.equal(after.shots.opening.sha256, manifest.shots.opening.sha256);

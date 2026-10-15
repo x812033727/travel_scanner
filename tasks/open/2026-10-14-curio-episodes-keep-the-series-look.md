@@ -20,8 +20,6 @@ scope:
   - .claude/skills/youtube-video/SKILL.md
   - AGENTS.md
   - docs/videos/history-curiosity/look.md
-  - docs/videos/long-form/review.json
-  - docs/videos/long-form/review.md
 ---
 
 # Curio episodes keep the series look: a shared skill and a lint gate
@@ -61,3 +59,4 @@ three images at a time, and fell back to source cards.
 - New episodes take the host's cute-explainer route (`cute-mystery`), where `settle()` already drops
   a writer's `style`/`negative` and the nine-question judge reads every picture; Codex worked in
   local `slides` format, where none of that applies.
+- On 2026-10-15 the owner explicitly transferred the two independent duration-review receipt files out of this task's scope so an independent H09 CI reviewer can update the stale `clips.test.mjs` binding. This task retains its other scope and definition of done; coordinate the receipt result without editing `docs/videos/long-form/review.md` or `review.json` under this claim.
