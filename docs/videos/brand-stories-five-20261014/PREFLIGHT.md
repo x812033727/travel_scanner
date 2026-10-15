@@ -1,6 +1,6 @@
 # 五支品牌故事｜製作前檢查收據
 
-本機核對日期：2026-10-14；規格複核與正式主機精確 slug 唯讀回讀：2026-10-15（Asia/Taipei）。五支**未匯入、未執行付費模型，也沒有成片**。本文件先記本機 repo／預設影片工作目錄，再於第 4 節記正式主機資料庫與 video-worker volume 對七個精確 slug 的查詢結果；兩者證據邊界不同。A01／B18 的詳細狀態見[原試作票](../../../tasks/open/2026-09-28-video-story-pilot.md)。站主已指定五支採 MiniMax `image-01`、`cute-mystery`、約 10 分鐘，並在 A01／B18 原規格試作完成後才做。
+本機核對日期：2026-10-14；規格複核與正式主機精確 slug 唯讀回讀：2026-10-15（Asia/Taipei）。五支**未匯入、未執行付費模型，也沒有成片**。本文件先記本機 repo／預設影片工作目錄，再於第 4 節記正式主機資料庫與 video-worker volume 對七個精確 slug 的查詢結果；兩者證據邊界不同。A01／B18 的詳細狀態見[試作票](../../../tasks/open/2026-09-28-video-story-pilot.md)與[新版企劃](../brand-stories-pilot-v2-20261015/README.md)。站主已指定品牌故事採 MiniMax `image-01`、`cute-mystery`、約 10 分鐘；A01／B18 新版先試作，五支接著做。第 4 節先前唯讀查的是**舊 A01／B18 slug 加五個新 slug**，尚未涵蓋兩個 `-v2` 試作 slug。
 
 ## 1. 本機輸入與空白工作區
 
@@ -41,7 +41,7 @@
 
 **已完成的本機接線**：在不動原 100 題與 A01／B18 的前提下，另建[五集系列](series.json)、五份六章 row 與各自的新[獨立審稿](episodes/reviews)，由 [`build.mjs`](build.mjs) 編成 [`stories.json`](stories.json)。五題連號、各用 `story-five-*` slug、分列五天中午；`reviewProblems` 與 Python `check_story_file` 對完整輸入均為零問題。這些是**本機驗證**，正式站仍須唯讀 dry-run、查 live ID／slug／既有製作狀態，不能覆寫已開始的故事。新版 writer 已加入可愛畫風的「回答、故事相關留言、訂閱」三句與一人一動作插畫指示；它仍須在實際逐字稿、片尾 16 秒 Studio 元素及全片 QA 中逐項核對。
 
-原 story 產線要求 12–15 分鐘、非空 `look.style`／`look.negative`，工人把 `video.json` 設為 `preset:custom`。本工作樹的[窄範圍修正](../../../tasks/open/2026-10-14-support-10-minute-minimax-cute-brand.md)已讓**另立的五集系列**採 10 分鐘、MiniMax `image-01` 與精確 `{"preset":"cute-mystery"}`，原 13 分鐘 Gemini 自訂畫風路線仍通過回歸測試。本機含角色的 A29 小樣之 `validateVideo`、`lintVideo` 無錯誤；這是合成小樣，**不是正式 A29 逐字稿或成片**。`curio-*` 專屬通用 lint 不套用 `story-*`；新版 story 工人在六章合併後、付費產圖前另擋正文空白、插畫低於 70%、連續卡片超過三張與畫風偏離。正式影片仍須目視驗收插畫品質、單鏡提示詞與實際畫面。
+原 story 產線要求 12–15 分鐘、非空 `look.style`／`look.negative`，工人把 `video.json` 設為 `preset:custom`。本工作樹的[窄範圍修正](../../../tasks/open/2026-10-14-support-10-minute-minimax-cute-brand.md)已讓**另立的可愛畫風 story 系列**採 10 分鐘、MiniMax `image-01` 與精確 `{"preset":"cute-mystery"}`；新 A01／B18 來源亦採此系列規格，但其新審稿與匯入檔尚未完成。原 13 分鐘 Gemini 自訂畫風路線仍通過回歸測試，僅作歷史相容性驗證。本機含角色的 A29 小樣之 `validateVideo`、`lintVideo` 無錯誤；這是合成小樣，**不是正式 A29 逐字稿或成片**。`curio-*` 專屬通用 lint 不套用 `story-*`；新版 story 工人在六章合併後、付費產圖前另擋正文空白、插畫低於 70%、連續卡片超過三張與畫風偏離。正式影片仍須目視驗收插畫品質、單鏡提示詞與實際畫面。
 
 五題本機輸入與 slug 接法已驗；A01／B18 試作未完成。主機對七個精確 slug 的資料列與工作目錄回讀見下方；完整輸入 SHA、供應商額度及付費工作歸屬仍須在**已核准的主機環境**核對後，才可用下列形式作唯讀匯入試跑。此處未執行，也沒有 `--apply`：
 
@@ -56,7 +56,7 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli video-st
 
 ## 4. 主機、站主與實際生產關卡
 
-[A01／B18 試作票](../../../tasks/open/2026-09-28-video-story-pilot.md)目前為 `blocked`，其勾選項要求：先在正式主機讓 A01、B18 到「可以上架」，站主看過；回填時長、張數、重做率、階段秒數、實際帳本、1K 清晰度與 token 用量。站主於 2026-10-15 明確決定這兩支先完成，五支新版接著做。原試作維持原規格，票明載正式站操作須站主同意，部署、上限、頻道立場、字幕語系、權限與主機狀態均須逐項核對。此前的[試作執行方案](../../work-status-2026-09-29-story-pilot-plan.md)也只是一份未執行的方案，不能當作 live 收據。下方新增的主機唯讀回讀已核實 live SHA 與七個精確 slug 的資料列／volume 目錄狀態；額度、原有其他作品與帳本仍須另核。沒有改正式設定或驗帳；不自動觸發五支或每日兩支 rollout。
+[A01／B18 試作票](../../../tasks/open/2026-09-28-video-story-pilot.md)目前為 `blocked`，其勾選項要求：先在正式主機讓兩支新版到「可以上架」，站主看過；回填時長、張數、重做率、階段秒數、實際帳本、圖像清晰度與 token 用量。站主於 2026-10-15 明確決定這兩支先完成，五支新版接著做。試作改用[獨立的 MiniMax／約 10 分鐘新版企劃](../brand-stories-pilot-v2-20261015/README.md)；舊方案只是未執行歷史記錄。部署、上限、頻道立場、字幕語系、權限與主機狀態均須逐項核對。下方新增的主機唯讀回讀已核實 live SHA 與當時七個精確 slug 的資料列／volume 目錄狀態；**新版 `-v2` slug 尚需另查**。沒有改正式設定或驗帳；不自動觸發五支或每日兩支 rollout。
 
 舊試作方案仍稱 `video-story-image-model-pricing` 票未完成；[該票](../../../tasks/done/2026-09-28-video-story-image-model-pricing.md)現已結案，作品模型估價與快取修正已落地。這項修正沒有把文字、TTS、judge 與未結算重試納入每支 US$25 的整片硬上限。2026-10-15 在本機以來源讀取器重查 A01／B18 共 16 個 URL，全部因本環境連線失敗而未取得正文；不能據此判為來源失效，正式寫稿前須在可連網的核准環境重跑並保存報告。
 
@@ -83,6 +83,6 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli video-st
 
 ## 5. 新畫面路線的基本成本假設
 
-[原故事規格](../STORY.md)選 Gemini 3.1 Flash Image，但那是 A01／B18 和原 100 題規格，**不再用來估這五支**。[奇聞檔案局 skill](../../../.agents/skills/curio-episode/SKILL.md)依 H01、L08 收據記載 MiniMax 插畫連 judge 約 US$0.0135／張，整集約 75–120 張、畫面約 US$1.5–3。照相同路線粗估，五支畫面約 **US$7.5–15**；品牌故事實際張數與重畫率未測，故這只是過往集數的預算參考，並非站主授權、供應商當前報價或已支出。
+[原故事規格](../STORY.md)的 Gemini 3.1 Flash Image 與 13 分鐘屬歷史 100 題設計，**不再用來估 A01／B18 新版或這五支**。[奇聞檔案局 skill](../../../.agents/skills/curio-episode/SKILL.md)依 H01、L08 收據記載 MiniMax 插畫連 judge 約 US$0.0135／張，整集約 75–120 張、畫面約 US$1.5–3。照相同路線粗估，五支畫面約 **US$7.5–15**；品牌故事實際張數與重畫率未測，故這只是過往集數的預算參考，並非站主授權、供應商當前報價或已支出。
 
-此數**不包含**文字／thinking 輸出、逐章查核與聽眾 judge、TTS／音訊檢查、配樂、縮圖、額外重試、稅費及匯率。A01／B18 的每支 US$25 上限是**原試作整支實支費用**上限，不能拿五支的畫面小計代替；五支開始前也須按當時模型價目、完整流水線與站主核定的整支上限重新估價，完成後對帳。
+此數**不包含**文字／thinking 輸出、逐章查核與聽眾 judge、TTS／音訊檢查、配樂、縮圖、額外重試、稅費及匯率。A01／B18 新版的每支 US$25 上限是**整片所有付費項目的實支費用**上限，不能拿五支的畫面小計代替；五支開始前也須按當時模型價目、完整流水線與站主核定的整支上限重新估價，完成後對帳。

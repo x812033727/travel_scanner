@@ -45,7 +45,7 @@ import {
   STORY_CHAPTERS_DIR,
   storyCast,
   storyBrief,
-  storyFiveVisualProblems,
+  cuteStoryVisualProblems,
   storyLineIds,
   storySeriesFile,
   yearForms,
@@ -507,7 +507,7 @@ test("a writer's chapter is made the worker's: stills only, narrator lines, hand
 
 // --- the flow -------------------------------------------------------------------------------------------
 
-test("the five-story visual gate counts body illustrations and cards at exact scene paths", () => {
+test("the five-film and v2 pilot visual gate counts body illustrations and cards at exact scene paths", () => {
   const shot = (id) => ({ id, template: "shot" });
   const card = (id) => ({ id, template: "stat" });
   const bookend = (id, template) => ({ id, template });
@@ -516,22 +516,29 @@ test("the five-story visual gate counts body illustrations and cards at exact sc
   const sevenShots = Array.from({ length: 7 }, (_, index) => shot(`s${index}`));
   const sixShots = sevenShots.slice(0, 6);
   const boundary = [bookend("title", "title"), ...sevenShots, card("c1"), card("c2"), bookend("chapter", "chapter"), card("c3"), bookend("outro", "outro")];
-  assert.deepEqual(storyFiveVisualProblems({ slug, look, scenes: boundary }), [], "7/10 shots and three cards pass; chapter cards are excluded from the body");
+  assert.deepEqual(cuteStoryVisualProblems({ slug, look, scenes: boundary }), [], "7/10 shots and three cards pass; chapter cards are excluded from the body");
 
   const failing = [bookend("title", "title"), ...sixShots, card("c1"), card("c2"), card("c3"), bookend("chapter", "chapter"), card("c4"), bookend("outro", "outro")];
-  const problems = storyFiveVisualProblems({ slug, look, scenes: failing });
+  const problems = cuteStoryVisualProblems({ slug, look, scenes: failing });
   assert.deepEqual(problems.map((problem) => problem.path), ["scenes[11]", "scenes[11]"], "both errors name the offending card's original scene index");
   assert.match(problems[0].message, /6 of 10 body scenes.*60%.*at least 70%/);
   assert.match(problems[1].message, /4 cards in a row \(c1 → c2 → c3 → c4\)/, "a chapter card does not break the card run");
-  assert.deepEqual(storyFiveVisualProblems({ slug, look, scenes: [bookend("outro", "outro")] }).map((problem) => problem.path), ["scenes[0]"], "the body cannot be empty");
-  assert.deepEqual(storyFiveVisualProblems({ slug, look: { ...look, negative: "photorealistic" }, scenes: boundary }).map((problem) => problem.path), ["look"], "a look override blocks the five-story route");
-  assert.deepEqual(storyFiveVisualProblems({ slug, look: { preset: "custom", style: "cute" }, scenes: boundary }).map((problem) => problem.path), ["look"]);
-  assert.deepEqual(storyFiveVisualProblems({ slug: SLUG, scenes: failing }), [], "the original custom story route keeps its own rules");
+  assert.deepEqual(cuteStoryVisualProblems({ slug, look, scenes: [bookend("outro", "outro")] }).map((problem) => problem.path), ["scenes[0]"], "the body cannot be empty");
+  assert.deepEqual(cuteStoryVisualProblems({ slug, look: { ...look, negative: "photorealistic" }, scenes: boundary }).map((problem) => problem.path), ["look"], "a look override blocks the five-story route");
+  assert.deepEqual(cuteStoryVisualProblems({ slug, look: { preset: "custom", style: "cute" }, scenes: boundary }).map((problem) => problem.path), ["look"]);
+  for (const pilot of ["story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2"]) {
+    assert.deepEqual(cuteStoryVisualProblems({ slug: pilot, look, scenes: boundary }), [], `${pilot}: the boundary passes`);
+    assert.deepEqual(cuteStoryVisualProblems({ slug: pilot, look, scenes: failing }).map((problem) => problem.path), ["scenes[11]", "scenes[11]"], `${pilot}: the preimage gate blocks bad visual pacing`);
+    assert.deepEqual(cuteStoryVisualProblems({ slug: pilot, look: { ...look, style: "custom" }, scenes: boundary }).map((problem) => problem.path), ["look"]);
+  }
+  for (const legacy of [SLUG, "story-rolling-suitcase", "story-conveyor-belt-sushi"]) {
+    assert.deepEqual(cuteStoryVisualProblems({ slug: legacy, scenes: failing }), [], `${legacy}: the original custom story route keeps its own rules`);
+  }
 });
 
-test("a complete story-five script sends visual failures to the chapter before drawing keyframes", async () => {
-  const series = { ...SERIES, slug: "brand-stories-curio-five", target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
-  const episode = { ...EPISODE, slug: "story-five-folding-umbrella" };
+test("a complete cute pilot script sends visual failures to the chapter before drawing keyframes", async () => {
+  const series = { ...SERIES, slug: "brand-stories-curio-pilot-v2", target_minutes: 10, image_model: "image-01", look: { preset: "cute-mystery" } };
+  const episode = { ...EPISODE, slug: "story-rolling-suitcase-v2" };
   const answers = standardAnswers({ "writer:story": (body) => {
     const chapter = chapterAnswer(body.payload.chapter.key, body.payload);
     chapter.scenes.forEach((scene, index) => { if (scene.template === "shot") scene.data.camera = index % 2 ? "slow pan left" : "slow push in"; });

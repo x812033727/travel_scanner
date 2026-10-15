@@ -2,6 +2,8 @@
 
 2026-09-28 定案。這是 AI 漫劇路線（[`DRAMA.md`](DRAMA.md)）底下的一種作品類型，不是第三種格式：影片的 `format` 仍是 `drama`，作品的 `kind` 是 `story`。畫面是卡通插畫的靜態圖加緩慢運鏡，只有旁白，字幕燒進畫面，內容是查核過的非虛構故事：一個品牌、一件日用品或一個大家天天用卻沒想過的標準，背後的生意怎麼運作。這份只寫**為什麼這樣做**與各部分怎麼接起來；操作步驟之後放在 skill `youtube-video` 的 `references/story.md`（票 `2026-09-28-video-story-worker`）。工作分成 12 張票，id 都是 `2026-09-28-video-story-*`。
 
+**2026-10-15 新決定：**本頁的 Gemini／12–15 分鐘與原 100 題設定保留作歷史設計，不能用作新版試作指示。站主將 A01／B18 和接續五支都改為 MiniMax `image-01`、精確 `look: {"preset":"cute-mystery"}`、約 10 分鐘；兩支新版來源與製作順序見[獨立試作包](brand-stories-pilot-v2-20261015/README.md)，後五支見[五集包](brand-stories-five-20261014/README.md)。
+
 ## 目標與已定的選擇
 
 站主給的參考是 YouTube 頻道「黑猫研究院」（`@qiqiqushi0`），要求先規劃 100 個這樣的故事，並讓主機每天做出兩支。

@@ -1,7 +1,7 @@
 // A brand story on the host (docs/videos/STORY.md): a narrator-only non-fiction documentary
 // written, fact-checked and heard one chapter at a time from a reviewed plan. The original series
-// aims at 13 minutes and about 90 cartoon stills; the five cute-mystery stories aim at 10 minutes
-// and about 80 illustrations.
+// aims at 13 minutes and about 90 cartoon stills; the cute-mystery pilot and five-film stories
+// aim at 10 minutes and about 80 illustrations.
 //
 // The site hands a story over as an episode of a series of kind "story" (GET automation/series/next,
 // then episodes/{n}/start under the video slug the plan fixed), with the whole plan as the
@@ -807,17 +807,18 @@ const SCENE_PATH = /^scenes\[(\d+)\]/;
 const STORY_FIVE_FRAMES = new Set(["title", "chapter", "outro"]);
 const STORY_FIVE_MIN_SHOT_PERCENT = 70;
 const STORY_FIVE_MAX_CARD_RUN = 3;
+const CUTE_PILOT_SLUGS = new Set(["story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2"]);
 
-export function storyFiveVisualProblems(doc) {
-  if (!/^story-five-/.test(doc?.slug ?? "")) return [];
+export function cuteStoryVisualProblems(doc) {
+  if (!/^story-five-/.test(doc?.slug ?? "") && !CUTE_PILOT_SLUGS.has(doc?.slug)) return [];
   const problems = [];
   const look = doc.look;
   if (!look || typeof look !== "object" || Array.isArray(look) || look.preset !== "cute-mystery" || Object.keys(look).length !== 1) {
-    problems.push({ path: "look", message: 'story-five uses exactly {"preset":"cute-mystery"}; remove style, negative and other look overrides' });
+    problems.push({ path: "look", message: 'cute-mystery stories use exactly {"preset":"cute-mystery"}; remove style, negative and other look overrides' });
   }
   const body = (doc.scenes ?? []).map((scene, index) => ({ scene, index }))
     .filter(({ scene }) => !STORY_FIVE_FRAMES.has(scene.template));
-  if (!body.length) return [...problems, { path: "scenes[0]", message: "the story-five body has no scenes; add illustrated shots before keyframes" }];
+  if (!body.length) return [...problems, { path: "scenes[0]", message: "the cute-mystery story body has no scenes; add illustrated shots before keyframes" }];
 
   const shots = body.filter(({ scene }) => scene.template === "shot").length;
   if (shots * 100 < body.length * STORY_FIVE_MIN_SHOT_PERCENT) {
@@ -825,7 +826,7 @@ export function storyFiveVisualProblems(doc) {
     const card = body.findLast(({ scene }) => scene.template !== "shot");
     problems.push({
       path: `scenes[${card.index}]`,
-      message: `${shots} of ${body.length} body scenes are illustrated shots (${Math.floor(shots * 100 / body.length)}%); story-five needs at least ${STORY_FIVE_MIN_SHOT_PERCENT}%`,
+      message: `${shots} of ${body.length} body scenes are illustrated shots (${Math.floor(shots * 100 / body.length)}%); cute-mystery stories need at least ${STORY_FIVE_MIN_SHOT_PERCENT}%`,
     });
   }
 
@@ -836,7 +837,7 @@ export function storyFiveVisualProblems(doc) {
     if (cards.length === STORY_FIVE_MAX_CARD_RUN + 1) {
       problems.push({
         path: `scenes[${item.index}]`,
-        message: `${cards.length} cards in a row (${cards.map(({ scene }) => scene.id).join(" → ")}); story-five allows at most ${STORY_FIVE_MAX_CARD_RUN} before an illustrated shot`,
+      message: `${cards.length} cards in a row (${cards.map(({ scene }) => scene.id).join(" → ")}); cute-mystery stories allow at most ${STORY_FIVE_MAX_CARD_RUN} before an illustrated shot`,
       });
       cards = [];
     }
@@ -867,7 +868,7 @@ async function relint(automation, state) {
     // so a line changed after it (a length fix, the owner's note on the narration) voids it.
     writeScreenplay(dir, doc);
     errors = lintProject(loadProject({ slug: state.slug, root })).errors;
-    errors.push(...storyFiveVisualProblems(doc));
+    errors.push(...cuteStoryVisualProblems(doc));
   } else {
     errors = lintVideo(doc, draftContext(root, state.slug, doc)).errors;
   }

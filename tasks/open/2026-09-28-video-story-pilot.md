@@ -16,6 +16,8 @@ depends_on:
   - 2026-10-14-enforce-usd-25-all-in-cap
 scope:
   - docs/videos/STORY.md
+  - docs/videos/brand-stories-pilot-v2-20261015
+  - tasks/open/2026-09-28-video-story-pilot.md
 ---
 
 # 試作兩支品牌故事並記錄數字
@@ -28,7 +30,7 @@ scope:
 
 - [ ] 兩支試作（A01 輪子行李箱、B18 迴轉壽司）在正式主機上從清單開始做到「可以上架」，站主看過成片。
 - [ ] `docs/videos/STORY.md` §試作紀錄 填了：每支的長度、鏡數、圖片張數與重做率、各階段秒數、帳本花費、訂閱帳號的 token 用量、`final.mp4` 的大小。
-- [ ] 1K 圖片的清晰度有結論：維持 1K，或建議改 2K（附每支成本差額，由站主決定）。
+- [ ] MiniMax 可愛插畫放到 1080p 成片的清晰度有結論；需要提高圖像規格時，附成本差額交站主決定。
 - [ ] 卡住的地方都開了票或當場修掉；`STORY.md` 的上限表依量到的數字更新。
 
 ## Steps
@@ -36,21 +38,21 @@ scope:
 - [ ] 站主先做 `STORY.md` §站主要先做的事 列的幾件事：開「AI 漫劇」、寫頻道立場、勾選字幕語系、看一遍各階段的常設指示、確認帳號的權限。
 - [ ] 部署（要站主同意，走 skill `deploy`）。
 - [ ] 調上限：每月圖片與 judge 次數、作品每月集數、同時進行數、旁白每月字數、Jev 每日次數、審核單檔大小。
-- [ ] 匯入清單：先試跑，再套用前兩個（`--apply --limit 2 --episodes-per-day 1`，或後台的匯入表單）。排程的前兩個就是 A01 與 B18。
-- [ ] 確認主機 nginx 的 `client_max_body_size` 放得過匯入的請求（約 1.2 MB；repo 的範例是 6 MB，主機上的實際設定沒有查過）。
+- [ ] [獨立 A01／B18 新版包](../../docs/videos/brand-stories-pilot-v2-20261015/README.md)先完成新內容的來源覆核與 hash 綁定審稿，再編譯兩集匯入檔；正式機先唯讀核對兩個 `-v2` slug、系列、工作目錄與鎖，之後才對**此兩集檔**試跑與評估套用。不拿舊 100 題檔 `--limit 2` 匯入。
+- [ ] 確認主機 nginx 的 `client_max_body_size` 放得過實際新版兩集匯入檔；舊 100 題檔約 1.2 MB 的估算不代表新版大小。
 - [ ] 看工人日誌與後台，兩支做完後記錄數字。
 
 ## How to verify
 
-成片用 ffprobe 確認 1920×1080、30 fps、長度 720–900 秒；`review/qa.json` 全過；`checks.json` 的每個鏡頭都是 `motion`；帳本的花費在每支 US$25 以內。
+成片用 ffprobe 確認 1920×1080、30 fps；新版旁白正文由 TTS 量得約 10 分鐘，依 worker 的 9–11 分鐘驗收帶，不拿片頭／片尾湊正文；再量 5 秒片頭與 21 秒片尾的完整成片。`review/qa.json` 全過；正文全為 `visual: "still"` 的插畫／卡片並用緩慢運鏡，沒有付費生成 clip；帳本含文字、音訊、圖像、judge、必要配樂與重試，每支總額在 US$25 以內，站主看過成片。
 
 ## Notes
 
 - 前幾支成片請站主親自看過，再開「自動品管全過就核准成片」給故事用。
 - 任何對正式站的操作都要站主同意；這張票不是授權。
 - 做各張票時留下、試作要觀察的事（2026-09-28）：
-  - 合成的語速實測約每分鐘 300 字，工具估的是 250 字。13 分鐘的稿子（3,250 字）實際可能只有 11 分鐘左右；量到的長度寫進紀錄，必要時調整每章的字數。
-  - 作品的畫風沒有參考圖（`look` 沒有 `style_frames`），90 張圖一致與否只靠提示詞。看聯絡表判斷夠不夠一致；不夠的話要不要加風格錨定圖，另開票。
+  - 舊稿的語速估算曾以每分鐘 250 字計，實測約 300 字；新版 10 分鐘稿須量 TTS 實際秒數，必要時調整各章，不能沿用舊 3,250 字／13 分鐘目標。
+  - 新版畫風固定 MiniMax `image-01`、精確 `{"preset":"cute-mystery"}`；看聯絡表及整片檢查是否漂移，不另加自訂 `style`／`negative` 或未核定的風格錨定圖。
   - 旁白長度修兩輪仍不合格時影片會卡住，沒有「接受這個長度」的選項。試作遇到就記下來，決定要不要加。
   - 每支花費以伺服器帳本為準。工人日誌的估計值在票 `2026-09-28-video-story-image-model-pricing` 做完之前用的是設定分頁的模型單價，會偏高。
   - 被放棄的故事目前不能重做（票 `2026-09-28-video-story-redo-dropped`）。試作的兩支如果做壞了，先不要按放棄，留著讓人看原因；放棄之後那個故事就不能再做。
@@ -84,7 +86,7 @@ Concrete pre-generation gates discovered during plan preparation:
 
 ### 2026-10-15 owner order and read-only preflight
 
-The owner explicitly chose A01/B18 first, then the five new MiniMax/10-minute brand stories. This pilot retains its original Gemini/13-minute format and US$25 **all-in** actual cost cap per film. Local A01/B18 source rows and reviews still hash-match and validate. In this checkout, neither `docs/videos/story-rolling-suitcase/video.json` nor `docs/videos/story-conveyor-belt-sushi/video.json`, nor their default local media workdirs, exists; that says nothing about the host. The current 100-story compiled file is 1,415,413 bytes, SHA-256 `c8fb18102634459c62f556022139e0bdc733ef432321c412ff810faed0ac0194`, so the 2026-09-29 import-file SHA in the old plan is stale even though the original A01/B18 source files are unchanged.
+The owner explicitly chose A01/B18 first, then the five new MiniMax/10-minute brand stories. The original Gemini/13-minute A01/B18 source rows and reviews still hash-match and validate **as historical material**. The pilot now uses isolated `story-rolling-suitcase-v2` and `story-conveyor-belt-sushi-v2` source rows with MiniMax/10-minute specifications, while keeping the US$25 **all-in** cost cap per film. Neither new treatment may use the old review hash as its approval. In this checkout, neither the old `docs/videos/story-rolling-suitcase/video.json` nor `docs/videos/story-conveyor-belt-sushi/video.json`, nor their default local media workdirs, exists; that says nothing about the host or the new `-v2` slugs. The current 100-story compiled file is 1,415,413 bytes, SHA-256 `c8fb18102634459c62f556022139e0bdc733ef432321c412ff810faed0ac0194`, so the 2026-09-29 import-file SHA in the old plan is stale even though the original A01/B18 source files are unchanged.
 
 Production **UI observation only** on 2026-10-15 (`/zh-TW/admin/videos?tab=drama`): AI drama is shown enabled and the `kind=story` list showed no cards, but this is not a full database/media/slug reconciliation. The settings UI showed `drama_auto_approve_final=true`, generic `max_usd_per_video=US$200`, concurrent episodes=1, monthly starts=30, image and judge monthly maxima=20,000 each, music=60, clip seconds=3,000, channel voice enabled, and en/ja/ko language pre-checks false. Generic image model was MiniMax `image-01`; the original A01/B18 series specifies Gemini, so actual per-series routing remains unverified. Provider balances and account availability remain unknown.
 
@@ -119,3 +121,9 @@ At 2026-10-15 00:03 UTC, exact read-only PostgreSQL queries on the same host ret
 Using the same authorized PuTTY session, a read-only container check matched the production host's `c4911a059` source bytes: API and `video-ai-worker` `series.py` SHA-256 `cb9d3e01465a6f072d44fdcedae659f538686a634a03351171f8f67d8bfaa155`, API `stories.py` `a79e09e37fa42143d345bfd64fc07a7b601a424def9d1fb8f30a8dd5207fa610`, and `video-worker` `story.mjs` `5fec3daefd27e1dd0d54a3fe0d2935bf8ef1ea1b8c14e2776110aabf653e37e8`. API and AI worker share image ID `sha256:6f80dfb28df9916b57db62dfe7ad01c3653992a7b66a1c5f0a3d730407c5a02a`; video-worker uses `sha256:19b55fff62da360cd8bc08ab9326477c4af50c31a054b9b6d9b0cecc772eed0c`. All started at 2026-10-14 23:58 UTC. This verifies those running code files, not the entire image or the draft PR's deployment.
 
 Read-only PostgreSQL `SELECT` and Redis `HGET` (no provider request) showed `drama_enabled=true`, global `minimax/image-01`, monthly image and judge limits of 20,000 each, and media estimate cap US$200 per video. Raw `2026-10` app counters: `video-media-images=9767`, `video-media-judge-calls=10642`, `azure_speech=40`, `gemini_speech=883936`. These are internal counts and limits, not a MiniMax wallet balance, a Gemini/Azure external quota, or a USD 25 all-in reservation. The repository has no supported zero-cost MiniMax balance reader. Do not spend for a balance probe. No production mutation, import or paid call occurred.
+
+### 2026-10-15 revised pilot source
+
+The owner's MiniMax/approximately 10-minute decision applies to A01/B18 as well as the following five films. The original 100-bank and its A01/B18 reviews remain historical and unchanged. A separate [two-film v2 source package](../../docs/videos/brand-stories-pilot-v2-20261015/README.md) now has new episode slugs, six-beat story arcs, cold opens, existing v4 intro/outro timing, still illustrations only, and a builder that refuses to emit an import file until **new independent hash-bound reviews** exist. Those new reviews, an exact host readback for both `-v2` slugs, all-in budget release, vendor balance evidence, script/audio/visual QA and owner viewing remain outstanding. The earlier host readback covered only the original A01/B18 slugs, so it cannot be reused as a collision check for v2. No live import or paid generation has happened.
+
+An independent source readback found corrections needed in both v2 rows. A01 now follows Samsonite's 2011 prospectus rather than the conflicting 2004 claim: Ultra Transporter in 1997 and four-wheel Spinners in 2000; ABC's 2010 interview attributes immediate 1970 customer acceptance to Sadow, while his patent's airport-terminal problem is not treated as independent sales causation. The 1928 trip proves Anita Willets-Burnham had the wheeled case by departure, not its exact making year. B18 distinguishes inspiration at a beer factory from the later turn-design work, says 1962 utility model rather than patent, and keeps Expo exposure, original-chain growth and the 1978 expiry separate. Both rows' cast is now anonymous visual illustration. After these revisions `build.mjs --draft` passes; A01 source hash is `c247eba081af44e183549d26f34bcdd0d9d98c3e9205672641c8a58b9ebd424d`, B18 is `38a03584367c4f890cc149004f5559e5e1376ae4c3471e007d8b3ea0127bba02`. **Both require a new independent review bound to these exact hashes**; no import file has been written.
