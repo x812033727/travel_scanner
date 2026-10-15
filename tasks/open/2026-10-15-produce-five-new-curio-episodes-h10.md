@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-produce-five-new-curio-episodes-h10
 title: Produce five new Curio episodes H10 H11 H12 M09 U09
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-gpt6-curio-five
+claimed_at: 2026-10-15T23:52:59Z
 created_at: 2026-10-15T16:31:58Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -34,7 +34,7 @@ On 2026-10-16 (Asia/Taipei), the owner expanded the next Curio episode request t
 - [x] Check local worktrees, Git refs, open PRs and 192 live non-Shorts videos for duplicates; the five exact slugs returned 404.
 - [x] Complete each episode's research, claims and A/B outline under its own narrow task.
 - [x] Cross-review evidence and narrative shape, assemble a single owner review index and production budget.
-- [ ] Read back owner outline and spending decisions before paid production.
+- [x] Read back owner outline and spending decisions before paid production.
 
 ## How to verify
 
@@ -47,6 +47,8 @@ Source research is read-only from origin/claude/curio-topic-bank-second-batch at
 At 2026-10-16 01:01 Taipei, the five exact slugs were manually reported and submitted as outline reviews using the existing review API, without a Jev pick or paid call. All five read back pending with exact payloads and brief hashes; review IDs and hashes are in docs/videos/curio-next-five-20261016/submission.json. No worker-start request was issued. The immutable local bundle and incremental receipt are under the ordinary media work base at curio-next-five-20261016/review. Do not blindly resubmit; read the existing IDs first.
 
 Owner review index: docs/videos/curio-next-five-20261016/README.md. Recommend A for each episode; proposed estimated stop limit USD6 per episode / USD30 total covers Mandarin synthesis, targeted retakes, transcription, images, image judging and text/audio/final QA through Gemini, MiniMax image-01 and TypeSafe Jev. Neither outline choice nor spending is approved yet. Episode task claims are released while awaiting decisions; claim the relevant scope before the next edits. Existing approvals for H09 do not apply.
+
+On 2026-10-16 at 07:53 Taipei, the owner answered the bundled decision: all five A outlines selected in /admin/videos and the proposed zh-TW production scope authorized at USD6 per episode / USD30 total. Readback of each original outline review ID returned approved/A and its original brief SHA256. The source submission remains a historical pending receipt; decision-20261016.json records the later live approvals and the exact budget/data scope. The root task was reclaimed; each episode author reclaims its own narrow task. No paid call or worker start had been made at this readback. The script approval gate remains separate.
 
 Cross-review fixes and test limits are recorded in outline-review.md. The docs-videos suite produced 214 passes and one known Windows Node24.13.0 native-copy crash; the exact failing test passed with the existing bundled Node24.19.0. Runtime/test sources match origin/main; no production tool code was changed.
 

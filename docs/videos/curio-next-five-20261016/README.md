@@ -2,7 +2,7 @@
 
 日期：2026-10-16（台北）。本批為 H10、H11、H12、M09、U09，目標每集約 10 分鐘，先製作繁中。
 
-五集均已完成大綱層級獨立覆核，於 10／16 01:01 送至後台；讀回皆為等待站主，A/B 選項及 brief 雜湊吻合。收據見 [submission.json](submission.json)，覆核範圍與修訂見 [outline-review.md](outline-review.md)。
+五集均已完成大綱層級獨立覆核，於 10／16 01:01 送至後台。站主其後選定**五集皆 A**，10／16 07:53 再讀回五張原審核卡皆為 approved／A，brief 雜湊吻合。送審歷史見 [submission.json](submission.json)，核准讀回與製作額度見 [decision-20261016.json](decision-20261016.json)，覆核範圍與修訂見 [outline-review.md](outline-review.md)。
 
 ## 建議五集皆選 A
 
@@ -18,13 +18,13 @@ A 的共通優點是事件往前走，觀眾容易跟上每次新線索。各集
 
 ## 製作費用提案
 
-**每集 US$6、五集合計 US$30，尚未授權。** 這是估算停手上限，不是預期會花完的金額，也不是供應商單次扣款硬限制。
+**每集 US$6、五集合計 US$30，站主已授權。** 這是估算停手上限，不是預期會花完的金額，也不是供應商單次扣款硬限制。
 
 包含五集繁中旁白、定向重錄、音訊轉寫／QA、MiniMax 插圖及圖像評審、劇本與最終 QA。使用 Gemini、MiniMax image-01 與 TypeSafe Jev；完整資料流、單價、重試及停止規則見 [製作計畫](production-plan.md)。新增語言另由站主逐集選擇。
 
 ## 審核與接續
 
-在 [影片後台](https://mokaair.com/zh-TW/admin/videos) 逐集選 A／B。依 `curio-episode`／`youtube-video` 流程，讀回大綱選擇後寫正式稿，完成查核與敘事審稿，再送劇本核准。付費製作另以本批核准額度為準。
+依 `curio-episode`／`youtube-video` 流程，現在按已核准的 A 案寫正式稿，完成查核與敘事審稿，再送 [影片後台](https://mokaair.com/zh-TW/admin/videos) 核准劇本。付費製作以本批已核准額度為準，每集乾跑與核算後才執行。
 
 每集的 `research.md` 記錄本次開啟來源與讀取限制，`claims.md` 區分可用事實與推論。選綱用的交叉覆核不代替正式劇本的逐句查核與十三題盲評。
 
