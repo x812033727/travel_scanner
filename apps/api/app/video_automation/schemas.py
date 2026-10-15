@@ -673,8 +673,8 @@ SERIES_SLUG_PATTERN = r"^[a-z0-9][a-z0-9-]{1,39}$"
 # A long series, a one-off drama (one episode, one story bible; docs/videos/DRAMA-FLOW.md §二), or
 # a brand-story series (no documents; its episodes are a planned backlog; docs/videos/STORY.md).
 SeriesKind = Literal["series", "one-off", "story"]
-# How long one episode may run: a drama's episode, and a story, which is 12 to 15 minutes. The
-# database allows the longer one for every kind (migration 0111); the schemas hold the rest to 8.
+# Episode lengths: drama is capped at 8 minutes; stories may use the original 13-minute
+# route or the separate 10-minute cute-mystery route (both below the 20-minute schema cap).
 SERIES_MAX_MINUTES = 8
 STORY_MAX_MINUTES = 20
 # How many stories may start on one Asia/Taipei calendar day, at most.
@@ -722,6 +722,12 @@ class StoryLook(StrictModel):
         if value is not None and not value.strip():
             raise ValueError("must not be blank")
         return value
+
+
+class StoryPresetLook(StrictModel):
+    """The MiniMax cute-mystery picture preset, stored without custom prompt fields."""
+
+    preset: Literal["cute-mystery"]
 
 
 def image_model_problem(model_id: str) -> str | None:
@@ -788,7 +794,7 @@ class SeriesIn(StrictModel):
     total_minutes: int | None = Field(default=None, ge=30, le=480)
     episodes_per_day: int | None = Field(default=None, ge=1, le=STORY_MAX_PER_DAY)
     image_model: str | None = Field(default=None, min_length=1, max_length=128)
-    look: StoryLook | None = None
+    look: StoryLook | StoryPresetLook | None = None
 
     @field_validator("title", "premise", "note")
     @classmethod
@@ -860,6 +866,15 @@ class SeriesIn(StrictModel):
                 raise ValueError("a story series needs a title and a premise")
             if self.look is None:
                 raise ValueError("a story series needs the look every story shares")
+            if isinstance(self.look, StoryPresetLook) and (
+                self.target_minutes != 10
+                or self.image_model != "image-01"
+                or self.style_preset != "custom"
+            ):
+                raise ValueError(
+                    'a cute-mystery story needs target_minutes=10, image_model="image-01" '
+                    'and style_preset="custom"'
+                )
         else:
             if (
                 not long_anime and not is_explainer_preset(self.style_preset)
@@ -919,7 +934,7 @@ class SeriesPatch(StrictModel):
     # A story series (docs/videos/STORY.md).
     episodes_per_day: int | None = Field(default=None, ge=1, le=STORY_MAX_PER_DAY)
     image_model: str | None = Field(default=None, min_length=1, max_length=128)
-    look: StoryLook | None = None
+    look: StoryLook | StoryPresetLook | None = None
 
     @field_validator("image_model")
     @classmethod
