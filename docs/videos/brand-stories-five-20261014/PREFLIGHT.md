@@ -1,6 +1,6 @@
 # 五支品牌故事｜製作前檢查收據
 
-本機核對日期：2026-10-14；規格複核與正式主機精確 slug 唯讀回讀：2026-10-15（Asia/Taipei）。五支**未匯入、未執行付費模型，也沒有成片**。本文件先記本機 repo／預設影片工作目錄，再於第 4 節記正式主機資料庫與 video-worker volume 對七個精確 slug 的查詢結果；兩者證據邊界不同。A01／B18 的詳細狀態見[試作票](../../../tasks/open/2026-09-28-video-story-pilot.md)與[新版企劃](../brand-stories-pilot-v2-20261015/README.md)。站主已指定品牌故事採 MiniMax `image-01`、`cute-mystery`、約 10 分鐘；A01／B18 新版先試作，五支接著做。第 4 節先前唯讀查的是**舊 A01／B18 slug 加五個新 slug**，尚未涵蓋兩個 `-v2` 試作 slug。
+本機核對日期：2026-10-14；規格複核與正式主機精確 slug 唯讀回讀：2026-10-15（Asia/Taipei）。五支**未匯入、未執行付費模型，也沒有成片**。本文件先記本機 repo／預設影片工作目錄，再於第 4 節記正式主機對精確 slug 的唯讀查詢結果；兩者證據邊界不同。A01／B18 的詳細狀態見[試作票](../../../tasks/open/2026-09-28-video-story-pilot.md)與[新版企劃](../brand-stories-pilot-v2-20261015/README.md)。站主已指定品牌故事採 MiniMax `image-01`、`cute-mystery`、約 10 分鐘；A01／B18 新版先試作，五支接著做。第 4 節先記**舊 A01／B18 slug 加五個新 slug**的回讀，後續補記兩個 `-v2` 試作 slug；資料列與工作目錄的查核範圍不同。
 
 ## 1. 本機輸入與空白工作區
 
@@ -41,7 +41,7 @@
 
 **已完成的本機接線**：在不動原 100 題與 A01／B18 的前提下，另建[五集系列](series.json)、五份六章 row 與各自的新[獨立審稿](episodes/reviews)，由 [`build.mjs`](build.mjs) 編成 [`stories.json`](stories.json)。五題連號、各用 `story-five-*` slug、分列五天中午；`reviewProblems` 與 Python `check_story_file` 對完整輸入均為零問題。這些是**本機驗證**，正式站仍須唯讀 dry-run、查 live ID／slug／既有製作狀態，不能覆寫已開始的故事。新版 writer 已加入可愛畫風的「回答、故事相關留言、訂閱」三句與一人一動作插畫指示；它仍須在實際逐字稿、片尾 16 秒 Studio 元素及全片 QA 中逐項核對。
 
-原 story 產線要求 12–15 分鐘、非空 `look.style`／`look.negative`，工人把 `video.json` 設為 `preset:custom`。本工作樹的[窄範圍修正](../../../tasks/open/2026-10-14-support-10-minute-minimax-cute-brand.md)已讓**另立的可愛畫風 story 系列**採 10 分鐘、MiniMax `image-01` 與精確 `{"preset":"cute-mystery"}`；新 A01／B18 來源亦採此系列規格，但其新審稿與匯入檔尚未完成。原 13 分鐘 Gemini 自訂畫風路線仍通過回歸測試，僅作歷史相容性驗證。本機含角色的 A29 小樣之 `validateVideo`、`lintVideo` 無錯誤；這是合成小樣，**不是正式 A29 逐字稿或成片**。`curio-*` 專屬通用 lint 不套用 `story-*`；新版 story 工人在六章合併後、付費產圖前另擋正文空白、插畫低於 70%、連續卡片超過三張與畫風偏離。正式影片仍須目視驗收插畫品質、單鏡提示詞與實際畫面。
+原 story 產線要求 12–15 分鐘、非空 `look.style`／`look.negative`，工人把 `video.json` 設為 `preset:custom`。本工作樹的[窄範圍修正](../../../tasks/open/2026-10-14-support-10-minute-minimax-cute-brand.md)已讓**另立的可愛畫風 story 系列**採 10 分鐘、MiniMax `image-01` 與精確 `{"preset":"cute-mystery"}`；新 A01／B18 來源亦採此系列規格，已各有新版獨立審稿與本機匯入檔，但尚未匯入正式站。原 13 分鐘 Gemini 自訂畫風路線仍通過回歸測試，僅作歷史相容性驗證。本機含角色的 A29 小樣之 `validateVideo`、`lintVideo` 無錯誤；這是合成小樣，**不是正式 A29 逐字稿或成片**。`curio-*` 專屬通用 lint 不套用 `story-*`；新版 story 工人在六章合併後、付費產圖前另擋正文空白、插畫低於 70%、連續卡片超過三張與畫風偏離。正式影片仍須目視驗收插畫品質、單鏡提示詞與實際畫面。
 
 五題本機輸入與 slug 接法已驗；A01／B18 試作未完成。主機對七個精確 slug 的資料列與工作目錄回讀見下方；完整輸入 SHA、供應商額度及付費工作歸屬仍須在**已核准的主機環境**核對後，才可用下列形式作唯讀匯入試跑。此處未執行，也沒有 `--apply`：
 
@@ -56,7 +56,7 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli video-st
 
 ## 4. 主機、站主與實際生產關卡
 
-[A01／B18 試作票](../../../tasks/open/2026-09-28-video-story-pilot.md)目前為 `blocked`，其勾選項要求：先在正式主機讓兩支新版到「可以上架」，站主看過；回填時長、張數、重做率、階段秒數、實際帳本、圖像清晰度與 token 用量。站主於 2026-10-15 明確決定這兩支先完成，五支新版接著做。試作改用[獨立的 MiniMax／約 10 分鐘新版企劃](../brand-stories-pilot-v2-20261015/README.md)；舊方案只是未執行歷史記錄。部署、上限、頻道立場、字幕語系、權限與主機狀態均須逐項核對。下方新增的主機唯讀回讀已核實 live SHA 與當時七個精確 slug 的資料列／volume 目錄狀態；**新版 `-v2` slug 尚需另查**。沒有改正式設定或驗帳；不自動觸發五支或每日兩支 rollout。
+[A01／B18 試作票](../../../tasks/open/2026-09-28-video-story-pilot.md)目前為 `blocked`，其勾選項要求：先在正式主機讓兩支新版到「可以上架」，站主看過；回填時長、張數、重做率、階段秒數、實際帳本、圖像清晰度與 token 用量。站主於 2026-10-15 明確決定這兩支先完成，五支新版接著做。試作改用[獨立的 MiniMax／約 10 分鐘新版企劃](../brand-stories-pilot-v2-20261015/README.md)；舊方案只是未執行歷史記錄。部署、上限、頻道立場、字幕語系、權限與主機狀態均須逐項核對。下方主機唯讀回讀已核實 live SHA 與當時七個精確 slug 的資料列／volume 目錄狀態；後續另查兩個 `-v2` slug 的資料列，但其工作目錄仍未核實。沒有改正式設定或驗帳；不自動觸發五支或每日兩支 rollout。
 
 舊試作方案仍稱 `video-story-image-model-pricing` 票未完成；[該票](../../../tasks/done/2026-09-28-video-story-image-model-pricing.md)現已結案，作品模型估價與快取修正已落地。這項修正沒有把文字、TTS、judge 與未結算重試納入每支 US$25 的整片硬上限。2026-10-15 在本機以來源讀取器重查 A01／B18 共 16 個 URL，全部因本環境連線失敗而未取得正文；不能據此判為來源失效，正式寫稿前須在可連網的核准環境重跑並保存報告。
 
@@ -80,6 +80,10 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli video-st
 同一個 `hostinger2` PuTTY 入口再核對執行中的容器：API 與 `video-ai-worker` 共用映像 ID `sha256:6f80dfb28df9916b57db62dfe7ad01c3653992a7b66a1c5f0a3d730407c5a02a`，`video-worker` 映像 ID 為 `sha256:19b55fff62da360cd8bc08ab9326477c4af50c31a054b9b6d9b0cecc772eed0c`；三者啟動時間均為 2026-10-14 23:58 UTC。API 與 AI worker 容器內 `series.py` 的 SHA-256 均為 `cb9d3e01465a6f072d44fdcedae659f538686a634a03351171f8f67d8bfaa155`，API 的 `stories.py` 為 `a79e09e37fa42143d345bfd64fc07a7b601a424def9d1fb8f30a8dd5207fa610`，video-worker 的 `story.mjs` 為 `5fec3daefd27e1dd0d54a3fe0d2935bf8ef1ea1b8c14e2776110aabf653e37e8`；各值都與主機 `c4911a059` 工作樹中的對應檔案相同。這核對了三個實際運行中的故事程式檔，不是整個映像的逐檔證明，也不是本草稿 PR 已部署。
 
 同次只用 PostgreSQL `SELECT` 與 Redis `HGET` 讀站內數值，沒有呼叫付費供應商：設定顯示 `drama_enabled=true`、全域圖片 `minimax/image-01`、每月圖片與 judge 各 20,000、媒體估算上限每支 US$200。2026-10 的 Redis 原始 `total` 為 `video-media-images=9767`、`video-media-judge-calls=10642`、`azure_speech=40`、`gemini_speech=883936`。這些是站內計數，不能證明外部帳戶餘額、整支 US$25 預留或 A01／B18 的系列模型路由；現有程式也沒有 MiniMax 錢包餘額的零付費讀取介面。供應商實際可用額度仍待帳戶端核對，不用付費產圖作探針。
+
+### 2026-10-15 新版試作 slug 補查
+
+02:12–02:14 UTC 的同一授權 PuTTY 主機唯讀查詢仍見 live `c4911a0`、沒有部署 hold 或佔用中的部署鎖；舊版與 `story-rolling-suitcase-v2`、`story-conveyor-belt-sushi-v2` 四個精確 slug，在已查的 series、episode、request、project、media、AI-run 與 stage-job 表均為零列。全域六筆 `uncertain` stage job 和一筆 `queued` media job 未被更動，也不能歸到本批。額外查工作目錄與金鑰有效性狀態的唯讀命令被自動政策阻擋，沒有改用其他命令重試；新版工作目錄、外部餘額與供應商收據依然未知。新版兩集已有本機獨立審稿企劃和逐字稿文字，與正式機匯入、付費工作及成片是不同關卡。
 
 ## 5. 新畫面路線的基本成本假設
 

@@ -1,6 +1,6 @@
 # A01｜輪子行李箱：為什麼早有人做，旅客卻很晚才開始拉？
 
-狀態：新版未審稿 Treatment，尚無逐字稿或聲畫。工人輸入是 [`episodes/A01.json`](episodes/A01.json)；事實底稿與歷史獨立審稿分別在[母企劃](../story-plans/brand-stories-100/stories/A01.json)、[母審稿](../story-plans/brand-stories-100/reviews/A01.json)。2026-10-15 開啟[美國專利 US3653474A](https://patents.google.com/patent/US3653474A/en)、[ABC 對 Sadow 的訪問](https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469)及[Samsonite 2011 招股書](https://corporate.samsonite.com/on/demandware.static/-/Sites-InvestorRelations-Library/default/dwa68533ea/PDF/announcements/2011/20110602100852_Samsonite_Final_Prospectus_en.pdf)重核主線；新版六章仍待另一位查核者獨立審閱。
+狀態：新版企劃已通過獨立來源審稿；逐字稿僅為待查核草稿，尚無配音、畫面或成片。工人輸入是 [`episodes/A01.json`](episodes/A01.json)；事實底稿與歷史獨立審稿分別在[母企劃](../story-plans/brand-stories-100/stories/A01.json)、[母審稿](../story-plans/brand-stories-100/reviews/A01.json)。2026-10-15 開啟[美國專利 US3653474A](https://patents.google.com/patent/US3653474A/en)、[ABC 對 Sadow 的訪問](https://abcnews.com/Travel/suitcase-wheels-turns-40-radical-idea-now-travel/story?id=11779469)及[Samsonite 2011 招股書](https://corporate.samsonite.com/on/demandware.static/-/Sites-InvestorRelations-Library/default/dwa68533ea/PDF/announcements/2011/20110602100852_Samsonite_Final_Prospectus_en.pdf)重核主線；新版六章已有獨立來源審稿，逐字旁白仍須另行逐句覆核。
 
 ## 點閱承諾與主線
 

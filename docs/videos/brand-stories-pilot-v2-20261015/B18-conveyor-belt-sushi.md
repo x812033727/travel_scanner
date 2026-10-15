@@ -1,6 +1,6 @@
 # B18｜迴轉壽司：缺人的小店如何借來啤酒工廠的點子？
 
-狀態：新版未審稿 Treatment，尚無逐字稿或聲畫。工人輸入是 [`episodes/B18.json`](episodes/B18.json)；事實底稿與歷史獨立審稿分別在[母企劃](../story-plans/brand-stories-100/stories/B18.json)、[母審稿](../story-plans/brand-stories-100/reviews/B18.json)。2026-10-15 開啟[日本機械學會的第 112 號機械遺產](https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html)與[發明推進協會的迴轉壽司沿革](https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii)重核主線；新版六章仍待另一位查核者獨立審閱。
+狀態：新版企劃已通過獨立來源審稿；逐字稿僅為待查核草稿，尚無配音、畫面或成片。工人輸入是 [`episodes/B18.json`](episodes/B18.json)；事實底稿與歷史獨立審稿分別在[母企劃](../story-plans/brand-stories-100/stories/B18.json)、[母審稿](../story-plans/brand-stories-100/reviews/B18.json)。2026-10-15 開啟[日本機械學會的第 112 號機械遺產](https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html)與[發明協會的迴轉壽司沿革](https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii)重核主線；新版六章已有獨立來源審稿，逐字旁白仍須另行逐句覆核。
 
 ## 點閱承諾與主線
 
@@ -37,10 +37,10 @@
 > 你吃迴轉壽司時，最想看看這條輸送帶背後哪一步是怎麼做出來的？
 > 喜歡把熟悉的吃法追到起點、聽懂它怎麼一路變大，歡迎訂閱。
 
-片尾使用頻道 21 秒動畫；最後 16 秒在 YouTube Studio 設「最符合觀眾喜好」影片、訂閱、「最新上傳」影片，私人上傳後實點驗證。旁白不點名下一片。說明欄放[日本機械學會](https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html)、[發明推進協會](https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii)與母企劃其他來源，未上傳前沒有已啟用連結。
+片尾使用頻道 21 秒動畫；最後 16 秒在 YouTube Studio 設「最符合觀眾喜好」影片、訂閱、「最新上傳」影片，私人上傳後實點驗證。旁白不點名下一片。說明欄放[日本機械學會](https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html)、[發明協會](https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii)與母企劃其他來源，未上傳前沒有已啟用連結。
 
 ## 來源界線與圖像
 
-- [日本機械學會](https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html)支持 1958 年 4 月第一店、啤酒工廠啟發和 2021 年機械遺產；[發明推進協會](https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii)支持約十年、名片扇形、1958 年店的 50 日圓及 1978 年後新業者進場。J-Net21 另說靈感是孩子的撲克牌，不能把兩種版本拍成同一個確定事實。
+- [日本機械學會](https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html)支持 1958 年 4 月第一店、啤酒工廠啟發和 2021 年機械遺產；[發明協會](https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii)支持約十年、名片扇形、1958 年店的 50 日圓及 1978 年後新業者進場。J-Net21 另說靈感是孩子的撲克牌，不能把兩種版本拍成同一個確定事實。
 - 立食店 20 日圓和第一家迴轉店 50 日圓屬不同時期；1962 年是**實用新案**，不能在旁白簡稱專利。產業擴張有萬博曝光、原店連鎖與權利期滿後新業者進場等步驟，不能只歸於到期。2023 年逾 7,500 億日圓是當時預估，不能寫成今天市場實績。另一位審稿者須核查這些邊界和逐章因果。
 - MiniMax `image-01` 的 prompt 只描述景別、時地、一個人物的一個動作、焦點與光線；`look` 固定 `{"preset":"cute-mystery"}`。啤酒瓶、壽司盤、展覽和店招皆無商標文字；全部正文鏡頭為 `visual: "still"`，生成影片 clip **零鏡**，片頭片尾沿用頻道既有 v4 動畫。正文至少 70% 插畫、連續卡片最多三張。試作每支 US$25 上限涵蓋文字、音訊、轉錄、圖像、評審、必要時的一條有上限配樂及重試。

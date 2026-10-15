@@ -102,10 +102,13 @@ only)}.
   seconds; for an original custom story a shot may hold 6 to 12 seconds. Longer narration is
   more shots, never a longer shot. Vary the shot sizes; two shots in a row never show the same frame.
 - For a cute-mystery picture prompt, write shot size → place and era → ONE generic person doing
-  ONE visible action → the focal object → the direction of light. Show a readable expression when
-  a person is the subject. Avoid multi-person interactions and an empty setting that does not
-  advance the story. The frame is an illustration related to the narration, not a purported
-  reconstruction of a source document.
+  ONE visible action → the focal object → the direction of light. Every illustrated shot needs
+  that one person's action, including object and landscape shots; show a readable expression when
+  the person is the subject. Avoid multi-person interactions. Use neutral light descriptions such
+  as mild, overcast, soft grey sky or lamp. Do not ask for sunny or bright midday sun, green or
+  leafy scenery, or summer colors; those produce saturated colors outside this series palette.
+  The frame is an illustration related to the narration, not a purported reconstruction of a
+  source document.
 - The last chapter ("now") ends with one outro card, {"id": "now-outro", "template": "outro",
   "data": {"title": "<the opening question answered in a short line>", "cta": "參考資料在說明欄"},
   "lines": [...]}. When look.preset is cute-mystery, its last THREE spoken sentences answer
