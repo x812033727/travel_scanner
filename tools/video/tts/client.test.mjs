@@ -76,6 +76,24 @@ function server(answers) {
   return { calls, sleeps, options };
 }
 
+test("pilot paid routes carry a UUID that remains stable across a safe HTTP retry", async () => {
+  for (const slug of ["story-rolling-suitcase", "story-conveyor-belt-sushi", "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2"]) {
+    for (const paid of PAID) {
+      const { calls, options } = server([() => problem(429, "rate_limit_exceeded"), paid.ok]);
+      paid.check(await paid.send({ ...options, videoSlug: slug }));
+      assert.equal(calls.length, 2, `${slug}: ${paid.name}`);
+      const first = JSON.parse(calls[0].body);
+      const second = JSON.parse(calls[1].body);
+      assert.equal(first.video_slug, slug, paid.name);
+      assert.match(first.operation_id, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i, paid.name);
+      assert.equal(second.operation_id, first.operation_id, paid.name);
+    }
+  }
+  const ordinary = server([PAID[0].ok]);
+  PAID[0].check(await PAID[0].send({ ...ordinary.options, videoSlug: "curio-h05" }));
+  assert.equal(JSON.parse(ordinary.calls[0].body).operation_id, undefined);
+});
+
 test("a paid request sent and left without its answer is sent once and names the request it lost", async () => {
   const lost = [
     ["a connection reset after it went out", () => { throw failed("ECONNRESET"); }, 0],

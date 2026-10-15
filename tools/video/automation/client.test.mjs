@@ -1149,6 +1149,32 @@ test("durable capability preserves the synchronous planner and bounded anime/sto
   assert.deepEqual(durableFiles(box, "draft-example"), []);
 });
 
+test("both original and v2 pilot story chapters always use saved jobs for writing and checks", async () => {
+  for (const slug of ["story-rolling-suitcase", "story-conveyor-belt-sushi", "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2"]) {
+    for (const stage of ["writer", "verifier", "listener"]) {
+      const box = sandbox(), routes = [];
+      const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+        const route = new URL(url).pathname;
+        if (route === "/api/video/automation/settings") return Response.json({ durable_stage_runs: false });
+        routes.push(route);
+        assert.equal(route, DURABLE_PATH, `${slug} ${stage} bypassed the durable budget gate`);
+        const body = JSON.parse(init.body);
+        const files = durableFiles(box, slug);
+        assert.equal(files.length, 1, "the request key is persisted before dispatch");
+        assert.equal(JSON.parse(readFileSync(files[0], "utf8")).request_key, body.request_key);
+        assert.equal(body.variant, "story");
+        assert.equal(body.stage, stage);
+        return Response.json(job(body));
+      } }, { durablePollMs: 5, durablePollIntervalMs: 5 });
+      await client.settings();
+      assert.deepEqual(await client.run(stage, slug, "Review one chapter", { chapter: "hook" }, 16_000, "drama", "story"), savedAnswer);
+      assert.deepEqual(routes, [DURABLE_PATH]);
+      client.settleRuns([slug]);
+      assert.deepEqual(durableFiles(box, slug), []);
+    }
+  }
+});
+
 test("the durable polling window caps at 25 seconds and leaves the paid operation saved for the next round", async () => {
   const box = sandbox(), sleeps = [], calls = [];
   let original;

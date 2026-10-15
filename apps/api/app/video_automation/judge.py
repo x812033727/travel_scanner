@@ -41,6 +41,7 @@ Payload contracts the worker writes (tools/video, ticket video-hands-off-worker)
 
 from __future__ import annotations
 
+from collections.abc import Awaitable, Callable
 from typing import Any, Literal
 
 import httpx
@@ -601,8 +602,11 @@ async def _ask(
     state: dict[str, Any],
     questions: dict[str, JevQuestion],
     client: httpx.AsyncClient | None,
+    on_usage: Callable[[dict[str, Any]], Awaitable[None]] | None = None,
 ) -> dict[str, Any]:
-    jev: JevClient = jev_client(settings, client)
+    # A pilot reservation covers one possible vendor wire. A vendor 429/529 has
+    # no no-charge receipt, so the pilot keeps it uncertain instead of retrying.
+    jev: JevClient = jev_client(settings, client, retry_refusals=on_usage is None)
     try:
         if not await consume_jev_call(redis, settings):
             raise CheckUnavailable(
@@ -610,7 +614,9 @@ async def _ask(
                 "jev_budget_exhausted",
                 "今天的 Jev 呼叫次數已用完（JEV_DAILY_CALL_BUDGET），請明天再判斷",
             )
-        answers, _usage = await jev.ask(state, questions)
+        answers, usage = await jev.ask(state, questions)
+        if on_usage is not None:
+            await on_usage(usage)
     finally:
         await jev.close()
     return dict(answers)
@@ -623,10 +629,14 @@ async def judge_outline(
     brief: str,
     options: list[OutlineOption],
     client: httpx.AsyncClient | None = None,
+    *,
+    on_usage: Callable[[dict[str, Any]], Awaitable[None]] | None = None,
 ) -> OutlinePick:
     """Which outline to make, in one Jev call that spends one call of the daily budget."""
     questions = outline_questions(options)
-    answers = await _ask(settings, redis, outline_state(stance, brief, options), questions, client)
+    answers = await _ask(
+        settings, redis, outline_state(stance, brief, options), questions, client, on_usage
+    )
     return read_outline_answers(answers, options)
 
 
@@ -675,6 +685,7 @@ async def judge_policy(
     *,
     session: AsyncSession,
     slug: str,
+    on_usage: Callable[[dict[str, Any]], Awaitable[None]] | None = None,
 ) -> PolicyVerdict:
     """Whether a narration keeps to the stance and sells or advises nothing, asked in one Jev
     call with the questions of the video's own kind (``policy_questions_for``): a tutorial's
@@ -685,18 +696,21 @@ async def judge_policy(
     kind = await policy_questions_for(session, slug)
     if kind == "story":
         return read_story_policy_answers(
-            await _ask(settings, redis, state, story_policy_questions(), client)
+            await _ask(settings, redis, state, story_policy_questions(), client, on_usage)
         )
     if kind == "cut":
         return read_cut_policy_answers(
-            await _ask(settings, redis, state, cut_policy_questions(), client)
+            await _ask(settings, redis, state, cut_policy_questions(), client, on_usage)
         )
     if kind == "explainer":
         # The same three a cut Short is asked: the tutorial's words, the demonstration left out.
         return read_policy_answers(
-            await _ask(settings, redis, state, cut_policy_questions(), client), "explainer"
+            await _ask(settings, redis, state, cut_policy_questions(), client, on_usage),
+            "explainer",
         )
-    return read_policy_answers(await _ask(settings, redis, state, policy_questions(), client))
+    return read_policy_answers(
+        await _ask(settings, redis, state, policy_questions(), client, on_usage)
+    )
 
 
 # --- the server's approval rules ----------------------------------------------------------------

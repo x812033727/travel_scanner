@@ -385,7 +385,7 @@ async function tts(args, ctx) {
   // Another producer holding the project (core/project-lease.mjs) is the owner's to sort out:
   // nothing is synthesized or written meanwhile. The worker's unit holds it already.
   requireProjectLease(workdir, { owner: "tts", now: ctx.now, as: (error) => new SpeechError(error.message, { code: error.code, who: "owner" }) });
-  const options = pending.length ? clientOptions(ctx, requireCredentials(ctx)) : null;
+  const options = pending.length ? { ...clientOptions(ctx, requireCredentials(ctx)), videoSlug: doc.slug } : null;
   if (pending.length) {
     const status = await speechStatus(options);
     const problems = voiceProblems(doc, status, pendingVoices);
@@ -513,7 +513,21 @@ export async function run(command, args, ctx) {
   try {
     if (command === "login") return await login(args, ctx);
     if (command === "audition") return await audition(args, ctx);
-    if (command === "check-audio") return await checkAudio(args, ctx, clientOptions(ctx, requireCredentials(ctx)));
+    if (command === "check-audio") {
+      // check.mjs owns the review logic and its journal; pass attribution without changing
+      // either contested file. --file can also name a pilot, so load its actual document slug.
+      const values = parseArgs({
+        args,
+        options: {
+          slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" },
+          threshold: { type: "string" }, force: { type: "boolean" }, locale: { type: "string" },
+          "second-opinion": { type: "string" },
+        },
+        strict: true,
+      }).values;
+      const slug = loadProject({ slug: values.slug, file: values.file, root: ctx.root }).doc.slug;
+      return await checkAudio(args, ctx, { ...clientOptions(ctx, requireCredentials(ctx)), videoSlug: slug });
+    }
     return await tts(args, ctx);
   } catch (error) {
     if (!(error instanceof SpeechError)) throw error;

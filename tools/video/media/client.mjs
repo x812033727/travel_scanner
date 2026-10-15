@@ -6,7 +6,7 @@
 // quota, retried with the server's Retry-After), or the tool's own bug. A generation is a job:
 // submitted, then polled until it is ready, then its file fetched by SHA-256; the server moves
 // the job one step per poll, so polling is the work, not a wait.
-import { createHash } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { closeSync, createWriteStream, mkdirSync, openSync, readSync, renameSync, rmSync, statSync } from "node:fs";
 import path from "node:path";
 import { Readable, Transform } from "node:stream";
@@ -42,6 +42,7 @@ const OWNER_CODES = new Set([
   "video_media_locate_unavailable",
   // No Pexels or Pixabay key on the site yet (docs/videos/ILLUSTRATED.md §圖庫照片).
   "video_media_stock_unavailable",
+  "video_media_outcome_uncertain",
 ]);
 // The same request (its hash: prompt, seed, references, model) failed the server's attempts
 // (apps/api/app/video_media/jobs.py MAX_ATTEMPTS), and the server refuses it with 409 until
@@ -54,14 +55,8 @@ export const EXHAUSTED_CODES = new Set(["video_media_job_exhausted"]);
 // video_media_invalid: locate was sent something that is not a picture (a clip); the tool extracts a frame first.
 // video_media_stock_not_found: the vendor has no photo under the id the tool asked for; pick another candidate.
 const TOOL_CODES = new Set(["video_media_reference_missing", "video_media_reference_too_large", "video_media_route_unknown", "video_media_bad_part", "video_media_hash_mismatch", "video_media_invalid", "video_media_stock_not_found"]);
-// A judge or locate call is asked again too, though each send may be a Gemini call booked on the
-// server's monthly judge budget: the web route's 502 `upstream_unavailable` may follow one the API
-// made (its 180 s deadline, or the API restarting mid-call), a website restart reaches here as
-// nginx's 502 or a dropped connection, and `video_media_judge_failed` may follow one Gemini
-// answered after an httpx timeout. call() asks again on every 5xx and network error whatever its
-// code, so membership here is redundant for those, and sending a paid call once would need its own
-// path in call(). Accepted, not held for the owner as a lost speech answer is; the worst case is
-// in docs/videos/DRAMA.md §先預留、後對帳.
+// Ordinary calls keep bounded transport retries. Pilot paid calls use a separate one-send path:
+// a lost answer might mean the vendor already charged and needs operator reconciliation.
 const RETRYABLE_CODES = new Set(["video_media_upstream_busy", "video_media_job_busy", "rate_limit_exceeded", "upstream_unavailable", "video_media_judge_failed", "video_media_locate_failed", "video_media_stock_failed"]);
 // Codes of a failed job that a new seed may fix; the stages retake on these, not on the owner's.
 export const RETAKE_CODES = new Set(["video_media_rejected", "video_media_upstream_failed", "video_media_upstream_expired", "video_media_unsupported_type", "video_media_upstream_invalid"]);
@@ -100,7 +95,9 @@ async function call({ site, token, path: route, init, fetchImpl, sleep, attempts
     if (response.ok) return response;
     const problem = await problemOf(response);
     const message = problem.detail || `HTTP ${response.status}`;
-    if (response.status === 401 || OWNER_CODES.has(problem.code) || EXHAUSTED_CODES.has(problem.code)) throw new MediaError(message, { status: response.status, code: problem.code, who: "owner" });
+    if (response.status === 401 || OWNER_CODES.has(problem.code) || EXHAUSTED_CODES.has(problem.code) || problem.code.startsWith("video_budget_") || problem.code.startsWith("video_pilot_budget_")) {
+      throw new MediaError(message, { status: response.status, code: problem.code, who: "owner" });
+    }
     if (TOOL_CODES.has(problem.code)) throw new MediaError(message, { status: response.status, code: problem.code, who: "tool" });
     last = new MediaError(message, { status: response.status, code: problem.code });
     if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;
@@ -115,6 +112,58 @@ const defaults = (options) => ({ fetchImpl: globalThis.fetch, sleep: (ms) => new
 const postJson = (options, route, body) =>
   call({ ...defaults(options), path: route, init: { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } });
 
+const PILOT_SLUGS = new Set([
+  "story-rolling-suitcase",
+  "story-conveyor-belt-sushi",
+  "story-rolling-suitcase-v2",
+  "story-conveyor-belt-sushi-v2",
+]);
+
+// A judge/locate request is itself the paid operation, unlike a generation's durable job.
+// The pilot path sends it once with a unique operation ID. An ambiguous transport answer must
+// keep the server's reservation and stop the worker; retrying with a fresh ID could buy it twice.
+async function postJudgeOrLocate(options, route, request) {
+  if (!PILOT_SLUGS.has(request.slug)) return (await postJson(options, route, request)).json();
+  const body = { ...request, operation_id: request.operation_id ?? randomUUID() };
+  try {
+    const response = await call({ ...defaults(options), attempts: 1, path: route, init: { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } });
+    return await response.json();
+  } catch (error) {
+    if (!(error instanceof MediaError)) {
+      throw new MediaError(`the ${route} answer for operation ${body.operation_id} could not be read; reconcile before retrying`, { code: "video_media_outcome_uncertain", who: "owner" });
+    }
+    if (error.code.startsWith("video_pilot_budget_") || error.code.startsWith("video_budget_")) {
+      throw new MediaError(error.message, { status: error.status, code: error.code, who: "owner" });
+    }
+    if (error.status === 0 || error.status >= 500) {
+      throw new MediaError(`the ${route} request may have run; keep operation ${body.operation_id} for reconciliation: ${error.message}`, { status: error.status, code: "video_media_outcome_uncertain", who: "owner" });
+    }
+    throw error;
+  }
+}
+
+async function postPaidJob(options, route, request) {
+  if (!PILOT_SLUGS.has(request.slug)) return (await postJson(options, route, request)).json();
+  try {
+    const response = await call({
+      ...defaults(options), attempts: 1, path: route,
+      init: { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(request) },
+    });
+    return await response.json();
+  } catch (error) {
+    if (!(error instanceof MediaError)) {
+      throw new MediaError(`the ${route} job answer could not be read; reconcile the slug and request before retrying`, { code: "video_media_outcome_uncertain", who: "owner" });
+    }
+    if (error.code.startsWith("video_pilot_budget_") || error.code.startsWith("video_budget_")) {
+      throw new MediaError(error.message, { status: error.status, code: error.code, who: "owner" });
+    }
+    if (error.status === 0 || error.status >= 500) {
+      throw new MediaError(`the ${route} job may have reached the vendor; reconcile before retrying: ${error.message}`, { status: error.status, code: "video_media_outcome_uncertain", who: "owner" });
+    }
+    throw error;
+  }
+}
+
 /** What the server offers and allows right now: providers, models, budgets, the store, limits. */
 export async function mediaStatus(options) {
   const response = await call({ ...defaults(options), path: "status", init: { method: "GET" } });
@@ -123,17 +172,17 @@ export async function mediaStatus(options) {
 
 /** Submit an image job: `{ slug, purpose, prompt, negative_prompt?, aspect?, references?, seed?, shot_id?, idempotency_key? }`. */
 export async function submitImage({ request, ...options }) {
-  return (await postJson(options, "images", request)).json();
+  return postPaidJob(options, "images", request);
 }
 
 /** Submit a clip job: `{ slug, shot_id, prompt, first_frame, last_frame?, references?, seconds, resolution?, native_audio?, seed?, ... }`. */
 export async function submitClip({ request, ...options }) {
-  return (await postJson(options, "clips", request)).json();
+  return postPaidJob(options, "clips", request);
 }
 
 /** Submit a music job: `{ slug, prompt, seconds, idempotency_key? }`. */
 export async function submitMusic({ request, ...options }) {
-  return (await postJson(options, "music", request)).json();
+  return postPaidJob(options, "music", request);
 }
 
 /** The job as the server sees it now; asking is what moves it on. */
@@ -232,7 +281,7 @@ export async function putFile({ slug, file, ...options }) {
  * → `{ scores, overall, passed, problems, notes, model }`.
  */
 export async function judge({ request, ...options }) {
-  return (await postJson(options, "judge", request)).json();
+  return postJudgeOrLocate(options, "judge", request);
 }
 
 /**
@@ -245,7 +294,7 @@ export async function judge({ request, ...options }) {
  * frame, `putFile` it, and ask about that. Only on a server whose status lists `limits.locate_labels`.
  */
 export async function locate({ request, ...options }) {
-  return (await postJson(options, "locate", request)).json();
+  return postJudgeOrLocate(options, "locate", request);
 }
 
 /**

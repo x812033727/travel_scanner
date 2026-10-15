@@ -6,6 +6,7 @@ import copy
 import hashlib
 import io
 import json
+from decimal import Decimal
 from pathlib import Path
 from typing import Any
 from unittest.mock import AsyncMock
@@ -23,6 +24,7 @@ from app.db import get_session
 from app.models import VideoToolToken
 from app.problems import AppError, app_error_handler
 from app.video_automation.models import DEFAULT_DRAMA, DEFAULT_SLIDES, VideoAutomationSettings
+from app.video_budget.service import BudgetSummary
 from app.video_media import admin_api, meter
 from app.video_media.jobs import MediaContext
 from app.video_media.locate import (
@@ -270,6 +272,21 @@ def media(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> dict[str, Any]:
     monkeypatch.setattr(admin_api, "get_media_settings", lambda: settings)
     monkeypatch.setattr(admin_api, "enforce_named_rate_limit", state["limits"])
     monkeypatch.setattr(meter, "month_usd", AsyncMock(return_value=0.0))
+
+    async def pilot_summary(_session: Any, slug: str) -> BudgetSummary:
+        return BudgetSummary(
+            slug,
+            Decimal("25.000000"),
+            Decimal("0"),
+            Decimal("0"),
+            Decimal("25.000000"),
+            0,
+            0,
+            0,
+            0,
+        )
+
+    monkeypatch.setattr(admin_api, "summary", pilot_summary)
     return state
 
 
