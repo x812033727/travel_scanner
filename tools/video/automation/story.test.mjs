@@ -197,6 +197,7 @@ function listenAnswer(payload) {
 function storySite({ answers = {}, jobs = null, settings = {}, raw = {}, paused = () => false, series = SERIES, plannedEpisode = EPISODE, held = null } = {}) {
   const calls = { run: [], episodes: [], reports: [], pages: [], answers: [] };
   const projects = new Map();
+  const stageJobs = new Map();
   const reviewsOf = (slug) => projects.get(slug) ?? projects.set(slug, []).get(slug);
   const queue = jobs ?? [{ kind: "episode", series, chapter_number: null, episode: plannedEpisode, previous: null, rewrites_left: 0, context: { series, setting: null, outline: null, chapter: null, chapter_number: null, episode: plannedEpisode, episodes: [{ ...plannedEpisode, beats: {} }], recaps: [], mysteries: [] } }];
   const current = {
@@ -237,14 +238,25 @@ function storySite({ answers = {}, jobs = null, settings = {}, raw = {}, paused 
       const started = { ...plannedEpisode, status: "started" };
       return json({ request: { id: "b0c1d2e3-0000-4000-8000-000000000001", premise: `品牌故事 第 1 集：${plannedEpisode.title}\n${plannedEpisode.logline}\nquestion: ${PLAN.question}`, title: `品牌故事 第 1 集 ${plannedEpisode.title}`, source_guide: null, style_preset: "custom", target_minutes: series.target_minutes, note: series.note, status: "started", slug: body.slug, series_slug: series.slug, episode_number: 1 }, episode: started, context: { series, setting: null, outline: null, chapter: null, chapter_number: null, chapter_range: null, episode: started, episodes: [{ ...started, beats: {} }], recaps: [], mysteries: [] } });
     }
-    if (pathname === "/api/video/automation/run") {
+    if (pathname === "/api/video/automation/run" || pathname === "/api/video/automation/run/jobs") {
       calls.run.push(body);
       if (paused(body)) return json({ code: "video_ai_subscription_paused", detail: "every Claude account is at its cap" }, 429);
       const key = body.variant ? `${body.stage}:${body.variant}` : body.stage;
       const answer = answers[key]?.(body);
       const text = raw[key]?.(body) ?? JSON.stringify(answer ?? {});
-      return json({ text, provider: "anthropic", model: "claude-sonnet-5", input_tokens: 10, output_tokens: 5, usage: { tokens: 15, token_budget: 20_000_000, drafts: 0, draft_budget: 8, calls: 1, failed_calls: 0 } });
+      const result = { text, provider: "anthropic", model: "claude-sonnet-5", input_tokens: 10, output_tokens: 5, usage: { tokens: 15, token_budget: 20_000_000, drafts: 0, draft_budget: 8, calls: 1, failed_calls: 0 } };
+      if (pathname === "/api/video/automation/run") return json(result);
+      // Pilot chapters use the production saved-job transport. Return its receipt shape so
+      // the integration fixture exercises the same durable path without a paid provider.
+      const id = `00000000-0000-4000-8000-${String(stageJobs.size + 1).padStart(12, "0")}`;
+      const job = { id, request_key: body.request_key, request_hash: "a".repeat(64), input_hash: "b".repeat(64),
+        provider: result.provider, model: result.model, status: "succeeded", result,
+        error_code: null, error_detail: null, error_status: null, retry_after: null };
+      stageJobs.set(id, job);
+      return json(job);
     }
+    const stageJob = /^\/api\/video\/automation\/run\/jobs\/([a-f0-9-]+)$/.exec(pathname);
+    if (stageJob) return stageJobs.has(stageJob[1]) ? json(stageJobs.get(stageJob[1])) : json({ code: "not_found", detail: pathname }, 404);
     const match = /^\/api\/video\/reviews\/([a-z0-9-]+)(\/reviews)?$/.exec(pathname);
     if (match) {
       const [, slug, sub] = match;
