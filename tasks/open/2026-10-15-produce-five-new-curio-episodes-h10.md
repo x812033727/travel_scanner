@@ -1,0 +1,57 @@
+---
+id: 2026-10-15-produce-five-new-curio-episodes-h10
+title: Produce five new Curio episodes H10 H11 H12 M09 U09
+status: open
+priority: P2
+area: docs
+owner:
+claimed_at:
+created_at: 2026-10-15T16:31:58Z
+completed_at:
+branch: codex/curio-next-five-20261016
+depends_on: []
+scope:
+  - docs/videos/curio-next-five-20261016
+---
+
+# Produce five new Curio episodes H10 H11 H12 M09 U09
+
+## Why
+
+On 2026-10-16 (Asia/Taipei), the owner expanded the next Curio episode request to five new episodes. H09 remains a separate owner-operated Studio handoff. This batch covers H10 Franklin, H11 Voynich, H12 Flannan, M09 Antikythera and U09 pulsars under the current Curio series rules.
+
+## Definition of done
+
+- [x] Select five non-duplicate topics from existing checked research and isolate their work from H09.
+- [x] Refresh primary evidence and independently review five concrete outline packages.
+- [x] Present all five outlines and a bounded production estimate for the owner's decisions.
+- [ ] Produce the selected scripts, narration, illustrations and final cuts through the actual review gates after the required decisions.
+- [ ] Deliver approved upload packages; track languages and Studio delivery separately.
+
+## Steps
+
+- [x] Read current main and series/narrative rules; create the batch branch at a77a9416d.
+- [x] Check local worktrees, Git refs, open PRs and 192 live non-Shorts videos for duplicates; the five exact slugs returned 404.
+- [x] Complete each episode's research, claims and A/B outline under its own narrow task.
+- [x] Cross-review evidence and narrative shape, assemble a single owner review index and production budget.
+- [ ] Read back owner outline and spending decisions before paid production.
+
+## How to verify
+
+Use the existing outlineOptions parser to confirm A/B options are complete. Check primary source retrieval and claim boundaries; independent reviewers must identify blocked sources. Validate task metadata and repository hygiene. Subsequent scripts must pass lint and narrative review; synthesis, audio acceptance, storyboard, final cut, package, languages and actual upload/playback retain distinct receipts.
+
+## Notes
+
+Source research is read-only from origin/claude/curio-topic-bank-second-batch at 949bb91fc85d41a53633d056062b27d87651e9d5. Do not edit the shared topic bank owned by its original task. This task owns only the batch index; episode researchers own their episode directories.
+
+At 2026-10-16 01:01 Taipei, the five exact slugs were manually reported and submitted as outline reviews using the existing review API, without a Jev pick or paid call. All five read back pending with exact payloads and brief hashes; review IDs and hashes are in docs/videos/curio-next-five-20261016/submission.json. No worker-start request was issued. The immutable local bundle and incremental receipt are under the ordinary media work base at curio-next-five-20261016/review. Do not blindly resubmit; read the existing IDs first.
+
+Owner review index: docs/videos/curio-next-five-20261016/README.md. Recommend A for each episode; proposed estimated stop limit USD6 per episode / USD30 total covers Mandarin synthesis, targeted retakes, transcription, images, image judging and text/audio/final QA through Gemini, MiniMax image-01 and TypeSafe Jev. Neither outline choice nor spending is approved yet. Episode task claims are released while awaiting decisions; claim the relevant scope before the next edits. Existing approvals for H09 do not apply.
+
+Cross-review fixes and test limits are recorded in outline-review.md. The docs-videos suite produced 214 passes and one known Windows Node24.13.0 native-copy crash; the exact failing test passed with the existing bundled Node24.19.0. Runtime/test sources match origin/main; no production tool code was changed.
+
+Final handoff checks: check:tasks validated 1895 files (pre-existing stale/overlap warnings only), repo-hygiene passed 3/3, and the staged diff whitespace check passed. A separate read-only reviewer recomputed all five brief hashes and found no state/budget inconsistency across the batch documents. Local branches, remote refs and open PR file paths were checked again before preparing the draft PR; no competing five-episode change was found. The owner received one bundled request for backend outline choices and the proposed budget. Release this task while those decisions are pending; do not mark the production batch complete.
+
+Live 2026-10-16 Taipei readback: image-01 is configured, series_script_gate=true, auto_pick_look=true, auto_approve_storyboard=true, shared max_usd_per_video=200. The one-off request schema has no individual dollar cap. The shared ceiling does not authorize spending on these five episodes. Existing H09 dollar approvals do not carry to this batch. No new paid requests or worker-start requests have been issued.
+
+H09 PR #1503 head bff1f1a65 has no new CI run because main conflicts in docs/videos/long-form/review.md and review.json. A live task owned by codex-story-budget-cap still claims both files; no takeover or merge was performed. This is separate from the five-episode production branch and from H09's pending owner Studio URL.
