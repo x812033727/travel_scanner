@@ -17,7 +17,7 @@ export const STORY_FIX_VARIANT = "story-fix";
 const STORY_COMMON = `
 You work on ONE zh-TW (Traditional Chinese, Taiwan) brand story for the Mokaair YouTube channel
 (docs/videos/STORY.md): a non-fiction documentary told by a narrator alone over illustrated stills
-under slow camera moves, with burned-in subtitles. Use the series target_minutes and look in the
+under slow camera moves, with switchable zh-TW captions rather than burned-in subtitles. Use the series target_minutes and look in the
 payload: an original custom story is 12 to 15 minutes with about 90 shots; a cute-mystery story is
 about 10 minutes with about 80 MiniMax illustrations. It tells how a
 brand, an everyday object or an invisible standard came about and how its business works. The
@@ -213,7 +213,7 @@ or the checks said, and "fix.owner_note" is the owner's own words when they sent
 named and the owner's note is all there is, "shots" is every shot and you patch only those the
 note is about. Rewrite only what draws them, so an image model draws them cleanly in "look":
 fewer subjects in a crowded frame, simpler hands, a plainer camera move, no text, no logo, no
-name of "names", the subject clear of the bottom fifth of the frame where the subtitles sit. When
+name of "names", the subject clear of the bottom fifth of the frame where optional captions sit. When
 a target in "fix.targets" carries "prompt_budget_chars", that shot's prompt must be at most that
 many characters (the look and the image model take the rest of the model's limit): a shorter
 prompt beats a fuller one. Do not touch any line.
