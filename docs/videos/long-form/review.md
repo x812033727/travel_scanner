@@ -5316,6 +5316,20 @@ Non-claims: this is a receipt merge, not a fresh factual review of A21, the main
 
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1499 rebased brand-story route: 3 bindings (2026-10-15)
+
+Reviewer: `codex-post-rebase-duration-audit-20261015`. Author: `codex-8a78`. Scope: DURATION_ONLY for `apps/api/app/video_automation/schemas.py`, `apps/api/app/video_automation/series.py`, and `tools/video/core/drama.mjs` after rebasing the brand-story branch onto `origin/main` at `c4911a0598944b9a4409584b3fa6a069f4d8a70a`. The reviewer inspected the changes independently and did not edit these files or this receipt.
+
+Baseline: before this increment, `node tools/video/long-form/cli.mjs check` named exactly these three stale bindings. The other 105 bindings matched the worktree. The branch changes to these files are the complete `git diff origin/main...HEAD` for each path. The new SHA-256 values are `d1af5e4597fd8135245bf95fee4a58779d652069ba69efae2d304b4a2493e050` (schemas), `fe30ad598feadbb9329f737fe48218b3f5d1750763304f283111f56d52a45128` (series), and `1977b6c69471aa60923eb18ddfd6ef0323284bef96d9cf3a88c5ff5d220dcd83` (drama).
+
+Findings: the API schema adds the strict `cute-mystery` look and requires that route to use 10 minutes, MiniMax `image-01`, and `custom` narrative style. The series PATCH checks those fields together before persisting a route change. Neither changes the drama 8-minute cap, story 20-minute schema cap, or the other duration fields. `isExplainer` now excludes `category=story` even when the picture look is cute-mystery, so a brand story keeps its cast and no longer enters the explainer draft's 8-minute estimate floor. `isKnowledgeLongform` still covers stories, and duration/QA still require at least 480 seconds of actual narration body and final video. The 10-minute target remains fixed by the new API and worker route. This is a classification and draft-gate change, not a reduction of measured duration acceptance.
+
+Ran: the independent reviewer inspected all three diffs, their SHA-256 values, the duration gate call sites and the 108-key receipt. The API's focused story import/series suite passed 15 tests after rebase. The CLI and duration receipt tests are rerun after rebinding; their result is in the hand-off.
+
+Non-claims: this duration review does not approve a complete script, visual quality, paid generation, media playback, upload or publication. Since `isExplainer` also controls a keyframe resolution branch, the cute story's 1K image clarity remains a media acceptance check for the A01/B18 pilot. The other 105 bindings are not reviewed afresh.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -5329,8 +5343,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7` |
 | `apps/api/app/video_automation/models.py` | `e8351836b3d09a939c31f18501ba3e160e98706e327a1172cc35170fc76b9ccc` |
-| `apps/api/app/video_automation/schemas.py` | `4247c4bbbb118d14bc4cd90358d129843936f17fbc3e1cff0217d461ce02d70d` |
-| `apps/api/app/video_automation/series.py` | `cb9d3e01465a6f072d44fdcedae659f538686a634a03351171f8f67d8bfaa155` |
+| `apps/api/app/video_automation/schemas.py` | `d1af5e4597fd8135245bf95fee4a58779d652069ba69efae2d304b4a2493e050` |
+| `apps/api/app/video_automation/series.py` | `fe30ad598feadbb9329f737fe48218b3f5d1750763304f283111f56d52a45128` |
 | `apps/api/app/video_automation/settings.py` | `9941b3244e15cf6b1d8aaec32c68ab2424f84adb32804a179652d93fb3977ca3` |
 | `apps/api/app/video_reviews/admin_service.py` | `ef9fad5370f8929008ab0253456e6df479eeceb18aad16a2fe355eb79955c5a3` |
 | `apps/api/app/video_reviews/schemas.py` | `57cdfedd70afb65aa96e42699c7e52dd3d45faccf7919b58ee1a54779f0962a0` |
@@ -5385,7 +5399,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/approvals.test.mjs` | `51c4a632685a36221dcaf6ac926d5256879c1540f709b708945770d9e5e6adaf` |
 | `tools/video/core/branding.mjs` | `da1e635285601e1398d7e4233c20f8fab2e9f752c693c67e82512f2dffd4adaa` |
 | `tools/video/core/branding.test.mjs` | `1430f36cb542ce42548f9e8ee7182694b8679069cf9f64d446a4fdb56f3e5b89` |
-| `tools/video/core/drama.mjs` | `90de23ad4cc9e1c5ed44e6aae6ab4ccf104d8bac6bd13810122e5ed6853570e4` |
+| `tools/video/core/drama.mjs` | `1977b6c69471aa60923eb18ddfd6ef0323284bef96d9cf3a88c5ff5d220dcd83` |
 | `tools/video/core/drama.test.mjs` | `d24c6bc6a247f8ad33a102687078fc5dae0da5f30e87861008eb3db550c35b17` |
 | `tools/video/core/duration.mjs` | `12009ae5d12cba73e55ff462e9f9dd107350d53bea1da5a65bf59a1a39e13285` |
 | `tools/video/core/duration.test.mjs` | `a5b3e9c54368628d4b929b8050eb3ad925cc1b9c1fbd5b88bd3bf5ca010358f6` |
