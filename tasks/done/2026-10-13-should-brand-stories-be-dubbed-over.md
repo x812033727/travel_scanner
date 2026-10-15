@@ -1,13 +1,13 @@
 ---
 id: 2026-10-13-should-brand-stories-be-dubbed-over
 title: Owner decision: may a brand story be dubbed over its burned-in zh-TW subtitles
-status: in-progress
+status: done
 priority: P2
 area: meta
 owner: codex-gpt6
 claimed_at: 2026-10-15T10:49:16Z
 created_at: 2026-10-13T13:07:39Z
-completed_at:
+completed_at: 2026-10-15T11:23:20Z
 branch: codex/brand-story-switchable-cc-dubs-20261015
 depends_on:
   - 2026-10-13-dub-narrator-only-explainer-dramas-tool
@@ -84,7 +84,7 @@ state must be checked before treating the deployed change as effective for that 
   valid zh-TW CC; old story cuts and stale or missing reviews fail closed.
 - [x] API and language panel use the same per-video dub eligibility; other drama categories,
   relabelled stories, and renewed final cuts cannot bypass it.
-- [ ] Focused producer, QA, API, web, i18n, docs and board checks pass.
+- [x] Focused producer, QA, API, web, i18n, docs and board checks pass.
 
 ## How to verify
 
@@ -105,7 +105,23 @@ stories. Metadata/CC choices remain. An independent review found the standalone 
 follow-up review confirmed its fix, including a real SQLite renewal regression.
 
 Local checks so far: story automation 27/27, QA 18/18, API review/short renewal/long renewal
-99/99, web review component 79/79, i18n, web typecheck/lint, scoped Ruff. Windows video tests use
-bundled Node 24.19.0 after system Node 24.13.0 crashed. Full tools/docs and independent duration
-receipt check remain before PR. Existing A01 media conversion and production verification are
-separate from completion of this code change.
+99/99, web review component 79/79, i18n, web typecheck/lint, scoped Ruff/mypy, docs videos
+215/215, and task check. Independent duration receipt: all 14 baseline bindings verified,
+473 plans PASS, receipt tests 2/2; commit eefe69c66. Windows video tests use bundled Node
+24.19.0 after system Node 24.13.0 crashed. Full local tools/web attempts were stopped under
+memory pressure (0.46 GB free); a bounded tools attempt was also stopped while the machine
+remained constrained. These interrupted runs are not passes; full CI is required before merge.
+
+Pre-PR collision recheck found #1387 touching the two QA files for unrelated caption-selection
+logic and tests; this branch only adds the story subtitle marker and its coverage. That PR is
+an older draft and was not changed. Current origin/main remains a1b6b1149.
+
+Existing A01 media conversion and production verification are separate from this code change.
+Historical pilot readback at 09:15 UTC was 2/12, no readable video.json or media spend; this
+turn's authenticated browser read timed out, so current live stage is unverified. Language
+controls can appear early from locales_decided_at and do not establish final approval. After
+deploy, inspect host status, chapters, video.json, reviews, assets, locks/jobs and the US$25
+ledger first. If merged video.json already exists with burn_in=true, deploying the new composer
+alone will not rewrite it; recompose from chapters and independently re-review its changed
+hash before the existing paid pilot resumes. Retain any paid assets. No dub, upload or
+production mutation was performed by this implementation.
