@@ -14,6 +14,7 @@ from sqlalchemy import select
 
 from app.models import VideoProject, VideoReview
 from app.problems import AppError
+from app.video_automation.judge import video_series_kind
 from app.video_reviews import admin_api
 from app.video_reviews import admin_service as service
 from app.video_reviews.schemas import FinalRenewalIn, ProjectIn, ReviewIn, ReviewOut
@@ -134,7 +135,7 @@ async def test_standalone_story_renewal_withdraws_dubs_before_replacement_approv
         assert project is not None
         project.format, project.category = "drama", "story"
         project.locales = {"en": {"metadata": True, "captions": True, "dub": True}}
-        assert await service.video_series_kind(session, SLUG) is None
+        assert await video_series_kind(session, SLUG) is None
         await session.commit()
     request = await _request(site)
     request.review.payload["qa"]["subtitles_burned_in"] = True
