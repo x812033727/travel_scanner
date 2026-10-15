@@ -209,6 +209,8 @@ judge 的 `problems` 文字先分類，再決定花不花第二次的錢：
 
 停手前在票的 Notes 寫：到哪一步（`status` 的 next）、哪個關卡在等站主、`needs_review` 的鏡頭與 judge 的 problems、帳本總額與本月剩餘、`STOP` 檔有沒有留著、preflight 最後一次說了什麼。另一個代理接手只要這六樣；`media/jobs.json` 裡還在跑的 job 重跑階段會自己接著輪詢。
 
+偶的江湖的 Hailuo 製作有站主的常設規則：每一輪做完，素材、收據、D 軌與交接檔直接推到 `codex/ou-de-jianghu-visual-preproduction-20261008`，不用問。買點數、改鎖定包的 `buy_s`、上傳、合併與部署仍要站主同意。
+
 ## 腳本
 
 三支都離線、不花錢、不碰正式站，從 `tools/video` 相對路徑匯入；argv 只用 ASCII；結束碼 0、1（`--strict` 或有發現）、2（讀不到）。

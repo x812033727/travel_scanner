@@ -17,7 +17,7 @@ from app.news_automation.feeds import (
     summary_article,
     summary_is_evidence,
 )
-from app.news_automation.fetch import SafeNewsFetcher
+from app.news_automation.fetch import SafeNewsFetcher, listing_byte_limit
 from app.news_automation.models import NewsCandidate, NewsEvidence, NewsSource
 from app.news_automation.policy import (
     body_fingerprint,
@@ -404,6 +404,7 @@ async def scan_source(
             allowed_redirect_hosts=set(source.allowed_redirect_hosts_json),
             etag=source.etag,
             last_modified=source.last_modified,
+            max_bytes=listing_byte_limit(source.config_json),
         )
         source.last_scanned_at = now
         source.scan_lock_until = None

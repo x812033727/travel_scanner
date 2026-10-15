@@ -23,11 +23,14 @@ from app.video_media.providers.gemini_images import GeminiImages
 from app.video_media.providers.gemini_music import GeminiMusic
 from app.video_media.providers.gemini_video import GeminiVideo
 from app.video_media.providers.minimax import (
+    MUSIC_PROMPT_LIMIT,
     V2_MAX_REFERENCE_IMAGES,
     V2_VIDEO_MODELS,
     MiniMaxImages,
+    MiniMaxMusic,
     MiniMaxVideo,
     check_base_resp,
+    check_music_resp,
 )
 from app.video_media.schemas import ClipJobIn
 
@@ -249,6 +252,218 @@ def test_lyria_asks_for_an_instrumental_of_the_wanted_length() -> None:
     text = body["contents"][0]["parts"][0]["text"]
     assert "solo guqin" in text and "150 seconds" in text and "no vocals" in text
     assert body["generationConfig"]["responseModalities"] == ["AUDIO"]
+
+
+MP3 = b"ID3\x04\x00\x00\x00\x00\x00\x00" + b"\xff\xfb\x90\x00" * 16
+MUSIC_RULE = "since 2026-08-20 MiniMax sells music generation only to accounts that paid for it"
+
+
+def _music_request(**extra: Any) -> MediaRequest:
+    fields: dict[str, Any] = {
+        "kind": "music",
+        "model": "music-3.0",
+        "prompt": "solo guqin",
+        "seconds": 150,
+    }
+    return MediaRequest(**{**fields, **extra})
+
+
+def _music_answers(*answers: Any) -> tuple[Any, list[httpx.Request]]:
+    """A handler giving these answers in turn (a dict is JSON at HTTP 200; an
+    ``httpx.Response`` is sent as it is), and what it saw."""
+    seen: list[httpx.Request] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen.append(request)
+        answer = answers[len(seen) - 1]
+        return answer if isinstance(answer, httpx.Response) else httpx.Response(200, json=answer)
+
+    return handler, seen
+
+
+def _music_answer(audio: Any, status: Any = 2, code: int = 0, msg: str = "success") -> Any:
+    return {
+        "data": {"audio": audio, "status": status},
+        "trace_id": "trace-1",
+        "extra_info": {"music_duration": 150000, "music_sample_rate": 44100, "bitrate": 256000},
+        "base_resp": {"status_code": code, "status_msg": msg},
+    }
+
+
+def test_minimax_music_asks_for_an_instrumental_mp3_back_in_the_answer() -> None:
+    body = MiniMaxMusic(MINIMAX, "k").request_body(_music_request())
+    assert body["model"] == "music-3.0"
+    assert body["is_instrumental"] is True, "the drama route wants a score, not a song"
+    assert body["output_format"] == "hex" and body["stream"] is False
+    assert body["audio_setting"] == {"sample_rate": 44100, "bitrate": 256000, "format": "mp3"}
+    assert body["aigc_watermark"] is False
+    assert "lyrics" not in body and "lyrics_optimizer" not in body
+    assert body["prompt"].startswith("solo guqin\n\n")
+    assert "About 150 seconds long" in body["prompt"]
+    avoid = MiniMaxMusic(MINIMAX, "k").request_body(_music_request(negative_prompt="drums"))
+    assert avoid["prompt"].startswith("solo guqin. Avoid: drums\n\n")
+    # The API takes no length and its price covers up to five minutes, so a longer wish is
+    # asked for as five minutes; the mix stage loops the track to the video.
+    long = MiniMaxMusic(MINIMAX, "k").request_body(_music_request(seconds=600))
+    assert "About 300 seconds long" in long["prompt"]
+    bare = MiniMaxMusic(MINIMAX, "k").request_body(_music_request(seconds=0))
+    assert bare["prompt"] == "solo guqin"
+
+
+@pytest.mark.asyncio
+async def test_minimax_music_refuses_an_overlong_prompt_before_the_paid_call() -> None:
+    suffix = len(MiniMaxMusic(MINIMAX, "k").request_body(_music_request(prompt=""))["prompt"])
+    fits = _music_request(prompt="曲" * (MUSIC_PROMPT_LIMIT - suffix))
+    assert len(MiniMaxMusic(MINIMAX, "k").request_body(fits)["prompt"]) == MUSIC_PROMPT_LIMIT
+    handler, seen = _music_answers()
+    async with _client(handler) as client:
+        with pytest.raises(MediaUpstreamError) as error:
+            await MiniMaxMusic(MINIMAX, "k").submit(
+                _music_request(prompt="x" * (MUSIC_PROMPT_LIMIT - suffix + 1)), client
+            )
+    assert (error.value.status, error.value.kind) == (422, "invalid")
+    assert MUSIC_RULE not in error.value.message, "the prompt, not the account, is at fault"
+    assert seen == []
+
+
+@pytest.mark.asyncio
+async def test_minimax_music_comes_back_as_mp3_bytes_decoded_from_hex() -> None:
+    wrapped = "\n".join(MP3.hex()[i : i + 64] for i in range(0, len(MP3.hex()), 64))
+    handler, seen = _music_answers(
+        _music_answer(MP3.hex()), _music_answer(MP3.hex().upper()), _music_answer(wrapped)
+    )
+    provider = MiniMaxMusic(MINIMAX, "secret")
+    async with _client(handler) as client:
+        answers = [await provider.submit(_music_request(), client) for _ in range(3)]
+        with pytest.raises(MediaUpstreamError) as polled:
+            await provider.poll("anything", client)
+    for submitted in answers:
+        assert (submitted.inline, submitted.content_type) == (MP3, "audio/mpeg")
+        assert submitted.download is None and submitted.vendor_ref is None
+    assert polled.value.kind == "invalid", "synchronous: nothing to poll"
+    assert len(seen) == 3
+    assert str(seen[0].url) == "https://api.minimaxi.com/v1/music_generation"
+    assert seen[0].headers["authorization"] == "Bearer secret"
+    assert json.loads(seen[0].content)["output_format"] == "hex"
+
+
+@pytest.mark.asyncio
+async def test_a_minimax_music_link_goes_through_the_download_check_without_the_key() -> None:
+    handler, _seen = _music_answers(
+        _music_answer("https://cdn.minimax.example/m-1.mp3"),
+        _music_answer("http://cdn.minimax.example/m-2.mp3"),
+    )
+    provider = MiniMaxMusic(MINIMAX, "secret")
+    async with _client(handler) as client:
+        linked = await provider.submit(_music_request(), client)
+        insecure = await provider.submit(_music_request(), client)
+    assert linked.inline is None and linked.download == Download(
+        url="https://cdn.minimax.example/m-1.mp3", content_type_hint="audio/mpeg"
+    )
+    assert provider.fetch(linked.download) == ("https://cdn.minimax.example/m-1.mp3", {})
+    assert insecure.download is not None
+    with pytest.raises(MediaUpstreamError) as error:
+        provider.fetch(insecure.download)
+    assert error.value.kind == "invalid"
+
+
+@pytest.mark.parametrize(
+    ("answer", "message"),
+    [
+        pytest.param(_music_answer(None, status=1), "MiniMax returned no music (status 1)", id="1"),
+        pytest.param(_music_answer(""), "MiniMax returned no music (status 2)", id="empty"),
+        pytest.param({"base_resp": {"status_code": 0}}, "MiniMax returned no music", id="none"),
+        pytest.param(_music_answer("  \n"), "MiniMax returned no music (status 2)", id="blank"),
+        pytest.param(_music_answer(["ff"]), "MiniMax returned no music (status 2)", id="list"),
+        pytest.param(_music_answer("VENDOR-TEXT"), "MiniMax's music is not valid hex", id="text"),
+        pytest.param(_music_answer("fff"), "MiniMax's music is not valid hex", id="odd"),
+        pytest.param(
+            _music_answer((b"\x89PNG\r\n\x1a\n" + b"\x00" * 8).hex()),
+            "MiniMax's music is not an audio file",
+            id="picture",
+        ),
+    ],
+)
+@pytest.mark.asyncio
+async def test_a_minimax_music_answer_without_a_usable_track_is_a_vendor_failure(
+    answer: Any, message: str
+) -> None:
+    handler, _seen = _music_answers(answer)
+    async with _client(handler) as client:
+        with pytest.raises(MediaUpstreamError) as error:
+            await MiniMaxMusic(MINIMAX, "k").submit(_music_request(), client)
+    assert (error.value.status, error.value.kind) == (502, "failed")
+    assert error.value.message == message
+
+
+NEW_USERS = "Music generation is no longer available to new users"
+
+
+@pytest.mark.parametrize(
+    ("code", "msg", "kind", "rule"),
+    [
+        pytest.param(2061, NEW_USERS, "key", True, id="new-users-unknown-code"),
+        pytest.param(1000, "该接口不再面向新用户提供服务", "key", True, id="new-users-zh"),
+        pytest.param(2013, "no permission for this model", "key", True, id="permission"),
+        pytest.param(1004, "authentication failed", "key", True, id="auth"),
+        pytest.param(1008, "insufficient balance", "key", True, id="balance"),
+        pytest.param(2049, "invalid api key", "key", True, id="api-key"),
+        pytest.param(2013, "invalid params", "invalid", True, id="params"),
+        pytest.param(1000, "unknown error", "failed", True, id="unknown"),
+        pytest.param(1002, "rate limit", "busy", False, id="busy"),
+        pytest.param(1026, "sensitive content", "blocked", False, id="blocked"),
+    ],
+)
+@pytest.mark.asyncio
+async def test_a_minimax_music_refusal_says_who_can_fix_it_and_names_the_access_rule(
+    code: int, msg: str, kind: str, rule: bool
+) -> None:
+    """MiniMax documents no code for an account the 2026-08-20 rule shuts out, so a refusal
+    the account may be behind names the rule, and one whose message speaks of access is the
+    owner's to fix (``key``), not a retake's."""
+    handler, seen = _music_answers(_music_answer(None, status=None, code=code, msg=msg))
+    async with _client(handler) as client:
+        with pytest.raises(MediaUpstreamError) as error:
+            await MiniMaxMusic(MINIMAX, "k").submit(_music_request(), client)
+    assert error.value.kind == kind
+    assert (MUSIC_RULE in error.value.message) is rule
+    assert str(code) in error.value.message or msg in error.value.message
+    assert len(seen) == 1
+    check_music_resp({"base_resp": {"status_code": 0, "status_msg": "success"}})
+    check_music_resp({})
+
+
+@pytest.mark.parametrize(
+    ("status", "kind", "rule"),
+    [
+        (401, "key", True),
+        (403, "key", True),
+        (404, "invalid", True),
+        (429, "busy", False),
+        (500, "failed", False),
+        (400, "blocked", False),
+    ],
+)
+@pytest.mark.asyncio
+async def test_a_minimax_music_http_refusal_names_the_rule_when_the_account_may_be_why(
+    status: int, kind: str, rule: bool
+) -> None:
+    handler, _seen = _music_answers(httpx.Response(status, json={"error": "VENDOR-TEXT"}))
+    async with _client(handler) as client:
+        with pytest.raises(MediaUpstreamError) as error:
+            await MiniMaxMusic(MINIMAX, "k").submit(_music_request(), client)
+    assert error.value.kind == kind and (MUSIC_RULE in error.value.message) is rule
+    assert "VENDOR-TEXT" not in error.value.message
+
+
+@pytest.mark.asyncio
+async def test_a_minimax_music_answer_that_is_not_json_is_a_vendor_failure() -> None:
+    handler, _seen = _music_answers(httpx.Response(200, content=b"<html>gateway</html>"))
+    async with _client(handler) as client:
+        with pytest.raises(MediaUpstreamError) as error:
+            await MiniMaxMusic(MINIMAX, "k").submit(_music_request(), client)
+    assert (error.value.status, error.value.kind) == (502, "failed")
+    assert error.value.message == "MiniMax answered without JSON"
 
 
 def test_minimax_bodies_and_status_codes() -> None:

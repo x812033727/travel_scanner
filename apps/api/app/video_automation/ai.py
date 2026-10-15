@@ -44,6 +44,7 @@ from app.video_automation.usage import (
     slug_has_draft,
     usage_view,
 )
+from app.video_budget.service import is_pilot
 from app.video_shorts.models import VideoShortsSettings
 
 __all__ = ["StageFailed", "run_stage", "stage_choice", "subject_choice"]
@@ -189,6 +190,15 @@ async def prepare_stage(
     else:
         provider_name, model = stage_choice(row, request.stage, request.format, shorts)
     on_plan = provider_name in SUBSCRIPTION_PROVIDERS
+    # The two first brand-story pilots use the host's subscription agent. API-priced text
+    # models have no audited upper bound for this request's input and configured model, so
+    # they must not be dispatched under the per-film USD cap until priced explicitly.
+    if is_pilot(request.slug) and not on_plan:
+        raise StageFailed(
+            409,
+            "video_budget_price_unknown",
+            "試作影片的文字模型尚無可驗證的最高美元報價，不能送出付費 API 請求",
+        )
     usage = await usage_view(session, row)
     # A series document, an episode planned from an approved chapter, a recap or a fix is not
     # one of the month's drafts (docs/videos/SERIES.md): the series has its own monthly cap.
@@ -222,6 +232,14 @@ async def run_stage(
     *,
     job: VideoStageJob | None = None,
 ) -> StageRunOut:
+    # The old synchronous route has no stable request key. A lost answer could be charged
+    # and then submitted again, so pilot stages must use the durable /run/jobs receipt.
+    if is_pilot(request.slug) and job is None:
+        raise StageFailed(
+            409,
+            "video_pilot_durable_required",
+            "試作影片的撰稿與查核必須使用可續查的工作識別碼",
+        )
     provider_name, model, usage, new_draft = await prepare_stage(
         session,
         runtime,
