@@ -3,7 +3,7 @@
 - Checked: 2026-10-16 (Asia/Taipei).
 - Scope: the current `video.json` and `script.md` narration. I read no earlier narrative answers or review files before answering all 13 questions.
 - Source binding: `video.json` SHA-256 `9C13AF1222552BCABCFBA4B0BE2D5BC8C3EA912F0A8CB2C93104DD8AC7B39E50`; `script.md` SHA-256 `8E7AF54E37406E9C16705CA074BA5628B8EC5B749ED8B98114AD178B2A5FEADF`.
-- Answer file: `C:\Users\x8120\mokaair-work\videos\curio-h12\review\narrative-after-deletion-independent.json`; SHA-256 `FB4952538892824AE2C1FFA2765E8D29D90A9FA6BB494F54602841D897CDD92F`.
+- Answer file: `<saved-session>/videos/curio-h12/review/narrative-after-deletion-independent.json`; SHA-256 `FB4952538892824AE2C1FFA2765E8D29D90A9FA6BB494F54602841D897CDD92F`.
 - Narrative gate: 13 yes, 0 no (all 13 questions, including the reference-only chapter-title question). These are story-structure answers, not a claim that every historical ambiguity is resolved.
 
 ## Primary sources inspected

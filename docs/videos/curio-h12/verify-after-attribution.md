@@ -8,7 +8,7 @@ Checked 2026-10-16 (Asia/Taipei). I read the complete current `script.md` and th
 | --- | --- |
 | `docs/videos/curio-h12/video.json` | `D16413FCD54ED2AA5FCFD12B88054FCF8B211AA96110C1514184467615AD3BF1` |
 | `docs/videos/curio-h12/script.md` | `408E3C8BAAFC0063B0B53410B579D14BA09D650753DB466A409E59470F9A620B` |
-| `C:\Users\x8120\mokaair-work\videos\curio-h12\review\narrative-after-attribution-independent.json` | `AFCC0B1B8DB8B28BF86E8645CC70DD70364F21B63BD1C4E3F78004C8A419CEC4` |
+| `<saved-session>/videos/curio-h12/review/narrative-after-attribution-independent.json` | `AFCC0B1B8DB8B28BF86E8645CC70DD70364F21B63BD1C4E3F78004C8A419CEC4` |
 
 The current panel rules hash is `5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75`. The answer file contains all 13 IDs in panel order, with a quoted line ID for each. Local `panelVerdict()` readback: **13 yes, 0 no, 0 advisory; passed**. This is a narrative-structure verdict. I confirmed deleted line `d4uq` is absent from both current script and `video.json`; `ds8v` is present with the attributed wording. The review file was not imported into `review/narrative.json`.
 

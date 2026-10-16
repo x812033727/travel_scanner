@@ -6,7 +6,7 @@ Reviewed 2026-10-16 (Asia/Taipei). Source for the panel: the **entire** narratio
 
 - `docs/videos/curio-h12/video.json` SHA-256: `4E1A03D2C79A642C1DB1E1BD03455626F78CAC704F75B2A8C7E561F40DC62409`
 - `docs/videos/curio-h12/script.md` SHA-256: `D0CB64E23DB5CC45A88AB49A8E7B556BE6DEA6DB0D050924CFE39DEA41477C5D`
-- Independent answers: `C:\Users\x8120\mokaair-work\videos\curio-h12\review\narrative-current-independent-answers.json` (13 entries, 12 yes, 1 no).
+- Independent answers: `<saved-session>/videos/curio-h12/review/narrative-current-independent-answers.json` (13 entries, 12 yes, 1 no).
 
 ## Fact review
 
