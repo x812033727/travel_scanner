@@ -116,10 +116,11 @@ type LanguageDefaults = { caption_locales?: string[]; drama?: { drama_caption_lo
 /**
  * The languages this video gets on top of Traditional Chinese and what of each: titles and
  * descriptions, closed captions, a dub track (docs/videos/LANGUAGES.md). The owner decides once
- * the final cut is approved; the worker then makes only what is ticked and reports each part back,
- * and the video is not scheduled until every chosen part is made. A dub track is timed with its
-  * captions, so ticking it ticks them; the server marks a drama dubbable only when its category and
-  * current cut qualify (docs/videos/DUBS.md), its box greyed out otherwise. The panel
+ * the final cut is approved, except that a brand story can save its dub choice earlier. The
+ * worker reports each completed part back, and the video waits to be scheduled until they are
+ * made. A dub track is timed with its captions, so ticking it ticks them; a story's paid dub
+ * production still waits for the approved clean final cut and switchable Chinese CC. Other drama
+ * dub choices stay greyed out unless the server allows them (docs/videos/DUBS.md). The panel
  * stays after the video is public: more can be ticked, and unticking only holds for what is not on
  * YouTube yet. A dub track the worker gave up on can be asked for again from its cell
  * (docs/videos/DUBS.md): the cell says where that request stands, how the last one ended, and why
@@ -129,11 +130,13 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
   const t = useTranslations("admin.videoReviews");
   const when = useWhen();
   const drama = (project.format ?? "slides") === "drama";
-  // The detail response is authoritative: category alone cannot show whether a story's current
-  // cut has burned subtitles. A previous API omits the flag; retain its explainer behavior while
-  // keeping stories locked until the server explicitly verifies a switchable-CC cut.
-  const dramaDubOff = drama && !(project.dub_allowed ?? (project.category === "explainer"));
+  // The server distinguishes saving a story's dub choice from making the track. An older API
+  // omits the preselection flag, so early selection remains locked on that version.
+  const storyDubPreselectable = drama && project.story_dub_preselectable === true;
+  const dramaDubOff = drama && !(project.dub_allowed ?? (project.category === "explainer")) && !storyDubPreselectable;
   const storyDubOff = dramaDubOff && project.category === "story";
+  const storyDubPending = storyDubPreselectable && project.dub_allowed !== true;
+  const showChoices = finalApproved(project) || storyDubPreselectable;
   // The boxes follow the saved choice whenever it changes (a save, or another admin's), while an
   // edit in progress survives the page's minute-by-minute reads that bring the same choice back.
   const saved = choicesOf(project.locales);
@@ -252,7 +255,7 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
     }
     // A code this page has no sentence for says nothing, and still offers no button.
     if (!open && skipped && blocked && t.has(`dubRetryBlocked.${blocked}`)) say(`dubRetryBlocked.${blocked}`, {});
-    const offered = !open && skipped && !blocked && canManage && chosen[locale].dub;
+    const offered = !open && skipped && !blocked && canManage && chosen[locale].dub && !storyDubPending;
     // Rendered for every saved dub, also with nothing in it, so that the line the next read
     // brings (the request is waiting, taken, ended) is announced; the click itself says nothing.
     return <>
@@ -270,10 +273,11 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
   };
   return <section aria-label={t("languagesTitle")} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
     <p className="font-bold">{t("languagesTitle")}</p>
-    {!finalApproved(project) ? <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesLater")}</p> : <>
+    {!showChoices ? <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesLater")}</p> : <>
       <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesHelp")}</p>
       <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languageProgressHelp")}</p>
       {storyDubOff && <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("dubStoryNeedsSwitchableCC")}</p>}
+      {storyDubPending && <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("dubStoryPreselectedPendingFinal")}</p>}
       {project.youtube_video_id && <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesAfterPublish")}</p>}
       <table className="mt-3 w-full text-sm">
         <thead><tr><th scope="col" className="sr-only">{t("languageColumn")}</th>{LOCALE_PARTS.map((part) => <th key={part} scope="col" className="py-1 text-left font-semibold">{t(`parts.${part}`)}</th>)}</tr></thead>
@@ -285,7 +289,9 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
             return <td key={part} className="py-2 align-top">
               <label className="inline-flex min-h-8 flex-wrap items-center gap-2" title={dubOff ? t(storyDubOff ? "dubStoryNeedsSwitchableCC" : "dubDramaLater") : undefined}>
                 <input type="checkbox" aria-label={`${t(`locales.${locale}`)} ${t(`parts.${part}`)}`} checked={chosen[locale][part]} disabled={locked || dubOff} onChange={(event) => toggle(locale, part, event.target.checked)} />
-                {state && <span className="text-xs text-[var(--muted)]">{partStateLabel(t, state.state, state.reason)}</span>}
+                {part === "dub" && saved[locale].dub && storyDubPending && (!state || state.state === "working")
+                  ? <span className="text-xs text-[var(--muted)]">{t("dubStoryPendingFinal")}</span>
+                  : state && <span className="text-xs text-[var(--muted)]">{partStateLabel(t, state.state, state.reason)}</span>}
               </label>
               {part === "dub" && saved[locale].dub && dubRetry(locale, state)}
             </td>;

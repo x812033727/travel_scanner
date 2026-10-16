@@ -771,13 +771,28 @@ async def upsert_project(
     # A stale or unrelated report cannot consume a newer retry request.
     if payload.retry_acknowledged_id == project.retry_request_id:
         project.retry_acknowledged_id = payload.retry_acknowledged_id
-    # The worker's word on the owner's dub retry requests: it takes one, or says why it will
-    # not. Only the request it names by id moves, and the answer below shows what came of it,
-    # so the worker starts nothing the site did not agree to (docs/videos/DUBS.md §再做一次).
+    # A story cut can change between the worker's readiness read and this report. Never
+    # acknowledge a paid retry take after its exact switchable-CC final becomes ineligible.
+    retry_report = payload.dub_retries
+    if (
+        isinstance(retry_report, dict)
+        and any(
+            isinstance(item, dict) and item.get("status") == "taken"
+            for item in retry_report.values()
+        )
+        and project.format == "drama"
+        and (project.category == "story" or await video_series_kind(session, slug) == "story")
+        and not _story_dub_ready(await _reviews(session, project))
+    ):
+        retry_report = {
+            locale: item for locale, item in retry_report.items()
+            if not (isinstance(item, dict) and item.get("status") == "taken")
+        }
+    # Only the request the worker names by id moves; the answer says what the site accepted.
     _apply_dub_retry(
         session,
         project,
-        dub_retry.apply_worker(project.dub_retries or {}, payload.dub_retries, now),
+        dub_retry.apply_worker(project.dub_retries or {}, retry_report, now),
     )
     project.last_synced_at = now
     project.updated_at = now
@@ -849,6 +864,7 @@ async def project_view(session: AsyncSession, slug: str, work_dir: str | None = 
         ),
         reviews=[_review_out(review) for review in reviews],
         dub_allowed=_dub_allowed(project, series_kind, reviews),
+        story_dub_preselectable=_story_dub_preselectable(project, series_kind),
     )
 
 
@@ -1245,6 +1261,15 @@ def _story_dub_ready(reviews: list[VideoReview]) -> bool:
     )
 
 
+def _story_dub_preselectable(project: VideoProject, series_kind: str | None) -> bool:
+    """An owner may save dub intent for a story before its first clean final exists."""
+    return (
+        project.shorts_line is None
+        and (project.format or "slides") == "drama"
+        and (series_kind == "story" or project.category == "story")
+    )
+
+
 def _dub_allowed(
     project: VideoProject, series_kind: str | None, reviews: list[VideoReview]
 ) -> bool:
@@ -1257,7 +1282,7 @@ def _dub_allowed(
         return False
     if (project.format or "slides") != "drama":
         return True
-    if series_kind == "story" or project.category == "story":
+    if _story_dub_preselectable(project, series_kind):
         return _story_dub_ready(reviews)
     return project.category in DUBBABLE_DRAMA_CATEGORIES
 
@@ -1619,6 +1644,7 @@ async def submit_review(
         and same is None
         and project.format == "drama"
         and (project.category == "story" or await video_series_kind(session, slug) == "story")
+        and _story_dub_ready(reviews)
     ):
         _withdraw_story_dubs_for_new_cut(session, project, now)
     if payload.gate == "languages":
@@ -1827,14 +1853,9 @@ async def decide(
     review.decided_at = now
     review.decided_by_user_id = user.id
     review.updated_at = now
-    if (
-        review.gate == "final"
-        and project.format == "drama"
-        and (project.category == "story" or await video_series_kind(session, slug) == "story")
-    ):
-        # Also covers a final submitted before this policy was deployed: old dub choices must
-        # not carry forward when the owner decides that pending replacement later.
-        _withdraw_story_dubs_for_new_cut(session, project, now)
+    # A newly submitted replacement already withdrew consent from the previous approved cut.
+    # Clearing again here would erase a fresh preselection made while this final was pending,
+    # including the owner's choice before the very first clean final.
     session.add(
         AdminAuditLog(
             actor_user_id=user.id,
@@ -1985,22 +2006,16 @@ async def _apply_locales(
 ) -> None:
     """Store the owner's language choice, note when they first decided, and log the change.
 
-    Explainer dubs keep their narrator-only category rule. A brand story additionally needs
-    QA evidence for the exact approved cut that its zh-TW captions are switchable.
+    Explainer dubs keep their narrator-only category rule. A brand story may store a dub
+    choice early; the worker still needs the exact approved cut's switchable-CC QA before
+    starting any language production.
     """
     if (project.format or "slides") == "drama" and any(
         choice.dub for choice in payload.locales.values()
     ):
         series_kind = await video_series_kind(session, project.slug)
-        story = series_kind == "story" or project.category == "story"
-        reviews = await _reviews(session, project) if story else []
-        if not _dub_allowed(project, series_kind, reviews):
-            if story:
-                raise AppError(
-                    422,
-                    "video_locales_story_dub_requires_switchable_cc",
-                    "品牌故事須先核准這支影片的無燒錄字幕成片與可關閉繁中 CC，才能選配音",
-                )
+        story = _story_dub_preselectable(project, series_kind)
+        if not story and not _dub_allowed(project, series_kind, []):
             raise AppError(
                 422,
                 "video_locales_dub_not_for_drama",
@@ -2246,6 +2261,14 @@ async def request_dub_retry(
     if previous is not None and previous.open:
         return await project_view(session, slug, work_dir)
     reviews = await _reviews(session, project)
+    if project.format == "drama" and (
+        project.category == "story" or await video_series_kind(session, slug) == "story"
+    ) and not _story_dub_ready(reviews):
+        raise AppError(
+            409,
+            "video_dub_retry_story_final_not_ready",
+            "目前成片尚未通過無燒錄字幕與可關閉繁中 CC 的完整審核，配音重做要等通過後才開始",
+        )
     part = (
         language_states(locale_choices(project), reviews, retries).get(locale, {}).get("dub")
     )
@@ -2340,10 +2363,10 @@ async def set_locales(
     Every video is made in Traditional Chinese; here the owner says which of en, ja and ko to
     add and what of each. An empty choice is a decision too ("only Traditional
     Chinese"), and the first save of either kind is what lets the video go up. The worker makes
-    only what was chosen, once the final cut is approved; a drama takes a dub only for a
-    narrator-only explainer or a brand story with a current approved cut whose QA proves
-    switchable zh-TW captions. The choice is
-    the owner's: the pipeline's reports never carry one, and a dropped video takes none. Only a
+    only what was chosen, once the final cut is approved; a narrator-only explainer may use a
+    drama dub. A brand story may save dub intent earlier, but production waits for its current
+    approved cut's QA to prove switchable zh-TW captions. The choice is the owner's: the
+    pipeline's reports never carry one, and a dropped video takes none. Only a
     brand story, which runs without the owner, has the server decide from the settings when its
     video first reports (``_decide_story_locales``); the owner may change that here too.
 

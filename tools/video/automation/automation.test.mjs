@@ -215,7 +215,7 @@ function jevPick(choice, { passed = true, stance = 0.9, demo = 0.8, advice = 0.1
  * stance is written and the switch on; otherwise the site answers 409 as it does.
  */
 function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused = false, videos = [], dramaRequests = [], slidesRequests = [], judge = null } = {}) {
-  const calls = { run: [], reviews: [], reports: [], pages: [], drama: [], slides: [], topics: 0, judge: [] };
+  const calls = { run: [], reviews: [], reports: [], details: [], pages: [], drama: [], slides: [], topics: 0, judge: [] };
   const files = new Map();
   const requests = dramaRequests.map((request) => ({ status: "queued", slug: null, ...request }));
   const slides = slidesRequests.map((request) => ({ status: "queued", slug: null, title: null, note: null, ...request }));
@@ -396,7 +396,8 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
       }
       if (!projects.has(slug)) return json({ code: "video_project_not_found", detail: "no" }, 404);
       // As the tool's GET answers (ProjectOut): the owner's language choice too, which review-push binds a batch to.
-      return json({ slug, title: slug, stage: "x", checklist: [], youtube_video_id: listed.get(slug)?.youtube_video_id ?? null, locales: listed.get(slug)?.locales ?? {}, locales_decided_at: listed.get(slug)?.locales_decided_at ?? null, reviews: reviewsOf(slug) });
+      calls.details.push(slug);
+      return json({ slug, title: slug, stage: "x", checklist: [], youtube_video_id: listed.get(slug)?.youtube_video_id ?? null, locales: listed.get(slug)?.locales ?? {}, locales_decided_at: listed.get(slug)?.locales_decided_at ?? null, dub_allowed: listed.get(slug)?.dub_allowed, reviews: reviewsOf(slug) });
     }
     return json({ code: "not_found", detail: pathname }, 404);
   };
@@ -3569,6 +3570,7 @@ test("language authentication, quota and service failures defer the video withou
 
 test("captions and a dub chosen together: the sheet carries the budgets, the dub is checked and retaken once, and the batch attaches the track and waits for the owner's upload", async () => {
   const video = await finishedVideo({ checks: { ja: 1 } });
+  const details = video.site.calls.details.length;
   video.choose({ ja: { metadata: true, captions: true, dub: true } });
   assert.match(await video.step(), /^chatgpt-ads-off: ja metadata and captions translated and reviewed$/);
   const [call] = video.calls("translator");
@@ -3577,6 +3579,7 @@ test("captions and a dub chosen together: the sheet carries the budgets, the dub
   assert.match(call.payload.worksheet.note, /max_chars/);
 
   assert.match(await video.step(), /^chatgpt-ads-off: ja dub made after 1 retake; Jev passed every line$/);
+  assert.equal(video.site.calls.details.length, details, "an ordinary video needs no new story eligibility reads");
   const flags = path.join(video.workdir, "review", "check-flags.ja.json");
   assert.deepEqual(video.runs.filter((run) => /^(dub|check-audio) .*--locale/.test(run)), [
     `dub --slug ${video.slug} --locale ja`,
@@ -4096,6 +4099,117 @@ async function givenUpDub(options = {}) {
   };
   return { video, dubs, reason, skipped, ask, request: () => video.listed().dub_retries.ko };
 }
+
+test("a brand-story dub choice waits for fresh switchable-CC approval before translation or any paid take", async () => {
+  const video = await finishedVideo();
+  const original = video.state();
+  atomicWrite(autoFile(video), JSON.stringify({ ...original, format: "drama", series: { slug: "brand-stories", episode: 1, kind: "story" } }));
+  // The worker's series identity still protects the story when the site's list category changes.
+  video.listed().category = "explainer";
+  video.choose({ en: { metadata: true, captions: true, dub: true } });
+  const [ran, translated, details] = [video.runs.length, video.calls("translator").length, video.site.calls.details.length];
+  assert.equal(await video.step(), null, "missing eligibility fails closed even though the local final was approved");
+  assert.deepEqual([video.runs.length, video.calls("translator").length], [ran, translated]);
+  assert.equal(video.site.calls.details.length, details + 1, "the worker fetched a fresh detail before languages");
+
+  video.listed().dub_allowed = true;
+  const final = video.reviews("final")[0];
+  const approvedSha = final.content_sha256;
+  final.content_sha256 = "f".repeat(64);
+  assert.notEqual(final.content_sha256, approvedSha);
+  assert.equal(await video.step(), null, "site eligibility without the local final's SHA cannot start language work");
+  assert.deepEqual([video.runs.length, video.calls("translator").length], [ran, translated]);
+  final.content_sha256 = approvedSha;
+  assert.match(await video.step(), /^chatgpt-ads-off: en metadata and captions translated and reviewed$/);
+  const paid = dubRuns(video).length;
+  video.listed().dub_allowed = false;
+  assert.equal(await video.step(), null, "a revoked final pauses the dub even after translation");
+  assert.equal(dubRuns(video).length, paid, "no paid dub or check ran");
+  assert.equal(video.state().languages?.en, undefined, "no dub attempt was recorded");
+
+  video.listed().dub_allowed = true;
+  assert.match(await video.step(), /^chatgpt-ads-off: en dub made; Jev passed every line$/);
+  assert.deepEqual(dubRuns(video, ran), dubAndCheck(video, "en"));
+});
+
+test("replacing a story final during a dub stops later paid speech and rewriting calls", async (t) => {
+  for (const { label, dubs, later } of [
+    { label: "dub check", dubs: {}, later: "check-audio" },
+    { label: "shortening rewrite", dubs: { en: { over: 1 } }, later: "translator" },
+  ]) await t.test(label, async () => {
+    const video = await finishedVideo({ dubs });
+    atomicWrite(autoFile(video), JSON.stringify({ ...video.state(), format: "drama", category: "story" }));
+    video.listed().category = "story";
+    video.listed().dub_allowed = true;
+    video.choose({ en: { metadata: false, captions: true, dub: true } });
+    assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+    const final = video.reviews("final")[0];
+    const prior = video.ctx.runCommand;
+    let replaced = false;
+    video.ctx.runCommand = async (command, runCtx) => {
+      const result = await prior(command, runCtx);
+      if (!replaced && command[0] === "dub" && !command.includes("--dry-run")) {
+        replaced = true;
+        video.site.reviewsOf(video.slug).unshift({ ...final, id: "new-final", content_sha256: "a".repeat(64), created_at: "2026-09-27T12:00:00Z" });
+      }
+      return result;
+    };
+    const [ran, rewrites] = [video.runs.length, video.calls("translator", "shorten").length];
+    assert.equal(await video.step(), null, `${later} waits after the site's current cut changed`);
+    assert.equal(replaced, true);
+    assert.deepEqual(dubRuns(video, ran), [`dub --slug ${video.slug} --locale en`], "the first dub was the last paid speech call");
+    assert.equal(video.calls("translator", "shorten").length, rewrites, "no paid shortening rewrite ran");
+    assert.equal(video.state().languages.en.shorten, 0, "a stopped rewrite does not use a shortening round");
+  });
+});
+
+test("replacing a story final during translation stops the paid caption review", async () => {
+  let video;
+  video = await finishedVideo({ translate: (sheet) => {
+    const final = video.reviews("final")[0];
+    video.site.reviewsOf(video.slug).unshift({ ...final, id: "new-final", content_sha256: "a".repeat(64), created_at: "2026-09-27T12:00:00Z" });
+    return filledSheet(sheet);
+  } });
+  atomicWrite(autoFile(video), JSON.stringify({ ...video.state(), format: "drama", category: "story" }));
+  video.listed().category = "story";
+  video.listed().dub_allowed = true;
+  video.choose({ en: { metadata: true, captions: true, dub: true } });
+  assert.equal(await video.step(), null);
+  assert.equal(video.calls("translator").length, 1, "the first paid translation completed");
+  assert.equal(video.calls("caption_reviewer").length, 0, "the replacement final blocks the next paid request");
+  assert.deepEqual(dubRuns(video), []);
+});
+
+test("a story dub retry stays requested if final eligibility disappears before it is taken", async () => {
+  const { video, dubs, skipped, ask, request } = await givenUpDub();
+  video.listed().category = "story";
+  dubs.ko.over = 0;
+  ask();
+  const [ran, reports] = [video.runs.length, video.site.calls.reports.length];
+  assert.equal(await video.step(), null, "the preselected retry waits without a clean final");
+  assert.deepEqual(dubRuns(video, ran), []);
+  assert.equal(request().status, "requested");
+  assert.ok(existsSync(skipped));
+
+  video.listed().dub_allowed = true;
+  const command = video.ctx.runCommand;
+  video.ctx.runCommand = async (args, runCtx) => {
+    const result = await command(args, runCtx);
+    if (args[0] === "dub" && args.includes("--dry-run")) video.listed().dub_allowed = false;
+    return result;
+  };
+  assert.equal(await video.step(), null, "a replacement final during the free checks cannot take the retry");
+  assert.deepEqual(dubRuns(video, ran), [dryRun(video, "ko")]);
+  assert.ok(existsSync(skipped), "the skipped track remains intact");
+  assert.equal(request().status, "requested");
+  assert.ok(!video.site.calls.reports.slice(reports).some((entry) => entry.dub_retries?.ko?.status === "taken"));
+
+  video.ctx.runCommand = command;
+  video.listed().dub_allowed = true;
+  assert.equal(await video.step(), "chatgpt-ads-off: ko dub made; Jev passed every line");
+  assert.deepEqual(dubRuns(video, ran), [dryRun(video, "ko"), dryRun(video, "ko"), ...dubAndCheck(video, "ko")]);
+  assert.equal(request().status, "taken");
+});
 
 test("a skipped dub asked for again is taken once the site agrees, cleared, made and heard with the rules as they are now, and its batch closes the request", async () => {
   const { video, dubs, reason, skipped, ask, request } = await givenUpDub();

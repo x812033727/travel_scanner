@@ -518,20 +518,17 @@ async def test_the_owner_decides_a_video_s_languages_once_and_a_drama_or_a_dropp
     assert project.locales == {"en": {"metadata": False, "captions": True, "dub": False}}, (
         "a drama takes descriptions and captions"
     )
-    # Explainers retain the narrator-only dub path; an old story with no switchable-CC QA
-    # remains locked, as do other drama categories.
+    # A story saves intent before its clean cut exists; other ineligible dramas stay locked.
     dub_en = LocalesIn.model_validate({"locales": {"en": {"dub": True}}})
-    for category in ("story", "drama", "anime", "long-drama"):
+    project.category = "story"
+    await admin_service.set_locales(session, "v", owner, dub_en)
+    assert project.locales["en"] == {"metadata": False, "captions": True, "dub": True}
+    for category in ("drama", "anime", "long-drama"):
         project.category = category
         with pytest.raises(AppError) as refused_dub:
             await admin_service.set_locales(session, "v", owner, dub_en)
-        expected = (
-            "video_locales_story_dub_requires_switchable_cc"
-            if category == "story"
-            else "video_locales_dub_not_for_drama"
-        )
-        assert refused_dub.value.code == expected, category
-    assert project.locales == {"en": {"metadata": False, "captions": True, "dub": False}}
+        assert refused_dub.value.code == "video_locales_dub_not_for_drama", category
+    assert project.locales == {"en": {"metadata": False, "captions": True, "dub": True}}
     project.category = "explainer"
     await admin_service.set_locales(session, "v", owner, dub_en)
     assert project.locales == {"en": {"metadata": False, "captions": True, "dub": True}}, (
@@ -548,8 +545,9 @@ async def test_the_owner_decides_a_video_s_languages_once_and_a_drama_or_a_dropp
     assert project.locales == {"en": {"metadata": False, "captions": True, "dub": False}}
 
 
-def _story_final(*, burned: bool | None = False, status: str = "approved") -> VideoReview:
-    sha = "f" * 64
+def _story_final(
+    *, burned: bool | None = False, status: str = "approved", sha: str = "f" * 64
+) -> VideoReview:
     qa: dict[str, Any] = {
         "ok": True,
         "final_sha256": sha,
@@ -601,25 +599,17 @@ async def test_story_dub_guard_uses_series_kind_even_after_relabel_and_legacy_en
     monkeypatch.setattr(admin_service, "video_series_kind", AsyncMock(return_value="story"))
     monkeypatch.setattr(admin_service, "project_view", AsyncMock(return_value="view"))
     chosen = LocalesIn.model_validate({"locales": {"en": {"dub": True}}})
-    with pytest.raises(AppError) as refusal:
-        await admin_service.set_locales(session, project.slug, owner, chosen)
-    assert refusal.value.code == "video_locales_story_dub_requires_switchable_cc"
-    with pytest.raises(AppError) as legacy_refusal:
-        await admin_service.set_dub_locales(
-            session, project.slug, owner, DubLocalesIn.model_validate({"locales": ["ja"]})
-        )
-    assert legacy_refusal.value.code == refusal.value.code
-    assert project.locales == {} and session.commit.await_count == 0
-
-    reviews.return_value = [_story_final()]
     assert await admin_service.set_locales(session, project.slug, owner, chosen) == "view"
     assert project.locales["en"] == {"metadata": False, "captions": True, "dub": True}
+    assert not admin_service._dub_allowed(project, "story", reviews.return_value)
     assert await admin_service.set_dub_locales(
         session, project.slug, owner, DubLocalesIn.model_validate({"locales": ["ja"]})
     ) == "view"
     assert project.locales["en"]["dub"] is False and project.locales["ja"]["dub"] is True
+    reviews.return_value = [_story_final()]
     assert admin_service._dub_allowed(project, "story", reviews.return_value)
     assert not admin_service._dub_allowed(project, "story", [_story_final(burned=True)])
+    assert admin_service._story_dub_preselectable(project, "story")
 
 
 @pytest.mark.asyncio
@@ -636,7 +626,8 @@ async def test_project_detail_exposes_the_same_story_dub_decision(
     monkeypatch.setattr(admin_service, "video_series_kind", AsyncMock(return_value="story"))
     monkeypatch.setattr(admin_service, "spend_by_slug", AsyncMock(return_value={}))
     session = AsyncMock()
-    assert not (await admin_service.project_view(session, project.slug)).dub_allowed
+    before = await admin_service.project_view(session, project.slug)
+    assert not before.dub_allowed and before.story_dub_preselectable
     reviews.return_value = [_story_final()]
     assert (await admin_service.project_view(session, project.slug)).dub_allowed
     reviews.return_value = [_story_final(status="pending"), _story_final()]
@@ -666,7 +657,7 @@ def test_replacing_a_story_cut_withdraws_dubs_but_keeps_existing_captions() -> N
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("series_kind", [None, "story"])
-async def test_a_new_story_final_submission_withdraws_dub_selection(
+async def test_first_story_final_submission_keeps_early_dub_selection(
     monkeypatch: pytest.MonkeyPatch, series_kind: str | None,
 ) -> None:
     project = VideoProject(
@@ -689,9 +680,9 @@ async def test_a_new_story_final_submission_withdraws_dub_selection(
         ReviewIn(gate="final", content_sha256="f" * 64, summary="new cut"), token,
     )
     assert result.status == "pending"
-    assert project.locales == {"en": {"metadata": True, "captions": True, "dub": False}}
-    assert any(
-        row.action == "video_locales_set"
+    assert project.locales == {"en": {"metadata": True, "captions": True, "dub": True}}
+    assert not any(
+        getattr(row, "action", None) == "video_locales_set"
         and row.metadata_json.get("reason") == "story_final_cut_changed"
         for row in (call.args[0] for call in session.add.call_args_list)
     )
@@ -699,7 +690,7 @@ async def test_a_new_story_final_submission_withdraws_dub_selection(
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("series_kind", [None, "story"])
-async def test_approving_an_existing_pending_story_replacement_withdraws_old_dubs(
+async def test_approving_first_pending_story_final_keeps_early_dub_selection(
     monkeypatch: pytest.MonkeyPatch, series_kind: str | None,
 ) -> None:
     project = VideoProject(
@@ -720,7 +711,125 @@ async def test_approving_an_existing_pending_story_replacement_withdraws_old_dub
         session, project.slug, review.id, owner, DecisionIn(decision="approve")
     )
     assert decided.status == "approved"
-    assert project.locales["ko"] == {"metadata": True, "captions": True, "dub": False}
+    assert project.locales["ko"] == {"metadata": True, "captions": True, "dub": True}
+
+
+@pytest.mark.asyncio
+async def test_replacing_approved_clean_story_final_withdraws_prior_dub_choice(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    project = VideoProject(
+        id=uuid4(), slug="story-example", title="Story", stage="final", format="drama",
+        category="story", locales={"en": {"metadata": True, "captions": True, "dub": True}},
+        locales_decided_at=datetime.now(UTC),
+    )
+    session = AsyncMock()
+    session.add = MagicMock()
+    store = MagicMock()
+    token = VideoToolToken(id=uuid4(), name="tool", token_hash="a" * 64, token_prefix="test")
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(
+        admin_service, "_reviews", AsyncMock(return_value=[_story_final(sha="a" * 64)])
+    )
+    monkeypatch.setattr(admin_service, "_check_anime_review", AsyncMock(return_value=False))
+    monkeypatch.setattr(admin_service, "video_series_kind", AsyncMock(return_value="story"))
+    monkeypatch.setattr(admin_service, "auto_approves_final", AsyncMock(return_value=False))
+    monkeypatch.setattr(admin_service, "compilation_slugs", AsyncMock(return_value=set()))
+    result = await admin_service.submit_review(
+        session, store, project.slug,
+        ReviewIn(gate="final", content_sha256="e" * 64, summary="replacement"), token,
+    )
+    assert result.status == "pending"
+    assert project.locales["en"] == {"metadata": True, "captions": True, "dub": False}
+    assert any(
+        getattr(row, "action", None) == "video_locales_set"
+        and row.metadata_json.get("reason") == "story_final_cut_changed"
+        for row in (call.args[0] for call in session.add.call_args_list)
+    )
+
+
+@pytest.mark.asyncio
+async def test_replacing_an_unqualified_story_final_retains_preselection(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    project = VideoProject(
+        id=uuid4(), slug="story-example", title="Story", stage="final", format="drama",
+        category="story", locales={"en": {"metadata": True, "captions": True, "dub": True}},
+        locales_decided_at=datetime.now(UTC),
+    )
+    session = AsyncMock()
+    session.add = MagicMock()
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(
+        admin_service, "_reviews",
+        AsyncMock(return_value=[_story_final(burned=True, sha="a" * 64)]),
+    )
+    monkeypatch.setattr(admin_service, "_check_anime_review", AsyncMock(return_value=False))
+    monkeypatch.setattr(admin_service, "video_series_kind", AsyncMock(return_value="story"))
+    monkeypatch.setattr(admin_service, "auto_approves_final", AsyncMock(return_value=False))
+    monkeypatch.setattr(admin_service, "compilation_slugs", AsyncMock(return_value=set()))
+    await admin_service.submit_review(
+        session, MagicMock(), project.slug,
+        ReviewIn(gate="final", content_sha256="e" * 64, summary="first clean cut"),
+        VideoToolToken(id=uuid4(), name="tool", token_hash="a" * 64, token_prefix="test"),
+    )
+    assert project.locales["en"]["dub"] is True
+
+
+@pytest.mark.asyncio
+async def test_story_retry_request_waits_for_the_current_clean_final(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    project = VideoProject(
+        id=uuid4(), slug="story-example", title="Story", stage="languages", format="drama",
+        category="story", locales={"ja": {"metadata": True, "captions": True, "dub": True}},
+    )
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(
+        admin_service, "_reviews", AsyncMock(return_value=[_story_final(burned=True)])
+    )
+    session = AsyncMock()
+    with pytest.raises(AppError) as refusal:
+        await admin_service.request_dub_retry(
+            session, MagicMock(), project.slug,
+            User(id=uuid4(), email="owner@example.com", password_hash="unused"),
+            "ja", work_dir=None, speech=MagicMock(),
+        )
+    assert refusal.value.code == "video_dub_retry_story_final_not_ready"
+    assert session.commit.await_count == 0
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("ready", [False, True])
+async def test_story_worker_cannot_take_a_retry_after_final_readiness_changes(
+    monkeypatch: pytest.MonkeyPatch, ready: bool,
+) -> None:
+    project = VideoProject(
+        id=uuid4(), slug="story-example", title="Story", stage="languages", format="drama",
+        category="story", checklist=[], dub_retries={},
+    )
+    session = AsyncMock()
+    session.scalar.return_value = project
+    retry_id = str(uuid4())
+    report = {"ja": {"id": retry_id, "status": "taken"}}
+    applied = MagicMock()
+    apply_worker = MagicMock(return_value=applied)
+    monkeypatch.setattr(dub_retry, "apply_worker", apply_worker)
+    monkeypatch.setattr(admin_service, "_apply_dub_retry", MagicMock())
+    monkeypatch.setattr(
+        admin_service, "_reviews", AsyncMock(return_value=[_story_final(burned=not ready)])
+    )
+    monkeypatch.setattr(admin_service, "video_series_kind", AsyncMock(return_value="story"))
+    monkeypatch.setattr(admin_service, "_decide_story_locales", AsyncMock())
+    monkeypatch.setattr(admin_service, "project_view", AsyncMock(return_value="view"))
+    assert await admin_service.upsert_project(
+        session, MagicMock(), project.slug,
+        ProjectIn(
+            title="Story", stage="languages", format="drama", category="story",
+            dub_retries=report,
+        ),
+    ) == "view"
+    assert apply_worker.call_args.args[1] == (report if ready else {})
 
 
 def test_a_review_carries_up_to_48_files_and_a_subject_that_is_an_id() -> None:
