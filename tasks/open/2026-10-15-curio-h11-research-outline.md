@@ -68,3 +68,5 @@ H11 將材料定年、字詞分布、新聞稿撤下、背面透字、筆跡推�
 ## 2026-10-16 獨立正式劇本史料查核
 
 查核員 `codex-gpt6-h10-h11-fact` 對版號 SHA-256 `FC9B6B1FF2F94AB75EA1AA2D4E6753AD1D001B0DE82CE693A1D3FD89F8E801A4` 完成逐句、逐景資料與上架文字查核；[verify-1.md](../../docs/videos/curio-h11/verify-1.md) 記錄全部 75 句／73 景、來源、存取限制及聽眾檢查。沒有史實修改或未解主張，lint 0 errors／0 warnings。`v6856059` 一句 41 字，配音時注意停頓；期刊 Naibbe 全文未取得，正式稿只使用作者 README 能支持的範圍。此收據只覆核當前 SHA；若劇本改字要重新核對及重新綁定。獨立嚴格敘事盲評十三題全過，但站主正式劇本審核仍未完成。未送後台、未付費。
+
+主代理匯入新的 script-only 盲評答案，`narrative` 工具 exit 0（13/13 yes）。`script --slug curio-h11` 重新生成稿件，SHA-256 `484436B7CA89D3D2F0E372D87768F0533B319B72ED40FCFE4413ADB26FE8E108`；`review-push --gate script` 成功，`review-pull --gate script` 讀回 `waiting for the owner`。正式劇本已在 `/admin/videos` 等待站主核准；尚未配音／產圖。
