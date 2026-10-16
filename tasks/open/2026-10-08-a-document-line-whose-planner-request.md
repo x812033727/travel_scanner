@@ -1,21 +1,21 @@
 ---
 id: 2026-10-08-a-document-line-whose-planner-request
 title: A document line whose planner request keeps waiting holds every discussion thread behind it
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-pr-tidy
+claimed_at: 2026-10-16T17:40:25Z
 created_at: 2026-10-08T02:24:31Z
 completed_at:
-branch:
+branch: claude/youthful-brahmagupta-1giys7
 depends_on: []
 scope:
   - tools/video/automation/discuss.mjs
   - tools/video/automation/discuss.test.mjs
-  - tools/video/automation/series.test.mjs
   - .agents/skills/youtube-video/references/series.md
-  - tools/video/automation/flow.mjs
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # A document line whose planner request keeps waiting holds every discussion thread behind it
