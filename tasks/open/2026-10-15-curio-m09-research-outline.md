@@ -76,3 +76,4 @@ scope:
 
 - `docs/videos/curio-m09/verify-1.md` 逐列檢查 204 個旁白、畫面文字／提示及上架文字項目；**事實 PASS** 綁定 `video.json` SHA-256 `795ba47d4864702d6476b75653f27f0e4b09665d3d4d783c80c555498b3f5637`，未留事實阻斷。2016 前／背盤原論文已實讀，先前背盤小盤配置和原論文缺鏈問題均已解決；30 殘存齒輪、69 模型齒輪、十九年／223 月及 2024 孔數均分清。
 - 獨立 lint 0 error、2 個研究場景詞頻 warning。查核者未修改正式稿；此票仍 open，待協調者完成正式稿敘事／盲評收斂及站主劇本核准。
+- 另一位未讀先前答案的 script-only 盲評者對修稿 SHA `795ba47d4864702d6476b75653f27f0e4b09665d3d4d783c80c555498b3f5637` 判 13 題全過，主代理匯入正規化答案後 `narrative` 工具 exit 0。`script --slug curio-m09` 生成稿 SHA `DB36B91ADE79E1B6AD06633889C4B42D07E45730D39518DB4E85F6F2C0F09C6F`；`review-push --gate script` 成功、`review-pull --gate script` 讀回 `waiting for the owner`。正式劇本已送後台，等站主核准；尚未啟動付費製作。
