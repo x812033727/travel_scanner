@@ -2,7 +2,7 @@
   "schema_version": 1,
   "scope": "formal-script-draft",
   "checked_on": "2026-10-16",
-  "independent_script_review": "pending",
+  "independent_script_review": "round1_failed_revision1_awaiting_review",
   "claim_sources": {
     "H10-C01": [
       "H10-S01",
@@ -84,8 +84,10 @@
     {
       "line_id": "h16d9247",
       "scene_id": "tease-note",
-      "text": "十四年後，搜索者找到一張被加寫過的紙，開始分辨兩次留下的訊息。",
+      "text": "十四年後，搜索者找到一張加寫過的紙，邊緣還留著幾個人的簽名。",
       "claims": [
+        "H10-C04",
+        "H10-C05",
         "H10-C08"
       ],
       "sources": [
@@ -121,38 +123,12 @@
     {
       "line_id": "h81770de",
       "scene_id": "opening-question",
-      "text": "這些相隔很久的動作，能把人帶回那兩艘船嗎？",
+      "text": "那些船，還有紙上留下名字的人，能從這些線索裡，被重新認出來嗎？",
       "claims": [
         "H10-E01"
       ],
       "sources": [],
       "kind": "editorial"
-    },
-    {
-      "line_id": "h69b3e42",
-      "scene_id": "ships-named",
-      "text": "那兩艘船，一艘叫幽冥號，一艘叫恐怖號，由富蘭克林帶隊。",
-      "claims": [
-        "H10-C01"
-      ],
-      "sources": [
-        "H10-S01",
-        "H10-S07"
-      ],
-      "kind": "sourced"
-    },
-    {
-      "line_id": "h3e67f13",
-      "scene_id": "starting-count",
-      "text": "剛離開英國時，船上合計一百三十四人，還有補給船同行。",
-      "claims": [
-        "H10-C01"
-      ],
-      "sources": [
-        "H10-S01",
-        "H10-S07"
-      ],
-      "kind": "sourced"
     },
     {
       "line_id": "h3017f70",
@@ -168,10 +144,25 @@
       "kind": "sourced"
     },
     {
-      "line_id": "hada9051",
-      "scene_id": "remaining-count",
-      "text": "開場留下的那支隊伍，就是從這裡繼續往西，尋找西北航道。",
+      "line_id": "h3e67f13",
+      "scene_id": "starting-count",
+      "text": "當初啟航時，兩船原本共有一百三十四人。返航者離開後，船上就是開場那支隊伍。",
       "claims": [
+        "H10-C01",
+        "H10-C02"
+      ],
+      "sources": [
+        "H10-S01",
+        "H10-S07"
+      ],
+      "kind": "sourced"
+    },
+    {
+      "line_id": "h69b3e42",
+      "scene_id": "ships-named",
+      "text": "富蘭克林帶著留下的人，駕幽冥號和恐怖號繼續往西，想把西北航道走通。",
+      "claims": [
+        "H10-C01",
         "H10-C02"
       ],
       "sources": [
@@ -313,7 +304,7 @@
     {
       "line_id": "h72b4789",
       "scene_id": "return-to-note",
-      "text": "一年後加寫的內容，給出了另一種景況：船隊已經棄船。",
+      "text": "隔年加寫的內容，給出了另一種景況：船隊已經棄船。",
       "claims": [
         "H10-C05"
       ],
@@ -373,15 +364,16 @@
     {
       "line_id": "h421fbee",
       "scene_id": "two-writers",
-      "text": "這一次留下名字的，是克羅齊和菲茨詹姆斯。後來的人只能沿著他們的字往下讀。",
+      "text": "這次，克羅齊和菲茨詹姆斯在紙邊留下名字。找到船之外，搜索也要辨認留下記錄的人。",
       "claims": [
         "H10-C05",
-        "H10-C06"
+        "H10-C06",
+        "H10-E01"
       ],
       "sources": [
         "H10-S02"
       ],
-      "kind": "sourced"
+      "kind": "sourced_with_editorial_bridge"
     },
     {
       "line_id": "hb624337",
@@ -410,33 +402,35 @@
     {
       "line_id": "h7ca6f6b",
       "scene_id": "route-limits",
-      "text": "紙上記下了計畫，可是他們後來走了多遠，又在哪裡分開？",
+      "text": "除了這張紙，因紐特人的見聞裡，還留下了什麼？",
       "claims": [
-        "H10-C07",
+        "H10-C08",
         "H10-E01"
       ],
       "sources": [
-        "H10-S02"
+        "H10-S02",
+        "H10-S03"
       ],
       "kind": "sourced_with_editorial_bridge"
     },
     {
       "line_id": "habe3055",
       "scene_id": "search-begins",
-      "text": "紙條沒有再往下寫。後來的搜索者進入北極，還得找能接上空白的線索。",
+      "text": "搜索者得向海岸上的居民打聽，把同一場遠征留下的消息，一條條接上。",
       "claims": [
-        "H10-C08"
+        "H10-C08",
+        "H10-E01"
       ],
       "sources": [
         "H10-S02",
         "H10-S03"
       ],
-      "kind": "sourced"
+      "kind": "sourced_with_editorial_bridge"
     },
     {
       "line_id": "h1020a89",
       "scene_id": "rae-accounts",
-      "text": "一八五四年，探險者約翰雷，從因紐特人那裡聽到南行隊伍的消息。",
+      "text": "一八五四年，約翰雷記下因紐特人的見聞：有白人曾沿威廉王島西岸往南走。",
       "claims": [
         "H10-C08"
       ],
@@ -449,7 +443,7 @@
     {
       "line_id": "hf9694ad",
       "scene_id": "southward-people",
-      "text": "那些口述提到，曾有白人沿岸向南，也有死者被發現。",
+      "text": "他們還告訴雷，在更南邊的巴克河口附近，發現過死者。",
       "claims": [
         "H10-C08"
       ],
@@ -901,9 +895,9 @@
     {
       "line_id": "hcc5d7ed",
       "scene_id": "new-question",
-      "text": "你看到這樣一艘船，可能會問：裡面的人，是不是曾經把它開到這裡？",
+      "text": "除了保存的狀況，哪些構造能確認這艘船的身分？",
       "claims": [
-        "H10-C13",
+        "H10-C12",
         "H10-E01"
       ],
       "sources": [
@@ -914,15 +908,14 @@
     {
       "line_id": "h83aa802",
       "scene_id": "limit-window",
-      "text": "可是窗戶和艙口能告訴我們保存狀況，還不能替船員說出最後的航程。",
+      "text": "搜索隊還得拿水下看到的部件，去對照留存的船圖。",
       "claims": [
-        "H10-C13",
-        "H10-E01"
+        "H10-C12"
       ],
       "sources": [
         "H10-S05"
       ],
-      "kind": "sourced_with_editorial_bridge"
+      "kind": "sourced"
     },
     {
       "line_id": "h8533dbb",
@@ -990,8 +983,9 @@
     {
       "line_id": "h93c7c04",
       "scene_id": "people-question",
-      "text": "當兩艘船都能在海圖上標出來，搜索還能往哪裡走？紙條上的人，仍值得繼續找。",
+      "text": "還記得補記邊緣的菲茨詹姆斯嗎？船能靠構造認出，他也在等待能辨認本人的證據。",
       "claims": [
+        "H10-C05",
         "H10-C15",
         "H10-E01"
       ],
@@ -1004,7 +998,7 @@
     {
       "line_id": "h2fd7271",
       "scene_id": "signed-person",
-      "text": "二〇二四年，一項身分研究，把注意力帶回紙條上的菲茨詹姆斯。",
+      "text": "二〇二四年，研究團隊把遺骸的遺傳資料，和一位在世後代的樣本放在一起比對。",
       "claims": [
         "H10-C15"
       ],
@@ -1017,20 +1011,7 @@
     {
       "line_id": "hf310a51",
       "scene_id": "dna-comparison",
-      "text": "研究團隊用後代的遺傳資料比對，再結合家譜，確認了遺骸屬於他。",
-      "claims": [
-        "H10-C15"
-      ],
-      "sources": [
-        "H10-S02",
-        "H10-S07"
-      ],
-      "kind": "sourced"
-    },
-    {
-      "line_id": "h3b3d99c",
-      "scene_id": "person-payoff",
-      "text": "那位和克羅齊一起留下棄船補記的人，終於接上另一份獨立的證據。",
+      "text": "再結合家譜，他們確認這份遺骸屬於菲茨詹姆斯。紙上那個簽名，終於對上了人。",
       "claims": [
         "H10-C15"
       ],
@@ -1043,7 +1024,7 @@
     {
       "line_id": "h2a5e43b",
       "scene_id": "identity-scope",
-      "text": "知道這份遺骸屬於誰，讓搜索更接近一個具體的人；他的完整遭遇，還要繼續查。",
+      "text": "遺骸的身分能確認，還不能替他補上從棄船到死亡之間的每一段經歷。",
       "claims": [
         "H10-C15",
         "H10-E01"

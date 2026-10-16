@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-m09-research-outline
 title: Curio M09 research and outline
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-curio-h12-m09-scripts
-claimed_at: 2026-10-15T23:53:43Z
+owner:
+claimed_at:
 created_at: 2026-10-15T16:34:56Z
 completed_at:
 branch: codex/curio-next-five-20261016

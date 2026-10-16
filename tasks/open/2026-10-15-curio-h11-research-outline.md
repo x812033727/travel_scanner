@@ -58,3 +58,9 @@ video SHA-256 `560e1e84f82768a440480a9ab39d8c8b394fe0c88d608b9818fc457dda6e8134`
 H11 將材料定年、字詞分布、新聞稿撤下、背面透字、筆跡推測及 Naibbe 作者模型分層；沒有聲稱全文破解或實測模型。待獨立正式稿覆核及站主劇本核准；未送劇本後台、未配音、未產圖、未發布。
 
 本輪 `git diff --check`、逐句／來源／SHA 一致性檢查通過；`npm run check:tasks` 通過，驗證 1895 票，保留其他任務既有長期認領／重疊警告。作者收據並不充當盲評。
+
+## 2026-10-16 第一輪敘事退修
+
+獨立盲評未過：chapters_link, payoffs, no_recap, chapters_are_events, no_detour。已完成第 1 輪結構修訂，原答案保留在 `narrative-round1.json`，逐項回應在 `narrative-revision-1.md`。新版 video SHA `fc9b6b1ff2f94ab75ea1aa2d4e6753ad1d001b0de82ce693a1d3fd89f8e801a4`；75 句，估算 9.57 分。lint 0 errors／0 warnings；未標 narrative pass。提交後釋出認領，供獨立事實覆核接手。無後台劇本送審、無付費呼叫。
+
+第 1 輪修訂驗證：逐句文字及時間軸句序、主張／來源 ID、video／brief SHA 一致；`git diff --check` 與 `npm run check:tasks` 通過（1895 票，只有其他既有認領警告）。

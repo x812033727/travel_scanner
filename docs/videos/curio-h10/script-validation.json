@@ -2,7 +2,9 @@
   "schema_version": 1,
   "checked_on": "2026-10-16",
   "kind": "author-local-validation",
-  "video_sha256": "e11a22a7a29086a06a8261943cd3e78bea6775223705cb3eab9b8dbdffa1a559",
+  "revision": 1,
+  "previous_video_sha256": "e11a22a7a29086a06a8261943cd3e78bea6775223705cb3eab9b8dbdffa1a559",
+  "video_sha256": "58e37c2eb2bc8190ba16aa4b9dc5050397819a12e263b29cf3a0641dba7c306b",
   "brief_sha256": "ab081206f4055046c18b7a89016f05c9f885aa6bdd37ea3c2e2c661f2d74aa0d",
   "command": "node tools/video/cli.mjs lint --slug curio-h10 --json",
   "exit_code": 0,
@@ -11,30 +13,30 @@
     "warnings": [
       {
         "path": "scenes",
-        "message": "\"historical\" is in 34 of 74 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        "message": "\"historical\" is in 32 of 72 pictures (a third is plenty): give each chapter its own place and props so the video travels"
       },
       {
         "path": "scenes",
-        "message": "\"modern\" is in 30 of 74 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        "message": "\"modern\" is in 30 of 72 pictures (a third is plenty): give each chapter its own place and props so the video travels"
       }
     ],
     "summary": {
-      "minutes": 9.753333333333334,
-      "lines": 82,
-      "spoken_units": 2094,
-      "billable_characters": 6904,
+      "minutes": 9.599444444444446,
+      "lines": 80,
+      "spoken_units": 2064,
+      "billable_characters": 6778,
       "chapters": [
         "00:00 兩艘船離開碼頭",
-        "00:42 船被留在冰裡",
-        "02:19 紙邊多了一個計畫",
+        "00:44 船被留在冰裡",
+        "02:18 紙邊多了一個計畫",
         "04:01 有人把口述畫上海圖",
         "05:46 岸上的鐵讓搜尋改道",
-        "07:11 另一份見聞指向另一個海灣",
-        "08:55 紙上的簽名得到另一份證據"
+        "07:10 另一份見聞指向另一個海灣",
+        "08:52 紙上的簽名得到另一份證據"
       ]
     }
   },
-  "independent_script_review": "pending",
+  "independent_script_review": "round1_failed_revision1_awaiting_review",
   "paid_calls": 0,
   "audio_measured": false
 }

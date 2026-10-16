@@ -2,7 +2,7 @@
   "schema_version": 1,
   "scope": "formal-script-draft",
   "checked_on": "2026-10-16",
-  "independent_script_review": "pending",
+  "independent_script_review": "round1_failed_revision1_awaiting_review",
   "claim_sources": {
     "H11-C01": [
       "H11-S01"
@@ -56,7 +56,16 @@
     "H11-C17": [
       "H11-S06"
     ],
-    "H11-E01": []
+    "H11-E01": [],
+    "H11-C18": [
+      "H11-S03"
+    ],
+    "H11-C19": [
+      "H11-S06"
+    ],
+    "H11-C20": [
+      "H11-S04"
+    ]
   },
   "lines": [
     {
@@ -133,19 +142,19 @@
     {
       "line_id": "vc14d268",
       "scene_id": "book-name",
-      "text": "買書的人叫伏尼契。這本書後來以他的姓氏命名，就叫伏尼契手稿。",
+      "text": "伏尼契從買下它以後，就持續嘗試解讀。直到他去世，仍沒能解開這本書的謎。",
       "claims": [
-        "H11-C01"
+        "H11-C18"
       ],
       "sources": [
-        "H11-S01"
+        "H11-S03"
       ],
       "kind": "sourced"
     },
     {
       "line_id": "vde0982c",
       "scene_id": "not-first-reader",
-      "text": "他的購藏把手稿帶進近代研究，但書頁上，早就留著更早的人碰過的痕跡。",
+      "text": "可他翻過的頁面，還留著更早讀者的痕跡。研究者得從眼前這本實物，找能辨認的東西。",
       "claims": [
         "H11-C01",
         "H11-C10",
@@ -235,51 +244,28 @@
     {
       "line_id": "v44daffa",
       "scene_id": "unknown-author",
-      "text": "圖畫旁的字，究竟是誰寫下的，又用了什麼文字系統？",
+      "text": "作者和文字系統還沒定案，研究者先把這些能看見的形狀，留下可比較的記錄。",
       "claims": [
-        "H11-C03"
-      ],
-      "sources": [
-        "H11-S01"
-      ],
-      "kind": "sourced"
-    },
-    {
-      "line_id": "v5ce4aae",
-      "scene_id": "bacon-attribution",
-      "text": "作者還沒有定案。曾有說法指向培根，館方卻把這項歸屬列為推測。",
-      "claims": [
-        "H11-C15"
-      ],
-      "sources": [
-        "H11-S01",
-        "H11-S02"
-      ],
-      "kind": "sourced"
-    },
-    {
-      "line_id": "v33ad727",
-      "scene_id": "yale-arrival",
-      "text": "一九六九年，書商克勞斯把它捐給耶魯。它有了固定館藏編號。",
-      "claims": [
-        "H11-C01"
-      ],
-      "sources": [
-        "H11-S01"
-      ],
-      "kind": "sourced"
-    },
-    {
-      "line_id": "vcf7d1a6",
-      "scene_id": "shelf-identity",
-      "text": "那個編號是四百零八。至少研究者可以確定，彼此研究的是同一件物品。",
-      "claims": [
-        "H11-C15",
+        "H11-C03",
+        "H11-C06",
         "H11-E01"
       ],
       "sources": [
         "H11-S01",
-        "H11-S02"
+        "H11-S04"
+      ],
+      "kind": "sourced_with_editorial_bridge"
+    },
+    {
+      "line_id": "vaa3669c",
+      "scene_id": "separate-layers",
+      "text": "頁邊也有後來讀者加上的字。分析正文以前，還得把不同時期的痕跡分清楚。",
+      "claims": [
+        "H11-C10",
+        "H11-E01"
+      ],
+      "sources": [
+        "H11-S06"
       ],
       "kind": "sourced_with_editorial_bridge"
     },
@@ -480,6 +466,42 @@
       "kind": "sourced"
     },
     {
+      "line_id": "v16d9e2d",
+      "scene_id": "transcription-count",
+      "text": "他們使用已經轉寫好的版本，把陌生字形換成固定符號，讓同一個字能被反覆計數。",
+      "claims": [
+        "H11-C20"
+      ],
+      "sources": [
+        "H11-S04"
+      ],
+      "kind": "sourced"
+    },
+    {
+      "line_id": "v6856059",
+      "scene_id": "equal-sections",
+      "text": "整份文字被分成同樣長的部分。每一部分裡，哪些詞出現，又各出現多少次，都能逐一比較。",
+      "claims": [
+        "H11-C20"
+      ],
+      "sources": [
+        "H11-S04"
+      ],
+      "kind": "sourced"
+    },
+    {
+      "line_id": "ve1179dc",
+      "scene_id": "word-locations",
+      "text": "常在某一段出現的詞，能替那一段留下特徵；到處都一樣常見的詞，就難以區分段落。",
+      "claims": [
+        "H11-C20"
+      ],
+      "sources": [
+        "H11-S04"
+      ],
+      "kind": "sourced"
+    },
+    {
       "line_id": "va919cc7",
       "scene_id": "local-groups",
       "text": "有些詞在一部分特別集中，換到另一部分，又換成其他詞比較常見。",
@@ -502,6 +524,19 @@
         "H11-S04"
       ],
       "kind": "sourced"
+    },
+    {
+      "line_id": "va972623",
+      "scene_id": "picture-link-question",
+      "text": "那開場看到的植物圖呢？不看圖，只看文字，也能把相近的部分找出來嗎？",
+      "claims": [
+        "H11-C16",
+        "H11-E01"
+      ],
+      "sources": [
+        "H11-S04"
+      ],
+      "kind": "sourced_with_editorial_bridge"
     },
     {
       "line_id": "vd262f61",
@@ -553,35 +588,9 @@
       "kind": "sourced_with_editorial_bridge"
     },
     {
-      "line_id": "v4265790",
-      "scene_id": "unknown-dictionary",
-      "text": "它沒有交出一份可以從頭讀下去的譯文，也沒有確定原稿用了哪一種語言。",
-      "claims": [
-        "H11-C06",
-        "H11-E01"
-      ],
-      "sources": [
-        "H11-S04"
-      ],
-      "kind": "sourced_with_editorial_bridge"
-    },
-    {
       "line_id": "v361508d",
       "scene_id": "research-progress",
-      "text": "對這本書來說，這仍是新問題：如果有結構，能不能找到能重複使用的讀法？",
-      "claims": [
-        "H11-C06",
-        "H11-E01"
-      ],
-      "sources": [
-        "H11-S04"
-      ],
-      "kind": "sourced_with_editorial_bridge"
-    },
-    {
-      "line_id": "vc48d02d",
-      "scene_id": "translation-test",
-      "text": "你說某個符號是某個意思，換到另一頁，它還能照同一種方式讀嗎？",
+      "text": "日後有人提出解讀這本書的方法時，其他研究者會接受嗎？",
       "claims": [
         "H11-E01"
       ],
@@ -589,21 +598,9 @@
       "kind": "editorial"
     },
     {
-      "line_id": "ve29b3a9",
-      "scene_id": "new-claim-arrives",
-      "text": "幾年後，一項解讀研究成了大學新聞。這一次，消息跑得比紙頁更快。",
-      "claims": [
-        "H11-C07"
-      ],
-      "sources": [
-        "H11-S05"
-      ],
-      "kind": "sourced"
-    },
-    {
       "line_id": "v14ba199",
       "scene_id": "release-recall",
-      "text": "開場那則被提出疑慮的消息，來自二〇一九年的布里斯托大學。",
+      "text": "二〇一九年，布里斯托大學把名譽研究人員的一篇手稿論文，介紹給公眾。",
       "claims": [
         "H11-C07"
       ],
@@ -613,9 +610,33 @@
       "kind": "sourced"
     },
     {
-      "line_id": "v2e3d91b",
-      "scene_id": "release-context",
-      "text": "大學發布了一項手稿研究的新聞，介紹一位名譽研究人員的工作。",
+      "line_id": "v7639780",
+      "scene_id": "paper-published",
+      "text": "那篇論文已刊在羅曼語研究期刊，事前經過雙盲審查。",
+      "claims": [
+        "H11-C07"
+      ],
+      "sources": [
+        "H11-S05"
+      ],
+      "kind": "sourced"
+    },
+    {
+      "line_id": "va5b5d45",
+      "scene_id": "experts-question",
+      "text": "對這項研究，語言學和中世紀研究領域，都有學者提出有效性的疑慮。",
+      "claims": [
+        "H11-C07"
+      ],
+      "sources": [
+        "H11-S05"
+      ],
+      "kind": "sourced"
+    },
+    {
+      "line_id": "vd9827f1",
+      "scene_id": "statement-date",
+      "text": "新聞發布的隔天，五月十六日，校方發出聲明。",
       "claims": [
         "H11-C07"
       ],
@@ -637,45 +658,9 @@
       "kind": "sourced"
     },
     {
-      "line_id": "v7639780",
-      "scene_id": "paper-published",
-      "text": "那篇論文已刊在羅曼語研究期刊，也通過雙盲審查。消息發布後，質疑才陸續出現。",
-      "claims": [
-        "H11-C07"
-      ],
-      "sources": [
-        "H11-S05"
-      ],
-      "kind": "sourced"
-    },
-    {
-      "line_id": "va5b5d45",
-      "scene_id": "experts-question",
-      "text": "消息發布後，語言學和中世紀研究領域，都有人提出疑慮。",
-      "claims": [
-        "H11-C07"
-      ],
-      "sources": [
-        "H11-S05"
-      ],
-      "kind": "sourced"
-    },
-    {
-      "line_id": "vd9827f1",
-      "scene_id": "statement-date",
-      "text": "到了五月十六日，也就是隔天，校方發出聲明。",
-      "claims": [
-        "H11-C07"
-      ],
-      "sources": [
-        "H11-S05"
-      ],
-      "kind": "sourced"
-    },
-    {
       "line_id": "v470a2c5",
       "scene_id": "story-removed",
-      "text": "原來的新聞稿被撤下，校方要等研究得到進一步驗證，再作處理。",
+      "text": "回應這些學者的疑慮，校方撤下開場那則新聞，等待進一步驗證。",
       "claims": [
         "H11-C07"
       ],
@@ -822,6 +807,18 @@
       "kind": "sourced"
     },
     {
+      "line_id": "v173f6fc",
+      "scene_id": "margin-obstacle",
+      "text": "首頁邊緣還被背面綠葉的影子擋住。她請影像專家處理，才看清其中更多筆畫。",
+      "claims": [
+        "H11-C19"
+      ],
+      "sources": [
+        "H11-S06"
+      ],
+      "kind": "sourced"
+    },
+    {
       "line_id": "v0931109",
       "scene_id": "offset-alphabet",
       "text": "兩欄拉丁字母，位置還錯開一個。看起來很像有人試著把符號排在一起。",
@@ -836,20 +833,19 @@
     {
       "line_id": "vc34e31d",
       "scene_id": "decoding-question",
-      "text": "這會不會是一位早期讀者，想拿來解讀正文的嘗試？",
+      "text": "戴維斯把這幾欄符號，拿去和曾經接觸手稿的人留下的筆跡比較。",
       "claims": [
-        "H11-C10",
-        "H11-E01"
+        "H11-C10"
       ],
       "sources": [
         "H11-S06"
       ],
-      "kind": "sourced_with_editorial_bridge"
+      "kind": "sourced"
     },
     {
       "line_id": "v439465f",
       "scene_id": "handwriting-comparison",
-      "text": "戴維斯又比較相關人物留下的筆跡，認為馬爾奇的字，有一些相符的特徵。",
+      "text": "她認為，馬爾奇字裡的一些特徵，與頁邊的筆畫相符；這仍是她的初步判讀。",
       "claims": [
         "H11-C10"
       ],
@@ -861,7 +857,7 @@
     {
       "line_id": "v4353a57",
       "scene_id": "not-key",
-      "text": "她也沒有把它當成能讀出全書的密鑰。頁邊的筆跡，可能屬於後來讀書的人。",
+      "text": "三欄符號的用途還沒有定案，也沒有帶來能讀出全書的密鑰。",
       "claims": [
         "H11-C10"
       ],
@@ -889,6 +885,18 @@
       "line_id": "v2ebbd0d",
       "scene_id": "model-new",
       "text": "二〇二五年，研究者格雷什科提出一個叫奈貝的模型，換了一個方向試。",
+      "claims": [
+        "H11-C12"
+      ],
+      "sources": [
+        "H11-S09"
+      ],
+      "kind": "sourced"
+    },
+    {
+      "line_id": "v199620f",
+      "scene_id": "hand-method",
+      "text": "這套方法還有一個限制：要能用十五世紀已有的材料，徒手完成。",
       "claims": [
         "H11-C12"
       ],

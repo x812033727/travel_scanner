@@ -61,6 +61,16 @@
       "setup": "vaee9829",
       "payoff": "v1df5834",
       "what": "淡藍字是否隱藏文字；反轉比對辨認背面透字"
+    },
+    {
+      "setup": "v361508d",
+      "payoff": "v470a2c5",
+      "what": "解讀研究公開後是否獲接受；具體回收學者疑慮與校方處置"
+    },
+    {
+      "setup": "va972623",
+      "payoff": "vd262f61",
+      "what": "只看文字分布能否連起圖像相近的分區"
     }
   ],
   "youtube": {
@@ -247,21 +257,21 @@
       "id": "book-name",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a historical bookseller wrapping an unmarked manuscript in plain cloth, inside a historical book room, soft window light from the left.",
+        "prompt": "Medium shot of an early-twentieth-century bookseller studying an unmarked manuscript with a pencil beside a stack of plain notebooks, soft light through a bookshop window.",
         "camera": "drift",
         "visual": "still"
       },
       "claims": [
-        "H11-C01"
+        "H11-C18"
       ],
       "lines": [
         {
           "id": "vc14d268",
-          "text": "買書的人叫伏尼契。這本書後來以他的姓氏命名，就叫伏尼契手稿。",
+          "text": "伏尼契從買下它以後，就持續嘗試解讀。直到他去世，仍沒能解開這本書的謎。",
           "emotion": "平實承接，咬字清楚"
         }
       ],
-      "chapter": "書被打開，問題還在"
+      "chapter": "書商用餘生追查這本書"
     },
     {
       "id": "not-first-reader",
@@ -279,7 +289,7 @@
       "lines": [
         {
           "id": "vde0982c",
-          "text": "他的購藏把手稿帶進近代研究，但書頁上，早就留著更早的人碰過的痕跡。",
+          "text": "可他翻過的頁面，還留著更早讀者的痕跡。研究者得從眼前這本實物，找能辨認的東西。",
           "emotion": "像接著朋友的話往下說"
         }
       ]
@@ -410,71 +420,35 @@
         "visual": "still"
       },
       "claims": [
-        "H11-C03"
-      ],
-      "lines": [
-        {
-          "id": "v44daffa",
-          "text": "圖畫旁的字，究竟是誰寫下的，又用了什麼文字系統？",
-          "emotion": "像接著朋友的話往下說"
-        }
-      ]
-    },
-    {
-      "id": "bacon-attribution",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up of a archive reader placing an unsigned attribution slip beside a closed historical volume, inside a quiet reading room, soft grey window light from the right.",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "claims": [
-        "H11-C15"
-      ],
-      "lines": [
-        {
-          "id": "v5ce4aae",
-          "text": "作者還沒有定案。曾有說法指向培根，館方卻把這項歸屬列為推測。",
-          "emotion": "平實承接，咬字清楚"
-        }
-      ]
-    },
-    {
-      "id": "yale-arrival",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a librarian sliding an unmarked manuscript box onto a shelf, inside a quiet reading room, soft grey window light from the right.",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "claims": [
-        "H11-C01"
-      ],
-      "lines": [
-        {
-          "id": "v33ad727",
-          "text": "一九六九年，書商克勞斯把它捐給耶魯。它有了固定館藏編號。",
-          "emotion": "像接著朋友的話往下說"
-        }
-      ]
-    },
-    {
-      "id": "shelf-identity",
-      "template": "big",
-      "data": {
-        "text": "MS 408",
-        "kicker": "耶魯大學拜內克圖書館",
-        "sub": "來源見說明欄"
-      },
-      "claims": [
-        "H11-C15",
+        "H11-C03",
+        "H11-C06",
         "H11-E01"
       ],
       "lines": [
         {
-          "id": "vcf7d1a6",
-          "text": "那個編號是四百零八。至少研究者可以確定，彼此研究的是同一件物品。",
+          "id": "v44daffa",
+          "text": "作者和文字系統還沒定案，研究者先把這些能看見的形狀，留下可比較的記錄。",
           "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "separate-layers",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archive researcher separating a plain margin sketch from a page panel, on a manuscript worktable.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C10",
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "vaa3669c",
+          "text": "頁邊也有後來讀者加上的字。分析正文以前，還得把不同時期的痕跡分清楚。",
+          "emotion": "平實承接，咬字清楚"
         }
       ]
     },
@@ -747,7 +721,7 @@
           "emotion": "像接著朋友的話往下說"
         }
       ],
-      "chapter": "讀不出意思，先看它怎麼排列"
+      "chapter": "研究者把字形排出關係"
     },
     {
       "id": "not-single-sign",
@@ -789,6 +763,63 @@
       ]
     },
     {
+      "id": "transcription-count",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of an analyst aligning identical blank symbol tokens beside a manuscript page on a data worktable.",
+        "camera": "pan right"
+      },
+      "claims": [
+        "H11-C20"
+      ],
+      "lines": [
+        {
+          "id": "v16d9e2d",
+          "text": "他們使用已經轉寫好的版本，把陌生字形換成固定符號，讓同一個字能被反覆計數。",
+          "emotion": "帶著好奇往前說，動作清楚，關鍵事實稍慢。"
+        }
+      ]
+    },
+    {
+      "id": "equal-sections",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Wide shot of a researcher placing equal-sized blank text strips in separate sections across a long table.",
+        "camera": "pull out"
+      },
+      "claims": [
+        "H11-C20"
+      ],
+      "lines": [
+        {
+          "id": "v6856059",
+          "text": "整份文字被分成同樣長的部分。每一部分裡，哪些詞出現，又各出現多少次，都能逐一比較。",
+          "emotion": "帶著好奇往前說，動作清楚，關鍵事實稍慢。"
+        }
+      ]
+    },
+    {
+      "id": "word-locations",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Close-up of an analyst moving a cluster of matching unmarked tokens into one of several plain trays.",
+        "camera": "drift"
+      },
+      "claims": [
+        "H11-C20"
+      ],
+      "lines": [
+        {
+          "id": "ve1179dc",
+          "text": "常在某一段出現的詞，能替那一段留下特徵；到處都一樣常見的詞，就難以區分段落。",
+          "emotion": "帶著好奇往前說，動作清楚，關鍵事實稍慢。"
+        }
+      ]
+    },
+    {
       "id": "local-groups",
       "template": "shot",
       "data": {
@@ -823,6 +854,26 @@
           "id": "vfc824ec",
           "text": "研究裡拿來比較的，有中文的史記，也有英文的物種起源，和拉丁文文本。",
           "emotion": "好奇，清楚交代研究者做了什麼。"
+        }
+      ]
+    },
+    {
+      "id": "picture-link-question",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of a researcher sliding a plain plant drawing away from grouped abstract tokens on a data worktable.",
+        "camera": "pan left"
+      },
+      "claims": [
+        "H11-C16",
+        "H11-E01"
+      ],
+      "lines": [
+        {
+          "id": "va972623",
+          "text": "那開場看到的植物圖呢？不看圖，只看文字，也能把相近的部分找出來嗎？",
+          "emotion": "重新提起前面植物圖的線索，問句留一拍。"
         }
       ]
     },
@@ -904,26 +955,6 @@
       ]
     },
     {
-      "id": "unknown-dictionary",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a archive reader looking at an open blank translation notebook, at a data-analysis worktable with plain shelves behind.",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "claims": [
-        "H11-C06",
-        "H11-E01"
-      ],
-      "lines": [
-        {
-          "id": "v4265790",
-          "text": "它沒有交出一份可以從頭讀下去的譯文，也沒有確定原稿用了哪一種語言。",
-          "emotion": "像接著朋友的話往下說"
-        }
-      ]
-    },
-    {
       "id": "research-progress",
       "template": "shot",
       "data": {
@@ -932,52 +963,13 @@
         "visual": "still"
       },
       "claims": [
-        "H11-C06",
         "H11-E01"
       ],
       "lines": [
         {
           "id": "v361508d",
-          "text": "對這本書來說，這仍是新問題：如果有結構，能不能找到能重複使用的讀法？",
+          "text": "日後有人提出解讀這本書的方法時，其他研究者會接受嗎？",
           "emotion": "平實承接，咬字清楚"
-        }
-      ]
-    },
-    {
-      "id": "translation-test",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a reader moving one symbol card from a page sketch to another, at a data-analysis worktable with plain shelves behind.",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "claims": [
-        "H11-E01"
-      ],
-      "lines": [
-        {
-          "id": "vc48d02d",
-          "text": "你說某個符號是某個意思，換到另一頁，它還能照同一種方式讀嗎？",
-          "emotion": "問句輕輕上揚"
-        }
-      ]
-    },
-    {
-      "id": "new-claim-arrives",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a modern editor placing an unmarked news sheet on a desk, at a data-analysis worktable with plain shelves behind.",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "claims": [
-        "H11-C07"
-      ],
-      "lines": [
-        {
-          "id": "ve29b3a9",
-          "text": "幾年後，一項解讀研究成了大學新聞。這一次，消息跑得比紙頁更快。",
-          "emotion": "像接著朋友的話往下說"
         }
       ]
     },
@@ -995,17 +987,17 @@
       "lines": [
         {
           "id": "v14ba199",
-          "text": "開場那則被提出疑慮的消息，來自二〇一九年的布里斯托大學。",
+          "text": "二〇一九年，布里斯托大學把名譽研究人員的一篇手稿論文，介紹給公眾。",
           "emotion": "平實承接，咬字清楚"
         }
       ],
       "chapter": "大學新聞隔天換了內容"
     },
     {
-      "id": "release-context",
+      "id": "paper-published",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a university news editor holding a plain release sheet, at a university communications desk with a muted partition behind.",
+        "prompt": "Close-up of a university news editor placing a bound research journal beside a plain release sheet on a communications desk.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1014,8 +1006,46 @@
       ],
       "lines": [
         {
-          "id": "v2e3d91b",
-          "text": "大學發布了一項手稿研究的新聞，介紹一位名譽研究人員的工作。",
+          "id": "v7639780",
+          "text": "那篇論文已刊在羅曼語研究期刊，事前經過雙盲審查。",
+          "emotion": "像接著朋友的話往下說"
+        }
+      ]
+    },
+    {
+      "id": "experts-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a reader marking a question beside an unmarked news page, at a university communications desk with a muted partition behind.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H11-C07"
+      ],
+      "lines": [
+        {
+          "id": "va5b5d45",
+          "text": "對這項研究，語言學和中世紀研究領域，都有學者提出有效性的疑慮。",
+          "emotion": "平實承接，咬字清楚"
+        }
+      ]
+    },
+    {
+      "id": "statement-date",
+      "template": "big",
+      "data": {
+        "text": "2019 年 5 月 16 日",
+        "kicker": "校方發布聲明",
+        "sub": "來源見說明欄"
+      },
+      "claims": [
+        "H11-C07"
+      ],
+      "lines": [
+        {
+          "id": "vd9827f1",
+          "text": "新聞發布的隔天，五月十六日，校方發出聲明。",
           "emotion": "像接著朋友的話往下說"
         }
       ]
@@ -1040,63 +1070,6 @@
       ]
     },
     {
-      "id": "paper-published",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a university news editor placing a bound research journal beside a plain release sheet on a communications desk.",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "claims": [
-        "H11-C07"
-      ],
-      "lines": [
-        {
-          "id": "v7639780",
-          "text": "那篇論文已刊在羅曼語研究期刊，也通過雙盲審查。消息發布後，質疑才陸續出現。",
-          "emotion": "像接著朋友的話往下說"
-        }
-      ]
-    },
-    {
-      "id": "experts-question",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a reader marking a question beside an unmarked news page, at a university communications desk with a muted partition behind.",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "claims": [
-        "H11-C07"
-      ],
-      "lines": [
-        {
-          "id": "va5b5d45",
-          "text": "消息發布後，語言學和中世紀研究領域，都有人提出疑慮。",
-          "emotion": "平實承接，咬字清楚"
-        }
-      ]
-    },
-    {
-      "id": "statement-date",
-      "template": "big",
-      "data": {
-        "text": "2019 年 5 月 16 日",
-        "kicker": "校方發布聲明",
-        "sub": "來源見說明欄"
-      },
-      "claims": [
-        "H11-C07"
-      ],
-      "lines": [
-        {
-          "id": "vd9827f1",
-          "text": "到了五月十六日，也就是隔天，校方發出聲明。",
-          "emotion": "像接著朋友的話往下說"
-        }
-      ]
-    },
-    {
       "id": "story-removed",
       "template": "shot",
       "data": {
@@ -1110,7 +1083,7 @@
       "lines": [
         {
           "id": "v470a2c5",
-          "text": "原來的新聞稿被撤下，校方要等研究得到進一步驗證，再作處理。",
+          "text": "回應這些學者的疑慮，校方撤下開場那則新聞，等待進一步驗證。",
           "emotion": "像接著朋友的話往下說"
         }
       ]
@@ -1330,6 +1303,25 @@
       ]
     },
     {
+      "id": "margin-obstacle",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of an imaging researcher moving a translucent green shape away from a plain margin diagram.",
+        "camera": "tilt down"
+      },
+      "claims": [
+        "H11-C19"
+      ],
+      "lines": [
+        {
+          "id": "v173f6fc",
+          "text": "首頁邊緣還被背面綠葉的影子擋住。她請影像專家處理，才看清其中更多筆畫。",
+          "emotion": "帶著好奇往前說，動作清楚，關鍵事實稍慢。"
+        }
+      ]
+    },
+    {
       "id": "offset-alphabet",
       "template": "shot",
       "data": {
@@ -1357,13 +1349,12 @@
         "visual": "still"
       },
       "claims": [
-        "H11-C10",
-        "H11-E01"
+        "H11-C10"
       ],
       "lines": [
         {
           "id": "vc34e31d",
-          "text": "這會不會是一位早期讀者，想拿來解讀正文的嘗試？",
+          "text": "戴維斯把這幾欄符號，拿去和曾經接觸手稿的人留下的筆跡比較。",
           "emotion": "平實承接，咬字清楚"
         }
       ]
@@ -1382,7 +1373,7 @@
       "lines": [
         {
           "id": "v439465f",
-          "text": "戴維斯又比較相關人物留下的筆跡，認為馬爾奇的字，有一些相符的特徵。",
+          "text": "她認為，馬爾奇字裡的一些特徵，與頁邊的筆畫相符；這仍是她的初步判讀。",
           "emotion": "像接著朋友的話往下說"
         }
       ]
@@ -1401,7 +1392,7 @@
       "lines": [
         {
           "id": "v4353a57",
-          "text": "她也沒有把它當成能讀出全書的密鑰。頁邊的筆跡，可能屬於後來讀書的人。",
+          "text": "三欄符號的用途還沒有定案，也沒有帶來能讀出全書的密鑰。",
           "emotion": "平實承接，咬字清楚"
         }
       ]
@@ -1446,6 +1437,25 @@
         }
       ],
       "chapter": "有人試著造出相似的文字"
+    },
+    {
+      "id": "hand-method",
+      "template": "shot",
+      "data": {
+        "visual": "still",
+        "prompt": "Medium shot of a researcher arranging plain paper cards and one writing tool on a model worktable beside a window.",
+        "camera": "pan right"
+      },
+      "claims": [
+        "H11-C12"
+      ],
+      "lines": [
+        {
+          "id": "v199620f",
+          "text": "這套方法還有一個限制：要能用十五世紀已有的材料，徒手完成。",
+          "emotion": "帶著好奇往前說，動作清楚，關鍵事實稍慢。"
+        }
+      ]
     },
     {
       "id": "known-input",

@@ -58,3 +58,9 @@ video SHA-256 `e11a22a7a29086a06a8261943cd3e78bea6775223705cb3eab9b8dbdffa1a559`
 兩個提示詞 warning 為 historical／modern 時代描述；已記錄場景實際變化，不以同義字消除警告。待獨立正式稿覆核及站主劇本核准；未送劇本後台、未配音、未產圖、未發布。
 
 本輪 `git diff --check`、逐句／來源／SHA 一致性檢查通過；`npm run check:tasks` 通過，驗證 1895 票，保留其他任務既有長期認領／重疊警告。作者收據並不充當盲評。
+
+## 2026-10-16 第一輪敘事退修
+
+獨立盲評未過：chapters_link, payoffs, no_detour。已完成第 1 輪結構修訂，原答案保留在 `narrative-round1.json`，逐項回應在 `narrative-revision-1.md`。新版 video SHA `58e37c2eb2bc8190ba16aa4b9dc5050397819a12e263b29cf3a0641dba7c306b`；80 句，估算 9.60 分。lint 0 errors／2 warnings；未標 narrative pass。提交後釋出認領，供獨立事實覆核接手。無後台劇本送審、無付費呼叫。
+
+第 1 輪修訂驗證：逐句文字及時間軸句序、主張／來源 ID、video／brief SHA 一致；`git diff --check` 與 `npm run check:tasks` 通過（1895 票，只有其他既有認領警告）。
