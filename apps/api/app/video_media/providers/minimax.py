@@ -566,15 +566,32 @@ class MiniMaxMusic:
         url = f"{self.base_url.rstrip('/')}/music_generation"
         body = self.request_body(request)
         try:
-            payload = await post_json(client, url, body, self._headers(), "MiniMax")
+            response = await client.post(
+                url, json=body, headers={**self._headers(), "User-Agent": USER_AGENT}
+            )
+        except httpx.HTTPError as error:
+            raise MediaUpstreamError(
+                502, f"MiniMax unreachable: {type(error).__name__}", "failed"
+            ) from error
+        if response.status_code == 410:
+            # How the endpoint shut out an account that never bought music (production,
+            # 2026-10-16, music-3.0 and music-2.6 alike): no retake fixes it, so the owner's.
+            raise with_music_rule(
+                MediaUpstreamError(502, "MiniMax closed music generation (HTTP 410)", "key")
+            )
+        try:
+            raise_for_status(response, "MiniMax")
         except MediaUpstreamError as error:
             # ``raise_for_status`` says "key" for HTTP 401/403 and "invalid" for 404 (the model
             # or the path): the account may be why, so the rule is named.
             if error.kind in ("key", "invalid"):
                 raise with_music_rule(error) from error
             raise
+        try:
+            payload = response.json()
         except ValueError as error:  # an answer that is not JSON
             raise MediaUpstreamError(502, "MiniMax answered without JSON", "failed") from error
+        payload = payload if isinstance(payload, dict) else {}
         check_music_resp(payload)
         data = payload.get("data")
         data = data if isinstance(data, dict) else {}
