@@ -98,3 +98,9 @@ H11 將材料定年、字詞分布、新聞稿撤下、背面透字、筆跡推�
 ## 2026-10-16 分鏡核准與成片製作中
 
 站主回覆已看過三頁聯絡表並核准 H11 分鏡；`review-pull --gate storyboard` 和 `status --slug curio-h11` 現場讀回 `storyboard approved`，綁定既有 70／70 通過的 manifest。`render` 已完成（3 個需畫的卡片狀態），`clips` 乾跑與實跑均確認 70 張 still、0 個付費片段，沒有新圖或影片生成費用。`assemble` 正在本機編碼；尚未完成最終 QA、成片送審或上傳。
+
+## 2026-10-16 成片已送人工審核（最新狀態）
+
+`assemble` 已完成 9:34.2 成片，繁中字幕 104 cue。最終 QA **10／11**，唯一未過為片尾同一卡片停留 22 秒（規則上限 15 秒）；已在送審時標記 `--manual-review`，不把它說成全過。失效的 Phys.org 轉載連結已換成原始亞利桑那大學實驗報告的可開 PDF；語言檔 `decided_at: null` 明確保留站主尚未選語言。本次只做繁中成片，劇本 75 句、已核准旁白與 70 張分鏡均未改。
+
+`review-push --gate final --manual-review` 成功送出 720p 預覽，`review-pull --gate final` 現場讀回 `final: waiting for the owner`。成片 SHA-256 `060B86C335008868EA93CC1977417A64EBE0A63D7F2994762671D7BBF27D3A15`。完整 11 項、來源修復、預覽與字幕雜湊及停手帳本見 [final-qa-1.md](../../docs/videos/curio-h11/final-qa-1.md)。H11 累計保守估算 US$2.208／US$6；尚未核准成片、未製作上傳包、未上傳 YouTube。
