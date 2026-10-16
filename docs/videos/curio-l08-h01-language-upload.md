@@ -54,7 +54,7 @@ Every downloaded SRT is exactly its packaged file plus one terminal LF. The orig
 
 ## Backend identities and decisive receipts
 
-Audit directory: `C:/Users/x8120/mokaair-work/video-language-l08-h01`. `L08-H01-DELIVERY-FINAL.json` indexes full receipt paths, sizes and hashes; historical failures and intermediate runs remain in that directory instead of being repeated here.
+Audit directory: `<home>/mokaair-work/video-language-l08-h01`. `L08-H01-DELIVERY-FINAL.json` indexes full receipt paths, sizes and hashes; historical failures and intermediate runs remain in that directory instead of being repeated here.
 
 | Evidence | L08 | H01 |
 |---|---|---|
