@@ -112,6 +112,8 @@ Usage: node tools/video/cli.mjs <command> [options]
   assemble --slug S [--workdir D] [--adopt-branding] [--intro-after-condensation]
                                                    explicitly add current branding to an existing unapproved cut;
                                                    or move a not-uploaded narrated cut's intro after chapter 1
+  render --slug S [--workdir D] [--adopt-watermark]
+                                                   explicitly draw an existing unapproved cut with the channel mark (docs/videos/WATERMARK.md)
   compile --slug <series>-full [--workdir D] [--force] [--dry-run] [--adopt-branding]
                                                    join a binge series' cleared episodes into its compilation, with
                                                    chapter cards, merged captions and chapters (docs/videos/BINGE.md)
