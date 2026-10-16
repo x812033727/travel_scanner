@@ -260,6 +260,11 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with: { node-version: 24, cache: npm }
       - run: npm ci
+      - name: Video worker drain shell and process tests (Linux)
+        run: |
+          bash -n ops/release/video_worker_drain.sh
+          sh -n ops/video/worker.sh
+          python3 -m unittest discover -s ops/release -p test_video_worker_drain.py -v
       # A required check now depends on the Ubuntu mirror; one failed fetch is retried
       # rather than blocking the merge (the same reasoning as tools/ci/pull-images.sh). The
       # pipeline's ffmpeg lookup (tools/video/assemble/ffmpeg.mjs) wants libx264; a build
