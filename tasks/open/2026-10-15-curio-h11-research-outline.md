@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-h11-research-outline
 title: Prepare Curio H11 Voynich source refresh and outline choices
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-gpt6-h11-audio-production
+claimed_at: 2026-10-16T01:19:13Z
 created_at: 2026-10-15T16:34:00Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -29,7 +29,7 @@ scope:
 - [x] 完成獨立覆核與手動 outline 送審交接，後台讀回 pending。
 - [x] 原版與補格式版均讀回站主選 A；本集 US$6／本批 US$30 估算停手上限已核准。
 - [x] 延伸完成本機 A 案 video.json、script.md、逐句來源、loops 與作者檢查。
-- [ ] 正式劇本通過獨立史料與十三題覆核後，交站主核准。
+- [x] 正式劇本通過獨立史料與十三題覆核後，交站主核准。
 
 ## Steps
 
@@ -70,3 +70,27 @@ H11 將材料定年、字詞分布、新聞稿撤下、背面透字、筆跡推�
 查核員 `codex-gpt6-h10-h11-fact` 對版號 SHA-256 `FC9B6B1FF2F94AB75EA1AA2D4E6753AD1D001B0DE82CE693A1D3FD89F8E801A4` 完成逐句、逐景資料與上架文字查核；[verify-1.md](../../docs/videos/curio-h11/verify-1.md) 記錄全部 75 句／73 景、來源、存取限制及聽眾檢查。沒有史實修改或未解主張，lint 0 errors／0 warnings。`v6856059` 一句 41 字，配音時注意停頓；期刊 Naibbe 全文未取得，正式稿只使用作者 README 能支持的範圍。此收據只覆核當前 SHA；若劇本改字要重新核對及重新綁定。獨立嚴格敘事盲評十三題全過，但站主正式劇本審核仍未完成。未送後台、未付費。
 
 主代理匯入新的 script-only 盲評答案，`narrative` 工具 exit 0（13/13 yes）。`script --slug curio-h11` 重新生成稿件，SHA-256 `484436B7CA89D3D2F0E372D87768F0533B319B72ED40FCFE4413ADB26FE8E108`；`review-push --gate script` 成功，`review-pull --gate script` 讀回 `waiting for the owner`。正式劇本已在 `/admin/videos` 等待站主核准；尚未配音／產圖。
+
+## 2026-10-16 繁中旁白製作與 QA（進行中）
+
+站主已在後台核准本版劇本，`status --slug curio-h11` 現場讀回 `script approved`。`video.json` SHA-256 仍是 `FC9B6B1FF2F94AB75EA1AA2D4E6753AD1D001B0DE82CE693A1D3FD89F8E801A4`，`script.md` SHA-256 仍是 `484436B7CA89D3D2F0E372D87768F0533B319B72ED40FCFE4413ADB26FE8E108`。保留核准版本，未修改正文。
+
+`tts --dry-run` 為 Gemini Sulafat 73 請求、2,346 計費字元；`keyframes --dry-run` 為 MiniMax image-01 70 景，首輪約 US$0.94、最多三 take 約 US$2.83。共用停手帳本 `C:/Users/x8120/mokaair-work/videos/curio-next-five-20261016/review/spend-ledger.json` 先保留 H11 TTS US$0.20，再實際合成 73/73 請求、75 句 WAV，實測旁白 09:08.2、2,346 計費字元；日誌無 hold，帳本按 US$0.20 保守估算結算，非供應商美元帳單。
+
+音訊 QA 另先保留 US$0.50，`check-audio` 完成 75/75 轉寫、1 次 Jev 判讀：48 句逐字相符、13 句同音／語助詞、4 句 Jev 接受，另有 10 句旗標（`v2405e28`, `v0e564e3`, `v16d9e2d`, `va919cc7`, `v470a2c5`, `v1df5834`, `v439465f`, `v2ebbd0d`, `vd56bdd7`, `v75e1ebb`）。QA US$0.50 以請求數保守估算結算；H11 累計估算 US$0.70，無供應商最終美元帳單。`review/audio.html` 已建立。本機 Whisper small 不看稿獨立轉寫完 10 句，逐句判讀見 `docs/videos/curio-h11/audio-qa-1.md`：0 句足以直接重錄、6 句支持辨識漂移、4 句仍需站主試聽（`v0e564e3`、`v1df5834`、`v2ebbd0d`、`vd56bdd7`）。**旁白尚未核准、未送分鏡、未產圖。**先把音訊與報告送後台；站主聽後若指出確定錯字，再定向重錄並重新核准。
+
+`timeline.json` SHA-256 `FF66A71BAC562CAE9A3013BFC7F72DD50A5F06107D4843F6A8421BD062AEFCA4`。`review-push --gate audio` 已成功送出 H11 旁白預覽；`review-pull --gate audio` 讀回 `waiting for the owner`。下一步等站主試聽並在後台核准，或指出句 ID／錯字。不可把本機第二轉寫當成站主核准。
+
+## 2026-10-16 旁白核准與插畫製作（最新狀態）
+
+站主已試聽 H11 旁白並在後台核准；`review-pull --slug curio-h11 --gate audio` 現場讀回 `audio: approval recorded`，`status` 顯示 `narration approved`。上述 10 句自動旗標仍保留於 QA 收據，未自行重錄。劇本正文與時間軸未改。
+
+`keyframes --dry-run --slug curio-h11 --takes 3` 顯示 70 景，MiniMax image-01 1K，首輪約 US$0.94、三 take 上限約 US$2.83。付費前已在共用停手帳本預留 H11 插畫 US$2.83；原有音訊估算 US$0.70，預留後本集 US$3.53，未逾本集 US$6、本批 US$30。正使用 `keyframes --slug curio-h11 --takes 3` 製作與 Gemini 逐圖評審，逐鏡保存通過的快取。`strange-writing` 三 take 均出現可辨漢字，評審 text 0；整批結束後需定向修提示詞，不能把失敗 take 當成通過插畫。完成後依實際帳本結算、修明確問題，再送分鏡供站主核准。未送分鏡、未製成片、未上傳。
+
+## 2026-10-16 插畫 QA 完成（最新狀態）
+
+第一輪 70 鏡中 67 鏡通過，`strange-writing`、`paper-published`、`story-removed` 三鏡三 take 仍未過。已定向改這三鏡提示詞，第二輪只產生 5 張圖；其餘 67 鏡沿用快取與評審結果。最終 `video.json` SHA-256 `FE86AE2B1795834CA23FC2E032A3DD8AD5C2DF72840AA13116898319C2FB3624`，已核准的 `script.md` SHA-256 `484436B7CA89D3D2F0E372D87768F0533B319B72ED40FCFE4413ADB26FE8E108` 未變。`lint` 為 0 errors／0 warnings；`status` 讀回 script approved、narration approved、keyframes drawn。
+
+最終 70／70 鏡評審通過，0 `needs_review`；manifest SHA-256 `30B7D6CEB8CD441A1D85DC8BDA684C90E959753B954ECD1216FE362C96EFFC99`。三頁聯絡表已逐頁目視，無新增史實矛盾；詳細缺陷、修法與三頁 SHA 見 `docs/videos/curio-h11/keyframes-qa-1.md`。本機媒體帳本工具估算 US$1.458、108 張 image-01 圖片／108 次 Gemini 評審，無 held／unknown／failed；主代理已將修圖預留按 US$0.0675 結算，共用帳本本集與音訊 US$0.70 合計 US$2.158、無未結預留，低於本集 US$6。未製成片或上傳。
+
+`review-push --slug curio-h11 --gate storyboard` 已送出並回報 pending；`review-pull --slug curio-h11 --gate storyboard` 現場讀回 `storyboard: waiting for the owner`。三頁聯絡表已交站主查看；需站主在 `/admin/videos` 核准本版分鏡才可進成片。未製成片、未上傳。

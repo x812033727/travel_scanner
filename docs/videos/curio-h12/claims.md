@@ -51,7 +51,7 @@
 | H12-C09 | west-tease、inspector-lands、investigator-opinion |
 | H12-C15 | poem-tease、poem-bridge、poem-recalled、untouched-meal、overturned-chair、poem-effect、memory-recalled、kitchen-recalled、document-card |
 | H12-C17 | opening-question、search-island、time-place-question、poem-bridge、ending-outro |
-| H12-C04 | entrance-gate、kitchen-door、door-boundary、cold-fire、empty-beds |
+| H12-C04 | entrance-gate、kitchen-door、cold-fire、empty-beds |
 | H12-C05 | room-question、lamp-ready、kitchen-work、kitchen-recalled、document-card |
 | H12-C01 | who-missing、replacement-duty |
 | H12-C06 | captain-volunteers、relight-night |
@@ -62,7 +62,7 @@
 | H12-C11 | east-intact、west-recalled、box-gone、rope-question、coiled-rope、crane-safe、crane-covered、railings-twisted、departure-question |
 | H12-C10 | sea-blocks-descent、platform-height、box-location、box-height、height-card |
 | H12-C18 | stone-displaced、buoy-question、buoy-ties、buoy-inference |
-| H12-C12 | coat-left、others-clothes、clothing-inference、landing-clothes、why-coat、sequence-unknown |
+| H12-C12 | coat-left、others-clothes、clothing-inference、landing-clothes、sequence-unknown |
 | H12-C13 | investigator-opinion、secure-gear、wave-hypothesis、wave-label |
 | H12-C19 | wind-compared、west-wind、water-preferred |
 | H12-C16 | letter-fate、exhibit-first、letter-reader、ending-outro |

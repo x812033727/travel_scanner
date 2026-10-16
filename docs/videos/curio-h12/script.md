@@ -40,7 +40,7 @@
 
 #### 9. boat-launched
 
-旁白（放慢，帶著觀眾往前走）：小艇靠上東側碼頭，換班的穆爾先跳到了岸上。
+旁白（放慢，帶著觀眾往前走）：小艇靠上東側碼頭，穆爾先跳到了岸上。
 
 #### 10. boat-waits
 
@@ -52,327 +52,319 @@
 
 #### 12. entrance-gate
 
-旁白：他先碰到關著的院門，屋外的門也關著。
+旁白：他先碰到關著的院門，屋外的門也關著；信裡沒有說門被反鎖。
 
 #### 13. kitchen-door
 
 旁白（放慢，帶著觀眾往前走）：可是再走進去，廚房本身的門卻是開的。
 
-#### 14. door-boundary
-
-旁白：他的描述是門關著，沒有說門被反鎖。
-
-#### 15. cold-fire
+#### 14. cold-fire
 
 旁白（自然接續，關鍵詞稍重）：穆爾看了火爐，判斷已經好幾天沒生火。
 
-#### 16. empty-beds
+#### 15. empty-beds
 
 旁白：他接著逐間查看，床上都沒有人。
 
-#### 17. serious-absence
+#### 16. serious-absence
 
 旁白（放慢，帶著觀眾往前走）：他沒有繼續慢慢找，立刻轉身跑向碼頭。
 
-#### 18. boat-report
+#### 17. boat-report
 
 旁白：回到艇邊，他告訴同伴，整個住處都空了。
 
-#### 19. search-again
+#### 18. search-again
 
 旁白（自然接續，關鍵詞稍重）：於是有人跟他再次上去，把屋裡重新找了一遍。
 
-#### 20. room-question
+#### 19. room-question
 
 旁白（問句輕輕上揚，留白）：這次他們走進燈室，裡面又會留下什麼？
 
-#### 21. lamp-ready
+#### 20. lamp-ready
 
 旁白（放慢，帶著觀眾往前走）：燈室裡的燈已經清理，盛油的容器也裝滿了。
 
-#### 22. who-missing
+#### 21. who-missing
 
-旁白（自然接續，關鍵詞稍重）：失蹤的是杜卡特、馬歇爾，還有代班的麥克阿瑟。
+旁白（自然接續，關鍵詞稍重）：失蹤的是杜卡特、馬歇爾，還有麥克阿瑟。
 
-#### 23. replacement-duty
+#### 22. replacement-duty
 
 旁白：原本的一位看守員正在請病假，麥克阿瑟才來代班。
 
-#### 24. captain-volunteers
+#### 23. captain-volunteers
 
 旁白（放慢，帶著觀眾往前走）：消息送回補給船後，船長徵求願意留守的人。
 
-#### 25. relight-night
+#### 24. relight-night
 
 旁白：當晚，穆爾和留下的同伴重新把燈點亮。
 
-#### 26. search-island
+#### 25. search-island
 
 旁白（自然接續，關鍵詞稍重）：接著他們走遍島上，仍沒有找到三人的身影。
 
-#### 27. coat-left
+#### 26. coat-left
 
-旁白（放慢，帶著觀眾往前走）：穆爾後來記下一件小事：麥克阿瑟的外套留在住處。
+旁白（放慢，帶著觀眾往前走）：穆爾後來記下一件小事：麥克阿瑟的外套留在住處。為什麼沒穿上就出門？
 
-#### 28. others-clothes
+#### 27. others-clothes
 
 旁白：另外兩人的海靴和防水外衣，卻沒有留在屋內。
 
-#### 29. clothing-inference
+#### 28. clothing-inference
 
 旁白（自然接續，關鍵詞稍重）：穆爾熟悉同伴出門時的穿著，這幾件衣物因此很要緊。
 
-#### 30. landing-clothes
+#### 29. landing-clothes
 
 旁白：他說，那些裝備是他們下到碼頭附近時才會穿的。
 
-#### 31. why-coat
+#### 30. sequence-unknown
 
-旁白（問句輕輕上揚，留白）：留下外套的麥克阿瑟，為什麼沒穿上就出門？
+旁白：兩份記錄都沒有解釋這處衣物差異，也無法排出三人離站的先後。
 
-#### 32. sequence-unknown
-
-旁白：他為何留下外套，兩份記錄沒有答案；三人離站的先後也無從確定。
-
-#### 33. work-question
+#### 31. work-question
 
 旁白（問句輕輕上揚，留白）：穆爾的信記下做完的工作；調查報告能不能把時間接起來？
 
 ### 石板把調查推回十一天前
 
-#### 34. slate-entry
+#### 32. slate-entry
 
 旁白（放慢，帶著觀眾往前走）：調查報告補上信裡沒有寫的石板，上面留著待抄的觀測。
 
-#### 35. log-date
+#### 33. log-date
 
 旁白：日誌本最後寫到十二月十三日。
 
-#### 36. clock-has-no-date
+#### 34. clock-has-no-date
 
 旁白：報告也記下屋裡的鐘停了；鐘面卻說不出是哪一天。
 
-#### 37. slate-later
+#### 35. slate-later
 
 旁白（自然接續，關鍵詞稍重）：不過，後續的資料還在石板上，並沒有一起消失。
 
-#### 38. morning-reading
+#### 36. morning-reading
 
 旁白：其中包含十五日早上九點的氣壓、氣溫與風況。
 
-#### 39. extinguish-time
+#### 37. extinguish-time
 
 旁白（放慢，帶著觀眾往前走）：石板也留了當天早上熄燈的時間。
 
-#### 40. kitchen-work
+#### 38. kitchen-work
 
 旁白：屋裡的鍋具已經洗過，廚房也整理好了。
 
-#### 41. work-date-inference
+#### 39. work-date-inference
 
 旁白（自然接續，關鍵詞稍重）：把這些日常工作合起來，調查把失蹤推在那天下午。
 
-#### 42. inference-boundary
+#### 40. inference-boundary
 
 旁白：這是從工作留下的痕跡推回去，沒有人目擊最後離開。
 
-#### 43. passing-ship
+#### 41. passing-ship
 
 旁白（放慢，帶著觀眾往前走）：另有一艘過船回報，十五日午夜經過時沒有看見燈。
 
-#### 44. report-delay
+#### 42. report-delay
 
 旁白：可是這個消息，在失蹤被發現之後才傳到燈塔局。
 
-#### 45. shore-observers
+#### 43. shore-observers
 
 旁白（自然接續，關鍵詞稍重）：岸上也有人每晚記錄，看不看得見這座燈塔。
 
-#### 46. visibility-question
+#### 44. visibility-question
 
 旁白（問句輕輕上揚，留白）：但隔著海看不到光，能直接當成燈已經熄了嗎？
 
-#### 47. shore-witnesses
+#### 45. shore-witnesses
 
 旁白：監督找到實際負責岸上瞭望的兩名少年，問他們各晚看見了什麼。
 
-#### 48. shore-log
+#### 46. shore-log
 
 旁白（放慢，帶著觀眾往前走）：監督翻查岸上的紀錄，發現看不見並不是新鮮事。
 
-#### 49. several-nights
+#### 47. several-nights
 
 旁白：天氣阻擋視線時，連續四五晚看不見燈，也曾發生。
 
-#### 50. two-records
+#### 48. two-records
 
 旁白（自然接續，關鍵詞稍重）：所以過船的通報和岸上的紀錄，必須分開判讀。
 
-#### 51. time-place-question
+#### 49. time-place-question
 
 旁白（問句輕輕上揚，留白）：時間漸漸縮小了，三個人又是往島上的哪裡去？
 
-#### 52. inspector-lands
+#### 50. inspector-lands
 
 旁白（放慢，帶著觀眾往前走）：二十九日，監督繆爾黑德登島，親自檢查現場。
 
-#### 53. east-intact
+#### 51. east-intact
 
 旁白：東側的繩索都還在，跟上次換班收妥的樣子一樣。
 
 ### 西側少了一只繩具箱
 
-#### 54. west-recalled
+#### 52. west-recalled
 
 旁白（自然接續，關鍵詞稍重）：監督換到西側，眼前的損害跟東側完全不同。
 
-#### 55. sea-blocks-descent
+#### 53. sea-blocks-descent
 
 旁白：海況讓監督下不到碼頭，只能走到起重機平台。
 
-#### 56. platform-height
+#### 54. platform-height
 
 旁白（放慢，帶著觀眾往前走）：那座平台的位置，在海面上七十英尺。
 
-#### 57. box-location
+#### 55. box-location
 
 旁白：放繩具的木箱原本更高，藏在岩石的縫隙裡。
 
-#### 58. box-height
+#### 56. box-height
 
 旁白（自然接續，關鍵詞稍重）：箱子的位置，離海面大約一百一十英尺。
 
-#### 59. height-card（big）
+#### 57. height-card（big）
 
 旁白：這是設施所在的高度，並不是當時量到的浪高。
 
-#### 60. box-gone
+#### 58. box-gone
 
 旁白（放慢，帶著觀眾往前走）：放繩具的木箱不見了；繩束卻留在岩縫和起重機旁。
 
-#### 61. rope-question
+#### 59. rope-question
 
 旁白（問句輕輕上揚，留白）：那些繩子，失蹤當天有人用過嗎？
 
-#### 62. coiled-rope
+#### 60. coiled-rope
 
 旁白（自然接續，關鍵詞稍重）：監督查看繩束，發現它們全都還捲著，沒有一束被解開。
 
-#### 63. crane-safe
+#### 61. crane-safe
 
 旁白（放慢，帶著觀眾往前走）：起重機本身也完好，吊臂已放下並固定在岩石上。
 
-#### 64. crane-covered
+#### 62. crane-covered
 
 旁白：捲筒的帆布罩還綁著，沒有顯示有人正在動它。
 
-#### 65. railings-twisted
+#### 63. railings-twisted
 
 旁白（自然接續，關鍵詞稍重）：可是平台和通道的鐵欄杆，被扭得變了形。
 
-#### 66. stone-displaced
+#### 64. stone-displaced
 
 旁白：更高處一塊大石頭，甚至被移到了下方的通道上。
 
-#### 67. buoy-question
+#### 65. buoy-question
 
 旁白（問句輕輕上揚，留白）：連綁在欄杆上的救生圈都不見了，曾有人拿它救人嗎？
 
-#### 68. buoy-ties
+#### 66. buoy-ties
 
 旁白：監督查看綁繩，發現繩結沒被解開，上面還黏著帆布。
 
-#### 69. buoy-inference
+#### 67. buoy-inference
 
 旁白（自然接續，關鍵詞稍重）：因此他判斷，救生圈是被海水從固定處撕掉的。
 
-#### 70. departure-question
+#### 68. departure-question
 
 旁白（問句輕輕上揚，留白）：西側的損害能說明三人最後如何失蹤嗎？
 
 ### 報告寫下最可能的解釋
 
-#### 71. investigator-opinion
+#### 69. investigator-opinion
 
 旁白：一九〇一年一月八日，他寫下自己認為最可能的解釋。
 
-#### 72. secure-gear
+#### 70. secure-gear
 
 旁白（放慢，帶著觀眾往前走）：他的推想是，三人到西側附近，想把繩具箱等器材保住。
 
-#### 73. wave-hypothesis
+#### 71. wave-hypothesis
 
 旁白：接著，一股突然衝上來的大浪，把他們捲走。
 
-#### 74. wave-label（big）
+#### 72. wave-label（big）
 
 旁白（自然接續，關鍵詞稍重）：這是監督依損害提出的事故推想，現場無法證實那一刻發生了什麼。
 
-#### 75. wind-compared
+#### 73. wind-compared
 
 旁白：他也考慮過強風吹走人的可能，還比較了風向。
 
-#### 76. west-wind
+#### 74. west-wind
 
 旁白（放慢，帶著觀眾往前走）：當時的西風，會把人推向島上較高的地方。
 
-#### 77. water-preferred
+#### 75. water-preferred
 
 旁白：因此，這個風向不支持三人直接被風吹落海的說法。
 
-#### 78. poem-bridge
+#### 76. poem-bridge
 
-旁白：監督的推想停在西側；後來的文字，卻把場景帶回空屋。
+旁白：多年後，另一位作者替空屋加上了新的細節。
 
 ### 餐桌走進了詩
 
-#### 79. poem-recalled
+#### 77. poem-recalled
 
 旁白（自然接續，關鍵詞稍重）：開頭那張紙，是一九一二年出版的吉布森詩集裡的一首燈塔詩。
 
-#### 80. untouched-meal（big）
+#### 78. untouched-meal（big）
 
 旁白：詩中的飯菜放在桌上，還沒有人動過。
 
-#### 81. overturned-chair
+#### 79. overturned-chair
 
 旁白（放慢，帶著觀眾往前走）：同一段裡，還有一張翻倒在地的椅子。
 
-#### 82. poem-effect
+#### 80. poem-effect
 
 旁白：這首詩讓讀者想像有人倉促離席；原始紀錄也這麼寫嗎？
 
-#### 83. memory-recalled
+#### 81. memory-recalled
 
 旁白（自然接續，關鍵詞稍重）：穆爾的信裡，沒有記下飯菜，也沒有那張倒椅。
 
-#### 84. kitchen-recalled
+#### 82. kitchen-recalled
 
 旁白：還記得那間整理好的廚房嗎？那是當年記下的狀態，不能反推出最後一餐。
 
-#### 85. document-card（compare）
+#### 83. document-card（compare）
 
-旁白（放慢，帶著觀眾往前走）：一九〇〇年的登島信和一九一二年的詩，不能當成同一層證詞。
+旁白（放慢，帶著觀眾往前走）：遇到這種餐桌故事，先找它出現在登島信，還是詩裡。
 
-#### 86. letter-fate
+#### 84. letter-fate
 
 旁白（問句輕輕上揚，留白）：那麼，最初那封寫給燈塔局的信，後來去了哪裡？
 
 ### 原信重新被人看見
 
-#### 87. exhibit-first
+#### 85. exhibit-first
 
 旁白：二〇二六年，蘇格蘭國家檔案館第一次把穆爾原信展出。
 
-#### 88. letter-reader
+#### 86. letter-reader
 
 旁白：當時讀信的人，能沿著他的字分清哪一句是見聞，哪一句是推想。
 
-#### 89. ending-outro（outro）
+#### 87. ending-outro（outro）
 
 旁白（溫和收束）：『未結』只留給三人最後的遭遇，不代表後來每個細節都無從核對。
 旁白（親近地提問）：你聽過的版本，還多了什麼細節？
 旁白（溫和收束）：訂閱奇聞檔案局，一起追問故事的來處。
 
-narrative 5b27a3cdc60ac314
-speech f26b8a163c47604a
+narrative 52155b830bc53880
+speech 3cb49192c3214099
