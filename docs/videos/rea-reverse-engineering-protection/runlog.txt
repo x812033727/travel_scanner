@@ -53,3 +53,22 @@ vendor_fingerprint: Next.js (high)
 source_maps: status=unavailable, requested=0   (正式站已關 source map)
 endpoints (call:fetch): /api/travel/analytics/config , /api/travel/analytics/events
 limitations: "server-side behavior may remain unknown"
+
+=== [FIX] 動手改：把密鑰與判斷搬到伺服器，實跑 ===
+# 改法：NoteVault v2（bin-fixed）移除寫死的密鑰，activate 改成把 key POST 給
+#       本機 license 伺服器（密鑰只在伺服器，127.0.0.1，假測試值），由伺服器回「准/不准」。
+
+--- [FIX1] REA 掃新 client 的字串，還有沒有密鑰？ ---
+$ npx rea inspect-managed-members bin-fixed/NoteVault.dll --filter-output string_literals
+字串常數：NV_LICENSE_URL、http://127.0.0.1:8799/license/verify、activate、
+          Invalid license key.、Pro activated.、NoteVault 2.0.0. ...
+含 secret：false   （密鑰不在 client 裡了，只剩伺服器的網址）
+
+--- [FIX2] 伺服器核發的合法 key ---
+$ dotnet NoteVault.dll activate NV-123456-69D4F3D0
+Pro activated.
+
+--- [FIX3] 舊的偽造 key（用外洩的舊密鑰算出來的那把）---
+$ dotnet NoteVault.dll activate NV-123456-78F56FB4
+Invalid license key.
+# 原因：伺服器用的是 client 裡沒有、也倒不出來的密鑰；攻擊者算不出合法 key。

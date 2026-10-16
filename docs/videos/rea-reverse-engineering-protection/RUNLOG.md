@@ -61,6 +61,17 @@ DLL 雜湊（SHA256，給查核對檔）：
   - 位元組掃描另外看得到前端用到的路由字樣（`/admin`、`/admin/community`）與 `is_admin` 這種前端旗標——它們只是「畫面要不要顯示管理入口」的判斷，真正的授權仍在後端。
 - REA 自己寫的限制：「server-side behavior may remain unknown」「URL-shaped findings 不證明真的發出過請求」——也就是伺服器上的程式它拿不到。
 
+
+## 動手改：伺服器驗證版（實跑）
+
+把 NoteVault 改成密鑰只在伺服器（`test-target/NoteVault-fixed.cs`＋`license-server.mjs`，伺服器跑在 127.0.0.1、密鑰為假測試值）：
+
+- [FIX1] REA 掃新版 client，字串裡 0 個密鑰，只剩伺服器網址——密鑰搬走了。
+- [FIX2] 伺服器核發的合法 key（`NV-123456-69D4F3D0`）→ `Pro activated.`。
+- [FIX3] 前面那把偽造 key（`NV-123456-78F56FB4`，用外洩的舊 client 密鑰算的）→ `Invalid license key.`，被拒。
+
+攻擊者倒不出伺服器的密鑰，就算不出合法 key。這就是「判斷與秘密搬到伺服器」的效果。
+
 ## 給影片的三個落點（都來自上面量到的）
 
 1. **放進前端／桌面二進位的東西 ≈ 公開**：原版 NoteVault 一個指令全洩；網站的 API 介面、參數、框架也都讀得出來。

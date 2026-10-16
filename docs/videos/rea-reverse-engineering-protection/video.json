@@ -817,11 +817,11 @@
    "data": {
     "title": "動手改：授權不要在用戶端算",
     "language": "csharp",
-    "code": "// 改之前：在使用者電腦上算、再比對\n// 改之後：只問伺服器，前端不碰密鑰\nvar ok = await api.Post(\"/license/verify\", key);\nif (!ok.Approved) return false;\n// 偽造的 key 到了伺服器就過不了",
+    "code": "// 改之前：密鑰寫死在程式裡，在用戶端比對\n// 改之後：程式裡沒有密鑰，只有伺服器的網址\nvar res = await http.PostAsJsonAsync(VerifyUrl, new { key });\nreturn (await res.Content.ReadFromJsonAsync<Reply>())?.approved;\n// 准不准，由保管密鑰的伺服器決定",
     "highlight": [
      3
     ],
-    "caption": "密鑰與判斷都在伺服器，前端只收「准或不准」"
+    "caption": "密鑰與判斷都搬到伺服器，前端只收「准或不准」"
    },
    "claims": [
     "c23",
@@ -838,8 +838,39 @@
     },
     {
      "id": "l026",
-     "text": "這樣一改,密鑰就不在程式裡了,偽造的金鑰送到伺服器也過不了。",
+     "text": "改完,我用 REA 掃新版——密鑰不見了,只剩一個網址。",
      "emotion": "亮起來"
+    }
+   ]
+  },
+  {
+   "id": "fix-run",
+   "template": "terminal",
+   "data": {
+    "title": "同一把偽造 key，這次送到伺服器",
+    "command": "dotnet NoteVault.dll activate NV-123456-78F56FB4",
+    "output": [
+     "Invalid license key."
+    ],
+    "ran_on": "2026-10-16",
+    "tool_version": ".NET SDK 10.0.400"
+   },
+   "claims": [
+    "c24"
+   ],
+   "lines": [
+    {
+     "id": "fxr1",
+     "text": "然後我把前面那把偽造的金鑰,拿來啟用這個新版。"
+    },
+    {
+     "id": "fxr2",
+     "text": "Invalid license key。這次過不了了。",
+     "emotion": "揭曉"
+    },
+    {
+     "id": "fxr3",
+     "text": "因為伺服器的密鑰,攻擊者倒不出來,也就算不出合法的金鑰。"
     }
    ]
   },
