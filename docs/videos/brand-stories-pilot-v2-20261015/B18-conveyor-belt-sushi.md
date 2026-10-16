@@ -1,6 +1,6 @@
 # B18｜迴轉壽司：缺人的小店如何借來啤酒工廠的點子？
 
-狀態：新版企劃已通過獨立來源審稿；逐字稿僅為待查核草稿，尚無配音、畫面或成片。工人輸入是 [`episodes/B18.json`](episodes/B18.json)；事實底稿與歷史獨立審稿分別在[母企劃](../story-plans/brand-stories-100/stories/B18.json)、[母審稿](../story-plans/brand-stories-100/reviews/B18.json)。2026-10-15 開啟[日本機械學會的第 112 號機械遺產](https://www.jsme.or.jp/kikaiisan/heritage_112_jp.html)與[發明協會的迴轉壽司沿革](https://koueki.jiii.or.jp/innovation100/innovation_detail.php?eid=00026&age=high-growth&page=keii)重核主線；新版六章已有獨立來源審稿，逐字旁白仍須另行逐句覆核。
+**歷史企劃，已被[現行 B18 工人輸入](episodes/B18.json)與[法院 PDF 分源審查](preproduction-20261016/B18-court-pdf-split-candidate-20261017/independent-review-20261017.md)取代。**下文的「1978 年權利期滿」及由此推論的新業者進場不是現行第 579776 號實用新案的可靠說法，不得作為新版旁白、畫面或匯入依據。現行版本只說法院認定該特定權利於 1972 年期滿，沒有聲稱它單獨造成新店開業。此舊檔保留早期選題與鏡頭思路，當時尚無配音、畫面或成片。
 
 ## 點閱承諾與主線
 
