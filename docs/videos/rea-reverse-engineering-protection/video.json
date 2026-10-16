@@ -1,0 +1,947 @@
+{
+ "schema_version": 1,
+ "slug": "rea-reverse-engineering-protection",
+ "format": "slides",
+ "category": "tutorial",
+ "target_minutes": [
+  8,
+  12
+ ],
+ "voice": {
+  "provider": "gemini",
+  "name": "Sulafat",
+  "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+  "performance": "這一支是站主拿自己的軟體開刀、帶觀眾一起照鏡子：語氣坦白、帶一點自嘲，不說教。開場的意外要壓得住，實測揭曉的地方放亮，清單段落收穩。"
+ },
+ "youtube": {
+  "category_id": 28,
+  "made_for_kids": false,
+  "default_language": "zh-TW",
+  "title": "逆向工具 REA 一週破十萬星：程式混淆了，還保護得了你的軟體嗎？",
+  "description": "REA 一週從不到一萬顆星衝到二十幾萬，大家都在用它複製別人的 App。這支反過來問：被逆向的那一方怎麼辦？我拿自己寫的付費小程式和自家正式站開刀，用 REA 照一次鏡子——結果最意外的是，把程式碼混淆到看不懂之後，付費鎖還是被同一招打開了。\n\n最後收成一份上線前的五條防守清單。\n\nNoteVault 的原始碼與混淆設定：https://github.com/x812033727/travel_scanner/tree/main/docs/videos/rea-reverse-engineering-protection/test-target\n\n00:00 REA 爆紅，我做的網站它看得穿嗎\n01:xx 靶子：一支故意做錯的付費小程式\n0x:xx 第一次照鏡子：一個指令，秘密全出來\n0x:xx REA 真正多做的：幫你繞過它\n0x:xx 混淆之後呢\n0x:xx 換網站：我漏了什麼\n0x:xx 把判斷搬回伺服器（動手改）＋清單\n\n分析目標全為自有軟體，所有秘密皆為假測試值。REA 僅供分析自己擁有或被授權的軟體。",
+  "tags": [
+   "REA",
+   "逆向工程",
+   "AI",
+   "資訊安全",
+   "程式碼混淆",
+   "Mokaair"
+  ]
+ },
+ "thumbnail": {
+  "template": "thumb",
+  "data": {
+   "tag": "逆向工程 × AI 實測",
+   "headline": "混淆了，\n**還是開**",
+   "sub": "我拿自己的軟體，用爆紅的 REA 照一次鏡子",
+   "capture": "web-run"
+  }
+ },
+ "sources": [
+  {
+   "title": "REA: Reverse Engineer Anything｜GitHub",
+   "url": "https://github.com/morluto/rea",
+   "checked_on": "2026-10-16"
+  },
+  {
+   "title": "REA 官方網站",
+   "url": "https://rea.tools/",
+   "checked_on": "2026-10-16"
+  },
+  {
+   "title": "rea-agents｜npm",
+   "url": "https://www.npmjs.com/package/rea-agents",
+   "checked_on": "2026-10-16"
+  }
+ ],
+ "assets": [],
+ "subtitles": {
+  "burn_in": false
+ },
+ "loops": [
+  {
+   "setup": "l003",
+   "payoff": "l00z",
+   "what": "三個埋好的錯會不會被挖出來"
+  },
+  {
+   "setup": "l005",
+   "payoff": "l01n",
+   "what": "混淆後付費鎖還擋不擋得住"
+  },
+  {
+   "setup": "l006",
+   "payoff": "l022",
+   "what": "自家正式站會不會出事"
+  },
+  {
+   "setup": "l015",
+   "payoff": "l017",
+   "what": "REA 比老工具多做的那件事"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "open",
+   "chapter": "REA 爆紅：我做的網站，它看得穿嗎",
+   "template": "title",
+   "data": {
+    "tag": "逆向工程 × AI 實測",
+    "title": "程式「看不懂」，\n**還保護得了你的軟體嗎？**",
+    "subtitle": "我把自己的網站和一支小程式，丟給爆紅的 REA 照一次鏡子"
+   },
+   "claims": [
+    "c01"
+   ],
+   "lines": [
+    {
+     "id": "l001",
+     "text": "這個工具，十天從不到一萬顆星，衝到二十八萬。",
+     "emotion": "壓低放慢，數字放慢"
+    },
+    {
+     "id": "l002",
+     "text": "它叫 REA，大家都在用它複製別人的 App。那我自己做的網站呢？",
+     "emotion": "問句上揚"
+    },
+    {
+     "id": "l003",
+     "text": "我把一支自己寫的付費小程式丟給它。一個指令,我埋的三個秘密全被倒出來——",
+     "emotion": "停一拍"
+    },
+    {
+     "id": "l004",
+     "text": "可是這還不是最意外的。",
+     "emotion": "放輕"
+    },
+    {
+     "id": "l005",
+     "text": "我把程式碼混淆到人根本看不懂,付費鎖還是被同一招打開了。",
+     "emotion": "揭曉，亮起來"
+    },
+    {
+     "id": "l006",
+     "text": "然後我換上自己的正式站。這一次,我是真的捏了一把冷汗。",
+     "emotion": "留鉤子"
+    }
+   ]
+  },
+  {
+   "id": "stars",
+   "chapter": "REA 是什麼，我為什麼緊張",
+   "template": "stats",
+   "data": {
+    "title": "REA 爆紅的速度",
+    "stats": [
+     {
+      "value": "約 28 萬",
+      "label": "GitHub 星數",
+      "note": "2026-10-16 讀到 276,024"
+     },
+     {
+      "value": "破十萬",
+      "label": "十天內",
+      "note": "報導：10-06 不到一萬"
+     }
+    ],
+    "source": "來源：github.com/morluto/rea，錄製日重核"
+   },
+   "claims": [
+    "c01",
+    "c02",
+    "c03"
+   ],
+   "lines": [
+    {
+     "id": "l007",
+     "text": "二十八萬顆星,到底在紅什麼?",
+     "emotion": "問句上揚"
+    },
+    {
+     "id": "l008",
+     "text": "說穿了,REA 把一件很硬的專業——逆向工程——接給了 AI 代理。"
+    },
+    {
+     "id": "l009",
+     "text": "逆向工程,就是從一個做好的成品,往回推它裡面怎麼運作。"
+    },
+    {
+     "id": "l00a",
+     "text": "以前這要會用 Ghidra 這種工具,門檻很高;現在一句話就能叫代理去做。"
+    },
+    {
+     "id": "l00b",
+     "text": "星數這條曲線幾乎是直的。但我在意的不是它多紅,"
+    },
+    {
+     "id": "l00c",
+     "text": "是它讓一件一直成立的事,變成一行指令就能示範——先記住這句,等一下見真章。",
+     "emotion": "留鉤子"
+    }
+   ]
+  },
+  {
+   "id": "stance",
+   "template": "quote",
+   "data": {
+    "kicker": "我的立場",
+    "quote": "混淆和編譯不是鎖，只是提高門檻。",
+    "translation": "真正的保護只有一種：把判斷和秘密，放到使用者碰不到的伺服器上。",
+    "source": "這支影片要用我自己的程式，證明這句話"
+   },
+   "lines": [
+    {
+     "id": "l00d",
+     "text": "這波大家都在問「REA 能複製誰」,很少人問「被複製的那一方該怎麼辦」。"
+    },
+    {
+     "id": "l00e",
+     "text": "我做 Mokaair,第一個反應不是興奮,是緊張:我到底在前端漏了什麼?"
+    },
+    {
+     "id": "l00f",
+     "text": "所以我拿自己的東西開刀。結論先放這裡,等一下用實測一條一條驗。",
+     "emotion": "穩"
+    }
+   ]
+  },
+  {
+   "id": "note-app",
+   "chapter": "靶子：一支故意做錯的付費小程式",
+   "template": "terminal",
+   "data": {
+    "title": "NoteVault：我自己寫的付費筆記 App",
+    "command": "dotnet NoteVault.dll",
+    "output": [
+     "NoteVault 1.4.2. Commands: activate <key>, export-pdf",
+     "Pro costs NT$150 per month."
+    ],
+    "ran_on": "2026-10-16",
+    "tool_version": ".NET SDK 10.0.400"
+   },
+   "claims": [
+    "c08",
+    "c10"
+   ],
+   "lines": [
+    {
+     "id": "l00g",
+     "text": "先做一個靶子。這是我寫的八十行小程式,叫 NoteVault。"
+    },
+    {
+     "id": "l00h",
+     "text": "假裝它是一款有付費功能的筆記 App,月費一百五。"
+    },
+    {
+     "id": "l00i",
+     "text": "它的原始碼我會放在說明欄,你可以自己對照。"
+    },
+    {
+     "id": "l00j",
+     "text": "裡面所有的秘密都是假的測試值——我是要示範漏洞,不是真的洩密。"
+    }
+   ]
+  },
+  {
+   "id": "three-bugs",
+   "template": "bullets",
+   "data": {
+    "title": "我故意在裡面埋了三個常見錯誤",
+    "items": [
+     "授權檢查：用寫死的密鑰，在使用者的電腦上算",
+     "除錯後門：一個環境變數就解鎖全部付費功能",
+     "隱藏折扣：某個地區偷偷打六折"
+    ],
+    "note": "三個都是真實產品常犯的錯，等一下一個一個被挖出來"
+   },
+   "claims": [
+    "c09"
+   ],
+   "lines": [
+    {
+     "id": "l00k",
+     "text": "我故意埋了三個很多產品真的會犯的錯。"
+    },
+    {
+     "id": "l00l",
+     "text": "第一,授權檢查算在使用者的機器上。"
+    },
+    {
+     "id": "l00m",
+     "text": "第二,一個除錯用的後門。第三,一個藏起來的折扣。"
+    },
+    {
+     "id": "l00n",
+     "text": "記住這三個——它們等一下會一個一個現形。",
+     "emotion": "留鉤子"
+    }
+   ]
+  },
+  {
+   "id": "license-code",
+   "template": "code",
+   "data": {
+    "title": "問題的核心：授權算在用戶端",
+    "language": "csharp",
+    "code": "// 密鑰直接寫死在程式裡 —— 這就是錯的起點\nconst string SigningSecret = \"nv-test-secret-7f3a9c\";\n\npublic static bool Check(string key) {\n  // 拿這把密鑰，在使用者的電腦上算、比對\n  ...\n}",
+    "highlight": [
+     2
+    ],
+    "caption": "密鑰在程式裡、判斷在用戶端：兩個致命前提"
+   },
+   "claims": [
+    "c09"
+   ],
+   "lines": [
+    {
+     "id": "l00o",
+     "text": "放大看授權這一段。密鑰直接寫死在程式裡,第二行。"
+    },
+    {
+     "id": "l00p",
+     "text": "然後拿這把密鑰,在使用者的電腦上算、在使用者的電腦上比對。"
+    },
+    {
+     "id": "l00q",
+     "text": "這兩件事——秘密在程式裡、判斷在用戶端——就是兩個致命前提。"
+    },
+    {
+     "id": "l00r",
+     "text": "但直覺上你會想:反正編譯過了,沒人看得懂。真的嗎?",
+     "emotion": "問句上揚，收尾問題"
+    }
+   ]
+  },
+  {
+   "id": "install",
+   "chapter": "第一次照鏡子：一個指令，秘密全出來",
+   "template": "terminal",
+   "data": {
+    "title": "接上 REA：一行指令",
+    "command": "npx rea-agents setup",
+    "output": [
+     "Choose your agents, review the proposed changes, and approve.",
+     "Supports Claude Code, Codex, Cursor, Gemini CLI ..."
+    ],
+    "ran_on": "2026-10-16",
+    "tool_version": "rea-agents 6.5.0"
+   },
+   "claims": [
+    "c06",
+    "c07"
+   ],
+   "lines": [
+    {
+     "id": "l00s",
+     "text": "先裝 REA。就一行,選你的代理、按同意,就接上了。"
+    },
+    {
+     "id": "l00t",
+     "text": "它支援 Claude Code、Codex 這些常見的 AI 代理。"
+    },
+    {
+     "id": "l00u",
+     "text": "在你動手之前,有兩件事要先知道。"
+    },
+    {
+     "id": "l00v",
+     "text": "第一,分析全在你自己的電腦上跑,不會上傳你的程式。",
+     "emotion": "提醒"
+    },
+    {
+     "id": "l00w",
+     "text": "第二,只能從官方那個 repo 裝,網路上有抄名字的假的。",
+     "emotion": "提醒"
+    }
+   ]
+  },
+  {
+   "id": "strings-out",
+   "template": "terminal",
+   "data": {
+    "title": "一個指令，倒出全部字串",
+    "command": "npx rea inspect-managed-members NoteVault.dll",
+    "output": [
+     "literal count: 23",
+     "  \"nv-test-secret-7f3a9c\"   <- 簽章密鑰",
+     "  \"NV_INTERNAL_DEBUG\" / \"letmein\"  <- 後門",
+     "  \"EDU\" / \"NT$90\"   <- 隱藏折扣"
+    ],
+    "ran_on": "2026-10-16",
+    "tool_version": "rea-agents 6.5.0"
+   },
+   "claims": [
+    "c11"
+   ],
+   "lines": [
+    {
+     "id": "l00x",
+     "text": "對原版跑一個指令。注意,它是靜態分析,連跑都不用跑我的程式。"
+    },
+    {
+     "id": "l00y",
+     "text": "二十三個字串,全出來。",
+     "emotion": "放慢"
+    },
+    {
+     "id": "l00z",
+     "text": "簽章密鑰、除錯後門、隱藏折扣——我埋的三個秘密,一次全中。",
+     "emotion": "揭曉"
+    },
+    {
+     "id": "l010",
+     "text": "我第一次看到的時候是倒抽一口氣的。但先別急著怪 REA。",
+     "emotion": "停一拍，留鉤子"
+    }
+   ]
+  },
+  {
+   "id": "simple-way",
+   "template": "compare",
+   "data": {
+    "title": "等一下 —— 這招其實不稀奇",
+    "left": {
+     "heading": "最簡單的方法",
+     "points": [
+      "一個 strings 指令",
+      "或用文字檢視器打開",
+      "明文字串一樣看得到"
+     ]
+    },
+    "right": {
+     "heading": "REA 在這一步",
+     "points": [
+      "也只是把字串列出來",
+      "沒有比老工具厲害",
+      "真正的差別在下一章"
+     ]
+    },
+    "verdict": "看到明文字串，不是 REA 的價值；別把秘密放進程式才是重點"
+   },
+   "claims": [
+    "c12"
+   ],
+   "lines": [
+    {
+     "id": "l011",
+     "text": "老實說,要看一個程式裡的明文字串,最簡單用一個 strings 指令就行。"
+    },
+    {
+     "id": "l012",
+     "text": "連 REA 都不用。所以這一步,REA 並沒有比老工具厲害。"
+    },
+    {
+     "id": "l013",
+     "text": "這一章的教訓其實很單純:別把秘密放進會被發出去的程式裡。"
+    },
+    {
+     "id": "l014",
+     "text": "金鑰、密碼、設定,只要進了前端或二進位,就當它已經公開。"
+    },
+    {
+     "id": "l015",
+     "text": "那 REA 真正多做的、老工具做不到的是什麼?下一章。",
+     "emotion": "收尾問題"
+    }
+   ]
+  },
+  {
+   "id": "forge-steps",
+   "chapter": "REA 真正多做的：幫你繞過它",
+   "template": "steps",
+   "data": {
+    "title": "從密鑰到一把假的合法 key",
+    "steps": [
+     {
+      "title": "讀出密鑰",
+      "detail": "上一章就拿到了：nv-test-secret-7f3a9c"
+     },
+     {
+      "title": "照程式的算法自己算",
+      "detail": "用密鑰對使用者編號算，取前八碼"
+     },
+     {
+      "title": "拼成一把 key",
+      "detail": "NV-123456-78F56FB4"
+     }
+    ]
+   },
+   "claims": [
+    "c13",
+    "c14"
+   ],
+   "lines": [
+    {
+     "id": "l016",
+     "text": "老工具給你一堆字串,但不會幫你用它。REA 和代理會。"
+    },
+    {
+     "id": "l017",
+     "text": "它讀懂授權的算法,用那把密鑰,自己算出一把合法的金鑰。"
+    },
+    {
+     "id": "l018",
+     "text": "這不是人去硬破解,是代理順著邏輯推出來的。"
+    },
+    {
+     "id": "l019",
+     "text": "我照它的算法,拼出一把假金鑰。接下來見真章。",
+     "emotion": "留鉤子"
+    }
+   ]
+  },
+  {
+   "id": "forge-key",
+   "template": "terminal",
+   "data": {
+    "title": "拿這把假 key 去解鎖",
+    "command": "dotnet NoteVault.dll activate NV-123456-78F56FB4",
+    "output": [
+     "Pro activated."
+    ],
+    "ran_on": "2026-10-16",
+    "tool_version": ".NET SDK 10.0.400"
+   },
+   "claims": [
+    "c13",
+    "c18"
+   ],
+   "lines": [
+    {
+     "id": "l01a",
+     "text": "拿這把我自己算出來的金鑰,去啟用付費功能。"
+    },
+    {
+     "id": "l01b",
+     "text": "Pro activated。付費鎖開了,我沒有付一毛錢。",
+     "emotion": "揭曉"
+    },
+    {
+     "id": "l01c",
+     "text": "為什麼辦得到?因為判斷算在我的電腦上,我當然可以餵它任何答案。"
+    },
+    {
+     "id": "l01d",
+     "text": "這個原因,請你記住。混淆那一關會再用到。",
+     "emotion": "留鉤子"
+    }
+   ]
+  },
+  {
+   "id": "obf-strings",
+   "chapter": "混淆之後呢：開場那個意外",
+   "template": "terminal",
+   "data": {
+    "title": "做一個混淆版，再抽一次字串",
+    "command": "npx rea inspect-managed-members NoteVault.dll  # 混淆版",
+    "output": [
+     "literal count: 0"
+    ],
+    "ran_on": "2026-10-16",
+    "tool_version": "Obfuscar 2.2.50"
+   },
+   "claims": [
+    "c15"
+   ],
+   "lines": [
+    {
+     "id": "l01e",
+     "text": "那加上混淆呢?很多人以為,混淆過就安全了。"
+    },
+    {
+     "id": "l01f",
+     "text": "我用一個開源工具做了混淆版,打開藏字串的選項。"
+    },
+    {
+     "id": "l01g",
+     "text": "再抽一次字串:零個。字串堆被清空了,人也讀不懂了。",
+     "emotion": "放慢"
+    },
+    {
+     "id": "l01h",
+     "text": "看起來安全多了對吧?先別下結論——我其實做了兩個混淆版。",
+     "emotion": "留鉤子"
+    }
+   ]
+  },
+  {
+   "id": "obf-inconsistent",
+   "template": "compare",
+   "data": {
+    "title": "混淆連藏字串都不一致",
+    "left": {
+     "heading": "密鑰寫成 const",
+     "points": [
+      "字串堆清空了",
+      "但明文仍殘留在檔案裡",
+      "一個位元組掃描就找到"
+     ]
+    },
+    "right": {
+     "heading": "改成 readonly",
+     "points": [
+      "字串堆清空了",
+      "位元組裡也真的消失",
+      "同一個工具，結果不同"
+     ]
+    },
+    "verdict": "同樣開了藏字串，寫法差一個字，結果天差地遠"
+   },
+   "claims": [
+    "c16"
+   ],
+   "lines": [
+    {
+     "id": "l01i",
+     "text": "同一支程式,我只改了一個字。"
+    },
+    {
+     "id": "l01j",
+     "text": "秘密寫成 const 的時候,混淆完,明文還躺在檔案裡,掃一下就找到。"
+    },
+    {
+     "id": "l01k",
+     "text": "改成 readonly,才真的藏掉。同一個工具,寫法差一個字,結果完全不同。"
+    },
+    {
+     "id": "l01l",
+     "text": "所以混淆連「藏字串」都不保證做到。那「擋繞過」呢?",
+     "emotion": "收尾問題"
+    }
+   ]
+  },
+  {
+   "id": "bypass-table",
+   "template": "table",
+   "data": {
+    "title": "三種繞過，在混淆版照樣成功",
+    "columns": [
+     "繞過手法",
+     "原版",
+     "混淆版"
+    ],
+    "rows": [
+     [
+      "偽造的授權 key",
+      "成功",
+      "成功"
+     ],
+     [
+      "除錯後門 letmein",
+      "成功",
+      "成功"
+     ],
+     [
+      "隱藏六折 EDU",
+      "成功",
+      "成功"
+     ]
+    ],
+    "highlight": 2
+   },
+   "claims": [
+    "c17",
+    "c18"
+   ],
+   "lines": [
+    {
+     "id": "l01m",
+     "text": "這就是開場那個意外。我把三種繞過,在混淆版上再跑一次。"
+    },
+    {
+     "id": "l01n",
+     "text": "偽造金鑰、除錯後門、隱藏折扣——三個,一字不差,照樣成功。",
+     "emotion": "揭曉"
+    },
+    {
+     "id": "l01o",
+     "text": "還記得剛剛那個原因嗎?判斷還是跑在使用者的機器上。"
+    },
+    {
+     "id": "l01p",
+     "text": "不管字串藏得多好,那段比對的邏輯,還是在使用者這邊執行。"
+    },
+    {
+     "id": "l01q",
+     "text": "混淆改的是「多難讀」,不是「能不能繞過」。這兩件事,沒關係。",
+     "emotion": "亮起來"
+    }
+   ]
+  },
+  {
+   "id": "web-run",
+   "chapter": "換網站：我自己漏了什麼",
+   "template": "screencast",
+   "data": {
+    "title": "用 REA 分析自己的正式站",
+    "caption": "github.com/morluto/rea｜analyze-web-bundle｜2026-10-16 擷取",
+    "steps": [
+     {
+      "action": "goto",
+      "url": "https://github.com/morluto/rea"
+     },
+     {
+      "action": "wait",
+      "selector": "article"
+     },
+     {
+      "action": "capture",
+      "focus": "article"
+     }
+    ]
+   },
+   "claims": [
+    "c19"
+   ],
+   "lines": [
+    {
+     "id": "l01r",
+     "text": "小程式講完,換我自己的網站——這才是我真正緊張的地方。"
+    },
+    {
+     "id": "l01s",
+     "text": "REA 開一個瀏覽器,被動擷取,一樣不執行頁面。"
+    },
+    {
+     "id": "l01t",
+     "text": "它解析了二十支程式檔、二十二萬個節點,認出前端是 Next.js。"
+    },
+    {
+     "id": "l01u",
+     "text": "那它在我的正式站上,看到了什麼、又看不到什麼?",
+     "emotion": "收尾問題"
+    }
+   ]
+  },
+  {
+   "id": "web-good",
+   "template": "stats",
+   "data": {
+    "title": "做對的地方",
+    "stats": [
+     {
+      "value": "關閉",
+      "label": "source map",
+      "note": "REA 要原始碼，requested=0、拿不到"
+     },
+     {
+      "value": "0 個",
+      "label": "外洩的金鑰",
+      "note": "首頁整包掃描無金鑰"
+     }
+    ],
+    "source": "來源：runlog.txt [W1]"
+   },
+   "claims": [
+    "c20"
+   ],
+   "lines": [
+    {
+     "id": "l01v",
+     "text": "先講好消息,我鬆了一口氣的地方。"
+    },
+    {
+     "id": "l01w",
+     "text": "正式站把 source map 關掉了——REA 想還原原始碼,拿不到。"
+    },
+    {
+     "id": "l01x",
+     "text": "整包前端掃過去,也沒有任何金鑰。這兩件,是做對的。"
+    }
+   ]
+  },
+  {
+   "id": "web-visible",
+   "template": "bullets",
+   "data": {
+    "title": "但這些還是讀得到",
+    "items": [
+     "兩個 API 端點：/api/travel/analytics/config、/api/travel/analytics/events",
+     "前端框架、路由字樣（像 /admin）",
+     "搜尋參數的名字"
+    ],
+    "note": "放進前端的介面，本質上就是公開的"
+   },
+   "claims": [
+    "c21"
+   ],
+   "lines": [
+    {
+     "id": "l01y",
+     "text": "但前端能讀到的還是不少:兩個 API 端點、路由、參數的名字。"
+    },
+    {
+     "id": "l01z",
+     "text": "這不是漏洞,是前端的本質——送到瀏覽器的東西,就是公開的。"
+    },
+    {
+     "id": "l020",
+     "text": "所以真正的問題不是「前端漏了什麼」,是「該保護的有沒有留在前端」。",
+     "emotion": "留鉤子"
+    }
+   ]
+  },
+  {
+   "id": "boundary",
+   "template": "quote",
+   "data": {
+    "kicker": "REA 自己寫的限制",
+    "quote": "server-side behavior may remain unknown.",
+    "translation": "伺服器端的行為，可能始終拿不到。",
+    "source": "來源：REA analyze-web-bundle 的 limitations"
+   },
+   "claims": [
+    "c22"
+   ],
+   "lines": [
+    {
+     "id": "l021",
+     "text": "最重要的一句,是 REA 自己報告裡寫的這句:"
+    },
+    {
+     "id": "l022",
+     "text": "伺服器端的行為,它拿不到。",
+     "emotion": "放慢"
+    },
+    {
+     "id": "l023",
+     "text": "連這個能把二進位拆到骨頭的工具,都碰不到伺服器。這句話,就是你所有保護的落腳點。",
+     "emotion": "穩"
+    }
+   ]
+  },
+  {
+   "id": "fix-code",
+   "chapter": "把判斷搬回伺服器（動手改）",
+   "template": "code",
+   "data": {
+    "title": "動手改：授權不要在用戶端算",
+    "language": "csharp",
+    "code": "// 改之前：在使用者電腦上算、再比對\n// 改之後：只問伺服器，前端不碰密鑰\nvar ok = await api.Post(\"/license/verify\", key);\nif (!ok.Approved) return false;\n// 偽造的 key 到了伺服器就過不了",
+    "highlight": [
+     3
+    ],
+    "caption": "密鑰與判斷都在伺服器，前端只收「准或不准」"
+   },
+   "claims": [
+    "c23",
+    "c24"
+   ],
+   "lines": [
+    {
+     "id": "l024",
+     "text": "那 NoteVault 那個洞怎麼修?把授權這段,從用戶端算,改成只問伺服器。"
+    },
+    {
+     "id": "l025",
+     "text": "前端不再碰密鑰,只收一個「准,還是不准」。第三行就是那一行。"
+    },
+    {
+     "id": "l026",
+     "text": "這樣一改,密鑰就不在程式裡了,偽造的金鑰送到伺服器也過不了。",
+     "emotion": "亮起來"
+    }
+   ]
+  },
+  {
+   "id": "checklist",
+   "template": "steps",
+   "data": {
+    "title": "上線前，照這五條檢查",
+    "steps": [
+     {
+      "title": "判斷與秘密搬到伺服器",
+      "detail": "授權、付費、權限，前端只收結果"
+     },
+     {
+      "title": "秘密不進前端或二進位",
+      "detail": "金鑰遲早被倒出來"
+     },
+     {
+      "title": "正式站關掉 source map",
+      "detail": "Mokaair 已做到"
+     },
+     {
+      "title": "後端只回必要欄位",
+      "detail": "is_admin 這種旗標決定不了權限"
+     },
+     {
+      "title": "拔掉除錯後門與隱藏旗標",
+      "detail": "它們會跟字串一起被看到"
+     }
+    ]
+   },
+   "claims": [
+    "c25"
+   ],
+   "lines": [
+    {
+     "id": "l027",
+     "text": "把這一支學到的,收成五條上線前的清單。"
+    },
+    {
+     "id": "l028",
+     "text": "判斷搬伺服器、秘密別進前端、關掉 source map、"
+    },
+    {
+     "id": "l029",
+     "text": "後端只回必要的欄位、拔掉除錯後門。"
+    },
+    {
+     "id": "l02a",
+     "text": "每一條,都對應這支影片裡,一個真的被我繞過的洞。"
+    },
+    {
+     "id": "l02b",
+     "text": "這不是要你把前端做得滴水不漏——那做不到。"
+    },
+    {
+     "id": "l02c",
+     "text": "是把真正重要的那幾件事,挪到使用者碰不到的地方。"
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "chapter": "回到最前面那個意外",
+   "template": "outro",
+   "data": {
+    "title": "混淆擋不住繞過，真正的鎖在伺服器",
+    "cta": "NoteVault 的原始碼和混淆設定，在說明欄連結的資料夾裡",
+    "lines": [
+     "看不懂 ≠ 拿不到：程式碼混淆只是提高門檻",
+     "判斷在用戶端，就一定繞得過",
+     "想驗證？對你自己的產品跑一次 REA"
+    ]
+   },
+   "claims": [
+    "c05",
+    "c18"
+   ],
+   "lines": [
+    {
+     "id": "l02d",
+     "text": "回到開場那個意外:我把程式混淆到看不懂,付費鎖還是開了。"
+    },
+    {
+     "id": "l02e",
+     "text": "因為鎖從來不在「看不看得懂」,在「判斷放在誰的機器上」。",
+     "emotion": "亮起來"
+    },
+    {
+     "id": "l02f",
+     "text": "如果你也在做軟體,今晚對自己的產品跑一次 REA,照一次鏡子。"
+    },
+    {
+     "id": "l02g",
+     "text": "你最想保護自己程式裡的哪一塊?留言告訴我。"
+    },
+    {
+     "id": "l02h",
+     "text": "覺得有用,訂閱 Mokaair,我會繼續把這種實測做給你看。",
+     "emotion": "收尾"
+    }
+   ]
+  }
+ ]
+}
