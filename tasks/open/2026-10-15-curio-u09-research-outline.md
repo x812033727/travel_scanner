@@ -68,3 +68,4 @@ scope:
 - 已核准 brief 缺現行 lint 要求的三個精確節標；依主代理指示，只在大綱前從既有內容提取問題／一句答案／站主觀點。A／B 選項正文未改。原 SHA `E268DE743CECA8CDB0EF6846AC893D8F2F0422C1F4E30CE6A6200003B8149D79`；新 SHA `0C6A058D0ED1BB5A8C2B42275275523F3A5BB19FE53C78E82B7F499F4B82C6D2`。由主代理重新送新版大綱，核准後才可送劇本／付費。
 - 本輪沒有付費呼叫、媒體生成、後台送稿或 push。正式稿的獨立史料覆核、十三題盲評仍待執行；詳見 `docs/videos/curio-u09/script-status.md`。
 - 本輪 schema／逐句索引／script 同步檢查均通過；`check:tasks` 通過 1895 份，僅既存過期／重疊警告。依主代理要求，只將本集 docs 與本票作本機 commit，認領維持供修訂接續。
+- 主代理補充指示後，brief 選項外的舊狀態改為原案 A 已核准、每集 US$6 已授權，並連至批次 `decision-20261016.json`。A／B 主文保持原字；最終送審用 brief SHA 為 `6C4C27F3DB3EFF2106241AF15A7C69499E6070436D4061150530481F1BFBBEC9`，取代上一則只補三節時的中間 hash；lint 仍為 0 errors／0 warnings。
