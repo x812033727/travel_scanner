@@ -6,7 +6,9 @@ V=~/mokaair-work/videos
 while read -r label status path; do
   [ "$status" = "2" ] && [ -n "$path" ] || continue
   url="https://cdn.hailuoai.video/moss/prod/$path"
-  if [[ $label =~ ^c:e([0-9])-(s[0-9a-z]+)$ ]]; then
+  if [[ $label =~ ^c:e([0-9])-(s[0-9]+)sp$ ]]; then
+    d=$V/zhong-tian-qu-qi-e00${BASH_REMATCH[1]}/clips; f=$d/${BASH_REMATCH[2]}-tsp.mp4
+  elif [[ $label =~ ^c:e([0-9])-(s[0-9a-z]+)$ ]]; then
     d=$V/zhong-tian-qu-qi-e00${BASH_REMATCH[1]}/clips; f=$d/${BASH_REMATCH[2]}-t1.mp4
   elif [[ $label =~ ^e([0-9])-(s[0-9a-z]+)-(t[0-9])$ ]]; then
     d=$V/zhong-tian-qu-qi-e00${BASH_REMATCH[1]}/first-frames; f=$d/${BASH_REMATCH[2]}-${BASH_REMATCH[3]}.png

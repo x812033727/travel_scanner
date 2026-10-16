@@ -54,9 +54,10 @@ for (const scene of video.scenes) {
   let dur = lines.length ? LEAD + lines.reduce((a, l) => a + l.len, 0) + GAP * (lines.length - 1) + TAIL : scene.action_seconds ?? scene.data?.action_seconds ?? 2;
   dur = Math.max(dur, MIN);
   const src = scene.data?.source;
-  const clip = src ? pick(path.join(work, "clips"), src.shot, ".mp4") : pick(path.join(work, "clips"), scene.id, ".mp4");
+  const firstTake = (dir, shot) => { if (!existsSync(dir)) return null; const hits = readdirSync(dir).filter((n) => n.startsWith(`${shot}-t`) && n.endsWith(".mp4") && !n.includes("-tsp")).sort(); return hits.length ? path.join(dir, hits[hits.length - 1]) : null; };
+  const clip = src ? firstTake(path.join(work, "clips"), src.shot) : pick(path.join(work, "clips"), scene.id, ".mp4");
   const still = pick(path.join(work, "first-frames"), src ? src.shot : scene.id, ".png") ?? pick(path.join(work, "first-frames"), src ? src.shot : scene.id, ".jpg");
-  const isStill = scene.data?.visual === "still" || !clip;
+  const isStill = !clip;
   const seg = path.join(segDir, `${scene.id}.mp4`);
   const args = ["-v", "error", "-y"];
   let vf;
