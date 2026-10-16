@@ -154,6 +154,26 @@ test("pilot auditions require their matching slug and charge that film; generic 
     assert.match(request.operation_id, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
   }
 
+  const followonDir = path.join(box.base, "brand-stories-five-20261014");
+  mkdirSync(followonDir, { recursive: true });
+  const planIds = ["A29", "A16", "A37", "B14", "A21"];
+  for (const [index, id] of planIds.entries()) {
+    const file = path.join(followonDir, `${id}-voice-sample.txt`);
+    writeFileSync(file, `企劃 ${id} 的試聽。`);
+    const slug = FOLLOWON_SLUGS[index];
+    assert.equal(await audition(file), EXIT.usage, `${id}: plan ID must require attribution`);
+    assert.equal(await audition(file, FOLLOWON_SLUGS[(index + 1) % FOLLOWON_SLUGS.length]), EXIT.usage);
+    assert.equal(await audition(file, slug), EXIT.ok);
+    const request = JSON.parse(calls.at(-1).init.body);
+    assert.equal(request.video_slug, slug);
+    assert.match(request.operation_id, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+  }
+  const ambiguous = path.join(followonDir, "narration-sample.txt");
+  writeFileSync(ambiguous, "五集企劃中的試聽，尚未指名影片。");
+  const beforeAmbiguous = calls.length;
+  assert.equal(await audition(ambiguous), EXIT.usage);
+  assert.equal(calls.length, beforeAmbiguous, "ambiguous follow-on samples must not reach speech API");
+
   assert.equal(await audition(generic), EXIT.ok);
   const ordinary = JSON.parse(calls.at(-1).init.body);
   assert.equal(ordinary.video_slug, undefined);

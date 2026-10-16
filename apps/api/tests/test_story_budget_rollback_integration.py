@@ -272,17 +272,14 @@ def test_real_0133_migration_allows_only_the_reviewed_0132_rollback(
         f"guard={hashlib.sha256(guard_source.read_bytes()).hexdigest()}"
     )
 
-    _assert_success(
-        _run(["-m", "alembic", "upgrade", MIGRATION_0132], cwd=rollback_root, url=url)
-    )
+    _assert_success(_run(["-m", "alembic", "upgrade", MIGRATION_0132], cwd=rollback_root, url=url))
     assert asyncio.run(_fetch(url, "SELECT version_num FROM alembic_version")) == [
         (MIGRATION_0132,)
     ]
     assert asyncio.run(
         _fetch(
             url,
-            "SELECT slug, limit_usd FROM video_pilot_budgets "
-            f"WHERE slug = '{B18_V2}'",
+            f"SELECT slug, limit_usd FROM video_pilot_budgets WHERE slug = '{B18_V2}'",
         )
     ) == [(B18_V2, Decimal("25.000000"))]
     asyncio.run(_seed_original_b18_operations(url))
@@ -299,8 +296,11 @@ def test_real_0133_migration_allows_only_the_reviewed_0132_rollback(
         future_revision.unlink()
     assert not future_revision.exists()
     before_rollback = asyncio.run(
-        _fetch(url, "SELECT id, operation_id, status, max_usd, actual_usd "
-               "FROM video_pilot_budget_operations ORDER BY operation_id")
+        _fetch(
+            url,
+            "SELECT id, operation_id, status, max_usd, actual_usd "
+            "FROM video_pilot_budget_operations ORDER BY operation_id",
+        )
     )
     assert [(row[1], row[2], row[3], row[4]) for row in before_rollback] == [
         ("pre-upgrade-settled", "settled", Decimal("2.000000"), Decimal("1.500000")),
@@ -336,8 +336,7 @@ def test_real_0133_migration_allows_only_the_reviewed_0132_rollback(
     assert ("ix_video_pilot_budget_operations_slug",) in asyncio.run(
         _fetch(
             url,
-            "SELECT indexname FROM pg_indexes "
-            "WHERE tablename='video_pilot_budget_operations'",
+            "SELECT indexname FROM pg_indexes WHERE tablename='video_pilot_budget_operations'",
         )
     )
 
@@ -354,10 +353,16 @@ def test_real_0133_migration_allows_only_the_reviewed_0132_rollback(
     assert asyncio.run(_fetch(url, "SELECT version_num FROM alembic_version")) == [
         (MIGRATION_0133,)
     ]
-    assert asyncio.run(
-        _fetch(url, "SELECT id, operation_id, status, max_usd, actual_usd "
-               "FROM video_pilot_budget_operations ORDER BY operation_id")
-    ) == before_rollback
+    assert (
+        asyncio.run(
+            _fetch(
+                url,
+                "SELECT id, operation_id, status, max_usd, actual_usd "
+                "FROM video_pilot_budget_operations ORDER BY operation_id",
+            )
+        )
+        == before_rollback
+    )
 
     # The rolled-back app, not a mocked readiness function, reads the 0133 DB and Redis.
     ready = _run(
@@ -438,6 +443,82 @@ def test_real_0133_migration_allows_only_the_reviewed_0132_rollback(
             {"slug": FOLLOWONS[0]},
         )
     )
+
+    # A constraint with the right name but the wrong definition cannot protect
+    # paid idempotency or the allowed operation states.
+    asyncio.run(
+        _execute(
+            url,
+            "ALTER TABLE video_pilot_budget_operations "
+            "DROP CONSTRAINT uq_video_pilot_budget_operation",
+        )
+    )
+    asyncio.run(
+        _execute(
+            url,
+            "ALTER TABLE video_pilot_budget_operations "
+            "ADD CONSTRAINT uq_video_pilot_budget_operation UNIQUE (id)",
+        )
+    )
+    assert _run(migrate_command, cwd=rollback_root, url=url).returncode != 0
+    asyncio.run(
+        _execute(
+            url,
+            "ALTER TABLE video_pilot_budget_operations "
+            "DROP CONSTRAINT uq_video_pilot_budget_operation",
+        )
+    )
+    asyncio.run(
+        _execute(
+            url,
+            "ALTER TABLE video_pilot_budget_operations "
+            "ADD CONSTRAINT uq_video_pilot_budget_operation UNIQUE (slug, operation_id)",
+        )
+    )
+
+    asyncio.run(
+        _execute(
+            url,
+            "ALTER TABLE video_pilot_budget_operations "
+            "DROP CONSTRAINT ck_video_pilot_budget_operation_status",
+        )
+    )
+    asyncio.run(
+        _execute(
+            url,
+            "ALTER TABLE video_pilot_budget_operations "
+            "ADD CONSTRAINT ck_video_pilot_budget_operation_status CHECK (true)",
+        )
+    )
+    assert _run(migrate_command, cwd=rollback_root, url=url).returncode != 0
+    asyncio.run(
+        _execute(
+            url,
+            "ALTER TABLE video_pilot_budget_operations "
+            "DROP CONSTRAINT ck_video_pilot_budget_operation_status",
+        )
+    )
+    asyncio.run(
+        _execute(
+            url,
+            "ALTER TABLE video_pilot_budget_operations "
+            "ADD CONSTRAINT ck_video_pilot_budget_operation_status "
+            "CHECK (status IN ('reserved', 'uncertain', 'settled', 'released'))",
+        )
+    )
+
+    asyncio.run(
+        _execute(url, "ALTER TABLE video_pilot_budgets DROP CONSTRAINT ck_video_pilot_budget_limit")
+    )
+    asyncio.run(
+        _execute(
+            url,
+            "ALTER TABLE video_pilot_budgets "
+            "ADD CONSTRAINT ck_video_pilot_budget_limit "
+            "CHECK (limit_usd IN (5.000000, 25.000000, 1000.000000))",
+        )
+    )
+    assert _run(migrate_command, cwd=rollback_root, url=url).returncode != 0
 
     asyncio.run(
         _execute(url, "ALTER TABLE video_pilot_budgets DROP CONSTRAINT ck_video_pilot_budget_limit")

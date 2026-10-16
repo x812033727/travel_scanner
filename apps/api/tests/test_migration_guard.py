@@ -90,14 +90,35 @@ _CONSTRAINTS: list[tuple[str, str, str, bool, str, bool, str]] = [
         True,
         "FOREIGN KEY (slug) REFERENCES video_pilot_budgets(slug) ON DELETE RESTRICT",
     ),
-    *[
-        ("video_pilot_budget_operations", name, "c", True, " ", False, "CHECK (true)")
-        for name in (
-            "ck_video_pilot_budget_operation_status",
-            "ck_video_pilot_budget_operation_max",
-            "ck_video_pilot_budget_operation_actual",
-        )
-    ],
+    (
+        "video_pilot_budget_operations",
+        "ck_video_pilot_budget_operation_status",
+        "c",
+        True,
+        " ",
+        False,
+        "CHECK (((status)::text = ANY ((ARRAY['reserved'::character varying, "
+        "'uncertain'::character varying, 'settled'::character varying, "
+        "'released'::character varying])::text[])))",
+    ),
+    (
+        "video_pilot_budget_operations",
+        "ck_video_pilot_budget_operation_max",
+        "c",
+        True,
+        " ",
+        False,
+        "CHECK ((max_usd > (0)::numeric))",
+    ),
+    (
+        "video_pilot_budget_operations",
+        "ck_video_pilot_budget_operation_actual",
+        "c",
+        True,
+        " ",
+        False,
+        "CHECK (((actual_usd IS NULL) OR (actual_usd >= (0)::numeric)))",
+    ),
 ]
 
 
@@ -142,6 +163,22 @@ async def test_future_schema_readback_requires_nine_exact_accounts_and_schema() 
     no_check = [row for row in _CONSTRAINTS if row[1] != "ck_video_pilot_budget_limit"]
     with pytest.raises(guard.MigrationGuardError, match="constraint"):
         await _verify_fake(_Connection(dict(PILOT_LIMITS_USD), no_check))
+    weakened = {
+        "uq_video_pilot_budget_operation": "UNIQUE (id)",
+        "ck_video_pilot_budget_operation_status": "CHECK (true)",
+        "ck_video_pilot_budget_operation_max": "CHECK (max_usd >= 0)",
+        "ck_video_pilot_budget_operation_actual": "CHECK (true)",
+        "ck_video_pilot_budget_limit": "CHECK (limit_usd IN (5, 25, 1000))",
+        "video_pilot_budget_operations_slug_fkey": (
+            "FOREIGN KEY (operation_id) REFERENCES video_pilot_budgets(slug) ON DELETE RESTRICT"
+        ),
+    }
+    for constraint_name, definition in weakened.items():
+        mutated = [
+            (*row[:6], definition) if row[1] == constraint_name else row for row in _CONSTRAINTS
+        ]
+        with pytest.raises(guard.MigrationGuardError, match="changed"):
+            await _verify_fake(_Connection(dict(PILOT_LIMITS_USD), mutated))
     bad_fk = [(*row[:4], "a", False, row[6]) if row[2] == "f" else row for row in _CONSTRAINTS]
     with pytest.raises(guard.MigrationGuardError, match="foreign key"):
         await _verify_fake(_Connection(dict(PILOT_LIMITS_USD), bad_fk))

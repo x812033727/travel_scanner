@@ -256,6 +256,19 @@ function pilotAuditionSlugs(textFile, workBase) {
   if (/(?:^|[/_.-])a01(?=$|[/_.-])/.test(location)) hints.push(new Set(["story-rolling-suitcase", "story-rolling-suitcase-v2"]));
   if (/(?:^|[/_.-])b18(?=$|[/_.-])/.test(location)) hints.push(new Set(["story-conveyor-belt-sushi", "story-conveyor-belt-sushi-v2"]));
   if (location.includes("brand-stories-pilot-v2")) hints.push(new Set(["story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2"]));
+  // These preproduction files use story-plan IDs before video.json is created. The folder
+  // alone must force an explicit film choice; an ID narrows it to that one budget account.
+  const followonIds = new Map([
+    ["a29", "story-five-lego-legoland"],
+    ["a16", "story-five-costco-hot-dog"],
+    ["a37", "story-five-adidas-puma-brothers"],
+    ["b14", "story-five-ajinomoto-chip-film"],
+    ["a21", "story-five-pringles-vat-case"],
+  ]);
+  if (location.includes("brand-stories-five-20261014")) hints.push(new Set(followonIds.values()));
+  for (const [id, slug] of followonIds) {
+    if (new RegExp(`(?:^|[/_.-])${id}(?=$|[/_.-])`).test(location)) hints.push(new Set([slug]));
+  }
   if (!hints.length) return null;
   return hints.reduce((allowed, hint) => new Set([...allowed].filter((slug) => hint.has(slug))));
 }

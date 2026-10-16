@@ -58,6 +58,19 @@ def classify_revisions(
     raise MigrationGuardError(f"database revision {current} is unknown to image head {expected}")
 
 
+def _canonical_check(definition: str) -> str:
+    """Normalize PostgreSQL's display casts without weakening the expression."""
+
+    def decimal_token(match: re.Match[str]) -> str:
+        number = format(Decimal(match.group()), "f")
+        return number.rstrip("0").rstrip(".") if "." in number else number
+
+    expression = definition.lower()
+    expression = re.sub(r"::(?:character varying|text|numeric)(?:\[\])?", "", expression)
+    expression = re.sub(r"(?<![a-z_])\d+(?:\.\d+)?", decimal_token, expression)
+    return re.sub(r"[\s()]", "", expression)
+
+
 async def _revisions(connection: AsyncConnection) -> tuple[str, ...]:
     has_version_table = await connection.run_sync(
         lambda sync_connection: inspect(sync_connection).has_table("alembic_version")
@@ -97,11 +110,16 @@ async def _verify_reviewed_0133(connection: AsyncConnection) -> None:
             "('video_pilot_budgets'::regclass, 'video_pilot_budget_operations'::regclass)"
         )
     )
-    actual_constraints = {
-        (table, name): (kind, validated, delete_action, references_account, definition)
-        for table, name, kind, validated, delete_action, references_account, definition
-        in constraints.all()
-    }
+    actual_constraints = {}
+    for row in constraints.all():
+        table, name, kind, validated, delete_action, references_account, definition = row
+        actual_constraints[(table, name)] = (
+            kind,
+            validated,
+            delete_action,
+            references_account,
+            definition,
+        )
     expected_constraints = {
         ("video_pilot_budgets", "video_pilot_budgets_pkey"): "p",
         ("video_pilot_budgets", "ck_video_pilot_budget_limit"): "c",
@@ -116,18 +134,44 @@ async def _verify_reviewed_0133(connection: AsyncConnection) -> None:
         found = actual_constraints.get(key)
         if found is None or found[0] != kind or found[1] is not True:
             raise MigrationGuardError(f"reviewed 0133 constraint {key[1]} is missing or invalid")
+    expected_definitions = {
+        ("video_pilot_budgets", "video_pilot_budgets_pkey"): {"PRIMARYKEYslug"},
+        ("video_pilot_budgets", "ck_video_pilot_budget_limit"): {
+            "CHECKlimit_usd=ANYARRAY[5,25]",
+            "CHECKlimit_usdIN5,25",
+        },
+        ("video_pilot_budget_operations", "video_pilot_budget_operations_pkey"): {"PRIMARYKEYid"},
+        ("video_pilot_budget_operations", "uq_video_pilot_budget_operation"): {
+            "UNIQUEslug,operation_id"
+        },
+        ("video_pilot_budget_operations", "ck_video_pilot_budget_operation_status"): {
+            "CHECKstatus=ANYARRAY['reserved','uncertain','settled','released']",
+            "CHECKstatusIN'reserved','uncertain','settled','released'",
+        },
+        ("video_pilot_budget_operations", "ck_video_pilot_budget_operation_max"): {
+            "CHECKmax_usd>0"
+        },
+        ("video_pilot_budget_operations", "ck_video_pilot_budget_operation_actual"): {
+            "CHECKactual_usdISNULLORactual_usd>=0",
+            "CHECKactual_usd>=0ORactual_usdISNULL",
+        },
+    }
+    for key, accepted in expected_definitions.items():
+        if _canonical_check(actual_constraints[key][4]).upper() not in {
+            definition.upper() for definition in accepted
+        }:
+            raise MigrationGuardError(f"reviewed 0133 constraint {key[1]} changed")
     foreign_key = actual_constraints[
         ("video_pilot_budget_operations", "video_pilot_budget_operations_slug_fkey")
     ]
     if foreign_key[2] != "r" or foreign_key[3] is not True:
         raise MigrationGuardError("reviewed 0133 operation foreign key changed")
-    limit_check = actual_constraints[("video_pilot_budgets", "ck_video_pilot_budget_limit")][4]
-    if (
-        "limit_usd" not in limit_check
-        or not re.search(r"(?<!\d)5(?:\.0+)?(?!\d)", limit_check)
-        or not re.search(r"(?<!\d)25(?:\.0+)?(?!\d)", limit_check)
-    ):
-        raise MigrationGuardError("reviewed 0133 budget limit check changed")
+    foreign_key_definition = re.sub(r"\s+", "", foreign_key[4].lower())
+    if foreign_key_definition not in {
+        "foreignkey(slug)referencesvideo_pilot_budgets(slug)ondeleterestrict",
+        "foreignkey(slug)referencespublic.video_pilot_budgets(slug)ondeleterestrict",
+    }:
+        raise MigrationGuardError("reviewed 0133 operation foreign key definition changed")
 
     indexes = await connection.execute(
         text(
@@ -140,7 +184,12 @@ async def _verify_reviewed_0133(connection: AsyncConnection) -> None:
     for name, definition in indexes.all():
         if name == "ix_video_pilot_budget_operations_slug":
             index = definition
-    if "(slug)" not in index:
+    if re.sub(r"\s+", "", index.lower()) not in {
+        "createindexix_video_pilot_budget_operations_slug"
+        "onvideo_pilot_budget_operationsusingbtree(slug)",
+        "createindexix_video_pilot_budget_operations_slug"
+        "onpublic.video_pilot_budget_operationsusingbtree(slug)",
+    }:
         raise MigrationGuardError("reviewed 0133 operation slug index is missing")
 
 
