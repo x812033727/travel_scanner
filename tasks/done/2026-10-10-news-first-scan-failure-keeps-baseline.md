@@ -1,18 +1,18 @@
 ---
 id: 2026-10-10-news-first-scan-failure-keeps-baseline
 title: News scanner: a first scan that fails must not use up the baseline
-status: open
+status: done
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-pr-tidy
+claimed_at: 2026-10-16T15:37:35Z
 created_at: 2026-10-10T15:13:09Z
-completed_at:
-branch:
+completed_at: 2026-10-16T15:58:08Z
+branch: claude/youthful-brahmagupta-1giys7
 depends_on: []
 scope:
   - apps/api/app/news_automation/scanner.py
-  - apps/api/tests/test_news_automation.py
+  - apps/api/tests/test_news_scanner_baseline.py
 ---
 
 # News scanner: a first scan that fails must not use up the baseline
@@ -43,22 +43,22 @@ are not affected: their old entries have dates and fall outside the 72-hour wind
 
 ## Definition of done
 
-- [ ] A scan that fails before the baseline was taken leaves the source still owed its
+- [x] A scan that fails before the baseline was taken leaves the source still owed its
       baseline: the next successful scan records what is on the listing as `news_baseline`
       and queues nothing. (For example: do not write `last_scanned_at` on a failed first scan,
       or keep a separate "baseline taken" fact; the retry schedule must still advance so a
       failing source is not hammered.)
-- [ ] A test with a fetcher that fails once and then succeeds: 0 pages fetched, 0 candidates,
+- [x] A test with a fetcher that fails once and then succeeds: 0 pages fetched, 0 candidates,
       every listing entry `rejected/news_baseline`.
-- [ ] `2026-10-10-load-the-changelog-and-developer-news` says whether it waited for this fix
+- [x] `2026-10-10-load-the-changelog-and-developer-news` says whether it waited for this fix
       or loaded first and checked each new HTML listing's first scan by hand.
 
 ## Steps
 
-- [ ] Read `scan_source`, `claim_due_sources` and how `next_scan_at` is computed on failure.
-- [ ] Decide what marks "baseline taken" and whether sources already in the database need a
+- [x] Read `scan_source`, `claim_due_sources` and how `next_scan_at` is computed on failure.
+- [x] Decide what marks "baseline taken" and whether sources already in the database need a
       backfill (a source with `last_scanned_at` set and no `news_baseline` rows).
-- [ ] Test, then tell the session that owns the load ticket.
+- [x] Test, then tell the session that owns the load ticket.
 
 ## How to verify
 
@@ -75,3 +75,35 @@ scan and no burst of `discovered` rows.
 - Also seen by the same review, for the load ticket: `sources_cli --apply` creates a second
   row named 「Claude blog」 (the URL changed, and rows are matched by URL) and leaves the old
   `https://claude.com/blog` row enabled; it has to be disabled on /admin/news.
+
+### 2026-10-16 fix (claude-opus-5-5-pr-tidy)
+
+Claimed with `--force` over `2026-10-11-news-fetcher-is-refused-by-cloudflare`. That task's code
+landed in #1516, its branch is gone, and its one open step is a host-side `sources_cli` rerun.
+Scope moved from `test_news_automation.py`, which open draft #1480 extends by about 230 lines, to
+a new `apps/api/tests/test_news_scanner_baseline.py`.
+
+What marks "baseline taken": `last_scanned_at` itself. A failed first scan no longer writes it
+(`scan_source`'s failure path writes it only `if not first_scan`), so no new column or migration
+is needed.
+- A successful listing read sets it before the entries are handled, and a failure in that loop
+  rolls back to empty as well, so the baselined rows and the timestamp land or fail together.
+- The retry still advances, because `claim_due_sources` moves `next_scan_at` on before the scan.
+- /admin/news shows "never scanned" next to `last_status: failed` and the error, which is what
+  happened.
+
+Backfill: not done in the repo. Sources that already failed a first scan and then scanned
+normally have their old entries filed already; a baseline now would not undo that. To list the
+sources a person should look at on the host (read-only): enabled `format = 'html'` rows with
+`last_scanned_at` set and no `news_baseline` candidate, for example
+
+    SELECT s.id, s.name, s.url FROM news_sources s
+    WHERE s.enabled AND s.format = 'html' AND s.last_scanned_at IS NOT NULL
+      AND NOT EXISTS (SELECT 1 FROM news_candidates c
+                      WHERE c.source_id = s.id AND c.error_code = 'news_baseline');
+
+The load ticket now has a note that the fix protects new HTML listings only once deployed.
+
+Ran: the new tests (2/2). The first test fails without the fix, at `last_scanned_at` being
+written on the failed first scan. Also `test_news_automation.py` with the new file (232 passed,
+6 skipped), `ruff check .`, `mypy app`, `mypy tests`, and the full API suite (7358 passed, 449 skipped).
