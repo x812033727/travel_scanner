@@ -1060,12 +1060,12 @@ test("a scheduled draft whose topic lookup is rate-limited waits out the window 
   assert.equal(global().last_draft_at, "2026-10-07T09:31:00.000Z");
 });
 
-test("a scheduled draft whose planner is busy waits half an hour when the server names no wait, and any other refusal still ends the run", async () => {
+test("a scheduled draft whose topic lookup fails for now waits half an hour when the server names no wait, and any other refusal still ends the run", async () => {
   const box = sandbox();
   const site = fakeSite({ answers: answersFor("chatgpt-ads-off") });
-  let answer = () => Response.json({ code: "video_ai_upstream_busy", detail: "every account is busy" }, { status: 503 });
+  let answer = () => Response.json({ code: "rate_limit_unavailable", detail: "限流服務暫時無法使用" }, { status: 503 });
   const fetchImpl = async (url, init = {}) => {
-    if (new URL(url).pathname === "/api/video/automation/run" && JSON.parse(init.body).stage === "planner" && answer) return answer();
+    if (new URL(url).pathname === "/api/video/automation/topics") return answer();
     return site.fetchImpl(url, init);
   };
   const clock = { now: Date.parse("2026-10-07T09:00:00Z") };
@@ -1074,7 +1074,7 @@ test("a scheduled draft whose planner is busy waits half an hour when the server
 
   assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
   // Half an hour from the last of the client's tries (5, 10 and 20 seconds apart).
-  assert.match(out.stdout, /draft: the planner could not finish \(video_ai_upstream_busy: every account is busy\); the scheduled draft waits until 2026-10-07T09:30:35\.000Z/);
+  assert.match(out.stdout, /draft: the topic lookup could not finish \(rate_limit_unavailable: 限流服務暫時無法使用\); the scheduled draft waits until 2026-10-07T09:30:35\.000Z/);
   assert.equal(global().last_draft_at, undefined);
 
   // A refusal that is no passing trouble (the token revoked) is the run's, as before.

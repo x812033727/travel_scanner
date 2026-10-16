@@ -593,8 +593,8 @@ const BLOCKED_REPORT_BACKOFF_MS = 5 * 60_000;
 // video. Until 2026-10-06 such a video ended its lane's run (`later()`), and since the videos go
 // oldest first, the same video ended every run and the second lane ran into it next.
 export const DEFER_BASE_MS = 5 * 60_000;
-// How long a scheduled draft waits after its topic lookup or planner met a passing refusal the
-// server gave no Retry-After for (Automation.draftWaits).
+// How long a scheduled draft waits after its topic lookup met a passing refusal the server gave
+// no Retry-After for (Automation.draftWaits).
 export const DRAFT_WAIT_MS = 30 * 60_000;
 export const DEFER_MAX_MS = 2 * 3600_000;
 // Waiting is not for ever: after this many deferrals in a row (5, 10, 20, 40, 80 and 120 minutes,
@@ -1822,13 +1822,13 @@ export class Automation {
   }
 
   /**
-   * A scheduled draft whose topic lookup or planner met a refusal that passes (errorScope
-   * "wait": a rate limit, a busy or unreachable service) waits until the server's Retry-After,
-   * or DRAFT_WAIT_MS, in auto-state.json `draft_waits_until`; the round goes on. Until
-   * 2026-10-16 the error ended the round before the draft was marked, so every round asked
-   * again: about every five minutes, four tries each, all counted against the topic lookups'
-   * twelve an hour, and the window never let one through (no scheduled draft 10-13 to 10-16).
-   * Anything else, and a planner run still pending, ends the run as before.
+   * A scheduled draft whose topic lookup met a refusal that passes (errorScope "wait": its
+   * hourly limit, the API busy or away) waits until the server's Retry-After, or DRAFT_WAIT_MS,
+   * in auto-state.json `draft_waits_until`; the round goes on. Until 2026-10-16 the error ended
+   * the round before the draft was marked, so every round asked again: about every five
+   * minutes, four tries each, all counted against the lookups' twelve an hour, and the window
+   * never let one through (no scheduled draft 10-13 to 10-16). Anything else ends the run as
+   * before. The planner's own failures are left as they were: the next round asks it again.
    */
   draftWaits(error, what) {
     if (error?.code === RUN_PENDING || errorScope(error) !== "wait") throw error;
@@ -1962,13 +1962,7 @@ export class Automation {
     const earlier = this.earlierVideos();
     const taken = new Set(earlier.map((video) => video.slug));
     const usedGuides = new Set(earlier.map((video) => video.source_guide).filter(Boolean));
-    let first;
-    try {
-      first = await this.firstPlan(draftSlug, (extra) => this.planPayload({ topics, topic_notes: notes, ...extra }, earlier), (answer) => planProblem(answer, taken, usedGuides, "slides", this.stance));
-    } catch (error) {
-      return this.draftWaits(error, "the planner");
-    }
-    const { plan, problem, lost } = first;
+    const { plan, problem, lost } = await this.firstPlan(draftSlug, (extra) => this.planPayload({ topics, topic_notes: notes, ...extra }, earlier), (answer) => planProblem(answer, taken, usedGuides, "slides", this.stance));
     // Written whatever came of it: a failed draft waits for the next interval like a good one.
     this.markDrafted();
     if (lost) return this.unanswered(this.unplannedVideo({ slug: draftSlug, format: "slides", title: `排程草稿 ${now.slice(0, 16).replace("T", " ")} UTC`, source_guide: null }, "draft"), lost);
