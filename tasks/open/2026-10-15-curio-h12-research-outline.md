@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-h12-research-outline
 title: Curio H12 research and outline
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-gpt6-h12-targeted-revision
+claimed_at: 2026-10-16T01:57:10Z
 created_at: 2026-10-15T16:34:42Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -89,3 +89,11 @@ scope:
 - 不同於第一輪的查核者重開 NLB 電報／穆爾信／繆爾黑德報告、吉布森 1912 年詩集及 NRS 2026 展覽公告，三站均用指定 editorial User-Agent 讀回 HTTP 200。對 `video.json` SHA-256 `5e46ddf2c3de77641a5ff17c9520255d5f3b003429a64ee1c1cb8c9cde39e859` 覆核全部 24 個第二輪改句及相關畫面，再以固定種子抽查 194 個現行場景文字／畫面資料中的 65 個。逐列證據與界線見 `verify-2.md`。
 - 事實 **HOLD 一句 `i9ud`**：「一九一二年，吉布森寫下一首」把詩集出版年寫成創作年；一手書籍只證明 1912 年出版及收錄該詩，且說部分作品曾重刊。宜改「一九一二年出版的吉布森詩集，收錄了一首關於這座燈塔的詩」之類的出版／收錄說法，保留句 ID；查核者未改劇本。`6fu8` 展覽過去式、`s4hn` 停鐘、`k8sw` 兩名岸上瞭望少年都獲一手來源支持；沒有第二個事實阻礙。新版改字後須重新綁 SHA 查核。
 - 新版十三題盲評另有 **`payoffs`、`no_recap` 兩題未過**，與事實覆核分開；關卡不能因事實修好而視為通過。已兩輪退修，協調者正向站主取得是否允許再作一次定向修正的決定。此票持續 open；正式劇本未送後台，付費呼叫 0。本查核者沒有改劇本、沒有提交後台或支付請求。
+
+## 2026-10-16 站主授權的第三次定向去重
+
+站主先後核准三處史實／回收修訂、刪除三個重複鏡頭，並在新版嚴格盲評 no_recap 仍未過後，另行核准一次限縮刪改。前兩次收據為 revision-3.json、revision-4.json；本次 revision-5.json 綁定當前 video.json SHA-256 4509E8B2C7B8E21001C2D738A877C71256BB13A557522408A3BB2F833C929ECF、script.md SHA-256 A51B99F496214712B21965D5F34BAA6DF93254D89C8D2ADBDCE224B6A5F2FEFF。本輪刪 3 鏡、改 7 句及一個畫面副標，移除 fbx9 → ecsy 的冗餘 loop；其餘 loop 保留。lint 0 errors／4 warnings，92 句、85 插畫景、估 8.6 分鐘。**目前仍待對此 SHA 的獨立事實查核及全新十三題盲評；劇本未送後台、未付費。**
+
+## 2026-10-16 H12 第七版獨立複核
+
+verify-4.md 的獨立事實與連貫性核對對 video.json DF094247…、script.md B07AE4FF… 判 PASS：NLB／Gibson 1912／NRS 原始來源重新讀回，90 景／92 句與 11 組實際回收吻合。與此分開，未讀前輪答案的嚴格 script-only 盲評對同一 script SHA 判 11／12 必答題；唯一未過 no_recap 在第 86 鏡 two-mysteries，重述前文已交代的失蹤上限與餐桌來源。站主已被問及是否只刪此鏡並把片尾第一句改成未結範圍的結論；未取得回覆前不改、不送後台、不付費。

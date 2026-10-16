@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-m09-research-outline
 title: Curio M09 research and outline
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-gpt6-m09-qa-recovery
+claimed_at: 2026-10-16T02:04:01Z
 created_at: 2026-10-15T16:34:56Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -81,3 +81,11 @@ scope:
 - 2026-10-16 旁白完成：站主核准的相同 `video.json`／`script.md` 雜湊下，Gemini Sulafat 合成 95／95 句、2,158 計費字元、95 個 WAV；`timeline.json` 15,993 格／30 fps，實測 533.1 秒（8:53.1）。滿足知識長片 480 秒正文下限，比 `target_minutes: [9,11]` 的企劃下緣短 6.9 秒；未為湊時間改稿。帳本 `m09-tts-20261016-01` 為 US$0.20 保守估額並標 `completed_estimated`，尚無供應商美元結算單。
 - `check-audio` 已另預留 US$0.50（`m09-audio-qa-20261016-01`），但第一次轉寫跑到本機 `review/check.json` 的 20 句後收到 `POST /api/video/speech/transcribe` HTTP 502，結束碼 1。工具留下 `audio/speech-journal/80a7eac4f2a5a5b6d09d9d07b088fa3f434e696f56db99d35a151266ed8c4230.json`，`status: held`、`video_speech_uncertain`：該次 POST 可能已計費，**未重送、未清除 journal**。US$0.50 仍只在帳本 `reserved`，待供應商用量查清才可解除 hold 或重新執行；沒有付費插畫，音訊 QA 未完成，亦未取得站主旁白核准。
 - 唯讀定位：journal 的下採樣音訊 SHA 對到第 21 句 `ta55`，送出時間 `2026-10-16T01:46:28.193Z`，約 4 秒後標記 held；前 20 句有快取（18 逐字、2 同音／語助詞），無 Jev 呼叫與完整旗標檔，後 74 句尚未送。現行 `check-audio` 依序執行且無跳過 held 的選項；離線第二轉寫只處理已由 Gemini／Jev 標記的句子，不能充作首輪轉寫收據。M09 非 pilot slug，API 不留逐請求 operation ID 或美元收據；本機也無可用的供應商帳戶瀏覽器頁，**無法證實本次是否計費**。下一步需先查供應商用量或主機紀錄，再按查明的成本處理這一筆 journal，接著從 20 句快取續跑完整 QA；不能手填 `check.json` 或把人工試聽冒充完成 QA。
+
+### 2026-10-16 M09 音訊 QA 完成後
+
+依 audio-qa-502-recovery.md 的單筆證據解除 502 hold，從前 20 句快取續跑，另轉寫 75 句，check-audio 完成 95／95，TypeSafe Jev 1 次；14 句品質旗標需要定向複核與站主試聽。共用帳本的 US$0.50 由預留轉為保守估額結算，非最終帳單。初步分流見 audio-qa-1.md；後台旁白審核尚未提交或核准，插畫未啟動。
+
+### 2026-10-16 M09 旁白送審
+
+逐句試聽頁與 audio-qa-1.md 已產生，review-push --gate audio 成功，review-pull 現場讀回 waiting for the owner。已請站主試聽 7 個較有語義影響的旗標；因主機負載，離線 Whisper 未產生第二份可用逐句結果，不宣稱已離線確認。核准讀回前不啟動 M09 插畫。

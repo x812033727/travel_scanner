@@ -18,7 +18,7 @@
 | H12-C12 | McArthur 的外套留在屋內；另外兩人的海靴及相應外衣不在。 | S1 Moore 信末段及報告 | 確認衣物觀察；其出門先後與有無救援行動均未知。 |
 | H12-C13 | Muirhead 認為突來大浪沖走三人是最可能解釋。 | S1 報告結論段 | 調查者意見；不是確證、不是所有可能性均遭排除。 |
 | H12-C14 | 岸上有時連續數夜看不到燈，因此沒有看到不等於燈一定未點；Muirhead 訪談實際瞭望的兩名少年並看 Return Book。ARCHTOR 15 日午夜經過未見燈是另一份船舶通報。 | S1 岸上 Return Book 與能見度段；ARCHTOR 通報段 | 2026-10-16 退修時再讀；passing-ship 為午夜普通過船，不是 HESPERUS 白天換班。不可把兩條觀察混成同一證詞，也不可說 12 日後燈就全熄。 |
-| H12-C15 | 1912 年 Gibson 詩中寫有未動的晚餐與倒椅。 | S3 版權頁、〈Flannan Isle〉餐桌段 | 確認文學文字；不能反推 1900 現場真的如此，也不主張詩是全世界最早版本。 |
+| H12-C15 | 1912 年出版的 Gibson 詩集收錄〈Flannan Isle〉，詩中寫有未動的晚餐與倒椅。 | S3 書名頁、〈Flannan Isle〉餐桌段 | 確認出版年份與文學文字；無原稿日期，不主張 1912 年才寫成，也不能反推 1900 現場真的如此。 |
 | H12-C16 | NRS 在 2026 年首次展示 Moore 信。 | S4 原信展出段 | 確認館方說法；展期已結束，不作旅遊邀約或稱「現在正在展」。 |
 | H12-C17 | 三人最後的確切遭遇仍未被當年紀錄確定。 | S1 官方歷史導言、調查結論措辭 | 確認證據上限；片尾「未結」指最後遭遇，不代表每個怪談細節都同樣可信。 |
 | H12-C18 | 大石從較高處移到通道；救生圈不見，綁繩未解且黏有帆布，監督據此判為被海水撕離。 | S1 Muirhead 西側報告第 12–13 段；2026-10-16 正式撰稿再讀全文 | 現場觀察與監督推斷分開；不能把救生圈消失當作有人拿它救援的證明。 |
@@ -49,11 +49,11 @@
 | H12-C02 | arrival-date、landing-no-reply、horn-call、rocket-call |
 | H12-C03 | letter-tease、boat-launched、boat-waits、letter-recalled、serious-absence、boat-report、search-again、memory-recalled、letter-reader |
 | H12-C09 | west-tease、inspector-lands、investigator-opinion |
-| H12-C15 | poem-tease、poem-bridge、poem-recalled、untouched-meal、overturned-chair、poem-effect、memory-recalled、kitchen-recalled、document-card、poet-not-witness、two-mysteries |
-| H12-C17 | opening-question、search-island、time-place-question、evidence-gap、poem-bridge、no-fake-diary、two-mysteries、ending-outro |
+| H12-C15 | poem-tease、poem-bridge、poem-recalled、untouched-meal、overturned-chair、poem-effect、memory-recalled、kitchen-recalled、document-card、two-mysteries |
+| H12-C17 | opening-question、search-island、time-place-question、poem-bridge、two-mysteries、ending-outro |
 | H12-C04 | entrance-gate、kitchen-door、door-boundary、cold-fire、empty-beds |
-| H12-C05 | room-question、lamp-ready、ready-not-working、kitchen-work、kitchen-recalled、document-card |
-| H12-C01 | who-missing、replacement-duty、ending-documents |
+| H12-C05 | room-question、lamp-ready、kitchen-work、kitchen-recalled、document-card |
+| H12-C01 | who-missing、replacement-duty |
 | H12-C06 | captain-volunteers、relight-night |
 | H12-C07 | work-question、slate-entry、log-date、slate-later、morning-reading、extinguish-time |
 | H12-C08 | work-date-inference、inference-boundary、time-place-question |
@@ -63,9 +63,9 @@
 | H12-C10 | sea-blocks-descent、platform-height、box-location、box-height、height-card |
 | H12-C18 | stone-displaced、buoy-question、buoy-ties、buoy-inference |
 | H12-C12 | coat-left、others-clothes、clothing-inference、landing-clothes、why-coat、sequence-unknown |
-| H12-C13 | evidence-gap、investigator-opinion、secure-gear、wave-hypothesis、wave-label |
+| H12-C13 | investigator-opinion、secure-gear、wave-hypothesis、wave-label |
 | H12-C19 | wind-compared、west-wind、water-preferred |
-| H12-C16 | letter-fate、exhibit-first、exhibit-new、letter-reader、ending-documents、ending-outro |
+| H12-C16 | letter-fate、exhibit-first、letter-reader、ending-outro |
 
 ## 與企劃不同的地方
 

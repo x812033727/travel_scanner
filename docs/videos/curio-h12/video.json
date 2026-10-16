@@ -29,7 +29,7 @@
     },
     {
       "setup": "q7ay",
-      "payoff": "8hj7",
+      "payoff": "dfa9",
       "what": "信中西側損害如何在監督調查中被補足"
     },
     {
@@ -44,13 +44,13 @@
     },
     {
       "setup": "h8mk",
-      "payoff": "cuxc",
+      "payoff": "igw7",
       "what": "最後完成的工作把時間推到哪一天"
     },
     {
       "setup": "r3ds",
-      "payoff": "8hj7",
-      "what": "工作紀錄之外，哪一側留下損害"
+      "payoff": "e5pv",
+      "what": "監督如何推想三人去處"
     },
     {
       "setup": "gqqh",
@@ -64,13 +64,8 @@
     },
     {
       "setup": "rvc2",
-      "payoff": "q5ct",
+      "payoff": "i3cg",
       "what": "失蹤的救生圈能否證明有人救援"
-    },
-    {
-      "setup": "fbx9",
-      "payoff": "ecsy",
-      "what": "調查如何在沒有目擊者時下結論"
     },
     {
       "setup": "e2rt",
@@ -525,24 +520,6 @@
       ]
     },
     {
-      "id": "ready-not-working",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot at a Scottish island lighthouse during a daytime relief visit in 1900, one keeper holds a lamp cloth beside a prepared unlit lantern, centered in frame, with indirect light from the right.",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "claims": [
-        "H12-C05"
-      ],
-      "lines": [
-        {
-          "id": "chv2",
-          "text": "設備像是準備好等夜晚使用，照顧它的人卻不在。"
-        }
-      ]
-    },
-    {
       "id": "who-missing",
       "template": "shot",
       "data": {
@@ -742,7 +719,7 @@
       "lines": [
         {
           "id": "3w38",
-          "text": "衣物排不出三人的先後，也沒有人看見他們離開。"
+          "text": "他為何留下外套，兩份記錄沒有答案；三人離站的先後也無從確定。"
         }
       ]
     },
@@ -1457,26 +1434,6 @@
       ]
     },
     {
-      "id": "evidence-gap",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up in a coastal investigation office in winter, one inspector holds a pen above an unfinished blank report, centered in frame, with gentle light falling from above.",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "claims": [
-        "H12-C13",
-        "H12-C17"
-      ],
-      "lines": [
-        {
-          "id": "fbx9",
-          "text": "現場留下受損的設施，卻沒有留下最後一刻的人證；監督會怎麼解釋？",
-          "emotion": "問句輕輕上揚，留白"
-        }
-      ]
-    },
-    {
       "id": "investigator-opinion",
       "template": "shot",
       "data": {
@@ -1539,7 +1496,7 @@
       "data": {
         "text": "最可能的解釋",
         "kicker": "1901-01-08 調查結論",
-        "sub": "Muirhead 的推斷｜沒有目擊"
+        "sub": "Muirhead 的推斷｜海浪推想未證實"
       },
       "claims": [
         "H12-C13"
@@ -1547,7 +1504,7 @@
       "lines": [
         {
           "id": "6xq2",
-          "text": "這是監督從現場推得的事故解釋，並非最後一刻的證詞。",
+          "text": "這是監督依損害提出的事故推想，現場無法證實那一刻發生了什麼。",
           "emotion": "自然接續，關鍵詞稍重"
         }
       ]
@@ -1603,7 +1560,7 @@
       "lines": [
         {
           "id": "hpye",
-          "text": "因此，相較於風直接吹走，他更傾向海水沖走的解釋。"
+          "text": "因此，這個風向不支持三人直接被風吹落海的說法。"
         }
       ]
     },
@@ -1622,7 +1579,7 @@
       "lines": [
         {
           "id": "e2rt",
-          "text": "又過了十多年，這間空屋在另一張紙上有了新畫面。"
+          "text": "監督的推想停在西側；後來的文字，卻把場景帶回空屋。"
         }
       ]
     },
@@ -1641,7 +1598,7 @@
       "lines": [
         {
           "id": "i9ud",
-          "text": "一九一二年，吉布森寫下一首關於這座燈塔的詩。",
+          "text": "開頭那張紙，是一九一二年出版的吉布森詩集裡的一首燈塔詩。",
           "emotion": "自然接續，關鍵詞稍重"
         }
       ]
@@ -1697,7 +1654,7 @@
       "lines": [
         {
           "id": "tbuz",
-          "text": "飯放著，椅子倒了，讀者很容易想像有人突然逃開。"
+          "text": "這首詩讓讀者想像有人倉促離席；原始紀錄也這麼寫嗎？"
         }
       ]
     },
@@ -1736,7 +1693,7 @@
       "lines": [
         {
           "id": "dt4e",
-          "text": "當年調查記下的是整理過的廚房，跟詩裡那幅畫面不同。"
+          "text": "還記得那間整理好的廚房嗎？那是當年記下的狀態，不能反推出最後一餐。"
         }
       ]
     },
@@ -1768,43 +1725,6 @@
           "id": "2kc7",
           "text": "一九〇〇年的登島信和一九一二年的詩，不能當成同一層證詞。",
           "emotion": "放慢，帶著觀眾往前走"
-        }
-      ]
-    },
-    {
-      "id": "poet-not-witness",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot at a reading table beside a window, one reader closes a poetry volume gently, centered in frame, with indirect light from the right.",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "claims": [
-        "H12-C15"
-      ],
-      "lines": [
-        {
-          "id": "4ixq",
-          "text": "那首詩描出了場面，卻不是當天的目擊記錄。"
-        }
-      ]
-    },
-    {
-      "id": "no-fake-diary",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up at a reading table beside a window, one archivist removes a plain bookmark from a dated-folder display, centered in frame, with gentle light falling from above.",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "claims": [
-        "H12-C17"
-      ],
-      "lines": [
-        {
-          "id": "kgfx",
-          "text": "把這幕搬回事發當天，就跨過了文件無法證實的那一步。",
-          "emotion": "自然接續，關鍵詞稍重"
         }
       ]
     },
@@ -1866,25 +1786,6 @@
       ]
     },
     {
-      "id": "exhibit-new",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up in a public archive exhibition room during opening hours, one visitor leans toward a glass document case, centered in frame, with gentle light falling from above.",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "claims": [
-        "H12-C16"
-      ],
-      "lines": [
-        {
-          "id": "6fu8",
-          "text": "在那場展覽裡，人們曾親眼看見這封信。",
-          "emotion": "自然接續，關鍵詞稍重"
-        }
-      ]
-    },
-    {
       "id": "letter-reader",
       "template": "shot",
       "data": {
@@ -1900,26 +1801,6 @@
         {
           "id": "d4uq",
           "text": "當時讀信的人，能沿著他的字分清哪一句是見聞，哪一句是推想。"
-        }
-      ]
-    },
-    {
-      "id": "ending-documents",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot in a public archive exhibition room during opening hours, one archivist closes a plain lighthouse folder beside a poetry volume, centered in frame, with soft light from the left.",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "claims": [
-        "H12-C01",
-        "H12-C16"
-      ],
-      "lines": [
-        {
-          "id": "uw36",
-          "text": "這份檔案留下了三人的名字，也留下後人辨認文字的起點。",
-          "emotion": "放慢，帶著觀眾往前走"
         }
       ]
     },
@@ -1941,7 +1822,7 @@
       "lines": [
         {
           "id": "qv4y",
-          "text": "原信能被重讀，最後一刻仍然沒有證人。",
+          "text": "還記得開頭那張餐桌嗎？",
           "emotion": "溫和收束"
         },
         {

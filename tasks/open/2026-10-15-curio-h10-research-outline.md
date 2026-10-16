@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-h10-research-outline
 title: Prepare Curio H10 Franklin source refresh and outline choices
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-gpt6-h10-production
+claimed_at: 2026-10-16T01:56:12Z
 created_at: 2026-10-15T16:33:45Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -29,7 +29,7 @@ scope:
 - [x] 完成獨立覆核與手動 outline 送審交接，後台讀回 pending。
 - [x] 原版與補格式版均讀回站主選 A；本集 US$6／本批 US$30 估算停手上限已核准。
 - [x] 延伸完成本機 A 案 video.json、script.md、逐句來源、loops 與作者檢查。
-- [ ] 正式劇本通過獨立史料與十三題覆核後，交站主核准。
+- [x] 正式劇本通過獨立史料與十三題覆核後，交站主核准。
 
 ## Steps
 
@@ -90,3 +90,11 @@ video SHA-256 `e11a22a7a29086a06a8261943cd3e78bea6775223705cb3eab9b8dbdffa1a559`
 製作協調者未撰寫 H10 後記，對 `4EF199C9…` 的兩句新增台詞、數字卡、說明欄與原始 Waterloo 2026 發布重新核對；[verify-3.md](../../docs/videos/curio-h10/verify-3.md) 判史實 PASS，解除前版新鮮度 HOLD。未讀前版盲評的獨立讀者只看目前 `script.md`，十三題全部答是，含必答 12／12；答案在 `C:/Users/x8120/mokaair-work/videos/curio-next-five-20261016/review/blind-curio-h10-strict-r4.json`，主代理以 `narrative --answers` 匯入並讀回 passed。原有兩個畫面 lint warnings 仍在，不影響送審。下一步：執行 `script` 與 `review-push --gate script`，由站主審閱新版劇本；核准讀回前不得開始 H10 付費配音或產圖。
 
 已執行 `script --slug curio-h10`，正式 `script.md` SHA-256 仍為 `A4A64B02732D97C9DDB216B2CD42F789D95A0B0ADEB8AB3CE22B3C9CA679E596`；`review-push --gate script` 成功，隨後 `review-pull --gate script` 讀回 **waiting for the owner**。目前等待站主在 `/admin/videos` 核准這份劇本或提出改字；H10 尚未付費製作。
+
+## 2026-10-16 H10 已核准劇本與旁白 QA
+
+站主核准 script.md，協調者以 review-pull --gate script 現場讀回 approval recorded。Gemini Sulafat 80 個 TTS 請求產生 82 句時間軸 WAV，2,397 計費字元、實測 588 秒；帳本 h10-tts-20261016-01 保守估額 US$0.20。check-audio 82／82、Jev 1 次、15 個品質旗標；帳本 h10-audio-qa-20261016-01 保守估額 US$0.50，工具沒有美元結算單。h62e41a7 的「2026 年」經離線 Whisper small 再確認。其餘 7 句需站主優先試聽；詳見 audio-qa-1.md。後台旁白審核與插畫仍待後續關卡。
+
+## 2026-10-16 H10 旁白送審
+
+逐句試聽頁與音訊 QA 收據已產生，review-push --gate audio 成功，review-pull 現場讀回 waiting for the owner。已請站主試聽 7 個重點旗標，核准讀回前不啟動 H10 插畫。
