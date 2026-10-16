@@ -1,11 +1,41 @@
 # 頻道片頭與片尾
 
 Mokaair 選定一組 1920×1080、30 fps 的固定素材：5 秒／150 格無標語片頭，
-以及 3 秒／90 格的按讚、分享、開啟小鈴鐺片尾。音軌沿用原素材的音效。
+以及 21 秒／630 格的結束畫面片尾（下節）。片頭音軌沿用原素材的音效。
 媒體和選定的 `manifest.json` 留在 repository 外；Git 只保存工具、測試及規格。
 
 畫面右上角的頻道浮水印是另一件事，它跟著程式碼走，見 [WATERMARK.md](WATERMARK.md)。
 片頭片尾本身不疊浮水印。
+
+## 結束畫面片尾
+
+站主 2026-10-12 決定片尾拉長、放其他影片連結並加配樂。片尾依序是：
+
+1. 1 秒停頓：原片尾第一格定格，配樂從無聲淡入。正文最後一句本來就在正文結束前約
+   1.8 秒講完，合計約 2.8 秒停頓才進動畫，片尾不會切在話尾。
+2. 3 秒原有的按讚、分享、開啟小鈴鐺動畫（90 格，畫面與音效原樣）。
+3. 17 秒結束畫面底：米白底、緩動的綠／咖啡色塊、Mokaair 字標，兩個 16:9 影片框與
+   一個圓形訂閱框只用淡外框標示位置。
+
+可點的影片卡與訂閱鈕是 YouTube Studio 的「結束畫面」元素：影片本身畫不出連結，
+YouTube Data API 也不能設定結束畫面。範本已存在 `oxEtlA8GWas`（2026-10-12，最後 5 秒）：
+一列「最符合觀眾喜好」影片｜訂閱｜「最新上傳」影片。新片在 Studio「片尾」→「從影片匯入」
+選這支，再把三個元素的開始時間拉到片尾第 4 秒（影片長度減 17 秒）。片尾的外框照 Studio
+實際位置畫：Studio 只讓元素放在安全區（1080p 約 y 140–912），訂閱鈕固定 296 px、不能縮放，
+所以外框跟著 Studio，不是反過來。配樂是 YouTube 音樂庫「不需註明出處」授權的曲子，
+整段響度 -16 LUFS、TP -1，略低於正文的 -14。
+
+`tools/video/branding/outro.mjs` 從安裝中的 90 格片尾、配樂與片頭產生素材包，
+同時產出全頻道與「原來如此」兩包；輸出接著用下節的 `branding --install` 安裝：
+
+```bash
+node tools/video/branding/outro.mjs --base /outside/v2-cc/outro.mp4 \
+  --music /outside/music/track.mp3 --music-start 105.5 \
+  --intro /outside/v2-cc/intro.mp4 --series-intro /outside/sothatswhy/intro.mp4 --out /outside/package-v3
+```
+
+`--music-start` 選曲子裡的 21 秒；選曲子自然收尾的段落，結尾另有 1.5 秒淡出保險。
+素材與選曲紀錄見 [結束畫面片尾紀錄](branding-release/2026-10-12-endscreen-outro.md)。
 
 ## 安裝與採用
 
@@ -29,7 +59,7 @@ node tools/video/cli.mjs branding --workdir /video-work --json
 ```
 
 「原來如此」系列使用獨立預設。站主選定的素材包已把原 5 秒開場與 6.9 秒系列動畫
-合併為 `intro.mp4`（357 格／11.9 秒），原片尾仍是 90 格／3 秒：
+合併為 `intro.mp4`（357 格／11.9 秒），片尾與全頻道相同：
 
 ```bash
 node tools/video/cli.mjs branding --series sothatswhy --install /outside/repo/approved --workdir /video-work --dry-run
@@ -47,9 +77,9 @@ node tools/video/cli.mjs branding --series sothatswhy --workdir /video-work --js
 
 新片與 `--adopt-branding` 使用同一系列選擇規則。既有 pin 優先，不讀更新後的 current；
 已核准、已上傳、已有上架包與未 pin 的歷史成片保留原有保護。
-「原來如此」字幕與第二章起延後 **11.9 秒／357 格**，配音包裝使用相同片頭音軌，
-總格數加 447。不要再額外加 5 秒原開場。下文 150／90 與 5 秒示例是全頻道規格；
-實際偏移一律依本片的 `checks.branding.intro_frames` 計算。
+「原來如此」片頭之後的字幕與章節延後 **11.9 秒／357 格**，配音包裝使用相同片頭音軌，
+總格數加 987（2026-10-12 前的舊 pin 為 447）。不要再額外加 5 秒原開場。下文 150／630 與 5 秒示例是全頻道規格；
+實際偏移一律依本片的 `checks.branding.intro_frames` 與片頭位置（下節）計算。
 
 Shorts 可使用另備的 1080×1920、6.9 秒獨立「原來如此」動畫素材，保留多語文字、
 男女聲與配樂，不包含原 5 秒頻道開場及片尾。直式媒體留在 git 外；它是可搭配剪輯的素材，
@@ -81,7 +111,45 @@ node tools/video/cli.mjs qa --slug VIDEO --workdir /video-work
 不改動全站自動核准設定；之後一般新片仍按站主既有政策送審。
 新 MP4 必須重新由站主看過，原本的 MP4 核准不會核准另一組 bytes。
 `--adopt-branding` 拒絕 Shorts、已上傳／已結束、已有成片或發布核准紀錄、已有上架包的影片。
+例外是**重做中**的成片：成片或發布核准之後，站主又核准了新的稿子、配音或分鏡（最新一筆 script／audio／storyboard 核准晚於最新一筆 final／publish 核准），舊的核准與上架包綁的是不會再存在的成片，就不再擋 `--adopt-branding`；核准紀錄不刪，已上傳／已結束的照樣拒絕（`remakingApprovedCut`，2026-10-13 五支奇聞檔案局重製片換新開場後，要換上 21 秒有配樂的新片尾）。
 合集使用 `compile --adopt-branding`，不呼叫 `assemble`。
+
+## 片頭位置
+
+站主 2026-10-12／10-13 決定：有旁白的長片第一章是 30–60 秒的開場濃縮（script-writing.md
+§開場濃縮），片頭不能擋在它前面。順序是 **第一章（濃縮）→ 片頭 → 第二章起 → 片尾**：
+第一句旁白從 `0:00` 開始，片頭插在時間軸第二個章節（`chapterList`）開始的那一格。
+章節一定從一個場景開始，每個場景是自己一段從關鍵影格開頭的片段，所以片頭落在兩段片段
+之間的硬切點，不會切進一句話；畫面以 copy 接上、不重新編碼，正文聲音在同一個取樣點切開。
+
+| 影片 | 片頭位置 |
+| --- | --- |
+| 有旁白的長片：slides、screencast、解說漫劇（`isExplainer`，含「原來如此」357 格系列片頭）、品牌故事（即使畫面有角色） | `after_first_chapter` |
+| 有角色的漫劇、合集、Shorts | `start`（維持原樣） |
+
+位置記在 pin：`branding.json` 的 `intro_at` 是 `"start"` 或 `"after_first_chapter"`。
+2026-10-13 前寫的 pin 沒有這個欄位，一律讀成 `"start"`，hash 不變，所以舊片重建得到
+同一組 bytes；之後成功成片寫入的 pin 一律明寫 `intro_at`。新片第一次成片與
+`--adopt-branding` 依上表選位置；既有 pin 保持原位置，更新 current 或程式也不會移動它。
+片頭在第一章之後時，`branding_hash` 另外計算（`channel-bookends-v2`），所以為舊位置產生的
+字幕、配音、上架包與核准都不會被沿用；`checks.branding` 另記 `intro_at_frame`（片頭插在
+正文第幾格）。片頭在最前面的 `checks.branding` 與以前完全相同，沒有這個欄位。
+
+尚未上傳的有旁白長片，可以刻意改成片頭在濃縮之後（例如奇聞檔案局 v2 重剪）：
+
+```bash
+node tools/video/cli.mjs assemble --slug VIDEO --workdir /video-work --intro-after-condensation
+node tools/video/cli.mjs captions --slug VIDEO --workdir /video-work
+node tools/video/cli.mjs dub --slug VIDEO --workdir /video-work --locale en,ja,ko   # 有選配音時
+node tools/video/cli.mjs captions --slug VIDEO --workdir /video-work
+node tools/video/cli.mjs qa --slug VIDEO --workdir /video-work
+```
+
+它沿用 pin 的同一組素材（沒有 pin 時用 current），只改位置；成功成片後才改寫
+`branding.json`。新 `final.mp4` 是另一組 bytes，原本的成片與發布核准、上架包都對不上，
+要重做字幕、配音與上架包並重新送審，和任何重新合成一樣。它拒絕已上傳／已結束的影片，
+也拒絕有角色的漫劇、合集與 Shorts。owner renewal（下文）沿用保留正文接在片頭後面，
+只接受片頭在最前面的 pin；要改位置的已核准影片請用 `assemble`。
 
 ## 時間軸與檔案
 
@@ -90,18 +158,24 @@ node tools/video/cli.mjs qa --slug VIDEO --workdir /video-work
 | `timeline.json`、`narration.wav` | 正文，保持 TTS 快取與旁白核准不變 |
 | `build/body.mp4` | 本次包裝前的正文；SHA 寫入 checks，供合集核對 |
 | `final.mp4` | 片頭＋正文＋片尾；影片規格與響度再次檢查 |
-| `checks.json` 的 `branding` | 素材 hash、150／90 格偏移、正文格數及正文檔 SHA |
+| `checks.json` 的 `branding` | 素材 hash、150／630 格偏移、正文格數及正文檔 SHA；片頭在第一章後時加 `intro_at_frame` |
 | `captions/manifest.json`、`upload/metadata.json` | 綁定 `branding_hash`，拒絕沿用別版時間軸 |
 | `dubs/<locale>/narration.wav` | 配音正文；fit 仍對正文窗口計算 |
 | `dubs/<locale>/timeline.json`、上傳音軌 | 包含片頭片尾的實際時間軸與相同音效 |
 
-字幕與第二章以後的章節延後 5 秒；第一章從 `00:00` 開始，包含片頭。
-不另外建立只有 5 秒的章節。配音最後一句字幕在正文結束時截止，片尾不殘留正文字幕。
-總格數增加 240；敘事節奏的品管仍只計正文。
+偏移規則：片頭之前的旁白、場景、字幕（每一種語言）、配音與章節保持原時間，片頭開始那一格
+以後的全部延後片頭的格數（全頻道 5 秒，「原來如此」11.9 秒）。片頭在最前面時就是全部延後；
+在第一章之後時，第一章的字幕不動，第二章以後才延後。結束在片頭那一格的段落留在片頭前，
+第一章最後一句字幕與配音字幕都不會蓋到片頭上；跨過片頭的配音句子會被 `dub` 拒絕。
+YouTube 章節：第一章從 `00:00` 開始，包含片頭（片頭在第一章之後時，包含濃縮加片頭）；
+第二章從片頭結束後開始。不另外建立只有片頭的章節。配音最後一句字幕在正文結束時截止，
+片尾不殘留正文字幕。總格數增加 780（2026-10-12 前的舊 pin 為 240），與片頭位置無關；
+敘事節奏的品管仍只計正文。
 
 合集先核對各集已核准 `final.mp4` 的 SHA，再核對 `checks.branding.body_sha256`，
-只拼接正文。各集字幕先扣掉自己的片頭時間，放入合集後，再加合集自己的片頭時間。
-完整合集只播放一次頻道片頭與一次頻道片尾。
+只拼接正文。各集字幕先在片頭播放的位置扣掉自己的片頭時間（片頭在第一章之後的集數，
+只扣片頭之後的字幕），放入合集後，再加合集自己的片頭時間。
+完整合集只播放一次頻道片頭與一次頻道片尾，合集自己的片頭在最前面。
 
 ## 上線紀錄
 

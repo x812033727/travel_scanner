@@ -200,7 +200,7 @@ test("safe existing zh-TW fixture captions keep their exact line breaks", () => 
     "第二個問題是，\n你能接受它想多久才回答",
     "第三個問題是，\n你每個月願意為它付多少錢",
     "把這三個答案寫下來，再去看排\n行榜，你會發現選擇變得很清楚",
-    "完整的比較表放在說明欄的\n文章裡，我們下一支影片見",
+    "完整的比較表放在說明欄的\n文章裡，記得訂閱這個頻道",
   ]);
 });
 
@@ -238,7 +238,7 @@ for (const [locale, id, text, expected] of [
 }
 
 test("Chinese cues drop a trailing comma or full stop; English cues keep their punctuation", () => {
-  assert.equal(displayText("我們下一支影片見。", zh), "我們下一支影片見");
+  assert.equal(displayText("記得訂閱這個頻道。", zh), "記得訂閱這個頻道");
   assert.equal(displayText("你真的要換嗎？", zh), "你真的要換嗎？");
   assert.equal(displayText("See you next time.", en), "See you next time.");
 });
@@ -352,9 +352,9 @@ test("a timeline without timing keeps the SRT and VTT it produced before measure
     "4", "00:00:17,933 --> 00:00:22,333", "第二個問題是，", "你能接受它想多久才回答", "",
     "5", "00:00:22,333 --> 00:00:27,053", "第三個問題是，", "你每個月願意為它付多少錢", "",
     "6", "00:00:27,667 --> 00:00:34,233", "把這三個答案寫下來，再去看排", "行榜，你會發現選擇變得很清楚", "",
-    "7", "00:00:34,233 --> 00:00:40,153", "完整的比較表放在說明欄的", "文章裡，我們下一支影片見", "",
+    "7", "00:00:34,233 --> 00:00:40,153", "完整的比較表放在說明欄的", "文章裡，記得訂閱這個頻道", "",
   ].join("\n"));
-  assert.equal(sha256(toVtt(zhCues)), "b7f01d85db2ce41135e5f35b776dc73a3158bfbd175f6ef730388e56c8b69a8e");
+  assert.equal(sha256(toVtt(zhCues)), "cac98425288d677ff2aae586159eb0c8ad782b2116f39f731f665ed2300bec5e");
   // The English fixture's lines as this video's translation.
   const english = [...eachLine(enFixture())].map(({ line }) => line.text);
   const enCues = buildCues(timeline, Object.fromEntries([...eachLine(doc)].map(({ line }, index) => [line.id, english[index]])), "en").cues;

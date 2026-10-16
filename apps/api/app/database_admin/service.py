@@ -32,7 +32,7 @@ from app.models import (
     User,
 )
 from app.problems import AppError
-from app.schema import expected_schema_revision
+from app.schema import expected_schema_revision, schema_is_current
 
 
 def _safe_text(value: str | None, limit: int = 500) -> str | None:
@@ -434,7 +434,7 @@ async def database_overview(session: AsyncSession) -> DatabaseOverview:
         schema_info=DatabaseSchemaSnapshot(
             current_revision=current,
             expected_revision=expected,
-            is_current=current == expected,
+            is_current=schema_is_current(current),
         ),
         agent=agent,
         maintenance_enabled=maintenance_enabled,

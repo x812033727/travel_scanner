@@ -5,14 +5,16 @@
 // their own tickets; until one exists, its command says which ticket builds it and exits with
 // the "missing tool" code, so an agent following `status` knows the gap is expected.
 import { randomInt } from "node:crypto";
-import { existsSync } from "node:fs";
+import { existsSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 
 import { tidiedNote } from "./automation/tidy.mjs";
 import { approve, GATES } from "./core/approvals.mjs";
-import { docDir, resolveWorkdir, ROOT, UsageError } from "./core/paths.mjs";
+import { NARRATIVE_REVIEW, narrativeRecord, panelPayload, panelVerdict } from "./core/narrative.mjs";
+import { atomicWrite, docDir, readJson, resolveWorkdir, ROOT, UsageError } from "./core/paths.mjs";
+import { estimateTimeline } from "./core/timeline.mjs";
 import { eachLine, LINE_ID } from "./core/schema.mjs";
 import { StageError, runCaptions } from "./core/stages.mjs";
 import { narrativeHash, writeScreenplay } from "./core/screenplay.mjs";
@@ -71,6 +73,10 @@ Usage: node tools/video/cli.mjs <command> [options]
   ids      [--count N] [--slug S]                  fresh line ids that are not in use
   approve  --slug S --gate outline|script|look|storyboard|audio|final|publish [--workdir D] [--note T]
                                                    record the owner's approval of the file as it is now
+  narrative --slug S [--answers F] [--workdir D] [--json]
+                                                   the storytelling panel (script-writing.md §故事主線與鉤子): without --answers it
+                                                   prints the narration and its ten yes-or-no questions for a blind reader; with
+                                                   --answers it records the verdict and exits 1 while a required question is "no"
   script   --slug S                                write docs/videos/<slug>/script.md, the screenplay a series episode's owner reads
   review-push --slug S [--gate G | --report-only] [--manual-review]
                                                    report and submit; --manual-review requires --gate final and keeps QA from auto-approving it
@@ -86,11 +92,13 @@ Usage: node tools/video/cli.mjs <command> [options]
                                                    --dry-run only measures the script
 
   login [--name N] [--paste | --token-file F]     pair with the site: allow the printed code on the admin card
+  audition --text-file F [--voices V] [--style T] [--slug S] [--workdir D]
+                                                   compare voices; A01/B18 pilot samples require their exact budgeted --slug
   check-audio --slug S [--locale L] [--threshold 0.5] [--force] [--second-opinion "PROGRAM ARGS"]  transcribe every line; Jev judges the ones that differ; a second transcriber rechecks what Jev doubts
   dub --slug S [--locale en,ja,ko] [--format m4a|mp3|wav] [--dry-run] [--redo F [--keep-fitting]] [--line-by-line] [--force] [--style T]
                                                    a YouTube audio track per locale: the translation read by the
                                                    narration voice, laid into the slide windows (docs/videos/DUBS.md)
-  audition, tts, review, render, assemble, package, youtube-sync
+  tts, review, render, assemble, package, youtube-sync
                                                    media stages, each built by its own ticket
   look, keyframes, clips, music, media-status      the drama format's generation stages (docs/videos/DRAMA.md)
   stock search --query Q [--provider pexels|pixabay] [--orientation landscape|portrait|square] [--per-page N] [--page N] [--slug S] [--json]
@@ -101,8 +109,9 @@ Usage: node tools/video/cli.mjs <command> [options]
                                                    bring in a clip made outside the pipeline: checked like a bought take, booked in the ledger
   branding [--install DIR] [--series sothatswhy] [--workdir D] [--dry-run] [--json]
                                                    inspect or install a fixed intro/outro package for new long videos
-  assemble --slug S [--workdir D] [--adopt-branding]
-                                                   explicitly add current branding to an existing unapproved cut
+  assemble --slug S [--workdir D] [--adopt-branding] [--intro-after-condensation]
+                                                   explicitly add current branding to an existing unapproved cut;
+                                                   or move a not-uploaded narrated cut's intro after chapter 1
   render --slug S [--workdir D] [--adopt-watermark]
                                                    explicitly draw an existing unapproved cut with the channel mark (docs/videos/WATERMARK.md)
   compile --slug <series>-full [--workdir D] [--force] [--dry-run] [--adopt-branding]
@@ -160,6 +169,8 @@ async function cmdStatus(args, ctx) {
   // Dubs are optional (the owner picks each video's languages), so they are shown only once one exists.
   const dubs = Object.entries(status.dubs ?? {}).filter(([, dub]) => dub.status !== "missing");
   if (dubs.length) ctx.stdout.write(`  dubs: ${dubs.map(([locale, dub]) => `${locale} ${dub.status}${dub.note ? ` (${dub.note})` : ""}`).join("; ")}\n`);
+  // The storytelling panel is not a checklist step: it is shown once it has been asked.
+  if (status.narrative && status.narrative.status !== "missing") ctx.stdout.write(`  storytelling panel: ${status.narrative.status}${status.narrative.failed.length ? ` (${status.narrative.failed.join(", ")})` : ""}\n`);
   // A finished video whose work files the tidy cleared has no next step, whatever the files say.
   const tidied = tidiedNote(workdir);
   if (tidied) ctx.stdout.write(`\n${tidied}\n`);
@@ -198,6 +209,40 @@ async function cmdApprove(args, ctx) {
   return EXIT.ok;
 }
 
+/**
+ * The storytelling panel on a script written by hand (core/narrative.mjs; the worker asks it
+ * itself after the listener's edit). Without `--answers` it prints the panel: the narration as a
+ * reader sees it and the ten yes-or-no questions, for an agent to answer in a fresh session
+ * knowing nothing else. With `--answers <file>` ({"answers": [...]}) it records the verdict,
+ * bound to the script it read, and exits 1 while a required question is answered no.
+ */
+async function cmdNarrative(args, ctx) {
+  const values = parse(args, { slug: { type: "string" }, file: { type: "string" }, answers: { type: "string" }, workdir: { type: "string" }, json: { type: "boolean" } });
+  if (!values.slug && !values.file) throw new UsageError("narrative needs --slug or --file");
+  const project = loadProject({ slug: values.slug, file: values.file, root: ctx.root });
+  const timeline = estimateTimeline(project.doc);
+  const payload = panelPayload(project.doc, timeline);
+  if (!values.answers) {
+    if (values.json) ctx.stdout.write(`${JSON.stringify(payload, null, 2)}\n`);
+    else ctx.stdout.write(`${payload.narration}\n${payload.questions.map((question, index) => `${index + 1}. [${question.id}] ${question.question}`).join("\n")}\n\nAnswer in a fresh session that has read nothing else, as {"answers": [{"id", "yes", "evidence"}]}, then run this again with --answers <file>.\n`);
+    return EXIT.ok;
+  }
+  const verdict = panelVerdict(readJson(path.resolve(values.answers)));
+  const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: project.doc.slug, root: ctx.root });
+  const file = path.join(workdir, ...NARRATIVE_REVIEW);
+  const round = (readJson(file, null)?.round ?? 0) + 1;
+  mkdirSync(path.dirname(file), { recursive: true });
+  atomicWrite(file, `${JSON.stringify(narrativeRecord(project.doc, verdict, round), null, 2)}
+`);
+  if (values.json) ctx.stdout.write(`${JSON.stringify(verdict, null, 2)}\n`);
+  else {
+    ctx.stdout.write(`${project.doc.slug}: the storytelling panel ${verdict.passed ? "passed" : "failed"}; verdict in ${path.relative(ctx.root, file)}\n`);
+    for (const problem of verdict.problems) ctx.stdout.write(`  FAIL  ${problem}\n`);
+    for (const each of verdict.advisory) ctx.stdout.write(`  note  ${each.id}: ${each.evidence}\n`);
+  }
+  return verdict.passed ? EXIT.ok : EXIT.lint;
+}
+
 async function cmdScript(args, ctx) {
   const values = parse(args, { slug: { type: "string" } });
   if (!values.slug) throw new UsageError("script needs --slug");
@@ -234,7 +279,7 @@ async function delegate(command, args, ctx) {
   return module.run(command, args, { ...ctx, EXIT });
 }
 
-const COMMANDS = { lint: cmdLint, status: cmdStatus, ids: cmdIds, approve: cmdApprove, script: cmdScript, captions: cmdCaptions };
+const COMMANDS = { lint: cmdLint, status: cmdStatus, ids: cmdIds, approve: cmdApprove, narrative: cmdNarrative, script: cmdScript, captions: cmdCaptions };
 
 export async function main(argv, overrides = {}) {
   const ctx = { root: ROOT, here: HERE, env: process.env, stdout: process.stdout, stderr: process.stderr, now: () => new Date(), ...overrides };

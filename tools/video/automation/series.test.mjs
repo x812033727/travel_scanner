@@ -2095,11 +2095,14 @@ test("an explainer one-off plans a question's bible with no cast, and its brief 
 // What the three stage calls of a flat-explainer one-off are asked with: sha256 of the
 // instructions, and of canonicalJson(payload) less `today` and `lexicon`. A change to either
 // moves the durable key of every unfinished flat-explainer stage journal, so that stage is
-// asked, and paid for, again.
+// asked, and paid for, again. The planner's and the writer's instructions moved on 2026-10-13
+// (the condensation became one scene of the story, the close stopped naming the next episode),
+// and the writer's again on 2026-10-15 (NARRATIVE_RULES: one story shape, one protagonist);
+// the checker's payload moved with the example script it reads.
 const EXPLAINER_STAGE_PINS = [
-  ["planner", "bible-explainer", "55ffd024da8e9da7443dca79f973424efcdf277de3a9fa1ec3415af764391a90", "bfa88ed9b8beaef5377880ae79efb081f5e5283c1e4ab4279df4bd0239d13078"],
-  ["writer", "explainer", "185af9a701ecbb1317f00dd130cbf260e8e664a7275a423bad66c415cb703e72", "b0a4a2982e77bf9ea76eb9047260bbe568eb36ac2577dc206791ca8912401e81"],
-  ["verifier", "explainer", "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842", "3d6d4812ec7814b0b9ce8712dcf8bcf08a752913d69125941600eecc32c38f54"],
+  ["planner", "bible-explainer", "92d58c327776f8f1f8084907e2aaf0a7d8f326c2c614d1ab593dc4074ff017a2", "bfa88ed9b8beaef5377880ae79efb081f5e5283c1e4ab4279df4bd0239d13078"],
+  ["writer", "explainer", "f6abf3ec8799bcfa94f03b15681bc64714ac8f8b356bedddc36c1db594f649f6", "b0a4a2982e77bf9ea76eb9047260bbe568eb36ac2577dc206791ca8912401e81"],
+  ["verifier", "explainer", "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842", "5b58613d9b424f530b2b84cee45ed55a291805a5d9343dcb1edbe81b3cb07d84"],
 ];
 const digestOf = (text) => createHash("sha256").update(text, "utf8").digest("hex");
 

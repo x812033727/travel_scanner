@@ -2,7 +2,7 @@
 // and audience, the body, the Mokaair article, chapters, sources, picture credits, the series
 // hashtag; core/metadata.mjs composeDescription) and tags, each checked against YouTube's limits.
 import { chapterTitle, descriptionWithinBudget, episodeNumbers, isCompilation } from "../core/compilation.mjs";
-import { articleUrl, checkYoutubeFields, composeDescription, creditBytes, LABELS, uploadTags } from "../core/metadata.mjs";
+import { articleUrl, checkYoutubeFields, composeDescription, creditBytes, LABELS, uploadTags, withCaptionTag } from "../core/metadata.mjs";
 import { narrationLocale } from "../core/schema.mjs";
 import { chapterList, formatClock } from "../core/timeline.mjs";
 
@@ -45,7 +45,7 @@ export function composeMetadata({ doc, timeline, translations = {}, pack = null,
   let zhChapters = {};
   for (const locale of locales) {
     const translation = locale === narration ? null : translations[locale];
-    const title = translation ? translation.title : doc.youtube.title;
+    const title = withCaptionTag(translation ? translation.title : doc.youtube.title, locale);
     const body = translation ? translation.description : doc.youtube.description;
     const articleLocale = pack?.locales?.[locale] ? locale : narration;
     const fields = {

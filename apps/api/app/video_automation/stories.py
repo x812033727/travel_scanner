@@ -416,19 +416,38 @@ def series_problems(series: Any) -> list[str]:
     if series.get("compilation", False) is not False:
         problems.append("series.compilation must be false")
     minutes = series.get("target_minutes")
+    look = series.get("look")
+    cute = isinstance(look, dict) and look == {"preset": "cute-mystery"}
     low, high = STORY_MINUTES
-    if not _is_int(minutes) or not low <= minutes <= high:
+    if cute:
+        if not _is_int(minutes) or minutes != 10:
+            problems.append("series.target_minutes must be 10 for the cute-mystery look")
+        if series.get("image_model") != "image-01":
+            problems.append('series.image_model must be "image-01" for the cute-mystery look')
+        if series.get("style_preset") != "custom":
+            problems.append(
+                'series.style_preset must be "custom" for a story with the cute-mystery look'
+            )
+    elif not _is_int(minutes) or not low <= minutes <= high:
         problems.append(f"series.target_minutes must be {low} to {high}")
     per_day = series.get("episodes_per_day")
     if not _is_int(per_day) or not 1 <= per_day <= STORY_MAX_PER_DAY:
         problems.append(f"series.episodes_per_day must be 1 to {STORY_MAX_PER_DAY}")
     if not _is_text(series.get("image_model")):
         problems.append("series.image_model is missing")
-    style = _get(series.get("look"), "style")
-    negative = _get(series.get("look"), "negative")
-    if not _is_text(style) or not _is_text(negative):
-        problems.append("series.look needs a style and a negative prompt")
-    else:
+    style = _get(look, "style")
+    negative = _get(look, "negative")
+    if not cute and (
+        not isinstance(look, dict)
+        or "preset" in look
+        or not _is_text(style)
+        or not _is_text(negative)
+    ):
+        problems.append(
+            'series.look needs a style and a negative prompt, or exactly '
+            '{preset: "cute-mystery"}'
+        )
+    elif not cute:
         if len(style) > LIMITS["look_style"]:
             problems.append(f"series.look.style is over {LIMITS['look_style']} characters")
         if len(negative) > LIMITS["look_negative"]:

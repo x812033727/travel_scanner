@@ -1,6 +1,7 @@
-// A brand story on the host (docs/videos/STORY.md): a 12 to 15 minute non-fiction documentary told
-// by a narrator alone over about 90 cartoon stills, written, fact-checked and heard one chapter at
-// a time from a plan that was fact-checked before it was imported.
+// A brand story on the host (docs/videos/STORY.md): a narrator-only non-fiction documentary
+// written, fact-checked and heard one chapter at a time from a reviewed plan. The original series
+// aims at 13 minutes and about 90 cartoon stills; the cute-mystery pilot and five-film stories
+// aim at 10 minutes and about 80 illustrations.
 //
 // The site hands a story over as an episode of a series of kind "story" (GET automation/series/next,
 // then episodes/{n}/start under the video slug the plan fixed), with the whole plan as the
@@ -11,8 +12,9 @@
 // <workdir>/story/chapters/, merges them into video.json and claims.md and lints; a lint error is
 // sent back for the chapter it is in. A fresh checker takes a chapter a call (verifier:story) and
 // answers a patch and the chapter's rows of the claims table; the listener takes a chapter a call
-// (listener:story) and answers a patch. A story has no script gate: the step every drama has is
-// approved here, with a note that says why. After tts the measured narration must be within a
+// (listener:story) and answers a patch. Ordinary stories have no script gate: the step every drama
+// has is approved here, with a note that says why. The two v2 pilots first need an independent,
+// hash-bound review of the worker's actual merged script. After tts the measured narration must be within a
 // band around the target; else the writer adds to or cuts from one chapter, twice at most, and a
 // story whose passages hold no more is left for the owner, never padded. A keyframe that failed
 // its check goes back to the writer (writer:story-fix) for the named shots alone.
@@ -31,20 +33,23 @@
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { isDeepStrictEqual } from "node:util";
 
 import { approve } from "../core/approvals.mjs";
 import { emptyLexicon, isProposableTerm } from "../core/lexicon.mjs";
 import { lintVideo } from "../core/lint.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, readText } from "../core/paths.mjs";
-import { writeScreenplay } from "../core/screenplay.mjs";
+import { screenplay, writeScreenplay } from "../core/screenplay.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
+import { NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelVerdict } from "../core/narrative.mjs";
 import { lintProject, loadProject } from "../core/state.mjs";
 import { namePattern, STORY_KIND, STORY_RULES } from "../core/story.mjs";
-import { DEFAULT_CPM, formatClock, FPS, spokenUnits } from "../core/timeline.mjs";
+import { DEFAULT_CPM, estimateTimeline, formatClock, FPS, spokenUnits } from "../core/timeline.mjs";
 import { clipHeadline } from "../story-plans/plan.mjs";
 import { AutomationError } from "./client.mjs";
 import { pageReader } from "./fetch.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
+import { NARRATIVE_VARIANT } from "./flow-constants.mjs";
 import { STORY_FIX_VARIANT, STORY_VARIANT } from "./story-prompts.mjs";
 
 // --- the numbers -------------------------------------------------------------------------------
@@ -62,14 +67,16 @@ export const CHAPTER_KEYS = STORY_CHAPTERS.map((chapter) => chapter.key);
 const CHAPTER_OF = new Map(STORY_CHAPTERS.map((chapter, index) => [chapter.key, { ...chapter, index }]));
 
 // How a story's length is shared (docs/videos/STORY.md §一支故事影片的規格): the narration is read
-// at 250 characters a minute (the tool's estimate), the hook is said within 30 seconds, and the
-// other five chapters share the rest in these weights, engine the longest. A shot holds 6 to 12
-// seconds; the budgets are cut to SHOT_SECONDS a shot, so a 13-minute story is 3,250 characters
-// over about 90 shots. chapterBudgets() is the one place these become a chapter's share.
+// at 250 characters a minute (the tool's estimate), the hook is the condensation of 30 to 60
+// seconds (core/lint.mjs OPENING_CHAPTER_SECONDS) and is given the middle of it, and the
+// other five chapters share the rest in these weights, engine the longest. A custom story uses
+// SHOT_SECONDS (13 minutes: about 90 shots); the cute-mystery story uses 7.5 seconds (10 minutes:
+// about 80 illustrations). chapterBudgets() is the one place these become a chapter's share.
 export const STORY_CPM = DEFAULT_CPM;
-export const HOOK_SECONDS = 30;
+export const HOOK_SECONDS = 45;
 export const CHAPTER_WEIGHTS = { origin: 5, idea: 4.5, engine: 7, turn: 5, now: 3.5 };
 export const SHOT_SECONDS = 8.7;
+export const CUTE_STORY_SHOT_SECONDS = 7.5;
 // video.json's target_minutes around the series' target: lint warns outside it (12 to 15 for 13).
 export const TARGET_SPREAD = { below: 1, above: 2 };
 // The measured narration after tts: within this far of the target (11:30 to 15:30 for 13
@@ -101,6 +108,8 @@ const WRITER_TOKENS = 16_000;
 const CHECKER_TOKENS = 16_000;
 // The listener runs on Opus 5.5 by default, which always thinks; thinking counts toward the cap.
 const LISTENER_TOKENS = 16_000;
+// The storytelling panel answers ten yes-or-no questions with one quoted line each.
+const PANEL_TOKENS = 8_000;
 const FIX_TOKENS = 16_000;
 
 // What a story keeps in its work directory, relative to it: the chapters as written and checked
@@ -118,18 +127,20 @@ const PLAN_UNREAD = (source, why) => `工人這次讀不到這一頁（${why}）
 
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
+const isCuteStoryLook = (look) => isObject(look) && Object.keys(look).length === 1 && look.preset === "cute-mystery";
 const clip = (text, max) => String(text).trim().slice(0, max);
 const hash16 = (text) => createHash("sha256").update(String(text)).digest("hex").slice(0, 16);
 const chars = (text) => [...String(text)].length;
 
 /** Each chapter's share of a story of `targetMinutes`: { key, seconds, chars, shots }, summing to the target. */
-export function chapterBudgets(targetMinutes) {
+export function chapterBudgets(targetMinutes, look = null) {
   const total = Math.round(targetMinutes * 60);
   const rest = Math.max(0, total - HOOK_SECONDS);
   const weight = Object.values(CHAPTER_WEIGHTS).reduce((sum, each) => sum + each, 0);
+  const shotSeconds = targetMinutes === 10 && isCuteStoryLook(look) ? CUTE_STORY_SHOT_SECONDS : SHOT_SECONDS;
   const budgets = CHAPTER_KEYS.map((key) => {
     const seconds = key === "hook" ? Math.min(HOOK_SECONDS, total) : (rest * CHAPTER_WEIGHTS[key]) / weight;
-    return { key, seconds: Math.round(seconds), chars: Math.round((seconds * STORY_CPM) / 60), shots: Math.max(2, Math.round(seconds / SHOT_SECONDS)) };
+    return { key, seconds: Math.round(seconds), chars: Math.round((seconds * STORY_CPM) / 60), shots: Math.max(2, Math.round(seconds / shotSeconds)) };
   });
   // Rounding lands on the longest chapter, so the shares add up to the target exactly.
   const engine = budgets.find((budget) => budget.key === "engine");
@@ -139,7 +150,9 @@ export function chapterBudgets(targetMinutes) {
 }
 
 /** The measured narration a story of `targetMinutes` may run, in seconds: [low, high]. */
-export const lengthBand = (targetMinutes) => [targetMinutes * 60 - LENGTH_BAND_SECONDS.below, targetMinutes * 60 + LENGTH_BAND_SECONDS.above];
+export const lengthBand = (targetMinutes, look = null) => targetMinutes === 10 && isCuteStoryLook(look)
+  ? [9 * 60, 11 * 60]
+  : [targetMinutes * 60 - LENGTH_BAND_SECONDS.below, targetMinutes * 60 + LENGTH_BAND_SECONDS.above];
 
 // --- the plan ----------------------------------------------------------------------------------
 
@@ -189,14 +202,14 @@ export function storySeriesFile({ series, episode, plan, cast }) {
     compilation: false,
     target_minutes: Number(series.target_minutes) || 13,
     image_model: series.image_model ?? null,
-    look: isObject(series.look) ? { style: series.look.style ?? "", negative: series.look.negative ?? "", ...(isText(series.look.motion) ? { motion: series.look.motion } : {}) } : null,
+    look: isCuteStoryLook(series.look) ? { preset: "cute-mystery" } : isObject(series.look) ? { style: series.look.style ?? "", negative: series.look.negative ?? "", ...(isText(series.look.motion) ? { motion: series.look.motion } : {}) } : null,
     plan,
     series: { title: series.title, premise: series.premise ?? "", note: series.note ?? null, hands_off: Boolean(series.hands_off), episodes_per_day: series.episodes_per_day ?? null },
   };
 }
 
 /** brief.md for a story: the sections lint wants, the plan's six points, one outline (approved here). */
-export function storyBrief({ episode, plan, cast }) {
+export function storyBrief({ episode, plan, cast, look = null }) {
   const lines = [
     `# ${episode.title}`,
     "",
@@ -207,6 +220,7 @@ export function storyBrief({ episode, plan, cast }) {
     "",
     `留給觀眾的觀察：${plan.takeaway ?? ""}`,
     "",
+    ...(isCuteStoryLook(look) ? ["## 問題", plan.question, "", "## 一句答案", plan.takeaway || episode.logline || plan.subject, ""] : []),
     "## 角色",
     ...(cast.length
       ? cast.map((figure) => `- ${figure.id}：${(plan.cast ?? []).find((each) => each.id === figure.id)?.role ?? figure.name}（一般化的卡通人物，不對應任何真人）`)
@@ -618,7 +632,21 @@ export function readChapterAnswer(answer, { key, ids, cast = [], sources = 0, fa
     });
   const thumbnail = renamed.get(answer.thumbnail_shot) ?? (known.has(answer.thumbnail_shot) ? answer.thumbnail_shot : null);
   const lexicon = isObject(answer.lexicon_additions) ? answer.lexicon_additions : {};
-  return { chapter: { key, title: clip(answer.title, 30), scenes, claims, ...(thumbnail ? { thumbnail_shot: thumbnail } : {}) }, lexicon };
+  // The open loops this chapter plants and pays off (script-writing.md §故事主線與鉤子), with the
+  // line ids the writer was given; a loop whose payoff a later chapter owns leaves it out.
+  const kept = new Set(scenes.flatMap((scene) => scene.lines.map((line) => line.id)));
+  // A loop belongs to this chapter when it plants it or pays it off. The planting chapter keeps a
+  // record with no payoff (the later chapter owns it); the paying chapter keeps one whose setup is
+  // an earlier chapter's line, which is how a cross-chapter loop survives into composeStory.
+  const loops = (Array.isArray(answer.loops) ? answer.loops : [])
+    .filter((loop) => isObject(loop) && isText(loop.what))
+    .map((loop) => {
+      const setup = renamed.get(loop.setup) ?? loop.setup;
+      const payoff = renamed.get(loop.payoff) ?? loop.payoff;
+      return { setup, ...(kept.has(payoff) ? { payoff } : {}), what: clip(loop.what, 40) };
+    })
+    .filter((loop) => kept.has(loop.setup) || isText(loop.payoff));
+  return { chapter: { key, title: clip(answer.title, 30), scenes, claims, ...(loops.length ? { loops } : {}), ...(thumbnail ? { thumbnail_shot: thumbnail } : {}) }, lexicon };
 }
 
 /** Claim ids per chapter: the chapter's letter and a number (h1, e12), kept across rewrites where a row keeps its id. */
@@ -688,6 +716,12 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
       scenes.push({ id: scene.id, ...(index === 0 ? { chapter: chapter.title } : {}), template: scene.template, data: scene.data, ...(claims.length ? { claims } : {}), lines: scene.lines });
     });
   }
+  // The whole story's open loops: every chapter's, keeping only the ones whose payoff was written.
+  const spoken = new Map(scenes.flatMap((scene) => scene.lines.map((line) => line.id)).map((id, order) => [id, order]));
+  const loops = [...new Map(CHAPTER_KEYS.flatMap((key) => (chapters[key]?.loops ?? []).map((loop) => ({ ...loop, chapter: key })))
+    .filter((loop) => spoken.has(loop.setup) && spoken.has(loop.payoff) && spoken.get(loop.payoff) > spoken.get(loop.setup))
+    .map((loop) => [loop.setup, loop])).values()]
+    .map(({ setup, payoff, what }) => ({ setup, payoff, what }));
   const shots = scenes.filter((scene) => scene.template === "shot").map((scene) => scene.id);
   const thumbnail = shots.includes(chapters.hook?.thumbnail_shot) ? chapters.hook.thumbnail_shot : shots[0];
   const guide = isText(plan.related_guide) && existsSync(contentPackFile(plan.related_guide, root)) ? plan.related_guide : null;
@@ -699,17 +733,19 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
     // A brand story's place among the site's videos (/admin/videos filters by it).
     category: "story",
     ...(guide ? { source_guide: guide } : {}),
-    target_minutes: [Math.max(1, target - TARGET_SPREAD.below), target + TARGET_SPREAD.above],
+    target_minutes: target === 10 && isCuteStoryLook(look) ? [9, 11] : [Math.max(1, target - TARGET_SPREAD.below), target + TARGET_SPREAD.above],
     voice,
-    look: { preset: "custom", style: clip(look.style ?? "", 600), negative: clip(look.negative ?? "", 400), ...(isText(look.motion) ? { motion: clip(look.motion, 300) } : {}) },
+    look: isCuteStoryLook(look) ? { preset: "cute-mystery" } : { preset: "custom", style: clip(look.style ?? "", 600), negative: clip(look.negative ?? "", 400), ...(isText(look.motion) ? { motion: clip(look.motion, 300) } : {}) },
     characters: info.characters ?? [],
     series: { slug: info.slug, episode: info.episode, chapter: 1 },
     ...(drama.music_enabled === false ? {} : { music: { prompt: STORY_MUSIC, gain_db: -20, duck_db: -10 } }),
-    subtitles: { burn_in: true, style: "drama" },
+    // Keep the picture clean so zh-TW CC can be switched off when another voice is selected.
+    subtitles: { burn_in: false, style: "drama" },
     youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: clip(info.title ?? plan.subject, 100), description: `${info.logline || plan.subject}\n\n${plan.question}`, tags: storyTags(plan), video_id: videoId },
     ...(thumbnail ? { thumbnail: { template: "thumb", data: { headline: clipHeadline(plan.thumbnail?.headline ?? plan.subject), tag: "品牌故事", shot: thumbnail } } } : {}),
     sources: plan.sources.map((source) => ({ title: clip(source.publisher || source.url, 200), url: source.url, checked_on: source.checked })),
     assets: [],
+    ...(loops.length ? { loops } : {}),
     scenes,
   };
 }
@@ -767,6 +803,127 @@ function draftContext(root, slug, doc) {
 
 const SCENE_PATH = /^scenes\[(\d+)\]/;
 
+// The five cute-mystery brand stories borrow Curio's visual mix, but keep their story-* slugs.
+// Check the complete merged script before keyframes are bought. The usual story writer currently
+// writes shots only; this also guards later chapter edits and changes to that writer's contract.
+const STORY_FIVE_FRAMES = new Set(["title", "chapter", "outro"]);
+const STORY_FIVE_MIN_SHOT_PERCENT = 70;
+const STORY_FIVE_MAX_CARD_RUN = 3;
+const CUTE_PILOT_SLUGS = new Set(["story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2"]);
+// These hashes are the independently PASS-reviewed editorial Markdown scripts in the v2 pilot
+// package. The worker imports six plan beats, not those scripts; a new review must compare its
+// actual merged output with the matching frozen reference before a paid TTS or image stage.
+export const PILOT_SCRIPT_REFERENCES = Object.freeze({
+  "story-rolling-suitcase-v2": "f91816021ebea28e1957199a5c73ccc588748e988730efc92e0486d09d5215c6",
+  "story-conveyor-belt-sushi-v2": "5326bd6633ad69931fe542badd6cddd2378324ff0bcc4b0f05652941642dc724",
+});
+export const PILOT_SCRIPT_REVIEW_FILE = path.join(STORY_DIR, "reviews", "script-review.json");
+const PILOT_REVIEW_CHECKS = ["reference_alignment", "factual_claims", "narrative"];
+const PILOT_REVIEW_FILES = ["script.md", "video.json", "series.json", "claims.md", "verify-1.md"];
+const sha256OnDisk = (file) => existsSync(file) ? createHash("sha256").update(readFileSync(file)).digest("hex") : null;
+
+/** Exact current worker output that a second reader must compare and sign off before pilot TTS. */
+export function pilotScriptReviewEvidence({ slug, root, workdir }) {
+  const referenceScriptSha256 = PILOT_SCRIPT_REFERENCES[slug];
+  if (!referenceScriptSha256) return null;
+  const dir = docDir(slug, root);
+  return {
+    slug,
+    reference_script_sha256: referenceScriptSha256,
+    files: Object.fromEntries(PILOT_REVIEW_FILES.map((name) => [name, sha256OnDisk(path.join(dir, name))])),
+    narrative_review_sha256: sha256OnDisk(path.join(workdir, ...NARRATIVE_REVIEW)),
+    chapters: Object.fromEntries(CHAPTER_KEYS.map((key) => [key, sha256OnDisk(path.join(workdir, STORY_CHAPTERS_DIR, `${key}.json`))])),
+  };
+}
+
+/** A missing, weak, or stale attestation leaves only these two pilots in STOPPED_HOLD. */
+export function pilotScriptReviewProblem({ slug, root, workdir }) {
+  const expected = pilotScriptReviewEvidence({ slug, root, workdir });
+  if (!expected) return null;
+  const file = path.join(workdir, PILOT_SCRIPT_REVIEW_FILE);
+  let receipt;
+  try { receipt = readJson(file, null); }
+  catch { return `${PILOT_SCRIPT_REVIEW_FILE} is not valid JSON`; }
+  if (!receipt || typeof receipt !== "object" || Array.isArray(receipt)) return `${PILOT_SCRIPT_REVIEW_FILE} is missing`;
+  if (receipt.schema_version !== 1 || receipt.slug !== slug || receipt.status !== "PASS") return "the pilot script review has no matching slug and PASS decision";
+  const reviewer = receipt.reviewer_id;
+  if (typeof reviewer !== "string" || !/^[a-z0-9][a-z0-9._:@/-]{2,99}$/i.test(reviewer)
+    || /(?:^|[._:@/-])(?:worker|writer|listener|verifier|automation|self)(?:$|[._:@/-])/i.test(reviewer)
+    || receipt.independent !== true) return "the pilot script review needs an independent reviewer identity, not a worker stage";
+  if (typeof receipt.reviewed_at !== "string" || !Number.isFinite(Date.parse(receipt.reviewed_at))) return "the pilot script review has no valid reviewed_at";
+  if (PILOT_REVIEW_CHECKS.some((key) => receipt.checks?.[key] !== "PASS")) return "the pilot script review has not passed reference alignment, facts and narrative";
+  if (receipt.reference_script_sha256 !== expected.reference_script_sha256) return "the pilot script review does not name the frozen independently reviewed Markdown reference";
+  let video;
+  try {
+    const dir = docDir(slug, root);
+    video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    if (readFileSync(path.join(dir, "script.md"), "utf8") !== screenplay(video)) {
+      return "script.md no longer matches the narration in video.json";
+    }
+  } catch { return "script.md or video.json cannot be read for the pilot script review"; }
+  try {
+    const dir = docDir(slug, root);
+    const info = JSON.parse(readFileSync(path.join(dir, "series.json"), "utf8"));
+    const chapters = Object.fromEntries(CHAPTER_KEYS.map((key) => {
+      const chapter = JSON.parse(readFileSync(path.join(workdir, STORY_CHAPTERS_DIR, `${key}.json`), "utf8"));
+      if (chapter?.key !== key || !Array.isArray(chapter.scenes)) throw new Error(`invalid ${key} chapter`);
+      return [key, chapter];
+    }));
+    const merged = composeStory({ slug, info, chapters, voice: video.voice, root });
+    if (!isDeepStrictEqual(video.scenes, merged.scenes)) return "video.json scenes no longer match the six reviewed chapter files";
+  } catch { return "the six chapter files or series.json cannot be merged for the pilot script review"; }
+  for (const name of PILOT_REVIEW_FILES) {
+    if (!expected.files[name] || receipt.files?.[name] !== expected.files[name]) return `${name} is missing or changed since the pilot script review`;
+  }
+  let panel;
+  try { panel = readJson(path.join(workdir, ...NARRATIVE_REVIEW), null); }
+  catch { return "the narrative panel receipt is not valid JSON"; }
+  if (!panel?.passed || !narrativeReviewMatches(panel, video)) {
+    return "the narrative panel receipt is missing, failed or stale under the current questions";
+  }
+  if (!expected.narrative_review_sha256 || receipt.narrative_review_sha256 !== expected.narrative_review_sha256) return "the narrative panel receipt is missing or changed since the pilot script review";
+  for (const key of CHAPTER_KEYS) {
+    if (!expected.chapters[key] || receipt.chapters?.[key] !== expected.chapters[key]) return `chapter ${key} is missing or changed since the pilot script review`;
+  }
+  return null;
+}
+
+export function cuteStoryVisualProblems(doc) {
+  if (!/^story-five-/.test(doc?.slug ?? "") && !CUTE_PILOT_SLUGS.has(doc?.slug)) return [];
+  const problems = [];
+  const look = doc.look;
+  if (!look || typeof look !== "object" || Array.isArray(look) || look.preset !== "cute-mystery" || Object.keys(look).length !== 1) {
+    problems.push({ path: "look", message: 'cute-mystery stories use exactly {"preset":"cute-mystery"}; remove style, negative and other look overrides' });
+  }
+  const body = (doc.scenes ?? []).map((scene, index) => ({ scene, index }))
+    .filter(({ scene }) => !STORY_FIVE_FRAMES.has(scene.template));
+  if (!body.length) return [...problems, { path: "scenes[0]", message: "the cute-mystery story body has no scenes; add illustrated shots before keyframes" }];
+
+  const shots = body.filter(({ scene }) => scene.template === "shot").length;
+  if (shots * 100 < body.length * STORY_FIVE_MIN_SHOT_PERCENT) {
+    // A concrete card path lets relint send the ratio failure back to its chapter's writer.
+    const card = body.findLast(({ scene }) => scene.template !== "shot");
+    problems.push({
+      path: `scenes[${card.index}]`,
+      message: `${shots} of ${body.length} body scenes are illustrated shots (${Math.floor(shots * 100 / body.length)}%); cute-mystery stories need at least ${STORY_FIVE_MIN_SHOT_PERCENT}%`,
+    });
+  }
+
+  let cards = [];
+  for (const item of body) {
+    if (item.scene.template === "shot") { cards = []; continue; }
+    cards.push(item);
+    if (cards.length === STORY_FIVE_MAX_CARD_RUN + 1) {
+      problems.push({
+        path: `scenes[${item.index}]`,
+      message: `${cards.length} cards in a row (${cards.map(({ scene }) => scene.id).join(" → ")}); cute-mystery stories allow at most ${STORY_FIVE_MAX_CARD_RUN} before an illustrated shot`,
+      });
+      cards = [];
+    }
+  }
+  return problems;
+}
+
 /**
  * Lint the chapters written so far, and when all six are there write video.json and claims.md
  * and lint them as `status` does. Every error inside a chapter's scenes is that chapter's (kept
@@ -790,6 +947,7 @@ async function relint(automation, state) {
     // so a line changed after it (a length fix, the owner's note on the narration) voids it.
     writeScreenplay(dir, doc);
     errors = lintProject(loadProject({ slug: state.slug, root })).errors;
+    errors.push(...cuteStoryVisualProblems(doc));
   } else {
     errors = lintVideo(doc, draftContext(root, state.slug, doc)).errors;
   }
@@ -864,7 +1022,9 @@ export async function draftStory(automation, started, job = {}) {
     chosen: "A",
     notes: [],
   };
-  const problem = planShapeProblem(plan) ?? (isText(series.look?.style) ? null : "the story series has no shared look (look.style); set it on /admin/videos");
+  const problem = planShapeProblem(plan) ?? (isCuteStoryLook(series.look)
+    ? (Number(series.target_minutes) === 10 && series.image_model === "image-01" && series.style_preset === "custom" ? null : "a cute-mystery story needs target_minutes=10, image_model=image-01 and style_preset=custom")
+    : (isText(series.look?.style) ? null : "the story series has no shared look (look.style); set it on /admin/videos"));
   if (problem) {
     automation.persist(state);
     return automation.block(state, `the story cannot be written: ${problem}`);
@@ -873,7 +1033,7 @@ export async function draftStory(automation, started, job = {}) {
   mkdirSync(dir, { recursive: true });
   const cast = storyCast(plan, automation.voice("drama"));
   writeFileSync(path.join(dir, "series.json"), `${JSON.stringify(storySeriesFile({ series, episode, plan, cast }), null, 2)}\n`);
-  writeFileSync(path.join(dir, "brief.md"), storyBrief({ episode, plan, cast }));
+  writeFileSync(path.join(dir, "brief.md"), storyBrief({ episode, plan, cast, look: series.look }));
   const workdir = automation.workdir(slug);
   automation.persist(state);
   await approve({ gate: "outline", docDir: dir, workdir, now: automation.ctx.now(), note: OUTLINE_NOTE });
@@ -916,6 +1076,12 @@ export async function advanceStory(automation, state, next) {
     Object.assign(state, { verified: true, listener_done: true });
     automation.persist(state);
   }
+  // The six chapters are one story: the storytelling panel reads the merged script before the
+  // narration is recorded, and a required "no" sends the listener over them with its note.
+  const panelled = await narrativeGate(automation, state);
+  if (panelled) return panelled;
+  const reviewProblem = pilotScriptReviewProblem({ slug: state.slug, root: automation.ctx.root, workdir: automation.workdir(state.slug) });
+  if (reviewProblem) return automation.block(state, `STOPPED_HOLD: ${reviewProblem}; an independent reader must review the current six-chapter worker script against the frozen v2 editorial script, then the owner retries this pilot`, "pilot_script_review");
   if (next === "script approved") return approveScript(automation, state);
   if (next === "narration approved") {
     const length = await checkLength(automation, state);
@@ -931,7 +1097,7 @@ async function writerPayload(automation, state, key, extra = {}) {
   const plan = info.plan;
   const index = CHAPTER_OF.get(key).index;
   const belongs = factChapters(plan);
-  const budget = chapterBudgets(info.target_minutes)[index];
+  const budget = chapterBudgets(info.target_minutes, info.look)[index];
   const previous = index > 0 ? readChapter(automation, state, CHAPTER_KEYS[index - 1]) : null;
   const names = plan.names ?? [];
   const anchors = anchorsFor([plan.chapters[index].point, ...(plan.must_verify ?? []).filter((_, each) => belongs[each].includes(key)).map((fact) => fact.claim), ...(extra.current ? chapterNarration(extra.current) : [])], names);
@@ -944,7 +1110,11 @@ async function writerPayload(automation, state, key, extra = {}) {
     facts: factsPayload(plan, belongs),
     caveats: plan.caveats ?? "",
     sources: await sourcesPayload(automation, state, plan, writerSourceOrder(plan, key, belongs), anchors),
-    previous_lines: previous ? chapterNarration(previous).slice(-4) : [],
+    previous_lines: previous ? chapterNarration(previous).slice(-6) : [],
+    // The spine the chapter goes on from, and the loops earlier chapters left hanging: a chapter
+    // that owns one pays it off and names it (story-prompts.mjs, script-writing.md §故事主線與鉤子).
+    spine: plan.spine ?? `${plan.question} → ${plan.takeaway}`,
+    loops_open: openLoops(automation, state, index),
     look: info.look,
     cast: (plan.cast ?? []).map(({ id, role, appearance }) => ({ id, role, appearance })),
     names,
@@ -953,6 +1123,20 @@ async function writerPayload(automation, state, key, extra = {}) {
     lexicon: Object.keys(lexicon.terms ?? {}),
     ...extra,
   };
+}
+
+/** What earlier chapters planted and have not paid off: { setup, what } in the order they were planted. */
+function openLoops(automation, state, index) {
+  const chapters = readChapters(automation, state);
+  const open = [];
+  const paid = new Set();
+  for (const key of CHAPTER_KEYS.slice(0, index)) {
+    for (const loop of chapters[key]?.loops ?? []) {
+      if (isText(loop.payoff)) paid.add(loop.setup);
+      open.push({ setup: loop.setup, what: loop.what, chapter: key });
+    }
+  }
+  return open.filter((loop) => !paid.has(loop.setup));
 }
 
 /** Fresh line ids for a chapter: none that any chapter uses. */
@@ -985,7 +1169,7 @@ const describeChapter = (chapter) => `${chapter.scenes.filter((scene) => scene.t
 async function writeChapter(automation, state, key) {
   const info = seriesInfo(automation, state);
   const index = CHAPTER_OF.get(key).index;
-  const budget = chapterBudgets(info.target_minutes)[index];
+  const budget = chapterBudgets(info.target_minutes, info.look)[index];
   const ids = lineIds(automation, state, idsFor(budget.chars));
   const payload = await writerPayload(automation, state, key, { line_ids: ids });
   const answer = await automation.stage("writer", state.slug, payload, WRITER_TOKENS, "drama", STORY_VARIANT);
@@ -1187,6 +1371,46 @@ async function listenChapter(automation, state, key) {
   return `${state.slug}: chapter ${key} heard: ${patched.changed.length} lines reworded, ${patched.dropped.length} dropped${patched.refused.length ? `, ${patched.refused.length} edits refused` : ""}`;
 }
 
+/**
+ * The storytelling panel on the merged story (core/narrative.mjs; owner, 2026-10-13): a reader in
+ * a fresh session answers ten yes-or-no questions on the script alone. A required "no" goes back
+ * to the listener as the owner's note would, chapter by chapter, STORY_PROMPT_FIX_ROUNDS times;
+ * after that the video waits for the owner with the questions it failed. Null when nothing is due.
+ */
+async function narrativeGate(automation, state) {
+  const dir = docDir(state.slug, automation.ctx.root);
+  const file = path.join(dir, "video.json");
+  if (!existsSync(file)) return undefined;
+  const video = JSON.parse(readFileSync(file, "utf8"));
+  const timeline = estimateTimeline(video);
+  const verdictFile = path.join(automation.workdir(state.slug), ...NARRATIVE_REVIEW);
+  const saved = readJson(verdictFile, null);
+  if (saved?.passed && narrativeReviewMatches(saved, video)) return undefined;
+  const round = (saved?.round ?? 0) + 1;
+  const answer = await automation.stage("verifier", state.slug, panelPayload(video, timeline), PANEL_TOKENS, "drama", NARRATIVE_VARIANT, null, { bare: PANEL_INSTRUCTIONS });
+  const verdict = panelVerdict(answer);
+  mkdirSync(path.dirname(verdictFile), { recursive: true });
+  atomicWrite(verdictFile, `${JSON.stringify(narrativeRecord(video, verdict, round), null, 2)}\n`);
+  automation.cleared(state, "verifier");
+  state.story.narrative = { passed: verdict.passed, rounds: round, ...(verdict.passed ? {} : { failed: verdict.failed.map((each) => each.id) }) };
+  if (verdict.passed) {
+    // A pass is a check, not a step: the same round goes on to the script gate. The verdict file
+    // and this note are the record.
+    state.notes.push(`storytelling panel passed (round ${round})`);
+    automation.persist(state);
+    return undefined;
+  }
+  const rounds = (state.story.narrative_fixes ?? 0) + 1;
+  if (rounds > STORY_PROMPT_FIX_ROUNDS) return automation.block(state, `the storytelling panel still fails after ${STORY_PROMPT_FIX_ROUNDS} passes: ${verdict.problems.join("；")}`, "prompt_fixes:narrative");
+  state.story.narrative_fixes = rounds;
+  state.story.owner_note = `說故事檢查沒過：${verdict.problems.join("；")}`;
+  for (const key of CHAPTER_KEYS) entryOf(state, key).listened = false;
+  state.listener_done = false;
+  state.notes.push(`storytelling panel round ${round}: ${verdict.failed.map((each) => each.id).join(", ")}`);
+  automation.persist(state);
+  return `${state.slug}: the storytelling panel sent the narration back (round ${round}: ${verdict.failed.map((each) => each.id).join(", ")}); the listener goes over the six chapters with it`;
+}
+
 /** The script gate every drama has (PR #870): a story has none, so it is approved here with the reason. */
 async function approveScript(automation, state) {
   const dir = docDir(state.slug, automation.ctx.root);
@@ -1217,7 +1441,7 @@ async function checkLength(automation, state) {
   if (!timeline?.total_frames) return undefined;
   const info = seriesInfo(automation, state);
   const target = Number(info.target_minutes) || 13;
-  const [low, high] = lengthBand(target);
+  const [low, high] = lengthBand(target, info.look);
   const seconds = timeline.total_frames / FPS;
   state.story.length = { seconds: Math.round(seconds), at: automation.ctx.now().toISOString() };
   if (seconds >= low && seconds <= high) {
@@ -1228,8 +1452,8 @@ async function checkLength(automation, state) {
   const measured = `the narration measures ${formatClock(seconds)}, ${long ? "over" : "under"} ${formatClock(long ? high : low)}`;
   if ((state.story.resizes ?? 0) >= LENGTH_FIX_ROUNDS) return automation.block(state, `${measured} after ${state.story.resizes} length fixes; a story runs ${formatClock(low)} to ${formatClock(high)}: the owner decides`);
   const measuredBy = chapterSeconds(timeline);
-  const budgets = Object.fromEntries(chapterBudgets(target).map((budget) => [budget.key, budget.seconds]));
-  // The hook stays within its 30 seconds whatever the total does.
+  const budgets = Object.fromEntries(chapterBudgets(target, info.look).map((budget) => [budget.key, budget.seconds]));
+  // The hook keeps its condensation's seconds whatever the total does.
   const resizable = CHAPTER_KEYS.filter((each) => each !== "hook");
   const key = long
     ? resizable.reduce((best, each) => (measuredBy[each] > measuredBy[best] ? each : best))

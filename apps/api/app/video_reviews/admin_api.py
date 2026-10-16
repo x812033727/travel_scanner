@@ -256,7 +256,9 @@ async def link_youtube(
             "video_youtube_url_invalid",
             "看不出影片 id：貼上 youtu.be、watch?v=、shorts 或 Studio 的網址，或 11 個字元的 id",
         )
-    return await service.link_youtube(session, slug, user, video_id, payload.publish_at)
+    return await service.link_youtube(
+        session, slug, user, video_id, payload.publish_at, private_only=payload.private_only
+    )
 
 
 @admin_router.put("/{slug}/languages", response_model=ProjectOut)
