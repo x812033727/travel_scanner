@@ -19,7 +19,9 @@ const FONT = "C\\:/Windows/Fonts/msjhbd.ttc";
 const probe = (f) => Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]).toString().trim());
 const segDir = path.join(work, "segments-v4");
 const txtDir = path.join(segDir, "text");
+const fastDir = path.join(segDir, "lines");
 mkdirSync(txtDir, { recursive: true });
+mkdirSync(fastDir, { recursive: true });
 const esc = (p) => p.replace(/\\/g, "/").replace(/:/g, "\\:");
 const textFile = (name, text) => { const f = path.join(txtDir, `${name}.txt`); writeFileSync(f, text); return esc(f); };
 const pick = (dir, shot) => { if (!existsSync(dir)) return null; const hits = readdirSync(dir).filter((n) => n.startsWith(`${shot}-t`) && /\.(mp4|png|jpg)$/.test(n)).sort(); return hits.length ? path.join(dir, hits[hits.length - 1]) : null; };
@@ -74,7 +76,14 @@ let t = 0;
 for (const scene of video.scenes) {
   if (scene.template !== "shot") continue;
   const lines = (scene.lines ?? []).map((l) => ({ ...l, wav: path.join(work, "audio", `${l.id}.wav`) }));
-  for (const l of lines) l.len = probe(l.wav) / TEMPO;
+  // Each line is trimmed of its own leading/trailing silence and sped up into its own file first:
+  // atempo inside the segment graph (before adelay) silently cut every segment's audio to 0.12 s.
+  for (const l of lines) {
+    const fast = path.join(fastDir, `${l.id}.wav`);
+    execFileSync("ffmpeg", ["-v", "error", "-y", "-i", l.wav, "-af", `silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.03,areverse,silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.08,areverse,atempo=${TEMPO}`, "-ar", "48000", "-ac", "2", fast]);
+    l.wav = fast;
+    l.len = probe(fast);
+  }
   let dur = lines.length ? LEAD + lines.reduce((a, l) => a + l.len, 0) + GAP * (lines.length - 1) + TAIL : Math.min(scene.action_seconds ?? scene.data?.action_seconds ?? 2, ACTION_MAX);
   dur = Math.max(dur, MIN, edit.min?.[scene.id] ?? 0);
   const src = scene.data?.source;
@@ -126,13 +135,18 @@ for (const scene of video.scenes) {
   placed.forEach((l, i) => {
     args.push("-i", l.wav);
     const ms = Math.round(l.at * 1000);
-    amix.push(`[${i + 1}:a]aresample=48000,atempo=${TEMPO},aformat=channel_layouts=stereo,adelay=${ms}|${ms}[a${i}]`);
+    amix.push(`[${i + 1}:a]aresample=48000,aformat=channel_layouts=stereo,adelay=${ms}|${ms}[a${i}]`);
   });
   args.push("-f", "lavfi", "-t", dur.toFixed(3), "-i", "anullsrc=r=48000:cl=stereo");
   const silence = placed.length + 1;
   const graph = [vf, ...amix, `${placed.map((_, i) => `[a${i}]`).join("")}[${silence}:a]amix=inputs=${placed.length + 1}:normalize=0:duration=longest,atrim=duration=${dur.toFixed(3)}[a]`].join(";");
   args.push("-filter_complex", graph, "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "fast", "-crf", "17", "-c:a", "pcm_s16le", "-t", dur.toFixed(3), seg.replace(/\.mp4$/, ".mkv"));
   execFileSync("ffmpeg", args, { stdio: "inherit" });
+  // Guard: the segment's audio must be as long as its picture, or every later line drifts.
+  const wavCheck = path.join(fastDir, `_${scene.id}.wav`);
+  execFileSync("ffmpeg", ["-v", "error", "-y", "-i", seg.replace(/\.mp4$/, ".mkv"), "-map", "0:a", wavCheck]);
+  const got = probe(wavCheck);
+  if (Math.abs(got - dur) > 0.05) throw new Error(`${scene.id}: audio ${got.toFixed(3)} s but shot ${dur.toFixed(3)} s`);
   segs.push(seg.replace(/\.mp4$/, ".mkv"));
   starts[scene.id] = { start: t, dur };
   report.push(`${scene.id} ${t.toFixed(2)} +${dur.toFixed(2)}s ${note}`);
