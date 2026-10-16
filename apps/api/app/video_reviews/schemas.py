@@ -375,6 +375,9 @@ class ProjectSummary(BaseModel):
 
 class ProjectOut(ProjectSummary):
     reviews: list[ReviewOut]
+    # Whether the owner can tick a dub for this exact video. Brand stories need a current
+    # approved final cut whose QA proves captions are switchable, independent of category.
+    dub_allowed: bool = False
     # Set only in the answer to a pasted YouTube address without a publish time: why the
     # linked channel gave none (still private, not in the channel, not linked...), or None
     # when it gave one or the owner typed one (admin_service.link_youtube).
@@ -450,3 +453,6 @@ class YoutubeIn(BaseModel):
 
     url: str = Field(min_length=1, max_length=500)
     publish_at: AwareDatetime | None = None
+    # The pending-imported-final entry asks the backend to verify Studio privacy before linking.
+    # The ordinary manual-link form keeps its historical publication-time behavior.
+    private_only: bool = False

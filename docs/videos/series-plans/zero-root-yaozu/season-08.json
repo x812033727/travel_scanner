@@ -1,0 +1,4504 @@
+{
+  "number": 8,
+  "title": "人神",
+  "theme": "神明拋棄了你，你就自己當神。",
+  "start_state": "陸拾一行從鍾山歸來；九曜知道燭陰在醒，決定先毀掉守圖人的家。",
+  "end_state": "長燈村毀、歸伯戰死留下一顆蛋；陸拾被天下唾棄後由眾人的信念成為「人神」；嚴少淵的人性一度醒來，把天闕的鑰匙紋交給陸拾後又被曜主拖回；九根天柱從天而降釘住仙洲。",
+  "guest_cast": [
+    {
+      "id": "s08-shuang-heng",
+      "name": "霜衡（沈霜）",
+      "role": "九曜座下的審判使，奉命焚長燈村；百年前其實是玄穹宗一名「飛升」的女弟子",
+      "appearance": "東亞年輕女性，看起來二十五歲，冷豔美人：細長眉、淡色薄唇、瞳色是無機質的白金色，黑髮全部束進白金色高冠，穿合身的白金色鱗紋輕甲與及地長披風，手持一桿由光凝成的長秤；摘下頭盔後是一張清秀溫和的臉"
+    },
+    {
+      "id": "s08-zhou-shaogong",
+      "name": "周艄公",
+      "role": "長燈村下游渡口鎮的渡船夫，載了陸拾一程就被天眼判罪",
+      "appearance": "東亞老年男性，六十歲，黝黑精瘦、笑紋很深，戴破斗笠、披蓑衣，手握一根磨亮的竹篙"
+    },
+    {
+      "id": "s08-wen-shouli",
+      "name": "溫守禮",
+      "role": "京城禮部侍郎兼第十曜神廟主祭，頒逆神詔與燈禁的人",
+      "appearance": "東亞中年男性，四十五歲，白淨長臉、三綹長鬚、笑容溫和得過分，身材修長，穿金邊深紫色祭袍、頭戴金冠，雙手總捧著一隻金色詔匣"
+    },
+    {
+      "id": "s08-xiu-niang",
+      "name": "秀娘",
+      "role": "小石頭的養母，名字上了第十曜的飛升冊",
+      "appearance": "東亞女性，三十歲，秀氣溫婉，柳葉眉、鬢邊插一朵藍布花，穿素淨的藕色布裙"
+    },
+    {
+      "id": "s08-zhu-xiaoman",
+      "name": "祝小滿",
+      "role": "零靈根散修，第三季在古墟門口被擠掉、陸拾分給她一塊墟牌的小散修",
+      "appearance": "東亞年輕女性，十九歲，英氣甜美：圓眼、高馬尾、笑起來有一顆小虎牙，身材勻稱，穿合身的墨綠色短打勁裝與綁腿，背一把舊竹弓"
+    },
+    {
+      "id": "s08-mo-weng",
+      "name": "墨翁",
+      "role": "第四季走出萬妖圖的老妖，骨林老婦等了三百年的丈夫",
+      "appearance": "東亞老年男性，七十歲，白鬚垂胸、慈眉善目，穿灰褐色麻衣，拄一根白骨杖；真身是一匹額生獨角的灰色神馬"
+    },
+    {
+      "id": "s08-dou-niang",
+      "name": "豆娘",
+      "role": "長燈村豆腐攤的老闆娘（第一季豆腐攤的鍋就是她倒的），真身是蜃",
+      "appearance": "東亞年輕女性，二十六歲，明豔愛笑的鄰家美人：杏眼、酒窩、皮膚白皙，頭包碎花頭巾、繫白圍裙、袖子挽到小臂；真身是一隻能吐霧成樓的巨蛤"
+    },
+    {
+      "id": "s08-fei-lian",
+      "name": "緋練",
+      "role": "女子國女王赤蘅派來長燈村的使者，女將",
+      "appearance": "東亞年輕女性，二十四歲，英氣御姐：劍眉鳳眼、紅唇，黑髮高束紅繩，身材高挑，穿合身的赤金色鱗甲與赤色長披風，腰佩一柄彎刀"
+    },
+    {
+      "id": "s08-pei-yuan",
+      "name": "裴遠",
+      "role": "東海岸臨波城城主，第十曜的信徒",
+      "appearance": "東亞中年男性，五十歲，清瘦、山羊鬍、眼神固執，穿深藍色官服，腰上掛一塊發光的飛升玉牌"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s08-t01",
+      "question": "鍾山山口網上那排長燈村的燈籠，是誰摘下來的？",
+      "setup_episode": 421,
+      "payoff_episode": 424
+    },
+    {
+      "id": "s08-t02",
+      "question": "歸伯釣竿上九十九道刻痕，最後一條魚等誰來釣？",
+      "setup_episode": 422,
+      "payoff_episode": 470
+    },
+    {
+      "id": "s08-t03",
+      "question": "審判之光要燒到什麼時候才停？",
+      "setup_episode": 422,
+      "payoff_episode": 429
+    },
+    {
+      "id": "s08-t04",
+      "question": "鯤肯不肯用三百年的睡眠換陸拾回家？",
+      "setup_episode": 425,
+      "payoff_episode": 428
+    },
+    {
+      "id": "s08-t05",
+      "question": "審判使霜衡原本是誰？",
+      "setup_episode": 425,
+      "payoff_episode": 448
+    },
+    {
+      "id": "s08-t06",
+      "question": "歸伯留下的龜蛋還活著嗎？",
+      "setup_episode": 430,
+      "payoff_episode": 450
+    },
+    {
+      "id": "s08-t07",
+      "question": "四散的三百口妖去了哪裡、還回不回來？",
+      "setup_episode": 430,
+      "payoff_episode": 461
+    },
+    {
+      "id": "s08-t08",
+      "question": "誰收留陸拾誰就被審判，還有人敢靠近他嗎？",
+      "setup_episode": 431,
+      "payoff_episode": 441
+    },
+    {
+      "id": "s08-t09",
+      "question": "陸拾能把龜蛋託給誰？",
+      "setup_episode": 431,
+      "payoff_episode": 433
+    },
+    {
+      "id": "s08-t10",
+      "question": "何月為什麼當面關上門？",
+      "setup_episode": 432,
+      "payoff_episode": 444
+    },
+    {
+      "id": "s08-t11",
+      "question": "何月門上那張紙剪的女子，紙娘去哪了？",
+      "setup_episode": 432,
+      "payoff_episode": 464
+    },
+    {
+      "id": "s08-t12",
+      "question": "蘇母手腕上那圈金紋是什麼？",
+      "setup_episode": 433,
+      "payoff_episode": 438
+    },
+    {
+      "id": "s08-t13",
+      "question": "頒逆神詔、下燈禁的溫守禮會付出什麼？",
+      "setup_episode": 433,
+      "payoff_episode": 474
+    },
+    {
+      "id": "s08-t14",
+      "question": "小石頭的娘上了飛升冊，會不會被吃掉？",
+      "setup_episode": 434,
+      "payoff_episode": 436
+    },
+    {
+      "id": "s08-t15",
+      "question": "白無咎為什麼放陸拾一馬？",
+      "setup_episode": 437,
+      "payoff_episode": 470
+    },
+    {
+      "id": "s08-t16",
+      "question": "井底城為什麼空了，蛛婆去哪了？",
+      "setup_episode": 439,
+      "payoff_episode": 465
+    },
+    {
+      "id": "s08-t17",
+      "question": "陸拾身上那道暖光是什麼？",
+      "setup_episode": 442,
+      "payoff_episode": 446
+    },
+    {
+      "id": "s08-t18",
+      "question": "帶燈回來的人裡，誰是溫守禮的眼線？",
+      "setup_episode": 443,
+      "payoff_episode": 444
+    },
+    {
+      "id": "s08-t19",
+      "question": "被神印控制的人還叫得回來嗎？",
+      "setup_episode": 451,
+      "payoff_episode": 452
+    },
+    {
+      "id": "s08-t20",
+      "question": "叫名字，能不能把嚴少淵也叫回來？",
+      "setup_episode": 452,
+      "payoff_episode": 459
+    },
+    {
+      "id": "s08-t21",
+      "question": "嚴少淵心裡還剩多少他自己？",
+      "setup_episode": 454,
+      "payoff_episode": 456
+    },
+    {
+      "id": "s08-t22",
+      "question": "嚴少淵拚死要交給陸拾的是什麼？",
+      "setup_episode": 459,
+      "payoff_episode": 460
+    },
+    {
+      "id": "s08-t23",
+      "question": "被困在青石鎮的三嬸，還能重新開爐嗎？",
+      "setup_episode": 463,
+      "payoff_episode": 466
+    },
+    {
+      "id": "s08-t24",
+      "question": "從北方壓過來的那片黑影是誰？",
+      "setup_episode": 466,
+      "payoff_episode": 467
+    },
+    {
+      "id": "s08-t25",
+      "question": "女子國使者帶來的赤鱗做什麼用？",
+      "setup_episode": 468,
+      "payoff_episode": 477
+    },
+    {
+      "id": "s08-t26",
+      "question": "天柱讓仙洲往哪裡滑、還剩多久？",
+      "setup_episode": 472,
+      "payoff_episode": 478
+    },
+    {
+      "id": "s08-t27",
+      "question": "臨波城的十萬人撤不撤得出來？",
+      "setup_episode": 477,
+      "payoff_episode": 480
+    }
+  ],
+  "episodes": [
+    {
+      "number": 421,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "一輩子夠了",
+      "youtube_title": "真神說他只剩這一輩子，少年轉身就往家跑：天上那根光柱正對著他的村子",
+      "duration_s": 95,
+      "logline": "陸拾剛從燭陰口中得知自己只剩這一世，想立刻帶隊回家，卻被第十曜留下的捉妖司伏兵用鎖靈網封死在鍾山山口。",
+      "hook": "永夜重新落下，燭陰閉上的右眼只剩一道白縫；陸拾仰頭對著千里蛇身大喊：「一輩子，夠了！」",
+      "hook_type": "line",
+      "mid_hook": "冰道盡頭的鎖靈網上掛著一排燈籠，空碗一盞盞念出燈上的字：「胡、歸、畢……」全是長燈村人家的姓，每盞燈底都貼著一個金色的「判」字。",
+      "conflict": "下山唯一的冰道被捉妖司飛舟殘部用鎖靈網封住，他們要把陸拾困在永夜裡，等第十曜回頭。",
+      "turn": "衣領裡那根胡奶奶出村那天替他理衣領時偷偷塞進去的新狐毛突然自己燒起來，燒出奶奶沙啞的一句「別回來」；他背上歸伯那根竹釣竿，竿上的九十九道刻痕同時發燙。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power",
+          "what": "陸拾不睜燭淚眼（怕天眼看見），用百世書裡獵戶那一世學來的聽聲辨位，一柴刀斬斷鎖靈網的主索"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill",
+          "what": "阿猙現出半身真身，一頭把三艘飛舟撞成冰屑，捉妖司的兵化成四散的人影逃進黑暗"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "隊伍衝出山口，南方天邊一根白金光柱正從雲裡往下壓，柱尖剛碰到雲底，對準的方向是長燈村；阿猙低吼一個字：「家。」",
+        "question": "那根光柱落下時，長燈村撐得住嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "texiao",
+        "ganren"
+      ],
+      "spectacle": "永夜的鍾山上，千里赤紅蛇身盤成山脈，閉上的右眼只透出一道白光切開黑暗。",
+      "glamour_shot": "雲知意在冰道上回身拔劍，銀劍映著燭陰眼縫裡漏出的白光，被風吹起的黑髮擦過臉側。",
+      "setups": [
+        "s08-t01",
+        "m14"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "全隊衝出鍾山山口",
+        "知道長燈村出事"
+      ],
+      "characters": [
+        "lu-shi",
+        "zhu-yin",
+        "yun-zhiyi",
+        "tuan-tuan",
+        "a-zheng",
+        "jia-banhu",
+        "kong-wan",
+        "su-ling"
+      ],
+      "locations": [
+        "鍾山",
+        "鍾山山口冰道"
+      ],
+      "state": {
+        "time": "第420集當夜，鍾山",
+        "knowledge": "拿回左眼後自己只剩這一世；村裡出事，有人摘了村裡的燈貼上判字",
+        "carry_forward": "南方的審判光柱正落向長燈村"
+      }
+    },
+    {
+      "number": 422,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "歸伯放下釣竿",
+      "youtube_title": "天降審判要燒光整個村，最不能打的老村長放下釣竿：背上扛起整座天",
+      "duration_s": 110,
+      "logline": "審判之光壓向長燈村，胡奶奶要拿命去接，話最少的村長歸伯卻搶先一步走進光裡。",
+      "hook": "光柱砸在村口第一盞燈上，燈罩瞬間化成灰；飯桌旁的胡奶奶把豆腐刀往桌面一插：「來了。」",
+      "hook_type": "danger",
+      "mid_hook": "胡奶奶拔刀要上屋頂硬接，歸伯按住她的刀背：「竿在那孩子手上。九十九條，還差一條。」說完他獨自走向廣場。",
+      "conflict": "全村為了送力量去鍾山點過的那座燈橋，讓天眼順著光找回了長燈村；圖影一被光壓就裂，三百口妖要在光裡現形被燒，審判使霜衡宣判：「長燈村，判焚。三日三夜。」",
+      "turn": "全村以為最不能打的慢吞吞老村長，才是唯一扛得住的那一個。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "三嬸一口畢方火燒斷落在祠堂門口的三根光矛，把抱著燈縮在門檻上的阿杏拎了進去"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power",
+          "what": "歸伯在廣場上現出巨龜真身，背殼頂住整根光柱，殼上的青苔與小樹被照得發亮"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "光壓上龜殼，殼發出第一聲裂響；歸伯慢慢扭過巨大的頭，對胡奶奶說：「三天。等他。」",
+        "question": "歸伯真的撐得住三天三夜嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "texiao",
+        "henla"
+      ],
+      "spectacle": "一隻背殼長滿青苔與小樹的巨龜從廣場拔地而起，用背殼頂住從天而降的白金光柱，光沿著殼邊瀑布般流下。",
+      "glamour_shot": "胡奶奶在光雨中褪去老婦相，銀白長髮及腰、眉心一點硃砂，握著豆腐刀站上屋脊，青紗被氣浪掀起。",
+      "setups": [
+        "s08-t02",
+        "s08-t03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "全村三百口躲進龜殼底下"
+      ],
+      "characters": [
+        "gui-bo",
+        "hu-nainai",
+        "bi-sanniang",
+        "s08-shuang-heng",
+        "a-xing",
+        "lu-shi"
+      ],
+      "locations": [
+        "長燈村飯桌",
+        "長燈村廣場",
+        "祠堂"
+      ],
+      "state": {
+        "time": "審判第一天清晨",
+        "knowledge": "陸拾在海上，只知道光柱落向家裡",
+        "carry_forward": "歸伯用殼頂住光，要撐三日三夜"
+      }
+    },
+    {
+      "number": 423,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "回家要七天",
+      "youtube_title": "家裡只撐得了三天，回家的路卻要七天：他明知一睜眼就會被天看見",
+      "duration_s": 90,
+      "logline": "陸拾乘鯤回仙洲，水路要七天，海霧又起，他只能用會被天眼看見的燭淚眼開路。",
+      "hook": "鯤背的古港口上，團團算完水路，小臉一白：「回家，要七天。」",
+      "hook_type": "line",
+      "mid_hook": "霧裡浮出一排排倒扣的舊船，船上的燈還亮著，看不見人，只有一陣陣鑼聲喊：「別往前——」",
+      "conflict": "九曜放下的海霧讓鯤原地打轉，多轉一圈，家裡就多燒一個時辰。",
+      "turn": "陸拾決定睜開燭淚眼看穿霧紋，明知天眼會在同一瞬間看見他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear",
+          "what": "燭淚眼的金線在霧裡畫出一條縫，陸拾指揮鯤一頭鑽過去，三百年迷航的霧第一次被穿過"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill",
+          "what": "三名神衛從霧頂撲下，雲知意照她被曜主附身時記得的光紋，一劍斬斷三對光翼，神衛化成光點落進海裡"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他一睜眼，遠方天邊那根光柱忽然粗了一倍；團團尖叫：「它看見你了！家裡——」",
+        "question": "是陸拾睜眼害家裡的光變重了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "texiao",
+        "henla",
+        "kongbu"
+      ],
+      "spectacle": "燭淚眼的金線穿透海霧，在灰白霧牆上織出一條發光的縫，一條背上有港口的巨魚從縫裡鑽出。",
+      "glamour_shot": "雲知意立在鯤背的舊港石階上，月白袍被海風吹得獵獵作響，一劍斬落時髮絲貼著劍光掠過。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "穿過海霧"
+      ],
+      "characters": [
+        "lu-shi",
+        "tuan-tuan",
+        "yun-zhiyi",
+        "kun",
+        "a-zheng",
+        "kong-wan"
+      ],
+      "locations": [
+        "東海",
+        "鯤背上的古港口"
+      ],
+      "state": {
+        "time": "審判第一天午後，東海上",
+        "knowledge": "燭淚眼每用一次，天眼就看見他、家裡的光就更重",
+        "carry_forward": "水路還要七天，家裡只撐得了三天"
+      }
+    },
+    {
+      "number": 424,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "第一夜",
+      "youtube_title": "神衛一盞盞熄燈，熄一盞就燒一家：六歲小狐狸抱著燈擋在祠堂門口",
+      "duration_s": 85,
+      "logline": "審判第一夜，神衛從光裡降下來熄燈，胡奶奶要在燈全滅之前把他們砍回天上。",
+      "hook": "光柱加粗的那一刻壓下來，巨龜四腳陷進地裡半尺，殼上第一棵小樹燒成灰；胡奶奶望天：「那孩子睜眼了。」",
+      "hook_type": "image",
+      "mid_hook": "神衛熄到祠堂，搖籃邊那盞燈下鑽出阿杏，雙手護著燈：「這是陸拾哥的！」神衛的熄燈鉤已經舉起。",
+      "conflict": "神衛把從村裡摘走的燈當成判籤：燈熄一盞，殼下就有一家妖在天眼裡現形。",
+      "turn": "鍾山網上那排燈籠就是他們摘走的，每一盞都是一個要判的名字。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill",
+          "what": "胡奶奶本相一刀劈開兩名神衛的光甲，光甲碎成雪片"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue",
+          "what": "熄燈鉤落下前，胡奶奶甩出一條白尾捲走阿杏和那盞燈，鉤子只勾到空氣"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "天光裂開，霜衡親自從光柱裡走下來，手上那桿光秤往下一沉：「燈，一盞不留。」秤盤正對著胡奶奶的胸口。",
+        "question": "霜衡的秤要稱走誰的命？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "ganren",
+        "texiao"
+      ],
+      "spectacle": "夜裡一列列白金色神衛從光柱裡排隊降下，手持長鉤，一盞盞燈在他們身後無聲熄滅。",
+      "glamour_shot": "胡奶奶本相在燈籠的暖光裡回眸，銀髮被氣浪揚起，眼角上挑的狐狸眼冷冷看著神衛。",
+      "setups": [],
+      "payoffs": [
+        "s08-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "救下阿杏與搖籃邊的燈"
+      ],
+      "characters": [
+        "hu-nainai",
+        "gui-bo",
+        "a-xing",
+        "s08-shuang-heng",
+        "bi-sanniang"
+      ],
+      "locations": [
+        "長燈村",
+        "祠堂"
+      ],
+      "state": {
+        "time": "審判第一夜",
+        "knowledge": "（村裡）陸拾睜眼讓光變重；摘走的燈是判籤",
+        "carry_forward": "霜衡親自出手"
+      }
+    },
+    {
+      "number": 425,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "霜衡的秤",
+      "youtube_title": "審判使一秤稱走九尾狐的命，秤桿上卻綁著一塊仙門弟子牌",
+      "duration_s": 100,
+      "logline": "霜衡用光秤稱命，胡奶奶斷尾後只剩八尾、圖影又碎，接不住；同一時間，海上的陸拾找到一條比七天更快的路，代價卻是三百年。",
+      "hook": "秤盤砸落，胡奶奶橫刀接住，刀身震出八條尾影；霜衡淡淡地說：「九尾少一尾，稱得動。」",
+      "hook_type": "danger",
+      "mid_hook": "霜衡的秤桿上綁著一塊燒掉一半的玄穹宗內門弟子牌，胡奶奶一眼認出那種牌子：「你……也是人？」",
+      "conflict": "霜衡的秤一沉，被稱的那一邊就燒；圖影已碎，胡奶奶只剩兩成力。",
+      "turn": "三嬸趁霜衡分神，從爐底抽出燒紅的鐵鍊纏住秤桿。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill",
+          "what": "三嬸畢方火鍊纏住秤桿，一扯把霜衡拖下屋頂"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue",
+          "what": "歸伯把殼一歪，替胡奶奶擋下第二記秤盤，殼側裂開第二道縫"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "鯤背上，團團攤開古港石板上的真文：「鯤化為鵬……化了，要睡三百年。」水下一隻比船還大的眼睛看著陸拾，等他開口。",
+        "question": "陸拾會讓鯤拿三百年換他回家嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "henla",
+        "ganren",
+        "texiao"
+      ],
+      "spectacle": "一桿比房子還長的光秤懸在村子上空，秤盤落下時整條街的燈影都被壓扁。",
+      "glamour_shot": "霜衡在火光裡收秤回身，白金高冠下的側臉冷得像冰雕，長披風被三嬸的火翻起金邊。",
+      "setups": [
+        "s08-t04",
+        "s08-t05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "hu-nainai",
+        "bi-sanniang",
+        "gui-bo",
+        "s08-shuang-heng",
+        "lu-shi",
+        "tuan-tuan",
+        "kun"
+      ],
+      "locations": [
+        "長燈村屋頂",
+        "鯤背上的古港口"
+      ],
+      "state": {
+        "time": "審判第二天凌晨",
+        "knowledge": "鯤能化鵬，代價是沉睡三百年",
+        "carry_forward": "歸伯殼上兩道裂縫；霜衡可能曾是人"
+      }
+    },
+    {
+      "number": 426,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "鯤化為鵬",
+      "youtube_title": "為了送他回家，深海巨魚化成遮天大鳥：代價是再睡三百年",
+      "duration_s": 90,
+      "logline": "鯤答應化鵬送陸拾回家，可剛飛上天，天眼就親自擋在雲上。",
+      "hook": "陸拾跪在鯤背的石板上，手按真文：「求你。」水下傳來山一樣的回音：「上來。」",
+      "hook_type": "line",
+      "mid_hook": "鵬翅剛展開，雲層上排出一整列神衛光陣，陣中央倒懸一隻巨眼，直直望下來。",
+      "conflict": "鵬要穿過神衛光陣，可陸拾一睜燭淚眼找路，天眼就能把他們釘在空中。",
+      "turn": "團團說：「你閉眼，我數星星。」三百年前天眼讀走過她的白澤之識，這一次她用同一份知識騙過它。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power",
+          "what": "背著島嶼的巨魚破水而出，在半空張開成遮天的巨鳥，海水從羽毛上瀑布般落下"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill",
+          "what": "阿猙站在鵬背上一爪撕開光陣的口子，賈半壺的斷劍劍氣掃落一整排神衛"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "鵬穿出光陣，前方就是仙洲海岸，一道光牆突然橫在面前，鵬來不及轉向；團團閉著眼大喊：「往下！」",
+        "question": "他們撞得過那道光牆嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "texiao",
+        "ganren",
+        "henla"
+      ],
+      "spectacle": "背上長著港口與島嶼的巨魚躍出海面，在半空化成翼展遮天的巨鵬，翅尖掃過雲層。",
+      "glamour_shot": "蘇鈴蹲在鵬羽上壓低身子，貓瞳在高空強光裡縮成一線，深紅勁裝的衣角被風扯直。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "鯤化鵬載全隊回仙洲"
+      ],
+      "characters": [
+        "lu-shi",
+        "kun",
+        "tuan-tuan",
+        "a-zheng",
+        "jia-banhu",
+        "su-ling",
+        "yun-zhiyi"
+      ],
+      "locations": [
+        "東海上空",
+        "神衛光陣"
+      ],
+      "state": {
+        "time": "審判第二天清晨，海上",
+        "knowledge": "團團能用白澤之識避開天眼",
+        "carry_forward": "仙洲海岸前的光牆"
+      }
+    },
+    {
+      "number": 427,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "守圖人若跪",
+      "youtube_title": "審判使開出條件：守圖人跪下，光就停；全村三百口妖一起看向奶奶",
+      "duration_s": 105,
+      "logline": "審判第二天，神衛找到龜殼的裂縫要把光灌進去，霜衡開出停光的條件。",
+      "hook": "鵬貼著海面從光牆底下擦過，翅尖犁出兩道白浪；同一刻，長燈村的龜殼縫裡透進第一束光。",
+      "hook_type": "image",
+      "mid_hook": "霜衡在空中讀完判詞最後一條：「守圖人若跪，光即止。」殼下三百口妖一下全靜了，一起看向胡奶奶。",
+      "conflict": "神衛用長鉤撬龜殼的裂縫，要把審判之光直接灌進殼底。",
+      "turn": "歸伯把真身縮緊，用整個殼把裂縫硬生生合起來，代價是殼裡的命火燒得更快。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill",
+          "what": "三嬸帶著村裡的大人把燈油潑上光縫、一口火點著，撬殼的神衛全被燒退"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled",
+          "what": "胡奶奶一刀把傳判詞的光符劈成兩半：「他不會跪，我們也不讓他跪。」霜衡的聲音斷在半空"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "殼底下，三嬸把耳朵貼上龜殼內壁，臉色一變：「他的心跳……一下比一下慢。」",
+        "question": "歸伯還剩多少時間？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "ganren",
+        "texiao"
+      ],
+      "spectacle": "龜殼下三百盞燈擠成一片暖色的海，殼縫裡漏進一道道白金色的光刀。",
+      "glamour_shot": "三嬸紅布包頭、袖子捲到手肘，在火光裡揮臂潑油，回頭罵人的那一刻眼神亮得像她的火。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "殼下全村撐過第二天"
+      ],
+      "characters": [
+        "hu-nainai",
+        "bi-sanniang",
+        "gui-bo",
+        "s08-shuang-heng",
+        "a-xing",
+        "lu-shi",
+        "kun"
+      ],
+      "locations": [
+        "長燈村龜殼之下",
+        "仙洲海岸"
+      ],
+      "state": {
+        "time": "審判第二天黃昏",
+        "knowledge": "（村裡）守圖人跪下光就停；歸伯在用命火撐",
+        "carry_forward": "歸伯心跳變慢"
+      }
+    },
+    {
+      "number": 428,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "還差一百步",
+      "youtube_title": "巨鳥力竭化回魚，她御劍帶他衝回村口：龜殼卻在眼前裂成兩半",
+      "duration_s": 95,
+      "logline": "第三天，鵬力竭，離家還有三百里；陸拾必須丟下大半隊伍先走。",
+      "hook": "龜殼裡的心跳「咚……咚……」越來越慢，鵬背上陸拾胸口的萬妖圖跟著同一個節拍發燙：「是歸伯。」",
+      "hook_type": "image",
+      "mid_hook": "鵬的羽毛一片片變回魚鱗，牠說：「我只能，再飛一刻。」下方斷龍原上空，一整隊神衛正等著他們墜下去。",
+      "conflict": "鵬撐不到長燈村，斷龍原上空的神衛要把他們攔在半路。",
+      "turn": "雲知意拔出銀劍：「我帶你先走。」她御劍載陸拾一個人衝向西北，其他人留下護鯤。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill",
+          "what": "賈半壺握著只剩劍柄的斷劍一揮，劍氣化成光河，把斷龍原上空的神衛整排掀翻"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue",
+          "what": "鵬墜向地面時化回鯤，阿猙用全身抱住牠滑進長燈湖，鯤沉進湖底睡去，誰都沒受傷"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "雲知意的劍帶著陸拾衝進村口，光柱底下的巨龜殼「喀」一聲從正中間裂開，陸拾還差一百步。",
+        "question": "陸拾趕得上見歸伯最後一面嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "texiao",
+        "ganren",
+        "henla"
+      ],
+      "spectacle": "遮天巨鵬的羽毛在半空一片片化回魚鱗，整隻鳥邊墜落邊變回巨魚，砸進湖面掀起一道環形水牆。",
+      "glamour_shot": "雲知意御劍穿過暴雨般的光屑，一手握劍訣一手拉著陸拾，月白長袍與黑髮被高速氣流拉成一條線。",
+      "setups": [],
+      "payoffs": [
+        "s08-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "鯤平安沉睡在長燈湖",
+        "陸拾趕到村口"
+      ],
+      "characters": [
+        "lu-shi",
+        "yun-zhiyi",
+        "kun",
+        "a-zheng",
+        "jia-banhu",
+        "tuan-tuan",
+        "gui-bo"
+      ],
+      "locations": [
+        "斷龍原上空",
+        "長燈湖",
+        "長燈村村口"
+      ],
+      "state": {
+        "time": "審判第三天黎明前",
+        "knowledge": "萬妖圖感應得到歸伯的心跳",
+        "carry_forward": "龜殼裂開，陸拾還差一百步"
+      }
+    },
+    {
+      "number": 429,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "魚還沒釣完",
+      "youtube_title": "審判使要他跪下才停光，殼下伸出一隻老人的手拉住他：不准跪",
+      "duration_s": 140,
+      "logline": "陸拾衝進審判之光，霜衡要他跪；他必須在歸伯撐不住之前讓光停下。",
+      "hook": "陸拾從劍上跳下，跑過燒成灰的村街，灰像雪一樣撲上他的臉：「歸伯——！」",
+      "hook_type": "line",
+      "mid_hook": "霜衡俯視他：「跪，光就停。」陸拾膝蓋一彎，殼底下伸出一隻老人的手拉住他的衣角：「不准跪。」",
+      "conflict": "第三天最後一刻的光最重，霜衡的秤壓到了底。",
+      "turn": "燭淚眼看見光秤的核心是一顆被鎖住的人心，秤不是天造的，是人做的，人做的就砍得斷。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "陸拾張開萬妖圖，把殼下漏出來的三十個村童一口氣收進圖裡護住，自己手臂裂開發光的細紋"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill",
+          "what": "他一柴刀劈碎霜衡的光秤，光柱從中間折斷，第三天的日出照進廢墟，霜衡化光退走"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "光散了，巨龜的頭慢慢垂到陸拾面前，殼上的小樹全成了灰；歸伯看著他，嘴唇動了：「魚……還沒釣完。」話一落，龜身從尾巴開始變成石頭。",
+        "question": "歸伯就這樣走了嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "henla",
+        "texiao"
+      ],
+      "spectacle": "日出的第一道光照進來，審判光柱從中間斷成兩截，碎成漫天白金色的雪，落在一隻裂成兩半的巨龜身上。",
+      "glamour_shot": "陸拾在灰燼與晨光裡抬頭，左眼燭淚眼亮著淡金色，臉上沾著灰，咬牙握刀的側臉被日出鍍上一層金邊。",
+      "setups": [],
+      "payoffs": [
+        "s08-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "審判之光停下",
+        "三十個村童安全"
+      ],
+      "characters": [
+        "lu-shi",
+        "gui-bo",
+        "hu-nainai",
+        "s08-shuang-heng",
+        "bi-sanniang",
+        "yun-zhiyi",
+        "a-xing"
+      ],
+      "locations": [
+        "長燈村廣場",
+        "審判光柱下"
+      ],
+      "state": {
+        "time": "審判第四天日出",
+        "knowledge": "審判停了，歸伯為擋光耗盡了命",
+        "carry_forward": "歸伯正在化成石頭"
+      }
+    },
+    {
+      "number": 430,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "石山與龜蛋",
+      "youtube_title": "老村長化成一座石山，全村三百口妖一夜散盡：他在石山下挖出一顆會發燙的蛋",
+      "duration_s": 150,
+      "logline": "歸伯化成石山，圖影全滅，天眼要記下全村每一個名字；胡奶奶做了一個比哭更難的決定。",
+      "hook": "石頭從龜尾爬上龜殼、爬上龜頸，陸拾抱住龜頭大喊：「你起來！魚我陪你釣！」石頭爬過了歸伯的眼睛。",
+      "hook_type": "line",
+      "mid_hook": "天眼睜開一條縫，冷光一格一格掃過廢墟，被掃到的妖身上冒出金色的判字；胡奶奶低聲：「它在記名字。」",
+      "conflict": "圖影沒了，三百口妖全攤在天眼底下，聚在一起就是一個靶。",
+      "turn": "胡奶奶下令：「散。三百個方向，它看不完。」陸拾想留住大家，奶奶只說：「活著，才回得來。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "陸拾把身上剩下的圖力撐成一層水墨霧罩住全村，讓天眼掃不清名字，自己咳得直不起腰"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power",
+          "what": "胡奶奶八尾鋪地，把三百盞燈的光分成三百條路，一夜送全村從不同方向出村"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "人都走了，陸拾一個人跪在石山腳下扒灰，指尖碰到一個溫的東西：一顆拳頭大的龜蛋，蛋殼上清清楚楚畫著一盞燈。",
+        "question": "歸伯留下的這顆蛋，還活著嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "texiao",
+        "henla"
+      ],
+      "spectacle": "一隻巨龜在晨光裡化成一座長著焦樹的石山；山下三百盞燈像撒出去的種子，朝三百個方向流進黑夜。",
+      "glamour_shot": "胡奶奶本相站在石山頂上目送全村，銀髮與青紗被夜風吹向同一邊，眼眶紅卻一滴淚都沒掉。",
+      "setups": [
+        "s08-t06",
+        "s08-t07"
+      ],
+      "payoffs": [
+        "m18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "全村三百口妖分散逃出",
+        "找到歸伯留下的龜蛋"
+      ],
+      "characters": [
+        "lu-shi",
+        "gui-bo",
+        "hu-nainai",
+        "bi-sanniang",
+        "a-zheng",
+        "tuan-tuan",
+        "yun-zhiyi",
+        "jia-banhu",
+        "kong-wan",
+        "su-ling"
+      ],
+      "locations": [
+        "長燈村廢墟",
+        "歸伯石山"
+      ],
+      "state": {
+        "time": "審判結束當天夜裡",
+        "knowledge": "長燈村毀、歸伯死、三百口妖四散",
+        "carry_forward": "一顆畫著燈的龜蛋"
+      }
+    },
+    {
+      "number": 431,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "逆神詔",
+      "youtube_title": "天上燒出一行金字，全天下都看得懂，只有他看不懂：寫的是他的名字",
+      "duration_s": 95,
+      "logline": "天下宣告陸拾為逆神、收留者同罪；第一個幫他的人，屋頂上就被烙了一隻金眼。",
+      "hook": "陸拾把龜蛋貼在耳邊聽，沒有聲音，殼卻是溫的；同一秒，整片天燒出一行巨大的金字，蘇鈴抬頭：「天上寫的是你。」",
+      "hook_type": "image",
+      "mid_hook": "載他過河的周艄公家，屋頂上那隻金眼開始往下滴光，整間屋子要被判焚，屋裡還躺著他癱在床上的老母親。",
+      "conflict": "陸拾看不懂天書寫的詔書，空碗一字一字念：「逆神陸拾，收留者同罪。」他一路走過的地方，都在被判。",
+      "turn": "他明白了：留在誰身邊，就是害誰；連第九隊也一樣。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "光落下前，陸拾用萬妖圖把周艄公一家連屋子一起收進畫卷，挪到河對岸再放出來"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap",
+          "what": "神衛來抓收留者，蘇鈴一鐵尺敲飛領頭的光盔，賈半壺醉醺醺一腳把神衛連人帶盔踢進河裡"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "夜裡，陸拾把破葫蘆放在熟睡的第九隊旁邊，背起包袱走到門口，手剛碰到門閂，背後響起雲知意的聲音：「你要一個人走？」",
+        "question": "他會丟下所有人一個人走嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "henla",
+        "kongbu"
+      ],
+      "spectacle": "整片天空像一張燒著的紙，九曜的金色天書一行行浮現，地上萬人同時抬頭。",
+      "glamour_shot": "蘇鈴在渡口的晨霧裡一個翻身落地，貓瞳一亮、銅鈴一響，鐵尺斜指神衛。",
+      "setups": [
+        "s08-t08",
+        "s08-t09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "救下周艄公一家"
+      ],
+      "characters": [
+        "lu-shi",
+        "su-ling",
+        "kong-wan",
+        "jia-banhu",
+        "yun-zhiyi",
+        "s08-zhou-shaogong"
+      ],
+      "locations": [
+        "渡口鎮",
+        "河岸"
+      ],
+      "state": {
+        "time": "審判後第二天",
+        "knowledge": "被宣告為逆神，誰收留他誰被判",
+        "carry_forward": "要把龜蛋託給一個安全的地方"
+      }
+    },
+    {
+      "number": 432,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "第一扇門",
+      "youtube_title": "他救過的新娘當著他的面關上門，整條街舉起銅鏡：收留者同罪",
+      "duration_s": 100,
+      "logline": "陸拾到京城東坊找第二季救過的新娘何月，想把龜蛋託給她，門卻在他面前關上。",
+      "hook": "陸拾沒回頭：「跟著我的，都會被燒。」雲知意收劍讓開：「蘇鈴要回京城看她娘，你們同路。」",
+      "hook_type": "line",
+      "mid_hook": "何月開了一條門縫，懷裡抱著嬰兒，門上那張紙剪的女子褪成灰白；對街的鄰居舉著第十曜的金符大喊：「逆神在這！」",
+      "conflict": "龜蛋怕冷又怕天眼，他需要一個肯開門的人。",
+      "turn": "何月看了他一眼，當著他的面把門關上，門閂「喀」地落下。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap",
+          "what": "神廟巡丁圍上來，陸拾用柴刀背連敲三下，三根巡丁的光棍全斷，人卻毫髮無傷"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue",
+          "what": "鄰居朝何月家砸石頭罵她認識逆神，陸拾擋在那扇關著的門前，把石頭一顆一顆接下來"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "街尾鐘樓上，十幾個金袍祭司舉起銅鏡，鏡光一起聚向何月家的門，聚成刺眼的一點：「收留者，同罪。」",
+        "question": "何月一家會因為他被判焚嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "henla"
+      ],
+      "spectacle": "十幾面銅鏡的光在半空匯成一道金線，像一根針慢慢垂向一扇木門。",
+      "glamour_shot": "蘇鈴蹲在東坊屋脊上，深紅捕快勁裝收著腰，月光下回頭看街心的陸拾，貓瞳裡映著鏡光。",
+      "setups": [
+        "s08-t10",
+        "s08-t11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "lu-shi",
+        "yun-zhiyi",
+        "su-ling",
+        "he-yue"
+      ],
+      "locations": [
+        "京城東坊",
+        "何月家門前",
+        "鐘樓"
+      ],
+      "state": {
+        "time": "審判後第五天，京城",
+        "knowledge": "救過的人怕他；何月門上的紙娘不見了",
+        "carry_forward": "鐘樓的鏡光要判何月家"
+      }
+    },
+    {
+      "number": 433,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "她把我趕走了",
+      "youtube_title": "全城鏡光對準救命恩人家，他一句話讓光停在門前一寸",
+      "duration_s": 95,
+      "logline": "陸拾要讓何月脫罪，再找地方藏龜蛋；蘇鈴帶他回家，蘇母溫柔地接過了蛋。",
+      "hook": "鏡光射下的一瞬，陸拾對整條街大喊：「她把我趕出來了！大家都看見了！」光停在門板前一寸。",
+      "hook_type": "reversal",
+      "mid_hook": "蘇母笑著伸手接蛋，袖口滑下來，手腕上一圈金色細紋，像一隻閉著的眼睛。",
+      "conflict": "鏡光只判收留者，他得讓全街作證何月沒收留他；然後在全京城都在找他的時候藏好龜蛋。",
+      "turn": "蘇母說那只是養根池留下的舊傷，蘇鈴鬆了口氣，陸拾也信了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication",
+          "what": "全街鄰居被他一喊，紛紛說「她真關門了」，鏡光收回，何月家脫罪"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue",
+          "what": "神衛追進巷子，蘇鈴銅鈴一搖，全巷的貓從屋頂撲下把追兵引走"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "街口貼出溫守禮的新告示，人群裡一個頭髮亂翹的少年轉過頭，是長大了的小石頭；他張口要喊陸拾，身後的男人一把捂住他的嘴。",
+        "question": "小石頭的爹為什麼捂住他的嘴？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "goxue",
+        "ganren"
+      ],
+      "spectacle": "上百隻貓從京城灰瓦屋頂同時躍下，像一道毛色的瀑布灌進窄巷。",
+      "glamour_shot": "蘇母在窗邊的燭光裡低頭接過龜蛋，琥珀色貓瞳溫柔得像水，素灰衣袖滑落。",
+      "setups": [
+        "s08-t12",
+        "s08-t13"
+      ],
+      "payoffs": [
+        "s08-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "何月家脫罪",
+        "龜蛋暫時託給蘇母"
+      ],
+      "characters": [
+        "lu-shi",
+        "su-ling",
+        "su-mu",
+        "he-yue",
+        "xiao-shitou",
+        "shi-dalang",
+        "s08-wen-shouli"
+      ],
+      "locations": [
+        "京城東坊",
+        "蘇家",
+        "京城街口"
+      ],
+      "state": {
+        "time": "審判後第五天傍晚",
+        "knowledge": "蘇母腕上有金紋；溫守禮主持第十曜神廟",
+        "carry_forward": "小石頭在京城，被他爹攔著"
+      }
+    },
+    {
+      "number": 434,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "飛升冊上的名字",
+      "youtube_title": "他救出井底的孩子長大了，養父卻當面關門：我家要飛升，別害我們",
+      "duration_s": 105,
+      "logline": "陸拾找到小石頭家，石大郎不讓他進門，因為小石頭的娘上了第十曜的飛升冊。",
+      "hook": "石大郎拖著小石頭快步走，陸拾追到門口；石大郎回身擋住門：「我們家要飛升。」",
+      "hook_type": "line",
+      "mid_hook": "門縫裡，屋裡的牆上貼著一張金帖，天書他一個字都讀不懂，帖子底下卻蓋著第十曜神廟的金印；石大郎吼：「上了飛升冊的人家，收留逆神要連坐！」",
+      "conflict": "小石頭想見他，石大郎怕他；飛升冊在京城被當成天大的福氣。",
+      "turn": "陸拾知道飛升是什麼（第五季的水晶槽），石大郎卻覺得是他嫉妒：「你零靈根，當然沒份。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "巷口神衛衝來搜逆神，陸拾把小石頭往門裡一推，自己翻牆引走追兵"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power",
+          "what": "他在屋脊間用阿猙教的野獸呼吸一口氣跑過七條街，甩掉整隊神衛"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陸拾繞回石家，門縫裡小石頭的手剛伸出來，就被他爹一把拉回去，門「砰」地關上；門板後面傳來小石頭的哭喊：「哥！我娘明天要飛升了！」",
+        "question": "小石頭的娘真的要去「飛升」嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "henla"
+      ],
+      "spectacle": "京城夜裡，家家戶戶門板上的金帖同時亮起，像整座城貼滿了發光的符。",
+      "glamour_shot": "陸拾在月下的屋脊上奔跑，精瘦的身形在瓦片間起落，馬尾被風甩到身後。",
+      "setups": [
+        "s08-t14"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "lu-shi",
+        "xiao-shitou",
+        "shi-dalang",
+        "s08-xiu-niang",
+        "s08-wen-shouli"
+      ],
+      "locations": [
+        "京城西市石家",
+        "京城屋脊"
+      ],
+      "state": {
+        "time": "審判後第六天",
+        "knowledge": "小石頭的娘秀娘在飛升冊上，明天第十曜登神位",
+        "carry_forward": "要去神廟看飛升冊"
+      }
+    },
+    {
+      "number": 435,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "全城夢遊",
+      "youtube_title": "半夜整座京城的人閉著眼走上街，一起朝皇宮跪下：神在數人頭",
+      "duration_s": 100,
+      "logline": "陸拾和蘇鈴夜探第十曜神廟，要看清明天被飛升的一百個人是誰。",
+      "hook": "陸拾翻進神廟前往下一看：整條御街站滿閉著眼的百姓，赤著腳，一個接一個朝皇宮跪下。",
+      "hook_type": "image",
+      "mid_hook": "溫守禮在神壇前念名字，念一個，街上就有一個夢遊的人額頭亮起金光；念到第七個：「西市，秀娘。」",
+      "conflict": "飛升冊上的一百人明天就要被抽乾，名冊鎖在神壇金匣裡，神壇上方懸著第十曜的神像。",
+      "turn": "跪下的人都有靈根，靈根是神印（第五季），所以全城一夜之間都被牽著走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear",
+          "what": "陸拾不用燭淚眼，靠蘇鈴的貓耳辨出巡更神衛的腳步，兩人第一次摸進第十曜神廟"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap",
+          "what": "溫守禮的護壇道士發現了蘇鈴，被她一鐵尺抽掉手上的金鈴，鈴聲斷了，三條街的夢遊百姓同時停下"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "第十曜嚴少淵從神像裡走出來，雙眼純金，頭也沒回，目光直接落在陸拾藏身的那根梁上：「客人，下來。」",
+        "question": "被第十曜當場發現，陸拾怎麼脫身？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "kongbu",
+        "henla",
+        "goxue"
+      ],
+      "spectacle": "月下的御街上，上萬名閉眼的百姓赤腳排成長列，一排排朝金色皇宮無聲跪倒。",
+      "glamour_shot": "嚴少淵從金色神像的光裡踏出，額心金紋發亮、玉冠高束，紫金長袍無風自動。",
+      "setups": [
+        "m16"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "知道秀娘是明天第七個飛升的人"
+      ],
+      "characters": [
+        "lu-shi",
+        "su-ling",
+        "s08-wen-shouli",
+        "yan-shaoyuan",
+        "s08-xiu-niang"
+      ],
+      "locations": [
+        "京城御街",
+        "第十曜神廟"
+      ],
+      "state": {
+        "time": "登神前夜",
+        "knowledge": "全城有靈根的人都被神印牽著；秀娘排第七",
+        "carry_forward": "嚴少淵發現了他"
+      }
+    },
+    {
+      "number": 436,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "我給你們飛升",
+      "youtube_title": "第十曜當著萬民問：陸拾給了你們什麼？他從光裡搶回一個人，卻挨了她一巴掌",
+      "duration_s": 125,
+      "logline": "第十曜在京城登神位，陸拾要把秀娘從飛升的光裡搶回來，還要讓萬民看見飛升是什麼。",
+      "hook": "陸拾從梁上跳下，嚴少淵卻沒動手，只笑：「明天，你來看。」金光一閃，陸拾已經站在神廟門外。",
+      "hook_type": "reversal",
+      "mid_hook": "登神大典上，嚴少淵俯視萬民：「陸拾給了你們什麼？我給你們飛升。」一百道光柱同時落下，秀娘第一個被拉離地面。",
+      "conflict": "秀娘飄上光柱，髮梢開始化成光點；陸拾要在她被抽乾前把她拉回來。",
+      "turn": "萬民只看見神光、看不見抽乾，陸拾的搶救在他們眼裡是逆神搶走了別人的福氣。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "陸拾衝上神道，一把抱住秀娘的腰把她從光柱裡拖下來，她髮梢化掉的那一截成了光點散掉，人保住了"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap",
+          "what": "他用柴刀劈斷第七道光柱，當著萬民讓光柱裡的空衣掉下來，前排有人開始發抖"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "秀娘落地，回頭就給了陸拾一巴掌：「我要飛升！」廣場上萬民一起站起來，指著他：「逆神搶走飛升！」",
+        "question": "他救下的人，為什麼反過來恨他？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        5,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "henla",
+        "kongbu"
+      ],
+      "spectacle": "京城廣場上萬民跪拜一尊十丈金色神像，一百道光柱同時落下，把一百個人慢慢提上天空。",
+      "glamour_shot": "嚴少淵立在神像前的高台上，雙眼泛金、下顎線冷硬，紫金長袍被一百道光柱照得發亮。",
+      "setups": [],
+      "payoffs": [
+        "s08-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "秀娘沒被抽乾"
+      ],
+      "characters": [
+        "lu-shi",
+        "yan-shaoyuan",
+        "s08-xiu-niang",
+        "shi-dalang",
+        "xiao-shitou",
+        "s08-wen-shouli",
+        "su-ling"
+      ],
+      "locations": [
+        "京城廣場",
+        "第十曜神像前"
+      ],
+      "state": {
+        "time": "登神日正午",
+        "knowledge": "萬民相信飛升，只把他當搶走福氣的逆神",
+        "carry_forward": "全城追捕他"
+      }
+    },
+    {
+      "number": 437,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "借你信的人",
+      "youtube_title": "全城百姓拿著棍子追他，他一棍都不還；仇人卻在破院裡放了他一馬",
+      "duration_s": 100,
+      "logline": "全京城的百姓在追陸拾，他不能還手；他逃回第九隊的破院，撞上奉命燒院的白無咎。",
+      "hook": "上千個百姓舉著扁擔追上來，陸拾把柴刀插回腰後：「我不打你們。」第一根扁擔已經砸到他肩上。",
+      "hook_type": "danger",
+      "mid_hook": "第九隊破院門口站著白無咎，手上一支火把，身後捉妖司兵列成兩排，他奉詔來燒第九隊；他看著陸拾，把火把放低了。",
+      "conflict": "他要逃出百姓的追捕又不傷一個人，唯一熟的落腳處第九隊破院也在被燒。",
+      "turn": "白無咎沒有抓他，只說：「我沒看見你。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power",
+          "what": "陸拾用前世乞丐那一世學來的身法，從上千人的扁擔縫裡鑽出去，一個人都沒碰傷"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled",
+          "what": "捉妖司百戶要搶先放火立功，白無咎扳指一轉，百戶手裡的火把自己滅了，他低頭退回隊裡"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "白無咎轉身前輕聲說：「天眼今夜借一個你信的人殺你。」陸拾衝回蘇家，蘇母端著湯站在他身後，眼睛一點點變成金色，刀已經舉過他的背：「顧大人，對不起。」",
+        "question": "刀落下之前，誰擋得住？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "goxue",
+        "kongbu"
+      ],
+      "spectacle": "夜裡京城的長街被上千支火把塞滿，像一條燒著的河在追一個人。",
+      "glamour_shot": "白無咎站在破院的燈下，黑紗官帽下的丹鳳眼冷而疲倦，白玉扳指在火光裡一轉。",
+      "setups": [
+        "s08-t15"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "逃出全城追捕，沒傷一個百姓"
+      ],
+      "characters": [
+        "lu-shi",
+        "bai-wujiu",
+        "su-mu",
+        "su-ling"
+      ],
+      "locations": [
+        "京城長街",
+        "第九隊破院",
+        "蘇家"
+      ],
+      "state": {
+        "time": "登神日深夜",
+        "knowledge": "白無咎放了他、還警告他；天眼要借他信的人動手",
+        "carry_forward": "蘇母舉刀"
+      }
+    },
+    {
+      "number": 438,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "鐵尺擋刀",
+      "youtube_title": "她媽被天眼操控舉刀刺他，她一把鐵尺擋下：然後叫他永遠別再回來",
+      "duration_s": 130,
+      "logline": "被天眼控制的蘇母舉刀刺陸拾，蘇鈴擋下了刀，陸拾要斬斷牽著蘇母的那條線。",
+      "hook": "「鏘」一聲，刀尖停在陸拾背後一寸，擋住它的是蘇鈴的鐵尺；蘇鈴咬著牙：「娘，是我。」",
+      "hook_type": "danger",
+      "mid_hook": "燭淚眼一開，陸拾看見蘇母手腕的金眼裡伸出一條細金線，一路連到天上，線的另一頭在眨眼。",
+      "conflict": "蘇母還在一刀一刀地砍，蘇鈴只擋不還手；斬線要用燭淚眼，天眼也會順著線看見他。",
+      "turn": "金線一斷，蘇母清醒過來，看見手裡的刀和擋在前面的女兒，整個人跪了下去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "蘇鈴一次次用鐵尺磕開母親的刀，一滴血都沒見，母女都沒受傷"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill",
+          "what": "陸拾順著金線看到天眼的那一頭，一柴刀斬斷金線，斷口的金光倒捲回天上，窗外的神衛被震得滾下屋頂"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "蘇鈴把龜蛋塞回陸拾懷裡，擋在門口背對著他：「我娘身上有眼。你走，別再回來。」窗外整條街的窗戶同時亮起金眼。",
+        "question": "連蘇鈴都要他走，他走不走？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "kongbu",
+        "henla"
+      ],
+      "spectacle": "燭淚眼的視野裡，一條比髮絲還細的金線從蘇母腕上一路拉到雲層裡，線的盡頭是一隻正在眨的天眼。",
+      "glamour_shot": "蘇鈴擋在母親與陸拾之間，齊肩短髮被刀風掀起，貓瞳含淚卻死死盯著前方。",
+      "setups": [],
+      "payoffs": [
+        "s08-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蘇母擺脫天眼控制",
+        "沒有人受傷"
+      ],
+      "characters": [
+        "lu-shi",
+        "su-ling",
+        "su-mu"
+      ],
+      "locations": [
+        "蘇家"
+      ],
+      "state": {
+        "time": "登神日後半夜",
+        "knowledge": "養根池留下的金紋讓天眼能牽住蘇母；他在誰身邊誰就會被牽",
+        "carry_forward": "蘇鈴要他走"
+      }
+    },
+    {
+      "number": 439,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "空了的井底城",
+      "youtube_title": "他鑽進當年救孩子的井底城逃命，萬盞蛛絲燈全滅了：老蛛妖去哪了",
+      "duration_s": 95,
+      "logline": "陸拾離開蘇家，從第二季的井底城舊道出京城，身後是整城的神衛。",
+      "hook": "陸拾背著蛋從蘇家後窗翻出去，沒回頭，蘇鈴靠在門上聽著他的腳步聲走遠；下一秒，神衛撞開了前門。",
+      "hook_type": "danger",
+      "mid_hook": "井底城裡萬盞蛛絲燈全滅了，黑暗中只有絲線在輕輕晃，晃動的方向是朝著他過來的。",
+      "conflict": "神衛追進廢井，井底城的路他只走過一次，而且燈全滅了。",
+      "turn": "晃動的不是蛛婆，是神衛的搜靈絲，蛛婆和孩子們早就不在了，牆上留著用絲寫的一行真文：「往北，等燈。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear",
+          "what": "陸拾在黑暗裡憑著第二季的記憶與蛋殼上燈紋的微光，找到通往城外的那條舊水道"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill",
+          "what": "他把神衛引進蛛婆留下的一張舊網，整隊神衛被黏在半空動彈不得"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "他從城外的枯井口爬出來，天亮了，頭頂的天空正中間緩緩睜開一隻眼，冷光沿著地面朝他的腳尖爬過來。",
+        "question": "天下都關了門，他還能逃去哪？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "kongbu",
+        "henla",
+        "goxue"
+      ],
+      "spectacle": "漆黑的井底城裡，萬條斷掉的蛛絲在空中慢慢擺盪，每一條都掛著一盞熄掉的燈。",
+      "glamour_shot": "陸拾從枯井口撐身躍出，晨光從他身後照來，汗濕的額髮貼在劍眉上，左眼燭淚眼一閃。",
+      "setups": [
+        "s08-t16"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "逃出京城"
+      ],
+      "characters": [
+        "lu-shi",
+        "su-ling"
+      ],
+      "locations": [
+        "京城井底城",
+        "城外枯井"
+      ],
+      "state": {
+        "time": "登神後第一天黎明",
+        "knowledge": "井底城空了，蛛婆留話「往北，等燈」",
+        "carry_forward": "天眼在追他"
+      }
+    },
+    {
+      "number": 440,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "最後一盞燈",
+      "youtube_title": "被天下唾棄的他一個人坐在燒光的村子裡，燈下卻坐著一個偷跑來的孩子",
+      "duration_s": 135,
+      "logline": "陸拾順著當年漂下來的那條河回到長燈村廢墟，廢墟裡只剩一盞沒熄的燈，神衛要來熄掉它。",
+      "hook": "天眼的冷光爬到他腳尖前，陸拾抱著蛋跳進河裡；水面上，冷光一圈一圈找不到他。",
+      "hook_type": "image",
+      "mid_hook": "他漂到長燈村廢墟，石山腳下竟然點著一盞燈，燈旁的灰上有一串小小的腳印，有人每晚都來添油。",
+      "conflict": "這盞燈一熄，長燈村就真的一盞燈都沒了；兩名神衛已經提著熄燈鉤走過來。",
+      "turn": "腳印很小，是一個孩子的；陸拾想到的人不可能在這裡，他在京城。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "陸拾像十八年前的那個嬰兒一樣順流漂下，河水替他擋住了天眼"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill",
+          "what": "他用一路背著的歸伯竹釣竿一甩，鉤住熄燈鉤一扯，兩名神衛摔進灰裡化成光，燈還亮著"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "燈下的黑影站起來，是頭髮亂翹的小石頭，滿臉灰，抱著一盞蛛絲燈：「我爹不讓我來，我自己來的。」",
+        "question": "一個孩子，能幫被天下唾棄的人什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "goxue",
+        "kongbu"
+      ],
+      "spectacle": "一大片燒成灰白的廢墟裡，只有石山腳下一點暖黃的燈光，天上那隻巨眼正對著它。",
+      "glamour_shot": "陸拾從河裡走上岸，抬手把滴水的額髮往後一抹，回頭望向廢墟裡那一點燈光，晨霧裡的側臉很靜。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "守住廢墟裡最後一盞燈"
+      ],
+      "characters": [
+        "lu-shi",
+        "xiao-shitou"
+      ],
+      "locations": [
+        "長燈村上游的河",
+        "長燈村廢墟",
+        "歸伯石山"
+      ],
+      "state": {
+        "time": "登神後第三天夜",
+        "knowledge": "全天下關門，只有小石頭來",
+        "carry_forward": "小石頭與一盞蛛絲燈"
+      }
+    },
+    {
+      "number": 441,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "我比你會寫字",
+      "youtube_title": "全天下都關門了，一個十二歲的孩子抱著燈跑了九百里來陪他",
+      "duration_s": 90,
+      "logline": "小石頭不肯回家，陸拾要在神衛夜巡之前把孩子和那盞燈都護住。",
+      "hook": "陸拾蹲下來：「你爹會急瘋。」小石頭：「我留了字條。」「你會寫字？」「比你會。」",
+      "hook_type": "line",
+      "mid_hook": "小石頭說這盞蛛絲燈是蛛婆離開井底城前塞給他的：「她說，燈要點給記得的人看。」話剛說完，山路上傳來熄燈鉤拖地的聲音。",
+      "conflict": "神衛夜巡要熄掉廢墟裡的燈，順便把收留逆神的孩子帶走。",
+      "turn": "小石頭捧著燈說「我記得你救我」，燈火忽然由黃轉成暖金色，神衛的冷光照到它竟然往旁邊彎開。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill",
+          "what": "陸拾用歸伯的竹釣竿照「釣魚等氣」的法子等神衛靠近，一甩鉤住光矛反甩回去，打散三個神衛"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue",
+          "what": "熄燈網罩向小石頭，陸拾一把把孩子連燈抱進懷裡滾開，網只撈到灰"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "天快亮時，廢墟外的山路上出現三點火光，越走越近；陸拾抓起柴刀擋在小石頭前面：「誰？」",
+        "question": "天亮前走來的三個人是敵是友？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "goxue",
+        "texiao"
+      ],
+      "spectacle": "冷白的神衛光照到一盞小燈上，光線像遇到水一樣繞著燈彎開。",
+      "glamour_shot": "陸拾在燈下替小石頭擦臉，暖光照亮他的酒窩與左眼淺色的瞳。",
+      "setups": [],
+      "payoffs": [
+        "s08-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小石頭留下",
+        "守住蛛絲燈"
+      ],
+      "characters": [
+        "lu-shi",
+        "xiao-shitou"
+      ],
+      "locations": [
+        "長燈村廢墟"
+      ],
+      "state": {
+        "time": "逆神詔後第一夜，廢墟",
+        "knowledge": "記得的心意會讓燈火變暖",
+        "carry_forward": "山路上三個人"
+      }
+    },
+    {
+      "number": 442,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "三個人",
+      "youtube_title": "第二天來了三個人，賣菜大嬸一扁擔打歪神衛頭盔：我收留誰要你管",
+      "duration_s": 95,
+      "logline": "郝大嬸、祝小滿與走出圖的老妖墨翁帶燈來廢墟；陸拾要趕他們走，神衛卻先到了。",
+      "hook": "三點火光走近，是三盞燈；最前面的郝大嬸扛著扁擔提著燈：「餓了吧？」",
+      "hook_type": "image",
+      "mid_hook": "郝大嬸把一碗飯塞給陸拾，他吃下第一口，指尖亮了一下暖金色的光，四個人都看見了。",
+      "conflict": "陸拾怕他們被判，要他們走；神衛小隊已經跟著燈光找上來抓收留者。",
+      "turn": "神衛射來的審判光矛被陸拾發光的手一把接住。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap",
+          "what": "神衛隊長要鎖人，郝大嬸一扁擔把他的光盔打歪：「我收留誰要你管？」"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up",
+          "what": "陸拾第一次空手接住審判光矛，光矛在他掌心化成暖色的光點"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "光點一顆顆鑽進他的手心，整條手臂從裡面亮起來；天上的天眼，眼皮跳了一下。",
+        "question": "他身上這道暖光到底是從哪裡來的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "goxue",
+        "texiao"
+      ],
+      "spectacle": "一根白金光矛在陸拾掌心慢慢融化，變成上百顆暖金色光點鑽進他的皮膚。",
+      "glamour_shot": "祝小滿拉滿舊竹弓護在陸拾身側，高馬尾被晨風吹起，小虎牙咬著下唇。",
+      "setups": [
+        "s08-t17"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三人留下",
+        "第一次接住審判光"
+      ],
+      "characters": [
+        "lu-shi",
+        "cai-shen",
+        "s08-zhu-xiaoman",
+        "s08-mo-weng",
+        "xiao-shitou"
+      ],
+      "locations": [
+        "長燈村廢墟"
+      ],
+      "state": {
+        "time": "逆神詔後第二天",
+        "knowledge": "別人真心給他的東西會在他身上變成光",
+        "carry_forward": "天眼注意到了"
+      }
+    },
+    {
+      "number": 443,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "第十個人",
+      "youtube_title": "第三天來了十個人，最後一個摘下斗笠：是當面關門的那個新娘",
+      "duration_s": 100,
+      "logline": "第三天來了十個人，廢墟上蓋起第一間棚子；正午神衛大舉掃蕩，人群裡卻藏著一隻手。",
+      "hook": "陸拾整條手臂亮著光，郝大嬸瞪大眼：「吃我一碗飯就發光？」她又盛了一碗。",
+      "hook_type": "line",
+      "mid_hook": "新來的十個人裡，一個穿灰布衣的男人袖口露出一角金哨，金哨上刻著第十曜神廟的紋。",
+      "conflict": "十個人蓋棚子、點燈，正午神衛帶著熄燈網大舉掃蕩。",
+      "turn": "小石頭說井底城的孩子都會躲：他帶大家鑽進祠堂燒剩的地窖，神衛掃了個空。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power",
+          "what": "小石頭用井底城長大學的本事，把十個人帶進地窖，熄燈網一張都沒網到"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap",
+          "what": "陸拾亮著手一刀磕飛神衛隊長的光槍，隊長丟下網就跑"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "第十個人一直低著頭，這時摘下斗笠，是何月，那個當著他的面關上門的新娘，手裡提著一盞紙燈：「我來還門。」",
+        "question": "當面關門的何月，為什麼又來了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "texiao"
+      ],
+      "spectacle": "十盞燈在灰白的廢墟上連成一個小圈，圈裡的灰被燈光照成暖色。",
+      "glamour_shot": "何月摘下斗笠，杏眼美人素色布裙，風吹開鬢邊的碎髮，手裡紙燈的光映在她的臉上。",
+      "setups": [
+        "s08-t18"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "廢墟上第一間棚子"
+      ],
+      "characters": [
+        "lu-shi",
+        "cai-shen",
+        "s08-zhu-xiaoman",
+        "s08-mo-weng",
+        "xiao-shitou",
+        "he-yue"
+      ],
+      "locations": [
+        "長燈村廢墟",
+        "祠堂地窖"
+      ],
+      "state": {
+        "time": "逆神詔後第三天",
+        "knowledge": "燈從一盞變十盞；人群裡有人帶著神廟金哨",
+        "carry_forward": "何月回來了"
+      }
+    },
+    {
+      "number": 444,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "化妖散",
+      "youtube_title": "關門的新娘回來點燈，湯鍋裡卻被人下了藥：第一季的化妖散又出現了",
+      "duration_s": 100,
+      "logline": "何月回來贖罪，大家第一次一起吃飯，眼線卻在湯裡下了化妖散。",
+      "hook": "何月跪在陸拾面前：「那天我抱著孩子……我怕。」她把紙燈往他的燈上一湊，紙燈變成暖金色。",
+      "hook_type": "image",
+      "mid_hook": "祝小滿看見灰衣男人往湯鍋裡抖了一包白粉，那是第一季嚴崇用來讓妖現形的化妖散。",
+      "conflict": "化妖散一下鍋，墨翁與藏在燈群裡的妖都會現形，天眼就能一個個判。",
+      "turn": "何月認出灰衣男人：他就是那天在鐘樓上第一個舉銅鏡的人，溫守禮的家僕。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication",
+          "what": "何月當著所有人說出那天為什麼關門，大家看著她的紙燈亮成暖金，沒有人再罵她"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished",
+          "what": "眼線被郝大嬸一把按住，大家逼他把自己下過藥的湯喝下去，他是人，什麼事都沒有，所有人都知道他下的是什麼了"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "被按在地上的眼線咧嘴一笑：「哨子，我早吹了。」遠方天上，霜衡那桿光秤重新亮起，秤盤正對著廢墟。",
+        "question": "霜衡回來了，這一次要稱誰的命？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "henla"
+      ],
+      "spectacle": "廢墟上空，一桿光秤從雲裡慢慢浮出，秤盤投下的影子蓋住整片燈圈。",
+      "glamour_shot": "何月在湯鍋邊捲起袖子替大家盛湯，燈光照著她低垂的睫毛。",
+      "setups": [],
+      "payoffs": [
+        "s08-t10",
+        "s08-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "何月被大家接納",
+        "揪出溫守禮的眼線"
+      ],
+      "characters": [
+        "lu-shi",
+        "he-yue",
+        "s08-zhu-xiaoman",
+        "cai-shen",
+        "s08-mo-weng",
+        "xiao-shitou",
+        "s08-shuang-heng"
+      ],
+      "locations": [
+        "長燈村廢墟"
+      ],
+      "state": {
+        "time": "逆神詔後第四天夜",
+        "knowledge": "溫守禮在燈群裡安插眼線；何月關門是怕連累孩子",
+        "carry_forward": "霜衡要回來"
+      }
+    },
+    {
+      "number": 445,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "阿猙與團團",
+      "youtube_title": "審判使要稱走一整片燈，村口傻大個從天而降：一個字就把她撞飛",
+      "duration_s": 90,
+      "logline": "霜衡的秤壓向燈圈，四散的阿猙與團團看見燈光，從北邊一路趕回來。",
+      "hook": "秤盤砸下來，一道赤紋黑影從側面撞上去，把霜衡連秤撞出十丈遠；阿猙落地：「滾。」",
+      "hook_type": "danger",
+      "mid_hook": "團團拉著陸拾發光的手，愣住：「你在變成……」她沒說完，阿猙在光裡單膝跪下了，他出了圖影只剩一成力。",
+      "conflict": "阿猙撐不住霜衡，陸拾的光還很弱，燈圈裡的人要被一起稱走。",
+      "turn": "燈圈裡的人把燈舉高圍住阿猙，暖光照到他身上，他慢慢站了起來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "阿猙撞開秤盤，把站在秤影下的小石頭一手撈到背後，孩子毫髮無傷"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up",
+          "what": "所有人舉燈，暖光連成一個罩子，霜衡的光秤砸上去被彈回半空"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "霜衡退回雲裡，天上卻傳下另一個聲音，像千萬人同時說話：「天下的燈，都收來京城。」",
+        "question": "第十曜要收走天下所有的燈？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        5,
+        4
+      ],
+      "tones": [
+        "texiao",
+        "ganren",
+        "goxue"
+      ],
+      "spectacle": "三層樓高的赤紋巨獸撞上一桿懸空光秤，衝擊波把廢墟上的灰掀成一圈灰浪。",
+      "glamour_shot": "阿猙在燈光裡慢慢站直，額頭舊疤映著暖光，憨直的臉上第一次露出很兇的眼神。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿猙、團團回來",
+        "燈圈第一次擋住審判"
+      ],
+      "characters": [
+        "lu-shi",
+        "a-zheng",
+        "tuan-tuan",
+        "s08-shuang-heng",
+        "xiao-shitou",
+        "cai-shen",
+        "he-yue"
+      ],
+      "locations": [
+        "長燈村廢墟"
+      ],
+      "state": {
+        "time": "逆神詔後第五天",
+        "knowledge": "眾人的燈連起來能擋審判；團團看出他在變成什麼",
+        "carry_forward": "第十曜下燈禁"
+      }
+    },
+    {
+      "number": 446,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "被記著，就是神",
+      "youtube_title": "全國禁燈，越禁越多人提燈上路：白澤小女孩說出舊神誕生的祕密",
+      "duration_s": 120,
+      "logline": "燈禁下，帶燈就是死罪，往廢墟來的人卻越來越多；團團終於說出陸拾身上的光是什麼。",
+      "hook": "京城清晨，神衛把街上的燈一盞盞砸碎，溫守禮捧著詔匣念：「私藏燈者，判。」",
+      "hook_type": "image",
+      "mid_hook": "陸拾帶人去接一家被燈禁追殺的零靈根者，那家的小兒子懷裡藏著一盞燈，燈罩上歪歪扭扭畫著陸拾的臉。",
+      "conflict": "燈禁讓每一盞燈都成了罪證，往廢墟的路上到處是神衛的關卡。",
+      "turn": "團團在祠堂的灰燼裡找到舊神時代的真文，陸拾一個字一個字念出來，全場安靜。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "陸拾與阿猙在關卡前截住神衛，把那一家零靈根者連燈帶人接回廢墟，孩子沒有受一點傷"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power",
+          "what": "團團讓陸拾念出灰裡的真文，真文化成一圈暖金色的字環繞住整片廢墟"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "團團說：「舊神就是這樣誕生的，被人記著，就是神。」話剛說完，廢墟外的山路上，一條燈的長河正往這裡流過來，上千盞。",
+        "question": "上千人帶燈前來，天眼會怎麼對付他們？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "texiao",
+        "goxue"
+      ],
+      "spectacle": "灰燼裡的舊神真文一個個浮起，連成一圈暖金色的字環，慢慢繞著廢墟轉。",
+      "glamour_shot": "祝小滿站在廢墟最高的斷牆上回頭招手，高馬尾被晚風吹起，背後是漫山遍野流過來的燈。",
+      "setups": [],
+      "payoffs": [
+        "s08-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道人心能成神",
+        "接回一家零靈根者"
+      ],
+      "characters": [
+        "lu-shi",
+        "tuan-tuan",
+        "a-zheng",
+        "s08-wen-shouli",
+        "cai-shen",
+        "xiao-shitou"
+      ],
+      "locations": [
+        "京城街頭",
+        "燈禁關卡",
+        "長燈村祠堂廢墟"
+      ],
+      "state": {
+        "time": "逆神詔後第六天",
+        "knowledge": "被人記著就能成神；他身上的光是人心",
+        "carry_forward": "上千盞燈正往廢墟來"
+      }
+    },
+    {
+      "number": 447,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "燈的長河",
+      "youtube_title": "上千百姓提燈千里投奔逆神，身後是神衛鐵騎：他一個人擋下熄燈鏡",
+      "duration_s": 90,
+      "logline": "提燈投奔的人身後追著燈禁的神衛鐵騎，熄燈鏡一照，所有燈都會一起滅。",
+      "hook": "燈河最後面揚起一道塵煙，神衛鐵騎衝下山坡；郝大嬸大喊：「燈護好！人往裡跑！」",
+      "hook_type": "danger",
+      "mid_hook": "鐵騎統領舉起一面一人高的熄燈鏡，鏡面轉過來，照到的燈一排排變黑。",
+      "conflict": "上千人不能跑散，一散燈就斷，熄燈鏡一照就是一整片。",
+      "turn": "山脊上豎起一排扁擔，郝大嬸第五季帶出來的凡人軍團到了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill",
+          "what": "凡人軍團一個扁擔陣把第一排神衛鐵騎全掃下馬"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue",
+          "what": "陸拾衝到鏡前用身體擋住熄燈鏡的光，身後上千盞燈一盞都沒滅"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "鏡光全灌進他的胸口，他身上的暖光一下子滅了，人跪倒在地；雲裡，霜衡的新秤已經對準了上千盞燈。",
+        "question": "陸拾倒下了，誰來護住這上千盞燈？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "texiao",
+        "goxue",
+        "henla"
+      ],
+      "spectacle": "一面一人高的熄燈鏡掃過山坡，鏡光所到之處，一排排燈像被吹熄的蠟燭依次變黑。",
+      "glamour_shot": "祝小滿在馬群之間一個翻身拉弓，一箭射偏熄燈鏡的鏡框，墨綠勁裝在塵煙裡劃出一道線。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "凡人軍團到場",
+        "上千人安全抵達廢墟"
+      ],
+      "characters": [
+        "lu-shi",
+        "cai-shen",
+        "s08-zhu-xiaoman",
+        "a-zheng",
+        "s08-shuang-heng"
+      ],
+      "locations": [
+        "長燈村外山坡"
+      ],
+      "state": {
+        "time": "逆神詔後第七天",
+        "knowledge": "熄燈鏡能熄他的光",
+        "carry_forward": "霜衡要稱上千盞燈"
+      }
+    },
+    {
+      "number": 448,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "換我們扛",
+      "youtube_title": "審判之光第二次落下，這次沒有巨龜扛天：上千個凡人舉著燈擋在他身前",
+      "duration_s": 130,
+      "logline": "霜衡把審判之光再一次降在廢墟上，這次沒有歸伯；陸拾要像歸伯那樣扛，而上千個人不肯讓他一個人扛。",
+      "hook": "上千人沒有跑，把燈一盞盞放到倒下的陸拾身邊，圍成一圈；他胸口的光重新亮起來。",
+      "hook_type": "image",
+      "mid_hook": "審判光柱落下，陸拾站起來用雙手頂住它，就像歸伯那樣；身後有人大喊：「換我們扛！」上千隻手舉起了燈。",
+      "conflict": "第二次審判，光比第一次還重，沒有龜殼。",
+      "turn": "暖光碰到霜衡的秤，霜衡在燈光裡看見了自己的記憶：百年前，她也是一個被送上去飛升的玄穹宗弟子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up",
+          "what": "陸拾和上千盞燈一起頂住審判光柱，光柱一寸一寸被推回天上"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled",
+          "what": "霜衡的光秤自己裂開，她在半空跪了下來"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "霜衡摘下頭盔，是一張年輕溫和的臉：「我叫沈霜……我是被吃掉的那個。」她把秤轉了個方向，秤盤對準天上的眼。",
+        "question": "審判使調轉了秤，天上會怎麼對她？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "texiao",
+        "goxue"
+      ],
+      "spectacle": "上千盞燈的暖光匯成一根光柱，從地面往上頂住從天而降的白金審判光柱，兩道光在半空僵持。",
+      "glamour_shot": "霜衡摘下白金高冠，黑髮瀑布般散下，冷白瞳色一點點褪成溫柔的黑。",
+      "setups": [],
+      "payoffs": [
+        "s08-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "擋住第二次審判，沒有人死",
+        "霜衡清醒"
+      ],
+      "characters": [
+        "lu-shi",
+        "s08-shuang-heng",
+        "cai-shen",
+        "he-yue",
+        "xiao-shitou",
+        "tuan-tuan",
+        "a-zheng",
+        "s08-zhu-xiaoman"
+      ],
+      "locations": [
+        "長燈村廢墟"
+      ],
+      "state": {
+        "time": "逆神詔後第八天",
+        "knowledge": "審判使是被收割的人；燈能讓她想起自己",
+        "carry_forward": "霜衡反叛"
+      }
+    },
+    {
+      "number": 449,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "燈很暖",
+      "youtube_title": "反叛的審判使被天眼一擊打散，散成雪落在燈上：最後一句話讓全場哭了",
+      "duration_s": 110,
+      "logline": "天眼懲罰反叛的沈霜；要讓天眼退開，廢墟需要一萬盞燈，他們只有三千。",
+      "hook": "天眼射下一道冷光，沈霜張開雙臂擋在燈圈前，身體從指尖開始化成光雪：「燈……很暖。」",
+      "hook_type": "line",
+      "mid_hook": "團團算完：「要一萬盞，它才會退。我們只有三千。」山外再也沒有人來了。",
+      "conflict": "天眼在加大力道，三千盞燈撐不了多久，路上的關卡又擋住了後來的人。",
+      "turn": "小石頭說：「不用走來。在家窗口點，朝這邊就行。」被人記著，不用站在身邊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "冷光餘波掃向小石頭，陸拾一把把他拉進懷裡，光擦著兩人的衣角過去"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication",
+          "what": "何月跑回京城傳話，京城一扇扇窗戶朝西北亮起燈，連溫守禮府上的家僕都在偷偷點"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "天眼整個睜開，整片天空變成一隻眼，冷光從四面八方一起壓向廢墟：「判。」",
+        "question": "一萬盞燈，擋得住整片天的眼嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "goxue",
+        "texiao"
+      ],
+      "spectacle": "沈霜的身體化成無數暖白色的雪片，飄落在三千盞燈上，每一片落下燈就亮一分。",
+      "glamour_shot": "沈霜消散前回頭一笑，黑髮在光雪裡揚起，第一次像個普通的年輕姑娘。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "京城百姓開始朝西北點燈"
+      ],
+      "characters": [
+        "lu-shi",
+        "s08-shuang-heng",
+        "tuan-tuan",
+        "xiao-shitou",
+        "he-yue",
+        "s08-wen-shouli"
+      ],
+      "locations": [
+        "長燈村廢墟",
+        "京城窗口"
+      ],
+      "state": {
+        "time": "逆神詔後第九天",
+        "knowledge": "燈不必走到身邊，記著就算",
+        "carry_forward": "天眼全開要一次判盡"
+      }
+    },
+    {
+      "number": 450,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "天眼退了一步",
+      "youtube_title": "上萬盞燈從四面八方匯向一片廢墟，天上的神眼第一次往後縮了",
+      "duration_s": 160,
+      "logline": "天眼全開壓向廢墟，陸拾要讓天下的燈在這一刻一起亮。",
+      "hook": "冷光壓到廢墟上空一丈，四面八方的地平線同時亮了，一萬盞燈從山後、河上、城裡升起來。",
+      "hook_type": "image",
+      "mid_hook": "陸拾懷裡的龜蛋發起燙來，蛋殼上那盞燈的紋亮了，裡面傳出一聲清清楚楚的「咚」。",
+      "conflict": "天眼要一次判盡廢墟裡所有的人與燈。",
+      "turn": "冷光撞上暖光，停在半空，再也壓不下來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up",
+          "what": "上萬盞燈的光匯到陸拾身上，半空浮現一個暖金色的巨大人形，他第一次以人神之光站著"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled",
+          "what": "暖金人形抬手一推，天上的天眼第一次往後縮了一下"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "京城神殿裡，嚴少淵猛地睜開眼，金色瞳孔裡映著西北那片暖光：「他在當神。」他站了起來。",
+        "question": "第十曜要親自來毀燈了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        5,
+        5,
+        5
+      ],
+      "tones": [
+        "texiao",
+        "ganren",
+        "goxue"
+      ],
+      "spectacle": "上萬盞燈從四面八方的地平線匯向一片廢墟，在空中聚成一個暖金色的巨大人形，與天上冷白的巨眼對峙。",
+      "glamour_shot": "陸拾站在人形光的中心，深藍勁裝被光照成金色，抬頭直視天眼，眼神平靜得像一個大人。",
+      "setups": [],
+      "payoffs": [
+        "s08-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "上萬盞燈點滿廢墟",
+        "龜蛋有心跳",
+        "天眼第一次退"
+      ],
+      "characters": [
+        "lu-shi",
+        "tuan-tuan",
+        "a-zheng",
+        "cai-shen",
+        "he-yue",
+        "xiao-shitou",
+        "s08-zhu-xiaoman",
+        "s08-mo-weng",
+        "yan-shaoyuan"
+      ],
+      "locations": [
+        "長燈村廢墟",
+        "京城神殿"
+      ],
+      "state": {
+        "time": "逆神詔後第十天夜",
+        "knowledge": "眾人的心讓他成了人神；龜蛋還活著",
+        "carry_forward": "第十曜要親自來"
+      }
+    },
+    {
+      "number": 451,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "燈是我的",
+      "youtube_title": "偽神第十曜親自下凡毀燈，提燈的百姓一個個轉過頭，眼睛全變成金色",
+      "duration_s": 90,
+      "logline": "第十曜嚴少淵降臨廢墟要收走燈，他一開口，燈群裡有靈根的人全被神印牽走。",
+      "hook": "一道冷白光從天上切下來，廢墟邊上的十盞燈無聲熄滅，黑暗裡傳出嚴少淵的聲音：「燈，是我的。」",
+      "hook_type": "line",
+      "mid_hook": "燈一盞盞熄，黑暗裡的人一個個慢慢轉過頭來看陸拾，眼睛全是金的。",
+      "conflict": "燈群裡一大半是有靈根的凡人，神印一被牽，他們就成了第十曜的手。",
+      "turn": "被控制的人開始掐熄自己手裡的燈，舉著燈鉤朝陸拾走過來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap",
+          "what": "郝大嬸和零靈根的人全都站著不跪，一扁擔把第十曜的神衛前鋒打退三步：「我們不跪。」"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue",
+          "what": "一個被控制的大人舉鉤走向小石頭，陸拾掌心一按，把小石頭的燈重新點亮，那人被暖光逼退"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "上百個被控制的人舉著熄滅的燈鉤把陸拾圍在中間，同時抬起手；陸拾的柴刀握在手裡，不能砍下去。",
+        "question": "不能還手的陸拾，要怎麼救這些被控制的人？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "kongbu",
+        "henla",
+        "goxue"
+      ],
+      "spectacle": "冷白光掃過萬盞燈海，燈一圈一圈熄滅，黑暗裡浮起上百雙金色的眼睛。",
+      "glamour_shot": "嚴少淵從冷白光裡踏下，雙眼泛金、額心金紋發亮，黑髮高束玉冠，紫金長袍在風中翻起。",
+      "setups": [
+        "s08-t19",
+        "m16"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "lu-shi",
+        "yan-shaoyuan",
+        "cai-shen",
+        "xiao-shitou",
+        "s08-zhu-xiaoman"
+      ],
+      "locations": [
+        "長燈村廢墟"
+      ],
+      "state": {
+        "time": "逆神詔後第十一天夜",
+        "knowledge": "第十曜能透過神印控制有靈根的凡人",
+        "carry_forward": "被控制的人圍住他"
+      }
+    },
+    {
+      "number": 452,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "叫回名字",
+      "youtube_title": "被神控制的百姓舉鉤砍他，他把上百人收進畫裡：她說神最怕被叫名字",
+      "duration_s": 100,
+      "logline": "陸拾把被控制的人收進萬妖圖，一放出來他們又會變金；趕回來的雲知意知道破法。",
+      "hook": "燈鉤落下的一瞬，陸拾胸口展開水墨畫卷，上百人被一口收進去，燈鉤全打在空地上。",
+      "hook_type": "reversal",
+      "mid_hook": "圖裡的人醒過來眼睛變回黑色，可陸拾一放他們出來，他們的眼又一個個變金；他身上萬妖圖的裂紋一道道亮起來。",
+      "conflict": "圖收不了一輩子，放出來又會被控制，陸拾的身體快撐不住。",
+      "turn": "雲知意御劍落地：「神印怕一件事：被記得你的人叫名字。」她被曜主住過，知道它在裡面怕什麼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "萬妖圖一口收走上百個被控制的人，誰都沒受傷"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal",
+          "what": "何月、郝大嬸和小石頭一個個叫出被控制的鄰居的名字，一雙雙金眼慢慢褪回黑色"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "被叫回名字的人一個個醒來，最後一個卻一直沒醒；他自己站起身，身上的金光像殼一樣剝落，是嚴少淵：「你也配當神？」",
+        "question": "嚴少淵什麼時候混進人群裡的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "kongbu",
+        "goxue"
+      ],
+      "spectacle": "萬妖圖在廢墟上空展開成一卷水墨山河，上百個人影像墨點一樣被吸進畫中。",
+      "glamour_shot": "雲知意御劍從夜空落下，月白長袍繡雲紋，白玉簪下的黑髮被劍風吹開，落地收劍的回眸清冷。",
+      "setups": [
+        "s08-t20"
+      ],
+      "payoffs": [
+        "s08-t19",
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "上百人擺脫神印控制",
+        "雲知意歸隊"
+      ],
+      "characters": [
+        "lu-shi",
+        "yun-zhiyi",
+        "yan-shaoyuan",
+        "he-yue",
+        "cai-shen",
+        "xiao-shitou"
+      ],
+      "locations": [
+        "長燈村廢墟"
+      ],
+      "state": {
+        "time": "同一夜",
+        "knowledge": "被記得的人叫名字能解神印",
+        "carry_forward": "嚴少淵就在眼前"
+      }
+    },
+    {
+      "number": 453,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "兩種光",
+      "youtube_title": "被收割的光對上被記著的光，宿敵一掌把他按進地裡三尺：光裡全是人臉",
+      "duration_s": 95,
+      "logline": "兩個「神」第一次正面對打：嚴少淵的冷光是收割來的，陸拾的暖光是人記著的。",
+      "hook": "嚴少淵一掌按在陸拾胸口，冷白光把他整個人釘進地裡三尺：「從第一盞燈熄，我就在。」",
+      "hook_type": "danger",
+      "mid_hook": "燭淚眼一睜，陸拾看見嚴少淵的冷光裡擠滿了人臉，全是被飛升吃掉的人，張著嘴卻沒有聲音。",
+      "conflict": "嚴少淵每一擊都是被收割的人魂，陸拾打回去就是打在那些人身上。",
+      "turn": "陸拾不打光，改打人：他繞過冷光，直取嚴少淵本人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power",
+          "what": "四周的燈同時亮起，暖光把陸拾從地裡托了出來"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap",
+          "what": "阿猙和賈半壺趕到撕開神衛陣，陸拾一柴刀削斷嚴少淵的玉冠，黑髮散了一肩"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "嚴少淵披著散髮，金眼裡全是怒，他抬起手，天上的冷光聚成一根長矛，矛尖對準的不是陸拾，是小石頭懷裡的龜蛋。",
+        "question": "第十曜會對一顆蛋下手嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "kongbu",
+        "texiao"
+      ],
+      "spectacle": "冷白與暖金兩道光在廢墟上空第一次對撞，冷光裡浮現上千張無聲的人臉。",
+      "glamour_shot": "嚴少淵玉冠被削斷的那一刻，黑髮在慢動作裡散落肩頭，丹鳳眼裡金光暴漲。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿猙、賈半壺到場"
+      ],
+      "characters": [
+        "lu-shi",
+        "yan-shaoyuan",
+        "a-zheng",
+        "jia-banhu",
+        "xiao-shitou"
+      ],
+      "locations": [
+        "長燈村廢墟"
+      ],
+      "state": {
+        "time": "同一夜",
+        "knowledge": "第十曜的光是被收割的人魂",
+        "carry_forward": "光矛對準龜蛋"
+      }
+    },
+    {
+      "number": 454,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "鹹的",
+      "youtube_title": "宿敵要毀掉亡者留下的蛋，他用背接下光矛，掏出一罈醃菜：吃一口？",
+      "duration_s": 120,
+      "logline": "陸拾用背替龜蛋擋下光矛，然後拿出第一季被嚴少淵踢翻的那種醃菜。",
+      "hook": "光矛射向龜蛋，小石頭抱著蛋不放，陸拾撲過去用背接住，背上的衣服燒成灰，暖光撐住了，孩子和蛋都沒事。",
+      "hook_type": "danger",
+      "mid_hook": "陸拾從懷裡掏出一個小醃菜罈，打開蓋子遞過去：「吃一口？」嚴少淵的手停在半空。",
+      "conflict": "嚴少淵要用光矛逼陸拾崩潰；陸拾不想贏他，想叫醒他。",
+      "turn": "嚴少淵真的伸手了，手在抖；他皮膚底下的金光像水一樣翻騰，有另一個東西在裡面阻止他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "陸拾用背擋下光矛，小石頭與龜蛋毫髮無傷"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal",
+          "what": "嚴少淵一掌劈向醃菜罈，罈子在暖光裡沒碎，他自己愣住了"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "嚴少淵抓起一塊醃菜塞進嘴裡，金色的眼睛裡掉下一顆淚：「……鹹的。」下一秒，他嘴裡爆出千萬人的聲音一起尖叫。",
+        "question": "嚴少淵的人性醒過來了嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "kongbu",
+        "ganren"
+      ],
+      "spectacle": "嚴少淵的皮膚底下，金光像潮水一樣一波一波翻湧，臉上浮出又消失的別人的五官。",
+      "glamour_shot": "嚴少淵站在燈光與冷光的交界，散髮遮住半張臉，金色淚珠沿著下顎線滑落。",
+      "setups": [
+        "s08-t21"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "保住龜蛋"
+      ],
+      "characters": [
+        "lu-shi",
+        "yan-shaoyuan",
+        "xiao-shitou",
+        "ming-chi"
+      ],
+      "locations": [
+        "長燈村廢墟"
+      ],
+      "state": {
+        "time": "同一夜",
+        "knowledge": "嚴少淵的人性還在，曜主在他體內壓著",
+        "carry_forward": "千萬人的聲音在他嘴裡"
+      }
+    },
+    {
+      "number": 455,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "跪，我就放他",
+      "youtube_title": "曜主拿京城百姓當人質逼他下跪，第九隊在千里外一碗收走所有人質",
+      "duration_s": 100,
+      "logline": "曜主搶回嚴少淵的嘴，用京城被抓的點燈百姓逼陸拾下跪。",
+      "hook": "千萬人的回音從嚴少淵嘴裡衝出來：「吐掉。」他的手卻死死抓著醃菜罈不放。",
+      "hook_type": "line",
+      "mid_hook": "天上投下一片光幕：京城廣場上，點過燈的百姓被關進一排排光籠，何月的丈夫和孩子也在裡面。",
+      "conflict": "陸拾不跪，籠子裡的人就要飛升；他一個人分不到兩個地方。",
+      "turn": "光幕的角落裡，一個小和尚捧著空碗走進廣場，第九隊在京城。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill",
+          "what": "蘇鈴與賈半壺在京城劈開光籠，賈半壺的斷劍劍氣把守籠的神衛整排掀翻"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap",
+          "what": "空碗打開碗，鬼門把人質一口收進去藏好；主持處刑的溫守禮當著全城百姓摔下高台、狼狽逃走"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "人質救走了，曜主卻在嚴少淵身上笑：「最後一個人質，是他。跪下，我就把他還給你。」嚴少淵在自己的身體裡掙扎，看著陸拾。",
+        "question": "陸拾會為了宿敵下跪嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "goxue",
+        "kongbu"
+      ],
+      "spectacle": "天上一整片光幕投出千里外的京城廣場，光籠一排排像金色鳥籠。",
+      "glamour_shot": "蘇鈴在京城廣場的光籠頂上縱身一躍，鐵尺劈下，銅鈴在夜風裡響成一串。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "京城人質全部救出"
+      ],
+      "characters": [
+        "lu-shi",
+        "yan-shaoyuan",
+        "ming-chi",
+        "su-ling",
+        "jia-banhu",
+        "kong-wan",
+        "s08-wen-shouli",
+        "he-yue"
+      ],
+      "locations": [
+        "長燈村廢墟",
+        "京城廣場"
+      ],
+      "state": {
+        "time": "同一夜",
+        "knowledge": "曜主拿嚴少淵本人當人質",
+        "carry_forward": "陸拾要不要跪"
+      }
+    },
+    {
+      "number": 456,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "別跪",
+      "youtube_title": "他為宿敵彎下膝蓋，宿敵自己吼了出來：別跪！然後說出雙靈根的祕密",
+      "duration_s": 120,
+      "logline": "陸拾為嚴少淵跪下的那一刻，嚴少淵的人性醒了；他的身體還在打，嘴卻開始說真話。",
+      "hook": "陸拾的膝蓋還沒碰到地，嚴少淵自己吼出來：「別跪！」他雙手抓住自己的臉，金光從指縫裡漏出來。",
+      "hook_type": "reversal",
+      "mid_hook": "嚴少淵的手還在一拳一拳地打，嘴卻在說：「我的雙靈根……是假的。」",
+      "conflict": "曜主控制他的身體，嚴少淵只搶回了嘴；陸拾一擋，他就說不下去。",
+      "turn": "陸拾不擋了，讓那些拳頭落在暖光上，只為了讓他說完。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal",
+          "what": "嚴少淵在曜主手裡搶回一句話，「別跪」讓陸拾停住了膝蓋"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power",
+          "what": "陸拾用暖光握住嚴少淵兩隻手腕，曜主再也揮不出下一拳"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "嚴少淵喘著氣，眼睛一半金一半黑：「還有……我爹，是——」金光猛地封住了他的喉嚨。",
+        "question": "嚴少淵要親口說出殺父的事嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "kongbu",
+        "henla"
+      ],
+      "spectacle": "嚴少淵雙手抓臉，刺眼的金光從十根指縫裡射出，像要把他從裡面撐裂。",
+      "glamour_shot": "嚴少淵單膝跪在陸拾對面，散髮垂落，一半臉在金光裡一半在燈光裡，咬牙的下顎線繃緊。",
+      "setups": [],
+      "payoffs": [
+        "s08-t21",
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "嚴少淵的人性醒來"
+      ],
+      "characters": [
+        "lu-shi",
+        "yan-shaoyuan",
+        "ming-chi"
+      ],
+      "locations": [
+        "長燈村廢墟"
+      ],
+      "state": {
+        "time": "同一夜",
+        "knowledge": "嚴少淵承認雙靈根是假的",
+        "carry_forward": "他要說父親的事"
+      }
+    },
+    {
+      "number": 457,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "帳裡的燈",
+      "youtube_title": "第十曜當著上萬人承認殺父，光裡浮出父親的臉：他這一生只想要一樣東西",
+      "duration_s": 120,
+      "logline": "嚴少淵掙開喉嚨上的金光說出殺父的事；曜主要讓聽見的人全部閉嘴。",
+      "hook": "嚴少淵一把扯開喉嚨上的金光：「——是我殺的。帳裡的燈，是我吹的。」",
+      "hook_type": "line",
+      "mid_hook": "他身上的金光裡浮出嚴崇的臉，跟活著時一樣笑著：「淵兒，出人頭地……」燈群一陣後退。",
+      "conflict": "上萬個提燈的人都聽見了，曜主讓天上的光往人群落下，要讓聽見的人閉嘴。",
+      "turn": "所有人沒有逃，反而把燈朝嚴少淵舉起來，暖光第一次照在第十曜身上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "雲知意與阿猙擋在燈群前，接下曜主落下的冷光，一個人都沒傷"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power",
+          "what": "上萬盞燈照向嚴少淵，他體內的曜主被暖光逼得退了一寸，嚴崇那張臉在光裡散掉"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "嚴少淵半張臉金、半張臉是自己：「我這輩子……只想要有人看我一眼。」陸拾：「我看了你一輩子。」",
+        "question": "宿敵這一句，能把嚴少淵拉回來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "kongbu",
+        "ganren"
+      ],
+      "spectacle": "一個人的身上同時燃著兩種光：一半冷白、一半被上萬盞燈照成暖金。",
+      "glamour_shot": "雲知意張劍擋在燈群最前面，銀劍劍身映出天上落下的冷光，月白長袍被氣浪掀起。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "燈群沒有一個人受傷"
+      ],
+      "characters": [
+        "lu-shi",
+        "yan-shaoyuan",
+        "yan-chong",
+        "ming-chi",
+        "yun-zhiyi",
+        "a-zheng"
+      ],
+      "locations": [
+        "長燈村廢墟"
+      ],
+      "state": {
+        "time": "同一夜",
+        "knowledge": "嚴少淵殺父、只想被人看見",
+        "carry_forward": "曜主在他體內反撲"
+      }
+    },
+    {
+      "number": 458,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "他要我的腳",
+      "youtube_title": "第十曜說出九曜為什麼非要造第十個神：天上的神碰不到人間的土",
+      "duration_s": 135,
+      "logline": "嚴少淵趁曜主被暖光逼退，說出九曜要第十個神的真正理由。",
+      "hook": "嚴少淵笑了一聲，眼淚還在掉；另一半臉卻開口，聲音是千萬人：「感人。」",
+      "hook_type": "line",
+      "mid_hook": "嚴少淵抓住陸拾的衣領，壓低聲音：「聽好，他要我的身體做什麼——」他的嘴角被金光一點點縫起來。",
+      "conflict": "嚴少淵只剩幾句話的時間，曜主在縫他的嘴。",
+      "turn": "燭淚眼一開，陸拾看見嚴少淵的骨頭上燒著一張仙洲地圖，一串腳印從京城一路走到東海盡頭的歸墟。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal",
+          "what": "嚴少淵用自己搶回來的右手，一拳打散撲向陸拾的神衛"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal",
+          "what": "九曜在天上碰不到人間的土，曜主要一個能在人間行走的肉身神，親自把仙洲推進歸墟，一次收割"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陸拾盯著那串腳印的盡頭，嚴少淵說：「從京城到東海，九百里。他隨時會走。」燭淚眼一閉，天上的天眼也睜開了。",
+        "question": "曜主什麼時候要邁出那一步？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "kongbu",
+        "henla"
+      ],
+      "spectacle": "燭淚眼的視野裡，人的骨架上燒著一張發光的仙洲地圖，一串金色腳印從京城走到東海的深淵。",
+      "glamour_shot": "嚴少淵揪著陸拾的衣領把他拉近，兩張好看的臉只隔一寸，一金一黑的眼睛對著燭淚眼。",
+      "setups": [],
+      "payoffs": [
+        "m16"
+      ],
+      "reveals": [
+        "m16"
+      ],
+      "general_payoffs": [
+        "知道九曜要第十個神的理由"
+      ],
+      "characters": [
+        "lu-shi",
+        "yan-shaoyuan",
+        "ming-chi"
+      ],
+      "locations": [
+        "長燈村廢墟"
+      ],
+      "state": {
+        "time": "同一夜",
+        "knowledge": "曜主要用嚴少淵的肉身走到歸墟把仙洲推下去",
+        "carry_forward": "天眼看見了他"
+      }
+    },
+    {
+      "number": 459,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "曜主反撲",
+      "youtube_title": "天上伸下一隻光做的巨手要把宿敵拖回去，上萬人一起喊他的名字",
+      "duration_s": 100,
+      "logline": "天眼一看見陸拾，曜主借天上的力伸手下來，要把嚴少淵整個人奪回去。",
+      "hook": "陸拾一用燭淚眼，天上就伸下一隻冷白的巨手，五指張開，罩向嚴少淵的頭頂。",
+      "hook_type": "danger",
+      "mid_hook": "雲知意大喊：「叫他的名字！一直叫！」上萬人開始喊：「嚴少淵！」巨手停在半空，抖了一下。",
+      "conflict": "曜主要奪回整副身體；嚴少淵只能靠外面有人記得他撐住。",
+      "turn": "曜主換了打法：讓嚴少淵的身體轉身撲向雲知意，它住過她，知道她在哪裡最弱。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "阿猙一把抱住被撲倒的雲知意滾開，冷光打在他背上，雲知意沒事"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power",
+          "what": "雲知意翻身起劍，劍尖點在嚴少淵額頭前一寸，大聲叫他的名字，巨手被上萬人的聲音頂回去半丈"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "巨手還是合攏了，扣住嚴少淵的頭，他剩下那隻黑眼也在變金；他死死抓住陸拾的手：「手給我！」",
+        "question": "嚴少淵拚死要交給陸拾什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "kongbu",
+        "henla",
+        "goxue"
+      ],
+      "spectacle": "一隻比山還大的冷白光手從雲層裡伸下來，五根手指像五根光柱扣向一個人。",
+      "glamour_shot": "雲知意翻身出劍，黑髮在慢動作裡甩開，劍尖停在嚴少淵額前一寸，兩人四目相對。",
+      "setups": [
+        "s08-t22"
+      ],
+      "payoffs": [
+        "s08-t20"
+      ],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "lu-shi",
+        "yan-shaoyuan",
+        "ming-chi",
+        "yun-zhiyi",
+        "a-zheng"
+      ],
+      "locations": [
+        "長燈村廢墟"
+      ],
+      "state": {
+        "time": "同一夜將盡",
+        "knowledge": "曜主隨時能從天上奪回嚴少淵",
+        "carry_forward": "嚴少淵要交出一樣東西"
+      }
+    },
+    {
+      "number": 460,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "天闕的鑰匙",
+      "youtube_title": "宿敵把額頭的金紋燒進他掌心：天闕的門用這個開；下一秒他又變回了神",
+      "duration_s": 160,
+      "logline": "嚴少淵在被奪回之前，把曜主的鑰匙紋從自己額頭剝下來交給陸拾。",
+      "hook": "嚴少淵抓著陸拾的手往自己額頭按，掌心碰到金紋的一刻滋滋作響：「別放手！」",
+      "hook_type": "danger",
+      "mid_hook": "金紋開始從嚴少淵額頭剝離，曜主發現了，整片天的冷光一起壓下來要把紋按回去。",
+      "conflict": "金紋一半在嚴少淵額上、一半在陸拾掌心，誰先鬆手誰就輸。",
+      "turn": "上萬盞燈把暖光全推向陸拾的手，暖金與冷白在兩人之間對撞成一顆小太陽。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up",
+          "what": "上萬盞燈的光灌進陸拾手臂，他頂住了整片天壓下來的冷光"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power",
+          "what": "金紋從嚴少淵額心燒進陸拾掌心，烙成一道門形的印"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "嚴少淵鬆開手：「天闕的門……用這個開。」他的眼睛又變回純金，看著陸拾像看一個陌生人：「你是誰？」他轉身飛回天上。",
+        "question": "被拖回去的嚴少淵，還回得來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        5,
+        5,
+        5
+      ],
+      "tones": [
+        "henla",
+        "goxue",
+        "texiao"
+      ],
+      "spectacle": "暖金與冷白兩道光在半空對撞成一顆刺眼的光球，一道金紋從人的額心燒進另一個人的掌心。",
+      "glamour_shot": "嚴少淵最後一次以自己的眼神看陸拾，散髮被光風吹起，嘴角似笑非笑，然後瞳孔一點點被金色吞沒。",
+      "setups": [],
+      "payoffs": [
+        "s08-t22"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到天闕之門的鑰匙紋"
+      ],
+      "characters": [
+        "lu-shi",
+        "yan-shaoyuan",
+        "ming-chi",
+        "yun-zhiyi",
+        "a-zheng",
+        "tuan-tuan",
+        "cai-shen"
+      ],
+      "locations": [
+        "長燈村廢墟上空"
+      ],
+      "state": {
+        "time": "逆神詔後第十二天黎明",
+        "knowledge": "掌心有開天闕之門的金紋；嚴少淵又被曜主奪回",
+        "carry_forward": "四散的三百口妖還沒回來"
+      }
+    },
+    {
+      "number": 461,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "牛會說話",
+      "youtube_title": "村裡那頭會說話的老黃牛回來了，一開口就把賞金獵人嚇翻了車",
+      "duration_s": 95,
+      "logline": "四散的村民開始回來，第一個是會說話的耕牛老黃，他拉著一車村童，身後跟著賞金獵人。",
+      "hook": "陸拾盯著掌心的金紋，它還在一下一下跳，不是他的心跳：「他還在。」村口傳來一聲：「哞——陸拾，讓讓。」",
+      "hook_type": "line",
+      "mid_hook": "老黃討了一根蘿蔔嚼著，眼神一沉：「那年我叫你天黑別看井，是因為井底有人在等。現在，她出不來了。」",
+      "conflict": "老黃拉回來十幾個村童，十個賞金獵人追著燈禁懸賞一路跟到廢墟。",
+      "turn": "一路三百里，老黃都在裝成一頭什麼都不懂的笨牛，騙過了每一道關卡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap",
+          "what": "賞金獵人笑「一頭牛？」，老黃開口「看什麼看」，現出青兕真身一角把三輛囚車頂翻"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue",
+          "what": "阿杏從車上跳下來撲進陸拾懷裡，十幾個村童一個都沒少"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "當天夜裡，廢墟上那口乾了的井底，傳出一個女人的歌聲，是他小時候每晚聽著睡著的那首搖籃曲。",
+        "question": "井裡唱歌的，到底是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "goxue",
+        "texiao"
+      ],
+      "spectacle": "一頭黃牛在月下站起，身形一節節長高，變成一頭比穀倉還大的青色獨角巨兕。",
+      "glamour_shot": "阿猙單手把十幾個村童一個個從車上抱下來，額頭舊疤映著夕陽，憨直的臉上難得笑開。",
+      "setups": [],
+      "payoffs": [
+        "s08-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老黃與十幾個村童回來"
+      ],
+      "characters": [
+        "lu-shi",
+        "lao-huang",
+        "a-xing",
+        "tuan-tuan",
+        "a-zheng"
+      ],
+      "locations": [
+        "長燈村廢墟",
+        "村口"
+      ],
+      "state": {
+        "time": "第十曜退走後第三天",
+        "knowledge": "嚴少淵還活在金紋另一頭；四散的村民開始回來",
+        "carry_forward": "井裡有歌聲"
+      }
+    },
+    {
+      "number": 462,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "井裡的歌",
+      "youtube_title": "小時候嚇壞他的井中歌聲又響了，井底困著的，是把他奶大的那個人",
+      "duration_s": 120,
+      "logline": "把陸拾奶大的柳嫂躲在井底水脈裡逃過了天眼，可歸伯一化成石山水脈就斷了，她困在乾井底出不來。",
+      "hook": "陸拾把燈垂進乾井，歌聲停了；一隻蒼白濕冷的手從黑暗裡伸上來，搭住井沿：「拾兒？」",
+      "hook_type": "image",
+      "mid_hook": "柳嫂被拉上井沿，魚尾的鱗片已經乾得發白，她第一句話是：「歸伯呢？他說天亮就送魚來。」",
+      "conflict": "井乾了，水妖離了水撐不了多久；她還不知道歸伯已經不在。",
+      "turn": "柳嫂說出釣竿上九十九道刻痕的來歷：陸拾從小每一次哭著回家，歸伯就去河邊釣一條魚給他燉湯，他說滿一百條，這孩子就長大了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "陸拾從萬妖圖裡引出一片水墨江水灌進井裡，柳嫂得救"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power",
+          "what": "柳嫂對著石山唱歸伯常哼的那首歌，石山的裂縫裡流出泉水，一路流回井裡"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "泉水流下石山的那一刻，石山頂上冒出一棵嫩芽，跟歸伯殼上那棵小樹一模一樣。",
+        "question": "歸伯……還在石頭裡嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "texiao",
+        "goxue"
+      ],
+      "spectacle": "月下的石山裂開一道縫，清泉從石縫裡湧出，沿著山勢流成一條發光的細河注入古井。",
+      "glamour_shot": "柳嫂坐在井沿唱搖籃曲，微濕的黑髮散下靛藍布帕，淡藍魚尾垂進泉水，側臉在月光下白得透光。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "井重新有水",
+        "柳嫂回來"
+      ],
+      "characters": [
+        "lu-shi",
+        "liu-sao",
+        "gui-bo",
+        "tuan-tuan"
+      ],
+      "locations": [
+        "長燈村古井",
+        "歸伯石山"
+      ],
+      "state": {
+        "time": "同一夜",
+        "knowledge": "九十九道刻痕是他從小哭著回家的次數；第一百條要他自己釣",
+        "carry_forward": "石山頂上的嫩芽"
+      }
+    },
+    {
+      "number": 463,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "霧裡的村子",
+      "youtube_title": "豆腐攤老闆娘吐出一口霧，整個被燒光的村子原樣出現在霧裡",
+      "duration_s": 110,
+      "logline": "豆腐攤的豆娘帶胡奶奶回來，她吐出的蜃霧讓全村看見舊村的樣子，可她也帶回一個壞消息。",
+      "hook": "團團摸著嫩芽：「是殼上的樹，不是他。」話音剛落，一大片白霧從山口滾進來，霧裡整座長燈村原樣立著。",
+      "hook_type": "image",
+      "mid_hook": "霧裡走出一個繫圍裙的女人，是豆腐攤的豆娘，她身後跟著胡奶奶；胡奶奶一眼看見陸拾身上的暖光，愣在原地。",
+      "conflict": "要重建長燈村，可沒有人記得每一間房原本在哪；而且還有一批村民沒回來。",
+      "turn": "豆娘是蜃，霧裡的村子是她記得的樣子，一磚一瓦都能照著蓋。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power",
+          "what": "豆娘吐霧成村，連第一季她打翻的那口豆腐鍋都原樣擺在攤上"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue",
+          "what": "胡奶奶回來第一件事是撿起一塊石頭磨豆腐，磨出第一碗豆漿給陸拾"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "豆娘咬著唇說：「三嬸帶著四十個人斷後，被燈禁的兵圍在青石鎮了。」遠方青石鎮的方向，升起一道黑煙。",
+        "question": "被困在青石鎮的三嬸撐得住嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "texiao",
+        "ganren",
+        "goxue"
+      ],
+      "spectacle": "一大片白霧滾過廢墟，霧裡浮現整座舊長燈村，三百盞燈、豆腐攤、飯桌，一樣不差。",
+      "glamour_shot": "豆娘從霧裡走出來，碎花頭巾、白圍裙，明豔的笑臉在霧光裡回頭，酒窩深深。",
+      "setups": [
+        "s08-t23"
+      ],
+      "payoffs": [
+        "s08-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "胡奶奶與豆娘回來",
+        "有了重建長燈村的樣子"
+      ],
+      "characters": [
+        "lu-shi",
+        "s08-dou-niang",
+        "hu-nainai",
+        "tuan-tuan",
+        "liu-sao"
+      ],
+      "locations": [
+        "長燈村廢墟",
+        "蜃霧裡的舊村"
+      ],
+      "state": {
+        "time": "第十曜退走後第四天",
+        "knowledge": "大部分村民在回來的路上；三嬸被圍在青石鎮",
+        "carry_forward": "去救三嬸"
+      }
+    },
+    {
+      "number": 464,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "紙燈籠裡的人",
+      "youtube_title": "四十個妖被困小鎮，紙人妖把他們全折進燈籠裡；關過門的鎮子這次全開了門",
+      "duration_s": 100,
+      "logline": "陸拾帶人去青石鎮救三嬸，紙娘早已把四十個村民折進紙燈籠裡藏著，神衛卻開始燒燈籠。",
+      "hook": "青石鎮的屋簷下掛滿白紙燈籠，神衛正一盞盞點火；陸拾衝進鎮口，聽見燈籠裡有小孩在小聲哭。",
+      "hook_type": "danger",
+      "mid_hook": "一盞燈籠落地散開，變回一個紙剪的女子，兩道柳眉一點紅唇，是紙娘；她身後的燈籠裡全是長燈村的人。",
+      "conflict": "神衛要把整條街的燈籠燒光，三嬸為了斷後已經把火吐得只剩一點。",
+      "turn": "何月跟著陸拾來了，紙娘看見何月，紙做的臉上畫出一個笑：她離開何月家門，是跑來替陸拾護人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill",
+          "what": "三嬸用最後一口火燒斷點火神衛的光鉤，阿猙一爪把神衛隊掃出鎮外"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue",
+          "what": "紙娘與何月一起拆開四十盞燈籠，四十個村民一個個從紙裡站出來，全都平安"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "神衛統領把剩下的人逼到街尾，舉手要放火；青石鎮所有關著的門在同一瞬間全打開了，每扇門裡都有人提著燈：「進來！」",
+        "question": "當初關門的青石鎮，為什麼全開了門？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "texiao"
+      ],
+      "spectacle": "一整條街的白紙燈籠同時展開，四十個紙片在半空翻轉，落地變成四十個活生生的人。",
+      "glamour_shot": "何月在紙片翻飛的街上回頭，素色布裙被風鼓起，紙娘輕輕替她別上一朵紙花。",
+      "setups": [],
+      "payoffs": [
+        "s08-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "救回三嬸與四十個村民",
+        "紙娘回來"
+      ],
+      "characters": [
+        "lu-shi",
+        "zhi-niang",
+        "he-yue",
+        "bi-sanniang",
+        "a-zheng"
+      ],
+      "locations": [
+        "青石鎮"
+      ],
+      "state": {
+        "time": "第十曜退走後第五天",
+        "knowledge": "紙娘一直在替他護人；三嬸的火快熄了",
+        "carry_forward": "青石鎮百姓開門"
+      }
+    },
+    {
+      "number": 465,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "往北，等燈",
+      "youtube_title": "井底城的老蛛妖帶著長大的孤兒回來，關過門的爹跪在他面前",
+      "duration_s": 120,
+      "logline": "蛛婆帶著井底城長大的孩子們回來替新村織頂，跟著來的還有石大郎和秀娘。",
+      "hook": "青石鎮的門裡，一個老人拎著燈走出來：「當年我也關過門。這次換我開。」整條街的人跟著舉燈護送村民上路。",
+      "hook_type": "line",
+      "mid_hook": "回到長燈村，天上垂下上千條銀絲，一隻房子大的灰蛛從雲影裡降下，背上坐滿了十幾二十歲的年輕人，全是當年井底城的孩子。",
+      "conflict": "新村要趕在下一次審判前把屋頂搭好，可沒有木料。",
+      "turn": "蛛婆當初帶孩子們往北躲進大荒邊上，牆上那句「等燈」，就是等到長燈村的燈重新亮起來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication",
+          "what": "青石鎮百姓提燈一路護送村民回長燈村，當年貼懸賞的鎮口牆被他們自己拆了"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power",
+          "what": "蛛婆一夜織出上百間屋頂，銀絲在月光下像一片片會發光的瓦"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "人群後面走出石大郎和秀娘，秀娘頭髮短了一截，她走到陸拾面前，抬起手，跟那天打他的是同一隻手。",
+        "question": "秀娘抬起手，是要再打他一次嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "texiao",
+        "goxue"
+      ],
+      "spectacle": "一隻房子大的灰蛛垂著銀絲從夜空降下，千條絲線在長燈村上空織出一整片發光的屋頂。",
+      "glamour_shot": "井底城長大的年輕人們從蛛背上躍下，其中祝小滿接住一個人的手，高馬尾在銀絲光裡飛起。",
+      "setups": [],
+      "payoffs": [
+        "s08-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蛛婆與井底城的孩子們回來",
+        "新村有了屋頂"
+      ],
+      "characters": [
+        "lu-shi",
+        "zhu-po",
+        "xiao-shitou",
+        "shi-dalang",
+        "s08-xiu-niang",
+        "s08-zhu-xiaoman"
+      ],
+      "locations": [
+        "青石鎮",
+        "長燈村"
+      ],
+      "state": {
+        "time": "第十曜退走後第六天",
+        "knowledge": "蛛婆一直在等燈；石家來了",
+        "carry_forward": "秀娘舉起手"
+      }
+    },
+    {
+      "number": 466,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "三嬸開爐",
+      "youtube_title": "斷了火的畢方站在冷爐前，全村一人一盞燈遞給她：爐火轟一聲沖天",
+      "duration_s": 100,
+      "logline": "三嬸的爐點不起來，溫守禮的燈禁大軍卻已經開到村外要燒新村。",
+      "hook": "秀娘的手輕輕落在陸拾臉頰上，那天她打的地方：「疼嗎？」小石頭從背後抱住了他們兩個。",
+      "hook_type": "image",
+      "mid_hook": "三嬸蹲在冷爐前打了半天火石，一點火星都沒有；她把火石一扔：「斷後吐光了。」村外響起了號角。",
+      "conflict": "沒有爐火就打不出新燈鉤與鐵鍋，溫守禮的燈禁大軍要在天黑前燒掉新村。",
+      "turn": "陸拾讓每個人把自己的燈遞給三嬸，暖光一盞盞倒進爐口。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up",
+          "what": "上百盞燈的光倒進冷爐，爐火轟一聲沖上天，三嬸的羽紋在火裡重新亮起"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled",
+          "what": "三嬸拎著剛出爐、還燒紅的鐵鍋走到村口，溫守禮的前鋒兵一看到滿村燈火，丟下火把就退，溫守禮只能下令後撤"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "溫守禮的大軍剛退，北方地平線上卻壓過來一片黑影，裡面有翅膀、有角、有比山還高的腳，速度快得像沙暴。",
+        "question": "從北方壓過來的那片黑影是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "texiao",
+        "henla"
+      ],
+      "spectacle": "冷了的鐵爐被上百道暖光灌滿，火柱轟然沖天，火裡隱約展開一對青羽紅紋的巨翼。",
+      "glamour_shot": "三嬸紅布包頭站在沖天爐火前，袖子捲到手肘、揮錘的身影被火光拉得很長，笑罵著回頭。",
+      "setups": [
+        "s08-t24"
+      ],
+      "payoffs": [
+        "s08-t23"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "爐火重燃",
+        "新村有了燈鉤與鐵鍋",
+        "燈禁大軍後撤"
+      ],
+      "characters": [
+        "lu-shi",
+        "bi-sanniang",
+        "s08-xiu-niang",
+        "xiao-shitou",
+        "s08-wen-shouli",
+        "hu-nainai"
+      ],
+      "locations": [
+        "長燈村鐵匠鋪",
+        "村口"
+      ],
+      "state": {
+        "time": "第十曜退走後第七天",
+        "knowledge": "全村的燈能借火給三嬸",
+        "carry_forward": "北方來了一片黑影"
+      }
+    },
+    {
+      "number": 467,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "大荒來了",
+      "youtube_title": "妖皇帶著整個大荒殺到村口，阿猙衝上去要拚命：他卻扛來一個等了三百年的人",
+      "duration_s": 110,
+      "logline": "妖皇窮奇厲鋒帶著大荒妖族壓到村口，全村以為是來開戰的。",
+      "hook": "黑影壓到村口，一隻生著蝠翼的巨虎落地，阿猙已經現出真身擋在最前面，兩頭巨獸額頭頂著額頭。",
+      "hook_type": "danger",
+      "mid_hook": "厲鋒化成人形，從大氅底下扶出一個駝背的老婦人：骨林裡說丈夫被強收進圖的那一位，她的眼睛在人群裡找。",
+      "conflict": "村民一看到大荒妖軍就亮出爪牙，阿猙與窮奇差點真打起來。",
+      "turn": "厲鋒帶來的是第四季走出萬妖圖、回了大荒的妖，他們是來還人情的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap",
+          "what": "厲鋒一聲低吼，把想趁亂偷襲村子的燈禁殘兵吼得從樹上掉下來"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue",
+          "what": "墨翁從人群裡走出來，骨林老婦一把抱住他，三百年的夫妻在長燈村重逢"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "厲鋒拍了拍陸拾的肩：「天下來的，不只我。」他抬頭，雲層裡擠出一片片帆影，帆下是翅膀。",
+        "question": "雲上那一片帆影是誰的船？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "texiao"
+      ],
+      "spectacle": "一頭五尾獨角的赤紋巨獸與一頭生著蝠翼的巨虎在村口額頭相抵，背後是一整片大荒妖軍的剪影。",
+      "glamour_shot": "厲鋒化成人形落地，黑紅長髮披散、金色豎瞳，獸皮大氅一甩，咧嘴一笑。",
+      "setups": [],
+      "payoffs": [
+        "s08-t24"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "大荒妖族到長燈村結盟",
+        "墨翁夫妻重逢"
+      ],
+      "characters": [
+        "lu-shi",
+        "li-feng",
+        "a-zheng",
+        "s08-mo-weng",
+        "hu-nainai"
+      ],
+      "locations": [
+        "長燈村村口"
+      ],
+      "state": {
+        "time": "第十曜退走後第八天",
+        "knowledge": "大荒是來助陣的",
+        "carry_forward": "雲上來了船"
+      }
+    },
+    {
+      "number": 468,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "三方來援",
+      "youtube_title": "空中艦隊、萬鬼大軍、女子國女將同時降臨一座小村：天上卻開始下冷光雨",
+      "duration_s": 130,
+      "logline": "羽民國艦隊、鬼國亡魂與女子國使者同時抵達長燈村，天眼看見了，冷光雨開始落下。",
+      "hook": "雲層裂開，羽靈站在艦隊旗艦的船頭，背後白翼張開：「我會站在風上了，來接你。」",
+      "hook_type": "image",
+      "mid_hook": "天上下起冷光雨，每一滴落地都燒出一個小坑；空碗走到村中央，掀開了他的空碗。",
+      "conflict": "天下第一次為一個凡人聚在一起，天眼要在他們聚齊之前用光雨把人打散。",
+      "turn": "碗裡升起一條石階，鬼國的亡魂一排排走上來，用沒有實體的身體替活人擋雨。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "羽民艦隊張開帆布般的雲翼，替全村遮住第一陣冷光雨"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power",
+          "what": "空碗打開鬼門，萬鬼列陣站在雨裡，冷光雨穿過他們的身體就碎成霧"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "女子國使者緋練單膝跪地，把一枚赤紅鱗片交到陸拾手裡：「女王讓我帶一句話：天機城，開始轉了。」頭頂的雲後面，響起巨大齒輪轉動的聲音。",
+        "question": "天機城轉起來，要對仙洲做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "texiao",
+        "ganren",
+        "goxue"
+      ],
+      "spectacle": "羽民國空中艦隊從雲中降下、大荒妖軍列在山頭、鬼國亡魂從一隻空碗裡排隊走出，三方同時擋在一座小村上空。",
+      "glamour_shot": "羽靈站在旗艦船頭，淡金輕紗長裙被高空的風吹起，白色羽翼緩緩張開，回頭朝陸拾一笑。",
+      "setups": [
+        "s08-t25"
+      ],
+      "payoffs": [
+        "m17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "羽民國、鬼國、女子國的援軍抵達"
+      ],
+      "characters": [
+        "lu-shi",
+        "yumin-princess",
+        "kong-wan",
+        "s08-fei-lian",
+        "nvzi-queen",
+        "li-feng",
+        "jia-banhu"
+      ],
+      "locations": [
+        "長燈村上空",
+        "長燈村"
+      ],
+      "state": {
+        "time": "第十曜退走後第九天",
+        "knowledge": "天機城在動；女王送來一枚赤鱗",
+        "carry_forward": "天下的援軍聚齊"
+      }
+    },
+    {
+      "number": 469,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "第一百條魚",
+      "youtube_title": "他拿起亡者的釣竿去釣最後一條魚，有人趁全村辦宴偷走那顆蛋",
+      "duration_s": 110,
+      "logline": "陸拾要替歸伯釣滿第一百條魚當重聚宴的菜，可魚全躲了，偷蛋的人卻趁亂摸進來。",
+      "hook": "齒輪聲在雲後轟隆作響，胡奶奶一刀剁在砧板上：「天塌下來也先吃飯。」",
+      "hook_type": "line",
+      "mid_hook": "陸拾坐在河邊一個時辰都沒有魚咬鉤，背後的村裡突然傳出一聲尖叫：龜蛋不見了。",
+      "conflict": "釣竿上九十九道刻痕還差一條；放蛋的空椅子上，蛋被人偷走了。",
+      "turn": "偷蛋的是第十曜留下的最後一個神衛，攔住他的是剛回村的蘇鈴，蘇母跟在她身後。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "betrayer_punished",
+          "what": "蘇鈴從屋頂撲下，鐵尺一敲把偷蛋的神衛按在地上，蛋完好無缺"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue",
+          "what": "蘇母把蛋捧回空椅上，低頭向陸拾道歉，陸拾扶起她：「回來吃飯。」"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "暮色裡，釣竿忽然彎成滿月，魚線繃得發出嗡嗡聲，陸拾咬牙握住竿：「歸伯，第一百條。」線就要斷了。",
+        "question": "第一百條魚，釣得上來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "goxue",
+        "texiao"
+      ],
+      "spectacle": "夕陽下的河面被一條巨大的金色魚影拱起，竹釣竿彎成一道滿月。",
+      "glamour_shot": "蘇鈴從屋頂撲下的那一刻，深紅勁裝與齊肩短髮在慢動作裡揚起，貓瞳一亮。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "蘇鈴與蘇母歸隊",
+        "奪回龜蛋"
+      ],
+      "characters": [
+        "lu-shi",
+        "hu-nainai",
+        "su-ling",
+        "su-mu",
+        "liu-sao",
+        "xiao-shitou"
+      ],
+      "locations": [
+        "長燈村河邊",
+        "長燈村飯桌"
+      ],
+      "state": {
+        "time": "第十曜退走後第十天傍晚",
+        "knowledge": "蘇家母女回來了",
+        "carry_forward": "第一百條魚咬鉤"
+      }
+    },
+    {
+      "number": 470,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "主位旁的空椅子",
+      "youtube_title": "全村重新坐上飯桌，主位旁多了一張空椅子，椅子上放著那顆蛋",
+      "duration_s": 160,
+      "logline": "長燈村重建完成，全村與天下來的盟友第一次坐上同一張飯桌，村口卻有人放下了一盞金燈。",
+      "hook": "魚線繃到快斷，柳嫂從河裡躍出來，用肩膀把那條大魚頂上了岸；陸拾在釣竿上刻下第一百道痕。",
+      "hook_type": "image",
+      "mid_hook": "村口的黑暗裡站著一個黑斗篷的人，放下一盞金燈就走了；胡奶奶握刀衝過去，那盞燈和三百年前顧長夜最後一夜點的那盞一模一樣。",
+      "conflict": "這是全村散了以後的第一頓飯；而那盞金燈的主人，是出賣過顧長夜的人。",
+      "turn": "金燈不是在報位置，燈罩內側刻著一行小字，團團念出來：「快走，天要動手了。」白無咎是在示警。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear",
+          "what": "第一百條魚上岸，歸伯沒釣完的魚由陸拾釣完了"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication",
+          "what": "大荒、羽民、鬼國、女子國的人與長燈村的妖、京城的凡人坐上同一張長桌，天下第一次為了一個凡人聚在一起"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "胡奶奶把龜蛋放在主位旁的空椅子上：「歸伯的位子。」全桌舉碗的那一刻，金燈的火苗筆直指向夜空，夜空裡亮起九個白點，正在變大。",
+        "question": "天上那九點光是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "texiao",
+        "goxue"
+      ],
+      "spectacle": "重建的長燈村三百盞燈全部亮起，一張從村頭排到村尾的長桌上坐滿人、妖與鬼，夜空裡慢慢亮起九個白點。",
+      "glamour_shot": "胡奶奶本相坐在長桌主位邊，銀髮挽著木簪、眉心硃砂，舉碗時眼裡第一次含著笑淚。",
+      "setups": [],
+      "payoffs": [
+        "s08-t02",
+        "s08-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "長燈村重建完成",
+        "第一百條魚釣上來",
+        "知道白無咎在示警"
+      ],
+      "characters": [
+        "lu-shi",
+        "hu-nainai",
+        "bi-sanniang",
+        "a-zheng",
+        "tuan-tuan",
+        "yun-zhiyi",
+        "su-ling",
+        "su-mu",
+        "jia-banhu",
+        "kong-wan",
+        "li-feng",
+        "yumin-princess",
+        "s08-fei-lian",
+        "liu-sao",
+        "lao-huang",
+        "s08-dou-niang",
+        "zhi-niang",
+        "he-yue",
+        "zhu-po",
+        "xiao-shitou",
+        "cai-shen",
+        "bai-wujiu"
+      ],
+      "locations": [
+        "長燈村飯桌",
+        "長燈村村口",
+        "長燈村河邊"
+      ],
+      "state": {
+        "time": "第十曜退走後第十天夜",
+        "knowledge": "長燈村重建、盟軍聚齊；白無咎示警天要動手",
+        "carry_forward": "夜空裡九個白點落下來"
+      }
+    },
+    {
+      "number": 471,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "九柱落",
+      "youtube_title": "全村剛舉碗，九根貫穿天地的光柱從天而降：整片大陸開始歪了",
+      "duration_s": 100,
+      "logline": "九曜收割不到人間，決定一次收割：天機城降下九根天柱，第一根落地時重聚宴的飯桌被震上了天。",
+      "hook": "九個白點變成九根光柱，第一根轟進地平線，長桌整張跳起來，碗飛滿天；胡奶奶伸手接住了半空中的龜蛋。",
+      "hook_type": "danger",
+      "mid_hook": "震動停了，所有碗裡的湯卻慢慢往同一邊流，流向東方；團團臉色發白：「地……歪了。」",
+      "conflict": "九根天柱從天空釘進仙洲九處，每一根落地都是一場地震，盟軍的艦隊被氣浪掀翻。",
+      "turn": "天柱不只是釘子：天柱一落，整片仙洲開始往東傾斜。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "祠堂的梁被震斷，阿猙一肩扛住，底下的村童全部爬了出來"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power",
+          "what": "羽靈站在風上，一個人把被氣浪掀翻的旗艦扶正，艦隊沒有一艘墜落"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "遠處的河突然停了，接著開始往回流，一道倒捲的浪頭朝長燈村下游的渡口鎮衝過去，渡口鎮的燈還亮著。",
+        "question": "倒流的河要淹掉誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "texiao",
+        "henla",
+        "kongbu"
+      ],
+      "spectacle": "九根貫穿天地的白金光柱從夜空的天機城底部依次落下，釘進仙洲九處，大地像一塊被敲歪的木板。",
+      "glamour_shot": "羽靈在狂風裡獨自站上旗艦桅頂，淡金紗裙與白翼被風扯直，她伸手一按，整艘船被風托正。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "長燈村沒有人傷亡",
+        "艦隊保住"
+      ],
+      "characters": [
+        "lu-shi",
+        "hu-nainai",
+        "a-zheng",
+        "tuan-tuan",
+        "yumin-princess",
+        "jin-yao",
+        "ri-yao"
+      ],
+      "locations": [
+        "長燈村",
+        "長燈村上空"
+      ],
+      "state": {
+        "time": "天柱落下第一夜",
+        "knowledge": "九根天柱釘進仙洲，大地往東傾斜",
+        "carry_forward": "河水倒流衝向渡口鎮"
+      }
+    },
+    {
+      "number": 472,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "河倒流",
+      "youtube_title": "整條河倒著往上流，衝向載過他的老艄公家：河底沉了百年的鐘一起響了",
+      "duration_s": 95,
+      "logline": "倒流的河衝向渡口鎮，陸拾要搶在浪頭前面把鎮上的人帶走。",
+      "hook": "浪頭撲進渡口鎮的前一刻，阿猙現出真身橫躺在河道上，用整個背擋住倒捲的河水。",
+      "hook_type": "danger",
+      "mid_hook": "倒流的水把河底的東西都翻了上來，一口口沉了百年的銅鐘浮出水面，在夜裡一起噹噹作響；周艄公在屋頂上大喊，他的老母親還在屋裡。",
+      "conflict": "阿猙出了圖影只剩一成力，擋不了多久；整個鎮要在他撐住之前撤空。",
+      "turn": "那個因為載過陸拾被判罪的周艄公，划著船回頭來載別人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "陸拾跳上周艄公的屋頂，把他的老母親背出來，水已經漫到門檻"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear",
+          "what": "郝大嬸的凡人軍團一個時辰築起一道沙包堤，倒流的河第一次被擋在鎮外"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "團團站在堤上攤開星圖，燭光下她把整張仙洲畫成一塊斜板：「不是河的錯。整片仙洲在往東滑，海岸線一天退一里。」",
+        "question": "仙洲要滑到哪裡去？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        5,
+        4,
+        4
+      ],
+      "tones": [
+        "kongbu",
+        "texiao",
+        "henla"
+      ],
+      "spectacle": "夜色裡整條河倒著往上游奔流，水面上浮起一口口沉了百年的銅鐘，一起噹噹作響。",
+      "glamour_shot": "雲知意立在倒流的河面上御劍，一劍劈開衝來的浪頭，月白長袍的衣角被水霧揚起，黑髮被水霧打亂。",
+      "setups": [
+        "s08-t26"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "渡口鎮全鎮撤出"
+      ],
+      "characters": [
+        "lu-shi",
+        "a-zheng",
+        "s08-zhou-shaogong",
+        "cai-shen",
+        "tuan-tuan",
+        "yun-zhiyi"
+      ],
+      "locations": [
+        "渡口鎮",
+        "倒流的河"
+      ],
+      "state": {
+        "time": "天柱落下第一天黎明",
+        "knowledge": "仙洲整片往東滑",
+        "carry_forward": "要去看天柱"
+      }
+    },
+    {
+      "number": 473,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "跪在柱下的人",
+      "youtube_title": "天柱下跪滿了等飛升的人，一動不動跟著同一個聲音念：他們在被抽乾",
+      "duration_s": 100,
+      "logline": "陸拾、雲知意與賈半壺去斷龍原看最近的一根天柱，柱下跪滿了人。",
+      "hook": "團團的星圖浮在半空，仙洲東邊畫著一個黑洞：「往這裡。歸墟。」陸拾抓起柴刀：「先去看柱子。」",
+      "hook_type": "line",
+      "mid_hook": "斷龍原的天柱下跪著上千人，一動不動，嘴唇一起動，念的是同一句：「飛升。」",
+      "conflict": "跪在柱下的人身上都牽著一條光線連進天柱，他們在一點點變淡。",
+      "turn": "守著這根柱的是九曜之一的雷曜，它就嵌在柱子裡，一直在看他們。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap",
+          "what": "雷曜的神衛撲上來，賈半壺斷劍一揮，劍氣把整排神衛掀回柱下"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue",
+          "what": "陸拾用暖光一根根掐斷光線，把三十個跪著的人拖出光圈，他們的臉色慢慢回來"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "雷曜從柱子裡剝出來，一尊宮殿高的紫色光人抬起手，地面在三人腳下翹起三十度，他們開始往柱子滑。",
+        "question": "他們撤得出雷曜的手掌心嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "kongbu",
+        "texiao",
+        "henla"
+      ],
+      "spectacle": "一根貫穿雲層的光柱下跪滿上千人，每個人背上都拉出一條細光線，像蜘蛛網一樣收進柱子裡。",
+      "glamour_shot": "賈半壺醉眼一睜，亂髮被劍風吹開，一手酒壺一手斷劍柄，回身一揮的剪影被天柱照得發亮。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "救出三十個跪柱的人"
+      ],
+      "characters": [
+        "lu-shi",
+        "yun-zhiyi",
+        "jia-banhu",
+        "tuan-tuan",
+        "lei-yao"
+      ],
+      "locations": [
+        "斷龍原天柱下"
+      ],
+      "state": {
+        "time": "天柱落下第一天上午",
+        "knowledge": "柱下的人被一點點抽走；每根柱有一曜守著",
+        "carry_forward": "地在翹"
+      }
+    },
+    {
+      "number": 474,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "逆神害的",
+      "youtube_title": "朝廷說大地傾斜是逆神害的，萬人來抓他：主祭自己的玉牌先把他拖走了",
+      "duration_s": 110,
+      "logline": "溫守禮帶著東岸逃難的百姓來長燈村，說天柱是因為收留逆神才落下的，要百姓把陸拾交出去。",
+      "hook": "雲知意一劍插進翹起的地面，三人吊在劍上；賈半壺一把抓住陸拾的後領：「走！」三人帶著救出的人滾下斜坡。",
+      "hook_type": "danger",
+      "mid_hook": "長燈村外，溫守禮舉著詔匣對上萬難民高喊：「交出逆神，天柱自收！」人群裡有人開始撿石頭。",
+      "conflict": "上萬個嚇壞的難民被說服，把怒氣對準了長燈村。",
+      "turn": "陸拾不辯解，讓那三十個從柱下救回來的人自己說柱下發生了什麼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "三人帶著三十個救出的人從雷曜手下撤回"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication",
+          "what": "溫守禮腰上的飛升玉牌突然亮起，一條光線把他往天柱的方向拖，陸拾一刀斬斷光線救了他，上萬人都看見了"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "溫守禮趴在地上，看著被斬斷的光線，慢慢舉起手裡的詔匣，當著上萬人摔碎了：「是我騙了你們。」人群裡的火把一支支換成了燈。",
+        "question": "換上燈的人群，要跟陸拾去哪？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "kongbu",
+        "texiao"
+      ],
+      "spectacle": "一條光線從一個人腰上的玉牌射出，像釣線一樣把他朝遠方的天柱拖過去，地上拖出一道長痕。",
+      "glamour_shot": "陸拾擋在上萬難民與村子之間，掌心金紋發亮，深藍勁裝的衣角被風吹得獵獵翻飛，眼神不躲。",
+      "setups": [],
+      "payoffs": [
+        "s08-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "溫守禮當眾認錯",
+        "上萬難民轉而投靠長燈村"
+      ],
+      "characters": [
+        "lu-shi",
+        "yun-zhiyi",
+        "jia-banhu",
+        "s08-wen-shouli",
+        "cai-shen"
+      ],
+      "locations": [
+        "斷龍原斜坡",
+        "長燈村村外"
+      ],
+      "state": {
+        "time": "天柱落下第一天中午",
+        "knowledge": "飛升玉牌會把人拖向天柱；難民倒向長燈村",
+        "carry_forward": "要看清九根柱"
+      }
+    },
+    {
+      "number": 475,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "九個守柱者",
+      "youtube_title": "空中艦隊一趟飛過九根天柱，最後一根下面站著的，是他的宿敵",
+      "duration_s": 95,
+      "logline": "羽靈的艦隊載偵察隊飛過九根天柱，陸拾要知道每一根是誰在守。",
+      "hook": "陸拾跳上羽民旗艦：「先看九根柱。」艦隊衝上雲層，九根天柱在雲海裡排成一個圈。",
+      "hook_type": "image",
+      "mid_hook": "最東邊海岸那根日柱下，日曜身旁卻站著嚴少淵，雙眼純金——他自己那根柱明明在問天峰；艦隊飛近時，陸拾掌心的金紋燙得像火。",
+      "conflict": "九根柱分在仙洲九處，各有一曜守著，要一趟看清，還要活著回來。",
+      "turn": "嚴少淵抬頭看艦隊，金紋那頭的心跳亂了一下，然後他抬起了手。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear",
+          "what": "艦隊一趟飛完九根天柱，團團把八曜與第十曜的位置一一畫上星圖"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue",
+          "what": "嚴少淵一道光打穿偵察艦，阿猙從旗艦上縱身一躍，空中接住墜下的兩個羽民水手"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "偵察艦船頭朝下往海岸墜落，陸拾還在船上，下方的海退了一里，露出黑漆漆的海床。",
+        "question": "墜落的船上，陸拾能活著落地嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "texiao",
+        "henla"
+      ],
+      "spectacle": "雲海上方俯瞰，九根白金天柱圍成一個巨大的圈，圈的東邊是正在後退的海岸線。",
+      "glamour_shot": "嚴少淵立在東海岸天柱下，散髮被海風吹起，雙眼純金，抬頭看艦隊的那一眼冷得像沒有人在裡面。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "看清九根天柱與守柱的八曜加第十曜"
+      ],
+      "characters": [
+        "lu-shi",
+        "yumin-princess",
+        "tuan-tuan",
+        "a-zheng",
+        "yan-shaoyuan",
+        "ri-yao",
+        "huo-yao",
+        "shui-yao",
+        "mu-yao",
+        "jin-yao",
+        "tu-yao",
+        "feng-yao",
+        "lei-yao"
+      ],
+      "locations": [
+        "羽民國艦隊",
+        "九根天柱上空",
+        "東海岸天柱"
+      ],
+      "state": {
+        "time": "天柱落下第一天午後",
+        "knowledge": "八曜加第十曜各守一根柱；嚴少淵完全被奪回，他的柱在問天峰，人卻在東海岸的日柱下",
+        "carry_forward": "偵察艦墜向海床"
+      }
+    },
+    {
+      "number": 476,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "露出來的海底",
+      "youtube_title": "海退了一里，露出海底沉了千年的城，城裡的燈還亮著",
+      "duration_s": 105,
+      "logline": "偵察艦墜在退潮後的海床上，陸拾發現海床底下的東西比天柱更可怕。",
+      "hook": "阿猙在半空翻身接住墜落的偵察艦，扛著它重重落在海床上，濺起一大片黑泥。",
+      "hook_type": "danger",
+      "mid_hook": "海床上立著一座沉了千年的舊城，城門裡的燈竟然還亮著，城裡傳出很多人低聲說話的聲音，聽不清在說什麼。",
+      "conflict": "海床在往東斜，舊城裡的亡魂被天柱驚醒，朝活人圍過來。",
+      "turn": "亡魂不是要害人，空碗聽懂了：它們在喊「快走，它來了」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "阿猙扛著偵察艦落地，艦上的人都活著"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power",
+          "what": "空碗打開碗，舊城的亡魂一排排走進鬼門，臨走前合力把擱淺的偵察艦推回岸邊"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "燭淚眼一睜，陸拾看見海床底下：整片仙洲的岩盤裂成九條線，每條線都從一根天柱出發，像九根釘子釘著一塊板，板正被推向東邊。",
+        "question": "在海床上睜了眼，天眼會先找上他嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "kongbu",
+        "texiao"
+      ],
+      "spectacle": "退潮後的黑色海床上，一座沉了千年的舊城立在泥裡，城門內的燈一盞盞亮著。",
+      "glamour_shot": "賈半壺在海床上撿起一塊鏽成劍形的石頭，腰上的斷劍柄嗡嗡發響，他愣住的側臉被城門燈光照亮。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "偵察隊全員回到岸邊"
+      ],
+      "characters": [
+        "lu-shi",
+        "a-zheng",
+        "kong-wan",
+        "jia-banhu",
+        "tuan-tuan"
+      ],
+      "locations": [
+        "東海退潮後的海床",
+        "海底舊城"
+      ],
+      "state": {
+        "time": "天柱落下第一天傍晚",
+        "knowledge": "九根柱一邊釘一邊推，仙洲被推向東邊",
+        "carry_forward": "天眼又看見他了"
+      }
+    },
+    {
+      "number": 477,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "臨波城不撤",
+      "youtube_title": "海嘯捲回來要吞掉海岸大城，城主卻下令關城門：誰都不准走",
+      "duration_s": 100,
+      "logline": "海水捲回海岸，臨波城的城主裴遠卻不准百姓撤，他要全城跪著等飛升。",
+      "hook": "陸拾一睜燭淚眼，天上冷光就砸到海床，退走的海水轟一聲捲了回來，一道水牆朝他們壓下。",
+      "hook_type": "danger",
+      "mid_hook": "臨波城的城牆上，城主裴遠高舉發光的飛升玉牌：「天柱賜福，全城跪迎！」十萬人跪在城裡。",
+      "conflict": "臨波城就在海崖邊，地一直往東斜；城主關了城門，十萬人困在城裡。",
+      "turn": "臨波城東城牆整段往海裡滑下十丈，裴遠還是不開門。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "陸拾捏碎緋練給的赤鱗，一條赤紅巨蛇的虛影從海裡升起，把水牆從中間分開，眾人從水縫裡跑回岸上"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled",
+          "what": "陸拾把從柱下救回的人帶到城下，裴遠腰上的玉牌當場裂了一道縫，他的手開始抖"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "地面一沉，城牆裂開一條縫，十萬人一起尖叫；裴遠卻對守門兵大吼：「關死城門！」城門的鐵閂落了下去。",
+        "question": "被鎖在城裡的十萬人怎麼辦？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "henla",
+        "texiao",
+        "kongbu"
+      ],
+      "spectacle": "一條赤紅巨蛇的虛影從海裡昂首升起，把一堵十丈高的海水牆從中間撐開。",
+      "glamour_shot": "緋練在水縫中策馬，赤金鱗甲映著海水的藍光，紅披風翻飛，回頭朝陸拾喊：「快！」",
+      "setups": [
+        "s08-t27"
+      ],
+      "payoffs": [
+        "s08-t25"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "偵察隊撤出海床"
+      ],
+      "characters": [
+        "lu-shi",
+        "s08-fei-lian",
+        "s08-pei-yuan",
+        "yun-zhiyi",
+        "cai-shen"
+      ],
+      "locations": [
+        "東海岸",
+        "臨波城城牆"
+      ],
+      "state": {
+        "time": "天柱落下第一天入夜",
+        "knowledge": "赤鱗用掉了；裴遠要全城跪著等飛升",
+        "carry_forward": "城門被鎖"
+      }
+    },
+    {
+      "number": 478,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "七天",
+      "youtube_title": "他坐在城門上閉上眼，看見了仙洲的未來：七天後，整片大陸都沒了",
+      "duration_s": 130,
+      "logline": "城門被天柱的光封死，陸拾要打開它，也要知道他們到底還剩多少時間。",
+      "hook": "陸拾翻上城門頂，城門上的鐵閂裹著天柱的白光，柴刀砍上去火星四濺，門紋絲不動。",
+      "hook_type": "danger",
+      "mid_hook": "他在城門上閉眼，讓天下的燈光流進身體，人神之光裡看見了未來：第一天臨波城、第三天京城、第七天長燈村，最後一盞燈滅在水下。",
+      "conflict": "不知道還剩多久，就不知道要撤人還是要拔柱。",
+      "turn": "未來裡最後一盞滅掉的燈，是他家飯桌上那一盞。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power",
+          "what": "陸拾以人神之光讓上萬盞燈的光一起灌進城門，天柱的封光被燒穿"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue",
+          "what": "雲知意與郝大嬸從裡面拉開城門，第一批老人和孩子衝出城，全都平安"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陸拾睜開眼，對著城下所有人說：「七天。七天後，仙洲沒了。」城下上萬張臉一起抬起來看他。",
+        "question": "七天，夠救下整片仙洲嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "kongbu",
+        "texiao",
+        "henla"
+      ],
+      "spectacle": "人神之光的視野裡，整片仙洲像一塊滑向深淵的冰板，七天裡一座座城依序沉進東海盡頭的漩渦。",
+      "glamour_shot": "陸拾盤坐在城門頂上，暖金光從他身上一層層往外擴，海風吹亂他的短馬尾，掌心金紋發亮。",
+      "setups": [],
+      "payoffs": [
+        "s08-t26"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "城門打開",
+        "知道仙洲只剩七天"
+      ],
+      "characters": [
+        "lu-shi",
+        "yun-zhiyi",
+        "cai-shen",
+        "s08-pei-yuan",
+        "tuan-tuan"
+      ],
+      "locations": [
+        "臨波城城門"
+      ],
+      "state": {
+        "time": "天柱落下第一天深夜",
+        "knowledge": "七天後仙洲整片滑進歸墟",
+        "carry_forward": "臨波城要撤"
+      }
+    },
+    {
+      "number": 479,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "第一碗",
+      "youtube_title": "第十曜站在大城上空說：這城是第一碗；宿敵留在他掌心的金紋燙了起來",
+      "duration_s": 100,
+      "logline": "臨波城開始滑向大海，第十曜要把整座城留在原地當第一碗收割。",
+      "hook": "陸拾的話音還在城牆上迴盪，臨波城的地面整個往下一沉一尺，十萬人同時往城門擠。",
+      "hook_type": "danger",
+      "mid_hook": "嚴少淵出現在城的上空，雙眼純金：「這城，是第一碗。」他一抬手，城門上空落下一道光網。",
+      "conflict": "城在滑、光網要封城，城裡還有幾萬人沒出來。",
+      "turn": "陸拾掌心的金紋燙起來，光網落下的那一瞬，嚴少淵的手停了半拍，網上漏出一道縫。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "羽民艦隊垂下長梯，把城裡的孩子和老人一批批吊上船"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill",
+          "what": "厲鋒現出窮奇真身撞進光網，一爪把網撕開，阿猙扛起整扇城門讓人從底下跑過去"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "城的地基整片裂開，城中央的神廟裡還跪著幾百個人和裴遠；陸拾一個人往城裡衝，雲知意在背後喊：「來不及了！」",
+        "question": "陸拾能把最後一群人帶出來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "texiao",
+        "kongbu"
+      ],
+      "spectacle": "一座海岸大城整片往海裡傾斜，羽民艦隊垂下上百條長梯，一條條人龍沿梯子爬上天空。",
+      "glamour_shot": "厲鋒在光網前現出蝠翼巨虎真身前的最後一刻，黑紅長髮被氣浪掀起，金色豎瞳一亮。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "城裡大半的人撤出"
+      ],
+      "characters": [
+        "lu-shi",
+        "yan-shaoyuan",
+        "yumin-princess",
+        "li-feng",
+        "a-zheng",
+        "yun-zhiyi",
+        "s08-pei-yuan"
+      ],
+      "locations": [
+        "臨波城",
+        "臨波城上空"
+      ],
+      "state": {
+        "time": "天柱落下第一夜將盡",
+        "knowledge": "嚴少淵心裡還有一點遲疑",
+        "carry_forward": "城中央神廟還有人"
+      }
+    },
+    {
+      "number": 480,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "沉進海裡的燈",
+      "youtube_title": "第一座城滑進大海，城中的燈一盞盞熄在水下：岸上十萬人卻同時舉起了燈",
+      "duration_s": 170,
+      "logline": "臨波城滑進大海前，陸拾衝進神廟要把最後跪著的人拉出來；城沉了，仙洲只剩七天。",
+      "hook": "陸拾撞開神廟大門，裴遠和幾百個人跪在神像前，地板正往海那頭翹起；陸拾大吼：「站起來！」",
+      "hook_type": "line",
+      "mid_hook": "陸拾拖著裴遠往外跑，身後一半的人伸手跟上，另一半跪著不動，閉著眼念「飛升」；神廟的地板裂開了。",
+      "conflict": "城隨時會整片滑下海崖，陸拾只有一雙手。",
+      "turn": "裴遠在陸拾背上看見自己的玉牌整塊碎掉，終於哭著回頭喊跪著的人：「起來！是假的！」又有幾十個人站了起來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue",
+          "what": "陸拾背著裴遠，帶著肯伸手的人衝出神廟，雲知意御劍把最後一批人一個個拉上橋"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication",
+          "what": "裴遠當著逃出來的十萬人承認自己錯了，十萬人把手裡的火把換成燈"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "臨波城整片滑進海裡，城中的燈一盞接一盞熄在水下；最後一盞滅掉的同一刻，岸上十萬人同時舉起手裡的燈，轉身面向九根天柱。陸拾：「七天，夠了。」",
+        "question": "七天之內，凡人拔得掉九根天柱嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        5,
+        5,
+        5
+      ],
+      "tones": [
+        "texiao",
+        "henla",
+        "kongbu"
+      ],
+      "spectacle": "一整座海岸大城從崖邊滑進東海，水下的燈一盞盞熄滅，岸上十萬盞燈同時亮起，一起轉向遠方九根貫穿天地的光柱。",
+      "glamour_shot": "雲知意御劍掠過正在下沉的城，一手拉住最後一個人，月白長袍被海風與水霧鼓起，回眸看向陸拾。",
+      "setups": [],
+      "payoffs": [
+        "s08-t27"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "臨波城十萬人撤出大半",
+        "裴遠與幾十個跪柱者回頭",
+        "決定在七天內拔柱"
+      ],
+      "characters": [
+        "lu-shi",
+        "yun-zhiyi",
+        "s08-pei-yuan",
+        "a-zheng",
+        "yumin-princess",
+        "li-feng",
+        "hu-nainai",
+        "tuan-tuan",
+        "yan-shaoyuan"
+      ],
+      "locations": [
+        "臨波城神廟",
+        "臨波城",
+        "東海岸"
+      ],
+      "state": {
+        "time": "天柱落下第一夜黎明前",
+        "knowledge": "仙洲七天後滑進歸墟，九根柱各有一曜守著",
+        "carry_forward": "盟軍與十萬難民要在七天內拔掉九根天柱"
+      }
+    }
+  ]
+}

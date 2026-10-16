@@ -48,7 +48,7 @@ Each outline option (### 選項 A, ### 選項 B, …):
 - per chapter, the scenes as `template: what it shows`, using only the templates in `TEMPLATE_SPECS` and `screencast` (`tools/video/screencast`, a public official page's own stills): `shot: <the picture in a few words>` for the scenes the story is seen in (at least one per chapter; a new picture or card state every 5 to 8 seconds, shots under at least half of the runtime), cards for the numbers and lists;
 - for teaching cards, the preceding two bullets use teaching steps instead of story beats, no shots or illustration quota, and a short conclusion or next practical question instead of a forced closing question;
 - where the worked example sits;
-- the closing next step (one: the Mokaair article, the next video, or a specific question for the comments).
+- the closing: the answer with its number, one question for the comments, and the subscribe invitation; the Mokaair article belongs in the description, and the close never says what the next video is about (owner, 2026-10-13).
 
 Make the options genuinely different in angle or order, not three wordings of one outline. Vary the template sequence from the earlier videos'; lint warns when two videos' sequences are too alike.
 

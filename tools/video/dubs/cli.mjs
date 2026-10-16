@@ -8,7 +8,8 @@
 // one over by more is reported with a character budget per line, for the translator to shorten,
 // and no track is written for that locale until it does. A retake (`--redo`) whose window is
 // still over after that is given back its earlier take with `--keep-fitting`, once the worker has
-// no shortening round left.
+// no shortening round left. A drama is dubbed the same way when the narrator tells it alone
+// (spokenByCharacter); one whose characters speak is not, yet.
 import { existsSync, mkdirSync, readFileSync, renameSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
@@ -17,8 +18,8 @@ import { measureMixArgs, mixArgs } from "../assemble/drama.mjs";
 import { verifyBrandingAssets, wrapAudio } from "../assemble/branding.mjs";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { musicInputs, sfxInputs } from "../assemble/sound.mjs";
-import { isDrama, mixHash, resolveMusic, resolveSfx, sfxHash } from "../core/drama.mjs";
-import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
+import { isDrama, mixHash, NARRATOR, resolveMusic, resolveSfx, sfxHash } from "../core/drama.mjs";
+import { appliedBranding, brandingCurrent, introAtFrame, linesAcrossIntro, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { verifiedManualPresentation } from "../review/renewal-handoff.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { requireProjectLease } from "../core/project-lease.mjs";
@@ -36,6 +37,31 @@ import {
   DEFAULT_FORMAT, DUB_FORMATS, MAX_TEMPO,
   absorbOverruns, assembleTrack, bareWindow, defaultDubLocales, defaultRate, dubLocales, dubRequests, estimatedLengths, layoutDub, layoutDubTolerant, measureRate, overrunSummary, placeLines, shrinkBudgets, speechFingerprint, translationHash, windowLimit,
 } from "./plan.mjs";
+
+/**
+ * The first line of a drama that someone other than the narrator speaks, as { scene, line,
+ * speaker, name }, or null. A dub reads every line in one voice, the narration's in the locale's
+ * style, so a drama whose characters speak needs a foreign voice per character, which is not built
+ * (docs/videos/DUBS.md). A drama the narrator tells alone is dubbed like a slides video, with or
+ * without a cast: a brand story's recurring figures are drawn and never heard (core/story.mjs
+ * refuses any other speaker), and a cute explainer has no cast at all.
+ *
+ * Three layers decide whether a drama is dubbed. The site sees only the project row, so it lets
+ * the owner tick a drama's dub by category: apps/api/app/video_reviews/admin_service.py
+ * DUBBABLE_DRAMA_CATEGORIES refuses the choice, apps/web/components/admin-video-reviews.tsx
+ * DUBBABLE_DRAMA_CATEGORIES greys out the box. This reads the script and has the last word: a
+ * relabelled drama whose characters speak is refused here with exit 3, which the worker records as
+ * a skipped dub (flow.mjs giveUpDub) while the video goes on.
+ */
+export function spokenByCharacter(doc) {
+  if (!isDrama(doc)) return null;
+  for (const { scene, line } of eachLine(doc)) {
+    if (line.speaker === undefined || line.speaker === null || line.speaker === NARRATOR) continue;
+    const name = (doc.characters ?? []).find((character) => character?.id === line.speaker)?.name ?? null;
+    return { scene: scene.id, line: line.id, speaker: line.speaker, name };
+  }
+  return null;
+}
 
 // When a stretched window still sticks out (atempo rounds), the next try is this much faster.
 const TEMPO_RETRY_STEP = 0.02;
@@ -345,8 +371,13 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     await ffmpeg.run(ffmpeg.tools.ffmpeg, encodeArgs(files.narration, loudness, bodyTrack, values.format));
   }
   if (branding) {
+    // An intro after the condensation sits at the cut's own body frame; a dubbed line running
+    // across it would be split by the bumper, so it is refused rather than cut.
+    const introAt = introAtFrame(branding);
+    const crossing = linesAcrossIntro(lines, introAt);
+    if (crossing.length) throw new UsageError(`dubbed ${crossing.join(", ")} would run into the intro at body frame ${introAt}; shorten the translation or run dub with a faster tempo`);
     const partial = path.join(files.dir, `branded.partial.${values.format}`);
-    await wrapAudio({ tools: ffmpeg.tools, exec: ffmpeg.run, bodyFile: bodyTrack, bodyFrames: timeline.total_frames, branding: selection, outFile: partial, outputCodec: CODECS[values.format] });
+    await wrapAudio({ tools: ffmpeg.tools, exec: ffmpeg.run, bodyFile: bodyTrack, bodyFrames: timeline.total_frames, branding: selection, outFile: partial, outputCodec: CODECS[values.format], introAtFrame: introAt });
     renameSync(partial, track);
   }
   const record = {
@@ -426,7 +457,11 @@ async function dub(args, ctx) {
     return EXIT.lint;
   }
   const { doc } = project;
-  if (isDrama(doc)) throw new UsageError("dub is for slides videos; a drama mixes its own audio (docs/videos/DUBS.md)");
+  const spoken = spokenByCharacter(doc);
+  if (spoken) {
+    const who = spoken.name && spoken.name !== spoken.speaker ? `${spoken.speaker} (${spoken.name})` : spoken.speaker;
+    throw new SpeechError(`a drama whose characters speak cannot be dubbed yet: line ${spoken.line} in scene ${spoken.scene} is spoken by ${who}, and a dub reads every line in the narrator's one voice (docs/videos/DUBS.md)`, { who: "owner" });
+  }
   if (doc.voice.provider !== "gemini") throw new SpeechError(`dubs need a Gemini voice, which speaks every language; the narration voice is ${doc.voice.name}`, { who: "owner" });
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   const workBase = resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home });
@@ -451,7 +486,7 @@ async function dub(args, ctx) {
   // Not while another producer holds the project (core/project-lease.mjs); the worker's unit holds it already.
   requireProjectLease(workdir, { owner: "dub", now: ctx.now, as: (error) => new SpeechError(error.message, { code: error.code, who: "owner" }) });
   const credentials = requireCredentials(ctx);
-  const clientOpts = clientOptions(ctx, credentials);
+  const clientOpts = { ...clientOptions(ctx, credentials), videoSlug: doc.slug };
   const status = await speechStatus(clientOpts);
   if (!status.gemini_configured) throw new SpeechError("the site has no Gemini key yet (admin: API 與供應商設定 → AI 服務)", { who: "owner" });
   const remaining = geminiRemaining(status);
