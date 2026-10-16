@@ -4,6 +4,8 @@
 
 五集均已完成大綱層級獨立覆核，於 10／16 01:01 送至後台。站主其後選定**五集皆 A**，10／16 07:53 再讀回五張原審核卡皆為 approved／A，brief 雜湊吻合。送審歷史見 [submission.json](submission.json)，核准讀回與製作額度見 [decision-20261016.json](decision-20261016.json)，覆核範圍與修訂見 [outline-review.md](outline-review.md)。
 
+現行稿件檢查需要 `## 問題`、`## 一句答案`、`## 站主觀點` 和 `## 大綱`。五份 brief 已從原案補齊這些欄位，並同步已核准 A／預算狀態；A／B 選項正文逐字未改。由於核准綁定整份 brief 雜湊，10／16 08:04 將五份新版再送後台，站主再次逐集核准 A；08:07 讀回五張卡片均為 approved／A，雜湊吻合。新版送審 ID 見 [format-resubmission.json](format-resubmission.json)，新版核准讀回見 [format-decision-20261016.json](format-decision-20261016.json)。
+
 ## 建議五集皆選 A
 
 | 集數／題材 | A：推薦主線 | B：替代重心 | 完整企劃 |
@@ -24,8 +26,8 @@ A 的共通優點是事件往前走，觀眾容易跟上每次新線索。各集
 
 ## 審核與接續
 
-依 `curio-episode`／`youtube-video` 流程，現在按已核准的 A 案寫正式稿，完成查核與敘事審稿，再送 [影片後台](https://mokaair.com/zh-TW/admin/videos) 核准劇本。付費製作以本批已核准額度為準，每集乾跑與核算後才執行。
+依 `curio-episode`／`youtube-video` 流程，現在按核准的新版 A 案寫正式稿，完成查核與敘事審稿後送 [影片後台](https://mokaair.com/zh-TW/admin/videos) 核准劇本。付費製作以本批已核准額度為準，每集乾跑與核算後才執行。
 
 每集的 `research.md` 記錄本次開啟來源與讀取限制，`claims.md` 區分可用事實與推論。選綱用的交叉覆核不代替正式劇本的逐句查核與十三題盲評。
 
-目前尚無這五集的正式劇本、旁白、插圖或成片；本批付費呼叫為 0。
+正式劇本已在本機撰寫，正進行獨立查核與敘事審稿；目前沒有旁白、插圖或成片，本批付費呼叫為 0。
