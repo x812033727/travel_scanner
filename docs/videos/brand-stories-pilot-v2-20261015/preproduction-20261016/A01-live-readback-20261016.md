@@ -4,10 +4,10 @@
 
 ## 主機來源與可重現檔案
 
-- PuTTY `hostinger2` 的正式機 checkout 為 `3cdbbd68b667ea202d10b8fd3c611a97cd809217`，`git status --porcelain` 為空。執行中的 `video-worker` 可讀 `/opt/mokaair/docs/videos/` 與 `/var/lib/mokaair/video-work/`。
+- PuTTY `<saved-session>` 的正式機 checkout 為 `3cdbbd68b667ea202d10b8fd3c611a97cd809217`，`git status --porcelain` 為空。執行中的 `video-worker` 可讀 `/opt/mokaair/docs/videos/` 與 `/var/lib/mokaair/video-work/`。
 - 工人 `/opt/mokaair/tools/video/automation/story.mjs` SHA-256：`f9825a7ce9649111d3e49ab33a2846a8be61111dd2cb2df40db3b68b974676f3`；實際匯出的 `PANEL_INSTRUCTIONS` 文字 SHA-256：`3fb840dee13468f0133f9001d1d16f2930dfec29075145ddc6bc1e8a609bd4b3`。這兩項與 Git SHA 一起辨識讀回環境，不代替完整映像來源查證。
-- 以二進位安全的 PuTTY stdout 串流保存 allowlist tar 到本機 Temp：`C:\Users\x8120\AppData\Local\Temp\a01-prod-snapshot-20261016-0624.tar`，**6,144,000 bytes**，SHA-256 `3ec1f7d2ade117456f875dab1b2eae8fa3f2d2d6372020bc49f1f50806b12676`。PuTTY 與 `tar -tf` 均 exit 0；280 成員為 199 個一般檔、81 個目錄，路徑均落在核准的 A01 文件、工作 JSON／Markdown、80 事件稽核目錄和安裝收據範圍，沒有媒體 bytes 或符號連結。`story/recheck-audit` 為 80 個事件目錄、80 個 `index.json`，沒有非 JSON 檔或符號連結；另有 13 份 `installation-receipt.json`。
-- 本機檢查報告：`C:\Users\x8120\AppData\Local\Temp\a01-snapshot-inspection-20261016-0624.json`，SHA-256 `19b7a86171d466b8b8cc8a38f4c0d2c93e49be7e8aa4da0ab87a027c88eead27`。`inspect.mjs` exit 1，`integrity=REJECTED`，錯誤為 `SOURCE_DRIFT_FROM_TIP`。這是明確失敗，不是快照完整通過。
+- 以二進位安全的 PuTTY stdout 串流保存 allowlist tar 到本機 Temp：`<home>\AppData\Local\Temp\a01-prod-snapshot-20261016-0624.tar`，**6,144,000 bytes**，SHA-256 `3ec1f7d2ade117456f875dab1b2eae8fa3f2d2d6372020bc49f1f50806b12676`。PuTTY 與 `tar -tf` 均 exit 0；280 成員為 199 個一般檔、81 個目錄，路徑均落在核准的 A01 文件、工作 JSON／Markdown、80 事件稽核目錄和安裝收據範圍，沒有媒體 bytes 或符號連結。`story/recheck-audit` 為 80 個事件目錄、80 個 `index.json`，沒有非 JSON 檔或符號連結；另有 13 份 `installation-receipt.json`。
+- 本機檢查報告：`<home>\AppData\Local\Temp\a01-snapshot-inspection-20261016-0624.json`，SHA-256 `19b7a86171d466b8b8cc8a38f4c0d2c93e49be7e8aa4da0ab87a027c88eead27`。`inspect.mjs` exit 1，`integrity=REJECTED`，錯誤為 `SOURCE_DRIFT_FROM_TIP`。這是明確失敗，不是快照完整通過。
 
 ## 唯一來源差異：共用 lexicon 增加兩個空詞條
 
@@ -29,10 +29,10 @@
 
 | 讀回 | 本機 Temp 檔案 | 結果 |
 | --- | --- | --- |
-| 第一筆 SQL（約 06:21 UTC） | `C:\Users\x8120\AppData\Local\Temp\a01-readback-20261016-0621.jsonl` | PuTTY exit 0；series `active`、episode 1 `started`、project `blocked`，retry ID 均為 null；110 筆 stage job（109 `succeeded`、1 `uncertain`），0 筆 media job。 |
-| 第二筆 SQL（06:26:30 UTC） | `C:\Users\x8120\AppData\Local\Temp\a01-readback-20261016-0626.jsonl` | PuTTY exit 0；與第一筆原始 bytes 相同。唯一 `uncertain` stage job ID 為 `a4232619-a9a0-4488-9964-c66d2287b22a`。 |
-| 第一筆預算帳本（約 06:22 UTC） | `C:\Users\x8120\AppData\Local\Temp\a01-budget-readback-20261016-0622.json` | PuTTY exit 0，SHA-256 `65b8f04cf07ac9d44956195653fe1028b97dc5dbb363fac6ac4c38a41e621141`。US$25 上限，reserved／settled 均 0，0 筆 operation。 |
-| 第二筆預算與工作目錄（06:25:52 UTC） | `C:\Users\x8120\AppData\Local\Temp\a01-host-readonly-closeout-20261016.txt` | PuTTY exit 0，SHA-256 `b10eaf8af9c7a401941b66099a8127012bf45f65acbae4b3e720cd0ad58a38c4`；預算欄位仍相同。 |
+| 第一筆 SQL（約 06:21 UTC） | `<home>\AppData\Local\Temp\a01-readback-20261016-0621.jsonl` | PuTTY exit 0；series `active`、episode 1 `started`、project `blocked`，retry ID 均為 null；110 筆 stage job（109 `succeeded`、1 `uncertain`），0 筆 media job。 |
+| 第二筆 SQL（06:26:30 UTC） | `<home>\AppData\Local\Temp\a01-readback-20261016-0626.jsonl` | PuTTY exit 0；與第一筆原始 bytes 相同。唯一 `uncertain` stage job ID 為 `a4232619-a9a0-4488-9964-c66d2287b22a`。 |
+| 第一筆預算帳本（約 06:22 UTC） | `<home>\AppData\Local\Temp\a01-budget-readback-20261016-0622.json` | PuTTY exit 0，SHA-256 `65b8f04cf07ac9d44956195653fe1028b97dc5dbb363fac6ac4c38a41e621141`。US$25 上限，reserved／settled 均 0，0 筆 operation。 |
+| 第二筆預算與工作目錄（06:25:52 UTC） | `<home>\AppData\Local\Temp\a01-host-readonly-closeout-20261016.txt` | PuTTY exit 0，SHA-256 `b10eaf8af9c7a401941b66099a8127012bf45f65acbae4b3e720cd0ad58a38c4`；預算欄位仍相同。 |
 
 兩次工作目錄觀察均未見全域 `STOP`、A01 `STOP` 或 A01 `LEASE`。`run-receipts` 只有 1 份 archived JSON（60,621 bytes，SHA-256 `e4baf4ed638d4d8ce66738f40791e1cdf9c21e86d3638320a62e0b7c378efa3d`），沒有未封存的 run journal；A01 工作目錄內所查的圖片、音訊與影片副檔名檔案數均為 0。`story/reviews/script-review.json` **不存在**。第一份目錄清單另存於本機 Temp：`a01-host-readonly-inventory-20261016.txt` SHA-256 `1e6e7de75385c01f77bd15d4bfaefa8611ce33985833425bb2fb5718cbd5a65e`；來源／媒體路徑核對清單 `a01-host-readonly-files-20261016.txt` SHA-256 `2d34fcbc1c7f8c5e829781a6fc904d041649224bdfbf1b9fd9915c4d71abc2b2`。
 

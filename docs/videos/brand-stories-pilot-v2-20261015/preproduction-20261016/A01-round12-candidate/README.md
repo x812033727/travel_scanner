@@ -45,7 +45,7 @@
 在儲存庫根目錄執行：
 
 ```powershell
-& 'C:\Users\x8120\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' 'docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-round12-candidate/build.mjs' --check
+node 'docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-round12-candidate/build.mjs' --check
 ```
 
 `--check` 只讀所有 round11 base、`additions.mjs` 與 `source-delta.json`，確認新候選的六章、series、逐句來源、估時與 manifest 都可位元組重現；`--write` 只會改本資料夾。`manifest.json` 對六章、source map、validation 作 SHA-256 綁定。

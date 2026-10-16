@@ -49,11 +49,11 @@ Collect the database projection with **SELECT only**, in a read-only transaction
 
 ```powershell
 $sqlPath = 'docs/videos/brand-stories-pilot-v2-20261015/preproduction-20261016/A01-host-export-candidate/readback.sql'
-Get-Content -LiteralPath $sqlPath -Raw -Encoding utf8 | & 'C:\Program Files\PuTTY\plink.exe' -batch -load hostinger2 -l root 'cd /root/travel_scanner && docker compose -f docker-compose.prod.yml exec -T postgres psql -X -q -t -A -U travel -d travel_scanner -v ON_ERROR_STOP=1 -f -'
-& 'C:\Program Files\PuTTY\plink.exe' -batch -load hostinger2 -l root 'cd /root/travel_scanner && docker compose -f docker-compose.prod.yml exec -T api python -m app.video_budget.reconcile_cli --slug story-rolling-suitcase-v2'
+Get-Content -LiteralPath $sqlPath -Raw -Encoding utf8 | & 'C:\Program Files\PuTTY\plink.exe' -batch -load '<saved-session>' -l root 'cd /root/travel_scanner && docker compose -f docker-compose.prod.yml exec -T postgres psql -X -q -t -A -U travel -d travel_scanner -v ON_ERROR_STOP=1 -f -'
+& 'C:\Program Files\PuTTY\plink.exe' -batch -load '<saved-session>' -l root 'cd /root/travel_scanner && docker compose -f docker-compose.prod.yml exec -T api python -m app.video_budget.reconcile_cli --slug story-rolling-suitcase-v2'
 ```
 
-Check each process exit code before using its output. `readback.sql` is sent through stdin and is not deployed by this work. The `psql` output is one JSON object between transaction markers; reject null `series`, `episode` or `project`. The second command must have no reconciliation action. The collection remains incomplete until a reviewer verifies exact audit pins, host origin, STOP/lease/journal/asset enumeration, budget output, and a second readback without drift. **No production install or paid call is authorized by this recipe.**
+Replace `<saved-session>` with the approved local PuTTY session name. Check each process exit code before using its output. `readback.sql` is sent through stdin and is not deployed by this work. The `psql` output is one JSON object between transaction markers; reject null `series`, `episode` or `project`. The second command must have no reconciliation action. The collection remains incomplete until a reviewer verifies exact audit pins, host origin, STOP/lease/journal/asset enumeration, budget output, and a second readback without drift. **No production install or paid call is authorized by this recipe.**
 
 The release and three control-file observations can be collected with these read-only commands. The `PANEL_INSTRUCTIONS` hash is the actual exported rule text, whereas `worker_sha256` is only the `story.mjs` file hash; neither replaces the deployed Git SHA or a full worker provenance check.
 
