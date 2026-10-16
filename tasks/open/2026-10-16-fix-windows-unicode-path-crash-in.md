@@ -20,7 +20,7 @@ scope:
 ## Why
 
 In a Windows checkout whose path contains `ㄐ` (for example
-`C:/Users/x8120/.codex/worktrees/curio-next-five/travel_scanㄐ`), system Node
+`<home>/.codex/worktrees/curio-next-five/travel_scanㄐ`), system Node
 v24.13.0 crashes while `package-runtime.mjs` recursively copies `tools/video`
 to a temporary portable batch. The test at `runner.test.mjs:363` exits at its
 first `execFileSync` (`:367`) with Windows status `3221226505` (`0xC0000409`)

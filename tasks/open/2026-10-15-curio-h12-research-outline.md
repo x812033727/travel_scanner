@@ -107,3 +107,9 @@ verify-4.md 的獨立事實與連貫性核對對 video.json DF094247…、script
 站主核准將門的反鎖界線、外套疑問併到首次出現的句子，刪除重複鏡頭，保留文件比較畫面而不再重念年份。隨後刪去兩個不增加事實的角色修飾詞，將詩段橋句改為只往後走。獨立查核者對 `script.md` SHA-256 `3B9FCEA7933E0F6A2B2C680A8EADA40288C15E754042C4624DD81117D1FA6ED1` 判史實 PASS；新一位只讀劇本的盲評者判 13／13 PASS。三處畫面場景位置修正後，查核者另對 `video.json` SHA-256 `1AD357BBCB923FF8EA94444680BB931DBFC5874D7872E0CD636EFB7AAD94E21F` 判畫面 PASS。完整改動及哈希見 `revision-9.json`。
 
 87 景／89 句、82 插畫景，`lint` 0 errors／4 warnings，估 8.4 分鐘（尚未合成實測）。`review-push --gate script` 已送 `/admin/videos`，exit 0；即時 `review-pull` 顯示 `script: waiting for the owner`。未合成旁白／插圖，H12 付費呼叫仍為零。後續要以後台讀回此版劇本核准後，才開始本集繁中製作；舊版審核或其他四集的核准不代替本版。
+
+## 2026-10-16 劇本核准與繁中旁白製作中
+
+站主回覆已在後台核准第九版劇本；`review-pull --gate script` 現場讀回 `script: approval recorded`，`status --slug curio-h12` 顯示 `script approved`。合成前 `tts --dry-run` 核對 89 請求、1,925 計費字元、Gemini Sulafat 可用。共用停手帳本已預留 TTS US$0.20、後續 Gemini 轉寫與 TypeSafe Jev 音訊 QA US$0.50，低於 H12 US$6 與五集 US$30 上限；TTS 正在逐句執行，尚未完成實測時長與音訊 QA，尚未送旁白後台。
+
+TTS 已完成 89 請求、1,925 計費字元，正文時間軸 `14168/30 = 472.267` 秒；扣除 `ending-outro` 的 14.4 秒後，正文約 457.867 秒，未達 480 秒硬下限。US$0.20 在共用帳本以保守估額結算，並非供應商最終發票。此版旁白不送站主音訊審核，也暫不執行付費 `check-audio`；先增補約 35–45 秒有一手來源的新調查內容，完成獨立事實查核與十三題新盲評，改稿後重新送劇本審核，再只合成新增／改動的句子。原 89 句音檔保留供快取使用。

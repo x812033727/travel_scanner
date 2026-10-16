@@ -75,7 +75,7 @@ H11 將材料定年、字詞分布、新聞稿撤下、背面透字、筆跡推�
 
 站主已在後台核准本版劇本，`status --slug curio-h11` 現場讀回 `script approved`。`video.json` SHA-256 仍是 `FC9B6B1FF2F94AB75EA1AA2D4E6753AD1D001B0DE82CE693A1D3FD89F8E801A4`，`script.md` SHA-256 仍是 `484436B7CA89D3D2F0E372D87768F0533B319B72ED40FCFE4413ADB26FE8E108`。保留核准版本，未修改正文。
 
-`tts --dry-run` 為 Gemini Sulafat 73 請求、2,346 計費字元；`keyframes --dry-run` 為 MiniMax image-01 70 景，首輪約 US$0.94、最多三 take 約 US$2.83。共用停手帳本 `C:/Users/x8120/mokaair-work/videos/curio-next-five-20261016/review/spend-ledger.json` 先保留 H11 TTS US$0.20，再實際合成 73/73 請求、75 句 WAV，實測旁白 09:08.2、2,346 計費字元；日誌無 hold，帳本按 US$0.20 保守估算結算，非供應商美元帳單。
+`tts --dry-run` 為 Gemini Sulafat 73 請求、2,346 計費字元；`keyframes --dry-run` 為 MiniMax image-01 70 景，首輪約 US$0.94、最多三 take 約 US$2.83。共用停手帳本 `<home>/mokaair-work/videos/curio-next-five-20261016/review/spend-ledger.json` 先保留 H11 TTS US$0.20，再實際合成 73/73 請求、75 句 WAV，實測旁白 09:08.2、2,346 計費字元；日誌無 hold，帳本按 US$0.20 保守估算結算，非供應商美元帳單。
 
 音訊 QA 另先保留 US$0.50，`check-audio` 完成 75/75 轉寫、1 次 Jev 判讀：48 句逐字相符、13 句同音／語助詞、4 句 Jev 接受，另有 10 句旗標（`v2405e28`, `v0e564e3`, `v16d9e2d`, `va919cc7`, `v470a2c5`, `v1df5834`, `v439465f`, `v2ebbd0d`, `vd56bdd7`, `v75e1ebb`）。QA US$0.50 以請求數保守估算結算；H11 累計估算 US$0.70，無供應商最終美元帳單。`review/audio.html` 已建立。本機 Whisper small 不看稿獨立轉寫完 10 句，逐句判讀見 `docs/videos/curio-h11/audio-qa-1.md`：0 句足以直接重錄、6 句支持辨識漂移、4 句仍需站主試聽（`v0e564e3`、`v1df5834`、`v2ebbd0d`、`vd56bdd7`）。**旁白尚未核准、未送分鏡、未產圖。**先把音訊與報告送後台；站主聽後若指出確定錯字，再定向重錄並重新核准。
 
@@ -94,3 +94,7 @@ H11 將材料定年、字詞分布、新聞稿撤下、背面透字、筆跡推�
 最終 70／70 鏡評審通過，0 `needs_review`；manifest SHA-256 `30B7D6CEB8CD441A1D85DC8BDA684C90E959753B954ECD1216FE362C96EFFC99`。三頁聯絡表已逐頁目視，無新增史實矛盾；詳細缺陷、修法與三頁 SHA 見 `docs/videos/curio-h11/keyframes-qa-1.md`。本機媒體帳本工具估算 US$1.458、108 張 image-01 圖片／108 次 Gemini 評審，無 held／unknown／failed；主代理已將修圖預留按 US$0.0675 結算，共用帳本本集與音訊 US$0.70 合計 US$2.158、無未結預留，低於本集 US$6。未製成片或上傳。
 
 `review-push --slug curio-h11 --gate storyboard` 已送出並回報 pending；`review-pull --slug curio-h11 --gate storyboard` 現場讀回 `storyboard: waiting for the owner`。三頁聯絡表已交站主查看；需站主在 `/admin/videos` 核准本版分鏡才可進成片。未製成片、未上傳。
+
+## 2026-10-16 分鏡核准與成片製作中
+
+站主回覆已看過三頁聯絡表並核准 H11 分鏡；`review-pull --gate storyboard` 和 `status --slug curio-h11` 現場讀回 `storyboard approved`，綁定既有 70／70 通過的 manifest。`render` 已完成（3 個需畫的卡片狀態），`clips` 乾跑與實跑均確認 70 張 still、0 個付費片段，沒有新圖或影片生成費用。`assemble` 正在本機編碼；尚未完成最終 QA、成片送審或上傳。

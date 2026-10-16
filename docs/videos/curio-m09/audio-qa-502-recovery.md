@@ -15,7 +15,7 @@
 
 ## 已執行的單筆恢復
 
-- 已將 held JSON 複製到 `C:/Users/x8120/mokaair-work/videos/curio-m09/review/holds/80a7eac4f2a5a5b6d09d9d07b088fa3f434e696f56db99d35a151266ed8c4230.before-forget.json`；複本與原件 SHA-256 同為 `50CC5B5799E8D58A8CEB1505E15B725918291C7459E6B1A3254CD4733623B921`。
+- 已將 held JSON 複製到 `<home>/mokaair-work/videos/curio-m09/review/holds/80a7eac4f2a5a5b6d09d9d07b088fa3f434e696f56db99d35a151266ed8c4230.before-forget.json`；複本與原件 SHA-256 同為 `50CC5B5799E8D58A8CEB1505E15B725918291C7459E6B1A3254CD4733623B921`。
 - 對 exact request SHA 執行一次 `speech-journal.mjs forget`，CLI 回報 `forgot ... (held)`；確認原 held JSON 已不存在、複本仍具相同 SHA。其餘 journal 未處理。下一次 `check-audio` 仍須核對快取和完整 95 句結果。
 
 ## 續跑結果

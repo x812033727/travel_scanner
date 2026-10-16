@@ -87,7 +87,7 @@ video SHA-256 `e11a22a7a29086a06a8261943cd3e78bea6775223705cb3eab9b8dbdffa1a559`
 
 ## 2026-10-16 新版雙重覆核
 
-製作協調者未撰寫 H10 後記，對 `4EF199C9…` 的兩句新增台詞、數字卡、說明欄與原始 Waterloo 2026 發布重新核對；[verify-3.md](../../docs/videos/curio-h10/verify-3.md) 判史實 PASS，解除前版新鮮度 HOLD。未讀前版盲評的獨立讀者只看目前 `script.md`，十三題全部答是，含必答 12／12；答案在 `C:/Users/x8120/mokaair-work/videos/curio-next-five-20261016/review/blind-curio-h10-strict-r4.json`，主代理以 `narrative --answers` 匯入並讀回 passed。原有兩個畫面 lint warnings 仍在，不影響送審。下一步：執行 `script` 與 `review-push --gate script`，由站主審閱新版劇本；核准讀回前不得開始 H10 付費配音或產圖。
+製作協調者未撰寫 H10 後記，對 `4EF199C9…` 的兩句新增台詞、數字卡、說明欄與原始 Waterloo 2026 發布重新核對；[verify-3.md](../../docs/videos/curio-h10/verify-3.md) 判史實 PASS，解除前版新鮮度 HOLD。未讀前版盲評的獨立讀者只看目前 `script.md`，十三題全部答是，含必答 12／12；答案在 `<home>/mokaair-work/videos/curio-next-five-20261016/review/blind-curio-h10-strict-r4.json`，主代理以 `narrative --answers` 匯入並讀回 passed。原有兩個畫面 lint warnings 仍在，不影響送審。下一步：執行 `script` 與 `review-push --gate script`，由站主審閱新版劇本；核准讀回前不得開始 H10 付費配音或產圖。
 
 已執行 `script --slug curio-h10`，正式 `script.md` SHA-256 仍為 `A4A64B02732D97C9DDB216B2CD42F789D95A0B0ADEB8AB3CE22B3C9CA679E596`；`review-push --gate script` 成功，隨後 `review-pull --gate script` 讀回 **waiting for the owner**。目前等待站主在 `/admin/videos` 核准這份劇本或提出改字；H10 尚未付費製作。
 
