@@ -70,6 +70,23 @@ def test_the_defaults_are_stable_catalog_entries_of_their_kind() -> None:
         assert found in media_options(vendor, kind)  # type: ignore[arg-type]
 
 
+def test_minimax_offers_music_3_0_first_and_lyria_stays_the_default() -> None:
+    """The settings tab picks a vendor's first model when the vendor is switched, so music-3.0
+    (the recommended one) comes first; the existing default is not moved by the addition."""
+    offered = media_options("minimax", "music")
+    assert [model.id for model in offered] == ["music-3.0", "music-2.6"]
+    for model in offered:
+        assert find_model("minimax", "music", model.id) is model
+        assert model.status == "stable" and model.usd_per_track == 0.15 == PRICES[model.id]
+        assert model.note is not None and "2026-08-20" in model.note and "5 分鐘" in model.note
+        assert model.reference_images == 0 and not model.resolutions and not model.durations
+    assert DEFAULT_MUSIC == ("gemini", "lyria-3.5")
+    assert find_model("minimax", "music", "music-3.0-free") is None, "the free models are gone"
+    assert find_model("minimax", "music", "lyria-3.5") is None
+    assert find_model("gemini", "music", "music-3.0") is None
+    assert find_model("minimax", "image", "music-3.0") is None
+
+
 def test_lite_uses_the_gemini_api_id_and_conservative_1080p_price() -> None:
     lite = find_model("gemini", "clip", "veo-3.1-lite-generate-preview")
     assert lite is not None

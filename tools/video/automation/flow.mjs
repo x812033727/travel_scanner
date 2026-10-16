@@ -51,7 +51,7 @@ import { NARRATIVE_VARIANT } from "./flow-constants.mjs";
 import { explainerProfile, explainerVariants, isExplainerStageVariant } from "./explainer-series.mjs";
 import { JOB_GONE_KIND, RunReceiptError } from "./run-receipts.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
-import { advanceStory, fixStoryPrompts } from "./story.mjs";
+import { advanceStory, fixStoryPrompts, PILOT_SCRIPT_REFERENCES } from "./story.mjs";
 import { instructionsFor, parseAnswer, references, SLIDES_CAMERA_WORDS } from "./prompts.mjs";
 import { registerLine, registerSummary, setPauseBeats } from "./register.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
@@ -3487,10 +3487,15 @@ export class Automation {
     // The retakes are spent and Jev still hears some lines wrong: the listener rewords those
     // lines, they are retaken and checked again, MAX_REWRITE_ROUNDS rounds in all
     // (docs/videos/HANDS-OFF.md §旁白). What is still flagged after that waits for the owner.
+    // The two v2 story pilots have a reviewed six-chapter source of truth. Rewriting only
+    // video.json here would bypass that review and immediately buy TTS for unreviewed words.
+    // Their remaining flags go to the owner instead; a rejection sends the story listener back
+    // through the chapter merge, narrative panel and pilot script receipt before new TTS.
+    const pilotScriptLocked = Object.hasOwn(PILOT_SCRIPT_REFERENCES, state.slug);
     let rounds = 0;
     let rewritten = 0;
     let problems = [];
-    while (check.code === 1 && (state.rewrites ?? 0) < MAX_REWRITE_ROUNDS) {
+    while (check.code === 1 && !pilotScriptLocked && (state.rewrites ?? 0) < MAX_REWRITE_ROUNDS) {
       const round = await this.rewriteNarration(state, problems);
       if (round.stopped) return round.stopped;
       rounds += 1;
@@ -3521,7 +3526,8 @@ export class Automation {
     const unrecorded = await this.pulled(state, "audio", timeline);
     if (unrecorded) return unrecorded;
     const rewriting = rounds ? `; ${rewritten} lines rewritten in ${rounds} rewrite round${rounds === 1 ? "" : "s"}` : "";
-    return `${state.slug}: narration checked (${check.code === 0 ? "Jev passed every line" : "some lines flagged"}${rewriting}) and sent for review`;
+    const pilotFlagged = pilotScriptLocked && check.code === 1 ? "; pilot audio waits for owner review before any script rewrite" : "";
+    return `${state.slug}: narration checked (${check.code === 0 ? "Jev passed every line" : "some lines flagged"}${rewriting}) and sent for review${pilotFlagged}`;
   }
 
   /**

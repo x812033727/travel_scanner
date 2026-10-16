@@ -1,6 +1,6 @@
 # 品牌故事：工人怎麼把一個企劃做成影片
 
-品牌故事是 AI 漫劇底下的一種作品類型（設計在 `docs/videos/STORY.md`）：一支 12–15 分鐘、只有旁白、約 90 張卡通靜態圖加緩慢運鏡、燒錄字幕的非虛構短片，講一個品牌、一件日用品或一個天天在用的標準怎麼來、生意怎麼運作。影片的 `format` 仍是 `drama`，100 個故事是同一部 `kind: "story"` 作品的 100 集。這份寫**工人怎麼做**與人手動接手時看哪裡；實作在 `tools/video/automation/story.mjs`（提示詞在 `tools/video/automation/story-prompts.mjs`），測試在 `tools/video/automation/story.test.mjs`。
+品牌故事是 AI 漫劇底下的一種作品類型（設計在 `docs/videos/STORY.md`）：新版約 10 分鐘、只有旁白、MiniMax 可愛插圖加緩慢運鏡，繁中字幕做成可關閉的 CC，成片核准後站主可手動選英／日／韓配音；原 12–15 分鐘、約 90 張圖與燒錄字幕規格留作歷史設計。它講一個品牌、一件日用品或一個天天在用的標準怎麼來、生意怎麼運作。影片的 `format` 仍是 `drama`，100 個故事是同一部 `kind: "story"` 作品的 100 集。這份寫**工人怎麼做**與人手動接手時看哪裡；實作在 `tools/video/automation/story.mjs`（提示詞在 `tools/video/automation/story-prompts.mjs`），測試在 `tools/video/automation/story.test.mjs`。
 
 ## 工人拿到什麼
 

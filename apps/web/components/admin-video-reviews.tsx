@@ -113,21 +113,13 @@ function chosenBody(choices: Choices): Record<string, Required<LocaleChoice>> {
 // languages to pre-tick (docs/videos/LANGUAGES.md; the settings tab, admin-video-settings.tsx).
 type LanguageDefaults = { caption_locales?: string[]; drama?: { drama_caption_locales?: string[] } };
 
-// The drama categories whose dub the owner may tick (docs/videos/DUBS.md): a cute explainer is told
-// by the narrator alone. The page sees the project row, not the script, so it decides by category,
-// as the server does when it stores the choice (apps/api/app/video_reviews/admin_service.py
-// DUBBABLE_DRAMA_CATEGORIES); the dub tool reads the script and has the last word
-// (tools/video/dubs/cli.mjs spokenByCharacter), skipping the dub of a drama whose characters speak.
-// A brand story is narrator-only too, but its zh-TW subtitles are burned in: the owner's call.
-const DUBBABLE_DRAMA_CATEGORIES: ReadonlySet<string> = new Set(["explainer"]);
-
 /**
  * The languages this video gets on top of Traditional Chinese and what of each: titles and
  * descriptions, closed captions, a dub track (docs/videos/LANGUAGES.md). The owner decides once
  * the final cut is approved; the worker then makes only what is ticked and reports each part back,
  * and the video is not scheduled until every chosen part is made. A dub track is timed with its
- * captions, so ticking it ticks them; a drama can be dubbed only in a category the narrator tells
- * alone (DUBBABLE_DRAMA_CATEGORIES, docs/videos/DUBS.md), its box greyed out otherwise. The panel
+  * captions, so ticking it ticks them; the server marks a drama dubbable only when its category and
+  * current cut qualify (docs/videos/DUBS.md), its box greyed out otherwise. The panel
  * stays after the video is public: more can be ticked, and unticking only holds for what is not on
  * YouTube yet. A dub track the worker gave up on can be asked for again from its cell
  * (docs/videos/DUBS.md): the cell says where that request stands, how the last one ended, and why
@@ -137,7 +129,11 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
   const t = useTranslations("admin.videoReviews");
   const when = useWhen();
   const drama = (project.format ?? "slides") === "drama";
-  const dramaDubOff = drama && !DUBBABLE_DRAMA_CATEGORIES.has(project.category ?? "");
+  // The detail response is authoritative: category alone cannot show whether a story's current
+  // cut has burned subtitles. A previous API omits the flag; retain its explainer behavior while
+  // keeping stories locked until the server explicitly verifies a switchable-CC cut.
+  const dramaDubOff = drama && !(project.dub_allowed ?? (project.category === "explainer"));
+  const storyDubOff = dramaDubOff && project.category === "story";
   // The boxes follow the saved choice whenever it changes (a save, or another admin's), while an
   // edit in progress survives the page's minute-by-minute reads that bring the same choice back.
   const saved = choicesOf(project.locales);
@@ -277,6 +273,7 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
     {!finalApproved(project) ? <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesLater")}</p> : <>
       <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesHelp")}</p>
       <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languageProgressHelp")}</p>
+      {storyDubOff && <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("dubStoryNeedsSwitchableCC")}</p>}
       {project.youtube_video_id && <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesAfterPublish")}</p>}
       <table className="mt-3 w-full text-sm">
         <thead><tr><th scope="col" className="sr-only">{t("languageColumn")}</th>{LOCALE_PARTS.map((part) => <th key={part} scope="col" className="py-1 text-left font-semibold">{t(`parts.${part}`)}</th>)}</tr></thead>
@@ -286,7 +283,7 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
             const dubOff = part === "dub" && dramaDubOff;
             const state = saved[locale][part] ? project.languages?.[locale]?.[part] : undefined;
             return <td key={part} className="py-2 align-top">
-              <label className="inline-flex min-h-8 flex-wrap items-center gap-2" title={dubOff ? t("dubDramaLater") : undefined}>
+              <label className="inline-flex min-h-8 flex-wrap items-center gap-2" title={dubOff ? t(storyDubOff ? "dubStoryNeedsSwitchableCC" : "dubDramaLater") : undefined}>
                 <input type="checkbox" aria-label={`${t(`locales.${locale}`)} ${t(`parts.${part}`)}`} checked={chosen[locale][part]} disabled={locked || dubOff} onChange={(event) => toggle(locale, part, event.target.checked)} />
                 {state && <span className="text-xs text-[var(--muted)]">{partStateLabel(t, state.state, state.reason)}</span>}
               </label>

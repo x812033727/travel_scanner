@@ -1,13 +1,13 @@
 ---
 id: 2026-10-13-narrated-videos-tell-one-story-with
 title: Narrated videos tell one story with hooks and close without naming the next video
-status: review
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5-1-narrative
 claimed_at: 2026-10-13T00:50:29Z
 created_at: 2026-10-13T00:46:53Z
-completed_at:
+completed_at: 2026-10-14T14:36:59Z
 branch: claude/youtube-narrative-flow-1cadbc
 depends_on: []
 scope:
@@ -90,7 +90,7 @@ Read against the five delivered 奇聞檔案局 recuts, the rules themselves wer
 - [x] `cli.mjs narrative`, the status line, the skill and the series docs.
 - [x] Re-pin the prompt digests; fix the fixtures' closes and the hashes that moved with them.
 - [x] An independent DURATION_ONLY increment for the receipt-bound files this PR touches.
-- [ ] The H01 comparison for the owner, and the owner's decision on the five delivered recuts.
+- [x] The H01 comparison for the owner, and the owner's decision on the five delivered recuts. (The owner chose to remake all five; they shipped in #1483/#1485.)
 
 ## How to verify
 

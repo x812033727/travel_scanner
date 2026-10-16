@@ -8,9 +8,9 @@
       "role": "evidence",
       "vertical": "ai",
       "is_first_party": true,
-      "enabled": true,
+      "enabled": false,
       "scan_interval_minutes": 60,
-      "note": "Company announcements; about 2 a day. Press articles link here as the primary source."
+      "note": "Company announcements; about 2 a day. Press articles link here as the primary source. Disabled 2026-10-16: the feed reads, but every article page answers 403 with a Cloudflare challenge to the scanner, to curl and to a browser User-Agent alike from the host, so no story can be read."
     },
     {
       "name": "OpenAI Deployment Safety Hub",
@@ -44,6 +44,8 @@
       "is_first_party": true,
       "enabled": true,
       "scan_interval_minutes": 60,
+      "allowed_redirect_hosts": ["developers.googleblog.com", "blog.google"],
+      "config": {"article_classes": ["blocks-container"]},
       "note": "Model and research releases; a few a week."
     },
     {
@@ -182,7 +184,7 @@
       "is_first_party": true,
       "enabled": true,
       "scan_interval_minutes": 60,
-      "note": "US derivatives regulator; most releases are not about crypto and are declined by the writer. SEC press releases were left out: their pages extract to a 248-character access notice."
+      "note": "US derivatives regulator; most releases are not about crypto and are declined by the writer. SEC press releases were left out: their pages extract to a 248-character access notice. Refused (403, Cloudflare challenge) from 2026-10-06 until the fetcher stopped offering ALPN in its TLS handshake (fetch._NoAlpnContext, 2026-10-16)."
     },
     {
       "name": "TechCrunch AI",
@@ -208,10 +210,10 @@
       "role": "evidence",
       "vertical": "ai",
       "is_first_party": false,
-      "enabled": true,
+      "enabled": false,
       "scan_interval_minutes": 60,
       "config": {"max_entries_per_scan": 10},
-      "note": "Press; a few stories a day. The main feeds.arstechnica.com feed is refused by robots.txt."
+      "note": "Press; a few stories a day. The main feeds.arstechnica.com feed is refused by robots.txt. arstechnica.com/robots.txt answers 405, which RFC 9309 reads as no robots.txt. Disabled 2026-10-16: the feed reads, but every article page answers 405 (AWS load balancer) from the host, to the scanner, to curl and to a browser User-Agent alike, so no story can be read."
     },
     {
       "name": "The Verge AI",
@@ -326,7 +328,8 @@
       "is_first_party": true,
       "enabled": true,
       "scan_interval_minutes": 60,
-      "note": "GitHub's announcements, Copilot and developer AI tools included."
+      "config": {"max_response_bytes": 6291456},
+      "note": "GitHub's announcements, Copilot and developer AI tools included. The feed carries every post's full text (2.3 MB on 2026-10-16), over the fetcher's 2 MB default, so its listing may read up to 6 MB (max_response_bytes)."
     },
     {
       "name": "GitHub Changelog",
@@ -445,7 +448,7 @@
       "enabled": true,
       "scan_interval_minutes": 60,
       "config": {"max_entries_per_scan": 5},
-      "note": "Mistral's own news feed (models, Le Chat, agents)."
+      "note": "Mistral's own news feed (models, Le Chat, agents). Served as text/plain; the fetcher takes it because the body is XML (fetch._sniff_xml)."
     },
     {
       "name": "Cohere blog",
