@@ -32,10 +32,11 @@ const GRADES = {
   indoor: "eq=contrast=1.14:saturation=0.78:gamma=0.90:brightness=-0.03,colorbalance=rs=-0.02:bs=0.03:rh=0.035:gh=0.01:bh=-0.04",
   river: "eq=contrast=1.10:saturation=0.70:gamma=0.95,colorbalance=rs=-0.05:gs=0.01:bs=0.06:rh=0.02:bh=-0.02",
   night: "eq=contrast=1.18:saturation=0.70:gamma=0.92,colorbalance=rs=-0.05:bs=0.08:rm=-0.02:bm=0.04",
+  dh: "eq=contrast=1.05:saturation=0.92:gamma=0.98",
   office: "eq=contrast=1.08:saturation=0.72:gamma=0.97,colorbalance=rs=-0.03:bs=0.05:rh=-0.01:bh=0.02",
 };
-const gradeOf = (id) => { for (const [g, ids] of Object.entries(edit.grades ?? {})) if (ids.includes(id)) return g; return "day"; };
-const FINISH = "vignette=angle=PI/4.6,noise=alls=5:allf=t,format=yuv420p";
+const gradeOf = (id) => { for (const [g, ids] of Object.entries(edit.grades ?? {})) if (ids.includes(id)) return g; return edit.default_grade ?? "day"; };
+const FINISH = edit.finish ?? "vignette=angle=PI/4.6,noise=alls=5:allf=t,format=yuv420p";
 
 const COLORS = { panel: "0x5ec8ff", task: "0xffd75e", affection: "0xff8fb8", reward: "0xffe08a", penalty: "0xff6b6b" };
 function panelFilters(shot) {

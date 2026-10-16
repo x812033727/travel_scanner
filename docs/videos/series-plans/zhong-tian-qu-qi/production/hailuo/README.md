@@ -17,3 +17,15 @@
 5. **上傳完成的 UI 更新被節流到一分鐘一次**：上傳偵測要等 90 秒；影片頁同一分頁用「Remove image」清掉首格就能連送，不必重載。
 6. **背景迴圈會被凍結**：只有正在被工具呼叫的分頁會前進；迴圈要靠輪流對各分頁 `await sleep(40s)` 撐著。
 7. 每支片段收工前用第 0 格對首格算 PSNR（≥ 35 才算對），e3-s14 的 13 dB 就是用了另一個重複 take 的首格。
+
+## 3D 國漫版（2026-10-16 晚，站主：「改用漫畫式的、不要用真人」，參考 UKHl1NN9TSU《萬妖圖錄傳》）
+
+參考片量過：16:9、鏡頭中位數 2 秒、幾乎不停格（near-frozen 1.4%）、3D CG 半寫實、低飽和冷色、大量特寫。
+
+- `refs-dh-jobs.json`：九張角色定妝照＋三張場景圖的 3D 國漫畫風版（只做定妝照，不做三視圖，省點數）。
+- `gen-dh.mjs <video.json> <lock.json> <ep> <ff.json> <clips.json>`：每個非 source 鏡頭都有首格與片段（不再用靜圖），在畫面上說話的鏡頭先寫說話；鎖定包裡「static shot」改成慢推。
+- `fetch-dh.sh`：`dh-*` → `_series/zhong-tian-qu-qi/refs-dh/`，`aN-sNN-tK` → `zhong-tian-qu-qi-e00N-dh/first-frames/`，`c:aN-sNN` → `clips/`。
+- 剪接用 `assemble-v4.mjs` 加 `edit-dh-e001.json`（`default_grade: "dh"`、只留暗角不加顆粒，畫面本來就是 CG 調色）。
+- 頁面上：`localStorage.ztdhsrc` 讓 `__zt.drive(["dh1"])` 吃 `ztffdh1`、標籤 `a1-`；影片頁把 `ztep` 設成 `dh1`、`zturls` 補 `edh1-sNN-t1` 別名，`localStorage.dhclipsrc` 的 `__dhc.one(id)` 一支一支送、卡號記在 `ztcmapdh`。
+- 第 1 集實際花費：參考圖 12 張 ≈ 241、首格 33＋重畫 2 ≈ 780、片段 33 × 48 = 1,584，合計約 2,600 點。
+- 坑：圖片頁卡片只列最近 30 張，早送的 s06／s49 掉出清單又找不到卡號，只好重畫（t2）；送圖時要記卡號（commonInfo.id）。窗格隱藏時分頁跑久會整個卡死，要關掉開新分頁（登入沒掉）。
