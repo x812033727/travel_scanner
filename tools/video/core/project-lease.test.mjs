@@ -1,14 +1,15 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
-import { existsSync, mkdtempSync, readdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 
+import { tempDir } from "./fixtures/load.mjs";
 import { acquireProjectLease, holdsProjectLease, LEASE_FILE, leaseHolder, PROJECT_LEASED, ProjectLeaseError, requireProjectLease } from "./project-lease.mjs";
 
 const MODULE = new URL("./project-lease.mjs", import.meta.url).href;
-const workdir = () => mkdtempSync(path.join(os.tmpdir(), "video-lease-"));
+const workdir = () => tempDir("video-lease-");
 const leased = (error) => error instanceof ProjectLeaseError && error.code === PROJECT_LEASED;
 const record = (dir) => JSON.parse(readFileSync(path.join(dir, LEASE_FILE), "utf8"));
 
