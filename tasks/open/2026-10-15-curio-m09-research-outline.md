@@ -113,3 +113,8 @@ scope:
 - `script --slug curio-m09` 重建正式稿，僅第 69 景標題加上 `（big）` 與 narrative hash `641e4a838667ec96`；95 句旁白及 speech hash `47918d790a391e31` 均未改。新版 `script.md` SHA-256 `36CC6ABA1DC4F639424A71E03DEF7D2C78A994542141F1DCDB026648EBCB0569`。
 - 獨立盲評 13／13 題答是（12／12 必答通過）；逐題引句答案見 `docs/videos/curio-m09/narrative-card-r2-answers.json`，新版 storytelling panel 已重跑 PASS。卡片主張與原句一致，圖文來源見 `keyframes-qa-4.md`。lint 0 error、2 個既有詞頻 warning。
 - `review-push --gate script` 已把新版送到 `/admin/videos`；`review-pull --gate script` 讀回 waiting for the owner。**分鏡仍未送審；待此 SHA 劇本核准後才送四頁聯絡表。**
+
+### 2026-10-16 M09 新版劇本核准與分鏡送審
+
+- `review-pull --slug curio-m09 --gate script` 讀回新版核准已記錄；`status` 明列 script approved、storytelling passed、86 張插畫已繪製。這次沿用 95 句核准旁白，不重錄。
+- `review-push --slug curio-m09 --gate storyboard` 成功送出含兩張來源卡的新版四頁分鏡；隨後 `review-pull --gate storyboard` 讀回 `waiting for the owner`。詳細逐圖與數字卡來源見 `keyframes-qa-4.md`。站主核准新版分鏡前，不 render／assemble、也不上傳。
