@@ -76,6 +76,16 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 要讓工人整個停下來，在工作區放一個 `STOP` 檔：`docker compose -f docker-compose.prod.yml exec -T video-worker touch /var/lib/mokaair/video-work/STOP`。刪掉這個檔，下一輪就會繼續。Shorts 的敲門（`shorts/cli.mjs tick`，工人在 `auto` 旁邊另外每 5 分鐘跑一次）也看這個檔：有 STOP 就不敲門，網站也就不鎖定時段、不再開始送 Shorts 上 YouTube，紀錄印一行 `video-worker: shorts: STOP found`，刪掉後下一次就恢復；有活動在跑的話，這段時間 Shorts 分頁會說工人沒有回報。
 
+### 部署時的 video-worker 暖停（候選，尚未安裝到正式主機）
+
+`STOP` 只阻止後續單元，不能證明當下的 `auto`、兩條影片 lane、Shorts `tick` 或手動 `docker compose exec` 已完成。`video-worker` 的 shell 收到 TERM 時會退出；Docker 預設短暫等待後會 SIGKILL。部署不能把「已有 STOP」或「沒有新的工作」當作付費請求已落盤。主機端 `ops/release/video_worker_drain.sh` 必須在**正常與回滾**兩個 `compose up` 前、持有部署鎖時呼叫，未接上兩條路徑前不能用它宣稱部署安全。
+
+新版 `ops/video/worker.sh` 的 `video-worker-drain-protocol: 1` 會在工作區 `DEPLOY_DRAIN` 出現後，等目前 `auto` 和獨立 Shorts tick **兩者都退出**，再寫 `DEPLOY_DRAIN.ready`：部署 nonce、主機 boot ID、此容器 PID 1 的 start ticks。工人在 `DEPLOY_DRAIN` 留存時保持閒置；新容器或回滾容器不能沿用舊容器的 ready 回報。主機 helper 先核對正在跑的工人確實支援這個 protocol；舊映像會拒絕，首次升級仍需另外審過的維護程序，不能直接 TERM 舊工人。helper 把持久的 `video-worker-drain.pending` 寫在 `/var/lib/travel-scanner-deploy/`，然後在同一工作區先建立或保留原本的 `STOP`，再建立帶 nonce 的 `DEPLOY_DRAIN`；等本容器的 ready、沒有手動 exec 或其他未知程序，才以無 SIGKILL 時限的 TERM 停容器。最多等 3600 秒；逾時、程序變化、回報錯誤或中斷時，保留 marker、STOP、DEPLOY_DRAIN 與媒體檔，不自動重送或清掉。若回滾時容器已消失，也拒絕未經核對的重建。
+
+成功停下工人會留下帶原始 SHA、nonce、容器 ID 的主機 receipt，並**保留**工作區 STOP／DEPLOY_DRAIN，讓新容器保持閒置。部署後要先逐項讀回舊／新容器、STOP 的原始內容、每片 `LEASE`／`auto.json`／run ID、語音與媒體操作及供應商收據、Shorts 操作與站台狀態，再由站主依 `prod-host-ops` 核准恢復。只有確認 `DEPLOY_DRAIN` nonce 與主機 receipt 相同、目前容器的 ready 指向目前 PID 1、沒有執行中付費工作，才可刪這次部署的 `DEPLOY_DRAIN`／ready；`STOP` 只有內容仍精確等於 `deploy-video-worker:<nonce>` 時才能刪，原本的站主 STOP 一律保留。對任何已送出但結果不明的供應商請求，先查原操作與收據，不以重新跑一輪當恢復方式。`docker compose run` 的第二個同名容器仍禁止。
+
+**部署 HOLD：**目前 helper 的 `ExecIDs`、PID 樹與 ready 是終止前的快照，不能阻止快照後新開的任意 `docker exec`。新版 Shorts `tick` 指令在共用 STOP／DEPLOY_DRAIN 存在時會於送出 POST 前拒絕，但一般 `tools/video/cli.mjs` 仍受其他 active task 認領、尚未加入同等入口檢查。操作人員必須先在部署窗口停止並禁止新的手動 exec／其他直接 API 觸發，逐項查執行中工作及回報；目前沒有可執行的主機層 admission gate 證明這件事，因此**不能安裝 helper 或進行付費影片部署**。即使補齊入口檢查，也需在隔離 Docker 環境驗證目標映像的 init、PID 樹與退出碼，再審首次舊 worker 升級及正常／回滾兩個 compose 錨點。
+
 同一支影片同時只有一個程序能付費或改它的檔案：工人處理一支影片時，會在它的工作目錄放一個 `LEASE` 檔（`tools/video/core/project-lease.mjs`），手動跑的 look、keyframes、clips、music、tts、dub、check-audio 也要先拿到它。別的程序拿著時，工人這一輪跳過那支影片（紀錄印 `left alone this run`），手動指令什麼都不送、不寫就以 exit 3 結束。只有確定原持有程序已結束（同一台主機、同一次開機，程序已不在或換人）才會接手，舊紀錄留成 `LEASE.<token>.dead.json`；其他情況要人看過再刪檔。工人容器的 hostname 固定是 `video-worker`，部署砍掉工人留下的 `LEASE` 下一個工人就能接手。**在主機上手動跑影片指令一律用 `docker compose -f docker-compose.prod.yml exec -T video-worker …`，不要用 `run`**：`run` 另開的容器同名卻看不到工人的程序，會把工人正拿著的 `LEASE` 誤當成死的。
 
 ## 一支影片的自動流程

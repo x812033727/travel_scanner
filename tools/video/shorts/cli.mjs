@@ -3,7 +3,7 @@ import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { pathToFileURL } from 'node:url';
-import { ROOT, lexiconFile, readJson } from '../core/paths.mjs';
+import { ROOT, lexiconFile, readJson, resolveWorkBase } from '../core/paths.mjs';
 import { validate, verifyEvidence } from './core.mjs';
 
 const HELP = `Shorts pipeline (docs/videos/SHORTS.md)
@@ -53,6 +53,12 @@ export async function main(args=process.argv.slice(2), { env = process.env, fetc
     return 0;
   }
   if (command==='tick') {
+    // The worker shell checks these files between knocks. A manual supported
+    // tick must obey the same shared hold before its POST can start new work.
+    const base=resolveWorkBase({env,home,root});
+    if (existsSync(path.join(base,'STOP')) || existsSync(path.join(base,'DEPLOY_DRAIN'))) {
+      throw Object.assign(new Error(`Shorts tick held by STOP or DEPLOY_DRAIN in ${base}`),{who:'owner'});
+    }
     // A site from before the route answers 404: the knock is skipped without a word of error.
     const done = await (await site()).tick();
     print(done ?? 'the site has no Shorts calendar yet; nothing to do');
