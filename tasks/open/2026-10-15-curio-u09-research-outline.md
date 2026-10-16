@@ -100,3 +100,8 @@ scope:
 - 主代理已限額跑九鏡一批，圖評帳本增加 18 圖／18 評審、估算 US$0.2430；本集共享帳本讀回估算 US$4.129／US$6，已核銷這批。新 manifest SHA `44A280F3…99AB5C`，91／91 有圖、89／91 自動評審通過，仍有 `brief-window`、`beam-away` 兩張未過。
 - 獨立全尺寸目視另退兩張雖過評審卻與旁白相反的圖：`more-marks` 把同一卷紙畫成三張分離紙；`line-of-sight` 的波束沒有掃到地球。其他五張依系列的可愛插畫驗收標準暫收。細節、九張選圖 SHA 與同章候選退路見 [第三輪 QA 收據](../../docs/videos/curio-u09/keyframes-qa-3.md)。
 - 此輪未動已核准劇本、`video.json`、媒體選圖或後台；四個阻擋鏡頭仍要有合格圖或合規卡片才可送站主分鏡。不得把 89／91 的自動過線當 91／91 可用，也不得未預留共享帳本就讓退路觸發新的 Gemini 圖評。
+
+### 四鏡提示詞定向準備：2026-10-16
+
+- 逐一比對同章已過圖、目標鏡頭的運鏡及畫面與旁白關係；沒有四鏡都可安全複用、且在只改 prompt 時命中圖片快取的退路。只改 `brief-window`、`more-marks`、`line-of-sight`、`beam-away` 四個 `shot.data.prompt`；劇本、旁白、camera、`look` 不動。新 `video.json` SHA `529A13FA…B739E`，細節見 [第三份修圖計畫](../../docs/videos/curio-u09/keyframes-repair-plan-3.md)。
+- `lint` 0 errors／0 warnings；四鏡 `keyframes --takes 3 --dry-run` 通過，保守三輪上限 US$0.1620。沒有新付費呼叫、媒體選圖或後台送審。既有 manifest 仍綁舊提示詞，四鏡仍阻擋；主代理先依系列重畫輪數規則與共享帳本決定後續，不得把乾跑當成驗收。
