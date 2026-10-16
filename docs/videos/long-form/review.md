@@ -5465,9 +5465,21 @@ Ran: independently inspected the exact four-file diff, merge-base and worktree h
 Non-claims: this increment does not decide whether the A01 narrative script passes the new reader questions; it does not approve media, playback, paid production, deployment, upload or publication. The other 104 bindings are not reviewed afresh.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1517 integration with #1391: 1 combined test file (2026-10-16)
+
+Reviewer: `codex-duration-merge-review`. Authors: `codex-a01-gate` (#1517) and `codex-windows-video-validation` (#1391). Scope: DURATION_ONLY for the integrated `tools/video/automation/automation.test.mjs` bytes at `bb877ffe8072c8c00ad482a55fe1c34fa8fdb423`. This reviewer did not author either source change.
+
+Baseline and merge: main `99f0651eecb6454873b57dc9775c967d868014fd` carries #1391's `leaseTestChild` helper, three failure and timeout cases, the held-project lease test cleanup, and the Windows `file://` import. The #1517 delta against that main adds only the `PANEL_RULES_SHA256` and `scriptCheckBinding` imports, a legacy narrative PASS fixture, and an assertion that a new panel verdict records the rules SHA. These are separate hunks; the merged file keeps both groups. The current raw SHA-256 is `ef1b881cea4230b6db1b2cad4f8386f446b54f274b72352a3284681e664e8310`. The preceding #1391 and #1517 increments independently reviewed their respective changes; this increment reviews their actual combination. The other 107 registered files match the preceding receipt and report table byte for byte.
+
+Findings: the #1391 helper changes only how tests bound child-process readiness, release and cleanup, and the #1517 test exercises panel-receipt freshness for unchanged script words. Neither changes production duration code, estimates, settings, plan targets, measured media, or duration assertions. The combined test file retains the cross-process lease checks and the blind narrative-panel gate; no duration correction is required.
+
+Ran: compared the current main-to-branch source diff and both prior review increments; independently computed all 108 source SHA-256 values and report-table entries, finding only this combined test file stale before rebinding. Bundled Node v24.19.0 ran the focused storytelling-panel and lease-child tests: 7 passed, 0 failed. It also ran `tools/video/core/narrative.test.mjs`: 14 passed, 0 failed. The pre-rebind long-form CLI check failed only on the stale report hash and this test-file binding. After this increment was installed, the long-form CLI check and receipt tests were rerun as recorded in the task.
+
+Non-claims: this is a one-file integration review. It does not re-review the other 107 files, establish A01 script quality, prove host worker behavior, or accept media, paid production, deployment, upload or publication. Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the #1391/#1517 integration increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
@@ -5521,7 +5533,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `5d7e5ceb96a2bc594b753f73036a0bee2b03a5dc53783d16ffc9a6b5ec7b2055` |
+| `tools/video/automation/automation.test.mjs` | `ef1b881cea4230b6db1b2cad4f8386f446b54f274b72352a3284681e664e8310` |
 | `tools/video/automation/discuss.mjs` | `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21` |
 | `tools/video/automation/flow.mjs` | `dcf8725f3bef832a9d92c8f8f74b39557abaf201959716587d2c7cfc183c766b` |
 | `tools/video/automation/prompts.mjs` | `7dc54920e590ffa674fc6436dacf96df5da477cd749f1be52877d89a8b500dbc` |

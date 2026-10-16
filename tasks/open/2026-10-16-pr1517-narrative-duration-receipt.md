@@ -52,6 +52,17 @@ recheck tests (1/1 each). The final local `npm run check:tasks` exits 1 because
 the interrupted close left two physical copies of this task. CI on the submitted
 tree must check the single committed open copy.
 
+After integration with main #1391 at `99f0651eecb6454873b57dc9775c967d868014fd`,
+the independent duration reviewer verified all 108 file and report bindings, finding
+only the combined `automation.test.mjs` SHA stale (`ef1b881cea4230b6db1b2cad4f8386f446b54f274b72352a3284681e664e8310`).
+The integrated report and receipt now bind that SHA; report SHA is
+`e7b5d2134e4a0d27bb37d04ad0d87c353dd1503fc527d8bcdb0f9017f20f1b1b`.
+Post-rebind, `node tools/video/long-form/cli.mjs check` passed all 473 plans and
+`node --test tools/video/long-form/review.test.mjs` passed 2/2. Bundled Node
+v24.19.0 passed the combined narrative-panel and cross-process lease tests 7/7,
+the narrative core suite 14/14, and the focused stale-PASS status test 1/1.
+The review applies only to duration compatibility of the integrated source bytes.
+
 ## Notes
 
 The baseline is `697e197ee180d22f632b7f3c7624cc30927b2136` (also `origin/main`
