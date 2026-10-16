@@ -1,6 +1,6 @@
 # H10 日文翻譯獨立審稿（第 2 輪）
 
-日期：2026-10-16（Asia/Taipei）。審核對象為 `C:/Users/x8120/mokaair-work/videos/curio-h10/i18n/ja.todo.json`，SHA-256 `C35411ABAB1B525918EAA9C4A5A526F49242B6EEC7B64CD30F44B1EDE55C754F`；對照繁中 `video.json` SHA-256 `A43541019B57D0EF624A6AF2573C728CC5009894121EE9DE6E8BBF5623EC8C57`。審稿員未修改工作表、繁中來源或媒體。
+日期：2026-10-16（Asia/Taipei）。審核對象為 `<home>/mokaair-work/videos/curio-h10/i18n/ja.todo.json`，SHA-256 `C35411ABAB1B525918EAA9C4A5A526F49242B6EEC7B64CD30F44B1EDE55C754F`；對照繁中 `video.json` SHA-256 `A43541019B57D0EF624A6AF2573C728CC5009894121EE9DE6E8BBF5623EC8C57`。審稿員未修改工作表、繁中來源或媒體。
 
 **結論：PASS，翻譯審稿無待修項。** [首輪審稿](i18n-review-ja-1.md)的兩項 HOLD 已定向修正：
 

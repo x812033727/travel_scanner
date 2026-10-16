@@ -2,7 +2,7 @@
 
 日期：2026-10-16（Asia/Taipei）。審稿員只讀韓文工作表、已核准的繁中來源和已登錄的原始史料；沒有修改工作表、劇本、媒體或後台。
 
-- 韓文工作表：`C:/Users/x8120/mokaair-work/videos/curio-h10/i18n/ko.todo.json`，SHA-256 `6A75855EF159C3AC451718B7DACB8605F7A771E5DAA51FE7F5F76C8D4CE67F7F`。
+- 韓文工作表：`<home>/mokaair-work/videos/curio-h10/i18n/ko.todo.json`，SHA-256 `6A75855EF159C3AC451718B7DACB8605F7A771E5DAA51FE7F5F76C8D4CE67F7F`。
 - 繁中來源：`docs/videos/curio-h10/video.json`，SHA-256 `A43541019B57D0EF624A6AF2573C728CC5009894121EE9DE6E8BBF5623EC8C57`。
 
 **結論：HOLD。** 只需定向修下表兩句和一個標題；修完後以新工作表雜湊重核，通過才可 `i18n-merge`。此收據不代替配音、音訊、語言包或站主的後續關卡。

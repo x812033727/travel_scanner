@@ -2,7 +2,7 @@
 
 Reviewed 2026-10-16 (Asia/Taipei). The reviewer did not edit the English worksheet, Chinese script, task files, or media.
 
-- Worksheet: `C:\Users\x8120\mokaair-work\videos\curio-h10\i18n\en.todo.json`, SHA-256 `88661979F89CD3727A5B90FEDDCEBFDC982BE09F920F849AB99614FD3E8F7B9C`.
+- Worksheet: `<home>/mokaair-work/videos/curio-h10/i18n/en.todo.json`, SHA-256 `88661979F89CD3727A5B90FEDDCEBFDC982BE09F920F849AB99614FD3E8F7B9C`.
 - Current approved Chinese source: `docs/videos/curio-h10/video.json`, SHA-256 `A43541019B57D0EF624A6AF2573C728CC5009894121EE9DE6E8BBF5623EC8C57`.
 - Read `claims.md` and `research.md`, then checked the current [Parks Canada Inuit account](https://parks.canada.ca/lhn-nhs/nu/epaveswrecks/culture/inuit/qaujimajatuqangit), [Parks Canada Terror discovery record](https://parks.canada.ca/lhn-nhs/nu/epaveswrecks/culture/archeologie-archeology/decouvertes-discoveries/terror), and [Waterloo's May 2026 identification report](https://uwaterloo.ca/news/media/dna-matches-identify-four-more-sailors-franklin-expedition). The latter supports four new identifications and six in total; the translation keeps those numbers.
 

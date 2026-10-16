@@ -2,7 +2,7 @@
 
 Reviewed 2026-10-16 (Asia/Taipei). The reviewer did not edit the worksheet, source script, tasks, or media.
 
-- Worksheet: `C:\Users\x8120\mokaair-work\videos\curio-h10\i18n\en.todo.json`, SHA-256 `961D57948BACBBD22866C5C5BB3538492E4BC6B2E0E97F876DFA665690C0B26D`.
+- Worksheet: `<home>/mokaair-work/videos/curio-h10/i18n/en.todo.json`, SHA-256 `961D57948BACBBD22866C5C5BB3538492E4BC6B2E0E97F876DFA665690C0B26D`.
 - Approved Chinese source: `docs/videos/curio-h10/video.json`, SHA-256 `A43541019B57D0EF624A6AF2573C728CC5009894121EE9DE6E8BBF5623EC8C57`.
 - The three required fixes are defined in [round 1](i18n-review-en-1.md), which links the relevant Parks Canada and Waterloo primary records.
 

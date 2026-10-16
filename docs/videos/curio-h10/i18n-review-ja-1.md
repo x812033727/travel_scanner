@@ -1,6 +1,6 @@
 # H10 日文翻譯獨立審稿（第 1 輪）
 
-日期：2026-10-16（Asia/Taipei）。審核對象為 `C:/Users/x8120/mokaair-work/videos/curio-h10/i18n/ja.todo.json`，SHA-256 `2B30CC825DE24375AC5FE4D47734BC7B74EF96B1B724EC92DDA78CB96AB95C53`；對照繁中 `video.json` SHA-256 `A43541019B57D0EF624A6AF2573C728CC5009894121EE9DE6E8BBF5623EC8C57`。審稿員未修改工作表、來源或媒體。
+日期：2026-10-16（Asia/Taipei）。審核對象為 `<home>/mokaair-work/videos/curio-h10/i18n/ja.todo.json`，SHA-256 `2B30CC825DE24375AC5FE4D47734BC7B74EF96B1B724EC92DDA78CB96AB95C53`；對照繁中 `video.json` SHA-256 `A43541019B57D0EF624A6AF2573C728CC5009894121EE9DE6E8BBF5623EC8C57`。審稿員未修改工作表、來源或媒體。
 
 **結論：HOLD，2 處必修。** 一句日文字幕會把動詞切斷；說明欄首句應區分發現沉船和確認船員身分。修後重新計算工作表雜湊並複核，才可合併日文翻譯；配音時槽和發音仍待實測。
 

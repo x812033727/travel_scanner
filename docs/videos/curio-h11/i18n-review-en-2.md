@@ -2,7 +2,7 @@
 
 Reviewed 2026-10-16 (Asia/Taipei). The reviewer did not edit the worksheet, Chinese script, task files, or media.
 
-- Worksheet: `C:\Users\x8120\mokaair-work\videos\curio-h11\i18n\en.todo.json`, SHA-256 `FFC95559075A9A0BBCC7FF7416EE9374EE76C99B97445C42C08251CEEB3EBDD2`.
+- Worksheet: `<home>/mokaair-work/videos/curio-h11/i18n/en.todo.json`, SHA-256 `FFC95559075A9A0BBCC7FF7416EE9374EE76C99B97445C42C08251CEEB3EBDD2`.
 - Current Chinese source: `docs/videos/curio-h11/video.json`, SHA-256 `4D2AE2A2C3D12D634A1333317FD25A816785B8A44DC6BB6E68C1E27A305532DF`.
 - Compared against [round 1](i18n-review-en-1.md), the current Chinese line text, chapter and metadata source fields, the worksheet's glossary and cue boundaries, and the source evidence referenced there.
 

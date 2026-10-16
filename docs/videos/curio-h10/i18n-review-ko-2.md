@@ -2,7 +2,7 @@
 
 日期：2026-10-16（Asia/Taipei）。審稿員只讀第二版韓文工作表與已核准的繁中來源，沒有修改工作表、劇本、媒體或後台。
 
-- 韓文工作表：`C:/Users/x8120/mokaair-work/videos/curio-h10/i18n/ko.todo.json`，SHA-256 `A5B56AC1E3C1BE0485BEFAEFE968E79815E36DBB7F9C7EA161C9A79FF3235F23`。
+- 韓文工作表：`<home>/mokaair-work/videos/curio-h10/i18n/ko.todo.json`，SHA-256 `A5B56AC1E3C1BE0485BEFAEFE968E79815E36DBB7F9C7EA161C9A79FF3235F23`。
 - 繁中來源：`docs/videos/curio-h10/video.json`，SHA-256 `A43541019B57D0EF624A6AF2573C728CC5009894121EE9DE6E8BBF5623EC8C57`。
 
 **結論：PASS，此雜湊的韓文翻譯無待修項。** [第 1 輪審稿](i18n-review-ko-1.md)的三處 HOLD 已定向修正：

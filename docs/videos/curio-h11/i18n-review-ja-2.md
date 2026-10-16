@@ -1,6 +1,6 @@
 # H11 日文翻譯獨立審稿（第 2 輪）
 
-日期：2026-10-16（Asia/Taipei）。審核對象為 `C:/Users/x8120/mokaair-work/videos/curio-h11/i18n/ja.todo.json`，SHA-256 `B91761B8D207E7FF383168BC0AA3F713B5B62A06DFF10AD30929D08085521D22`；對照繁中 `video.json` SHA-256 `4D2AE2A2C3D12D634A1333317FD25A816785B8A44DC6BB6E68C1E27A305532DF`。此結論僅評日文翻譯，不代替更正後繁中劇本的站主核准、補錄旁白、音訊 QA 或語言送審。審稿員未修改工作表、來源或媒體。
+日期：2026-10-16（Asia/Taipei）。審核對象為 `<home>/mokaair-work/videos/curio-h11/i18n/ja.todo.json`，SHA-256 `B91761B8D207E7FF383168BC0AA3F713B5B62A06DFF10AD30929D08085521D22`；對照繁中 `video.json` SHA-256 `4D2AE2A2C3D12D634A1333317FD25A816785B8A44DC6BB6E68C1E27A305532DF`。此結論僅評日文翻譯，不代替更正後繁中劇本的站主核准、補錄旁白、音訊 QA 或語言送審。審稿員未修改工作表、來源或媒體。
 
 **結論：HOLD，1 句必修。** 上一輪 [日文審稿](i18n-review-ja-1.md)的必修項已修正；`v173f6fc` 仍應明說是背面綠葉透出、遮住首頁余白的筆畫，並保持です／ます語體。修後重新計算工作表雜湊與 `cuePieces`，再獨立複核此句。
 

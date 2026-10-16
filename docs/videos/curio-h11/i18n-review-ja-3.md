@@ -1,6 +1,6 @@
 # H11 日文翻譯獨立審稿（第 3 輪）
 
-日期：2026-10-16（Asia/Taipei）。審核對象為 `C:/Users/x8120/mokaair-work/videos/curio-h11/i18n/ja.todo.json`，SHA-256 `42EC6F2F70F36B2E131FE4D9E24AC264665EAF8DC9307084237D1D9D52F21250`；對照更正後繁中 `video.json` SHA-256 `4D2AE2A2C3D12D634A1333317FD25A816785B8A44DC6BB6E68C1E27A305532DF`。審稿員未修改工作表、繁中來源或媒體。
+日期：2026-10-16（Asia/Taipei）。審核對象為 `<home>/mokaair-work/videos/curio-h11/i18n/ja.todo.json`，SHA-256 `42EC6F2F70F36B2E131FE4D9E24AC264665EAF8DC9307084237D1D9D52F21250`；對照更正後繁中 `video.json` SHA-256 `4D2AE2A2C3D12D634A1333317FD25A816785B8A44DC6BB6E68C1E27A305532DF`。審稿員未修改工作表、繁中來源或媒體。
 
 **結論：PASS，翻譯審稿無待修項。** [第 2 輪審稿](i18n-review-ja-2.md)的 `v173f6fc` 已定向修正為：
 
