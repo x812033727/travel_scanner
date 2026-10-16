@@ -93,6 +93,16 @@
       "title": "Jodrell Bank：Observations of Pulsars §4.1",
       "url": "https://www.jb.man.ac.uk/distance/frontiers/pulsars/section4.html",
       "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Richards 與 Comella：The Period of Pulsar NP 0532（1969）",
+      "url": "https://www.nature.com/articles/222551a0",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Jodrell Bank：Identification with rotating neutron stars",
+      "url": "https://www.jb.man.ac.uk/research/pulsar/Education/Tutorial/tut/node5.html",
+      "checked_on": "2026-10-16"
     }
   ],
   "assets": [],
@@ -100,12 +110,12 @@
     {
       "setup": "90259fa2",
       "payoff": "41b5eb07",
-      "what": "另一台望遠鏡為什麼遲遲沒有訊號"
+      "what": "另一台望遠鏡能否記到相同的脈衝"
     },
     {
       "setup": "acc6618c",
       "payoff": "07ceb40b",
-      "what": "冷接收器能否記到新的痕跡"
+      "what": "貝爾趕到觀測站能否記到新訊號"
     },
     {
       "setup": "2b58a7d7",
@@ -265,7 +275,7 @@
       "lines": [
         {
           "id": "90259fa2",
-          "text": "後來，他們守著另一台望遠鏡，紙上卻沒有那串脈衝。",
+          "text": "後來，他們守著另一台望遠鏡，要看紙帶會不會留下同樣的脈衝。",
           "emotion": "像對朋友講故事，日期與關鍵字清楚，轉折留一拍"
         }
       ]
@@ -284,7 +294,7 @@
       "lines": [
         {
           "id": "acc6618c",
-          "text": "聖誕節前，貝爾凌晨趕到觀測站，接收器偏偏凍得失靈。",
+          "text": "聖誕節前，貝爾凌晨趕到觀測站，等另一片天空通過。",
           "emotion": "像對朋友講故事，日期與關鍵字清楚，轉折留一拍"
         }
       ]
@@ -757,7 +767,7 @@
       "lines": [
         {
           "id": "d15db021",
-          "text": "翻回舊記錄，訊號還守著同一片星空出現的時間。"
+          "text": "團隊把每次出現的時間放在一起，對照天空走到哪裡。"
         }
       ]
     },
@@ -941,7 +951,7 @@
       "lines": [
         {
           "id": "a0f8a979",
-          "text": "這台望遠鏡有自己的接收系統，卻也記到了那串脈衝。"
+          "text": "這次用的是一套獨立的接收系統。"
         }
       ]
     },
@@ -1073,7 +1083,7 @@
       "lines": [
         {
           "id": "99a55420",
-          "text": "貝爾說，那是她做記號時用的玩笑代稱。",
+          "text": "貝爾說，『小綠人』是她做記號時用的玩笑代稱。",
           "emotion": "玩笑代稱帶一點笑意"
         }
       ]
@@ -1584,11 +1594,16 @@
     },
     {
       "id": "more-marks",
-      "template": "shot",
+      "template": "stats",
       "data": {
-        "prompt": "Medium shot at a laboratory table, one anonymous adult worker unrolling a single continuous narrow recording-paper strip from its spool across the tabletop, two distant groups of dark ink peaks on the connected paper with a blank span between them, soft daylight",
-        "camera": "pull out",
-        "visual": "still"
+        "title": "同一卷紙帶",
+        "stats": [
+          {
+            "value": "2 處",
+            "label": "相隔很遠的怪痕跡"
+          }
+        ],
+        "source": "Bell Burnell 1977 演講稿回憶"
       },
       "claims": [
         "C18"
@@ -1614,7 +1629,7 @@
       "lines": [
         {
           "id": "9410e2e4",
-          "text": "團隊陸續確認之後，手上的同類來源，總共成了四個。",
+          "text": "紙帶真的不只兩個：團隊陸續確認，手上的同類來源總共四個。",
           "emotion": "一共四個放慢，落在新結果"
         }
       ]
@@ -1654,7 +1669,7 @@
       "lines": [
         {
           "id": "049813c5",
-          "text": "一九六八年二月二十四日，團隊的論文刊在自然期刊。",
+          "text": "團隊先把第一個來源的觀測寫成論文，一九六八年二月二十四日在《自然》刊出。",
           "emotion": "像對朋友講故事，日期與關鍵字清楚，轉折留一拍"
         }
       ]
@@ -1746,7 +1761,7 @@
       "lines": [
         {
           "id": "37a80430",
-          "text": "也就是想從星體本身的週期變化，解釋收到的節拍。"
+          "text": "這些候選，還得同時解釋測得的週期和脈衝寬度。"
         }
       ]
     },
@@ -1802,7 +1817,7 @@
       "lines": [
         {
           "id": "9f650d96",
-          "text": "所以公開發表的，是一個新現象，還有仍待檢驗的物理解釋。"
+          "text": "下一個提出解釋的人，得先面對這份論文公布的週期和脈衝。"
         }
       ]
     },
@@ -1860,7 +1875,7 @@
       "lines": [
         {
           "id": "b6d2d02b",
-          "text": "開頭那篇五月的兩頁論文，作者是物理學家湯瑪斯・戈爾德。",
+          "text": "不靠振盪，還可以靠旋轉：開頭那篇五月的兩頁論文，來自物理學家湯瑪斯・戈爾德。",
           "emotion": "像對朋友講故事，日期與關鍵字清楚，轉折留一拍"
         }
       ]
@@ -1879,7 +1894,7 @@
       "lines": [
         {
           "id": "724570c6",
-          "text": "他提出：讓一顆中子星自轉，帶著電波束一起轉動。",
+          "text": "對那群已確認的來源，他提出中子星自轉，帶著電波束一起轉動。",
           "emotion": "他提出帶出新想法，自轉壓重"
         }
       ]
@@ -1923,11 +1938,19 @@
     },
     {
       "id": "beam-away",
-      "template": "shot",
+      "template": "compare",
       "data": {
-        "prompt": "Close-up at an archive desk, a plain round star model on the left sends one narrow light beam off the left edge of the table, a separate Earth globe stands far to the right in shadow with a clear dark gap from the beam, tabletop and wall filling the frame",
-        "camera": "pull out",
-        "visual": "still"
+        "title": "光束與地球視線",
+        "left": {
+          "heading": "掃過地球",
+          "points": ["接收器記一次脈衝"]
+        },
+        "right": {
+          "heading": "轉向別處",
+          "points": ["地球暫時收不到"]
+        },
+        "verdict": "星體仍持續自轉",
+        "source": "NASA Science〈Pulsars〉"
       },
       "claims": [
         "C22"
@@ -1972,7 +1995,7 @@
       "lines": [
         {
           "id": "8ac591de",
-          "text": "戈爾德還預測，隨著能量耗損，這種節拍應該逐漸變慢。",
+          "text": "戈爾德還預測節拍會漸慢；後來對脈衝星的觀測，也量到了這種變化。",
           "emotion": "預測壓重，逐漸變慢不要說成當場量到"
         }
       ]
@@ -1992,7 +2015,7 @@
       "lines": [
         {
           "id": "2a37c45e",
-          "text": "回到「會不會有人發射」的疑問，後續證據支持的答案是自轉中子星：波束掃過地球，留下節拍。"
+          "text": "開頭那串『小綠人』訊號，不必假設人工發射：後續證據支持自轉中子星，波束掃過地球留下節拍。"
         }
       ]
     },
@@ -2010,7 +2033,7 @@
       "lines": [
         {
           "id": "57dd9251",
-          "text": "波束究竟怎麼產生，仍有細部物理要研究。"
+          "text": "波束的細部物理機制，今天仍在研究中。"
         }
       ]
     },

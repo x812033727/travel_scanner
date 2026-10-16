@@ -26,6 +26,8 @@
 | S07 | NASA Science，〈Pulsars〉，頁面更新 2026-03-11，[原頁](https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-pulsars/) | **opened**。讀到脈衝星、波束掃過視線、發現沿革段落。 | 今日的自轉中子星模型。全片只用「燈塔」一個比喻；不使用網頁中的現存數量、最快紀錄等會分散主線的數字。 |
 | S08 | Cavendish Laboratory，訪問脈衝星研究者 Lucy Oswald，2026-02-11，[原頁](https://www.phy.cam.ac.uk/news/celebrating-women-in-science-meet-lucy-oswald-our-new-pulsars-researcher/) | **opened**。劍橋物理系全文問答可讀。 | 現行研究仍未完全解清發射波束的微觀機制；此限制不等於最初訊號身分未明。只作結論邊界查核，不另開現代天文學支線。 |
 | S09 | University of Manchester / Jodrell Bank，Frontiers of Modern Astronomy，〈Observations of Pulsars〉，[§4.1](https://www.jb.man.ac.uk/distance/frontiers/pulsars/section4.html) | **opened**。正式稿階段於 2026-10-16 讀到 §4.1 色散與 §4.2 計時全文。 | 只補一個必要的白話機制：星際物質會令不同頻率脈衝的到達時間不同。不取本文其他觀測設備、個別脈衝星或數量作旁支。 |
+| S10 | Richards、Comella，〈The Period of Pulsar NP 0532〉，Nature 222，551–552，1969-05-10，[出版頁](https://www.nature.com/articles/222551a0) | **opened：出版頁摘要**。確認 Arecibo 的脈衝週期測量、作者、刊期；全文未取得。原始論文由 Jodrell Bank S11 引為蟹狀星雲脈衝星減速觀測。 | 只支援「後來有脈衝星量到節拍漸慢」，不偷換成 Bell 最初那顆訊源已量到，也不說 Gold 發表當時就已實證。 |
+| S11 | Jodrell Bank〈Identification with rotating neutron stars〉，[原頁](https://www.jb.man.ac.uk/research/pulsar/Education/Tutorial/tut/node5.html)及[參考文獻](https://www.jb.man.ac.uk/research/pulsar/Education/Tutorial/tut/node122.html) | **opened**。研究機構歷史講義明列蟹狀星雲脈衝星的減速已觀測，所引第 32 筆為 Richards、Comella 1969 原始論文 S10。 | 對 S10 摘要未顯示的減速結論作獨立原機構交叉讀回；正片僅講「後來對脈衝星的長期觀測量到漸慢」，不岔講另一個星體的細節。 |
 
 本次原件辨識：S04 SHA-256 `796c3561bb98da011699ee60c06f7a7ba423bc4360f5635b688c1900d29ee579`；S05 SHA-256 `df2799809a5bb2eb87e1ebc7ad8ec6e688df2cc0861c9d764d8a1d3325dc3d2e`；S06 獨立覆核者回報 SHA-256 `77a83ec7ff66c36d7349b16c4c223ec58b38305f9a518958cb7296bbed2abfb1`。PDF 只作查核，沒有放進 Git 或當成影片素材授權。
 

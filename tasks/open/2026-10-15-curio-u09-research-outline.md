@@ -4,8 +4,8 @@ title: Curio U09 research outline
 status: in-progress
 priority: P2
 area: docs
-owner: codex-gpt6-u09-production
-claimed_at: 2026-10-16T01:13:24Z
+owner: codex-gpt6-u09-final
+claimed_at: 2026-10-16T09:51:47Z
 created_at: 2026-10-15T16:35:08Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -105,3 +105,9 @@ scope:
 
 - 逐一比對同章已過圖、目標鏡頭的運鏡及畫面與旁白關係；沒有四鏡都可安全複用、且在只改 prompt 時命中圖片快取的退路。只改 `brief-window`、`more-marks`、`line-of-sight`、`beam-away` 四個 `shot.data.prompt`；劇本、旁白、camera、`look` 不動。新 `video.json` SHA `529A13FA…B739E`，細節見 [第三份修圖計畫](../../docs/videos/curio-u09/keyframes-repair-plan-3.md)。
 - `lint` 0 errors／0 warnings；四鏡 `keyframes --takes 3 --dry-run` 通過，保守三輪上限 US$0.1620。沒有新付費呼叫、媒體選圖或後台送審。既有 manifest 仍綁舊提示詞，四鏡仍阻擋；主代理先依系列重畫輪數規則與共享帳本決定後續，不得把乾跑當成驗收。
+
+### 補圖後修稿與新版送審：2026-10-16
+
+- 四鏡最後一批實做 7 圖／7 評審、估算 US$0.0945，已依共享帳本核銷；`brief-window`、`line-of-sight` 收下，`more-marks`、`beam-away` 停止付費重試、改來源卡。[第四份逐圖收據](../../docs/videos/curio-u09/keyframes-qa-4.md)記錄選圖 SHA、退回理由、插畫占比與舊 manifest。整集估算已用 US$4.2235／US$6。
+- [新版差異史料複核](../../docs/videos/curio-u09/verify-2.md)解除首篇論文的誤導句；現版 `video.json` SHA `A54C8962…7F`。第 `57dd9251` 句依站主授權收窄未解之處。全新十三題盲評 13／13 yes，`narrative --answers` 通過；`script.md` SHA `2EE64BCE…3FC33`。詳見 [劇本狀態](../../docs/videos/curio-u09/script-status.md)。
+- `review-push --gate script` 已送新版後台；`review-pull` 讀回前版核准失效、**新版等待站主**。在新版核准前不重錄，也不把舊音訊／分鏡當成新版交付。

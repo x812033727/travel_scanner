@@ -74,3 +74,10 @@
 - 未讀先前答案的 script-only 新盲評者讀取現版 `video.json`，13 題全部 yes（其中 12 題必過）；主代理匯入答案後 `narrative` 工具 exit 0。此收據綁定 `CCD845B56DAE53A5828DFD1B93881D273E8BDA963D74B61327F074ACAC9FE50D`。
 - 未參與正式稿的另一位覆核者逐句核對歷史主張、9 張內容卡及後台文案，記錄於 [verify-1.md](verify-1.md)：31 項主張確認，無事實修訂或阻斷；原論文學術鏡像印頁 709、713 本輪重新視讀。
 - `script --slug curio-u09` 重新生成相同 `script.md`，SHA-256 `A6EBACD14E9986B8422316ABAEC6178FF039D063F31FE33A1A01D14233AF3F5A`；`review-push --gate script` exit 0，`review-pull --gate script` 回報 `waiting for the owner`。現版已在 `/admin/videos` **等待站主劇本核准**；上述內容關卡不等於劇本核准或媒體完成。
+
+## 插畫退路後的新版劇本（2026-10-16）
+
+- 兩張與旁白矛盾的插畫改為來源卡，詳見 [本輪逐圖收據](keyframes-qa-4.md)；其餘 89 張插畫保留。這使前版劇本、旁白時間軸與分鏡核准失效；舊核准未沿用。
+- 按站主核准的定向修訂，`57dd9251` 改為「波束的細部物理機制，今天仍在研究中」。獨立史料覆核另抓到首篇論文只詳述第一個來源，故 `049813c5` 收窄為「團隊先把第一個來源的觀測寫成論文，一九六八年二月二十四日在《自然》刊出。」完整差異與來源見 [第二輪史料覆核](verify-2.md)。
+- 新 `video.json` SHA-256 `A54C8962F3941599A0FCBDC8DCDB74A1B72F315A873384C3BF76EFAC1F1C2F7F`；全新盲評者只讀新版口播與十三題，**13／13 yes**。答案在 repo 外 `<home>/mokaair-work/videos/curio-u09/review/narrative-r7-answers.json`，SHA-256 `B0CE39E19E3D43DBD42BCCEB895756133071E5D0F10758CA128122D6DC53BC4F`；`narrative --answers` exit 0。`lint --json` 0 errors、1 個 `later-support` 約 10.1 秒的畫面延長警告。
+- `script --slug curio-u09` 重建 `script.md`，SHA-256 `2EE64BCE3C457A29F4C434F04D76DB53CECB03911FC28238FB32669C7832FC33`；已 `review-push --gate script`，`review-pull` 讀回舊核准已失效、**新版等待站主**。未重錄、未重製分鏡或成片，沒有本輪付費呼叫。
