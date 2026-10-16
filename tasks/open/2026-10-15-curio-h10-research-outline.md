@@ -102,3 +102,7 @@ video SHA-256 `e11a22a7a29086a06a8261943cd3e78bea6775223705cb3eab9b8dbdffa1a559`
 ## 2026-10-16 H10 旁白核准與插畫製作
 
 站主回覆已試聽並在後台核准；協調者以 `review-pull --gate audio` 現場讀回 `audio: approval recorded`。`keyframes --dry-run` 為 73 鏡、MiniMax image-01 1K、最多三 take 約 US$2.96；共用估算帳本 `h10-keyframes-20261016-01` 先預留 US$2.96，連同已用估額 US$0.70 為 US$3.66，低於本集 US$6。已啟動逐圖生成與 Gemini 圖像評審；尚未完成插畫驗收，也未送分鏡後台。
+
+## 2026-10-16 H10 分鏡定向複核與送審
+
+首次全頁目視發現八鏡與旁白場景、地點、道具或無字要求相反，詳見 [keyframes-qa-1.md](../../docs/videos/curio-h10/keyframes-qa-1.md)。僅重畫這八鏡，保留其餘已通過圖片；第二份 [keyframes-qa-2.md](../../docs/videos/curio-h10/keyframes-qa-2.md) 綁定新版 `video.json` 與 manifest 雜湊，記錄 73／73 評審通過、0 `needs_review`，並逐頁複看四頁聯絡表。劇本與旁白未改。H10 累計工具估算 US$2.519／US$6。已 `review-push --gate storyboard`，隨後 `review-pull` 讀回 **waiting for the owner**；站主核准前不製作成片。
