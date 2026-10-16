@@ -227,8 +227,8 @@ const hash16 = (...parts) => {
 
 export const isDrama = (doc) => doc?.format === DRAMA_FORMAT;
 export const isSeriesEpisode = (doc) => isDrama(doc) && isObject(doc.series);
-/** A drama drawn in one of the explainer presets: narrator only, every shot a still. */
-export const isExplainer = (doc) => isDrama(doc) && isExplainerPreset(doc.look?.preset);
+/** A narrator-only explainer: brand stories may use its picture look while keeping a cast. */
+export const isExplainer = (doc) => isDrama(doc) && doc.category !== "story" && isExplainerPreset(doc.look?.preset);
 /** The series whose identity an explainer wears ("sothatswhy"), or null: the channel's, or not an explainer. */
 export const explainerSeries = (doc) => (isExplainer(doc) ? EXPLAINER_IDENTITY[doc.look.preset] : null);
 /** A drama drawn in one of the cute explainer looks (CUTE_EXPLAINER_PRESETS). */

@@ -1,0 +1,814 @@
+{
+  "schema_version": 1,
+  "slug": "zero-root-yaozu-e005",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese fantasy costume drama, film still, natural cinematic light, realistic skin and fabric texture, shallow depth of field, warm lantern orange and mountain green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "lushi",
+      "name": "陸拾",
+      "appearance": "East Asian young man of eighteen, handsome with straight brows, high nose bridge and a dimple when he smiles, lean and wiry from years of carrying water, sun-tanned skin, black hair tied in a short rough ponytail with hemp cord, left iris slightly paler than the right, faded grey-blue coarse cotton short jacket and trousers, straw sandals, a cracked gourd hanging at his waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的鄉下少年，聲音清亮，說話快，一緊張就結巴，心地好、有點傻氣"
+      }
+    },
+    {
+      "id": "grandma",
+      "name": "胡奶奶",
+      "appearance": "East Asian old woman of about seventy, silver-white hair coiled into a round bun held with a wooden hairpin, small and thin but with a very straight back, long narrow eyes, a dark teal coarse cotton jacket fastened at the side with an apron tied over it, always holding a polished, gleaming tofu knife",
+      "voice": {
+        "provider": "gemini",
+        "name": "Gacrux",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；七十歲的老奶奶，低沉沙啞，刀子嘴豆腐心，說話不快但每個字都有分量"
+      }
+    },
+    {
+      "id": "tuantuan",
+      "name": "團團",
+      "appearance": "East Asian girl of seven, round face, big eyes and chubby cheeks, black hair tied in two small buns with red cord, a peach-pink padded jacket, often holding a stick of candied hawthorns",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；七歲的小女孩，奶聲奶氣，天真又得意，講到吃的就興奮"
+      }
+    },
+    {
+      "id": "clerk",
+      "name": "錢莊夥計",
+      "appearance": "East Asian man of about thirty, slim and neat, good-looking with sharp clever eyes and a thin trimmed moustache, a dark grey cotton gown with black cuffs, a black cloth cap, an abacus always at his elbow",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadaltager",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十歲的錢莊夥計，精明圓滑，看人下菜碟，嘴上客氣，眼睛一直在算帳"
+      }
+    },
+    {
+      "id": "watcher",
+      "name": "窗外的人",
+      "appearance": "an unseen man outside the window at night; only one narrow dark East Asian eye under a sharp brow ever shows, through a small hole torn in the window paper",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；看不見臉的男人，壓低嗓子的氣音，很輕、很慢，像在跟著一起數"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a light bouncing pipa and dizi melody over plucked guzheng, building shimmering bells as the golden light grows, a busy market-town drum groove, then a lonely erhu at dawn, ending on a hushed breath and one low suspenseful guqin note, ancient Chinese fantasy, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "雞盆變出三十二顆靈石，窗外卻有雙眼睛跟著他數｜長燈村 第5集",
+    "description": "奶奶奪回豆腐刀，看了破陶盆一眼，什麼都沒說。陸拾讓靈石一夜一夜疊到三十二顆，到鎮上換錢、買新刀、買功法、給團團買二十串糖葫蘆；錢莊夥計卻在靈石上認出了玄穹宗的印。《長燈村：零靈根的我被一村妖祖養大》第 5 集。",
+    "tags": [
+      "長燈村",
+      "AI漫劇",
+      "修仙",
+      "玄幻",
+      "靈石"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "窗外有眼",
+      "tag": "長燈村",
+      "shot": "s07"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "刀不准碰",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot in the Hu family courtyard at dusk beside the chicken coop, Lushi on screen left crouched over the cracked clay basin with the gleaming tofu knife in both hands, Grandma Hu on screen right standing over him very straight, last orange light",
+        "motion": "Grandma Hu snatches the tofu knife out of his hands in one quick move",
+        "characters": [
+          "lushi",
+          "grandma"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a01",
+          "speaker": "grandma",
+          "text": "刀不准碰。",
+          "emotion": "低沉，一個字一個字"
+        }
+      ]
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Grandma Hu on screen right at dusk, the gleaming tofu knife in her hand, eyes lowered to the cracked clay basin below frame on screen left, her mouth a hard line",
+        "motion": "Grandma Hu wipes the blade once along her apron",
+        "characters": [
+          "grandma"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the Hu family courtyard at dusk, Grandma Hu on screen right walking away into the dark house doorway with the tofu knife, Lushi on screen left by the chicken coop beside the glowing clay basin",
+        "motion": "Lushi sits down hard on the ground beside the coop",
+        "characters": [
+          "lushi",
+          "grandma"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lushi's face on screen left at dusk, sitting on the ground against the bamboo coop, Grandma Hu off screen right in the house",
+        "motion": "Lushi presses one hand to his chest and lets out a long breath",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a02",
+          "speaker": "lushi",
+          "text": "她……看見了吧？",
+          "emotion": "腿軟，鬆一口氣又心虛"
+        }
+      ]
+    },
+    {
+      "id": "s05",
+      "chapter": "越疊越多",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the basin from above, slow push in",
+        "prompt": "Insert from above of the cracked clay basin at night filled with rings of golden light like ripples on water, four glowing pale blue spirit stones in the middle; Lushi speaks off screen",
+        "motion": "The four glowing stones slowly divide into eight inside the golden ripples",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e5a03",
+          "speaker": "lushi",
+          "text": "八顆。",
+          "emotion": "屏住氣"
+        }
+      ]
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Lushi on screen left kneeling at the basin on another night, golden light from the basin below frame lighting his face from below, a patched quilt over his shoulders",
+        "motion": "Lushi counts off on the fingers of both hands, his mouth falling open",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a04",
+          "speaker": "lushi",
+          "text": "十六……",
+          "emotion": "數到一半愣住"
+        }
+      ]
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "Wide shot of the bamboo chicken coop in the Hu family courtyard at night, the cracked clay basin heaped full of glowing pale blue spirit stones, warm golden light pouring out of it and lighting up the whole coop, the hens huddled together in a corner, Lushi on screen left on his knees before it",
+        "motion": "Lushi throws both arms up over his head in a silent cheer",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a05",
+          "speaker": "lushi",
+          "text": "滿……滿盆了！",
+          "emotion": "壓著嗓子歡呼"
+        }
+      ]
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Lushi's face on screen left lit gold by the heaped basin below frame, eyes shining, a wide grin that shows his dimple",
+        "motion": "Lushi ticks off plans on his fingers",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a06",
+          "speaker": "lushi",
+          "text": "奶奶的新刀、團團的糖……",
+          "emotion": "掰手指盤算，越想越美"
+        }
+      ]
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, low angle, locked",
+        "prompt": "Medium close-up, low angle of Lushi on screen left standing up by the glowing coop at night, one glowing stone held up high in his fist, golden light from below",
+        "motion": "Lushi squeezes the stone in his raised fist",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a07",
+          "speaker": "lushi",
+          "text": "還有我的仙家功法！",
+          "emotion": "握拳，眼睛發亮"
+        }
+      ]
+    },
+    {
+      "id": "s10",
+      "chapter": "錢莊",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, pan right",
+        "prompt": "Wide shot of a busy stone-paved street in a small ancient Chinese market town by day, cloth awnings over the stalls, townsfolk soft and out of focus, a timber money-house on screen right with a dark lacquered counter open to the street, Lushi on screen left walking toward it with a small cloth pouch clutched to his chest",
+        "motion": "Lushi walks up to the money-house counter clutching the pouch",
+        "characters": [
+          "lushi"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of the clerk on screen right behind the dark lacquered counter of the money-house, a dark grey gown and black cloth cap, an abacus at his elbow, eyes looking Lushi up and down off screen left",
+        "motion": "The clerk flicks one abacus bead without looking up",
+        "characters": [
+          "clerk"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a08",
+          "speaker": "clerk",
+          "text": "鄉下人換什麼？",
+          "emotion": "斜眼，瞧不起人"
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the stone on the counter, locked",
+        "prompt": "Insert of a sun-tanned hand slapping a small glowing pale blue spirit stone down on the dark lacquered counter beside a wooden abacus",
+        "motion": "The hand slaps the stone down and lifts away, leaving it glowing on the counter",
+        "characters": []
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of the clerk's face on screen right, sharp eyes going wide, the pale blue glow of the stone below frame lighting his chin, Lushi off screen left",
+        "motion": "The clerk shoots upright on his stool",
+        "characters": [
+          "clerk"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a09",
+          "speaker": "clerk",
+          "text": "這、這是靈石？",
+          "emotion": "嚇一跳，口氣全變了"
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of the clerk on screen right holding the small spirit stone up between two fingers to the daylight from the doorway, squinting at it, Lushi off screen left",
+        "motion": "The clerk turns the stone in the light and his smile drops",
+        "characters": [
+          "clerk"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a10",
+          "speaker": "clerk",
+          "text": "玄穹宗的印？",
+          "emotion": "壓低聲音，臉色一變"
+        }
+      ]
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the seal on the stone, slow push in",
+        "prompt": "Insert of a small pale blue spirit stone held between two fingers against bright daylight, a tiny cloud-shaped sigil carved into its surface glowing faintly, no writing",
+        "motion": "The tiny cloud sigil on the stone glints in the light",
+        "characters": []
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lushi's face on screen left at the money-house counter, a stiff smile, the clerk off screen right",
+        "motion": "Lushi scratches the back of his head",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a11",
+          "speaker": "lushi",
+          "text": "撿、撿的。",
+          "emotion": "心虛，結巴"
+        }
+      ]
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of the clerk on screen right behind the counter, a thin polite smile that does not reach his eyes, a small cloth purse of silver under his hand, Lushi off screen left",
+        "motion": "The clerk pushes the purse of silver across the counter toward Lushi off screen left",
+        "characters": [
+          "clerk"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a12",
+          "speaker": "clerk",
+          "text": "撿得真巧。",
+          "emotion": "客客氣氣，眼睛在算帳"
+        }
+      ]
+    },
+    {
+      "id": "s18",
+      "chapter": "書攤",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the market street by day, cloth awnings and townsfolk soft and out of focus, Lushi on screen left at a blacksmith stall with a row of new blades laid on a cloth on screen right, a brand-new kitchen knife in his hand",
+        "motion": "Lushi lifts the new knife up to the light, grinning at the shine of the blade",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a13",
+          "speaker": "lushi",
+          "text": "這把，給奶奶。",
+          "emotion": "得意，挑到好東西"
+        }
+      ]
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up in profile of Lushi on screen left at an old book stall under a cloth awning, bright daylight falling through the awning onto his straight brows and high nose bridge, an open thread-bound book in his hands, piles of old books on screen right",
+        "motion": "Lushi turns a page, frowning hard in concentration",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a14",
+          "speaker": "lushi",
+          "text": "字一個都看不懂……看圖吧。",
+          "emotion": "認真到皺眉，自言自語"
+        }
+      ]
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the open manual, locked",
+        "prompt": "Insert of an open old thread-bound book on a book stall, an ink drawing of a man sitting cross-legged with flowing lines gathering at his belly, brushwork too small and faint to read, a sun-tanned hand on the page; Lushi speaks off screen",
+        "motion": "The hand slaps the book shut",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e5a15",
+          "speaker": "lushi",
+          "text": "就這本！",
+          "emotion": "下定決心"
+        }
+      ]
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Lushi on screen left in the bright market street, the old thread-bound book hugged to his chest and the new knife under his arm, cloth awnings soft behind him",
+        "motion": "Lushi hugs the book tighter and grins up at the sky",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a16",
+          "speaker": "lushi",
+          "text": "仙人……我也當得成。",
+          "emotion": "偷偷做夢，笑得很傻"
+        }
+      ]
+    },
+    {
+      "id": "s22",
+      "chapter": "孝敬",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the Hu family courtyard gate in the evening, a lantern under the eaves, Tuantuan on screen right in a peach-pink padded jacket with a huge bundle of twenty sticks of candied hawthorns in her arms, Lushi on screen left with his hands on his hips",
+        "motion": "Tuantuan hugs the bundle tight and spins round on the spot",
+        "characters": [
+          "lushi",
+          "tuantuan"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a17",
+          "speaker": "tuantuan",
+          "text": "二十串！拾哥最好！",
+          "emotion": "跳起來，奶聲奶氣尖叫"
+        }
+      ]
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Tuantuan on screen right at the courtyard gate in lantern light, two small hair buns tied with red cord, the big bundle of candied hawthorns in her arms, one stick in her hand, eyes on Lushi off screen left",
+        "motion": "Tuantuan points one stick of candied hawthorns at Lushi off screen left",
+        "characters": [
+          "tuantuan"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a18",
+          "speaker": "tuantuan",
+          "text": "團團算過了，會出事喔。",
+          "emotion": "奶聲奶氣，像在說天氣"
+        }
+      ]
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lushi's face on screen left in lantern light, a startled laugh, Tuantuan off screen right",
+        "motion": "Lushi flaps one hand at Tuantuan off screen right",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a19",
+          "speaker": "lushi",
+          "text": "呸呸呸，別亂算。",
+          "emotion": "笑著打斷，有點發毛"
+        }
+      ]
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Two-shot across the old wooden table in the Hu family courtyard in the evening, an oil lamp and bowls of food, Lushi on screen left, Grandma Hu on screen right sitting very straight, a new knife wrapped in red paper on the table between them",
+        "motion": "Lushi pushes the red paper bundle across the table toward Grandma Hu",
+        "characters": [
+          "lushi",
+          "grandma"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a20",
+          "speaker": "lushi",
+          "text": "奶奶，這是新刀，孝敬您的。",
+          "emotion": "獻寶，等著被誇"
+        }
+      ]
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the red paper bundle, locked",
+        "prompt": "Insert of an old hand on a knife wrapped in red paper on the wooden table beside a bowl of rice and an old gleaming tofu knife, oil lamp light",
+        "motion": "The old hand pushes the red paper bundle back across the table unopened",
+        "characters": []
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Grandma Hu on screen right at the evening table, oil lamp light, a block of tofu on her palm and the old gleaming tofu knife in her other hand, Lushi off screen left",
+        "motion": "Grandma Hu slices the tofu in her palm with the old knife",
+        "characters": [
+          "grandma"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a21",
+          "speaker": "grandma",
+          "text": "舊的順手。",
+          "emotion": "淡淡的，不看他"
+        }
+      ]
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lushi's face on screen left at the evening table, oil lamp light, the smile sliding off, Grandma Hu off screen right",
+        "motion": "Lushi pulls the red paper bundle back toward himself, shoulders sagging",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a22",
+          "speaker": "lushi",
+          "text": "連拆都不拆……",
+          "emotion": "洩氣，小聲"
+        }
+      ]
+    },
+    {
+      "id": "s29",
+      "chapter": "吸不進去",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of a small bare bedroom in an old village house at night, Lushi on screen left sitting cross-legged on a plank bed, an open thread-bound book beside him, a paper window on screen right with moonlight coming through, a glowing pale blue stone in his hand",
+        "motion": "Lushi presses the glowing stone against his belly and shuts his eyes",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a23",
+          "speaker": "lushi",
+          "text": "丹田……是這裡吧？",
+          "emotion": "照著圖，半信半疑"
+        }
+      ]
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the stone at his belly, slow push in",
+        "prompt": "Insert of a sun-tanned hand pressing a glowing pale blue spirit stone against the lower belly of a grey-blue coarse cotton jacket, moonlight",
+        "motion": "The glow flickers against the cloth but does not sink in",
+        "characters": []
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Lushi's face on screen left in moonlight, eyes squeezed shut, jaw clenched, a bead of sweat on his temple",
+        "motion": "Lushi strains, a bead of sweat rolling down his temple",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a24",
+          "speaker": "lushi",
+          "text": "吸……給我吸進去……",
+          "emotion": "咬牙，用盡力氣"
+        }
+      ]
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Medium shot of Lushi on screen left still sitting cross-legged on the plank bed, the paper window on screen right turning grey with dawn, his fist resting on his knee",
+        "motion": "Lushi slumps and opens his clenched fist",
+        "characters": [
+          "lushi"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the crumbling stone, locked",
+        "prompt": "Insert of a sun-tanned open palm in grey dawn light, a dull spirit stone in it with no glow left, cracked all over",
+        "motion": "The stone crumbles into grey ash that sifts away between the fingers",
+        "characters": []
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lushi's face on screen left in grey dawn light, eyes wet, a crooked smile at himself",
+        "motion": "Lushi brushes the ash off his palm onto the floor",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a25",
+          "speaker": "lushi",
+          "text": "零靈根……果然還是廢物。",
+          "emotion": "自嘲，鼻子一酸"
+        }
+      ]
+    },
+    {
+      "id": "s35",
+      "chapter": "三十二",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the small dark bedroom late at night, Lushi on screen left kneeling beside the plank bed, an oil lamp on the floor, the paper window on screen right",
+        "motion": "Lushi drags a small wooden box out from under the bed",
+        "characters": [
+          "lushi"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the box of stones, locked",
+        "prompt": "Insert of a small open wooden box full of glowing pale blue spirit stones on the floor in oil lamp light, a sun-tanned finger moving the stones one by one to the side; Lushi speaks off screen",
+        "motion": "The finger slides the stones aside one at a time as it counts",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e5a26",
+          "speaker": "lushi",
+          "text": "三十、三十一……",
+          "emotion": "小聲數，很滿足"
+        }
+      ]
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lushi's face on screen left in warm oil lamp light, the box below frame, the paper window dark behind him on screen right",
+        "motion": "Lushi drops the last stone into the box with a small satisfied smile",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a27",
+          "speaker": "lushi",
+          "text": "三十二。",
+          "emotion": "心滿意足"
+        }
+      ]
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the window paper, slow push in",
+        "prompt": "Insert of an old paper window from inside at night, faint oil lamp light on the paper, a small ragged hole torn in one pane, darkness behind it",
+        "motion": "An eye slides into view behind the hole in the window paper",
+        "characters": []
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "data": {
+        "camera": "Extreme close-up, locked",
+        "prompt": "Extreme close-up of the watcher's single narrow dark eye under a sharp brow behind the small ragged hole in the window paper, faint pale blue glow from the stones reflected in it",
+        "motion": "The eye follows something moving inside the room from left to right",
+        "characters": [
+          "watcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e5a28",
+          "speaker": "watcher",
+          "text": "三十二。",
+          "emotion": "氣音，很輕，跟著數"
+        }
+      ]
+    }
+  ]
+}
