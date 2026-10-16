@@ -468,6 +468,9 @@ test("the owner's slides requests go through the worker relay, and a site from b
   assert.deepEqual(sleeps, []);
 });
 
+// The durable poll budget counts only the client's own waits: a stalled event loop under a full
+// suite must not spend the few milliseconds these tests give it before the mocked answer arrives.
+const fixedClock = () => 0;
 const DURABLE_SLUG = "saved-writer";
 const DURABLE_PATH = "/api/video/automation/run/jobs";
 const savedAnswer = { text: '{"answer":"exact saved body"}', provider: "gemini", model: "original-model", input_tokens: 20, output_tokens: 15, usage: { tokens: 35, token_budget: 1000 } };
@@ -480,8 +483,8 @@ function job(body, status = "succeeded") {
     provider: savedAnswer.provider, model: savedAnswer.model, status, result: status === "succeeded" ? savedAnswer : null,
     error_code: null, error_detail: null, error_status: null, retry_after: null };
 }
-function durableClient(box, fetch, options = {}) {
-  return automationClient({ ...credentials(box), root: box.root, fetch: async (url, init) => {
+function durableClient(box, fetch, options = {}, pollClock = fixedClock) {
+  return automationClient({ ...credentials(box), root: box.root, pollClock, fetch: async (url, init) => {
     if (new URL(url).pathname === "/api/video/automation/settings") return Response.json({ durable_stage_runs: true, model: "new-model" });
     return fetch(url, init);
   }, sleep: async () => {} }, { durablePollMs: 5, durablePollIntervalMs: 5, ...options });
@@ -573,7 +576,7 @@ test("a project STOP keeps a translation unit from being submitted; its request 
 
 test("a translation stays on the synchronous route while the site has not turned durable runs on", async () => {
   const box = sandbox(), routes = [];
-  const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+  const client = automationClient({ ...credentials(box), root: box.root, pollClock: fixedClock, sleep: async () => {}, fetch: async (url, init) => {
     const route = new URL(url).pathname;
     routes.push(route);
     if (route.endsWith("/settings")) return Response.json({ durable_stage_runs: false });
@@ -605,7 +608,7 @@ test("a pending writer restarts with GET and returns the persisted result despit
   await restarted.settings();
   assert.deepEqual(await runWriter(restarted), savedAnswer);
   // A crash before settle leaves the completed result, available even without settings or HTTP.
-  const disconnected = automationClient({ ...credentials(box), root: box.root, fetch: async () => assert.fail("completed results must be recovered before provider/budget checks") });
+  const disconnected = automationClient({ ...credentials(box), root: box.root, pollClock: fixedClock, fetch: async () => assert.fail("completed results must be recovered before provider/budget checks") });
   assert.deepEqual(await runWriter(disconnected), savedAnswer);
   disconnected.settleRuns([DURABLE_SLUG]);
   assert.deepEqual(durableFiles(box), []);
@@ -705,7 +708,7 @@ test("the poll's own deadline cutting a look-up short is no failed request once 
     if (++gets > 1) return hang(init);
     await new Promise((resolve) => setTimeout(resolve, 5));
     return Response.json(job(original, "running"));
-  }, { durablePollMs: 25_000, durablePollIntervalMs: 25_000 });
+  }, { durablePollMs: 25_000, durablePollIntervalMs: 25_000 }, Date.now); // the real 5 ms is what this case measures
   await cut.settings();
   await assert.rejects(runWriter(cut), (error) => error.code === RUN_PENDING && error.why === undefined && error.message === "the saved stage run is still pending; its receipt will be recovered next round");
   assert.equal(gets, 2);
@@ -1162,7 +1165,7 @@ test("all budgeted story chapters always use saved jobs for writing and checks",
   ]) {
     for (const stage of ["writer", "verifier", "listener"]) {
       const box = sandbox(), routes = [];
-      const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+      const client = automationClient({ ...credentials(box), root: box.root, pollClock: fixedClock, sleep: async () => {}, fetch: async (url, init) => {
         const route = new URL(url).pathname;
         if (route === "/api/video/automation/settings") return Response.json({ durable_stage_runs: false });
         routes.push(route);
@@ -1187,7 +1190,7 @@ test("all budgeted story chapters always use saved jobs for writing and checks",
 test("the durable polling window caps at 25 seconds and leaves the paid operation saved for the next round", async () => {
   const box = sandbox(), sleeps = [], calls = [];
   let original;
-  const client = automationClient({ ...credentials(box), root: box.root, sleep: async (ms) => sleeps.push(ms), fetch: async (url, init) => {
+  const client = automationClient({ ...credentials(box), root: box.root, pollClock: fixedClock, sleep: async (ms) => sleeps.push(ms), fetch: async (url, init) => {
     if (new URL(url).pathname.endsWith("/settings")) return Response.json({ durable_stage_runs: true });
     calls.push(init.method);
     if (init.method === "POST") original = JSON.parse(init.body);
@@ -1226,7 +1229,7 @@ test("a settled policy refusal survives repeated rounds and client restarts with
 test("policy retry requires a fresh enabled route, a new owner request, and no STOP; it archives the original refusal", async () => {
   const box = sandbox(), calls = [], requestId = "11112233-4455-6677-8899-aabbccddeeff";
   let enabled = false, current;
-  const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+  const client = automationClient({ ...credentials(box), root: box.root, pollClock: fixedClock, sleep: async () => {}, fetch: async (url, init) => {
     const route = new URL(url).pathname;
     calls.push({ route, method: init.method });
     if (route.endsWith("/settings")) return Response.json({ enabled: true, durable_stage_runs: true, drama: { drama_enabled: enabled }, model: "changed-provider-does-not-resume" });
@@ -1262,7 +1265,7 @@ test("a verified undispatched slides repair may resume its corrected format whil
   for (const video of [{ format: "slides" }, {}]) {
     const box = sandbox();
     let refusal;
-    const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+    const client = automationClient({ ...credentials(box), root: box.root, pollClock: fixedClock, sleep: async () => {}, fetch: async (url, init) => {
       if (new URL(url).pathname.endsWith("/settings")) return Response.json({ enabled: true, durable_stage_runs: true, drama: { drama_enabled: false } });
       if (init.method === "POST") refusal = { ...job(JSON.parse(init.body), "failed"), error_code: POLICY_HOLD, error_detail: "misrouted slides repair", error_status: 409, dispatched_at: null };
       return Response.json(refusal);
@@ -1279,7 +1282,7 @@ test("a verified undispatched slides repair may resume its corrected format whil
 test("a mixed legacy set of policy holds cannot be partly archived by one owner retry", async () => {
   const box = sandbox();
   let requests = 0;
-  const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+  const client = automationClient({ ...credentials(box), root: box.root, pollClock: fixedClock, sleep: async () => {}, fetch: async (url, init) => {
     requests++;
     if (new URL(url).pathname.endsWith("/settings")) return Response.json({ enabled: true, durable_stage_runs: true, drama: { drama_enabled: true } });
     assert.equal(init.method, "POST");
