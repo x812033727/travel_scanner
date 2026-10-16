@@ -138,6 +138,9 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
   if (!token) throw new AutomationError("no video tool token yet: run `node tools/video/cli.mjs login`", { who: "owner" });
   const fetchImpl = ctx.fetch ?? globalThis.fetch;
   const sleep = ctx.sleep ?? ((ms) => new Promise((resolve) => setTimeout(resolve, ms)));
+  // The durable poll budget's clock, in milliseconds. Not ctx.now, which the worker's context
+  // already uses for a Date; tests pass a fixed one so a stalled event loop cannot spend it.
+  const now = ctx.pollClock ?? Date.now;
   const receipts = runReceiptStore(ctx, site);
   let durable = false;
   const uncertain = (route, why, status = 0, what = "the model") =>
@@ -259,7 +262,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
   }
   async function durableRun(body, previous) {
     const entry = previous ?? receipts.prepare(body);
-    const started = Date.now(), budget = Math.max(1, Math.min(durablePollMs, 25_000));
+    const started = now(), budget = Math.max(1, Math.min(durablePollMs, 25_000));
     const interval = Math.max(1, Math.min(durablePollIntervalMs, budget));
     let waited = 0, failures = 0;
     function completed() {
@@ -288,7 +291,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     for (;;) {
       const result = completed();
       if (result) return result;
-      const remaining = budget - Math.max(waited, Date.now() - started);
+      const remaining = budget - Math.max(waited, now() - started);
       if (remaining <= 0 || stopRequested(path.dirname(path.dirname(entry.file)))) break;
       const known = entry.record.receipt;
       try {
@@ -335,7 +338,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       const resultAfter = completed();
       if (resultAfter) return resultAfter;
       if (failures >= attempts || stopRequested(path.dirname(path.dirname(entry.file)))) break;
-      const wait = Math.min(interval, budget - Math.max(waited, Date.now() - started));
+      const wait = Math.min(interval, budget - Math.max(waited, now() - started));
       if (wait <= 0) break;
       await sleep(wait);
       waited += wait;
