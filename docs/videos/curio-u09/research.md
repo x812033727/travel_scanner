@@ -1,7 +1,7 @@
 # U09：紙帶上的「小綠人」——研究底稿
 
 - 查核日期：**2026-10-16（Asia/Taipei）**。
-- 階段：大綱層級獨立覆核完成，待站主選綱；未啟動付費製作。未寫正式劇本、未建立 `video.json`。
+- 階段：原大綱 A 已由站主核准；正式稿、`video.json` 與逐句證據索引已起草，待獨立覆核及劇本核准；未啟動付費製作。`brief.md` 為符合現行 lint 補三個格式小節，A／B 選項正文未改；原、新 SHA 與重新送審要求記在 `script-status.md`。
 - 舊題庫僅作查找線索：`origin/claude/curio-topic-bank-second-batch`，提交 `949bb91fc85d41a53633d056062b27d87651e9d5` 的 `docs/videos/history-curiosity/topic-checks/U09.md`。本集沒有修改共享題庫，也沒有把舊查核日改成今天。
 - 製作規則：已讀 `curio-episode`、`youtube-video`、`script-writing.md` 的故事／開場／十三題，以及 H01-v2 前 30 景、系列 README 與 look。
 
@@ -25,8 +25,11 @@
 | S06 | T. Gold，〈Rotating Neutron Stars as the Origin of the Pulsating Radio Sources〉，Nature 218，731–732，1968-05-25，[出版頁／DOI](https://www.nature.com/articles/218731a0)、[UBC 學術鏡像 PDF](https://phas.ubc.ca/~heyl/ASTR304_2003W/papers/gold.pdf) | **opened：獨立覆核者視讀學術鏡像印頁 731–732**。原撰稿者只取得出版方索引題名、日期與摘要；出版頁轉登入中轉。獨立覆核者另取得 UBC PDF，HTTP 200、881,630 bytes，讀取兩頁原件。 | p.731 摘要提出自轉波束；p.732 給出自轉論證，並保留發射機制仍不清楚的限制。原件標示 5 月 20 日收稿、5 月 25 日出版，支持開場「五月投出一篇兩頁論文」。不聲稱 Gold 是所有相關理論的唯一先驅，也不把提案寫成當場完成全部實證。 |
 | S07 | NASA Science，〈Pulsars〉，頁面更新 2026-03-11，[原頁](https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-pulsars/) | **opened**。讀到脈衝星、波束掃過視線、發現沿革段落。 | 今日的自轉中子星模型。全片只用「燈塔」一個比喻；不使用網頁中的現存數量、最快紀錄等會分散主線的數字。 |
 | S08 | Cavendish Laboratory，訪問脈衝星研究者 Lucy Oswald，2026-02-11，[原頁](https://www.phy.cam.ac.uk/news/celebrating-women-in-science-meet-lucy-oswald-our-new-pulsars-researcher/) | **opened**。劍橋物理系全文問答可讀。 | 現行研究仍未完全解清發射波束的微觀機制；此限制不等於最初訊號身分未明。只作結論邊界查核，不另開現代天文學支線。 |
+| S09 | University of Manchester / Jodrell Bank，Frontiers of Modern Astronomy，〈Observations of Pulsars〉，[§4.1](https://www.jb.man.ac.uk/distance/frontiers/pulsars/section4.html) | **opened**。正式稿階段於 2026-10-16 讀到 §4.1 色散與 §4.2 計時全文。 | 只補一個必要的白話機制：星際物質會令不同頻率脈衝的到達時間不同。不取本文其他觀測設備、個別脈衝星或數量作旁支。 |
 
 本次原件辨識：S04 SHA-256 `796c3561bb98da011699ee60c06f7a7ba423bc4360f5635b688c1900d29ee579`；S05 SHA-256 `df2799809a5bb2eb87e1ebc7ad8ec6e688df2cc0861c9d764d8a1d3325dc3d2e`；S06 獨立覆核者回報 SHA-256 `77a83ec7ff66c36d7349b16c4c223ec58b38305f9a518958cb7296bbed2abfb1`。PDF 只作查核，沒有放進 Git 或當成影片素材授權。
+
+正式稿補查：2026-10-16 原撰稿者重開 S03 授權全文、S07 NASA 頁面與 S06 UBC PDF，確認新增讀圖、錯過一次快紀錄、假期維持觀測與 Gold 減速預測的範圍；S06 全文此時亦由作者取得。企劃表保留先前誰取得哪些範圍的紀錄。新增主張編為 C25–C31；同一已查核主線未變。
 
 ## 故事可用的時間順序
 
@@ -60,4 +63,4 @@
 
 ## 後續門檻
 
-大綱層級獨立覆核完成，待站主選綱；未啟動付費製作。正式稿要逐行對 claims，另由只讀稿的審稿者做十三題盲評；目前這份研究與大綱不是通過劇本關卡的憑據。稿件及整集費用上限核准前不產音、產圖或送付費 QA。
+大綱 A 及繁中製作費用上限 US$6／集、五集 US$30 已獲站主授權；正式稿尚待獨立史料覆核、只讀劇本十三題盲評及站主劇本核准。授權上限不等於本稿已通過內容關卡；本輪沒有付費呼叫、沒有後台劇本送審。多語、片段與額外音樂不在本次授權內。

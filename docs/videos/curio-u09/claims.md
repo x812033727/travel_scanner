@@ -1,8 +1,8 @@
 # U09：主張與表述界線
 
-查核日期：**2026-10-16（Asia/Taipei）**。本表綁企劃，不是正式逐句驗收；來源網址、開啟狀態及原件雜湊見 [research.md](research.md)。S06 原撰稿者只讀到出版方索引摘要，獨立覆核者另視讀 UBC 學術鏡像兩頁原件；其餘用途均已讀到原頁或原件。
+查核日期：**2026-10-16（Asia/Taipei）**。正式稿逐句 ID、文句與主張映射見 [script-evidence.md](script-evidence.md)；來源網址、開啟狀態及原件雜湊見 [research.md](research.md)。以下是作者自查映射，仍需未參與撰稿者覆核。
 
-狀態：**大綱層級獨立覆核完成，待站主選綱；未啟動付費製作。**
+狀態：**A 案已由站主核准；正式稿完成作者自查，待獨立史料覆核與十三題盲評，尚未送劇本審核、未啟動付費製作。**
 
 | ID | 可進稿的主張 | 證據與定位 | 建議位置 | 必留的限制 |
 | --- | --- | --- | --- | --- |
@@ -30,6 +30,14 @@
 | C22 | 今日模型中，旋轉中子星的波束掃過地球視線形成接收脈衝。 | S07 主文 Pulsars；S04 p.179。 | A07 最終答案 | 是電磁波接收，並非星體發出人耳直接可聽的敲擊聲。 |
 | C23 | 自然來源能形成高度規律訊號，因此規律本身不足以判為智慧訊息。 | C08、C20–C22 的編輯推論。 | A07 結檔 | 標為本片的推論；不說精密週期一律表示中子星。 |
 | C24 | 發射波束的細部物理仍有待研究。 | S08 Lucy Oswald 訪談；S07 機制段落。 | 製作註記／必要時片尾一小句 | 不把這個現代問題寫成 U09 身分仍未解；不為補時另闢支線。 |
+| C25 | 團隊先以人工讀圖熟悉新設備；Bell 逐漸能分辨閃爍訊源與干擾。 | S03「We started operating it in July 1967」「The charts were analyzed by hand」兩段，2026-10-16 重開全文。 | A02：new-instrument、human-reading、learn-patterns | 人工讀圖是當時的作法，不推論電腦永遠做不到。 |
+| C26 | 一次 Bell 去聽演講，沒有做快紀錄；次日看到例行記錄中又有異常。 | S03「Towards the end of October」段，2026-10-16 重讀。 | A02：missed-session、normal-chart | 只說一次，不編確切日期，也不說錯過這一次才造成發現。 |
+| C27 | 電波望遠鏡易受附近干擾；Hewish 隔日親自觀察時脈衝再現。 | S03「Radio telescopes are very sensitive」「However he was interested enough」兩段；S04 p.177。 | A03：sensitive-receiver、reasonable-check、reappears | 表述為合理排查，不編教授與學生的爭吵。 |
+| C28 | 團隊曾考慮並排除經月球反射的人類雷達訊號。 | S03「We considered and eliminated radar reflected off the moon」句。 | A03：reflection-check、reflection-fails | 不虛構當時未提供的檢查細節；畫面只作假說示意。 |
+| C29 | 星際物質造成電波的頻率相依延遲，可比較到達時間。 | S09 §4.1 前三段；S03 Pilkington 色散測量。 | A04：travel-delay | 只說不同頻率延遲不同；不聲稱量到真空中的光速不同。 |
+| C30 | Bell 認為不同文明同時選相同頻率向地球發訊不太可能；Hewish 假期補紙墨維持巡天。 | S03「It was very unlikely that two lots」「Over Christmas Tony Hewish」兩段。 | A05：same-frequency-argument、survey-holiday | 前者是當事人的推論而非數學證明；正文不描畫真的外星人。 |
+| C31 | Gold 自轉模型預期因能量損失而逐漸減速。 | S06 p.732 的旋轉能量段與正文末段「If this basic picture is the correct one」；獨立覆核已視讀，作者正式稿階段亦重開 UBC PDF 讀取該段。 | A07：testable-prediction | 必說「預測」；不把當時提案混成當場已完成觀測。 |
+| E01 | 留言問題與訂閱邀請。 | 編輯語句，不是外部事實。 | comment-question、subscribe | 不預告下一集、不宣稱親做觀測。 |
 
 ## 不使用的說法
 
@@ -44,8 +52,8 @@
 | 1968 年 2 月論文宣布快速自轉中子星。 | 原件寫 oscillations；旋轉解釋必須另接 Gold。 |
 | 諾貝爾獎證明誰偷走了誰的成果。 | 未由本集調查證成，而且偏離訊號身分主線。 |
 
-## 待正式稿補齊
+## 正式稿證據界線
 
-- 把 C01–C24 逐行連至正式句 ID；目前只有企劃段落代號，不能用它假裝完成逐句查核。
+- C01–C31 及 E01 已連至正式句 ID，見 [逐句索引](script-evidence.md)。場景的 `claims[]` 與索引由同一份 `video.json` 生成；以獨立查核結果為準，不能把映射完整當作查核通過。
 - 研究原件可以查閱，引用圖片仍要獨立做授權審核；目前沒有核准任何人物照片／原紙帶掃描作素材。
-- 一輪未參與撰稿的史料覆核與一次只讀劇本的十三題盲評均尚未執行。
+- 企劃層級已有獨立覆核；本次正式稿及新增 C25–C31 的獨立覆核與只讀劇本十三題盲評尚未執行。

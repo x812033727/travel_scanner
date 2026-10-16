@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-u09-research-outline
 title: Curio U09 research outline
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-curio-u09-script
+claimed_at: 2026-10-15T23:53:06Z
 created_at: 2026-10-15T16:35:08Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -25,7 +25,9 @@ scope:
 - [x] 研究、主張界線與 A／B 大綱落地在 docs/videos/curio-u09。
 - [x] 主要第一手資料重新開啟，記錄成功與受限來源。
 - [x] 未參與撰稿者獨立覆核後可供站主選大綱。
-- [ ] 站主選擇 A／B 並完成本批費用授權後，交接後續正式稿製作。
+- [x] 站主選擇 A／B 並完成本批費用授權後，交接後續正式稿製作。
+- [x] 依核准 A 案完成正式稿、video.json、逐句證據與 loops，通過本機 lint。
+- [ ] 正式稿獨立史料覆核、十三題盲評與站主劇本核准；媒體製作另按關卡接續。
 
 ## Steps
 
@@ -35,7 +37,10 @@ scope:
 - [x] 寫 research.md、claims.md、brief.md，將三個開場鉤子對應後文回收。
 - [x] 接收獨立覆核並修正開場長度與來源讀取範圍。
 - [x] 協調者手動送審 outline 並讀回 pending；記錄 review ID 與 brief 雜湊。
-- [ ] 等站主選擇 A／B，以及五集 US$30 估算停手上限授權；尚未核准。
+- [x] 主代理讀回站主已選原案 A，且每集 US$6／五集 US$30 上限已獲授權。
+- [x] 再認領原票展開正式稿，未新建重疊 scope；102 句與 14 loops 已建立。
+- [x] 修正分鏡多樣性與情緒 cue；本機 lint 0 errors／0 warnings。
+- [ ] 補格式新版 brief 由主代理重新送審並讀回核准，再送劇本。
 
 ## How to verify
 
@@ -53,3 +58,13 @@ scope:
 - 獨立覆核者 `curio_five_inventory` 重開 Cambridge、Bell 重刊、Nobel，視讀 2 月原論文 p.709／713 與 Gold 5 月原文 p.731–732，確認 LGM 玩笑代稱、振盪／自轉兩階段界線。開場修為 A 170 字元／150 中文字、B 163／145，約 38／36 秒正文加停頓預算 45 秒；A 欄與分段表相符、三事件保留結果。讀回後給予大綱層級通過，無剩餘阻擋項；不是正式劇本十三題盲評通過。
 - 2026-10-16 01:01（Asia/Taipei），主代理回報 U09 outline 手動送審成功並讀回 `pending`；review ID `31269f8b-3ca6-4d62-987e-62acedc34e3b`，對應 brief SHA-256 `E268DE743CECA8CDB0EF6846AC893D8F2F0422C1F4E30CE6A6200003B8149D79`。已送審 brief 保持不變；未啟動付費或 worker 製作。
 - 交接完成後釋出認領，任務保留 open：待站主選 A／B，並另行核准共同提案每集 US$6、五集 US$30 的估算停手上限。費用尚未授權，不是供應商硬上限，不沿用 H09 額度；核准後才按正式稿與媒體關卡繼續。
+
+### 正式稿續作：2026-10-16
+
+- 以上是先前送審交接快照。站主其後已核准五集 A 與每集 US$6／整批 US$30 上限，主代理已讀回原 outline review 的核准與 exact brief SHA。
+- 以 owner `codex-curio-u09-script` 重新 claim 同票，正式稿落在 `video.json`、`script.md`、`script-evidence.md`、`loops.md`；研究與 claims 同步新增的 C25–C31。
+- 101 景、91 插圖、9 內容卡、1 outro；102 句，2,067 口播單位；正文預估 605.57 秒，開場 45.93 秒。均為文字估時，未合成音訊。
+- `node tools/video/cli.mjs lint --slug curio-u09` 通過：0 errors／0 warnings。情緒 cue、圖面變化與開場／回收 prompt 已整理，沒有更動共享程式或規則。
+- 已核准 brief 缺現行 lint 要求的三個精確節標；依主代理指示，只在大綱前從既有內容提取問題／一句答案／站主觀點。A／B 選項正文未改。原 SHA `E268DE743CECA8CDB0EF6846AC893D8F2F0422C1F4E30CE6A6200003B8149D79`；新 SHA `0C6A058D0ED1BB5A8C2B42275275523F3A5BB19FE53C78E82B7F499F4B82C6D2`。由主代理重新送新版大綱，核准後才可送劇本／付費。
+- 本輪沒有付費呼叫、媒體生成、後台送稿或 push。正式稿的獨立史料覆核、十三題盲評仍待執行；詳見 `docs/videos/curio-u09/script-status.md`。
+- 本輪 schema／逐句索引／script 同步檢查均通過；`check:tasks` 通過 1895 份，僅既存過期／重疊警告。依主代理要求，只將本集 docs 與本票作本機 commit，認領維持供修訂接續。
