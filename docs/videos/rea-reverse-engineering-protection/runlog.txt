@@ -1,0 +1,55 @@
+# runlog.txt — REA 逆向自己的軟體（2026-10-16）
+# 環境：Windows 11、Node.js 24.13.0、.NET SDK 10.0.400、Chrome 155、REA rea-agents 6.5.0、Obfuscar 2.2.50
+# 分析目標全為自有：自寫的 NoteVault 與自家 Mokaair 正式站。秘密皆為假測試值。
+
+=== [B1] 原版 NoteVault 預設執行 ===
+$ dotnet NoteVault.dll
+NoteVault 1.4.2. Commands: activate <key>, export-pdf
+Pro costs NT$150 per month.
+
+=== [B2] REA 版本 ===
+$ npx rea --version
+6.5.0
+
+=== [B3] REA 抽字串常數：原版（節錄秘密相關行） ===
+$ npx rea inspect-managed-members bin-plain/NoteVault.dll --filter-output string_literals
+literal count: 23
+  "nv-test-secret-7f3a9c"   (簽章密鑰)
+  "NV_INTERNAL_DEBUG"       (除錯後門環境變數)
+  "letmein"                 (後門密碼)
+  "EDU" / "NT$90"           (隱藏四折)
+  "nvk_test_51HxQ2fakeKEY000000"  (同步 API key，假值)
+
+=== [B4] REA 抽字串常數：混淆版 ===
+$ npx rea inspect-managed-members bin-obf/NoteVault.dll --filter-output string_literals
+literal count: 0   (字串堆被 HideStrings 清空)
+
+=== [B5] 位元組掃描：混淆後密鑰是否仍以明文殘留 ===
+const 版 bin-obf  含 nv-test-secret（明文殘留）: true
+readonly 版 bin-obf2 含 nv-test-secret            : false
+
+=== [B6] 偽造 key（由密鑰自算）在三版的結果 ===
+--- bin-plain ---
+$ dotnet NoteVault.dll activate NV-123456-78F56FB4
+Pro activated.
+--- bin-obf ---
+$ dotnet NoteVault.dll activate NV-123456-78F56FB4
+Pro activated.
+--- bin-obf2 ---
+$ dotnet NoteVault.dll activate NV-123456-78F56FB4
+Pro activated.
+
+=== [B7] 除錯後門與隱藏折扣（混淆版 bin-obf）===
+$ NV_INTERNAL_DEBUG=letmein dotnet NoteVault.dll
+internal debug menu: all Pro features unlocked
+$ NV_REGION=EDU dotnet NoteVault.dll
+NoteVault 1.4.2. Commands: activate <key>, export-pdf
+Pro costs NT$90 per month.
+
+=== [W1] REA 分析正式站前端 analyze-web-bundle（摘要） ===
+target: https://mokaair.com/zh-TW
+scripts_observed: 20   parsed: 20   parse_failures: 0   ast_nodes: 229492
+vendor_fingerprint: Next.js (high)
+source_maps: status=unavailable, requested=0   (正式站已關 source map)
+endpoints (call:fetch): /api/travel/analytics/config , /api/travel/analytics/events
+limitations: "server-side behavior may remain unknown"
