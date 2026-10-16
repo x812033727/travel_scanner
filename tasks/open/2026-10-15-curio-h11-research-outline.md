@@ -104,3 +104,7 @@ H11 將材料定年、字詞分布、新聞稿撤下、背面透字、筆跡推�
 `assemble` 已完成 9:34.2 成片，繁中字幕 104 cue。最終 QA **10／11**，唯一未過為片尾同一卡片停留 22 秒（規則上限 15 秒）；已在送審時標記 `--manual-review`，不把它說成全過。失效的 Phys.org 轉載連結已換成原始亞利桑那大學實驗報告的可開 PDF；語言檔 `decided_at: null` 明確保留站主尚未選語言。本次只做繁中成片，劇本 75 句、已核准旁白與 70 張分鏡均未改。
 
 `review-push --gate final --manual-review` 成功送出 720p 預覽，`review-pull --gate final` 現場讀回 `final: waiting for the owner`。成片 SHA-256 `060B86C335008868EA93CC1977417A64EBE0A63D7F2994762671D7BBF27D3A15`。完整 11 項、來源修復、預覽與字幕雜湊及停手帳本見 [final-qa-1.md](../../docs/videos/curio-h11/final-qa-1.md)。H11 累計保守估算 US$2.208／US$6；尚未核准成片、未製作上傳包、未上傳 YouTube。
+
+## 2026-10-16 H11 成片核准與繁中基礎包
+
+站主在後台核准成片，`review-pull --gate final` 讀回 `approval recorded`。`package --slug curio-h11` 建出繁中基礎包，四項檢查全過，詳見 [upload-qa-1.md](../../docs/videos/curio-h11/upload-qa-1.md)；`review-push --gate publish` 已送審，`review-pull` 讀回 `publish: waiting for the owner`。後台語言選項尚未保存（`decided_at: null`）；站主表示要另選外語部件，選定後需按其設定製作並重新打包。未上傳或發布。
