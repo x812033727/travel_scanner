@@ -2,6 +2,15 @@
 
 2026-10-10 起草。畫面參考 cheap（`@cheapaoe`）的可愛卡通，站主要求「內容相關的可愛插畫」、「跟原來如此系列比較像」，全部由 **MiniMax `image-01`** 生成，不再由 Claude 或 Codex 手繪 SVG。這份寫 MiniMax 的限制、系列的 `look`、每張 prompt 的寫法、照片怎麼貼、片頭片尾，與 2026-10-10 畫的四種候選畫風樣張。
 
+## 2026-10-14：做法收進 skill，lint 守住畫風
+
+H04–H06 重製時這份文件沒有被讀到：提示詞寫成大量空景、背影、多人同框，把年代材質寫進 `look.style`，
+人工又把插圖當證據重建來審，judge 通過的 9 張只收 0–1 張；最後三集都變成 0 張插圖、80 多張文字卡。
+從此系列的做法（路線、提示詞、驗收、整集一次報價）寫在 `curio-episode` skill
+（[`../../../.agents/skills/curio-episode/SKILL.md`](../../../.agents/skills/curio-episode/SKILL.md)），
+Claude 與 Codex 讀同一份；`curio-` 開頭的 slug 由 lint 檢查（`tools/video/core/curio.mjs`）：`look` 是
+`cute-mystery` 預設一字不改、正文至少 70% 是插圖、兩張插圖之間最多 3 張卡片。
+
 ## MiniMax `image-01` 的事實（決定畫風怎麼寫）
 
 2026-10-04 AI 名詞那條線實測、2026-10-06 投影片改相容（[`../ILLUSTRATED.md`](../ILLUSTRATED.md) §樣張只畫給吃得下的模型）、2026-10-10 畫樣張再確認：

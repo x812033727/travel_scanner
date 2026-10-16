@@ -7,6 +7,7 @@ import copy
 import hashlib
 import json
 from datetime import UTC, datetime, timedelta
+from decimal import Decimal
 from pathlib import Path
 from typing import Any
 from unittest.mock import AsyncMock, MagicMock
@@ -15,15 +16,18 @@ from uuid import uuid4
 import fakeredis
 import httpx
 import pytest
+from sqlalchemy.dialects import postgresql
 
 from app.config import Settings
 from app.video_automation.models import DEFAULT_DRAMA, DEFAULT_SLIDES, VideoAutomationSettings
+from app.video_budget.service import Reservation
 from app.video_media import jobs as service
 from app.video_media import meter
 from app.video_media.catalog import find_model
 from app.video_media.jobs import MediaContext, MediaJobFailed, advance_job, job_view, submit_job
 from app.video_media.models import VideoMediaJob
 from app.video_media.providers import Download, MediaRequest, MediaUpstreamError, Polled, Submitted
+from app.video_media.providers.minimax import MiniMaxImages, MiniMaxMusic
 from app.video_media.schemas import ClipJobIn, ImageJobIn, MusicJobIn
 from app.video_media.settings import MediaSettings
 from app.video_media.storage import MediaStore
@@ -40,8 +44,10 @@ class FakeSession:
         self.found: VideoMediaJob | None = None
         self.added: list[VideoMediaJob] = []
         self.commits = 0
+        self.last_statement: Any = None
 
     async def scalar(self, _statement: Any) -> VideoMediaJob | None:
+        self.last_statement = _statement
         return self.found
 
     def add(self, row: VideoMediaJob) -> None:
@@ -79,17 +85,22 @@ class FakeProvider:
     [{"seconds": 4}, {"seconds": 6}, {"references": [{"sha256": "b" * 64}]}],
 )
 @pytest.mark.asyncio
-async def test_lite_incompatible_jobs_spend_nothing(
-    tmp_path: Path, extra: dict[str, Any]
-) -> None:
+async def test_lite_incompatible_jobs_spend_nothing(tmp_path: Path, extra: dict[str, Any]) -> None:
     provider = FakeProvider()
     ctx = _context(
-        tmp_path, provider,
+        tmp_path,
+        provider,
         row=_row(clip_model="veo-3.1-lite-generate-preview", clip_resolution="1080p"),
     )
     payload = ClipJobIn.model_validate(
-        {"slug": "v", "shot_id": "opening", "prompt": "push in",
-         "first_frame": "a" * 64, "seconds": 8, **extra}
+        {
+            "slug": "v",
+            "shot_id": "opening",
+            "prompt": "push in",
+            "first_frame": "a" * 64,
+            "seconds": 8,
+            **extra,
+        }
     )
     with pytest.raises(MediaJobFailed) as refused:
         await submit_job(ctx, "clip", payload)
@@ -111,8 +122,14 @@ async def test_h3_refuses_a_reference_its_v2_request_could_never_carry(
     provider = FakeProvider()
     row = _row(clip_provider="minimax", clip_model="MiniMax-H3", clip_resolution="2k")
     ctx = _context(tmp_path, provider, row=row)
-    clip = {"slug": "v", "shot_id": "opening", "prompt": "push in", "first_frame": "a" * 64,
-            "last_frame": "c" * 64, "seconds": 8}
+    clip = {
+        "slug": "v",
+        "shot_id": "opening",
+        "prompt": "push in",
+        "first_frame": "a" * 64,
+        "last_frame": "c" * 64,
+        "seconds": 8,
+    }
     payload = ClipJobIn.model_validate({**clip, "references": [{"sha256": "b" * 64, "role": role}]})
     with pytest.raises(MediaJobFailed) as refused:
         await submit_job(ctx, "clip", payload)
@@ -155,8 +172,14 @@ def test_lite_job_records_always_on_native_audio_even_when_final_edit_discards_i
     model = find_model("gemini", "clip", "veo-3.1-lite-generate-preview")
     assert model is not None
     payload = ClipJobIn.model_validate(
-        {"slug": "v", "shot_id": "opening", "prompt": "push in", "first_frame": "a" * 64,
-         "seconds": 8, "native_audio": False}
+        {
+            "slug": "v",
+            "shot_id": "opening",
+            "prompt": "push in",
+            "first_frame": "a" * 64,
+            "seconds": 8,
+            "native_audio": False,
+        }
     )
     fields = service._request_fields(payload, _row(clip_resolution="1080p"), model)
     assert fields["native_audio"] is True and fields["seconds"] == 8
@@ -231,6 +254,116 @@ async def test_a_synchronous_image_is_stored_and_ready_after_one_call(
 
 
 @pytest.mark.asyncio
+async def test_pilot_media_uncertain_failure_keeps_charge_and_blocks_same_request_retry(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    slug = "story-rolling-suitcase-v2"
+    ctx = _context(
+        tmp_path,
+        fake_provider,
+        row=_row(image_provider="minimax", image_model="image-01"),
+    )
+    operations: list[str] = []
+
+    async def fake_reserve(
+        _session: Any, *, slug: str, operation_id: str, max_usd: Any, **_rest: Any
+    ) -> Reservation:
+        assert slug == "story-rolling-suitcase-v2" and max_usd > 0
+        operations.append(operation_id)
+        return Reservation(slug, operation_id, max_usd, "reserved", True, True, 1)
+
+    mark = AsyncMock()
+    settle = AsyncMock()
+    monkeypatch.setattr(service, "reserve", fake_reserve)
+    monkeypatch.setattr(service, "mark_uncertain", mark)
+    monkeypatch.setattr(service, "settle", settle)
+    fake_provider.submit_result = MediaUpstreamError(502, "lost answer", "failed")
+    payload = _image(slug=slug)
+    failed, created = await submit_job(ctx, "image", payload)
+    assert created and failed.status == "failed"
+    assert failed.error_code == "video_media_outcome_uncertain"
+    assert failed.usd_estimate == Decimal("0.0035")
+    assert len(operations) == 1 and mark.await_count >= 1
+    assert settle.await_count == 0
+    assert len(fake_provider.requests) == 1
+
+    ctx.session.found = failed  # type: ignore[attr-defined]
+    fake_provider.submit_result = Submitted(inline=PNG, content_type="image/png")
+    with pytest.raises(MediaJobFailed) as blocked:
+        await submit_job(ctx, "image", payload)
+    assert blocked.value.code == "video_media_outcome_uncertain"
+    assert len(operations) == 1
+    assert len(fake_provider.requests) == 1
+    settle.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_pilot_gemini_image_is_refused_before_a_paid_call(
+    tmp_path: Path, fake_provider: FakeProvider
+) -> None:
+    ctx = _context(tmp_path, fake_provider)
+    with pytest.raises(MediaJobFailed) as refused:
+        await submit_job(ctx, "image", _image(slug="story-rolling-suitcase"))
+    assert refused.value.code == "video_pilot_budget_unknown_price"
+    assert fake_provider.requests == []
+    assert ctx.session.commits == 0  # type: ignore[attr-defined]
+
+
+@pytest.mark.asyncio
+async def test_pilot_clip_is_refused_before_a_paid_call(
+    tmp_path: Path, fake_provider: FakeProvider
+) -> None:
+    ctx = _context(tmp_path, fake_provider)
+    with pytest.raises(MediaJobFailed) as refused:
+        await submit_job(
+            ctx,
+            "clip",
+            ClipJobIn.model_validate(
+                {
+                    "slug": "story-conveyor-belt-sushi-v2",
+                    "shot_id": "opening",
+                    "prompt": "moving belt",
+                    "first_frame": "a" * 64,
+                    "seconds": 8,
+                }
+            ),
+        )
+    assert refused.value.code == "video_pilot_clip_not_allowed"
+    assert fake_provider.requests == []
+    assert ctx.session.commits == 0  # type: ignore[attr-defined]
+
+
+@pytest.mark.asyncio
+async def test_pilot_vendor_busy_answer_keeps_the_budget_hold(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    ctx = _context(
+        tmp_path,
+        fake_provider,
+        row=_row(image_provider="minimax", image_model="image-01"),
+    )
+    reservation = Reservation(
+        "story-rolling-suitcase-v2",
+        "media-1",
+        Decimal("0.0035"),
+        "reserved",
+        True,
+        True,
+        1,
+    )
+    monkeypatch.setattr(service, "reserve", AsyncMock(return_value=reservation))
+    mark = AsyncMock()
+    monkeypatch.setattr(service, "mark_uncertain", mark)
+    fake_provider.submit_result = MediaUpstreamError(429, "vendor busy", "busy")
+    failed, created = await submit_job(ctx, "image", _image(slug="story-rolling-suitcase-v2"))
+    assert created and failed.status == "failed"
+    assert failed.error_code == "video_media_outcome_uncertain"
+    assert failed.usd_estimate == Decimal("0.0035")
+    assert len(fake_provider.requests) == 1
+    mark.assert_awaited()
+
+
+@pytest.mark.asyncio
 async def test_a_minimax_picture_is_stored_from_the_answer_like_a_gemini_one(
     tmp_path: Path,
 ) -> None:
@@ -283,6 +416,68 @@ async def test_a_minimax_picture_is_stored_from_the_answer_like_a_gemini_one(
         assert float(linked.usd_estimate) == 0.0035
         assert await meter.used(ctx.redis, meter.IMAGES) == 2, "the vendor made it: no refund"
     assert len(asked) == 3
+
+
+MP3 = b"ID3\x04\x00\x00\x00\x00\x00\x00" + b"\xff\xfb\x90\x00" * 16
+
+
+@pytest.mark.asyncio
+async def test_a_minimax_track_is_stored_from_its_hex_answer_and_a_shut_account_says_why(
+    tmp_path: Path,
+) -> None:
+    """MiniMax music through the real adapter, on image-01's key: the hex in the answer is
+    stored as an MP3 at the catalog's price, one track on the meter. An account the
+    2026-08-20 rule shuts out fails as a key error naming the rule, and the track is given back
+    to the month's budget."""
+    answers: list[dict[str, Any]] = [
+        {
+            "data": {"audio": MP3.hex(), "status": 2},
+            "extra_info": {"music_duration": 61000, "music_sample_rate": 44100},
+            "base_resp": {"status_code": 0, "status_msg": "success"},
+        },
+        {
+            "data": None,
+            "base_resp": {
+                "status_code": 2061,
+                "status_msg": "Music generation is no longer available to new users",
+            },
+        },
+    ]
+    asked: list[httpx.Request] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        assert str(request.url) == "https://api.minimaxi.com/v1/music_generation"
+        asked.append(request)
+        return httpx.Response(200, json=answers[len(asked) - 1])
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
+        ctx = _context(
+            tmp_path,
+            FakeProvider(),
+            row=_row(music_provider="minimax", music_model="music-3.0"),
+            http=http,
+        )
+        music = MusicJobIn.model_validate({"slug": "v", "prompt": "solo guqin", "seconds": 60})
+        stored, created = await submit_job(ctx, "music", music)
+        assert created and stored.status == "ready"
+        assert (stored.provider, stored.model) == ("minimax", "music-3.0")
+        assert stored.content_type == "audio/mpeg" and stored.file_bytes == len(MP3)
+        assert stored.file_sha256 == hashlib.sha256(MP3).hexdigest()
+        assert float(stored.usd_estimate) == 0.15
+        assert await meter.used(ctx.redis, meter.MUSIC) == 1
+        assert asked[0].headers["authorization"] == "Bearer m"
+        sent = json.loads(asked[0].content)
+        assert sent["model"] == "music-3.0" and sent["is_instrumental"] is True
+        assert "About 60 seconds long" in sent["prompt"]
+
+        other = MusicJobIn.model_validate({"slug": "v", "prompt": "taiko", "seconds": 60})
+        shut, _created = await submit_job(ctx, "music", other)
+        assert shut.status == "failed" and shut.error_code == "video_media_upstream_rejected_key"
+        assert "new users" in (shut.error_detail or "")
+        assert "since 2026-08-20" in (shut.error_detail or "")
+        assert float(shut.usd_estimate) == 0
+        assert await meter.used(ctx.redis, meter.MUSIC) == 1, "a refused track is given back"
+    assert len(asked) == 2
 
 
 @pytest.mark.asyncio
@@ -552,6 +747,8 @@ async def test_the_same_request_is_one_job_and_a_failed_one_is_retried_three_tim
     fake_provider.submit_result = MediaUpstreamError(500, "boom", "failed")
     retried, _again = await submit_job(ctx, "image", _image())
     assert retried is job and job.attempts == 2 and job.status == "failed"
+    lookup = str(ctx.session.last_statement.compile(dialect=postgresql.dialect()))  # type: ignore[attr-defined]
+    assert "FOR UPDATE" in lookup, "concurrent failed-job resets must serialize on the row"
     job.attempts = 3
     with pytest.raises(MediaJobFailed) as exhausted:
         await submit_job(ctx, "image", _image())
@@ -657,6 +854,34 @@ async def test_a_second_poll_under_the_lock_waits_and_an_old_operation_expires(
     assert fake_provider.polls == [Polled("running")], "an expired job asks the vendor nothing"
 
 
+@pytest.mark.asyncio
+async def test_pilot_vendor_task_expiry_keeps_its_charge_hold(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    slug = "story-conveyor-belt-sushi-v2"
+    ctx = _context(
+        tmp_path, fake_provider, row=_row(image_provider="minimax", image_model="image-01")
+    )
+    monkeypatch.setattr(
+        service,
+        "reserve",
+        AsyncMock(
+            return_value=Reservation(
+                slug, "expired-operation", Decimal("0.0035"), "reserved", True, True, 1
+            )
+        ),
+    )
+    mark = AsyncMock()
+    monkeypatch.setattr(service, "mark_uncertain", mark)
+    job, _created = await submit_job(ctx, "image", _image(slug=slug))
+    assert job.status == "submitted"
+    ctx.now = lambda: datetime.now(UTC) + timedelta(hours=25)
+    await advance_job(ctx, job)
+    assert job.status == "failed" and job.error_code == "video_media_outcome_uncertain"
+    assert job.usd_estimate == Decimal("0.0035")
+    mark.assert_awaited()
+
+
 def test_request_hashes_ignore_key_order_and_change_with_the_seed() -> None:
     a = service.request_hash(
         {"prompt": "x", "seed": 1, "references": [{"sha256": "a", "role": "character"}]}
@@ -672,10 +897,17 @@ def test_providers_are_built_from_the_site_keys(monkeypatch: pytest.MonkeyPatch)
     assert service.provider_for(runtime, "gemini", "image").name == "gemini"
     assert type(service.provider_for(runtime, "gemini", "clip")).__name__ == "GeminiVideo"
     assert type(service.provider_for(runtime, "minimax", "clip")).__name__ == "MiniMaxVideo"
-    with pytest.raises(MediaJobFailed) as no_music:
-        service.provider_for(runtime, "minimax", "music")
-    assert no_music.value.code == "video_media_model_not_allowed"
+    assert type(service.provider_for(runtime, "gemini", "music")).__name__ == "GeminiMusic"
+    # MiniMax music rides on image-01's key and base URL.
+    music = service.provider_for(runtime, "minimax", "music")
+    image = service.provider_for(runtime, "minimax", "image")
+    assert isinstance(music, MiniMaxMusic) and isinstance(image, MiniMaxImages)
+    assert music.name == "minimax" and (music.base_url, music.key) == (image.base_url, image.key)
+    assert (music.base_url, music.key) == (runtime.minimax_api_base_url, "m")
     with pytest.raises(MediaJobFailed) as no_key:
         service.provider_for(Settings(), "gemini", "image")
     assert no_key.value.code == "video_media_not_configured"
+    with pytest.raises(MediaJobFailed) as no_music_key:
+        service.provider_for(Settings(minimax_api_key=None), "minimax", "music")
+    assert no_music_key.value.code == "video_media_not_configured"
     _ = (AsyncMock, MagicMock)

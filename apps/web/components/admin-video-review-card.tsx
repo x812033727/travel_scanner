@@ -70,6 +70,9 @@ export type ProjectSummary = {
   dropped_at?: string | null; dropped_note?: string | null;
   retry_request_id?: string | null; retry_acknowledged_id?: string | null;
   format?: "slides" | "drama" | "shorts"; media_usd?: number; clip_seconds?: number;
+  // Detail response: the server has verified this cut can take a dub. An older API omits it;
+  // a story without an explicit true must stay locked because its subtitles may be burned in.
+  dub_allowed?: boolean;
   // A Short (docs/videos/SHORTS.md) is a video whose content line is set: its series, the video it
   // was cut from, where it stands as the Shorts tab groups them, the slot it holds, and when the
   // site found it gone from YouTube. All absent from an API older than the Shorts tab.

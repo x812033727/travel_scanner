@@ -183,7 +183,7 @@ test("the close never names the next video: the outro card's words, its lines an
 });
 
 test("the panel passes only when every required question is yes; a missing or malformed answer is a no", () => {
-  assert.equal(NARRATIVE_PANEL.length, 11);
+  assert.equal(NARRATIVE_PANEL.length, 13);
   assert.deepEqual(NARRATIVE_PANEL.filter((question) => !question.required).map((question) => question.id), ["chapters_are_events"]);
   const all = (yes) => ({ answers: NARRATIVE_PANEL.map((question) => ({ id: question.id, yes, evidence: "[k7p2] 每次有新模型出來" })) });
   const passed = panelVerdict(all(true));
@@ -192,7 +192,7 @@ test("the panel passes only when every required question is yes; a missing or ma
   assert.deepEqual(passed.problems, []);
   const failed = panelVerdict(all(false));
   assert.equal(failed.passed, false);
-  assert.equal(failed.failed.length, 10);
+  assert.equal(failed.failed.length, NARRATIVE_PANEL.length - 1, "every required question");
   assert.deepEqual(failed.advisory.map((each) => each.id), ["chapters_are_events"]);
   assert.match(failed.problems[0], /^scene_first：/);
   const advisory = all(true);
@@ -206,7 +206,27 @@ test("the panel passes only when every required question is yes; a missing or ma
   loose.answers.find((answer) => answer.id === "no_recap").yes = "true";
   assert.deepEqual(panelVerdict(loose).failed.map((each) => each.id), ["no_recap"]);
   assert.equal(panelVerdict({}).passed, false);
-  assert.equal(panelVerdict(null).failed.length, 10);
+  assert.equal(panelVerdict(null).failed.length, NARRATIVE_PANEL.filter((question) => question.required).length);
+});
+
+test("the panel asks for one protagonist carried end to end and for no detour, and either no sends the script back", () => {
+  // 2026-10-15: three AI videos switched example and metaphor from chapter to chapter, spent a
+  // third of one on a detour and read lists out; the one thread they had was what read best.
+  const byId = new Map(NARRATIVE_PANEL.map((question) => [question.id, question]));
+  assert.equal(byId.get("one_thread")?.required, true);
+  assert.match(byId.get("one_thread").question, /一個主角/);
+  assert.match(byId.get("one_thread").question, /從開場一路帶到結尾/);
+  assert.equal(byId.get("no_detour")?.required, true);
+  assert.match(byId.get("no_detour").question, /沒有岔出去的段落/);
+  assert.match(byId.get("no_detour").question, /產品、分數或誰說了什麼的清單/);
+  const payload = panelPayload(fixture(), estimateTimeline(fixture()));
+  assert.ok(["one_thread", "no_detour"].every((id) => payload.questions.some((question) => question.id === id)), "the reader is asked both");
+  for (const id of ["one_thread", "no_detour"]) {
+    const verdict = panelVerdict({ answers: NARRATIVE_PANEL.map((question) => ({ id: question.id, yes: question.id !== id, evidence: "[k7p2] 每次有新模型出來" })) });
+    assert.equal(verdict.passed, false, id);
+    assert.deepEqual(verdict.failed.map((each) => each.id), [id]);
+    assert.match(verdict.problems[0], new RegExp(`^${id}：`));
+  }
 });
 
 test("a yes the reader quotes no line for is not a yes", () => {
@@ -214,32 +234,32 @@ test("a yes the reader quotes no line for is not a yes", () => {
   // of the 240 answers the first five episodes were judged on carried one. So a yes with nothing
   // quoted is a malformed reply, and approving a script on it would leave no auditable basis at
   // all: a truncated or lazy answer would pass everything (PR #1478 review, 2026-10-13).
-  const ten = (entry) => ({ answers: NARRATIVE_PANEL.map((question) => ({ id: question.id, ...entry })) });
-  const quoted = panelVerdict(ten({ yes: true, evidence: "[mc1a] 一八七二年十二月四日下午。" }));
+  const every = (entry) => ({ answers: NARRATIVE_PANEL.map((question) => ({ id: question.id, ...entry })) });
+  const quoted = panelVerdict(every({ yes: true, evidence: "[mc1a] 一八七二年十二月四日下午。" }));
   assert.equal(quoted.passed, true);
   for (const [what, entry] of [
     ["no evidence key at all", { yes: true }],
     ["blank evidence", { yes: true, evidence: "   " }],
     ["evidence that is not a string", { yes: true, evidence: 7 }],
   ]) {
-    const verdict = panelVerdict(ten(entry));
+    const verdict = panelVerdict(every(entry));
     assert.equal(verdict.passed, false, what);
-    assert.equal(verdict.failed.length, 10, what);
+    assert.equal(verdict.failed.length, NARRATIVE_PANEL.filter((question) => question.required).length, what);
     assert.equal(verdict.failed[0].evidence, "no evidence quoted", what);
   }
   // Something was written, but it quotes no line, so the answer still cannot be audited. The
   // problem keeps the text so a person can see what the reader actually said.
-  const unquoted = panelVerdict(ten({ yes: true, evidence: "是，整支片都很好" }));
+  const unquoted = panelVerdict(every({ yes: true, evidence: "是，整支片都很好" }));
   assert.equal(unquoted.passed, false);
   assert.equal(unquoted.failed[0].evidence, "no line id quoted: 是，整支片都很好");
   assert.match(unquoted.problems[0], /no line id quoted/);
   // A chapter name carries no line id, so a reader quoting one quotes a line from that chapter
   // instead; ids are short and may carry a digit or a dash.
   for (const evidence of ["[a1] 一句。", "[tg7af] 一句。", "[q1-ex] 一句。", "前面說過 [ro101] 這句"]) {
-    assert.equal(panelVerdict(ten({ yes: true, evidence })).passed, true, evidence);
+    assert.equal(panelVerdict(every({ yes: true, evidence })).passed, true, evidence);
   }
   // A no still records what the reader quoted, so the writer knows which line to look at.
-  const no = ten({ yes: false, evidence: "[mc5b] 不見的，是船上唯一那艘小艇。" });
+  const no = every({ yes: false, evidence: "[mc5b] 不見的，是船上唯一那艘小艇。" });
   assert.equal(panelVerdict(no).failed[0].evidence, "[mc5b] 不見的，是船上唯一那艘小艇。");
 });
 
