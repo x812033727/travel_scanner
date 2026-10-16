@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-h10-research-outline
 title: Prepare Curio H10 Franklin source refresh and outline choices
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-curio-h10-h11-scripts
-claimed_at: 2026-10-15T23:53:03Z
+owner:
+claimed_at:
 created_at: 2026-10-15T16:33:45Z
 completed_at:
 branch: codex/curio-next-five-20261016
