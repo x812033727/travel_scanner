@@ -167,3 +167,9 @@ TTS 已完成 89 請求、1,925 計費字元，正文時間軸 `14168/30 = 472.2
 - 六輪定向產圖後以同章已核准圖處理兩張退件：`slate-later` 明記回用 `slate-entry-3.jpg`（原退件保留），`extinguish-time` 用 `work-date-inference-1-trim.jpg` 快取圖並取得自己的 PASS 判讀；其餘選圖未重畫。選圖 manifest SHA-256 `F61238CD938140C8467501B376183A1865DC20D18DFCCC2FFA91504C26A475AB`，86／86 檔案雜湊正確、判讀通過，四頁聯絡表已重建；獨立逐圖覆核未見直接反向史實，但相近重圖和高度／位置表達較弱的鏡頭已列入 `docs/videos/curio-h12/keyframe-audit-3.md`。
 - `lint` 0 errors；`status` 已標 keyframes drawn。共用停手帳本此時 H12 估算 US$4.185／6、五集 US$25.0295／39，實際供應商發票不可讀。`review-push --gate storyboard` exit 0，立即 `review-pull` 讀回 `storyboard: waiting for the owner`；**下一步等站主核准上述 manifest SHA 的新版分鏡，未讀回前不 render 或 assemble**。
 - 站主已看過四頁聯絡表並核准這版分鏡；後台最新且唯一的 storyboard 卡 `bc2fce73-4e73-4105-8e58-bf4f41c5fb2a`，SHA 完全等於 `F61238CD…6A475AB`，核准時間 `2026-10-16T16:37:09.847333Z`。稍後 `review-pull --gate storyboard` exit 0 並記錄 `approval recorded`，`status` 已顯示 storyboard approved。可以接續本機 render／assemble；此核准不等於最終成片核准。
+
+## 2026-10-17 H12 繁中成片送審
+
+- 91／91 段成片及 97 cue 繁中字幕完成；8:44.6、`final.mp4` SHA-256 `2B24B5DF98A459CD587364C24D80FB0A7AFADFF4519DE86001B4A7D0E11D047D`。獨立抽看與合成收據無解碼、黑畫面或削波問題；詳細資料見 `docs/videos/curio-h12/final-qa-1.md`。
+- 最終 QA 9／11：語言尚未選定時的英／日／韓字幕缺件，及 TypeSafe Jev「業配」0.36 超過 0.30。後台 final 卡 `9abacb14-5708-43c1-9f15-310908f4e6e3` 綁同一成片 SHA，唯讀 GET 與 `review-pull` 均確認 `pending`。已送站主人工審核，未核准前不製作上傳包。
+- 此次 Jev 一次呼叫以 US$0.05 保守估額結算；H12 累計 US$4.235／6、五集累計 US$26.2295／39。供應商最終帳單未取得。
