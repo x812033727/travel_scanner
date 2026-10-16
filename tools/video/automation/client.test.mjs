@@ -1152,8 +1152,14 @@ test("durable capability preserves the synchronous planner and bounded anime/sto
   assert.deepEqual(durableFiles(box, "draft-example"), []);
 });
 
-test("both original and v2 pilot story chapters always use saved jobs for writing and checks", async () => {
-  for (const slug of ["story-rolling-suitcase", "story-conveyor-belt-sushi", "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2"]) {
+test("all budgeted story chapters always use saved jobs for writing and checks", async () => {
+  for (const slug of [
+    "story-rolling-suitcase", "story-conveyor-belt-sushi",
+    "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2",
+    "story-five-lego-legoland", "story-five-costco-hot-dog",
+    "story-five-adidas-puma-brothers", "story-five-ajinomoto-chip-film",
+    "story-five-pringles-vat-case",
+  ]) {
     for (const stage of ["writer", "verifier", "listener"]) {
       const box = sandbox(), routes = [];
       const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
