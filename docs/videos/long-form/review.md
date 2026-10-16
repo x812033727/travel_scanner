@@ -5518,9 +5518,22 @@ Findings: this is a line-ending normalization only. The reviewed API, worker and
 Non-claims: this rebinding does not approve A01 media, paid work, deployment, upload, publication or live playback. It does not re-review the other 101 registered files.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## Branch youthful-brahmagupta document-discussion waits increment: 1 file (2026-10-16)
+
+Reviewer: `claude-pr-review-discuss-waits`. Author: `claude-opus-5-5-pr-tidy`. Scope: DURATION_ONLY for `tools/video/automation/discuss.mjs` at `62b81dab9` ("fix(video): a document line whose planner request keeps failing is answered, so the threads behind it move on"), the one commit of branch claude/youthful-brahmagupta-1giys7 on origin/main `2150e3b86` (#1537), reviewed as `git diff 2150e3b86 62b81dab9 -- tools/video/automation/discuss.mjs` (+49/−4). The commit also changes the unbound tools/video/automation/discuss.test.mjs, .agents/skills/youtube-video/references/series.md and a task file. The reviewer wrote none of the code and edits only this report and review.json.
+
+Baseline: `git show 2150e3b86:tools/video/automation/discuss.mjs | sha256sum` is `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21`, equal to the existing binding and table row. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/discuss.mjs` and nothing else; the other 107 registered files are byte-identical between `2150e3b86` and the working tree. Earlier increments are retained in full.
+
+Findings, tools/video/automation/discuss.mjs (30,248 → 32,514 bytes, 484 → 529 lines). `answerDocument` keeps a per-series `discussion-waits.json` beside the planner answers, counting the runs each document line has waited on a request that may pass. At `MAX_DOCUMENT_WAITS` (6) the line is answered with the new `failingReply` and its count cleared, so the threads behind it move on; a `video_ai_upstream_failed` 502 that `errorScope` reads as "wait" is now answered with `refusedReply`, as a site refusal already was; every other answered or successful path clears the count. The counter decides only when an owner's line on a series document gets a reply, not what the planner is asked or what is accepted. `documentDiscussionPayload` is unchanged, including `target_minutes: series.target_minutes` and `runtime_spec: series.runtime_spec`; the duration-term lines are 3 at both revisions and no changed line names a length rule. None of the changed lines touches the 600/780-second targets, the 480-second floor, the eight-minute minimum, `target_minutes`, `MIN_EPISODE*`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, source hashes, covered state, the explainer 8-20 or drama 1-8 minute ranges, or frame counts. No duration correction is required.
+
+Ran: Node v22.22.0, Linux, node_modules installed: the baseline hashing of all 108 registered files against `2150e3b86`, a read of the full diff, and changed-line and whole-file scans for duration terms at both revisions. `node --test tools/video/automation/discuss.test.mjs`: 13 passed, 0 failed. The CLI check and the long-form receipt tests are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims: this is a one-file incremental source duration review. It does not re-review the other 107 bound files, the unbound files the commit changes, or the worker's behaviour on the host, and it does not accept media, paid production, deployment, upload or publication.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the brand story dub preselection rebase LF-normalization increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the branch youthful-brahmagupta document-discussion waits increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
@@ -5575,7 +5588,7 @@ These 108 bindings describe the current reviewed bytes after the brand story dub
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
 | `tools/video/automation/automation.test.mjs` | `e9e944842f4bbb84582d3572643102fa8cacf7f992dffb5607cb364b540b1ee4` |
-| `tools/video/automation/discuss.mjs` | `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21` |
+| `tools/video/automation/discuss.mjs` | `4a987fa874307bf50e5047db5e8c1b2d9357ef4b5d50e1c93ec292344c16f046` |
 | `tools/video/automation/flow.mjs` | `df6fbafd66634d8d53697d23180781ae008cdfd0da3355b4fdd6c303a7fe2331` |
 | `tools/video/automation/prompts.mjs` | `7dc54920e590ffa674fc6436dacf96df5da477cd749f1be52877d89a8b500dbc` |
 | `tools/video/automation/series.mjs` | `d512034bbc99c0bc9ec7bbdbcfafa9ea6b548eedd877aa6754bbb81b04cd4c37` |
