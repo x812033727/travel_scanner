@@ -64,3 +64,7 @@ video SHA-256 `e11a22a7a29086a06a8261943cd3e78bea6775223705cb3eab9b8dbdffa1a559`
 獨立盲評未過：chapters_link, payoffs, no_detour。已完成第 1 輪結構修訂，原答案保留在 `narrative-round1.json`，逐項回應在 `narrative-revision-1.md`。新版 video SHA `58e37c2eb2bc8190ba16aa4b9dc5050397819a12e263b29cf3a0641dba7c306b`；80 句，估算 9.60 分。lint 0 errors／2 warnings；未標 narrative pass。提交後釋出認領，供獨立事實覆核接手。無後台劇本送審、無付費呼叫。
 
 第 1 輪修訂驗證：逐句文字及時間軸句序、主張／來源 ID、video／brief SHA 一致；`git diff --check` 與 `npm run check:tasks` 通過（1895 票，只有其他既有認領警告）。
+
+## 2026-10-16 獨立正式劇本史料查核
+
+查核員 `codex-gpt6-h10-h11-fact` 對版號 SHA-256 `58E37C2EB2BC8190BA16AA4B9DC5050397819A12E263B29CF3A0641DBA7C306B` 完成逐句、逐景資料與上架文字查核；[verify-1.md](../../docs/videos/curio-h10/verify-1.md) 記錄全部 80 句／78 景、來源、存取限制及聽眾檢查。沒有史實修改或未解主張，lint 0 errors／2 視覺提示詞 warnings。嚴格敘事盲評仍指出 `h3369d03` 的搜尋位置問句缺少具體回收，因此**正式劇本尚不得送審**。此收據只覆核當前 SHA；修文後要重新綁定新 SHA 並至少定向重查變動句。未送後台、未付費。
