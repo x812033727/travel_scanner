@@ -476,8 +476,14 @@ async def list_tool_videos(
 async def get_video_topics(tool: VideoTool, session: Session) -> TopicsOut:
     """Candidate topics for the next draft: the site's recent articles, official pages the
     news writer declined, then a web search."""
+    # Retry-After lets the worker put its scheduled draft off until the window opens again
+    # (flow.mjs draftWaits) instead of asking every round, which kept the window full.
     await enforce_named_rate_limit(
-        "video_topics", str(tool.id), limit=TOPIC_LOOKUPS_PER_HOUR, window_seconds=3600
+        "video_topics",
+        str(tool.id),
+        limit=TOPIC_LOOKUPS_PER_HOUR,
+        window_seconds=3600,
+        retry_after=True,
     )
     row = await service.settings_row(session)
     runtime = await load_runtime_settings(session)
