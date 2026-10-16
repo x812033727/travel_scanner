@@ -5411,6 +5411,34 @@ Non-claims: this is an incremental source duration review, not a fresh review of
 
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## Video worker topic-limit deferral: 2 files (2026-10-16)
+
+Reviewer: `claude-review-video-topics-limit`. Author: `claude-opus-5-5-video-topics-limit`. Scope: DURATION_ONLY for `a291eb788..a1211e808`, covering `tools/video/automation/flow.mjs` and `tools/video/automation/automation.test.mjs`. This reviewer did not author either change.
+
+Baseline: both touched files at `a291eb788` have raw-byte SHA-256 values equal to their existing receipt bindings; the other 106 registered files are not touched by the commit and match their recorded hashes. Earlier increments are retained in full.
+
+Findings: `flow.mjs` adds `DRAFT_WAIT_MS` (30 minutes) and `Automation.draftWaits`, which records `draft_waits_until` in `auto-state.json` when a scheduled draft's topic lookup or planner meets a passing refusal (errorScope "wait"), using the server's Retry-After when given; `due()` holds the scheduled draft until that time, and `markDrafted()` clears it. A pending planner run or any other refusal still ends the run as before. These are retry-scheduling times for drafting, not video length. The two new tests in `automation.test.mjs` exercise the rate-limited topic lookup and the busy planner with no Retry-After. The unbound context files (`client.mjs` stops retrying a 429 whose Retry-After exceeds its 120-second sleep cap; `admin_api.py` sends Retry-After on the topic limit) do not touch durations either. The changes do not alter the explainer 10-minute default or 8-20 range, drama 1-8 minutes, the brand-story 13-minute and 600/780-second targets, the eight-minute non-drama minimum, the 480-second / 14,400-frame QA floors, measured body/final floors, `target_minutes`, `MIN_EPISODE_MINUTES`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, the long-form anime policy, measurement evidence or `plans.json`. No duration correction is required.
+
+Ran: Node v24.13.0 `tools/video/long-form/cli.mjs check` (PASS) and `--test tools/video/long-form/review.test.mjs` (2 passed, 0 failed), after rebinding these two files and the report.
+
+Non-claims: this is an incremental source duration review, not a fresh review of the 106 unchanged files or acceptance of the worker's scheduling behavior on the host, actual media, playback, paid production, deployment, upload or publication.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
+## Video worker topic-limit deferral, narrowed to the topic lookup: 2 files (2026-10-16)
+
+Reviewer: `claude-review-video-topics-limit-2`. Author: `claude-opus-5-5-video-topics-limit`. Scope: DURATION_ONLY for `7fe3ac5e5..15318485f`, covering `tools/video/automation/flow.mjs` and `tools/video/automation/automation.test.mjs`. This reviewer did not author either change.
+
+Baseline: both touched files at `7fe3ac5e5` have raw-byte SHA-256 values equal to the bindings written by the previous increment above (`59c199a3...` and `157a4d8d...`); the other 106 registered files are not touched in the range and match their recorded hashes. The previous increment is retained in full.
+
+Findings: `flow.mjs` removes the planner's wrap around `firstPlan` in `draft()`, so only a passing refusal of the topic lookup records `draft_waits_until`; a planner failure ends the round as it did before the previous increment, and the next round asks again. `DRAFT_WAIT_MS` (30 minutes) and `draftWaits` are unchanged apart from their comments. In `automation.test.mjs` the second new test now drives a topic lookup that fails with a 503 and no Retry-After instead of a busy planner. These are retry-scheduling times for drafting, not video length. The changes do not alter the explainer 10-minute default or 8-20 range, drama 1-8 minutes, the brand-story 13-minute and 600/780-second targets, the eight-minute non-drama minimum, the 480-second / 14,400-frame QA floors, measured body/final floors, `target_minutes`, `MIN_EPISODE_MINUTES`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, the long-form anime policy, measurement evidence or `plans.json`. No duration correction is required.
+
+Ran: Node v24.13.0 `tools/video/long-form/cli.mjs check` (PASS) and `--test tools/video/long-form/review.test.mjs` (2 passed, 0 failed), after rebinding these two files and the report.
+
+Non-claims: this is an incremental source duration review, not a fresh review of the 106 unchanged files or acceptance of the worker's scheduling behavior on the host, actual media, playback, paid production, deployment, upload or publication.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -5467,9 +5495,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `d21283b9e19c9442c42b90e5700b2fb2c6ed0a1992fde489480e6856df63c8fe` |
+| `tools/video/automation/automation.test.mjs` | `59fbe73cb90d5cd187ce542d05e0371e82f6a5d84ff9ab1189a000cd14578d27` |
 | `tools/video/automation/discuss.mjs` | `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21` |
-| `tools/video/automation/flow.mjs` | `f8cc508413255ac262b2009a5d6c8b2df00abe60658f8c1b11beecf66ecdf892` |
+| `tools/video/automation/flow.mjs` | `0d817f0faf180b3e3e65884b68da6fbabc42f401092168335c70b844adbca384` |
 | `tools/video/automation/prompts.mjs` | `7dc54920e590ffa674fc6436dacf96df5da477cd749f1be52877d89a8b500dbc` |
 | `tools/video/automation/series.mjs` | `d512034bbc99c0bc9ec7bbdbcfafa9ea6b548eedd877aa6754bbb81b04cd4c37` |
 | `tools/video/automation/series.test.mjs` | `d133c2caf95e9919aa1df2f0c23dee80d2d20a47a5d8c1ae85e7506698399425` |

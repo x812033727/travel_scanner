@@ -593,6 +593,9 @@ const BLOCKED_REPORT_BACKOFF_MS = 5 * 60_000;
 // video. Until 2026-10-06 such a video ended its lane's run (`later()`), and since the videos go
 // oldest first, the same video ended every run and the second lane ran into it next.
 export const DEFER_BASE_MS = 5 * 60_000;
+// How long a scheduled draft waits after its topic lookup met a passing refusal the server gave
+// no Retry-After for (Automation.draftWaits).
+export const DRAFT_WAIT_MS = 30 * 60_000;
 export const DEFER_MAX_MS = 2 * 3600_000;
 // Waiting is not for ever: after this many deferrals in a row (5, 10, 20, 40, 80 and 120 minutes,
 // about four and a half hours) the next failure blocks the video with the last reason, so the
@@ -1793,7 +1796,9 @@ export class Automation {
   /** Whether a new draft may start: on, interval passed, not too many waiting on the owner. */
   due() {
     if (!this.room()) return false;
-    const last = this.globalState().last_draft_at;
+    const global = this.globalState();
+    if (global.draft_waits_until && this.ctx.now().getTime() < Date.parse(global.draft_waits_until)) return false;
+    const last = global.last_draft_at;
     return !last || this.ctx.now().getTime() - Date.parse(last) >= this.settings.draft_interval_hours * 3600_000;
   }
 
@@ -1812,7 +1817,26 @@ export class Automation {
    * instead of piling on top of them.
    */
   markDrafted() {
-    this.saveGlobal({ ...this.globalState(), last_draft_at: this.ctx.now().toISOString() });
+    const { draft_waits_until: _done, ...global } = this.globalState();
+    this.saveGlobal({ ...global, last_draft_at: this.ctx.now().toISOString() });
+  }
+
+  /**
+   * A scheduled draft whose topic lookup met a refusal that passes (errorScope "wait": its
+   * hourly limit, the API busy or away) waits until the server's Retry-After, or DRAFT_WAIT_MS,
+   * in auto-state.json `draft_waits_until`; the round goes on. Until 2026-10-16 the error ended
+   * the round before the draft was marked, so every round asked again: about every five
+   * minutes, four tries each, all counted against the lookups' twelve an hour, and the window
+   * never let one through (no scheduled draft 10-13 to 10-16). Anything else ends the run as
+   * before. The planner's own failures are left as they were: the next round asks it again.
+   */
+  draftWaits(error, what) {
+    if (error?.code === RUN_PENDING || errorScope(error) !== "wait") throw error;
+    const seconds = Number(error.retry_after);
+    const wait = Number.isFinite(seconds) && seconds > 0 ? seconds * 1000 : DRAFT_WAIT_MS;
+    const until = new Date(this.ctx.now().getTime() + wait).toISOString();
+    this.saveGlobal({ ...this.globalState(), draft_waits_until: until });
+    return this.later(`draft: ${what} could not finish (${error.code || `HTTP ${error.status}`}: ${error.message}); the scheduled draft waits until ${until}`);
   }
 
   /**
@@ -1926,7 +1950,13 @@ export class Automation {
    * and the planner is not asked again on its own; a retry plans it once more (planUnplanned).
    */
   async draft() {
-    const { topics, notes } = await this.api.topics();
+    let found;
+    try {
+      found = await this.api.topics();
+    } catch (error) {
+      return this.draftWaits(error, "the topic lookup");
+    }
+    const { topics, notes } = found;
     const now = this.ctx.now().toISOString();
     const draftSlug = `draft-${now.slice(0, 16).replace(/[-:T]/g, "")}`;
     const earlier = this.earlierVideos();
