@@ -15,7 +15,7 @@ from app.news_automation.feeds import (
     summary_article,
     summary_is_evidence,
 )
-from app.news_automation.fetch import RateLimiter, SafeNewsFetcher
+from app.news_automation.fetch import RateLimiter, SafeNewsFetcher, listing_byte_limit
 from app.news_automation.models import NewsEvidence, NewsSource
 from app.news_automation.policy import body_fingerprint, content_fingerprint, current_body_hash
 from app.news_automation.schemas import Entry
@@ -59,7 +59,10 @@ async def _summary_page(
     entries = listings.get(source.url)
     if entries is None:
         listing = await fetcher.fetch(
-            source.url, allowed_hosts=allowed_hosts, allowed_redirect_hosts=allowed_redirects
+            source.url,
+            allowed_hosts=allowed_hosts,
+            allowed_redirect_hosts=allowed_redirects,
+            max_bytes=listing_byte_limit(source.config_json),
         )
         entries = parse_entries(
             listing.body,
@@ -173,13 +176,29 @@ async def validate_source_configuration(
             source.url,
             allowed_hosts={source_host(source.url)},
             allowed_redirect_hosts=set(source.allowed_redirect_hosts_json or []),
+            max_bytes=listing_byte_limit(source.config_json),
         )
+        config = source.config_json or {}
         entries = parse_entries(
             listing.body,
             source.format,  # type: ignore[arg-type]
             listing.url,
-            source.config_json or {},
+            config,
         )
+        if not entries and config.get("include_title_keywords"):
+            # A source read only for a few topics (the FSC's crypto releases) can have none on
+            # its listing this week. That says nothing about whether it is readable: the
+            # listing and an article are checked on the entries the title filter set aside.
+            entries = parse_entries(
+                listing.body,
+                source.format,  # type: ignore[arg-type]
+                listing.url,
+                {key: value for key, value in config.items() if key != "include_title_keywords"},
+            )
+        # The scanner skips entries on other sites (the FSC lists one release of its securities
+        # bureau, sfb.gov.tw), so the article checked is the first one it would read.
+        readable_hosts = {source_host(source.url), *(source.allowed_redirect_hosts_json or [])}
+        entries = [entry for entry in entries if source_host(entry.url) in readable_hosts]
         if not entries:
             raise AppError(
                 422,

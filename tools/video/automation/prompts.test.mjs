@@ -1,12 +1,15 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import { cuePieces } from "../core/captions.mjs";
 import { enFixture, fixture, fixtureLexicon } from "../core/fixtures/load.mjs";
+import { SOURCING_FAMILY } from "../core/lint.mjs";
+import { SOURCE_MAX_CHARS, SOURCED_TEMPLATES } from "../templates/templates.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, SLIDES_CAMERA_WORDS, SOURCE_INSTRUCTIONS, translationContext, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
-import { REGISTER_RULES } from "./register.mjs";
+import { HEARD_RULES, MISHEARD_WORDS, REGISTER_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
 import { SERIES_SEPARATOR, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
 import { ACTIONS, MAX_STEPS, MAX_WAIT_MS, MAX_ZOOM } from "../screencast/steps.mjs";
 import { documentPayload } from "./series.mjs";
@@ -58,12 +61,28 @@ test("the slides writer is told the shot template, the 5 to 8 second cadence, th
 test("the planner outlines story beats and the listener keeps the register; the fact-checker and the translators are untouched", () => {
   const planner = instructionsFor("planner", "slides");
   assert.match(planner, /你以為／其實：「<what the viewer believes>/);
-  assert.match(planner, /收尾問題：「…」/);
+  assert.match(planner, /收尾：「…」, a question, a\s+stop before the event, a number or a reversal/);
+  assert.match(planner, /主線：<the spine in one sentence/);
+  // 2026-10-15: one story shape and one protagonist, chosen before the spine (register.mjs NARRATIVE_RULES).
+  assert.match(planner, /故事線：<事件／實測／疑問／抉擇（選一）>\n主角：<the one person, team, image, bill or project carried from the opening to the close>\n主線：/);
+  assert.match(planner, /One protagonist, one story shape/);
+  assert.match(planner, /At most one metaphor in the whole video/);
+  assert.match(planner, /never 「以官網為準」/);
+  assert.match(planner, /A term is explained at the moment the protagonist meets it, in one line/);
+  assert.match(planner, /Two definitions in a row are a lecture/);
+  assert.match(planner, /A qualification the facts need is said once, attached to the claim it limits/);
+  assert.match(planner, /The condensation's closing question asks what the video answers; it never states an outcome/);
+  assert.match(planner, /轉折：<3 to 5 events in the order they happened/);
+  assert.match(planner, /鉤子：<the open loops this outline plants/);
   assert.match(planner, /"shot: <the picture in a few words>"/);
   // The owner's slides request (flow.mjs draftSlides): that article only, and finance told as information, never advice.
   assert.match(planner, /"requested_guide"[\s\S]*Return its slug as "source_guide" and its url first in\s+"source_urls"/);
   assert.match(planner, /"requested_guide"[\s\S]*never as advice to buy, sell or hold/);
   assert.match(planner, /the closing\s+carries the article's own disclaimer/);
+  // An official page the news writer declined (apps/api/app/video_automation/topics.py official_topics): no site article to point back to.
+  assert.match(planner, /"topics" \(the site's recent checked articles, then official pages, then\s+web results\)/);
+  assert.match(planner, /A topic whose\s+"source" is "official" is a company's own page[\s\S]*prefer it to a web result, return "source_guide": null with its url first in\s+"source_urls", and tell an update in the rules' four moves/);
+  assert.match(VALUE_RULES, /An update or a guide is told as numbered points, each in the same four moves/);
   assert.ok(planner.includes(REGISTER_RULES));
   const listener = instructionsFor("listener", "slides");
   assert.match(listener, /keep the storytelling register below/);
@@ -71,6 +90,145 @@ test("the planner outlines story beats and the listener keeps the register; the 
   assert.match(listener, /the tool sets the pause beats/);
   assert.ok(listener.endsWith(REGISTER_RULES));
   for (const stage of ["verifier", "translator", "caption_reviewer"]) assert.equal(INSTRUCTIONS[stage].includes(REGISTER_RULES), false, `${stage} reads no register rules`);
+});
+
+test("teaching cards require useful learning and evidence without imposing the illustrated-story route", () => {
+  for (const stage of ["planner", "writer", "listener"]) {
+    const prompt = instructionsFor(stage, "slides");
+    assert.ok(prompt.includes(TEACHING_RULES), `${stage} gets the complete teaching contract`);
+    assert.ok(prompt.includes(REGISTER_RULES), `${stage} retains the illustrated-story contract`);
+  }
+  assert.match(TEACHING_RULES, /「製作路線：教學卡片」 inside the brief's existing 示範或實算 section/);
+  assert.match(TEACHING_RULES, /one main worked example, a purposeful contrast and a transfer exercise/);
+  assert.match(TEACHING_RULES, /trust and risk BEFORE installation/);
+  assert.match(TEACHING_RULES, /No forced chapter location, new metaphor, 「你以為…其實」 turn or closing\s+question/);
+  assert.match(TEACHING_RULES, /"format": "slides" with no "shot" scenes, not a new schema field or a QA exemption/);
+  assert.match(TEACHING_RULES, /Do not add a shot to satisfy an illustration quota/);
+  assert.match(TEACHING_RULES, /existing plain-slides QA still\s+limits a state to 15 seconds/);
+  assert.match(TEACHING_RULES, /A documentation screenshot proves what the page says, not that an installation or test ran/);
+  assert.match(TEACHING_RULES, /label the result as expected and\s+the walkthrough as untested/);
+  assert.match(TEACHING_RULES, /Terminal\s+output must be copied from a real run with its date and tool version/);
+  assert.match(TEACHING_RULES, /no login, OBS, secrets or private account screens/);
+  assert.match(TEACHING_RULES, /A listener preserves the chosen route and all scene\/line ids/);
+  const writer = instructionsFor("writer", "slides");
+  assert.match(writer, /no assets; "look" left out/);
+  assert.match(TEACHING_RULES, /automated worker keeps no image assets: build a logical diagram as progressive\s+card states/);
+  assert.match(writer, /following cadence and picture-variety paragraphs apply to ILLUSTRATED STORYTELLING only/);
+  assert.match(writer, /For teaching cards without a real capture, omit both "shot" and "capture" in the thumb/);
+  assert.match(instructionsFor("verifier", "slides"), /an expected result must never become an observed success without run evidence/);
+});
+
+test("every slides video is held to the content-value rules, on both routes and before the register", () => {
+  for (const stage of ["planner", "writer", "listener"]) {
+    const prompt = instructionsFor(stage, "slides");
+    assert.ok(prompt.includes(VALUE_RULES), `${stage} gets the content-value rules, word for word`);
+    assert.ok(prompt.indexOf(TEACHING_RULES) < prompt.indexOf(VALUE_RULES), `${stage}: after the teaching route`);
+    assert.ok(prompt.indexOf(VALUE_RULES) < prompt.indexOf(REGISTER_RULES), `${stage}: before the register`);
+  }
+  assert.ok(instructionsFor("listener", "slides").endsWith(REGISTER_RULES), "the listener still ends on the register");
+  assert.match(VALUE_RULES, /where these\s+rules and a route's rules disagree, these win/);
+  assert.match(VALUE_RULES, /something the viewer operates[\s\S]*takes the teaching route/);
+  assert.match(VALUE_RULES, /could not do before this video and can\s+do after it/);
+  assert.match(VALUE_RULES, /These are not outcomes: something the viewer could look up and read off in one line[\s\S]*a caution on its own/);
+  assert.match(VALUE_RULES, /「含金量不足：<what is missing>」/);
+  assert.match(VALUE_RULES, /never the title, the\s+hook or the angle, unless the subject itself is an incident/);
+  assert.match(VALUE_RULES, /An outcome with none of the three is dropped, not softened/);
+  assert.match(VALUE_RULES, /Each chapter answers the question the one\s+before it raised/);
+  assert.match(VALUE_RULES, /the exact thing to type or press, in full/);
+  assert.match(VALUE_RULES, /what the\s+viewer did before, what changed, exactly what to do now, and the exception/);
+  assert.match(VALUE_RULES, /never opens on its source \(「文件寫」「文件說」「部落格說」「官方說」「官方表示」\s+「根據官方」; lint counts the family\)/);
+  assert.match(VALUE_RULES, /At most two\s+sentences in a video set a scene or describe\s+a picture/);
+  assert.match(VALUE_RULES, /The length comes from substance/);
+  assert.match(VALUE_RULES, /never repairs one by inventing a fact, a run or an example/);
+  // What the first use found unclear (tasks: 2026-10-09-fix-what-the-first-use-of).
+  assert.match(VALUE_RULES, /Evidence has three levels[\s\S]*SEEN:[\s\S]*RUN:[\s\S]*CITED:/);
+  assert.match(VALUE_RULES, /never shows or tells a lower level as a higher one/);
+  assert.match(VALUE_RULES, /「要先實作：…」 each thing a higher level would need: no run at all, or run but never seen/);
+  assert.match(VALUE_RULES, /the request is shown as 「可以這樣說」 unless one logged run goes from that\s+request to that artefact/);
+  assert.match(VALUE_RULES, /Running a command and judging its output\s+against what was asked is an outcome/);
+  assert.match(VALUE_RULES, /The cap does not cover[\s\S]*a common failure and how to find it[\s\S]*a card's label of\s+what was and was not run/);
+  assert.match(VALUE_RULES, /The owner's own incident may open a tutorial/);
+  assert.match(VALUE_RULES, /the check that settles trust\s+comes before it/);
+  assert.match(VALUE_RULES, /second worked example is that route's contrast/);
+  assert.match(VALUE_RULES, /re-wrap the source file\s+itself and run it again[\s\S]*Never alter a character/);
+  assert.match(VALUE_RULES, /goes on a quote, compare, steps or table card whose "source" names the run/);
+  // What the second use found unclear (tasks: 2026-10-09-answer-the-nine-questions-the-revised).
+  assert.match(VALUE_RULES, /a command and its output have nothing more to see/);
+  assert.match(VALUE_RULES, /A\s+run counts once it is in the video's run log with its command, output, date and tool\s+version, whoever made it/);
+  assert.match(VALUE_RULES, /When the plan comes before the runs[\s\S]*recorded\s+before the outline is chosen[\s\S]*dropped\s+then/);
+  assert.match(VALUE_RULES, /what the video's own\s+example does not catch/);
+  assert.match(VALUE_RULES, /Tutorials share this order; what must differ from an earlier video is the\s+example, the opening and the sequence of cards/);
+  assert.match(VALUE_RULES, /9 lines beside a title and a caption and 12\s+beside a caption alone/);
+  assert.match(VALUE_RULES, /excerpted in whole lines, in\s+their order[\s\S]*it is never edited/);
+  assert.match(VALUE_RULES, /One card holds one level of evidence: when its rows differ, split it/);
+  // What the same video's writer found.
+  assert.match(VALUE_RULES, /or by its number in the source/);
+  assert.match(VALUE_RULES, /A command too long for a\s+terminal card goes on a code card when it fits as typed/);
+  assert.match(VALUE_RULES, /An excerpt's caption gives the file and\s+the line range it shows/);
+  assert.match(VALUE_RULES, /tool_version names the program that printed\s+the output/);
+  assert.match(VALUE_RULES, /A source line takes the room of a row/);
+  assert.match(VALUE_RULES, /A quote card holds one sentence of its source, or the clause that\s+carries the fact/);
+  assert.match(VALUE_RULES, /what it reports as overflowing is\s+cut, not shrunk/);
+  assert.match(VALUE_RULES, /A choice among alternatives is a table; steps draws a\s+sequence/);
+  assert.match(VALUE_RULES, /the cta\s+card's sentence and the outro's comment question and subscribe invitation are the three\s+exceptions/);
+  assert.match(VALUE_RULES, /「以官網為準」 is never the fallback: a number with neither source is left out/);
+  assert.match(VALUE_RULES, /pointing at the card on screen\s+\(「亮起來的這一行」\) is not one of them/);
+  // The cards the rules send a source to are the ones that can carry it, at the length the guide gives.
+  for (const name of SOURCED_TEMPLATES) assert.match(instructionsFor("writer", "slides"), new RegExp(`- ${name} \\{[^}]*(?:\\{[^}]*\\}[^}]*)*source\\?`), `${name} documents its source`);
+  assert.match(instructionsFor("writer", "slides"), new RegExp(`one line of at most ${SOURCE_MAX_CHARS} characters`));
+  // The family the prompt names is the one lint counts.
+  for (const phrase of ["文件寫", "文件說", "部落格說", "官方說", "官方表示", "根據官方"]) assert.ok(SOURCING_FAMILY.includes(phrase), phrase);
+  for (const stage of ["verifier", "translator", "caption_reviewer"]) assert.equal(INSTRUCTIONS[stage].includes(VALUE_RULES), false, `${stage} reads no content-value rules`);
+  for (const stage of ["planner", "writer", "verifier", "listener"]) {
+    for (const variant of [null, "story", "explainer"]) assert.equal(instructionsFor(stage, "drama", "", variant).includes(VALUE_RULES), false, `${stage}:${variant} remains its own route`);
+  }
+  for (const format of ["slides", "drama"]) {
+    for (const [stage, variant] of [["listener", "register"], ["listener", "rewrite"], ["translator", null], ["caption_reviewer", null], ["translator", "shorten"], ["translator", "reword"]]) {
+      assert.equal(instructionsFor(stage, format, "", variant).includes(VALUE_RULES), false, `${format} ${stage}:${variant} keeps its contract`);
+    }
+  }
+});
+
+test("the slides writer and listener are told which words the audio check mishears, and the guide lists the same words", () => {
+  for (const stage of ["writer", "listener"]) {
+    const prompt = instructionsFor(stage, "slides");
+    assert.ok(prompt.includes(HEARD_RULES), `${stage} gets the misheard words`);
+    assert.ok(prompt.indexOf(VALUE_RULES) < prompt.indexOf(HEARD_RULES), `${stage}: after the content-value rules`);
+    assert.ok(prompt.indexOf(HEARD_RULES) < prompt.indexOf(REGISTER_RULES), `${stage}: before the register`);
+  }
+  assert.ok(instructionsFor("listener", "slides").endsWith(REGISTER_RULES), "the listener still ends on the register");
+  for (const stage of ["planner", "verifier", "translator", "caption_reviewer"]) assert.equal(instructionsFor(stage, "slides").includes(HEARD_RULES), false, `${stage} reads none`);
+  for (const stage of ["planner", "writer", "verifier", "listener"]) {
+    for (const variant of [null, "story", "explainer"]) assert.equal(instructionsFor(stage, "drama", "", variant).includes(HEARD_RULES), false, `${stage}:${variant} remains its own route`);
+  }
+  for (const [stage, variant] of [["listener", "register"], ["listener", "rewrite"], ["translator", "shorten"], ["translator", "reword"]]) {
+    assert.equal(instructionsFor(stage, "slides", "", variant).includes(HEARD_RULES), false, `${stage}:${variant} keeps its contract`);
+  }
+  assert.ok(MISHEARD_WORDS.length >= 15);
+  assert.match(HEARD_RULES, /a homophone is heard the same way when it is recorded\s+again, so it is the wording that changes/);
+  assert.match(HEARD_RULES, /Numbers,\s+Latin-script words and proper names stay exactly as written/);
+  const guide = readFileSync(new URL("../../../.agents/skills/youtube-video/references/script-writing.md", import.meta.url), "utf8");
+  for (const [written, instead] of MISHEARD_WORDS) {
+    assert.ok(HEARD_RULES.includes(`「${written}」→「${instead}」`), written);
+    assert.match(guide, new RegExp(`\\| ${written} \\| [^|]+ \\| ${instead} \\|`), `the guide's table has the pair for ${written}`);
+  }
+});
+
+test("teaching-card instructions stay out of drama, story, explainer, restyle and translation routes", () => {
+  for (const stage of ["planner", "writer", "verifier", "listener"]) {
+    for (const variant of [null, "story", "explainer"]) {
+      const prompt = instructionsFor(stage, "drama", "", variant);
+      assert.equal(prompt.includes(TEACHING_RULES), false, `${stage}:${variant} remains its own route`);
+      assert.doesNotMatch(prompt, /製作路線：教學卡片/, `${stage}:${variant} receives no teaching exception`);
+    }
+  }
+  for (const format of ["slides", "drama"]) {
+    for (const [stage, variant] of [["listener", "register"], ["listener", "rewrite"], ["translator", null], ["caption_reviewer", null], ["translator", "shorten"], ["translator", "reword"]]) {
+      const prompt = instructionsFor(stage, format, "", variant);
+      assert.equal(prompt.includes(TEACHING_RULES), false, `${format} ${stage}:${variant} keeps its contract`);
+      assert.doesNotMatch(prompt, /製作路線：教學卡片/);
+    }
+  }
 });
 
 test("the listener's register pass is a variant for any format, beside the rewrite pass", () => {
@@ -369,7 +527,7 @@ test("translationContext builds the glossary from the dictionary terms the video
   assert.deepEqual(translationContext({ ...video, sources: undefined, youtube: {}, thumbnail: undefined }, { terms: {} }).glossary, { terms: [], sources: [] });
 });
 
-test("a glossary term is kept the same across all four locales: each translator's final carries it verbatim, and a transliterated one is caught", () => {
+test("a glossary term is kept the same across all three locales: each translator's final carries it verbatim, and a transliterated one is caught", () => {
   const video = fixture();
   video.scenes[1].lines[0].text = "第一個問題是，用 Claude Code 寫程式，還是用 GPT-5.5 聊天。";
   const { glossary } = translationContext(video, { schema_version: 1, terms: { "Claude Code": "克勞德扣德", GPT: "G P T" } });
@@ -378,7 +536,6 @@ test("a glossary term is kept the same across all four locales: each translator'
     en: "First, what job is it for: writing code with Claude Code, or chatting with GPT-5.5?",
     ja: "1つ目は、Claude Code でコードを書くのか、GPT-5.5 と話すのかです。",
     ko: "첫째, Claude Code 로 코드를 쓸지, GPT-5.5 와 대화할지입니다.",
-    "zh-CN": "第一个问题是，用 Claude Code 写代码，还是用 GPT-5.5 聊天。",
   };
   const answer = (locale, text) => JSON.stringify({
     draft: { worksheet: { locale, lines: [{ id: "x9fe", text: `${text} (draft)` }] } },
@@ -450,14 +607,23 @@ test("the writer says the numbers, closes on three sentences, unlocks screencast
   // The persona is the owner's standing instructions'; the hook stays first.
   assert.match(writer, /The narrator may have a name, a catchphrase and a fixed closing line/);
   assert.match(writer, /The first sentence is still the hook; the name comes after it/);
-  // The opening (D07): concrete within 20 seconds, no table of contents, one 「你以為…其實」.
-  assert.match(writer, /within 20 seconds: by then a concrete number, date or proper noun has been\s+said/);
-  assert.match(writer, /No table of contents/);
+  // The opening (D07): concrete within 20 seconds, no table of contents, one 「你以為…其實」; the
+  // first chapter is the 30 to 60 second condensation, one scene of the story and then three or
+  // four later moments cut off before their results (owner, 2026-10-12 and twice on 2026-10-13).
+  assert.match(writer, /The first chapter is the\s+condensation the register below describes, the brief's 開場濃縮/);
+  assert.match(writer, /one scene of the story told\s+in order, the title.s\s+number, date or proper noun within 20 seconds, up to the first fact\s+that makes no sense; then three or four later moments, each cut off before its result/);
+  assert.match(writer, /Then it turns \(「但這還不是最怪的。」\) and throws three or four of the later chapters' moments/);
+  assert.match(writer, /The channel intro\s+bumper plays after this chapter, not before it/);
+  assert.match(writer, /The first chapter is the condensation: 30 to 60 seconds\s+before the first real chapter/);
+  assert.match(writer, /No\s+table of contents/);
   assert.match(writer, /「你以為…其實」 once in\s+the video, in the first chapter/);
   // The close (D03): three sentences, the article pointed to once, in the description.
   assert.match(writer, /- outro \{title, cta\?, lines 1-4\}: no reveals\. The last scene, and its narration is exactly three\s+sentences/);
   assert.match(writer, /one invitation to subscribe\s+with a reason/);
-  assert.match(writer, /Never invent a next topic/);
+  // The close says nothing about the next video (owner, 2026-10-13); the end screen does that.
+  assert.match(writer, /The close never says what the next video, the next episode or the next file is about/);
+  assert.doesNotMatch(writer, /Never invent a next topic/);
+  assert.match(writer, /the open loops this script plants/);
   assert.match(writer, /points to the article in the description \(say 「說明欄的文章」, never 「第一行」/);
   assert.doesNotMatch(writer, /description's first line/);
   // Screencasts, in the step format steps.mjs checks.
@@ -480,4 +646,26 @@ test("the writer says the numbers, closes on three sentences, unlocks screencast
   assert.match(verifier, /The site's own checked article does: a mokaair\.com page in\s+"sources" whose text shows the day it was checked, and only for a number whose official page\s+is among the failed fetches/);
   assert.match(verifier, /NOT FOUND \(drop the number or the sentence\)/);
   assert.match(verifier, /never replace it with 「以官網為準」/);
+});
+
+// A change here moves the durable key of every unfinished explainer journal (the instructions
+// are part of a stage's inputs), so each such stage is asked, and paid for, again: deploy with
+// none unfinished, then update the digest. Three of the four moved on 2026-10-13, when the
+// condensation became one scene of the story and the close stopped naming the next episode; the
+// writer moved again on 2026-10-15, when NARRATIVE_RULES gained the story shapes and the one
+// protagonist. The cute explainer presets get variants of their own
+// so that these four never have to move for them.
+test("the four explainer instruction texts are byte for byte what they were", () => {
+  const sha256 = (text) => createHash("sha256").update(text, "utf8").digest("hex");
+  const pinned = {
+    "planner:bible-explainer": "92d58c327776f8f1f8084907e2aaf0a7d8f326c2c614d1ab593dc4074ff017a2",
+    "planner:explainer": "e5b50a3fedd95008c096a63153a48e54268821be2e62254913dbc22460ac708f",
+    "writer:explainer": "f6abf3ec8799bcfa94f03b15681bc64714ac8f8b356bedddc36c1db594f649f6",
+    "verifier:explainer": "c1619a921db55d8a0e92c4f28282dc4d4568e589012d6c07e27917bb3a352842",
+  };
+  for (const [key, digest] of Object.entries(pinned)) {
+    const [stage, variant] = key.split(":");
+    assert.equal(sha256(EXPLAINER_INSTRUCTIONS[key]), digest, key);
+    assert.equal(sha256(instructionsFor(stage, "drama", "", variant)), digest, `${key} as composed`);
+  }
 });

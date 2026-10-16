@@ -1,0 +1,124 @@
+$ claude plugin validate <v>/good 
+Validating plugin manifest: <v>/good/.claude-plugin/plugin.json
+
+✔ Validation passed
+[validate exit 0]
+
+$ claude plugin validate <v>/stale 
+Validating plugin manifest: <v>/stale/.claude-plugin/plugin.json
+
+✔ Validation passed
+[validate exit 0]
+
+$ claude plugin validate <v>/badjson 
+Validating plugin manifest: <v>/badjson/.claude-plugin/plugin.json
+
+✘ Found 1 error:
+
+  ❯ json: Invalid JSON syntax: JSON Parse error: Property name must be a string literal
+
+✘ Validation failed
+[validate exit 1]
+
+$ claude plugin validate <v>/noname 
+Validating plugin manifest: <v>/noname/.claude-plugin/plugin.json
+
+✘ Found 1 error:
+
+  ❯ name: Invalid input: expected string, received undefined
+
+✘ Validation failed
+[validate exit 1]
+
+$ claude plugin validate <v>/hookpath 
+Validating plugin manifest: <v>/hookpath/.claude-plugin/plugin.json
+
+✘ Found 1 error:
+
+  ❯ hooks[0]: Path not found: ./hooks/extra.json. The runtime loader will report this as a load failure.
+
+✘ Validation failed
+[validate exit 1]
+
+$ claude plugin validate <v>/minimal 
+Validating plugin manifest: <v>/minimal/.claude-plugin/plugin.json
+
+⚠ Found 3 warnings:
+
+  ❯ version: No version specified. Consider adding a version following semver (e.g., "1.0.0")
+  ❯ description: No description provided. Adding a description helps users understand what your plugin does
+  ❯ author: No author information provided. Consider adding author details for plugin attribution
+
+✔ Validation passed with warnings
+[validate exit 0]
+
+$ claude plugin validate <v>/typo 
+Validating plugin manifest: <v>/typo/.claude-plugin/plugin.json
+
+⚠ Found 1 warning:
+
+  ❯ hook: Unknown field 'hook' — did you mean 'hooks'? Claude Code ignores unrecognized fields at load time, so this field has no effect.
+
+✔ Validation passed with warnings
+[validate exit 0]
+
+$ claude plugin validate <v>/nowrap 
+Validating plugin manifest: <v>/nowrap/.claude-plugin/plugin.json
+
+Validating hooks: <v>/nowrap/hooks/hooks.json
+
+✘ Found 1 error:
+
+  ❯ hooks: PreToolUse/PermissionRequest is declared at the top level, outside the "hooks" object — a PreToolUse/PermissionRequest hook that cannot be loaded may be what guards the permissions declared beside it, so nothing it sits in is
+
+✘ Validation failed
+[validate exit 1]
+
+$ claude plugin validate <v>/noscript 
+Validating plugin manifest: <v>/noscript/.claude-plugin/plugin.json
+
+✔ Validation passed
+[validate exit 0]
+
+$ claude plugin validate <v>/badagent 
+Validating plugin manifest: <v>/badagent/.claude-plugin/plugin.json
+
+Validating agent: <v>/badagent/agents/log-scout.md
+
+✘ Found 1 error:
+
+  ❯ frontmatter: YAML frontmatter failed to parse: YAML Parse error: Unexpected character. At runtime this agent loads with its name taken from the filename and every other frontmatter field silently dropped.
+
+✘ Validation failed
+[validate exit 1]
+
+$ claude plugin validate <v>/inside 
+Validating plugin manifest: <v>/inside/.claude-plugin/plugin.json
+
+✔ Validation passed
+[validate exit 0]
+
+$ claude plugin validate <v>/nomanifest 
+Validating components in: <v>/nomanifest
+
+✔ Validation passed
+[validate exit 0]
+
+$ claude plugin validate <v>/good --strict
+Validating plugin manifest: <v>/good/.claude-plugin/plugin.json
+
+✔ Validation passed
+[validate exit 0]
+
+$ claude plugin validate <v>/minimal --strict
+Validating plugin manifest: <v>/minimal/.claude-plugin/plugin.json
+
+⚠ Found 3 warnings:
+
+  ❯ version: No version specified. Consider adding a version following semver (e.g., "1.0.0")
+  ❯ description: No description provided. Adding a description helps users understand what your plugin does
+  ❯ author: No author information provided. Consider adding author details for plugin attribution
+
+✘ Validation failed (--strict treats warnings as errors)
+[validate exit 1]
+

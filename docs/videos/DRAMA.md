@@ -40,7 +40,7 @@
 | 旁白 | 現有 Gemini 3.8 Flash TTS（Sulafat＋頻道口音 style） | — | 約 US$0.81／小時 |
 | 角色配音 | Gemini TTS：30 個內建聲音配 style；之後用聲音設計拿持久的 `voice_…` id | MiniMax speech-2.8（情緒參數、聲音複製，沒有台灣腔）；Azure zh-TW 三個聲音沒有語氣 | 同旁白 |
 | 品檢（judge） | Gemini 視覺模型看圖與片段打分 | — | 依 token |
-| 背景音樂 | Gemini API 的 Lyria 3.5 | ElevenLabs Music（要新金鑰）、YouTube 音效庫（人工） | US$0.08／首 |
+| 背景音樂 | Gemini API 的 Lyria 3.5 | MiniMax music-3.0／music-2.6（`providers/minimax.py` 的 `MiniMaxMusic`，用 image-01 的同一把金鑰；官方 2026-08-20 起付費音樂 API 不再開放新用戶，之前沒買過音樂的帳號會被拒、工作以 key 錯誤失敗並寫明這條規則；2026-10-15 查官方頁）、ElevenLabs Music（要新金鑰）、YouTube 音效庫（人工） | Lyria US$0.08／首、MiniMax US$0.15／首（最長 5 分鐘） |
 | 對嘴 | 第一版不做：旁白主導，對白用中景與反應鏡頭 | H3 音訊參考或 Kling lip-sync，只用在特寫 | — |
 
 一集 3 分鐘照 `.agents/skills/youtube-video/references/drama-craft.md` 的節奏（鏡頭長度中位數 2.5–3.5 秒）約 60 鏡。片段買的秒數不是鏡長，而是 `tools/video/media/clips.mjs` 的 `clipSeconds`：`veo-3.1*` 配 1080p 固定 8 秒；其他模型把鏡長進位成整秒、夾在 `MIN_CLIP_SECONDS` 4 與 `MAX_CLIP_SECONDS` 10 之間，再往上貼齊 `catalog.py` 該模型的 `durations`。60 鏡、每鏡 3 秒台詞、每鏡一次 take、每份素材一次 judge（US$0.01）：Veo 3.1 Lite 約 US$39（買 480 秒）、Omni 約 US$37（240 秒）、H3 約 US$32、Veo 3.1 全用約 US$193；關鍵影格含 judge 約 US$9；配音與音樂不到 US$1。重做到上限、每月額度與三條路線（伺服器 API、Hailuo 網頁、Kling）的比較在 `.agents/skills/animation-production/SKILL.md`「錢怎麼算」與 `.agents/skills/animation-production/references/cost-model.md`（2026-10-04 改；起草時的估算是 30 鏡、每鏡 6 秒、重做係數 1.5）。OpenAI Sora API 已於 2026-09-24 下架；MiniMax 的音樂 API 對新用戶停售。
@@ -61,7 +61,7 @@
 
 | 欄位 | 內容 |
 | --- | --- |
-| `look` | `{ preset?: cinematic-3d\|anime-2d\|ink-wash\|flat-explainer\|custom, style (≤600), negative?, motion?, candidates?: 2–4（預設 3）, style_frames?: string[] }`：全影片共用的風格提示詞 |
+| `look` | `{ preset?: cinematic-3d\|anime-2d\|ink-wash\|flat-explainer\|cute-cartoon\|cute-mystery\|custom, style (≤600), negative?, motion?, candidates?: 2–4（預設 3）, style_frames?: string[] }`：全影片共用的風格提示詞 |
 | `characters[]` | `{ id（小寫，不可是 narrator）, name, appearance（≤800，英文，給圖片模型）, voice（同 doc.voice 的物件）, sheet_prompt? }` |
 | 鏡頭場景 | `template: "shot"`，`data: { prompt (≤1000), camera?, motion?, negative?, characters?: [id]（≤3）, fit?: auto\|freeze\|slow\|trim, seed?, transition?: cut\|dissolve, start_frame?: { shot, at: "last" }, end_frame?: { prompt }, visual?: clip\|still, source?: { shot, from_s } }`；`visual` 預設 `clip`，`still` 不買片段，由 `assemble` 用關鍵影格加運鏡（下面「畫面等級與運鏡」）；`source` 從更早一個 clip 鏡頭的素材第 `from_s` 秒切進來，不畫關鍵影格、不買素材（下面「同一份素材切幾次」）；有角色、沒有時長下限、`category` 不是 anime 的漫劇，與政策有效的 `long-anime-v1` 長篇動畫，可用場景層的 `action_seconds`（1–8）加空 `lines` 寫沒有人說話的鏡頭（下面「沒有人說話的鏡頭」）；句子不能有 `reveal`。`title`／`chapter`／`outro` 卡片仍可用 |
 | 句子 | 多 `speaker?: narrator\|<角色 id>`（預設 narrator）與 `emotion?`（≤80，Gemini 併進 style；Azure 忽略並警告） |

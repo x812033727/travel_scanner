@@ -192,7 +192,7 @@ async def test_a_studio_upload_gets_its_details_captions_thumbnail_and_schedule(
     assert _steps(project) == {"details": "done", "captions": "done", "thumbnail": "done"}
     assert (project.youtube_video_id, project.youtube_publish_at) == (STUDIO_ID, when)
     sent = site.google.updates[-1]
-    assert sent["snippet"]["title"] == "AI 模型怎麼挑？排行榜第一不一定最好用"
+    assert sent["snippet"]["title"] == "AI 模型怎麼挑？排行榜第一不一定最好用｜CC字幕"
     assert sent["status"]["privacyStatus"] == "private"
     assert sent["status"]["publishAt"] == "2030-01-02T12:00:00Z"
     assert sent["status"]["embeddable"] is True, "what the owner set in Studio stays"
@@ -407,6 +407,51 @@ async def test_an_interrupted_upload_resumes_its_session_instead_of_uploading_tw
     assert bytes(site.google.sessions[uri]) == MP4
 
 
+async def test_an_upload_stops_when_the_channel_already_has_a_video_of_that_title(
+    site: Site, launched: list[str]
+) -> None:
+    """curio-l08, 2026-10-12: uploaded in Studio, never pasted, then sent from the site."""
+    await site.link()
+    await _package(site)
+    _studio_video(site)
+    site.google.videos[STUDIO_ID]["snippet"]["title"] = (
+        "AI 模型怎麼挑？排行榜第一不一定最好用｜CC字幕"
+    )
+    await _request(site, _publish(mode="upload", url=None, accept_private_lock=True))
+    await sync.run_sync(SLUG, site.factory)
+    project = await _project(site)
+    assert project.youtube_sync is not None and project.youtube_sync["status"] == "failed"
+    upload = next(s for s in project.youtube_sync["steps"] if s["id"] == "upload")
+    assert STUDIO_ID in upload["detail"] and "已在 Studio 上傳" in upload["detail"]
+    assert site.google.sessions == {}, "no second video started"
+    assert project.youtube_video_id is None
+
+
+async def test_a_pasted_address_does_not_replace_a_recorded_video_still_on_the_channel(
+    site: Site, launched: list[str]
+) -> None:
+    await site.link()
+    await _package(site, youtube_video_id=UPLOADED_ID)
+    _studio_video(site)
+    site.google.videos[UPLOADED_ID] = {**site.google.videos[STUDIO_ID], "id": UPLOADED_ID}
+    await _request(site, _publish())
+    await sync.run_sync(SLUG, site.factory)
+    project = await _project(site)
+    assert project.youtube_sync is not None and project.youtube_sync["status"] == "failed"
+    assert UPLOADED_ID in str(project.youtube_sync["error"])
+    assert project.youtube_video_id == UPLOADED_ID
+    assert site.google.updates == []
+
+    # The owner deletes the extra one in Studio; the pasted video then takes its place.
+    del site.google.videos[UPLOADED_ID]
+    async with site.factory() as session:
+        await sync.retry_sync(session, SLUG, site.owner)
+    await sync.run_sync(SLUG, site.factory)
+    project = await _project(site)
+    assert project.youtube_sync is not None and project.youtube_sync["status"] == "done"
+    assert project.youtube_video_id == STUDIO_ID
+
+
 async def test_an_upload_before_the_audit_needs_the_owners_yes(
     site: Site, launched: list[str]
 ) -> None:
@@ -443,8 +488,8 @@ async def test_an_english_narration_reaches_a_studio_video_as_its_defaults(
     assert sent["snippet"]["defaultLanguage"] == "en"
     assert sent["snippet"]["defaultAudioLanguage"] == "en"
     assert sent["localizations"] == {
-        "zh-TW": ENGLISH_METADATA["localizations"]["zh-TW"],
-        "ja": ENGLISH_METADATA["localizations"]["ja"],
+        "zh-TW": {"title": "AI 模型怎麼挑｜CC字幕", "description": "這支影片回答怎麼挑 AI 模型。"},
+        "ja": {"title": "AIモデルの選び方｜字幕付き", "description": "選び方。"},
     }
 
 
@@ -603,7 +648,7 @@ async def test_original_publish_followed_by_approved_languages_sends_all_five(
         "zh-TW",
         *LOCALES,
     }
-    assert site.google.updates[-1]["snippet"]["title"] == _publish().title
+    assert site.google.updates[-1]["snippet"]["title"] == f"{_publish().title}｜CC字幕"
     assert site.google.updates[-1]["snippet"]["tags"] == batch.base_metadata["tags"]
     assert site.google.updates[-1]["status"]["privacyStatus"] == "private"
     assert site.google.thumbnails[STUDIO_ID] == JPEG
@@ -748,7 +793,7 @@ async def test_partial_language_retry_retains_its_pinned_package_and_done_detail
         site.google.refuse.clear()
         await sync.run_sync(SLUG, site.factory)
         assert len(site.google.updates) == 1
-        assert len(site.google.tracks[STUDIO_ID]) == 5
+        assert len(site.google.tracks[STUDIO_ID]) == 4
         result = await _project(site)
         assert result.youtube_sync is not None and result.youtube_sync["status"] == "done"
 

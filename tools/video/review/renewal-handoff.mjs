@@ -14,7 +14,7 @@ import { buildCues, toSrt } from "../core/captions.mjs";
 import { isCompilation } from "../core/compilation.mjs";
 import { atomicWrite, isInside, readJson, ROOT, UsageError } from "../core/paths.mjs";
 import { speechHash } from "../core/timeline.mjs";
-import { eachLine, narrationLocale, spokenText } from "../core/schema.mjs";
+import { eachLine, LOCALES as VIDEO_LOCALES, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
 import { unknownTermsFor } from "../core/lexicon.mjs";
 import { currentDub, dubsForUpload, localeCues, localeTexts } from "../core/stages.mjs";
 import { measureCut, measureProblems } from "../import/import.mjs";
@@ -24,7 +24,7 @@ import { renewedFinal } from "./renewal.mjs";
 
 const HASH = /^[a-f0-9]{64}$/;
 const UUID = /^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/i;
-const LOCALES = ["en", "ja", "ko", "zh-CN"];
+const LOCALES = VIDEO_LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
 const RECEIPT = "renewal-handoff.json";
 const digest = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const requireThat = (ok, message) => { if (!ok) throw new UsageError(message); };
@@ -392,6 +392,7 @@ export async function prepareApprovedFinalHandoff({ slug, canonical, out, source
   requireThat(final.payload.manual_review === true && final.payload.body_change && authority?.slug === slug && authority.status === "approved" && authority.review_id === final.id && authority.content_sha256 === final.content_sha256 && authority.decided_at === final.decided_at && UUID.test(authority.decided_by_user_id ?? "") && audits?.length === 1 && UUID.test(audit?.id ?? "") && audit.action === "video_review_approved" && audit.actor_user_id === authority.decided_by_user_id && audit.target === `video_review:${final.id}` && audit.metadata_json?.slug === slug && audit.metadata_json.gate === "final" && audit.metadata_json.sha256 === final.content_sha256, "current source requires the exact human decision row and matching approval audit");
   const pin = validateBranding(readJson(branding), { base: path.dirname(path.resolve(branding)) });
   requireThat(pin.hash === final.payload.branding_hash && await sha256File(candidate) === final.content_sha256, "current final bytes or branding differs from the human decision");
+  requireThat(!pin.intro_at, "a renewal handoff keeps the intro at the start; a pin with intro_at after_first_chapter needs assemble instead");
   for (const role of ["intro", "outro"]) requireThat(await sha256File(pin[role].file) === pin[role].sha256, `current ${role} branding asset changed`);
   const evidence = {};
   for (const role of ["evidence_script", "evidence_body_timeline", "captions_zh-TW", "narration", "thumbnail"]) {
@@ -462,6 +463,7 @@ export async function prepareHandoff({ slug, canonical, out, source, candidate, 
   const final = approved(remote, slug); inactive(remote);
   const pin = validateBranding(readJson(branding), { base: path.dirname(path.resolve(branding)) });
   requireThat(pin.hash === final.payload.branding_hash, "selected branding differs from the owner-approved final");
+  requireThat(!pin.intro_at, "a renewal handoff keeps the intro at the start; a pin with intro_at after_first_chapter needs assemble instead");
   const bound = final.payload.renewal_candidate.source;
   const rangeSource = mode === "manual-import" && source.body_from_original === true;
   requireThat(await sha256File(source.original) === bound.final_sha256 && (rangeSource || await sha256File(source.body) === bound.body_sha256) && await sha256File(candidate) === final.content_sha256, "original, retained body or candidate differs from the owner-approved source binding");

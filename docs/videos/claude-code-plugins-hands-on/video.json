@@ -1,0 +1,1771 @@
+{
+  "schema_version": 1,
+  "slug": "claude-code-plugins-hands-on",
+  "format": "slides",
+  "category": "tutorial",
+  "source_guide": "claude-code-plugin-team-distribution",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "這一支是照著紀錄講的實作：像把一個六個檔的資料夾和每一次的紀錄攤在同事面前，一格一格對給他看，穩、清楚、不嚇人。開場的問句壓低放慢；「在清單上」「被用到」「留下效果」三件事分開講，各停半拍；講到只有一次、沒有跑過的地方，平實不遮掩；提醒那一段語氣放平；章首的問句輕輕上揚。"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Claude Code Plugin 教學：Skill、hook 包成外掛，載進第二個專案逐一驗",
+    "description": "把 Skill、subagent、hook 包成一個 Claude Code 外掛，載進第二個專案，三個零件都有載入嗎？同一句要求沒有載入三次、載入三次，再一個一個驗。\n給在專案的 .claude/ 寫過這三種零件、想帶去別的專案或交給同事的人。\n\n想照著做：兩個練習專案、外掛的每個檔和所有腳本都在 https://github.com/x812033727/travel_scanner/tree/main/docs/videos/claude-code-plugins-hands-on/demo\n\n你會學到：\n・六個檔的外掛怎麼搬：三行指令、8 行的 plugin.json、hooks.json 只改一行\n・不問 Claude，每個零件看三個地方：session 開頭的清單、串流裡的呼叫、留下的檔案與紀錄\n・計分（各 3 次）：載入的 3 次，Skill 與 subagent 都在清單上、都被呼叫、效果都在，守門每筆修改留一行；沒有載入的 3 次都是 0\n・搬進外掛後名字變成 ship-kit:release-prep、ship-kit:log-scout\n・claude plugin validate 對十一種改過的版本：5 種不通過、2 種警告、4 種通過；路徑沒改的那一份通過了，守門卻沒有執行（1 次）\n・專案與外掛各有一份：用到的是專案的，守門跑兩遍（1 次）；Skill 的附檔在專案外，讀取沒預先核准就被拒絕（1 次）\n\n照著打的時候\n・先把 demo 複製到 repo 以外，在那裡用 kit.sh 組外掛：在 clone 下來的 repo 裡啟動 Claude Code，會載入 repo 自己的指示檔與 skills；執行資料夾在 git 儲存庫裡，兩支腳本也會拒絕。\n・repo 裡外掛的檔用中性檔名存放，bash kit.sh good 資料夾 才組成外掛：六個檔各放到哪裡，寫在 kit.sh 的第 42–47 行。改 hooks.json 那一行的 sed 在 m-checks.sh；placed/ 的檔由 session.sh 放成 .test.mjs 與 .log。\n・載入一個外掛，就會在你的電腦執行它的 hook 指令：這一份只有 guard.mjs，載入前先讀它和 hooks.json。兩支 hook 要 PATH 上有 node（這次 v24.13.0）；沒有設 GUARD_LOG 時，守門的紀錄寫在專案根目錄的 guard-record.txt。\n・畫面沒列的：指令前面有七個環境變數與 timeout 600（session.sh 第 196–198 行）；旗標還有 -p、--model sonnet、--strict-mcp-config、--allowedTools（同七種工具）、--no-session-persistence、--max-budget-usd 1、--output-format stream-json --verbose、--include-hook-events、--debug-file；要求走標準輸入。完整的一行在 session.sh。--permission-mode default（手動核准）不要省。\n・省事：WORK=repo 以外的資料夾 bash session.sh 名字 臂（加 --dry 只組專案與外掛、不開 session，組在 WORK 的 run/dry/；origin 臂組出專案 A）；臂是 bare、kit、origin、both、guard、stale、strict、slash、short（short 沒有跑）。手動那一行要先 cd 到 run/dry/lab。每跑一次都用掉你的額度；這十二次每次回報約 0.03 到 0.11 美元。\n\n怎麼跑的\n・Windows 11、Git Bash、Claude Code 2.1.295，2026-10-10。12 次 session 都是 --model sonnet、不開畫面，沒有 Bash 與 MCP；主線每邊 3 次，其餘 6 次各 1 次。\n・沒有觀察的：互動式的畫面、市集安裝與更新、不帶外掛名字的呼叫、另外兩種通過驗證的寫壞版本進 session、沒有名牌檔那一份驗證讀了哪些檔、其他模型與平台。\n・文章用另一組材料在互動式的畫面包外掛，多了改版號、升級與還原；沒有 subagent 與逐項驗；「通過驗證卻少一個零件」只留成練習、沒有紀錄。",
+    "tags": [
+      "Claude Code Plugin",
+      "Claude Code 外掛",
+      "Claude Code",
+      "plugin.json 寫法",
+      "claude --plugin-dir",
+      "claude plugin validate",
+      "CLAUDE_PLUGIN_ROOT",
+      "Claude Code 教學",
+      "plugin hooks.json 沒有觸發",
+      "Mokaair"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "Claude Code 外掛",
+      "headline": "三個零件\n**全到**",
+      "sub": "載入外掛的 3 次：\n三個零件都被用到",
+      "capture": "what"
+    }
+  },
+  "sources": [
+    {
+      "title": "Plugins overview｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/plugins/overview",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Create a Claude Code plugin｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/plugins/create",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Plugin security and trust｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/plugins/security",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Plugin commands reference｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/plugins/cli-reference",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Publish and distribute a plugin｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/plugins/publish",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Choose a permission mode｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/permission-modes",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Hooks reference｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/hooks",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "Troubleshoot plugins｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/plugins/troubleshooting",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "title": "CLI reference｜Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "checked_on": "2026-10-10"
+    }
+  ],
+  "assets": [],
+  "subtitles": {
+    "burn_in": false
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "Claude Code 外掛載進第二個專案：三個零件載入幾個",
+      "template": "title",
+      "data": {
+        "tag": "Claude Code 外掛實作",
+        "title": "六個檔的外掛：\n**沒有載入三次、載入三次**",
+        "subtitle": "同一句要求，在第二個專案；三個零件各看三個地方"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "xdsx",
+          "text": "Skill、subagent、hook 包成外掛，載進第二個專案，三個都有載入嗎？",
+          "emotion": "壓低放慢，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "kit-files",
+      "template": "terminal",
+      "data": {
+        "title": "外掛資料夾裡的六個檔（在專案 A 的根目錄看）",
+        "command": "(cd ../ship-kit && find . -type f | sort)",
+        "output": [
+          "./.claude-plugin/plugin.json\n./agents/log-scout.md\n./hooks/hooks.json\n./scripts/guard.mjs\n./skills/release-prep/SKILL.md\n./skills/release-prep/template.md"
+        ],
+        "ran_on": "2026-10-10",
+        "tool_version": "sort (GNU coreutils) 8.32"
+      },
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "da9q",
+          "text": "六個檔的外掛，同樣的一句要求跑六次：三次沒有載入，三次載入。",
+          "reveal": 1,
+          "emotion": "「六次」前停半拍"
+        }
+      ]
+    },
+    {
+      "id": "score",
+      "template": "table",
+      "data": {
+        "title": "三個零件，各看三件事（載入 3 次 對 沒有載入 3 次）",
+        "columns": [
+          "零件",
+          "清單上有",
+          "被用到",
+          "效果在"
+        ],
+        "rows": [
+          [
+            "Skill",
+            "3／3 對 0／3",
+            "3／3 對 0／3",
+            "3／3 對 0／3"
+          ],
+          [
+            "subagent",
+            "3／3 對 0／3",
+            "3／3 對 0／3",
+            "3／3 對 0／3"
+          ],
+          [
+            "hook（守門）",
+            "外掛在清單上：3／3 對 0／3",
+            "3／3 對 0／3",
+            "另跑 1 次（g1）：1／1"
+          ]
+        ],
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜各 3 次"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "gh8b",
+          "text": "載入的三次，Skill 和 subagent 都在清單上，也都被呼叫。",
+          "reveal": 2,
+          "emotion": "一項一項數，放穩"
+        },
+        {
+          "id": "scmm",
+          "text": "守門每一筆修改都有執行；沒有載入的三次，全部沒有。",
+          "reveal": 1
+        },
+        {
+          "id": "8b9i",
+          "text": "而且搬進外掛之後，名字不一樣了。",
+          "emotion": "語氣提起來，留一個尾巴"
+        }
+      ]
+    },
+    {
+      "id": "keep-quote",
+      "chapter": "外掛是什麼：跟留在 .claude 資料夾差在哪",
+      "template": "quote",
+      "data": {
+        "kicker": "什麼時候不用包成外掛",
+        "quote": "Keep that standalone setup while it serves one project or only you.",
+        "translation": "只服務一個專案、或只有你在用的時候，就留著各自獨立的設定",
+        "source": "Claude Code 文件｜plugins/create｜2026-10-10｜引用"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "ewnk",
+          "text": "這三個零件在原本的專案裡好好的，為什麼要搬？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "gs4u",
+          "text": "只服務一個專案、或者只有你自己在用，就留在原地，不用包。",
+          "reveal": 1,
+          "emotion": "答案放穩"
+        }
+      ]
+    },
+    {
+      "id": "where",
+      "template": "table",
+      "data": {
+        "title": "同一個零件，放哪裡",
+        "columns": [
+          "誰要用",
+          "放哪裡"
+        ],
+        "rows": [
+          [
+            "只有這個專案",
+            "專案的 .claude/ 底下"
+          ],
+          [
+            "只有你，每個專案都要",
+            "家目錄的 ~/.claude/ 底下"
+          ],
+          [
+            "第二個專案、同事，或幾種零件要一起給",
+            "包成外掛"
+          ]
+        ],
+        "source": "官方 plugins/overview、plugins/create 頁｜引用"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "44vm",
+          "text": "只有這個專案要用，留在專案自己的設定資料夾。",
+          "reveal": 1
+        },
+        {
+          "id": "j6fa",
+          "text": "只有你用、每個專案都要，放家目錄的那一個。",
+          "reveal": 1
+        },
+        {
+          "id": "hdvs",
+          "text": "第二個專案也要、你的同事也要，或者幾種零件要一起給，才包成外掛。",
+          "reveal": 1,
+          "emotion": "「才」加重"
+        }
+      ]
+    },
+    {
+      "id": "what",
+      "template": "screencast",
+      "data": {
+        "title": "官方頁：外掛資料夾裡有什麼",
+        "caption": "Claude Code 文件｜plugins/overview｜Understand what a plugin is｜2026-10-10 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://code.claude.com/docs/en/plugins/overview#understand-what-a-plugin-is"
+          },
+          {
+            "action": "wait",
+            "selector": "#understand-what-a-plugin-is"
+          },
+          {
+            "action": "capture",
+            "focus": "img[data-path^=\"images/plugin-directory\"]",
+            "zoom": 1.5
+          }
+        ]
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "yfvg",
+          "text": "外掛就是一個資料夾：你已經會寫的東西，加一份名牌檔。"
+        },
+        {
+          "id": "sfbs",
+          "text": "圖的右邊，是每個檔載入之後給你什麼。",
+          "emotion": "指著畫面"
+        }
+      ]
+    },
+    {
+      "id": "names",
+      "template": "table",
+      "data": {
+        "title": "同一個零件，清單上的名字",
+        "columns": [
+          "清單",
+          "留在專案裡（o1，1 次）",
+          "搬進外掛（k1 等 7 次）"
+        ],
+        "rows": [
+          [
+            "skills",
+            "release-prep",
+            "ship-kit:release-prep"
+          ],
+          [
+            "agents",
+            "log-scout",
+            "ship-kit:log-scout"
+          ],
+          [
+            "slash_commands",
+            "release-prep",
+            "ship-kit:release-prep"
+          ]
+        ],
+        "source": "2026-10-10 跑過｜Claude Code 2.1.295｜session 開頭的清單"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "hp7w",
+          "text": "留在專案裡的時候，這兩個零件叫這兩個名字。",
+          "reveal": 2
+        },
+        {
+          "id": "rwt7",
+          "text": "搬進外掛之後，名字前面多了外掛的名字和一個冒號。",
+          "emotion": "「多了」加重"
+        },
+        {
+          "id": "5a2y",
+          "text": "斜線指令也一樣；照這個全名打，在這一次執行裡，發版的五步都做完。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "a-files",
+      "chapter": "把 Skill、subagent、hook 包成外掛：plugin.json 與 hooks.json",
+      "template": "terminal",
+      "data": {
+        "title": "專案 A 的三個零件（排除量測用的兩個檔）",
+        "command": "find .claude -type f -not -name seen.mjs -not -name settings.local.json | sort",
+        "output": [
+          ".claude/agents/log-scout.md\n.claude/hooks/guard.mjs\n.claude/settings.json\n.claude/skills/release-prep/SKILL.md\n.claude/skills/release-prep/template.md"
+        ],
+        "ran_on": "2026-10-10",
+        "tool_version": "sort (GNU coreutils) 8.32"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "jt6h",
+          "text": "那要怎麼搬過去？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "e8m2",
+          "text": "專案 A 裡，三個零件一共五個檔。",
+          "reveal": 1
+        },
+        {
+          "id": "fj76",
+          "text": "這個專案是為這支影片組的：前幾支的三個零件，放進同一個專案。",
+          "emotion": "平實，講清楚"
+        }
+      ]
+    },
+    {
+      "id": "move",
+      "template": "table",
+      "data": {
+        "title": "在專案 A 的根目錄，照打這三行",
+        "columns": [
+          "做什麼",
+          "指令"
+        ],
+        "rows": [
+          [
+            "建三個資料夾",
+            "mkdir -p ../ship-kit/.claude-plugin ../ship-kit/hooks ../ship-kit/scripts"
+          ],
+          [
+            "複製兩個資料夾",
+            "cp -r .claude/skills .claude/agents ../ship-kit/"
+          ],
+          [
+            "搬 hook 的腳本",
+            "cp .claude/hooks/guard.mjs ../ship-kit/scripts/"
+          ]
+        ],
+        "source": "2026-10-10 跑過｜不呼叫模型的指令｜做法依官方 create 頁"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "phyy",
+          "text": "第一行，在專案旁邊建好外掛的三個資料夾。",
+          "reveal": 1
+        },
+        {
+          "id": "k7g5",
+          "text": "第二行，Skill 和 subagent 兩個資料夾整個複製過去，內容一個字都不用改。",
+          "reveal": 1
+        },
+        {
+          "id": "ipkt",
+          "text": "第三行，守門的腳本也搬進外掛，放進它自己的資料夾。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "manifest",
+      "template": "code",
+      "data": {
+        "code": "{\n  \"name\": \"ship-kit\",\n  \"description\": \"發版流程、查紀錄的 subagent、測試檔守門\",\n  \"version\": \"0.1.0\",\n  \"author\": {\n    \"name\": \"Mokaair\"\n  }\n}",
+        "caption": "ship-kit/.claude-plugin/plugin.json｜全檔 8 行｜示範資料夾裡存成 parts/manifest.json"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "t7f6",
+          "text": "接著自己寫一份名牌檔，一共八行，放在外掛裡專屬的那個資料夾。"
+        }
+      ]
+    },
+    {
+      "id": "manifest-name",
+      "template": "code",
+      "data": {
+        "code": "{\n  \"name\": \"ship-kit\",\n  \"description\": \"發版流程、查紀錄的 subagent、測試檔守門\",\n  \"version\": \"0.1.0\",\n  \"author\": {\n    \"name\": \"Mokaair\"\n  }\n}",
+        "highlight": [
+          2
+        ],
+        "caption": "ship-kit/.claude-plugin/plugin.json｜全檔 8 行｜示範資料夾裡存成 parts/manifest.json"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "e3ui",
+          "text": "亮起來的這一行是外掛的名字，也就是零件名字前面多出來的那一段。",
+          "emotion": "指著畫面，放慢"
+        }
+      ]
+    },
+    {
+      "id": "hooks-before",
+      "template": "code",
+      "data": {
+        "code": "        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"node\",\n            \"args\": [\n              \"${CLAUDE_PROJECT_DIR}/.claude/hooks/guard.mjs\"\n            ]\n          }",
+        "highlight": [
+          6
+        ],
+        "caption": "專案 A 的 .claude/settings.json｜第 6–13 行（全檔 18 行）｜示範資料夾：parts/hooks.project.json"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "edzw",
+          "text": "hook 的設定原本在專案的設定檔；亮起來的這一行，腳本的路徑從專案算起。"
+        }
+      ]
+    },
+    {
+      "id": "hooks-after",
+      "template": "code",
+      "data": {
+        "code": "        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"node\",\n            \"args\": [\n              \"${CLAUDE_PLUGIN_ROOT}/scripts/guard.mjs\"\n            ]\n          }",
+        "highlight": [
+          6
+        ],
+        "caption": "ship-kit/hooks/hooks.json｜第 6–13 行（全檔 18 行）｜示範資料夾：parts/hooks.plugin.json"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "cyrk",
+          "text": "搬進外掛的 hooks 檔，整段照抄，只改這一行：改成從外掛的資料夾算起。",
+          "emotion": "「只改這一行」放慢"
+        }
+      ]
+    },
+    {
+      "id": "hooks-diff",
+      "template": "terminal",
+      "data": {
+        "title": "兩個檔比對（在專案 A 的根目錄）",
+        "command": "diff .claude/settings.json ../ship-kit/hooks/hooks.json",
+        "output": [
+          "11c11\n<               \"${CLAUDE_PROJECT_DIR}/.claude/hooks/guard.mjs\"\n---\n>               \"${CLAUDE_PLUGIN_ROOT}/scripts/guard.mjs\""
+        ],
+        "ran_on": "2026-10-10",
+        "tool_version": "diff (GNU diffutils) 3.12"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "ejqz",
+          "text": "兩個檔比對一下，只差第十一行。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "before-load",
+      "template": "bullets",
+      "data": {
+        "title": "載入別人的外掛之前",
+        "items": [
+          "外掛的 hook 用你的使用者權限直接執行",
+          "權限規則與沙盒管的是 Claude 的工具呼叫，不包含它",
+          "先讀 hooks/hooks.json，和它執行的每一支腳本"
+        ],
+        "source": "官方 plugins/security 頁｜2026-10-10｜引用｜讀腳本：站主做法"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "f2es",
+          "text": "載入之前講一件事：載入一個外掛，就是讓它的 hook 指令在你的電腦上執行。",
+          "reveal": 1,
+          "emotion": "語氣放平，認真"
+        },
+        {
+          "id": "if34",
+          "text": "權限規則管的是 Claude 的工具呼叫，不包含外掛自己執行的程式。",
+          "reveal": 1
+        },
+        {
+          "id": "umx6",
+          "text": "所以別人給的外掛，先打開 hooks 檔和它執行的每一支腳本，讀過再載入。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "guard-1",
+      "template": "code",
+      "data": {
+        "code": "// 守門：已經存在的測試檔不能改。每被呼叫一次，留一行紀錄。\nimport { appendFileSync, existsSync } from 'node:fs';\nimport { readFileSync } from 'node:fs';\nimport { basename, join } from 'node:path';\n\nconst event = JSON.parse(readFileSync(0, 'utf8').trim());\nconst file = String(event.tool_input?.file_path ?? '');\nconst stop = /\\.test\\.[cm]?js$/.test(file) && existsSync(file);",
+        "highlight": [
+          6,
+          7,
+          8
+        ],
+        "caption": "ship-kit/scripts/guard.mjs｜第 1–8 行（全檔 29 行）｜示範資料夾：parts/guard.mjs"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "2c4s",
+          "text": "這個外掛只有一支 hook，執行的是這支腳本。"
+        },
+        {
+          "id": "tp78",
+          "text": "亮起來的三行，判斷目標是不是已經存在的測試檔。",
+          "emotion": "指著畫面"
+        }
+      ]
+    },
+    {
+      "id": "guard-2",
+      "template": "code",
+      "data": {
+        "code": "const what = `${event.tool_name} ${basename(file)}`;\nconst line = `guard(${home}) ${what}`\n  + ` -> ${stop ? 'block' : 'pass'} | PLUGIN_ROOT ${shape}\\n`;\n// 寫不了紀錄也照樣守門。\ntry { appendFileSync(log, line); } catch { /* 略過 */ }\n\nif (stop) {\n  console.error('This test already exists: do not change it.');\n  console.error('Fix the code instead. New tests are fine.');\n  process.exitCode = 2;\n}",
+        "highlight": [
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "caption": "ship-kit/scripts/guard.mjs｜第 19–29 行（全檔 29 行）｜示範資料夾：parts/guard.mjs"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "e9d4",
+          "text": "是的話，最後這五行不讓它改。"
+        }
+      ]
+    },
+    {
+      "id": "guard-3",
+      "template": "code",
+      "data": {
+        "code": "const what = `${event.tool_name} ${basename(file)}`;\nconst line = `guard(${home}) ${what}`\n  + ` -> ${stop ? 'block' : 'pass'} | PLUGIN_ROOT ${shape}\\n`;\n// 寫不了紀錄也照樣守門。\ntry { appendFileSync(log, line); } catch { /* 略過 */ }\n\nif (stop) {\n  console.error('This test already exists: do not change it.');\n  console.error('Fix the code instead. New tests are fine.');\n  process.exitCode = 2;\n}",
+        "highlight": [
+          5
+        ],
+        "caption": "ship-kit/scripts/guard.mjs｜第 19–29 行（全檔 29 行）｜示範資料夾：parts/guard.mjs"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "tx97",
+          "text": "亮起來的這一行是為這支影片加的：每被呼叫一次留一行紀錄，不然看不出它有沒有執行。"
+        }
+      ]
+    },
+    {
+      "id": "validate-good",
+      "template": "terminal",
+      "data": {
+        "title": "驗證完整的外掛（輸出節錄最後一行）\n<v>/good 是紀錄裡的外掛資料夾，照打要整段換成你的",
+        "command": "claude plugin validate <v>/good",
+        "output": [
+          "✔ Validation passed"
+        ],
+        "ran_on": "2026-10-10",
+        "tool_version": "Claude Code 2.1.295"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "ea7x",
+          "text": "載入之前再跑一次驗證指令；完整的這一份，最後一行是通過。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "cmd",
+      "template": "table",
+      "data": {
+        "title": "載入的那一行，拆開看（其餘旗標在說明欄）",
+        "columns": [
+          "旗標（k1 的指令）",
+          "做什麼"
+        ],
+        "rows": [
+          [
+            "--plugin-dir <plugin>",
+            "<plugin> 是外掛的資料夾；只在這一次 session 載入"
+          ],
+          [
+            "--setting-sources project,local",
+            "只讀這個專案的設定檔"
+          ],
+          [
+            "--permission-mode default",
+            "手動核准；要問而沒有人能答，就是拒絕"
+          ],
+          [
+            "--tools Read,Glob,Grep,Edit,Write,Skill,Agent,Task",
+            "七種工具（Agent 在清單上叫 Task），沒有 Bash"
+          ]
+        ],
+        "source": "2026-10-10 跑過（k1）｜官方頁（引用）：手動核准、組織可關掉第 1 列的旗標"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "mcta",
+          "text": "載入只要一個旗標，後面接外掛的資料夾；只在這一次 session 有效。",
+          "reveal": 1
+        },
+        {
+          "id": "nq32",
+          "text": "這個旗標讓它只讀這個專案的設定。",
+          "reveal": 1
+        },
+        {
+          "id": "x29i",
+          "text": "權限模式指定要手動核准的那一種；不開畫面的 session 沒有人能答，要問就等於拒絕。",
+          "reveal": 1
+        },
+        {
+          "id": "vqmd",
+          "text": "工具只給七種，沒有 Bash。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "request",
+      "chapter": "怎麼確認三個零件都有載入：清單、呼叫、檔案",
+      "template": "code",
+      "data": {
+        "code": "1.2.1 要出了，幫我把該改的地方都改好。\n另外用 log-scout 查 logs/ 裡哪些 job 開始了卻沒結束，\n列出編號和檔名。",
+        "caption": "prompts/ship-b.txt｜全檔 3 行｜主線六次送進去的都是這三行"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "y3jh",
+          "text": "三個零件，真的都有載入嗎？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "by87",
+          "text": "主線的六次，送進去的都是這三行要求。"
+        }
+      ]
+    },
+    {
+      "id": "request-name",
+      "template": "code",
+      "data": {
+        "code": "1.2.1 要出了，幫我把該改的地方都改好。\n另外用 log-scout 查 logs/ 裡哪些 job 開始了卻沒結束，\n列出編號和檔名。",
+        "highlight": [
+          2
+        ],
+        "caption": "prompts/ship-b.txt｜全檔 3 行｜第 2 行的 log-scout 沒有帶外掛的名字"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "rcur",
+          "text": "亮起來的這一行，寫的是 subagent 原本的名字，前面沒有外掛的名字。",
+          "emotion": "指著畫面"
+        }
+      ]
+    },
+    {
+      "id": "lists",
+      "template": "table",
+      "data": {
+        "title": "第一個地方：session 開頭那一筆的清單（k1）",
+        "columns": [
+          "清單",
+          "這個外掛的那一項"
+        ],
+        "rows": [
+          [
+            "plugins",
+            "ship-kit（source：ship-kit@inline，version：0.1.0）"
+          ],
+          [
+            "skills",
+            "ship-kit:release-prep"
+          ],
+          [
+            "agents",
+            "ship-kit:log-scout"
+          ],
+          [
+            "plugin_errors",
+            "沒有這個鍵"
+          ]
+        ],
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜k1"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "buus",
+          "text": "不用問 Claude，直接看三個地方。第一個，是 session 開頭那一筆紀錄裡的清單：外掛在上面。",
+          "reveal": 1
+        },
+        {
+          "id": "rqai",
+          "text": "Skill 和 subagent 的清單上，各有一個帶著外掛名字的項目。",
+          "reveal": 2
+        },
+        {
+          "id": "wqvd",
+          "text": "這次不開畫面的 session，載入時沒有錯誤，也沒有要你先信任的訊息。",
+          "reveal": 1
+        },
+        {
+          "id": "qzhv",
+          "text": "清單的總數每次可能不同，要找名字。",
+          "emotion": "提醒的語氣"
+        }
+      ]
+    },
+    {
+      "id": "calls",
+      "template": "table",
+      "data": {
+        "title": "第二個地方：串流裡的呼叫（k1）",
+        "columns": [
+          "看什麼",
+          "寫的是"
+        ],
+        "rows": [
+          [
+            "Skill 呼叫的 skill",
+            "ship-kit:release-prep"
+          ],
+          [
+            "Agent 呼叫的 subagent_type",
+            "ship-kit:log-scout"
+          ],
+          [
+            "同樣寫成全名的",
+            "k1、k2、k3、r1：4 次裡 4 次"
+          ]
+        ],
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜k1 等 4 次"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "bmwv",
+          "text": "第二個地方，看串流裡的呼叫。這一次，它呼叫 Skill 用的是帶外掛名字的全名。",
+          "reveal": 1
+        },
+        {
+          "id": "dnh2",
+          "text": "要求裡寫的是舊名字；交給 subagent 的那一筆，類型是它自己寫成全名的。",
+          "reveal": 1,
+          "emotion": "放慢，講清楚"
+        },
+        {
+          "id": "fe6i",
+          "text": "只有載入外掛、而且有把工作交出去的那四次，四次都是這樣。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "guard-rec",
+      "template": "code",
+      "data": {
+        "code": "guard(plugin) Edit package.json -> pass | PLUGIN_ROOT backslash\nguard(plugin) Edit CHANGELOG.md -> pass | PLUGIN_ROOT backslash\nguard(plugin) Edit README.md -> pass | PLUGIN_ROOT backslash\nguard(plugin) Write v1.2.1.md -> pass | PLUGIN_ROOT backslash\nguard(plugin) Edit v1.2.1.md -> pass | PLUGIN_ROOT backslash",
+        "caption": "k1 的守門紀錄（results/k1.guard.txt）｜全檔 5 行｜實際跑過 2026-10-10｜Claude Code 2.1.295｜互動式的 /hooks 會列出 hook 與來源：官方 hooks 頁（引用，沒有跑）"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "dri3",
+          "text": "開頭那一筆沒有 hook 的清單，要看它留下的紀錄：這一次五筆修改，剛好五行。"
+        }
+      ]
+    },
+    {
+      "id": "guard-rec-2",
+      "template": "code",
+      "data": {
+        "code": "guard(plugin) Edit package.json -> pass | PLUGIN_ROOT backslash\nguard(plugin) Edit CHANGELOG.md -> pass | PLUGIN_ROOT backslash\nguard(plugin) Edit README.md -> pass | PLUGIN_ROOT backslash\nguard(plugin) Write v1.2.1.md -> pass | PLUGIN_ROOT backslash\nguard(plugin) Edit v1.2.1.md -> pass | PLUGIN_ROOT backslash",
+        "highlight": [
+          1
+        ],
+        "caption": "k1 的守門紀錄（results/k1.guard.txt）｜全檔 5 行｜實際跑過 2026-10-10｜Claude Code 2.1.295｜互動式的 /hooks 會列出 hook 與來源：官方 hooks 頁（引用，沒有跑）"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "x2yg",
+          "text": "每一行開頭都記著，這支腳本是從外掛被呼叫的。"
+        }
+      ]
+    },
+    {
+      "id": "guard-rec-3",
+      "template": "code",
+      "data": {
+        "code": "guard(plugin) Edit package.json -> pass | PLUGIN_ROOT backslash\nguard(plugin) Edit CHANGELOG.md -> pass | PLUGIN_ROOT backslash\nguard(plugin) Edit README.md -> pass | PLUGIN_ROOT backslash\nguard(plugin) Write v1.2.1.md -> pass | PLUGIN_ROOT backslash\nguard(plugin) Edit v1.2.1.md -> pass | PLUGIN_ROOT backslash",
+        "highlight": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "caption": "k1 的守門紀錄（results/k1.guard.txt）｜2026-10-10 跑過｜Claude Code 2.1.295｜行尾：腳本拿到的 CLAUDE_PLUGIN_ROOT｜hook 是 node 加 args｜官方 troubleshooting 頁：這種寫法保留原生路徑（引用）"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "b78c",
+          "text": "行尾是腳本拿到的外掛路徑：這一支 hook 的指令和參數是分開寫的，這次在 Windows 上是反斜線。"
+        }
+      ]
+    },
+    {
+      "id": "note",
+      "template": "code",
+      "data": {
+        "code": "# v1.2.1\n\n## 這一版改了什麼\n\n- 兒童票價改為無條件進位到整數美元。\n\n## 升級要注意\n\n- 兒童票價會變動（進位到整數美元），下游若有比對票價請留意。\n\n## 怎麼確認",
+        "highlight": [
+          3,
+          7,
+          11
+        ],
+        "caption": "k1 留下的 releases/v1.2.1.md（results/k1.release-v1.2.1.md）｜第 1–11 行（全檔 13 行）"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "cncv",
+          "text": "第三個地方，看留下的檔案：發版說明裡亮起來的三個標題，和 Skill 附的範本一字不差。",
+          "emotion": "指著畫面"
+        }
+      ]
+    },
+    {
+      "id": "report",
+      "template": "code",
+      "data": {
+        "code": "J2103｜sync-2026-10-08.log｜8\nJ2204｜sync-2026-10-09.log｜11\n共 2 筆",
+        "highlight": [
+          3
+        ],
+        "caption": "k1：subagent 的回報（results/k1.agent-report.txt 第 2–4 行；第 1 行是整理時加的註解）｜k2、k3 在這一行後面還有說明"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "wtpa",
+          "text": "subagent 的效果看它的回報：兩筆沒結束的工作，最後一行照規定寫總數。"
+        }
+      ]
+    },
+    {
+      "id": "bare",
+      "template": "table",
+      "data": {
+        "title": "沒有載入的三次（n1–n3）",
+        "columns": [
+          "看什麼",
+          "三次的結果"
+        ],
+        "rows": [
+          [
+            "版號與 README",
+            "3／3 有改"
+          ],
+          [
+            "發版說明檔、Skill 規定的最後一行",
+            "0／3"
+          ],
+          [
+            "Skill 呼叫、Agent 呼叫",
+            "0 筆"
+          ],
+          [
+            "兩筆沒結束的工作",
+            "3／3 的回覆都有：它自己讀了兩個紀錄檔"
+          ]
+        ],
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜n1–n3"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "inaw",
+          "text": "沒有載入外掛的那三次，版號和 README 它自己也會改。",
+          "reveal": 1
+        },
+        {
+          "id": "hn4v",
+          "text": "發版說明，和 Skill 規定的最後一行，三次都沒有。",
+          "reveal": 1
+        },
+        {
+          "id": "w9qx",
+          "text": "Skill 和 subagent 的呼叫，一筆都沒有。",
+          "reveal": 1
+        },
+        {
+          "id": "2nzm",
+          "text": "那兩筆沒結束的工作，它自己讀取紀錄檔，三次也都查到了。",
+          "reveal": 1,
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "bare-says",
+      "template": "quote",
+      "data": {
+        "kicker": "同一句要求，拿到沒有外掛的專案（n1 的回覆）",
+        "quote": "這個環境裡沒有 `log-scout` 這個 agent 或 skill,所以我直接讀了 `logs/` 下的兩個檔案。",
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜n1"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "6nfr",
+          "text": "三次的回覆都說：這裡沒有這個名字的零件，所以它直接讀取檔案。"
+        }
+      ]
+    },
+    {
+      "id": "tokens",
+      "template": "stats",
+      "data": {
+        "title": "外掛載入了、還沒用到：第一個請求多多少",
+        "stats": [
+          {
+            "value": "約 123",
+            "label": "個 token：兩邊各 3 次，平均的差",
+            "note": "成對相減 121 到 126"
+          },
+          {
+            "value": "3",
+            "label": "個 token：同一邊三次之間最多差這麼多"
+          }
+        ],
+        "source": "2026-10-10 跑過｜k1–k3 對 n1–n3｜第一個請求的輸入側"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "t6ng",
+          "text": "外掛載入了、還沒用到的時候，第一個請求大約多一百二十三個 token。",
+          "reveal": 1,
+          "emotion": "數字前停半拍"
+        },
+        {
+          "id": "jgrx",
+          "text": "同一邊的三次最多只差三個，所以這個差距看得出來。",
+          "reveal": 1
+        },
+        {
+          "id": "ed45",
+          "text": "這是這個外掛的數字：一個 Skill，一個 subagent。"
+        }
+      ]
+    },
+    {
+      "id": "limits",
+      "template": "bullets",
+      "data": {
+        "title": "這張計分表能說到哪裡",
+        "items": [
+          "3 對 0：外掛沒有影響的話，20 種分法裡的 1 種",
+          "夠說有差，不夠說每一次都會這樣",
+          "不開畫面的 session、一個模型、Windows 的 Git Bash"
+        ],
+        "source": "這支的做法｜實算是示範資料夾的 calc.mjs"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "4vih",
+          "text": "三比零，如果外掛沒有影響，是二十種分法裡的一種：夠說有差，不夠說每一次。",
+          "reveal": 2
+        },
+        {
+          "id": "ag2x",
+          "text": "而且只在不開畫面的 session、一個模型、Windows 上跑過。",
+          "reveal": 1,
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "v-fail",
+      "chapter": "claude plugin validate 通過，守門卻沒有執行",
+      "template": "table",
+      "data": {
+        "title": "十一種改過的版本：驗證不通過的五種（結束碼 1）",
+        "columns": [
+          "寫壞的地方",
+          "訊息指出的欄位"
+        ],
+        "rows": [
+          [
+            "名牌檔多一個逗號",
+            "json"
+          ],
+          [
+            "名牌檔沒有 name",
+            "name"
+          ],
+          [
+            "名牌檔指向一個不存在的 hooks 檔",
+            "hooks[0]"
+          ],
+          [
+            "hooks 檔少了最外層的 \"hooks\"",
+            "hooks"
+          ],
+          [
+            "agent 檔的 frontmatter 有沒關的引號",
+            "frontmatter"
+          ]
+        ],
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜不呼叫模型"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "2uex",
+          "text": "那一行路徑如果忘了改呢？先看驗證指令查得出什麼。",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "knfw",
+          "text": "名牌檔的 JSON 壞了、必填的名字沒寫、要讀的另一個檔案不存在，驗證都不通過。",
+          "reveal": 3
+        },
+        {
+          "id": "cf63",
+          "text": "hooks 檔少了最外層、subagent 檔的開頭解析不了，也不通過。",
+          "reveal": 2
+        },
+        {
+          "id": "7ztg",
+          "text": "每一種，它都指出是哪一個欄位出問題。"
+        }
+      ]
+    },
+    {
+      "id": "v-warn",
+      "template": "table",
+      "data": {
+        "title": "通過加警告的兩種（結束碼 0），和 --strict（結束碼 1）",
+        "columns": [
+          "改了哪裡",
+          "最後一行"
+        ],
+        "rows": [
+          [
+            "名牌檔只有 name",
+            "Validation passed with warnings（3 個警告）"
+          ],
+          [
+            "名牌檔多一個拼錯的鍵 hook",
+            "Validation passed with warnings（1 個警告）"
+          ],
+          [
+            "只有 name，再加 --strict",
+            "Validation failed (--strict treats warnings as errors)"
+          ]
+        ],
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜不呼叫模型"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "hp2g",
+          "text": "名牌檔裡只有名字，或者多了一個拼錯的欄位，結果是通過加警告。",
+          "reveal": 2
+        },
+        {
+          "id": "5g3j",
+          "text": "加上嚴格的那個旗標，有警告的這一份就變成不通過。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "v-pass",
+      "template": "table",
+      "data": {
+        "title": "剩下四種：照樣通過（結束碼 0）",
+        "columns": [
+          "改了哪裡",
+          "最後一行"
+        ],
+        "rows": [
+          [
+            "hooks 檔的路徑沒改",
+            "Validation passed"
+          ],
+          [
+            "hook 的腳本不見了",
+            "Validation passed"
+          ],
+          [
+            "skills/ 放進 .claude-plugin/ 裡",
+            "Validation passed"
+          ],
+          [
+            "整個沒有 .claude-plugin/（官方頁：可省略；查了什麼沒看）",
+            "Validation passed"
+          ]
+        ],
+        "source": "2026-10-10 跑過｜只有第 1 列進過 session（s1）｜第 4 列括號：引用"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "2g55",
+          "text": "這三種寫壞了，驗證照樣通過：路徑沒改、腳本不見了、Skill 的資料夾放錯位置。",
+          "reveal": 3,
+          "emotion": "放慢，一種一種數"
+        },
+        {
+          "id": "x7j7",
+          "text": "名牌檔整個不放，最後一行也是通過；名牌檔可以省略。",
+          "reveal": 1
+        },
+        {
+          "id": "b5xz",
+          "text": "這四種裡，放進 session 跑過的只有第一種，一次。",
+          "emotion": "平實，講清楚"
+        }
+      ]
+    },
+    {
+      "id": "g-request",
+      "template": "code",
+      "data": {
+        "code": "用 Edit 在 src/fares.test.mjs 最後加一行 // checked，只改這裡。",
+        "caption": "prompts/guard-b.txt｜全檔 1 行｜g1 與 s1 送進去的都是這一句"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "ss8i",
+          "text": "同一句要求，兩份外掛各跑一次：請 Claude 在既有的測試檔最後加一行註解。"
+        }
+      ]
+    },
+    {
+      "id": "g-vs-s",
+      "template": "compare",
+      "data": {
+        "title": "同一句要求，兩份外掛",
+        "left": {
+          "heading": "路徑改了（g1，1 次）",
+          "points": [
+            "那一筆修改沒有執行",
+            "測試檔沒有變",
+            "守門紀錄：1 行，block"
+          ]
+        },
+        "right": {
+          "heading": "路徑沒改（s1，1 次）",
+          "points": [
+            "那一筆修改執行了",
+            "測試檔多出一行",
+            "沒有守門紀錄"
+          ]
+        },
+        "verdict": "兩份都通過驗證，只差 hooks 檔的第 11 行",
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜g1、s1"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "7rjt",
+          "text": "路徑改好的那一份：這筆修改被守門攔下，測試檔沒有變。",
+          "reveal": 1
+        },
+        {
+          "id": "zdcr",
+          "text": "路徑沒改的那一份：修改被執行了，測試檔多出一行；守門沒有留下任何紀錄。",
+          "reveal": 1,
+          "emotion": "「被執行了」前停半拍"
+        }
+      ]
+    },
+    {
+      "id": "g-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "被外掛的 hook 擋下時，工具結果的最後一句（g1）",
+        "quote": "This hook comes from the ship-kit@inline plugin.",
+        "translation": "這支 hook 來自 ship-kit@inline 這個外掛",
+        "source": "2026-10-10 跑過｜g1（1 次）｜官方 troubleshooting 頁有記載"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "zz6d",
+          "text": "被攔下的這一次，工具結果最後一句，點名是哪一個外掛的 hook。",
+          "reveal": 1
+        },
+        {
+          "id": "u8ff",
+          "text": "之後，它沒有換別的方法再試。"
+        }
+      ]
+    },
+    {
+      "id": "s-quiet",
+      "template": "table",
+      "data": {
+        "title": "路徑沒改的那一次（s1）：這四個地方沒有訊息",
+        "columns": [
+          "地方",
+          "s1 這一次"
+        ],
+        "rows": [
+          [
+            "session 開頭的 plugin_errors",
+            "沒有這個鍵"
+          ],
+          [
+            "標準錯誤",
+            "0 位元組"
+          ],
+          [
+            "那一筆修改的工具結果",
+            "has been updated successfully"
+          ],
+          [
+            "Claude 的回覆",
+            "沒有提到 hook"
+          ]
+        ],
+        "source": "實際跑過 2026-10-10｜Claude Code 2.1.295｜s1（1 次）"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "avjv",
+          "text": "路徑沒改的這一次，外掛照樣載入：沒有載入錯誤，標準錯誤是空的。",
+          "reveal": 2
+        },
+        {
+          "id": "ryjp",
+          "text": "工具結果寫的是更新成功，Claude 的回覆也沒有提到 hook。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "s-seen",
+      "template": "table",
+      "data": {
+        "title": "看得出來的兩個地方（s1），都要另外加旗標",
+        "columns": [
+          "地方",
+          "要加的旗標",
+          "s1 這一次"
+        ],
+        "rows": [
+          [
+            "串流的 hook 事件",
+            "--include-hook-events",
+            "PreToolUse:Edit，exit_code 1"
+          ],
+          [
+            "偵錯紀錄",
+            "--debug-file",
+            "一行，同一個錯誤"
+          ]
+        ],
+        "source": "2026-10-10 跑過｜s1（1 次）｜旗標的作用：官方 CLI reference 頁"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "bb42",
+          "text": "不開畫面的這一次，看得出來的只有兩個地方，都要另外加旗標：串流裡的 hook 事件，和偵錯紀錄。",
+          "reveal": 2,
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "s-error",
+      "template": "code",
+      "data": {
+        "code": "node:internal/modules/cjs/loader:1424\n  throw err;\n  ^\n\nError: Cannot find module '<lab>\\.claude\\hooks\\guard.mjs'",
+        "highlight": [
+          5
+        ],
+        "caption": "s1 那一筆 hook 事件的 stderr（results/s1.hook-response.txt 第 3–7 行，全檔 20 行）｜<lab> 是這一次的專案資料夾"
+      },
+      "claims": [
+        "c30"
+      ],
+      "lines": [
+        {
+          "id": "mzi9",
+          "text": "那個 hook 事件的錯誤是找不到腳本：它找的地方，在第二個專案的設定資料夾裡。",
+          "emotion": "指著畫面"
+        }
+      ]
+    },
+    {
+      "id": "s-hooks",
+      "template": "code",
+      "data": {
+        "code": "        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"node\",\n            \"args\": [\n              \"${CLAUDE_PROJECT_DIR}/.claude/hooks/guard.mjs\"\n            ]\n          }",
+        "highlight": [
+          6
+        ],
+        "caption": "s1 載入的 ship-kit/hooks/hooks.json（stale 版）｜第 6–13 行（全檔 18 行）｜內容就是 parts/hooks.project.json"
+      },
+      "claims": [
+        "c30"
+      ],
+      "lines": [
+        {
+          "id": "bw9u",
+          "text": "外掛的 hooks 檔寫專案的變數，會被換成這一次的專案；那裡沒有這支腳本。"
+        }
+      ]
+    },
+    {
+      "id": "lesson",
+      "template": "bullets",
+      "data": {
+        "title": "驗證通過之後",
+        "items": [
+          "驗證通過：我只當成檔案讀得進去",
+          "零件能不能用：拿一句會用到它的要求跑一次，看它自己留下的紀錄"
+        ],
+        "source": "我的做法｜依據：這支的 s1（1 次）"
+      },
+      "claims": [
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "weee",
+          "text": "以我的做法：驗證通過，我只當成檔案讀得進去。",
+          "reveal": 1,
+          "emotion": "收穩"
+        },
+        {
+          "id": "zg3c",
+          "text": "零件能不能用，要拿一個會用到它的要求實際跑一次，看它自己留下的紀錄。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "both",
+      "template": "table",
+      "data": {
+        "title": "專案和外掛各有一份（b1，在專案 A）",
+        "columns": [
+          "看什麼",
+          "b1 這一次"
+        ],
+        "rows": [
+          [
+            "skills 清單",
+            "release-prep、ship-kit:release-prep"
+          ],
+          [
+            "agents 清單",
+            "log-scout、ship-kit:log-scout"
+          ],
+          [
+            "被呼叫的",
+            "release-prep、log-scout：專案自己的那一份"
+          ],
+          [
+            "守門",
+            "每筆修改跑兩遍：4 筆修改，來自外掛 4 行、來自專案 4 行"
+          ]
+        ],
+        "source": "2026-10-10 跑過｜b1（1 次）｜刪掉原件：官方 create 頁（引用）"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "crt5",
+          "text": "原本的零件還留在專案裡，又載入外掛，會怎樣？這個在專案 A 跑了一次。",
+          "emotion": "換一個話題，語氣提起來"
+        },
+        {
+          "id": "wqmp",
+          "text": "清單上，兩個名字都在。",
+          "reveal": 2
+        },
+        {
+          "id": "uh42",
+          "text": "這一次被用到的，是專案自己的那一份；外掛的那兩個只列在清單上。",
+          "reveal": 1,
+          "emotion": "放慢，講清楚"
+        },
+        {
+          "id": "8dgx",
+          "text": "守門每一筆修改跑了兩遍：外掛的一遍，專案的一遍。",
+          "reveal": 1
+        },
+        {
+          "id": "x33w",
+          "text": "確認外掛好用之後，就把專案裡的原件刪掉。"
+        }
+      ]
+    },
+    {
+      "id": "outside",
+      "template": "table",
+      "data": {
+        "title": "Skill 的附檔在專案外面（r1：讀取沒有預先核准）",
+        "columns": [
+          "讀什麼",
+          "r1 這一次"
+        ],
+        "rows": [
+          [
+            "外掛資料夾裡的 template.md",
+            "要問，沒有人能答：but you haven't granted it yet."
+          ],
+          [
+            "專案裡的檔（Read 5 筆、Glob 1 筆）",
+            "都不用問，都執行了"
+          ],
+          [
+            "發版說明檔",
+            "沒有寫"
+          ],
+          [
+            "對照：預先核准了 Read 的 k1、k2、k3、x1",
+            "四次都讀到這個範本"
+          ]
+        ],
+        "source": "2026-10-10 跑過｜r1（1 次）｜原因欄：工作目錄以外"
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "cnbn",
+          "text": "還有一件主線看不到的事：Skill 附的範本跟著外掛，放在專案的外面。"
+        },
+        {
+          "id": "5yx6",
+          "text": "讀取沒有預先核准，在這一次執行裡，讀這個範本要問；沒有人能答，結果就是拒絕。",
+          "reveal": 1
+        },
+        {
+          "id": "n7s6",
+          "text": "專案裡面的五次讀取和一次找檔，都不用問。",
+          "reveal": 1
+        },
+        {
+          "id": "i2y2",
+          "text": "Claude 沒有自己猜標題；發版說明，這一次沒有寫出來。",
+          "reveal": 1
+        },
+        {
+          "id": "jr5f",
+          "text": "預先核准了讀取工具的那幾次，讀這個範本的四次都讀到了。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "keep",
+      "chapter": "外掛怎麼留下來、交給別人",
+      "template": "table",
+      "data": {
+        "title": "留下來、交給別人",
+        "columns": [
+          "你要的",
+          "做法",
+          "這支有沒有跑"
+        ],
+        "rows": [
+          [
+            "只這一次",
+            "啟動時帶 --plugin-dir",
+            "跑過；不帶的 3 次，清單上沒有它"
+          ],
+          [
+            "給同事",
+            "把整個資料夾或它的 .zip 給他，他自己載入",
+            "官方頁，沒有跑"
+          ],
+          [
+            "用名字安裝、收更新",
+            "在 repo 加一份 marketplace.json",
+            "官方頁，沒有跑"
+          ]
+        ],
+        "source": "第 1 列：2026-10-10 跑過｜2、3：官方 plugins/publish 頁"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "8sg3",
+          "text": "這個資料夾怎麼留下來，怎麼交給別人？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "hqg5",
+          "text": "這支影片只用了一種：每次啟動都加上載入外掛的旗標；沒有加的那三次，清單上就沒有它。",
+          "reveal": 1
+        },
+        {
+          "id": "wyrs",
+          "text": "要給同事，可以把整個資料夾交給他，他啟動的時候加上同一個旗標來載入。",
+          "reveal": 1
+        },
+        {
+          "id": "yv6j",
+          "text": "要讓別人用名字安裝、之後收到更新，要加一份市集檔；這一段這支影片沒有跑過。",
+          "reveal": 1,
+          "emotion": "平實，不遮掩"
+        }
+      ]
+    },
+    {
+      "id": "yours",
+      "template": "steps",
+      "data": {
+        "title": "換成你的零件",
+        "steps": [
+          {
+            "title": "先填九格",
+            "detail": "每個零件：清單上叫什麼、\n哪句要求會用到、留下什麼"
+          },
+          {
+            "title": "不載入、載入各跑一次",
+            "detail": "同一句要求，\n只差那一個旗標"
+          },
+          {
+            "title": "九格都從紀錄填",
+            "detail": "hook 那一列填不出來，\n先讓它留一行紀錄"
+          }
+        ],
+        "source": "這支的核對方式｜腳本在說明欄的示範資料夾"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "yg3a",
+          "text": "換成你的零件，先填九格：清單上叫什麼、哪一句要求會用到它、它留下什麼。",
+          "reveal": 1,
+          "emotion": "轉向觀眾，語氣亮一點"
+        },
+        {
+          "id": "p7jh",
+          "text": "同一句要求，不載入和載入各跑一次。",
+          "reveal": 1
+        },
+        {
+          "id": "kibj",
+          "text": "九格都從紀錄填得出來才算；hook 那一列填不出來，就先讓它留一行紀錄。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "article",
+      "template": "cta",
+      "data": {
+        "kicker": "延伸閱讀",
+        "title": "把 Skills 與 Hooks 包成可版本管理的 Plugin",
+        "sub": "另一組材料；多了改版號、升級與還原｜連結在說明欄"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "abiz",
+          "text": "說明欄的那篇文章用另一組材料包外掛，還多了改版號、升級和還原這幾步。"
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "template": "outro",
+      "data": {
+        "title": "載入的三次：\n**外掛在清單上，三個零件都被用到**",
+        "cta": "你手上哪一個 Skill 或 hook，是第二個專案也想用的？留言告訴我",
+        "lines": [
+          "清單上有、被用到：載入 3／3，沒有載入 0／3",
+          "零件的名字前面，多了外掛的名字",
+          "通過驗證的一份，守門沒有執行（s1，1 次）"
+        ]
+      },
+      "claims": [
+        "c37",
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "akwv",
+          "text": "載入三次，三個零件三次都被用到。",
+          "emotion": "放慢收穩"
+        },
+        {
+          "id": "4a3d",
+          "text": "你哪個零件想帶去別的專案？",
+          "emotion": "問句上揚，親切"
+        },
+        {
+          "id": "9jw9",
+          "text": "更多實作，歡迎訂閱。",
+          "emotion": "輕快，帶笑"
+        }
+      ]
+    }
+  ]
+}

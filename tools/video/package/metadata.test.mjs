@@ -25,6 +25,8 @@ test("every locale's description credits the stock photos of assets[], and says 
   const translations = { en: { title: "How to pick an AI model", description: "Three questions decide it." } };
   const { problems, metadata } = composeMetadata({ doc, timeline, translations });
   assert.deepEqual(problems, []);
+  assert.equal(metadata.title, `${doc.youtube.title}｜CC字幕`, "every title carries its language's captions tag");
+  assert.equal(metadata.localizations.en.title, "How to pick an AI model｜CC Subtitles");
   assert.match(metadata.description, /\n\n📚 參考資料\n[^\n]+\n\n📷 圖片來源\nPhoto by Lukas Rodriguez on Pexels（Pexels License）：https:\/\/www\.pexels\.com\/photo\/seoul-at-night-3573351\/\n\n#/);
   assert.doesNotMatch(metadata.description, /Mokaair 自有圖解/, "own diagrams are not credited");
   assert.match(metadata.localizations.en.description, /\n\n📷 Image credits\nPhoto by Lukas Rodriguez on Pexels \(Pexels License\): https:\/\/www\.pexels\.com/);
@@ -102,7 +104,7 @@ test("package requires fresh reviews of published compilation text before replac
   writeFileSync(info, JSON.stringify({ spoiler_context: context }));
   assert.equal((await packageRun()).code, EXIT.owner);
   assert.equal(readFileSync(metadataFile, "utf8"), existing);
-  const translations = Object.fromEntries(["en", "ja", "ko", "zh-CN"].map((locale) => [locale, readJson(path.join(box.dir, "i18n", `${locale}.json`), null)]));
+  const translations = Object.fromEntries(["en", "ja", "ko"].map((locale) => [locale, readJson(path.join(box.dir, "i18n", `${locale}.json`), null)]));
   const fields = publicTexts({ doc: box.doc, translations, timeline: readJson(path.join(box.workdir, "timeline.json"), null) });
   const receipts = { schema_version: 1, locales: Object.fromEntries(Object.entries(fields).map(([locale, text]) => [locale, { passed: true, input_sha256: reviewHash(context, locale, text) }])) };
   writeFileSync(path.join(box.dir, COMPILATION_REVIEW_FILE), JSON.stringify(receipts));

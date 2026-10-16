@@ -21,7 +21,7 @@
 // timeline come from dubs/<locale>/, its script is the translation the dub reads, the server
 // transcribes in that language, and its transcript cache and flags file are its own, so
 // `dub --redo` takes the flags as they are. The same-sound and filler rules are Mandarin's and
-// apply to zh-TW and zh-CN only; in English, Japanese and Korean, whatever differs beyond case,
+// apply to zh-TW only; in English, Japanese and Korean, whatever differs beyond case,
 // width, spacing and punctuation goes to Jev.
 //
 // A line Jev still doubts can go to a second transcriber that never sees the script
@@ -65,7 +65,7 @@ export const GIVE_UP_AFTER = 3;
 const TRANSCRIBE_RATE = 16_000;
 // The languages a dub can be in: every caption locale but the narration's (docs/videos/DUBS.md).
 export const DUB_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
-const CHINESE = new Set([NARRATION_LOCALE, "zh-CN"]);
+const CHINESE = new Set([NARRATION_LOCALE]);
 
 /** A `--locale` value: a caption locale other than the narration's, or a usage error naming them. */
 export function parseDubLocale(value, narration = NARRATION_LOCALE) {

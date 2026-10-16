@@ -8,16 +8,16 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { isExplainer, isShot } from "../core/drama.mjs";
+import { explainerSeries, isShot } from "../core/drama.mjs";
 import { LOCALES, narrationLocale } from "../core/schema.mjs";
 import { localizedThumbnail, localizedThumbnailHash, thumbnailGap } from "../core/translations.mjs";
 
 /** The series whose own thumbnail a video wears (templates.mjs THUMB_SERIES), or null. */
-export const thumbnailSeries = (doc) => (isExplainer(doc) ? "sothatswhy" : null);
+export const thumbnailSeries = (doc) => explainerSeries(doc);
 import { estimateTimeline } from "../core/timeline.mjs";
 import { screencastHtml, screencastPlan } from "../screencast/scene.mjs";
 import { captureCount, isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
-import { captureRef, isStockPath, ORIGIN, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
+import { ASSET_ROOTS, captureRef, isStockPath, ORIGIN, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
 
 export const THEME_FILE = fileURLToPath(new URL("../templates/theme.css", import.meta.url));
 // Chapter cards and the title card say where they are themselves; a label on top would repeat it.
@@ -33,13 +33,20 @@ export function themeHash(css = readFileSync(THEME_FILE, "utf8")) {
   return hash(css);
 }
 
+// The templates that show a picture file named by `data.image`.
+const IMAGE_TEMPLATES = new Set(["screenshot", "photo"]);
+const THUMBNAIL_IMAGE = /\.(?:png|jpe?g|webp)$/i;
+const thumbnailAssetPath = (asset) => typeof asset === "string" && (
+  isStockPath(asset) || (ASSET_ROOTS.some((prefix) => asset.startsWith(prefix)) && !asset.includes("..") && !asset.includes("\\") && !asset.includes("//") && THUMBNAIL_IMAGE.test(asset))
+);
+
 /**
- * The files a scene draws: its diagram or its screenshot, as a repository path or a stock photo's
- * work-directory path (stock/<sha256>.<ext>, templates.mjs isStockPath).
+ * The files a scene draws: its diagram, its screenshot or its photograph, as a repository path or
+ * a stock photo's work-directory path (stock/<sha256>.<ext>, templates.mjs isStockPath).
  */
 export function sceneAssets(scene) {
   if (scene.template === "diagram" && typeof scene.data?.svg === "string") return [scene.data.svg];
-  if (scene.template === "screenshot" && typeof scene.data?.image === "string") return [scene.data.image];
+  if (IMAGE_TEMPLATES.has(scene.template) && typeof scene.data?.image === "string") return [scene.data.image];
   return [];
 }
 
@@ -53,8 +60,9 @@ export function assetFile(asset, { root, workdir = null }) {
  * Template data problems for the whole video, labelled like lint's. With `root`, also the asset
  * files: they must exist, and an SVG must not script or reach the network. A stock photo must be
  * listed in assets[] (that is where the description's credit comes from; `stock fetch` writes the
- * entry) and, with `workdir`, be fetched into it. A drama's shots are generated clips, not
- * slides: lint checks their prompts and the media stages draw them.
+ * entry) and, with `workdir`, be fetched into it. A photo card's photograph is someone's picture
+ * wherever its file is, so a repository photograph must be listed in assets[] too. A drama's
+ * shots are generated clips, not slides: lint checks their prompts and the media stages draw them.
  */
 export function renderProblems(doc, root = null, { workdir = null } = {}) {
   const problems = [];
@@ -71,6 +79,7 @@ export function renderProblems(doc, root = null, { workdir = null } = {}) {
         if (workdir && !existsSync(path.join(workdir, asset))) problems.push({ path: where, message: `${asset} is not in the work directory; fetch it with stock fetch (node tools/video/cli.mjs)` });
         continue;
       }
+      if (scene.template === "photo" && !listed(asset)) problems.push({ path: where, message: `${asset} is not in assets[]: a photograph's source and licence go there, and without it the description carries no credit` });
       if (!root) continue;
       const file = path.join(root, asset);
       if (!existsSync(file)) problems.push({ path: where, message: `${asset} does not exist` });
@@ -78,6 +87,24 @@ export function renderProblems(doc, root = null, { workdir = null } = {}) {
     }
   });
   for (const message of thumbnailProblems(doc.thumbnail, { series: thumbnailSeries(doc) })) problems.push({ path: "thumbnail", message });
+  // An opted-in thumbnail picture must be a credited, local raster asset. Check A and the
+  // effective B/C data, since a variant may override A's asset.
+  for (const { id, thumbnail } of [{ id: "a", thumbnail: doc.thumbnail }, ...thumbnailVariants(doc.thumbnail)]) {
+    const data = thumbnail?.data;
+    if (!data || !Object.hasOwn(data, "asset")) continue;
+    const label = id === "a" ? "data.asset" : `variant ${id}: data.asset`;
+    const asset = data.asset;
+    if (!thumbnailAssetPath(asset)) {
+      problems.push({ path: "thumbnail", message: `${label} must be a raster image under ${ASSET_ROOTS.join(" or ")}, or stock/<sha256>.png|jpg|webp` });
+      continue;
+    }
+    if (data.capture !== undefined || data.shot !== undefined) problems.push({ path: "thumbnail", message: `${label} cannot be combined with data.capture or data.shot` });
+    const credit = (Array.isArray(doc.assets) ? doc.assets : []).find((entry) => entry?.path === asset);
+    if (!credit) problems.push({ path: "thumbnail", message: `${label} ${asset} is not in assets[]; the thumbnail needs a credited source` });
+    else if (typeof credit.source !== "string" || !credit.source.trim() || typeof credit.license !== "string" || !credit.license.trim()) problems.push({ path: "thumbnail", message: `${label} ${asset} needs source and license in assets[]` });
+    const file = (isStockPath(asset) ? workdir : root) ? assetFile(asset, { root, workdir }) : null;
+    if (file && !existsSync(file)) problems.push({ path: "thumbnail", message: `${label} ${asset} does not exist${isStockPath(asset) ? " in the work directory" : ""}` });
+  }
   // A variant's own background must be a shot too (A's is checked with the drama's shots).
   const shots = new Set(doc.scenes.filter(isShot).map((scene) => scene.id));
   for (const { id, thumbnail } of thumbnailVariants(doc.thumbnail)) {
@@ -174,12 +201,18 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
   // The subject (thumbnailSubject) comes back as `shot` and `keyframe`, or `capture` and `still`,
   // so the caller can say what to run first when the picture is not there yet.
   const drawThumbnail = (own, locale = null, offset = 0) => {
-    const subject = thumbnailSubject(own.data, { keyframes, screencasts });
+    const asset = own.data?.asset;
+    const assetFilePath = thumbnailAssetPath(asset) && (isStockPath(asset) ? workdir : root) ? assetFile(asset, { root, workdir }) : null;
+    const hasAssetFile = assetFilePath && existsSync(assetFilePath);
+    const subject = asset === undefined ? thumbnailSubject(own.data, { keyframes, screencasts })
+      : { kind: "asset", file: hasAssetFile ? asset : null,
+          sha256: hasAssetFile ? createHash("sha256").update(readFileSync(assetFilePath)).digest("hex") : "" };
     const picture = subject?.file ? subject : null;
-    // The work directory is served under /work/ by the renderer's fake origin.
-    const background = picture ? `${ORIGIN}/work/${picture.file.split("/").map(encodeURIComponent).join("/")}` : null;
+    // Generated stills and stock live under /work/; repository pictures use /repo/.
+    const background = picture ? `${ORIGIN}/${picture.kind === "asset" && !isStockPath(picture.file) ? "repo" : "work"}/${picture.file.split("/").map(encodeURIComponent).join("/")}` : null;
     const html = thumbnailHtml(own, { background, subject: picture?.kind ?? null, series: thumbnailSeries(doc), locale, slug: doc.slug, offset });
-    const source = subject?.kind === "capture"
+    const source = subject?.kind === "asset" ? { asset: own.data.asset }
+      : subject?.kind === "capture"
       ? { capture: own.data.capture, still: picture ? { file: picture.file, sha256: picture.sha256 } : null }
       : subject ? { shot: own.data.shot, keyframe: picture ? { file: picture.file, sha256: picture.sha256 } : null } : {};
     return { html, key: hash(theme, html, picture?.sha256 ?? ""), text: visibleText(html), ...source };

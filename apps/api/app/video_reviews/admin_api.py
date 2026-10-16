@@ -4,7 +4,7 @@
 routes under apps/web/app/api/video/reviews: report a video's state, upload a preview in parts,
 submit something for review, and read back the owner's decisions. ``admin_router`` is the page:
 the owner lists the videos, opens one, watches its previews and decides, chooses the languages to
-add after the final cut, or drops the video.
+add after the final cut, asks for a dub the worker gave up to be made again, or drops the video.
 """
 
 from __future__ import annotations
@@ -20,9 +20,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.admin.service import load_runtime_settings
 from app.auth.service import require_capability
 from app.db import get_session
+from app.infra import get_redis
 from app.models import User
 from app.problems import AppError
+from app.providers.usage_meter import GEMINI_SPEECH_PROVIDER, azure_speech_usage_snapshot
 from app.video_reviews import admin_service as service
+from app.video_reviews import dub_retry
 from app.video_reviews.schemas import (
     SERIES_SLUG_PATTERN,
     BrowseState,
@@ -30,6 +33,7 @@ from app.video_reviews.schemas import (
     CategoryIn,
     DecisionIn,
     DropIn,
+    DubLocale,
     DubLocalesIn,
     FinalRenewalIn,
     FinalRenewalState,
@@ -212,6 +216,33 @@ async def retry(slug: str, user: ContentManager, session: Session) -> ProjectOut
     return await service.retry_project(session, slug, user)
 
 
+@admin_router.post("/{slug}/languages/{locale}/dub/retry", response_model=ProjectOut)
+async def retry_dub(
+    slug: str, locale: DubLocale, user: ContentManager, session: Session
+) -> ProjectOut:
+    """Ask the worker to make a skipped dub track again (docs/videos/DUBS.md §再做一次).
+
+    It only records the request and reads the month's Gemini speech meter; the worker takes it
+    on its next round, and the service refuses what the worker could not act on."""
+    runtime = await load_runtime_settings(session)
+    limit = runtime.video_speech_gemini_monthly_character_limit
+    usage = await azure_speech_usage_snapshot(get_redis(), limit, provider=GEMINI_SPEECH_PROVIDER)
+    return await service.request_dub_retry(
+        session,
+        service.review_store(runtime),
+        slug,
+        user,
+        locale,
+        work_dir=runtime.video_work_dir,
+        speech=dub_retry.SpeechRoom(
+            configured=bool(runtime.hotspot_guide_gemini_api_key),
+            limit=limit,
+            used=usage.used,
+            available=usage.available,
+        ),
+    )
+
+
 @admin_router.post("/{slug}/youtube", response_model=ProjectOut)
 async def link_youtube(
     slug: str, payload: YoutubeIn, user: ContentManager, session: Session
@@ -225,7 +256,9 @@ async def link_youtube(
             "video_youtube_url_invalid",
             "看不出影片 id：貼上 youtu.be、watch?v=、shorts 或 Studio 的網址，或 11 個字元的 id",
         )
-    return await service.link_youtube(session, slug, user, video_id, payload.publish_at)
+    return await service.link_youtube(
+        session, slug, user, video_id, payload.publish_at, private_only=payload.private_only
+    )
 
 
 @admin_router.put("/{slug}/languages", response_model=ProjectOut)

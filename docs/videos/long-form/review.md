@@ -2946,33 +2946,2498 @@ PASS is DURATION_ONLY for the eleven rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
-## Branch windows-video-validation-20261009 increment: 1 file (2026-10-09)
+## PR #1390 teaching-card route increment: 2 files (2026-10-09)
 
-Reviewer: `codex-pr-review-windows-video-validation`. Author: `codex-windows-video-validation`. Scope: DURATION_ONLY for `tools/video/automation/automation.test.mjs` at author commit `f581c0aaab705943a4c137c649b7333f38404604`. The reviewer wrote none of the implementation changes and edits only this report and review.json.
+Reviewer: `codex-pr-review-mods-clarity`. Author: `codex-7645-video-clarity`. Scope: DURATION_ONLY for the two changed bindings below, reviewed at `aabb920dbf11c230a4736c5c3d53bf32ea634ca7`; implementation commit `6895b1f5b` adds the teaching-card route and `aabb920db` repairs portable evidence paths. The reviewer wrote neither implementation commit and edits only this report and review.json.
 
-Baseline: `c6454463d0eb53e4c8166be0b93a587598c03208`. The baseline report hash, table and all 108 REVIEW_FILES bindings pass `durationReviewProblems` against immutable Git blobs. The one changed bound file matches its existing receipt at the baseline: `f2e7b1d4852c43d1c68217666d9c6e617dc4fd3c4a2709d8f4e144cb6c388721`. At the author commit only this binding is stale; the other 107 bindings are unchanged and current. Its reviewed working-tree bytes equal the committed bytes and hash to `d29b31c421774f245a7e2df89a52c6d359815efd05c11b3b8c5e8c0467bec7c1`. Every prior increment is preserved.
+Baseline: `c6454463d0eb53e4c8166be0b93a587598c03208`. Immutable Git blobs pass `durationReviewProblems` for the report and all 108 REVIEW_FILES. Both changed files match their existing receipt and table at that baseline; their committed head bytes equal the reviewed working-tree bytes. Before this increment exactly these two bindings are stale, while the other 106 remain current. Every prior increment is preserved and the registry remains 108 files.
 
-Findings: the test imports a child process module through `pathToFileURL(...).href`, so Windows paths, spaces and non-ASCII characters are valid module URLs. The new test-only helper captures diagnostics, rejects early child failure, bounds readiness/release waits and registers child termination/pipe cleanup before waiting. Three regressions cover a failed import, absent readiness and ignored release; existing lease ownership, untouched state, no duplicate request and post-release progress assertions remain. The 100/5,000/10,000 millisecond limits govern test-process lifecycle, not episode or media duration. No changed line alters the 600/780-second targets, 480-second measured floor, eight-minute minimum, `target_minutes`, `MIN_EPISODE`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, source-hash gates or covered state. The two reference-analysis files in the same author commit are outside REVIEW_FILES and are not rebound by this increment.
+- `.agents/skills/youtube-video/references/automated.md`: `351e90301068b1884c6263e80b7d36cd2d96459b60bc91c2798859ceae9b111e` -> `80847373b5383f81a8fa8e9a7d8db2d369410344d51616d461a957f20d7f0cfd`.
+- `tools/video/automation/prompts.mjs`: `8ca7eb3ea74382877a258aa196a4d4e78b8bf488557bd8ea9f095c9b3bea708f` -> `55ae4ca562a53482d7014cd65d26bf7d7d8239030b7108c43bce5e06f3feaa28`.
 
-Ran: with bundled Node v24.19.0 on Windows ARM64, `node tools/video/long-form/cli.mjs check` (PASS), `node --test tools/video/long-form/review.test.mjs` (2 passed, 0 failed), and `git diff --check` (PASS). The reviewer independently read the complete bound diff; the author's automation/FFmpeg runs and mutation proofs are separate validation, not rerun claims here.
+Findings, `.agents/skills/youtube-video/references/automated.md`: the added teaching-card section selects the existing plain slides route for one recurring example, without shot scenes or paid keyframes. It explicitly preserves the existing 15-second state QA, eight-minute floor, fact checks and approvals. It distinguishes documentation screenshots from execution, requires untested/expected labels when run evidence is absent, and requires new checks/media approvals for a revised script. The existing paragraph defining the 600/780-second production aims, measured 480-second body/cut floor, intro/outro exclusion and test-only environment override is unchanged.
 
-Non-claims: DURATION_ONLY. This receipt does not approve paid production, runtime media duration, listening, rendered video quality, publication, deployment, or Linux execution. No implementation/test file or duration policy is changed by this receipt.
+Findings, `tools/video/automation/prompts.mjs`: planner, writer and listener receive TEACHING_RULES; the verifier gains a demonstration-evidence rule. Illustration quotas, location changes and reversal/question formulas apply to illustrated storytelling, while the teaching route uses the existing plain-slides rules. The imported `register.mjs` teaching contract was read as context: it explicitly preserves the eight-minute minimum and rejects repetition or silence used as filler. The planner's at-least-eight-minute sentence, writer's never-under-eight-minute instruction, upper-end-as-aim semantics and long-form/drama/explainer runtime instructions remain unchanged. The 5–8-second reveal aim and 15-second state limit describe visual cadence, not permission to shorten an episode. No changed runtime logic, source-hash gate, covered state, `target_minutes`, `MIN_EPISODE`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec` or `action_seconds` weakens a duration rule. The context files are not new REVIEW_FILES bindings.
+
+Ran: with bundled Node v24.19.0 on Windows ARM64, `node --test tools/video/automation/prompts.test.mjs` (23 passed, 0 failed), `node tools/video/long-form/cli.mjs check` (PASS), `node --test tools/video/long-form/review.test.mjs` (2 passed, 0 failed), and `git diff --check` (PASS).
+
+Non-claims: DURATION_ONLY. This does not approve a rendered cut, measured narration length, voice, screenshots as execution evidence, paid generation, publication, deployment or Linux execution. No production setting or implementation file is changed by this receipt.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Content-value rules increment (stacked on PR #1390): 5 files (2026-10-09)
+
+Reviewer: `claude-pr-review-content-value-20261009`. Author: `claude-opus-5-5-video-reference-comparison`. Scope: DURATION_ONLY for the five changed bindings below, reviewed at `20613240efae61b4605ee647a0201994e9b2e981` ("feat(video): hold every slides video to content-value rules") on claude/video-reference-comparison-14fe9c. The reviewer wrote no part of that commit and edits only this report and review.json.
+
+Baseline: `6c5c9769c8d4bae8860d4b790619ebcddd9356dc`, the commit's parent. Immutable Git blobs pass `durationReviewProblems` there for the report and all 108 REVIEW_FILES, under the "PR #1390 teaching-card route increment" above. The five changed files match their existing receipt and table at that baseline; their committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these five bindings, while the other 103 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `.agents/skills/youtube-video/SKILL.md`: `542b24ecfb5c314d43162ebe4580ffeb382dbbdad6dcc9b27d27e989bd5f86a9` -> `43d09e859e02b2d018ef2f95a43d8b5e28149bdc62b637cb4130f1bee45c5bb8`.
+- `.claude/skills/youtube-video/SKILL.md`: `542b24ecfb5c314d43162ebe4580ffeb382dbbdad6dcc9b27d27e989bd5f86a9` -> `43d09e859e02b2d018ef2f95a43d8b5e28149bdc62b637cb4130f1bee45c5bb8` (the byte-identical copy).
+- `tools/video/automation/prompts.mjs`: `55ae4ca562a53482d7014cd65d26bf7d7d8239030b7108c43bce5e06f3feaa28` -> `c5ec0cd625dfcf47a7927ffae7ca45fcf5c8eb32e96190f4ea5561278c6da415`.
+- `tools/video/core/lint.mjs`: `6a840aec7ac0a071b97b4a0dfc6b241ea89019d24485315cf86d1ba2b1ec1743` -> `d08806c964fbe6d69e38202f6b37b0d3ffdafcec0455d8356253a3044da27c92`.
+- `tools/video/core/lint.test.mjs`: `3f2bea9b472bd211fa7caf7446dd702bbe129887b23e6bacfa33c1330b800e2f` -> `13c9a41c13ed096b0cdc55a979b7b6405af67c4a07b1077181dcd80350050cd5`.
+
+Findings, `.agents/skills/youtube-video/SKILL.md` and `.claude/skills/youtube-video/SKILL.md` (+1/−0 each): one line is added, hard rule 11, which holds every slides video to six content-value rules. Rule 10, the eight-minute rule, is byte for byte the same line at both revisions: every episode but a drama's and a Short runs eight minutes or more, the backend setting (floor 8), `lint` and QA's `assemble` item enforce it, a topic that does not fill eight minutes takes more content or is merged with another, there is no upper limit, and nothing is padded. Rule 11's one clause on length (「長度靠例子、對照與練習，不靠比喻或重述」) says what the length is made of. It states no number and exempts no video from rule 10. Its closing exemption (漫劇、品牌故事、原來如此與 Shorts 不算) is from rule 11's six rules only; rule 10 still names 原來如此事務所 among the formats the floor covers. The lines naming minutes, 分鐘 or target_minutes number 7 at both revisions.
+
+Findings, `tools/video/automation/prompts.mjs` (+7/−1): the import from register.mjs gains `VALUE_RULES`, and `${VALUE_RULES}` is interpolated after `${TEACHING_RULES}` in three slides stages (planner at line 200, writer at 258, listener at 363). No other line changes. Unchanged, then, are the planner's "the whole at least 8 minutes" (line 239), the writer's "never under 8 minutes … Never cut a sourced fact to fit it and never pad to reach it" (lines 305–307), the upper end of target_minutes as an aim and not a limit, the explainer's 10-minute production target with its eight-minute body and cut (lines 1423–1424), the story and explainer outlines' "never under 8 minutes" (lines 1511 and 1550), the drama's 2 to 4 minutes, and the long-anime runtime_spec and action_seconds instructions. The imported text in register.mjs (unbound) was read as context, since it is what the three stages now carry. Two of its sentences speak of length:
+
+- "The length comes from substance: a second worked example, a common failure and how to find it, a contrast, an exercise. Never from a chapter on something one line answers, from restating, or from scene-setting." This limits what a writer may use to reach the minimum. It names no length.
+- "When the material ends short of the minimum, add an example the sources carry or say so in the report; do not fill." "The minimum" is the stage's own eight minutes, which the sentence does not restate or change. "Do not fill" runs the same way as the writer's existing "never pad" and rule 10's 不灌水. "Say so in the report" is an instruction to report a shortfall, not leave to ship one: a draft whose estimate is under the floor still gets lint's `scenes` error ("every episode but a drama's runs at least …: write more narration"), `saveAndLint` in flow.mjs (bound, unchanged) still hands it back to the writer up to MAX_LINT_FIXES (3) times and then leaves the writer stage uncleared for a later retry, and QA's measured 480-second / 14,400-frame floor is untouched.
+
+The precedence clause ("where these rules and a route's rules disagree, these win") ranks VALUE_RULES over the teaching and illustrated routes' rules. Each stage's length sentence sits in the stage's own text, outside both routes, and VALUE_RULES carries no competing length, so nothing there is overridden. The planner's 「含金量不足」 exit answers a topic with fewer than two real outcomes by taking another topic or saying so; it does not make a shorter episode. So the new text says how the floor is reached and does not move it.
+
+Findings, `tools/video/core/lint.mjs` (+20/−1): two exported constants, `SOURCING_FAMILY` (ten phrases such as 「文件寫」「官方說」) and `SOURCING_MAX = 2`; `episodeScriptProblems` counts those phrases across the narration and returns one `scenes` problem past two; one docblock line is reworded to say so. It is a warning with the path and severity of the hedge-family warning beside it. It adds no error, `lintErrors` in flow.mjs reads `result.errors` alone, and QA's two captions items take only the `i18n/` warnings. `episodeScriptProblems` is still called from one place (line 480), for a narrated zh-TW script whose estimate is already at least MIN_EPISODE_MINUTES. The lines that hold the floor are unchanged (lines 464–475): the low end of target_minutes and the estimate, each an error against `minEpisodeMinutes()` under `needsMinimumLength`, the drama exemption, and no warning for running over the target. The anime runtime_spec tolerance warning is unchanged too. `SOURCING_MAX` counts phrases, not time. The lines naming a duration term number 23 at both revisions.
+
+Findings, `tools/video/core/lint.test.mjs` (+17/−1): the import from lint.mjs gains `SOURCING_FAMILY` and `SOURCING_MAX`, and one test is added for the new warning (two uses give no warning, a third warns and names each phrase, a company named as the one making a claim is not counted). It is built on the existing `closed(stretched())` fixture, which already clears the floor. No existing test or assertion is removed or changed, the eight-minute and target_minutes tests among them. The lines naming a duration term number 51 at both revisions.
+
+A case-insensitive scan of the five diffs' added and removed lines for minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json and process.env finds only the test's import line, old and new, for the existing name `OPENING_SECONDS`. Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. The commit touches no file under apps/api, tools/video/qa or docs/videos/long-form, and not schema.mjs, duration.mjs, timeline.mjs or flow.mjs.
+
+Ran (in the worktree at `20613240e`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the hashing of every bound path against the receipt, the baseline and the head;
+- `durationReviewProblems` against the baseline through `git cat-file`;
+- a reading of the five diffs, of `VALUE_RULES` in register.mjs, and of the lint and flow code the changes sit beside;
+- the duration-term counts and the scan.
+
+On the reviewed bytes, each of these exited 0:
+
+- `node --test tools/video/core/lint.test.mjs`, 45 of 45;
+- `node --test tools/video/automation/prompts.test.mjs`, 24 of 24;
+- `node --test tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs`, 25 of 25.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the six content-value rules, the sourcing family or its limit of two as editorial choices.
+- register.mjs, script-writing.md, the planner and writer prompt references, prompts.test.mjs and the task file are unbound. They were read as context and are not reviewed or bound here.
+- No planner, writer or listener was run. Whether a model takes "say so in the report" as leave to hand in a short draft was not observed, only that lint and QA refuse such a draft as before.
+- No rendered cut or measured narration was produced, and the full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 103 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the five rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
-## Branch windows-video-validation-20261009 native-path assertion increment: 1 file (2026-10-09)
+## Content-value rules first-use fixes increment: 1 file (2026-10-09)
 
-Reviewer: `codex-review-own-video`. Author: `codex-clarity-pipeline-review`. Scope: DURATION_ONLY for `tools/video/review/sync.test.mjs` at `12c0c8227905666e00fe310c7a58d06f258687a1`. The reviewer did not author this changed bound test and edits only this report and review.json for the increment. Its separately authored project-lease test is unbound and outside this review; that test received the coordinating agent's independent review.
+Reviewer: `claude-pr-review-content-value-fixes-20261009`. Author: `claude-opus-5-5-video-reference-comparison`. Scope: DURATION_ONLY for the one changed binding below, reviewed at `250490058846fb36faa46644d65dd88cc5dca210` ("fix(video): answer what the content-value rules left to guesswork") on claude/content-value-rules-fixes. The reviewer wrote no part of that commit and edits only this report and review.json.
 
-Baseline: `580911bbc962e086dea9e71e25f9bf063024a28d`, which includes the preceding Windows automation-test receipt. Immutable Git blobs pass `durationReviewProblems` for the report and all 108 REVIEW_FILES. The baseline sync test hash `ae5d0c052271bf2694432f95deedcf89a005935335977104faf592aace0249a1` equals the receipt and table. Before rebinding, only this file is stale and the other 107 bindings are current. The reviewed working-tree bytes equal committed `12c0c822` bytes, `c4655a10e64547c0e088f7c7e2648c685c193b28465f035f9bbbd75ec5312f17`. All prior increments, including the preceding one-file Windows review, are preserved.
+Baseline: `c5e99297c08b023b88f05e498e1500f110f70c7d`, the commit's parent. Immutable Git blobs pass `durationReviewProblems` there for the report and all 108 REVIEW_FILES, under the "Content-value rules increment (stacked on PR #1390)" above. The changed file matches its existing receipt and table at that baseline; its committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly this one binding, while the other 107 remain current. Every prior increment is preserved and the registry remains 108 files.
 
-Findings: one assertion line changes in the lost-Jev-outline-answer regression. The old regex required a POSIX `review/outline-lost.json` path and allowed arbitrary error detail; the replacement checks an exact complete output line with the current slug, fixed timestamp, full HTTP 504 detail, no-repeat/owner-handoff text, and `path.join("review", "outline-lost.json")`. The path follows the host's separators while the diagnostic assertions become more specific. The surrounding checks still require exactly one judge request for the unchanged brief, no fabricated pick, a source-bound lost-answer record, a second request only after the brief changes, and removal of the old record. No line changes production behavior, 600/780-second targets, the 480-second measured floor, the eight-minute minimum, `target_minutes`, `MIN_EPISODE`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, source-hash gates or covered state.
+- `tools/video/automation/prompts.mjs`: `c5ec0cd625dfcf47a7927ffae7ca45fcf5c8eb32e96190f4ea5561278c6da415` -> `2ff4f72957abe80882801bf55205f8513899eb3545428a87f226a1d20a65724d`.
 
-Ran: with bundled Node v24.19.0 on Windows ARM64, `node tools/video/long-form/cli.mjs check` (PASS), `node --test tools/video/long-form/review.test.mjs` (2 passed, 0 failed), and `git diff --check` (PASS). The author's complete three-file Windows run is separate validation, not a reviewer rerun claim.
+Findings, `tools/video/automation/prompts.mjs` (+8/−4): every changed line is in `TEMPLATE_GUIDE`, the list of card templates the slides planner and writer read (lines 93–100). The bullets, compare, steps and table entries each gain an optional `source?` field; the steps entry gains "A sequence: alternatives go in a table."; three lines say that "source" is one line of at most 48 characters under the card, naming where its fact is from or which run printed it. The field is card data drawn on the slide. It is not a `lines[]` entry, so it adds nothing to the spoken text the timeline estimate and the measured cut are made from, and the four templates' reveal counts are worded as before. The 48 counts characters on a card. A card's `source` is a string on a card template; `isSourced` in drama.mjs (bound, unchanged) reads an object on a shot, so the drama's eight-second clip check does not see it. No other line changes. The three `${VALUE_RULES}` interpolations (planner, writer, listener) are the same lines four lower (204, 262, 367), and these are unchanged in wording: the planner's "each ≥ 10 s … the whole at least 8 minutes" (lines 242–243), the writer's "each at least 10 seconds … never under 8 minutes … Never cut a sourced fact to fit it and never pad to reach it" (lines 308–311), the upper end of target_minutes as an aim and not a limit, the explainer's 10-minute production target with its eight-minute body and cut (lines 1427–1428), the story and explainer outlines' "never under 8 minutes" (lines 1515 and 1554), the drama's 2 to 4 minutes, and the long-anime runtime_spec and action_seconds instructions.
 
-Non-claims: DURATION_ONLY for this single bound diff. This receipt does not certify the other unbound fixes, Linux execution, measured media, paid production, publication, deployment or owner acceptance. It changes no implementation/test file or duration policy.
+The imported text in register.mjs (unbound; +57/−21, all inside `VALUE_RULES` and the comment above it) was read as context, since it is what the three stages now carry. Four passages bear on length or on the opening:
+
+- "The opening chapter is the result alone; the mechanism is the second chapter." New. It says what the first chapter holds and where the mechanism goes. It names no seconds and no length. The planner's "each ≥ 10 s" and the writer's "each at least 10 seconds" stand in the stages' own text, and lint.mjs and timeline.mjs (bound, untouched by this commit) read the opening chapter against the hook threshold (lint.mjs lines 460–463, a warning) and every chapter against YouTube's minimum as before. Putting the mechanism in chapter two moves narration between chapters; the floor is measured over the whole episode.
+- "The length comes from substance: a second worked example, a common failure and how to find it, a contrast, an exercise. Never from a chapter on something one line answers, from restating, or from scene-setting. When the material ends short of the minimum, add an example the sources carry or say so in the report; do not fill." These lines are byte for byte the baseline's: they are context lines of the diff, not changed ones. The previous increment's reading of them stands, including that lint's `scenes` error, the lint-fix loop in flow.mjs and QA's measured 480-second / 14,400-frame floor refuse a short draft whatever its report says.
+- "On the teaching route a second worked example is that route's contrast; the main example still carries the video." New. Of the four things the length bullet lets a writer reach the minimum with, it says which one a second example is on the teaching route, whose rules ask for "one main worked example, a purposeful contrast and a transfer exercise". It names no length and moves no minimum.
+- "The cap does not cover what a tutorial owes its viewer anyway: a common failure and how to find it, the exception in an update's fourth move, and a card's label of what was and was not run". New. It narrows the baseline's cap ("A risk, limit or warning is one chapter at most") to a warning about the subject itself, so it lets more be written, not less, and it states no number of seconds.
+
+The other new sentences set three levels of evidence (SEEN, RUN, CITED), what counts as an outcome, where the check that settles trust sits, what to do when real text does not fit a card (64 characters a line, about 12 lines, 44 characters, 78 columns: capacities of a card, not times), where a card names its source, and three sentences exempt from "every sentence carries a fact" (the cta card's sentence and the outro's comment question and subscribe invitation; they are still spoken and still counted). None states a duration. The precedence clause ("where these rules and a route's rules disagree, these win") is unchanged, and `VALUE_RULES` still carries no length that could override a stage's own.
+
+Two length-like phrases the commit adds are in neither `VALUE_RULES` nor prompts.mjs, so no worker prompt carries them. "The outro's three sentences share one state, so keep them to about 45 spoken units together" is in writer-video.md and script-writing.md (unbound skill references). It sizes the narration of one card state; no code enforces it (in tools/video, "spoken units" is only lint's per-sentence split warning and the cli's estimate line). "(lint keeps it under 30 seconds)", in planner.md and script-writing.md, describes lint's existing opening-chapter warning, whose thresholds (30 seconds for plain slides, cadence.mjs's for an illustrated video) this commit does not change. Neither is a length of the episode.
+
+In templates.mjs (unbound, +18/−6) the same four cards accept and draw the `source` line and the compare card's verdict gains a type check; no `capacity` function changes, so no card's reveal count does.
+
+A case-insensitive scan of the added and removed lines of the prompts.mjs, register.mjs and templates.mjs diffs for minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json and process.env finds nothing. The lines naming one of those terms number 88 in prompts.mjs, 10 in register.mjs and 15 in templates.mjs at both revisions. Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. The commit touches nine files: prompts.mjs, prompts.test.mjs and register.mjs under tools/video/automation, templates.mjs and templates.test.mjs under tools/video/templates, three skill references (planner.md, writer-video.md, script-writing.md) and the task file it closes. None is under apps/api, tools/video/core, tools/video/qa or docs/videos, and flow.mjs is not among them.
+
+Ran (in the worktree at `250490058`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the hashing of every bound path against the receipt, the baseline and the head;
+- `durationReviewProblems` against the baseline through `git cat-file`;
+- a reading of the prompts.mjs diff, of the register.mjs, templates.mjs and skill-reference diffs as context, and of the lint, timeline and drama code the new text sits beside;
+- the duration-term counts and the scan;
+- `git diff --check` over the commit, which exited 0.
+
+On the reviewed bytes, each of these exited 0:
+
+- `node --test tools/video/automation/prompts.test.mjs`, 24 of 24;
+- `node --test tools/video/templates/templates.test.mjs`, 22 of 22;
+- `node --test tools/video/core/lint.test.mjs`, 45 of 45;
+- `node --test tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs`, 25 of 25.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the evidence levels, the limits of the risk cap, the card-fitting rules or the `source` field as editorial or design choices.
+- register.mjs, templates.mjs and its test, prompts.test.mjs, the three skill references and the task file are unbound. They were read as context and are not reviewed or bound here.
+- The slides writer's prompt now gives the code card two capacities: `TEMPLATE_GUIDE` says "code ≤9 lines with a title and caption" (prompts.mjs line 101, unchanged) and `VALUE_RULES` says "about 12 lines beside a title and a caption", while the check in templates.mjs refuses a code card past 16 lines. Which of them holds on screen was not established. It is a card's capacity, not a duration, and is left to the author.
+- "About 45 spoken units" for the outro was not checked against the 15-second state QA or a rendered card, and "lint keeps it under 30 seconds" names a warning, not a refusal. Both sit in unbound files.
+- No planner, writer or listener was run. Whether a model told that the opening chapter is the result alone writes a first chapter under YouTube's ten seconds was not observed, only that the stages' own minimum and the unchanged chapter checks still apply.
+- No rendered cut or measured narration was produced, and the full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 107 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the one rebound hash below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Misheard-words prompt increment: 1 file (2026-10-09)
+
+Reviewer: `claude-pr-review-misheard-words-20261009`. Author: `claude-opus-5-5-video-reference-comparison`. Scope: DURATION_ONLY for the one changed binding below, reviewed at `9f5efa2b88ec8615664b5f7decef26fac8a046b7` ("feat(video): the worker's writer and listener carry the misheard words") on claude/video-misheard-words. The reviewer wrote no part of that commit and edits only this report and review.json.
+
+Baseline: `6019c2c0a7f3dab25d5971e6815256c90ab64a0c`, the commit's parent. Immutable Git blobs pass `durationReviewProblems` there for the report and all 108 REVIEW_FILES, under the "Content-value rules first-use fixes increment" above, which reached main as `114aa2c95` (#1396); the two commits after it (`57139d78d`, #1397, and the baseline itself) changed no bound file and not the receipt. The changed file matches its existing receipt and table at that baseline; its committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly this one binding, while the other 107 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `tools/video/automation/prompts.mjs`: `2ff4f72957abe80882801bf55205f8513899eb3545428a87f226a1d20a65724d` -> `4da2bae5b173bf24b7b6a87f9cc41531b5bd89cb36f025ad2582c71ae8fa254b`.
+
+Findings, `tools/video/automation/prompts.mjs` (+5/−1): the import from register.mjs gains `HEARD_RULES` (line 13), and `${HEARD_RULES}` with a blank line after it is interpolated after `${VALUE_RULES}` in two slides stages, the writer (line 264) and the listener (line 371). No other line changes. The planner's text is the same bytes at the same lines, "each ≥ 10 s … the whole at least 8 minutes" and the upper end of target_minutes as an aim and not a limit (lines 242–244) among them. The writer's own sentences are the same two lines lower: one spoken sentence of "about 25 characters, at most 40" (line 285), the two Shorts of 25 to 55 seconds (line 303), and "each at least 10 seconds … never under 8 minutes … Never cut a sourced fact to fit it and never pad to reach it" (lines 310–313). Everything after the listener is four lines lower and unchanged in wording: the drama's 2 to 4 minutes (line 524), the explainer's 10-minute production target with its eight-minute body and cut (lines 1431–1432), the explainer's two planning texts' "never under 8 minutes" (lines 1519 and 1558), and the long-anime runtime_spec and action_seconds instructions (lines 1732–1750).
+
+Which texts carry it: of the tables in prompts.mjs and story-prompts.mjs, `INSTRUCTIONS.writer` and `INSTRUCTIONS.listener` alone hold `HEARD_RULES`. `DRAMA_INSTRUCTIONS` (4 texts), `VARIANT_INSTRUCTIONS` (21: the series stages, the explainer's, the listener's rewrite and register passes, the translator's shorten and reword passes), `STORY_INSTRUCTIONS` (4) and every `SOURCE_INSTRUCTIONS` text hold none, and `animeInstructions` returns its own text for the writer and the listener. Asked with format "drama", `instructionsFor` returns it for no stage and no variant (0 of 108 combinations). An explainer is a drama with the flat-explainer preset (`isExplainer`, drama.mjs line 195; `variantOf`, flow.mjs line 926), and `listen` asks a drama's listener with no variant (flow.mjs line 3128); all three are bound and unchanged. So the drama, the explainer, the brand story and the long anime do not read it. It is a wording rule wherever it lands.
+
+The imported text in register.mjs (unbound; +33/−0: a five-line comment, the `MISHEARD_WORDS` array of 15 pairs and the seven lines of `HEARD_RULES`) was read as context, since it is what the two stages now carry. Three things in it bear on length:
+
+- The 15 pairs, each the form as written and the form to write in its place. Counted in characters, the replacement is from 0 to 4 longer than the word it replaces (「界線」→「原則」 is the same length; 「行程」→「執行中的程式」 and 「窗格」→「畫面上的介面」 are four longer), 32 over the 15 together, and none is shorter.
+- "Add a character or two, or use the commoner spoken word." The stages count 250 spoken characters a minute, so a character is about a quarter of a second of the estimate. A longer word raises the estimate. The floor is a minimum and the upper end of target_minutes is an aim and not a limit, so a draft a few characters longer meets both as before. A commoner word may be a shorter one; the sentence asks for no shorter script, and a draft that came out under the floor is refused as before: the writer's draft and the listener's edit both pass through `saveAndLint` (flow.mjs lines 3034 and 3131, bound and unchanged), lint's `scenes` error (lint.mjs line 471, bound and unchanged) hands it back, and QA's measured 480-second / 14,400-frame floor is untouched. Nor is it leave to pad: the rule is about the listed words and the three kinds they share, the writer's "never pad to reach it" stands in the stage's own text (line 313), and the sentence that follows says "the facts do not change".
+- "the check transcribes the synthesized voice and compares it with the script, and a homophone is heard the same way when it is recorded again, so it is the wording that changes". This describes the audio check and tells the two stages to word a line so that it passes. The check compares words, not length, and the commit touches none of its code: nothing under tools/video/tts, and not the retake and rewrite rounds in flow.mjs. What those rounds do and what they refuse is as before.
+
+"Numbers, Latin-script words and proper names stay exactly as written" keeps the rule off anything a length is said with. `HEARD_RULES` as the stages receive it (753 characters) holds no digit, no length and no precedence clause. So the new text says which words the narration uses. It moves no length and no check.
+
+A case-insensitive scan of the added and removed lines of the commit's five diffs for minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json and process.env finds one line, in the task file, which says that prompts.mjs "is bound by the duration receipt". The lines naming one of those terms number 88 in prompts.mjs, 10 in register.mjs, 19 in prompts.test.mjs and 3 in script-writing.md at both revisions. Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. The commit touches five files: prompts.mjs, prompts.test.mjs and register.mjs under tools/video/automation, one skill reference (script-writing.md) and its task file. None is under apps/api, tools/video/core, tools/video/qa, tools/video/tts or docs/videos, and flow.mjs is not among them.
+
+Ran (in the worktree at `9f5efa2b8`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the hashing of every bound path against the receipt, the baseline and the head;
+- `durationReviewProblems` against the baseline through `git cat-file`;
+- a reading of the prompts.mjs diff, of the register.mjs, prompts.test.mjs, script-writing.md and task-file diffs as context, and of the flow, lint and drama code named above;
+- `instructionsFor` for six stages, two formats and 18 variants (216 calls), of which 28 carry `HEARD_RULES`, every one a writer or a listener under format "slides";
+- the character counts of the 15 pairs;
+- the duration-term counts and the scan;
+- `git diff --check` over the commit, which exited 0.
+
+On the reviewed bytes, each of these exited 0:
+
+- `node --test tools/video/automation/prompts.test.mjs`, 25 of 25;
+- `node --test tools/video/core/lint.test.mjs`, 45 of 45;
+- `node --test tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs`, 25 of 25.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the 15 pairs, the wording each is replaced with, or the choice of stages that carry them as editorial choices. Whether a replacement keeps a sentence's meaning (「界線」→「原則」, 「那一欄」→「這個欄位」) was not judged.
+- register.mjs, prompts.test.mjs, script-writing.md and the task file are unbound. They were read as context and are not reviewed or bound here.
+- No audio check was run. That each listed word is misheard, that the wording on the right passed, and the comment's figures (13 and 19 of 151 lines) are the author's and were not reproduced.
+- No writer or listener was run. How many characters a whole script gains was not observed, nor whether a model told to add a character or two takes a line past the writer's 40 characters or a Short past its 55 seconds. Only that those limits stand in the stage's text as before, and that this commit changes no check.
+- Under format "slides", `instructionsFor` falls back to the plain writer or listener for a variant that has no text of its own for that stage, and such a call carries `HEARD_RULES`. Which format and variant a route passes was read at `variantOf`, `listen` and the writer's calls in flow.mjs. It was not traced through every caller, and the brand story's route was read from its own texts in story-prompts.mjs alone.
+- No rendered cut or measured narration was produced, and the full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 107 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Languages-card wording increment (PR #1405): 9 files (2026-10-09)
+
+Reviewer: `claude-pr-review-1405-languages-card`. Author: `claude-fable-5.1`. Scope: DURATION_ONLY for the nine changed bindings below, reviewed at `897ad4f87559f574e74ae595803426c8c3568169` (the merge of origin/main into claude/youtube-audio-missing-languages-94f59a, PR #1405); the one commit that touches a bound file is `8c7787581` ("fix(web): the languages card says the site cannot upload dub tracks"). The reviewer wrote no part of that commit and edits only this report and review.json.
+
+Baseline: `8838a255d0758c2e9b32d7efad975fd5d2561368`, origin/main (#1404) and the merge base. Immutable Git blobs pass `durationReviewProblems` there for the report and all 108 REVIEW_FILES, under the "Misheard-words prompt increment" above; the branch changes neither receipt file nor review.mjs. Each of the nine changed files matches its existing receipt and table at that baseline; its committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these nine bindings, while the other 99 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `.agents/skills/youtube-video/SKILL.md`: `43d09e859e02b2d018ef2f95a43d8b5e28149bdc62b637cb4130f1bee45c5bb8` -> `78a2b05461ae00cbfddd2c75e505de960f634d2887f84750712b948634c6b045`.
+- `.agents/skills/youtube-video/references/automated.md`: `80847373b5383f81a8fa8e9a7d8db2d369410344d51616d461a957f20d7f0cfd` -> `4816f3eec0d7b0f162389c7e56d37abfde40fbb0678d3a0e45991771cdaa9da6`.
+- `.claude/skills/youtube-video/SKILL.md`: `43d09e859e02b2d018ef2f95a43d8b5e28149bdc62b637cb4130f1bee45c5bb8` -> `78a2b05461ae00cbfddd2c75e505de960f634d2887f84750712b948634c6b045` (byte-identical to the `.agents` copy at both revisions).
+- `apps/web/components/admin-video-reviews.test.tsx`: `8ee1ee52620dcbe04809fbbf61fa3b86972e22b2a27d19421a226c271af59166` -> `cc6b6bdfa232d1169faedc68a73b16f36f2f110fc1c24d34a2bf5df526d8425b`.
+- `apps/web/messages/en/admin.json`: `0fc899a3db533bad6d4a3db5450e97e2d34297be6188f1f28b6f3484a0fdde77` -> `ec12ddb73856f2d1a9d6070961eea5107bce485143f91099da94a7d0a73b9dd5`.
+- `apps/web/messages/ja/admin.json`: `92870e41f3ed23948a96d55d5822e1af6426e29d5ac4065b43661239a363ef21` -> `e8d2065f71307dfca69d746b80d68c146a3c955c6f89b69f5c939f14d5a42e32`.
+- `apps/web/messages/ko/admin.json`: `cda8d08a9037f3bcbfb58cf25498aef82852da5ff1fad69e02c2e41d5505aa78` -> `18fed6863285acaf879157707bb30995cd1f8a2eeb167d4c5d4e7cd4953cb8d3`.
+- `apps/web/messages/zh-CN/admin.json`: `5684abdbabc109d94d7c074ad52ef01010f11cc3a4ddc9b7ea3d768e3ed9826b` -> `c52f64ca0388c4e850742df482b28cbc868911bcf23edee91b5b9c99f7ba781d`.
+- `apps/web/messages/zh-TW/admin.json`: `7cf0ece3332b44d82b10f46898ea2763d463b32173be19546196ecdadc9ca491` -> `9e3a0402625543d1ca4e77328eaefdcd151f187590bed477fe31dd7bc0573db4`.
+
+Findings, the five `apps/web/messages/<locale>/admin.json` (+4/−4 each, the same four keys in every locale, all in the video reviews namespace): `parts.states.uploaded` ("Uploaded" -> "You said uploaded", 「已上傳」->「你說已上傳」 and the ja and ko equivalents), the state label the languages panel shows after the owner presses the button; `approveLanguages`, the approve button of the languages review card ("Uploaded the dub tracks in Studio" -> "I have uploaded these dub tracks in Studio", 「已在 Studio 上傳配音」->「我已經在 Studio 傳好這些配音」); `studioNote`, which now says the site cannot upload an audio track because YouTube has no API for it, that titles, descriptions and captions still go through the API when the video is scheduled, that the channel needs Advanced features turned on before Studio's Languages page offers a dub, and that the button records the upload and uploads nothing; and `studioStep3`, which quotes the renamed button. No other key changes: `check:i18n` validates the five locales across 25 namespaces, so no key was added or dropped. The explainer-duration strings (the tutorial's 10-minute default, the 8–20 range, the eight-minute floor, the drama's 1–8 minutes, the brand story's 13 minutes, the long-anime production policy) are untouched: in every locale the lines naming a duration term number the same at both revisions (en 103, ja 66, ko 66, zh-CN 66, zh-TW 80). These are labels and notes; `admin-video-review-card.tsx` (bound, unchanged, receipt hash `0c36f63c…`) reads them through `t()` at the same keys, so no component logic, no gate and no state transition changes.
+
+Findings, `apps/web/components/admin-video-reviews.test.tsx` (+1/−1): the languages-card test's `getByRole("button", { name: … })` now looks for 「我已經在 Studio 傳好這些配音」 instead of the old label. The assertion that follows (enabled, one POST on click) and the duration tests in the same file (its lines naming a duration term number 92 at both revisions) are unchanged.
+
+Findings, the two `youtube-video/SKILL.md` copies and `references/automated.md` (+1/−1 each): in step 10 of the SKILL table and step 13 of the automated table, the sentence telling the owner which button to press after uploading in Studio quotes the renamed button. The rest of those rows (which parts a language can tick, the translate, review and dub rounds, "最多 2 輪", `check-audio`, `dub --redo`, `skipped.json`) and every other row are the same bytes. The lines naming a duration term number 7 in each SKILL copy and 16 in automated.md at both revisions.
+
+Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. A case-insensitive scan of the 48 changed lines (24 added, 24 removed) of the nine diffs for minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json and process.env finds nothing. The branch touches 19 files: the nine above, `.agents/skills/youtube-video/references/publish.md`, `apps/web/components/admin-video-review-card.test.tsx`, `docs/videos/AUTOMATION.md`, `docs/videos/DUBS.md`, `docs/videos/LANGUAGES.md` and five task files; none is under apps/api, tools/video or docs/videos/long-form.
+
+Ran (in the worktree at `897ad4f87`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the hashing of every changed path against the receipt, the baseline and the head;
+- `durationReviewProblems` against the baseline through `git cat-file`, which returned no problem;
+- a reading of the nine diffs, and of the ten unbound changed files as context;
+- the duration-term counts and the scan;
+- `git diff --check` over `origin/main...HEAD`, which exited 0.
+
+On the reviewed bytes, each of these exited 0:
+
+- `vitest run components/admin-video-reviews.test.tsx components/admin-video-review-card.test.tsx` in apps/web, 70 of 70;
+- `npm run check:i18n`, 5 locales across 25 namespaces.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the new wording, the claim that YouTube has no API for audio tracks, or the Advanced-features note as product or editorial choices; they were read, not verified against YouTube.
+- publish.md, admin-video-review-card.test.tsx, AUTOMATION.md, DUBS.md, LANGUAGES.md and the five task files are unbound. They were read as context and are not reviewed or bound here.
+- No languages card was rendered in a browser and no review-push was run; only the two Vitest files named above.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 99 bindings this branch did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the nine rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## History-and-curiosity series plan increment (PR #1407): 2 files (2026-10-10)
+
+Reviewer: `claude-pr-review-1407-curio`. Author: `claude-fable-5.1`. Scope: DURATION_ONLY for the two changed bindings below, reviewed at `67087933e558a9f66e0727cfbb72702eb2695b19` (the merge of origin/main into claude/history-curiosity-video-series-aade32, PR #1407); the two commits that touch a bound file are `75fff66ea` ("docs(video): plan the history-and-curiosity series; So That's Why moves to MiniMax pictures") and `4110d4c5b` ("docs(video): the owner's decisions for the history-and-curiosity series, and the H01 brief"). The reviewer wrote no part of those commits and edits only this report and review.json.
+
+Baseline: `9aca5c175f9838d8bb8dd277ea86644356195a36`, origin/main (#1412) and the merge base. Immutable Git blobs pass `durationReviewProblems` there for the report and all 108 REVIEW_FILES, under the "Languages-card wording increment (PR #1405)" above; the branch changes neither receipt file nor review.mjs. Each of the two changed files matches its existing receipt and table at that baseline (the bound hash is the origin/main blob); its committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these two bindings, while the other 106 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `docs/videos/KNOWLEDGE-STORIES.md`: `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` -> `8bf5a55173e25c07c18b865853ffd37e839408ccf731bdc3c4ebf208e195b5b5`.
+- `docs/videos/so-thats-why/README.md`: `00a0f0e5a56d7a492dec69263eab34668e0d334949878bd512b09edacaefd0de` -> `cabb9054898149fa0f512fc192825149c467ac25be283b754174098c83e2a661`.
+
+Findings, `docs/videos/KNOWLEDGE-STORIES.md` (+1/−0): one row added to the index table between the vertical-shorts row and the "AI 名詞十分鐘" row, indexing the new history-and-curiosity series (working name 「奇聞檔案局」, drafted 2026-10-10): links to `history-curiosity/README.md`, `history-curiosity/topics.json` (40 candidates, five axes of eight, all `candidate`, unchecked) and `history-curiosity/look.md`; MiniMax image-01 cartoon illustrations, public-domain photos allowed, two local pilot episodes first, the host route to be changed under a ticket, and the same-day decision that So That's Why also moves to MiniMax pictures. The row names no length, chapter budget or floor. Every other row, including the brand-story row's "12–15 分鐘" and the AI-terms row's "約 10 分鐘", the "473個項目" total line and the rest of the file are the same bytes.
+
+Findings, `docs/videos/so-thats-why/README.md` (+16/−1): (a) one row added to the decisions table, 「插圖怎麼畫（2026-10-10）」, saying illustrations are generated by MiniMax `image-01` instead of hand-drawn SVG from Claude/Codex (T26, T27), in the same cute-illustration family as the history-and-curiosity series, palette kept; (b) a new section 「2026-10-10 更新：插圖改由 MiniMax 生成」 with a before/after table over illustration source (157/130 SVGs -> one image-01 picture per `shot` at US$0.0035, 1280×720, judged by the nine yes/no questions), look (`flat-explainer` -> cute cartoon, owner's pick A), `look` JSON (`preset: "custom"`, `negative: ""`), route (local `format: "slides"` + `shot` + cards; the host explainer route waits on the `2026-10-10-explainer-route-takes-a-series-look` ticket), and real photos (public-domain and stock, pasted-photo card ticket); a cost line (about 130 pictures × 2 attempts × US$0.0035 ≈ US$1 per episode, judging about US$2.6, against the §成本與產能 Gemini Pro estimate of US$15), the ticket name and "T26、T27 已完成的成片不重做"; (c) in §畫面風格 the first bullet gains a bold clause that the style changes to the cute cartoon family generated by MiniMax from 2026-10-10 and that the section's other rules (no mascot, no real people or logos, text by card overlay) are unchanged. The "130" and "157" are picture counts and the dollar figures are per-picture costs, not durations. Line 8 (製作目標10分鐘、實際正文及成片至少8分鐘, the 2026-10-02 revision), the structure table at lines 54–56 (背景 1.5–2 分鐘, 拆解 5–6 分鐘, 答案 1 分鐘), line 59 (16:9, 10-minute target, 8-minute floor, 4–6 chapters) and line 111 (the old 110-picture estimate, not re-measured for the 10-minute revision) are outside both hunks and the same bytes.
+
+Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, chapter budgets, or any covered state. A case-insensitive scan of the 18 changed lines (17 added, 1 removed) of the two diffs for minute, 分鐘, 秒, 長度, 集長, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json and process.env finds nothing; the single hit for the bare character 分 is 「分開」 in the unchanged prefix of the §畫面風格 bullet, present at both revisions. Lines naming a duration term number 5 in KNOWLEDGE-STORIES.md and 11 in so-thats-why/README.md at both revisions. The branch touches 39 files: the two above, and 37 unbound files (`docs/videos/history-curiosity/` README, look.md and topics.json; `docs/videos/so-thats-why/look.md`; `docs/videos/lexicon.json`; the `docs/videos/curio-h01/` and `docs/videos/curio-u02/` episode folders with brief, research, claims, verify-1, verify-2, video.json, shorts.json and photos; five task files under `tasks/open/`).
+
+Ran (in the worktree at `67087933e`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the hashing of every changed path against the receipt, the baseline and the head, including a walk of `git log origin/main -- <path>` that located the bound blobs at `6d60a1efb`;
+- `durationReviewProblems` against the baseline through `git show origin/main:<path>`, which returned no problem;
+- a reading of the two diffs, and of the §成本與產能 and duration lines of so-thats-why/README.md as context;
+- the duration-term counts and the scan;
+- `git diff --check` over `origin/main...HEAD`, which exited 0.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the move to MiniMax image-01, the owner's pick of look A, the per-picture or per-episode cost figures, the 40-candidate count or the four tickets as product or editorial choices; they were read, not verified.
+- The "473個項目" total in KNOWLEDGE-STORIES.md was not revised for the 40 new candidates; that is a count, not a duration, and is noted, not judged, here.
+- The 37 unbound changed files, including the two `video.json` episode packs (one of which also carries an uncommitted working-tree edit at review time), were not read for duration and are not reviewed or bound here; their lengths go through the per-video lint and QA gates, not this receipt.
+- No video was assembled or measured for this increment; no picture was generated.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 106 bindings this branch did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Video languages are four increment (zh-CN leaves the pipeline): 26 files (2026-10-09)
+
+Reviewer: `claude-pr-review-languages-four`. Author: `claude-fable-5.1`. Scope: DURATION_ONLY for the 26 changed bindings below, reviewed at `11f5c7421def5e93559fe81418dc021349a225d7` ("test(video): the site label is 四語標題與說明 now") on claude/video-languages-four. The branch holds five commits: `5878c605b` ("feat(video): a video's languages are four, zh-CN leaves the pipeline (api, web)"), `935e694bb` (the same, "tools, docs, skill"), the merge `7b1d91026`, `d161f5832` ("test(api): regenerate the language contract fixtures without zh-CN") and the head; the owner's decision of 2026-10-09 is 「預計四語就好」: a video is narrated in zh-TW with en, ja and ko to add, and the site keeps its five locales. The reviewer wrote no part of those commits and edits only this report and review.json.
+
+Baseline: `d4f074c4da1473fac04b46aa9e70d7a733bcc560`, origin/main (#1409) and the merge base. Immutable Git blobs pass `durationReviewProblems` there for the report and all 108 REVIEW_FILES, under the "Languages-card wording increment (PR #1405)" above; the branch changes neither receipt file, nor review.mjs, nor anything under docs/videos/long-form or tools/video/long-form. Each of the 26 changed files matches its existing receipt and table at that baseline; its committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these 26 bindings, while the other 82 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `.agents/skills/youtube-video/SKILL.md`: `78a2b05461ae00cbfddd2c75e505de960f634d2887f84750712b948634c6b045` -> `4088bb1beede893b19b503281118a86ef6806a37243c9bfcb85dd70d2e91d101`.
+- `.agents/skills/youtube-video/references/automated.md`: `4816f3eec0d7b0f162389c7e56d37abfde40fbb0678d3a0e45991771cdaa9da6` -> `6852c8ae98a94ba4571696e14728d72cdad54963cecb9b6eeadd8651d6e41d0d`.
+- `.claude/skills/youtube-video/SKILL.md`: `78a2b05461ae00cbfddd2c75e505de960f634d2887f84750712b948634c6b045` -> `4088bb1beede893b19b503281118a86ef6806a37243c9bfcb85dd70d2e91d101` (byte-identical to the `.agents` copy at both revisions).
+- `apps/api/app/video_automation/models.py`: `54cedbf59e1cbfb373a2091c849804cdba3c054118f6272a168799831d6939e0` -> `14da996043cdc076a96c9051e7edf1556ca76dcf2b3d9ff3d68ef648516e1dd7`.
+- `apps/api/app/video_automation/schemas.py`: `08ad195d6c5befa11e15a307d04a9f38e441701605cc2559571c2e1e65ec21ab` -> `8a7b331074ca60276213a211011ac87952b34019d832b391f8d4129d11291ad7`.
+- `apps/api/app/video_automation/settings.py`: `eacb5d7aea4ca3acb969e3210d99920ca06a371b7dc19f7fec7e8da999b300c3` -> `9941b3244e15cf6b1d8aaec32c68ab2424f84adb32804a179652d93fb3977ca3`.
+- `apps/api/app/video_reviews/admin_service.py`: `0081b1b472f7e70243799d4aad81d0c763da6109a959506a9da7498b75fae70c` -> `82b4aec7003b3f71887fe0787b0dba7805d664b80e1a3cee0da1dadb24516117`.
+- `apps/api/app/video_reviews/schemas.py`: `e494a9e56fc6f425cd5b23b782aed7bf84f2b9329a1096ae90e5277282249559` -> `fb9b0d89a7c1b96b1f2ee77ffe7fc73df8ec09d508c15529efff7ae8a8982a70`.
+- `apps/web/components/admin-video-review-card.tsx`: `0c36f63cf55240e8de32596ee7ca7e7095145658c172788aaf1b2631313219a5` -> `d1e51c2914178294dc14c3ca9bdbfcc38164a249e7f9a05cf509268c1a67b8b5`.
+- `apps/web/components/admin-video-reviews.test.tsx`: `cc6b6bdfa232d1169faedc68a73b16f36f2f110fc1c24d34a2bf5df526d8425b` -> `13b095cb04c112d0cbf826a544276b2284c421ae7f0ae319eb72d7b88601df00`.
+- `docs/videos/DESIGN.md`: `ed68170ef2ccd7bb2657a867bc8bac05ecf9426bffbc291b7219bc3febb62221` -> `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405`.
+- `docs/videos/README.md`: `c5ac8cb060836704ac3b5c1127ce90f27177eddce2002211b69cba9ecd8d290b` -> `d03bddbb08af187f4fd62d1fcfd4fe9c77f8af6e5b73485c71bda686ac46df28`.
+- `tools/video/automation/automation.test.mjs`: `f2e7b1d4852c43d1c68217666d9c6e617dc4fd3c4a2709d8f4e144cb6c388721` -> `34510564b46d040b3addfd2bdba2a8865dd7244e97d259033597e7ea7f8504c0`.
+- `tools/video/automation/prompts.mjs`: `4da2bae5b173bf24b7b6a87f9cc41531b5bd89cb36f025ad2582c71ae8fa254b` -> `75f17ea823f2fc1f7ea39b3ae21df401d9329333222434e9d97ea632bbf02388`.
+- `tools/video/core/narration-locale.test.mjs`: `e42075ee53802451cb51ff3aa39252d358d3a9b8584f631c37f96d017c98eefc` -> `db350dea6710d783a076d3449685125649f161d7465a476971d3b691c36d5088`.
+- `tools/video/core/schema.mjs`: `d810ca82a8ef459faea23efa0afcbf1029d08521cb50c09e157bb19598ac172f` -> `580c3eaf35c2ed4fc294658efdc54f77624ef3bb18837e04483580a7a3556470`.
+- `tools/video/core/stages.test.mjs`: `6ed67af324ba3ff07a59678300365833619553cbb460ddd0dc64d97b2608a511` -> `2e22980d5fe28d63d555e5cce7c18f56fb7042cdab52fa03a76b076ecca3c332`.
+- `tools/video/core/state.test.mjs`: `d074d836f10479e95d90572719c69c2621e51f34cdd60572870a75e69fcf313d` -> `327eac9a271451f2f1d4954850dbed0ab4102be170f744cc953cb071f1ce0d08`.
+- `tools/video/dubs/captions-package.test.mjs`: `7eb0a10630b447dd17ffeafe3d99059c0fe3f392d58838dffd10a59373734f28` -> `88527c334aeea86dedff5ff15cb4672585ca303c973e4253078cb6c11e4e1871`.
+- `tools/video/dubs/dubs.test.mjs`: `61057bc8ad18f8a85a0ff1a56ba75139251d22c8c819494da96d0002c91c7d1b` -> `134767f7e954cdc31c6f7e4c2823dff6132d4c7d72a429a0d2f48fe37786566e`.
+- `tools/video/dubs/plan.test.mjs`: `94e61419eda766e722c07675f1f75a569f3eb07fdeecce5c03dc862db1a0d572` -> `b2c8a0294ac71554baffa2a2fa76e1ef6b0bc6aff992af3da1b2c35e0142658b`.
+- `tools/video/package/package.test.mjs`: `6e43fbb128ccbf863279aab9259f093fb87b81e461e7b062b5f47c903bae0163` -> `ec0a56363e66f4410af6d759b2497c39cc1aabd7bd3aacd449628b5b8b7b0047`.
+- `tools/video/qa/qa.test.mjs`: `b27d4ce3e3b6b0329488b549095cd51d61311a5cc644125b4087da99157c1281` -> `6bf6455a5077e93a7473a3c6720e53dfb77d3a8433317de0b6dbabc933de0d16`.
+- `tools/video/review/sync.mjs`: `c4ae35a7a88513b76f1997a77d3dff39829d69262971479b39f86ac9d76ee21c` -> `570c3fa5999eb7edf17e0e2e1c01b1602a326c8c191c3ce9ad20e65b38af2cba`.
+- `tools/video/review/sync.test.mjs`: `ae5d0c052271bf2694432f95deedcf89a005935335977104faf592aace0249a1` -> `c5272cd5154eb2b19fc4a16124671a51d01689150ee3bb5c23dc8c29ccc45644`.
+- `tools/video/tts/check.test.mjs`: `8da7502e68ba7bea2cb3bbdba3bf711bbfbb950b16429a480f5d0075b7670353` -> `0b4e2e68cb1aa38cfa0a5971df1b029e788850b3bac0461709a79b467801499b`.
+
+Findings, `tools/video/automation/prompts.mjs` (+17/−18): seven places, every one a language list or a register. `RULES_HEAD` (line 47) says "captions in four languages" instead of five. The translator's text (lines 387–390) loses "zh-CN about as long as the source" from its reading-pace clause and "zh-CN mainland wording in Simplified characters" from its register list, and is rewrapped: the figures that remain are the same, "en at most about 80 characters a line, ja and ko about 40", "Title at most 100 characters" and "tags at most 500 characters in total". `translator:compilation` (lines 1354–1355) loses the zh-CN register. The explainer's text (line 1433) says four languages instead of five. `translator:shorten` (line 1626) and `translator:reword` (lines 1650–1651) lose "zh-CN Simplified" from their register parentheses; the shorten text's sentence about "seconds" and "window_over_seconds" (lines 1622–1624) and both texts' "stay within max_chars" are the same words. `SOURCE_NAMES` (line 1665) loses its zh-CN entry, so `SOURCE_INSTRUCTIONS` has three keys instead of four; `fromSource` (line 1686) says four languages; its `shortRegister` anchor (line 1694) is now `"ko 합니다체)"` and the translator's two swap pairs (lines 1699–1700) and the caption reviewer's (line 1707) match the new text, so the swapped texts for an en-, ja- or ko-narrated video keep "en at most about 80 characters a line, ja, ko and zh-TW about 40". No other line changes. The duration texts are the same bytes at the same line or one line higher: the planner's "the whole at least 8 minutes and aimed at the upper end of target_minutes" (line 243), the writer's one sentence of "about 25 characters, at most 40" (line 285), the two Shorts of 25 to 55 seconds (line 303), "250 spoken characters a minute: never under 8 minutes" (line 311), the drama's 2 to 4 minutes (line 523) and `action_seconds` 1 to 8 (line 567), the explainer's 10-minute production target with its eight-minute body and cut (lines 1430–1431), the series texts' "never under 8 minutes" (lines 1518 and 1557), the episode Shorts (line 1576) and the long-anime runtime_spec and action_seconds instructions (lines 1731–1749). The lines naming a duration term number 88 at both revisions. `max_chars` is read by the shorten and reword passes from the worksheet; where it is computed, `lineBudgets` in dubs/plan.mjs (unbound, read as context), the slot, gap, tempo and overhead are untouched, and `RATE_RATIOS` and `DEFAULT_RATES` lose only their zh-CN entry (en 2.6 and 15, ja 1.35 and 7.8, ko 1.15 and 6.7, zh-TW 5.8 as before).
+
+Findings, `tools/video/core/schema.mjs` (+4/−2): `LOCALES` is `["zh-TW", "en", "ja", "ko"]` with a three-line comment naming the owner's decision and the site's five locales in its place; `NARRATION_LOCALE`, `narrationLocale` and the `narration_locale` validation that reads the list (lines 317–318) are unchanged. Everything below moves two lines down and keeps its bytes: `MIN_EPISODE_MINUTES = 8` (line 55), `target_minutes` among the document keys (line 92), `action_seconds` in `SCENE_KEYS` (line 125) and its 1-to-8 check with the cast and policy conditions (lines 279–289), the long-anime policy required for an anime episode over eight minutes (lines 307–308), and the `[min, max]` shape of `target_minutes` (lines 331–339). The lines naming a duration term number 25 at both revisions. `localizationPlanProblems`, imported from production/retention.mjs (unbound, +4/−2, read as context), checks `planned_locales` against its own list, now en, ja, ko; it reads no length.
+
+Findings, `tools/video/review/sync.mjs` (+1/−1): `STEP_LABELS["metadata translated"]` is 「四語標題與說明」 instead of 「五語」, the label of a compilation's step on the site. The other labels, the steps and their order, and everything the module sends are the same bytes; the lines naming a duration term number 72 at both revisions.
+
+Findings, the five API files. `video_automation/models.py` (+1/−1): `DEFAULT_CAPTION_LOCALES` loses zh-CN; the drama budgets below it, the settings table's CHECK constraint `target_minutes_min BETWEEN 8 AND 30 AND target_minutes_max BETWEEN 8 AND 30` (lines 164–165) and the column defaults 8 and 12 (lines 246–247) are the same bytes, and its 42 duration-term lines are the same. `video_automation/schemas.py` (+7/−4): `CaptionLocale` is `Literal["en", "ja", "ko"]` with a comment and a `CAPTION_LOCALES` tuple beside it, and `drama_caption_locales` (line 148) and `caption_locales` (line 186) take `max_length=3` instead of 4, a count of languages; `EPISODE_MIN_MINUTES = 8` (line 54), `target_minutes_min` and `target_minutes_max` with their `ge=EPISODE_MIN_MINUTES, le=30` (lines 184–185) and the min-not-over-max validator (lines 195–196), the explainer and series duration fields and the anime policy fields are unchanged. One cosmetic slip in the same hunk, `TopicWord =Annotated[...]` without a space after `=`, is not a rule and ruff accepts it. `video_automation/settings.py` (+13/−2): a `current_caption_locales(stored)` reader that drops a stored language no longer in `CAPTION_LOCALES`, used by `drama_values` and `settings_values`; `target_minutes_min` and `target_minutes_max` are read in the same function as before. `video_reviews/schemas.py` (+16/−3): `DubLocale` loses zh-CN, `RETIRED_LOCALES = {"zh-CN"}` and `without_retired_locales(raw)` are added, and `DubLocalesIn.locales` takes `max_length=len(DUB_LOCALES)`; the file's eight duration-term lines are the same. `video_reviews/admin_service.py` (+6/−4): `locale_choices` passes a stored choice through `without_retired_locales` before validating it, and the `set_locales` docstring names three languages instead of four; no gate, state transition or duration read changes, and its 40 duration-term lines are the same. The data migration 0128 (unbound, read as context) removes zh-CN keys from stored choices, settings and batches and names no minute, second or target.
+
+Findings, `apps/web/components/admin-video-review-card.tsx` (+4/−2) and `admin-video-reviews.test.tsx` (+2/−2): the card's `LOCALES` constant loses zh-CN with a comment that an older review naming it still renders after the three, and a doc comment's example `payload.locales` loses it; the test's settings fixture pre-ticks ja and ko instead of ja and zh-CN and expects 「韓文 標題與說明」 ticked where it expected 「簡體中文 CC 字幕」. The components' duration-term lines number 62 and 92 at both revisions; `admin-video-explainer-duration.test.tsx` and `admin-video-settings-tutorial.tsx` are not touched.
+
+Findings, the documents and skill. `docs/videos/DESIGN.md` (+3/−3): the 字幕 and 中繼資料 rows of the first table and step 11 of the pipeline table say four languages; the 長度 row (at least 8 minutes, 8–12 default target, the upper end an aim) is the same bytes. `docs/videos/README.md` (+3/−3): the 合集, 字幕 and 配音音軌 rows say four, three languages; the 長度 row (8-minute floor, 10 minutes for the three seasons and AI terms, 8–20 for the flat explainer, 13 for the brand story, 480 seconds of body and cut, the drama's 2–4 and the compilation's 30–480) is the same bytes. The two `youtube-video/SKILL.md` copies (+1/−1): the compilation prompt row says 三語翻譯. `references/automated.md` (+3/−3): the opening paragraph and the 旁白語言 bullet list three languages; the dub-cost bullet, which sizes the Gemini character quota for "一支 10 分鐘的影片", drops zh-CN's 5,000 characters so the total reads 23,000 instead of 28,000 while en 10,000, ja 6,000 and ko 6,500 are the same; the 10 minutes there is the example's length, not a rule. The 長度規則 bullet (8 分鐘以上, the 10- and 13-minute targets, 480 秒, `VIDEO_MIN_EPISODE_MINUTES`) is the same bytes. The lines naming a duration term number 7 in each SKILL copy and 16 in automated.md at both revisions.
+
+Findings, the eleven bound tool tests (+50/−58 together). Each change replaces a four-locale list or expectation with a three-locale one, or a zh-CN example with ko: `automation.test.mjs` (skipped caption locales, thumbnail gaps, the four `SOURCE_INSTRUCTIONS` hashes and keys); `narration-locale.test.mjs` (the validation message, `targetLocales`, `dubLocales`, `captionLocalesOf`); `stages.test.mjs` (`captionLocalesOf(null)`, a written choice); `state.test.mjs` (the todo and note strings, the i18n files written); `captions-package.test.mjs` (`dubRole("ko")`, and `dubRole("zh-CN")` kept as an older package's track; the review HTML's second dub is ko); `dubs.test.mjs` (the `defaultRate("zh-CN")` assertion, whose ratio was 1.0, is dropped and the en assertions against `RATE_RATIOS.en` and `DEFAULT_RATES.en` stand; the dry-run dub lists three locales); `plan.test.mjs` (`chinese` is zh-TW alone, the zh-CN lexicon assertion dropped, the third CLI case en → ko); `package.test.mjs` (skipped locales and thumbnails); `qa.test.mjs` (the captions and metadata details name four locales); `sync.test.mjs` (skipped locales, the chosen languages and given-up dub are ko, batch roles, the manifest, the compilation label 「四語標題與說明」, the merged captions); `tts/check.test.mjs` (`DUB_LOCALES`, `parseDubLocale` rejects zh-CN, `trackFiles("ko")`, the zh-CN same-sound and filler test of six lines removed with a comment, the `--locale` usage message). No test that asserts a minute, second, frame or floor changes: the duration-term lines number the same in every file at both revisions (automation 206, narration-locale 3, stages 15, state 83, captions-package 9, dubs 43, plan 4, package 35, qa 40, sync 159, check 12).
+
+Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. A case-insensitive scan of the 234 changed lines (128 added, 106 removed) of the 26 diffs for minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json and process.env finds nothing. The branch touches 89 files: the 26 above and 63 unbound ones (other skill references, `video_shorts`, `video_speech` and `video_youtube` modules and their tests, migration 0128 and its test, the language contract fixtures, other web components, eleven other docs under docs/videos, a task file, and tool modules and tests under automation, compile, core, dubs, package, production, render, review, shorts, templates and tts). `tools/video/automation/flow.mjs` is not among them: its receipt hash `4de8bbed…` is current.
+
+Ran (in the worktree at `11f5c7421`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the hashing of every bound path against the receipt, the baseline and the head, with a CR, BOM and trailing-LF check of each changed file;
+- `durationReviewProblems` against the baseline through `git show`, which returned no problem;
+- a reading of the 26 diffs, and of dubs/plan.mjs, production/retention.mjs, core/stages.mjs, migration 0128 and prompts.test.mjs as context;
+- the duration-term counts and the scan;
+- `git diff --check origin/main...HEAD`, which exited 0;
+- `ruff check` of `video_automation/schemas.py`, which passed.
+
+On the reviewed bytes, this exited 0:
+
+- `pytest tests/test_video_automation_settings.py tests/test_migration_0128_video_languages_four.py tests/test_video_reviews.py tests/test_video_youtube_language_package.py tests/test_video_explainer_duration.py` in apps/api, 156 passed and 4 skipped.
+
+A `node --test` run over the eleven bound tool tests plus `automation/prompts.test.mjs`, `core/lint.test.mjs`, `qa/duration.test.mjs` and `core/duration.test.mjs` was started on the reviewed bytes but stopped before it reported, the machine being loaded by other agents' runs; no result of it is claimed.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the decision to drop zh-CN, the reader that silently drops a stored zh-CN choice, or the migration as product choices; they were read, not judged.
+- The 63 unbound changed files are not reviewed or bound here. Of them, dubs/plan.mjs, retention.mjs, stages.mjs, migration 0128 and prompts.test.mjs were read as context and the rest only in the diff stat.
+- No video was written, translated, dubbed, rendered or measured. That the three remaining dubs still fit their windows was not observed; only that the budgets' inputs did not change.
+- The tool tests (Node), the Vitest files, `check:i18n`, lint, typecheck, mypy, the full tool and API suites and CI were not run to completion for this increment (a Vitest run by another agent was in progress in apps/web and was not read).
+- The 82 bindings this branch did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the 26 rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Dub skip-rate increment (second opinion, overrun tolerance, kept takes): 6 files (2026-10-10)
+
+Reviewer: `claude-pr-review-dub-skip-rate`. Author: `claude-fable-5.1` (with worktree agents). Scope: DURATION_ONLY for the six changed bindings below, reviewed at `8397e1d3d899fc48de2a4df501423a840242da5e` ("Merge branch 'claude/video-languages-four' into claude/dub-skip-rate") on claude/dub-skip-rate, which is stacked on claude/video-languages-four (PR #1413). The commits that are this branch's own are `3997d4541` ("feat(video): the production worker gets the dub check's second opinion"), `3db01e782` ("feat(video): a dub window over by a few frames at 1.15x is let through, not the locale's undoing") and `3a79716b6` ("fix(video): a dub retake that no longer fits keeps the earlier take instead of giving the locale up"), with their merges. The reviewer wrote no part of those commits and edits only this report and review.json.
+
+Baseline: `ff1dd4242ab0b4d9df87bd921985c89cdb29fc68`, the head of claude/video-languages-four and the merge base. The receipt in this tree is that branch's: each of the six changed files' bound hash is its blob at the baseline, and the other 102 bindings are current, so the receipt passes there; this branch changes neither receipt file, nor review.mjs, nor anything under docs/videos/long-form or tools/video/long-form. Each changed file's committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these six bindings. Every prior increment is preserved and the registry remains 108 files.
+
+- `tools/video/automation/automation.test.mjs`: `34510564b46d040b3addfd2bdba2a8865dd7244e97d259033597e7ea7f8504c0` -> `3b7f956b3e9b366b8b1bf9ab392d9c40d36ce3542941fa2678824611259e08c0`.
+- `tools/video/automation/flow.mjs`: `4de8bbedb777f17a66a04064c0bd612a2a23ea8cf206d798fb449851a6a46bc7` -> `15ff4c13bc5a9e7e77f5a500653a96d6360b6c5d68cb02142d3340bee2462eec`.
+- `tools/video/dubs/captions-package.test.mjs`: `88527c334aeea86dedff5ff15cb4672585ca303c973e4253078cb6c11e4e1871` -> `a7d9462b61f182bca1b7e87149a5c461659dafeb9c54449769bc35189f352685`.
+- `tools/video/dubs/dubs.test.mjs`: `134767f7e954cdc31c6f7e4c2823dff6132d4c7d72a429a0d2f48fe37786566e` -> `4fb9b00853147186776b1b18f483585091fd1c35e5aaaa77db742609b898d2e1`.
+- `tools/video/dubs/plan.test.mjs`: `b2c8a0294ac71554baffa2a2fa76e1ef6b0bc6aff992af3da1b2c35e0142658b` -> `f06d073795553024d19098c9957ab060a9feb41569546d67f366d931244b8ab3`.
+- `tools/video/review/sync.mjs`: `570c3fa5999eb7edf17e0e2e1c01b1602a326c8c191c3ce9ad20e65b38af2cba` -> `6f8ea2820b3eda1bc85e58e94ce11902d7fe2c7d590f10a1e73fe67200d33851`.
+
+Findings, `tools/video/automation/flow.mjs` (+63/−25): every changed line is inside `makeDub` or its doc comment, plus the import of `overrunSummary` beside `MAX_TEMPO`. (a) `flaggedIds`, `forCard`, `shortening` and `unfit` reword the reasons a locale is given up with (line ids and rounds, no host path or command); (b) once `rounds.shorten >= MAX_DUB_SHORTEN_ROUNDS` the retake is asked with `--keep-fitting`, and a retake that reports `kept` lines in fit.json ends the loop with the locale ready and those lines named in the note and the returned line; (c) at the success end, `overrunSummary` over fit.json's windows adds a note and a suffix to the returned line. None of it reads or writes a length: `MAX_DUB_SHORTEN_ROUNDS`, `MAX_DUB_RETAKE_ROUNDS` and `MAX_DUB_REWORD_ROUNDS` keep their values and are counts of rounds, and the module's lines naming a duration term number 35 at both revisions. The episode-length gates the module carries elsewhere (target minutes, the QA step, the 480-second floors it reports) are the same bytes.
+
+Findings, `tools/video/review/sync.mjs` (+5/−2): the languages batch's dub entry gains `kept_lines` when the track's timeline carries `kept`, and `languagesSummary` names those lines beside 「配音」 when reasons are shown. A list of line ids and a sentence; the lines naming a duration term number 36 at both revisions, and what the module sends about a video's length is the same bytes.
+
+Findings, the four bound tests. `plan.test.mjs` (+99/−2): a 320-frame, three-window fixture and one test of `absorbOverruns` through `layoutDubTolerant`: next-slack, tempo, still over past both, and a short last window with no window after it that stays `over` at `MAX_TEMPO`. `dubs.test.mjs` (+129/−3): two CLI tests, of the tolerance and of `--keep-fitting`; the first asserts `parseWav(narration).samples.length === timeline.total_frames * SAMPLES_PER_FRAME` on a track with an absorbed window. `captions-package.test.mjs` (+46/−3): a dubbed line five frames past its slide keeps its cues in step and never overlapping the next line's. `automation.test.mjs` (+100/−10): the fake `dub` writes `windows`, `tempo_max` and `kept` into its timeline with `total_frames: timeline.total_frames` as before, the give-up reasons are the reworded ones, and three tests cover the absorbed note, the kept take and the give-up without a path. None sets, asserts or loosens an episode length, a target or a floor.
+
+The track-length question (a dub is the video's length to the sample: `total_frames` × 1600). The unbound `dubs/plan.mjs` (+98/−8) and `dubs/cli.mjs` (+99/−35) were read whole in the diff for it, and `dubs/encode.mjs` is not touched:
+
+- The track's length has one source and the increment does not touch it: `assembleTrack(timeline.total_frames, lines, placed)` allocates `new Int16Array(totalFrames * SAMPLES_PER_FRAME)` and only `track.set`s clips into it; it throws on a clip longer than its slot and on `start + clip.length > track.length` ("runs past the end of the video"). `timeline` is the zh-TW timeline.json, which `dub` reads and never writes; `total_frames`, the mix's `totalSeconds = timeline.total_frames / FPS`, `wrapAudio`'s `bodyFrames` and the record's `total_frames` are the same lines as at the baseline. The tolerance changes only `start_frame`/`end_frame`/`tempo` of dub lines inside that fixed buffer.
+- The last window. `absorbOverruns` lets a window through in three ways only: its speech ends at or before its own `end_frame` (inside the 100 ms guard), which for the last window is at or before the video's end; or the NEXT window's lines can wait (`shiftWindow` must leave that window fitting), which needs a next window; or `speedUp` returns it not `over`, i.e. ending at or before `end_frame` less the guard. With no next window and neither of the other two, it stays `over`, `dub` exits 1 and writes no track. A probe on a two-window, 160-frame timeline with the last window over at 1.15x by about 1, 2, 3, 4, 6, 9 and 12 frames gave: end frames 158, 159, 160 (next-slack, at most the video's last frame), 157 (tempo 1.23), then `over` with no track for 6, 9 and 12; each track that was assembled was 256,000 samples = 160 × 1600. A first window leaning nine frames into the second also gave 256,000.
+- An overrun is at most 0.3 s past the guard, and the only window that moves is the one after it, which must still end inside its own limit; no window past the next one moves, so nothing accumulates toward the end.
+- The zh-TW narration timeline and QA: `placeLines`' new `from` defaults to `window.start_frame`, so `layoutWindow` and `layoutDub` return what they did for a caller that does not pass it; `windowLimit` and `bareWindow` are the former inline expressions. Nothing under `tools/video/core/timeline.mjs`, `tools/video/qa`, `tools/video/assemble`, `tools/video/tts` or `tools/video/long-form` is in the branch's diff; `core/stages.mjs` (+2/−1, unbound) only copies `kept` into `dubsForUpload`'s entry beside the unchanged `total_frames`.
+
+Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, target_seconds, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. A case-insensitive scan of the 487 changed lines (442 added, 45 removed) of the six diffs for minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, floor, plans.json, policy.json and process.env finds four lines, all `total_frames` in tests: the automation fixture's `total_frames: timeline.total_frames` on both sides of one rewritten line, the plan fixture's `total_frames: 320`, and the dubs test's assertion that the track is `total_frames * SAMPLES_PER_FRAME` samples. The words seconds and frame do occur in the changed lines, as the dub's overrun (`overrun_seconds`, `shifted_frames`, "0.27 s") and line positions, never as an episode's length. The new constants `OVERRUN_TOLERANCE_SECONDS = 0.3` and `MAX_TEMPO_OVERRUN = 1.25` are a dub window's tolerance and one window's tempo ceiling; `MAX_TEMPO` stays 1.15. The branch touches 16 files: the six above and ten unbound ones (`docker-compose.prod.yml`, `ops/video/Dockerfile`, `docs/videos/DUBS.md`, three task files, `tools/video/cli.mjs`, `core/stages.mjs`, `dubs/cli.mjs`, `dubs/plan.mjs`).
+
+Ran (in the worktree at `8397e1d3d`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the hashing of the six changed paths against the receipt, the baseline and the head, with a CR, BOM and trailing-LF check of each, and of all 108 bindings against the working tree (six stale, 102 current);
+- a reading of the six diffs, and of the diffs of dubs/plan.mjs, dubs/cli.mjs, core/stages.mjs and tools/video/cli.mjs, with `windowsOf`, `assembleTrack` and the track-writing end of `dubLocale` as context;
+- the duration-term counts and the scan;
+- the probe described above, a scratch script importing `layoutDubTolerant` and `assembleTrack` from the reviewed plan.mjs;
+- `git diff --check claude/video-languages-four HEAD`, which exited 0.
+
+On the reviewed bytes, these exited 0:
+
+- `node --test tools/video/dubs/plan.test.mjs`, 10 passed;
+- `node --test tools/video/dubs/dubs.test.mjs`, 14 passed.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the 0.3-second tolerance, the 1.25x ceiling, keeping a take Jev heard wrong, or the second transcriber in the worker image as product choices; the production measurements quoted in plan.mjs were read, not verified.
+- How an absorbed window sounds (a line ending after its slide changes, or one window faster than the rest) is not a duration rule and is not judged here. Noted, not judged: when the window after an overrunning one has no lines, `shiftWindow` moves nothing and the overrun may reach up to three frames past that empty window's end; `assembleTrack` still cannot write past the buffer.
+- The ten unbound changed files are not reviewed or bound here. plan.mjs, dubs/cli.mjs, stages.mjs and tools/video/cli.mjs were read for the track-length question only; the Dockerfile, compose file, DUBS.md and task files only in the diff stat.
+- No video was dubbed, rendered or measured; no ffmpeg stretch was run outside the tests' fakes. `automation.test.mjs`, `captions-package.test.mjs`, the full tool and API suites, lint, typecheck and CI were not run for this increment.
+- The 102 bindings this branch did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the six rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Policy judge demonstration-question increment (PR #1424): 1 file (2026-10-10)
+
+Reviewer: `claude-pr-review-1424-policy`. Author: `claude-fable-5.1`. Scope: DURATION_ONLY for the one changed binding below, reviewed at `c776540dd` ("fix(video): the drama format alone does not exempt a video from the demonstration question") on claude/policy-demo-explainer, whose other commit of its own is `feffaa86b` ("feat(video): the demonstration question is asked of tutorials only"). The reviewer wrote no part of those commits and edits only this report and review.json.
+
+Baseline: `1bd1d47ceab109b1425af01f1571173e95004c8e`, the head of origin/main and the merge base. The bound hash of the file is its blob at the baseline (computed with Node's crypto over `git show origin/main:<path>`), the other 107 bindings are current, and the branch changes neither receipt file nor anything under tools/video/long-form. The head bytes hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: apps/api/app/video_automation/judge.py` and nothing else. Every prior increment is preserved and the registry remains 108 files.
+
+- `apps/api/app/video_automation/judge.py`: `fe502055df82612df2dee120c9db78ff54029c0514a73df683ad8ce2e14e9637` -> `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7`.
+
+Findings, `apps/api/app/video_automation/judge.py` (+59/−18), read whole in the diff. Every changed line belongs to the policy judge: the module docstring's paragraph on which questions a video is asked; the `PolicyQuestions` literal, which gains `"explainer"`; the new `NO_DEMO_CATEGORIES = frozenset({"explainer", "story"})`; `PolicyVerdict`'s docstring; `read_policy_answers`, which takes a `questions` argument and, for an explainer, reads no `demo` and holds the verdict to the other three thresholds; the new `DEMO_NOT_ASKED` string and `policy_note`, whose `demo` may be None; `policy_questions_for`, which now reads `VideoProject.category` beside `shorts_line` and answers `"explainer"` for a row filed as `explainer` or `story` (a brand-story series episode and a cut Short are decided first, as before; no row, no category, and every other category, a drama's included, stay `"tutorial"`); and `judge_policy`, which asks an explainer the cut Short's three questions. The author's description holds. `POLICY_MIN_STANCE`, `POLICY_MIN_DEMO`, `POLICY_MAX_ADVICE` and `POLICY_MAX_SPONSORED` are not in the diff; they are score thresholds, not lengths. The outline judge, the pick note, the keyframe and audio judges and everything else in the module that reads a target, a minute count or a measured clock is the same bytes.
+
+Findings, the unbound new test `apps/api/tests/test_video_judge.py` (+267): seven tests of which questions are asked per category and format, the verdicts and notes, and that the request cannot name its own category. Its numbers are Jev scores (0.85, 0.17, 0.05, 0.1 and the like) and HTTP statuses; no episode length, target or floor is set, asserted or loosened.
+
+Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, target_seconds, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. The category named `explainer` here selects a question set only; it is not the explainer length profile and nothing reads it to choose a length. A case-insensitive scan of the 446 changed lines (412 added, 34 removed) of all six files in the branch's diff for minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, floor, plans.json, policy.json, process.env, seconds, frame, 時長, 片長, 長度, length, .skip and .only finds two lines, neither in judge.py: `load_runtime_settings` in the new API test (the settings loader's name) and the task file quoting this receipt's own failure message. The branch touches six files: the one above and five unbound ones (`apps/api/tests/test_video_judge.py`, `docs/videos/HANDS-OFF.md`, the task file, `tools/video/qa/policy.mjs`, `tools/video/qa/policy.test.mjs`).
+
+Ran (in a worktree at `c776540dd`, Node on Windows):
+
+- the hashing of the changed path against the receipt, the baseline blob and the head, with a CR, BOM and trailing-LF check;
+- `node tools/video/long-form/cli.mjs check` before rebinding, which named this one binding only;
+- a reading of `git diff origin/main...HEAD` for judge.py, test_video_judge.py, HANDS-OFF.md, qa/policy.mjs and qa/policy.test.mjs;
+- the scan described above.
+
+The CLI check, review.test.mjs and repo-hygiene.test.mjs are run after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept, as a product choice, exempting the `explainer` and `story` categories from the demonstration question, nor asking them the cut Short's wording of the other three; whether the policy judge is right is outside DURATION_ONLY.
+- Noted, not judged: the new comment in the unbound `tools/video/qa/policy.mjs` and the header of `policy.test.mjs` list "a drama" among the videos not asked for a demonstration, while judge.py at this head still asks a drama all four unless its category says otherwise. A comment, not a duration rule.
+- The five unbound changed files are not reviewed or bound here; they were read for the duration question only.
+- No video was judged, rendered or measured. pytest, ruff, mypy, the tool suites other than the three named above, lint, typecheck and CI were not run for this increment.
+- The 107 bindings this branch did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Photo card increment (PR #1425): 4 files (2026-10-10)
+
+Reviewer: `claude-pr-review-1425-photo-card`. Author: `claude-fable-5.1` (the receipt's `author_agent`, left as it stands; the commit's own trailer names Claude Opus 5.5 as co-author). Scope: DURATION_ONLY for the four changed bindings below, reviewed at `7611fd5bc403d39878d7b4084947b9cd1dba18e6` ("feat(video): a photo card pastes a real photograph as a print, with its credit"), the one commit of its own on claude/photo-paste-card (PR #1425), which adds a slide template `photo`. The reviewer wrote no part of that commit and edits only this report and review.json.
+
+Baseline: `1bd1d47ceab109b1425af01f1571173e95004c8e`, the merge base (origin/main at #1414). origin/main at review time, `88e46c2c25990aa12e4c59681d889f8247f7fb32` (#1420), is three commits further and differs from the merge base in no bound path and in neither receipt file. While this increment was being written the branch gained `79457338b98e8696c13488621701dcde9a78cdfd` ("Merge branch 'main' into claude/photo-paste-card"), whose parents are the reviewed commit and that origin/main: what it brings is main's own movement, 17 files, none of them bound and none a receipt file, so all 108 bound paths are the same blobs at that head as at the reviewed commit, and this increment is committed on top of it. Immutable Git blobs pass `durationReviewProblems` at the merge base and at origin/main for the report and all 108 REVIEW_FILES, under the "Dub skip-rate increment" above; the branch changes neither receipt file, nor review.mjs, nor anything under docs/videos/long-form or tools/video/long-form. Each of the four changed files matches its existing receipt and table at that baseline (the bound hash is the origin/main blob); its committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these four bindings, while the other 104 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `docs/videos/README.md`: `d03bddbb08af187f4fd62d1fcfd4fe9c77f8af6e5b73485c71bda686ac46df28` -> `09dee8b3c79a09ddd1d84ec8453d62582c75516cd58270c153f75e0ed75cb125`.
+- `tools/video/automation/automation.test.mjs`: `3b7f956b3e9b366b8b1bf9ab392d9c40d36ce3542941fa2678824611259e08c0` -> `d3c047a828ffa1000423b6412d4e0ae880ca2c7f3da1933c53b729d2119f8d09`.
+- `tools/video/automation/prompts.mjs`: `75f17ea823f2fc1f7ea39b3ae21df401d9329333222434e9d97ea632bbf02388` -> `2dc3f65a6aaa1845c6c248d80494190ee2fef05cfa27303e0b407739060241e0`.
+- `tools/video/core/schema.mjs`: `580c3eaf35c2ed4fc294658efdc54f77624ef3bb18837e04483580a7a3556470` -> `0202f27c4aa2d59c64fccb0fd495033a58999809943935c7004fc45d183ac94b`.
+
+The description handed to the reviewer with this increment (the name added to the template list, a sentence in the writer prompt's template guide, a test line, one row in the channel README's template table, nothing about lengths) differs from the diff in two places: prompts.mjs gains a function and no guide sentence, and the README gains six rows and a changed count. The findings below are from the diff.
+
+Findings, `tools/video/core/schema.mjs` (+1/−0): `"photo",` is added to `TEMPLATES` at line 38, between `"screenshot"` and `"chat"`, so the list holds 17 names instead of 16. Across tools/video the list is read in two lines, both in this module (273–274): the check that a scene's `template` is one of the list, `shot` or `screencast`, and that check's message. Everything below the new line moves one line down and keeps its bytes: `DEFAULT_TARGET_MINUTES = [8, 12]` (line 53), `MIN_EPISODE_MINUTES = 8` (line 56), `target_minutes` among the document keys (line 93), `action_seconds` in `SCENE_KEYS` (line 126) and its 1-to-8 check with the cast and policy conditions (lines 280–290), the long-anime policy required for an anime episode over eight minutes (line 308), and the `[min, max]` shape of `target_minutes` (lines 332–340). The lines naming a duration term number 25 at both revisions and are the same lines.
+
+Findings, `tools/video/automation/prompts.mjs` (+12/−1): two hunks. Lines 18–28 add a doc comment and an exported `workerShowcase(showcase)`, which returns the showcase without its `assets` key and without the scenes whose template is `photo`; line 36 has `references()` pass the parsed showcase fixture through it. No prompt text changes: `TEMPLATE_GUIDE` (line 99, was 88), `RULES_HEAD` and every stage's instructions are the same bytes eleven lines lower, and no writer prompt names the card. On this branch the unbound showcase fixture gains one `photo` scene (`old-print`, one narration line) and one `assets[]` entry; `workerShowcase` over the branch's fixture is deep-equal, and equal as serialised JSON, to origin/main's fixture (17 scenes, `target_minutes` `[0.5, 5]` at both revisions), and so is `references(root).showcase`. What the writing stages are handed as `showcase` (flow.mjs line 2691, beside the settings' `target_minutes`) is therefore the object it was at the baseline. The lines naming a duration term number 88 at both revisions and are the same lines: the planner's and writer's eight-minute texts, the Shorts' 25 to 55 seconds, the drama's 2 to 4 minutes, `action_seconds`, the explainer's 10-minute target and the long-anime runtime_spec instructions are untouched.
+
+Findings, `tools/video/automation/automation.test.mjs` (+1/−0): one assertion at line 89, inside "a model's answer is read as JSON, fenced or not": `references(ROOT).showcase` holds no `photo` scene and no `assets`. It sets or asserts no minute, second, frame or floor. The lines naming a duration term number 220 at both revisions and are the same lines.
+
+Findings, `docs/videos/README.md` (+7/−1): (a) line 49, the sentence above the template table, opens 「17 種投影片版型」 where it opened 「15 種」. The rest of that line is the same bytes, including its clause on the illustrated slides' cadence, 「插圖投影片每 5–8 秒一張、至少佔一半時間」: replacing the count in the old line gives the new line exactly. (b) Six rows are added to the table between `screenshot` and `outro`: `photo` (a real photograph shown as a pasted print: 24px white border, `tilt` −3° to 3° or ±1.5°, ±2° or ±2.5° by scene id, soft shadow, centred; `caption` one line of at most 40 characters under the print; `credit` one line of at most 60 characters as a capsule at its lower right; the photograph must be listed in `assets[]` or `render` refuses it), and the five templates the table had not listed, `chat` (1–3 bubbles), `quote`, `stats` (1–4 numbers), `terminal` and `cta`. The table now has 17 rows, one per name in `TEMPLATES`; at the baseline it had 11 rows for 16 names under a sentence that said 15. The numbers in the added rows are pixels, degrees, character caps and counts of elements; none is a length of time. The 長度 row (the 8-minute floor with ordinary drama excepted, the 8–12 default target, 10 minutes for the three seasons and AI terms, 8–20 whole minutes with a default of 10 for the flat explainer, 13 for the brand story, 480 seconds of body and cut, the drama's 2–4 and the compilation's 30–480) is the same bytes. The lines naming a duration term number 12 at both revisions; the only one that differs is line 49.
+
+How long a `photo` scene runs: like any slide, by its narration. `core/lint.mjs`, `core/timeline.mjs`, `core/duration.mjs` and `qa/checks.mjs` are bound, are not in the branch's diff and do not name the template; the unbound `TEMPLATE_SPECS.photo` (read as context) carries a `check` of its fields and `capacity: () => 0`, and no length.
+
+Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, chapter budgets, the cadence limits, or any covered state. A case-insensitive scan of the 23 changed lines (21 added, 2 removed) of the four diffs for minute, 分鐘, 秒, 長度, 集長, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json, process.env, cadence, chapter, budget, 預算 and 節奏 finds two lines: the old and the new README line 49, for 秒 in the cadence clause that is the same on both sides. A scan for the bare character 章 adds one line, 「完整文章」 in the `cta` row, which is "article" and not a chapter. The branch touches 13 files: the four above and nine unbound ones (`docs/videos/ILLUSTRATED.md`, `docs/videos/history-curiosity/look.md`, `tasks/open/2026-10-10-photo-paste-card.md`, `tools/video/media/stock.mjs`, `tools/video/render/plan.mjs`, `tools/video/render/render.test.mjs`, `tools/video/templates/fixtures/showcase/video.json`, `tools/video/templates/templates.mjs`, `tools/video/templates/templates.test.mjs`).
+
+Ran (in a worktree at `7611fd5bc`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the hashing of all 108 bindings against the receipt, the table, the origin/main blobs, the head blobs and the working tree (four stale, 104 current), with a CR, BOM and trailing-LF check of each changed file;
+- `durationReviewProblems` against the merge base and against origin/main through `git show`, which returned no problem at either;
+- a reading of the four diffs, and of the diffs of templates.mjs, render/plan.mjs, media/stock.mjs, the showcase fixture, ILLUSTRATED.md, look.md and the task file as context;
+- the comparison of `workerShowcase` over the branch's fixture with origin/main's fixture;
+- the duration-term counts and the scan;
+- `git diff --check origin/main...HEAD`, which exited 0;
+- after the merge `79457338b` arrived: a comparison of the diff it brings with origin/main's movement since the merge base (the same diff), and of all 108 bound paths and both receipt files between `7611fd5bc` and `79457338b` (no blob differs).
+
+On the reviewed bytes, these exited 0:
+
+- `node --test tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs`, 17 passed;
+- `node --test --test-name-pattern="a model's answer is read as JSON, fenced or not" tools/video/automation/automation.test.mjs`, 1 passed.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the photo card, its layout, the `assets[]` rule or keeping the card from the worker's writer as product choices; they were read, not judged.
+- The README's 17 was compared with `TEMPLATES` only. The bound `references/automated.md`, which this branch does not touch, still says 「共 16 種」; that is a count of templates, not a duration, and is noted, not judged, here.
+- The nine unbound changed files are not reviewed or bound here; seven were read as context and the two unbound tests only scanned for duration terms. How long a photograph stays on screen (look.md's 「一張照片停 4–8 秒」, an unchanged line of an unbound file) is not a rule this receipt binds.
+- No video was written, rendered, assembled or measured; no photo card was drawn by the reviewer.
+- The rest of automation.test.mjs, templates.test.mjs, render.test.mjs, the full tool and API suites, lint, typecheck and CI were not run for this increment.
+- The 104 bindings this branch did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the four rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Dictionary-merge rule increment: 2 files (2026-10-10)
+
+Reviewer: `claude-pr-review-lexicon-merge-20261010`. Author: `claude-opus-5-5-lexicon-merge-fix`. Scope: DURATION_ONLY for the two changed bindings below, reviewed at `d5550634b91272c9f4cf520b145acad913156c82` ("fix(video): do not merge dictionary terms that lint refuses") on claude/lexicon-merge-letter-first. The reviewer wrote no part of that commit and edits only this report and review.json.
+
+Baseline: `e5570358e3bcd76c80229b51b1d5c3be7d2f90d5`, origin/main (#1417) and the commit's parent. Immutable Git blobs pass `durationReviewProblems` there for the report and all 108 REVIEW_FILES, under the "History-and-curiosity series plan increment (PR #1407)" above; the commit changes neither receipt file nor review.mjs. Each of the two changed files matches its existing receipt and table at that baseline; its committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these two bindings, while the other 106 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `tools/video/automation/automation.test.mjs`: `f2e7b1d4852c43d1c68217666d9c6e617dc4fd3c4a2709d8f4e144cb6c388721` -> `cebd0bc1ef7d31e92594a4b6dc9b8cabc4d1b83a907f1c20071f5be92ebf30fd`.
+- `tools/video/automation/flow.mjs`: `4de8bbedb777f17a66a04064c0bd612a2a23ea8cf206d798fb449851a6a46bc7` -> `bc2b6ef828c116abd57849b49300a832899ba9ea61733d76392e22c083cfc892`.
+
+The question: does the commit change anything that decides how long a video is: a duration target or minimum, the pacing arithmetic, a scene or line count, a duration check, or what the planner or the writer is told about length? It does not. It narrows which of a writer's proposed pronunciation-dictionary terms are written into the dictionary.
+
+Findings, `tools/video/automation/flow.mjs` (+7/−2), three places and no other line:
+
+- line 25: the import from `../core/lexicon.mjs` gains `isProposableTerm` beside `emptyLexicon`;
+- lines 382–386: a comment above `mergeLexicon`;
+- line 393: in `mergeLexicon`'s loop over a writer's `lexicon_additions`, the test of the proposed term, `/^[A-Za-z0-9][A-Za-z0-9.+#'_-]{0,39}$/`, becomes `isProposableTerm(term)`.
+
+`mergeLexicon` writes the proposed terms into the shared `docs/videos/lexicon.json`. The rest of it is the same bytes: a term already listed is skipped, a spoken form is null or a non-blank string of at most 80 characters (line 394), and the file is written only when a term was added (line 398). Its one caller is `saveAndLint` (line 2778), whose loop is unchanged too: `lintErrors` at line 2788, `MAX_LINT_FIXES` of 3 (line 83) with its "lint still fails after 3 fixes" (line 2793), and the fix round's call of the writer (line 2795) with the payload it had: `video`, `lint_errors`, `line_ids` and `draftBudget`, which is a picture prompt's character budget (line 3060).
+
+The rule as it is now: `isProposableTerm` (lexicon.mjs lines 37–39, unbound) is `isValidTerm(term)`, a string that starts with a Latin letter (lines 24–26), together with `/^[A-Za-z0-9.+#'_-]{1,40}$/`. Both rules were run over 8,421 strings: every string of up to three characters from an alphabet of 20 (letters, digits, the six characters `. + # ' _ -`, a space, punctuation, a CJK, a full-width and an accented letter, a newline). 471 are taken by both, 471 by the old rule alone, every one of which starts with a digit, and none by the new rule alone. A term of 39 or 40 characters that starts with a letter is taken by both, and one of 41 by neither. So the merge takes what it took before less the terms that start with a digit, and nothing it did not take before.
+
+Why that moves no length:
+
+- The estimate does not read the dictionary. Lint builds its timeline with `estimateTimeline(doc, cpm)` (lint.mjs line 430), which counts each line's spoken units at 250 a minute (`estimateSamples`, timeline.mjs lines 43–44) from the line's own `say` or `text`. The chapter checks, the eight-minute floor, `target_minutes` and the long anime's body estimate (lint.mjs lines 455–485) read that timeline. The dictionary enters `lintVideo` in two places, each an error and neither a length: `validateLexicon` (line 388) and the unknown-term check (lines 399–400). lint.mjs and timeline.mjs are bound and unchanged.
+- The measured audio can depend on an entry: at synthesis a term that has a spoken form is sent with that form as its alias (`spokenParts`, tts/requests.mjs, unbound and unchanged). The commit admits no entry that was not admitted before, so it gives no word a spoken form it could not have had. The entries it now leaves out start with a digit, and `validateLexicon` reports such an entry as a lint error for every narrated video whose dictionary holds it (lint.mjs line 388), so `saveAndLint` returned no passing script for a video whose dictionary held one. What is synthesized for a script that passes lint is what was synthesized before.
+- What goes back to the writer is an error lint already had. A narration's "8B" is read as the letter B (`latinTerms` starts a term at a letter, and `isKnownTerm` takes any single letter), so there is no error and no fix round. A word that stays unknown ("6abc" is read as "abc") is its line's `"abc" is not in docs/videos/lexicon.json` error, the text a writer gets for a word it proposed nothing for, in the same `lint_errors` round. A reworded line can come back a few characters longer or shorter, as after any lint fix, and the rewritten script passes through the same `saveAndLint` and the same floor (lint.mjs line 471). The writer's payload is built by `scriptPayload` as before, with `target_minutes` at line 2690 and the dictionary's keys at line 2692: a dictionary without such an entry is a shorter list of keys and says nothing about length. The instructions the planner and the writer read are in prompts.mjs, which the commit does not touch.
+
+Findings, `tools/video/automation/automation.test.mjs` (+47/−1): the import from `../core/fixtures/load.mjs` gains `lexiconProposals` (line 15), a new line 16 imports `isValidTerm` and `validateLexicon`, and one test is added at lines 673–716, between "auto takes a video from a topic to the outline…" and "the planner sees every video on /admin/videos…" (166 top-level tests, 165 before). It calls `saveAndLint` three times on a slides fixture in a sandbox:
+
+- with `{ "8B": null, "6abc": null, Ai2: null }` and a line that says "8B": only `Ai2` is merged, the dictionary passes `validateLexicon`, `lexicon_added` is `["Ai2"]` and the writer is not asked again;
+- with a line that says "6abc" and that term proposed: one fix round, whose single `lint_errors` entry is the "abc" message, and the dictionary is as it was;
+- with the 237 proposals of `lexiconProposals()`: every merged term passes `isValidTerm`, a 40-character term and an 80-character spoken form are kept, ten named terms are not, and no fix round follows.
+
+Every assertion is on the dictionary's keys and values, `validateLexicon`'s result, `lexicon_added`, the number of writer runs or the text of a lint error. None reads a timeline, a frame count, a minute or a target. No existing test, helper or assertion changes: every other line is the same bytes, one line lower after the imports and 46 lower after the new test. Among them is `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` (line 37, line 36 before), under which the new test runs as the rest of the file does.
+
+The seven unbound files were read as context, to be sure no length hides behind the changed import:
+
+- `tools/video/core/lexicon.mjs` (+24/−1) adds `isValidTerm`, the `PROPOSED_TERM` pattern and `isProposableTerm`. In `validateLexicon` the condition `!/^[A-Za-z]/.test(term)` becomes `!isValidTerm(term)`, the same answer for every key of an object, which is always a string. `latinTerms`, `isKnownTerm`, `unknownTerms`, `unknownTermsFor`, `substitutions`, `termPattern`, `termsUsed` and `entriesUsed` are the same bytes.
+- `tools/video/automation/story.mjs` (+3/−3) makes the same swap in `addTerms`, the brand story's merge: the import, a comment and the one condition.
+- `tools/video/core/fixtures/load.mjs` (+17/−0) adds `lexiconProposals()`. `fixture`, `sandbox` and the other loaders are unchanged.
+- `tools/video/core/lexicon.test.mjs` (+20/−1) and `tools/video/automation/story.test.mjs` (+52/−1) add tests of the above.
+- Two task files, one done and one open.
+
+Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the 250 characters a minute of the estimate, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, chapter budgets, or any covered state. A case-insensitive scan for minute, 分鐘, 秒, 長度, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json, process.env, cpm, budget and pause_after finds nothing in the 57 changed lines (54 added, 3 removed) of the two bound diffs and nothing in the 122 changed lines of the five unbound code diffs. In the two task files it finds four lines, which say that the two files are bound by the duration receipt and that the change is duration-neutral. Lines naming one of those terms number 115 in flow.mjs and 298 in automation.test.mjs at both revisions, the same lines in the same order. The commit touches nine files, the two above and the seven unbound ones; none is under apps, docs or tools/video/long-form.
+
+Ran (in the worktree at `d5550634b`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell, node_modules borrowed by a junction from another worktree of this repository and removed afterwards):
+
+- the hashing of every bound path at the baseline and at the head, where these two alone differ, and of the two against the receipt, the table and the working tree;
+- `durationReviewProblems` against the baseline through `git show`, which returned no problem, and against the head, which returned the two stale bindings and nothing else;
+- a reading of the two diffs, of the seven unbound diffs as context, and of the flow, lint, timeline, lexicon and tts code named above;
+- the comparison of the two rules over the 8,421 strings and at lengths 1, 39, 40, 41 and 42;
+- the duration-term counts and the scan;
+- `git diff --check` over the commit, which exited 0.
+
+On the reviewed bytes, each of these exited 0:
+
+- `node --test --test-skip-pattern="a project another process holds is left alone" tools/video/automation/automation.test.mjs`, 211 of 211 counting subtests, the 165 other top-level tests among them;
+- `node --test tools/video/core/lexicon.test.mjs tools/video/automation/story.test.mjs`, 26 of 26;
+- `node --test tools/video/core/lint.test.mjs`, 45 of 45;
+- `node --test tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs`, 25 of 25.
+
+The one test left out of automation.test.mjs, "a project another process holds is left alone…" (line 5581; line 5535 at the baseline, the same bytes), does not finish on Windows: its child process imports project-lease.mjs by a drive-letter path and exits with ERR_UNSUPPORTED_ESM_URL_SCHEME, and the test waits for it without end. The file was first run whole and stopped there after 138 top-level tests had passed, the new one among them; that run was ended by hand and the file run again without that test.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the rule, the limits of 40 and 80 characters, or the choice to leave a refused proposal out without telling the writer as product choices. It answers the duration question alone.
+- lexicon.mjs, lexicon.test.mjs, story.mjs, story.test.mjs, fixtures/load.mjs and the two task files are unbound. They were read as context and are not reviewed or bound here.
+- The host's incident in the commit message and the task file (the "8B" and "6abc" entries, the four blocked drafts and their times) is the author's account and was not checked on the host. The author's statement that the three test files fail with the old rule put back was not reproduced.
+- Nothing here repairs a dictionary that already holds an entry starting with a digit. Such a file fails lint for every narrated video until the entry is removed by hand, as the commit says. No host's dictionary was read.
+- That no script was synthesized with such an entry was read from the worker's route: lint refuses the dictionary and `saveAndLint` returns the error. A video made by hand with the CLI beside a hand-edited dictionary was not traced.
+- No writer, planner or listener was run. How a model rewords a line whose proposal was left out, and by how many characters, was not observed. Only that the fix round, its payload and the checks after it are the code they were.
+- The lease test of automation.test.mjs named above was not run to its end on this machine. It is outside both hunks.
+- No audio was synthesized and no video assembled or measured for this increment.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 106 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Dictionary-merge rule merge with main (#1413) follow-up: 26 files (2026-10-10)
+
+Reviewer: `claude-pr-review-lexicon-merge-20261010-b`, a second pass by the reviewer of the "Dictionary-merge rule increment" above. It wrote none of the branch's commits and none of #1413's, judged the one merged file's bytes on its own reading, and edited only this report and review.json. Author: `claude-opus-5-5-lexicon-merge-fix`, the branch's author. Scope: DURATION_ONLY for tools/video/automation/automation.test.mjs's merged bytes, plus the merge re-binding of the 25 files only #1413 changed, on claude/lexicon-merge-letter-first. The merge joins the branch's `2040852786a3fcdb52bda387f3b80dd2509b17b2` ("docs(video): duration review increment for the dictionary-merge rule"), whose receipt is the increment above, with origin/main `ab35cc3890603771028a49230fd0db072579ec40` (#1413, "feat(video): a video's languages are four, zh-CN leaves the pipeline"). Both sides come from `e5570358e` (#1417). The session coordinating the branch started the merge with `git merge origin/main --no-commit`, and it was not committed when this was written: what was reviewed is the index and the working tree, which hold the same bytes for every one of the 108 bound files.
+
+The receipt union. Both sides had changed review.md and review.json, and Git left both in conflict. Both were rebuilt from the three stages of the index (`git show :1:`, `:2:` and `:3:`, the base and the two sides), not from the conflict markers. This report now holds both increments verbatim: #1413's "Video languages are four increment (zh-CN leaves the pipeline)" from origin/main, then the branch's own, then this one. That order is the side merged in, then the branch's own section, then the merge, as earlier merge follow-ups in this report have it. Each side had only appended its one section after the "History-and-curiosity series plan increment (PR #1407)" and changed table rows. The preamble and the 112 sections before that point are byte-identical at `e5570358e` and on both sides. #1413's section here is origin/main's byte for byte (19,838 bytes) and the branch's is `204085278`'s (13,876 bytes), each with its own Verdict line and the blank line after it. Each side's receipt passes `durationReviewProblems` against its own tree (read by `git show`).
+
+Baseline, by bound file, against both receipts:
+
+- Twenty-five files match #1413's reviewed hash: the 26 its increment lists, less automation.test.mjs. In each case the merged bytes equal `ab35cc389`'s, and the branch left them at `e5570358e`'s bytes. So these are merge re-binds of the hashes #1413's increment reviewed, with no new bytes.
+- One file, tools/video/automation/flow.mjs, matches the branch's hash (`bc2b6ef828c116abd57849b49300a832899ba9ea61733d76392e22c083cfc892`). The merged bytes equal `204085278`'s, which are `d5550634b`'s, the commit the increment above reviewed, and main left the file at `e5570358e`'s (`4de8bbed…`, as #1413's increment says). Its row is unchanged from the increment above.
+- One file, tools/video/automation/automation.test.mjs, matches neither (477,489 bytes, 6,754 lines, `6c2523909cfcbbfa922b3e5347aad86adf4cc7d461e99032c8946020901f6080`). Both sides changed it from `e5570358e` (`f2e7b1d4…`): the branch to `cebd0bc1…`, #1413 to `34510564…`. Git merged it without a conflict, and the merged bytes equal `git merge-file` of the two sides over `e5570358e`'s copy.
+- The other 81 bound files are the same on both sides and in the working tree.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for review.json's conflict markers, which it could not parse. Read against the merged tree, the branch's receipt was stale for exactly the 25 #1413 files and automation.test.mjs, and #1413's for exactly automation.test.mjs and flow.mjs. The merged file holds no CR byte or BOM and ends in LF. review.mjs is the same on both sides, so the registry stays exactly 108 paths, with 26 hashes rebound against the increment above and the other 82 unchanged.
+
+Findings, tools/video/automation/automation.test.mjs. The two parts sit apart in the file:
+
+- Against `ab35cc389` (+47/−1), the changed lines are, line for line, the branch's own change from `e5570358e`, which the increment above reviewed: the fixtures import gaining `lexiconProposals` (line 15), the import of `isValidTerm` and `validateLexicon` (line 16), and the one test "a dictionary term the writer proposes that lint would refuse is left out…" at lines 673–716, still between "auto takes a video from a topic to the outline…" (line 622) and "the planner sees every video on /admin/videos…" (line 718). Main's file with that import line replaced and that block put before the same test is the merged file, byte for byte. So the merged file is main's version plus the single test and the import lines already reviewed, and nothing else.
+- Against `204085278` (+10/−8), they are, line for line, #1413's own change from `e5570358e`, which #1413's increment reviewed: the skipped caption locales without zh-CN (line 2347), the thumbnail gaps (line 2760), a two-line comment and the four hashes of `ZH_TW_PROMPT_SHA256` (lines 3059–3065), and the keys and names of `SOURCE_INSTRUCTIONS` (lines 3080–3081).
+
+Neither part reads the other. The new test names no caption locale, thumbnail, prompt hash or `SOURCE_INSTRUCTIONS`, and #1413's five hunks are in three tests and in one constant with the comment above it. None is in an import, in `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` (line 37 still) or in a helper the new test calls: `fakeSite`, `context` and `smallRefs` are defined at lines 209–391, and `fixture`, `sandbox` and `automationClient` are imported. The new test asserts what it asserted: the dictionary's keys and values, `validateLexicon`'s result, `lexicon_added`, the number of writer runs and the text of a lint error. It passes on the merged tree, where flow.mjs loads #1413's schema.mjs, prompts.mjs and dubs/plan.mjs. The file's lines naming a duration term (the list of the increment above) number 298 at `e5570358e`, on both sides and in the merged file, the same lines in the same order, and none of #1413's 18 changed lines names one.
+
+What the increment above read around flow.mjs still stands in the merged tree: lint.mjs, timeline.mjs and tts/requests.mjs are the same bytes at `e5570358e`, on both sides and in the index, and lexicon.mjs, story.mjs and fixtures/load.mjs are the branch's, which #1413 did not touch. #1413 changed prompts.mjs, schema.mjs and dubs/plan.mjs. Its increment reads the first two as bound files and the third as context. In the third, `speechLexicon` and `dubLexicon`, which keep every key of the dictionary whatever language the narration is in, are outside its three hunks, and `CHINESE_LOCALES`, which chooses between them, loses zh-CN alone.
+
+Across the merge there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. No duration assertion is removed or loosened.
+
+Ran (in the worktree with the merge in the index, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell, node_modules borrowed by a junction from another worktree of this repository and removed afterwards):
+
+- the hashing of every bound path against both receipts, the three revisions, the index and the working tree;
+- `durationReviewProblems` against `e5570358e`, `204085278` and `ab35cc389` through `git show`, which returned no problem for any of the three, and with each side's receipt against the merged tree;
+- the comparison of review.md at the three stages, section by section, and of the rebuilt report with them;
+- `git merge-file` of automation.test.mjs, a line-for-line comparison of each part with the other side's own change, and the rebuilding of the merged file from main's;
+- a reading of #1413's five hunks in the file and of dubs/plan.mjs's diff;
+- the duration-term counts.
+
+On the merged bytes, each of these exited 0:
+
+- `node --test --test-skip-pattern="a project another process holds is left alone" tools/video/automation/automation.test.mjs`, 211 of 211 counting subtests, the 165 other top-level tests among them. The test left out is the one the increment above describes, now at line 5583 and the same bytes;
+- `node --test tools/video/core/lexicon.test.mjs tools/video/core/lint.test.mjs`, 53 of 53;
+- `node --test tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs`, 25 of 25.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- #1413's 25 other files are bound as its increment reviewed them, and are not reviewed again here. #1413's part of automation.test.mjs was compared with #1413's own change and read; it is not judged afresh.
+- This follow-up does not review #1413: not the decision to drop zh-CN, and not the unbound files it changed.
+- The merge was not committed when this was written. The receipt binds the bytes of the index as they were then; a bound file changed before or after the merge commit needs its own increment.
+- Of the eleven bound tool tests #1413 changed, automation.test.mjs alone was run here, less its lease test, which does not finish on Windows. story.test.mjs was not run again on the merged tree.
+- No writer, planner, translator or voice was run, and no video was assembled or measured.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this follow-up.
+- The 82 bindings this merge did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the 26 rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Dictionary-merge rule merge with main (#1416) follow-up: 6 files (2026-10-10)
+
+Reviewer: `claude-pr-review-lexicon-merge-20261010-c`, a third pass by the reviewer of the two "Dictionary-merge rule" sections above. It wrote none of the branch's commits and none of #1416's, judged the two merged files' bytes on its own reading, and edited only this report and review.json. Author: `claude-opus-5-5-lexicon-merge-fix`, the branch's author. Scope: DURATION_ONLY for the merged bytes of tools/video/automation/flow.mjs and tools/video/automation/automation.test.mjs, plus the merge re-binding of the four files only #1416 changed, on claude/lexicon-merge-letter-first. The merge joins the branch's `d02b4ec917c972d0d49b05232d47ea6a467746bc` ("Merge main into claude/lexicon-merge-letter-first"), whose receipt is the follow-up above, with origin/main `91f418c82df077694c981a5446f75b663488d377` (#1416, "fix(video): three reasons the worker gave up on 49 dub tracks"). Both sides come from `ab35cc389` (#1413). The session coordinating the branch started the merge with `git merge origin/main --no-commit`, and it was not committed when this was written: what was reviewed is the index and the working tree, which hold the same bytes for every one of the 108 bound files.
+
+The receipt union. Both sides had changed review.md and review.json, and Git left both in conflict. Both were rebuilt from the three stages of the index (`git show :1:`, `:2:` and `:3:`, the base and the two sides), not from the conflict markers. This report holds every increment verbatim: #1416's "Dub skip-rate increment (second opinion, overrun tolerance, kept takes)" from origin/main, then the branch's own two sections, then this one. That order is the side merged in, then the branch's own sections, then the merge, as earlier merge follow-ups in this report have it. #1413's "Video languages are four increment" is in the common base and stays once, where main has it: both sides had appended after it, #1416 its one section and the branch its two, and changed table rows. The preamble and the 113 sections up to and including it are byte-identical at `ab35cc389` and on both sides. #1416's section here is origin/main's byte for byte (11,756 bytes) and the branch's two are `d02b4ec91`'s (13,876 and 10,149 bytes), each with its own Verdict line and the blank line after it. Each side's receipt passes `durationReviewProblems` against its own tree (read by `git show`).
+
+Baseline, by bound file, against both receipts:
+
+- Four files match #1416's reviewed hash: captions-package.test.mjs, dubs.test.mjs and plan.test.mjs under tools/video/dubs, and tools/video/review/sync.mjs. In each case the merged bytes equal `91f418c82`'s, and the branch left them at `ab35cc389`'s bytes. So these are merge re-binds of the hashes #1416's increment reviewed, with no new bytes.
+- Two files match neither receipt. Both sides changed each of them from `ab35cc389`, Git merged each without a conflict, and the merged bytes of each equal `git merge-file` of the two sides over `ab35cc389`'s copy:
+  - tools/video/automation/flow.mjs, 253,526 bytes and 4,113 lines, `b15fff400a5ebcbc89f68bf9795d3b392da4c1dce4f6a8e58067e902f85409d2`. From `4de8bbed…` the branch went to `bc2b6ef8…` and #1416 to `15ff4c13…`.
+  - tools/video/automation/automation.test.mjs, 485,878 bytes and 6,844 lines, `5b7c04011f43798843fd7d9e146de490dc06890e6808f3e3544a3ee7cf97f05d`. From `34510564…` the branch went to `6c252390…` and #1416 to `3b7f956b…`.
+- The other 102 bound files are the same on both sides and in the working tree.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for review.json's conflict markers, which it could not parse. Read against the merged tree, the branch's receipt was stale for exactly the four #1416 files and the two merged ones, and #1416's for exactly the two merged ones. The two merged files hold no CR byte or BOM and end in LF. review.mjs is the same on both sides, so the registry stays exactly 108 paths, with six hashes rebound against the follow-up above and the other 102 unchanged.
+
+Findings, tools/video/automation/flow.mjs. The two parts sit apart in the file:
+
+- Against `91f418c82` (+7/−2), the changed lines are, line for line, the change the "Dictionary-merge rule increment" reviewed at `d5550634b`: the import from `../core/lexicon.mjs` gaining `isProposableTerm` (line 25), the comment above `mergeLexicon` (lines 382–386) and the term test in its loop, `!isProposableTerm(term) || term in lexicon.terms` (line 393). Main's file with those three edits made by hand is the merged file, byte for byte. So the merged file is main's version plus the reviewed hunks, and nothing else.
+- Against `d02b4ec91` (+63/−25), they are, line for line, #1416's own change from `ab35cc389`, which its increment reviewed, and they sit where that increment says: the import from `../dubs/plan.mjs` gaining `overrunSummary` beside `MAX_TEMPO` (line 36), and 18 hunks between lines 3758 and 3929, every one in `makeDub`'s doc comment (lines 3756–3776) or its body (lines 3777–3930).
+
+#1416's part does not reach the dictionary. `mergeLexicon` with its comment (lines 383–400), `saveAndLint` (2771–2797) with its one call of `mergeLexicon` (line 2778), `lintErrors` (523–526), `MAX_LINT_FIXES` (line 83), `scriptPayload` (2680–2702) and `draftBudget` (3060–3069) are the same bytes at the same lines as at `d5550634b`, and no hunk of #1416's touches any of them. None of #1416's 88 changed lines names the lexicon, the dictionary, a term or lint. The merged file names `mergeLexicon` twice, `isProposableTerm` three times and `lexicon_additions` once, as the reviewed commit does. So how a proposed term is accepted reads as it was reviewed: the import, the one condition, and the unchanged checks around it.
+
+Findings, tools/video/automation/automation.test.mjs. Here too the two parts sit apart:
+
+- Against `91f418c82` (+47/−1), the changed lines are, line for line, the change reviewed at `d5550634b`: the fixtures import gaining `lexiconProposals` (line 15), the import of `isValidTerm` and `validateLexicon` (line 16), and the one test "a dictionary term the writer proposes that lint would refuse is left out…" at lines 673–716, still between the tests at lines 622 and 718. Main's file with that import line replaced and that block put before the same test is the merged file, byte for byte. So this merged file too is main's version plus the single test and the import lines already reviewed, and nothing else.
+- Against `d02b4ec91` (+100/−10), they are, line for line, #1416's own change from `ab35cc389`, which its increment reviewed: the import from `../dubs/plan.mjs` gaining `overrunSummary` (line 24), the comment above `fakeDub` and the helper itself (lines 2404–2458), the reworded give-up reasons in two dub tests (lines 3437–3439 and 3515–3521), one assertion added to the retake test at line 3665, and three new tests with a `HOST_ONLY` pattern (lines 3459–3482 and 3672–3722). The file has 169 top-level tests: the 166 of the follow-up above and #1416's three.
+
+Neither part reads the other. The dictionary test makes no dub and calls no `fakeDub`. #1416's hunks touch neither that test, nor `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` (line 37 still), nor a helper the test calls: `fakeSite`, `context` and `smallRefs` are at lines 209–391, and `fixture`, `sandbox` and `automationClient` are imported from files #1416 did not change. The test asserts what it asserted, and it passes on the merged tree.
+
+Lines naming a duration term (the list of the "Dictionary-merge rule increment") number 115 in flow.mjs on the branch and 116 in main's file and in the merged file, and 298 and 305 in automation.test.mjs. In both files the merged lines are main's lines, the same in the same order. The reviewed change adds none. The lines #1416 adds are its increment's to answer for: one in `makeDub`'s doc comment and eight in the test file, one of them the fake dub's `total_frames: timeline.total_frames` line rewritten around those same words. They name a dub window's frames and overrun seconds and a dub line's budget, never an episode's length.
+
+What the first increment read around the dictionary still stands in the merged tree. lexicon.mjs, lint.mjs, timeline.mjs, tts/requests.mjs, story.mjs and fixtures/load.mjs are not among the 19 files #1416's commit changes, and its dubs/plan.mjs hunks name neither `speechLexicon`, `dubLexicon` nor `CHINESE_LOCALES`.
+
+Across the merge there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. No duration assertion is removed or loosened.
+
+Ran (in the worktree with the merge in the index, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell, node_modules borrowed by a junction from another worktree of this repository and removed afterwards):
+
+- the hashing of every bound path against both receipts, the three revisions, the index and the working tree;
+- `durationReviewProblems` against `ab35cc389`, `d02b4ec91` and `91f418c82` through `git show`, which returned no problem for any of the three, and with each side's receipt against the merged tree;
+- the comparison of review.md at the three stages, section by section, and of the rebuilt report with them;
+- for each of the two files, `git merge-file`, a line-for-line comparison of each part with the other side's own change and with the change reviewed at `d5550634b`, and the rebuilding of the merged file from main's;
+- the comparison of the five functions named above between `d5550634b` and the merged flow.mjs;
+- a reading of #1416's diffs of the two files, and of the hunk headers of its dubs/plan.mjs diff;
+- the duration-term counts.
+
+On the merged bytes, each of these exited 0:
+
+- `node --test --test-skip-pattern="a project another process holds is left alone" tools/video/automation/automation.test.mjs`, 214 of 214 counting subtests, the 168 other top-level tests among them. The test left out is the lease test the first increment describes, now at line 5673 and the same bytes;
+- `node --test tools/video/core/lexicon.test.mjs tools/video/automation/story.test.mjs`, 26 of 26;
+- `node --test tools/video/core/lint.test.mjs tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs`, 70 of 70.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- #1416's four other files are bound as its increment reviewed them, and are not reviewed again here. #1416's parts of flow.mjs and automation.test.mjs were compared with #1416's own change and read; they are not judged afresh.
+- This follow-up does not review #1416: not the overrun tolerance, the kept takes or the reworded reasons, and not the unbound files it changed.
+- The merge was not committed when this was written. The receipt binds the bytes of the index as they were then; a bound file changed before or after the merge commit needs its own increment.
+- The lease test of automation.test.mjs was not run, since it does not finish on Windows. dubs.test.mjs, plan.test.mjs and captions-package.test.mjs, which #1416 changed, were not run here.
+- No writer, planner, translator or voice was run, and no video was dubbed, assembled or measured.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this follow-up.
+- The 102 bindings this merge did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the six rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Dictionary-merge rule merge with main (#1424) follow-up: 1 file (2026-10-10)
+
+Reviewer: `claude-pr-review-lexicon-merge-20261010-d`, a fourth pass by the reviewer of the three "Dictionary-merge rule" sections above. It wrote none of the branch's commits and none of main's, and edited only this report and review.json. Author: `claude-opus-5-5-lexicon-merge-fix`, the branch's author. Scope: DURATION_ONLY for the merge re-binding of the one file only #1424 changed, apps/api/app/video_automation/judge.py, on claude/lexicon-merge-letter-first. No bound file has new bytes in this merge. It joins the branch's `b11ea800593da988a5a3edbc185a44f6477cab30` with origin/main `b406d78cd9c93ae6ffde773c0167e30be3b01d6d` (#1424, "feat(video): the policy check asks for a demonstration only of tutorial-shaped videos"). Both sides come from `1bd1d47ce` (#1414). The session coordinating the branch started the merge with `git merge origin/main --no-commit`, and it was not committed when this was written: what was reviewed is the index and the working tree, which hold the same bytes for every one of the 108 bound files.
+
+The branch since the follow-up above. That follow-up's merge was committed as `0df361c15`. The two merges after it, `16edca74b` (#1418) and `b11ea8005` (#1414), changed no bound file and neither receipt file: all 108 bound files, review.md and review.json are the same bytes at `0df361c15` and at `b11ea8005`. So the receipt of the follow-up above is the branch's receipt at this merge.
+
+The receipt union. Both sides had changed review.md and review.json, and Git left both in conflict. Both were rebuilt from the three stages of the index (`git show :1:`, `:2:` and `:3:`, the base and the two sides), not from the conflict markers. This report holds every increment verbatim: #1424's "Policy judge demonstration-question increment (PR #1424)" from origin/main, then the branch's own three sections, then this one. That order is the side merged in, then the branch's own sections, then the merge, as earlier merge follow-ups in this report have it. Both sides had appended after the "Dub skip-rate increment (second opinion, overrun tolerance, kept takes)", #1424 its one section and the branch its three, and changed table rows. The preamble and the 114 sections up to and including it are byte-identical at `1bd1d47ce` and on both sides. #1424's section here is origin/main's byte for byte (6,091 bytes) and the branch's three are `b11ea8005`'s (13,876, 10,149 and 12,086 bytes), each with its own Verdict line and the blank line after it. Each side's receipt passes `durationReviewProblems` against its own tree (read by `git show`).
+
+Baseline, by bound file, against both receipts:
+
+- One file matches #1424's reviewed hash: apps/api/app/video_automation/judge.py, `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7`. The merged bytes equal `b406d78cd`'s, and the branch left the file at `1bd1d47ce`'s bytes (`fe502055…`). So this is a merge re-bind of the hash #1424's increment reviewed, with no new bytes.
+- Two files match the branch's hash: tools/video/automation/flow.mjs, `b15fff400a5ebcbc89f68bf9795d3b392da4c1dce4f6a8e58067e902f85409d2`, and tools/video/automation/automation.test.mjs, `5b7c04011f43798843fd7d9e146de490dc06890e6808f3e3544a3ee7cf97f05d`. The merged bytes equal `b11ea8005`'s, which are the bytes the follow-up above bound, and main left both at `1bd1d47ce`'s (`15ff4c13…` and `3b7f956b…`). Their rows are unchanged from the follow-up above. Against main's copies the two still differ by the change reviewed at `d5550634b` alone, line for line (+7/−2 and +47/−1).
+- No bound file was changed by both sides.
+- The other 105 bound files are the same on both sides and in the working tree.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for review.json's conflict markers, which it could not parse. Read against the merged tree, the branch's receipt was stale for exactly judge.py, and #1424's for exactly flow.mjs and automation.test.mjs. judge.py holds no CR byte or BOM and ends in LF. review.mjs is the same on both sides, so the registry stays exactly 108 paths, with one hash rebound against the follow-up above and the other 107 unchanged.
+
+This follow-up has no finding of its own, since no bound file's bytes are new. What #1424 changed in judge.py (+59/−18) is read in its increment above, and what the branch changed in flow.mjs and automation.test.mjs in the three sections above. Main's four commits since `1bd1d47ce` (#1422, #1419, #1420 and #1424) change 25 files. Of the bound ones judge.py is the only one, and the two under tools/video are qa/policy.mjs and qa/policy.test.mjs, both unbound. So nothing the earlier sections read around the dictionary moved: lexicon.mjs, lint.mjs, timeline.mjs, tts/requests.mjs, story.mjs and fixtures/load.mjs are not among the 25.
+
+Across the merge nothing bound changes but judge.py, as #1424's increment reviewed it. There is no change by this merge to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. No duration assertion is removed or loosened.
+
+Ran (in the worktree with the merge in the index, Node v24.13.0 on Windows):
+
+- the hashing of every bound path against both receipts, the three revisions, the index and the working tree;
+- `durationReviewProblems` against `1bd1d47ce`, `b11ea8005`, `b406d78cd` and `0df361c15` through `git show`, which returned no problem for any of the four, and with each side's receipt against the merged tree;
+- the comparison of all 108 bound files and of both receipt files between `0df361c15` and `b11ea8005`;
+- the comparison of review.md at the three stages, section by section, and of the rebuilt report with them;
+- a line-for-line comparison of flow.mjs and automation.test.mjs over main's copies with the change reviewed at `d5550634b`.
+
+No test was run for this follow-up but the CLI check and review.test.mjs, which are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- judge.py is bound as #1424's increment reviewed it, and is not reviewed again here. This follow-up does not review #1424, #1422, #1419 or #1420.
+- The branch's merges of #1418 and #1414 were not reviewed. Only this was checked: that they changed no bound file and neither receipt file.
+- The merge was not committed when this was written. The receipt binds the bytes of the index as they were then; a bound file changed before or after the merge commit needs its own increment.
+- No tool, API or web test was run on the merged tree. automation.test.mjs was last run for the follow-up above, and its lease test does not finish on Windows.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this follow-up.
+- The 107 bindings this merge did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Dictionary-merge rule merge with main (#1425) follow-up: 4 files (2026-10-10)
+
+Reviewer: `claude-pr-review-lexicon-merge-20261010-e`, a fifth pass by the reviewer of the four "Dictionary-merge rule" sections above. It wrote none of the branch's commits and none of main's, judged the one merged file's bytes on its own reading, and edited only this report and review.json. Author: `claude-opus-5-5-lexicon-merge-fix`, the branch's author. Scope: DURATION_ONLY for tools/video/automation/automation.test.mjs's merged bytes, plus the merge re-binding of the three files only #1425 changed, on claude/lexicon-merge-letter-first. The merge joins the branch's `eababadc08f12cf1e752f8829a2a61f4bfcda975` with origin/main `26bed1dec30bc32e6173b68c039fb47e24997157` (#1425, "feat(video): a photo card pastes a real photograph as a print, with its credit"). Both sides come from `c61944d18` (#1415). The other commit main gained, `c49ab1a48` (#1426), changes no bound file and neither receipt file. The session coordinating the branch started the merge with `git merge origin/main --no-commit`, and it was not committed when this was written: what was reviewed is the index and the working tree, which hold the same bytes for every one of the 108 bound files.
+
+The branch since the follow-up above. That follow-up's merge was committed as `5322818c9`. The merge after it, `eababadc0` (#1415), changed no bound file and neither receipt file: all 108 bound files, review.md and review.json are the same bytes at `5322818c9` and at `eababadc0`. So the receipt of the follow-up above is the branch's receipt at this merge.
+
+The receipt union. Both sides had changed review.md and review.json, and Git left both in conflict. Both were rebuilt from the three stages of the index (`git show :1:`, `:2:` and `:3:`, the base and the two sides), not from the conflict markers. This report holds every increment verbatim: #1425's "Photo card increment (PR #1425)" from origin/main, then the branch's own four sections, then this one. That order is the side merged in, then the branch's own sections, then the merge, as earlier merge follow-ups in this report have it. Both sides had appended after the "Policy judge demonstration-question increment (PR #1424)", #1425 its one section and the branch its four, and changed table rows. The preamble and the 115 sections up to and including it are byte-identical at `c61944d18` and on both sides. #1425's section here is origin/main's byte for byte (11,917 bytes) and the branch's four are `eababadc0`'s (13,876, 10,149, 12,086 and 7,346 bytes), each with its own Verdict line and the blank line after it. Each side's receipt passes `durationReviewProblems` against its own tree.
+
+Baseline, by bound file, against both receipts:
+
+- Three files match #1425's reviewed hash: docs/videos/README.md, tools/video/automation/prompts.mjs and tools/video/core/schema.mjs. In each case the merged bytes equal `26bed1dec`'s, and the branch left them at `c61944d18`'s bytes. So these are merge re-binds of the hashes #1425's increment reviewed, with no new bytes.
+- One file matches the branch's hash: tools/video/automation/flow.mjs, `b15fff400a5ebcbc89f68bf9795d3b392da4c1dce4f6a8e58067e902f85409d2`. The merged bytes equal `eababadc0`'s, and main left the file at `c61944d18`'s (`15ff4c13…`). Its row is unchanged from the follow-up above, and over main's copy it still differs by the change reviewed at `d5550634b` alone, line for line (+7/−2).
+- One file matches neither receipt: tools/video/automation/automation.test.mjs, 486,063 bytes and 6,845 lines, `70dfee0aac57ee1c6bf9f0e75025a2de58069cf2908133ba7d2048a2a349927f`. From `3b7f956b…` the branch went to `5b7c0401…` and #1425 to `d3c047a8…`. Git merged it without a conflict, and the merged bytes equal `git merge-file` of the two sides over `c61944d18`'s copy.
+- The other 103 bound files are the same on both sides and in the working tree.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for review.json's conflict markers, which it could not parse. Read against the merged tree, the branch's receipt was stale for exactly the three #1425 files and automation.test.mjs, and #1425's for exactly automation.test.mjs and flow.mjs. The merged file holds no CR byte or BOM and ends in LF. review.mjs is the same on both sides, so the registry stays exactly 108 paths, with four hashes rebound against the follow-up above and the other 104 unchanged.
+
+Findings, tools/video/automation/automation.test.mjs. The two parts sit apart in the file:
+
+- Against `26bed1dec` (+47/−1), the changed lines are, line for line, the change the "Dictionary-merge rule increment" reviewed at `d5550634b`: the fixtures import gaining `lexiconProposals` (line 15), the import of `isValidTerm` and `validateLexicon` (line 16), and the one test "a dictionary term the writer proposes that lint would refuse is left out…" at lines 674–717, still between the same two tests, now at lines 623 and 719. Main's file with that import line replaced and that block put before the same test is the merged file, byte for byte. So the merged file is main's version plus the reviewed hunks, and nothing else.
+- Against `eababadc0` (+1/−0), the one changed line is #1425's own, which its increment reviewed: line 90, the last assertion of the test "a model's answer is read as JSON, fenced or not" (lines 80–91). It reads `assert.ok(!refs.showcase.scenes.some((scene) => scene.template === "photo") && refs.showcase.assets === undefined, "less the photo card: an automated video has no photograph files");`, where `refs` is `references(ROOT)`. So the merged file is equally the branch's file plus that one line.
+
+Main's line is nowhere near the dictionary test or what it calls. It sits 584 lines above the test and above its helpers, `fakeSite` (line 210), `context` (line 372) and `smallRefs` (line 392), each one line lower than before and the same bytes. The dictionary test hands the worker `smallRefs`, whose showcase is `{ scenes: [] }`, and never calls `references`, so what #1425 changed in `references` (prompts.mjs, bound and read in its increment) does not reach it. `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` is still line 37. The file's lines naming a duration term (the list of the "Dictionary-merge rule increment") number 305 at `c61944d18`, on both sides and in the merged file, the same lines, and main's line names none. The file has 169 top-level tests, as before.
+
+Across the merge there is no change by the merged bytes to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the brand story's 13 minutes, the eight-minute floor on every video but a drama, the measured 480-second / 14,400-frame floors, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. No duration assertion is removed or loosened.
+
+Ran (in the worktree with the merge in the index, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell, node_modules borrowed by a junction from another worktree of this repository for the one test run and removed afterwards):
+
+- the hashing of every bound path against both receipts, the three revisions, the index and the working tree;
+- `durationReviewProblems` against `c61944d18`, `eababadc0`, `26bed1dec` and `5322818c9`, which returned no problem for any of the four, and with each side's receipt against the merged tree;
+- the comparison of all 108 bound files and of both receipt files between `5322818c9` and `eababadc0`;
+- the comparison of review.md at the three stages, section by section, and of the rebuilt report with them;
+- `git merge-file` of automation.test.mjs, a line-for-line comparison of each part with the other side's own change and with the change reviewed at `d5550634b`, and the rebuilding of the merged file from main's;
+- a reading of main's line in its test, and of #1425's increment above.
+
+On the merged bytes, this exited 0:
+
+- `node --test --test-name-pattern="dictionary term the writer proposes" --test-name-pattern="a model's answer is read as JSON, fenced or not" tools/video/automation/automation.test.mjs`, 2 of 2: the dictionary test and the test that holds main's line.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- #1425's three other files are bound as its increment reviewed them, and are not reviewed again here. Its line in automation.test.mjs was compared with its own change and read; it is not judged afresh.
+- This follow-up does not review #1425 or #1426: not the photo card, and not the unbound files they changed.
+- The branch's merge of #1415 was not reviewed. Only this was checked: that it changed no bound file and neither receipt file.
+- The merge was not committed when this was written. The receipt binds the bytes of the index as they were then; a bound file changed before or after the merge commit needs its own increment.
+- The other 167 tests of automation.test.mjs were not run on the merged tree. The whole file was last run for the "merge with main (#1416) follow-up", and its lease test does not finish on Windows.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this follow-up.
+- The 104 bindings this merge did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the four rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Official pages as video topics increment: 2 files (2026-10-10)
+
+Reviewer: `claude-pr-review-official-topics`. Author: `claude-opus-5-5-official-accounts`. Scope: DURATION_ONLY for the two changed bindings below, reviewed at `30544d813b02e8a6478203250da40aa6c56aef8f` ("feat(video): offer official pages the news writer declined as video topic candidates") on claude/official-video-topics. The reviewer wrote no part of that commit and edits only this report and review.json.
+
+Baseline: `bc42acee3abfe2c860d09e4f8f68fbf51c1acdcf`, main at #1407 and the merge base of the branch with origin/main (`e5570358e`, #1417). Immutable Git blobs pass `durationReviewProblems` there for the report and all 108 REVIEW_FILES, under the "History-and-curiosity series plan increment (PR #1407)" above. The same call returns no problem at the two commits the branch carries under the reviewed one (`776de426a`, `8314e0a0a`) and at origin/main: neither of the two, and none of the 90 files main changed after the baseline, is a bound file or one of the two receipt files. At the reviewed commit it returns the two stale bindings below and nothing else. Each of the two changed files matches its existing receipt and table at the baseline; its committed head bytes equal the reviewed working-tree bytes, hold no CR byte or BOM and end in LF. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these two bindings, while the other 106 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `apps/api/app/video_automation/schemas.py`: `08ad195d6c5befa11e15a307d04a9f38e441701605cc2559571c2e1e65ec21ab` -> `cd15fa7316ec8076f45f1a076afc109a3b73081ca0f09a743672450dc384304a`.
+- `tools/video/automation/prompts.mjs`: `4da2bae5b173bf24b7b6a87f9cc41531b5bd89cb36f025ad2582c71ae8fa254b` -> `0a91128ae6257ebad752db46c998a5bf76a51ad54a1e1f71000d758164ac3bc9`.
+
+Findings, `apps/api/app/video_automation/schemas.py` (+3/−2): two hunks, both inside `class TopicView` (lines 604–612). `source: Literal["site", "search"]` becomes `Literal["site", "search", "official"]`, with a new comment line above it that names `topics.official_topics`; the comment over `slug` changes from "None for a search result" to "None for the other two". `TopicView` is one row of the tool's `GET /topics` answer (`TopicsOut.topics`). Parsed, the class is six annotated fields (source, title, summary, url, slug, date) and no other statement: no validator and no field that holds a length. The wider literal lets the endpoint return a third kind of row and sets no number. Everything outside the two hunks is the same bytes: `EPISODE_MIN_MINUTES = 8`, `EXPLAINER_MIN_MINUTES = 8`, `EXPLAINER_MAX_MINUTES = 20` and `EXPLAINER_DEFAULT_MINUTES = 10` (lines 51–54), the settings' `target_minutes_min` and `target_minutes_max` (lines 181–182), and, one line lower than at the baseline, `SERIES_MAX_MINUTES = 8` and `STORY_MAX_MINUTES = 20` (lines 630–631) and the series request's `target_minutes`, `runtime_spec` and `total_minutes` (lines 727–740). The lines naming a duration term number 62 at both revisions.
+
+Findings, `tools/video/automation/prompts.mjs` (+9/−6): one hunk, the paragraph that opens the planner's own text in `INSTRUCTIONS.planner` (lines 206–214). A word-level diff shows two insertions and no removal; the rest of the nine lines is the same words wrapped again.
+
+- The list of where "topics" come from gains "then official pages" between the site's articles and the web results.
+- One new sentence: a topic whose "source" is "official" is a company's own page the site has no article for; the planner is to prefer it to a web result, return "source_guide": null with the page's url first in "source_urls", and "tell an update in the rules' four moves".
+
+The two insertions hold no digit. What each clause of the new sentence does for length:
+
+- "prefer it to a web result" orders the topics. It says which subject, not how long.
+- "source_guide": null with the url first in "source_urls" is what the planner already returned for a web result: the return shape (line 226, unchanged) reads "the site article's slug, or null". A video with no site article has no cta scene (line 112, unchanged: "Once, near the middle, when there is a source article"), as a web-result topic had none before. In flow.mjs (bound, unchanged) `draft` hands the endpoint's topics to the planner as they come (lines 1826–1832), `planPayload` takes `target_minutes` from the settings (line 1810, `slidesMinutes(this.settings)`), and `planProblem` (lines 344–360) reads no topic. A search of tools/video/automation, tests aside, for the quoted strings "site", "search" and "official" finds one line, the new sentence itself, so no code there compares a topic's source; under apps/api/app/video_automation the three values are only written, by the three `TopicView(...)` calls in topics.py.
+- "tell an update in the rules' four moves" points at a rule the planner already carried. `VALUE_RULES` (register.mjs lines 163–164, unbound and not in this commit; interpolated at prompts.mjs line 204 at both revisions) says "An update or a guide is told as numbered points, each in the same four moves: what the viewer did before, what changed, exactly what to do now, and the exception". That rule says what each point holds. It names no length and no number of points. In the same block, "The length comes from substance … When the material ends short of the minimum, add an example the sources carry or say so in the report; do not fill" (lines 179–182) stands as it was.
+
+The planner's length sentence is the same bytes three lines lower (lines 245–247, 242–244 at the baseline): "each ≥ 10 s; 250 spoken characters a minute; the whole at least 8 minutes and aimed at the upper end of "target_minutes", which is an aim, not a limit". Everything after line 214 is three lines lower and unchanged. The lines naming a duration term number 88 at both revisions.
+
+Which texts carry it: the baseline blob was loaded beside the head module, with its imports pointed at the repo's own modules (no other file under tools/video changed between the two revisions except prompts.test.mjs), and every export compared. 1 of 31 differs, `INSTRUCTIONS`, and in it 1 of 6 keys, `planner`: its text is 282 characters longer, and the head text with the two insertions taken out equals the baseline text once whitespace is normalised. `DRAMA_INSTRUCTIONS`, `VARIANT_INSTRUCTIONS`, `SOURCE_INSTRUCTIONS` and the rest compare equal. Of 960 `instructionsFor` calls (6 stages, 2 formats, no variant and 15 variants, no source language and 4), 40 differ. Every one is the planner under format "slides": with no variant, and with the 7 variants that have no planner text of their own and fall back to it. The writer, verifier, listener, translator and caption reviewer are the same text in all 800 of their calls, and so is a drama's planner.
+
+Across the increment there is no change to any of these: the explainer's 10-minute default and 8–20 range, the drama's 1–8 minutes, the eight-minute floor, the story's 20-minute ceiling, target_minutes, the long-anime `runtime_spec`, the planner's 10-second chapters and 250 characters a minute, or the cadence of a new state every 5 to 8 seconds. Each of those was seen in one of the two files, outside the hunks. The commit touches twelve files and none of the other ten is bound: not plans.json or policy.json, not lint, QA, duration.mjs, settings.py, flow.mjs or a migration. At the reviewed commit none of the twelve names MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, 14400 or total_frames, and `action_seconds` is named only outside the hunks: on lines 571, 606, 1751 and 1753 of prompts.mjs and on line 420 of prompts.test.mjs.
+
+A case-insensitive scan of the 20 changed lines of the two diffs (12 added, 8 removed) for minute, second, 分鐘, 秒, 長度, 集長, duration, length, runtime, floor, target_, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, action_seconds, runtime_spec, total_frames, frame, fps, pace, pacing, cadence, chapter, budget, longer, shorter, long, short, plans.json, policy.json and process.env finds nothing. The same scan over all 708 changed lines of the commit's twelve files finds 19 lines, none about a video's length: `minimum_title_length` on 4 config lines of sources.json; in the new test, `SimpleNamespace` on 5 lines (it holds "pace"), a 600-character filler string and the words "A second page"; and 8 lines of the four task files that name the duration receipt or the `long-form` path. The counts of 62 and 88 above use the list the earlier increments count with: minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json and process.env.
+
+Ran (in the worktree at `30544d813`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the two stale bindings and exited 1;
+- the hashing of the two changed paths against the receipt, the baseline blob, the head blob and the working tree;
+- `durationReviewProblems` through `git show <revision>:<path>` at the baseline, `776de426a`, `8314e0a0a`, the reviewed commit and origin/main;
+- a reading of the two diffs line by line and a word-level diff of prompts.mjs;
+- a reading, as context, of the diffs of topics.py, admin_api.py, sources.json, AUTOMATION.md and prompts.test.mjs, of register.mjs lines 85–184, and of `planProblem`, `planPayload` and `draft` in flow.mjs;
+- the two searches for code that reads a topic's source;
+- the export comparison and the 960 `instructionsFor` calls;
+- a parse of `TopicView` with Python's `ast`;
+- the duration-term counts and the two scans;
+- `git diff --check` over the commit and over baseline..head, which both exited 0.
+
+On the reviewed bytes, each of these exited 0:
+
+- `node --test tools/video/automation/prompts.test.mjs`, 25 of 25;
+- `node --test tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs`, 25 of 25.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the feature as a product or editorial choice: which five sources are opted in, the 14 days and 20 rows, offering only what the news writer declined, or putting an official page ahead of a web result. Whether the query in `official_topics` returns the right rows was not judged.
+- topics.py, admin_api.py, sources.json, AUTOMATION.md and prompts.test.mjs are unbound. Their diffs were read as context and are not reviewed or bound here. The new test_video_automation_topics.py and the four task files were scanned for duration terms and not read through.
+- No planner was run. Whether one official page carries enough for an outline of eight minutes, and what a planner does with "four moves" for a how-to post, were not observed. Only that the floor stands in the planner's text as before and that this commit changes no check: lint, QA and flow.mjs hold their bound hashes.
+- No API test, ruff or mypy was run: not tests/test_video_automation_topics.py and not the API suite, and the `/topics` endpoint was not called. `TopicView` was parsed, not imported.
+- `instructionsFor` was called with no series, so the long-anime texts were not asked, and the brand story's variants in story-prompts.mjs (unbound, not in this commit) were not listed. Which stage and variant pairs a route passes was not traced; the 960 calls are the whole cross product, and some of the 40 may be pairs no route asks.
+- The two commits under the reviewed one (`776de426a`, `8314e0a0a`) were checked for bound files and not read.
+- origin/main is ahead of the baseline. This increment reviews `30544d813`, not a later merge with main.
+- No rendered cut or measured narration was produced, and the full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 106 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Official pages as video topics merge with main (#1413, #1416) follow-up: 2 files (2026-10-10)
+
+Reviewer: `claude-pr-review-official-topics`, a new instance under the reviewer name of the increment above. It wrote none of the branch's commits, took no statement of the increment above on trust (every fact stated here was derived again from Git and the working tree), and edited only this report and review.json. Author: `claude-opus-5-5-official-accounts`, the branch's author, which made the merge `ffc38eef6d51429d2df2035b930169f7f59ca09c` ("Merge remote-tracking branch 'origin/main' into claude/official-video-topics"). Scope: DURATION_ONLY for the merged bytes of the two files below, on claude/official-video-topics at `a9544cd5dedbf1c800d76bef695251d2ac800a08` ("fix(video): what a six-angle review of the official-topics change found"). The merge joins the branch's `30f412dc4689803a9cf14ba749d16119edc9ebeb`, whose receipt is the "Official pages as video topics increment" above, with main at `88e46c2c25990aa12e4c59681d889f8247f7fb32` (#1420). Both sides come from `bc42acee3abfe2c860d09e4f8f68fbf51c1acdcf` (#1407). The only commit after the merge, `a9544cd5d`, touches nine files (topics.py and its test, the web topics route, AUTOMATION.md, ai-terms/README.md and four task files), none of them bound.
+
+The receipt union. Both sides had changed review.md and review.json, and the merge kept main's side of both: at the head each was byte-identical to `88e46c2c2`'s. This report now holds main's two increments since the fork as main has them ("Video languages are four increment", #1413, and "Dub skip-rate increment", #1416), then the branch's own "Official pages as video topics increment" verbatim from `git show 30f412dc4:docs/videos/long-form/review.md`, then this one. That order is the side merged in, then the branch's own section, then the merge, as the "PR #1361 merge with main (#1378, #1382) follow-up" in this report has it. The branch's section was copied from the file its author saved outside the repository before the merge; that file is byte-identical to the `30f412dc4` blob (sha256 `1e5ff2129e01f35f48a68ca3ac00832a80b236e3b42dfc082baa8110b8ca0fbf`, the report hash that commit's review.json holds). Each side had only appended after the "History-and-curiosity series plan increment (PR #1407)" and changed hashes in the table: the 3,220 lines before the bindings heading at `bc42acee3` open both sides' reports unchanged, and outside the hashes the table is the same text in all three. Each side's receipt passes `durationReviewProblems` against its own tree (read by `git show`).
+
+Baseline, by bound file, against both receipts:
+
+- Two files match neither. Both sides changed each of them from `bc42acee3`, and Git merged each without a conflict: the merged bytes equal `git merge-file` of the two sides over `bc42acee3`'s copy, the same at `ffc38eef6`, at the head and in the working tree.
+  - apps/api/app/video_automation/schemas.py (50,155 bytes): `08ad195d…` at the fork, `cd15fa73…` on the branch, `8a7b3310…` on main (#1413).
+  - tools/video/automation/prompts.mjs (134,833 bytes): `4da2bae5…` at the fork, `0a91128a…` on the branch, `75f17ea8…` on main (#1413).
+- The other 106 bound files are main's bytes. Between `88e46c2c2` and the head 17 files differ, and these two are the only bound ones. Their rows are main's, unchanged.
+
+Rebound, from the hash main's receipt held to the hash of the head's bytes:
+
+- `apps/api/app/video_automation/schemas.py`: `8a7b331074ca60276213a211011ac87952b34019d832b391f8d4129d11291ad7` -> `e51d5729ec66f50f204b4c2cb0849d0a85290be01d71ce43d0d9019cb42baca3`.
+- `tools/video/automation/prompts.mjs`: `75f17ea823f2fc1f7ea39b3ae21df401d9329333222434e9d97ea632bbf02388` -> `f75fa9374424eb1402f44d44c454763c73a0013c4d9bfc527943ac052ed73295`.
+
+The hashes the increment above bound, `cd15fa73…` and `0a91128a…`, are of the pre-merge bytes at `30544d813`. No tree after the merge holds those bytes. They stay in that section as its record and are in neither the table nor review.json.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these two bindings and exited 1, and `durationReviewProblems` over the head's blobs returned the same two and nothing else. Each file's committed bytes equal the working tree's, hold no CR byte or BOM and end in LF. The registry stays exactly 108 paths, with two hashes rebound and the other 106 unchanged.
+
+Findings, `apps/api/app/video_automation/schemas.py`. The two parts sit apart in the file:
+
+- Against `88e46c2c2` (+3/−2), the changed lines are, line for line, the branch's own change from `bc42acee3`. All of them are inside `class TopicView` (lines 607–615). `source: Literal["site", "search"]` becomes `Literal["site", "search", "official"]` under a new comment line that names `topics.official_topics`, and the comment over `slug` reads "None for the other two" instead of "None for a search result". Parsed with Python's `ast` at main and at the head, the file is 131 top-level statements at both, and `TopicView` is the only one whose tree differs. The class is six annotated fields (source, title, summary, url, slug, date) and no other statement: no validator and no field that holds a length. Its one use in the file is `topics: list[TopicView]` (line 619) in `TopicsOut`, the response model of the tool's `GET /topics` (admin_api.py line 354). The wider literal lets that answer carry a third kind of row and sets no number.
+- Against `30f412dc4` (+7/−4), they are, line for line, main's own change from `bc42acee3` (#1413), which the "Video languages are four increment" above reviewed.
+
+The module's ten constants whose names hold MINUTES, SECONDS, MIN_, MAX_ or DEFAULT are equal at main and at the head, among them `EPISODE_MIN_MINUTES = 8`, `EXPLAINER_MIN_MINUTES = 8`, `EXPLAINER_MAX_MINUTES = 20` and `EXPLAINER_DEFAULT_MINUTES = 10` (lines 54–57) and, one line lower than on main, `SERIES_MAX_MINUTES = 8` and `STORY_MAX_MINUTES = 20` (lines 633–634). The settings' `target_minutes_min` and `target_minutes_max` (lines 184–185) and the series request's `runtime_spec` and `total_minutes` (lines 732 and 743, one line lower) are outside the changed lines. The lines naming a duration term number 62 at the fork, on main and at the head.
+
+Findings, `tools/video/automation/prompts.mjs`:
+
+- Against `88e46c2c2` (+9/−6), the changed lines are, line for line, the branch's own change from `bc42acee3`: one hunk, the paragraph that opens the planner's own text in `INSTRUCTIONS.planner` (lines 206–214). A word-level diff shows two insertions and no removal; the rest of the nine lines is the same words wrapped again.
+  - The list of where "topics" come from gains "official pages, then" between the site's articles and the web results.
+  - One new sentence: a topic whose "source" is "official" is a company's own page (a product update, a how-to post) the site has no article for; the planner is to prefer it to a web result, return "source_guide": null with its url first in "source_urls", and "tell an update in the rules' four moves".
+- Against `30f412dc4` (+17/−18), they are, line for line, main's own change from `bc42acee3` (#1413), which the "Video languages are four increment" above reviewed.
+
+No changed line of either file holds a digit. What each clause of the new sentence does for length, read in the planner's text as it now stands (lines 199–259):
+
+- "prefer it to a web result" orders the topics. It says which subject, not how long.
+- "source_guide": null with the url first in "source_urls" is a shape the planner could already return: the return line (226, outside the hunk) reads "the site article's slug, or null". A video with no site article has no cta scene (line 112, outside the hunk: "Once, near the middle, when there is a source article"), as a web-result topic had none. In flow.mjs (bound, and the same bytes as on main) `draft` hands the endpoint's topics to the planner as they come (lines 1826–1832), `planPayload` takes `target_minutes` from the settings (line 1810, `slidesMinutes(this.settings)`), and `planProblem` (lines 344–360) reads no topic. A search of tools/video, tests aside, for the quoted strings "site", "search" and "official" finds five lines: the new sentence, and four that are not about a topic (a CLI subcommand in media/stock.mjs, the `PRIMARY_KINDS` of a source in story-plans/plan.mjs, and "site" twice in templates.mjs, in the cta card's markup). So no code there compares a topic's source. Under apps/api/app/video_automation the three values are only written, by the three `TopicView(...)` calls in topics.py (lines 78, 174 and 236).
+- "tell an update in the rules' four moves" points at a rule the planner already carried. `VALUE_RULES` (register.mjs lines 163–164; unbound, the same bytes on main and at the head, and interpolated at prompts.mjs line 204 at both) says "An update or a guide is told as numbered points, each in the same four moves: what the viewer did before, what changed, exactly what to do now, and the exception". The "four" counts the moves inside one point. It is not a number of points, chapters, seconds or minutes, and the rule names no length. In the same block, "The length comes from substance … When the material ends short of the minimum, add an example the sources carry or say so in the report; do not fill" (lines 179–182) stands as it was.
+
+The planner's length sentence is the same bytes three lines lower (lines 245–247, 242–244 on main): "each ≥ 10 s; 250 spoken characters a minute; the whole at least 8 minutes and aimed at the upper end of "target_minutes", which is an aim, not a limit". Everything after line 214 is three lines lower and unchanged. The lines naming a duration term number 88 at the fork, on main and at the head.
+
+Which texts carry it: main's blob was loaded beside the head's module, with its six relative module specifiers pointed at the repository's own modules (under tools/video only prompts.mjs and prompts.test.mjs differ between main and the head), and every export compared. 1 of 31 differs, `INSTRUCTIONS`, and in it 1 of 6 keys, `planner`: 28,786 characters on main and 29,068 at the head, 282 more, which is the two insertions (21 and 261 characters). The head's text with the two insertions taken out equals main's once whitespace is normalised, and the parts of the planner's text that name a minute, a second or target_minutes (12, split at sentence punctuation) are the same in both. Of 768 `instructionsFor` calls (6 stages, 2 formats, no variant and 15 variants, no source language and 3), 32 differ. Every one is the planner under format "slides": with no variant, and with the 7 variants that have no planner text of their own and fall back to it (episode, series-doc, recap, rewrite, register, shorten, reword). The writer, verifier, listener, translator and caption reviewer are the same text in every call, and so is a drama's planner.
+
+Across the merge there is no change to any of these, each seen in one of the two files outside the changed lines: the eight-minute floor, the explainer's 10-minute default and 8–20 range, the 8- and 20-minute ceilings named above, target_minutes, the long-anime `runtime_spec`, the planner's 10-second chapters and 250 characters a minute, or the cadence of a new picture or card state every 5 to 8 seconds (prompts.mjs lines 162–163). Taking the wider list of the scan below, the lines of each file that name any of its terms are the same list at main and at the head: 173 lines of schemas.py and 270 of prompts.mjs. Of the 17 files that differ between main and the head, none of the other 15 is bound: not plans.json or policy.json, not lint, QA, duration.mjs, settings.py, flow.mjs or a migration.
+
+A case-insensitive scan of the 20 changed lines of the two diffs against main (12 added, 8 removed) for minute, second, 分鐘, 秒, 長度, 集長, 時長, duration, length, runtime, floor, target_, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, action_seconds, runtime_spec, total_frames, frame, fps, pace, pacing, cadence, chapter, budget, longer, shorter, long, short, eight, plans.json, policy.json and process.env finds nothing. The same scan over all 1,028 changed lines (898 added, 130 removed) of the 17 files finds 56 lines, none about a video's length: `minimum_title_length` on 4 config lines of sources.json; in the new test, `SimpleNamespace` on 5 lines (it holds "pace"), a 600-character filler string and the words "A second page"; the daily Brave "budget" on 2 comment lines of the web topics route; a task id holding "second" on 1 line of AUTOMATION.md; and 42 lines of the task files that name the duration receipt, the `long-form` path, a "second" video, load, run, attempt or agent, or "no longer". The counts of 62 and 88 above use the list the earlier increments count with: minute, 分鐘, MIN_EPISODE, VIDEO_MIN, 480, 14400, 14,400, 600, 780, target_, runtime, action_seconds, total_frames, duration, seconds, frame, fps, floor, plans.json, policy.json and process.env.
+
+Ran (in the worktree at `a9544cd5d`, Node v24.13.0 on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell, nothing fetched):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the two stale bindings and exited 1, and `node --test tools/video/long-form/review.test.mjs`, whose first test failed on the same two;
+- the comparison of both receipt files at the head with `88e46c2c2`'s;
+- `durationReviewProblems` through `git show <revision>:<path>` at `88e46c2c2`, `30f412dc4`, the head and the origin/main ref;
+- the hashing of the two paths at `bc42acee3`, `30544d813`, `30f412dc4`, `88e46c2c2`, `ffc38eef6`, the head and the working tree;
+- `git merge-file` of both files, and a line-for-line comparison of each part with the other side's own change;
+- the comparison of review.md at `bc42acee3` and both sides;
+- a reading of the two diffs line by line, a word-level diff of both, and a reading of prompts.mjs lines 199–259 as merged;
+- a reading, as context, of register.mjs lines 88–186, of `planProblem`, `planPayload` and `draft` in flow.mjs and of the four changed lines of prompts.test.mjs;
+- the two searches for code that reads a topic's source;
+- the export comparison and the 768 `instructionsFor` calls;
+- a parse of schemas.py with Python's `ast` at main and at the head;
+- the duration-term counts and the two scans;
+- `git diff --check` over `88e46c2c2`..head, which exited 0.
+
+On the merged bytes, each of these exited 0:
+
+- `node --test tools/video/automation/prompts.test.mjs`, 25 of 25;
+- `node --test tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs`, 25 of 25.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the feature as a product or editorial choice: which sources are opted in, how many days and rows are offered, offering only what the news writer declined, or putting an official page ahead of a web result.
+- Main's part of the two files (#1413's lines) is bound as its increment reviewed it. It was compared line for line with main's own change and not reviewed again here.
+- Statements of the increment above that this follow-up does not repeat were not checked again: its 960 calls on the pre-merge bytes, and the two commits it names under the reviewed one.
+- The nine files of `a9544cd5d` and the other unbound files of the branch (topics.py, admin_api.py, sources.json, AUTOMATION.md, the new test, the web route and the task files) were checked against the registry and scanned for duration terms. They were not read through, and are not reviewed or bound here. Whether the query in `official_topics` returns the right rows was not judged.
+- No planner was run. Whether one official page carries enough for an outline of eight minutes, and what a planner does with "four moves" for a how-to post, were not observed. Only that the floor stands in the planner's text as before and that the merge changes no check: lint, QA and flow.mjs hold main's hashes.
+- No API test, ruff or mypy was run, and the `/topics` endpoint was not called. schemas.py was parsed, not imported.
+- `instructionsFor` was called with no series, so the long-anime texts were not asked, and the brand story's variants in story-prompts.mjs (unbound, the same bytes on main and at the head) were not listed. Which stage and variant pairs a route passes was not traced; the 768 calls are the whole cross product, and some of the 32 may be pairs no route asks.
+- After the merge, this worktree's origin/main ref moved on to `b406d78cd9c93ae6ffde773c0167e30be3b01d6d` (#1424). Its receipt passes `durationReviewProblems` on its own blobs. It changes one bound file, apps/api/app/video_automation/judge.py, and both receipt files, and leaves the two files of this follow-up at `88e46c2c2`'s bytes. The head does not carry it. This follow-up binds the head's tree only: a later merge with main needs its own follow-up, with #1424's section and judge.py's row from main.
+- No rendered cut or measured narration was produced, and the full tool, Vitest and API suites, lint, typecheck and CI were not run for this follow-up.
+- The 106 bindings this merge left at main's hashes are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Official pages as video topics second merge with main (#1424, #1415) follow-up: 2 files (2026-10-10)
+
+Reviewer: `claude-pr-review-official-topics`, a new instance under the reviewer name of the two sections above. It wrote none of the branch's commits, derived every fact stated here again from Git and the working tree, and edited only this report and review.json. Author: `claude-opus-5-5-official-accounts`, the branch's author, which made the merge `d8afe7cd3889a38ebe30dc6cb1d6403c434d460c` ("Merge remote-tracking branch 'origin/main' into claude/official-video-topics"). Scope: DURATION_ONLY for the bytes of the two files below at that merge, the head of claude/official-video-topics. The merge joins the branch's `124b4b64d86cc53f51008fe4e519bf876a450c9f`, whose receipt is the follow-up above, with main at `c61944d18ac2e48c3f53a1a0061d7cdadfacee86` (#1415, with #1424, `b406d78cd`, before it). Their merge base is `88e46c2c25990aa12e4c59681d889f8247f7fb32` (#1420). No binding is newly reviewed here.
+
+The receipt union. Both sides had changed review.md and review.json since `88e46c2c2`, and the merge kept main's side of both: at the head and in the working tree each was byte-identical to `c61944d18`'s (report sha256 `5732aa64107aa7d06e2ceb9c35e69ce436c3e619b33cb05eb41ac949747f189b`, the hash main's review.json held). This report is now main's text through its "Policy judge demonstration-question increment (PR #1424)", then the branch's two sections above, byte for byte as `git show 124b4b64d:docs/videos/long-form/review.md` has them, then this one. The two sections were cut from the file the author saved outside the repository, which is byte-identical to the `124b4b64d` blob (sha256 `7dfd67dc44af360e5fb5dc0c8ed6eef1027e0667230d7ef5c7fa792f92d83cbb`, the report hash that commit's review.json holds). Each side had only appended: the 3,353 lines before the bindings heading at `88e46c2c2` open both sides' reports unchanged, after which main has one section (35 lines) and the branch two (156 lines). In the table main differs from `88e46c2c2` in one row, judge.py's, and the branch in two, those of the files below; every other line of it is the same in all three. Each of the three receipts passes `durationReviewProblems` against its own tree's blobs.
+
+By bound file:
+
+- apps/api/app/video_automation/judge.py is main's (#1424). The head's bytes hash to `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7`, the hash main's increment bound. Its row and the other 105 are main's rows, unchanged.
+- The two files below are the branch's. Neither #1424 (8 files) nor #1415 (27 files, none of them bound and neither receipt file) changed them: each is the same blob at `88e46c2c2` and at `c61944d18`. Each is the same bytes at `a9544cd5d`, where the follow-up above reviewed it, at `124b4b64d`, at the head and in the working tree (50,155 and 134,833 bytes, no CR byte or BOM, ending in LF).
+- Between `c61944d18` and the head 17 files differ, and these two are the only bound ones.
+
+Rebound, from the hash main's receipt held to the hash the follow-up above bound:
+
+- `apps/api/app/video_automation/schemas.py`: `8a7b331074ca60276213a211011ac87952b34019d832b391f8d4129d11291ad7` -> `e51d5729ec66f50f204b4c2cb0849d0a85290be01d71ce43d0d9019cb42baca3`.
+- `tools/video/automation/prompts.mjs`: `75f17ea823f2fc1f7ea39b3ae21df401d9329333222434e9d97ea632bbf02388` -> `f75fa9374424eb1402f44d44c454763c73a0013c4d9bfc527943ac052ed73295`.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these two bindings and exited 1, and `durationReviewProblems` over the head's blobs with main's receipt returned the same two and nothing else. The registry stays 108 paths, with two hashes rebound and the other 106 as main has them.
+
+Findings. For the two files, `git diff c61944d18 d8afe7cd3` prints byte for byte what `git diff 88e46c2c2 a9544cd5d` prints (45 lines, +12/−8), so the change against main is the one the follow-up above judged. It was read again here, line by line. In schemas.py, `TopicView.source` gains the literal "official" and two comments change. In prompts.mjs, the paragraph that opens the planner's own text gains "then official pages" in the list of where "topics" come from, and one sentence about a topic whose "source" is "official": prefer it to a web result, return "source_guide": null with its url first in "source_urls", and "tell an update in the rules' four moves". No changed line holds a digit. The rule that sentence points at (register.mjs lines 163–164; unbound, and the same bytes at `c61944d18` and at the head) says what each point of an update holds and names no length. The planner's length sentence (prompts.mjs lines 245–247: chapters of at least 10 seconds, 250 spoken characters a minute, the whole at least 8 minutes and aimed at the upper end of "target_minutes") is outside the hunk. This reviewer reaches the verdict of the two sections above: the change sets no duration rule and moves none.
+
+Ran (in the worktree at `d8afe7cd3`, Node v24.13.0 on Windows; this reviewer fetched nothing):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the two stale bindings and exited 1;
+- the comparison of both receipt files at the head and in the working tree with `c61944d18`'s, and of the saved report with the `124b4b64d` blob;
+- the comparison of review.md at `88e46c2c2`, `c61944d18` and `124b4b64d`, above the table and row by row in it;
+- `durationReviewProblems` through `git cat-file blob <revision>:<path>` at `88e46c2c2`, `c61944d18` and `124b4b64d`, and over the head's blobs with main's receipt;
+- the hashing of the two paths at `a9544cd5d`, `124b4b64d`, `c61944d18`, the head and the working tree, a byte comparison of their blobs at `88e46c2c2` and `c61944d18`, and `git diff --quiet` of the two paths from `a9544cd5d` and from `124b4b64d` to the head, which both exited 0;
+- the file lists of `88e46c2c2`..`b406d78cd`, `b406d78cd`..`c61944d18` and `c61944d18`..head against REVIEW_FILES and the two receipt files;
+- the byte comparison of the two diffs, and a reading of the diff, of prompts.mjs lines 199–259 and of register.mjs lines 158–185;
+- the union itself, as a script: main's report, the branch's two sections, this section, and main's table with the two rows changed. It checks that taking the insertion out and putting main's two hashes back gives `c61944d18`'s report byte for byte, and that the result passes `durationReviewProblems` against the working tree.
+
+On the head's bytes, `node --test tools/video/automation/prompts.test.mjs` exited 0, 25 of 25.
+
+The CLI check, review.test.mjs and `git diff --check` are run after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- No binding is reviewed afresh. The two sections above keep their own revision-specific claims, and what they state that this follow-up does not repeat was not checked again: the export comparison and the `instructionsFor` calls, the parse with Python's `ast`, the `git merge-file` comparison, the searches for code that reads a topic's source, and the term scans and counts.
+- #1424's change to judge.py is bound as main's increment reviewed it. Main's receipt was checked to pass on main's blobs; the change itself was not read here.
+- #1415's 27 files and the other 15 files that differ between `c61944d18` and the head were checked against the registry and not read. This follow-up does not accept the feature as a product or editorial choice.
+- No planner was run, and no rendered cut or measured narration was produced. No API test, ruff, mypy, lint or typecheck was run, nor the tool suites other than the one test file named above, nor CI.
+- While this follow-up was being written, this worktree's origin/main ref moved from `c61944d18` to `c49ab1a48ec91975ddf29ff789709fdd96d92274` (#1426). Between the two 135 files differ, none of them bound and neither receipt file; the two files of this follow-up are at `c61944d18`'s bytes there, and its receipt passes `durationReviewProblems` on its own blobs. The head does not carry it. This follow-up binds the head's tree only.
+- The 106 bindings this merge left at main's hashes are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Official pages as video topics third merge with main (#1425) follow-up: 2 files (2026-10-10)
+
+Reviewer: `claude-pr-review-official-topics`, the instance that wrote the follow-up above. It wrote none of the branch's commits and no part of #1425, and edited only this report and review.json. Author: `claude-opus-5-5-official-accounts`, the branch's author, which made the merge `c110799e1fc1f6060fdcab1a835d6b48ace69cd7` ("Merge remote-tracking branch 'origin/main' into claude/official-video-topics"). Scope: DURATION_ONLY for the bytes of the two files below at that merge, the head of claude/official-video-topics. The merge joins the branch's `d7ad126263d8a2cd233a59204b30999b8029206e` with main at `26bed1dec30bc32e6173b68c039fb47e24997157` (#1425). Their merge base is `c49ab1a48ec91975ddf29ff789709fdd96d92274` (#1426), which the branch took in at `d7ad12626`: between `1ba2760c4`, where the follow-up above was committed, and `d7ad12626` 135 files differ, none of them bound and neither receipt file.
+
+The receipt union. Both sides had changed review.md and review.json since `c49ab1a48`, and the merge kept main's side of both: at the head and in the working tree each was byte-identical to `26bed1dec`'s (report sha256 `8b6166a7eee2ba999f36dcc99cb1b66301e688b96df5b293712d48b15c12acd9`, the hash main's review.json held). This report is now main's text through its "Photo card increment (PR #1425)", then the branch's three sections above, byte for byte as `git show 1ba2760c4:docs/videos/long-form/review.md` has them, then this one. The three sections were cut from the file the author saved outside the repository, which is byte-identical to the blob at `1ba2760c4` and at `d7ad12626` (sha256 `c0aebc701f1512c5fc0c2dd1fe87f0532e219047adbcdbede89f2b721470a872`, the report hash their review.json holds). Each side had only appended: the 3,388 lines before the bindings heading at `c49ab1a48` open both sides' reports unchanged, after which main has one section (55 lines) and the branch three (205 lines). In the table main differs from `c49ab1a48` in four rows, those #1425 bound (docs/videos/README.md, automation.test.mjs, prompts.mjs and core/schema.mjs), and the branch in the two of the files below; every other line of it is the same in all three. Each of the three receipts passes `durationReviewProblems` against its own tree's blobs.
+
+By bound file:
+
+- apps/api/app/video_automation/schemas.py is the branch's, as reviewed. Main did not change it (the same bytes at `c49ab1a48` and `26bed1dec`), and it is the same bytes at `a9544cd5d`, `1ba2760c4`, `d7ad12626`, the head and in the working tree (50,155 bytes).
+- tools/video/automation/prompts.mjs matches neither side's receipt. Both sides changed it from `c49ab1a48` and Git merged it without a conflict: `75f17ea8…` at the merge base, `f75fa937…` on the branch, `2dc3f65a…` on main, `61632a08…` at the head (135,429 bytes, no CR byte or BOM, ending in LF). The head's bytes equal the working tree's and the output of `git merge-file` for the two sides over the merge base's copy, so the merge added nothing of its own.
+- The other 106 bound files are main's bytes, the other three of #1425 among them, and their rows are main's, unchanged. Between `26bed1dec` and the head 17 files differ, and these two are the only bound ones.
+
+Rebound, from the hash main's receipt held to the hash of the head's bytes:
+
+- `apps/api/app/video_automation/schemas.py`: `8a7b331074ca60276213a211011ac87952b34019d832b391f8d4129d11291ad7` -> `e51d5729ec66f50f204b4c2cb0849d0a85290be01d71ce43d0d9019cb42baca3`.
+- `tools/video/automation/prompts.mjs`: `2dc3f65a6aaa1845c6c248d80494190ee2fef05cfa27303e0b407739060241e0` -> `61632a08cd1b036796b900e2274babf49316960adef8ff974f52bbaf73b8f85d`.
+
+The hash the follow-up above bound for prompts.mjs, `f75fa937…`, is of the bytes before this merge. It stays in the sections above as their record and is in neither the table nor review.json.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these two bindings and exited 1, and `durationReviewProblems` over the head's blobs with main's receipt returned the same two and nothing else. The registry stays 108 paths, with two hashes rebound and the other 106 as main has them.
+
+Findings, `tools/video/automation/prompts.mjs`. The two sides' parts sit apart in the merged file:
+
+- Against `26bed1dec` (+9/−6), the changed lines are one hunk, the paragraph that opens the planner's own text in `INSTRUCTIONS.planner` (lines 217–225, eleven lines lower than before the merge). They are this change's lines as the sections above judged them: with the five of schemas.py (+3/−2), the 20 changed lines of `git diff 26bed1dec c110799e1` for the two files are, line for line, those of `git diff c61944d18 1ba2760c4` and of `git diff 88e46c2c2 a9544cd5d`. None holds a digit.
+- Against `d7ad12626` (+12/−1), they are, line for line, main's own change from `c49ab1a48` (#1425), which the "Photo card increment (PR #1425)" above reviewed: a new export `workerShowcase` (lines 18–27), which returns the showcase without its `photo` scenes and its `assets`, and `references()` passing the showcase through it (line 36).
+
+Whether the two insertions still set no length in these surroundings was read in the planner's text as it stands at the head (lines 210–270) and in what #1425 put beside it:
+
+- The planner's text is the same string as before the merge: the branch's module at `d7ad12626`, loaded beside the head's, has an equal `INSTRUCTIONS`, and its only exports that differ are `references` and the new `workerShowcase`. So the two insertions say what they said: "then official pages" in the list of where "topics" come from, and one sentence that orders an official page before a web result, has the planner return "source_guide": null with the page's url first in "source_urls" (a shape the return line, 237, already allowed), and tells an update "in the rules' four moves". That rule (register.mjs lines 163–164; unbound, and the same bytes at the merge base, on main and at the head) says what each point of an update holds and names no length.
+- The planner's length sentence is outside the hunk and the same bytes as on main (lines 256–258: chapters of at least 10 seconds, 250 spoken characters a minute, the whole at least 8 minutes and aimed at the upper end of "target_minutes").
+- #1425's part does not meet this change's. `workerShowcase` and `references()` name no topic, no source and no length. The showcase goes into `scriptPayload` (flow.mjs line 2691), not into the planner's: `planPayload` (flow.mjs lines 1803–1818) carries `channel`, `formats` and `script_writing`, takes `target_minutes` from the settings (`slidesMinutes(this.settings)`) and holds the topics as the endpoint returns them, and `planProblem` (lines 344–360) reads no topic. flow.mjs is bound and the same bytes at the merge base, on main and at the head. Of the 377 changed lines (342 added, 35 removed) of #1425's 13 files other than the two receipt files, none names official, topic, source_guide, source_urls, requested_guide, planner or "four moves"; the one line holding `"source"` is a photograph's credit in the showcase fixture.
+
+Which texts carry this change at the head: main's blob was loaded beside the head's module, with its six relative module specifiers pointed at the repository's own modules (under tools only prompts.mjs and prompts.test.mjs differ between main and the head), and every export compared. 1 of 32 differs, `INSTRUCTIONS`, and in it 1 of 6 keys, `planner`: 28,786 characters on main and 29,068 at the head, 282 more, which is the two insertions (21 and 261 characters). The head's text with the two taken out equals main's once whitespace is normalised, and the parts of the planner's text that name a minute, a second or target_minutes (12, split at sentence punctuation) are the same list in both. Of 768 `instructionsFor` calls (6 stages, 2 formats, no variant and 15 variants, no source language and 3), 32 differ, each by those 282 characters. Every one is the planner under format "slides": with no variant, and with the 7 variants that have no planner text of their own (episode, series-doc, recap, rewrite, register, shorten, reword). `references(root)` returns the same from main's module and from the head's.
+
+`apps/api/app/video_automation/schemas.py` is not judged again: it is the bytes the sections above reviewed, and its five changed lines against main are the ones they read.
+
+So prompts.mjs at the head is main's reviewed bytes with this change's one hunk in them, unchanged, and the hunk sets no duration rule and moves none in its new surroundings: not the eight-minute floor, target_minutes, the planner's 10-second chapters or 250 characters a minute.
+
+Ran (in the worktree at `c110799e1`, Node v24.13.0 on Windows; this reviewer fetched nothing):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the two stale bindings and exited 1;
+- the comparison of both receipt files at the head and in the working tree with `26bed1dec`'s, and of the saved report and receipt with the blobs at `1ba2760c4` and `d7ad12626`;
+- the comparison of review.md at `c49ab1a48`, `26bed1dec` and `d7ad12626`, above the table and row by row in it;
+- `durationReviewProblems` over `git cat-file --batch` blobs at `c49ab1a48`, `26bed1dec`, `d7ad12626` and `1ba2760c4`, and over the head's blobs with main's receipt; a byte comparison of all 108 bound files in the working tree with the head's blobs;
+- the hashing of the two paths at `a9544cd5d`, `1ba2760c4`, `d7ad12626`, `c49ab1a48`, `c61944d18`, `26bed1dec`, the head and the working tree;
+- `git merge-file -p` of both files (branch, merge base, main), which exited 0 for each and printed the head's bytes;
+- the comparison of the changed lines of the three diffs named above, and of `git diff d7ad12626 c110799e1` with `git diff c49ab1a48 26bed1dec` for the two files;
+- the file lists of `c49ab1a48`..`26bed1dec` (15 files), `26bed1dec`..head (17), `d7ad12626`..head (15) and `1ba2760c4`..`d7ad12626` (135) against REVIEW_FILES and the two receipt files;
+- a reading of both diffs of prompts.mjs line by line, of prompts.mjs lines 14–45 and 208–271 as merged, of `planPayload`, `draft`, `planProblem` and `scriptPayload` in flow.mjs, and of #1425's diffs of docs/videos/README.md, automation.test.mjs and core/schema.mjs as context;
+- the scan of #1425's changed lines for the terms above;
+- the export comparison, the 768 `instructionsFor` calls and the `references(root)` comparison;
+- the union itself, as a script: main's report, the branch's three sections, this section, and main's table with the two rows changed. It checks that taking the insertion out and putting main's two hashes back gives `26bed1dec`'s report byte for byte, and that the result passes `durationReviewProblems` against the working tree.
+
+On the merged bytes, each of these exited 0:
+
+- `node --test tools/video/automation/prompts.test.mjs`, 25 of 25;
+- `node --test tools/video/qa/duration.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs`, 25 of 25.
+
+The CLI check, review.test.mjs and `git diff --check` are run after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- #1425's part of prompts.mjs and its other three bound files are bound as its increment reviewed them. Its two hunks in prompts.mjs were read and compared line for line with main's own change; they were not reviewed again here, and the photo card is not accepted or judged.
+- What the sections above state and this follow-up does not repeat was not checked again: the parse of schemas.py with Python's `ast`, the searches for code that reads a topic's source, and the term scans and counts over the branch's files.
+- The 15 unbound files that differ between `26bed1dec` and the head, and #1426's 135, were checked against the registry and not read. This follow-up does not accept the feature as a product or editorial choice.
+- No planner was run, and no rendered cut or measured narration was produced. `instructionsFor` was called with no series, so the long-anime texts were not asked; which stage and variant pairs a route passes was not traced, and some of the 32 may be pairs no route asks.
+- No API test, ruff, mypy, lint or typecheck was run, nor the tool suites other than the five test files named above, nor CI. automation.test.mjs, which #1425 rebound, was not run to its end here.
+- When this follow-up was written, this worktree's origin/main ref was `26bed1dec`, the commit the head merged. This follow-up binds the head's tree only: a later merge with main that changes either file, or either receipt file, needs its own follow-up.
+- The 106 bindings this merge left at main's hashes are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Official pages as video topics fourth merge with main (#1427, #1423) follow-up: 2 files (2026-10-10)
+
+Reviewer: `claude-pr-review-official-topics`, the instance that wrote the two follow-ups above. It wrote none of the branch's commits and no part of #1427 or #1423, and edited only this report and review.json. Author: `claude-opus-5-5-official-accounts`, the branch's author, which made the merge `afa6624dd82e5d60e72807331c59d6434108be6c` ("Merge remote-tracking branch 'origin/main' into claude/official-video-topics"). Scope: DURATION_ONLY for the bytes of the two files below at that merge, the head of claude/official-video-topics. The merge joins the branch's `526345e532c0ecc920ab859f869d6b0df833e329` with main at `406c806fe07cc1c2bdb2d0b0bc9965257f68eaa5` (#1423). Their merge base is `599835f49502831922fe31a1bcb9bf4429c0acff` (#1427), which the branch took in at `526345e53`: between `ea2cedbd7`, where the follow-up above was committed, and `526345e53` 2 files differ, neither of them bound and neither a receipt file. No binding is newly reviewed here.
+
+The receipt union. Both sides had changed review.md and review.json since `599835f49`, and the merge kept main's side of both: at the head and in the working tree each was byte-identical to `406c806fe`'s (report sha256 `619832c43b1010d1f66d2abd1461590f8788d8966269bef8074673110282bc38`, the hash main's review.json held). This report is now main's text through its five "Dictionary-merge rule" sections (#1423), then the branch's four sections above, byte for byte as `git show ea2cedbd7:docs/videos/long-form/review.md` has them, then this one. The four were cut from the file the author saved outside the repository, which is byte-identical to the blob at `ea2cedbd7` and at `526345e53` (sha256 `88152a2710481e1e2cf77833a20ffa9e53b1aede98271bae700922714cdb426a`, the report hash their review.json holds). Each side had only appended: the 3,443 lines before the bindings heading at `599835f49` open both sides' reports unchanged, after which main has five sections (306 lines) and the branch four (279 lines). In the table main differs from `599835f49` in two rows, those #1423 rebound (tools/video/automation/automation.test.mjs and flow.mjs), and the branch in the two of the files below; every other line of it is the same in all three. Each of the three receipts passes `durationReviewProblems` against its own tree's blobs.
+
+By bound file:
+
+- The two files below are the bytes the follow-up above bound. Each is the same at `c110799e1`, `ea2cedbd7`, `526345e53`, the head and in the working tree (50,155 and 135,429 bytes). Neither #1427 (2 files) nor #1423 (11 files) changed them: main's copy of each is the same bytes at `26bed1dec`, `599835f49` and `406c806fe`. For the two files `git diff 406c806fe afa6624dd` prints byte for byte what `git diff 26bed1dec c110799e1` prints (45 lines), so the change against main is the one the sections above judged.
+- automation.test.mjs and flow.mjs are main's (#1423): the head's bytes hash to the rows main's sections bound. Their rows and the other 104 are main's, unchanged.
+- Between `406c806fe` and the head 17 files differ, and the two below are the only bound ones.
+
+Rebound, from the hash main's receipt held to the hash the follow-up above bound:
+
+- `apps/api/app/video_automation/schemas.py`: `8a7b331074ca60276213a211011ac87952b34019d832b391f8d4129d11291ad7` -> `e51d5729ec66f50f204b4c2cb0849d0a85290be01d71ce43d0d9019cb42baca3`.
+- `tools/video/automation/prompts.mjs`: `2dc3f65a6aaa1845c6c248d80494190ee2fef05cfa27303e0b407739060241e0` -> `61632a08cd1b036796b900e2274babf49316960adef8ff974f52bbaf73b8f85d`.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these two bindings and exited 1, and `durationReviewProblems` over the head's blobs with main's receipt returned the same two and nothing else. The registry stays 108 paths, with two hashes rebound and the other 106 as main has them.
+
+Two files the sections above cite by line moved on main. Their statements stand for the revisions they name; at this head:
+
+- tools/video/automation/register.mjs (unbound): #1427 adds twelve rows to `MISHEARD_WORDS` (lines 236–247) and nothing else. The rule this change's sentence points at ("An update or a guide is told as numbered points, each in the same four moves", lines 163–164) and "The length comes from substance" (line 179) are above the hunk, on the same lines as before.
+- tools/video/automation/flow.mjs (bound, main's bytes): #1423 changes two hunks of it (+7/−2: an import line, and lines by `writeVideo` near line 380). None of the nine changed lines names a topic, `planPayload`, `planProblem`, target_minutes, "official" or source_guide. `planProblem` starts where it did (line 344) and `planPayload` five lines lower (line 1808).
+
+Ran (in the worktree at `afa6624dd`, Node v24.13.0 on Windows; this reviewer fetched nothing; the date is UTC, the local clock read 00:04 on 2026-10-11, +0800):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the two stale bindings and exited 1;
+- the comparison of both receipt files at the head and in the working tree with `406c806fe`'s, and of the saved report and receipt with the blobs at `ea2cedbd7`;
+- the comparison of review.md at `599835f49`, `406c806fe` and `526345e53`, above the table and row by row in it;
+- `durationReviewProblems` over `git cat-file --batch` blobs at `599835f49`, `406c806fe` and `526345e53`, and over the head's blobs with main's receipt; a byte comparison of all 108 bound files in the working tree with the head's blobs;
+- the byte comparison of the two paths at the revisions named above, their hashing in the working tree, and `git diff --quiet ea2cedbd7 afa6624dd` for them, which exited 0;
+- the byte comparison of the two diffs named above;
+- the file lists of `26bed1dec`..`599835f49`, `599835f49`..`406c806fe`, `406c806fe`..head, `ea2cedbd7`..`526345e53` and `526345e53`..head against REVIEW_FILES and the two receipt files;
+- a reading of #1427's diff of register.mjs, and of the hunk headers of #1423's diff of flow.mjs with a scan of its changed lines for the terms above;
+- the union itself, as a script: main's report, the branch's four sections, this section, and main's table with the two rows changed. It checks that taking the insertion out and putting main's two hashes back gives `406c806fe`'s report byte for byte, and that the result passes `durationReviewProblems` against the working tree.
+
+On the head's bytes, `node --test tools/video/automation/prompts.test.mjs` exited 0, 25 of 25.
+
+The CLI check, review.test.mjs and `git diff --check` are run after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- No binding is reviewed afresh. The sections above keep their own revision-specific claims; what they state and this follow-up does not repeat was not checked again, among it the export comparison and the `instructionsFor` calls.
+- #1423's changes to flow.mjs and automation.test.mjs are bound as main's sections reviewed them. Main's receipt was checked to pass on main's blobs; the changes were not read here beyond the scan named above, and the dictionary-merge rule is not judged.
+- #1427's other file and #1423's other files, and the 15 unbound files that differ between `406c806fe` and the head, were checked against the registry and not read. This follow-up does not accept the feature as a product or editorial choice.
+- No planner was run, and no rendered cut or measured narration was produced. No API test, ruff, mypy, lint or typecheck was run, nor the tool suites other than the one test file named above, nor CI.
+- When this follow-up was written, this worktree's origin/main ref was `406c806fe`, the commit the head merged. This follow-up binds the head's tree only: a later merge with main that changes either file, or either receipt file, needs its own follow-up.
+- The 106 bindings this merge left at main's hashes are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Explainer family (cute-cartoon, cute-mystery) increment: 20 files (2026-10-11)
+
+Reviewer: `claude-opus-receipt-explainer-pr1`. Author: `claude-opus-explainer-pr1`. Scope: DURATION_ONLY for the twenty changed bindings below, reviewed at `75c1112e542e45be8018cc4bc7813f4c3d30c21a`, the merge of origin/main (`f5d65e233`) into claude/explainer-presets at `48b307cff6710bc7d0b713f2a2aa26094ad340b9` ("feat(web): label the two cute explainer presets; the request form holds them back"). The branch is pull request 1 of docs/videos/explainer-route/DESIGN.md: four commits (`d927a619a`, `53ae98f9f`, `d03b40d60`, `48b307cff`) over `b1e27575e` (#1431). The reviewer wrote none of them, made the merge (no conflict), and edits only this report and review.json.
+
+Baseline: origin/main at `f5d65e233`. Between the merge base `b1e27575e` and that commit main changed neither receipt file, so the receipt the merge carries is main's, the "Official pages as video topics fourth merge with main" follow-up above. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these twenty bindings; the other 88 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `apps/api/app/video_automation/models.py`: `14da996043cdc076a96c9051e7edf1556ca76dcf2b3d9ff3d68ef648516e1dd7` -> `e8351836b3d09a939c31f18501ba3e160e98706e327a1172cc35170fc76b9ccc`.
+- `apps/api/app/video_automation/schemas.py`: `e51d5729ec66f50f204b4c2cb0849d0a85290be01d71ce43d0d9019cb42baca3` -> `e03d2bead4cfd2c9245d3afb788ed11f31bbf2d9ec4aab565a9fb948eb2ba8fa`.
+- `apps/api/app/video_automation/series.py`: `ca8e61d2431752d78f6e7bc5c98c26dd1c862d8ccb2bf596aa124b088f378dea` -> `6dd73fd48500f0bb168e6ced4e19964f13dd5f18c9758a6caafa3fa6a865d847`.
+- `apps/api/tests/test_video_explainer_duration.py`: `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` -> `45bdcbe9ec7c7c47e437b6d65ec967801e8553acbbf1c8285d734f8a7242eddc`.
+- `apps/web/components/admin-video-explainer-duration.test.tsx`: `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` -> `cb28b0a7173ad4712a70c5e378b3b0d6e4d760731620f38d9400a221b305a6ac`.
+- `apps/web/components/admin-video-series.tsx`: `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` -> `a6bf22c535b18c03bd1a5b77cffbeb77e33f40b8b28b03c125553183e06c8067`.
+- `apps/web/messages/en/admin.json`: `ec12ddb73856f2d1a9d6070961eea5107bce485143f91099da94a7d0a73b9dd5` -> `673f2fdc373bd9006b6cc468fd0dcb54a3aad945e23667af68398d2f05ad634c`.
+- `apps/web/messages/ja/admin.json`: `e8d2065f71307dfca69d746b80d68c146a3c955c6f89b69f5c939f14d5a42e32` -> `72c957267607196c0de2d7d42a2efbd6e1664a38931ebefb01293a711f7b0549`.
+- `apps/web/messages/ko/admin.json`: `18fed6863285acaf879157707bb30995cd1f8a2eeb167d4c5d4e7cd4953cb8d3` -> `03a31d8f078582def3c1d50509db547b8387481f07c8558d586b9bf4560a4de8`.
+- `apps/web/messages/zh-CN/admin.json`: `c52f64ca0388c4e850742df482b28cbc868911bcf23edee91b5b9c99f7ba781d` -> `fd0cdd30cb4f6a2f41818d76abab3f00bd054b3b6f49aa3ea04ae78ee69c6ad6`.
+- `apps/web/messages/zh-TW/admin.json`: `9e3a0402625543d1ca4e77328eaefdcd151f187590bed477fe31dd7bc0573db4` -> `ed8dbd5feaa18db810617e2ea7de0fe22c0e330bb643c61aa59be53ba9544f2b`.
+- `tools/video/automation/flow.mjs`: `b15fff400a5ebcbc89f68bf9795d3b392da4c1dce4f6a8e58067e902f85409d2` -> `d52225faa9793228c9478376f3ed6681574d3c1c18e24a1f5a0b4a4cacba340b`.
+- `tools/video/automation/series.mjs`: `2b687e0e5251f8b01904f3018bc658e4322888959af9d8dc0931d71a41e5e381` -> `ceb9dabd7e887af14e8a0a3867f2ccfeb54ee1ac11a117a62bd48642e36955e0`.
+- `tools/video/automation/series.test.mjs`: `1974b5d8db7177c920bc85ec35acf8abc4a0177b80947596ed5b551e813c53d6` -> `62707700b6b7dea0361e24b035d1e55c17d1f01147218fe38d57a74d9fa778b8`.
+- `tools/video/core/branding.mjs`: `aaad784dc23fe4bc1fc08c2871a5cd122ba483c500a07f128cb836dd8f05c8c7` -> `d9391d4832301395714cd3741a745fbf248a617fbd2850fe382e473a08ed7fd7`.
+- `tools/video/core/branding.test.mjs`: `bebfeabcb0855bffc18f0334dd1a6206bb374552467edb036d999ca5398374cb` -> `85530e76a4b26ca3a61fea99c1852a554c73db15c0248b9f32f0dabb1cdb0621`.
+- `tools/video/core/drama.mjs`: `33a471d5eb78be2ab972594501ab1a4ae3fc8fbba751c509b33a1c5f75b60fd2` -> `e691c3a4ae58f0c20e0dd7f4faba3f722af4d9b146ce77cd54412dd667c5e577`.
+- `tools/video/core/duration.mjs`: `e92c104bc62babf18f47c75b67416807484f1af794b94cd8790350990dba8edd` -> `12009ae5d12cba73e55ff462e9f9dd107350d53bea1da5a65bf59a1a39e13285`.
+- `tools/video/core/duration.test.mjs`: `388bda7c57e548c2f50165a713e038e147645d283409c1f09393e8eef68652ba` -> `a5b3e9c54368628d4b929b8050eb3ad925cc1b9c1fbd5b88bd3bf5ca010358f6`.
+- `tools/video/core/lint.mjs`: `d08806c964fbe6d69e38202f6b37b0d3ffdafcec0455d8356253a3044da27c92` -> `53a0134f9221a1b3db3f6bd8fe0ff6b36b05fb1f11d42da033a0668af04fb9bc`.
+
+What the change is: "is this an explainer" used to compare a look preset with the one name `flat-explainer`; it now asks whether the preset is in a list of three, `flat-explainer`, `cute-cartoon` and `cute-mystery`. The list is `EXPLAINER_PRESETS` in tools/video/core/drama.mjs, in apps/api/app/video_automation/schemas.py and in apps/web/lib/video-presets.ts (new, unbound). No number moves: every hunk below either swaps the comparison for the membership test, adds the two names to a list of presets, or adds a label.
+
+Findings, tools (9 files):
+
+- `tools/video/core/drama.mjs`: two new entries of `PRESETS` (style text, an empty negative, the motion line of flat-explainer), `EXPLAINER_PRESETS`, `isExplainerPreset` and `explainerSeries`. `isExplainer` becomes `isDrama(doc) && isExplainerPreset(doc.look?.preset)`, and `isKnowledgeLongform` asks `isExplainerPreset(doc.look?.preset)` where it compared with `"flat-explainer"`. `needsMinimumLength` is the same bytes and reads `isExplainer`, so a drama in either cute preset is held to the eight-minute floor and a drama in any other preset is not, as before. `timesSilentShots`, `LONG_FORMATS`, `KNOWLEDGE_CATEGORIES` and `CATALOGUE_SLUG` are unchanged. The fifth hunk changes the text of a validation message.
+- `tools/video/core/duration.mjs`: one import and one line. `effectiveEpisodeMinutes` returns early on `!isExplainerPreset(preset)` where it returned early on `preset !== EXPLAINER_PRESET`. The body under it is unchanged: no target gives 10, a target under 8 gives 10, anything above 20 or not a safe integer throws. `KNOWLEDGE_MIN_SECONDS = 480` and the target constants are outside the hunks.
+- `tools/video/core/lint.mjs`: one import and `briefSectionsFor`, which picks the explainer's brief sections for the family. The length check (lines 469 to 475: `needsMinimumLength(doc) ? minEpisodeMinutes() : 0`) is unchanged.
+- `tools/video/core/branding.mjs`: `readDefaultBranding` takes the series from `explainerSeries(doc)`: `sothatswhy` for flat-explainer and cute-cartoon, none for cute-mystery. It chooses which bookends a cut wears. Bookends never count as content (duration.mjs, unchanged), so the measured body is the same either way.
+- `tools/video/automation/flow.mjs`: five lines. `planProblem` picks the explainer's brief sections for the family; `settle` keeps the requested preset (it wrote the constant, which was the same value for the only member) and empties the cast for the family; `variantOf` returns "explainer" for the family. `episodeMinutes` (line 67) and `slidesMinutes` are unchanged and call `effectiveEpisodeMinutes` with the preset as before.
+- `tools/video/automation/series.mjs`: `isExplainerOneOff` asks the family. It picks the bible's prompt; it holds no length.
+- `tools/video/core/duration.test.mjs`: the two `effectiveEpisodeMinutes` tests loop over the three presets with the same values (legacy 0, 3, 7, none give 10; 8 to 20 kept; 21, fractions, strings throw); `isKnowledgeLongform` is asserted true for each preset alone and false for ink-wash; a new test holds a cute-mystery cut to 14,400 frames and refuses 14,399. No assertion was removed or loosened.
+- `tools/video/core/branding.test.mjs`: cute-cartoon gets the series' 357-frame intro, cute-mystery the channel's 150.
+- `tools/video/automation/series.test.mjs` (+58/−7): the explainer one-off test runs once per preset; the request in it still asks for 8 minutes.
+
+Findings, API (4 files):
+
+- `apps/api/app/video_automation/models.py`: `STYLE_PRESETS` gains the two names, so `STYLE_PRESET_CHECK` accepts them (migration 0130, unbound, recreates the three checks).
+- `apps/api/app/video_automation/schemas.py`: `StylePreset` gains the two names; `EXPLAINER_PRESET` gives way to `EXPLAINER_PRESETS` and `is_explainer_preset`. `EPISODE_MIN_MINUTES = 8`, `EXPLAINER_MIN_MINUTES = 8`, `EXPLAINER_MAX_MINUTES = 20`, `EXPLAINER_DEFAULT_MINUTES = 10`, `SERIES_MAX_MINUTES = 8` and `STORY_MAX_MINUTES = 20` are the same lines. Each of the six comparisons with the constant is now the membership test and no comparison is left behind: `DramaRequestIn._episode_length` (default 10, refuse under 8, the field's own `le=20`), and in `SeriesIn` the one-off-only rule, the default 10 and the floor of 8, the exemption from the 8-minute ceiling of a drama, and the ceiling of 20.
+- `apps/api/app/video_automation/series.py`: `is_explainer`, `patch_target_minutes` (crossing into the family takes 10, out of it 3, a short legacy explainer re-selected takes 10) and both sites of `patch_problem` (the one-off-only rule, and the 8 to 20 check against the effective preset) ask the family. One new refusal: after its bible is written a one-off may not move from one explainer preset to another. It adds a 409 and changes no length. The 1 to 8 check for everything else is unchanged.
+- `apps/api/tests/test_video_explainer_duration.py`: the accept (8, 10, 20), refuse (7, 21), default (10) and patch tests are parametrised over `EXPLAINER_PRESETS`; four rows join the style-only patch table. The drama assertions (default 3) stand.
+
+Findings, web (7 files):
+
+- `apps/web/components/admin-video-series.tsx`: `requestMinutes(preset)` returns `EXPLAINER_MINUTES` (8, 20, default 10) for the family and `DRAMA_MINUTES` (1, 8, default 3) otherwise; the new-request form reads its bounds, its default on a style change and its label from it. Both constants are unchanged. `REQUEST_PRESETS` still offers flat-explainer only, so the form cannot yet file a cute request; if a later pull request adds the two, they get 8 to 20 from the same function. The series form's `minutesOk` (line 305) is unchanged and never offered an explainer preset.
+- `apps/web/components/admin-video-explainer-duration.test.tsx`: one new case asserts the two ranges for the three explainer presets and the four story presets.
+- `apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json`: six added lines each, the two labels in three `presets` blocks. No line was removed and no label carries a number.
+
+Site by site, for a preset of `cute-cartoon` or `cute-mystery`:
+
+- `effectiveEpisodeMinutes`: 10 when absent or under 8, kept from 8 to 20, throws above. Same as flat-explainer.
+- `isKnowledgeLongform`: true by the preset alone, so `knowledgeDurationProblems` measures 480 seconds of body.
+- `needsMinimumLength`: true, so lint and QA's assemble item use `minEpisodeMinutes()`.
+- `DramaRequestIn`, `SeriesIn`, `patch_problem`: 8 to 20, default 10; never the drama's 1 to 8.
+- the web request form: 8 to 20, default 10.
+
+A search of tools/, apps/api/app, apps/web/components, apps/web/lib and apps/web/app, tests and messages aside, for `flat-explainer` and for the old constant finds no comparison left: only the preset lists, comments, the fixture, and the long-form catalogue's `backend_inputs` (plans.mjs and admin-catalog.mjs, unchanged, still `flat-explainer` at 10 minutes). For an existing preset nothing moves: the three membership tests give `flat-explainer` the answer the comparison gave, and `cinematic-3d`, `anime-2d`, `ink-wash` and `custom` the answer they had.
+
+Ran (in the worktree at the merge, Node on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the twenty stale bindings and exited 1;
+- a reading of the diff of each of the twenty files against origin/main, and of the unbound files in the same change as context (render/plan.mjs, shorts/episode.mjs, video-presets.ts, admin-video-settings.tsx, migration 0130);
+- the search named above;
+- `node --test` over core/duration.test.mjs, core/explainer-family.test.mjs, core/branding.test.mjs, automation/explainer-family.test.mjs, automation/series.test.mjs, qa/duration.test.mjs, long-form/plans.test.mjs and long-form/integration.test.mjs: 125 of 125.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the two looks, their style text or the choice of whose bookends each wears, and it does not judge the new refusal as a product choice.
+- No API test, ruff, mypy, Vitest, lint or typecheck was run, and migration 0130 was read, not run. The API and web findings rest on reading the diffs and the tests' text.
+- The settings tab now lists the two presets as a default style. What a request filed with a cute default is written from (the prompts are still So That's Why's) is the later pull requests' subject and is not judged here; its length rules are the family's at every site above.
+- No writer was run, and no rendered cut or measured narration was produced. Whether a cute explainer's script reaches eight minutes was not observed, only that the floor refuses one that does not.
+- The 88 bindings this change left alone are not covered afresh. A later merge with main that changes any of the twenty, or either receipt file, needs its own follow-up.
+
+PASS is DURATION_ONLY for the twenty rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Dub re-request increment (ask for a skipped dub again): 11 files (2026-10-11)
+
+Reviewer: `claude-pr-review-dub-retry`, an instance that wrote none of the branch's commits and edited only this report and review.json. Author: `claude-opus-5-5`, the branch's author, with its worker agents. Scope: DURATION_ONLY for the bytes of the eleven files below at `ba84feb7ef2d4ad55aa29340c4f805ae2a45c1f6` ("Merge origin/main into claude/dub-retry-request"), the head of claude/dub-retry-request, against the baseline `6a26eff42707603d8f80586ae0efb7c85a13fe15` (main at #1421), which the head has merged. The change lets the owner ask, from the language panel, for a dub track the worker gave up on to be made again. One question was asked of each file: does the change touch a duration rule?
+
+Between the baseline and the head 31 files differ. Eleven of them are bound, the ones below; neither receipt file is among the 31, so both were main's bytes when this review began (report sha256 `7baa17e4719405438f0742b3337b79cee25ca5cfd2d9771652eb987bb9ebf507`, the hash review.json held). The working tree was clean and the eleven files in it are the head's bytes (`git diff --quiet ba84feb7e` for them exited 0).
+
+Rebound, from the hash main's receipt held to the hash of the head's bytes:
+
+- `apps/api/app/video_reviews/admin_service.py`: `82b4aec7003b3f71887fe0787b0dba7805d664b80e1a3cee0da1dadb24516117` -> `4cf2dceda72b3bd09f471e2263a9d4a96ba1d8a1375c554b0225d1ae12352856`.
+- `apps/api/app/video_reviews/schemas.py`: `fb9b0d89a7c1b96b1f2ee77ffe7fc73df8ec09d508c15529efff7ae8a8982a70` -> `b0a5f18ebb966075e1a87c66e3e4aa4e76a8b18d21b5096514374076704f6120`.
+- `apps/web/components/admin-video-review-card.tsx`: `d1e51c2914178294dc14c3ca9bdbfcc38164a249e7f9a05cf509268c1a67b8b5` -> `4d22f999dcb70dfca1bd436421ecfe04cd9c7b9d869c0295bc4946be26e3e7a8`.
+- `apps/web/components/admin-video-reviews.test.tsx`: `13b095cb04c112d0cbf826a544276b2284c421ae7f0ae319eb72d7b88601df00` -> `522f72db3d27c7b6a7eb0dd9d7eec76ef02976eacfe77317b4791cae6f6decf2`.
+- `apps/web/messages/en/admin.json`: `ec12ddb73856f2d1a9d6070961eea5107bce485143f91099da94a7d0a73b9dd5` -> `05bcef7df472e9bc9e746bd74876eb7ff71f8a07c40f0aad8c00e571bd1099a9`.
+- `apps/web/messages/ja/admin.json`: `e8d2065f71307dfca69d746b80d68c146a3c955c6f89b69f5c939f14d5a42e32` -> `bbec48ba26a743599a664a8ef87439efe10fcb7573b51d799ff877af4e918942`.
+- `apps/web/messages/ko/admin.json`: `18fed6863285acaf879157707bb30995cd1f8a2eeb167d4c5d4e7cd4953cb8d3` -> `3a2987daebbba5eae098ea529a69182cd865e9e57073a5b8a5d1d38689006ea5`.
+- `apps/web/messages/zh-CN/admin.json`: `c52f64ca0388c4e850742df482b28cbc868911bcf23edee91b5b9c99f7ba781d` -> `e32eb998be5ac974739959c7bc7774c45ded4132049071cf6e1f84fb0e6ff102`.
+- `apps/web/messages/zh-TW/admin.json`: `9e3a0402625543d1ca4e77328eaefdcd151f187590bed477fe31dd7bc0573db4` -> `83515bfdca898ae48457694d750b08e6ca70308013787a9c3ef7eed6e8ec1add`.
+- `tools/video/automation/automation.test.mjs`: `70dfee0aac57ee1c6bf9f0e75025a2de58069cf2908133ba7d2048a2a349927f` -> `5230f845437eb61bd6cd301e9d6d3cde65de9144476e7a176b248db1b9daf7d3`.
+- `tools/video/automation/flow.mjs`: `b15fff400a5ebcbc89f68bf9795d3b392da4c1dce4f6a8e58067e902f85409d2` -> `bf3684d50d25418408389497efb05c63290de6a633418c196289e2477d458b6f`.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these eleven bindings and exited 1, and a hash of all 108 bound files in the working tree against review.json found the same eleven and nothing else. The registry stays 108 paths, with eleven hashes rebound and the other 97 as main has them.
+
+Findings, `tools/video/automation/flow.mjs` (+223/−7, fourteen hunks):
+
+- Three import lines: `rmSync`, `assembledAudioProblems`, the three branding readers and `checksCurrent` from package/cli.mjs. Each is an existing export of a file the change does not touch (package/cli.mjs line 98, audio-evidence.mjs line 78, branding.mjs lines 50, 68 and 72). Nothing under tools/video/core, dubs, qa, package, tts, assemble or long-form differs between the baseline and the head.
+- `forCard` moves from inside `makeDub` to module scope (line 544), the same expression; the two lines it leaves in `makeDub` are a comment. These are the only changed lines inside `makeDub` (line 3994), so how a track is made is as main has it: `dub`, the shortening rounds up to `MAX_TEMPO`, Jev's check, the retakes and the rewording, with `MAX_TEMPO` still imported from dubs/plan.mjs and the round limits outside every hunk.
+- `packageRefusal` (line 760) reads checks.json, timeline.json and branding.json and returns a sentence or null. Its three tests are the ones package/cli.mjs applies before it writes (lines 128–135 and 152 there): the branding equality, which compares `body_frames` with the timeline's `total_frames` and the checked frame count with intro + body + outro; `checksCurrent`; and `assembledAudioProblems`. They are equalities between what was recorded and what is on disk. None sets a length, a floor or a frame count, and the function writes nothing. It omits the compilation branch of the original; a refusal here closes a retry request and does not block, defer or change the video.
+- `dubRetryEcho` and the `report` change add a `dub_retries` key to what a report sends and return the site's answer. `DUB_RETRY_REASON_MAX = 500` is a character count of a reason.
+- In `languages` (line 3520): the requests are looked at first, a dub this worker is making again is kept pending, and once the batch is in its record is marked `sent`. No length is read or written.
+- `dubRetries`, `takeDubRetry`, `startDubRetry` and `refuseDubRetry` (lines 3640–3755) are the request's lifecycle: guards (tidied, the script present, the final gate approved, not the narration's own language, `packageRefusal`, the other languages' tracks current, `dub --dry-run`), the report that says "taken", then the locale's rounds set to zero with `check_stopped`, the skip file removed, and `makeDub`. Zeroing the rounds gives the retry the same number of shortening, retake and reword rounds a first attempt has; it does not change what fits a window. `speechHash` is called to ask `dubsStatus` which tracks are current, as `languages` already does.
+- None of the 223 added lines names minutes, target_seconds, action_seconds, `MAX_TEMPO`, an overrun, `slidesMinutes`, `effectiveEpisodeMinutes`, 480, 14,400 or a frame rate. The only numerals with a unit of time are in dates (`slice(0, 10)` of an ISO timestamp).
+
+So flow.mjs does not alter the narration timeline (timeline.json is read, never written, by the new code), the QA duration checks (qa and core untouched; no hunk near them), or the rule for a dub track's length (the windows, `MAX_TEMPO` and `absorbOverruns` in dubs/plan.mjs, untouched).
+
+Findings, `tools/video/automation/automation.test.mjs` (+605/−2): the fake site learns the requests and the fake `dub` a dry run, and one block of new tests (from line 3886) covers taking, refusing, a second lane, the tidy and the batch. Of its changed lines the ones near a duration term are fixtures: a `branding` record with `body_frames: 900` written into checks.json to make `packageRefusal` refuse; a date eight days ahead (`8 * 24 * 3600 * 1000` ms) so the tidy runs; and the give-up reason "does not fit its window even at 1.15x", asserted as main's `makeDub` already words it. No assertion about minutes, the eight-minute floor, 480 s or 14,400 frames is added, removed or loosened; both removed lines are a fake-site return and a comment.
+
+Findings, `apps/api/app/video_reviews/admin_service.py` (+388/−30) and `schemas.py` (+44/−0): the service gains the retry request (asking, its budget and state guards, the audit row), carries `dub_retries` and `dub_retry_blocked` on the summaries and reads the worker's echo in `upsert_project`; `language_states` now takes the requests into account when it names a dub's state. The schemas add `DubRetryStatus`, `DubRetryBlocker`, `DubRetryOut` and two summary fields, and `ProjectIn.dub_retries`. The one changed line in either file that names a time is a comment in `DubRetryOut` ("requested more than 30 minutes ago or taken more than 2 hours ago"), which describes when a request reads as stalled; the constants themselves and the 24-hour expiry are in apps/api/app/video_reviews/dub_retry.py, unbound. They time a request, not a video. No changed line names a video's minutes or seconds, `target_minutes`, a floor or a frame count, and no existing field's bounds change.
+
+Findings, `apps/web/components/admin-video-review-card.tsx` (+19/−2) and `admin-video-reviews.test.tsx` (+327/−0): a `DubRetry` type, two optional summary fields, and in `LanguagesBody` a line that lists a finished track's `kept_lines`. The test file adds the panel's tests for the button and each state of a request. The times they show are the request's (30 minutes, 2 hours, 24 hours) and timestamps; nothing reads or shows a video's length.
+
+Findings, the five `apps/web/messages/*/admin.json` (+25/−0 each, two hunks each at the same lines, 2263 and 2283): `dubKeptLines`, 16 `dubRetry*` strings and a `dubRetryBlocked` group of six under `videoReviews`, the same keys in every language. Their only durations are the request's 30 minutes, 2 hours and 24 hours. No existing string is changed or removed, so every string a duration rule is shown with is as main has it.
+
+No file changes a duration rule: not the tutorial's 10-minute default or its 8–20 range, the drama's 1–8, the brand story's 13 minutes, the eight-minute floor for a non-drama video, the 480 s / 14,400-frame QA floor, the long-form animation policy, target_seconds or action_seconds, the measured evidence, or plans.json.
+
+Ran (in the worktree at `ba84feb7e`, Node v24.13.0 on Windows; this reviewer fetched nothing and ran no test suite):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the eleven stale bindings and exited 1;
+- the hashing, with Node's crypto over the files' bytes, of all 108 bound files against review.json, and of review.md;
+- `git diff --stat` and `--numstat` of the baseline against the head, and the list of changed files under tools/video/core, dubs, qa, package, tts, assemble and long-form and under docs/videos/long-form, which is empty;
+- a reading of every changed line of flow.mjs, schemas.py, admin-video-review-card.tsx and the English admin.json; of the hunk headers and removed lines of admin_service.py, automation.test.mjs and the five admin.json; and of `makeDub`'s opening (flow.mjs lines 3973–4012) and the package tool's tests (package/cli.mjs lines 98–163) as context;
+- a scan of the changed lines of each of the eleven files for duration terms (duration, minute, second, hour, frames, target_, action_seconds, 480, 14,400, policy, measured, timeline, floor, plans.json, and their Chinese, Japanese and Korean words), with the hits read as printed (each cut at 260 characters).
+
+The CLI check and review.test.mjs are run after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- The added lines of admin_service.py, automation.test.mjs, admin-video-reviews.test.tsx and the four non-English catalogs were covered by the term scan and their hunk headers, not read line by line. That the four translations say what the English says was not checked beyond the keys' hits.
+- The 20 unbound files the change touches, among them dub_retry.py, migration 0129, producer_state.py, admin-video-reviews.tsx, tidy.mjs and the three documents, were not reviewed. The request's 24 hours, 30 minutes and 2 hours are taken as the author describes them and were not traced in dub_retry.py.
+- Whether `packageRefusal` matches package/cli.mjs test for test in every case (the compilation branch, the clips argument passed as null) is a correctness question outside this scope and is not judged, nor is the retry's cost, its budget guards, its concurrency between lanes or the feature as a product choice.
+- No dub was made, no planner or worker was run, and no rendered cut or measured narration was produced. No API test, ruff, mypy, lint, typecheck, i18n check or tool suite was run, nor CI.
+- This increment binds the head's tree only: a later commit or merge with main that changes any of the eleven files, or either receipt file, needs its own follow-up.
+- The 97 bindings left at main's hashes are not covered afresh.
+
+PASS is DURATION_ONLY for the eleven rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Dub re-request merge with main (#1435) and migration renumber follow-up: 7 files (2026-10-11)
+
+Reviewer: `claude-opus-renumber-1432`, an instance working at the owner's request. It wrote none of the branch's commits before `d46458479` and no part of #1435. Unlike the reviewers of the sections above it is not only a reader here: it made the merge `c6df93b077b260ac123b235587726a56e8b3e1f3` ("Merge origin/main into claude/dub-retry-request") and the commit `f3a6b756beaee1e6a007ff6c290007cd1c1d7dfb` ("fix(video): the dub retry migration is 0131 and revises 0130_video_cute_presets"), and then wrote this section and review.json. Author: `claude-opus-5-5`, the branch's author, whose receipt this stays. Scope: DURATION_ONLY for the bytes of the seven files below at `f3a6b756b`. The merge joins the branch's `d464584797b19564e151265a8b0af9d0c8cc49bc` with main at `49e3928d46fa97b0958685cbb3c16e500e9ad51b` (#1435); their merge base is `6a26eff42707603d8f80586ae0efb7c85a13fe15` (#1421), the baseline of the "Dub re-request increment" above. No binding is reviewed afresh for what it does: six are the two sides' reviewed changes in one file, and one is a comment that names a migration number.
+
+The receipt union. Both sides had changed review.md and review.json since `6a26eff42`, each by appending one section and changing hashes in the table, and the merge conflicted in both. This report is now main's text through its "Explainer family (cute-cartoon, cute-mystery) increment", then the branch's "Dub re-request increment", then this section: the side merged in, the branch's own section, the merge, as the follow-ups above have it. The resolving script took both sections from the conflicted file and refused to write unless every section of `d46458479`'s report and of `49e3928d4`'s report (128 each, the bindings heading left out) was found whole in the result, which has 129 before this one. The table was then rewritten from the merged working tree, one row per REVIEW_FILES path, and review.json from the same hashes.
+
+By bound file, comparing the merge base, the branch, main and the merged tree for all 108 paths:
+
+- 83 paths are the same bytes in all four.
+- Fourteen changed on main only and are main's bytes, bound as main's section reviewed them: video_automation/models.py, schemas.py and series.py, test_video_explainer_duration.py, admin-video-explainer-duration.test.tsx, admin-video-series.tsx, series.mjs, series.test.mjs, branding.mjs, branding.test.mjs, drama.mjs, duration.mjs, duration.test.mjs and lint.mjs.
+- Five changed on the branch only: video_reviews/admin_service.py, video_reviews/schemas.py, admin-video-review-card.tsx, admin-video-reviews.test.tsx and automation.test.mjs. Four are the bytes the section above bound. schemas.py was changed again by `f3a6b756b`, see below.
+- Six changed on both sides and merged without a conflict: the five apps/web/messages/*/admin.json files and tools/video/automation/flow.mjs. For each, the added and removed lines of `git diff 6a26eff42 d46458479` are byte for byte those of `git diff 49e3928d4 c6df93b07`, and the added and removed lines of `git diff 6a26eff42 49e3928d4` are byte for byte those of `git diff d46458479 c6df93b07`: the merged file is main's change and the branch's change, each whole, in separate hunks (admin.json +25/−0 from the branch and +6/−0 from main in every locale; flow.mjs +223/−7 from the branch and +6/−6 from main). Main's six changed lines of flow.mjs replace `EXPLAINER_PRESET` with `isExplainerPreset(...)` at the import, `planProblem`, `settle` (two places) and `variantOf`; none of the branch's added or removed lines of flow.mjs contains "preset", "explainer", "minutes" or "duration", and the merged file no longer names `EXPLAINER_PRESET` anywhere. `node --check` accepts it.
+- `apps/api/app/video_reviews/schemas.py`: `f3a6b756b` changes three comment lines of it (+3/−3), each from "migration 0129" to "migration 0131", and nothing else. The migration was renumbered because #1435's `0130_video_cute_presets` took the place after `0128_video_languages_four`; what it does is unchanged. A comment's migration number is not a duration rule.
+
+Rebound, from the hash the branch's section bound to the hash of the bytes at `f3a6b756b` (main's receipt held a third hash for the first six, in its own section above):
+
+- `apps/api/app/video_reviews/schemas.py`: `b0a5f18ebb966075e1a87c66e3e4aa4e76a8b18d21b5096514374076704f6120` -> `e6264fda6e55564231a0b42bb0120e386e12541e16192b8f77581f5dfb35b2a2`.
+- `apps/web/messages/en/admin.json`: `05bcef7df472e9bc9e746bd74876eb7ff71f8a07c40f0aad8c00e571bd1099a9` -> `af82ee554a4a5a3ba46114302b5c7cda0b86e6b31ec9559fa0249206a64e28ad`.
+- `apps/web/messages/ja/admin.json`: `bbec48ba26a743599a664a8ef87439efe10fcb7573b51d799ff877af4e918942` -> `00493fd6a1d0e508def816f81285620939780164d677ff887ded781e9dbb40cf`.
+- `apps/web/messages/ko/admin.json`: `3a2987daebbba5eae098ea529a69182cd865e9e57073a5b8a5d1d38689006ea5` -> `e91226cdbbc6d905eb6a568e2484d31f167477fea2f5eeb0d548612758f5398b`.
+- `apps/web/messages/zh-CN/admin.json`: `e32eb998be5ac974739959c7bc7774c45ded4132049071cf6e1f84fb0e6ff102` -> `7437d362bced2531df5358d71b3f7374ab81431a26867813c56557c7ffb4160c`.
+- `apps/web/messages/zh-TW/admin.json`: `83515bfdca898ae48457694d750b08e6ca70308013787a9c3ef7eed6e8ec1add` -> `f6c95ee5bf40091ae6dca9c89cbdf6cf82b1cc231c92bc31115f615a494baf88`.
+- `tools/video/automation/flow.mjs`: `bf3684d50d25418408389497efb05c63290de6a633418c196289e2477d458b6f` -> `489db4cab75a529de63ad4a9ce9ff44288832cec74fe6f08159d20cf25c06651`.
+
+The registry stays 108 paths. Against main's receipt eleven rows differ, the eleven files of the "Dub re-request increment"; the other 97 are as main has them.
+
+The section above names "migration 0129" among the unbound files it did not review. That file is now apps/api/migrations/versions/0131_video_dub_retries.py; the section is kept as its reviewer wrote it.
+
+Ran (in a worktree of the branch, Node v24.13.0 on Windows; the reviewer ran `git fetch origin` once before the merge):
+
+- the four-way comparison of all 108 bound paths (`git cat-file blob` at the three commits, and the working tree after the merge);
+- the comparison of changed lines for the six files changed on both sides, and the scan of the branch's flow.mjs lines for the four terms above;
+- the union as a script, with the whole-section check named above, after which `durationReviewProblems` returned nothing against the merged tree;
+- `node --check tools/video/automation/flow.mjs`;
+- in apps/api at `f3a6b756b`, from the local uv cache: `alembic heads`, which printed one head, `0131_video_dub_retries`; `pytest tests/test_schema.py tests/test_migration_0131_video_dub_retries.py tests/test_migration_0130_video_cute_presets.py tests/test_migration_sql_dialect.py`, 12 passed and 2 skipped (the two that need PostgreSQL); `ruff check .`, clean;
+- `npm run check:tasks`, which exited 0.
+
+The CLI check, review.test.mjs and `git diff --check` are run after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- For schemas.py the reviewer is also the one who changed the three comment lines. The independence the receipt's pair names holds for everything the branch's author wrote; for those three lines it is this instance checking its own edit, stated here so that nobody reads more into it.
+- No binding is reviewed afresh. The two sections above keep their own revision-specific claims; neither the dub retry nor the explainer family is judged again, and whether the two features behave together at run time (a retried dub of a cute explainer) was not tried.
+- The merged admin.json files were compared as lines, not parsed for key collisions beyond what git's merge reports; `npm run check:i18n`, lint, typecheck and the web tests were not run, nor mypy, the API suite beyond the four files named, the tool suites, or CI.
+- The PostgreSQL parts of the two migration tests were skipped here and run only in CI.
+- No dub was made, no planner or worker was run, and no rendered cut or measured narration was produced.
+- This follow-up binds the tree at `f3a6b756b` only: a later commit or merge with main that changes any of the seven files, or either receipt file, needs its own follow-up.
+- The 101 bindings this follow-up left at the hashes the two sections above bound are not covered afresh.
+
+PASS is DURATION_ONLY for the seven rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Explainer image model (a one-off explainer names its image model) increment: 13 files (2026-10-11)
+
+Reviewer: `claude-opus-receipt-explainer-pr2`. Author: `claude-opus-explainer-pr2`. Scope: DURATION_ONLY for the thirteen changed bindings below, reviewed at `8103c33c9e8e403f550ddea75c22fba1a15c87fe`, the merge of origin/main (`27b77b47c`, #1441) into claude/explainer-image-model at `f16672f125f5deb0033c6095ca0d7b73d4f9434d` ("tasks: what was and was not run locally for the explainer image-model change"). The branch is pull request 2 of docs/videos/explainer-route/DESIGN.md: five commits (`259d5cb5b`, `df2a21d07`, `9990afa37`, `2858e1892`, `f16672f12`) over `3591cda88` (#1435). The reviewer wrote none of them, made the merge (no conflict; main's only change since the merge base is one task file), and edits only this report and review.json.
+
+Baseline: origin/main at `27b77b47c`. Between the merge base `3591cda88` and that commit main changed neither receipt file, so the receipt the merge carries is main's, the "Dub re-request merge with main (#1435) and migration renumber follow-up" above; the branch changed neither receipt file either. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these thirteen bindings, the thirteen that docs/videos/explainer-route/DESIGN.md section 4.3 names; the other 95 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `apps/api/app/video_automation/schemas.py`: `e03d2bead4cfd2c9245d3afb788ed11f31bbf2d9ec4aab565a9fb948eb2ba8fa` -> `4247c4bbbb118d14bc4cd90358d129843936f17fbc3e1cff0217d461ce02d70d`.
+- `apps/api/app/video_automation/series.py`: `6dd73fd48500f0bb168e6ced4e19964f13dd5f18c9758a6caafa3fa6a865d847` -> `cb9d3e01465a6f072d44fdcedae659f538686a634a03351171f8f67d8bfaa155`.
+- `apps/api/tests/test_video_drama_requests.py`: `07ddbcaadf668a13565969ca44e2542dee4f6ad83791bcc8f67d785302734c59` -> `441b11622f444564a22f4ea43e94fad431a777577ce2ba60bd522c8510b25eef`.
+- `apps/web/components/admin-video-series.tsx`: `a6bf22c535b18c03bd1a5b77cffbeb77e33f40b8b28b03c125553183e06c8067` -> `b6c26a0e7bef415e2aebb88a8b09e10a8ccb1b1d4b49a269e04627cee58a48a7`.
+- `apps/web/messages/en/admin.json`: `af82ee554a4a5a3ba46114302b5c7cda0b86e6b31ec9559fa0249206a64e28ad` -> `d57d403f5cf9d7d8bd1dc40512bcee86416cf0a52e5ca0d80e205d30ad9c6d33`.
+- `apps/web/messages/ja/admin.json`: `00493fd6a1d0e508def816f81285620939780164d677ff887ded781e9dbb40cf` -> `852fe1e05b0c39346ce560ead01bcdee7b99de0e19add71b7704ea93e881dc2b`.
+- `apps/web/messages/ko/admin.json`: `e91226cdbbc6d905eb6a568e2484d31f167477fea2f5eeb0d548612758f5398b` -> `c11c8b1270fffef9cbb5169c0ae6cd1be117a86babe4723015aa66e1555d43ec`.
+- `apps/web/messages/zh-CN/admin.json`: `7437d362bced2531df5358d71b3f7374ab81431a26867813c56557c7ffb4160c` -> `e4d26cdacab4e08f30f32d5c3cb8af8105cc9cdc6d52244a93c3b2b36dde0c75`.
+- `apps/web/messages/zh-TW/admin.json`: `f6c95ee5bf40091ae6dca9c89cbdf6cf82b1cc231c92bc31115f615a494baf88` -> `5bcf83e0206b519232835e95cac57bfcf8db60cb7e9a3783577c446d3828122f`.
+- `tools/video/automation/automation.test.mjs`: `5230f845437eb61bd6cd301e9d6d3cde65de9144476e7a176b248db1b9daf7d3` -> `fe55a3b866b3fa639852ddd8064c46978290593730fee5b987258ed461b8cc1b`.
+- `tools/video/automation/flow.mjs`: `489db4cab75a529de63ad4a9ce9ff44288832cec74fe6f08159d20cf25c06651` -> `6b0fc710cc21812fd88204e99a773582ae51acd69b16fe11f6147aa0a22b1519`.
+- `tools/video/automation/series.test.mjs`: `62707700b6b7dea0361e24b035d1e55c17d1f01147218fe38d57a74d9fa778b8` -> `49626904a2594f6ffa430ea16975b8ba06828d242e413f221c5e63d85284020a`.
+- `tools/video/media/look-keyframes.test.mjs`: `3413923fc1485cc03ffd29a18594c8ae48280710e1b81d7f6882d6f76db8f954` -> `29772a7098486e5f0b7e289d9a6eb10e1af4e4d0aa2bf5f6a744d5bef3cd5b31`.
+
+What the change is: a one-off explainer request may carry an `image_model`; a cute preset that names none is stored with `image-01`; the worker writes a one-off's model into its series.json, where the media stages already read it; the explainer writer of such a one-off hears that model's per-shot prompt budget; and the request form offers the field. Every hunk below adds a field, a validator, a pass-through of the value, a label, or a prompt-character budget. No number a length rule uses moves.
+
+Findings, tools (4 files):
+
+- `tools/video/automation/flow.mjs` (+28/−4, two hunks): in `draftEpisode` the series.json it writes gains `image_model` only for a one-off whose row names one (a spread of an empty object otherwise). The key picks the model the pictures are drawn with and wraps the image cache keys; it is not read by any length rule. `draftBudget` used to return `{}` for every drama; it now returns `{ prompt_budget_chars }` for an explainer one-off whose series.json names a model, computed by `shotPromptBudget` and capped at `WRITER_PROMPT_MAX`. That figure is a count of characters in each shot's image prompt (prompts.mjs lines 135, 704), not of seconds or minutes, and the writer's `target_minutes` comes from `episodeMinutes`/`effectiveEpisodeMinutes`, which are outside both hunks. The slides branch of `draftBudget` is unchanged.
+- `tools/video/automation/automation.test.mjs` (+20/−1): one import (`docDir`) and new assertions on `draftBudget` for one-offs with and without the key, plus three uncapped prompt-budget figures (1093, 1070, 1056 characters). No assertion about minutes, the floor, 480 s or 14,400 frames is added, removed or loosened.
+- `tools/video/automation/series.test.mjs` (+19/−5): a long series whose row names a model writes no key; an explainer one-off with no model writes no key and its writer hears no budget; a new case with `image-01` checks the key and a budget of 1000. The request in the drafted episodes still asks for 3 minutes and the explainer one-off for the minutes it asked before.
+- `tools/video/media/look-keyframes.test.mjs` (+55/−1): the fake site's price lookup reads either catalogue shape, and a new test checks that a cute one-off naming `image-01` is drawn at 1K by MiniMax within its prompt budget while one naming none is drawn at 2K by the settings' model. It touches sizes, prices and prompt characters, no length.
+
+Findings, API (3 files):
+
+- `apps/api/app/video_automation/schemas.py` (+31/−0): `PRESET_IMAGE_MODELS`, an `image_model` field on `DramaRequestIn` (1 to 128 characters, checked by the existing `_known_image_model`), and a second `model_validator`, `_image_model_for_preset`, that refuses the field for a non-explainer preset and fills the cute presets' default. `_episode_length` and the field `target_minutes` (default 3, `ge=1`, `le=EXPLAINER_MAX_MINUTES`) are outside the hunks, and `EPISODE_MIN_MINUTES = 8`, `EXPLAINER_MIN_MINUTES = 8`, `EXPLAINER_MAX_MINUTES = 20`, `EXPLAINER_DEFAULT_MINUTES = 10`, `SERIES_MAX_MINUTES = 8` and `STORY_MAX_MINUTES = 20` are the same lines (the new constant sits above them).
+- `apps/api/app/video_automation/series.py` (+2/−0): `create_one_off` stores `payload.image_model` on the row and puts it in the audit entry. `target_minutes` is passed as before.
+- `apps/api/tests/test_video_drama_requests.py` (+1/−0): the audit entry the test expects gains `"image_model": None`; its `target_minutes: 2` is unchanged.
+
+Findings, web (6 files):
+
+- `apps/web/components/admin-video-series.tsx` (+35/−7): an `image_model` field on `SeriesSummary`, `requestImageModel` (which model the form offers and preselects), the `NewDramaForm` select and its state, the value in the POST body, and the stored model shown beside the minutes in two summaries. `DRAMA_MINUTES` (1, 8, default 3), `EXPLAINER_MINUTES` (8, 20, default 10), `requestMinutes` and the minutes input are unchanged; the POST still sends `target_minutes: minutes`. The changed lines that name minutes carry the old expression whole and append the model after it.
+- `apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json` (+3/−0 each, at the same lines 2381 and 2814 in every language): `imageModel` and `imageModelFollows` in the request form, `imageModel` in the series page. No line was removed and none carries a number or a unit of time; `targetMinutes` and `minutesEach` are as main has them.
+
+A scan of the added and removed lines of flow.mjs, the two API source files and admin-video-series.tsx for `minutes`, `target_seconds`, `duration` and `480` finds only the three web lines above, each repeating an unchanged expression. Under tools/video/core, qa, long-form, tts, assemble and package the only file that differs between the merge base and the head is the unbound test core/explainer-family.test.mjs (+9/−0, which compares the API's and the web's preset-to-model tables); the unbound files of the change (admin_api.py, video_media/jobs.py, video-presets.ts, admin-video-settings.tsx, DRAMA-FLOW.md, explainer-family.test.mjs, stages.test.mjs and three API and web test files) were read as context for what the bound lines call, not reviewed.
+
+Ran (in the worktree at the merge, Node on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the thirteen stale bindings and exited 1;
+- a reading of the diff of each of the thirteen files against origin/main;
+- the hashing, with Node's crypto over the files' bytes, of all 108 bound files against review.json, which found the same thirteen and nothing else;
+- the scan named above;
+- `node --test` over core/duration.test.mjs, core/explainer-family.test.mjs, automation/series.test.mjs, media/look-keyframes.test.mjs and qa/duration.test.mjs: 147 of 147.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge the choice of `image-01` for the cute presets, the refusal of a model without a key, the prompt budget's value or the form as product choices, nor whether a cast drama should be refused the field.
+- automation.test.mjs was not run here, nor any API test, ruff, mypy, Vitest, lint, typecheck or i18n check. The API and web findings rest on reading the diffs and the tests' text.
+- That the four translations say what the English says was not checked beyond their keys.
+- No writer was run, no picture was drawn, and no rendered cut or measured narration was produced.
+- This increment binds the tree at the merge only: a later commit or merge with main that changes any of the thirteen files, or either receipt file, needs its own follow-up. The 95 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the thirteen rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Explainer series prompts (the cute explainers are written from their own series' texts) increment: 9 files (2026-10-11)
+
+Reviewer: `claude-opus-receipt-explainer-pr3`. Author: `claude-opus-explainer-pr3`. Scope: DURATION_ONLY for the nine changed bindings below, reviewed at `7ee2f452db0ef9debe3f6d16a37492d054882b0f`, the merge of origin/main (`b12ae9f6d`, #1445) into claude/explainer-series-prompts at `a0beb22388b3fa80b363cfe4b2837d8e27277f05` ("docs(video): a cute one-off filed before the deploy is paid for twice, not stopped; why the default-style select still hides the cute presets"). The branch is pull request 3 of docs/videos/explainer-route/DESIGN.md: nine commits (`7e0ca6a43`, `6c6b4e6f6`, `96cd54c92`, `90a0d18ce`, `edc0ba76c`, `4ca1f8d3b`, `78b9d2042`, `0d5ac481b`, `a0beb2238`) and an earlier merge of origin/main (`a01b6be25`). The reviewer wrote none of them, made the merge at the head (no conflict; what main gained since the branch last held it is #1445, 59 files under tasks/), and edits only this report and review.json.
+
+Baseline: origin/main at `b12ae9f6d`. Neither the branch nor #1445 changed a receipt file, so the receipt the merge carries is main's, the "Explainer image model" increment above. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these nine bindings: the eight that docs/videos/explainer-route/DESIGN.md section 5.4 names and tools/video/automation/automation.test.mjs, which `90a0d18ce` added a test to after that list was written. They are the nine bound files among the 24 that differ between origin/main and the merge; the other 99 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `apps/web/components/admin-video-series.tsx`: `b6c26a0e7bef415e2aebb88a8b09e10a8ccb1b1d4b49a269e04627cee58a48a7` -> `c64bfba40979fef3f8291ae2582a8cc2bb55644d4be0655ba75b39f767677d8a`.
+- `tools/video/automation/automation.test.mjs`: `fe55a3b866b3fa639852ddd8064c46978290593730fee5b987258ed461b8cc1b` -> `4bea77e72473edd7affc7a7b1b36862c1ba7f93f430cf34dfd32b63745250a05`.
+- `tools/video/automation/discuss.mjs`: `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` -> `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21`.
+- `tools/video/automation/flow.mjs`: `6b0fc710cc21812fd88204e99a773582ae51acd69b16fe11f6147aa0a22b1519` -> `88e44aac739df507703cdddfd021151f2edcd4366bc03e594c0cf0e9688483a9`.
+- `tools/video/automation/prompts.mjs`: `61632a08cd1b036796b900e2274babf49316960adef8ff974f52bbaf73b8f85d` -> `a67ffdc314274301d80f403f182d5206aeb5e7cb2989b6b6b4f1220adea0a9ac`.
+- `tools/video/automation/series.mjs`: `ceb9dabd7e887af14e8a0a3867f2ccfeb54ee1ac11a117a62bd48642e36955e0` -> `d512034bbc99c0bc9ec7bbdbcfafa9ea6b548eedd877aa6754bbb81b04cd4c37`.
+- `tools/video/automation/series.test.mjs`: `49626904a2594f6ffa430ea16975b8ba06828d242e413f221c5e63d85284020a` -> `f0ecd19d2dc779ad2ca304c37a59bab72f322d00ec50fb33e3b183f409760b28`.
+- `tools/video/core/drama.mjs`: `e691c3a4ae58f0c20e0dd7f4faba3f722af4d9b146ce77cd54412dd667c5e577` -> `90de23ad4cc9e1c5ed44e6aae6ab4ccf104d8bac6bd13810122e5ed6853570e4`.
+- `tools/video/media/look-keyframes.test.mjs`: `29772a7098486e5f0b7e289d9a6eb10e1af4e4d0aa2bf5f6a744d5bef3cd5b31` -> `a29f3901db7d3c6eac0c01f634cb2d1b4b59688ab6f72788bbfa7bae401f1f13`.
+
+What the change is: a one-off in a cute preset was planned, written, checked and discussed with So That's Why's flat-explainer texts, under the variants `bible-explainer`, `explainer` and `discuss`. It now has variants of its own (`bible-explainer-cartoon`, `explainer-cartoon`, `discuss-cartoon` and the three that end in `-mystery`), whose texts are built in tools/video/automation/explainer-series.mjs, a new file the registry does not bind. The cute looks also take the steps and table cards, the picture-variety lint and the nine yes/no picture checks; the first draft of a cute episode longer than 11 minutes is handed more line ids; and the request form offers the two presets. Unlike the two pull requests before it, this one holds two things with a bearing on length: the count of line ids (flow.mjs, bound) and what the new texts tell a writer about length (unbound, reached through the bound `instructionsFor`). Each is judged on its own below. No constant a length rule reads moves, and no existing preset's text, count or bound changes.
+
+Findings, tools (8 files):
+
+- `tools/video/automation/flow.mjs` (+26/−3): one import; `DRAFT_LINE_IDS = 140` and `PROFILED_LINE_IDS_PER_MINUTE = 12`, the first of which was the literal in `write`; `draftLineIds(state)` and its call in `write` (judged under "The line ids" below). In `settle`, a preset with a profile keeps `{ preset }` alone of the look: the line under it, unchanged, already forced the request's preset, so `look.preset`, which `isExplainer`, `needsMinimumLength` and `isKnowledgeLongform` read, is the value it was, and what is dropped is a style or a negative the writer added. `variantOf` returns "explainer" for flat-explainer as before, the series' own stage variant for a cute preset and null for everything else as before. The Shorts are drafted for `isExplainerStageVariant(...)`, true for the three stage variants, where the line compared with "explainer". `episodeMinutes`, `slidesMinutes`, `scriptPayload` (`target_minutes: [T, T]`), `saveAndLint`, `MAX_LINT_FIXES = 3`, the 40 fresh ids of every fix round and `usesRegister` (false for every drama, so no pause beat is set on an explainer of any preset) are outside the hunks.
+- `tools/video/automation/prompts.mjs` (+7/−2): one import, and in `instructionsFor` a series' own text is offered after `VARIANT_INSTRUCTIONS` and `STORY_INSTRUCTIONS` in the same chain, so every key that had a text keeps it; the genre section is left out when the base is a series' own text, and for every other call the condition is the old one. `EXPLAINER_COMMON` and flat-explainer's stage texts are outside the diff, and series.test.mjs still finds their pinned digests. The genre section a cute one-off no longer gets is that of the long-series form's default genre, which its row carries (xianxia-bonds: a premise seed, the satisfaction types, a title and a thumbnail formula, the visual tier's line). Printed from the worktree it holds no minute and no second, and flat-explainer's three stages still get it.
+- `tools/video/automation/discuss.mjs` (+9/−4): which discussion variant a bible's or a screenplay's thread is answered with, and `SCRIPT_DISCUSSION_VARIANTS` gains the two cute ones. A revised screenplay still goes through `saveAndLint` (line 436, unchanged) and a discussion still hands 40 line ids (line 253, unchanged).
+- `tools/video/automation/series.mjs` (+5/−2): `documentVariant` picks the bible's variant by the preset, and `documentPayload` sends `genre_spec: null` for a cute one-off. No length.
+- `tools/video/core/drama.mjs` (+17/−3): `CUTE_EXPLAINER_PRESETS`, `CUTE_EXPLAINER_CARD_TEMPLATES` (the explainer's six and "steps", "table"), `explainerCardTemplates`, `isCuteExplainer` and `CUTE_LOOK_WORDS`; `validateDrama` asks `explainerCardTemplates(preset)`, which answers flat-explainer with the list it had; `pictureVarietyProblems` also reads a cute explainer. That function reads prompts and camera words and no timeline (its one error is three stills in a row under one move). A steps or a table card has no length of its own: a card lasts as long as the lines spoken over it. `isExplainer`, `needsMinimumLength`, `isKnowledgeLongform`, `timesSilentShots`, `MAX_SHOT_SECONDS = 12`, `WARN_SHOT_SECONDS = 10`, `MIN_MEDIAN_SHOT_SECONDS_NARRATED = 3` and the lines of `shotProblems` are outside the hunks.
+- `tools/video/automation/automation.test.mjs` (+36/−0): one new test of `draftBudget`, in characters of a shot's prompt (793, 770 and 756 under a limit lowered to 1200 for the test; 1000 at the real 1500). No assertion about minutes, the floor or frames is added, removed or loosened.
+- `tools/video/automation/series.test.mjs` (+116/−15): `explainerOneOffRun` takes the minutes its request asks (8 when not given, as it was). A new test hands a flat-explainer asked for 20 minutes 140 ids, the same ids as at 8. The two cute end-to-end tests ask cute-mystery for 20 minutes (`target_minutes: [20, 20]`, 240 distinct ids) and cute-cartoon for 10 (`[10, 10]`, 140). The test they replace expected a cute one-off to run flat-explainer's variants and asserted no length.
+- `tools/video/media/look-keyframes.test.mjs` (+66/−0): three tests of which question a still is judged with, and that `--accept-best` is still refused for a cute explainer. No length.
+
+Findings, web (1 file):
+
+- `apps/web/components/admin-video-series.tsx` (+14/−11): `REQUEST_PRESETS` gains `cute-cartoon` and `cute-mystery`; `requestImageModel` also answers `listed`, and the form lists a preset's own model by its id when the catalogue lacks it. `DRAMA_MINUTES` (1, 8, default 3), `EXPLAINER_MINUTES` (8, 20, default 10), `requestMinutes`, `changePreset` and the minutes input are unchanged. Both presets are in `EXPLAINER_PRESETS` of apps/web/lib/video-presets.ts, so the form bounds a cute request to 8 to 20 minutes with 10 as the default, which is what the "Explainer family" increment above said a later pull request would get. The API, which this branch does not touch, refuses anything else.
+
+The line ids:
+
+- From the code: `draftLineIds` returns 140 unless `state.format === "drama"` and `explainerProfile(state.style_preset)` is not null, and `explainerProfile` answers by `Object.hasOwn` over a frozen table whose two keys are the cute presets. Called from the worktree: 140 for flat-explainer, cinematic-3d, anime-2d, ink-wash, custom, no preset and the names of two `Object.prototype` members at 8, 9, 10, 11, 12, 15 and 20 minutes; 140 for slides, screencast, shorts and no format with any preset and any minutes; for either cute preset 140 at 8 to 11 minutes, 144 at 12 and 12 more a minute to 240 at 20, and 140 when the minutes are not a finite number. `write` sets `state.target_minutes` from `episodeMinutes` on its first line, so a cute state holds 8 to 20 there. A long anime does not reach the call.
+- Whether 12 a minute is enough: lint's estimate (`estimateTimeline`) reads `DEFAULT_CPM = 250` spoken units a minute, 4.17 a second, and adds 300 ms after every line and 700 ms more after a scene's last. With every id used and one line a shot, a line of the 20 units the text aims at is 5.8 s, so 12 of them are 69.6 s for each minute asked: 13.93 minutes for a 12-minute request and 23.21 for a 20-minute one (116%); at the 24-unit ceiling 16.25 and 27.08 (135%). The target is reached from 17 units a line when each line is its own scene and from 19 when four share one, as under a card; the 480 seconds from 5 to 13 units a line, whatever the request. At the 3.4 units a second the text gives for the voice a line is longer, so the same script measures longer than lint estimates it.
+- What it replaces: 140 ids at a 20-minute request end at 13.55 minutes with 20-unit lines and 15.80 with 24-unit ones, short of the target and well over the floor.
+- The count is not a length rule. A draft that comes out short is refused by lint ("write more narration") and each of the three fix rounds hands 40 more ids; the floor is lint's error on the estimate and QA's 480 measured seconds, and neither reads the count.
+
+What the texts say about length (tools/video/automation/explainer-series.mjs, read whole; `instructionsFor` sends each of the ten texts as it is):
+
+- All ten open on flat-explainer's own sentence: a 10-minute production target, or the explicit "target_minutes"; narration body and finished cut each at least 8 minutes, intro and outro not counted in the body. That is `effectiveEpisodeMinutes` (10 when absent or under 8, kept from 8 to 20, a throw above, the same for the three presets when called) and `knowledgeDurationProblems` (480 s of body and of cut). "Running over the target is fine" and "never fill the minimum with repeated narration, slower delivery, silence or extended channel bookends" are flat-explainer's words too.
+- The shape (the writer's text and the screenplay discussion's) gives lengths for the 10-minute target: for 原來如此事務所 a hook within 20 seconds, about 2 minutes, 6 to 7 minutes, about a minute and about 20 seconds; for 奇聞檔案局 the same hook, about 1.5 minutes, 6 to 7 minutes, about 1.5 minutes and about 20 seconds. Both add up to 580 to 640 s. For another target "the hook and the close keep theirs and the three middle parts scale in the same proportion. The parts together reach the target and never fall under 8 minutes." It names no length outside 8 to 20 minutes.
+- The bible (the planner's text and the bible discussion's) sizes its outline at "250 spoken characters a minute; the whole aimed at "series.target_minutes", never under 8 minutes; over it is fine", flat-explainer's words and lint's rate.
+- A shot: "a new picture about every 4 to 7 seconds", and "one spoken sentence, two only when both are short: about 4 to 7 seconds (a line of 24 characters takes about 7; lint refuses more than 12, warns over 10)". On lint's estimate one 20-unit line is a 5.80 s shot, one 24-unit line 6.77 s, two of 18 units 9.97 s and two of 24 units 12.83 s, which lint refuses and the text rules out. 12 and 10 are `MAX_SHOT_SECONDS` and `WARN_SHOT_SECONDS`; 4 s is above the 3 s median under which lint warns.
+- Chapters: "each stretch a marker opens is at least 10 s" is `CHAPTER_MIN_SECONDS`; the five parts carry at least `MIN_CHAPTERS`; a hook within 20 seconds is inside the 30 s after which lint warns on a drama's opening chapter.
+- The two Shorts: "25 to 55 seconds each", the sentence flat-explainer's text has. Shorts are outside the family's rule.
+
+Recorded observations. None is a rule change and none lets an episode under the floor; they are weaknesses of the texts or of the count:
+
+1. Two rates. The bible is sized at 250 characters a minute, which is lint's; the writer's line rule says "the voice reads about 3.4 characters a second" (docs/videos/history-curiosity/README.md gives it as measured). A writer who sizes an 8-minute request as exactly eight minutes of speech at 3.4 a second, counting no pause, writes 1,632 units, which lint estimates at 7.94 minutes in 20-unit lines and 7.68 in 24-unit ones and sends back to be written longer. At 9 minutes the same sizing estimates 8.91 and 8.70. So only a request for exactly 8 minutes is exposed, to one fix round and not to a short cut. The writer's text could say that lint counts 250 a minute.
+2. The line rule says "40 is where lint refuses the line". Lint warns above 40 spoken units (lint.mjs lines 413 and 414) and refuses nothing for a line's length. The text is the stricter of the two.
+3. Taken at the low end of each range the shape's parts add up to 580 s for the 10-minute target, 20 s short of it, and to 472 s when the middle parts are scaled by eight tenths for an 8-minute request. The paragraph's last sentence, quoted above, settles which wins, and lint refuses the draft either way.
+4. 12 ids a minute is exact, not generous, for a script whose lines mostly share scenes: four 20-unit lines a scene with every id used estimate at 12.67 minutes for a 12-minute request and 21.11 for a 20-minute one (106%), and lines under 19 units there fall short of the target on the first draft. A fix round's 40 ids cover it.
+5. Nothing in the texts or in lint bounds the lines spoken over one card state of a drama-format explainer; QA's pace item does, at 15 measured seconds a state. At 3.4 units a second two 24-unit sentences over one state are about 15.4 s, and about 16.2 s on the closing card, which also takes the 1.5 s tail and of which the text says "under one or two sentences"; two 20-unit sentences there are about 13.9 s. Flat-explainer's text bounds it no better; the cute text did not make it worse.
+6. The "4 to 7 seconds" cadence is advice. Lint's cadence rules (8 s a picture, 6 s on average, half the runtime illustrated) read illustrated slides alone, so a cute explainer, a drama by format, is held to 12 s a shot at lint and 15 s a state at QA, as flat-explainer is.
+7. The file that now holds a cute explainer's length wording is not in `REVIEW_FILES`, where flat-explainer's (prompts.mjs) is. A later change to explainer-series.mjs will not make this receipt stale.
+
+The floor's own sites are not in this change. No file under apps/api, tools/video/qa or tools/video/long-form differs between origin/main and the head, nor do core/duration.mjs, core/lint.mjs, core/schema.mjs, core/timeline.mjs or core/cadence.mjs. A search of tools/video and apps/api/app, tests aside, finds no comparison with the stage variant "explainer" left: the one line of `write` that had it now asks `isExplainerStageVariant`.
+
+Ran (in the worktree at the merge, Node on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the nine stale bindings and exited 1;
+- a reading of the diff of each of the nine files against origin/main, of explainer-series.mjs whole, and of the hunks of media/keyframes.mjs and apps/web/lib/video-presets.ts as context;
+- the hashing, with Node's crypto over the files' bytes, of all 108 bound files against review.json, which found the same nine, and their comparison with `git diff --name-only origin/main HEAD`;
+- a script kept outside the repository that imports the worktree's modules and calls `Automation.prototype.draftLineIds`, `estimateTimeline`, `effectiveEpisodeMinutes`, `genreBlock` and `instructionsFor`; every count and every estimated figure above is its output, and the figures at 3.4 units a second in observation 5 are arithmetic on timeline.mjs's constants;
+- a scan of the added and removed lines of the nine files for minutes, seconds, targets, durations, frames, pace and the numbers 480, 600, 780, 140 and 40, which finds the line-id lines of flow.mjs, the minutes of the series.test.mjs cases above and nothing else that is a length;
+- `node --test` over core/duration.test.mjs, core/explainer-family.test.mjs, core/explainer-cute.test.mjs, automation/explainer-series.test.mjs, automation/explainer-family.test.mjs, automation/series.test.mjs, automation/discuss.test.mjs, media/look-keyframes.test.mjs and qa/duration.test.mjs: 185 of 185; and automation/automation.test.mjs with `--test-name-pattern "explainer|line ids|prompt budget"`: 8 of 8.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the ten texts as briefs: the content rules, who may be drawn, the cards, the thumbnails and the two series' structures as product choices are not judged, nor are the nine picture checks or the refusal of `--accept-best`.
+- No writer was run, no picture was drawn, and no narration was synthesized or measured. Whether a cute writer follows the shape, and what the voice measures (3.4 units a second is the series document's figure), was not observed; only that lint and QA refuse an episode that comes out short.
+- automation.test.mjs was not run whole, nor any API test, ruff, mypy, Vitest, lint, typecheck or i18n check. The web finding rests on reading the diff.
+- What a cute one-off that was filed before the deploy does to its unfinished model calls (the new variants are other journals) is the ticket's deploy note and is not judged here.
+- This increment binds the tree at the merge only: a later commit or merge with main that changes any of the nine files, or either receipt file, needs its own follow-up. The 99 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the nine rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Captions tag in every YouTube title increment: 2 files (2026-10-12)
+
+Reviewer: `claude-pr-review-1455-captions-tag`. Author: `claude-opus-5-5-cc-captions`. Scope: DURATION_ONLY for the two changed bindings below, reviewed at `a73f088b5f7da0ef4886f0c308584dccda89230c` ("test(video): the tests and the language contract read the captions tag") on claude/video-title-cc-captions-660076, pull request #1455. The branch is three commits (`a0be2ca7f`, `7cb2834fe`, `a73f088b5`) on origin/main. The reviewer wrote none of them and edits only this report and review.json.
+
+Baseline: origin/main at `6b5370b6fd661a8733392b79c2458bea9c70a7fb` (#1401), the merge base of the branch. Neither side changed a receipt file, so the receipt the branch carries is main's, the "Explainer series prompts" increment above. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these two bindings. They are the only bound files among the 35 that differ between origin/main and the head; the other 106 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `tools/video/core/narration-locale.test.mjs`: `db350dea6710d783a076d3449685125649f161d7465a476971d3b691c36d5088` -> `fddf009b24c976c9319d139db24fa3312fd1d942f2b4d623876d86357464d2ce`.
+- `tools/video/review/sync.test.mjs`: `c5272cd5154eb2b19fc4a16124671a51d01689150ee3bb5c23dc8c29ccc45644` -> `9660b3554cd7d82ac70b2e99dd6e354733a61eabd610c4ee2364eff59bf5b0a8`.
+
+What the change is: every YouTube title ends with its language's captions tag, written with the full-width ｜ and no spaces (zh-TW 「｜CC字幕」, en 「｜CC Subtitles」, ja 「｜字幕付き」, ko 「｜CC 자막」). The worker adds it when it composes the package (tools/video/core/metadata.mjs, unbound) and the site adds it once more on the way to YouTube (apps/api/app/video_youtube, unbound). It is a title string; no length, minute, second or frame is read or written by it.
+
+Findings, the two bound tool tests (+2/−2 together):
+
+- `tools/video/core/narration-locale.test.mjs` (+1/−1): in the test of an English video's upload metadata, `assert.equal(metadata.title, doc.youtube.title)` becomes `` assert.equal(metadata.title, `${doc.youtube.title}｜CC Subtitles`) ``. The assertions on `default_language`, the chapters line of the description and the localization keys are unchanged.
+- `tools/video/review/sync.test.mjs` (+1/−1): in the test of the final review's titles, the expected map for the English fixture becomes `{ en: "Which AI model is worth paying for? Three questions｜CC Subtitles", "zh-TW": "zh-TW title｜CC字幕" }`. The zh-TW fixture's assertion (its own title alone) is unchanged.
+
+No assertion about minutes, seconds, frames, the 10-minute explainer default, the 8–20 explainer range, drama's 1–8, the 13-minute brand story, the 8-minute non-drama floor, the 480 s / 14,400-frame QA floor, the long-form anime policy, measured evidence or plans.json is added, removed or loosened. The lines matching minute, second, frame, duration, floor, target_minutes, 480 or 14400 number the same in each file at both revisions (narration-locale 3, sync 125), and none of the four changed lines matches any of them.
+
+The floor's own sites are not in this change. No file under tools/video/qa or tools/video/long-form differs between origin/main and the head, nor do core/duration.mjs, core/lint.mjs, core/schema.mjs, core/timeline.mjs or core/cadence.mjs.
+
+Ran (in the worktree at the head, Node on Windows):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the two stale bindings and exited 1;
+- `git diff origin/main -- tools/video/core/narration-locale.test.mjs tools/video/review/sync.test.mjs`, read whole, and `git diff --stat origin/main..HEAD`;
+- the hashing, with Node's crypto over the files' bytes, of both files at origin/main (equal to the bindings in the table) and at the head;
+- a scan of the added and removed lines of the two files for duration terms, which finds none;
+- `node --test` over the two files.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge the captions-tag rule as a product choice, the title length limits YouTube applies, or the unbound files of the change (core/metadata.mjs, package/metadata.mjs, core/compilation.mjs, apps/api/app/video_youtube and their tests, the language contract fixtures).
+- No API test, ruff, mypy, Vitest, lint or typecheck was run.
+- This increment binds the tree at the head only: a later commit or merge with main that changes either file, or either receipt file, needs its own follow-up. The 106 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Opening condensation (the first chapter is a 30 to 60 second condensation) increment: 8 files (2026-10-12)
+
+Reviewer: `claude-pr-review-1467-condensation`. Author: `claude-opus-5-5`. Scope: DURATION_ONLY for the eight changed bindings below, reviewed at `075d0e287a9a3cd7910e107316e069e7865b3c4f` ("feat(video): narrated videos open on a 30-60 s curiosity condensation") on claude/video-intro-30sec-summary-2366ac, pull request #1467. The branch is that one commit on origin/main. The reviewer wrote none of it and edits only this report and review.json.
+
+Baseline: origin/main at `35ac6415c41e4ac9bcce3af30defb2a2b16c8fc9` (#1466), the merge base of the branch. Neither side changed a receipt file, so the receipt the branch carries is main's, the "Captions tag in every YouTube title" increment above. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these eight bindings. They are the only bound files among the 22 that differ between origin/main and the head; the other 100 remain current. Every prior increment is preserved and the registry remains 108 files.
+
+- `.agents/skills/youtube-video/SKILL.md`: `4088bb1beede893b19b503281118a86ef6806a37243c9bfcb85dd70d2e91d101` -> `66bee79d893bfb52869a6a7c3426439681a55ffb8c3746286351c365a7056e22`.
+- `.agents/skills/youtube-video/references/automated.md`: `6852c8ae98a94ba4571696e14728d72cdad54963cecb9b6eeadd8651d6e41d0d` -> `38d34f7102a104f6aaaebe095d977398dafe37ae44ce0e3b900acf4e36db7d47`.
+- `.agents/skills/youtube-video/references/formats.md`: `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` -> `c083df7c0604838d047b0c0fd9e526b191fef6940c10bbb318922e05847a34dc`.
+- `.claude/skills/youtube-video/SKILL.md`: `4088bb1beede893b19b503281118a86ef6806a37243c9bfcb85dd70d2e91d101` -> `66bee79d893bfb52869a6a7c3426439681a55ffb8c3746286351c365a7056e22`.
+- `tools/video/automation/prompts.mjs`: `a67ffdc314274301d80f403f182d5206aeb5e7cb2989b6b6b4f1220adea0a9ac` -> `d13a2dc0b3e751fbee279b0c4077e5c21eeb93d7d7d0b4adc98cb83179549424`.
+- `tools/video/automation/series.test.mjs`: `f0ecd19d2dc779ad2ca304c37a59bab72f322d00ec50fb33e3b183f409760b28` -> `d7bca5b65018f5361321ab8b98d0f323db9b195936a25d0793042c7cdb1ca1d2`.
+- `tools/video/core/lint.mjs`: `53a0134f9221a1b3db3f6bd8fe0ff6b36b05fb1f11d42da033a0668af04fb9bc` -> `0f71c3637c7bf85661982ce7c49235bd9ef2f634c8273402a7966e0e21c20b86`.
+- `tools/video/core/lint.test.mjs`: `13c9a41c13ed096b0cdc55a979b7b6405af67c4a07b1077181dcd80350050cd5` -> `0cb320ff6f46d57b90e18c6b1455f6c9312c282f79b5fccbf11a1bf19c408b26`.
+
+What the change is: the opening chapter of a narrated video becomes a condensation of 30 to 60 seconds (the hook, the title's number, date or proper noun within 20 seconds, then two or three of the video's strongest moments told without their answers). It moves seconds inside the first chapter of a video whose total is ruled as before; it is a shape of the script, not a length of the video.
+
+Findings, tools (4 files):
+
+- `tools/video/core/lint.mjs` (+18/−8): `HOOK_SECONDS = 30` and the import of cadence.mjs's `HOOK_SECONDS = 20` give way to `OPENING_CHAPTER_SECONDS = [30, 60]` and `DRAMA_HOOK_SECONDS = 30`; `OPENING_SECONDS` (how far a spoken table of contents still counts as the opening) goes from 40 to 60. The opening-chapter check stays a `warn`: a drama with a cast (`hasCast`) is warned over 30 s as before; any other video that is not a compilation is warned under 30 s or over 60 s, and only when the estimate is at least `MIN_EPISODE_MINUTES` (the constant, as `episodeScriptProblems` already reads it, not `minEpisodeMinutes()`). Before, the same warning fired over 20 s on illustrated slides and over 30 s on everything else at any length. `const minutes = frameToSeconds(timeline.total_frames) / 60` moves two lines up, unchanged, so the check can read it. `checkChapters` and its error for a chapter under 10 s, `target_minutes` and `DEFAULT_TARGET_MINUTES`, the floor (`needsMinimumLength(doc) ? minEpisodeMinutes() : 0`) and both of its errors, the warning outside the target, `episodeScriptProblems`, the long-anime body tolerance and `storyProblems` are outside the hunks. No error is added or removed.
+- `tools/video/automation/prompts.mjs` (+13/−11): the explainer brief and the illustrated brief gain a 「開場濃縮」 line, the illustrated writer's first-chapter rule names the condensation, the explainer writer's structure line becomes `${CONDENSATION_RULE}` (register.mjs, unbound: "within 20 seconds" for the title's fact, the condensation 30 to 60 seconds) and the explainer bible's outline lists the teased moments. Every "aimed at target_minutes, never under 8 minutes; over it is fine", "each ≥ 10 s" and "250 spoken characters a minute" in the hunks is context, unchanged.
+- `tools/video/automation/series.test.mjs` (+2/−2): the pinned digests of flat-explainer's `bible-explainer` and `explainer` texts are re-pinned, because prompts.mjs changed their words; the verifier's digest and the three second digests are unchanged. No assertion about length moves.
+- `tools/video/core/lint.test.mjs` (+31/−4): `stretched()` adds six condensation lines to the example's first scene so its opening chapter falls inside the window; a new test pins `[30, 60]` and checks a warning under and over it and none on the seconds-long example; the table-of-contents test reads 60 for 40. The assertions on the floor, on `target_minutes` and on chapter length are unchanged.
+
+Findings, skills (4 files):
+
+- `.agents/skills/youtube-video/SKILL.md` and its byte-identical `.claude/skills/youtube-video/SKILL.md` (+1/−1 each): the table's 「開場 30 秒」 reads 「開場濃縮 30–60 秒」.
+- `.agents/skills/youtube-video/references/formats.md` (+4/−4): the opening row of four templates (≤ 30 s, and ≤ 20 s for illustrated storytelling) reads 30–60 s, with ≤ 30 s kept for a recorded video. The other rows' shares and the totals of each template are unchanged.
+- `.agents/skills/youtube-video/references/automated.md` (+1/−1): the illustrated cadence's 「開場 20 秒內落鉤」 reads 「開場章是 30–60 秒的濃縮（20 秒內說出標題的數字或名字）」. The 5–8 s picture, the ≤ 8 s card state and the half-illustrated share are unchanged.
+
+The brand story (tools/video/automation/story.mjs, unbound): `HOOK_SECONDS` goes from 30 to 45, which `chapterBudgets` takes out of the total before the other five chapters share the rest, and `engine` absorbs the rounding, so the total is the target exactly. Called from the worktree: 690, 780 and 930 seconds at 11.5, 13 and 15.5 minutes (hook 45, engine 181, 206 and 248), and `lengthBand(13)` is `[690, 930]`, 11:30 to 15:30 as before. `LENGTH_BAND_SECONDS`, the 13-minute default and `checkLength`'s band are outside the hunks; the hook is still excluded from resizing. core/story.mjs reads no hook seconds.
+
+No assertion or constant for the 10-minute explainer default, the 8–20 explainer range, drama's 1–8, the 13-minute brand story and its 11:30–15:30 band, the 8-minute non-drama floor, the 480 s / 14,400-frame QA floor, the long-form anime policy, measured evidence or plans.json is added, removed or loosened. No file under apps/api, tools/video/qa or tools/video/long-form differs between origin/main and the head, nor do core/duration.mjs, core/schema.mjs or core/timeline.mjs; core/cadence.mjs loses only its `HOOK_SECONDS` export, which no other file reads.
+
+Recorded observations. None is a rule change and none lets an episode under the floor:
+
+1. A brand story with characters (`hasCast`: a drama format with a non-empty `characters`, up to three) takes the drama branch, so its 45-second hook budget is warned against `DRAMA_HOOK_SECONDS = 30` on every such story. The fixture's story has no characters and takes the 30 to 60 window.
+2. Under `MIN_EPISODE_MINUTES` a video without a cast (illustrated slides included) is no longer warned about its opening chapter at all; before, the hook warning read every length.
+
+Ran (in the worktree at the head, Node on Windows, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the eight stale bindings and exited 1;
+- `git diff origin/main...HEAD` over the eight files read whole, and over story.mjs, story.test.mjs, cadence.mjs and STORY.md as context, with `git diff --stat`;
+- `git ls-files --eol` for the eight files (LF in index and worktree) and the hashing, with Node's crypto over the files' bytes, of each against review.json;
+- a script kept outside the repository that imports the worktree's `chapterBudgets`, `lengthBand`, `hasCast` and the story fixture; the brand-story figures above are its output;
+- `node --test` over core/lint.test.mjs, core/cadence.test.mjs, core/duration.test.mjs, core/story.test.mjs, automation/story.test.mjs, automation/prompts.test.mjs, automation/register.test.mjs, automation/series.test.mjs and qa/duration.test.mjs.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge the condensation as a product choice, the texts of register.mjs, story-prompts.mjs, explainer-series.mjs or script-writing.md (unbound), or the seconds a drama's hook is given.
+- No writer was run and no narration was synthesized or measured: whether a writer keeps the condensation inside 30 to 60 seconds was not observed, only that lint warns either side of it and that the floor's error is untouched.
+- No API test, ruff, mypy, Vitest, lint or typecheck was run.
+- This increment binds the tree at the head only: a later commit or merge with main that changes any of the eight files, or either receipt file, needs its own follow-up. The 100 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the eight rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Opening condensation brand-story hook follow-up: 1 file (2026-10-12)
+
+Reviewer: `claude-pr-review-1467-condensation`. Author: `claude-opus-5-5`. Scope: DURATION_ONLY for the one changed binding below. The author changed tools/video/core/lint.mjs again, after the section above and on top of `075d0e287`, to act on that section's observation 1. The reviewer wrote none of the change and edits only this report and review.json.
+
+- `tools/video/core/lint.mjs`: `0f71c3637c7bf85661982ce7c49235bd9ef2f634c8273402a7966e0e21c20b86` -> `c68ebb67744bab497196b8456585a4ef4d8a39bc937b7b1316d74ed7ce681fc1`.
+
+What the change is (+3/−2): the drama-hook branch of the opening-chapter check reads `hasCast(doc) && !isStory(context.series)` for `hasCast(doc)`, with a comment above it, and the comment above `OPENING_CHAPTER_SECONDS` adds "(not a brand story)". `isStory` (core/story.mjs, already imported by lint.mjs) is `series?.kind === STORY_KIND`. A brand story with characters therefore leaves the 30-second drama hook warning and, like a brand story without them, is read against the 30 to 60 second condensation window on an episode of `MIN_EPISODE_MINUTES` or more, which its 45-second hook budget (automation/story.mjs `HOOK_SECONDS`) sits inside. Every other video takes the branch it took at `075d0e287`. Both branches are still `warn`; the constants (`OPENING_CHAPTER_SECONDS = [30, 60]`, `DRAMA_HOOK_SECONDS = 30`, `OPENING_SECONDS = 60`), `checkChapters` and its 10-second error, `target_minutes`, the floor and its two errors, `storyProblems` and the long-anime tolerance are outside the hunks. No duration rule above is touched: not the explainer's 10 minutes or 8–20, drama's 1–8, the brand story's 13 minutes and 11:30–15:30, the 8-minute floor, the 480 s / 14,400-frame QA floor, the long-form anime policy, measured evidence or plans.json.
+
+Ran: `git diff -- tools/video/core/lint.mjs` against `075d0e287`, read whole; `git ls-files --eol` (LF) and the hash with Node's crypto over the file's bytes; `node --test` over core/lint.test.mjs, core/story.test.mjs and automation/story.test.mjs. No test was added for a brand story with a cast; the branch was read, not exercised. The CLI check and review.test.mjs are run again after rebinding, with results in the hand-off.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## PR #1475 private Studio link increment: 9 files (2026-10-12)
+
+Reviewer: `codex-pr-review-1475-duration`. Author: `codex-admin-studio-link-ui-8bc3`. Scope: DURATION_ONLY for the nine changed bindings below, reviewed at `2d5552fe8d7edec44b09c698fff592b3ca35a5fd` on `codex/curio-five-recuts-20261012`, pull request #1475. The reviewer wrote none of the API, web or locale changes and edited only this report, review.json and the narrow receipt task record.
+
+Baseline: merge base `a933427269e55365c3f3eed4769ca70ce9a8e692`. For each of the nine paths, SHA-256 of `git show <merge-base>:<path>` equals the existing `review.json` binding; all nine matches were checked against the Git blob bytes. These are exactly the bound paths changed through the author commit; the other 99 bindings remain current. Before this increment, `node tools/video/long-form/cli.mjs check` reported exactly these nine stale bindings.
+
+- `apps/api/app/video_reviews/admin_service.py`: `4cf2dceda72b3bd09f471e2263a9d4a96ba1d8a1375c554b0225d1ae12352856` -> `61a0095ccb186e45fc89f08bd20085a20aea68f13c9192478b9cbec4e5aa169d`.
+- `apps/api/app/video_reviews/schemas.py`: `e6264fda6e55564231a0b42bb0120e386e12541e16192b8f77581f5dfb35b2a2` -> `57cdfedd70afb65aa96e42699c7e52dd3d45faccf7919b58ee1a54779f0962a0`.
+- `apps/web/components/admin-video-review-card.tsx`: `4d22f999dcb70dfca1bd436421ecfe04cd9c7b9d869c0295bc4946be26e3e7a8` -> `62e4b249e15e2bfde32e0752977a9a54d0fc6d5a2a8e47a05ea04dbb7b63b9cf`.
+- `apps/web/components/admin-video-reviews.test.tsx`: `522f72db3d27c7b6a7eb0dd9d7eec76ef02976eacfe77317b4791cae6f6decf2` -> `2fbef750199daaf8fd1efeea37196526e67f00b2641adf3b23c9159ddf1a00b2`.
+- `apps/web/messages/en/admin.json`: `d57d403f5cf9d7d8bd1dc40512bcee86416cf0a52e5ca0d80e205d30ad9c6d33` -> `0c70216be4ad74532bcab45690a387bf1985a3182dab8e2a1012af46908940dd`.
+- `apps/web/messages/ja/admin.json`: `852fe1e05b0c39346ce560ead01bcdee7b99de0e19add71b7704ea93e881dc2b` -> `ff376aa2443bea8459550d4234f86e2e9ec97c0b3bc6f027e41837801f70ea4d`.
+- `apps/web/messages/ko/admin.json`: `c11c8b1270fffef9cbb5169c0ae6cd1be117a86babe4723015aa66e1555d43ec` -> `73a3b5206c52f29bc785752326777f98a5034a1677d3170cac4e9b81e6232f2f`.
+- `apps/web/messages/zh-CN/admin.json`: `e4d26cdacab4e08f30f32d5c3cb8af8105cc9cdc6d52244a93c3b2b36dde0c75` -> `cadfb6bb968b2b3f825973f6bd4974d6f7e38bda575c4a1772e97121fbc6b38b`.
+- `apps/web/messages/zh-TW/admin.json`: `5bcf83e0206b519232835e95cac57bfcf8db60cb7e9a3783577c446d3828122f` -> `e1787c72f2dc5f46141411a3efd0305d10833bcc1101dfe2d6c14aae564e5d25`.
+
+Findings: `admin_service.py` (+102/−4) adds an opt-in private-only link check for a pending imported final. It reads the linked channel's YouTube metadata, requires an unscheduled private video with processing succeeded and `duration_seconds(contentDetails.duration) > 0`, and refuses duplicate IDs, already linked targets, approved upload packages and active syncs. The positive duration is a playable-upload existence check; it neither sets an episode target nor weakens an existing floor. The parser is imported from `video_shorts.claim` and is unchanged. `schemas.py` (+3/−0) adds the optional `private_only` request flag. The unbound admin API route and focused API tests were read as context; they pass the flag and cover rejection without commit.
+
+Findings: `admin-video-review-card.tsx` (+27/−18) keeps the newest pending imported final awaiting approval, distinguishes a linked ID without a public timestamp from public or scheduled states, and sends the private-only flag from its form. `admin-video-reviews.test.tsx` (+78/−1) tests the new link, pending review, linked-channel gate and related UI states. The five admin locale files (+5/−1 each) add the link and privacy-verification wording and rename the catalog's ID filter to “Linked to YouTube.” A locale sentence mentions video length only as the positive processing check above. None of these nine files changes `target_minutes`, `MIN_EPISODE`, `VIDEO_MIN_EPISODE_MINUTES`, 600/780-second targets, the eight-minute or 480-second floor, runtime specs, action seconds, source hashes or covered status. The long-form duration implementation, plans and QA files are outside the diff.
+
+Ran: `git diff a933427269e5..2d5552fe8d7e` for all nine bindings; SHA-256 over each merge-base Git blob, current file bytes and the old receipt; `git ls-files --eol` (LF); pre-edit `node tools/video/long-form/cli.mjs check` (only nine expected stale bindings). After rebinding, `node tools/video/long-form/cli.mjs check` and `node --test tools/video/long-form/review.test.mjs` both passed.
+
+Non-claims: this is a duration-only review of the nine bound revisions, not owner playback, Studio publication verification, production deployment or a full test-suite result. The link's positive duration check does not establish that a particular uploaded film meets a long-form minimum; those limits remain governed by their unchanged files.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## DURATION_ONLY 增量覆核（2026-10-13）: narrated videos tell one story with hooks, 15 files
+
+Reviewer: `claude-opus-duration-review-20261013`. Author: `claude-fable-5-1-narrative`. Scope: DURATION_ONLY for the fifteen changed bindings below, reviewed in the worktree `claude/youtube-narrative-flow-1cadbc` whose HEAD is `5c2d32763346a6abda693e15b6a4895ff2025adf` (#1474) with the change still in the working tree, task `2026-10-13-narrated-videos-tell-one-story-with`. The reviewer wrote none of it and edited only this report and review.json.
+
+Baseline: HEAD is the merge base with origin/main, so the baseline of every binding is `git show HEAD:<path>`. SHA-256 over those fifteen Git blobs equals the fifteen values this receipt carried before this increment, which proves each was current when the change started; `git ls-files --eol` reports LF in index and worktree for them. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these fifteen bindings and no others. The hand-off named thirteen of them; `tools/video/core/drama.test.mjs` and `tools/video/tts/tts.test.mjs` are bound and changed too, and both are reviewed and rebound here. The other 93 bindings are untouched by this change and are not covered afresh. Every prior increment is preserved and the registry remains 108 files.
+
+- `.agents/skills/youtube-video/SKILL.md`: `66bee79d893bfb52869a6a7c3426439681a55ffb8c3746286351c365a7056e22` -> `f75b81629e71b5371b0069ac7e10192f33c139ef748ce752cf8763797299b3e6`.
+- `.agents/skills/youtube-video/references/automated.md`: `38d34f7102a104f6aaaebe095d977398dafe37ae44ce0e3b900acf4e36db7d47` -> `135bd217d344df2a5a033cef30cbc3181c4b268d3f96c689d4b4560390de40db`.
+- `.agents/skills/youtube-video/references/formats.md`: `c083df7c0604838d047b0c0fd9e526b191fef6940c10bbb318922e05847a34dc` -> `b27b230728c1c6513fd4567cdba04797f552fd920bed33833ae9f97b70d74087`.
+- `.claude/skills/youtube-video/SKILL.md`: `66bee79d893bfb52869a6a7c3426439681a55ffb8c3746286351c365a7056e22` -> `f75b81629e71b5371b0069ac7e10192f33c139ef748ce752cf8763797299b3e6`.
+- `docs/videos/README.md`: `09dee8b3c79a09ddd1d84ec8453d62582c75516cd58270c153f75e0ed75cb125` -> `14a06ca3f3f495503c70e0f2a6197f1c63b5d104aa92261c3ccf8fd84145511a`.
+- `tools/video/automation/automation.test.mjs`: `4bea77e72473edd7affc7a7b1b36862c1ba7f93f430cf34dfd32b63745250a05` -> `cfce20c7352019324d8e07369e833ed3f0a06f55cd12237e0eafb81f180f0e9c`.
+- `tools/video/automation/flow.mjs`: `88e44aac739df507703cdddfd021151f2edcd4366bc03e594c0cf0e9688483a9` -> `0690b19c0ae2d5ba7a52817eb4b0a4f0d14b1ea89e6c5617bbf087d66306bb49`.
+- `tools/video/automation/prompts.mjs`: `d13a2dc0b3e751fbee279b0c4077e5c21eeb93d7d7d0b4adc98cb83179549424` -> `37363cfd2068b9980462d60df67e244b198bae75ee880bcc0f25f966049e4828`.
+- `tools/video/automation/series.test.mjs`: `d7bca5b65018f5361321ab8b98d0f323db9b195936a25d0793042c7cdb1ca1d2` -> `0c40a6d6154f1bff2f4b850a399bb19526b7e1a6cf2b6211356c25d1979cb931`.
+- `tools/video/core/drama.test.mjs`: `c6dc0ef74464fcb9e47397f59b3902938c628ed86ec2f53819eeba88537f22c6` -> `d24c6bc6a247f8ad33a102687078fc5dae0da5f30e87861008eb3db550c35b17`.
+- `tools/video/core/lint.mjs`: `c68ebb67744bab497196b8456585a4ef4d8a39bc937b7b1316d74ed7ce681fc1` -> `ec6490a252bb26ab520ccfe041404aaf40375f68c220dacaa0b1819d23fe419d`.
+- `tools/video/core/lint.test.mjs`: `0cb320ff6f46d57b90e18c6b1455f6c9312c282f79b5fccbf11a1bf19c408b26` -> `2c98e1c2b1747c966f281888aa37cd4494dcf3064ccaeee91270ce454d78f18e`.
+- `tools/video/core/schema.mjs`: `0202f27c4aa2d59c64fccb0fd495033a58999809943935c7004fc45d183ac94b` -> `80d2607bdecd5aaae145308924be7da310f48f8fc711e2cceba00742b445db0b`.
+- `tools/video/core/state.mjs`: `f45f65951076d48fe61280fc99b3c9d839614775c469fd1fd25d5046633aec26` -> `014450d61ce01f7bff11b48e94c52fba2f4b6e64bc9fcd4e67b22bef423ccaaa`.
+- `tools/video/tts/tts.test.mjs`: `6f7dda4d4cb36292ca5445a83698d74c693464a9502b88be731564ef5c923403` -> `85de2438461cd1325d4734a2452b92ad7cf93d0ed67aa54b9c29a801d936e212`.
+
+The author was still working while this increment was written, and `tools/video/automation/flow.mjs` and `tools/video/core/lint.mjs` moved once under it, with the same added and removed line counts. Both were read again whole and are rebound to their second revision above. What moved: lint.mjs took `isExplainer` into the existing `drama.mjs` import instead of a second import line, which is the same binding; flow.mjs began actually calling `lintWarnings`, so a writer rewrite now carries `lint_warnings` (see the flow.mjs finding). Neither revision touches a duration rule, and the first revision's hashes (`a42f8c9c…` for flow.mjs, `bdeecb14…` for lint.mjs) are recorded here only so a reader can tell the two apart. A further edit to any of the fifteen needs its own follow-up.
+
+What the change is: a narrated video's script must be told as one story. The chapters become beats in the order things happened, each opening on the consequence of the one before; the 30 to 60 second opening condensation becomes ONE scene told in order up to the first fact that makes no sense instead of a trailer of two or three later moments; a script carries a new top-level `loops` table; lint reads the storytelling of a narrated episode (chapter labels, hook cadence, the loops table and repeated facts as warnings, a close that names the next video as an error); a blind yes-or-no "storytelling panel" of ten questions is asked after the listener's edit and sends the script back to the writer twice before it waits for the owner; and the close no longer names the next video. It is a shape and a wording of the script, not a length of the video.
+
+Findings, duration rules: none moved. In the three bound files that hold or read one, every duration identifier appears exactly as often in the working tree as in the HEAD blob — `tools/video/core/lint.mjs` (`target_minutes`, `DEFAULT_TARGET_MINUTES`, `MIN_EPISODE_MINUTES`, `minEpisodeMinutes`, `needsMinimumLength`), `tools/video/core/schema.mjs` and `tools/video/automation/prompts.mjs` — and `tools/video/automation/flow.mjs` keeps its two `minEpisodeMinutes` and two `effectiveEpisodeMinutes` call sites, its sixteen `target_minutes` mentions and its five `draftBudget` uses, gaining only the two new `MIN_EPISODE_MINUTES` uses described below. In lint.mjs the floor (`const floor = needsMinimumLength(doc) ? minEpisodeMinutes() : 0`) and both of its errors, the warning outside `target_minutes`, `checkChapters` and its error for a chapter under 10 s, `OPENING_CHAPTER_SECONDS = [30, 60]`, `DRAMA_HOOK_SECONDS = 30`, `OPENING_SECONDS = 60`, `storyProblems` and the long-anime body tolerance are all outside the hunks. No file under `apps/api`, `tools/video/qa` or `tools/video/long-form` is changed, and neither are `tools/video/core/duration.mjs`, `tools/video/core/timeline.mjs`, `tools/video/automation/story.mjs`'s hook budget or `docs/videos/long-form/plans.json`: the 8-minute non-drama floor, the explainer's 10-minute default and 8–20 range, drama's 1–8, the brand story's 13 minutes and 11:30–15:30 band, the QA `assemble` item's 480 s / 14,400 frames at 30 fps, the chapter minimum of 10 s and the long-form anime policy stand exactly as the increments above bound them.
+
+Findings, tools (6 files):
+
+- `tools/video/core/lint.mjs` (+23/−10): four hunks, one of them the import line (`isExplainer` and `isNarrated`/`narrativeProblems`). The gate that reads a script's shape goes from `!drama && !english && minutes >= MIN_EPISODE_MINUTES` to `isNarrated(doc, context.series) && !english && minutes >= MIN_EPISODE_MINUTES` (`isNarrated` is `!isDrama(doc) || isExplainer(doc) || isStory(series)`, strictly wider), and inside it `narrativeProblems` adds errors and warnings tagged `narrative`. `episodeScriptProblems` gains an `{ outroCount = true }` option, and an explainer is passed `outroCount: false` so its outro card's sentence count is not read; the subscribe word is still read. `error`/`warn` gain a third `kind` argument, absent on every other problem. The opening-chapter warning keeps its `[30, 60]` window, its `minutes >= MIN_EPISODE_MINUTES` condition and its `warn` severity; only its message's words change. `minutes` is still `frameToSeconds(timeline.total_frames) / 60`. No duration error is added, removed or loosened.
+- `tools/video/core/schema.mjs` (+43/−0): `loops` joins `TOP_KEYS`, with `LOOP_KEYS`, `LOOP_WHAT_MAX = 40` and `validateLoops` — ids that exist in the script, the payoff later than the setup in narration order, `what` at most 40 characters. It reads no frames, no seconds and no minutes. `LOCALES`, `DEFAULT_TARGET_MINUTES`, `MIN_EPISODE_MINUTES`, `minEpisodeMinutes`, `eachLine`, `spokenText` and `textHash`, which the duration rules import from here, are outside the hunks.
+- `tools/video/core/state.mjs` (+8/−1): `pipelineStatus` gains a `narrative` field reporting the panel verdict as `missing` / `stale` / `passed` / `failed` from `review/narrative.json`, bound to the script by `scriptCheckMatches`. It is not a checklist step, so `stepsFor`, `definitions` and `next` are unchanged, and nothing in the QA or duration evidence path reads it.
+- `tools/video/automation/flow.mjs` (+79/−12): `narrativeGate` asks the panel on the `verifier` stage under the variant `narrative`, `bare` (so `instructionsFor` is bypassed and no standing instruction, stance or genre section is sent), and `fixScript` gains a `kind` so the panel's rounds count against `prompt_fixes.narrative` instead of `prompt_fixes.script`. The gate's own condition — `minutes < MIN_EPISODE_MINUTES` returns null, with `minutes = timeline.total_frames / FPS / 60` from `estimateTimeline` — only decides whether to ask ten questions; it sets no target and relaxes no floor, and it reads the constant, not `minEpisodeMinutes()`, so a fixture runner's relaxed floor cannot turn it on. `lintWarnings` filters `kind === "narrative"` and is passed as `lint_warnings` in the writer payload of `fixScript` and of the lint-fix loop, and only when there is one, so it rides along with a rewrite the errors or a note already asked for and starts none of its own; `...this.draftBudget(state)` is still spread into both payloads unchanged. `draftBudget`, `effectiveEpisodeMinutes` and every `target_minutes` path are outside the hunks.
+- `tools/video/automation/prompts.mjs` (+60/−23): wording for the planner, the writer, the listener's rewrite, the illustrated writer and the explainer series. Every duration sentence in or beside the hunks is carried over verbatim: "each ≥ 10 s; 250 spoken characters a minute; the whole at least 8 minutes and aimed at the upper end of `target_minutes`, which is an aim, not a limit", "never under 8 minutes; over it is fine", "the whole aimed at `series.target_minutes`, never under 8 minutes", "Total length at 250 spoken characters a minute: never under 8 minutes, and aim at the upper end of `target_minutes`… The upper end is an aim, not a limit… Never cut a sourced fact to fit it and never pad to reach it", the condensation's 30 to 60 seconds and its 20-second rule for the title's fact, and "Chapters: at least 3, the first scene has one, each at least 10 seconds". The outline gains `主線`, `轉折` and `鉤子` lines and a `loops` bullet; the outro paragraph drops "the next episode by name" and gains the refusal of 「下一集」「下一支」「下一份檔案」 in the close. See observation 1 for the one new sentence that names seconds.
+- `tools/video/core/narrative.mjs` (new, unbound) was read whole as context. Its numbers — `HOOK_GAP_SECONDS = 90`, `LOOPS_PER_10_MINUTES = 3` and `requiredLoops(minutes) = max(2, round(minutes / 10 * 3))` — are read off the estimated timeline and produce warnings only; `outroNextVideoProblems` is its one error and matches words, not lengths. Nothing in it writes a target, a floor, a chapter budget, a frame count or a measured-evidence hash, and nothing outside it reads its constants back into a duration rule.
+
+Findings, tests (4 files): `tools/video/core/lint.test.mjs` (+19/−6) teaches `stretched()` to plant an escalation and three loops so the padded example clears the new warnings, splits the outro assertions and adds the `outroCount: false` case; `doc.target_minutes = [MIN_EPISODE_MINUTES, MIN_EPISODE_MINUTES + 4]`, the `MIN_EPISODE_MINUTES + 0.5` padding loop and the 30-to-60 opening test are unchanged, and no assertion on the floor, on `target_minutes` or on chapter length moves. `tools/video/automation/automation.test.mjs` (+79/−2) adds one test of the panel (pass, two rewrites, then blocked on `prompt_fixes:narrative`) whose helper pads an explainer fixture past 8.5 minutes with `target_minutes = [10, 12]`, a value inside the existing 8–20 range, and changes one fixture sentence that named the next video; the neighbouring "a saved three-minute explainer uses ten" test is untouched. `tools/video/automation/series.test.mjs` (+6/−4) re-pins the flat-explainer `bible-explainer` and `explainer` instruction digests and the verifier's payload digest, because the planner's and the writer's words and the example script moved; no assertion about length moves. `tools/video/core/drama.test.mjs` (+9/−7) and `tools/video/tts/tts.test.mjs` (+1/−1) re-pin the minimal, illustrated, explainer and story fixtures' `speechHash`, which moved because those fixtures' closes stopped naming the next video; the drama's and the English fixture's hashes are unchanged, and a speech hash carries no duration (tts.test.mjs's own comment says the timing never enters it).
+
+Findings, skills and docs (5 files): both byte-identical `SKILL.md` copies (+5/−3 each) insert a new rule 11 for the one-story shape — which names 60–90 seconds as the hook cadence and the `loops` table, not a length — renumber the content-value rules to 12, add the `loops` table to the writer's row and add a stage 4.5 for the panel; rule 10, the 8-minute floor with its `target_minutes` sentence and its "no upper limit", is byte-identical. `references/formats.md` (+9/−9) rewrites only the 做什麼 column of five templates' opening and closing rows; every share and limit in the 比例 column is unchanged (開場濃縮 30–60 秒（人工錄製 ≤ 30 秒）, 結論 ≤ 60 秒, 結尾 ≤ 60 秒, 總結 ≤ 90 秒, 結尾卡 ≤ 15 秒, 收尾 ≤ 45 秒, 中段 55–65%, 步驟 70% and the rest). `references/automated.md` (+1/−0) adds one bullet describing the `loops` field. `docs/videos/README.md` (+2/−2) adds the owner's 2026-10-13 decision that the narration names no next video, and restates the body's opening; see observation 2.
+
+Recorded observations. None is a duration rule change and none lets an episode under the floor pass:
+
+1. `tools/video/automation/prompts.mjs`'s chapters bullet for illustrated storytelling gains "a ten-minute video has five to seven of them, 60 to 120 seconds each". It is prose the writer model reads; no code parses it, and it sits in the same bullet as the unchanged "each at least 10 seconds" and "never under 8 minutes". Its low end multiplies out to 300 seconds of chapters, under the floor, so a writer that took it literally and ignored the sentence beside it would produce a short script — which lint still refuses with the unchanged `minutes < floor` error before anything is recorded, exactly as it would have before this change. Recorded because it is the only new sentence in a bound file that names a chapter length.
+2. `docs/videos/README.md`'s 正文開場 bullet goes from 「正文開場仍是開場鉤子（`title` 版型）… 30 秒內說完…」 to 「正文開場是 30–60 秒的開場濃縮…」. That window is `OPENING_CHAPTER_SECONDS = [30, 60]` in lint.mjs, which the "Opening condensation" increment of 2026-10-12 above already reviewed and bound; this is the document catching up to the shipped warning, not a new rule. It moves seconds inside the first chapter of a video whose total is ruled as before, and 頻道片頭 5 秒, 片尾卡 約 15 秒 and the 4-second compilation card in the same section are unchanged.
+3. lint's narrated gate widens: an explainer (a drama with no cast in an explainer preset) and a brand story now also get `episodeScriptProblems` and the new narrative problems, where before only a non-drama did. Every problem on both sides of that gate is a warning except `outroNextVideoProblems`, and neither function reads a length rule.
+4. The close that names the next video is a new lint **error**, so a draft can now be refused for a sentence it was previously allowed. It blocks on words; an episode of any length passes it by deleting the phrase.
+5. Re-pinning the flat-explainer digests means an episode left unfinished on the host when this deploys has that stage asked, and paid for, again (`run-receipts.mjs`); the task's own notes say so. That is a cost, not a duration.
+
+Ran (in the worktree, Node on Windows, `VIDEO_MIN_EPISODE_MINUTES` unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which named exactly the fifteen stale bindings above;
+- SHA-256 with Node's crypto over each of the fifteen HEAD Git blobs and over each working-tree file, compared against the old receipt; `git ls-files --eol` for them (LF);
+- `git diff -U6` over all fifteen files, read whole, and `git diff -U2` over flow.mjs and lint.mjs again after they moved, plus `git diff --stat` and `git diff --numstat`, and `tools/video/core/narrative.mjs`, `tools/video/automation/flow-constants.mjs`, `tools/video/long-form/review.mjs` and `tools/video/long-form/review.test.mjs` as context;
+- a count of every duration identifier (`target_minutes`, `MIN_EPISODE`, `minEpisodeMinutes`, `effectiveEpisodeMinutes`, `DEFAULT_TARGET_MINUTES`, `draftBudget`, "8 minutes", "14,400", "10 s", 分鐘) in each HEAD blob against the working-tree file, which matched everywhere;
+- `node --test tools/video/long-form/plans.test.mjs tools/video/long-form/review.test.mjs tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs`.
+
+The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge the one-story rules, the ten panel questions, the condensation's new shape or the removal of the next-video line as product choices, nor the unbound texts of `register.mjs`, `story-prompts.mjs`, `explainer-series.mjs`, `cli.mjs`, `script-writing.md` or the changed fixtures.
+- No writer, planner or panel was run against a real model, no narration was synthesized and no cut was measured: whether a script written under these rules still reaches 8 minutes was not observed, only that every rule that measures it is unchanged.
+- No API test, ruff, mypy, Vitest, web lint or typecheck was run, and no CI result is claimed.
+- This increment binds the working tree as reviewed. A later commit, rebase or merge with main that changes any of the fifteen files, or either receipt file, needs its own follow-up increment.
+
+PASS is DURATION_ONLY for the fifteen rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Narrated one-story increment, chapter-beat follow-up: 1 file (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013`. Author: `claude-fable-5-1-narrative`. Scope: DURATION_ONLY for the one changed binding below. The author changed `tools/video/automation/automation.test.mjs` again, after the section above, and `node tools/video/long-form/cli.mjs check` named it and nothing else. The reviewer wrote none of the change and edited only this report and review.json.
+
+- `tools/video/automation/automation.test.mjs`: `cfce20c7352019324d8e07369e833ed3f0a06f55cd12237e0eafb81f180f0e9c` -> `74b81299dc30687479e10a816245bc2496fbcc714df345103d98f44fd2d09cba`.
+
+What the change is (+91/−11 against HEAD, against +79/−2 in the section above): the storytelling-panel test and its `longExplainer()` / `panelAnswers()` helpers are as reviewed above and unchanged in substance; what is new is four expectations that follow `register.mjs` `setPauseBeats` (unbound) putting `PAUSE_BEATS.cliffhanger` (1200 ms) on the last line of **every** chapter but the last, however that line ends, where before it required a question mark. Three `pauses(...)` deepEquals read `{ a1hk: 900, a2pd: 1200, a4dk: 1200, a9rl: 1200 }` for `{ a1hk: 900 }` and `{ a1hk: 900, a4dk: 1200 }`, `record.after.pauses` reads 4 for 2, and the two restyle-summary regexes gain `0 open loops, \d+ pause beats` because `registerLine` now also prints the loop count (the pause-beat count is left as `\d+`). One fixture line that named the next video was already rebound in the section above.
+
+Duration: no rule moves. Counted against its HEAD blob, this file gains exactly two `target_minutes` mentions and one `total_frames` use, all three the panel helper's own: `doc.target_minutes = [10, 12]` and the state's `target_minutes: 10`, both inside the existing 8–20 explainer range, and the padding loop `estimateTimeline(doc).total_frames / 30 / 60 < 8.5` that fills a fixture past the floor so the gate will read it. Every other duration identifier is unchanged in count (`MIN_EPISODE_MINUTES` once, as the section above describes), and `minEpisodeMinutes`, `effectiveEpisodeMinutes`, `DEFAULT_TARGET_MINUTES`, 480, 14,400 and "8 minutes" appear nowhere in it, before or after. The neighbouring "a saved three-minute explainer uses ten" test is untouched. The new test asserts round counts, a stage name, a variant, payload keys, instructions and a block kind, never a length.
+
+Recorded observation. A pause beat does reach the estimate: `estimateTimeline` reads `line.pause_after_ms ?? DEFAULT_PAUSE_MS` (core/timeline.mjs, `DEFAULT_PAUSE_MS = 300`), so each new 1200 ms beat adds 900 ms of silence — about 3.6 to 5.4 seconds on a ten-minute video of five to seven chapters, which is where this fixture's three extra beats come from. It is a pacing number, and it is recorded here because a duration rule reads the estimate it feeds. It is not a duration rule change, and it cannot let a short video through: the silence is real and lands in the rendered cut as well, so the estimate and the measured body move together; the direction is longer, never shorter, so nothing that failed the 8-minute floor or the 14,400-frame QA item before can pass on account of it; and the rule that reads it (`minutes < floor`, `minutes` from `frameToSeconds(timeline.total_frames) / 60`) is byte-identical. The warning for running over `target_minutes`'s upper end is already suppressed for a video the floor holds, so the extra seconds raise no new warning either. `setPauseBeats` itself is in `tools/video/automation/register.mjs`, which this registry does not bind; this increment binds only the test's expectations of it.
+
+Ran: `node tools/video/long-form/cli.mjs check` before the edit, naming this one stale binding; `git diff -U4 -- tools/video/automation/automation.test.mjs` read whole, with `git diff --numstat` and the `register.mjs` and `core/timeline.mjs` pause code as context; SHA-256 with Node's crypto over the file's bytes and over its HEAD blob; a count of every duration identifier in the HEAD blob against the working tree. The CLI check and review.test.mjs are run again after rebinding, with results in the hand-off.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Narrated one-story increment, explainer writer instruction pin follow-up: 1 file (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013b`. Author: `claude-fable-5-1-narrative`. Scope: DURATION_ONLY for the one changed binding below, reviewed in the worktree `claude/youtube-narrative-flow-1cadbc` whose HEAD is `a8c5d80d5` with the change still in the working tree. The author changed `tools/video/automation/series.test.mjs` again, after both sections above, and `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/series.test.mjs` and named nothing else. This reviewer wrote none of the change, is not the reviewer who signed the two sections above, and edited only this report and review.json.
+
+- `tools/video/automation/series.test.mjs`: `0c40a6d6154f1bff2f4b850a399bb19526b7e1a6cf2b6211356c25d1979cb931` -> `d3622c1910b8df665dcec7f12f7d5862de7738061c7ed95e4c0a70bda4df5ee3`.
+
+Baseline: SHA-256 over `git show HEAD:tools/video/automation/series.test.mjs` is `0c40a6d6154f1bff2f4b850a399bb19526b7e1a6cf2b6211356c25d1979cb931`, exactly the value this receipt carried before this increment, which proves the binding was current when the change started; `git ls-files --eol` reports LF in index and worktree. `git status --porcelain` lists this one file and no other in the whole worktree, and `git diff --numstat` reports one insertion and one deletion. The other 107 bindings are untouched by this change and are not covered afresh. Every prior increment is preserved and the registry remains 108 files.
+
+What the change is: line 2103 of `EXPLAINER_STAGE_PINS`, the sha256 of the `writer:explainer` instruction text, goes from `b782fc599e30a4165882087c1d167e8449b91e472b9cef38c31ca3ef4147ea07` to `419852aa5e1c95230fb23f565864aeac693ff3b77bb48fdb199c2f25c6439dd8`. Compared line by line, the two revisions have the same 2,478 lines, differ at line 2103 alone, and that line is identical once the single 64-character digest is masked out of both — so the payload digest beside it (`b0a4a2982e77bf9ea76eb9047260bbe568eb36ac2577dc206791ca8912401e81`) and the `planner:bible-explainer` and `verifier:explainer` rows are untouched, as is every assertion, fixture, helper and comment in the file.
+
+The digest was recomputed here rather than taken from the author. Composing the text through `instructionsFor("writer", format, standing, "explainer", stance, series, source)` as `flow.mjs` `stage()` does, and hashing it with `createHash("sha256").update(text, "utf8").digest("hex")` as the file's own `digestOf` does, gives `419852aa5e1c95230fb23f565864aeac693ff3b77bb48fdb199c2f25c6439dd8` over 14,088 characters: the new pin exactly. `VARIANT_INSTRUCTIONS["writer:explainer"]` is found before any series-own text, and this fixture's series row carries no `genre`, so `genreBlock` is empty and all four plausible argument sets (format `drama` or `slides`, the explainer series row or `null`) compose the same text and give the same digest. The same computation reproduces the two unchanged rows' pins, `29fd9e2e…` for `planner:bible-explainer` and `c1619a92…` for `verifier:explainer`, which is what shows the composition is the one the test measures. The old value is the digest of none of them, and `b782fc59…` now appears nowhere in the repository.
+
+Why it moved, and why only here: `tools/video/automation/prompts.mjs` interpolates `NARRATIVE_RULES` from `tools/video/automation/register.mjs`, which this registry does not bind. prompts.mjs is at its already-bound `37363cfd2068b9980462d60df67e244b198bae75ee880bcc0f25f966049e4828` and changed once on this branch, in `6c05f3a29`, where this pin was last set to `b782fc59…` and was correct. register.mjs then moved in five later commits — `4a20c8935`, `462907cb8`, `a530f20a2`, `b185d9408`, `267f57f20` — each adding one storytelling rule to that text, and the sister pin in the unbound `prompts.test.mjs` was updated with each (`b8acaf22…`, `d5c91bce…`, `308d6e90…`, `74327658…`, `419852aa…`) while this one was not. The hand-off named four rules; there are five added bullets across those five commits. The three content commits since (`8b9c30585`, `bc817cdfc`, `a8c5d80d5`) leave register.mjs alone, so `419852aa…` is current.
+
+Findings, duration rules: none moved. Counted in the HEAD blob against the working tree, every duration identifier in this file appears exactly as often: `target_minutes` 23 times, `MIN_EPISODE_MINUTES` once, `estimateTimeline` four times, and `minEpisodeMinutes`, `effectiveEpisodeMinutes`, `DEFAULT_TARGET_MINUTES`, `draftBudget`, `total_frames`, `480`, `14,400`, "8 minutes" and 分鐘 in neither. The file is a test; it declares no rule. No file under `apps/api`, `tools/video/qa`, `tools/video/long-form` or `tools/video/core` is changed, and neither is `docs/videos/long-form/plans.json` or `policy.json`: the 8-minute non-drama floor, the explainer's 10-minute default and 8–20 range, drama's 1–8, the brand story's 13 minutes, the QA `assemble` item's 480 s / 14,400 frames at 30 fps and the chapter minimum of 10 s stand exactly as the increments above bound them. The neighbouring "a flat-explainer one-off asked for 20 minutes is still handed 140 line ids" test is untouched and still passes.
+
+The text that moved the digest was read as context even though it is unbound. The five rules added to `NARRATIVE_RULES` since the pin was set are about hooks, callbacks, announcements and summaries: at most one forward hook says so out loud; 「還記得…」 at most five times and never twice in a row; naming a loop is not paying it; nothing announces what is coming; a summary is a retelling, and the close carries only what is new. Across all of their added lines the only number with a unit is "60 s", in "Lint only reads the first 60 s for this; the panel reads the rest", which is `OPENING_SECONDS = 60` as the opening-condensation increment of 2026-10-12 above already reviewed and bound, plus "four minutes" in a sentence reporting what a reader said. No target, floor, chapter budget, frame count or measured-evidence hash is written or read there.
+
+Recorded observation, carried over from the section above because it is now true a second time: re-pinning the `writer:explainer` instruction digest means an explainer left unfinished on the host when this deploys has its writer stage asked, and paid for, again, because the digest is the durable key of that stage's journal (`run-receipts.mjs`, and the file's own comment above the table). That is a cost, not a duration. It would have been incurred by `6c05f3a29` in any case; this one line only makes the test agree with the text the host will actually send.
+
+Ran (in the worktree, Node on Windows, `VIDEO_MIN_EPISODE_MINUTES` unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which named exactly this one stale binding and no other;
+- `git status --porcelain`, `git diff --numstat`, `git diff --stat` and `git diff -- tools/video/automation/series.test.mjs` read whole; `git ls-files --eol`;
+- SHA-256 with Node's crypto over the working-tree file and over its HEAD Git blob, compared against the old receipt;
+- a line-by-line comparison of the HEAD blob and the working tree, and a re-comparison with the one digest masked out, which left the files identical;
+- an independent composition of the `writer:explainer`, `planner:bible-explainer` and `verifier:explainer` instruction texts through `instructionsFor` and `digestOf`, against all three pins;
+- a count of every duration identifier in the HEAD blob against the working tree, which matched everywhere;
+- `git log` over the branch for `prompts.mjs`, `register.mjs`, `prompts.test.mjs`, `explainer-series.test.mjs` and `series.test.mjs`, and `git diff 6c05f3a29..HEAD -- tools/video/automation/register.mjs` read whole, as context;
+- `node --test tools/video/automation/series.test.mjs`: 80 passed, 0 failed, 0 skipped.
+
+The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims: this review does not judge the five storytelling rules as product choices, nor the unbound texts of `register.mjs`, `prompts.test.mjs` and `explainer-series.test.mjs`. No writer, planner or panel was run against a real model, no narration was synthesized, no cut was measured and no host was contacted. No API test, ruff, mypy, Vitest, web lint or typecheck was run, and no CI result is claimed. This increment binds the working tree as reviewed; a later commit, rebase or merge that changes this file, or either receipt file, needs its own follow-up increment.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Narrated one-story increment, fifth explainer writer instruction pin follow-up: 1 file (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013c`. Author: `claude-fable-5-1-narrative`. Scope: DURATION_ONLY for the one changed binding below, reviewed in the worktree `claude/youtube-narrative-flow-1cadbc` whose HEAD is `20a0213b690b76316cead3e97f273a4275515456` ("fix(video): Area 51's year goes to the memo, and its altitude card stops running a step early") with the change still in the working tree. The author changed `tools/video/automation/series.test.mjs` again, after the three sections above, and `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/series.test.mjs` and named nothing else. This reviewer wrote none of the change, is neither the author nor any reviewer who signed the sections above, and edited only this report and review.json.
+
+- `tools/video/automation/series.test.mjs`: `d3622c1910b8df665dcec7f12f7d5862de7738061c7ed95e4c0a70bda4df5ee3` -> `949bffb9c32f8a2b0a81158fc442bfb09f4cf4ba7a873b9327bd7a2c43271f52`.
+
+Baseline: SHA-256 over `git show HEAD:tools/video/automation/series.test.mjs` is `d3622c1910b8df665dcec7f12f7d5862de7738061c7ed95e4c0a70bda4df5ee3`, exactly the value this receipt carried before this increment, which proves the binding was current when the change started. It is also the value the section above bound in the working tree, which the commit `5a717f3c7` ("fix(video): the fourth pin of the explainer writer text moves with it") then committed unaltered, so the two increments join without a gap. `git ls-files --eol` reports LF in index and worktree. `git diff --numstat` reports one insertion and one deletion, and both revisions are 192,827 bytes.
+
+`git status --porcelain` lists five modified files in the whole worktree: this one, and `.agents/skills/youtube-video/references/script-writing.md`, `tools/video/automation/explainer-series.test.mjs`, `tools/video/automation/prompts.test.mjs` and `tools/video/automation/register.mjs`. None of those four is in `REVIEW_FILES`, which is why the check named this file and no other. The other 107 bindings are untouched by this change and are not covered afresh. Every prior increment is preserved and the registry remains 108 files.
+
+What the change is: line 2103 of `EXPLAINER_STAGE_PINS`, the sha256 of the `writer:explainer` instruction text, goes from `419852aa5e1c95230fb23f565864aeac693ff3b77bb48fdb199c2f25c6439dd8` to `a95dc2958cee5039b85b41ad53005071c750b2083b1aead768015c1cc6747386`. Compared line by line, the two revisions have the same 2,478 lines, differ at line 2103 alone, and that line is identical once the single 64-character digest is masked out of both — so the payload digest beside it (`b0a4a2982e77bf9ea76eb9047260bbe568eb36ac2577dc206791ca8912401e81`) and the `planner:bible-explainer` and `verifier:explainer` rows are untouched, as is every assertion, fixture, helper and comment in the file.
+
+The digest was recomputed here rather than taken from the author. Composing the text through `instructionsFor("writer", format, standing, "explainer", stance, series, source)` as `flow.mjs` `stage()` does, and hashing it with `createHash("sha256").update(text, "utf8").digest("hex")` as the file's own `digestOf` does, gives `a95dc2958cee5039b85b41ad53005071c750b2083b1aead768015c1cc6747386` over 14,746 characters: the new pin exactly. `VARIANT_INSTRUCTIONS["writer:explainer"]` is found before any series-own text, and this fixture's series row carries no `genre`, so `genreBlock` is empty and all four plausible argument sets (format `drama` or `slides`, the explainer one-off's series row or `null`) compose the same text and give the same digest. As a control the same computation reproduces the two unchanged rows' pins, `29fd9e2e…` for `planner:bible-explainer` over 4,441 characters and `c1619a92…` for `verifier:explainer` over 2,888, which is what shows the composition is the one the test measures. The superseded value is the digest of none of the twelve compositions, and `419852aa…` now appears nowhere in the repository's code — only in the prose of the section above, recording what it used to be.
+
+Why it moved, and why only here: `tools/video/automation/prompts.mjs` interpolates `NARRATIVE_RULES` from `tools/video/automation/register.mjs`, which this registry does not bind. prompts.mjs is unmodified in the worktree and still at its bound `37363cfd2068b9980462d60df67e244b198bae75ee880bcc0f25f966049e4828`. register.mjs gained exactly one block today, seven lines and 658 characters by `git diff --numstat` and a character count of the added lines: the rule that the close may not claim more than the record does. 14,088 characters, the length the section above measured for `419852aa…`, plus those 658 is 14,746 to the character, so the whole movement of the digest is that one block and nothing else in the composed text changed. The unbound sister pin in `prompts.test.mjs` line 649 carries the same new value, so the two tests agree.
+
+Findings, duration rules: none moved. Since the two revisions differ only at line 2103 and that line is a digest, every duration identifier in this file is necessarily unchanged, and a count confirms it: `target_minutes` 23 times in both, `MIN_EPISODE_MINUTES` once, `estimateTimeline` four times, and `minEpisodeMinutes`, `effectiveEpisodeMinutes`, `DEFAULT_TARGET_MINUTES`, `draftBudget`, `total_frames`, `480` and `14,400` in neither — the same counts the section above measured. The file is a test; it declares no rule. No file under `apps/api`, `tools/video/qa`, `tools/video/long-form` or `tools/video/core` is changed, and neither is `docs/videos/long-form/plans.json` or `policy.json`: the 8-minute non-drama floor, the explainer's 10-minute default and 8–20 range, drama's 1–8, the brand story's 13 minutes, the QA `assemble` item's 480 s / 14,400 frames at 30 fps and the chapter minimum of 10 s stand exactly as the increments above bound them. The neighbouring "a flat-explainer one-off asked for 20 minutes is still handed 140 line ids" test is untouched and still passes.
+
+The text that moved the digest was read as context even though it is unbound. The added rule says the close may not claim more than the record does: where the sources hold two accounts the close says so and attributes each one aloud, where the record has only ruled things out the close says nothing is settled, and attribution on a card does not count because a listener hears no cards and a dubbed track reads none. It reports that two of the first five scripts written to these rules overstated their closing answer and were caught by a fact-checker rather than by the panel. Across its seven added lines there is no number with a unit at all: the only numerals are "Two" and "five", counts of scripts. No target, floor, chapter budget, frame count, pause beat, second, minute or measured-evidence hash is written or read there, so no duration check can read anything new from it.
+
+Recorded observation, carried over from the sections above because it is now true a third time: re-pinning the `writer:explainer` instruction digest means an explainer left unfinished on the host when this deploys has its writer stage asked, and paid for, again, because the digest is the durable key of that stage's journal (`run-receipts.mjs`, and the file's own comment above the table). That is a cost, not a duration. It is incurred by the register.mjs rule in any case; this one line only makes the test agree with the text the host will actually send.
+
+Ran (in the worktree, Node 24 on Windows, `VIDEO_MIN_EPISODE_MINUTES` unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which named exactly this one stale binding and no other;
+- `git status --porcelain`, `git diff --numstat` and `git diff -- tools/video/automation/series.test.mjs` read whole; `git ls-files --eol`; `git rev-parse HEAD`;
+- SHA-256 with Node's crypto over the working-tree file and over its HEAD Git blob, compared against the old receipt;
+- a line-by-line comparison of the HEAD blob and the working tree, and a re-comparison with 64-hex digests masked out, which left the files identical;
+- an independent composition of the `writer:explainer`, `planner:bible-explainer` and `verifier:explainer` instruction texts through `instructionsFor` and `digestOf`, in all twelve combinations of stage, format and series row, against all three pins;
+- a count of every duration identifier in the HEAD blob against the working tree, which matched everywhere;
+- `git diff -- tools/video/automation/register.mjs` read whole, with a line and character count of its added block and a scan of it for any numeral carrying a unit, as context; a repository-wide search for the old and the new pin value;
+- `node --test tools/video/automation/series.test.mjs`: 80 passed, 0 failed, 0 skipped.
+
+The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims: this review does not judge the new storytelling rule as a product choice, nor the unbound texts of `register.mjs`, `prompts.test.mjs`, `explainer-series.test.mjs` and `references/script-writing.md`. No writer, planner or panel was run against a real model, no narration was synthesized, no cut was measured and no host was contacted. No API test, ruff, mypy, Vitest, web lint or typecheck was run, and no CI result is claimed. This increment binds the working tree as reviewed; a later commit, rebase or merge that changes this file, or either receipt file, needs its own follow-up increment.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Translator title rule increment: 1 file (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013d`. Author: `claude-opus-5-5-narrative`. Scope: DURATION_ONLY for the one changed binding below, reviewed in the worktree `claude/youtube-narrative-flow-1cadbc` whose HEAD is `412c33c4f586f4c5e2965fe92f97ff06e54930e0` ("feat(video): a translated title carries no channel name"), the commit that made the change; the working tree was clean. `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/prompts.mjs` and named nothing else. This reviewer wrote none of the change, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edited only this report and review.json.
+
+- `tools/video/automation/prompts.mjs`: `37363cfd2068b9980462d60df67e244b198bae75ee880bcc0f25f966049e4828` -> `9e1cffa1b25c8490e420a9a58ce1c19972daca2d7a8006a456ba86a9b8a50e9a`.
+
+Baseline: SHA-256 over `git show 412c33c4f^:tools/video/automation/prompts.mjs` is `37363cfd2068b9980462d60df67e244b198bae75ee880bcc0f25f966049e4828`, exactly the value this receipt carried before this increment, which proves the binding was current when the change started. SHA-256 over `git show HEAD:tools/video/automation/prompts.mjs` and over the working-tree file are both `9e1cffa1b25c8490e420a9a58ce1c19972daca2d7a8006a456ba86a9b8a50e9a`; `git ls-files --eol` reports LF in index and worktree. The commit touches two files: this one (four insertions, one deletion) and `.agents/skills/youtube-video/references/prompts/caption-translate.md` (one insertion), which `REVIEW_FILES` does not bind. The other 107 bindings are untouched by this change and are not covered afresh. Every prior increment is preserved and the registry remains 108 files.
+
+What the change is: `git show 412c33c4f -- tools/video/automation/prompts.mjs` was read whole. It is one hunk inside `INSTRUCTIONS.translator`, the text the worker sends the caption and metadata translator. The sentence "Title at most 100 characters, no angle brackets; tags at most 500 characters in total." keeps its words and limits, and after it the text gains a rule: no channel or series name in the title or the tags, so where the zh-TW title ends on one (「｜奇聞檔案局」) the translation leaves it out, because YouTube shows the channel under the title and no name for it in the locale has been decided. The existing clause that "video" shows the slides for context moves to its own line unchanged. The file grows from 1,827 to 1,830 lines and from 139,868 to 140,089 bytes; the composed translator text grows from 5,150 to 5,355 characters. The caption reviewer's text is byte-identical in both revisions (`52456f5b…`), and no other key of `INSTRUCTIONS` is touched.
+
+Findings, duration rules: none moved. Counted in both revisions, every duration identifier appears exactly as often: `target_minutes` 12 times in both, "minute" 33, "seconds" 47 and 分鐘 once in both; `MIN_EPISODE_MINUTES`, `estimateTimeline`, `minEpisodeMinutes`, `effectiveEpisodeMinutes`, `DEFAULT_TARGET_MINUTES`, `draftBudget`, `total_frames`, `480` and `14,400` in neither. The added lines carry no numeral at all; the only numbers in the hunk are the unchanged 100-character title and 500-character tag limits, which bound metadata, not time. The rule acts on a title and its tags, which no duration check reads and which are never narrated, so no episode is longer or shorter for it; the dub constraint beside it (a line carrying "max_chars" must fit the time the zh-TW line takes) is untouched. No file under `apps/api`, `tools/video/qa`, `tools/video/long-form` or `tools/video/core` is changed, and neither is `docs/videos/long-form/plans.json` or `policy.json`: the 8-minute non-drama floor, the explainer's 10-minute default and 8–20 range, drama's 1–8, the brand story's 13 minutes, the QA `assemble` item's 480 s / 14,400 frames at 30 fps and the chapter minimum of 10 s stand exactly as the increments above bound them.
+
+Pinned digests: `node --test tools/video/automation/prompts.test.mjs tools/video/automation/explainer-series.test.mjs tools/video/automation/series.test.mjs` passes, 118 tests, 0 failed, so none of the writer, planner or verifier pins those files hold moved. The translator text is pinned elsewhere, though: `ZH_TW_PROMPT_SHA256.translator` in `tools/video/automation/automation.test.mjs` is `ef34287d2ac2449dac34a105d26ab9d8e255a2e6fa41ceda7304c78b269bba64`, which this reviewer reproduced over the parent revision's `INSTRUCTIONS.translator`; over HEAD's it is `d01b37f5c6c8278a71f207d89a138365ddf1f08a61e174d72499a1e2bffcb9a7`. The commit did not update that pin, and two tests in that file fail at HEAD: "a zh-TW video's translator and caption reviewer prompts are the same bytes as before; …" and "an English-narrated video's translator and caption reviewer, … a zh-TW video's are sent the same prompt and payload as before". That is a stale prompt pin, not a duration rule, and it is outside this increment's one binding; it is recorded here so it is not lost. `automation.test.mjs` is itself bound (`74b81299…`), so moving that pin needs its own follow-up increment.
+
+Ran (in the worktree, Node on Windows, `VIDEO_MIN_EPISODE_MINUTES` unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which named exactly this one stale binding and no other;
+- `git show 412c33c4f --stat` and `git show 412c33c4f -- tools/video/automation/prompts.mjs` read whole; `git status --porcelain`; `git ls-files --eol`; `git rev-parse HEAD`;
+- SHA-256 over the parent blob, the HEAD blob and the working-tree file, compared against the old receipt;
+- a count of every duration identifier above in the parent blob against the HEAD blob, which matched everywhere;
+- SHA-256 of `INSTRUCTIONS.translator` and `INSTRUCTIONS.caption_reviewer` imported from both revisions, against the pins in `automation.test.mjs`;
+- `node --test tools/video/automation/prompts.test.mjs tools/video/automation/explainer-series.test.mjs tools/video/automation/series.test.mjs`: 118 passed, 0 failed, 0 skipped;
+- `node --test --test-name-pattern="zh-TW|translator" tools/video/automation/automation.test.mjs`: 5 passed, 2 failed, the two named above.
+
+The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims: this review does not judge the no-channel-name rule as a product choice, nor the unbound text of `caption-translate.md`. It does not repair or rebind `automation.test.mjs`. No translator, writer or panel was run against a real model, no narration or dub was synthesized, no cut was measured and no host was contacted. The full `automation.test.mjs` suite, API tests, ruff, mypy, Vitest, web lint and typecheck were not run, and no CI result is claimed. This increment binds the file as committed at `412c33c4f`; a later commit, rebase or merge that changes it, or either receipt file, needs its own follow-up increment.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Translator pin follow-up: 1 file (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013e`. Author: `claude-opus-5-5-narrative`. Scope: DURATION_ONLY for the one changed binding below, reviewed in the worktree `claude/youtube-narrative-flow-1cadbc` whose HEAD is `c11ec523f48ed585ee0ae71c2286fe14a6e3dc13` ("fix(video): the translator pin follows the title rule"), the commit that made the change; when the review began no tracked file was modified in the working tree. `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/automation.test.mjs` and named nothing else. While the review was under way another session began modifying eleven other tracked files in the same worktree, three of them bound (`.agents/skills/youtube-video/SKILL.md`, `tools/video/automation/prompts.mjs` and `tools/video/automation/series.test.mjs`); this increment does not cover any of them, `automation.test.mjs` stayed at the new hash below throughout, and the receipt commit stages only the two receipt files. This reviewer wrote none of the change, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edited only this report and review.json.
+
+- `tools/video/automation/automation.test.mjs`: `74b81299dc30687479e10a816245bc2496fbcc714df345103d98f44fd2d09cba` -> `58039686cde482ae0bf834a938ffbfb602c472678bbca72db7e915c32c4b909b`.
+
+Baseline: SHA-256 over `git show c11ec523f^:tools/video/automation/automation.test.mjs` is `74b81299dc30687479e10a816245bc2496fbcc714df345103d98f44fd2d09cba`, exactly the value this receipt carried before this increment, which proves the binding was current when the change started. The parent `ee4ddef98` is the receipt commit of the section above, which recorded this pin as stale and left the file alone, so the two increments join without a gap. SHA-256 over `git show HEAD:tools/video/automation/automation.test.mjs` and over the working-tree file are both `58039686cde482ae0bf834a938ffbfb602c472678bbca72db7e915c32c4b909b`; `git ls-files --eol` reports LF in index and worktree. The commit touches this one file only, three insertions and one deletion by `git show --numstat`; it grows from 7,583 to 7,585 lines and from 539,209 to 539,362 bytes. The other 107 bindings are untouched by this change and are not covered afresh. Every prior increment is preserved and the registry remains 108 files.
+
+What the change is: `git show c11ec523f` was read whole. It is one hunk at the `ZH_TW_PROMPT_SHA256` table. `ZH_TW_PROMPT_SHA256.translator` goes from `ef34287d2ac2449dac34a105d26ab9d8e255a2e6fa41ceda7304c78b269bba64` to `d01b37f5c6c8278a71f207d89a138365ddf1f08a61e174d72499a1e2bffcb9a7`, and the dated history comment above the table gains two lines: on 2026-10-13 the translator was told a translated title and its tags carry no channel or series name (the owner), and the other three texts kept their bytes. A `diff` of the two revisions shows exactly those three added lines and that one replaced line; the `caption_reviewer`, `translator:shorten` and `translator:reword` pins, the `promptSha` helper, both tests that read the table, and every other assertion, fixture and comment in the file are byte-identical.
+
+The digest was recomputed here rather than taken from the author or from the section above. `tools/video` was extracted with `git archive` at `412c33c4f^` and at HEAD into a scratch directory, and each revision's `prompts.mjs` was imported and its text composed exactly as the test does: `instructionsFor(stage, format, "", variant, "", null, source)` for format `slides` and `drama` and source `undefined`, `null`, `zh-TW` and `fr`, hashed with `createHash("sha256").update(text).digest("hex")` as the file's own `promptSha` does, beside the direct digest of `INSTRUCTIONS.translator`. At HEAD (and in the working tree) all eight compositions and the direct value give `d01b37f5c6c8278a71f207d89a138365ddf1f08a61e174d72499a1e2bffcb9a7` over 5,355 characters: the new pin exactly. At `412c33c4f^` they give `ef34287d2ac2449dac34a105d26ab9d8e255a2e6fa41ceda7304c78b269bba64` over 5,150 characters: the old pin, so the movement is exactly the `prompts.mjs` change the section above reviewed and bound, 205 characters, and nothing else. As a control the same computation reproduces the three unchanged pins in both revisions — `52456f5b…` for `caption_reviewer` over 3,003 characters, `4253eeb6…` for `translator:shorten` over 2,241 and `d87f8a43…` for `translator:reword` over 2,497 — which is what shows the composition is the one the test measures. `ef34287d…` now appears in no code, test or JSON file in the repository, only in the prose of the section above and of this one.
+
+Findings, duration rules: none moved. Counted in both revisions, every duration identifier appears exactly as often: `target_minutes` 37 times in both, `MIN_EPISODE_MINUTES` once, `VIDEO_MIN_EPISODE_MINUTES` once, `estimateTimeline` twice, `draftBudget` four times, `total_frames` three times, "minute" 51 and "seconds" 12 in both; `minEpisodeMinutes`, `effectiveEpisodeMinutes`, `DEFAULT_TARGET_MINUTES`, `duration_s`, `480`, `14,400`, `14400` and 分鐘 in neither. The changed line is a 64-character digest and the added lines are a comment with no numeral but the date, so no assertion about a target, floor, chapter budget, frame count or timeline can read anything new from them. The file is a test; it declares no rule. No file under `apps/api`, `tools/video/qa`, `tools/video/long-form` or `tools/video/core` is changed, and neither is `docs/videos/long-form/plans.json` or `policy.json`: the 8-minute non-drama floor, the explainer's 10-minute default and 8–20 range, drama's 1–8, the brand story's 13 minutes, the QA `assemble` item's 480 s / 14,400 frames at 30 fps and the chapter minimum of 10 s stand exactly as the increments above bound them.
+
+The two tests the section above recorded as failing at `412c33c4f` — "a zh-TW video's translator and caption reviewer prompts are the same bytes as before; …" and "an English-narrated video's translator and caption reviewer, … a zh-TW video's are sent the same prompt and payload as before" — now pass, so the stale pin that section flagged is resolved and the test agrees with the text the host will send.
+
+Ran (in the worktree, Node 24 on Windows, `VIDEO_MIN_EPISODE_MINUTES` unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which named exactly this one stale binding and no other;
+- `git show c11ec523f` read whole, with `--numstat`; `git status --porcelain`; `git ls-files --eol`; `git rev-parse HEAD c11ec523f^ 412c33c4f^`;
+- SHA-256 over the parent blob, the HEAD blob and the working-tree file, compared against the old receipt;
+- a `diff` of the parent and HEAD blobs, read whole;
+- a count of every duration identifier above in the parent blob against the HEAD blob, which matched everywhere;
+- an independent composition of the translator, caption reviewer, shortening and rewording texts through `instructionsFor` and `promptSha`, in all eight format and source combinations, over `git archive` extracts of `412c33c4f^` and HEAD and over the working tree (once while it was clean and again after the other session's edits, which left all four texts at the same digests), against all four pins; a repository-wide search of code, tests and JSON for the old pin value;
+- `node --test --test-name-pattern="zh-TW|translator" tools/video/automation/automation.test.mjs`: 7 passed, 0 failed, 0 skipped.
+
+The CLI check, review.test.mjs and the full automation.test.mjs suite are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims: this review does not judge the no-channel-name rule as a product choice, nor re-review `prompts.mjs`, which the section above bound. No translator, writer or panel was run against a real model, no narration or dub was synthesized, no cut was measured and no host was contacted. No API test, ruff, mypy, Vitest, web lint or typecheck was run, and no CI result is claimed. This increment binds the file as committed at `c11ec523f`; a later commit, rebase or merge that changes it, or either receipt file, needs its own follow-up increment.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Hooked opening increment: 3 files (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013f`. Author: `claude-opus-5-5-narrative`. Scope: DURATION_ONLY for the three changed bindings below, reviewed in the worktree `claude/youtube-narrative-flow-1cadbc` whose HEAD is `516dfeef0c45add1ebee4265b12789e7cb901f85` ("feat(video): five Curio recuts open on a scene and four hooks, and pass a blind read again"). The change was made in its parent `548cb13fc0f6c6e21b8f488c51b97cbcd141b521` ("feat(video): the opening is one scene and then three or four hooks, and the bumper plays after it"); HEAD itself touches only 23 files under `docs/videos/curio-*`, and `git diff 548cb13fc HEAD -- .agents tools apps` is empty. While the review ran, other sessions had modified episode files under `docs/videos/curio-h01-v2` and `docs/videos/curio-h03-v2` in the working tree; none is bound, and the receipt commit stages only the two receipt files. `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: .agents/skills/youtube-video/SKILL.md; stale duration review binding: tools/video/automation/prompts.mjs; stale duration review binding: tools/video/automation/series.test.mjs` and named nothing else. This reviewer wrote none of the change, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edited only this report and review.json.
+
+- `.agents/skills/youtube-video/SKILL.md`: `f75b81629e71b5371b0069ac7e10192f33c139ef748ce752cf8763797299b3e6` -> `16720e94c465df18cf106234237215f4e9d25df4147990f9d6a8f76f5ce2f988`.
+- `tools/video/automation/prompts.mjs`: `9e1cffa1b25c8490e420a9a58ce1c19972daca2d7a8006a456ba86a9b8a50e9a` -> `11b023d69f7616e04d71b18bb775cb06964b7729b9ee1a1ea1636d93aca53abf`.
+- `tools/video/automation/series.test.mjs`: `949bffb9c32f8a2b0a81158fc442bfb09f4cf4ba7a873b9327bd7a2c43271f52` -> `cb89232721039ce13a8a371ff03ecddeb8d647f02edcb9d4f80de0e7c0a43261`.
+
+Baseline: SHA-256 over `git show 548cb13fc^:<file>` is, for each of the three, exactly the old value above and exactly the value this receipt carried before this increment, which proves every binding was current when the change started. The parent `f06c3f0d0` is the receipt commit of the section above, so the increments join without a gap. SHA-256 over `git show HEAD:<file>` and over the working-tree file are both the new value for each; `git ls-files --eol` reports LF in index and worktree for all three. By `git show --numstat` the commit changes SKILL.md by two insertions and two deletions (144 lines both; 25,846 -> 25,894 bytes), prompts.mjs by eleven and nine (1,830 -> 1,832 lines; 140,089 -> 140,427 bytes) and series.test.mjs by two and two (2,477 lines and 192,827 bytes in both). It also touches nine files `REVIEW_FILES` does not bind (`references/script-writing.md`, `explainer-series.mjs` and its test, `prompts.test.mjs`, `register.mjs`, `story-prompts.mjs`, `core/narrative.mjs` and its test, and a new task file). The other 105 bindings are untouched by this change and are not covered afresh. Every prior increment is preserved and the registry remains 108 files.
+
+What the change is: `git show 548cb13fc -- <file>` was read whole for each of the three.
+
+- SKILL.md: two lines. Rule 11 now says the `loops` table holds at least three for ten minutes, three of them the opening's teasers (was: one planted in the opening), and that the condensation is one scene plus three or four later moments, each stopped before its result, with the channel intro after it (was: the story's first scene, not a trailer). The storytelling gate reads eleven yes/no questions instead of ten, in rule 11 and in row 4.5 of the pipeline table. Rule 10 (the 8-minute floor for everything but drama and Shorts, no upper limit, `target_minutes` as the aim) is byte-identical.
+- prompts.mjs: four hunks. In `INSTRUCTIONS.planner` the brief's 開場濃縮 line keeps "the ONE scene the 30 to 60 second condensation tells" and adds "then the three or four later moments it teases, each cut off before its result"; its 鉤子 line keeps "at least three for ten minutes" and replaces "one of them planted in the condensation" with "the condensation's teasers among them". In `INSTRUCTIONS.writer` the first-chapter sentence keeps "the title's number, date or proper noun within 20 seconds" and adds the three or four later moments, each the setup of a loop. `planner:bible-explainer` and `planner:explainer` get the same two edits. The surrounding chapter rules — each chapter ≥ 10 s, 250 spoken characters a minute, the whole aimed at "target_minutes" / "series.target_minutes", never under 8 minutes, over it fine — are unchanged context lines.
+- series.test.mjs: one hunk in `EXPLAINER_STAGE_PINS`. The instruction digest of `planner:bible-explainer` goes from `29fd9e2e…` to `92d58c32…` and that of `writer:explainer` from `a95dc295…` to `11ec620a…`; both payload digests and the whole `verifier:explainer` row are unchanged. With every 64-hex digest masked (and any number following one), `diff` of the two revisions is empty, and both carry six digests: only pin values moved. The dated comment above the table was not updated; it still describes the earlier 2026-10-13 move.
+
+The digests were recomputed here rather than taken from the author. `tools/video` was extracted with `git archive` at `548cb13fc^` and at HEAD into a scratch directory (with a junction to the repository's `node_modules`), and each revision's `prompts.mjs` was imported and its text composed through `instructionsFor(stage, format, "", variant, "", series, null)` for format `drama` and `slides` and series an explainer one-off row or `null`, hashed with `createHash("sha256").update(text, "utf8").digest("hex")` as the file's own `digestOf` does. At HEAD (and in the working tree) all four compositions give `11ec620a6084cd27a3916971e8d9bf68cda593229218d39ff3e00106534ff0e0` over 15,511 characters for `writer:explainer` and `92d58c327776f8f1f8084907e2aaf0a7d8f326c2c614d1ab593dc4074ff017a2` over 4,535 for `planner:bible-explainer`: the new pins exactly. At `548cb13fc^` they give `a95dc295…` over 14,746 and `29fd9e2e…` over 4,441: the old pins. As a control `verifier:explainer` gives `c1619a92…` over 2,888 in both revisions, its unchanged pin. A `diff` of the composed writer texts shows where the 765 characters come from: the body of `writer:explainer` in prompts.mjs is untouched, and the movement is the `CONDENSATION_RULE` and loops sentence of the unbound `register.mjs` that `instructionsFor` appends; the planner's movement is the prompts.mjs hunk above. The old two values now appear in no code, test or JSON file.
+
+Findings, duration rules: none moved. Counted in both revisions of each bound file, every duration identifier appears exactly as often. SKILL.md: `target_minutes` once, "minute" once, 分鐘 14, 秒 10, `480` once, 30–60 once, 60–90 once, "8 分鐘" four times. prompts.mjs: `target_minutes` 12, "minute" 33, "seconds" 47, 分鐘 once, "30 to 60" twice, "250 spoken" six times, "≥ 10 s" seven times. series.test.mjs: `target_minutes` 23, `MIN_EPISODE_MINUTES` once, `VIDEO_MIN_EPISODE_MINUTES` once, `estimateTimeline` four times, "minute" 38, "seconds" 22, 秒 11. `minEpisodeMinutes`, `effectiveEpisodeMinutes`, `DEFAULT_TARGET_MINUTES`, `draftBudget`, `duration_s`, `14,400` and `14400` appear in none of the three in either revision. The condensation keeps 30 to 60 seconds: `OPENING_CHAPTER_SECONDS = [30, 60]` in `tools/video/core/lint.mjs` is identical in both revisions (the file is untouched), and the composed writer text reads "The first chapter is the condensation: 30 to 60 seconds" in both. The teasers are carved out of that window, not added to it; the unbound `register.mjs` now suggests about 15 to 25 seconds for the scene part (its one extra "seconds"), a pacing hint inside the same chapter bound that no check reads. The new panel question and the lint warning in the unbound `core/narrative.mjs` (`OPENING_TEASERS = 3`) count loops, not time; its `total_frames` and minute counts match across the revisions. Moving the channel bumper after the condensation changes its position, not its length, and this commit changes no assembly code; the episode total is the same. No file under `apps/api`, `tools/video/qa`, `tools/video/long-form` or `tools/video/core/lint.mjs` / `schema.mjs` is changed, and neither is `docs/videos/long-form/plans.json` or `policy.json`: the 8-minute non-drama floor (`MIN_EPISODE_MINUTES = 8`), the explainer's 10-minute default and 8–20 range, drama's 1–8, the brand story's 13 minutes, the QA `assemble` item's 480 s / 14,400 frames at 30 fps and the chapter minimum of 10 s stand exactly as the increments above bound them.
+
+Recorded outside duration, so it is not lost: the commit changed `.agents/skills/youtube-video/SKILL.md` but not its Claude Code mirror `.claude/skills/youtube-video/SKILL.md`, which still has the old bytes (`f75b8162…`, its binding is therefore still current and is not rebound here). `node --test tools/skills.test.mjs` fails one test at HEAD, "every shared skill has a byte-identical copy for Claude Code, and nothing lives only there". Syncing the mirror is the author's fix; when it lands, that binding goes stale and needs its own increment.
+
+Ran (in the worktree, Node 24 on Windows, `VIDEO_MIN_EPISODE_MINUTES` unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which named exactly these three stale bindings and no other;
+- `git show 548cb13fc --stat`, `--numstat`, and `git show 548cb13fc -- <file>` read whole for each bound file; the same for `register.mjs` and `core/narrative.mjs`; `git show 516dfeef0 --stat`; `git diff 548cb13fc HEAD -- .agents tools apps`; `git status --short`; `git ls-files --eol`; `git rev-parse HEAD 548cb13fc 548cb13fc^`;
+- SHA-256 over each parent blob, HEAD blob and working-tree file, compared against the old receipt;
+- a count of every duration identifier above in each parent blob against its HEAD blob, which matched everywhere in the bound files;
+- a masked `diff` of the two series.test.mjs revisions with every 64-hex digest replaced, which was empty;
+- an independent composition of the `planner:bible-explainer`, `writer:explainer` and `verifier:explainer` texts through `instructionsFor` and `digestOf`, in four format and series combinations each, over `git archive` extracts of `548cb13fc^` and HEAD and over the working tree, against all three pins; a `diff` of the composed old and new writer and planner texts; a search of code, tests and JSON for the old two values;
+- `node --test tools/video/automation/prompts.test.mjs tools/video/automation/explainer-series.test.mjs tools/video/automation/series.test.mjs tools/video/core/narrative.test.mjs`: 128 passed, 0 failed, 0 skipped;
+- `node --test tools/skills.test.mjs`: 6 passed, 1 failed, the mirror test named above.
+
+The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims: this review does not judge the hooked opening, the teaser wording, the eleventh panel question or the bumper's new place as product choices, and it does not review the unbound files the commit touched beyond the duration reading above. It does not repair the `.claude` mirror. No writer, planner or panel was run against a real model, no narration was synthesized, no cut was measured and no host was contacted. The full `test:tools` suite, API tests, ruff, mypy, Vitest, web lint and typecheck were not run, and no CI result is claimed. This increment binds the three files as committed at `548cb13fc`; a later commit, rebase or merge that changes any of them, or either receipt file, needs its own follow-up increment.
+
+PASS is DURATION_ONLY for the three rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Skill mirror increment: 1 file (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013g`. Author: `claude-opus-5-5-narrative`. Scope: DURATION_ONLY for the one changed binding below, reviewed in the worktree `claude/youtube-narrative-flow-1cadbc` whose HEAD is `835e86d0727587abacbb7e4502c4857ddec3b1cf` ("fix(video): the Tunguska pictures the judge sent back, and two last fact corrections"). The change was made in its parent `87b91229f50f70447fc1020c9eb4ecb38600b90e` ("fix(video): the Claude copy of the youtube-video skill follows the hooked-opening rule"); HEAD itself touches only four files under `docs/videos/curio-*`, and `git diff 87b91229f HEAD -- .claude .agents tools apps docs/videos/long-form` is empty. When the review began no tracked file was modified in the working tree. `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: .claude/skills/youtube-video/SKILL.md` and named nothing else. This reviewer wrote none of the change, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edited only this report and review.json.
+
+- `.claude/skills/youtube-video/SKILL.md`: `f75b81629e71b5371b0069ac7e10192f33c139ef748ce752cf8763797299b3e6` -> `16720e94c465df18cf106234237215f4e9d25df4147990f9d6a8f76f5ce2f988`.
+
+Baseline: SHA-256 over `git show 87b91229f^:.claude/skills/youtube-video/SKILL.md` is `f75b81629e71b5371b0069ac7e10192f33c139ef748ce752cf8763797299b3e6`, exactly the value this receipt carried before this increment, which proves the binding was current when the change started. The parent `3cb47d843` is the receipt commit of the section above, which recorded this mirror as unsynced and left its binding alone, so the two increments join without a gap. Those old bytes are also byte-identical (`cmp`) to `git show 548cb13fc^:.agents/skills/youtube-video/SKILL.md`, the shared copy as it stood before the hooked-opening change.
+
+New bytes equal the reviewed shared copy: SHA-256 over `git show HEAD:.claude/skills/youtube-video/SKILL.md`, over `git show 87b91229f:.claude/skills/youtube-video/SKILL.md` and over the working-tree file are all `16720e94c465df18cf106234237215f4e9d25df4147990f9d6a8f76f5ce2f988`, the same digest as `.agents/skills/youtube-video/SKILL.md` at HEAD, at `87b91229f` and in the working tree, and the same value the section above recorded and bound for that file. `cmp` of the two working-tree files reports no difference. `git ls-files --eol` reports LF in index and worktree for both. By `git show --numstat` the commit touches this one file only, two insertions and two deletions; it stays at 144 lines and grows from 25,846 to 25,894 bytes, the same sizes the section above recorded for the shared copy. The other 107 bindings are untouched by this change and are not covered afresh. Every prior increment is preserved and the registry remains 108 files.
+
+What the change is: `git show 87b91229f` was read whole. It is two hunks: rule 11 (the `loops` table holds at least three for ten minutes, three of them the opening's teasers; the condensation is one scene plus three or four later moments, each stopped before its result, with the channel intro after it; the storytelling gate reads eleven yes/no questions instead of ten) and row 4.5 of the pipeline table (eleven questions instead of ten). The added and removed lines of this commit, extracted with `grep '^[-+][^-+]'`, are byte-identical (`cmp`) to those of `git diff 548cb13fc^ 548cb13fc -- .agents/skills/youtube-video/SKILL.md`, which the section above read and bound. Rule 10 (the 8-minute floor for everything but drama and Shorts, no upper limit, `target_minutes` as the aim) is an unchanged context line.
+
+Findings, duration rules: none moved. Counted in both revisions, every duration identifier appears exactly as often: `target_minutes` once, "minute" once, 分鐘 14, 秒 10, `480` once, 30–60 once, 60–90 once, "8 分鐘" four times; `minEpisodeMinutes`, `effectiveEpisodeMinutes`, `DEFAULT_TARGET_MINUTES`, `MIN_EPISODE_MINUTES`, `draftBudget`, `estimateTimeline`, `total_frames`, `duration_s`, `14,400` and `14400` in neither. These are the counts the section above recorded for the shared copy. The file is skill prose for the Claude Code harness; it declares no rule a tool reads. No file under `apps/api`, `tools/video` or `docs/videos/long-form` is changed by this commit: the 8-minute non-drama floor, the explainer's 10-minute default and 8–20 range, drama's 1–8, the brand story's 13 minutes, the QA `assemble` item's 480 s / 14,400 frames at 30 fps and the chapter minimum of 10 s stand exactly as the increments above bound them.
+
+The mirror test the section above recorded as failing, "every shared skill has a byte-identical copy for Claude Code, and nothing lives only there", now passes, so the gap that section flagged is closed.
+
+Ran (in the worktree, Node 24 on Windows, `VIDEO_MIN_EPISODE_MINUTES` unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which named exactly this one stale binding and no other;
+- `git show 87b91229f` read whole, with `--stat` and `--numstat`; `git show 835e86d07 --stat`; `git diff 87b91229f HEAD --stat -- .claude .agents tools apps docs/videos/long-form`; `git status --short`; `git ls-files --eol`; `git rev-parse HEAD 87b91229f 87b91229f^`;
+- SHA-256 over the `.claude` copy at `87b91229f^`, `87b91229f`, HEAD and in the working tree, and over the `.agents` copy at the same three revisions and in the working tree, compared against the old receipt and the section above;
+- `cmp` of the old `.claude` bytes against `.agents` at `548cb13fc^`, of the two working-tree copies, and of this commit's changed lines against those of `548cb13fc` on the shared copy;
+- a count of every duration identifier above in the parent blob against the HEAD blob, which matched everywhere;
+- `node --test tools/skills.test.mjs`: 7 passed, 0 failed, 0 skipped.
+
+The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims: this review does not judge the hooked opening or the eleventh panel question as product choices, nor re-review the shared copy, which the section above bound. No writer, planner or panel was run against a real model, no narration was synthesized, no cut was measured and no host was contacted. The full `test:tools` suite, API tests, ruff, mypy, Vitest, web lint and typecheck were not run, and no CI result is claimed. This increment binds the file as committed at `87b91229f`; a later commit, rebase or merge that changes it, or either receipt file, needs its own follow-up increment.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Panel count test increment: 1 file (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013i`. Author: `claude-opus-5-5-narrative`. Scope: DURATION_ONLY for the one changed binding below, reviewed in the worktree `claude/youtube-narrative-flow-1cadbc` whose HEAD is `0db4f70565515ae090ea4a0528236a43b9c87319` ("fix(video): the worker's panel test counts the questions instead of pinning ten"), the commit that made the change. When the review began no tracked file was modified in the working tree. `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/automation.test.mjs` and named nothing else. This reviewer wrote none of the change, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edited only this report and review.json.
+
+- `tools/video/automation/automation.test.mjs`: `58039686cde482ae0bf834a938ffbfb602c472678bbca72db7e915c32c4b909b` -> `d21283b9e19c9442c42b90e5700b2fb2c6ed0a1992fde489480e6856df63c8fe`.
+
+Baseline: SHA-256 over `git show 0db4f7056^:tools/video/automation/automation.test.mjs` is `58039686cde482ae0bf834a938ffbfb602c472678bbca72db7e915c32c4b909b`, exactly the value this receipt carried before this increment, which proves the binding was current when the change started. The parent `4aad5b40f` is the receipt commit of the section above, so the increments join without a gap, and `git log 548cb13fc..HEAD -- tools/video/automation/automation.test.mjs` lists only `0db4f7056`. SHA-256 over `git show HEAD:<file>` and over the working-tree file are both the new value; `git ls-files --eol` reports LF in index and worktree. By `git show --numstat` the commit touches this one file only, one insertion and one deletion; it stays at 7,585 lines and grows from 539,362 to 539,432 bytes. The other 107 bindings are untouched by this change and are not covered afresh. Every prior increment is preserved and the registry remains 108 files.
+
+What the change is: `git show 0db4f7056` was read whole. It is one line in the test "the storytelling panel reads the script blind between the listener and the …": `assert.equal(call.payload.questions.length, 10)` becomes `assert.equal(call.payload.questions.length, NARRATIVE_PANEL.length, "every question, the opening_hooks one included")`. The `10` there was a count of panel questions, not minutes or seconds. `NARRATIVE_PANEL` was already imported from `../core/narrative.mjs` (line 16) and used by `panelAnswers` (line 1921); importing that module in the working tree gives 11 questions, the last `opening_hooks`, which the section "Hooked opening increment" above recorded as the panel's eleventh question added in `548cb13fc`. The surrounding assertions of that test (payload keys, `PANEL_INSTRUCTIONS`, the narration heading, the verdict and the second `narrativeGate` call) are unchanged context.
+
+Findings, duration rules: none moved. Counted in both revisions, every duration identifier appears exactly as often: `target_minutes` 37, `MIN_EPISODE_MINUTES` once, `VIDEO_MIN_EPISODE_MINUTES` once, `draftBudget` four times, `estimateTimeline` twice, `total_frames` three times, "minute" 51, "seconds" 12, 秒 18; `minEpisodeMinutes`, `effectiveEpisodeMinutes`, `DEFAULT_TARGET_MINUTES`, `duration_s`, `480`, `14,400`, `14400` and 分鐘 in neither. The five `target_minutes, 10` assertions nearby (lines 1836, 1874, 1997, 2002 and 2007 at HEAD: the explainer's ten-minute aim kept in `auto.json` and in the state) are present five times in both revisions and lie outside the one-line hunk; the only literal `length, 10` in the file, once before and zero times after, is the panel-count assertion this commit replaced. No file under `apps/api`, `tools/video/core`, `tools/video/qa` or `docs/videos/long-form` is changed by this commit: the 8-minute non-drama floor, the explainer's 10-minute default and 8–20 range, drama's 1–8, the brand story's 13 minutes, the QA `assemble` item's 480 s / 14,400 frames at 30 fps and the chapter minimum of 10 s stand exactly as the increments above bound them.
+
+Ran (in the worktree, Node 24 on Windows, `VIDEO_MIN_EPISODE_MINUTES` unset in the shell):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which named exactly this one stale binding and no other;
+- `git show 0db4f7056` read whole, with `--stat` and `--numstat`; `git rev-parse HEAD 0db4f7056^`; `git log 548cb13fc..HEAD -- <file>`; `git status --short`; `git ls-files --eol`;
+- SHA-256 over the parent blob, the HEAD blob and the working-tree file, compared against the old receipt;
+- a count of every duration identifier above, and of `target_minutes, 10`, `length, 10` and `NARRATIVE_PANEL`, in the parent blob against the HEAD blob;
+- an import of `tools/video/core/narrative.mjs` to read `NARRATIVE_PANEL.length` and its ids;
+- `node --test --test-skip-pattern="a project another process holds" tools/video/automation/automation.test.mjs`: 235 passed, 0 failed, 0 skipped (the skipped-by-pattern test hangs on Windows for an unrelated ESM path reason and was not run).
+
+The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims: this review does not judge the eleventh panel question or the panel's wording as product choices, and it does not run the test excluded by the skip pattern. No writer, planner or panel was run against a real model, no narration was synthesized, no cut was measured and no host was contacted. The full `test:tools` suite, API tests, ruff, mypy, Vitest, web lint and typecheck were not run, and no CI result is claimed. This increment binds the file as committed at `0db4f7056`; a later commit, rebase or merge that changes it, or either receipt file, needs its own follow-up increment.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Channel intro after the opening condensation increment: 5 files (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013j`. Author: `claude-opus-5-5-bumper`. Scope: DURATION_ONLY for the five changed bindings below, reviewed at `4744a08f7cad3ed21dbaf838495b671ec67194b0` ("tasks: the intro-after-condensation task is in review") on claude/bumper-after-condensation, pull request #1481. The branch is two commits on origin/main: `48f6bdc57` ("feat(video): narrated long videos play the channel intro after their condensation", 18 files) and `4744a08f7` (the task file only). The reviewer wrote none of them and edits only this report and review.json.
+
+Baseline: merge base `038f9152c5299459a2e92a5d922d657c49686db7` (#1477). For each of the five paths, SHA-256 of `git show <merge-base>:<path>` equals the existing review.json binding. Neither commit touches a receipt file, so the receipt the branch carries is main's, the "PR #1475 private Studio link" increment above. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these five bindings; they are the only bound files among the 18 that differ, and the other 103 remain current. The registry remains 108 files.
+
+- `tools/video/assemble/cli.mjs`: `1820b81f551dac573fe0f9b9dd47146304dbc83a330751fc16087ddfbad83c5e` -> `0f3781cbdf0dd39faac6188f6795cc74233a9228fa7ef1a37e8ed5d16aa0cd92`.
+- `tools/video/core/branding.mjs`: `d9391d4832301395714cd3741a745fbf248a617fbd2850fe382e473a08ed7fd7` -> `917b7d8ca1cc7f493605f4452e9f200ec95c23cbc7c5c124be9490c6f8150ef5`.
+- `tools/video/core/branding.test.mjs`: `85530e76a4b26ca3a61fea99c1852a554c73db15c0248b9f32f0dabb1cdb0621` -> `dfdf0c5142448360752600b4050885bbd4ac8ed36472cf2d7e13e0c6df460382`.
+- `tools/video/core/stages.test.mjs`: `2e22980d5fe28d63d555e5cce7c18f56fb7042cdab52fa03a76b076ecca3c332` -> `c4583dba313415355131a854f3da6f568862c3ea83808313b2f1acda5c017523`.
+- `tools/video/dubs/dubs.test.mjs`: `4fb9b00853147186776b1b18f483585091fd1c35e5aaaa77db742609b898d2e1` -> `d8e1ea0e16afc5d5ec13c1e1fc4fa555ef9f4e44bd1572fda4e10d52ff356401`.
+
+What the change is: the channel intro of a narrated long video (slides, screencasts, explainer dramas, brand stories) moves from body frame 0 to the first frame of chapter 2, so the 30 to 60 second condensation plays first and the intro follows it. Dramas with a cast, compilations and Shorts keep the intro at the start. The placement is a pin field `intro_at` (`start` or `after_first_chapter`); a pin without it is a cut made before the change and stays at the start; `assemble --intro-after-condensation` re-places a narrated cut that is not on YouTube yet. It moves where the intro sits inside the presentation, not how many frames the presentation has.
+
+Findings, implementation (2 files):
+
+- `tools/video/core/branding.mjs` (+123/−14): `validateBranding` accepts `intro_at` and adds it to the result only when it is not `start`; `brandingHash` keeps `"channel-bookends-v1"` and the same array for an intro at the start and switches to `"channel-bookends-v2"` plus the placement otherwise, so every existing pin, caption manifest and package keeps its hash. New: `placeBranding`, `narratedLong`/`defaultIntroAt` (who gets the new placement), `introAtFrame` (an applied record's `intro_at_frame`, else 0 for a start pin, else the timeline's `chapters[1].start_frame`, refused when there is no second chapter strictly inside the body), `replacementRefusal`, `pinRecord` (the pin as written now always carries `intro_at`, `start` included) and `linesAcrossIntro`. `selectBrandingForBuild` returns an existing pin unchanged; only a first build or an adoption takes `defaultIntroAt`, and the flag re-places a pin. `presentationTimeline`: `offset` reads `intro_frames ?? intro.frames` and the outro `outro_frames ?? outro.frames`; `total_frames` is still `offset + timeline.total_frames + outro`, `content_end_frame` still `offset + timeline.total_frames`, `body_total_frames` still the body. Starts at or after the intro frame and ends after it move by the intro; with the intro at 0 every start and end moves, as before. `shiftBrandingCues` moves cues at or after the intro's time and leaves earlier ones; with the intro at 0 every cue with a non-negative start moves, as before. No duration constant is named in either revision (0 lines naming target_minutes, minEpisodeMinutes, effectiveEpisodeMinutes, MIN_EPISODE, needsMinimumLength, VIDEO_MIN_EPISODE_MINUTES, runtime_spec, action_seconds, target_seconds, KNOWLEDGE_MIN, the anime duration functions, 480, 600, 780 or 14,400); lines naming total_frames, body_total_frames, content_end_frame, intro_frames, outro_frames or body_frames go from 5 to 8, the added ones being the fallbacks above and the second-chapter bound in `introAtFrame`.
+- `tools/video/assemble/cli.mjs` (+19/−4): passes `series` and the new flag to `selectBrandingForBuild`; a first build whose timeline has one chapter falls back to the start; `introAt` is found from the timeline and must be the `start_frame` of a layout scene whose preceding frames sum to it, or assemble stops with a usage error. `wrapVideo` gets `introAtFrame` and the body's own scene segments split there, joined by copy around the intro (assemble/branding.mjs, unbound: the sound is the body's mix cut on the sample grid at that frame into two clips padded to their own lengths, so four clips sum to intro + body + outro; `concat=n=3` with the original filters when the intro is at 0). `bodyFrames: timeline.total_frames` is unchanged. Two output lines are added. The four lines naming duration rules (the anime duration imports and calls) are the same in both revisions; none of the 23 changed lines names one.
+
+Findings, regression tests (3 files):
+
+- `tools/video/core/branding.test.mjs` (+93/−2): one existing expectation changes, the first build of a slides document now hashing with `intro_at: "after_first_chapter"`; the existing "presentation shifts content once" test (start placement, `total_frames`, chapter zero, cue round trip) is unchanged. Four new tests: who is narrated; a legacy pin keeps its hash, intro frame 0, and a rewritten pin with `intro_at: "start"` still validates to that hash; the flag's refusals; and a body of 2,400 frames with a 357-frame intro after chapter 1 presenting `total_frames` 2400 + 357 + 630, `content_end_frame` 2757, chapter-1 lines and cues at their own time, the rest moved by 357 frames, and the cue round trip back.
+- `tools/video/core/stages.test.mjs` (+43/−0): a new test with the intro after chapter 1 checks that the narration captions in two languages and the dub's captions keep chapter 1's cue times, move the rest by the intro, and that no cue plays over the intro; YouTube chapters are `[0, c2 + 357, c3 + 357]`.
+- `tools/video/dubs/dubs.test.mjs` (+41/−0): a new test dubs a cut whose intro follows chapter 1: the dub timeline's `total_frames` is the body + 780 (150 + 630), `content_end_frame` body + 150, every line is kept (the start frames map one to one: earlier ones unmoved, later ones +150), and the wrap is `concat=n=4` with the body's second half cut at `start_sample = at * 1600` to the body's end.
+
+Duration questions:
+
+1. Total length. Intro and outro frames are still added once, to every video: `total_frames = intro + body + outro` in both placements, and only the position of the intro changes. Run against both revisions, a 15,000-frame body with a 357/630 bookend presents 15,987 frames in each, with the intro at the start and after chapter 1. No body frame is added, removed or re-timed: the body is split, not trimmed, and assemble refuses a split that is not at a scene boundary instead of moving one.
+2. Length checks. No file under tools/video/qa or tools/video/long-form, nor core/duration.mjs, core/lint.mjs, core/schema.mjs or core/timeline.mjs, and nothing under apps/api, differs between the merge base and the head. The eight-minute floor in qa (`MIN_EPISODE_MINUTES` via `minEpisodeMinutes()`) still reads `checks.metrics.frames`, the whole measured cut, which is unchanged; `KNOWLEDGE_MIN_SECONDS = 480` still reads the body and still requires `presented.total_frames === body + intro_frames + outro_frames`, which both placements satisfy; the long-anime checks read the same sums; lint's pacing and the opening-condensation window read the body script, untouched.
+3. Old pins. Run against both revisions with a start pin: the validated pin is byte-identical (no `intro_at` key), the hash is equal, a pin rewritten with `intro_at: "start"` keeps that hash, `presentationTimeline` from an applied record is identical, `shiftBrandingCues` is identical in both directions, and `brandingJoinArgs` gives identical ffmpeg arguments for the cut and for a dub. So a video pinned before this change rebuilds its final, captions, chapters and dubs as before.
+4. Dubs and scenes. A dubbed line that would run across the intro is refused with a usage error (`linesAcrossIntro`), not dropped, cut or sped up; dub fitting, windows and tempo are outside the hunks. `captionTimelineOf` (core/stages.mjs, unbound) caps only the caption end of a line that starts before the intro at the intro's frame. No scene is shortened to make room.
+
+Recorded observations. None changes a video's length or a length floor:
+
+1. The tts chapter check (tts/cli.mjs, unbound) passes a planned pin, not an applied record, to `presentationTimeline`. At the merge base that pin has no `intro_frames`, so every start and the total came out NaN and `checkChapters` reported no chapter under 10 s whenever branding was selected (shown by running the merge base's function: total NaN, problems `[]`). The fallback to `intro.frames` makes that YouTube chapter-display check real. It can only add a recorded `ok: false` to a tts run; it changes no frame. With the intro at the start it presents exactly what assemble presents.
+2. With the intro after chapter 1, YouTube's chapter 1 runs from 0:00 to the end of the intro, so it holds the condensation and the intro.
+3. The first successful build of an old pin rewrites branding.json with `intro_at: "start"`; the hash, which is what manifests, packages and approvals bind, stays the same.
+4. Renewal staging and handoff refuse a pin placed after chapter 1 (review/renewal.mjs, review/renewal-handoff.mjs, unbound); compile keeps an episode's chapter-1 captions and removes its intro only from the later ones (core/compilation.mjs, unbound). A compilation itself is not narrated-long and keeps its intro at the start.
+
+Ran (in the worktree at the head, Node 24 on Windows, VIDEO_MIN_EPISODE_MINUTES unset):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the five stale bindings and exited 1;
+- `git diff` from the merge base over the 18 changed files, the five bound files read whole and assemble/branding.mjs, dubs/cli.mjs, tts/cli.mjs, core/stages.mjs, core/compilation.mjs, compile/cli.mjs and the two renewal files as context;
+- SHA-256 of the merge-base blobs, the files' bytes and the receipt; `git ls-files --eol` (LF in index and worktree);
+- a script kept outside the repository that imports the merge base's (`git archive`) and the head's core/branding.mjs and assemble/branding.mjs and compares them as in questions 1 and 3 and observation 1;
+- `node --test tools/video/assemble/*.test.mjs tools/video/core/branding.test.mjs tools/video/core/stages.test.mjs tools/video/dubs/dubs.test.mjs`;
+- `node --test` over core/duration.test.mjs, qa/*.test.mjs, core/compilation.test.mjs, core/timeline.test.mjs, compile/*.test.mjs and tts/*.test.mjs, where the one failure, tts/check.test.mjs "a second transcript clears a line only Gemini misheard", fails the same way in the merge base's tree on this machine.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge the placement as a product choice, BRANDING.md or the task file (unbound), or the picture and sound at the join; no ffmpeg was run and no cut was built or played.
+- The assemble path with the intro after chapter 1 (the scene-boundary refusal, the split segments) was read, not exercised end to end; the four-clip sound join is exercised through the dub test's arguments.
+- No API test, ruff, mypy, Vitest, lint or typecheck was run.
+- This increment binds the tree at the head only: a later commit or merge with main that changes any of the five files, or either receipt file, needs its own follow-up. The 103 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the five rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Dubbing narrated dramas, rebound after #1481 increment: 3 files (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013k`. Author: `claude-opus-5.5-dub-narrated-drama` (the dub changes); the merge was made by `claude-opus-5-5-narrative`. Scope: DURATION_ONLY for the three changed bindings below, reviewed at `ec8ef1f15` ("Merge origin/main into claude/dub-narrated-drama") on claude/dub-narrated-drama, pull request #1482. Its parents are `874d31156` (the branch, whose receipt increment by `claude-opus-duration-review-20261013h` bound these three files) and `03aa68298` (#1481 on main). The merge took main's review.md and review.json whole, so the branch's increment is no longer in the receipt; this section restates and rebinds it on top of main's "Channel intro after the opening condensation" increment above. The reviewer wrote none of the code or the merge and edits only this report and review.json.
+
+Baseline: for each of the three paths, SHA-256 of `git show 03aa68298:<path>` equals the existing review.json binding, and the receipt files at the head are byte-identical to main's. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these three bindings. The registry remains 108 files.
+
+- `apps/api/app/video_reviews/admin_service.py`: `61a0095ccb186e45fc89f08bd20085a20aea68f13c9192478b9cbec4e5aa169d` -> `ef9fad5370f8929008ab0253456e6df479eeceb18aad16a2fe355eb79955c5a3`.
+- `apps/web/components/admin-video-reviews.test.tsx`: `2fbef750199daaf8fd1efeea37196526e67f00b2641adf3b23c9159ddf1a00b2` -> `b58c685c61cfa502157bd43cb33010dd5e3ff17263b99a7d535e591896dfe89c`.
+- `tools/video/dubs/dubs.test.mjs`: `d8e1ea0e16afc5d5ec13c1e1fc4fa555ef9f4e44bd1572fda4e10d52ff356401` -> `bff4e09be16e629cf807f688a227f092cc07af4380a1de583f88a1216d029a25`.
+
+What the merge is: both parents changed the same set of files since the merge base `038f9152c5299459a2e92a5d922d657c49686db7`, and the merge adds nothing of its own. Against main the head differs only in the eleven files the branch changed; against the branch it differs only in the files #1481 changed. Every file is one side's bytes except tools/video/dubs/cli.mjs and dubs.test.mjs, which both sides changed.
+
+Findings:
+
+- `admin_service.py` and `admin-video-reviews.test.tsx`: the blobs at the head equal those at `874d31156` (`1f2b4cef4` and `1fbb21331`), and `git diff 038f9152c 03aa68298` is empty for both, so main did not touch them and the merge kept the branch's bytes; the SHA-256 values above are the ones the `874d31156` section bound. That section established, and this review re-read the diffs to confirm, that `admin_service.py` (+22/−5) adds `DUBBABLE_DRAMA_CATEGORIES = frozenset({"explainer"})` and refuses a drama's dub only when its category is outside that set, with the 422 code unchanged, and that `admin-video-reviews.test.tsx` (+28/−3) pins the greyed-out box's reason for the other categories and checks that an explainer drama's dub box is enabled. In its words: "No changed line names minutes, seconds, frames, `target_minutes`, a floor or a runtime field"; "No assertion about length".
+- `dubs.test.mjs` (+79/−0 from the merge base): new bytes, read whole. `git merge-file` of the branch's and main's revisions over the merge base merges cleanly and reproduces the head byte for byte. Apart from hunk line numbers, the diff from main to the head equals the branch's diff from the merge base (+38, the narrator-only drama test: the drama fixture refused with exit 3, the narrator-only copy and the explainer passing a `--dry-run` dub pinned only as `\d+ requests, \d+ to synthesize`), and the diff from the branch to the head equals main's diff from the merge base (+41, the intro-after-condensation dub test the section above reviewed: `total_frames` body + 780, `content_end_frame` body + 150, later lines +150, `concat=n=4` with the body cut at `at * 1600`). No existing line is removed or edited; no existing test, timing tolerance or expected length moves.
+
+Duration identifiers (the regex of the `874d31156` section: `target_minutes`, `MIN_EPISODE`, `minEpisodeMinutes`, `VIDEO_MIN_EPISODE_MINUTES`, `duration`, `seconds`, `_minutes`, `total_frames`, `windowLimit`, `atempo`, `tempo`, `stretch`, `keep-fitting`, `layoutDub`, `absorbOverruns`, `overrun`; case-insensitive occurrences): admin_service.py 27 -> 27, admin-video-reviews.test.tsx 76 -> 76; dubs.test.mjs 87 at the merge base, 87 on the branch, 93 on main and 93 at the head. The six added occurrences (`total_frames` five times, `duration` once, in an ffprobe stub) are all in main's intro test; the branch's test adds none.
+
+Context, unbound: tools/video/dubs/cli.mjs at the head is the union of both sides. The diff from main to the head equals the branch's diff from the merge base (the doc comment, `NARRATOR` in the core/drama.mjs import, `spokenByCharacter` and the exit-3 refusal), and the diff from the branch to the head equals main's (`introAtFrame` and `linesAcrossIntro` in the core/branding.mjs import, the refusal of a dubbed line across the intro, `introAtFrame` passed to `wrapAudio`). Each comparison differs only in one context line, the neighbouring import the other side changed. The conflict was those two adjacent import lines, and both edits are kept; no other line differs from what the two parents wrote.
+
+Ran (in the worktree at the head, Node on Windows):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the three stale bindings and exited 1;
+- `git rev-parse` of the three files and cli.mjs at the head, both parents and the merge base; `git diff --name-only` of the head against each parent and of each parent against the merge base;
+- `git diff 038f9152c HEAD`, `038f9152c 874d31156` and `038f9152c 03aa68298` over dubs.test.mjs and cli.mjs, read whole, compared with the head against each parent after removing hunk line numbers, and `git merge-file` over the three revisions;
+- SHA-256 of each file at the head, both parents and the merge base against review.json; `git ls-files --eol` (LF in index and worktree);
+- the identifier count above with `grep -Eio` over all four revisions and over the added lines;
+- `node --test tools/video/dubs/dubs.test.mjs tools/video/core/branding.test.mjs`: 29 tests, 29 pass, both new dub tests among them.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review restates the `874d31156` section's judgement of the two site files and does not extend it; it does not judge whether an explainer drama should be dubbed, the admin page or API test (unbound), or the merge's other files.
+- No dub was synthesized, mixed or measured; the dub tests run against a fake speech server and a fake ffmpeg.
+- No API test, ruff, mypy, Vitest, lint or typecheck was run.
+- This increment binds the tree at the head only: a later commit or merge with main that changes any of the three files, or either receipt file, needs its own follow-up.
+
+PASS is DURATION_ONLY for the three rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Merge of main (#1481) into the narrative-flow branch: 0 files reviewed afresh (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013l`. Author: `claude-opus-5-5-narrative`. Scope: DURATION_ONLY verification of the receipt after merge commit `dec59b7c50439571f24b742c6bcc4369b8e96ad9` ("Merge origin/main into claude/youtube-narrative-flow-1cadbc") on claude/youtube-narrative-flow-1cadbc, pull request #1478. Its first parent `2f5a0023d` (`dec59b7c5^1`, "fix(video): three Tunguska aerial shots image-01 kept filling with figures") carries this branch's receipt ending in the "Panel count test increment"; its second parent (`dec59b7c5^2`, origin/main) carries main's receipt ending in the "Channel intro after the opening condensation increment" (#1481). Merge base `038f9152c5299459a2e92a5d922d657c49686db7`. When the review began no tracked file was modified in the working tree and `node tools/video/long-form/cli.mjs check` printed only `FAIL: duration review report is stale`. This reviewer wrote none of the merge, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edited only this report and review.json. No file is reviewed afresh: this section records that the merge brought in only bytes already reviewed on one side or the other.
+
+What was verified:
+
+1. Bindings. All 108 paths in review.json `reviewed_files` hash (SHA-256 of the working-tree file, equal to the merge commit's blob) to their bound values, and the table below lists the same 108 paths with the same hashes. Both parents' receipts list the same 108 keys, and each parent's receipt was current for its own tree (every binding equal to that parent's blob, and each parent's `report_sha256` equal to its own review.md).
+2. What the merge changed. `git diff dec59b7c5^1 dec59b7c5 --stat` lists 20 files, exactly the 20 that `git diff <merge-base> dec59b7c5^2` lists. Of these, the bound ones are only the five that main's #1481 increment covers: `tools/video/assemble/cli.mjs`, `tools/video/core/branding.mjs`, `tools/video/core/branding.test.mjs`, `tools/video/core/stages.test.mjs` and `tools/video/dubs/dubs.test.mjs`. For each, the merge's bytes equal `dec59b7c5^2`'s, this branch never touched it (`dec59b7c5^1` equals the merge base), and the bound hash is the "->" value of that increment. Every other bound file is byte-identical to `dec59b7c5^1`. The only path changed on both sides apart from the two receipt files is `tools/video/cli.mjs`, which git merged without conflict and which is not bound.
+3. Conflicted binding rows. Of the 20 bindings that differ between the two parents' receipts, the merged receipt takes main's value for the five #1481 files and this branch's value for the other 15 (among them `tools/video/core/state.mjs`), in each case the value equal to the merged file's bytes. The review.json header fields other than the ones this increment rewrites were this branch's.
+4. The report. Everything before "## Reviewed SHA256 bindings" in the merged report is byte-identical to `dec59b7c5^1`'s report up to that heading followed by main's "Channel intro after the opening condensation increment" section byte-identical to `dec59b7c5^2`'s; main's report is the merge base's report plus that section only, so no earlier section was dropped or altered on either side. After the heading, the table has the same 115 lines as each parent; it differs from `dec59b7c5^1` in exactly the five #1481 rows and from `dec59b7c5^2` in exactly the 15 rows of this branch's increments, and every row equals one parent's row.
+
+Ran (in the worktree at `dec59b7c5`, Node on Windows): `node tools/video/long-form/cli.mjs check` before any edit; a script kept outside the repository that hashes the working tree and the blobs of the merge, both parents and the merge base, and compares both receipts and both reports as in 1 to 4; `git ls-files --eol` (LF in index and worktree for both receipt files). The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- No duration behaviour is reviewed afresh; the five #1481 files rest on the increment above and the rest on this branch's increments.
+- No test suite beyond review.test.mjs, no ffmpeg, and no API test, ruff, mypy, Vitest, lint or typecheck was run.
+- This section binds the merge commit's tree only: a later commit or merge that changes any bound file, or either receipt file, needs its own follow-up.
+
+PASS is DURATION_ONLY for the 108 bindings below, none of which changed in this section.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Remade cuts taking the current bookends increment: 2 files (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013m`. Author: `claude-opus-5-5-narrative`. Scope: DURATION_ONLY for the two changed bindings below, reviewed at `d6143565546117f8a802396907198f3559c38e0c` ("fix(video): a cut being remade may take the current bookends") on claude/youtube-narrative-flow-1cadbc, pull request #1478. Since the merge section above the branch has three commits: `86a36b25c` (the two receipt files only), `a59d8541d` (four `docs/videos/curio-*/shorts.json` files, none bound) and `d61435655` (the two files below, +20/−2 and +20/−0). The reviewer wrote none of them, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edits only this report and review.json.
+
+Baseline: for both paths, SHA-256 of `git show d61435655^:<path>` equals the existing review.json binding and the table row. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these two bindings; the other 106 remain current. The registry remains 108 files. All four files (the two bound ones and both receipt files) are LF in index and worktree.
+
+- `tools/video/core/branding.mjs`: `917b7d8ca1cc7f493605f4452e9f200ec95c23cbc7c5c124be9490c6f8150ef5` -> `da1e635285601e1398d7e4233c20f8fab2e9f752c693c67e82512f2dffd4adaa`.
+- `tools/video/core/branding.test.mjs`: `dfdf0c5142448360752600b4050885bbd4ac8ed36472cf2d7e13e0c6df460382` -> `1430f36cb542ce42548f9e8ee7182694b8679069cf9f64d446a4fdb56f3e5b89`.
+
+What the change is: `adoptionRefusal`, which decides whether `assemble`/`compile --adopt-branding` may give a cut the currently installed bookends, used to refuse any video with a final or publish approval or an `upload/metadata.json`. A new `remakingApprovedCut(workdir)` reads approvals.json and returns true when the newest `approved_at` among `script`, `audio` and `storyboard` approvals is later than the newest among `final` and `publish` approvals, an unparseable or missing time counting as 0 and a cut with no timed final/publish approval never counting as remade. When it is true, neither the final/publish approval nor the upload package refuses adoption. The Shorts refusal and the uploaded-or-finished refusal (`youtube.video_id`, `auto.json` `youtube_video_id`, status `done`/`dropped`) are unchanged and checked before it. No approval or package is deleted or rewritten.
+
+Findings, implementation (`tools/video/core/branding.mjs`, +20/−2): the only touched code is `remakingApprovedCut`, the `CONTENT_GATES` set and the two refusal lines of `adoptionRefusal`, which gain `!remaking &&`. `selectBrandingForBuild`, `placeBranding`, `defaultIntroAt`, `introAtFrame`, `presentationTimeline`, `shiftBrandingCues`, `brandingHash`, `pinRecord` and `replacementRefusal` are byte-identical in both revisions. Lines naming a duration constant (target_minutes, minEpisodeMinutes, effectiveEpisodeMinutes, MIN_EPISODE, needsMinimumLength, VIDEO_MIN_EPISODE_MINUTES, runtime_spec, action_seconds, target_seconds, KNOWLEDGE_MIN, the anime duration functions, 480, 600, 780 or 14,400): 0 in both revisions. Lines naming total_frames, body_total_frames, content_end_frame, intro_frames, outro_frames or body_frames: 8 in both revisions, the same lines. None of the 22 changed lines names a frame count, a length or a duration rule.
+
+Findings, regression test (`tools/video/core/branding.test.mjs`, +20/−0): one new test with an upload package present walks five approval sets: content approved before the final refuses; a script approved after the final adopts (returns null), package and all; a publish approval newer than the audio approval refuses; an untimed final with a newer script refuses; a remade cut whose auto.json says `done` refuses as finished. No existing test changes. Duration-constant lines: 2 in both revisions (fixture chapter start frames `600` at lines 85 and 178, unchanged); frame-field lines: 14 in both revisions.
+
+Duration questions:
+
+1. Rule or reachability. Adopting the current package changes the outro of such a cut from the old pin's length to the current one's, for example 90 → 630 frames (3 s → 21 s), and places the intro by `defaultIntroAt`. That is exactly what `--adopt-branding` already did for an unapproved, unpackaged cut, as BRANDING.md documents ("已由站主選定、仍未核准的既有成片，明確指定採用"): `selectBrandingForBuild` returns `placeBranding(readDefaultBranding(...), defaultIntroAt(...))` in both revisions, unchanged. What changes is only which videos reach that branch. Run against both revisions on twelve work directories: the old and new refusals and adoption results are identical in nine (final only; final + package; content before final; publish newer than content; untimed final; remade but done; remade but on YouTube; remade Short; no approvals) and differ only in the three where a script approval is newer than the final, where the old revision refuses and the new adopts the 150/630 package after the first chapter. Without `--adopt-branding`, every one of the twelve selects the same thing in both revisions: an existing 90-frame pin stays 90 frames, and an unpinned remade cut that was built before (checks.json present) still gets no branding, because `previouslyBuilt` refuses it.
+2. Length checks. No file under tools/video/qa or tools/video/long-form, nor core/duration.mjs, core/lint.mjs, core/schema.mjs or core/timeline.mjs, nor anything under apps/api, tools/video/assemble or tools/video/compile, differs between `d61435655^` and `d61435655`. An adopted remade cut is measured like any adopted build: `presentationTimeline` presents `total_frames = intro + body + outro` from the applied record (a 15,000-frame body: 15,240 with 150/90, 15,780 with 150/630, at the start and after the first chapter, identical in both revisions, `content_end_frame` 15,150 and `body_total_frames` 15,000 in all four); `knowledgeDurationProblems` still requires `presented.total_frames === body + intro_frames + outro_frames` (a record whose outro does not match the presentation is still reported in both revisions) and still applies `KNOWLEDGE_MIN_SECONDS = 480` to the body excluding bookends, so bodies of 14,000 and 14,200 frames fail under both outros and 15,000 passes, in both revisions; qa's eight-minute floor still reads `checks.metrics.frames`, the whole cut.
+3. Old pins and approvals. A remade cut's existing pin is not rewritten by this change: only an explicit `--adopt-branding` build reaches the new path, and the pin is written only after that build completes, as before. The rebuilt final has new bytes, so the earlier final or publish approval does not approve it; BRANDING.md's re-review step after adoption applies unchanged.
+
+Recorded observations. None changes a duration rule:
+
+1. qa's eight-minute floor measures the whole cut, bookends included, in both revisions (`assembleItem` reads `checks.metrics.frames`). So a remade cut that adopts the 630-frame outro is 540 frames (18 s) longer and can clear that floor where the 90-frame outro left it short: run against both revisions, a 14,000-frame non-knowledge slides body is 14,240 frames (7:54) and fails with 150/90, and is 14,780 frames (8:12) and passes with 150/630. Knowledge long videos still fail on the 480 s body floor regardless of the outro. This property is the same for every first build or adoption that takes the current package; this commit only adds the remade cuts to the videos that may adopt it.
+2. BRANDING.md (unbound) still says `--adopt-branding` refuses any video with a final or publish approval or an upload package; after this commit that is true only for a cut that is not being remade. The document needs a line about remade cuts; that is a wording gap, not a length change.
+3. `adoptionRefusal` is also consulted on the build path without `--adopt-branding`. For an unpinned remade cut with no final.mp4, no checks.json, no upload package and no successful assemble/compile/import run, it no longer blocks the first-build default; that is the same default any first build takes. This was read, not exercised: every realistic remade cut has at least one of those files.
+4. `compile --adopt-branding` calls the same function, so a remade compilation reaches the same path; a compilation keeps its intro at the start (`defaultIntroAt`).
+
+Ran (in the worktree at the head, Node 24 on Windows, VIDEO_MIN_EPISODE_MINUTES unset):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the two stale bindings and exited 1;
+- `git show d61435655` read whole; `git show --stat` of `86a36b25c` and `a59d8541d`; core/branding.mjs read whole at the head, core/duration.mjs, qa/checks.mjs `assembleItem`, qa/cli.mjs's branding lines and BRANDING.md §採用 and §片頭位置 as context;
+- SHA-256 of the `d61435655^` blobs, the files' bytes and the receipt; `git ls-files --eol`; the identifier counts above with `grep -c` on both revisions;
+- a script kept outside the repository that imports `git archive` copies of tools/video at `d61435655^` and `d61435655` and compares `adoptionRefusal` and `selectBrandingForBuild` (with and without adoption) on the twelve work directories, and `presentationTimeline`, `knowledgeDurationProblems` and `assembleItem` with an eight-minute floor on 14,000-, 14,200- and 15,000-frame bodies under 150/90 and 150/630 bookends, as in questions 1 and 2 and observation 1;
+- `node --test tools/video/core/branding.test.mjs tools/video/assemble/branding.test.mjs`: 22 of 22;
+- `node --test tools/video/core/duration.test.mjs tools/video/qa/*.test.mjs tools/video/compile/*.test.mjs`: 90 of 90.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge whether a newer content approval is the right test for "being remade", the outro as a product choice, or BRANDING.md and the task files (unbound); no ffmpeg was run and no cut was built, adopted or played.
+- The five recut videos the commit message names were not inspected; their work directories are outside the repository.
+- No API test, ruff, mypy, Vitest, lint or typecheck was run.
+- This increment binds the tree at the head only: a later commit or merge that changes either file, or either receipt file, needs its own follow-up. The 106 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Merge of main (#1478) into the dub branch: 0 files reviewed afresh (2026-10-13)
+
+Reviewer: `claude-opus-duration-review-20261013n`. Author: `claude-opus-5.5-dub-narrated-drama` (merge made by `claude-opus-5-5-narrative`). Scope: DURATION_ONLY verification of the receipt after merge commit `66c96fbe5a31edd44d88adefc1cff2844bbcfeeb` ("Merge origin/main into claude/dub-narrated-drama") on claude/dub-narrated-drama, pull request #1482. Its first parent `d94e8c8a5` carries this branch's receipt ending in the "Dubbing narrated dramas, rebound after #1481 increment"; its second parent `6fe8db843` (origin/main, #1478) carries main's receipt ending in the "Merge of main (#1481) into the narrative-flow branch" section. Merge base `03aa682983dcdd3290bf905f363946bcf02eafe0` (#1481). When the review began no tracked file was modified in the working tree and `node tools/video/long-form/cli.mjs check` printed only `FAIL: duration review report is stale`. This reviewer wrote none of the merge, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edited only this report and review.json. No file is reviewed afresh.
+
+What was verified:
+
+1. Bindings. All 108 paths in review.json `reviewed_files` hash (SHA-256 of the working-tree file, equal to the merge commit's blob) to their bound values, and the table below lists the same 108 paths with the same hashes. Both parents' receipts list the same 108 keys and were current for their own trees (no stale binding, `report_sha256` equal to that parent's review.md).
+2. What the merge changed. `git diff 66c96fbe5^1 66c96fbe5 --stat` lists 109 files, exactly the 109 that `git diff <merge-base> 66c96fbe5^2` lists, and every one of them equals `66c96fbe5^2`'s bytes except the two receipt files. The only paths changed on both sides are the two receipt files. Of the bound files, 15 changed in the merge (the four skill files, `docs/videos/README.md`, `tools/video/automation/{automation.test,flow,prompts,series.test}.mjs`, `tools/video/core/{drama.test,lint,lint.test,schema,state}.mjs` and `tools/video/tts/tts.test.mjs`); each equals `66c96fbe5^2`'s bytes and its bound hash equals main's reviewed value in `66c96fbe5^2`'s review.json. Three bound files (this branch's dub increment) equal `66c96fbe5^1` only, bound to this branch's reviewed value; the other 90 are identical in both parents. No bound file is identical to neither parent.
+3. The report. Splitting everything before "## Reviewed SHA256 bindings" into `## ` sections, every section of both parents appears byte-identically in the merged report, with no extra and no duplicate section: 147 `## ` headings (137 + 146 − 136) and 115 `Verdict:` lines (105 + 114 − 104) before this section. Neither parent dropped or altered a merge-base section. After the heading, the table differs from `66c96fbe5^1` in exactly the 15 main rows and from `66c96fbe5^2` in exactly the three dub rows (`apps/api/app/video_reviews/admin_service.py`, `apps/web/components/admin-video-reviews.test.tsx`, `tools/video/dubs/dubs.test.mjs`).
+
+Ran (in the worktree at `66c96fbe5`, Node on Windows): `node tools/video/long-form/cli.mjs check` before any edit; a script kept outside the repository that hashes the working tree and the blobs of the merge, both parents and the merge base, and compares both receipts and both reports as in 1 to 3; `git ls-files --eol` (LF for both receipt files). The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims: no duration behaviour is reviewed afresh; no test suite beyond review.test.mjs was run; this section binds the merge commit's tree only, and a later change to any bound file or either receipt file needs its own follow-up.
+
+PASS is DURATION_ONLY for the 108 bindings below, none of which changed in this section.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Merge of main (#1482) into the remake-bookends branch: 0 files reviewed afresh (2026-10-14)
+
+Reviewer: `claude-opus-duration-review-20261014a`. Author: `claude-opus-5-5-narrative` (who also made the merge). Scope: DURATION_ONLY verification of the receipt after merge commit `9f73b1300c51c701cb8fb9a0efc15bfa72580bec` ("Merge origin/main (#1482) into the remake-bookends branch") on claude/curio-remake-bookends, pull request #1483. Its first parent `e081578f3` carries this branch's receipt ending in the "Remade cuts taking the current bookends increment"; its second parent `70ecac778` (origin/main, #1482) carries main's receipt ending in the "Merge of main (#1478) into the dub branch" section. Merge base `6fe8db843eeaa7ba6fae4c7064883688b6cc695e` (#1478). When the review began no tracked file was modified in the working tree and `node tools/video/long-form/cli.mjs check` printed only `FAIL: duration review report is stale`. This reviewer wrote none of the merge, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edited only this report and review.json. No file is reviewed afresh.
+
+What was verified:
+
+1. Bindings. All 108 paths in review.json `reviewed_files` hash (SHA-256 of the working-tree file, equal to the merge commit's blob) to their bound values, and the table below lists the same 108 paths with the same hashes; the key set equals `REVIEW_FILES`. Both parents' receipts were current for their own trees (`durationReviewProblems` returns no problem for either parent's receipt, report and blobs).
+2. What the merge changed. `git diff 9f73b1300^1 9f73b1300 --stat` lists 13 files, exactly the 13 that `git diff <merge-base> 9f73b1300^2` lists, and every one of them equals `9f73b1300^2`'s bytes except the two receipt files. The only paths changed on both sides since the merge base are the two receipt files. Of the bound files, three changed in the merge (`apps/api/app/video_reviews/admin_service.py`, `apps/web/components/admin-video-reviews.test.tsx`, `tools/video/dubs/dubs.test.mjs`); each equals `9f73b1300^2`'s bytes and its bound hash equals main's reviewed value in `9f73b1300^2`'s review.json. Two bound files (this branch's bookends increment, `tools/video/core/branding.mjs` and `tools/video/core/branding.test.mjs`) equal `9f73b1300^1` only, bound to this branch's reviewed value; the other 103 are identical in both parents. No bound file is identical to neither parent.
+3. The report. Splitting everything before "## Reviewed SHA256 bindings" into `## ` sections, every section of both parents appears byte-identically in the merged report, in each parent's order, with no extra and no duplicate section: 149 line-anchored `## ` headings (147 + 148 − 146) and 117 line-anchored `Verdict:` lines (115 + 116 − 114) before this section. Neither parent dropped or altered a merge-base section. After the heading, the non-row lines and the row order equal both parents', and the table differs from `9f73b1300^1` in exactly the three main rows named in 2. In review.json only those three values differ from `9f73b1300^1`; its header fields were this branch's until this rebinding.
+
+Ran (in the worktree at `9f73b1300`, Node on Windows): `node tools/video/long-form/cli.mjs check` before any edit; scripts kept outside the repository that hash the working tree and the blobs of the merge, both parents and the merge base, and compare both receipts and both reports as in 1 to 3; `git ls-files --eol` (LF for both receipt files). The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims: no duration behaviour is reviewed afresh; no test suite beyond review.test.mjs was run; this section binds the merge commit's tree only, and a later change to any bound file or either receipt file needs its own follow-up.
+
+PASS is DURATION_ONLY for the 108 bindings below, none of which changed in this section.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Dropping videos linked to YouTube increment: 6 files (2026-10-14)
+
+Reviewer: `claude-opus-duration-review-20261014b`. Author: `claude-opus-5-5-narrative`. Scope: DURATION_ONLY for the six changed bindings below, reviewed at `4698cc878ad5f40f03ba60ce4d98e8baa2097aeb` ("feat(admin): a video linked to a YouTube upload can be dropped too") on claude/drop-youtube-linked, whose parent `e518330f40ac369f21df846fa78a9c1590a56147` (#1485) is origin/main and the merge base. The reviewer wrote none of the commit, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edits only this report and review.json.
+
+Baseline: for each of the six paths, SHA-256 of `git show 4698cc878^:<path>` equals the existing review.json binding and the table row. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these six bindings; the other 102 remain current. The registry remains 108 files. The six files and both receipt files are LF in index and worktree.
+
+- `apps/web/components/admin-video-reviews.test.tsx`: `b58c685c61cfa502157bd43cb33010dd5e3ff17263b99a7d535e591896dfe89c` -> `99dab06254fb537279735bf459a52ff42ebf033aa817e9ed37494d1a27df62ce`.
+- `apps/web/messages/en/admin.json`: `0c70216be4ad74532bcab45690a387bf1985a3182dab8e2a1012af46908940dd` -> `6967d9465bb54700aaf9c9aaab4ee144e982119aeaaf087702fa1d46c3c4cae4`.
+- `apps/web/messages/ja/admin.json`: `ff376aa2443bea8459550d4234f86e2e9ec97c0b3bc6f027e41837801f70ea4d` -> `cb565d623c982bf102dc002a47e1dc14de3e8a2a4b6ecce663fe00861ea8c64a`.
+- `apps/web/messages/ko/admin.json`: `73a3b5206c52f29bc785752326777f98a5034a1677d3170cac4e9b81e6232f2f` -> `32abcf9b5ec6347e70d2ec06bb80f699844eac8a820e66fcd3aef985b92e8f89`.
+- `apps/web/messages/zh-CN/admin.json`: `cadfb6bb968b2b3f825973f6bd4974d6f7e38bda575c4a1772e97121fbc6b38b` -> `33c832873e23fc195797fd59c6e7af4c29f935551aab63284031b0561e269bee`.
+- `apps/web/messages/zh-TW/admin.json`: `e1787c72f2dc5f46141411a3efd0305d10833bcc1101dfe2d6c14aae564e5d25` -> `742a13c2b1005a74f0b991134663828a9fa6122c7b8ab7b1518eb251df3e7036`.
+
+What the change is: on /admin/videos the "drop this video" panel was hidden whenever a project had a `youtube_video_id`; the commit shows it for linked videos too and adds one line saying that dropping here leaves YouTube as it is. The commit touches seven files (+34/−3). The unbound `apps/web/components/admin-video-reviews.tsx` (+8/−3) gives `DropVideo` an `onYoutube` prop, renders `t("dropYoutubeNote")` under `dropDetail` when it is true, widens the doc comment, and replaces the render condition `manage.allowed && !dropped && !project.youtube_video_id` with `manage.allowed && !dropped`, passing `onYoutube={Boolean(project.youtube_video_id)}`. The drop request itself (endpoint, body, confirmation) is unchanged, and no file under tools, apps/api or docs differs between `4698cc878^` and `4698cc878`.
+
+Findings, locale files (`apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json`, +1/−0 each, at line 2259 in every language): flattening both revisions gives 3,192 -> 3,193 keys in each language; the only added key is `admin.videoReviews.dropYoutubeNote`, no key is removed and no existing value changes. The new value contains no digit and no unit of time; it says the video is linked to a YouTube upload and must be deleted or made private in Studio by hand. `targetMinutes`, `minutesEach` and every other length string are byte-identical.
+
+Findings, regression test (`apps/web/components/admin-video-reviews.test.tsx`, +21/−0): one new test, "offers to drop a video linked to YouTube too, saying YouTube itself is left alone", inserted before the existing drop test. It renders a summary with `youtube_video_id` set, opens the drop panel, expects the zh-TW note, fills the reason and checks that exactly one POST goes to `/admin/videos/ai-model-choice/drop`. No existing line is removed or edited (55 -> 56 line-anchored `it(` calls); no existing assertion, fixture length or timing moves.
+
+Duration identifiers (case-insensitive occurrences of `target_minutes`, `MIN_EPISODE`, `minEpisodeMinutes`, `VIDEO_MIN_EPISODE_MINUTES`, `duration`, `seconds`, `minutes`, `_minutes`, `total_frames`, `frames`, `runtime`, `windowLimit`, `atempo`, `tempo`, `stretch`, `overrun`), `4698cc878^` -> `4698cc878`: admin-video-reviews.test.tsx 185 -> 185; en/admin.json 138 -> 138; ja, ko, zh-CN and zh-TW admin.json 76 -> 76 each. The added lines of all seven changed files contain none; the one match in the admin-video-reviews.tsx diff for `length` is an unchanged context line (`past.length`).
+
+Duration questions: the panel decides only whether an admin may mark a project dropped; it reads, writes or displays no length, floor, target, frame count or runtime field, and nothing in this diff builds, measures or re-times a video. No duration rule, check or reachability changes.
+
+Ran (in the worktree at `4698cc878`, Node on Windows):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the six stale bindings and exited 1;
+- `git show 4698cc878` read whole, including the unbound admin-video-reviews.tsx; `git diff --stat 4698cc878^ 4698cc878 -- tools apps/api docs` (empty);
+- SHA-256 of the six `4698cc878^` blobs and the working-tree files against review.json and the table; `git ls-files --eol`;
+- a script kept outside the repository that flattens both revisions of the five locale files and compares key sets and values, as above; the identifier counts with `grep -Eio` over both revisions and the added lines;
+- in apps/web, `npx vitest run components/admin-video-reviews.test.tsx`: 1 file, 79 of 79 tests pass, the new test among them.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge whether a linked video should be droppable, the wording or translation of the note, or the unbound component beyond reading its diff; the page was not opened in a browser and no video was dropped.
+- No API test, ruff, mypy, lint, i18n check or typecheck was run.
+- This increment binds the tree at `4698cc878` only: a later commit or merge that changes any of the six files, or either receipt file, needs its own follow-up. The 102 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the six rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## 奇聞檔案局 series-look gate increment: 3 files (2026-10-14)
+
+Reviewer: `claude-opus-duration-review-20261014c`. Author: `claude-opus-5-5-curio-skill`. Scope: DURATION_ONLY for the three changed bindings below, reviewed at `e322374ebf1027a3c3455282ba6cf80fd47aa5b6` ("feat(video): 奇聞檔案局 episodes keep the series look (skill and lint gate)") on claude/curio-series-skill, whose parent `70ced5b725414e5117783ef113bea02840e46b97` (#1486) is origin/main and the merge base. The reviewer wrote none of the commit, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edits only this report and review.json.
+
+Baseline: for each of the three paths, SHA-256 of `git show e322374eb^:<path>` equals the existing review.json binding and the table row. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these three bindings; the other 105 remain current. The registry remains 108 files. The three files, the new unbound `tools/video/core/curio.mjs` and both receipt files are LF in index and worktree.
+
+- `.agents/skills/youtube-video/SKILL.md`: `16720e94c465df18cf106234237215f4e9d25df4147990f9d6a8f76f5ce2f988` -> `f01125027ad63fce027f7cc649c01ac0406c29b1a5d7377706b11988015c1384`.
+- `.claude/skills/youtube-video/SKILL.md`: `16720e94c465df18cf106234237215f4e9d25df4147990f9d6a8f76f5ce2f988` -> `f01125027ad63fce027f7cc649c01ac0406c29b1a5d7377706b11988015c1384`.
+- `tools/video/core/lint.mjs`: `ec6490a252bb26ab520ccfe041404aaf40375f68c220dacaa0b1819d23fe419d` -> `6cc1c1ee9cb425303d7a9f2ffa2d6aa5bddc3fa82c72314ede0060703316a386`.
+
+What the change is: a 奇聞檔案局 episode (slug starting `curio-`) must keep the series look. The commit touches eleven files (+408/−4); besides the three bound ones it adds the `curio-episode` skill (both mirrors), `tools/video/core/curio.mjs` and its test, a look.md note, two task files and an AGENTS.md line, all unbound. No file under tools/video/qa or tools/video/long-form, nor core/duration.mjs, core/schema.mjs or core/timeline.mjs, nor anything under apps/api, differs between `e322374eb^` and `e322374eb`.
+
+Findings, skill mirrors (`.agents/skills/youtube-video/SKILL.md` and `.claude/skills/youtube-video/SKILL.md`, +1/−0 each, byte-identical before and after): one new row in the "你要做的 / 讀" table, after the formats row, sending any `curio-` episode to the `curio-episode` skill for series look, route, illustration prompts and acceptance, and the card limit. The row contains no digit, length or unit of time. Rule 10 (the 8-minute floor for everything but drama and Shorts, no upper limit, `target_minutes` as the aim), the formats row and the script-writing row (opening condensation 30–60 seconds) are unchanged.
+
+Findings, lint (`tools/video/core/lint.mjs`, +4/−0): one import, `import { curioProblems } from "./curio.mjs";`, and, at the top level of `lintVideo` between the narrative block and the `isLongAnime` block, a two-line comment and `for (const problem of curioProblems(doc)) error(problem.path, problem.message);`. It reads `doc` only, writes no variable that any later check reads (`timeline`, `doc.runtime_spec`, `target`, `seconds` are untouched), and can only add errors. No existing line is removed or edited.
+
+Findings, the new unbound `tools/video/core/curio.mjs` (read whole): `curioProblems(doc)` returns nothing unless the slug starts `curio-`; otherwise it checks that `look` is present, that `resolveLook(doc.look).style` equals the `cute-mystery` preset's style, that `look.negative` is empty, that at least 70% of body scenes are `isShot` illustrations, and that no more than three non-shot scenes run in a row. Its `FRAMES` set (`title`, `chapter`, `outro`) is a list of template names used only to leave bookend cards out of the illustration share; it counts scenes, never frames, seconds or minutes, and it changes nothing about what counts toward the body for length. It imports `isShot` and `resolveLook` from drama.mjs, both pure readers. No time, length, pace, padding or target is read or checked.
+
+Duration identifiers (case-insensitive occurrences of `target_minutes`, `MIN_EPISODE`, `minEpisodeMinutes`, `VIDEO_MIN_EPISODE_MINUTES`, `duration`, `seconds`, `minutes`, `total_frames`, `frames`, `runtime`, `windowLimit`, `atempo`, `tempo`, `stretch`, `overrun`, `pace`, `padding`), `e322374eb^` -> `e322374eb`: lint.mjs 82 -> 82; youtube-video/SKILL.md 1 -> 1 (each mirror). The added lines of the bound files contain none. In curio.mjs the only two matches are the bookend template set `FRAMES` (declaration and use), as above.
+
+Duration questions: the eight-minute body floor (`MIN_EPISODE_MINUTES`), `target_minutes` handling, lint's pacing and opening-condensation window, padding, what counts toward the body and whether the bookends count toward it are all untouched. The new gate decides only the look and the share and runs of illustrations for `curio-` slugs. No duration rule, check or reachability changes.
+
+Ran (in the worktree at `e322374eb`, Node on Windows):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the three stale bindings and exited 1;
+- `git diff origin/main...HEAD` for the three bound files; `tools/video/core/curio.mjs` read whole; `git diff --stat e322374eb^ e322374eb -- tools/video/qa tools/video/long-form tools/video/core/duration.mjs tools/video/core/schema.mjs tools/video/core/timeline.mjs apps/api` (empty);
+- SHA-256 of the three `e322374eb^` blobs and the working-tree files against review.json and the table; `git ls-files --eol`;
+- the identifier counts with `grep -Eio` over both revisions, the added lines and curio.mjs;
+- `node --test tools/video/core/curio.test.mjs`: 5 of 5 pass; `node --test tools/video/core/lint.test.mjs`: 46 of 46 pass.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge the series look, the 70% share, the three-card limit, the `curio-episode` skill or the look.md note beyond confirming they set no length; no episode was linted, rendered or measured.
+- No web test, API test, ruff, mypy, i18n check or typecheck was run, and `npm run test:tools` was not run.
+- This increment binds the tree at `e322374eb` only: a later commit or merge that changes any of the three files, or either receipt file, needs its own follow-up. The 105 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the three rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Shared-skill lessons increment: 3 files (2026-10-14)
+
+Reviewer: `claude-opus-duration-review-20261014d`. Author: `claude-opus-5-5-share-lessons`. Scope: DURATION_ONLY for the three changed bindings below, reviewed at `f131fda40d467e04d88253c0162009c95928fb19` ("docs(skills): share lessons that lived only in one agent's notes") on claude/share-memory-lessons, whose parent `bda1755ff049dbb7c89db858a080bcb788767427` (#1500) is origin/main and the merge base. The reviewer wrote none of the commit, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edits only this report and review.json.
+
+Baseline: for each of the three paths, SHA-256 of `git show f131fda40^:<path>` equals the existing review.json binding and the table row. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these three bindings; the other 105 remain current. The registry remains 108 files. The three files and both receipt files are LF in index and worktree.
+
+- `.agents/skills/youtube-video/SKILL.md`: `f01125027ad63fce027f7cc649c01ac0406c29b1a5d7377706b11988015c1384` -> `f852e9fa4b283a73152003793daba1d42a2cab14d2b7f9fb16ee68e48edbb726`.
+- `.agents/skills/youtube-video/references/automated.md`: `135bd217d344df2a5a033cef30cbc3181c4b268d3f96c689d4b4560390de40db` -> `b61781312530de1895f381ea57ec26cc7f1cf31c89f9d5969c9aeb8221759cc1`.
+- `.claude/skills/youtube-video/SKILL.md`: `f01125027ad63fce027f7cc649c01ac0406c29b1a5d7377706b11988015c1384` -> `f852e9fa4b283a73152003793daba1d42a2cab14d2b7f9fb16ee68e48edbb726`.
+
+What the change is: lessons that lived only in one agent's notes are written into the shared skills. The commit touches twenty files (+40/−12), all under `.agents/skills/` and `.claude/skills/`; besides the three bound ones they are notes in the animation-production, content-pipeline, deploy, dev-and-ci, prod-host-ops and task-board skills and youtube-video/references/publish.md, all unbound. No file under tools, apps or docs/videos differs between `f131fda40^` and `f131fda40`.
+
+Findings, skill mirrors (`.agents/skills/youtube-video/SKILL.md` and `.claude/skills/youtube-video/SKILL.md`, +1/−1 each, byte-identical before and after): the paragraph after the automated-route stage table gains one sentence: a video an agent pushes by hand from its own machine (not made by the host worker) always goes to the final gate with `review-push --gate final --manual-review` so the owner looks at it, because one such film passed three gates automatically in 43 minutes and the owner judged it worthless, and the server cannot yet tell the two apart (ticket `tasks/open/2026-10-11-hand-driven-film-approved-on-its.md`). The "43 minutes" is the elapsed time of that approval, not a video length. Rule 10 (the 8-minute floor for everything but drama and Shorts, no upper limit, `target_minutes` as the aim), the formats row, the script-writing row (opening condensation 30–60 seconds) and the curio row are unchanged.
+
+Findings, `.agents/skills/youtube-video/references/automated.md` (+3/−1): the 413 `video_review_file_too_large` bullet keeps every number and gains a reason after "do not re-run an approved `assemble` to shrink the file": it re-encodes, the hash changes and the final approval is lost. Two new bullets follow the language-panel bullet: run `review-pull` before taking stock of or writing for an existing video, since the owner's choices (which outline, what was approved) live only on the site; and an approved video that needs rewriting gets a new slug while the old project is stopped in the admin (owner decision 2026-10-11). Neither bullet names a length, floor, target, pace or padding. The file-size figures, the 8 Mbit/s cap, the 1.5 GB and 20 GB limits and the 7-day retention are byte-identical to the previous revision.
+
+Duration identifiers (case-insensitive occurrences of `target_minutes`, `MIN_EPISODE`, `minEpisodeMinutes`, `VIDEO_MIN_EPISODE_MINUTES`, `duration`, `seconds`, `minutes`, `total_frames`, `frames`, `runtime`, `windowLimit`, `atempo`, `tempo`, `stretch`, `overrun`, `pace`, `padding`), `f131fda40^` -> `f131fda40`: youtube-video/SKILL.md 1 -> 1 (each mirror); automated.md 12 -> 12. The added lines of the three bound files contain none.
+
+Duration questions: the eight-minute body floor, `target_minutes`, pace, padding, what counts toward the body and whether the bookends count toward it are all untouched. The new text is about which gate a hand-driven film takes, why an approved `assemble` is not re-run, pulling the owner's choices first and opening a new slug for a rewrite. No duration rule, check or reachability changes.
+
+Ran (in the worktree at `f131fda40`, Node on Windows):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the three stale bindings and exited 1;
+- `git show f131fda40` for the three bound files and the stat of the whole commit, plus the dev-and-ci duration-receipt.md diff; `git diff --stat f131fda40^ f131fda40 -- tools apps docs/videos` (empty);
+- SHA-256 of the three `f131fda40^` blobs and the working-tree files against review.json and the table; `git ls-files --eol`;
+- the identifier counts with `grep -Eio` over both revisions and the added lines, and the numbers in the added lines.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge the lessons themselves, the `--manual-review` rule, the new-slug rule or the unbound skill notes beyond confirming the three bound files set no length; no video was built, pushed or measured.
+- No web test, API test, ruff, mypy, i18n check or typecheck was run, and `npm run test:tools` was not run.
+- This increment binds the tree at `f131fda40` only: a later commit or merge that changes any of the three files, or either receipt file, needs its own follow-up. The 105 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the three rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## AI storytelling rules increment: 2 files (2026-10-15)
+
+Reviewer: `claude-opus-duration-review-20261015a`. Author: `claude-opus-5-5-ai-storytelling`. Scope: DURATION_ONLY for the two changed bindings below, reviewed at `cd37d0cf8bc6c1ae65d2f63d7029fe05be69dcb5` ("Merge remote-tracking branch 'origin/main' into claude/ai-video-storytelling") on claude/ai-video-storytelling, whose merge base with origin/main is origin/main itself, `e8d8a8fa18fc2974bab5aa4ada426eadb709fd8d` (#1498). The two bound files changed in `6980582caea4346d9c679b8093122c935348700b` ("feat(video): AI and tech videos tell one story with one protagonist") and `93a7b81eebedc6b416da15af288bb791555885cd` ("feat(video): a term is explained when the protagonist meets it"). The reviewer wrote none of the change, is neither the author nor any reviewer who signed the sections above, has signed no earlier increment, and edits only this report and review.json.
+
+Baseline: for each of the two paths, SHA-256 of `git show origin/main:<path>` equals the existing review.json binding and the table row. Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these two bindings; the other 106 remain current. The registry remains 108 files. The two files and both receipt files are LF in index and worktree.
+
+- `tools/video/automation/prompts.mjs`: `11b023d69f7616e04d71b18bb775cb06964b7729b9ee1a1ea1636d93aca53abf` -> `7dc54920e590ffa674fc6436dacf96df5da477cd749f1be52877d89a8b500dbc`.
+- `tools/video/automation/series.test.mjs`: `cb89232721039ce13a8a371ff03ecddeb8d647f02edcb9d4f80de0e7c0a43261` -> `d133c2caf95e9919aa1df2f0c23dee80d2d20a47a5d8c1ae85e7506698399425`.
+
+What the change is: AI and tech videos tell one story with one protagonist. The branch touches twelve files (+2461/−24) against origin/main; besides the two bound ones they are `NARRATIVE_RULES` in `tools/video/automation/register.mjs` (+48), two new questions (`one_thread`, `no_detour`) in `NARRATIVE_PANEL` in `tools/video/core/narrative.mjs`, their tests and prompt pins, the youtube-video script-writing reference, a proof video's notes, brief and video.json, and a task file, all unbound. No file under tools/video/qa or tools/video/long-form, nor core/duration.mjs, core/schema.mjs, core/timeline.mjs or core/lint.mjs, nor anything under apps/api, differs between origin/main and HEAD.
+
+Findings, `tools/video/automation/prompts.mjs` (+2/−0): the slides planner's outline template gains two lines after each option's 一行說明: `故事線：<事件／實測／疑問／抉擇（選一）>` and `主角：<the one person, team, image, bill or project carried from the opening to the close>`. Neither line names a length, a minute, a chapter count, pace or padding. `NARRATIVE_RULES` is still interpolated from register.mjs in the same places; every other line of the file is byte-identical to the previous revision, so whatever it says about `target_minutes`, the body floor, the opening-condensation window and chapter or scene counts is unchanged.
+
+Findings, `tools/video/automation/series.test.mjs` (+3/−2): the comment above `EXPLAINER_STAGE_PINS` gains the 2026-10-15 date for the writer's instructions (NARRATIVE_RULES: one story shape, one protagonist), and the explainer writer's instructions digest is re-pinned from `11ec620a…` to `f6abf3ec…`; its payload digest, and the planner and verifier rows, are unchanged. The digest moves only because the interpolated `NARRATIVE_RULES` text grew. No assertion about minutes, frames, pace or padding is added, removed or edited.
+
+Unbound context read for reachability: the new `NARRATIVE_RULES` lines (register.mjs) ask for one story shape and one protagonist, at most one metaphor, cutting sections that do not move the protagonist's question, one-line definitions, caveats attached to their claim, and no lists read out. Their only digits are the 2026-10-15 date and a chapter number in an example. "Cut" here is about what a scene says, not how long the video runs: the body floor and the target are still enforced by lint and the long-form gates, which this branch does not touch. The two new panel questions are yes/no reads of the thread and detours and set no length.
+
+Duration identifiers (case-insensitive occurrences of `target_minutes`, `MIN_EPISODE`, `minEpisodeMinutes`, `VIDEO_MIN_EPISODE_MINUTES`, `duration`, `seconds`, `minutes`, `total_frames`, `frames`, `runtime`, `windowLimit`, `atempo`, `tempo`, `stretch`, `overrun`, `pace`, `padding`), origin/main -> HEAD: prompts.mjs 94 -> 94; series.test.mjs 85 -> 85. The added lines of the two bound files contain none.
+
+Duration questions: the eight-minute body floor, `target_minutes`, pace and characters per minute, padding, what counts toward the body, whether the bookends count toward it and the chapter-length rules are all untouched. The new text decides the story's shape, its protagonist and what it leaves out, and re-pins a prompt digest. No duration rule, check or reachability changes.
+
+Ran (in the worktree at `cd37d0cf8`, Node on Windows):
+
+- `node tools/video/long-form/cli.mjs check` before any edit, which printed the two stale bindings and exited 1;
+- `git diff origin/main...HEAD` for the two bound files, for register.mjs and for narrative.mjs; `git diff --stat origin/main...HEAD -- tools/video/qa tools/video/long-form tools/video/core/duration.mjs tools/video/core/schema.mjs tools/video/core/timeline.mjs tools/video/core/lint.mjs apps/api` (empty); `git ls-remote origin refs/heads/main` to confirm origin/main is current;
+- SHA-256 of the two origin/main blobs and the working-tree files against review.json and the table; `git ls-files --eol`;
+- the identifier counts with `grep -Eio` over both revisions and the added lines, and the digits in the added register.mjs lines;
+- `node --test tools/video/automation/prompts.test.mjs tools/video/automation/explainer-series.test.mjs tools/video/automation/series.test.mjs tools/video/core/narrative.test.mjs`: 129 passed, 0 failed, 0 skipped.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not judge the story shapes, the one-protagonist and one-metaphor rules, the two panel questions or the proof video beyond confirming the two bound files set no length; no video was built, linted, rendered or measured.
+- No web test, API test, ruff, mypy, i18n check or typecheck was run, and `npm run test:tools` was not run.
+- This increment binds the tree at `cd37d0cf8` only: a later commit or merge that changes either of the two files, or either receipt file, needs its own follow-up. The 106 bindings this change left alone are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## PR #1508 pilot budget call accounting increment: 1 file (2026-10-15)
+
+Reviewer: `codex-pr-review-1508-duration`. Author: `codex-story-budget-cap`. Scope: DURATION_ONLY for `apps/api/app/video_automation/judge.py` at branch head `152c5d286949860c97840dcd8d33da14f5401de5`. The reviewer did not write the implementation. The merge base with current origin/main is `7bf6278d6548707606eb55dbe37fba1006f3774d`; main later advanced to `9306ac4c114f960ead4c3d89464c7944a1aa82c2` (#1506), which changed no registered duration-review file or receipt.
+
+Baseline: the SHA-256 of `git show 7bf6278d6548707606eb55dbe37fba1006f3774d:apps/api/app/video_automation/judge.py` is `cbf84784d50b21206fd14b5e5bd944d3649170f0985247f22f0006e2054c43d7`, exactly the existing review.json binding and table row. The working-tree file equals HEAD and hashes to `b775f630da8156ff293ded7e9574d7b74c66b96dcb8cbe58ec3ef176f0ebb2f8`. Before this increment, `node tools/video/long-form/cli.mjs check` reported only this stale binding. The other 107 bindings remain current; the registry still has 108 paths. All three relevant files use LF in the index and working tree.
+
+Findings: the 21 additions and seven deletions in judge.py pass a usage callback through the Jev outline and policy judges, and disable an automatic 429/529 retry when a pilot reservation covers the call. They do not change a prompt, outline option, policy question, video stage, target, chapter, measured runtime, frame count, pace, padding or body floor. No added or removed line contains a duration identifier (`target_minutes`, `MIN_EPISODE`, `VIDEO_MIN_EPISODE_MINUTES`, `duration`, `seconds`, `minutes`, `frames`, `runtime`, `pace` or `padding`). The unchanged duration implementation and its existing tests retain their prior bindings. The review covers the duration effect of this delta only; it does not assess the budget amount, vendor receipts, paid-call safety, film quality or production readiness.
+
+Ran: the merge-base and HEAD byte hashes against review.json and the table; `git diff 7bf6278d6548707606eb55dbe37fba1006f3774d HEAD -- apps/api/app/video_automation/judge.py`; the registered-file intersection; `git ls-files --eol`; and the pre-increment CLI check. The CLI check and `node --test tools/video/long-form/review.test.mjs` are run again after rebinding, with their results reported in the hand-off. No video was generated or measured for this review.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## PR #1508 pilot budget judge compatibility increment: 1 file (2026-10-15)
+
+Reviewer: `codex-pr-review-1508-duration`. Author: `codex-story-budget-cap`. Scope: DURATION_ONLY for the judge.py delta from `fd6fab5798e138826fafffa4a4014643f272cb34` to `671e35f44ebaff22e90bc66f4dd3a3da7ab2b61e`. This follows the independent PR #1508 receipt increment immediately above. The reviewer did not write the implementation.
+
+Baseline: SHA-256 of `git show fd6fab5798e138826fafffa4a4014643f272cb34:apps/api/app/video_automation/judge.py` is `b775f630da8156ff293ded7e9574d7b74c66b96dcb8cbe58ec3ef176f0ebb2f8`, exactly the binding in review.json and the table before this follow-up. The committed current file hashes to `6e6cccb6ede540957c1815c2daff10437db37f5d4b46e55e458ac91f21941b54`. Before rebinding, the CLI check reported only this stale binding; the other 107 of 108 remain current. The source and both receipts use LF in the index and working tree.
+
+Findings: the 19 additions and 15 deletions preserve the five-argument `_ask` call for the existing no-callback route and pass the sixth usage callback only when supplied. The story, cut, explainer and other question sets and their verdict readers are selected as before. No prompt, target minutes, eight-minute body floor, measured runtime, frames, pacing, padding or chapter length changes. The added and removed lines contain no duration identifier. Other registered duration files and tests retain their prior bindings. This review covers the effect on duration only; it does not judge the API test repairs, budget amount, vendor accounting or film readiness.
+
+Ran: prior and current committed byte hashes against the previous receipt; `git diff fd6fab5798e138826fafffa4a4014643f272cb34 671e35f44ebaff22e90bc66f4dd3a3da7ab2b61e -- apps/api/app/video_automation/judge.py`; `git ls-files --eol`; and the pre-increment CLI check. The CLI check and `node --test tools/video/long-form/review.test.mjs` are run after rebinding, with results in the hand-off.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+
+## PR #1499 A21 source correction increment: 1 file (2026-10-14)
+
+Reviewer: `codex-pr-review-1499-duration`. Author: `codex-8a78`. Scope: DURATION_ONLY for `docs/videos/long-form/plans.json` after the A21 Pringles source correction on `codex/brand-stories-five-20261014`. The reviewer did not author the rebuilt catalog and edited only this report and `review.json`.
+
+Baseline: merge base `70ced5b725414e5117783ef113bea02840e46b97` with `origin/main`. SHA-256 of `git show <merge-base>:docs/videos/long-form/plans.json` is `f1d2b4d17a3c9ee0271b5af88c16d5e2d3bf2faaea5d1d90c4c1da7c789044c3`, exactly the old `review.json` binding and table row. The rebuilt working-tree file hashes to `dddfc89c3e72887d3dec9a1de7a3b61d89bd2d09341158ca4b2185334c991f53`. Before rebinding, `checkDurationReview()` reported only this stale binding; the other 107 reviewed files remain bound.
+
+Findings: `git diff` for this file is exactly two lines replaced by two lines. The `stories.json` source-file SHA-256 changes from `6f1e4619c7bf5847b1b67a21b5e97dd015ccef939fbf19c098c33178840dce26` to `c8fb18102634459c62f556022139e0bdc733ef432321c412ff810faed0ac0194`; the brand-story A21 `source_record_sha256` changes from `abefdec07ca4b35677d0bb0fb9ad0e6be8ccfacc553515f1c9232a5ce6ee75d0` to `31b8aa09367e67853c3b673e4a248db65f91617ec34d4d6f07bac10490edbfd5`. The A21 `target_seconds` remains 780, `minimum_content_seconds` remains 480 and `minimum_final_seconds` remains 480. No entry order, 600-second target, 8-minute floor, `target_minutes`, runtime spec, action seconds, covered status, measured QA evidence or duration policy changes in this diff.
+
+Ran: inspected `REVIEW_FILES`, `review.mjs`, `review.test.mjs`, the old receipt and report; compared the merge-base Git blob SHA-256 with the old binding, read the full two-hunk catalog diff, hashed the rebuilt file bytes, confirmed LF in index and worktree, and ran `checkDurationReview()` before rebinding. The CLI check and `review.test.mjs` are run after rebinding; their results are in the hand-off.
+
+Non-claims: this is a duration-only review of one generated catalog file. It does not independently approve the A21 factual correction, a complete script, media, playback, upload or publication; the other 107 bindings are not reviewed afresh. A later catalog rebuild or merge that changes a bound file needs another increment.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+
+## PR #1499 merge with #1500 and #1501 follow-up: 5 bindings (2026-10-15)
+
+Reviewer: codex-pr-review-1499-duration-merge-20261015. Author: codex-8a78. Scope: DURATION_ONLY reconciliation after rebasing PR #1499 onto main at 9a0fb3cc8277bc296b071bec5d2e48bc82e0332e. This independent reviewer edits only review.md and review.json.
+
+Baseline: Git index stage 1 is the common report and receipt, stage 2 is main with the #1500 series-look and #1501 shared-skill increments, and stage 3 is the #1499 A21 increment. Both side reports match their report_sha256 receipts, and all 108 table rows on each side match their own receipt. The common report prefix and all three side-specific increments are retained byte-for-byte in this report.
+
+Findings: of 108 bound files, 103 have the same SHA-256 on both sides and still match the worktree. Four differ and the worktree bytes equal the reviewed main bindings: .agents/skills/youtube-video/SKILL.md (f852e9fa4b283a73152003793daba1d42a2cab14d2b7f9fb16ee68e48edbb726), .agents/skills/youtube-video/references/automated.md (b61781312530de1895f381ea57ec26cc7f1cf31c89f9d5969c9aeb8221759cc1), .claude/skills/youtube-video/SKILL.md (f852e9fa4b283a73152003793daba1d42a2cab14d2b7f9fb16ee68e48edbb726), and tools/video/core/lint.mjs (6cc1c1ee9cb425303d7a9f2ffa2d6aa5bddc3fa82c72314ede0060703316a386). The fifth, docs/videos/long-form/plans.json (dddfc89c3e72887d3dec9a1de7a3b61d89bd2d09341158ca4b2185334c991f53), equals the reviewed #1499 binding. No bound worktree file differs from both sides. The A21 target remains 780 seconds and both measured minimums remain 480 seconds; this reconciliation changes no duration rule or production evidence.
+
+Ran: read all three conflict-stage blobs, checked both prior report hashes and 108-row tables, compared every current bound file SHA-256 with both receipts, and checked the five differing paths against their reviewed side. The CLI check and review.test.mjs are run after rebinding; results are in the hand-off.
+
+Non-claims: this is a receipt merge, not a fresh factual review of A21, the main skill and look changes, any full script, media, playback, upload or publication. The earlier independent scope notes remain attached to their original revisions.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
+## PR #1499 rebased brand-story route: 3 bindings (2026-10-15)
+
+Reviewer: `codex-post-rebase-duration-audit-20261015`. Author: `codex-8a78`. Scope: DURATION_ONLY for `apps/api/app/video_automation/schemas.py`, `apps/api/app/video_automation/series.py`, and `tools/video/core/drama.mjs` after rebasing the brand-story branch onto `origin/main` at `c4911a0598944b9a4409584b3fa6a069f4d8a70a`. The reviewer inspected the changes independently and did not edit these files or this receipt.
+
+Baseline: before this increment, `node tools/video/long-form/cli.mjs check` named exactly these three stale bindings. The other 105 bindings matched the worktree. The branch changes to these files are the complete `git diff origin/main...HEAD` for each path. The new SHA-256 values are `d1af5e4597fd8135245bf95fee4a58779d652069ba69efae2d304b4a2493e050` (schemas), `fe30ad598feadbb9329f737fe48218b3f5d1750763304f283111f56d52a45128` (series), and `1977b6c69471aa60923eb18ddfd6ef0323284bef96d9cf3a88c5ff5d220dcd83` (drama).
+
+Findings: the API schema adds the strict `cute-mystery` look and requires that route to use 10 minutes, MiniMax `image-01`, and `custom` narrative style. The series PATCH checks those fields together before persisting a route change. Neither changes the drama 8-minute cap, story 20-minute schema cap, or the other duration fields. `isExplainer` now excludes `category=story` even when the picture look is cute-mystery, so a brand story keeps its cast and no longer enters the explainer draft's 8-minute estimate floor. `isKnowledgeLongform` still covers stories, and duration/QA still require at least 480 seconds of actual narration body and final video. The 10-minute target remains fixed by the new API and worker route. This is a classification and draft-gate change, not a reduction of measured duration acceptance.
+
+Ran: the independent reviewer inspected all three diffs, their SHA-256 values, the duration gate call sites and the 108-key receipt. The API's focused story import/series suite passed 15 tests after rebase. The CLI and duration receipt tests are rerun after rebinding; their result is in the hand-off.
+
+Non-claims: this duration review does not approve a complete script, visual quality, paid generation, media playback, upload or publication. Since `isExplainer` also controls a keyframe resolution branch, the cute story's 1K image clarity remains a media acceptance check for the A01/B18 pilot. The other 105 bindings are not reviewed afresh.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## PR #1499 pilot flagged-audio hold: 1 binding (2026-10-15)
+
+Reviewer: `codex-pilot-script-gate-audit-20261015`. Author: `codex-8a78`. Scope: DURATION_ONLY for `tools/video/automation/flow.mjs`. I independently read the exact `HEAD^` to `HEAD` diff and the narration control flow, and did not author the flow change. Before this increment, the CLI reported only this stale binding; the other 107 reviewed file hashes and the prior report hash matched actual bytes.
+
+The flow change imports the two pilot script references and skips the generic audio listener's direct `video.json` rewrite when either pilot still has flagged narration after same-script retakes. It sends that audio to review with an explanatory message. Other slugs retain the existing bounded rewrite path. The patch does not alter the target minutes, duration bands, timeline calculation, measured body or final-cut acceptance, or the retake limit. A rejected pilot recording resumes the separately reviewed chapter and script process; this duration-only increment does not approve the resulting words or media. The new `flow.mjs` SHA-256 is `f8cc508413255ac262b2009a5d6c8b2df00abe60658f8c1b11beecf66ecdf892`.
+
+Verdict: PASS — DURATION_ONLY for this one flow binding; required duration fixes remaining: none. The other 107 bindings are not reviewed afresh.
+
+## Local integration preflight for PR #1508 then PR #1499: six bindings (2026-10-15)
+
+Reviewer: `codex-combined-preflight`. Authors: `codex-story-budget-cap` and `codex-8a78`. Scope: DURATION_ONLY for the local combination of budget head `2b4591064cf4fb8bb059b26afd6e2ccdbed974cf` and brand head `ae5a9bda3d1e59a43a5b6f6f70e919a6146423e9` on main `18128c175fb6c0840026faca144eea9332fa392e`. The reviewer authored neither implementation. This is a local rehearsal; merge, CI, deploy, paid production and owner film acceptance have separate gates.
+
+The two receipts each bind 108 paths. Exactly 102 hashes are equal across them. Six differ: `apps/api/app/video_automation/judge.py` uses the budget receipt's reviewed bytes; `apps/api/app/video_automation/schemas.py`, `apps/api/app/video_automation/series.py`, `docs/videos/long-form/plans.json`, `tools/video/automation/flow.mjs` and `tools/video/core/drama.mjs` use the brand receipt's reviewed bytes. Every one of the 108 files in the local combined tree hashes to one of the two reviewed versions. No bound implementation file has novel merged bytes; the only merge conflicts were this report, its receipt and the budget task ticket. The two existing independent PR increments above retain their original duration findings. The unchanged brand route still targets 10 minutes and preserves the 480-second measured narration and final-video floor. The budget callback does not change that duration gate.
+
+I reconciled the report sections and 108 binding table with the actual combined file bytes, retaining both sides' prior review increments. The receipt below binds this new report exactly. Functional tests and the duration CLI are rerun after this reconciliation. This verdict covers duration binding of this local tree only; it does not approve spending, provider behavior, actual playback, upload or publication.
+
+Verdict: PASS - DURATION_ONLY for the local combined tree; required duration fixes remaining: none.
+
+## PR #1499 rebased onto merged budget main: 108 bindings (2026-10-15)
+
+Reviewer: `codex-combined-preflight`. Authors: `codex-story-budget-cap` and `codex-8a78`. Scope: DURATION_ONLY for the actual PR #1499 branch rebased onto `origin/main` at `42fbfb40d147811ab4ae825e05ef11c3f85d85ea`; the rebased implementation head before this receipt was `f942233f31b5c4f826091a6ecb4e8598fde2ab82`. This reviewer authored neither implementation.
+
+The actual rebase reconciled the same three conflicting paths as the isolated integration rehearsal above: the budget task ticket takes the already-merged main version, while this report and receipt combine the valid budget and brand duration bindings. I recomputed SHA-256 for all 108 registered files in the rebased worktree; every value equals the independently reconciled local preflight receipt. Of the original single-PR receipts, 102 values are equal. The six differences use the budget-reviewed `apps/api/app/video_automation/judge.py` and the brand-reviewed `apps/api/app/video_automation/schemas.py`, `apps/api/app/video_automation/series.py`, `docs/videos/long-form/plans.json`, `tools/video/automation/flow.mjs`, and `tools/video/core/drama.mjs`. No bound implementation byte was synthesized by conflict resolution. The 10-minute brand target and measured 480-second narration-body and final-video floor remain as reviewed.
+
+This is a binding reconciliation for the rebased source. It does not accept an actual generated voice, illustration, cut, playback, paid call, import, upload, or publication. Functional test and CLI results follow separately from this stable report hash.
+
+Verdict: PASS - DURATION_ONLY for the actual rebased tree; required duration fixes remaining: none.
+
+## Branch brand-story-switchable-cc-dubs increment: 14 files (2026-10-15)
+
+Reviewer: `story-cc-review`. Author: `codex-gpt6`. Scope: DURATION_ONLY for the 14 changed registered files in `a1b6b1149c9086478e2d3954f5d19aab7eb5301a..88b92fab8566c4b64e1c7a86b168d5b9a0891bf2`; this reviewer did not author the implementation.
+
+Baseline: raw `git show` bytes at merge-base `a1b6b1149c9086478e2d3954f5d19aab7eb5301a` match the existing receipt SHA-256 for all 14 touched paths. The other 94 registered paths still match their recorded working-tree hashes. I read each incremental diff before rebinding.
+
+Findings: the API eligibility and review hooks require an approved current story cut with passing hash-bound QA and switchable captions, and withdraw old dub choices for both canonical and standalone stories when the cut changes. The detail schema, card type, language-panel tests and five locale messages describe that decision. QA adds subtitle-mode evidence without changing its measured-duration checks. The two skill copies update the story overview from the historical 12-15-minute description to the already-existing 10-minute cute-story route; baseline `story.mjs` already selected `[9, 11]` for that route and retained the legacy 13-minute fallback. The README subtitle and dubbing rows are documentation changes. No 600/780-second policy target, 480-second measured body/final floor, eight-minute minimum, `target_minutes` behavior, `MIN_EPISODE_MINUTES`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, source hash or covered-state rule is changed by this increment.
+
+Ran: Node v24.19.0 `tools/video/long-form/cli.mjs check` (PASS) and `--test tools/video/long-form/review.test.mjs` (2 passed, 0 failed), after updating the 14 file bindings and the report hash.
+
+Non-claims: this receipt reviews source duration behavior only. It does not certify generated media length, playback, caption appearance, provider calls, deployment, production import, upload or publication. The 94 unchanged paths retain their earlier independent review rather than receiving a new full review.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
+## PR #1512 CI follow-up: 2 files (2026-10-15)
+
+Reviewer: `story-cc-review`. Author: `codex-gpt6`. Scope: DURATION_ONLY for `39e2ddf25..3c7f84711`, covering `apps/api/app/video_reviews/admin_service.py` and `apps/api/tests/test_video_anime_review_policy.py`. This reviewer did not author either change.
+
+Baseline: both touched files at `39e2ddf25` have raw-byte SHA-256 values equal to their existing receipt bindings; the other 106 registered files remain unchanged and match their recorded hashes. The prior brand-story increment is retained in full.
+
+Findings: `project_view` now skips the story-series lookup for a drama Short, which is already ineligible for dubbing under `_dub_allowed`. The native-anime test supplies the existing series kind for the new third scalar lookup; it retains the same manual-approval assertions. The changes do not alter 600/780-second targets, 480-second measured body/final floors, the eight-minute minimum, `target_minutes`, `MIN_EPISODE_MINUTES`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, source hashes or covered status. No duration correction is required.
+
+Ran: Node v24.19.0 `tools/video/long-form/cli.mjs check` (PASS) and `--test tools/video/long-form/review.test.mjs` (2 passed, 0 failed), after rebinding these two files and the report.
+
+Non-claims: this is an incremental source duration review, not a fresh review of the 106 unchanged files or acceptance of actual media, playback, paid production, deployment, upload or publication.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
+## Video worker topic-limit deferral: 2 files (2026-10-16)
+
+Reviewer: `claude-review-video-topics-limit`. Author: `claude-opus-5-5-video-topics-limit`. Scope: DURATION_ONLY for `a291eb788..a1211e808`, covering `tools/video/automation/flow.mjs` and `tools/video/automation/automation.test.mjs`. This reviewer did not author either change.
+
+Baseline: both touched files at `a291eb788` have raw-byte SHA-256 values equal to their existing receipt bindings; the other 106 registered files are not touched by the commit and match their recorded hashes. Earlier increments are retained in full.
+
+Findings: `flow.mjs` adds `DRAFT_WAIT_MS` (30 minutes) and `Automation.draftWaits`, which records `draft_waits_until` in `auto-state.json` when a scheduled draft's topic lookup or planner meets a passing refusal (errorScope "wait"), using the server's Retry-After when given; `due()` holds the scheduled draft until that time, and `markDrafted()` clears it. A pending planner run or any other refusal still ends the run as before. These are retry-scheduling times for drafting, not video length. The two new tests in `automation.test.mjs` exercise the rate-limited topic lookup and the busy planner with no Retry-After. The unbound context files (`client.mjs` stops retrying a 429 whose Retry-After exceeds its 120-second sleep cap; `admin_api.py` sends Retry-After on the topic limit) do not touch durations either. The changes do not alter the explainer 10-minute default or 8-20 range, drama 1-8 minutes, the brand-story 13-minute and 600/780-second targets, the eight-minute non-drama minimum, the 480-second / 14,400-frame QA floors, measured body/final floors, `target_minutes`, `MIN_EPISODE_MINUTES`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, the long-form anime policy, measurement evidence or `plans.json`. No duration correction is required.
+
+Ran: Node v24.13.0 `tools/video/long-form/cli.mjs check` (PASS) and `--test tools/video/long-form/review.test.mjs` (2 passed, 0 failed), after rebinding these two files and the report.
+
+Non-claims: this is an incremental source duration review, not a fresh review of the 106 unchanged files or acceptance of the worker's scheduling behavior on the host, actual media, playback, paid production, deployment, upload or publication.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
+## Video worker topic-limit deferral, narrowed to the topic lookup: 2 files (2026-10-16)
+
+Reviewer: `claude-review-video-topics-limit-2`. Author: `claude-opus-5-5-video-topics-limit`. Scope: DURATION_ONLY for `7fe3ac5e5..15318485f`, covering `tools/video/automation/flow.mjs` and `tools/video/automation/automation.test.mjs`. This reviewer did not author either change.
+
+Baseline: both touched files at `7fe3ac5e5` have raw-byte SHA-256 values equal to the bindings written by the previous increment above (`59c199a3...` and `157a4d8d...`); the other 106 registered files are not touched in the range and match their recorded hashes. The previous increment is retained in full.
+
+Findings: `flow.mjs` removes the planner's wrap around `firstPlan` in `draft()`, so only a passing refusal of the topic lookup records `draft_waits_until`; a planner failure ends the round as it did before the previous increment, and the next round asks again. `DRAFT_WAIT_MS` (30 minutes) and `draftWaits` are unchanged apart from their comments. In `automation.test.mjs` the second new test now drives a topic lookup that fails with a 503 and no Retry-After instead of a busy planner. These are retry-scheduling times for drafting, not video length. The changes do not alter the explainer 10-minute default or 8-20 range, drama 1-8 minutes, the brand-story 13-minute and 600/780-second targets, the eight-minute non-drama minimum, the 480-second / 14,400-frame QA floors, measured body/final floors, `target_minutes`, `MIN_EPISODE_MINUTES`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, the long-form anime policy, measurement evidence or `plans.json`. No duration correction is required.
+
+Ran: Node v24.13.0 `tools/video/long-form/cli.mjs check` (PASS) and `--test tools/video/long-form/review.test.mjs` (2 passed, 0 failed), after rebinding these two files and the report.
+
+Non-claims: this is an incremental source duration review, not a fresh review of the 106 unchanged files or acceptance of the worker's scheduling behavior on the host, actual media, playback, paid production, deployment, upload or publication.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
 ## Reviewed SHA256 bindings
 
@@ -2980,89 +5445,89 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 
 | File | SHA256 |
 | --- | --- |
-| `.agents/skills/youtube-video/SKILL.md` | `542b24ecfb5c314d43162ebe4580ffeb382dbbdad6dcc9b27d27e989bd5f86a9` |
-| `.agents/skills/youtube-video/references/automated.md` | `351e90301068b1884c6263e80b7d36cd2d96459b60bc91c2798859ceae9b111e` |
-| `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
-| `.claude/skills/youtube-video/SKILL.md` | `542b24ecfb5c314d43162ebe4580ffeb382dbbdad6dcc9b27d27e989bd5f86a9` |
+| `.agents/skills/youtube-video/SKILL.md` | `c5fc4286becde5eb6bb60733c1cec1fbd6436e1f8cdaee139c560338a3dc6738` |
+| `.agents/skills/youtube-video/references/automated.md` | `b61781312530de1895f381ea57ec26cc7f1cf31c89f9d5969c9aeb8221759cc1` |
+| `.agents/skills/youtube-video/references/formats.md` | `b27b230728c1c6513fd4567cdba04797f552fd920bed33833ae9f97b70d74087` |
+| `.claude/skills/youtube-video/SKILL.md` | `c5fc4286becde5eb6bb60733c1cec1fbd6436e1f8cdaee139c560338a3dc6738` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
-| `apps/api/app/video_automation/judge.py` | `fe502055df82612df2dee120c9db78ff54029c0514a73df683ad8ce2e14e9637` |
-| `apps/api/app/video_automation/models.py` | `54cedbf59e1cbfb373a2091c849804cdba3c054118f6272a168799831d6939e0` |
-| `apps/api/app/video_automation/schemas.py` | `08ad195d6c5befa11e15a307d04a9f38e441701605cc2559571c2e1e65ec21ab` |
-| `apps/api/app/video_automation/series.py` | `ca8e61d2431752d78f6e7bc5c98c26dd1c862d8ccb2bf596aa124b088f378dea` |
-| `apps/api/app/video_automation/settings.py` | `eacb5d7aea4ca3acb969e3210d99920ca06a371b7dc19f7fec7e8da999b300c3` |
-| `apps/api/app/video_reviews/admin_service.py` | `0081b1b472f7e70243799d4aad81d0c763da6109a959506a9da7498b75fae70c` |
-| `apps/api/app/video_reviews/schemas.py` | `e494a9e56fc6f425cd5b23b782aed7bf84f2b9329a1096ae90e5277282249559` |
+| `apps/api/app/video_automation/judge.py` | `6e6cccb6ede540957c1815c2daff10437db37f5d4b46e55e458ac91f21941b54` |
+| `apps/api/app/video_automation/models.py` | `e8351836b3d09a939c31f18501ba3e160e98706e327a1172cc35170fc76b9ccc` |
+| `apps/api/app/video_automation/schemas.py` | `d1af5e4597fd8135245bf95fee4a58779d652069ba69efae2d304b4a2493e050` |
+| `apps/api/app/video_automation/series.py` | `fe30ad598feadbb9329f737fe48218b3f5d1750763304f283111f56d52a45128` |
+| `apps/api/app/video_automation/settings.py` | `9941b3244e15cf6b1d8aaec32c68ab2424f84adb32804a179652d93fb3977ca3` |
+| `apps/api/app/video_reviews/admin_service.py` | `ee87791e7051949cea6a781fe70c71c8acc3339368a02f7ddb16505b10d11a44` |
+| `apps/api/app/video_reviews/schemas.py` | `1e5dea4e5ec298dbfa6ad497fdf1e1bad117e259284b3fab37e65bf97709bdb8` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
 | `apps/api/migrations/versions/0122_video_anime_production_policy.py` | `91f97905e9a689cc47aef8eac60735175a4048bfb5788fa1d204acb43ee11ea7` |
 | `apps/api/tests/test_migration_0118_video_min_8_minutes.py` | `c479dfd800de1fcbd1fb71d0b47d4fcb922675b314b31b680e8195cac898c28e` |
 | `apps/api/tests/test_migration_0121_video_series_planning.py` | `74d030582ee98a4a05be0b07efb78fcf3a21cae34fca41a7fedaa4eb3a2eb204` |
 | `apps/api/tests/test_migration_0122_video_anime_production_policy.py` | `c0bbfbbb3af79cf98e55569b60c11bc5131811d2915afc51d569605c4ae4a2d8` |
 | `apps/api/tests/test_video_anime_production_policy.py` | `b9fe3f9ff8ffd0b1d36089f2f684d60bb2e2c7712e4549940c472abb4c59efb1` |
-| `apps/api/tests/test_video_anime_review_policy.py` | `eacb78a7e6692e530730b49e3bb89698d1b2a3976ac8f1d836bbc435b16276d8` |
+| `apps/api/tests/test_video_anime_review_policy.py` | `01c7bab94cdb630fa74a9f86e617f67b706818ffaaebe8204301bbe99b73edaf` |
 | `apps/api/tests/test_video_automation_settings.py` | `cd0e6beaa6e3d9976e0dade995fdcad85ea9e246b6d265d6e2b52bb79f466a92` |
-| `apps/api/tests/test_video_drama_requests.py` | `07ddbcaadf668a13565969ca44e2542dee4f6ad83791bcc8f67d785302734c59` |
-| `apps/api/tests/test_video_explainer_duration.py` | `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` |
+| `apps/api/tests/test_video_drama_requests.py` | `441b11622f444564a22f4ea43e94fad431a777577ce2ba60bd522c8510b25eef` |
+| `apps/api/tests/test_video_explainer_duration.py` | `45bdcbe9ec7c7c47e437b6d65ec967801e8553acbbf1c8285d734f8a7242eddc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
-| `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
-| `apps/web/components/admin-video-review-card.tsx` | `0c36f63cf55240e8de32596ee7ca7e7095145658c172788aaf1b2631313219a5` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `8ee1ee52620dcbe04809fbbf61fa3b86972e22b2a27d19421a226c271af59166` |
+| `apps/web/components/admin-video-explainer-duration.test.tsx` | `cb28b0a7173ad4712a70c5e378b3b0d6e4d760731620f38d9400a221b305a6ac` |
+| `apps/web/components/admin-video-review-card.tsx` | `cf43f019d52bf11c370fe9a02703f3fc67145b218dcaa01edfba2481502a56cf` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `aca9f9821c56bee31de5fc28e8e403d1b1df11095f109ce3af14b5e3510124c6` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
-| `apps/web/components/admin-video-series.tsx` | `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` |
+| `apps/web/components/admin-video-series.tsx` | `c64bfba40979fef3f8291ae2582a8cc2bb55644d4be0655ba75b39f767677d8a` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `0fc899a3db533bad6d4a3db5450e97e2d34297be6188f1f28b6f3484a0fdde77` |
-| `apps/web/messages/ja/admin.json` | `92870e41f3ed23948a96d55d5822e1af6426e29d5ac4065b43661239a363ef21` |
-| `apps/web/messages/ko/admin.json` | `cda8d08a9037f3bcbfb58cf25498aef82852da5ff1fad69e02c2e41d5505aa78` |
-| `apps/web/messages/zh-CN/admin.json` | `5684abdbabc109d94d7c074ad52ef01010f11cc3a4ddc9b7ea3d768e3ed9826b` |
-| `apps/web/messages/zh-TW/admin.json` | `7cf0ece3332b44d82b10f46898ea2763d463b32173be19546196ecdadc9ca491` |
-| `docs/videos/DESIGN.md` | `ed68170ef2ccd7bb2657a867bc8bac05ecf9426bffbc291b7219bc3febb62221` |
-| `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
+| `apps/web/messages/en/admin.json` | `0574fc16c2428897bd0a5cb0c4cf35e75178666e6fc702043fc1e1d2f5b8aace` |
+| `apps/web/messages/ja/admin.json` | `d32392e55fe47a9ae1df9e3463fd95a577b3da550e940a444d908b26aaa273a4` |
+| `apps/web/messages/ko/admin.json` | `8232fa2f2bd8a23016c67bd4e7556010d35a938e4d5dace64e79855e2c8358bd` |
+| `apps/web/messages/zh-CN/admin.json` | `499c73c44c2f8d01c96f925bdde50b23b547c20805e46a636ecd6c0dcda7566d` |
+| `apps/web/messages/zh-TW/admin.json` | `4d0767647450de8a95aac8dd5c49529cc0ecdbaa613a1a1cdeee92da84549105` |
+| `docs/videos/DESIGN.md` | `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405` |
+| `docs/videos/KNOWLEDGE-STORIES.md` | `8bf5a55173e25c07c18b865853ffd37e839408ccf731bdc3c4ebf208e195b5b5` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
-| `docs/videos/README.md` | `c5ac8cb060836704ac3b5c1127ce90f27177eddce2002211b69cba9ecd8d290b` |
+| `docs/videos/README.md` | `5a17099e6a1e76131a4fb70d0df364ade9a43a28bcb6c924421d96b59d237998` |
 | `docs/videos/long-form/README.md` | `dd639c0c85595881d1bda64541d28f29e8d90f1067e541c08eb28dc9c4543c3b` |
-| `docs/videos/long-form/plans.json` | `f1d2b4d17a3c9ee0271b5af88c16d5e2d3bf2faaea5d1d90c4c1da7c789044c3` |
+| `docs/videos/long-form/plans.json` | `dddfc89c3e72887d3dec9a1de7a3b61d89bd2d09341158ca4b2185334c991f53` |
 | `docs/videos/long-form/policy.json` | `6f08e7cd27b98710dc308bdb7ea44a6db4b1c8891d0731d5387d9b2245636bad` |
 | `docs/videos/series-plans/borrowed-dawn/authoring-contract.json` | `1c98acb9b2e75ec5cce793d5ebe5bb934791f52ac9c63f15babcb4fb577cc46c` |
 | `docs/videos/series-plans/borrowed-dawn/validate.mjs` | `cad0c421ea375c40f28093157b9749c1f7f95524d0f9a8d4ffa1978e61c1df04` |
-| `docs/videos/so-thats-why/README.md` | `00a0f0e5a56d7a492dec69263eab34668e0d334949878bd512b09edacaefd0de` |
+| `docs/videos/so-thats-why/README.md` | `cabb9054898149fa0f512fc192825149c467ac25be283b754174098c83e2a661` |
 | `docs/videos/so-thats-why/season2/README.md` | `e560411dc91f1928b2cf9506a044e55ae7f5f65450199118bd165464599f1218` |
 | `tools/video/assemble/assemble.test.mjs` | `76a51bc9c90b7b23ac91b22bf0278b8f61173ca3d418794b2112ae8eade96403` |
-| `tools/video/assemble/cli.mjs` | `1820b81f551dac573fe0f9b9dd47146304dbc83a330751fc16087ddfbad83c5e` |
+| `tools/video/assemble/cli.mjs` | `0f3781cbdf0dd39faac6188f6795cc74233a9228fa7ef1a37e8ed5d16aa0cd92` |
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `d29b31c421774f245a7e2df89a52c6d359815efd05c11b3b8c5e8c0467bec7c1` |
-| `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
-| `tools/video/automation/flow.mjs` | `4de8bbedb777f17a66a04064c0bd612a2a23ea8cf206d798fb449851a6a46bc7` |
-| `tools/video/automation/prompts.mjs` | `8ca7eb3ea74382877a258aa196a4d4e78b8bf488557bd8ea9f095c9b3bea708f` |
-| `tools/video/automation/series.mjs` | `2b687e0e5251f8b01904f3018bc658e4322888959af9d8dc0931d71a41e5e381` |
-| `tools/video/automation/series.test.mjs` | `1974b5d8db7177c920bc85ec35acf8abc4a0177b80947596ed5b551e813c53d6` |
+| `tools/video/automation/automation.test.mjs` | `59fbe73cb90d5cd187ce542d05e0371e82f6a5d84ff9ab1189a000cd14578d27` |
+| `tools/video/automation/discuss.mjs` | `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21` |
+| `tools/video/automation/flow.mjs` | `0d817f0faf180b3e3e65884b68da6fbabc42f401092168335c70b844adbca384` |
+| `tools/video/automation/prompts.mjs` | `7dc54920e590ffa674fc6436dacf96df5da477cd749f1be52877d89a8b500dbc` |
+| `tools/video/automation/series.mjs` | `d512034bbc99c0bc9ec7bbdbcfafa9ea6b548eedd877aa6754bbb81b04cd4c37` |
+| `tools/video/automation/series.test.mjs` | `d133c2caf95e9919aa1df2f0c23dee80d2d20a47a5d8c1ae85e7506698399425` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
 | `tools/video/core/anime-policy.mjs` | `2c53db1a18e27780b032a019b37912197c13bb4aadc6a130cecdc60371482ecd` |
 | `tools/video/core/anime-policy.test.mjs` | `74b9f1360829efed4c2f1e529b403024877e255d51430a5a2636ac7c5a24b3c6` |
 | `tools/video/core/approvals.mjs` | `d97e182fb942071e49cbd9fb64a35efcb327251048945c388fa8678c28065577` |
 | `tools/video/core/approvals.test.mjs` | `51c4a632685a36221dcaf6ac926d5256879c1540f709b708945770d9e5e6adaf` |
-| `tools/video/core/branding.mjs` | `aaad784dc23fe4bc1fc08c2871a5cd122ba483c500a07f128cb836dd8f05c8c7` |
-| `tools/video/core/branding.test.mjs` | `bebfeabcb0855bffc18f0334dd1a6206bb374552467edb036d999ca5398374cb` |
-| `tools/video/core/drama.mjs` | `33a471d5eb78be2ab972594501ab1a4ae3fc8fbba751c509b33a1c5f75b60fd2` |
-| `tools/video/core/drama.test.mjs` | `c6dc0ef74464fcb9e47397f59b3902938c628ed86ec2f53819eeba88537f22c6` |
-| `tools/video/core/duration.mjs` | `e92c104bc62babf18f47c75b67416807484f1af794b94cd8790350990dba8edd` |
-| `tools/video/core/duration.test.mjs` | `388bda7c57e548c2f50165a713e038e147645d283409c1f09393e8eef68652ba` |
+| `tools/video/core/branding.mjs` | `da1e635285601e1398d7e4233c20f8fab2e9f752c693c67e82512f2dffd4adaa` |
+| `tools/video/core/branding.test.mjs` | `1430f36cb542ce42548f9e8ee7182694b8679069cf9f64d446a4fdb56f3e5b89` |
+| `tools/video/core/drama.mjs` | `1977b6c69471aa60923eb18ddfd6ef0323284bef96d9cf3a88c5ff5d220dcd83` |
+| `tools/video/core/drama.test.mjs` | `d24c6bc6a247f8ad33a102687078fc5dae0da5f30e87861008eb3db550c35b17` |
+| `tools/video/core/duration.mjs` | `12009ae5d12cba73e55ff462e9f9dd107350d53bea1da5a65bf59a1a39e13285` |
+| `tools/video/core/duration.test.mjs` | `a5b3e9c54368628d4b929b8050eb3ad925cc1b9c1fbd5b88bd3bf5ca010358f6` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `6a840aec7ac0a071b97b4a0dfc6b241ea89019d24485315cf86d1ba2b1ec1743` |
-| `tools/video/core/lint.test.mjs` | `3f2bea9b472bd211fa7caf7446dd702bbe129887b23e6bacfa33c1330b800e2f` |
-| `tools/video/core/narration-locale.test.mjs` | `e42075ee53802451cb51ff3aa39252d358d3a9b8584f631c37f96d017c98eefc` |
-| `tools/video/core/schema.mjs` | `d810ca82a8ef459faea23efa0afcbf1029d08521cb50c09e157bb19598ac172f` |
+| `tools/video/core/lint.mjs` | `6cc1c1ee9cb425303d7a9f2ffa2d6aa5bddc3fa82c72314ede0060703316a386` |
+| `tools/video/core/lint.test.mjs` | `2c98e1c2b1747c966f281888aa37cd4494dcf3064ccaeee91270ce454d78f18e` |
+| `tools/video/core/narration-locale.test.mjs` | `fddf009b24c976c9319d139db24fa3312fd1d942f2b4d623876d86357464d2ce` |
+| `tools/video/core/schema.mjs` | `80d2607bdecd5aaae145308924be7da310f48f8fc711e2cceba00742b445db0b` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
 | `tools/video/core/screenplay.test.mjs` | `fe2765c5f2fa42d7cfe5a2e542063c32c4349b585c649552a31b2088aaaec180` |
-| `tools/video/core/stages.test.mjs` | `6ed67af324ba3ff07a59678300365833619553cbb460ddd0dc64d97b2608a511` |
-| `tools/video/core/state.mjs` | `f45f65951076d48fe61280fc99b3c9d839614775c469fd1fd25d5046633aec26` |
-| `tools/video/core/state.test.mjs` | `d074d836f10479e95d90572719c69c2621e51f34cdd60572870a75e69fcf313d` |
+| `tools/video/core/stages.test.mjs` | `c4583dba313415355131a854f3da6f568862c3ea83808313b2f1acda5c017523` |
+| `tools/video/core/state.mjs` | `014450d61ce01f7bff11b48e94c52fba2f4b6e64bc9fcd4e67b22bef423ccaaa` |
+| `tools/video/core/state.test.mjs` | `327eac9a271451f2f1d4954850dbed0ab4102be170f744cc953cb071f1ce0d08` |
 | `tools/video/core/timeline.mjs` | `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a` |
 | `tools/video/core/timeline.test.mjs` | `8eedaa0b04f56d22b65becbf23e39e23e051f2d6850f63a5bf7c496583b9b00a` |
-| `tools/video/dubs/captions-package.test.mjs` | `7eb0a10630b447dd17ffeafe3d99059c0fe3f392d58838dffd10a59373734f28` |
-| `tools/video/dubs/dubs.test.mjs` | `61057bc8ad18f8a85a0ff1a56ba75139251d22c8c819494da96d0002c91c7d1b` |
+| `tools/video/dubs/captions-package.test.mjs` | `a7d9462b61f182bca1b7e87149a5c461659dafeb9c54449769bc35189f352685` |
+| `tools/video/dubs/dubs.test.mjs` | `bff4e09be16e629cf807f688a227f092cc07af4380a1de583f88a1216d029a25` |
 | `tools/video/dubs/freshness.test.mjs` | `c882af3d55bff72c410e930b0e0f187770782a937952bb9efba3ab40e44a5b30` |
-| `tools/video/dubs/plan.test.mjs` | `94e61419eda766e722c07675f1f75a569f3eb07fdeecce5c03dc862db1a0d572` |
+| `tools/video/dubs/plan.test.mjs` | `f06d073795553024d19098c9957ab060a9feb41569546d67f366d931244b8ab3` |
 | `tools/video/long-form/cli.mjs` | `3a0b26f900daaf1a08f7ed210ad1239d7f172035fa1e14c6dafc28bf55dedfa4` |
 | `tools/video/long-form/integration.test.mjs` | `aa69f38653fb7c6a7fd0c6daed93ccde1e031987e3169f6c8d9456f38c8b605c` |
 | `tools/video/long-form/plans.mjs` | `9680960509931642c679a9db9a3a1d6e419280558f9eb431358bfd1ee781e103` |
@@ -3070,21 +5535,21 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
 | `tools/video/media/clips.test.mjs` | `626e678fc76d08210aad82a850f393c66009e9c3a7fce815a8097e686602b238` |
-| `tools/video/media/look-keyframes.test.mjs` | `3413923fc1485cc03ffd29a18594c8ae48280710e1b81d7f6882d6f76db8f954` |
+| `tools/video/media/look-keyframes.test.mjs` | `a29f3901db7d3c6eac0c01f634cb2d1b4b59688ab6f72788bbfa7bae401f1f13` |
 | `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
-| `tools/video/package/package.test.mjs` | `6e43fbb128ccbf863279aab9259f093fb87b81e461e7b062b5f47c903bae0163` |
+| `tools/video/package/package.test.mjs` | `ec0a56363e66f4410af6d759b2497c39cc1aabd7bd3aacd449628b5b8b7b0047` |
 | `tools/video/production/anime-input.mjs` | `515e917f4d06c0117222ce09717345f9d4288c1e0357491e5f1097f782477f13` |
 | `tools/video/production/anime-input.test.mjs` | `76b4082fd9245ea331c04d430f82aa5e4afa742d4f830c0794531cc4bbe80d02` |
 | `tools/video/qa/checks.mjs` | `0c13be6eb906f9a322eab71dd18974a2cfa3f9d9b27cc5a9cba9f3570891567b` |
 | `tools/video/qa/checks.test.mjs` | `e93fe80fb6ef0366da6728e397f78e355e6000847836a0a7e31ae63615211317` |
-| `tools/video/qa/cli.mjs` | `b0b0a5ea57f5a060b38d732bc335944bbadbcd8d75bbaa50310fb1d29d01c17e` |
+| `tools/video/qa/cli.mjs` | `e884ad270c8170c290b10c4b8bf7d3f56ed1c5ebe26428f619d458bb11a9fc9d` |
 | `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
-| `tools/video/qa/qa.test.mjs` | `b27d4ce3e3b6b0329488b549095cd51d61311a5cc644125b4087da99157c1281` |
-| `tools/video/review/sync.mjs` | `c4ae35a7a88513b76f1997a77d3dff39829d69262971479b39f86ac9d76ee21c` |
-| `tools/video/review/sync.test.mjs` | `c4655a10e64547c0e088f7c7e2648c685c193b28465f035f9bbbd75ec5312f17` |
+| `tools/video/qa/qa.test.mjs` | `6f2f77b1cf7cad0175282003b36d9d42dee7891ed168ad75ac21caed2aca5d88` |
+| `tools/video/review/sync.mjs` | `6f8ea2820b3eda1bc85e58e94ce11902d7fe2c7d590f10a1e73fe67200d33851` |
+| `tools/video/review/sync.test.mjs` | `9660b3554cd7d82ac70b2e99dd6e354733a61eabd610c4ee2364eff59bf5b0a8` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
-| `tools/video/tts/check.test.mjs` | `8da7502e68ba7bea2cb3bbdba3bf711bbfbb950b16429a480f5d0075b7670353` |
+| `tools/video/tts/check.test.mjs` | `0b4e2e68cb1aa38cfa0a5971df1b029e788850b3bac0461709a79b467801499b` |
 | `tools/video/tts/synthesis.mjs` | `589ebe665bd281aaefba6749d61148f4c7011f71c962513efd5a6cd6830f3cb3` |
-| `tools/video/tts/tts.test.mjs` | `6f7dda4d4cb36292ca5445a83698d74c693464a9502b88be731564ef5c923403` |
+| `tools/video/tts/tts.test.mjs` | `85de2438461cd1325d4734a2452b92ad7cf93d0ed67aa54b9c29a801d936e212` |

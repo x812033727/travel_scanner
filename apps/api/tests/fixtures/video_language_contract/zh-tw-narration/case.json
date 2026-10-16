@@ -13,7 +13,7 @@
         "captions": true,
         "dub": false
       },
-      "zh-CN": {
+      "ko": {
         "metadata": true,
         "captions": true,
         "dub": true
@@ -26,8 +26,8 @@
       "id": "00000000-0000-4000-8000-000000000003",
       "gate": "languages",
       "subject": null,
-      "content_sha256": "d61221bfa9028ac844e31ececb1b5d7990752f3f3ce84a80440265a41b6e5314",
-      "summary": "語言：en 標題說明、CC；ja CC；zh-CN 標題說明、CC、配音跳過（配音字數超出時間軸，改用字幕）。沒有要你上傳的配音",
+      "content_sha256": "6b14534fa1d91e4670e6faf61c987a5e29a34bc81ad7a64402a57c30fa34973d",
+      "summary": "語言：en 標題說明、CC；ja CC；ko 標題說明、CC、配音跳過（配音字數超出時間軸，改用字幕）。沒有要你上傳的配音",
       "payload": {
         "locales": {
           "en": {
@@ -37,7 +37,7 @@
           "ja": {
             "captions": "ready"
           },
-          "zh-CN": {
+          "ko": {
             "metadata": "ready",
             "captions": "ready",
             "dub": {
@@ -50,8 +50,8 @@
       "files": [
         {
           "role": "description_en",
-          "sha256": "256809034d176bc98402b075d9578f76313a6a40ad9b80d998883ff5c7328df2",
-          "size": 187,
+          "sha256": "f10159f17386e54078164d0046b32b5e4fbdf78093d596e24d279dadc207818a",
+          "size": 202,
           "content_type": "text/plain"
         },
         {
@@ -67,27 +67,27 @@
           "content_type": "text/plain"
         },
         {
-          "role": "description_zh-CN",
-          "sha256": "fd6d24de76c4090990a002844cdf14cf419d2428bb360ce205520985963986d9",
-          "size": 199,
+          "role": "description_ko",
+          "sha256": "49bef63dc48f40b0c6a1f501ced1c6d132c7ea9ae6f5ef691a76ad746cf1f618",
+          "size": 203,
           "content_type": "text/plain"
         },
         {
-          "role": "captions_zh-CN",
-          "sha256": "9ef07dee2c0cfbc635bca75804e661dbc048c92bd0f1173f6627ee0ce880464a",
-          "size": 307,
+          "role": "captions_ko",
+          "sha256": "3c49b2301198673210389e8cff065504266f97e0de7509c3a8e118c6831434ea",
+          "size": 286,
           "content_type": "text/plain"
         },
         {
           "role": "metadata",
-          "sha256": "d49886725a3b554e0dc2ffd429a7c02e63921a31a29de70028c68ea48dc34713",
-          "size": 2511,
+          "sha256": "818807bac6552f800b8d378bd205b34f2599445b8d3f7e966c79fad8794235cf",
+          "size": 2520,
           "content_type": "application/json"
         },
         {
           "role": "languages_manifest",
-          "sha256": "d61221bfa9028ac844e31ececb1b5d7990752f3f3ce84a80440265a41b6e5314",
-          "size": 2356,
+          "sha256": "6b14534fa1d91e4670e6faf61c987a5e29a34bc81ad7a64402a57c30fa34973d",
+          "size": 2344,
           "content_type": "application/json"
         }
       ],
@@ -101,12 +101,12 @@
       "id": "00000000-0000-4000-8000-000000000002",
       "gate": "publish",
       "subject": null,
-      "content_sha256": "8827f9aa5866b4da5db01139ec03ed806c9245fba64d5e24edb8ee9b1f7a4a6f",
+      "content_sha256": "a85ba792617e01875ef96649d2311bd108cda706e3c10ae0338e2c1a422f4cc1",
       "summary": "上傳包 4 項齊全：請確認可以上架",
       "payload": {
         "package": {
           "ok": true,
-          "final_sha256": "8827f9aa5866b4da5db01139ec03ed806c9245fba64d5e24edb8ee9b1f7a4a6f",
+          "final_sha256": "a85ba792617e01875ef96649d2311bd108cda706e3c10ae0338e2c1a422f4cc1",
           "items": [
             {
               "id": "files",
@@ -136,7 +136,7 @@
           "zh-TW"
         ],
         "zh": {
-          "title": "AI 模型怎麼挑？三個問題幫你決定",
+          "title": "AI 模型怎麼挑？三個問題幫你決定｜CC字幕",
           "description": "排行榜第一名不一定最適合你。\n這支用三個問題，幫你挑出適合自己的 AI 模型。\n\n📌 章節\n00:00 開場\n00:14 三個問題\n00:27 結論\n\n📚 參考資料\n範例來源：https://example.com/models\n\n#AI模型 #模型選擇",
           "tags": [
             "AI 模型",
@@ -152,14 +152,14 @@
       "files": [
         {
           "role": "captions_zh-TW",
-          "sha256": "0d1db34d269c64e96f5b53920044bcad4aec3238d0a985025bedd6a1762d93b4",
+          "sha256": "b761e5478a3993bbdfa47f977a2ee24de47cefb59993349b1b615bc0897d9f1e",
           "size": 727,
           "content_type": "text/plain"
         },
         {
           "role": "description_zh-TW",
-          "sha256": "91caf2415c5620cb54f900c4ec1f6c033a84004223724ad2a519a885a41bae0d",
-          "size": 299,
+          "sha256": "a286b9e2813eaec14192ced0572fead2fc614e7fa1c101a95fc12e38ff45042f",
+          "size": 310,
           "content_type": "text/plain"
         },
         {
@@ -170,8 +170,8 @@
         },
         {
           "role": "metadata",
-          "sha256": "8827f9aa5866b4da5db01139ec03ed806c9245fba64d5e24edb8ee9b1f7a4a6f",
-          "size": 1251,
+          "sha256": "a85ba792617e01875ef96649d2311bd108cda706e3c10ae0338e2c1a422f4cc1",
+          "size": 1262,
           "content_type": "application/json"
         },
         {

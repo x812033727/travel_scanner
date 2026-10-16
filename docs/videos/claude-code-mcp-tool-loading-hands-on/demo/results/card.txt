@@ -1,0 +1,43 @@
+$ ls
+ctx-cost.mjs
+d10r.stream.jsonl
+kd.stream.jsonl
+u10.stream.jsonl
+z1.stream.jsonl
+z2.stream.jsonl
+zf.stream.jsonl
+$ node ctx-cost.mjs z1.stream.jsonl z2.stream.jsonl d10r.stream.jsonl --base z1,z2 --quiet
+base: z1, z2 | first request 11,202, 11,204 | mean 11,203 | spread 2
+name | requests | first = input + write + read | minus base | last | grew
+z1 | 1 | 11,202 = 2 + 4,398 + 6,802 | (base) | 11,202 | +0
+z2 | 1 | 11,204 = 2 + 4,400 + 6,802 | (base) | 11,204 | +0
+d10r | 1 | 12,014 = 2 + 4,675 + 7,337 | +811 | 12,014 | +0
+[exit 0]
+$ node ctx-cost.mjs zf.stream.jsonl u10.stream.jsonl --quiet
+base: zf | first request 11,200 | one run, no spread
+name | requests | first = input + write + read | minus base | last | grew
+zf | 1 | 11,200 = 2 + 4,396 + 6,802 | (base) | 11,200 | +0
+u10 | 1 | 12,141 = 2 + 12,139 + 0 | +941 | 12,141 | +0
+[exit 0]
+$ node ctx-cost.mjs kd.stream.jsonl | head -20
+== kd | Claude Code 2.1.295 | claude-sonnet-5-5 | mode default
+   init: built-in tools 8 | MCP servers 1 (connected), tools 40
+         skills 21 | agents 6 | slash commands 57 | plugins 3
+   each request: input + cache write + cache read = input side
+   request 1: 2 + 5,361 + 7,071 = 12,434
+   -- after request 1: Claude wrote 0 chars of text, 1 tool call
+      tool calls: ToolSearch (inputs 55 chars)
+      tool result ToolSearch: 1 tool reference, 0 chars of text
+      hooks ran, main and under Agent: 2 | with output: 0
+      other system lines: 2
+   request 2: 2 + 256 + 12,432 = 12,690 (+256)
+   -- after request 2: Claude wrote 0 chars of text, 1 tool call
+      tool calls: mcp__(a server) (inputs 16 chars)
+      tool result mcp__(a server): 21 chars
+      hooks ran, main and under Agent: 2 | with output: 0
+      other system lines: 2
+   request 3: 2 + 141 + 12,688 = 12,831 (+141)
+   first 12,434 | last 12,831 | grew +397 over 3 requests
+   all 3 requests' input sides added up: 37,955
+   -- after the last request:
+[exit 0]

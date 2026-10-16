@@ -14,11 +14,12 @@ import path from "node:path";
 
 import { hasAnimePolicy, isLongAnime, isClosedAnimeFinale, validateAnimePolicy } from "../core/anime-policy.mjs";
 import { craftGateProblems } from "../core/craft.mjs";
-import { EXPLAINER_PRESET, shotLooksProblem } from "../core/drama.mjs";
+import { isExplainerPreset, shotLooksProblem } from "../core/drama.mjs";
 import { atomicWrite, readJson } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
 import { AutomationError, OUTPUT_INVALID, RUN_UNCERTAIN } from "./client.mjs";
+import { explainerProfile, explainerVariants } from "./explainer-series.mjs";
 import { BEATS, GENRE_SPECS, HOOK_TYPES, LEAD_ARCS, MIN_SATISFACTION } from "./prompts.mjs";
 import { startStory } from "./story.mjs";
 
@@ -55,9 +56,11 @@ export const isOneOff = (series) => series?.kind === "one-off";
  * Whether a one-off is an illustrated explainer (docs/videos/so-thats-why/): the owner picked the
  * flat-explainer preset, so its bible is a question's, with no cast.
  */
-export const isExplainerOneOff = (series) => isOneOff(series) && series?.style_preset === EXPLAINER_PRESET;
+export const isExplainerOneOff = (series) => isOneOff(series) && isExplainerPreset(series?.style_preset);
 /** The planner prompt of a document: its kind, or the explainer's bible. */
-export const documentVariant = (kind, series) => (kind === "bible" && isExplainerOneOff(series) ? "bible-explainer" : kind);
+export const documentVariant = (kind, series) => (kind === "bible" && isExplainerOneOff(series) ? explainerVariants(series.style_preset)?.bible ?? "bible-explainer" : kind);
+/** Whether a one-off is an explainer of a series with a profile of its own (explainer-series.mjs). */
+const isProfiledExplainer = (series) => isExplainerOneOff(series) && explainerProfile(series.style_preset) !== null;
 /** Whether a series' genre carries the retention rules (the classic xianxia series does not). */
 export const retentionRequired = (series) => !hasAnimePolicy(series) && Boolean(GENRE_SPECS[series?.genre]?.retention);
 
@@ -518,7 +521,7 @@ export function documentPayload(automation, job, problem = null) {
   const base = {
     kind: job.kind,
     series: seriesFacts(series),
-    genre_spec: isLongAnime(series) ? null : GENRE_SPECS[series.genre] ?? null,
+    genre_spec: isLongAnime(series) || isProfiledExplainer(series) ? null : GENRE_SPECS[series.genre] ?? null,
     series_reference: refs.series,
     drama: refs.drama,
     drama_settings: automation.dramaPayload({ style_preset: series.style_preset }).drama_settings,

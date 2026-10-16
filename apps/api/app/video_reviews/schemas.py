@@ -49,9 +49,15 @@ ContentType = Literal[
     "application/json",
 ]
 YOUTUBE_VIDEO_ID_PATTERN = r"^[A-Za-z0-9_-]{11}$"
-# The languages a video can be made in besides zh-TW, in the order the page lists them.
-DubLocale = Literal["en", "ja", "ko", "zh-CN"]
+# The languages a video can be made in besides zh-TW, in the order the page lists them. The
+# owner decided on 2026-10-09 that a video's languages are four: narrated in zh-TW, with en, ja
+# and ko to add; the site keeps its five locales, the videos do not.
+DubLocale = Literal["en", "ja", "ko"]
 DUB_LOCALES: tuple[DubLocale, ...] = get_args(DubLocale)
+# Languages a video could be made in before (zh-CN until 2026-10-09). A stored choice or an
+# approved languages batch may still name one; it is ignored rather than refused, so the video's
+# other languages keep working (``without_retired_locales``).
+RETIRED_LOCALES: frozenset[str] = frozenset({"zh-CN"})
 # What a language is made of (docs/videos/LANGUAGES.md): the title, description and tags, the
 # captions, and a dub track; a dub needs the captions, since it reads their translation.
 LocalePart = Literal["metadata", "captions", "dub"]
@@ -59,6 +65,15 @@ LOCALE_PARTS: tuple[LocalePart, ...] = get_args(LocalePart)
 # Where a chosen part stands: not made yet, made (in a languages review), given up with a reason,
 # or, a dub track, uploaded by the owner (its languages review approved).
 LanguageState = Literal["working", "ready", "skipped", "uploaded"]
+# Where the owner's request to make a skipped dub again stands (docs/videos/DUBS.md §再做一次;
+# migration 0131): asked, taken by the worker, then made, skipped again or refused. "expired"
+# is a request nobody took for a day; it is read from the request's time and never stored.
+DubRetryStatus = Literal["requested", "taken", "made", "skipped", "refused", "expired"]
+# Why a skipped dub cannot be asked for again right now, shown in place of the button. The web
+# catalog's ``videoReviews.dubRetryBlocked`` keys are these codes, spelled the same.
+DubRetryBlocker = Literal[
+    "narration", "tidied", "publish_pending", "not_adopted", "blocked", "stopped"
+]
 # Persisted main-worker registration, not a process heartbeat or media/readiness verdict.
 WorkerState = Literal[
     "not_adopted", "registered", "blocked", "stopped", "done", "dropped", "unavailable"
@@ -130,6 +145,16 @@ class ProjectIn(BaseModel):
     shorts_line: ShortsLine | None = None
     shorts_series: str | None = Field(default=None, pattern=SHORTS_SERIES_PATTERN)
     source_slug: str | None = Field(default=None, pattern=SLUG_PATTERN)
+    # The worker's word on the owner's dub retry requests (migration 0131):
+    # {"ja": {"id": "<uuid>", "status": "taken"}} or {"id", "status": "refused", "reason"}.
+    # Read leniently (dub_retry.apply_worker): what is not understood is ignored, never a 422.
+    dub_retries: dict[str, Any] | None = None
+
+    @field_validator("dub_retries", mode="before")
+    @classmethod
+    def _an_object_or_nothing(cls, value: Any) -> Any:
+        # A report is the worker's whole word on a video: a malformed echo must not refuse it.
+        return value if isinstance(value, dict) else None
 
 
 class ReviewFile(BaseModel):
@@ -252,9 +277,36 @@ class LocalesIn(BaseModel):
         }
 
 
+def without_retired_locales(raw: Any) -> Any:
+    """``raw`` without the keys of languages a video is no longer made in, when it is a dict."""
+    if not isinstance(raw, dict):
+        return raw
+    return {locale: value for locale, value in raw.items() if locale not in RETIRED_LOCALES}
+
+
 class LanguagePartOut(BaseModel):
     state: LanguageState
     reason: str | None = None
+
+
+class DubRetryOut(BaseModel):
+    """The owner's latest request to make one locale's skipped dub again, as the page and the
+    worker read it (docs/videos/DUBS.md §再做一次)."""
+
+    id: UUID
+    # The effective status: "expired" is derived, the stored one stays "requested".
+    status: DubRetryStatus
+    # Requested and not expired, or taken: the worker may still act on it.
+    open: bool = False
+    # Open, and requested more than 30 minutes ago or taken more than 2 hours ago.
+    stalled: bool = False
+    requested_at: datetime
+    taken_at: datetime | None = None
+    finished_at: datetime | None = None
+    # skipped: the new skip reason; refused: the worker's sentence, or the site's.
+    reason: str | None = None
+    # The skip reason at the click.
+    replaced_reason: str | None = None
 
 
 class ProjectSummary(BaseModel):
@@ -290,6 +342,11 @@ class ProjectSummary(BaseModel):
     locales_decided_at: datetime | None = None
     languages: dict[DubLocale, dict[LocalePart, LanguagePartOut]] = Field(default_factory=dict)
     ready_to_upload: bool = False
+    # The owner's requests to make a skipped dub again (migration 0131): the latest per locale,
+    # only for a dub that is chosen now; and, for a chosen dub that reads skipped with no open
+    # request, why it cannot be asked for again. Both empty for a Short.
+    dub_retries: dict[DubLocale, DubRetryOut] = Field(default_factory=dict)
+    dub_retry_blocked: dict[DubLocale, DubRetryBlocker] = Field(default_factory=dict)
     # Read from the worker volume; null for Shorts, whose producer is independent.
     worker_state: WorkerState | None = None
     # The languages with a dub track chosen, for a page from before the language panel.
@@ -318,6 +375,9 @@ class ProjectSummary(BaseModel):
 
 class ProjectOut(ProjectSummary):
     reviews: list[ReviewOut]
+    # Whether the owner can tick a dub for this exact video. Brand stories need a current
+    # approved final cut whose QA proves captions are switchable, independent of category.
+    dub_allowed: bool = False
     # Set only in the answer to a pasted YouTube address without a publish time: why the
     # linked channel gave none (still private, not in the channel, not linked...), or None
     # when it gave one or the owner typed one (admin_service.link_youtube).
@@ -366,7 +426,7 @@ class DropIn(BaseModel):
 class DubLocalesIn(BaseModel):
     """The owner's choice of languages to dub one video in, from /admin/videos."""
 
-    locales: list[DubLocale] = Field(max_length=4)
+    locales: list[DubLocale] = Field(max_length=len(DUB_LOCALES))
 
     @field_validator("locales")
     @classmethod
@@ -393,3 +453,6 @@ class YoutubeIn(BaseModel):
 
     url: str = Field(min_length=1, max_length=500)
     publish_at: AwareDatetime | None = None
+    # The pending-imported-final entry asks the backend to verify Studio privacy before linking.
+    # The ordinary manual-link form keeps its historical publication-time behavior.
+    private_only: bool = False
