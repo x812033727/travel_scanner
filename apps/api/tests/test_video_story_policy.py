@@ -27,7 +27,7 @@ import pytest
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
 from pydantic import ValidationError
-from sqlalchemy import event, insert, select
+from sqlalchemy import event, insert, select, text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.ai.jev import NoulAnswer
@@ -257,6 +257,10 @@ async def db() -> AsyncIterator[async_sessionmaker[AsyncSession]]:
             lambda sync: Base.metadata.create_all(
                 sync, tables=[model.__table__ for model in TABLES]
             )
+        )
+        await connection.execute(text("CREATE TABLE alembic_version (version_num VARCHAR(32))"))
+        await connection.execute(
+            text("INSERT INTO alembic_version (version_num) VALUES ('0132_video_pilot_budget')")
         )
         await connection.execute(
             insert(VideoPilotBudget),
