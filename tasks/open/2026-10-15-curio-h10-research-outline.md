@@ -106,3 +106,7 @@ video SHA-256 `e11a22a7a29086a06a8261943cd3e78bea6775223705cb3eab9b8dbdffa1a559`
 ## 2026-10-16 H10 分鏡定向複核與送審
 
 首次全頁目視發現八鏡與旁白場景、地點、道具或無字要求相反，詳見 [keyframes-qa-1.md](../../docs/videos/curio-h10/keyframes-qa-1.md)。僅重畫這八鏡，保留其餘已通過圖片；第二份 [keyframes-qa-2.md](../../docs/videos/curio-h10/keyframes-qa-2.md) 綁定新版 `video.json` 與 manifest 雜湊，記錄 73／73 評審通過、0 `needs_review`，並逐頁複看四頁聯絡表。劇本與旁白未改。H10 累計工具估算 US$2.519／US$6。已 `review-push --gate storyboard`，隨後 `review-pull` 讀回 **waiting for the owner**；站主核准前不製作成片。
+
+## 2026-10-16 H10 繁中成片已送最終審核
+
+站主在 `/admin/videos` 核准新版 73 張分鏡，協調者以 `review-pull --gate storyboard` 讀回 approval recorded。`render`、`clips`、`assemble` 與 `captions` 已完成；成片 10:14.17，正文 9:48.17，102 段繁中 CC，成片 SHA-256 `912F39E5DF15E0FEC7AADE44FE6872B28E8C6E5E9EDA63F60EEECB7E4949017C`。最終 QA 10／11，唯一未過為片尾同一卡 17.4 秒超出 15 秒；已用 `--manual-review` 送後台，`review-pull --gate final` 讀回 **waiting for the owner**。詳見 [final-qa-1.md](../../docs/videos/curio-h10/final-qa-1.md)。本輪一次 Jev 最終 QA 估算 US$0.05，批次協調者已結算至共用帳本，H10 累計估算 US$2.569／US$6。站主核准成片前不做上傳包，語言尚未選定，未上傳 YouTube。
