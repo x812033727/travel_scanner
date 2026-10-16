@@ -1,7 +1,7 @@
 {
   "fps": 30,
   "sample_rate": 48000,
-  "total_frames": 17307,
+  "total_frames": 17692,
   "scenes": [
     {
       "id": "harbor-departure",
@@ -992,28 +992,54 @@
       ]
     },
     {
-      "id": "identity-scope",
+      "id": "later-identifications",
       "template": "shot",
       "start_frame": 16512,
-      "end_frame": 16751,
+      "end_frame": 16737,
       "states": [
         {
           "reveal": 0,
           "start_frame": 16512,
-          "end_frame": 16751
+          "end_frame": 16737
+        }
+      ]
+    },
+    {
+      "id": "six-identifications",
+      "template": "big",
+      "start_frame": 16737,
+      "end_frame": 16897,
+      "states": [
+        {
+          "reveal": 0,
+          "start_frame": 16737,
+          "end_frame": 16897
+        }
+      ]
+    },
+    {
+      "id": "identity-scope",
+      "template": "shot",
+      "start_frame": 16897,
+      "end_frame": 17136,
+      "states": [
+        {
+          "reveal": 0,
+          "start_frame": 16897,
+          "end_frame": 17136
         }
       ]
     },
     {
       "id": "outro",
       "template": "outro",
-      "start_frame": 16751,
-      "end_frame": 17307,
+      "start_frame": 17136,
+      "end_frame": 17692,
       "states": [
         {
           "reveal": 0,
-          "start_frame": 16751,
-          "end_frame": 17307
+          "start_frame": 17136,
+          "end_frame": 17692
         }
       ]
     }
@@ -1552,31 +1578,45 @@
       "audio_samples": 368640
     },
     {
+      "id": "h62e41a7",
+      "scene": "later-identifications",
+      "start_frame": 16512,
+      "end_frame": 16737,
+      "audio_samples": 311040
+    },
+    {
+      "id": "h14bd2a6",
+      "scene": "six-identifications",
+      "start_frame": 16737,
+      "end_frame": 16897,
+      "audio_samples": 207360
+    },
+    {
       "id": "h2a5e43b",
       "scene": "identity-scope",
-      "start_frame": 16512,
-      "end_frame": 16751,
+      "start_frame": 16897,
+      "end_frame": 17136,
       "audio_samples": 334080
     },
     {
       "id": "hc9c673f",
       "scene": "outro",
-      "start_frame": 16751,
-      "end_frame": 16984,
+      "start_frame": 17136,
+      "end_frame": 17369,
       "audio_samples": 357120
     },
     {
       "id": "he593c8f",
       "scene": "outro",
-      "start_frame": 16984,
-      "end_frame": 17080,
+      "start_frame": 17369,
+      "end_frame": 17465,
       "audio_samples": 138240
     },
     {
       "id": "h6980aac",
       "scene": "outro",
-      "start_frame": 17080,
-      "end_frame": 17307,
+      "start_frame": 17465,
+      "end_frame": 17692,
       "audio_samples": 276480
     }
   ],

@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-h10-research-outline
 title: Prepare Curio H10 Franklin source refresh and outline choices
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-gpt6-h10-freshness-coda
+claimed_at: 2026-10-16T01:18:26Z
 created_at: 2026-10-15T16:33:45Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -78,3 +78,9 @@ video SHA-256 `e11a22a7a29086a06a8261943cd3e78bea6775223705cb3eab9b8dbdffa1a559`
 獨立新查核員 `codex-gpt6-h10-fact-round2` 對 SHA-256 `236E94B49168E52E57F6C063C9CD377FDF2086CC91FB0907932A3D13FC3389AC` 完成兩句改稿與舊版 78 個已確認主張中固定種子抽樣 26 句（含兩句改稿）的直接原始頁複查，26／26 可支持、事實修文 0。完整來源、HTTP 200 讀回、逐句表與聽眾檢查見 [verify-2.md](../../docs/videos/curio-h10/verify-2.md)。
 
 另找到 [University of Waterloo 2026-05-06 發布](https://uwaterloo.ca/news/media/dna-matches-identify-four-more-sailors-franklin-expedition)：再辨認四名船員，累計六名。現有結尾仍以 2024 Fitzjames 作最後新資訊；台詞沒有直接錯誤，但對 2026-10-16 的資料查核標示而言有近況缺口。**正式劇本史料關卡 HOLD，不送站主劇本核准。**本查核員只建議於 Fitzjames 回收後加很短的 2026 身分研究後記並同步來源／說明；不自行改稿。後續改字應綁新 SHA 重查事實與敘事盲評，必要時重走 brief 核准。本輪未付費、未送後台。
+
+## 2026-10-16 身分研究後記修稿
+
+作者 `codex-gpt6-h10-freshness-coda` 依獨立查核的新鮮度 HOLD，直接閱讀 Waterloo 2026-05-06 公告，於 2024 Fitzjames 紙條簽名回收之後加兩句短後記：2026 年五月再辨認四名船員、累計六名。原 A 案 brief 完全未動；原劇本 80 句未改字；完整變更與邊界見 [freshness-coda.md](../../docs/videos/curio-h10/freshness-coda.md)。
+
+本版 `video.json` SHA-256 `4EF199C9FC35E0761004A64EF32434EEA483DFAF5B25AC4DB28D0C154C024680`；`script.md` SHA-256 `A4A64B02732D97C9DDB216B2CD42F789D95A0B0ADEB8AB3CE22B3C9CA679E596`。82 句、文字估時 9.829 分；lint 0 errors、2 個既有畫面警告，沒有付費呼叫。**第 2 輪 verify-2 的 HOLD 尚未解除**：須請新的獨立史料查核員做第 3 輪，並由獨立敘事盲評者針對新版劇本重新評分；兩者都通過才由主代理送站主正式劇本核准。本作者不送後台、不開始製作。
