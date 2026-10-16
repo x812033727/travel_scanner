@@ -25,7 +25,10 @@ from app.models import User, VideoToolToken
 from app.problems import AppError
 from app.video_budget import recovery, service
 from app.video_budget.models import (
+    FOLLOWON_LIMIT_USD,
+    FOLLOWON_SLUGS,
     PILOT_LIMIT_USD,
+    PILOT_LIMITS_USD,
     PILOT_SLUGS,
     VideoPilotBudget,
     VideoPilotBudgetOperation,
@@ -59,7 +62,10 @@ async def sessions(tmp_path: Path) -> AsyncIterator[async_sessionmaker[AsyncSess
         )
         await connection.execute(
             sa.insert(VideoPilotBudget),
-            [{"slug": slug, "limit_usd": PILOT_LIMIT_USD} for slug in PILOT_SLUGS],
+            [
+                {"slug": slug, "limit_usd": PILOT_LIMIT_USD}
+                for slug in (SLUG, OTHER_SLUG, V2_SLUG, OTHER_V2_SLUG)
+            ],
         )
     yield async_sessionmaker(database, expire_on_commit=False)
     await database.dispose()
@@ -144,7 +150,7 @@ async def test_cross_stage_reservations_hold_exactly_at_boundary(
 async def test_v2_remakes_have_independent_accounts_and_legacy_slugs_stay_protected(
     sessions: async_sessionmaker[AsyncSession],
 ) -> None:
-    assert PILOT_SLUGS == {SLUG, OTHER_SLUG, V2_SLUG, OTHER_V2_SLUG}
+    assert PILOT_SLUGS == {SLUG, OTHER_SLUG, V2_SLUG, OTHER_V2_SLUG} | FOLLOWON_SLUGS
     for slug in (SLUG, OTHER_SLUG, V2_SLUG):
         hold = await _reserve(sessions, "full-film", "25", slug=slug)
         assert hold is not None and hold.dispatch_allowed
@@ -226,6 +232,144 @@ async def test_b18_v2_old_hold_can_be_reconciled_after_cap_change(
         Decimal("3"),
         Decimal("2"),
     )
+
+
+@pytest.mark.asyncio
+async def test_b18_v2_old_25_account_can_settle_and_release_without_new_dispatch(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    async with sessions() as session:
+        session.add_all(
+            [
+                VideoPilotBudgetOperation(
+                    slug=OTHER_V2_SLUG,
+                    operation_id=operation_id,
+                    category="image",
+                    provider="minimax",
+                    model="image-01",
+                    max_usd=Decimal("2"),
+                    status="reserved",
+                    attempts=1,
+                )
+                for operation_id in ("old-settle", "old-release")
+            ]
+        )
+        await session.commit()
+    async with sessions() as session:
+        await service.mark_uncertain(session, slug=OTHER_V2_SLUG, operation_id="old-settle")
+    async with sessions() as session:
+        await service.settle(
+            session,
+            slug=OTHER_V2_SLUG,
+            operation_id="old-settle",
+            actual_usd=Decimal("1.5"),
+            receipt_ref="invoice:old-25-account",
+        )
+    async with sessions() as session:
+        await service.release(
+            session,
+            slug=OTHER_V2_SLUG,
+            operation_id="old-release",
+            reason="provider proved no charge",
+        )
+    async with sessions() as session:
+        account = await session.get(VideoPilotBudget, OTHER_V2_SLUG)
+        settled = await session.scalar(
+            sa.select(VideoPilotBudgetOperation).where(
+                VideoPilotBudgetOperation.operation_id == "old-settle"
+            )
+        )
+        released = await session.scalar(
+            sa.select(VideoPilotBudgetOperation).where(
+                VideoPilotBudgetOperation.operation_id == "old-release"
+            )
+        )
+    assert account is not None and account.limit_usd == PILOT_LIMIT_USD
+    assert settled is not None and (settled.status, settled.receipt_ref) == (
+        "settled",
+        "invoice:old-25-account",
+    )
+    assert released is not None and (released.status, released.release_reason) == (
+        "released",
+        "provider proved no charge",
+    )
+    view = await _summary(sessions, OTHER_V2_SLUG)
+    assert view is not None
+    assert (view.limit_usd, view.settled_usd, view.remaining_usd) == (
+        Decimal("5"),
+        Decimal("1.5"),
+        Decimal("3.5"),
+    )
+    with pytest.raises(AppError) as held:
+        await _reserve(sessions, "new-after-reconcile", "1", slug=OTHER_V2_SLUG)
+    assert held.value.code == "video_budget_missing_account"
+
+
+@pytest.mark.asyncio
+async def test_followon_accounts_fail_closed_until_each_usd_5_row_exists(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    assert FOLLOWON_SLUGS == {
+        "story-five-lego-legoland",
+        "story-five-costco-hot-dog",
+        "story-five-adidas-puma-brothers",
+        "story-five-ajinomoto-chip-film",
+        "story-five-pringles-vat-case",
+    }
+    for slug in sorted(FOLLOWON_SLUGS):
+        assert PILOT_LIMITS_USD[slug] == FOLLOWON_LIMIT_USD
+        with pytest.raises(AppError) as missing:
+            await _reserve(sessions, "first", "0.5", slug=slug)
+        assert missing.value.code == "video_budget_missing_account"
+
+    async with sessions() as session:
+        session.add_all(
+            [
+                VideoPilotBudget(slug=slug, limit_usd=FOLLOWON_LIMIT_USD)
+                for slug in FOLLOWON_SLUGS
+            ]
+        )
+        await session.commit()
+    for slug in sorted(FOLLOWON_SLUGS):
+        hold = await _reserve(sessions, "first", "5", slug=slug)
+        assert hold is not None and hold.dispatch_allowed
+        with pytest.raises(AppError) as exhausted:
+            await _reserve(sessions, "second", "0.000001", slug=slug)
+        assert exhausted.value.code == "video_budget_exhausted"
+        async with sessions() as session:
+            await service.settle(
+                session,
+                slug=slug,
+                operation_id="first",
+                actual_usd=Decimal("4.5"),
+                receipt_ref=f"invoice:{slug}",
+            )
+        view = await _summary(sessions, slug)
+        assert view is not None and (
+            view.limit_usd,
+            view.settled_usd,
+            view.remaining_usd,
+        ) == (
+            FOLLOWON_LIMIT_USD,
+            Decimal("4.5"),
+            Decimal("0.5"),
+        )
+
+
+@pytest.mark.asyncio
+async def test_followon_account_with_wrong_limit_is_not_treated_as_missing(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    slug = "story-five-lego-legoland"
+    async with sessions() as session:
+        session.add(VideoPilotBudget(slug=slug, limit_usd=PILOT_LIMIT_USD))
+        await session.commit()
+    with pytest.raises(AppError) as refused:
+        await _reserve(sessions, "first", "1", slug=slug)
+    assert refused.value.code == "video_budget_invalid_account"
+    with pytest.raises(AppError) as hidden:
+        await _summary(sessions, slug)
+    assert hidden.value.code == "video_budget_invalid_account"
 
 
 @pytest.mark.asyncio

@@ -1,4 +1,4 @@
-"""A fail-closed, per-slug USD 25 gate shared by every paid pilot dispatch.
+"""A fail-closed, per-slug full-film dollar gate shared by paid story dispatches.
 
 ``reserve`` commits its hold before the caller talks to a vendor. All mutations lock the
 pilot's account row, so concurrent stages cannot each spend the same remaining dollars.
@@ -20,7 +20,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.problems import AppError
 from app.video_budget.models import (
+    FOLLOWON_LIMIT_USD,
     PILOT_LIMIT_USD,
+    PILOT_LIMITS_USD,
     PILOT_SLUGS,
     VideoPilotBudget,
     VideoPilotBudgetOperation,
@@ -32,7 +34,7 @@ MICRO_USD = Decimal("0.000001")
 ACTIVE_STATUSES = frozenset(("reserved", "uncertain"))
 OPERATOR_NO_CHARGE_PREFIX = "operator-no-charge evidence="
 B18_V2_SLUG = "story-conveyor-belt-sushi-v2"
-B18_V2_LIMIT_USD = Decimal("5.000000")
+B18_V2_LIMIT_USD = FOLLOWON_LIMIT_USD
 
 
 class BudgetError(AppError):
@@ -90,15 +92,17 @@ def _label(value: str, *, name: str, length: int) -> str:
 def _account_limit_is_valid(slug: str, limit_usd: Decimal) -> bool:
     if slug == B18_V2_SLUG:
         return limit_usd in (PILOT_LIMIT_USD, B18_V2_LIMIT_USD)
-    return limit_usd == PILOT_LIMIT_USD
+    return limit_usd == PILOT_LIMITS_USD.get(slug)
 
 
 async def _locked_account(session: AsyncSession, slug: str) -> VideoPilotBudget:
     account = await session.scalar(
         select(VideoPilotBudget).where(VideoPilotBudget.slug == slug).with_for_update()
     )
-    if account is None or not _account_limit_is_valid(slug, account.limit_usd):
+    if account is None:
         raise BudgetError(503, "video_budget_missing_account", "試作影片的費用帳戶尚未就緒")
+    if not _account_limit_is_valid(slug, account.limit_usd):
+        raise BudgetError(503, "video_budget_invalid_account", "試作影片的費用帳戶上限不符")
     return account
 
 
@@ -221,7 +225,7 @@ async def reserve(
             raise BudgetError(
                 429,
                 "video_budget_exhausted",
-                "這次付費請求會超過本片 25 美元總上限，已停止送出",
+                f"這次付費請求會超過本片 {account.limit_usd:g} 美元總上限，已停止送出",
             )
         if existing is None:
             existing = VideoPilotBudgetOperation(
@@ -343,12 +347,14 @@ async def summary(session: AsyncSession, slug: str) -> BudgetSummary | None:
     if not is_pilot(slug):
         return None
     account = await session.scalar(select(VideoPilotBudget).where(VideoPilotBudget.slug == slug))
-    if account is None or not _account_limit_is_valid(slug, account.limit_usd):
+    if account is None:
         raise BudgetError(503, "video_budget_missing_account", "試作影片的費用帳戶尚未就緒")
+    if not _account_limit_is_valid(slug, account.limit_usd):
+        raise BudgetError(503, "video_budget_invalid_account", "試作影片的費用帳戶上限不符")
     reserved, settled, uncertain, settled_count, released, overruns = await _totals(session, slug)
-    # Show the intended USD 5 ceiling even before the migration lowers the
-    # persisted row. This is a read-only transitional state; reserve stays held.
-    effective_limit = B18_V2_LIMIT_USD if slug == B18_V2_SLUG else account.limit_usd
+    # Show the intended ceiling even before 0133 lowers B18's persisted row.
+    # This is a read-only transitional state; reserve stays held at USD 25.
+    effective_limit = PILOT_LIMITS_USD[slug]
     remaining = effective_limit - reserved - settled
     return BudgetSummary(
         slug=slug,

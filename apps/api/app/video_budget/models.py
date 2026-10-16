@@ -31,15 +31,26 @@ def utcnow() -> datetime:
 
 
 PILOT_LIMIT_USD = Decimal("25.000000")
-PILOT_SLUGS = frozenset(
+FOLLOWON_LIMIT_USD = Decimal("5.000000")
+FOLLOWON_SLUGS = frozenset(
     (
-        # Keep the original pilot artifacts protected even when the remake uses isolated slugs.
-        "story-rolling-suitcase",
-        "story-conveyor-belt-sushi",
-        "story-rolling-suitcase-v2",
-        "story-conveyor-belt-sushi-v2",
+        "story-five-lego-legoland",
+        "story-five-costco-hot-dog",
+        "story-five-adidas-puma-brothers",
+        "story-five-ajinomoto-chip-film",
+        "story-five-pringles-vat-case",
     )
 )
+# Register follow-on stories before their accounts exist, so a rollback cannot silently
+# send one of their paid calls without a durable per-film reservation.
+PILOT_LIMITS_USD = {
+    "story-rolling-suitcase": PILOT_LIMIT_USD,
+    "story-conveyor-belt-sushi": PILOT_LIMIT_USD,
+    "story-rolling-suitcase-v2": PILOT_LIMIT_USD,
+    "story-conveyor-belt-sushi-v2": FOLLOWON_LIMIT_USD,
+    **{slug: FOLLOWON_LIMIT_USD for slug in FOLLOWON_SLUGS},
+}
+PILOT_SLUGS = frozenset(PILOT_LIMITS_USD)
 OPERATION_STATUSES = ("reserved", "uncertain", "settled", "released")
 
 

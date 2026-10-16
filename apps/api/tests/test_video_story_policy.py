@@ -51,6 +51,7 @@ from app.video_automation.models import (
 )
 from app.video_automation.schemas import SeriesPatch
 from app.video_budget.models import (
+    FOLLOWON_SLUGS,
     PILOT_LIMIT_USD,
     PILOT_SLUGS,
     VideoPilotBudget,
@@ -259,7 +260,10 @@ async def db() -> AsyncIterator[async_sessionmaker[AsyncSession]]:
         )
         await connection.execute(
             insert(VideoPilotBudget),
-            [{"slug": slug, "limit_usd": PILOT_LIMIT_USD} for slug in PILOT_SLUGS],
+            [
+                {"slug": slug, "limit_usd": PILOT_LIMIT_USD}
+                for slug in PILOT_SLUGS - FOLLOWON_SLUGS
+            ],
         )
     factory = async_sessionmaker(engine, expire_on_commit=False)
     async with factory() as session:
