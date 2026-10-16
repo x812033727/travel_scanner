@@ -98,3 +98,7 @@ video SHA-256 `e11a22a7a29086a06a8261943cd3e78bea6775223705cb3eab9b8dbdffa1a559`
 ## 2026-10-16 H10 旁白送審
 
 逐句試聽頁與音訊 QA 收據已產生，review-push --gate audio 成功，review-pull 現場讀回 waiting for the owner。已請站主試聽 7 個重點旗標，核准讀回前不啟動 H10 插畫。
+
+## 2026-10-16 H10 旁白核准與插畫製作
+
+站主回覆已試聽並在後台核准；協調者以 `review-pull --gate audio` 現場讀回 `audio: approval recorded`。`keyframes --dry-run` 為 73 鏡、MiniMax image-01 1K、最多三 take 約 US$2.96；共用估算帳本 `h10-keyframes-20261016-01` 先預留 US$2.96，連同已用估額 US$0.70 為 US$3.66，低於本集 US$6。已啟動逐圖生成與 Gemini 圖像評審；尚未完成插畫驗收，也未送分鏡後台。

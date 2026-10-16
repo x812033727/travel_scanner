@@ -49,8 +49,8 @@
 | H12-C02 | arrival-date、landing-no-reply、horn-call、rocket-call |
 | H12-C03 | letter-tease、boat-launched、boat-waits、letter-recalled、serious-absence、boat-report、search-again、memory-recalled、letter-reader |
 | H12-C09 | west-tease、inspector-lands、investigator-opinion |
-| H12-C15 | poem-tease、poem-bridge、poem-recalled、untouched-meal、overturned-chair、poem-effect、memory-recalled、kitchen-recalled、document-card、two-mysteries |
-| H12-C17 | opening-question、search-island、time-place-question、poem-bridge、two-mysteries、ending-outro |
+| H12-C15 | poem-tease、poem-bridge、poem-recalled、untouched-meal、overturned-chair、poem-effect、memory-recalled、kitchen-recalled、document-card |
+| H12-C17 | opening-question、search-island、time-place-question、poem-bridge、ending-outro |
 | H12-C04 | entrance-gate、kitchen-door、door-boundary、cold-fire、empty-beds |
 | H12-C05 | room-question、lamp-ready、kitchen-work、kitchen-recalled、document-card |
 | H12-C01 | who-missing、replacement-duty |

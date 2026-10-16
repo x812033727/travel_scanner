@@ -89,3 +89,7 @@ scope:
 ### 2026-10-16 M09 旁白送審
 
 逐句試聽頁與 audio-qa-1.md 已產生，review-push --gate audio 成功，review-pull 現場讀回 waiting for the owner。已請站主試聽 7 個較有語義影響的旗標；因主機負載，離線 Whisper 未產生第二份可用逐句結果，不宣稱已離線確認。核准讀回前不啟動 M09 插畫。
+
+### 2026-10-16 M09 旁白核准與插畫製作
+
+站主回覆已試聽並在後台核准；協調者以 `review-pull --gate audio` 現場讀回 `audio: approval recorded`。`keyframes --dry-run` 為 87 鏡、MiniMax image-01 1K、最多三 take 約 US$3.52；共用估算帳本 `m09-keyframes-20261016-01` 先預留 US$3.52，連同已用估額 US$0.70 為 US$4.22，低於本集 US$6。已啟動逐圖生成與 Gemini 圖像評審；尚未完成插畫驗收，也未送分鏡後台。
