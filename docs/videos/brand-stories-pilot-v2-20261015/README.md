@@ -12,6 +12,10 @@ A01 已保留[第九輪實際全文與獨立診斷](script-review-20261016/READM
 
 2026-10-17 的[第 19 輪離線候選](preproduction-20261016/A01-round19-origin-year-repeat-candidate/README.md)在第 14 輪來源修正後，逐輪保存起源企劃、逐句來源及重複年份的窄修；每輪有獨立 manifest。[精確來源差異](preproduction-20261016/A01-round19-origin-year-repeat-candidate/independent-review-20261017.md)及[108 句整稿人工閱讀](preproduction-20261016/A01-round19-origin-year-repeat-candidate/independent-full-script-review-20261017.md)已各自完成離線覆核，沒有找到新的確定旁白阻擋。[第 20 輪](preproduction-20261016/A01-round20-i17-fact-index-candidate/README.md)只補一筆來源表事實索引；[獨立差異複核](preproduction-20261016/A01-round20-i17-fact-index-candidate/independent-review-20261017.md)已通過，108 句旁白未變。正式工人的 verifier、listener、盲讀敘事審核與實稿收據仍未完成；這不是第九輪失敗的覆寫，也不是配音、MiniMax 圖像或成片完成。
 
+[A01 的 80→81 詞典稽核唯讀閘門](preproduction-20261016/A01-host-transition-export-candidate/README.md)與[獨立程式審查](preproduction-20261016/A01-host-transition-export-candidate/independent-review-20261017.md)已完成離線範圍；聚焦測試 6／6 通過。第 81 筆只會處理既有稿與共用詞典的來源綁定，**不會安裝第 20 輪六章**；既有章稿還需要另一筆受審的修訂與正式機排他寫入、前後讀回。2026-10-17 後台唯讀顯示 A01 仍因第九輪說故事審查停住，英／日／韓配音勾選已儲存但須等無燒錄字幕中文版與可關閉繁中 CC 成片過審才製作。
+
+B18 較早的 103 鏡分鏡保留為歷史備料；最新[單線敘事與逐景主張候選](preproduction-20261016/B18-claim-granularity-candidate-20261017/README.md)為 **85 景、88 句、66 景插畫、65 筆正式狀態 `UNCHECKED`**，靜態正文估算 560.97 秒，沒有 TTS 實測。[整稿與史料獨立審讀](preproduction-20261016/B18-precision-reconciliation-candidate-20261017/independent-full-story-source-review-20261017.md)通過未改的旁白與來源，[最後一筆主張差異審查](preproduction-20261016/B18-claim-granularity-candidate-20261017/independent-claim-granularity-review-20261017.md)通過；[靜態畫面覆核](preproduction-20261016/B18-precision-reconciliation-candidate-20261017/INDEPENDENT-VISUAL-REVIEW.md)僅確認圖文配置與手機字卡預覽。1971／1974 年給茶設備來源分歧只留於查核註記，口播不定年份。新來源和主張需要另作工人輸入資料列審查、重建匯入檔；正式 verifier、listener、narrative、語音、圖像、CC、成片與站主看片都仍待完成。
+
 | 順序 | 新版作品 slug | 觀眾追的問題 | 新版企劃 |
 | --- | --- | --- | --- |
 | A01 | `story-rolling-suitcase-v2` | 輪子箱早有前案，為何直到 1970 年才進百貨公司？後來如何更順手？ | [輪子行李箱](A01-rolling-suitcase.md) |

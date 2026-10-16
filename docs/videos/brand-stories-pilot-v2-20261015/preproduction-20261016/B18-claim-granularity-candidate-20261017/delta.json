@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "status": "OFFLINE_CLAIM_GRANULARITY_CORRECTION_ONLY",
+  "base_manifest_sha256": "cb28ae7bb6aed7a30c639318504e8e11386aee8de1404e9b71b1c372c1e40953",
+  "claim_rows": [
+    {
+      "id": "t6",
+      "before": {
+        "id": "t6",
+        "claim": "做好的盤子從後場放上直線輸送帶",
+        "scene": "turn-s072",
+        "source": 2,
+        "fact": 12,
+        "verdict": "UNCHECKED",
+        "note": "發明協會後場到用餐區的直線輸送；無給茶年份。"
+      },
+      "after": {
+        "id": "t6",
+        "claim": "做好的盤子從後場放上輸送帶",
+        "scene": "turn-s072",
+        "source": 2,
+        "fact": 12,
+        "verdict": "UNCHECKED",
+        "note": "發明協會後場到用餐區的直線輸送；無給茶年份。"
+      }
+    }
+  ],
+  "unchanged": [
+    "series.json",
+    "reuse-intent.json",
+    "chapters/hook.json",
+    "chapters/origin.json",
+    "chapters/idea.json",
+    "chapters/engine.json",
+    "chapters/now.json",
+    "all scenes, lines, visuals, loops and other claims in chapters/turn.json"
+  ],
+  "estimated_body_seconds_before": 560.9666666666667,
+  "estimated_body_seconds_after": 560.9666666666667,
+  "actual_tts_seconds": null,
+  "external_calls": 0
+}
