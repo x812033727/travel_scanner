@@ -15,7 +15,8 @@ import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { cuePieces } from "../core/captions.mjs";
 import { lookHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
 import { dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, lexiconProposals, sandbox } from "../core/fixtures/load.mjs";
-import { NARRATIVE_PANEL, PANEL_INSTRUCTIONS } from "../core/narrative.mjs";
+import { NARRATIVE_PANEL, PANEL_INSTRUCTIONS, PANEL_RULES_SHA256 } from "../core/narrative.mjs";
+import { scriptCheckBinding } from "../core/script-check.mjs";
 import { isValidTerm, validateLexicon } from "../core/lexicon.mjs";
 import { shortsFile } from "../shorts/episode.mjs";
 import { atomicWrite, docDir, readJson, ROOT, UsageError } from "../core/paths.mjs";
@@ -2005,6 +2006,14 @@ test("the storytelling panel reads the script blind between the listener and the
   const state = readJson(path.join(box.work, slug, "auto.json"));
   assert.equal(await automation.saveAndLint(state, { video: longExplainer() }), null);
 
+  // A legacy PASS for identical words lacks the panel rules version. It must be read again.
+  const panelFile = path.join(box.work, slug, "review", "narrative.json");
+  mkdirSync(path.dirname(panelFile), { recursive: true });
+  writeFileSync(panelFile, JSON.stringify({
+    ...scriptCheckBinding(readJson(path.join(box.root, "docs", "videos", slug, "video.json"))),
+    round: 0, passed: true, answers: [], failed: [], advisory: [],
+  }));
+
   // 1. It passes: the panel is asked once, blind, and the verdict is bound to the script it read.
   assert.match(await automation.narrativeGate(state), /the storytelling panel passed \(round 1\)/);
   const call = site.calls.run.at(-1);
@@ -2015,6 +2024,7 @@ test("the storytelling panel reads the script blind between the listener and the
   assert.equal(call.payload.questions.length, NARRATIVE_PANEL.length, "every question, the opening_hooks one included");
   const verdict = readJson(path.join(box.work, slug, "review", "narrative.json"));
   assert.deepEqual([verdict.passed, verdict.round, verdict.failed], [true, 1, []]);
+  assert.equal(verdict.panel_rules_sha256, PANEL_RULES_SHA256);
   assert.equal(await automation.narrativeGate(state), null, "a passed panel bound to this script is not asked again");
 
   // 2. A required "no" is a rewrite, and the script is verified, heard and read again.

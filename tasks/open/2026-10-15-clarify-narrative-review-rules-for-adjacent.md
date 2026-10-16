@@ -13,6 +13,12 @@ depends_on: []
 scope:
   - tools/video/core/narrative.mjs
   - tools/video/core/narrative.test.mjs
+  - tools/video/core/state.mjs
+  - tools/video/core/state.test.mjs
+  - tools/video/automation/story.mjs
+  - tools/video/automation/story.test.mjs
+  - tools/video/automation/flow.mjs
+  - tools/video/automation/automation.test.mjs
   - tasks/open/2026-10-15-clarify-narrative-review-rules-for-adjacent.md
 ---
 
@@ -27,7 +33,8 @@ A01's genuine narrative round 9 rejected `chapters_link`, `payoffs` and `one_thr
 - [x] Adjacent question/answer pairs and distant callbacks have clear, consistent review criteria; unanswered or ambiguous questions still fail.
 - [x] Product-history storytelling has an explicit scope consistent with the approved format, while unrelated examples and unsupported historical causation still fail. Do not assume every product montage has one story line.
 - [x] Tests bind the precise questions and representative valid/invalid examples without claiming that a deterministic fixture proves a live model's narrative judgment.
-- [ ] Existing failures, counters and request/result hashes remain intact. Any changed question creates a fresh request and review; no receipt is silently reinterpreted as PASS.
+- [x] Existing failures, counters and request/result hashes remain intact. Any changed question creates a fresh request and review; no receipt is silently reinterpreted as PASS.
+- [x] A saved PASS is reusable only under the same panel instructions, question text/order, and required-answer contract; older receipts without the rules hash become stale without mutating their recorded verdict or restarting completed paid work.
 
 ## Steps
 
@@ -35,6 +42,7 @@ A01's genuine narrative round 9 rejected `chapters_link`, `payoffs` and `one_thr
 - [x] Compare `payoffs`, `chapters_link` and `one_thread` with current writing guidance and the approved frozen story scope. Resolve semantics before requesting another unchanged panel.
 - [x] Propose the narrowest wording change with independent review and focused positive/negative tests. If writing guidance also changes, expand scope to both mirrored skill references before editing them.
 - [ ] Follow separate merge/deploy authority and actual per-script source/hash review. Do not start media or create a pilot receipt through this task.
+- [x] Bind only the narrative panel receipt to its rules hash across the story and general-video gates and read-only status; preserve the shared script/fact-check binding for other reviews.
 
 ## How to verify
 
@@ -53,3 +61,7 @@ The offline A01 candidate changes only `origin-01`/`zc7k`: 「開場那一家人
 Using the unchanged actual `video.json` SHA `16b290c78ea72bcd723cc99812ddae73dc838c8c461c64c7b4777c3ea4037abe`, the old/new blind panel payloads have the same narration SHA `1950a1e1dd4423edddc266558ca697a079adbc9516094a04d7bed211f5f2af6b`, 13 questions in the same order, and differ only in `chapters_link`, `payoffs`, `one_thread`. SHA256 of serialized old payload: `9da05b5d74fefceced8cee30383a0253f6e2bf54839b2e6cea7adc7d14abbf7e`; new payload: `fa80cd3711d4c90d959fbf2922c47bccce82679b8182f310024ab50f685fa306`. These are offline payload hashes, not a new model verdict. The prior A01 no answers still fail; a fresh review would be required after a separately authorized deployment and text correction. Current A01 remains genuinely FAIL, with no pilot receipt or media.
 
 Focused test `node --test tools/video/core/narrative.test.mjs` passed 13/13; `tools/tasks.mjs check` passed with pre-existing stale-owner and overlapping-scope warnings; `git diff --check` passed. The optional combined narrative/story test could not load `pinyin-pro` because this new managed worktree has no `node_modules`; it exited before the story tests ran. Hosted CI will provide that broader check after PR creation.
+
+2026-10-16 follow-up before release: independent review found a genuine old-PASS reuse hole. `scriptCheckBinding` contains narration/script hashes only; `narrativeRecord` omitted the panel rule version; `automation/story.mjs` and `flow.mjs` skip a saved PASS when only the script matches, while `core/state.mjs` also shows it as passed. This scope was expanded before code edits to add only a narrative-specific rules hash and its three consumers/tests, leaving the shared `scriptCheckMatches` unchanged. Existing completed videos must not be automatically reopened for paid work. The overlapping old task `2026-10-14-ai-and-tech-videos-tell-one` belongs to merged PR #1504, and `2026-10-14-support-10-minute-minimax-cute-brand` belongs to merged PR #1499; neither branch has an active worktree or open PR. `2026-10-16-video-worker-a-rate-limited-topic` still says in-progress and lists `flow.mjs`, but its named branch has no local worktree, remote head or open PR at this check. The edit is limited to the narrative gate near `flow.mjs:3318` and does not change that worker-rate-limit task's area. If that branch reappears, reconcile before merge.
+
+The rule digest binds the exact panel instructions, ordered question id/text/required fields and the current verdict contract version. Narrative consumers now reject missing or changed digests; the pilot's direct script-review attestation also checks the current narrative receipt, so re-signing a stale receipt cannot waive the panel. The shared script/fact-check binding is unchanged. Local tests prove a legacy PASS is re-judged in both flows, status labels it stale, and a completed video's next move does not restart paid production. No live A01 judge call occurred: its existing round 9 FAIL remains the actual verdict.

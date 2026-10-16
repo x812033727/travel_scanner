@@ -15,7 +15,8 @@ import { clipsHash, drawnShotScenes, EXPLAINER_PRESET, hasCast, isExplainer, loo
 import { explainerFixture, lexiconProposals, sandbox, storyFixture, storySeries, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { isValidTerm, validateLexicon } from "../core/lexicon.mjs";
 import { BRIEF_SECTIONS_DRAMA, briefSectionsFor } from "../core/lint.mjs";
-import { NARRATIVE_PANEL } from "../core/narrative.mjs";
+import { NARRATIVE_PANEL, PANEL_RULES_SHA256 } from "../core/narrative.mjs";
+import { scriptCheckBinding } from "../core/script-check.mjs";
 import { isStory } from "../core/story.mjs";
 import { readJson } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
@@ -649,6 +650,21 @@ test("a v2 pilot holds before TTS until an independent review binds the actual s
   receipt.files["script.md"] = sha(path.join(world.dir, "script.md"));
   saveReceipt();
   assert.equal(pilotScriptReviewProblem(places), null);
+
+  // A newly signed script-review file cannot bless an old panel PASS under obsolete questions.
+  const narrativeFile = path.join(workdir, "review", "narrative.json");
+  const currentPanel = readFileSync(narrativeFile, "utf8");
+  const legacyPanel = JSON.parse(currentPanel);
+  delete legacyPanel.panel_rules_sha256;
+  writeFileSync(narrativeFile, JSON.stringify(legacyPanel));
+  receipt.narrative_review_sha256 = sha(narrativeFile);
+  saveReceipt();
+  assert.match(pilotScriptReviewProblem(places), /stale under the current questions/);
+  writeFileSync(narrativeFile, currentPanel);
+  receipt.narrative_review_sha256 = sha(narrativeFile);
+  saveReceipt();
+  assert.equal(pilotScriptReviewProblem(places), null);
+
   const scriptFile = path.join(world.dir, "script.md");
   const originalScript = readFileSync(scriptFile, "utf8");
   writeFileSync(scriptFile, `${originalScript}\n手動加上的旁白。`);
@@ -973,8 +989,17 @@ test("a story goes from the site's job to its first media step: started from its
   assert.ok(state().notes.some((note) => /listener's edit of hook dropped: .*number/.test(note)));
   assert.equal(state().listener_done, true);
 
+  // An old PASS bound to these very words cannot waive the current blind panel questions.
+  const panelFile = path.join(workdir, "review", "narrative.json");
+  mkdirSync(path.dirname(panelFile), { recursive: true });
+  writeFileSync(panelFile, JSON.stringify({
+    ...scriptCheckBinding(world.video()), round: 0, passed: true,
+    answers: [], failed: [], advisory: [],
+  }));
+
   // No script gate for a story: approved here with the reason; nothing went to the owner.
   assert.match(await automation.step(), /a story has no script gate; the screenplay is approved here/);
+  assert.equal(readJson(panelFile).panel_rules_sha256, PANEL_RULES_SHA256);
   assert.equal(readApprovals(workdir).approvals.find((entry) => entry.gate === "script").note, SCRIPT_NOTE);
   assert.ok(existsSync(path.join(dir, "script.md")));
   assert.equal(world.runs.length, 0, "no media command and no review before the script is approved");
@@ -1023,6 +1048,15 @@ test("past the script, a story takes the drama's own steps to the upload: Jev's 
   assert.equal(runs.some((run) => run.startsWith("look ")), false, "no cast, no character sheets");
   assert.equal(runs.some((run) => run.startsWith("music ")), false, "music is off on the settings tab");
   assert.equal(site.reviewsOf(SLUG).some((review) => review.gate === "script" || review.gate === "outline"), false, "neither the outline nor the script went to the owner");
+
+  const panelFile = path.join(world.workdir, "review", "narrative.json");
+  const oldPanel = readJson(panelFile);
+  delete oldPanel.panel_rules_sha256;
+  writeFileSync(panelFile, JSON.stringify(oldPanel));
+  const before = [runs.length, site.calls.run.length];
+  await automation.move(state(), new Map());
+  assert.equal(state().status, "done");
+  assert.deepEqual([runs.length, site.calls.run.length], before, "a finished upload is not restarted or charged after panel rules move");
 });
 
 test("a loop one chapter plants and a later one pays off survives into the merged script", async () => {

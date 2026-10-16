@@ -4,9 +4,10 @@
 // hooks placed now and then. What can be read off the script and its estimated timeline is here,
 // as lint problems for the writer; what only a reader can judge is the blind yes-or-no panel
 // (NARRATIVE_PANEL) the worker asks after the listener's edit, and sends back to the writer.
+import { createHash } from "node:crypto";
 import { isDrama, isExplainer } from "./drama.mjs";
 import { eachLine } from "./schema.mjs";
-import { scriptCheckBinding } from "./script-check.mjs";
+import { scriptCheckBinding, scriptCheckMatches } from "./script-check.mjs";
 import { isStory } from "./story.mjs";
 import { chapterList, formatClock, frameToSeconds } from "./timeline.mjs";
 
@@ -283,6 +284,19 @@ Markdown fence): {"answers": [{"id": "<question id>", "yes": true|false, "eviden
 <the quoted line>"}]}, one entry per question, in the questions' order.
 `.trim();
 
+// This is only the blind narrative panel's contract. A script may be unchanged while its
+// questions or required-answer rules change; other script/fact-check receipts remain valid.
+// Increment verdict_version if panelVerdict's PASS semantics change without a text change.
+export const PANEL_RULES_SHA256 = createHash("sha256").update(JSON.stringify({
+  instructions: PANEL_INSTRUCTIONS,
+  questions: NARRATIVE_PANEL.map(({ id, question, required }) => ({ id, question, required })),
+  verdict_version: 1,
+})).digest("hex");
+
+export function narrativeReviewMatches(check, doc) {
+  return Boolean(check?.panel_rules_sha256 === PANEL_RULES_SHA256 && scriptCheckMatches(check, doc));
+}
+
 /** The panel's payload: the script as text and the questions, nothing a reader could lean on. */
 export function panelPayload(doc, timeline) {
   return { narration: narrationText(doc, timeline), questions: NARRATIVE_PANEL.map(({ id, question }) => ({ id, question })) };
@@ -326,12 +340,13 @@ export function panelVerdict(answer) {
 }
 
 /**
- * The verdict as it is kept (NARRATIVE_REVIEW), bound to the script the panel read: a later edit
- * no longer matches it (scriptCheckMatches), so the panel is asked again.
+ * The verdict as it is kept (NARRATIVE_REVIEW), bound to both the script and the blind panel
+ * contract. A later edit or rule change makes it stale, without changing other script checks.
  */
 export function narrativeRecord(doc, verdict, round) {
   return {
     ...scriptCheckBinding(doc),
+    panel_rules_sha256: PANEL_RULES_SHA256,
     round,
     passed: verdict.passed,
     answers: verdict.answers,

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import test from "node:test";
 
 import { dramaFixture, explainerFixture, fixture, fixtureBrief, fixtureLexicon, storyFixture, storySeries } from "./fixtures/load.mjs";
@@ -14,13 +15,18 @@ import {
   NARRATIVE_PANEL,
   narrationText,
   narrativeProblems,
+  narrativeRecord,
+  narrativeReviewMatches,
   NEXT_VIDEO,
   outroNextVideoProblems,
+  PANEL_INSTRUCTIONS,
+  PANEL_RULES_SHA256,
   panelPayload,
   panelVerdict,
   repeatedFactProblems,
   requiredLoops,
 } from "./narrative.mjs";
+import { scriptCheckMatches } from "./script-check.mjs";
 import { MIN_EPISODE_MINUTES } from "./schema.mjs";
 import { estimateTimeline, FPS } from "./timeline.mjs";
 
@@ -207,6 +213,44 @@ test("the panel passes only when every required question is yes; a missing or ma
   assert.deepEqual(panelVerdict(loose).failed.map((each) => each.id), ["no_recap"]);
   assert.equal(panelVerdict({}).passed, false);
   assert.equal(panelVerdict(null).failed.length, NARRATIVE_PANEL.filter((question) => question.required).length);
+});
+
+test("a narrative PASS is reusable only for the script and exact panel rules that judged it", () => {
+  const doc = fixture();
+  const verdict = panelVerdict({ answers: NARRATIVE_PANEL.map(({ id }) => ({
+    id, yes: true, evidence: "[k7p2] 被審查的逐字稿原句",
+  })) });
+  const current = narrativeRecord(doc, verdict, 1);
+  assert.equal(current.panel_rules_sha256, PANEL_RULES_SHA256);
+  assert.equal(narrativeReviewMatches(current, doc), true);
+
+  const legacy = { ...current };
+  delete legacy.panel_rules_sha256;
+  assert.equal(scriptCheckMatches(legacy, doc), true, "other script checks keep their existing binding");
+  assert.equal(narrativeReviewMatches(legacy, doc), false, "an old PASS without rules is stale");
+
+  const rulesHash = ({ instructions = PANEL_INSTRUCTIONS, questions = NARRATIVE_PANEL.map(({ id, question, required }) => ({ id, question, required })) } = {}) => createHash("sha256").update(JSON.stringify({
+    instructions,
+    questions,
+    verdict_version: 1,
+  })).digest("hex");
+  const changedQuestion = NARRATIVE_PANEL.map(({ id, question, required }) => ({
+    id, question: id === "payoffs" ? `${question} Additional requirement.` : question, required,
+  }));
+  const changedRequired = NARRATIVE_PANEL.map(({ id, question, required }) => ({
+    id, question, required: id === "payoffs" ? !required : required,
+  }));
+  for (const changedRulesHash of [
+    rulesHash({ questions: changedQuestion }),
+    rulesHash({ questions: changedRequired }),
+    rulesHash({ instructions: `${PANEL_INSTRUCTIONS}\nAdditional panel rule.` }),
+  ]) {
+    assert.notEqual(changedRulesHash, PANEL_RULES_SHA256);
+    assert.equal(narrativeReviewMatches({ ...current, panel_rules_sha256: changedRulesHash }, doc), false);
+  }
+  const changedDoc = structuredClone(doc);
+  changedDoc.scenes[0].lines[0].text += "又一句。";
+  assert.equal(narrativeReviewMatches(current, changedDoc), false);
 });
 
 test("the panel carries a concrete protagonist or problem end to end and still rejects detours", () => {
