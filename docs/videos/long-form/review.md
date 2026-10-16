@@ -5477,9 +5477,22 @@ Ran: compared the current main-to-branch source diff and both prior review incre
 
 Non-claims: this is a one-file integration review. It does not re-review the other 107 files, establish A01 script quality, prove host worker behavior, or accept media, paid production, deployment, upload or publication. Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1454 video-logo-watermark merge with main increment: 1 file (2026-10-16)
+
+Reviewer: `claude-pr-review-1454`. Author: `claude-video-watermark`. Scope: DURATION_ONLY for `tools/video/assemble/cli.mjs` at `ae1c4ba9d48b7172409848de6186eeaa41e5ecca`, the merge of origin/main (`bb823ac0420aeb434b737e0559d0ec556667c9bf`, #1517) into claude/video-logo-watermark-b075f1, reviewed as `git diff bb823ac04 ae1c4ba9d -- tools/video/assemble/cli.mjs` (+14/−4). The file's only branch commit since the merge base `6b5370b6f` is `d375b5428` ("feat(video): the channel mark is laid over every shot of a long cut"). The merge took main's `review.md` and `review.json`, so the branch's earlier increment ("claude-pr-review-video-logo-watermark", written against the older baseline) is not carried; this increment supersedes it on top of main's report. The reviewer wrote none of the code and edits only this report and review.json.
+
+Baseline: `git show bb823ac04:tools/video/assemble/cli.mjs | sha256sum` is `0f3781cbdf0dd39faac6188f6795cc74233a9228fa7ef1a37e8ed5d16aa0cd92`, equal to the existing binding. Before this increment `cli.mjs check` named exactly this one stale binding; the other 107 registered files are byte-identical between `bb823ac04` and the merged tree. Earlier increments are retained in full.
+
+Findings: the diff imports `resolveWatermark` and `watermarkRecord` from `core/watermark.mjs` (unbound), resolves the mark from `manifest.watermark` once after the manifest check, passes it (`laid`, null for a card whose own frame already carries it) into `motionSegmentKey`/`clipSegmentKey` and as `mark` into `motionSegmentArgs`/`clipSegmentArgs`, masks the mark's box out of the source-frame PSNR comparison, and writes a `watermark` record into the build output. Every segment keeps `frames: scene.frames` and `fromFrame: scene.from_frame ?? 0`; `presented.total_frames`, the timeline, and the anime duration imports and calls are unchanged. None of the 18 changed lines touches the 600/780-second targets, the 480-second floor, the eight-minute minimum, `target_minutes`, `MIN_EPISODE*`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, source hashes, covered state, the explainer 8-20 or drama 1-8 minute ranges, or frame counts and timeline lengths. No duration correction is required.
+
+Ran: Node v22.22.0 `tools/video/long-form/cli.mjs check` (FAIL on this one binding before; PASS after rebinding this file and the report), `--test tools/video/long-form/review.test.mjs` (2 passed, 0 failed) and `--test tools/video/assemble/*.test.mjs` (58 passed, 0 failed).
+
+Non-claims: this is a one-file incremental source duration review. It does not re-review the other 107 bound files, the unbound files the branch changes (`core/watermark.mjs`, the segment helpers, shorts, docs), the visual placement of the mark, or accept media, playback, paid production, deployment, upload or publication.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the #1391/#1517 integration increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the #1391/#1517 integration increment and the PR #1454 merge with main increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
@@ -5529,7 +5542,7 @@ These 108 bindings describe the current reviewed bytes after the #1391/#1517 int
 | `docs/videos/so-thats-why/README.md` | `cabb9054898149fa0f512fc192825149c467ac25be283b754174098c83e2a661` |
 | `docs/videos/so-thats-why/season2/README.md` | `e560411dc91f1928b2cf9506a044e55ae7f5f65450199118bd165464599f1218` |
 | `tools/video/assemble/assemble.test.mjs` | `76a51bc9c90b7b23ac91b22bf0278b8f61173ca3d418794b2112ae8eade96403` |
-| `tools/video/assemble/cli.mjs` | `0f3781cbdf0dd39faac6188f6795cc74233a9228fa7ef1a37e8ed5d16aa0cd92` |
+| `tools/video/assemble/cli.mjs` | `6e6800340e9567bf1e71ec9e61668d713272bb10d845d51a02e9116cdabf5080` |
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
