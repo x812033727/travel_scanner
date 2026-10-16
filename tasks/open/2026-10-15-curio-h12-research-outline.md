@@ -37,6 +37,7 @@ scope:
 - [x] 獨立覆核。
 - [x] 依站主核准 A 寫完整稿；「獨立覆核」的已勾項只指原大綱，不涵蓋這次正式稿。
 - [ ] 完成正式稿的獨立查核、聽眾審稿與十三題盲評。
+- [x] 回應初輪獨立退修：夜間畫面、信件主線、刪除旁枝；重跑機械檢查並交新查核／盲評。
 
 ## How to verify
 
@@ -60,3 +61,11 @@ scope:
 - 本機 `lint` 零錯誤；3 個位置關鍵詞頻率警告保留，因故事固定在同一燈塔，鏡頭已跨船、屋內、紀錄室、西側與展廳。三個開場鉤子與回收景 prompt 完全相同，來源 claim ID 完整；兩支 Shorts schema 與母片 shot 引用均通過。詳見 `script-validation.json`。
 - 待正式稿獨立查核與十三題盲評、補格式大綱重核准、正式劇本核准。作者未發付費請求、未送後台、未啟動 worker，未新增發音字典詞。僅提交本票及 H12/M09 文件範圍，保留進行中供覆核修訂。
 - `npm run check:tasks` 通過（1895 票，既有過期認領及其他 scope 重疊警告保留）；本次文件 `git diff --check` 通過。正式稿 SHA-256：`c4cf11d72124ac99c617ef6e7fff0bce3930f432f07332bdaf0d777ebef718c6`。
+
+### 2026-10-16 初輪退修回應與獨立重驗交接
+
+- 補格式新版 brief 已讀回 `approved / A`，review `d1594b9a-25a2-48de-bfa7-5916ace5e5b9`；讀回見批次 `format-decision-20261016.json`。brief SHA 仍為 `155eb4940fdfacf015266a5670d7f70a67ced26beab0981bec8f0feb790ab778`，本輪未改。
+- `passing-ship` x5ik 改為 ARCHTOR 15 日午夜普通過船，`relight-night` bkys 改為 26 日晚點燈。NLB 信與報告相關段再次實讀。
+- 以同一封穆爾信作全片可持續追蹤的物件，章間轉場直接連到信中搜索、西側、衣物，再對讀調查和詩作；不虛構信件遞送。刪除 usc4、9vpq、um28 三段旁枝。全部改句／畫面與刪句 ID 見 `revision-1.json`。
+- 修稿 SHA-256：`429edd65822936cd682593be8c89fe0903f2186fc0cd7549ac392685807689a9`。95 景／97 句、90 插圖景，估 09:03（未合成）；schema／lint 0 error，3 個已說明的地點詞頻提示，Shorts 引用、主張表、開場同圖回收均通過。收據 `script-validation.json` 為作者機械驗證，不是獨立通過。
+- 下一位獨立查核者接手本 scope 寫 `verify-1.md`，另需新十三題盲評。初輪結果曾退修，本輪作者不自判通過。尚未正式劇本送審或付費：paid calls = 0、worker starts = 0；每集 US$6／整批 US$30 授權仍有效，但不跳過劇本核准。此票保留 open 待覆核，不 done。

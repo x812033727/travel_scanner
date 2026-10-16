@@ -162,6 +162,16 @@
       "title": "雅典國家考古博物館：沉船特展資料",
       "url": "https://www.namuseum.gr/en/temporary_exhibition/to-nayagio-ton-antikythiron-to-ploio-oi-thisayroi-o-michanismos/",
       "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Anastasiou et al. 2016: The Front Cover Inscription, pp. 291 and 294",
+      "url": "https://archive.nyu.edu/bitstream/2451/71597/7/IAM%204%20anastasiou-et-al-2016-the-front-cover-inscription.pdf",
+      "checked_on": "2026-10-16"
+    },
+    {
+      "title": "Anastasiou et al. 2016: The Back Dial and Back Plate Inscriptions, pp. 139 and 141–144",
+      "url": "https://archive.nyu.edu/bitstream/2451/71597/9/IAM%206%20anastasiou-et-al-2016-the-back-dial-and-back-plate-inscriptions.pdf",
+      "checked_on": "2026-10-16"
     }
   ],
   "assets": [],
@@ -913,12 +923,13 @@
       },
       "claims": [
         "M09-C08",
-        "M09-C09"
+        "M09-C09",
+        "M09-C23"
       ],
       "lines": [
         {
           "id": "u5ar",
-          "text": "可是背面兩個大盤，還有一個小盤，各自又在數什麼？",
+          "text": "可是背面那些大小不同的盤，各自又在數什麼？",
           "emotion": "問句輕輕上揚，留白"
         }
       ]
@@ -1135,6 +1146,25 @@
       ]
     },
     {
+      "id": "exeligmos-correction",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a museum demonstration room, one demonstrator points to a small three-sector subsidiary dial inside the lower large spiral of a reconstruction display, centered in frame, with gentle light falling from above.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "M09-C23"
+      ],
+      "lines": [
+        {
+          "id": "rwa9",
+          "text": "要讀出預測時刻，還得看下方的小盤，把它指出的時數加上去。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
       "id": "eclipse-boundary",
       "template": "shot",
       "data": {
@@ -1166,7 +1196,7 @@
       "lines": [
         {
           "id": "5tiw",
-          "text": "還記得開頭那組名字嗎？小盤上，讀出了古代賽會。",
+          "text": "還記得開頭那組名字嗎？上方的小盤，讀出了古代賽會。",
           "emotion": "放慢，帶著觀眾往前走"
         }
       ]
@@ -1230,13 +1260,14 @@
       "id": "different-dials",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot at a demonstration desk with an unlabelled dial illustration, one demonstrator indicates three clearly separate dials on a simple board, centered in frame, with soft light from the left.",
+        "prompt": "Medium shot in a museum demonstration room, one demonstrator points to a reconstruction display with two large spiral dials, a small four-sector dial within the upper spiral and a small three-sector dial within the lower spiral, centered in frame, with muted side illumination.",
         "camera": "drift",
         "visual": "still"
       },
       "claims": [
         "M09-C08",
-        "M09-C09"
+        "M09-C09",
+        "M09-C23"
       ],
       "lines": [
         {
@@ -1870,77 +1901,22 @@
     },
     {
       "id": "knowledge-route",
-      "chapter": "天空成了能計算的關係",
+      "chapter": "兩套天文知識在齒輪裡相遇",
       "template": "shot",
       "data": {
-        "prompt": "Close-up at an archive study table with a plain object folder, one historian opens a plain astronomy volume beside the fragment drawing, centered in frame, with gentle light falling from above.",
+        "prompt": "Medium shot in a museum research room, one researcher aligns a plain cycle diagram with a circular motion diagram beside the same corroded mechanism fragment, centered in frame, with soft light from the left.",
         "camera": "tilt up",
         "visual": "still"
       },
       "claims": [
-        "M09-C17"
+        "M09-C17",
+        "M09-C18"
       ],
       "lines": [
         {
           "id": "ams3",
-          "text": "可以追到的，是它把哪些天文方法，變成了機械關係。",
+          "text": "研究者讀到的關鍵，是天文週期和幾何方法可以接成同一套傳動。",
           "emotion": "自然接續，關鍵詞稍重"
-        }
-      ]
-    },
-    {
-      "id": "years-not-birthday",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up at an archive study table with a plain object folder, one historian separates a calendar-start token from a workshop token, centered in frame, with muted side illumination.",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "claims": [
-        "M09-C14"
-      ],
-      "lines": [
-        {
-          "id": "n5uu",
-          "text": "盤面拿哪一年開始計算，和機械在哪一年製成，是不同問題。"
-        }
-      ]
-    },
-    {
-      "id": "wreck-not-birthday",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot at an archive study table with a plain object folder, one historian moves a small ship token away from a gear token, centered in frame, with soft light from the left.",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "claims": [
-        "M09-C14"
-      ],
-      "lines": [
-        {
-          "id": "g5ga",
-          "text": "同樣地，沉船的年代，也不能直接當成它的出廠日期。",
-          "emotion": "放慢，帶著觀眾往前走"
-        }
-      ]
-    },
-    {
-      "id": "methods-survive",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot at an archive study table with a plain object folder, one historian lifts the fragment drawing above an open plain volume, centered in frame, with indirect light from the right.",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "claims": [
-        "M09-C14",
-        "M09-C17"
-      ],
-      "lines": [
-        {
-          "id": "w2sg",
-          "text": "製作者沒有留下能確認的名字，計算的方法卻能從機構裡被讀出。"
         }
       ]
     },

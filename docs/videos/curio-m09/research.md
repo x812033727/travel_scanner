@@ -1,6 +1,6 @@
 # M09 安提基特拉機械：本次研究
 
-查核日期：2026-10-16（Asia/Taipei）。狀態：原 A 大綱已獲站主核准，正式稿已完成待獨立覆核；補欄位的大綱新版待重送。未啟動付費製作。
+查核日期：2026-10-16（Asia/Taipei）。狀態：補格式大綱新版已獲站主核准 A；正式稿初輪退修已修，待新的事實定向重驗及十三題盲評。未啟動付費製作。
 
 ## 承接與研究問題
 
@@ -20,6 +20,8 @@
 | M09-S6 | [WHOI／希臘文化部考察計畫：The Antikythera Mechanism](https://antikythera.whoi.edu/artifacts/antikythera-mechanism/) | 程式請求 HTTP 200、有實質內文 | 1901 年採海綿潛水員帶回機械、功能為天文計算；尚缺零件可能在海底只是可能，不宣稱已定位。 |
 | M09-S7 | [雅典國家考古博物館：The Antikythera Shipwreck 特展](https://www.namuseum.gr/en/temporary_exhibition/to-nayagio-ton-antikythiron-to-ploio-oi-thisayroi-o-michanismos/) | 程式請求 HTTP 200、有 2012–2014 特展內容 | 1900–1901 打撈由採海綿潛水員與希臘海軍協作；沉船與機械製造年代不是同一件事。舊特展不能說成目前正展出。 |
 | M09-S8 | Woan、Bayley，2024，[An improved calendar ring hole-count for the Antikythera mechanism](https://eprints.gla.ac.uk/329337/) | 本次讀作者大學典藏摘要，HTTP 200、有實質內容 | 月曆環孔數的新統計模型；作者以模型假設為條件，不當作全機已重建，也不把孔數叫齒輪數。此議題列更新邊界，推薦大綱不岔入統計爭論。 |
+| M09-S9 | Anastasiou 等，2016，[The Front Cover Inscription](https://archive.nyu.edu/bitstream/2451/71597/7/IAM%204%20anastasiou-et-al-2016-the-front-cover-inscription.pdf)；DOI `10.1484/J.ALMAGEST.5.110737` | 2026-10-16 退修時直接重開 NYU 典藏 48 頁原文；讀逐行註解 p. 291（PDF 第 42 頁）、p. 294（PDF 第 45 頁），另讀 p. 289 的來源限制 | 金星 462 年／289 會合週期；土星 442 年／427 會合週期。兩組數值都是年數關係；不能把兩者都說成直接來自已知巴比倫數值。正文不念額外公式。 |
+| M09-S10 | Anastasiou 等，2016，[The Back Dial and Back Plate Inscriptions](https://archive.nyu.edu/bitstream/2451/71597/9/IAM%206%20anastasiou-et-al-2016-the-back-dial-and-back-plate-inscriptions.pdf)；DOI `10.1484/J.ALMAGEST.5.110735` | 2026-10-16 退修時直接重開 NYU 典藏 78 頁原文；讀摘要 p. 139、§4.1 pp. 141–142 及圖 4.1 圖說 p. 144（PDF 第 2、4–5、7 頁） | 兩大螺旋盤之內，上有 Games、下有 Exeligmos 附屬小盤。後者指到的時數加到食象刻字時刻；不能漏畫而暗示只一個小盤。Callippic 小盤另屬推測。圖頁截圖嘗試逾時；配置依直接可讀的 §4.1 文字，不聲稱已完成圖像逐點核對。 |
 
 程式對外請求採 `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`。web 與程式取得情況分列；沒有把搜尋摘要或驗證殼寫成全文已讀。
 
@@ -52,4 +54,4 @@
 
 `cute-mystery` 插圖用同一塊殘片在海面、博物館、掃描與模型桌前推進；近代研究者不畫可辨識真人。殘片、背盤與模型有一致的小標，人物動作承載故事，只有數字與盤面難點使用短卡。正式稿前重看 H01-v2 前 30 景的鏡位與提示詞；本次已讀作為風格參考。圖片不少於正文七成、連續卡片不超過三張。
 
-原 A 大綱與本集 US$6.00／整批 US$30.00 已核准，讀回見批次 `decision-20261016.json`。正式撰稿再次讀取 2021 全文 XML 的 Introduction、Period relations、機構、結論等節，補入 claims C18–C22 的傳動與重建說明。後續為正式稿獨立事實覆核、聽眾審稿及十三題盲評；補欄位大綱新版待重新送審。尚未執行合成、產圖及付費 QA。
+原 A 大綱與本集 US$6.00／整批 US$30.00 已核准，讀回見批次 `decision-20261016.json`；補格式新版 A 核准讀回見 `format-decision-20261016.json`。正式撰稿再次讀取 2021 全文 XML 的 Introduction、Period relations、機構、結論等節，補入 claims C18–C22 的傳動與重建說明。初輪退修後新增 S9、S10 原論文與 C23 背盤配置證據；刪除片尾起算年、製作年、沉船年與作者身份的旁枝，直接收束天文方法如何接成傳動。改動與刪除行 ID 見 `revision-1.json`。待新的獨立事實定向重驗與十三題盲評；沒有自行宣稱通過。尚未執行合成、產圖及付費 QA。

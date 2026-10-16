@@ -13,7 +13,7 @@
 | M09-C07 | 機構處理月球視運動的不均勻性。 | S1 摘要；S3 Introduction／月球機構部分 | 確認；不稱古人已知現代橢圓軌道理論，也不把現代模型的每一處都當出土實物。 |
 | M09-C08 | 背面上盤使用 19 年默冬週期，下盤是 223 個朔望月的沙羅週期。 | S2 摘要 | 確認；兩盤分開，223 是月數，不是年數或齒數。 |
 | M09-C09 | 2008 論文把一個小盤解為四年的奧林匹亞與相關競技週期。 | S2 摘要 | 確認；不說它能預測比賽結果，也不是只顯示現代奧運。 |
-| M09-C10 | 2016 的刻字研究讀出金星部分 462、土星部分 442，2021 模型據此受約束。 | S3 Period relations；S4 更正 | 確認論文所述；用於週期關係的年數，不能說是齒數或出土年。不得說 2021 才首次讀出。 |
+| M09-C10 | 2016 的刻字研究讀出金星部分 462、土星部分 442，2021 模型據此受約束。 | S9 原論文 p. 291（PDF 第 42 頁）金星與 p. 294（PDF 第 45 頁）土星逐行註解；S3 Period relations；S4 更正 | 2026-10-16 重讀 2016 原文：462 年對 289 會合週期、442 年對 427 會合週期。正文只用年數；不是齒數或出土年，不說 2021 首讀，也不把兩組數值都稱作直接照抄巴比倫。 |
 | M09-C11 | 2021 團隊提出前盤宇宙顯示的電腦重建模型。 | S3 Discussion and results／圖 7／Conclusions | 研究模型；不是論文已製成並驗證的實體複製品，作者認為符合證據不代表模型獲唯一證實。 |
 | M09-C12 | 2021 模型的整體設計有 69 個齒輪。 | S3 Mechanisms between the strap and the CP | 模型數字；不是實物新增發現，也不是拿 30 與 69 相減就確知遺失齒輪數。 |
 | M09-C13 | 模型中部分元件沒有直接物理證據，作者不能稱它是原物複製品。 | S3 Dragon Hand 段／Conclusions | 確認限制；畫面標「重建模型」，禁止「完全復原真面目」。 |
@@ -26,6 +26,7 @@
 | M09-C20 | 從地球看行星會有視逆行；古代周轉圓方法以兩個均勻圓周運動合成描述，模型以裝在轉動部件上的齒輪處理。 | S3 Period relations and ancient Greek theories、Introduction | 2021 作者的古代理論與模型說明；不把視逆行說成行星真的倒著繞太陽。 |
 | M09-C21 | 2021 模型以套接管軸及支臂帶動前盤不同圓環的輸出。 | S3 Discussion and results、Mechanisms between b1 and the strap | 只稱該模型設計，不稱原物前盤全部零件仍在，也不稱本片做過機械驗證。 |
 | M09-C22 | 月球交點是月球視軌道與黃道的交會，與食象條件有關；2021 模型的 Dragon Hand 用於表示交點，缺乏直接實物證據。 | S3 Dragon Hand、Conclusions | 這一項明示假設；只是模型如何解釋前後盤關係，不把假設指針當出土物。 |
+| M09-C23 | 背面上方 Metonic 大盤內有 Games 小盤，下方 Saros 大盤內有 Exeligmos 小盤；後者三區中的時數用來加到食象刻字時刻。 | S10 pp. 139、141–142，§4.1；圖 4.1 圖說 p. 144（PDF 第 2、4–5、7 頁） | 2026-10-16 直接讀原文。兩大盤不能被畫成只有一個附屬小盤；本文另提 Callippic 小盤是假設，不把完整配置說成唯一確定。rwa9 以同一次讀盤動作說明加時，不新增名詞清單。 |
 
 ## 排除的說法
 
@@ -57,28 +58,29 @@
 | M09-C09 | names-tease、dial-question、read-back、games-recalled、games-four、games-purpose、not-score、different-dials |
 | M09-C10 | numbers-tease、numbers-recalled、numbers-read-year、venus-period、saturn-period、numbers-purpose、not-arbitrary |
 | M09-C15 | museum-arrival |
-| M09-C14 | object-age、years-not-birthday、wreck-not-birthday、methods-survive |
-| M09-C18 | not-simple-wheel、teeth-motion、ratio-role、wheel-question、not-replace-random、visible-clues、moon-year、calendar-problem、month-meaning、fit-question、small-gears、physical-fit、not-picture-only |
+| M09-C14 | object-age |
+| M09-C18 | not-simple-wheel、teeth-motion、ratio-role、wheel-question、not-replace-random、visible-clues、moon-year、calendar-problem、month-meaning、fit-question、small-gears、physical-fit、not-picture-only、knowledge-route |
 | M09-C08 | marks-needed、dial-question、read-back、months-upper、moon-year、calendar-problem、metonic-number、calendar-use、eclipse-question、eclipse-lower、saros-number、month-meaning、different-dials |
 | M09-C13 | not-replace-random、front-question、model-extra、replica-question、author-reservation、hypothetical-hand、node-explain、hypothesis-purpose、constraints-not-certainty、old-maker-unknown |
 | M09-C19 | fragile-layers |
 | M09-C11 | instructions-read、two-evidence、back-answer、front-question、new-model-year、fit-question、not-picture-only、computer-only |
 | M09-C06 | study-2006、functions-advance、eclipse-question、eclipse-lower、eclipse-pattern、eclipse-boundary |
 | M09-C07 | study-2006、moon-not-even、moon-mechanism、moon-not-modern、functions-advance |
+| M09-C23 | dial-question、exeligmos-correction、different-dials |
 | M09-C20 | planet-question、retrograde-observed、not-constant、epicyclic-idea、gear-on-gear、not-arbitrary |
 | M09-C21 | nested-tubes、ring-layout |
 | M09-C12 | model-question、model-sixtynine、count-recalled、model-extra |
 | M09-C22 | node-explain |
-| M09-C17 | knowledge-question、knowledge-route、methods-survive、ending-outro |
+| M09-C17 | knowledge-question、knowledge-route、ending-outro |
 
 ## 與企劃不同的地方
 
-維持核准 A 的同一殘片主線與七章。為讓觀眾一次理解一個動作，背盤依轉動示意分開講月份、食象、賽會，再由缺損進入前盤；增補行星視逆行、同軸管套與模型空間的白話說明。都依 2021 論文，不自稱實測。
+維持核准 A 的同一殘片主線與七章。背盤依同一次轉動分開讀月份、食象與賽會；初輪退修後補回 Exeligmos 加時動作與相應畫面，依 2016 背盤原文。行星視逆行、同軸管套與模型空間依 2021 論文，不自稱實測。片尾移除盤面起算年、製作年、沉船年及製作者旁枝，直接回答天文方法如何接成傳動。
 
 ## 我懷疑但沒動的事
 
-2006 與 2008 僅取得完整摘要，2021 本文和更正取得全文；沒有宣稱全部付費論文都已讀完。2024 孔數研究只作研究邊界，不進正文。1902 首次辨識齒輪的人與日期未重查，不補入旁白。所有模型圖是概念示意，不以 AI 生成齒輪位置當作物證。
+2006 與 2008 僅取得完整摘要，2021 本文和更正取得全文；2016 前蓋與背盤原論文另已直接讀取相關節頁。2024 孔數研究只作研究邊界，不進正文。1902 首次辨識齒輪的人與日期未重查，不補入旁白。所有模型圖是概念示意，不以 AI 生成齒輪位置當作物證。
 
 ## 進度
 
-完整 A 稿、逐景插圖提示、場景主張對照與 loops 已落地；等待獨立查核及十三題盲評，不代表站主已核准正式稿。paid calls = 0。核准 brief 保持原雜湊。
+初輪獨立退修已回應，改句與刪句見 revision-1.json；新的事實定向重驗及十三題盲評仍待進行，不代表正式稿過關。paid calls = 0。補格式大綱 A 已讀回核准，brief 保持原雜湊。
