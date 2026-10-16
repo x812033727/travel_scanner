@@ -122,3 +122,7 @@ H10 英語工作表已完成翻譯及前兩輪獨立審稿。首版英語配音�
 ## 2026-10-16 H10 英語三句重錄後 QA
 
 三句定向重錄及新版 `check-audio` 已完成，82 句中 68 exact、8 Jev 接受、6 旗標；`addition`／`edition` 的兩句已解除旗標，4 月 25 日那句僅因 `25th` 保留旗標。共用帳本將三句 TTS 與差異 QA 核銷為保守估額 US$0.04，供應商實際帳單尚不可見。獨立離線 Whisper 複核三句新音訊，並將六旗標逐一分流，詳見 [i18n-audio-qa-en-2.md](../../docs/videos/curio-h10/i18n-audio-qa-en-2.md)。目前沒有確定需再付費重錄的語意錯誤；站主需特別試聽 `h3a137ee` 人名及 `hcc5d7ed` 句首是否多出 `thought`，再對這版英語音軌作人工判定。完整 82 句本機試聽頁在 `<home>/mokaair-work/videos/curio-h10/review/dub-en.html`。尚未讀回站主核准，未送多語上傳包，未上傳 YouTube。
+
+## 2026-10-16 H10 日語配音 QA 分流
+
+日語配音 82 句與 `check-audio` 完成：44 exact、14 Jev 接受、24 旗標。獨立離線 Whisper small 已逐句重聽全部 24 句並與核准日文對照，收據見 [i18n-audio-qa-ja-1.md](../../docs/videos/curio-h10/i18n-audio-qa-ja-1.md)。`h93d6e3d` 的核准稿及 Parks Canada 來源為 9 月 18 日，Gemini 和離線 Whisper 均辨成 10 月 18 日，是核准日語音軌前必聽的高風險日期；`hc9c15f2` 兩套把「北極の岸」辨成「北極の環境」，`h3e67f13` 兩套把「冒頭の隊」辨成「ボートの隊」，也需優先試聽。專名及確認用語另列於收據。已製作本機 82 句 `review/dub-ja.html`，預設顯示 24 旗標；尚未得到站主聽後判定，未改稿或付費重錄。H10 多語餘額需保留韓語；確有錯音時，先讀共用帳本，再按句定向處理。
