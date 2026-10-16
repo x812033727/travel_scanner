@@ -1,19 +1,19 @@
 ---
 id: 2026-10-08-automation-test-mjs-still-leaves-whole
 title: automation.test.mjs still leaves whole video-core sandboxes in TEMP
-status: open
+status: done
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-pr-tidy
+claimed_at: 2026-10-16T16:37:26Z
 created_at: 2026-10-08T07:24:40Z
-completed_at:
-branch:
+completed_at: 2026-10-16T16:37:27Z
+branch: claude/youthful-brahmagupta-1giys7
 depends_on: []
 scope:
-  - tools/video/automation/automation.test.mjs
   - tools/video/core/fixtures/load.mjs
   - tools/video/core/fixtures/load.test.mjs
+  - tools/video/core/project-lease.test.mjs
 ---
 
 # automation.test.mjs still leaves whole video-core sandboxes in TEMP
@@ -47,25 +47,25 @@ directories, 6.6 GB, and the largest was 241 MB. The disk ran low again.
 
 ## Definition of done
 
-- [ ] One full `npm run test:tools` on current main leaves no new `video-core-*` directory in
+- [x] One full `npm run test:tools` on current main leaves no new `video-core-*` directory in
       the system's temporary directory. This includes a run where
       `tools/video/automation/automation.test.mjs` is interrupted.
-- [ ] If leaks still happen, a later run removes the earlier run's leftovers, so they cannot
+- [x] If leaks still happen, a later run removes the earlier run's leftovers, so they cannot
       pile up across runs. Only `video-core-*` older than a few hours is removed, so a test
       running at the same time is never touched.
-- [ ] `VIDEO_KEEP_SANDBOX=1` still keeps sandboxes.
+- [x] `VIDEO_KEEP_SANDBOX=1` still keeps sandboxes.
 
 ## Steps
 
-- [ ] Reproduce with `TEMP`/`TMP` pointed at an empty scratch directory (do not touch the
+- [x] Reproduce with `TEMP`/`TMP` pointed at an empty scratch directory (do not touch the
       owner's `%TEMP%`). Run `node --test tools/video/automation/automation.test.mjs` once
       normally and once killed partway, and count what stays.
-- [ ] Find which of the guesses above is real. Add a `process.on("SIGINT"/"SIGTERM")` path,
+- [x] Find which of the guesses above is real. Add a `process.on("SIGINT"/"SIGTERM")` path,
       or move cleanup to `after()` hooks, as the evidence shows.
-- [ ] Add a stale sweep to `tempDir()` (first call per process): remove `video-core-*`
+- [x] Add a stale sweep to `tempDir()` (first call per process): remove `video-core-*`
       directories older than N hours (for example 6), each in its own try/catch, never
       following links.
-- [ ] Extend `tools/video/core/fixtures/load.test.mjs`: a child that is killed leaves its
+- [x] Extend `tools/video/core/fixtures/load.test.mjs`: a child that is killed leaves its
       sandbox, and the next child's sweep removes it once it is old enough.
 
 ## How to verify
@@ -82,3 +82,43 @@ node --test tools/video/core/fixtures/load.test.mjs
   this ticket instead of only deleting the leftovers again.
 - The leftovers older than a day were not deleted this time, because the owner did not tick
   that option. Do not use them as a clean baseline.
+
+### 2026-10-16 fix (claude-opus-5-5-pr-tidy)
+
+Reproduced on Linux, with `TMPDIR` pointed at an empty scratch directory. A normal
+`node --test tools/video/automation/automation.test.mjs` left 0 sandboxes. The same run stopped
+after 30 s with SIGINT left 85, and with SIGTERM 86.
+
+This was the first guess: a test process ended by a signal never fires `exit`, so the cleanup
+never ran. Ctrl+C, a runner timeout and an agent stopping `npm run test:tools` all end it that
+way.
+
+`tools/video/core/fixtures/load.mjs`:
+- `tempDir()` also listens for SIGINT, SIGTERM and SIGHUP. On one it removes this process's
+  sandboxes, drops its listeners and sends itself the same signal, so the process still ends by
+  that signal.
+- The first `tempDir()` call for each prefix in a process runs `sweepStaleSandboxes(prefix)`. It
+  removes directories with that prefix in the temporary directory whose mtime is more than
+  `STALE_SANDBOX_MS` (6 h) old, each in its own try/catch, using `lstat` so links are never
+  followed. This covers a SIGKILL or a crash. A test running at the same time is younger and is
+  left alone.
+- `VIDEO_KEEP_SANDBOX=1` turns both off.
+
+`automation.test.mjs` needed no change, and it is bound by the duration review, so it left the
+scope. `tools/video/core/project-lease.test.mjs` joined the scope: it made its `video-lease-*`
+directories with its own `mkdtempSync` and never removed them (12 left after one full run). It
+now uses `tempDir()`.
+
+Ran:
+- `load.test.mjs`: 7/7. New cases: SIGINT and SIGTERM remove the sandbox and the child still
+  ends by that signal; a SIGKILL leaves one that a later process sweeps once it is old, while a
+  young one stays; the sweep skips other prefixes, plain files, young directories and links;
+  `VIDEO_KEEP_SANDBOX=1` sweeps nothing.
+- After the fix, the 30 s SIGINT and SIGTERM runs of `automation.test.mjs` left 0 each.
+- A full `npm run test:tools` with `TMPDIR` on an empty directory: 2388 passed and 0
+  `video-core-*` left. The 12 `video-lease-*` were fixed afterwards, and that file's tests then
+  left nothing.
+- `cli.mjs check`: PASS.
+
+Not done: Windows has no POSIX signals. A Ctrl+C in a Windows console arrives as SIGINT, which
+Node supports, but this was only verified on Linux. The sweep covers whatever is still left there.

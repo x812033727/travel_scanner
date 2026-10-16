@@ -1,6 +1,6 @@
 // Shared by the core tests: the minimal example video, and a throwaway repository layout
 // (docs/videos/<slug>/) plus a work directory outside it.
-import { cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, lstatSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -61,6 +61,14 @@ export function lexiconProposals() {
 // each test file in a process of its own), so a run leaves nothing in the system's temporary
 // directory. VIDEO_KEEP_SANDBOX=1 keeps them for a look after a failure.
 const made = [];
+// An interrupted run (Ctrl+C, a runner or an agent stopping npm run test:tools) ends its test
+// processes with a signal, and "exit" does not fire then: on 2026-10-16 one SIGINT left 85
+// sandboxes. These signals clean up first and then end the process with the same signal.
+const SIGNALS = ["SIGINT", "SIGTERM", "SIGHUP"];
+// What a SIGKILL or a crash still leaves is removed by a later run, once it is this old: a test
+// running at the same time is never that old.
+export const STALE_SANDBOX_MS = 6 * 60 * 60 * 1000;
+const swept = new Set();
 
 function removeMade() {
   if (process.env.VIDEO_KEEP_SANDBOX === "1") return;
@@ -74,10 +82,50 @@ function removeMade() {
   }
 }
 
+function onSignal(signal) {
+  removeMade();
+  for (const each of SIGNALS) process.removeListener(each, onSignal);
+  process.kill(process.pid, signal);
+}
+
+/**
+ * Remove `prefix` directories in `parent` older than `maxAgeMs`, each on its own: one that
+ * cannot go is left, and a link is never followed (lstat, and only real directories).
+ */
+export function sweepStaleSandboxes(prefix, { parent = tmpdir(), maxAgeMs = STALE_SANDBOX_MS, now = Date.now() } = {}) {
+  let names;
+  try {
+    names = readdirSync(parent);
+  } catch {
+    return [];
+  }
+  const removed = [];
+  for (const name of names) {
+    if (!name.startsWith(prefix)) continue;
+    const dir = path.join(parent, name);
+    try {
+      const stat = lstatSync(dir);
+      if (!stat.isDirectory() || now - stat.mtimeMs < maxAgeMs) continue;
+      rmSync(dir, { recursive: true, force: true });
+      removed.push(dir);
+    } catch {
+      // In use, or gone already: the next run tries again.
+    }
+  }
+  return removed;
+}
+
 /** A new empty directory under the system's temporary directory, removed when this process exits. */
 export function tempDir(prefix) {
+  if (!swept.has(prefix) && process.env.VIDEO_KEEP_SANDBOX !== "1") {
+    swept.add(prefix);
+    sweepStaleSandboxes(prefix);
+  }
   const dir = mkdtempSync(path.join(tmpdir(), prefix));
-  if (made.length === 0) process.once("exit", removeMade);
+  if (made.length === 0) {
+    process.once("exit", removeMade);
+    for (const signal of SIGNALS) process.on(signal, onSignal);
+  }
   made.push(dir);
   return dir;
 }
