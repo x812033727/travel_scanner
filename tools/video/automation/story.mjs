@@ -31,7 +31,7 @@
 // This module works through the automation's methods, as compilation.mjs does, and imports
 // nothing from flow.mjs or series.mjs, which call into it.
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { isDeepStrictEqual } from "node:util";
 
@@ -40,7 +40,7 @@ import { emptyLexicon, isProposableTerm } from "../core/lexicon.mjs";
 import { lintVideo } from "../core/lint.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, readText } from "../core/paths.mjs";
 import { screenplay, writeScreenplay } from "../core/screenplay.mjs";
-import { eachLine, textHash } from "../core/schema.mjs";
+import { eachLine, LINE_ID, textHash } from "../core/schema.mjs";
 import { NARRATIVE_REVIEW, narrativeRecord, PANEL_INSTRUCTIONS, panelPayload, panelVerdict } from "../core/narrative.mjs";
 import { scriptCheckMatches } from "../core/script-check.mjs";
 import { lintProject, loadProject } from "../core/state.mjs";
@@ -119,6 +119,9 @@ const FIX_TOKENS = 16_000;
 export const STORY_DIR = "story";
 export const STORY_CHAPTERS_DIR = path.join(STORY_DIR, "chapters");
 export const STORY_PAGES_DIR = path.join(STORY_DIR, "pages");
+// A package placed here before the first writer step is an explicit request to use authored
+// chapters. A missing or invalid manifest stops the story; it never falls through to a writer.
+export const STORY_AUTHOR_PACKAGE_DIR = path.join(STORY_DIR, "author-package");
 
 export const OUTLINE_NOTE = "品牌故事：題目是站主核准過的企劃清單（docs/videos/STORY.md），大綱不再問 Jev";
 export const SCRIPT_NOTE = "品牌故事沒有劇本關卡：企劃查核過、逐章查核與聽眾審稿已完成，依故事流程在本機核准";
@@ -822,6 +825,128 @@ export const PILOT_SCRIPT_REVIEW_FILE = path.join(STORY_DIR, "reviews", "script-
 const PILOT_REVIEW_CHECKS = ["reference_alignment", "factual_claims", "narrative"];
 const PILOT_REVIEW_FILES = ["script.md", "video.json", "series.json", "claims.md", "verify-1.md"];
 const sha256OnDisk = (file) => existsSync(file) ? createHash("sha256").update(readFileSync(file)).digest("hex") : null;
+const AUTHOR_SHA = /^[0-9a-f]{64}$/;
+
+/**
+ * Read an operator-staged author package without changing it. The manifest binds the exact
+ * current series.json (including its reviewed plan) and the six original chapter byte streams.
+ * The chapter files are already in the worker's chapter format: the model-answer parser would
+ * discard title cards, reassign ids and strip the author's UNCHECKED claim notes.
+ */
+function authorPackagePreflight(automation, state) {
+  const workdir = automation.workdir(state.slug);
+  const packageDir = path.join(workdir, STORY_AUTHOR_PACKAGE_DIR);
+  if (!existsSync(packageDir)) return null;
+  const fail = (problem) => ({ problem });
+  const manifestFile = path.join(packageDir, "manifest.json");
+  if (!existsSync(manifestFile)) return fail("author package has no manifest.json");
+  let manifest;
+  try { manifest = JSON.parse(readFileSync(manifestFile, "utf8")); }
+  catch { return fail("author package manifest.json is not JSON"); }
+  if (!isObject(manifest) || manifest.schema_version !== 1 || manifest.slug !== state.slug ||
+      !AUTHOR_SHA.test(manifest.series_sha256) || !isObject(manifest.chapters) ||
+      !isDeepStrictEqual(Object.keys(manifest.chapters).sort(), [...CHAPTER_KEYS].sort()) ||
+      CHAPTER_KEYS.some((key) => !AUTHOR_SHA.test(manifest.chapters[key]))) {
+    return fail("author package manifest must pin this slug, series.json and exactly six chapter SHA-256 values");
+  }
+  if (state.category !== "story" || !state.story || state.status !== "active" ||
+      Object.keys(state.story.chapters ?? {}).length || state.verified || state.listener_done) {
+    return fail("author chapters can only be adopted before the first writer or checker step of an active story");
+  }
+  const dir = docDir(state.slug, automation.ctx.root);
+  const seriesFile = path.join(dir, "series.json");
+  if (sha256OnDisk(seriesFile) !== manifest.series_sha256) return fail("the current series.json differs from the author package's exact plan pin");
+  let info;
+  try { info = readJson(seriesFile); }
+  catch { return fail("the pinned series.json is not valid JSON"); }
+  if (info.kind !== STORY_KIND || planShapeProblem(info.plan) || info.slug !== state.series?.slug || info.episode !== state.series?.episode) {
+    return fail("the current series.json is not this started story and its complete six-chapter plan");
+  }
+  for (const name of ["video.json", "claims.md", "script.md", "verify-1.md"]) {
+    if (existsSync(path.join(dir, name))) return fail(`${name} already exists; author adoption cannot replace worker output`);
+  }
+  const installedDir = path.join(workdir, STORY_CHAPTERS_DIR);
+  if (existsSync(installedDir) && readdirSync(installedDir).length) return fail("worker chapters already exist; author adoption cannot replace them");
+  const sourceDir = path.join(packageDir, "chapters");
+  if (!existsSync(sourceDir) || !isDeepStrictEqual(readdirSync(sourceDir).sort(), CHAPTER_KEYS.map((key) => `${key}.json`).sort())) {
+    return fail("author package must contain exactly the six chapter JSON files");
+  }
+  const chapters = {};
+  const bytes = {};
+  const sceneIds = new Set();
+  const lineOrder = new Map();
+  const claimIds = new Set();
+  for (const { key, prefix } of STORY_CHAPTERS) {
+    const file = path.join(sourceDir, `${key}.json`);
+    bytes[key] = readFileSync(file);
+    if (createHash("sha256").update(bytes[key]).digest("hex") !== manifest.chapters[key]) return fail(`${key}.json differs from its SHA-256 pin`);
+    let chapter;
+    try { chapter = JSON.parse(bytes[key].toString("utf8")); }
+    catch { return fail(`${key}.json is not JSON`); }
+    if (!isObject(chapter) || chapter.key !== key || !isText(chapter.title) || !Array.isArray(chapter.scenes) || !chapter.scenes.length ||
+        !Array.isArray(chapter.claims) || (chapter.loops !== undefined && !Array.isArray(chapter.loops)) || Object.hasOwn(chapter, "report") ||
+        (key === "now" && chapter.scenes.at(-1)?.template !== "outro")) return fail(`${key}.json is not an unchecked chapter with the required close`);
+    let shots = 0;
+    for (const [index, scene] of chapter.scenes.entries()) {
+      if (!isObject(scene) || !new RegExp(`^${key}-[a-z0-9]+(?:-[a-z0-9]+)*$`).test(scene.id) || sceneIds.has(scene.id) ||
+          !["shot", "title", "chapter", "outro"].includes(scene.template) ||
+          (scene.template === "outro" && (key !== "now" || index !== chapter.scenes.length - 1)) ||
+          !isObject(scene.data) || (scene.template === "shot" && scene.data.visual !== "still") ||
+          !Array.isArray(scene.lines) || !scene.lines.length) return fail(`${key}.json has an invalid scene or a duplicate scene id`);
+      sceneIds.add(scene.id);
+      if (scene.template === "shot") shots++;
+      for (const line of scene.lines) {
+        if (!isObject(line) || !LINE_ID.test(line.id) || lineOrder.has(line.id) || !isText(line.text)) return fail(`${key}.json has an invalid or repeated narration line`);
+        lineOrder.set(line.id, lineOrder.size);
+      }
+    }
+    if (!shots) return fail(`${key}.json has no illustrated shot`);
+    for (const row of chapter.claims) {
+      if (!isObject(row) || !new RegExp(`^${prefix}[1-9][0-9]*$`).test(row.id) || claimIds.has(row.id) ||
+          !isText(row.claim) || !chapter.scenes.some((scene) => scene.id === row.scene) || row.verdict !== "UNCHECKED" ||
+          (row.note !== undefined && !isText(row.note)) ||
+          !(row.source === null || Number.isInteger(row.source) && row.source >= 0 && row.source < info.plan.sources.length) ||
+          !(row.fact === null || Number.isInteger(row.fact) && row.fact >= 0 && row.fact < info.plan.must_verify.length)) {
+        return fail(`${key}.json has an invalid claim or a claim presented as checked`);
+      }
+      claimIds.add(row.id);
+    }
+    if (chapter.thumbnail_shot && !chapter.scenes.some((scene) => scene.id === chapter.thumbnail_shot && scene.template === "shot")) return fail(`${key}.json has an invalid thumbnail shot`);
+    chapters[key] = chapter;
+  }
+  for (const key of CHAPTER_KEYS) for (const loop of chapters[key].loops ?? []) {
+    if (!isObject(loop) || !isText(loop.what) || !lineOrder.has(loop.setup) ||
+        (loop.payoff !== undefined && (!lineOrder.has(loop.payoff) || lineOrder.get(loop.payoff) <= lineOrder.get(loop.setup)))) {
+      return fail(`${key}.json has a loop that does not point to the authored narration in spoken order`);
+    }
+  }
+  const doc = composeStory({ slug: state.slug, info, chapters, voice: automation.voice("drama"), drama: automation.settings.drama ?? {}, root: automation.ctx.root });
+  const errors = [...lintVideo(doc, draftContext(automation.ctx.root, state.slug, doc)).errors, ...cuteStoryVisualProblems(doc)];
+  const hard = errors.filter((error) => !error.message.includes("is not in docs/videos/lexicon.json"));
+  if (hard.length) return fail(`author package fails video lint: ${hard.slice(0, 3).map((error) => `${error.path}: ${error.message}`).join("; ")}`);
+  return { manifest, manifest_sha256: sha256OnDisk(manifestFile), bytes, lexicon_errors: errors.length };
+}
+
+async function adoptAuthorPackage(automation, state, packageData) {
+  if (packageData.problem) return automation.block(state, `STOPPED_HOLD: ${packageData.problem}; correct the pinned author package and explicitly retry`, "story_author_package");
+  for (const key of CHAPTER_KEYS) {
+    atomicWrite(chapterFile(automation, state, key), packageData.bytes[key]);
+    Object.assign(entryOf(state, key), { written: 1, lint: null, lint_fixes: 0, checked: false, check_rounds: 0, listened: false });
+  }
+  state.story.author_adoption = {
+    manifest_sha256: packageData.manifest_sha256,
+    series_sha256: packageData.manifest.series_sha256,
+    chapters: packageData.manifest.chapters,
+    adopted_at: automation.ctx.now().toISOString(),
+  };
+  const result = await relint(automation, state);
+  automation.persist(state);
+  if (result.other.length || CHAPTER_KEYS.some((key) => entryOf(state, key).lint?.length)) {
+    return automation.block(state, `STOPPED_HOLD: the authored chapters are installed but need a manual lint or pronunciation fix; no writer will replace them`, "story_author_lint");
+  }
+  await automation.report(state, "script passes lint");
+  return `${state.slug}: six SHA-256-pinned author chapters adopted with claims UNCHECKED; the existing verifier is next`;
+}
 
 /** Exact current worker output that a second reader must compare and sign off before pilot TTS. */
 export function pilotScriptReviewEvidence({ slug, root, workdir }) {
@@ -1048,10 +1173,26 @@ export async function advanceStory(automation, state, next) {
     await approve({ gate: "outline", docDir: docDir(state.slug, automation.ctx.root), workdir: automation.workdir(state.slug), now: automation.ctx.now(), note: OUTLINE_NOTE });
     return `${state.slug}: the story's outline approved again (${OUTLINE_NOTE})`;
   }
+  // Staging the directory is an explicit choice. An incomplete or stale package stops here;
+  // falling through would silently buy a new writer draft instead of using the authored words.
+  if (!state.story.author_adoption) {
+    const packageData = authorPackagePreflight(automation, state);
+    if (packageData) return adoptAuthorPackage(automation, state, packageData);
+  }
   // A chapter lint refuses is fixed before the next is written, so the next goes on from its final words.
   const failing = CHAPTER_KEYS.find((key) => entryOf(state, key).lint?.length && existsSync(chapterFile(automation, state, key)));
+  if (failing && state.story.author_adoption) {
+    const result = await relint(automation, state);
+    automation.persist(state);
+    if (result.other.length || CHAPTER_KEYS.some((key) => entryOf(state, key).lint?.length)) {
+      return automation.block(state, `STOPPED_HOLD: authored chapter ${failing} still fails lint; correct the source or dictionary and retry without a writer`, "story_author_lint");
+    }
+    await automation.report(state, "script passes lint");
+    return `${state.slug}: authored chapters pass lint after the manual correction; the existing verifier is next`;
+  }
   if (failing) return fixChapterLint(automation, state, failing);
   const unwritten = CHAPTER_KEYS.find((key) => !entryOf(state, key).written || !existsSync(chapterFile(automation, state, key)));
+  if (unwritten && state.story.author_adoption) return automation.block(state, `STOPPED_HOLD: adopted chapter ${unwritten} is missing; restore its reviewed bytes before retry`, "story_author_package");
   if (unwritten) return writeChapter(automation, state, unwritten);
   if (next === "script passes lint") {
     // Everything is written and no chapter is known to fail: the script on disk is behind (the
@@ -1060,6 +1201,7 @@ export async function advanceStory(automation, state, next) {
     automation.persist(state);
     if (result.other.length) return automation.block(state, `the merged story fails lint outside its chapters: ${result.other.slice(0, 3).join("; ")}`);
     const again = CHAPTER_KEYS.filter((key) => entryOf(state, key).lint?.length);
+    if (again.length && state.story.author_adoption) return automation.block(state, `STOPPED_HOLD: authored chapters fail lint in ${again.join(", ")}; correct them manually and retry without a writer`, "story_author_lint");
     return again.length ? `${state.slug}: the merged story fails lint in ${again.join(", ")}; the writer fixes them chapter by chapter` : `${state.slug}: the story merged again and passes lint`;
   }
   const unchecked = CHAPTER_KEYS.find((key) => !entryOf(state, key).checked);
@@ -1445,6 +1587,7 @@ async function checkLength(automation, state) {
   }
   const long = seconds > high;
   const measured = `the narration measures ${formatClock(seconds)}, ${long ? "over" : "under"} ${formatClock(long ? high : low)}`;
+  if (state.story.author_adoption) return automation.block(state, `${measured}; the author-adopted script needs an editorial revision, not an automatic writer resize`, "story_author_length");
   if ((state.story.resizes ?? 0) >= LENGTH_FIX_ROUNDS) return automation.block(state, `${measured} after ${state.story.resizes} length fixes; a story runs ${formatClock(low)} to ${formatClock(high)}: the owner decides`);
   const measuredBy = chapterSeconds(timeline);
   const budgets = Object.fromEntries(chapterBudgets(target, info.look).map((budget) => [budget.key, budget.seconds]));
@@ -1518,6 +1661,7 @@ async function narrationSentBack(automation, state) {
  * person.
  */
 export async function fixStoryPrompts(automation, state, kind, { targets = null, ownerNote = null } = {}) {
+  if (state.story?.author_adoption) return automation.block(state, `the author-adopted storyboard needs an editorial prompt revision (${kind}); an automatic writer fix would replace reviewed picture directions`, "story_author_visual");
   const found = targets ?? automation.failedTargets(state, kind);
   const summary = found.map((target) => `${target.id}: ${(target.problems ?? []).join("; ") || "failed"}`).join(" | ") || ownerNote || "no detail";
   const rounds = state.prompt_fixes?.[kind] ?? 0;

@@ -135,6 +135,30 @@
 
 ## 為什麼逐章寫稿
 
+### 已審作者六章稿的限定採用
+
+有完整作者稿與分鏡的單集，可在工人開始該集的**第一個撰稿步驟以前**，明確預置 `<VIDEO_WORKDIR>/<slug>/story/author-package/`。這是另一條章稿輸入路徑，不走 `writer:story` 的模型答案 parser；因此 `title` 卡、句子 ID、鏡頭提示詞和來源主張原樣留存。目錄只包含 `manifest.json` 及 `chapters/{hook,origin,idea,engine,turn,now}.json`。manifest 的格式為：
+
+```json
+{
+  "schema_version": 1,
+  "slug": "story-five-lego-legoland",
+  "series_sha256": "<目前 docs/videos/<slug>/series.json 的 64 位小寫 SHA-256>",
+  "chapters": {
+    "hook": "<hook.json SHA-256>",
+    "origin": "<origin.json SHA-256>",
+    "idea": "<idea.json SHA-256>",
+    "engine": "<engine.json SHA-256>",
+    "turn": "<turn.json SHA-256>",
+    "now": "<now.json SHA-256>"
+  }
+}
+```
+
+工人核對目前作品／企劃檔與六個原檔的**位元組雜湊**、章序、唯一鏡頭與句子 ID、主張對應場景／來源索引，以及每條主張仍為 `UNCHECKED`，才把原六章複製到正式工作目錄，合成 `video.json`、`script.md`、`claims.md` 並跑原有 lint。預置目錄存在而 manifest 缺失、雜湊變了、企劃不符，或撰稿已開始，都會停住，不會改走模型重新寫稿。`auto.json` 留下 manifest、企劃與原六章的雜湊紀錄；採用不是逐章查核 PASS，也不建立劇本、配音或成片核准。
+
+缺發音字典時，原章稿仍安裝但影片暫停，由編輯補讀音再明確重試；作者稿的自動 lint 改寫、實錄片長伸縮與畫面提示詞改寫同樣停給編輯，避免無意替換作者內容。lint 過關後仍照現有六次 `verifier:story`、六次 `listener:story` 與全片說故事審查前進。查核與聽眾實際修改的章稿另由原流程保留；不得拿預置的 `UNCHECKED` 主張稱作已核實。
+
 一次寫不完。網站轉送的上限是 295 秒（`apps/web/app/api/video/automation/run/route.ts` 的 `RUN_TIMEOUT_MS`），單次輸出上限是 32,000（`StageRunIn.max_output_tokens`）；一支 13 分鐘的稿子加 90 個鏡頭的提示詞，估計是 2 萬到 2 萬 7 千個輸出 token，寫到一半逾時就會被重試。撰稿、查核、聽眾審稿現在都是整份 `video.json` 來回。
 
 故事改成一章一次：
