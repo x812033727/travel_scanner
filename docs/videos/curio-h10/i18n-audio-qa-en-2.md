@@ -24,3 +24,7 @@ The revised `h5cac1f4` and `h72b4789` are exact in the new Gemini check and have
 | `h2fd7271` | `descendant sample` for `descendant's sample`. | Old Whisper also omits the possessive mark. | Adjacent /s/ sounds make written possessive uncertain; meaning remains the sample of a living descendant in context. No evidence to retake. |
 
 **Decision:** No further paid retake is justified by the two ASR passes alone. The name `h3a137ee` and possible stray word `hcc5d7ed` need owner listening; the other four flags are pronunciation or orthography differences without a demonstrated semantic error. All six flags still require the normal owner audio gate. The local 82-line English dub listening page at `<home>/mokaair-work/videos/curio-h10/review/dub-en.html` first shows the six flags and the two retakes cleared by QA; its SHA-256 is `13E4CD1A033B576EF31BA252F9F152055BE99870CF1603757053D9AE788E56E0`. It is a local preview, not a backend approval.
+
+## Owner listening follow-up
+
+The owner subsequently replied 「英語旁白可以」 after the listening handoff. This records the human listening result for the six flagged clips, including the proper name and possible leading word. It does not by itself record an `/admin/videos` upload-package approval or publication.
