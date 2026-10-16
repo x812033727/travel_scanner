@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-u09-research-outline
 title: Curio U09 research outline
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-gpt6-u09-fact
+claimed_at: 2026-10-16T00:35:54Z
 created_at: 2026-10-15T16:35:08Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -73,3 +73,5 @@ scope:
 - 第二位盲評者仍判第 7 題未過；本輪僅改 `2a37c45e`，明確回扣 `f58aba8f` 的「會不會有人發射」，以後續證據支持自轉中子星／波束掃過地球作答案。完整 loop 從中段 `742fe66c` 移到此句，中段限制假說的原文保留；C22／C23、稿件、loops、逐句索引同步。2,076 口播單位、估時 607.73 秒；lint 0 errors／0 warnings。video SHA `CCD845B56DAE53A5828DFD1B93881D273E8BDA963D74B61327F074ACAC9FE50D`；script SHA `A6EBACD14E9986B8422316ABAEC6178FF039D063F31FE33A1A01D14233AF3F5A`。brief 未改，無付費／後台／push；須由未讀過此稿的新盲評者重讀，任務持續認領。
 - 2026-10-16 獨立重讀交接：主代理回報第二輪修訂版通過嚴格的 script-only 新盲評，必答 12／12、全部 13／13 yes，綁定 video SHA `CCD845B56DAE53A5828DFD1B93881D273E8BDA963D74B61327F074ACAC9FE50D`。答案檔已讀取：`C:/Users/x8120/mokaair-work/videos/curio-next-five-20261016/review/blind-curio-u09-strict.json`；第 7 題明列 `f58aba8f` 由 `2a37c45e` 回收。這是敘事盲評通過，不代替史料查核或站主劇本核准。
 - 依主代理指示釋出作者認領，任務維持 open，交由獨立史料查核者認領並撰寫 `docs/videos/curio-u09/verify-1.md`。本次只更新任務交接，不改任何稿件、brief 或媒體；沒有付費／後台／push。
+- 2026-10-16 獨立史料覆核讀回：正式稿仍綁定 `video.json` SHA `CCD845B56DAE53A5828DFD1B93881D273E8BDA963D74B61327F074ACAC9FE50D`；`verify-1.md` 對 C01–C31、所有內容卡、縮圖與後台文案逐項核查，31 項主張確認、0 項事實改動／阻斷。原 1968 年 2 月 Nature 論文印頁 709、713 本輪重新視讀，Gold 原文及 Bell／Hewish 回憶也已核對。現版 lint 0 errors／0 warnings；`narrative --answers` 收據 13 題全過。仍待劇本送後台及站主核准；沒有付費製作。
+- 主代理隨後執行 `script --slug curio-u09`，生成稿 SHA `A6EBACD14E9986B8422316ABAEC6178FF039D063F31FE33A1A01D14233AF3F5A`；`review-push --gate script` 成功，`review-pull --gate script` 讀回 `waiting for the owner`。正式劇本已送後台待站主核准，未啟動任何付費媒體製作。
