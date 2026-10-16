@@ -1,0 +1,690 @@
+{
+  "schema_version": 1,
+  "slug": "zero-root-yaozu-e006",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese fantasy costume drama, film still, natural cinematic light, realistic skin and fabric texture, shallow depth of field, warm lantern orange and mountain green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "lushi",
+      "name": "陸拾",
+      "appearance": "East Asian young man of eighteen, handsome with straight brows, high nose bridge and a dimple when he smiles, lean and wiry from years of carrying water, sun-tanned skin, black hair tied in a short rough ponytail with hemp cord, left iris slightly paler than the right, faded grey-blue coarse cotton short jacket and trousers, straw sandals, a cracked gourd hanging at his waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的鄉下少年，聲音清亮，說話快，一緊張就結巴，心地好、有點傻氣"
+      }
+    },
+    {
+      "id": "azheng",
+      "name": "阿猙",
+      "appearance": "East Asian man of twenty-five, rugged and handsome with an honest, simple expression, over two metres tall and solidly muscled, close-cropped hair, an old scar running down the middle of his forehead, a worn sleeveless brown short jacket, a big bundle of firewood tied on his back",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的憨直壯漢，聲音低沉厚實，說話很慢，一次只說兩三個字"
+      }
+    },
+    {
+      "id": "watcher",
+      "name": "窗外的人",
+      "appearance": "an unseen man outside the window at night; only one narrow dark East Asian eye under a sharp brow ever shows, through a small hole torn in the window paper",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；看不見臉的男人，壓低嗓子的氣音，很輕、很慢，像在跟著一起數"
+      },
+      "shot_looks": [
+        {
+          "id": "night-runner",
+          "appearance": "a slim, agile man in tight grey night clothes and soft cloth shoes, his face wrapped in grey cloth so that only his narrow dark eyes under sharp brows show"
+        }
+      ]
+    },
+    {
+      "id": "gui",
+      "name": "歸伯",
+      "appearance": "East Asian old man in his sixties, short and stocky with a slightly hunched back, a face full of deep wrinkles, a short grizzled beard, a conical bamboo hat and a straw rain cape, a bamboo fishing rod in his hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十多歲的老漁夫村長，說話慢吞吞，話很少，很沉穩"
+      }
+    },
+    {
+      "id": "qian",
+      "name": "錢通",
+      "appearance": "East Asian man of about thirty, tall and lean, handsome with sharp clever eyes and a habitual crooked smile at one corner of his mouth, a well-fitted brown outer-steward robe of the Xuanqiong sect, an abacus-shaped green jade pendant at his waist, always holding a small jade sect token in one hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achird",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十歲的宗門外門執事，精明，說話帶笑、嘴角歪一邊，客客氣氣裡藏著威脅"
+      }
+    },
+    {
+      "id": "disciple",
+      "name": "褐袍弟子",
+      "appearance": "East Asian young men of about twenty, plain and fit, identical brown outer-disciple robes of the Xuanqiong sect with dark sashes, hair in simple topknots, stern faces",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的宗門外門弟子，口氣硬，仗著執事撐腰"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a tense plucked pipa chase over light drums, a comic splash of woodblock and dizi, then a hushed guzheng with low drone at night, a soft curious bell motif as the stones glow, building gong and drums at dawn, ending on one low struck gong and a held suspenseful guqin note, ancient Chinese fantasy, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "有人半夜偷看他的靈石，少年摸清寶盆規矩設下假靈石局｜長燈村 第6集",
+    "description": "陸拾推開窗，屋頂上的灰影竄下巷口，正好撞上扛柴的阿猙，一起滾進池塘，撈上來一條繡著玄穹宗雲紋的布。他連夜摸清破陶盆的規矩：一晚只認一次、活的東西不收；再用河石和螢火粉做出一袋假靈石，把真的藏進歸伯的魚簍。天一亮，村口銅鑼響起，玄穹宗執事錢通奉命追回「失竊靈石」，令牌直直指向他。《長燈村：零靈根的我被一村妖祖養大》第 6 集。",
+    "tags": [
+      "長燈村",
+      "AI漫劇",
+      "修仙",
+      "玄幻",
+      "靈石"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "假靈石局",
+      "tag": "長燈村",
+      "shot": "s24"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "推窗",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Lushi on screen left in the small dark bedroom late at night, warm oil lamp light on his face, the old paper window with a small torn hole on screen right",
+        "motion": "Lushi flings the paper window open with both hands",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a01",
+          "speaker": "lushi",
+          "text": "誰！",
+          "emotion": "低喝，嚇一跳"
+        }
+      ]
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot through the open bedroom window of moonlit village rooftops at night, warm lanterns glowing on the eaves below, the watcher in grey night clothes crouched on the tiled roof ridge on screen right",
+        "motion": "The watcher leaps off the roof ridge down into the dark lane",
+        "characters": [
+          "watcher"
+        ],
+        "character_looks": {
+          "watcher": "night-runner"
+        }
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, pan left",
+        "prompt": "Wide shot of a moonlit village lane beside a pond at night, lanterns glowing on the eaves, Azheng on screen left walking slowly with a huge bundle of firewood on his back, the watcher in grey night clothes on screen right sprinting toward him",
+        "motion": "The watcher sprints round the corner straight toward Azheng",
+        "characters": [
+          "azheng",
+          "watcher"
+        ],
+        "character_looks": {
+          "watcher": "night-runner"
+        }
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the moonlit village pond at night, the watcher in grey night clothes floundering in the water on screen left, Azheng on screen right sitting chest-deep in the water, his big firewood bundle floating beside him like a little island",
+        "motion": "The watcher thrashes and splashes in the water",
+        "characters": [
+          "azheng",
+          "watcher"
+        ],
+        "character_looks": {
+          "watcher": "night-runner"
+        }
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Azheng on screen right sitting chest-deep in the moonlit pond in his brown short jacket, a strand of pond weed on his close-cropped head, water dripping from his face, ripples spreading round him",
+        "motion": "Azheng blinks slowly and wipes the water from his face",
+        "characters": [
+          "azheng"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a02",
+          "speaker": "azheng",
+          "text": "剛好。",
+          "emotion": "慢吞吞，一臉無辜"
+        }
+      ]
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Medium shot of the moonlit pond bank at night, tall dark reeds on screen left, the watcher in dripping grey night clothes on screen left climbing out of the water",
+        "motion": "The watcher scrambles up the bank and vanishes into the reeds",
+        "characters": [
+          "watcher"
+        ],
+        "character_looks": {
+          "watcher": "night-runner"
+        }
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Lushi on screen left on the pond bank at night, out of breath, an oil lamp raised in his hand, Azheng off screen right in the water",
+        "motion": "Lushi swings the lamp from side to side, searching the reeds",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a03",
+          "speaker": "lushi",
+          "text": "人呢？",
+          "emotion": "喘著氣，急"
+        }
+      ]
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Azheng on screen right chest-deep in the moonlit pond, warm lamp light on his face from Lushi off screen left, his big hand rising out of the water",
+        "motion": "Azheng holds up a dripping strip of brown cloth from the water",
+        "characters": [
+          "azheng"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a04",
+          "speaker": "azheng",
+          "text": "掉的。",
+          "emotion": "慢，兩個字"
+        }
+      ]
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the cloth strip, locked",
+        "prompt": "Insert of a sun-tanned hand holding a wet strip of brown cloth up to warm oil lamp light at night, a small cloud-shaped sigil embroidered on it in pale thread, no writing",
+        "motion": "The hand turns the cloth to the light and the cloud sigil glints",
+        "characters": []
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lushi's face on screen left in oil lamp light on the pond bank at night, eyes narrowing, the wet brown cloth in his hand at the bottom of frame",
+        "motion": "Lushi crushes the wet cloth in his fist",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a05",
+          "speaker": "lushi",
+          "text": "玄穹宗的人……一直在盯我。",
+          "emotion": "壓低聲音，心一沉"
+        }
+      ]
+    },
+    {
+      "id": "s11",
+      "chapter": "盆的規矩",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the Hu family courtyard at night by the bamboo chicken coop, moonlight, Lushi on screen left kneeling before the cracked clay basin on the ground, a small open wooden box of glowing pale blue spirit stones beside his knee",
+        "motion": "Lushi drops one glowing stone into the basin",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a06",
+          "speaker": "lushi",
+          "text": "先弄清楚你的規矩。",
+          "emotion": "認真，像在跟盆說話"
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the basin from above, slow push in",
+        "prompt": "Insert from above of the cracked clay basin at night, a single glowing pale blue spirit stone at the bottom, rings of golden light spreading out from it like ripples on water",
+        "motion": "The single stone slowly divides into two inside the golden ripples",
+        "characters": []
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Lushi on screen left kneeling at the basin at night, golden light from the basin below frame on his grinning face, another glowing stone pinched between his fingers",
+        "motion": "Lushi flicks the stone down into the basin below frame",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a07",
+          "speaker": "lushi",
+          "text": "再來一次！",
+          "emotion": "得意，手快"
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the dark basin from above, locked",
+        "prompt": "Insert from above of the cracked clay basin at night, three pale blue spirit stones lying in it, no golden light at all, a sun-tanned finger reaching in",
+        "motion": "The finger pokes the newest stone; the basin stays dark and nothing divides",
+        "characters": []
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, high angle, locked",
+        "prompt": "Medium close-up from a high angle of Lushi on screen left kneeling over the dark cracked clay basin at night, moonlight only, the small wooden box of glowing stones tipped in both hands",
+        "motion": "Lushi pours the whole box of stones into the basin",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a08",
+          "speaker": "lushi",
+          "text": "越多越好！",
+          "emotion": "賭氣，一口氣倒"
+        }
+      ]
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Close-up of Lushi's face on screen left in cold moonlight, no golden glow from the dark basin below frame, a puzzled frown",
+        "motion": "Lushi scratches his head, frowning down at the basin",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a09",
+          "speaker": "lushi",
+          "text": "一晚上……只認一次？",
+          "emotion": "想通一半，皺眉"
+        }
+      ]
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the Hu family courtyard at night by the bamboo chicken coop, moonlight, Lushi on screen left crouching with a small grey tabby kitten held in both hands, the cracked clay basin on the ground on screen right",
+        "motion": "Lushi gently sets the kitten down inside the basin",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a10",
+          "speaker": "lushi",
+          "text": "活的呢？",
+          "emotion": "小聲，好奇"
+        }
+      ]
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Medium shot later that night by the bamboo chicken coop, Lushi on screen left asleep sitting against the coop under a patched quilt, the small grey tabby kitten curled up in the cracked clay basin on screen right, moonlight",
+        "motion": "The kitten springs straight up out of the basin",
+        "characters": [
+          "lushi"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the kitten, low angle, locked",
+        "prompt": "Insert at ground level of the small grey tabby kitten on screen right in moonlight, back arched high and every hair standing on end, facing the empty cracked clay basin on screen left",
+        "motion": "The kitten arches its back and hisses at the basin",
+        "characters": []
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Lushi on screen left by the bamboo coop at night, the patched quilt sliding off his shoulders, moonlight, his eyes turning toward the hissing at his right",
+        "motion": "Lushi jerks awake and sits bolt upright",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a11",
+          "speaker": "lushi",
+          "text": "怎、怎麼了？",
+          "emotion": "剛醒，嚇到結巴"
+        }
+      ]
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the empty basin from above, slow push in",
+        "prompt": "Insert from above of the empty cracked clay basin at night, dark inside, a faint thin ring of golden light at the very bottom; Lushi speaks off screen",
+        "motion": "The faint golden ring at the bottom slowly opens wide and closes again, like an eye blinking",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e6a12",
+          "speaker": "lushi",
+          "text": "活的……它不收。",
+          "emotion": "氣音，背脊發涼"
+        }
+      ]
+    },
+    {
+      "id": "s22",
+      "chapter": "假靈石",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the village pond bank before dawn, grey-blue light and mist on the water, Lushi on screen left crouched at the water's edge with an open cloth bag, smooth round grey river pebbles in the shallows",
+        "motion": "Lushi scoops a handful of river pebbles into the bag",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a13",
+          "speaker": "lushi",
+          "text": "要搜，就讓他們搜個夠。",
+          "emotion": "咬牙，有主意了"
+        }
+      ]
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the pebble, locked",
+        "prompt": "Insert of a sun-tanned hand with a small brush painting a smooth grey river pebble on a wooden table at night, a tiny open jar of glowing green-gold firefly powder beside it, oil lamp light",
+        "motion": "The brush strokes the pebble and it begins to glow pale blue",
+        "characters": []
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Lushi's face on screen left bent over a wooden table at night, a row of glowing painted pebbles below frame lighting his straight brows and focused eyes with cold pale blue light, a warm oil lamp soft behind him",
+        "motion": "Lushi blows softly on a glowing pebble and a small smile tugs at his mouth",
+        "characters": [
+          "lushi"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a14",
+          "speaker": "lushi",
+          "text": "假的……比真的還亮。",
+          "emotion": "低聲，有點得意"
+        }
+      ]
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert under the bed, locked",
+        "prompt": "Insert low under a plank bed at night, oil lamp light, a sun-tanned hand pushing a tied cloth bag glowing faintly blue into a hollow beneath a lifted floor brick",
+        "motion": "The hand presses the floor brick back down over the bag",
+        "characters": []
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the misty village pond at dawn, Old Gui on screen right sitting on the bank in a conical bamboo hat and straw rain cape holding his bamboo fishing rod, a bamboo fish creel beside him, Lushi on screen left walking up with a small cloth bag held to his chest",
+        "motion": "Lushi crouches down beside Old Gui's creel",
+        "characters": [
+          "lushi",
+          "gui"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a15",
+          "speaker": "lushi",
+          "text": "歸伯，借您魚簍。",
+          "emotion": "壓低聲音，客氣"
+        }
+      ]
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the fish creel, locked",
+        "prompt": "Insert of a bamboo fish creel on the pond bank at dawn, an old wrinkled hand resting on its open lid, a small cloth bag glowing faintly blue lying inside",
+        "motion": "The old hand shuts the creel lid over the bag",
+        "characters": []
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Medium close-up of Old Gui on screen right on the misty pond bank at dawn, conical bamboo hat, eyes on his hookless fishing line in the water, Lushi off screen left",
+        "motion": "Old Gui lifts his fishing rod a little",
+        "characters": [
+          "gui"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a16",
+          "speaker": "gui",
+          "text": "魚，自己會來。",
+          "emotion": "慢吞吞，眼睛不離水面"
+        }
+      ]
+    },
+    {
+      "id": "s29",
+      "chapter": "銅鑼",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the village gate in the morning, a huge old locust tree and a carved stone archway hung with warm orange lanterns, villagers soft and out of focus with their backs to camera, Qian Tong on screen right under the archway, a disciple beside him on screen right with a bronze gong",
+        "motion": "The disciple strikes the bronze gong once",
+        "characters": [
+          "qian",
+          "disciple"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a17",
+          "speaker": "qian",
+          "text": "玄穹宗執事錢通！",
+          "emotion": "揚聲，拖著官腔"
+        }
+      ]
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, low angle, locked",
+        "prompt": "Medium close-up from a low angle of Qian Tong on screen right under the lantern-hung stone archway in the morning, a crooked smile, the small jade token in his hand",
+        "motion": "Qian Tong raises the jade token high over his head",
+        "characters": [
+          "qian"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a18",
+          "speaker": "qian",
+          "text": "奉命追回失竊靈石！",
+          "emotion": "笑著，字字咬清楚"
+        }
+      ]
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Wide shot of the village gate in the morning, a line of brown-robed disciples on screen right pushing forward through the villagers, the villagers soft and out of focus stepping aside, Lushi on screen left at the edge of the crowd",
+        "motion": "The disciples stride forward in a line as the villagers step aside",
+        "characters": [
+          "lushi",
+          "disciple"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Medium close-up of Qian Tong on screen right at the village gate in the morning, lanterns soft behind him, the crooked smile gone cold, Lushi off screen left",
+        "motion": "Qian Tong swings the jade token round to point straight at Lushi off screen left",
+        "characters": [
+          "qian"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e6a19",
+          "speaker": "qian",
+          "text": "就是他。",
+          "emotion": "輕，篤定"
+        }
+      ]
+    }
+  ]
+}
