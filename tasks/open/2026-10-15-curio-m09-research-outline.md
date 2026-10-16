@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-m09-research-outline
 title: Curio M09 research and outline
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-curio-h12-m09-scripts
+claimed_at: 2026-10-15T23:53:43Z
 created_at: 2026-10-15T16:34:56Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -24,7 +24,10 @@ scope:
 
 - [x] 保存本次研究 research.md、可追溯 claims.md 與兩案 brief.md。
 - [x] 獨立查核員覆核來源及敘事，修正確有依據的問題。
-- [x] 協調者完成站主選綱交接；不涵蓋完整稿、付費生成或上架。
+- [x] 協調者完成原大綱的站主選綱交接。
+- [x] 2026-10-16 續作核准 A 的完整正式稿、逐景提示、claims、loops 與兩支 Shorts 稿。
+- [x] schema／lint 與 Shorts 結構檢查通過，作者本機驗證收據落地。
+- [ ] 正式稿由另一位查核員與盲評者覆核，協調者套用修正後送站主。
 
 ## Steps
 
@@ -33,6 +36,8 @@ scope:
 - [x] 補查 2024 月曆環孔數研究的作者機構摘要，避免稱前盤已完全破解。
 - [x] 寫 A 推薦／B 替代、10 分鐘節拍與至少三個開場 loops 預案。
 - [x] 獨立覆核。
+- [x] 依站主核准 A 寫完整稿；「獨立覆核」的已勾項只指原大綱，不涵蓋這次正式稿。
+- [ ] 完成正式稿的獨立查核、聽眾審稿與十三題盲評。
 
 ## How to verify
 
@@ -48,3 +53,12 @@ scope:
 - 2026-10-16 01:01（Asia/Taipei），協調者完成手動大綱送審並讀回 `pending`；review ID：`264fb9fa-e606-4b4e-93e3-ef7c07b7878d`，對應 brief SHA-256：`B9BE6725FEA76B516A03E2498ABCEACE0A158EA3FDC40A5C88ED5EA9E850DEE7`。送審版 brief 未再修改。
 - 交接完成，釋出本票認領；仍待站主選 A／B 大綱，以及本批 US$30.00 估算停手上限授權（尚未核准）。正式生產尚未開始，沒有付費請求或 worker 啟動；本票未標 done，整集尚未完成，由協調者統一 commit／PR。
 - 2026-10-16 獨立覆核意見已修：2021 明標電腦重建，不暗示實體複製品已驗證；1901 開場為後見描述，不畫潛水員當場識別齒輪；盤面以同一次操作帶用途，避免三個定義連念。研究／大綱版已凍結，不代表正式稿或完整敘事 QA 已通過。
+
+### 2026-10-16 正式稿續作
+
+- 協調者讀回原 review `264fb9fa-e606-4b4e-93e3-ef7c07b7878d` 已核准 A；五集本批每集 US$6／總 US$30 已授權，紀錄在 `docs/videos/curio-next-five-20261016/decision-20261016.json`。本票重新以 `codex-curio-h12-m09-scripts` 認領。
+- 原核准 brief SHA：`b9be6725fea76b516a03e2498abceace0a158ea3fdc40a5c88ed5ea9e850dee7`。協調者授權補現行 lint／host 所需欄位與選項外核准／預算狀態；A／B 正文到文末逐字比對原版一致。新 SHA：`ac48bd3339b2e7b0c406304574b23bff794f182529b9e611e8537c7df4a75d5d`，由協調者重新送審，不沿用舊核准 hash。
+- `video.json`、`script.md`、`loops.md`、`shorts.json` 完整落地。95 景／97 句、89 插圖景，七章，估約 9.5 分鐘；不是音訊實測。2021 全文 XML 再讀，傳動、視逆行、管軸及假設指針補入 C18–C22。
+- 本機 `lint` 零錯誤；2 個研究角色／室內場地頻率提示保留，同一殘片的研究主線已跨館藏、成像、盤面示意與電腦模型。三個開場鉤子與回收景 prompt 完全相同；claim ID 完整，兩支 Shorts schema 及母片 shot 引用均通過。詳見 `script-validation.json`。
+- 等待正式稿獨立查核、聽眾審稿、十三題盲評、補格式大綱重核准及正式劇本核准。作者 paid calls = 0、backend submissions = 0、worker starts = 0；發音字典未改。僅提交本票及 H12/M09 文件範圍，保留進行中供覆核修訂。
+- `npm run check:tasks` 通過（1895 票，既有過期認領及其他 scope 重疊警告保留）；本次文件 `git diff --check` 通過。正式稿 SHA-256：`0b429837043354ee66b02c891f9b1aee07adf0c8df7b13049885ca8e56127f37`。

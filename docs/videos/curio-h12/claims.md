@@ -1,6 +1,6 @@
 # H12 事實與用語邊界
 
-查核日期：2026-10-16（Asia/Taipei）。來源 ID 及直接網址見 [research.md](research.md)。這是撰稿前查核表，尚未經另一位查核員簽核。
+查核日期：2026-10-16（Asia/Taipei）。來源 ID 及直接網址見 [research.md](research.md)。大綱層級獨立覆核已完成；下方正式稿對照待另一位查核員逐句覆核。
 
 | ID | 可用敘述 | 來源／定位 | 判定與不可跨越的界線 |
 | --- | --- | --- | --- |
@@ -21,6 +21,8 @@
 | H12-C15 | 1912 年 Gibson 詩中寫有未動的晚餐與倒椅。 | S3 版權頁、〈Flannan Isle〉餐桌段 | 確認文學文字；不能反推 1900 現場真的如此，也不主張詩是全世界最早版本。 |
 | H12-C16 | NRS 在 2026 年首次展示 Moore 信。 | S4 原信展出段 | 確認館方說法；展期已結束，不作旅遊邀約或稱「現在正在展」。 |
 | H12-C17 | 三人最後的確切遭遇仍未被當年紀錄確定。 | S1 官方歷史導言、調查結論措辭 | 確認證據上限；片尾「未結」指最後遭遇，不代表每個怪談細節都同樣可信。 |
+| H12-C18 | 大石從較高處移到通道；救生圈不見，綁繩未解且黏有帆布，監督據此判為被海水撕離。 | S1 Muirhead 西側報告第 12–13 段；2026-10-16 正式撰稿再讀全文 | 現場觀察與監督推斷分開；不能把救生圈消失當作有人拿它救援的證明。 |
+| H12-C19 | 監督比較西風方向後較傾向海水沖走，調查後探望 Ducat、McArthur 遺孀；留一名水手陪 Moore 值班，並建議可見天氣下未見燈要通報。 | S1 報告風向、調查後處置及 signalman 建議段；2026-10-16 再讀 | 風向論證仍是監督的推理，沒有確定死亡過程；不將通信建議說成後來已採行。 |
 
 ## 不採用／待重查
 
@@ -38,3 +40,39 @@
 2. 觀眾能指出官方海浪說依據哪些損害，以及為何仍不能還原最後瞬間；同一西側路徑的插圖與高度卡片承接，不用另開理論清單。
 
 引用均採轉述。原作詩不整段搬入影片；圖像授權另行確認。正式劇本完成後，仍須逐句對應 claims 與獨立十三題敘事審核。
+
+## 正式稿場景對照
+
+| 主張 ID | 使用場景 |
+| --- | --- |
+| H12-C02 | arrival-date、landing-no-reply、horn-call、rocket-call |
+| H12-C03 | letter-tease、boat-launched、boat-waits、letter-recalled、serious-absence、boat-report、search-again、memory-recalled、letter-reader |
+| H12-C09 | west-tease、inspector-lands、investigator-opinion |
+| H12-C15 | poem-tease、poem-bridge、poem-recalled、untouched-meal、overturned-chair、poem-effect、memory-recalled、kitchen-recalled、document-card、poet-not-witness、two-mysteries |
+| H12-C17 | opening-question、search-island、time-place-question、no-fake-diary、two-mysteries、ending-outro |
+| H12-C04 | entrance-gate、kitchen-door、door-boundary、cold-fire、empty-beds |
+| H12-C05 | room-question、lamp-ready、ready-not-working、kitchen-work、kitchen-recalled、document-card |
+| H12-C01 | who-missing、replacement-duty、ending-documents |
+| H12-C06 | captain-volunteers、relight-night |
+| H12-C07 | work-question、slate-entry、log-date、slate-later、morning-reading、extinguish-time |
+| H12-C08 | work-date-inference、inference-boundary、time-place-question |
+| H12-C14 | passing-ship、report-delay、shore-observers、visibility-question、shore-log、several-nights、two-records |
+| H12-C11 | east-intact、west-recalled、box-gone、rope-question、coiled-rope、no-loose-coil、crane-safe、crane-covered、railings-twisted、departure-question |
+| H12-C10 | sea-blocks-descent、platform-height、box-location、box-height、height-card |
+| H12-C18 | stone-displaced、buoy-question、buoy-ties、buoy-inference |
+| H12-C12 | departure-question、coat-left、others-clothes、clothing-inference、landing-clothes、why-coat、sequence-unknown |
+| H12-C13 | evidence-gap、investigator-opinion、secure-gear、wave-hypothesis、wave-label |
+| H12-C19 | wind-compared、west-wind、water-preferred、after-investigation、watch-company、reporting-rule |
+| H12-C16 | letter-fate、exhibit-first、exhibit-new、letter-reader、ending-documents、ending-outro |
+
+## 與企劃不同的地方
+
+維持核准 A 的七章與同一份檔案主線。補入 NLB 原報告中救生圈綁繩、風向比較與岸上通報建議，讓事故推斷的形成有具體證據；沒有增加死因清單。片尾新增事實保留 2026 年原信首次展出。
+
+## 我懷疑但沒動的事
+
+穆爾與繆爾黑德卒年未另行確認，人物提示只用一般角色、不做可辨識真人。館方原信首展說法已重開，但展期已結束。NLB 轉錄一處斷句不順，旁白只使用意思清楚的段落。三人出門順序與救援情節仍未確定。
+
+## 進度
+
+完整 A 稿、逐景插圖提示、場景主張對照與 loops 已落地；等待獨立查核及十三題盲評，不代表站主已核准正式稿。paid calls = 0。核准 brief 保持原雜湊。

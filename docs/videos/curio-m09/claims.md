@@ -1,6 +1,6 @@
 # M09 事實與重建邊界
 
-查核日期：2026-10-16（Asia/Taipei）。來源 ID 與直接網址見 [research.md](research.md)。初稿待獨立覆核，不能視為劇本已過關。
+查核日期：2026-10-16（Asia/Taipei）。來源 ID 與直接網址見 [research.md](research.md)。大綱層級獨立覆核已完成；正式稿待獨立逐句覆核，尚未通過劇本關卡。
 
 | ID | 可用敘述 | 來源與定位 | 判定及限制 |
 | --- | --- | --- | --- |
@@ -21,6 +21,11 @@
 | M09-C15 | 現存殘片保存於雅典國家考古博物館。 | S5 研究簡介 | 確認；本次未實地拍攝，不暗示本片使用館內實拍。 |
 | M09-C16 | 2024 研究用統計模型估計月曆環原始孔數，結論附模型假設。 | S8 摘要 | 新近研究邊界；孔數與齒輪數不同。不進推薦大綱的詳細統計段，不說全機已定案。 |
 | M09-C17 | 研究者將裝置理解為巴比倫天文週期與希臘幾何方法的結合。 | S3 Conclusions；S1 摘要 | 確認研究的歷史解釋；保留到片尾作新答案，不編一場實際跨文化會議。 |
+| M09-C18 | 齒輪的齒數與傳動比例相關；現存軸承、孔洞與空間限制復原方式，週期關係可分解才能配出適合尺寸的齒輪。 | S3 Introduction、Period relations、Mechanisms between b1 and the strap；2026-10-16 正式撰稿再讀全文 XML | 機械關係的白話轉述；示意齒輪只解釋傳動，不充當本片已造出複製品的證據。上盤與陰陽曆關係依 S2，朔望月採標準新月至新月定義。 |
+| M09-C19 | 殘片腐蝕且有附著物，結構互相遮蔽；非破壞成像可讀到內部。 | S3 Introduction；S1 摘要 | 實物狀態與方法；不聲稱本片實際拆過或掃描原物。 |
+| M09-C20 | 從地球看行星會有視逆行；古代周轉圓方法以兩個均勻圓周運動合成描述，模型以裝在轉動部件上的齒輪處理。 | S3 Period relations and ancient Greek theories、Introduction | 2021 作者的古代理論與模型說明；不把視逆行說成行星真的倒著繞太陽。 |
+| M09-C21 | 2021 模型以套接管軸及支臂帶動前盤不同圓環的輸出。 | S3 Discussion and results、Mechanisms between b1 and the strap | 只稱該模型設計，不稱原物前盤全部零件仍在，也不稱本片做過機械驗證。 |
+| M09-C22 | 月球交點是月球視軌道與黃道的交會，與食象條件有關；2021 模型的 Dragon Hand 用於表示交點，缺乏直接實物證據。 | S3 Dragon Hand、Conclusions | 這一項明示假設；只是模型如何解釋前後盤關係，不把假設指針當出土物。 |
 
 ## 排除的說法
 
@@ -40,3 +45,40 @@
 3. 觀眾能指出現代復原仍受缺件限制；以 S3 作者的模型限制為依據，不以電腦模型的示意運轉影片當考古定案。
 
 這些屬有來源的解說，沒有宣稱實測古物或重建機械。原圖、照片、模型影片未取得本集素材核准，不下載混用。
+
+## 正式稿場景對照
+
+| 主張 ID | 使用場景 |
+| --- | --- |
+| M09-C01 | recovery-place、fragment-arrives |
+| M09-C02 | known-later、opening-question、object-age、wheel-question、early-astronomy、moon-not-modern |
+| M09-C03 | cannot-turn、damaged-object、fragment-count、gear-count、third-remains、count-limit、count-recalled |
+| M09-C05 | scan-tease、marks-needed、early-astronomy、not-first-gears、inside-layer、hidden-question、imaging-next、scan-recalled、layers-visible、surface-light、inscription-question、instructions-read、two-evidence |
+| M09-C09 | names-tease、dial-question、read-back、games-recalled、games-four、games-purpose、not-score、different-dials |
+| M09-C10 | numbers-tease、numbers-recalled、numbers-read-year、venus-period、saturn-period、numbers-purpose、not-arbitrary |
+| M09-C15 | museum-arrival |
+| M09-C14 | object-age、years-not-birthday、wreck-not-birthday、methods-survive |
+| M09-C18 | not-simple-wheel、teeth-motion、ratio-role、wheel-question、not-replace-random、visible-clues、moon-year、calendar-problem、month-meaning、fit-question、small-gears、physical-fit、not-picture-only |
+| M09-C08 | marks-needed、dial-question、read-back、months-upper、moon-year、calendar-problem、metonic-number、calendar-use、eclipse-question、eclipse-lower、saros-number、month-meaning、different-dials |
+| M09-C13 | not-replace-random、front-question、model-extra、replica-question、author-reservation、hypothetical-hand、node-explain、hypothesis-purpose、constraints-not-certainty、old-maker-unknown |
+| M09-C19 | fragile-layers |
+| M09-C11 | instructions-read、two-evidence、back-answer、front-question、new-model-year、fit-question、not-picture-only、computer-only |
+| M09-C06 | study-2006、functions-advance、eclipse-question、eclipse-lower、eclipse-pattern、eclipse-boundary |
+| M09-C07 | study-2006、moon-not-even、moon-mechanism、moon-not-modern、functions-advance |
+| M09-C20 | planet-question、retrograde-observed、not-constant、epicyclic-idea、gear-on-gear、not-arbitrary |
+| M09-C21 | nested-tubes、ring-layout |
+| M09-C12 | model-question、model-sixtynine、count-recalled、model-extra |
+| M09-C22 | node-explain |
+| M09-C17 | knowledge-question、knowledge-route、methods-survive、ending-outro |
+
+## 與企劃不同的地方
+
+維持核准 A 的同一殘片主線與七章。為讓觀眾一次理解一個動作，背盤依轉動示意分開講月份、食象、賽會，再由缺損進入前盤；增補行星視逆行、同軸管套與模型空間的白話說明。都依 2021 論文，不自稱實測。
+
+## 我懷疑但沒動的事
+
+2006 與 2008 僅取得完整摘要，2021 本文和更正取得全文；沒有宣稱全部付費論文都已讀完。2024 孔數研究只作研究邊界，不進正文。1902 首次辨識齒輪的人與日期未重查，不補入旁白。所有模型圖是概念示意，不以 AI 生成齒輪位置當作物證。
+
+## 進度
+
+完整 A 稿、逐景插圖提示、場景主張對照與 loops 已落地；等待獨立查核及十三題盲評，不代表站主已核准正式稿。paid calls = 0。核准 brief 保持原雜湊。
