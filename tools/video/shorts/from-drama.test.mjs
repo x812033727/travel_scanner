@@ -377,13 +377,15 @@ test('the brightness probe reads a stats file whose path has a drive colon and b
   }
   const base = tempDir('brightness-path-');
   t.after(() => rmSync(base, { recursive: true, force: true }));
-  // A directory named like a Windows path: legal on Linux, and the characters the filter graph
-  // would read as an option separator and escapes if the path were written into it.
-  const directory = path.join(base, 'C:\\Users\\runner\\AppData');
+  // Windows supplies the real drive colon and separators; a literal Windows-like directory
+  // supplies those filter-graph-sensitive characters on POSIX without nesting a second drive.
+  const directory = path.join(base, process.platform === 'win32' ? 'stats' : 'C:\\Users\\runner\\AppData');
   mkdirSync(directory, { recursive: true });
+  const statsFile = path.join(directory, 'brightness.txt');
+  assert.match(statsFile, /[A-Za-z]:\\/, 'the real stats path exercises a drive colon and backslashes');
   const video = path.join(base, 'grey.mp4');
   await runTool(tools.ffmpeg, ['-hide_banner', '-v', 'error', '-f', 'lavfi', '-i', 'color=c=gray:s=1080x1920:r=30:d=0.2', '-pix_fmt', 'yuv420p', video]);
-  const levels = await brightness(tools, video, path.join(directory, 'brightness.txt'));
+  const levels = await brightness(tools, video, statsFile);
   assert.equal(levels.length, 6, 'one level per frame');
   for (const level of levels) assert.ok(level > 100 && level < 150, `mid grey, not ${level}`);
 });
