@@ -17,12 +17,12 @@ import { adminNavigate, useAdminQueryValue } from "@/lib/admin-workspace-navigat
 import { ApiError, api, apiProblemMessage } from "@/lib/api";
 import { activeLocale } from "@/lib/locale-format";
 
-// The brand stories (docs/videos/STORY.md): a drama series of kind "story" whose episodes are the
+// The brand stories (docs/videos/STORY.md): a series of kind "story" whose episodes are the
 // planned backlog, one story each, imported from stories.json and made two a day by the worker. An
 // episode's beats are the story's plan (its id, category, region, publishing slot, the question,
 // six chapters, the facts to verify, the sources and the fact checker's caveats); after its first
-// read the series page reads only the list's part of them, and a plan is read when it opens. The drama tab
-// shows the story series apart (AdminVideoStorySeries), and a story series opens on its own page
+// read the series page reads only the list's part of them, and a plan is read when it opens. The Videos tab
+// shows the story series under the story category (AdminVideoStorySeries), and a series opens on its own page
 // (StorySeriesPage): what holds the next story back, the daily count, pause, the stories ready to
 // upload with their next free slot, the list of every story, and the import. The changes ask for
 // content.manage, as the API's series endpoints do; a reader sees everything and changes nothing.
@@ -55,7 +55,7 @@ const CHAPTER_KEYS = ["hook", "origin", "idea", "engine", "turn", "now"] as cons
 const SOURCE_KINDS = ["official", "court", "academic", "archive", "reference", "news", "book"] as const;
 const STORY_ID = /^[ABKTC][0-9]{2}$/;
 // The series slug the import's path takes (SERIES_SLUG_PATTERN in the API's schemas).
-const SLUG = /^[a-z0-9][a-z0-9-]{1,39}$/;
+export const STORY_SERIES_SLUG = /^[a-z0-9][a-z0-9-]{1,39}$/;
 // Where a story is, from its episode and its video: not started, in the making, ready to upload,
 // scheduled or public on YouTube, finished without a video to show, skipped, or its video dropped.
 const STATES = ["waiting", "making", "ready", "scheduled", "published", "done", "skipped", "dropped"] as const;
@@ -688,7 +688,7 @@ function StoryImportForm({ seriesSlug, canManage, onImported }: { seriesSlug?: s
   const limitOk = limitValue === null || (Number.isInteger(limitValue) && limitValue >= 1);
   const perDayValue = !seriesSlug && perDay ? Number(perDay) : null;
   const key = JSON.stringify([version, target, limitValue, perDayValue]);
-  const ready = Boolean(parsed && !parsed.invalid && SLUG.test(target)) && limitOk;
+  const ready = Boolean(parsed && !parsed.invalid && STORY_SERIES_SLUG.test(target)) && limitOk;
   const report = answer?.report ?? null;
   const current = answer?.key === key;
   // A clean dry run of exactly what is on the form, with something to write.
@@ -734,7 +734,7 @@ function StoryImportForm({ seriesSlug, canManage, onImported }: { seriesSlug?: s
     </label>
     {parsed?.invalid && <p className="text-sm text-red-800">{t("import.invalidJson", { message: parsed.invalid })}</p>}
     {parsed && !parsed.invalid && <p className="text-sm text-[var(--muted)]">{parsed.stories === null ? t("import.noStories") : t("import.parsed", { count: parsed.stories, slug: parsed.slug || "—" })}</p>}
-    {!seriesSlug && parsed && !parsed.invalid && !SLUG.test(parsed.slug) && <p className="text-sm text-red-800">{t("import.noSlug")}</p>}
+    {!seriesSlug && parsed && !parsed.invalid && !STORY_SERIES_SLUG.test(parsed.slug) && <p className="text-sm text-red-800">{t("import.noSlug")}</p>}
     {seriesSlug && parsed?.slug && parsed.slug !== seriesSlug && <p className="text-sm text-amber-800">{t("import.otherSeries", { file: parsed.slug, series: seriesSlug })}</p>}
     <div className="grid gap-3 md:grid-cols-2">
       <label className="grid gap-2 text-sm font-semibold">{t("import.limit")}
@@ -760,10 +760,17 @@ function StoryImportForm({ seriesSlug, canManage, onImported }: { seriesSlug?: s
 }
 
 /**
- * The story series on the drama tab: each one with where it stands against its limits and why no
+ * The story series under the Videos tab's story category: each one with its limits and why no
  * story starts, opened on its own page; and the import, which also creates a series from its file.
  */
 export function AdminVideoStorySeries({ onOpenSeries }: { onOpenSeries: (slug: string) => void }) {
+  const [tab] = useAdminQueryValue("tab", "reviews", (value) => value === "reviews" || value === "drama");
+  // Drama still imports this component for old bookmarks. Keep its list and import in Videos.
+  if (tab !== "reviews") return null;
+  return <StorySeriesList onOpenSeries={onOpenSeries} />;
+}
+
+function StorySeriesList({ onOpenSeries }: { onOpenSeries: (slug: string) => void }) {
   const t = useTranslations("admin.videoStories");
   const ts = useTranslations("admin.videoSeries");
   const manage = useAdminActionGuard("content.manage");
@@ -809,6 +816,23 @@ export function AdminVideoStorySeries({ onOpenSeries }: { onOpenSeries: (slug: s
  * every story with its plan, and the import again (it updates only the stories not started yet).
  */
 export function StorySeriesPage({ series, error, onBack, onOpenVideo, onChanged }: { series: StorySeries; error: string; onBack: () => void; onOpenVideo: (slug: string) => void; onChanged: () => void }) {
+  const [tab] = useAdminQueryValue("tab", "reviews", (value) => value === "reviews" || value === "drama");
+  useEffect(() => {
+    if (tab !== "drama" || series.kind !== "story") return;
+    // Old Drama bookmarks keep their selected story but open it in Videos.
+    const target = new URL(window.location.href);
+    if (target.searchParams.get("tab") !== "drama") return;
+    target.searchParams.set("tab", "reviews");
+    target.searchParams.set("category", "story");
+    target.searchParams.set("story_series", series.slug);
+    target.searchParams.delete("series");
+    adminNavigate(target, true);
+  }, [series.kind, series.slug, tab]);
+  if (tab === "drama") return null;
+  return <StorySeriesDetail series={series} error={error} onBack={onBack} onOpenVideo={onOpenVideo} onChanged={onChanged} />;
+}
+
+function StorySeriesDetail({ series, error, onBack, onOpenVideo, onChanged }: { series: StorySeries; error: string; onBack: () => void; onOpenVideo: (slug: string) => void; onChanged: () => void }) {
   const t = useTranslations("admin.videoStories");
   const ts = useTranslations("admin.videoSeries");
   const manage = useAdminActionGuard("content.manage");
