@@ -1,0 +1,107 @@
+Summary of the twelve sessions of 2026-10-09 (UTC), Claude Code 2.1.295, model claude-sonnet-5-5.
+Built by the runner from the tables that tally.mjs and extras.mjs print; see ../../runlog.txt.
+
+A. Every session, in the order it ran
+name | arm | exit | seconds | result lines | total_cost_usd
+n1 | named | 0 | 33 | 2 | 0.1577646
+i1 | inline | 0 | 32 | 1 | 0.1278106
+a1 | auto | 0 | 40 | 2 | 0.1356101
+n2 | named | 0 | 39 | 1 | 0.12627170000000001
+i2 | inline | 0 | 35 | 1 | 0.13402740000000002
+a2 | auto | 0 | 33 | 2 | 0.12765859999999998
+n3 | named | 0 | 35 | 2 | 0.1314189
+i3 | inline | 0 | 32 | 1 | 0.1177336
+a3 | auto | 0 | 47 | 2 | 0.1291449
+w1 | write | 0 | 34 | 1 | 0.12240039999999999
+c1 | claudemd | 0 | 31 | 1 | 0.1205304
+b1 | builtin | 0 | 28 | 1 | 0.14737139999999999
+sum of the twelve reported total_cost_usd values: 1.5777426
+
+B. Per arm, three runs each (tally.mjs figures unless marked)
+V-main: tool-result characters in the main conversation (the brief's rule)
+   inline i1 i2 i3: 30817, 34419, 24792 | mean 30009 | largest minus smallest 9627
+   named  n1 n2 n3: 1028, 1266, 1028 | mean 1107 | largest minus smallest 238 | mean minus inline mean -28902
+   auto   a1 a2 a3: 1183, 1028, 1408 | mean 1206 | largest minus smallest 380 | mean minus inline mean -28803
+   brief's rule for a token row (named against inline): difference between the arms 28902, largest difference inside one arm 9627 -> between is larger: the row stays
+runner: all that reached the main conversation (V-main plus a background report that came as task_notification)
+   inline i1 i2 i3: 30817, 34419, 24792 | mean 30009 | largest minus smallest 9627
+   named  n1 n2 n3: 1877, 1266, 1937 | mean 1693 | largest minus smallest 671 | mean minus inline mean -28316
+   auto   a1 a2 a3: 2016, 1608, 2157 | mean 1927 | largest minus smallest 549 | mean minus inline mean -28082
+   brief's rule for a token row (named against inline): difference between the arms 28316, largest difference inside one arm 9627 -> between is larger: the row stays
+C-first: the main conversation's first request, input side
+   inline i1 i2 i3: 5373, 5370, 5365 | mean 5369 | largest minus smallest 8
+   named  n1 n2 n3: 7856, 7853, 7851 | mean 7853 | largest minus smallest 5 | mean minus inline mean 2484
+   auto   a1 a2 a3: 7846, 7848, 7845 | mean 7846 | largest minus smallest 3 | mean minus inline mean 2477
+   brief's rule for a token row (named against inline): difference between the arms 2484, largest difference inside one arm 8 -> between is larger: the row stays
+C-last: the main conversation's last request, input side
+   inline i1 i2 i3: 24888, 27043, 22422 | mean 24784 | largest minus smallest 4621
+   named  n1 n2 n3: 9881, 8980, 9907 | mean 9589 | largest minus smallest 927 | mean minus inline mean -15195
+   auto   a1 a2 a3: 10252, 9746, 10507 | mean 10168 | largest minus smallest 761 | mean minus inline mean -14616
+   brief's rule for a token row (named against inline): difference between the arms 15195, largest difference inside one arm 4621 -> between is larger: the row stays
+T: modelUsage added up, input side (whole session, subagent included)
+   inline i1 i2 i3: 46238, 60281, 75343 | mean 60621 | largest minus smallest 29105
+   named  n1 n2 n3: 64224, 88797, 64289 | mean 72437 | largest minus smallest 24573 | mean minus inline mean 11816
+   auto   a1 a2 a3: 73262, 64181, 97152 | mean 78198 | largest minus smallest 32971 | mean minus inline mean 17578
+   brief's rule for a token row (named against inline): difference between the arms 11816, largest difference inside one arm 29105 -> inside is larger: the row is dropped
+T: total_cost_usd
+   inline i1 i2 i3: 0.1278106, 0.13402740000000002, 0.1177336 | mean 0.1265 | largest minus smallest 0.0163
+   named  n1 n2 n3: 0.1577646, 0.12627170000000001, 0.1314189 | mean 0.1385 | largest minus smallest 0.0315 | mean minus inline mean 0.0120
+   auto   a1 a2 a3: 0.1356101, 0.12765859999999998, 0.1291449 | mean 0.1308 | largest minus smallest 0.0080 | mean minus inline mean 0.0043
+   brief's rule for a token row (named against inline): difference between the arms 0.0120, largest difference inside one arm 0.0315 -> inside is larger: the row is dropped
+result-line usage (tally.mjs reads the LAST result line; with a background subagent that is the last turn only):
+   n1: 9881 | modelUsage 64224 | result lines 2
+   i1: 46238 | modelUsage 46238 | result lines 1
+   a1: 10252 | modelUsage 73262 | result lines 2
+   n2: 16833 | modelUsage 88797 | result lines 1
+   i2: 60281 | modelUsage 60281 | result lines 1
+   a2: 9746 | modelUsage 64181 | result lines 2
+   n3: 9907 | modelUsage 64289 | result lines 2
+   i3: 75343 | modelUsage 75343 | result lines 1
+   a3: 10507 | modelUsage 97152 | result lines 2
+   w1: 34496 | modelUsage 72378 | result lines 1
+   c1: 17079 | modelUsage 55427 | result lines 1
+   b1: 89830 | modelUsage 89830 | result lines 1
+
+C. Where each run landed
+name | arm | Agent call | to log-scout | how it ran | own tool calls before the Agent call | planted ids in the reply | next-file ids named in the reply | planted ids in the report
+n1 | named | yes | yes | background | 0 | 7/7 | 3 | 7/7
+i1 | inline | no | no | - | - | 7/7 | 1 | -
+a1 | auto | yes | yes | background | 1 | 7/7 | 3 | 7/7
+n2 | named | yes | yes | foreground | 0 | 7/7 | 3 | 7/7
+i2 | inline | no | no | - | - | 7/7 | 3 | -
+a2 | auto | yes | yes | background | 0 | 7/7 | 3 | 7/7
+n3 | named | yes | yes | background | 0 | 7/7 | 3 | 7/7
+i3 | inline | no | no | - | - | 7/7 | 3 | -
+a3 | auto | yes | yes | background | 2 | 7/7 | 3 | 7/7
+w1 | write | yes | yes | foreground | 0 | 7/7 | 0 | 7/7
+c1 | claudemd | yes | yes | foreground | 0 | 7/7 | 3 | 7/7
+b1 | builtin | no | no | - | - | 7/7 | 3 | -
+
+D. tally.mjs, the table it prints for the eleven required sessions (b1 is in C and in the runlog)
+name | subagent started | to the project agent | planted ids in the reply | next-file ids named | other ids named | main: tool-result chars | under Agent: tool-result chars | main first request | main last request | result usage | modelUsage total | cost USD | turns
+i1 | no | no | 7/7 | 1 | 2 | 30817 | 0 | 5373 | 24888 | 46238 | 46238 | 0.1278106 | 7
+n1 | yes | yes | 7/7 | 3 | 0 | 1028 | 40329 | 7856 | 9881 | 9881 | 64224 | 0.1577646 | 1
+a1 | yes | yes | 7/7 | 3 | 2 | 1183 | 40329 | 7846 | 10252 | 10252 | 73262 | 0.1356101 | 1
+i2 | no | no | 7/7 | 3 | 2 | 34419 | 0 | 5370 | 27043 | 60281 | 60281 | 0.13402740000000002 | 7
+n2 | yes | yes | 7/7 | 3 | 0 | 1266 | 36235 | 7853 | 8980 | 16833 | 88797 | 0.12627170000000001 | 2
+a2 | yes | yes | 7/7 | 3 | 0 | 1028 | 40329 | 7848 | 9746 | 9746 | 64181 | 0.12765859999999998 | 1
+i3 | no | no | 7/7 | 3 | 0 | 24792 | 0 | 5365 | 22422 | 75343 | 75343 | 0.1177336 | 10
+n3 | yes | yes | 7/7 | 3 | 0 | 1028 | 40329 | 7851 | 9907 | 9907 | 64289 | 0.1314189 | 1
+a3 | yes | yes | 7/7 | 3 | 2 | 1408 | 25514 | 7845 | 10507 | 10507 | 97152 | 0.1291449 | 1
+w1 | yes | yes | 7/7 | 0 | 0 | 1003 | 40329 | 7852 | 9257 | 34496 | 72378 | 0.12240039999999999 | 4
+c1 | yes | yes | 7/7 | 3 | 0 | 1158 | 40329 | 8041 | 9038 | 17079 | 55427 | 0.1205304 | 2
+
+E. extras.mjs, the table it prints for all twelve
+name | Agent calls | how it ran | chars of the tool result of the Agent call | chars of the report itself | own-tool result chars | all that reached the main conversation | planted ids in the report | next-file ids in the report | report has 共 N 筆 | result lines | main requests (input side each) | requests under Agent | their input side added up | last turn duration_ms | final reply chars
+i1 | 0 | - | 0 | 0 | 30817 | 30817 | - | - | - | 1 | 5373+5783+10194+24888 | 0 | 0 | 28412 | 887
+n1 | 1 | background | 1028 | 849 | 0 | 1877 | 7/7 | 3 | yes | 2 | 7856+8590+9881 | 3 | 37897 | 5591 | 616
+a1 | 1 | background | 1028 | 833 | 155 | 2016 | 7/7 | 3 | yes | 2 | 7846+8152+8968+10252 | 3 | 38044 | 7455 | 759
+i2 | 0 | - | 0 | 0 | 34419 | 34419 | - | - | - | 1 | 5370+5805+10199+11864+27043 | 0 | 0 | 31683 | 932
+n2 | 1 | foreground | 1266 | 658 | 0 | 1266 | 7/7 | 3 | yes | 1 | 7853+8980 | 4 | 43621 | 34992 | 616
+a2 | 1 | background | 1028 | 580 | 0 | 1608 | 7/7 | 3 | yes | 2 | 7848+8678+9746 | 3 | 37909 | 5877 | 604
+i3 | 0 | - | 0 | 0 | 24792 | 24792 | - | - | - | 1 | 5365+5797+10187+10950+20622+22422 | 0 | 0 | 29469 | 907
+n3 | 1 | background | 1028 | 909 | 0 | 1937 | 7/7 | 3 | yes | 2 | 7851+8604+9907 | 3 | 37927 | 6932 | 728
+a3 | 1 | background | 1028 | 749 | 380 | 2157 | 7/7 | 3 | yes | 2 | 7845+8170+8439+9293+10507 | 6 | 52898 | 7756 | 684
+w1 | 1 | foreground | 806 | 218 | 197 | 1003 | 7/7 | 0 | yes | 1 | 7852+8595+8792+9257 | 2 | 8526 | 31281 | 493
+c1 | 1 | foreground | 1158 | 552 | 0 | 1158 | 7/7 | 3 | yes | 1 | 8041+9038 | 2 | 8840 | 28178 | 576
+b1 | 0 | - | 0 | 0 | 38867 | 38867 | - | - | - | 1 | 7792+8165+9671+9919+22466+31817 | 0 | 0 | 26251 | 876

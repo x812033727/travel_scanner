@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "網頁設計怎麼開始：需求、內容與驗收的完整順序",
@@ -154,6 +157,7 @@
           "width": 1600,
           "height": 900,
           "caption": "先讓主要任務成立，再確認視覺、技術與後續維護都接得上。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -269,6 +273,1058 @@
         },
         {
           "title": "W3C：初步無障礙檢查與限制",
+          "url": "https://www.w3.org/WAI/test-evaluate/preliminary/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "How to Start a Web Design Project: Requirements, Content, and Acceptance Testing in Order",
+      "description": "Building your first website often stalls over unclear requirements, content, and acceptance criteria, rather than colors. Using an original neighborhood repair studio example, this guide covers user interviews, content preparation, prototyping, development, and handover, with deliverables for each stage. Steps, a comparison table, learning resources, and original diagrams help readers building or commissioning a site turn “Is it finished?” into tasks they can verify.",
+      "hero": {
+        "src": "/guides/web-design-project-workflow/hero-en.jpg",
+        "alt": "Original Mokaair illustration of a requirements document, web page, and acceptance shield, showing web design from problem definition to verifiable delivery.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A neighborhood repair studio wants a website so nearby residents can find its services, decide whether they are a good fit, and submit an inquiry with all the necessary information. If the first discussion focuses only on how attractive the homepage should be, and missing service scope, photo permissions, or inquiry procedures come to light only after the layout is complete, the design will need repeated reworking."
+        },
+        {
+          "type": "paragraph",
+          "text": "Web design can begin with a clear task: help users find information when they need it and take the next step. The workflow, studio example, and acceptance testing tasks below are original, informed by primary resources from MDN, W3C, and GOV.UK accessed on 2026-9-14. The examples are not presented as completed client projects or actual research findings."
+        },
+        {
+          "type": "heading",
+          "text": "Reframe desired features as problems to solve",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Start by talking to actual or potential website users to understand their circumstances: for example, whether residents search for help with leaks on a phone or organize renovation requirements on a computer. Asking how they last found a service, what they needed to confirm, and what worried them reveals more about their needs than directly asking whether they want online booking. Initially mark your own views and the client's views as hypotheses awaiting supporting evidence."
+        },
+        {
+          "type": "paragraph",
+          "text": "Write the main task as a complete sentence: residents want to know whether the studio serves their area so they can decide whether to make an inquiry. Then list success criteria, such as being able to find the service area, understand which jobs the studio does not accept, and know what happens after an inquiry. These details can guide page design and serve as acceptance criteria at delivery."
+        },
+        {
+          "type": "paragraph",
+          "text": "Next, define the scope and constraints of the first version. The studio in this original example could initially provide service descriptions and an inquiry form. If appointment scheduling or online payments remain undecided, record them as future requirements. For every added feature, specify the problem it solves, who will maintain it, and how it will be tested for acceptance, providing a basis for discussing the budget and timeline."
+        },
+        {
+          "type": "heading",
+          "text": "Gather usable content before letting placeholder text shape the layout",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "List the headings, body text, images, contact information, and person responsible for updates for each page. A repair website needs, at minimum, the actual service area, information required for an inquiry, the response method, and project photos that can be used legally. Mark unconfirmed project timelines and prices as pending; designers must not invent commitments just to fill the layout."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use a content inventory to record the information provider, current version, review status, and source of permission. A clear photo does not automatically mean you can publicly show a customer's home or house number. Confirm the permitted uses and, when necessary, use your own explanatory illustrations instead. Keep records of permitted uses for fonts, icons, and third-party assets too; search results are not permission to use them."
+        },
+        {
+          "type": "paragraph",
+          "text": "Put real, longer content into early sketches, including complete Traditional Chinese addresses, longer service names, and notes. This helps reveal narrow cards, excessive scrolling on mobile, or insufficient form instructions early. MDN's introductory design workflow also places content and asset preparation before coding, making it useful for practicing with small pages."
+        },
+        {
+          "type": "heading",
+          "text": "Use sketches and prototypes to confirm information and interaction order",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First, use sketches to show which information belongs on the same page, which action matters most, and where users will go next. For the original studio example, you could sketch a service overview, an individual service page, and an inquiry confirmation screen without first seeking precise colors for every small section. Focus discussion on whether residents can understand and find things, rather than whether the graphics are polished enough."
+        },
+        {
+          "type": "paragraph",
+          "text": "When you need to check the flow, connect the screens into a clickable prototype: for example, choosing a service, proceeding to an inquiry, and seeing a confirmation message after completing the information. Invite target users to perform tasks, observe where they pause and why they make their choices, and avoid guiding them through every click. Prototypes help uncover problems, but clicking through does not mean the data actually reaches the studio."
+        },
+        {
+          "type": "paragraph",
+          "text": "GOV.UK's guidance on early prototypes emphasizes testing important assumptions rather than completing every screen first. When applying this approach to a small website, start with the most uncertain inquiry information or service categories. If the design does not support users in completing their tasks, revisit the content and flow before moving on to visual details."
+        },
+        {
+          "type": "heading",
+          "text": "Specify interaction states in both visual and development specifications",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Once the information is confirmed, establish rules for type sizes, spacing, colors, and common components. Buttons need specifications for keyboard focus, disabled, and processing states as well as their normal appearance. Forms also need required-field indicators, errors, and completion results. If you deliver only an ideal homepage, developers still have to guess how other situations should appear."
+        },
+        {
+          "type": "paragraph",
+          "text": "Planning desktop and mobile layouts involves more than shrinking everything proportionally. Narrower screens may require changes to field arrangements, navigation expansion, and image cropping, while keeping key information and actions easy to find. Confirm content management, form delivery, data storage, and external service requirements with the person building the site before choosing a suitable website-building approach."
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C's planning resources assign accessibility work to roles such as design, content, and development. In practice, you can check reading order in sketches, contrast and focus during visual design, and labels and keyboard operation during development. Assigning responsibilities early makes the work easier to fit into the original schedule than demanding all corrections at delivery."
+        },
+        {
+          "type": "heading",
+          "text": "Acceptance testing should complete real tasks and record failures",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Create specific acceptance testing tasks from the requirements list: find the service area on a phone, submit an inquiry with complete information, and correct an omitted required field. Record the expected and actual results for each task. For forms, also confirm that the studio receives the correct information; a success message on the public-facing page is not enough. Use the planned testing methods for live payment transactions or external notifications."
+        },
+        {
+          "type": "paragraph",
+          "text": "Also check different screen widths, enlarged text, keyboard operation, links, image alternative text, and error messages. W3C Easy Checks helps identify problems initially, but explicitly does not constitute a complete or definitive accessibility assessment. Automated test scores, conformity to design mockups, and completion of real tasks can all inform your assessment, but none can replace the others."
+        },
+        {
+          "type": "paragraph",
+          "text": "Defect records should make issues reproducible, specifying the device, page, actions, observed result, and expected result. Fix errors that prevent inquiry submission before addressing smaller visual differences. For deferred items, list their impact, owner, and handling plan instead of covering up known issues with a blanket statement that things are mostly working."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Conduct interviews and organize the main tasks, then document the first version's scope and success criteria.",
+            "Gather all body text, assets, and permission records, then use sketches and prototypes to confirm the content and flow.",
+            "Complete the interaction states, mobile rules, and content management approach, then implement the pages.",
+            "Perform acceptance testing against tasks, fix problems, and complete the handover of accounts, documentation, maintenance responsibilities, and update procedures."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Hand over a maintainable website and build your own learning path",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Besides a browsable website, delivery should include organized information on the domain, hosting, administrator accounts, source code or editable design files, asset permissions, and renewals. Clearly record who updates service content, who receives form submissions, and whom to contact when something fails. Transfer passwords through an appropriate secure channel and avoid sharing a single administrator account long term."
+        },
+        {
+          "type": "paragraph",
+          "text": "For self-directed learning, start with MDN Curriculum's foundational modules in HTML, CSS, layout, and JavaScript to complete a small service page, then add accessibility and version control. If you use a visual website builder, you can still follow the same path through requirements, content, prototyping, and acceptance testing. Tools lower some production barriers, but you still need to verify the information and user experience yourself."
+        },
+        {
+          "type": "paragraph",
+          "text": "For each practice project, save the initial requirements, design decisions, test findings, and reasons for changes. Completing an entire flow from reading to making an inquiry teaches you more about how websites serve users than accumulating many unfinished homepages. When adding pages later, you can reuse verified rules and check them again against the new requirements."
+        },
+        {
+          "type": "image",
+          "src": "/guides/web-design-project-workflow/diagram-1-en.svg",
+          "alt": "Six cards show requirements, content, prototyping, building, acceptance testing, and handover, illustrating how completing a website requires connecting each stage's deliverables.",
+          "width": 1600,
+          "height": 900,
+          "caption": "First make the main task work, then confirm that the visuals, technology, and ongoing maintenance fit together.",
+          "description": "Six cards show requirements, content, prototyping, building, acceptance testing, and handover, illustrating how completing a website requires connecting each stage's deliverables.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Stage",
+            "Deliverables",
+            "Questions to check"
+          ],
+          "rows": [
+            [
+              "Requirements",
+              "Main tasks and scope",
+              "Who needs to accomplish what?"
+            ],
+            [
+              "Content",
+              "Information, review, and permission inventory",
+              "Is all the real content ready?"
+            ],
+            [
+              "Prototype",
+              "Screen relationships and interaction flow",
+              "Do users know the next step?"
+            ],
+            [
+              "Build",
+              "Component states and implemented pages",
+              "How are errors and mobile use handled?"
+            ],
+            [
+              "Acceptance testing",
+              "Task results and defect records",
+              "Are both front-end and back-end results correct?"
+            ],
+            [
+              "Handover",
+              "Accounts, documentation, and maintenance responsibilities",
+              "Who will handle future updates and failures?"
+            ]
+          ],
+          "caption": "An original workflow for small websites; stages can be revisited and refined, rather than performed only once in sequence."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "A successful prototype still needs acceptance testing after implementation",
+          "text": "Clickable screens only demonstrate that the designed flow can be shown. After implementation is complete, separately verify whether data is submitted correctly, notifications arrive, and the site can be used with a keyboard and on mobile."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Define the commissioned work's scope and acceptance criteria",
+              "kind": "life",
+              "slug": "marketing-agency-contract"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Understand website flows through readers' tasks",
+              "kind": "life",
+              "slug": "customer-journey-funnel"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Plan website content production and updates",
+              "kind": "life",
+              "slug": "content-marketing-calendar"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN: Website Planning, Sketches, and Assets",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Your_first_website/What_will_your_website_look_like",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: Front-End Learning Curriculum Structure",
+          "url": "https://developer.mozilla.org/en-US/curriculum/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: Understanding User Needs",
+          "url": "https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: Early Prototypes and Assumption Testing",
+          "url": "https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: Accessibility Planning and Role Responsibilities",
+          "url": "https://www.w3.org/WAI/planning/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: Initial Accessibility Checks and Their Limits",
+          "url": "https://www.w3.org/WAI/test-evaluate/preliminary/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Web デザインの始め方：要件・コンテンツ・検収までの全手順",
+      "description": "初めてのサイト制作でつまずきやすいのは、配色よりも、要件・コンテンツ・検収方法が明確になっていないことです。この記事では、地域の修繕工房を題材にしたオリジナルのサイト例を使い、利用者への聞き取り、資料整理、プロトタイプ作成から開発と引き継ぎの計画まで、各段階で残すべき成果を説明します。手順、比較表、学習資料、オリジナル図解を添え、自作する方やデザインを依頼する方が、サイトの完成を実際に確認できるタスクへ落とし込めるようにします。",
+      "hero": {
+        "src": "/guides/web-design-project-workflow/hero-ja.jpg",
+        "alt": "要件文書、Web ページ、検収を表す盾を描いた Mokaair のオリジナルイラスト。問題の定義から検証可能な納品までの Web デザインを表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "地域の修繕工房がサイトを作り、近隣の住民にサービスを見つけてもらい、自分に合うか判断したうえで、必要な情報を揃えて問い合わせてもらいたいと考えています。最初の打ち合わせでトップページの見栄えだけを決め、レイアウト完成後に施工範囲、写真の使用許諾、問い合わせの手順がないと気づけば、デザインを何度も作り直すことになります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Web デザインは、利用者が必要なときに情報を見つけ、次の行動を完了できるようにするという、明確なタスクから始められます。以下の手順、工房の事例、検収項目はいずれも独自に作成したもので、2026 年 9 月 14 日に閲覧した MDN、W3C、GOV.UK の一次資料を参考にしています。例を、完了した顧客案件や実際の調査結果として記述してはいません。"
+        },
+        {
+          "type": "heading",
+          "text": "作りたい機能を、解決すべき問題に書き換える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず、実際にサイトを使う人や使う可能性のある人に、利用場面を聞きます。例えば、住民がスマートフォンで水漏れへの対応を探しているのか、パソコンで改修の要望を整理しているのかを確認します。オンライン予約が欲しいかと直接聞くより、直近でどうサービスを探したか、何を確認する必要があったか、何に不安を感じたかを尋ねるほうが、ニーズを把握できます。自分や依頼主の意見は、まず仮説として記録し、裏付けとなる証拠を待ちます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "主要なタスクを、完結した文章にします。例えば、住民は問い合わせるかどうかを決めるために、工房が自分の地域に対応しているかを知りたい、という形です。次に、対応地域を見つけられる、引き受けない作業を理解できる、問い合わせ後の対応が分かる、といった成功条件を列挙します。これらはページ設計の指針となり、納品時の検収にも使えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "続いて、初版の範囲と制約を定めます。オリジナルの工房事例では、まずサービス説明と問い合わせフォームを用意し、予約日程の管理やオンライン決済が未確定なら、今後の要件として記録できます。機能を追加するたびに、解決する問題、保守担当者、検収方法を明記し、予算と日程を議論できる根拠を作ります。"
+        },
+        {
+          "type": "heading",
+          "text": "使えるコンテンツを先に集め、仮の文章でレイアウトを決めない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "各ページに必要な見出し、本文、画像、連絡先、更新担当者を一覧にします。修繕サイトには、少なくとも実際の対応範囲、問い合わせに必要な情報、返信方法、適法に使用できる事例写真が必要です。未確定の工期や価格は追記待ちと明記し、デザイナーがレイアウトの都合で勝手に約束として書き込んではいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "コンテンツ一覧に、資料の提供者、現在の版、レビューの有無、使用許諾の出所を記録します。写真が鮮明でも、顧客の住まいや番地を公開してよいとは限りません。使用範囲を確認し、必要なら自作の説明図に差し替えます。フォント、アイコン、第三者の素材についても、許可された用途を記録し、検索結果を使用許可とみなさないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "初期のスケッチには、実際に使う長めのコンテンツを入れます。繁体字中国語で書かれた住所の全文、長いサービス名、注意事項も含めます。これにより、カードの幅が狭すぎる、スマートフォンでスクロールが多すぎる、フォームの説明が足りない、といった問題を早期に発見できます。MDN の入門向け設計手順でも、プログラミングの前にコンテンツと素材を準備しており、小さなページの制作練習に適しています。"
+        },
+        {
+          "type": "heading",
+          "text": "スケッチとプロトタイプで、情報と操作の順序を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "スケッチでは、どの情報を同じページに置くか、どの操作が最も重要か、利用者が次にどこへ進むかを示します。オリジナルの工房事例では、サービス一覧、個別サービス、問い合わせ完了画面を描けばよく、小さな区画ごとに最初から厳密な色を追求する必要はありません。議論の焦点は、住民が理解できるか、必要な情報を見つけられるかであり、図柄が十分に洗練されているかではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手順を確認する必要が出たら、画面をつなげてクリックできるプロトタイプにします。例えば、サービスを選んで問い合わせに進み、情報を揃えると確認メッセージが表示される流れです。対象の利用者にタスクに沿って操作してもらい、立ち止まる箇所や選択の理由を観察します。横でクリック方法を逐一教えないようにします。プロトタイプは問題の発見に役立ちますが、クリックして次へ進めることは、データが本当に工房へ届いたことを意味しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GOV.UK の初期プロトタイプに関する指針は、重要な仮説の検証を重視し、最初から全画面を完成させることを求めていません。小規模なサイトにこの方法を使う場合は、問い合わせに必要な情報やサービス分類のうち、最も不確かな部分から取り組めます。利用者がタスクを完了できない設計なら、コンテンツと手順に戻って修正し、その後に見た目の細部へ進みます。"
+        },
+        {
+          "type": "heading",
+          "text": "ビジュアルと開発仕様に、操作時の状態も明示する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "情報を確認してから、文字サイズ、余白、配色、よく使うコンポーネントのルールを作ります。ボタンには通常の見た目だけでなく、キーボード操作時のフォーカス、無効時、処理中の状態も必要です。フォームにも、必須項目の案内、エラー、完了結果があります。理想的なトップページを一枚だけ渡しても、開発者は他の状況をどう表示するか推測しなければなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "パソコンとスマートフォン向けの画面を設計するときは、すべてを同じ比率で縮小するだけではありません。狭い画面では、カラムの配置、ナビゲーションの開き方、画像の切り抜きを変える必要があるかもしれませんが、主要な情報と操作は引き続き見つけられるようにします。まず制作者と、コンテンツ管理、フォームの送信、データ保存、外部サービスの要件を確認し、その後に適切なサイト構築方法を選びます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C の計画資料では、アクセシビリティの作業をデザイン、コンテンツ、開発などの役割に割り当てています。実務では、スケッチで読む順序を確認し、ビジュアルの段階でコントラストとフォーカスを確認し、開発段階でラベルとキーボード操作を確認できます。納品時になってすべての修正を求めるより、早期に役割を分担するほうが、当初の作業計画に組み込みやすくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "検収では実際のタスクを最後まで実行し、失敗も記録する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "要件一覧に沿って、具体的な検収項目を作ります。例えば、スマートフォンで対応地域を見つける、必要な情報を揃えて問い合わせを送信する、必須項目を入力し忘れた後に修正を完了する、といった項目です。各項目に期待する結果と実際の結果を記録します。フォームは、工房側が正しい情報を受信したかも確認し、利用者画面の成功表示だけで判断しません。本番の決済や外部への通知は、あらかじめ用意したテスト方法で確認する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "さらに、異なる画面幅、文字の拡大、キーボード操作、リンク、画像の代替テキスト、エラーメッセージを確認します。W3C Easy Checks は初期の問題発見に役立ちますが、完全な、あるいは決定的なアクセシビリティ評価ではないと明示されています。自動検査の点数、デザイン案への適合、実際のタスク完了は、併せて参考にできますが、互いの代わりにはなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不具合の記録は、端末、ページ、操作、表示された結果、期待する結果などを記し、再現できるようにします。問い合わせの送信を妨げるエラーを先に直し、その後に小さな見た目の違いを扱います。対応を延期する項目がある場合は、影響、担当者、対応計画を列挙し、「おおむね正常」の一言で既知の問題を覆い隠さないようにします。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "聞き取りを行って主要なタスクを整理し、初版の範囲と成功条件を書く。",
+            "本文、素材、使用許諾の資料を揃え、スケッチとプロトタイプでコンテンツと手順を確認する。",
+            "各種操作状態、スマートフォン向けのルール、コンテンツ管理方法を揃えてから、ページを実装する。",
+            "タスクに沿って検収し、問題を修正して、アカウント、文書、保守責任、更新作業の引き継ぎを完了する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "保守できる状態でサイトを引き渡し、自分の学習の道筋も作る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "納品では、閲覧できるサイトに加え、ドメイン、サーバー、管理アカウント、プログラムやデザインの元ファイル、素材の使用許諾、契約更新事項も整理する必要があります。誰がサービス情報を更新し、誰がフォームの内容を受け取り、障害時は誰に連絡するかも、明確に記録します。パスワードは適切な安全な経路で引き渡し、同じ管理者アカウントを長期にわたって共用することは避けます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "独学なら、まず MDN Curriculum の HTML、CSS、レイアウト、JavaScript の基礎モジュールを使って、小さなサービスページを完成させ、その後にアクセシビリティとバージョン管理を加えられます。ビジュアル型のサイト構築ツールを使う場合も、要件、コンテンツ、プロトタイプ、検収という手順を使えます。ツールは制作のハードルの一部を下げますが、情報と使い心地は自分で確認する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習のたびに、最初の要件、デザイン上の判断、テストで分かったこと、変更理由を保存します。未完成のトップページを数多く増やすより、情報を読むところから問い合わせまでの流れを最後まで作るほうが、サイトが利用者にどう役立つかを理解できます。次にページを追加するときも、検証済みのルールを使い、新しい要件に合わせて再確認できます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/web-design-project-workflow/diagram-1-ja.svg",
+          "alt": "六枚のカードで、要件、コンテンツ、プロトタイプ、制作、検収、引き継ぎを示し、サイトの完成には各作業の成果をつなぐ必要があることを説明しています。",
+          "width": 1600,
+          "height": 900,
+          "caption": "まず主要なタスクを完了できるようにし、その後にビジュアル、技術、今後の保守がつながるか確認します。",
+          "description": "六枚のカードで、要件、コンテンツ、プロトタイプ、制作、検収、引き継ぎを示し、サイトの完成には各作業の成果をつなぐ必要があることを説明しています。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "段階",
+            "残すべき成果",
+            "確認する問い"
+          ],
+          "rows": [
+            [
+              "要件",
+              "主要なタスクと範囲",
+              "誰が何を完了する必要があるか？"
+            ],
+            [
+              "コンテンツ",
+              "資料・レビュー・使用許諾の一覧",
+              "実際に使うコンテンツは揃っているか？"
+            ],
+            [
+              "プロトタイプ",
+              "画面の関係と操作の流れ",
+              "利用者は次の行動が分かるか？"
+            ],
+            [
+              "制作",
+              "コンポーネントの状態と実際のページ",
+              "エラーやスマートフォンでの利用にどう対応するか？"
+            ],
+            [
+              "検収",
+              "タスクの結果と不具合の記録",
+              "利用者画面と管理側の結果は、どちらも正しいか？"
+            ],
+            [
+              "引き継ぎ",
+              "アカウント・文書・保守責任",
+              "今後、誰が更新し、障害に対応するか？"
+            ]
+          ],
+          "caption": "独自に作成した小規模サイトの作業手順。各段階は繰り返し修正でき、順番どおりに一度だけ実行するものではありません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "プロトタイプが成功しても、実装後の検収が必要",
+          "text": "クリックできる画面が証明するのは、設計した流れを実演できることだけです。データが正しく送信されるか、通知が届くか、キーボードやスマートフォンで操作できるかは、実装後に別途確認する必要があります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "依頼範囲と検収条件を整理する",
+              "kind": "life",
+              "slug": "marketing-agency-contract"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "読者のタスクからサイトの流れを理解する",
+              "kind": "life",
+              "slug": "customer-journey-funnel"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトのコンテンツ制作と更新を計画する",
+              "kind": "life",
+              "slug": "content-marketing-calendar"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN：サイトの計画、スケッチ、素材",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Your_first_website/What_will_your_website_look_like",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：フロントエンド学習カリキュラムの構成",
+          "url": "https://developer.mozilla.org/en-US/curriculum/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：利用者のニーズを理解する",
+          "url": "https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：初期プロトタイプと仮説の検証",
+          "url": "https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：アクセシビリティの計画と役割ごとの責任",
+          "url": "https://www.w3.org/WAI/planning/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：初歩的なアクセシビリティ確認とその限界",
+          "url": "https://www.w3.org/WAI/test-evaluate/preliminary/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "웹 디자인 시작하기: 요구사항, 콘텐츠, 검수의 전체 순서",
+      "description": "처음 웹사이트를 만들 때 막히는 이유는 배색보다 요구사항, 콘텐츠, 검수 방법을 명확히 정하지 않은 데 있는 경우가 많다. 이 글은 직접 구상한 동네 수리 작업실 웹사이트를 예로 들어 사용자 인터뷰, 자료 정리, 프로토타입 제작, 개발과 인계 계획까지 각 단계에서 남겨야 할 결과물을 설명한다. 절차, 비교표, 학습 자료, 자체 제작 도해를 제공해 직접 제작하거나 디자인을 의뢰하는 독자가 웹사이트의 완성 여부를 실제로 확인할 수 있는 작업으로 구체화하도록 돕는다.",
+      "hero": {
+        "src": "/guides/web-design-project-workflow/hero-ko.jpg",
+        "alt": "요구사항 문서, 웹 화면, 검수 방패를 담은 Mokaair 자체 제작 일러스트. 문제 정의부터 검수 가능한 결과물 전달까지 이어지는 웹 디자인 과정을 나타낸다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "동네 수리 작업실이 웹사이트를 만들어 인근 주민이 서비스를 찾고, 자신에게 적합한지 판단하고, 필요한 정보를 갖춘 문의를 보내도록 하려 한다. 첫 논의에서 메인 페이지를 얼마나 멋지게 꾸밀지만 정하면, 레이아웃을 완성한 뒤에야 시공 범위, 사진 사용 허가, 문의 절차가 빠졌음을 발견해 디자인을 반복해서 다시 해야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "웹 디자인은 사용자가 필요할 때 정보를 찾고 다음 단계를 완료하도록 한다는 명확한 작업에서 시작할 수 있다. 아래의 절차, 작업실 사례, 검수 항목은 모두 직접 구성했으며, 2026년 9월 14일에 확인한 MDN, W3C, GOV.UK의 일차 자료를 참고했다. 이 예시를 완료된 고객 프로젝트나 실제 연구 결과로 제시하지 않는다."
+        },
+        {
+          "type": "heading",
+          "text": "원하는 기능을 해결해야 할 문제로 바꾸어 쓰기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 웹사이트의 실제 사용자나 잠재 사용자를 찾아 사용 상황을 알아본다. 예를 들어 주민이 휴대전화로 누수 수리를 검색하는지, 컴퓨터로 보수에 필요한 사항을 정리하는지 확인한다. 가장 최근에 서비스를 어떻게 찾았는지, 무엇을 확인해야 했는지, 어떤 점이 불안했는지 물으면 온라인 예약이 필요한지를 직접 묻는 것보다 요구사항을 더 잘 파악할 수 있다. 자신과 사업주의 의견은 우선 가설로 표시하고 이를 뒷받침할 근거를 기다린다."
+        },
+        {
+          "type": "paragraph",
+          "text": "주요 작업을 완전한 문장으로 적는다. 주민은 문의 여부를 결정하기 위해 작업실이 자신이 사는 지역에도 서비스를 제공하는지 알고 싶어 한다. 다음으로 서비스 지역을 찾고, 맡지 않는 작업을 이해하고, 문의 후 어떻게 처리되는지 알 수 있다는 식으로 성공 조건을 정리한다. 이 내용은 페이지 디자인의 방향을 잡는 데 쓰고, 납품 시 다시 꺼내 검수에도 활용할 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이어서 첫 버전의 범위와 제약을 정한다. 직접 구성한 작업실 사례에서는 서비스 안내와 문의 양식을 먼저 제공할 수 있다. 예약 일정 관리나 온라인 결제가 아직 확정되지 않았다면 후속 요구사항으로 기록한다. 기능을 추가할 때마다 해결할 문제, 유지 관리 담당자, 검수 방법을 명시해야 예산과 일정을 논의할 근거가 생긴다."
+        },
+        {
+          "type": "heading",
+          "text": "임시 문구가 레이아웃을 좌우하지 않도록 쓸 수 있는 콘텐츠부터 수집하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "각 페이지에 필요한 제목, 본문, 이미지, 연락처, 업데이트 담당자를 목록으로 정리한다. 수리 웹사이트에는 적어도 실제 서비스 범위, 문의에 필요한 자료, 답변 방식, 합법적으로 사용할 수 있는 작업 사례 사진이 있어야 한다. 아직 확인되지 않은 공사 기간과 가격은 추후 보완할 항목으로 표시해야 하며, 디자이너가 레이아웃을 맞추기 위해 임의로 채워 넣어 약속으로 만들어서는 안 된다."
+        },
+        {
+          "type": "paragraph",
+          "text": "콘텐츠 목록에 자료 제공자, 현재 버전, 검토 여부, 사용 허가의 출처를 기록한다. 사진이 선명하다고 해서 고객의 집이나 주소 표지를 공개해도 되는 것은 아니다. 사용 범위를 확인하고 필요하면 직접 그린 설명 그림을 사용한다. 글꼴, 아이콘, 외부 소재도 허용된 용도를 기록해 두어야 하며, 검색 결과를 사용 허가로 간주해서는 안 된다."
+        },
+        {
+          "type": "paragraph",
+          "text": "초기 스케치에는 실제 내용 중 긴 문구도 넣고, 중국어 번체로 작성한 전체 주소, 긴 서비스 이름, 유의사항을 포함한다. 그러면 카드가 너무 좁거나 휴대전화에서 지나치게 많이 스크롤해야 하거나 양식 설명이 부족한 문제를 일찍 발견할 수 있다. MDN의 입문용 디자인 절차도 콘텐츠와 소재 준비를 코드 작성보다 먼저 다루며, 소규모 페이지 제작을 연습할 때 참고하기 좋다."
+        },
+        {
+          "type": "heading",
+          "text": "스케치와 프로토타입으로 정보와 조작 순서 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "스케치는 우선 어떤 정보가 같은 페이지에 들어가는지, 어떤 동작이 가장 중요한지, 사용자가 다음에 어디로 이동하는지를 보여 준다. 직접 구성한 작업실 사례에서는 서비스 전체 보기, 개별 서비스, 문의 완료 화면을 그릴 수 있으며, 작은 구역마다 정확한 색상부터 맞출 필요는 없다. 논의의 초점은 주민이 내용을 이해하고 원하는 정보를 찾을 수 있는지에 있으며, 그림이 충분히 정교한지에 있지 않다."
+        },
+        {
+          "type": "paragraph",
+          "text": "절차를 확인해야 할 때 화면을 연결해 클릭 가능한 프로토타입을 만든다. 예를 들어 서비스를 선택한 뒤 문의 화면으로 이동하고, 필요한 자료를 모두 입력하면 확인 메시지를 보도록 한다. 대상 사용자에게 주어진 작업을 수행하도록 부탁하고, 멈추는 지점과 선택한 이유를 관찰한다. 옆에서 클릭 방법을 계속 가르쳐 주지는 않는다. 프로토타입은 문제를 발견하는 데 도움이 되지만, 클릭해서 다음 화면으로 이동할 수 있다고 해서 실제로 데이터가 작업실에 전달되었다는 뜻은 아니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "GOV.UK의 초기 프로토타입 지침은 중요한 가설 검증을 강조하며, 모든 화면을 먼저 완성하라고 요구하지 않는다. 작은 웹사이트에 이 방법을 적용할 때는 가장 불확실한 문의 정보나 서비스 분류를 먼저 다룰 수 있다. 디자인이 사용자의 작업 완료를 지원하지 못한다면 콘텐츠와 절차를 다시 수정한 뒤 시각적 세부 사항으로 넘어간다."
+        },
+        {
+          "type": "heading",
+          "text": "시각 디자인과 개발 명세에 사용 상태까지 명시하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "정보를 확정한 뒤 글자 크기, 간격, 색상, 자주 쓰는 구성 요소의 규칙을 만든다. 버튼은 평상시 모습뿐 아니라 키보드 포커스, 비활성화, 처리 중 상태도 명시해야 한다. 양식에도 필수 입력 안내, 오류, 완료 결과가 있다. 이상적인 메인 페이지 화면 하나만 넘기면 개발자는 여전히 다른 상황을 어떻게 표시할지 추측해야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "데스크톱과 휴대전화 화면을 설계할 때는 모든 요소를 같은 비율로 축소하는 데 그쳐서는 안 된다. 좁은 화면에서는 항목 배치, 탐색 메뉴를 펼치는 방식, 이미지 자르기를 바꿔야 할 수 있지만, 주요 정보와 조작 기능은 여전히 찾을 수 있어야 한다. 제작자와 먼저 콘텐츠 관리, 양식 전송, 데이터 보관, 외부 서비스 요구사항을 확인한 다음 적합한 웹사이트 구축 방식을 선택한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C의 계획 수립 자료는 접근성 작업을 디자인, 콘텐츠, 개발 등의 역할에 나누어 배정한다. 실무에서는 스케치 단계에서 읽기 순서를, 시각 디자인 단계에서 대비와 포커스를, 개발 단계에서 레이블과 키보드 조작을 확인할 수 있다. 일찍 역할을 나누면 납품 시점에야 모든 문제의 수정을 요구하는 것보다 기존 작업 계획에 반영하기 쉽다."
+        },
+        {
+          "type": "heading",
+          "text": "실제 작업을 끝까지 수행하며 검수하고 실패 상황 기록하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "요구사항 목록에 따라 휴대전화로 서비스 지역 찾기, 필요한 정보를 모두 갖춘 문의 전송, 필수 항목 누락 후 수정 완료 같은 구체적인 검수 항목을 만든다. 각 항목에 예상 결과와 실제 결과를 적는다. 양식은 작업실 측에서 정확한 자료를 받았는지도 확인해야 하며, 사용자 화면에 성공 메시지가 표시되는지만 봐서는 안 된다. 실제 결제나 외부 알림은 미리 마련한 테스트 방식으로 확인해야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이어서 서로 다른 화면 너비, 글자 확대, 키보드 조작, 링크, 이미지 대체 텍스트, 오류 메시지를 확인한다. W3C Easy Checks는 문제를 처음 찾아내는 데 도움이 되지만, 완전하거나 최종적인 접근성 평가가 아니라는 점을 명시하고 있다. 자동 검사 점수, 디자인 시안과의 일치 여부, 실제 작업 완료 여부는 함께 참고할 수 있지만 서로를 대신할 수는 없다."
+        },
+        {
+          "type": "paragraph",
+          "text": "결함 기록에는 기기, 페이지, 조작, 관찰한 결과, 예상 결과 등을 적어 문제를 재현할 수 있게 한다. 먼저 문의 전송을 막는 오류를 고친 다음 작은 시각적 차이를 처리한다. 보류한 항목이 있다면 영향, 담당자, 처리 계획을 명시하고, '대체로 정상'이라는 말로 알려진 문제를 덮지 않는다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "인터뷰를 하고 주요 작업을 정리한 뒤 첫 버전의 범위와 성공 조건을 작성한다.",
+            "본문, 소재, 사용 허가 자료를 모두 확보하고 스케치와 프로토타입으로 콘텐츠와 절차를 확인한다.",
+            "다양한 조작 상태, 휴대전화 화면 규칙, 콘텐츠 관리 방식을 모두 마련한 다음 페이지를 구현한다.",
+            "작업을 기준으로 검수하고 문제를 수정한 뒤 계정, 문서, 유지 관리 책임, 업데이트 관련 인계를 마친다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "유지 관리 가능한 웹사이트를 인계하고 자신만의 학습 경로도 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "납품할 때는 접속 가능한 웹사이트 외에도 도메인, 호스팅 서버, 관리 계정, 코드 또는 디자인 원본 파일, 소재 사용 허가, 갱신 사항을 정리해야 한다. 누가 서비스 내용을 업데이트하고, 누가 양식으로 접수된 문의를 받고, 장애가 나면 누구에게 연락해야 하는지 모두 명확하게 기록한다. 비밀번호는 적절한 보안 경로로 인계하고 하나의 관리자 계정을 오랫동안 함께 쓰는 일을 피한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "독학할 때는 MDN Curriculum의 HTML, CSS, 레이아웃, JavaScript 기초 모듈을 먼저 활용해 작은 서비스 페이지를 완성하고, 이후 접근성과 버전 관리를 추가할 수 있다. 시각적 웹사이트 구축 도구를 사용하더라도 요구사항, 콘텐츠, 프로토타입, 검수라는 흐름을 그대로 활용할 수 있다. 도구가 제작의 일부 진입 장벽을 낮춰 주더라도 정보와 사용자 경험은 직접 확인해야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "연습할 때마다 최초 요구사항, 디자인 결정, 테스트로 알게 된 점, 수정 이유를 보관한다. 미완성 메인 페이지를 많이 쌓아 두는 것보다 읽기부터 문의까지 이어지는 흐름 하나를 끝까지 완성해 보는 편이 웹사이트가 사용자를 어떻게 돕는지 더 잘 이해하게 해 준다. 다음에 페이지를 추가할 때도 이미 검증한 규칙을 활용하고 새로운 요구사항에 맞춰 다시 확인할 수 있다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/web-design-project-workflow/diagram-1-ko.svg",
+          "alt": "요구사항, 콘텐츠, 프로토타입, 제작, 검수, 인계를 보여 주는 여섯 개의 카드. 웹사이트를 완성하려면 서로 다른 작업 결과물을 연결해야 함을 설명한다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "먼저 주요 작업을 수행할 수 있게 하고, 시각 디자인, 기술, 이후 유지 관리가 모두 이어지는지 확인한다.",
+          "description": "요구사항, 콘텐츠, 프로토타입, 제작, 검수, 인계를 보여 주는 여섯 개의 카드. 웹사이트를 완성하려면 서로 다른 작업 결과물을 연결해야 함을 설명한다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "단계",
+            "남겨야 할 결과물",
+            "확인할 질문"
+          ],
+          "rows": [
+            [
+              "요구사항",
+              "주요 작업과 범위",
+              "누가 무엇을 완료해야 하는가?"
+            ],
+            [
+              "콘텐츠",
+              "자료·검토·사용 허가 목록",
+              "실제 콘텐츠가 모두 준비되었는가?"
+            ],
+            [
+              "프로토타입",
+              "화면 간 관계와 조작 흐름",
+              "사용자가 다음 단계를 아는가?"
+            ],
+            [
+              "제작",
+              "구성 요소 상태와 실제 페이지",
+              "오류와 휴대전화 사용 상황은 어떻게 처리하는가?"
+            ],
+            [
+              "검수",
+              "작업 결과와 결함 기록",
+              "사용자 측과 관리자 측 결과가 모두 정확한가?"
+            ],
+            [
+              "인계",
+              "계정·문서·유지 관리 책임",
+              "앞으로 누가 업데이트하고 장애를 처리하는가?"
+            ]
+          ],
+          "caption": "자체 구성한 소규모 웹사이트 작업 절차. 각 단계는 반복해서 수정할 수 있으며, 순서대로 한 번만 진행해야 하는 것은 아니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "프로토타입이 성공해도 구현 후 검수가 필요하다",
+          "text": "클릭 가능한 화면은 디자인된 흐름을 시연할 수 있다는 사실만 증명한다. 데이터가 정확히 전송되는지, 알림이 도착하는지, 키보드와 휴대전화로 조작할 수 있는지는 구현을 마친 뒤 별도로 확인해야 한다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "의뢰 범위와 검수 조건 정리하기",
+              "kind": "life",
+              "slug": "marketing-agency-contract"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "독자의 작업을 바탕으로 웹사이트 흐름 이해하기",
+              "kind": "life",
+              "slug": "customer-journey-funnel"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 콘텐츠 제작과 업데이트 계획하기",
+              "kind": "life",
+              "slug": "content-marketing-calendar"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN: 웹사이트 계획, 스케치와 소재",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Your_first_website/What_will_your_website_look_like",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: 프런트엔드 학습 과정 구성",
+          "url": "https://developer.mozilla.org/en-US/curriculum/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: 사용자 요구사항 이해하기",
+          "url": "https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK: 초기 프로토타입과 가설 검증",
+          "url": "https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: 접근성 계획과 역할별 책임",
+          "url": "https://www.w3.org/WAI/planning/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: 초기 접근성 검사와 한계",
+          "url": "https://www.w3.org/WAI/test-evaluate/preliminary/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "网页设计怎么开始：需求、内容与验收的完整顺序",
+      "description": "第一次做网站，最容易卡住的往往不是配色，而是需求、内容和验收方式没有说清楚。本文以原创社区修缮工作室网站为例，从访谈用户、整理资料、画出原型到安排开发与交接，说明每阶段应留下的成果。附流程步骤、比较表、学习资源及原创图解，帮助自行制作或委托设计的读者，把网站是否完成转化为可以实际确认的任务。",
+      "hero": {
+        "src": "/guides/web-design-project-workflow/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创需求文档、网页界面及验收盾牌插图，代表网页设计从问题定义到可检查的交付。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "社区修缮工作室想做网站，希望附近住户能找到服务、判断是否适合，并提交完整咨询。若第一场讨论只决定首页要多漂亮，等到版面画完才发现没有施工范围、照片授权或咨询流程，设计就得反复重做。"
+        },
+        {
+          "type": "paragraph",
+          "text": "网页设计可以从一个清楚的任务开始：让用户在需要时找到信息并完成下一步。以下流程、工作室案例与验收题目均为原创，参考 2026 年 9 月 14 日查阅的 MDN、W3C 与 GOV.UK 一手资源；没有将示例说成已完成的客户项目或实际研究结果。"
+        },
+        {
+          "type": "heading",
+          "text": "把想做的功能，改写成要解决的问题",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先找实际或可能使用网站的人了解情境，例如住户是在手机上搜索漏水处理，还是在电脑上整理装修需求。询问他最近一次怎么找服务、需要确认什么、哪里不放心，比直接问要不要在线预约更能看出需求。自己和业主的意见先标为假设，等待证据支持。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把主要任务写成完整句子：住户希望知道工作室是否服务自己所在的区域，才能决定要不要咨询。接着列出成功条件，例如能找到服务地区、了解不承接的项目，并知道咨询后如何处理。这些内容可以引导页面设计，也能在交付时用来验收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再界定第一版范围及限制。原创工作室可先提供服务说明和咨询表单，预约排期或在线付款若尚未确定，就记录为后续需求。每个新增功能都要说明解决的问题、维护人及验收方式，让预算和时间安排有可以讨论的依据。"
+        },
+        {
+          "type": "heading",
+          "text": "先收集能用的内容，不让占位文字决定版面",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "列出每页需要的标题、正文、图片、联系信息和更新人。修缮网站至少要有实际服务范围、咨询所需资料、回复方式及可合法使用的案例照片；尚未确认的工期与价格要标为待补，不能由设计师为了排版自行填成承诺。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用一份内容清单记录资料提供者、当前版本、是否审阅及授权来源。照片看起来清楚，不代表可以公开顾客住宅或门牌；应确认使用范围，必要时改用自绘说明。字体、图标与第三方素材也要留存允许用途，不能把搜索结果当成使用许可。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把真实而且较长的内容放进早期草图，包含完整繁体中文地址、较长服务名称及注意事项。这样能提早发现卡片太窄、手机需要滚动太多或表单说明不足。MDN 的入门设计流程也把内容及素材准备放在编写代码之前，适合用来练习小型页面。"
+        },
+        {
+          "type": "heading",
+          "text": "用草图与原型确认信息和操作顺序",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "草图先表达哪些信息在同一页、哪个操作最重要，以及用户下一步会到哪里。原创工作室可画服务总览、单项服务及咨询完成界面，不必每个小区块都先追求精确颜色。讨论焦点是住户看不看得懂、找不找得到，而非图案是不是足够精致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要检查流程时，再把界面连成可点击原型，例如从选择服务进入咨询、补齐资料后看到确认消息。邀请目标用户按任务操作，观察他停下来的地方及选择理由，不在旁边一路教他怎么点。原型能帮助发现问题，但能点过去不等于资料真的送到工作室。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GOV.UK 对早期原型的指引强调验证重要假设，不要求先做完所有界面。将这个方法用在小型网站时，可以先处理最不确定的咨询信息或服务分类。若设计无法支持用户完成任务，就回头修正内容和流程，再进入视觉细节。"
+        },
+        {
+          "type": "heading",
+          "text": "视觉与开发规范一起说明使用状态",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "确认信息后，再建立字号、间距、色彩及常用组件的规则。按钮不只有平常的外观，还要说明键盘焦点、不可用及处理中的状态；表单也有必填提示、错误和完成结果。只交一张理想首页，开发者仍须猜测其他情况要怎么呈现。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安排桌面与手机布局时，不只是把所有东西等比例缩小。较窄界面可能需要改变字段排列、导航展开方式及图片裁剪，但主要信息与操作仍要找得到。先和制作人员确认内容管理、表单发送、资料保存及外部服务需求，再选择合适的建站方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C 的规划资源把无障碍工作分配到设计、内容和开发等角色。实践中可以在草图阶段检查阅读顺序，视觉阶段确认对比及焦点，开发阶段检查标签与键盘操作。提早分工比等交付时才要求全部修正，更容易纳入原本的工作安排。"
+        },
+        {
+          "type": "heading",
+          "text": "验收要走完真实任务，并记录失败情况",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "根据需求清单设计具体验收题目：用手机找出服务地区、提交资料完整的咨询、漏填必填字段后完成修正。每题写下预期结果和实际结果；表单还应确认工作室端是否收到正确资料，不能只看前台显示成功。正式支付流程或对外通知需使用已安排的测试方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再检查不同宽度、放大文字、键盘操作、链接、图片替代文字及错误消息。W3C Easy Checks 适合帮助初步发现问题，但明确不是完整或决定性的无障碍评估。自动检测分数、与设计稿的一致程度及实际任务完成情况，可以一起参考，不能互相取代。"
+        },
+        {
+          "type": "paragraph",
+          "text": "缺陷记录要能复现，例如设备、页面、操作、看到的结果与预期结果。把阻碍提交咨询的错误先修正，再处理较小的视觉差异。若有暂缓项目，就列出影响、负责人和处理安排，不用一句大致正常掩盖已知问题。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "访谈并整理主要任务，写出第一版范围与成功条件。",
+            "收齐正文、素材及授权资料，用草图和原型确认内容与流程。",
+            "补齐各种操作状态、手机规则及内容管理方式，再实现页面。",
+            "按任务验收并修正问题，完成账号、文档、维护责任与更新交接。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "交接能维护的网站，也建立自己的学习路线",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "交付除了可浏览的网站，还应整理域名、主机、管理账号、程序或设计源文件、素材授权及续约事项。由谁更新服务内容、谁接收表单、故障时找谁，都应清楚记录。密码通过合适的安全渠道交接，避免长期共用同一个管理员账号。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自行学习可先用 MDN Curriculum 的 HTML、CSS、布局及 JavaScript 基础模块，完成一个小型服务页，再加入无障碍和版本管理。若用可视化建站工具，也能沿用需求、内容、原型及验收这条路线；工具降低部分制作门槛，仍需要自己确认信息和使用体验。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次练习保存最初需求、设计决定、测试发现及修改原因。比起积累很多未完成的首页，完整做过一条从阅读到咨询的流程，更能理解网站如何服务用户。下次新增页面时，也能沿用已验证的规则，并针对新的需求重新检查。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/web-design-project-workflow/diagram-1-zh-cn.svg",
+          "alt": "六张卡片展示需求、内容、原型、制作、验收及交接，说明完成网站需要衔接不同工作成果。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先让主要任务能够完成，再确认视觉、技术与后续维护都接得上。",
+          "description": "六张卡片展示需求、内容、原型、制作、验收及交接，说明完成网站需要衔接不同工作成果。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "阶段",
+            "应留下的成果",
+            "检查问题"
+          ],
+          "rows": [
+            [
+              "需求",
+              "主要任务及范围",
+              "谁要完成什么事情？"
+            ],
+            [
+              "内容",
+              "资料、审阅与授权清单",
+              "真实内容是否齐全？"
+            ],
+            [
+              "原型",
+              "界面关系及操作流程",
+              "用户知道下一步吗？"
+            ],
+            [
+              "制作",
+              "组件状态及实际页面",
+              "错误与手机使用场景怎么处理？"
+            ],
+            [
+              "验收",
+              "任务结果与缺陷记录",
+              "前台与后台结果都正确吗？"
+            ],
+            [
+              "交接",
+              "账号文档及维护责任",
+              "日后由谁更新与处理故障？"
+            ]
+          ],
+          "caption": "原创小型网站工作流程；各阶段可反复修正，不是只能依次执行一次。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "原型成功还需要实现后的验收",
+          "text": "可点击界面只证明设计流程可以被演示。资料是否正确提交、通知是否送达，以及键盘与手机能否操作，都要在实现完成后另外确认。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理委托范围与验收条件",
+              "kind": "life",
+              "slug": "marketing-agency-contract"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "从读者任务理解网站流程",
+              "kind": "life",
+              "slug": "customer-journey-funnel"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排网站内容的制作与更新",
+              "kind": "life",
+              "slug": "content-marketing-calendar"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN：网站规划、草图与素材",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Your_first_website/What_will_your_website_look_like",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：前端学习课程架构",
+          "url": "https://developer.mozilla.org/en-US/curriculum/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：了解用户需求",
+          "url": "https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GOV.UK：早期原型与假设验证",
+          "url": "https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：无障碍规划与角色责任",
+          "url": "https://www.w3.org/WAI/planning/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：初步无障碍检查与限制",
           "url": "https://www.w3.org/WAI/test-evaluate/preliminary/",
           "checked_on": "2026-09-14"
         }

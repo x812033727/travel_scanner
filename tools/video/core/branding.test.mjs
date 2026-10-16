@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 
-import { adoptionRefusal, appliedBranding, brandingCurrent, brandingHash, currentBrandingFile, pinBranding, presentationTimeline, readBranding, selectBrandingForBuild, shiftBrandingCues, validateBranding } from "./branding.mjs";
+import { adoptionRefusal, appliedBranding, brandingCurrent, brandingHash, currentBrandingFile, defaultIntroAt, INTRO_AFTER_FIRST_CHAPTER, INTRO_AT_START, introAtFrame, linesAcrossIntro, narratedLong, pinBranding, pinRecord, placeBranding, presentationTimeline, readBranding, replacementRefusal, selectBrandingForBuild, shiftBrandingCues, validateBranding } from "./branding.mjs";
 
 const preset = (n = "a") => ({ schema_version: 1, id: `mokaair-${n}`, intro: { file: "intro.mp4", sha256: n.repeat(64), frames: 150 }, outro: { file: "outro.mp4", sha256: "b".repeat(64), frames: 90 } });
 const doc = { format: "slides", youtube: { video_id: null } };
@@ -43,7 +43,10 @@ test("only new explainers use the series default; absent, disabled and invalid r
   b.current(seriesPreset(), "sothatswhy");
   assert.equal((await selectBrandingForBuild({ ...b, doc: explainer })).intro.frames, 357);
   assert.equal((await selectBrandingForBuild({ ...b, doc: explainer, adoptCurrent: true })).intro.frames, 357);
-  for (const other of [doc, { format: "screencast" }, { format: "drama", look: { preset: "anime" } }, { ...doc, title: "原來如此", look: { preset: "flat-explainer" } }]) {
+  // cute-cartoon is So That's Why redrawn, so it keeps the series' bookends; cute-mystery is
+  // another series' explainer and wears the channel's until it has bookends of its own.
+  assert.equal((await selectBrandingForBuild({ ...b, doc: { format: "drama", look: { preset: "cute-cartoon" } } })).intro.frames, 357);
+  for (const other of [doc, { format: "screencast" }, { format: "drama", look: { preset: "anime" } }, { format: "drama", look: { preset: "cute-mystery" } }, { ...doc, title: "原來如此", look: { preset: "flat-explainer" } }]) {
     assert.equal((await selectBrandingForBuild({ ...b, doc: other })).intro.frames, 150);
   }
   assert.equal(await selectBrandingForBuild({ ...b, doc: { format: "shorts", look: explainer.look } }), null);
@@ -100,7 +103,7 @@ test("a first candidate that failed QA still adopts branding on retry; historica
   b.current(preset());
   const history = path.join(b.workdir, "state.json");
   writeFileSync(history, JSON.stringify({ runs: [{ stage: "assemble", ok: false }, { stage: "compile", ok: false }] }));
-  assert.equal((await selectBrandingForBuild({ ...b, doc })).hash, brandingHash(preset()));
+  assert.equal((await selectBrandingForBuild({ ...b, doc })).hash, brandingHash({ ...preset(), intro_at: "after_first_chapter" }), "a new narrated build plays its intro after the condensation");
   writeFileSync(history, JSON.stringify({ runs: [{ stage: "assemble" }, { stage: "assemble", ok: false }] }));
   assert.equal(await selectBrandingForBuild({ ...b, doc }), null, "old stage records without an ok field still prove a prior build");
 });
@@ -125,6 +128,26 @@ test("published, approved, packaged and Short videos refuse adoption; completed 
       await assert.rejects(selectBrandingForBuild({ ...b, doc: source, adoptCurrent: true }), /unchanged|long videos/, proof);
     }
   }
+});
+
+test("an approved cut whose script, narration or storyboard was approved again is being remade and may take the current bookends", async (t) => {
+  const b = box(t);
+  b.current(preset());
+  const approvals = (entries) => writeFileSync(path.join(b.workdir, "approvals.json"), JSON.stringify({ approvals: entries }));
+  mkdirSync(path.join(b.workdir, "upload"));
+  writeFileSync(path.join(b.workdir, "upload", "metadata.json"), "{}");
+  const final = { gate: "final", sha256: "old", approved_at: "2026-10-13T09:00:00Z" };
+  approvals([{ gate: "storyboard", sha256: "a", approved_at: "2026-10-12T09:00:00Z" }, final]);
+  assert.match(adoptionRefusal({ doc, workdir: b.workdir }), /final or publish approval/, "content approved before the cut: the cut stands");
+  approvals([final, { gate: "script", sha256: "b", approved_at: "2026-10-13T12:00:00Z" }]);
+  assert.equal(adoptionRefusal({ doc, workdir: b.workdir }), null, "a script approved after the cut: the cut is being remade, package and all");
+  approvals([final, { gate: "publish", sha256: "c", approved_at: "2026-10-13T13:00:00Z" }, { gate: "audio", sha256: "d", approved_at: "2026-10-13T12:00:00Z" }]);
+  assert.match(adoptionRefusal({ doc, workdir: b.workdir }), /final or publish approval/, "a publish approval newer than the content: the cut stands");
+  approvals([{ gate: "script", sha256: "e", approved_at: "2026-10-13T12:00:00Z" }, { gate: "final", sha256: "f" }]);
+  assert.match(adoptionRefusal({ doc, workdir: b.workdir }), /final or publish approval/, "a final with no time is never taken for an older one");
+  approvals([final, { gate: "storyboard", sha256: "g", approved_at: "2026-10-13T14:00:00Z" }]);
+  writeFileSync(path.join(b.workdir, "auto.json"), JSON.stringify({ status: "done" }));
+  assert.match(adoptionRefusal({ doc, workdir: b.workdir }), /uploaded or finished/, "a finished video stays as it is, remade or not");
 });
 
 test("a local pin wins over every later channel default, even an invalid one; legacy artifacts remain current", async (t) => {
@@ -168,4 +191,95 @@ test("presentation shifts content once, keeps chapter zero and does not change t
   assert.equal(presentationTimeline(body, null), body);
   const cues = [{ start_ms: 350, end_ms: 1350, text: "hello" }];
   assert.deepEqual(shiftBrandingCues(shiftBrandingCues(cues, applied), applied, -1), cues);
+});
+
+// docs/videos/BRANDING.md §片頭位置: a narrated long video plays the intro after its condensation.
+const story = { kind: "story" };
+const cast = { format: "drama", look: { preset: "anime" }, characters: [{ id: "hero" }] };
+
+test("only narrated long videos move the intro behind the condensation; casts, compilations and Shorts keep it first", async (t) => {
+  for (const narrated of [doc, { format: "screencast" }, explainer, { ...explainer, characters: [{ id: "host" }] }, { format: "drama", look: { preset: "anime" } }]) {
+    assert.equal(narratedLong(narrated), true, JSON.stringify(narrated));
+    assert.equal(defaultIntroAt(narrated), INTRO_AFTER_FIRST_CHAPTER);
+  }
+  assert.equal(narratedLong(cast, story), true, "a brand story is narrated even when its pictures have a cast");
+  for (const kept of [cast, { format: "drama", compilation: { episodes: ["a"] } }, { format: "slides", compilation: { episodes: ["a"] } }, { format: "shorts" }]) {
+    assert.equal(defaultIntroAt(kept), INTRO_AT_START, JSON.stringify(kept));
+  }
+  const b = box(t);
+  b.current(preset());
+  assert.equal((await selectBrandingForBuild({ ...b, doc })).intro_at, INTRO_AFTER_FIRST_CHAPTER);
+  assert.equal((await selectBrandingForBuild({ ...b, doc: cast })).intro_at, undefined);
+  assert.equal((await selectBrandingForBuild({ ...b, doc: cast, series: story })).intro_at, INTRO_AFTER_FIRST_CHAPTER);
+  assert.equal((await selectBrandingForBuild({ ...b, doc: cast })).hash, brandingHash(preset()), "a drama with a cast keeps the original hash");
+  b.current(seriesPreset(), "sothatswhy");
+  const series = await selectBrandingForBuild({ ...b, doc: explainer });
+  assert.deepEqual([series.intro.frames, series.intro_at], [357, INTRO_AFTER_FIRST_CHAPTER], "the series' 357-frame intro moves too");
+});
+
+test("old pins have no placement field and rebuild unchanged; new pins record it explicitly", async (t) => {
+  const b = box(t);
+  b.current(preset("c"));
+  const legacy = { ...preset(), hash: brandingHash(preset()), adopted_at: "2026-10-01T00:00:00.000Z" };
+  writeFileSync(path.join(b.workdir, "branding.json"), JSON.stringify(legacy));
+  const pinned = await selectBrandingForBuild({ ...b, doc });
+  assert.equal(pinned.hash, legacy.hash, "a pin from before the placement keeps its intro at the start and its hash");
+  assert.equal(pinned.intro_at, undefined);
+  assert.equal(introAtFrame(pinned, { chapters: [{ start_frame: 0 }, { start_frame: 900 }] }), 0);
+  pinBranding(b.workdir, pinned, new Date("2026-10-13T00:00:00Z"));
+  const rewritten = JSON.parse(readFileSync(path.join(b.workdir, "branding.json"), "utf8"));
+  assert.equal(rewritten.intro_at, INTRO_AT_START, "the placement is written down even when it is the original one");
+  assert.equal(validateBranding(rewritten, { base: b.workdir }).hash, legacy.hash);
+  const placed = placeBranding(pinned, INTRO_AFTER_FIRST_CHAPTER);
+  assert.notEqual(placed.hash, legacy.hash, "nothing timed for the start is reused after the condensation");
+  assert.equal(validateBranding(pinRecord(placed), { base: b.workdir }).hash, placed.hash);
+  assert.throws(() => validateBranding({ ...preset(), intro_at: "middle" }), /intro_at/);
+  assert.throws(() => validateBranding({ ...preset(), intro_at: INTRO_AFTER_FIRST_CHAPTER, hash: legacy.hash }), /hash/);
+});
+
+test("--intro-after-condensation re-places a not-uploaded narrated cut, approved or not, and nothing else", async (t) => {
+  const b = box(t);
+  b.current(preset("c"));
+  writeFileSync(path.join(b.workdir, "branding.json"), JSON.stringify({ ...preset(), adopted_at: "2026-10-01T00:00:00.000Z" }));
+  writeFileSync(path.join(b.workdir, "approvals.json"), JSON.stringify({ approvals: [{ gate: "final", sha256: "old" }, { gate: "publish", sha256: "old" }] }));
+  mkdirSync(path.join(b.workdir, "upload"));
+  writeFileSync(path.join(b.workdir, "upload", "metadata.json"), "{}");
+  const moved = await selectBrandingForBuild({ ...b, doc, introAfterCondensation: true });
+  assert.equal(moved.intro_at, INTRO_AFTER_FIRST_CHAPTER);
+  assert.equal(moved.intro.sha256, "a".repeat(64), "the pinned assets stay; only their place changes");
+  assert.equal(moved.hash, brandingHash({ ...preset(), intro_at: INTRO_AFTER_FIRST_CHAPTER }));
+  assert.equal(readBranding(b.workdir).intro_at, undefined, "the pin is rewritten only by a successful build");
+  await assert.rejects(selectBrandingForBuild({ ...b, doc: cast, introAfterCondensation: true }), /narrated long video/);
+  await assert.rejects(selectBrandingForBuild({ ...b, doc: { ...doc, youtube: { video_id: "abcdefghijk" } }, introAfterCondensation: true }), /already uploaded/);
+  writeFileSync(path.join(b.workdir, "auto.json"), JSON.stringify({ status: "done" }));
+  await assert.rejects(selectBrandingForBuild({ ...b, doc, introAfterCondensation: true }), /already uploaded/);
+  assert.notEqual(replacementRefusal({ doc: { format: "drama", compilation: { episodes: ["a"] } }, workdir: b.workdir }), null);
+});
+
+test("the intro after chapter 1 moves only what follows it: lines, scenes, windows, chapters and cues", () => {
+  const body = {
+    fps: 30, total_frames: 2400,
+    lines: [{ id: "hook", start_frame: 0, end_frame: 1100 }, { id: "c2", start_frame: 1200, end_frame: 1500 }],
+    scenes: [{ id: "hook", start_frame: 0, end_frame: 1200, states: [{ start_frame: 0, end_frame: 1200 }] }, { id: "two", start_frame: 1200, end_frame: 2400 }],
+    windows: [{ start_frame: 0, end_frame: 2400 }],
+    chapters: [{ title: "開場", scene: "hook", start_frame: 0 }, { title: "第二章", scene: "two", start_frame: 1200 }, { title: "第三章", scene: "three", start_frame: 1800 }],
+  };
+  const applied = { hash: brandingHash({ ...seriesPreset(), intro_at: INTRO_AFTER_FIRST_CHAPTER }), intro_frames: 357, outro_frames: 630, body_frames: 2400, intro_at_frame: 1200 };
+  const full = presentationTimeline(body, applied);
+  assert.equal(full.total_frames, 2400 + 357 + 630);
+  assert.equal(full.content_end_frame, 2757);
+  assert.deepEqual([full.intro_at_frame, full.intro_end_frame], [1200, 1557]);
+  assert.deepEqual(full.lines.map((line) => [line.start_frame, line.end_frame]), [[0, 1100], [1557, 1857]], "the hook is spoken from 0:00; chapter 2 after the intro");
+  assert.deepEqual(full.scenes.map((scene) => [scene.start_frame, scene.end_frame]), [[0, 1200], [1557, 2757]], "a scene ending at the intro stays before it");
+  assert.deepEqual(full.windows, [{ start_frame: 0, end_frame: 2757 }], "a window spanning the intro covers it");
+  assert.deepEqual(full.chapters.map((chapter) => chapter.start_frame), [0, 1557, 2157]);
+  // The pin form (no frame recorded yet) finds the same boundary from the timeline's chapters.
+  assert.equal(introAtFrame({ intro_at: INTRO_AFTER_FIRST_CHAPTER }, body), 1200);
+  assert.throws(() => introAtFrame({ intro_at: INTRO_AFTER_FIRST_CHAPTER }, { total_frames: 10, chapters: [{ start_frame: 0 }] }), /second chapter/);
+  const cues = [{ start_ms: 1000, end_ms: 36000, text: "hook" }, { start_ms: 40000, end_ms: 45000, text: "two" }];
+  const shown = shiftBrandingCues(cues, applied);
+  assert.deepEqual(shown.map((cue) => [cue.start_ms, cue.end_ms]), [[1000, 36000], [51900, 56900]]);
+  assert.deepEqual(shiftBrandingCues(shown, applied, -1), cues);
+  assert.deepEqual(linesAcrossIntro([{ id: "a", start_frame: 1000, end_frame: 1201 }, { id: "b", start_frame: 1000, end_frame: 1200 }], 1200), ["a"]);
+  assert.deepEqual(linesAcrossIntro([{ id: "a", start_frame: 0, end_frame: 5 }], 0), []);
 });

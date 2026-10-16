@@ -2,17 +2,29 @@ from __future__ import annotations
 
 import gzip
 import json
+import os
+from collections.abc import AsyncIterator
+from copy import deepcopy
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from types import SimpleNamespace
-from typing import Any
-from unittest.mock import AsyncMock, Mock
+from typing import Any, cast
+from unittest.mock import AsyncMock, Mock, patch
 from uuid import UUID, uuid4
 
 import httpx
 import pytest
-from sqlalchemy import select
-from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
+from sqlalchemy import Table, select
+from sqlalchemy import text as sql_text
+from sqlalchemy.engine import make_url
+from sqlalchemy.exc import DBAPIError
+from sqlalchemy.ext.asyncio import (
+    AsyncEngine,
+    AsyncSession,
+    async_sessionmaker,
+    create_async_engine,
+)
+from sqlalchemy.pool import NullPool
 
 import app.news_automation as news_automation_package
 from app.config import get_settings
@@ -39,6 +51,7 @@ from app.news_automation.policy import (
     content_fingerprint,
     document_fingerprint,
     event_date_problems,
+    evidence_fingerprint,
     evidence_present,
     evidence_site,
     evidence_sufficient,
@@ -207,6 +220,54 @@ async def test_safe_fetcher_checks_redirect_robots_and_stream_size() -> None:
     )
     with pytest.raises(UnsafeNewsUrl, match="too large"):
         await oversized_fetcher.fetch("https://example.com/feed", allowed_hosts={"example.com"})
+    # A listing the source allows more for (GitHub's 2.3 MB full-text feed) is read whole.
+    larger = await oversized_fetcher.fetch(
+        "https://example.com/feed", allowed_hosts={"example.com"}, max_bytes=3 * 1024 * 1024
+    )
+    assert len(larger.body) == MAX_RESPONSE_BYTES + 1
+    await client.aclose()
+
+
+def test_a_listing_may_be_allowed_more_bytes_but_never_past_the_ceiling() -> None:
+    from app.news_automation.fetch import MAX_LISTING_BYTES, listing_byte_limit
+
+    assert listing_byte_limit(None) == MAX_RESPONSE_BYTES
+    assert listing_byte_limit({"max_response_bytes": 6291456}) == 6291456
+    assert listing_byte_limit({"max_response_bytes": 10**12}) == MAX_LISTING_BYTES
+    for raw in (1024, -5, True, "6291456", 6.5e6):
+        assert listing_byte_limit({"max_response_bytes": raw}) == MAX_RESPONSE_BYTES
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("body", "readable"),
+    [
+        (b'\xef\xbb\xbf\n<?xml version="1.0"?><rss><channel/></rss>', True),
+        (b"<rss version='2.0'><channel/></rss>", True),
+        (b"User-agent: *\nDisallow:", False),
+    ],
+)
+async def test_an_xml_feed_served_as_plain_text_is_read_as_xml(body: bytes, readable: bool) -> None:
+    # mistral.ai/news/rss answers text/plain; any other plain text is still refused.
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /", request=request)
+        return httpx.Response(
+            200,
+            content=body,
+            headers={"Content-Type": "text/plain; charset=UTF-8"},
+            request=request,
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    if readable:
+        result = await fetcher.fetch("https://mistral.ai/news/rss", allowed_hosts={"mistral.ai"})
+        assert result.content_type == "application/xml"
+        assert result.body == body
+    else:
+        with pytest.raises(UnsafeNewsUrl, match="content type: text/plain"):
+            await fetcher.fetch("https://mistral.ai/news/rss", allowed_hosts={"mistral.ai"})
     await client.aclose()
 
 
@@ -449,6 +510,54 @@ async def test_source_activation_requires_a_readable_feed() -> None:
         status_code=200,
         content_type="application/rss+xml",
         body=b"<rss><channel/></rss>",
+    )
+    with pytest.raises(AppError, match="讀出任何新聞項目"):
+        await validate_source_configuration(source, fetcher=fetcher)
+
+
+@pytest.mark.asyncio
+async def test_a_topic_filtered_source_with_no_match_this_week_still_validates() -> None:
+    # The FSC listing is read only for crypto titles; on 2026-10-16 none of its newest releases
+    # was one, and validation refused a listing it could read. The listing and an article are
+    # checked on the releases the title filter set aside; a page with no releases still fails.
+    config: dict[str, object] = {
+        "include_path_prefixes": ["/ch/home.jsp"],
+        "include_query_contains": ["mcustomize=news_view.jsp"],
+        "include_title_keywords": ["虛擬資產", "穩定幣"],
+        "article_classes": ["maincontent"],
+    }
+    source = NewsSource(
+        name="Taiwan FSC press releases (crypto)",
+        url="https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0,2",
+        format="html",
+        role="evidence",
+        vertical="crypto",
+        is_first_party=True,
+        config_json=config,
+    )
+    # Its first item is a release of the securities bureau on another site, which the scanner
+    # skips, so the article checked is the next one.
+    listing = (
+        '<a href="https://www.sfb.gov.tw/ch/home.jsp?id=95&parentpath=0,2'
+        '&mcustomize=news_view.jsp&dataserno=9">上市櫃公司永續發展行動方案</a>'
+        '<a href="home.jsp?id=96&parentpath=0,2&mcustomize=news_view.jsp&dataserno=1">'
+        "本國銀行115年8月底辦理中小企業放款情形</a>"
+    ).encode()
+    fetcher = AsyncMock()
+    fetcher.fetch.side_effect = [
+        FetchResult(url=source.url, status_code=200, content_type="text/html", body=listing),
+        FetchResult(
+            url="https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0,2&mcustomize=news_view.jsp&dataserno=1",
+            status_code=200,
+            content_type="text/html",
+            body='<div class="maincontent">本國銀行中小企業放款餘額持續增加。</div>'.encode(),
+        ),
+    ]
+    await validate_source_configuration(source, fetcher=fetcher)
+    assert fetcher.fetch.call_args_list[1].args[0].endswith("dataserno=1")
+    fetcher.fetch.side_effect = None
+    fetcher.fetch.return_value = FetchResult(
+        url=source.url, status_code=200, content_type="text/html", body=b"<a href='/menu'>Menu</a>"
     )
     with pytest.raises(AppError, match="讀出任何新聞項目"):
         await validate_source_configuration(source, fetcher=fetcher)
@@ -838,47 +947,160 @@ def test_html_listing_filters_by_query_string_and_every_format_by_title_keyword(
     assert [row.url for row in kept] == ["https://example.com/1"]
 
 
-def _claude_blog_card(slug: str, title: str, date: str) -> str:
-    # One card of claude.com/blog as Webflow renders it (2026-10-04): the visible date and
-    # title are plain divs, the date sits again in a hidden fs-list block, and the card
-    # carries three anchors to the post, two of them with only a screen-reader span and
-    # one with no text at all.
+def _claude_blog_card(slug: str, title: str, date: str, excerpt: str) -> str:
+    # One card of claude.com/resources/product-announcements (2026-10-10): the whole card is
+    # a single anchor, and its text is the type, the date, the title, the excerpt and the
+    # product tag, in that order.
     return (
-        '<div role="listitem" class="blog_cms_item w-dyn-item"><div class="card_blog_wrap">'
-        f'<div class="card_blog_content"><div class="u-text-style-caption">{date}</div>'
-        f'<div class="card_blog_title u-text-style-h6">{title}</div></div>'
-        f'<div class="u-display-none"><div fs-list-field="heading">{title}</div>'
-        f'<div fs-list-fieldtype="date" fs-list-field="date">{date}</div></div>'
-        f'<a data-cta="Blog page" href="/blog/{slug}" class="clickable_link w-inline-block">'
-        f'<span class="clickable_text u-sr-only">{title}</span></a>'
-        '<div class="w-condition-invisible"><a target="_blank" href="#" class="clickable_link">'
-        f'<span class="clickable_text u-sr-only">{title}</span></a></div>'
-        f'<a aria-hidden="true" fs-list-element="item-link" href="/blog/{slug}"></a>'
-        "</div></div>"
+        f'<a href="/resources/articles/{slug}" class="ResourceCard__card">'
+        '<div class="ResourceCard__header"><span class="ResourceCard__type"><svg></svg>Article'
+        f'</span><span class="ResourceCard__meta">{date}</span></div>'
+        f'<div class="ResourceCard__body"><h3 class="ResourceCard__title">{title}</h3>'
+        f'<p class="ResourceCard__excerpt">{excerpt}</p>'
+        '<div class="ResourceCard__products"><span>Claude Code</span></div></div></a>'
     )
 
 
 def test_claude_blog_listing_yields_one_undated_entry_per_card() -> None:
-    # The hourly scanner missed "Customize Claude Code with mods" (2026-10-01) because the
-    # source had not been loaded on the host, not because the listing is unreadable: this
-    # pins what the shipped config reads from the page, so a markup change is caught here
-    # and not as a silent empty scan. The cards carry no <time>, so the entries are
-    # undated and the first scan records them as seen (scanner.BASELINE); a post the
-    # listing did not show before is read as new on the scans after that.
+    # claude.com/blog moved in October 2026: it redirects to /resources/articles and a post
+    # is /resources/articles/<slug>. The config still filtered on /blog/ and read nothing,
+    # and the fixture of the old markup kept passing; only reading the live page showed it.
+    # This pins the shipped config against the page as it is now. The listing also links to
+    # videos and to anthropic.com, which are not this source's posts. The cards carry no
+    # <time>, so the entries are undated: the first scan records them as seen
+    # (scanner.BASELINE), and a card the listing did not show before is read as new.
     listing = (
-        '<html><body><nav><a href="/blog">Blog</a><a href="/ja/blog">日本語ブログ</a>'
+        '<html><body><nav><a href="/resources/articles">Articles and announcements</a>'
+        '<a href="/blog">The blog, which now redirects</a>'
         '<a href="/pricing">Pricing overview and plans</a></nav>'
-        '<div role="list" class="w-dyn-items">'
-        + _claude_blog_card("claude-code-mods", "Customize Claude Code with mods", "Oct 1, 2026")
-        + _claude_blog_card("build-plugins-for-claude", "Build plugins for Claude", "Sep 25, 2026")
-        + "</div></body></html>"
+        '<a href="https://www.youtube.com/watch?v=abc" class="ResourceCard__card">'
+        "Video Introducing Claude Sonnet 5.5</a>"
+        '<a href="https://www.anthropic.com/claude-haiku-5-5" class="ResourceCard__card">'
+        "Article Oct 7, 2026 Claude Haiku 5.5</a>"
+        + _claude_blog_card(
+            "claude-code-mods",
+            "Customize Claude Code with mods",
+            "Oct 1, 2026",
+            "Change how Claude Code behaves and looks with a few lines of TypeScript.",
+        )
+        + _claude_blog_card(
+            "build-plugins-for-claude",
+            "Build plugins for Claude",
+            "Sep 25, 2026",
+            "The excerpt of the second card.",
+        )
+        + "</body></html>"
     ).encode()
-    news = parse_entries(listing, "html", "https://claude.com/blog", _source_config("Claude blog"))
-    assert [(row.title, row.url) for row in news] == [
-        ("Customize Claude Code with mods", "https://claude.com/blog/claude-code-mods"),
-        ("Build plugins for Claude", "https://claude.com/blog/build-plugins-for-claude"),
+    news = parse_entries(
+        listing,
+        "html",
+        "https://claude.com/resources/product-announcements",
+        _source_config("Claude blog"),
+    )
+    assert [row.url for row in news] == [
+        "https://claude.com/resources/articles/claude-code-mods",
+        "https://claude.com/resources/articles/build-plugins-for-claude",
     ]
+    # The card's whole text is the entry title; the candidate takes the page's own title.
+    assert news[0].title == (
+        "Article Oct 1, 2026 Customize Claude Code with mods Change how Claude Code behaves"
+        " and looks with a few lines of TypeScript. Claude Code"
+    )
     assert all(row.published_at is None for row in news)
+
+
+def test_claude_developer_blog_story_is_its_body_div() -> None:
+    # claude.dev posts have no <article> or <main>: with the default tags the page reads as
+    # empty (found on 2026-10-10, when the feed validated and every page gave no text).
+    page = (
+        b"<html><head><title>Claude Code in the cloud / claude.dev Blog</title></head><body>"
+        b'<div class="th"><a href="/blog/">All posts in the developer blog</a></div>'
+        b'<div class="prose" id="body"><section class="art-section">'
+        b"<p>You probably run Claude Code in a terminal on your own laptop.</p>"
+        b"<p>A cloud session runs the same loop on a machine that stays on.</p>"
+        b"</section></div>"
+        b'<div class="foot"><p>Subscribe to the developer newsletter.</p></div>'
+        b"</body></html>"
+    )
+    url = "https://claude.dev/blog/claude-code-in-the-cloud/"
+    article = read_article(page, url, _source_config("Claude developer blog"))
+    assert "terminal on your own laptop" in article.text
+    assert "a machine that stays on" in article.text
+    assert "Subscribe" not in article.text and "All posts" not in article.text
+    assert read_article(page, url).text == ""
+
+
+def test_a_feed_item_without_a_description_is_read_from_content_encoded() -> None:
+    # The Claude Code changelog (Mintlify) puts the whole entry in <content:encoded> and has
+    # no <description>; without it the summary was empty and the source could not validate.
+    rss = (
+        b'<?xml version="1.0" encoding="UTF-8"?>'
+        b'<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel>'
+        b"<title><![CDATA[Claude Code changelog]]></title>"
+        b"<description><![CDATA[Release notes for Claude Code.]]></description>"
+        b"<item><title><![CDATA[2.1.296]]></title>"
+        b"<link>https://code.claude.com/docs/en/changelog#2-1-296</link>"
+        b"<pubDate>Fri, 09 Oct 2026 19:44:41 GMT</pubDate>"
+        b"<content:encoded><![CDATA[<p><strong>Added</strong></p><ul>"
+        b"<li>Added <code>autoCompactWindow</code> to subagent frontmatter</li></ul>]]>"
+        b"</content:encoded></item>"
+        # An item with both keeps its description: the fallback changes no feed that
+        # already gave a summary.
+        b"<item><title>2.1.295</title>"
+        b"<link>https://code.claude.com/docs/en/changelog#2-1-295</link>"
+        b"<description>Bug fixes.</description>"
+        b"<content:encoded><![CDATA[<p>The whole list of fixes.</p>]]></content:encoded></item>"
+        b"</channel></rss>"
+    )
+    config = _source_config("Claude Code changelog")
+    assert config["evidence_from_feed_summary"] is True
+    first, second = parse_entries(
+        rss, "rss", "https://code.claude.com/docs/en/changelog/rss.xml", config
+    )
+    assert (first.title, first.url) == (
+        "2.1.296",
+        "https://code.claude.com/docs/en/changelog#2-1-296",
+    )
+    assert first.summary == "Added Added autoCompactWindow to subagent frontmatter"
+    assert first.published_at == datetime(2026, 10, 9, 19, 44, 41, tzinfo=UTC)
+    assert second.summary == "Bug fixes."
+
+
+def test_github_changelog_is_read_for_copilot_entries_only() -> None:
+    rss = (
+        b"<rss><channel>"
+        b"<item><title>Claude Haiku 5.5 in GitHub Copilot</title>"
+        b"<link>https://github.blog/changelog/2026-10-07-claude-haiku-5-5-in-github-copilot"
+        b"</link></item>"
+        b"<item><title>Repository rulesets: new bypass options</title>"
+        b"<link>https://github.blog/changelog/2026-10-07-repository-rulesets</link></item>"
+        b"<item><title>Local sandboxing for GitHub copilot now generally available</title>"
+        b"<link>https://github.blog/changelog/2026-10-07-local-sandboxing</link></item>"
+        b"</channel></rss>"
+    )
+    kept = parse_entries(
+        rss, "rss", "https://github.blog/changelog/feed/", _source_config("GitHub Changelog")
+    )
+    assert [row.url.rsplit("/", 1)[-1] for row in kept] == [
+        "2026-10-07-claude-haiku-5-5-in-github-copilot",
+        "2026-10-07-local-sandboxing",
+    ]
+
+
+def test_openrouter_listing_takes_announcement_posts_and_not_the_category_link() -> None:
+    listing = (
+        b'<a href="/blog/announcements/">Announcements</a>'
+        b'<a href="/blog/engineering/routing-a-million-requests/">Routing a million requests</a>'
+        b'<a href="/blog/announcements/batch-api/">Batch API: half-price inference by bundling'
+        b" requests Sep 22, 2026</a>"
+    )
+    news = parse_entries(
+        listing,
+        "html",
+        "https://openrouter.ai/blog/",
+        _source_config("OpenRouter announcements"),
+    )
+    assert [row.url for row in news] == ["https://openrouter.ai/blog/announcements/batch-api/"]
 
 
 def test_news_tls_context_still_verifies_but_drops_python_313_strict_mode() -> None:
@@ -889,8 +1111,25 @@ def test_news_tls_context_still_verifies_but_drops_python_313_strict_mode() -> N
     context = tls_context()
     # Taiwan's government sites (TWCA chain) fail the strict X.509 profile Python 3.13 turns on.
     assert not context.verify_flags & ssl.VERIFY_X509_STRICT
+    assert context.verify_flags & ssl.VERIFY_X509_PARTIAL_CHAIN
     assert context.verify_mode == ssl.CERT_REQUIRED
     assert context.check_hostname is True
+    assert context.cert_store_stats()["x509_ca"] > 0
+    assert context.minimum_version >= ssl.TLSVersion.TLSv1_2
+
+
+def test_news_tls_context_ignores_the_alpn_offer_httpcore_makes() -> None:
+    # Cloudflare challenged the CFTC feed (403) for a handshake offering ALPN and let the
+    # same pinned request through without the offer. httpcore sets the offer on the context
+    # it is given at every connect, so the context ignores it.
+    import ssl
+
+    from app.news_automation.fetch import tls_context
+
+    context = tls_context()
+    with patch.object(ssl.SSLContext, "set_alpn_protocols") as offered:
+        context.set_alpn_protocols(["http/1.1"])
+    offered.assert_not_called()
 
 
 @pytest.mark.asyncio
@@ -1574,6 +1813,189 @@ async def test_robots_txt_is_read_once_per_host_for_the_life_of_a_fetcher() -> N
     with pytest.raises(UnsafeNewsUrl, match="robots"):
         await fetcher.fetch("https://example.com/private/c", allowed_hosts={"example.com"})
     assert robots_reads == ["example.com"]
+    await client.aclose()
+
+
+@pytest.mark.asyncio
+async def test_deepmind_article_redirects_use_configured_hosts_and_robots_rules() -> None:
+    requests: list[tuple[str, str]] = []
+    source_rows = json.loads(
+        (Path(news_automation_package.__file__).parent / "sources.json").read_text(
+            encoding="utf-8"
+        )
+    )["sources"]
+    source = next(row for row in source_rows if row["name"] == "Google DeepMind blog")
+    redirect_hosts = set(source["allowed_redirect_hosts"])
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        host, path = request.headers["host"], request.url.path
+        requests.append((host, path))
+        if host == "deepmind.google":
+            if path == "/robots.txt":
+                return httpx.Response(200, text="User-agent: *\nAllow: /", request=request)
+            if path == "/blog/developing-gemini-4-argon-responsibly-and-safely/":
+                return httpx.Response(
+                    302,
+                    headers={
+                        "Location": "https://blog.google/innovation-and-ai/technology/safety-security/gemini-4-model-safety-security/"
+                    },
+                    request=request,
+                )
+            assert path == "/blog/gemini-4-argon-for-robotics/"
+            return httpx.Response(
+                302,
+                headers={
+                    "Location": "https://developers.googleblog.com/gemini-4-argon-for-robotics"
+                },
+                request=request,
+            )
+        if host == "blog.google":
+            if path == "/robots.txt":
+                return httpx.Response(200, text="User-agent: *\nAllow: /", request=request)
+            assert path == (
+                "/innovation-and-ai/technology/safety-security/gemini-4-model-safety-security/"
+            )
+            return httpx.Response(
+                200,
+                content=b"<html><main>Official safety story.</main></html>",
+                headers={"Content-Type": "text/html"},
+                request=request,
+            )
+        if path == "/robots.txt":
+            return httpx.Response(301, headers={"Location": "/robots.txt/"}, request=request)
+        if path == "/robots.txt/":
+            return httpx.Response(200, text="User-agent: *\nDisallow: /private", request=request)
+        if path == "/gemini-4-argon-for-robotics":
+            return httpx.Response(
+                301, headers={"Location": "/gemini-4-argon-for-robotics/"}, request=request
+            )
+        assert path == "/gemini-4-argon-for-robotics/"
+        return httpx.Response(
+            200,
+            content=(
+                b'<html><section class="blocks-container"><p>Official article.</p>'
+                b"</section></html>"
+            ),
+            headers={"Content-Type": "text/html"},
+            request=request,
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    result = await fetcher.fetch(
+        "https://deepmind.google/blog/gemini-4-argon-for-robotics/",
+        allowed_hosts={"deepmind.google"},
+        allowed_redirect_hosts=redirect_hosts,
+    )
+    assert result.url == "https://developers.googleblog.com/gemini-4-argon-for-robotics/"
+    assert read_article(result.body, result.url, source["config"]).text == "Official article."
+    safety = await fetcher.fetch(
+        "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/",
+        allowed_hosts={"deepmind.google"},
+        allowed_redirect_hosts=redirect_hosts,
+    )
+    assert safety.url.startswith("https://blog.google/innovation-and-ai/")
+    assert read_article(safety.body, safety.url, source["config"]).text == (
+        "Official safety story."
+    )
+    with pytest.raises(UnsafeNewsUrl, match="robots"):
+        await fetcher.fetch(
+            "https://developers.googleblog.com/private",
+            allowed_hosts={"developers.googleblog.com"},
+        )
+    assert requests.count(("developers.googleblog.com", "/robots.txt")) == 1
+    assert requests.count(("developers.googleblog.com", "/robots.txt/")) == 1
+    assert requests.count(("blog.google", "/robots.txt")) == 1
+    assert ("developers.googleblog.com", "/private") not in requests
+    await client.aclose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("mode", ["other-host", "http", "other-port", "loop"])
+async def test_robots_redirects_outside_same_https_host_are_refused(
+    mode: str,
+) -> None:
+    requested: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        requested.append(f"{request.headers['host']}{request.url.path}")
+        assert request.headers["host"] == "developers.googleblog.com"
+        assert request.url.path in {"/robots.txt", "/robots.txt/"}
+        location = {
+            "other-host": "https://other.example/robots.txt",
+            "http": "http://developers.googleblog.com/robots.txt/",
+            "other-port": "https://developers.googleblog.com:444/robots.txt/",
+            "loop": "/robots.txt/" if request.url.path == "/robots.txt" else "/robots.txt",
+        }[mode]
+        return httpx.Response(301, headers={"Location": location}, request=request)
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    with pytest.raises(UnsafeNewsUrl, match="robots"):
+        await fetcher.fetch(
+            "https://developers.googleblog.com/article",
+            allowed_hosts={"developers.googleblog.com", "other.example"},
+        )
+    assert len(requested) == (5 if mode == "loop" else 1)
+    await client.aclose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("mode", ["404", "405", "403", "html", "no-agent"])
+async def test_an_unavailable_robots_txt_restricts_nothing(mode: str) -> None:
+    # RFC 9309 §2.3.1.3: a 4xx robots.txt is "unavailable" and places no restriction. MODA and
+    # NSTC answer 404, Ars Technica 405; the central bank redirects /robots.txt to its home
+    # page, which is no robots file either. A 429 or 5xx stays a transient failure.
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/robots.txt":
+            if mode in {"404", "405", "403"}:
+                return httpx.Response(int(mode), text="<html>no</html>", request=request)
+            return httpx.Response(302, headers={"Location": "/tw/mp-1.html"}, request=request)
+        if request.url.path == "/tw/mp-1.html":
+            if mode == "html":
+                # Text that would read as a ban if it were taken for rules.
+                return httpx.Response(
+                    200,
+                    text="<html>User-agent: *\nDisallow: /</html>",
+                    headers={"Content-Type": "text/html"},
+                    request=request,
+                )
+            return httpx.Response(200, text="Sitemap: /sitemap.xml", request=request)
+        return httpx.Response(
+            200,
+            content=b"<html>news</html>",
+            headers={"Content-Type": "text/html"},
+            request=request,
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    page = await fetcher.fetch(
+        "https://www.cbc.gov.tw/tw/lp-302-1.html", allowed_hosts={"www.cbc.gov.tw"}
+    )
+    assert page.body == b"<html>news</html>"
+    await client.aclose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("status", [429, 503])
+async def test_a_robots_txt_that_fails_for_now_is_not_read_as_permission(status: int) -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/robots.txt":
+            return httpx.Response(status, request=request)
+        return httpx.Response(
+            200,
+            content=b"<html>news</html>",
+            headers={"Content-Type": "text/html"},
+            request=request,
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    with patch("app.news_automation.fetch.asyncio.sleep", AsyncMock()), pytest.raises(
+        httpx.HTTPStatusError
+    ):
+        await fetcher.fetch("https://example.com/news", allowed_hosts={"example.com"})
     await client.aclose()
 
 
@@ -2723,3 +3145,1553 @@ def test_news_punctuation_recognizes_a_url_split_between_text_nodes() -> None:
         ],
     }])
     assert _punctuation_problems(document) == []
+
+
+async def _held_ingestion_case(database_pair=None):
+    from fakeredis.aioredis import FakeRedis
+
+    from app.models import AdminRoleAssignment, User
+    from app.news_automation import service
+    from app.news_automation.models import LOCALES, NewsAssessment
+    from tests.test_news_pipeline import EVENT_DAY, FIRST_PARTY_URL, database, seed_candidate
+
+    if database_pair is None:
+        engine, factory = await database()
+        async with engine.begin() as connection:
+            await connection.run_sync(
+                lambda sync: cast(Table, AdminRoleAssignment.__table__).create(sync)
+            )
+    else:
+        engine, factory = database_pair
+    redis = FakeRedis()
+    async with factory() as session:
+        actor = User(email="ingestion-owner@example.com", is_admin=True)
+        session.add(actor)
+        candidate = await seed_candidate(session, status="needs_redraft")
+        candidate.event_date = EVENT_DAY
+        candidate.retry_count = 4
+        candidate.error_code = "news_hard_checks_failed"
+        candidate.draft_bundle_json = {"zh-TW": {"old": "cached"}, "ja": {"old": "cached"}}
+        candidate.evidence_hash = "e" * 64
+        session.add(
+            NewsEvidence(
+                candidate_id=candidate.id,
+                role="evidence",
+                is_first_party=True,
+                url=FIRST_PARTY_URL,
+                title="Original report",
+                source_date=EVENT_DAY,
+                content_hash="f" * 64,
+                excerpt="The complete stored report and its qualifications.",
+            )
+        )
+        for _ in range(2):
+            session.add(
+                NewsAssessment(
+                    candidate_id=candidate.id,
+                    assessment_type="judge",
+                    verdict="revise",
+                    reasons_json=["Old rewrite direction"],
+                    details_json={"action": "redraft"},
+                    prompt_version="old",
+                )
+            )
+        from app.guides.models import GuideTopic
+
+        session.add(GuideTopic(slug="ai-news", section="life", names_json={"en": "AI news"}))
+        await session.commit()
+        snapshot = await service.held_bundle_snapshot(session, redis, candidate.id)
+        evidence = snapshot["state"]["evidence"][0]
+        documents = {}
+        pending = {}
+        for locale in LOCALES:
+            document = GuideDocument.model_validate(
+                {
+                    "title": f"A source-bound report {locale}",
+                    "description": "What the announcement establishes and what it leaves open.",
+                    "blocks": [
+                        {
+                            "type": "summary",
+                            "items": [
+                                "The announcement describes an update.",
+                                "The original report states its limitations.",
+                            ],
+                        },
+                        {"type": "paragraph", "text": "The original source describes the update."},
+                        {"type": "heading", "level": 2, "text": "What was announced"},
+                        {"type": "heading", "level": 2, "text": "Source limitations"},
+                        {"type": "heading", "level": 2, "text": "What remains open"},
+                        {
+                            "type": "table",
+                            "header": ["Point", "Source statement"],
+                            "rows": [["Scope", "A documented announcement"]],
+                        },
+                        {
+                            "type": "callout",
+                            "tone": "info",
+                            "title": "Source limitations",
+                            "text": "Read the original report for its qualifications.",
+                        },
+                        {
+                            "type": "faq",
+                            "items": [
+                                {
+                                    "question": "What was announced?",
+                                    "answer": "The source describes an update.",
+                                },
+                                {
+                                    "question": "What remains open?",
+                                    "answer": "The source describes limitations.",
+                                },
+                            ],
+                        },
+                        {
+                            "type": "link",
+                            "text": "News in this topic",
+                            "url": f"https://mokaair.com/{locale}/life/topics/ai-news",
+                        },
+                    ],
+                    "sources": [
+                        {
+                            "title": evidence["title"],
+                            "url": evidence["url"],
+                            "checked_on": evidence["retrieved_at"][:10],
+                        }
+                    ],
+                }
+            )
+            documents[locale] = document.model_dump(mode="json")
+            pending[locale] = hard_policy_problems(document, "ai", locale, source_count=1)
+            assert pending[locale] and all(p.startswith("no_hero:") for p in pending[locale])
+        review = {
+            "schema": service.HELD_REVIEW_SCHEMA,
+            "candidate_id": str(candidate.id),
+            "reviewer": "Independent editor",
+            "reviewed_at": datetime.now(UTC).isoformat(),
+            "conclusion": "draft_ingestion_only",
+            "blocking_content_problems": [],
+            "documents_sha256": {
+                locale: service.held_bundle_digest(doc) for locale, doc in documents.items()
+            },
+            "evidence_sha256": service.held_bundle_digest(snapshot["state"]["evidence"]),
+            "candidate_evidence_hash": candidate.evidence_hash,
+            "pending_policy_problems": pending,
+        }
+        manifest = {
+            "schema": service.HELD_BUNDLE_SCHEMA,
+            "candidate_id": str(candidate.id),
+            "operation_id": str(uuid4()),
+            "slug": f"held-report-{EVENT_DAY:%Y%m%d}",
+            "event_date": EVENT_DAY.isoformat(),
+            "expected_snapshot": snapshot,
+            "documents": documents,
+            "review_sha256": "b" * 64,
+        }
+    return engine, factory, redis, candidate.id, actor.id, manifest, review
+
+
+async def _call_held_ingestion(session, redis, candidate_id, manifest, review, actor=None):
+    from app.news_automation.service import ingest_held_bundle
+
+    return await ingest_held_bundle(
+        session,
+        redis,
+        candidate_id,
+        manifest,
+        review,
+        manifest_sha256="a" * 64,
+        review_sha256="b" * 64,
+        actor=actor,
+    )
+
+
+async def _navigation_repair_case(database_pair=None):
+    import hashlib
+
+    from app.models import User
+    from app.news_automation import service
+    from app.news_automation.models import NewsAssessment, NewsAsset, NewsPipelineRun
+
+    engine, factory, redis, cid, actor_id, bundle, draft_review = await _held_ingestion_case(
+        database_pair
+    )
+    # A normal article under /news is a different complete URL from the /news listing.
+    primary_url = "https://www.theverge.com/news/123456/example-announcement"
+    async with factory() as session:
+        candidate = await session.get(NewsCandidate, cid)
+        source = await session.get(NewsSource, candidate.source_id)
+        source.url = "https://www.theverge.com/rss/index.xml"
+        source.is_first_party = False
+        candidate.canonical_url = primary_url
+        evidence = await session.scalar(
+            select(NewsEvidence).where(NewsEvidence.candidate_id == cid)
+        )
+        evidence.url = primary_url
+        evidence.is_first_party = False
+        candidate.claim_ledger_json = [
+            {"claim": "The report describes an update.", "source_urls": [primary_url]}
+        ]
+        await session.commit()
+        bundle["expected_snapshot"] = await service.held_bundle_snapshot(session, redis, cid)
+        draft_review["evidence_sha256"] = service.held_bundle_digest(
+            bundle["expected_snapshot"]["state"]["evidence"]
+        )
+        for document in bundle["documents"].values():
+            document["sources"][0]["url"] = primary_url
+        draft_review["documents_sha256"] = {
+            locale: service.held_bundle_digest(doc) for locale, doc in bundle["documents"].items()
+        }
+        await _call_held_ingestion(
+            session, redis, cid, bundle, draft_review, await session.get(User, actor_id)
+        )
+        await session.commit()
+        candidate.status = "manual_review"
+        candidate.would_publish = True
+        navigation = NewsEvidence(
+            candidate_id=cid,
+            role="evidence",
+            is_first_party=False,
+            url="https://www.theverge.com/news",
+            title="News listing",
+            content_hash="c" * 64,
+            excerpt=(
+                "News listing: unrelated report one, unrelated report two, and section navigation."
+            ),
+        )
+        session.add(navigation)
+        await session.flush()
+        rows = await session.scalars(select(NewsEvidence).where(NewsEvidence.candidate_id == cid))
+        candidate.evidence_hash = evidence_fingerprint(
+            [{"url": item.url, "content_hash": item.content_hash} for item in rows]
+        )
+        for status in ("succeeded", "failed"):
+            session.add(
+                NewsPipelineRun(
+                    candidate_id=cid,
+                    stage="verification",
+                    status=status,
+                    attempt=2,
+                    idempotency_key=f"retained-{cid}-{status}",
+                    provider="anthropic",
+                    model="old-checker",
+                    input_tokens=123,
+                    output_tokens=45,
+                    metadata_json={"original": ["完整歷史", status]},
+                    finished_at=datetime.now(UTC),
+                )
+            )
+        asset_content = b"retained private test asset bytes"
+        session.add(
+            NewsAsset(
+                candidate_id=cid,
+                variant="hero",
+                storage_key=f"news/{cid}/private.png",
+                public_filename=f"retained-{cid}.png",
+                content_type="image/png",
+                sha256=hashlib.sha256(asset_content).hexdigest(),
+                size=len(asset_content),
+                width=1200,
+                height=630,
+                content=asset_content,
+                is_public=False,
+            )
+        )
+        for assessment_type, locale in [("verification", None)] + [
+            ("locale_review", loc) for loc in bundle["documents"]
+        ]:
+            session.add(
+                NewsAssessment(
+                    candidate_id=cid,
+                    assessment_type=assessment_type,
+                    locale=locale,
+                    verdict="pass",
+                    provider="anthropic",
+                    model="old-checker",
+                    evidence_hash=candidate.evidence_hash,
+                    prompt_version=candidate.prompt_version,
+                    reasons_json=["Stored pass against the previous evidence."],
+                    details_json={
+                        "document_sha256": document_fingerprint(
+                            GuideDocument.model_validate(bundle["documents"][locale or "zh-TW"])
+                        )
+                    },
+                )
+            )
+        await session.commit()
+        snapshot = await service.held_bundle_snapshot(session, redis, cid)
+        stored = next(
+            item for item in snapshot["state"]["evidence"] if item["id"] == str(navigation.id)
+        )
+        current = {
+            "url": navigation.url,
+            "resolved_url": navigation.url,
+            "fetched_at": datetime.now(UTC).isoformat(),
+            "status": 200,
+            "title": navigation.title,
+            "excerpt": navigation.excerpt,
+        }
+        review = {
+            "schema": "mokaair-news-held-navigation-review-v1",
+            "candidate_id": str(cid),
+            "reviewer": "Independent navigation reviewer",
+            "reviewed_at": datetime.now(UTC).isoformat(),
+            "conclusion": "navigation_repair_only",
+            "evidence_sha256": service.held_bundle_digest(snapshot["state"]["evidence"]),
+            "documents_sha256": {
+                row["locale"]: service.held_bundle_digest(row["draft_json"])
+                for row in snapshot["state"]["locales"]
+            },
+            "claim_ledger_sha256": service.held_bundle_digest(candidate.claim_ledger_json),
+            "navigation": [
+                {
+                    "evidence_id": stored["id"],
+                    "url": stored["url"],
+                    "classification": "system_navigation",
+                    "excerpt_sha256": hashlib.sha256(stored["excerpt"].encode()).hexdigest(),
+                    "reason": (
+                        "Both full bodies list unrelated stories and navigation; "
+                        "neither supplies an authored claim."
+                    ),
+                    "current_source": current,
+                    "current_source_sha256": service.held_bundle_digest(current),
+                    "source_artifact_sha256": "d" * 64,
+                }
+            ],
+        }
+        manifest = {
+            "schema": "mokaair-news-held-navigation-repair-v1",
+            "candidate_id": str(cid),
+            "operation_id": str(uuid4()),
+            "expected_snapshot": snapshot,
+            "review_sha256": "b" * 64,
+            "evidence_ids": [stored["id"]],
+            "reason": (
+                "Remove only this independently reviewed legacy listing, archive it, "
+                "then require fresh ordinary verification."
+            ),
+        }
+    return engine, factory, redis, cid, actor_id, manifest, review
+
+
+async def _call_navigation_repair(session, redis, cid, manifest, review, actor=None):
+    from app.news_automation.service import repair_held_navigation
+
+    return await repair_held_navigation(
+        session,
+        redis,
+        cid,
+        manifest,
+        review,
+        manifest_sha256="a" * 64,
+        review_sha256="b" * 64,
+        actor=actor,
+    )
+
+
+@pytest.mark.asyncio
+async def test_navigation_repair_archives_exact_rows_preserves_history_and_requires_fresh_review():
+    from app.models import User
+    from app.news_automation import service
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _navigation_repair_case()
+    try:
+        async with factory() as session:
+            before = manifest["expected_snapshot"]["state"]
+            candidate = await session.get(NewsCandidate, cid)
+            assert len(before["runs"]) == 2 and len(before["assets"]) == 1
+            assert sum(row["assessment_type"] == "judge" for row in before["assessments"]) == 2
+            assert await service._latest_pass(session, candidate, "verification") is not None
+            assert await service._latest_pass(session, candidate, "locale_review") is not None
+            plan = await _call_navigation_repair(session, redis, cid, manifest, review)
+            assert not plan["applied"] and not session.new and not session.deleted
+            assert (await service.held_bundle_snapshot(session, redis, cid))["state"] == before
+            result = await _call_navigation_repair(
+                session, redis, cid, manifest, review, await session.get(User, actor_id)
+            )
+            await session.commit()
+            after = (await service.held_bundle_snapshot(session, redis, cid))["state"]
+            for group in before:
+                if group not in {"candidate", "evidence", "audits"}:
+                    assert after[group] == before[group]
+            for key, value in before["candidate"].items():
+                if key not in {
+                    "evidence_hash",
+                    "would_publish",
+                    "error_code",
+                    "error_detail",
+                    "updated_at",
+                }:
+                    assert after["candidate"][key] == value
+            assert len(after["evidence"]) == len(before["evidence"]) - 1
+            assert after["candidate"]["evidence_hash"] != before["candidate"]["evidence_hash"]
+            assert after["candidate"]["would_publish"] is False
+            candidate = await session.get(NewsCandidate, cid)
+            assert await service._latest_pass(session, candidate, "verification") is None
+            assert await service._latest_pass(session, candidate, "locale_review") is None
+            assert (
+                result["fresh_verification_required"]
+                and result["queue_calls"] == result["model_calls"] == 0
+            )
+            old = {row["id"]: row for row in before["audits"]}
+            assert {row["id"]: row for row in after["audits"] if row["id"] in old} == old
+            added = [row for row in after["audits"] if row["id"] not in old]
+            assert len(added) == 1 and added[0]["actor_user_id"] == str(actor_id)
+            metadata = added[0]["metadata_json"]
+            assert metadata["before_evidence"] == before["evidence"]
+            assert metadata["after_evidence"] == after["evidence"]
+            assert metadata["navigation_review"] == review["navigation"]
+            assert metadata["claim_ledger"] == before["candidate"]["claim_ledger_json"]
+            manifest["expected_snapshot"] = await service.held_bundle_snapshot(session, redis, cid)
+            manifest["operation_id"] = str(uuid4())
+            with pytest.raises(AppError) as used:
+                await _call_navigation_repair(
+                    session, redis, cid, manifest, review, await session.get(User, actor_id)
+                )
+            assert used.value.code == "news_navigation_operation_used"
+        assert await redis.lrange("rq:queue:news", 0, -1) == []
+    finally:
+        await redis.aclose()
+        await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "mode",
+    [
+        "source",
+        "audit",
+        "rq",
+        "published",
+        "claim",
+        "mixed_claim",
+        "document",
+        "empty_excerpt",
+        "article",
+    ],
+)
+async def test_navigation_repair_refuses_drift_busy_authored_and_still_cited_sources(mode):
+    from app.models import AdminAuditLog, User
+    from app.news_automation import service
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _navigation_repair_case()
+    try:
+        async with factory() as session:
+            candidate = await session.get(NewsCandidate, cid)
+            nav = await session.get(NewsEvidence, UUID(manifest["evidence_ids"][0]))
+            if mode == "source":
+                (
+                    await session.get(NewsSource, candidate.source_id)
+                ).name = "A concurrent source change"
+            elif mode == "audit":
+                session.add(
+                    AdminAuditLog(
+                        actor_user_id=actor_id,
+                        action="concurrent_edit",
+                        target=f"news-candidate:{cid}",
+                    )
+                )
+            elif mode == "rq":
+                await redis.lpush("rq:queue:news", f"news-candidate-{cid}-99")
+            elif mode == "published":
+                candidate.published_at = datetime.now(UTC)
+            elif mode in {"claim", "mixed_claim"}:
+                urls = [nav.url] + ([candidate.canonical_url] if mode == "mixed_claim" else [])
+                candidate.claim_ledger_json = [
+                    {"claim": "Retained historical assertion", "source_urls": urls}
+                ]
+            elif mode == "document":
+                from app.guides.models import GuideArticleLocale
+
+                locale = await session.scalar(
+                    select(GuideArticleLocale).where(
+                        GuideArticleLocale.article_id == candidate.guide_article_id
+                    )
+                )
+                doc = deepcopy(locale.draft_json)
+                doc["sources"].append(
+                    {"title": nav.title, "url": nav.url, "checked_on": "2026-10-01"}
+                )
+                locale.draft_json = doc
+            elif mode == "empty_excerpt":
+                nav.excerpt = "   "
+            elif mode == "article":
+                nav.url = "https://www.theverge.com/news/123456/an-authored-article"
+            await session.commit()
+            if mode not in {"source", "audit", "rq"}:
+                manifest["expected_snapshot"] = await service.held_bundle_snapshot(
+                    session, redis, cid
+                )
+            before = await service.held_bundle_snapshot(session, redis, cid)
+            with pytest.raises(AppError) as refused:
+                await _call_navigation_repair(
+                    session, redis, cid, manifest, review, await session.get(User, actor_id)
+                )
+            assert (
+                refused.value.code
+                == {
+                    "source": "news_navigation_state_changed",
+                    "audit": "news_navigation_state_changed",
+                    "rq": "news_navigation_state_changed",
+                    "published": "news_navigation_busy",
+                    "claim": "news_navigation_claim_source",
+                    "mixed_claim": "news_navigation_claim_source",
+                    "document": "news_navigation_still_cited",
+                    "empty_excerpt": "news_navigation_review_mismatch",
+                    "article": "news_navigation_not_listing",
+                }[mode]
+            )
+            await session.rollback()
+            assert (await service.held_bundle_snapshot(session, redis, cid))["state"] == before[
+                "state"
+            ]
+    finally:
+        await redis.aclose()
+        await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "mode",
+    [
+        "expired",
+        "future_source",
+        "blank_source",
+        "redirect",
+        "source_hash",
+        "unhashable_id",
+        "primary",
+    ],
+)
+async def test_navigation_repair_requires_exact_readable_dated_independent_proof(mode):
+    from app.news_automation import service
+
+    engine, factory, redis, cid, _actor_id, manifest, review = await _navigation_repair_case()
+    try:
+        proof = review["navigation"][0]
+        if mode == "expired":
+            manifest["expected_snapshot"]["captured_at"] = (
+                datetime.now(UTC) - timedelta(minutes=16)
+            ).isoformat()
+        elif mode == "future_source":
+            proof["current_source"]["fetched_at"] = (
+                datetime.now(UTC) + timedelta(minutes=1)
+            ).isoformat()
+        elif mode == "blank_source":
+            proof["current_source"]["excerpt"] = " "
+        elif mode == "redirect":
+            proof["current_source"]["resolved_url"] = "https://www.theverge.com/news/123/authored"
+        elif mode == "source_hash":
+            proof["current_source_sha256"] = "0" * 64
+        elif mode == "unhashable_id":
+            proof["evidence_id"] = []
+        elif mode == "primary":
+            manifest["evidence_ids"] = [
+                row["id"] for row in manifest["expected_snapshot"]["state"]["evidence"]
+            ]
+        if mode in {"future_source", "blank_source", "redirect"}:
+            proof["current_source_sha256"] = service.held_bundle_digest(proof["current_source"])
+        async with factory() as session:
+            before = await service.held_bundle_snapshot(session, redis, cid)
+            with pytest.raises(AppError):
+                await _call_navigation_repair(session, redis, cid, manifest, review)
+            assert not session.new and not session.deleted
+            assert (await service.held_bundle_snapshot(session, redis, cid))["state"] == before[
+                "state"
+            ]
+    finally:
+        await redis.aclose()
+        await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_navigation_repair_caller_rollback_restores_rows_and_actor_audit():
+    from app.models import User
+    from app.news_automation import service
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _navigation_repair_case()
+    try:
+        async with factory() as session:
+            await _call_navigation_repair(
+                session, redis, cid, manifest, review, await session.get(User, actor_id)
+            )
+            await session.rollback()
+            assert (await service.held_bundle_snapshot(session, redis, cid))["state"] == manifest[
+                "expected_snapshot"
+            ]["state"]
+    finally:
+        await redis.aclose()
+        await engine.dispose()
+
+
+@pytest.mark.parametrize(
+    "text,cited",
+    [
+        ("https://www.theverge.com/news", True),
+        ("See https://www.theverge.com/news/ for the listing.", True),
+        ("[Listing](https://www.theverge.com/news?utm_source=test)", True),
+        ("https://www.theverge.com/news#latest", True),
+        ("The listing is https://www.theverge.com/news。", True),
+        ("http://www.theverge.com/news", True),
+        ("HTTPS://WWW.THEVERGE.COM/news", True),
+        ("https://www.theverge.com:443/news", True),
+        ("'https://www.theverge.com/news'", True),
+        ("參見「https://www.theverge.com/news」", True),
+        ("See “https://www.theverge.com/news”", True),
+        ("See ‘https://www.theverge.com/news’", True),
+        ("https://www.theverge.com/news/123456/an-article", False),
+        ("https://www.theverge.com/newsletters", False),
+        ("https://www.theverge.com.example/news", False),
+    ],
+)
+def test_navigation_repair_citation_matches_complete_urls_and_keeps_authored_descendants(
+    text, cited
+):
+    from app.news_automation.service import _document_cites_navigation
+
+    document = {"blocks": [{"text": text}], "sources": []}
+    assert _document_cites_navigation(document, {"https://www.theverge.com/news"}) is cited
+
+
+@pytest.mark.asyncio
+async def test_navigation_repair_audit_insert_failure_rolls_back_all_native_changes():
+    from sqlalchemy import event
+
+    from app.models import AdminAuditLog, User
+    from app.news_automation import service
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _navigation_repair_case()
+
+    def refuse_audit(_mapper, _connection, target):
+        if target.action == "news_navigation_evidence_repaired":
+            raise RuntimeError("Repair audit insert failed")
+
+    event.listen(AdminAuditLog, "before_insert", refuse_audit)
+    try:
+        async with factory() as session:
+            with pytest.raises(RuntimeError, match="audit insert failed"):
+                await _call_navigation_repair(
+                    session, redis, cid, manifest, review, await session.get(User, actor_id)
+                )
+            await session.rollback()
+            assert (await service.held_bundle_snapshot(session, redis, cid))["state"] == manifest[
+                "expected_snapshot"
+            ]["state"]
+    finally:
+        event.remove(AdminAuditLog, "before_insert", refuse_audit)
+        await redis.aclose()
+        await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("locked_group", ["candidate", "evidence", "locales"])
+async def test_navigation_repair_postgres_nowait_refuses_live_editor_without_partial_repair(
+    held_ingestion_postgres, locked_group
+):
+    from app.guides.models import GuideArticleLocale
+    from app.models import User
+    from app.news_automation import service
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _navigation_repair_case(
+        held_ingestion_postgres
+    )
+    models = {"candidate": NewsCandidate, "evidence": NewsEvidence, "locales": GuideArticleLocale}
+    model = cast(Any, models[locked_group])
+    locked_id = manifest["expected_snapshot"]["state"][locked_group]
+    locked_id = locked_id["id"] if locked_group == "candidate" else locked_id[0]["id"]
+    try:
+        async with factory() as owner, factory() as operator:
+            await owner.scalar(select(model).where(model.id == UUID(locked_id)).with_for_update())
+            with pytest.raises(DBAPIError):
+                await _call_navigation_repair(
+                    operator, redis, cid, manifest, review, await operator.get(User, actor_id)
+                )
+            await operator.rollback()
+            await owner.rollback()
+        async with factory() as session:
+            assert (await service.held_bundle_snapshot(session, redis, cid))["state"] == manifest[
+                "expected_snapshot"
+            ]["state"]
+    finally:
+        await redis.aclose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("outcome", ["unknown_before_write", "lost_commit_ack"])
+async def test_navigation_repair_cli_durable_intent_refuses_same_candidate_with_a_new_nonce(
+    outcome, tmp_path, monkeypatch
+):
+    import hashlib
+
+    from app.news_automation import backfill_cli, service
+
+    engine, factory, redis, cid, _actor_id, manifest, review = await _navigation_repair_case()
+    intent_dir = tmp_path / "intent"
+    intent_dir.mkdir(mode=0o700)
+    monkeypatch.setattr(backfill_cli, "INGESTION_INTENT_DIR", intent_dir)
+    monkeypatch.setattr(backfill_cli, "SessionFactory", factory)
+    monkeypatch.setattr(backfill_cli, "get_redis", lambda: redis)
+    monkeypatch.setattr(backfill_cli, "engine", SimpleNamespace(dispose=AsyncMock()))
+    commits = 0
+    original_commit = AsyncSession.commit
+
+    async def lost_ack(session):
+        nonlocal commits
+        commits += 1
+        await original_commit(session)
+        raise RuntimeError("Commit acknowledgement lost")
+
+    def pinned_files():
+        review_path = tmp_path / "review.json"
+        review_path.write_text(json.dumps(review), encoding="utf-8")
+        review_sha = hashlib.sha256(review_path.read_bytes()).hexdigest()
+        manifest["review_sha256"] = review_sha
+        manifest_path = tmp_path / "manifest.json"
+        manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+        return {
+            "manifest_path": manifest_path,
+            "manifest_sha256": hashlib.sha256(manifest_path.read_bytes()).hexdigest(),
+            "review_path": review_path,
+            "review_sha256": review_sha,
+            "apply": True,
+            "actor_email": "ingestion-owner@example.com",
+        }
+
+    try:
+        if outcome == "unknown_before_write":
+            backfill_cli._ingestion_intent(cid, uuid4(), purpose="navigation-repair", unknown=True)
+            expected_error = SystemExit
+        else:
+            monkeypatch.setattr(AsyncSession, "commit", lost_ack)
+            with pytest.raises(RuntimeError, match="acknowledgement lost"):
+                await backfill_cli.run_navigation_repair(cid, **pinned_files())
+            expected_error = AppError
+        original_intent = next(intent_dir.iterdir()).read_bytes()
+        manifest["operation_id"] = str(uuid4())
+        async with factory() as session:
+            before = await service.held_bundle_snapshot(session, redis, cid)
+            manifest["expected_snapshot"] = before
+        with pytest.raises(expected_error):
+            await backfill_cli.run_navigation_repair(cid, **pinned_files())
+        async with factory() as session:
+            assert (await service.held_bundle_snapshot(session, redis, cid))["state"] == before[
+                "state"
+            ]
+        assert commits == (1 if outcome == "lost_commit_ack" else 0)
+        assert next(intent_dir.iterdir()).read_bytes() == original_intent
+        assert len(list(intent_dir.iterdir())) == 1
+        assert await redis.lrange("rq:queue:news", 0, -1) == []
+    finally:
+        await redis.aclose()
+        await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_saves_five_native_actor_revisions_without_reopening_or_publishing(
+    monkeypatch,
+):
+    from app.guides.models import GuideArticleLocale, GuideArticleRevision
+    from app.models import AdminAuditLog, User
+    from app.news_automation import service
+    from app.news_automation.models import NewsAssessment, NewsPipelineRun
+    from app.news_automation.schemas import CandidateAction
+
+    engine, factory, redis, candidate_id, actor_id, manifest, review = await _held_ingestion_case()
+    async with factory() as session:
+        before = await service.held_bundle_snapshot(session, redis, candidate_id)
+        dry = await _call_held_ingestion(session, redis, candidate_id, manifest, review)
+        assert not dry["applied"] and not dry["committed"] and not session.new
+        actor = await session.get(User, actor_id)
+        result = await _call_held_ingestion(session, redis, candidate_id, manifest, review, actor)
+        assert result["saved_in_transaction"] and not result["committed"]
+        await session.commit()
+        after = await service.held_bundle_snapshot(session, redis, candidate_id)
+        original = before["state"]["candidate"]
+        updated = after["state"]["candidate"]
+        assert {
+            k: v for k, v in updated.items() if k not in {"guide_article_id", "updated_at"}
+        } == {k: v for k, v in original.items() if k not in {"guide_article_id", "updated_at"}}
+        assert len(after["state"]["assessments"]) == 2
+        assert all(item["hero"] is None for item in manifest["documents"].values())
+        locales = list(await session.scalars(select(GuideArticleLocale)))
+        revisions = list(await session.scalars(select(GuideArticleRevision)))
+        assert len(locales) == len(revisions) == 5
+        assert all(item.version == 1 and item.published_version is None for item in locales)
+        assert all(
+            item.created_by_user_id == actor_id and item.action == "created" for item in revisions
+        )
+        audits = list(await session.scalars(select(AdminAuditLog)))
+        assert len(audits) == 2 and all(item.actor_user_id == actor_id for item in audits)
+        saved_audit = next(item for item in audits if item.action == service.HELD_INGESTION_ACTION)
+        assert saved_audit.metadata_json["review_sha256"] == "b" * 64
+        assert list(await session.scalars(select(NewsPipelineRun))) == []
+        assert len(list(await session.scalars(select(NewsAssessment)))) == 2
+        row = await session.get(NewsCandidate, candidate_id)
+        assert await service._ingested_bundle_available(session, row)
+        with pytest.raises(AppError) as used:
+            await _call_held_ingestion(session, redis, candidate_id, manifest, review, actor)
+        assert used.value.code == "news_ingestion_operation_used"
+        assert len(list(await session.scalars(select(GuideArticleRevision)))) == 5
+        assert len(list(await session.scalars(select(AdminAuditLog)))) == 2
+        existing_guide_manifest = deepcopy(manifest)
+        existing_guide_manifest["operation_id"] = str(uuid4())
+        existing_guide_manifest["expected_snapshot"] = after
+        with pytest.raises(AppError) as existing:
+            await _call_held_ingestion(
+                session, redis, candidate_id, existing_guide_manifest, review, actor
+            )
+        assert existing.value.code == "news_ingestion_guide_exists"
+        # A whole-document change hidden by the policy fingerprint cannot grant reverify.
+        changed = deepcopy(locales[0].draft_json)
+        changed["sources"][0]["checked_on"] = "2026-01-01"
+        locales[0].draft_json = changed
+        await session.flush()
+        assert not await service._ingested_bundle_available(session, row)
+        await session.rollback()
+        actor = await session.get(User, actor_id)
+        monkeypatch.setattr(service, "candidate_detail", AsyncMock(return_value="readback"))
+        await service.reverify_candidate(
+            session, actor, candidate_id, CandidateAction(reason="Check the ingested drafts")
+        )
+        row = await session.get(NewsCandidate, candidate_id)
+        assert row.draft_bundle_json == manifest["documents"]
+        assert row.retry_count == 5 and row.status == "discovered"
+        assert row.error_code == "news_reverify_requested" and row.human_decision is None
+        assert row.published_at is None
+        assert len(list(await session.scalars(select(NewsAssessment)))) == 2
+        assert all(
+            item.published_version is None
+            for item in await session.scalars(select(GuideArticleLocale))
+        )
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("group", ["source", "evidence", "assessments", "candidate", "audits"])
+async def test_held_ingestion_rejects_complete_history_and_typed_source_drift(group):
+    from app.news_automation import service
+
+    engine, factory, redis, candidate_id, _actor, manifest, review = await _held_ingestion_case()
+    expected = manifest["expected_snapshot"]
+    if group == "source":
+        expected["state"][group][0]["config_json"] = {"trust": True}
+    elif group == "evidence":
+        expected["state"][group][0]["excerpt"] += " changed"
+    elif group == "candidate":
+        expected["state"][group]["retry_count"] = True
+    elif group == "audits":
+        expected["state"][group].append({"id": str(uuid4()), "action": "old"})
+    else:
+        expected["state"][group][0]["reasons_json"] = ["Changed original direction"]
+    expected["sha256"] = service.held_bundle_digest(expected["state"])
+    async with factory() as session:
+        with pytest.raises(AppError, match="完整歷史"):
+            await _call_held_ingestion(session, redis, candidate_id, manifest, review)
+        assert not session.new and not session.dirty
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "failure", ["partial", "review", "source", "policy", "slug", "running", "rq"]
+)
+async def test_held_ingestion_refuses_invalid_or_busy_input_without_a_save(failure):
+    from app.news_automation import service
+    from app.news_automation.models import NewsPipelineRun
+
+    engine, factory, redis, candidate_id, _actor, manifest, review = await _held_ingestion_case()
+    async with factory() as session:
+        if failure == "partial":
+            del manifest["documents"]["ko"]
+        elif failure == "review":
+            review["documents_sha256"]["en"] = "0" * 64
+        elif failure == "source":
+            manifest["documents"]["en"]["sources"][0]["url"] = "https://unreviewed.example/fact"
+        elif failure == "policy":
+            manifest["documents"]["en"]["blocks"] = [{"type": "paragraph", "text": "Only text"}]
+        elif failure == "slug":
+            manifest["slug"] = "../outside-20260922"
+        elif failure == "running":
+            session.add(
+                NewsPipelineRun(
+                    candidate_id=candidate_id,
+                    stage="verification-1",
+                    status="running",
+                    idempotency_key=str(uuid4()),
+                )
+            )
+            await session.commit()
+        else:
+            await redis.hset(f"rq:job:news-judge-{candidate_id}-4-hold", "status", "queued")
+        if failure in {"running", "rq"}:
+            manifest["expected_snapshot"] = await service.held_bundle_snapshot(
+                session, redis, candidate_id
+            )
+        with pytest.raises((AppError, ValueError)) as refused:
+            await _call_held_ingestion(session, redis, candidate_id, manifest, review)
+        if failure in {"running", "rq"}:
+            assert isinstance(refused.value, AppError)
+            assert refused.value.code == "news_ingestion_busy"
+        assert not session.new and not session.dirty
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_rolls_back_all_five_locales_on_fourth_revision_failure():
+    from sqlalchemy import event
+
+    from app.guides.models import (
+        GuideArticle,
+        GuideArticleLocale,
+        GuideArticleRevision,
+        GuideArticleTopic,
+    )
+    from app.models import AdminAuditLog, User
+    from app.news_automation.models import NewsAssessment
+
+    engine, factory, redis, candidate_id, actor_id, manifest, review = await _held_ingestion_case()
+    count = 0
+
+    def refuse_fourth(_mapper, _connection, _row):
+        nonlocal count
+        count += 1
+        if count == 4:
+            raise RuntimeError("Fourth revision failed")
+
+    event.listen(GuideArticleRevision, "before_insert", refuse_fourth)
+    try:
+        async with factory() as session:
+            actor = await session.get(User, actor_id)
+            with pytest.raises(RuntimeError, match="Fourth revision"):
+                await _call_held_ingestion(session, redis, candidate_id, manifest, review, actor)
+            await session.rollback()
+        async with factory() as session:
+            assert list(await session.scalars(select(GuideArticle))) == []
+            assert list(await session.scalars(select(GuideArticleLocale))) == []
+            assert list(await session.scalars(select(GuideArticleRevision))) == []
+            assert list(await session.scalars(select(GuideArticleTopic))) == []
+            assert list(await session.scalars(select(AdminAuditLog))) == []
+            assert len(list(await session.scalars(select(NewsAssessment)))) == 2
+            assert len(list(await session.scalars(select(NewsSource)))) == 1
+            assert (await session.get(NewsCandidate, candidate_id)).guide_article_id is None
+    finally:
+        event.remove(GuideArticleRevision, "before_insert", refuse_fourth)
+        await redis.aclose()
+        await engine.dispose()
+
+
+def test_held_ingestion_input_and_unknown_intent_are_not_replayed(tmp_path, monkeypatch):
+    import hashlib
+
+    from app.news_automation import backfill_cli
+
+    manifest = tmp_path / "manifest.json"
+    raw = b'{"schema":"one","schema":"two"}'
+    manifest.write_bytes(raw)
+    with pytest.raises(ValueError, match="Duplicate JSON key"):
+        backfill_cli._ingestion_json(manifest, hashlib.sha256(raw).hexdigest())
+    with pytest.raises(SystemExit, match="raw SHA"):
+        backfill_cli._ingestion_json(manifest, "0" * 64)
+    intent_dir = tmp_path / "intent"
+    intent_dir.mkdir(mode=0o700)
+    monkeypatch.setattr(backfill_cli, "INGESTION_INTENT_DIR", intent_dir)
+    candidate_id, operation_id = uuid4(), uuid4()
+    backfill_cli._ingestion_intent(candidate_id, operation_id, manifest_sha256="a" * 64)
+    saved = next(intent_dir.iterdir()).read_bytes()
+    with pytest.raises(SystemExit, match="do not retry"):
+        backfill_cli._ingestion_intent(candidate_id, operation_id, manifest_sha256="a" * 64)
+    with pytest.raises(SystemExit, match="do not retry"):
+        backfill_cli._ingestion_intent(candidate_id, uuid4(), manifest_sha256="a" * 64)
+    assert next(intent_dir.iterdir()).read_bytes() == saved
+    backfill_cli._ingestion_intent(uuid4(), uuid4(), manifest_sha256="a" * 64)
+    assert len(list(intent_dir.iterdir())) == 2
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_source_audit_only_changes_the_snapshot():
+    from app.models import AdminAuditLog
+    from app.news_automation import service
+
+    engine, factory, redis, cid, _actor, manifest, review = await _held_ingestion_case()
+    async with factory() as session:
+        candidate = await session.get(NewsCandidate, cid)
+        source_before = manifest["expected_snapshot"]["state"]["source"]
+        session.add(
+            AdminAuditLog(
+                action="news_source_validated",
+                target=f"news-source:{candidate.source_id}",
+                metadata_json={"same_configuration": True},
+            )
+        )
+        await session.commit()
+        current = await service.held_bundle_snapshot(session, redis, cid)
+        assert current["state"]["source"] == source_before
+        assert len(current["state"]["audits"]) == 1
+        with pytest.raises(AppError) as changed:
+            await _call_held_ingestion(session, redis, cid, manifest, review)
+        assert changed.value.code == "news_ingestion_state_changed"
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("clock", ["terminal", "unexplained", "future"])
+async def test_held_ingestion_processing_clock_requires_a_real_finished_run(clock):
+    from app.news_automation import service
+    from app.news_automation.models import NewsPipelineRun
+
+    engine, factory, redis, cid, _actor, manifest, review = await _held_ingestion_case()
+    async with factory() as session:
+        candidate = await session.get(NewsCandidate, cid)
+        started = datetime.now(UTC) - timedelta(minutes=5)
+        candidate.processing_started_at = (
+            datetime.now(UTC) + timedelta(minutes=5) if clock == "future" else started
+        )
+        if clock in {"terminal", "future"}:
+            session.add(
+                NewsPipelineRun(
+                    candidate_id=cid,
+                    stage="zh-draft",
+                    status="failed",
+                    started_at=started,
+                    finished_at=started + timedelta(minutes=1),
+                    idempotency_key=str(uuid4()),
+                )
+            )
+        await session.commit()
+        manifest["expected_snapshot"] = await service.held_bundle_snapshot(session, redis, cid)
+        if clock == "terminal":
+            result = await _call_held_ingestion(session, redis, cid, manifest, review)
+            assert not result["applied"] and candidate.processing_started_at is not None
+        else:
+            with pytest.raises(AppError) as busy:
+                await _call_held_ingestion(session, redis, cid, manifest, review)
+            assert busy.value.code == "news_ingestion_busy"
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.parametrize(
+    "extra",
+    [
+        ["--judge-holds"],
+        ["--judge-redrafts"],
+        ["--refetch-source", "one"],
+        ["--resume-saved-bundles"],
+        ["--jev-quota-holds"],
+        ["--ingest-held-bundle", "one.json"],
+        ["--apply"],
+        ["--actor-email", "one@example.com"],
+        ["--since", "2026-10-01"],
+        ["--review-sha256", "0" * 64],
+    ],
+)
+def test_held_ingestion_cli_rejects_mixed_capture_modes_before_opening_db(extra, monkeypatch):
+    import sys
+
+    from app.news_automation import backfill_cli
+
+    def forbidden(*_args, **_kwargs):
+        pytest.fail("Mixed arguments reached a database operation")
+
+    monkeypatch.setattr(backfill_cli, "run_held_ingestion", forbidden)
+    monkeypatch.setattr(backfill_cli, "run", forbidden)
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["backfill_cli", "--capture-ingestion-state", "--candidate-id", str(uuid4()), *extra],
+    )
+    with pytest.raises(SystemExit) as rejected:
+        backfill_cli.main()
+    assert rejected.value.code == 2
+
+
+def _held_cli_files(tmp_path, manifest, review):
+    import hashlib
+
+    review_path = tmp_path / "review.json"
+    review_path.write_text(json.dumps(review), encoding="utf-8")
+    review_sha = hashlib.sha256(review_path.read_bytes()).hexdigest()
+    manifest["review_sha256"] = review_sha
+    bundle_path = tmp_path / "bundle.json"
+    bundle_path.write_text(json.dumps(manifest), encoding="utf-8")
+    return {
+        "bundle_path": bundle_path,
+        "bundle_sha256": hashlib.sha256(bundle_path.read_bytes()).hexdigest(),
+        "review_path": review_path,
+        "review_sha256": review_sha,
+        "apply": True,
+        "actor_email": "ingestion-owner@example.com",
+    }
+
+
+@pytest.mark.parametrize(
+    "mode,flag",
+    [
+        ("capture", "--bundle-sha256"),
+        ("capture", "--review-sha256"),
+        ("capture", "--actor-email"),
+        ("backlog", "--bundle-sha256"),
+        ("backlog", "--review-sha256"),
+    ],
+)
+def test_held_ingestion_cli_explicit_empty_flags_cannot_switch_to_backlog(mode, flag, monkeypatch):
+    import sys
+
+    from app.news_automation import backfill_cli
+
+    def forbidden(*_args, **_kwargs):
+        pytest.fail("An explicit empty ingestion flag reached a database/dispatch operation")
+
+    monkeypatch.setattr(backfill_cli, "run_held_ingestion", forbidden)
+    monkeypatch.setattr(backfill_cli, "run", forbidden)
+    base = (
+        ["--capture-ingestion-state", "--candidate-id", str(uuid4())]
+        if mode == "capture"
+        else ["--since", "2026-10-01", "--apply", "--actor-email", "one@example.com"]
+    )
+    monkeypatch.setattr(sys, "argv", ["backfill_cli", *base, flag, ""])
+    with pytest.raises(SystemExit) as rejected:
+        backfill_cli.main()
+    assert rejected.value.code == 2
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_cli_unknown_intent_refuses_before_any_guide_write(
+    tmp_path, monkeypatch
+):
+    from app.guides.models import GuideArticleRevision
+    from app.models import AdminAuditLog
+    from app.news_automation import backfill_cli
+
+    engine, factory, redis, cid, _actor, manifest, review = await _held_ingestion_case()
+    args = _held_cli_files(tmp_path, manifest, review)
+    intent_dir = tmp_path / "intent"
+    intent_dir.mkdir(mode=0o700)
+    monkeypatch.setattr(backfill_cli, "INGESTION_INTENT_DIR", intent_dir)
+    monkeypatch.setattr(backfill_cli, "SessionFactory", factory)
+    monkeypatch.setattr(backfill_cli, "get_redis", lambda: redis)
+    monkeypatch.setattr(backfill_cli, "engine", SimpleNamespace(dispose=AsyncMock()))
+    backfill_cli._ingestion_intent(cid, UUID(manifest["operation_id"]), unknown=True)
+    original = next(intent_dir.iterdir()).read_bytes()
+    with pytest.raises(SystemExit, match="do not retry"):
+        await backfill_cli.run_held_ingestion(cid, **args)
+    manifest["operation_id"] = str(uuid4())
+    args = _held_cli_files(tmp_path, manifest, review)
+    with pytest.raises(SystemExit, match="do not retry"):
+        await backfill_cli.run_held_ingestion(cid, **args)
+    async with factory() as session:
+        assert (await session.get(NewsCandidate, cid)).guide_article_id is None
+        assert list(await session.scalars(select(GuideArticleRevision))) == []
+        assert list(await session.scalars(select(AdminAuditLog))) == []
+    assert next(intent_dir.iterdir()).read_bytes() == original
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_cli_lost_commit_ack_keeps_intent_and_refuses_replay(
+    tmp_path, monkeypatch
+):
+    from sqlalchemy.ext.asyncio import AsyncSession
+
+    from app.guides.models import GuideArticleRevision
+    from app.models import AdminAuditLog
+    from app.news_automation import backfill_cli
+
+    engine, factory, redis, cid, _actor, manifest, review = await _held_ingestion_case()
+    args = _held_cli_files(tmp_path, manifest, review)
+    intent_dir = tmp_path / "intent"
+    intent_dir.mkdir(mode=0o700)
+    monkeypatch.setattr(backfill_cli, "INGESTION_INTENT_DIR", intent_dir)
+    monkeypatch.setattr(backfill_cli, "SessionFactory", factory)
+    monkeypatch.setattr(backfill_cli, "get_redis", lambda: redis)
+    monkeypatch.setattr(backfill_cli, "engine", SimpleNamespace(dispose=AsyncMock()))
+    original_commit = AsyncSession.commit
+    commits = 0
+
+    async def lost_ack(session):
+        nonlocal commits
+        commits += 1
+        assert len(list(intent_dir.iterdir())) == 1
+        await original_commit(session)
+        raise RuntimeError("Commit acknowledgement lost")
+
+    monkeypatch.setattr(AsyncSession, "commit", lost_ack)
+    with pytest.raises(RuntimeError, match="acknowledgement lost"):
+        await backfill_cli.run_held_ingestion(cid, **args)
+    with pytest.raises(AppError) as used:
+        await backfill_cli.run_held_ingestion(cid, **args)
+    assert used.value.code == "news_ingestion_operation_used" and commits == 1
+    async with factory() as session:
+        assert len(list(await session.scalars(select(GuideArticleRevision)))) == 5
+        assert len(list(await session.scalars(select(AdminAuditLog)))) == 2
+        assert (await session.get(NewsCandidate, cid)).status == "needs_redraft"
+    assert len(list(intent_dir.iterdir())) == 1
+    assert await redis.lrange("rq:queue:news", 0, -1) == []
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("failure", ["array", "schema", "review", "partial"])
+async def test_held_ingestion_cli_invalid_bundle_has_no_intent_or_mutation(
+    failure,
+    tmp_path,
+    monkeypatch,
+):
+    import hashlib
+
+    from app.models import AdminAuditLog
+    from app.news_automation import backfill_cli
+
+    engine, factory, redis, cid, _actor, manifest, review = await _held_ingestion_case()
+    if failure == "schema":
+        manifest["schema"] = "publication-approval"
+    elif failure == "review":
+        review["documents_sha256"]["en"] = "0" * 64
+    elif failure == "partial":
+        del manifest["documents"]["en"]
+    args = _held_cli_files(tmp_path, manifest, review)
+    if failure == "array":
+        args["bundle_path"].write_bytes(b"[]")
+        args["bundle_sha256"] = hashlib.sha256(b"[]").hexdigest()
+    intent_dir = tmp_path / "intent"
+    intent_dir.mkdir(mode=0o700)
+    monkeypatch.setattr(backfill_cli, "INGESTION_INTENT_DIR", intent_dir)
+    monkeypatch.setattr(backfill_cli, "SessionFactory", factory)
+    monkeypatch.setattr(backfill_cli, "get_redis", lambda: redis)
+    monkeypatch.setattr(backfill_cli, "engine", SimpleNamespace(dispose=AsyncMock()))
+    with pytest.raises((SystemExit, AppError)):
+        await backfill_cli.run_held_ingestion(cid, **args)
+    assert list(intent_dir.iterdir()) == []
+    async with factory() as session:
+        assert (await session.get(NewsCandidate, cid)).guide_article_id is None
+        assert list(await session.scalars(select(AdminAuditLog))) == []
+    assert await redis.lrange("rq:queue:news", 0, -1) == []
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "status,marker",
+    [
+        ("failed", "news_processing_stale"),
+        ("discovered", None),
+        ("discovered", "news_judge_redraft"),
+        ("discovered", "news_resume_saved_bundle"),
+        ("discovered", "news_reverify_requested"),
+    ],
+)
+async def test_held_ingestion_pending_fence_skips_late_worker_even_after_final_rq_read(
+    status,
+    marker,
+    monkeypatch,
+):
+    from app.models import User
+    from app.news_automation import pipeline, service
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _held_ingestion_case()
+    actual_live_jobs = service._held_live_jobs
+    calls = 0
+
+    async def late_enqueue(client, candidate_id):
+        nonlocal calls
+        result = await actual_live_jobs(client, candidate_id)
+        calls += 1
+        if calls == 2:
+            # A sweep already selected this CID before the ingestion's row lock.
+            await client.hset(f"rq:job:news-candidate-{candidate_id}-4", "status", "queued")
+        return result
+
+    async with factory() as session:
+        row = await session.get(NewsCandidate, cid)
+        row.status, row.error_code = "failed", "news_processing_stale"
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        await session.commit()
+        manifest["expected_snapshot"] = await service.held_bundle_snapshot(session, redis, cid)
+        monkeypatch.setattr(service, "_held_live_jobs", late_enqueue)
+        await _call_held_ingestion(
+            session, redis, cid, manifest, review, await session.get(User, actor_id)
+        )
+        await session.commit()
+        assert calls == 2
+        # A late judge can change the original hold after the ingestion commits.
+        row.status, row.error_code = status, marker
+        await session.commit()
+        before = await service.held_bundle_snapshot(session, redis, cid)
+        outcome, settings = await pipeline._claim_capacity(session, row)
+        assert (outcome, settings) == ("skipped", None)
+        after = await service.held_bundle_snapshot(session, redis, cid)
+        assert after["state"] == before["state"]
+        assert len(after["state"]["locales"]) == 5
+        assert len(after["state"]["assessments"]) == 2
+        assert after["state"]["candidate"]["draft_bundle_json"] == {
+            "zh-TW": {"old": "cached"},
+            "ja": {"old": "cached"},
+        }
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_native_reverify_hands_off_then_keeps_owner_retry_compatible(
+    monkeypatch,
+):
+    from app.models import User
+    from app.news_automation import pipeline, service
+    from app.news_automation.schemas import CandidateAction
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _held_ingestion_case()
+    async with factory() as session:
+        actor = await session.get(User, actor_id)
+        await _call_held_ingestion(session, redis, cid, manifest, review, actor)
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        await session.commit()
+        row = await session.get(NewsCandidate, cid)
+        assert await service._held_ingestion_pending(session, row)
+        monkeypatch.setattr(service, "candidate_detail", AsyncMock(return_value="readback"))
+        await service.reverify_candidate(session, actor, cid, CandidateAction(reason="Reverify"))
+        assert not await service._held_ingestion_pending(session, row)
+        assert row.draft_bundle_json == manifest["documents"] and row.retry_count == 5
+        outcome, _settings = await pipeline._claim_capacity(session, row)
+        assert outcome == "claimed" and row.error_code == pipeline.REVERIFY_MARKER
+        # Once handed to the real pipeline, its later hold can use the original owner retry.
+        row.status = "failed"
+        row.error_code = "news_verification_failed"
+        await session.commit()
+        actor = await session.get(User, actor_id)
+        await service.retry_candidate(session, actor, cid, CandidateAction(reason="Retry"))
+        assert row.retry_count == 6 and row.error_code is None
+        outcome, _settings = await pipeline._claim_capacity(session, row)
+        assert outcome == "claimed"
+    await redis.aclose()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("failure", ["actor", "article", "audit", "retry_type", "retry_old"])
+async def test_held_ingestion_unbound_handoff_audit_cannot_end_pending_fence(failure):
+    from app.models import AdminAuditLog, User
+    from app.news_automation import service
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _held_ingestion_case()
+    async with factory() as session:
+        await _call_held_ingestion(
+            session, redis, cid, manifest, review, await session.get(User, actor_id)
+        )
+        await session.commit()
+        row = await session.get(NewsCandidate, cid)
+        saved = await service._held_ingestion_audit(session, row)
+        metadata = {
+            "system_actor": False,
+            "held_ingestion_audit_id": str(saved.id),
+            "article_id": str(row.guide_article_id),
+            "retry_count": 5,
+        }
+        row.retry_count = 5
+        if failure == "article":
+            metadata["article_id"] = str(uuid4())
+        elif failure == "audit":
+            metadata["held_ingestion_audit_id"] = str(uuid4())
+        elif failure == "retry_type":
+            metadata["retry_count"] = True
+        elif failure == "retry_old":
+            metadata["retry_count"] = 4
+        session.add(
+            AdminAuditLog(
+                actor_user_id=None if failure == "actor" else actor_id,
+                target=f"news-candidate:{cid}",
+                action="news_candidate_reverify_requested",
+                metadata_json=metadata,
+            )
+        )
+        await session.commit()
+        assert await service._held_ingestion_pending(session, row)
+    await redis.aclose()
+    await engine.dispose()
+
+
+async def _held_ingestion_edit_en(factory, cid, actor_id, documents, monkeypatch):
+    from app.guides import admin_service
+    from app.guides.schemas import DraftWrite
+    from app.models import User
+
+    monkeypatch.setattr(admin_service, "article_detail", AsyncMock(return_value="readback"))
+    changed = deepcopy(documents["en"])
+    changed["title"] = "An editor changed this whole draft"
+    async with factory() as writer:
+        row = await writer.get(NewsCandidate, cid)
+        await admin_service.save_draft(
+            writer,
+            await writer.get(User, actor_id),
+            row.guide_article_id,
+            "en",
+            DraftWrite(expected_version=1, document=GuideDocument.model_validate(changed)),
+        )
+    return changed
+
+
+async def _held_ingestion_assert_committed_editor_drift(database_pair, monkeypatch):
+    from app.guides.models import GuideArticleLocale
+    from app.models import User
+    from app.news_automation import service
+    from app.news_automation.schemas import CandidateAction
+
+    engine, factory, redis, cid, actor_id, manifest, review = await _held_ingestion_case(
+        database_pair
+    )
+    try:
+        async with factory() as reader:
+            await _call_held_ingestion(
+                reader, redis, cid, manifest, review, await reader.get(User, actor_id)
+            )
+            await reader.commit()
+            row = await reader.get(NewsCandidate, cid)
+            retained = list(await reader.scalars(select(GuideArticleLocale)))
+            assert all(item.version == 1 for item in retained)
+            await _held_ingestion_edit_en(
+                factory, cid, actor_id, manifest["documents"], monkeypatch
+            )
+            assert not await service._ingested_bundle_available(reader, row)
+            assert next(item for item in retained if item.locale == "en").version == 2
+            with pytest.raises(AppError) as refused:
+                await service.reverify_candidate(
+                    reader, await reader.get(User, actor_id), cid, CandidateAction(reason="Verify")
+                )
+            assert refused.value.code == "news_candidate_not_retryable"
+            assert row.retry_count == 4 and row.status == "needs_redraft"
+            await reader.rollback()
+        assert await redis.lrange("rq:queue:news", 0, -1) == []
+    finally:
+        await redis.aclose()
+        if database_pair is None:
+            await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_refreshes_retained_locales_after_committed_editor_drift(monkeypatch):
+    await _held_ingestion_assert_committed_editor_drift(None, monkeypatch)
+
+
+@pytest.fixture
+async def held_ingestion_postgres() -> AsyncIterator[
+    tuple[AsyncEngine, async_sessionmaker[AsyncSession]]
+]:
+    """Real two-connection locking, strictly in an isolated local integration schema."""
+    from app.models import AdminRoleAssignment
+    from tests.test_news_pipeline import NEWS_TABLES
+
+    if os.getenv("RUN_INTEGRATION_TESTS") != "1":
+        pytest.skip("requires isolated PostgreSQL integration services")
+    url = get_settings().database_url
+    assert make_url(url).host in {"localhost", "127.0.0.1", "::1", "postgres", "db"}
+    assert make_url(url).get_backend_name() == "postgresql"
+    schema = f"held_ingestion_test_{uuid4().hex}"
+    engine = create_async_engine(
+        url, poolclass=NullPool, execution_options={"schema_translate_map": {None: schema}}
+    )
+    tables = [cast(Table, model.__table__) for model in (*NEWS_TABLES, AdminRoleAssignment)]
+    try:
+        async with engine.begin() as connection:
+            await connection.execute(sql_text(f'CREATE SCHEMA "{schema}"'))
+            await connection.run_sync(lambda sync: Base.metadata.create_all(sync, tables=tables))
+        yield engine, async_sessionmaker(engine, expire_on_commit=False)
+    finally:
+        async with engine.begin() as connection:
+            await connection.execute(sql_text(f'DROP SCHEMA IF EXISTS "{schema}" CASCADE'))
+        await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_postgres_candidate_nowait_conflict_has_no_partial_save(
+    held_ingestion_postgres,
+):
+    from app.guides.models import GuideArticleRevision
+    from app.models import AdminAuditLog, User
+
+    _engine, factory, redis, cid, actor_id, manifest, review = await _held_ingestion_case(
+        held_ingestion_postgres
+    )
+    try:
+        async with factory() as blocker, factory() as contender:
+            await blocker.scalar(
+                select(NewsCandidate).where(NewsCandidate.id == cid).with_for_update()
+            )
+            with pytest.raises(DBAPIError) as conflict:
+                await _call_held_ingestion(
+                    contender, redis, cid, manifest, review, await contender.get(User, actor_id)
+                )
+            assert conflict.value.orig.sqlstate == "55P03"
+            await contender.rollback()
+            assert list(await contender.scalars(select(GuideArticleRevision))) == []
+            assert list(await contender.scalars(select(AdminAuditLog))) == []
+            assert (await contender.get(NewsCandidate, cid)).guide_article_id is None
+            await blocker.rollback()
+    finally:
+        await redis.aclose()
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_postgres_reverify_locks_block_native_editor_until_commit(
+    held_ingestion_postgres,
+    monkeypatch,
+):
+    from app.guides import admin_service
+    from app.guides.models import GuideArticleLocale
+    from app.guides.schemas import DraftWrite
+    from app.models import User
+    from app.news_automation import service
+
+    _engine, factory, redis, cid, actor_id, manifest, review = await _held_ingestion_case(
+        held_ingestion_postgres
+    )
+    try:
+        async with factory() as reader:
+            await _call_held_ingestion(
+                reader, redis, cid, manifest, review, await reader.get(User, actor_id)
+            )
+            await reader.commit()
+            row = await reader.get(NewsCandidate, cid, with_for_update=True, populate_existing=True)
+            assert await service._ingested_bundle_available(reader, row)
+            async with factory() as writer:
+                await writer.execute(sql_text("SET LOCAL lock_timeout = '100ms'"))
+                with pytest.raises(DBAPIError) as blocked:
+                    await admin_service.save_draft(
+                        writer,
+                        await writer.get(User, actor_id),
+                        row.guide_article_id,
+                        "en",
+                        DraftWrite(
+                            expected_version=1,
+                            document=GuideDocument.model_validate(manifest["documents"]["en"]),
+                        ),
+                    )
+                assert blocked.value.orig.sqlstate == "55P03"
+                await writer.rollback()
+            await service._queue_reverify(reader, row, "Use the locked five drafts")
+            await reader.commit()
+            assert row.draft_bundle_json == manifest["documents"]
+            assert all(
+                item.version == 1 for item in await reader.scalars(select(GuideArticleLocale))
+            )
+        # Native editing can commit normally after the reader's transaction releases its locks.
+        await _held_ingestion_edit_en(factory, cid, actor_id, manifest["documents"], monkeypatch)
+        async with factory() as check:
+            en = await check.scalar(
+                select(GuideArticleLocale).where(GuideArticleLocale.locale == "en")
+            )
+            assert en.version == 2
+    finally:
+        await redis.aclose()
+
+
+@pytest.mark.asyncio
+async def test_held_ingestion_postgres_committed_version_drift_invalidates_retained_orm(
+    held_ingestion_postgres,
+    monkeypatch,
+):
+    await _held_ingestion_assert_committed_editor_drift(held_ingestion_postgres, monkeypatch)

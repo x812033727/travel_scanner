@@ -30,6 +30,24 @@ test("unknown fields are errors, so a typo cannot pass as an ignored field", () 
   assert.deepEqual(paths(validateVideo(doc)), [".titel", "scenes[0].lines[0] (k7p2).txt"]);
 });
 
+test("the loops table names two lines of the script, the payoff after the setup, and one phrase of what it holds back", () => {
+  const doc = fixture();
+  doc.loops = [{ setup: "k7p2", payoff: "r8wd", what: "三個問題到底是哪三個" }];
+  assert.deepEqual(validateVideo(doc), []);
+  doc.loops = [{ setup: "k7p2", payoff: "r8wd", what: "x", why: "x" }];
+  assert.deepEqual(paths(validateVideo(doc)), ["loops[0].why"]);
+  doc.loops = [{ setup: "k7p2", payoff: "zzzz", what: "x" }];
+  assert.match(validateVideo(doc)[0].message, /no line "zzzz" in the script/);
+  doc.loops = [{ setup: "r8wd", payoff: "k7p2", what: "x" }];
+  assert.match(validateVideo(doc)[0].message, /is not after the setup/);
+  doc.loops = [{ setup: "k7p2", payoff: "r8wd", what: "長".repeat(41) }];
+  assert.match(validateVideo(doc)[0].message, /41 characters; at most 40/);
+  doc.loops = [{ setup: "k7p2", payoff: "k7p2", what: "x" }];
+  assert.match(validateVideo(doc)[0].message, /is not after the setup/);
+  doc.loops = {};
+  assert.deepEqual(paths(validateVideo(doc)), ["loops"]);
+});
+
 test("future Chinese-first localization retains source-bound media and cannot disable its promise", () => {
   const doc = fixture();
   doc.localization_plan = localizationPlan({

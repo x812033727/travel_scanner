@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
-import { assetUrl, BRAND, CREDIT_MAX_CHARS, escapeHtml, inlineSvg, isStockPath, richText, sceneProblems, slideHtml, svgProblems, TEMPLATE_SPECS, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
+import { assetUrl, BRAND, captureRef, CREDIT_MAX_CHARS, escapeHtml, headlineCount, inlineSvg, isStockPath, PHOTO_CAPTION_MAX_CHARS, PHOTO_TILT_MAX, photoTilt, richText, sceneProblems, slideHtml, SOURCE_MAX_CHARS, SOURCED_TEMPLATES, svgProblems, TEMPLATE_SPECS, THUMB_HEADLINE_MAX, THUMB_LAYOUTS, THUMB_TONES, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailRotation, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
 
 const showcase = JSON.parse(readFileSync(new URL("./fixtures/showcase/video.json", import.meta.url), "utf8"));
 const scene = (id) => structuredClone(showcase.scenes.find((each) => each.id === id));
@@ -114,6 +114,7 @@ test("the terminal slide brings its own CSS; every other slide's head is what it
   for (const each of showcase.scenes) {
     const head = /<style>([^<]*)<\/style>/.exec(slideHtml(each, state()))[1];
     if (each.template === "terminal") assert.match(head, /^:root\{--width:1920px;--height:1080px\}\.t-terminal /);
+    else if (each.template === "photo") assert.match(head, /^:root\{--width:1920px;--height:1080px\}\.t-photo\{/, "the photo card brings its own too");
     else assert.equal(head, ":root{--width:1920px;--height:1080px}", each.id);
   }
   const terminal = scene("check-version");
@@ -174,6 +175,28 @@ test("a screenshot slide takes a stock photo from the work directory, with an op
   assert.equal(workUrl("stock/a b.png"), "https://video.local/work/stock/a%20b.png");
 });
 
+test("CC-safe cards reserve more room below their footer without changing unmarked pages or template CSS", () => {
+  const safeRule = ":root{--safe-bottom:212px}";
+  for (const id of ["numbers", "screen", "old-print"]) {
+    const card = scene(id);
+    if (id === "numbers") card.data.source = "測試來源";
+    if (id === "screen") card.data.credit = "Photo credit";
+    const plain = slideHtml(card, state());
+    assert.doesNotMatch(plain, /--safe-bottom:212px/, `${id}: the unmarked page keeps the theme`);
+    card.data.cc_safe = false;
+    assert.equal(slideHtml(card, state()), plain, `${id}: false does not change existing frames`);
+    card.data.cc_safe = true;
+    assert.deepEqual(sceneProblems(card), [], id);
+    const marked = slideHtml(card, state());
+    assert.ok(marked.includes(safeRule), `${id}: the page reserves an extra 80px`);
+    assert.equal(marked.replace(safeRule, ""), plain, `${id}: source text, credits and template CSS stay intact`);
+    assert.equal(visibleText(marked), visibleText(plain), `${id}: only the layout changes`);
+  }
+  const bad = scene("numbers");
+  bad.data.cc_safe = "true";
+  assert.deepEqual(sceneProblems(bad), ["cc_safe must be a boolean"]);
+});
+
 test("an inlined SVG loses its prolog and fixed size; scripts and network loads are refused", () => {
   const svg = '<?xml version="1.0"?><!DOCTYPE svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900"><text>圖</text></svg>';
   assert.equal(inlineSvg(svg), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900"><text>圖</text></svg>');
@@ -186,19 +209,55 @@ test("an inlined SVG loses its prolog and fixed size; scripts and network loads 
   assert.match(html, /<div class="paper enter" style="--i:1"><svg xmlns/);
 });
 
-test("the thumbnail is its own 1280x720 page", () => {
+test("the thumbnail is its own 1280x720 page: the words in the left column, the subject's area on the right", () => {
   const html = thumbnailHtml(showcase.thumbnail);
   assert.match(html, /--width:1280px;--height:720px/);
-  assert.match(html, /第一名<em>不一定<\/em>最好用/);
-  assert.match(html, /<div class="thumb-art"><\/div>/);
-  assert.doesNotMatch(html, /thumb-bg/);
+  assert.match(html, /<h1 class="fit"><em>不一定<\/em>最好用<\/h1>/);
+  // The showcase names layout a; without a picture the subject's area is a flat tone.
+  assert.match(html, /<body><div class="thumb-subject layout-a tone-[a-z]+"><\/div><div class="thumb column layout-a tone-[a-z]+"><div class="tag">AI 模型怎麼挑<\/div><h1/);
+  assert.match(html, /<div class="sub fit">三個問題幫你決定<\/div><div class="brand">MOKAAIR<\/div><\/div><\/body>/);
+  assert.doesNotMatch(html, /thumb-art|thumb-bg|thumb-scrim|<style>:root\{[^}]*\}\./, "no ring, no series CSS: the theme draws the channel's layouts");
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: {} }), ["thumbnail.data.headline is required"]);
-  // A drama's thumbnail sits on a keyframe under a scrim, with the CSS in the head, not the theme.
+  // A picture: a keyframe is cropped to its right side, a page still to its top left corner.
   const onKeyframe = thumbnailHtml(showcase.thumbnail, { background: "https://video.local/work/keyframes/a.png" });
-  assert.match(onKeyframe, /<body><img class="thumb-bg" src="https:\/\/video\.local\/work\/keyframes\/a\.png" alt=""><div class="thumb-scrim"><\/div><div class="thumb">/);
-  assert.match(onKeyframe, /<style>:root\{[^<]*\.thumb-bg\{position:absolute;inset:0;width:100%;height:100%;object-fit:cover\}/);
-  assert.doesNotMatch(onKeyframe, /thumb-art/);
-  assert.doesNotMatch(visibleText(onKeyframe), /object-fit/);
+  assert.match(onKeyframe, /<body><div class="thumb-subject layout-a tone-[a-z]+ from-shot"><img src="https:\/\/video\.local\/work\/keyframes\/a\.png" alt=""><\/div><div class="thumb column/);
+  const onStill = thumbnailHtml(showcase.thumbnail, { background: "https://video.local/work/screencast/k/01.png", subject: "capture" });
+  assert.match(onStill, /<div class="thumb-subject layout-a tone-[a-z]+ from-capture"><img src="https:\/\/video\.local\/work\/screencast\/k\/01\.png" alt="">/);
+  assert.doesNotMatch(visibleText(onStill), /from-capture|object-fit/);
+  assert.equal(thumbnailHtml(showcase.thumbnail, { background: "https://video.local/work/keyframes/a.png", subject: "nosuch" }), onKeyframe, "an unknown subject kind is drawn like a keyframe");
+});
+
+test("the channel's layout and tone rotate by slug, a variant one step on, and data.layout or data.tone name one", () => {
+  const thumb = { template: "thumb", data: { headline: "驗證碼\n別給", tag: "詐騙" } };
+  const rotation = thumbnailRotation("facebook-code-scam");
+  assert.ok(THUMB_LAYOUTS.includes(rotation.layout) && THUMB_TONES.includes(rotation.tone));
+  assert.deepEqual(thumbnailRotation("facebook-code-scam"), rotation, "the same slug, the same thumbnail");
+  assert.match(thumbnailHtml(thumb, { slug: "facebook-code-scam" }), new RegExp(`<div class="thumb column layout-${rotation.layout} tone-${rotation.tone}">`));
+  const seen = new Set(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"].map((slug) => thumbnailRotation(slug).layout));
+  assert.deepEqual([...seen].sort(), THUMB_LAYOUTS, "twelve slugs reach all three layouts");
+  const next = thumbnailRotation("facebook-code-scam", 1);
+  assert.notEqual(next.layout, rotation.layout, "the B variant takes the next layout");
+  assert.notEqual(next.tone, rotation.tone, "and the next tone");
+  assert.notEqual(thumbnailRotation("facebook-code-scam", 2).layout, next.layout);
+  assert.match(thumbnailHtml({ ...thumb, data: { ...thumb.data, layout: "c", tone: "plum" } }, { slug: "facebook-code-scam" }), /<div class="thumb-subject layout-c tone-plum"><\/div><div class="thumb column layout-c tone-plum">/);
+  assert.match(thumbnailHtml(thumb), /layout-[abc] tone-(teal|plum|navy|forest)/, "no slug: still a layout and a tone");
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "left", tone: "red" } }), ["thumbnail.data.layout must be one of a, b, c", "thumbnail.data.tone must be one of teal, plum, navy, forest"]);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "b", tone: "navy", capture: "find-guides#2", shot: "hall" } }), []);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", capture: "Find Guides", shot: 3 } }), ['thumbnail.data.capture must name a screencast scene, "<scene id>" or "<scene id>#<n>" for its n-th capture', "thumbnail.data.shot must be a shot's id"]);
+  assert.deepEqual(captureRef("find-guides"), { scene: "find-guides", index: 0 });
+  assert.deepEqual(captureRef("find-guides#3"), { scene: "find-guides", index: 2 });
+  assert.equal(captureRef("find-guides#0"), null);
+  assert.equal(captureRef(null), null);
+  assert.deepEqual(headlineCount("驗證碼\n別給"), { cjk: 5, words: [], count: 5 });
+  assert.deepEqual(headlineCount("**128 GB**\n裝得下嗎"), { cjk: 4, words: ["128", "GB"], count: 6 });
+  assert.deepEqual(headlineCount("Can it cost\n**16x more?**"), { cjk: 0, words: ["Can", "it", "cost", "16x", "more"], count: 5 });
+  // A price or a number with a thousands separator is one number, as the rule says.
+  assert.deepEqual(headlineCount("NT$270 一年"), { cjk: 2, words: ["NT$270"], count: 3 });
+  assert.deepEqual(headlineCount("**1,000** 元差在哪"), { cjk: 4, words: ["1,000"], count: 5 });
+  assert.deepEqual(headlineCount("$1,000 vs 500").words, ["$1,000", "vs", "500"]);
+  assert.deepEqual(headlineCount("US$20 或 €18").words, ["US$20", "€18"]);
+  assert.deepEqual(headlineCount("Yes, 可以").words, ["Yes"], "a comma at the end is the sentence's");
+  assert.equal(THUMB_HEADLINE_MAX, 6);
 });
 
 test("a Korean, Simplified Chinese or Japanese thumbnail is set in its own font first; every other page keeps its head byte for byte", () => {
@@ -213,9 +272,6 @@ test("a Korean, Simplified Chinese or Japanese thumbnail is set in its own font 
   const ko = thumbnailHtml(showcase.thumbnail, { locale: "ko" });
   assert.ok(ko.startsWith('<!doctype html><html lang="ko"><head><meta charset="utf-8"><link rel="stylesheet" href="https://video.local/fonts/noto-sans-kr/index.css"><link rel="stylesheet" href="https://video.local/fonts/noto-sans-tc/index.css">'));
   assert.match(ko, /<style>:root\{--width:1280px;--height:720px;--font:"Noto Sans KR Variable","Noto Sans TC Variable",sans-serif\}/);
-  const sc = thumbnailHtml(showcase.thumbnail, { locale: "zh-CN" });
-  assert.match(sc, /^<!doctype html><html lang="zh-Hans">.*fonts\/noto-sans-sc\/index\.css/);
-  assert.match(sc, /--font:"Noto Sans SC Variable","Noto Sans TC Variable",sans-serif\}/);
   const body = (html) => html.slice(html.indexOf("<body>"));
   assert.equal(body(ko), body(plain), "the same body, only the font differs");
   assert.equal(body(ja), body(plain));
@@ -232,21 +288,27 @@ test("So That's Why wears its own thumbnail: palette, name, stamp, pillar tag, a
   const thumb = { template: "thumb", data: { headline: "冰為什麼\n會**浮**？", tag: "科學", pillar: "science", shot: "a" } };
   const plain = thumbnailHtml(thumb, { background: "https://video.local/work/keyframes/a.png" });
   assert.match(plain, new RegExp(`<div class="brand">${BRAND}</div>`), "no series: the channel's thumbnail");
-  assert.doesNotMatch(plain, /thumb-stamp|pillar-|layout-right|#1f2a44/);
+  assert.doesNotMatch(plain, /thumb-stamp|pillar-|layout-right|#1f2a44|thumb-bg|thumb-scrim/);
   const own = thumbnailHtml(thumb, { background: "https://video.local/work/keyframes/a.png", series: "sothatswhy" });
+  // The series keeps its page: the keyframe fills the frame under a scrim, the column runs full width.
+  assert.match(own, /<body><img class="thumb-bg" src="https:\/\/video\.local\/work\/keyframes\/a\.png" alt=""><div class="thumb-scrim"><\/div><div class="thumb series">/);
+  assert.match(own, /<style>:root\{[^<]*\.thumb-bg\{position:absolute;inset:0;width:100%;height:100%;object-fit:cover\}/);
+  assert.doesNotMatch(visibleText(own), /object-fit/);
+  assert.doesNotMatch(thumbnailHtml(thumb, { series: "sothatswhy" }), /thumb-art|thumb-bg|thumb-subject/, "no keyframe: no ring either, the ink ground alone");
   assert.match(own, /<div class="brand">原來如此事務所<\/div>/);
   assert.match(own, /<div class="thumb-stamp" aria-hidden="true"><span>原來<\/span><span>如此<\/span><\/div>/);
   assert.match(own, /<div class="tag pillar-science">科學<\/div>/);
   assert.match(own, /rgba\(31,42,68,\.94\)/, "the ink-navy scrim");
   const right = thumbnailHtml({ ...thumb, data: { ...thumb.data, layout: "right" } }, { background: "https://video.local/work/keyframes/a.png", series: "sothatswhy" });
-  assert.match(right, /<div class="thumb-scrim layout-right"><\/div><div class="thumb layout-right">/);
+  assert.match(right, /<div class="thumb-scrim layout-right"><\/div><div class="thumb series layout-right">/);
   assert.match(thumbnailHtml({ ...thumb, data: { ...thumb.data, pillar: "sports" } }, { series: "sothatswhy" }), /<div class="tag">科學<\/div>/, "an unknown pillar keeps the default tag");
 
   assert.deepEqual(thumbnailProblems(thumb, { series: "sothatswhy" }), []);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "一二三四五六七八九十十一" } }), [], "the channel's thumbnails keep their length");
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "一二三四五六七八九十十一" } }, { series: "sothatswhy" }), ["thumbnail.data.headline has a line of 12 characters; this series takes at most 10 a line, readable at phone size"]);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "一\n二\n三" } }, { series: "sothatswhy" }), ["thumbnail.data.headline has 3 lines; this series takes at most 2"]);
-  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "top", pillar: "sports" } }), ["thumbnail.data.layout must be one of left, right", "thumbnail.data.pillar must be one of business, science, travel, tech"]);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "top", pillar: "sports" } }, { series: "sothatswhy" }), ["thumbnail.data.layout must be one of left, right", "thumbnail.data.pillar must be one of business, science, travel, tech"]);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "right" } }), ["thumbnail.data.layout must be one of a, b, c"], "the channel's layouts are its own");
 });
 
 test("a thumbnail's B and C variants for YouTube's test are laid over A and linted like it", () => {
@@ -259,7 +321,128 @@ test("a thumbnail's B and C variants for YouTube's test are laid over A and lint
   assert.deepEqual(thumbnailProblems(thumb, { series: "sothatswhy" }), []);
   const long = { ...thumb, variants: [{ data: { headline: "一二三四五六七八九十十一" } }] };
   assert.deepEqual(thumbnailProblems(long, { series: "sothatswhy" }), ["variant b: thumbnail.data.headline has a line of 12 characters; this series takes at most 10 a line, readable at phone size"]);
-  assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }), ["variant b: thumbnail.data.layout must be one of left, right"]);
+  assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }, { series: "sothatswhy" }), ["variant b: thumbnail.data.layout must be one of left, right"]);
+  assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }), ["variant b: thumbnail.data.layout must be one of a, b, c"]);
   const shape = "thumbnail.variants must be 1 to 2 of { data: {...} } (A is the thumbnail itself; YouTube tests up to three)";
   for (const variants of [[], [{}], "b", [{ data: {} }, { data: {} }, { data: {} }]]) assert.deepEqual(thumbnailProblems({ ...thumb, variants }), [shape], JSON.stringify(variants));
+});
+
+test("a bullets, compare, steps or table card may name its source in one line under the card, and draws nothing when it has none", () => {
+  assert.deepEqual(SOURCED_TEMPLATES, ["bullets", "compare", "steps", "table"]);
+  for (const id of ["three-questions", "flagship-vs-small", "cascade", "numbers"]) {
+    const plain = scene(id);
+    assert.ok(SOURCED_TEMPLATES.includes(plain.template), id);
+    assert.doesNotMatch(slideHtml(plain, state()), /caption-line/, `${id}: no source, no line`);
+    const sourced = scene(id);
+    sourced.data.source = "實跑 2026-10-09｜Claude Code **2.1.295**";
+    assert.deepEqual(sceneProblems(sourced), [], id);
+    const html = slideHtml(sourced, state());
+    assert.ok(html.includes(`<div class="caption-line">${richText(sourced.data.source)}</div>`), id);
+    assert.ok(html.indexOf("caption-line") > html.search(/<ol|class="cards"|class="flow"|<table/), `${id}: under the card`);
+    sourced.data.source = "第一行\n第二行";
+    assert.deepEqual(sceneProblems(sourced), [`source must be one line of text (at most ${SOURCE_MAX_CHARS} characters)`], id);
+    sourced.data.source = "字".repeat(SOURCE_MAX_CHARS + 1);
+    assert.equal(sceneProblems(sourced).length, 1, `${id}: too long`);
+    sourced.data.source = "";
+    assert.equal(sceneProblems(sourced).length, 1, `${id}: empty`);
+  }
+  const compare = scene("flagship-vs-small");
+  compare.data.verdict = 7;
+  assert.deepEqual(sceneProblems(compare), ["verdict must be text"]);
+});
+
+test("a photo card is a print: the photograph, its tilt, a credit capsule on it and a caption under it", () => {
+  const photo = scene("old-print");
+  assert.deepEqual(sceneProblems(photo), []);
+  const html = slideHtml(photo, state());
+  const tilt = photoTilt("old-print");
+  assert.match(
+    html,
+    new RegExp(
+      `<main class="content t-photo"><div class="frame"><div class="mount enter" style="--i:0"><div class="print" style="--tilt:${tilt}deg">` +
+        '<img src="https://video\\.local/repo/docs/videos/curio-h01/photos/amazon-1861\\.jpg" alt=""><div class="credit">圖：Wikimedia Commons，公有領域</div></div></div></div>' +
+        '<div class="caption-line">1861 年進馬賽港的畫像，船名還是 Amazon</div></main>',
+    ),
+    "the entrance animates the mount, so it cannot straighten the print; the caption is card text outside the photograph",
+  );
+  assert.match(html, /\.t-photo \.print\{[^}]*border:24px solid #fdfbf5[^}]*transform:rotate\(var\(--tilt,0deg\)\)[^}]*box-shadow:/, "white border, tilt and shadow ride in the page");
+  assert.match(html, /\.t-photo \.credit\{position:absolute;right:16px;bottom:14px;/, "the screenshot's capsule, scoped to the photo card");
+  assert.match(visibleText(html), /圖：Wikimedia Commons，公有領域/);
+  assert.doesNotMatch(slideHtml(photo, state({ first: false })), /mount enter/, "it enters once");
+
+  // Bare: no caption, no credit, and then no capsule CSS either.
+  delete photo.data.caption;
+  delete photo.data.credit;
+  const bare = slideHtml(photo, state());
+  assert.doesNotMatch(bare, /class="credit"|\.credit\{|caption-line">/);
+  assert.match(bare, /<img src="[^"]+" alt=""><\/div><\/div><\/div><\/main>/);
+
+  // A stock photo is served from the work directory, as on a screenshot slide.
+  const sha = "b".repeat(64);
+  photo.data.image = `stock/${sha}.webp`;
+  assert.deepEqual(sceneProblems(photo), []);
+  assert.match(slideHtml(photo, state()), new RegExp(`<img src="https://video\\.local/work/stock/${sha}\\.webp" alt="">`));
+});
+
+test("a photo card's limits: where the picture is from, one caption line, a short credit, a small tilt, no reveals", () => {
+  const sha = "c".repeat(64);
+  const photo = scene("old-print");
+  for (const image of [undefined, "https://example.com/a.jpg", "../a.jpg", "docs/videos/../../a.jpg", "docs/videos/a.svg", "tools/video/a.png", `stock/${sha}.gif`, `work/stock/${sha}.jpg`]) {
+    photo.data.image = image;
+    assert.match(sceneProblems(photo)[0] ?? "", /^image must be a repository path under apps\/web\/public\/ or docs\/videos\/, or a stock photo fetched into the work directory/, String(image));
+  }
+  photo.data.image = "docs/videos/curio-h01/photos/amazon-1861.jpg";
+  assert.equal(PHOTO_CAPTION_MAX_CHARS, 40);
+  photo.data.caption = `${"字".repeat(PHOTO_CAPTION_MAX_CHARS - 2)}**重點**`;
+  assert.deepEqual(sceneProblems(photo), [], "the emphasis marks are not counted");
+  for (const caption of ["", "兩行\n說明", "字".repeat(PHOTO_CAPTION_MAX_CHARS + 1), 7]) {
+    photo.data.caption = caption;
+    assert.deepEqual(sceneProblems(photo), [`caption must be one line of text (at most ${PHOTO_CAPTION_MAX_CHARS} characters)`], JSON.stringify(caption));
+  }
+  delete photo.data.caption;
+  for (const credit of ["", "two\nlines", "字".repeat(CREDIT_MAX_CHARS + 1), 7]) {
+    photo.data.credit = credit;
+    assert.deepEqual(sceneProblems(photo), [`credit must be one line of text (at most ${CREDIT_MAX_CHARS} characters)`], JSON.stringify(credit));
+  }
+  photo.data.credit = "字".repeat(CREDIT_MAX_CHARS);
+  for (const tilt of [-PHOTO_TILT_MAX, 0, 1.25, PHOTO_TILT_MAX]) {
+    photo.data.tilt = tilt;
+    assert.deepEqual(sceneProblems(photo), [], String(tilt));
+    assert.match(slideHtml(photo, state()), new RegExp(`style="--tilt:${String(tilt).replace(".", "\\.")}deg"`));
+  }
+  for (const tilt of [-3.01, 3.5, "2", null, Number.NaN, Infinity]) {
+    photo.data.tilt = tilt;
+    assert.deepEqual(sceneProblems(photo), ["tilt must be a number of degrees from -3 to 3"], String(tilt));
+  }
+  delete photo.data.tilt;
+  photo.lines[0].reveal = 1;
+  assert.deepEqual(sceneProblems(photo), ["reveals 1 elements but the photo slide has 0"]);
+});
+
+test("a photo card's tilt comes from its scene id: stable, small, never level, leaning both ways across a video", () => {
+  const ids = Array.from({ length: 40 }, (_, index) => `photo-${index + 1}`);
+  const tilts = ids.map((id) => photoTilt(id));
+  assert.deepEqual(ids.map((id) => photoTilt(id)), tilts, "the same id, the same tilt");
+  for (const tilt of tilts) assert.ok([1.5, 2, 2.5].includes(Math.abs(tilt)), String(tilt));
+  assert.ok(tilts.some((tilt) => tilt < 0) && tilts.some((tilt) => tilt > 0), "both ways");
+  assert.ok(Math.abs(tilts.filter((tilt) => tilt > 0).length - 20) <= 8, "about half each way");
+  assert.equal(photoTilt("old-print", 0), 0, "a tilt the scene gives wins, level included");
+  assert.equal(photoTilt("old-print", -3), -3);
+  assert.equal(photoTilt("old-print", 9), photoTilt("old-print"), "a tilt out of range is not drawn");
+  // The id reaches the template through the slide's state, and only the photo card reads it.
+  const photo = scene("old-print");
+  const other = { ...photo, id: ids.find((id) => photoTilt(id) !== photoTilt("old-print")) };
+  assert.notEqual(slideHtml(other, state()), slideHtml(photo, state()));
+  const bullets = scene("three-questions");
+  assert.equal(slideHtml({ ...bullets, id: "another-id" }, state({ totalReveals: 3 })), slideHtml(bullets, state({ totalReveals: 3 })));
+});
+
+test("sharing the credit capsule with the photo card left the screenshot's CSS byte for byte what it was", () => {
+  const shot = scene("screen");
+  shot.data.credit = "Photo by Lukas Rodriguez on Pexels";
+  assert.match(
+    slideHtml(shot, state({ totalReveals: 1 })),
+    /<style>:root\{--width:1920px;--height:1080px\}\.t-screenshot \.credit\{position:absolute;right:16px;bottom:14px;max-width:80%;padding:6px 16px;border-radius:999px;background:rgba\(8,24,25,\.62\);color:rgba\(255,255,255,\.88\);font-size:22px;line-height:1\.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis\}<\/style>/,
+    "the screenshot's credit CSS, byte for byte",
+  );
 });

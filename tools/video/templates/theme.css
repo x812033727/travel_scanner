@@ -224,7 +224,39 @@ em { font-style: normal; color: var(--orange); }
 .thumb h1 { margin: 0; font-size: 136px; font-weight: 900; line-height: 1.1; max-height: 460px; text-wrap: balance; }
 .thumb .sub { font-size: 44px; font-weight: 700; color: var(--muted); max-height: 120px; }
 .thumb .brand { position: absolute; left: 72px; bottom: 48px; font-size: 30px; font-weight: 800; letter-spacing: 0.3em; color: var(--teal); }
-.thumb { padding-right: 340px; }
-/* A ring and a dot on the right, so the text side reads first and the frame is not half empty. */
-.thumb-art { position: absolute; right: -200px; top: 100px; width: 520px; height: 520px; border-radius: 50%; border: 44px solid rgba(79, 193, 181, 0.28); }
-.thumb-art::after { content: ""; position: absolute; right: 300px; top: 10px; width: 120px; height: 120px; border-radius: 50%; background: var(--orange); }
+/* A series' thumbnail (docs/videos/so-thats-why/thumbnails.md): the column runs under the subject on the right 45%. */
+.thumb.series { padding-right: 340px; }
+
+/*
+ * The channel's thumbnail: one subject on the right 60%, the words on the left 40%, in one of
+ * three layouts (templates.mjs thumbnailHtml). The column holds three CJK glyphs a line at the
+ * headline size and two lines in all: a longer headline shrinks until two lines fit, so the
+ * writer keeps to six characters (render refuses more). YouTube covers the bottom right corner
+ * with the duration and the top right with its hover buttons, so the brand mark stays bottom
+ * left, smaller than before, and the subject's picture is what those corners may lose.
+ */
+.tone-teal { --tone: #0d6b68; }
+.tone-plum { --tone: #5b2a4f; }
+.tone-navy { --tone: #1f2a44; }
+.tone-forest { --tone: #2d5a3d; }
+.thumb-subject { position: absolute; top: 0; right: 0; bottom: 0; width: 60%; background: var(--tone); overflow: hidden; }
+.thumb-subject img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* A page still keeps its top left corner, where the product's name and menu are; a keyframe its right side. */
+.thumb-subject.from-capture img { object-position: left top; }
+.thumb-subject.from-shot img { object-position: right center; }
+.thumb.column { right: 60%; padding: 56px 24px 56px 56px; gap: 24px; }
+.thumb.column h1 { max-height: 300px; text-wrap: wrap; }
+.thumb.column .brand { left: 56px; bottom: 40px; font-size: 24px; }
+/* a: the subject on a card inset in its area, over the dark ground. */
+.thumb-subject.layout-a { top: 40px; right: 40px; bottom: 40px; width: calc(60% - 56px); border-radius: 28px; border: 2px solid var(--panel-edge); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45); }
+/* b: the subject fills the frame; a scrim on the text side keeps the headline readable. */
+.thumb-subject.layout-b { width: 100%; }
+.thumb-subject.layout-b::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14, 38, 39, 0.97) 0%, rgba(14, 38, 39, 0.92) 34%, rgba(14, 38, 39, 0.4) 46%, rgba(14, 38, 39, 0) 62%); }
+/* b with a page still: the still keeps to the right 60%, so its top left corner (the product's name) is not under the scrim, which fades out over the tone before the picture starts. */
+.thumb-subject.layout-b.from-capture img { width: 60%; margin-left: 40%; }
+.thumb-subject.layout-b.from-capture::after { background: linear-gradient(90deg, rgba(14, 38, 39, 0.97) 0%, rgba(14, 38, 39, 0.92) 34%, rgba(14, 38, 39, 0) 40%); }
+/* c: a hard split; the text column is the tone block, the subject's area the dark ground. */
+.thumb-subject.layout-c { background: var(--ground-2); }
+.thumb.column.layout-c { background: var(--tone); }
+.thumb.column.layout-c .sub { color: var(--paper); opacity: 0.85; }
+.thumb.column.layout-c .brand { color: var(--paper); opacity: 0.8; }

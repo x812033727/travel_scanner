@@ -1,0 +1,14 @@
+f arm first request: 2248, 2253, 2253 | mean 2251.3 | spread 5
+n arm first request: 3340, 3343, 3339 | mean 3340.7 | spread 4
+largest spread inside one arm (the bar a difference must clear): 5
+f arm, mean of 3: requests 1 | all requests added up 2251.3
+n arm (2 tools, deferred), mean of 3: first request 3340.7 | minus the f mean +1089.3 | larger than the bar | requests 3 | all requests added up 11038.0 (minus the f mean 8786.7)
+w1, 1 run: first request 3530.0 | minus the f mean +1278.7 | larger than the bar | requests 3 | all requests added up 11603.0 (minus the f mean 9351.7)
+u1, 1 run: first request 4064.0 | minus the f mean +1812.7 | larger than the bar | requests 2 | all requests added up 8437.0 (minus the f mean 6185.7)
+p1, 1 run: first request 3340.0 | minus the f mean +1088.7 | larger than the bar | requests 3 | all requests added up 11031.0 (minus the f mean 8779.7)
+e1, 1 run: first request 3328.0 | minus the f mean +1076.7 | larger than the bar | requests 3 | all requests added up 10814.0 (minus the f mean 8562.7)
+x1, 1 run: first request 2439.0 | minus the f mean +187.7 | larger than the bar | requests 1 | all requests added up 2439.0 (minus the f mean 187.7)
+r1, 1 run: first request 4791.0 | minus the f mean +2539.7 | larger than the bar | requests 3 | all requests added up 15763.0 (minus the f mean 13511.7)
+w1 minus the n mean: 189.3 | u1 minus w1: 534 | u1 minus the n mean: 723.3
+all requests added up: n mean 11038.0 | w1 11603 | u1 8437 (u1 minus w1 -3166)
+total_cost_usd over 12 rows: 0.1435

@@ -30,7 +30,7 @@ const metadata = () => ({
   final_sha256: FINAL,
   thumbnail: "thumbnail.jpg",
   captions: ["captions/en.srt", "captions/zh-TW.srt"],
-  skipped_caption_locales: { ja: ["k7p2", "m4qa"], ko: "no translation (i18n/ko.json missing)", "zh-CN": "no translation (i18n/zh-CN.json missing)" },
+  skipped_caption_locales: { ja: ["k7p2", "m4qa"], ko: "no translation (i18n/ko.json missing)" },
   contains_synthetic_media: false,
   disclosure_reason: "slides read by a stock TTS voice",
 });
@@ -43,7 +43,7 @@ test("a complete package passes every item, and the report binds to metadata.jso
   const byId = Object.fromEntries(report.items.map((item) => [item.id, item.detail]));
   assert.equal(byId.files, "final.mp4, thumbnail.jpg, metadata.json; final.mp4 is the approved final (ffffffffffff)");
   assert.equal(byId.descriptions, "descriptions for zh-TW, en");
-  assert.equal(byId.captions, "caption files for zh-TW, en; skipped ja (2 lines missing or older than zh-TW), ko (no translation (i18n/ko.json missing)), zh-CN (no translation (i18n/zh-CN.json missing))");
+  assert.equal(byId.captions, "caption files for zh-TW, en; skipped ja (2 lines missing or older than zh-TW), ko (no translation (i18n/ko.json missing))");
   assert.equal(byId.disclosure, "no disclosure needed: slides read by a stock TTS voice");
   assert.throws(() => packageReport(report.items.slice(1), "x"), /package items must be exactly files, descriptions, captions, disclosure/);
 });
@@ -74,7 +74,7 @@ test("each item fails for its own reason", () => {
   assert.equal(skipReason(undefined, "ja"), null);
   const unexplained = captionsItem({ files: present, metadata: { ...metadata(), skipped_caption_locales: { ja: [] } } });
   assert.equal(unexplained.ok, false);
-  assert.equal(unexplained.detail, "ja: no caption file and no reason in skipped_caption_locales; ko: no caption file and no reason in skipped_caption_locales; zh-CN: no caption file and no reason in skipped_caption_locales");
+  assert.equal(unexplained.detail, "ja: no caption file and no reason in skipped_caption_locales; ko: no caption file and no reason in skipped_caption_locales");
   const listedButGone = captionsItem({ files: present, metadata: { ...metadata(), captions: ["captions/en.srt", "captions/ja.srt"] } });
   assert.equal(listedButGone.detail, "captions/ja.srt is listed but missing");
   assert.equal(captionsItem({ files: present, metadata: metadata(), locales: ["zh-TW", "en"] }).detail, "caption files for zh-TW, en", "the configured locales can be narrowed");
@@ -108,9 +108,9 @@ test("each language's own thumbnail metadata.json lists must be there and travel
   assert.match(ok.detail, /^final\.mp4, thumbnail\.jpg, thumbnails\/en\.jpg, metadata\.json;/);
   const missing = filesItem({ files: files(), metadata: withThumbs, finalSha256: FINAL, approvedSha256: FINAL });
   assert.deepEqual([missing.ok, missing.detail], [false, "thumbnails/en.jpg is listed but missing"]);
-  assert.deepEqual(packageFiles(["thumbnails/en.jpg", "thumbnails/zh-CN.jpg", "thumbnails/notes.txt"]), [
+  assert.deepEqual(packageFiles(["thumbnails/en.jpg", "thumbnails/ko.jpg", "thumbnails/notes.txt"]), [
     { path: "thumbnails/en.jpg", role: "thumbnail_en", content_type: "image/jpeg" },
-    { path: "thumbnails/zh-CN.jpg", role: "thumbnail_zh-CN", content_type: "image/jpeg" },
+    { path: "thumbnails/ko.jpg", role: "thumbnail_ko", content_type: "image/jpeg" },
   ]);
 });
 
@@ -123,7 +123,7 @@ test("readPackageReport reads upload/ and compares final.mp4 with the final gate
   writeFileSync(path.join(upload, "captions", "zh-TW.srt"), "1\n00:00:00,000 --> 00:00:01,000\nx\n");
   writeFileSync(path.join(upload, "description.zh-TW.txt"), "title\n\nbody\n");
   writeFileSync(path.join(upload, "UPLOAD.md"), "# steps\n");
-  const record = { ...metadata(), final_sha256: sha(final), thumbnail: null, localizations: {}, captions: ["captions/zh-TW.srt"], skipped_caption_locales: { en: "no translation", ja: "no translation", ko: "no translation", "zh-CN": "no translation" } };
+  const record = { ...metadata(), final_sha256: sha(final), thumbnail: null, localizations: {}, captions: ["captions/zh-TW.srt"], skipped_caption_locales: { en: "no translation", ja: "no translation", ko: "no translation" } };
   const bytes = `${JSON.stringify(record, null, 2)}\n`;
   writeFileSync(path.join(upload, "metadata.json"), bytes);
   writeFileSync(path.join(box.workdir, "approvals.json"), JSON.stringify({ approvals: [{ gate: "final", file: "final.mp4", sha256: sha(final), approved_at: "2026-09-27T00:00:00Z", note: "" }] }));
@@ -432,7 +432,7 @@ test("a metadata.json that is not an object fails every item for that reason", (
 test("readPackageReport, which review-push --gate publish sends, reports a caption list that is a number instead of throwing", async () => {
   const zhParts = { "captions/zh-TW.srt": CAPTION, "description.zh-TW.txt": "title\n\nbody\n" };
   for (const languages of [{}, undefined]) {
-    const work = workPackage({ record: { ...zhRecord, captions: 5, ...(languages ? {} : { skipped_caption_locales: { en: "x", ja: "x", ko: "x", "zh-CN": "x" } }) }, parts: zhParts, languages });
+    const work = workPackage({ record: { ...zhRecord, captions: 5, ...(languages ? {} : { skipped_caption_locales: { en: "x", ja: "x", ko: "x" } }) }, parts: zhParts, languages });
     const { report } = await readPackageReport(work.workdir);
     assert.equal(report.ok, false);
     assert.equal(report.final_sha256, sha(work.bytes), "bound to the bytes read, like any failing package");

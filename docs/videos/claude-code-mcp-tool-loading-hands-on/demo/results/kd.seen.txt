@@ -1,0 +1,4 @@
+PreToolUse by=main id=<id> ToolSearch query=select:mcp__gear__find_gear max_results=1
+PostToolUse by=main id=<id> ToolSearch query=select:mcp__gear__find_gear max_results=1 | response_chars=100
+PreToolUse by=main id=<id> mcp__gear__find_gear {"code":"G-417"}
+PostToolUse by=main id=<id> mcp__gear__find_gear {"code":"G-417"} | response_chars=48

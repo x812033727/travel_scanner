@@ -248,6 +248,13 @@ function judge(video, { states, listed, videos, repos, fs }) {
       .map(([part]) => `${locale} ${part}`),
   );
   if (working.length) return { held: `the site still shows ${working.join(", ")} in the making` };
+  // The owner asked for a dub again (docs/videos/DUBS.md §再做一次): the request runs on the cut and the
+  // takes. The site's open request holds them, and so does this worker's own record of a take while
+  // the dub is still ticked, for a list read before the site heard of it.
+  const asked = Object.entries(site?.dub_retries ?? {}).filter(([, request]) => request?.open).map(([locale]) => locale);
+  const taken = Object.entries(state.dub_retries ?? {}).filter(([locale, mine]) => ["taking", "taken"].includes(mine?.status) && site?.locales?.[locale]?.dub).map(([locale]) => locale);
+  const retried = [...new Set([...asked, ...taken])];
+  if (retried.length) return { held: `the owner asked for the ${retried.join(", ")} dub again` };
   const confirmed = [publishApproval(workdir, fs), Date.parse(String(site?.publish_approved_at ?? ""))].filter(Number.isFinite);
   if (!confirmed.length) return { problem: "on YouTube, but its upload confirmation has no date (no publish approval in approvals.json, none on the site)" };
   let at = Math.max(...confirmed);

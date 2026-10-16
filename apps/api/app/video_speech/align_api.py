@@ -25,6 +25,7 @@ import base64
 import binascii
 
 from fastapi import APIRouter
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
 from app.config import Settings
@@ -35,11 +36,22 @@ from app.providers.usage_meter import (
     reserve_azure_speech_characters,
 )
 from app.video_speech import align
-from app.video_speech.admin_api import MAX_REQUEST_CHARACTERS, Session, VideoTool
+from app.video_speech.admin_api import (
+    MAX_REQUEST_CHARACTERS,
+    Session,
+    VideoTool,
+    reserve_pilot_call,
+)
 from app.video_speech.align import ALIGNER_SOURCE, AZURE_SOURCE, AlignRefused
-from app.video_speech.azure import SpeechUpstreamError
+from app.video_speech.azure import SpeechAnswerLost, SpeechUpstreamError
 from app.video_speech.gemini import gemini_voice
-from app.video_speech.schemas import AlignIn, AlignOut, CharTimingOut, SpeechRequest
+from app.video_speech.schemas import (
+    AlignIn,
+    AlignOut,
+    CharTimingOut,
+    SpeechRequest,
+    VideoBudgetAttribution,
+)
 from app.video_speech.ssml import Part, Segment, billable_characters, build_ssml
 
 ALIGN_REQUESTS_PER_HOUR = 1200
@@ -78,7 +90,11 @@ def _refusal_for(error: SpeechUpstreamError) -> AlignRefused:
 
 
 async def _synthesize_azure(
-    speech: SpeechRequest, text: str | None, settings: Settings
+    speech: SpeechRequest,
+    text: str | None,
+    settings: Settings,
+    session: AsyncSession,
+    attribution: VideoBudgetAttribution,
 ) -> AlignOut:
     """The speech route's Azure path with the boundaries kept: budget, allowlist, codes alike."""
     if gemini_voice(speech.voice) is not None:
@@ -119,6 +135,16 @@ async def _synthesize_azure(
         )
     document, billed = build_ssml(speech.voice, segments, speech.rate)
     characters = billable_characters(billed)
+    # The pilot route has no verified Azure tier/region price or receipt. It must fail
+    # before any vendor call; ordinary videos keep the existing Azure flow.
+    await reserve_pilot_call(
+        session,
+        attribution,
+        category="speech_align_synthesis",
+        provider="azure",
+        model=speech.voice,
+        max_usd=None,
+    )
     limit = settings.azure_speech_monthly_character_limit
     redis = get_redis()
     if not await reserve_azure_speech_characters(redis, characters, limit):
@@ -135,6 +161,14 @@ async def _synthesize_azure(
             document,
             settings.azure_speech_timeout_seconds,
         )
+    except SpeechAnswerLost as error:
+        # As the speech route (admin_api.answer_lost): Azure may have synthesized, and billed,
+        # this phrase, so its characters stay counted and the tool does not send it again.
+        raise AlignRefused(
+            504,
+            "video_speech_upstream_lost",
+            "Azure 可能已合成這段語音，但回答沒有送回來；字數已計入本月預算，請勿自動重送",
+        ) from error
     except SpeechUpstreamError as error:
         # As the speech route: Azure bills only what it processed, so the reservation goes back.
         await release_azure_speech_characters(redis, characters)
@@ -178,12 +212,16 @@ async def align_speech(payload: AlignIn, tool: VideoTool, session: Session) -> A
     """When each written unit of one phrase is spoken, from the voice's own boundaries or the
     server's aligner; one paid synthesis at most, never a second one."""
     await enforce_named_rate_limit(
-        "video_align", str(tool.id), limit=ALIGN_REQUESTS_PER_HOUR, window_seconds=3600
+        "video_align",
+        str(tool.id),
+        limit=ALIGN_REQUESTS_PER_HOUR,
+        window_seconds=3600,
+        retry_after=True,
     )
     try:
         if payload.speech is not None:
             settings = await load_runtime_settings(session)
-            return await _synthesize_azure(payload.speech, payload.text, settings)
+            return await _synthesize_azure(payload.speech, payload.text, settings, session, payload)
         assert payload.audio is not None and payload.text is not None  # the schema's validator
         return await _align_audio(payload.audio, payload.text, payload.language)
     except AlignRefused as error:

@@ -184,7 +184,9 @@ test("translated locales get their own title, description, chapter titles and ar
   assert.match(metadata.localizations.en.description, /Chapters\n00:00 Intro\n/);
   assert.match(metadata.localizations.en.description, /https:\/\/mokaair\.com\/en\/life\/ai-workflow-cost-quality-latency\?utm_source=youtube/);
   assert.match(metadata.description, /https:\/\/mokaair\.com\/zh-TW\/life\//);
-  assert.deepEqual(metadata.tags, ["AI 模型", "模型選擇", "AI models"]);
+  assert.deepEqual(metadata.tags, ["AI 模型", "模型選擇"], "translated tags stay in their translation file, not in the upload's list");
+  const many = { ...doc, youtube: { ...doc.youtube, tags: Array.from({ length: 14 }, (_, n) => `tag${n}`) } };
+  assert.deepEqual(composeMetadata({ doc: many, timeline }).metadata.tags, many.youtube.tags.slice(0, 10), "video.json's order, cut to ten");
 });
 
 test("a description over YouTube's byte limit is a problem, named by locale", () => {
@@ -282,7 +284,7 @@ test("UPLOAD.md of a compilation says the file is downloaded from the site and t
   assert.match(text, /## 1\. 上傳/);
   assert.doesNotMatch(uploadChecklist({ metadata, captions: [], thumbnail: false }), /## 合集/);
   assert.match(compilationSection({ chapters: [] }, {}), /0 集的合集/);
-  assert.deepEqual(skippedCaptionLocales({ skipped: { ja: ["ep-2"] } }, ["captions/zh-TW.srt"], { compilation: true }), { en: "no caption file merged", ja: "no caption file in episodes ep-2", ko: "no caption file merged", "zh-CN": "no caption file merged" });
+  assert.deepEqual(skippedCaptionLocales({ skipped: { ja: ["ep-2"] } }, ["captions/zh-TW.srt"], { compilation: true }), { en: "no caption file merged", ja: "no caption file in episodes ep-2", ko: "no caption file merged" });
 });
 
 test("package links a compilation's final.mp4, records the download, the size and the episodes, and passes its check", async () => {
@@ -306,7 +308,7 @@ test("package links a compilation's final.mp4, records the download, the size an
   assert.deepEqual(metadata.episodes.map((episode) => [episode.slug, episode.start_frame]), [["wuxia-ep-1", 60], ["wuxia-ep-2", 4441], ["wuxia-ep-3", 8401]]);
   assert.equal(metadata.episodes[0].sha256, box.episodes["wuxia-ep-1"].sha256);
   assert.deepEqual(metadata.captions, ["captions/en.srt", "captions/zh-TW.srt"]);
-  assert.deepEqual(metadata.skipped_caption_locales, { ja: "no caption file in episodes wuxia-ep-1, wuxia-ep-2, wuxia-ep-3", ko: "no caption file in episodes wuxia-ep-1, wuxia-ep-2, wuxia-ep-3", "zh-CN": "no caption file in episodes wuxia-ep-1, wuxia-ep-2, wuxia-ep-3" });
+  assert.deepEqual(metadata.skipped_caption_locales, { ja: "no caption file in episodes wuxia-ep-1, wuxia-ep-2, wuxia-ep-3", ko: "no caption file in episodes wuxia-ep-1, wuxia-ep-2, wuxia-ep-3" });
   assert.equal(metadata.contains_synthetic_media, true);
   assert.deepEqual(Object.keys(metadata).slice(-2), ["contains_synthetic_media", "disclosure_reason"], "the disclosure stays last, so qa's rewrite leaves the bytes alone");
   assert.deepEqual(metadata.chapters.map((chapter) => chapter.title), ["第 1 集 初入山門", "第 2 集 夜探藏經閣", "第 3 集 劍冢之約"]);
@@ -338,12 +340,11 @@ test("each language's own thumbnail goes into the package only when render drew 
     thumbnail_locales: { en: drawn("en", translations.en), ja: drawn("ja", merged("an older headline")) },
     thumbnail_locale_gaps: { ko: "no bundled font has \"최\" U+CD5C" },
   };
-  const { files, skipped } = localeThumbnails({ doc, translations, manifest, workdir, locales: ["en", "ja", "ko", "zh-CN"] });
+  const { files, skipped } = localeThumbnails({ doc, translations, manifest, workdir, locales: ["en", "ja", "ko"] });
   assert.deepEqual(files, { en: "thumbnails/en.jpg" });
-  assert.deepEqual(Object.keys(skipped), ["ja", "ko", "zh-CN"]);
+  assert.deepEqual(Object.keys(skipped), ["ja", "ko"]);
   assert.match(skipped.ja, /drawn from other words than i18n has now; run render/);
   assert.match(skipped.ko, /no bundled font has/);
-  assert.match(skipped["zh-CN"], /i18n\/zh-CN\.json has no thumbnail words/);
   // A video packaged before render drew any keeps working: every language is a note.
   assert.deepEqual(localeThumbnails({ doc, translations: {}, manifest: null, workdir, locales: ["en"] }), { files: {}, skipped: { en: "i18n/en.json has no thumbnail words (i18n-sheet --locale en --parts metadata, then i18n-merge)" } });
   assert.deepEqual(localeThumbnails({ doc, translations, manifest: { thumbnail_locales: { en: drawn("en", translations.en) } }, workdir, locales: ["en", "ko"] }).skipped.ko, "not drawn yet; run render");

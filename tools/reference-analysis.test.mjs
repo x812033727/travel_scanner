@@ -46,7 +46,7 @@ const STUDY_20261003 = JSON.parse(readFileSync(new URL("../docs/videos/drama-cra
 const STUDY_20261004 = JSON.parse(readFileSync(new URL("../docs/videos/drama-craft/reference-study-20261004-budaimiao.json", import.meta.url), "utf8"));
 
 const tools = await locateFfmpeg().catch(() => null);
-const withFfmpeg = { skip: tools ? false : "ffmpeg is not installed here (the main CI job has none; the owner's machine has)" };
+const withFfmpeg = { skip: tools ? false : "ffmpeg is not installed here (web-checks has none; ci.yml's video-tests job installs it and fails on this skip)" };
 const withStandIn = { skip: withFfmpeg.skip || (process.platform === "win32" ? "a stand-in executable needs a POSIX shell" : false) };
 
 const near = (actual, expected, within, message) => assert.ok(Math.abs(actual - expected) <= within, `${message ?? ""}: ${actual} is not within ${within} of ${expected}`);

@@ -10,6 +10,7 @@ from httpx import ASGITransport, AsyncClient
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
+import app.schema as schema_module
 from app.admin import operations_router, operations_service
 from app.admin.operations_schemas import AdminAuditItem, AdminAuditPage
 from app.auth.service import current_user
@@ -334,6 +335,41 @@ async def test_system_health_uses_live_agents_and_latest_verified_backup(
     assert result["backup"].detail is not None
     assert "部署" in result["backup"].detail
     assert latest.strftime("%Y-%m-%d") in result["backup"].detail
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("revision", "status"),
+    [
+        ("0133_story_followon_budget", "healthy"),
+        ("0134_unreviewed_change", "degraded"),
+    ],
+)
+async def test_system_health_uses_exact_rollback_schema_compatibility(
+    monkeypatch: pytest.MonkeyPatch, revision: str, status: str
+) -> None:
+    monkeypatch.setattr(
+        schema_module, "expected_schema_revision", lambda: "0132_video_pilot_budget"
+    )
+    monkeypatch.setattr(
+        operations_service, "expected_schema_revision", lambda: "0132_video_pilot_budget"
+    )
+    monkeypatch.setattr(
+        operations_service,
+        "get_settings",
+        lambda: SimpleNamespace(
+            deployments_configured=False,
+            deploy_agent_hmac_key="",
+            deploy_agent_socket="",
+        ),
+    )
+    monkeypatch.setattr(
+        operations_service, "get_redis", lambda: SimpleNamespace(ping=AsyncMock())
+    )
+    session = AsyncMock()
+    session.scalar.return_value = revision
+    result = await operations_service._system_status(session, {})  # noqa: SLF001
+    assert result["database"].status == status
 
 
 @pytest.mark.asyncio

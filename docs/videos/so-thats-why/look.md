@@ -2,6 +2,20 @@
 
 2026-09-28 起草。站主決定**不用吉祥物**（2026-09-28）：這個系列沒有任何固定角色，辨識度由畫風、色盤與「蓋章」這個動作承擔。這份寫全系列共用的 `look`、片頭 3 秒、結尾蓋章與章節卡；片頭三張關鍵影格做一次、每集重用，選定後雜湊記在最後一節。
 
+**2026-10-10 更新**：插圖改由 MiniMax `image-01` 生成，畫風改成可愛卡通家族（候選與 MiniMax 的限制在 [`../history-curiosity/look.md`](../history-curiosity/look.md)）。站主同日選了候選 A「大頭卡通」。下面是 2026-10-10 版的 `look`（`negative` 對 MiniMax 無效，留空；第 1 版的 flat-explainer 文字保留在 `tools/video/core/drama.mjs` 的預設裡）；色盤、印章、片頭、章節卡的規則不變。
+
+```json
+{
+  "preset": "custom",
+  "style": "cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, bright flat colours with soft cel shading on a warm cream paper ground, ink navy, mustard yellow, stamp red only on the answer, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9",
+  "negative": "",
+  "motion": "slow push in or gentle drift, no morphing, no cuts",
+  "candidates": 3
+}
+```
+
+第 1 版（2026-09-28，已被取代）：
+
 ## 系列畫風
 
 每集 `video.json` 的 `look`：
@@ -21,7 +35,11 @@
 - 真實人物、公司 logo、產品外觀：不用 AI 生成相似的臉或 logo，改用剪影、泛稱物件與文字卡；需要真實圖片時走 `screenshot` 模板並標出處。
 - 文字一律由卡片場景或合成疊字，不讓圖片模型寫字（`negative` 擋文字）。
 
-## 片頭 3 秒（每集相同，做一次重用）
+2026-10-10 樣張：借站上的投影片代號用上面的 `look` 畫了 4 張超市場景（走道、補貨推車、拿鮮奶的手、門口的店長），MiniMax `image-01` 4／4 一次過、各 9.29，`look_hash` `a5910f9c047dbeff`；圖在 repo 外 `mokaair-work/videos/_audition/look-20261010-curio/stw-a/`。
+
+**片頭**：站主 2026-10-02 核准了系列的 6.9 秒片頭（[`../branding-release/2026-10-02-sothatswhy-intro-approval.md`](../branding-release/2026-10-02-sothatswhy-intro-approval.md)），下面 2026-09-28 的三張關鍵影格片頭是當時的草案，已被取代，不重畫。
+
+## 片頭 3 秒（2026-09-28 草案，已被 2026-10-02 核准的片頭取代）
 
 | 時間 | 畫面 | 運鏡（`camera`） | 聲音 |
 | --- | --- | --- | --- |

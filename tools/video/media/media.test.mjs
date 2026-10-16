@@ -10,6 +10,7 @@ import { sandbox, tempDir } from "../core/fixtures/load.mjs";
 import { cached, forget, forgetJob, mediaKey, pendingJob, readCache, remember, rememberJob } from "./cache.mjs";
 import { AVOID, DEFAULT_IMAGE_PROMPT_LIMIT, IMAGE_MODEL_VENDORS, IMAGE_PROMPT_LIMITS, MIN_SHOT_PROMPT_BUDGET, composeShotPrompt, imageModelVendor, imagePromptLimit, promptOverhead, shotPromptBudget } from "./prompt-budget.mjs";
 import { EXHAUSTED_CODES, MediaError, PART_BYTES, RETAKE_CODES, downloadFile, judge, locate, mediaStatus, putFile, runJob, scaleBox, stockFetch, stockSearch, submitClip, submitImage, waitForJob } from "./client.mjs";
+import { EXIT as VIDEO_EXIT, main as videoCli } from "../cli.mjs";
 import { STAGES, exitFor, main, run, statusText } from "./cli.mjs";
 import { appendLedger, bookImport, bookJob, capProblem, importedTotals, ledgerTotals, readLedger, release, reserve, reservedEntries, savedTotals } from "./ledger.mjs";
 import { VENDOR_NOTICES, assetEntry, candidateText, stockFile, withAsset, withAssets } from "./stock.mjs";
@@ -49,6 +50,23 @@ function site(handlers) {
 }
 
 const json = (body, status = 200, headers = {}) => new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json", ...headers } });
+
+test("a request the site keeps refusing is told after its last attempt, with no wait after it", async () => {
+  for (const [what, answer] of [
+    ["a busy route", () => new Response(JSON.stringify({ code: "rate_limit_exceeded", detail: "slow down" }), { status: 429, headers: { "Retry-After": "60" } })],
+    ["a site that is down", () => {
+      throw Object.assign(new TypeError("fetch failed"), { cause: Object.assign(new Error("connect ECONNREFUSED"), { code: "ECONNREFUSED" }) });
+    }],
+  ]) {
+    let calls = 0;
+    const waits = [];
+    const options = { site: SITE, token: TOKEN, fetchImpl: async () => { calls += 1; return answer(); }, sleep: async (ms) => waits.push(ms), attempts: 5 };
+    await assert.rejects(mediaStatus(options), (error) => error instanceof MediaError && error.who === "service", what);
+    assert.equal(calls, 5, what);
+    assert.equal(waits.length, 4, `${what}: a wait between two attempts, none after the last`);
+    if (what === "a site that is down") assert.deepEqual(waits, [1000, 2000, 4000, 8000], "the first four, not the fifth");
+  }
+});
 
 test("calls carry the token, and failures say who can fix them", async () => {
   let images = 0;
@@ -473,7 +491,7 @@ test("stock search prints each candidate with its credit and the notices the ven
   assert.match(text, /\nmatches: pexels 8,000, pixabay 1,200\n/);
   assert.match(text, new RegExp(`\\n${VENDOR_NOTICES.pexels.replace(/[()./]/g, "\\$&")} · ${VENDOR_NOTICES.pixabay.replace(/[()./]/g, "\\$&")}\\n`));
   assert.match(text, /Pixabay's preview links expire after a day/);
-  assert.match(text, /\nnext: node tools\/video\/media\/cli\.mjs stock fetch --slug seoul-guide --provider pexels --id 3573351\n$/);
+  assert.match(text, /\nnext: node tools\/video\/cli\.mjs stock fetch --slug seoul-guide --provider pexels --id 3573351\n$/);
   const one = candidateText({ ...SEARCH_ANSWER, candidates: [SEARCH_ANSWER.candidates[0]], total: { pexels: 1 }, problems: ["Pixabay 的額度用完或太忙"] });
   assert.match(one, /\nnote: Pixabay 的額度用完或太忙\n/);
   assert.doesNotMatch(one, /Images from Pixabay|expire after a day/, "a vendor that did not answer is not named as a source");
@@ -546,6 +564,24 @@ test("stock fetch stores the photo under <workdir>/stock/<sha256>.<ext> and writ
   assert.equal(await run("stock", ["search", "--query", "Busan"], unknown), EXIT.owner);
   assert.match(out.stderr, /does not serve the stock photo routes yet/);
   assert.equal(await main(["stock", "search", "--query", "Busan"], { ...ctx, env: {}, home: tempDir("video-home-") }), EXIT.owner, "no token yet");
+});
+
+test("stock is a command of the main video CLI: it reaches stock.mjs with the main CLI's exit codes, and --help lists it", async () => {
+  const capture = (overrides = {}) => {
+    const out = { stdout: "", stderr: "" };
+    return { out, ctx: { stdout: { write: (text) => (out.stdout += text) }, stderr: { write: (text) => (out.stderr += text) }, ...overrides } };
+  };
+  const bare = capture();
+  assert.equal(await videoCli(["stock"], bare.ctx), VIDEO_EXIT.usage);
+  assert.match(bare.out.stderr, /^stock takes a subcommand: stock search --query/);
+  const search = capture({ env: {}, home: tempDir("video-home-") });
+  assert.equal(await videoCli(["stock", "search", "--query", "Seoul skyline"], search.ctx), VIDEO_EXIT.owner, "no token yet: the owner pairs first");
+  assert.match(search.out.stderr, /no video tool token yet/);
+  assert.equal(await videoCli(["stock", "fetch", "--slug", "x", "--provider", "unsplash", "--id", "1"], capture().ctx), VIDEO_EXIT.usage, "a vendor the site does not use");
+  const help = capture();
+  assert.equal(await videoCli(["--help"], help.ctx), VIDEO_EXIT.ok);
+  assert.match(help.out.stdout, /^ {2}stock search --query Q /m);
+  assert.match(help.out.stdout, /^ {2}stock fetch --slug S --provider P --id N /m);
 });
 
 // The vendor module the budget mirrors: what it puts between the prompt and the negative

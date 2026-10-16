@@ -1,9 +1,13 @@
 """The public video library: the videos the site has published on YouTube, for /videos.
 
 Only what a reader may see leaves here. A video is listed once it is public on YouTube by the
-site's own record: it has a YouTube id, the time the owner scheduled it to go public has
-passed, and nobody dropped it. A video uploaded as private or unlisted has no publication time
-(``youtube_publish_at`` stays null), so it is never listed, whatever its id.
+site's own record: it has a YouTube id, its publication time has passed, and nobody dropped it.
+The publication time (``youtube_publish_at``) comes from one of two places: the time the owner
+typed when pasting the address, or, when they typed none, the time the linked channel reports
+through videos.list (a public video's ``publishedAt``, a scheduled one's ``publishAt``;
+admin_service.link_youtube and the ``video-youtube-backfill-publish-times`` command). A video
+that is still private or unlisted and not scheduled has no publication time either way, so it is
+never listed, whatever its id; a scheduled one appears once its time has come.
 """
 
 from __future__ import annotations

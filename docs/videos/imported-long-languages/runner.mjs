@@ -817,6 +817,9 @@ export async function run(options, dependencies = {}) {
             }
           }
           automation.halted = false;
+          // A unit the automation sets aside for later (defer(): a held speech result, a busy
+          // service) is a stop for this round too, with its own reason, not a missing track.
+          automation.skipped?.delete(entry.slug);
           audioPassed = new Map();
           if (action) {
             units++;
@@ -826,7 +829,7 @@ export async function run(options, dependencies = {}) {
             event({ slug: entry.slug, type: "unit-start", ...record.active_unit });
             const line = action.kind === "translate" ? await translateLocaleResuming(automation, ctx, entry, state, action.locale, action.parts, project, event) : await automation.makeDub(state, action.locale);
             event({ slug: entry.slug, type: action.kind, locale: action.locale, detail: clean(line ?? "already current") });
-            if (automation.halted || state.status === "blocked") throw new VideoStop(clean(line ?? "Stage stopped; resume in a later invocation"));
+            if (automation.halted || state.status === "blocked" || automation.skipped?.has(entry.slug)) throw new VideoStop(clean(line ?? "Stage stopped; resume in a later invocation"));
             const translation = path.join(project.dir, "i18n", `${action.locale}.json`);
             if (action.kind === "translate" || existsSync(translation)) record.translations[action.locale] = await sha256File(translation);
             project = loadProject({ slug: entry.slug, root: manifest.root });

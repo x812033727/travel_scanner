@@ -4,7 +4,7 @@
 // its windows read back off the picture. Nothing here reaches the live site: locate is answered
 // by the fake, and the end-to-end part skips where ffmpeg or Chromium is missing.
 import assert from 'node:assert/strict';
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 
@@ -345,9 +345,14 @@ async function standInEpisode(tools) {
   return { sand, doc, timeline, cues, keyframes };
 }
 
-/** The mean brightness of every frame of a cut above the caption bar, by frame number. */
+/**
+ * The mean brightness of every frame of a cut above the caption bar, by frame number. ffmpeg runs
+ * in the stats file's directory and the filter graph names the file alone: a Windows temp path's
+ * drive colon and backslashes would read as option separators and escapes inside the graph.
+ */
 async function brightness(tools, file, stats) {
-  await runTool(tools.ffmpeg, ['-hide_banner', '-nostats', '-v', 'error', '-i', file, '-vf', `crop=1080:${CAPTION_BOX.y - 30}:0:0,signalstats,metadata=print:key=lavfi.signalstats.YAVG:file=${stats}`, '-f', 'null', '-']);
+  const graph = `crop=1080:${CAPTION_BOX.y - 30}:0:0,signalstats,metadata=print:key=lavfi.signalstats.YAVG:file=${path.basename(stats)}`;
+  await runTool(tools.ffmpeg, ['-hide_banner', '-nostats', '-v', 'error', '-i', path.resolve(file), '-vf', graph, '-f', 'null', '-'], { cwd: path.dirname(stats) });
   const levels = [];
   let frame = null;
   for (const line of readFileSync(stats, 'utf8').split('\n')) {
@@ -361,6 +366,27 @@ async function brightness(tools, file, stats) {
 // The ramp's brightness over a window at x: its middle column, in the cut's limited range.
 const rampLevel = (x) => 16 + (219 * (x + WINDOW.width / 2)) / SOURCE.width;
 const buildDirs = (base, slug) => (existsSync(path.join(base, slug)) ? readdirSync(path.join(base, slug)).map((name) => path.join(base, slug, name)) : []);
+
+test('the brightness probe reads a stats file whose path has a drive colon and backslashes, as a Windows temp path does', async (t) => {
+  let tools;
+  try {
+    tools = await locateFfmpeg();
+  } catch (error) {
+    if (error instanceof ToolMissing) return t.skip(error.message);
+    throw error;
+  }
+  const base = tempDir('brightness-path-');
+  t.after(() => rmSync(base, { recursive: true, force: true }));
+  // A directory named like a Windows path: legal on Linux, and the characters the filter graph
+  // would read as an option separator and escapes if the path were written into it.
+  const directory = path.join(base, 'C:\\Users\\runner\\AppData');
+  mkdirSync(directory, { recursive: true });
+  const video = path.join(base, 'grey.mp4');
+  await runTool(tools.ffmpeg, ['-hide_banner', '-v', 'error', '-f', 'lavfi', '-i', 'color=c=gray:s=1080x1920:r=30:d=0.2', '-pix_fmt', 'yuv420p', video]);
+  const levels = await brightness(tools, video, path.join(directory, 'brightness.txt'));
+  assert.equal(levels.length, 6, 'one level per frame');
+  for (const level of levels) assert.ok(level > 100 && level < 150, `mid grey, not ${level}`);
+});
 
 test('a stand-in episode is cut to a Short whose window follows the located subjects and whose captions are the Shorts layer', async (t) => {
   const tools = await toolsOrSkip(t);

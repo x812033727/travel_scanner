@@ -1,0 +1,19 @@
+-- after.mjs ku | arm use-u40 | Claude Code 2.1.295 | init events 1
+   init model: claude-sonnet-5-5 | permissionMode: default
+   model: claude-sonnet-5-5 (x3)
+   modelUsage key: claude-sonnet-5-5 (x1)
+   built-in tools (7): Task Edit Glob Grep Read Skill Write
+   mcp_servers: 1 = gear 1 (connected) + any other 0
+   MCP tools on the init event: 40 = gear's 40 + any other 0 | this arm's server should hold 40
+   plugins: 3 = cc-plugin-* 3 + any other 0 | skills: 22 = shipped with Claude Code 22 + any other 0 | agents: 6 = built in 6 + any other 0 | slash commands: 58
+   counts a base must share with an arm: built-in tools 7 | skills 22 | agents 6 | slash commands 58 | plugins 3
+   logging hook's record: 2 lines | PreToolUse 1, PostToolUse 1 | instruction files loaded: 0
+   tool calls in the stream: 1 (mcp__gear__find_gear 1) | under Agent calls 0
+   ToolSearch calls: 0
+   gear tool calls: 1 (find_gear {"code":"G-417"}) | other MCP calls 0
+   the MCP server's own record: 7 lines | tools served 40 | initialize 1 (at 19 ms) | tools/list 1 (at 25 ms) | tools/call 1 (first at 2566 ms)
+   file-tool calls aimed outside the project: in the stream 0 | in the logging hook's record 0 (stopped by it: 0)
+   result lines: success (2 turns, is_error false) | permission_denials 0
+   system lines by subtype: init 1, hook_started 2, hook_response 2, post_turn_summary 1
+   the answer (recorded, not scored): names shelf D-07 yes | 37 yes
+   verdict: only sonnet (or haiku) named | permission mode default | the expected built-in tools (ToolSearch listed: no) | nothing listed or called that is not the seed's or Claude Code's own | no instruction file loaded | the server and tools of arm use-u40 and no other | no file tool aimed outside the project

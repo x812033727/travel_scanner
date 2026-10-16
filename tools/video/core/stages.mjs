@@ -130,12 +130,12 @@ export function currentDub(project, workdir, locale, speech) {
   return { ...dub, file };
 }
 
-/** The review file role of a locale's dub track: `dub_en`, `dub_zh_cn` (roles are lower-case words). */
+/** The review file role of a locale's dub track: `dub_en`, `dub_ko` (roles are lower-case words; an older package's zh-CN track reads as `dub_zh_cn`). */
 export const dubRole = (locale) => `dub_${locale.toLowerCase().replace(/-/g, "_")}`;
 
 /**
- * The current dub track of every locale asked for (the owner's dub choice, or every locale but
- * zh-CN without one), and the locales the worker gave up on with its reason. A locale the worker
+ * The current dub track of every locale asked for (the owner's dub choice, or every other locale
+ * without one), and the locales the worker gave up on with its reason. A locale the worker
  * gave up on stays skipped even when an older track of it exists: the reason is the last word.
  */
 export function dubsForUpload(project, workdir, speech, locales = defaultDubLocales(project.doc)) {
@@ -148,23 +148,36 @@ export function dubsForUpload(project, workdir, speech, locales = defaultDubLoca
       continue;
     }
     const dub = currentDub(project, workdir, locale, speech);
-    if (dub && !dub.stale) dubs.push({ locale, file: dub.file, format: dub.format, total_frames: dub.total_frames, tempo_max: dub.tempo_max ?? 1, ...(dub.branding_hash ? { branding_hash: dub.branding_hash } : {}) });
+    // `kept`: the lines whose retake did not fit, so the track carries their earlier take (dubs/cli.mjs --keep-fitting).
+    if (dub && !dub.stale) dubs.push({ locale, file: dub.file, format: dub.format, total_frames: dub.total_frames, tempo_max: dub.tempo_max ?? 1, ...(dub.branding_hash ? { branding_hash: dub.branding_hash } : {}), ...(Array.isArray(dub.kept) && dub.kept.length ? { kept: dub.kept.map(String) } : {}) });
   }
   return { dubs, skipped };
 }
 
 /**
+ * The cues of `locale` as runCaptions writes them: under its current dub's own timeline, or under
+ * the narration's presented one, where a translation's cue changes move onto the narration's
+ * measured ones (`timing.chars`). The renewal checks (review/renewal.mjs, renewal-handoff.mjs)
+ * rebuild the bytes they expect with it.
+ */
+export function localeCues(presented, texts, locale, narration, dub = null) {
+  return buildCues(dub ? captionTimelineOf(dub) : presented, texts[locale], locale, dub ? null : { locale: narration, texts: texts[narration] });
+}
+
+/**
  * A dub's lines as the timeline captions are cut on: the pause after a dubbed line belongs to
- * its cues, as the narration's does, so each line runs to the next dubbed line's start.
+ * its cues, as the narration's does, so each line runs to the next dubbed line's start. A line
+ * before an intro played after the first chapter runs at most to the intro (intro_at_frame).
  */
 export function captionTimelineOf(dub) {
   const lines = [...dub.lines].sort((a, b) => a.start_frame - b.start_frame);
   const contentEnd = dub.content_end_frame ?? dub.total_frames;
+  const introAt = dub.intro_at_frame ?? null;
   return {
     ...dub,
     lines: lines.map((line, index) => ({
       ...line,
-      end_frame: Math.min(contentEnd, Math.max(line.end_frame, index + 1 < lines.length ? lines[index + 1].start_frame : contentEnd)),
+      end_frame: Math.min(introAt !== null && line.start_frame < introAt ? introAt : contentEnd, Math.max(line.end_frame, index + 1 < lines.length ? lines[index + 1].start_frame : contentEnd)),
     })),
   };
 }
@@ -207,7 +220,9 @@ export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
     const dub = locale === narrationLocale(project.doc) || !dubbed.includes(locale) ? null : currentDub(project, workdir, locale, speech);
     const timed = dub && !dub.stale;
     // Dub timelines already describe their padded presentation; only narration is shifted here.
-    const { cues } = buildCues(timed ? captionTimelineOf(dub) : presented, byLine, locale);
+    // A translation under the narration's timeline takes its cue changes from the narration's
+    // measured ones; a dub-timed one follows its own track (localeCues).
+    const { cues } = localeCues(presented, texts, locale, narrationLocale(project.doc), timed ? dub : null);
     atomicWrite(path.join(workdir, "captions", `${locale}.srt`), toSrt(cues));
     atomicWrite(path.join(workdir, "captions", `${locale}.vtt`), toVtt(cues));
     const problems = checkCues(cues, locale);

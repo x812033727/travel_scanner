@@ -371,3 +371,54 @@ test("a resumed source with a newly exposed mystery returns to the planner befor
   assert.equal(readFileSync(packageFile, "utf8"), previousPackage);
   assert.deepEqual(box.calls.runs, [], "no packaging or publish work occurs in the rejected-source step");
 });
+
+test("with mysteries, a plan made again after the translations has each locale translated, and reviewed, once more", async (t) => {
+  const box = fixture(t);
+  assert.match(await planMetadata(box.automation, box.state), /planned/);
+  for (const locale of FOREIGN) assert.match(await translateMetadata(box.automation, box.state), new RegExp(`^${box.state.slug}: ${locale} title and description translated$`));
+  assert.match(await translateMetadata(box.automation, box.state), /every locale's upload fields are translated/);
+  const first = box.stages("translator").length;
+  box.respond((stage, payload) => {
+    if (stage === "planner") return { ...proposal(), title: "第二版標題，舊城的信" };
+    if (stage === "translator") return { ...translation(payload.locale), title: `${payload.locale} ${payload.youtube.title}` };
+    return structuredClone(PASS);
+  });
+  assert.match(await planMetadata(box.automation, box.state), /planned \(第二版標題，舊城的信\)/);
+  // Each locale's own receipt still covers its old text: only the hashes it records say it is stale.
+  for (const locale of FOREIGN) assert.match(await translateMetadata(box.automation, box.state), new RegExp(`${locale} title and description translated`));
+  assert.match(await translateMetadata(box.automation, box.state), /every locale's upload fields are translated/);
+  assert.equal(box.stages("translator").length, first + FOREIGN.length, "each locale once more");
+  for (const locale of FOREIGN) assert.equal(readJson(path.join(box.dir, "i18n", `${locale}.json`)).title, `${locale} 第二版標題，舊城的信`);
+});
+
+test("a translation from before the hashes were kept is translated again when the worker plans the text again itself", async (t) => {
+  const box = fixture(t);
+  assert.match(await planMetadata(box.automation, box.state), /planned/);
+  for (const locale of FOREIGN) await translateMetadata(box.automation, box.state);
+  // As written before this change: no hashes, so it counts as complete.
+  for (const locale of FOREIGN) {
+    const file = path.join(box.dir, "i18n", `${locale}.json`);
+    const { source_hashes: _old, ...legacy } = readJson(file);
+    writeJson(file, legacy);
+  }
+  // The cut is joined again and its chapters move: the zh-TW text is reviewed again, the verifier
+  // finds a problem, and the worker plans the text again with no owner and no render involved.
+  const timeline = readJson(path.join(box.workdir, "timeline.json"));
+  writeJson(path.join(box.workdir, "timeline.json"), { ...timeline, chapters: timeline.chapters.map((chapter, index) => (index ? { ...chapter, start_frame: chapter.start_frame + 300 } : chapter)), total_frames: timeline.total_frames + 300 * 40 });
+  let rejected = false;
+  box.respond((stage, payload) => {
+    if (stage === "verifier" && payload.locale === "zh-TW" && !rejected) {
+      rejected = true;
+      return { passed: false, problems: ["the description hints at the reveal"] };
+    }
+    if (stage === "planner") return { ...proposal(), title: "第二版標題，舊城的信" };
+    if (stage === "translator") return { ...translation(payload.locale), title: `${payload.locale} ${payload.youtube.title}` };
+    return structuredClone(PASS);
+  });
+  const translated = box.stages("translator").length;
+  await reviewAll(box, "final video approved");
+  assert.equal(box.video().youtube.title, "第二版標題，舊城的信");
+  // Before: each legacy file passed as complete, was only reviewed, and kept the replaced plan's title.
+  assert.equal(box.stages("translator").length, translated + FOREIGN.length);
+  for (const locale of FOREIGN) assert.equal(readJson(path.join(box.dir, "i18n", `${locale}.json`)).title, `${locale} 第二版標題，舊城的信`);
+});

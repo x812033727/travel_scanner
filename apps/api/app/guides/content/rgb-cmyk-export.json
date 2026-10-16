@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "RGB 與 CMYK 怎麼選：螢幕、印刷與檔案輸出",
@@ -154,6 +157,7 @@
           "width": 1600,
           "height": 900,
           "caption": "RGB、CMYK 與描述檔要連同用途一起交代，副檔名不能代替驗收。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -264,6 +268,1038 @@
         },
         {
           "title": "Adobe Acrobat：PDF 色彩轉換及物件管理",
+          "url": "https://helpx.adobe.com/acrobat/using/color-conversion-ink-management-acrobat.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Choosing Between RGB and CMYK: Screens, Print, and File Export",
+      "description": "The same event artwork can look vivid on a website but different on a printed flyer. Using original community swap market materials, this article explains RGB, CMYK, color profiles, and soft proofing, with web and print export steps, a handoff comparison table, and original diagrams. It helps general users check the purpose and print conditions before choosing a conversion method, avoiding confusion between profile assignment and conversion or delivery after merely renaming a file.",
+      "hero": {
+        "src": "/guides/rgb-cmyk-export/hero-en.jpg",
+        "alt": "An illustration of a folder of Mokaair original assets, a screen, and print documents, showing that digital and print output require different preparation.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A community swap market needs an online promotional image and a printed flyer. The organizer sends out the same file, only to receive questions about its color mode, profile, and export settings. RGB and CMYK are indeed a common dividing line, but an actual handoff also requires knowing where the image will appear and who is responsible for color conversion."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article uses these original market materials to demonstrate how to organize the files, drawing on Adobe's official color documentation consulted on 2026-9-14. No physical print proofs or equipment tests were performed, and it does not prescribe universal settings for any print shop. The examples focus on clearly stating the file's purpose, conversion conditions, and responsibility for acceptance checks."
+        },
+        {
+          "type": "heading",
+          "text": "RGB and CMYK Describe Different Color Components",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "RGB describes colors through red, green, and blue channels and is commonly used for screens and digital images. CMYK describes colors through printing channels such as cyan, magenta, yellow, and black and is common in four-color printing workflows. When you view a CMYK image on a screen, the software still has to convert its colors into a form the screen can display; it does not literally make the screen emit ink."
+        },
+        {
+          "type": "paragraph",
+          "text": "The range of RGB colors varies with the specified color space. CMYK is also affected by printing equipment, inks, paper, and conditions. Simply saying that a file is RGB or CMYK therefore does not provide the full picture. When handing it off, it is best to include the color profile and intended use so the recipient does not interpret the same values under different assumptions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Photos and graphics for the market's online image can first be edited in an RGB workflow, while the print version should be prepared according to the printer's specifications. If the photos still need multiple rounds of editing, keep an editable original and create an output copy. Do not repeatedly convert the same file back and forth between modes expecting its colors to return automatically to their original state."
+        },
+        {
+          "type": "heading",
+          "text": "Color Profiles Define How Color Values Are Interpreted",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Color profiles describe the color characteristics of a color space or device, helping software that supports color management convert and display colors. sRGB is a common color space for web images, while print profiles should match the actual output conditions. Finding a profile available for download online does not mean it is suitable for your paper or printing workflow."
+        },
+        {
+          "type": "paragraph",
+          "text": "The same RGB numbers can represent different colors under different profiles. If a source file has no embedded profile, do not consider it repaired simply by choosing a setting that temporarily makes it look good. First determine which tool produced the file, which working space was used at the time, and whether it has undergone conversion to reduce the risk of misinterpretation."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a typical organizer, the most useful handoff information is the original file, current mode, current profile, and intended use. If you cannot confirm these details, honestly mark them as unknown and ask the production team to help verify them. Do not send only a screenshot through a messaging app to check color differences, as it cannot fully preserve the original file's color-processing conditions."
+        },
+        {
+          "type": "heading",
+          "text": "Distinguish Assign Profile from Convert to Profile",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Photoshop's Assign Profile command assigns a profile without changing the document's color values. Instead, it changes how those values are interpreted, so the appearance may change significantly. Convert to Profile converts the values according to the destination color space. The two address different problems, so assigning a new profile must not be treated as a routine output conversion."
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose the market photo is known to use a particular RGB color space and you now need a web version. You can use Convert to Profile on a copy, select the intended sRGB destination, and preview the result. If you are dealing with a missing or incorrect profile, first confirm the source. Do not arbitrarily assign another space just to make the colors more vivid."
+        },
+        {
+          "type": "paragraph",
+          "text": "Adobe's current desktop documentation places both commands under the Edit menu. During conversion, you can select the destination profile and related conversion options. Names may differ slightly between versions or interface languages. After the operation, check the document's actual state and save it in a format that supports embedded profiles, rather than relying only on which menu item you clicked."
+        },
+        {
+          "type": "heading",
+          "text": "Prepare Separate Web and Print Versions",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For the web version, first confirm the pixel dimensions, aspect ratio, and format required by the publishing destination, then export using a suitable RGB color space. Adobe's public guidance for general web images recommends sRGB as a starting point. This choice makes compatibility and handoff easier; it does not mean modern screens and browsers can only handle sRGB."
+        },
+        {
+          "type": "paragraph",
+          "text": "For the print version, first obtain the printer's file specifications: whether it accepts PDF or another format, whether RGB objects may be retained, who handles conversion, and which output profile and PDF settings are required. Some workflows handle color conversion later in the process, so having the author convert every print file to CMYK first cannot be treated as the only approach."
+        },
+        {
+          "type": "paragraph",
+          "text": "A single PDF can contain different objects in RGB, CMYK, grayscale, or spot colors. The file extension itself does not mean the colors have been standardized. Nor can you assume that every placed image has undergone the same conversion simply because the layout document is set to CMYK. After export, the document's contents still need to be checked against the delivery specifications."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Confirm the web and print uses, and obtain the actual specifications from the publishing destination and printer.",
+            "Save the original editable file and check its current mode and color profile.",
+            "Create separate copies for each use, then convert, export, and embed profiles as agreed.",
+            "Reopen and inspect the finished files, obtain proofs if needed, and deliver the version and color-processing record."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Preview Differences with Soft Proofing; Get Print Proofs for Important Jobs",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Soft proofing uses a specified output profile to preview how a document's colors will appear under particular output conditions. Photoshop's official method is to configure Proof Setup under View, then toggle the preview with Proof Colors. This preview does not mean the original image has been converted to print colors."
+        },
+        {
+          "type": "paragraph",
+          "text": "The reliability of a soft proof depends on the monitor, the monitor and output profiles, and ambient light. An uncalibrated monitor or a profile that does not match the paper can cause the preview to differ from the finished print. If the market artwork includes product or brand colors that need to be identified accurately, arrange suitable proofs with the printer. Do not approve colors solely from a phone screen."
+        },
+        {
+          "type": "paragraph",
+          "text": "Colors outside the destination output's gamut need to be mapped during conversion, and their original vividness may not be preserved. If you notice changes, first confirm the profile and conversion conditions, then adjust the output copy. Do not simply keep increasing saturation, as this may cause other areas to lose tonal gradation without resolving the actual cause."
+        },
+        {
+          "type": "heading",
+          "text": "Check Color, Dimensions, and Version Together at Handoff",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Color mode and resolution are separate issues. Converting an image to CMYK does not add missing detail, and increasing the value in the resolution field of an image with few pixels does not provide more real image information. Print dimensions, effective image resolution, bleed, and trim positions should all be checked against the finished product and the printer's requirements."
+        },
+        {
+          "type": "paragraph",
+          "text": "Give the web and print versions clearly named separate files, accompanied by their completion date, intended use, profile, and whether color conversion has been performed. If text or photos change, export again and update the version. Do not give an old print PDF and a new web image the same ambiguous final-version name, increasing the chance of using the wrong one."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, reopen the actual delivery file and inspect its images, text, page range, and color state, and confirm which version the recipient is using. For spot colors, overprinting, total ink coverage, or special paper stocks, have the printer check these issues according to its workflow. A clear handoff helps the finished product come closer to expectations more effectively than guessing a universal set of CMYK values."
+        },
+        {
+          "type": "image",
+          "src": "/guides/rgb-cmyk-export/diagram-1-en.svg",
+          "alt": "Three cards explain preserving the original, exporting for the web, and handing off for print, without treating a screen illustration as an actual printed color proof.",
+          "width": 1600,
+          "height": 900,
+          "caption": "State RGB, CMYK, and profile information along with the intended use; a file extension cannot replace acceptance checks.",
+          "description": "Three cards explain preserving the original, exporting for the web, and handing off for print, without treating a screen illustration as an actual printed color proof.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Item",
+            "Main Use",
+            "Common Point of Confusion"
+          ],
+          "rows": [
+            [
+              "RGB image",
+              "Screen and digital image work",
+              "The color space still needs to be known"
+            ],
+            [
+              "CMYK image",
+              "Matching a four-color printing workflow",
+              "Output conditions may vary"
+            ],
+            [
+              "Assign Profile",
+              "Correcting or specifying how values are interpreted",
+              "Does not change the original color values"
+            ],
+            [
+              "Convert to Profile",
+              "Converting colors to the destination space",
+              "Results depend on the destination and options"
+            ],
+            [
+              "Soft proofing",
+              "Simulating specified output conditions",
+              "A preview is not an actual conversion"
+            ],
+            [
+              "PDF for print delivery",
+              "Carrying layout and output information",
+              "May contain objects in multiple color spaces"
+            ]
+          ],
+          "caption": "Compiled from official color documentation and an original handoff scenario. Actual print specifications must be confirmed by the printer."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Get File Specifications First, Then Decide Who Converts the Colors",
+          "text": "Different printing equipment and workflows may require different profiles and PDF settings. Keep the original files and processing records to prevent the author and printer from converting twice or each assuming the other has already done it."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Establish Website Color and Contrast Rules First",
+              "kind": "life",
+              "slug": "website-color-system"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Organize the Information Hierarchy in Your Layout",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Include Handoff Conditions in the Project Workflow",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Adobe: RGB and CMYK Color Modes",
+          "url": "https://helpx.adobe.com/photoshop/using/color-modes.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe: Assigning and Converting Color Profiles",
+          "url": "https://helpx.adobe.com/photoshop/desktop/adjust-color/color-profiles/change-color-profile-for-documents.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe: Color Management for Web Images",
+          "url": "https://helpx.adobe.com/photoshop/using/color-managing-documents-online-viewing.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe: Soft Proofing and Its Limitations",
+          "url": "https://helpx.adobe.com/photoshop/using/proofing-colors.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe Acrobat: PDF Color Conversion and Object Management",
+          "url": "https://helpx.adobe.com/acrobat/using/color-conversion-ink-management-acrobat.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "RGB と CMYK の選び方：画面、印刷、ファイルの書き出し",
+      "description": "同じイベントのビジュアルでも、ウェブサイトでは鮮やかに見えるのに、チラシに印刷すると色が変わることがあります。本記事では、地域の交換マーケット用に制作したオリジナル素材を使い、RGB、CMYK、カラープロファイル、ソフトプルーフの関係を説明します。ウェブ版と印刷版の書き出し手順、受け渡しの比較表、オリジナル図解も紹介します。一般の利用者が用途と印刷条件を先に確認し、適切な変換方法を選べるようにし、プロファイルの指定を色変換と取り違えたり、ファイル名だけを変えて納品したりするのを防ぎます。",
+      "hero": {
+        "src": "/guides/rgb-cmyk-export/hero-ja.jpg",
+        "alt": "Mokaair のオリジナル素材フォルダー、画面、印刷書類のイラスト。デジタルと印刷では異なる出力準備が必要なことを表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "地域の交換マーケットでウェブ宣伝画像と印刷チラシが必要になり、主催者が同じファイルを送ったところ、カラーモード、プロファイル、書き出し設定について質問が届きました。RGB と CMYK は確かによく使われる区分ですが、実際の受け渡しでは、画像をどこに表示するのか、誰が色変換を担当するのかも把握する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事では、このマーケット用オリジナル素材を例に整理方法を示し、2026 年 9 月 14 日に参照した Adobe の公式カラードキュメントに基づいて説明します。実際の印刷の試し刷りや機器テストは行っておらず、どの印刷業者にも共通する設定を指定するものでもありません。例の重点は、ファイルの用途、変換条件、検収の責任を明確にすることです。"
+        },
+        {
+          "type": "heading",
+          "text": "RGB と CMYK は異なる色の構成を表す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "RGB は赤、緑、青のチャンネルで色を表し、画面やデジタル画像でよく使われます。CMYK はシアン、マゼンタ、イエロー、ブラックの印刷色チャンネルで色を表し、四色印刷の工程でよく使われます。画面で CMYK 画像を見る場合も、ソフトウェアは色を画面に表示できる形式に変換する必要があり、画面が実際にインキを出すわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "RGB の色域は指定した色空間によって変わり、CMYK も印刷機器、インキ、用紙、条件の影響を受けます。そのため、ファイルが RGB か CMYK かを伝えるだけでは十分ではありません。受け渡し時にはカラープロファイルと用途も伝え、相手が異なる前提で同じ数値を解釈するのを避けるとよいでしょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "マーケットのウェブ用画像は、まず RGB のワークフローで写真や図形を編集し、印刷版は印刷業者の仕様に従って準備できます。写真を何度も修整する必要があるなら、編集可能な元データを保存し、出力用のコピーを作成します。同じファイルを異なるモード間で繰り返し変換しても、色が自動的に元へ戻るとは期待しないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "プロファイルは色の数値を解釈する基準になる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "カラープロファイルは、色空間や機器の色の特性を記述し、カラーマネジメントに対応したソフトウェアでの変換や表示を助けます。sRGB はウェブ画像でよく使われる色空間です。印刷用のプロファイルは、実際の出力条件に対応している必要があります。インターネットでダウンロードできるファイルが見つかっても、自分の用紙や印刷工程に適しているとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ RGB の数値でも、プロファイルが違えば異なる色を表すことがあります。元ファイルにプロファイルが埋め込まれていない場合、ひとまず画面の見栄えがよくなる設定を適当に選び、それで修復が完了したと考えるべきではありません。ファイルを作成したツール、当時の作業用色空間、変換の有無を先に把握することで、誤判断を減らせます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般の主催者にとって、受け渡しで最も役立つ情報は、元ファイル、現在のモード、現在のプロファイル、予定している用途です。確認できない場合は不明と明記し、制作側に確認を依頼しましょう。色の違いを確認するためにメッセージアプリのスクリーンショットだけを送るのは避けてください。それでは元ファイルの色処理条件を完全には保持できないためです。"
+        },
+        {
+          "type": "heading",
+          "text": "プロファイルの指定とプロファイル変換を区別する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Photoshop の Assign Profile、つまりプロファイルの指定は、ドキュメントの色の数値を変えず、その数値の解釈方法を変えるため、見た目が大きく変わることがあります。一方、Convert to Profile は変換先の色空間に合わせて数値を変換します。両者が扱う問題は異なるため、新しいプロファイルの指定を通常の出力変換と取り違えてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "マーケットの写真が特定の RGB 色空間で作られたと分かっており、ウェブ版を制作する場合を考えましょう。コピーでプロファイル変換を使い、予定している sRGB を変換先に選んで結果をプレビューできます。プロファイルの欠落や誤りに対処する場合は、先に出所を確認する必要があります。色を鮮やかにするためだけに、別の色空間を任意に指定しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Adobe の現在のデスクトップ版向けドキュメントでは、この両方の操作を Edit メニューに配置しており、変換時には変換先プロファイルと関連する変換オプションを選べます。バージョンや表示言語によって名称が多少異なる場合があります。操作後はドキュメントの実際の状態を確認し、プロファイルを埋め込める形式で保存してください。メニューのどの項目を押したかだけで判断しないことが大切です。"
+        },
+        {
+          "type": "heading",
+          "text": "ウェブ版と印刷版を別々に準備する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ウェブ版では、掲載先が必要とするピクセル寸法、縦横比、形式を先に確認し、適切な RGB 色空間で書き出します。Adobe の一般的なウェブ画像に関する公開ガイドでは、sRGB を推奨する出発点としています。これは互換性と受け渡しのしやすさを考えた選択であり、現代の画面やブラウザーが sRGB しか扱えないという意味ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "印刷版では、先に印刷業者からファイル仕様を入手します。PDF とほかの形式のどちらを受け付けるのか、RGB オブジェクトを残してよいのか、誰が変換を担当するのか、どの出力プロファイルと PDF 設定が必要なのかを確認してください。工程の後段で色変換を行う場合もあるため、すべての印刷ファイルを制作者が先に CMYK へ変換することが唯一の方法とは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ PDF に RGB、CMYK、グレースケール、特色などの異なるオブジェクトが含まれることがあり、拡張子だけでは色が統一されているとは分かりません。レイアウト用ドキュメントが CMYK に設定されているからといって、配置した画像がすべて同じ変換を済ませているとも限りません。書き出し後も、納品仕様に従ってドキュメントの内容を確認する必要があります。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "ウェブと印刷の用途を確認し、掲載先と印刷業者の実際の仕様を入手する。",
+            "編集可能な元ファイルを保存し、現在のモードとカラープロファイルを確認する。",
+            "用途別のコピーを作り、合意した内容に従って変換、書き出し、プロファイルの埋め込みを行う。",
+            "完成ファイルを開き直して確認し、必要に応じて試し刷りを行い、納品するバージョンと色処理の記録を渡す。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "ソフトプルーフで違いを確認し、重要な印刷物は試し刷りも行う",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ソフトプルーフでは、指定した出力プロファイルを使い、特定の出力条件でのドキュメントの色をプレビューできます。Photoshop の公式の方法は、まず View の Proof Setup を設定し、Proof Colors でプレビューを切り替えるというものです。このプレビューは、元画像を印刷用の色へ変換済みであることを意味しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プルーフの信頼性は、画面、画面と出力のプロファイル、周囲の光の影響を受けます。未調整の画面や用紙に対応していないプロファイルでは、プレビューと完成品が異なることがあります。マーケットのビジュアルに、正確に識別する必要がある商品の色やブランドカラーが含まれる場合は、印刷業者と適切な試し刷りを手配してください。スマートフォンの画面だけで色を承認するべきではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "変換先の出力色域を超える色は、変換時に対応する処理が必要で、元の鮮やかさを保てるとは限りません。変化に気づいたら、まずプロファイルと変換条件を確認し、出力用のコピーで調整してください。むやみに彩度を上げると、ほかの部分の階調が失われることがあり、本当の原因も解決できるとは限りません。"
+        },
+        {
+          "type": "heading",
+          "text": "納品時は色、寸法、バージョンをまとめて確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "カラーモードと解像度は別の問題です。画像を CMYK に変換しても、欠けている細部は増えません。ピクセル数の少ない画像の解像度欄を大きな値に変えても、実際の画像情報が増えるわけではありません。印刷寸法、画像の実効解像度、塗り足し、裁断位置は、いずれも完成品と印刷業者の要件に従って確認する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ウェブ版と印刷版を明確に名付けた別々のファイルにし、完成日、用途、プロファイル、色変換済みかどうかを添えるとよいでしょう。文字や写真を修正した場合は、書き出し直してバージョンを更新します。古い印刷用 PDF と新しいウェブ画像に同じ曖昧な最終版の名前を付けると、取り違えて使う可能性が高まるため避けてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に、実際に納品するファイルを開き直して、画像、文字、ページ範囲、色の状態を確認し、受取側が使うバージョンも確認します。特色、オーバープリント、総インキ量、特殊な用紙については、印刷業者に工程に沿った確認を依頼してください。汎用的な CMYK の数値を推測するより、明確な受け渡しのほうが完成品を期待に近づける助けになります。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/rgb-cmyk-export/diagram-1-ja.svg",
+          "alt": "原稿の保存、ウェブ版の書き出し、印刷版の納品の要点を示す三枚のカード。画面上の模式図を実際の印刷色見本として扱ってはいない。",
+          "width": 1600,
+          "height": 900,
+          "caption": "RGB、CMYK、プロファイルは用途と併せて伝える。拡張子だけでは検収の代わりにならない。",
+          "description": "原稿の保存、ウェブ版の書き出し、印刷版の納品の要点を示す三枚のカード。画面上の模式図を実際の印刷色見本として扱ってはいない。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "処理項目",
+            "主な用途",
+            "混同しやすい点"
+          ],
+          "rows": [
+            [
+              "RGB 画像",
+              "画面表示とデジタル画像の作業",
+              "色空間の把握も必要"
+            ],
+            [
+              "CMYK 画像",
+              "四色印刷の工程に対応",
+              "出力条件ごとに異なる場合がある"
+            ],
+            [
+              "プロファイルの指定",
+              "数値の解釈を修正または指定",
+              "元の色の数値は変わらない"
+            ],
+            [
+              "プロファイル変換",
+              "変換先の色空間に合わせて色を変換",
+              "結果は変換先とオプションの影響を受ける"
+            ],
+            [
+              "ソフトプルーフ",
+              "指定した出力条件を再現",
+              "プレビューは実際の変換ではない"
+            ],
+            [
+              "印刷納品用 PDF",
+              "レイアウトと出力情報を格納",
+              "複数の色形式のオブジェクトを含む場合がある"
+            ]
+          ],
+          "caption": "公式カラードキュメントとオリジナルの受け渡し例に基づいて整理。実際の印刷仕様は印刷業者が確認する。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "納品仕様を先に確認し、色変換の担当を決める",
+          "text": "印刷機器や工程が違えば、プロファイルや PDF の要件も異なる場合があります。元ファイルと処理記録を保存し、制作者と印刷業者が重複して変換したり、互いに相手が済ませたと思い込んだりするのを避けましょう。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ウェブサイトの配色とコントラストのルールを先に決める",
+              "kind": "life",
+              "slug": "website-color-system"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "レイアウトの情報階層を整理する",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "受け渡し条件をプロジェクトの工程に組み込む",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Adobe：RGB と CMYK のカラーモード",
+          "url": "https://helpx.adobe.com/photoshop/using/color-modes.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：カラープロファイルの指定と変換",
+          "url": "https://helpx.adobe.com/photoshop/desktop/adjust-color/color-profiles/change-color-profile-for-documents.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：ウェブ画像のカラーマネジメント",
+          "url": "https://helpx.adobe.com/photoshop/using/color-managing-documents-online-viewing.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：ソフトプルーフとその限界",
+          "url": "https://helpx.adobe.com/photoshop/using/proofing-colors.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe Acrobat：PDF の色変換とオブジェクト管理",
+          "url": "https://helpx.adobe.com/acrobat/using/color-conversion-ink-management-acrobat.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "RGB와 CMYK 선택법: 화면, 인쇄, 파일 출력",
+      "description": "같은 행사 디자인도 웹사이트에서는 선명하지만 전단으로 인쇄하면 색상이 달라질 수 있습니다. 이 글은 직접 제작한 지역 교환 장터 자료로 RGB, CMYK, 색상 프로파일, 화면 교정의 관계를 설명하고, 웹용과 인쇄용 출력 단계, 인계 비교표와 자체 제작 도해를 정리합니다. 일반 사용자가 용도와 인쇄 조건부터 확인한 뒤 적절한 변환 방식을 선택하도록 도와, 프로파일 할당을 색상 변환으로 착각하거나 파일 이름만 바꿔 납품하는 일을 예방합니다.",
+      "hero": {
+        "src": "/guides/rgb-cmyk-export/hero-ko.jpg",
+        "alt": "Mokaair의 자체 제작 자료 폴더와 화면, 인쇄 문서를 그린 일러스트로, 디지털용과 인쇄용에는 서로 다른 출력 준비가 필요함을 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "지역 교환 장터에는 온라인 홍보 이미지와 인쇄 전단이 필요합니다. 주최자가 같은 파일을 보냈지만 색상 모드, 프로파일, 출력 설정에 관한 질문을 받았습니다. RGB와 CMYK는 분명 흔히 쓰이는 구분이지만, 실제 인계할 때는 이미지가 어디에 표시될지, 누가 색상 변환을 맡을지도 알아야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 직접 제작한 장터 자료로 정리 방법을 보여 주며, 2026년 9월 14일에 확인한 Adobe 공식 색상 문서를 바탕으로 설명합니다. 실제 인쇄 교정쇄 제작이나 장비 테스트는 하지 않았으며, 어느 인쇄소에도 공통으로 적용할 설정을 제시하지 않습니다. 예시의 핵심은 파일 용도, 변환 조건, 검수 책임을 명확히 하는 것입니다."
+        },
+        {
+          "type": "heading",
+          "text": "RGB와 CMYK는 서로 다른 색상 구성을 나타냅니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "RGB는 빨강, 초록, 파랑 채널로 색상을 표현하며 화면과 디지털 이미지에 자주 사용됩니다. CMYK는 시안, 마젠타, 옐로, 블랙 같은 인쇄 색상 채널로 색상을 표현하며, 네 가지 색을 사용하는 인쇄 공정에서 흔히 쓰입니다. 화면에서 CMYK 이미지를 볼 때도 소프트웨어는 색상을 화면이 표시할 수 있는 형태로 변환해야 하며, 화면이 실제로 잉크를 내보내는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "RGB의 색상 범위는 지정한 색상 공간에 따라 달라지고, CMYK도 인쇄 장비, 잉크, 용지와 조건의 영향을 받습니다. 따라서 파일이 RGB인지 CMYK인지 밝히는 것만으로는 충분하지 않습니다. 인계할 때 색상 프로파일과 용도도 함께 제공하면, 상대방이 같은 수치를 다른 전제로 해석하는 일을 예방할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "장터의 웹용 이미지는 먼저 RGB 작업 흐름에서 사진과 그래픽을 편집하고, 인쇄용은 인쇄 업체의 규격에 맞춰 준비할 수 있습니다. 사진을 여러 차례 수정해야 한다면 편집 가능한 원본을 보관하고 출력용 사본을 만드세요. 색상이 자동으로 원래대로 돌아올 것이라 기대하며 같은 파일을 서로 다른 모드 사이에서 반복 변환하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "프로파일은 색상 수치를 해석하는 기준입니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "색상 프로파일은 색상 공간이나 장비의 색상 특성을 설명하며, 색상 관리를 지원하는 소프트웨어가 색상을 변환하고 표시하도록 돕습니다. sRGB는 웹 이미지에 흔히 쓰이는 색상 공간이고, 인쇄용 프로파일은 실제 출력 조건에 맞아야 합니다. 인터넷에서 다운로드할 수 있는 파일을 찾았다고 해서 자신의 용지나 인쇄 공정에 적합한 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 RGB 수치도 프로파일에 따라 다른 색상을 나타낼 수 있습니다. 원본 파일에 프로파일이 포함되어 있지 않다면, 화면이 일시적으로 보기 좋게 나오는 설정을 임의로 골랐다고 복구가 끝난 것으로 여겨서는 안 됩니다. 파일을 어떤 도구로 만들었는지, 당시 작업 색상 공간은 무엇이었는지, 변환을 거쳤는지부터 파악해야 잘못 판단할 가능성을 줄일 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "일반 주최자에게 가장 유용한 인계 정보는 원본 파일, 현재 모드, 현재 프로파일, 예정 용도입니다. 확인할 수 없다면 알 수 없다고 솔직하게 표시하고 제작 담당자에게 확인을 요청하세요. 메신저의 스크린샷만 보내 색상 차이를 확인하지 마세요. 스크린샷은 원본 파일의 색상 처리 조건을 온전히 보존할 수 없기 때문입니다."
+        },
+        {
+          "type": "heading",
+          "text": "프로파일 할당과 프로파일 변환 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Photoshop의 Assign Profile, 즉 프로파일 할당은 문서의 색상 수치를 바꾸지 않고 수치의 해석 방식을 바꾸므로, 화면상의 모습이 크게 달라질 수 있습니다. Convert to Profile은 대상 색상 공간에 맞춰 수치를 변환합니다. 두 기능은 서로 다른 문제를 처리하므로 새 프로파일 할당을 일반적인 출력 변환으로 여겨서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "장터 사진의 RGB 색상 공간을 알고 있고 이제 웹용으로 만들어야 한다면, 사본에서 프로파일로 변환 기능을 사용해 예정된 sRGB 대상을 선택하고 결과를 미리 볼 수 있습니다. 누락되거나 잘못된 프로파일을 처리할 때는 먼저 출처를 확인해야 합니다. 색상을 더 선명하게 만들기 위해 다른 공간을 임의로 할당하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "Adobe의 현재 데스크톱 버전 문서는 이 두 기능을 Edit 메뉴에 배치하며, 변환할 때 대상 프로파일과 관련 변환 옵션을 선택할 수 있습니다. 버전이나 인터페이스 언어에 따라 이름이 조금 다를 수 있으므로, 작업 후 문서의 실제 상태를 확인한 다음 프로파일 포함을 지원하는 형식으로 저장해야 합니다. 이전에 어떤 메뉴를 눌렀는지만 확인해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "웹용과 인쇄용을 따로 준비하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "웹용은 먼저 게시 위치에서 요구하는 픽셀 크기, 비율, 형식을 확인한 뒤 적절한 RGB 색상 공간으로 출력합니다. 일반 웹 이미지에 대한 Adobe의 공개 지침은 sRGB를 권장 출발점으로 제시합니다. 이는 호환성과 인계를 위한 선택이며, 최신 화면과 브라우저가 sRGB만 처리할 수 있다는 뜻은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "인쇄용은 먼저 인쇄 업체에서 파일 규격을 받으세요. PDF를 받는지 다른 형식을 받는지, RGB 개체를 유지해도 되는지, 누가 변환을 맡는지, 어떤 출력 프로파일과 PDF 설정이 필요한지 확인합니다. 일부 공정은 후속 단계에서 색상 변환을 처리하므로, 모든 인쇄 파일을 작성자가 먼저 CMYK로 변환해야 한다는 것을 유일한 방법으로 여겨서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "하나의 PDF에 RGB, CMYK, 회색조, 별색 등 서로 다른 개체가 포함될 수 있으므로, 확장자만으로 색상이 통일되었다고 판단할 수 없습니다. 레이아웃 문서가 CMYK로 설정되어 있다는 이유만으로 배치한 모든 이미지가 같은 변환을 마쳤다고 가정해서도 안 됩니다. 출력 후에도 납품 규격에 따라 문서 내용을 확인해야 합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "웹용과 인쇄용 용도를 확인하고, 게시 위치와 인쇄 업체의 실제 규격을 확보합니다.",
+            "편집 가능한 원본 파일을 보관하고, 현재 모드와 색상 프로파일을 확인합니다.",
+            "용도별 사본을 만들고, 합의한 방식으로 변환, 출력, 프로파일 포함을 진행합니다.",
+            "완성 파일을 다시 열어 확인하고, 필요하면 시험 인쇄를 진행한 뒤 버전과 색상 처리 기록을 함께 전달합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "화면 교정으로 차이를 미리 보고, 중요한 인쇄물은 시험 인쇄하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "화면 교정은 지정한 출력 프로파일을 사용해 특정 출력 조건에서 문서의 색상이 어떻게 표현될지 미리 확인하는 기능입니다. Photoshop의 공식 방법은 먼저 View의 Proof Setup을 설정하고, Proof Colors로 미리보기를 전환하는 것입니다. 이 미리보기가 원본 이미지를 인쇄 색상으로 변환했다는 뜻은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "교정의 신뢰도는 모니터 자체, 모니터 및 출력 프로파일, 주변광의 영향을 받습니다. 보정하지 않은 모니터나 용지에 맞지 않는 프로파일은 미리보기와 완성품의 차이를 만들 수 있습니다. 장터 디자인에 정확히 식별해야 하는 상품 색상이나 브랜드 색상이 포함된다면 인쇄 업체와 적절한 시험 인쇄를 마련해야 하며, 휴대전화 화면만 보고 색상을 승인해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "대상 출력의 색상 범위를 벗어난 부분은 변환 과정에서 매핑이 필요하며, 원래의 선명함을 유지하지 못할 수도 있습니다. 변화가 보이면 먼저 프로파일과 변환 조건을 확인한 다음 출력용 사본에서 조정하세요. 무조건 채도를 높이지 마세요. 다른 영역의 계조가 사라질 수 있고, 실제 원인을 해결하지 못할 수도 있기 때문입니다."
+        },
+        {
+          "type": "heading",
+          "text": "납품할 때 색상, 크기, 버전을 함께 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "색상 모드와 해상도는 서로 다른 문제입니다. 이미지를 CMYK로 변환해도 부족한 세부 정보가 늘어나지 않으며, 픽셀 수가 적은 이미지의 해상도 항목을 높여도 실제 이미지 정보가 더 생기는 것은 아닙니다. 인쇄 크기, 이미지 유효 해상도, 도련과 재단 위치는 모두 완성품과 인쇄 업체의 요구에 따라 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "웹용과 인쇄용을 이름이 명확한 별도 파일로 나누고, 완료 날짜, 용도, 프로파일, 색상 변환 여부를 덧붙일 수 있습니다. 글이나 사진을 수정했다면 다시 출력한 뒤 버전을 갱신하세요. 오래된 인쇄용 PDF와 새 웹용 이미지가 같은 모호한 최종본 이름을 공유해 서로 잘못 사용하는 일이 늘어나지 않도록 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 실제 납품 파일을 다시 열어 이미지, 글, 페이지 범위, 색상 상태를 확인하고, 받는 쪽이 사용하는 버전도 확인하세요. 별색, 오버프린트, 총 잉크량, 특수 용지에 관한 문제는 인쇄 업체가 공정에 따라 확인하도록 맡기세요. 명확한 인계는 범용 CMYK 수치를 추측하는 것보다 완성품을 기대에 가깝게 만드는 데 도움이 됩니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/rgb-cmyk-export/diagram-1-ko.svg",
+          "alt": "세 카드가 원본 보관, 웹용 출력, 인쇄용 납품의 핵심을 설명하며, 화면상의 예시를 실제 인쇄 색상 견본으로 제시하지 않습니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "RGB, CMYK, 프로파일은 용도와 함께 설명해야 하며, 파일 확장자는 검수를 대신할 수 없습니다.",
+          "description": "세 카드가 원본 보관, 웹용 출력, 인쇄용 납품의 핵심을 설명하며, 화면상의 예시를 실제 인쇄 색상 견본으로 제시하지 않습니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "처리 항목",
+            "주요 용도",
+            "혼동하기 쉬운 점"
+          ],
+          "rows": [
+            [
+              "RGB 이미지",
+              "화면 및 디지털 이미지 작업",
+              "색상 공간도 알아야 함"
+            ],
+            [
+              "CMYK 이미지",
+              "네 가지 색을 사용하는 인쇄 공정",
+              "출력 조건마다 다를 수 있음"
+            ],
+            [
+              "프로파일 할당",
+              "수치의 해석을 수정하거나 지정",
+              "기존 색상 수치는 변경하지 않음"
+            ],
+            [
+              "프로파일로 변환",
+              "대상 공간에 맞춰 색상 변환",
+              "대상과 옵션에 따라 결과가 달라짐"
+            ],
+            [
+              "화면 교정",
+              "지정한 출력 조건 시뮬레이션",
+              "미리보기는 실제 변환이 아님"
+            ],
+            [
+              "인쇄 납품용 PDF",
+              "레이아웃 및 출력 정보 포함",
+              "여러 종류의 색상 개체가 포함될 수 있음"
+            ]
+          ],
+          "caption": "공식 색상 문서와 자체 제작한 인계 상황을 바탕으로 정리했으며, 실제 인쇄 규격은 인쇄 업체가 확인합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "납품 규격부터 확인하고 색상 변환 담당자 정하기",
+          "text": "인쇄 장비와 공정이 다르면 프로파일과 PDF 요구 사항도 달라질 수 있습니다. 원본 파일과 처리 기록을 보관해 작성자와 인쇄 업체가 중복 변환하거나, 서로 상대방이 이미 완료했다고 가정하는 일을 예방하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 색상과 대비 규칙부터 만들기",
+              "kind": "life",
+              "slug": "website-color-system"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "레이아웃의 정보 계층 정리하기",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "인계 조건을 프로젝트 절차에 반영하기",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Adobe: RGB와 CMYK 색상 모드",
+          "url": "https://helpx.adobe.com/photoshop/using/color-modes.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe: 색상 프로파일 할당과 변환",
+          "url": "https://helpx.adobe.com/photoshop/desktop/adjust-color/color-profiles/change-color-profile-for-documents.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe: 웹 이미지의 색상 관리",
+          "url": "https://helpx.adobe.com/photoshop/using/color-managing-documents-online-viewing.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe: 화면 교정과 한계",
+          "url": "https://helpx.adobe.com/photoshop/using/proofing-colors.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe Acrobat: PDF 색상 변환 및 개체 관리",
+          "url": "https://helpx.adobe.com/acrobat/using/color-conversion-ink-management-acrobat.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "RGB 与 CMYK 怎么选：屏幕、印刷与文件输出",
+      "description": "同一张活动视觉图放上网站很鲜明，印成传单却可能呈现不同色彩。本文用原创社区交换集市素材，解释 RGB、CMYK、色彩配置文件与屏幕校样的关系，整理网页版和印刷版的输出步骤、交接比较表及原创图解。帮助一般用户先确认用途与印刷条件，再选择适当的转换方式，避免把指定配置文件当成转色，或只改文件名就交付。",
+      "hero": {
+        "src": "/guides/rgb-cmyk-export/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创素材文件夹、屏幕与印刷文件插图，表示数字与印刷需要不同的输出准备。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "社区交换集市需要一张网络宣传图和一份印刷传单，主办人把同一个文件寄出去，却收到关于颜色模式、配置文件和输出设置的问题。RGB 与 CMYK 确实是常见分界，但真正交接时，还需要知道图片会在哪里呈现、谁负责色彩转换。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以这组原创集市素材示范整理方式，根据 2026 年 9 月 14 日查阅的 Adobe 官方色彩文档进行说明。未进行实际印刷打样或设备测试，也不替任何印刷厂指定通用设置；示例重点是把文件用途、转换条件与验收责任说清楚。"
+        },
+        {
+          "type": "heading",
+          "text": "RGB 与 CMYK 表示不同的色彩组成",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "RGB 以红、绿、蓝通道描述色彩，常用于屏幕与数字影像；CMYK 以青、洋红、黄、黑等印刷色通道描述色彩，常见于四色印刷流程。在屏幕上查看 CMYK 图片时，软件仍要把颜色转成屏幕可以显示的形式，不会真的让屏幕发出油墨。"
+        },
+        {
+          "type": "paragraph",
+          "text": "RGB 的色彩范围会随指定的色彩空间而变；CMYK 也会受到印刷设备、油墨、纸张与条件的影响。因此，说文件是 RGB 或 CMYK 还不够完整。交接时最好一并提供色彩配置文件及用途，避免对方以不同假设解读相同数值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "集市网络图可以先在 RGB 工作流程中编辑照片和图形，印刷版则按承印方规格准备。如果照片还需要多次修图，保留可编辑的原始版本，再建立输出副本。不要反复把同一份文件在不同模式间来回转换，期待颜色能自动恢复原状。"
+        },
+        {
+          "type": "heading",
+          "text": "配置文件让色彩数值有解读依据",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "色彩配置文件用来描述色彩空间或设备的色彩特性，帮助支持色彩管理的软件进行转换与呈现。sRGB 是常见的网络影像色彩空间；印刷用配置文件则应对应实际输出条件。在网上找到某个文件可以下载，不代表它就适合自己的纸张或印刷流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同样的 RGB 数字，在不同配置文件下可能代表不同的颜色。如果源文件没有嵌入配置文件，不应随便挑一个让画面暂时好看的设置就当作修复完成。先了解文件来自哪个工具、当时的工作空间与是否经过转换，才能降低误判。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对一般主办人而言，最有用的交接信息是原始文件、当前模式、当前配置文件及预定用途。如果无法确认，就坦白标明未知并请制作方协助核查。不要只传通信软件里的截图来确认色差，因为那无法完整保留原文件的色彩处理条件。"
+        },
+        {
+          "type": "heading",
+          "text": "分清指定配置文件与转换配置文件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Photoshop 的 Assign Profile，也就是指定配置文件，不会改变文档的色彩数值，而是改变这些数值的解读方式，所以外观可能明显改变。Convert to Profile 则根据目标色彩空间转换数值。两者处理的问题不同，不能把指定新配置文件当成一般输出转换。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假设集市照片已知属于某个 RGB 色彩空间，现在需要制作网页版，可以在副本中使用转换为配置文件，选择预定的 sRGB 目标并预览结果。如果是处理丢失或错误的配置文件，则需要先确认来源；不要只为了让颜色更鲜艳而任意指定另一个空间。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Adobe 当前桌面版文档将这两项放在 Edit 菜单下，转换时可以选择目标配置文件及相关转换选项。不同版本或语言界面的名称可能略有差异，操作后应核对文档的实际状态，再保存为支持嵌入配置文件的格式，而不是只看曾经点击过菜单中的哪一项。"
+        },
+        {
+          "type": "heading",
+          "text": "分别准备网络版与印刷版",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "网络版先确认发布位置需要的像素尺寸、比例与格式，再以合适的 RGB 色彩空间输出。Adobe 对一般网络影像的公开指引以 sRGB 为建议起点；这是便于兼容与交接的选择，不表示现代屏幕与浏览器只能处理 sRGB。"
+        },
+        {
+          "type": "paragraph",
+          "text": "印刷版先向承印方获取文件规格：接收 PDF 还是其他格式、是否接受保留 RGB 对象、谁负责转换、需要哪个输出配置文件与 PDF 设置。某些流程会在后端处理转色，因此不能把所有印刷文件都必须由作者先转 CMYK 当成唯一做法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一份 PDF 可能包含 RGB、CMYK、灰度或专色等不同对象，扩展名本身不代表色彩已统一。也不能只因排版文档设置为 CMYK，就假设每张置入图片都已完成相同转换。输出后仍需按照交件规格检查文档内容。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "确认网络与印刷用途，获取发布位置及承印方的实际规格。",
+            "保存原始可编辑文件，检查当前模式与色彩配置文件。",
+            "按用途建立副本，依约定执行转换、输出及嵌入配置文件。",
+            "重新打开成品检查，必要时打样，交付版本及色彩处理记录。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "用屏幕校样预览差异，重要印件再打样",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "屏幕校样可以利用指定的输出配置文件，预览文档在某个输出条件下的色彩表现。Photoshop 官方方式是先设置 View 里的 Proof Setup，再以 Proof Colors 切换预览。这种预览不等于已把原始图片转成印刷色彩。"
+        },
+        {
+          "type": "paragraph",
+          "text": "校样可靠性受到屏幕、屏幕与输出配置文件及环境光的影响。未经校准的屏幕或不对应纸张的配置文件，都可能让预览和成品不同。如果集市视觉图包含需要准确辨识的商品色或品牌色，应与承印方安排合适的打样，不能只靠手机上的画面核准颜色。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对于色彩超出目标输出范围的部分，转换需要做相应处理，未必能保持原本的鲜明程度。发现变化时，先确认配置文件和转换条件，再在输出副本上调整；不要一味增加饱和度，因为这可能让其他区域失去层次，也未必解决真正原因。"
+        },
+        {
+          "type": "heading",
+          "text": "交付时把色彩、尺寸与版本一起核对",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "色彩模式与分辨率是不同问题。把图片转成 CMYK，不会增加缺少的细节；把低像素图片的分辨率字段改大，也不等于获得更多真实影像信息。印刷尺寸、影像有效分辨率、出血与裁切位置，都应根据成品和承印方要求确认。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以把网络版与印刷版分成命名清晰的文件，附上完成日期、用途、配置文件与是否已转色。如果修改了文字或照片，重新输出后更新版本，不要让旧的印刷 PDF 和新的网络图共用同一个含糊的最终版名称，增加交错使用的机会。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后重新打开实际交付文件，检查图片、文字、页面范围及色彩状态，并确认收件方使用的版本。对于专色、叠印、总墨量或特殊纸材，将问题交给承印方按流程核对。清楚的交接比猜一组通用 CMYK 数值，更能帮助成品接近预期。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/rgb-cmyk-export/diagram-1-zh-cn.svg",
+          "alt": "三张卡片说明保留原稿、网络版输出与印刷版交件的重点，没有把屏幕示意当成实际印刷色样。",
+          "width": 1600,
+          "height": 900,
+          "caption": "RGB、CMYK 与配置文件要连同用途一起交代，扩展名不能代替验收。",
+          "description": "三张卡片说明保留原稿、网络版输出与印刷版交件的重点，没有把屏幕示意当成实际印刷色样。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "处理项目",
+            "主要用途",
+            "容易混淆的地方"
+          ],
+          "rows": [
+            [
+              "RGB 影像",
+              "屏幕及数字影像工作",
+              "仍需知道色彩空间"
+            ],
+            [
+              "CMYK 影像",
+              "对应四色印刷流程",
+              "各输出条件可能不同"
+            ],
+            [
+              "指定配置文件",
+              "修正或指定数值解读",
+              "不改原本色彩数值"
+            ],
+            [
+              "转换为配置文件",
+              "按目标空间转换色彩",
+              "结果受目标与选项影响"
+            ],
+            [
+              "屏幕校样",
+              "模拟指定输出条件",
+              "预览不是实际转换"
+            ],
+            [
+              "印刷交件 PDF",
+              "承载版面及输出信息",
+              "可能包含多种色彩对象"
+            ]
+          ],
+          "caption": "根据官方色彩文档与原创交接情境整理，实际印刷规格由承印方确认。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先问交件规格，再决定谁来转色",
+          "text": "印刷设备和流程不同，配置文件与 PDF 要求也可能不同。保留原始文件与处理记录，避免作者和承印方重复转换，或各自假设另一方已经完成。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先建立网站色彩与对比规则",
+              "kind": "life",
+              "slug": "website-color-system"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理排版的信息层级",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把交接条件放进项目流程",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Adobe：RGB 与 CMYK 色彩模式",
+          "url": "https://helpx.adobe.com/photoshop/using/color-modes.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：指定与转换色彩配置文件",
+          "url": "https://helpx.adobe.com/photoshop/desktop/adjust-color/color-profiles/change-color-profile-for-documents.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：网络影像的色彩管理",
+          "url": "https://helpx.adobe.com/photoshop/using/color-managing-documents-online-viewing.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：屏幕校样与限制",
+          "url": "https://helpx.adobe.com/photoshop/using/proofing-colors.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe Acrobat：PDF 色彩转换及对象管理",
           "url": "https://helpx.adobe.com/acrobat/using/color-conversion-ink-management-acrobat.html",
           "checked_on": "2026-09-14"
         }

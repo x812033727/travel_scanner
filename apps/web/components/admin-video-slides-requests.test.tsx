@@ -140,6 +140,9 @@ describe("SlidesRequests", () => {
   });
 
   it("withdraws a queued request after a confirmation, and offers no withdraw on a started one", async () => {
+    // The cancelled request is kept for a week after it ends, so the clock stays near its time.
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date("2026-10-05T04:00:00Z"));
     let requests: SlidesRequest[] = [base, started];
     const calls = stubFetch(() => Response.json({ requests }), (call) => {
       requests = requests.map((request) => (call.url.endsWith(request.id) ? { ...request, status: "cancelled", cancelled_at: "2026-10-05T03:00:00Z" } : request));

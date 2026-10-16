@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "Core Web Vitals 怎麼改善：從真實使用資料找瓶頸",
@@ -154,6 +157,7 @@
           "width": 1600,
           "height": 900,
           "caption": "每一筆效能問題，都要對應讀者情境與可複查的結果。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -254,6 +258,998 @@
         },
         {
           "title": "PageSpeed Insights 資料說明",
+          "url": "https://developers.google.com/speed/docs/insights/v5/about",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "How to Improve Core Web Vitals: Find Bottlenecks in Real User Data",
+      "description": "When Core Web Vitals flags red items, first identify the affected devices, page groups, and user actions. Using a small course website in Taiwan as an example, this article explains the experience issues behind LCP, INP, and CLS, the roles of real user data and lab tests, reproduction records for engineers, and checks after fixes. A comparison table and original diagrams help avoid major site changes based on a single score.",
+      "hero": {
+        "src": "/guides/core-web-vitals-diagnosis/hero-en.jpg",
+        "alt": "An original graphic of a screen, server, and checklist, showing how to trace performance causes from user experience and verify fixes.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A course page's main image takes ages to appear, selecting a date does nothing, and the registration button suddenly moves down just as you are about to press it. These are three different frustrations. Core Web Vitals examines loading, interaction, and layout stability separately, helping website managers turn “the website is slow” into more clearly defined improvement tasks."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before starting, write down the scenario readers encountered and which data identified the issue. Reports can highlight areas needing attention, but they cannot automatically tell you whether the server, images, or code caused the problem. Following the user scenario to find the bottleneck, then planning fixes and verification, makes it easier to confirm the cause than enabling every acceleration option at once."
+        },
+        {
+          "type": "heading",
+          "text": "Understand the Three Metrics and Keep Their Units",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LCP tracks how long it takes for the main large content within the viewport to appear, which may be an image or text. INP tracks responsiveness from a user's click, tap, or keyboard action to the next screen update. CLS measures unexpected layout shifts; it is neither a wait time in seconds nor a direct measure of how many pixels something moves."
+        },
+        {
+          "type": "paragraph",
+          "text": "As of the verification date, Google's thresholds for “good” are LCP of no more than 2.5 seconds, INP of no more than 200 milliseconds, and CLS of no more than 0.1. Assessments usually use the 75th percentile and separate mobile from desktop. This means at least three-quarters of observed experiences are at that value or better, rather than averaging everyone's results."
+        },
+        {
+          "type": "paragraph",
+          "text": "There is no combined score in which the three metrics offset one another. A fast main image cannot compensate for a severely lagging button, and one good desktop test cannot represent every mobile user's experience. Record the name, value, unit, device, and data scope together first, so different results do not get mixed up when discussing them."
+        },
+        {
+          "type": "heading",
+          "text": "Read Real User Data First, Then Use Tests to Find Causes",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console's Core Web Vitals report groups URLs with similar experiences, making it useful for seeing which pages an issue affects. Example URLs in a group are not a complete list, nor do they mean that every visit to every URL is equally slow. The report may not appear when there is insufficient data, so a blank report cannot be read as a pass for everything."
+        },
+        {
+          "type": "paragraph",
+          "text": "PageSpeed Insights' real user data comes from CrUX and covers the past 28 days. Distinguish data for the current URL from data for the entire website origin; if a page has too few samples, origin-level data may be shown instead. If a course detail page shows a site-wide aggregate, you cannot directly attribute the issue to the course's main image in front of you."
+        },
+        {
+          "type": "paragraph",
+          "text": "Lab tests can reproduce issues under relatively consistent conditions, making them useful for checking changes. A standard Lighthouse page-load test has no actual user interaction and cannot directly measure INP. TBT can provide clues about blocking, but they are different metrics. For interaction issues, you still need to walk through the actual workflow."
+        },
+        {
+          "type": "heading",
+          "text": "When LCP Is Slow, Trace the Main Content's Path to Appearance",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First confirm the LCP element identified by the test; do not assume it must be the cover image. A course page may feature a large image as its main content on desktop, but title text on mobile. Record the screen and element so you know which resource to inspect and whether different layouts need different fixes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google's diagnostic method breaks the time down into the initial server response, the delay before resource loading starts, download time, and the delay between download completion and rendering. If the page's HTML already arrives late, shrinking the image alone may offer limited help. If an image has finished downloading but still does not appear, also check the other work its rendering is waiting for."
+        },
+        {
+          "type": "paragraph",
+          "text": "A record for engineers could say, “The main image on the mobile course page appears only after a certain piece of code finishes,” with the corresponding loading record attached. This is more specific than simply requesting a hosting change. Target the confirmed source of delay, then compare using the same layout and conditions to avoid combining results from different pages."
+        },
+        {
+          "type": "heading",
+          "text": "When INP Is High, Reproduce the Slow Action",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "List actions readers commonly perform, such as expanding the course outline, switching dates, and selecting the number of participants. Perform each action both just after entering the page and after loading finishes. Some lag occurs only while the code is busy starting up; waiting until the screen is completely stable before clicking once may miss the real issue."
+        },
+        {
+          "type": "paragraph",
+          "text": "An interaction can be broken down into the wait before event handling begins, execution of the event handler itself, and subsequent rendering. Engineers can use the records to identify long tasks, heavy event handling, or layout update work. A small download does not mean the code requires little processing, and a cache hit does not guarantee that buttons respond promptly."
+        },
+        {
+          "type": "paragraph",
+          "text": "If pressing a button immediately displays a processing message, but the backend takes a while to return the registration result, also record the time to complete the whole task. INP focuses on interaction response; it is not the total time to complete an order or query data. Verification must check both immediate visual feedback and a correct final result."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Choose an affected page and a specific interaction, and record the device and login status.",
+            "Perform the action both during loading and after it finishes, and record steps that reproduce the issue.",
+            "Have an engineer record a performance trace to locate the waiting, processing, or rendering stage.",
+            "After the change, use the same steps to recheck responsiveness and functional results, keeping before-and-after records."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "When CLS Is High, Find What Pushes Content Away",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Layout shifts commonly involve images without reserved dimensions, embedded content, or dynamically inserted blocks, and may also relate to font loading. If a notification bar appears late on a course page and pushes the registration button down, readers see the button move, but the notification bar above it may be what needs inspection."
+        },
+        {
+          "type": "paragraph",
+          "text": "The shifted elements listed by diagnostic tools are not necessarily the source of the shift. Observe the screen before and after the movement, and check content above that was added or grew larger. Reserve space matching the aspect ratio of images and videos, and design suitable loading positions for dynamic blocks. Do not use oversized blank spaces as a blanket fix, making the mobile page difficult to read."
+        },
+        {
+          "type": "paragraph",
+          "text": "Shifts may also occur while scrolling or when content is added after the initial load. Read from the top of the page to the bottom, and interact with the sections readers actually use. Low CLS in an initial-load test does not rule out layout issues over an entire visit; visual records of a reproducible issue are more useful than a single screenshot of a score."
+        },
+        {
+          "type": "heading",
+          "text": "Prioritize by Impact, Then Verify in Two Stages",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Organize each issue by device, page group, metric, specific scenario, impact, owner, and rollback method. Address severe issues affecting important workflows first, then assess whether a shared layout can improve multiple pages at once. Issues found only on a few particular pages do not require an immediate change to site-wide settings."
+        },
+        {
+          "type": "paragraph",
+          "text": "In the first stage, check that the change has been deployed to the intended environment, that the reproduction steps show improvement, and that forms, menus, and registration still work. In the second stage, track real user data. Because reports include the past 28 days, a fix today does not make historical data disappear immediately; mark the change date in your records."
+        },
+        {
+          "type": "paragraph",
+          "text": "Starting tracking in Search Console initiates a monitoring process; it does not reindex the site. Continue watching the scope and values while checking whether traffic sources and the device mix have changed. Define completion as a fixed issue with verifiable acceptance evidence, rather than simply writing “an acceleration plugin has been installed.”"
+        },
+        {
+          "type": "image",
+          "src": "/guides/core-web-vitals-diagnosis/diagram-1-en.svg",
+          "alt": "Four sections show, in order, data scope, issue reproduction, fixes targeting the cause, and verification of immediate functionality and subsequent real user data.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Every performance issue should connect to a reader scenario and results that can be checked again.",
+          "description": "Four sections show, in order, data scope, issue reproduction, fixes targeting the cause, and verification of immediate functionality and subsequent real user data.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Metric",
+            "Good Threshold",
+            "Issue to Locate First"
+          ],
+          "rows": [
+            [
+              "LCP",
+              "≤ 2.5 seconds",
+              "Where the main content is waiting"
+            ],
+            [
+              "INP",
+              "≤ 200 milliseconds",
+              "Which interaction responds slowly"
+            ],
+            [
+              "CLS",
+              "≤ 0.1, unitless",
+              "What unexpectedly moves visible content"
+            ]
+          ],
+          "caption": "Use the official thresholds as of the verification date, and check the 75th percentile, device type, and URL scope."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Distinguish Missing Data from a Pass",
+          "text": "Insufficient samples cannot establish that readers have a good experience. First build inspection records using representative pages and real interactions, then continue collecting and observing the relevant field data."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Build a Routine Search Console Checking Process",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Organize Website Image Production and Verification",
+              "kind": "life",
+              "slug": "image-seo-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Plan Website Maintenance and Change Records",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Web Vitals Definitions and Measurement",
+          "url": "https://web.dev/articles/vitals",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google LCP Diagnosis and Improvement",
+          "url": "https://web.dev/articles/optimize-lcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google INP Diagnosis and Improvement",
+          "url": "https://web.dev/articles/optimize-inp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google CLS Diagnosis and Improvement",
+          "url": "https://web.dev/articles/optimize-cls",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console Core Web Vitals Report",
+          "url": "https://support.google.com/webmasters/answer/9205520?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "PageSpeed Insights Data Explanation",
+          "url": "https://developers.google.com/speed/docs/insights/v5/about",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Core Web Vitals の改善方法：実ユーザーデータからボトルネックを探す",
+      "description": "Core Web Vitals に赤い項目があるときは、まず影響を受けるデバイス、ページグループ、読者の操作を確認します。台湾の小規模な講座サイトを例に、LCP、INP、CLS がそれぞれ示す体験上の問題を解説し、実ユーザーデータとラボテストの役割分担、エンジニアに渡す再現記録、変更後の検証方法を整理します。比較表とオリジナルの図解を添え、単発のスコアだけを見てサイトを大幅に変更することを避けられるようにします。",
+      "hero": {
+        "src": "/guides/core-web-vitals-diagnosis/hero-ja.jpg",
+        "alt": "モニター、サーバー、チェック用書類を描いたオリジナル画像。利用体験からパフォーマンスの原因を探し、改善を検証する流れを示しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "講座ページのメイン画像がなかなか表示されない、日付を選んでも反応しない、申し込みを押そうとしたらボタンが突然下に移動する。これはそれぞれ異なる三つの困りごとです。Core Web Vitals は読み込み、操作への応答、レイアウトの安定性を分けて観察することで、サイト管理者が「サイトが遅い」という問題を、より具体的な改善タスクに変える助けになります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "着手する前に、読者が問題に遭遇する状況と、どのデータが問題を示しているのかを書き留めます。レポートは注意すべき箇所を示せますが、原因がサーバー、画像、コードのどれなのかを自動で教えてくれるわけではありません。利用状況をたどってボトルネックを特定し、変更と検証を計画するほうが、すべての高速化オプションを一度に有効にするより原因を確認しやすくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "三つの指標を知り、単位を省略しない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LCP は、画面内の主要な大きいコンテンツが表示されるまでの時間を観察します。対象は画像の場合もあれば、テキストの場合もあります。INP は、ユーザーがクリック、タップ、キーボード操作をしてから、次に画面が更新されるまでの応答を観察します。CLS は予期しないレイアウトのずれを測る指標で、待ち時間の秒数ではなく、移動したピクセル数として直接解釈することもできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認日時点で、Google の「良好」の基準は、LCP が 2.5 秒以下、INP が 200 ミリ秒以下、CLS が 0.1 以下です。評価では通常、75 パーセンタイルを用い、モバイルとデスクトップを区別します。これは、観測された体験の少なくとも四分の三が、その値と同等か、それより良好であることを意味し、全員の結果を平均したものではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "三つの指標には、互いの良し悪しを相殺する総合スコアはありません。メイン画像が速く表示されても、ボタンの深刻な応答遅延を埋め合わせることはできません。あるデスクトップのテスト結果が良好でも、モバイルユーザー全員が同じ体験をしているとは限りません。まず指標名、数値、単位、デバイス、データの対象範囲をセットで記録すれば、やり取りの際に異なる結果を混同せずに済みます。"
+        },
+        {
+          "type": "heading",
+          "text": "まず実ユーザーデータを読み、テストで原因を探す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console の Core Web Vitals レポートは、体験が似ている URL をグループ化するため、問題がどのページに及んでいるかを把握するのに適しています。グループ内のサンプル URL は完全な一覧ではなく、どの URL も訪問のたびに同じように遅いことを示すものでもありません。データが十分でない場合は表示されないことがあり、空白のレポートをすべて合格と解釈してはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "PageSpeed Insights の実ユーザーデータは CrUX に基づき、過去 28 日間を対象としています。確認するときは、現在の URL のデータなのか、サイト全体のデータなのかを区別します。個別ページのサンプルが足りない場合は、オリジン単位のデータに切り替わることがあります。講座詳細ページでサイト全体の集計が表示されているなら、問題をそのページのメイン画像のせいだと即断することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ラボテストは、比較的一定の条件で問題を再現でき、変更の確認に適しています。通常の Lighthouse のページ読み込みテストには実際のユーザー操作がないため、INP を直接測定することはできません。TBT は処理のブロックに関する手がかりになりますが、両者は同じ指標ではありません。操作が関わる問題は、実際に操作の流れをたどる必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "LCP が遅いときは、主要コンテンツが表示されるまでの経路を調べる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まずテストが示した LCP 要素を確認し、必ずカバー画像だと決めつけないようにします。講座ページでは、デスクトップでは大きな画像が対象でも、モバイル版ではタイトルのテキストが対象になる場合があります。画面と要素を記録して初めて、どのリソースを調べるべきか、レイアウトごとに異なる修正が必要かを判断できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google の診断方法では、時間をサーバーの初期応答、リソースの読み込み開始前の遅延、ダウンロード時間、ダウンロード後から表示までの遅延に分けます。ページの HTML 自体が届くのが遅ければ、画像を小さくするだけでは効果が限られるかもしれません。画像のダウンロードがすでに終わっているのに表示されない場合は、表示が待っているほかの処理も調べる必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "エンジニアに渡す記録には、「モバイルの講座ページで、メイン画像が特定のコードの処理完了後に初めて表示される」と書き、対応する読み込み記録を添えられます。サーバーを変更するよう指示するだけよりも具体的です。修正は確認済みの遅延要因を対象とし、同じレイアウトと条件で再度比較して、異なるページの結果を混ぜないようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "INP が高いときは、遅い操作を再現する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "講座の概要を展開する、日付を切り替える、人数を選ぶなど、読者がよく行う操作を列挙し、ページを開いた直後と読み込み完了後のそれぞれで操作します。一部の応答遅延は、コードが起動処理で忙しいときだけ発生します。画面が完全に落ち着くまで待ってから一度クリックするだけでは、本当の問題を見逃す可能性があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一つの操作は、イベント処理が始まるまでの待機、イベント処理そのものの実行、その後の画面表示に分けられます。エンジニアは記録をもとに、長いタスク、負荷の大きいイベント処理、レイアウト更新の処理を見分けられます。ダウンロードするファイルが小さくてもコードの実行が軽いとは限らず、キャッシュがヒットしてもボタンがすぐに応答する保証はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ボタンを押すとすぐに処理中と表示されても、バックエンドから申し込み結果が返るまで時間がかかる場合は、タスク全体の完了時間も別途記録する必要があります。INP は操作への応答に重点を置いており、注文完了やデータ検索にかかる総時間とは異なります。検証では、画面に即座に反応が表示されることと、最終結果が正しいことの両方を確認します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "影響を受けるページと具体的な操作を一つ選び、デバイスとログイン状態を記録します。",
+            "読み込み中と完了後のそれぞれで操作し、再現できる手順を記録します。",
+            "エンジニアがパフォーマンストレースを記録し、待機、処理、表示のどの段階に問題があるかを特定します。",
+            "変更後は同じ手順で応答と機能の結果を再確認し、変更前後の記録を残します。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "CLS が高いときは、何がコンテンツを押し動かしたかを探す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ページのずれは、サイズをあらかじめ確保していない画像、埋め込みコンテンツ、動的に挿入されるブロックでよく発生し、フォントの読み込みが関係する場合もあります。講座ページで通知バーが遅れて表示され、申し込みボタンを下に押し動かした場合、読者にはボタンが動いたように見えますが、実際に調べるべきものは上部の通知バーかもしれません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "診断ツールが挙げる移動した要素が、移動を引き起こした原因とは限りません。移動前後の画面を観察し、上部に追加された、または大きくなったコンテンツを確認します。画像と動画には縦横比に合うスペースをあらかじめ確保し、動的なブロックは適切な読み込み位置を設計する必要があります。大きな空白で一律に問題を隠し、モバイル版を読みにくくしてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ずれはスクロール中や、初期読み込み後にコンテンツが追加されたときにも発生します。そのため、ページの先頭から末尾まで読み進め、実際に使う部分を操作する必要があります。初回読み込みテストの CLS が低いだけでは、訪問全体を通じたレイアウトの問題を除外できません。再現できる画面の記録は、スコアのスクリーンショット一枚より役立ちます。"
+        },
+        {
+          "type": "heading",
+          "text": "影響範囲で優先順位を決め、二段階で検証する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "問題を、デバイス、ページグループ、指標、具体的な状況、影響範囲、担当者、元に戻す方法の項目で整理します。まず深刻で重要な操作の流れに影響する問題を扱い、次に共通レイアウトの修正で複数のページをまとめて改善できるかを評価します。一部の特殊なページだけで発生する問題なら、サイト全体の設定をすぐに変更する必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一段階では、変更が予定した環境にデプロイされているか、再現手順で改善が見られるか、フォーム、メニュー、申し込みの流れが引き続き正常に動くかを確認します。第二段階では実ユーザーデータを追跡します。レポートには過去 28 日間が含まれるため、当日の修正で過去のデータがすぐに消えるわけではありません。記録には変更日を明記します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console で追跡を開始すると、一定期間の監視プロセスが始まりますが、それによってサイトが再インデックスされることはありません。対象範囲と数値を継続して観察し、同時に流入元やデバイス構成が変化していないかにも注意します。完了の定義は、問題が修正され、照合できる検証の根拠があることです。「高速化プラグインをインストール済み」と書くだけでは不十分です。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/core-web-vitals-diagnosis/diagram-1-ja.svg",
+          "alt": "四つのブロックが順に、データの対象範囲、問題の再現、原因に応じた修正、そして修正直後の機能確認とその後の実ユーザーデータによる検証を示します。",
+          "width": 1600,
+          "height": 900,
+          "caption": "個々のパフォーマンス問題は、読者の利用状況と再確認できる結果に結び付ける必要があります。",
+          "description": "四つのブロックが順に、データの対象範囲、問題の再現、原因に応じた修正、そして修正直後の機能確認とその後の実ユーザーデータによる検証を示します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "指標",
+            "良好の基準",
+            "最初に特定する問題"
+          ],
+          "rows": [
+            [
+              "LCP",
+              "≤ 2.5 秒",
+              "主要コンテンツがどの段階で待たされているか"
+            ],
+            [
+              "INP",
+              "≤ 200 ミリ秒",
+              "どの操作への応答が遅いか"
+            ],
+            [
+              "CLS",
+              "≤ 0.1、単位なし",
+              "何が表示中のコンテンツを予期せず動かしたか"
+            ]
+          ],
+          "caption": "確認日時点の公式基準に従い、75 パーセンタイルとデバイス、URL の対象範囲を確認します。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "データなしと合格を区別する",
+          "text": "サンプル不足は、読者の体験が良好であることを示しません。まず代表的なページと実際の操作で確認記録を作り、対象に適用できる実ユーザーデータを継続して蓄積・観察します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Search Console の日常点検の手順を作る",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイト画像の制作と検証を整理する",
+              "kind": "life",
+              "slug": "image-seo-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトの保守と変更記録を計画する",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Web Vitals の定義と測定",
+          "url": "https://web.dev/articles/vitals",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google LCP の診断と改善",
+          "url": "https://web.dev/articles/optimize-lcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google INP の診断と改善",
+          "url": "https://web.dev/articles/optimize-inp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google CLS の診断と改善",
+          "url": "https://web.dev/articles/optimize-cls",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console Core Web Vitals レポート",
+          "url": "https://support.google.com/webmasters/answer/9205520?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "PageSpeed Insights のデータ解説",
+          "url": "https://developers.google.com/speed/docs/insights/v5/about",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Core Web Vitals 개선 방법: 실제 사용 데이터로 병목 찾기",
+      "description": "Core Web Vitals에 빨간색 항목이 나타나면 먼저 영향을 받는 기기, 페이지 그룹, 독자의 조작을 확인해야 한다. 이 글은 대만의 소규모 강좌 웹사이트를 예로 들어 LCP, INP, CLS가 각각 어떤 사용자 경험 문제를 나타내는지 설명한다. 실제 사용 데이터와 실험실 테스트의 역할, 엔지니어에게 전달할 재현 기록, 수정 후 검증 방법도 정리한다. 비교표와 직접 제작한 도해를 통해 한 번의 점수만 보고 웹사이트를 크게 바꾸는 일을 피하도록 돕는다.",
+      "hero": {
+        "src": "/guides/core-web-vitals-diagnosis/hero-ko.jpg",
+        "alt": "화면, 서버, 점검 문서를 직접 그린 이미지로, 사용자 경험에서 성능 문제의 원인을 찾아 결과를 검증하는 과정을 보여 준다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "강좌 페이지의 대표 이미지가 한참 동안 나타나지 않거나, 날짜를 눌러도 반응이 없거나, 신청 버튼을 누르려는 순간 버튼이 갑자기 아래로 이동하는 것은 서로 다른 세 가지 불편이다. Core Web Vitals는 로딩, 상호작용, 레이아웃 안정성을 나누어 관찰함으로써 웹사이트 관리자가 ‘사이트가 느리다’는 말을 보다 구체적인 개선 과제로 바꾸도록 돕는다."
+        },
+        {
+          "type": "paragraph",
+          "text": "시작하기 전에 독자가 문제를 겪은 상황과 어떤 데이터에서 문제가 드러났는지 적어 두자. 보고서는 주의가 필요한 부분을 알려 주지만, 원인이 서버인지 이미지인지 코드인지는 자동으로 알려 주지 않는다. 사용 상황을 따라 병목을 찾고 수정과 검증을 계획하면, 모든 속도 개선 옵션을 한꺼번에 켜는 것보다 원인을 확인하기 쉽다."
+        },
+        {
+          "type": "heading",
+          "text": "세 가지 지표와 각각의 단위 이해하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LCP는 화면에 보이는 영역에서 주요 대형 콘텐츠가 나타나는 시간을 살핀다. 해당 콘텐츠는 이미지일 수도, 텍스트일 수도 있다. INP는 사용자가 클릭, 탭, 키보드 조작을 한 뒤 다음 화면 갱신까지의 반응을 살핀다. CLS는 예상치 못한 레이아웃 이동을 측정하며, 기다리는 시간도 아니고 이동한 픽셀 수로 바로 해석할 수도 없다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사실 확인일 기준 Google의 ‘좋음’ 기준은 LCP 2.5초 이하, INP 200밀리초 이하, CLS 0.1 이하이다. 평가는 보통 75백분위수를 기준으로 하며 모바일과 데스크톱을 구분한다. 이는 관측된 경험 네 건 중 최소 세 건이 해당 값 이하이거나 더 양호하다는 뜻이며, 모든 사용자의 결과를 평균 낸다는 뜻이 아니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "세 지표에는 서로의 문제를 상쇄하는 합산 점수가 없다. 대표 이미지가 빨리 나타나도 버튼의 심한 지연을 보완할 수는 없다. 특정 데스크톱 테스트의 결과가 좋아도 모바일 사용자 모두가 같은 경험을 한다는 뜻은 아니다. 먼저 지표 이름, 값, 단위, 기기, 데이터 범위를 함께 적어 두어야 소통할 때 서로 다른 결과를 혼동하지 않는다."
+        },
+        {
+          "type": "heading",
+          "text": "실제 데이터를 먼저 읽고 테스트로 원인 찾기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console의 Core Web Vitals 보고서는 사용자 경험이 비슷한 URL을 그룹으로 묶어 어떤 페이지까지 문제가 영향을 미치는지 살피기에 적합하다. 그룹에 표시되는 예시 URL은 전체 목록이 아니며, 모든 URL이 방문할 때마다 똑같이 느리다는 뜻도 아니다. 데이터가 충분하지 않으면 표시되지 않을 수 있으므로 빈 보고서를 모두 통과했다는 뜻으로 해석해서는 안 된다."
+        },
+        {
+          "type": "paragraph",
+          "text": "PageSpeed Insights의 실제 사용 데이터는 CrUX에서 제공하며 지난 28일을 포함한다. 확인할 때 현재 URL의 데이터인지 사이트 출처 전체의 데이터인지 구분해야 한다. 개별 페이지의 표본이 부족하면 출처 수준의 데이터가 대신 표시될 수 있다. 강좌 상세 페이지에서 사이트 전체의 집계가 보인다면, 문제를 지금 보고 있는 강좌 대표 이미지 탓으로 바로 돌릴 수는 없다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실험실 테스트는 비교적 일정한 조건에서 문제를 재현할 수 있어 변경 사항을 확인하기에 적합하다. 일반적인 Lighthouse 페이지 로드 테스트에는 실제 사용자 상호작용이 없으므로 INP를 직접 측정할 수 없다. TBT는 실행을 막는 요인에 대한 단서를 줄 수 있지만 두 지표는 서로 다르다. 상호작용이 필요한 문제는 여전히 실제 조작 과정을 거쳐 확인해야 한다."
+        },
+        {
+          "type": "heading",
+          "text": "LCP가 느리다면 주요 콘텐츠가 나타나는 경로 점검하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 테스트에서 지목한 LCP 요소를 확인하고, 반드시 커버 이미지일 것이라고 가정하지 말자. 강좌 페이지에서는 데스크톱의 큰 이미지가 해당 요소일 수 있지만 모바일에서는 제목 텍스트일 수도 있다. 화면과 요소를 기록해야 어떤 리소스를 점검할지, 서로 다른 레이아웃에 각각 다른 수정이 필요한지 알 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google의 진단 방법은 시간을 서버의 초기 응답, 리소스 로딩 시작 전 지연, 다운로드 시간, 다운로드 후 표시까지의 지연으로 나눈다. 페이지 HTML 자체가 늦게 도착한다면 이미지 용량만 줄여서는 효과가 제한적일 수 있다. 이미지 다운로드가 이미 끝났는데도 표시되지 않는다면, 화면에 표시되기 위해 기다리는 다른 작업도 점검해야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "엔지니어에게 전달할 기록에는 ‘모바일 강좌 페이지의 대표 이미지가 특정 코드 실행이 끝난 뒤에야 나타난다’고 쓰고 해당 로딩 기록을 첨부할 수 있다. 이는 서버를 바꾸라는 지시만 하는 것보다 구체적이다. 수정할 때는 확인된 지연 원인을 대상으로 삼고, 같은 레이아웃과 조건으로 돌아가 비교해야 서로 다른 페이지의 결과를 한데 섞지 않을 수 있다."
+        },
+        {
+          "type": "heading",
+          "text": "INP가 높다면 느린 동작 재현하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "강좌 개요 펼치기, 날짜 바꾸기, 인원 선택하기처럼 독자가 자주 하는 동작을 나열하고, 페이지에 막 들어왔을 때와 로딩이 끝난 뒤에 각각 실행해 보자. 일부 지연은 코드가 초기 구동 작업으로 바쁠 때만 발생한다. 화면이 완전히 안정된 뒤 한 번 클릭하는 것만으로는 실제 문제를 놓칠 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "한 번의 상호작용은 이벤트 처리 시작까지의 대기, 이벤트 자체의 실행, 이후 화면 표시로 나눌 수 있다. 엔지니어는 기록을 바탕으로 긴 작업, 과도한 이벤트 처리, 레이아웃 갱신 작업을 식별할 수 있다. 다운로드 파일이 작다고 코드 실행 부담이 적은 것은 아니며, 캐시 적중도 버튼이 제때 반응한다는 보장은 아니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "버튼을 누른 직후 처리 중이라는 표시가 나타나지만 백엔드에서 신청 결과를 반환하는 데 오래 걸린다면, 전체 작업 완료 시간도 별도로 기록해야 한다. INP는 상호작용에 대한 반응에 초점을 맞추며, 주문 완료나 데이터 조회에 걸리는 총시간과 같지 않다. 검증할 때는 화면이 즉각 피드백을 주는지와 최종 결과가 올바른지를 모두 확인해야 한다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "영향을 받는 페이지와 구체적인 상호작용 하나를 선택하고 기기와 로그인 상태를 기록한다.",
+            "로딩 중과 로딩 완료 후에 각각 조작하고 재현 가능한 단계를 녹화한다.",
+            "엔지니어가 성능 추적 기록을 남겨 대기, 처리, 표시 중 어느 단계에서 문제가 생기는지 찾는다.",
+            "수정 후 같은 단계로 반응과 기능 결과를 다시 확인하고 변경 전후 기록을 보관한다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "CLS가 높다면 콘텐츠를 밀어내는 원인 찾기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "레이아웃 이동은 크기를 미리 확보하지 않은 이미지, 삽입 콘텐츠, 동적으로 추가되는 블록에서 흔히 발생하며 글꼴 로딩과 관련될 수도 있다. 강좌 페이지에서 알림 표시줄이 늦게 나타나 신청 버튼을 아래로 밀어낸다면, 독자에게는 버튼이 움직이는 것으로 보이지만 실제로 점검해야 할 것은 위쪽 알림 표시줄일 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "진단 도구에 표시된 이동 요소가 반드시 이동의 원인은 아니다. 이동 전후 화면을 살펴보고 위쪽에 새로 추가되거나 커진 콘텐츠를 확인하자. 이미지와 영상에는 비율에 맞는 공간을 미리 확보할 수 있고, 동적 블록에는 적절한 로딩 위치를 설계해야 한다. 무조건 큰 빈 공간으로 문제를 가려 모바일 화면을 읽기 어렵게 만들어서는 안 된다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이동은 스크롤하는 도중이나 초기 로딩 후 콘텐츠가 추가될 때도 발생할 수 있다. 따라서 페이지 맨 위부터 맨 아래까지 읽으며 실제로 사용할 블록을 조작해야 한다. 초기 로딩 테스트의 CLS가 매우 낮다고 해서 전체 방문 중의 레이아웃 문제를 배제할 수는 없다. 재현 가능한 화면 기록이 점수 화면 캡처 한 장보다 유용하다."
+        },
+        {
+          "type": "heading",
+          "text": "영향 범위로 우선순위를 정하고 두 단계로 검증하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "문제를 기기, 페이지 그룹, 지표, 구체적인 상황, 영향 범위, 담당자, 복구 방법으로 정리하자. 심각하면서 중요한 절차에 영향을 주는 항목을 먼저 처리하고, 공통 레이아웃으로 여러 페이지를 한꺼번에 개선할 수 있는지 검토한다. 일부 특수한 페이지에서만 발생하는 문제라면 사이트 전체 설정을 바로 바꿀 필요는 없다."
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 단계에서는 수정 사항이 예정된 환경에 배포되었는지, 재현 단계에서 문제가 개선되었는지, 양식과 메뉴 및 신청 절차가 여전히 정상인지 확인한다. 두 번째 단계에서는 실제 사용 데이터를 추적한다. 보고서에는 지난 28일이 포함되므로 당일에 수정했다고 과거 데이터가 즉시 사라지는 것은 아니며, 기록에 변경 날짜를 표시해야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console의 추적 시작은 일정 기간의 모니터링 절차를 시작하며, 이로 인해 사이트의 색인이 다시 생성되는 것은 아니다. 범위와 값을 지속해서 관찰하면서 트래픽 유입 경로와 기기 구성의 변화도 살피자. 완료 기준은 문제가 수정되었고 대조해 확인할 수 있는 검증 근거가 있다는 것이어야 하며, ‘속도 개선 플러그인 설치 완료’라고만 적어서는 안 된다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/core-web-vitals-diagnosis/diagram-1-ko.svg",
+          "alt": "네 블록이 데이터 범위, 문제 재현, 원인에 맞춘 수정, 즉시 수행하는 기능 검증과 이후 실제 데이터 검증을 차례로 보여 준다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "각 성능 문제는 독자의 사용 상황과 다시 확인할 수 있는 결과에 연결되어야 한다.",
+          "description": "네 블록이 데이터 범위, 문제 재현, 원인에 맞춘 수정, 즉시 수행하는 기능 검증과 이후 실제 데이터 검증을 차례로 보여 준다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "지표",
+            "좋음 기준",
+            "먼저 찾아야 할 문제"
+          ],
+          "rows": [
+            [
+              "LCP",
+              "≤ 2.5초",
+              "주요 콘텐츠가 어느 단계에서 기다리는가"
+            ],
+            [
+              "INP",
+              "≤ 200밀리초",
+              "어떤 상호작용의 반응이 느린가"
+            ],
+            [
+              "CLS",
+              "≤ 0.1, 단위 없음",
+              "무엇이 보이는 콘텐츠를 예기치 않게 이동시키는가"
+            ]
+          ],
+          "caption": "사실 확인일의 공식 기준을 따르며, 75백분위수와 기기 및 URL 범위를 확인해야 한다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "데이터 없음과 통과를 구분하기",
+          "text": "표본이 부족하다고 독자의 경험이 좋다는 뜻은 아니다. 먼저 대표 페이지와 실제 조작으로 점검 기록을 만들고, 이후에도 해당하는 현장 데이터를 꾸준히 축적하고 관찰하자."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Search Console 일상 점검 절차 만들기",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 이미지 제작과 검증 정리하기",
+              "kind": "life",
+              "slug": "image-seo-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 유지보수와 변경 기록 계획하기",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Web Vitals 정의와 측정",
+          "url": "https://web.dev/articles/vitals",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google LCP 진단과 개선",
+          "url": "https://web.dev/articles/optimize-lcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google INP 진단과 개선",
+          "url": "https://web.dev/articles/optimize-inp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google CLS 진단과 개선",
+          "url": "https://web.dev/articles/optimize-cls",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console Core Web Vitals 보고서",
+          "url": "https://support.google.com/webmasters/answer/9205520?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "PageSpeed Insights 데이터 설명",
+          "url": "https://developers.google.com/speed/docs/insights/v5/about",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Core Web Vitals 如何改善：从真实使用数据找瓶颈",
+      "description": "Core Web Vitals 出现红色项目时，先确认受影响的设备、页面分组与读者操作。本文以台湾小型课程网站为例，解释 LCP、INP、CLS 各自代表的体验问题，梳理真实使用数据与实验室测试的分工、交给工程师的复现记录，以及修改后的验收方式。附比较表与原创图解，避免只看单次分数就大幅改动网站。",
+      "hero": {
+        "src": "/guides/core-web-vitals-diagnosis/hero-zh-cn.jpg",
+        "alt": "原创屏幕、服务器与检查文档图像，呈现从使用体验找到性能原因并验收的流程。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "课程页的主图迟迟不出现、点击日期没有反应、准备按报名时按钮突然下移，这是三种不同的困扰。Core Web Vitals 把加载、交互与布局稳定性分开观察，能帮助网站管理者把“网站很慢”变成比较明确的改善任务。"
+        },
+        {
+          "type": "paragraph",
+          "text": "开始前先写下读者遇到的情境，以及哪一份数据指出问题。报告能指出需要关注的地方，却不会自动告诉你是服务器、图片还是程序造成的。沿着使用情境找到瓶颈，再安排修改与验收，比一次开启所有加速选项更容易确认原因。"
+        },
+        {
+          "type": "heading",
+          "text": "认识三个指标，保留它们的单位",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LCP 观察可视区域内主要大型内容出现的时间，可能是图片，也可能是文字。INP 观察用户点击、轻触或键盘操作后，到下一次画面更新的响应情况。CLS 则衡量非预期的布局偏移，不是等待秒数，也不能直接当成移动了几个像素。"
+        },
+        {
+          "type": "paragraph",
+          "text": "截至核实日，Google 的良好阈值为 LCP 不超过 2.5 秒、INP 不超过 200 毫秒、CLS 不超过 0.1。评估通常看第 75 百分位数，并区分手机与桌面端；意思是至少四分之三的观测体验处于该值或更好，不是把所有人的结果取平均。"
+        },
+        {
+          "type": "paragraph",
+          "text": "三个指标没有可以互相抵消的总分。主图很快，不能弥补按钮严重卡顿；某次桌面端测试良好，也不能代表手机用户都有相同体验。先把名称、数值、单位、设备和数据范围一起记下，才不会在沟通时混用不同结果。"
+        },
+        {
+          "type": "heading",
+          "text": "先读真实数据，再用测试找原因",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console 的 Core Web Vitals 报告把体验相似的网址分组，适合观察问题影响哪些页面。分组中的示例网址不是完整清单，也不表示每个网址每次访问都同样慢。没有足够数据时可能不显示，不能把空白报告解读为全部通过。"
+        },
+        {
+          "type": "paragraph",
+          "text": "PageSpeed Insights 的真实使用数据来自 CrUX，涵盖过去 28 天。查看时分清是当前网址还是整个来源网站；单页样本不足时可能改为显示来源级别的数据。课程详情页若显示全站汇总，不能直接把问题归因于眼前这张课程主图。"
+        },
+        {
+          "type": "paragraph",
+          "text": "实验室测试可在相对固定的条件下复现问题，适合检查改动。一般 Lighthouse 页面加载测试没有真正的用户交互，不能直接测出 INP；TBT 可以提供阻塞线索，但两者不是同一指标。需要交互的问题，仍要实际走过操作流程。"
+        },
+        {
+          "type": "heading",
+          "text": "LCP 慢时，沿着主要内容的出现路径排查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先确认测试指出的 LCP 元素，不要预设一定是封面。课程页在桌面端可能以大图为主，手机版则可能是标题文字。记录画面和元素后，才知道要检查哪个资源，以及不同布局是否需要不同修正。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的诊断方法把时间拆成服务器初始响应、资源开始加载前的延迟、下载时间，以及下载后到呈现的延迟。若页面 HTML 本来就晚到，只缩小图片可能帮助有限；若图片早已下载完却仍未显示，也要检查呈现所等待的其他工作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交给工程师的记录可以写“手机课程页主图直到某段程序完成后才出现”，并附对应加载记录。这比只下指令要求换服务器更具体。修正时以已确认的延迟来源为目标，再回到同样布局与条件进行比较，避免把不同页面的结果凑在一起。"
+        },
+        {
+          "type": "heading",
+          "text": "INP 高时，把慢的操作复现出来",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "列出读者常做的操作，例如展开课程大纲、切换日期与选择人数，并分别在刚进入页面和加载完成后操作。部分卡顿只发生在程序还忙着启动的时候；只等画面完全稳定后点一下，可能错过真正的问题。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一次交互可拆成等待事件开始处理、事件本身执行，以及后续画面呈现。工程师可根据记录识别长任务、过重的事件处理或布局更新工作。下载文件小不表示程序执行负担轻，缓存命中也不保证按钮能及时响应。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若按钮点击后立即显示处理中，但后端要较久才返回报名结果，还需要另外记录整个任务完成时间。INP 着重于交互响应，不等于订单完成或数据查询总耗时。验收既要确认画面有即时反馈，也要确认最终结果正确。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "选定受影响页面与一个具体交互，记下设备和登录状态。",
+            "分别在加载期间与完成后操作，录下可复现的步骤。",
+            "由工程师记录性能轨迹，定位等待、处理或呈现阶段。",
+            "修改后用同样步骤复查响应与功能结果，保留前后记录。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "CLS 高时，找出谁把内容推走",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "页面偏移常见于没有预留尺寸的图片、嵌入内容或动态插入区块，也可能与字体加载有关。课程页若较晚出现一条通知栏，把报名按钮往下推，读者看到移动的是按钮，真正需要检查的却可能是上方通知栏。"
+        },
+        {
+          "type": "paragraph",
+          "text": "诊断工具列出的偏移元素，未必就是造成偏移的来源。观察移动前后的画面，核对上方新增或变大的内容；图片与视频可预留符合比例的空间，动态区块则需设计合适的加载位置。不能一律用很大的空白把问题遮住，导致手机版难以阅读。"
+        },
+        {
+          "type": "paragraph",
+          "text": "偏移也可能发生在滚动途中，或初始加载之后才加入内容。因此要从页首读到页尾，操作实际会用的区块。初次加载测试的 CLS 很低，并不足以排除整次访问中的布局问题；可复现的画面记录会比单张分数截图更有用。"
+        },
+        {
+          "type": "heading",
+          "text": "按影响范围排优先顺序，再分两阶段验收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "将问题整理为设备、页面分组、指标、具体情境、影响范围、负责人和恢复方式。先处理严重且影响重要流程的项目，再评估共用布局是否能一次改善多个页面。只有少数特殊页面出现的问题，则不必直接改动全站设置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一阶段检查修改是否部署到预定环境、复现步骤是否改善，以及表单、菜单和报名流程是否仍正常。第二阶段跟踪真实使用数据；由于报告包含过去 28 天，当天修正不代表历史数据立即消失，应在记录上标注变更日期。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console 的开始跟踪会启动一段监测流程，不会因此重新索引网站。持续观察范围与数值，同时留意流量来源和设备构成是否改变。完成定义应是问题已修正且有可核对的验收依据，不能只写“已安装加速插件”。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/core-web-vitals-diagnosis/diagram-1-zh-cn.svg",
+          "alt": "四个区块依次呈现数据范围、问题复现、针对原因修正，以及即时功能与后续真实数据验收。",
+          "width": 1600,
+          "height": 900,
+          "caption": "每一项性能问题，都要对应读者情境与可复查的结果。",
+          "description": "四个区块依次呈现数据范围、问题复现、针对原因修正，以及即时功能与后续真实数据验收。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "指标",
+            "良好阈值",
+            "先定位的问题"
+          ],
+          "rows": [
+            [
+              "LCP",
+              "≤ 2.5 秒",
+              "主要内容在哪个阶段等待"
+            ],
+            [
+              "INP",
+              "≤ 200 毫秒",
+              "哪个交互响应缓慢"
+            ],
+            [
+              "CLS",
+              "≤ 0.1，无单位",
+              "谁使可见内容意外移动"
+            ]
+          ],
+          "caption": "以核实日的官方阈值为准，应核对第 75 百分位数与设备、网址范围。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "分清没有数据与已经通过",
+          "text": "样本不足时无法代表读者体验良好。先以代表页面和真实操作建立检查记录，再持续积累与观察适用的现场数据。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立 Search Console 日常检查流程",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "梳理网站图片的制作与验收",
+              "kind": "life",
+              "slug": "image-seo-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "规划网站维护与变更记录",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Web Vitals 定义与测量",
+          "url": "https://web.dev/articles/vitals",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google LCP 诊断与改善",
+          "url": "https://web.dev/articles/optimize-lcp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google INP 诊断与改善",
+          "url": "https://web.dev/articles/optimize-inp",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google CLS 诊断与改善",
+          "url": "https://web.dev/articles/optimize-cls",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console Core Web Vitals 报告",
+          "url": "https://support.google.com/webmasters/answer/9205520?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "PageSpeed Insights 数据说明",
           "url": "https://developers.google.com/speed/docs/insights/v5/about",
           "checked_on": "2026-09-14"
         }

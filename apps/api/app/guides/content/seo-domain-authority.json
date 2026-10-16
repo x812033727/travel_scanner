@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
-    "software",
     "marketing",
-    "seo"
+    "seo",
+    "software",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "網站權重分數怎麼看：工具指標與搜尋表現的差別",
@@ -154,6 +157,7 @@
           "width": 1600,
           "height": 900,
           "caption": "分數可以提示方向，完成判斷仍需要相同條件與實際證據。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -248,6 +252,974 @@
         },
         {
           "title": "Google 垃圾內容政策",
+          "url": "https://developers.google.com/search/docs/essentials/spam-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Understanding website authority scores: Tool metrics vs. search performance",
+      "description": "Website authority scores appear in SEO reports and partnership proposals, but tools calculate them differently. Using Ahrefs Domain Rating and Semrush Authority Score, this article explains differences between domains, pages, links, estimated traffic and actual outcomes, with steps for same-tool comparisons, anomaly checks and monthly reports. It helps small sites treat scores as research clues, not Google certification or ranking guarantees.",
+      "hero": {
+        "src": "/guides/seo-domain-authority/hero-en.jpg",
+        "alt": "An original illustration of a calculator, screen and documents representing tool metrics, search data and records of actual work.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Different authority scores for the same website in two tools do not mean one tool must be wrong. The tools may use different data, scopes and formulas. If you have not even recorded the metric's name and simply say the website rose from forty to fifty, that growth is difficult to interpret correctly."
+        },
+        {
+          "type": "paragraph",
+          "text": "For most website managers, understanding what a score describes is more useful than pursuing an impressive threshold. It can help identify sites to research and investigate changes, but it cannot replace specific pages' search performance, whether readers found answers, or actual inquiry and purchase outcomes."
+        },
+        {
+          "type": "heading",
+          "text": "First, identify whose metric it is and what scope it assesses",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "“Website authority” is a common term, but it is not a single scale shared by all tools. A report should at least list the provider, full metric name, domain or URL queried, data date and scope of use. Providing only a number or abbreviation can even mix up sitewide and individual-page scores."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ahrefs officially defines Domain Rating, abbreviated DR, as the relative strength of a domain's backlink profile within its database, on a scale from zero to one hundred. URL Rating assesses individual pages. Although both concern links, a domain's DR cannot directly establish the strength of every page within it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Semrush's Authority Score combines link power, estimated organic traffic and spam signals in the link profile. Its data sources and the way it combines them differ from DR. A DR of fifty and an Authority Score of fifty therefore do not represent the same result, nor can they be added and averaged into another meaningful website score."
+        },
+        {
+          "type": "heading",
+          "text": "There is no conversion table between tool scores and Google rankings",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google's official explanation says its ranking systems work primarily at the page level while also using sitewide signals and classifiers. Certain positive signals on a website do not mean every page will rank well. A tool's aggregate number cannot replace search systems' assessment of actual questions and content."
+        },
+        {
+          "type": "paragraph",
+          "text": "A report labeling a score as authority or trust does not make it Google-issued certification. Ahrefs also states that there is no evidence search engines use DR or similar tool scores as ranking factors. This does not mean links are entirely unimportant; it means a tool's external model and the search system itself need to be understood separately."
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose a large website specializes in photography and a small website explains how to take buses in a particular area. Sitewide scores alone cannot determine which is necessarily better suited to answer that transport question. Page relevance, the usefulness of the information and its freshness all require separate checks. This example illustrates the limits of comparison, not a prediction of actual rankings."
+        },
+        {
+          "type": "heading",
+          "text": "Choose comparable sites within the same tool",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First, define the market and readers you want to research—for example, websites in Taiwan offering similar services and similar types of content—then examine them using the same tool and date range. If a small studio offering courses compares its sitewide score only with global media sites, it can easily find a large numerical gap without identifying any content or maintenance actions it can take."
+        },
+        {
+          "type": "paragraph",
+          "text": "Query scopes must also match: an entire domain, a subdomain, a single path and an individual page may cover different data. Record the settings in a spreadsheet and retain source URLs and access dates. If a tool does not offer the scope you need, note that limitation rather than silently treating substitute data as the item you originally intended to compare."
+        },
+        {
+          "type": "paragraph",
+          "text": "The purpose of comparison here is to find differences worth understanding in depth. For example, if a course website has a clear materials list that relevant communities regularly cite, you can study how that information is used and presented. A higher score does not mean you should copy its wording, buy its links or abandon questions you were already capable of answering."
+        },
+        {
+          "type": "heading",
+          "text": "When scores change, check the data and model before judging website problems",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "DR is a relative metric. Ahrefs explains that even without losing backlinks, your score may fall as other websites gain links. After noticing a change, first confirm that you are using the same tool and scope, then review the tool's recent data updates and available methodology explanations. Do not immediately conclude that the website has received a search penalty."
+        },
+        {
+          "type": "paragraph",
+          "text": "Next, spot-check new or lost link sources, whether important destination pages are broken, and whether the website has recently been redesigned or its URLs moved. Record “the tool just discovered a link” separately from “the link first appeared today.” The time data was discovered does not necessarily match when an event occurred, and a single snapshot cannot reconstruct the full history."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the score falls but key pages' impressions, clicks and service inquiries show no abnormalities, preserve the evidence and continue monitoring. If both decline together, you still need to check seasonality, content changes, technical problems and tracking settings. Simultaneous changes are only a starting point for investigation, not proof that the score caused the traffic decline."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Save the before-and-after values, tool, scope and dates, and confirm that comparison conditions match.",
+            "Read the provider's methodology and update notes to identify relative metrics or estimated data.",
+            "Spot-check important links and destination pages against the website's change history.",
+            "Then examine search and business data, recording evidence for and against each possible cause."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Divide monthly reports into tool clues, search performance and user outcomes",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A monthly report can have three layers. The first records third-party metrics and changes requiring investigation. The second uses Search Console to examine search performance for important pages and queries. The third compiles inquiry or order data that you are authorized to access and that uses consistent tracking definitions. State the scope and limitations of each layer rather than treating them as substitutes for one another."
+        },
+        {
+          "type": "paragraph",
+          "text": "Semrush's organic traffic field is an estimate based on its data and models, not a direct reading of every website's actual visitor records. When using it to research peers, you can describe only the estimates and their trends. You cannot claim how many customers a competitor actually gained last month, much less calculate revenue directly from estimated traffic."
+        },
+        {
+          "type": "paragraph",
+          "text": "A useful conclusion should lead to action. For example, if an important download page is broken, fix it first and check where links citing it lead. If only the score has changed and other evidence is lacking, record it for monitoring. Do not switch to another tool that gives higher scores or select only the most flattering dates just to make monthly reports appear to show progress."
+        },
+        {
+          "type": "heading",
+          "text": "Avoid making a higher score your only work objective",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When you receive a proposal guaranteeing higher authority, ask the provider to explain what content it will change, how it will acquire links, and which metrics and dates will be used to verify delivery. Even reaching a particular tool score does not automatically mean organic search has grown or business goals have been met. Fees should correspond to work that can be checked, not a number with no practical use."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the method relies on buying and selling links to manipulate rankings, excessive link exchanges or automated link creation at scale, Google's spam policies still apply. A rising third-party score provides no exemption for these practices. Conversely, a low score alone cannot prove that a new website is spam or that a potential partner is unreliable."
+        },
+        {
+          "type": "paragraph",
+          "text": "Improvement priorities can return to the website's actual gaps: ensuring important content can be read, information addresses readers' questions, pages are easy to navigate between, and original resources worth citing remain maintained. Keep tool scores as metrics to monitor. Your work has a clear direction when you can explain whom each change helped and how to verify its completion."
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-domain-authority/diagram-1-en.svg",
+          "alt": "Three sections present third-party tools, search performance and first-party business data in sequence, explaining their uses, limitations and possible actions.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Scores can suggest a direction, but reaching a judgment still requires matching conditions and actual evidence.",
+          "description": "Three sections present third-party tools, search performance and first-party business data in sequence, explaining their uses, limitations and possible actions.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Data",
+            "Scope described",
+            "Cannot directly establish"
+          ],
+          "rows": [
+            [
+              "Ahrefs DR",
+              "Relative strength of a domain's links within its database",
+              "Each page's rankings or actual orders"
+            ],
+            [
+              "Ahrefs UR",
+              "Link assessment for an individual page",
+              "Performance of every page across the website"
+            ],
+            [
+              "Semrush Authority Score",
+              "A combined model of links, estimated traffic and spam signals",
+              "Google certification or actual traffic"
+            ],
+            [
+              "Search Console search performance",
+              "Search impressions, clicks and other metrics under selected conditions",
+              "All visitor sources and total revenue"
+            ],
+            [
+              "First-party service records",
+              "Inquiry or order outcomes using consistent definitions",
+              "That a single SEO change caused all growth"
+            ]
+          ],
+          "caption": "These metrics belong to different layers; being numbers does not make them interchangeable."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "First, ask which decision this number would change",
+          "text": "If a score change cannot be linked to a page, citation or business issue requiring investigation, record the conditions and keep monitoring. Do not treat a provider's model as an official search-engine score, or buy links that serve no reader purpose just to raise a score."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Examine the citation context of backlinks",
+              "kind": "life",
+              "slug": "seo-backlinks-outreach"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Connect keyword research to readers' needs",
+              "kind": "life",
+              "slug": "seo-keyword-research"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ahrefs Domain Rating definition",
+          "url": "https://help.ahrefs.com/en/articles/1409408-what-is-domain-rating-dr",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ahrefs explanation of tool scores and rankings",
+          "url": "https://help.ahrefs.com/en/articles/907673-do-search-engines-use-domain-authority-domain-rating-as-a-ranking-factor",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Semrush Authority Score methodology",
+          "url": "https://www.semrush.com/kb/747-authority-score-backlink-scores",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Search ranking systems",
+          "url": "https://developers.google.com/search/docs/appearance/ranking-systems-guide?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google spam policies",
+          "url": "https://developers.google.com/search/docs/essentials/spam-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "サイトの評価スコアの見方：ツールの指標と検索パフォーマンスの違い",
+      "description": "サイトの評価スコアは SEO レポートや提携の提案によく登場しますが、計算方法はツールごとに異なります。この記事では Ahrefs Domain Rating と Semrush Authority Score を例に、ドメイン、ページ、リンク、推定トラフィック、実際の成果の違いを説明し、同じツールでの比較、異常の確認、月次レポートのまとめ方を紹介します。小規模サイトがスコアを調査の手がかりとして使い、高得点を Google の認定や順位の保証と捉えないための解説です。",
+      "hero": {
+        "src": "/guides/seo-domain-authority/hero-ja.jpg",
+        "alt": "電卓、画面、書類を描き、ツールの数値、検索データ、実際の作業記録を表現したオリジナル画像。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "同じサイトでも二つのツールで異なる評価スコアが表示されるからといって、どちらかが必ず計算を間違えているとは限りません。ツールによって使うデータ、対象範囲、計算式が異なる可能性があります。指標名さえ記録せず、サイトのスコアが四十点から五十点に上がったとだけ述べても、その上昇を正しく解釈するのは困難です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般的なサイト管理者にとっては、見栄えのよい目標値を追うより、まずスコアが何を表しているかを理解するほうが実用的です。スコアは調査対象の絞り込みや変化の原因を追う手がかりになりますが、個別ページの検索パフォーマンス、読者が答えを見つけられたかどうか、実際の相談や購入の成果に代わるものではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "まず誰の指標で、どの範囲を評価しているのかを確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「サイトの評価」という言い方はよく使われますが、すべてのツールに共通する尺度ではありません。レポートには少なくとも、提供元、指標の正式名称、調べたドメインまたは URL、データの日付、適用範囲を記載しましょう。数値や略称だけでは、サイト全体のスコアと個別ページのスコアさえ混同するおそれがあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ahrefs は公式に、Domain Rating、略称 DR を、同社のデータベースにおけるドメインの被リンク状況の相対的な強さと定義しており、範囲は零から百です。一方、URL Rating は個別ページを評価します。どちらもリンクに関する指標ですが、ドメインの DR から、その中のすべてのページの強さを直接推定することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Semrush の Authority Score は、リンクの強さ、推定オーガニックトラフィック、リンク状況に見られるスパムの兆候を組み合わせた指標です。データの出所も組み合わせ方も DR とは異なります。そのため、DR の五十と Authority Score の五十は同じ評価ではなく、足して平均を取っても、意味のある別のサイトスコアにはなりません。"
+        },
+        {
+          "type": "heading",
+          "text": "ツールのスコアと Google の検索順位に換算表はない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google の公式説明によると、ランキングは主にページ単位で機能し、サイト全体のシグナルや分類器も使用します。サイトに好ましいシグナルがあるからといって、すべてのページが上位に表示されるとは限りません。ツールが示す概括的な数値は、実際の問いとコンテンツに対する検索システムの判断に代わるものではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "レポートでスコアに「権威」や「信頼」という名前が付いていても、それを Google が発行した認定と捉えるべきではありません。Ahrefs も、検索エンジンが DR や類似ツールのスコアをランキング要因にしているという証拠はないと説明しています。これはリンクがまったく重要ではないという意味ではなく、外部ツールのモデルと検索システムそのものを分けて理解する必要があるということです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば、写真を得意とする大規模サイトと、ある地域のバスの乗り方を専門に説明する小規模サイトがあるとします。その交通に関する問いにどちらが適しているかは、サイト全体のスコアだけでは決められません。ページの関連性、情報の使いやすさ、情報の新しさは、それぞれ確認する必要があります。これは比較の限界を示す例であり、実際の検索順位を予測したものではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "同じツールを使い、本当に比較できる対象を選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず調べたい市場と読者を絞りましょう。例えば、台湾で似たサービスを提供し、コンテンツの形式も近いサイトを選び、同じツールと期間で調べます。小規模な講座教室が世界的なメディアとサイト全体のスコアだけを比べても、大きな数値の差が見えるばかりで、自分たちが取り組めるコンテンツ制作や保守の施策は見つかりにくくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "調査範囲もそろえる必要があります。ドメイン全体、特定のサブドメイン、特定のパス、個別ページでは、含まれるデータが異なる場合があります。設定をスプレッドシートに記入し、出典 URL と閲覧日を残しましょう。ツールが必要な範囲に対応していない場合は、その制約を明記し、代替データを黙って本来の比較対象として扱わないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ここで比較する目的は、詳しく理解する価値のある違いを見つけることです。例えば、ある講座サイトに分かりやすい材料一覧があり、関連するコミュニティから継続的に引用されているなら、その資料の用途や見せ方を研究できます。スコアが高いからといって、その文章をコピーしたり、そのサイトからのリンクを買ったり、自分が答えられるはずの問いを諦めたりする必要はありません。"
+        },
+        {
+          "type": "heading",
+          "text": "スコアが変動したら、データとモデルを確認してからサイトの問題を判断する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "DR は相対的な指標です。Ahrefs によると、被リンクを失っていなくても、他のサイトのリンクが増えることで自サイトのスコアが下がる可能性があります。変動に気づいたら、まず同じツールと範囲を使っているかを確認し、次にツールの最近のデータ更新や公開されている算出方法の説明を調べましょう。すぐにサイトが検索上のペナルティを受けたと推測しないことが大切です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "次に、新しく増えた、または失われたリンク元を抜き取りで調べ、重要なリンク先が無効になっていないか、最近サイトをリニューアルしたり URL を移動したりしていないかを確認します。「ツールが今リンクを発見したこと」と「リンクが今日初めて設置されたこと」は分けて記録しましょう。データの発見時点が、出来事の発生時点と一致するとは限りません。一度のスナップショットだけで履歴全体を再現することもできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "スコアが下がっても、重要ページの表示回数、クリック数、サービスへの問い合わせに異常がなければ、まず証拠を保存して経過を観察できます。両方が同時に下がった場合でも、季節性、コンテンツの変更、技術的な問題、計測設定を確認する必要があります。同時に変化したという事実は調査の出発点にすぎず、スコアがトラフィック減少を引き起こした証明にはなりません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "変動前後の数値、ツール、範囲、日付を保存し、比較条件が同じであることを確認する。",
+            "提供元の算出方法や更新情報を読み、相対的な指標や推定データを見分ける。",
+            "重要なリンクとリンク先ページを抜き取りで調べ、サイトの変更履歴と照合する。",
+            "そのうえで検索と業務のデータを確認し、考えられる各原因を支持する証拠と否定する証拠を書き留める。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "月次レポートをツールの手がかり、検索パフォーマンス、利用の成果に分ける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "月次レポートは三つの層に分けられます。第一層では第三者の指標と調査が必要な変動を記録します。第二層では Search Console を使って、重要なページと検索クエリの検索パフォーマンスを確認します。第三層では、取得する権限があり、計測の定義が統一された問い合わせや注文のデータを整理します。各層で範囲と制約を明記し、互いに代用できる数値として扱わないようにしましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Semrush のオーガニックトラフィックの項目は、同社のデータとモデルに基づく推定値であり、各サイトの実際の訪問記録を直接読み取ったものではありません。同業サイトの調査に使う場合、説明できるのは推定値とその傾向までです。競合が先月実際に獲得した顧客数を断言することはできず、推定トラフィックから直接売上を計算することもできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "役立つ結論は、行動につながる必要があります。例えば、重要なダウンロードページが無効になっているなら、まず修正し、引用リンクの行き先を確認します。スコアが変動しただけで他の証拠がなければ、経過観察として記録します。毎月のレポートで改善しているように見せるために、より高いスコアが出る別会社のツールへ切り替えたり、最も見栄えのよい時点だけを選んだりしないようにしましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "スコアを上げることだけを作業目標にしない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトの評価向上を保証する提案を受けたら、どのコンテンツを変更するのか、リンクをどう獲得するのか、どの指標と日付で成果を確認するのかを相手に説明してもらいましょう。あるツールの目標スコアを実際に達成しても、それが自動的に自然検索の成長や事業目標の達成を意味するわけではありません。費用は、使い道のない数値ではなく、確認できる作業に対して支払うべきです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手法が順位操作を目的とするリンクの売買、過剰な相互リンク、大量の自動生成リンクに依存している場合も、Google のスパムに関するポリシーは適用されます。第三者のスコアが上がっても、こうした行為が免除されるわけではありません。一方、スコアが低いことだけで、新しいサイトがスパムサイトである、あるいは提携相手が信頼できないと証明することもできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "改善の優先順位は、サイトで実際に不足している点に立ち返って考えられます。重要なコンテンツを読み取れるようにする、情報を読者の問いに対応させる、ページ間で必要な情報を見つけやすくする、引用する価値のある独自資料を継続的に保守するといったことです。ツールのスコアは観察項目に置いておけば十分です。それぞれの変更が誰の役に立ち、完了をどう確認できるかを説明できれば、作業の方向性が明確になります。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-domain-authority/diagram-1-ja.svg",
+          "alt": "三つの区画に第三者ツール、検索パフォーマンス、自サイトの業務データを順に示し、それぞれの用途、制約、取れる行動を説明した図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "スコアは方向を示す手がかりになりますが、判断を下すには同じ条件と実際の証拠が必要です。",
+          "description": "三つの区画に第三者ツール、検索パフォーマンス、自サイトの業務データを順に示し、それぞれの用途、制約、取れる行動を説明した図。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "データ",
+            "表している範囲",
+            "直接は推定できないこと"
+          ],
+          "rows": [
+            [
+              "Ahrefs DR",
+              "同社のデータベース内でのドメインのリンクの相対的な強さ",
+              "各ページの検索順位や実際の注文"
+            ],
+            [
+              "Ahrefs UR",
+              "個別ページのリンク評価",
+              "サイト内の全ページのパフォーマンス"
+            ],
+            [
+              "Semrush Authority Score",
+              "リンク、推定トラフィック、スパムの兆候を組み合わせたモデル",
+              "Google の認定や実際のトラフィック"
+            ],
+            [
+              "Search Console の検索パフォーマンス",
+              "選択した条件での検索表示回数やクリック数など",
+              "すべての流入元と売上全体"
+            ],
+            [
+              "自サイトのサービス記録",
+              "統一した定義による問い合わせや注文の成果",
+              "単一の SEO 変更が成長のすべてをもたらしたこと"
+            ]
+          ],
+          "caption": "各指標が属する層は異なります。同じ数値でも、相互に換算できるとは限りません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "まず、その数値がどの判断を変えるのかを考える",
+          "text": "スコアの変動を、調査が必要なページ、引用、業務上の問題に結び付けられないなら、まず条件を記録して観察しましょう。提供元のモデルを検索エンジンの公式評価と捉えたり、スコアを上げるために読者の役に立たないリンクを購入したりしないようにします。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "被リンクがどのような文脈で引用されているかを確認する",
+              "kind": "life",
+              "slug": "seo-backlinks-outreach"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "キーワード調査を読者のニーズにつなげる",
+              "kind": "life",
+              "slug": "seo-keyword-research"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ahrefs Domain Rating の定義",
+          "url": "https://help.ahrefs.com/en/articles/1409408-what-is-domain-rating-dr",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ツールのスコアと検索順位に関する Ahrefs の説明",
+          "url": "https://help.ahrefs.com/en/articles/907673-do-search-engines-use-domain-authority-domain-rating-as-a-ranking-factor",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Semrush Authority Score の算出方法",
+          "url": "https://www.semrush.com/kb/747-authority-score-backlink-scores",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 検索のランキングシステム",
+          "url": "https://developers.google.com/search/docs/appearance/ranking-systems-guide?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google のスパムに関するポリシー",
+          "url": "https://developers.google.com/search/docs/essentials/spam-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "웹사이트 권위 점수 읽는 법: 도구 지표와 검색 성과의 차이",
+      "description": "웹사이트 권위 점수는 SEO 보고서와 협업 제안서에 자주 등장하지만, 도구마다 계산 방식이 다릅니다. 이 글에서는 Ahrefs Domain Rating과 Semrush Authority Score를 예로 들어 도메인, 페이지, 링크, 추정 트래픽과 실제 성과의 차이를 설명하고, 동일한 도구로 비교하기, 이상 징후 확인하기, 월간 보고서 정리하기의 절차를 안내합니다. 소규모 웹사이트가 점수를 조사 단서로 활용하고 높은 점수를 Google 인증이나 순위 보장으로 오해하지 않도록 돕습니다.",
+      "hero": {
+        "src": "/guides/seo-domain-authority/hero-ko.jpg",
+        "alt": "계산기, 모니터와 문서를 직접 그린 이미지로 도구 수치, 검색 데이터와 실제 작업 기록을 표현합니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "같은 웹사이트가 두 도구에서 서로 다른 권위 점수를 받는다고 해서 어느 한쪽이 반드시 잘못 계산한 것은 아닙니다. 도구마다 사용하는 데이터, 범위와 공식이 다를 수 있습니다. 지표 이름조차 기록하지 않은 채 사이트 점수가 사십 점에서 오십 점으로 올랐다고만 하면, 그 상승을 정확히 해석하기 어렵습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "일반적인 웹사이트 관리자에게는 보기 좋은 기준 점수를 추구하기보다 점수가 무엇을 설명하는지 먼저 이해하는 편이 더 실용적입니다. 점수는 조사 대상을 추리고 변화를 추적하는 데 도움이 되지만, 특정 페이지의 검색 성과, 독자가 답을 찾았는지 여부, 실제 상담이나 구매 결과를 대신할 수는 없습니다."
+        },
+        {
+          "type": "heading",
+          "text": "누가 만든 지표이며 무엇을 평가하는지 먼저 확인하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "‘웹사이트 권위’는 흔히 쓰는 표현이지만, 모든 도구가 공유하는 하나의 척도는 아닙니다. 보고서에는 최소한 제공업체, 지표의 전체 이름, 조회한 도메인이나 URL, 데이터 기준일과 적용 범위를 기재해야 합니다. 숫자나 약어만 제시하면 사이트 전체 점수와 개별 페이지 점수까지 혼동할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ahrefs는 공식적으로 Domain Rating, 줄여서 DR을 자사 데이터베이스 내 도메인 백링크 프로필의 상대적 강도로 정의하며, 범위는 영부터 백까지입니다. URL Rating은 개별 페이지를 평가합니다. 둘 다 링크와 관련된 지표이지만, 도메인의 DR만으로 그 안의 모든 페이지가 얼마나 강한지 바로 추정할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Semrush의 Authority Score는 링크의 강도, 추정 자연 검색 트래픽, 링크 프로필의 스팸 신호를 결합합니다. 데이터 출처와 조합 방식이 DR과 다릅니다. 따라서 DR 오십 점과 Authority Score 오십 점은 같은 성적이 아니며, 두 점수를 더해 평균을 내더라도 의미 있는 또 다른 웹사이트 점수가 되지는 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "도구 점수와 Google 순위 사이에는 환산표가 없습니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google은 공식적으로 순위 시스템이 주로 페이지 수준에서 작동하며 사이트 전체의 신호와 분류기도 활용한다고 설명합니다. 웹사이트에 좋은 신호가 있다고 해서 모든 페이지가 높은 순위를 얻는 것은 아닙니다. 도구가 제공하는 종합 수치는 실제 질문과 콘텐츠에 대한 검색 시스템의 판단을 대신할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "보고서에서 점수에 ‘권위’나 ‘신뢰’라는 이름을 붙였다고 해서 Google이 발급한 인증으로 여겨서는 안 됩니다. Ahrefs 역시 검색엔진이 DR이나 유사한 도구 점수를 순위 요소로 사용한다는 증거가 없다고 설명합니다. 이는 링크가 전혀 중요하지 않다는 뜻이 아니라, 도구의 외부 모델과 검색 시스템 자체를 구분해 이해해야 한다는 뜻입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "대규모 웹사이트는 사진 분야에 강하고, 소규모 웹사이트는 특정 지역의 버스 이용법을 전문적으로 설명한다고 가정해 보겠습니다. 사이트 전체 점수만으로 어느 쪽이 그 교통 질문에 반드시 적합한 답을 제공할지 결정할 수는 없습니다. 페이지의 관련성, 정보의 활용 가능성, 자료의 최신성을 따로 확인해야 합니다. 이는 비교의 한계를 보여주는 예시이지 실제 순위 예측은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "같은 도구 안에서 실제로 비교할 만한 대상을 고르세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 조사할 시장과 독자 범위를 정하세요. 예를 들어 대만에서 유사한 서비스를 제공하고 콘텐츠 유형도 비슷한 웹사이트를 선정한 뒤, 같은 도구와 날짜 범위로 살펴보는 것입니다. 소규모 강좌 스튜디오가 글로벌 미디어와 사이트 전체 점수만 비교하면 큰 격차를 보여주는 숫자는 얻기 쉽지만, 자신이 실행할 콘텐츠 개선이나 유지관리 작업은 찾기 어렵습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "조회 범위도 같아야 합니다. 전체 도메인, 특정 하위 도메인, 단일 경로와 개별 페이지에는 서로 다른 데이터가 포함될 수 있습니다. 설정을 스프레드시트에 기록하고 출처 URL과 확인 날짜를 남기세요. 도구가 필요한 범위를 제공하지 않는다면 그 한계를 명시해야 합니다. 대체 데이터를 원래 비교하려던 항목인 것처럼 슬쩍 사용해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "여기서 비교의 목적은 더 깊이 이해할 가치가 있는 차이를 찾는 것입니다. 예를 들어 어떤 강좌 사이트가 명확한 준비물 목록을 제공해 관련 모임에서 꾸준히 인용된다면, 자료의 용도와 제시 방식을 연구할 수 있습니다. 점수가 더 높다고 해서 그 사이트의 문구를 복제하거나 링크를 구매하거나, 자신이 원래 답할 수 있던 질문을 포기해야 한다는 뜻은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "점수가 변하면 데이터와 모델부터 확인하고 사이트 문제를 판단하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "DR은 상대 지표입니다. Ahrefs는 백링크를 잃지 않았더라도 다른 웹사이트의 링크가 늘면 자신의 점수가 내려갈 수 있다고 설명합니다. 변동을 발견하면 먼저 같은 도구와 범위를 사용했는지 확인한 뒤, 도구의 최근 데이터 업데이트와 공개된 방법론 설명을 살펴보세요. 사이트가 검색엔진의 제재를 받았다고 곧바로 추론하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "다음으로 새로 생기거나 사라진 링크 출처를 표본 점검하고, 중요한 링크 대상 페이지가 작동하지 않는지, 최근 사이트를 개편하거나 URL을 옮겼는지 확인하세요. ‘도구가 방금 링크를 발견했다’는 사실과 ‘그 링크가 오늘 처음 생겼다’는 사실은 구분해 기록해야 합니다. 데이터를 발견한 시점이 실제로 일이 발생한 시점과 같지는 않으며, 한 번의 스냅샷만으로 전체 이력을 복원할 수도 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "점수가 내려갔더라도 핵심 페이지의 노출, 클릭과 서비스 문의에 이상이 없다면 우선 증거를 보관하고 계속 관찰할 수 있습니다. 양쪽이 동시에 감소했더라도 계절성, 콘텐츠 변경, 기술 문제와 추적 설정을 확인해야 합니다. 동시 변화는 조사의 출발점일 뿐, 점수 때문에 트래픽이 감소했다는 증거는 아닙니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "변동 전후 수치, 도구, 범위와 날짜를 보관하고 비교 조건이 같은지 확인하세요.",
+            "제공업체의 방법론과 업데이트 설명을 읽고 상대 지표나 추정 데이터를 구분하세요.",
+            "중요한 링크와 대상 페이지를 표본 점검하고 사이트 수정 이력과 대조하세요.",
+            "그다음 검색 및 사업 데이터를 살펴보고, 가능한 각 원인을 뒷받침하거나 반박하는 증거를 기록하세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "월간 보고서를 도구 단서, 검색 성과와 이용 결과로 나누세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "월간 보고서는 세 영역으로 구성할 수 있습니다. 첫 번째 영역에는 타사 지표와 조사가 필요한 변동을 기록합니다. 두 번째 영역에서는 Search Console로 중요한 페이지와 검색어의 검색 성과를 확인합니다. 세 번째 영역에는 확보할 권한이 있고 추적 정의가 일관된 문의나 주문 데이터를 정리합니다. 각 영역의 범위와 한계를 명시하고 서로를 대신하는 값으로 취급하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "Semrush의 자연 검색 트래픽 항목은 자사 데이터와 모델에 따른 추정치이며, 각 웹사이트의 실제 방문자 기록을 직접 읽어오는 것이 아닙니다. 동종 업체를 조사하는 데 활용한다면 추정치와 그 추세만을 말할 수 있습니다. 경쟁사가 지난달 실제로 고객을 얼마나 확보했는지 단정할 수 없으며, 추정 트래픽으로 매출을 바로 계산해서는 더더욱 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "유용한 결론은 행동으로 이어져야 합니다. 예를 들어 중요한 다운로드 페이지가 작동하지 않는다면 먼저 수정하고 인용 링크가 연결되는 곳을 확인하세요. 점수만 변했고 다른 증거가 없다면 관찰 대상으로 기록하세요. 매월 보고서가 개선된 것처럼 보이게 하려고 점수를 더 높게 주는 다른 도구로 바꾸거나 가장 보기 좋은 시점만 고르지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "점수 올리기를 유일한 업무 목표로 삼지 마세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "권위 점수 상승을 보장하는 제안을 받으면 어떤 콘텐츠를 수정할지, 링크를 어떻게 확보할지, 어떤 지표와 날짜를 기준으로 작업 완료를 검수할지 설명해 달라고 요청하세요. 실제로 특정 도구 점수에 도달하더라도 자연 검색 성장이나 사업 목표 달성을 자동으로 의미하지는 않습니다. 비용은 쓸모없는 숫자가 아니라 확인 가능한 작업에 대응해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "방법이 순위 조작을 위한 링크 매매, 과도한 교환이나 대량의 자동 링크에 의존한다면 Google 스팸 정책은 여전히 적용됩니다. 타사 점수가 올랐다고 해서 이런 행위가 면제되는 것은 아닙니다. 반대로 낮은 점수만으로 새 웹사이트가 스팸 사이트이거나 협업 상대가 믿을 수 없다고 입증할 수도 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "개선 순서는 웹사이트의 실제 부족한 부분에서 다시 출발할 수 있습니다. 중요한 콘텐츠를 읽을 수 있는지, 자료가 독자의 질문에 답하는지, 페이지 사이에서 필요한 내용을 쉽게 찾을 수 있는지, 인용할 만한 원본 자료를 꾸준히 관리하는지 살펴보세요. 도구 점수는 관찰 항목으로 남겨두면 됩니다. 각 변경이 누구에게 도움이 되었으며 완료 여부를 어떻게 확인할지 설명할 수 있어야 업무 방향이 명확해집니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-domain-authority/diagram-1-ko.svg",
+          "alt": "세 구역에 타사 도구, 검색 성과와 자체 사업 데이터를 차례로 제시하고 각각의 용도, 한계와 실행 가능한 조치를 설명합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "점수는 방향을 제시할 수 있지만, 판단을 마무리하려면 같은 조건과 실제 증거가 필요합니다.",
+          "description": "세 구역에 타사 도구, 검색 성과와 자체 사업 데이터를 차례로 제시하고 각각의 용도, 한계와 실행 가능한 조치를 설명합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "데이터",
+            "설명하는 범위",
+            "직접 추정할 수 없는 것"
+          ],
+          "rows": [
+            [
+              "Ahrefs DR",
+              "자사 데이터베이스 내 도메인 링크의 상대적 강도",
+              "각 페이지의 순위나 실제 주문"
+            ],
+            [
+              "Ahrefs UR",
+              "개별 페이지의 링크 평가",
+              "사이트 내 모든 페이지의 성과"
+            ],
+            [
+              "Semrush Authority Score",
+              "링크, 추정 트래픽과 스팸 신호를 결합한 모델",
+              "Google 인증이나 실제 트래픽"
+            ],
+            [
+              "Search Console 검색 성과",
+              "선택한 조건에서의 검색 노출과 클릭 등",
+              "모든 방문자 유입 경로와 전체 매출"
+            ],
+            [
+              "자체 서비스 기록",
+              "일관된 정의에 따른 문의나 주문 결과",
+              "단일 SEO 변경이 모든 성장을 일으켰다는 결론"
+            ]
+          ],
+          "caption": "각 지표는 서로 다른 수준의 정보입니다. 모두 숫자라고 해서 서로 환산할 수 있는 것은 아닙니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "이 숫자가 어떤 결정을 바꿀지 먼저 물어보세요",
+          "text": "점수 변동을 조사할 필요가 있는 페이지, 인용이나 사업 문제와 연결할 수 없다면 우선 조건을 기록하고 관찰하세요. 제공업체의 모델을 검색엔진의 공식 점수로 여기지 말고, 점수를 높이려고 독자에게 쓸모없는 링크를 구매하지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "백링크가 인용된 맥락 살펴보기",
+              "kind": "life",
+              "slug": "seo-backlinks-outreach"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "키워드 조사를 독자의 요구와 연결하기",
+              "kind": "life",
+              "slug": "seo-keyword-research"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ahrefs Domain Rating의 정의",
+          "url": "https://help.ahrefs.com/en/articles/1409408-what-is-domain-rating-dr",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "도구 점수와 순위에 대한 Ahrefs의 설명",
+          "url": "https://help.ahrefs.com/en/articles/907673-do-search-engines-use-domain-authority-domain-rating-as-a-ranking-factor",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Semrush Authority Score 산정 방법",
+          "url": "https://www.semrush.com/kb/747-authority-score-backlink-scores",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 검색 순위 시스템",
+          "url": "https://developers.google.com/search/docs/appearance/ranking-systems-guide?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 스팸 정책",
+          "url": "https://developers.google.com/search/docs/essentials/spam-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "网站权重分数怎么看：工具指标与搜索表现的区别",
+      "description": "网站权重分数常出现在 SEO 报表和合作提案中，但不同工具的计算方式并不相同。本文以 Ahrefs Domain Rating 与 Semrush Authority Score 为例，说明域名、页面、链接、估算流量和实际成效的区别，提供同工具比较、异常核查及月报整理步骤。帮助小型网站把分数当作研究线索，避免将高分当作 Google 认证或排名保证。",
+      "hero": {
+        "src": "/guides/seo-domain-authority/hero-zh-cn.jpg",
+        "alt": "原创计算器、屏幕与文档图像，呈现工具数值、搜索数据和实际工作记录。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "同一个网站在两个工具里出现不同的权重分数，不代表其中一个一定算错。工具可能使用不同数据、范围与公式；如果连指标名称都没有记录，只说网站从四十分升到五十分，这段增长便很难被正确解读。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对一般网站管理者而言，先弄懂分数在描述什么，比追求某个漂亮门槛更实用。它可以帮助筛选研究对象和追查变化，但不能取代特定页面的搜索表现、读者是否找到答案，以及实际咨询或购买的结果。"
+        },
+        {
+          "type": "heading",
+          "text": "先确认这是谁的指标，以及评估哪个范围",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "“网站权重”是常见说法，却不是所有工具共用的一把标尺。报告至少应列出供应商、完整指标名称、查询的域名或网址、数据日期与使用范围。只给一个数字或缩写，可能连全站分数和单页分数都混在一起。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ahrefs 官方将 Domain Rating，简称 DR，定义为域名反向链接概况在其数据库中的相对强度，范围为零到一百。URL Rating 则看单个页面；即使两者都与链接有关，也不能用一个域名的 DR 直接推定其中所有页面的强弱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Semrush 的 Authority Score 则结合链接强度、估算自然流量与链接概况中的垃圾信号。它的数据来源和组合方式与 DR 不同。因此 DR 五十与 Authority Score 五十，不是同一个成绩，也不能相加取平均值，得出另一个有意义的网站分数。"
+        },
+        {
+          "type": "heading",
+          "text": "工具分数与 Google 排名之间没有换算表",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 官方说明，排名主要在页面层级运作，也使用全站信号与分类器；网站具备某些良好信号，不代表每一页都会排名很好。工具提供的概括数字，无法替代搜索系统针对实际问题和内容进行判断。"
+        },
+        {
+          "type": "paragraph",
+          "text": "报表若把分数命名为权威或信任，不应因此视为 Google 颁发的认证。Ahrefs 也说明，没有证据显示搜索引擎把 DR 或类似工具分数当作排名因素。这不等于链接完全不重要，而是工具的外部模型与搜索系统本身需要分开理解。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假设一个大型网站擅长摄影，一个小网站专门解释某地公交车的乘坐方式，不能只拿全站分数决定谁一定适合回答那个交通问题。页面是否相关、信息是否可用、资料是否及时，都需要另行检查。这是说明比较边界的例子，不是实际排名预测。"
+        },
+        {
+          "type": "heading",
+          "text": "在相同工具内，选择真正可比较的对象",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先限定你要研究的市场与读者，例如台湾提供相似服务、内容类型接近的网站，再用同一工具与日期区间查看。小型课程工作室如果只与全球媒体比较全站分数，容易得到差距很大的数字，却找不到自己可采取的内容或维护行动。"
+        },
+        {
+          "type": "paragraph",
+          "text": "查询范围也要一致：完整域名、某个子域名、单一路径与单页可能包含不同数据。把设置写进电子表格，保留来源网址与查阅日期。工具若没有提供所需范围，应标注限制，不要把替代数据偷偷当成原本想比较的项目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这里的比较用途，是找出值得深入理解的差异。例如某个课程网站有清楚的材料清单，被相关社团持续引用，你可以研究其资料用途与呈现方式；并非分数较高就应复制其文案、买它的链接，或放弃自己原本能回答的问题。"
+        },
+        {
+          "type": "heading",
+          "text": "分数变动时，先查数据与模型，再判断网站问题",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "DR 是相对指标，Ahrefs 说明，即使没有失去反向链接，其他网站的链接增长也可能使你的分数下降。看到变动后，先确认是否使用同一工具与范围，再查看工具近期数据更新及已知的方法说明，不要立即推断网站受到了搜索引擎惩罚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接着抽查新增或流失的来源、重要链接的目标页面是否失效，以及网站近期是否改版或迁移网址。把“工具刚发现一条链接”与“该链接今天才出现”分开记录。数据发现时间不一定等于事情发生时间，单次快照也不能重建完整历史。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果分数下跌，但关键页面曝光、点击与服务咨询没有异常，可以先保存证据再持续观察。若两者同时下降，仍需检查季节性、内容变更、技术问题及跟踪设置。同步变化只是调查起点，还不能证明是分数导致流量下跌。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "保存前后数值、工具、范围与日期，确认比较条件相同。",
+            "阅读供应商的方法与更新说明，识别相对指标或估算数据。",
+            "抽查重要链接和目标页面，对照网站修改记录。",
+            "再看搜索及业务数据，写下支持和反对各种原因的证据。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "把月报分成工具线索、搜索表现与使用结果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "月报可以分成三层。第一层记录第三方指标及需要调查的变动；第二层用 Search Console 查看重要页面和查询的搜索表现；第三层整理你有权获取、且跟踪定义一致的咨询或订单数据。每层都写明范围与限制，不把它们当成彼此的替代值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Semrush 的自然流量字段是依据其数据与模型估算的，不是直接读取每个网站的真实访客记录。若拿来研究同行，只能说估算值及其趋势；不能宣称竞争者上个月实际获得多少客户，更不能直接用估算流量算出营收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一份可用的结论应关联到行动，例如某个重要下载页已失效，先修复并核对引用链接的目标页面；若只是分数变动而缺少其他证据，则记录为待观察。不要为了让每月报表看起来有进步，改用另一家分数较高的工具，或只挑最好看的时间点。"
+        },
+        {
+          "type": "heading",
+          "text": "避免把提高分数变成唯一的工作目标",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "收到保证提升权重的方案时，请对方说明要改哪些内容、如何获取链接、用什么指标和日期验收。即使真的达到某个工具分数，也不能自动代表自然搜索增长或商业目标完成。费用应对应可检查的工作，而不是一个没有用途的数字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果方法依赖操控排名的链接买卖、过量交换或大量自动链接，Google 垃圾内容政策仍适用。第三方分数上升不能为这些行为提供豁免。相反，低分也不能单独证明新网站是垃圾网站或合作对象不可靠。"
+        },
+        {
+          "type": "paragraph",
+          "text": "改进顺序可以回到网站的实际不足：重要内容可被读取、资料对应读者问题、页面之间便于相互查找，以及值得引用的原始资源得到持续维护。工具分数留在观察栏位即可；当你能说出每个改动帮助了谁、如何核对是否完成，工作才有清楚的方向。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-domain-authority/diagram-1-zh-cn.svg",
+          "alt": "三个区块依次呈现第三方工具、搜索成效及自有业务数据，说明它们的用途、限制与可采取的行动。",
+          "width": 1600,
+          "height": 900,
+          "caption": "分数可以提示方向，完成判断仍需要相同条件与实际证据。",
+          "description": "三个区块依次呈现第三方工具、搜索成效及自有业务数据，说明它们的用途、限制与可采取的行动。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "数据",
+            "描述的范围",
+            "不能直接推定"
+          ],
+          "rows": [
+            [
+              "Ahrefs DR",
+              "其数据库中的域名链接相对强度",
+              "每个页面的排名或实际订单"
+            ],
+            [
+              "Ahrefs UR",
+              "单个页面的链接评估",
+              "整个网站所有页面的表现"
+            ],
+            [
+              "Semrush Authority Score",
+              "链接、估算流量与垃圾信号的综合模型",
+              "Google 认证或实际流量"
+            ],
+            [
+              "Search Console 搜索成效",
+              "所选条件下的搜索曝光和点击等",
+              "所有访客来源与完整营收"
+            ],
+            [
+              "自有服务记录",
+              "定义一致的咨询或订单结果",
+              "单一 SEO 改动带来了全部增长"
+            ]
+          ],
+          "caption": "各指标属于不同层次；同为数字，不表示可互相换算。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先问这个数字会改变哪个决策",
+          "text": "如果分数变动无法关联到需要调查的页面、引用或业务问题，就先记录条件并观察。不要把供应商模型当作搜索引擎官方评分，也不要为了提高分数而购买对读者没有实际用途的链接。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "查看反向链接的引用情境",
+              "kind": "life",
+              "slug": "seo-backlinks-outreach"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把关键词研究与读者需求联系起来",
+              "kind": "life",
+              "slug": "seo-keyword-research"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ahrefs Domain Rating 定义",
+          "url": "https://help.ahrefs.com/en/articles/1409408-what-is-domain-rating-dr",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ahrefs 对工具分数与排名的说明",
+          "url": "https://help.ahrefs.com/en/articles/907673-do-search-engines-use-domain-authority-domain-rating-as-a-ranking-factor",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Semrush Authority Score 方法",
+          "url": "https://www.semrush.com/kb/747-authority-score-backlink-scores",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜索排名系统",
+          "url": "https://developers.google.com/search/docs/appearance/ranking-systems-guide?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 垃圾内容政策",
           "url": "https://developers.google.com/search/docs/essentials/spam-policies?hl=zh-tw",
           "checked_on": "2026-09-14"
         }

@@ -47,7 +47,7 @@ describe("video production evidence", () => {
 
   it("still shows unfinished added languages for a video already on YouTube", () => {
     render(<PublishPill project={{ ...project, youtube_video_id: "dQw4w9WgXcQ" }} />);
-    expect(screen.getByText("已上架")).toBeTruthy();
+    expect(screen.getByText("已連結，未記錄公開時間")).toBeTruthy();
     expect(screen.getByText("主工人未接手")).toBeTruthy();
   });
 
