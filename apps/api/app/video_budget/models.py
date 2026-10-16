@@ -45,7 +45,13 @@ OPERATION_STATUSES = ("reserved", "uncertain", "settled", "released")
 
 class VideoPilotBudget(Base):
     __tablename__ = "video_pilot_budgets"
-    __table_args__ = (CheckConstraint("limit_usd = 25.000000", name="ck_video_pilot_budget_limit"),)
+    # This application release serves both the current 0132 schema and the reviewed
+    # 0133 rollback state. The actual database constraint is widened by 0133.
+    __table_args__ = (
+        CheckConstraint(
+            "limit_usd IN (5.000000, 25.000000)", name="ck_video_pilot_budget_limit"
+        ),
+    )
 
     slug: Mapped[str] = mapped_column(String(80), primary_key=True)
     limit_usd: Mapped[Decimal] = mapped_column(Numeric(12, 6), default=PILOT_LIMIT_USD)

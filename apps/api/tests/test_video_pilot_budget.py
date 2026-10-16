@@ -145,14 +145,87 @@ async def test_v2_remakes_have_independent_accounts_and_legacy_slugs_stay_protec
     sessions: async_sessionmaker[AsyncSession],
 ) -> None:
     assert PILOT_SLUGS == {SLUG, OTHER_SLUG, V2_SLUG, OTHER_V2_SLUG}
-    for slug in (SLUG, OTHER_SLUG, V2_SLUG, OTHER_V2_SLUG):
+    for slug in (SLUG, OTHER_SLUG, V2_SLUG):
         hold = await _reserve(sessions, "full-film", "25", slug=slug)
         assert hold is not None and hold.dispatch_allowed
-    for slug in PILOT_SLUGS:
+    with pytest.raises(AppError) as held:
+        await _reserve(sessions, "full-film", "1", slug=OTHER_V2_SLUG)
+    assert held.value.code == "video_budget_missing_account"
+    pending = await _summary(sessions, OTHER_V2_SLUG)
+    assert pending is not None and pending.limit_usd == Decimal("5")
+    assert pending.remaining_usd == Decimal("5")
+
+    async with sessions() as session:
+        await session.execute(
+            sa.update(VideoPilotBudget)
+            .where(VideoPilotBudget.slug == OTHER_V2_SLUG)
+            .values(limit_usd=Decimal("5"))
+        )
+        await session.commit()
+    b18_hold = await _reserve(sessions, "full-film", "5", slug=OTHER_V2_SLUG)
+    assert b18_hold is not None and b18_hold.dispatch_allowed
+    for slug in (SLUG, OTHER_SLUG, V2_SLUG, OTHER_V2_SLUG):
         view = await _summary(sessions, slug)
         assert view is not None
         assert view.remaining_usd == 0
-        assert view.reserved_usd == PILOT_LIMIT_USD
+        assert view.reserved_usd == (Decimal("5") if slug == OTHER_V2_SLUG else PILOT_LIMIT_USD)
+
+
+@pytest.mark.asyncio
+async def test_b18_v2_old_hold_can_be_reconciled_after_cap_change(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    async with sessions() as session:
+        session.add(
+            VideoPilotBudgetOperation(
+                slug=OTHER_V2_SLUG,
+                operation_id="pre-migration-hold",
+                category="image",
+                provider="minimax",
+                model="image-01",
+                max_usd=Decimal("3"),
+                status="reserved",
+                attempts=1,
+            )
+        )
+        await session.commit()
+    pending = await _summary(sessions, OTHER_V2_SLUG)
+    assert pending is not None and pending.reserved_usd == Decimal("3")
+    assert pending.remaining_usd == Decimal("2")
+    with pytest.raises(AppError) as held:
+        await _reserve(sessions, "new-paid-call", "1", slug=OTHER_V2_SLUG)
+    assert held.value.code == "video_budget_missing_account"
+
+    async with sessions() as session:
+        await session.execute(
+            sa.update(VideoPilotBudget)
+            .where(VideoPilotBudget.slug == OTHER_V2_SLUG)
+            .values(limit_usd=Decimal("5"))
+        )
+        await session.commit()
+    async with sessions() as session:
+        await service.mark_uncertain(session, slug=OTHER_V2_SLUG, operation_id="pre-migration-hold")
+    async with sessions() as session:
+        await service.settle(
+            session,
+            slug=OTHER_V2_SLUG,
+            operation_id="pre-migration-hold",
+            actual_usd=Decimal("3"),
+            receipt_ref="invoice:b18-v2",
+        )
+    reconciled = await _summary(sessions, OTHER_V2_SLUG)
+    assert reconciled is not None
+    assert (
+        reconciled.limit_usd,
+        reconciled.reserved_usd,
+        reconciled.settled_usd,
+        reconciled.remaining_usd,
+    ) == (
+        Decimal("5"),
+        Decimal("0"),
+        Decimal("3"),
+        Decimal("2"),
+    )
 
 
 @pytest.mark.asyncio
