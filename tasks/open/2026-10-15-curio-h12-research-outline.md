@@ -113,3 +113,15 @@ verify-4.md 的獨立事實與連貫性核對對 video.json DF094247…、script
 站主回覆已在後台核准第九版劇本；`review-pull --gate script` 現場讀回 `script: approval recorded`，`status --slug curio-h12` 顯示 `script approved`。合成前 `tts --dry-run` 核對 89 請求、1,925 計費字元、Gemini Sulafat 可用。共用停手帳本已預留 TTS US$0.20、後續 Gemini 轉寫與 TypeSafe Jev 音訊 QA US$0.50，低於 H12 US$6 與五集 US$30 上限；TTS 正在逐句執行，尚未完成實測時長與音訊 QA，尚未送旁白後台。
 
 TTS 已完成 89 請求、1,925 計費字元，正文時間軸 `14168/30 = 472.267` 秒；扣除 `ending-outro` 的 14.4 秒後，正文約 457.867 秒，未達 480 秒硬下限。US$0.20 在共用帳本以保守估額結算，並非供應商最終發票。此版旁白不送站主音訊審核，也暫不執行付費 `check-audio`；先增補約 35–45 秒有一手來源的新調查內容，完成獨立事實查核與十三題新盲評，改稿後重新送劇本審核，再只合成新增／改動的句子。原 89 句音檔保留供快取使用。
+
+## 2026-10-16 H12 時長修稿暫停於盲評
+
+保留第九版的 89 段既有音檔；尚未重錄、跑音訊 QA、產圖或送新版劇本。時長修稿草案在西側證據與事故推論增六景，並對既有 `wave-hypothesis` 改一行，現為 93 景／95 句、88 插畫景。`lint` 0 error／4 warning，估時 8.9 分鐘；這只是估算，仍要用新 TTS 驗正文是否達 480 秒。獨立史料複核 `verify-5.md` 與定向補查 `verify-6.md` 對現版 `script.md` SHA-256 `0A5D1B67B61D91B908B9592C2721D7A7F9A19CE4349790B7F6515E4112C744EF`、`video.json` SHA-256 `83BBB97BA70E38E387C0309073C996134F2E43D0B86DF33F7FBE5E1F033802C4` 均 PASS；`claims.md` SHA-256 `1A274FB94171014BA7110938D24E6A4246E027742A1C8B3326521E0CE4374725`。
+
+新 script-only 盲評 `narrative-r14-answers.json` 對上述 script 只通過 11／13；`no_spoiler`、`opening_hooks` 因開場 `poem-tease` 提前說出飯菜與倒椅未過。之前兩次時長修稿盲評亦未全過；依 youtube-video/script-writing 的兩輪上限，本集停在這份未送審草案，已向站主請示是否另授權只修這一句並重新獨立查核與盲評。站主第九版核准不套用到本版，未獲新核准前不重錄或付費產圖。共用帳本 H12 累計保守估算 TTS US$0.20，音訊 QA 的 US$0.50 仍為未執行預留。
+
+## 2026-10-16 H12 第十版送審與精確核准狀態
+
+站主授權在新增六景後只改 `poem-tease`、`sequence-unknown`、`coiled-rope`、`document-card`、`letter-reader` 五句，刪除重複的 `letter-fate` 一鏡，並使開場畫面提示避開飯菜與倒椅。修改及雜湊詳見 `revision-10.json`；現行 92 景／94 句、87 插畫景，`script.md` SHA-256 `F423202B4FB6856FE39FA1CA9BC01473B4923555FE5823768AAFE108BB209AE7`。獨立史料查核 `verify-8.md` 對同版劇本／畫面／主張表判 PASS，全新 script-only 十三題盲評 13／13 PASS，CLI 匯入後判 storytelling panel passed。`lint` 0 errors／5 warnings、估 8.9 分鐘；這仍不是合成後時長。
+
+最新版已送 `/admin/videos`，審核卡 `48a2ba6e-4da7-4234-83da-60617ad1f369`（2026-10-16 05:44:22 UTC）仍為 `pending`。站主回覆「已核准 H12 劇本」後再讀，後台實際已核准的是上一版 SHA `3B9FCEA7…` 的卡片，不能沿用到第十版。已請站主確認並核准 `F423202B…` 的卡片；在讀回該版核准前，不補錄、不跑付費 QA、不產圖。H12 已估 TTS US$0.20，音訊 QA US$0.50 仍僅預留；89 段舊音檔保留快取。正文八分鐘硬門檻仍待合成實測。

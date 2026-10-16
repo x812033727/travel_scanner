@@ -24,6 +24,10 @@
 | H12-C18 | 大石從較高處移到通道；救生圈不見，綁繩未解且黏有帆布，監督據此判為被海水撕離。 | S1 Muirhead 西側報告第 12–13 段；2026-10-16 正式撰稿再讀全文 | 現場觀察與監督推斷分開；不能把救生圈消失當作有人拿它救援的證明。 |
 | H12-C19 | 監督比較西風方向後較傾向海水沖走。 | S1 報告風向比較段；2026-10-16 再讀 | 風向論證仍是監督推理，沒有確定死亡過程。原來源亦記遺孀探望、陪 Moore 值班及通報建議，但三段在初輪退修中刪出正文，避免離開信件與調查的主線。 |
 | H12-C20 | Muirhead 報告記初次檢查時屋內時鐘停了；鐘面本身不標示它停在哪一天。 | S1 Muirhead 報告抵達與初查段 | 前半是報告所記，後半是鐘面無法提供日期的編輯判讀；不把停鐘時刻當成失蹤時刻。 |
+| H12-C21 | 西側木箱除各類繫船、登岸及起重機繩索外，也收著起重機把手。 | S1 Muirhead 報告西側段（NLB line 61） | 描述原本的器材清單，不能畫成調查時木箱仍在現場。 |
+| H12-C22 | 西側舊起重機在此前的冬季被海水沖走，當年夏天裝的新起重機在調查時完好。 | S1 Muirhead 報告西側段（NLB line 60） | 兩台不同時期的起重機；不能把舊機受損畫成 1900 年 12 月三人失蹤當天的事故。 |
+| H12-C23 | 高處落到通道的大石在報告中估重超過 20 英擔；以英國長英擔換算約一公噸。 | S1 Muirhead 報告西側段（NLB line 62） | 重量是報告估計；不把石頭當成命中人的證據。 |
+| H12-C24 | 消失的救生圈原繫於約海面上 110 英尺高的西側通道欄杆。 | S1 Muirhead 報告西側段（NLB line 63） | 高度是設施位置；不當成量到的浪高。 |
 
 ## 不採用／待重查
 
@@ -61,11 +65,15 @@
 | H12-C20 | clock-has-no-date |
 | H12-C11 | east-intact、west-recalled、box-gone、rope-question、coiled-rope、crane-safe、crane-covered、railings-twisted、departure-question |
 | H12-C10 | sea-blocks-descent、platform-height、box-location、box-height、height-card |
+| H12-C21 | box-contents |
+| H12-C22 | previous-crane |
+| H12-C23 | stone-weight |
+| H12-C24 | buoy-height |
 | H12-C18 | stone-displaced、buoy-question、buoy-ties、buoy-inference |
 | H12-C12 | coat-left、others-clothes、clothing-inference、landing-clothes、sequence-unknown |
-| H12-C13 | investigator-opinion、secure-gear、wave-hypothesis、wave-label |
-| H12-C19 | wind-compared、west-wind、water-preferred |
-| H12-C16 | letter-fate、exhibit-first、letter-reader、ending-outro |
+| H12-C13 | investigator-opinion、secure-gear、wave-hypothesis、returning-water、wave-label |
+| H12-C19 | wind-compared、west-wind、wind-escape、water-preferred |
+| H12-C16 | document-card、exhibit-first、letter-reader、ending-outro |
 
 ## 與企劃不同的地方
 

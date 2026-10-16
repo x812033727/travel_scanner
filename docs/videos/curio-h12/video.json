@@ -71,11 +71,6 @@
       "setup": "e2rt",
       "payoff": "jreq",
       "what": "後來的文字如何描出當年文件未記下的屋內一幕"
-    },
-    {
-      "setup": "m6uj",
-      "payoff": "3ncp",
-      "what": "最初那封信後來如何回到公眾眼前"
     }
   ],
   "youtube": {
@@ -242,7 +237,7 @@
       "id": "poem-tease",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a later reader's desk beside a window, one reader notices a blank page beside small paper cutouts of a dinner plate and overturned chair, centered in frame, with indirect light from the right.",
+        "prompt": "Medium shot at a later reader's desk beside a window, one reader studies a plain page beside a small model of an empty dining table, with no meal or chair visible, centered in frame, with indirect light from the right.",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -252,7 +247,7 @@
       "lines": [
         {
           "id": "i73f",
-          "text": "多年後，另一張紙上出現了沒人動過的飯菜與倒椅。",
+          "text": "多年後，另一張紙寫到了燈塔裡的一張餐桌。",
           "emotion": "自然接續，關鍵詞稍重"
         }
       ]
@@ -682,7 +677,7 @@
       "lines": [
         {
           "id": "3w38",
-          "text": "兩份記錄都沒有解釋這處衣物差異，也無法排出三人離站的先後。"
+          "text": "至於麥克阿瑟為什麼沒穿外套，兩份記錄沒有解釋，也無法排出三人離站的先後。"
         }
       ]
     },
@@ -1154,6 +1149,24 @@
       ]
     },
     {
+      "id": "box-contents",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up outdoors at the western landing at an earlier time before the box was lost, a simple wooden storage box secured in a rock crevice high above the sea, its lid open to reveal coiled mooring ropes, landing ropes and plain crane handles, soft overcast daylight, no people or writing.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C21"
+      ],
+      "lines": [
+        {
+          "id": "dwtd",
+          "text": "箱裡原收著繫船、登岸的繩子，還有起重機把手。"
+        }
+      ]
+    },
+    {
       "id": "box-height",
       "template": "shot",
       "data": {
@@ -1242,8 +1255,26 @@
       "lines": [
         {
           "id": "a83d",
-          "text": "監督查看繩束，發現它們全都還捲著，沒有一束被解開。",
+          "text": "監督查看時，繩束都還捲著，沒有一束被解開；這只能說明檢查時的狀態，不能確認失蹤當天誰用過。",
           "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "previous-crane",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at the western lighthouse landing during the winter before the disappearance, one workman in a plain coat stands safely above the platform while rough sea water carries away an old crane below, soft overcast light from the left, no keepers in danger.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C22"
+      ],
+      "lines": [
+        {
+          "id": "vn6y",
+          "text": "前一個冬季，上一台起重機曾被海水沖走。"
         }
       ]
     },
@@ -1322,6 +1353,24 @@
       ]
     },
     {
+      "id": "stone-weight",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on the concrete path above the west landing during an inspection, one inspector stands beside a massive displaced stone block for scale and studies it, grey sea far below, soft overcast light from the right.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C23"
+      ],
+      "lines": [
+        {
+          "id": "2d4b",
+          "text": "報告估它重逾二十英擔，約一公噸。"
+        }
+      ]
+    },
+    {
       "id": "buoy-question",
       "template": "shot",
       "data": {
@@ -1337,6 +1386,24 @@
           "id": "rvc2",
           "text": "連綁在欄杆上的救生圈都不見了，曾有人拿它救人嗎？",
           "emotion": "問句輕輕上揚，留白"
+        }
+      ]
+    },
+    {
+      "id": "buoy-height",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot looking up from the sea toward the high concrete path above the west landing, one inspector in a plain coat examines the bare railing where a life buoy had been tied, a long cliff face between the railing and the water, diffuse overcast daylight.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C24"
+      ],
+      "lines": [
+        {
+          "id": "cbd8",
+          "text": "救生圈所在的通道欄杆，約和剛才那只木箱的岩縫一樣高。"
         }
       ]
     },
@@ -1449,7 +1516,25 @@
       "lines": [
         {
           "id": "ek4w",
-          "text": "接著，一股突然衝上來的大浪，把他們捲走。"
+          "text": "接著，一股突然衝上來的大浪，漫過他們站的地方。"
+        }
+      ]
+    },
+    {
+      "id": "returning-water",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up in a coastal investigation office in winter, one inspector moves a plain translucent water-flow model downward over an unlabelled rocky west-landing model on the desk, soft side light from the left, this is a teaching model of a hypothesis.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C13"
+      ],
+      "lines": [
+        {
+          "id": "9jra",
+          "text": "監督推想，回落的海水才把三人捲走。"
         }
       ]
     },
@@ -1506,6 +1591,24 @@
           "id": "e8ux",
           "text": "當時的西風，會把人推向島上較高的地方。",
           "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "wind-escape",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a coastal investigation office in winter, one inspector points to an unlabelled sloping island relief model where a small plain human token rests before the cliff edge, soft lamplight from the left, a teaching model of his wind comparison.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C19"
+      ],
+      "lines": [
+        {
+          "id": "33cn",
+          "text": "他認為，真被風吹，人還能在崖頂前伏倒。"
         }
       ]
     },
@@ -1681,32 +1784,14 @@
       },
       "claims": [
         "H12-C05",
-        "H12-C15"
-      ],
-      "lines": [
-        {
-          "id": "2kc7",
-          "text": "遇到這種餐桌故事，先找它出現在登島信，還是詩裡。",
-          "emotion": "放慢，帶著觀眾往前走"
-        }
-      ]
-    },
-    {
-      "id": "letter-fate",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot at a reading table beside a window, one archive attendant opens a shallow document drawer, centered in frame, with soft light from the left.",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "claims": [
+        "H12-C15",
         "H12-C16"
       ],
       "lines": [
         {
-          "id": "m6uj",
-          "text": "那麼，最初那封寫給燈塔局的信，後來去了哪裡？",
-          "emotion": "問句輕輕上揚，留白"
+          "id": "2kc7",
+          "text": "穆爾當年的信保留了原件，現在能跟後來的詩並排對讀。",
+          "emotion": "放慢，帶著觀眾往前走"
         }
       ]
     },
@@ -1744,7 +1829,7 @@
       "lines": [
         {
           "id": "d4uq",
-          "text": "當時讀信的人，能沿著他的字分清哪一句是見聞，哪一句是推想。"
+          "text": "那次展覽讓觀眾親眼看見這封原信，也讀到穆爾寫下的文字。"
         }
       ]
     },
