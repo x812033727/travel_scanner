@@ -44,7 +44,8 @@ class _Rows:
         return self
 
 
-_CONSTRAINTS: list[tuple[str, str, str, bool, str, bool, str]] = [
+_ConstraintRow = tuple[str, str, str | bytes, bool, str | bytes, bool, str]
+_CONSTRAINTS: list[_ConstraintRow] = [
     (
         "video_pilot_budgets",
         "video_pilot_budgets_pkey",
@@ -126,7 +127,7 @@ class _Connection:
     def __init__(
         self,
         accounts: dict[str, Decimal],
-        constraints: list[tuple[str, str, str, bool, str, bool, str]] | None = None,
+        constraints: Sequence[_ConstraintRow] | None = None,
         index: str = "CREATE INDEX ix_video_pilot_budget_operations_slug "
         "ON public.video_pilot_budget_operations USING btree (slug)",
     ) -> None:
@@ -148,6 +149,11 @@ async def _verify_fake(connection: _Connection) -> None:
 @pytest.mark.asyncio
 async def test_future_schema_readback_requires_nine_exact_accounts_and_schema() -> None:
     await _verify_fake(_Connection(dict(PILOT_LIMITS_USD)))
+    asyncpg_rows = [
+        (*row[:2], str(row[2]).encode("ascii"), row[3], str(row[4]).encode("ascii"), *row[5:])
+        for row in _CONSTRAINTS
+    ]
+    await _verify_fake(_Connection(dict(PILOT_LIMITS_USD), asyncpg_rows))
     missing = dict(PILOT_LIMITS_USD)
     missing.pop("story-five-lego-legoland")
     with pytest.raises(guard.MigrationGuardError, match="accounts or limits"):

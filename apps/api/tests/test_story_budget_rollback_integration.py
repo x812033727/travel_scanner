@@ -324,13 +324,17 @@ def test_real_0133_migration_allows_only_the_reviewed_0132_rollback(
     )
     assert len(budget_checks) == 1 and budget_checks[0][1] is True
     assert all(value in str(budget_checks[0][0]) for value in ("5.000000", "25.000000"))
-    operation_constraints = asyncio.run(
+    operation_constraints_raw = asyncio.run(
         _fetch(
             url,
             "SELECT conname, contype FROM pg_constraint "
             "WHERE conrelid='video_pilot_budget_operations'::regclass",
         )
     )
+    operation_constraints = [
+        (name, kind.decode("ascii") if isinstance(kind, bytes) else kind)
+        for name, kind in operation_constraints_raw
+    ]
     assert ("uq_video_pilot_budget_operation", "u") in operation_constraints
     assert any(kind == "f" for _, kind in operation_constraints)
     assert ("ix_video_pilot_budget_operations_slug",) in asyncio.run(

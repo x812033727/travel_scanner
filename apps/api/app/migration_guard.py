@@ -71,6 +71,15 @@ def _canonical_check(definition: str) -> str:
     return re.sub(r"[\s()]", "", expression)
 
 
+def _pg_char(value: str | bytes) -> str:
+    """asyncpg returns PostgreSQL's internal char fields as single-byte values."""
+    if isinstance(value, bytes):
+        return value.decode("ascii")
+    if isinstance(value, str):
+        return value
+    raise MigrationGuardError("reviewed 0133 constraint catalog has an invalid char field")
+
+
 async def _revisions(connection: AsyncConnection) -> tuple[str, ...]:
     has_version_table = await connection.run_sync(
         lambda sync_connection: inspect(sync_connection).has_table("alembic_version")
@@ -114,9 +123,9 @@ async def _verify_reviewed_0133(connection: AsyncConnection) -> None:
     for row in constraints.all():
         table, name, kind, validated, delete_action, references_account, definition = row
         actual_constraints[(table, name)] = (
-            kind,
+            _pg_char(kind),
             validated,
-            delete_action,
+            _pg_char(delete_action),
             references_account,
             definition,
         )
