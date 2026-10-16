@@ -72,3 +72,9 @@ video SHA-256 `e11a22a7a29086a06a8261943cd3e78bea6775223705cb3eab9b8dbdffa1a559`
 ## 2026-10-16 第二輪敘事退修
 
 第二輪嚴格盲評 11／12 項必答通過，唯一未過 `payoffs`：`h3369d03` 把因紐特口述直接問成下一次海底搜尋位置，`h725fbb3` 卻說 2014 年岸上零件使隊伍改位。原評審答案保存於 `narrative-round2.json`；作者只做最後一輪定向修訂，詳見 `narrative-revision-2.md`。新版 video SHA-256 `236e94b49168e52e57f6c063c9cd377fdf2086cc91fb0907932a3d13fc3389ac`。兩句旁白改為把口述界定範圍與岸上物件導致改位分開，loop 由 `h725fbb3` 回收；80 句、估時 9.615 分，lint 0 errors／原有視覺警告 2。`script.md`、逐句主張與估時已跟版；未將作者修文當成盲評通過，舊 `verify-1.md` 仍綁舊 SHA，須獨立重查變動句並重做嚴格盲評。尚未送後台劇本、未付款。
+
+## 2026-10-16 獨立史料第 2 輪與新鮮度 HOLD
+
+獨立新查核員 `codex-gpt6-h10-fact-round2` 對 SHA-256 `236E94B49168E52E57F6C063C9CD377FDF2086CC91FB0907932A3D13FC3389AC` 完成兩句改稿與舊版 78 個已確認主張中固定種子抽樣 26 句（含兩句改稿）的直接原始頁複查，26／26 可支持、事實修文 0。完整來源、HTTP 200 讀回、逐句表與聽眾檢查見 [verify-2.md](../../docs/videos/curio-h10/verify-2.md)。
+
+另找到 [University of Waterloo 2026-05-06 發布](https://uwaterloo.ca/news/media/dna-matches-identify-four-more-sailors-franklin-expedition)：再辨認四名船員，累計六名。現有結尾仍以 2024 Fitzjames 作最後新資訊；台詞沒有直接錯誤，但對 2026-10-16 的資料查核標示而言有近況缺口。**正式劇本史料關卡 HOLD，不送站主劇本核准。**本查核員只建議於 Fitzjames 回收後加很短的 2026 身分研究後記並同步來源／說明；不自行改稿。後續改字應綁新 SHA 重查事實與敘事盲評，必要時重走 brief 核准。本輪未付費、未送後台。
