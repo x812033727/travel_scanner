@@ -261,6 +261,8 @@ without a channel stance, propose one and mark it as a proposal the owner confir
 ## 大綱 — 2 or 3 options, each exactly like this:
 ### 選項 A：<angle in a few words>
 一行說明：<the angle and how it differs from the other options>
+故事線：<事件／實測／疑問／抉擇（選一）>
+主角：<the one person, team, image, bill or project carried from the opening to the close>
 主線：<the spine in one sentence: who or what, from which moment, to which answer>
 轉折：<3 to 5 events in the order they happened, each with the chapter that reveals it, each more surprising than the one before>
 開場鉤子：「<the opening line as spoken; a year or a place and somebody doing one concrete thing, or the viewer's own question>」

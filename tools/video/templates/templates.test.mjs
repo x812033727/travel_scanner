@@ -175,6 +175,28 @@ test("a screenshot slide takes a stock photo from the work directory, with an op
   assert.equal(workUrl("stock/a b.png"), "https://video.local/work/stock/a%20b.png");
 });
 
+test("CC-safe cards reserve more room below their footer without changing unmarked pages or template CSS", () => {
+  const safeRule = ":root{--safe-bottom:212px}";
+  for (const id of ["numbers", "screen", "old-print"]) {
+    const card = scene(id);
+    if (id === "numbers") card.data.source = "測試來源";
+    if (id === "screen") card.data.credit = "Photo credit";
+    const plain = slideHtml(card, state());
+    assert.doesNotMatch(plain, /--safe-bottom:212px/, `${id}: the unmarked page keeps the theme`);
+    card.data.cc_safe = false;
+    assert.equal(slideHtml(card, state()), plain, `${id}: false does not change existing frames`);
+    card.data.cc_safe = true;
+    assert.deepEqual(sceneProblems(card), [], id);
+    const marked = slideHtml(card, state());
+    assert.ok(marked.includes(safeRule), `${id}: the page reserves an extra 80px`);
+    assert.equal(marked.replace(safeRule, ""), plain, `${id}: source text, credits and template CSS stay intact`);
+    assert.equal(visibleText(marked), visibleText(plain), `${id}: only the layout changes`);
+  }
+  const bad = scene("numbers");
+  bad.data.cc_safe = "true";
+  assert.deepEqual(sceneProblems(bad), ["cc_safe must be a boolean"]);
+});
+
 test("an inlined SVG loses its prolog and fixed size; scripts and network loads are refused", () => {
   const svg = '<?xml version="1.0"?><!DOCTYPE svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900"><text>圖</text></svg>';
   assert.equal(inlineSvg(svg), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900"><text>圖</text></svg>');

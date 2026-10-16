@@ -246,7 +246,11 @@ export function narrativeProblems(doc, timeline, { minutes } = {}) {
 // tutorial judges taught that only yes-or-no questions tell a good script from a bad one; a
 // scale pins at the same number for both).
 
-/** The eleven questions, in zh-TW; a "required" one that is not met sends the script back to the writer. */
+/**
+ * The questions, in zh-TW; a "required" one that is not met sends the script back to the writer.
+ * one_thread and no_detour came on 2026-10-15, after three AI videos changed example and metaphor
+ * from chapter to chapter, went off on detours and read lists out (script-writing.md §故事主線與鉤子).
+ */
 export const NARRATIVE_PANEL = Object.freeze([
   { id: "scene_first", required: true, question: "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？" },
   { id: "no_spoiler", required: true, question: "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）" },
@@ -259,6 +263,8 @@ export const NARRATIVE_PANEL = Object.freeze([
   { id: "chapters_are_events", required: false, question: "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？" },
   { id: "outro_no_next", required: true, question: "片尾是否沒有提到下一支影片、下一集或下一份檔案？" },
   { id: "opening_hooks", required: true, question: "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）" },
+  { id: "one_thread", required: true, question: "是否有一個主角（一個人、一個團隊、一張圖、一筆帳、一個專案、一艘船）從開場一路帶到結尾，每一章都讓它往前走，而不是換了幾個不相干的例子？" },
+  { id: "no_detour", required: true, question: "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？" },
 ]);
 
 /** What the panel's reader is told, and nothing else: no brief, no sources, no standing instructions (the stage sends it bare). */

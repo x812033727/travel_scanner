@@ -375,6 +375,9 @@ class ProjectSummary(BaseModel):
 
 class ProjectOut(ProjectSummary):
     reviews: list[ReviewOut]
+    # Whether the owner can tick a dub for this exact video. Brand stories need a current
+    # approved final cut whose QA proves captions are switchable, independent of category.
+    dub_allowed: bool = False
     # Set only in the answer to a pasted YouTube address without a publish time: why the
     # linked channel gave none (still private, not in the channel, not linked...), or None
     # when it gave one or the owner typed one (admin_service.link_youtube).
