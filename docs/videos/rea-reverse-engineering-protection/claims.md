@@ -33,5 +33,5 @@
 - c21｜前端仍可讀：兩個 fetch 端點 /api/travel/analytics/config、/api/travel/analytics/events｜RUN [W1]｜2026-10-16｜web-visible
 - c22｜REA 自述限制「server-side behavior may remain unknown」｜RUN [W1]；REA 輸出 limitations｜2026-10-16｜web-boundary, boundary
 - c23｜防守做法：授權／付費／權限判斷與秘密放伺服器，前端只收已批准結果｜SRC 對照（反例）；一般安全原則｜2026-10-16｜fix-code, checklist
-- c24｜改法示範：把 License.Check 從用戶端算改成只問伺服器；密鑰不在程式裡，偽造 key 無從通過（設計推論，未建伺服器實跑）｜SRC（反例）；設計說明｜2026-10-16｜fix-code
+- c24｜改法示範：移除寫死密鑰、activate 改問本機 license 伺服器；實跑結果：REA 掃新版 0 個密鑰（只剩網址）、伺服器核發的合法 key 過、舊偽造 key 被拒｜RUN [FIX1-3]；SRC test-target/NoteVault-fixed.cs、license-server.mjs｜2026-10-16｜fix-code, fix-run
 - c25｜上線前清單：秘密不進前端／二進位、正式站關 source map、後端只回必要欄位、拔除錯後門｜RUN 各項對應一個實測失敗｜2026-10-16｜checklist
