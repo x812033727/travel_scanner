@@ -4,8 +4,8 @@ title: Curio H12 research and outline
 status: in-progress
 priority: P2
 area: docs
-owner: codex-gpt6-h12-targeted-revision
-claimed_at: 2026-10-16T01:57:10Z
+owner: codex-gpt6-h12-final
+claimed_at: 2026-10-16T12:09:31Z
 created_at: 2026-10-15T16:34:42Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -133,3 +133,29 @@ TTS 已完成 89 請求、1,925 計費字元，正文時間軸 `14168/30 = 472.2
 - `check-audio` 完成 94／94 句 Gemini 轉寫及一次 TypeSafe Jev 差異判讀：55 exact、10 sound、6 經 Jev 接受、23 句留旗標。另一套無稿 faster-whisper small 已逐句複核全部 23 旗標及六句未列旗標的原始差異；精確雜湊、分類及優先試聽句 `874p`、`wdik`、`3ncp`、`3w38` 見 `docs/videos/curio-h12/audio-qa-1.md`。兩套 ASR 不能代替站主聽感，尚未定向重錄。
 - 音訊試聽頁已在 `<home>/mokaair-work/videos/curio-h12/review/audio.html`。`review-push --gate audio` 送出的音訊審核卡為 `a4eb23a3-3422-4523-ab42-a18caa4f5755`，綁定 `timeline.json` SHA-256 `EA4FB643E12F8077F9538D68D52614F8A1051A85FBD06AFD4A2922BF0E643465`；後台唯讀 GET 於本次交接仍見 `pending`（建立 `2026-10-16T07:54:59.668841Z`），`status --slug curio-h12` 同時顯示 narration not approved。**下一步等站主試聽並核准或指出需重錄的句 ID；在後台讀回對應雜湊核准前，不開始 H12 插畫。**
 - 共用停手帳本對 H12 的保守費用估額為 **US$0.75／本集 US$6.00 上限**（首輪 TTS 0.20、音訊 QA 0.50、定向 TTS 0.05）；三筆均已列入估額結算，沒有仍佔用的 active reservation。這不是供應商最終美元帳單；其餘多語授權把五集合計上限提高到 US$34，不會改變 H12 本集 US$6 上限。
+
+## 2026-10-16 新敘事題目下的 z4u3 定向修訂
+
+- 站主同意只修 `z4u3`，並明確同意將已結束任務 `codex-gpt6-h12-targeted-revision` 的 H12 範圍認領移交；現由 `codex-gpt6-h12-final` 認領。不得把此授權擴大為其他句子或付費重錄。
+- `z4u3` 只將提問「為什麼沒穿上就出門？」改成「外套能告訴我們誰先離站嗎？」；`3w38` 原句仍回答文件無法排出先後。`video.json` SHA-256 `4E1A03D2C79A642C1DB1E1BD03455626F78CAC704F75B2A8C7E561F40DC62409`，由工具再生的 `script.md` SHA-256 `D0CB64E23DB5CC45A88AB49A8E7B556BE6DEA6DB0D050924CFE39DEA41477C5D`。原始旁白與已核准音訊均屬舊版雜湊。
+- 機械檢查 `lint` 0 errors／5 warnings、94 句；`npm run check:tasks` 與 `git diff --check` 通過。已重開 NLB 所載穆爾原信：衣物段記錄外套觀察，不能由此得知三人離站先後。**獨立史料查核與全新十三題盲評仍待完成；未送新版劇本後台、未重錄或產圖。**
+
+### 追加授權：刪除 d4uq 重述鏡頭
+
+- 站主另行同意只刪 `letter-reader` 一景／`d4uq` 一句，保留 `exhibit-first`／`3ncp`。已從 `video.json` 刪除整景，從 `claims.md` 的 H12-C03、H12-C16 場景映射移除，並以 CLI 重新產生 `script.md`。`loops.md` 及 Shorts 無該景引用，不需改。
+- 最新 `video.json` SHA-256 `9C13AF1222552BCABCFBA4B0BE2D5BC8C3EA912F0A8CB2C93104DD8AC7B39E50`、`script.md` SHA-256 `8E7AF54E37406E9C16705CA074BA5628B8EC5B749ED8B98114AD178B2A5FEADF`、`claims.md` SHA-256 `A74A8BBB6952B6B78F9FCA6DFEF839F26D4BF2B792EC4F391145B13C9BCF9F02`。93 句／86 插畫景；`lint` 0 errors／5 warnings，估時 8.8 分鐘，`tts --dry-run` 僅 `z4u3` 一句待重錄，沒有付費呼叫。
+- 依舊音訊時間軸，原正文 14,617 幀／30 fps；`d4uq` 佔 191 幀，純刪後正文暫估 14,426 幀＝**480.867 秒**，只比 8 分鐘下限多 0.867 秒。`z4u3` 新句尚未合成，實際正文長度必須在劇本核准後重錄並重新量測；此估算不能當最終合格證明。獨立史料與全新十三題盲評仍待此最終雜湊重驗，未送審、未重錄、未產圖。
+
+### 追加授權：ds8v 明示史料歸屬，最新版送審準備
+
+- NLB 轉錄的繆爾黑德報告稱船舶通報在失蹤消息發表後才送達；NLB 另一官方簡史則寫 12 月 18 日。站主同意只把 `ds8v` 改為「但繆爾黑德在報告裡說，這則消息是在失蹤被發現後，才傳到燈塔局。」`claims.md` 明列來源衝突，未將兩頁硬合併成一個日期。
+- 最新 `video.json` SHA-256 `D16413FCD54ED2AA5FCFD12B88054FCF8B211AA96110C1514184467615AD3BF1`、工具再生 `script.md` SHA-256 `408E3C8BAAFC0063B0B53410B579D14BA09D650753DB466A409E59470F9A620B`。93 句、86 插畫景；`lint` 0 errors／5 warnings。另一位獨立審稿員先讀劇本，十三題全是，再查 NLB 當年紀錄與官方衝突；答案 `review/narrative-after-attribution-independent.json`，事實收據 `docs/videos/curio-h12/verify-after-attribution.md`。敘事結果已匯入且顯示 passed。
+- 尚未對此新版付費重錄；舊時間軸對純刪的 480.867 秒只作估算，補錄 `z4u3`、`ds8v` 後必須再量測正文是否達 480 秒。
+- `review-push --gate script` 已送最新版劇本至 `/admin/videos`；立即 `review-pull --gate script` 讀回「等待站主」，舊版核准對新版雜湊無效。下一步是站主核准 `408E3C8B…9A620B` 後再定向補錄。
+- 站主明確核准 `408E3C8B…9A620B`；後台頁核對為最新 91 場／93 句卡，完成核准後 `review-pull --gate script` 讀回 `approval recorded`。`tts --dry-run` 僅 `z4u3`、`ds8v` 兩句需新合成，約 67 計費字元；在 H12 及全批額度內預留後才執行。
+
+### 2026-10-16 最新音訊 QA 送審
+
+- 兩句定向補錄後，`timeline.json` SHA-256 `792DC6C9D010FA7EE94884F7631CD3362D1496AF600A2BF7A14381A0D767F699`，`speech_hash` `6839b804e36ff7c7`；93 句總長 08:18.600，片尾前正文 08:04.200，實測超過 8 分鐘下限 4.2 秒。93 個 WAV 雜湊均與時間軸一致，只有 `z4u3`、`ds8v` 晚於舊版音訊核准時刻。
+- `check-audio`：55 exact、10 sound、7 差異判讀接受、21 旗標；21 句都在舊版已試聽的 23 句旗標中，且都是原 WAV。`z4u3` 新句轉寫逐字吻合；`ds8v` 的「繆爾黑德」被 Gemini 辨成「繆爾赫德」，需要站主聽感判定。詳見 `docs/videos/curio-h12/audio-qa-2.md`；逐句頁已更新。
+- `review-push --gate audio` 已送新版音訊，`review-pull` 讀回「現行版等待站主、舊版核准失效」。下一步請站主聽新錄的 `z4u3`、`ds8v` 並在 `/admin/videos` 核准最新時間軸，或指出實際錯讀；在該 SHA 核准前不開始 H12 插畫。本輪 QA 分流／送審未新增付費呼叫、未改共用費用帳本。

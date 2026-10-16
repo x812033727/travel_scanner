@@ -123,3 +123,15 @@ scope:
 
 - 分支接上 main 後，舊敘事收據依新規則標為 stale。全新盲評者只讀現版口播與十三題，再判 **13／13 yes**；答案保存在 repo 外 `<home>/mokaair-work/videos/curio-m09/review/narrative-newrules-answers.json`，SHA-256 `D5E4B75A8999FA69A6D81890D41D53A4CE1CB0273821540091AAC74E2CBEF884`。`narrative --answers` exit 0，95 句旁白與分鏡 manifest 未改。
 - 最新 `review-pull --gate storyboard` 仍回 `waiting for the owner`；須讀回 manifest `7DC31CF5…E0251` 的後台核准，才會首次 render，依 main 新規則加入右上角台標。
+
+### 2026-10-16 M09 分鏡核准後本機成片
+
+- 後台 `review-pull --gate storyboard` 已讀回最新 manifest `7DC31CF5…E0251` 核准；本機 `approvals.json` 記錄 2026-10-16T12:10:24Z。`status` 明列 storyboard approved。
+- `render --channel msedge` 已完成 7 個卡片狀態；首次 render 釘選浮水印 v1，SHA-256 `2D168413A11C5978FF0EA66A40393AA7949DCEEBEBA7FC77BB9CEE1A9E41339C`。卡片聯絡表及一個已編碼插畫鏡頭抽看均見右上角台標清楚、位置正確。
+- `clips --dry-run` 確認 86 個 still、0 個付費片段；正式 `clips` 生成清單 0 clips／86 stills。`captions` 已輸出繁中 95 cues，manifest `speech_hash=47918d790a391e31`、`problems=[]`。
+- `assemble` 完成 93／93 段，`checks.json` 為 `ok=true`、`problems=[]`；片長 559.100 秒（9:19.1），其中正文 15,993 格／30 fps＝533.1 秒，通過正文 480 秒門檻。音量 -14.1 LUFS、true peak -1 dBFS；報告中的浮水印仍是 v1 同一 SHA。`final.mp4` 為 1920×1080 H.264／AAC、178,608,451 bytes，SHA-256 `9D9799CDF2E1B9165BD3F7817860107B085518AD47C18E03CC7C97BE4D6BF2F7`。
+- 成片後重跑 `captions`，繁中 95 cues、`problems=[]`，manifest 同時綁 `speech_hash=47918d790a391e31` 與品牌包雜湊；`review` 已建立 `<home>/mokaair-work/videos/curio-m09/review/final.html`。本機結構檢查可供付費最終 QA 前置；**尚未呼叫 TypeSafe Jev 最終 QA、未送後台成片審核、未獲成片核准，也未上傳**。共用估算支出維持 US$3.734／6.000；協調者須先核對共用帳本再預留最終 QA。
+
+- 協調者已在共用帳本預留並核銷一次最終 QA US$0.05（本集估算 US$3.784／6）。`qa --slug curio-m09` 對當前 `final.mp4` 雜湊 `9D9799CD…6BF2F7` 結果 **10／11**：組裝、渲染、旁白、節奏、繁中 metadata、史料連結、縮圖、TypeSafe Jev 政策及合成揭露均過；字幕一項因站主尚未選語言、工作目錄尚無 `languages.json`，舊預設檢查 en／ja／ko 三語時回報缺檔。繁中 95 cues 已通過。須以 `--manual-review` 送成片供站主判定，不能把 10／11 寫成全過；送審會再次呼叫 Jev，須另記預留。
+
+- `review-push --gate final --manual-review` 已再次執行同一成片的 QA（仍 **10／11**），生成 720p 預覽並送到後台；`review-pull --gate final` 讀回 `waiting for the owner`，未取得成片核准。送審 QA 的第二次 TypeSafe Jev 呼叫已以 US$0.05 保守核銷，共用帳本 M09 累計 US$3.834／6；這是估算停手帳，不是供應商最終帳單。後台須由站主看片並決定，核准後才建立上傳包；多語選擇仍待站主。

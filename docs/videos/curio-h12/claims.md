@@ -17,7 +17,7 @@
 | H12-C11 | 繩具箱失蹤、欄杆扭曲、繩子散在岩隙但仍捲著；起重機完好。 | S1 報告西側段 | 確認；不說起重機當時壞掉、三人正在修它。 |
 | H12-C12 | McArthur 的外套留在屋內；另外兩人的海靴及相應外衣不在。 | S1 Moore 信末段及報告 | 確認衣物觀察；其出門先後與有無救援行動均未知。 |
 | H12-C13 | Muirhead 認為突來大浪沖走三人是最可能解釋。 | S1 報告結論段 | 調查者意見；不是確證、不是所有可能性均遭排除。 |
-| H12-C14 | 岸上有時連續數夜看不到燈，因此沒有看到不等於燈一定未點；Muirhead 訪談實際瞭望的兩名少年並看 Return Book。ARCHTOR 15 日午夜經過未見燈是另一份船舶通報。 | S1 岸上 Return Book 與能見度段；ARCHTOR 通報段 | 2026-10-16 退修時再讀；passing-ship 為午夜普通過船，不是 HESPERUS 白天換班。不可把兩條觀察混成同一證詞，也不可說 12 日後燈就全熄。 |
+| H12-C14 | 岸上有時連續數夜看不到燈，因此沒有看到不等於燈一定未點；Muirhead 訪談實際瞭望的兩名少年並看 Return Book。ARCHTOR 15 日午夜經過未見燈是另一份船舶通報；Muirhead 報告稱消息在發現失蹤後才送達燈塔局。 | S1 岸上 Return Book 與能見度段；ARCHTOR 通報段；S2 官方燈塔簡史 | passing-ship 為午夜普通過船，不是 HESPERUS 白天換班；NLB 另一簡史寫 18 日送達，與轉錄的 Muirhead 報告不合，旁白須明示採用哪份史料。不可把兩條觀察混成同一證詞，也不可說 12 日後燈就全熄。 |
 | H12-C15 | 1912 年出版的 Gibson 詩集收錄〈Flannan Isle〉，詩中寫有未動的晚餐與倒椅。 | S3 書名頁、〈Flannan Isle〉餐桌段 | 確認出版年份與文學文字；無原稿日期，不主張 1912 年才寫成，也不能反推 1900 現場真的如此。 |
 | H12-C16 | NRS 在 2026 年首次展示 Moore 信。 | S4 原信展出段 | 確認館方說法；展期已結束，不作旅遊邀約或稱「現在正在展」。 |
 | H12-C17 | 三人最後的確切遭遇仍未被當年紀錄確定。 | S1 官方歷史導言、調查結論措辭 | 確認證據上限；片尾「未結」指最後遭遇，不代表每個怪談細節都同樣可信。 |
@@ -51,7 +51,7 @@
 | 主張 ID | 使用場景 |
 | --- | --- |
 | H12-C02 | arrival-date、landing-no-reply、horn-call、rocket-call |
-| H12-C03 | letter-tease、boat-launched、boat-waits、letter-recalled、serious-absence、boat-report、search-again、memory-recalled、letter-reader |
+| H12-C03 | letter-tease、boat-launched、boat-waits、letter-recalled、serious-absence、boat-report、search-again、memory-recalled |
 | H12-C09 | west-tease、inspector-lands、investigator-opinion |
 | H12-C15 | poem-tease、poem-bridge、poem-recalled、untouched-meal、overturned-chair、poem-effect、memory-recalled、kitchen-recalled、document-card |
 | H12-C17 | opening-question、search-island、time-place-question、poem-bridge、ending-outro |
@@ -73,7 +73,7 @@
 | H12-C12 | coat-left、others-clothes、clothing-inference、landing-clothes、sequence-unknown |
 | H12-C13 | investigator-opinion、secure-gear、wave-hypothesis、returning-water、wave-label |
 | H12-C19 | wind-compared、west-wind、wind-escape、water-preferred |
-| H12-C16 | document-card、exhibit-first、letter-reader、ending-outro |
+| H12-C16 | document-card、exhibit-first、ending-outro |
 
 ## 與企劃不同的地方
 

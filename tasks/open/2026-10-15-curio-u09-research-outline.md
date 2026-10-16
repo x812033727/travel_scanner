@@ -116,3 +116,15 @@ scope:
 
 - main 新敘事題目使上一版收據失效；新盲評抓到 `1dfdcacf` 對接收器結論的相鄰重述。僅改這句為「那串脈衝究竟來自多遠？」；獨立事實差異複核與另一位全新盲評者 13／13 均通過，詳見 [現行劇本狀態](../../docs/videos/curio-u09/script-status.md)。
 - 現行 `video.json` SHA `719CFEA7…17E17`、生成稿 SHA `9D29AB19…B56D8`，已重新送劇本後台，讀回仍等待站主。沒有本輪付費重錄／圖像／成片；現有旁白時間軸及舊分鏡均不可當作新版核准。
+
+### 現行劇本核准後的旁白重錄：2026-10-16
+
+- 後台已讀回現行劇本 SHA `9D29AB19…B56D8` 核准；15 個變動請求定向重錄、86 個快取沿用，新時間軸 SHA `CC8A4E3F…2EDA38`，旁白 9:54。`check-audio` 檢查 102／102 句，15 個新轉寫與 1 次 Jev 判讀留下 17 旗標，其中 16 句沿用已試聽的舊 WAV，唯一新增 `1dfdcacf` 等站主判讀實際讀音。詳細雜湊、成本及差異見[新版音訊 QA 收據](../../docs/videos/curio-u09/audio-qa-2.md)。
+- `review-push --gate audio` 已送新版後台、回應 pending；須核對站主對 `1dfdcacf` 的聽感與後台核准，才可沿用 89 張已驗收插畫重綁新 manifest。共用帳本保守估算 U09 US$4.7735／6，尚無新版分鏡或成片。
+
+- 站主試聽 `1dfdcacf` 回覆實際聽到正確的「那串脈衝」、旁白可用；又明確核准 `CC8A4E3F…2EDA38` 時間軸。後台頁面核對為 09:54、102 句、17 旗標的最新卡，完成核准後 `review-pull --gate audio` 讀回 `approval recorded`。下一步只重綁當前 89 張已驗收圖，檢查 manifest／聯絡表後送新版分鏡；不把舊版分鏡核准沿用。
+
+### 新版分鏡重綁與待審：2026-10-16
+
+- `keyframes --shot august-desk --takes 1` 只重綁新版劇本目前需要的 89 張已驗收選圖與評審結果，實際新增圖片／評審均為 0；共享帳本 US$0.02 預留已以零成本釋放，U09 估算累計維持 US$4.7735／6。
+- 現行 manifest SHA-256 `CFB01AE25347CBF7DB94C414956058EEECB5ADDD99ECCF4FA4882D4DB33BBE19`，89 鏡均有圖且沒有 `needs_review`；四頁聯絡表已重新產生。`review-push --gate storyboard` 已送新版後台，`review-pull` 讀回 `waiting for the owner`。待站主核准此 manifest 才製作成片；舊分鏡核准不適用。
