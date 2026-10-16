@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-h11-research-outline
 title: Prepare Curio H11 Voynich source refresh and outline choices
-status: in-progress
+status: blocked
 priority: P2
 area: docs
-owner: codex-gpt6-h11-audio-production
-claimed_at: 2026-10-16T01:19:13Z
+owner: codex-gpt6-h11-package-close
+claimed_at: 2026-10-16T14:24:28Z
 created_at: 2026-10-15T16:34:00Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -120,3 +120,25 @@ H11 將材料定年、字詞分布、新聞稿撤下、背面透字、筆跡推�
 站主已核准 `7000C074…D6238` 劇本與只重錄 `v0e564e3`「四葉」的新旁白；`review-pull` 分別讀回 script/audio approval recorded。重錄一個請求、25 計費字元，其餘舊 take 快取沿用；新版時間軸 SHA-256 `CCFF7C2723920387883243FC131FDFD1B6B8D57606DE39EF1A33587B96E36905`。重新合成的 9:34.3 成片 SHA-256 `54EFA17859D4359B84A9266799108B3C0DE0597DDFAAA2F1B4B3F556801FF1BC`，四語字幕已按新版繁中時間軸產出。完整媒體與 QA 收據見 [final-qa-2.md](../../docs/videos/curio-h11/final-qa-2.md)。
 
 `review-push --gate final --manual-review` 已送新版 720p 預覽；`review-pull` 讀回 **waiting for the owner**。QA 為 10／11，只有片尾同一卡停留 22 秒未過節奏門檻，已請站主審看新版。舊成片與上傳包核准不能沿用。H11 共用帳本目前保守估算 US$2.348／US$8，三語付費配音尚未開始，YouTube 未上傳。
+
+## 2026-10-16 H11 認領移交與多語接續
+
+站主明確同意將已結束的 `codex-gpt6-h11-audio-production` 認領移交；主協調者以 `codex-gpt6-h11-final` 重新認領本票。新版「四葉」成片 `54EFA178…801FF1BC` 已在後台核准，本機 `approvals.json` 及 `status` 均對應此 SHA。英、日、韓三語的標題說明、字幕、配音在 `languages.json` 全勾；翻譯獨立審稿最終各為 PASS。三語配音乾跑分別為 73 個請求、英 5,641／日 2,669／韓 2,878 計費字元，三語皆 0 個無法塞入的視窗。沿用已核准的繁中劇本與成片，先處理新版上傳包，再依每語 US$0.15 配音、US$0.50 音訊 QA 預留、執行及核銷；新增多語上限 US$2.00、H11 總上限 US$8.00。遇到費用不明或需要定向重錄先停，不自行擴額。未上傳 YouTube。
+
+英語 73 請求／5,641 計費字元已完成，9:34.3 音軌 0 時槽超出；75 句 QA 有 6 旗標，離線 Whisper small 全部複核。3 句 Gemini 差異被離線排除、1 句 Marci/Marcy 為同音拼寫，`v2ebbd0d` Naibbe 與 `vb393dd6` text/texts 需站主聽感；細節與逐句試聽頁見 [i18n-audio-qa-en-1.md](../../docs/videos/curio-h11/i18n-audio-qa-en-1.md)。英語 TTS／QA 各 US$0.15／0.50 已估算核銷，H11 累計 US$2.998／8、多語 US$0.65／2。日語 TTS US$0.15 已預留且開始執行。站主尚未試聽英語配音，未送語言審核或上傳。
+
+站主其後依逐句頁試聽並回覆「英語旁白可以」；僅代表音訊聽感通過，不代表 `languages` 後台卡或 Studio 上傳已完成。日語製作續行。
+
+日語 TTS 已完成 73 請求／2,669 計費字元，產物 `dubs/ja.m4a` SHA `52048F3AC27C411DC05A7666514A0B710D01D49E46E2B747783A53409FFD2CEE`；`ffprobe` 實測 574.300 秒，73 視窗 0 超出、2 個需加速，最高 1.12x。TTS US$0.15 已核銷，H11 累計 US$3.148／8、多語 US$0.80／2。日語 QA 尚未執行；將先預留再跑。
+
+日語 73 請求／2,669 計費字元已完成，9:34.3 音軌 0 時槽超出、2 個加速最高 1.12 倍。75 句 QA 為 39 exact、16 Jev 接受、20 旗標；離線 Whisper small 定向複核 12 句，關鍵否定 `v3962cb5`、數量 `v4353a57` 皆支持核准稿。已整理需站主聽辨的六句與逐句頁，見 [i18n-audio-qa-ja-1.md](../../docs/videos/curio-h11/i18n-audio-qa-ja-1.md)。日語 TTS／QA 各 US$0.15／0.50 已估算核銷，H11 US$3.648／8、多語 US$1.30／2。尚未宣稱日語旁白核准。韓語 TTS US$0.15 已預留並執行中，未上傳 YouTube。
+
+韓語 TTS 73 請求／2,878 計費字元已完成，`dubs/ko.m4a` 574.300 秒，73 視窗 0 加速／0 超出。75 句 QA 為 57 exact、2 Jev 接受、16 旗標；兩句離線近音分流後，站主已試聽並回覆「韓語旁白可以」，不自行重錄；見 [i18n-audio-qa-ko-1.md](../../docs/videos/curio-h11/i18n-audio-qa-ko-1.md)。韓語 TTS／QA 各 US$0.15／0.50 已核銷，H11 全集 US$4.298／8、多語 US$1.95／2，最終供應商帳單不可得。四語字幕已重建（zh-TW 104、en 84、ja 121、ko 121 cues），三語本機上傳包 `package` 四項皆過，含新版核准成片 `54EFA178…`；尚待日語人耳結果再送新版上傳包／語言卡，未上傳 YouTube。
+
+## 2026-10-16 三語試聽完成與上傳包送審
+
+站主已再試聽日語逐句頁，回覆「日語旁白可以」；英、韓人耳結果亦已接受。依先前核准的 H11 認領移交，任務認領從已結束的 `codex-gpt6-h11-final` 轉至 `codex-gpt6-h11-package-close`。沒有重錄或新付費呼叫，共用停手帳本未更動，H11 估算仍為 US$4.298／8（多語 US$1.95／2）。
+
+本機四語上傳包九項 SHA 與 [upload-qa-2.md](../../docs/videos/curio-h11/upload-qa-2.md) 一致；`package --slug curio-h11` exit 0、4／4，`metadata.json` SHA `E89C18865BDDA4D49E031455FF46CF39B67B7B212D3CB84F7CF59CD88D50BF34`，成片 SHA `54EFA17859D4359B84A9266799108B3C0DE0597DDFAAA2F1B4B3F556801FF1BC`。新版 `review-push --gate publish` 與 `review-push --gate languages` 均送審成功；各自 `review-pull` 讀回 `waiting for the owner`。下一步由站主在 `/admin/videos` 審閱這兩張最新版卡片，再由站主親自在 YouTube Studio 處理私人上傳與三語音軌；後續須讀回核准與 Studio 狀態，不可把送審當成上傳或發布。
+
+唯讀後台列核對最新版 `publish` review ID `78c54776-53db-4f4c-b902-536f871f30dd`／SHA `E89C18865BDDA4D49E031455FF46CF39B67B7B212D3CB84F7CF59CD88D50BF34`、最新版 `languages` review ID `fef69bcd-548f-4837-af28-5d8108d287ac`／SHA `8B35A601DE8F5A705E44AD5DF2946A09404C43CF36BB9F51923902216E4521AB`，兩者目前均 `pending`。舊繁中基礎包 publish ID `52c30ba2-0309-4879-bf36-331366d74e8a` 已 `superseded`。本票改為 `blocked`，理由是等待站主審核與其自行操作 Studio；沒有活躍產製工作。

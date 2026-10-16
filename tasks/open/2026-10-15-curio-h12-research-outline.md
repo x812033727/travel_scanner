@@ -159,3 +159,11 @@ TTS 已完成 89 請求、1,925 計費字元，正文時間軸 `14168/30 = 472.2
 - 兩句定向補錄後，`timeline.json` SHA-256 `792DC6C9D010FA7EE94884F7631CD3362D1496AF600A2BF7A14381A0D767F699`，`speech_hash` `6839b804e36ff7c7`；93 句總長 08:18.600，片尾前正文 08:04.200，實測超過 8 分鐘下限 4.2 秒。93 個 WAV 雜湊均與時間軸一致，只有 `z4u3`、`ds8v` 晚於舊版音訊核准時刻。
 - `check-audio`：55 exact、10 sound、7 差異判讀接受、21 旗標；21 句都在舊版已試聽的 23 句旗標中，且都是原 WAV。`z4u3` 新句轉寫逐字吻合；`ds8v` 的「繆爾黑德」被 Gemini 辨成「繆爾赫德」，需要站主聽感判定。詳見 `docs/videos/curio-h12/audio-qa-2.md`；逐句頁已更新。
 - `review-push --gate audio` 已送新版音訊，`review-pull` 讀回「現行版等待站主、舊版核准失效」。下一步請站主聽新錄的 `z4u3`、`ds8v` 並在 `/admin/videos` 核准最新時間軸，或指出實際錯讀；在該 SHA 核准前不開始 H12 插畫。本輪 QA 分流／送審未新增付費呼叫、未改共用費用帳本。
+
+- 後台其後已核准最新版 `timeline.json` SHA `792DC6C9…F699`，`review-pull --gate audio` 讀回 `approval recorded`、`status` 顯示 narration approved。`keyframes --dry-run` 為 86 張 1K 插畫，每鏡先試一張估算 US$1.161；共用估算帳本先預留 US$1.25，才開始首輪 `--takes 1`。本輪尚在執行，已有少數圖評退件；須完成全輪、核對工具實際出圖／評審數與帳本後，再決定只修哪幾鏡及是否送分鏡後台。
+
+## 2026-10-17 H12 分鏡送站主審核
+
+- 六輪定向產圖後以同章已核准圖處理兩張退件：`slate-later` 明記回用 `slate-entry-3.jpg`（原退件保留），`extinguish-time` 用 `work-date-inference-1-trim.jpg` 快取圖並取得自己的 PASS 判讀；其餘選圖未重畫。選圖 manifest SHA-256 `F61238CD938140C8467501B376183A1865DC20D18DFCCC2FFA91504C26A475AB`，86／86 檔案雜湊正確、判讀通過，四頁聯絡表已重建；獨立逐圖覆核未見直接反向史實，但相近重圖和高度／位置表達較弱的鏡頭已列入 `docs/videos/curio-h12/keyframe-audit-3.md`。
+- `lint` 0 errors；`status` 已標 keyframes drawn。共用停手帳本此時 H12 估算 US$4.185／6、五集 US$25.0295／39，實際供應商發票不可讀。`review-push --gate storyboard` exit 0，立即 `review-pull` 讀回 `storyboard: waiting for the owner`；**下一步等站主核准上述 manifest SHA 的新版分鏡，未讀回前不 render 或 assemble**。
+- 站主已看過四頁聯絡表並核准這版分鏡；後台最新且唯一的 storyboard 卡 `bc2fce73-4e73-4105-8e58-bf4f41c5fb2a`，SHA 完全等於 `F61238CD…6A475AB`，核准時間 `2026-10-16T16:37:09.847333Z`。稍後 `review-pull --gate storyboard` exit 0 並記錄 `approval recorded`，`status` 已顯示 storyboard approved。可以接續本機 render／assemble；此核准不等於最終成片核准。

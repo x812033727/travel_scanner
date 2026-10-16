@@ -61,3 +61,9 @@ At 2026-10-16 08:04 Taipei, the five updated briefs were submitted as new manual
 The owner then reconfirmed all five revised A briefs in /admin/videos. At 2026-10-16 08:07 Taipei, every new review ID read back approved/A with its matching whole-file SHA-256; exact decisions are in format-decision-20261016.json. This clears the revised-outline gate, but not the independent script review or owner script approval gate. No paid calls or worker starts have occurred.
 
 H09 PR #1503 head bff1f1a65 has no new CI run because main conflicts in docs/videos/long-form/review.md and review.json. A live task owned by codex-story-budget-cap still claims both files; no takeover or merge was performed. This is separate from the five-episode production branch and from H09's pending owner Studio URL.
+
+## 2026-10-17 批次接續快照
+
+本批總覽與原規劃保留在 `docs/videos/curio-next-five-20261016/README.md`、`production-plan.md`；兩份新增 2026-10-17 狀態節，避免把 10／16「零成片／零付費」的啟動基線讀成現況。五集 A 及正式劇本關卡均已通過；H10、H11、M09、U09 的繁中成片由站主核准，H12 最新分鏡 manifest `F61238CD…6A475AB` 已讀回核准並進入本機組裝，仍待最終 QA 與成片核准。五集尚不可結案。
+
+站主已逐集追加 H10／H11 各 US$2、M09／U09 各 US$2.50 多語停手上限；原五集繁中 US$30 加增額 US$9，批次估算停手上限 US$39。此為授權上限，不是已花或供應商實際帳單；最新估算及預留只以外部共用帳本當時讀回為準。H11 的修正版繁中成片和最新上傳包／語言卡已核准、英日韓配音已經站主試聽接受；站主決定自行操作 Studio，尚待其提供影片網址及音軌完成讀回。H10 英韓已試聽接受、日語待站主提供錯句 ID；M09 英語已接受、日韓待試聽；U09 日語 102／102 機械 QA 已補齊，`724570c6` 由站主確認聽到核准詞，但其餘日語及英語旗標仍待試聽，韓語配音完成而 QA 進行中。不要把本機成片、後台卡片核准或逐句試聽當成 Studio 上傳及播放驗收。

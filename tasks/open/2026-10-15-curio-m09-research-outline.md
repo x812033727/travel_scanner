@@ -4,8 +4,8 @@ title: Curio M09 research and outline
 status: in-progress
 priority: P2
 area: docs
-owner: codex-gpt6-m09-final
-claimed_at: 2026-10-16T09:54:29Z
+owner: codex-gpt6-m09-pr-final
+claimed_at: 2026-10-16T16:25:06Z
 created_at: 2026-10-15T16:34:56Z
 completed_at:
 branch: codex/curio-next-five-20261016
@@ -135,3 +135,19 @@ scope:
 - 協調者已在共用帳本預留並核銷一次最終 QA US$0.05（本集估算 US$3.784／6）。`qa --slug curio-m09` 對當前 `final.mp4` 雜湊 `9D9799CD…6BF2F7` 結果 **10／11**：組裝、渲染、旁白、節奏、繁中 metadata、史料連結、縮圖、TypeSafe Jev 政策及合成揭露均過；字幕一項因站主尚未選語言、工作目錄尚無 `languages.json`，舊預設檢查 en／ja／ko 三語時回報缺檔。繁中 95 cues 已通過。須以 `--manual-review` 送成片供站主判定，不能把 10／11 寫成全過；送審會再次呼叫 Jev，須另記預留。
 
 - `review-push --gate final --manual-review` 已再次執行同一成片的 QA（仍 **10／11**），生成 720p 預覽並送到後台；`review-pull --gate final` 讀回 `waiting for the owner`，未取得成片核准。送審 QA 的第二次 TypeSafe Jev 呼叫已以 US$0.05 保守核銷，共用帳本 M09 累計 US$3.834／6；這是估算停手帳，不是供應商最終帳單。後台須由站主看片並決定，核准後才建立上傳包；多語選擇仍待站主。
+
+- 後台其後已核准現版成片 SHA `9D9799CD…6BF2F7`，本機 `approvals.json` 記錄 2026-10-16T13:15:45Z，`status` 顯示 final approved。語言面板尚未決定、本機沒有 `languages.json`；已請站主在後台選繁中限定或逐語勾選英／日／韓，尚未據此建上傳包或開始多語付費製作。
+
+### 2026-10-16 M09 多語製作續接
+
+- 後台已讀回英／日／韓三語的標題說明、字幕與配音均勾選；站主另核准 M09 多語最多 US$2.50，M09 累計上限 US$8.50。三語文稿與縮圖已完成，EN／JA 及 KO 各自獨立審稿通過；收據見 `docs/videos/curio-m09/i18n-review-en-ja-1.md` 與 `i18n-review-ko-1.md`。
+- 英語 95 句配音完成，`dubs/en.m4a` 559.1 秒、SHA `3500B12D…138ADBE`，93 視窗零加速／零超時。第 54 次請求曾遇 Web 容器重啟時 Nginx 502；主機日誌證實請求未達 Web/API/Gemini，原 held JSON 已備份並只清除該 request SHA，保留 53 句快取後續跑。證據在 `i18n-dub-en-502-recovery.md` 與 `i18n-audio-qa-en-1.md`。
+- EN `check-audio` 完成 95/95 句 Gemini 轉寫及一次 Jev 判讀：89 句逐字一致、2 句接受、4 句旗標。離線 Whisper 複核與四句試聽頁均已備妥；站主試聽後明確確認「英語旁白可以」，無重錄。EN TTS／QA 的 US$0.15＋US$0.50 已在共用帳本核銷，M09 累計 US$4.484／8.50（保守估算，非供應商最終帳單）。日／韓配音、字幕重計時、上傳包與語言後台審核仍待完成。
+
+- 日語 95 句配音與 QA 已完成；2,134 計費字元、559.1 秒音軌，93 視窗中 3 個加速、最高 1.10 倍、0 超時。95 句轉寫為 51 逐字、20 Jev 接受、24 旗標，離線 Whisper 覆核全部 24 句；八句需優先人耳確認，逐句頁 `<home>/mokaair-work/videos/curio-m09/review/dub-ja.html`。收據 `docs/videos/curio-m09/i18n-audio-qa-ja-1.md`。接上 main 新漏字規則後，以封鎖網路的快取重跑 EN／JA QA：0 新轉寫、0 新 Jev、原旗標不變，無 `thought` 漏字旗標。EN 已獲站主聽感確認，JA 尚待站主試聽，不重錄。
+- 韓語 95 句配音與 QA 已完成；2,586 計費字元、559.1 秒音軌，93 視窗 0 加速／0 超時。95 句轉寫為 64 逐字、12 Jev 接受、19 旗標；離線 Whisper 覆核全部 19 句，八句涉及時序、食象週期、盤位或證據限制，需優先人耳確認。逐句頁 `<home>/mokaair-work/videos/curio-m09/review/dub-ko.html`，收據 `docs/videos/curio-m09/i18n-audio-qa-ko-1.md`。沒有依自動轉寫直接改稿或重錄。
+- JA 與 KO 各 US$0.15 TTS＋US$0.50 QA 已在共用帳本核銷；三語新增估額 US$1.95／2.50，M09 合集估額 US$5.784／8.50。這是停手帳，不是供應商最終帳單。待日／韓人耳決定後，定向修正確定有問題的句子，重新計時與產出多語字幕及上傳包，再走後台語言審核；尚未上傳 YouTube。
+
+### 2026-10-17 M09 scope transfer
+
+- 站主同意把已結束的 `codex-gpt6-m09-final` 任務認領移交；`npm run tasks -- claim ... --force` 讀回新 owner `codex-gpt6-m09-pr-final`。本次只將四份多語 QA／502 收據中的本機使用者絕對路徑改成 `<home>/mokaair-work/...`，不改評審、配音或已核准成片。JA／KO 仍等站主聽感，不製作上傳包。
