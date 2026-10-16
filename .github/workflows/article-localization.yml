@@ -66,6 +66,7 @@ jobs:
         run: |
           uv run --project apps/api python tools/article-localization/test_pipeline.py
           node --test tools/article-localization/artifact-integrity.test.mjs
+          node --test tools/article-localization/render-layout.test.mjs
       - name: Verify assembly, installation and evidence reporting
         run: >-
           uv run --project apps/api pytest -q -o asyncio_mode=auto
