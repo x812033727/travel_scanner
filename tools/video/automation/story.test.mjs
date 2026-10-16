@@ -47,6 +47,7 @@ import {
   readChapter,
   readChapterAnswer,
   SCRIPT_NOTE,
+  STORY_AUTHOR_PACKAGE_DIR,
   STORY_CHAPTERS_DIR,
   storyCast,
   storyBrief,
@@ -867,6 +868,121 @@ test("a ten-minute story carries the exact MiniMax cute look from series to vide
   assert.equal(video.category, "story");
   assert.equal(video.subtitles.burn_in, false, "the merged script keeps zh-TW captions switchable");
   assert.equal(world.site.calls.run.filter((call) => call.stage === "writer").length, 6);
+});
+
+function stageAuthorPackage(world, { chapterChange = () => {}, seriesSha = null, addLexicon = true } = {}) {
+  const packageDir = path.join(world.workdir, STORY_AUTHOR_PACKAGE_DIR);
+  const sourceDir = path.join(packageDir, "chapters");
+  mkdirSync(sourceDir, { recursive: true });
+  if (addLexicon) {
+    const file = path.join(world.box.root, "docs", "videos", "lexicon.json");
+    const lexicon = readJson(file);
+    for (const term of ["Hollis", "Marrow", "Brellco"]) lexicon.terms[term] = null;
+    writeFileSync(file, `${JSON.stringify(lexicon)}\n`);
+  }
+  const chapters = {};
+  for (const [index, key] of CHAPTER_KEYS.entries()) {
+    const ids = Array.from({ length: 12 }, (_, line) => `${key[0]}${index}${String(line).padStart(4, "0")}`);
+    const read = readChapterAnswer(chapterAnswer(key, { line_ids: ids }), { key, ids, sources: PLAN.sources.length, facts: PLAN.must_verify.length });
+    assert.equal(read.problem, undefined);
+    const chapter = read.chapter;
+    const prefix = { hook: "h", origin: "o", idea: "i", engine: "e", turn: "t", now: "n" }[key];
+    chapter.claims = chapter.claims.map((row, number) => ({ id: `${prefix}${number + 1}`, ...row, verdict: "UNCHECKED", note: "作者草稿，待逐章查核" }));
+    if (key === "hook") chapter.scenes.splice(1, 0, {
+      id: "hook-card", template: "title", data: { title: "一把摺疊傘", subtitle: "故事的問題", tag: "資料待核", cc_safe: true },
+      lines: [{ id: "hc000001", text: "那把傘，到底怎麼摺起來？" }],
+    });
+    chapterChange(chapter, key);
+    const file = path.join(sourceDir, `${key}.json`);
+    writeFileSync(file, `${JSON.stringify(chapter, null, 2)}\n`);
+    chapters[key] = sha(file);
+  }
+  const manifest = {
+    schema_version: 1,
+    slug: world.state().slug,
+    series_sha256: seriesSha ?? sha(path.join(world.dir, "series.json")),
+    chapters,
+  };
+  writeFileSync(path.join(packageDir, "manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`);
+  return { packageDir, chapters };
+}
+
+test("hash-pinned author chapters keep a title card and UNCHECKED rows, then enter the real verifier without a writer call", async () => {
+  const world = storyWorld();
+  assert.match(await world.automation.step(), /^story brand-stories:/);
+  const staged = stageAuthorPackage(world);
+  const adopted = await world.automation.step();
+  assert.match(adopted, /six SHA-256-pinned author chapters adopted with claims UNCHECKED/);
+  assert.equal(world.site.calls.run.filter((call) => call.stage === "writer").length, 0);
+  const doc = world.video();
+  assert.equal(doc.scenes[1].template, "title", "the model-answer parser would have rejected this authored card");
+  assert.equal(doc.scenes[1].lines[0].text, "那把傘，到底怎麼摺起來？");
+  assert.match(readFileSync(path.join(world.dir, "claims.md"), "utf8"), /UNCHECKED/);
+  for (const key of CHAPTER_KEYS) {
+    assert.equal(sha(path.join(world.workdir, STORY_CHAPTERS_DIR, `${key}.json`)), staged.chapters[key], `${key} bytes remain exact`);
+    assert.equal(world.state().story.chapters[key].checked, false);
+  }
+  assert.equal(world.state().story.author_adoption.series_sha256, sha(path.join(world.dir, "series.json")));
+  assert.match(await world.automation.step(), /chapter hook.*checked/);
+  assert.equal(world.site.calls.run.filter((call) => call.stage === "verifier").length, 1);
+  assert.equal(world.site.calls.run.filter((call) => call.stage === "writer").length, 0);
+  await steps(world.automation, 12);
+  assert.deepEqual(world.site.calls.run.map((call) => `${call.stage}:${call.variant}`),
+    [...Array(6).fill("verifier:story"), ...Array(6).fill("listener:story"), "verifier:narrative"]);
+  assert.equal(world.runs.length, 0, "author adoption reaches the narrative/script gates without recording or drawing media");
+});
+
+test("an authored last chapter can end on its own shot without adding an outro to the reviewed bytes", async () => {
+  const world = storyWorld();
+  await world.automation.step();
+  const staged = stageAuthorPackage(world, {
+    chapterChange: (chapter, key) => { if (key === "now") chapter.scenes.pop(); },
+  });
+  assert.match(await world.automation.step(), /six SHA-256-pinned author chapters adopted/);
+  assert.equal(world.video().scenes.at(-1).template, "shot");
+  assert.equal(sha(path.join(world.workdir, STORY_CHAPTERS_DIR, "now.json")), staged.chapters.now);
+  assert.equal(world.site.calls.run.length, 0);
+});
+
+test("changed author hashes, plan pins and invalid claims stop before any chapter or writer output", async () => {
+  for (const defect of ["chapter", "series", "verdict", "reference"]) {
+    const world = storyWorld();
+    await world.automation.step();
+    const staged = stageAuthorPackage(world, {
+      seriesSha: defect === "series" ? "0".repeat(64) : null,
+      chapterChange: (chapter, key) => {
+        if (defect === "verdict" && key === "hook") chapter.claims[0].verdict = "CONFIRMED";
+        if (defect === "reference" && key === "hook") chapter.claims[0].scene = "hook-nonexistent";
+      },
+    });
+    if (defect === "chapter") writeFileSync(path.join(staged.packageDir, "chapters", "hook.json"), "{}\n");
+    const answer = await world.automation.step();
+    assert.match(answer, /STOPPED_HOLD/, defect);
+    assert.equal(world.state().status, "blocked");
+    assert.equal(world.site.calls.run.length, 0, defect);
+    assert.equal(existsSync(path.join(world.dir, "video.json")), false);
+    assert.equal(existsSync(path.join(world.workdir, STORY_CHAPTERS_DIR, "hook.json")), false);
+  }
+});
+
+test("an authored pronunciation lint hold never asks the writer to rewrite the chapter", async () => {
+  const world = storyWorld();
+  await world.automation.step();
+  stageAuthorPackage(world, { addLexicon: false });
+  assert.match(await world.automation.step(), /STOPPED_HOLD: the authored chapters are installed/);
+  assert.equal(world.state().blocked_kind, "story_author_lint");
+  assert.equal(world.site.calls.run.length, 0);
+  const lexiconFile = path.join(world.box.root, "docs", "videos", "lexicon.json");
+  const lexicon = readJson(lexiconFile);
+  for (const term of ["Hollis", "Marrow", "Brellco"]) lexicon.terms[term] = null;
+  writeFileSync(lexiconFile, `${JSON.stringify(lexicon)}\n`);
+  const retry = world.state();
+  retry.status = "active";
+  delete retry.blocked;
+  delete retry.blocked_kind;
+  world.automation.persist(retry);
+  assert.match(await world.automation.step(), /authored chapters pass lint after the manual correction/);
+  assert.equal(world.site.calls.run.filter((call) => call.stage === "writer").length, 0);
 });
 
 test("a story goes from the site's job to its first media step: started from its plan, written, checked and heard a chapter a call, the script gate approved here, then tts", async () => {
