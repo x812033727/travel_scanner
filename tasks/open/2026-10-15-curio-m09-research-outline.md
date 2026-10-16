@@ -118,3 +118,8 @@ scope:
 
 - `review-pull --slug curio-m09 --gate script` 讀回新版核准已記錄；`status` 明列 script approved、storytelling passed、86 張插畫已繪製。這次沿用 95 句核准旁白，不重錄。
 - `review-push --slug curio-m09 --gate storyboard` 成功送出含兩張來源卡的新版四頁分鏡；隨後 `review-pull --gate storyboard` 讀回 `waiting for the owner`。詳細逐圖與數字卡來源見 `keyframes-qa-4.md`。站主核准新版分鏡前，不 render／assemble、也不上傳。
+
+### 接上 main 新敘事規則：2026-10-16
+
+- 分支接上 main 後，舊敘事收據依新規則標為 stale。全新盲評者只讀現版口播與十三題，再判 **13／13 yes**；答案保存在 repo 外 `<home>/mokaair-work/videos/curio-m09/review/narrative-newrules-answers.json`，SHA-256 `D5E4B75A8999FA69A6D81890D41D53A4CE1CB0273821540091AAC74E2CBEF884`。`narrative --answers` exit 0，95 句旁白與分鏡 manifest 未改。
+- 最新 `review-pull --gate storyboard` 仍回 `waiting for the owner`；須讀回 manifest `7DC31CF5…E0251` 的後台核准，才會首次 render，依 main 新規則加入右上角台標。
