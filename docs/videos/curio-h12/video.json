@@ -25,7 +25,7 @@
     {
       "setup": "3nwg",
       "payoff": "448s",
-      "what": "同一封穆爾信帶觀眾沿登島腳步追查"
+      "what": "穆爾寫信後，登島時究竟看見什麼"
     },
     {
       "setup": "q7ay",
@@ -35,7 +35,7 @@
     {
       "setup": "i73f",
       "payoff": "i9ud",
-      "what": "把同一封信與後來詩作放在一起，餐桌細節在哪一份文字出現"
+      "what": "後來紙上的餐桌場景出自誰的作品"
     },
     {
       "setup": "fkmm",
@@ -59,8 +59,8 @@
     },
     {
       "setup": "7nu6",
-      "payoff": "phjr",
-      "what": "衣物能把三人的行動推到哪裡"
+      "payoff": "6xq2",
+      "what": "受損設施能否證明三人最後如何失蹤"
     },
     {
       "setup": "rvc2",
@@ -74,8 +74,8 @@
     },
     {
       "setup": "e2rt",
-      "payoff": "i9ud",
-      "what": "當年文件留下的空白，如何在後來詩作中成為餐桌場面"
+      "payoff": "jreq",
+      "what": "後來的文字如何描出當年文件未記下的屋內一幕"
     },
     {
       "setup": "m6uj",
@@ -247,7 +247,7 @@
       "id": "poem-tease",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a reading table beside a window, one reader opens a blank poetry volume beside the same plain letter and a small table illustration, centered in frame, with indirect light from the right.",
+        "prompt": "Medium shot at a later reader's desk beside a window, one reader notices a blank page beside small paper cutouts of a dinner plate and overturned chair, centered in frame, with indirect light from the right.",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -257,7 +257,7 @@
       "lines": [
         {
           "id": "i73f",
-          "text": "多年後，一位詩人把一張餐桌寫進這座燈塔。",
+          "text": "多年後，另一張紙上出現了沒人動過的飯菜與倒椅。",
           "emotion": "自然接續，關鍵詞稍重"
         }
       ]
@@ -276,7 +276,7 @@
       "lines": [
         {
           "id": "kxdb",
-          "text": "這封信能帶我們走到哪裡，又有哪些細節是後來才加進去的？",
+          "text": "穆爾那天看見什麼？後來紙上的那一幕，又是誰寫的？",
           "emotion": "問句輕輕上揚，留白"
         }
       ]
@@ -333,7 +333,7 @@
       "lines": [
         {
           "id": "448s",
-          "text": "現在打開穆爾那封信，跟著他第一次登島的腳步。",
+          "text": "穆爾後來寫，他走到燈塔外，仍沒看見任何看守員。",
           "emotion": "自然接續，關鍵詞稍重"
         }
       ]
@@ -630,8 +630,119 @@
       "lines": [
         {
           "id": "njtt",
-          "text": "接著他們走遍島上，仍沒找到能說明經過的線索。",
+          "text": "接著他們走遍島上，仍沒有找到三人的身影。",
           "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "coat-left",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a Scottish island lighthouse during a daytime relief visit in 1900, one relief keeper pauses before a single coat hanging on a peg, centered in frame, with soft light from the left.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C12"
+      ],
+      "lines": [
+        {
+          "id": "z4u3",
+          "text": "穆爾後來記下一件小事：麥克阿瑟的外套留在住處。",
+          "emotion": "放慢，帶著觀眾往前走"
+        }
+      ]
+    },
+    {
+      "id": "others-clothes",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a Scottish island lighthouse during a daytime relief visit in 1900, one relief keeper examines an empty boot shelf and two empty coat pegs, centered in frame, with indirect light from the right.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C12"
+      ],
+      "lines": [
+        {
+          "id": "7tig",
+          "text": "另外兩人的海靴和防水外衣，卻沒有留在屋內。"
+        }
+      ]
+    },
+    {
+      "id": "clothing-inference",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up inside a Scottish island lighthouse during a daytime relief visit in 1900, one relief keeper looks between the hanging coat and an empty boot shelf, centered in frame, with gentle light falling from above.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C12"
+      ],
+      "lines": [
+        {
+          "id": "phjr",
+          "text": "穆爾熟悉同伴出門時的穿著，這幾件衣物因此很要緊。",
+          "emotion": "自然接續，關鍵詞稍重"
+        }
+      ]
+    },
+    {
+      "id": "landing-clothes",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up inside a Scottish island lighthouse during a daytime relief visit in 1900, one relief keeper gestures toward an empty place for sea boots by the door, centered in frame, with muted side illumination.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C12"
+      ],
+      "lines": [
+        {
+          "id": "m6gi",
+          "text": "他說，那些裝備是他們下到碼頭附近時才會穿的。"
+        }
+      ]
+    },
+    {
+      "id": "why-coat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a Scottish island lighthouse during a daytime relief visit in 1900, one relief keeper stops beside the lone coat and looks toward the closed outside door, centered in frame, with soft light from the left.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C12"
+      ],
+      "lines": [
+        {
+          "id": "8qci",
+          "text": "留下外套的麥克阿瑟，為什麼沒穿上就出門？",
+          "emotion": "問句輕輕上揚，留白"
+        }
+      ]
+    },
+    {
+      "id": "sequence-unknown",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a reader's desk, one reader leaves three plain figure tokens in an unordered cluster beside a blank letter, centered in frame, with indirect light from the right.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C12"
+      ],
+      "lines": [
+        {
+          "id": "3w38",
+          "text": "衣物排不出三人的先後，也沒有人看見他們離開。"
         }
       ]
     },
@@ -689,6 +800,24 @@
         {
           "id": "s7pw",
           "text": "日誌本最後寫到十二月十三日。"
+        }
+      ]
+    },
+    {
+      "id": "clock-has-no-date",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up in a lighthouse record room during an investigation, one investigator points to a plain stopped wall clock above a blank report, centered in frame, with muted side illumination.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C20"
+      ],
+      "lines": [
+        {
+          "id": "s4hn",
+          "text": "報告也記下屋裡的鐘停了；鐘面卻說不出是哪一天。"
         }
       ]
     },
@@ -879,6 +1008,24 @@
       ]
     },
     {
+      "id": "shore-witnesses",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot outside a small coastal stone cottage in winter daylight, one lighthouse inspector pauses with a closed blank notebook at the doorway, centered in frame, with indirect overcast light.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "H12-C14"
+      ],
+      "lines": [
+        {
+          "id": "k8sw",
+          "text": "監督找到實際負責岸上瞭望的兩名少年，問他們各晚看見了什麼。"
+        }
+      ]
+    },
+    {
       "id": "shore-log",
       "template": "shot",
       "data": {
@@ -1001,13 +1148,12 @@
         "visual": "still"
       },
       "claims": [
-        "H12-C03",
         "H12-C11"
       ],
       "lines": [
         {
           "id": "8hj7",
-          "text": "翻回穆爾信裡的西側，監督看到的損害更完整。",
+          "text": "監督換到西側，眼前的損害跟東側完全不同。",
           "emotion": "自然接續，關鍵詞稍重"
         }
       ]
@@ -1118,7 +1264,7 @@
       "lines": [
         {
           "id": "dfa9",
-          "text": "現在木箱不見了，裡面的繩索散在岩縫和起重機旁。",
+          "text": "放繩具的木箱不見了；繩束卻留在岩縫和起重機旁。",
           "emotion": "放慢，帶著觀眾往前走"
         }
       ]
@@ -1137,7 +1283,7 @@
       "lines": [
         {
           "id": "gqqh",
-          "text": "散成這樣，能證明三人當時正在使用那些繩子嗎？",
+          "text": "那些繩子，失蹤當天有人用過嗎？",
           "emotion": "問句輕輕上揚，留白"
         }
       ]
@@ -1156,26 +1302,8 @@
       "lines": [
         {
           "id": "a83d",
-          "text": "繩子雖然散開了位置，每一束卻仍然捲著。",
+          "text": "監督查看繩束，發現它們全都還捲著，沒有一束被解開。",
           "emotion": "自然接續，關鍵詞稍重"
-        }
-      ]
-    },
-    {
-      "id": "no-loose-coil",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up at the west landing of a rocky Scottish island under an overcast sky, one inspector turns a bundled rope carefully in both hands, centered in frame, with muted side illumination.",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "claims": [
-        "H12-C11"
-      ],
-      "lines": [
-        {
-          "id": "z4gv",
-          "text": "監督沒有找到任何一束，曾被解開來使用的樣子。"
         }
       ]
     },
@@ -1318,126 +1446,13 @@
         "visual": "still"
       },
       "claims": [
-        "H12-C11",
-        "H12-C12"
+        "H12-C11"
       ],
       "lines": [
         {
           "id": "7nu6",
-          "text": "這些損害指向強烈的海水衝擊，人出門的線索又在哪裡？",
+          "text": "西側的損害能說明三人最後如何失蹤嗎？",
           "emotion": "問句輕輕上揚，留白"
-        }
-      ]
-    },
-    {
-      "id": "coat-left",
-      "chapter": "報告寫下最可能的解釋",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot in a coastal investigation office in winter, one investigator studies a simple coat hanging on a peg, centered in frame, with soft light from the left.",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "claims": [
-        "H12-C12"
-      ],
-      "lines": [
-        {
-          "id": "z4u3",
-          "text": "穆爾的信接著提到，麥克阿瑟的外套還留在住處。",
-          "emotion": "放慢，帶著觀眾往前走"
-        }
-      ]
-    },
-    {
-      "id": "others-clothes",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot in a coastal investigation office in winter, one investigator examines an empty boot shelf, centered in frame, with indirect light from the right.",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "claims": [
-        "H12-C12"
-      ],
-      "lines": [
-        {
-          "id": "7tig",
-          "text": "另外兩人的海靴和防水外衣，卻沒有留在屋內。"
-        }
-      ]
-    },
-    {
-      "id": "clothing-inference",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up in a coastal investigation office in winter, one relief keeper gestures toward a plain waterproof coat, centered in frame, with gentle light falling from above.",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "claims": [
-        "H12-C12"
-      ],
-      "lines": [
-        {
-          "id": "phjr",
-          "text": "出門的線索就藏在衣物裡：穆爾熟悉他們的穿著習慣。",
-          "emotion": "自然接續，關鍵詞稍重"
-        }
-      ]
-    },
-    {
-      "id": "landing-clothes",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up in a coastal investigation office in winter, one investigator studies a boot and waterproof coat laid on a bench, centered in frame, with muted side illumination.",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "claims": [
-        "H12-C12"
-      ],
-      "lines": [
-        {
-          "id": "m6gi",
-          "text": "他說，那些裝備是他們下到碼頭附近時才會穿的。"
-        }
-      ]
-    },
-    {
-      "id": "why-coat",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot in a coastal investigation office in winter, one archivist pauses beside a single coat illustration, centered in frame, with soft light from the left.",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "claims": [
-        "H12-C12"
-      ],
-      "lines": [
-        {
-          "id": "8qci",
-          "text": "那麼，留下外套的人，是不是臨時跑出去救援？",
-          "emotion": "問句輕輕上揚，留白"
-        }
-      ]
-    },
-    {
-      "id": "sequence-unknown",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot in a coastal investigation office in winter, one archivist leaves three plain figure tokens in an unordered cluster, centered in frame, with indirect light from the right.",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "claims": [
-        "H12-C12"
-      ],
-      "lines": [
-        {
-          "id": "3w38",
-          "text": "衣物沒有留下出門的先後，也沒有留下救援的目擊。"
         }
       ]
     },
@@ -1450,14 +1465,13 @@
         "visual": "still"
       },
       "claims": [
-        "H12-C03",
         "H12-C13",
         "H12-C17"
       ],
       "lines": [
         {
           "id": "fbx9",
-          "text": "穆爾寫到這裡，仍不能確定三人如何失蹤；監督又能推到哪裡？",
+          "text": "現場留下受損的設施，卻沒有留下最後一刻的人證；監督會怎麼解釋？",
           "emotion": "問句輕輕上揚，留白"
         }
       ]
@@ -1479,7 +1493,8 @@
           "id": "ecsy",
           "text": "一九〇一年一月八日，他寫下自己認為最可能的解釋。"
         }
-      ]
+      ],
+      "chapter": "報告寫下最可能的解釋"
     },
     {
       "id": "secure-gear",
@@ -1607,7 +1622,7 @@
       "lines": [
         {
           "id": "e2rt",
-          "text": "信和調查報告都沒寫出最後一刻；後來，一張餐桌卻出現了。"
+          "text": "又過了十多年，這間空屋在另一張紙上有了新畫面。"
         }
       ]
     },
@@ -1616,7 +1631,7 @@
       "chapter": "餐桌走進了詩",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot at a reading table beside a window, one reader opens a blank poetry volume beside the same plain letter and a small table illustration, centered in frame, with indirect light from the right.",
+        "prompt": "Medium shot at a later reader's desk beside a window, one reader notices a blank page beside small paper cutouts of a dinner plate and overturned chair, centered in frame, with indirect light from the right.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1626,7 +1641,7 @@
       "lines": [
         {
           "id": "i9ud",
-          "text": "把穆爾的信放在一旁，再翻開吉布森一九一二年的詩。",
+          "text": "一九一二年，吉布森寫下一首關於這座燈塔的詩。",
           "emotion": "自然接續，關鍵詞稍重"
         }
       ]
@@ -1701,7 +1716,7 @@
       "lines": [
         {
           "id": "wdik",
-          "text": "可是回頭看穆爾那封信，它留下的是搜索時親眼見到的事。",
+          "text": "穆爾的信裡，沒有記下飯菜，也沒有那張倒椅。",
           "emotion": "自然接續，關鍵詞稍重"
         }
       ]
@@ -1721,7 +1736,7 @@
       "lines": [
         {
           "id": "dt4e",
-          "text": "還記得整理過的廚房嗎？當年的調查，跟詩中的場面不同。"
+          "text": "當年調查記下的是整理過的廚房，跟詩裡那幅畫面不同。"
         }
       ]
     },
@@ -1751,7 +1766,7 @@
       "lines": [
         {
           "id": "2kc7",
-          "text": "把兩份文字的年份和類型分開，差別就出來了。",
+          "text": "一九〇〇年的登島信和一九一二年的詩，不能當成同一層證詞。",
           "emotion": "放慢，帶著觀眾往前走"
         }
       ]
@@ -1770,7 +1785,7 @@
       "lines": [
         {
           "id": "4ixq",
-          "text": "詩可以安排一個讓人難忘的畫面，卻不能代替登島者作證。"
+          "text": "那首詩描出了場面，卻不是當天的目擊記錄。"
         }
       ]
     },
@@ -1788,7 +1803,7 @@
       "lines": [
         {
           "id": "kgfx",
-          "text": "要知道那天發生什麼，仍得回到當年留下的文件。",
+          "text": "把這幕搬回事發當天，就跨過了文件無法證實的那一步。",
           "emotion": "自然接續，關鍵詞稍重"
         }
       ]
@@ -1808,7 +1823,7 @@
       "lines": [
         {
           "id": "pxtx",
-          "text": "人的最後遭遇留著空白，文字從哪裡來卻可以追查。"
+          "text": "三人怎麼離開仍無解；餐桌從哪裡來，卻找到了。"
         }
       ]
     },
@@ -1864,7 +1879,7 @@
       "lines": [
         {
           "id": "6fu8",
-          "text": "隔了一個多世紀，人們仍能回到那張紙面前。",
+          "text": "在那場展覽裡，人們曾親眼看見這封信。",
           "emotion": "自然接續，關鍵詞稍重"
         }
       ]
@@ -1884,7 +1899,7 @@
       "lines": [
         {
           "id": "d4uq",
-          "text": "讀信的人可以追著他的腳步，分清哪一句是見聞，哪一句是推想。"
+          "text": "當時讀信的人，能沿著他的字分清哪一句是見聞，哪一句是推想。"
         }
       ]
     },
