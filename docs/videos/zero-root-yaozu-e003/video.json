@@ -13,9 +13,9 @@
   },
   "look": {
     "preset": "custom",
-    "style": "photorealistic live-action Chinese fantasy costume drama, film still, natural cinematic light, realistic skin and fabric texture, shallow depth of field, warm lantern orange and mountain green palette",
-    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore",
-    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "style": "3D Chinese donghua CG animation, like a high-end Chinese 3D animated xianxia series or game cinematic, Unreal Engine 5 cinematic render, stylized semi-realistic characters with refined faces and slightly larger expressive eyes, clearly CG not a photograph, individually rendered hair, simulated cloth with wear; cool desaturated grey-blue palette with warm lantern accents, volumetric light and haze, strong rim light, shallow depth of field",
+    "negative": "photograph, live action, real person, photorealistic skin, text, subtitles, watermark, UI, logo, extra fingers, deformed hands, blood, gore",
+    "motion": "Smooth cinematic 3D animation motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
     "candidates": 2
   },
   "characters": [
@@ -119,7 +119,7 @@
     "data": {
       "headline": "三百盞燈等他",
       "tag": "長燈村",
-      "shot": "s04"
+      "shot": "s03"
     }
   },
   "scenes": [
@@ -148,18 +148,6 @@
     {
       "id": "s02",
       "template": "shot",
-      "action_seconds": 1,
-      "lines": [],
-      "data": {
-        "camera": "Insert of the split log, locked",
-        "prompt": "Insert of a thick pine log on the moonlit stone path, split clean along its length with both halves still pressed together, pale fresh wood showing in the crack, the blunt iron head of an old axe resting on the stones beside it",
-        "motion": "The two halves of the log fall apart and roll away from each other across the stones",
-        "characters": []
-      }
-    },
-    {
-      "id": "s03",
-      "template": "shot",
       "data": {
         "camera": "Close-up, slow push in",
         "prompt": "Close-up of Lushi's face on screen left in cold moonlight, eyes wide on the split log below frame, Azheng off screen right",
@@ -172,16 +160,15 @@
         {
           "id": "e3a02",
           "speaker": "lushi",
-          "text": "這哪是力氣大？阿猙哥，你——",
+          "text": "這叫力氣大？阿猙哥，你——",
           "emotion": "追問，話說到一半被打斷"
         }
       ]
     },
     {
-      "id": "s04",
+      "id": "s03",
       "template": "shot",
       "action_seconds": 3,
-      "lines": [],
       "data": {
         "camera": "Wide shot, high angle, slow push in",
         "prompt": "Wide shot from behind Lushi on screen left and Azheng on screen right at the crest of the moonlit slope, looking down into a dark valley where a long line of unlit paper lanterns runs from the foot of the slope to a village gate",
@@ -190,10 +177,11 @@
           "lushi",
           "azheng"
         ]
-      }
+      },
+      "lines": []
     },
     {
-      "id": "s05",
+      "id": "s04",
       "template": "shot",
       "data": {
         "camera": "Close-up, locked",
@@ -207,13 +195,13 @@
         {
           "id": "e3a03",
           "speaker": "lushi",
-          "text": "三百盞……全亮了？",
+          "text": "三百盞燈……全亮了？",
           "emotion": "愣住，不敢相信"
         }
       ]
     },
     {
-      "id": "s06",
+      "id": "s05",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, low angle, locked",
@@ -233,43 +221,28 @@
       ]
     },
     {
-      "id": "s07",
-      "chapter": "燈河",
+      "id": "s06",
       "template": "shot",
-      "action_seconds": 3,
-      "lines": [],
       "data": {
-        "camera": "Wide shot, pan right",
-        "prompt": "Wide shot of stone steps winding down the slope between two rows of glowing paper lanterns, Lushi on screen right hurrying down ahead with the cracked jar on his back, Azheng on screen left a few steps behind with the axe on his shoulder and firewood on his back",
-        "motion": "Lushi hurries down the lantern-lit steps toward screen right with Azheng striding after him",
+        "camera": "Medium shot, slow push in",
+        "prompt": "Medium shot of Lushi on screen right on stone steps winding down between two rows of glowing paper lanterns, warm orange light on his sun-tanned face, the ends of his short ponytail lifting in the night wind, the cracked jar on his back, Azheng soft and out of focus on screen left a few steps behind with the axe on his shoulder",
+        "motion": "Lushi hurries down two steps and turns his head back over his left shoulder with a wide smile that shows his dimple",
         "characters": [
           "lushi",
           "azheng"
-        ]
-      }
-    },
-    {
-      "id": "s08",
-      "template": "shot",
-      "data": {
-        "camera": "Medium close-up, slow push in",
-        "prompt": "Medium close-up of Lushi on screen right among glowing paper lanterns on the steps, warm orange light on his sun-tanned face, the ends of his short ponytail lifting in the night wind, Azheng off screen left behind him",
-        "motion": "Lushi turns his head back over his left shoulder with a wide smile that shows his dimple",
-        "characters": [
-          "lushi"
         ]
       },
       "lines": [
         {
           "id": "e3a05",
           "speaker": "lushi",
-          "text": "是……在等我？",
+          "text": "等我？",
           "emotion": "不敢相信，笑了出來"
         }
       ]
     },
     {
-      "id": "s09",
+      "id": "s07",
       "template": "shot",
       "data": {
         "camera": "Insert of the hand on the jacket, locked",
@@ -281,13 +254,13 @@
         {
           "id": "e3a06",
           "speaker": "lushi",
-          "text": "可我……沒選上。",
+          "text": "可我……沒選上仙門。",
           "emotion": "笑容收起來，小聲"
         }
       ]
     },
     {
-      "id": "s10",
+      "id": "s08",
       "template": "shot",
       "data": {
         "camera": "Wide shot, locked",
@@ -303,13 +276,13 @@
         {
           "id": "e3a07",
           "speaker": "aunt",
-          "text": "拾兒回來啦！",
+          "text": "拾兒回來啦！全村等你呢！",
           "emotion": "大嗓門，高興得喊出來"
         }
       ]
     },
     {
-      "id": "s11",
+      "id": "s09",
       "template": "shot",
       "data": {
         "camera": "Two-shot, locked",
@@ -330,7 +303,7 @@
       ]
     },
     {
-      "id": "s12",
+      "id": "s10",
       "chapter": "仙門瞎了眼",
       "template": "shot",
       "data": {
@@ -351,7 +324,7 @@
       ]
     },
     {
-      "id": "s13",
+      "id": "s11",
       "template": "shot",
       "data": {
         "camera": "Close-up, slow push in",
@@ -371,7 +344,7 @@
       ]
     },
     {
-      "id": "s14",
+      "id": "s12",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, low angle, slow push in",
@@ -385,13 +358,13 @@
         {
           "id": "e3a11",
           "speaker": "aunt",
-          "text": "仙門瞎了眼！",
+          "text": "仙門那是瞎了眼！",
           "emotion": "想都不想，大聲"
         }
       ]
     },
     {
-      "id": "s15",
+      "id": "s13",
       "template": "shot",
       "data": {
         "camera": "Group shot, locked",
@@ -413,7 +386,7 @@
       ]
     },
     {
-      "id": "s16",
+      "id": "s14",
       "template": "shot",
       "data": {
         "camera": "Close-up, locked",
@@ -433,7 +406,7 @@
       ]
     },
     {
-      "id": "s17",
+      "id": "s15",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, slow push in",
@@ -453,7 +426,7 @@
       ]
     },
     {
-      "id": "s18",
+      "id": "s16",
       "template": "shot",
       "data": {
         "camera": "Insert of the hand over the bun, locked",
@@ -471,7 +444,7 @@
       ]
     },
     {
-      "id": "s19",
+      "id": "s17",
       "template": "shot",
       "data": {
         "camera": "Close-up, slow push in",
@@ -485,13 +458,13 @@
         {
           "id": "e3a16",
           "speaker": "lushi",
-          "text": "妳、妳怎麼知道？",
+          "text": "妳、妳怎麼知道饅頭的事？",
           "emotion": "嚇一跳，結巴"
         }
       ]
     },
     {
-      "id": "s20",
+      "id": "s18",
       "chapter": "退貨",
       "template": "shot",
       "data": {
@@ -512,21 +485,7 @@
       ]
     },
     {
-      "id": "s21",
-      "template": "shot",
-      "action_seconds": 2,
-      "lines": [],
-      "data": {
-        "camera": "Close-up, locked",
-        "prompt": "Close-up of Lushi's face on screen left, the smile gone, warm lantern light, Sun Er off screen right",
-        "motion": "Lushi turns his face away to screen left, pulling the jar strap tight against his chest",
-        "characters": [
-          "lushi"
-        ]
-      }
-    },
-    {
-      "id": "s22",
+      "id": "s19",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, slow push in",
@@ -546,7 +505,7 @@
       ]
     },
     {
-      "id": "s23",
+      "id": "s20",
       "template": "shot",
       "data": {
         "camera": "Insert of the hammer at the apron belt, locked",
@@ -564,10 +523,9 @@
       ]
     },
     {
-      "id": "s24",
+      "id": "s21",
       "template": "shot",
-      "action_seconds": 2,
-      "lines": [],
+      "action_seconds": 1,
       "data": {
         "camera": "Medium shot, locked",
         "prompt": "Medium shot of Sun Er on screen right beside his peddler's load set down on the stone pavement, a heavy iron hammer swinging down from frame left toward the paving stones a hand's width from the load, lantern light",
@@ -575,10 +533,11 @@
         "characters": [
           "sun"
         ]
-      }
+      },
+      "lines": []
     },
     {
-      "id": "s25",
+      "id": "s22",
       "template": "shot",
       "data": {
         "camera": "Close-up, locked",
@@ -598,7 +557,25 @@
       ]
     },
     {
-      "id": "s26",
+      "id": "s23",
+      "template": "shot",
+      "data": {
+        "camera": "Insert of the cracked paving stone, slow push in",
+        "prompt": "Insert of a stone paving slab beside a peddler's load at night, a star-shaped crack where a heavy iron hammer struck it, the edges of the crack glowing ember red as if the stone were hot from a forge, a thin wisp of smoke rising, lantern light; Lushi speaks off screen",
+        "motion": "The ember red glow along the crack fades slowly to grey as the wisp of smoke thins",
+        "characters": []
+      },
+      "lines": [
+        {
+          "id": "e3a21",
+          "speaker": "lushi",
+          "text": "石板……怎麼燒紅了？",
+          "emotion": "看傻了，小聲"
+        }
+      ]
+    },
+    {
+      "id": "s24",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, low angle, slow push in",
@@ -610,7 +587,7 @@
       },
       "lines": [
         {
-          "id": "e3a21",
+          "id": "e3a22",
           "speaker": "aunt",
           "text": "長燈村的孩子，你也敢笑？",
           "emotion": "怒吼，護短"
@@ -618,7 +595,7 @@
       ]
     },
     {
-      "id": "s27",
+      "id": "s25",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, locked",
@@ -630,7 +607,7 @@
       },
       "lines": [
         {
-          "id": "e3a22",
+          "id": "e3a23",
           "speaker": "gui",
           "text": "送客。",
           "emotion": "慢吞吞，不容商量"
@@ -638,10 +615,9 @@
       ]
     },
     {
-      "id": "s28",
+      "id": "s26",
       "template": "shot",
       "action_seconds": 3,
-      "lines": [],
       "data": {
         "camera": "Wide shot, pan right",
         "prompt": "Wide shot of the village gate, villagers with lanterns and brooms soft and out of focus on screen left surging forward behind Third Aunt with her hammer raised, Sun Er on screen right scrambling away out of the archway with his peddler's load on his shoulder",
@@ -650,30 +626,11 @@
           "sun",
           "aunt"
         ]
-      }
-    },
-    {
-      "id": "s29",
-      "template": "shot",
-      "data": {
-        "camera": "Medium close-up, locked",
-        "prompt": "Medium close-up of Tuantuan on screen left under the archway, two small hair buns tied with red cord, a peach-pink padded jacket, waving her stick of candied hawthorns toward Sun Er off screen right",
-        "motion": "Tuantuan hops up on her toes, waving the candied hawthorns high over her head",
-        "characters": [
-          "tuantuan"
-        ]
       },
-      "lines": [
-        {
-          "id": "e3a23",
-          "speaker": "tuantuan",
-          "text": "下回糖要算便宜點！",
-          "emotion": "跳著喊，很開心"
-        }
-      ]
+      "lines": []
     },
     {
-      "id": "s30",
+      "id": "s27",
       "template": "shot",
       "data": {
         "camera": "Close-up, slow push in",
@@ -693,14 +650,13 @@
       ]
     },
     {
-      "id": "s31",
+      "id": "s28",
       "template": "shot",
       "data": {
-        "camera": "Two-shot, locked",
-        "prompt": "Two-shot under the lantern-lit archway, Lushi on screen left a head shorter, Third Aunt on screen right with the iron hammer hanging back on her apron belt",
-        "motion": "Third Aunt roughly ruffles Lushi's hair with one big hand",
+        "camera": "Medium close-up, low angle, locked",
+        "prompt": "Medium close-up, low angle of Third Aunt on screen right under the lantern-lit archway, a red cloth wrapped over her hair, a black blacksmith's apron, rosy cheeks, eyes on Lushi off screen left",
+        "motion": "Third Aunt hangs the iron hammer back on her apron belt with one swing",
         "characters": [
-          "lushi",
           "aunt"
         ]
       },
@@ -714,7 +670,7 @@
       ]
     },
     {
-      "id": "s32",
+      "id": "s29",
       "template": "shot",
       "data": {
         "camera": "Insert of the fishing rod, locked",
@@ -732,7 +688,7 @@
       ]
     },
     {
-      "id": "s33",
+      "id": "s30",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, locked",
@@ -752,7 +708,7 @@
       ]
     },
     {
-      "id": "s34",
+      "id": "s31",
       "chapter": "饅頭",
       "template": "shot",
       "data": {
@@ -774,25 +730,27 @@
       ]
     },
     {
-      "id": "s35",
+      "id": "s32",
       "template": "shot",
       "data": {
-        "camera": "Insert of the cracked jar, locked",
-        "prompt": "Insert of a cracked clay jar held above the old wooden table beside the oil lamp, a crack running down its side, a pair of sun-tanned hands around it; Lushi speaks off screen",
-        "motion": "The hands set the cracked jar down gently on the table",
-        "characters": []
+        "camera": "Close-up, slow push in",
+        "prompt": "Close-up of Lushi's face on screen left at the courtyard gate at night, the cracked jar strap over his shoulder, lantern light from the eaves, eyes on Grandma Hu and the laid table off screen right",
+        "motion": "Lushi takes one slow step in toward the table, staring at the bowls",
+        "characters": [
+          "lushi"
+        ]
       },
       "lines": [
         {
           "id": "e3a29",
           "speaker": "lushi",
-          "text": "奶奶，醃菜……只剩半罈了。",
-          "emotion": "心虛，小聲"
+          "text": "您怎麼知道我今晚到？",
+          "emotion": "愣住，壓低聲音"
         }
       ]
     },
     {
-      "id": "s36",
+      "id": "s33",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, locked",
@@ -806,13 +764,13 @@
         {
           "id": "e3a30",
           "speaker": "grandma",
-          "text": "人回來就好。",
-          "emotion": "淡淡的，聲音軟了一點"
+          "text": "人回來就好，菜還熱著。",
+          "emotion": "淡淡的，不回答，聲音軟了一點"
         }
       ]
     },
     {
-      "id": "s37",
+      "id": "s34",
       "template": "shot",
       "data": {
         "camera": "Insert of the bun on the table, locked",
@@ -830,12 +788,12 @@
       ]
     },
     {
-      "id": "s38",
+      "id": "s35",
       "template": "shot",
       "data": {
         "camera": "Medium close-up, slow push in",
-        "prompt": "Medium close-up of Grandma Hu on screen right in oil lamp light, the round white steamed bun in both hands in front of her chest, the corner of her mouth softening",
-        "motion": "Grandma Hu tears the steamed bun open in half with both hands",
+        "prompt": "Medium close-up of Grandma Hu on screen right in oil lamp light, the round white steamed bun in both hands in front of her chest, the corner of her mouth softening, eyes on Lushi off screen left",
+        "motion": "Grandma Hu squeezes the steamed bun between her fingers and stops, her eyes dropping to something hard inside it",
         "characters": [
           "grandma"
         ]
@@ -844,25 +802,25 @@
         {
           "id": "e3a32",
           "speaker": "grandma",
-          "text": "傻孩子。",
+          "text": "傻孩子，自己不吃。",
           "emotion": "嘴上嫌，眼裡軟"
         }
       ]
     },
     {
-      "id": "s39",
+      "id": "s36",
       "template": "shot",
-      "action_seconds": 2,
-      "lines": [],
+      "action_seconds": 3,
       "data": {
         "camera": "Insert of the broken bun, slow push in",
         "prompt": "Insert of two old hands holding the two halves of a torn white steamed bun over the wooden table, a soft pale blue glow coming from inside the bread, oil lamp light",
         "motion": "A small glowing pale blue spirit stone and a folded slip of paper drop out of the bun onto the table",
         "characters": []
-      }
+      },
+      "lines": []
     },
     {
-      "id": "s40",
+      "id": "s37",
       "template": "shot",
       "data": {
         "camera": "Close-up, locked",
@@ -876,13 +834,13 @@
         {
           "id": "e3a33",
           "speaker": "lushi",
-          "text": "石頭……會發光？",
+          "text": "饅頭裡有發光的石頭？",
           "emotion": "驚呆"
         }
       ]
     },
     {
-      "id": "s41",
+      "id": "s38",
       "template": "shot",
       "data": {
         "camera": "Insert of the slip of paper, locked",
@@ -894,37 +852,17 @@
         {
           "id": "e3a34",
           "speaker": "lushi",
-          "text": "又是字……我看不懂。",
+          "text": "又是字……我一個都看不懂。",
           "emotion": "撓頭，有點洩氣"
         }
       ]
     },
     {
-      "id": "s42",
-      "template": "shot",
-      "data": {
-        "camera": "Medium close-up, locked",
-        "prompt": "Medium close-up of Grandma Hu on screen right, the small slip of paper close to her eyes in her fingers, oil lamp light on one side of her face; Lushi speaks off screen",
-        "motion": "Grandma Hu folds the slip shut in one hand, her mouth setting into a hard line",
-        "characters": [
-          "grandma"
-        ]
-      },
-      "lines": [
-        {
-          "id": "e3a35",
-          "speaker": "lushi",
-          "text": "奶奶？",
-          "emotion": "察覺不對，小聲"
-        }
-      ]
-    },
-    {
-      "id": "s43",
+      "id": "s39",
       "template": "shot",
       "data": {
         "camera": "Two-shot, locked",
-        "prompt": "Two-shot across the table, Lushi on screen left leaning in, Grandma Hu on screen right holding the folded slip of paper, the oil lamp flame burning between them",
+        "prompt": "Two-shot across the table, Lushi on screen left leaning in, Grandma Hu on screen right holding the folded slip of paper she has just read, her face gone hard and her mouth set in a thin line, the oil lamp flame burning between them",
         "motion": "Grandma Hu raises the folded slip toward the lamp flame",
         "characters": [
           "lushi",
@@ -933,24 +871,24 @@
       },
       "lines": [
         {
-          "id": "e3a36",
+          "id": "e3a35",
           "speaker": "lushi",
-          "text": "奶奶，上面寫什麼？",
+          "text": "奶奶，上面到底寫什麼？",
           "emotion": "著急，伸手想攔"
         }
       ]
     },
     {
-      "id": "s44",
+      "id": "s40",
       "template": "shot",
-      "action_seconds": 2,
-      "lines": [],
+      "action_seconds": 3,
       "data": {
         "camera": "Insert of the lamp flame, slow push in",
         "prompt": "Insert of the oil lamp flame on the wooden table, an old hand holding the corner of a small folded slip of paper just above it",
         "motion": "The flame licks up and catches the corner of the paper",
         "characters": []
-      }
+      },
+      "lines": []
     }
   ]
 }

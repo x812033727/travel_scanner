@@ -13,9 +13,9 @@
   },
   "look": {
     "preset": "custom",
-    "style": "photorealistic live-action Chinese fantasy costume drama, film still, natural cinematic light, realistic skin and fabric texture, shallow depth of field, warm lantern orange and mountain green palette",
-    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore",
-    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "style": "3D Chinese donghua CG animation, like a high-end Chinese 3D animated xianxia series or game cinematic, Unreal Engine 5 cinematic render, stylized semi-realistic characters with refined faces and slightly larger expressive eyes, clearly CG not a photograph, individually rendered hair, simulated cloth with wear; cool desaturated grey-blue palette with warm lantern accents, volumetric light and haze, strong rim light, shallow depth of field",
+    "negative": "photograph, live action, real person, photorealistic skin, text, subtitles, watermark, UI, logo, extra fingers, deformed hands, blood, gore",
+    "motion": "Smooth cinematic 3D animation motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
     "candidates": 2
   },
   "characters": [
@@ -109,13 +109,13 @@
       "id": "s02",
       "template": "shot",
       "action_seconds": 1,
-      "lines": [],
       "data": {
         "camera": "Insert of the hand on the carrying pole, locked",
         "prompt": "Insert from behind Lu Shi's right shoulder in dusk fog of a sun-tanned right hand closing on the end of a short bamboo carrying pole slotted through the rope sling of a cracked clay jar on his back, grey-blue coarse sleeve, pine branches beyond",
         "motion": "The hand yanks the bamboo pole up out of the rope sling in one pull",
         "characters": []
-      }
+      },
+      "lines": []
     },
     {
       "id": "s03",
@@ -142,13 +142,13 @@
       "id": "s04",
       "template": "shot",
       "action_seconds": 2,
-      "lines": [],
       "data": {
         "camera": "Insert of the pole and the branch, locked",
         "prompt": "Insert of the end of a bamboo carrying pole finishing its swing into a thick pine branch beside the path, empty grey fog swirling where a face had been, cold dusk light",
         "motion": "The pole cracks into the thick branch and the branch snaps clean off and drops out of frame",
         "characters": []
-      }
+      },
+      "lines": []
     },
     {
       "id": "s05",
@@ -174,7 +174,6 @@
       "id": "s06",
       "template": "shot",
       "action_seconds": 3,
-      "lines": [],
       "data": {
         "camera": "Wide shot, high angle, locked",
         "prompt": "Wide shot from high in the pines of the narrow stone path at nightfall, the fog thickening, a pale moon behind it, Lu Shi small at the centre with the bamboo pole raised, the cracked jar on his back, a snapped branch on the stones beside him",
@@ -182,7 +181,8 @@
         "characters": [
           "lushi"
         ]
-      }
+      },
+      "lines": []
     },
     {
       "id": "s07",
@@ -227,7 +227,6 @@
       "chapter": "三張臉",
       "template": "shot",
       "action_seconds": 2,
-      "lines": [],
       "data": {
         "camera": "Wide shot, pan right",
         "prompt": "Wide shot of the narrow stone path winding right through dark pines in night fog, Lu Shi on screen left walking fast with a bare bamboo pole on his shoulder, nothing hanging from either end of it, thin moonlight through the fog",
@@ -235,7 +234,8 @@
         "characters": [
           "lushi"
         ]
-      }
+      },
+      "lines": []
     },
     {
       "id": "s10",
@@ -328,7 +328,6 @@
       "id": "s14",
       "template": "shot",
       "action_seconds": 3,
-      "lines": [],
       "data": {
         "camera": "Wide shot, high angle, locked",
         "prompt": "Wide shot from high above the path at night, Lu Shi small in the centre of a ring of fog, three identical upside-down monkey faces at the edge of the ring",
@@ -337,7 +336,8 @@
           "lushi",
           "shanxiao"
         ]
-      }
+      },
+      "lines": []
     },
     {
       "id": "s15",
@@ -383,7 +383,6 @@
       "id": "s17",
       "template": "shot",
       "action_seconds": 2,
-      "lines": [],
       "data": {
         "camera": "Medium shot, locked",
         "prompt": "Medium shot in night fog, Lu Shi on screen right stepping in toward screen left with the bamboo pole swung high, the monkey face on screen left hanging in front of a dark pine trunk",
@@ -392,7 +391,8 @@
           "lushi",
           "shanxiao"
         ]
-      }
+      },
+      "lines": []
     },
     {
       "id": "s18",
@@ -448,8 +448,8 @@
         {
           "id": "e2a15",
           "speaker": "shanxiao",
-          "text": "好香……",
-          "emotion": "貪婪，尖細"
+          "text": "好香的靈氣……",
+          "emotion": "貪婪，尖細，鼻子湊上來嗅"
         }
       ]
     },
@@ -457,13 +457,13 @@
       "id": "s21",
       "template": "shot",
       "action_seconds": 3,
-      "lines": [],
       "data": {
         "camera": "Insert of the fingers and the jacket, slow push in",
         "prompt": "Insert in night fog of long grey-furred fingers with dark nails reaching from frame right around the side of a grey-blue coarse jacket toward the round bulge of the cloth-wrapped bun at its front",
         "motion": "The long grey fingers creep to within an inch of the bulge in the jacket",
         "characters": []
-      }
+      },
+      "lines": []
     },
     {
       "id": "s22",
@@ -489,31 +489,30 @@
       "id": "s23",
       "template": "shot",
       "action_seconds": 2,
-      "lines": [],
       "data": {
         "camera": "Insert of the pine trunk, slow push in",
         "prompt": "Insert at the foot of a huge old pine beside the path at night, its trunk wider than a man's arm span, moonlight on the bark",
         "motion": "A thin bright line of moonlight opens straight across the trunk from one side to the other",
         "characters": []
-      }
+      },
+      "lines": []
     },
     {
       "id": "s24",
       "template": "shot",
       "action_seconds": 3,
-      "lines": [],
       "data": {
         "camera": "Wide shot, low angle, tilt up",
         "prompt": "Wide shot, low angle of the huge old pine at the right edge of the path, its crown above the fog, the moon behind it",
         "motion": "The huge pine shudders and begins to tip toward the path",
         "characters": []
-      }
+      },
+      "lines": []
     },
     {
       "id": "s25",
       "template": "shot",
       "action_seconds": 3,
-      "lines": [],
       "data": {
         "camera": "Wide shot, locked",
         "prompt": "Wide shot of the pine path at night, Lu Shi falling back on screen left, the Shanxiao on screen right, the huge pine coming down from above between them",
@@ -522,13 +521,13 @@
           "lushi",
           "shanxiao"
         ]
-      }
+      },
+      "lines": []
     },
     {
       "id": "s26",
       "template": "shot",
       "action_seconds": 2,
-      "lines": [],
       "data": {
         "camera": "Close-up, locked",
         "prompt": "Close-up of Lu Shi's face on screen left in the blast of air, fog and pine needles streaming past from screen right",
@@ -536,7 +535,8 @@
         "characters": [
           "lushi"
         ]
-      }
+      },
+      "lines": []
     },
     {
       "id": "s27",
@@ -582,8 +582,7 @@
       "id": "s29",
       "chapter": "沒有刃",
       "template": "shot",
-      "action_seconds": 4,
-      "lines": [],
+      "action_seconds": 3,
       "data": {
         "camera": "Wide shot, low angle, slow push in",
         "prompt": "Wide shot, low angle in clear cold moonlight of Azheng walking out from behind the root end of the fallen pine on screen right, a long-handled axe on his right shoulder, a big bundle of firewood on his back, the old scar on his forehead lit by the moon, the hem of his worn brown sleeveless jacket lifting in the wind, the last fog streaming away behind him",
@@ -591,7 +590,8 @@
         "characters": [
           "azheng"
         ]
-      }
+      },
+      "lines": []
     },
     {
       "id": "s30",
