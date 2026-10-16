@@ -69,3 +69,4 @@ scope:
 - 本輪沒有付費呼叫、媒體生成、後台送稿或 push。正式稿的獨立史料覆核、十三題盲評仍待執行；詳見 `docs/videos/curio-u09/script-status.md`。
 - 本輪 schema／逐句索引／script 同步檢查均通過；`check:tasks` 通過 1895 份，僅既存過期／重疊警告。依主代理要求，只將本集 docs 與本票作本機 commit，認領維持供修訂接續。
 - 主代理補充指示後，brief 選項外的舊狀態改為原案 A 已核准、每集 US$6 已授權，並連至批次 `decision-20261016.json`。A／B 主文保持原字；最終送審用 brief SHA 為 `6C4C27F3DB3EFF2106241AF15A7C69499E6070436D4061150530481F1BFBBEC9`，取代上一則只補三節時的中間 hash；lint 仍為 0 errors／0 warnings。
+- 獨立十三題首輪必答 11／12，第 7 題退回兩個未兌現問題。僅修 `05002227` 為問快紀錄器能否捕捉、`7a031219` 為問是否還有更多同類；答案 `718638d1`／`9410e2e4` 的史實未改，沒有編造先前未捕捉原因。video／script／claims／逐句索引／loops 已同步，估時 604.60 秒、2,063 口播單位，lint 0 errors／0 warnings。新 video SHA `F5E73534B79611735B95D5C464D6FF367FEE7DD99C3422ED5531B9760A6C2625`；script SHA `D11BFC548632769AE8E42122712A3F882A997C4D6704C48531AB111C1BAF22AD`。待獨立讀回，不視為已通過。
