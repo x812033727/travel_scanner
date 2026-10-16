@@ -20,7 +20,7 @@
 
 本輪新增 64 張 MiniMax 圖與 65 次 Gemini 評審（含上一輪 `another-pulse` 尚未評審的快取圖），帳本估算新增 **US$0.874**，低於本輪 US$1.4985 預留；餘額 US$0.6245。這是工具帳本估算，並非供應商最終帳單。整集共享帳本前值 US$3.012，主代理應在共享帳本核銷後更新為估算 US$3.886；本代理沒有編輯共享帳本，也沒有追加付費呼叫。
 
-命令退出碼 1 是因七張圖三次後仍未過評審，並非產圖服務失敗。正式 `keyframes/manifest.json` SHA-256 為 `62DF276BAF98148AABE5074973E53727DFF63A5304EB0694B4C4CD87830FCF2D`；`media/ledger.json` SHA-256 為 `0B7BBF3C8A8D6AB0D03316C9BBBB538F76A52D86E07D763365F2AB40B63A2844`。兩者都在 repo 外的 `C:\Users\x8120\mokaair-work\videos\curio-u09\`。
+命令退出碼 1 是因七張圖三次後仍未過評審，並非產圖服務失敗。正式 `keyframes/manifest.json` SHA-256 為 `62DF276BAF98148AABE5074973E53727DFF63A5304EB0694B4C4CD87830FCF2D`；`media/ledger.json` SHA-256 為 `0B7BBF3C8A8D6AB0D03316C9BBBB538F76A52D86E07D763365F2AB40B63A2844`。兩者都在 repo 外的 `<home>/mokaair-work/videos/curio-u09/`。
 
 ## 七張評審待修
 
