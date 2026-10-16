@@ -41,8 +41,7 @@ import { lintVideo } from "../core/lint.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, readText } from "../core/paths.mjs";
 import { screenplay, writeScreenplay } from "../core/screenplay.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
-import { NARRATIVE_REVIEW, narrativeRecord, PANEL_INSTRUCTIONS, panelPayload, panelVerdict } from "../core/narrative.mjs";
-import { scriptCheckMatches } from "../core/script-check.mjs";
+import { NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelVerdict } from "../core/narrative.mjs";
 import { lintProject, loadProject } from "../core/state.mjs";
 import { namePattern, STORY_KIND, STORY_RULES } from "../core/story.mjs";
 import { DEFAULT_CPM, estimateTimeline, formatClock, FPS, spokenUnits } from "../core/timeline.mjs";
@@ -876,6 +875,12 @@ export function pilotScriptReviewProblem({ slug, root, workdir }) {
   for (const name of PILOT_REVIEW_FILES) {
     if (!expected.files[name] || receipt.files?.[name] !== expected.files[name]) return `${name} is missing or changed since the pilot script review`;
   }
+  let panel;
+  try { panel = readJson(path.join(workdir, ...NARRATIVE_REVIEW), null); }
+  catch { return "the narrative panel receipt is not valid JSON"; }
+  if (!panel?.passed || !narrativeReviewMatches(panel, video)) {
+    return "the narrative panel receipt is missing, failed or stale under the current questions";
+  }
   if (!expected.narrative_review_sha256 || receipt.narrative_review_sha256 !== expected.narrative_review_sha256) return "the narrative panel receipt is missing or changed since the pilot script review";
   for (const key of CHAPTER_KEYS) {
     if (!expected.chapters[key] || receipt.chapters?.[key] !== expected.chapters[key]) return `chapter ${key} is missing or changed since the pilot script review`;
@@ -1380,7 +1385,7 @@ async function narrativeGate(automation, state) {
   const timeline = estimateTimeline(video);
   const verdictFile = path.join(automation.workdir(state.slug), ...NARRATIVE_REVIEW);
   const saved = readJson(verdictFile, null);
-  if (saved?.passed && scriptCheckMatches(saved, video)) return undefined;
+  if (saved?.passed && narrativeReviewMatches(saved, video)) return undefined;
   const round = (saved?.round ?? 0) + 1;
   const answer = await automation.stage("verifier", state.slug, panelPayload(video, timeline), PANEL_TOKENS, "drama", NARRATIVE_VARIANT, null, { bare: PANEL_INSTRUCTIONS });
   const verdict = panelVerdict(answer);

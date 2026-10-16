@@ -5450,12 +5450,36 @@ Findings: `automation.test.mjs` adds a `leaseTestChild` helper that spawns the l
 Ran: Node v22.22.0 `tools/video/long-form/cli.mjs check` (PASS) and `--test tools/video/long-form/review.test.mjs` (2 passed, 0 failed), after rebinding these two files and the report.
 
 Non-claims: this is an incremental source duration review, not a fresh review of the 106 unchanged files, the unbound files the branch also changes, or acceptance of Windows test behavior, actual media, playback, paid production, deployment, upload or publication.
-
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
+## PR #1517 narrative-panel binding increment: 4 files (2026-10-16)
+
+Reviewer: `codex-pr-review-1517`. Author: `codex-a01-gate`. Scope: DURATION_ONLY for the exact `697e197ee180d22f632b7f3c7624cc30927b2136..9ebd387b8a3b39ebf80e6bf80906f45c14573b55` changes to `tools/video/automation/flow.mjs`, `tools/video/automation/automation.test.mjs`, `tools/video/core/state.mjs` and `tools/video/core/state.test.mjs`. The reviewer did not author these source changes.
+
+Baseline: the raw bytes of all four files at the merge base `697e197ee180d22f632b7f3c7624cc30927b2136` match their existing receipt hashes. Before this increment, `cli.mjs check` named exactly these four stale bindings; the other 104 of 108 bound files match the existing receipt. Earlier increments remain intact.
+
+Findings: `flow.mjs` keeps the same `estimateTimeline` and `MIN_EPISODE_MINUTES` entry gate and changes only whether a saved narrative PASS can be reused and how its panel receipt is written. `state.mjs` only displays that PASS as stale under changed panel rules or rendered narration; it does not reopen a paid checklist step. The two test files add legacy-PASS and status coverage. The unbound narrative helper hashes the panel's exact rendered narration using `estimateTimeline` and compares the rules hash; it does not change the timeline calculation. The four reviewed diffs do not change the 10-minute story target, `target_minutes`, the 600/780-second planning targets, the eight-minute non-drama floor, the 480-second measured QA floor, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, source hashes, covered state, or measured body/final duration requirements. No duration correction is required.
+
+Ran: independently inspected the exact four-file diff, merge-base and worktree hashes, unchanged duration call sites, and all 108 receipt bindings. Node v24.13.0 `tools/video/long-form/cli.mjs check` passed all 473 plans and `--test tools/video/long-form/review.test.mjs` passed 2/2; `--test tools/video/core/narrative.test.mjs` passed 14/14. Bundled Node v24.19.0 focused tests for the old narrative PASS status, blind panel gate, and pilot downstream review each passed 1/1.
+
+Non-claims: this increment does not decide whether the A01 narrative script passes the new reader questions; it does not approve media, playback, paid production, deployment, upload or publication. The other 104 bindings are not reviewed afresh.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
+## PR #1517 integration with #1391: 1 combined test file (2026-10-16)
+
+Reviewer: `codex-duration-merge-review`. Authors: `codex-a01-gate` (#1517) and `codex-windows-video-validation` (#1391). Scope: DURATION_ONLY for the integrated `tools/video/automation/automation.test.mjs` bytes at `bb877ffe8072c8c00ad482a55fe1c34fa8fdb423`. This reviewer did not author either source change.
+
+Baseline and merge: main `99f0651eecb6454873b57dc9775c967d868014fd` carries #1391's `leaseTestChild` helper, three failure and timeout cases, the held-project lease test cleanup, and the Windows `file://` import. The #1517 delta against that main adds only the `PANEL_RULES_SHA256` and `scriptCheckBinding` imports, a legacy narrative PASS fixture, and an assertion that a new panel verdict records the rules SHA. These are separate hunks; the merged file keeps both groups. The current raw SHA-256 is `ef1b881cea4230b6db1b2cad4f8386f446b54f274b72352a3284681e664e8310`. The preceding #1391 and #1517 increments independently reviewed their respective changes; this increment reviews their actual combination. The other 107 registered files match the preceding receipt and report table byte for byte.
+
+Findings: the #1391 helper changes only how tests bound child-process readiness, release and cleanup, and the #1517 test exercises panel-receipt freshness for unchanged script words. Neither changes production duration code, estimates, settings, plan targets, measured media, or duration assertions. The combined test file retains the cross-process lease checks and the blind narrative-panel gate; no duration correction is required.
+
+Ran: compared the current main-to-branch source diff and both prior review increments; independently computed all 108 source SHA-256 values and report-table entries, finding only this combined test file stale before rebinding. Bundled Node v24.19.0 ran the focused storytelling-panel and lease-child tests: 7 passed, 0 failed. It also ran `tools/video/core/narrative.test.mjs`: 14 passed, 0 failed. The pre-rebind long-form CLI check failed only on the stale report hash and this test-file binding. After this increment was installed, the long-form CLI check and receipt tests were rerun as recorded in the task.
+
+Non-claims: this is a one-file integration review. It does not re-review the other 107 files, establish A01 script quality, prove host worker behavior, or accept media, paid production, deployment, upload or publication. Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
 ## Reviewed SHA256 bindings
 
-These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the #1391/#1517 integration increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
@@ -5509,9 +5533,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `5d7e5ceb96a2bc594b753f73036a0bee2b03a5dc53783d16ffc9a6b5ec7b2055` |
+| `tools/video/automation/automation.test.mjs` | `ef1b881cea4230b6db1b2cad4f8386f446b54f274b72352a3284681e664e8310` |
 | `tools/video/automation/discuss.mjs` | `9bb3c574cc50971d39c24618e11ed371dee717c9cd917815ef20060719d50f21` |
-| `tools/video/automation/flow.mjs` | `0d817f0faf180b3e3e65884b68da6fbabc42f401092168335c70b844adbca384` |
+| `tools/video/automation/flow.mjs` | `dcf8725f3bef832a9d92c8f8f74b39557abaf201959716587d2c7cfc183c766b` |
 | `tools/video/automation/prompts.mjs` | `7dc54920e590ffa674fc6436dacf96df5da477cd749f1be52877d89a8b500dbc` |
 | `tools/video/automation/series.mjs` | `d512034bbc99c0bc9ec7bbdbcfafa9ea6b548eedd877aa6754bbb81b04cd4c37` |
 | `tools/video/automation/series.test.mjs` | `d133c2caf95e9919aa1df2f0c23dee80d2d20a47a5d8c1ae85e7506698399425` |
@@ -5534,8 +5558,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
 | `tools/video/core/screenplay.test.mjs` | `fe2765c5f2fa42d7cfe5a2e542063c32c4349b585c649552a31b2088aaaec180` |
 | `tools/video/core/stages.test.mjs` | `c4583dba313415355131a854f3da6f568862c3ea83808313b2f1acda5c017523` |
-| `tools/video/core/state.mjs` | `014450d61ce01f7bff11b48e94c52fba2f4b6e64bc9fcd4e67b22bef423ccaaa` |
-| `tools/video/core/state.test.mjs` | `327eac9a271451f2f1d4954850dbed0ab4102be170f744cc953cb071f1ce0d08` |
+| `tools/video/core/state.mjs` | `4b2414429dfcf0d4005fa199e750138c192c7ce29fbd48c225f5db819a6bbc38` |
+| `tools/video/core/state.test.mjs` | `1afa10f7887db57788ea83ab80a823bbaf45f36588dacdc296b1480ab7265c3e` |
 | `tools/video/core/timeline.mjs` | `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a` |
 | `tools/video/core/timeline.test.mjs` | `8eedaa0b04f56d22b65becbf23e39e23e051f2d6850f63a5bf7c496583b9b00a` |
 | `tools/video/dubs/captions-package.test.mjs` | `a7d9462b61f182bca1b7e87149a5c461659dafeb9c54449769bc35189f352685` |
