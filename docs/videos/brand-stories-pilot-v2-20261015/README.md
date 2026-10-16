@@ -10,7 +10,7 @@ B18 的既有全文、收據、工人輸入與剩餘差距已做[準備度核對
 
 A01 已保留[第九輪實際全文與獨立診斷](script-review-20261016/README.md)，可直接閱讀三項退回各自對應的段落與規則差異。[開場到起源的單句銜接候選](readiness-20261016/A01-hook-origin-candidate/README.md)另存原檔、候選與完整 SHA；未寫入正式機，未建立新的通過收據或啟動第十輪。
 
-2026-10-17 的[第 19 輪離線候選](preproduction-20261016/A01-round19-origin-year-repeat-candidate/README.md)在第 14 輪來源修正後，逐輪保存起源企劃、逐句來源及重複年份的窄修；每輪有獨立 manifest。[精確來源差異](preproduction-20261016/A01-round19-origin-year-repeat-candidate/independent-review-20261017.md)及[108 句整稿人工閱讀](preproduction-20261016/A01-round19-origin-year-repeat-candidate/independent-full-script-review-20261017.md)已各自完成離線覆核，沒有找到新的確定旁白阻擋。正式工人的 verifier、listener、盲讀敘事審核與實稿收據仍未完成；這不是第九輪失敗的覆寫，也不是配音、MiniMax 圖像或成片完成。
+2026-10-17 的[第 19 輪離線候選](preproduction-20261016/A01-round19-origin-year-repeat-candidate/README.md)在第 14 輪來源修正後，逐輪保存起源企劃、逐句來源及重複年份的窄修；每輪有獨立 manifest。[精確來源差異](preproduction-20261016/A01-round19-origin-year-repeat-candidate/independent-review-20261017.md)及[108 句整稿人工閱讀](preproduction-20261016/A01-round19-origin-year-repeat-candidate/independent-full-script-review-20261017.md)已各自完成離線覆核，沒有找到新的確定旁白阻擋。[第 20 輪](preproduction-20261016/A01-round20-i17-fact-index-candidate/README.md)只補一筆來源表事實索引；[獨立差異複核](preproduction-20261016/A01-round20-i17-fact-index-candidate/independent-review-20261017.md)已通過，108 句旁白未變。正式工人的 verifier、listener、盲讀敘事審核與實稿收據仍未完成；這不是第九輪失敗的覆寫，也不是配音、MiniMax 圖像或成片完成。
 
 | 順序 | 新版作品 slug | 觀眾追的問題 | 新版企劃 |
 | --- | --- | --- | --- |
