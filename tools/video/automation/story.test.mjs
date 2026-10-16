@@ -932,6 +932,18 @@ test("hash-pinned author chapters keep a title card and UNCHECKED rows, then ent
   assert.equal(world.runs.length, 0, "author adoption reaches the narrative/script gates without recording or drawing media");
 });
 
+test("an authored last chapter can end on its own shot without adding an outro to the reviewed bytes", async () => {
+  const world = storyWorld();
+  await world.automation.step();
+  const staged = stageAuthorPackage(world, {
+    chapterChange: (chapter, key) => { if (key === "now") chapter.scenes.pop(); },
+  });
+  assert.match(await world.automation.step(), /six SHA-256-pinned author chapters adopted/);
+  assert.equal(world.video().scenes.at(-1).template, "shot");
+  assert.equal(sha(path.join(world.workdir, STORY_CHAPTERS_DIR, "now.json")), staged.chapters.now);
+  assert.equal(world.site.calls.run.length, 0);
+});
+
 test("changed author hashes, plan pins and invalid claims stop before any chapter or writer output", async () => {
   for (const defect of ["chapter", "series", "verdict", "reference"]) {
     const world = storyWorld();

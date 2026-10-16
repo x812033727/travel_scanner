@@ -884,8 +884,9 @@ function authorPackagePreflight(automation, state) {
     try { chapter = JSON.parse(bytes[key].toString("utf8")); }
     catch { return fail(`${key}.json is not JSON`); }
     if (!isObject(chapter) || chapter.key !== key || !isText(chapter.title) || !Array.isArray(chapter.scenes) || !chapter.scenes.length ||
-        !Array.isArray(chapter.claims) || (chapter.loops !== undefined && !Array.isArray(chapter.loops)) || Object.hasOwn(chapter, "report") ||
-        (key === "now" && chapter.scenes.at(-1)?.template !== "outro")) return fail(`${key}.json is not an unchecked chapter with the required close`);
+        !Array.isArray(chapter.claims) || (chapter.loops !== undefined && !Array.isArray(chapter.loops)) || Object.hasOwn(chapter, "report")) {
+      return fail(`${key}.json is not an unchecked author chapter`);
+    }
     let shots = 0;
     for (const [index, scene] of chapter.scenes.entries()) {
       if (!isObject(scene) || !new RegExp(`^${key}-[a-z0-9]+(?:-[a-z0-9]+)*$`).test(scene.id) || sceneIds.has(scene.id) ||
