@@ -1,11 +1,11 @@
 ---
 id: 2026-10-15-curio-h12-research-outline
 title: Curio H12 research and outline
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-gpt6-h12-fact-r2
-claimed_at: 2026-10-16T01:15:05Z
+owner:
+claimed_at:
 created_at: 2026-10-15T16:34:42Z
 completed_at:
 branch: codex/curio-next-five-20261016
