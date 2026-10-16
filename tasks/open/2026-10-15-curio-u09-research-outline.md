@@ -94,3 +94,9 @@ scope:
 - 前輪 7 張評審待修，另有 `missed-session`、`beam-away` 兩張評審通過但畫面與旁白明確矛盾。本輪僅改這 9 個 `shot.data.prompt`，沒有改已核准的劇本、旁白、系列畫風或其他 82 鏡；詳細對應見 [第二輪修復計畫](../../docs/videos/curio-u09/keyframes-repair-plan-2.md)。
 - 新 `video.json` SHA-256 `E9C4173F6A808A820C3563C13FC3E751344AD5694A117D0BF878D515CAC9E03E`；`script.md` SHA 仍 `A6EBACD1…AF3F5A`。`lint` 為 0 errors／0 warnings。九鏡 `keyframes --takes 3 --dry-run` 通過，MiniMax image-01 1K，保守最多 US$0.3645；沒有付費產圖或後台送審。
 - 待主代理完成共享帳本上輪核銷與本輪預留後，限這九鏡重畫、評審、人工核對；91 鏡全過才送站主看聯絡表。
+
+### 九鏡補圖後全尺寸驗收：2026-10-16
+
+- 主代理已限額跑九鏡一批，圖評帳本增加 18 圖／18 評審、估算 US$0.2430；本集共享帳本讀回估算 US$4.129／US$6，已核銷這批。新 manifest SHA `44A280F3…99AB5C`，91／91 有圖、89／91 自動評審通過，仍有 `brief-window`、`beam-away` 兩張未過。
+- 獨立全尺寸目視另退兩張雖過評審卻與旁白相反的圖：`more-marks` 把同一卷紙畫成三張分離紙；`line-of-sight` 的波束沒有掃到地球。其他五張依系列的可愛插畫驗收標準暫收。細節、九張選圖 SHA 與同章候選退路見 [第三輪 QA 收據](../../docs/videos/curio-u09/keyframes-qa-3.md)。
+- 此輪未動已核准劇本、`video.json`、媒體選圖或後台；四個阻擋鏡頭仍要有合格圖或合規卡片才可送站主分鏡。不得把 89／91 的自動過線當 91／91 可用，也不得未預留共享帳本就讓退路觸發新的 Gemini 圖評。
