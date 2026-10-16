@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import UTC, datetime
 from urllib.parse import urlsplit
 
+import httpx
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -15,7 +16,12 @@ from app.news_automation.feeds import (
     summary_article,
     summary_is_evidence,
 )
-from app.news_automation.fetch import RateLimiter, SafeNewsFetcher, listing_byte_limit
+from app.news_automation.fetch import (
+    RateLimiter,
+    SafeNewsFetcher,
+    UnsafeNewsUrl,
+    listing_byte_limit,
+)
 from app.news_automation.models import NewsEvidence, NewsSource
 from app.news_automation.policy import body_fingerprint, content_fingerprint, current_body_hash
 from app.news_automation.schemas import Entry
@@ -118,7 +124,7 @@ async def refresh_evidence(
                         allowed_redirects=allowed_redirects,
                     )
                 except Exception as error:
-                    problems.append(f"source_refetch_failed:{row.url}:{type(error).__name__}")
+                    problems.append(_refetch_failed(row.url, error, "listing"))
                     continue
                 if summary is not None and summary.text:
                     fetched_rows.append((row, summary, None, None))
@@ -132,7 +138,7 @@ async def refresh_evidence(
                     allowed_redirect_hosts=allowed_redirects,
                 )
             except Exception as error:
-                problems.append(f"source_refetch_failed:{row.url}:{type(error).__name__}")
+                problems.append(_refetch_failed(row.url, error, "article"))
                 continue
             article = read_article(fetched.body, fetched.url, matched_source.config_json)
             if not article.text.strip():
@@ -276,6 +282,37 @@ def _legacy_match(
     )
 
 
+def _refetch_detail(error: BaseException) -> str | None:
+    """Why a source could not be read again, as a short fixed code, or None when only the
+    error class is known: an upstream HTTP status, a robots.txt refusal, or which safety rule
+    stopped the fetch. Never the response body or headers."""
+    if isinstance(error, httpx.HTTPStatusError):
+        return f"http_{int(error.response.status_code)}"
+    if isinstance(error, UnsafeNewsUrl):
+        message = str(error)
+        if message.startswith("robots.txt did not permit"):
+            return "robots_refused"
+        if message.startswith("unsupported content type"):
+            return "content_type"
+        if "too large" in message:
+            return "too_large"
+        if "redirect" in message:
+            return "redirect"
+        return "unsafe_url"
+    return None
+
+
+def _refetch_failed(url: str, error: BaseException, stage: str) -> str:
+    """``source_refetch_failed:<url>:<error class>``, followed by ``:<stage>:<detail>`` when the
+    fetch says why, so an editor can tell a refused request (``article:http_403``,
+    ``listing:robots_refused``) from changed content. ``stage`` is ``listing`` for a feed or
+    listing read and ``article`` for the evidence page itself. A failure that says nothing more
+    (a timeout) keeps the earlier form."""
+    reason = f"source_refetch_failed:{url}:{type(error).__name__}"
+    detail = _refetch_detail(error)
+    return f"{reason}:{stage}:{detail}" if detail else reason
+
+
 async def revalidate_evidence(
     session: AsyncSession,
     evidence: list[NewsEvidence],
@@ -318,7 +355,7 @@ async def revalidate_evidence(
                         allowed_redirects=allowed_redirects,
                     )
                 except Exception as error:
-                    reasons.append(f"source_refetch_failed:{row.url}:{type(error).__name__}")
+                    reasons.append(_refetch_failed(row.url, error, "listing"))
                     continue
                 if summary is not None and summary.text:
                     if not _same_story(row, content_fingerprint(summary.text), None):
@@ -336,7 +373,7 @@ async def revalidate_evidence(
                     last_modified=row.last_modified,
                 )
             except Exception as error:
-                reasons.append(f"source_refetch_failed:{row.url}:{type(error).__name__}")
+                reasons.append(_refetch_failed(row.url, error, "article"))
                 continue
             if fetched.not_modified:
                 row.retrieved_at = datetime.now(UTC)
