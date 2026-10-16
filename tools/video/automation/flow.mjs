@@ -25,7 +25,7 @@ import { hasCast, illustrated, isExplainerPreset, resolveLook, SLIDES_PRESETS, s
 import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon, isProposableTerm } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
-import { isNarrated, NARRATIVE_REVIEW, narrativeRecord, PANEL_INSTRUCTIONS, panelPayload, panelVerdict } from "../core/narrative.mjs";
+import { isNarrated, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelVerdict } from "../core/narrative.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LINE_ID, LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
@@ -3315,12 +3315,12 @@ export class Automation {
     if (state.compilation || !isNarrated(video, this.seriesJson(state)) || narrationLocale(video) !== NARRATION_LOCALE || minutes < MIN_EPISODE_MINUTES) return null;
     const file = path.join(this.workdir(state.slug), ...NARRATIVE_REVIEW);
     const saved = readJson(file, null);
-    if (saved?.passed && scriptCheckMatches(saved, video)) return null;
+    if (saved?.passed && narrativeReviewMatches(saved, video)) return null;
     const round = (saved?.round ?? 0) + 1;
     const answer = await this.stage("verifier", state.slug, panelPayload(video, timeline), 8_000, state.format, NARRATIVE_VARIANT, state.series ?? null, { bare: PANEL_INSTRUCTIONS });
     const verdict = panelVerdict(answer);
     mkdirSync(path.dirname(file), { recursive: true });
-    atomicWrite(file, `${JSON.stringify({ ...scriptCheckBinding(video), round, passed: verdict.passed, answers: verdict.answers, failed: verdict.failed.map((each) => each.id), advisory: verdict.advisory.map((each) => each.id) }, null, 2)}\n`);
+    atomicWrite(file, `${JSON.stringify(narrativeRecord(video, verdict, round), null, 2)}\n`);
     this.cleared(state, "verifier");
     if (verdict.passed) {
       state.narrative = { passed: true, rounds: round, advisory: verdict.advisory.map((each) => each.id) };

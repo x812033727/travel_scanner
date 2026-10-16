@@ -142,7 +142,9 @@ export function layoutDrama(doc, timeline, frames, clips, keyframes = null, { tr
         const direction = move === "drift" ? { direction: DRIFT_DIRECTIONS[Math.floor(moved / CARD_MOVES.length) % DRIFT_DIRECTIONS.length] } : {};
         moved += 1;
         const transition = transitionRule ? transitionRule(source, index, previous) : "cut";
-        return { ...base, kind: "motion", card: true, keyframe: { file: rendered.states[0].still, sha256: null }, move: { name: move, startsAtIdentity: IDENTITY_START.has(move), ...direction }, transition, fit: null };
+        // `marked` is render's word on whether the card's own frame carries the channel mark
+        // (render/plan.mjs): a moving card's does not, and assemble lays the mark over it.
+        return { ...base, kind: "motion", card: true, ...(rendered.marked === undefined ? {} : { marked: rendered.marked }), keyframe: { file: rendered.states[0].still, sha256: null }, move: { name: move, startsAtIdentity: IDENTITY_START.has(move), ...direction }, transition, fit: null };
       }
       const [laid] = layoutScenes({ scenes: [scene] }, { scenes: [rendered] });
       return { ...laid, kind: "stills" };
@@ -298,35 +300,55 @@ export function clipFrames(probe) {
   return Math.max(1, Math.round(duration * FPS));
 }
 
-export function clipSegmentKey(scene, fit, subtitles = null, previous = null) {
-  return hash16([CLIP_ENCODER_VERSION, scene.frames, scene.clip.file, scene.clip.sha256, fit, subtitles, scene.transition, previous, ...(scene.from_frame ? [scene.from_frame] : [])]);
+// The channel mark laid over a segment (core/watermark.mjs) is part of its key, by its bytes and
+// its place; a segment without one keeps the key it always had.
+const markKey = (mark) => (mark ? [`mark:${mark.id}`, mark.sha256, mark.box.x, mark.box.y] : []);
+
+export function clipSegmentKey(scene, fit, subtitles = null, previous = null, mark = null) {
+  return hash16([CLIP_ENCODER_VERSION, scene.frames, scene.clip.file, scene.clip.sha256, fit, subtitles, scene.transition, previous, ...(scene.from_frame ? [scene.from_frame] : []), ...markKey(mark)]);
 }
 
-export function motionSegmentKey(scene, move, subtitles = null, previous = null) {
-  return hash16([MOTION_ENCODER_VERSION, scene.frames, scene.keyframe.file, scene.keyframe.sha256, move.name, move.direction ?? null, subtitles, scene.transition, previous, ...(scene.card ? [MOTION_CARD_VERSION] : [])]);
+export function motionSegmentKey(scene, move, subtitles = null, previous = null, mark = null) {
+  return hash16([MOTION_ENCODER_VERSION, scene.frames, scene.keyframe.file, scene.keyframe.sha256, move.name, move.direction ?? null, subtitles, scene.transition, previous, ...(scene.card ? [MOTION_CARD_VERSION] : []), ...markKey(mark)]);
 }
 
 const COLOUR = `format=yuv420p,setparams=range=tv:color_primaries=bt709:color_trc=bt709:colorspace=bt709`;
 
 /**
  * The inputs after the picture (input 0): the subtitle strips as input 1 when there are any,
- * then the previous scene's last frame, looped, for a dissolve.
+ * then the previous scene's last frame, looped, for a dissolve, then the channel mark's PNG
+ * (`mark`, core/watermark.mjs) when the segment carries one: one frame, which overlay holds for
+ * as long as the picture lasts.
  */
-export function overlayInputs(subtitlesList, dissolveFrom) {
+export function overlayInputs(subtitlesList, dissolveFrom, mark = null) {
   const inputs = [];
   if (subtitlesList) inputs.push("-f", "concat", "-safe", "0", "-i", subtitlesList);
   if (dissolveFrom) inputs.push("-loop", "1", "-framerate", String(FPS), "-t", seconds(DISSOLVE_FRAMES + 2), "-i", dissolveFrom);
-  return { inputs, subtitlesInput: subtitlesList ? 1 : null, dissolveInput: dissolveFrom ? (subtitlesList ? 2 : 1) : null };
+  if (mark) inputs.push("-i", mark.file);
+  const dissolveInput = dissolveFrom ? (subtitlesList ? 2 : 1) : null;
+  return { inputs, subtitlesInput: subtitlesList ? 1 : null, dissolveInput, ...(mark ? { markInput: 1 + (subtitlesList ? 1 : 0) + (dissolveFrom ? 1 : 0), mark } : {}) };
 }
 
 /**
- * The rest of the graph once [pic] holds the scene's frames: the previous scene's last frame
- * dissolving away over it when asked, the subtitle strips laid over the bottom, then the colour
- * tags. Shared by clip and motion segments so the two encode identically.
+ * The rest of the graph once [pic] holds the scene's frames: the channel mark in its corner when
+ * the segment carries one, the previous scene's last frame dissolving away over it when asked,
+ * the subtitle strips laid over the bottom, then the colour tags. Shared by clip and motion
+ * segments so the two encode identically.
+ *
+ * The mark goes on first, under the dissolve: the previous scene's last frame already carries
+ * it, and two pictures that each carry it once blend into a picture that carries it once, where
+ * a mark laid over the blend would sit twice on the dissolve's frames. Its PNG is converted with
+ * the BT.709 matrix, as the slides' frames are (plan.mjs segmentArgs), so the mark a slide drew
+ * and the mark laid here are the same colours.
  */
-export function overlayGraph(picChain, { subtitlesInput, dissolveInput }) {
+export function overlayGraph(picChain, { subtitlesInput, dissolveInput, markInput = null, mark = null }) {
   const graph = [`[0:v]${picChain.join(",")}[pic]`];
   let last = "pic";
+  if (markInput !== null) {
+    graph.push(`[${markInput}:v]scale=${mark.box.width}:${mark.box.height}:out_color_matrix=bt709:out_range=tv,format=yuva420p[mark]`);
+    graph.push(`[${last}][mark]overlay=${mark.box.x}:${mark.box.y}[marked]`);
+    last = "marked";
+  }
   if (dissolveInput !== null) {
     graph.push(`[${dissolveInput}:v]scale=${WIDTH}:${HEIGHT},format=yuva420p,fade=t=out:st=0:d=${seconds(DISSOLVE_FRAMES)}:alpha=1[prev]`);
     graph.push(`[${last}][prev]overlay=0:0:eof_action=pass[dissolved]`);
@@ -366,8 +388,8 @@ export function encodeArgs(inputs, graph, frames, outFile, rate = []) {
  * the subtitle strips laid over the bottom. Same H.264 settings as a slide segment but tuned for
  * film, so the segments still join without re-encoding.
  */
-export function clipSegmentArgs({ clip, frames, fit, fromFrame = 0, subtitlesList = null, dissolveFrom = null, outFile }) {
-  const overlays = overlayInputs(subtitlesList, dissolveFrom);
+export function clipSegmentArgs({ clip, frames, fit, fromFrame = 0, subtitlesList = null, dissolveFrom = null, mark = null, outFile }) {
+  const overlays = overlayInputs(subtitlesList, dissolveFrom, mark);
   const chain = [
     // A cut from another shot's clip starts at that frame; by number, as the checks pick frames.
     ...(fromFrame > 0 ? [`trim=start_frame=${fromFrame}`, "setpts=PTS-STARTPTS"] : []),
@@ -398,8 +420,8 @@ function motionChain(move, frames) {
  * colour chain and the same encoder flags as a clip segment, so the join still copies, with
  * the bitrate capped at MOTION_MAX_RATE.
  */
-export function motionSegmentArgs({ keyframe, frames, move, subtitlesList = null, dissolveFrom = null, outFile }) {
-  const overlays = overlayInputs(subtitlesList, dissolveFrom);
+export function motionSegmentArgs({ keyframe, frames, move, subtitlesList = null, dissolveFrom = null, mark = null, outFile }) {
+  const overlays = overlayInputs(subtitlesList, dissolveFrom, mark);
   // The keyframe is RGB and carries no colour description: converted here with the BT.709 matrix
   // (as the slides path does), or format=yuv420p in COLOUR would use swscale's default BT.601
   // and setparams would label the result BT.709, off-colour against the neighbouring clips.
