@@ -44,7 +44,7 @@ scope:
 
 ## How to verify
 
-對照 research.md 的來源開啟狀態及 claims.md C01–C24。用獨立讀者檢查 1967 年初始記錄／快紀錄、LGM、1968 年振盪／旋轉的分界；核對 brief.md 有 A／B、7 章約 600 秒與三個開場 loops。`npm run check:tasks`；`git diff --check`。尚無正式稿，不執行媒體或 video.json lint。
+對照 research.md 的來源開啟狀態及 claims.md C01–C31。用獨立讀者檢查 1967 年初始記錄／快紀錄、LGM、1968 年振盪／旋轉的分界；核對 brief.md 有 A／B、7 章約 600 秒與三個開場 loops。正式稿另跑 `node tools/video/cli.mjs lint --slug curio-u09`，檢查 script.md 與 screenplay(video.json) 一致；`npm run check:tasks`、`git diff --check`。每輪退修後由未讀過該稿的新盲評者重讀，不自行標記通過。
 
 ## Notes
 
@@ -70,3 +70,4 @@ scope:
 - 本輪 schema／逐句索引／script 同步檢查均通過；`check:tasks` 通過 1895 份，僅既存過期／重疊警告。依主代理要求，只將本集 docs 與本票作本機 commit，認領維持供修訂接續。
 - 主代理補充指示後，brief 選項外的舊狀態改為原案 A 已核准、每集 US$6 已授權，並連至批次 `decision-20261016.json`。A／B 主文保持原字；最終送審用 brief SHA 為 `6C4C27F3DB3EFF2106241AF15A7C69499E6070436D4061150530481F1BFBBEC9`，取代上一則只補三節時的中間 hash；lint 仍為 0 errors／0 warnings。
 - 獨立十三題首輪必答 11／12，第 7 題退回兩個未兌現問題。僅修 `05002227` 為問快紀錄器能否捕捉、`7a031219` 為問是否還有更多同類；答案 `718638d1`／`9410e2e4` 的史實未改，沒有編造先前未捕捉原因。video／script／claims／逐句索引／loops 已同步，估時 604.60 秒、2,063 口播單位，lint 0 errors／0 warnings。新 video SHA `F5E73534B79611735B95D5C464D6FF367FEE7DD99C3422ED5531B9760A6C2625`；script SHA `D11BFC548632769AE8E42122712A3F882A997C4D6704C48531AB111C1BAF22AD`。待獨立讀回，不視為已通過。
+- 第二位盲評者仍判第 7 題未過；本輪僅改 `2a37c45e`，明確回扣 `f58aba8f` 的「會不會有人發射」，以後續證據支持自轉中子星／波束掃過地球作答案。完整 loop 從中段 `742fe66c` 移到此句，中段限制假說的原文保留；C22／C23、稿件、loops、逐句索引同步。2,076 口播單位、估時 607.73 秒；lint 0 errors／0 warnings。video SHA `CCD845B56DAE53A5828DFD1B93881D273E8BDA963D74B61327F074ACAC9FE50D`；script SHA `A6EBACD14E9986B8422316ABAEC6178FF039D063F31FE33A1A01D14233AF3F5A`。brief 未改，無付費／後台／push；須由未讀過此稿的新盲評者重讀，任務持續認領。
