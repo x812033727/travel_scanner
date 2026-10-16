@@ -12,6 +12,11 @@ import { encodeWav, parseWav } from "./wav.mjs";
 
 const SITE = "https://site.test";
 const TOKEN = `mkv_${"t".repeat(43)}`;
+const FOLLOWON_SLUGS = [
+  "story-five-lego-legoland", "story-five-costco-hot-dog",
+  "story-five-adidas-puma-brothers", "story-five-ajinomoto-chip-film",
+  "story-five-pringles-vat-case",
+];
 const sha256 = (text) => createHash("sha256").update(text).digest("hex");
 const audio = () => encodeWav(Int16Array.from({ length: 4800 }, (_, i) => Math.round(Math.sin(i / 8) * 3000)));
 // What Node's fetch throws: a TypeError whose cause carries the socket's code.
@@ -79,7 +84,7 @@ function server(answers) {
 }
 
 test("pilot paid routes carry a UUID that remains stable across a safe HTTP retry", async () => {
-  for (const slug of ["story-rolling-suitcase", "story-conveyor-belt-sushi", "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2"]) {
+  for (const slug of ["story-rolling-suitcase", "story-conveyor-belt-sushi", "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2", ...FOLLOWON_SLUGS]) {
     for (const paid of PAID) {
       const { calls, options } = server([() => problem(429, "rate_limit_exceeded"), paid.ok]);
       paid.check(await paid.send({ ...options, videoSlug: slug }));
@@ -125,6 +130,7 @@ test("pilot auditions require their matching slug and charge that film; generic 
   assert.equal(await audition(a01, "story-conveyor-belt-sushi-v2"), EXIT.usage);
   assert.equal(await audition(a01, "story-rolling-suitcase"), EXIT.usage);
   assert.equal(await audition(generic, "story-rolling-suitcase-v2-typo"), EXIT.usage);
+  assert.equal(await audition(generic, "story-five-lego-legoland-typo"), EXIT.usage);
   const pilotWork = { ...ctx, env: { ...ctx.env, VIDEO_WORKDIR: path.join(box.base, "story-conveyor-belt-sushi-v2") } };
   assert.equal(await main(["audition", "--text-file", generic, "--voices", "gemini:Sulafat"], pilotWork), EXIT.usage);
   assert.equal(await main(["audition", "--text-file", a01, "--voices", "gemini:Sulafat", "--slug", "story-rolling-suitcase-v2"], pilotWork), EXIT.usage);
@@ -137,6 +143,36 @@ test("pilot auditions require their matching slug and charge that film; generic 
     assert.equal(request.video_slug, slug);
     assert.match(request.operation_id, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
   }
+
+  for (const slug of FOLLOWON_SLUGS) {
+    const file = path.join(box.base, `${slug}.txt`);
+    writeFileSync(file, `試聽 ${slug} 的旁白。`);
+    assert.equal(await audition(file), EXIT.usage, `${slug}: the file must name its budget`);
+    assert.equal(await audition(file, slug), EXIT.ok);
+    const request = JSON.parse(calls.at(-1).init.body);
+    assert.equal(request.video_slug, slug);
+    assert.match(request.operation_id, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+  }
+
+  const followonDir = path.join(box.base, "brand-stories-five-20261014");
+  mkdirSync(followonDir, { recursive: true });
+  const planIds = ["A29", "A16", "A37", "B14", "A21"];
+  for (const [index, id] of planIds.entries()) {
+    const file = path.join(followonDir, `${id}-voice-sample.txt`);
+    writeFileSync(file, `企劃 ${id} 的試聽。`);
+    const slug = FOLLOWON_SLUGS[index];
+    assert.equal(await audition(file), EXIT.usage, `${id}: plan ID must require attribution`);
+    assert.equal(await audition(file, FOLLOWON_SLUGS[(index + 1) % FOLLOWON_SLUGS.length]), EXIT.usage);
+    assert.equal(await audition(file, slug), EXIT.ok);
+    const request = JSON.parse(calls.at(-1).init.body);
+    assert.equal(request.video_slug, slug);
+    assert.match(request.operation_id, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+  }
+  const ambiguous = path.join(followonDir, "narration-sample.txt");
+  writeFileSync(ambiguous, "五集企劃中的試聽，尚未指名影片。");
+  const beforeAmbiguous = calls.length;
+  assert.equal(await audition(ambiguous), EXIT.usage);
+  assert.equal(calls.length, beforeAmbiguous, "ambiguous follow-on samples must not reach speech API");
 
   assert.equal(await audition(generic), EXIT.ok);
   const ordinary = JSON.parse(calls.at(-1).init.body);

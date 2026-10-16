@@ -15,6 +15,9 @@ export const USER_AGENT = "Mokaair-video-cli/1.0 (https://mokaair.com; support@m
 export const PILOT_SLUGS = new Set([
   "story-rolling-suitcase", "story-conveyor-belt-sushi",
   "story-rolling-suitcase-v2", "story-conveyor-belt-sushi-v2",
+  "story-five-lego-legoland", "story-five-costco-hot-dog",
+  "story-five-adidas-puma-brothers", "story-five-ajinomoto-chip-film",
+  "story-five-pringles-vat-case",
 ]);
 
 // A paid request was sent and no answer came back: the connection dropped after it went out, a
